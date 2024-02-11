@@ -18,27 +18,10 @@ namespace ConnectCases
 namespace Model
 {
 
-CaseFilter::CaseFilter() : 
-    m_andAllHasBeenSet(false),
-    m_fieldHasBeenSet(false),
-    m_notHasBeenSet(false)
-{
-}
-
-CaseFilter::CaseFilter(JsonView jsonValue) : 
-    m_andAllHasBeenSet(false),
-    m_fieldHasBeenSet(false),
-    m_notHasBeenSet(false)
+CaseFilter::CaseFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
-
-const CaseFilter& CaseFilter::GetNot() const{ return *m_not; }
-bool CaseFilter::NotHasBeenSet() const { return m_notHasBeenSet; }
-void CaseFilter::SetNot(const CaseFilter& value) { m_notHasBeenSet = true; m_not = Aws::MakeShared<CaseFilter>("CaseFilter", value); }
-void CaseFilter::SetNot(CaseFilter&& value) { m_notHasBeenSet = true; m_not = Aws::MakeShared<CaseFilter>("CaseFilter", std::move(value)); }
-CaseFilter& CaseFilter::WithNot(const CaseFilter& value) { SetNot(value); return *this;}
-CaseFilter& CaseFilter::WithNot(CaseFilter&& value) { SetNot(std::move(value)); return *this;}
 
 CaseFilter& CaseFilter::operator =(JsonView jsonValue)
 {
@@ -51,21 +34,25 @@ CaseFilter& CaseFilter::operator =(JsonView jsonValue)
     }
     m_andAllHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("field"))
   {
     m_field = jsonValue.GetObject("field");
-
     m_fieldHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("not"))
   {
     m_not = Aws::MakeShared<CaseFilter>("CaseFilter", jsonValue.GetObject("not"));
-
     m_notHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("orAll"))
+  {
+    Aws::Utils::Array<JsonView> orAllJsonList = jsonValue.GetArray("orAll");
+    for(unsigned orAllIndex = 0; orAllIndex < orAllJsonList.GetLength(); ++orAllIndex)
+    {
+      m_orAll.push_back(orAllJsonList[orAllIndex].AsObject());
+    }
+    m_orAllHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -93,6 +80,17 @@ JsonValue CaseFilter::Jsonize() const
   if(m_notHasBeenSet)
   {
    payload.WithObject("not", m_not->Jsonize());
+
+  }
+
+  if(m_orAllHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> orAllJsonList(m_orAll.size());
+   for(unsigned orAllIndex = 0; orAllIndex < orAllJsonList.GetLength(); ++orAllIndex)
+   {
+     orAllJsonList[orAllIndex].AsObject(m_orAll[orAllIndex].Jsonize());
+   }
+   payload.WithArray("orAll", std::move(orAllJsonList));
 
   }
 

@@ -33,93 +33,35 @@ namespace Model
   class AccountStatus
   {
   public:
-    AWS_NETWORKMANAGER_API AccountStatus();
+    AWS_NETWORKMANAGER_API AccountStatus() = default;
     AWS_NETWORKMANAGER_API AccountStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKMANAGER_API AccountStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of an account within the Amazon Web Services Organization.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The ID of an account within the Amazon Web Services Organization.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    AccountStatus& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of an account within the Amazon Web Services Organization.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The ID of an account within the Amazon Web Services Organization.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The ID of an account within the Amazon Web Services Organization.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The ID of an account within the Amazon Web Services Organization.</p>
-     */
-    inline AccountStatus& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The ID of an account within the Amazon Web Services Organization.</p>
-     */
-    inline AccountStatus& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of an account within the Amazon Web Services Organization.</p>
-     */
-    inline AccountStatus& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of SLR deployment for the account.</p>
      */
-    inline const Aws::String& GetSLRDeploymentStatus() const{ return m_sLRDeploymentStatus; }
-
-    /**
-     * <p>The status of SLR deployment for the account.</p>
-     */
+    inline const Aws::String& GetSLRDeploymentStatus() const { return m_sLRDeploymentStatus; }
     inline bool SLRDeploymentStatusHasBeenSet() const { return m_sLRDeploymentStatusHasBeenSet; }
-
-    /**
-     * <p>The status of SLR deployment for the account.</p>
-     */
-    inline void SetSLRDeploymentStatus(const Aws::String& value) { m_sLRDeploymentStatusHasBeenSet = true; m_sLRDeploymentStatus = value; }
-
-    /**
-     * <p>The status of SLR deployment for the account.</p>
-     */
-    inline void SetSLRDeploymentStatus(Aws::String&& value) { m_sLRDeploymentStatusHasBeenSet = true; m_sLRDeploymentStatus = std::move(value); }
-
-    /**
-     * <p>The status of SLR deployment for the account.</p>
-     */
-    inline void SetSLRDeploymentStatus(const char* value) { m_sLRDeploymentStatusHasBeenSet = true; m_sLRDeploymentStatus.assign(value); }
-
-    /**
-     * <p>The status of SLR deployment for the account.</p>
-     */
-    inline AccountStatus& WithSLRDeploymentStatus(const Aws::String& value) { SetSLRDeploymentStatus(value); return *this;}
-
-    /**
-     * <p>The status of SLR deployment for the account.</p>
-     */
-    inline AccountStatus& WithSLRDeploymentStatus(Aws::String&& value) { SetSLRDeploymentStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of SLR deployment for the account.</p>
-     */
-    inline AccountStatus& WithSLRDeploymentStatus(const char* value) { SetSLRDeploymentStatus(value); return *this;}
-
+    template<typename SLRDeploymentStatusT = Aws::String>
+    void SetSLRDeploymentStatus(SLRDeploymentStatusT&& value) { m_sLRDeploymentStatusHasBeenSet = true; m_sLRDeploymentStatus = std::forward<SLRDeploymentStatusT>(value); }
+    template<typename SLRDeploymentStatusT = Aws::String>
+    AccountStatus& WithSLRDeploymentStatus(SLRDeploymentStatusT&& value) { SetSLRDeploymentStatus(std::forward<SLRDeploymentStatusT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;

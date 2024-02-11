@@ -34,83 +34,37 @@ namespace Model
   class ATITrainingMetricsValue
   {
   public:
-    AWS_FRAUDDETECTOR_API ATITrainingMetricsValue();
+    AWS_FRAUDDETECTOR_API ATITrainingMetricsValue() = default;
     AWS_FRAUDDETECTOR_API ATITrainingMetricsValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API ATITrainingMetricsValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The model's performance metrics data points. </p>
      */
-    inline const Aws::Vector<ATIMetricDataPoint>& GetMetricDataPoints() const{ return m_metricDataPoints; }
-
-    /**
-     * <p> The model's performance metrics data points. </p>
-     */
+    inline const Aws::Vector<ATIMetricDataPoint>& GetMetricDataPoints() const { return m_metricDataPoints; }
     inline bool MetricDataPointsHasBeenSet() const { return m_metricDataPointsHasBeenSet; }
+    template<typename MetricDataPointsT = Aws::Vector<ATIMetricDataPoint>>
+    void SetMetricDataPoints(MetricDataPointsT&& value) { m_metricDataPointsHasBeenSet = true; m_metricDataPoints = std::forward<MetricDataPointsT>(value); }
+    template<typename MetricDataPointsT = Aws::Vector<ATIMetricDataPoint>>
+    ATITrainingMetricsValue& WithMetricDataPoints(MetricDataPointsT&& value) { SetMetricDataPoints(std::forward<MetricDataPointsT>(value)); return *this;}
+    template<typename MetricDataPointsT = ATIMetricDataPoint>
+    ATITrainingMetricsValue& AddMetricDataPoints(MetricDataPointsT&& value) { m_metricDataPointsHasBeenSet = true; m_metricDataPoints.emplace_back(std::forward<MetricDataPointsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> The model's performance metrics data points. </p>
-     */
-    inline void SetMetricDataPoints(const Aws::Vector<ATIMetricDataPoint>& value) { m_metricDataPointsHasBeenSet = true; m_metricDataPoints = value; }
-
-    /**
-     * <p> The model's performance metrics data points. </p>
-     */
-    inline void SetMetricDataPoints(Aws::Vector<ATIMetricDataPoint>&& value) { m_metricDataPointsHasBeenSet = true; m_metricDataPoints = std::move(value); }
-
-    /**
-     * <p> The model's performance metrics data points. </p>
-     */
-    inline ATITrainingMetricsValue& WithMetricDataPoints(const Aws::Vector<ATIMetricDataPoint>& value) { SetMetricDataPoints(value); return *this;}
-
-    /**
-     * <p> The model's performance metrics data points. </p>
-     */
-    inline ATITrainingMetricsValue& WithMetricDataPoints(Aws::Vector<ATIMetricDataPoint>&& value) { SetMetricDataPoints(std::move(value)); return *this;}
-
-    /**
-     * <p> The model's performance metrics data points. </p>
-     */
-    inline ATITrainingMetricsValue& AddMetricDataPoints(const ATIMetricDataPoint& value) { m_metricDataPointsHasBeenSet = true; m_metricDataPoints.push_back(value); return *this; }
-
-    /**
-     * <p> The model's performance metrics data points. </p>
-     */
-    inline ATITrainingMetricsValue& AddMetricDataPoints(ATIMetricDataPoint&& value) { m_metricDataPointsHasBeenSet = true; m_metricDataPoints.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p> The model's overall performance scores. </p>
      */
-    inline const ATIModelPerformance& GetModelPerformance() const{ return m_modelPerformance; }
-
-    /**
-     * <p> The model's overall performance scores. </p>
-     */
+    inline const ATIModelPerformance& GetModelPerformance() const { return m_modelPerformance; }
     inline bool ModelPerformanceHasBeenSet() const { return m_modelPerformanceHasBeenSet; }
-
-    /**
-     * <p> The model's overall performance scores. </p>
-     */
-    inline void SetModelPerformance(const ATIModelPerformance& value) { m_modelPerformanceHasBeenSet = true; m_modelPerformance = value; }
-
-    /**
-     * <p> The model's overall performance scores. </p>
-     */
-    inline void SetModelPerformance(ATIModelPerformance&& value) { m_modelPerformanceHasBeenSet = true; m_modelPerformance = std::move(value); }
-
-    /**
-     * <p> The model's overall performance scores. </p>
-     */
-    inline ATITrainingMetricsValue& WithModelPerformance(const ATIModelPerformance& value) { SetModelPerformance(value); return *this;}
-
-    /**
-     * <p> The model's overall performance scores. </p>
-     */
-    inline ATITrainingMetricsValue& WithModelPerformance(ATIModelPerformance&& value) { SetModelPerformance(std::move(value)); return *this;}
-
+    template<typename ModelPerformanceT = ATIModelPerformance>
+    void SetModelPerformance(ModelPerformanceT&& value) { m_modelPerformanceHasBeenSet = true; m_modelPerformance = std::forward<ModelPerformanceT>(value); }
+    template<typename ModelPerformanceT = ATIModelPerformance>
+    ATITrainingMetricsValue& WithModelPerformance(ModelPerformanceT&& value) { SetModelPerformance(std::forward<ModelPerformanceT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ATIMetricDataPoint> m_metricDataPoints;

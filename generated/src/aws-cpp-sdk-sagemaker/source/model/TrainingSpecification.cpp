@@ -18,29 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-TrainingSpecification::TrainingSpecification() : 
-    m_trainingImageHasBeenSet(false),
-    m_trainingImageDigestHasBeenSet(false),
-    m_supportedHyperParametersHasBeenSet(false),
-    m_supportedTrainingInstanceTypesHasBeenSet(false),
-    m_supportsDistributedTraining(false),
-    m_supportsDistributedTrainingHasBeenSet(false),
-    m_metricDefinitionsHasBeenSet(false),
-    m_trainingChannelsHasBeenSet(false),
-    m_supportedTuningJobObjectiveMetricsHasBeenSet(false)
-{
-}
-
-TrainingSpecification::TrainingSpecification(JsonView jsonValue) : 
-    m_trainingImageHasBeenSet(false),
-    m_trainingImageDigestHasBeenSet(false),
-    m_supportedHyperParametersHasBeenSet(false),
-    m_supportedTrainingInstanceTypesHasBeenSet(false),
-    m_supportsDistributedTraining(false),
-    m_supportsDistributedTrainingHasBeenSet(false),
-    m_metricDefinitionsHasBeenSet(false),
-    m_trainingChannelsHasBeenSet(false),
-    m_supportedTuningJobObjectiveMetricsHasBeenSet(false)
+TrainingSpecification::TrainingSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,17 +28,13 @@ TrainingSpecification& TrainingSpecification::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TrainingImage"))
   {
     m_trainingImage = jsonValue.GetString("TrainingImage");
-
     m_trainingImageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TrainingImageDigest"))
   {
     m_trainingImageDigest = jsonValue.GetString("TrainingImageDigest");
-
     m_trainingImageDigestHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SupportedHyperParameters"))
   {
     Aws::Utils::Array<JsonView> supportedHyperParametersJsonList = jsonValue.GetArray("SupportedHyperParameters");
@@ -70,7 +44,6 @@ TrainingSpecification& TrainingSpecification::operator =(JsonView jsonValue)
     }
     m_supportedHyperParametersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SupportedTrainingInstanceTypes"))
   {
     Aws::Utils::Array<JsonView> supportedTrainingInstanceTypesJsonList = jsonValue.GetArray("SupportedTrainingInstanceTypes");
@@ -80,14 +53,11 @@ TrainingSpecification& TrainingSpecification::operator =(JsonView jsonValue)
     }
     m_supportedTrainingInstanceTypesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SupportsDistributedTraining"))
   {
     m_supportsDistributedTraining = jsonValue.GetBool("SupportsDistributedTraining");
-
     m_supportsDistributedTrainingHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MetricDefinitions"))
   {
     Aws::Utils::Array<JsonView> metricDefinitionsJsonList = jsonValue.GetArray("MetricDefinitions");
@@ -97,7 +67,6 @@ TrainingSpecification& TrainingSpecification::operator =(JsonView jsonValue)
     }
     m_metricDefinitionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TrainingChannels"))
   {
     Aws::Utils::Array<JsonView> trainingChannelsJsonList = jsonValue.GetArray("TrainingChannels");
@@ -107,7 +76,6 @@ TrainingSpecification& TrainingSpecification::operator =(JsonView jsonValue)
     }
     m_trainingChannelsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SupportedTuningJobObjectiveMetrics"))
   {
     Aws::Utils::Array<JsonView> supportedTuningJobObjectiveMetricsJsonList = jsonValue.GetArray("SupportedTuningJobObjectiveMetrics");
@@ -117,7 +85,11 @@ TrainingSpecification& TrainingSpecification::operator =(JsonView jsonValue)
     }
     m_supportedTuningJobObjectiveMetricsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("AdditionalS3DataSource"))
+  {
+    m_additionalS3DataSource = jsonValue.GetObject("AdditionalS3DataSource");
+    m_additionalS3DataSourceHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -195,6 +167,12 @@ JsonValue TrainingSpecification::Jsonize() const
      supportedTuningJobObjectiveMetricsJsonList[supportedTuningJobObjectiveMetricsIndex].AsObject(m_supportedTuningJobObjectiveMetrics[supportedTuningJobObjectiveMetricsIndex].Jsonize());
    }
    payload.WithArray("SupportedTuningJobObjectiveMetrics", std::move(supportedTuningJobObjectiveMetricsJsonList));
+
+  }
+
+  if(m_additionalS3DataSourceHasBeenSet)
+  {
+   payload.WithObject("AdditionalS3DataSource", m_additionalS3DataSource.Jsonize());
 
   }
 

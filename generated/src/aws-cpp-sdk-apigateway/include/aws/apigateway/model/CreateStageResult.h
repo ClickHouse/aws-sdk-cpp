@@ -40,756 +40,279 @@ namespace Model
   class CreateStageResult
   {
   public:
-    AWS_APIGATEWAY_API CreateStageResult();
+    AWS_APIGATEWAY_API CreateStageResult() = default;
     AWS_APIGATEWAY_API CreateStageResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_APIGATEWAY_API CreateStageResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The identifier of the Deployment that the stage points to.</p>
      */
-    inline const Aws::String& GetDeploymentId() const{ return m_deploymentId; }
+    inline const Aws::String& GetDeploymentId() const { return m_deploymentId; }
+    template<typename DeploymentIdT = Aws::String>
+    void SetDeploymentId(DeploymentIdT&& value) { m_deploymentIdHasBeenSet = true; m_deploymentId = std::forward<DeploymentIdT>(value); }
+    template<typename DeploymentIdT = Aws::String>
+    CreateStageResult& WithDeploymentId(DeploymentIdT&& value) { SetDeploymentId(std::forward<DeploymentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the Deployment that the stage points to.</p>
-     */
-    inline void SetDeploymentId(const Aws::String& value) { m_deploymentId = value; }
-
-    /**
-     * <p>The identifier of the Deployment that the stage points to.</p>
-     */
-    inline void SetDeploymentId(Aws::String&& value) { m_deploymentId = std::move(value); }
-
-    /**
-     * <p>The identifier of the Deployment that the stage points to.</p>
-     */
-    inline void SetDeploymentId(const char* value) { m_deploymentId.assign(value); }
-
-    /**
-     * <p>The identifier of the Deployment that the stage points to.</p>
-     */
-    inline CreateStageResult& WithDeploymentId(const Aws::String& value) { SetDeploymentId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Deployment that the stage points to.</p>
-     */
-    inline CreateStageResult& WithDeploymentId(Aws::String&& value) { SetDeploymentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Deployment that the stage points to.</p>
-     */
-    inline CreateStageResult& WithDeploymentId(const char* value) { SetDeploymentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of a client certificate for an API stage.</p>
      */
-    inline const Aws::String& GetClientCertificateId() const{ return m_clientCertificateId; }
+    inline const Aws::String& GetClientCertificateId() const { return m_clientCertificateId; }
+    template<typename ClientCertificateIdT = Aws::String>
+    void SetClientCertificateId(ClientCertificateIdT&& value) { m_clientCertificateIdHasBeenSet = true; m_clientCertificateId = std::forward<ClientCertificateIdT>(value); }
+    template<typename ClientCertificateIdT = Aws::String>
+    CreateStageResult& WithClientCertificateId(ClientCertificateIdT&& value) { SetClientCertificateId(std::forward<ClientCertificateIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of a client certificate for an API stage.</p>
-     */
-    inline void SetClientCertificateId(const Aws::String& value) { m_clientCertificateId = value; }
-
-    /**
-     * <p>The identifier of a client certificate for an API stage.</p>
-     */
-    inline void SetClientCertificateId(Aws::String&& value) { m_clientCertificateId = std::move(value); }
-
-    /**
-     * <p>The identifier of a client certificate for an API stage.</p>
-     */
-    inline void SetClientCertificateId(const char* value) { m_clientCertificateId.assign(value); }
-
-    /**
-     * <p>The identifier of a client certificate for an API stage.</p>
-     */
-    inline CreateStageResult& WithClientCertificateId(const Aws::String& value) { SetClientCertificateId(value); return *this;}
-
-    /**
-     * <p>The identifier of a client certificate for an API stage.</p>
-     */
-    inline CreateStageResult& WithClientCertificateId(Aws::String&& value) { SetClientCertificateId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of a client certificate for an API stage.</p>
-     */
-    inline CreateStageResult& WithClientCertificateId(const char* value) { SetClientCertificateId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the stage is the first path segment in the Uniform Resource
      * Identifier (URI) of a call to API Gateway. Stage names can only contain
      * alphanumeric characters, hyphens, and underscores. Maximum length is 128
      * characters.</p>
      */
-    inline const Aws::String& GetStageName() const{ return m_stageName; }
+    inline const Aws::String& GetStageName() const { return m_stageName; }
+    template<typename StageNameT = Aws::String>
+    void SetStageName(StageNameT&& value) { m_stageNameHasBeenSet = true; m_stageName = std::forward<StageNameT>(value); }
+    template<typename StageNameT = Aws::String>
+    CreateStageResult& WithStageName(StageNameT&& value) { SetStageName(std::forward<StageNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the stage is the first path segment in the Uniform Resource
-     * Identifier (URI) of a call to API Gateway. Stage names can only contain
-     * alphanumeric characters, hyphens, and underscores. Maximum length is 128
-     * characters.</p>
-     */
-    inline void SetStageName(const Aws::String& value) { m_stageName = value; }
-
-    /**
-     * <p>The name of the stage is the first path segment in the Uniform Resource
-     * Identifier (URI) of a call to API Gateway. Stage names can only contain
-     * alphanumeric characters, hyphens, and underscores. Maximum length is 128
-     * characters.</p>
-     */
-    inline void SetStageName(Aws::String&& value) { m_stageName = std::move(value); }
-
-    /**
-     * <p>The name of the stage is the first path segment in the Uniform Resource
-     * Identifier (URI) of a call to API Gateway. Stage names can only contain
-     * alphanumeric characters, hyphens, and underscores. Maximum length is 128
-     * characters.</p>
-     */
-    inline void SetStageName(const char* value) { m_stageName.assign(value); }
-
-    /**
-     * <p>The name of the stage is the first path segment in the Uniform Resource
-     * Identifier (URI) of a call to API Gateway. Stage names can only contain
-     * alphanumeric characters, hyphens, and underscores. Maximum length is 128
-     * characters.</p>
-     */
-    inline CreateStageResult& WithStageName(const Aws::String& value) { SetStageName(value); return *this;}
-
-    /**
-     * <p>The name of the stage is the first path segment in the Uniform Resource
-     * Identifier (URI) of a call to API Gateway. Stage names can only contain
-     * alphanumeric characters, hyphens, and underscores. Maximum length is 128
-     * characters.</p>
-     */
-    inline CreateStageResult& WithStageName(Aws::String&& value) { SetStageName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the stage is the first path segment in the Uniform Resource
-     * Identifier (URI) of a call to API Gateway. Stage names can only contain
-     * alphanumeric characters, hyphens, and underscores. Maximum length is 128
-     * characters.</p>
-     */
-    inline CreateStageResult& WithStageName(const char* value) { SetStageName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The stage's description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateStageResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The stage's description.</p>
+     * <p>Specifies whether a cache cluster is enabled for the stage. To activate a
+     * method-level cache, set <code>CachingEnabled</code> to <code>true</code> for a
+     * method. </p>
      */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>The stage's description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>The stage's description.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>The stage's description.</p>
-     */
-    inline CreateStageResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The stage's description.</p>
-     */
-    inline CreateStageResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The stage's description.</p>
-     */
-    inline CreateStageResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
-    /**
-     * <p>Specifies whether a cache cluster is enabled for the stage.</p>
-     */
-    inline bool GetCacheClusterEnabled() const{ return m_cacheClusterEnabled; }
-
-    /**
-     * <p>Specifies whether a cache cluster is enabled for the stage.</p>
-     */
-    inline void SetCacheClusterEnabled(bool value) { m_cacheClusterEnabled = value; }
-
-    /**
-     * <p>Specifies whether a cache cluster is enabled for the stage.</p>
-     */
+    inline bool GetCacheClusterEnabled() const { return m_cacheClusterEnabled; }
+    inline void SetCacheClusterEnabled(bool value) { m_cacheClusterEnabledHasBeenSet = true; m_cacheClusterEnabled = value; }
     inline CreateStageResult& WithCacheClusterEnabled(bool value) { SetCacheClusterEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The stage's cache capacity in GB. For more information about choosing a cache
      * size, see <a
      * href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html">Enabling
      * API caching to enhance responsiveness</a>.</p>
      */
-    inline const CacheClusterSize& GetCacheClusterSize() const{ return m_cacheClusterSize; }
+    inline CacheClusterSize GetCacheClusterSize() const { return m_cacheClusterSize; }
+    inline void SetCacheClusterSize(CacheClusterSize value) { m_cacheClusterSizeHasBeenSet = true; m_cacheClusterSize = value; }
+    inline CreateStageResult& WithCacheClusterSize(CacheClusterSize value) { SetCacheClusterSize(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The stage's cache capacity in GB. For more information about choosing a cache
-     * size, see <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html">Enabling
-     * API caching to enhance responsiveness</a>.</p>
-     */
-    inline void SetCacheClusterSize(const CacheClusterSize& value) { m_cacheClusterSize = value; }
-
-    /**
-     * <p>The stage's cache capacity in GB. For more information about choosing a cache
-     * size, see <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html">Enabling
-     * API caching to enhance responsiveness</a>.</p>
-     */
-    inline void SetCacheClusterSize(CacheClusterSize&& value) { m_cacheClusterSize = std::move(value); }
-
-    /**
-     * <p>The stage's cache capacity in GB. For more information about choosing a cache
-     * size, see <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html">Enabling
-     * API caching to enhance responsiveness</a>.</p>
-     */
-    inline CreateStageResult& WithCacheClusterSize(const CacheClusterSize& value) { SetCacheClusterSize(value); return *this;}
-
-    /**
-     * <p>The stage's cache capacity in GB. For more information about choosing a cache
-     * size, see <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html">Enabling
-     * API caching to enhance responsiveness</a>.</p>
-     */
-    inline CreateStageResult& WithCacheClusterSize(CacheClusterSize&& value) { SetCacheClusterSize(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the cache cluster for the stage, if enabled.</p>
      */
-    inline const CacheClusterStatus& GetCacheClusterStatus() const{ return m_cacheClusterStatus; }
+    inline CacheClusterStatus GetCacheClusterStatus() const { return m_cacheClusterStatus; }
+    inline void SetCacheClusterStatus(CacheClusterStatus value) { m_cacheClusterStatusHasBeenSet = true; m_cacheClusterStatus = value; }
+    inline CreateStageResult& WithCacheClusterStatus(CacheClusterStatus value) { SetCacheClusterStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the cache cluster for the stage, if enabled.</p>
-     */
-    inline void SetCacheClusterStatus(const CacheClusterStatus& value) { m_cacheClusterStatus = value; }
-
-    /**
-     * <p>The status of the cache cluster for the stage, if enabled.</p>
-     */
-    inline void SetCacheClusterStatus(CacheClusterStatus&& value) { m_cacheClusterStatus = std::move(value); }
-
-    /**
-     * <p>The status of the cache cluster for the stage, if enabled.</p>
-     */
-    inline CreateStageResult& WithCacheClusterStatus(const CacheClusterStatus& value) { SetCacheClusterStatus(value); return *this;}
-
-    /**
-     * <p>The status of the cache cluster for the stage, if enabled.</p>
-     */
-    inline CreateStageResult& WithCacheClusterStatus(CacheClusterStatus&& value) { SetCacheClusterStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A map that defines the method settings for a Stage resource. Keys (designated
      * as <code>/{method_setting_key</code> below) are method paths defined as
      * <code>{resource_path}/{http_method}</code> for an individual method override, or
      * <code>/\* /\*</code> for overriding all methods in the stage. </p>
      */
-    inline const Aws::Map<Aws::String, MethodSetting>& GetMethodSettings() const{ return m_methodSettings; }
+    inline const Aws::Map<Aws::String, MethodSetting>& GetMethodSettings() const { return m_methodSettings; }
+    template<typename MethodSettingsT = Aws::Map<Aws::String, MethodSetting>>
+    void SetMethodSettings(MethodSettingsT&& value) { m_methodSettingsHasBeenSet = true; m_methodSettings = std::forward<MethodSettingsT>(value); }
+    template<typename MethodSettingsT = Aws::Map<Aws::String, MethodSetting>>
+    CreateStageResult& WithMethodSettings(MethodSettingsT&& value) { SetMethodSettings(std::forward<MethodSettingsT>(value)); return *this;}
+    template<typename MethodSettingsKeyT = Aws::String, typename MethodSettingsValueT = MethodSetting>
+    CreateStageResult& AddMethodSettings(MethodSettingsKeyT&& key, MethodSettingsValueT&& value) {
+      m_methodSettingsHasBeenSet = true; m_methodSettings.emplace(std::forward<MethodSettingsKeyT>(key), std::forward<MethodSettingsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A map that defines the method settings for a Stage resource. Keys (designated
-     * as <code>/{method_setting_key</code> below) are method paths defined as
-     * <code>{resource_path}/{http_method}</code> for an individual method override, or
-     * <code>/\* /\*</code> for overriding all methods in the stage. </p>
-     */
-    inline void SetMethodSettings(const Aws::Map<Aws::String, MethodSetting>& value) { m_methodSettings = value; }
-
-    /**
-     * <p>A map that defines the method settings for a Stage resource. Keys (designated
-     * as <code>/{method_setting_key</code> below) are method paths defined as
-     * <code>{resource_path}/{http_method}</code> for an individual method override, or
-     * <code>/\* /\*</code> for overriding all methods in the stage. </p>
-     */
-    inline void SetMethodSettings(Aws::Map<Aws::String, MethodSetting>&& value) { m_methodSettings = std::move(value); }
-
-    /**
-     * <p>A map that defines the method settings for a Stage resource. Keys (designated
-     * as <code>/{method_setting_key</code> below) are method paths defined as
-     * <code>{resource_path}/{http_method}</code> for an individual method override, or
-     * <code>/\* /\*</code> for overriding all methods in the stage. </p>
-     */
-    inline CreateStageResult& WithMethodSettings(const Aws::Map<Aws::String, MethodSetting>& value) { SetMethodSettings(value); return *this;}
-
-    /**
-     * <p>A map that defines the method settings for a Stage resource. Keys (designated
-     * as <code>/{method_setting_key</code> below) are method paths defined as
-     * <code>{resource_path}/{http_method}</code> for an individual method override, or
-     * <code>/\* /\*</code> for overriding all methods in the stage. </p>
-     */
-    inline CreateStageResult& WithMethodSettings(Aws::Map<Aws::String, MethodSetting>&& value) { SetMethodSettings(std::move(value)); return *this;}
-
-    /**
-     * <p>A map that defines the method settings for a Stage resource. Keys (designated
-     * as <code>/{method_setting_key</code> below) are method paths defined as
-     * <code>{resource_path}/{http_method}</code> for an individual method override, or
-     * <code>/\* /\*</code> for overriding all methods in the stage. </p>
-     */
-    inline CreateStageResult& AddMethodSettings(const Aws::String& key, const MethodSetting& value) { m_methodSettings.emplace(key, value); return *this; }
-
-    /**
-     * <p>A map that defines the method settings for a Stage resource. Keys (designated
-     * as <code>/{method_setting_key</code> below) are method paths defined as
-     * <code>{resource_path}/{http_method}</code> for an individual method override, or
-     * <code>/\* /\*</code> for overriding all methods in the stage. </p>
-     */
-    inline CreateStageResult& AddMethodSettings(Aws::String&& key, const MethodSetting& value) { m_methodSettings.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map that defines the method settings for a Stage resource. Keys (designated
-     * as <code>/{method_setting_key</code> below) are method paths defined as
-     * <code>{resource_path}/{http_method}</code> for an individual method override, or
-     * <code>/\* /\*</code> for overriding all methods in the stage. </p>
-     */
-    inline CreateStageResult& AddMethodSettings(const Aws::String& key, MethodSetting&& value) { m_methodSettings.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map that defines the method settings for a Stage resource. Keys (designated
-     * as <code>/{method_setting_key</code> below) are method paths defined as
-     * <code>{resource_path}/{http_method}</code> for an individual method override, or
-     * <code>/\* /\*</code> for overriding all methods in the stage. </p>
-     */
-    inline CreateStageResult& AddMethodSettings(Aws::String&& key, MethodSetting&& value) { m_methodSettings.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A map that defines the method settings for a Stage resource. Keys (designated
-     * as <code>/{method_setting_key</code> below) are method paths defined as
-     * <code>{resource_path}/{http_method}</code> for an individual method override, or
-     * <code>/\* /\*</code> for overriding all methods in the stage. </p>
-     */
-    inline CreateStageResult& AddMethodSettings(const char* key, MethodSetting&& value) { m_methodSettings.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map that defines the method settings for a Stage resource. Keys (designated
-     * as <code>/{method_setting_key</code> below) are method paths defined as
-     * <code>{resource_path}/{http_method}</code> for an individual method override, or
-     * <code>/\* /\*</code> for overriding all methods in the stage. </p>
-     */
-    inline CreateStageResult& AddMethodSettings(const char* key, const MethodSetting& value) { m_methodSettings.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>A map that defines the stage variables for a Stage resource. Variable names
      * can have alphanumeric and underscore characters, and the values must match
      * <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetVariables() const{ return m_variables; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetVariables() const { return m_variables; }
+    template<typename VariablesT = Aws::Map<Aws::String, Aws::String>>
+    void SetVariables(VariablesT&& value) { m_variablesHasBeenSet = true; m_variables = std::forward<VariablesT>(value); }
+    template<typename VariablesT = Aws::Map<Aws::String, Aws::String>>
+    CreateStageResult& WithVariables(VariablesT&& value) { SetVariables(std::forward<VariablesT>(value)); return *this;}
+    template<typename VariablesKeyT = Aws::String, typename VariablesValueT = Aws::String>
+    CreateStageResult& AddVariables(VariablesKeyT&& key, VariablesValueT&& value) {
+      m_variablesHasBeenSet = true; m_variables.emplace(std::forward<VariablesKeyT>(key), std::forward<VariablesValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A map that defines the stage variables for a Stage resource. Variable names
-     * can have alphanumeric and underscore characters, and the values must match
-     * <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
-     */
-    inline void SetVariables(const Aws::Map<Aws::String, Aws::String>& value) { m_variables = value; }
-
-    /**
-     * <p>A map that defines the stage variables for a Stage resource. Variable names
-     * can have alphanumeric and underscore characters, and the values must match
-     * <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
-     */
-    inline void SetVariables(Aws::Map<Aws::String, Aws::String>&& value) { m_variables = std::move(value); }
-
-    /**
-     * <p>A map that defines the stage variables for a Stage resource. Variable names
-     * can have alphanumeric and underscore characters, and the values must match
-     * <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
-     */
-    inline CreateStageResult& WithVariables(const Aws::Map<Aws::String, Aws::String>& value) { SetVariables(value); return *this;}
-
-    /**
-     * <p>A map that defines the stage variables for a Stage resource. Variable names
-     * can have alphanumeric and underscore characters, and the values must match
-     * <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
-     */
-    inline CreateStageResult& WithVariables(Aws::Map<Aws::String, Aws::String>&& value) { SetVariables(std::move(value)); return *this;}
-
-    /**
-     * <p>A map that defines the stage variables for a Stage resource. Variable names
-     * can have alphanumeric and underscore characters, and the values must match
-     * <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
-     */
-    inline CreateStageResult& AddVariables(const Aws::String& key, const Aws::String& value) { m_variables.emplace(key, value); return *this; }
-
-    /**
-     * <p>A map that defines the stage variables for a Stage resource. Variable names
-     * can have alphanumeric and underscore characters, and the values must match
-     * <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
-     */
-    inline CreateStageResult& AddVariables(Aws::String&& key, const Aws::String& value) { m_variables.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map that defines the stage variables for a Stage resource. Variable names
-     * can have alphanumeric and underscore characters, and the values must match
-     * <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
-     */
-    inline CreateStageResult& AddVariables(const Aws::String& key, Aws::String&& value) { m_variables.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map that defines the stage variables for a Stage resource. Variable names
-     * can have alphanumeric and underscore characters, and the values must match
-     * <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
-     */
-    inline CreateStageResult& AddVariables(Aws::String&& key, Aws::String&& value) { m_variables.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A map that defines the stage variables for a Stage resource. Variable names
-     * can have alphanumeric and underscore characters, and the values must match
-     * <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
-     */
-    inline CreateStageResult& AddVariables(const char* key, Aws::String&& value) { m_variables.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map that defines the stage variables for a Stage resource. Variable names
-     * can have alphanumeric and underscore characters, and the values must match
-     * <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
-     */
-    inline CreateStageResult& AddVariables(Aws::String&& key, const char* value) { m_variables.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map that defines the stage variables for a Stage resource. Variable names
-     * can have alphanumeric and underscore characters, and the values must match
-     * <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
-     */
-    inline CreateStageResult& AddVariables(const char* key, const char* value) { m_variables.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The version of the associated API documentation.</p>
      */
-    inline const Aws::String& GetDocumentationVersion() const{ return m_documentationVersion; }
+    inline const Aws::String& GetDocumentationVersion() const { return m_documentationVersion; }
+    template<typename DocumentationVersionT = Aws::String>
+    void SetDocumentationVersion(DocumentationVersionT&& value) { m_documentationVersionHasBeenSet = true; m_documentationVersion = std::forward<DocumentationVersionT>(value); }
+    template<typename DocumentationVersionT = Aws::String>
+    CreateStageResult& WithDocumentationVersion(DocumentationVersionT&& value) { SetDocumentationVersion(std::forward<DocumentationVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the associated API documentation.</p>
-     */
-    inline void SetDocumentationVersion(const Aws::String& value) { m_documentationVersion = value; }
-
-    /**
-     * <p>The version of the associated API documentation.</p>
-     */
-    inline void SetDocumentationVersion(Aws::String&& value) { m_documentationVersion = std::move(value); }
-
-    /**
-     * <p>The version of the associated API documentation.</p>
-     */
-    inline void SetDocumentationVersion(const char* value) { m_documentationVersion.assign(value); }
-
-    /**
-     * <p>The version of the associated API documentation.</p>
-     */
-    inline CreateStageResult& WithDocumentationVersion(const Aws::String& value) { SetDocumentationVersion(value); return *this;}
-
-    /**
-     * <p>The version of the associated API documentation.</p>
-     */
-    inline CreateStageResult& WithDocumentationVersion(Aws::String&& value) { SetDocumentationVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the associated API documentation.</p>
-     */
-    inline CreateStageResult& WithDocumentationVersion(const char* value) { SetDocumentationVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Settings for logging access in this stage.</p>
      */
-    inline const AccessLogSettings& GetAccessLogSettings() const{ return m_accessLogSettings; }
+    inline const AccessLogSettings& GetAccessLogSettings() const { return m_accessLogSettings; }
+    template<typename AccessLogSettingsT = AccessLogSettings>
+    void SetAccessLogSettings(AccessLogSettingsT&& value) { m_accessLogSettingsHasBeenSet = true; m_accessLogSettings = std::forward<AccessLogSettingsT>(value); }
+    template<typename AccessLogSettingsT = AccessLogSettings>
+    CreateStageResult& WithAccessLogSettings(AccessLogSettingsT&& value) { SetAccessLogSettings(std::forward<AccessLogSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Settings for logging access in this stage.</p>
-     */
-    inline void SetAccessLogSettings(const AccessLogSettings& value) { m_accessLogSettings = value; }
-
-    /**
-     * <p>Settings for logging access in this stage.</p>
-     */
-    inline void SetAccessLogSettings(AccessLogSettings&& value) { m_accessLogSettings = std::move(value); }
-
-    /**
-     * <p>Settings for logging access in this stage.</p>
-     */
-    inline CreateStageResult& WithAccessLogSettings(const AccessLogSettings& value) { SetAccessLogSettings(value); return *this;}
-
-    /**
-     * <p>Settings for logging access in this stage.</p>
-     */
-    inline CreateStageResult& WithAccessLogSettings(AccessLogSettings&& value) { SetAccessLogSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Settings for the canary deployment in this stage.</p>
      */
-    inline const CanarySettings& GetCanarySettings() const{ return m_canarySettings; }
+    inline const CanarySettings& GetCanarySettings() const { return m_canarySettings; }
+    template<typename CanarySettingsT = CanarySettings>
+    void SetCanarySettings(CanarySettingsT&& value) { m_canarySettingsHasBeenSet = true; m_canarySettings = std::forward<CanarySettingsT>(value); }
+    template<typename CanarySettingsT = CanarySettings>
+    CreateStageResult& WithCanarySettings(CanarySettingsT&& value) { SetCanarySettings(std::forward<CanarySettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Settings for the canary deployment in this stage.</p>
-     */
-    inline void SetCanarySettings(const CanarySettings& value) { m_canarySettings = value; }
-
-    /**
-     * <p>Settings for the canary deployment in this stage.</p>
-     */
-    inline void SetCanarySettings(CanarySettings&& value) { m_canarySettings = std::move(value); }
-
-    /**
-     * <p>Settings for the canary deployment in this stage.</p>
-     */
-    inline CreateStageResult& WithCanarySettings(const CanarySettings& value) { SetCanarySettings(value); return *this;}
-
-    /**
-     * <p>Settings for the canary deployment in this stage.</p>
-     */
-    inline CreateStageResult& WithCanarySettings(CanarySettings&& value) { SetCanarySettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether active tracing with X-ray is enabled for the Stage.</p>
      */
-    inline bool GetTracingEnabled() const{ return m_tracingEnabled; }
-
-    /**
-     * <p>Specifies whether active tracing with X-ray is enabled for the Stage.</p>
-     */
-    inline void SetTracingEnabled(bool value) { m_tracingEnabled = value; }
-
-    /**
-     * <p>Specifies whether active tracing with X-ray is enabled for the Stage.</p>
-     */
+    inline bool GetTracingEnabled() const { return m_tracingEnabled; }
+    inline void SetTracingEnabled(bool value) { m_tracingEnabledHasBeenSet = true; m_tracingEnabled = value; }
     inline CreateStageResult& WithTracingEnabled(bool value) { SetTracingEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ARN of the WebAcl associated with the Stage.</p>
      */
-    inline const Aws::String& GetWebAclArn() const{ return m_webAclArn; }
+    inline const Aws::String& GetWebAclArn() const { return m_webAclArn; }
+    template<typename WebAclArnT = Aws::String>
+    void SetWebAclArn(WebAclArnT&& value) { m_webAclArnHasBeenSet = true; m_webAclArn = std::forward<WebAclArnT>(value); }
+    template<typename WebAclArnT = Aws::String>
+    CreateStageResult& WithWebAclArn(WebAclArnT&& value) { SetWebAclArn(std::forward<WebAclArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the WebAcl associated with the Stage.</p>
-     */
-    inline void SetWebAclArn(const Aws::String& value) { m_webAclArn = value; }
-
-    /**
-     * <p>The ARN of the WebAcl associated with the Stage.</p>
-     */
-    inline void SetWebAclArn(Aws::String&& value) { m_webAclArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the WebAcl associated with the Stage.</p>
-     */
-    inline void SetWebAclArn(const char* value) { m_webAclArn.assign(value); }
-
-    /**
-     * <p>The ARN of the WebAcl associated with the Stage.</p>
-     */
-    inline CreateStageResult& WithWebAclArn(const Aws::String& value) { SetWebAclArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the WebAcl associated with the Stage.</p>
-     */
-    inline CreateStageResult& WithWebAclArn(Aws::String&& value) { SetWebAclArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the WebAcl associated with the Stage.</p>
-     */
-    inline CreateStageResult& WithWebAclArn(const char* value) { SetWebAclArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The collection of tags. Each tag element is associated with a given
      * resource.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateStageResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateStageResult& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The collection of tags. Each tag element is associated with a given
-     * resource.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tags = value; }
-
-    /**
-     * <p>The collection of tags. Each tag element is associated with a given
-     * resource.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tags = std::move(value); }
-
-    /**
-     * <p>The collection of tags. Each tag element is associated with a given
-     * resource.</p>
-     */
-    inline CreateStageResult& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The collection of tags. Each tag element is associated with a given
-     * resource.</p>
-     */
-    inline CreateStageResult& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The collection of tags. Each tag element is associated with a given
-     * resource.</p>
-     */
-    inline CreateStageResult& AddTags(const Aws::String& key, const Aws::String& value) { m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The collection of tags. Each tag element is associated with a given
-     * resource.</p>
-     */
-    inline CreateStageResult& AddTags(Aws::String&& key, const Aws::String& value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The collection of tags. Each tag element is associated with a given
-     * resource.</p>
-     */
-    inline CreateStageResult& AddTags(const Aws::String& key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The collection of tags. Each tag element is associated with a given
-     * resource.</p>
-     */
-    inline CreateStageResult& AddTags(Aws::String&& key, Aws::String&& value) { m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The collection of tags. Each tag element is associated with a given
-     * resource.</p>
-     */
-    inline CreateStageResult& AddTags(const char* key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The collection of tags. Each tag element is associated with a given
-     * resource.</p>
-     */
-    inline CreateStageResult& AddTags(Aws::String&& key, const char* value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The collection of tags. Each tag element is associated with a given
-     * resource.</p>
-     */
-    inline CreateStageResult& AddTags(const char* key, const char* value) { m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The timestamp when the stage was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedDate() const{ return m_createdDate; }
+    inline const Aws::Utils::DateTime& GetCreatedDate() const { return m_createdDate; }
+    template<typename CreatedDateT = Aws::Utils::DateTime>
+    void SetCreatedDate(CreatedDateT&& value) { m_createdDateHasBeenSet = true; m_createdDate = std::forward<CreatedDateT>(value); }
+    template<typename CreatedDateT = Aws::Utils::DateTime>
+    CreateStageResult& WithCreatedDate(CreatedDateT&& value) { SetCreatedDate(std::forward<CreatedDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp when the stage was created.</p>
-     */
-    inline void SetCreatedDate(const Aws::Utils::DateTime& value) { m_createdDate = value; }
-
-    /**
-     * <p>The timestamp when the stage was created.</p>
-     */
-    inline void SetCreatedDate(Aws::Utils::DateTime&& value) { m_createdDate = std::move(value); }
-
-    /**
-     * <p>The timestamp when the stage was created.</p>
-     */
-    inline CreateStageResult& WithCreatedDate(const Aws::Utils::DateTime& value) { SetCreatedDate(value); return *this;}
-
-    /**
-     * <p>The timestamp when the stage was created.</p>
-     */
-    inline CreateStageResult& WithCreatedDate(Aws::Utils::DateTime&& value) { SetCreatedDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp when the stage last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedDate() const{ return m_lastUpdatedDate; }
+    inline const Aws::Utils::DateTime& GetLastUpdatedDate() const { return m_lastUpdatedDate; }
+    template<typename LastUpdatedDateT = Aws::Utils::DateTime>
+    void SetLastUpdatedDate(LastUpdatedDateT&& value) { m_lastUpdatedDateHasBeenSet = true; m_lastUpdatedDate = std::forward<LastUpdatedDateT>(value); }
+    template<typename LastUpdatedDateT = Aws::Utils::DateTime>
+    CreateStageResult& WithLastUpdatedDate(LastUpdatedDateT&& value) { SetLastUpdatedDate(std::forward<LastUpdatedDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp when the stage last updated.</p>
-     */
-    inline void SetLastUpdatedDate(const Aws::Utils::DateTime& value) { m_lastUpdatedDate = value; }
-
-    /**
-     * <p>The timestamp when the stage last updated.</p>
-     */
-    inline void SetLastUpdatedDate(Aws::Utils::DateTime&& value) { m_lastUpdatedDate = std::move(value); }
-
-    /**
-     * <p>The timestamp when the stage last updated.</p>
-     */
-    inline CreateStageResult& WithLastUpdatedDate(const Aws::Utils::DateTime& value) { SetLastUpdatedDate(value); return *this;}
-
-    /**
-     * <p>The timestamp when the stage last updated.</p>
-     */
-    inline CreateStageResult& WithLastUpdatedDate(Aws::Utils::DateTime&& value) { SetLastUpdatedDate(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateStageResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateStageResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateStageResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateStageResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_deploymentId;
+    bool m_deploymentIdHasBeenSet = false;
 
     Aws::String m_clientCertificateId;
+    bool m_clientCertificateIdHasBeenSet = false;
 
     Aws::String m_stageName;
+    bool m_stageNameHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
-    bool m_cacheClusterEnabled;
+    bool m_cacheClusterEnabled{false};
+    bool m_cacheClusterEnabledHasBeenSet = false;
 
-    CacheClusterSize m_cacheClusterSize;
+    CacheClusterSize m_cacheClusterSize{CacheClusterSize::NOT_SET};
+    bool m_cacheClusterSizeHasBeenSet = false;
 
-    CacheClusterStatus m_cacheClusterStatus;
+    CacheClusterStatus m_cacheClusterStatus{CacheClusterStatus::NOT_SET};
+    bool m_cacheClusterStatusHasBeenSet = false;
 
     Aws::Map<Aws::String, MethodSetting> m_methodSettings;
+    bool m_methodSettingsHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_variables;
+    bool m_variablesHasBeenSet = false;
 
     Aws::String m_documentationVersion;
+    bool m_documentationVersionHasBeenSet = false;
 
     AccessLogSettings m_accessLogSettings;
+    bool m_accessLogSettingsHasBeenSet = false;
 
     CanarySettings m_canarySettings;
+    bool m_canarySettingsHasBeenSet = false;
 
-    bool m_tracingEnabled;
+    bool m_tracingEnabled{false};
+    bool m_tracingEnabledHasBeenSet = false;
 
     Aws::String m_webAclArn;
+    bool m_webAclArnHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdDate;
+    Aws::Utils::DateTime m_createdDate{};
+    bool m_createdDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedDate;
+    Aws::Utils::DateTime m_lastUpdatedDate{};
+    bool m_lastUpdatedDateHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

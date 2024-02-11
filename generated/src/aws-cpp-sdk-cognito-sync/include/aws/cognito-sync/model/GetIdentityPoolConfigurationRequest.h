@@ -25,7 +25,7 @@ namespace Model
   class GetIdentityPoolConfigurationRequest : public CognitoSyncRequest
   {
   public:
-    AWS_COGNITOSYNC_API GetIdentityPoolConfigurationRequest();
+    AWS_COGNITOSYNC_API GetIdentityPoolConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,62 +36,19 @@ namespace Model
     AWS_COGNITOSYNC_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>A name-spaced GUID (for example,
      * us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This
      * is the ID of the pool for which to return a configuration.</p>
      */
-    inline const Aws::String& GetIdentityPoolId() const{ return m_identityPoolId; }
-
-    /**
-     * <p>A name-spaced GUID (for example,
-     * us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This
-     * is the ID of the pool for which to return a configuration.</p>
-     */
+    inline const Aws::String& GetIdentityPoolId() const { return m_identityPoolId; }
     inline bool IdentityPoolIdHasBeenSet() const { return m_identityPoolIdHasBeenSet; }
-
-    /**
-     * <p>A name-spaced GUID (for example,
-     * us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This
-     * is the ID of the pool for which to return a configuration.</p>
-     */
-    inline void SetIdentityPoolId(const Aws::String& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = value; }
-
-    /**
-     * <p>A name-spaced GUID (for example,
-     * us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This
-     * is the ID of the pool for which to return a configuration.</p>
-     */
-    inline void SetIdentityPoolId(Aws::String&& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = std::move(value); }
-
-    /**
-     * <p>A name-spaced GUID (for example,
-     * us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This
-     * is the ID of the pool for which to return a configuration.</p>
-     */
-    inline void SetIdentityPoolId(const char* value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId.assign(value); }
-
-    /**
-     * <p>A name-spaced GUID (for example,
-     * us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This
-     * is the ID of the pool for which to return a configuration.</p>
-     */
-    inline GetIdentityPoolConfigurationRequest& WithIdentityPoolId(const Aws::String& value) { SetIdentityPoolId(value); return *this;}
-
-    /**
-     * <p>A name-spaced GUID (for example,
-     * us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This
-     * is the ID of the pool for which to return a configuration.</p>
-     */
-    inline GetIdentityPoolConfigurationRequest& WithIdentityPoolId(Aws::String&& value) { SetIdentityPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>A name-spaced GUID (for example,
-     * us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This
-     * is the ID of the pool for which to return a configuration.</p>
-     */
-    inline GetIdentityPoolConfigurationRequest& WithIdentityPoolId(const char* value) { SetIdentityPoolId(value); return *this;}
-
+    template<typename IdentityPoolIdT = Aws::String>
+    void SetIdentityPoolId(IdentityPoolIdT&& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = std::forward<IdentityPoolIdT>(value); }
+    template<typename IdentityPoolIdT = Aws::String>
+    GetIdentityPoolConfigurationRequest& WithIdentityPoolId(IdentityPoolIdT&& value) { SetIdentityPoolId(std::forward<IdentityPoolIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_identityPoolId;

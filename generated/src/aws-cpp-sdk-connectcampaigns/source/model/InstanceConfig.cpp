@@ -18,17 +18,7 @@ namespace ConnectCampaigns
 namespace Model
 {
 
-InstanceConfig::InstanceConfig() : 
-    m_connectInstanceIdHasBeenSet(false),
-    m_encryptionConfigHasBeenSet(false),
-    m_serviceLinkedRoleArnHasBeenSet(false)
-{
-}
-
-InstanceConfig::InstanceConfig(JsonView jsonValue) : 
-    m_connectInstanceIdHasBeenSet(false),
-    m_encryptionConfigHasBeenSet(false),
-    m_serviceLinkedRoleArnHasBeenSet(false)
+InstanceConfig::InstanceConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ InstanceConfig& InstanceConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("connectInstanceId"))
   {
     m_connectInstanceId = jsonValue.GetString("connectInstanceId");
-
     m_connectInstanceIdHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("encryptionConfig"))
-  {
-    m_encryptionConfig = jsonValue.GetObject("encryptionConfig");
-
-    m_encryptionConfigHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("serviceLinkedRoleArn"))
   {
     m_serviceLinkedRoleArn = jsonValue.GetString("serviceLinkedRoleArn");
-
     m_serviceLinkedRoleArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("encryptionConfig"))
+  {
+    m_encryptionConfig = jsonValue.GetObject("encryptionConfig");
+    m_encryptionConfigHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -69,15 +53,15 @@ JsonValue InstanceConfig::Jsonize() const
 
   }
 
-  if(m_encryptionConfigHasBeenSet)
-  {
-   payload.WithObject("encryptionConfig", m_encryptionConfig.Jsonize());
-
-  }
-
   if(m_serviceLinkedRoleArnHasBeenSet)
   {
    payload.WithString("serviceLinkedRoleArn", m_serviceLinkedRoleArn);
+
+  }
+
+  if(m_encryptionConfigHasBeenSet)
+  {
+   payload.WithObject("encryptionConfig", m_encryptionConfig.Jsonize());
 
   }
 

@@ -28,122 +28,54 @@ namespace Model
   class CreateServiceResult
   {
   public:
-    AWS_APPRUNNER_API CreateServiceResult();
+    AWS_APPRUNNER_API CreateServiceResult() = default;
     AWS_APPRUNNER_API CreateServiceResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_APPRUNNER_API CreateServiceResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A description of the App Runner service that's created by this request.</p>
      */
-    inline const Service& GetService() const{ return m_service; }
+    inline const Service& GetService() const { return m_service; }
+    template<typename ServiceT = Service>
+    void SetService(ServiceT&& value) { m_serviceHasBeenSet = true; m_service = std::forward<ServiceT>(value); }
+    template<typename ServiceT = Service>
+    CreateServiceResult& WithService(ServiceT&& value) { SetService(std::forward<ServiceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the App Runner service that's created by this request.</p>
-     */
-    inline void SetService(const Service& value) { m_service = value; }
-
-    /**
-     * <p>A description of the App Runner service that's created by this request.</p>
-     */
-    inline void SetService(Service&& value) { m_service = std::move(value); }
-
-    /**
-     * <p>A description of the App Runner service that's created by this request.</p>
-     */
-    inline CreateServiceResult& WithService(const Service& value) { SetService(value); return *this;}
-
-    /**
-     * <p>A description of the App Runner service that's created by this request.</p>
-     */
-    inline CreateServiceResult& WithService(Service&& value) { SetService(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique ID of the asynchronous operation that this request started. You
      * can use it combined with the <a
      * href="https://docs.aws.amazon.com/apprunner/latest/api/API_ListOperations.html">ListOperations</a>
      * call to track the operation's progress.</p>
      */
-    inline const Aws::String& GetOperationId() const{ return m_operationId; }
+    inline const Aws::String& GetOperationId() const { return m_operationId; }
+    template<typename OperationIdT = Aws::String>
+    void SetOperationId(OperationIdT&& value) { m_operationIdHasBeenSet = true; m_operationId = std::forward<OperationIdT>(value); }
+    template<typename OperationIdT = Aws::String>
+    CreateServiceResult& WithOperationId(OperationIdT&& value) { SetOperationId(std::forward<OperationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID of the asynchronous operation that this request started. You
-     * can use it combined with the <a
-     * href="https://docs.aws.amazon.com/apprunner/latest/api/API_ListOperations.html">ListOperations</a>
-     * call to track the operation's progress.</p>
-     */
-    inline void SetOperationId(const Aws::String& value) { m_operationId = value; }
-
-    /**
-     * <p>The unique ID of the asynchronous operation that this request started. You
-     * can use it combined with the <a
-     * href="https://docs.aws.amazon.com/apprunner/latest/api/API_ListOperations.html">ListOperations</a>
-     * call to track the operation's progress.</p>
-     */
-    inline void SetOperationId(Aws::String&& value) { m_operationId = std::move(value); }
-
-    /**
-     * <p>The unique ID of the asynchronous operation that this request started. You
-     * can use it combined with the <a
-     * href="https://docs.aws.amazon.com/apprunner/latest/api/API_ListOperations.html">ListOperations</a>
-     * call to track the operation's progress.</p>
-     */
-    inline void SetOperationId(const char* value) { m_operationId.assign(value); }
-
-    /**
-     * <p>The unique ID of the asynchronous operation that this request started. You
-     * can use it combined with the <a
-     * href="https://docs.aws.amazon.com/apprunner/latest/api/API_ListOperations.html">ListOperations</a>
-     * call to track the operation's progress.</p>
-     */
-    inline CreateServiceResult& WithOperationId(const Aws::String& value) { SetOperationId(value); return *this;}
-
-    /**
-     * <p>The unique ID of the asynchronous operation that this request started. You
-     * can use it combined with the <a
-     * href="https://docs.aws.amazon.com/apprunner/latest/api/API_ListOperations.html">ListOperations</a>
-     * call to track the operation's progress.</p>
-     */
-    inline CreateServiceResult& WithOperationId(Aws::String&& value) { SetOperationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of the asynchronous operation that this request started. You
-     * can use it combined with the <a
-     * href="https://docs.aws.amazon.com/apprunner/latest/api/API_ListOperations.html">ListOperations</a>
-     * call to track the operation's progress.</p>
-     */
-    inline CreateServiceResult& WithOperationId(const char* value) { SetOperationId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateServiceResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateServiceResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateServiceResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateServiceResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Service m_service;
+    bool m_serviceHasBeenSet = false;
 
     Aws::String m_operationId;
+    bool m_operationIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

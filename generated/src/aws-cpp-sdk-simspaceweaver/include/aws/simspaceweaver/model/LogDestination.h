@@ -32,12 +32,13 @@ namespace Model
   class LogDestination
   {
   public:
-    AWS_SIMSPACEWEAVER_API LogDestination();
+    AWS_SIMSPACEWEAVER_API LogDestination() = default;
     AWS_SIMSPACEWEAVER_API LogDestination(Aws::Utils::Json::JsonView jsonValue);
     AWS_SIMSPACEWEAVER_API LogDestination& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SIMSPACEWEAVER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An Amazon CloudWatch Logs log group that stores simulation log data. For more
      * information about log groups, see <a
@@ -45,53 +46,13 @@ namespace Model
      * with log groups and log streams</a> in the <i>Amazon CloudWatch Logs User
      * Guide</i>.</p>
      */
-    inline const CloudWatchLogsLogGroup& GetCloudWatchLogsLogGroup() const{ return m_cloudWatchLogsLogGroup; }
-
-    /**
-     * <p>An Amazon CloudWatch Logs log group that stores simulation log data. For more
-     * information about log groups, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html">Working
-     * with log groups and log streams</a> in the <i>Amazon CloudWatch Logs User
-     * Guide</i>.</p>
-     */
+    inline const CloudWatchLogsLogGroup& GetCloudWatchLogsLogGroup() const { return m_cloudWatchLogsLogGroup; }
     inline bool CloudWatchLogsLogGroupHasBeenSet() const { return m_cloudWatchLogsLogGroupHasBeenSet; }
-
-    /**
-     * <p>An Amazon CloudWatch Logs log group that stores simulation log data. For more
-     * information about log groups, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html">Working
-     * with log groups and log streams</a> in the <i>Amazon CloudWatch Logs User
-     * Guide</i>.</p>
-     */
-    inline void SetCloudWatchLogsLogGroup(const CloudWatchLogsLogGroup& value) { m_cloudWatchLogsLogGroupHasBeenSet = true; m_cloudWatchLogsLogGroup = value; }
-
-    /**
-     * <p>An Amazon CloudWatch Logs log group that stores simulation log data. For more
-     * information about log groups, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html">Working
-     * with log groups and log streams</a> in the <i>Amazon CloudWatch Logs User
-     * Guide</i>.</p>
-     */
-    inline void SetCloudWatchLogsLogGroup(CloudWatchLogsLogGroup&& value) { m_cloudWatchLogsLogGroupHasBeenSet = true; m_cloudWatchLogsLogGroup = std::move(value); }
-
-    /**
-     * <p>An Amazon CloudWatch Logs log group that stores simulation log data. For more
-     * information about log groups, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html">Working
-     * with log groups and log streams</a> in the <i>Amazon CloudWatch Logs User
-     * Guide</i>.</p>
-     */
-    inline LogDestination& WithCloudWatchLogsLogGroup(const CloudWatchLogsLogGroup& value) { SetCloudWatchLogsLogGroup(value); return *this;}
-
-    /**
-     * <p>An Amazon CloudWatch Logs log group that stores simulation log data. For more
-     * information about log groups, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html">Working
-     * with log groups and log streams</a> in the <i>Amazon CloudWatch Logs User
-     * Guide</i>.</p>
-     */
-    inline LogDestination& WithCloudWatchLogsLogGroup(CloudWatchLogsLogGroup&& value) { SetCloudWatchLogsLogGroup(std::move(value)); return *this;}
-
+    template<typename CloudWatchLogsLogGroupT = CloudWatchLogsLogGroup>
+    void SetCloudWatchLogsLogGroup(CloudWatchLogsLogGroupT&& value) { m_cloudWatchLogsLogGroupHasBeenSet = true; m_cloudWatchLogsLogGroup = std::forward<CloudWatchLogsLogGroupT>(value); }
+    template<typename CloudWatchLogsLogGroupT = CloudWatchLogsLogGroup>
+    LogDestination& WithCloudWatchLogsLogGroup(CloudWatchLogsLogGroupT&& value) { SetCloudWatchLogsLogGroup(std::forward<CloudWatchLogsLogGroupT>(value)); return *this;}
+    ///@}
   private:
 
     CloudWatchLogsLogGroup m_cloudWatchLogsLogGroup;

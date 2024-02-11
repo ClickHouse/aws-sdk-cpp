@@ -18,15 +18,7 @@ namespace Shield
 namespace Model
 {
 
-ResourceNotFoundException::ResourceNotFoundException() : 
-    m_messageHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
-{
-}
-
-ResourceNotFoundException::ResourceNotFoundException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
+ResourceNotFoundException::ResourceNotFoundException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ResourceNotFoundException& ResourceNotFoundException::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("resourceType"))
   {
     m_resourceType = jsonValue.GetString("resourceType");
-
     m_resourceTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

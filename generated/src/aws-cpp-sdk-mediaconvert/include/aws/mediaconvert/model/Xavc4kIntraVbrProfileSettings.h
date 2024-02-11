@@ -24,66 +24,34 @@ namespace Model
 {
 
   /**
-   * Required when you set (Profile) under
-   * (VideoDescription)>(CodecSettings)>(XavcSettings) to the value
-   * XAVC_4K_INTRA_VBR.<p><h3>See Also:</h3>   <a
+   * Required when you set Profile to the value XAVC_4K_INTRA_VBR.<p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/Xavc4kIntraVbrProfileSettings">AWS
    * API Reference</a></p>
    */
   class Xavc4kIntraVbrProfileSettings
   {
   public:
-    AWS_MEDIACONVERT_API Xavc4kIntraVbrProfileSettings();
+    AWS_MEDIACONVERT_API Xavc4kIntraVbrProfileSettings() = default;
     AWS_MEDIACONVERT_API Xavc4kIntraVbrProfileSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Xavc4kIntraVbrProfileSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Specify the XAVC Intra 4k (VBR) Class to set the bitrate of your output. Outputs
      * of the same class have similar image quality over the operating points that are
      * valid for that class.
      */
-    inline const Xavc4kIntraVbrProfileClass& GetXavcClass() const{ return m_xavcClass; }
-
-    /**
-     * Specify the XAVC Intra 4k (VBR) Class to set the bitrate of your output. Outputs
-     * of the same class have similar image quality over the operating points that are
-     * valid for that class.
-     */
+    inline Xavc4kIntraVbrProfileClass GetXavcClass() const { return m_xavcClass; }
     inline bool XavcClassHasBeenSet() const { return m_xavcClassHasBeenSet; }
-
-    /**
-     * Specify the XAVC Intra 4k (VBR) Class to set the bitrate of your output. Outputs
-     * of the same class have similar image quality over the operating points that are
-     * valid for that class.
-     */
-    inline void SetXavcClass(const Xavc4kIntraVbrProfileClass& value) { m_xavcClassHasBeenSet = true; m_xavcClass = value; }
-
-    /**
-     * Specify the XAVC Intra 4k (VBR) Class to set the bitrate of your output. Outputs
-     * of the same class have similar image quality over the operating points that are
-     * valid for that class.
-     */
-    inline void SetXavcClass(Xavc4kIntraVbrProfileClass&& value) { m_xavcClassHasBeenSet = true; m_xavcClass = std::move(value); }
-
-    /**
-     * Specify the XAVC Intra 4k (VBR) Class to set the bitrate of your output. Outputs
-     * of the same class have similar image quality over the operating points that are
-     * valid for that class.
-     */
-    inline Xavc4kIntraVbrProfileSettings& WithXavcClass(const Xavc4kIntraVbrProfileClass& value) { SetXavcClass(value); return *this;}
-
-    /**
-     * Specify the XAVC Intra 4k (VBR) Class to set the bitrate of your output. Outputs
-     * of the same class have similar image quality over the operating points that are
-     * valid for that class.
-     */
-    inline Xavc4kIntraVbrProfileSettings& WithXavcClass(Xavc4kIntraVbrProfileClass&& value) { SetXavcClass(std::move(value)); return *this;}
-
+    inline void SetXavcClass(Xavc4kIntraVbrProfileClass value) { m_xavcClassHasBeenSet = true; m_xavcClass = value; }
+    inline Xavc4kIntraVbrProfileSettings& WithXavcClass(Xavc4kIntraVbrProfileClass value) { SetXavcClass(value); return *this;}
+    ///@}
   private:
 
-    Xavc4kIntraVbrProfileClass m_xavcClass;
+    Xavc4kIntraVbrProfileClass m_xavcClass{Xavc4kIntraVbrProfileClass::NOT_SET};
     bool m_xavcClassHasBeenSet = false;
   };
 

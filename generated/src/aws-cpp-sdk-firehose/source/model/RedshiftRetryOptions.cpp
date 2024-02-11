@@ -18,15 +18,7 @@ namespace Firehose
 namespace Model
 {
 
-RedshiftRetryOptions::RedshiftRetryOptions() : 
-    m_durationInSeconds(0),
-    m_durationInSecondsHasBeenSet(false)
-{
-}
-
-RedshiftRetryOptions::RedshiftRetryOptions(JsonView jsonValue) : 
-    m_durationInSeconds(0),
-    m_durationInSecondsHasBeenSet(false)
+RedshiftRetryOptions::RedshiftRetryOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ RedshiftRetryOptions& RedshiftRetryOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DurationInSeconds"))
   {
     m_durationInSeconds = jsonValue.GetInteger("DurationInSeconds");
-
     m_durationInSecondsHasBeenSet = true;
   }
-
   return *this;
 }
 

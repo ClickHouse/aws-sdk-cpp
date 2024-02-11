@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-ColumnTag::ColumnTag() : 
-    m_columnGeographicRole(GeoSpatialDataRole::NOT_SET),
-    m_columnGeographicRoleHasBeenSet(false),
-    m_columnDescriptionHasBeenSet(false)
-{
-}
-
-ColumnTag::ColumnTag(JsonView jsonValue) : 
-    m_columnGeographicRole(GeoSpatialDataRole::NOT_SET),
-    m_columnGeographicRoleHasBeenSet(false),
-    m_columnDescriptionHasBeenSet(false)
+ColumnTag::ColumnTag(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ColumnTag& ColumnTag::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ColumnGeographicRole"))
   {
     m_columnGeographicRole = GeoSpatialDataRoleMapper::GetGeoSpatialDataRoleForName(jsonValue.GetString("ColumnGeographicRole"));
-
     m_columnGeographicRoleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ColumnDescription"))
   {
     m_columnDescription = jsonValue.GetObject("ColumnDescription");
-
     m_columnDescriptionHasBeenSet = true;
   }
-
   return *this;
 }
 

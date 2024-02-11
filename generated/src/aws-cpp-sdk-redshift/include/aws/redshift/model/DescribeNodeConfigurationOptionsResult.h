@@ -30,47 +30,25 @@ namespace Model
   class DescribeNodeConfigurationOptionsResult
   {
   public:
-    AWS_REDSHIFT_API DescribeNodeConfigurationOptionsResult();
+    AWS_REDSHIFT_API DescribeNodeConfigurationOptionsResult() = default;
     AWS_REDSHIFT_API DescribeNodeConfigurationOptionsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_REDSHIFT_API DescribeNodeConfigurationOptionsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>A list of valid node configurations.</p>
      */
-    inline const Aws::Vector<NodeConfigurationOption>& GetNodeConfigurationOptionList() const{ return m_nodeConfigurationOptionList; }
+    inline const Aws::Vector<NodeConfigurationOption>& GetNodeConfigurationOptionList() const { return m_nodeConfigurationOptionList; }
+    template<typename NodeConfigurationOptionListT = Aws::Vector<NodeConfigurationOption>>
+    void SetNodeConfigurationOptionList(NodeConfigurationOptionListT&& value) { m_nodeConfigurationOptionListHasBeenSet = true; m_nodeConfigurationOptionList = std::forward<NodeConfigurationOptionListT>(value); }
+    template<typename NodeConfigurationOptionListT = Aws::Vector<NodeConfigurationOption>>
+    DescribeNodeConfigurationOptionsResult& WithNodeConfigurationOptionList(NodeConfigurationOptionListT&& value) { SetNodeConfigurationOptionList(std::forward<NodeConfigurationOptionListT>(value)); return *this;}
+    template<typename NodeConfigurationOptionListT = NodeConfigurationOption>
+    DescribeNodeConfigurationOptionsResult& AddNodeConfigurationOptionList(NodeConfigurationOptionListT&& value) { m_nodeConfigurationOptionListHasBeenSet = true; m_nodeConfigurationOptionList.emplace_back(std::forward<NodeConfigurationOptionListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of valid node configurations.</p>
-     */
-    inline void SetNodeConfigurationOptionList(const Aws::Vector<NodeConfigurationOption>& value) { m_nodeConfigurationOptionList = value; }
-
-    /**
-     * <p>A list of valid node configurations.</p>
-     */
-    inline void SetNodeConfigurationOptionList(Aws::Vector<NodeConfigurationOption>&& value) { m_nodeConfigurationOptionList = std::move(value); }
-
-    /**
-     * <p>A list of valid node configurations.</p>
-     */
-    inline DescribeNodeConfigurationOptionsResult& WithNodeConfigurationOptionList(const Aws::Vector<NodeConfigurationOption>& value) { SetNodeConfigurationOptionList(value); return *this;}
-
-    /**
-     * <p>A list of valid node configurations.</p>
-     */
-    inline DescribeNodeConfigurationOptionsResult& WithNodeConfigurationOptionList(Aws::Vector<NodeConfigurationOption>&& value) { SetNodeConfigurationOptionList(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of valid node configurations.</p>
-     */
-    inline DescribeNodeConfigurationOptionsResult& AddNodeConfigurationOptionList(const NodeConfigurationOption& value) { m_nodeConfigurationOptionList.push_back(value); return *this; }
-
-    /**
-     * <p>A list of valid node configurations.</p>
-     */
-    inline DescribeNodeConfigurationOptionsResult& AddNodeConfigurationOptionList(NodeConfigurationOption&& value) { m_nodeConfigurationOptionList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A value that indicates the starting point for the next set of response
      * records in a subsequent request. If a value is returned in a response, you can
@@ -79,91 +57,31 @@ namespace Model
      * <code>Marker</code> field is empty, all response records have been retrieved for
      * the request. </p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
+    inline const Aws::String& GetMarker() const { return m_marker; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeNodeConfigurationOptionsResult& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_marker = value; }
-
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
-
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
-    inline void SetMarker(const char* value) { m_marker.assign(value); }
-
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
-    inline DescribeNodeConfigurationOptionsResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
-    inline DescribeNodeConfigurationOptionsResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
-    inline DescribeNodeConfigurationOptionsResult& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline DescribeNodeConfigurationOptionsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline DescribeNodeConfigurationOptionsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    DescribeNodeConfigurationOptionsResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<NodeConfigurationOption> m_nodeConfigurationOptionList;
+    bool m_nodeConfigurationOptionListHasBeenSet = false;
 
     Aws::String m_marker;
+    bool m_markerHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

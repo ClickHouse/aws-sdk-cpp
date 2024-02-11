@@ -18,39 +18,23 @@ namespace Inspector2
 namespace Model
 {
 
-Permission::Permission() : 
-    m_operation(Operation::NOT_SET),
-    m_operationHasBeenSet(false),
-    m_service(Service::NOT_SET),
-    m_serviceHasBeenSet(false)
-{
-}
-
-Permission::Permission(JsonView jsonValue) : 
-    m_operation(Operation::NOT_SET),
-    m_operationHasBeenSet(false),
-    m_service(Service::NOT_SET),
-    m_serviceHasBeenSet(false)
+Permission::Permission(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 Permission& Permission::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("operation"))
-  {
-    m_operation = OperationMapper::GetOperationForName(jsonValue.GetString("operation"));
-
-    m_operationHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("service"))
   {
     m_service = ServiceMapper::GetServiceForName(jsonValue.GetString("service"));
-
     m_serviceHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("operation"))
+  {
+    m_operation = OperationMapper::GetOperationForName(jsonValue.GetString("operation"));
+    m_operationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -58,14 +42,14 @@ JsonValue Permission::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_operationHasBeenSet)
-  {
-   payload.WithString("operation", OperationMapper::GetNameForOperation(m_operation));
-  }
-
   if(m_serviceHasBeenSet)
   {
    payload.WithString("service", ServiceMapper::GetNameForService(m_service));
+  }
+
+  if(m_operationHasBeenSet)
+  {
+   payload.WithString("operation", OperationMapper::GetNameForOperation(m_operation));
   }
 
   return payload;

@@ -12,21 +12,6 @@ using namespace Aws::drs::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateLaunchConfigurationRequest::UpdateLaunchConfigurationRequest() : 
-    m_copyPrivateIp(false),
-    m_copyPrivateIpHasBeenSet(false),
-    m_copyTags(false),
-    m_copyTagsHasBeenSet(false),
-    m_launchDisposition(LaunchDisposition::NOT_SET),
-    m_launchDispositionHasBeenSet(false),
-    m_licensingHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_sourceServerIDHasBeenSet(false),
-    m_targetInstanceTypeRightSizingMethod(TargetInstanceTypeRightSizingMethod::NOT_SET),
-    m_targetInstanceTypeRightSizingMethodHasBeenSet(false)
-{
-}
-
 Aws::String UpdateLaunchConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -48,6 +33,12 @@ Aws::String UpdateLaunchConfigurationRequest::SerializePayload() const
    payload.WithString("launchDisposition", LaunchDispositionMapper::GetNameForLaunchDisposition(m_launchDisposition));
   }
 
+  if(m_launchIntoInstancePropertiesHasBeenSet)
+  {
+   payload.WithObject("launchIntoInstanceProperties", m_launchIntoInstanceProperties.Jsonize());
+
+  }
+
   if(m_licensingHasBeenSet)
   {
    payload.WithObject("licensing", m_licensing.Jsonize());
@@ -57,6 +48,12 @@ Aws::String UpdateLaunchConfigurationRequest::SerializePayload() const
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
+
+  }
+
+  if(m_postLaunchEnabledHasBeenSet)
+  {
+   payload.WithBool("postLaunchEnabled", m_postLaunchEnabled);
 
   }
 

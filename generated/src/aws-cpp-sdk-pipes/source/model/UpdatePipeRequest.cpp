@@ -12,20 +12,6 @@ using namespace Aws::Pipes::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdatePipeRequest::UpdatePipeRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_desiredState(RequestedPipeState::NOT_SET),
-    m_desiredStateHasBeenSet(false),
-    m_enrichmentHasBeenSet(false),
-    m_enrichmentParametersHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_sourceParametersHasBeenSet(false),
-    m_targetHasBeenSet(false),
-    m_targetParametersHasBeenSet(false)
-{
-}
-
 Aws::String UpdatePipeRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -41,6 +27,12 @@ Aws::String UpdatePipeRequest::SerializePayload() const
    payload.WithString("DesiredState", RequestedPipeStateMapper::GetNameForRequestedPipeState(m_desiredState));
   }
 
+  if(m_sourceParametersHasBeenSet)
+  {
+   payload.WithObject("SourceParameters", m_sourceParameters.Jsonize());
+
+  }
+
   if(m_enrichmentHasBeenSet)
   {
    payload.WithString("Enrichment", m_enrichment);
@@ -53,18 +45,6 @@ Aws::String UpdatePipeRequest::SerializePayload() const
 
   }
 
-  if(m_roleArnHasBeenSet)
-  {
-   payload.WithString("RoleArn", m_roleArn);
-
-  }
-
-  if(m_sourceParametersHasBeenSet)
-  {
-   payload.WithObject("SourceParameters", m_sourceParameters.Jsonize());
-
-  }
-
   if(m_targetHasBeenSet)
   {
    payload.WithString("Target", m_target);
@@ -74,6 +54,24 @@ Aws::String UpdatePipeRequest::SerializePayload() const
   if(m_targetParametersHasBeenSet)
   {
    payload.WithObject("TargetParameters", m_targetParameters.Jsonize());
+
+  }
+
+  if(m_roleArnHasBeenSet)
+  {
+   payload.WithString("RoleArn", m_roleArn);
+
+  }
+
+  if(m_logConfigurationHasBeenSet)
+  {
+   payload.WithObject("LogConfiguration", m_logConfiguration.Jsonize());
+
+  }
+
+  if(m_kmsKeyIdentifierHasBeenSet)
+  {
+   payload.WithString("KmsKeyIdentifier", m_kmsKeyIdentifier);
 
   }
 

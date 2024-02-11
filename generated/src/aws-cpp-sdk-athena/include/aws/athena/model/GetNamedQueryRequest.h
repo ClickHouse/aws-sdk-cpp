@@ -21,7 +21,7 @@ namespace Model
   class GetNamedQueryRequest : public AthenaRequest
   {
   public:
-    AWS_ATHENA_API GetNamedQueryRequest();
+    AWS_ATHENA_API GetNamedQueryRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_ATHENA_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The unique ID of the query. Use <a>ListNamedQueries</a> to get query IDs.</p>
      */
-    inline const Aws::String& GetNamedQueryId() const{ return m_namedQueryId; }
-
-    /**
-     * <p>The unique ID of the query. Use <a>ListNamedQueries</a> to get query IDs.</p>
-     */
+    inline const Aws::String& GetNamedQueryId() const { return m_namedQueryId; }
     inline bool NamedQueryIdHasBeenSet() const { return m_namedQueryIdHasBeenSet; }
-
-    /**
-     * <p>The unique ID of the query. Use <a>ListNamedQueries</a> to get query IDs.</p>
-     */
-    inline void SetNamedQueryId(const Aws::String& value) { m_namedQueryIdHasBeenSet = true; m_namedQueryId = value; }
-
-    /**
-     * <p>The unique ID of the query. Use <a>ListNamedQueries</a> to get query IDs.</p>
-     */
-    inline void SetNamedQueryId(Aws::String&& value) { m_namedQueryIdHasBeenSet = true; m_namedQueryId = std::move(value); }
-
-    /**
-     * <p>The unique ID of the query. Use <a>ListNamedQueries</a> to get query IDs.</p>
-     */
-    inline void SetNamedQueryId(const char* value) { m_namedQueryIdHasBeenSet = true; m_namedQueryId.assign(value); }
-
-    /**
-     * <p>The unique ID of the query. Use <a>ListNamedQueries</a> to get query IDs.</p>
-     */
-    inline GetNamedQueryRequest& WithNamedQueryId(const Aws::String& value) { SetNamedQueryId(value); return *this;}
-
-    /**
-     * <p>The unique ID of the query. Use <a>ListNamedQueries</a> to get query IDs.</p>
-     */
-    inline GetNamedQueryRequest& WithNamedQueryId(Aws::String&& value) { SetNamedQueryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of the query. Use <a>ListNamedQueries</a> to get query IDs.</p>
-     */
-    inline GetNamedQueryRequest& WithNamedQueryId(const char* value) { SetNamedQueryId(value); return *this;}
-
+    template<typename NamedQueryIdT = Aws::String>
+    void SetNamedQueryId(NamedQueryIdT&& value) { m_namedQueryIdHasBeenSet = true; m_namedQueryId = std::forward<NamedQueryIdT>(value); }
+    template<typename NamedQueryIdT = Aws::String>
+    GetNamedQueryRequest& WithNamedQueryId(NamedQueryIdT&& value) { SetNamedQueryId(std::forward<NamedQueryIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_namedQueryId;

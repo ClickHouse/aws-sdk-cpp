@@ -27,73 +27,37 @@ namespace Model
   class DeleteProjectResult
   {
   public:
-    AWS_LOOKOUTFORVISION_API DeleteProjectResult();
+    AWS_LOOKOUTFORVISION_API DeleteProjectResult() = default;
     AWS_LOOKOUTFORVISION_API DeleteProjectResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LOOKOUTFORVISION_API DeleteProjectResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the project that was deleted.</p>
      */
-    inline const Aws::String& GetProjectArn() const{ return m_projectArn; }
+    inline const Aws::String& GetProjectArn() const { return m_projectArn; }
+    template<typename ProjectArnT = Aws::String>
+    void SetProjectArn(ProjectArnT&& value) { m_projectArnHasBeenSet = true; m_projectArn = std::forward<ProjectArnT>(value); }
+    template<typename ProjectArnT = Aws::String>
+    DeleteProjectResult& WithProjectArn(ProjectArnT&& value) { SetProjectArn(std::forward<ProjectArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the project that was deleted.</p>
-     */
-    inline void SetProjectArn(const Aws::String& value) { m_projectArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the project that was deleted.</p>
-     */
-    inline void SetProjectArn(Aws::String&& value) { m_projectArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the project that was deleted.</p>
-     */
-    inline void SetProjectArn(const char* value) { m_projectArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the project that was deleted.</p>
-     */
-    inline DeleteProjectResult& WithProjectArn(const Aws::String& value) { SetProjectArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the project that was deleted.</p>
-     */
-    inline DeleteProjectResult& WithProjectArn(Aws::String&& value) { SetProjectArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the project that was deleted.</p>
-     */
-    inline DeleteProjectResult& WithProjectArn(const char* value) { SetProjectArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteProjectResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteProjectResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteProjectResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteProjectResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_projectArn;
+    bool m_projectArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

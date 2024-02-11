@@ -32,86 +32,36 @@ namespace Model
   class NamespaceError
   {
   public:
-    AWS_QUICKSIGHT_API NamespaceError();
+    AWS_QUICKSIGHT_API NamespaceError() = default;
     AWS_QUICKSIGHT_API NamespaceError(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API NamespaceError& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The error type.</p>
      */
-    inline const NamespaceErrorType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The error type.</p>
-     */
+    inline NamespaceErrorType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(NamespaceErrorType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline NamespaceError& WithType(NamespaceErrorType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The error type.</p>
-     */
-    inline void SetType(const NamespaceErrorType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The error type.</p>
-     */
-    inline void SetType(NamespaceErrorType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The error type.</p>
-     */
-    inline NamespaceError& WithType(const NamespaceErrorType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The error type.</p>
-     */
-    inline NamespaceError& WithType(NamespaceErrorType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The message for the error.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The message for the error.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>The message for the error.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The message for the error.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The message for the error.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The message for the error.</p>
-     */
-    inline NamespaceError& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The message for the error.</p>
-     */
-    inline NamespaceError& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The message for the error.</p>
-     */
-    inline NamespaceError& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    NamespaceError& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
-    NamespaceErrorType m_type;
+    NamespaceErrorType m_type{NamespaceErrorType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_message;

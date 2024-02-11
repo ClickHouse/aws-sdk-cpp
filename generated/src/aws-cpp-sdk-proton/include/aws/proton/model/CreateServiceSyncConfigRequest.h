@@ -22,7 +22,7 @@ namespace Model
   class CreateServiceSyncConfigRequest : public ProtonRequest
   {
   public:
-    AWS_PROTON_API CreateServiceSyncConfigRequest();
+    AWS_PROTON_API CreateServiceSyncConfigRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,200 +35,63 @@ namespace Model
     AWS_PROTON_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The repository branch for your Proton Ops file.</p>
      */
-    inline const Aws::String& GetBranch() const{ return m_branch; }
-
-    /**
-     * <p>The repository branch for your Proton Ops file.</p>
-     */
+    inline const Aws::String& GetBranch() const { return m_branch; }
     inline bool BranchHasBeenSet() const { return m_branchHasBeenSet; }
+    template<typename BranchT = Aws::String>
+    void SetBranch(BranchT&& value) { m_branchHasBeenSet = true; m_branch = std::forward<BranchT>(value); }
+    template<typename BranchT = Aws::String>
+    CreateServiceSyncConfigRequest& WithBranch(BranchT&& value) { SetBranch(std::forward<BranchT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The repository branch for your Proton Ops file.</p>
-     */
-    inline void SetBranch(const Aws::String& value) { m_branchHasBeenSet = true; m_branch = value; }
-
-    /**
-     * <p>The repository branch for your Proton Ops file.</p>
-     */
-    inline void SetBranch(Aws::String&& value) { m_branchHasBeenSet = true; m_branch = std::move(value); }
-
-    /**
-     * <p>The repository branch for your Proton Ops file.</p>
-     */
-    inline void SetBranch(const char* value) { m_branchHasBeenSet = true; m_branch.assign(value); }
-
-    /**
-     * <p>The repository branch for your Proton Ops file.</p>
-     */
-    inline CreateServiceSyncConfigRequest& WithBranch(const Aws::String& value) { SetBranch(value); return *this;}
-
-    /**
-     * <p>The repository branch for your Proton Ops file.</p>
-     */
-    inline CreateServiceSyncConfigRequest& WithBranch(Aws::String&& value) { SetBranch(std::move(value)); return *this;}
-
-    /**
-     * <p>The repository branch for your Proton Ops file.</p>
-     */
-    inline CreateServiceSyncConfigRequest& WithBranch(const char* value) { SetBranch(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The path to the Proton Ops file.</p>
      */
-    inline const Aws::String& GetFilePath() const{ return m_filePath; }
-
-    /**
-     * <p>The path to the Proton Ops file.</p>
-     */
+    inline const Aws::String& GetFilePath() const { return m_filePath; }
     inline bool FilePathHasBeenSet() const { return m_filePathHasBeenSet; }
+    template<typename FilePathT = Aws::String>
+    void SetFilePath(FilePathT&& value) { m_filePathHasBeenSet = true; m_filePath = std::forward<FilePathT>(value); }
+    template<typename FilePathT = Aws::String>
+    CreateServiceSyncConfigRequest& WithFilePath(FilePathT&& value) { SetFilePath(std::forward<FilePathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The path to the Proton Ops file.</p>
-     */
-    inline void SetFilePath(const Aws::String& value) { m_filePathHasBeenSet = true; m_filePath = value; }
-
-    /**
-     * <p>The path to the Proton Ops file.</p>
-     */
-    inline void SetFilePath(Aws::String&& value) { m_filePathHasBeenSet = true; m_filePath = std::move(value); }
-
-    /**
-     * <p>The path to the Proton Ops file.</p>
-     */
-    inline void SetFilePath(const char* value) { m_filePathHasBeenSet = true; m_filePath.assign(value); }
-
-    /**
-     * <p>The path to the Proton Ops file.</p>
-     */
-    inline CreateServiceSyncConfigRequest& WithFilePath(const Aws::String& value) { SetFilePath(value); return *this;}
-
-    /**
-     * <p>The path to the Proton Ops file.</p>
-     */
-    inline CreateServiceSyncConfigRequest& WithFilePath(Aws::String&& value) { SetFilePath(std::move(value)); return *this;}
-
-    /**
-     * <p>The path to the Proton Ops file.</p>
-     */
-    inline CreateServiceSyncConfigRequest& WithFilePath(const char* value) { SetFilePath(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The repository name.</p>
      */
-    inline const Aws::String& GetRepositoryName() const{ return m_repositoryName; }
-
-    /**
-     * <p>The repository name.</p>
-     */
+    inline const Aws::String& GetRepositoryName() const { return m_repositoryName; }
     inline bool RepositoryNameHasBeenSet() const { return m_repositoryNameHasBeenSet; }
+    template<typename RepositoryNameT = Aws::String>
+    void SetRepositoryName(RepositoryNameT&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::forward<RepositoryNameT>(value); }
+    template<typename RepositoryNameT = Aws::String>
+    CreateServiceSyncConfigRequest& WithRepositoryName(RepositoryNameT&& value) { SetRepositoryName(std::forward<RepositoryNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The repository name.</p>
-     */
-    inline void SetRepositoryName(const Aws::String& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = value; }
-
-    /**
-     * <p>The repository name.</p>
-     */
-    inline void SetRepositoryName(Aws::String&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::move(value); }
-
-    /**
-     * <p>The repository name.</p>
-     */
-    inline void SetRepositoryName(const char* value) { m_repositoryNameHasBeenSet = true; m_repositoryName.assign(value); }
-
-    /**
-     * <p>The repository name.</p>
-     */
-    inline CreateServiceSyncConfigRequest& WithRepositoryName(const Aws::String& value) { SetRepositoryName(value); return *this;}
-
-    /**
-     * <p>The repository name.</p>
-     */
-    inline CreateServiceSyncConfigRequest& WithRepositoryName(Aws::String&& value) { SetRepositoryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The repository name.</p>
-     */
-    inline CreateServiceSyncConfigRequest& WithRepositoryName(const char* value) { SetRepositoryName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The provider type for your repository.</p>
      */
-    inline const RepositoryProvider& GetRepositoryProvider() const{ return m_repositoryProvider; }
-
-    /**
-     * <p>The provider type for your repository.</p>
-     */
+    inline RepositoryProvider GetRepositoryProvider() const { return m_repositoryProvider; }
     inline bool RepositoryProviderHasBeenSet() const { return m_repositoryProviderHasBeenSet; }
+    inline void SetRepositoryProvider(RepositoryProvider value) { m_repositoryProviderHasBeenSet = true; m_repositoryProvider = value; }
+    inline CreateServiceSyncConfigRequest& WithRepositoryProvider(RepositoryProvider value) { SetRepositoryProvider(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The provider type for your repository.</p>
-     */
-    inline void SetRepositoryProvider(const RepositoryProvider& value) { m_repositoryProviderHasBeenSet = true; m_repositoryProvider = value; }
-
-    /**
-     * <p>The provider type for your repository.</p>
-     */
-    inline void SetRepositoryProvider(RepositoryProvider&& value) { m_repositoryProviderHasBeenSet = true; m_repositoryProvider = std::move(value); }
-
-    /**
-     * <p>The provider type for your repository.</p>
-     */
-    inline CreateServiceSyncConfigRequest& WithRepositoryProvider(const RepositoryProvider& value) { SetRepositoryProvider(value); return *this;}
-
-    /**
-     * <p>The provider type for your repository.</p>
-     */
-    inline CreateServiceSyncConfigRequest& WithRepositoryProvider(RepositoryProvider&& value) { SetRepositoryProvider(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the service the Proton Ops file is for.</p>
      */
-    inline const Aws::String& GetServiceName() const{ return m_serviceName; }
-
-    /**
-     * <p>The name of the service the Proton Ops file is for.</p>
-     */
+    inline const Aws::String& GetServiceName() const { return m_serviceName; }
     inline bool ServiceNameHasBeenSet() const { return m_serviceNameHasBeenSet; }
-
-    /**
-     * <p>The name of the service the Proton Ops file is for.</p>
-     */
-    inline void SetServiceName(const Aws::String& value) { m_serviceNameHasBeenSet = true; m_serviceName = value; }
-
-    /**
-     * <p>The name of the service the Proton Ops file is for.</p>
-     */
-    inline void SetServiceName(Aws::String&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::move(value); }
-
-    /**
-     * <p>The name of the service the Proton Ops file is for.</p>
-     */
-    inline void SetServiceName(const char* value) { m_serviceNameHasBeenSet = true; m_serviceName.assign(value); }
-
-    /**
-     * <p>The name of the service the Proton Ops file is for.</p>
-     */
-    inline CreateServiceSyncConfigRequest& WithServiceName(const Aws::String& value) { SetServiceName(value); return *this;}
-
-    /**
-     * <p>The name of the service the Proton Ops file is for.</p>
-     */
-    inline CreateServiceSyncConfigRequest& WithServiceName(Aws::String&& value) { SetServiceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the service the Proton Ops file is for.</p>
-     */
-    inline CreateServiceSyncConfigRequest& WithServiceName(const char* value) { SetServiceName(value); return *this;}
-
+    template<typename ServiceNameT = Aws::String>
+    void SetServiceName(ServiceNameT&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::forward<ServiceNameT>(value); }
+    template<typename ServiceNameT = Aws::String>
+    CreateServiceSyncConfigRequest& WithServiceName(ServiceNameT&& value) { SetServiceName(std::forward<ServiceNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_branch;
@@ -240,7 +103,7 @@ namespace Model
     Aws::String m_repositoryName;
     bool m_repositoryNameHasBeenSet = false;
 
-    RepositoryProvider m_repositoryProvider;
+    RepositoryProvider m_repositoryProvider{RepositoryProvider::NOT_SET};
     bool m_repositoryProviderHasBeenSet = false;
 
     Aws::String m_serviceName;

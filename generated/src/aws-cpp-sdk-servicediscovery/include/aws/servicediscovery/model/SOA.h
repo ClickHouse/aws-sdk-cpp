@@ -30,35 +30,24 @@ namespace Model
   class SOA
   {
   public:
-    AWS_SERVICEDISCOVERY_API SOA();
+    AWS_SERVICEDISCOVERY_API SOA() = default;
     AWS_SERVICEDISCOVERY_API SOA(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEDISCOVERY_API SOA& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEDISCOVERY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The time to live (TTL) for purposes of negative caching.</p>
      */
-    inline long long GetTTL() const{ return m_tTL; }
-
-    /**
-     * <p>The time to live (TTL) for purposes of negative caching.</p>
-     */
+    inline long long GetTTL() const { return m_tTL; }
     inline bool TTLHasBeenSet() const { return m_tTLHasBeenSet; }
-
-    /**
-     * <p>The time to live (TTL) for purposes of negative caching.</p>
-     */
     inline void SetTTL(long long value) { m_tTLHasBeenSet = true; m_tTL = value; }
-
-    /**
-     * <p>The time to live (TTL) for purposes of negative caching.</p>
-     */
     inline SOA& WithTTL(long long value) { SetTTL(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_tTL;
+    long long m_tTL{0};
     bool m_tTLHasBeenSet = false;
   };
 

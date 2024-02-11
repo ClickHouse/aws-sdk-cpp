@@ -32,12 +32,13 @@ namespace Model
   class PendingCreateStandbyWorkspacesRequest
   {
   public:
-    AWS_WORKSPACES_API PendingCreateStandbyWorkspacesRequest();
+    AWS_WORKSPACES_API PendingCreateStandbyWorkspacesRequest() = default;
     AWS_WORKSPACES_API PendingCreateStandbyWorkspacesRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API PendingCreateStandbyWorkspacesRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Describes the standby WorkSpace that was created.</p> <p>Because this
      * operation is asynchronous, the identifier returned is not immediately available
@@ -46,191 +47,47 @@ namespace Model
      * DescribeWorkspaces</a> before the WorkSpace is created, the information returned
      * can be incomplete. </p>
      */
-    inline const Aws::String& GetUserName() const{ return m_userName; }
-
-    /**
-     * <p>Describes the standby WorkSpace that was created.</p> <p>Because this
-     * operation is asynchronous, the identifier returned is not immediately available
-     * for use with other operations. For example, if you call <a
-     * href="https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaces.html">
-     * DescribeWorkspaces</a> before the WorkSpace is created, the information returned
-     * can be incomplete. </p>
-     */
+    inline const Aws::String& GetUserName() const { return m_userName; }
     inline bool UserNameHasBeenSet() const { return m_userNameHasBeenSet; }
+    template<typename UserNameT = Aws::String>
+    void SetUserName(UserNameT&& value) { m_userNameHasBeenSet = true; m_userName = std::forward<UserNameT>(value); }
+    template<typename UserNameT = Aws::String>
+    PendingCreateStandbyWorkspacesRequest& WithUserName(UserNameT&& value) { SetUserName(std::forward<UserNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes the standby WorkSpace that was created.</p> <p>Because this
-     * operation is asynchronous, the identifier returned is not immediately available
-     * for use with other operations. For example, if you call <a
-     * href="https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaces.html">
-     * DescribeWorkspaces</a> before the WorkSpace is created, the information returned
-     * can be incomplete. </p>
-     */
-    inline void SetUserName(const Aws::String& value) { m_userNameHasBeenSet = true; m_userName = value; }
-
-    /**
-     * <p>Describes the standby WorkSpace that was created.</p> <p>Because this
-     * operation is asynchronous, the identifier returned is not immediately available
-     * for use with other operations. For example, if you call <a
-     * href="https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaces.html">
-     * DescribeWorkspaces</a> before the WorkSpace is created, the information returned
-     * can be incomplete. </p>
-     */
-    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = std::move(value); }
-
-    /**
-     * <p>Describes the standby WorkSpace that was created.</p> <p>Because this
-     * operation is asynchronous, the identifier returned is not immediately available
-     * for use with other operations. For example, if you call <a
-     * href="https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaces.html">
-     * DescribeWorkspaces</a> before the WorkSpace is created, the information returned
-     * can be incomplete. </p>
-     */
-    inline void SetUserName(const char* value) { m_userNameHasBeenSet = true; m_userName.assign(value); }
-
-    /**
-     * <p>Describes the standby WorkSpace that was created.</p> <p>Because this
-     * operation is asynchronous, the identifier returned is not immediately available
-     * for use with other operations. For example, if you call <a
-     * href="https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaces.html">
-     * DescribeWorkspaces</a> before the WorkSpace is created, the information returned
-     * can be incomplete. </p>
-     */
-    inline PendingCreateStandbyWorkspacesRequest& WithUserName(const Aws::String& value) { SetUserName(value); return *this;}
-
-    /**
-     * <p>Describes the standby WorkSpace that was created.</p> <p>Because this
-     * operation is asynchronous, the identifier returned is not immediately available
-     * for use with other operations. For example, if you call <a
-     * href="https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaces.html">
-     * DescribeWorkspaces</a> before the WorkSpace is created, the information returned
-     * can be incomplete. </p>
-     */
-    inline PendingCreateStandbyWorkspacesRequest& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
-
-    /**
-     * <p>Describes the standby WorkSpace that was created.</p> <p>Because this
-     * operation is asynchronous, the identifier returned is not immediately available
-     * for use with other operations. For example, if you call <a
-     * href="https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaces.html">
-     * DescribeWorkspaces</a> before the WorkSpace is created, the information returned
-     * can be incomplete. </p>
-     */
-    inline PendingCreateStandbyWorkspacesRequest& WithUserName(const char* value) { SetUserName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the directory for the standby WorkSpace.</p>
      */
-    inline const Aws::String& GetDirectoryId() const{ return m_directoryId; }
-
-    /**
-     * <p>The identifier of the directory for the standby WorkSpace.</p>
-     */
+    inline const Aws::String& GetDirectoryId() const { return m_directoryId; }
     inline bool DirectoryIdHasBeenSet() const { return m_directoryIdHasBeenSet; }
+    template<typename DirectoryIdT = Aws::String>
+    void SetDirectoryId(DirectoryIdT&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::forward<DirectoryIdT>(value); }
+    template<typename DirectoryIdT = Aws::String>
+    PendingCreateStandbyWorkspacesRequest& WithDirectoryId(DirectoryIdT&& value) { SetDirectoryId(std::forward<DirectoryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the directory for the standby WorkSpace.</p>
-     */
-    inline void SetDirectoryId(const Aws::String& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
-
-    /**
-     * <p>The identifier of the directory for the standby WorkSpace.</p>
-     */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
-
-    /**
-     * <p>The identifier of the directory for the standby WorkSpace.</p>
-     */
-    inline void SetDirectoryId(const char* value) { m_directoryIdHasBeenSet = true; m_directoryId.assign(value); }
-
-    /**
-     * <p>The identifier of the directory for the standby WorkSpace.</p>
-     */
-    inline PendingCreateStandbyWorkspacesRequest& WithDirectoryId(const Aws::String& value) { SetDirectoryId(value); return *this;}
-
-    /**
-     * <p>The identifier of the directory for the standby WorkSpace.</p>
-     */
-    inline PendingCreateStandbyWorkspacesRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the directory for the standby WorkSpace.</p>
-     */
-    inline PendingCreateStandbyWorkspacesRequest& WithDirectoryId(const char* value) { SetDirectoryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The operational state of the standby WorkSpace.</p>
      */
-    inline const WorkspaceState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The operational state of the standby WorkSpace.</p>
-     */
+    inline WorkspaceState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(WorkspaceState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline PendingCreateStandbyWorkspacesRequest& WithState(WorkspaceState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The operational state of the standby WorkSpace.</p>
-     */
-    inline void SetState(const WorkspaceState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The operational state of the standby WorkSpace.</p>
-     */
-    inline void SetState(WorkspaceState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The operational state of the standby WorkSpace.</p>
-     */
-    inline PendingCreateStandbyWorkspacesRequest& WithState(const WorkspaceState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The operational state of the standby WorkSpace.</p>
-     */
-    inline PendingCreateStandbyWorkspacesRequest& WithState(WorkspaceState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the standby WorkSpace.</p>
      */
-    inline const Aws::String& GetWorkspaceId() const{ return m_workspaceId; }
-
-    /**
-     * <p>The identifier of the standby WorkSpace.</p>
-     */
+    inline const Aws::String& GetWorkspaceId() const { return m_workspaceId; }
     inline bool WorkspaceIdHasBeenSet() const { return m_workspaceIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the standby WorkSpace.</p>
-     */
-    inline void SetWorkspaceId(const Aws::String& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = value; }
-
-    /**
-     * <p>The identifier of the standby WorkSpace.</p>
-     */
-    inline void SetWorkspaceId(Aws::String&& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = std::move(value); }
-
-    /**
-     * <p>The identifier of the standby WorkSpace.</p>
-     */
-    inline void SetWorkspaceId(const char* value) { m_workspaceIdHasBeenSet = true; m_workspaceId.assign(value); }
-
-    /**
-     * <p>The identifier of the standby WorkSpace.</p>
-     */
-    inline PendingCreateStandbyWorkspacesRequest& WithWorkspaceId(const Aws::String& value) { SetWorkspaceId(value); return *this;}
-
-    /**
-     * <p>The identifier of the standby WorkSpace.</p>
-     */
-    inline PendingCreateStandbyWorkspacesRequest& WithWorkspaceId(Aws::String&& value) { SetWorkspaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the standby WorkSpace.</p>
-     */
-    inline PendingCreateStandbyWorkspacesRequest& WithWorkspaceId(const char* value) { SetWorkspaceId(value); return *this;}
-
+    template<typename WorkspaceIdT = Aws::String>
+    void SetWorkspaceId(WorkspaceIdT&& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = std::forward<WorkspaceIdT>(value); }
+    template<typename WorkspaceIdT = Aws::String>
+    PendingCreateStandbyWorkspacesRequest& WithWorkspaceId(WorkspaceIdT&& value) { SetWorkspaceId(std::forward<WorkspaceIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userName;
@@ -239,7 +96,7 @@ namespace Model
     Aws::String m_directoryId;
     bool m_directoryIdHasBeenSet = false;
 
-    WorkspaceState m_state;
+    WorkspaceState m_state{WorkspaceState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
     Aws::String m_workspaceId;

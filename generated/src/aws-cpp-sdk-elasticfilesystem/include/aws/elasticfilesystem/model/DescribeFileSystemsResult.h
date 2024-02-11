@@ -29,163 +29,69 @@ namespace Model
   class DescribeFileSystemsResult
   {
   public:
-    AWS_EFS_API DescribeFileSystemsResult();
+    AWS_EFS_API DescribeFileSystemsResult() = default;
     AWS_EFS_API DescribeFileSystemsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_EFS_API DescribeFileSystemsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Present if provided by caller in the request (String).</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
+    inline const Aws::String& GetMarker() const { return m_marker; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeFileSystemsResult& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Present if provided by caller in the request (String).</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_marker = value; }
-
-    /**
-     * <p>Present if provided by caller in the request (String).</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
-
-    /**
-     * <p>Present if provided by caller in the request (String).</p>
-     */
-    inline void SetMarker(const char* value) { m_marker.assign(value); }
-
-    /**
-     * <p>Present if provided by caller in the request (String).</p>
-     */
-    inline DescribeFileSystemsResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>Present if provided by caller in the request (String).</p>
-     */
-    inline DescribeFileSystemsResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>Present if provided by caller in the request (String).</p>
-     */
-    inline DescribeFileSystemsResult& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of file system descriptions.</p>
      */
-    inline const Aws::Vector<FileSystemDescription>& GetFileSystems() const{ return m_fileSystems; }
+    inline const Aws::Vector<FileSystemDescription>& GetFileSystems() const { return m_fileSystems; }
+    template<typename FileSystemsT = Aws::Vector<FileSystemDescription>>
+    void SetFileSystems(FileSystemsT&& value) { m_fileSystemsHasBeenSet = true; m_fileSystems = std::forward<FileSystemsT>(value); }
+    template<typename FileSystemsT = Aws::Vector<FileSystemDescription>>
+    DescribeFileSystemsResult& WithFileSystems(FileSystemsT&& value) { SetFileSystems(std::forward<FileSystemsT>(value)); return *this;}
+    template<typename FileSystemsT = FileSystemDescription>
+    DescribeFileSystemsResult& AddFileSystems(FileSystemsT&& value) { m_fileSystemsHasBeenSet = true; m_fileSystems.emplace_back(std::forward<FileSystemsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of file system descriptions.</p>
-     */
-    inline void SetFileSystems(const Aws::Vector<FileSystemDescription>& value) { m_fileSystems = value; }
-
-    /**
-     * <p>An array of file system descriptions.</p>
-     */
-    inline void SetFileSystems(Aws::Vector<FileSystemDescription>&& value) { m_fileSystems = std::move(value); }
-
-    /**
-     * <p>An array of file system descriptions.</p>
-     */
-    inline DescribeFileSystemsResult& WithFileSystems(const Aws::Vector<FileSystemDescription>& value) { SetFileSystems(value); return *this;}
-
-    /**
-     * <p>An array of file system descriptions.</p>
-     */
-    inline DescribeFileSystemsResult& WithFileSystems(Aws::Vector<FileSystemDescription>&& value) { SetFileSystems(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of file system descriptions.</p>
-     */
-    inline DescribeFileSystemsResult& AddFileSystems(const FileSystemDescription& value) { m_fileSystems.push_back(value); return *this; }
-
-    /**
-     * <p>An array of file system descriptions.</p>
-     */
-    inline DescribeFileSystemsResult& AddFileSystems(FileSystemDescription&& value) { m_fileSystems.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Present if there are more file systems than returned in the response
      * (String). You can use the <code>NextMarker</code> in the subsequent request to
      * fetch the descriptions.</p>
      */
-    inline const Aws::String& GetNextMarker() const{ return m_nextMarker; }
+    inline const Aws::String& GetNextMarker() const { return m_nextMarker; }
+    template<typename NextMarkerT = Aws::String>
+    void SetNextMarker(NextMarkerT&& value) { m_nextMarkerHasBeenSet = true; m_nextMarker = std::forward<NextMarkerT>(value); }
+    template<typename NextMarkerT = Aws::String>
+    DescribeFileSystemsResult& WithNextMarker(NextMarkerT&& value) { SetNextMarker(std::forward<NextMarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Present if there are more file systems than returned in the response
-     * (String). You can use the <code>NextMarker</code> in the subsequent request to
-     * fetch the descriptions.</p>
-     */
-    inline void SetNextMarker(const Aws::String& value) { m_nextMarker = value; }
-
-    /**
-     * <p>Present if there are more file systems than returned in the response
-     * (String). You can use the <code>NextMarker</code> in the subsequent request to
-     * fetch the descriptions.</p>
-     */
-    inline void SetNextMarker(Aws::String&& value) { m_nextMarker = std::move(value); }
-
-    /**
-     * <p>Present if there are more file systems than returned in the response
-     * (String). You can use the <code>NextMarker</code> in the subsequent request to
-     * fetch the descriptions.</p>
-     */
-    inline void SetNextMarker(const char* value) { m_nextMarker.assign(value); }
-
-    /**
-     * <p>Present if there are more file systems than returned in the response
-     * (String). You can use the <code>NextMarker</code> in the subsequent request to
-     * fetch the descriptions.</p>
-     */
-    inline DescribeFileSystemsResult& WithNextMarker(const Aws::String& value) { SetNextMarker(value); return *this;}
-
-    /**
-     * <p>Present if there are more file systems than returned in the response
-     * (String). You can use the <code>NextMarker</code> in the subsequent request to
-     * fetch the descriptions.</p>
-     */
-    inline DescribeFileSystemsResult& WithNextMarker(Aws::String&& value) { SetNextMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>Present if there are more file systems than returned in the response
-     * (String). You can use the <code>NextMarker</code> in the subsequent request to
-     * fetch the descriptions.</p>
-     */
-    inline DescribeFileSystemsResult& WithNextMarker(const char* value) { SetNextMarker(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeFileSystemsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeFileSystemsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeFileSystemsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeFileSystemsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_marker;
+    bool m_markerHasBeenSet = false;
 
     Aws::Vector<FileSystemDescription> m_fileSystems;
+    bool m_fileSystemsHasBeenSet = false;
 
     Aws::String m_nextMarker;
+    bool m_nextMarkerHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

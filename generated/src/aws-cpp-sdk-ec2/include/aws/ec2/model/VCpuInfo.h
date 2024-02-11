@@ -32,7 +32,7 @@ namespace Model
   class VCpuInfo
   {
   public:
-    AWS_EC2_API VCpuInfo();
+    AWS_EC2_API VCpuInfo() = default;
     AWS_EC2_API VCpuInfo(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API VCpuInfo& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,156 +40,71 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The default number of vCPUs for the instance type.</p>
      */
-    inline int GetDefaultVCpus() const{ return m_defaultVCpus; }
-
-    /**
-     * <p>The default number of vCPUs for the instance type.</p>
-     */
+    inline int GetDefaultVCpus() const { return m_defaultVCpus; }
     inline bool DefaultVCpusHasBeenSet() const { return m_defaultVCpusHasBeenSet; }
-
-    /**
-     * <p>The default number of vCPUs for the instance type.</p>
-     */
     inline void SetDefaultVCpus(int value) { m_defaultVCpusHasBeenSet = true; m_defaultVCpus = value; }
-
-    /**
-     * <p>The default number of vCPUs for the instance type.</p>
-     */
     inline VCpuInfo& WithDefaultVCpus(int value) { SetDefaultVCpus(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The default number of cores for the instance type.</p>
      */
-    inline int GetDefaultCores() const{ return m_defaultCores; }
-
-    /**
-     * <p>The default number of cores for the instance type.</p>
-     */
+    inline int GetDefaultCores() const { return m_defaultCores; }
     inline bool DefaultCoresHasBeenSet() const { return m_defaultCoresHasBeenSet; }
-
-    /**
-     * <p>The default number of cores for the instance type.</p>
-     */
     inline void SetDefaultCores(int value) { m_defaultCoresHasBeenSet = true; m_defaultCores = value; }
-
-    /**
-     * <p>The default number of cores for the instance type.</p>
-     */
     inline VCpuInfo& WithDefaultCores(int value) { SetDefaultCores(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The default number of threads per core for the instance type.</p>
      */
-    inline int GetDefaultThreadsPerCore() const{ return m_defaultThreadsPerCore; }
-
-    /**
-     * <p>The default number of threads per core for the instance type.</p>
-     */
+    inline int GetDefaultThreadsPerCore() const { return m_defaultThreadsPerCore; }
     inline bool DefaultThreadsPerCoreHasBeenSet() const { return m_defaultThreadsPerCoreHasBeenSet; }
-
-    /**
-     * <p>The default number of threads per core for the instance type.</p>
-     */
     inline void SetDefaultThreadsPerCore(int value) { m_defaultThreadsPerCoreHasBeenSet = true; m_defaultThreadsPerCore = value; }
-
-    /**
-     * <p>The default number of threads per core for the instance type.</p>
-     */
     inline VCpuInfo& WithDefaultThreadsPerCore(int value) { SetDefaultThreadsPerCore(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The valid number of cores that can be configured for the instance type.</p>
      */
-    inline const Aws::Vector<int>& GetValidCores() const{ return m_validCores; }
-
-    /**
-     * <p>The valid number of cores that can be configured for the instance type.</p>
-     */
+    inline const Aws::Vector<int>& GetValidCores() const { return m_validCores; }
     inline bool ValidCoresHasBeenSet() const { return m_validCoresHasBeenSet; }
-
-    /**
-     * <p>The valid number of cores that can be configured for the instance type.</p>
-     */
-    inline void SetValidCores(const Aws::Vector<int>& value) { m_validCoresHasBeenSet = true; m_validCores = value; }
-
-    /**
-     * <p>The valid number of cores that can be configured for the instance type.</p>
-     */
-    inline void SetValidCores(Aws::Vector<int>&& value) { m_validCoresHasBeenSet = true; m_validCores = std::move(value); }
-
-    /**
-     * <p>The valid number of cores that can be configured for the instance type.</p>
-     */
-    inline VCpuInfo& WithValidCores(const Aws::Vector<int>& value) { SetValidCores(value); return *this;}
-
-    /**
-     * <p>The valid number of cores that can be configured for the instance type.</p>
-     */
-    inline VCpuInfo& WithValidCores(Aws::Vector<int>&& value) { SetValidCores(std::move(value)); return *this;}
-
-    /**
-     * <p>The valid number of cores that can be configured for the instance type.</p>
-     */
+    template<typename ValidCoresT = Aws::Vector<int>>
+    void SetValidCores(ValidCoresT&& value) { m_validCoresHasBeenSet = true; m_validCores = std::forward<ValidCoresT>(value); }
+    template<typename ValidCoresT = Aws::Vector<int>>
+    VCpuInfo& WithValidCores(ValidCoresT&& value) { SetValidCores(std::forward<ValidCoresT>(value)); return *this;}
     inline VCpuInfo& AddValidCores(int value) { m_validCoresHasBeenSet = true; m_validCores.push_back(value); return *this; }
+    ///@}
 
-
+    ///@{
     /**
      * <p>The valid number of threads per core that can be configured for the instance
      * type.</p>
      */
-    inline const Aws::Vector<int>& GetValidThreadsPerCore() const{ return m_validThreadsPerCore; }
-
-    /**
-     * <p>The valid number of threads per core that can be configured for the instance
-     * type.</p>
-     */
+    inline const Aws::Vector<int>& GetValidThreadsPerCore() const { return m_validThreadsPerCore; }
     inline bool ValidThreadsPerCoreHasBeenSet() const { return m_validThreadsPerCoreHasBeenSet; }
-
-    /**
-     * <p>The valid number of threads per core that can be configured for the instance
-     * type.</p>
-     */
-    inline void SetValidThreadsPerCore(const Aws::Vector<int>& value) { m_validThreadsPerCoreHasBeenSet = true; m_validThreadsPerCore = value; }
-
-    /**
-     * <p>The valid number of threads per core that can be configured for the instance
-     * type.</p>
-     */
-    inline void SetValidThreadsPerCore(Aws::Vector<int>&& value) { m_validThreadsPerCoreHasBeenSet = true; m_validThreadsPerCore = std::move(value); }
-
-    /**
-     * <p>The valid number of threads per core that can be configured for the instance
-     * type.</p>
-     */
-    inline VCpuInfo& WithValidThreadsPerCore(const Aws::Vector<int>& value) { SetValidThreadsPerCore(value); return *this;}
-
-    /**
-     * <p>The valid number of threads per core that can be configured for the instance
-     * type.</p>
-     */
-    inline VCpuInfo& WithValidThreadsPerCore(Aws::Vector<int>&& value) { SetValidThreadsPerCore(std::move(value)); return *this;}
-
-    /**
-     * <p>The valid number of threads per core that can be configured for the instance
-     * type.</p>
-     */
+    template<typename ValidThreadsPerCoreT = Aws::Vector<int>>
+    void SetValidThreadsPerCore(ValidThreadsPerCoreT&& value) { m_validThreadsPerCoreHasBeenSet = true; m_validThreadsPerCore = std::forward<ValidThreadsPerCoreT>(value); }
+    template<typename ValidThreadsPerCoreT = Aws::Vector<int>>
+    VCpuInfo& WithValidThreadsPerCore(ValidThreadsPerCoreT&& value) { SetValidThreadsPerCore(std::forward<ValidThreadsPerCoreT>(value)); return *this;}
     inline VCpuInfo& AddValidThreadsPerCore(int value) { m_validThreadsPerCoreHasBeenSet = true; m_validThreadsPerCore.push_back(value); return *this; }
-
+    ///@}
   private:
 
-    int m_defaultVCpus;
+    int m_defaultVCpus{0};
     bool m_defaultVCpusHasBeenSet = false;
 
-    int m_defaultCores;
+    int m_defaultCores{0};
     bool m_defaultCoresHasBeenSet = false;
 
-    int m_defaultThreadsPerCore;
+    int m_defaultThreadsPerCore{0};
     bool m_defaultThreadsPerCoreHasBeenSet = false;
 
     Aws::Vector<int> m_validCores;

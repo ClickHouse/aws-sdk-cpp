@@ -31,7 +31,7 @@ namespace Model
   class ScheduledInstancesIpv6Address
   {
   public:
-    AWS_EC2_API ScheduledInstancesIpv6Address();
+    AWS_EC2_API ScheduledInstancesIpv6Address() = default;
     AWS_EC2_API ScheduledInstancesIpv6Address(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API ScheduledInstancesIpv6Address& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -39,46 +39,17 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The IPv6 address.</p>
      */
-    inline const Aws::String& GetIpv6Address() const{ return m_ipv6Address; }
-
-    /**
-     * <p>The IPv6 address.</p>
-     */
+    inline const Aws::String& GetIpv6Address() const { return m_ipv6Address; }
     inline bool Ipv6AddressHasBeenSet() const { return m_ipv6AddressHasBeenSet; }
-
-    /**
-     * <p>The IPv6 address.</p>
-     */
-    inline void SetIpv6Address(const Aws::String& value) { m_ipv6AddressHasBeenSet = true; m_ipv6Address = value; }
-
-    /**
-     * <p>The IPv6 address.</p>
-     */
-    inline void SetIpv6Address(Aws::String&& value) { m_ipv6AddressHasBeenSet = true; m_ipv6Address = std::move(value); }
-
-    /**
-     * <p>The IPv6 address.</p>
-     */
-    inline void SetIpv6Address(const char* value) { m_ipv6AddressHasBeenSet = true; m_ipv6Address.assign(value); }
-
-    /**
-     * <p>The IPv6 address.</p>
-     */
-    inline ScheduledInstancesIpv6Address& WithIpv6Address(const Aws::String& value) { SetIpv6Address(value); return *this;}
-
-    /**
-     * <p>The IPv6 address.</p>
-     */
-    inline ScheduledInstancesIpv6Address& WithIpv6Address(Aws::String&& value) { SetIpv6Address(std::move(value)); return *this;}
-
-    /**
-     * <p>The IPv6 address.</p>
-     */
-    inline ScheduledInstancesIpv6Address& WithIpv6Address(const char* value) { SetIpv6Address(value); return *this;}
-
+    template<typename Ipv6AddressT = Aws::String>
+    void SetIpv6Address(Ipv6AddressT&& value) { m_ipv6AddressHasBeenSet = true; m_ipv6Address = std::forward<Ipv6AddressT>(value); }
+    template<typename Ipv6AddressT = Aws::String>
+    ScheduledInstancesIpv6Address& WithIpv6Address(Ipv6AddressT&& value) { SetIpv6Address(std::forward<Ipv6AddressT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ipv6Address;

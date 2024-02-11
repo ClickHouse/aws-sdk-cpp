@@ -35,166 +35,61 @@ namespace Model
   class CognitoOptions
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API CognitoOptions();
+    AWS_ELASTICSEARCHSERVICE_API CognitoOptions() = default;
     AWS_ELASTICSEARCHSERVICE_API CognitoOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API CognitoOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the option to enable Cognito for Kibana authentication.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Specifies the option to enable Cognito for Kibana authentication.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Specifies the option to enable Cognito for Kibana authentication.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Specifies the option to enable Cognito for Kibana authentication.</p>
-     */
     inline CognitoOptions& WithEnabled(bool value) { SetEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Specifies the Cognito user pool ID for Kibana authentication.</p>
      */
-    inline const Aws::String& GetUserPoolId() const{ return m_userPoolId; }
-
-    /**
-     * <p>Specifies the Cognito user pool ID for Kibana authentication.</p>
-     */
+    inline const Aws::String& GetUserPoolId() const { return m_userPoolId; }
     inline bool UserPoolIdHasBeenSet() const { return m_userPoolIdHasBeenSet; }
+    template<typename UserPoolIdT = Aws::String>
+    void SetUserPoolId(UserPoolIdT&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::forward<UserPoolIdT>(value); }
+    template<typename UserPoolIdT = Aws::String>
+    CognitoOptions& WithUserPoolId(UserPoolIdT&& value) { SetUserPoolId(std::forward<UserPoolIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the Cognito user pool ID for Kibana authentication.</p>
-     */
-    inline void SetUserPoolId(const Aws::String& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = value; }
-
-    /**
-     * <p>Specifies the Cognito user pool ID for Kibana authentication.</p>
-     */
-    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::move(value); }
-
-    /**
-     * <p>Specifies the Cognito user pool ID for Kibana authentication.</p>
-     */
-    inline void SetUserPoolId(const char* value) { m_userPoolIdHasBeenSet = true; m_userPoolId.assign(value); }
-
-    /**
-     * <p>Specifies the Cognito user pool ID for Kibana authentication.</p>
-     */
-    inline CognitoOptions& WithUserPoolId(const Aws::String& value) { SetUserPoolId(value); return *this;}
-
-    /**
-     * <p>Specifies the Cognito user pool ID for Kibana authentication.</p>
-     */
-    inline CognitoOptions& WithUserPoolId(Aws::String&& value) { SetUserPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the Cognito user pool ID for Kibana authentication.</p>
-     */
-    inline CognitoOptions& WithUserPoolId(const char* value) { SetUserPoolId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the Cognito identity pool ID for Kibana authentication.</p>
      */
-    inline const Aws::String& GetIdentityPoolId() const{ return m_identityPoolId; }
-
-    /**
-     * <p>Specifies the Cognito identity pool ID for Kibana authentication.</p>
-     */
+    inline const Aws::String& GetIdentityPoolId() const { return m_identityPoolId; }
     inline bool IdentityPoolIdHasBeenSet() const { return m_identityPoolIdHasBeenSet; }
+    template<typename IdentityPoolIdT = Aws::String>
+    void SetIdentityPoolId(IdentityPoolIdT&& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = std::forward<IdentityPoolIdT>(value); }
+    template<typename IdentityPoolIdT = Aws::String>
+    CognitoOptions& WithIdentityPoolId(IdentityPoolIdT&& value) { SetIdentityPoolId(std::forward<IdentityPoolIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the Cognito identity pool ID for Kibana authentication.</p>
-     */
-    inline void SetIdentityPoolId(const Aws::String& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = value; }
-
-    /**
-     * <p>Specifies the Cognito identity pool ID for Kibana authentication.</p>
-     */
-    inline void SetIdentityPoolId(Aws::String&& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = std::move(value); }
-
-    /**
-     * <p>Specifies the Cognito identity pool ID for Kibana authentication.</p>
-     */
-    inline void SetIdentityPoolId(const char* value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId.assign(value); }
-
-    /**
-     * <p>Specifies the Cognito identity pool ID for Kibana authentication.</p>
-     */
-    inline CognitoOptions& WithIdentityPoolId(const Aws::String& value) { SetIdentityPoolId(value); return *this;}
-
-    /**
-     * <p>Specifies the Cognito identity pool ID for Kibana authentication.</p>
-     */
-    inline CognitoOptions& WithIdentityPoolId(Aws::String&& value) { SetIdentityPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the Cognito identity pool ID for Kibana authentication.</p>
-     */
-    inline CognitoOptions& WithIdentityPoolId(const char* value) { SetIdentityPoolId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the role ARN that provides Elasticsearch permissions for accessing
      * Cognito resources.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>Specifies the role ARN that provides Elasticsearch permissions for accessing
-     * Cognito resources.</p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
-
-    /**
-     * <p>Specifies the role ARN that provides Elasticsearch permissions for accessing
-     * Cognito resources.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>Specifies the role ARN that provides Elasticsearch permissions for accessing
-     * Cognito resources.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>Specifies the role ARN that provides Elasticsearch permissions for accessing
-     * Cognito resources.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>Specifies the role ARN that provides Elasticsearch permissions for accessing
-     * Cognito resources.</p>
-     */
-    inline CognitoOptions& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>Specifies the role ARN that provides Elasticsearch permissions for accessing
-     * Cognito resources.</p>
-     */
-    inline CognitoOptions& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the role ARN that provides Elasticsearch permissions for accessing
-     * Cognito resources.</p>
-     */
-    inline CognitoOptions& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    CognitoOptions& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
 
     Aws::String m_userPoolId;

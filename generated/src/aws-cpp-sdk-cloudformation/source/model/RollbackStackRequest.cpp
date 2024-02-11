@@ -10,13 +10,6 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-RollbackStackRequest::RollbackStackRequest() : 
-    m_stackNameHasBeenSet(false),
-    m_roleARNHasBeenSet(false),
-    m_clientRequestTokenHasBeenSet(false)
-{
-}
-
 Aws::String RollbackStackRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -34,6 +27,11 @@ Aws::String RollbackStackRequest::SerializePayload() const
   if(m_clientRequestTokenHasBeenSet)
   {
     ss << "ClientRequestToken=" << StringUtils::URLEncode(m_clientRequestToken.c_str()) << "&";
+  }
+
+  if(m_retainExceptOnCreateHasBeenSet)
+  {
+    ss << "RetainExceptOnCreate=" << std::boolalpha << m_retainExceptOnCreate << "&";
   }
 
   ss << "Version=2010-05-15";

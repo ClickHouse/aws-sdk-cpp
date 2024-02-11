@@ -22,10 +22,9 @@ namespace Model
   class GetMediaForFragmentListResult
   {
   public:
-    AWS_KINESISVIDEOARCHIVEDMEDIA_API GetMediaForFragmentListResult();
-    //We have to define these because Microsoft doesn't auto generate them
-    AWS_KINESISVIDEOARCHIVEDMEDIA_API GetMediaForFragmentListResult(GetMediaForFragmentListResult&&);
-    AWS_KINESISVIDEOARCHIVEDMEDIA_API GetMediaForFragmentListResult& operator=(GetMediaForFragmentListResult&&);
+    AWS_KINESISVIDEOARCHIVEDMEDIA_API GetMediaForFragmentListResult() = default;
+    AWS_KINESISVIDEOARCHIVEDMEDIA_API GetMediaForFragmentListResult(GetMediaForFragmentListResult&&) = default;
+    AWS_KINESISVIDEOARCHIVEDMEDIA_API GetMediaForFragmentListResult& operator=(GetMediaForFragmentListResult&&) = default;
     //we delete these because Microsoft doesn't handle move generation correctly
     //and we therefore don't trust them to get it right here either.
     GetMediaForFragmentListResult(const GetMediaForFragmentListResult&) = delete;
@@ -37,42 +36,18 @@ namespace Model
 
 
 
+    ///@{
     /**
      * <p>The content type of the requested media.</p>
      */
-    inline const Aws::String& GetContentType() const{ return m_contentType; }
+    inline const Aws::String& GetContentType() const { return m_contentType; }
+    template<typename ContentTypeT = Aws::String>
+    void SetContentType(ContentTypeT&& value) { m_contentTypeHasBeenSet = true; m_contentType = std::forward<ContentTypeT>(value); }
+    template<typename ContentTypeT = Aws::String>
+    GetMediaForFragmentListResult& WithContentType(ContentTypeT&& value) { SetContentType(std::forward<ContentTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The content type of the requested media.</p>
-     */
-    inline void SetContentType(const Aws::String& value) { m_contentType = value; }
-
-    /**
-     * <p>The content type of the requested media.</p>
-     */
-    inline void SetContentType(Aws::String&& value) { m_contentType = std::move(value); }
-
-    /**
-     * <p>The content type of the requested media.</p>
-     */
-    inline void SetContentType(const char* value) { m_contentType.assign(value); }
-
-    /**
-     * <p>The content type of the requested media.</p>
-     */
-    inline GetMediaForFragmentListResult& WithContentType(const Aws::String& value) { SetContentType(value); return *this;}
-
-    /**
-     * <p>The content type of the requested media.</p>
-     */
-    inline GetMediaForFragmentListResult& WithContentType(Aws::String&& value) { SetContentType(std::move(value)); return *this;}
-
-    /**
-     * <p>The content type of the requested media.</p>
-     */
-    inline GetMediaForFragmentListResult& WithContentType(const char* value) { SetContentType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The payload that Kinesis Video Streams returns is a sequence of chunks from
      * the specified stream. For information about the chunks, see <a
@@ -86,60 +61,33 @@ namespace Model
      * Producer-side timestamp of the fragment.</p> </li> </ul> <p>The following tags
      * will be included if an exception occurs:</p> <ul> <li>
      * <p>AWS_KINESISVIDEO_FRAGMENT_NUMBER - The number of the fragment that threw the
-     * exception</p> </li> <li> <p>AWS_KINESISVIDEO_EXCEPTION_ERROR_CODE - The integer
-     * code of the exception</p> </li> <li> <p>AWS_KINESISVIDEO_EXCEPTION_MESSAGE - A
-     * text description of the exception</p> </li> </ul>
+     * exception </p> </li> <li> <p>AWS_KINESISVIDEO_EXCEPTION_ERROR_CODE - The integer
+     * code of the </p> </li> <li> <p>AWS_KINESISVIDEO_EXCEPTION_MESSAGE - A text
+     * description of the exception </p> </li> </ul>
      */
     inline Aws::IOStream& GetPayload() const { return m_payload.GetUnderlyingStream(); }
-
-    /**
-     * <p>The payload that Kinesis Video Streams returns is a sequence of chunks from
-     * the specified stream. For information about the chunks, see <a
-     * href="http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_dataplane_PutMedia.html">PutMedia</a>.
-     * The chunks that Kinesis Video Streams returns in the
-     * <code>GetMediaForFragmentList</code> call also include the following additional
-     * Matroska (MKV) tags: </p> <ul> <li> <p>AWS_KINESISVIDEO_FRAGMENT_NUMBER -
-     * Fragment number returned in the chunk.</p> </li> <li>
-     * <p>AWS_KINESISVIDEO_SERVER_SIDE_TIMESTAMP - Server-side timestamp of the
-     * fragment.</p> </li> <li> <p>AWS_KINESISVIDEO_PRODUCER_SIDE_TIMESTAMP -
-     * Producer-side timestamp of the fragment.</p> </li> </ul> <p>The following tags
-     * will be included if an exception occurs:</p> <ul> <li>
-     * <p>AWS_KINESISVIDEO_FRAGMENT_NUMBER - The number of the fragment that threw the
-     * exception</p> </li> <li> <p>AWS_KINESISVIDEO_EXCEPTION_ERROR_CODE - The integer
-     * code of the exception</p> </li> <li> <p>AWS_KINESISVIDEO_EXCEPTION_MESSAGE - A
-     * text description of the exception</p> </li> </ul>
-     */
     inline void ReplaceBody(Aws::IOStream* body) { m_payload = Aws::Utils::Stream::ResponseStream(body); }
 
+    ///@}
 
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetMediaForFragmentListResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetMediaForFragmentListResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetMediaForFragmentListResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetMediaForFragmentListResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_contentType;
+    bool m_contentTypeHasBeenSet = false;
 
-    Aws::Utils::Stream::ResponseStream m_payload;
+    Aws::Utils::Stream::ResponseStream m_payload{};
+    bool m_payloadHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

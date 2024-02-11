@@ -18,17 +18,7 @@ namespace AmplifyUIBuilder
 namespace Model
 {
 
-FormDataTypeConfig::FormDataTypeConfig() : 
-    m_dataSourceType(FormDataSourceType::NOT_SET),
-    m_dataSourceTypeHasBeenSet(false),
-    m_dataTypeNameHasBeenSet(false)
-{
-}
-
-FormDataTypeConfig::FormDataTypeConfig(JsonView jsonValue) : 
-    m_dataSourceType(FormDataSourceType::NOT_SET),
-    m_dataSourceTypeHasBeenSet(false),
-    m_dataTypeNameHasBeenSet(false)
+FormDataTypeConfig::FormDataTypeConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ FormDataTypeConfig& FormDataTypeConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("dataSourceType"))
   {
     m_dataSourceType = FormDataSourceTypeMapper::GetFormDataSourceTypeForName(jsonValue.GetString("dataSourceType"));
-
     m_dataSourceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("dataTypeName"))
   {
     m_dataTypeName = jsonValue.GetString("dataTypeName");
-
     m_dataTypeNameHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -33,127 +33,45 @@ namespace Model
   class Sort
   {
   public:
-    AWS_MARKETPLACECATALOG_API Sort();
+    AWS_MARKETPLACECATALOG_API Sort() = default;
     AWS_MARKETPLACECATALOG_API Sort(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API Sort& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>For <code>ListEntities</code>, supported attributes include
-     * <code>LastModifiedDate</code> (default), <code>Visibility</code>,
-     * <code>EntityId</code>, and <code>Name</code>.</p> <p>For
+     * <code>LastModifiedDate</code> (default) and <code>EntityId</code>. In addition
+     * to <code>LastModifiedDate</code> and <code>EntityId</code>, each
+     * <code>EntityType</code> might support additional fields.</p> <p>For
      * <code>ListChangeSets</code>, supported attributes include <code>StartTime</code>
      * and <code>EndTime</code>.</p>
      */
-    inline const Aws::String& GetSortBy() const{ return m_sortBy; }
-
-    /**
-     * <p>For <code>ListEntities</code>, supported attributes include
-     * <code>LastModifiedDate</code> (default), <code>Visibility</code>,
-     * <code>EntityId</code>, and <code>Name</code>.</p> <p>For
-     * <code>ListChangeSets</code>, supported attributes include <code>StartTime</code>
-     * and <code>EndTime</code>.</p>
-     */
+    inline const Aws::String& GetSortBy() const { return m_sortBy; }
     inline bool SortByHasBeenSet() const { return m_sortByHasBeenSet; }
+    template<typename SortByT = Aws::String>
+    void SetSortBy(SortByT&& value) { m_sortByHasBeenSet = true; m_sortBy = std::forward<SortByT>(value); }
+    template<typename SortByT = Aws::String>
+    Sort& WithSortBy(SortByT&& value) { SetSortBy(std::forward<SortByT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>For <code>ListEntities</code>, supported attributes include
-     * <code>LastModifiedDate</code> (default), <code>Visibility</code>,
-     * <code>EntityId</code>, and <code>Name</code>.</p> <p>For
-     * <code>ListChangeSets</code>, supported attributes include <code>StartTime</code>
-     * and <code>EndTime</code>.</p>
-     */
-    inline void SetSortBy(const Aws::String& value) { m_sortByHasBeenSet = true; m_sortBy = value; }
-
-    /**
-     * <p>For <code>ListEntities</code>, supported attributes include
-     * <code>LastModifiedDate</code> (default), <code>Visibility</code>,
-     * <code>EntityId</code>, and <code>Name</code>.</p> <p>For
-     * <code>ListChangeSets</code>, supported attributes include <code>StartTime</code>
-     * and <code>EndTime</code>.</p>
-     */
-    inline void SetSortBy(Aws::String&& value) { m_sortByHasBeenSet = true; m_sortBy = std::move(value); }
-
-    /**
-     * <p>For <code>ListEntities</code>, supported attributes include
-     * <code>LastModifiedDate</code> (default), <code>Visibility</code>,
-     * <code>EntityId</code>, and <code>Name</code>.</p> <p>For
-     * <code>ListChangeSets</code>, supported attributes include <code>StartTime</code>
-     * and <code>EndTime</code>.</p>
-     */
-    inline void SetSortBy(const char* value) { m_sortByHasBeenSet = true; m_sortBy.assign(value); }
-
-    /**
-     * <p>For <code>ListEntities</code>, supported attributes include
-     * <code>LastModifiedDate</code> (default), <code>Visibility</code>,
-     * <code>EntityId</code>, and <code>Name</code>.</p> <p>For
-     * <code>ListChangeSets</code>, supported attributes include <code>StartTime</code>
-     * and <code>EndTime</code>.</p>
-     */
-    inline Sort& WithSortBy(const Aws::String& value) { SetSortBy(value); return *this;}
-
-    /**
-     * <p>For <code>ListEntities</code>, supported attributes include
-     * <code>LastModifiedDate</code> (default), <code>Visibility</code>,
-     * <code>EntityId</code>, and <code>Name</code>.</p> <p>For
-     * <code>ListChangeSets</code>, supported attributes include <code>StartTime</code>
-     * and <code>EndTime</code>.</p>
-     */
-    inline Sort& WithSortBy(Aws::String&& value) { SetSortBy(std::move(value)); return *this;}
-
-    /**
-     * <p>For <code>ListEntities</code>, supported attributes include
-     * <code>LastModifiedDate</code> (default), <code>Visibility</code>,
-     * <code>EntityId</code>, and <code>Name</code>.</p> <p>For
-     * <code>ListChangeSets</code>, supported attributes include <code>StartTime</code>
-     * and <code>EndTime</code>.</p>
-     */
-    inline Sort& WithSortBy(const char* value) { SetSortBy(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The sorting order. Can be <code>ASCENDING</code> or <code>DESCENDING</code>.
      * The default value is <code>DESCENDING</code>.</p>
      */
-    inline const SortOrder& GetSortOrder() const{ return m_sortOrder; }
-
-    /**
-     * <p>The sorting order. Can be <code>ASCENDING</code> or <code>DESCENDING</code>.
-     * The default value is <code>DESCENDING</code>.</p>
-     */
+    inline SortOrder GetSortOrder() const { return m_sortOrder; }
     inline bool SortOrderHasBeenSet() const { return m_sortOrderHasBeenSet; }
-
-    /**
-     * <p>The sorting order. Can be <code>ASCENDING</code> or <code>DESCENDING</code>.
-     * The default value is <code>DESCENDING</code>.</p>
-     */
-    inline void SetSortOrder(const SortOrder& value) { m_sortOrderHasBeenSet = true; m_sortOrder = value; }
-
-    /**
-     * <p>The sorting order. Can be <code>ASCENDING</code> or <code>DESCENDING</code>.
-     * The default value is <code>DESCENDING</code>.</p>
-     */
-    inline void SetSortOrder(SortOrder&& value) { m_sortOrderHasBeenSet = true; m_sortOrder = std::move(value); }
-
-    /**
-     * <p>The sorting order. Can be <code>ASCENDING</code> or <code>DESCENDING</code>.
-     * The default value is <code>DESCENDING</code>.</p>
-     */
-    inline Sort& WithSortOrder(const SortOrder& value) { SetSortOrder(value); return *this;}
-
-    /**
-     * <p>The sorting order. Can be <code>ASCENDING</code> or <code>DESCENDING</code>.
-     * The default value is <code>DESCENDING</code>.</p>
-     */
-    inline Sort& WithSortOrder(SortOrder&& value) { SetSortOrder(std::move(value)); return *this;}
-
+    inline void SetSortOrder(SortOrder value) { m_sortOrderHasBeenSet = true; m_sortOrder = value; }
+    inline Sort& WithSortOrder(SortOrder value) { SetSortOrder(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_sortBy;
     bool m_sortByHasBeenSet = false;
 
-    SortOrder m_sortOrder;
+    SortOrder m_sortOrder{SortOrder::NOT_SET};
     bool m_sortOrderHasBeenSet = false;
   };
 

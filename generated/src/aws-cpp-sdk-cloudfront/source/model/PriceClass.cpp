@@ -23,6 +23,7 @@ namespace Aws
         static const int PriceClass_100_HASH = HashingUtils::HashString("PriceClass_100");
         static const int PriceClass_200_HASH = HashingUtils::HashString("PriceClass_200");
         static const int PriceClass_All_HASH = HashingUtils::HashString("PriceClass_All");
+        static const int None_HASH = HashingUtils::HashString("None");
 
 
         PriceClass GetPriceClassForName(const Aws::String& name)
@@ -40,6 +41,10 @@ namespace Aws
           {
             return PriceClass::PriceClass_All;
           }
+          else if (hashCode == None_HASH)
+          {
+            return PriceClass::None;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -54,12 +59,16 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case PriceClass::NOT_SET:
+            return {};
           case PriceClass::PriceClass_100:
             return "PriceClass_100";
           case PriceClass::PriceClass_200:
             return "PriceClass_200";
           case PriceClass::PriceClass_All:
             return "PriceClass_All";
+          case PriceClass::None:
+            return "None";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

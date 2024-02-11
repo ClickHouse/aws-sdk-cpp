@@ -32,93 +32,52 @@ namespace Model
   class UpdatePipeSourceActiveMQBrokerParameters
   {
   public:
-    AWS_PIPES_API UpdatePipeSourceActiveMQBrokerParameters();
+    AWS_PIPES_API UpdatePipeSourceActiveMQBrokerParameters() = default;
     AWS_PIPES_API UpdatePipeSourceActiveMQBrokerParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_PIPES_API UpdatePipeSourceActiveMQBrokerParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PIPES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The maximum number of records to include in each batch.</p>
-     */
-    inline int GetBatchSize() const{ return m_batchSize; }
-
-    /**
-     * <p>The maximum number of records to include in each batch.</p>
-     */
-    inline bool BatchSizeHasBeenSet() const { return m_batchSizeHasBeenSet; }
-
-    /**
-     * <p>The maximum number of records to include in each batch.</p>
-     */
-    inline void SetBatchSize(int value) { m_batchSizeHasBeenSet = true; m_batchSize = value; }
-
-    /**
-     * <p>The maximum number of records to include in each batch.</p>
-     */
-    inline UpdatePipeSourceActiveMQBrokerParameters& WithBatchSize(int value) { SetBatchSize(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The credentials needed to access the resource.</p>
      */
-    inline const MQBrokerAccessCredentials& GetCredentials() const{ return m_credentials; }
-
-    /**
-     * <p>The credentials needed to access the resource.</p>
-     */
+    inline const MQBrokerAccessCredentials& GetCredentials() const { return m_credentials; }
     inline bool CredentialsHasBeenSet() const { return m_credentialsHasBeenSet; }
+    template<typename CredentialsT = MQBrokerAccessCredentials>
+    void SetCredentials(CredentialsT&& value) { m_credentialsHasBeenSet = true; m_credentials = std::forward<CredentialsT>(value); }
+    template<typename CredentialsT = MQBrokerAccessCredentials>
+    UpdatePipeSourceActiveMQBrokerParameters& WithCredentials(CredentialsT&& value) { SetCredentials(std::forward<CredentialsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The credentials needed to access the resource.</p>
+     * <p>The maximum number of records to include in each batch.</p>
      */
-    inline void SetCredentials(const MQBrokerAccessCredentials& value) { m_credentialsHasBeenSet = true; m_credentials = value; }
+    inline int GetBatchSize() const { return m_batchSize; }
+    inline bool BatchSizeHasBeenSet() const { return m_batchSizeHasBeenSet; }
+    inline void SetBatchSize(int value) { m_batchSizeHasBeenSet = true; m_batchSize = value; }
+    inline UpdatePipeSourceActiveMQBrokerParameters& WithBatchSize(int value) { SetBatchSize(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The credentials needed to access the resource.</p>
-     */
-    inline void SetCredentials(MQBrokerAccessCredentials&& value) { m_credentialsHasBeenSet = true; m_credentials = std::move(value); }
-
-    /**
-     * <p>The credentials needed to access the resource.</p>
-     */
-    inline UpdatePipeSourceActiveMQBrokerParameters& WithCredentials(const MQBrokerAccessCredentials& value) { SetCredentials(value); return *this;}
-
-    /**
-     * <p>The credentials needed to access the resource.</p>
-     */
-    inline UpdatePipeSourceActiveMQBrokerParameters& WithCredentials(MQBrokerAccessCredentials&& value) { SetCredentials(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum length of a time to wait for events.</p>
      */
-    inline int GetMaximumBatchingWindowInSeconds() const{ return m_maximumBatchingWindowInSeconds; }
-
-    /**
-     * <p>The maximum length of a time to wait for events.</p>
-     */
+    inline int GetMaximumBatchingWindowInSeconds() const { return m_maximumBatchingWindowInSeconds; }
     inline bool MaximumBatchingWindowInSecondsHasBeenSet() const { return m_maximumBatchingWindowInSecondsHasBeenSet; }
-
-    /**
-     * <p>The maximum length of a time to wait for events.</p>
-     */
     inline void SetMaximumBatchingWindowInSeconds(int value) { m_maximumBatchingWindowInSecondsHasBeenSet = true; m_maximumBatchingWindowInSeconds = value; }
-
-    /**
-     * <p>The maximum length of a time to wait for events.</p>
-     */
     inline UpdatePipeSourceActiveMQBrokerParameters& WithMaximumBatchingWindowInSeconds(int value) { SetMaximumBatchingWindowInSeconds(value); return *this;}
-
+    ///@}
   private:
-
-    int m_batchSize;
-    bool m_batchSizeHasBeenSet = false;
 
     MQBrokerAccessCredentials m_credentials;
     bool m_credentialsHasBeenSet = false;
 
-    int m_maximumBatchingWindowInSeconds;
+    int m_batchSize{0};
+    bool m_batchSizeHasBeenSet = false;
+
+    int m_maximumBatchingWindowInSeconds{0};
     bool m_maximumBatchingWindowInSecondsHasBeenSet = false;
   };
 

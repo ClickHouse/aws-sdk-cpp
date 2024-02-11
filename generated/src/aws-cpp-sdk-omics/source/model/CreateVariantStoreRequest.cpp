@@ -12,22 +12,13 @@ using namespace Aws::Omics::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateVariantStoreRequest::CreateVariantStoreRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_referenceHasBeenSet(false),
-    m_sseConfigHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateVariantStoreRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_descriptionHasBeenSet)
+  if(m_referenceHasBeenSet)
   {
-   payload.WithString("description", m_description);
+   payload.WithObject("reference", m_reference.Jsonize());
 
   }
 
@@ -37,15 +28,9 @@ Aws::String CreateVariantStoreRequest::SerializePayload() const
 
   }
 
-  if(m_referenceHasBeenSet)
+  if(m_descriptionHasBeenSet)
   {
-   payload.WithObject("reference", m_reference.Jsonize());
-
-  }
-
-  if(m_sseConfigHasBeenSet)
-  {
-   payload.WithObject("sseConfig", m_sseConfig.Jsonize());
+   payload.WithString("description", m_description);
 
   }
 
@@ -57,6 +42,12 @@ Aws::String CreateVariantStoreRequest::SerializePayload() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_sseConfigHasBeenSet)
+  {
+   payload.WithObject("sseConfig", m_sseConfig.Jsonize());
 
   }
 

@@ -27,10 +27,13 @@ const char* SEPARATOR = "://";
 bool s_compliantRfc3986Encoding = false;
 void SetCompliantRfc3986Encoding(bool compliant) { s_compliantRfc3986Encoding = compliant; }
 
-Aws::String urlEncodeSegment(const Aws::String& segment)
+bool s_preservePathSeparators = false;
+void SetPreservePathSeparators(bool preservePathSeparators) { s_preservePathSeparators = preservePathSeparators; }
+
+Aws::String urlEncodeSegment(const Aws::String& segment, bool rfcEncoded = false)
 {
     // consolidates legacy escaping logic into one local method
-    if (s_compliantRfc3986Encoding)
+    if (rfcEncoded || s_compliantRfc3986Encoding)
     {
         return StringUtils::URLEncode(segment.c_str());
     }
@@ -141,7 +144,7 @@ void URI::SetScheme(Scheme value)
     }
 }
 
-Aws::String URI::URLEncodePathRFC3986(const Aws::String& path)
+Aws::String URI::URLEncodePathRFC3986(const Aws::String& path, bool rfcCompliantEncoding)
 {
     if (path.empty())
     {
@@ -155,7 +158,7 @@ Aws::String URI::URLEncodePathRFC3986(const Aws::String& path)
     // escape characters appearing in a URL path according to RFC 3986
     for (const auto& segment : pathParts)
     {
-        ss << '/' << urlEncodeSegment(segment);
+        ss << '/' << urlEncodeSegment(segment, rfcCompliantEncoding);
     }
 
     // if the last character was also a slash, then add that back here.
@@ -237,7 +240,7 @@ Aws::String URI::GetURLEncodedPathRFC3986() const
     // (mostly; there is some non-standards legacy support that can be disabled)
     for (const auto& segment : m_pathSegments)
     {
-        ss << '/' << urlEncodeSegment(segment);
+        ss << '/' << urlEncodeSegment(segment, m_useRfcEncoding);
     }
 
     if (m_pathSegments.empty() || m_pathHasTrailingSlash)
@@ -596,4 +599,16 @@ Aws::String URI::GetFormParameters() const
 bool URI::CompareURIParts(const URI& other) const
 {
     return m_scheme == other.m_scheme && m_authority == other.m_authority && GetPath() == other.GetPath() && m_queryString == other.m_queryString;
+}
+
+Aws::String URI::GetHost() const {
+  Aws::String host{m_authority};
+  const auto begin = host.find('[');
+  const auto end = host.rfind(']');
+  if (begin != Aws::String::npos && end != Aws::String::npos && begin + 1 < end) {
+    host = host.substr(begin + 1, end - begin - 1);
+  } else if (begin != Aws::String::npos && end != Aws::String::npos && begin + 1 == end) {
+    host = "";
+  }
+  return host;
 }

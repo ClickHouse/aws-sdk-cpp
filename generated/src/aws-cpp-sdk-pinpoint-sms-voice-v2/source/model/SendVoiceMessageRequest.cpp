@@ -12,24 +12,6 @@ using namespace Aws::PinpointSMSVoiceV2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-SendVoiceMessageRequest::SendVoiceMessageRequest() : 
-    m_destinationPhoneNumberHasBeenSet(false),
-    m_originationIdentityHasBeenSet(false),
-    m_messageBodyHasBeenSet(false),
-    m_messageBodyTextType(VoiceMessageBodyTextType::NOT_SET),
-    m_messageBodyTextTypeHasBeenSet(false),
-    m_voiceId(VoiceId::NOT_SET),
-    m_voiceIdHasBeenSet(false),
-    m_configurationSetNameHasBeenSet(false),
-    m_maxPricePerMinuteHasBeenSet(false),
-    m_timeToLive(0),
-    m_timeToLiveHasBeenSet(false),
-    m_contextHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String SendVoiceMessageRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -94,6 +76,18 @@ Aws::String SendVoiceMessageRequest::SerializePayload() const
   if(m_dryRunHasBeenSet)
   {
    payload.WithBool("DryRun", m_dryRun);
+
+  }
+
+  if(m_protectConfigurationIdHasBeenSet)
+  {
+   payload.WithString("ProtectConfigurationId", m_protectConfigurationId);
+
+  }
+
+  if(m_messageFeedbackEnabledHasBeenSet)
+  {
+   payload.WithBool("MessageFeedbackEnabled", m_messageFeedbackEnabled);
 
   }
 

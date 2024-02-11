@@ -28,101 +28,49 @@ namespace Model
   class UpdateMonitorResult
   {
   public:
-    AWS_INTERNETMONITOR_API UpdateMonitorResult();
+    AWS_INTERNETMONITOR_API UpdateMonitorResult() = default;
     AWS_INTERNETMONITOR_API UpdateMonitorResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_INTERNETMONITOR_API UpdateMonitorResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the monitor.</p>
      */
-    inline const Aws::String& GetMonitorArn() const{ return m_monitorArn; }
+    inline const Aws::String& GetMonitorArn() const { return m_monitorArn; }
+    template<typename MonitorArnT = Aws::String>
+    void SetMonitorArn(MonitorArnT&& value) { m_monitorArnHasBeenSet = true; m_monitorArn = std::forward<MonitorArnT>(value); }
+    template<typename MonitorArnT = Aws::String>
+    UpdateMonitorResult& WithMonitorArn(MonitorArnT&& value) { SetMonitorArn(std::forward<MonitorArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the monitor.</p>
-     */
-    inline void SetMonitorArn(const Aws::String& value) { m_monitorArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the monitor.</p>
-     */
-    inline void SetMonitorArn(Aws::String&& value) { m_monitorArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the monitor.</p>
-     */
-    inline void SetMonitorArn(const char* value) { m_monitorArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the monitor.</p>
-     */
-    inline UpdateMonitorResult& WithMonitorArn(const Aws::String& value) { SetMonitorArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the monitor.</p>
-     */
-    inline UpdateMonitorResult& WithMonitorArn(Aws::String&& value) { SetMonitorArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the monitor.</p>
-     */
-    inline UpdateMonitorResult& WithMonitorArn(const char* value) { SetMonitorArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of a monitor.</p>
      */
-    inline const MonitorConfigState& GetStatus() const{ return m_status; }
+    inline MonitorConfigState GetStatus() const { return m_status; }
+    inline void SetStatus(MonitorConfigState value) { m_statusHasBeenSet = true; m_status = value; }
+    inline UpdateMonitorResult& WithStatus(MonitorConfigState value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of a monitor.</p>
-     */
-    inline void SetStatus(const MonitorConfigState& value) { m_status = value; }
-
-    /**
-     * <p>The status of a monitor.</p>
-     */
-    inline void SetStatus(MonitorConfigState&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of a monitor.</p>
-     */
-    inline UpdateMonitorResult& WithStatus(const MonitorConfigState& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of a monitor.</p>
-     */
-    inline UpdateMonitorResult& WithStatus(MonitorConfigState&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateMonitorResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateMonitorResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateMonitorResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateMonitorResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_monitorArn;
+    bool m_monitorArnHasBeenSet = false;
 
-    MonitorConfigState m_status;
+    MonitorConfigState m_status{MonitorConfigState::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

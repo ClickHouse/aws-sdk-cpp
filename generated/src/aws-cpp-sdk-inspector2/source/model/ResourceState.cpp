@@ -18,17 +18,7 @@ namespace Inspector2
 namespace Model
 {
 
-ResourceState::ResourceState() : 
-    m_ec2HasBeenSet(false),
-    m_ecrHasBeenSet(false),
-    m_lambdaHasBeenSet(false)
-{
-}
-
-ResourceState::ResourceState(JsonView jsonValue) : 
-    m_ec2HasBeenSet(false),
-    m_ecrHasBeenSet(false),
-    m_lambdaHasBeenSet(false)
+ResourceState::ResourceState(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,28 @@ ResourceState& ResourceState::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ec2"))
   {
     m_ec2 = jsonValue.GetObject("ec2");
-
     m_ec2HasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ecr"))
   {
     m_ecr = jsonValue.GetObject("ecr");
-
     m_ecrHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lambda"))
   {
     m_lambda = jsonValue.GetObject("lambda");
-
     m_lambdaHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("lambdaCode"))
+  {
+    m_lambdaCode = jsonValue.GetObject("lambdaCode");
+    m_lambdaCodeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("codeRepository"))
+  {
+    m_codeRepository = jsonValue.GetObject("codeRepository");
+    m_codeRepositoryHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -78,6 +72,18 @@ JsonValue ResourceState::Jsonize() const
   if(m_lambdaHasBeenSet)
   {
    payload.WithObject("lambda", m_lambda.Jsonize());
+
+  }
+
+  if(m_lambdaCodeHasBeenSet)
+  {
+   payload.WithObject("lambdaCode", m_lambdaCode.Jsonize());
+
+  }
+
+  if(m_codeRepositoryHasBeenSet)
+  {
+   payload.WithObject("codeRepository", m_codeRepository.Jsonize());
 
   }
 

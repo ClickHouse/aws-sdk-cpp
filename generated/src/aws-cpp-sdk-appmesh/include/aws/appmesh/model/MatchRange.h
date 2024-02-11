@@ -32,59 +32,37 @@ namespace Model
   class MatchRange
   {
   public:
-    AWS_APPMESH_API MatchRange();
+    AWS_APPMESH_API MatchRange() = default;
     AWS_APPMESH_API MatchRange(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API MatchRange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The end of the range.</p>
      */
-    inline long long GetEnd() const{ return m_end; }
-
-    /**
-     * <p>The end of the range.</p>
-     */
+    inline long long GetEnd() const { return m_end; }
     inline bool EndHasBeenSet() const { return m_endHasBeenSet; }
-
-    /**
-     * <p>The end of the range.</p>
-     */
     inline void SetEnd(long long value) { m_endHasBeenSet = true; m_end = value; }
-
-    /**
-     * <p>The end of the range.</p>
-     */
     inline MatchRange& WithEnd(long long value) { SetEnd(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The start of the range.</p>
      */
-    inline long long GetStart() const{ return m_start; }
-
-    /**
-     * <p>The start of the range.</p>
-     */
+    inline long long GetStart() const { return m_start; }
     inline bool StartHasBeenSet() const { return m_startHasBeenSet; }
-
-    /**
-     * <p>The start of the range.</p>
-     */
     inline void SetStart(long long value) { m_startHasBeenSet = true; m_start = value; }
-
-    /**
-     * <p>The start of the range.</p>
-     */
     inline MatchRange& WithStart(long long value) { SetStart(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_end;
+    long long m_end{0};
     bool m_endHasBeenSet = false;
 
-    long long m_start;
+    long long m_start{0};
     bool m_startHasBeenSet = false;
   };
 

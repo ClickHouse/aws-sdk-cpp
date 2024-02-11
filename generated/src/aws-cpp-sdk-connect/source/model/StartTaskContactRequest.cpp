@@ -12,23 +12,6 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartTaskContactRequest::StartTaskContactRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_previousContactIdHasBeenSet(false),
-    m_contactFlowIdHasBeenSet(false),
-    m_attributesHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_referencesHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_scheduledTimeHasBeenSet(false),
-    m_taskTemplateIdHasBeenSet(false),
-    m_quickConnectIdHasBeenSet(false),
-    m_relatedContactIdHasBeenSet(false)
-{
-}
-
 Aws::String StartTaskContactRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -111,6 +94,17 @@ Aws::String StartTaskContactRequest::SerializePayload() const
   if(m_relatedContactIdHasBeenSet)
   {
    payload.WithString("RelatedContactId", m_relatedContactId);
+
+  }
+
+  if(m_segmentAttributesHasBeenSet)
+  {
+   JsonValue segmentAttributesJsonMap;
+   for(auto& segmentAttributesItem : m_segmentAttributes)
+   {
+     segmentAttributesJsonMap.WithObject(segmentAttributesItem.first, segmentAttributesItem.second.Jsonize());
+   }
+   payload.WithObject("SegmentAttributes", std::move(segmentAttributesJsonMap));
 
   }
 

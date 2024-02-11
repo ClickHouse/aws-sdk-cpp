@@ -33,309 +33,101 @@ namespace Model
   class DeploymentModel
   {
   public:
-    AWS_SAGEMAKEREDGEMANAGER_API DeploymentModel();
+    AWS_SAGEMAKEREDGEMANAGER_API DeploymentModel() = default;
     AWS_SAGEMAKEREDGEMANAGER_API DeploymentModel(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKEREDGEMANAGER_API DeploymentModel& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKEREDGEMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique handle of the model.</p>
      */
-    inline const Aws::String& GetModelHandle() const{ return m_modelHandle; }
-
-    /**
-     * <p>The unique handle of the model.</p>
-     */
+    inline const Aws::String& GetModelHandle() const { return m_modelHandle; }
     inline bool ModelHandleHasBeenSet() const { return m_modelHandleHasBeenSet; }
+    template<typename ModelHandleT = Aws::String>
+    void SetModelHandle(ModelHandleT&& value) { m_modelHandleHasBeenSet = true; m_modelHandle = std::forward<ModelHandleT>(value); }
+    template<typename ModelHandleT = Aws::String>
+    DeploymentModel& WithModelHandle(ModelHandleT&& value) { SetModelHandle(std::forward<ModelHandleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique handle of the model.</p>
-     */
-    inline void SetModelHandle(const Aws::String& value) { m_modelHandleHasBeenSet = true; m_modelHandle = value; }
-
-    /**
-     * <p>The unique handle of the model.</p>
-     */
-    inline void SetModelHandle(Aws::String&& value) { m_modelHandleHasBeenSet = true; m_modelHandle = std::move(value); }
-
-    /**
-     * <p>The unique handle of the model.</p>
-     */
-    inline void SetModelHandle(const char* value) { m_modelHandleHasBeenSet = true; m_modelHandle.assign(value); }
-
-    /**
-     * <p>The unique handle of the model.</p>
-     */
-    inline DeploymentModel& WithModelHandle(const Aws::String& value) { SetModelHandle(value); return *this;}
-
-    /**
-     * <p>The unique handle of the model.</p>
-     */
-    inline DeploymentModel& WithModelHandle(Aws::String&& value) { SetModelHandle(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique handle of the model.</p>
-     */
-    inline DeploymentModel& WithModelHandle(const char* value) { SetModelHandle(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the model.</p>
      */
-    inline const Aws::String& GetModelName() const{ return m_modelName; }
-
-    /**
-     * <p>The name of the model.</p>
-     */
+    inline const Aws::String& GetModelName() const { return m_modelName; }
     inline bool ModelNameHasBeenSet() const { return m_modelNameHasBeenSet; }
+    template<typename ModelNameT = Aws::String>
+    void SetModelName(ModelNameT&& value) { m_modelNameHasBeenSet = true; m_modelName = std::forward<ModelNameT>(value); }
+    template<typename ModelNameT = Aws::String>
+    DeploymentModel& WithModelName(ModelNameT&& value) { SetModelName(std::forward<ModelNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the model.</p>
-     */
-    inline void SetModelName(const Aws::String& value) { m_modelNameHasBeenSet = true; m_modelName = value; }
-
-    /**
-     * <p>The name of the model.</p>
-     */
-    inline void SetModelName(Aws::String&& value) { m_modelNameHasBeenSet = true; m_modelName = std::move(value); }
-
-    /**
-     * <p>The name of the model.</p>
-     */
-    inline void SetModelName(const char* value) { m_modelNameHasBeenSet = true; m_modelName.assign(value); }
-
-    /**
-     * <p>The name of the model.</p>
-     */
-    inline DeploymentModel& WithModelName(const Aws::String& value) { SetModelName(value); return *this;}
-
-    /**
-     * <p>The name of the model.</p>
-     */
-    inline DeploymentModel& WithModelName(Aws::String&& value) { SetModelName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the model.</p>
-     */
-    inline DeploymentModel& WithModelName(const char* value) { SetModelName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the model.</p>
      */
-    inline const Aws::String& GetModelVersion() const{ return m_modelVersion; }
-
-    /**
-     * <p>The version of the model.</p>
-     */
+    inline const Aws::String& GetModelVersion() const { return m_modelVersion; }
     inline bool ModelVersionHasBeenSet() const { return m_modelVersionHasBeenSet; }
+    template<typename ModelVersionT = Aws::String>
+    void SetModelVersion(ModelVersionT&& value) { m_modelVersionHasBeenSet = true; m_modelVersion = std::forward<ModelVersionT>(value); }
+    template<typename ModelVersionT = Aws::String>
+    DeploymentModel& WithModelVersion(ModelVersionT&& value) { SetModelVersion(std::forward<ModelVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the model.</p>
-     */
-    inline void SetModelVersion(const Aws::String& value) { m_modelVersionHasBeenSet = true; m_modelVersion = value; }
-
-    /**
-     * <p>The version of the model.</p>
-     */
-    inline void SetModelVersion(Aws::String&& value) { m_modelVersionHasBeenSet = true; m_modelVersion = std::move(value); }
-
-    /**
-     * <p>The version of the model.</p>
-     */
-    inline void SetModelVersion(const char* value) { m_modelVersionHasBeenSet = true; m_modelVersion.assign(value); }
-
-    /**
-     * <p>The version of the model.</p>
-     */
-    inline DeploymentModel& WithModelVersion(const Aws::String& value) { SetModelVersion(value); return *this;}
-
-    /**
-     * <p>The version of the model.</p>
-     */
-    inline DeploymentModel& WithModelVersion(Aws::String&& value) { SetModelVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the model.</p>
-     */
-    inline DeploymentModel& WithModelVersion(const char* value) { SetModelVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The desired state of the model.</p>
      */
-    inline const ModelState& GetDesiredState() const{ return m_desiredState; }
-
-    /**
-     * <p>The desired state of the model.</p>
-     */
+    inline ModelState GetDesiredState() const { return m_desiredState; }
     inline bool DesiredStateHasBeenSet() const { return m_desiredStateHasBeenSet; }
+    inline void SetDesiredState(ModelState value) { m_desiredStateHasBeenSet = true; m_desiredState = value; }
+    inline DeploymentModel& WithDesiredState(ModelState value) { SetDesiredState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The desired state of the model.</p>
-     */
-    inline void SetDesiredState(const ModelState& value) { m_desiredStateHasBeenSet = true; m_desiredState = value; }
-
-    /**
-     * <p>The desired state of the model.</p>
-     */
-    inline void SetDesiredState(ModelState&& value) { m_desiredStateHasBeenSet = true; m_desiredState = std::move(value); }
-
-    /**
-     * <p>The desired state of the model.</p>
-     */
-    inline DeploymentModel& WithDesiredState(const ModelState& value) { SetDesiredState(value); return *this;}
-
-    /**
-     * <p>The desired state of the model.</p>
-     */
-    inline DeploymentModel& WithDesiredState(ModelState&& value) { SetDesiredState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Returns the current state of the model.</p>
      */
-    inline const ModelState& GetState() const{ return m_state; }
-
-    /**
-     * <p>Returns the current state of the model.</p>
-     */
+    inline ModelState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(ModelState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline DeploymentModel& WithState(ModelState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Returns the current state of the model.</p>
-     */
-    inline void SetState(const ModelState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>Returns the current state of the model.</p>
-     */
-    inline void SetState(ModelState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>Returns the current state of the model.</p>
-     */
-    inline DeploymentModel& WithState(const ModelState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>Returns the current state of the model.</p>
-     */
-    inline DeploymentModel& WithState(ModelState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Returns the deployment status of the model.</p>
      */
-    inline const DeploymentStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Returns the deployment status of the model.</p>
-     */
+    inline DeploymentStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(DeploymentStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline DeploymentModel& WithStatus(DeploymentStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Returns the deployment status of the model.</p>
-     */
-    inline void SetStatus(const DeploymentStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Returns the deployment status of the model.</p>
-     */
-    inline void SetStatus(DeploymentStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Returns the deployment status of the model.</p>
-     */
-    inline DeploymentModel& WithStatus(const DeploymentStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Returns the deployment status of the model.</p>
-     */
-    inline DeploymentModel& WithStatus(DeploymentStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Returns the error message for the deployment status result.</p>
      */
-    inline const Aws::String& GetStatusReason() const{ return m_statusReason; }
-
-    /**
-     * <p>Returns the error message for the deployment status result.</p>
-     */
+    inline const Aws::String& GetStatusReason() const { return m_statusReason; }
     inline bool StatusReasonHasBeenSet() const { return m_statusReasonHasBeenSet; }
+    template<typename StatusReasonT = Aws::String>
+    void SetStatusReason(StatusReasonT&& value) { m_statusReasonHasBeenSet = true; m_statusReason = std::forward<StatusReasonT>(value); }
+    template<typename StatusReasonT = Aws::String>
+    DeploymentModel& WithStatusReason(StatusReasonT&& value) { SetStatusReason(std::forward<StatusReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Returns the error message for the deployment status result.</p>
-     */
-    inline void SetStatusReason(const Aws::String& value) { m_statusReasonHasBeenSet = true; m_statusReason = value; }
-
-    /**
-     * <p>Returns the error message for the deployment status result.</p>
-     */
-    inline void SetStatusReason(Aws::String&& value) { m_statusReasonHasBeenSet = true; m_statusReason = std::move(value); }
-
-    /**
-     * <p>Returns the error message for the deployment status result.</p>
-     */
-    inline void SetStatusReason(const char* value) { m_statusReasonHasBeenSet = true; m_statusReason.assign(value); }
-
-    /**
-     * <p>Returns the error message for the deployment status result.</p>
-     */
-    inline DeploymentModel& WithStatusReason(const Aws::String& value) { SetStatusReason(value); return *this;}
-
-    /**
-     * <p>Returns the error message for the deployment status result.</p>
-     */
-    inline DeploymentModel& WithStatusReason(Aws::String&& value) { SetStatusReason(std::move(value)); return *this;}
-
-    /**
-     * <p>Returns the error message for the deployment status result.</p>
-     */
-    inline DeploymentModel& WithStatusReason(const char* value) { SetStatusReason(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Returns the error message if there is a rollback.</p>
      */
-    inline const Aws::String& GetRollbackFailureReason() const{ return m_rollbackFailureReason; }
-
-    /**
-     * <p>Returns the error message if there is a rollback.</p>
-     */
+    inline const Aws::String& GetRollbackFailureReason() const { return m_rollbackFailureReason; }
     inline bool RollbackFailureReasonHasBeenSet() const { return m_rollbackFailureReasonHasBeenSet; }
-
-    /**
-     * <p>Returns the error message if there is a rollback.</p>
-     */
-    inline void SetRollbackFailureReason(const Aws::String& value) { m_rollbackFailureReasonHasBeenSet = true; m_rollbackFailureReason = value; }
-
-    /**
-     * <p>Returns the error message if there is a rollback.</p>
-     */
-    inline void SetRollbackFailureReason(Aws::String&& value) { m_rollbackFailureReasonHasBeenSet = true; m_rollbackFailureReason = std::move(value); }
-
-    /**
-     * <p>Returns the error message if there is a rollback.</p>
-     */
-    inline void SetRollbackFailureReason(const char* value) { m_rollbackFailureReasonHasBeenSet = true; m_rollbackFailureReason.assign(value); }
-
-    /**
-     * <p>Returns the error message if there is a rollback.</p>
-     */
-    inline DeploymentModel& WithRollbackFailureReason(const Aws::String& value) { SetRollbackFailureReason(value); return *this;}
-
-    /**
-     * <p>Returns the error message if there is a rollback.</p>
-     */
-    inline DeploymentModel& WithRollbackFailureReason(Aws::String&& value) { SetRollbackFailureReason(std::move(value)); return *this;}
-
-    /**
-     * <p>Returns the error message if there is a rollback.</p>
-     */
-    inline DeploymentModel& WithRollbackFailureReason(const char* value) { SetRollbackFailureReason(value); return *this;}
-
+    template<typename RollbackFailureReasonT = Aws::String>
+    void SetRollbackFailureReason(RollbackFailureReasonT&& value) { m_rollbackFailureReasonHasBeenSet = true; m_rollbackFailureReason = std::forward<RollbackFailureReasonT>(value); }
+    template<typename RollbackFailureReasonT = Aws::String>
+    DeploymentModel& WithRollbackFailureReason(RollbackFailureReasonT&& value) { SetRollbackFailureReason(std::forward<RollbackFailureReasonT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_modelHandle;
@@ -347,13 +139,13 @@ namespace Model
     Aws::String m_modelVersion;
     bool m_modelVersionHasBeenSet = false;
 
-    ModelState m_desiredState;
+    ModelState m_desiredState{ModelState::NOT_SET};
     bool m_desiredStateHasBeenSet = false;
 
-    ModelState m_state;
+    ModelState m_state{ModelState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
-    DeploymentStatus m_status;
+    DeploymentStatus m_status{DeploymentStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_statusReason;

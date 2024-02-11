@@ -21,7 +21,7 @@ namespace Model
   class DeleteDomainRequest : public ConnectCasesRequest
   {
   public:
-    AWS_CONNECTCASES_API DeleteDomainRequest();
+    AWS_CONNECTCASES_API DeleteDomainRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_CONNECTCASES_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the Cases domain. </p>
      */
-    inline const Aws::String& GetDomainId() const{ return m_domainId; }
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
+    inline const Aws::String& GetDomainId() const { return m_domainId; }
     inline bool DomainIdHasBeenSet() const { return m_domainIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
-    inline void SetDomainId(const Aws::String& value) { m_domainIdHasBeenSet = true; m_domainId = value; }
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
-    inline void SetDomainId(Aws::String&& value) { m_domainIdHasBeenSet = true; m_domainId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
-    inline void SetDomainId(const char* value) { m_domainIdHasBeenSet = true; m_domainId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
-    inline DeleteDomainRequest& WithDomainId(const Aws::String& value) { SetDomainId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
-    inline DeleteDomainRequest& WithDomainId(Aws::String&& value) { SetDomainId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
-    inline DeleteDomainRequest& WithDomainId(const char* value) { SetDomainId(value); return *this;}
-
+    template<typename DomainIdT = Aws::String>
+    void SetDomainId(DomainIdT&& value) { m_domainIdHasBeenSet = true; m_domainId = std::forward<DomainIdT>(value); }
+    template<typename DomainIdT = Aws::String>
+    DeleteDomainRequest& WithDomainId(DomainIdT&& value) { SetDomainId(std::forward<DomainIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainId;

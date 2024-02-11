@@ -12,13 +12,6 @@ using namespace Aws::KafkaConnect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateWorkerConfigurationRequest::CreateWorkerConfigurationRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_propertiesFileContentHasBeenSet(false)
-{
-}
-
 Aws::String CreateWorkerConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,6 +31,17 @@ Aws::String CreateWorkerConfigurationRequest::SerializePayload() const
   if(m_propertiesFileContentHasBeenSet)
   {
    payload.WithString("propertiesFileContent", m_propertiesFileContent);
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("tags", std::move(tagsJsonMap));
 
   }
 

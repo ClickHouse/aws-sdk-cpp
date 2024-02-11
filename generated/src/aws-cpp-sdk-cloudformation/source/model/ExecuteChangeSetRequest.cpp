@@ -10,15 +10,6 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-ExecuteChangeSetRequest::ExecuteChangeSetRequest() : 
-    m_changeSetNameHasBeenSet(false),
-    m_stackNameHasBeenSet(false),
-    m_clientRequestTokenHasBeenSet(false),
-    m_disableRollback(false),
-    m_disableRollbackHasBeenSet(false)
-{
-}
-
 Aws::String ExecuteChangeSetRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -41,6 +32,11 @@ Aws::String ExecuteChangeSetRequest::SerializePayload() const
   if(m_disableRollbackHasBeenSet)
   {
     ss << "DisableRollback=" << std::boolalpha << m_disableRollback << "&";
+  }
+
+  if(m_retainExceptOnCreateHasBeenSet)
+  {
+    ss << "RetainExceptOnCreate=" << std::boolalpha << m_retainExceptOnCreate << "&";
   }
 
   ss << "Version=2010-05-15";

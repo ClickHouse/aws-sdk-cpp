@@ -18,15 +18,7 @@ namespace kendra
 namespace Model
 {
 
-FailedEntity::FailedEntity() : 
-    m_entityIdHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
-{
-}
-
-FailedEntity::FailedEntity(JsonView jsonValue) : 
-    m_entityIdHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
+FailedEntity::FailedEntity(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ FailedEntity& FailedEntity::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("EntityId"))
   {
     m_entityId = jsonValue.GetString("EntityId");
-
     m_entityIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorMessage"))
   {
     m_errorMessage = jsonValue.GetString("ErrorMessage");
-
     m_errorMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

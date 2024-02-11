@@ -6,6 +6,7 @@
 #include <aws/s3/model/CompleteMultipartUploadRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,42 +17,27 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-CompleteMultipartUploadRequest::CompleteMultipartUploadRequest() : 
-    m_bucketHasBeenSet(false),
-    m_keyHasBeenSet(false),
-    m_multipartUploadHasBeenSet(false),
-    m_uploadIdHasBeenSet(false),
-    m_checksumCRC32HasBeenSet(false),
-    m_checksumCRC32CHasBeenSet(false),
-    m_checksumSHA1HasBeenSet(false),
-    m_checksumSHA256HasBeenSet(false),
-    m_requestPayer(RequestPayer::NOT_SET),
-    m_requestPayerHasBeenSet(false),
-    m_expectedBucketOwnerHasBeenSet(false),
-    m_sSECustomerAlgorithmHasBeenSet(false),
-    m_sSECustomerKeyHasBeenSet(false),
-    m_sSECustomerKeyMD5HasBeenSet(false),
-    m_customizedAccessLogTagHasBeenSet(false)
-{
-}
 
 bool CompleteMultipartUploadRequest::HasEmbeddedError(Aws::IOStream &body,
   const Aws::Http::HeaderValueCollection &header) const
 {
   // Header is unused
-  (void) header;
+  AWS_UNREFERENCED_PARAM(header);
 
 #ifndef NDEBUG
   auto streamState = body.exceptions();
   auto readPointer = body.tellg();
-  XmlDocument doc = XmlDocument::CreateFromXmlStream(body);
-
+  Utils::Xml::XmlDocument doc = XmlDocument::CreateFromXmlStream(body);
+  body.seekg(readPointer);
   if (!doc.WasParseSuccessful()) {
-    body.seekg(readPointer);
     return false;
   }
 
+<<<<<<< HEAD
+  if (!doc.GetRootElement().IsNull() && doc.GetRootElement().GetName() == Aws::String("Error")) {
+=======
   if (doc.GetRootElement().GetName() == "Error") {
+>>>>>>> refs/rewritten/master-3
     /// Must not be here because earlier we already checked for an embedded error in PocoHTTPClient (see checkRequestCanReturn2xxAndErrorInBody).
     AWS_FATAL_ASSERT(false);
   }
@@ -125,6 +111,13 @@ Aws::Http::HeaderValueCollection CompleteMultipartUploadRequest::GetRequestSpeci
     ss.str("");
   }
 
+  if(m_checksumCRC64NVMEHasBeenSet)
+  {
+    ss << m_checksumCRC64NVME;
+    headers.emplace("x-amz-checksum-crc64nvme",  ss.str());
+    ss.str("");
+  }
+
   if(m_checksumSHA1HasBeenSet)
   {
     ss << m_checksumSHA1;
@@ -139,7 +132,19 @@ Aws::Http::HeaderValueCollection CompleteMultipartUploadRequest::GetRequestSpeci
     ss.str("");
   }
 
-  if(m_requestPayerHasBeenSet)
+  if(m_checksumTypeHasBeenSet && m_checksumType != ChecksumType::NOT_SET)
+  {
+    headers.emplace("x-amz-checksum-type", ChecksumTypeMapper::GetNameForChecksumType(m_checksumType));
+  }
+
+  if(m_mpuObjectSizeHasBeenSet)
+  {
+    ss << m_mpuObjectSize;
+    headers.emplace("x-amz-mp-object-size",  ss.str());
+    ss.str("");
+  }
+
+  if(m_requestPayerHasBeenSet && m_requestPayer != RequestPayer::NOT_SET)
   {
     headers.emplace("x-amz-request-payer", RequestPayerMapper::GetNameForRequestPayer(m_requestPayer));
   }
@@ -148,6 +153,20 @@ Aws::Http::HeaderValueCollection CompleteMultipartUploadRequest::GetRequestSpeci
   {
     ss << m_expectedBucketOwner;
     headers.emplace("x-amz-expected-bucket-owner",  ss.str());
+    ss.str("");
+  }
+
+  if(m_ifMatchHasBeenSet)
+  {
+    ss << m_ifMatch;
+    headers.emplace("if-match",  ss.str());
+    ss.str("");
+  }
+
+  if(m_ifNoneMatchHasBeenSet)
+  {
+    ss << m_ifNoneMatch;
+    headers.emplace("if-none-match",  ss.str());
     ss.str("");
   }
 
@@ -181,6 +200,9 @@ CompleteMultipartUploadRequest::EndpointParameters CompleteMultipartUploadReques
     // Operation context parameters
     if (BucketHasBeenSet()) {
         parameters.emplace_back(Aws::String("Bucket"), this->GetBucket(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    if (KeyHasBeenSet()) {
+        parameters.emplace_back(Aws::String("Key"), this->GetKey(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
     }
     return parameters;
 }

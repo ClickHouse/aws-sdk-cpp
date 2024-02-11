@@ -18,17 +18,7 @@ namespace CloudSearchDomain
 namespace Model
 {
 
-SearchStatus::SearchStatus() : 
-    m_timems(0),
-    m_timemsHasBeenSet(false),
-    m_ridHasBeenSet(false)
-{
-}
-
-SearchStatus::SearchStatus(JsonView jsonValue) : 
-    m_timems(0),
-    m_timemsHasBeenSet(false),
-    m_ridHasBeenSet(false)
+SearchStatus::SearchStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ SearchStatus& SearchStatus::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("timems"))
   {
     m_timems = jsonValue.GetInt64("timems");
-
     m_timemsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("rid"))
   {
     m_rid = jsonValue.GetString("rid");
-
     m_ridHasBeenSet = true;
   }
-
   return *this;
 }
 

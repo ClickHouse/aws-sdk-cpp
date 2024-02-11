@@ -34,57 +34,26 @@ namespace Model
   class AliasRoutingConfiguration
   {
   public:
-    AWS_LAMBDA_API AliasRoutingConfiguration();
+    AWS_LAMBDA_API AliasRoutingConfiguration() = default;
     AWS_LAMBDA_API AliasRoutingConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAMBDA_API AliasRoutingConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAMBDA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The second version, and the percentage of traffic that's routed to it.</p>
      */
-    inline const Aws::Map<Aws::String, double>& GetAdditionalVersionWeights() const{ return m_additionalVersionWeights; }
-
-    /**
-     * <p>The second version, and the percentage of traffic that's routed to it.</p>
-     */
+    inline const Aws::Map<Aws::String, double>& GetAdditionalVersionWeights() const { return m_additionalVersionWeights; }
     inline bool AdditionalVersionWeightsHasBeenSet() const { return m_additionalVersionWeightsHasBeenSet; }
-
-    /**
-     * <p>The second version, and the percentage of traffic that's routed to it.</p>
-     */
-    inline void SetAdditionalVersionWeights(const Aws::Map<Aws::String, double>& value) { m_additionalVersionWeightsHasBeenSet = true; m_additionalVersionWeights = value; }
-
-    /**
-     * <p>The second version, and the percentage of traffic that's routed to it.</p>
-     */
-    inline void SetAdditionalVersionWeights(Aws::Map<Aws::String, double>&& value) { m_additionalVersionWeightsHasBeenSet = true; m_additionalVersionWeights = std::move(value); }
-
-    /**
-     * <p>The second version, and the percentage of traffic that's routed to it.</p>
-     */
-    inline AliasRoutingConfiguration& WithAdditionalVersionWeights(const Aws::Map<Aws::String, double>& value) { SetAdditionalVersionWeights(value); return *this;}
-
-    /**
-     * <p>The second version, and the percentage of traffic that's routed to it.</p>
-     */
-    inline AliasRoutingConfiguration& WithAdditionalVersionWeights(Aws::Map<Aws::String, double>&& value) { SetAdditionalVersionWeights(std::move(value)); return *this;}
-
-    /**
-     * <p>The second version, and the percentage of traffic that's routed to it.</p>
-     */
-    inline AliasRoutingConfiguration& AddAdditionalVersionWeights(const Aws::String& key, double value) { m_additionalVersionWeightsHasBeenSet = true; m_additionalVersionWeights.emplace(key, value); return *this; }
-
-    /**
-     * <p>The second version, and the percentage of traffic that's routed to it.</p>
-     */
-    inline AliasRoutingConfiguration& AddAdditionalVersionWeights(Aws::String&& key, double value) { m_additionalVersionWeightsHasBeenSet = true; m_additionalVersionWeights.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The second version, and the percentage of traffic that's routed to it.</p>
-     */
-    inline AliasRoutingConfiguration& AddAdditionalVersionWeights(const char* key, double value) { m_additionalVersionWeightsHasBeenSet = true; m_additionalVersionWeights.emplace(key, value); return *this; }
-
+    template<typename AdditionalVersionWeightsT = Aws::Map<Aws::String, double>>
+    void SetAdditionalVersionWeights(AdditionalVersionWeightsT&& value) { m_additionalVersionWeightsHasBeenSet = true; m_additionalVersionWeights = std::forward<AdditionalVersionWeightsT>(value); }
+    template<typename AdditionalVersionWeightsT = Aws::Map<Aws::String, double>>
+    AliasRoutingConfiguration& WithAdditionalVersionWeights(AdditionalVersionWeightsT&& value) { SetAdditionalVersionWeights(std::forward<AdditionalVersionWeightsT>(value)); return *this;}
+    inline AliasRoutingConfiguration& AddAdditionalVersionWeights(Aws::String key, double value) {
+      m_additionalVersionWeightsHasBeenSet = true; m_additionalVersionWeights.emplace(key, value); return *this;
+    }
+    ///@}
   private:
 
     Aws::Map<Aws::String, double> m_additionalVersionWeights;

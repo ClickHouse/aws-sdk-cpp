@@ -21,7 +21,7 @@ namespace Model
   class ListBonusPaymentsRequest : public MTurkRequest
   {
   public:
-    AWS_MTURK_API ListBonusPaymentsRequest();
+    AWS_MTURK_API ListBonusPaymentsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,181 +34,54 @@ namespace Model
     AWS_MTURK_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the HIT associated with the bonus payments to retrieve. If not
      * specified, all bonus payments for all assignments for the given HIT are
      * returned. Either the HITId parameter or the AssignmentId parameter must be
      * specified</p>
      */
-    inline const Aws::String& GetHITId() const{ return m_hITId; }
-
-    /**
-     * <p>The ID of the HIT associated with the bonus payments to retrieve. If not
-     * specified, all bonus payments for all assignments for the given HIT are
-     * returned. Either the HITId parameter or the AssignmentId parameter must be
-     * specified</p>
-     */
+    inline const Aws::String& GetHITId() const { return m_hITId; }
     inline bool HITIdHasBeenSet() const { return m_hITIdHasBeenSet; }
+    template<typename HITIdT = Aws::String>
+    void SetHITId(HITIdT&& value) { m_hITIdHasBeenSet = true; m_hITId = std::forward<HITIdT>(value); }
+    template<typename HITIdT = Aws::String>
+    ListBonusPaymentsRequest& WithHITId(HITIdT&& value) { SetHITId(std::forward<HITIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the HIT associated with the bonus payments to retrieve. If not
-     * specified, all bonus payments for all assignments for the given HIT are
-     * returned. Either the HITId parameter or the AssignmentId parameter must be
-     * specified</p>
-     */
-    inline void SetHITId(const Aws::String& value) { m_hITIdHasBeenSet = true; m_hITId = value; }
-
-    /**
-     * <p>The ID of the HIT associated with the bonus payments to retrieve. If not
-     * specified, all bonus payments for all assignments for the given HIT are
-     * returned. Either the HITId parameter or the AssignmentId parameter must be
-     * specified</p>
-     */
-    inline void SetHITId(Aws::String&& value) { m_hITIdHasBeenSet = true; m_hITId = std::move(value); }
-
-    /**
-     * <p>The ID of the HIT associated with the bonus payments to retrieve. If not
-     * specified, all bonus payments for all assignments for the given HIT are
-     * returned. Either the HITId parameter or the AssignmentId parameter must be
-     * specified</p>
-     */
-    inline void SetHITId(const char* value) { m_hITIdHasBeenSet = true; m_hITId.assign(value); }
-
-    /**
-     * <p>The ID of the HIT associated with the bonus payments to retrieve. If not
-     * specified, all bonus payments for all assignments for the given HIT are
-     * returned. Either the HITId parameter or the AssignmentId parameter must be
-     * specified</p>
-     */
-    inline ListBonusPaymentsRequest& WithHITId(const Aws::String& value) { SetHITId(value); return *this;}
-
-    /**
-     * <p>The ID of the HIT associated with the bonus payments to retrieve. If not
-     * specified, all bonus payments for all assignments for the given HIT are
-     * returned. Either the HITId parameter or the AssignmentId parameter must be
-     * specified</p>
-     */
-    inline ListBonusPaymentsRequest& WithHITId(Aws::String&& value) { SetHITId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the HIT associated with the bonus payments to retrieve. If not
-     * specified, all bonus payments for all assignments for the given HIT are
-     * returned. Either the HITId parameter or the AssignmentId parameter must be
-     * specified</p>
-     */
-    inline ListBonusPaymentsRequest& WithHITId(const char* value) { SetHITId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the assignment associated with the bonus payments to retrieve. If
      * specified, only bonus payments for the given assignment are returned. Either the
      * HITId parameter or the AssignmentId parameter must be specified</p>
      */
-    inline const Aws::String& GetAssignmentId() const{ return m_assignmentId; }
-
-    /**
-     * <p>The ID of the assignment associated with the bonus payments to retrieve. If
-     * specified, only bonus payments for the given assignment are returned. Either the
-     * HITId parameter or the AssignmentId parameter must be specified</p>
-     */
+    inline const Aws::String& GetAssignmentId() const { return m_assignmentId; }
     inline bool AssignmentIdHasBeenSet() const { return m_assignmentIdHasBeenSet; }
+    template<typename AssignmentIdT = Aws::String>
+    void SetAssignmentId(AssignmentIdT&& value) { m_assignmentIdHasBeenSet = true; m_assignmentId = std::forward<AssignmentIdT>(value); }
+    template<typename AssignmentIdT = Aws::String>
+    ListBonusPaymentsRequest& WithAssignmentId(AssignmentIdT&& value) { SetAssignmentId(std::forward<AssignmentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the assignment associated with the bonus payments to retrieve. If
-     * specified, only bonus payments for the given assignment are returned. Either the
-     * HITId parameter or the AssignmentId parameter must be specified</p>
-     */
-    inline void SetAssignmentId(const Aws::String& value) { m_assignmentIdHasBeenSet = true; m_assignmentId = value; }
-
-    /**
-     * <p>The ID of the assignment associated with the bonus payments to retrieve. If
-     * specified, only bonus payments for the given assignment are returned. Either the
-     * HITId parameter or the AssignmentId parameter must be specified</p>
-     */
-    inline void SetAssignmentId(Aws::String&& value) { m_assignmentIdHasBeenSet = true; m_assignmentId = std::move(value); }
-
-    /**
-     * <p>The ID of the assignment associated with the bonus payments to retrieve. If
-     * specified, only bonus payments for the given assignment are returned. Either the
-     * HITId parameter or the AssignmentId parameter must be specified</p>
-     */
-    inline void SetAssignmentId(const char* value) { m_assignmentIdHasBeenSet = true; m_assignmentId.assign(value); }
-
-    /**
-     * <p>The ID of the assignment associated with the bonus payments to retrieve. If
-     * specified, only bonus payments for the given assignment are returned. Either the
-     * HITId parameter or the AssignmentId parameter must be specified</p>
-     */
-    inline ListBonusPaymentsRequest& WithAssignmentId(const Aws::String& value) { SetAssignmentId(value); return *this;}
-
-    /**
-     * <p>The ID of the assignment associated with the bonus payments to retrieve. If
-     * specified, only bonus payments for the given assignment are returned. Either the
-     * HITId parameter or the AssignmentId parameter must be specified</p>
-     */
-    inline ListBonusPaymentsRequest& WithAssignmentId(Aws::String&& value) { SetAssignmentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the assignment associated with the bonus payments to retrieve. If
-     * specified, only bonus payments for the given assignment are returned. Either the
-     * HITId parameter or the AssignmentId parameter must be specified</p>
-     */
-    inline ListBonusPaymentsRequest& WithAssignmentId(const char* value) { SetAssignmentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Pagination token</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>Pagination token</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListBonusPaymentsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Pagination token</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>Pagination token</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>Pagination token</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>Pagination token</p>
-     */
-    inline ListBonusPaymentsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>Pagination token</p>
-     */
-    inline ListBonusPaymentsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Pagination token</p>
-     */
-    inline ListBonusPaymentsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    
     inline ListBonusPaymentsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_hITId;
@@ -220,7 +93,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

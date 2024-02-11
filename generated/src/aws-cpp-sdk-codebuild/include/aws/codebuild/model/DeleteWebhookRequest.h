@@ -21,7 +21,7 @@ namespace Model
   class DeleteWebhookRequest : public CodeBuildRequest
   {
   public:
-    AWS_CODEBUILD_API DeleteWebhookRequest();
+    AWS_CODEBUILD_API DeleteWebhookRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_CODEBUILD_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the CodeBuild project.</p>
      */
-    inline const Aws::String& GetProjectName() const{ return m_projectName; }
-
-    /**
-     * <p>The name of the CodeBuild project.</p>
-     */
+    inline const Aws::String& GetProjectName() const { return m_projectName; }
     inline bool ProjectNameHasBeenSet() const { return m_projectNameHasBeenSet; }
-
-    /**
-     * <p>The name of the CodeBuild project.</p>
-     */
-    inline void SetProjectName(const Aws::String& value) { m_projectNameHasBeenSet = true; m_projectName = value; }
-
-    /**
-     * <p>The name of the CodeBuild project.</p>
-     */
-    inline void SetProjectName(Aws::String&& value) { m_projectNameHasBeenSet = true; m_projectName = std::move(value); }
-
-    /**
-     * <p>The name of the CodeBuild project.</p>
-     */
-    inline void SetProjectName(const char* value) { m_projectNameHasBeenSet = true; m_projectName.assign(value); }
-
-    /**
-     * <p>The name of the CodeBuild project.</p>
-     */
-    inline DeleteWebhookRequest& WithProjectName(const Aws::String& value) { SetProjectName(value); return *this;}
-
-    /**
-     * <p>The name of the CodeBuild project.</p>
-     */
-    inline DeleteWebhookRequest& WithProjectName(Aws::String&& value) { SetProjectName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the CodeBuild project.</p>
-     */
-    inline DeleteWebhookRequest& WithProjectName(const char* value) { SetProjectName(value); return *this;}
-
+    template<typename ProjectNameT = Aws::String>
+    void SetProjectName(ProjectNameT&& value) { m_projectNameHasBeenSet = true; m_projectName = std::forward<ProjectNameT>(value); }
+    template<typename ProjectNameT = Aws::String>
+    DeleteWebhookRequest& WithProjectName(ProjectNameT&& value) { SetProjectName(std::forward<ProjectNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_projectName;

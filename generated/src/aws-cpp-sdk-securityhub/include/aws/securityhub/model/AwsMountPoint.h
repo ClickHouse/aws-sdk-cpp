@@ -32,101 +32,36 @@ namespace Model
   class AwsMountPoint
   {
   public:
-    AWS_SECURITYHUB_API AwsMountPoint();
+    AWS_SECURITYHUB_API AwsMountPoint() = default;
     AWS_SECURITYHUB_API AwsMountPoint(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsMountPoint& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the volume to mount. Must be a volume name referenced in the
      * <code>name</code> parameter of task definition <code>volume</code>. </p>
      */
-    inline const Aws::String& GetSourceVolume() const{ return m_sourceVolume; }
-
-    /**
-     * <p>The name of the volume to mount. Must be a volume name referenced in the
-     * <code>name</code> parameter of task definition <code>volume</code>. </p>
-     */
+    inline const Aws::String& GetSourceVolume() const { return m_sourceVolume; }
     inline bool SourceVolumeHasBeenSet() const { return m_sourceVolumeHasBeenSet; }
+    template<typename SourceVolumeT = Aws::String>
+    void SetSourceVolume(SourceVolumeT&& value) { m_sourceVolumeHasBeenSet = true; m_sourceVolume = std::forward<SourceVolumeT>(value); }
+    template<typename SourceVolumeT = Aws::String>
+    AwsMountPoint& WithSourceVolume(SourceVolumeT&& value) { SetSourceVolume(std::forward<SourceVolumeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the volume to mount. Must be a volume name referenced in the
-     * <code>name</code> parameter of task definition <code>volume</code>. </p>
-     */
-    inline void SetSourceVolume(const Aws::String& value) { m_sourceVolumeHasBeenSet = true; m_sourceVolume = value; }
-
-    /**
-     * <p>The name of the volume to mount. Must be a volume name referenced in the
-     * <code>name</code> parameter of task definition <code>volume</code>. </p>
-     */
-    inline void SetSourceVolume(Aws::String&& value) { m_sourceVolumeHasBeenSet = true; m_sourceVolume = std::move(value); }
-
-    /**
-     * <p>The name of the volume to mount. Must be a volume name referenced in the
-     * <code>name</code> parameter of task definition <code>volume</code>. </p>
-     */
-    inline void SetSourceVolume(const char* value) { m_sourceVolumeHasBeenSet = true; m_sourceVolume.assign(value); }
-
-    /**
-     * <p>The name of the volume to mount. Must be a volume name referenced in the
-     * <code>name</code> parameter of task definition <code>volume</code>. </p>
-     */
-    inline AwsMountPoint& WithSourceVolume(const Aws::String& value) { SetSourceVolume(value); return *this;}
-
-    /**
-     * <p>The name of the volume to mount. Must be a volume name referenced in the
-     * <code>name</code> parameter of task definition <code>volume</code>. </p>
-     */
-    inline AwsMountPoint& WithSourceVolume(Aws::String&& value) { SetSourceVolume(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the volume to mount. Must be a volume name referenced in the
-     * <code>name</code> parameter of task definition <code>volume</code>. </p>
-     */
-    inline AwsMountPoint& WithSourceVolume(const char* value) { SetSourceVolume(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The path on the container to mount the host volume at. </p>
      */
-    inline const Aws::String& GetContainerPath() const{ return m_containerPath; }
-
-    /**
-     * <p>The path on the container to mount the host volume at. </p>
-     */
+    inline const Aws::String& GetContainerPath() const { return m_containerPath; }
     inline bool ContainerPathHasBeenSet() const { return m_containerPathHasBeenSet; }
-
-    /**
-     * <p>The path on the container to mount the host volume at. </p>
-     */
-    inline void SetContainerPath(const Aws::String& value) { m_containerPathHasBeenSet = true; m_containerPath = value; }
-
-    /**
-     * <p>The path on the container to mount the host volume at. </p>
-     */
-    inline void SetContainerPath(Aws::String&& value) { m_containerPathHasBeenSet = true; m_containerPath = std::move(value); }
-
-    /**
-     * <p>The path on the container to mount the host volume at. </p>
-     */
-    inline void SetContainerPath(const char* value) { m_containerPathHasBeenSet = true; m_containerPath.assign(value); }
-
-    /**
-     * <p>The path on the container to mount the host volume at. </p>
-     */
-    inline AwsMountPoint& WithContainerPath(const Aws::String& value) { SetContainerPath(value); return *this;}
-
-    /**
-     * <p>The path on the container to mount the host volume at. </p>
-     */
-    inline AwsMountPoint& WithContainerPath(Aws::String&& value) { SetContainerPath(std::move(value)); return *this;}
-
-    /**
-     * <p>The path on the container to mount the host volume at. </p>
-     */
-    inline AwsMountPoint& WithContainerPath(const char* value) { SetContainerPath(value); return *this;}
-
+    template<typename ContainerPathT = Aws::String>
+    void SetContainerPath(ContainerPathT&& value) { m_containerPathHasBeenSet = true; m_containerPath = std::forward<ContainerPathT>(value); }
+    template<typename ContainerPathT = Aws::String>
+    AwsMountPoint& WithContainerPath(ContainerPathT&& value) { SetContainerPath(std::forward<ContainerPathT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sourceVolume;

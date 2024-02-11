@@ -18,19 +18,7 @@ namespace GroundStation
 namespace Model
 {
 
-MissionProfileListItem::MissionProfileListItem() : 
-    m_missionProfileArnHasBeenSet(false),
-    m_missionProfileIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_regionHasBeenSet(false)
-{
-}
-
-MissionProfileListItem::MissionProfileListItem(JsonView jsonValue) : 
-    m_missionProfileArnHasBeenSet(false),
-    m_missionProfileIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_regionHasBeenSet(false)
+MissionProfileListItem::MissionProfileListItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ MissionProfileListItem& MissionProfileListItem::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("missionProfileArn"))
   {
     m_missionProfileArn = jsonValue.GetString("missionProfileArn");
-
     m_missionProfileArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("missionProfileId"))
   {
     m_missionProfileId = jsonValue.GetString("missionProfileId");
-
     m_missionProfileIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("region"))
   {
     m_region = jsonValue.GetString("region");
-
     m_regionHasBeenSet = true;
   }
-
   return *this;
 }
 

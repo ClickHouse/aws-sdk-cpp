@@ -33,51 +33,25 @@ namespace Model
   class OpsCenterIntegration
   {
   public:
-    AWS_DEVOPSGURU_API OpsCenterIntegration();
+    AWS_DEVOPSGURU_API OpsCenterIntegration() = default;
     AWS_DEVOPSGURU_API OpsCenterIntegration(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVOPSGURU_API OpsCenterIntegration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVOPSGURU_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Specifies if DevOps Guru is enabled to create an Amazon Web Services Systems
      * Manager OpsItem for each created insight. </p>
      */
-    inline const OptInStatus& GetOptInStatus() const{ return m_optInStatus; }
-
-    /**
-     * <p> Specifies if DevOps Guru is enabled to create an Amazon Web Services Systems
-     * Manager OpsItem for each created insight. </p>
-     */
+    inline OptInStatus GetOptInStatus() const { return m_optInStatus; }
     inline bool OptInStatusHasBeenSet() const { return m_optInStatusHasBeenSet; }
-
-    /**
-     * <p> Specifies if DevOps Guru is enabled to create an Amazon Web Services Systems
-     * Manager OpsItem for each created insight. </p>
-     */
-    inline void SetOptInStatus(const OptInStatus& value) { m_optInStatusHasBeenSet = true; m_optInStatus = value; }
-
-    /**
-     * <p> Specifies if DevOps Guru is enabled to create an Amazon Web Services Systems
-     * Manager OpsItem for each created insight. </p>
-     */
-    inline void SetOptInStatus(OptInStatus&& value) { m_optInStatusHasBeenSet = true; m_optInStatus = std::move(value); }
-
-    /**
-     * <p> Specifies if DevOps Guru is enabled to create an Amazon Web Services Systems
-     * Manager OpsItem for each created insight. </p>
-     */
-    inline OpsCenterIntegration& WithOptInStatus(const OptInStatus& value) { SetOptInStatus(value); return *this;}
-
-    /**
-     * <p> Specifies if DevOps Guru is enabled to create an Amazon Web Services Systems
-     * Manager OpsItem for each created insight. </p>
-     */
-    inline OpsCenterIntegration& WithOptInStatus(OptInStatus&& value) { SetOptInStatus(std::move(value)); return *this;}
-
+    inline void SetOptInStatus(OptInStatus value) { m_optInStatusHasBeenSet = true; m_optInStatus = value; }
+    inline OpsCenterIntegration& WithOptInStatus(OptInStatus value) { SetOptInStatus(value); return *this;}
+    ///@}
   private:
 
-    OptInStatus m_optInStatus;
+    OptInStatus m_optInStatus{OptInStatus::NOT_SET};
     bool m_optInStatusHasBeenSet = false;
   };
 

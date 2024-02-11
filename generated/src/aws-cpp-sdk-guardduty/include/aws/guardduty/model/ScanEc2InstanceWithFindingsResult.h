@@ -33,42 +33,23 @@ namespace Model
   class ScanEc2InstanceWithFindingsResult
   {
   public:
-    AWS_GUARDDUTY_API ScanEc2InstanceWithFindingsResult();
+    AWS_GUARDDUTY_API ScanEc2InstanceWithFindingsResult() = default;
     AWS_GUARDDUTY_API ScanEc2InstanceWithFindingsResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API ScanEc2InstanceWithFindingsResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Describes the configuration of scanning EBS volumes as a data source.</p>
      */
-    inline const EbsVolumesResult& GetEbsVolumes() const{ return m_ebsVolumes; }
-
-    /**
-     * <p>Describes the configuration of scanning EBS volumes as a data source.</p>
-     */
+    inline const EbsVolumesResult& GetEbsVolumes() const { return m_ebsVolumes; }
     inline bool EbsVolumesHasBeenSet() const { return m_ebsVolumesHasBeenSet; }
-
-    /**
-     * <p>Describes the configuration of scanning EBS volumes as a data source.</p>
-     */
-    inline void SetEbsVolumes(const EbsVolumesResult& value) { m_ebsVolumesHasBeenSet = true; m_ebsVolumes = value; }
-
-    /**
-     * <p>Describes the configuration of scanning EBS volumes as a data source.</p>
-     */
-    inline void SetEbsVolumes(EbsVolumesResult&& value) { m_ebsVolumesHasBeenSet = true; m_ebsVolumes = std::move(value); }
-
-    /**
-     * <p>Describes the configuration of scanning EBS volumes as a data source.</p>
-     */
-    inline ScanEc2InstanceWithFindingsResult& WithEbsVolumes(const EbsVolumesResult& value) { SetEbsVolumes(value); return *this;}
-
-    /**
-     * <p>Describes the configuration of scanning EBS volumes as a data source.</p>
-     */
-    inline ScanEc2InstanceWithFindingsResult& WithEbsVolumes(EbsVolumesResult&& value) { SetEbsVolumes(std::move(value)); return *this;}
-
+    template<typename EbsVolumesT = EbsVolumesResult>
+    void SetEbsVolumes(EbsVolumesT&& value) { m_ebsVolumesHasBeenSet = true; m_ebsVolumes = std::forward<EbsVolumesT>(value); }
+    template<typename EbsVolumesT = EbsVolumesResult>
+    ScanEc2InstanceWithFindingsResult& WithEbsVolumes(EbsVolumesT&& value) { SetEbsVolumes(std::forward<EbsVolumesT>(value)); return *this;}
+    ///@}
   private:
 
     EbsVolumesResult m_ebsVolumes;

@@ -18,15 +18,7 @@ namespace MigrationHubOrchestrator
 namespace Model
 {
 
-PlatformScriptKey::PlatformScriptKey() : 
-    m_linuxHasBeenSet(false),
-    m_windowsHasBeenSet(false)
-{
-}
-
-PlatformScriptKey::PlatformScriptKey(JsonView jsonValue) : 
-    m_linuxHasBeenSet(false),
-    m_windowsHasBeenSet(false)
+PlatformScriptKey::PlatformScriptKey(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ PlatformScriptKey& PlatformScriptKey::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("linux"))
   {
     m_linux = jsonValue.GetString("linux");
-
     m_linuxHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("windows"))
   {
     m_windows = jsonValue.GetString("windows");
-
     m_windowsHasBeenSet = true;
   }
-
   return *this;
 }
 

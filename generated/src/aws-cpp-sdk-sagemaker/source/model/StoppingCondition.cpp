@@ -18,19 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-StoppingCondition::StoppingCondition() : 
-    m_maxRuntimeInSeconds(0),
-    m_maxRuntimeInSecondsHasBeenSet(false),
-    m_maxWaitTimeInSeconds(0),
-    m_maxWaitTimeInSecondsHasBeenSet(false)
-{
-}
-
-StoppingCondition::StoppingCondition(JsonView jsonValue) : 
-    m_maxRuntimeInSeconds(0),
-    m_maxRuntimeInSecondsHasBeenSet(false),
-    m_maxWaitTimeInSeconds(0),
-    m_maxWaitTimeInSecondsHasBeenSet(false)
+StoppingCondition::StoppingCondition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,18 @@ StoppingCondition& StoppingCondition::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MaxRuntimeInSeconds"))
   {
     m_maxRuntimeInSeconds = jsonValue.GetInteger("MaxRuntimeInSeconds");
-
     m_maxRuntimeInSecondsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxWaitTimeInSeconds"))
   {
     m_maxWaitTimeInSeconds = jsonValue.GetInteger("MaxWaitTimeInSeconds");
-
     m_maxWaitTimeInSecondsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("MaxPendingTimeInSeconds"))
+  {
+    m_maxPendingTimeInSeconds = jsonValue.GetInteger("MaxPendingTimeInSeconds");
+    m_maxPendingTimeInSecondsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -67,6 +56,12 @@ JsonValue StoppingCondition::Jsonize() const
   if(m_maxWaitTimeInSecondsHasBeenSet)
   {
    payload.WithInteger("MaxWaitTimeInSeconds", m_maxWaitTimeInSeconds);
+
+  }
+
+  if(m_maxPendingTimeInSecondsHasBeenSet)
+  {
+   payload.WithInteger("MaxPendingTimeInSeconds", m_maxPendingTimeInSeconds);
 
   }
 

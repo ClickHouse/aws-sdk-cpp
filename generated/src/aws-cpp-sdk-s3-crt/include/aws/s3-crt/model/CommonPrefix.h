@@ -34,53 +34,24 @@ namespace Model
   class CommonPrefix
   {
   public:
-    AWS_S3CRT_API CommonPrefix();
+    AWS_S3CRT_API CommonPrefix() = default;
     AWS_S3CRT_API CommonPrefix(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API CommonPrefix& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Container for the specified common prefix.</p>
      */
-    inline const Aws::String& GetPrefix() const{ return m_prefix; }
-
-    /**
-     * <p>Container for the specified common prefix.</p>
-     */
+    inline const Aws::String& GetPrefix() const { return m_prefix; }
     inline bool PrefixHasBeenSet() const { return m_prefixHasBeenSet; }
-
-    /**
-     * <p>Container for the specified common prefix.</p>
-     */
-    inline void SetPrefix(const Aws::String& value) { m_prefixHasBeenSet = true; m_prefix = value; }
-
-    /**
-     * <p>Container for the specified common prefix.</p>
-     */
-    inline void SetPrefix(Aws::String&& value) { m_prefixHasBeenSet = true; m_prefix = std::move(value); }
-
-    /**
-     * <p>Container for the specified common prefix.</p>
-     */
-    inline void SetPrefix(const char* value) { m_prefixHasBeenSet = true; m_prefix.assign(value); }
-
-    /**
-     * <p>Container for the specified common prefix.</p>
-     */
-    inline CommonPrefix& WithPrefix(const Aws::String& value) { SetPrefix(value); return *this;}
-
-    /**
-     * <p>Container for the specified common prefix.</p>
-     */
-    inline CommonPrefix& WithPrefix(Aws::String&& value) { SetPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>Container for the specified common prefix.</p>
-     */
-    inline CommonPrefix& WithPrefix(const char* value) { SetPrefix(value); return *this;}
-
+    template<typename PrefixT = Aws::String>
+    void SetPrefix(PrefixT&& value) { m_prefixHasBeenSet = true; m_prefix = std::forward<PrefixT>(value); }
+    template<typename PrefixT = Aws::String>
+    CommonPrefix& WithPrefix(PrefixT&& value) { SetPrefix(std::forward<PrefixT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_prefix;

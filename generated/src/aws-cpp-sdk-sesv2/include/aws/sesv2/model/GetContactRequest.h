@@ -21,7 +21,7 @@ namespace Model
   class GetContactRequest : public SESV2Request
   {
   public:
-    AWS_SESV2_API GetContactRequest();
+    AWS_SESV2_API GetContactRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_SESV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the contact list to which the contact belongs.</p>
      */
-    inline const Aws::String& GetContactListName() const{ return m_contactListName; }
-
-    /**
-     * <p>The name of the contact list to which the contact belongs.</p>
-     */
+    inline const Aws::String& GetContactListName() const { return m_contactListName; }
     inline bool ContactListNameHasBeenSet() const { return m_contactListNameHasBeenSet; }
+    template<typename ContactListNameT = Aws::String>
+    void SetContactListName(ContactListNameT&& value) { m_contactListNameHasBeenSet = true; m_contactListName = std::forward<ContactListNameT>(value); }
+    template<typename ContactListNameT = Aws::String>
+    GetContactRequest& WithContactListName(ContactListNameT&& value) { SetContactListName(std::forward<ContactListNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the contact list to which the contact belongs.</p>
+     * <p>The contact's email address.</p>
      */
-    inline void SetContactListName(const Aws::String& value) { m_contactListNameHasBeenSet = true; m_contactListName = value; }
-
-    /**
-     * <p>The name of the contact list to which the contact belongs.</p>
-     */
-    inline void SetContactListName(Aws::String&& value) { m_contactListNameHasBeenSet = true; m_contactListName = std::move(value); }
-
-    /**
-     * <p>The name of the contact list to which the contact belongs.</p>
-     */
-    inline void SetContactListName(const char* value) { m_contactListNameHasBeenSet = true; m_contactListName.assign(value); }
-
-    /**
-     * <p>The name of the contact list to which the contact belongs.</p>
-     */
-    inline GetContactRequest& WithContactListName(const Aws::String& value) { SetContactListName(value); return *this;}
-
-    /**
-     * <p>The name of the contact list to which the contact belongs.</p>
-     */
-    inline GetContactRequest& WithContactListName(Aws::String&& value) { SetContactListName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the contact list to which the contact belongs.</p>
-     */
-    inline GetContactRequest& WithContactListName(const char* value) { SetContactListName(value); return *this;}
-
-
-    /**
-     * <p>The contact's email addres.</p>
-     */
-    inline const Aws::String& GetEmailAddress() const{ return m_emailAddress; }
-
-    /**
-     * <p>The contact's email addres.</p>
-     */
+    inline const Aws::String& GetEmailAddress() const { return m_emailAddress; }
     inline bool EmailAddressHasBeenSet() const { return m_emailAddressHasBeenSet; }
-
-    /**
-     * <p>The contact's email addres.</p>
-     */
-    inline void SetEmailAddress(const Aws::String& value) { m_emailAddressHasBeenSet = true; m_emailAddress = value; }
-
-    /**
-     * <p>The contact's email addres.</p>
-     */
-    inline void SetEmailAddress(Aws::String&& value) { m_emailAddressHasBeenSet = true; m_emailAddress = std::move(value); }
-
-    /**
-     * <p>The contact's email addres.</p>
-     */
-    inline void SetEmailAddress(const char* value) { m_emailAddressHasBeenSet = true; m_emailAddress.assign(value); }
-
-    /**
-     * <p>The contact's email addres.</p>
-     */
-    inline GetContactRequest& WithEmailAddress(const Aws::String& value) { SetEmailAddress(value); return *this;}
-
-    /**
-     * <p>The contact's email addres.</p>
-     */
-    inline GetContactRequest& WithEmailAddress(Aws::String&& value) { SetEmailAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The contact's email addres.</p>
-     */
-    inline GetContactRequest& WithEmailAddress(const char* value) { SetEmailAddress(value); return *this;}
-
+    template<typename EmailAddressT = Aws::String>
+    void SetEmailAddress(EmailAddressT&& value) { m_emailAddressHasBeenSet = true; m_emailAddress = std::forward<EmailAddressT>(value); }
+    template<typename EmailAddressT = Aws::String>
+    GetContactRequest& WithEmailAddress(EmailAddressT&& value) { SetEmailAddress(std::forward<EmailAddressT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_contactListName;

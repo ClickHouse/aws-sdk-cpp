@@ -24,7 +24,7 @@ namespace Model
 {
 
   /**
-   * <p>Details about the Amazon OpenSearch Service instances that Amazon Web
+   * <p>Details about the Amazon OpenSearch Service reservations that Amazon Web
    * Services recommends that you purchase.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/ESInstanceDetails">AWS
    * API Reference</a></p>
@@ -32,180 +32,68 @@ namespace Model
   class ESInstanceDetails
   {
   public:
-    AWS_COSTEXPLORER_API ESInstanceDetails();
+    AWS_COSTEXPLORER_API ESInstanceDetails() = default;
     AWS_COSTEXPLORER_API ESInstanceDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API ESInstanceDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The class of instance that Amazon Web Services recommends.</p>
      */
-    inline const Aws::String& GetInstanceClass() const{ return m_instanceClass; }
-
-    /**
-     * <p>The class of instance that Amazon Web Services recommends.</p>
-     */
+    inline const Aws::String& GetInstanceClass() const { return m_instanceClass; }
     inline bool InstanceClassHasBeenSet() const { return m_instanceClassHasBeenSet; }
+    template<typename InstanceClassT = Aws::String>
+    void SetInstanceClass(InstanceClassT&& value) { m_instanceClassHasBeenSet = true; m_instanceClass = std::forward<InstanceClassT>(value); }
+    template<typename InstanceClassT = Aws::String>
+    ESInstanceDetails& WithInstanceClass(InstanceClassT&& value) { SetInstanceClass(std::forward<InstanceClassT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The class of instance that Amazon Web Services recommends.</p>
-     */
-    inline void SetInstanceClass(const Aws::String& value) { m_instanceClassHasBeenSet = true; m_instanceClass = value; }
-
-    /**
-     * <p>The class of instance that Amazon Web Services recommends.</p>
-     */
-    inline void SetInstanceClass(Aws::String&& value) { m_instanceClassHasBeenSet = true; m_instanceClass = std::move(value); }
-
-    /**
-     * <p>The class of instance that Amazon Web Services recommends.</p>
-     */
-    inline void SetInstanceClass(const char* value) { m_instanceClassHasBeenSet = true; m_instanceClass.assign(value); }
-
-    /**
-     * <p>The class of instance that Amazon Web Services recommends.</p>
-     */
-    inline ESInstanceDetails& WithInstanceClass(const Aws::String& value) { SetInstanceClass(value); return *this;}
-
-    /**
-     * <p>The class of instance that Amazon Web Services recommends.</p>
-     */
-    inline ESInstanceDetails& WithInstanceClass(Aws::String&& value) { SetInstanceClass(std::move(value)); return *this;}
-
-    /**
-     * <p>The class of instance that Amazon Web Services recommends.</p>
-     */
-    inline ESInstanceDetails& WithInstanceClass(const char* value) { SetInstanceClass(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The size of instance that Amazon Web Services recommends.</p>
      */
-    inline const Aws::String& GetInstanceSize() const{ return m_instanceSize; }
-
-    /**
-     * <p>The size of instance that Amazon Web Services recommends.</p>
-     */
+    inline const Aws::String& GetInstanceSize() const { return m_instanceSize; }
     inline bool InstanceSizeHasBeenSet() const { return m_instanceSizeHasBeenSet; }
+    template<typename InstanceSizeT = Aws::String>
+    void SetInstanceSize(InstanceSizeT&& value) { m_instanceSizeHasBeenSet = true; m_instanceSize = std::forward<InstanceSizeT>(value); }
+    template<typename InstanceSizeT = Aws::String>
+    ESInstanceDetails& WithInstanceSize(InstanceSizeT&& value) { SetInstanceSize(std::forward<InstanceSizeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The size of instance that Amazon Web Services recommends.</p>
-     */
-    inline void SetInstanceSize(const Aws::String& value) { m_instanceSizeHasBeenSet = true; m_instanceSize = value; }
-
-    /**
-     * <p>The size of instance that Amazon Web Services recommends.</p>
-     */
-    inline void SetInstanceSize(Aws::String&& value) { m_instanceSizeHasBeenSet = true; m_instanceSize = std::move(value); }
-
-    /**
-     * <p>The size of instance that Amazon Web Services recommends.</p>
-     */
-    inline void SetInstanceSize(const char* value) { m_instanceSizeHasBeenSet = true; m_instanceSize.assign(value); }
-
-    /**
-     * <p>The size of instance that Amazon Web Services recommends.</p>
-     */
-    inline ESInstanceDetails& WithInstanceSize(const Aws::String& value) { SetInstanceSize(value); return *this;}
-
-    /**
-     * <p>The size of instance that Amazon Web Services recommends.</p>
-     */
-    inline ESInstanceDetails& WithInstanceSize(Aws::String&& value) { SetInstanceSize(std::move(value)); return *this;}
-
-    /**
-     * <p>The size of instance that Amazon Web Services recommends.</p>
-     */
-    inline ESInstanceDetails& WithInstanceSize(const char* value) { SetInstanceSize(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services Region of the recommended reservation.</p>
      */
-    inline const Aws::String& GetRegion() const{ return m_region; }
-
-    /**
-     * <p>The Amazon Web Services Region of the recommended reservation.</p>
-     */
+    inline const Aws::String& GetRegion() const { return m_region; }
     inline bool RegionHasBeenSet() const { return m_regionHasBeenSet; }
+    template<typename RegionT = Aws::String>
+    void SetRegion(RegionT&& value) { m_regionHasBeenSet = true; m_region = std::forward<RegionT>(value); }
+    template<typename RegionT = Aws::String>
+    ESInstanceDetails& WithRegion(RegionT&& value) { SetRegion(std::forward<RegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services Region of the recommended reservation.</p>
-     */
-    inline void SetRegion(const Aws::String& value) { m_regionHasBeenSet = true; m_region = value; }
-
-    /**
-     * <p>The Amazon Web Services Region of the recommended reservation.</p>
-     */
-    inline void SetRegion(Aws::String&& value) { m_regionHasBeenSet = true; m_region = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services Region of the recommended reservation.</p>
-     */
-    inline void SetRegion(const char* value) { m_regionHasBeenSet = true; m_region.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services Region of the recommended reservation.</p>
-     */
-    inline ESInstanceDetails& WithRegion(const Aws::String& value) { SetRegion(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Region of the recommended reservation.</p>
-     */
-    inline ESInstanceDetails& WithRegion(Aws::String&& value) { SetRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Region of the recommended reservation.</p>
-     */
-    inline ESInstanceDetails& WithRegion(const char* value) { SetRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Determines whether the recommendation is for a current-generation
      * instance.</p>
      */
-    inline bool GetCurrentGeneration() const{ return m_currentGeneration; }
-
-    /**
-     * <p>Determines whether the recommendation is for a current-generation
-     * instance.</p>
-     */
+    inline bool GetCurrentGeneration() const { return m_currentGeneration; }
     inline bool CurrentGenerationHasBeenSet() const { return m_currentGenerationHasBeenSet; }
-
-    /**
-     * <p>Determines whether the recommendation is for a current-generation
-     * instance.</p>
-     */
     inline void SetCurrentGeneration(bool value) { m_currentGenerationHasBeenSet = true; m_currentGeneration = value; }
-
-    /**
-     * <p>Determines whether the recommendation is for a current-generation
-     * instance.</p>
-     */
     inline ESInstanceDetails& WithCurrentGeneration(bool value) { SetCurrentGeneration(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Determines whether the recommended reservation is size flexible.</p>
      */
-    inline bool GetSizeFlexEligible() const{ return m_sizeFlexEligible; }
-
-    /**
-     * <p>Determines whether the recommended reservation is size flexible.</p>
-     */
+    inline bool GetSizeFlexEligible() const { return m_sizeFlexEligible; }
     inline bool SizeFlexEligibleHasBeenSet() const { return m_sizeFlexEligibleHasBeenSet; }
-
-    /**
-     * <p>Determines whether the recommended reservation is size flexible.</p>
-     */
     inline void SetSizeFlexEligible(bool value) { m_sizeFlexEligibleHasBeenSet = true; m_sizeFlexEligible = value; }
-
-    /**
-     * <p>Determines whether the recommended reservation is size flexible.</p>
-     */
     inline ESInstanceDetails& WithSizeFlexEligible(bool value) { SetSizeFlexEligible(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_instanceClass;
@@ -217,10 +105,10 @@ namespace Model
     Aws::String m_region;
     bool m_regionHasBeenSet = false;
 
-    bool m_currentGeneration;
+    bool m_currentGeneration{false};
     bool m_currentGenerationHasBeenSet = false;
 
-    bool m_sizeFlexEligible;
+    bool m_sizeFlexEligible{false};
     bool m_sizeFlexEligibleHasBeenSet = false;
   };
 

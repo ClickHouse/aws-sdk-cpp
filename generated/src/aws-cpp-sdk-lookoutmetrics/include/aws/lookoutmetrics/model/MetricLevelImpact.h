@@ -32,110 +32,51 @@ namespace Model
   class MetricLevelImpact
   {
   public:
-    AWS_LOOKOUTMETRICS_API MetricLevelImpact();
+    AWS_LOOKOUTMETRICS_API MetricLevelImpact() = default;
     AWS_LOOKOUTMETRICS_API MetricLevelImpact(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API MetricLevelImpact& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the measure.</p>
      */
-    inline const Aws::String& GetMetricName() const{ return m_metricName; }
-
-    /**
-     * <p>The name of the measure.</p>
-     */
+    inline const Aws::String& GetMetricName() const { return m_metricName; }
     inline bool MetricNameHasBeenSet() const { return m_metricNameHasBeenSet; }
+    template<typename MetricNameT = Aws::String>
+    void SetMetricName(MetricNameT&& value) { m_metricNameHasBeenSet = true; m_metricName = std::forward<MetricNameT>(value); }
+    template<typename MetricNameT = Aws::String>
+    MetricLevelImpact& WithMetricName(MetricNameT&& value) { SetMetricName(std::forward<MetricNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the measure.</p>
-     */
-    inline void SetMetricName(const Aws::String& value) { m_metricNameHasBeenSet = true; m_metricName = value; }
-
-    /**
-     * <p>The name of the measure.</p>
-     */
-    inline void SetMetricName(Aws::String&& value) { m_metricNameHasBeenSet = true; m_metricName = std::move(value); }
-
-    /**
-     * <p>The name of the measure.</p>
-     */
-    inline void SetMetricName(const char* value) { m_metricNameHasBeenSet = true; m_metricName.assign(value); }
-
-    /**
-     * <p>The name of the measure.</p>
-     */
-    inline MetricLevelImpact& WithMetricName(const Aws::String& value) { SetMetricName(value); return *this;}
-
-    /**
-     * <p>The name of the measure.</p>
-     */
-    inline MetricLevelImpact& WithMetricName(Aws::String&& value) { SetMetricName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the measure.</p>
-     */
-    inline MetricLevelImpact& WithMetricName(const char* value) { SetMetricName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of anomalous metrics for the measure.</p>
      */
-    inline int GetNumTimeSeries() const{ return m_numTimeSeries; }
-
-    /**
-     * <p>The number of anomalous metrics for the measure.</p>
-     */
+    inline int GetNumTimeSeries() const { return m_numTimeSeries; }
     inline bool NumTimeSeriesHasBeenSet() const { return m_numTimeSeriesHasBeenSet; }
-
-    /**
-     * <p>The number of anomalous metrics for the measure.</p>
-     */
     inline void SetNumTimeSeries(int value) { m_numTimeSeriesHasBeenSet = true; m_numTimeSeries = value; }
-
-    /**
-     * <p>The number of anomalous metrics for the measure.</p>
-     */
     inline MetricLevelImpact& WithNumTimeSeries(int value) { SetNumTimeSeries(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Details about the dimensions that contributed to the anomaly.</p>
      */
-    inline const ContributionMatrix& GetContributionMatrix() const{ return m_contributionMatrix; }
-
-    /**
-     * <p>Details about the dimensions that contributed to the anomaly.</p>
-     */
+    inline const ContributionMatrix& GetContributionMatrix() const { return m_contributionMatrix; }
     inline bool ContributionMatrixHasBeenSet() const { return m_contributionMatrixHasBeenSet; }
-
-    /**
-     * <p>Details about the dimensions that contributed to the anomaly.</p>
-     */
-    inline void SetContributionMatrix(const ContributionMatrix& value) { m_contributionMatrixHasBeenSet = true; m_contributionMatrix = value; }
-
-    /**
-     * <p>Details about the dimensions that contributed to the anomaly.</p>
-     */
-    inline void SetContributionMatrix(ContributionMatrix&& value) { m_contributionMatrixHasBeenSet = true; m_contributionMatrix = std::move(value); }
-
-    /**
-     * <p>Details about the dimensions that contributed to the anomaly.</p>
-     */
-    inline MetricLevelImpact& WithContributionMatrix(const ContributionMatrix& value) { SetContributionMatrix(value); return *this;}
-
-    /**
-     * <p>Details about the dimensions that contributed to the anomaly.</p>
-     */
-    inline MetricLevelImpact& WithContributionMatrix(ContributionMatrix&& value) { SetContributionMatrix(std::move(value)); return *this;}
-
+    template<typename ContributionMatrixT = ContributionMatrix>
+    void SetContributionMatrix(ContributionMatrixT&& value) { m_contributionMatrixHasBeenSet = true; m_contributionMatrix = std::forward<ContributionMatrixT>(value); }
+    template<typename ContributionMatrixT = ContributionMatrix>
+    MetricLevelImpact& WithContributionMatrix(ContributionMatrixT&& value) { SetContributionMatrix(std::forward<ContributionMatrixT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_metricName;
     bool m_metricNameHasBeenSet = false;
 
-    int m_numTimeSeries;
+    int m_numTimeSeries{0};
     bool m_numTimeSeriesHasBeenSet = false;
 
     ContributionMatrix m_contributionMatrix;

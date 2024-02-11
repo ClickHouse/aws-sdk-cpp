@@ -18,13 +18,7 @@ namespace Athena
 namespace Model
 {
 
-ResultSetMetadata::ResultSetMetadata() : 
-    m_columnInfoHasBeenSet(false)
-{
-}
-
-ResultSetMetadata::ResultSetMetadata(JsonView jsonValue) : 
-    m_columnInfoHasBeenSet(false)
+ResultSetMetadata::ResultSetMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ ResultSetMetadata& ResultSetMetadata::operator =(JsonView jsonValue)
     }
     m_columnInfoHasBeenSet = true;
   }
-
   return *this;
 }
 

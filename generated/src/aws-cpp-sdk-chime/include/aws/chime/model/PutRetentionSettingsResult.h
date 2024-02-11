@@ -29,96 +29,52 @@ namespace Model
   class PutRetentionSettingsResult
   {
   public:
-    AWS_CHIME_API PutRetentionSettingsResult();
+    AWS_CHIME_API PutRetentionSettingsResult() = default;
     AWS_CHIME_API PutRetentionSettingsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CHIME_API PutRetentionSettingsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The retention settings.</p>
      */
-    inline const RetentionSettings& GetRetentionSettings() const{ return m_retentionSettings; }
+    inline const RetentionSettings& GetRetentionSettings() const { return m_retentionSettings; }
+    template<typename RetentionSettingsT = RetentionSettings>
+    void SetRetentionSettings(RetentionSettingsT&& value) { m_retentionSettingsHasBeenSet = true; m_retentionSettings = std::forward<RetentionSettingsT>(value); }
+    template<typename RetentionSettingsT = RetentionSettings>
+    PutRetentionSettingsResult& WithRetentionSettings(RetentionSettingsT&& value) { SetRetentionSettings(std::forward<RetentionSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The retention settings.</p>
-     */
-    inline void SetRetentionSettings(const RetentionSettings& value) { m_retentionSettings = value; }
-
-    /**
-     * <p>The retention settings.</p>
-     */
-    inline void SetRetentionSettings(RetentionSettings&& value) { m_retentionSettings = std::move(value); }
-
-    /**
-     * <p>The retention settings.</p>
-     */
-    inline PutRetentionSettingsResult& WithRetentionSettings(const RetentionSettings& value) { SetRetentionSettings(value); return *this;}
-
-    /**
-     * <p>The retention settings.</p>
-     */
-    inline PutRetentionSettingsResult& WithRetentionSettings(RetentionSettings&& value) { SetRetentionSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp representing the time at which the specified items are
      * permanently deleted, in ISO 8601 format.</p>
      */
-    inline const Aws::Utils::DateTime& GetInitiateDeletionTimestamp() const{ return m_initiateDeletionTimestamp; }
+    inline const Aws::Utils::DateTime& GetInitiateDeletionTimestamp() const { return m_initiateDeletionTimestamp; }
+    template<typename InitiateDeletionTimestampT = Aws::Utils::DateTime>
+    void SetInitiateDeletionTimestamp(InitiateDeletionTimestampT&& value) { m_initiateDeletionTimestampHasBeenSet = true; m_initiateDeletionTimestamp = std::forward<InitiateDeletionTimestampT>(value); }
+    template<typename InitiateDeletionTimestampT = Aws::Utils::DateTime>
+    PutRetentionSettingsResult& WithInitiateDeletionTimestamp(InitiateDeletionTimestampT&& value) { SetInitiateDeletionTimestamp(std::forward<InitiateDeletionTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp representing the time at which the specified items are
-     * permanently deleted, in ISO 8601 format.</p>
-     */
-    inline void SetInitiateDeletionTimestamp(const Aws::Utils::DateTime& value) { m_initiateDeletionTimestamp = value; }
-
-    /**
-     * <p>The timestamp representing the time at which the specified items are
-     * permanently deleted, in ISO 8601 format.</p>
-     */
-    inline void SetInitiateDeletionTimestamp(Aws::Utils::DateTime&& value) { m_initiateDeletionTimestamp = std::move(value); }
-
-    /**
-     * <p>The timestamp representing the time at which the specified items are
-     * permanently deleted, in ISO 8601 format.</p>
-     */
-    inline PutRetentionSettingsResult& WithInitiateDeletionTimestamp(const Aws::Utils::DateTime& value) { SetInitiateDeletionTimestamp(value); return *this;}
-
-    /**
-     * <p>The timestamp representing the time at which the specified items are
-     * permanently deleted, in ISO 8601 format.</p>
-     */
-    inline PutRetentionSettingsResult& WithInitiateDeletionTimestamp(Aws::Utils::DateTime&& value) { SetInitiateDeletionTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline PutRetentionSettingsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline PutRetentionSettingsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline PutRetentionSettingsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    PutRetentionSettingsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     RetentionSettings m_retentionSettings;
+    bool m_retentionSettingsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_initiateDeletionTimestamp;
+    Aws::Utils::DateTime m_initiateDeletionTimestamp{};
+    bool m_initiateDeletionTimestampHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

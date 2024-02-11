@@ -21,7 +21,7 @@ namespace Model
   class StopSessionRequest : public GlueRequest
   {
   public:
-    AWS_GLUE_API StopSessionRequest();
+    AWS_GLUE_API StopSessionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,29 @@ namespace Model
     AWS_GLUE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the session to be stopped.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the session to be stopped.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    StopSessionRequest& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the session to be stopped.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of the session to be stopped.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the session to be stopped.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the session to be stopped.</p>
-     */
-    inline StopSessionRequest& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the session to be stopped.</p>
-     */
-    inline StopSessionRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the session to be stopped.</p>
-     */
-    inline StopSessionRequest& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The origin of the request.</p>
      */
-    inline const Aws::String& GetRequestOrigin() const{ return m_requestOrigin; }
-
-    /**
-     * <p>The origin of the request.</p>
-     */
+    inline const Aws::String& GetRequestOrigin() const { return m_requestOrigin; }
     inline bool RequestOriginHasBeenSet() const { return m_requestOriginHasBeenSet; }
-
-    /**
-     * <p>The origin of the request.</p>
-     */
-    inline void SetRequestOrigin(const Aws::String& value) { m_requestOriginHasBeenSet = true; m_requestOrigin = value; }
-
-    /**
-     * <p>The origin of the request.</p>
-     */
-    inline void SetRequestOrigin(Aws::String&& value) { m_requestOriginHasBeenSet = true; m_requestOrigin = std::move(value); }
-
-    /**
-     * <p>The origin of the request.</p>
-     */
-    inline void SetRequestOrigin(const char* value) { m_requestOriginHasBeenSet = true; m_requestOrigin.assign(value); }
-
-    /**
-     * <p>The origin of the request.</p>
-     */
-    inline StopSessionRequest& WithRequestOrigin(const Aws::String& value) { SetRequestOrigin(value); return *this;}
-
-    /**
-     * <p>The origin of the request.</p>
-     */
-    inline StopSessionRequest& WithRequestOrigin(Aws::String&& value) { SetRequestOrigin(std::move(value)); return *this;}
-
-    /**
-     * <p>The origin of the request.</p>
-     */
-    inline StopSessionRequest& WithRequestOrigin(const char* value) { SetRequestOrigin(value); return *this;}
-
+    template<typename RequestOriginT = Aws::String>
+    void SetRequestOrigin(RequestOriginT&& value) { m_requestOriginHasBeenSet = true; m_requestOrigin = std::forward<RequestOriginT>(value); }
+    template<typename RequestOriginT = Aws::String>
+    StopSessionRequest& WithRequestOrigin(RequestOriginT&& value) { SetRequestOrigin(std::forward<RequestOriginT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

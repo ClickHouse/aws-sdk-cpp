@@ -10,18 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-GetInstanceTypesFromInstanceRequirementsRequest::GetInstanceTypesFromInstanceRequirementsRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_architectureTypesHasBeenSet(false),
-    m_virtualizationTypesHasBeenSet(false),
-    m_instanceRequirementsHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String GetInstanceTypesFromInstanceRequirementsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -37,7 +25,7 @@ Aws::String GetInstanceTypesFromInstanceRequirementsRequest::SerializePayload() 
     for(auto& item : m_architectureTypes)
     {
       ss << "ArchitectureType." << architectureTypesCount << "="
-          << StringUtils::URLEncode(ArchitectureTypeMapper::GetNameForArchitectureType(item).c_str()) << "&";
+          << StringUtils::URLEncode(ArchitectureTypeMapper::GetNameForArchitectureType(item)) << "&";
       architectureTypesCount++;
     }
   }
@@ -48,7 +36,7 @@ Aws::String GetInstanceTypesFromInstanceRequirementsRequest::SerializePayload() 
     for(auto& item : m_virtualizationTypes)
     {
       ss << "VirtualizationType." << virtualizationTypesCount << "="
-          << StringUtils::URLEncode(VirtualizationTypeMapper::GetNameForVirtualizationType(item).c_str()) << "&";
+          << StringUtils::URLEncode(VirtualizationTypeMapper::GetNameForVirtualizationType(item)) << "&";
       virtualizationTypesCount++;
     }
   }
@@ -66,6 +54,11 @@ Aws::String GetInstanceTypesFromInstanceRequirementsRequest::SerializePayload() 
   if(m_nextTokenHasBeenSet)
   {
     ss << "NextToken=" << StringUtils::URLEncode(m_nextToken.c_str()) << "&";
+  }
+
+  if(m_contextHasBeenSet)
+  {
+    ss << "Context=" << StringUtils::URLEncode(m_context.c_str()) << "&";
   }
 
   ss << "Version=2016-11-15";

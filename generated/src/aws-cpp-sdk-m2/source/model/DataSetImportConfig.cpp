@@ -18,15 +18,7 @@ namespace MainframeModernization
 namespace Model
 {
 
-DataSetImportConfig::DataSetImportConfig() : 
-    m_dataSetsHasBeenSet(false),
-    m_s3LocationHasBeenSet(false)
-{
-}
-
-DataSetImportConfig::DataSetImportConfig(JsonView jsonValue) : 
-    m_dataSetsHasBeenSet(false),
-    m_s3LocationHasBeenSet(false)
+DataSetImportConfig::DataSetImportConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ DataSetImportConfig& DataSetImportConfig::operator =(JsonView jsonValue)
     }
     m_dataSetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("s3Location"))
   {
     m_s3Location = jsonValue.GetString("s3Location");
-
     m_s3LocationHasBeenSet = true;
   }
-
   return *this;
 }
 

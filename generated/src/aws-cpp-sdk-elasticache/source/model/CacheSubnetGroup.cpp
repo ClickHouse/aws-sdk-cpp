@@ -20,23 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-CacheSubnetGroup::CacheSubnetGroup() : 
-    m_cacheSubnetGroupNameHasBeenSet(false),
-    m_cacheSubnetGroupDescriptionHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_subnetsHasBeenSet(false),
-    m_aRNHasBeenSet(false),
-    m_supportedNetworkTypesHasBeenSet(false)
-{
-}
-
-CacheSubnetGroup::CacheSubnetGroup(const XmlNode& xmlNode) : 
-    m_cacheSubnetGroupNameHasBeenSet(false),
-    m_cacheSubnetGroupDescriptionHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_subnetsHasBeenSet(false),
-    m_aRNHasBeenSet(false),
-    m_supportedNetworkTypesHasBeenSet(false)
+CacheSubnetGroup::CacheSubnetGroup(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -69,6 +53,7 @@ CacheSubnetGroup& CacheSubnetGroup::operator =(const XmlNode& xmlNode)
     if(!subnetsNode.IsNull())
     {
       XmlNode subnetsMember = subnetsNode.FirstChild("Subnet");
+      m_subnetsHasBeenSet = !subnetsMember.IsNull();
       while(!subnetsMember.IsNull())
       {
         m_subnets.push_back(subnetsMember);
@@ -87,6 +72,7 @@ CacheSubnetGroup& CacheSubnetGroup::operator =(const XmlNode& xmlNode)
     if(!supportedNetworkTypesNode.IsNull())
     {
       XmlNode supportedNetworkTypesMember = supportedNetworkTypesNode.FirstChild("member");
+      m_supportedNetworkTypesHasBeenSet = !supportedNetworkTypesMember.IsNull();
       while(!supportedNetworkTypesMember.IsNull())
       {
         m_supportedNetworkTypes.push_back(NetworkTypeMapper::GetNetworkTypeForName(StringUtils::Trim(supportedNetworkTypesMember.GetText().c_str())));
@@ -123,7 +109,7 @@ void CacheSubnetGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_subnets)
       {
         Aws::StringStream subnetsSs;
-        subnetsSs << location << index << locationValue << ".Subnet." << subnetsIdx++;
+        subnetsSs << location << index << locationValue << ".Subnets.Subnet." << subnetsIdx++;
         item.OutputToStream(oStream, subnetsSs.str().c_str());
       }
   }
@@ -138,7 +124,7 @@ void CacheSubnetGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
       unsigned supportedNetworkTypesIdx = 1;
       for(auto& item : m_supportedNetworkTypes)
       {
-        oStream << location << index << locationValue << ".SupportedNetworkTypes.member." << supportedNetworkTypesIdx++ << "=" << NetworkTypeMapper::GetNameForNetworkType(item) << "&";
+        oStream << location << index << locationValue << ".SupportedNetworkTypes.member." << supportedNetworkTypesIdx++ << "=" << StringUtils::URLEncode(NetworkTypeMapper::GetNameForNetworkType(item)) << "&";
       }
   }
 
@@ -164,7 +150,7 @@ void CacheSubnetGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_subnets)
       {
         Aws::StringStream subnetsSs;
-        subnetsSs << location <<  ".Subnet." << subnetsIdx++;
+        subnetsSs << location << ".Subnets.Subnet." << subnetsIdx++;
         item.OutputToStream(oStream, subnetsSs.str().c_str());
       }
   }
@@ -177,7 +163,7 @@ void CacheSubnetGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
       unsigned supportedNetworkTypesIdx = 1;
       for(auto& item : m_supportedNetworkTypes)
       {
-        oStream << location << ".SupportedNetworkTypes.member." << supportedNetworkTypesIdx++ << "=" << NetworkTypeMapper::GetNameForNetworkType(item) << "&";
+        oStream << location << ".SupportedNetworkTypes.member." << supportedNetworkTypesIdx++ << "=" << StringUtils::URLEncode(NetworkTypeMapper::GetNameForNetworkType(item)) << "&";
       }
   }
 }

@@ -12,16 +12,15 @@ using namespace Aws::Omics::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateWorkflowRequest::UpdateWorkflowRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
 Aws::String UpdateWorkflowRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_nameHasBeenSet)
+  {
+   payload.WithString("name", m_name);
+
+  }
 
   if(m_descriptionHasBeenSet)
   {
@@ -29,9 +28,20 @@ Aws::String UpdateWorkflowRequest::SerializePayload() const
 
   }
 
-  if(m_nameHasBeenSet)
+  if(m_storageTypeHasBeenSet)
   {
-   payload.WithString("name", m_name);
+   payload.WithString("storageType", StorageTypeMapper::GetNameForStorageType(m_storageType));
+  }
+
+  if(m_storageCapacityHasBeenSet)
+  {
+   payload.WithInteger("storageCapacity", m_storageCapacity);
+
+  }
+
+  if(m_readmeMarkdownHasBeenSet)
+  {
+   payload.WithString("readmeMarkdown", m_readmeMarkdown);
 
   }
 

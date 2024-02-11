@@ -32,63 +32,37 @@ namespace Model
   class InternalServerException
   {
   public:
-    AWS_SSMCONTACTS_API InternalServerException();
+    AWS_SSMCONTACTS_API InternalServerException() = default;
     AWS_SSMCONTACTS_API InternalServerException(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMCONTACTS_API InternalServerException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMCONTACTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    InternalServerException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    
-    inline InternalServerException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    
-    inline InternalServerException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    
-    inline InternalServerException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * Advice to clients on when the call can be safely retried
      */
-    inline int GetRetryAfterSeconds() const{ return m_retryAfterSeconds; }
-
-    /**
-     * Advice to clients on when the call can be safely retried
-     */
+    inline int GetRetryAfterSeconds() const { return m_retryAfterSeconds; }
     inline bool RetryAfterSecondsHasBeenSet() const { return m_retryAfterSecondsHasBeenSet; }
-
-    /**
-     * Advice to clients on when the call can be safely retried
-     */
     inline void SetRetryAfterSeconds(int value) { m_retryAfterSecondsHasBeenSet = true; m_retryAfterSeconds = value; }
-
-    /**
-     * Advice to clients on when the call can be safely retried
-     */
     inline InternalServerException& WithRetryAfterSeconds(int value) { SetRetryAfterSeconds(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_message;
     bool m_messageHasBeenSet = false;
 
-    int m_retryAfterSeconds;
+    int m_retryAfterSeconds{0};
     bool m_retryAfterSecondsHasBeenSet = false;
   };
 

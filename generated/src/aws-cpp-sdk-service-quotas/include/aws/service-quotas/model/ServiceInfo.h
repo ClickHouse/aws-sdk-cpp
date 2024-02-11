@@ -24,100 +24,44 @@ namespace Model
 {
 
   /**
-   * <p>Information about a service.</p><p><h3>See Also:</h3>   <a
+   * <p>Information about an Amazon Web Services service.</p><p><h3>See Also:</h3>  
+   * <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/service-quotas-2019-06-24/ServiceInfo">AWS
    * API Reference</a></p>
    */
   class ServiceInfo
   {
   public:
-    AWS_SERVICEQUOTAS_API ServiceInfo();
+    AWS_SERVICEQUOTAS_API ServiceInfo() = default;
     AWS_SERVICEQUOTAS_API ServiceInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEQUOTAS_API ServiceInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEQUOTAS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The service identifier.</p>
+     * <p>Specifies the service identifier. To find the service code value for an
+     * Amazon Web Services service, use the <a>ListServices</a> operation.</p>
      */
-    inline const Aws::String& GetServiceCode() const{ return m_serviceCode; }
-
-    /**
-     * <p>The service identifier.</p>
-     */
+    inline const Aws::String& GetServiceCode() const { return m_serviceCode; }
     inline bool ServiceCodeHasBeenSet() const { return m_serviceCodeHasBeenSet; }
+    template<typename ServiceCodeT = Aws::String>
+    void SetServiceCode(ServiceCodeT&& value) { m_serviceCodeHasBeenSet = true; m_serviceCode = std::forward<ServiceCodeT>(value); }
+    template<typename ServiceCodeT = Aws::String>
+    ServiceInfo& WithServiceCode(ServiceCodeT&& value) { SetServiceCode(std::forward<ServiceCodeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The service identifier.</p>
+     * <p>Specifies the service name.</p>
      */
-    inline void SetServiceCode(const Aws::String& value) { m_serviceCodeHasBeenSet = true; m_serviceCode = value; }
-
-    /**
-     * <p>The service identifier.</p>
-     */
-    inline void SetServiceCode(Aws::String&& value) { m_serviceCodeHasBeenSet = true; m_serviceCode = std::move(value); }
-
-    /**
-     * <p>The service identifier.</p>
-     */
-    inline void SetServiceCode(const char* value) { m_serviceCodeHasBeenSet = true; m_serviceCode.assign(value); }
-
-    /**
-     * <p>The service identifier.</p>
-     */
-    inline ServiceInfo& WithServiceCode(const Aws::String& value) { SetServiceCode(value); return *this;}
-
-    /**
-     * <p>The service identifier.</p>
-     */
-    inline ServiceInfo& WithServiceCode(Aws::String&& value) { SetServiceCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The service identifier.</p>
-     */
-    inline ServiceInfo& WithServiceCode(const char* value) { SetServiceCode(value); return *this;}
-
-
-    /**
-     * <p>The service name.</p>
-     */
-    inline const Aws::String& GetServiceName() const{ return m_serviceName; }
-
-    /**
-     * <p>The service name.</p>
-     */
+    inline const Aws::String& GetServiceName() const { return m_serviceName; }
     inline bool ServiceNameHasBeenSet() const { return m_serviceNameHasBeenSet; }
-
-    /**
-     * <p>The service name.</p>
-     */
-    inline void SetServiceName(const Aws::String& value) { m_serviceNameHasBeenSet = true; m_serviceName = value; }
-
-    /**
-     * <p>The service name.</p>
-     */
-    inline void SetServiceName(Aws::String&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::move(value); }
-
-    /**
-     * <p>The service name.</p>
-     */
-    inline void SetServiceName(const char* value) { m_serviceNameHasBeenSet = true; m_serviceName.assign(value); }
-
-    /**
-     * <p>The service name.</p>
-     */
-    inline ServiceInfo& WithServiceName(const Aws::String& value) { SetServiceName(value); return *this;}
-
-    /**
-     * <p>The service name.</p>
-     */
-    inline ServiceInfo& WithServiceName(Aws::String&& value) { SetServiceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The service name.</p>
-     */
-    inline ServiceInfo& WithServiceName(const char* value) { SetServiceName(value); return *this;}
-
+    template<typename ServiceNameT = Aws::String>
+    void SetServiceName(ServiceNameT&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::forward<ServiceNameT>(value); }
+    template<typename ServiceNameT = Aws::String>
+    ServiceInfo& WithServiceName(ServiceNameT&& value) { SetServiceName(std::forward<ServiceNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_serviceCode;

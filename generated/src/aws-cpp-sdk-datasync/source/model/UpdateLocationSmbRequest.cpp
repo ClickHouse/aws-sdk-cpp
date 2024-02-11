@@ -5,23 +5,13 @@
 
 #include <aws/datasync/model/UpdateLocationSmbRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
+#include <aws/core/utils/HashingUtils.h>
 
 #include <utility>
 
 using namespace Aws::DataSync::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
-
-UpdateLocationSmbRequest::UpdateLocationSmbRequest() : 
-    m_locationArnHasBeenSet(false),
-    m_subdirectoryHasBeenSet(false),
-    m_userHasBeenSet(false),
-    m_domainHasBeenSet(false),
-    m_passwordHasBeenSet(false),
-    m_agentArnsHasBeenSet(false),
-    m_mountOptionsHasBeenSet(false)
-{
-}
 
 Aws::String UpdateLocationSmbRequest::SerializePayload() const
 {
@@ -36,6 +26,12 @@ Aws::String UpdateLocationSmbRequest::SerializePayload() const
   if(m_subdirectoryHasBeenSet)
   {
    payload.WithString("Subdirectory", m_subdirectory);
+
+  }
+
+  if(m_serverHostnameHasBeenSet)
+  {
+   payload.WithString("ServerHostname", m_serverHostname);
 
   }
 
@@ -72,6 +68,38 @@ Aws::String UpdateLocationSmbRequest::SerializePayload() const
   {
    payload.WithObject("MountOptions", m_mountOptions.Jsonize());
 
+  }
+
+  if(m_authenticationTypeHasBeenSet)
+  {
+   payload.WithString("AuthenticationType", SmbAuthenticationTypeMapper::GetNameForSmbAuthenticationType(m_authenticationType));
+  }
+
+  if(m_dnsIpAddressesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> dnsIpAddressesJsonList(m_dnsIpAddresses.size());
+   for(unsigned dnsIpAddressesIndex = 0; dnsIpAddressesIndex < dnsIpAddressesJsonList.GetLength(); ++dnsIpAddressesIndex)
+   {
+     dnsIpAddressesJsonList[dnsIpAddressesIndex].AsString(m_dnsIpAddresses[dnsIpAddressesIndex]);
+   }
+   payload.WithArray("DnsIpAddresses", std::move(dnsIpAddressesJsonList));
+
+  }
+
+  if(m_kerberosPrincipalHasBeenSet)
+  {
+   payload.WithString("KerberosPrincipal", m_kerberosPrincipal);
+
+  }
+
+  if(m_kerberosKeytabHasBeenSet)
+  {
+   payload.WithString("KerberosKeytab", HashingUtils::Base64Encode(m_kerberosKeytab));
+  }
+
+  if(m_kerberosKrb5ConfHasBeenSet)
+  {
+   payload.WithString("KerberosKrb5Conf", HashingUtils::Base64Encode(m_kerberosKrb5Conf));
   }
 
   return payload.View().WriteReadable();

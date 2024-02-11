@@ -27,73 +27,23 @@ namespace Model
   class DeleteCustomLogSourceResult
   {
   public:
-    AWS_SECURITYLAKE_API DeleteCustomLogSourceResult();
+    AWS_SECURITYLAKE_API DeleteCustomLogSourceResult() = default;
     AWS_SECURITYLAKE_API DeleteCustomLogSourceResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SECURITYLAKE_API DeleteCustomLogSourceResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
-    /**
-     * <p>The location of the partition in the Amazon S3 bucket for Security Lake.</p>
-     */
-    inline const Aws::String& GetCustomDataLocation() const{ return m_customDataLocation; }
-
-    /**
-     * <p>The location of the partition in the Amazon S3 bucket for Security Lake.</p>
-     */
-    inline void SetCustomDataLocation(const Aws::String& value) { m_customDataLocation = value; }
-
-    /**
-     * <p>The location of the partition in the Amazon S3 bucket for Security Lake.</p>
-     */
-    inline void SetCustomDataLocation(Aws::String&& value) { m_customDataLocation = std::move(value); }
-
-    /**
-     * <p>The location of the partition in the Amazon S3 bucket for Security Lake.</p>
-     */
-    inline void SetCustomDataLocation(const char* value) { m_customDataLocation.assign(value); }
-
-    /**
-     * <p>The location of the partition in the Amazon S3 bucket for Security Lake.</p>
-     */
-    inline DeleteCustomLogSourceResult& WithCustomDataLocation(const Aws::String& value) { SetCustomDataLocation(value); return *this;}
-
-    /**
-     * <p>The location of the partition in the Amazon S3 bucket for Security Lake.</p>
-     */
-    inline DeleteCustomLogSourceResult& WithCustomDataLocation(Aws::String&& value) { SetCustomDataLocation(std::move(value)); return *this;}
-
-    /**
-     * <p>The location of the partition in the Amazon S3 bucket for Security Lake.</p>
-     */
-    inline DeleteCustomLogSourceResult& WithCustomDataLocation(const char* value) { SetCustomDataLocation(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteCustomLogSourceResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteCustomLogSourceResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteCustomLogSourceResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteCustomLogSourceResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_customDataLocation;
-
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

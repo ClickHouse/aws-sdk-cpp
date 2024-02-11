@@ -31,422 +31,166 @@ namespace Model
   class GetBackupPlanResult
   {
   public:
-    AWS_BACKUP_API GetBackupPlanResult();
+    AWS_BACKUP_API GetBackupPlanResult() = default;
     AWS_BACKUP_API GetBackupPlanResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_BACKUP_API GetBackupPlanResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Specifies the body of a backup plan. Includes a <code>BackupPlanName</code>
      * and one or more sets of <code>Rules</code>.</p>
      */
-    inline const BackupPlan& GetBackupPlan() const{ return m_backupPlan; }
+    inline const BackupPlan& GetBackupPlan() const { return m_backupPlan; }
+    template<typename BackupPlanT = BackupPlan>
+    void SetBackupPlan(BackupPlanT&& value) { m_backupPlanHasBeenSet = true; m_backupPlan = std::forward<BackupPlanT>(value); }
+    template<typename BackupPlanT = BackupPlan>
+    GetBackupPlanResult& WithBackupPlan(BackupPlanT&& value) { SetBackupPlan(std::forward<BackupPlanT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the body of a backup plan. Includes a <code>BackupPlanName</code>
-     * and one or more sets of <code>Rules</code>.</p>
-     */
-    inline void SetBackupPlan(const BackupPlan& value) { m_backupPlan = value; }
-
-    /**
-     * <p>Specifies the body of a backup plan. Includes a <code>BackupPlanName</code>
-     * and one or more sets of <code>Rules</code>.</p>
-     */
-    inline void SetBackupPlan(BackupPlan&& value) { m_backupPlan = std::move(value); }
-
-    /**
-     * <p>Specifies the body of a backup plan. Includes a <code>BackupPlanName</code>
-     * and one or more sets of <code>Rules</code>.</p>
-     */
-    inline GetBackupPlanResult& WithBackupPlan(const BackupPlan& value) { SetBackupPlan(value); return *this;}
-
-    /**
-     * <p>Specifies the body of a backup plan. Includes a <code>BackupPlanName</code>
-     * and one or more sets of <code>Rules</code>.</p>
-     */
-    inline GetBackupPlanResult& WithBackupPlan(BackupPlan&& value) { SetBackupPlan(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Uniquely identifies a backup plan.</p>
      */
-    inline const Aws::String& GetBackupPlanId() const{ return m_backupPlanId; }
+    inline const Aws::String& GetBackupPlanId() const { return m_backupPlanId; }
+    template<typename BackupPlanIdT = Aws::String>
+    void SetBackupPlanId(BackupPlanIdT&& value) { m_backupPlanIdHasBeenSet = true; m_backupPlanId = std::forward<BackupPlanIdT>(value); }
+    template<typename BackupPlanIdT = Aws::String>
+    GetBackupPlanResult& WithBackupPlanId(BackupPlanIdT&& value) { SetBackupPlanId(std::forward<BackupPlanIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Uniquely identifies a backup plan.</p>
-     */
-    inline void SetBackupPlanId(const Aws::String& value) { m_backupPlanId = value; }
-
-    /**
-     * <p>Uniquely identifies a backup plan.</p>
-     */
-    inline void SetBackupPlanId(Aws::String&& value) { m_backupPlanId = std::move(value); }
-
-    /**
-     * <p>Uniquely identifies a backup plan.</p>
-     */
-    inline void SetBackupPlanId(const char* value) { m_backupPlanId.assign(value); }
-
-    /**
-     * <p>Uniquely identifies a backup plan.</p>
-     */
-    inline GetBackupPlanResult& WithBackupPlanId(const Aws::String& value) { SetBackupPlanId(value); return *this;}
-
-    /**
-     * <p>Uniquely identifies a backup plan.</p>
-     */
-    inline GetBackupPlanResult& WithBackupPlanId(Aws::String&& value) { SetBackupPlanId(std::move(value)); return *this;}
-
-    /**
-     * <p>Uniquely identifies a backup plan.</p>
-     */
-    inline GetBackupPlanResult& WithBackupPlanId(const char* value) { SetBackupPlanId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An Amazon Resource Name (ARN) that uniquely identifies a backup plan; for
      * example,
      * <code>arn:aws:backup:us-east-1:123456789012:plan:8F81F553-3A74-4A3F-B93D-B3360DC80C50</code>.</p>
      */
-    inline const Aws::String& GetBackupPlanArn() const{ return m_backupPlanArn; }
+    inline const Aws::String& GetBackupPlanArn() const { return m_backupPlanArn; }
+    template<typename BackupPlanArnT = Aws::String>
+    void SetBackupPlanArn(BackupPlanArnT&& value) { m_backupPlanArnHasBeenSet = true; m_backupPlanArn = std::forward<BackupPlanArnT>(value); }
+    template<typename BackupPlanArnT = Aws::String>
+    GetBackupPlanResult& WithBackupPlanArn(BackupPlanArnT&& value) { SetBackupPlanArn(std::forward<BackupPlanArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a backup plan; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:plan:8F81F553-3A74-4A3F-B93D-B3360DC80C50</code>.</p>
-     */
-    inline void SetBackupPlanArn(const Aws::String& value) { m_backupPlanArn = value; }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a backup plan; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:plan:8F81F553-3A74-4A3F-B93D-B3360DC80C50</code>.</p>
-     */
-    inline void SetBackupPlanArn(Aws::String&& value) { m_backupPlanArn = std::move(value); }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a backup plan; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:plan:8F81F553-3A74-4A3F-B93D-B3360DC80C50</code>.</p>
-     */
-    inline void SetBackupPlanArn(const char* value) { m_backupPlanArn.assign(value); }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a backup plan; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:plan:8F81F553-3A74-4A3F-B93D-B3360DC80C50</code>.</p>
-     */
-    inline GetBackupPlanResult& WithBackupPlanArn(const Aws::String& value) { SetBackupPlanArn(value); return *this;}
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a backup plan; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:plan:8F81F553-3A74-4A3F-B93D-B3360DC80C50</code>.</p>
-     */
-    inline GetBackupPlanResult& WithBackupPlanArn(Aws::String&& value) { SetBackupPlanArn(std::move(value)); return *this;}
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a backup plan; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:plan:8F81F553-3A74-4A3F-B93D-B3360DC80C50</code>.</p>
-     */
-    inline GetBackupPlanResult& WithBackupPlanArn(const char* value) { SetBackupPlanArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Unique, randomly generated, Unicode, UTF-8 encoded strings that are at most
      * 1,024 bytes long. Version IDs cannot be edited.</p>
      */
-    inline const Aws::String& GetVersionId() const{ return m_versionId; }
+    inline const Aws::String& GetVersionId() const { return m_versionId; }
+    template<typename VersionIdT = Aws::String>
+    void SetVersionId(VersionIdT&& value) { m_versionIdHasBeenSet = true; m_versionId = std::forward<VersionIdT>(value); }
+    template<typename VersionIdT = Aws::String>
+    GetBackupPlanResult& WithVersionId(VersionIdT&& value) { SetVersionId(std::forward<VersionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Unique, randomly generated, Unicode, UTF-8 encoded strings that are at most
-     * 1,024 bytes long. Version IDs cannot be edited.</p>
-     */
-    inline void SetVersionId(const Aws::String& value) { m_versionId = value; }
-
-    /**
-     * <p>Unique, randomly generated, Unicode, UTF-8 encoded strings that are at most
-     * 1,024 bytes long. Version IDs cannot be edited.</p>
-     */
-    inline void SetVersionId(Aws::String&& value) { m_versionId = std::move(value); }
-
-    /**
-     * <p>Unique, randomly generated, Unicode, UTF-8 encoded strings that are at most
-     * 1,024 bytes long. Version IDs cannot be edited.</p>
-     */
-    inline void SetVersionId(const char* value) { m_versionId.assign(value); }
-
-    /**
-     * <p>Unique, randomly generated, Unicode, UTF-8 encoded strings that are at most
-     * 1,024 bytes long. Version IDs cannot be edited.</p>
-     */
-    inline GetBackupPlanResult& WithVersionId(const Aws::String& value) { SetVersionId(value); return *this;}
-
-    /**
-     * <p>Unique, randomly generated, Unicode, UTF-8 encoded strings that are at most
-     * 1,024 bytes long. Version IDs cannot be edited.</p>
-     */
-    inline GetBackupPlanResult& WithVersionId(Aws::String&& value) { SetVersionId(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique, randomly generated, Unicode, UTF-8 encoded strings that are at most
-     * 1,024 bytes long. Version IDs cannot be edited.</p>
-     */
-    inline GetBackupPlanResult& WithVersionId(const char* value) { SetVersionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique string that identifies the request and allows failed requests to be
-     * retried without the risk of running the operation twice.</p>
+     * retried without the risk of running the operation twice. </p>
      */
-    inline const Aws::String& GetCreatorRequestId() const{ return m_creatorRequestId; }
+    inline const Aws::String& GetCreatorRequestId() const { return m_creatorRequestId; }
+    template<typename CreatorRequestIdT = Aws::String>
+    void SetCreatorRequestId(CreatorRequestIdT&& value) { m_creatorRequestIdHasBeenSet = true; m_creatorRequestId = std::forward<CreatorRequestIdT>(value); }
+    template<typename CreatorRequestIdT = Aws::String>
+    GetBackupPlanResult& WithCreatorRequestId(CreatorRequestIdT&& value) { SetCreatorRequestId(std::forward<CreatorRequestIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique string that identifies the request and allows failed requests to be
-     * retried without the risk of running the operation twice.</p>
-     */
-    inline void SetCreatorRequestId(const Aws::String& value) { m_creatorRequestId = value; }
-
-    /**
-     * <p>A unique string that identifies the request and allows failed requests to be
-     * retried without the risk of running the operation twice.</p>
-     */
-    inline void SetCreatorRequestId(Aws::String&& value) { m_creatorRequestId = std::move(value); }
-
-    /**
-     * <p>A unique string that identifies the request and allows failed requests to be
-     * retried without the risk of running the operation twice.</p>
-     */
-    inline void SetCreatorRequestId(const char* value) { m_creatorRequestId.assign(value); }
-
-    /**
-     * <p>A unique string that identifies the request and allows failed requests to be
-     * retried without the risk of running the operation twice.</p>
-     */
-    inline GetBackupPlanResult& WithCreatorRequestId(const Aws::String& value) { SetCreatorRequestId(value); return *this;}
-
-    /**
-     * <p>A unique string that identifies the request and allows failed requests to be
-     * retried without the risk of running the operation twice.</p>
-     */
-    inline GetBackupPlanResult& WithCreatorRequestId(Aws::String&& value) { SetCreatorRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique string that identifies the request and allows failed requests to be
-     * retried without the risk of running the operation twice.</p>
-     */
-    inline GetBackupPlanResult& WithCreatorRequestId(const char* value) { SetCreatorRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that a backup plan is created, in Unix format and
      * Coordinated Universal Time (UTC). The value of <code>CreationDate</code> is
      * accurate to milliseconds. For example, the value 1516925490.087 represents
      * Friday, January 26, 2018 12:11:30.087 AM.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationDate() const{ return m_creationDate; }
+    inline const Aws::Utils::DateTime& GetCreationDate() const { return m_creationDate; }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    void SetCreationDate(CreationDateT&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::forward<CreationDateT>(value); }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    GetBackupPlanResult& WithCreationDate(CreationDateT&& value) { SetCreationDate(std::forward<CreationDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that a backup plan is created, in Unix format and
-     * Coordinated Universal Time (UTC). The value of <code>CreationDate</code> is
-     * accurate to milliseconds. For example, the value 1516925490.087 represents
-     * Friday, January 26, 2018 12:11:30.087 AM.</p>
-     */
-    inline void SetCreationDate(const Aws::Utils::DateTime& value) { m_creationDate = value; }
-
-    /**
-     * <p>The date and time that a backup plan is created, in Unix format and
-     * Coordinated Universal Time (UTC). The value of <code>CreationDate</code> is
-     * accurate to milliseconds. For example, the value 1516925490.087 represents
-     * Friday, January 26, 2018 12:11:30.087 AM.</p>
-     */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDate = std::move(value); }
-
-    /**
-     * <p>The date and time that a backup plan is created, in Unix format and
-     * Coordinated Universal Time (UTC). The value of <code>CreationDate</code> is
-     * accurate to milliseconds. For example, the value 1516925490.087 represents
-     * Friday, January 26, 2018 12:11:30.087 AM.</p>
-     */
-    inline GetBackupPlanResult& WithCreationDate(const Aws::Utils::DateTime& value) { SetCreationDate(value); return *this;}
-
-    /**
-     * <p>The date and time that a backup plan is created, in Unix format and
-     * Coordinated Universal Time (UTC). The value of <code>CreationDate</code> is
-     * accurate to milliseconds. For example, the value 1516925490.087 represents
-     * Friday, January 26, 2018 12:11:30.087 AM.</p>
-     */
-    inline GetBackupPlanResult& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that a backup plan is deleted, in Unix format and
      * Coordinated Universal Time (UTC). The value of <code>DeletionDate</code> is
      * accurate to milliseconds. For example, the value 1516925490.087 represents
      * Friday, January 26, 2018 12:11:30.087 AM.</p>
      */
-    inline const Aws::Utils::DateTime& GetDeletionDate() const{ return m_deletionDate; }
+    inline const Aws::Utils::DateTime& GetDeletionDate() const { return m_deletionDate; }
+    template<typename DeletionDateT = Aws::Utils::DateTime>
+    void SetDeletionDate(DeletionDateT&& value) { m_deletionDateHasBeenSet = true; m_deletionDate = std::forward<DeletionDateT>(value); }
+    template<typename DeletionDateT = Aws::Utils::DateTime>
+    GetBackupPlanResult& WithDeletionDate(DeletionDateT&& value) { SetDeletionDate(std::forward<DeletionDateT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The date and time that a backup plan is deleted, in Unix format and
-     * Coordinated Universal Time (UTC). The value of <code>DeletionDate</code> is
+     * <p>The last time this backup plan was run. A date and time, in Unix format and
+     * Coordinated Universal Time (UTC). The value of <code>LastExecutionDate</code> is
      * accurate to milliseconds. For example, the value 1516925490.087 represents
      * Friday, January 26, 2018 12:11:30.087 AM.</p>
      */
-    inline void SetDeletionDate(const Aws::Utils::DateTime& value) { m_deletionDate = value; }
+    inline const Aws::Utils::DateTime& GetLastExecutionDate() const { return m_lastExecutionDate; }
+    template<typename LastExecutionDateT = Aws::Utils::DateTime>
+    void SetLastExecutionDate(LastExecutionDateT&& value) { m_lastExecutionDateHasBeenSet = true; m_lastExecutionDate = std::forward<LastExecutionDateT>(value); }
+    template<typename LastExecutionDateT = Aws::Utils::DateTime>
+    GetBackupPlanResult& WithLastExecutionDate(LastExecutionDateT&& value) { SetLastExecutionDate(std::forward<LastExecutionDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that a backup plan is deleted, in Unix format and
-     * Coordinated Universal Time (UTC). The value of <code>DeletionDate</code> is
-     * accurate to milliseconds. For example, the value 1516925490.087 represents
-     * Friday, January 26, 2018 12:11:30.087 AM.</p>
-     */
-    inline void SetDeletionDate(Aws::Utils::DateTime&& value) { m_deletionDate = std::move(value); }
-
-    /**
-     * <p>The date and time that a backup plan is deleted, in Unix format and
-     * Coordinated Universal Time (UTC). The value of <code>DeletionDate</code> is
-     * accurate to milliseconds. For example, the value 1516925490.087 represents
-     * Friday, January 26, 2018 12:11:30.087 AM.</p>
-     */
-    inline GetBackupPlanResult& WithDeletionDate(const Aws::Utils::DateTime& value) { SetDeletionDate(value); return *this;}
-
-    /**
-     * <p>The date and time that a backup plan is deleted, in Unix format and
-     * Coordinated Universal Time (UTC). The value of <code>DeletionDate</code> is
-     * accurate to milliseconds. For example, the value 1516925490.087 represents
-     * Friday, January 26, 2018 12:11:30.087 AM.</p>
-     */
-    inline GetBackupPlanResult& WithDeletionDate(Aws::Utils::DateTime&& value) { SetDeletionDate(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The last time a job to back up resources was run with this backup plan. A
-     * date and time, in Unix format and Coordinated Universal Time (UTC). The value of
-     * <code>LastExecutionDate</code> is accurate to milliseconds. For example, the
-     * value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</p>
-     */
-    inline const Aws::Utils::DateTime& GetLastExecutionDate() const{ return m_lastExecutionDate; }
-
-    /**
-     * <p>The last time a job to back up resources was run with this backup plan. A
-     * date and time, in Unix format and Coordinated Universal Time (UTC). The value of
-     * <code>LastExecutionDate</code> is accurate to milliseconds. For example, the
-     * value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</p>
-     */
-    inline void SetLastExecutionDate(const Aws::Utils::DateTime& value) { m_lastExecutionDate = value; }
-
-    /**
-     * <p>The last time a job to back up resources was run with this backup plan. A
-     * date and time, in Unix format and Coordinated Universal Time (UTC). The value of
-     * <code>LastExecutionDate</code> is accurate to milliseconds. For example, the
-     * value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</p>
-     */
-    inline void SetLastExecutionDate(Aws::Utils::DateTime&& value) { m_lastExecutionDate = std::move(value); }
-
-    /**
-     * <p>The last time a job to back up resources was run with this backup plan. A
-     * date and time, in Unix format and Coordinated Universal Time (UTC). The value of
-     * <code>LastExecutionDate</code> is accurate to milliseconds. For example, the
-     * value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</p>
-     */
-    inline GetBackupPlanResult& WithLastExecutionDate(const Aws::Utils::DateTime& value) { SetLastExecutionDate(value); return *this;}
-
-    /**
-     * <p>The last time a job to back up resources was run with this backup plan. A
-     * date and time, in Unix format and Coordinated Universal Time (UTC). The value of
-     * <code>LastExecutionDate</code> is accurate to milliseconds. For example, the
-     * value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</p>
-     */
-    inline GetBackupPlanResult& WithLastExecutionDate(Aws::Utils::DateTime&& value) { SetLastExecutionDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains a list of <code>BackupOptions</code> for each resource type. The
      * list is populated only if the advanced option is set for the backup plan.</p>
      */
-    inline const Aws::Vector<AdvancedBackupSetting>& GetAdvancedBackupSettings() const{ return m_advancedBackupSettings; }
+    inline const Aws::Vector<AdvancedBackupSetting>& GetAdvancedBackupSettings() const { return m_advancedBackupSettings; }
+    template<typename AdvancedBackupSettingsT = Aws::Vector<AdvancedBackupSetting>>
+    void SetAdvancedBackupSettings(AdvancedBackupSettingsT&& value) { m_advancedBackupSettingsHasBeenSet = true; m_advancedBackupSettings = std::forward<AdvancedBackupSettingsT>(value); }
+    template<typename AdvancedBackupSettingsT = Aws::Vector<AdvancedBackupSetting>>
+    GetBackupPlanResult& WithAdvancedBackupSettings(AdvancedBackupSettingsT&& value) { SetAdvancedBackupSettings(std::forward<AdvancedBackupSettingsT>(value)); return *this;}
+    template<typename AdvancedBackupSettingsT = AdvancedBackupSetting>
+    GetBackupPlanResult& AddAdvancedBackupSettings(AdvancedBackupSettingsT&& value) { m_advancedBackupSettingsHasBeenSet = true; m_advancedBackupSettings.emplace_back(std::forward<AdvancedBackupSettingsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Contains a list of <code>BackupOptions</code> for each resource type. The
-     * list is populated only if the advanced option is set for the backup plan.</p>
-     */
-    inline void SetAdvancedBackupSettings(const Aws::Vector<AdvancedBackupSetting>& value) { m_advancedBackupSettings = value; }
-
-    /**
-     * <p>Contains a list of <code>BackupOptions</code> for each resource type. The
-     * list is populated only if the advanced option is set for the backup plan.</p>
-     */
-    inline void SetAdvancedBackupSettings(Aws::Vector<AdvancedBackupSetting>&& value) { m_advancedBackupSettings = std::move(value); }
-
-    /**
-     * <p>Contains a list of <code>BackupOptions</code> for each resource type. The
-     * list is populated only if the advanced option is set for the backup plan.</p>
-     */
-    inline GetBackupPlanResult& WithAdvancedBackupSettings(const Aws::Vector<AdvancedBackupSetting>& value) { SetAdvancedBackupSettings(value); return *this;}
-
-    /**
-     * <p>Contains a list of <code>BackupOptions</code> for each resource type. The
-     * list is populated only if the advanced option is set for the backup plan.</p>
-     */
-    inline GetBackupPlanResult& WithAdvancedBackupSettings(Aws::Vector<AdvancedBackupSetting>&& value) { SetAdvancedBackupSettings(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains a list of <code>BackupOptions</code> for each resource type. The
-     * list is populated only if the advanced option is set for the backup plan.</p>
-     */
-    inline GetBackupPlanResult& AddAdvancedBackupSettings(const AdvancedBackupSetting& value) { m_advancedBackupSettings.push_back(value); return *this; }
-
-    /**
-     * <p>Contains a list of <code>BackupOptions</code> for each resource type. The
-     * list is populated only if the advanced option is set for the backup plan.</p>
-     */
-    inline GetBackupPlanResult& AddAdvancedBackupSettings(AdvancedBackupSetting&& value) { m_advancedBackupSettings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetBackupPlanResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetBackupPlanResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetBackupPlanResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetBackupPlanResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     BackupPlan m_backupPlan;
+    bool m_backupPlanHasBeenSet = false;
 
     Aws::String m_backupPlanId;
+    bool m_backupPlanIdHasBeenSet = false;
 
     Aws::String m_backupPlanArn;
+    bool m_backupPlanArnHasBeenSet = false;
 
     Aws::String m_versionId;
+    bool m_versionIdHasBeenSet = false;
 
     Aws::String m_creatorRequestId;
+    bool m_creatorRequestIdHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationDate;
+    Aws::Utils::DateTime m_creationDate{};
+    bool m_creationDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_deletionDate;
+    Aws::Utils::DateTime m_deletionDate{};
+    bool m_deletionDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastExecutionDate;
+    Aws::Utils::DateTime m_lastExecutionDate{};
+    bool m_lastExecutionDateHasBeenSet = false;
 
     Aws::Vector<AdvancedBackupSetting> m_advancedBackupSettings;
+    bool m_advancedBackupSettingsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

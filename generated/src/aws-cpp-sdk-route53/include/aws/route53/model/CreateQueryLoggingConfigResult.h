@@ -28,111 +28,53 @@ namespace Model
   class CreateQueryLoggingConfigResult
   {
   public:
-    AWS_ROUTE53_API CreateQueryLoggingConfigResult();
+    AWS_ROUTE53_API CreateQueryLoggingConfigResult() = default;
     AWS_ROUTE53_API CreateQueryLoggingConfigResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_ROUTE53_API CreateQueryLoggingConfigResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>A complex type that contains the ID for a query logging configuration, the ID
      * of the hosted zone that you want to log queries for, and the ARN for the log
      * group that you want Amazon Route 53 to send query logs to.</p>
      */
-    inline const QueryLoggingConfig& GetQueryLoggingConfig() const{ return m_queryLoggingConfig; }
+    inline const QueryLoggingConfig& GetQueryLoggingConfig() const { return m_queryLoggingConfig; }
+    template<typename QueryLoggingConfigT = QueryLoggingConfig>
+    void SetQueryLoggingConfig(QueryLoggingConfigT&& value) { m_queryLoggingConfigHasBeenSet = true; m_queryLoggingConfig = std::forward<QueryLoggingConfigT>(value); }
+    template<typename QueryLoggingConfigT = QueryLoggingConfig>
+    CreateQueryLoggingConfigResult& WithQueryLoggingConfig(QueryLoggingConfigT&& value) { SetQueryLoggingConfig(std::forward<QueryLoggingConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A complex type that contains the ID for a query logging configuration, the ID
-     * of the hosted zone that you want to log queries for, and the ARN for the log
-     * group that you want Amazon Route 53 to send query logs to.</p>
-     */
-    inline void SetQueryLoggingConfig(const QueryLoggingConfig& value) { m_queryLoggingConfig = value; }
-
-    /**
-     * <p>A complex type that contains the ID for a query logging configuration, the ID
-     * of the hosted zone that you want to log queries for, and the ARN for the log
-     * group that you want Amazon Route 53 to send query logs to.</p>
-     */
-    inline void SetQueryLoggingConfig(QueryLoggingConfig&& value) { m_queryLoggingConfig = std::move(value); }
-
-    /**
-     * <p>A complex type that contains the ID for a query logging configuration, the ID
-     * of the hosted zone that you want to log queries for, and the ARN for the log
-     * group that you want Amazon Route 53 to send query logs to.</p>
-     */
-    inline CreateQueryLoggingConfigResult& WithQueryLoggingConfig(const QueryLoggingConfig& value) { SetQueryLoggingConfig(value); return *this;}
-
-    /**
-     * <p>A complex type that contains the ID for a query logging configuration, the ID
-     * of the hosted zone that you want to log queries for, and the ARN for the log
-     * group that you want Amazon Route 53 to send query logs to.</p>
-     */
-    inline CreateQueryLoggingConfigResult& WithQueryLoggingConfig(QueryLoggingConfig&& value) { SetQueryLoggingConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique URL representing the new query logging configuration.</p>
      */
-    inline const Aws::String& GetLocation() const{ return m_location; }
+    inline const Aws::String& GetLocation() const { return m_location; }
+    template<typename LocationT = Aws::String>
+    void SetLocation(LocationT&& value) { m_locationHasBeenSet = true; m_location = std::forward<LocationT>(value); }
+    template<typename LocationT = Aws::String>
+    CreateQueryLoggingConfigResult& WithLocation(LocationT&& value) { SetLocation(std::forward<LocationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique URL representing the new query logging configuration.</p>
-     */
-    inline void SetLocation(const Aws::String& value) { m_location = value; }
-
-    /**
-     * <p>The unique URL representing the new query logging configuration.</p>
-     */
-    inline void SetLocation(Aws::String&& value) { m_location = std::move(value); }
-
-    /**
-     * <p>The unique URL representing the new query logging configuration.</p>
-     */
-    inline void SetLocation(const char* value) { m_location.assign(value); }
-
-    /**
-     * <p>The unique URL representing the new query logging configuration.</p>
-     */
-    inline CreateQueryLoggingConfigResult& WithLocation(const Aws::String& value) { SetLocation(value); return *this;}
-
-    /**
-     * <p>The unique URL representing the new query logging configuration.</p>
-     */
-    inline CreateQueryLoggingConfigResult& WithLocation(Aws::String&& value) { SetLocation(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique URL representing the new query logging configuration.</p>
-     */
-    inline CreateQueryLoggingConfigResult& WithLocation(const char* value) { SetLocation(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateQueryLoggingConfigResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateQueryLoggingConfigResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateQueryLoggingConfigResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateQueryLoggingConfigResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     QueryLoggingConfig m_queryLoggingConfig;
+    bool m_queryLoggingConfigHasBeenSet = false;
 
     Aws::String m_location;
+    bool m_locationHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

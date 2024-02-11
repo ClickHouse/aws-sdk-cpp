@@ -18,15 +18,7 @@ namespace StorageGateway
 namespace Model
 {
 
-CacheAttributes::CacheAttributes() : 
-    m_cacheStaleTimeoutInSeconds(0),
-    m_cacheStaleTimeoutInSecondsHasBeenSet(false)
-{
-}
-
-CacheAttributes::CacheAttributes(JsonView jsonValue) : 
-    m_cacheStaleTimeoutInSeconds(0),
-    m_cacheStaleTimeoutInSecondsHasBeenSet(false)
+CacheAttributes::CacheAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ CacheAttributes& CacheAttributes::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CacheStaleTimeoutInSeconds"))
   {
     m_cacheStaleTimeoutInSeconds = jsonValue.GetInteger("CacheStaleTimeoutInSeconds");
-
     m_cacheStaleTimeoutInSecondsHasBeenSet = true;
   }
-
   return *this;
 }
 

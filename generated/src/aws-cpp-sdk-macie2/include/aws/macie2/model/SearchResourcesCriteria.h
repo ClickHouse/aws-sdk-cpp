@@ -34,91 +34,38 @@ namespace Model
   class SearchResourcesCriteria
   {
   public:
-    AWS_MACIE2_API SearchResourcesCriteria();
+    AWS_MACIE2_API SearchResourcesCriteria() = default;
     AWS_MACIE2_API SearchResourcesCriteria(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API SearchResourcesCriteria& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A property-based condition that defines a property, operator, and one or more
      * values for including or excluding resources from the results.</p>
      */
-    inline const SearchResourcesSimpleCriterion& GetSimpleCriterion() const{ return m_simpleCriterion; }
-
-    /**
-     * <p>A property-based condition that defines a property, operator, and one or more
-     * values for including or excluding resources from the results.</p>
-     */
+    inline const SearchResourcesSimpleCriterion& GetSimpleCriterion() const { return m_simpleCriterion; }
     inline bool SimpleCriterionHasBeenSet() const { return m_simpleCriterionHasBeenSet; }
+    template<typename SimpleCriterionT = SearchResourcesSimpleCriterion>
+    void SetSimpleCriterion(SimpleCriterionT&& value) { m_simpleCriterionHasBeenSet = true; m_simpleCriterion = std::forward<SimpleCriterionT>(value); }
+    template<typename SimpleCriterionT = SearchResourcesSimpleCriterion>
+    SearchResourcesCriteria& WithSimpleCriterion(SimpleCriterionT&& value) { SetSimpleCriterion(std::forward<SimpleCriterionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A property-based condition that defines a property, operator, and one or more
-     * values for including or excluding resources from the results.</p>
-     */
-    inline void SetSimpleCriterion(const SearchResourcesSimpleCriterion& value) { m_simpleCriterionHasBeenSet = true; m_simpleCriterion = value; }
-
-    /**
-     * <p>A property-based condition that defines a property, operator, and one or more
-     * values for including or excluding resources from the results.</p>
-     */
-    inline void SetSimpleCriterion(SearchResourcesSimpleCriterion&& value) { m_simpleCriterionHasBeenSet = true; m_simpleCriterion = std::move(value); }
-
-    /**
-     * <p>A property-based condition that defines a property, operator, and one or more
-     * values for including or excluding resources from the results.</p>
-     */
-    inline SearchResourcesCriteria& WithSimpleCriterion(const SearchResourcesSimpleCriterion& value) { SetSimpleCriterion(value); return *this;}
-
-    /**
-     * <p>A property-based condition that defines a property, operator, and one or more
-     * values for including or excluding resources from the results.</p>
-     */
-    inline SearchResourcesCriteria& WithSimpleCriterion(SearchResourcesSimpleCriterion&& value) { SetSimpleCriterion(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A tag-based condition that defines an operator and tag keys, tag values, or
      * tag key and value pairs for including or excluding resources from the
      * results.</p>
      */
-    inline const SearchResourcesTagCriterion& GetTagCriterion() const{ return m_tagCriterion; }
-
-    /**
-     * <p>A tag-based condition that defines an operator and tag keys, tag values, or
-     * tag key and value pairs for including or excluding resources from the
-     * results.</p>
-     */
+    inline const SearchResourcesTagCriterion& GetTagCriterion() const { return m_tagCriterion; }
     inline bool TagCriterionHasBeenSet() const { return m_tagCriterionHasBeenSet; }
-
-    /**
-     * <p>A tag-based condition that defines an operator and tag keys, tag values, or
-     * tag key and value pairs for including or excluding resources from the
-     * results.</p>
-     */
-    inline void SetTagCriterion(const SearchResourcesTagCriterion& value) { m_tagCriterionHasBeenSet = true; m_tagCriterion = value; }
-
-    /**
-     * <p>A tag-based condition that defines an operator and tag keys, tag values, or
-     * tag key and value pairs for including or excluding resources from the
-     * results.</p>
-     */
-    inline void SetTagCriterion(SearchResourcesTagCriterion&& value) { m_tagCriterionHasBeenSet = true; m_tagCriterion = std::move(value); }
-
-    /**
-     * <p>A tag-based condition that defines an operator and tag keys, tag values, or
-     * tag key and value pairs for including or excluding resources from the
-     * results.</p>
-     */
-    inline SearchResourcesCriteria& WithTagCriterion(const SearchResourcesTagCriterion& value) { SetTagCriterion(value); return *this;}
-
-    /**
-     * <p>A tag-based condition that defines an operator and tag keys, tag values, or
-     * tag key and value pairs for including or excluding resources from the
-     * results.</p>
-     */
-    inline SearchResourcesCriteria& WithTagCriterion(SearchResourcesTagCriterion&& value) { SetTagCriterion(std::move(value)); return *this;}
-
+    template<typename TagCriterionT = SearchResourcesTagCriterion>
+    void SetTagCriterion(TagCriterionT&& value) { m_tagCriterionHasBeenSet = true; m_tagCriterion = std::forward<TagCriterionT>(value); }
+    template<typename TagCriterionT = SearchResourcesTagCriterion>
+    SearchResourcesCriteria& WithTagCriterion(TagCriterionT&& value) { SetTagCriterion(std::forward<TagCriterionT>(value)); return *this;}
+    ///@}
   private:
 
     SearchResourcesSimpleCriterion m_simpleCriterion;

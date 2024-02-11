@@ -6,6 +6,7 @@
 #include <aws/cloudfront/model/AssociateAlias2020_05_31Request.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,11 +17,6 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-AssociateAlias2020_05_31Request::AssociateAlias2020_05_31Request() : 
-    m_targetDistributionIdHasBeenSet(false),
-    m_aliasHasBeenSet(false)
-{
-}
 
 Aws::String AssociateAlias2020_05_31Request::SerializePayload() const
 {

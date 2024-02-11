@@ -12,19 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ExecuteStatementRequest::ExecuteStatementRequest() : 
-    m_statementHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_consistentRead(false),
-    m_consistentReadHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_returnConsumedCapacity(ReturnConsumedCapacity::NOT_SET),
-    m_returnConsumedCapacityHasBeenSet(false),
-    m_limit(0),
-    m_limitHasBeenSet(false)
-{
-}
-
 Aws::String ExecuteStatementRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -67,6 +54,11 @@ Aws::String ExecuteStatementRequest::SerializePayload() const
   {
    payload.WithInteger("Limit", m_limit);
 
+  }
+
+  if(m_returnValuesOnConditionCheckFailureHasBeenSet)
+  {
+   payload.WithString("ReturnValuesOnConditionCheckFailure", ReturnValuesOnConditionCheckFailureMapper::GetNameForReturnValuesOnConditionCheckFailure(m_returnValuesOnConditionCheckFailure));
   }
 
   return payload.View().WriteReadable();

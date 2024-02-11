@@ -18,25 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-SlotValueElicitationSetting::SlotValueElicitationSetting() : 
-    m_defaultValueSpecificationHasBeenSet(false),
-    m_slotConstraint(SlotConstraint::NOT_SET),
-    m_slotConstraintHasBeenSet(false),
-    m_promptSpecificationHasBeenSet(false),
-    m_sampleUtterancesHasBeenSet(false),
-    m_waitAndContinueSpecificationHasBeenSet(false),
-    m_slotCaptureSettingHasBeenSet(false)
-{
-}
-
-SlotValueElicitationSetting::SlotValueElicitationSetting(JsonView jsonValue) : 
-    m_defaultValueSpecificationHasBeenSet(false),
-    m_slotConstraint(SlotConstraint::NOT_SET),
-    m_slotConstraintHasBeenSet(false),
-    m_promptSpecificationHasBeenSet(false),
-    m_sampleUtterancesHasBeenSet(false),
-    m_waitAndContinueSpecificationHasBeenSet(false),
-    m_slotCaptureSettingHasBeenSet(false)
+SlotValueElicitationSetting::SlotValueElicitationSetting(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,24 +28,18 @@ SlotValueElicitationSetting& SlotValueElicitationSetting::operator =(JsonView js
   if(jsonValue.ValueExists("defaultValueSpecification"))
   {
     m_defaultValueSpecification = jsonValue.GetObject("defaultValueSpecification");
-
     m_defaultValueSpecificationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("slotConstraint"))
   {
     m_slotConstraint = SlotConstraintMapper::GetSlotConstraintForName(jsonValue.GetString("slotConstraint"));
-
     m_slotConstraintHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("promptSpecification"))
   {
     m_promptSpecification = jsonValue.GetObject("promptSpecification");
-
     m_promptSpecificationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sampleUtterances"))
   {
     Aws::Utils::Array<JsonView> sampleUtterancesJsonList = jsonValue.GetArray("sampleUtterances");
@@ -73,21 +49,21 @@ SlotValueElicitationSetting& SlotValueElicitationSetting::operator =(JsonView js
     }
     m_sampleUtterancesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("waitAndContinueSpecification"))
   {
     m_waitAndContinueSpecification = jsonValue.GetObject("waitAndContinueSpecification");
-
     m_waitAndContinueSpecificationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("slotCaptureSetting"))
   {
     m_slotCaptureSetting = jsonValue.GetObject("slotCaptureSetting");
-
     m_slotCaptureSettingHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("slotResolutionSetting"))
+  {
+    m_slotResolutionSetting = jsonValue.GetObject("slotResolutionSetting");
+    m_slotResolutionSettingHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -132,6 +108,12 @@ JsonValue SlotValueElicitationSetting::Jsonize() const
   if(m_slotCaptureSettingHasBeenSet)
   {
    payload.WithObject("slotCaptureSetting", m_slotCaptureSetting.Jsonize());
+
+  }
+
+  if(m_slotResolutionSettingHasBeenSet)
+  {
+   payload.WithObject("slotResolutionSetting", m_slotResolutionSetting.Jsonize());
 
   }
 

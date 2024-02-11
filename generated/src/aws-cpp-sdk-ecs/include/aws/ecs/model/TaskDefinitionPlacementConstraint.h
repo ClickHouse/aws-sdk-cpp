@@ -37,49 +37,24 @@ namespace Model
   class TaskDefinitionPlacementConstraint
   {
   public:
-    AWS_ECS_API TaskDefinitionPlacementConstraint();
+    AWS_ECS_API TaskDefinitionPlacementConstraint() = default;
     AWS_ECS_API TaskDefinitionPlacementConstraint(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECS_API TaskDefinitionPlacementConstraint& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of constraint. The <code>MemberOf</code> constraint restricts
      * selection to be from a group of valid candidates.</p>
      */
-    inline const TaskDefinitionPlacementConstraintType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of constraint. The <code>MemberOf</code> constraint restricts
-     * selection to be from a group of valid candidates.</p>
-     */
+    inline TaskDefinitionPlacementConstraintType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(TaskDefinitionPlacementConstraintType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline TaskDefinitionPlacementConstraint& WithType(TaskDefinitionPlacementConstraintType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of constraint. The <code>MemberOf</code> constraint restricts
-     * selection to be from a group of valid candidates.</p>
-     */
-    inline void SetType(const TaskDefinitionPlacementConstraintType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of constraint. The <code>MemberOf</code> constraint restricts
-     * selection to be from a group of valid candidates.</p>
-     */
-    inline void SetType(TaskDefinitionPlacementConstraintType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of constraint. The <code>MemberOf</code> constraint restricts
-     * selection to be from a group of valid candidates.</p>
-     */
-    inline TaskDefinitionPlacementConstraint& WithType(const TaskDefinitionPlacementConstraintType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of constraint. The <code>MemberOf</code> constraint restricts
-     * selection to be from a group of valid candidates.</p>
-     */
-    inline TaskDefinitionPlacementConstraint& WithType(TaskDefinitionPlacementConstraintType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A cluster query language expression to apply to the constraint. For more
      * information, see <a
@@ -87,74 +62,16 @@ namespace Model
      * query language</a> in the <i>Amazon Elastic Container Service Developer
      * Guide</i>.</p>
      */
-    inline const Aws::String& GetExpression() const{ return m_expression; }
-
-    /**
-     * <p>A cluster query language expression to apply to the constraint. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster
-     * query language</a> in the <i>Amazon Elastic Container Service Developer
-     * Guide</i>.</p>
-     */
+    inline const Aws::String& GetExpression() const { return m_expression; }
     inline bool ExpressionHasBeenSet() const { return m_expressionHasBeenSet; }
-
-    /**
-     * <p>A cluster query language expression to apply to the constraint. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster
-     * query language</a> in the <i>Amazon Elastic Container Service Developer
-     * Guide</i>.</p>
-     */
-    inline void SetExpression(const Aws::String& value) { m_expressionHasBeenSet = true; m_expression = value; }
-
-    /**
-     * <p>A cluster query language expression to apply to the constraint. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster
-     * query language</a> in the <i>Amazon Elastic Container Service Developer
-     * Guide</i>.</p>
-     */
-    inline void SetExpression(Aws::String&& value) { m_expressionHasBeenSet = true; m_expression = std::move(value); }
-
-    /**
-     * <p>A cluster query language expression to apply to the constraint. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster
-     * query language</a> in the <i>Amazon Elastic Container Service Developer
-     * Guide</i>.</p>
-     */
-    inline void SetExpression(const char* value) { m_expressionHasBeenSet = true; m_expression.assign(value); }
-
-    /**
-     * <p>A cluster query language expression to apply to the constraint. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster
-     * query language</a> in the <i>Amazon Elastic Container Service Developer
-     * Guide</i>.</p>
-     */
-    inline TaskDefinitionPlacementConstraint& WithExpression(const Aws::String& value) { SetExpression(value); return *this;}
-
-    /**
-     * <p>A cluster query language expression to apply to the constraint. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster
-     * query language</a> in the <i>Amazon Elastic Container Service Developer
-     * Guide</i>.</p>
-     */
-    inline TaskDefinitionPlacementConstraint& WithExpression(Aws::String&& value) { SetExpression(std::move(value)); return *this;}
-
-    /**
-     * <p>A cluster query language expression to apply to the constraint. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster
-     * query language</a> in the <i>Amazon Elastic Container Service Developer
-     * Guide</i>.</p>
-     */
-    inline TaskDefinitionPlacementConstraint& WithExpression(const char* value) { SetExpression(value); return *this;}
-
+    template<typename ExpressionT = Aws::String>
+    void SetExpression(ExpressionT&& value) { m_expressionHasBeenSet = true; m_expression = std::forward<ExpressionT>(value); }
+    template<typename ExpressionT = Aws::String>
+    TaskDefinitionPlacementConstraint& WithExpression(ExpressionT&& value) { SetExpression(std::forward<ExpressionT>(value)); return *this;}
+    ///@}
   private:
 
-    TaskDefinitionPlacementConstraintType m_type;
+    TaskDefinitionPlacementConstraintType m_type{TaskDefinitionPlacementConstraintType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_expression;

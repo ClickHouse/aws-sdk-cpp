@@ -12,13 +12,6 @@ using namespace Aws::GameLift::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ClaimGameServerRequest::ClaimGameServerRequest() : 
-    m_gameServerGroupNameHasBeenSet(false),
-    m_gameServerIdHasBeenSet(false),
-    m_gameServerDataHasBeenSet(false)
-{
-}
-
 Aws::String ClaimGameServerRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,6 +31,12 @@ Aws::String ClaimGameServerRequest::SerializePayload() const
   if(m_gameServerDataHasBeenSet)
   {
    payload.WithString("GameServerData", m_gameServerData);
+
+  }
+
+  if(m_filterOptionHasBeenSet)
+  {
+   payload.WithObject("FilterOption", m_filterOption.Jsonize());
 
   }
 

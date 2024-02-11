@@ -26,7 +26,7 @@ namespace Model
   class UntagResourceRequest : public WellArchitectedRequest
   {
   public:
-    AWS_WELLARCHITECTED_API UntagResourceRequest();
+    AWS_WELLARCHITECTED_API UntagResourceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,85 +39,30 @@ namespace Model
     AWS_WELLARCHITECTED_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     
-    inline const Aws::String& GetWorkloadArn() const{ return m_workloadArn; }
-
-    
+    inline const Aws::String& GetWorkloadArn() const { return m_workloadArn; }
     inline bool WorkloadArnHasBeenSet() const { return m_workloadArnHasBeenSet; }
+    template<typename WorkloadArnT = Aws::String>
+    void SetWorkloadArn(WorkloadArnT&& value) { m_workloadArnHasBeenSet = true; m_workloadArn = std::forward<WorkloadArnT>(value); }
+    template<typename WorkloadArnT = Aws::String>
+    UntagResourceRequest& WithWorkloadArn(WorkloadArnT&& value) { SetWorkloadArn(std::forward<WorkloadArnT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetWorkloadArn(const Aws::String& value) { m_workloadArnHasBeenSet = true; m_workloadArn = value; }
-
-    
-    inline void SetWorkloadArn(Aws::String&& value) { m_workloadArnHasBeenSet = true; m_workloadArn = std::move(value); }
-
-    
-    inline void SetWorkloadArn(const char* value) { m_workloadArnHasBeenSet = true; m_workloadArn.assign(value); }
-
-    
-    inline UntagResourceRequest& WithWorkloadArn(const Aws::String& value) { SetWorkloadArn(value); return *this;}
-
-    
-    inline UntagResourceRequest& WithWorkloadArn(Aws::String&& value) { SetWorkloadArn(std::move(value)); return *this;}
-
-    
-    inline UntagResourceRequest& WithWorkloadArn(const char* value) { SetWorkloadArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of tag keys. Existing tags of the resource whose keys are members of
      * this list are removed from the resource.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetTagKeys() const{ return m_tagKeys; }
-
-    /**
-     * <p>A list of tag keys. Existing tags of the resource whose keys are members of
-     * this list are removed from the resource.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetTagKeys() const { return m_tagKeys; }
     inline bool TagKeysHasBeenSet() const { return m_tagKeysHasBeenSet; }
-
-    /**
-     * <p>A list of tag keys. Existing tags of the resource whose keys are members of
-     * this list are removed from the resource.</p>
-     */
-    inline void SetTagKeys(const Aws::Vector<Aws::String>& value) { m_tagKeysHasBeenSet = true; m_tagKeys = value; }
-
-    /**
-     * <p>A list of tag keys. Existing tags of the resource whose keys are members of
-     * this list are removed from the resource.</p>
-     */
-    inline void SetTagKeys(Aws::Vector<Aws::String>&& value) { m_tagKeysHasBeenSet = true; m_tagKeys = std::move(value); }
-
-    /**
-     * <p>A list of tag keys. Existing tags of the resource whose keys are members of
-     * this list are removed from the resource.</p>
-     */
-    inline UntagResourceRequest& WithTagKeys(const Aws::Vector<Aws::String>& value) { SetTagKeys(value); return *this;}
-
-    /**
-     * <p>A list of tag keys. Existing tags of the resource whose keys are members of
-     * this list are removed from the resource.</p>
-     */
-    inline UntagResourceRequest& WithTagKeys(Aws::Vector<Aws::String>&& value) { SetTagKeys(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of tag keys. Existing tags of the resource whose keys are members of
-     * this list are removed from the resource.</p>
-     */
-    inline UntagResourceRequest& AddTagKeys(const Aws::String& value) { m_tagKeysHasBeenSet = true; m_tagKeys.push_back(value); return *this; }
-
-    /**
-     * <p>A list of tag keys. Existing tags of the resource whose keys are members of
-     * this list are removed from the resource.</p>
-     */
-    inline UntagResourceRequest& AddTagKeys(Aws::String&& value) { m_tagKeysHasBeenSet = true; m_tagKeys.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of tag keys. Existing tags of the resource whose keys are members of
-     * this list are removed from the resource.</p>
-     */
-    inline UntagResourceRequest& AddTagKeys(const char* value) { m_tagKeysHasBeenSet = true; m_tagKeys.push_back(value); return *this; }
-
+    template<typename TagKeysT = Aws::Vector<Aws::String>>
+    void SetTagKeys(TagKeysT&& value) { m_tagKeysHasBeenSet = true; m_tagKeys = std::forward<TagKeysT>(value); }
+    template<typename TagKeysT = Aws::Vector<Aws::String>>
+    UntagResourceRequest& WithTagKeys(TagKeysT&& value) { SetTagKeys(std::forward<TagKeysT>(value)); return *this;}
+    template<typename TagKeysT = Aws::String>
+    UntagResourceRequest& AddTagKeys(TagKeysT&& value) { m_tagKeysHasBeenSet = true; m_tagKeys.emplace_back(std::forward<TagKeysT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_workloadArn;

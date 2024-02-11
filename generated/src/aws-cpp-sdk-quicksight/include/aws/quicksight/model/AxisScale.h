@@ -34,73 +34,35 @@ namespace Model
   class AxisScale
   {
   public:
-    AWS_QUICKSIGHT_API AxisScale();
+    AWS_QUICKSIGHT_API AxisScale() = default;
     AWS_QUICKSIGHT_API AxisScale(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API AxisScale& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The linear axis scale setup.</p>
      */
-    inline const AxisLinearScale& GetLinear() const{ return m_linear; }
-
-    /**
-     * <p>The linear axis scale setup.</p>
-     */
+    inline const AxisLinearScale& GetLinear() const { return m_linear; }
     inline bool LinearHasBeenSet() const { return m_linearHasBeenSet; }
+    template<typename LinearT = AxisLinearScale>
+    void SetLinear(LinearT&& value) { m_linearHasBeenSet = true; m_linear = std::forward<LinearT>(value); }
+    template<typename LinearT = AxisLinearScale>
+    AxisScale& WithLinear(LinearT&& value) { SetLinear(std::forward<LinearT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The linear axis scale setup.</p>
-     */
-    inline void SetLinear(const AxisLinearScale& value) { m_linearHasBeenSet = true; m_linear = value; }
-
-    /**
-     * <p>The linear axis scale setup.</p>
-     */
-    inline void SetLinear(AxisLinearScale&& value) { m_linearHasBeenSet = true; m_linear = std::move(value); }
-
-    /**
-     * <p>The linear axis scale setup.</p>
-     */
-    inline AxisScale& WithLinear(const AxisLinearScale& value) { SetLinear(value); return *this;}
-
-    /**
-     * <p>The linear axis scale setup.</p>
-     */
-    inline AxisScale& WithLinear(AxisLinearScale&& value) { SetLinear(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The logarithmic axis scale setup.</p>
      */
-    inline const AxisLogarithmicScale& GetLogarithmic() const{ return m_logarithmic; }
-
-    /**
-     * <p>The logarithmic axis scale setup.</p>
-     */
+    inline const AxisLogarithmicScale& GetLogarithmic() const { return m_logarithmic; }
     inline bool LogarithmicHasBeenSet() const { return m_logarithmicHasBeenSet; }
-
-    /**
-     * <p>The logarithmic axis scale setup.</p>
-     */
-    inline void SetLogarithmic(const AxisLogarithmicScale& value) { m_logarithmicHasBeenSet = true; m_logarithmic = value; }
-
-    /**
-     * <p>The logarithmic axis scale setup.</p>
-     */
-    inline void SetLogarithmic(AxisLogarithmicScale&& value) { m_logarithmicHasBeenSet = true; m_logarithmic = std::move(value); }
-
-    /**
-     * <p>The logarithmic axis scale setup.</p>
-     */
-    inline AxisScale& WithLogarithmic(const AxisLogarithmicScale& value) { SetLogarithmic(value); return *this;}
-
-    /**
-     * <p>The logarithmic axis scale setup.</p>
-     */
-    inline AxisScale& WithLogarithmic(AxisLogarithmicScale&& value) { SetLogarithmic(std::move(value)); return *this;}
-
+    template<typename LogarithmicT = AxisLogarithmicScale>
+    void SetLogarithmic(LogarithmicT&& value) { m_logarithmicHasBeenSet = true; m_logarithmic = std::forward<LogarithmicT>(value); }
+    template<typename LogarithmicT = AxisLogarithmicScale>
+    AxisScale& WithLogarithmic(LogarithmicT&& value) { SetLogarithmic(std::forward<LogarithmicT>(value)); return *this;}
+    ///@}
   private:
 
     AxisLinearScale m_linear;

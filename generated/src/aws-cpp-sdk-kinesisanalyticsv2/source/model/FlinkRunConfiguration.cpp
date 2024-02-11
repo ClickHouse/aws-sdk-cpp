@@ -18,15 +18,7 @@ namespace KinesisAnalyticsV2
 namespace Model
 {
 
-FlinkRunConfiguration::FlinkRunConfiguration() : 
-    m_allowNonRestoredState(false),
-    m_allowNonRestoredStateHasBeenSet(false)
-{
-}
-
-FlinkRunConfiguration::FlinkRunConfiguration(JsonView jsonValue) : 
-    m_allowNonRestoredState(false),
-    m_allowNonRestoredStateHasBeenSet(false)
+FlinkRunConfiguration::FlinkRunConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ FlinkRunConfiguration& FlinkRunConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AllowNonRestoredState"))
   {
     m_allowNonRestoredState = jsonValue.GetBool("AllowNonRestoredState");
-
     m_allowNonRestoredStateHasBeenSet = true;
   }
-
   return *this;
 }
 

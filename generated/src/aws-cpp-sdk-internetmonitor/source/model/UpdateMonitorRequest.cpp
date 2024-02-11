@@ -12,22 +12,6 @@ using namespace Aws::InternetMonitor::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateMonitorRequest::UpdateMonitorRequest() : 
-    m_monitorNameHasBeenSet(false),
-    m_resourcesToAddHasBeenSet(false),
-    m_resourcesToRemoveHasBeenSet(false),
-    m_status(MonitorConfigState::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_maxCityNetworksToMonitor(0),
-    m_maxCityNetworksToMonitorHasBeenSet(false),
-    m_internetMeasurementsLogDeliveryHasBeenSet(false),
-    m_trafficPercentageToMonitor(0),
-    m_trafficPercentageToMonitorHasBeenSet(false)
-{
-}
-
 Aws::String UpdateMonitorRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -80,6 +64,12 @@ Aws::String UpdateMonitorRequest::SerializePayload() const
   if(m_trafficPercentageToMonitorHasBeenSet)
   {
    payload.WithInteger("TrafficPercentageToMonitor", m_trafficPercentageToMonitor);
+
+  }
+
+  if(m_healthEventsConfigHasBeenSet)
+  {
+   payload.WithObject("HealthEventsConfig", m_healthEventsConfig.Jsonize());
 
   }
 

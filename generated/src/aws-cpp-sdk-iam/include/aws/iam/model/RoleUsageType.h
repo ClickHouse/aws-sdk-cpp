@@ -27,7 +27,8 @@ namespace Model
   /**
    * <p>An object that contains details about how a service-linked role is used, if
    * that information is returned by the service.</p> <p>This data type is used as a
-   * response element in the <a>GetServiceLinkedRoleDeletionStatus</a>
+   * response element in the <a
+   * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetServiceLinkedRoleDeletionStatus.html">GetServiceLinkedRoleDeletionStatus</a>
    * operation.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/RoleUsageType">AWS
    * API Reference</a></p>
@@ -35,7 +36,7 @@ namespace Model
   class RoleUsageType
   {
   public:
-    AWS_IAM_API RoleUsageType();
+    AWS_IAM_API RoleUsageType() = default;
     AWS_IAM_API RoleUsageType(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_IAM_API RoleUsageType& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -43,92 +44,31 @@ namespace Model
     AWS_IAM_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The name of the Region where the service-linked role is being used.</p>
      */
-    inline const Aws::String& GetRegion() const{ return m_region; }
-
-    /**
-     * <p>The name of the Region where the service-linked role is being used.</p>
-     */
+    inline const Aws::String& GetRegion() const { return m_region; }
     inline bool RegionHasBeenSet() const { return m_regionHasBeenSet; }
+    template<typename RegionT = Aws::String>
+    void SetRegion(RegionT&& value) { m_regionHasBeenSet = true; m_region = std::forward<RegionT>(value); }
+    template<typename RegionT = Aws::String>
+    RoleUsageType& WithRegion(RegionT&& value) { SetRegion(std::forward<RegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Region where the service-linked role is being used.</p>
-     */
-    inline void SetRegion(const Aws::String& value) { m_regionHasBeenSet = true; m_region = value; }
-
-    /**
-     * <p>The name of the Region where the service-linked role is being used.</p>
-     */
-    inline void SetRegion(Aws::String&& value) { m_regionHasBeenSet = true; m_region = std::move(value); }
-
-    /**
-     * <p>The name of the Region where the service-linked role is being used.</p>
-     */
-    inline void SetRegion(const char* value) { m_regionHasBeenSet = true; m_region.assign(value); }
-
-    /**
-     * <p>The name of the Region where the service-linked role is being used.</p>
-     */
-    inline RoleUsageType& WithRegion(const Aws::String& value) { SetRegion(value); return *this;}
-
-    /**
-     * <p>The name of the Region where the service-linked role is being used.</p>
-     */
-    inline RoleUsageType& WithRegion(Aws::String&& value) { SetRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Region where the service-linked role is being used.</p>
-     */
-    inline RoleUsageType& WithRegion(const char* value) { SetRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the resource that is using the service-linked role.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetResources() const{ return m_resources; }
-
-    /**
-     * <p>The name of the resource that is using the service-linked role.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetResources() const { return m_resources; }
     inline bool ResourcesHasBeenSet() const { return m_resourcesHasBeenSet; }
-
-    /**
-     * <p>The name of the resource that is using the service-linked role.</p>
-     */
-    inline void SetResources(const Aws::Vector<Aws::String>& value) { m_resourcesHasBeenSet = true; m_resources = value; }
-
-    /**
-     * <p>The name of the resource that is using the service-linked role.</p>
-     */
-    inline void SetResources(Aws::Vector<Aws::String>&& value) { m_resourcesHasBeenSet = true; m_resources = std::move(value); }
-
-    /**
-     * <p>The name of the resource that is using the service-linked role.</p>
-     */
-    inline RoleUsageType& WithResources(const Aws::Vector<Aws::String>& value) { SetResources(value); return *this;}
-
-    /**
-     * <p>The name of the resource that is using the service-linked role.</p>
-     */
-    inline RoleUsageType& WithResources(Aws::Vector<Aws::String>&& value) { SetResources(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the resource that is using the service-linked role.</p>
-     */
-    inline RoleUsageType& AddResources(const Aws::String& value) { m_resourcesHasBeenSet = true; m_resources.push_back(value); return *this; }
-
-    /**
-     * <p>The name of the resource that is using the service-linked role.</p>
-     */
-    inline RoleUsageType& AddResources(Aws::String&& value) { m_resourcesHasBeenSet = true; m_resources.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The name of the resource that is using the service-linked role.</p>
-     */
-    inline RoleUsageType& AddResources(const char* value) { m_resourcesHasBeenSet = true; m_resources.push_back(value); return *this; }
-
+    template<typename ResourcesT = Aws::Vector<Aws::String>>
+    void SetResources(ResourcesT&& value) { m_resourcesHasBeenSet = true; m_resources = std::forward<ResourcesT>(value); }
+    template<typename ResourcesT = Aws::Vector<Aws::String>>
+    RoleUsageType& WithResources(ResourcesT&& value) { SetResources(std::forward<ResourcesT>(value)); return *this;}
+    template<typename ResourcesT = Aws::String>
+    RoleUsageType& AddResources(ResourcesT&& value) { m_resourcesHasBeenSet = true; m_resources.emplace_back(std::forward<ResourcesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_region;

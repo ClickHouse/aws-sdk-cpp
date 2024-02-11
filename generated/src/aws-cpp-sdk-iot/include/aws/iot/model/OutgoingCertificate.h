@@ -33,237 +33,83 @@ namespace Model
   class OutgoingCertificate
   {
   public:
-    AWS_IOT_API OutgoingCertificate();
+    AWS_IOT_API OutgoingCertificate() = default;
     AWS_IOT_API OutgoingCertificate(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API OutgoingCertificate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The certificate ARN.</p>
      */
-    inline const Aws::String& GetCertificateArn() const{ return m_certificateArn; }
-
-    /**
-     * <p>The certificate ARN.</p>
-     */
+    inline const Aws::String& GetCertificateArn() const { return m_certificateArn; }
     inline bool CertificateArnHasBeenSet() const { return m_certificateArnHasBeenSet; }
+    template<typename CertificateArnT = Aws::String>
+    void SetCertificateArn(CertificateArnT&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = std::forward<CertificateArnT>(value); }
+    template<typename CertificateArnT = Aws::String>
+    OutgoingCertificate& WithCertificateArn(CertificateArnT&& value) { SetCertificateArn(std::forward<CertificateArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The certificate ARN.</p>
-     */
-    inline void SetCertificateArn(const Aws::String& value) { m_certificateArnHasBeenSet = true; m_certificateArn = value; }
-
-    /**
-     * <p>The certificate ARN.</p>
-     */
-    inline void SetCertificateArn(Aws::String&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = std::move(value); }
-
-    /**
-     * <p>The certificate ARN.</p>
-     */
-    inline void SetCertificateArn(const char* value) { m_certificateArnHasBeenSet = true; m_certificateArn.assign(value); }
-
-    /**
-     * <p>The certificate ARN.</p>
-     */
-    inline OutgoingCertificate& WithCertificateArn(const Aws::String& value) { SetCertificateArn(value); return *this;}
-
-    /**
-     * <p>The certificate ARN.</p>
-     */
-    inline OutgoingCertificate& WithCertificateArn(Aws::String&& value) { SetCertificateArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The certificate ARN.</p>
-     */
-    inline OutgoingCertificate& WithCertificateArn(const char* value) { SetCertificateArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The certificate ID.</p>
      */
-    inline const Aws::String& GetCertificateId() const{ return m_certificateId; }
-
-    /**
-     * <p>The certificate ID.</p>
-     */
+    inline const Aws::String& GetCertificateId() const { return m_certificateId; }
     inline bool CertificateIdHasBeenSet() const { return m_certificateIdHasBeenSet; }
+    template<typename CertificateIdT = Aws::String>
+    void SetCertificateId(CertificateIdT&& value) { m_certificateIdHasBeenSet = true; m_certificateId = std::forward<CertificateIdT>(value); }
+    template<typename CertificateIdT = Aws::String>
+    OutgoingCertificate& WithCertificateId(CertificateIdT&& value) { SetCertificateId(std::forward<CertificateIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The certificate ID.</p>
-     */
-    inline void SetCertificateId(const Aws::String& value) { m_certificateIdHasBeenSet = true; m_certificateId = value; }
-
-    /**
-     * <p>The certificate ID.</p>
-     */
-    inline void SetCertificateId(Aws::String&& value) { m_certificateIdHasBeenSet = true; m_certificateId = std::move(value); }
-
-    /**
-     * <p>The certificate ID.</p>
-     */
-    inline void SetCertificateId(const char* value) { m_certificateIdHasBeenSet = true; m_certificateId.assign(value); }
-
-    /**
-     * <p>The certificate ID.</p>
-     */
-    inline OutgoingCertificate& WithCertificateId(const Aws::String& value) { SetCertificateId(value); return *this;}
-
-    /**
-     * <p>The certificate ID.</p>
-     */
-    inline OutgoingCertificate& WithCertificateId(Aws::String&& value) { SetCertificateId(std::move(value)); return *this;}
-
-    /**
-     * <p>The certificate ID.</p>
-     */
-    inline OutgoingCertificate& WithCertificateId(const char* value) { SetCertificateId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services account to which the transfer was made.</p>
      */
-    inline const Aws::String& GetTransferredTo() const{ return m_transferredTo; }
-
-    /**
-     * <p>The Amazon Web Services account to which the transfer was made.</p>
-     */
+    inline const Aws::String& GetTransferredTo() const { return m_transferredTo; }
     inline bool TransferredToHasBeenSet() const { return m_transferredToHasBeenSet; }
+    template<typename TransferredToT = Aws::String>
+    void SetTransferredTo(TransferredToT&& value) { m_transferredToHasBeenSet = true; m_transferredTo = std::forward<TransferredToT>(value); }
+    template<typename TransferredToT = Aws::String>
+    OutgoingCertificate& WithTransferredTo(TransferredToT&& value) { SetTransferredTo(std::forward<TransferredToT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account to which the transfer was made.</p>
-     */
-    inline void SetTransferredTo(const Aws::String& value) { m_transferredToHasBeenSet = true; m_transferredTo = value; }
-
-    /**
-     * <p>The Amazon Web Services account to which the transfer was made.</p>
-     */
-    inline void SetTransferredTo(Aws::String&& value) { m_transferredToHasBeenSet = true; m_transferredTo = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account to which the transfer was made.</p>
-     */
-    inline void SetTransferredTo(const char* value) { m_transferredToHasBeenSet = true; m_transferredTo.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account to which the transfer was made.</p>
-     */
-    inline OutgoingCertificate& WithTransferredTo(const Aws::String& value) { SetTransferredTo(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account to which the transfer was made.</p>
-     */
-    inline OutgoingCertificate& WithTransferredTo(Aws::String&& value) { SetTransferredTo(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account to which the transfer was made.</p>
-     */
-    inline OutgoingCertificate& WithTransferredTo(const char* value) { SetTransferredTo(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date the transfer was initiated.</p>
      */
-    inline const Aws::Utils::DateTime& GetTransferDate() const{ return m_transferDate; }
-
-    /**
-     * <p>The date the transfer was initiated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetTransferDate() const { return m_transferDate; }
     inline bool TransferDateHasBeenSet() const { return m_transferDateHasBeenSet; }
+    template<typename TransferDateT = Aws::Utils::DateTime>
+    void SetTransferDate(TransferDateT&& value) { m_transferDateHasBeenSet = true; m_transferDate = std::forward<TransferDateT>(value); }
+    template<typename TransferDateT = Aws::Utils::DateTime>
+    OutgoingCertificate& WithTransferDate(TransferDateT&& value) { SetTransferDate(std::forward<TransferDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date the transfer was initiated.</p>
-     */
-    inline void SetTransferDate(const Aws::Utils::DateTime& value) { m_transferDateHasBeenSet = true; m_transferDate = value; }
-
-    /**
-     * <p>The date the transfer was initiated.</p>
-     */
-    inline void SetTransferDate(Aws::Utils::DateTime&& value) { m_transferDateHasBeenSet = true; m_transferDate = std::move(value); }
-
-    /**
-     * <p>The date the transfer was initiated.</p>
-     */
-    inline OutgoingCertificate& WithTransferDate(const Aws::Utils::DateTime& value) { SetTransferDate(value); return *this;}
-
-    /**
-     * <p>The date the transfer was initiated.</p>
-     */
-    inline OutgoingCertificate& WithTransferDate(Aws::Utils::DateTime&& value) { SetTransferDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The transfer message.</p>
      */
-    inline const Aws::String& GetTransferMessage() const{ return m_transferMessage; }
-
-    /**
-     * <p>The transfer message.</p>
-     */
+    inline const Aws::String& GetTransferMessage() const { return m_transferMessage; }
     inline bool TransferMessageHasBeenSet() const { return m_transferMessageHasBeenSet; }
+    template<typename TransferMessageT = Aws::String>
+    void SetTransferMessage(TransferMessageT&& value) { m_transferMessageHasBeenSet = true; m_transferMessage = std::forward<TransferMessageT>(value); }
+    template<typename TransferMessageT = Aws::String>
+    OutgoingCertificate& WithTransferMessage(TransferMessageT&& value) { SetTransferMessage(std::forward<TransferMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The transfer message.</p>
-     */
-    inline void SetTransferMessage(const Aws::String& value) { m_transferMessageHasBeenSet = true; m_transferMessage = value; }
-
-    /**
-     * <p>The transfer message.</p>
-     */
-    inline void SetTransferMessage(Aws::String&& value) { m_transferMessageHasBeenSet = true; m_transferMessage = std::move(value); }
-
-    /**
-     * <p>The transfer message.</p>
-     */
-    inline void SetTransferMessage(const char* value) { m_transferMessageHasBeenSet = true; m_transferMessage.assign(value); }
-
-    /**
-     * <p>The transfer message.</p>
-     */
-    inline OutgoingCertificate& WithTransferMessage(const Aws::String& value) { SetTransferMessage(value); return *this;}
-
-    /**
-     * <p>The transfer message.</p>
-     */
-    inline OutgoingCertificate& WithTransferMessage(Aws::String&& value) { SetTransferMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The transfer message.</p>
-     */
-    inline OutgoingCertificate& WithTransferMessage(const char* value) { SetTransferMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The certificate creation date.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationDate() const{ return m_creationDate; }
-
-    /**
-     * <p>The certificate creation date.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationDate() const { return m_creationDate; }
     inline bool CreationDateHasBeenSet() const { return m_creationDateHasBeenSet; }
-
-    /**
-     * <p>The certificate creation date.</p>
-     */
-    inline void SetCreationDate(const Aws::Utils::DateTime& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
-
-    /**
-     * <p>The certificate creation date.</p>
-     */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
-
-    /**
-     * <p>The certificate creation date.</p>
-     */
-    inline OutgoingCertificate& WithCreationDate(const Aws::Utils::DateTime& value) { SetCreationDate(value); return *this;}
-
-    /**
-     * <p>The certificate creation date.</p>
-     */
-    inline OutgoingCertificate& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
-
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    void SetCreationDate(CreationDateT&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::forward<CreationDateT>(value); }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    OutgoingCertificate& WithCreationDate(CreationDateT&& value) { SetCreationDate(std::forward<CreationDateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_certificateArn;
@@ -275,13 +121,13 @@ namespace Model
     Aws::String m_transferredTo;
     bool m_transferredToHasBeenSet = false;
 
-    Aws::Utils::DateTime m_transferDate;
+    Aws::Utils::DateTime m_transferDate{};
     bool m_transferDateHasBeenSet = false;
 
     Aws::String m_transferMessage;
     bool m_transferMessageHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationDate;
+    Aws::Utils::DateTime m_creationDate{};
     bool m_creationDateHasBeenSet = false;
   };
 

@@ -35,53 +35,25 @@ namespace Model
   class Player
   {
   public:
-    AWS_GAMELIFT_API Player();
+    AWS_GAMELIFT_API Player() = default;
     AWS_GAMELIFT_API Player(Aws::Utils::Json::JsonView jsonValue);
     AWS_GAMELIFT_API Player& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GAMELIFT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A unique identifier for a player</p>
      */
-    inline const Aws::String& GetPlayerId() const{ return m_playerId; }
-
-    /**
-     * <p>A unique identifier for a player</p>
-     */
+    inline const Aws::String& GetPlayerId() const { return m_playerId; }
     inline bool PlayerIdHasBeenSet() const { return m_playerIdHasBeenSet; }
+    template<typename PlayerIdT = Aws::String>
+    void SetPlayerId(PlayerIdT&& value) { m_playerIdHasBeenSet = true; m_playerId = std::forward<PlayerIdT>(value); }
+    template<typename PlayerIdT = Aws::String>
+    Player& WithPlayerId(PlayerIdT&& value) { SetPlayerId(std::forward<PlayerIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for a player</p>
-     */
-    inline void SetPlayerId(const Aws::String& value) { m_playerIdHasBeenSet = true; m_playerId = value; }
-
-    /**
-     * <p>A unique identifier for a player</p>
-     */
-    inline void SetPlayerId(Aws::String&& value) { m_playerIdHasBeenSet = true; m_playerId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for a player</p>
-     */
-    inline void SetPlayerId(const char* value) { m_playerIdHasBeenSet = true; m_playerId.assign(value); }
-
-    /**
-     * <p>A unique identifier for a player</p>
-     */
-    inline Player& WithPlayerId(const Aws::String& value) { SetPlayerId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for a player</p>
-     */
-    inline Player& WithPlayerId(Aws::String&& value) { SetPlayerId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for a player</p>
-     */
-    inline Player& WithPlayerId(const char* value) { SetPlayerId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A collection of key:value pairs containing player information for use in
      * matchmaking. Player attribute keys must match the <i>playerAttributes</i> used
@@ -89,256 +61,51 @@ namespace Model
      * "23"}, "gameMode": {"S": "deathmatch"}}</code>.</p> <p>You can provide up to 10
      * <code>PlayerAttributes</code>.</p>
      */
-    inline const Aws::Map<Aws::String, AttributeValue>& GetPlayerAttributes() const{ return m_playerAttributes; }
-
-    /**
-     * <p>A collection of key:value pairs containing player information for use in
-     * matchmaking. Player attribute keys must match the <i>playerAttributes</i> used
-     * in a matchmaking rule set. Example: <code>"PlayerAttributes": {"skill": {"N":
-     * "23"}, "gameMode": {"S": "deathmatch"}}</code>.</p> <p>You can provide up to 10
-     * <code>PlayerAttributes</code>.</p>
-     */
+    inline const Aws::Map<Aws::String, AttributeValue>& GetPlayerAttributes() const { return m_playerAttributes; }
     inline bool PlayerAttributesHasBeenSet() const { return m_playerAttributesHasBeenSet; }
+    template<typename PlayerAttributesT = Aws::Map<Aws::String, AttributeValue>>
+    void SetPlayerAttributes(PlayerAttributesT&& value) { m_playerAttributesHasBeenSet = true; m_playerAttributes = std::forward<PlayerAttributesT>(value); }
+    template<typename PlayerAttributesT = Aws::Map<Aws::String, AttributeValue>>
+    Player& WithPlayerAttributes(PlayerAttributesT&& value) { SetPlayerAttributes(std::forward<PlayerAttributesT>(value)); return *this;}
+    template<typename PlayerAttributesKeyT = Aws::String, typename PlayerAttributesValueT = AttributeValue>
+    Player& AddPlayerAttributes(PlayerAttributesKeyT&& key, PlayerAttributesValueT&& value) {
+      m_playerAttributesHasBeenSet = true; m_playerAttributes.emplace(std::forward<PlayerAttributesKeyT>(key), std::forward<PlayerAttributesValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A collection of key:value pairs containing player information for use in
-     * matchmaking. Player attribute keys must match the <i>playerAttributes</i> used
-     * in a matchmaking rule set. Example: <code>"PlayerAttributes": {"skill": {"N":
-     * "23"}, "gameMode": {"S": "deathmatch"}}</code>.</p> <p>You can provide up to 10
-     * <code>PlayerAttributes</code>.</p>
-     */
-    inline void SetPlayerAttributes(const Aws::Map<Aws::String, AttributeValue>& value) { m_playerAttributesHasBeenSet = true; m_playerAttributes = value; }
-
-    /**
-     * <p>A collection of key:value pairs containing player information for use in
-     * matchmaking. Player attribute keys must match the <i>playerAttributes</i> used
-     * in a matchmaking rule set. Example: <code>"PlayerAttributes": {"skill": {"N":
-     * "23"}, "gameMode": {"S": "deathmatch"}}</code>.</p> <p>You can provide up to 10
-     * <code>PlayerAttributes</code>.</p>
-     */
-    inline void SetPlayerAttributes(Aws::Map<Aws::String, AttributeValue>&& value) { m_playerAttributesHasBeenSet = true; m_playerAttributes = std::move(value); }
-
-    /**
-     * <p>A collection of key:value pairs containing player information for use in
-     * matchmaking. Player attribute keys must match the <i>playerAttributes</i> used
-     * in a matchmaking rule set. Example: <code>"PlayerAttributes": {"skill": {"N":
-     * "23"}, "gameMode": {"S": "deathmatch"}}</code>.</p> <p>You can provide up to 10
-     * <code>PlayerAttributes</code>.</p>
-     */
-    inline Player& WithPlayerAttributes(const Aws::Map<Aws::String, AttributeValue>& value) { SetPlayerAttributes(value); return *this;}
-
-    /**
-     * <p>A collection of key:value pairs containing player information for use in
-     * matchmaking. Player attribute keys must match the <i>playerAttributes</i> used
-     * in a matchmaking rule set. Example: <code>"PlayerAttributes": {"skill": {"N":
-     * "23"}, "gameMode": {"S": "deathmatch"}}</code>.</p> <p>You can provide up to 10
-     * <code>PlayerAttributes</code>.</p>
-     */
-    inline Player& WithPlayerAttributes(Aws::Map<Aws::String, AttributeValue>&& value) { SetPlayerAttributes(std::move(value)); return *this;}
-
-    /**
-     * <p>A collection of key:value pairs containing player information for use in
-     * matchmaking. Player attribute keys must match the <i>playerAttributes</i> used
-     * in a matchmaking rule set. Example: <code>"PlayerAttributes": {"skill": {"N":
-     * "23"}, "gameMode": {"S": "deathmatch"}}</code>.</p> <p>You can provide up to 10
-     * <code>PlayerAttributes</code>.</p>
-     */
-    inline Player& AddPlayerAttributes(const Aws::String& key, const AttributeValue& value) { m_playerAttributesHasBeenSet = true; m_playerAttributes.emplace(key, value); return *this; }
-
-    /**
-     * <p>A collection of key:value pairs containing player information for use in
-     * matchmaking. Player attribute keys must match the <i>playerAttributes</i> used
-     * in a matchmaking rule set. Example: <code>"PlayerAttributes": {"skill": {"N":
-     * "23"}, "gameMode": {"S": "deathmatch"}}</code>.</p> <p>You can provide up to 10
-     * <code>PlayerAttributes</code>.</p>
-     */
-    inline Player& AddPlayerAttributes(Aws::String&& key, const AttributeValue& value) { m_playerAttributesHasBeenSet = true; m_playerAttributes.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A collection of key:value pairs containing player information for use in
-     * matchmaking. Player attribute keys must match the <i>playerAttributes</i> used
-     * in a matchmaking rule set. Example: <code>"PlayerAttributes": {"skill": {"N":
-     * "23"}, "gameMode": {"S": "deathmatch"}}</code>.</p> <p>You can provide up to 10
-     * <code>PlayerAttributes</code>.</p>
-     */
-    inline Player& AddPlayerAttributes(const Aws::String& key, AttributeValue&& value) { m_playerAttributesHasBeenSet = true; m_playerAttributes.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A collection of key:value pairs containing player information for use in
-     * matchmaking. Player attribute keys must match the <i>playerAttributes</i> used
-     * in a matchmaking rule set. Example: <code>"PlayerAttributes": {"skill": {"N":
-     * "23"}, "gameMode": {"S": "deathmatch"}}</code>.</p> <p>You can provide up to 10
-     * <code>PlayerAttributes</code>.</p>
-     */
-    inline Player& AddPlayerAttributes(Aws::String&& key, AttributeValue&& value) { m_playerAttributesHasBeenSet = true; m_playerAttributes.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A collection of key:value pairs containing player information for use in
-     * matchmaking. Player attribute keys must match the <i>playerAttributes</i> used
-     * in a matchmaking rule set. Example: <code>"PlayerAttributes": {"skill": {"N":
-     * "23"}, "gameMode": {"S": "deathmatch"}}</code>.</p> <p>You can provide up to 10
-     * <code>PlayerAttributes</code>.</p>
-     */
-    inline Player& AddPlayerAttributes(const char* key, AttributeValue&& value) { m_playerAttributesHasBeenSet = true; m_playerAttributes.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A collection of key:value pairs containing player information for use in
-     * matchmaking. Player attribute keys must match the <i>playerAttributes</i> used
-     * in a matchmaking rule set. Example: <code>"PlayerAttributes": {"skill": {"N":
-     * "23"}, "gameMode": {"S": "deathmatch"}}</code>.</p> <p>You can provide up to 10
-     * <code>PlayerAttributes</code>.</p>
-     */
-    inline Player& AddPlayerAttributes(const char* key, const AttributeValue& value) { m_playerAttributesHasBeenSet = true; m_playerAttributes.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>Name of the team that the player is assigned to in a match. Team names are
      * defined in a matchmaking rule set.</p>
      */
-    inline const Aws::String& GetTeam() const{ return m_team; }
-
-    /**
-     * <p>Name of the team that the player is assigned to in a match. Team names are
-     * defined in a matchmaking rule set.</p>
-     */
+    inline const Aws::String& GetTeam() const { return m_team; }
     inline bool TeamHasBeenSet() const { return m_teamHasBeenSet; }
+    template<typename TeamT = Aws::String>
+    void SetTeam(TeamT&& value) { m_teamHasBeenSet = true; m_team = std::forward<TeamT>(value); }
+    template<typename TeamT = Aws::String>
+    Player& WithTeam(TeamT&& value) { SetTeam(std::forward<TeamT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Name of the team that the player is assigned to in a match. Team names are
-     * defined in a matchmaking rule set.</p>
-     */
-    inline void SetTeam(const Aws::String& value) { m_teamHasBeenSet = true; m_team = value; }
-
-    /**
-     * <p>Name of the team that the player is assigned to in a match. Team names are
-     * defined in a matchmaking rule set.</p>
-     */
-    inline void SetTeam(Aws::String&& value) { m_teamHasBeenSet = true; m_team = std::move(value); }
-
-    /**
-     * <p>Name of the team that the player is assigned to in a match. Team names are
-     * defined in a matchmaking rule set.</p>
-     */
-    inline void SetTeam(const char* value) { m_teamHasBeenSet = true; m_team.assign(value); }
-
-    /**
-     * <p>Name of the team that the player is assigned to in a match. Team names are
-     * defined in a matchmaking rule set.</p>
-     */
-    inline Player& WithTeam(const Aws::String& value) { SetTeam(value); return *this;}
-
-    /**
-     * <p>Name of the team that the player is assigned to in a match. Team names are
-     * defined in a matchmaking rule set.</p>
-     */
-    inline Player& WithTeam(Aws::String&& value) { SetTeam(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the team that the player is assigned to in a match. Team names are
-     * defined in a matchmaking rule set.</p>
-     */
-    inline Player& WithTeam(const char* value) { SetTeam(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A set of values, expressed in milliseconds, that indicates the amount of
-     * latency that a player experiences when connected to @aws; Regions. If this
-     * property is present, FlexMatch considers placing the match only in Regions for
-     * which latency is reported. </p> <p>If a matchmaker has a rule that evaluates
-     * player latency, players must report latency in order to be matched. If no
-     * latency is reported in this scenario, FlexMatch assumes that no Regions are
+     * latency that a player experiences when connected to Amazon Web Services Regions.
+     * If this property is present, FlexMatch considers placing the match only in
+     * Regions for which latency is reported. </p> <p>If a matchmaker has a rule that
+     * evaluates player latency, players must report latency in order to be matched. If
+     * no latency is reported in this scenario, FlexMatch assumes that no Regions are
      * available to the player and the ticket is not matchable. </p>
      */
-    inline const Aws::Map<Aws::String, int>& GetLatencyInMs() const{ return m_latencyInMs; }
-
-    /**
-     * <p>A set of values, expressed in milliseconds, that indicates the amount of
-     * latency that a player experiences when connected to @aws; Regions. If this
-     * property is present, FlexMatch considers placing the match only in Regions for
-     * which latency is reported. </p> <p>If a matchmaker has a rule that evaluates
-     * player latency, players must report latency in order to be matched. If no
-     * latency is reported in this scenario, FlexMatch assumes that no Regions are
-     * available to the player and the ticket is not matchable. </p>
-     */
+    inline const Aws::Map<Aws::String, int>& GetLatencyInMs() const { return m_latencyInMs; }
     inline bool LatencyInMsHasBeenSet() const { return m_latencyInMsHasBeenSet; }
-
-    /**
-     * <p>A set of values, expressed in milliseconds, that indicates the amount of
-     * latency that a player experiences when connected to @aws; Regions. If this
-     * property is present, FlexMatch considers placing the match only in Regions for
-     * which latency is reported. </p> <p>If a matchmaker has a rule that evaluates
-     * player latency, players must report latency in order to be matched. If no
-     * latency is reported in this scenario, FlexMatch assumes that no Regions are
-     * available to the player and the ticket is not matchable. </p>
-     */
-    inline void SetLatencyInMs(const Aws::Map<Aws::String, int>& value) { m_latencyInMsHasBeenSet = true; m_latencyInMs = value; }
-
-    /**
-     * <p>A set of values, expressed in milliseconds, that indicates the amount of
-     * latency that a player experiences when connected to @aws; Regions. If this
-     * property is present, FlexMatch considers placing the match only in Regions for
-     * which latency is reported. </p> <p>If a matchmaker has a rule that evaluates
-     * player latency, players must report latency in order to be matched. If no
-     * latency is reported in this scenario, FlexMatch assumes that no Regions are
-     * available to the player and the ticket is not matchable. </p>
-     */
-    inline void SetLatencyInMs(Aws::Map<Aws::String, int>&& value) { m_latencyInMsHasBeenSet = true; m_latencyInMs = std::move(value); }
-
-    /**
-     * <p>A set of values, expressed in milliseconds, that indicates the amount of
-     * latency that a player experiences when connected to @aws; Regions. If this
-     * property is present, FlexMatch considers placing the match only in Regions for
-     * which latency is reported. </p> <p>If a matchmaker has a rule that evaluates
-     * player latency, players must report latency in order to be matched. If no
-     * latency is reported in this scenario, FlexMatch assumes that no Regions are
-     * available to the player and the ticket is not matchable. </p>
-     */
-    inline Player& WithLatencyInMs(const Aws::Map<Aws::String, int>& value) { SetLatencyInMs(value); return *this;}
-
-    /**
-     * <p>A set of values, expressed in milliseconds, that indicates the amount of
-     * latency that a player experiences when connected to @aws; Regions. If this
-     * property is present, FlexMatch considers placing the match only in Regions for
-     * which latency is reported. </p> <p>If a matchmaker has a rule that evaluates
-     * player latency, players must report latency in order to be matched. If no
-     * latency is reported in this scenario, FlexMatch assumes that no Regions are
-     * available to the player and the ticket is not matchable. </p>
-     */
-    inline Player& WithLatencyInMs(Aws::Map<Aws::String, int>&& value) { SetLatencyInMs(std::move(value)); return *this;}
-
-    /**
-     * <p>A set of values, expressed in milliseconds, that indicates the amount of
-     * latency that a player experiences when connected to @aws; Regions. If this
-     * property is present, FlexMatch considers placing the match only in Regions for
-     * which latency is reported. </p> <p>If a matchmaker has a rule that evaluates
-     * player latency, players must report latency in order to be matched. If no
-     * latency is reported in this scenario, FlexMatch assumes that no Regions are
-     * available to the player and the ticket is not matchable. </p>
-     */
-    inline Player& AddLatencyInMs(const Aws::String& key, int value) { m_latencyInMsHasBeenSet = true; m_latencyInMs.emplace(key, value); return *this; }
-
-    /**
-     * <p>A set of values, expressed in milliseconds, that indicates the amount of
-     * latency that a player experiences when connected to @aws; Regions. If this
-     * property is present, FlexMatch considers placing the match only in Regions for
-     * which latency is reported. </p> <p>If a matchmaker has a rule that evaluates
-     * player latency, players must report latency in order to be matched. If no
-     * latency is reported in this scenario, FlexMatch assumes that no Regions are
-     * available to the player and the ticket is not matchable. </p>
-     */
-    inline Player& AddLatencyInMs(Aws::String&& key, int value) { m_latencyInMsHasBeenSet = true; m_latencyInMs.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A set of values, expressed in milliseconds, that indicates the amount of
-     * latency that a player experiences when connected to @aws; Regions. If this
-     * property is present, FlexMatch considers placing the match only in Regions for
-     * which latency is reported. </p> <p>If a matchmaker has a rule that evaluates
-     * player latency, players must report latency in order to be matched. If no
-     * latency is reported in this scenario, FlexMatch assumes that no Regions are
-     * available to the player and the ticket is not matchable. </p>
-     */
-    inline Player& AddLatencyInMs(const char* key, int value) { m_latencyInMsHasBeenSet = true; m_latencyInMs.emplace(key, value); return *this; }
-
+    template<typename LatencyInMsT = Aws::Map<Aws::String, int>>
+    void SetLatencyInMs(LatencyInMsT&& value) { m_latencyInMsHasBeenSet = true; m_latencyInMs = std::forward<LatencyInMsT>(value); }
+    template<typename LatencyInMsT = Aws::Map<Aws::String, int>>
+    Player& WithLatencyInMs(LatencyInMsT&& value) { SetLatencyInMs(std::forward<LatencyInMsT>(value)); return *this;}
+    inline Player& AddLatencyInMs(Aws::String key, int value) {
+      m_latencyInMsHasBeenSet = true; m_latencyInMs.emplace(key, value); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_playerId;

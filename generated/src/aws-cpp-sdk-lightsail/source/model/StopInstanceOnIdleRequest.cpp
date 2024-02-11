@@ -18,15 +18,7 @@ namespace Lightsail
 namespace Model
 {
 
-StopInstanceOnIdleRequest::StopInstanceOnIdleRequest() : 
-    m_thresholdHasBeenSet(false),
-    m_durationHasBeenSet(false)
-{
-}
-
-StopInstanceOnIdleRequest::StopInstanceOnIdleRequest(JsonView jsonValue) : 
-    m_thresholdHasBeenSet(false),
-    m_durationHasBeenSet(false)
+StopInstanceOnIdleRequest::StopInstanceOnIdleRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ StopInstanceOnIdleRequest& StopInstanceOnIdleRequest::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("threshold"))
   {
     m_threshold = jsonValue.GetString("threshold");
-
     m_thresholdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("duration"))
   {
     m_duration = jsonValue.GetString("duration");
-
     m_durationHasBeenSet = true;
   }
-
   return *this;
 }
 

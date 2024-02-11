@@ -29,7 +29,7 @@ namespace Model
   class RequestFilterPortRange
   {
   public:
-    AWS_EC2_API RequestFilterPortRange();
+    AWS_EC2_API RequestFilterPortRange() = default;
     AWS_EC2_API RequestFilterPortRange(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API RequestFilterPortRange& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -37,53 +37,31 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The first port in the range.</p>
      */
-    inline int GetFromPort() const{ return m_fromPort; }
-
-    /**
-     * <p>The first port in the range.</p>
-     */
+    inline int GetFromPort() const { return m_fromPort; }
     inline bool FromPortHasBeenSet() const { return m_fromPortHasBeenSet; }
-
-    /**
-     * <p>The first port in the range.</p>
-     */
     inline void SetFromPort(int value) { m_fromPortHasBeenSet = true; m_fromPort = value; }
-
-    /**
-     * <p>The first port in the range.</p>
-     */
     inline RequestFilterPortRange& WithFromPort(int value) { SetFromPort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The last port in the range.</p>
      */
-    inline int GetToPort() const{ return m_toPort; }
-
-    /**
-     * <p>The last port in the range.</p>
-     */
+    inline int GetToPort() const { return m_toPort; }
     inline bool ToPortHasBeenSet() const { return m_toPortHasBeenSet; }
-
-    /**
-     * <p>The last port in the range.</p>
-     */
     inline void SetToPort(int value) { m_toPortHasBeenSet = true; m_toPort = value; }
-
-    /**
-     * <p>The last port in the range.</p>
-     */
     inline RequestFilterPortRange& WithToPort(int value) { SetToPort(value); return *this;}
-
+    ///@}
   private:
 
-    int m_fromPort;
+    int m_fromPort{0};
     bool m_fromPortHasBeenSet = false;
 
-    int m_toPort;
+    int m_toPort{0};
     bool m_toPortHasBeenSet = false;
   };
 

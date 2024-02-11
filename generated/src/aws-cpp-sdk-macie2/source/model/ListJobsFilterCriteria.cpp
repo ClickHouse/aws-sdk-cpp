@@ -18,15 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-ListJobsFilterCriteria::ListJobsFilterCriteria() : 
-    m_excludesHasBeenSet(false),
-    m_includesHasBeenSet(false)
-{
-}
-
-ListJobsFilterCriteria::ListJobsFilterCriteria(JsonView jsonValue) : 
-    m_excludesHasBeenSet(false),
-    m_includesHasBeenSet(false)
+ListJobsFilterCriteria::ListJobsFilterCriteria(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ ListJobsFilterCriteria& ListJobsFilterCriteria::operator =(JsonView jsonValue)
     }
     m_excludesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("includes"))
   {
     Aws::Utils::Array<JsonView> includesJsonList = jsonValue.GetArray("includes");
@@ -52,7 +43,6 @@ ListJobsFilterCriteria& ListJobsFilterCriteria::operator =(JsonView jsonValue)
     }
     m_includesHasBeenSet = true;
   }
-
   return *this;
 }
 

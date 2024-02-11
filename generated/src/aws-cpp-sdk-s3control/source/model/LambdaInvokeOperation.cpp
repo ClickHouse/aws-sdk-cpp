@@ -20,13 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-LambdaInvokeOperation::LambdaInvokeOperation() : 
-    m_functionArnHasBeenSet(false)
-{
-}
-
-LambdaInvokeOperation::LambdaInvokeOperation(const XmlNode& xmlNode) : 
-    m_functionArnHasBeenSet(false)
+LambdaInvokeOperation::LambdaInvokeOperation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -43,6 +37,29 @@ LambdaInvokeOperation& LambdaInvokeOperation::operator =(const XmlNode& xmlNode)
       m_functionArn = Aws::Utils::Xml::DecodeEscapedXmlText(functionArnNode.GetText());
       m_functionArnHasBeenSet = true;
     }
+    XmlNode invocationSchemaVersionNode = resultNode.FirstChild("InvocationSchemaVersion");
+    if(!invocationSchemaVersionNode.IsNull())
+    {
+      m_invocationSchemaVersion = Aws::Utils::Xml::DecodeEscapedXmlText(invocationSchemaVersionNode.GetText());
+      m_invocationSchemaVersionHasBeenSet = true;
+    }
+    XmlNode userArgumentsNode = resultNode.FirstChild("UserArguments");
+
+    if(!userArgumentsNode.IsNull())
+    {
+      XmlNode userArgumentsEntry = userArgumentsNode.FirstChild("entry");
+      m_userArgumentsHasBeenSet = !userArgumentsEntry.IsNull();
+      while(!userArgumentsEntry.IsNull())
+      {
+        XmlNode keyNode = userArgumentsEntry.FirstChild("key");
+        XmlNode valueNode = userArgumentsEntry.FirstChild("value");
+        m_userArguments[keyNode.GetText()] =
+            valueNode.GetText();
+        userArgumentsEntry = userArgumentsEntry.NextNode("entry");
+      }
+
+      m_userArgumentsHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -55,6 +72,25 @@ void LambdaInvokeOperation::AddToNode(XmlNode& parentNode) const
   {
    XmlNode functionArnNode = parentNode.CreateChildElement("FunctionArn");
    functionArnNode.SetText(m_functionArn);
+  }
+
+  if(m_invocationSchemaVersionHasBeenSet)
+  {
+   XmlNode invocationSchemaVersionNode = parentNode.CreateChildElement("InvocationSchemaVersion");
+   invocationSchemaVersionNode.SetText(m_invocationSchemaVersion);
+  }
+
+  if(m_userArgumentsHasBeenSet)
+  {
+   XmlNode userArgumentsParentNode = parentNode.CreateChildElement("UserArguments");
+   for(const auto& mapItem : m_userArguments)
+   {
+     XmlNode userArgumentsMapEntryNode = userArgumentsParentNode.CreateChildElement("entry");
+     XmlNode userArgumentsKeyNode = userArgumentsMapEntryNode.CreateChildElement("key");
+     userArgumentsKeyNode.SetText(mapItem.first);
+     XmlNode userArgumentsValueNode = userArgumentsMapEntryNode.CreateChildElement("value");
+     userArgumentsValueNode.SetText(mapItem.second);
+   }
   }
 
 }

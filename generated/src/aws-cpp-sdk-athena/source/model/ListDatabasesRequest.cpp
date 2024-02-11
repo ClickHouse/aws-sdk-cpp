@@ -12,14 +12,6 @@ using namespace Aws::Athena::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListDatabasesRequest::ListDatabasesRequest() : 
-    m_catalogNameHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String ListDatabasesRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,6 +31,12 @@ Aws::String ListDatabasesRequest::SerializePayload() const
   if(m_maxResultsHasBeenSet)
   {
    payload.WithInteger("MaxResults", m_maxResults);
+
+  }
+
+  if(m_workGroupHasBeenSet)
+  {
+   payload.WithString("WorkGroup", m_workGroup);
 
   }
 

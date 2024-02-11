@@ -12,18 +12,15 @@ using namespace Aws::mgn::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListSourceServerActionsRequest::ListSourceServerActionsRequest() : 
-    m_filtersHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_sourceServerIDHasBeenSet(false)
-{
-}
-
 Aws::String ListSourceServerActionsRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_accountIDHasBeenSet)
+  {
+   payload.WithString("accountID", m_accountID);
+
+  }
 
   if(m_filtersHasBeenSet)
   {

@@ -12,14 +12,6 @@ using namespace Aws::IoTFleetWise::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListVehiclesRequest::ListVehiclesRequest() : 
-    m_modelManifestArnHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String ListVehiclesRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -27,6 +19,28 @@ Aws::String ListVehiclesRequest::SerializePayload() const
   if(m_modelManifestArnHasBeenSet)
   {
    payload.WithString("modelManifestArn", m_modelManifestArn);
+
+  }
+
+  if(m_attributeNamesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> attributeNamesJsonList(m_attributeNames.size());
+   for(unsigned attributeNamesIndex = 0; attributeNamesIndex < attributeNamesJsonList.GetLength(); ++attributeNamesIndex)
+   {
+     attributeNamesJsonList[attributeNamesIndex].AsString(m_attributeNames[attributeNamesIndex]);
+   }
+   payload.WithArray("attributeNames", std::move(attributeNamesJsonList));
+
+  }
+
+  if(m_attributeValuesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> attributeValuesJsonList(m_attributeValues.size());
+   for(unsigned attributeValuesIndex = 0; attributeValuesIndex < attributeValuesJsonList.GetLength(); ++attributeValuesIndex)
+   {
+     attributeValuesJsonList[attributeValuesIndex].AsString(m_attributeValues[attributeValuesIndex]);
+   }
+   payload.WithArray("attributeValues", std::move(attributeValuesJsonList));
 
   }
 
@@ -40,6 +54,11 @@ Aws::String ListVehiclesRequest::SerializePayload() const
   {
    payload.WithInteger("maxResults", m_maxResults);
 
+  }
+
+  if(m_listResponseScopeHasBeenSet)
+  {
+   payload.WithString("listResponseScope", ListResponseScopeMapper::GetNameForListResponseScope(m_listResponseScope));
   }
 
   return payload.View().WriteReadable();

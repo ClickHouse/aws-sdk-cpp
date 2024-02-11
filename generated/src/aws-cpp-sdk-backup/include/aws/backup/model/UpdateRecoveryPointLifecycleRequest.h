@@ -22,7 +22,7 @@ namespace Model
   class UpdateRecoveryPointLifecycleRequest : public BackupRequest
   {
   public:
-    AWS_BACKUP_API UpdateRecoveryPointLifecycleRequest();
+    AWS_BACKUP_API UpdateRecoveryPointLifecycleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,128 +33,35 @@ namespace Model
     AWS_BACKUP_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of a logical container where backups are stored. Backup vaults are
      * identified by names that are unique to the account used to create them and the
-     * Amazon Web Services Region where they are created. They consist of lowercase
-     * letters, numbers, and hyphens.</p>
+     * Amazon Web Services Region where they are created.</p>
      */
-    inline const Aws::String& GetBackupVaultName() const{ return m_backupVaultName; }
-
-    /**
-     * <p>The name of a logical container where backups are stored. Backup vaults are
-     * identified by names that are unique to the account used to create them and the
-     * Amazon Web Services Region where they are created. They consist of lowercase
-     * letters, numbers, and hyphens.</p>
-     */
+    inline const Aws::String& GetBackupVaultName() const { return m_backupVaultName; }
     inline bool BackupVaultNameHasBeenSet() const { return m_backupVaultNameHasBeenSet; }
+    template<typename BackupVaultNameT = Aws::String>
+    void SetBackupVaultName(BackupVaultNameT&& value) { m_backupVaultNameHasBeenSet = true; m_backupVaultName = std::forward<BackupVaultNameT>(value); }
+    template<typename BackupVaultNameT = Aws::String>
+    UpdateRecoveryPointLifecycleRequest& WithBackupVaultName(BackupVaultNameT&& value) { SetBackupVaultName(std::forward<BackupVaultNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of a logical container where backups are stored. Backup vaults are
-     * identified by names that are unique to the account used to create them and the
-     * Amazon Web Services Region where they are created. They consist of lowercase
-     * letters, numbers, and hyphens.</p>
-     */
-    inline void SetBackupVaultName(const Aws::String& value) { m_backupVaultNameHasBeenSet = true; m_backupVaultName = value; }
-
-    /**
-     * <p>The name of a logical container where backups are stored. Backup vaults are
-     * identified by names that are unique to the account used to create them and the
-     * Amazon Web Services Region where they are created. They consist of lowercase
-     * letters, numbers, and hyphens.</p>
-     */
-    inline void SetBackupVaultName(Aws::String&& value) { m_backupVaultNameHasBeenSet = true; m_backupVaultName = std::move(value); }
-
-    /**
-     * <p>The name of a logical container where backups are stored. Backup vaults are
-     * identified by names that are unique to the account used to create them and the
-     * Amazon Web Services Region where they are created. They consist of lowercase
-     * letters, numbers, and hyphens.</p>
-     */
-    inline void SetBackupVaultName(const char* value) { m_backupVaultNameHasBeenSet = true; m_backupVaultName.assign(value); }
-
-    /**
-     * <p>The name of a logical container where backups are stored. Backup vaults are
-     * identified by names that are unique to the account used to create them and the
-     * Amazon Web Services Region where they are created. They consist of lowercase
-     * letters, numbers, and hyphens.</p>
-     */
-    inline UpdateRecoveryPointLifecycleRequest& WithBackupVaultName(const Aws::String& value) { SetBackupVaultName(value); return *this;}
-
-    /**
-     * <p>The name of a logical container where backups are stored. Backup vaults are
-     * identified by names that are unique to the account used to create them and the
-     * Amazon Web Services Region where they are created. They consist of lowercase
-     * letters, numbers, and hyphens.</p>
-     */
-    inline UpdateRecoveryPointLifecycleRequest& WithBackupVaultName(Aws::String&& value) { SetBackupVaultName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a logical container where backups are stored. Backup vaults are
-     * identified by names that are unique to the account used to create them and the
-     * Amazon Web Services Region where they are created. They consist of lowercase
-     * letters, numbers, and hyphens.</p>
-     */
-    inline UpdateRecoveryPointLifecycleRequest& WithBackupVaultName(const char* value) { SetBackupVaultName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An Amazon Resource Name (ARN) that uniquely identifies a recovery point; for
      * example,
      * <code>arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45</code>.</p>
      */
-    inline const Aws::String& GetRecoveryPointArn() const{ return m_recoveryPointArn; }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a recovery point; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45</code>.</p>
-     */
+    inline const Aws::String& GetRecoveryPointArn() const { return m_recoveryPointArn; }
     inline bool RecoveryPointArnHasBeenSet() const { return m_recoveryPointArnHasBeenSet; }
+    template<typename RecoveryPointArnT = Aws::String>
+    void SetRecoveryPointArn(RecoveryPointArnT&& value) { m_recoveryPointArnHasBeenSet = true; m_recoveryPointArn = std::forward<RecoveryPointArnT>(value); }
+    template<typename RecoveryPointArnT = Aws::String>
+    UpdateRecoveryPointLifecycleRequest& WithRecoveryPointArn(RecoveryPointArnT&& value) { SetRecoveryPointArn(std::forward<RecoveryPointArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a recovery point; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45</code>.</p>
-     */
-    inline void SetRecoveryPointArn(const Aws::String& value) { m_recoveryPointArnHasBeenSet = true; m_recoveryPointArn = value; }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a recovery point; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45</code>.</p>
-     */
-    inline void SetRecoveryPointArn(Aws::String&& value) { m_recoveryPointArnHasBeenSet = true; m_recoveryPointArn = std::move(value); }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a recovery point; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45</code>.</p>
-     */
-    inline void SetRecoveryPointArn(const char* value) { m_recoveryPointArnHasBeenSet = true; m_recoveryPointArn.assign(value); }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a recovery point; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45</code>.</p>
-     */
-    inline UpdateRecoveryPointLifecycleRequest& WithRecoveryPointArn(const Aws::String& value) { SetRecoveryPointArn(value); return *this;}
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a recovery point; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45</code>.</p>
-     */
-    inline UpdateRecoveryPointLifecycleRequest& WithRecoveryPointArn(Aws::String&& value) { SetRecoveryPointArn(std::move(value)); return *this;}
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a recovery point; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45</code>.</p>
-     */
-    inline UpdateRecoveryPointLifecycleRequest& WithRecoveryPointArn(const char* value) { SetRecoveryPointArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The lifecycle defines when a protected resource is transitioned to cold
      * storage and when it expires. Backup transitions and expires backups
@@ -164,63 +71,13 @@ namespace Model
      * “transition to cold after days” setting. The “transition to cold after days”
      * setting cannot be changed after a backup has been transitioned to cold. </p>
      */
-    inline const Lifecycle& GetLifecycle() const{ return m_lifecycle; }
-
-    /**
-     * <p>The lifecycle defines when a protected resource is transitioned to cold
-     * storage and when it expires. Backup transitions and expires backups
-     * automatically according to the lifecycle that you define. </p> <p>Backups
-     * transitioned to cold storage must be stored in cold storage for a minimum of 90
-     * days. Therefore, the “retention” setting must be 90 days greater than the
-     * “transition to cold after days” setting. The “transition to cold after days”
-     * setting cannot be changed after a backup has been transitioned to cold. </p>
-     */
+    inline const Lifecycle& GetLifecycle() const { return m_lifecycle; }
     inline bool LifecycleHasBeenSet() const { return m_lifecycleHasBeenSet; }
-
-    /**
-     * <p>The lifecycle defines when a protected resource is transitioned to cold
-     * storage and when it expires. Backup transitions and expires backups
-     * automatically according to the lifecycle that you define. </p> <p>Backups
-     * transitioned to cold storage must be stored in cold storage for a minimum of 90
-     * days. Therefore, the “retention” setting must be 90 days greater than the
-     * “transition to cold after days” setting. The “transition to cold after days”
-     * setting cannot be changed after a backup has been transitioned to cold. </p>
-     */
-    inline void SetLifecycle(const Lifecycle& value) { m_lifecycleHasBeenSet = true; m_lifecycle = value; }
-
-    /**
-     * <p>The lifecycle defines when a protected resource is transitioned to cold
-     * storage and when it expires. Backup transitions and expires backups
-     * automatically according to the lifecycle that you define. </p> <p>Backups
-     * transitioned to cold storage must be stored in cold storage for a minimum of 90
-     * days. Therefore, the “retention” setting must be 90 days greater than the
-     * “transition to cold after days” setting. The “transition to cold after days”
-     * setting cannot be changed after a backup has been transitioned to cold. </p>
-     */
-    inline void SetLifecycle(Lifecycle&& value) { m_lifecycleHasBeenSet = true; m_lifecycle = std::move(value); }
-
-    /**
-     * <p>The lifecycle defines when a protected resource is transitioned to cold
-     * storage and when it expires. Backup transitions and expires backups
-     * automatically according to the lifecycle that you define. </p> <p>Backups
-     * transitioned to cold storage must be stored in cold storage for a minimum of 90
-     * days. Therefore, the “retention” setting must be 90 days greater than the
-     * “transition to cold after days” setting. The “transition to cold after days”
-     * setting cannot be changed after a backup has been transitioned to cold. </p>
-     */
-    inline UpdateRecoveryPointLifecycleRequest& WithLifecycle(const Lifecycle& value) { SetLifecycle(value); return *this;}
-
-    /**
-     * <p>The lifecycle defines when a protected resource is transitioned to cold
-     * storage and when it expires. Backup transitions and expires backups
-     * automatically according to the lifecycle that you define. </p> <p>Backups
-     * transitioned to cold storage must be stored in cold storage for a minimum of 90
-     * days. Therefore, the “retention” setting must be 90 days greater than the
-     * “transition to cold after days” setting. The “transition to cold after days”
-     * setting cannot be changed after a backup has been transitioned to cold. </p>
-     */
-    inline UpdateRecoveryPointLifecycleRequest& WithLifecycle(Lifecycle&& value) { SetLifecycle(std::move(value)); return *this;}
-
+    template<typename LifecycleT = Lifecycle>
+    void SetLifecycle(LifecycleT&& value) { m_lifecycleHasBeenSet = true; m_lifecycle = std::forward<LifecycleT>(value); }
+    template<typename LifecycleT = Lifecycle>
+    UpdateRecoveryPointLifecycleRequest& WithLifecycle(LifecycleT&& value) { SetLifecycle(std::forward<LifecycleT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_backupVaultName;

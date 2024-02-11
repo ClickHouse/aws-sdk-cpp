@@ -18,23 +18,7 @@ namespace ComputeOptimizer
 namespace Model
 {
 
-VolumeRecommendationOption::VolumeRecommendationOption() : 
-    m_configurationHasBeenSet(false),
-    m_performanceRisk(0.0),
-    m_performanceRiskHasBeenSet(false),
-    m_rank(0),
-    m_rankHasBeenSet(false),
-    m_savingsOpportunityHasBeenSet(false)
-{
-}
-
-VolumeRecommendationOption::VolumeRecommendationOption(JsonView jsonValue) : 
-    m_configurationHasBeenSet(false),
-    m_performanceRisk(0.0),
-    m_performanceRiskHasBeenSet(false),
-    m_rank(0),
-    m_rankHasBeenSet(false),
-    m_savingsOpportunityHasBeenSet(false)
+VolumeRecommendationOption::VolumeRecommendationOption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,31 +28,28 @@ VolumeRecommendationOption& VolumeRecommendationOption::operator =(JsonView json
   if(jsonValue.ValueExists("configuration"))
   {
     m_configuration = jsonValue.GetObject("configuration");
-
     m_configurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("performanceRisk"))
   {
     m_performanceRisk = jsonValue.GetDouble("performanceRisk");
-
     m_performanceRiskHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("rank"))
   {
     m_rank = jsonValue.GetInteger("rank");
-
     m_rankHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("savingsOpportunity"))
   {
     m_savingsOpportunity = jsonValue.GetObject("savingsOpportunity");
-
     m_savingsOpportunityHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("savingsOpportunityAfterDiscounts"))
+  {
+    m_savingsOpportunityAfterDiscounts = jsonValue.GetObject("savingsOpportunityAfterDiscounts");
+    m_savingsOpportunityAfterDiscountsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -97,6 +78,12 @@ JsonValue VolumeRecommendationOption::Jsonize() const
   if(m_savingsOpportunityHasBeenSet)
   {
    payload.WithObject("savingsOpportunity", m_savingsOpportunity.Jsonize());
+
+  }
+
+  if(m_savingsOpportunityAfterDiscountsHasBeenSet)
+  {
+   payload.WithObject("savingsOpportunityAfterDiscounts", m_savingsOpportunityAfterDiscounts.Jsonize());
 
   }
 

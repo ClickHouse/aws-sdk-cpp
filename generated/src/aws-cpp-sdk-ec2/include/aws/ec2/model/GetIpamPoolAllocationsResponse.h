@@ -30,112 +30,54 @@ namespace Model
   class GetIpamPoolAllocationsResponse
   {
   public:
-    AWS_EC2_API GetIpamPoolAllocationsResponse();
+    AWS_EC2_API GetIpamPoolAllocationsResponse() = default;
     AWS_EC2_API GetIpamPoolAllocationsResponse(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_EC2_API GetIpamPoolAllocationsResponse& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The IPAM pool allocations you want information on.</p>
      */
-    inline const Aws::Vector<IpamPoolAllocation>& GetIpamPoolAllocations() const{ return m_ipamPoolAllocations; }
+    inline const Aws::Vector<IpamPoolAllocation>& GetIpamPoolAllocations() const { return m_ipamPoolAllocations; }
+    template<typename IpamPoolAllocationsT = Aws::Vector<IpamPoolAllocation>>
+    void SetIpamPoolAllocations(IpamPoolAllocationsT&& value) { m_ipamPoolAllocationsHasBeenSet = true; m_ipamPoolAllocations = std::forward<IpamPoolAllocationsT>(value); }
+    template<typename IpamPoolAllocationsT = Aws::Vector<IpamPoolAllocation>>
+    GetIpamPoolAllocationsResponse& WithIpamPoolAllocations(IpamPoolAllocationsT&& value) { SetIpamPoolAllocations(std::forward<IpamPoolAllocationsT>(value)); return *this;}
+    template<typename IpamPoolAllocationsT = IpamPoolAllocation>
+    GetIpamPoolAllocationsResponse& AddIpamPoolAllocations(IpamPoolAllocationsT&& value) { m_ipamPoolAllocationsHasBeenSet = true; m_ipamPoolAllocations.emplace_back(std::forward<IpamPoolAllocationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The IPAM pool allocations you want information on.</p>
-     */
-    inline void SetIpamPoolAllocations(const Aws::Vector<IpamPoolAllocation>& value) { m_ipamPoolAllocations = value; }
-
-    /**
-     * <p>The IPAM pool allocations you want information on.</p>
-     */
-    inline void SetIpamPoolAllocations(Aws::Vector<IpamPoolAllocation>&& value) { m_ipamPoolAllocations = std::move(value); }
-
-    /**
-     * <p>The IPAM pool allocations you want information on.</p>
-     */
-    inline GetIpamPoolAllocationsResponse& WithIpamPoolAllocations(const Aws::Vector<IpamPoolAllocation>& value) { SetIpamPoolAllocations(value); return *this;}
-
-    /**
-     * <p>The IPAM pool allocations you want information on.</p>
-     */
-    inline GetIpamPoolAllocationsResponse& WithIpamPoolAllocations(Aws::Vector<IpamPoolAllocation>&& value) { SetIpamPoolAllocations(std::move(value)); return *this;}
-
-    /**
-     * <p>The IPAM pool allocations you want information on.</p>
-     */
-    inline GetIpamPoolAllocationsResponse& AddIpamPoolAllocations(const IpamPoolAllocation& value) { m_ipamPoolAllocations.push_back(value); return *this; }
-
-    /**
-     * <p>The IPAM pool allocations you want information on.</p>
-     */
-    inline GetIpamPoolAllocationsResponse& AddIpamPoolAllocations(IpamPoolAllocation&& value) { m_ipamPoolAllocations.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The token to use to retrieve the next page of results. This value is
      * <code>null</code> when there are no more results to return.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    GetIpamPoolAllocationsResponse& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline GetIpamPoolAllocationsResponse& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline GetIpamPoolAllocationsResponse& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline GetIpamPoolAllocationsResponse& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline GetIpamPoolAllocationsResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline GetIpamPoolAllocationsResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    GetIpamPoolAllocationsResponse& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<IpamPoolAllocation> m_ipamPoolAllocations;
+    bool m_ipamPoolAllocationsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

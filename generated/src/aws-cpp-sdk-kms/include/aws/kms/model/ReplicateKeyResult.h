@@ -30,11 +30,12 @@ namespace Model
   class ReplicateKeyResult
   {
   public:
-    AWS_KMS_API ReplicateKeyResult();
+    AWS_KMS_API ReplicateKeyResult() = default;
     AWS_KMS_API ReplicateKeyResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_KMS_API ReplicateKeyResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Displays details about the new replica key, including its Amazon Resource
      * Name (<a
@@ -44,169 +45,60 @@ namespace Model
      * states of KMS keys</a>. It also includes the ARN and Amazon Web Services Region
      * of its primary key and other replica keys.</p>
      */
-    inline const KeyMetadata& GetReplicaKeyMetadata() const{ return m_replicaKeyMetadata; }
+    inline const KeyMetadata& GetReplicaKeyMetadata() const { return m_replicaKeyMetadata; }
+    template<typename ReplicaKeyMetadataT = KeyMetadata>
+    void SetReplicaKeyMetadata(ReplicaKeyMetadataT&& value) { m_replicaKeyMetadataHasBeenSet = true; m_replicaKeyMetadata = std::forward<ReplicaKeyMetadataT>(value); }
+    template<typename ReplicaKeyMetadataT = KeyMetadata>
+    ReplicateKeyResult& WithReplicaKeyMetadata(ReplicaKeyMetadataT&& value) { SetReplicaKeyMetadata(std::forward<ReplicaKeyMetadataT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Displays details about the new replica key, including its Amazon Resource
-     * Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) and <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">Key
-     * states of KMS keys</a>. It also includes the ARN and Amazon Web Services Region
-     * of its primary key and other replica keys.</p>
-     */
-    inline void SetReplicaKeyMetadata(const KeyMetadata& value) { m_replicaKeyMetadata = value; }
-
-    /**
-     * <p>Displays details about the new replica key, including its Amazon Resource
-     * Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) and <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">Key
-     * states of KMS keys</a>. It also includes the ARN and Amazon Web Services Region
-     * of its primary key and other replica keys.</p>
-     */
-    inline void SetReplicaKeyMetadata(KeyMetadata&& value) { m_replicaKeyMetadata = std::move(value); }
-
-    /**
-     * <p>Displays details about the new replica key, including its Amazon Resource
-     * Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) and <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">Key
-     * states of KMS keys</a>. It also includes the ARN and Amazon Web Services Region
-     * of its primary key and other replica keys.</p>
-     */
-    inline ReplicateKeyResult& WithReplicaKeyMetadata(const KeyMetadata& value) { SetReplicaKeyMetadata(value); return *this;}
-
-    /**
-     * <p>Displays details about the new replica key, including its Amazon Resource
-     * Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) and <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">Key
-     * states of KMS keys</a>. It also includes the ARN and Amazon Web Services Region
-     * of its primary key and other replica keys.</p>
-     */
-    inline ReplicateKeyResult& WithReplicaKeyMetadata(KeyMetadata&& value) { SetReplicaKeyMetadata(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The key policy of the new replica key. The value is a key policy document in
      * JSON format.</p>
      */
-    inline const Aws::String& GetReplicaPolicy() const{ return m_replicaPolicy; }
+    inline const Aws::String& GetReplicaPolicy() const { return m_replicaPolicy; }
+    template<typename ReplicaPolicyT = Aws::String>
+    void SetReplicaPolicy(ReplicaPolicyT&& value) { m_replicaPolicyHasBeenSet = true; m_replicaPolicy = std::forward<ReplicaPolicyT>(value); }
+    template<typename ReplicaPolicyT = Aws::String>
+    ReplicateKeyResult& WithReplicaPolicy(ReplicaPolicyT&& value) { SetReplicaPolicy(std::forward<ReplicaPolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The key policy of the new replica key. The value is a key policy document in
-     * JSON format.</p>
-     */
-    inline void SetReplicaPolicy(const Aws::String& value) { m_replicaPolicy = value; }
-
-    /**
-     * <p>The key policy of the new replica key. The value is a key policy document in
-     * JSON format.</p>
-     */
-    inline void SetReplicaPolicy(Aws::String&& value) { m_replicaPolicy = std::move(value); }
-
-    /**
-     * <p>The key policy of the new replica key. The value is a key policy document in
-     * JSON format.</p>
-     */
-    inline void SetReplicaPolicy(const char* value) { m_replicaPolicy.assign(value); }
-
-    /**
-     * <p>The key policy of the new replica key. The value is a key policy document in
-     * JSON format.</p>
-     */
-    inline ReplicateKeyResult& WithReplicaPolicy(const Aws::String& value) { SetReplicaPolicy(value); return *this;}
-
-    /**
-     * <p>The key policy of the new replica key. The value is a key policy document in
-     * JSON format.</p>
-     */
-    inline ReplicateKeyResult& WithReplicaPolicy(Aws::String&& value) { SetReplicaPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>The key policy of the new replica key. The value is a key policy document in
-     * JSON format.</p>
-     */
-    inline ReplicateKeyResult& WithReplicaPolicy(const char* value) { SetReplicaPolicy(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags on the new replica key. The value is a list of tag key and tag value
      * pairs.</p>
      */
-    inline const Aws::Vector<Tag>& GetReplicaTags() const{ return m_replicaTags; }
+    inline const Aws::Vector<Tag>& GetReplicaTags() const { return m_replicaTags; }
+    template<typename ReplicaTagsT = Aws::Vector<Tag>>
+    void SetReplicaTags(ReplicaTagsT&& value) { m_replicaTagsHasBeenSet = true; m_replicaTags = std::forward<ReplicaTagsT>(value); }
+    template<typename ReplicaTagsT = Aws::Vector<Tag>>
+    ReplicateKeyResult& WithReplicaTags(ReplicaTagsT&& value) { SetReplicaTags(std::forward<ReplicaTagsT>(value)); return *this;}
+    template<typename ReplicaTagsT = Tag>
+    ReplicateKeyResult& AddReplicaTags(ReplicaTagsT&& value) { m_replicaTagsHasBeenSet = true; m_replicaTags.emplace_back(std::forward<ReplicaTagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The tags on the new replica key. The value is a list of tag key and tag value
-     * pairs.</p>
-     */
-    inline void SetReplicaTags(const Aws::Vector<Tag>& value) { m_replicaTags = value; }
-
-    /**
-     * <p>The tags on the new replica key. The value is a list of tag key and tag value
-     * pairs.</p>
-     */
-    inline void SetReplicaTags(Aws::Vector<Tag>&& value) { m_replicaTags = std::move(value); }
-
-    /**
-     * <p>The tags on the new replica key. The value is a list of tag key and tag value
-     * pairs.</p>
-     */
-    inline ReplicateKeyResult& WithReplicaTags(const Aws::Vector<Tag>& value) { SetReplicaTags(value); return *this;}
-
-    /**
-     * <p>The tags on the new replica key. The value is a list of tag key and tag value
-     * pairs.</p>
-     */
-    inline ReplicateKeyResult& WithReplicaTags(Aws::Vector<Tag>&& value) { SetReplicaTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags on the new replica key. The value is a list of tag key and tag value
-     * pairs.</p>
-     */
-    inline ReplicateKeyResult& AddReplicaTags(const Tag& value) { m_replicaTags.push_back(value); return *this; }
-
-    /**
-     * <p>The tags on the new replica key. The value is a list of tag key and tag value
-     * pairs.</p>
-     */
-    inline ReplicateKeyResult& AddReplicaTags(Tag&& value) { m_replicaTags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ReplicateKeyResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ReplicateKeyResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ReplicateKeyResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ReplicateKeyResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     KeyMetadata m_replicaKeyMetadata;
+    bool m_replicaKeyMetadataHasBeenSet = false;
 
     Aws::String m_replicaPolicy;
+    bool m_replicaPolicyHasBeenSet = false;
 
     Aws::Vector<Tag> m_replicaTags;
+    bool m_replicaTagsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

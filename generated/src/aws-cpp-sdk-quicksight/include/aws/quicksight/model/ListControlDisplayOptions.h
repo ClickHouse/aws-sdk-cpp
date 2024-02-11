@@ -8,6 +8,7 @@
 #include <aws/quicksight/model/ListControlSearchOptions.h>
 #include <aws/quicksight/model/ListControlSelectAllOptions.h>
 #include <aws/quicksight/model/LabelOptions.h>
+#include <aws/quicksight/model/SheetControlInfoIconLabelOptions.h>
 #include <utility>
 
 namespace Aws
@@ -33,110 +34,60 @@ namespace Model
   class ListControlDisplayOptions
   {
   public:
-    AWS_QUICKSIGHT_API ListControlDisplayOptions();
+    AWS_QUICKSIGHT_API ListControlDisplayOptions() = default;
     AWS_QUICKSIGHT_API ListControlDisplayOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API ListControlDisplayOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The configuration of the search options in a list control.</p>
      */
-    inline const ListControlSearchOptions& GetSearchOptions() const{ return m_searchOptions; }
-
-    /**
-     * <p>The configuration of the search options in a list control.</p>
-     */
+    inline const ListControlSearchOptions& GetSearchOptions() const { return m_searchOptions; }
     inline bool SearchOptionsHasBeenSet() const { return m_searchOptionsHasBeenSet; }
+    template<typename SearchOptionsT = ListControlSearchOptions>
+    void SetSearchOptions(SearchOptionsT&& value) { m_searchOptionsHasBeenSet = true; m_searchOptions = std::forward<SearchOptionsT>(value); }
+    template<typename SearchOptionsT = ListControlSearchOptions>
+    ListControlDisplayOptions& WithSearchOptions(SearchOptionsT&& value) { SetSearchOptions(std::forward<SearchOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration of the search options in a list control.</p>
-     */
-    inline void SetSearchOptions(const ListControlSearchOptions& value) { m_searchOptionsHasBeenSet = true; m_searchOptions = value; }
-
-    /**
-     * <p>The configuration of the search options in a list control.</p>
-     */
-    inline void SetSearchOptions(ListControlSearchOptions&& value) { m_searchOptionsHasBeenSet = true; m_searchOptions = std::move(value); }
-
-    /**
-     * <p>The configuration of the search options in a list control.</p>
-     */
-    inline ListControlDisplayOptions& WithSearchOptions(const ListControlSearchOptions& value) { SetSearchOptions(value); return *this;}
-
-    /**
-     * <p>The configuration of the search options in a list control.</p>
-     */
-    inline ListControlDisplayOptions& WithSearchOptions(ListControlSearchOptions&& value) { SetSearchOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration of the <code>Select all</code> options in a list
      * control.</p>
      */
-    inline const ListControlSelectAllOptions& GetSelectAllOptions() const{ return m_selectAllOptions; }
-
-    /**
-     * <p>The configuration of the <code>Select all</code> options in a list
-     * control.</p>
-     */
+    inline const ListControlSelectAllOptions& GetSelectAllOptions() const { return m_selectAllOptions; }
     inline bool SelectAllOptionsHasBeenSet() const { return m_selectAllOptionsHasBeenSet; }
+    template<typename SelectAllOptionsT = ListControlSelectAllOptions>
+    void SetSelectAllOptions(SelectAllOptionsT&& value) { m_selectAllOptionsHasBeenSet = true; m_selectAllOptions = std::forward<SelectAllOptionsT>(value); }
+    template<typename SelectAllOptionsT = ListControlSelectAllOptions>
+    ListControlDisplayOptions& WithSelectAllOptions(SelectAllOptionsT&& value) { SetSelectAllOptions(std::forward<SelectAllOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration of the <code>Select all</code> options in a list
-     * control.</p>
-     */
-    inline void SetSelectAllOptions(const ListControlSelectAllOptions& value) { m_selectAllOptionsHasBeenSet = true; m_selectAllOptions = value; }
-
-    /**
-     * <p>The configuration of the <code>Select all</code> options in a list
-     * control.</p>
-     */
-    inline void SetSelectAllOptions(ListControlSelectAllOptions&& value) { m_selectAllOptionsHasBeenSet = true; m_selectAllOptions = std::move(value); }
-
-    /**
-     * <p>The configuration of the <code>Select all</code> options in a list
-     * control.</p>
-     */
-    inline ListControlDisplayOptions& WithSelectAllOptions(const ListControlSelectAllOptions& value) { SetSelectAllOptions(value); return *this;}
-
-    /**
-     * <p>The configuration of the <code>Select all</code> options in a list
-     * control.</p>
-     */
-    inline ListControlDisplayOptions& WithSelectAllOptions(ListControlSelectAllOptions&& value) { SetSelectAllOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options to configure the title visibility, name, and font size.</p>
      */
-    inline const LabelOptions& GetTitleOptions() const{ return m_titleOptions; }
-
-    /**
-     * <p>The options to configure the title visibility, name, and font size.</p>
-     */
+    inline const LabelOptions& GetTitleOptions() const { return m_titleOptions; }
     inline bool TitleOptionsHasBeenSet() const { return m_titleOptionsHasBeenSet; }
+    template<typename TitleOptionsT = LabelOptions>
+    void SetTitleOptions(TitleOptionsT&& value) { m_titleOptionsHasBeenSet = true; m_titleOptions = std::forward<TitleOptionsT>(value); }
+    template<typename TitleOptionsT = LabelOptions>
+    ListControlDisplayOptions& WithTitleOptions(TitleOptionsT&& value) { SetTitleOptions(std::forward<TitleOptionsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The options to configure the title visibility, name, and font size.</p>
+     * <p>The configuration of info icon label options.</p>
      */
-    inline void SetTitleOptions(const LabelOptions& value) { m_titleOptionsHasBeenSet = true; m_titleOptions = value; }
-
-    /**
-     * <p>The options to configure the title visibility, name, and font size.</p>
-     */
-    inline void SetTitleOptions(LabelOptions&& value) { m_titleOptionsHasBeenSet = true; m_titleOptions = std::move(value); }
-
-    /**
-     * <p>The options to configure the title visibility, name, and font size.</p>
-     */
-    inline ListControlDisplayOptions& WithTitleOptions(const LabelOptions& value) { SetTitleOptions(value); return *this;}
-
-    /**
-     * <p>The options to configure the title visibility, name, and font size.</p>
-     */
-    inline ListControlDisplayOptions& WithTitleOptions(LabelOptions&& value) { SetTitleOptions(std::move(value)); return *this;}
-
+    inline const SheetControlInfoIconLabelOptions& GetInfoIconLabelOptions() const { return m_infoIconLabelOptions; }
+    inline bool InfoIconLabelOptionsHasBeenSet() const { return m_infoIconLabelOptionsHasBeenSet; }
+    template<typename InfoIconLabelOptionsT = SheetControlInfoIconLabelOptions>
+    void SetInfoIconLabelOptions(InfoIconLabelOptionsT&& value) { m_infoIconLabelOptionsHasBeenSet = true; m_infoIconLabelOptions = std::forward<InfoIconLabelOptionsT>(value); }
+    template<typename InfoIconLabelOptionsT = SheetControlInfoIconLabelOptions>
+    ListControlDisplayOptions& WithInfoIconLabelOptions(InfoIconLabelOptionsT&& value) { SetInfoIconLabelOptions(std::forward<InfoIconLabelOptionsT>(value)); return *this;}
+    ///@}
   private:
 
     ListControlSearchOptions m_searchOptions;
@@ -147,6 +98,9 @@ namespace Model
 
     LabelOptions m_titleOptions;
     bool m_titleOptionsHasBeenSet = false;
+
+    SheetControlInfoIconLabelOptions m_infoIconLabelOptions;
+    bool m_infoIconLabelOptionsHasBeenSet = false;
   };
 
 } // namespace Model

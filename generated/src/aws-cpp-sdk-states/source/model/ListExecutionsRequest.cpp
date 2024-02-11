@@ -12,17 +12,6 @@ using namespace Aws::SFN::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListExecutionsRequest::ListExecutionsRequest() : 
-    m_stateMachineArnHasBeenSet(false),
-    m_statusFilter(ExecutionStatus::NOT_SET),
-    m_statusFilterHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_mapRunArnHasBeenSet(false)
-{
-}
-
 Aws::String ListExecutionsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -54,6 +43,11 @@ Aws::String ListExecutionsRequest::SerializePayload() const
   {
    payload.WithString("mapRunArn", m_mapRunArn);
 
+  }
+
+  if(m_redriveFilterHasBeenSet)
+  {
+   payload.WithString("redriveFilter", ExecutionRedriveFilterMapper::GetNameForExecutionRedriveFilter(m_redriveFilter));
   }
 
   return payload.View().WriteReadable();

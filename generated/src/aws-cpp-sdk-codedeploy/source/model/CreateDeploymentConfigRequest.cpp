@@ -12,15 +12,6 @@ using namespace Aws::CodeDeploy::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDeploymentConfigRequest::CreateDeploymentConfigRequest() : 
-    m_deploymentConfigNameHasBeenSet(false),
-    m_minimumHealthyHostsHasBeenSet(false),
-    m_trafficRoutingConfigHasBeenSet(false),
-    m_computePlatform(ComputePlatform::NOT_SET),
-    m_computePlatformHasBeenSet(false)
-{
-}
-
 Aws::String CreateDeploymentConfigRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -46,6 +37,12 @@ Aws::String CreateDeploymentConfigRequest::SerializePayload() const
   if(m_computePlatformHasBeenSet)
   {
    payload.WithString("computePlatform", ComputePlatformMapper::GetNameForComputePlatform(m_computePlatform));
+  }
+
+  if(m_zonalConfigHasBeenSet)
+  {
+   payload.WithObject("zonalConfig", m_zonalConfig.Jsonize());
+
   }
 
   return payload.View().WriteReadable();

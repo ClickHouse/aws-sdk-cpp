@@ -12,16 +12,6 @@ using namespace Aws::DLM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateLifecyclePolicyRequest::UpdateLifecyclePolicyRequest() : 
-    m_policyIdHasBeenSet(false),
-    m_executionRoleArnHasBeenSet(false),
-    m_state(SettablePolicyStateValues::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_policyDetailsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateLifecyclePolicyRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -46,6 +36,47 @@ Aws::String UpdateLifecyclePolicyRequest::SerializePayload() const
   if(m_policyDetailsHasBeenSet)
   {
    payload.WithObject("PolicyDetails", m_policyDetails.Jsonize());
+
+  }
+
+  if(m_createIntervalHasBeenSet)
+  {
+   payload.WithInteger("CreateInterval", m_createInterval);
+
+  }
+
+  if(m_retainIntervalHasBeenSet)
+  {
+   payload.WithInteger("RetainInterval", m_retainInterval);
+
+  }
+
+  if(m_copyTagsHasBeenSet)
+  {
+   payload.WithBool("CopyTags", m_copyTags);
+
+  }
+
+  if(m_extendDeletionHasBeenSet)
+  {
+   payload.WithBool("ExtendDeletion", m_extendDeletion);
+
+  }
+
+  if(m_crossRegionCopyTargetsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> crossRegionCopyTargetsJsonList(m_crossRegionCopyTargets.size());
+   for(unsigned crossRegionCopyTargetsIndex = 0; crossRegionCopyTargetsIndex < crossRegionCopyTargetsJsonList.GetLength(); ++crossRegionCopyTargetsIndex)
+   {
+     crossRegionCopyTargetsJsonList[crossRegionCopyTargetsIndex].AsObject(m_crossRegionCopyTargets[crossRegionCopyTargetsIndex].Jsonize());
+   }
+   payload.WithArray("CrossRegionCopyTargets", std::move(crossRegionCopyTargetsJsonList));
+
+  }
+
+  if(m_exclusionsHasBeenSet)
+  {
+   payload.WithObject("Exclusions", m_exclusions.Jsonize());
 
   }
 

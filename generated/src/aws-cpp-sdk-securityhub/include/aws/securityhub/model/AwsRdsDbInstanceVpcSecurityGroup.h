@@ -32,93 +32,35 @@ namespace Model
   class AwsRdsDbInstanceVpcSecurityGroup
   {
   public:
-    AWS_SECURITYHUB_API AwsRdsDbInstanceVpcSecurityGroup();
+    AWS_SECURITYHUB_API AwsRdsDbInstanceVpcSecurityGroup() = default;
     AWS_SECURITYHUB_API AwsRdsDbInstanceVpcSecurityGroup(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsRdsDbInstanceVpcSecurityGroup& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the VPC security group.</p>
      */
-    inline const Aws::String& GetVpcSecurityGroupId() const{ return m_vpcSecurityGroupId; }
-
-    /**
-     * <p>The name of the VPC security group.</p>
-     */
+    inline const Aws::String& GetVpcSecurityGroupId() const { return m_vpcSecurityGroupId; }
     inline bool VpcSecurityGroupIdHasBeenSet() const { return m_vpcSecurityGroupIdHasBeenSet; }
+    template<typename VpcSecurityGroupIdT = Aws::String>
+    void SetVpcSecurityGroupId(VpcSecurityGroupIdT&& value) { m_vpcSecurityGroupIdHasBeenSet = true; m_vpcSecurityGroupId = std::forward<VpcSecurityGroupIdT>(value); }
+    template<typename VpcSecurityGroupIdT = Aws::String>
+    AwsRdsDbInstanceVpcSecurityGroup& WithVpcSecurityGroupId(VpcSecurityGroupIdT&& value) { SetVpcSecurityGroupId(std::forward<VpcSecurityGroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the VPC security group.</p>
-     */
-    inline void SetVpcSecurityGroupId(const Aws::String& value) { m_vpcSecurityGroupIdHasBeenSet = true; m_vpcSecurityGroupId = value; }
-
-    /**
-     * <p>The name of the VPC security group.</p>
-     */
-    inline void SetVpcSecurityGroupId(Aws::String&& value) { m_vpcSecurityGroupIdHasBeenSet = true; m_vpcSecurityGroupId = std::move(value); }
-
-    /**
-     * <p>The name of the VPC security group.</p>
-     */
-    inline void SetVpcSecurityGroupId(const char* value) { m_vpcSecurityGroupIdHasBeenSet = true; m_vpcSecurityGroupId.assign(value); }
-
-    /**
-     * <p>The name of the VPC security group.</p>
-     */
-    inline AwsRdsDbInstanceVpcSecurityGroup& WithVpcSecurityGroupId(const Aws::String& value) { SetVpcSecurityGroupId(value); return *this;}
-
-    /**
-     * <p>The name of the VPC security group.</p>
-     */
-    inline AwsRdsDbInstanceVpcSecurityGroup& WithVpcSecurityGroupId(Aws::String&& value) { SetVpcSecurityGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the VPC security group.</p>
-     */
-    inline AwsRdsDbInstanceVpcSecurityGroup& WithVpcSecurityGroupId(const char* value) { SetVpcSecurityGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the VPC security group.</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the VPC security group.</p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the VPC security group.</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the VPC security group.</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the VPC security group.</p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>The status of the VPC security group.</p>
-     */
-    inline AwsRdsDbInstanceVpcSecurityGroup& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the VPC security group.</p>
-     */
-    inline AwsRdsDbInstanceVpcSecurityGroup& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the VPC security group.</p>
-     */
-    inline AwsRdsDbInstanceVpcSecurityGroup& WithStatus(const char* value) { SetStatus(value); return *this;}
-
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    AwsRdsDbInstanceVpcSecurityGroup& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_vpcSecurityGroupId;

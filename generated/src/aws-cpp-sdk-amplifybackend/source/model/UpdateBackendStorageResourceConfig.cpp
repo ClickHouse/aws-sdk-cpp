@@ -18,17 +18,7 @@ namespace AmplifyBackend
 namespace Model
 {
 
-UpdateBackendStorageResourceConfig::UpdateBackendStorageResourceConfig() : 
-    m_permissionsHasBeenSet(false),
-    m_serviceName(ServiceName::NOT_SET),
-    m_serviceNameHasBeenSet(false)
-{
-}
-
-UpdateBackendStorageResourceConfig::UpdateBackendStorageResourceConfig(JsonView jsonValue) : 
-    m_permissionsHasBeenSet(false),
-    m_serviceName(ServiceName::NOT_SET),
-    m_serviceNameHasBeenSet(false)
+UpdateBackendStorageResourceConfig::UpdateBackendStorageResourceConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ UpdateBackendStorageResourceConfig& UpdateBackendStorageResourceConfig::operator
   if(jsonValue.ValueExists("permissions"))
   {
     m_permissions = jsonValue.GetObject("permissions");
-
     m_permissionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("serviceName"))
   {
     m_serviceName = ServiceNameMapper::GetServiceNameForName(jsonValue.GetString("serviceName"));
-
     m_serviceNameHasBeenSet = true;
   }
-
   return *this;
 }
 

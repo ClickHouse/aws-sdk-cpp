@@ -42,216 +42,99 @@ namespace Model
   class DashPackage
   {
   public:
-    AWS_MEDIAPACKAGE_API DashPackage();
+    AWS_MEDIAPACKAGE_API DashPackage() = default;
     AWS_MEDIAPACKAGE_API DashPackage(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIAPACKAGE_API DashPackage& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIAPACKAGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Aws::Vector<__AdTriggersElement>& GetAdTriggers() const{ return m_adTriggers; }
-
-    
+    inline const Aws::Vector<__AdTriggersElement>& GetAdTriggers() const { return m_adTriggers; }
     inline bool AdTriggersHasBeenSet() const { return m_adTriggersHasBeenSet; }
+    template<typename AdTriggersT = Aws::Vector<__AdTriggersElement>>
+    void SetAdTriggers(AdTriggersT&& value) { m_adTriggersHasBeenSet = true; m_adTriggers = std::forward<AdTriggersT>(value); }
+    template<typename AdTriggersT = Aws::Vector<__AdTriggersElement>>
+    DashPackage& WithAdTriggers(AdTriggersT&& value) { SetAdTriggers(std::forward<AdTriggersT>(value)); return *this;}
+    inline DashPackage& AddAdTriggers(__AdTriggersElement value) { m_adTriggersHasBeenSet = true; m_adTriggers.push_back(value); return *this; }
+    ///@}
 
+    ///@{
     
-    inline void SetAdTriggers(const Aws::Vector<__AdTriggersElement>& value) { m_adTriggersHasBeenSet = true; m_adTriggers = value; }
-
-    
-    inline void SetAdTriggers(Aws::Vector<__AdTriggersElement>&& value) { m_adTriggersHasBeenSet = true; m_adTriggers = std::move(value); }
-
-    
-    inline DashPackage& WithAdTriggers(const Aws::Vector<__AdTriggersElement>& value) { SetAdTriggers(value); return *this;}
-
-    
-    inline DashPackage& WithAdTriggers(Aws::Vector<__AdTriggersElement>&& value) { SetAdTriggers(std::move(value)); return *this;}
-
-    
-    inline DashPackage& AddAdTriggers(const __AdTriggersElement& value) { m_adTriggersHasBeenSet = true; m_adTriggers.push_back(value); return *this; }
-
-    
-    inline DashPackage& AddAdTriggers(__AdTriggersElement&& value) { m_adTriggersHasBeenSet = true; m_adTriggers.push_back(std::move(value)); return *this; }
-
-
-    
-    inline const AdsOnDeliveryRestrictions& GetAdsOnDeliveryRestrictions() const{ return m_adsOnDeliveryRestrictions; }
-
-    
+    inline AdsOnDeliveryRestrictions GetAdsOnDeliveryRestrictions() const { return m_adsOnDeliveryRestrictions; }
     inline bool AdsOnDeliveryRestrictionsHasBeenSet() const { return m_adsOnDeliveryRestrictionsHasBeenSet; }
+    inline void SetAdsOnDeliveryRestrictions(AdsOnDeliveryRestrictions value) { m_adsOnDeliveryRestrictionsHasBeenSet = true; m_adsOnDeliveryRestrictions = value; }
+    inline DashPackage& WithAdsOnDeliveryRestrictions(AdsOnDeliveryRestrictions value) { SetAdsOnDeliveryRestrictions(value); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetAdsOnDeliveryRestrictions(const AdsOnDeliveryRestrictions& value) { m_adsOnDeliveryRestrictionsHasBeenSet = true; m_adsOnDeliveryRestrictions = value; }
-
-    
-    inline void SetAdsOnDeliveryRestrictions(AdsOnDeliveryRestrictions&& value) { m_adsOnDeliveryRestrictionsHasBeenSet = true; m_adsOnDeliveryRestrictions = std::move(value); }
-
-    
-    inline DashPackage& WithAdsOnDeliveryRestrictions(const AdsOnDeliveryRestrictions& value) { SetAdsOnDeliveryRestrictions(value); return *this;}
-
-    
-    inline DashPackage& WithAdsOnDeliveryRestrictions(AdsOnDeliveryRestrictions&& value) { SetAdsOnDeliveryRestrictions(std::move(value)); return *this;}
-
-
-    
-    inline const DashEncryption& GetEncryption() const{ return m_encryption; }
-
-    
+    inline const DashEncryption& GetEncryption() const { return m_encryption; }
     inline bool EncryptionHasBeenSet() const { return m_encryptionHasBeenSet; }
+    template<typename EncryptionT = DashEncryption>
+    void SetEncryption(EncryptionT&& value) { m_encryptionHasBeenSet = true; m_encryption = std::forward<EncryptionT>(value); }
+    template<typename EncryptionT = DashEncryption>
+    DashPackage& WithEncryption(EncryptionT&& value) { SetEncryption(std::forward<EncryptionT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetEncryption(const DashEncryption& value) { m_encryptionHasBeenSet = true; m_encryption = value; }
-
-    
-    inline void SetEncryption(DashEncryption&& value) { m_encryptionHasBeenSet = true; m_encryption = std::move(value); }
-
-    
-    inline DashPackage& WithEncryption(const DashEncryption& value) { SetEncryption(value); return *this;}
-
-    
-    inline DashPackage& WithEncryption(DashEncryption&& value) { SetEncryption(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * When enabled, an I-Frame only stream will be included in the output.
      */
-    inline bool GetIncludeIframeOnlyStream() const{ return m_includeIframeOnlyStream; }
-
-    /**
-     * When enabled, an I-Frame only stream will be included in the output.
-     */
+    inline bool GetIncludeIframeOnlyStream() const { return m_includeIframeOnlyStream; }
     inline bool IncludeIframeOnlyStreamHasBeenSet() const { return m_includeIframeOnlyStreamHasBeenSet; }
-
-    /**
-     * When enabled, an I-Frame only stream will be included in the output.
-     */
     inline void SetIncludeIframeOnlyStream(bool value) { m_includeIframeOnlyStreamHasBeenSet = true; m_includeIframeOnlyStream = value; }
-
-    /**
-     * When enabled, an I-Frame only stream will be included in the output.
-     */
     inline DashPackage& WithIncludeIframeOnlyStream(bool value) { SetIncludeIframeOnlyStream(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * Determines the position of some tags in the Media Presentation Description
      * (MPD).  When set to FULL, elements like SegmentTemplate and ContentProtection
      * are included in each Representation.  When set to COMPACT, duplicate elements
-     * are combined and presented at the AdaptationSet level.
+     * are combined and presented at the AdaptationSet level. When set to
+     * DRM_TOP_LEVEL_COMPACT, content protection elements are placed the MPD level and
+     * referenced at the AdaptationSet level.
      */
-    inline const ManifestLayout& GetManifestLayout() const{ return m_manifestLayout; }
-
-    /**
-     * Determines the position of some tags in the Media Presentation Description
-     * (MPD).  When set to FULL, elements like SegmentTemplate and ContentProtection
-     * are included in each Representation.  When set to COMPACT, duplicate elements
-     * are combined and presented at the AdaptationSet level.
-     */
+    inline ManifestLayout GetManifestLayout() const { return m_manifestLayout; }
     inline bool ManifestLayoutHasBeenSet() const { return m_manifestLayoutHasBeenSet; }
+    inline void SetManifestLayout(ManifestLayout value) { m_manifestLayoutHasBeenSet = true; m_manifestLayout = value; }
+    inline DashPackage& WithManifestLayout(ManifestLayout value) { SetManifestLayout(value); return *this;}
+    ///@}
 
-    /**
-     * Determines the position of some tags in the Media Presentation Description
-     * (MPD).  When set to FULL, elements like SegmentTemplate and ContentProtection
-     * are included in each Representation.  When set to COMPACT, duplicate elements
-     * are combined and presented at the AdaptationSet level.
-     */
-    inline void SetManifestLayout(const ManifestLayout& value) { m_manifestLayoutHasBeenSet = true; m_manifestLayout = value; }
-
-    /**
-     * Determines the position of some tags in the Media Presentation Description
-     * (MPD).  When set to FULL, elements like SegmentTemplate and ContentProtection
-     * are included in each Representation.  When set to COMPACT, duplicate elements
-     * are combined and presented at the AdaptationSet level.
-     */
-    inline void SetManifestLayout(ManifestLayout&& value) { m_manifestLayoutHasBeenSet = true; m_manifestLayout = std::move(value); }
-
-    /**
-     * Determines the position of some tags in the Media Presentation Description
-     * (MPD).  When set to FULL, elements like SegmentTemplate and ContentProtection
-     * are included in each Representation.  When set to COMPACT, duplicate elements
-     * are combined and presented at the AdaptationSet level.
-     */
-    inline DashPackage& WithManifestLayout(const ManifestLayout& value) { SetManifestLayout(value); return *this;}
-
-    /**
-     * Determines the position of some tags in the Media Presentation Description
-     * (MPD).  When set to FULL, elements like SegmentTemplate and ContentProtection
-     * are included in each Representation.  When set to COMPACT, duplicate elements
-     * are combined and presented at the AdaptationSet level.
-     */
-    inline DashPackage& WithManifestLayout(ManifestLayout&& value) { SetManifestLayout(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Time window (in seconds) contained in each manifest.
      */
-    inline int GetManifestWindowSeconds() const{ return m_manifestWindowSeconds; }
-
-    /**
-     * Time window (in seconds) contained in each manifest.
-     */
+    inline int GetManifestWindowSeconds() const { return m_manifestWindowSeconds; }
     inline bool ManifestWindowSecondsHasBeenSet() const { return m_manifestWindowSecondsHasBeenSet; }
-
-    /**
-     * Time window (in seconds) contained in each manifest.
-     */
     inline void SetManifestWindowSeconds(int value) { m_manifestWindowSecondsHasBeenSet = true; m_manifestWindowSeconds = value; }
-
-    /**
-     * Time window (in seconds) contained in each manifest.
-     */
     inline DashPackage& WithManifestWindowSeconds(int value) { SetManifestWindowSeconds(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * Minimum duration (in seconds) that a player will buffer media before starting
      * the presentation.
      */
-    inline int GetMinBufferTimeSeconds() const{ return m_minBufferTimeSeconds; }
-
-    /**
-     * Minimum duration (in seconds) that a player will buffer media before starting
-     * the presentation.
-     */
+    inline int GetMinBufferTimeSeconds() const { return m_minBufferTimeSeconds; }
     inline bool MinBufferTimeSecondsHasBeenSet() const { return m_minBufferTimeSecondsHasBeenSet; }
-
-    /**
-     * Minimum duration (in seconds) that a player will buffer media before starting
-     * the presentation.
-     */
     inline void SetMinBufferTimeSeconds(int value) { m_minBufferTimeSecondsHasBeenSet = true; m_minBufferTimeSeconds = value; }
-
-    /**
-     * Minimum duration (in seconds) that a player will buffer media before starting
-     * the presentation.
-     */
     inline DashPackage& WithMinBufferTimeSeconds(int value) { SetMinBufferTimeSeconds(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * Minimum duration (in seconds) between potential changes to the Dynamic Adaptive
      * Streaming over HTTP (DASH) Media Presentation Description (MPD).
      */
-    inline int GetMinUpdatePeriodSeconds() const{ return m_minUpdatePeriodSeconds; }
-
-    /**
-     * Minimum duration (in seconds) between potential changes to the Dynamic Adaptive
-     * Streaming over HTTP (DASH) Media Presentation Description (MPD).
-     */
+    inline int GetMinUpdatePeriodSeconds() const { return m_minUpdatePeriodSeconds; }
     inline bool MinUpdatePeriodSecondsHasBeenSet() const { return m_minUpdatePeriodSecondsHasBeenSet; }
-
-    /**
-     * Minimum duration (in seconds) between potential changes to the Dynamic Adaptive
-     * Streaming over HTTP (DASH) Media Presentation Description (MPD).
-     */
     inline void SetMinUpdatePeriodSeconds(int value) { m_minUpdatePeriodSecondsHasBeenSet = true; m_minUpdatePeriodSeconds = value; }
-
-    /**
-     * Minimum duration (in seconds) between potential changes to the Dynamic Adaptive
-     * Streaming over HTTP (DASH) Media Presentation Description (MPD).
-     */
     inline DashPackage& WithMinUpdatePeriodSeconds(int value) { SetMinUpdatePeriodSeconds(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * A list of triggers that controls when the outgoing Dynamic Adaptive Streaming
      * over HTTP (DASH)
@@ -263,176 +146,41 @@ the
      * Channel source contains SCTE-35 ad markers.
 
      */
-    inline const Aws::Vector<__PeriodTriggersElement>& GetPeriodTriggers() const{ return m_periodTriggers; }
-
-    /**
-     * A list of triggers that controls when the outgoing Dynamic Adaptive Streaming
-     * over HTTP (DASH)
-Media Presentation Description (MPD) will be partitioned into
-     * multiple periods. If empty, the content will not
-be partitioned into more than
-     * one period. If the list contains "ADS", new periods will be created where
-the
-     * Channel source contains SCTE-35 ad markers.
-
-     */
+    inline const Aws::Vector<__PeriodTriggersElement>& GetPeriodTriggers() const { return m_periodTriggers; }
     inline bool PeriodTriggersHasBeenSet() const { return m_periodTriggersHasBeenSet; }
+    template<typename PeriodTriggersT = Aws::Vector<__PeriodTriggersElement>>
+    void SetPeriodTriggers(PeriodTriggersT&& value) { m_periodTriggersHasBeenSet = true; m_periodTriggers = std::forward<PeriodTriggersT>(value); }
+    template<typename PeriodTriggersT = Aws::Vector<__PeriodTriggersElement>>
+    DashPackage& WithPeriodTriggers(PeriodTriggersT&& value) { SetPeriodTriggers(std::forward<PeriodTriggersT>(value)); return *this;}
+    inline DashPackage& AddPeriodTriggers(__PeriodTriggersElement value) { m_periodTriggersHasBeenSet = true; m_periodTriggers.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * A list of triggers that controls when the outgoing Dynamic Adaptive Streaming
-     * over HTTP (DASH)
-Media Presentation Description (MPD) will be partitioned into
-     * multiple periods. If empty, the content will not
-be partitioned into more than
-     * one period. If the list contains "ADS", new periods will be created where
-the
-     * Channel source contains SCTE-35 ad markers.
-
-     */
-    inline void SetPeriodTriggers(const Aws::Vector<__PeriodTriggersElement>& value) { m_periodTriggersHasBeenSet = true; m_periodTriggers = value; }
-
-    /**
-     * A list of triggers that controls when the outgoing Dynamic Adaptive Streaming
-     * over HTTP (DASH)
-Media Presentation Description (MPD) will be partitioned into
-     * multiple periods. If empty, the content will not
-be partitioned into more than
-     * one period. If the list contains "ADS", new periods will be created where
-the
-     * Channel source contains SCTE-35 ad markers.
-
-     */
-    inline void SetPeriodTriggers(Aws::Vector<__PeriodTriggersElement>&& value) { m_periodTriggersHasBeenSet = true; m_periodTriggers = std::move(value); }
-
-    /**
-     * A list of triggers that controls when the outgoing Dynamic Adaptive Streaming
-     * over HTTP (DASH)
-Media Presentation Description (MPD) will be partitioned into
-     * multiple periods. If empty, the content will not
-be partitioned into more than
-     * one period. If the list contains "ADS", new periods will be created where
-the
-     * Channel source contains SCTE-35 ad markers.
-
-     */
-    inline DashPackage& WithPeriodTriggers(const Aws::Vector<__PeriodTriggersElement>& value) { SetPeriodTriggers(value); return *this;}
-
-    /**
-     * A list of triggers that controls when the outgoing Dynamic Adaptive Streaming
-     * over HTTP (DASH)
-Media Presentation Description (MPD) will be partitioned into
-     * multiple periods. If empty, the content will not
-be partitioned into more than
-     * one period. If the list contains "ADS", new periods will be created where
-the
-     * Channel source contains SCTE-35 ad markers.
-
-     */
-    inline DashPackage& WithPeriodTriggers(Aws::Vector<__PeriodTriggersElement>&& value) { SetPeriodTriggers(std::move(value)); return *this;}
-
-    /**
-     * A list of triggers that controls when the outgoing Dynamic Adaptive Streaming
-     * over HTTP (DASH)
-Media Presentation Description (MPD) will be partitioned into
-     * multiple periods. If empty, the content will not
-be partitioned into more than
-     * one period. If the list contains "ADS", new periods will be created where
-the
-     * Channel source contains SCTE-35 ad markers.
-
-     */
-    inline DashPackage& AddPeriodTriggers(const __PeriodTriggersElement& value) { m_periodTriggersHasBeenSet = true; m_periodTriggers.push_back(value); return *this; }
-
-    /**
-     * A list of triggers that controls when the outgoing Dynamic Adaptive Streaming
-     * over HTTP (DASH)
-Media Presentation Description (MPD) will be partitioned into
-     * multiple periods. If empty, the content will not
-be partitioned into more than
-     * one period. If the list contains "ADS", new periods will be created where
-the
-     * Channel source contains SCTE-35 ad markers.
-
-     */
-    inline DashPackage& AddPeriodTriggers(__PeriodTriggersElement&& value) { m_periodTriggersHasBeenSet = true; m_periodTriggers.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * The Dynamic Adaptive Streaming over HTTP (DASH) profile type.  When set to
      * "HBBTV_1_5", HbbTV 1.5 compliant output is enabled. When set to "DVB-DASH_2014",
      * DVB-DASH 2014 compliant output is enabled.
      */
-    inline const Profile& GetProfile() const{ return m_profile; }
-
-    /**
-     * The Dynamic Adaptive Streaming over HTTP (DASH) profile type.  When set to
-     * "HBBTV_1_5", HbbTV 1.5 compliant output is enabled. When set to "DVB-DASH_2014",
-     * DVB-DASH 2014 compliant output is enabled.
-     */
+    inline Profile GetProfile() const { return m_profile; }
     inline bool ProfileHasBeenSet() const { return m_profileHasBeenSet; }
+    inline void SetProfile(Profile value) { m_profileHasBeenSet = true; m_profile = value; }
+    inline DashPackage& WithProfile(Profile value) { SetProfile(value); return *this;}
+    ///@}
 
-    /**
-     * The Dynamic Adaptive Streaming over HTTP (DASH) profile type.  When set to
-     * "HBBTV_1_5", HbbTV 1.5 compliant output is enabled. When set to "DVB-DASH_2014",
-     * DVB-DASH 2014 compliant output is enabled.
-     */
-    inline void SetProfile(const Profile& value) { m_profileHasBeenSet = true; m_profile = value; }
-
-    /**
-     * The Dynamic Adaptive Streaming over HTTP (DASH) profile type.  When set to
-     * "HBBTV_1_5", HbbTV 1.5 compliant output is enabled. When set to "DVB-DASH_2014",
-     * DVB-DASH 2014 compliant output is enabled.
-     */
-    inline void SetProfile(Profile&& value) { m_profileHasBeenSet = true; m_profile = std::move(value); }
-
-    /**
-     * The Dynamic Adaptive Streaming over HTTP (DASH) profile type.  When set to
-     * "HBBTV_1_5", HbbTV 1.5 compliant output is enabled. When set to "DVB-DASH_2014",
-     * DVB-DASH 2014 compliant output is enabled.
-     */
-    inline DashPackage& WithProfile(const Profile& value) { SetProfile(value); return *this;}
-
-    /**
-     * The Dynamic Adaptive Streaming over HTTP (DASH) profile type.  When set to
-     * "HBBTV_1_5", HbbTV 1.5 compliant output is enabled. When set to "DVB-DASH_2014",
-     * DVB-DASH 2014 compliant output is enabled.
-     */
-    inline DashPackage& WithProfile(Profile&& value) { SetProfile(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Duration (in seconds) of each segment. Actual segments will be
 rounded to the
      * nearest multiple of the source segment duration.
 
      */
-    inline int GetSegmentDurationSeconds() const{ return m_segmentDurationSeconds; }
-
-    /**
-     * Duration (in seconds) of each segment. Actual segments will be
-rounded to the
-     * nearest multiple of the source segment duration.
-
-     */
+    inline int GetSegmentDurationSeconds() const { return m_segmentDurationSeconds; }
     inline bool SegmentDurationSecondsHasBeenSet() const { return m_segmentDurationSecondsHasBeenSet; }
-
-    /**
-     * Duration (in seconds) of each segment. Actual segments will be
-rounded to the
-     * nearest multiple of the source segment duration.
-
-     */
     inline void SetSegmentDurationSeconds(int value) { m_segmentDurationSecondsHasBeenSet = true; m_segmentDurationSeconds = value; }
-
-    /**
-     * Duration (in seconds) of each segment. Actual segments will be
-rounded to the
-     * nearest multiple of the source segment duration.
-
-     */
     inline DashPackage& WithSegmentDurationSeconds(int value) { SetSegmentDurationSeconds(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * Determines the type of SegmentTemplate included in the Media Presentation
      * Description (MPD).  When set to NUMBER_WITH_TIMELINE, a full timeline is
@@ -441,229 +189,100 @@ rounded to the
      * $Time$ media URLs. When set to NUMBER_WITH_DURATION, only a duration is included
      * in each SegmentTemplate, with $Number$ media URLs.
      */
-    inline const SegmentTemplateFormat& GetSegmentTemplateFormat() const{ return m_segmentTemplateFormat; }
-
-    /**
-     * Determines the type of SegmentTemplate included in the Media Presentation
-     * Description (MPD).  When set to NUMBER_WITH_TIMELINE, a full timeline is
-     * presented in each SegmentTemplate, with $Number$ media URLs.  When set to
-     * TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with
-     * $Time$ media URLs. When set to NUMBER_WITH_DURATION, only a duration is included
-     * in each SegmentTemplate, with $Number$ media URLs.
-     */
+    inline SegmentTemplateFormat GetSegmentTemplateFormat() const { return m_segmentTemplateFormat; }
     inline bool SegmentTemplateFormatHasBeenSet() const { return m_segmentTemplateFormatHasBeenSet; }
+    inline void SetSegmentTemplateFormat(SegmentTemplateFormat value) { m_segmentTemplateFormatHasBeenSet = true; m_segmentTemplateFormat = value; }
+    inline DashPackage& WithSegmentTemplateFormat(SegmentTemplateFormat value) { SetSegmentTemplateFormat(value); return *this;}
+    ///@}
 
-    /**
-     * Determines the type of SegmentTemplate included in the Media Presentation
-     * Description (MPD).  When set to NUMBER_WITH_TIMELINE, a full timeline is
-     * presented in each SegmentTemplate, with $Number$ media URLs.  When set to
-     * TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with
-     * $Time$ media URLs. When set to NUMBER_WITH_DURATION, only a duration is included
-     * in each SegmentTemplate, with $Number$ media URLs.
-     */
-    inline void SetSegmentTemplateFormat(const SegmentTemplateFormat& value) { m_segmentTemplateFormatHasBeenSet = true; m_segmentTemplateFormat = value; }
-
-    /**
-     * Determines the type of SegmentTemplate included in the Media Presentation
-     * Description (MPD).  When set to NUMBER_WITH_TIMELINE, a full timeline is
-     * presented in each SegmentTemplate, with $Number$ media URLs.  When set to
-     * TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with
-     * $Time$ media URLs. When set to NUMBER_WITH_DURATION, only a duration is included
-     * in each SegmentTemplate, with $Number$ media URLs.
-     */
-    inline void SetSegmentTemplateFormat(SegmentTemplateFormat&& value) { m_segmentTemplateFormatHasBeenSet = true; m_segmentTemplateFormat = std::move(value); }
-
-    /**
-     * Determines the type of SegmentTemplate included in the Media Presentation
-     * Description (MPD).  When set to NUMBER_WITH_TIMELINE, a full timeline is
-     * presented in each SegmentTemplate, with $Number$ media URLs.  When set to
-     * TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with
-     * $Time$ media URLs. When set to NUMBER_WITH_DURATION, only a duration is included
-     * in each SegmentTemplate, with $Number$ media URLs.
-     */
-    inline DashPackage& WithSegmentTemplateFormat(const SegmentTemplateFormat& value) { SetSegmentTemplateFormat(value); return *this;}
-
-    /**
-     * Determines the type of SegmentTemplate included in the Media Presentation
-     * Description (MPD).  When set to NUMBER_WITH_TIMELINE, a full timeline is
-     * presented in each SegmentTemplate, with $Number$ media URLs.  When set to
-     * TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with
-     * $Time$ media URLs. When set to NUMBER_WITH_DURATION, only a duration is included
-     * in each SegmentTemplate, with $Number$ media URLs.
-     */
-    inline DashPackage& WithSegmentTemplateFormat(SegmentTemplateFormat&& value) { SetSegmentTemplateFormat(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const StreamSelection& GetStreamSelection() const{ return m_streamSelection; }
-
-    
+    inline const StreamSelection& GetStreamSelection() const { return m_streamSelection; }
     inline bool StreamSelectionHasBeenSet() const { return m_streamSelectionHasBeenSet; }
+    template<typename StreamSelectionT = StreamSelection>
+    void SetStreamSelection(StreamSelectionT&& value) { m_streamSelectionHasBeenSet = true; m_streamSelection = std::forward<StreamSelectionT>(value); }
+    template<typename StreamSelectionT = StreamSelection>
+    DashPackage& WithStreamSelection(StreamSelectionT&& value) { SetStreamSelection(std::forward<StreamSelectionT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetStreamSelection(const StreamSelection& value) { m_streamSelectionHasBeenSet = true; m_streamSelection = value; }
-
-    
-    inline void SetStreamSelection(StreamSelection&& value) { m_streamSelectionHasBeenSet = true; m_streamSelection = std::move(value); }
-
-    
-    inline DashPackage& WithStreamSelection(const StreamSelection& value) { SetStreamSelection(value); return *this;}
-
-    
-    inline DashPackage& WithStreamSelection(StreamSelection&& value) { SetStreamSelection(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Duration (in seconds) to delay live content before presentation.
      */
-    inline int GetSuggestedPresentationDelaySeconds() const{ return m_suggestedPresentationDelaySeconds; }
-
-    /**
-     * Duration (in seconds) to delay live content before presentation.
-     */
+    inline int GetSuggestedPresentationDelaySeconds() const { return m_suggestedPresentationDelaySeconds; }
     inline bool SuggestedPresentationDelaySecondsHasBeenSet() const { return m_suggestedPresentationDelaySecondsHasBeenSet; }
-
-    /**
-     * Duration (in seconds) to delay live content before presentation.
-     */
     inline void SetSuggestedPresentationDelaySeconds(int value) { m_suggestedPresentationDelaySecondsHasBeenSet = true; m_suggestedPresentationDelaySeconds = value; }
-
-    /**
-     * Duration (in seconds) to delay live content before presentation.
-     */
     inline DashPackage& WithSuggestedPresentationDelaySeconds(int value) { SetSuggestedPresentationDelaySeconds(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * Determines the type of UTCTiming included in the Media Presentation Description
      * (MPD)
      */
-    inline const UtcTiming& GetUtcTiming() const{ return m_utcTiming; }
-
-    /**
-     * Determines the type of UTCTiming included in the Media Presentation Description
-     * (MPD)
-     */
+    inline UtcTiming GetUtcTiming() const { return m_utcTiming; }
     inline bool UtcTimingHasBeenSet() const { return m_utcTimingHasBeenSet; }
+    inline void SetUtcTiming(UtcTiming value) { m_utcTimingHasBeenSet = true; m_utcTiming = value; }
+    inline DashPackage& WithUtcTiming(UtcTiming value) { SetUtcTiming(value); return *this;}
+    ///@}
 
-    /**
-     * Determines the type of UTCTiming included in the Media Presentation Description
-     * (MPD)
-     */
-    inline void SetUtcTiming(const UtcTiming& value) { m_utcTimingHasBeenSet = true; m_utcTiming = value; }
-
-    /**
-     * Determines the type of UTCTiming included in the Media Presentation Description
-     * (MPD)
-     */
-    inline void SetUtcTiming(UtcTiming&& value) { m_utcTimingHasBeenSet = true; m_utcTiming = std::move(value); }
-
-    /**
-     * Determines the type of UTCTiming included in the Media Presentation Description
-     * (MPD)
-     */
-    inline DashPackage& WithUtcTiming(const UtcTiming& value) { SetUtcTiming(value); return *this;}
-
-    /**
-     * Determines the type of UTCTiming included in the Media Presentation Description
-     * (MPD)
-     */
-    inline DashPackage& WithUtcTiming(UtcTiming&& value) { SetUtcTiming(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Specifies the value attribute of the UTCTiming field when utcTiming is set to
      * HTTP-ISO, HTTP-HEAD or HTTP-XSDATE
      */
-    inline const Aws::String& GetUtcTimingUri() const{ return m_utcTimingUri; }
-
-    /**
-     * Specifies the value attribute of the UTCTiming field when utcTiming is set to
-     * HTTP-ISO, HTTP-HEAD or HTTP-XSDATE
-     */
+    inline const Aws::String& GetUtcTimingUri() const { return m_utcTimingUri; }
     inline bool UtcTimingUriHasBeenSet() const { return m_utcTimingUriHasBeenSet; }
-
-    /**
-     * Specifies the value attribute of the UTCTiming field when utcTiming is set to
-     * HTTP-ISO, HTTP-HEAD or HTTP-XSDATE
-     */
-    inline void SetUtcTimingUri(const Aws::String& value) { m_utcTimingUriHasBeenSet = true; m_utcTimingUri = value; }
-
-    /**
-     * Specifies the value attribute of the UTCTiming field when utcTiming is set to
-     * HTTP-ISO, HTTP-HEAD or HTTP-XSDATE
-     */
-    inline void SetUtcTimingUri(Aws::String&& value) { m_utcTimingUriHasBeenSet = true; m_utcTimingUri = std::move(value); }
-
-    /**
-     * Specifies the value attribute of the UTCTiming field when utcTiming is set to
-     * HTTP-ISO, HTTP-HEAD or HTTP-XSDATE
-     */
-    inline void SetUtcTimingUri(const char* value) { m_utcTimingUriHasBeenSet = true; m_utcTimingUri.assign(value); }
-
-    /**
-     * Specifies the value attribute of the UTCTiming field when utcTiming is set to
-     * HTTP-ISO, HTTP-HEAD or HTTP-XSDATE
-     */
-    inline DashPackage& WithUtcTimingUri(const Aws::String& value) { SetUtcTimingUri(value); return *this;}
-
-    /**
-     * Specifies the value attribute of the UTCTiming field when utcTiming is set to
-     * HTTP-ISO, HTTP-HEAD or HTTP-XSDATE
-     */
-    inline DashPackage& WithUtcTimingUri(Aws::String&& value) { SetUtcTimingUri(std::move(value)); return *this;}
-
-    /**
-     * Specifies the value attribute of the UTCTiming field when utcTiming is set to
-     * HTTP-ISO, HTTP-HEAD or HTTP-XSDATE
-     */
-    inline DashPackage& WithUtcTimingUri(const char* value) { SetUtcTimingUri(value); return *this;}
-
+    template<typename UtcTimingUriT = Aws::String>
+    void SetUtcTimingUri(UtcTimingUriT&& value) { m_utcTimingUriHasBeenSet = true; m_utcTimingUri = std::forward<UtcTimingUriT>(value); }
+    template<typename UtcTimingUriT = Aws::String>
+    DashPackage& WithUtcTimingUri(UtcTimingUriT&& value) { SetUtcTimingUri(std::forward<UtcTimingUriT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<__AdTriggersElement> m_adTriggers;
     bool m_adTriggersHasBeenSet = false;
 
-    AdsOnDeliveryRestrictions m_adsOnDeliveryRestrictions;
+    AdsOnDeliveryRestrictions m_adsOnDeliveryRestrictions{AdsOnDeliveryRestrictions::NOT_SET};
     bool m_adsOnDeliveryRestrictionsHasBeenSet = false;
 
     DashEncryption m_encryption;
     bool m_encryptionHasBeenSet = false;
 
-    bool m_includeIframeOnlyStream;
+    bool m_includeIframeOnlyStream{false};
     bool m_includeIframeOnlyStreamHasBeenSet = false;
 
-    ManifestLayout m_manifestLayout;
+    ManifestLayout m_manifestLayout{ManifestLayout::NOT_SET};
     bool m_manifestLayoutHasBeenSet = false;
 
-    int m_manifestWindowSeconds;
+    int m_manifestWindowSeconds{0};
     bool m_manifestWindowSecondsHasBeenSet = false;
 
-    int m_minBufferTimeSeconds;
+    int m_minBufferTimeSeconds{0};
     bool m_minBufferTimeSecondsHasBeenSet = false;
 
-    int m_minUpdatePeriodSeconds;
+    int m_minUpdatePeriodSeconds{0};
     bool m_minUpdatePeriodSecondsHasBeenSet = false;
 
     Aws::Vector<__PeriodTriggersElement> m_periodTriggers;
     bool m_periodTriggersHasBeenSet = false;
 
-    Profile m_profile;
+    Profile m_profile{Profile::NOT_SET};
     bool m_profileHasBeenSet = false;
 
-    int m_segmentDurationSeconds;
+    int m_segmentDurationSeconds{0};
     bool m_segmentDurationSecondsHasBeenSet = false;
 
-    SegmentTemplateFormat m_segmentTemplateFormat;
+    SegmentTemplateFormat m_segmentTemplateFormat{SegmentTemplateFormat::NOT_SET};
     bool m_segmentTemplateFormatHasBeenSet = false;
 
     StreamSelection m_streamSelection;
     bool m_streamSelectionHasBeenSet = false;
 
-    int m_suggestedPresentationDelaySeconds;
+    int m_suggestedPresentationDelaySeconds{0};
     bool m_suggestedPresentationDelaySecondsHasBeenSet = false;
 
-    UtcTiming m_utcTiming;
+    UtcTiming m_utcTiming{UtcTiming::NOT_SET};
     bool m_utcTimingHasBeenSet = false;
 
     Aws::String m_utcTimingUri;

@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InstanceState::InstanceState() : 
-    m_code(0),
-    m_codeHasBeenSet(false),
-    m_name(InstanceStateName::NOT_SET),
-    m_nameHasBeenSet(false)
-{
-}
-
-InstanceState::InstanceState(const XmlNode& xmlNode) : 
-    m_code(0),
-    m_codeHasBeenSet(false),
-    m_name(InstanceStateName::NOT_SET),
-    m_nameHasBeenSet(false)
+InstanceState::InstanceState(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -52,7 +40,7 @@ InstanceState& InstanceState::operator =(const XmlNode& xmlNode)
     XmlNode nameNode = resultNode.FirstChild("name");
     if(!nameNode.IsNull())
     {
-      m_name = InstanceStateNameMapper::GetInstanceStateNameForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(nameNode.GetText()).c_str()).c_str());
+      m_name = InstanceStateNameMapper::GetInstanceStateNameForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(nameNode.GetText()).c_str()));
       m_nameHasBeenSet = true;
     }
   }
@@ -69,7 +57,7 @@ void InstanceState::OutputToStream(Aws::OStream& oStream, const char* location, 
 
   if(m_nameHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Name=" << InstanceStateNameMapper::GetNameForInstanceStateName(m_name) << "&";
+      oStream << location << index << locationValue << ".Name=" << StringUtils::URLEncode(InstanceStateNameMapper::GetNameForInstanceStateName(m_name)) << "&";
   }
 
 }
@@ -82,7 +70,7 @@ void InstanceState::OutputToStream(Aws::OStream& oStream, const char* location) 
   }
   if(m_nameHasBeenSet)
   {
-      oStream << location << ".Name=" << InstanceStateNameMapper::GetNameForInstanceStateName(m_name) << "&";
+      oStream << location << ".Name=" << StringUtils::URLEncode(InstanceStateNameMapper::GetNameForInstanceStateName(m_name)) << "&";
   }
 }
 

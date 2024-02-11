@@ -10,36 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateIpamPoolRequest::CreateIpamPoolRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_ipamScopeIdHasBeenSet(false),
-    m_localeHasBeenSet(false),
-    m_sourceIpamPoolIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_addressFamily(AddressFamily::NOT_SET),
-    m_addressFamilyHasBeenSet(false),
-    m_autoImport(false),
-    m_autoImportHasBeenSet(false),
-    m_publiclyAdvertisable(false),
-    m_publiclyAdvertisableHasBeenSet(false),
-    m_allocationMinNetmaskLength(0),
-    m_allocationMinNetmaskLengthHasBeenSet(false),
-    m_allocationMaxNetmaskLength(0),
-    m_allocationMaxNetmaskLengthHasBeenSet(false),
-    m_allocationDefaultNetmaskLength(0),
-    m_allocationDefaultNetmaskLengthHasBeenSet(false),
-    m_allocationResourceTagsHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_awsService(IpamPoolAwsService::NOT_SET),
-    m_awsServiceHasBeenSet(false),
-    m_publicIpSource(IpamPoolPublicIpSource::NOT_SET),
-    m_publicIpSourceHasBeenSet(false)
-{
-}
-
 Aws::String CreateIpamPoolRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -71,7 +41,7 @@ Aws::String CreateIpamPoolRequest::SerializePayload() const
 
   if(m_addressFamilyHasBeenSet)
   {
-    ss << "AddressFamily=" << AddressFamilyMapper::GetNameForAddressFamily(m_addressFamily) << "&";
+    ss << "AddressFamily=" << StringUtils::URLEncode(AddressFamilyMapper::GetNameForAddressFamily(m_addressFamily)) << "&";
   }
 
   if(m_autoImportHasBeenSet)
@@ -126,12 +96,17 @@ Aws::String CreateIpamPoolRequest::SerializePayload() const
 
   if(m_awsServiceHasBeenSet)
   {
-    ss << "AwsService=" << IpamPoolAwsServiceMapper::GetNameForIpamPoolAwsService(m_awsService) << "&";
+    ss << "AwsService=" << StringUtils::URLEncode(IpamPoolAwsServiceMapper::GetNameForIpamPoolAwsService(m_awsService)) << "&";
   }
 
   if(m_publicIpSourceHasBeenSet)
   {
-    ss << "PublicIpSource=" << IpamPoolPublicIpSourceMapper::GetNameForIpamPoolPublicIpSource(m_publicIpSource) << "&";
+    ss << "PublicIpSource=" << StringUtils::URLEncode(IpamPoolPublicIpSourceMapper::GetNameForIpamPoolPublicIpSource(m_publicIpSource)) << "&";
+  }
+
+  if(m_sourceResourceHasBeenSet)
+  {
+    m_sourceResource.OutputToStream(ss, "SourceResource");
   }
 
   ss << "Version=2016-11-15";

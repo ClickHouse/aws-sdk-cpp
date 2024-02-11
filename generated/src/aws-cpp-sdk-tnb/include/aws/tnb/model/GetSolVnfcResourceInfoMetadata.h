@@ -34,134 +34,47 @@ namespace Model
   class GetSolVnfcResourceInfoMetadata
   {
   public:
-    AWS_TNB_API GetSolVnfcResourceInfoMetadata();
+    AWS_TNB_API GetSolVnfcResourceInfoMetadata() = default;
     AWS_TNB_API GetSolVnfcResourceInfoMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_TNB_API GetSolVnfcResourceInfoMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TNB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Information about the cluster.</p>
      */
-    inline const Aws::String& GetCluster() const{ return m_cluster; }
-
-    /**
-     * <p>Information about the cluster.</p>
-     */
+    inline const Aws::String& GetCluster() const { return m_cluster; }
     inline bool ClusterHasBeenSet() const { return m_clusterHasBeenSet; }
+    template<typename ClusterT = Aws::String>
+    void SetCluster(ClusterT&& value) { m_clusterHasBeenSet = true; m_cluster = std::forward<ClusterT>(value); }
+    template<typename ClusterT = Aws::String>
+    GetSolVnfcResourceInfoMetadata& WithCluster(ClusterT&& value) { SetCluster(std::forward<ClusterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the cluster.</p>
-     */
-    inline void SetCluster(const Aws::String& value) { m_clusterHasBeenSet = true; m_cluster = value; }
-
-    /**
-     * <p>Information about the cluster.</p>
-     */
-    inline void SetCluster(Aws::String&& value) { m_clusterHasBeenSet = true; m_cluster = std::move(value); }
-
-    /**
-     * <p>Information about the cluster.</p>
-     */
-    inline void SetCluster(const char* value) { m_clusterHasBeenSet = true; m_cluster.assign(value); }
-
-    /**
-     * <p>Information about the cluster.</p>
-     */
-    inline GetSolVnfcResourceInfoMetadata& WithCluster(const Aws::String& value) { SetCluster(value); return *this;}
-
-    /**
-     * <p>Information about the cluster.</p>
-     */
-    inline GetSolVnfcResourceInfoMetadata& WithCluster(Aws::String&& value) { SetCluster(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the cluster.</p>
-     */
-    inline GetSolVnfcResourceInfoMetadata& WithCluster(const char* value) { SetCluster(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the helm chart.</p>
      */
-    inline const Aws::String& GetHelmChart() const{ return m_helmChart; }
-
-    /**
-     * <p>Information about the helm chart.</p>
-     */
+    inline const Aws::String& GetHelmChart() const { return m_helmChart; }
     inline bool HelmChartHasBeenSet() const { return m_helmChartHasBeenSet; }
+    template<typename HelmChartT = Aws::String>
+    void SetHelmChart(HelmChartT&& value) { m_helmChartHasBeenSet = true; m_helmChart = std::forward<HelmChartT>(value); }
+    template<typename HelmChartT = Aws::String>
+    GetSolVnfcResourceInfoMetadata& WithHelmChart(HelmChartT&& value) { SetHelmChart(std::forward<HelmChartT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the helm chart.</p>
-     */
-    inline void SetHelmChart(const Aws::String& value) { m_helmChartHasBeenSet = true; m_helmChart = value; }
-
-    /**
-     * <p>Information about the helm chart.</p>
-     */
-    inline void SetHelmChart(Aws::String&& value) { m_helmChartHasBeenSet = true; m_helmChart = std::move(value); }
-
-    /**
-     * <p>Information about the helm chart.</p>
-     */
-    inline void SetHelmChart(const char* value) { m_helmChartHasBeenSet = true; m_helmChart.assign(value); }
-
-    /**
-     * <p>Information about the helm chart.</p>
-     */
-    inline GetSolVnfcResourceInfoMetadata& WithHelmChart(const Aws::String& value) { SetHelmChart(value); return *this;}
-
-    /**
-     * <p>Information about the helm chart.</p>
-     */
-    inline GetSolVnfcResourceInfoMetadata& WithHelmChart(Aws::String&& value) { SetHelmChart(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the helm chart.</p>
-     */
-    inline GetSolVnfcResourceInfoMetadata& WithHelmChart(const char* value) { SetHelmChart(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the node group.</p>
      */
-    inline const Aws::String& GetNodeGroup() const{ return m_nodeGroup; }
-
-    /**
-     * <p>Information about the node group.</p>
-     */
+    inline const Aws::String& GetNodeGroup() const { return m_nodeGroup; }
     inline bool NodeGroupHasBeenSet() const { return m_nodeGroupHasBeenSet; }
-
-    /**
-     * <p>Information about the node group.</p>
-     */
-    inline void SetNodeGroup(const Aws::String& value) { m_nodeGroupHasBeenSet = true; m_nodeGroup = value; }
-
-    /**
-     * <p>Information about the node group.</p>
-     */
-    inline void SetNodeGroup(Aws::String&& value) { m_nodeGroupHasBeenSet = true; m_nodeGroup = std::move(value); }
-
-    /**
-     * <p>Information about the node group.</p>
-     */
-    inline void SetNodeGroup(const char* value) { m_nodeGroupHasBeenSet = true; m_nodeGroup.assign(value); }
-
-    /**
-     * <p>Information about the node group.</p>
-     */
-    inline GetSolVnfcResourceInfoMetadata& WithNodeGroup(const Aws::String& value) { SetNodeGroup(value); return *this;}
-
-    /**
-     * <p>Information about the node group.</p>
-     */
-    inline GetSolVnfcResourceInfoMetadata& WithNodeGroup(Aws::String&& value) { SetNodeGroup(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the node group.</p>
-     */
-    inline GetSolVnfcResourceInfoMetadata& WithNodeGroup(const char* value) { SetNodeGroup(value); return *this;}
-
+    template<typename NodeGroupT = Aws::String>
+    void SetNodeGroup(NodeGroupT&& value) { m_nodeGroupHasBeenSet = true; m_nodeGroup = std::forward<NodeGroupT>(value); }
+    template<typename NodeGroupT = Aws::String>
+    GetSolVnfcResourceInfoMetadata& WithNodeGroup(NodeGroupT&& value) { SetNodeGroup(std::forward<NodeGroupT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_cluster;

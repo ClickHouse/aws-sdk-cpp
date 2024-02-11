@@ -12,16 +12,6 @@ using namespace Aws::MarketplaceCatalog::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartChangeSetRequest::StartChangeSetRequest() : 
-    m_catalogHasBeenSet(false),
-    m_changeSetHasBeenSet(false),
-    m_changeSetNameHasBeenSet(false),
-    m_clientRequestToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientRequestTokenHasBeenSet(true),
-    m_changeSetTagsHasBeenSet(false)
-{
-}
-
 Aws::String StartChangeSetRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -64,6 +54,11 @@ Aws::String StartChangeSetRequest::SerializePayload() const
    }
    payload.WithArray("ChangeSetTags", std::move(changeSetTagsJsonList));
 
+  }
+
+  if(m_intentHasBeenSet)
+  {
+   payload.WithString("Intent", IntentMapper::GetNameForIntent(m_intent));
   }
 
   return payload.View().WriteReadable();

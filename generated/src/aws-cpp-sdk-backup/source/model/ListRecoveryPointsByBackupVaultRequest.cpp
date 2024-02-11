@@ -15,20 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListRecoveryPointsByBackupVaultRequest::ListRecoveryPointsByBackupVaultRequest() : 
-    m_backupVaultNameHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_byResourceArnHasBeenSet(false),
-    m_byResourceTypeHasBeenSet(false),
-    m_byBackupPlanIdHasBeenSet(false),
-    m_byCreatedBeforeHasBeenSet(false),
-    m_byCreatedAfterHasBeenSet(false),
-    m_byParentRecoveryPointArnHasBeenSet(false)
-{
-}
-
 Aws::String ListRecoveryPointsByBackupVaultRequest::SerializePayload() const
 {
   return {};
@@ -37,6 +23,13 @@ Aws::String ListRecoveryPointsByBackupVaultRequest::SerializePayload() const
 void ListRecoveryPointsByBackupVaultRequest::AddQueryStringParameters(URI& uri) const
 {
     Aws::StringStream ss;
+    if(m_backupVaultAccountIdHasBeenSet)
+    {
+      ss << m_backupVaultAccountId;
+      uri.AddQueryStringParameter("backupVaultAccountId", ss.str());
+      ss.str("");
+    }
+
     if(m_nextTokenHasBeenSet)
     {
       ss << m_nextToken;

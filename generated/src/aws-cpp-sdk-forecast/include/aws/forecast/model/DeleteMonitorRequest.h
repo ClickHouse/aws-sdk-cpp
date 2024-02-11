@@ -21,7 +21,7 @@ namespace Model
   class DeleteMonitorRequest : public ForecastServiceRequest
   {
   public:
-    AWS_FORECASTSERVICE_API DeleteMonitorRequest();
+    AWS_FORECASTSERVICE_API DeleteMonitorRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_FORECASTSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the monitor resource to delete.</p>
      */
-    inline const Aws::String& GetMonitorArn() const{ return m_monitorArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the monitor resource to delete.</p>
-     */
+    inline const Aws::String& GetMonitorArn() const { return m_monitorArn; }
     inline bool MonitorArnHasBeenSet() const { return m_monitorArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the monitor resource to delete.</p>
-     */
-    inline void SetMonitorArn(const Aws::String& value) { m_monitorArnHasBeenSet = true; m_monitorArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the monitor resource to delete.</p>
-     */
-    inline void SetMonitorArn(Aws::String&& value) { m_monitorArnHasBeenSet = true; m_monitorArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the monitor resource to delete.</p>
-     */
-    inline void SetMonitorArn(const char* value) { m_monitorArnHasBeenSet = true; m_monitorArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the monitor resource to delete.</p>
-     */
-    inline DeleteMonitorRequest& WithMonitorArn(const Aws::String& value) { SetMonitorArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the monitor resource to delete.</p>
-     */
-    inline DeleteMonitorRequest& WithMonitorArn(Aws::String&& value) { SetMonitorArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the monitor resource to delete.</p>
-     */
-    inline DeleteMonitorRequest& WithMonitorArn(const char* value) { SetMonitorArn(value); return *this;}
-
+    template<typename MonitorArnT = Aws::String>
+    void SetMonitorArn(MonitorArnT&& value) { m_monitorArnHasBeenSet = true; m_monitorArn = std::forward<MonitorArnT>(value); }
+    template<typename MonitorArnT = Aws::String>
+    DeleteMonitorRequest& WithMonitorArn(MonitorArnT&& value) { SetMonitorArn(std::forward<MonitorArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_monitorArn;

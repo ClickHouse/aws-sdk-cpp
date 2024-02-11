@@ -12,15 +12,6 @@ using namespace Aws::Backup::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartRestoreJobRequest::StartRestoreJobRequest() : 
-    m_recoveryPointArnHasBeenSet(false),
-    m_metadataHasBeenSet(false),
-    m_iamRoleArnHasBeenSet(false),
-    m_idempotencyTokenHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
-{
-}
-
 Aws::String StartRestoreJobRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -57,6 +48,12 @@ Aws::String StartRestoreJobRequest::SerializePayload() const
   if(m_resourceTypeHasBeenSet)
   {
    payload.WithString("ResourceType", m_resourceType);
+
+  }
+
+  if(m_copySourceTagsToRestoredResourceHasBeenSet)
+  {
+   payload.WithBool("CopySourceTagsToRestoredResource", m_copySourceTagsToRestoredResource);
 
   }
 

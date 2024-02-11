@@ -25,7 +25,7 @@ namespace Model
   class DescribeDomainRequest : public CodeArtifactRequest
   {
   public:
-    AWS_CODEARTIFACT_API DescribeDomainRequest();
+    AWS_CODEARTIFACT_API DescribeDomainRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,95 +38,30 @@ namespace Model
     AWS_CODEARTIFACT_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p> A string that specifies the name of the requested domain. </p>
      */
-    inline const Aws::String& GetDomain() const{ return m_domain; }
-
-    /**
-     * <p> A string that specifies the name of the requested domain. </p>
-     */
+    inline const Aws::String& GetDomain() const { return m_domain; }
     inline bool DomainHasBeenSet() const { return m_domainHasBeenSet; }
+    template<typename DomainT = Aws::String>
+    void SetDomain(DomainT&& value) { m_domainHasBeenSet = true; m_domain = std::forward<DomainT>(value); }
+    template<typename DomainT = Aws::String>
+    DescribeDomainRequest& WithDomain(DomainT&& value) { SetDomain(std::forward<DomainT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> A string that specifies the name of the requested domain. </p>
-     */
-    inline void SetDomain(const Aws::String& value) { m_domainHasBeenSet = true; m_domain = value; }
-
-    /**
-     * <p> A string that specifies the name of the requested domain. </p>
-     */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
-
-    /**
-     * <p> A string that specifies the name of the requested domain. </p>
-     */
-    inline void SetDomain(const char* value) { m_domainHasBeenSet = true; m_domain.assign(value); }
-
-    /**
-     * <p> A string that specifies the name of the requested domain. </p>
-     */
-    inline DescribeDomainRequest& WithDomain(const Aws::String& value) { SetDomain(value); return *this;}
-
-    /**
-     * <p> A string that specifies the name of the requested domain. </p>
-     */
-    inline DescribeDomainRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
-
-    /**
-     * <p> A string that specifies the name of the requested domain. </p>
-     */
-    inline DescribeDomainRequest& WithDomain(const char* value) { SetDomain(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The 12-digit account number of the Amazon Web Services account that owns the
      * domain. It does not include dashes or spaces. </p>
      */
-    inline const Aws::String& GetDomainOwner() const{ return m_domainOwner; }
-
-    /**
-     * <p> The 12-digit account number of the Amazon Web Services account that owns the
-     * domain. It does not include dashes or spaces. </p>
-     */
+    inline const Aws::String& GetDomainOwner() const { return m_domainOwner; }
     inline bool DomainOwnerHasBeenSet() const { return m_domainOwnerHasBeenSet; }
-
-    /**
-     * <p> The 12-digit account number of the Amazon Web Services account that owns the
-     * domain. It does not include dashes or spaces. </p>
-     */
-    inline void SetDomainOwner(const Aws::String& value) { m_domainOwnerHasBeenSet = true; m_domainOwner = value; }
-
-    /**
-     * <p> The 12-digit account number of the Amazon Web Services account that owns the
-     * domain. It does not include dashes or spaces. </p>
-     */
-    inline void SetDomainOwner(Aws::String&& value) { m_domainOwnerHasBeenSet = true; m_domainOwner = std::move(value); }
-
-    /**
-     * <p> The 12-digit account number of the Amazon Web Services account that owns the
-     * domain. It does not include dashes or spaces. </p>
-     */
-    inline void SetDomainOwner(const char* value) { m_domainOwnerHasBeenSet = true; m_domainOwner.assign(value); }
-
-    /**
-     * <p> The 12-digit account number of the Amazon Web Services account that owns the
-     * domain. It does not include dashes or spaces. </p>
-     */
-    inline DescribeDomainRequest& WithDomainOwner(const Aws::String& value) { SetDomainOwner(value); return *this;}
-
-    /**
-     * <p> The 12-digit account number of the Amazon Web Services account that owns the
-     * domain. It does not include dashes or spaces. </p>
-     */
-    inline DescribeDomainRequest& WithDomainOwner(Aws::String&& value) { SetDomainOwner(std::move(value)); return *this;}
-
-    /**
-     * <p> The 12-digit account number of the Amazon Web Services account that owns the
-     * domain. It does not include dashes or spaces. </p>
-     */
-    inline DescribeDomainRequest& WithDomainOwner(const char* value) { SetDomainOwner(value); return *this;}
-
+    template<typename DomainOwnerT = Aws::String>
+    void SetDomainOwner(DomainOwnerT&& value) { m_domainOwnerHasBeenSet = true; m_domainOwner = std::forward<DomainOwnerT>(value); }
+    template<typename DomainOwnerT = Aws::String>
+    DescribeDomainRequest& WithDomainOwner(DomainOwnerT&& value) { SetDomainOwner(std::forward<DomainOwnerT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domain;

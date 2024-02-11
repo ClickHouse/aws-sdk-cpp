@@ -20,101 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-AutoScalingGroup::AutoScalingGroup() : 
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_autoScalingGroupARNHasBeenSet(false),
-    m_launchConfigurationNameHasBeenSet(false),
-    m_launchTemplateHasBeenSet(false),
-    m_mixedInstancesPolicyHasBeenSet(false),
-    m_minSize(0),
-    m_minSizeHasBeenSet(false),
-    m_maxSize(0),
-    m_maxSizeHasBeenSet(false),
-    m_desiredCapacity(0),
-    m_desiredCapacityHasBeenSet(false),
-    m_predictedCapacity(0),
-    m_predictedCapacityHasBeenSet(false),
-    m_defaultCooldown(0),
-    m_defaultCooldownHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false),
-    m_loadBalancerNamesHasBeenSet(false),
-    m_targetGroupARNsHasBeenSet(false),
-    m_healthCheckTypeHasBeenSet(false),
-    m_healthCheckGracePeriod(0),
-    m_healthCheckGracePeriodHasBeenSet(false),
-    m_instancesHasBeenSet(false),
-    m_createdTimeHasBeenSet(false),
-    m_suspendedProcessesHasBeenSet(false),
-    m_placementGroupHasBeenSet(false),
-    m_vPCZoneIdentifierHasBeenSet(false),
-    m_enabledMetricsHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_terminationPoliciesHasBeenSet(false),
-    m_newInstancesProtectedFromScaleIn(false),
-    m_newInstancesProtectedFromScaleInHasBeenSet(false),
-    m_serviceLinkedRoleARNHasBeenSet(false),
-    m_maxInstanceLifetime(0),
-    m_maxInstanceLifetimeHasBeenSet(false),
-    m_capacityRebalance(false),
-    m_capacityRebalanceHasBeenSet(false),
-    m_warmPoolConfigurationHasBeenSet(false),
-    m_warmPoolSize(0),
-    m_warmPoolSizeHasBeenSet(false),
-    m_contextHasBeenSet(false),
-    m_desiredCapacityTypeHasBeenSet(false),
-    m_defaultInstanceWarmup(0),
-    m_defaultInstanceWarmupHasBeenSet(false),
-    m_trafficSourcesHasBeenSet(false)
-{
-}
-
-AutoScalingGroup::AutoScalingGroup(const XmlNode& xmlNode) : 
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_autoScalingGroupARNHasBeenSet(false),
-    m_launchConfigurationNameHasBeenSet(false),
-    m_launchTemplateHasBeenSet(false),
-    m_mixedInstancesPolicyHasBeenSet(false),
-    m_minSize(0),
-    m_minSizeHasBeenSet(false),
-    m_maxSize(0),
-    m_maxSizeHasBeenSet(false),
-    m_desiredCapacity(0),
-    m_desiredCapacityHasBeenSet(false),
-    m_predictedCapacity(0),
-    m_predictedCapacityHasBeenSet(false),
-    m_defaultCooldown(0),
-    m_defaultCooldownHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false),
-    m_loadBalancerNamesHasBeenSet(false),
-    m_targetGroupARNsHasBeenSet(false),
-    m_healthCheckTypeHasBeenSet(false),
-    m_healthCheckGracePeriod(0),
-    m_healthCheckGracePeriodHasBeenSet(false),
-    m_instancesHasBeenSet(false),
-    m_createdTimeHasBeenSet(false),
-    m_suspendedProcessesHasBeenSet(false),
-    m_placementGroupHasBeenSet(false),
-    m_vPCZoneIdentifierHasBeenSet(false),
-    m_enabledMetricsHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_terminationPoliciesHasBeenSet(false),
-    m_newInstancesProtectedFromScaleIn(false),
-    m_newInstancesProtectedFromScaleInHasBeenSet(false),
-    m_serviceLinkedRoleARNHasBeenSet(false),
-    m_maxInstanceLifetime(0),
-    m_maxInstanceLifetimeHasBeenSet(false),
-    m_capacityRebalance(false),
-    m_capacityRebalanceHasBeenSet(false),
-    m_warmPoolConfigurationHasBeenSet(false),
-    m_warmPoolSize(0),
-    m_warmPoolSizeHasBeenSet(false),
-    m_contextHasBeenSet(false),
-    m_desiredCapacityTypeHasBeenSet(false),
-    m_defaultInstanceWarmup(0),
-    m_defaultInstanceWarmupHasBeenSet(false),
-    m_trafficSourcesHasBeenSet(false)
+AutoScalingGroup::AutoScalingGroup(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -189,6 +95,7 @@ AutoScalingGroup& AutoScalingGroup::operator =(const XmlNode& xmlNode)
     if(!availabilityZonesNode.IsNull())
     {
       XmlNode availabilityZonesMember = availabilityZonesNode.FirstChild("member");
+      m_availabilityZonesHasBeenSet = !availabilityZonesMember.IsNull();
       while(!availabilityZonesMember.IsNull())
       {
         m_availabilityZones.push_back(availabilityZonesMember.GetText());
@@ -201,6 +108,7 @@ AutoScalingGroup& AutoScalingGroup::operator =(const XmlNode& xmlNode)
     if(!loadBalancerNamesNode.IsNull())
     {
       XmlNode loadBalancerNamesMember = loadBalancerNamesNode.FirstChild("member");
+      m_loadBalancerNamesHasBeenSet = !loadBalancerNamesMember.IsNull();
       while(!loadBalancerNamesMember.IsNull())
       {
         m_loadBalancerNames.push_back(loadBalancerNamesMember.GetText());
@@ -213,6 +121,7 @@ AutoScalingGroup& AutoScalingGroup::operator =(const XmlNode& xmlNode)
     if(!targetGroupARNsNode.IsNull())
     {
       XmlNode targetGroupARNsMember = targetGroupARNsNode.FirstChild("member");
+      m_targetGroupARNsHasBeenSet = !targetGroupARNsMember.IsNull();
       while(!targetGroupARNsMember.IsNull())
       {
         m_targetGroupARNs.push_back(targetGroupARNsMember.GetText());
@@ -237,6 +146,7 @@ AutoScalingGroup& AutoScalingGroup::operator =(const XmlNode& xmlNode)
     if(!instancesNode.IsNull())
     {
       XmlNode instancesMember = instancesNode.FirstChild("member");
+      m_instancesHasBeenSet = !instancesMember.IsNull();
       while(!instancesMember.IsNull())
       {
         m_instances.push_back(instancesMember);
@@ -255,6 +165,7 @@ AutoScalingGroup& AutoScalingGroup::operator =(const XmlNode& xmlNode)
     if(!suspendedProcessesNode.IsNull())
     {
       XmlNode suspendedProcessesMember = suspendedProcessesNode.FirstChild("member");
+      m_suspendedProcessesHasBeenSet = !suspendedProcessesMember.IsNull();
       while(!suspendedProcessesMember.IsNull())
       {
         m_suspendedProcesses.push_back(suspendedProcessesMember);
@@ -279,6 +190,7 @@ AutoScalingGroup& AutoScalingGroup::operator =(const XmlNode& xmlNode)
     if(!enabledMetricsNode.IsNull())
     {
       XmlNode enabledMetricsMember = enabledMetricsNode.FirstChild("member");
+      m_enabledMetricsHasBeenSet = !enabledMetricsMember.IsNull();
       while(!enabledMetricsMember.IsNull())
       {
         m_enabledMetrics.push_back(enabledMetricsMember);
@@ -297,6 +209,7 @@ AutoScalingGroup& AutoScalingGroup::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("member");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -309,6 +222,7 @@ AutoScalingGroup& AutoScalingGroup::operator =(const XmlNode& xmlNode)
     if(!terminationPoliciesNode.IsNull())
     {
       XmlNode terminationPoliciesMember = terminationPoliciesNode.FirstChild("member");
+      m_terminationPoliciesHasBeenSet = !terminationPoliciesMember.IsNull();
       while(!terminationPoliciesMember.IsNull())
       {
         m_terminationPolicies.push_back(terminationPoliciesMember.GetText());
@@ -375,6 +289,7 @@ AutoScalingGroup& AutoScalingGroup::operator =(const XmlNode& xmlNode)
     if(!trafficSourcesNode.IsNull())
     {
       XmlNode trafficSourcesMember = trafficSourcesNode.FirstChild("member");
+      m_trafficSourcesHasBeenSet = !trafficSourcesMember.IsNull();
       while(!trafficSourcesMember.IsNull())
       {
         m_trafficSources.push_back(trafficSourcesMember);
@@ -382,6 +297,30 @@ AutoScalingGroup& AutoScalingGroup::operator =(const XmlNode& xmlNode)
       }
 
       m_trafficSourcesHasBeenSet = true;
+    }
+    XmlNode instanceMaintenancePolicyNode = resultNode.FirstChild("InstanceMaintenancePolicy");
+    if(!instanceMaintenancePolicyNode.IsNull())
+    {
+      m_instanceMaintenancePolicy = instanceMaintenancePolicyNode;
+      m_instanceMaintenancePolicyHasBeenSet = true;
+    }
+    XmlNode availabilityZoneDistributionNode = resultNode.FirstChild("AvailabilityZoneDistribution");
+    if(!availabilityZoneDistributionNode.IsNull())
+    {
+      m_availabilityZoneDistribution = availabilityZoneDistributionNode;
+      m_availabilityZoneDistributionHasBeenSet = true;
+    }
+    XmlNode availabilityZoneImpairmentPolicyNode = resultNode.FirstChild("AvailabilityZoneImpairmentPolicy");
+    if(!availabilityZoneImpairmentPolicyNode.IsNull())
+    {
+      m_availabilityZoneImpairmentPolicy = availabilityZoneImpairmentPolicyNode;
+      m_availabilityZoneImpairmentPolicyHasBeenSet = true;
+    }
+    XmlNode capacityReservationSpecificationNode = resultNode.FirstChild("CapacityReservationSpecification");
+    if(!capacityReservationSpecificationNode.IsNull())
+    {
+      m_capacityReservationSpecification = capacityReservationSpecificationNode;
+      m_capacityReservationSpecificationHasBeenSet = true;
     }
   }
 
@@ -612,6 +551,34 @@ void AutoScalingGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
       }
   }
 
+  if(m_instanceMaintenancePolicyHasBeenSet)
+  {
+      Aws::StringStream instanceMaintenancePolicyLocationAndMemberSs;
+      instanceMaintenancePolicyLocationAndMemberSs << location << index << locationValue << ".InstanceMaintenancePolicy";
+      m_instanceMaintenancePolicy.OutputToStream(oStream, instanceMaintenancePolicyLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_availabilityZoneDistributionHasBeenSet)
+  {
+      Aws::StringStream availabilityZoneDistributionLocationAndMemberSs;
+      availabilityZoneDistributionLocationAndMemberSs << location << index << locationValue << ".AvailabilityZoneDistribution";
+      m_availabilityZoneDistribution.OutputToStream(oStream, availabilityZoneDistributionLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_availabilityZoneImpairmentPolicyHasBeenSet)
+  {
+      Aws::StringStream availabilityZoneImpairmentPolicyLocationAndMemberSs;
+      availabilityZoneImpairmentPolicyLocationAndMemberSs << location << index << locationValue << ".AvailabilityZoneImpairmentPolicy";
+      m_availabilityZoneImpairmentPolicy.OutputToStream(oStream, availabilityZoneImpairmentPolicyLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_capacityReservationSpecificationHasBeenSet)
+  {
+      Aws::StringStream capacityReservationSpecificationLocationAndMemberSs;
+      capacityReservationSpecificationLocationAndMemberSs << location << index << locationValue << ".CapacityReservationSpecification";
+      m_capacityReservationSpecification.OutputToStream(oStream, capacityReservationSpecificationLocationAndMemberSs.str().c_str());
+  }
+
 }
 
 void AutoScalingGroup::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -698,7 +665,7 @@ void AutoScalingGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_instances)
       {
         Aws::StringStream instancesSs;
-        instancesSs << location <<  ".Instances.member." << instancesIdx++;
+        instancesSs << location << ".Instances.member." << instancesIdx++;
         item.OutputToStream(oStream, instancesSs.str().c_str());
       }
   }
@@ -712,7 +679,7 @@ void AutoScalingGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_suspendedProcesses)
       {
         Aws::StringStream suspendedProcessesSs;
-        suspendedProcessesSs << location <<  ".SuspendedProcesses.member." << suspendedProcessesIdx++;
+        suspendedProcessesSs << location << ".SuspendedProcesses.member." << suspendedProcessesIdx++;
         item.OutputToStream(oStream, suspendedProcessesSs.str().c_str());
       }
   }
@@ -730,7 +697,7 @@ void AutoScalingGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_enabledMetrics)
       {
         Aws::StringStream enabledMetricsSs;
-        enabledMetricsSs << location <<  ".EnabledMetrics.member." << enabledMetricsIdx++;
+        enabledMetricsSs << location << ".EnabledMetrics.member." << enabledMetricsIdx++;
         item.OutputToStream(oStream, enabledMetricsSs.str().c_str());
       }
   }
@@ -744,7 +711,7 @@ void AutoScalingGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".Tags.member." << tagsIdx++;
+        tagsSs << location << ".Tags.member." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -800,9 +767,33 @@ void AutoScalingGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_trafficSources)
       {
         Aws::StringStream trafficSourcesSs;
-        trafficSourcesSs << location <<  ".TrafficSources.member." << trafficSourcesIdx++;
+        trafficSourcesSs << location << ".TrafficSources.member." << trafficSourcesIdx++;
         item.OutputToStream(oStream, trafficSourcesSs.str().c_str());
       }
+  }
+  if(m_instanceMaintenancePolicyHasBeenSet)
+  {
+      Aws::String instanceMaintenancePolicyLocationAndMember(location);
+      instanceMaintenancePolicyLocationAndMember += ".InstanceMaintenancePolicy";
+      m_instanceMaintenancePolicy.OutputToStream(oStream, instanceMaintenancePolicyLocationAndMember.c_str());
+  }
+  if(m_availabilityZoneDistributionHasBeenSet)
+  {
+      Aws::String availabilityZoneDistributionLocationAndMember(location);
+      availabilityZoneDistributionLocationAndMember += ".AvailabilityZoneDistribution";
+      m_availabilityZoneDistribution.OutputToStream(oStream, availabilityZoneDistributionLocationAndMember.c_str());
+  }
+  if(m_availabilityZoneImpairmentPolicyHasBeenSet)
+  {
+      Aws::String availabilityZoneImpairmentPolicyLocationAndMember(location);
+      availabilityZoneImpairmentPolicyLocationAndMember += ".AvailabilityZoneImpairmentPolicy";
+      m_availabilityZoneImpairmentPolicy.OutputToStream(oStream, availabilityZoneImpairmentPolicyLocationAndMember.c_str());
+  }
+  if(m_capacityReservationSpecificationHasBeenSet)
+  {
+      Aws::String capacityReservationSpecificationLocationAndMember(location);
+      capacityReservationSpecificationLocationAndMember += ".CapacityReservationSpecification";
+      m_capacityReservationSpecification.OutputToStream(oStream, capacityReservationSpecificationLocationAndMember.c_str());
   }
 }
 

@@ -11,6 +11,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/ssm-sap/model/ApplicationCredential.h>
+#include <aws/ssm-sap/model/ComponentInfo.h>
 #include <utility>
 
 namespace Aws
@@ -25,7 +26,7 @@ namespace Model
   class RegisterApplicationRequest : public SsmSapRequest
   {
   public:
-    AWS_SSMSAP_API RegisterApplicationRequest();
+    AWS_SSMSAP_API RegisterApplicationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,318 +37,129 @@ namespace Model
     AWS_SSMSAP_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the application.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The ID of the application.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    RegisterApplicationRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the application.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The ID of the application.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The ID of the application.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The ID of the application.</p>
-     */
-    inline RegisterApplicationRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The ID of the application.</p>
-     */
-    inline RegisterApplicationRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the application.</p>
-     */
-    inline RegisterApplicationRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the application.</p>
      */
-    inline const ApplicationType& GetApplicationType() const{ return m_applicationType; }
-
-    /**
-     * <p>The type of the application.</p>
-     */
+    inline ApplicationType GetApplicationType() const { return m_applicationType; }
     inline bool ApplicationTypeHasBeenSet() const { return m_applicationTypeHasBeenSet; }
+    inline void SetApplicationType(ApplicationType value) { m_applicationTypeHasBeenSet = true; m_applicationType = value; }
+    inline RegisterApplicationRequest& WithApplicationType(ApplicationType value) { SetApplicationType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the application.</p>
-     */
-    inline void SetApplicationType(const ApplicationType& value) { m_applicationTypeHasBeenSet = true; m_applicationType = value; }
-
-    /**
-     * <p>The type of the application.</p>
-     */
-    inline void SetApplicationType(ApplicationType&& value) { m_applicationTypeHasBeenSet = true; m_applicationType = std::move(value); }
-
-    /**
-     * <p>The type of the application.</p>
-     */
-    inline RegisterApplicationRequest& WithApplicationType(const ApplicationType& value) { SetApplicationType(value); return *this;}
-
-    /**
-     * <p>The type of the application.</p>
-     */
-    inline RegisterApplicationRequest& WithApplicationType(ApplicationType&& value) { SetApplicationType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon EC2 instances on which your SAP application is running.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetInstances() const{ return m_instances; }
-
-    /**
-     * <p>The Amazon EC2 instances on which your SAP application is running.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetInstances() const { return m_instances; }
     inline bool InstancesHasBeenSet() const { return m_instancesHasBeenSet; }
+    template<typename InstancesT = Aws::Vector<Aws::String>>
+    void SetInstances(InstancesT&& value) { m_instancesHasBeenSet = true; m_instances = std::forward<InstancesT>(value); }
+    template<typename InstancesT = Aws::Vector<Aws::String>>
+    RegisterApplicationRequest& WithInstances(InstancesT&& value) { SetInstances(std::forward<InstancesT>(value)); return *this;}
+    template<typename InstancesT = Aws::String>
+    RegisterApplicationRequest& AddInstances(InstancesT&& value) { m_instancesHasBeenSet = true; m_instances.emplace_back(std::forward<InstancesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The Amazon EC2 instances on which your SAP application is running.</p>
-     */
-    inline void SetInstances(const Aws::Vector<Aws::String>& value) { m_instancesHasBeenSet = true; m_instances = value; }
-
-    /**
-     * <p>The Amazon EC2 instances on which your SAP application is running.</p>
-     */
-    inline void SetInstances(Aws::Vector<Aws::String>&& value) { m_instancesHasBeenSet = true; m_instances = std::move(value); }
-
-    /**
-     * <p>The Amazon EC2 instances on which your SAP application is running.</p>
-     */
-    inline RegisterApplicationRequest& WithInstances(const Aws::Vector<Aws::String>& value) { SetInstances(value); return *this;}
-
-    /**
-     * <p>The Amazon EC2 instances on which your SAP application is running.</p>
-     */
-    inline RegisterApplicationRequest& WithInstances(Aws::Vector<Aws::String>&& value) { SetInstances(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon EC2 instances on which your SAP application is running.</p>
-     */
-    inline RegisterApplicationRequest& AddInstances(const Aws::String& value) { m_instancesHasBeenSet = true; m_instances.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon EC2 instances on which your SAP application is running.</p>
-     */
-    inline RegisterApplicationRequest& AddInstances(Aws::String&& value) { m_instancesHasBeenSet = true; m_instances.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The Amazon EC2 instances on which your SAP application is running.</p>
-     */
-    inline RegisterApplicationRequest& AddInstances(const char* value) { m_instancesHasBeenSet = true; m_instances.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The SAP instance number of the application.</p>
      */
-    inline const Aws::String& GetSapInstanceNumber() const{ return m_sapInstanceNumber; }
-
-    /**
-     * <p>The SAP instance number of the application.</p>
-     */
+    inline const Aws::String& GetSapInstanceNumber() const { return m_sapInstanceNumber; }
     inline bool SapInstanceNumberHasBeenSet() const { return m_sapInstanceNumberHasBeenSet; }
+    template<typename SapInstanceNumberT = Aws::String>
+    void SetSapInstanceNumber(SapInstanceNumberT&& value) { m_sapInstanceNumberHasBeenSet = true; m_sapInstanceNumber = std::forward<SapInstanceNumberT>(value); }
+    template<typename SapInstanceNumberT = Aws::String>
+    RegisterApplicationRequest& WithSapInstanceNumber(SapInstanceNumberT&& value) { SetSapInstanceNumber(std::forward<SapInstanceNumberT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The SAP instance number of the application.</p>
-     */
-    inline void SetSapInstanceNumber(const Aws::String& value) { m_sapInstanceNumberHasBeenSet = true; m_sapInstanceNumber = value; }
-
-    /**
-     * <p>The SAP instance number of the application.</p>
-     */
-    inline void SetSapInstanceNumber(Aws::String&& value) { m_sapInstanceNumberHasBeenSet = true; m_sapInstanceNumber = std::move(value); }
-
-    /**
-     * <p>The SAP instance number of the application.</p>
-     */
-    inline void SetSapInstanceNumber(const char* value) { m_sapInstanceNumberHasBeenSet = true; m_sapInstanceNumber.assign(value); }
-
-    /**
-     * <p>The SAP instance number of the application.</p>
-     */
-    inline RegisterApplicationRequest& WithSapInstanceNumber(const Aws::String& value) { SetSapInstanceNumber(value); return *this;}
-
-    /**
-     * <p>The SAP instance number of the application.</p>
-     */
-    inline RegisterApplicationRequest& WithSapInstanceNumber(Aws::String&& value) { SetSapInstanceNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The SAP instance number of the application.</p>
-     */
-    inline RegisterApplicationRequest& WithSapInstanceNumber(const char* value) { SetSapInstanceNumber(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The System ID of the application.</p>
      */
-    inline const Aws::String& GetSid() const{ return m_sid; }
-
-    /**
-     * <p>The System ID of the application.</p>
-     */
+    inline const Aws::String& GetSid() const { return m_sid; }
     inline bool SidHasBeenSet() const { return m_sidHasBeenSet; }
+    template<typename SidT = Aws::String>
+    void SetSid(SidT&& value) { m_sidHasBeenSet = true; m_sid = std::forward<SidT>(value); }
+    template<typename SidT = Aws::String>
+    RegisterApplicationRequest& WithSid(SidT&& value) { SetSid(std::forward<SidT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The System ID of the application.</p>
-     */
-    inline void SetSid(const Aws::String& value) { m_sidHasBeenSet = true; m_sid = value; }
-
-    /**
-     * <p>The System ID of the application.</p>
-     */
-    inline void SetSid(Aws::String&& value) { m_sidHasBeenSet = true; m_sid = std::move(value); }
-
-    /**
-     * <p>The System ID of the application.</p>
-     */
-    inline void SetSid(const char* value) { m_sidHasBeenSet = true; m_sid.assign(value); }
-
-    /**
-     * <p>The System ID of the application.</p>
-     */
-    inline RegisterApplicationRequest& WithSid(const Aws::String& value) { SetSid(value); return *this;}
-
-    /**
-     * <p>The System ID of the application.</p>
-     */
-    inline RegisterApplicationRequest& WithSid(Aws::String&& value) { SetSid(std::move(value)); return *this;}
-
-    /**
-     * <p>The System ID of the application.</p>
-     */
-    inline RegisterApplicationRequest& WithSid(const char* value) { SetSid(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags to be attached to the SAP application.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags to be attached to the SAP application.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    RegisterApplicationRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    RegisterApplicationRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The tags to be attached to the SAP application.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags to be attached to the SAP application.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags to be attached to the SAP application.</p>
-     */
-    inline RegisterApplicationRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags to be attached to the SAP application.</p>
-     */
-    inline RegisterApplicationRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags to be attached to the SAP application.</p>
-     */
-    inline RegisterApplicationRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags to be attached to the SAP application.</p>
-     */
-    inline RegisterApplicationRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags to be attached to the SAP application.</p>
-     */
-    inline RegisterApplicationRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags to be attached to the SAP application.</p>
-     */
-    inline RegisterApplicationRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags to be attached to the SAP application.</p>
-     */
-    inline RegisterApplicationRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags to be attached to the SAP application.</p>
-     */
-    inline RegisterApplicationRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags to be attached to the SAP application.</p>
-     */
-    inline RegisterApplicationRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The credentials of the SAP application.</p>
      */
-    inline const Aws::Vector<ApplicationCredential>& GetCredentials() const{ return m_credentials; }
-
-    /**
-     * <p>The credentials of the SAP application.</p>
-     */
+    inline const Aws::Vector<ApplicationCredential>& GetCredentials() const { return m_credentials; }
     inline bool CredentialsHasBeenSet() const { return m_credentialsHasBeenSet; }
+    template<typename CredentialsT = Aws::Vector<ApplicationCredential>>
+    void SetCredentials(CredentialsT&& value) { m_credentialsHasBeenSet = true; m_credentials = std::forward<CredentialsT>(value); }
+    template<typename CredentialsT = Aws::Vector<ApplicationCredential>>
+    RegisterApplicationRequest& WithCredentials(CredentialsT&& value) { SetCredentials(std::forward<CredentialsT>(value)); return *this;}
+    template<typename CredentialsT = ApplicationCredential>
+    RegisterApplicationRequest& AddCredentials(CredentialsT&& value) { m_credentialsHasBeenSet = true; m_credentials.emplace_back(std::forward<CredentialsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The credentials of the SAP application.</p>
+     * <p>The Amazon Resource Name of the SAP HANA database.</p>
      */
-    inline void SetCredentials(const Aws::Vector<ApplicationCredential>& value) { m_credentialsHasBeenSet = true; m_credentials = value; }
+    inline const Aws::String& GetDatabaseArn() const { return m_databaseArn; }
+    inline bool DatabaseArnHasBeenSet() const { return m_databaseArnHasBeenSet; }
+    template<typename DatabaseArnT = Aws::String>
+    void SetDatabaseArn(DatabaseArnT&& value) { m_databaseArnHasBeenSet = true; m_databaseArn = std::forward<DatabaseArnT>(value); }
+    template<typename DatabaseArnT = Aws::String>
+    RegisterApplicationRequest& WithDatabaseArn(DatabaseArnT&& value) { SetDatabaseArn(std::forward<DatabaseArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The credentials of the SAP application.</p>
+     * <p>This is an optional parameter for component details to which the SAP ABAP
+     * application is attached, such as Web Dispatcher.</p> <p>This is an array of
+     * ApplicationComponent objects. You may input 0 to 5 items.</p>
      */
-    inline void SetCredentials(Aws::Vector<ApplicationCredential>&& value) { m_credentialsHasBeenSet = true; m_credentials = std::move(value); }
-
-    /**
-     * <p>The credentials of the SAP application.</p>
-     */
-    inline RegisterApplicationRequest& WithCredentials(const Aws::Vector<ApplicationCredential>& value) { SetCredentials(value); return *this;}
-
-    /**
-     * <p>The credentials of the SAP application.</p>
-     */
-    inline RegisterApplicationRequest& WithCredentials(Aws::Vector<ApplicationCredential>&& value) { SetCredentials(std::move(value)); return *this;}
-
-    /**
-     * <p>The credentials of the SAP application.</p>
-     */
-    inline RegisterApplicationRequest& AddCredentials(const ApplicationCredential& value) { m_credentialsHasBeenSet = true; m_credentials.push_back(value); return *this; }
-
-    /**
-     * <p>The credentials of the SAP application.</p>
-     */
-    inline RegisterApplicationRequest& AddCredentials(ApplicationCredential&& value) { m_credentialsHasBeenSet = true; m_credentials.push_back(std::move(value)); return *this; }
-
+    inline const Aws::Vector<ComponentInfo>& GetComponentsInfo() const { return m_componentsInfo; }
+    inline bool ComponentsInfoHasBeenSet() const { return m_componentsInfoHasBeenSet; }
+    template<typename ComponentsInfoT = Aws::Vector<ComponentInfo>>
+    void SetComponentsInfo(ComponentsInfoT&& value) { m_componentsInfoHasBeenSet = true; m_componentsInfo = std::forward<ComponentsInfoT>(value); }
+    template<typename ComponentsInfoT = Aws::Vector<ComponentInfo>>
+    RegisterApplicationRequest& WithComponentsInfo(ComponentsInfoT&& value) { SetComponentsInfo(std::forward<ComponentsInfoT>(value)); return *this;}
+    template<typename ComponentsInfoT = ComponentInfo>
+    RegisterApplicationRequest& AddComponentsInfo(ComponentsInfoT&& value) { m_componentsInfoHasBeenSet = true; m_componentsInfo.emplace_back(std::forward<ComponentsInfoT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_applicationId;
     bool m_applicationIdHasBeenSet = false;
 
-    ApplicationType m_applicationType;
+    ApplicationType m_applicationType{ApplicationType::NOT_SET};
     bool m_applicationTypeHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_instances;
@@ -364,6 +176,12 @@ namespace Model
 
     Aws::Vector<ApplicationCredential> m_credentials;
     bool m_credentialsHasBeenSet = false;
+
+    Aws::String m_databaseArn;
+    bool m_databaseArnHasBeenSet = false;
+
+    Aws::Vector<ComponentInfo> m_componentsInfo;
+    bool m_componentsInfoHasBeenSet = false;
   };
 
 } // namespace Model

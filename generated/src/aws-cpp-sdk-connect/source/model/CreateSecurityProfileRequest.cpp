@@ -12,17 +12,6 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateSecurityProfileRequest::CreateSecurityProfileRequest() : 
-    m_securityProfileNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_permissionsHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_allowedAccessControlTagsHasBeenSet(false),
-    m_tagRestrictedResourcesHasBeenSet(false)
-{
-}
-
 Aws::String CreateSecurityProfileRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -80,6 +69,34 @@ Aws::String CreateSecurityProfileRequest::SerializePayload() const
      tagRestrictedResourcesJsonList[tagRestrictedResourcesIndex].AsString(m_tagRestrictedResources[tagRestrictedResourcesIndex]);
    }
    payload.WithArray("TagRestrictedResources", std::move(tagRestrictedResourcesJsonList));
+
+  }
+
+  if(m_applicationsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> applicationsJsonList(m_applications.size());
+   for(unsigned applicationsIndex = 0; applicationsIndex < applicationsJsonList.GetLength(); ++applicationsIndex)
+   {
+     applicationsJsonList[applicationsIndex].AsObject(m_applications[applicationsIndex].Jsonize());
+   }
+   payload.WithArray("Applications", std::move(applicationsJsonList));
+
+  }
+
+  if(m_hierarchyRestrictedResourcesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> hierarchyRestrictedResourcesJsonList(m_hierarchyRestrictedResources.size());
+   for(unsigned hierarchyRestrictedResourcesIndex = 0; hierarchyRestrictedResourcesIndex < hierarchyRestrictedResourcesJsonList.GetLength(); ++hierarchyRestrictedResourcesIndex)
+   {
+     hierarchyRestrictedResourcesJsonList[hierarchyRestrictedResourcesIndex].AsString(m_hierarchyRestrictedResources[hierarchyRestrictedResourcesIndex]);
+   }
+   payload.WithArray("HierarchyRestrictedResources", std::move(hierarchyRestrictedResourcesJsonList));
+
+  }
+
+  if(m_allowedAccessControlHierarchyGroupIdHasBeenSet)
+  {
+   payload.WithString("AllowedAccessControlHierarchyGroupId", m_allowedAccessControlHierarchyGroupId);
 
   }
 

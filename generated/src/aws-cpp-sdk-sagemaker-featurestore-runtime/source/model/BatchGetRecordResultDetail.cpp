@@ -18,17 +18,7 @@ namespace SageMakerFeatureStoreRuntime
 namespace Model
 {
 
-BatchGetRecordResultDetail::BatchGetRecordResultDetail() : 
-    m_featureGroupNameHasBeenSet(false),
-    m_recordIdentifierValueAsStringHasBeenSet(false),
-    m_recordHasBeenSet(false)
-{
-}
-
-BatchGetRecordResultDetail::BatchGetRecordResultDetail(JsonView jsonValue) : 
-    m_featureGroupNameHasBeenSet(false),
-    m_recordIdentifierValueAsStringHasBeenSet(false),
-    m_recordHasBeenSet(false)
+BatchGetRecordResultDetail::BatchGetRecordResultDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ BatchGetRecordResultDetail& BatchGetRecordResultDetail::operator =(JsonView json
   if(jsonValue.ValueExists("FeatureGroupName"))
   {
     m_featureGroupName = jsonValue.GetString("FeatureGroupName");
-
     m_featureGroupNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RecordIdentifierValueAsString"))
   {
     m_recordIdentifierValueAsString = jsonValue.GetString("RecordIdentifierValueAsString");
-
     m_recordIdentifierValueAsStringHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Record"))
   {
     Aws::Utils::Array<JsonView> recordJsonList = jsonValue.GetArray("Record");
@@ -58,7 +44,11 @@ BatchGetRecordResultDetail& BatchGetRecordResultDetail::operator =(JsonView json
     }
     m_recordHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ExpiresAt"))
+  {
+    m_expiresAt = jsonValue.GetString("ExpiresAt");
+    m_expiresAtHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -86,6 +76,12 @@ JsonValue BatchGetRecordResultDetail::Jsonize() const
      recordJsonList[recordIndex].AsObject(m_record[recordIndex].Jsonize());
    }
    payload.WithArray("Record", std::move(recordJsonList));
+
+  }
+
+  if(m_expiresAtHasBeenSet)
+  {
+   payload.WithString("ExpiresAt", m_expiresAt);
 
   }
 

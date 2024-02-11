@@ -33,122 +33,48 @@ namespace Model
   class Difference
   {
   public:
-    AWS_CODECOMMIT_API Difference();
+    AWS_CODECOMMIT_API Difference() = default;
     AWS_CODECOMMIT_API Difference(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API Difference& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Information about a <code>beforeBlob</code> data type object, including the
      * ID, the file mode permission code, and the path.</p>
      */
-    inline const BlobMetadata& GetBeforeBlob() const{ return m_beforeBlob; }
-
-    /**
-     * <p>Information about a <code>beforeBlob</code> data type object, including the
-     * ID, the file mode permission code, and the path.</p>
-     */
+    inline const BlobMetadata& GetBeforeBlob() const { return m_beforeBlob; }
     inline bool BeforeBlobHasBeenSet() const { return m_beforeBlobHasBeenSet; }
+    template<typename BeforeBlobT = BlobMetadata>
+    void SetBeforeBlob(BeforeBlobT&& value) { m_beforeBlobHasBeenSet = true; m_beforeBlob = std::forward<BeforeBlobT>(value); }
+    template<typename BeforeBlobT = BlobMetadata>
+    Difference& WithBeforeBlob(BeforeBlobT&& value) { SetBeforeBlob(std::forward<BeforeBlobT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about a <code>beforeBlob</code> data type object, including the
-     * ID, the file mode permission code, and the path.</p>
-     */
-    inline void SetBeforeBlob(const BlobMetadata& value) { m_beforeBlobHasBeenSet = true; m_beforeBlob = value; }
-
-    /**
-     * <p>Information about a <code>beforeBlob</code> data type object, including the
-     * ID, the file mode permission code, and the path.</p>
-     */
-    inline void SetBeforeBlob(BlobMetadata&& value) { m_beforeBlobHasBeenSet = true; m_beforeBlob = std::move(value); }
-
-    /**
-     * <p>Information about a <code>beforeBlob</code> data type object, including the
-     * ID, the file mode permission code, and the path.</p>
-     */
-    inline Difference& WithBeforeBlob(const BlobMetadata& value) { SetBeforeBlob(value); return *this;}
-
-    /**
-     * <p>Information about a <code>beforeBlob</code> data type object, including the
-     * ID, the file mode permission code, and the path.</p>
-     */
-    inline Difference& WithBeforeBlob(BlobMetadata&& value) { SetBeforeBlob(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about an <code>afterBlob</code> data type object, including the
      * ID, the file mode permission code, and the path.</p>
      */
-    inline const BlobMetadata& GetAfterBlob() const{ return m_afterBlob; }
-
-    /**
-     * <p>Information about an <code>afterBlob</code> data type object, including the
-     * ID, the file mode permission code, and the path.</p>
-     */
+    inline const BlobMetadata& GetAfterBlob() const { return m_afterBlob; }
     inline bool AfterBlobHasBeenSet() const { return m_afterBlobHasBeenSet; }
+    template<typename AfterBlobT = BlobMetadata>
+    void SetAfterBlob(AfterBlobT&& value) { m_afterBlobHasBeenSet = true; m_afterBlob = std::forward<AfterBlobT>(value); }
+    template<typename AfterBlobT = BlobMetadata>
+    Difference& WithAfterBlob(AfterBlobT&& value) { SetAfterBlob(std::forward<AfterBlobT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about an <code>afterBlob</code> data type object, including the
-     * ID, the file mode permission code, and the path.</p>
-     */
-    inline void SetAfterBlob(const BlobMetadata& value) { m_afterBlobHasBeenSet = true; m_afterBlob = value; }
-
-    /**
-     * <p>Information about an <code>afterBlob</code> data type object, including the
-     * ID, the file mode permission code, and the path.</p>
-     */
-    inline void SetAfterBlob(BlobMetadata&& value) { m_afterBlobHasBeenSet = true; m_afterBlob = std::move(value); }
-
-    /**
-     * <p>Information about an <code>afterBlob</code> data type object, including the
-     * ID, the file mode permission code, and the path.</p>
-     */
-    inline Difference& WithAfterBlob(const BlobMetadata& value) { SetAfterBlob(value); return *this;}
-
-    /**
-     * <p>Information about an <code>afterBlob</code> data type object, including the
-     * ID, the file mode permission code, and the path.</p>
-     */
-    inline Difference& WithAfterBlob(BlobMetadata&& value) { SetAfterBlob(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Whether the change type of the difference is an addition (A), deletion (D),
      * or modification (M).</p>
      */
-    inline const ChangeTypeEnum& GetChangeType() const{ return m_changeType; }
-
-    /**
-     * <p>Whether the change type of the difference is an addition (A), deletion (D),
-     * or modification (M).</p>
-     */
+    inline ChangeTypeEnum GetChangeType() const { return m_changeType; }
     inline bool ChangeTypeHasBeenSet() const { return m_changeTypeHasBeenSet; }
-
-    /**
-     * <p>Whether the change type of the difference is an addition (A), deletion (D),
-     * or modification (M).</p>
-     */
-    inline void SetChangeType(const ChangeTypeEnum& value) { m_changeTypeHasBeenSet = true; m_changeType = value; }
-
-    /**
-     * <p>Whether the change type of the difference is an addition (A), deletion (D),
-     * or modification (M).</p>
-     */
-    inline void SetChangeType(ChangeTypeEnum&& value) { m_changeTypeHasBeenSet = true; m_changeType = std::move(value); }
-
-    /**
-     * <p>Whether the change type of the difference is an addition (A), deletion (D),
-     * or modification (M).</p>
-     */
-    inline Difference& WithChangeType(const ChangeTypeEnum& value) { SetChangeType(value); return *this;}
-
-    /**
-     * <p>Whether the change type of the difference is an addition (A), deletion (D),
-     * or modification (M).</p>
-     */
-    inline Difference& WithChangeType(ChangeTypeEnum&& value) { SetChangeType(std::move(value)); return *this;}
-
+    inline void SetChangeType(ChangeTypeEnum value) { m_changeTypeHasBeenSet = true; m_changeType = value; }
+    inline Difference& WithChangeType(ChangeTypeEnum value) { SetChangeType(value); return *this;}
+    ///@}
   private:
 
     BlobMetadata m_beforeBlob;
@@ -157,7 +83,7 @@ namespace Model
     BlobMetadata m_afterBlob;
     bool m_afterBlobHasBeenSet = false;
 
-    ChangeTypeEnum m_changeType;
+    ChangeTypeEnum m_changeType{ChangeTypeEnum::NOT_SET};
     bool m_changeTypeHasBeenSet = false;
   };
 

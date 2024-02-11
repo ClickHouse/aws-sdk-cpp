@@ -24,7 +24,7 @@ namespace Model
   class DescribeTaskExecutionRequest : public DataSyncRequest
   {
   public:
-    AWS_DATASYNC_API DescribeTaskExecutionRequest();
+    AWS_DATASYNC_API DescribeTaskExecutionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,46 +37,18 @@ namespace Model
     AWS_DATASYNC_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the task that is being executed.</p>
+     * <p>Specifies the Amazon Resource Name (ARN) of the task execution that you want
+     * information about.</p>
      */
-    inline const Aws::String& GetTaskExecutionArn() const{ return m_taskExecutionArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the task that is being executed.</p>
-     */
+    inline const Aws::String& GetTaskExecutionArn() const { return m_taskExecutionArn; }
     inline bool TaskExecutionArnHasBeenSet() const { return m_taskExecutionArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the task that is being executed.</p>
-     */
-    inline void SetTaskExecutionArn(const Aws::String& value) { m_taskExecutionArnHasBeenSet = true; m_taskExecutionArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the task that is being executed.</p>
-     */
-    inline void SetTaskExecutionArn(Aws::String&& value) { m_taskExecutionArnHasBeenSet = true; m_taskExecutionArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the task that is being executed.</p>
-     */
-    inline void SetTaskExecutionArn(const char* value) { m_taskExecutionArnHasBeenSet = true; m_taskExecutionArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the task that is being executed.</p>
-     */
-    inline DescribeTaskExecutionRequest& WithTaskExecutionArn(const Aws::String& value) { SetTaskExecutionArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the task that is being executed.</p>
-     */
-    inline DescribeTaskExecutionRequest& WithTaskExecutionArn(Aws::String&& value) { SetTaskExecutionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the task that is being executed.</p>
-     */
-    inline DescribeTaskExecutionRequest& WithTaskExecutionArn(const char* value) { SetTaskExecutionArn(value); return *this;}
-
+    template<typename TaskExecutionArnT = Aws::String>
+    void SetTaskExecutionArn(TaskExecutionArnT&& value) { m_taskExecutionArnHasBeenSet = true; m_taskExecutionArn = std::forward<TaskExecutionArnT>(value); }
+    template<typename TaskExecutionArnT = Aws::String>
+    DescribeTaskExecutionRequest& WithTaskExecutionArn(TaskExecutionArnT&& value) { SetTaskExecutionArn(std::forward<TaskExecutionArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_taskExecutionArn;

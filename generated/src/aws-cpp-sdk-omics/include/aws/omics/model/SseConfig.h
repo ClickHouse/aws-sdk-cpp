@@ -5,8 +5,8 @@
 
 #pragma once
 #include <aws/omics/Omics_EXPORTS.h>
-#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/omics/model/EncryptionType.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
 #include <utility>
 
 namespace Aws
@@ -32,90 +32,40 @@ namespace Model
   class SseConfig
   {
   public:
-    AWS_OMICS_API SseConfig();
+    AWS_OMICS_API SseConfig() = default;
     AWS_OMICS_API SseConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API SseConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>An encryption key ARN.</p>
-     */
-    inline const Aws::String& GetKeyArn() const{ return m_keyArn; }
-
-    /**
-     * <p>An encryption key ARN.</p>
-     */
-    inline bool KeyArnHasBeenSet() const { return m_keyArnHasBeenSet; }
-
-    /**
-     * <p>An encryption key ARN.</p>
-     */
-    inline void SetKeyArn(const Aws::String& value) { m_keyArnHasBeenSet = true; m_keyArn = value; }
-
-    /**
-     * <p>An encryption key ARN.</p>
-     */
-    inline void SetKeyArn(Aws::String&& value) { m_keyArnHasBeenSet = true; m_keyArn = std::move(value); }
-
-    /**
-     * <p>An encryption key ARN.</p>
-     */
-    inline void SetKeyArn(const char* value) { m_keyArnHasBeenSet = true; m_keyArn.assign(value); }
-
-    /**
-     * <p>An encryption key ARN.</p>
-     */
-    inline SseConfig& WithKeyArn(const Aws::String& value) { SetKeyArn(value); return *this;}
-
-    /**
-     * <p>An encryption key ARN.</p>
-     */
-    inline SseConfig& WithKeyArn(Aws::String&& value) { SetKeyArn(std::move(value)); return *this;}
-
-    /**
-     * <p>An encryption key ARN.</p>
-     */
-    inline SseConfig& WithKeyArn(const char* value) { SetKeyArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The encryption type.</p>
      */
-    inline const EncryptionType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The encryption type.</p>
-     */
+    inline EncryptionType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(EncryptionType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline SseConfig& WithType(EncryptionType value) { SetType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The encryption type.</p>
+     * <p>An encryption key ARN.</p>
      */
-    inline void SetType(const EncryptionType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The encryption type.</p>
-     */
-    inline void SetType(EncryptionType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The encryption type.</p>
-     */
-    inline SseConfig& WithType(const EncryptionType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The encryption type.</p>
-     */
-    inline SseConfig& WithType(EncryptionType&& value) { SetType(std::move(value)); return *this;}
-
+    inline const Aws::String& GetKeyArn() const { return m_keyArn; }
+    inline bool KeyArnHasBeenSet() const { return m_keyArnHasBeenSet; }
+    template<typename KeyArnT = Aws::String>
+    void SetKeyArn(KeyArnT&& value) { m_keyArnHasBeenSet = true; m_keyArn = std::forward<KeyArnT>(value); }
+    template<typename KeyArnT = Aws::String>
+    SseConfig& WithKeyArn(KeyArnT&& value) { SetKeyArn(std::forward<KeyArnT>(value)); return *this;}
+    ///@}
   private:
+
+    EncryptionType m_type{EncryptionType::NOT_SET};
+    bool m_typeHasBeenSet = false;
 
     Aws::String m_keyArn;
     bool m_keyArnHasBeenSet = false;
-
-    EncryptionType m_type;
-    bool m_typeHasBeenSet = false;
   };
 
 } // namespace Model

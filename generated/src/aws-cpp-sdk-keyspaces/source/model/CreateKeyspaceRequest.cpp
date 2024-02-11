@@ -12,12 +12,6 @@ using namespace Aws::Keyspaces::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateKeyspaceRequest::CreateKeyspaceRequest() : 
-    m_keyspaceNameHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateKeyspaceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -36,6 +30,12 @@ Aws::String CreateKeyspaceRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_replicationSpecificationHasBeenSet)
+  {
+   payload.WithObject("replicationSpecification", m_replicationSpecification.Jsonize());
 
   }
 

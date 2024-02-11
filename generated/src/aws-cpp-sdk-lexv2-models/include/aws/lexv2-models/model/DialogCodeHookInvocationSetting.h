@@ -25,7 +25,7 @@ namespace Model
 {
 
   /**
-   * <p> Settings that specify the dialog code hook that is called by Amazon Lex at a
+   * <p>Settings that specify the dialog code hook that is called by Amazon Lex at a
    * step of the conversation. </p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/models.lex.v2-2020-08-07/DialogCodeHookInvocationSetting">AWS
    * API Reference</a></p>
@@ -33,149 +33,64 @@ namespace Model
   class DialogCodeHookInvocationSetting
   {
   public:
-    AWS_LEXMODELSV2_API DialogCodeHookInvocationSetting();
+    AWS_LEXMODELSV2_API DialogCodeHookInvocationSetting() = default;
     AWS_LEXMODELSV2_API DialogCodeHookInvocationSetting(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API DialogCodeHookInvocationSetting& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Indicates whether a Lambda function should be invoked for the dialog.</p>
      */
-    inline bool GetEnableCodeHookInvocation() const{ return m_enableCodeHookInvocation; }
-
-    /**
-     * <p>Indicates whether a Lambda function should be invoked for the dialog.</p>
-     */
+    inline bool GetEnableCodeHookInvocation() const { return m_enableCodeHookInvocation; }
     inline bool EnableCodeHookInvocationHasBeenSet() const { return m_enableCodeHookInvocationHasBeenSet; }
-
-    /**
-     * <p>Indicates whether a Lambda function should be invoked for the dialog.</p>
-     */
     inline void SetEnableCodeHookInvocation(bool value) { m_enableCodeHookInvocationHasBeenSet = true; m_enableCodeHookInvocation = value; }
-
-    /**
-     * <p>Indicates whether a Lambda function should be invoked for the dialog.</p>
-     */
     inline DialogCodeHookInvocationSetting& WithEnableCodeHookInvocation(bool value) { SetEnableCodeHookInvocation(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Determines whether a dialog code hook is used when the intent is
      * activated.</p>
      */
-    inline bool GetActive() const{ return m_active; }
-
-    /**
-     * <p>Determines whether a dialog code hook is used when the intent is
-     * activated.</p>
-     */
+    inline bool GetActive() const { return m_active; }
     inline bool ActiveHasBeenSet() const { return m_activeHasBeenSet; }
-
-    /**
-     * <p>Determines whether a dialog code hook is used when the intent is
-     * activated.</p>
-     */
     inline void SetActive(bool value) { m_activeHasBeenSet = true; m_active = value; }
-
-    /**
-     * <p>Determines whether a dialog code hook is used when the intent is
-     * activated.</p>
-     */
     inline DialogCodeHookInvocationSetting& WithActive(bool value) { SetActive(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A label that indicates the dialog step from which the dialog code hook is
      * happening.</p>
      */
-    inline const Aws::String& GetInvocationLabel() const{ return m_invocationLabel; }
-
-    /**
-     * <p>A label that indicates the dialog step from which the dialog code hook is
-     * happening.</p>
-     */
+    inline const Aws::String& GetInvocationLabel() const { return m_invocationLabel; }
     inline bool InvocationLabelHasBeenSet() const { return m_invocationLabelHasBeenSet; }
+    template<typename InvocationLabelT = Aws::String>
+    void SetInvocationLabel(InvocationLabelT&& value) { m_invocationLabelHasBeenSet = true; m_invocationLabel = std::forward<InvocationLabelT>(value); }
+    template<typename InvocationLabelT = Aws::String>
+    DialogCodeHookInvocationSetting& WithInvocationLabel(InvocationLabelT&& value) { SetInvocationLabel(std::forward<InvocationLabelT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A label that indicates the dialog step from which the dialog code hook is
-     * happening.</p>
-     */
-    inline void SetInvocationLabel(const Aws::String& value) { m_invocationLabelHasBeenSet = true; m_invocationLabel = value; }
-
-    /**
-     * <p>A label that indicates the dialog step from which the dialog code hook is
-     * happening.</p>
-     */
-    inline void SetInvocationLabel(Aws::String&& value) { m_invocationLabelHasBeenSet = true; m_invocationLabel = std::move(value); }
-
-    /**
-     * <p>A label that indicates the dialog step from which the dialog code hook is
-     * happening.</p>
-     */
-    inline void SetInvocationLabel(const char* value) { m_invocationLabelHasBeenSet = true; m_invocationLabel.assign(value); }
-
-    /**
-     * <p>A label that indicates the dialog step from which the dialog code hook is
-     * happening.</p>
-     */
-    inline DialogCodeHookInvocationSetting& WithInvocationLabel(const Aws::String& value) { SetInvocationLabel(value); return *this;}
-
-    /**
-     * <p>A label that indicates the dialog step from which the dialog code hook is
-     * happening.</p>
-     */
-    inline DialogCodeHookInvocationSetting& WithInvocationLabel(Aws::String&& value) { SetInvocationLabel(std::move(value)); return *this;}
-
-    /**
-     * <p>A label that indicates the dialog step from which the dialog code hook is
-     * happening.</p>
-     */
-    inline DialogCodeHookInvocationSetting& WithInvocationLabel(const char* value) { SetInvocationLabel(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains the responses and actions that Amazon Lex takes after the Lambda
      * function is complete.</p>
      */
-    inline const PostDialogCodeHookInvocationSpecification& GetPostCodeHookSpecification() const{ return m_postCodeHookSpecification; }
-
-    /**
-     * <p>Contains the responses and actions that Amazon Lex takes after the Lambda
-     * function is complete.</p>
-     */
+    inline const PostDialogCodeHookInvocationSpecification& GetPostCodeHookSpecification() const { return m_postCodeHookSpecification; }
     inline bool PostCodeHookSpecificationHasBeenSet() const { return m_postCodeHookSpecificationHasBeenSet; }
-
-    /**
-     * <p>Contains the responses and actions that Amazon Lex takes after the Lambda
-     * function is complete.</p>
-     */
-    inline void SetPostCodeHookSpecification(const PostDialogCodeHookInvocationSpecification& value) { m_postCodeHookSpecificationHasBeenSet = true; m_postCodeHookSpecification = value; }
-
-    /**
-     * <p>Contains the responses and actions that Amazon Lex takes after the Lambda
-     * function is complete.</p>
-     */
-    inline void SetPostCodeHookSpecification(PostDialogCodeHookInvocationSpecification&& value) { m_postCodeHookSpecificationHasBeenSet = true; m_postCodeHookSpecification = std::move(value); }
-
-    /**
-     * <p>Contains the responses and actions that Amazon Lex takes after the Lambda
-     * function is complete.</p>
-     */
-    inline DialogCodeHookInvocationSetting& WithPostCodeHookSpecification(const PostDialogCodeHookInvocationSpecification& value) { SetPostCodeHookSpecification(value); return *this;}
-
-    /**
-     * <p>Contains the responses and actions that Amazon Lex takes after the Lambda
-     * function is complete.</p>
-     */
-    inline DialogCodeHookInvocationSetting& WithPostCodeHookSpecification(PostDialogCodeHookInvocationSpecification&& value) { SetPostCodeHookSpecification(std::move(value)); return *this;}
-
+    template<typename PostCodeHookSpecificationT = PostDialogCodeHookInvocationSpecification>
+    void SetPostCodeHookSpecification(PostCodeHookSpecificationT&& value) { m_postCodeHookSpecificationHasBeenSet = true; m_postCodeHookSpecification = std::forward<PostCodeHookSpecificationT>(value); }
+    template<typename PostCodeHookSpecificationT = PostDialogCodeHookInvocationSpecification>
+    DialogCodeHookInvocationSetting& WithPostCodeHookSpecification(PostCodeHookSpecificationT&& value) { SetPostCodeHookSpecification(std::forward<PostCodeHookSpecificationT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_enableCodeHookInvocation;
+    bool m_enableCodeHookInvocation{false};
     bool m_enableCodeHookInvocationHasBeenSet = false;
 
-    bool m_active;
+    bool m_active{false};
     bool m_activeHasBeenSet = false;
 
     Aws::String m_invocationLabel;

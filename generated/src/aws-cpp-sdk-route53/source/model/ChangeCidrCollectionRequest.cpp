@@ -6,6 +6,7 @@
 #include <aws/route53/model/ChangeCidrCollectionRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 
 #include <utility>
 
@@ -13,13 +14,6 @@ using namespace Aws::Route53::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-ChangeCidrCollectionRequest::ChangeCidrCollectionRequest() : 
-    m_idHasBeenSet(false),
-    m_collectionVersion(0),
-    m_collectionVersionHasBeenSet(false),
-    m_changesHasBeenSet(false)
-{
-}
 
 Aws::String ChangeCidrCollectionRequest::SerializePayload() const
 {

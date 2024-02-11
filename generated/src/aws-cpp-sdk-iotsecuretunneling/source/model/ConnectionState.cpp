@@ -18,17 +18,7 @@ namespace IoTSecureTunneling
 namespace Model
 {
 
-ConnectionState::ConnectionState() : 
-    m_status(ConnectionStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_lastUpdatedAtHasBeenSet(false)
-{
-}
-
-ConnectionState::ConnectionState(JsonView jsonValue) : 
-    m_status(ConnectionStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_lastUpdatedAtHasBeenSet(false)
+ConnectionState::ConnectionState(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ConnectionState& ConnectionState::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("status"))
   {
     m_status = ConnectionStatusMapper::GetConnectionStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastUpdatedAt"))
   {
     m_lastUpdatedAt = jsonValue.GetDouble("lastUpdatedAt");
-
     m_lastUpdatedAtHasBeenSet = true;
   }
-
   return *this;
 }
 

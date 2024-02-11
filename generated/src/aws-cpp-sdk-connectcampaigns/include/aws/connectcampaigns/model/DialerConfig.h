@@ -5,8 +5,9 @@
 
 #pragma once
 #include <aws/connectcampaigns/ConnectCampaigns_EXPORTS.h>
-#include <aws/connectcampaigns/model/PredictiveDialerConfig.h>
 #include <aws/connectcampaigns/model/ProgressiveDialerConfig.h>
+#include <aws/connectcampaigns/model/PredictiveDialerConfig.h>
+#include <aws/connectcampaigns/model/AgentlessDialerConfig.h>
 #include <utility>
 
 namespace Aws
@@ -32,56 +33,51 @@ namespace Model
   class DialerConfig
   {
   public:
-    AWS_CONNECTCAMPAIGNS_API DialerConfig();
+    AWS_CONNECTCAMPAIGNS_API DialerConfig() = default;
     AWS_CONNECTCAMPAIGNS_API DialerConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTCAMPAIGNS_API DialerConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTCAMPAIGNS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const PredictiveDialerConfig& GetPredictiveDialerConfig() const{ return m_predictiveDialerConfig; }
-
-    
-    inline bool PredictiveDialerConfigHasBeenSet() const { return m_predictiveDialerConfigHasBeenSet; }
-
-    
-    inline void SetPredictiveDialerConfig(const PredictiveDialerConfig& value) { m_predictiveDialerConfigHasBeenSet = true; m_predictiveDialerConfig = value; }
-
-    
-    inline void SetPredictiveDialerConfig(PredictiveDialerConfig&& value) { m_predictiveDialerConfigHasBeenSet = true; m_predictiveDialerConfig = std::move(value); }
-
-    
-    inline DialerConfig& WithPredictiveDialerConfig(const PredictiveDialerConfig& value) { SetPredictiveDialerConfig(value); return *this;}
-
-    
-    inline DialerConfig& WithPredictiveDialerConfig(PredictiveDialerConfig&& value) { SetPredictiveDialerConfig(std::move(value)); return *this;}
-
-
-    
-    inline const ProgressiveDialerConfig& GetProgressiveDialerConfig() const{ return m_progressiveDialerConfig; }
-
-    
+    inline const ProgressiveDialerConfig& GetProgressiveDialerConfig() const { return m_progressiveDialerConfig; }
     inline bool ProgressiveDialerConfigHasBeenSet() const { return m_progressiveDialerConfigHasBeenSet; }
+    template<typename ProgressiveDialerConfigT = ProgressiveDialerConfig>
+    void SetProgressiveDialerConfig(ProgressiveDialerConfigT&& value) { m_progressiveDialerConfigHasBeenSet = true; m_progressiveDialerConfig = std::forward<ProgressiveDialerConfigT>(value); }
+    template<typename ProgressiveDialerConfigT = ProgressiveDialerConfig>
+    DialerConfig& WithProgressiveDialerConfig(ProgressiveDialerConfigT&& value) { SetProgressiveDialerConfig(std::forward<ProgressiveDialerConfigT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetProgressiveDialerConfig(const ProgressiveDialerConfig& value) { m_progressiveDialerConfigHasBeenSet = true; m_progressiveDialerConfig = value; }
+    inline const PredictiveDialerConfig& GetPredictiveDialerConfig() const { return m_predictiveDialerConfig; }
+    inline bool PredictiveDialerConfigHasBeenSet() const { return m_predictiveDialerConfigHasBeenSet; }
+    template<typename PredictiveDialerConfigT = PredictiveDialerConfig>
+    void SetPredictiveDialerConfig(PredictiveDialerConfigT&& value) { m_predictiveDialerConfigHasBeenSet = true; m_predictiveDialerConfig = std::forward<PredictiveDialerConfigT>(value); }
+    template<typename PredictiveDialerConfigT = PredictiveDialerConfig>
+    DialerConfig& WithPredictiveDialerConfig(PredictiveDialerConfigT&& value) { SetPredictiveDialerConfig(std::forward<PredictiveDialerConfigT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetProgressiveDialerConfig(ProgressiveDialerConfig&& value) { m_progressiveDialerConfigHasBeenSet = true; m_progressiveDialerConfig = std::move(value); }
-
-    
-    inline DialerConfig& WithProgressiveDialerConfig(const ProgressiveDialerConfig& value) { SetProgressiveDialerConfig(value); return *this;}
-
-    
-    inline DialerConfig& WithProgressiveDialerConfig(ProgressiveDialerConfig&& value) { SetProgressiveDialerConfig(std::move(value)); return *this;}
-
+    inline const AgentlessDialerConfig& GetAgentlessDialerConfig() const { return m_agentlessDialerConfig; }
+    inline bool AgentlessDialerConfigHasBeenSet() const { return m_agentlessDialerConfigHasBeenSet; }
+    template<typename AgentlessDialerConfigT = AgentlessDialerConfig>
+    void SetAgentlessDialerConfig(AgentlessDialerConfigT&& value) { m_agentlessDialerConfigHasBeenSet = true; m_agentlessDialerConfig = std::forward<AgentlessDialerConfigT>(value); }
+    template<typename AgentlessDialerConfigT = AgentlessDialerConfig>
+    DialerConfig& WithAgentlessDialerConfig(AgentlessDialerConfigT&& value) { SetAgentlessDialerConfig(std::forward<AgentlessDialerConfigT>(value)); return *this;}
+    ///@}
   private:
+
+    ProgressiveDialerConfig m_progressiveDialerConfig;
+    bool m_progressiveDialerConfigHasBeenSet = false;
 
     PredictiveDialerConfig m_predictiveDialerConfig;
     bool m_predictiveDialerConfigHasBeenSet = false;
 
-    ProgressiveDialerConfig m_progressiveDialerConfig;
-    bool m_progressiveDialerConfigHasBeenSet = false;
+    AgentlessDialerConfig m_agentlessDialerConfig;
+    bool m_agentlessDialerConfigHasBeenSet = false;
   };
 
 } // namespace Model

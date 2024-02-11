@@ -37,88 +37,38 @@ namespace Model
   class KinesisVideoStreamStartSelector
   {
   public:
-    AWS_REKOGNITION_API KinesisVideoStreamStartSelector();
+    AWS_REKOGNITION_API KinesisVideoStreamStartSelector() = default;
     AWS_REKOGNITION_API KinesisVideoStreamStartSelector(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API KinesisVideoStreamStartSelector& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The timestamp from the producer corresponding to the fragment, in
      * milliseconds, expressed in unix time format. </p>
      */
-    inline long long GetProducerTimestamp() const{ return m_producerTimestamp; }
-
-    /**
-     * <p> The timestamp from the producer corresponding to the fragment, in
-     * milliseconds, expressed in unix time format. </p>
-     */
+    inline long long GetProducerTimestamp() const { return m_producerTimestamp; }
     inline bool ProducerTimestampHasBeenSet() const { return m_producerTimestampHasBeenSet; }
-
-    /**
-     * <p> The timestamp from the producer corresponding to the fragment, in
-     * milliseconds, expressed in unix time format. </p>
-     */
     inline void SetProducerTimestamp(long long value) { m_producerTimestampHasBeenSet = true; m_producerTimestamp = value; }
-
-    /**
-     * <p> The timestamp from the producer corresponding to the fragment, in
-     * milliseconds, expressed in unix time format. </p>
-     */
     inline KinesisVideoStreamStartSelector& WithProducerTimestamp(long long value) { SetProducerTimestamp(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> The unique identifier of the fragment. This value monotonically increases
      * based on the ingestion order. </p>
      */
-    inline const Aws::String& GetFragmentNumber() const{ return m_fragmentNumber; }
-
-    /**
-     * <p> The unique identifier of the fragment. This value monotonically increases
-     * based on the ingestion order. </p>
-     */
+    inline const Aws::String& GetFragmentNumber() const { return m_fragmentNumber; }
     inline bool FragmentNumberHasBeenSet() const { return m_fragmentNumberHasBeenSet; }
-
-    /**
-     * <p> The unique identifier of the fragment. This value monotonically increases
-     * based on the ingestion order. </p>
-     */
-    inline void SetFragmentNumber(const Aws::String& value) { m_fragmentNumberHasBeenSet = true; m_fragmentNumber = value; }
-
-    /**
-     * <p> The unique identifier of the fragment. This value monotonically increases
-     * based on the ingestion order. </p>
-     */
-    inline void SetFragmentNumber(Aws::String&& value) { m_fragmentNumberHasBeenSet = true; m_fragmentNumber = std::move(value); }
-
-    /**
-     * <p> The unique identifier of the fragment. This value monotonically increases
-     * based on the ingestion order. </p>
-     */
-    inline void SetFragmentNumber(const char* value) { m_fragmentNumberHasBeenSet = true; m_fragmentNumber.assign(value); }
-
-    /**
-     * <p> The unique identifier of the fragment. This value monotonically increases
-     * based on the ingestion order. </p>
-     */
-    inline KinesisVideoStreamStartSelector& WithFragmentNumber(const Aws::String& value) { SetFragmentNumber(value); return *this;}
-
-    /**
-     * <p> The unique identifier of the fragment. This value monotonically increases
-     * based on the ingestion order. </p>
-     */
-    inline KinesisVideoStreamStartSelector& WithFragmentNumber(Aws::String&& value) { SetFragmentNumber(std::move(value)); return *this;}
-
-    /**
-     * <p> The unique identifier of the fragment. This value monotonically increases
-     * based on the ingestion order. </p>
-     */
-    inline KinesisVideoStreamStartSelector& WithFragmentNumber(const char* value) { SetFragmentNumber(value); return *this;}
-
+    template<typename FragmentNumberT = Aws::String>
+    void SetFragmentNumber(FragmentNumberT&& value) { m_fragmentNumberHasBeenSet = true; m_fragmentNumber = std::forward<FragmentNumberT>(value); }
+    template<typename FragmentNumberT = Aws::String>
+    KinesisVideoStreamStartSelector& WithFragmentNumber(FragmentNumberT&& value) { SetFragmentNumber(std::forward<FragmentNumberT>(value)); return *this;}
+    ///@}
   private:
 
-    long long m_producerTimestamp;
+    long long m_producerTimestamp{0};
     bool m_producerTimestampHasBeenSet = false;
 
     Aws::String m_fragmentNumber;

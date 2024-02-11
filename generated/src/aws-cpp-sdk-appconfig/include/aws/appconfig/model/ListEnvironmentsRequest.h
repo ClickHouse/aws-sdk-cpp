@@ -25,7 +25,7 @@ namespace Model
   class ListEnvironmentsRequest : public AppConfigRequest
   {
   public:
-    AWS_APPCONFIG_API ListEnvironmentsRequest();
+    AWS_APPCONFIG_API ListEnvironmentsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,122 +38,47 @@ namespace Model
     AWS_APPCONFIG_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The application ID.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The application ID.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    ListEnvironmentsRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The application ID.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline ListEnvironmentsRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline ListEnvironmentsRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline ListEnvironmentsRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of items to return for this call. The call also returns a
      * token that you can specify in a subsequent call to get the next set of
      * results.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of items to return for this call. The call also returns a
-     * token that you can specify in a subsequent call to get the next set of
-     * results.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of items to return for this call. The call also returns a
-     * token that you can specify in a subsequent call to get the next set of
-     * results.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of items to return for this call. The call also returns a
-     * token that you can specify in a subsequent call to get the next set of
-     * results.</p>
-     */
     inline ListEnvironmentsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A token to start the list. Use this token to get the next set of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>A token to start the list. Use this token to get the next set of results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>A token to start the list. Use this token to get the next set of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>A token to start the list. Use this token to get the next set of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>A token to start the list. Use this token to get the next set of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>A token to start the list. Use this token to get the next set of results.</p>
-     */
-    inline ListEnvironmentsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A token to start the list. Use this token to get the next set of results.</p>
-     */
-    inline ListEnvironmentsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token to start the list. Use this token to get the next set of results.</p>
-     */
-    inline ListEnvironmentsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListEnvironmentsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;
     bool m_applicationIdHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

@@ -21,7 +21,7 @@ namespace Model
   class GetRawMessageContentRequest : public WorkMailMessageFlowRequest
   {
   public:
-    AWS_WORKMAILMESSAGEFLOW_API GetRawMessageContentRequest();
+    AWS_WORKMAILMESSAGEFLOW_API GetRawMessageContentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_WORKMAILMESSAGEFLOW_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the email message to retrieve.</p>
      */
-    inline const Aws::String& GetMessageId() const{ return m_messageId; }
-
-    /**
-     * <p>The identifier of the email message to retrieve.</p>
-     */
+    inline const Aws::String& GetMessageId() const { return m_messageId; }
     inline bool MessageIdHasBeenSet() const { return m_messageIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the email message to retrieve.</p>
-     */
-    inline void SetMessageId(const Aws::String& value) { m_messageIdHasBeenSet = true; m_messageId = value; }
-
-    /**
-     * <p>The identifier of the email message to retrieve.</p>
-     */
-    inline void SetMessageId(Aws::String&& value) { m_messageIdHasBeenSet = true; m_messageId = std::move(value); }
-
-    /**
-     * <p>The identifier of the email message to retrieve.</p>
-     */
-    inline void SetMessageId(const char* value) { m_messageIdHasBeenSet = true; m_messageId.assign(value); }
-
-    /**
-     * <p>The identifier of the email message to retrieve.</p>
-     */
-    inline GetRawMessageContentRequest& WithMessageId(const Aws::String& value) { SetMessageId(value); return *this;}
-
-    /**
-     * <p>The identifier of the email message to retrieve.</p>
-     */
-    inline GetRawMessageContentRequest& WithMessageId(Aws::String&& value) { SetMessageId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the email message to retrieve.</p>
-     */
-    inline GetRawMessageContentRequest& WithMessageId(const char* value) { SetMessageId(value); return *this;}
-
+    template<typename MessageIdT = Aws::String>
+    void SetMessageId(MessageIdT&& value) { m_messageIdHasBeenSet = true; m_messageId = std::forward<MessageIdT>(value); }
+    template<typename MessageIdT = Aws::String>
+    GetRawMessageContentRequest& WithMessageId(MessageIdT&& value) { SetMessageId(std::forward<MessageIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_messageId;

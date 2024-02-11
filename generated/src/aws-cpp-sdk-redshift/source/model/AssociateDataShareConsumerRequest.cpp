@@ -10,15 +10,6 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-AssociateDataShareConsumerRequest::AssociateDataShareConsumerRequest() : 
-    m_dataShareArnHasBeenSet(false),
-    m_associateEntireAccount(false),
-    m_associateEntireAccountHasBeenSet(false),
-    m_consumerArnHasBeenSet(false),
-    m_consumerRegionHasBeenSet(false)
-{
-}
-
 Aws::String AssociateDataShareConsumerRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -41,6 +32,11 @@ Aws::String AssociateDataShareConsumerRequest::SerializePayload() const
   if(m_consumerRegionHasBeenSet)
   {
     ss << "ConsumerRegion=" << StringUtils::URLEncode(m_consumerRegion.c_str()) << "&";
+  }
+
+  if(m_allowWritesHasBeenSet)
+  {
+    ss << "AllowWrites=" << std::boolalpha << m_allowWrites << "&";
   }
 
   ss << "Version=2012-12-01";

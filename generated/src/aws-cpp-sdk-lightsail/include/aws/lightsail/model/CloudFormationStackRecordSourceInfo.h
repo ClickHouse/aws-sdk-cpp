@@ -33,127 +33,48 @@ namespace Model
   class CloudFormationStackRecordSourceInfo
   {
   public:
-    AWS_LIGHTSAIL_API CloudFormationStackRecordSourceInfo();
+    AWS_LIGHTSAIL_API CloudFormationStackRecordSourceInfo() = default;
     AWS_LIGHTSAIL_API CloudFormationStackRecordSourceInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API CloudFormationStackRecordSourceInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The Lightsail resource type (e.g., <code>ExportSnapshotRecord</code>).</p>
+     * <p>The Lightsail resource type (<code>ExportSnapshotRecord</code>).</p>
      */
-    inline const CloudFormationStackRecordSourceType& GetResourceType() const{ return m_resourceType; }
-
-    /**
-     * <p>The Lightsail resource type (e.g., <code>ExportSnapshotRecord</code>).</p>
-     */
+    inline CloudFormationStackRecordSourceType GetResourceType() const { return m_resourceType; }
     inline bool ResourceTypeHasBeenSet() const { return m_resourceTypeHasBeenSet; }
+    inline void SetResourceType(CloudFormationStackRecordSourceType value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
+    inline CloudFormationStackRecordSourceInfo& WithResourceType(CloudFormationStackRecordSourceType value) { SetResourceType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The Lightsail resource type (e.g., <code>ExportSnapshotRecord</code>).</p>
-     */
-    inline void SetResourceType(const CloudFormationStackRecordSourceType& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
-
-    /**
-     * <p>The Lightsail resource type (e.g., <code>ExportSnapshotRecord</code>).</p>
-     */
-    inline void SetResourceType(CloudFormationStackRecordSourceType&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
-
-    /**
-     * <p>The Lightsail resource type (e.g., <code>ExportSnapshotRecord</code>).</p>
-     */
-    inline CloudFormationStackRecordSourceInfo& WithResourceType(const CloudFormationStackRecordSourceType& value) { SetResourceType(value); return *this;}
-
-    /**
-     * <p>The Lightsail resource type (e.g., <code>ExportSnapshotRecord</code>).</p>
-     */
-    inline CloudFormationStackRecordSourceInfo& WithResourceType(CloudFormationStackRecordSourceType&& value) { SetResourceType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the record.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the record.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CloudFormationStackRecordSourceInfo& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the record.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the record.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the record.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the record.</p>
-     */
-    inline CloudFormationStackRecordSourceInfo& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the record.</p>
-     */
-    inline CloudFormationStackRecordSourceInfo& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the record.</p>
-     */
-    inline CloudFormationStackRecordSourceInfo& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the export snapshot record.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the export snapshot record.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the export snapshot record.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the export snapshot record.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the export snapshot record.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the export snapshot record.</p>
-     */
-    inline CloudFormationStackRecordSourceInfo& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the export snapshot record.</p>
-     */
-    inline CloudFormationStackRecordSourceInfo& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the export snapshot record.</p>
-     */
-    inline CloudFormationStackRecordSourceInfo& WithArn(const char* value) { SetArn(value); return *this;}
-
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    CloudFormationStackRecordSourceInfo& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
   private:
 
-    CloudFormationStackRecordSourceType m_resourceType;
+    CloudFormationStackRecordSourceType m_resourceType{CloudFormationStackRecordSourceType::NOT_SET};
     bool m_resourceTypeHasBeenSet = false;
 
     Aws::String m_name;

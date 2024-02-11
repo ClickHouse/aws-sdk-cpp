@@ -34,7 +34,7 @@ namespace Model
   class NetworkInsightsAccessScope
   {
   public:
-    AWS_EC2_API NetworkInsightsAccessScope();
+    AWS_EC2_API NetworkInsightsAccessScope() = default;
     AWS_EC2_API NetworkInsightsAccessScope(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API NetworkInsightsAccessScope& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,190 +42,67 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the Network Access Scope.</p>
      */
-    inline const Aws::String& GetNetworkInsightsAccessScopeId() const{ return m_networkInsightsAccessScopeId; }
-
-    /**
-     * <p>The ID of the Network Access Scope.</p>
-     */
+    inline const Aws::String& GetNetworkInsightsAccessScopeId() const { return m_networkInsightsAccessScopeId; }
     inline bool NetworkInsightsAccessScopeIdHasBeenSet() const { return m_networkInsightsAccessScopeIdHasBeenSet; }
+    template<typename NetworkInsightsAccessScopeIdT = Aws::String>
+    void SetNetworkInsightsAccessScopeId(NetworkInsightsAccessScopeIdT&& value) { m_networkInsightsAccessScopeIdHasBeenSet = true; m_networkInsightsAccessScopeId = std::forward<NetworkInsightsAccessScopeIdT>(value); }
+    template<typename NetworkInsightsAccessScopeIdT = Aws::String>
+    NetworkInsightsAccessScope& WithNetworkInsightsAccessScopeId(NetworkInsightsAccessScopeIdT&& value) { SetNetworkInsightsAccessScopeId(std::forward<NetworkInsightsAccessScopeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Network Access Scope.</p>
-     */
-    inline void SetNetworkInsightsAccessScopeId(const Aws::String& value) { m_networkInsightsAccessScopeIdHasBeenSet = true; m_networkInsightsAccessScopeId = value; }
-
-    /**
-     * <p>The ID of the Network Access Scope.</p>
-     */
-    inline void SetNetworkInsightsAccessScopeId(Aws::String&& value) { m_networkInsightsAccessScopeIdHasBeenSet = true; m_networkInsightsAccessScopeId = std::move(value); }
-
-    /**
-     * <p>The ID of the Network Access Scope.</p>
-     */
-    inline void SetNetworkInsightsAccessScopeId(const char* value) { m_networkInsightsAccessScopeIdHasBeenSet = true; m_networkInsightsAccessScopeId.assign(value); }
-
-    /**
-     * <p>The ID of the Network Access Scope.</p>
-     */
-    inline NetworkInsightsAccessScope& WithNetworkInsightsAccessScopeId(const Aws::String& value) { SetNetworkInsightsAccessScopeId(value); return *this;}
-
-    /**
-     * <p>The ID of the Network Access Scope.</p>
-     */
-    inline NetworkInsightsAccessScope& WithNetworkInsightsAccessScopeId(Aws::String&& value) { SetNetworkInsightsAccessScopeId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Network Access Scope.</p>
-     */
-    inline NetworkInsightsAccessScope& WithNetworkInsightsAccessScopeId(const char* value) { SetNetworkInsightsAccessScopeId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Network Access Scope.</p>
      */
-    inline const Aws::String& GetNetworkInsightsAccessScopeArn() const{ return m_networkInsightsAccessScopeArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Network Access Scope.</p>
-     */
+    inline const Aws::String& GetNetworkInsightsAccessScopeArn() const { return m_networkInsightsAccessScopeArn; }
     inline bool NetworkInsightsAccessScopeArnHasBeenSet() const { return m_networkInsightsAccessScopeArnHasBeenSet; }
+    template<typename NetworkInsightsAccessScopeArnT = Aws::String>
+    void SetNetworkInsightsAccessScopeArn(NetworkInsightsAccessScopeArnT&& value) { m_networkInsightsAccessScopeArnHasBeenSet = true; m_networkInsightsAccessScopeArn = std::forward<NetworkInsightsAccessScopeArnT>(value); }
+    template<typename NetworkInsightsAccessScopeArnT = Aws::String>
+    NetworkInsightsAccessScope& WithNetworkInsightsAccessScopeArn(NetworkInsightsAccessScopeArnT&& value) { SetNetworkInsightsAccessScopeArn(std::forward<NetworkInsightsAccessScopeArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Network Access Scope.</p>
-     */
-    inline void SetNetworkInsightsAccessScopeArn(const Aws::String& value) { m_networkInsightsAccessScopeArnHasBeenSet = true; m_networkInsightsAccessScopeArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Network Access Scope.</p>
-     */
-    inline void SetNetworkInsightsAccessScopeArn(Aws::String&& value) { m_networkInsightsAccessScopeArnHasBeenSet = true; m_networkInsightsAccessScopeArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Network Access Scope.</p>
-     */
-    inline void SetNetworkInsightsAccessScopeArn(const char* value) { m_networkInsightsAccessScopeArnHasBeenSet = true; m_networkInsightsAccessScopeArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Network Access Scope.</p>
-     */
-    inline NetworkInsightsAccessScope& WithNetworkInsightsAccessScopeArn(const Aws::String& value) { SetNetworkInsightsAccessScopeArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Network Access Scope.</p>
-     */
-    inline NetworkInsightsAccessScope& WithNetworkInsightsAccessScopeArn(Aws::String&& value) { SetNetworkInsightsAccessScopeArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Network Access Scope.</p>
-     */
-    inline NetworkInsightsAccessScope& WithNetworkInsightsAccessScopeArn(const char* value) { SetNetworkInsightsAccessScopeArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The creation date.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedDate() const{ return m_createdDate; }
-
-    /**
-     * <p>The creation date.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedDate() const { return m_createdDate; }
     inline bool CreatedDateHasBeenSet() const { return m_createdDateHasBeenSet; }
+    template<typename CreatedDateT = Aws::Utils::DateTime>
+    void SetCreatedDate(CreatedDateT&& value) { m_createdDateHasBeenSet = true; m_createdDate = std::forward<CreatedDateT>(value); }
+    template<typename CreatedDateT = Aws::Utils::DateTime>
+    NetworkInsightsAccessScope& WithCreatedDate(CreatedDateT&& value) { SetCreatedDate(std::forward<CreatedDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The creation date.</p>
-     */
-    inline void SetCreatedDate(const Aws::Utils::DateTime& value) { m_createdDateHasBeenSet = true; m_createdDate = value; }
-
-    /**
-     * <p>The creation date.</p>
-     */
-    inline void SetCreatedDate(Aws::Utils::DateTime&& value) { m_createdDateHasBeenSet = true; m_createdDate = std::move(value); }
-
-    /**
-     * <p>The creation date.</p>
-     */
-    inline NetworkInsightsAccessScope& WithCreatedDate(const Aws::Utils::DateTime& value) { SetCreatedDate(value); return *this;}
-
-    /**
-     * <p>The creation date.</p>
-     */
-    inline NetworkInsightsAccessScope& WithCreatedDate(Aws::Utils::DateTime&& value) { SetCreatedDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The last updated date.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdatedDate() const{ return m_updatedDate; }
-
-    /**
-     * <p>The last updated date.</p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdatedDate() const { return m_updatedDate; }
     inline bool UpdatedDateHasBeenSet() const { return m_updatedDateHasBeenSet; }
+    template<typename UpdatedDateT = Aws::Utils::DateTime>
+    void SetUpdatedDate(UpdatedDateT&& value) { m_updatedDateHasBeenSet = true; m_updatedDate = std::forward<UpdatedDateT>(value); }
+    template<typename UpdatedDateT = Aws::Utils::DateTime>
+    NetworkInsightsAccessScope& WithUpdatedDate(UpdatedDateT&& value) { SetUpdatedDate(std::forward<UpdatedDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The last updated date.</p>
-     */
-    inline void SetUpdatedDate(const Aws::Utils::DateTime& value) { m_updatedDateHasBeenSet = true; m_updatedDate = value; }
-
-    /**
-     * <p>The last updated date.</p>
-     */
-    inline void SetUpdatedDate(Aws::Utils::DateTime&& value) { m_updatedDateHasBeenSet = true; m_updatedDate = std::move(value); }
-
-    /**
-     * <p>The last updated date.</p>
-     */
-    inline NetworkInsightsAccessScope& WithUpdatedDate(const Aws::Utils::DateTime& value) { SetUpdatedDate(value); return *this;}
-
-    /**
-     * <p>The last updated date.</p>
-     */
-    inline NetworkInsightsAccessScope& WithUpdatedDate(Aws::Utils::DateTime&& value) { SetUpdatedDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags.</p>
-     */
-    inline NetworkInsightsAccessScope& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags.</p>
-     */
-    inline NetworkInsightsAccessScope& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags.</p>
-     */
-    inline NetworkInsightsAccessScope& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The tags.</p>
-     */
-    inline NetworkInsightsAccessScope& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    NetworkInsightsAccessScope& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    NetworkInsightsAccessScope& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_networkInsightsAccessScopeId;
@@ -234,10 +111,10 @@ namespace Model
     Aws::String m_networkInsightsAccessScopeArn;
     bool m_networkInsightsAccessScopeArnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdDate;
+    Aws::Utils::DateTime m_createdDate{};
     bool m_createdDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updatedDate;
+    Aws::Utils::DateTime m_updatedDate{};
     bool m_updatedDateHasBeenSet = false;
 
     Aws::Vector<Tag> m_tags;

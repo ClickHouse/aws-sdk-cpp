@@ -10,15 +10,6 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-DescribeInstanceRefreshesRequest::DescribeInstanceRefreshesRequest() : 
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_instanceRefreshIdsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false)
-{
-}
-
 Aws::String DescribeInstanceRefreshesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -30,12 +21,19 @@ Aws::String DescribeInstanceRefreshesRequest::SerializePayload() const
 
   if(m_instanceRefreshIdsHasBeenSet)
   {
-    unsigned instanceRefreshIdsCount = 1;
-    for(auto& item : m_instanceRefreshIds)
+    if (m_instanceRefreshIds.empty())
     {
-      ss << "InstanceRefreshIds.member." << instanceRefreshIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      instanceRefreshIdsCount++;
+      ss << "InstanceRefreshIds=&";
+    }
+    else
+    {
+      unsigned instanceRefreshIdsCount = 1;
+      for(auto& item : m_instanceRefreshIds)
+      {
+        ss << "InstanceRefreshIds.member." << instanceRefreshIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        instanceRefreshIdsCount++;
+      }
     }
   }
 

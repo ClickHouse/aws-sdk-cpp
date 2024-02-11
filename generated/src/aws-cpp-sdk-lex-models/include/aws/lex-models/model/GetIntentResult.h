@@ -38,705 +38,296 @@ namespace Model
   class GetIntentResult
   {
   public:
-    AWS_LEXMODELBUILDINGSERVICE_API GetIntentResult();
+    AWS_LEXMODELBUILDINGSERVICE_API GetIntentResult() = default;
     AWS_LEXMODELBUILDINGSERVICE_API GetIntentResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LEXMODELBUILDINGSERVICE_API GetIntentResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The name of the intent.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetIntentResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the intent.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The name of the intent.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The name of the intent.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name of the intent.</p>
-     */
-    inline GetIntentResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the intent.</p>
-     */
-    inline GetIntentResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the intent.</p>
-     */
-    inline GetIntentResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the intent.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    GetIntentResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the intent.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>A description of the intent.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>A description of the intent.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>A description of the intent.</p>
-     */
-    inline GetIntentResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the intent.</p>
-     */
-    inline GetIntentResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the intent.</p>
-     */
-    inline GetIntentResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of intent slots configured for the intent.</p>
      */
-    inline const Aws::Vector<Slot>& GetSlots() const{ return m_slots; }
+    inline const Aws::Vector<Slot>& GetSlots() const { return m_slots; }
+    template<typename SlotsT = Aws::Vector<Slot>>
+    void SetSlots(SlotsT&& value) { m_slotsHasBeenSet = true; m_slots = std::forward<SlotsT>(value); }
+    template<typename SlotsT = Aws::Vector<Slot>>
+    GetIntentResult& WithSlots(SlotsT&& value) { SetSlots(std::forward<SlotsT>(value)); return *this;}
+    template<typename SlotsT = Slot>
+    GetIntentResult& AddSlots(SlotsT&& value) { m_slotsHasBeenSet = true; m_slots.emplace_back(std::forward<SlotsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of intent slots configured for the intent.</p>
-     */
-    inline void SetSlots(const Aws::Vector<Slot>& value) { m_slots = value; }
-
-    /**
-     * <p>An array of intent slots configured for the intent.</p>
-     */
-    inline void SetSlots(Aws::Vector<Slot>&& value) { m_slots = std::move(value); }
-
-    /**
-     * <p>An array of intent slots configured for the intent.</p>
-     */
-    inline GetIntentResult& WithSlots(const Aws::Vector<Slot>& value) { SetSlots(value); return *this;}
-
-    /**
-     * <p>An array of intent slots configured for the intent.</p>
-     */
-    inline GetIntentResult& WithSlots(Aws::Vector<Slot>&& value) { SetSlots(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of intent slots configured for the intent.</p>
-     */
-    inline GetIntentResult& AddSlots(const Slot& value) { m_slots.push_back(value); return *this; }
-
-    /**
-     * <p>An array of intent slots configured for the intent.</p>
-     */
-    inline GetIntentResult& AddSlots(Slot&& value) { m_slots.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An array of sample utterances configured for the intent.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSampleUtterances() const{ return m_sampleUtterances; }
+    inline const Aws::Vector<Aws::String>& GetSampleUtterances() const { return m_sampleUtterances; }
+    template<typename SampleUtterancesT = Aws::Vector<Aws::String>>
+    void SetSampleUtterances(SampleUtterancesT&& value) { m_sampleUtterancesHasBeenSet = true; m_sampleUtterances = std::forward<SampleUtterancesT>(value); }
+    template<typename SampleUtterancesT = Aws::Vector<Aws::String>>
+    GetIntentResult& WithSampleUtterances(SampleUtterancesT&& value) { SetSampleUtterances(std::forward<SampleUtterancesT>(value)); return *this;}
+    template<typename SampleUtterancesT = Aws::String>
+    GetIntentResult& AddSampleUtterances(SampleUtterancesT&& value) { m_sampleUtterancesHasBeenSet = true; m_sampleUtterances.emplace_back(std::forward<SampleUtterancesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of sample utterances configured for the intent.</p>
-     */
-    inline void SetSampleUtterances(const Aws::Vector<Aws::String>& value) { m_sampleUtterances = value; }
-
-    /**
-     * <p>An array of sample utterances configured for the intent.</p>
-     */
-    inline void SetSampleUtterances(Aws::Vector<Aws::String>&& value) { m_sampleUtterances = std::move(value); }
-
-    /**
-     * <p>An array of sample utterances configured for the intent.</p>
-     */
-    inline GetIntentResult& WithSampleUtterances(const Aws::Vector<Aws::String>& value) { SetSampleUtterances(value); return *this;}
-
-    /**
-     * <p>An array of sample utterances configured for the intent.</p>
-     */
-    inline GetIntentResult& WithSampleUtterances(Aws::Vector<Aws::String>&& value) { SetSampleUtterances(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of sample utterances configured for the intent.</p>
-     */
-    inline GetIntentResult& AddSampleUtterances(const Aws::String& value) { m_sampleUtterances.push_back(value); return *this; }
-
-    /**
-     * <p>An array of sample utterances configured for the intent.</p>
-     */
-    inline GetIntentResult& AddSampleUtterances(Aws::String&& value) { m_sampleUtterances.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of sample utterances configured for the intent.</p>
-     */
-    inline GetIntentResult& AddSampleUtterances(const char* value) { m_sampleUtterances.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>If defined in the bot, Amazon Lex uses prompt to confirm the intent before
      * fulfilling the user's request. For more information, see <a>PutIntent</a>. </p>
      */
-    inline const Prompt& GetConfirmationPrompt() const{ return m_confirmationPrompt; }
+    inline const Prompt& GetConfirmationPrompt() const { return m_confirmationPrompt; }
+    template<typename ConfirmationPromptT = Prompt>
+    void SetConfirmationPrompt(ConfirmationPromptT&& value) { m_confirmationPromptHasBeenSet = true; m_confirmationPrompt = std::forward<ConfirmationPromptT>(value); }
+    template<typename ConfirmationPromptT = Prompt>
+    GetIntentResult& WithConfirmationPrompt(ConfirmationPromptT&& value) { SetConfirmationPrompt(std::forward<ConfirmationPromptT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If defined in the bot, Amazon Lex uses prompt to confirm the intent before
-     * fulfilling the user's request. For more information, see <a>PutIntent</a>. </p>
-     */
-    inline void SetConfirmationPrompt(const Prompt& value) { m_confirmationPrompt = value; }
-
-    /**
-     * <p>If defined in the bot, Amazon Lex uses prompt to confirm the intent before
-     * fulfilling the user's request. For more information, see <a>PutIntent</a>. </p>
-     */
-    inline void SetConfirmationPrompt(Prompt&& value) { m_confirmationPrompt = std::move(value); }
-
-    /**
-     * <p>If defined in the bot, Amazon Lex uses prompt to confirm the intent before
-     * fulfilling the user's request. For more information, see <a>PutIntent</a>. </p>
-     */
-    inline GetIntentResult& WithConfirmationPrompt(const Prompt& value) { SetConfirmationPrompt(value); return *this;}
-
-    /**
-     * <p>If defined in the bot, Amazon Lex uses prompt to confirm the intent before
-     * fulfilling the user's request. For more information, see <a>PutIntent</a>. </p>
-     */
-    inline GetIntentResult& WithConfirmationPrompt(Prompt&& value) { SetConfirmationPrompt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the user answers "no" to the question defined in
      * <code>confirmationPrompt</code>, Amazon Lex responds with this statement to
      * acknowledge that the intent was canceled. </p>
      */
-    inline const Statement& GetRejectionStatement() const{ return m_rejectionStatement; }
+    inline const Statement& GetRejectionStatement() const { return m_rejectionStatement; }
+    template<typename RejectionStatementT = Statement>
+    void SetRejectionStatement(RejectionStatementT&& value) { m_rejectionStatementHasBeenSet = true; m_rejectionStatement = std::forward<RejectionStatementT>(value); }
+    template<typename RejectionStatementT = Statement>
+    GetIntentResult& WithRejectionStatement(RejectionStatementT&& value) { SetRejectionStatement(std::forward<RejectionStatementT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the user answers "no" to the question defined in
-     * <code>confirmationPrompt</code>, Amazon Lex responds with this statement to
-     * acknowledge that the intent was canceled. </p>
-     */
-    inline void SetRejectionStatement(const Statement& value) { m_rejectionStatement = value; }
-
-    /**
-     * <p>If the user answers "no" to the question defined in
-     * <code>confirmationPrompt</code>, Amazon Lex responds with this statement to
-     * acknowledge that the intent was canceled. </p>
-     */
-    inline void SetRejectionStatement(Statement&& value) { m_rejectionStatement = std::move(value); }
-
-    /**
-     * <p>If the user answers "no" to the question defined in
-     * <code>confirmationPrompt</code>, Amazon Lex responds with this statement to
-     * acknowledge that the intent was canceled. </p>
-     */
-    inline GetIntentResult& WithRejectionStatement(const Statement& value) { SetRejectionStatement(value); return *this;}
-
-    /**
-     * <p>If the user answers "no" to the question defined in
-     * <code>confirmationPrompt</code>, Amazon Lex responds with this statement to
-     * acknowledge that the intent was canceled. </p>
-     */
-    inline GetIntentResult& WithRejectionStatement(Statement&& value) { SetRejectionStatement(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If defined in the bot, Amazon Lex uses this prompt to solicit additional user
      * activity after the intent is fulfilled. For more information, see
      * <a>PutIntent</a>.</p>
      */
-    inline const FollowUpPrompt& GetFollowUpPrompt() const{ return m_followUpPrompt; }
+    inline const FollowUpPrompt& GetFollowUpPrompt() const { return m_followUpPrompt; }
+    template<typename FollowUpPromptT = FollowUpPrompt>
+    void SetFollowUpPrompt(FollowUpPromptT&& value) { m_followUpPromptHasBeenSet = true; m_followUpPrompt = std::forward<FollowUpPromptT>(value); }
+    template<typename FollowUpPromptT = FollowUpPrompt>
+    GetIntentResult& WithFollowUpPrompt(FollowUpPromptT&& value) { SetFollowUpPrompt(std::forward<FollowUpPromptT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If defined in the bot, Amazon Lex uses this prompt to solicit additional user
-     * activity after the intent is fulfilled. For more information, see
-     * <a>PutIntent</a>.</p>
-     */
-    inline void SetFollowUpPrompt(const FollowUpPrompt& value) { m_followUpPrompt = value; }
-
-    /**
-     * <p>If defined in the bot, Amazon Lex uses this prompt to solicit additional user
-     * activity after the intent is fulfilled. For more information, see
-     * <a>PutIntent</a>.</p>
-     */
-    inline void SetFollowUpPrompt(FollowUpPrompt&& value) { m_followUpPrompt = std::move(value); }
-
-    /**
-     * <p>If defined in the bot, Amazon Lex uses this prompt to solicit additional user
-     * activity after the intent is fulfilled. For more information, see
-     * <a>PutIntent</a>.</p>
-     */
-    inline GetIntentResult& WithFollowUpPrompt(const FollowUpPrompt& value) { SetFollowUpPrompt(value); return *this;}
-
-    /**
-     * <p>If defined in the bot, Amazon Lex uses this prompt to solicit additional user
-     * activity after the intent is fulfilled. For more information, see
-     * <a>PutIntent</a>.</p>
-     */
-    inline GetIntentResult& WithFollowUpPrompt(FollowUpPrompt&& value) { SetFollowUpPrompt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>After the Lambda function specified in the <code>fulfillmentActivity</code>
      * element fulfills the intent, Amazon Lex conveys this statement to the user.</p>
      */
-    inline const Statement& GetConclusionStatement() const{ return m_conclusionStatement; }
+    inline const Statement& GetConclusionStatement() const { return m_conclusionStatement; }
+    template<typename ConclusionStatementT = Statement>
+    void SetConclusionStatement(ConclusionStatementT&& value) { m_conclusionStatementHasBeenSet = true; m_conclusionStatement = std::forward<ConclusionStatementT>(value); }
+    template<typename ConclusionStatementT = Statement>
+    GetIntentResult& WithConclusionStatement(ConclusionStatementT&& value) { SetConclusionStatement(std::forward<ConclusionStatementT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>After the Lambda function specified in the <code>fulfillmentActivity</code>
-     * element fulfills the intent, Amazon Lex conveys this statement to the user.</p>
-     */
-    inline void SetConclusionStatement(const Statement& value) { m_conclusionStatement = value; }
-
-    /**
-     * <p>After the Lambda function specified in the <code>fulfillmentActivity</code>
-     * element fulfills the intent, Amazon Lex conveys this statement to the user.</p>
-     */
-    inline void SetConclusionStatement(Statement&& value) { m_conclusionStatement = std::move(value); }
-
-    /**
-     * <p>After the Lambda function specified in the <code>fulfillmentActivity</code>
-     * element fulfills the intent, Amazon Lex conveys this statement to the user.</p>
-     */
-    inline GetIntentResult& WithConclusionStatement(const Statement& value) { SetConclusionStatement(value); return *this;}
-
-    /**
-     * <p>After the Lambda function specified in the <code>fulfillmentActivity</code>
-     * element fulfills the intent, Amazon Lex conveys this statement to the user.</p>
-     */
-    inline GetIntentResult& WithConclusionStatement(Statement&& value) { SetConclusionStatement(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If defined in the bot, Amazon Amazon Lex invokes this Lambda function for
      * each user input. For more information, see <a>PutIntent</a>. </p>
      */
-    inline const CodeHook& GetDialogCodeHook() const{ return m_dialogCodeHook; }
+    inline const CodeHook& GetDialogCodeHook() const { return m_dialogCodeHook; }
+    template<typename DialogCodeHookT = CodeHook>
+    void SetDialogCodeHook(DialogCodeHookT&& value) { m_dialogCodeHookHasBeenSet = true; m_dialogCodeHook = std::forward<DialogCodeHookT>(value); }
+    template<typename DialogCodeHookT = CodeHook>
+    GetIntentResult& WithDialogCodeHook(DialogCodeHookT&& value) { SetDialogCodeHook(std::forward<DialogCodeHookT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If defined in the bot, Amazon Amazon Lex invokes this Lambda function for
-     * each user input. For more information, see <a>PutIntent</a>. </p>
-     */
-    inline void SetDialogCodeHook(const CodeHook& value) { m_dialogCodeHook = value; }
-
-    /**
-     * <p>If defined in the bot, Amazon Amazon Lex invokes this Lambda function for
-     * each user input. For more information, see <a>PutIntent</a>. </p>
-     */
-    inline void SetDialogCodeHook(CodeHook&& value) { m_dialogCodeHook = std::move(value); }
-
-    /**
-     * <p>If defined in the bot, Amazon Amazon Lex invokes this Lambda function for
-     * each user input. For more information, see <a>PutIntent</a>. </p>
-     */
-    inline GetIntentResult& WithDialogCodeHook(const CodeHook& value) { SetDialogCodeHook(value); return *this;}
-
-    /**
-     * <p>If defined in the bot, Amazon Amazon Lex invokes this Lambda function for
-     * each user input. For more information, see <a>PutIntent</a>. </p>
-     */
-    inline GetIntentResult& WithDialogCodeHook(CodeHook&& value) { SetDialogCodeHook(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes how the intent is fulfilled. For more information, see
      * <a>PutIntent</a>. </p>
      */
-    inline const FulfillmentActivity& GetFulfillmentActivity() const{ return m_fulfillmentActivity; }
+    inline const FulfillmentActivity& GetFulfillmentActivity() const { return m_fulfillmentActivity; }
+    template<typename FulfillmentActivityT = FulfillmentActivity>
+    void SetFulfillmentActivity(FulfillmentActivityT&& value) { m_fulfillmentActivityHasBeenSet = true; m_fulfillmentActivity = std::forward<FulfillmentActivityT>(value); }
+    template<typename FulfillmentActivityT = FulfillmentActivity>
+    GetIntentResult& WithFulfillmentActivity(FulfillmentActivityT&& value) { SetFulfillmentActivity(std::forward<FulfillmentActivityT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes how the intent is fulfilled. For more information, see
-     * <a>PutIntent</a>. </p>
-     */
-    inline void SetFulfillmentActivity(const FulfillmentActivity& value) { m_fulfillmentActivity = value; }
-
-    /**
-     * <p>Describes how the intent is fulfilled. For more information, see
-     * <a>PutIntent</a>. </p>
-     */
-    inline void SetFulfillmentActivity(FulfillmentActivity&& value) { m_fulfillmentActivity = std::move(value); }
-
-    /**
-     * <p>Describes how the intent is fulfilled. For more information, see
-     * <a>PutIntent</a>. </p>
-     */
-    inline GetIntentResult& WithFulfillmentActivity(const FulfillmentActivity& value) { SetFulfillmentActivity(value); return *this;}
-
-    /**
-     * <p>Describes how the intent is fulfilled. For more information, see
-     * <a>PutIntent</a>. </p>
-     */
-    inline GetIntentResult& WithFulfillmentActivity(FulfillmentActivity&& value) { SetFulfillmentActivity(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for a built-in intent.</p>
      */
-    inline const Aws::String& GetParentIntentSignature() const{ return m_parentIntentSignature; }
+    inline const Aws::String& GetParentIntentSignature() const { return m_parentIntentSignature; }
+    template<typename ParentIntentSignatureT = Aws::String>
+    void SetParentIntentSignature(ParentIntentSignatureT&& value) { m_parentIntentSignatureHasBeenSet = true; m_parentIntentSignature = std::forward<ParentIntentSignatureT>(value); }
+    template<typename ParentIntentSignatureT = Aws::String>
+    GetIntentResult& WithParentIntentSignature(ParentIntentSignatureT&& value) { SetParentIntentSignature(std::forward<ParentIntentSignatureT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for a built-in intent.</p>
-     */
-    inline void SetParentIntentSignature(const Aws::String& value) { m_parentIntentSignature = value; }
-
-    /**
-     * <p>A unique identifier for a built-in intent.</p>
-     */
-    inline void SetParentIntentSignature(Aws::String&& value) { m_parentIntentSignature = std::move(value); }
-
-    /**
-     * <p>A unique identifier for a built-in intent.</p>
-     */
-    inline void SetParentIntentSignature(const char* value) { m_parentIntentSignature.assign(value); }
-
-    /**
-     * <p>A unique identifier for a built-in intent.</p>
-     */
-    inline GetIntentResult& WithParentIntentSignature(const Aws::String& value) { SetParentIntentSignature(value); return *this;}
-
-    /**
-     * <p>A unique identifier for a built-in intent.</p>
-     */
-    inline GetIntentResult& WithParentIntentSignature(Aws::String&& value) { SetParentIntentSignature(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for a built-in intent.</p>
-     */
-    inline GetIntentResult& WithParentIntentSignature(const char* value) { SetParentIntentSignature(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date that the intent was updated. When you create a resource, the
      * creation date and the last updated date are the same. </p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedDate() const{ return m_lastUpdatedDate; }
+    inline const Aws::Utils::DateTime& GetLastUpdatedDate() const { return m_lastUpdatedDate; }
+    template<typename LastUpdatedDateT = Aws::Utils::DateTime>
+    void SetLastUpdatedDate(LastUpdatedDateT&& value) { m_lastUpdatedDateHasBeenSet = true; m_lastUpdatedDate = std::forward<LastUpdatedDateT>(value); }
+    template<typename LastUpdatedDateT = Aws::Utils::DateTime>
+    GetIntentResult& WithLastUpdatedDate(LastUpdatedDateT&& value) { SetLastUpdatedDate(std::forward<LastUpdatedDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date that the intent was updated. When you create a resource, the
-     * creation date and the last updated date are the same. </p>
-     */
-    inline void SetLastUpdatedDate(const Aws::Utils::DateTime& value) { m_lastUpdatedDate = value; }
-
-    /**
-     * <p>The date that the intent was updated. When you create a resource, the
-     * creation date and the last updated date are the same. </p>
-     */
-    inline void SetLastUpdatedDate(Aws::Utils::DateTime&& value) { m_lastUpdatedDate = std::move(value); }
-
-    /**
-     * <p>The date that the intent was updated. When you create a resource, the
-     * creation date and the last updated date are the same. </p>
-     */
-    inline GetIntentResult& WithLastUpdatedDate(const Aws::Utils::DateTime& value) { SetLastUpdatedDate(value); return *this;}
-
-    /**
-     * <p>The date that the intent was updated. When you create a resource, the
-     * creation date and the last updated date are the same. </p>
-     */
-    inline GetIntentResult& WithLastUpdatedDate(Aws::Utils::DateTime&& value) { SetLastUpdatedDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date that the intent was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedDate() const{ return m_createdDate; }
+    inline const Aws::Utils::DateTime& GetCreatedDate() const { return m_createdDate; }
+    template<typename CreatedDateT = Aws::Utils::DateTime>
+    void SetCreatedDate(CreatedDateT&& value) { m_createdDateHasBeenSet = true; m_createdDate = std::forward<CreatedDateT>(value); }
+    template<typename CreatedDateT = Aws::Utils::DateTime>
+    GetIntentResult& WithCreatedDate(CreatedDateT&& value) { SetCreatedDate(std::forward<CreatedDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date that the intent was created.</p>
-     */
-    inline void SetCreatedDate(const Aws::Utils::DateTime& value) { m_createdDate = value; }
-
-    /**
-     * <p>The date that the intent was created.</p>
-     */
-    inline void SetCreatedDate(Aws::Utils::DateTime&& value) { m_createdDate = std::move(value); }
-
-    /**
-     * <p>The date that the intent was created.</p>
-     */
-    inline GetIntentResult& WithCreatedDate(const Aws::Utils::DateTime& value) { SetCreatedDate(value); return *this;}
-
-    /**
-     * <p>The date that the intent was created.</p>
-     */
-    inline GetIntentResult& WithCreatedDate(Aws::Utils::DateTime&& value) { SetCreatedDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the intent.</p>
      */
-    inline const Aws::String& GetVersion() const{ return m_version; }
+    inline const Aws::String& GetVersion() const { return m_version; }
+    template<typename VersionT = Aws::String>
+    void SetVersion(VersionT&& value) { m_versionHasBeenSet = true; m_version = std::forward<VersionT>(value); }
+    template<typename VersionT = Aws::String>
+    GetIntentResult& WithVersion(VersionT&& value) { SetVersion(std::forward<VersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the intent.</p>
-     */
-    inline void SetVersion(const Aws::String& value) { m_version = value; }
-
-    /**
-     * <p>The version of the intent.</p>
-     */
-    inline void SetVersion(Aws::String&& value) { m_version = std::move(value); }
-
-    /**
-     * <p>The version of the intent.</p>
-     */
-    inline void SetVersion(const char* value) { m_version.assign(value); }
-
-    /**
-     * <p>The version of the intent.</p>
-     */
-    inline GetIntentResult& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
-
-    /**
-     * <p>The version of the intent.</p>
-     */
-    inline GetIntentResult& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the intent.</p>
-     */
-    inline GetIntentResult& WithVersion(const char* value) { SetVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Checksum of the intent.</p>
      */
-    inline const Aws::String& GetChecksum() const{ return m_checksum; }
+    inline const Aws::String& GetChecksum() const { return m_checksum; }
+    template<typename ChecksumT = Aws::String>
+    void SetChecksum(ChecksumT&& value) { m_checksumHasBeenSet = true; m_checksum = std::forward<ChecksumT>(value); }
+    template<typename ChecksumT = Aws::String>
+    GetIntentResult& WithChecksum(ChecksumT&& value) { SetChecksum(std::forward<ChecksumT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Checksum of the intent.</p>
-     */
-    inline void SetChecksum(const Aws::String& value) { m_checksum = value; }
-
-    /**
-     * <p>Checksum of the intent.</p>
-     */
-    inline void SetChecksum(Aws::String&& value) { m_checksum = std::move(value); }
-
-    /**
-     * <p>Checksum of the intent.</p>
-     */
-    inline void SetChecksum(const char* value) { m_checksum.assign(value); }
-
-    /**
-     * <p>Checksum of the intent.</p>
-     */
-    inline GetIntentResult& WithChecksum(const Aws::String& value) { SetChecksum(value); return *this;}
-
-    /**
-     * <p>Checksum of the intent.</p>
-     */
-    inline GetIntentResult& WithChecksum(Aws::String&& value) { SetChecksum(std::move(value)); return *this;}
-
-    /**
-     * <p>Checksum of the intent.</p>
-     */
-    inline GetIntentResult& WithChecksum(const char* value) { SetChecksum(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Configuration information, if any, to connect to an Amazon Kendra index with
      * the <code>AMAZON.KendraSearchIntent</code> intent.</p>
      */
-    inline const KendraConfiguration& GetKendraConfiguration() const{ return m_kendraConfiguration; }
+    inline const KendraConfiguration& GetKendraConfiguration() const { return m_kendraConfiguration; }
+    template<typename KendraConfigurationT = KendraConfiguration>
+    void SetKendraConfiguration(KendraConfigurationT&& value) { m_kendraConfigurationHasBeenSet = true; m_kendraConfiguration = std::forward<KendraConfigurationT>(value); }
+    template<typename KendraConfigurationT = KendraConfiguration>
+    GetIntentResult& WithKendraConfiguration(KendraConfigurationT&& value) { SetKendraConfiguration(std::forward<KendraConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Configuration information, if any, to connect to an Amazon Kendra index with
-     * the <code>AMAZON.KendraSearchIntent</code> intent.</p>
-     */
-    inline void SetKendraConfiguration(const KendraConfiguration& value) { m_kendraConfiguration = value; }
-
-    /**
-     * <p>Configuration information, if any, to connect to an Amazon Kendra index with
-     * the <code>AMAZON.KendraSearchIntent</code> intent.</p>
-     */
-    inline void SetKendraConfiguration(KendraConfiguration&& value) { m_kendraConfiguration = std::move(value); }
-
-    /**
-     * <p>Configuration information, if any, to connect to an Amazon Kendra index with
-     * the <code>AMAZON.KendraSearchIntent</code> intent.</p>
-     */
-    inline GetIntentResult& WithKendraConfiguration(const KendraConfiguration& value) { SetKendraConfiguration(value); return *this;}
-
-    /**
-     * <p>Configuration information, if any, to connect to an Amazon Kendra index with
-     * the <code>AMAZON.KendraSearchIntent</code> intent.</p>
-     */
-    inline GetIntentResult& WithKendraConfiguration(KendraConfiguration&& value) { SetKendraConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of <code>InputContext</code> objects that lists the contexts that
      * must be active for Amazon Lex to choose the intent in a conversation with the
      * user.</p>
      */
-    inline const Aws::Vector<InputContext>& GetInputContexts() const{ return m_inputContexts; }
+    inline const Aws::Vector<InputContext>& GetInputContexts() const { return m_inputContexts; }
+    template<typename InputContextsT = Aws::Vector<InputContext>>
+    void SetInputContexts(InputContextsT&& value) { m_inputContextsHasBeenSet = true; m_inputContexts = std::forward<InputContextsT>(value); }
+    template<typename InputContextsT = Aws::Vector<InputContext>>
+    GetIntentResult& WithInputContexts(InputContextsT&& value) { SetInputContexts(std::forward<InputContextsT>(value)); return *this;}
+    template<typename InputContextsT = InputContext>
+    GetIntentResult& AddInputContexts(InputContextsT&& value) { m_inputContextsHasBeenSet = true; m_inputContexts.emplace_back(std::forward<InputContextsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of <code>InputContext</code> objects that lists the contexts that
-     * must be active for Amazon Lex to choose the intent in a conversation with the
-     * user.</p>
-     */
-    inline void SetInputContexts(const Aws::Vector<InputContext>& value) { m_inputContexts = value; }
-
-    /**
-     * <p>An array of <code>InputContext</code> objects that lists the contexts that
-     * must be active for Amazon Lex to choose the intent in a conversation with the
-     * user.</p>
-     */
-    inline void SetInputContexts(Aws::Vector<InputContext>&& value) { m_inputContexts = std::move(value); }
-
-    /**
-     * <p>An array of <code>InputContext</code> objects that lists the contexts that
-     * must be active for Amazon Lex to choose the intent in a conversation with the
-     * user.</p>
-     */
-    inline GetIntentResult& WithInputContexts(const Aws::Vector<InputContext>& value) { SetInputContexts(value); return *this;}
-
-    /**
-     * <p>An array of <code>InputContext</code> objects that lists the contexts that
-     * must be active for Amazon Lex to choose the intent in a conversation with the
-     * user.</p>
-     */
-    inline GetIntentResult& WithInputContexts(Aws::Vector<InputContext>&& value) { SetInputContexts(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of <code>InputContext</code> objects that lists the contexts that
-     * must be active for Amazon Lex to choose the intent in a conversation with the
-     * user.</p>
-     */
-    inline GetIntentResult& AddInputContexts(const InputContext& value) { m_inputContexts.push_back(value); return *this; }
-
-    /**
-     * <p>An array of <code>InputContext</code> objects that lists the contexts that
-     * must be active for Amazon Lex to choose the intent in a conversation with the
-     * user.</p>
-     */
-    inline GetIntentResult& AddInputContexts(InputContext&& value) { m_inputContexts.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An array of <code>OutputContext</code> objects that lists the contexts that
      * the intent activates when the intent is fulfilled.</p>
      */
-    inline const Aws::Vector<OutputContext>& GetOutputContexts() const{ return m_outputContexts; }
+    inline const Aws::Vector<OutputContext>& GetOutputContexts() const { return m_outputContexts; }
+    template<typename OutputContextsT = Aws::Vector<OutputContext>>
+    void SetOutputContexts(OutputContextsT&& value) { m_outputContextsHasBeenSet = true; m_outputContexts = std::forward<OutputContextsT>(value); }
+    template<typename OutputContextsT = Aws::Vector<OutputContext>>
+    GetIntentResult& WithOutputContexts(OutputContextsT&& value) { SetOutputContexts(std::forward<OutputContextsT>(value)); return *this;}
+    template<typename OutputContextsT = OutputContext>
+    GetIntentResult& AddOutputContexts(OutputContextsT&& value) { m_outputContextsHasBeenSet = true; m_outputContexts.emplace_back(std::forward<OutputContextsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of <code>OutputContext</code> objects that lists the contexts that
-     * the intent activates when the intent is fulfilled.</p>
-     */
-    inline void SetOutputContexts(const Aws::Vector<OutputContext>& value) { m_outputContexts = value; }
-
-    /**
-     * <p>An array of <code>OutputContext</code> objects that lists the contexts that
-     * the intent activates when the intent is fulfilled.</p>
-     */
-    inline void SetOutputContexts(Aws::Vector<OutputContext>&& value) { m_outputContexts = std::move(value); }
-
-    /**
-     * <p>An array of <code>OutputContext</code> objects that lists the contexts that
-     * the intent activates when the intent is fulfilled.</p>
-     */
-    inline GetIntentResult& WithOutputContexts(const Aws::Vector<OutputContext>& value) { SetOutputContexts(value); return *this;}
-
-    /**
-     * <p>An array of <code>OutputContext</code> objects that lists the contexts that
-     * the intent activates when the intent is fulfilled.</p>
-     */
-    inline GetIntentResult& WithOutputContexts(Aws::Vector<OutputContext>&& value) { SetOutputContexts(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of <code>OutputContext</code> objects that lists the contexts that
-     * the intent activates when the intent is fulfilled.</p>
-     */
-    inline GetIntentResult& AddOutputContexts(const OutputContext& value) { m_outputContexts.push_back(value); return *this; }
-
-    /**
-     * <p>An array of <code>OutputContext</code> objects that lists the contexts that
-     * the intent activates when the intent is fulfilled.</p>
-     */
-    inline GetIntentResult& AddOutputContexts(OutputContext&& value) { m_outputContexts.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetIntentResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetIntentResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetIntentResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetIntentResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
     Aws::Vector<Slot> m_slots;
+    bool m_slotsHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_sampleUtterances;
+    bool m_sampleUtterancesHasBeenSet = false;
 
     Prompt m_confirmationPrompt;
+    bool m_confirmationPromptHasBeenSet = false;
 
     Statement m_rejectionStatement;
+    bool m_rejectionStatementHasBeenSet = false;
 
     FollowUpPrompt m_followUpPrompt;
+    bool m_followUpPromptHasBeenSet = false;
 
     Statement m_conclusionStatement;
+    bool m_conclusionStatementHasBeenSet = false;
 
     CodeHook m_dialogCodeHook;
+    bool m_dialogCodeHookHasBeenSet = false;
 
     FulfillmentActivity m_fulfillmentActivity;
+    bool m_fulfillmentActivityHasBeenSet = false;
 
     Aws::String m_parentIntentSignature;
+    bool m_parentIntentSignatureHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedDate;
+    Aws::Utils::DateTime m_lastUpdatedDate{};
+    bool m_lastUpdatedDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdDate;
+    Aws::Utils::DateTime m_createdDate{};
+    bool m_createdDateHasBeenSet = false;
 
     Aws::String m_version;
+    bool m_versionHasBeenSet = false;
 
     Aws::String m_checksum;
+    bool m_checksumHasBeenSet = false;
 
     KendraConfiguration m_kendraConfiguration;
+    bool m_kendraConfigurationHasBeenSet = false;
 
     Aws::Vector<InputContext> m_inputContexts;
+    bool m_inputContextsHasBeenSet = false;
 
     Aws::Vector<OutputContext> m_outputContexts;
+    bool m_outputContextsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

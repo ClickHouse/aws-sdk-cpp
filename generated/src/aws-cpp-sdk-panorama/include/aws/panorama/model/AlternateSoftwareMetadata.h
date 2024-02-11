@@ -31,52 +31,23 @@ namespace Model
   class AlternateSoftwareMetadata
   {
   public:
-    AWS_PANORAMA_API AlternateSoftwareMetadata();
+    AWS_PANORAMA_API AlternateSoftwareMetadata() = default;
     AWS_PANORAMA_API AlternateSoftwareMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_PANORAMA_API AlternateSoftwareMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PANORAMA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The appliance software version.</p>
      */
-    inline const Aws::String& GetVersion() const{ return m_version; }
-
-    /**
-     * <p>The appliance software version.</p>
-     */
+    inline const Aws::String& GetVersion() const { return m_version; }
     inline bool VersionHasBeenSet() const { return m_versionHasBeenSet; }
-
-    /**
-     * <p>The appliance software version.</p>
-     */
-    inline void SetVersion(const Aws::String& value) { m_versionHasBeenSet = true; m_version = value; }
-
-    /**
-     * <p>The appliance software version.</p>
-     */
-    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
-
-    /**
-     * <p>The appliance software version.</p>
-     */
-    inline void SetVersion(const char* value) { m_versionHasBeenSet = true; m_version.assign(value); }
-
-    /**
-     * <p>The appliance software version.</p>
-     */
-    inline AlternateSoftwareMetadata& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
-
-    /**
-     * <p>The appliance software version.</p>
-     */
-    inline AlternateSoftwareMetadata& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The appliance software version.</p>
-     */
-    inline AlternateSoftwareMetadata& WithVersion(const char* value) { SetVersion(value); return *this;}
-
+    template<typename VersionT = Aws::String>
+    void SetVersion(VersionT&& value) { m_versionHasBeenSet = true; m_version = std::forward<VersionT>(value); }
+    template<typename VersionT = Aws::String>
+    AlternateSoftwareMetadata& WithVersion(VersionT&& value) { SetVersion(std::forward<VersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_version;

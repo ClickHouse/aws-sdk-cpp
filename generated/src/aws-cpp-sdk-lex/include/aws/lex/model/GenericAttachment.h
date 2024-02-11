@@ -34,216 +34,73 @@ namespace Model
   class GenericAttachment
   {
   public:
-    AWS_LEXRUNTIMESERVICE_API GenericAttachment();
+    AWS_LEXRUNTIMESERVICE_API GenericAttachment() = default;
     AWS_LEXRUNTIMESERVICE_API GenericAttachment(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXRUNTIMESERVICE_API GenericAttachment& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXRUNTIMESERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The title of the option.</p>
      */
-    inline const Aws::String& GetTitle() const{ return m_title; }
-
-    /**
-     * <p>The title of the option.</p>
-     */
+    inline const Aws::String& GetTitle() const { return m_title; }
     inline bool TitleHasBeenSet() const { return m_titleHasBeenSet; }
+    template<typename TitleT = Aws::String>
+    void SetTitle(TitleT&& value) { m_titleHasBeenSet = true; m_title = std::forward<TitleT>(value); }
+    template<typename TitleT = Aws::String>
+    GenericAttachment& WithTitle(TitleT&& value) { SetTitle(std::forward<TitleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The title of the option.</p>
-     */
-    inline void SetTitle(const Aws::String& value) { m_titleHasBeenSet = true; m_title = value; }
-
-    /**
-     * <p>The title of the option.</p>
-     */
-    inline void SetTitle(Aws::String&& value) { m_titleHasBeenSet = true; m_title = std::move(value); }
-
-    /**
-     * <p>The title of the option.</p>
-     */
-    inline void SetTitle(const char* value) { m_titleHasBeenSet = true; m_title.assign(value); }
-
-    /**
-     * <p>The title of the option.</p>
-     */
-    inline GenericAttachment& WithTitle(const Aws::String& value) { SetTitle(value); return *this;}
-
-    /**
-     * <p>The title of the option.</p>
-     */
-    inline GenericAttachment& WithTitle(Aws::String&& value) { SetTitle(std::move(value)); return *this;}
-
-    /**
-     * <p>The title of the option.</p>
-     */
-    inline GenericAttachment& WithTitle(const char* value) { SetTitle(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The subtitle shown below the title.</p>
      */
-    inline const Aws::String& GetSubTitle() const{ return m_subTitle; }
-
-    /**
-     * <p>The subtitle shown below the title.</p>
-     */
+    inline const Aws::String& GetSubTitle() const { return m_subTitle; }
     inline bool SubTitleHasBeenSet() const { return m_subTitleHasBeenSet; }
+    template<typename SubTitleT = Aws::String>
+    void SetSubTitle(SubTitleT&& value) { m_subTitleHasBeenSet = true; m_subTitle = std::forward<SubTitleT>(value); }
+    template<typename SubTitleT = Aws::String>
+    GenericAttachment& WithSubTitle(SubTitleT&& value) { SetSubTitle(std::forward<SubTitleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The subtitle shown below the title.</p>
-     */
-    inline void SetSubTitle(const Aws::String& value) { m_subTitleHasBeenSet = true; m_subTitle = value; }
-
-    /**
-     * <p>The subtitle shown below the title.</p>
-     */
-    inline void SetSubTitle(Aws::String&& value) { m_subTitleHasBeenSet = true; m_subTitle = std::move(value); }
-
-    /**
-     * <p>The subtitle shown below the title.</p>
-     */
-    inline void SetSubTitle(const char* value) { m_subTitleHasBeenSet = true; m_subTitle.assign(value); }
-
-    /**
-     * <p>The subtitle shown below the title.</p>
-     */
-    inline GenericAttachment& WithSubTitle(const Aws::String& value) { SetSubTitle(value); return *this;}
-
-    /**
-     * <p>The subtitle shown below the title.</p>
-     */
-    inline GenericAttachment& WithSubTitle(Aws::String&& value) { SetSubTitle(std::move(value)); return *this;}
-
-    /**
-     * <p>The subtitle shown below the title.</p>
-     */
-    inline GenericAttachment& WithSubTitle(const char* value) { SetSubTitle(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The URL of an attachment to the response card.</p>
      */
-    inline const Aws::String& GetAttachmentLinkUrl() const{ return m_attachmentLinkUrl; }
-
-    /**
-     * <p>The URL of an attachment to the response card.</p>
-     */
+    inline const Aws::String& GetAttachmentLinkUrl() const { return m_attachmentLinkUrl; }
     inline bool AttachmentLinkUrlHasBeenSet() const { return m_attachmentLinkUrlHasBeenSet; }
+    template<typename AttachmentLinkUrlT = Aws::String>
+    void SetAttachmentLinkUrl(AttachmentLinkUrlT&& value) { m_attachmentLinkUrlHasBeenSet = true; m_attachmentLinkUrl = std::forward<AttachmentLinkUrlT>(value); }
+    template<typename AttachmentLinkUrlT = Aws::String>
+    GenericAttachment& WithAttachmentLinkUrl(AttachmentLinkUrlT&& value) { SetAttachmentLinkUrl(std::forward<AttachmentLinkUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URL of an attachment to the response card.</p>
-     */
-    inline void SetAttachmentLinkUrl(const Aws::String& value) { m_attachmentLinkUrlHasBeenSet = true; m_attachmentLinkUrl = value; }
-
-    /**
-     * <p>The URL of an attachment to the response card.</p>
-     */
-    inline void SetAttachmentLinkUrl(Aws::String&& value) { m_attachmentLinkUrlHasBeenSet = true; m_attachmentLinkUrl = std::move(value); }
-
-    /**
-     * <p>The URL of an attachment to the response card.</p>
-     */
-    inline void SetAttachmentLinkUrl(const char* value) { m_attachmentLinkUrlHasBeenSet = true; m_attachmentLinkUrl.assign(value); }
-
-    /**
-     * <p>The URL of an attachment to the response card.</p>
-     */
-    inline GenericAttachment& WithAttachmentLinkUrl(const Aws::String& value) { SetAttachmentLinkUrl(value); return *this;}
-
-    /**
-     * <p>The URL of an attachment to the response card.</p>
-     */
-    inline GenericAttachment& WithAttachmentLinkUrl(Aws::String&& value) { SetAttachmentLinkUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL of an attachment to the response card.</p>
-     */
-    inline GenericAttachment& WithAttachmentLinkUrl(const char* value) { SetAttachmentLinkUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The URL of an image that is displayed to the user.</p>
      */
-    inline const Aws::String& GetImageUrl() const{ return m_imageUrl; }
-
-    /**
-     * <p>The URL of an image that is displayed to the user.</p>
-     */
+    inline const Aws::String& GetImageUrl() const { return m_imageUrl; }
     inline bool ImageUrlHasBeenSet() const { return m_imageUrlHasBeenSet; }
+    template<typename ImageUrlT = Aws::String>
+    void SetImageUrl(ImageUrlT&& value) { m_imageUrlHasBeenSet = true; m_imageUrl = std::forward<ImageUrlT>(value); }
+    template<typename ImageUrlT = Aws::String>
+    GenericAttachment& WithImageUrl(ImageUrlT&& value) { SetImageUrl(std::forward<ImageUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URL of an image that is displayed to the user.</p>
-     */
-    inline void SetImageUrl(const Aws::String& value) { m_imageUrlHasBeenSet = true; m_imageUrl = value; }
-
-    /**
-     * <p>The URL of an image that is displayed to the user.</p>
-     */
-    inline void SetImageUrl(Aws::String&& value) { m_imageUrlHasBeenSet = true; m_imageUrl = std::move(value); }
-
-    /**
-     * <p>The URL of an image that is displayed to the user.</p>
-     */
-    inline void SetImageUrl(const char* value) { m_imageUrlHasBeenSet = true; m_imageUrl.assign(value); }
-
-    /**
-     * <p>The URL of an image that is displayed to the user.</p>
-     */
-    inline GenericAttachment& WithImageUrl(const Aws::String& value) { SetImageUrl(value); return *this;}
-
-    /**
-     * <p>The URL of an image that is displayed to the user.</p>
-     */
-    inline GenericAttachment& WithImageUrl(Aws::String&& value) { SetImageUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL of an image that is displayed to the user.</p>
-     */
-    inline GenericAttachment& WithImageUrl(const char* value) { SetImageUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of options to show to the user.</p>
      */
-    inline const Aws::Vector<Button>& GetButtons() const{ return m_buttons; }
-
-    /**
-     * <p>The list of options to show to the user.</p>
-     */
+    inline const Aws::Vector<Button>& GetButtons() const { return m_buttons; }
     inline bool ButtonsHasBeenSet() const { return m_buttonsHasBeenSet; }
-
-    /**
-     * <p>The list of options to show to the user.</p>
-     */
-    inline void SetButtons(const Aws::Vector<Button>& value) { m_buttonsHasBeenSet = true; m_buttons = value; }
-
-    /**
-     * <p>The list of options to show to the user.</p>
-     */
-    inline void SetButtons(Aws::Vector<Button>&& value) { m_buttonsHasBeenSet = true; m_buttons = std::move(value); }
-
-    /**
-     * <p>The list of options to show to the user.</p>
-     */
-    inline GenericAttachment& WithButtons(const Aws::Vector<Button>& value) { SetButtons(value); return *this;}
-
-    /**
-     * <p>The list of options to show to the user.</p>
-     */
-    inline GenericAttachment& WithButtons(Aws::Vector<Button>&& value) { SetButtons(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of options to show to the user.</p>
-     */
-    inline GenericAttachment& AddButtons(const Button& value) { m_buttonsHasBeenSet = true; m_buttons.push_back(value); return *this; }
-
-    /**
-     * <p>The list of options to show to the user.</p>
-     */
-    inline GenericAttachment& AddButtons(Button&& value) { m_buttonsHasBeenSet = true; m_buttons.push_back(std::move(value)); return *this; }
-
+    template<typename ButtonsT = Aws::Vector<Button>>
+    void SetButtons(ButtonsT&& value) { m_buttonsHasBeenSet = true; m_buttons = std::forward<ButtonsT>(value); }
+    template<typename ButtonsT = Aws::Vector<Button>>
+    GenericAttachment& WithButtons(ButtonsT&& value) { SetButtons(std::forward<ButtonsT>(value)); return *this;}
+    template<typename ButtonsT = Button>
+    GenericAttachment& AddButtons(ButtonsT&& value) { m_buttonsHasBeenSet = true; m_buttons.emplace_back(std::forward<ButtonsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_title;

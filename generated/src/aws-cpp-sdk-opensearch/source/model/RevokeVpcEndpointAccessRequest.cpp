@@ -12,12 +12,6 @@ using namespace Aws::OpenSearchService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-RevokeVpcEndpointAccessRequest::RevokeVpcEndpointAccessRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_accountHasBeenSet(false)
-{
-}
-
 Aws::String RevokeVpcEndpointAccessRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -26,6 +20,11 @@ Aws::String RevokeVpcEndpointAccessRequest::SerializePayload() const
   {
    payload.WithString("Account", m_account);
 
+  }
+
+  if(m_serviceHasBeenSet)
+  {
+   payload.WithString("Service", AWSServicePrincipalMapper::GetNameForAWSServicePrincipal(m_service));
   }
 
   return payload.View().WriteReadable();

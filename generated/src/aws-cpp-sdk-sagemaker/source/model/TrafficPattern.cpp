@@ -18,17 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-TrafficPattern::TrafficPattern() : 
-    m_trafficType(TrafficType::NOT_SET),
-    m_trafficTypeHasBeenSet(false),
-    m_phasesHasBeenSet(false)
-{
-}
-
-TrafficPattern::TrafficPattern(JsonView jsonValue) : 
-    m_trafficType(TrafficType::NOT_SET),
-    m_trafficTypeHasBeenSet(false),
-    m_phasesHasBeenSet(false)
+TrafficPattern::TrafficPattern(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ TrafficPattern& TrafficPattern::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TrafficType"))
   {
     m_trafficType = TrafficTypeMapper::GetTrafficTypeForName(jsonValue.GetString("TrafficType"));
-
     m_trafficTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Phases"))
   {
     Aws::Utils::Array<JsonView> phasesJsonList = jsonValue.GetArray("Phases");
@@ -51,7 +39,11 @@ TrafficPattern& TrafficPattern::operator =(JsonView jsonValue)
     }
     m_phasesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Stairs"))
+  {
+    m_stairs = jsonValue.GetObject("Stairs");
+    m_stairsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -72,6 +64,12 @@ JsonValue TrafficPattern::Jsonize() const
      phasesJsonList[phasesIndex].AsObject(m_phases[phasesIndex].Jsonize());
    }
    payload.WithArray("Phases", std::move(phasesJsonList));
+
+  }
+
+  if(m_stairsHasBeenSet)
+  {
+   payload.WithObject("Stairs", m_stairs.Jsonize());
 
   }
 

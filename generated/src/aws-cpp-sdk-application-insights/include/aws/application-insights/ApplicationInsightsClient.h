@@ -34,22 +34,25 @@ namespace ApplicationInsights
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef ApplicationInsightsClientConfiguration ClientConfigurationType;
+      typedef ApplicationInsightsEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         ApplicationInsightsClient(const Aws::ApplicationInsights::ApplicationInsightsClientConfiguration& clientConfiguration = Aws::ApplicationInsights::ApplicationInsightsClientConfiguration(),
-                                  std::shared_ptr<ApplicationInsightsEndpointProviderBase> endpointProvider = Aws::MakeShared<ApplicationInsightsEndpointProvider>(ALLOCATION_TAG));
+                                  std::shared_ptr<ApplicationInsightsEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         ApplicationInsightsClient(const Aws::Auth::AWSCredentials& credentials,
-                                  std::shared_ptr<ApplicationInsightsEndpointProviderBase> endpointProvider = Aws::MakeShared<ApplicationInsightsEndpointProvider>(ALLOCATION_TAG),
+                                  std::shared_ptr<ApplicationInsightsEndpointProviderBase> endpointProvider = nullptr,
                                   const Aws::ApplicationInsights::ApplicationInsightsClientConfiguration& clientConfiguration = Aws::ApplicationInsights::ApplicationInsightsClientConfiguration());
 
        /**
@@ -57,7 +60,7 @@ namespace ApplicationInsights
         * the default http client factory will be used
         */
         ApplicationInsightsClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                                  std::shared_ptr<ApplicationInsightsEndpointProviderBase> endpointProvider = Aws::MakeShared<ApplicationInsightsEndpointProvider>(ALLOCATION_TAG),
+                                  std::shared_ptr<ApplicationInsightsEndpointProviderBase> endpointProvider = nullptr,
                                   const Aws::ApplicationInsights::ApplicationInsightsClientConfiguration& clientConfiguration = Aws::ApplicationInsights::ApplicationInsightsClientConfiguration());
 
 
@@ -86,18 +89,44 @@ namespace ApplicationInsights
         virtual ~ApplicationInsightsClient();
 
         /**
+         * <p>Adds a workload to a component. Each component can have at most five
+         * workloads.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/application-insights-2018-11-25/AddWorkload">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::AddWorkloadOutcome AddWorkload(const Model::AddWorkloadRequest& request) const;
+
+        /**
+         * A Callable wrapper for AddWorkload that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename AddWorkloadRequestT = Model::AddWorkloadRequest>
+        Model::AddWorkloadOutcomeCallable AddWorkloadCallable(const AddWorkloadRequestT& request) const
+        {
+            return SubmitCallable(&ApplicationInsightsClient::AddWorkload, request);
+        }
+
+        /**
+         * An Async wrapper for AddWorkload that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename AddWorkloadRequestT = Model::AddWorkloadRequest>
+        void AddWorkloadAsync(const AddWorkloadRequestT& request, const AddWorkloadResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&ApplicationInsightsClient::AddWorkload, request, handler, context);
+        }
+
+        /**
          * <p>Adds an application that is created from a resource group.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/application-insights-2018-11-25/CreateApplication">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateApplicationOutcome CreateApplication(const Model::CreateApplicationRequest& request) const;
+        virtual Model::CreateApplicationOutcome CreateApplication(const Model::CreateApplicationRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateApplication that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateApplicationRequestT = Model::CreateApplicationRequest>
-        Model::CreateApplicationOutcomeCallable CreateApplicationCallable(const CreateApplicationRequestT& request) const
+        Model::CreateApplicationOutcomeCallable CreateApplicationCallable(const CreateApplicationRequestT& request = {}) const
         {
             return SubmitCallable(&ApplicationInsightsClient::CreateApplication, request);
         }
@@ -106,7 +135,7 @@ namespace ApplicationInsights
          * An Async wrapper for CreateApplication that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateApplicationRequestT = Model::CreateApplicationRequest>
-        void CreateApplicationAsync(const CreateApplicationRequestT& request, const CreateApplicationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateApplicationAsync(const CreateApplicationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateApplicationRequestT& request = {}) const
         {
             return SubmitAsync(&ApplicationInsightsClient::CreateApplication, request, handler, context);
         }
@@ -449,18 +478,43 @@ namespace ApplicationInsights
         }
 
         /**
+         * <p>Describes a workload and its configuration.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/application-insights-2018-11-25/DescribeWorkload">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeWorkloadOutcome DescribeWorkload(const Model::DescribeWorkloadRequest& request) const;
+
+        /**
+         * A Callable wrapper for DescribeWorkload that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeWorkloadRequestT = Model::DescribeWorkloadRequest>
+        Model::DescribeWorkloadOutcomeCallable DescribeWorkloadCallable(const DescribeWorkloadRequestT& request) const
+        {
+            return SubmitCallable(&ApplicationInsightsClient::DescribeWorkload, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeWorkload that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeWorkloadRequestT = Model::DescribeWorkloadRequest>
+        void DescribeWorkloadAsync(const DescribeWorkloadRequestT& request, const DescribeWorkloadResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&ApplicationInsightsClient::DescribeWorkload, request, handler, context);
+        }
+
+        /**
          * <p>Lists the IDs of the applications that you are monitoring. </p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/application-insights-2018-11-25/ListApplications">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListApplicationsOutcome ListApplications(const Model::ListApplicationsRequest& request) const;
+        virtual Model::ListApplicationsOutcome ListApplications(const Model::ListApplicationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListApplications that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListApplicationsRequestT = Model::ListApplicationsRequest>
-        Model::ListApplicationsOutcomeCallable ListApplicationsCallable(const ListApplicationsRequestT& request) const
+        Model::ListApplicationsOutcomeCallable ListApplicationsCallable(const ListApplicationsRequestT& request = {}) const
         {
             return SubmitCallable(&ApplicationInsightsClient::ListApplications, request);
         }
@@ -469,7 +523,7 @@ namespace ApplicationInsights
          * An Async wrapper for ListApplications that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListApplicationsRequestT = Model::ListApplicationsRequest>
-        void ListApplicationsAsync(const ListApplicationsRequestT& request, const ListApplicationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListApplicationsAsync(const ListApplicationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListApplicationsRequestT& request = {}) const
         {
             return SubmitAsync(&ApplicationInsightsClient::ListApplications, request, handler, context);
         }
@@ -510,13 +564,13 @@ namespace ApplicationInsights
          * href="http://docs.aws.amazon.com/goto/WebAPI/application-insights-2018-11-25/ListConfigurationHistory">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListConfigurationHistoryOutcome ListConfigurationHistory(const Model::ListConfigurationHistoryRequest& request) const;
+        virtual Model::ListConfigurationHistoryOutcome ListConfigurationHistory(const Model::ListConfigurationHistoryRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListConfigurationHistory that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListConfigurationHistoryRequestT = Model::ListConfigurationHistoryRequest>
-        Model::ListConfigurationHistoryOutcomeCallable ListConfigurationHistoryCallable(const ListConfigurationHistoryRequestT& request) const
+        Model::ListConfigurationHistoryOutcomeCallable ListConfigurationHistoryCallable(const ListConfigurationHistoryRequestT& request = {}) const
         {
             return SubmitCallable(&ApplicationInsightsClient::ListConfigurationHistory, request);
         }
@@ -525,7 +579,7 @@ namespace ApplicationInsights
          * An Async wrapper for ListConfigurationHistory that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListConfigurationHistoryRequestT = Model::ListConfigurationHistoryRequest>
-        void ListConfigurationHistoryAsync(const ListConfigurationHistoryRequestT& request, const ListConfigurationHistoryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListConfigurationHistoryAsync(const ListConfigurationHistoryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListConfigurationHistoryRequestT& request = {}) const
         {
             return SubmitAsync(&ApplicationInsightsClient::ListConfigurationHistory, request, handler, context);
         }
@@ -587,13 +641,13 @@ namespace ApplicationInsights
          * href="http://docs.aws.amazon.com/goto/WebAPI/application-insights-2018-11-25/ListProblems">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListProblemsOutcome ListProblems(const Model::ListProblemsRequest& request) const;
+        virtual Model::ListProblemsOutcome ListProblems(const Model::ListProblemsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListProblems that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListProblemsRequestT = Model::ListProblemsRequest>
-        Model::ListProblemsOutcomeCallable ListProblemsCallable(const ListProblemsRequestT& request) const
+        Model::ListProblemsOutcomeCallable ListProblemsCallable(const ListProblemsRequestT& request = {}) const
         {
             return SubmitCallable(&ApplicationInsightsClient::ListProblems, request);
         }
@@ -602,7 +656,7 @@ namespace ApplicationInsights
          * An Async wrapper for ListProblems that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListProblemsRequestT = Model::ListProblemsRequest>
-        void ListProblemsAsync(const ListProblemsRequestT& request, const ListProblemsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListProblemsAsync(const ListProblemsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListProblemsRequestT& request = {}) const
         {
             return SubmitAsync(&ApplicationInsightsClient::ListProblems, request, handler, context);
         }
@@ -635,6 +689,57 @@ namespace ApplicationInsights
         void ListTagsForResourceAsync(const ListTagsForResourceRequestT& request, const ListTagsForResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&ApplicationInsightsClient::ListTagsForResource, request, handler, context);
+        }
+
+        /**
+         * <p>Lists the workloads that are configured on a given component.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/application-insights-2018-11-25/ListWorkloads">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListWorkloadsOutcome ListWorkloads(const Model::ListWorkloadsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListWorkloads that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListWorkloadsRequestT = Model::ListWorkloadsRequest>
+        Model::ListWorkloadsOutcomeCallable ListWorkloadsCallable(const ListWorkloadsRequestT& request) const
+        {
+            return SubmitCallable(&ApplicationInsightsClient::ListWorkloads, request);
+        }
+
+        /**
+         * An Async wrapper for ListWorkloads that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListWorkloadsRequestT = Model::ListWorkloadsRequest>
+        void ListWorkloadsAsync(const ListWorkloadsRequestT& request, const ListWorkloadsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&ApplicationInsightsClient::ListWorkloads, request, handler, context);
+        }
+
+        /**
+         * <p>Remove workload from a component.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/application-insights-2018-11-25/RemoveWorkload">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::RemoveWorkloadOutcome RemoveWorkload(const Model::RemoveWorkloadRequest& request) const;
+
+        /**
+         * A Callable wrapper for RemoveWorkload that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename RemoveWorkloadRequestT = Model::RemoveWorkloadRequest>
+        Model::RemoveWorkloadOutcomeCallable RemoveWorkloadCallable(const RemoveWorkloadRequestT& request) const
+        {
+            return SubmitCallable(&ApplicationInsightsClient::RemoveWorkload, request);
+        }
+
+        /**
+         * An Async wrapper for RemoveWorkload that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename RemoveWorkloadRequestT = Model::RemoveWorkloadRequest>
+        void RemoveWorkloadAsync(const RemoveWorkloadRequestT& request, const RemoveWorkloadResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&ApplicationInsightsClient::RemoveWorkload, request, handler, context);
         }
 
         /**
@@ -801,6 +906,58 @@ namespace ApplicationInsights
             return SubmitAsync(&ApplicationInsightsClient::UpdateLogPattern, request, handler, context);
         }
 
+        /**
+         * <p>Updates the visibility of the problem or specifies the problem as
+         * <code>RESOLVED</code>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/application-insights-2018-11-25/UpdateProblem">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateProblemOutcome UpdateProblem(const Model::UpdateProblemRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateProblem that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateProblemRequestT = Model::UpdateProblemRequest>
+        Model::UpdateProblemOutcomeCallable UpdateProblemCallable(const UpdateProblemRequestT& request) const
+        {
+            return SubmitCallable(&ApplicationInsightsClient::UpdateProblem, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateProblem that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateProblemRequestT = Model::UpdateProblemRequest>
+        void UpdateProblemAsync(const UpdateProblemRequestT& request, const UpdateProblemResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&ApplicationInsightsClient::UpdateProblem, request, handler, context);
+        }
+
+        /**
+         * <p>Adds a workload to a component. Each component can have at most five
+         * workloads.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/application-insights-2018-11-25/UpdateWorkload">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateWorkloadOutcome UpdateWorkload(const Model::UpdateWorkloadRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateWorkload that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateWorkloadRequestT = Model::UpdateWorkloadRequest>
+        Model::UpdateWorkloadOutcomeCallable UpdateWorkloadCallable(const UpdateWorkloadRequestT& request) const
+        {
+            return SubmitCallable(&ApplicationInsightsClient::UpdateWorkload, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateWorkload that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateWorkloadRequestT = Model::UpdateWorkloadRequest>
+        void UpdateWorkloadAsync(const UpdateWorkloadRequestT& request, const UpdateWorkloadResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&ApplicationInsightsClient::UpdateWorkload, request, handler, context);
+        }
+
 
       void OverrideEndpoint(const Aws::String& endpoint);
       std::shared_ptr<ApplicationInsightsEndpointProviderBase>& accessEndpointProvider();
@@ -809,7 +966,6 @@ namespace ApplicationInsights
       void init(const ApplicationInsightsClientConfiguration& clientConfiguration);
 
       ApplicationInsightsClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<ApplicationInsightsEndpointProviderBase> m_endpointProvider;
   };
 

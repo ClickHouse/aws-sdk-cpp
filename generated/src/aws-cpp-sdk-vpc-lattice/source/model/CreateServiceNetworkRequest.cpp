@@ -12,16 +12,6 @@ using namespace Aws::VPCLattice::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateServiceNetworkRequest::CreateServiceNetworkRequest() : 
-    m_authType(AuthType::NOT_SET),
-    m_authTypeHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_nameHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateServiceNetworkRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -40,6 +30,12 @@ Aws::String CreateServiceNetworkRequest::SerializePayload() const
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
+
+  }
+
+  if(m_sharingConfigHasBeenSet)
+  {
+   payload.WithObject("sharingConfig", m_sharingConfig.Jsonize());
 
   }
 

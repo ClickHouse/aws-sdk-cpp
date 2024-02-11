@@ -36,85 +36,37 @@ namespace Model
   class MappingParameters
   {
   public:
-    AWS_KINESISANALYTICSV2_API MappingParameters();
+    AWS_KINESISANALYTICSV2_API MappingParameters() = default;
     AWS_KINESISANALYTICSV2_API MappingParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API MappingParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Provides additional mapping information when JSON is the record format on the
      * streaming source.</p>
      */
-    inline const JSONMappingParameters& GetJSONMappingParameters() const{ return m_jSONMappingParameters; }
-
-    /**
-     * <p>Provides additional mapping information when JSON is the record format on the
-     * streaming source.</p>
-     */
+    inline const JSONMappingParameters& GetJSONMappingParameters() const { return m_jSONMappingParameters; }
     inline bool JSONMappingParametersHasBeenSet() const { return m_jSONMappingParametersHasBeenSet; }
+    template<typename JSONMappingParametersT = JSONMappingParameters>
+    void SetJSONMappingParameters(JSONMappingParametersT&& value) { m_jSONMappingParametersHasBeenSet = true; m_jSONMappingParameters = std::forward<JSONMappingParametersT>(value); }
+    template<typename JSONMappingParametersT = JSONMappingParameters>
+    MappingParameters& WithJSONMappingParameters(JSONMappingParametersT&& value) { SetJSONMappingParameters(std::forward<JSONMappingParametersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Provides additional mapping information when JSON is the record format on the
-     * streaming source.</p>
-     */
-    inline void SetJSONMappingParameters(const JSONMappingParameters& value) { m_jSONMappingParametersHasBeenSet = true; m_jSONMappingParameters = value; }
-
-    /**
-     * <p>Provides additional mapping information when JSON is the record format on the
-     * streaming source.</p>
-     */
-    inline void SetJSONMappingParameters(JSONMappingParameters&& value) { m_jSONMappingParametersHasBeenSet = true; m_jSONMappingParameters = std::move(value); }
-
-    /**
-     * <p>Provides additional mapping information when JSON is the record format on the
-     * streaming source.</p>
-     */
-    inline MappingParameters& WithJSONMappingParameters(const JSONMappingParameters& value) { SetJSONMappingParameters(value); return *this;}
-
-    /**
-     * <p>Provides additional mapping information when JSON is the record format on the
-     * streaming source.</p>
-     */
-    inline MappingParameters& WithJSONMappingParameters(JSONMappingParameters&& value) { SetJSONMappingParameters(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides additional mapping information when the record format uses
      * delimiters (for example, CSV).</p>
      */
-    inline const CSVMappingParameters& GetCSVMappingParameters() const{ return m_cSVMappingParameters; }
-
-    /**
-     * <p>Provides additional mapping information when the record format uses
-     * delimiters (for example, CSV).</p>
-     */
+    inline const CSVMappingParameters& GetCSVMappingParameters() const { return m_cSVMappingParameters; }
     inline bool CSVMappingParametersHasBeenSet() const { return m_cSVMappingParametersHasBeenSet; }
-
-    /**
-     * <p>Provides additional mapping information when the record format uses
-     * delimiters (for example, CSV).</p>
-     */
-    inline void SetCSVMappingParameters(const CSVMappingParameters& value) { m_cSVMappingParametersHasBeenSet = true; m_cSVMappingParameters = value; }
-
-    /**
-     * <p>Provides additional mapping information when the record format uses
-     * delimiters (for example, CSV).</p>
-     */
-    inline void SetCSVMappingParameters(CSVMappingParameters&& value) { m_cSVMappingParametersHasBeenSet = true; m_cSVMappingParameters = std::move(value); }
-
-    /**
-     * <p>Provides additional mapping information when the record format uses
-     * delimiters (for example, CSV).</p>
-     */
-    inline MappingParameters& WithCSVMappingParameters(const CSVMappingParameters& value) { SetCSVMappingParameters(value); return *this;}
-
-    /**
-     * <p>Provides additional mapping information when the record format uses
-     * delimiters (for example, CSV).</p>
-     */
-    inline MappingParameters& WithCSVMappingParameters(CSVMappingParameters&& value) { SetCSVMappingParameters(std::move(value)); return *this;}
-
+    template<typename CSVMappingParametersT = CSVMappingParameters>
+    void SetCSVMappingParameters(CSVMappingParametersT&& value) { m_cSVMappingParametersHasBeenSet = true; m_cSVMappingParameters = std::forward<CSVMappingParametersT>(value); }
+    template<typename CSVMappingParametersT = CSVMappingParameters>
+    MappingParameters& WithCSVMappingParameters(CSVMappingParametersT&& value) { SetCSVMappingParameters(std::forward<CSVMappingParametersT>(value)); return *this;}
+    ///@}
   private:
 
     JSONMappingParameters m_jSONMappingParameters;

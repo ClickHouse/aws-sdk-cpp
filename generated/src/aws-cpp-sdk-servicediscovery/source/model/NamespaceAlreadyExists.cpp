@@ -18,17 +18,7 @@ namespace ServiceDiscovery
 namespace Model
 {
 
-NamespaceAlreadyExists::NamespaceAlreadyExists() : 
-    m_messageHasBeenSet(false),
-    m_creatorRequestIdHasBeenSet(false),
-    m_namespaceIdHasBeenSet(false)
-{
-}
-
-NamespaceAlreadyExists::NamespaceAlreadyExists(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_creatorRequestIdHasBeenSet(false),
-    m_namespaceIdHasBeenSet(false)
+NamespaceAlreadyExists::NamespaceAlreadyExists(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ NamespaceAlreadyExists& NamespaceAlreadyExists::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatorRequestId"))
   {
     m_creatorRequestId = jsonValue.GetString("CreatorRequestId");
-
     m_creatorRequestIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NamespaceId"))
   {
     m_namespaceId = jsonValue.GetString("NamespaceId");
-
     m_namespaceIdHasBeenSet = true;
   }
-
   return *this;
 }
 

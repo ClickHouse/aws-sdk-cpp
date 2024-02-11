@@ -12,25 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateTableRequest::CreateTableRequest() : 
-    m_attributeDefinitionsHasBeenSet(false),
-    m_tableNameHasBeenSet(false),
-    m_keySchemaHasBeenSet(false),
-    m_localSecondaryIndexesHasBeenSet(false),
-    m_globalSecondaryIndexesHasBeenSet(false),
-    m_billingMode(BillingMode::NOT_SET),
-    m_billingModeHasBeenSet(false),
-    m_provisionedThroughputHasBeenSet(false),
-    m_streamSpecificationHasBeenSet(false),
-    m_sSESpecificationHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_tableClass(TableClass::NOT_SET),
-    m_tableClassHasBeenSet(false),
-    m_deletionProtectionEnabled(false),
-    m_deletionProtectionEnabledHasBeenSet(false)
-{
-}
-
 Aws::String CreateTableRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -130,6 +111,24 @@ Aws::String CreateTableRequest::SerializePayload() const
 
   }
 
+  if(m_warmThroughputHasBeenSet)
+  {
+   payload.WithObject("WarmThroughput", m_warmThroughput.Jsonize());
+
+  }
+
+  if(m_resourcePolicyHasBeenSet)
+  {
+   payload.WithString("ResourcePolicy", m_resourcePolicy);
+
+  }
+
+  if(m_onDemandThroughputHasBeenSet)
+  {
+   payload.WithObject("OnDemandThroughput", m_onDemandThroughput.Jsonize());
+
+  }
+
   return payload.View().WriteReadable();
 }
 
@@ -142,5 +141,15 @@ Aws::Http::HeaderValueCollection CreateTableRequest::GetRequestSpecificHeaders()
 }
 
 
+
+CreateTableRequest::EndpointParameters CreateTableRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (TableNameHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetTableName(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

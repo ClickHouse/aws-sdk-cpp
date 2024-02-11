@@ -18,17 +18,7 @@ namespace CleanRooms
 namespace Model
 {
 
-AccessDeniedException::AccessDeniedException() : 
-    m_messageHasBeenSet(false),
-    m_reason(AccessDeniedExceptionReason::NOT_SET),
-    m_reasonHasBeenSet(false)
-{
-}
-
-AccessDeniedException::AccessDeniedException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_reason(AccessDeniedExceptionReason::NOT_SET),
-    m_reasonHasBeenSet(false)
+AccessDeniedException::AccessDeniedException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ AccessDeniedException& AccessDeniedException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("reason"))
   {
     m_reason = AccessDeniedExceptionReasonMapper::GetAccessDeniedExceptionReasonForName(jsonValue.GetString("reason"));
-
     m_reasonHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -21,7 +21,7 @@ namespace Model
   class DescribeStreamConsumerRequest : public KinesisRequest
   {
   public:
-    AWS_KINESIS_API DescribeStreamConsumerRequest();
+    AWS_KINESIS_API DescribeStreamConsumerRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,160 +38,45 @@ namespace Model
      */
     AWS_KINESIS_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p>The ARN of the Kinesis data stream that the consumer is registered with. For
      * more information, see <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon
      * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a>.</p>
      */
-    inline const Aws::String& GetStreamARN() const{ return m_streamARN; }
-
-    /**
-     * <p>The ARN of the Kinesis data stream that the consumer is registered with. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a>.</p>
-     */
+    inline const Aws::String& GetStreamARN() const { return m_streamARN; }
     inline bool StreamARNHasBeenSet() const { return m_streamARNHasBeenSet; }
+    template<typename StreamARNT = Aws::String>
+    void SetStreamARN(StreamARNT&& value) { m_streamARNHasBeenSet = true; m_streamARN = std::forward<StreamARNT>(value); }
+    template<typename StreamARNT = Aws::String>
+    DescribeStreamConsumerRequest& WithStreamARN(StreamARNT&& value) { SetStreamARN(std::forward<StreamARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the Kinesis data stream that the consumer is registered with. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a>.</p>
-     */
-    inline void SetStreamARN(const Aws::String& value) { m_streamARNHasBeenSet = true; m_streamARN = value; }
-
-    /**
-     * <p>The ARN of the Kinesis data stream that the consumer is registered with. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a>.</p>
-     */
-    inline void SetStreamARN(Aws::String&& value) { m_streamARNHasBeenSet = true; m_streamARN = std::move(value); }
-
-    /**
-     * <p>The ARN of the Kinesis data stream that the consumer is registered with. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a>.</p>
-     */
-    inline void SetStreamARN(const char* value) { m_streamARNHasBeenSet = true; m_streamARN.assign(value); }
-
-    /**
-     * <p>The ARN of the Kinesis data stream that the consumer is registered with. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a>.</p>
-     */
-    inline DescribeStreamConsumerRequest& WithStreamARN(const Aws::String& value) { SetStreamARN(value); return *this;}
-
-    /**
-     * <p>The ARN of the Kinesis data stream that the consumer is registered with. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a>.</p>
-     */
-    inline DescribeStreamConsumerRequest& WithStreamARN(Aws::String&& value) { SetStreamARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the Kinesis data stream that the consumer is registered with. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a>.</p>
-     */
-    inline DescribeStreamConsumerRequest& WithStreamARN(const char* value) { SetStreamARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name that you gave to the consumer.</p>
      */
-    inline const Aws::String& GetConsumerName() const{ return m_consumerName; }
-
-    /**
-     * <p>The name that you gave to the consumer.</p>
-     */
+    inline const Aws::String& GetConsumerName() const { return m_consumerName; }
     inline bool ConsumerNameHasBeenSet() const { return m_consumerNameHasBeenSet; }
+    template<typename ConsumerNameT = Aws::String>
+    void SetConsumerName(ConsumerNameT&& value) { m_consumerNameHasBeenSet = true; m_consumerName = std::forward<ConsumerNameT>(value); }
+    template<typename ConsumerNameT = Aws::String>
+    DescribeStreamConsumerRequest& WithConsumerName(ConsumerNameT&& value) { SetConsumerName(std::forward<ConsumerNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name that you gave to the consumer.</p>
-     */
-    inline void SetConsumerName(const Aws::String& value) { m_consumerNameHasBeenSet = true; m_consumerName = value; }
-
-    /**
-     * <p>The name that you gave to the consumer.</p>
-     */
-    inline void SetConsumerName(Aws::String&& value) { m_consumerNameHasBeenSet = true; m_consumerName = std::move(value); }
-
-    /**
-     * <p>The name that you gave to the consumer.</p>
-     */
-    inline void SetConsumerName(const char* value) { m_consumerNameHasBeenSet = true; m_consumerName.assign(value); }
-
-    /**
-     * <p>The name that you gave to the consumer.</p>
-     */
-    inline DescribeStreamConsumerRequest& WithConsumerName(const Aws::String& value) { SetConsumerName(value); return *this;}
-
-    /**
-     * <p>The name that you gave to the consumer.</p>
-     */
-    inline DescribeStreamConsumerRequest& WithConsumerName(Aws::String&& value) { SetConsumerName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name that you gave to the consumer.</p>
-     */
-    inline DescribeStreamConsumerRequest& WithConsumerName(const char* value) { SetConsumerName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN returned by Kinesis Data Streams when you registered the
      * consumer.</p>
      */
-    inline const Aws::String& GetConsumerARN() const{ return m_consumerARN; }
-
-    /**
-     * <p>The ARN returned by Kinesis Data Streams when you registered the
-     * consumer.</p>
-     */
+    inline const Aws::String& GetConsumerARN() const { return m_consumerARN; }
     inline bool ConsumerARNHasBeenSet() const { return m_consumerARNHasBeenSet; }
-
-    /**
-     * <p>The ARN returned by Kinesis Data Streams when you registered the
-     * consumer.</p>
-     */
-    inline void SetConsumerARN(const Aws::String& value) { m_consumerARNHasBeenSet = true; m_consumerARN = value; }
-
-    /**
-     * <p>The ARN returned by Kinesis Data Streams when you registered the
-     * consumer.</p>
-     */
-    inline void SetConsumerARN(Aws::String&& value) { m_consumerARNHasBeenSet = true; m_consumerARN = std::move(value); }
-
-    /**
-     * <p>The ARN returned by Kinesis Data Streams when you registered the
-     * consumer.</p>
-     */
-    inline void SetConsumerARN(const char* value) { m_consumerARNHasBeenSet = true; m_consumerARN.assign(value); }
-
-    /**
-     * <p>The ARN returned by Kinesis Data Streams when you registered the
-     * consumer.</p>
-     */
-    inline DescribeStreamConsumerRequest& WithConsumerARN(const Aws::String& value) { SetConsumerARN(value); return *this;}
-
-    /**
-     * <p>The ARN returned by Kinesis Data Streams when you registered the
-     * consumer.</p>
-     */
-    inline DescribeStreamConsumerRequest& WithConsumerARN(Aws::String&& value) { SetConsumerARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN returned by Kinesis Data Streams when you registered the
-     * consumer.</p>
-     */
-    inline DescribeStreamConsumerRequest& WithConsumerARN(const char* value) { SetConsumerARN(value); return *this;}
-
+    template<typename ConsumerARNT = Aws::String>
+    void SetConsumerARN(ConsumerARNT&& value) { m_consumerARNHasBeenSet = true; m_consumerARN = std::forward<ConsumerARNT>(value); }
+    template<typename ConsumerARNT = Aws::String>
+    DescribeStreamConsumerRequest& WithConsumerARN(ConsumerARNT&& value) { SetConsumerARN(std::forward<ConsumerARNT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_streamARN;

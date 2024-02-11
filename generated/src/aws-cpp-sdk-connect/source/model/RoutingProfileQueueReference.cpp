@@ -18,17 +18,7 @@ namespace Connect
 namespace Model
 {
 
-RoutingProfileQueueReference::RoutingProfileQueueReference() : 
-    m_queueIdHasBeenSet(false),
-    m_channel(Channel::NOT_SET),
-    m_channelHasBeenSet(false)
-{
-}
-
-RoutingProfileQueueReference::RoutingProfileQueueReference(JsonView jsonValue) : 
-    m_queueIdHasBeenSet(false),
-    m_channel(Channel::NOT_SET),
-    m_channelHasBeenSet(false)
+RoutingProfileQueueReference::RoutingProfileQueueReference(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ RoutingProfileQueueReference& RoutingProfileQueueReference::operator =(JsonView 
   if(jsonValue.ValueExists("QueueId"))
   {
     m_queueId = jsonValue.GetString("QueueId");
-
     m_queueIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Channel"))
   {
     m_channel = ChannelMapper::GetChannelForName(jsonValue.GetString("Channel"));
-
     m_channelHasBeenSet = true;
   }
-
   return *this;
 }
 

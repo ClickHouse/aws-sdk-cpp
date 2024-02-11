@@ -12,14 +12,6 @@ using namespace Aws::PinpointSMSVoiceV2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeOptOutListsRequest::DescribeOptOutListsRequest() : 
-    m_optOutListNamesHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String DescribeOptOutListsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -45,6 +37,11 @@ Aws::String DescribeOptOutListsRequest::SerializePayload() const
   {
    payload.WithInteger("MaxResults", m_maxResults);
 
+  }
+
+  if(m_ownerHasBeenSet)
+  {
+   payload.WithString("Owner", OwnerMapper::GetNameForOwner(m_owner));
   }
 
   return payload.View().WriteReadable();

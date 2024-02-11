@@ -18,19 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-DomainSettings::DomainSettings() : 
-    m_securityGroupIdsHasBeenSet(false),
-    m_rStudioServerProDomainSettingsHasBeenSet(false),
-    m_executionRoleIdentityConfig(ExecutionRoleIdentityConfig::NOT_SET),
-    m_executionRoleIdentityConfigHasBeenSet(false)
-{
-}
-
-DomainSettings::DomainSettings(JsonView jsonValue) : 
-    m_securityGroupIdsHasBeenSet(false),
-    m_rStudioServerProDomainSettingsHasBeenSet(false),
-    m_executionRoleIdentityConfig(ExecutionRoleIdentityConfig::NOT_SET),
-    m_executionRoleIdentityConfigHasBeenSet(false)
+DomainSettings::DomainSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,21 +34,41 @@ DomainSettings& DomainSettings::operator =(JsonView jsonValue)
     }
     m_securityGroupIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RStudioServerProDomainSettings"))
   {
     m_rStudioServerProDomainSettings = jsonValue.GetObject("RStudioServerProDomainSettings");
-
     m_rStudioServerProDomainSettingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExecutionRoleIdentityConfig"))
   {
     m_executionRoleIdentityConfig = ExecutionRoleIdentityConfigMapper::GetExecutionRoleIdentityConfigForName(jsonValue.GetString("ExecutionRoleIdentityConfig"));
-
     m_executionRoleIdentityConfigHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("TrustedIdentityPropagationSettings"))
+  {
+    m_trustedIdentityPropagationSettings = jsonValue.GetObject("TrustedIdentityPropagationSettings");
+    m_trustedIdentityPropagationSettingsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("DockerSettings"))
+  {
+    m_dockerSettings = jsonValue.GetObject("DockerSettings");
+    m_dockerSettingsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("AmazonQSettings"))
+  {
+    m_amazonQSettings = jsonValue.GetObject("AmazonQSettings");
+    m_amazonQSettingsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("UnifiedStudioSettings"))
+  {
+    m_unifiedStudioSettings = jsonValue.GetObject("UnifiedStudioSettings");
+    m_unifiedStudioSettingsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("IpAddressType"))
+  {
+    m_ipAddressType = IPAddressTypeMapper::GetIPAddressTypeForName(jsonValue.GetString("IpAddressType"));
+    m_ipAddressTypeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -88,6 +96,35 @@ JsonValue DomainSettings::Jsonize() const
   if(m_executionRoleIdentityConfigHasBeenSet)
   {
    payload.WithString("ExecutionRoleIdentityConfig", ExecutionRoleIdentityConfigMapper::GetNameForExecutionRoleIdentityConfig(m_executionRoleIdentityConfig));
+  }
+
+  if(m_trustedIdentityPropagationSettingsHasBeenSet)
+  {
+   payload.WithObject("TrustedIdentityPropagationSettings", m_trustedIdentityPropagationSettings.Jsonize());
+
+  }
+
+  if(m_dockerSettingsHasBeenSet)
+  {
+   payload.WithObject("DockerSettings", m_dockerSettings.Jsonize());
+
+  }
+
+  if(m_amazonQSettingsHasBeenSet)
+  {
+   payload.WithObject("AmazonQSettings", m_amazonQSettings.Jsonize());
+
+  }
+
+  if(m_unifiedStudioSettingsHasBeenSet)
+  {
+   payload.WithObject("UnifiedStudioSettings", m_unifiedStudioSettings.Jsonize());
+
+  }
+
+  if(m_ipAddressTypeHasBeenSet)
+  {
+   payload.WithString("IpAddressType", IPAddressTypeMapper::GetNameForIPAddressType(m_ipAddressType));
   }
 
   return payload;

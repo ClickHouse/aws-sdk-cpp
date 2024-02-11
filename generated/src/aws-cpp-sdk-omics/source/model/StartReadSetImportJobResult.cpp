@@ -17,13 +17,7 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-StartReadSetImportJobResult::StartReadSetImportJobResult() : 
-    m_status(ReadSetImportJobStatus::NOT_SET)
-{
-}
-
-StartReadSetImportJobResult::StartReadSetImportJobResult(const Aws::AmazonWebServiceResult<JsonValue>& result) : 
-    m_status(ReadSetImportJobStatus::NOT_SET)
+StartReadSetImportJobResult::StartReadSetImportJobResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
 }
@@ -31,42 +25,38 @@ StartReadSetImportJobResult::StartReadSetImportJobResult(const Aws::AmazonWebSer
 StartReadSetImportJobResult& StartReadSetImportJobResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("creationTime"))
-  {
-    m_creationTime = jsonValue.GetString("creationTime");
-
-  }
-
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
+    m_idHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("roleArn"))
-  {
-    m_roleArn = jsonValue.GetString("roleArn");
-
-  }
-
   if(jsonValue.ValueExists("sequenceStoreId"))
   {
     m_sequenceStoreId = jsonValue.GetString("sequenceStoreId");
-
+    m_sequenceStoreIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("roleArn"))
+  {
+    m_roleArn = jsonValue.GetString("roleArn");
+    m_roleArnHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("status"))
   {
     m_status = ReadSetImportJobStatusMapper::GetReadSetImportJobStatusForName(jsonValue.GetString("status"));
-
+    m_statusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("creationTime"))
+  {
+    m_creationTime = jsonValue.GetString("creationTime");
+    m_creationTimeHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

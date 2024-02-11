@@ -21,6 +21,7 @@ namespace Aws
       {
 
         static const int ChangeRequest_HASH = HashingUtils::HashString("ChangeRequest");
+        static const int AccessRequest_HASH = HashingUtils::HashString("AccessRequest");
 
 
         AutomationSubtype GetAutomationSubtypeForName(const Aws::String& name)
@@ -29,6 +30,10 @@ namespace Aws
           if (hashCode == ChangeRequest_HASH)
           {
             return AutomationSubtype::ChangeRequest;
+          }
+          else if (hashCode == AccessRequest_HASH)
+          {
+            return AutomationSubtype::AccessRequest;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -44,8 +49,12 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case AutomationSubtype::NOT_SET:
+            return {};
           case AutomationSubtype::ChangeRequest:
             return "ChangeRequest";
+          case AutomationSubtype::AccessRequest:
+            return "AccessRequest";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

@@ -25,189 +25,105 @@ namespace Model
 {
 
   /**
-   * <p>The configuration that Amazon FSx uses to join the Windows File Server
-   * instance to a self-managed Microsoft Active Directory (AD)
-   * directory.</p><p><h3>See Also:</h3>   <a
+   * <p>Specifies changes you are making to the self-managed Microsoft Active
+   * Directory configuration to which an FSx for Windows File Server file system or
+   * an FSx for ONTAP SVM is joined.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/SelfManagedActiveDirectoryConfigurationUpdates">AWS
    * API Reference</a></p>
    */
   class SelfManagedActiveDirectoryConfigurationUpdates
   {
   public:
-    AWS_FSX_API SelfManagedActiveDirectoryConfigurationUpdates();
+    AWS_FSX_API SelfManagedActiveDirectoryConfigurationUpdates() = default;
     AWS_FSX_API SelfManagedActiveDirectoryConfigurationUpdates(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API SelfManagedActiveDirectoryConfigurationUpdates& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The user name for the service account on your self-managed AD domain that
-     * Amazon FSx will use to join to your AD domain. This account must have the
-     * permission to join computers to the domain in the organizational unit provided
-     * in <code>OrganizationalUnitDistinguishedName</code>.</p>
+     * <p>Specifies the updated user name for the service account on your self-managed
+     * Active Directory domain. Amazon FSx uses this account to join to your
+     * self-managed Active Directory domain.</p> <p>This account must have the
+     * permissions required to join computers to the domain in the organizational unit
+     * provided in <code>OrganizationalUnitDistinguishedName</code>.</p>
      */
-    inline const Aws::String& GetUserName() const{ return m_userName; }
-
-    /**
-     * <p>The user name for the service account on your self-managed AD domain that
-     * Amazon FSx will use to join to your AD domain. This account must have the
-     * permission to join computers to the domain in the organizational unit provided
-     * in <code>OrganizationalUnitDistinguishedName</code>.</p>
-     */
+    inline const Aws::String& GetUserName() const { return m_userName; }
     inline bool UserNameHasBeenSet() const { return m_userNameHasBeenSet; }
+    template<typename UserNameT = Aws::String>
+    void SetUserName(UserNameT&& value) { m_userNameHasBeenSet = true; m_userName = std::forward<UserNameT>(value); }
+    template<typename UserNameT = Aws::String>
+    SelfManagedActiveDirectoryConfigurationUpdates& WithUserName(UserNameT&& value) { SetUserName(std::forward<UserNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The user name for the service account on your self-managed AD domain that
-     * Amazon FSx will use to join to your AD domain. This account must have the
-     * permission to join computers to the domain in the organizational unit provided
-     * in <code>OrganizationalUnitDistinguishedName</code>.</p>
+     * <p>Specifies the updated password for the service account on your self-managed
+     * Active Directory domain. Amazon FSx uses this account to join to your
+     * self-managed Active Directory domain.</p>
      */
-    inline void SetUserName(const Aws::String& value) { m_userNameHasBeenSet = true; m_userName = value; }
-
-    /**
-     * <p>The user name for the service account on your self-managed AD domain that
-     * Amazon FSx will use to join to your AD domain. This account must have the
-     * permission to join computers to the domain in the organizational unit provided
-     * in <code>OrganizationalUnitDistinguishedName</code>.</p>
-     */
-    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = std::move(value); }
-
-    /**
-     * <p>The user name for the service account on your self-managed AD domain that
-     * Amazon FSx will use to join to your AD domain. This account must have the
-     * permission to join computers to the domain in the organizational unit provided
-     * in <code>OrganizationalUnitDistinguishedName</code>.</p>
-     */
-    inline void SetUserName(const char* value) { m_userNameHasBeenSet = true; m_userName.assign(value); }
-
-    /**
-     * <p>The user name for the service account on your self-managed AD domain that
-     * Amazon FSx will use to join to your AD domain. This account must have the
-     * permission to join computers to the domain in the organizational unit provided
-     * in <code>OrganizationalUnitDistinguishedName</code>.</p>
-     */
-    inline SelfManagedActiveDirectoryConfigurationUpdates& WithUserName(const Aws::String& value) { SetUserName(value); return *this;}
-
-    /**
-     * <p>The user name for the service account on your self-managed AD domain that
-     * Amazon FSx will use to join to your AD domain. This account must have the
-     * permission to join computers to the domain in the organizational unit provided
-     * in <code>OrganizationalUnitDistinguishedName</code>.</p>
-     */
-    inline SelfManagedActiveDirectoryConfigurationUpdates& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
-
-    /**
-     * <p>The user name for the service account on your self-managed AD domain that
-     * Amazon FSx will use to join to your AD domain. This account must have the
-     * permission to join computers to the domain in the organizational unit provided
-     * in <code>OrganizationalUnitDistinguishedName</code>.</p>
-     */
-    inline SelfManagedActiveDirectoryConfigurationUpdates& WithUserName(const char* value) { SetUserName(value); return *this;}
-
-
-    /**
-     * <p>The password for the service account on your self-managed AD domain that
-     * Amazon FSx will use to join to your AD domain.</p>
-     */
-    inline const Aws::String& GetPassword() const{ return m_password; }
-
-    /**
-     * <p>The password for the service account on your self-managed AD domain that
-     * Amazon FSx will use to join to your AD domain.</p>
-     */
+    inline const Aws::String& GetPassword() const { return m_password; }
     inline bool PasswordHasBeenSet() const { return m_passwordHasBeenSet; }
+    template<typename PasswordT = Aws::String>
+    void SetPassword(PasswordT&& value) { m_passwordHasBeenSet = true; m_password = std::forward<PasswordT>(value); }
+    template<typename PasswordT = Aws::String>
+    SelfManagedActiveDirectoryConfigurationUpdates& WithPassword(PasswordT&& value) { SetPassword(std::forward<PasswordT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The password for the service account on your self-managed AD domain that
-     * Amazon FSx will use to join to your AD domain.</p>
+     * <p>A list of up to three DNS server or domain controller IP addresses in your
+     * self-managed Active Directory domain.</p>
      */
-    inline void SetPassword(const Aws::String& value) { m_passwordHasBeenSet = true; m_password = value; }
-
-    /**
-     * <p>The password for the service account on your self-managed AD domain that
-     * Amazon FSx will use to join to your AD domain.</p>
-     */
-    inline void SetPassword(Aws::String&& value) { m_passwordHasBeenSet = true; m_password = std::move(value); }
-
-    /**
-     * <p>The password for the service account on your self-managed AD domain that
-     * Amazon FSx will use to join to your AD domain.</p>
-     */
-    inline void SetPassword(const char* value) { m_passwordHasBeenSet = true; m_password.assign(value); }
-
-    /**
-     * <p>The password for the service account on your self-managed AD domain that
-     * Amazon FSx will use to join to your AD domain.</p>
-     */
-    inline SelfManagedActiveDirectoryConfigurationUpdates& WithPassword(const Aws::String& value) { SetPassword(value); return *this;}
-
-    /**
-     * <p>The password for the service account on your self-managed AD domain that
-     * Amazon FSx will use to join to your AD domain.</p>
-     */
-    inline SelfManagedActiveDirectoryConfigurationUpdates& WithPassword(Aws::String&& value) { SetPassword(std::move(value)); return *this;}
-
-    /**
-     * <p>The password for the service account on your self-managed AD domain that
-     * Amazon FSx will use to join to your AD domain.</p>
-     */
-    inline SelfManagedActiveDirectoryConfigurationUpdates& WithPassword(const char* value) { SetPassword(value); return *this;}
-
-
-    /**
-     * <p>A list of up to three IP addresses of DNS servers or domain controllers in
-     * the self-managed AD directory.</p>
-     */
-    inline const Aws::Vector<Aws::String>& GetDnsIps() const{ return m_dnsIps; }
-
-    /**
-     * <p>A list of up to three IP addresses of DNS servers or domain controllers in
-     * the self-managed AD directory.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetDnsIps() const { return m_dnsIps; }
     inline bool DnsIpsHasBeenSet() const { return m_dnsIpsHasBeenSet; }
+    template<typename DnsIpsT = Aws::Vector<Aws::String>>
+    void SetDnsIps(DnsIpsT&& value) { m_dnsIpsHasBeenSet = true; m_dnsIps = std::forward<DnsIpsT>(value); }
+    template<typename DnsIpsT = Aws::Vector<Aws::String>>
+    SelfManagedActiveDirectoryConfigurationUpdates& WithDnsIps(DnsIpsT&& value) { SetDnsIps(std::forward<DnsIpsT>(value)); return *this;}
+    template<typename DnsIpsT = Aws::String>
+    SelfManagedActiveDirectoryConfigurationUpdates& AddDnsIps(DnsIpsT&& value) { m_dnsIpsHasBeenSet = true; m_dnsIps.emplace_back(std::forward<DnsIpsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>A list of up to three IP addresses of DNS servers or domain controllers in
-     * the self-managed AD directory.</p>
+     * <p>Specifies an updated fully qualified domain name of your self-managed Active
+     * Directory configuration.</p>
      */
-    inline void SetDnsIps(const Aws::Vector<Aws::String>& value) { m_dnsIpsHasBeenSet = true; m_dnsIps = value; }
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
+    inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    SelfManagedActiveDirectoryConfigurationUpdates& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A list of up to three IP addresses of DNS servers or domain controllers in
-     * the self-managed AD directory.</p>
+     * <p>Specifies an updated fully qualified distinguished name of the organization
+     * unit within your self-managed Active Directory.</p>
      */
-    inline void SetDnsIps(Aws::Vector<Aws::String>&& value) { m_dnsIpsHasBeenSet = true; m_dnsIps = std::move(value); }
+    inline const Aws::String& GetOrganizationalUnitDistinguishedName() const { return m_organizationalUnitDistinguishedName; }
+    inline bool OrganizationalUnitDistinguishedNameHasBeenSet() const { return m_organizationalUnitDistinguishedNameHasBeenSet; }
+    template<typename OrganizationalUnitDistinguishedNameT = Aws::String>
+    void SetOrganizationalUnitDistinguishedName(OrganizationalUnitDistinguishedNameT&& value) { m_organizationalUnitDistinguishedNameHasBeenSet = true; m_organizationalUnitDistinguishedName = std::forward<OrganizationalUnitDistinguishedNameT>(value); }
+    template<typename OrganizationalUnitDistinguishedNameT = Aws::String>
+    SelfManagedActiveDirectoryConfigurationUpdates& WithOrganizationalUnitDistinguishedName(OrganizationalUnitDistinguishedNameT&& value) { SetOrganizationalUnitDistinguishedName(std::forward<OrganizationalUnitDistinguishedNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A list of up to three IP addresses of DNS servers or domain controllers in
-     * the self-managed AD directory.</p>
+     * <p>For FSx for ONTAP file systems only - Specifies the updated name of the
+     * self-managed Active Directory domain group whose members are granted
+     * administrative privileges for the Amazon FSx resource.</p>
      */
-    inline SelfManagedActiveDirectoryConfigurationUpdates& WithDnsIps(const Aws::Vector<Aws::String>& value) { SetDnsIps(value); return *this;}
-
-    /**
-     * <p>A list of up to three IP addresses of DNS servers or domain controllers in
-     * the self-managed AD directory.</p>
-     */
-    inline SelfManagedActiveDirectoryConfigurationUpdates& WithDnsIps(Aws::Vector<Aws::String>&& value) { SetDnsIps(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of up to three IP addresses of DNS servers or domain controllers in
-     * the self-managed AD directory.</p>
-     */
-    inline SelfManagedActiveDirectoryConfigurationUpdates& AddDnsIps(const Aws::String& value) { m_dnsIpsHasBeenSet = true; m_dnsIps.push_back(value); return *this; }
-
-    /**
-     * <p>A list of up to three IP addresses of DNS servers or domain controllers in
-     * the self-managed AD directory.</p>
-     */
-    inline SelfManagedActiveDirectoryConfigurationUpdates& AddDnsIps(Aws::String&& value) { m_dnsIpsHasBeenSet = true; m_dnsIps.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of up to three IP addresses of DNS servers or domain controllers in
-     * the self-managed AD directory.</p>
-     */
-    inline SelfManagedActiveDirectoryConfigurationUpdates& AddDnsIps(const char* value) { m_dnsIpsHasBeenSet = true; m_dnsIps.push_back(value); return *this; }
-
+    inline const Aws::String& GetFileSystemAdministratorsGroup() const { return m_fileSystemAdministratorsGroup; }
+    inline bool FileSystemAdministratorsGroupHasBeenSet() const { return m_fileSystemAdministratorsGroupHasBeenSet; }
+    template<typename FileSystemAdministratorsGroupT = Aws::String>
+    void SetFileSystemAdministratorsGroup(FileSystemAdministratorsGroupT&& value) { m_fileSystemAdministratorsGroupHasBeenSet = true; m_fileSystemAdministratorsGroup = std::forward<FileSystemAdministratorsGroupT>(value); }
+    template<typename FileSystemAdministratorsGroupT = Aws::String>
+    SelfManagedActiveDirectoryConfigurationUpdates& WithFileSystemAdministratorsGroup(FileSystemAdministratorsGroupT&& value) { SetFileSystemAdministratorsGroup(std::forward<FileSystemAdministratorsGroupT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userName;
@@ -218,6 +134,15 @@ namespace Model
 
     Aws::Vector<Aws::String> m_dnsIps;
     bool m_dnsIpsHasBeenSet = false;
+
+    Aws::String m_domainName;
+    bool m_domainNameHasBeenSet = false;
+
+    Aws::String m_organizationalUnitDistinguishedName;
+    bool m_organizationalUnitDistinguishedNameHasBeenSet = false;
+
+    Aws::String m_fileSystemAdministratorsGroup;
+    bool m_fileSystemAdministratorsGroupHasBeenSet = false;
   };
 
 } // namespace Model

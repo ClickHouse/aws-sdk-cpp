@@ -12,15 +12,15 @@ using namespace Aws::mgn::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-AssociateApplicationsRequest::AssociateApplicationsRequest() : 
-    m_applicationIDsHasBeenSet(false),
-    m_waveIDHasBeenSet(false)
-{
-}
-
 Aws::String AssociateApplicationsRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_accountIDHasBeenSet)
+  {
+   payload.WithString("accountID", m_accountID);
+
+  }
 
   if(m_applicationIDsHasBeenSet)
   {

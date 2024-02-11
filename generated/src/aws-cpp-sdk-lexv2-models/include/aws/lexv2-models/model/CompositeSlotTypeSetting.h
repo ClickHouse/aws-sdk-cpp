@@ -33,52 +33,25 @@ namespace Model
   class CompositeSlotTypeSetting
   {
   public:
-    AWS_LEXMODELSV2_API CompositeSlotTypeSetting();
+    AWS_LEXMODELSV2_API CompositeSlotTypeSetting() = default;
     AWS_LEXMODELSV2_API CompositeSlotTypeSetting(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API CompositeSlotTypeSetting& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Subslots in the composite slot.</p>
      */
-    inline const Aws::Vector<SubSlotTypeComposition>& GetSubSlots() const{ return m_subSlots; }
-
-    /**
-     * <p>Subslots in the composite slot.</p>
-     */
+    inline const Aws::Vector<SubSlotTypeComposition>& GetSubSlots() const { return m_subSlots; }
     inline bool SubSlotsHasBeenSet() const { return m_subSlotsHasBeenSet; }
-
-    /**
-     * <p>Subslots in the composite slot.</p>
-     */
-    inline void SetSubSlots(const Aws::Vector<SubSlotTypeComposition>& value) { m_subSlotsHasBeenSet = true; m_subSlots = value; }
-
-    /**
-     * <p>Subslots in the composite slot.</p>
-     */
-    inline void SetSubSlots(Aws::Vector<SubSlotTypeComposition>&& value) { m_subSlotsHasBeenSet = true; m_subSlots = std::move(value); }
-
-    /**
-     * <p>Subslots in the composite slot.</p>
-     */
-    inline CompositeSlotTypeSetting& WithSubSlots(const Aws::Vector<SubSlotTypeComposition>& value) { SetSubSlots(value); return *this;}
-
-    /**
-     * <p>Subslots in the composite slot.</p>
-     */
-    inline CompositeSlotTypeSetting& WithSubSlots(Aws::Vector<SubSlotTypeComposition>&& value) { SetSubSlots(std::move(value)); return *this;}
-
-    /**
-     * <p>Subslots in the composite slot.</p>
-     */
-    inline CompositeSlotTypeSetting& AddSubSlots(const SubSlotTypeComposition& value) { m_subSlotsHasBeenSet = true; m_subSlots.push_back(value); return *this; }
-
-    /**
-     * <p>Subslots in the composite slot.</p>
-     */
-    inline CompositeSlotTypeSetting& AddSubSlots(SubSlotTypeComposition&& value) { m_subSlotsHasBeenSet = true; m_subSlots.push_back(std::move(value)); return *this; }
-
+    template<typename SubSlotsT = Aws::Vector<SubSlotTypeComposition>>
+    void SetSubSlots(SubSlotsT&& value) { m_subSlotsHasBeenSet = true; m_subSlots = std::forward<SubSlotsT>(value); }
+    template<typename SubSlotsT = Aws::Vector<SubSlotTypeComposition>>
+    CompositeSlotTypeSetting& WithSubSlots(SubSlotsT&& value) { SetSubSlots(std::forward<SubSlotsT>(value)); return *this;}
+    template<typename SubSlotsT = SubSlotTypeComposition>
+    CompositeSlotTypeSetting& AddSubSlots(SubSlotsT&& value) { m_subSlotsHasBeenSet = true; m_subSlots.emplace_back(std::forward<SubSlotsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<SubSlotTypeComposition> m_subSlots;

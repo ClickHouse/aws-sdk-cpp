@@ -23,7 +23,7 @@ namespace Model
   class CreateResourceDefinitionRequest : public GreengrassRequest
   {
   public:
-    AWS_GREENGRASS_API CreateResourceDefinitionRequest();
+    AWS_GREENGRASS_API CreateResourceDefinitionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,184 +36,57 @@ namespace Model
     AWS_GREENGRASS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * A client token used to correlate requests and responses.
      */
-    inline const Aws::String& GetAmznClientToken() const{ return m_amznClientToken; }
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
+    inline const Aws::String& GetAmznClientToken() const { return m_amznClientToken; }
     inline bool AmznClientTokenHasBeenSet() const { return m_amznClientTokenHasBeenSet; }
+    template<typename AmznClientTokenT = Aws::String>
+    void SetAmznClientToken(AmznClientTokenT&& value) { m_amznClientTokenHasBeenSet = true; m_amznClientToken = std::forward<AmznClientTokenT>(value); }
+    template<typename AmznClientTokenT = Aws::String>
+    CreateResourceDefinitionRequest& WithAmznClientToken(AmznClientTokenT&& value) { SetAmznClientToken(std::forward<AmznClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline void SetAmznClientToken(const Aws::String& value) { m_amznClientTokenHasBeenSet = true; m_amznClientToken = value; }
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline void SetAmznClientToken(Aws::String&& value) { m_amznClientTokenHasBeenSet = true; m_amznClientToken = std::move(value); }
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline void SetAmznClientToken(const char* value) { m_amznClientTokenHasBeenSet = true; m_amznClientToken.assign(value); }
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline CreateResourceDefinitionRequest& WithAmznClientToken(const Aws::String& value) { SetAmznClientToken(value); return *this;}
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline CreateResourceDefinitionRequest& WithAmznClientToken(Aws::String&& value) { SetAmznClientToken(std::move(value)); return *this;}
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline CreateResourceDefinitionRequest& WithAmznClientToken(const char* value) { SetAmznClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * Information about the initial version of the resource definition.
      */
-    inline const ResourceDefinitionVersion& GetInitialVersion() const{ return m_initialVersion; }
-
-    /**
-     * Information about the initial version of the resource definition.
-     */
+    inline const ResourceDefinitionVersion& GetInitialVersion() const { return m_initialVersion; }
     inline bool InitialVersionHasBeenSet() const { return m_initialVersionHasBeenSet; }
+    template<typename InitialVersionT = ResourceDefinitionVersion>
+    void SetInitialVersion(InitialVersionT&& value) { m_initialVersionHasBeenSet = true; m_initialVersion = std::forward<InitialVersionT>(value); }
+    template<typename InitialVersionT = ResourceDefinitionVersion>
+    CreateResourceDefinitionRequest& WithInitialVersion(InitialVersionT&& value) { SetInitialVersion(std::forward<InitialVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Information about the initial version of the resource definition.
-     */
-    inline void SetInitialVersion(const ResourceDefinitionVersion& value) { m_initialVersionHasBeenSet = true; m_initialVersion = value; }
-
-    /**
-     * Information about the initial version of the resource definition.
-     */
-    inline void SetInitialVersion(ResourceDefinitionVersion&& value) { m_initialVersionHasBeenSet = true; m_initialVersion = std::move(value); }
-
-    /**
-     * Information about the initial version of the resource definition.
-     */
-    inline CreateResourceDefinitionRequest& WithInitialVersion(const ResourceDefinitionVersion& value) { SetInitialVersion(value); return *this;}
-
-    /**
-     * Information about the initial version of the resource definition.
-     */
-    inline CreateResourceDefinitionRequest& WithInitialVersion(ResourceDefinitionVersion&& value) { SetInitialVersion(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * The name of the resource definition.
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * The name of the resource definition.
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateResourceDefinitionRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The name of the resource definition.
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * The name of the resource definition.
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * The name of the resource definition.
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * The name of the resource definition.
-     */
-    inline CreateResourceDefinitionRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * The name of the resource definition.
-     */
-    inline CreateResourceDefinitionRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * The name of the resource definition.
-     */
-    inline CreateResourceDefinitionRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * Tag(s) to add to the new resource.
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline CreateResourceDefinitionRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline CreateResourceDefinitionRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline CreateResourceDefinitionRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline CreateResourceDefinitionRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline CreateResourceDefinitionRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline CreateResourceDefinitionRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline CreateResourceDefinitionRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline CreateResourceDefinitionRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline CreateResourceDefinitionRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateResourceDefinitionRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateResourceDefinitionRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_amznClientToken;

@@ -12,25 +12,6 @@ using namespace Aws::imagebuilder::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateInfrastructureConfigurationRequest::UpdateInfrastructureConfigurationRequest() : 
-    m_infrastructureConfigurationArnHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_instanceTypesHasBeenSet(false),
-    m_instanceProfileNameHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_loggingHasBeenSet(false),
-    m_keyPairHasBeenSet(false),
-    m_terminateInstanceOnFailure(false),
-    m_terminateInstanceOnFailureHasBeenSet(false),
-    m_snsTopicArnHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_resourceTagsHasBeenSet(false),
-    m_instanceMetadataOptionsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateInfrastructureConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -105,12 +86,6 @@ Aws::String UpdateInfrastructureConfigurationRequest::SerializePayload() const
 
   }
 
-  if(m_clientTokenHasBeenSet)
-  {
-   payload.WithString("clientToken", m_clientToken);
-
-  }
-
   if(m_resourceTagsHasBeenSet)
   {
    JsonValue resourceTagsJsonMap;
@@ -125,6 +100,18 @@ Aws::String UpdateInfrastructureConfigurationRequest::SerializePayload() const
   if(m_instanceMetadataOptionsHasBeenSet)
   {
    payload.WithObject("instanceMetadataOptions", m_instanceMetadataOptions.Jsonize());
+
+  }
+
+  if(m_placementHasBeenSet)
+  {
+   payload.WithObject("placement", m_placement.Jsonize());
+
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("clientToken", m_clientToken);
 
   }
 

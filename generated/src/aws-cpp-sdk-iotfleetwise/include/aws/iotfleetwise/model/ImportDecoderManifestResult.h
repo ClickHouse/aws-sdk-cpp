@@ -27,118 +27,52 @@ namespace Model
   class ImportDecoderManifestResult
   {
   public:
-    AWS_IOTFLEETWISE_API ImportDecoderManifestResult();
+    AWS_IOTFLEETWISE_API ImportDecoderManifestResult() = default;
     AWS_IOTFLEETWISE_API ImportDecoderManifestResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_IOTFLEETWISE_API ImportDecoderManifestResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p> The name of the imported decoder manifest. </p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ImportDecoderManifestResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The name of the imported decoder manifest. </p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p> The name of the imported decoder manifest. </p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p> The name of the imported decoder manifest. </p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p> The name of the imported decoder manifest. </p>
-     */
-    inline ImportDecoderManifestResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p> The name of the imported decoder manifest. </p>
-     */
-    inline ImportDecoderManifestResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name of the imported decoder manifest. </p>
-     */
-    inline ImportDecoderManifestResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The Amazon Resource Name (ARN) of the decoder manifest that was imported.
      * </p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    ImportDecoderManifestResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The Amazon Resource Name (ARN) of the decoder manifest that was imported.
-     * </p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the decoder manifest that was imported.
-     * </p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the decoder manifest that was imported.
-     * </p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the decoder manifest that was imported.
-     * </p>
-     */
-    inline ImportDecoderManifestResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the decoder manifest that was imported.
-     * </p>
-     */
-    inline ImportDecoderManifestResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the decoder manifest that was imported.
-     * </p>
-     */
-    inline ImportDecoderManifestResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ImportDecoderManifestResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ImportDecoderManifestResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ImportDecoderManifestResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ImportDecoderManifestResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

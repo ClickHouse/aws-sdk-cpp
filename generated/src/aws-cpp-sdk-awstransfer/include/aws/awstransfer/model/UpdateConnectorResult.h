@@ -27,73 +27,37 @@ namespace Model
   class UpdateConnectorResult
   {
   public:
-    AWS_TRANSFER_API UpdateConnectorResult();
+    AWS_TRANSFER_API UpdateConnectorResult() = default;
     AWS_TRANSFER_API UpdateConnectorResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_TRANSFER_API UpdateConnectorResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Returns the identifier of the connector object that you are updating.</p>
      */
-    inline const Aws::String& GetConnectorId() const{ return m_connectorId; }
+    inline const Aws::String& GetConnectorId() const { return m_connectorId; }
+    template<typename ConnectorIdT = Aws::String>
+    void SetConnectorId(ConnectorIdT&& value) { m_connectorIdHasBeenSet = true; m_connectorId = std::forward<ConnectorIdT>(value); }
+    template<typename ConnectorIdT = Aws::String>
+    UpdateConnectorResult& WithConnectorId(ConnectorIdT&& value) { SetConnectorId(std::forward<ConnectorIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Returns the identifier of the connector object that you are updating.</p>
-     */
-    inline void SetConnectorId(const Aws::String& value) { m_connectorId = value; }
-
-    /**
-     * <p>Returns the identifier of the connector object that you are updating.</p>
-     */
-    inline void SetConnectorId(Aws::String&& value) { m_connectorId = std::move(value); }
-
-    /**
-     * <p>Returns the identifier of the connector object that you are updating.</p>
-     */
-    inline void SetConnectorId(const char* value) { m_connectorId.assign(value); }
-
-    /**
-     * <p>Returns the identifier of the connector object that you are updating.</p>
-     */
-    inline UpdateConnectorResult& WithConnectorId(const Aws::String& value) { SetConnectorId(value); return *this;}
-
-    /**
-     * <p>Returns the identifier of the connector object that you are updating.</p>
-     */
-    inline UpdateConnectorResult& WithConnectorId(Aws::String&& value) { SetConnectorId(std::move(value)); return *this;}
-
-    /**
-     * <p>Returns the identifier of the connector object that you are updating.</p>
-     */
-    inline UpdateConnectorResult& WithConnectorId(const char* value) { SetConnectorId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateConnectorResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateConnectorResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateConnectorResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateConnectorResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_connectorId;
+    bool m_connectorIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

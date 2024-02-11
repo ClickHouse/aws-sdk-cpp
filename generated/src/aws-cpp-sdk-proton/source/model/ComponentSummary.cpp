@@ -18,35 +18,7 @@ namespace Proton
 namespace Model
 {
 
-ComponentSummary::ComponentSummary() : 
-    m_arnHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_deploymentStatus(DeploymentStatus::NOT_SET),
-    m_deploymentStatusHasBeenSet(false),
-    m_deploymentStatusMessageHasBeenSet(false),
-    m_environmentNameHasBeenSet(false),
-    m_lastDeploymentAttemptedAtHasBeenSet(false),
-    m_lastDeploymentSucceededAtHasBeenSet(false),
-    m_lastModifiedAtHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_serviceInstanceNameHasBeenSet(false),
-    m_serviceNameHasBeenSet(false)
-{
-}
-
-ComponentSummary::ComponentSummary(JsonView jsonValue) : 
-    m_arnHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_deploymentStatus(DeploymentStatus::NOT_SET),
-    m_deploymentStatusHasBeenSet(false),
-    m_deploymentStatusMessageHasBeenSet(false),
-    m_environmentNameHasBeenSet(false),
-    m_lastDeploymentAttemptedAtHasBeenSet(false),
-    m_lastDeploymentSucceededAtHasBeenSet(false),
-    m_lastModifiedAtHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_serviceInstanceNameHasBeenSet(false),
-    m_serviceNameHasBeenSet(false)
+ComponentSummary::ComponentSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -56,80 +28,68 @@ ComponentSummary& ComponentSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("arn"))
   {
     m_arn = jsonValue.GetString("arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("createdAt"))
   {
     m_createdAt = jsonValue.GetDouble("createdAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("deploymentStatus"))
   {
     m_deploymentStatus = DeploymentStatusMapper::GetDeploymentStatusForName(jsonValue.GetString("deploymentStatus"));
-
     m_deploymentStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("deploymentStatusMessage"))
   {
     m_deploymentStatusMessage = jsonValue.GetString("deploymentStatusMessage");
-
     m_deploymentStatusMessageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("environmentName"))
   {
     m_environmentName = jsonValue.GetString("environmentName");
-
     m_environmentNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("lastAttemptedDeploymentId"))
+  {
+    m_lastAttemptedDeploymentId = jsonValue.GetString("lastAttemptedDeploymentId");
+    m_lastAttemptedDeploymentIdHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("lastDeploymentAttemptedAt"))
   {
     m_lastDeploymentAttemptedAt = jsonValue.GetDouble("lastDeploymentAttemptedAt");
-
     m_lastDeploymentAttemptedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastDeploymentSucceededAt"))
   {
     m_lastDeploymentSucceededAt = jsonValue.GetDouble("lastDeploymentSucceededAt");
-
     m_lastDeploymentSucceededAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastModifiedAt"))
   {
     m_lastModifiedAt = jsonValue.GetDouble("lastModifiedAt");
-
     m_lastModifiedAtHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("lastSucceededDeploymentId"))
+  {
+    m_lastSucceededDeploymentId = jsonValue.GetString("lastSucceededDeploymentId");
+    m_lastSucceededDeploymentIdHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("serviceInstanceName"))
   {
     m_serviceInstanceName = jsonValue.GetString("serviceInstanceName");
-
     m_serviceInstanceNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("serviceName"))
   {
     m_serviceName = jsonValue.GetString("serviceName");
-
     m_serviceNameHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -165,6 +125,12 @@ JsonValue ComponentSummary::Jsonize() const
 
   }
 
+  if(m_lastAttemptedDeploymentIdHasBeenSet)
+  {
+   payload.WithString("lastAttemptedDeploymentId", m_lastAttemptedDeploymentId);
+
+  }
+
   if(m_lastDeploymentAttemptedAtHasBeenSet)
   {
    payload.WithDouble("lastDeploymentAttemptedAt", m_lastDeploymentAttemptedAt.SecondsWithMSPrecision());
@@ -178,6 +144,12 @@ JsonValue ComponentSummary::Jsonize() const
   if(m_lastModifiedAtHasBeenSet)
   {
    payload.WithDouble("lastModifiedAt", m_lastModifiedAt.SecondsWithMSPrecision());
+  }
+
+  if(m_lastSucceededDeploymentIdHasBeenSet)
+  {
+   payload.WithString("lastSucceededDeploymentId", m_lastSucceededDeploymentId);
+
   }
 
   if(m_nameHasBeenSet)

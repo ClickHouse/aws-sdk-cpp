@@ -31,35 +31,24 @@ namespace Model
   class InputParallelism
   {
   public:
-    AWS_KINESISANALYTICSV2_API InputParallelism();
+    AWS_KINESISANALYTICSV2_API InputParallelism() = default;
     AWS_KINESISANALYTICSV2_API InputParallelism(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API InputParallelism& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of in-application streams to create.</p>
      */
-    inline int GetCount() const{ return m_count; }
-
-    /**
-     * <p>The number of in-application streams to create.</p>
-     */
+    inline int GetCount() const { return m_count; }
     inline bool CountHasBeenSet() const { return m_countHasBeenSet; }
-
-    /**
-     * <p>The number of in-application streams to create.</p>
-     */
     inline void SetCount(int value) { m_countHasBeenSet = true; m_count = value; }
-
-    /**
-     * <p>The number of in-application streams to create.</p>
-     */
     inline InputParallelism& WithCount(int value) { SetCount(value); return *this;}
-
+    ///@}
   private:
 
-    int m_count;
+    int m_count{0};
     bool m_countHasBeenSet = false;
   };
 

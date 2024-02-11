@@ -33,151 +33,62 @@ namespace Model
   class WaitAndContinueSpecification
   {
   public:
-    AWS_LEXMODELSV2_API WaitAndContinueSpecification();
+    AWS_LEXMODELSV2_API WaitAndContinueSpecification() = default;
     AWS_LEXMODELSV2_API WaitAndContinueSpecification(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API WaitAndContinueSpecification& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The response that Amazon Lex sends to indicate that the bot is waiting for
      * the conversation to continue.</p>
      */
-    inline const ResponseSpecification& GetWaitingResponse() const{ return m_waitingResponse; }
-
-    /**
-     * <p>The response that Amazon Lex sends to indicate that the bot is waiting for
-     * the conversation to continue.</p>
-     */
+    inline const ResponseSpecification& GetWaitingResponse() const { return m_waitingResponse; }
     inline bool WaitingResponseHasBeenSet() const { return m_waitingResponseHasBeenSet; }
+    template<typename WaitingResponseT = ResponseSpecification>
+    void SetWaitingResponse(WaitingResponseT&& value) { m_waitingResponseHasBeenSet = true; m_waitingResponse = std::forward<WaitingResponseT>(value); }
+    template<typename WaitingResponseT = ResponseSpecification>
+    WaitAndContinueSpecification& WithWaitingResponse(WaitingResponseT&& value) { SetWaitingResponse(std::forward<WaitingResponseT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The response that Amazon Lex sends to indicate that the bot is waiting for
-     * the conversation to continue.</p>
-     */
-    inline void SetWaitingResponse(const ResponseSpecification& value) { m_waitingResponseHasBeenSet = true; m_waitingResponse = value; }
-
-    /**
-     * <p>The response that Amazon Lex sends to indicate that the bot is waiting for
-     * the conversation to continue.</p>
-     */
-    inline void SetWaitingResponse(ResponseSpecification&& value) { m_waitingResponseHasBeenSet = true; m_waitingResponse = std::move(value); }
-
-    /**
-     * <p>The response that Amazon Lex sends to indicate that the bot is waiting for
-     * the conversation to continue.</p>
-     */
-    inline WaitAndContinueSpecification& WithWaitingResponse(const ResponseSpecification& value) { SetWaitingResponse(value); return *this;}
-
-    /**
-     * <p>The response that Amazon Lex sends to indicate that the bot is waiting for
-     * the conversation to continue.</p>
-     */
-    inline WaitAndContinueSpecification& WithWaitingResponse(ResponseSpecification&& value) { SetWaitingResponse(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The response that Amazon Lex sends to indicate that the bot is ready to
      * continue the conversation.</p>
      */
-    inline const ResponseSpecification& GetContinueResponse() const{ return m_continueResponse; }
-
-    /**
-     * <p>The response that Amazon Lex sends to indicate that the bot is ready to
-     * continue the conversation.</p>
-     */
+    inline const ResponseSpecification& GetContinueResponse() const { return m_continueResponse; }
     inline bool ContinueResponseHasBeenSet() const { return m_continueResponseHasBeenSet; }
+    template<typename ContinueResponseT = ResponseSpecification>
+    void SetContinueResponse(ContinueResponseT&& value) { m_continueResponseHasBeenSet = true; m_continueResponse = std::forward<ContinueResponseT>(value); }
+    template<typename ContinueResponseT = ResponseSpecification>
+    WaitAndContinueSpecification& WithContinueResponse(ContinueResponseT&& value) { SetContinueResponse(std::forward<ContinueResponseT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The response that Amazon Lex sends to indicate that the bot is ready to
-     * continue the conversation.</p>
-     */
-    inline void SetContinueResponse(const ResponseSpecification& value) { m_continueResponseHasBeenSet = true; m_continueResponse = value; }
-
-    /**
-     * <p>The response that Amazon Lex sends to indicate that the bot is ready to
-     * continue the conversation.</p>
-     */
-    inline void SetContinueResponse(ResponseSpecification&& value) { m_continueResponseHasBeenSet = true; m_continueResponse = std::move(value); }
-
-    /**
-     * <p>The response that Amazon Lex sends to indicate that the bot is ready to
-     * continue the conversation.</p>
-     */
-    inline WaitAndContinueSpecification& WithContinueResponse(const ResponseSpecification& value) { SetContinueResponse(value); return *this;}
-
-    /**
-     * <p>The response that Amazon Lex sends to indicate that the bot is ready to
-     * continue the conversation.</p>
-     */
-    inline WaitAndContinueSpecification& WithContinueResponse(ResponseSpecification&& value) { SetContinueResponse(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A response that Amazon Lex sends periodically to the user to indicate that
      * the bot is still waiting for input from the user.</p>
      */
-    inline const StillWaitingResponseSpecification& GetStillWaitingResponse() const{ return m_stillWaitingResponse; }
-
-    /**
-     * <p>A response that Amazon Lex sends periodically to the user to indicate that
-     * the bot is still waiting for input from the user.</p>
-     */
+    inline const StillWaitingResponseSpecification& GetStillWaitingResponse() const { return m_stillWaitingResponse; }
     inline bool StillWaitingResponseHasBeenSet() const { return m_stillWaitingResponseHasBeenSet; }
+    template<typename StillWaitingResponseT = StillWaitingResponseSpecification>
+    void SetStillWaitingResponse(StillWaitingResponseT&& value) { m_stillWaitingResponseHasBeenSet = true; m_stillWaitingResponse = std::forward<StillWaitingResponseT>(value); }
+    template<typename StillWaitingResponseT = StillWaitingResponseSpecification>
+    WaitAndContinueSpecification& WithStillWaitingResponse(StillWaitingResponseT&& value) { SetStillWaitingResponse(std::forward<StillWaitingResponseT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A response that Amazon Lex sends periodically to the user to indicate that
-     * the bot is still waiting for input from the user.</p>
-     */
-    inline void SetStillWaitingResponse(const StillWaitingResponseSpecification& value) { m_stillWaitingResponseHasBeenSet = true; m_stillWaitingResponse = value; }
-
-    /**
-     * <p>A response that Amazon Lex sends periodically to the user to indicate that
-     * the bot is still waiting for input from the user.</p>
-     */
-    inline void SetStillWaitingResponse(StillWaitingResponseSpecification&& value) { m_stillWaitingResponseHasBeenSet = true; m_stillWaitingResponse = std::move(value); }
-
-    /**
-     * <p>A response that Amazon Lex sends periodically to the user to indicate that
-     * the bot is still waiting for input from the user.</p>
-     */
-    inline WaitAndContinueSpecification& WithStillWaitingResponse(const StillWaitingResponseSpecification& value) { SetStillWaitingResponse(value); return *this;}
-
-    /**
-     * <p>A response that Amazon Lex sends periodically to the user to indicate that
-     * the bot is still waiting for input from the user.</p>
-     */
-    inline WaitAndContinueSpecification& WithStillWaitingResponse(StillWaitingResponseSpecification&& value) { SetStillWaitingResponse(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether the bot will wait for a user to respond. When this field is
      * false, wait and continue responses for a slot aren't used. If the
      * <code>active</code> field isn't specified, the default is true.</p>
      */
-    inline bool GetActive() const{ return m_active; }
-
-    /**
-     * <p>Specifies whether the bot will wait for a user to respond. When this field is
-     * false, wait and continue responses for a slot aren't used. If the
-     * <code>active</code> field isn't specified, the default is true.</p>
-     */
+    inline bool GetActive() const { return m_active; }
     inline bool ActiveHasBeenSet() const { return m_activeHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the bot will wait for a user to respond. When this field is
-     * false, wait and continue responses for a slot aren't used. If the
-     * <code>active</code> field isn't specified, the default is true.</p>
-     */
     inline void SetActive(bool value) { m_activeHasBeenSet = true; m_active = value; }
-
-    /**
-     * <p>Specifies whether the bot will wait for a user to respond. When this field is
-     * false, wait and continue responses for a slot aren't used. If the
-     * <code>active</code> field isn't specified, the default is true.</p>
-     */
     inline WaitAndContinueSpecification& WithActive(bool value) { SetActive(value); return *this;}
-
+    ///@}
   private:
 
     ResponseSpecification m_waitingResponse;
@@ -189,7 +100,7 @@ namespace Model
     StillWaitingResponseSpecification m_stillWaitingResponse;
     bool m_stillWaitingResponseHasBeenSet = false;
 
-    bool m_active;
+    bool m_active{false};
     bool m_activeHasBeenSet = false;
   };
 

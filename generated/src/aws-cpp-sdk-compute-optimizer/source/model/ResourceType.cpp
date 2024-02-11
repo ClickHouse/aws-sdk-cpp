@@ -26,6 +26,10 @@ namespace Aws
         static const int LambdaFunction_HASH = HashingUtils::HashString("LambdaFunction");
         static const int NotApplicable_HASH = HashingUtils::HashString("NotApplicable");
         static const int EcsService_HASH = HashingUtils::HashString("EcsService");
+        static const int License_HASH = HashingUtils::HashString("License");
+        static const int RdsDBInstance_HASH = HashingUtils::HashString("RdsDBInstance");
+        static const int AuroraDBClusterStorage_HASH = HashingUtils::HashString("AuroraDBClusterStorage");
+        static const int Idle_HASH = HashingUtils::HashString("Idle");
 
 
         ResourceType GetResourceTypeForName(const Aws::String& name)
@@ -55,6 +59,22 @@ namespace Aws
           {
             return ResourceType::EcsService;
           }
+          else if (hashCode == License_HASH)
+          {
+            return ResourceType::License;
+          }
+          else if (hashCode == RdsDBInstance_HASH)
+          {
+            return ResourceType::RdsDBInstance;
+          }
+          else if (hashCode == AuroraDBClusterStorage_HASH)
+          {
+            return ResourceType::AuroraDBClusterStorage;
+          }
+          else if (hashCode == Idle_HASH)
+          {
+            return ResourceType::Idle;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -69,6 +89,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case ResourceType::NOT_SET:
+            return {};
           case ResourceType::Ec2Instance:
             return "Ec2Instance";
           case ResourceType::AutoScalingGroup:
@@ -81,6 +103,14 @@ namespace Aws
             return "NotApplicable";
           case ResourceType::EcsService:
             return "EcsService";
+          case ResourceType::License:
+            return "License";
+          case ResourceType::RdsDBInstance:
+            return "RdsDBInstance";
+          case ResourceType::AuroraDBClusterStorage:
+            return "AuroraDBClusterStorage";
+          case ResourceType::Idle:
+            return "Idle";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

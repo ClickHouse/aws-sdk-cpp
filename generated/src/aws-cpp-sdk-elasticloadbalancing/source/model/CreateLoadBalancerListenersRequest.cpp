@@ -10,12 +10,6 @@
 using namespace Aws::ElasticLoadBalancing::Model;
 using namespace Aws::Utils;
 
-CreateLoadBalancerListenersRequest::CreateLoadBalancerListenersRequest() : 
-    m_loadBalancerNameHasBeenSet(false),
-    m_listenersHasBeenSet(false)
-{
-}
-
 Aws::String CreateLoadBalancerListenersRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,11 +21,18 @@ Aws::String CreateLoadBalancerListenersRequest::SerializePayload() const
 
   if(m_listenersHasBeenSet)
   {
-    unsigned listenersCount = 1;
-    for(auto& item : m_listeners)
+    if (m_listeners.empty())
     {
-      item.OutputToStream(ss, "Listeners.member.", listenersCount, "");
-      listenersCount++;
+      ss << "Listeners=&";
+    }
+    else
+    {
+      unsigned listenersCount = 1;
+      for(auto& item : m_listeners)
+      {
+        item.OutputToStream(ss, "Listeners.member.", listenersCount, "");
+        listenersCount++;
+      }
     }
   }
 

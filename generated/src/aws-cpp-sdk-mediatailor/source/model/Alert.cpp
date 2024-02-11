@@ -18,21 +18,7 @@ namespace MediaTailor
 namespace Model
 {
 
-Alert::Alert() : 
-    m_alertCodeHasBeenSet(false),
-    m_alertMessageHasBeenSet(false),
-    m_lastModifiedTimeHasBeenSet(false),
-    m_relatedResourceArnsHasBeenSet(false),
-    m_resourceArnHasBeenSet(false)
-{
-}
-
-Alert::Alert(JsonView jsonValue) : 
-    m_alertCodeHasBeenSet(false),
-    m_alertMessageHasBeenSet(false),
-    m_lastModifiedTimeHasBeenSet(false),
-    m_relatedResourceArnsHasBeenSet(false),
-    m_resourceArnHasBeenSet(false)
+Alert::Alert(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ Alert& Alert::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AlertCode"))
   {
     m_alertCode = jsonValue.GetString("AlertCode");
-
     m_alertCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AlertMessage"))
   {
     m_alertMessage = jsonValue.GetString("AlertMessage");
-
     m_alertMessageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastModifiedTime"))
   {
     m_lastModifiedTime = jsonValue.GetDouble("LastModifiedTime");
-
     m_lastModifiedTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RelatedResourceArns"))
   {
     Aws::Utils::Array<JsonView> relatedResourceArnsJsonList = jsonValue.GetArray("RelatedResourceArns");
@@ -69,14 +49,16 @@ Alert& Alert::operator =(JsonView jsonValue)
     }
     m_relatedResourceArnsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceArn"))
   {
     m_resourceArn = jsonValue.GetString("ResourceArn");
-
     m_resourceArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Category"))
+  {
+    m_category = AlertCategoryMapper::GetAlertCategoryForName(jsonValue.GetString("Category"));
+    m_categoryHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -116,6 +98,11 @@ JsonValue Alert::Jsonize() const
   {
    payload.WithString("ResourceArn", m_resourceArn);
 
+  }
+
+  if(m_categoryHasBeenSet)
+  {
+   payload.WithString("Category", AlertCategoryMapper::GetNameForAlertCategory(m_category));
   }
 
   return payload;

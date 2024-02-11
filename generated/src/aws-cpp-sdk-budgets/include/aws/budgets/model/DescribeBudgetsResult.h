@@ -34,118 +34,54 @@ namespace Model
   class DescribeBudgetsResult
   {
   public:
-    AWS_BUDGETS_API DescribeBudgetsResult();
+    AWS_BUDGETS_API DescribeBudgetsResult() = default;
     AWS_BUDGETS_API DescribeBudgetsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_BUDGETS_API DescribeBudgetsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A list of budgets.</p>
      */
-    inline const Aws::Vector<Budget>& GetBudgets() const{ return m_budgets; }
+    inline const Aws::Vector<Budget>& GetBudgets() const { return m_budgets; }
+    template<typename BudgetsT = Aws::Vector<Budget>>
+    void SetBudgets(BudgetsT&& value) { m_budgetsHasBeenSet = true; m_budgets = std::forward<BudgetsT>(value); }
+    template<typename BudgetsT = Aws::Vector<Budget>>
+    DescribeBudgetsResult& WithBudgets(BudgetsT&& value) { SetBudgets(std::forward<BudgetsT>(value)); return *this;}
+    template<typename BudgetsT = Budget>
+    DescribeBudgetsResult& AddBudgets(BudgetsT&& value) { m_budgetsHasBeenSet = true; m_budgets.emplace_back(std::forward<BudgetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of budgets.</p>
-     */
-    inline void SetBudgets(const Aws::Vector<Budget>& value) { m_budgets = value; }
-
-    /**
-     * <p>A list of budgets.</p>
-     */
-    inline void SetBudgets(Aws::Vector<Budget>&& value) { m_budgets = std::move(value); }
-
-    /**
-     * <p>A list of budgets.</p>
-     */
-    inline DescribeBudgetsResult& WithBudgets(const Aws::Vector<Budget>& value) { SetBudgets(value); return *this;}
-
-    /**
-     * <p>A list of budgets.</p>
-     */
-    inline DescribeBudgetsResult& WithBudgets(Aws::Vector<Budget>&& value) { SetBudgets(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of budgets.</p>
-     */
-    inline DescribeBudgetsResult& AddBudgets(const Budget& value) { m_budgets.push_back(value); return *this; }
-
-    /**
-     * <p>A list of budgets.</p>
-     */
-    inline DescribeBudgetsResult& AddBudgets(Budget&& value) { m_budgets.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The pagination token in the service response that indicates the next set of
      * results that you can retrieve.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeBudgetsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pagination token in the service response that indicates the next set of
-     * results that you can retrieve.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The pagination token in the service response that indicates the next set of
-     * results that you can retrieve.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token in the service response that indicates the next set of
-     * results that you can retrieve.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token in the service response that indicates the next set of
-     * results that you can retrieve.</p>
-     */
-    inline DescribeBudgetsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token in the service response that indicates the next set of
-     * results that you can retrieve.</p>
-     */
-    inline DescribeBudgetsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token in the service response that indicates the next set of
-     * results that you can retrieve.</p>
-     */
-    inline DescribeBudgetsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeBudgetsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeBudgetsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeBudgetsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeBudgetsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Budget> m_budgets;
+    bool m_budgetsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

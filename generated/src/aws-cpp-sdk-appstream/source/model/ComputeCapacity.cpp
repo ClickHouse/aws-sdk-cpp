@@ -18,15 +18,7 @@ namespace AppStream
 namespace Model
 {
 
-ComputeCapacity::ComputeCapacity() : 
-    m_desiredInstances(0),
-    m_desiredInstancesHasBeenSet(false)
-{
-}
-
-ComputeCapacity::ComputeCapacity(JsonView jsonValue) : 
-    m_desiredInstances(0),
-    m_desiredInstancesHasBeenSet(false)
+ComputeCapacity::ComputeCapacity(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,13 @@ ComputeCapacity& ComputeCapacity::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DesiredInstances"))
   {
     m_desiredInstances = jsonValue.GetInteger("DesiredInstances");
-
     m_desiredInstancesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("DesiredSessions"))
+  {
+    m_desiredSessions = jsonValue.GetInteger("DesiredSessions");
+    m_desiredSessionsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -50,6 +45,12 @@ JsonValue ComputeCapacity::Jsonize() const
   if(m_desiredInstancesHasBeenSet)
   {
    payload.WithInteger("DesiredInstances", m_desiredInstances);
+
+  }
+
+  if(m_desiredSessionsHasBeenSet)
+  {
+   payload.WithInteger("DesiredSessions", m_desiredSessions);
 
   }
 

@@ -18,27 +18,7 @@ namespace IoTWireless
 namespace Model
 {
 
-FPorts::FPorts() : 
-    m_fuota(0),
-    m_fuotaHasBeenSet(false),
-    m_multicast(0),
-    m_multicastHasBeenSet(false),
-    m_clockSync(0),
-    m_clockSyncHasBeenSet(false),
-    m_positioningHasBeenSet(false),
-    m_applicationsHasBeenSet(false)
-{
-}
-
-FPorts::FPorts(JsonView jsonValue) : 
-    m_fuota(0),
-    m_fuotaHasBeenSet(false),
-    m_multicast(0),
-    m_multicastHasBeenSet(false),
-    m_clockSync(0),
-    m_clockSyncHasBeenSet(false),
-    m_positioningHasBeenSet(false),
-    m_applicationsHasBeenSet(false)
+FPorts::FPorts(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,31 +28,23 @@ FPorts& FPorts::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Fuota"))
   {
     m_fuota = jsonValue.GetInteger("Fuota");
-
     m_fuotaHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Multicast"))
   {
     m_multicast = jsonValue.GetInteger("Multicast");
-
     m_multicastHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ClockSync"))
   {
     m_clockSync = jsonValue.GetInteger("ClockSync");
-
     m_clockSyncHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Positioning"))
   {
     m_positioning = jsonValue.GetObject("Positioning");
-
     m_positioningHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Applications"))
   {
     Aws::Utils::Array<JsonView> applicationsJsonList = jsonValue.GetArray("Applications");
@@ -82,7 +54,6 @@ FPorts& FPorts::operator =(JsonView jsonValue)
     }
     m_applicationsHasBeenSet = true;
   }
-
   return *this;
 }
 

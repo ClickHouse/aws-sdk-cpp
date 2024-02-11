@@ -36,76 +36,36 @@ namespace Model
   class AssetModelStatus
   {
   public:
-    AWS_IOTSITEWISE_API AssetModelStatus();
+    AWS_IOTSITEWISE_API AssetModelStatus() = default;
     AWS_IOTSITEWISE_API AssetModelStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API AssetModelStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The current state of the asset model.</p>
      */
-    inline const AssetModelState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The current state of the asset model.</p>
-     */
+    inline AssetModelState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(AssetModelState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline AssetModelStatus& WithState(AssetModelState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current state of the asset model.</p>
-     */
-    inline void SetState(const AssetModelState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The current state of the asset model.</p>
-     */
-    inline void SetState(AssetModelState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The current state of the asset model.</p>
-     */
-    inline AssetModelStatus& WithState(const AssetModelState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The current state of the asset model.</p>
-     */
-    inline AssetModelStatus& WithState(AssetModelState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains associated error information, if any.</p>
      */
-    inline const ErrorDetails& GetError() const{ return m_error; }
-
-    /**
-     * <p>Contains associated error information, if any.</p>
-     */
+    inline const ErrorDetails& GetError() const { return m_error; }
     inline bool ErrorHasBeenSet() const { return m_errorHasBeenSet; }
-
-    /**
-     * <p>Contains associated error information, if any.</p>
-     */
-    inline void SetError(const ErrorDetails& value) { m_errorHasBeenSet = true; m_error = value; }
-
-    /**
-     * <p>Contains associated error information, if any.</p>
-     */
-    inline void SetError(ErrorDetails&& value) { m_errorHasBeenSet = true; m_error = std::move(value); }
-
-    /**
-     * <p>Contains associated error information, if any.</p>
-     */
-    inline AssetModelStatus& WithError(const ErrorDetails& value) { SetError(value); return *this;}
-
-    /**
-     * <p>Contains associated error information, if any.</p>
-     */
-    inline AssetModelStatus& WithError(ErrorDetails&& value) { SetError(std::move(value)); return *this;}
-
+    template<typename ErrorT = ErrorDetails>
+    void SetError(ErrorT&& value) { m_errorHasBeenSet = true; m_error = std::forward<ErrorT>(value); }
+    template<typename ErrorT = ErrorDetails>
+    AssetModelStatus& WithError(ErrorT&& value) { SetError(std::forward<ErrorT>(value)); return *this;}
+    ///@}
   private:
 
-    AssetModelState m_state;
+    AssetModelState m_state{AssetModelState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
     ErrorDetails m_error;

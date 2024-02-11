@@ -12,16 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateHyperParameterTuningJobRequest::CreateHyperParameterTuningJobRequest() : 
-    m_hyperParameterTuningJobNameHasBeenSet(false),
-    m_hyperParameterTuningJobConfigHasBeenSet(false),
-    m_trainingJobDefinitionHasBeenSet(false),
-    m_trainingJobDefinitionsHasBeenSet(false),
-    m_warmStartConfigHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateHyperParameterTuningJobRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -69,6 +59,12 @@ Aws::String CreateHyperParameterTuningJobRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("Tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_autotuneHasBeenSet)
+  {
+   payload.WithObject("Autotune", m_autotune.Jsonize());
 
   }
 

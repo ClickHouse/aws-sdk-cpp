@@ -23,7 +23,7 @@ namespace Model
   class TagResourceRequest : public KendraRequest
   {
   public:
-    AWS_KENDRA_API TagResourceRequest();
+    AWS_KENDRA_API TagResourceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,95 +36,38 @@ namespace Model
     AWS_KENDRA_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to tag.</p>
+     * <p>The Amazon Resource Name (ARN) of the index, FAQ, data source, or other
+     * resource to add a tag. For example, the ARN of an index is constructed as
+     * follows: <i>arn:aws:kendra:your-region:your-account-id:index/index-id</i> For
+     * information on how to construct an ARN for all types of Amazon Kendra resources,
+     * see <a
+     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonkendra.html#amazonkendra-resources-for-iam-policies">Resource
+     * types</a>.</p>
      */
-    inline const Aws::String& GetResourceARN() const{ return m_resourceARN; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to tag.</p>
-     */
+    inline const Aws::String& GetResourceARN() const { return m_resourceARN; }
     inline bool ResourceARNHasBeenSet() const { return m_resourceARNHasBeenSet; }
+    template<typename ResourceARNT = Aws::String>
+    void SetResourceARN(ResourceARNT&& value) { m_resourceARNHasBeenSet = true; m_resourceARN = std::forward<ResourceARNT>(value); }
+    template<typename ResourceARNT = Aws::String>
+    TagResourceRequest& WithResourceARN(ResourceARNT&& value) { SetResourceARN(std::forward<ResourceARNT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to tag.</p>
+     * <p>A list of tag keys to add to the index, FAQ, data source, or other resource.
+     * If a tag already exists, the existing value is replaced with the new value.</p>
      */
-    inline void SetResourceARN(const Aws::String& value) { m_resourceARNHasBeenSet = true; m_resourceARN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to tag.</p>
-     */
-    inline void SetResourceARN(Aws::String&& value) { m_resourceARNHasBeenSet = true; m_resourceARN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to tag.</p>
-     */
-    inline void SetResourceARN(const char* value) { m_resourceARNHasBeenSet = true; m_resourceARN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to tag.</p>
-     */
-    inline TagResourceRequest& WithResourceARN(const Aws::String& value) { SetResourceARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to tag.</p>
-     */
-    inline TagResourceRequest& WithResourceARN(Aws::String&& value) { SetResourceARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to tag.</p>
-     */
-    inline TagResourceRequest& WithResourceARN(const char* value) { SetResourceARN(value); return *this;}
-
-
-    /**
-     * <p>A list of tag keys to add to the index, FAQ, or data source. If a tag already
-     * exists, the existing value is replaced with the new value.</p>
-     */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of tag keys to add to the index, FAQ, or data source. If a tag already
-     * exists, the existing value is replaced with the new value.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>A list of tag keys to add to the index, FAQ, or data source. If a tag already
-     * exists, the existing value is replaced with the new value.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of tag keys to add to the index, FAQ, or data source. If a tag already
-     * exists, the existing value is replaced with the new value.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of tag keys to add to the index, FAQ, or data source. If a tag already
-     * exists, the existing value is replaced with the new value.</p>
-     */
-    inline TagResourceRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of tag keys to add to the index, FAQ, or data source. If a tag already
-     * exists, the existing value is replaced with the new value.</p>
-     */
-    inline TagResourceRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of tag keys to add to the index, FAQ, or data source. If a tag already
-     * exists, the existing value is replaced with the new value.</p>
-     */
-    inline TagResourceRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>A list of tag keys to add to the index, FAQ, or data source. If a tag already
-     * exists, the existing value is replaced with the new value.</p>
-     */
-    inline TagResourceRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    TagResourceRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    TagResourceRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_resourceARN;

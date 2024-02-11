@@ -30,39 +30,25 @@ namespace Model
   class OrganizationKubernetesAuditLogsConfigurationResult
   {
   public:
-    AWS_GUARDDUTY_API OrganizationKubernetesAuditLogsConfigurationResult();
+    AWS_GUARDDUTY_API OrganizationKubernetesAuditLogsConfigurationResult() = default;
     AWS_GUARDDUTY_API OrganizationKubernetesAuditLogsConfigurationResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API OrganizationKubernetesAuditLogsConfigurationResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Whether Kubernetes audit logs data source should be auto-enabled for new
      * members joining the organization.</p>
      */
-    inline bool GetAutoEnable() const{ return m_autoEnable; }
-
-    /**
-     * <p>Whether Kubernetes audit logs data source should be auto-enabled for new
-     * members joining the organization.</p>
-     */
+    inline bool GetAutoEnable() const { return m_autoEnable; }
     inline bool AutoEnableHasBeenSet() const { return m_autoEnableHasBeenSet; }
-
-    /**
-     * <p>Whether Kubernetes audit logs data source should be auto-enabled for new
-     * members joining the organization.</p>
-     */
     inline void SetAutoEnable(bool value) { m_autoEnableHasBeenSet = true; m_autoEnable = value; }
-
-    /**
-     * <p>Whether Kubernetes audit logs data source should be auto-enabled for new
-     * members joining the organization.</p>
-     */
     inline OrganizationKubernetesAuditLogsConfigurationResult& WithAutoEnable(bool value) { SetAutoEnable(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_autoEnable;
+    bool m_autoEnable{false};
     bool m_autoEnableHasBeenSet = false;
   };
 

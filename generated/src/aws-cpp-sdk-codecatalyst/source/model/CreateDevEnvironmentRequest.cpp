@@ -12,21 +12,6 @@ using namespace Aws::CodeCatalyst::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDevEnvironmentRequest::CreateDevEnvironmentRequest() : 
-    m_spaceNameHasBeenSet(false),
-    m_projectNameHasBeenSet(false),
-    m_repositoriesHasBeenSet(false),
-    m_clientTokenHasBeenSet(false),
-    m_aliasHasBeenSet(false),
-    m_idesHasBeenSet(false),
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_inactivityTimeoutMinutes(0),
-    m_inactivityTimeoutMinutesHasBeenSet(false),
-    m_persistentStorageHasBeenSet(false)
-{
-}
-
 Aws::String CreateDevEnvironmentRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -79,6 +64,12 @@ Aws::String CreateDevEnvironmentRequest::SerializePayload() const
   if(m_persistentStorageHasBeenSet)
   {
    payload.WithObject("persistentStorage", m_persistentStorage.Jsonize());
+
+  }
+
+  if(m_vpcConnectionNameHasBeenSet)
+  {
+   payload.WithString("vpcConnectionName", m_vpcConnectionName);
 
   }
 

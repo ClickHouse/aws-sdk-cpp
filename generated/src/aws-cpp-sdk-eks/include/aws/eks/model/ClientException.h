@@ -25,152 +25,85 @@ namespace Model
 
   /**
    * <p>These errors are usually caused by a client action. Actions can include using
-   * an action or resource on behalf of a user that doesn't have permissions to use
-   * the action or resource or specifying an identifier that is not
-   * valid.</p><p><h3>See Also:</h3>   <a
+   * an action or resource on behalf of an <a
+   * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html">IAM
+   * principal</a> that doesn't have permissions to use the action or resource or
+   * specifying an identifier that is not valid.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ClientException">AWS
    * API Reference</a></p>
    */
   class ClientException
   {
   public:
-    AWS_EKS_API ClientException();
+    AWS_EKS_API ClientException() = default;
     AWS_EKS_API ClientException(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API ClientException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon EKS cluster associated with the exception.</p>
      */
-    inline const Aws::String& GetClusterName() const{ return m_clusterName; }
-
-    /**
-     * <p>The Amazon EKS cluster associated with the exception.</p>
-     */
+    inline const Aws::String& GetClusterName() const { return m_clusterName; }
     inline bool ClusterNameHasBeenSet() const { return m_clusterNameHasBeenSet; }
+    template<typename ClusterNameT = Aws::String>
+    void SetClusterName(ClusterNameT&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::forward<ClusterNameT>(value); }
+    template<typename ClusterNameT = Aws::String>
+    ClientException& WithClusterName(ClusterNameT&& value) { SetClusterName(std::forward<ClusterNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon EKS cluster associated with the exception.</p>
-     */
-    inline void SetClusterName(const Aws::String& value) { m_clusterNameHasBeenSet = true; m_clusterName = value; }
-
-    /**
-     * <p>The Amazon EKS cluster associated with the exception.</p>
-     */
-    inline void SetClusterName(Aws::String&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::move(value); }
-
-    /**
-     * <p>The Amazon EKS cluster associated with the exception.</p>
-     */
-    inline void SetClusterName(const char* value) { m_clusterNameHasBeenSet = true; m_clusterName.assign(value); }
-
-    /**
-     * <p>The Amazon EKS cluster associated with the exception.</p>
-     */
-    inline ClientException& WithClusterName(const Aws::String& value) { SetClusterName(value); return *this;}
-
-    /**
-     * <p>The Amazon EKS cluster associated with the exception.</p>
-     */
-    inline ClientException& WithClusterName(Aws::String&& value) { SetClusterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon EKS cluster associated with the exception.</p>
-     */
-    inline ClientException& WithClusterName(const char* value) { SetClusterName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon EKS managed node group associated with the exception.</p>
      */
-    inline const Aws::String& GetNodegroupName() const{ return m_nodegroupName; }
-
-    /**
-     * <p>The Amazon EKS managed node group associated with the exception.</p>
-     */
+    inline const Aws::String& GetNodegroupName() const { return m_nodegroupName; }
     inline bool NodegroupNameHasBeenSet() const { return m_nodegroupNameHasBeenSet; }
+    template<typename NodegroupNameT = Aws::String>
+    void SetNodegroupName(NodegroupNameT&& value) { m_nodegroupNameHasBeenSet = true; m_nodegroupName = std::forward<NodegroupNameT>(value); }
+    template<typename NodegroupNameT = Aws::String>
+    ClientException& WithNodegroupName(NodegroupNameT&& value) { SetNodegroupName(std::forward<NodegroupNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon EKS managed node group associated with the exception.</p>
+     * <p>The Amazon EKS add-on name associated with the exception.</p>
      */
-    inline void SetNodegroupName(const Aws::String& value) { m_nodegroupNameHasBeenSet = true; m_nodegroupName = value; }
-
-    /**
-     * <p>The Amazon EKS managed node group associated with the exception.</p>
-     */
-    inline void SetNodegroupName(Aws::String&& value) { m_nodegroupNameHasBeenSet = true; m_nodegroupName = std::move(value); }
-
-    /**
-     * <p>The Amazon EKS managed node group associated with the exception.</p>
-     */
-    inline void SetNodegroupName(const char* value) { m_nodegroupNameHasBeenSet = true; m_nodegroupName.assign(value); }
-
-    /**
-     * <p>The Amazon EKS managed node group associated with the exception.</p>
-     */
-    inline ClientException& WithNodegroupName(const Aws::String& value) { SetNodegroupName(value); return *this;}
-
-    /**
-     * <p>The Amazon EKS managed node group associated with the exception.</p>
-     */
-    inline ClientException& WithNodegroupName(Aws::String&& value) { SetNodegroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon EKS managed node group associated with the exception.</p>
-     */
-    inline ClientException& WithNodegroupName(const char* value) { SetNodegroupName(value); return *this;}
-
-
-    
-    inline const Aws::String& GetAddonName() const{ return m_addonName; }
-
-    
+    inline const Aws::String& GetAddonName() const { return m_addonName; }
     inline bool AddonNameHasBeenSet() const { return m_addonNameHasBeenSet; }
+    template<typename AddonNameT = Aws::String>
+    void SetAddonName(AddonNameT&& value) { m_addonNameHasBeenSet = true; m_addonName = std::forward<AddonNameT>(value); }
+    template<typename AddonNameT = Aws::String>
+    ClientException& WithAddonName(AddonNameT&& value) { SetAddonName(std::forward<AddonNameT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetAddonName(const Aws::String& value) { m_addonNameHasBeenSet = true; m_addonName = value; }
+    ///@{
+    /**
+     * <p>The Amazon EKS subscription ID with the exception.</p>
+     */
+    inline const Aws::String& GetSubscriptionId() const { return m_subscriptionId; }
+    inline bool SubscriptionIdHasBeenSet() const { return m_subscriptionIdHasBeenSet; }
+    template<typename SubscriptionIdT = Aws::String>
+    void SetSubscriptionId(SubscriptionIdT&& value) { m_subscriptionIdHasBeenSet = true; m_subscriptionId = std::forward<SubscriptionIdT>(value); }
+    template<typename SubscriptionIdT = Aws::String>
+    ClientException& WithSubscriptionId(SubscriptionIdT&& value) { SetSubscriptionId(std::forward<SubscriptionIdT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetAddonName(Aws::String&& value) { m_addonNameHasBeenSet = true; m_addonName = std::move(value); }
-
-    
-    inline void SetAddonName(const char* value) { m_addonNameHasBeenSet = true; m_addonName.assign(value); }
-
-    
-    inline ClientException& WithAddonName(const Aws::String& value) { SetAddonName(value); return *this;}
-
-    
-    inline ClientException& WithAddonName(Aws::String&& value) { SetAddonName(std::move(value)); return *this;}
-
-    
-    inline ClientException& WithAddonName(const char* value) { SetAddonName(value); return *this;}
-
-
-    
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    
+    ///@{
+    /**
+     * <p>These errors are usually caused by a client action. Actions can include using
+     * an action or resource on behalf of an <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html">IAM
+     * principal</a> that doesn't have permissions to use the action or resource or
+     * specifying an identifier that is not valid.</p>
+     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    
-    inline ClientException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    
-    inline ClientException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    
-    inline ClientException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    ClientException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterName;
@@ -181,6 +114,9 @@ namespace Model
 
     Aws::String m_addonName;
     bool m_addonNameHasBeenSet = false;
+
+    Aws::String m_subscriptionId;
+    bool m_subscriptionIdHasBeenSet = false;
 
     Aws::String m_message;
     bool m_messageHasBeenSet = false;

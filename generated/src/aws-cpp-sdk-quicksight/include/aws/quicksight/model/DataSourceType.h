@@ -41,7 +41,11 @@ namespace Model
     TIMESTREAM,
     AMAZON_OPENSEARCH,
     EXASOL,
-    DATABRICKS
+    DATABRICKS,
+    STARBURST,
+    TRINO,
+    BIGQUERY,
+    GOOGLESHEETS
   };
 
 namespace DataSourceTypeMapper

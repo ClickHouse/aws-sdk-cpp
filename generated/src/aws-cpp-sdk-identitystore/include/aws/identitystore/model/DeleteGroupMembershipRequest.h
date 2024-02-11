@@ -21,7 +21,7 @@ namespace Model
   class DeleteGroupMembershipRequest : public IdentityStoreRequest
   {
   public:
-    AWS_IDENTITYSTORE_API DeleteGroupMembershipRequest();
+    AWS_IDENTITYSTORE_API DeleteGroupMembershipRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,29 @@ namespace Model
     AWS_IDENTITYSTORE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The globally unique identifier for the identity store.</p>
      */
-    inline const Aws::String& GetIdentityStoreId() const{ return m_identityStoreId; }
-
-    /**
-     * <p>The globally unique identifier for the identity store.</p>
-     */
+    inline const Aws::String& GetIdentityStoreId() const { return m_identityStoreId; }
     inline bool IdentityStoreIdHasBeenSet() const { return m_identityStoreIdHasBeenSet; }
+    template<typename IdentityStoreIdT = Aws::String>
+    void SetIdentityStoreId(IdentityStoreIdT&& value) { m_identityStoreIdHasBeenSet = true; m_identityStoreId = std::forward<IdentityStoreIdT>(value); }
+    template<typename IdentityStoreIdT = Aws::String>
+    DeleteGroupMembershipRequest& WithIdentityStoreId(IdentityStoreIdT&& value) { SetIdentityStoreId(std::forward<IdentityStoreIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The globally unique identifier for the identity store.</p>
-     */
-    inline void SetIdentityStoreId(const Aws::String& value) { m_identityStoreIdHasBeenSet = true; m_identityStoreId = value; }
-
-    /**
-     * <p>The globally unique identifier for the identity store.</p>
-     */
-    inline void SetIdentityStoreId(Aws::String&& value) { m_identityStoreIdHasBeenSet = true; m_identityStoreId = std::move(value); }
-
-    /**
-     * <p>The globally unique identifier for the identity store.</p>
-     */
-    inline void SetIdentityStoreId(const char* value) { m_identityStoreIdHasBeenSet = true; m_identityStoreId.assign(value); }
-
-    /**
-     * <p>The globally unique identifier for the identity store.</p>
-     */
-    inline DeleteGroupMembershipRequest& WithIdentityStoreId(const Aws::String& value) { SetIdentityStoreId(value); return *this;}
-
-    /**
-     * <p>The globally unique identifier for the identity store.</p>
-     */
-    inline DeleteGroupMembershipRequest& WithIdentityStoreId(Aws::String&& value) { SetIdentityStoreId(std::move(value)); return *this;}
-
-    /**
-     * <p>The globally unique identifier for the identity store.</p>
-     */
-    inline DeleteGroupMembershipRequest& WithIdentityStoreId(const char* value) { SetIdentityStoreId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier for a <code>GroupMembership</code> in an identity store.</p>
      */
-    inline const Aws::String& GetMembershipId() const{ return m_membershipId; }
-
-    /**
-     * <p>The identifier for a <code>GroupMembership</code> in an identity store.</p>
-     */
+    inline const Aws::String& GetMembershipId() const { return m_membershipId; }
     inline bool MembershipIdHasBeenSet() const { return m_membershipIdHasBeenSet; }
-
-    /**
-     * <p>The identifier for a <code>GroupMembership</code> in an identity store.</p>
-     */
-    inline void SetMembershipId(const Aws::String& value) { m_membershipIdHasBeenSet = true; m_membershipId = value; }
-
-    /**
-     * <p>The identifier for a <code>GroupMembership</code> in an identity store.</p>
-     */
-    inline void SetMembershipId(Aws::String&& value) { m_membershipIdHasBeenSet = true; m_membershipId = std::move(value); }
-
-    /**
-     * <p>The identifier for a <code>GroupMembership</code> in an identity store.</p>
-     */
-    inline void SetMembershipId(const char* value) { m_membershipIdHasBeenSet = true; m_membershipId.assign(value); }
-
-    /**
-     * <p>The identifier for a <code>GroupMembership</code> in an identity store.</p>
-     */
-    inline DeleteGroupMembershipRequest& WithMembershipId(const Aws::String& value) { SetMembershipId(value); return *this;}
-
-    /**
-     * <p>The identifier for a <code>GroupMembership</code> in an identity store.</p>
-     */
-    inline DeleteGroupMembershipRequest& WithMembershipId(Aws::String&& value) { SetMembershipId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for a <code>GroupMembership</code> in an identity store.</p>
-     */
-    inline DeleteGroupMembershipRequest& WithMembershipId(const char* value) { SetMembershipId(value); return *this;}
-
+    template<typename MembershipIdT = Aws::String>
+    void SetMembershipId(MembershipIdT&& value) { m_membershipIdHasBeenSet = true; m_membershipId = std::forward<MembershipIdT>(value); }
+    template<typename MembershipIdT = Aws::String>
+    DeleteGroupMembershipRequest& WithMembershipId(MembershipIdT&& value) { SetMembershipId(std::forward<MembershipIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_identityStoreId;

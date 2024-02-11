@@ -47,11 +47,14 @@ enum class SecurityHubErrors
   UNKNOWN = 100,
   ///////////////////////////////////////////////////////////////////////////////////////////
 
-  INTERNAL= static_cast<int>(Aws::Client::CoreErrors::SERVICE_EXTENSION_START_RANGE) + 1,
+  CONFLICT= static_cast<int>(Aws::Client::CoreErrors::SERVICE_EXTENSION_START_RANGE) + 1,
+  INTERNAL,
+  INTERNAL_SERVER,
   INVALID_ACCESS,
   INVALID_INPUT,
   LIMIT_EXCEEDED,
-  RESOURCE_CONFLICT
+  RESOURCE_CONFLICT,
+  RESOURCE_IN_USE
 };
 
 class AWS_SECURITYHUB_API SecurityHubError : public Aws::Client::AWSError<SecurityHubErrors>

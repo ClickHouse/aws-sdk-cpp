@@ -12,14 +12,6 @@ using namespace Aws::Glue::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetConnectionRequest::GetConnectionRequest() : 
-    m_catalogIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_hidePassword(false),
-    m_hidePasswordHasBeenSet(false)
-{
-}
-
 Aws::String GetConnectionRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -40,6 +32,11 @@ Aws::String GetConnectionRequest::SerializePayload() const
   {
    payload.WithBool("HidePassword", m_hidePassword);
 
+  }
+
+  if(m_applyOverrideForComputeEnvironmentHasBeenSet)
+  {
+   payload.WithString("ApplyOverrideForComputeEnvironment", ComputeEnvironmentMapper::GetNameForComputeEnvironment(m_applyOverrideForComputeEnvironment));
   }
 
   return payload.View().WriteReadable();

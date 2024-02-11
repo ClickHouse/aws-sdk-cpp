@@ -18,15 +18,7 @@ namespace IoTSiteWise
 namespace Model
 {
 
-BatchGetAssetPropertyValueSuccessEntry::BatchGetAssetPropertyValueSuccessEntry() : 
-    m_entryIdHasBeenSet(false),
-    m_assetPropertyValueHasBeenSet(false)
-{
-}
-
-BatchGetAssetPropertyValueSuccessEntry::BatchGetAssetPropertyValueSuccessEntry(JsonView jsonValue) : 
-    m_entryIdHasBeenSet(false),
-    m_assetPropertyValueHasBeenSet(false)
+BatchGetAssetPropertyValueSuccessEntry::BatchGetAssetPropertyValueSuccessEntry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ BatchGetAssetPropertyValueSuccessEntry& BatchGetAssetPropertyValueSuccessEntry::
   if(jsonValue.ValueExists("entryId"))
   {
     m_entryId = jsonValue.GetString("entryId");
-
     m_entryIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("assetPropertyValue"))
   {
     m_assetPropertyValue = jsonValue.GetObject("assetPropertyValue");
-
     m_assetPropertyValueHasBeenSet = true;
   }
-
   return *this;
 }
 

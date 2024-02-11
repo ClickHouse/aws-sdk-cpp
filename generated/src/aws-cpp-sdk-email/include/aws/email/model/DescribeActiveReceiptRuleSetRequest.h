@@ -18,7 +18,7 @@ namespace Model
    * <p>Represents a request to return the metadata and receipt rules for the receipt
    * rule set that is currently active. You use receipt rule sets to receive email
    * with Amazon SES. For more information, see the <a
-   * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon
+   * href="https://docs.aws.amazon.com/ses/latest/dg/receiving-email-concepts.html">Amazon
    * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DescribeActiveReceiptRuleSetRequest">AWS
    * API Reference</a></p>
@@ -26,7 +26,7 @@ namespace Model
   class DescribeActiveReceiptRuleSetRequest : public SESRequest
   {
   public:
-    AWS_SES_API DescribeActiveReceiptRuleSetRequest();
+    AWS_SES_API DescribeActiveReceiptRuleSetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.

@@ -40,12 +40,13 @@ namespace Model
   class RuleGroupSummary
   {
   public:
-    AWS_WAF_API RuleGroupSummary();
+    AWS_WAF_API RuleGroupSummary() = default;
     AWS_WAF_API RuleGroupSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAF_API RuleGroupSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAF_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A unique identifier for a <code>RuleGroup</code>. You use
      * <code>RuleGroupId</code> to get more information about a <code>RuleGroup</code>
@@ -56,141 +57,26 @@ namespace Model
      * <a>DeleteRuleGroup</a>).</p> <p> <code>RuleGroupId</code> is returned by
      * <a>CreateRuleGroup</a> and by <a>ListRuleGroups</a>.</p>
      */
-    inline const Aws::String& GetRuleGroupId() const{ return m_ruleGroupId; }
-
-    /**
-     * <p>A unique identifier for a <code>RuleGroup</code>. You use
-     * <code>RuleGroupId</code> to get more information about a <code>RuleGroup</code>
-     * (see <a>GetRuleGroup</a>), update a <code>RuleGroup</code> (see
-     * <a>UpdateRuleGroup</a>), insert a <code>RuleGroup</code> into a
-     * <code>WebACL</code> or delete one from a <code>WebACL</code> (see
-     * <a>UpdateWebACL</a>), or delete a <code>RuleGroup</code> from AWS WAF (see
-     * <a>DeleteRuleGroup</a>).</p> <p> <code>RuleGroupId</code> is returned by
-     * <a>CreateRuleGroup</a> and by <a>ListRuleGroups</a>.</p>
-     */
+    inline const Aws::String& GetRuleGroupId() const { return m_ruleGroupId; }
     inline bool RuleGroupIdHasBeenSet() const { return m_ruleGroupIdHasBeenSet; }
+    template<typename RuleGroupIdT = Aws::String>
+    void SetRuleGroupId(RuleGroupIdT&& value) { m_ruleGroupIdHasBeenSet = true; m_ruleGroupId = std::forward<RuleGroupIdT>(value); }
+    template<typename RuleGroupIdT = Aws::String>
+    RuleGroupSummary& WithRuleGroupId(RuleGroupIdT&& value) { SetRuleGroupId(std::forward<RuleGroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for a <code>RuleGroup</code>. You use
-     * <code>RuleGroupId</code> to get more information about a <code>RuleGroup</code>
-     * (see <a>GetRuleGroup</a>), update a <code>RuleGroup</code> (see
-     * <a>UpdateRuleGroup</a>), insert a <code>RuleGroup</code> into a
-     * <code>WebACL</code> or delete one from a <code>WebACL</code> (see
-     * <a>UpdateWebACL</a>), or delete a <code>RuleGroup</code> from AWS WAF (see
-     * <a>DeleteRuleGroup</a>).</p> <p> <code>RuleGroupId</code> is returned by
-     * <a>CreateRuleGroup</a> and by <a>ListRuleGroups</a>.</p>
-     */
-    inline void SetRuleGroupId(const Aws::String& value) { m_ruleGroupIdHasBeenSet = true; m_ruleGroupId = value; }
-
-    /**
-     * <p>A unique identifier for a <code>RuleGroup</code>. You use
-     * <code>RuleGroupId</code> to get more information about a <code>RuleGroup</code>
-     * (see <a>GetRuleGroup</a>), update a <code>RuleGroup</code> (see
-     * <a>UpdateRuleGroup</a>), insert a <code>RuleGroup</code> into a
-     * <code>WebACL</code> or delete one from a <code>WebACL</code> (see
-     * <a>UpdateWebACL</a>), or delete a <code>RuleGroup</code> from AWS WAF (see
-     * <a>DeleteRuleGroup</a>).</p> <p> <code>RuleGroupId</code> is returned by
-     * <a>CreateRuleGroup</a> and by <a>ListRuleGroups</a>.</p>
-     */
-    inline void SetRuleGroupId(Aws::String&& value) { m_ruleGroupIdHasBeenSet = true; m_ruleGroupId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for a <code>RuleGroup</code>. You use
-     * <code>RuleGroupId</code> to get more information about a <code>RuleGroup</code>
-     * (see <a>GetRuleGroup</a>), update a <code>RuleGroup</code> (see
-     * <a>UpdateRuleGroup</a>), insert a <code>RuleGroup</code> into a
-     * <code>WebACL</code> or delete one from a <code>WebACL</code> (see
-     * <a>UpdateWebACL</a>), or delete a <code>RuleGroup</code> from AWS WAF (see
-     * <a>DeleteRuleGroup</a>).</p> <p> <code>RuleGroupId</code> is returned by
-     * <a>CreateRuleGroup</a> and by <a>ListRuleGroups</a>.</p>
-     */
-    inline void SetRuleGroupId(const char* value) { m_ruleGroupIdHasBeenSet = true; m_ruleGroupId.assign(value); }
-
-    /**
-     * <p>A unique identifier for a <code>RuleGroup</code>. You use
-     * <code>RuleGroupId</code> to get more information about a <code>RuleGroup</code>
-     * (see <a>GetRuleGroup</a>), update a <code>RuleGroup</code> (see
-     * <a>UpdateRuleGroup</a>), insert a <code>RuleGroup</code> into a
-     * <code>WebACL</code> or delete one from a <code>WebACL</code> (see
-     * <a>UpdateWebACL</a>), or delete a <code>RuleGroup</code> from AWS WAF (see
-     * <a>DeleteRuleGroup</a>).</p> <p> <code>RuleGroupId</code> is returned by
-     * <a>CreateRuleGroup</a> and by <a>ListRuleGroups</a>.</p>
-     */
-    inline RuleGroupSummary& WithRuleGroupId(const Aws::String& value) { SetRuleGroupId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for a <code>RuleGroup</code>. You use
-     * <code>RuleGroupId</code> to get more information about a <code>RuleGroup</code>
-     * (see <a>GetRuleGroup</a>), update a <code>RuleGroup</code> (see
-     * <a>UpdateRuleGroup</a>), insert a <code>RuleGroup</code> into a
-     * <code>WebACL</code> or delete one from a <code>WebACL</code> (see
-     * <a>UpdateWebACL</a>), or delete a <code>RuleGroup</code> from AWS WAF (see
-     * <a>DeleteRuleGroup</a>).</p> <p> <code>RuleGroupId</code> is returned by
-     * <a>CreateRuleGroup</a> and by <a>ListRuleGroups</a>.</p>
-     */
-    inline RuleGroupSummary& WithRuleGroupId(Aws::String&& value) { SetRuleGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for a <code>RuleGroup</code>. You use
-     * <code>RuleGroupId</code> to get more information about a <code>RuleGroup</code>
-     * (see <a>GetRuleGroup</a>), update a <code>RuleGroup</code> (see
-     * <a>UpdateRuleGroup</a>), insert a <code>RuleGroup</code> into a
-     * <code>WebACL</code> or delete one from a <code>WebACL</code> (see
-     * <a>UpdateWebACL</a>), or delete a <code>RuleGroup</code> from AWS WAF (see
-     * <a>DeleteRuleGroup</a>).</p> <p> <code>RuleGroupId</code> is returned by
-     * <a>CreateRuleGroup</a> and by <a>ListRuleGroups</a>.</p>
-     */
-    inline RuleGroupSummary& WithRuleGroupId(const char* value) { SetRuleGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A friendly name or description of the <a>RuleGroup</a>. You can't change the
      * name of a <code>RuleGroup</code> after you create it.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A friendly name or description of the <a>RuleGroup</a>. You can't change the
-     * name of a <code>RuleGroup</code> after you create it.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>A friendly name or description of the <a>RuleGroup</a>. You can't change the
-     * name of a <code>RuleGroup</code> after you create it.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A friendly name or description of the <a>RuleGroup</a>. You can't change the
-     * name of a <code>RuleGroup</code> after you create it.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A friendly name or description of the <a>RuleGroup</a>. You can't change the
-     * name of a <code>RuleGroup</code> after you create it.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A friendly name or description of the <a>RuleGroup</a>. You can't change the
-     * name of a <code>RuleGroup</code> after you create it.</p>
-     */
-    inline RuleGroupSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A friendly name or description of the <a>RuleGroup</a>. You can't change the
-     * name of a <code>RuleGroup</code> after you create it.</p>
-     */
-    inline RuleGroupSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A friendly name or description of the <a>RuleGroup</a>. You can't change the
-     * name of a <code>RuleGroup</code> after you create it.</p>
-     */
-    inline RuleGroupSummary& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    RuleGroupSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ruleGroupId;

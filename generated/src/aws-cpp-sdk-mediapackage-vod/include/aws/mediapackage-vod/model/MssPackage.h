@@ -34,92 +34,45 @@ namespace Model
   class MssPackage
   {
   public:
-    AWS_MEDIAPACKAGEVOD_API MssPackage();
+    AWS_MEDIAPACKAGEVOD_API MssPackage() = default;
     AWS_MEDIAPACKAGEVOD_API MssPackage(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIAPACKAGEVOD_API MssPackage& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIAPACKAGEVOD_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const MssEncryption& GetEncryption() const{ return m_encryption; }
-
-    
+    inline const MssEncryption& GetEncryption() const { return m_encryption; }
     inline bool EncryptionHasBeenSet() const { return m_encryptionHasBeenSet; }
+    template<typename EncryptionT = MssEncryption>
+    void SetEncryption(EncryptionT&& value) { m_encryptionHasBeenSet = true; m_encryption = std::forward<EncryptionT>(value); }
+    template<typename EncryptionT = MssEncryption>
+    MssPackage& WithEncryption(EncryptionT&& value) { SetEncryption(std::forward<EncryptionT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetEncryption(const MssEncryption& value) { m_encryptionHasBeenSet = true; m_encryption = value; }
-
-    
-    inline void SetEncryption(MssEncryption&& value) { m_encryptionHasBeenSet = true; m_encryption = std::move(value); }
-
-    
-    inline MssPackage& WithEncryption(const MssEncryption& value) { SetEncryption(value); return *this;}
-
-    
-    inline MssPackage& WithEncryption(MssEncryption&& value) { SetEncryption(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * A list of MSS manifest configurations.
      */
-    inline const Aws::Vector<MssManifest>& GetMssManifests() const{ return m_mssManifests; }
-
-    /**
-     * A list of MSS manifest configurations.
-     */
+    inline const Aws::Vector<MssManifest>& GetMssManifests() const { return m_mssManifests; }
     inline bool MssManifestsHasBeenSet() const { return m_mssManifestsHasBeenSet; }
+    template<typename MssManifestsT = Aws::Vector<MssManifest>>
+    void SetMssManifests(MssManifestsT&& value) { m_mssManifestsHasBeenSet = true; m_mssManifests = std::forward<MssManifestsT>(value); }
+    template<typename MssManifestsT = Aws::Vector<MssManifest>>
+    MssPackage& WithMssManifests(MssManifestsT&& value) { SetMssManifests(std::forward<MssManifestsT>(value)); return *this;}
+    template<typename MssManifestsT = MssManifest>
+    MssPackage& AddMssManifests(MssManifestsT&& value) { m_mssManifestsHasBeenSet = true; m_mssManifests.emplace_back(std::forward<MssManifestsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * A list of MSS manifest configurations.
-     */
-    inline void SetMssManifests(const Aws::Vector<MssManifest>& value) { m_mssManifestsHasBeenSet = true; m_mssManifests = value; }
-
-    /**
-     * A list of MSS manifest configurations.
-     */
-    inline void SetMssManifests(Aws::Vector<MssManifest>&& value) { m_mssManifestsHasBeenSet = true; m_mssManifests = std::move(value); }
-
-    /**
-     * A list of MSS manifest configurations.
-     */
-    inline MssPackage& WithMssManifests(const Aws::Vector<MssManifest>& value) { SetMssManifests(value); return *this;}
-
-    /**
-     * A list of MSS manifest configurations.
-     */
-    inline MssPackage& WithMssManifests(Aws::Vector<MssManifest>&& value) { SetMssManifests(std::move(value)); return *this;}
-
-    /**
-     * A list of MSS manifest configurations.
-     */
-    inline MssPackage& AddMssManifests(const MssManifest& value) { m_mssManifestsHasBeenSet = true; m_mssManifests.push_back(value); return *this; }
-
-    /**
-     * A list of MSS manifest configurations.
-     */
-    inline MssPackage& AddMssManifests(MssManifest&& value) { m_mssManifestsHasBeenSet = true; m_mssManifests.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * The duration (in seconds) of each segment.
      */
-    inline int GetSegmentDurationSeconds() const{ return m_segmentDurationSeconds; }
-
-    /**
-     * The duration (in seconds) of each segment.
-     */
+    inline int GetSegmentDurationSeconds() const { return m_segmentDurationSeconds; }
     inline bool SegmentDurationSecondsHasBeenSet() const { return m_segmentDurationSecondsHasBeenSet; }
-
-    /**
-     * The duration (in seconds) of each segment.
-     */
     inline void SetSegmentDurationSeconds(int value) { m_segmentDurationSecondsHasBeenSet = true; m_segmentDurationSeconds = value; }
-
-    /**
-     * The duration (in seconds) of each segment.
-     */
     inline MssPackage& WithSegmentDurationSeconds(int value) { SetSegmentDurationSeconds(value); return *this;}
-
+    ///@}
   private:
 
     MssEncryption m_encryption;
@@ -128,7 +81,7 @@ namespace Model
     Aws::Vector<MssManifest> m_mssManifests;
     bool m_mssManifestsHasBeenSet = false;
 
-    int m_segmentDurationSeconds;
+    int m_segmentDurationSeconds{0};
     bool m_segmentDurationSecondsHasBeenSet = false;
   };
 

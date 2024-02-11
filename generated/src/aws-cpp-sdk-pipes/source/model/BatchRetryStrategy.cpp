@@ -18,15 +18,7 @@ namespace Pipes
 namespace Model
 {
 
-BatchRetryStrategy::BatchRetryStrategy() : 
-    m_attempts(0),
-    m_attemptsHasBeenSet(false)
-{
-}
-
-BatchRetryStrategy::BatchRetryStrategy(JsonView jsonValue) : 
-    m_attempts(0),
-    m_attemptsHasBeenSet(false)
+BatchRetryStrategy::BatchRetryStrategy(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ BatchRetryStrategy& BatchRetryStrategy::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Attempts"))
   {
     m_attempts = jsonValue.GetInteger("Attempts");
-
     m_attemptsHasBeenSet = true;
   }
-
   return *this;
 }
 

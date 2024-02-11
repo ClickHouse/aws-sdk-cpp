@@ -18,15 +18,7 @@ namespace SSMIncidents
 namespace Model
 {
 
-Filter::Filter() : 
-    m_conditionHasBeenSet(false),
-    m_keyHasBeenSet(false)
-{
-}
-
-Filter::Filter(JsonView jsonValue) : 
-    m_conditionHasBeenSet(false),
-    m_keyHasBeenSet(false)
+Filter::Filter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Filter& Filter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("condition"))
   {
     m_condition = jsonValue.GetObject("condition");
-
     m_conditionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("key"))
   {
     m_key = jsonValue.GetString("key");
-
     m_keyHasBeenSet = true;
   }
-
   return *this;
 }
 

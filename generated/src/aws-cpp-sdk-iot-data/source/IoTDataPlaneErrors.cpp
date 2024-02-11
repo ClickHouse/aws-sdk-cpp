@@ -19,6 +19,7 @@ namespace IoTDataPlaneErrorMapper
 {
 
 static const int CONFLICT_HASH = HashingUtils::HashString("ConflictException");
+static const int FORBIDDEN_HASH = HashingUtils::HashString("ForbiddenException");
 static const int UNAUTHORIZED_HASH = HashingUtils::HashString("UnauthorizedException");
 static const int UNSUPPORTED_DOCUMENT_ENCODING_HASH = HashingUtils::HashString("UnsupportedDocumentEncodingException");
 static const int METHOD_NOT_ALLOWED_HASH = HashingUtils::HashString("MethodNotAllowedException");
@@ -32,27 +33,31 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
 
   if (hashCode == CONFLICT_HASH)
   {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(IoTDataPlaneErrors::CONFLICT), false);
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(IoTDataPlaneErrors::CONFLICT), RetryableType::NOT_RETRYABLE);
+  }
+  else if (hashCode == FORBIDDEN_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(IoTDataPlaneErrors::FORBIDDEN), RetryableType::NOT_RETRYABLE);
   }
   else if (hashCode == UNAUTHORIZED_HASH)
   {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(IoTDataPlaneErrors::UNAUTHORIZED), false);
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(IoTDataPlaneErrors::UNAUTHORIZED), RetryableType::NOT_RETRYABLE);
   }
   else if (hashCode == UNSUPPORTED_DOCUMENT_ENCODING_HASH)
   {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(IoTDataPlaneErrors::UNSUPPORTED_DOCUMENT_ENCODING), false);
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(IoTDataPlaneErrors::UNSUPPORTED_DOCUMENT_ENCODING), RetryableType::NOT_RETRYABLE);
   }
   else if (hashCode == METHOD_NOT_ALLOWED_HASH)
   {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(IoTDataPlaneErrors::METHOD_NOT_ALLOWED), false);
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(IoTDataPlaneErrors::METHOD_NOT_ALLOWED), RetryableType::NOT_RETRYABLE);
   }
   else if (hashCode == INVALID_REQUEST_HASH)
   {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(IoTDataPlaneErrors::INVALID_REQUEST), false);
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(IoTDataPlaneErrors::INVALID_REQUEST), RetryableType::NOT_RETRYABLE);
   }
   else if (hashCode == REQUEST_ENTITY_TOO_LARGE_HASH)
   {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(IoTDataPlaneErrors::REQUEST_ENTITY_TOO_LARGE), false);
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(IoTDataPlaneErrors::REQUEST_ENTITY_TOO_LARGE), RetryableType::NOT_RETRYABLE);
   }
   return AWSError<CoreErrors>(CoreErrors::UNKNOWN, false);
 }

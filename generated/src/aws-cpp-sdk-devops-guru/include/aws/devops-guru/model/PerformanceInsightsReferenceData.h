@@ -33,101 +33,38 @@ namespace Model
   class PerformanceInsightsReferenceData
   {
   public:
-    AWS_DEVOPSGURU_API PerformanceInsightsReferenceData();
+    AWS_DEVOPSGURU_API PerformanceInsightsReferenceData() = default;
     AWS_DEVOPSGURU_API PerformanceInsightsReferenceData(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVOPSGURU_API PerformanceInsightsReferenceData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVOPSGURU_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the reference data.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the reference data.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    PerformanceInsightsReferenceData& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the reference data.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the reference data.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the reference data.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the reference data.</p>
-     */
-    inline PerformanceInsightsReferenceData& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the reference data.</p>
-     */
-    inline PerformanceInsightsReferenceData& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the reference data.</p>
-     */
-    inline PerformanceInsightsReferenceData& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The specific reference values used to evaluate the Performance Insights. For
      * more information, see <code> <a
      * href="https://docs.aws.amazon.com/devops-guru/latest/APIReference/API_PerformanceInsightsReferenceComparisonValues.html">PerformanceInsightsReferenceComparisonValues</a>
      * </code>. </p>
      */
-    inline const PerformanceInsightsReferenceComparisonValues& GetComparisonValues() const{ return m_comparisonValues; }
-
-    /**
-     * <p>The specific reference values used to evaluate the Performance Insights. For
-     * more information, see <code> <a
-     * href="https://docs.aws.amazon.com/devops-guru/latest/APIReference/API_PerformanceInsightsReferenceComparisonValues.html">PerformanceInsightsReferenceComparisonValues</a>
-     * </code>. </p>
-     */
+    inline const PerformanceInsightsReferenceComparisonValues& GetComparisonValues() const { return m_comparisonValues; }
     inline bool ComparisonValuesHasBeenSet() const { return m_comparisonValuesHasBeenSet; }
-
-    /**
-     * <p>The specific reference values used to evaluate the Performance Insights. For
-     * more information, see <code> <a
-     * href="https://docs.aws.amazon.com/devops-guru/latest/APIReference/API_PerformanceInsightsReferenceComparisonValues.html">PerformanceInsightsReferenceComparisonValues</a>
-     * </code>. </p>
-     */
-    inline void SetComparisonValues(const PerformanceInsightsReferenceComparisonValues& value) { m_comparisonValuesHasBeenSet = true; m_comparisonValues = value; }
-
-    /**
-     * <p>The specific reference values used to evaluate the Performance Insights. For
-     * more information, see <code> <a
-     * href="https://docs.aws.amazon.com/devops-guru/latest/APIReference/API_PerformanceInsightsReferenceComparisonValues.html">PerformanceInsightsReferenceComparisonValues</a>
-     * </code>. </p>
-     */
-    inline void SetComparisonValues(PerformanceInsightsReferenceComparisonValues&& value) { m_comparisonValuesHasBeenSet = true; m_comparisonValues = std::move(value); }
-
-    /**
-     * <p>The specific reference values used to evaluate the Performance Insights. For
-     * more information, see <code> <a
-     * href="https://docs.aws.amazon.com/devops-guru/latest/APIReference/API_PerformanceInsightsReferenceComparisonValues.html">PerformanceInsightsReferenceComparisonValues</a>
-     * </code>. </p>
-     */
-    inline PerformanceInsightsReferenceData& WithComparisonValues(const PerformanceInsightsReferenceComparisonValues& value) { SetComparisonValues(value); return *this;}
-
-    /**
-     * <p>The specific reference values used to evaluate the Performance Insights. For
-     * more information, see <code> <a
-     * href="https://docs.aws.amazon.com/devops-guru/latest/APIReference/API_PerformanceInsightsReferenceComparisonValues.html">PerformanceInsightsReferenceComparisonValues</a>
-     * </code>. </p>
-     */
-    inline PerformanceInsightsReferenceData& WithComparisonValues(PerformanceInsightsReferenceComparisonValues&& value) { SetComparisonValues(std::move(value)); return *this;}
-
+    template<typename ComparisonValuesT = PerformanceInsightsReferenceComparisonValues>
+    void SetComparisonValues(ComparisonValuesT&& value) { m_comparisonValuesHasBeenSet = true; m_comparisonValues = std::forward<ComparisonValuesT>(value); }
+    template<typename ComparisonValuesT = PerformanceInsightsReferenceComparisonValues>
+    PerformanceInsightsReferenceData& WithComparisonValues(ComparisonValuesT&& value) { SetComparisonValues(std::forward<ComparisonValuesT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

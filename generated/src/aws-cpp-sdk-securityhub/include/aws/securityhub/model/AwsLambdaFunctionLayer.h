@@ -31,79 +31,39 @@ namespace Model
   class AwsLambdaFunctionLayer
   {
   public:
-    AWS_SECURITYHUB_API AwsLambdaFunctionLayer();
+    AWS_SECURITYHUB_API AwsLambdaFunctionLayer() = default;
     AWS_SECURITYHUB_API AwsLambdaFunctionLayer(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsLambdaFunctionLayer& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the function layer.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The ARN of the function layer.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    AwsLambdaFunctionLayer& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the function layer.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The ARN of the function layer.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the function layer.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the function layer.</p>
-     */
-    inline AwsLambdaFunctionLayer& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the function layer.</p>
-     */
-    inline AwsLambdaFunctionLayer& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the function layer.</p>
-     */
-    inline AwsLambdaFunctionLayer& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The size of the layer archive in bytes.</p>
      */
-    inline int GetCodeSize() const{ return m_codeSize; }
-
-    /**
-     * <p>The size of the layer archive in bytes.</p>
-     */
+    inline int GetCodeSize() const { return m_codeSize; }
     inline bool CodeSizeHasBeenSet() const { return m_codeSizeHasBeenSet; }
-
-    /**
-     * <p>The size of the layer archive in bytes.</p>
-     */
     inline void SetCodeSize(int value) { m_codeSizeHasBeenSet = true; m_codeSize = value; }
-
-    /**
-     * <p>The size of the layer archive in bytes.</p>
-     */
     inline AwsLambdaFunctionLayer& WithCodeSize(int value) { SetCodeSize(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_arn;
     bool m_arnHasBeenSet = false;
 
-    int m_codeSize;
+    int m_codeSize{0};
     bool m_codeSizeHasBeenSet = false;
   };
 

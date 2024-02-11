@@ -21,7 +21,7 @@ namespace Model
   class DescribeForecastRequest : public ForecastServiceRequest
   {
   public:
-    AWS_FORECASTSERVICE_API DescribeForecastRequest();
+    AWS_FORECASTSERVICE_API DescribeForecastRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_FORECASTSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the forecast.</p>
      */
-    inline const Aws::String& GetForecastArn() const{ return m_forecastArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the forecast.</p>
-     */
+    inline const Aws::String& GetForecastArn() const { return m_forecastArn; }
     inline bool ForecastArnHasBeenSet() const { return m_forecastArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the forecast.</p>
-     */
-    inline void SetForecastArn(const Aws::String& value) { m_forecastArnHasBeenSet = true; m_forecastArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the forecast.</p>
-     */
-    inline void SetForecastArn(Aws::String&& value) { m_forecastArnHasBeenSet = true; m_forecastArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the forecast.</p>
-     */
-    inline void SetForecastArn(const char* value) { m_forecastArnHasBeenSet = true; m_forecastArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the forecast.</p>
-     */
-    inline DescribeForecastRequest& WithForecastArn(const Aws::String& value) { SetForecastArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the forecast.</p>
-     */
-    inline DescribeForecastRequest& WithForecastArn(Aws::String&& value) { SetForecastArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the forecast.</p>
-     */
-    inline DescribeForecastRequest& WithForecastArn(const char* value) { SetForecastArn(value); return *this;}
-
+    template<typename ForecastArnT = Aws::String>
+    void SetForecastArn(ForecastArnT&& value) { m_forecastArnHasBeenSet = true; m_forecastArn = std::forward<ForecastArnT>(value); }
+    template<typename ForecastArnT = Aws::String>
+    DescribeForecastRequest& WithForecastArn(ForecastArnT&& value) { SetForecastArn(std::forward<ForecastArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_forecastArn;

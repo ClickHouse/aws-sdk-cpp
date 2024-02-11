@@ -23,7 +23,7 @@ namespace Model
   class UpdateFunction2020_05_31Request : public CloudFrontRequest
   {
   public:
-    AWS_CLOUDFRONT_API UpdateFunction2020_05_31Request();
+    AWS_CLOUDFRONT_API UpdateFunction2020_05_31Request() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,127 +36,44 @@ namespace Model
     AWS_CLOUDFRONT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the function that you are updating.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the function that you are updating.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateFunction2020_05_31Request& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the function that you are updating.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the function that you are updating.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the function that you are updating.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the function that you are updating.</p>
-     */
-    inline UpdateFunction2020_05_31Request& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the function that you are updating.</p>
-     */
-    inline UpdateFunction2020_05_31Request& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the function that you are updating.</p>
-     */
-    inline UpdateFunction2020_05_31Request& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current version (<code>ETag</code> value) of the function that you are
      * updating, which you can get using <code>DescribeFunction</code>.</p>
      */
-    inline const Aws::String& GetIfMatch() const{ return m_ifMatch; }
-
-    /**
-     * <p>The current version (<code>ETag</code> value) of the function that you are
-     * updating, which you can get using <code>DescribeFunction</code>.</p>
-     */
+    inline const Aws::String& GetIfMatch() const { return m_ifMatch; }
     inline bool IfMatchHasBeenSet() const { return m_ifMatchHasBeenSet; }
+    template<typename IfMatchT = Aws::String>
+    void SetIfMatch(IfMatchT&& value) { m_ifMatchHasBeenSet = true; m_ifMatch = std::forward<IfMatchT>(value); }
+    template<typename IfMatchT = Aws::String>
+    UpdateFunction2020_05_31Request& WithIfMatch(IfMatchT&& value) { SetIfMatch(std::forward<IfMatchT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current version (<code>ETag</code> value) of the function that you are
-     * updating, which you can get using <code>DescribeFunction</code>.</p>
-     */
-    inline void SetIfMatch(const Aws::String& value) { m_ifMatchHasBeenSet = true; m_ifMatch = value; }
-
-    /**
-     * <p>The current version (<code>ETag</code> value) of the function that you are
-     * updating, which you can get using <code>DescribeFunction</code>.</p>
-     */
-    inline void SetIfMatch(Aws::String&& value) { m_ifMatchHasBeenSet = true; m_ifMatch = std::move(value); }
-
-    /**
-     * <p>The current version (<code>ETag</code> value) of the function that you are
-     * updating, which you can get using <code>DescribeFunction</code>.</p>
-     */
-    inline void SetIfMatch(const char* value) { m_ifMatchHasBeenSet = true; m_ifMatch.assign(value); }
-
-    /**
-     * <p>The current version (<code>ETag</code> value) of the function that you are
-     * updating, which you can get using <code>DescribeFunction</code>.</p>
-     */
-    inline UpdateFunction2020_05_31Request& WithIfMatch(const Aws::String& value) { SetIfMatch(value); return *this;}
-
-    /**
-     * <p>The current version (<code>ETag</code> value) of the function that you are
-     * updating, which you can get using <code>DescribeFunction</code>.</p>
-     */
-    inline UpdateFunction2020_05_31Request& WithIfMatch(Aws::String&& value) { SetIfMatch(std::move(value)); return *this;}
-
-    /**
-     * <p>The current version (<code>ETag</code> value) of the function that you are
-     * updating, which you can get using <code>DescribeFunction</code>.</p>
-     */
-    inline UpdateFunction2020_05_31Request& WithIfMatch(const char* value) { SetIfMatch(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Configuration information about the function.</p>
      */
-    inline const FunctionConfig& GetFunctionConfig() const{ return m_functionConfig; }
-
-    /**
-     * <p>Configuration information about the function.</p>
-     */
+    inline const FunctionConfig& GetFunctionConfig() const { return m_functionConfig; }
     inline bool FunctionConfigHasBeenSet() const { return m_functionConfigHasBeenSet; }
+    template<typename FunctionConfigT = FunctionConfig>
+    void SetFunctionConfig(FunctionConfigT&& value) { m_functionConfigHasBeenSet = true; m_functionConfig = std::forward<FunctionConfigT>(value); }
+    template<typename FunctionConfigT = FunctionConfig>
+    UpdateFunction2020_05_31Request& WithFunctionConfig(FunctionConfigT&& value) { SetFunctionConfig(std::forward<FunctionConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Configuration information about the function.</p>
-     */
-    inline void SetFunctionConfig(const FunctionConfig& value) { m_functionConfigHasBeenSet = true; m_functionConfig = value; }
-
-    /**
-     * <p>Configuration information about the function.</p>
-     */
-    inline void SetFunctionConfig(FunctionConfig&& value) { m_functionConfigHasBeenSet = true; m_functionConfig = std::move(value); }
-
-    /**
-     * <p>Configuration information about the function.</p>
-     */
-    inline UpdateFunction2020_05_31Request& WithFunctionConfig(const FunctionConfig& value) { SetFunctionConfig(value); return *this;}
-
-    /**
-     * <p>Configuration information about the function.</p>
-     */
-    inline UpdateFunction2020_05_31Request& WithFunctionConfig(FunctionConfig&& value) { SetFunctionConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The function code. For more information about writing a CloudFront function,
      * see <a
@@ -164,53 +81,13 @@ namespace Model
      * function code for CloudFront Functions</a> in the <i>Amazon CloudFront Developer
      * Guide</i>.</p>
      */
-    inline const Aws::Utils::CryptoBuffer& GetFunctionCode() const{ return m_functionCode; }
-
-    /**
-     * <p>The function code. For more information about writing a CloudFront function,
-     * see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/writing-function-code.html">Writing
-     * function code for CloudFront Functions</a> in the <i>Amazon CloudFront Developer
-     * Guide</i>.</p>
-     */
+    inline const Aws::Utils::CryptoBuffer& GetFunctionCode() const { return m_functionCode; }
     inline bool FunctionCodeHasBeenSet() const { return m_functionCodeHasBeenSet; }
-
-    /**
-     * <p>The function code. For more information about writing a CloudFront function,
-     * see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/writing-function-code.html">Writing
-     * function code for CloudFront Functions</a> in the <i>Amazon CloudFront Developer
-     * Guide</i>.</p>
-     */
-    inline void SetFunctionCode(const Aws::Utils::CryptoBuffer& value) { m_functionCodeHasBeenSet = true; m_functionCode = value; }
-
-    /**
-     * <p>The function code. For more information about writing a CloudFront function,
-     * see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/writing-function-code.html">Writing
-     * function code for CloudFront Functions</a> in the <i>Amazon CloudFront Developer
-     * Guide</i>.</p>
-     */
-    inline void SetFunctionCode(Aws::Utils::CryptoBuffer&& value) { m_functionCodeHasBeenSet = true; m_functionCode = std::move(value); }
-
-    /**
-     * <p>The function code. For more information about writing a CloudFront function,
-     * see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/writing-function-code.html">Writing
-     * function code for CloudFront Functions</a> in the <i>Amazon CloudFront Developer
-     * Guide</i>.</p>
-     */
-    inline UpdateFunction2020_05_31Request& WithFunctionCode(const Aws::Utils::CryptoBuffer& value) { SetFunctionCode(value); return *this;}
-
-    /**
-     * <p>The function code. For more information about writing a CloudFront function,
-     * see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/writing-function-code.html">Writing
-     * function code for CloudFront Functions</a> in the <i>Amazon CloudFront Developer
-     * Guide</i>.</p>
-     */
-    inline UpdateFunction2020_05_31Request& WithFunctionCode(Aws::Utils::CryptoBuffer&& value) { SetFunctionCode(std::move(value)); return *this;}
-
+    template<typename FunctionCodeT = Aws::Utils::CryptoBuffer>
+    void SetFunctionCode(FunctionCodeT&& value) { m_functionCodeHasBeenSet = true; m_functionCode = std::forward<FunctionCodeT>(value); }
+    template<typename FunctionCodeT = Aws::Utils::CryptoBuffer>
+    UpdateFunction2020_05_31Request& WithFunctionCode(FunctionCodeT&& value) { SetFunctionCode(std::forward<FunctionCodeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -222,7 +99,7 @@ namespace Model
     FunctionConfig m_functionConfig;
     bool m_functionConfigHasBeenSet = false;
 
-    Aws::Utils::CryptoBuffer m_functionCode;
+    Aws::Utils::CryptoBuffer m_functionCode{};
     bool m_functionCodeHasBeenSet = false;
   };
 

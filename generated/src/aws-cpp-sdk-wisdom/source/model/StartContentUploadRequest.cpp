@@ -12,12 +12,6 @@ using namespace Aws::ConnectWisdomService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartContentUploadRequest::StartContentUploadRequest() : 
-    m_contentTypeHasBeenSet(false),
-    m_knowledgeBaseIdHasBeenSet(false)
-{
-}
-
 Aws::String StartContentUploadRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -25,6 +19,12 @@ Aws::String StartContentUploadRequest::SerializePayload() const
   if(m_contentTypeHasBeenSet)
   {
    payload.WithString("contentType", m_contentType);
+
+  }
+
+  if(m_presignedUrlTimeToLiveHasBeenSet)
+  {
+   payload.WithInteger("presignedUrlTimeToLive", m_presignedUrlTimeToLive);
 
   }
 

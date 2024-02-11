@@ -12,14 +12,6 @@ using namespace Aws::SecurityHub::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateOrganizationConfigurationRequest::UpdateOrganizationConfigurationRequest() : 
-    m_autoEnable(false),
-    m_autoEnableHasBeenSet(false),
-    m_autoEnableStandards(AutoEnableStandards::NOT_SET),
-    m_autoEnableStandardsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateOrganizationConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -33,6 +25,12 @@ Aws::String UpdateOrganizationConfigurationRequest::SerializePayload() const
   if(m_autoEnableStandardsHasBeenSet)
   {
    payload.WithString("AutoEnableStandards", AutoEnableStandardsMapper::GetNameForAutoEnableStandards(m_autoEnableStandards));
+  }
+
+  if(m_organizationConfigurationHasBeenSet)
+  {
+   payload.WithObject("OrganizationConfiguration", m_organizationConfiguration.Jsonize());
+
   }
 
   return payload.View().WriteReadable();

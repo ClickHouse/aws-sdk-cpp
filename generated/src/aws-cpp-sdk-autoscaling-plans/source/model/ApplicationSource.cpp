@@ -18,15 +18,7 @@ namespace AutoScalingPlans
 namespace Model
 {
 
-ApplicationSource::ApplicationSource() : 
-    m_cloudFormationStackARNHasBeenSet(false),
-    m_tagFiltersHasBeenSet(false)
-{
-}
-
-ApplicationSource::ApplicationSource(JsonView jsonValue) : 
-    m_cloudFormationStackARNHasBeenSet(false),
-    m_tagFiltersHasBeenSet(false)
+ApplicationSource::ApplicationSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ApplicationSource& ApplicationSource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CloudFormationStackARN"))
   {
     m_cloudFormationStackARN = jsonValue.GetString("CloudFormationStackARN");
-
     m_cloudFormationStackARNHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TagFilters"))
   {
     Aws::Utils::Array<JsonView> tagFiltersJsonList = jsonValue.GetArray("TagFilters");
@@ -49,7 +39,6 @@ ApplicationSource& ApplicationSource::operator =(JsonView jsonValue)
     }
     m_tagFiltersHasBeenSet = true;
   }
-
   return *this;
 }
 

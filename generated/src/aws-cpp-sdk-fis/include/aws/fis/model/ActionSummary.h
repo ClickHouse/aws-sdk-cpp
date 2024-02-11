@@ -33,224 +33,86 @@ namespace Model
   class ActionSummary
   {
   public:
-    AWS_FIS_API ActionSummary();
+    AWS_FIS_API ActionSummary() = default;
     AWS_FIS_API ActionSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIS_API ActionSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the action.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the action.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    ActionSummary& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the action.</p>
+     * <p>The Amazon Resource Name (ARN) of the action.</p>
      */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    ActionSummary& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the action.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the action.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the action.</p>
-     */
-    inline ActionSummary& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the action.</p>
-     */
-    inline ActionSummary& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the action.</p>
-     */
-    inline ActionSummary& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description for the action.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description for the action.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ActionSummary& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description for the action.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description for the action.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description for the action.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description for the action.</p>
-     */
-    inline ActionSummary& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description for the action.</p>
-     */
-    inline ActionSummary& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description for the action.</p>
-     */
-    inline ActionSummary& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The targets for the action.</p>
      */
-    inline const Aws::Map<Aws::String, ActionTarget>& GetTargets() const{ return m_targets; }
-
-    /**
-     * <p>The targets for the action.</p>
-     */
+    inline const Aws::Map<Aws::String, ActionTarget>& GetTargets() const { return m_targets; }
     inline bool TargetsHasBeenSet() const { return m_targetsHasBeenSet; }
+    template<typename TargetsT = Aws::Map<Aws::String, ActionTarget>>
+    void SetTargets(TargetsT&& value) { m_targetsHasBeenSet = true; m_targets = std::forward<TargetsT>(value); }
+    template<typename TargetsT = Aws::Map<Aws::String, ActionTarget>>
+    ActionSummary& WithTargets(TargetsT&& value) { SetTargets(std::forward<TargetsT>(value)); return *this;}
+    template<typename TargetsKeyT = Aws::String, typename TargetsValueT = ActionTarget>
+    ActionSummary& AddTargets(TargetsKeyT&& key, TargetsValueT&& value) {
+      m_targetsHasBeenSet = true; m_targets.emplace(std::forward<TargetsKeyT>(key), std::forward<TargetsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline void SetTargets(const Aws::Map<Aws::String, ActionTarget>& value) { m_targetsHasBeenSet = true; m_targets = value; }
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline void SetTargets(Aws::Map<Aws::String, ActionTarget>&& value) { m_targetsHasBeenSet = true; m_targets = std::move(value); }
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline ActionSummary& WithTargets(const Aws::Map<Aws::String, ActionTarget>& value) { SetTargets(value); return *this;}
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline ActionSummary& WithTargets(Aws::Map<Aws::String, ActionTarget>&& value) { SetTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline ActionSummary& AddTargets(const Aws::String& key, const ActionTarget& value) { m_targetsHasBeenSet = true; m_targets.emplace(key, value); return *this; }
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline ActionSummary& AddTargets(Aws::String&& key, const ActionTarget& value) { m_targetsHasBeenSet = true; m_targets.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline ActionSummary& AddTargets(const Aws::String& key, ActionTarget&& value) { m_targetsHasBeenSet = true; m_targets.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline ActionSummary& AddTargets(Aws::String&& key, ActionTarget&& value) { m_targetsHasBeenSet = true; m_targets.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline ActionSummary& AddTargets(const char* key, ActionTarget&& value) { m_targetsHasBeenSet = true; m_targets.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline ActionSummary& AddTargets(const char* key, const ActionTarget& value) { m_targetsHasBeenSet = true; m_targets.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The tags for the action.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags for the action.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags for the action.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags for the action.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags for the action.</p>
-     */
-    inline ActionSummary& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags for the action.</p>
-     */
-    inline ActionSummary& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags for the action.</p>
-     */
-    inline ActionSummary& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags for the action.</p>
-     */
-    inline ActionSummary& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags for the action.</p>
-     */
-    inline ActionSummary& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags for the action.</p>
-     */
-    inline ActionSummary& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags for the action.</p>
-     */
-    inline ActionSummary& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags for the action.</p>
-     */
-    inline ActionSummary& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags for the action.</p>
-     */
-    inline ActionSummary& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    ActionSummary& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    ActionSummary& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_id;
     bool m_idHasBeenSet = false;
+
+    Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;

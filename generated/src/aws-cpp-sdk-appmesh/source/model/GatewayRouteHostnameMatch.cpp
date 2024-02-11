@@ -18,15 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-GatewayRouteHostnameMatch::GatewayRouteHostnameMatch() : 
-    m_exactHasBeenSet(false),
-    m_suffixHasBeenSet(false)
-{
-}
-
-GatewayRouteHostnameMatch::GatewayRouteHostnameMatch(JsonView jsonValue) : 
-    m_exactHasBeenSet(false),
-    m_suffixHasBeenSet(false)
+GatewayRouteHostnameMatch::GatewayRouteHostnameMatch(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ GatewayRouteHostnameMatch& GatewayRouteHostnameMatch::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("exact"))
   {
     m_exact = jsonValue.GetString("exact");
-
     m_exactHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("suffix"))
   {
     m_suffix = jsonValue.GetString("suffix");
-
     m_suffixHasBeenSet = true;
   }
-
   return *this;
 }
 

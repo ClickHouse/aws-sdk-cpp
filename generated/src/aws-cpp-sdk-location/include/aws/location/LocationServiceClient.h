@@ -23,22 +23,25 @@ namespace LocationService
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef LocationServiceClientConfiguration ClientConfigurationType;
+      typedef LocationServiceEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         LocationServiceClient(const Aws::LocationService::LocationServiceClientConfiguration& clientConfiguration = Aws::LocationService::LocationServiceClientConfiguration(),
-                              std::shared_ptr<LocationServiceEndpointProviderBase> endpointProvider = Aws::MakeShared<LocationServiceEndpointProvider>(ALLOCATION_TAG));
+                              std::shared_ptr<LocationServiceEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         LocationServiceClient(const Aws::Auth::AWSCredentials& credentials,
-                              std::shared_ptr<LocationServiceEndpointProviderBase> endpointProvider = Aws::MakeShared<LocationServiceEndpointProvider>(ALLOCATION_TAG),
+                              std::shared_ptr<LocationServiceEndpointProviderBase> endpointProvider = nullptr,
                               const Aws::LocationService::LocationServiceClientConfiguration& clientConfiguration = Aws::LocationService::LocationServiceClientConfiguration());
 
        /**
@@ -46,7 +49,7 @@ namespace LocationService
         * the default http client factory will be used
         */
         LocationServiceClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                              std::shared_ptr<LocationServiceEndpointProviderBase> endpointProvider = Aws::MakeShared<LocationServiceEndpointProvider>(ALLOCATION_TAG),
+                              std::shared_ptr<LocationServiceEndpointProviderBase> endpointProvider = nullptr,
                               const Aws::LocationService::LocationServiceClientConfiguration& clientConfiguration = Aws::LocationService::LocationServiceClientConfiguration());
 
 
@@ -251,27 +254,28 @@ namespace LocationService
         }
 
         /**
-         * <p>Uploads position update data for one or more devices to a tracker resource.
-         * Amazon Location uses the data when it reports the last known device position and
-         * position history. Amazon Location retains location data for 30 days.</p> 
-         * <p>Position updates are handled based on the <code>PositionFiltering</code>
-         * property of the tracker. When <code>PositionFiltering</code> is set to
-         * <code>TimeBased</code>, updates are evaluated against linked geofence
-         * collections, and location data is stored at a maximum of one position per 30
-         * second interval. If your update frequency is more often than every 30 seconds,
-         * only one update per 30 seconds is stored for each unique device ID.</p> <p>When
-         * <code>PositionFiltering</code> is set to <code>DistanceBased</code> filtering,
-         * location data is stored and evaluated against linked geofence collections only
-         * if the device has moved more than 30 m (98.4 ft).</p> <p>When
+         * <p>Uploads position update data for one or more devices to a tracker resource
+         * (up to 10 devices per batch). Amazon Location uses the data when it reports the
+         * last known device position and position history. Amazon Location retains
+         * location data for 30 days.</p>  <p>Position updates are handled based on
+         * the <code>PositionFiltering</code> property of the tracker. When
+         * <code>PositionFiltering</code> is set to <code>TimeBased</code>, updates are
+         * evaluated against linked geofence collections, and location data is stored at a
+         * maximum of one position per 30 second interval. If your update frequency is more
+         * often than every 30 seconds, only one update per 30 seconds is stored for each
+         * unique device ID.</p> <p>When <code>PositionFiltering</code> is set to
+         * <code>DistanceBased</code> filtering, location data is stored and evaluated
+         * against linked geofence collections only if the device has moved more than 30 m
+         * (98.4 ft).</p> <p>When <code>PositionFiltering</code> is set to
+         * <code>AccuracyBased</code> filtering, location data is stored and evaluated
+         * against linked geofence collections only if the device has moved more than the
+         * measured accuracy. For example, if two consecutive updates from a device have a
+         * horizontal accuracy of 5 m and 10 m, the second update is neither stored or
+         * evaluated if the device has moved less than 15 m. If
          * <code>PositionFiltering</code> is set to <code>AccuracyBased</code> filtering,
-         * location data is stored and evaluated against linked geofence collections only
-         * if the device has moved more than the measured accuracy. For example, if two
-         * consecutive updates from a device have a horizontal accuracy of 5 m and 10 m,
-         * the second update is neither stored or evaluated if the device has moved less
-         * than 15 m. If <code>PositionFiltering</code> is set to
-         * <code>AccuracyBased</code> filtering, Amazon Location uses the default value
-         * <code>{ "Horizontal": 0}</code> when accuracy is not provided on a
-         * <code>DevicePositionUpdate</code>.</p> <p><h3>See Also:</h3>   <a
+         * Amazon Location uses the default value <code>{ "Horizontal": 0}</code> when
+         * accuracy is not provided on a <code>DevicePositionUpdate</code>.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/location-2020-11-19/BatchUpdateDevicePosition">AWS
          * API Reference</a></p>
          */
@@ -297,7 +301,7 @@ namespace LocationService
 
         /**
          * <p> <a
-         * href="https://docs.aws.amazon.com/location/latest/developerguide/calculate-route.html">Calculates
+         * href="https://docs.aws.amazon.com/location/previous/developerguide/calculate-route.html">Calculates
          * a route</a> given the following required parameters:
          * <code>DeparturePosition</code> and <code>DestinationPosition</code>. Requires
          * that you first <a
@@ -306,14 +310,14 @@ namespace LocationService
          * specify a departure time uses the best time of day to travel with the best
          * traffic conditions when calculating the route.</p> <p>Additional options
          * include:</p> <ul> <li> <p> <a
-         * href="https://docs.aws.amazon.com/location/latest/developerguide/departure-time.html">Specifying
+         * href="https://docs.aws.amazon.com/location/previous/developerguide/departure-time.html">Specifying
          * a departure time</a> using either <code>DepartureTime</code> or
          * <code>DepartNow</code>. This calculates a route based on predictive traffic data
          * at the given time. </p>  <p>You can't specify both
          * <code>DepartureTime</code> and <code>DepartNow</code> in a single request.
          * Specifying both parameters returns a validation error.</p>  </li> <li>
          * <p> <a
-         * href="https://docs.aws.amazon.com/location/latest/developerguide/travel-mode.html">Specifying
+         * href="https://docs.aws.amazon.com/location/previous/developerguide/travel-mode.html">Specifying
          * a travel mode</a> using TravelMode sets the transportation mode used to
          * calculate the routes. This also lets you specify additional route preferences in
          * <code>CarModeOptions</code> if traveling by <code>Car</code>, or
@@ -346,7 +350,7 @@ namespace LocationService
 
         /**
          * <p> <a
-         * href="https://docs.aws.amazon.com/location/latest/developerguide/calculate-route-matrix.html">
+         * href="https://docs.aws.amazon.com/location/previous/developerguide/calculate-route-matrix.html">
          * Calculates a route matrix</a> given the following required parameters:
          * <code>DeparturePositions</code> and <code>DestinationPositions</code>.
          * <code>CalculateRouteMatrix</code> calculates routes and returns the travel time
@@ -364,14 +368,14 @@ namespace LocationService
          * specify a departure time uses the best time of day to travel with the best
          * traffic conditions when calculating routes.</p> <p>Additional options
          * include:</p> <ul> <li> <p> <a
-         * href="https://docs.aws.amazon.com/location/latest/developerguide/departure-time.html">
+         * href="https://docs.aws.amazon.com/location/previous/developerguide/departure-time.html">
          * Specifying a departure time</a> using either <code>DepartureTime</code> or
          * <code>DepartNow</code>. This calculates routes based on predictive traffic data
          * at the given time. </p>  <p>You can't specify both
          * <code>DepartureTime</code> and <code>DepartNow</code> in a single request.
          * Specifying both parameters returns a validation error.</p>  </li> <li>
          * <p> <a
-         * href="https://docs.aws.amazon.com/location/latest/developerguide/travel-mode.html">Specifying
+         * href="https://docs.aws.amazon.com/location/previous/developerguide/travel-mode.html">Specifying
          * a travel mode</a> using TravelMode sets the transportation mode used to
          * calculate the routes. This also lets you specify additional route preferences in
          * <code>CarModeOptions</code> if traveling by <code>Car</code>, or
@@ -428,11 +432,9 @@ namespace LocationService
 
         /**
          * <p>Creates an API key resource in your Amazon Web Services account, which lets
-         * you grant <code>geo:GetMap*</code> actions for Amazon Location Map resources to
-         * the API key bearer.</p>  <p>The API keys feature is in preview. We
-         * may add, change, or remove features before announcing general availability. For
-         * more information, see <a
-         * href="https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html">Using
+         * you grant actions for Amazon Location resources to the API key bearer.</p>
+         *  <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html">Using
          * API keys</a>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/location-2020-11-19/CreateKey">AWS
          * API Reference</a></p>
@@ -771,11 +773,7 @@ namespace LocationService
         }
 
         /**
-         * <p>Retrieves the API key resource details.</p>  <p>The API keys
-         * feature is in preview. We may add, change, or remove features before announcing
-         * general availability. For more information, see <a
-         * href="https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html">Using
-         * API keys</a>.</p> <p><h3>See Also:</h3>   <a
+         * <p>Retrieves the API key resource details.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/location-2020-11-19/DescribeKey">AWS
          * API Reference</a></p>
          */
@@ -929,6 +927,44 @@ namespace LocationService
         }
 
         /**
+         * <p>This action forecasts future geofence events that are likely to occur within
+         * a specified time horizon if a device continues moving at its current speed. Each
+         * forecasted event is associated with a geofence from a provided geofence
+         * collection. A forecast event can have one of the following states:</p> <p>
+         * <code>ENTER</code>: The device position is outside the referenced geofence, but
+         * the device may cross into the geofence during the forecasting time horizon if it
+         * maintains its current speed.</p> <p> <code>EXIT</code>: The device position is
+         * inside the referenced geofence, but the device may leave the geofence during the
+         * forecasted time horizon if the device maintains it's current speed.</p> <p>
+         * <code>IDLE</code>:The device is inside the geofence, and it will remain inside
+         * the geofence through the end of the time horizon if the device maintains it's
+         * current speed.</p>  <p>Heading direction is not considered in the current
+         * version. The API takes a conservative approach and includes events that can
+         * occur for any heading.</p> <p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/location-2020-11-19/ForecastGeofenceEvents">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ForecastGeofenceEventsOutcome ForecastGeofenceEvents(const Model::ForecastGeofenceEventsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ForecastGeofenceEvents that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ForecastGeofenceEventsRequestT = Model::ForecastGeofenceEventsRequest>
+        Model::ForecastGeofenceEventsOutcomeCallable ForecastGeofenceEventsCallable(const ForecastGeofenceEventsRequestT& request) const
+        {
+            return SubmitCallable(&LocationServiceClient::ForecastGeofenceEvents, request);
+        }
+
+        /**
+         * An Async wrapper for ForecastGeofenceEvents that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ForecastGeofenceEventsRequestT = Model::ForecastGeofenceEventsRequest>
+        void ForecastGeofenceEventsAsync(const ForecastGeofenceEventsRequestT& request, const ForecastGeofenceEventsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&LocationServiceClient::ForecastGeofenceEvents, request, handler, context);
+        }
+
+        /**
          * <p>Retrieves a device's most recent position according to its sample time.</p>
          *  <p>Device positions are deleted after 30 days.</p> <p><h3>See
          * Also:</h3>   <a
@@ -983,8 +1019,9 @@ namespace LocationService
         }
 
         /**
-         * <p>Retrieves the geofence details from a geofence collection.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Retrieves the geofence details from a geofence collection.</p>  <p>The
+         * returned geometry will always match the geometry format used when the geofence
+         * was created.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/location-2020-11-19/GetGeofence">AWS
          * API Reference</a></p>
          */
@@ -1127,8 +1164,11 @@ namespace LocationService
          * are the same in the original search request and the call to
          * <code>GetPlace</code>.</p> <ul> <li> <p>Customer Amazon Web Services account</p>
          * </li> <li> <p>Amazon Web Services Region</p> </li> <li> <p>Data provider
-         * specified in the place index resource</p> </li> </ul> <p><h3>See
-         * Also:</h3>   <a
+         * specified in the place index resource</p> </li> </ul>   <p>If your
+         * Place index resource is configured with Grab as your geolocation provider and
+         * Storage as Intended use, the GetPlace operation is unavailable. For more
+         * information, see <a href="http://aws.amazon.com/service-terms">AWS service
+         * terms</a>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/location-2020-11-19/GetPlace">AWS
          * API Reference</a></p>
          */
@@ -1184,13 +1224,13 @@ namespace LocationService
          * href="http://docs.aws.amazon.com/goto/WebAPI/location-2020-11-19/ListGeofenceCollections">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListGeofenceCollectionsOutcome ListGeofenceCollections(const Model::ListGeofenceCollectionsRequest& request) const;
+        virtual Model::ListGeofenceCollectionsOutcome ListGeofenceCollections(const Model::ListGeofenceCollectionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListGeofenceCollections that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListGeofenceCollectionsRequestT = Model::ListGeofenceCollectionsRequest>
-        Model::ListGeofenceCollectionsOutcomeCallable ListGeofenceCollectionsCallable(const ListGeofenceCollectionsRequestT& request) const
+        Model::ListGeofenceCollectionsOutcomeCallable ListGeofenceCollectionsCallable(const ListGeofenceCollectionsRequestT& request = {}) const
         {
             return SubmitCallable(&LocationServiceClient::ListGeofenceCollections, request);
         }
@@ -1199,7 +1239,7 @@ namespace LocationService
          * An Async wrapper for ListGeofenceCollections that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListGeofenceCollectionsRequestT = Model::ListGeofenceCollectionsRequest>
-        void ListGeofenceCollectionsAsync(const ListGeofenceCollectionsRequestT& request, const ListGeofenceCollectionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListGeofenceCollectionsAsync(const ListGeofenceCollectionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListGeofenceCollectionsRequestT& request = {}) const
         {
             return SubmitAsync(&LocationServiceClient::ListGeofenceCollections, request, handler, context);
         }
@@ -1231,21 +1271,18 @@ namespace LocationService
         }
 
         /**
-         * <p>Lists API key resources in your Amazon Web Services account.</p> 
-         * <p>The API keys feature is in preview. We may add, change, or remove features
-         * before announcing general availability. For more information, see <a
-         * href="https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html">Using
-         * API keys</a>.</p> <p><h3>See Also:</h3>   <a
+         * <p>Lists API key resources in your Amazon Web Services account.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/location-2020-11-19/ListKeys">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListKeysOutcome ListKeys(const Model::ListKeysRequest& request) const;
+        virtual Model::ListKeysOutcome ListKeys(const Model::ListKeysRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListKeys that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListKeysRequestT = Model::ListKeysRequest>
-        Model::ListKeysOutcomeCallable ListKeysCallable(const ListKeysRequestT& request) const
+        Model::ListKeysOutcomeCallable ListKeysCallable(const ListKeysRequestT& request = {}) const
         {
             return SubmitCallable(&LocationServiceClient::ListKeys, request);
         }
@@ -1254,7 +1291,7 @@ namespace LocationService
          * An Async wrapper for ListKeys that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListKeysRequestT = Model::ListKeysRequest>
-        void ListKeysAsync(const ListKeysRequestT& request, const ListKeysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListKeysAsync(const ListKeysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListKeysRequestT& request = {}) const
         {
             return SubmitAsync(&LocationServiceClient::ListKeys, request, handler, context);
         }
@@ -1265,13 +1302,13 @@ namespace LocationService
          * href="http://docs.aws.amazon.com/goto/WebAPI/location-2020-11-19/ListMaps">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListMapsOutcome ListMaps(const Model::ListMapsRequest& request) const;
+        virtual Model::ListMapsOutcome ListMaps(const Model::ListMapsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListMaps that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListMapsRequestT = Model::ListMapsRequest>
-        Model::ListMapsOutcomeCallable ListMapsCallable(const ListMapsRequestT& request) const
+        Model::ListMapsOutcomeCallable ListMapsCallable(const ListMapsRequestT& request = {}) const
         {
             return SubmitCallable(&LocationServiceClient::ListMaps, request);
         }
@@ -1280,7 +1317,7 @@ namespace LocationService
          * An Async wrapper for ListMaps that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListMapsRequestT = Model::ListMapsRequest>
-        void ListMapsAsync(const ListMapsRequestT& request, const ListMapsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListMapsAsync(const ListMapsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListMapsRequestT& request = {}) const
         {
             return SubmitAsync(&LocationServiceClient::ListMaps, request, handler, context);
         }
@@ -1291,13 +1328,13 @@ namespace LocationService
          * href="http://docs.aws.amazon.com/goto/WebAPI/location-2020-11-19/ListPlaceIndexes">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListPlaceIndexesOutcome ListPlaceIndexes(const Model::ListPlaceIndexesRequest& request) const;
+        virtual Model::ListPlaceIndexesOutcome ListPlaceIndexes(const Model::ListPlaceIndexesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListPlaceIndexes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListPlaceIndexesRequestT = Model::ListPlaceIndexesRequest>
-        Model::ListPlaceIndexesOutcomeCallable ListPlaceIndexesCallable(const ListPlaceIndexesRequestT& request) const
+        Model::ListPlaceIndexesOutcomeCallable ListPlaceIndexesCallable(const ListPlaceIndexesRequestT& request = {}) const
         {
             return SubmitCallable(&LocationServiceClient::ListPlaceIndexes, request);
         }
@@ -1306,7 +1343,7 @@ namespace LocationService
          * An Async wrapper for ListPlaceIndexes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListPlaceIndexesRequestT = Model::ListPlaceIndexesRequest>
-        void ListPlaceIndexesAsync(const ListPlaceIndexesRequestT& request, const ListPlaceIndexesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListPlaceIndexesAsync(const ListPlaceIndexesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListPlaceIndexesRequestT& request = {}) const
         {
             return SubmitAsync(&LocationServiceClient::ListPlaceIndexes, request, handler, context);
         }
@@ -1317,13 +1354,13 @@ namespace LocationService
          * href="http://docs.aws.amazon.com/goto/WebAPI/location-2020-11-19/ListRouteCalculators">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListRouteCalculatorsOutcome ListRouteCalculators(const Model::ListRouteCalculatorsRequest& request) const;
+        virtual Model::ListRouteCalculatorsOutcome ListRouteCalculators(const Model::ListRouteCalculatorsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListRouteCalculators that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListRouteCalculatorsRequestT = Model::ListRouteCalculatorsRequest>
-        Model::ListRouteCalculatorsOutcomeCallable ListRouteCalculatorsCallable(const ListRouteCalculatorsRequestT& request) const
+        Model::ListRouteCalculatorsOutcomeCallable ListRouteCalculatorsCallable(const ListRouteCalculatorsRequestT& request = {}) const
         {
             return SubmitCallable(&LocationServiceClient::ListRouteCalculators, request);
         }
@@ -1332,7 +1369,7 @@ namespace LocationService
          * An Async wrapper for ListRouteCalculators that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListRouteCalculatorsRequestT = Model::ListRouteCalculatorsRequest>
-        void ListRouteCalculatorsAsync(const ListRouteCalculatorsRequestT& request, const ListRouteCalculatorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListRouteCalculatorsAsync(const ListRouteCalculatorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListRouteCalculatorsRequestT& request = {}) const
         {
             return SubmitAsync(&LocationServiceClient::ListRouteCalculators, request, handler, context);
         }
@@ -1395,13 +1432,13 @@ namespace LocationService
          * href="http://docs.aws.amazon.com/goto/WebAPI/location-2020-11-19/ListTrackers">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListTrackersOutcome ListTrackers(const Model::ListTrackersRequest& request) const;
+        virtual Model::ListTrackersOutcome ListTrackers(const Model::ListTrackersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListTrackers that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListTrackersRequestT = Model::ListTrackersRequest>
-        Model::ListTrackersOutcomeCallable ListTrackersCallable(const ListTrackersRequestT& request) const
+        Model::ListTrackersOutcomeCallable ListTrackersCallable(const ListTrackersRequestT& request = {}) const
         {
             return SubmitCallable(&LocationServiceClient::ListTrackers, request);
         }
@@ -1410,7 +1447,7 @@ namespace LocationService
          * An Async wrapper for ListTrackers that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListTrackersRequestT = Model::ListTrackersRequest>
-        void ListTrackersAsync(const ListTrackersRequestT& request, const ListTrackersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListTrackersAsync(const ListTrackersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListTrackersRequestT& request = {}) const
         {
             return SubmitAsync(&LocationServiceClient::ListTrackers, request, handler, context);
         }
@@ -1622,11 +1659,8 @@ namespace LocationService
         }
 
         /**
-         * <p>Updates the specified properties of a given API key resource.</p> 
-         * <p>The API keys feature is in preview. We may add, change, or remove features
-         * before announcing general availability. For more information, see <a
-         * href="https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html">Using
-         * API keys</a>.</p> <p><h3>See Also:</h3>   <a
+         * <p>Updates the specified properties of a given API key resource.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/location-2020-11-19/UpdateKey">AWS
          * API Reference</a></p>
          */
@@ -1754,6 +1788,37 @@ namespace LocationService
             return SubmitAsync(&LocationServiceClient::UpdateTracker, request, handler, context);
         }
 
+        /**
+         * <p>Verifies the integrity of the device's position by determining if it was
+         * reported behind a proxy, and by comparing it to an inferred position estimated
+         * based on the device's state.</p>  <p>The Location Integrity SDK provides
+         * enhanced features related to device verification, and it is available for use by
+         * request. To get access to the SDK, contact <a
+         * href="https://aws.amazon.com/contact-us/sales-support/?pg=locationprice&amp;cta=herobtn">Sales
+         * Support</a>.</p> <p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/location-2020-11-19/VerifyDevicePosition">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::VerifyDevicePositionOutcome VerifyDevicePosition(const Model::VerifyDevicePositionRequest& request) const;
+
+        /**
+         * A Callable wrapper for VerifyDevicePosition that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename VerifyDevicePositionRequestT = Model::VerifyDevicePositionRequest>
+        Model::VerifyDevicePositionOutcomeCallable VerifyDevicePositionCallable(const VerifyDevicePositionRequestT& request) const
+        {
+            return SubmitCallable(&LocationServiceClient::VerifyDevicePosition, request);
+        }
+
+        /**
+         * An Async wrapper for VerifyDevicePosition that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename VerifyDevicePositionRequestT = Model::VerifyDevicePositionRequest>
+        void VerifyDevicePositionAsync(const VerifyDevicePositionRequestT& request, const VerifyDevicePositionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&LocationServiceClient::VerifyDevicePosition, request, handler, context);
+        }
+
 
       void OverrideEndpoint(const Aws::String& endpoint);
       std::shared_ptr<LocationServiceEndpointProviderBase>& accessEndpointProvider();
@@ -1762,7 +1827,6 @@ namespace LocationService
       void init(const LocationServiceClientConfiguration& clientConfiguration);
 
       LocationServiceClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<LocationServiceEndpointProviderBase> m_endpointProvider;
   };
 

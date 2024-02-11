@@ -13,16 +13,6 @@ using namespace Aws::KMS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-EncryptRequest::EncryptRequest() : 
-    m_keyIdHasBeenSet(false),
-    m_plaintextHasBeenSet(false),
-    m_encryptionContextHasBeenSet(false),
-    m_grantTokensHasBeenSet(false),
-    m_encryptionAlgorithm(EncryptionAlgorithmSpec::NOT_SET),
-    m_encryptionAlgorithmHasBeenSet(false)
-{
-}
-
 Aws::String EncryptRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -63,6 +53,12 @@ Aws::String EncryptRequest::SerializePayload() const
   if(m_encryptionAlgorithmHasBeenSet)
   {
    payload.WithString("EncryptionAlgorithm", EncryptionAlgorithmSpecMapper::GetNameForEncryptionAlgorithmSpec(m_encryptionAlgorithm));
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+   payload.WithBool("DryRun", m_dryRun);
+
   }
 
   return payload.View().WriteReadable();

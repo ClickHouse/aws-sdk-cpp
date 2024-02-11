@@ -33,160 +33,86 @@ namespace Model
   class AddonVersionInfo
   {
   public:
-    AWS_EKS_API AddonVersionInfo();
+    AWS_EKS_API AddonVersionInfo() = default;
     AWS_EKS_API AddonVersionInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API AddonVersionInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The version of the add-on.</p>
      */
-    inline const Aws::String& GetAddonVersion() const{ return m_addonVersion; }
-
-    /**
-     * <p>The version of the add-on.</p>
-     */
+    inline const Aws::String& GetAddonVersion() const { return m_addonVersion; }
     inline bool AddonVersionHasBeenSet() const { return m_addonVersionHasBeenSet; }
+    template<typename AddonVersionT = Aws::String>
+    void SetAddonVersion(AddonVersionT&& value) { m_addonVersionHasBeenSet = true; m_addonVersion = std::forward<AddonVersionT>(value); }
+    template<typename AddonVersionT = Aws::String>
+    AddonVersionInfo& WithAddonVersion(AddonVersionT&& value) { SetAddonVersion(std::forward<AddonVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the add-on.</p>
-     */
-    inline void SetAddonVersion(const Aws::String& value) { m_addonVersionHasBeenSet = true; m_addonVersion = value; }
-
-    /**
-     * <p>The version of the add-on.</p>
-     */
-    inline void SetAddonVersion(Aws::String&& value) { m_addonVersionHasBeenSet = true; m_addonVersion = std::move(value); }
-
-    /**
-     * <p>The version of the add-on.</p>
-     */
-    inline void SetAddonVersion(const char* value) { m_addonVersionHasBeenSet = true; m_addonVersion.assign(value); }
-
-    /**
-     * <p>The version of the add-on.</p>
-     */
-    inline AddonVersionInfo& WithAddonVersion(const Aws::String& value) { SetAddonVersion(value); return *this;}
-
-    /**
-     * <p>The version of the add-on.</p>
-     */
-    inline AddonVersionInfo& WithAddonVersion(Aws::String&& value) { SetAddonVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the add-on.</p>
-     */
-    inline AddonVersionInfo& WithAddonVersion(const char* value) { SetAddonVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The architectures that the version supports.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetArchitecture() const{ return m_architecture; }
-
-    /**
-     * <p>The architectures that the version supports.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetArchitecture() const { return m_architecture; }
     inline bool ArchitectureHasBeenSet() const { return m_architectureHasBeenSet; }
+    template<typename ArchitectureT = Aws::Vector<Aws::String>>
+    void SetArchitecture(ArchitectureT&& value) { m_architectureHasBeenSet = true; m_architecture = std::forward<ArchitectureT>(value); }
+    template<typename ArchitectureT = Aws::Vector<Aws::String>>
+    AddonVersionInfo& WithArchitecture(ArchitectureT&& value) { SetArchitecture(std::forward<ArchitectureT>(value)); return *this;}
+    template<typename ArchitectureT = Aws::String>
+    AddonVersionInfo& AddArchitecture(ArchitectureT&& value) { m_architectureHasBeenSet = true; m_architecture.emplace_back(std::forward<ArchitectureT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The architectures that the version supports.</p>
+     * <p>Indicates the compute type of the add-on version.</p>
      */
-    inline void SetArchitecture(const Aws::Vector<Aws::String>& value) { m_architectureHasBeenSet = true; m_architecture = value; }
+    inline const Aws::Vector<Aws::String>& GetComputeTypes() const { return m_computeTypes; }
+    inline bool ComputeTypesHasBeenSet() const { return m_computeTypesHasBeenSet; }
+    template<typename ComputeTypesT = Aws::Vector<Aws::String>>
+    void SetComputeTypes(ComputeTypesT&& value) { m_computeTypesHasBeenSet = true; m_computeTypes = std::forward<ComputeTypesT>(value); }
+    template<typename ComputeTypesT = Aws::Vector<Aws::String>>
+    AddonVersionInfo& WithComputeTypes(ComputeTypesT&& value) { SetComputeTypes(std::forward<ComputeTypesT>(value)); return *this;}
+    template<typename ComputeTypesT = Aws::String>
+    AddonVersionInfo& AddComputeTypes(ComputeTypesT&& value) { m_computeTypesHasBeenSet = true; m_computeTypes.emplace_back(std::forward<ComputeTypesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The architectures that the version supports.</p>
-     */
-    inline void SetArchitecture(Aws::Vector<Aws::String>&& value) { m_architectureHasBeenSet = true; m_architecture = std::move(value); }
-
-    /**
-     * <p>The architectures that the version supports.</p>
-     */
-    inline AddonVersionInfo& WithArchitecture(const Aws::Vector<Aws::String>& value) { SetArchitecture(value); return *this;}
-
-    /**
-     * <p>The architectures that the version supports.</p>
-     */
-    inline AddonVersionInfo& WithArchitecture(Aws::Vector<Aws::String>&& value) { SetArchitecture(std::move(value)); return *this;}
-
-    /**
-     * <p>The architectures that the version supports.</p>
-     */
-    inline AddonVersionInfo& AddArchitecture(const Aws::String& value) { m_architectureHasBeenSet = true; m_architecture.push_back(value); return *this; }
-
-    /**
-     * <p>The architectures that the version supports.</p>
-     */
-    inline AddonVersionInfo& AddArchitecture(Aws::String&& value) { m_architectureHasBeenSet = true; m_architecture.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The architectures that the version supports.</p>
-     */
-    inline AddonVersionInfo& AddArchitecture(const char* value) { m_architectureHasBeenSet = true; m_architecture.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>An object representing the compatibilities of a version.</p>
      */
-    inline const Aws::Vector<Compatibility>& GetCompatibilities() const{ return m_compatibilities; }
-
-    /**
-     * <p>An object representing the compatibilities of a version.</p>
-     */
+    inline const Aws::Vector<Compatibility>& GetCompatibilities() const { return m_compatibilities; }
     inline bool CompatibilitiesHasBeenSet() const { return m_compatibilitiesHasBeenSet; }
+    template<typename CompatibilitiesT = Aws::Vector<Compatibility>>
+    void SetCompatibilities(CompatibilitiesT&& value) { m_compatibilitiesHasBeenSet = true; m_compatibilities = std::forward<CompatibilitiesT>(value); }
+    template<typename CompatibilitiesT = Aws::Vector<Compatibility>>
+    AddonVersionInfo& WithCompatibilities(CompatibilitiesT&& value) { SetCompatibilities(std::forward<CompatibilitiesT>(value)); return *this;}
+    template<typename CompatibilitiesT = Compatibility>
+    AddonVersionInfo& AddCompatibilities(CompatibilitiesT&& value) { m_compatibilitiesHasBeenSet = true; m_compatibilities.emplace_back(std::forward<CompatibilitiesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An object representing the compatibilities of a version.</p>
-     */
-    inline void SetCompatibilities(const Aws::Vector<Compatibility>& value) { m_compatibilitiesHasBeenSet = true; m_compatibilities = value; }
-
-    /**
-     * <p>An object representing the compatibilities of a version.</p>
-     */
-    inline void SetCompatibilities(Aws::Vector<Compatibility>&& value) { m_compatibilitiesHasBeenSet = true; m_compatibilities = std::move(value); }
-
-    /**
-     * <p>An object representing the compatibilities of a version.</p>
-     */
-    inline AddonVersionInfo& WithCompatibilities(const Aws::Vector<Compatibility>& value) { SetCompatibilities(value); return *this;}
-
-    /**
-     * <p>An object representing the compatibilities of a version.</p>
-     */
-    inline AddonVersionInfo& WithCompatibilities(Aws::Vector<Compatibility>&& value) { SetCompatibilities(std::move(value)); return *this;}
-
-    /**
-     * <p>An object representing the compatibilities of a version.</p>
-     */
-    inline AddonVersionInfo& AddCompatibilities(const Compatibility& value) { m_compatibilitiesHasBeenSet = true; m_compatibilities.push_back(value); return *this; }
-
-    /**
-     * <p>An object representing the compatibilities of a version.</p>
-     */
-    inline AddonVersionInfo& AddCompatibilities(Compatibility&& value) { m_compatibilitiesHasBeenSet = true; m_compatibilities.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Whether the add-on requires configuration.</p>
      */
-    inline bool GetRequiresConfiguration() const{ return m_requiresConfiguration; }
-
-    /**
-     * <p>Whether the add-on requires configuration.</p>
-     */
+    inline bool GetRequiresConfiguration() const { return m_requiresConfiguration; }
     inline bool RequiresConfigurationHasBeenSet() const { return m_requiresConfigurationHasBeenSet; }
-
-    /**
-     * <p>Whether the add-on requires configuration.</p>
-     */
     inline void SetRequiresConfiguration(bool value) { m_requiresConfigurationHasBeenSet = true; m_requiresConfiguration = value; }
-
-    /**
-     * <p>Whether the add-on requires configuration.</p>
-     */
     inline AddonVersionInfo& WithRequiresConfiguration(bool value) { SetRequiresConfiguration(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>Indicates if the add-on requires IAM Permissions to operate, such as
+     * networking permissions.</p>
+     */
+    inline bool GetRequiresIamPermissions() const { return m_requiresIamPermissions; }
+    inline bool RequiresIamPermissionsHasBeenSet() const { return m_requiresIamPermissionsHasBeenSet; }
+    inline void SetRequiresIamPermissions(bool value) { m_requiresIamPermissionsHasBeenSet = true; m_requiresIamPermissions = value; }
+    inline AddonVersionInfo& WithRequiresIamPermissions(bool value) { SetRequiresIamPermissions(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_addonVersion;
@@ -195,11 +121,17 @@ namespace Model
     Aws::Vector<Aws::String> m_architecture;
     bool m_architectureHasBeenSet = false;
 
+    Aws::Vector<Aws::String> m_computeTypes;
+    bool m_computeTypesHasBeenSet = false;
+
     Aws::Vector<Compatibility> m_compatibilities;
     bool m_compatibilitiesHasBeenSet = false;
 
-    bool m_requiresConfiguration;
+    bool m_requiresConfiguration{false};
     bool m_requiresConfigurationHasBeenSet = false;
+
+    bool m_requiresIamPermissions{false};
+    bool m_requiresIamPermissionsHasBeenSet = false;
   };
 
 } // namespace Model

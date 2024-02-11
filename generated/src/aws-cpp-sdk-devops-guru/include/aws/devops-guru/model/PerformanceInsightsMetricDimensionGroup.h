@@ -51,12 +51,13 @@ namespace Model
   class PerformanceInsightsMetricDimensionGroup
   {
   public:
-    AWS_DEVOPSGURU_API PerformanceInsightsMetricDimensionGroup();
+    AWS_DEVOPSGURU_API PerformanceInsightsMetricDimensionGroup() = default;
     AWS_DEVOPSGURU_API PerformanceInsightsMetricDimensionGroup(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVOPSGURU_API PerformanceInsightsMetricDimensionGroup& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVOPSGURU_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the dimension group. Its valid values are:</p> <ul> <li> <p>
      * <code>db</code> - The name of the database to which the client is connected
@@ -74,142 +75,15 @@ namespace Model
      * backend is waiting (all engines)</p> </li> <li> <p> <code>db.user</code> - The
      * user logged in to the database (all engines)</p> </li> </ul>
      */
-    inline const Aws::String& GetGroup() const{ return m_group; }
-
-    /**
-     * <p>The name of the dimension group. Its valid values are:</p> <ul> <li> <p>
-     * <code>db</code> - The name of the database to which the client is connected
-     * (only Aurora PostgreSQL, Amazon RDS PostgreSQL, Aurora MySQL, Amazon RDS MySQL,
-     * and MariaDB)</p> </li> <li> <p> <code>db.application</code> - The name of the
-     * application that is connected to the database (only Aurora PostgreSQL and RDS
-     * PostgreSQL)</p> </li> <li> <p> <code>db.host</code> - The host name of the
-     * connected client (all engines)</p> </li> <li> <p> <code>db.session_type</code> -
-     * The type of the current session (only Aurora PostgreSQL and RDS PostgreSQL)</p>
-     * </li> <li> <p> <code>db.sql</code> - The SQL that is currently executing (all
-     * engines)</p> </li> <li> <p> <code>db.sql_tokenized</code> - The SQL digest (all
-     * engines)</p> </li> <li> <p> <code>db.wait_event</code> - The event for which the
-     * database backend is waiting (all engines)</p> </li> <li> <p>
-     * <code>db.wait_event_type</code> - The type of event for which the database
-     * backend is waiting (all engines)</p> </li> <li> <p> <code>db.user</code> - The
-     * user logged in to the database (all engines)</p> </li> </ul>
-     */
+    inline const Aws::String& GetGroup() const { return m_group; }
     inline bool GroupHasBeenSet() const { return m_groupHasBeenSet; }
+    template<typename GroupT = Aws::String>
+    void SetGroup(GroupT&& value) { m_groupHasBeenSet = true; m_group = std::forward<GroupT>(value); }
+    template<typename GroupT = Aws::String>
+    PerformanceInsightsMetricDimensionGroup& WithGroup(GroupT&& value) { SetGroup(std::forward<GroupT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the dimension group. Its valid values are:</p> <ul> <li> <p>
-     * <code>db</code> - The name of the database to which the client is connected
-     * (only Aurora PostgreSQL, Amazon RDS PostgreSQL, Aurora MySQL, Amazon RDS MySQL,
-     * and MariaDB)</p> </li> <li> <p> <code>db.application</code> - The name of the
-     * application that is connected to the database (only Aurora PostgreSQL and RDS
-     * PostgreSQL)</p> </li> <li> <p> <code>db.host</code> - The host name of the
-     * connected client (all engines)</p> </li> <li> <p> <code>db.session_type</code> -
-     * The type of the current session (only Aurora PostgreSQL and RDS PostgreSQL)</p>
-     * </li> <li> <p> <code>db.sql</code> - The SQL that is currently executing (all
-     * engines)</p> </li> <li> <p> <code>db.sql_tokenized</code> - The SQL digest (all
-     * engines)</p> </li> <li> <p> <code>db.wait_event</code> - The event for which the
-     * database backend is waiting (all engines)</p> </li> <li> <p>
-     * <code>db.wait_event_type</code> - The type of event for which the database
-     * backend is waiting (all engines)</p> </li> <li> <p> <code>db.user</code> - The
-     * user logged in to the database (all engines)</p> </li> </ul>
-     */
-    inline void SetGroup(const Aws::String& value) { m_groupHasBeenSet = true; m_group = value; }
-
-    /**
-     * <p>The name of the dimension group. Its valid values are:</p> <ul> <li> <p>
-     * <code>db</code> - The name of the database to which the client is connected
-     * (only Aurora PostgreSQL, Amazon RDS PostgreSQL, Aurora MySQL, Amazon RDS MySQL,
-     * and MariaDB)</p> </li> <li> <p> <code>db.application</code> - The name of the
-     * application that is connected to the database (only Aurora PostgreSQL and RDS
-     * PostgreSQL)</p> </li> <li> <p> <code>db.host</code> - The host name of the
-     * connected client (all engines)</p> </li> <li> <p> <code>db.session_type</code> -
-     * The type of the current session (only Aurora PostgreSQL and RDS PostgreSQL)</p>
-     * </li> <li> <p> <code>db.sql</code> - The SQL that is currently executing (all
-     * engines)</p> </li> <li> <p> <code>db.sql_tokenized</code> - The SQL digest (all
-     * engines)</p> </li> <li> <p> <code>db.wait_event</code> - The event for which the
-     * database backend is waiting (all engines)</p> </li> <li> <p>
-     * <code>db.wait_event_type</code> - The type of event for which the database
-     * backend is waiting (all engines)</p> </li> <li> <p> <code>db.user</code> - The
-     * user logged in to the database (all engines)</p> </li> </ul>
-     */
-    inline void SetGroup(Aws::String&& value) { m_groupHasBeenSet = true; m_group = std::move(value); }
-
-    /**
-     * <p>The name of the dimension group. Its valid values are:</p> <ul> <li> <p>
-     * <code>db</code> - The name of the database to which the client is connected
-     * (only Aurora PostgreSQL, Amazon RDS PostgreSQL, Aurora MySQL, Amazon RDS MySQL,
-     * and MariaDB)</p> </li> <li> <p> <code>db.application</code> - The name of the
-     * application that is connected to the database (only Aurora PostgreSQL and RDS
-     * PostgreSQL)</p> </li> <li> <p> <code>db.host</code> - The host name of the
-     * connected client (all engines)</p> </li> <li> <p> <code>db.session_type</code> -
-     * The type of the current session (only Aurora PostgreSQL and RDS PostgreSQL)</p>
-     * </li> <li> <p> <code>db.sql</code> - The SQL that is currently executing (all
-     * engines)</p> </li> <li> <p> <code>db.sql_tokenized</code> - The SQL digest (all
-     * engines)</p> </li> <li> <p> <code>db.wait_event</code> - The event for which the
-     * database backend is waiting (all engines)</p> </li> <li> <p>
-     * <code>db.wait_event_type</code> - The type of event for which the database
-     * backend is waiting (all engines)</p> </li> <li> <p> <code>db.user</code> - The
-     * user logged in to the database (all engines)</p> </li> </ul>
-     */
-    inline void SetGroup(const char* value) { m_groupHasBeenSet = true; m_group.assign(value); }
-
-    /**
-     * <p>The name of the dimension group. Its valid values are:</p> <ul> <li> <p>
-     * <code>db</code> - The name of the database to which the client is connected
-     * (only Aurora PostgreSQL, Amazon RDS PostgreSQL, Aurora MySQL, Amazon RDS MySQL,
-     * and MariaDB)</p> </li> <li> <p> <code>db.application</code> - The name of the
-     * application that is connected to the database (only Aurora PostgreSQL and RDS
-     * PostgreSQL)</p> </li> <li> <p> <code>db.host</code> - The host name of the
-     * connected client (all engines)</p> </li> <li> <p> <code>db.session_type</code> -
-     * The type of the current session (only Aurora PostgreSQL and RDS PostgreSQL)</p>
-     * </li> <li> <p> <code>db.sql</code> - The SQL that is currently executing (all
-     * engines)</p> </li> <li> <p> <code>db.sql_tokenized</code> - The SQL digest (all
-     * engines)</p> </li> <li> <p> <code>db.wait_event</code> - The event for which the
-     * database backend is waiting (all engines)</p> </li> <li> <p>
-     * <code>db.wait_event_type</code> - The type of event for which the database
-     * backend is waiting (all engines)</p> </li> <li> <p> <code>db.user</code> - The
-     * user logged in to the database (all engines)</p> </li> </ul>
-     */
-    inline PerformanceInsightsMetricDimensionGroup& WithGroup(const Aws::String& value) { SetGroup(value); return *this;}
-
-    /**
-     * <p>The name of the dimension group. Its valid values are:</p> <ul> <li> <p>
-     * <code>db</code> - The name of the database to which the client is connected
-     * (only Aurora PostgreSQL, Amazon RDS PostgreSQL, Aurora MySQL, Amazon RDS MySQL,
-     * and MariaDB)</p> </li> <li> <p> <code>db.application</code> - The name of the
-     * application that is connected to the database (only Aurora PostgreSQL and RDS
-     * PostgreSQL)</p> </li> <li> <p> <code>db.host</code> - The host name of the
-     * connected client (all engines)</p> </li> <li> <p> <code>db.session_type</code> -
-     * The type of the current session (only Aurora PostgreSQL and RDS PostgreSQL)</p>
-     * </li> <li> <p> <code>db.sql</code> - The SQL that is currently executing (all
-     * engines)</p> </li> <li> <p> <code>db.sql_tokenized</code> - The SQL digest (all
-     * engines)</p> </li> <li> <p> <code>db.wait_event</code> - The event for which the
-     * database backend is waiting (all engines)</p> </li> <li> <p>
-     * <code>db.wait_event_type</code> - The type of event for which the database
-     * backend is waiting (all engines)</p> </li> <li> <p> <code>db.user</code> - The
-     * user logged in to the database (all engines)</p> </li> </ul>
-     */
-    inline PerformanceInsightsMetricDimensionGroup& WithGroup(Aws::String&& value) { SetGroup(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the dimension group. Its valid values are:</p> <ul> <li> <p>
-     * <code>db</code> - The name of the database to which the client is connected
-     * (only Aurora PostgreSQL, Amazon RDS PostgreSQL, Aurora MySQL, Amazon RDS MySQL,
-     * and MariaDB)</p> </li> <li> <p> <code>db.application</code> - The name of the
-     * application that is connected to the database (only Aurora PostgreSQL and RDS
-     * PostgreSQL)</p> </li> <li> <p> <code>db.host</code> - The host name of the
-     * connected client (all engines)</p> </li> <li> <p> <code>db.session_type</code> -
-     * The type of the current session (only Aurora PostgreSQL and RDS PostgreSQL)</p>
-     * </li> <li> <p> <code>db.sql</code> - The SQL that is currently executing (all
-     * engines)</p> </li> <li> <p> <code>db.sql_tokenized</code> - The SQL digest (all
-     * engines)</p> </li> <li> <p> <code>db.wait_event</code> - The event for which the
-     * database backend is waiting (all engines)</p> </li> <li> <p>
-     * <code>db.wait_event_type</code> - The type of event for which the database
-     * backend is waiting (all engines)</p> </li> <li> <p> <code>db.user</code> - The
-     * user logged in to the database (all engines)</p> </li> </ul>
-     */
-    inline PerformanceInsightsMetricDimensionGroup& WithGroup(const char* value) { SetGroup(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of specific dimensions from a dimension group. If this parameter is
      * not present, then it signifies that all of the dimensions in the group were
@@ -242,301 +116,25 @@ namespace Model
      * The name of the event type for which the backend is waiting (all engines)</p>
      * </li> </ul>
      */
-    inline const Aws::Vector<Aws::String>& GetDimensions() const{ return m_dimensions; }
-
-    /**
-     * <p>A list of specific dimensions from a dimension group. If this parameter is
-     * not present, then it signifies that all of the dimensions in the group were
-     * requested or are present in the response.</p> <p>Valid values for elements in
-     * the <code>Dimensions</code> array are:</p> <ul> <li> <p>
-     * <code>db.application.name</code> - The name of the application that is connected
-     * to the database (only Aurora PostgreSQL and RDS PostgreSQL)</p> </li> <li> <p>
-     * <code>db.host.id</code> - The host ID of the connected client (all engines)</p>
-     * </li> <li> <p> <code>db.host.name</code> - The host name of the connected client
-     * (all engines)</p> </li> <li> <p> <code>db.name</code> - The name of the database
-     * to which the client is connected (only Aurora PostgreSQL, Amazon RDS PostgreSQL,
-     * Aurora MySQL, Amazon RDS MySQL, and MariaDB)</p> </li> <li> <p>
-     * <code>db.session_type.name</code> - The type of the current session (only Aurora
-     * PostgreSQL and RDS PostgreSQL)</p> </li> <li> <p> <code>db.sql.id</code> - The
-     * SQL ID generated by Performance Insights (all engines)</p> </li> <li> <p>
-     * <code>db.sql.db_id</code> - The SQL ID generated by the database (all
-     * engines)</p> </li> <li> <p> <code>db.sql.statement</code> - The SQL text that is
-     * being executed (all engines)</p> </li> <li> <p> <code>db.sql.tokenized_id</code>
-     * </p> </li> <li> <p> <code>db.sql_tokenized.id</code> - The SQL digest ID
-     * generated by Performance Insights (all engines)</p> </li> <li> <p>
-     * <code>db.sql_tokenized.db_id</code> - SQL digest ID generated by the database
-     * (all engines)</p> </li> <li> <p> <code>db.sql_tokenized.statement</code> - The
-     * SQL digest text (all engines)</p> </li> <li> <p> <code>db.user.id</code> - The
-     * ID of the user logged in to the database (all engines)</p> </li> <li> <p>
-     * <code>db.user.name</code> - The name of the user logged in to the database (all
-     * engines)</p> </li> <li> <p> <code>db.wait_event.name</code> - The event for
-     * which the backend is waiting (all engines)</p> </li> <li> <p>
-     * <code>db.wait_event.type</code> - The type of event for which the backend is
-     * waiting (all engines)</p> </li> <li> <p> <code>db.wait_event_type.name</code> -
-     * The name of the event type for which the backend is waiting (all engines)</p>
-     * </li> </ul>
-     */
+    inline const Aws::Vector<Aws::String>& GetDimensions() const { return m_dimensions; }
     inline bool DimensionsHasBeenSet() const { return m_dimensionsHasBeenSet; }
+    template<typename DimensionsT = Aws::Vector<Aws::String>>
+    void SetDimensions(DimensionsT&& value) { m_dimensionsHasBeenSet = true; m_dimensions = std::forward<DimensionsT>(value); }
+    template<typename DimensionsT = Aws::Vector<Aws::String>>
+    PerformanceInsightsMetricDimensionGroup& WithDimensions(DimensionsT&& value) { SetDimensions(std::forward<DimensionsT>(value)); return *this;}
+    template<typename DimensionsT = Aws::String>
+    PerformanceInsightsMetricDimensionGroup& AddDimensions(DimensionsT&& value) { m_dimensionsHasBeenSet = true; m_dimensions.emplace_back(std::forward<DimensionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of specific dimensions from a dimension group. If this parameter is
-     * not present, then it signifies that all of the dimensions in the group were
-     * requested or are present in the response.</p> <p>Valid values for elements in
-     * the <code>Dimensions</code> array are:</p> <ul> <li> <p>
-     * <code>db.application.name</code> - The name of the application that is connected
-     * to the database (only Aurora PostgreSQL and RDS PostgreSQL)</p> </li> <li> <p>
-     * <code>db.host.id</code> - The host ID of the connected client (all engines)</p>
-     * </li> <li> <p> <code>db.host.name</code> - The host name of the connected client
-     * (all engines)</p> </li> <li> <p> <code>db.name</code> - The name of the database
-     * to which the client is connected (only Aurora PostgreSQL, Amazon RDS PostgreSQL,
-     * Aurora MySQL, Amazon RDS MySQL, and MariaDB)</p> </li> <li> <p>
-     * <code>db.session_type.name</code> - The type of the current session (only Aurora
-     * PostgreSQL and RDS PostgreSQL)</p> </li> <li> <p> <code>db.sql.id</code> - The
-     * SQL ID generated by Performance Insights (all engines)</p> </li> <li> <p>
-     * <code>db.sql.db_id</code> - The SQL ID generated by the database (all
-     * engines)</p> </li> <li> <p> <code>db.sql.statement</code> - The SQL text that is
-     * being executed (all engines)</p> </li> <li> <p> <code>db.sql.tokenized_id</code>
-     * </p> </li> <li> <p> <code>db.sql_tokenized.id</code> - The SQL digest ID
-     * generated by Performance Insights (all engines)</p> </li> <li> <p>
-     * <code>db.sql_tokenized.db_id</code> - SQL digest ID generated by the database
-     * (all engines)</p> </li> <li> <p> <code>db.sql_tokenized.statement</code> - The
-     * SQL digest text (all engines)</p> </li> <li> <p> <code>db.user.id</code> - The
-     * ID of the user logged in to the database (all engines)</p> </li> <li> <p>
-     * <code>db.user.name</code> - The name of the user logged in to the database (all
-     * engines)</p> </li> <li> <p> <code>db.wait_event.name</code> - The event for
-     * which the backend is waiting (all engines)</p> </li> <li> <p>
-     * <code>db.wait_event.type</code> - The type of event for which the backend is
-     * waiting (all engines)</p> </li> <li> <p> <code>db.wait_event_type.name</code> -
-     * The name of the event type for which the backend is waiting (all engines)</p>
-     * </li> </ul>
-     */
-    inline void SetDimensions(const Aws::Vector<Aws::String>& value) { m_dimensionsHasBeenSet = true; m_dimensions = value; }
-
-    /**
-     * <p>A list of specific dimensions from a dimension group. If this parameter is
-     * not present, then it signifies that all of the dimensions in the group were
-     * requested or are present in the response.</p> <p>Valid values for elements in
-     * the <code>Dimensions</code> array are:</p> <ul> <li> <p>
-     * <code>db.application.name</code> - The name of the application that is connected
-     * to the database (only Aurora PostgreSQL and RDS PostgreSQL)</p> </li> <li> <p>
-     * <code>db.host.id</code> - The host ID of the connected client (all engines)</p>
-     * </li> <li> <p> <code>db.host.name</code> - The host name of the connected client
-     * (all engines)</p> </li> <li> <p> <code>db.name</code> - The name of the database
-     * to which the client is connected (only Aurora PostgreSQL, Amazon RDS PostgreSQL,
-     * Aurora MySQL, Amazon RDS MySQL, and MariaDB)</p> </li> <li> <p>
-     * <code>db.session_type.name</code> - The type of the current session (only Aurora
-     * PostgreSQL and RDS PostgreSQL)</p> </li> <li> <p> <code>db.sql.id</code> - The
-     * SQL ID generated by Performance Insights (all engines)</p> </li> <li> <p>
-     * <code>db.sql.db_id</code> - The SQL ID generated by the database (all
-     * engines)</p> </li> <li> <p> <code>db.sql.statement</code> - The SQL text that is
-     * being executed (all engines)</p> </li> <li> <p> <code>db.sql.tokenized_id</code>
-     * </p> </li> <li> <p> <code>db.sql_tokenized.id</code> - The SQL digest ID
-     * generated by Performance Insights (all engines)</p> </li> <li> <p>
-     * <code>db.sql_tokenized.db_id</code> - SQL digest ID generated by the database
-     * (all engines)</p> </li> <li> <p> <code>db.sql_tokenized.statement</code> - The
-     * SQL digest text (all engines)</p> </li> <li> <p> <code>db.user.id</code> - The
-     * ID of the user logged in to the database (all engines)</p> </li> <li> <p>
-     * <code>db.user.name</code> - The name of the user logged in to the database (all
-     * engines)</p> </li> <li> <p> <code>db.wait_event.name</code> - The event for
-     * which the backend is waiting (all engines)</p> </li> <li> <p>
-     * <code>db.wait_event.type</code> - The type of event for which the backend is
-     * waiting (all engines)</p> </li> <li> <p> <code>db.wait_event_type.name</code> -
-     * The name of the event type for which the backend is waiting (all engines)</p>
-     * </li> </ul>
-     */
-    inline void SetDimensions(Aws::Vector<Aws::String>&& value) { m_dimensionsHasBeenSet = true; m_dimensions = std::move(value); }
-
-    /**
-     * <p>A list of specific dimensions from a dimension group. If this parameter is
-     * not present, then it signifies that all of the dimensions in the group were
-     * requested or are present in the response.</p> <p>Valid values for elements in
-     * the <code>Dimensions</code> array are:</p> <ul> <li> <p>
-     * <code>db.application.name</code> - The name of the application that is connected
-     * to the database (only Aurora PostgreSQL and RDS PostgreSQL)</p> </li> <li> <p>
-     * <code>db.host.id</code> - The host ID of the connected client (all engines)</p>
-     * </li> <li> <p> <code>db.host.name</code> - The host name of the connected client
-     * (all engines)</p> </li> <li> <p> <code>db.name</code> - The name of the database
-     * to which the client is connected (only Aurora PostgreSQL, Amazon RDS PostgreSQL,
-     * Aurora MySQL, Amazon RDS MySQL, and MariaDB)</p> </li> <li> <p>
-     * <code>db.session_type.name</code> - The type of the current session (only Aurora
-     * PostgreSQL and RDS PostgreSQL)</p> </li> <li> <p> <code>db.sql.id</code> - The
-     * SQL ID generated by Performance Insights (all engines)</p> </li> <li> <p>
-     * <code>db.sql.db_id</code> - The SQL ID generated by the database (all
-     * engines)</p> </li> <li> <p> <code>db.sql.statement</code> - The SQL text that is
-     * being executed (all engines)</p> </li> <li> <p> <code>db.sql.tokenized_id</code>
-     * </p> </li> <li> <p> <code>db.sql_tokenized.id</code> - The SQL digest ID
-     * generated by Performance Insights (all engines)</p> </li> <li> <p>
-     * <code>db.sql_tokenized.db_id</code> - SQL digest ID generated by the database
-     * (all engines)</p> </li> <li> <p> <code>db.sql_tokenized.statement</code> - The
-     * SQL digest text (all engines)</p> </li> <li> <p> <code>db.user.id</code> - The
-     * ID of the user logged in to the database (all engines)</p> </li> <li> <p>
-     * <code>db.user.name</code> - The name of the user logged in to the database (all
-     * engines)</p> </li> <li> <p> <code>db.wait_event.name</code> - The event for
-     * which the backend is waiting (all engines)</p> </li> <li> <p>
-     * <code>db.wait_event.type</code> - The type of event for which the backend is
-     * waiting (all engines)</p> </li> <li> <p> <code>db.wait_event_type.name</code> -
-     * The name of the event type for which the backend is waiting (all engines)</p>
-     * </li> </ul>
-     */
-    inline PerformanceInsightsMetricDimensionGroup& WithDimensions(const Aws::Vector<Aws::String>& value) { SetDimensions(value); return *this;}
-
-    /**
-     * <p>A list of specific dimensions from a dimension group. If this parameter is
-     * not present, then it signifies that all of the dimensions in the group were
-     * requested or are present in the response.</p> <p>Valid values for elements in
-     * the <code>Dimensions</code> array are:</p> <ul> <li> <p>
-     * <code>db.application.name</code> - The name of the application that is connected
-     * to the database (only Aurora PostgreSQL and RDS PostgreSQL)</p> </li> <li> <p>
-     * <code>db.host.id</code> - The host ID of the connected client (all engines)</p>
-     * </li> <li> <p> <code>db.host.name</code> - The host name of the connected client
-     * (all engines)</p> </li> <li> <p> <code>db.name</code> - The name of the database
-     * to which the client is connected (only Aurora PostgreSQL, Amazon RDS PostgreSQL,
-     * Aurora MySQL, Amazon RDS MySQL, and MariaDB)</p> </li> <li> <p>
-     * <code>db.session_type.name</code> - The type of the current session (only Aurora
-     * PostgreSQL and RDS PostgreSQL)</p> </li> <li> <p> <code>db.sql.id</code> - The
-     * SQL ID generated by Performance Insights (all engines)</p> </li> <li> <p>
-     * <code>db.sql.db_id</code> - The SQL ID generated by the database (all
-     * engines)</p> </li> <li> <p> <code>db.sql.statement</code> - The SQL text that is
-     * being executed (all engines)</p> </li> <li> <p> <code>db.sql.tokenized_id</code>
-     * </p> </li> <li> <p> <code>db.sql_tokenized.id</code> - The SQL digest ID
-     * generated by Performance Insights (all engines)</p> </li> <li> <p>
-     * <code>db.sql_tokenized.db_id</code> - SQL digest ID generated by the database
-     * (all engines)</p> </li> <li> <p> <code>db.sql_tokenized.statement</code> - The
-     * SQL digest text (all engines)</p> </li> <li> <p> <code>db.user.id</code> - The
-     * ID of the user logged in to the database (all engines)</p> </li> <li> <p>
-     * <code>db.user.name</code> - The name of the user logged in to the database (all
-     * engines)</p> </li> <li> <p> <code>db.wait_event.name</code> - The event for
-     * which the backend is waiting (all engines)</p> </li> <li> <p>
-     * <code>db.wait_event.type</code> - The type of event for which the backend is
-     * waiting (all engines)</p> </li> <li> <p> <code>db.wait_event_type.name</code> -
-     * The name of the event type for which the backend is waiting (all engines)</p>
-     * </li> </ul>
-     */
-    inline PerformanceInsightsMetricDimensionGroup& WithDimensions(Aws::Vector<Aws::String>&& value) { SetDimensions(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of specific dimensions from a dimension group. If this parameter is
-     * not present, then it signifies that all of the dimensions in the group were
-     * requested or are present in the response.</p> <p>Valid values for elements in
-     * the <code>Dimensions</code> array are:</p> <ul> <li> <p>
-     * <code>db.application.name</code> - The name of the application that is connected
-     * to the database (only Aurora PostgreSQL and RDS PostgreSQL)</p> </li> <li> <p>
-     * <code>db.host.id</code> - The host ID of the connected client (all engines)</p>
-     * </li> <li> <p> <code>db.host.name</code> - The host name of the connected client
-     * (all engines)</p> </li> <li> <p> <code>db.name</code> - The name of the database
-     * to which the client is connected (only Aurora PostgreSQL, Amazon RDS PostgreSQL,
-     * Aurora MySQL, Amazon RDS MySQL, and MariaDB)</p> </li> <li> <p>
-     * <code>db.session_type.name</code> - The type of the current session (only Aurora
-     * PostgreSQL and RDS PostgreSQL)</p> </li> <li> <p> <code>db.sql.id</code> - The
-     * SQL ID generated by Performance Insights (all engines)</p> </li> <li> <p>
-     * <code>db.sql.db_id</code> - The SQL ID generated by the database (all
-     * engines)</p> </li> <li> <p> <code>db.sql.statement</code> - The SQL text that is
-     * being executed (all engines)</p> </li> <li> <p> <code>db.sql.tokenized_id</code>
-     * </p> </li> <li> <p> <code>db.sql_tokenized.id</code> - The SQL digest ID
-     * generated by Performance Insights (all engines)</p> </li> <li> <p>
-     * <code>db.sql_tokenized.db_id</code> - SQL digest ID generated by the database
-     * (all engines)</p> </li> <li> <p> <code>db.sql_tokenized.statement</code> - The
-     * SQL digest text (all engines)</p> </li> <li> <p> <code>db.user.id</code> - The
-     * ID of the user logged in to the database (all engines)</p> </li> <li> <p>
-     * <code>db.user.name</code> - The name of the user logged in to the database (all
-     * engines)</p> </li> <li> <p> <code>db.wait_event.name</code> - The event for
-     * which the backend is waiting (all engines)</p> </li> <li> <p>
-     * <code>db.wait_event.type</code> - The type of event for which the backend is
-     * waiting (all engines)</p> </li> <li> <p> <code>db.wait_event_type.name</code> -
-     * The name of the event type for which the backend is waiting (all engines)</p>
-     * </li> </ul>
-     */
-    inline PerformanceInsightsMetricDimensionGroup& AddDimensions(const Aws::String& value) { m_dimensionsHasBeenSet = true; m_dimensions.push_back(value); return *this; }
-
-    /**
-     * <p>A list of specific dimensions from a dimension group. If this parameter is
-     * not present, then it signifies that all of the dimensions in the group were
-     * requested or are present in the response.</p> <p>Valid values for elements in
-     * the <code>Dimensions</code> array are:</p> <ul> <li> <p>
-     * <code>db.application.name</code> - The name of the application that is connected
-     * to the database (only Aurora PostgreSQL and RDS PostgreSQL)</p> </li> <li> <p>
-     * <code>db.host.id</code> - The host ID of the connected client (all engines)</p>
-     * </li> <li> <p> <code>db.host.name</code> - The host name of the connected client
-     * (all engines)</p> </li> <li> <p> <code>db.name</code> - The name of the database
-     * to which the client is connected (only Aurora PostgreSQL, Amazon RDS PostgreSQL,
-     * Aurora MySQL, Amazon RDS MySQL, and MariaDB)</p> </li> <li> <p>
-     * <code>db.session_type.name</code> - The type of the current session (only Aurora
-     * PostgreSQL and RDS PostgreSQL)</p> </li> <li> <p> <code>db.sql.id</code> - The
-     * SQL ID generated by Performance Insights (all engines)</p> </li> <li> <p>
-     * <code>db.sql.db_id</code> - The SQL ID generated by the database (all
-     * engines)</p> </li> <li> <p> <code>db.sql.statement</code> - The SQL text that is
-     * being executed (all engines)</p> </li> <li> <p> <code>db.sql.tokenized_id</code>
-     * </p> </li> <li> <p> <code>db.sql_tokenized.id</code> - The SQL digest ID
-     * generated by Performance Insights (all engines)</p> </li> <li> <p>
-     * <code>db.sql_tokenized.db_id</code> - SQL digest ID generated by the database
-     * (all engines)</p> </li> <li> <p> <code>db.sql_tokenized.statement</code> - The
-     * SQL digest text (all engines)</p> </li> <li> <p> <code>db.user.id</code> - The
-     * ID of the user logged in to the database (all engines)</p> </li> <li> <p>
-     * <code>db.user.name</code> - The name of the user logged in to the database (all
-     * engines)</p> </li> <li> <p> <code>db.wait_event.name</code> - The event for
-     * which the backend is waiting (all engines)</p> </li> <li> <p>
-     * <code>db.wait_event.type</code> - The type of event for which the backend is
-     * waiting (all engines)</p> </li> <li> <p> <code>db.wait_event_type.name</code> -
-     * The name of the event type for which the backend is waiting (all engines)</p>
-     * </li> </ul>
-     */
-    inline PerformanceInsightsMetricDimensionGroup& AddDimensions(Aws::String&& value) { m_dimensionsHasBeenSet = true; m_dimensions.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of specific dimensions from a dimension group. If this parameter is
-     * not present, then it signifies that all of the dimensions in the group were
-     * requested or are present in the response.</p> <p>Valid values for elements in
-     * the <code>Dimensions</code> array are:</p> <ul> <li> <p>
-     * <code>db.application.name</code> - The name of the application that is connected
-     * to the database (only Aurora PostgreSQL and RDS PostgreSQL)</p> </li> <li> <p>
-     * <code>db.host.id</code> - The host ID of the connected client (all engines)</p>
-     * </li> <li> <p> <code>db.host.name</code> - The host name of the connected client
-     * (all engines)</p> </li> <li> <p> <code>db.name</code> - The name of the database
-     * to which the client is connected (only Aurora PostgreSQL, Amazon RDS PostgreSQL,
-     * Aurora MySQL, Amazon RDS MySQL, and MariaDB)</p> </li> <li> <p>
-     * <code>db.session_type.name</code> - The type of the current session (only Aurora
-     * PostgreSQL and RDS PostgreSQL)</p> </li> <li> <p> <code>db.sql.id</code> - The
-     * SQL ID generated by Performance Insights (all engines)</p> </li> <li> <p>
-     * <code>db.sql.db_id</code> - The SQL ID generated by the database (all
-     * engines)</p> </li> <li> <p> <code>db.sql.statement</code> - The SQL text that is
-     * being executed (all engines)</p> </li> <li> <p> <code>db.sql.tokenized_id</code>
-     * </p> </li> <li> <p> <code>db.sql_tokenized.id</code> - The SQL digest ID
-     * generated by Performance Insights (all engines)</p> </li> <li> <p>
-     * <code>db.sql_tokenized.db_id</code> - SQL digest ID generated by the database
-     * (all engines)</p> </li> <li> <p> <code>db.sql_tokenized.statement</code> - The
-     * SQL digest text (all engines)</p> </li> <li> <p> <code>db.user.id</code> - The
-     * ID of the user logged in to the database (all engines)</p> </li> <li> <p>
-     * <code>db.user.name</code> - The name of the user logged in to the database (all
-     * engines)</p> </li> <li> <p> <code>db.wait_event.name</code> - The event for
-     * which the backend is waiting (all engines)</p> </li> <li> <p>
-     * <code>db.wait_event.type</code> - The type of event for which the backend is
-     * waiting (all engines)</p> </li> <li> <p> <code>db.wait_event_type.name</code> -
-     * The name of the event type for which the backend is waiting (all engines)</p>
-     * </li> </ul>
-     */
-    inline PerformanceInsightsMetricDimensionGroup& AddDimensions(const char* value) { m_dimensionsHasBeenSet = true; m_dimensions.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The maximum number of items to fetch for this dimension group.</p>
      */
-    inline int GetLimit() const{ return m_limit; }
-
-    /**
-     * <p>The maximum number of items to fetch for this dimension group.</p>
-     */
+    inline int GetLimit() const { return m_limit; }
     inline bool LimitHasBeenSet() const { return m_limitHasBeenSet; }
-
-    /**
-     * <p>The maximum number of items to fetch for this dimension group.</p>
-     */
     inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
-
-    /**
-     * <p>The maximum number of items to fetch for this dimension group.</p>
-     */
     inline PerformanceInsightsMetricDimensionGroup& WithLimit(int value) { SetLimit(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_group;
@@ -545,7 +143,7 @@ namespace Model
     Aws::Vector<Aws::String> m_dimensions;
     bool m_dimensionsHasBeenSet = false;
 
-    int m_limit;
+    int m_limit{0};
     bool m_limitHasBeenSet = false;
   };
 

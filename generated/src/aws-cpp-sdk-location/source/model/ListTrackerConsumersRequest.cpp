@@ -12,14 +12,6 @@ using namespace Aws::LocationService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListTrackerConsumersRequest::ListTrackerConsumersRequest() : 
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_trackerNameHasBeenSet(false)
-{
-}
-
 Aws::String ListTrackerConsumersRequest::SerializePayload() const
 {
   JsonValue payload;

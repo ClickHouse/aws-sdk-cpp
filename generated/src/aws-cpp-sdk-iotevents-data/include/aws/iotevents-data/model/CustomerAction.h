@@ -37,12 +37,13 @@ namespace Model
   class CustomerAction
   {
   public:
-    AWS_IOTEVENTSDATA_API CustomerAction();
+    AWS_IOTEVENTSDATA_API CustomerAction() = default;
     AWS_IOTEVENTSDATA_API CustomerAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTSDATA_API CustomerAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTSDATA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the action. The action name can be one of the following
      * values:</p> <ul> <li> <p> <code>SNOOZE</code> - When you snooze the alarm, the
@@ -57,246 +58,74 @@ namespace Model
      * href="https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_AlarmState.html">AlarmState</a>
      * API.</p>
      */
-    inline const CustomerActionName& GetActionName() const{ return m_actionName; }
-
-    /**
-     * <p>The name of the action. The action name can be one of the following
-     * values:</p> <ul> <li> <p> <code>SNOOZE</code> - When you snooze the alarm, the
-     * alarm state changes to <code>SNOOZE_DISABLED</code>.</p> </li> <li> <p>
-     * <code>ENABLE</code> - When you enable the alarm, the alarm state changes to
-     * <code>NORMAL</code>.</p> </li> <li> <p> <code>DISABLE</code> - When you disable
-     * the alarm, the alarm state changes to <code>DISABLED</code>.</p> </li> <li> <p>
-     * <code>ACKNOWLEDGE</code> - When you acknowledge the alarm, the alarm state
-     * changes to <code>ACKNOWLEDGED</code>.</p> </li> <li> <p> <code>RESET</code> -
-     * When you reset the alarm, the alarm state changes to <code>NORMAL</code>.</p>
-     * </li> </ul> <p>For more information, see the <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_AlarmState.html">AlarmState</a>
-     * API.</p>
-     */
+    inline CustomerActionName GetActionName() const { return m_actionName; }
     inline bool ActionNameHasBeenSet() const { return m_actionNameHasBeenSet; }
+    inline void SetActionName(CustomerActionName value) { m_actionNameHasBeenSet = true; m_actionName = value; }
+    inline CustomerAction& WithActionName(CustomerActionName value) { SetActionName(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the action. The action name can be one of the following
-     * values:</p> <ul> <li> <p> <code>SNOOZE</code> - When you snooze the alarm, the
-     * alarm state changes to <code>SNOOZE_DISABLED</code>.</p> </li> <li> <p>
-     * <code>ENABLE</code> - When you enable the alarm, the alarm state changes to
-     * <code>NORMAL</code>.</p> </li> <li> <p> <code>DISABLE</code> - When you disable
-     * the alarm, the alarm state changes to <code>DISABLED</code>.</p> </li> <li> <p>
-     * <code>ACKNOWLEDGE</code> - When you acknowledge the alarm, the alarm state
-     * changes to <code>ACKNOWLEDGED</code>.</p> </li> <li> <p> <code>RESET</code> -
-     * When you reset the alarm, the alarm state changes to <code>NORMAL</code>.</p>
-     * </li> </ul> <p>For more information, see the <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_AlarmState.html">AlarmState</a>
-     * API.</p>
-     */
-    inline void SetActionName(const CustomerActionName& value) { m_actionNameHasBeenSet = true; m_actionName = value; }
-
-    /**
-     * <p>The name of the action. The action name can be one of the following
-     * values:</p> <ul> <li> <p> <code>SNOOZE</code> - When you snooze the alarm, the
-     * alarm state changes to <code>SNOOZE_DISABLED</code>.</p> </li> <li> <p>
-     * <code>ENABLE</code> - When you enable the alarm, the alarm state changes to
-     * <code>NORMAL</code>.</p> </li> <li> <p> <code>DISABLE</code> - When you disable
-     * the alarm, the alarm state changes to <code>DISABLED</code>.</p> </li> <li> <p>
-     * <code>ACKNOWLEDGE</code> - When you acknowledge the alarm, the alarm state
-     * changes to <code>ACKNOWLEDGED</code>.</p> </li> <li> <p> <code>RESET</code> -
-     * When you reset the alarm, the alarm state changes to <code>NORMAL</code>.</p>
-     * </li> </ul> <p>For more information, see the <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_AlarmState.html">AlarmState</a>
-     * API.</p>
-     */
-    inline void SetActionName(CustomerActionName&& value) { m_actionNameHasBeenSet = true; m_actionName = std::move(value); }
-
-    /**
-     * <p>The name of the action. The action name can be one of the following
-     * values:</p> <ul> <li> <p> <code>SNOOZE</code> - When you snooze the alarm, the
-     * alarm state changes to <code>SNOOZE_DISABLED</code>.</p> </li> <li> <p>
-     * <code>ENABLE</code> - When you enable the alarm, the alarm state changes to
-     * <code>NORMAL</code>.</p> </li> <li> <p> <code>DISABLE</code> - When you disable
-     * the alarm, the alarm state changes to <code>DISABLED</code>.</p> </li> <li> <p>
-     * <code>ACKNOWLEDGE</code> - When you acknowledge the alarm, the alarm state
-     * changes to <code>ACKNOWLEDGED</code>.</p> </li> <li> <p> <code>RESET</code> -
-     * When you reset the alarm, the alarm state changes to <code>NORMAL</code>.</p>
-     * </li> </ul> <p>For more information, see the <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_AlarmState.html">AlarmState</a>
-     * API.</p>
-     */
-    inline CustomerAction& WithActionName(const CustomerActionName& value) { SetActionName(value); return *this;}
-
-    /**
-     * <p>The name of the action. The action name can be one of the following
-     * values:</p> <ul> <li> <p> <code>SNOOZE</code> - When you snooze the alarm, the
-     * alarm state changes to <code>SNOOZE_DISABLED</code>.</p> </li> <li> <p>
-     * <code>ENABLE</code> - When you enable the alarm, the alarm state changes to
-     * <code>NORMAL</code>.</p> </li> <li> <p> <code>DISABLE</code> - When you disable
-     * the alarm, the alarm state changes to <code>DISABLED</code>.</p> </li> <li> <p>
-     * <code>ACKNOWLEDGE</code> - When you acknowledge the alarm, the alarm state
-     * changes to <code>ACKNOWLEDGED</code>.</p> </li> <li> <p> <code>RESET</code> -
-     * When you reset the alarm, the alarm state changes to <code>NORMAL</code>.</p>
-     * </li> </ul> <p>For more information, see the <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_AlarmState.html">AlarmState</a>
-     * API.</p>
-     */
-    inline CustomerAction& WithActionName(CustomerActionName&& value) { SetActionName(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains the configuration information of a snooze action.</p>
      */
-    inline const SnoozeActionConfiguration& GetSnoozeActionConfiguration() const{ return m_snoozeActionConfiguration; }
-
-    /**
-     * <p>Contains the configuration information of a snooze action.</p>
-     */
+    inline const SnoozeActionConfiguration& GetSnoozeActionConfiguration() const { return m_snoozeActionConfiguration; }
     inline bool SnoozeActionConfigurationHasBeenSet() const { return m_snoozeActionConfigurationHasBeenSet; }
+    template<typename SnoozeActionConfigurationT = SnoozeActionConfiguration>
+    void SetSnoozeActionConfiguration(SnoozeActionConfigurationT&& value) { m_snoozeActionConfigurationHasBeenSet = true; m_snoozeActionConfiguration = std::forward<SnoozeActionConfigurationT>(value); }
+    template<typename SnoozeActionConfigurationT = SnoozeActionConfiguration>
+    CustomerAction& WithSnoozeActionConfiguration(SnoozeActionConfigurationT&& value) { SetSnoozeActionConfiguration(std::forward<SnoozeActionConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains the configuration information of a snooze action.</p>
-     */
-    inline void SetSnoozeActionConfiguration(const SnoozeActionConfiguration& value) { m_snoozeActionConfigurationHasBeenSet = true; m_snoozeActionConfiguration = value; }
-
-    /**
-     * <p>Contains the configuration information of a snooze action.</p>
-     */
-    inline void SetSnoozeActionConfiguration(SnoozeActionConfiguration&& value) { m_snoozeActionConfigurationHasBeenSet = true; m_snoozeActionConfiguration = std::move(value); }
-
-    /**
-     * <p>Contains the configuration information of a snooze action.</p>
-     */
-    inline CustomerAction& WithSnoozeActionConfiguration(const SnoozeActionConfiguration& value) { SetSnoozeActionConfiguration(value); return *this;}
-
-    /**
-     * <p>Contains the configuration information of a snooze action.</p>
-     */
-    inline CustomerAction& WithSnoozeActionConfiguration(SnoozeActionConfiguration&& value) { SetSnoozeActionConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains the configuration information of an enable action.</p>
      */
-    inline const EnableActionConfiguration& GetEnableActionConfiguration() const{ return m_enableActionConfiguration; }
-
-    /**
-     * <p>Contains the configuration information of an enable action.</p>
-     */
+    inline const EnableActionConfiguration& GetEnableActionConfiguration() const { return m_enableActionConfiguration; }
     inline bool EnableActionConfigurationHasBeenSet() const { return m_enableActionConfigurationHasBeenSet; }
+    template<typename EnableActionConfigurationT = EnableActionConfiguration>
+    void SetEnableActionConfiguration(EnableActionConfigurationT&& value) { m_enableActionConfigurationHasBeenSet = true; m_enableActionConfiguration = std::forward<EnableActionConfigurationT>(value); }
+    template<typename EnableActionConfigurationT = EnableActionConfiguration>
+    CustomerAction& WithEnableActionConfiguration(EnableActionConfigurationT&& value) { SetEnableActionConfiguration(std::forward<EnableActionConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains the configuration information of an enable action.</p>
-     */
-    inline void SetEnableActionConfiguration(const EnableActionConfiguration& value) { m_enableActionConfigurationHasBeenSet = true; m_enableActionConfiguration = value; }
-
-    /**
-     * <p>Contains the configuration information of an enable action.</p>
-     */
-    inline void SetEnableActionConfiguration(EnableActionConfiguration&& value) { m_enableActionConfigurationHasBeenSet = true; m_enableActionConfiguration = std::move(value); }
-
-    /**
-     * <p>Contains the configuration information of an enable action.</p>
-     */
-    inline CustomerAction& WithEnableActionConfiguration(const EnableActionConfiguration& value) { SetEnableActionConfiguration(value); return *this;}
-
-    /**
-     * <p>Contains the configuration information of an enable action.</p>
-     */
-    inline CustomerAction& WithEnableActionConfiguration(EnableActionConfiguration&& value) { SetEnableActionConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains the configuration information of a disable action.</p>
      */
-    inline const DisableActionConfiguration& GetDisableActionConfiguration() const{ return m_disableActionConfiguration; }
-
-    /**
-     * <p>Contains the configuration information of a disable action.</p>
-     */
+    inline const DisableActionConfiguration& GetDisableActionConfiguration() const { return m_disableActionConfiguration; }
     inline bool DisableActionConfigurationHasBeenSet() const { return m_disableActionConfigurationHasBeenSet; }
+    template<typename DisableActionConfigurationT = DisableActionConfiguration>
+    void SetDisableActionConfiguration(DisableActionConfigurationT&& value) { m_disableActionConfigurationHasBeenSet = true; m_disableActionConfiguration = std::forward<DisableActionConfigurationT>(value); }
+    template<typename DisableActionConfigurationT = DisableActionConfiguration>
+    CustomerAction& WithDisableActionConfiguration(DisableActionConfigurationT&& value) { SetDisableActionConfiguration(std::forward<DisableActionConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains the configuration information of a disable action.</p>
-     */
-    inline void SetDisableActionConfiguration(const DisableActionConfiguration& value) { m_disableActionConfigurationHasBeenSet = true; m_disableActionConfiguration = value; }
-
-    /**
-     * <p>Contains the configuration information of a disable action.</p>
-     */
-    inline void SetDisableActionConfiguration(DisableActionConfiguration&& value) { m_disableActionConfigurationHasBeenSet = true; m_disableActionConfiguration = std::move(value); }
-
-    /**
-     * <p>Contains the configuration information of a disable action.</p>
-     */
-    inline CustomerAction& WithDisableActionConfiguration(const DisableActionConfiguration& value) { SetDisableActionConfiguration(value); return *this;}
-
-    /**
-     * <p>Contains the configuration information of a disable action.</p>
-     */
-    inline CustomerAction& WithDisableActionConfiguration(DisableActionConfiguration&& value) { SetDisableActionConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains the configuration information of an acknowledge action.</p>
      */
-    inline const AcknowledgeActionConfiguration& GetAcknowledgeActionConfiguration() const{ return m_acknowledgeActionConfiguration; }
-
-    /**
-     * <p>Contains the configuration information of an acknowledge action.</p>
-     */
+    inline const AcknowledgeActionConfiguration& GetAcknowledgeActionConfiguration() const { return m_acknowledgeActionConfiguration; }
     inline bool AcknowledgeActionConfigurationHasBeenSet() const { return m_acknowledgeActionConfigurationHasBeenSet; }
+    template<typename AcknowledgeActionConfigurationT = AcknowledgeActionConfiguration>
+    void SetAcknowledgeActionConfiguration(AcknowledgeActionConfigurationT&& value) { m_acknowledgeActionConfigurationHasBeenSet = true; m_acknowledgeActionConfiguration = std::forward<AcknowledgeActionConfigurationT>(value); }
+    template<typename AcknowledgeActionConfigurationT = AcknowledgeActionConfiguration>
+    CustomerAction& WithAcknowledgeActionConfiguration(AcknowledgeActionConfigurationT&& value) { SetAcknowledgeActionConfiguration(std::forward<AcknowledgeActionConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains the configuration information of an acknowledge action.</p>
-     */
-    inline void SetAcknowledgeActionConfiguration(const AcknowledgeActionConfiguration& value) { m_acknowledgeActionConfigurationHasBeenSet = true; m_acknowledgeActionConfiguration = value; }
-
-    /**
-     * <p>Contains the configuration information of an acknowledge action.</p>
-     */
-    inline void SetAcknowledgeActionConfiguration(AcknowledgeActionConfiguration&& value) { m_acknowledgeActionConfigurationHasBeenSet = true; m_acknowledgeActionConfiguration = std::move(value); }
-
-    /**
-     * <p>Contains the configuration information of an acknowledge action.</p>
-     */
-    inline CustomerAction& WithAcknowledgeActionConfiguration(const AcknowledgeActionConfiguration& value) { SetAcknowledgeActionConfiguration(value); return *this;}
-
-    /**
-     * <p>Contains the configuration information of an acknowledge action.</p>
-     */
-    inline CustomerAction& WithAcknowledgeActionConfiguration(AcknowledgeActionConfiguration&& value) { SetAcknowledgeActionConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains the configuration information of a reset action.</p>
      */
-    inline const ResetActionConfiguration& GetResetActionConfiguration() const{ return m_resetActionConfiguration; }
-
-    /**
-     * <p>Contains the configuration information of a reset action.</p>
-     */
+    inline const ResetActionConfiguration& GetResetActionConfiguration() const { return m_resetActionConfiguration; }
     inline bool ResetActionConfigurationHasBeenSet() const { return m_resetActionConfigurationHasBeenSet; }
-
-    /**
-     * <p>Contains the configuration information of a reset action.</p>
-     */
-    inline void SetResetActionConfiguration(const ResetActionConfiguration& value) { m_resetActionConfigurationHasBeenSet = true; m_resetActionConfiguration = value; }
-
-    /**
-     * <p>Contains the configuration information of a reset action.</p>
-     */
-    inline void SetResetActionConfiguration(ResetActionConfiguration&& value) { m_resetActionConfigurationHasBeenSet = true; m_resetActionConfiguration = std::move(value); }
-
-    /**
-     * <p>Contains the configuration information of a reset action.</p>
-     */
-    inline CustomerAction& WithResetActionConfiguration(const ResetActionConfiguration& value) { SetResetActionConfiguration(value); return *this;}
-
-    /**
-     * <p>Contains the configuration information of a reset action.</p>
-     */
-    inline CustomerAction& WithResetActionConfiguration(ResetActionConfiguration&& value) { SetResetActionConfiguration(std::move(value)); return *this;}
-
+    template<typename ResetActionConfigurationT = ResetActionConfiguration>
+    void SetResetActionConfiguration(ResetActionConfigurationT&& value) { m_resetActionConfigurationHasBeenSet = true; m_resetActionConfiguration = std::forward<ResetActionConfigurationT>(value); }
+    template<typename ResetActionConfigurationT = ResetActionConfiguration>
+    CustomerAction& WithResetActionConfiguration(ResetActionConfigurationT&& value) { SetResetActionConfiguration(std::forward<ResetActionConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
-    CustomerActionName m_actionName;
+    CustomerActionName m_actionName{CustomerActionName::NOT_SET};
     bool m_actionNameHasBeenSet = false;
 
     SnoozeActionConfiguration m_snoozeActionConfiguration;

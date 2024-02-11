@@ -12,25 +12,9 @@ using namespace Aws::OpenSearchServerless::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateVpcEndpointRequest::CreateVpcEndpointRequest() : 
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_nameHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
-{
-}
-
 Aws::String CreateVpcEndpointRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_clientTokenHasBeenSet)
-  {
-   payload.WithString("clientToken", m_clientToken);
-
-  }
 
   if(m_nameHasBeenSet)
   {
@@ -38,14 +22,9 @@ Aws::String CreateVpcEndpointRequest::SerializePayload() const
 
   }
 
-  if(m_securityGroupIdsHasBeenSet)
+  if(m_vpcIdHasBeenSet)
   {
-   Aws::Utils::Array<JsonValue> securityGroupIdsJsonList(m_securityGroupIds.size());
-   for(unsigned securityGroupIdsIndex = 0; securityGroupIdsIndex < securityGroupIdsJsonList.GetLength(); ++securityGroupIdsIndex)
-   {
-     securityGroupIdsJsonList[securityGroupIdsIndex].AsString(m_securityGroupIds[securityGroupIdsIndex]);
-   }
-   payload.WithArray("securityGroupIds", std::move(securityGroupIdsJsonList));
+   payload.WithString("vpcId", m_vpcId);
 
   }
 
@@ -60,9 +39,20 @@ Aws::String CreateVpcEndpointRequest::SerializePayload() const
 
   }
 
-  if(m_vpcIdHasBeenSet)
+  if(m_securityGroupIdsHasBeenSet)
   {
-   payload.WithString("vpcId", m_vpcId);
+   Aws::Utils::Array<JsonValue> securityGroupIdsJsonList(m_securityGroupIds.size());
+   for(unsigned securityGroupIdsIndex = 0; securityGroupIdsIndex < securityGroupIdsJsonList.GetLength(); ++securityGroupIdsIndex)
+   {
+     securityGroupIdsJsonList[securityGroupIdsIndex].AsString(m_securityGroupIds[securityGroupIdsIndex]);
+   }
+   payload.WithArray("securityGroupIds", std::move(securityGroupIdsJsonList));
+
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("clientToken", m_clientToken);
 
   }
 

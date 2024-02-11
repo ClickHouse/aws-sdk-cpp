@@ -12,13 +12,6 @@ using namespace Aws::KMS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-RetireGrantRequest::RetireGrantRequest() : 
-    m_grantTokenHasBeenSet(false),
-    m_keyIdHasBeenSet(false),
-    m_grantIdHasBeenSet(false)
-{
-}
-
 Aws::String RetireGrantRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,6 +31,12 @@ Aws::String RetireGrantRequest::SerializePayload() const
   if(m_grantIdHasBeenSet)
   {
    payload.WithString("GrantId", m_grantId);
+
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+   payload.WithBool("DryRun", m_dryRun);
 
   }
 

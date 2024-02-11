@@ -32,73 +32,38 @@ namespace Model
   class ExpirationSettings
   {
   public:
-    AWS_CHIMESDKMESSAGING_API ExpirationSettings();
+    AWS_CHIMESDKMESSAGING_API ExpirationSettings() = default;
     AWS_CHIMESDKMESSAGING_API ExpirationSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMESSAGING_API ExpirationSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMESSAGING_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The period in days after which the system automatically deletes a
      * channel.</p>
      */
-    inline int GetExpirationDays() const{ return m_expirationDays; }
-
-    /**
-     * <p>The period in days after which the system automatically deletes a
-     * channel.</p>
-     */
+    inline int GetExpirationDays() const { return m_expirationDays; }
     inline bool ExpirationDaysHasBeenSet() const { return m_expirationDaysHasBeenSet; }
-
-    /**
-     * <p>The period in days after which the system automatically deletes a
-     * channel.</p>
-     */
     inline void SetExpirationDays(int value) { m_expirationDaysHasBeenSet = true; m_expirationDays = value; }
-
-    /**
-     * <p>The period in days after which the system automatically deletes a
-     * channel.</p>
-     */
     inline ExpirationSettings& WithExpirationDays(int value) { SetExpirationDays(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The conditions that must be met for a channel to expire.</p>
      */
-    inline const ExpirationCriterion& GetExpirationCriterion() const{ return m_expirationCriterion; }
-
-    /**
-     * <p>The conditions that must be met for a channel to expire.</p>
-     */
+    inline ExpirationCriterion GetExpirationCriterion() const { return m_expirationCriterion; }
     inline bool ExpirationCriterionHasBeenSet() const { return m_expirationCriterionHasBeenSet; }
-
-    /**
-     * <p>The conditions that must be met for a channel to expire.</p>
-     */
-    inline void SetExpirationCriterion(const ExpirationCriterion& value) { m_expirationCriterionHasBeenSet = true; m_expirationCriterion = value; }
-
-    /**
-     * <p>The conditions that must be met for a channel to expire.</p>
-     */
-    inline void SetExpirationCriterion(ExpirationCriterion&& value) { m_expirationCriterionHasBeenSet = true; m_expirationCriterion = std::move(value); }
-
-    /**
-     * <p>The conditions that must be met for a channel to expire.</p>
-     */
-    inline ExpirationSettings& WithExpirationCriterion(const ExpirationCriterion& value) { SetExpirationCriterion(value); return *this;}
-
-    /**
-     * <p>The conditions that must be met for a channel to expire.</p>
-     */
-    inline ExpirationSettings& WithExpirationCriterion(ExpirationCriterion&& value) { SetExpirationCriterion(std::move(value)); return *this;}
-
+    inline void SetExpirationCriterion(ExpirationCriterion value) { m_expirationCriterionHasBeenSet = true; m_expirationCriterion = value; }
+    inline ExpirationSettings& WithExpirationCriterion(ExpirationCriterion value) { SetExpirationCriterion(value); return *this;}
+    ///@}
   private:
 
-    int m_expirationDays;
+    int m_expirationDays{0};
     bool m_expirationDaysHasBeenSet = false;
 
-    ExpirationCriterion m_expirationCriterion;
+    ExpirationCriterion m_expirationCriterion{ExpirationCriterion::NOT_SET};
     bool m_expirationCriterionHasBeenSet = false;
   };
 

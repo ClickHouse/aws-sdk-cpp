@@ -25,7 +25,7 @@ namespace Model
   class ListDestinationsRequest : public IoTWirelessRequest
   {
   public:
-    AWS_IOTWIRELESS_API ListDestinationsRequest();
+    AWS_IOTWIRELESS_API ListDestinationsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,86 +38,32 @@ namespace Model
     AWS_IOTWIRELESS_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The maximum number of results to return in this operation.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return in this operation.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return in this operation.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return in this operation.</p>
-     */
     inline ListDestinationsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
      * previous response; otherwise <b>null</b> to receive the first set of
      * results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
-    inline ListDestinationsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
-    inline ListDestinationsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
-    inline ListDestinationsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListDestinationsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

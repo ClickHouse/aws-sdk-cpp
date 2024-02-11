@@ -18,25 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-AdditionalInferenceSpecificationDefinition::AdditionalInferenceSpecificationDefinition() : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_containersHasBeenSet(false),
-    m_supportedTransformInstanceTypesHasBeenSet(false),
-    m_supportedRealtimeInferenceInstanceTypesHasBeenSet(false),
-    m_supportedContentTypesHasBeenSet(false),
-    m_supportedResponseMIMETypesHasBeenSet(false)
-{
-}
-
-AdditionalInferenceSpecificationDefinition::AdditionalInferenceSpecificationDefinition(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_containersHasBeenSet(false),
-    m_supportedTransformInstanceTypesHasBeenSet(false),
-    m_supportedRealtimeInferenceInstanceTypesHasBeenSet(false),
-    m_supportedContentTypesHasBeenSet(false),
-    m_supportedResponseMIMETypesHasBeenSet(false)
+AdditionalInferenceSpecificationDefinition::AdditionalInferenceSpecificationDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,17 +28,13 @@ AdditionalInferenceSpecificationDefinition& AdditionalInferenceSpecificationDefi
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Containers"))
   {
     Aws::Utils::Array<JsonView> containersJsonList = jsonValue.GetArray("Containers");
@@ -66,7 +44,6 @@ AdditionalInferenceSpecificationDefinition& AdditionalInferenceSpecificationDefi
     }
     m_containersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SupportedTransformInstanceTypes"))
   {
     Aws::Utils::Array<JsonView> supportedTransformInstanceTypesJsonList = jsonValue.GetArray("SupportedTransformInstanceTypes");
@@ -76,7 +53,6 @@ AdditionalInferenceSpecificationDefinition& AdditionalInferenceSpecificationDefi
     }
     m_supportedTransformInstanceTypesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SupportedRealtimeInferenceInstanceTypes"))
   {
     Aws::Utils::Array<JsonView> supportedRealtimeInferenceInstanceTypesJsonList = jsonValue.GetArray("SupportedRealtimeInferenceInstanceTypes");
@@ -86,7 +62,6 @@ AdditionalInferenceSpecificationDefinition& AdditionalInferenceSpecificationDefi
     }
     m_supportedRealtimeInferenceInstanceTypesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SupportedContentTypes"))
   {
     Aws::Utils::Array<JsonView> supportedContentTypesJsonList = jsonValue.GetArray("SupportedContentTypes");
@@ -96,7 +71,6 @@ AdditionalInferenceSpecificationDefinition& AdditionalInferenceSpecificationDefi
     }
     m_supportedContentTypesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SupportedResponseMIMETypes"))
   {
     Aws::Utils::Array<JsonView> supportedResponseMIMETypesJsonList = jsonValue.GetArray("SupportedResponseMIMETypes");
@@ -106,7 +80,6 @@ AdditionalInferenceSpecificationDefinition& AdditionalInferenceSpecificationDefi
     }
     m_supportedResponseMIMETypesHasBeenSet = true;
   }
-
   return *this;
 }
 

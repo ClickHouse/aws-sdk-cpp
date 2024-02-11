@@ -39,53 +39,25 @@ namespace Model
   class MetricDefinition
   {
   public:
-    AWS_SAGEMAKER_API MetricDefinition();
+    AWS_SAGEMAKER_API MetricDefinition() = default;
     AWS_SAGEMAKER_API MetricDefinition(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API MetricDefinition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the metric.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the metric.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    MetricDefinition& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline MetricDefinition& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline MetricDefinition& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline MetricDefinition& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A regular expression that searches the output of a training job and gets the
      * value of the metric. For more information about using regular expressions to
@@ -93,71 +65,13 @@ namespace Model
      * href="https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-define-metrics-variables.html">Defining
      * metrics and environment variables</a>.</p>
      */
-    inline const Aws::String& GetRegex() const{ return m_regex; }
-
-    /**
-     * <p>A regular expression that searches the output of a training job and gets the
-     * value of the metric. For more information about using regular expressions to
-     * define metrics, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-define-metrics-variables.html">Defining
-     * metrics and environment variables</a>.</p>
-     */
+    inline const Aws::String& GetRegex() const { return m_regex; }
     inline bool RegexHasBeenSet() const { return m_regexHasBeenSet; }
-
-    /**
-     * <p>A regular expression that searches the output of a training job and gets the
-     * value of the metric. For more information about using regular expressions to
-     * define metrics, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-define-metrics-variables.html">Defining
-     * metrics and environment variables</a>.</p>
-     */
-    inline void SetRegex(const Aws::String& value) { m_regexHasBeenSet = true; m_regex = value; }
-
-    /**
-     * <p>A regular expression that searches the output of a training job and gets the
-     * value of the metric. For more information about using regular expressions to
-     * define metrics, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-define-metrics-variables.html">Defining
-     * metrics and environment variables</a>.</p>
-     */
-    inline void SetRegex(Aws::String&& value) { m_regexHasBeenSet = true; m_regex = std::move(value); }
-
-    /**
-     * <p>A regular expression that searches the output of a training job and gets the
-     * value of the metric. For more information about using regular expressions to
-     * define metrics, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-define-metrics-variables.html">Defining
-     * metrics and environment variables</a>.</p>
-     */
-    inline void SetRegex(const char* value) { m_regexHasBeenSet = true; m_regex.assign(value); }
-
-    /**
-     * <p>A regular expression that searches the output of a training job and gets the
-     * value of the metric. For more information about using regular expressions to
-     * define metrics, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-define-metrics-variables.html">Defining
-     * metrics and environment variables</a>.</p>
-     */
-    inline MetricDefinition& WithRegex(const Aws::String& value) { SetRegex(value); return *this;}
-
-    /**
-     * <p>A regular expression that searches the output of a training job and gets the
-     * value of the metric. For more information about using regular expressions to
-     * define metrics, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-define-metrics-variables.html">Defining
-     * metrics and environment variables</a>.</p>
-     */
-    inline MetricDefinition& WithRegex(Aws::String&& value) { SetRegex(std::move(value)); return *this;}
-
-    /**
-     * <p>A regular expression that searches the output of a training job and gets the
-     * value of the metric. For more information about using regular expressions to
-     * define metrics, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-define-metrics-variables.html">Defining
-     * metrics and environment variables</a>.</p>
-     */
-    inline MetricDefinition& WithRegex(const char* value) { SetRegex(value); return *this;}
-
+    template<typename RegexT = Aws::String>
+    void SetRegex(RegexT&& value) { m_regexHasBeenSet = true; m_regex = std::forward<RegexT>(value); }
+    template<typename RegexT = Aws::String>
+    MetricDefinition& WithRegex(RegexT&& value) { SetRegex(std::forward<RegexT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

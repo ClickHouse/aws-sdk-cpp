@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-MonitoringCsvDatasetFormat::MonitoringCsvDatasetFormat() : 
-    m_header(false),
-    m_headerHasBeenSet(false)
-{
-}
-
-MonitoringCsvDatasetFormat::MonitoringCsvDatasetFormat(JsonView jsonValue) : 
-    m_header(false),
-    m_headerHasBeenSet(false)
+MonitoringCsvDatasetFormat::MonitoringCsvDatasetFormat(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ MonitoringCsvDatasetFormat& MonitoringCsvDatasetFormat::operator =(JsonView json
   if(jsonValue.ValueExists("Header"))
   {
     m_header = jsonValue.GetBool("Header");
-
     m_headerHasBeenSet = true;
   }
-
   return *this;
 }
 

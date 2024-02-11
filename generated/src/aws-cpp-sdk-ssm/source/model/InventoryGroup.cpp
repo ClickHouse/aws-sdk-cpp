@@ -18,15 +18,7 @@ namespace SSM
 namespace Model
 {
 
-InventoryGroup::InventoryGroup() : 
-    m_nameHasBeenSet(false),
-    m_filtersHasBeenSet(false)
-{
-}
-
-InventoryGroup::InventoryGroup(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_filtersHasBeenSet(false)
+InventoryGroup::InventoryGroup(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ InventoryGroup& InventoryGroup::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Filters"))
   {
     Aws::Utils::Array<JsonView> filtersJsonList = jsonValue.GetArray("Filters");
@@ -49,7 +39,6 @@ InventoryGroup& InventoryGroup::operator =(JsonView jsonValue)
     }
     m_filtersHasBeenSet = true;
   }
-
   return *this;
 }
 

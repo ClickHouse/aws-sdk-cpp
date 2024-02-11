@@ -20,21 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-ValidationMessage::ValidationMessage() : 
-    m_messageHasBeenSet(false),
-    m_severity(ValidationSeverity::NOT_SET),
-    m_severityHasBeenSet(false),
-    m_namespaceHasBeenSet(false),
-    m_optionNameHasBeenSet(false)
-{
-}
-
-ValidationMessage::ValidationMessage(const XmlNode& xmlNode) : 
-    m_messageHasBeenSet(false),
-    m_severity(ValidationSeverity::NOT_SET),
-    m_severityHasBeenSet(false),
-    m_namespaceHasBeenSet(false),
-    m_optionNameHasBeenSet(false)
+ValidationMessage::ValidationMessage(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -54,7 +40,7 @@ ValidationMessage& ValidationMessage::operator =(const XmlNode& xmlNode)
     XmlNode severityNode = resultNode.FirstChild("Severity");
     if(!severityNode.IsNull())
     {
-      m_severity = ValidationSeverityMapper::GetValidationSeverityForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(severityNode.GetText()).c_str()).c_str());
+      m_severity = ValidationSeverityMapper::GetValidationSeverityForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(severityNode.GetText()).c_str()));
       m_severityHasBeenSet = true;
     }
     XmlNode namespaceNode = resultNode.FirstChild("Namespace");
@@ -83,7 +69,7 @@ void ValidationMessage::OutputToStream(Aws::OStream& oStream, const char* locati
 
   if(m_severityHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Severity=" << ValidationSeverityMapper::GetNameForValidationSeverity(m_severity) << "&";
+      oStream << location << index << locationValue << ".Severity=" << StringUtils::URLEncode(ValidationSeverityMapper::GetNameForValidationSeverity(m_severity)) << "&";
   }
 
   if(m_namespaceHasBeenSet)
@@ -106,7 +92,7 @@ void ValidationMessage::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_severityHasBeenSet)
   {
-      oStream << location << ".Severity=" << ValidationSeverityMapper::GetNameForValidationSeverity(m_severity) << "&";
+      oStream << location << ".Severity=" << StringUtils::URLEncode(ValidationSeverityMapper::GetNameForValidationSeverity(m_severity)) << "&";
   }
   if(m_namespaceHasBeenSet)
   {

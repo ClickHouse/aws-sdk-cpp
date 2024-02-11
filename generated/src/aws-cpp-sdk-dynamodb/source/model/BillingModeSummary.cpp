@@ -18,17 +18,7 @@ namespace DynamoDB
 namespace Model
 {
 
-BillingModeSummary::BillingModeSummary() : 
-    m_billingMode(BillingMode::NOT_SET),
-    m_billingModeHasBeenSet(false),
-    m_lastUpdateToPayPerRequestDateTimeHasBeenSet(false)
-{
-}
-
-BillingModeSummary::BillingModeSummary(JsonView jsonValue) : 
-    m_billingMode(BillingMode::NOT_SET),
-    m_billingModeHasBeenSet(false),
-    m_lastUpdateToPayPerRequestDateTimeHasBeenSet(false)
+BillingModeSummary::BillingModeSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ BillingModeSummary& BillingModeSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("BillingMode"))
   {
     m_billingMode = BillingModeMapper::GetBillingModeForName(jsonValue.GetString("BillingMode"));
-
     m_billingModeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastUpdateToPayPerRequestDateTime"))
   {
     m_lastUpdateToPayPerRequestDateTime = jsonValue.GetDouble("LastUpdateToPayPerRequestDateTime");
-
     m_lastUpdateToPayPerRequestDateTimeHasBeenSet = true;
   }
-
   return *this;
 }
 

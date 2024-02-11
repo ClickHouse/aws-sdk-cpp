@@ -24,81 +24,53 @@ namespace Model
 {
 
   /**
-   * <p>A map containing a priority as a key, and recovery method name as a
-   * value.</p><p><h3>See Also:</h3>   <a
+   * <p>A recovery option for a user. The <code>AccountRecoverySettingType</code>
+   * data type is an array of this object. Each <code>RecoveryOptionType</code> has a
+   * priority property that determines whether it is a primary or secondary
+   * option.</p> <p>For example, if <code>verified_email</code> has a priority of
+   * <code>1</code> and <code>verified_phone_number</code> has a priority of
+   * <code>2</code>, your user pool sends account-recovery messages to a verified
+   * email address but falls back to an SMS message if the user has a verified phone
+   * number. The <code>admin_only</code> option prevents self-service account
+   * recovery.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/RecoveryOptionType">AWS
    * API Reference</a></p>
    */
   class RecoveryOptionType
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API RecoveryOptionType();
+    AWS_COGNITOIDENTITYPROVIDER_API RecoveryOptionType() = default;
     AWS_COGNITOIDENTITYPROVIDER_API RecoveryOptionType(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITYPROVIDER_API RecoveryOptionType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>A positive integer specifying priority of a method with 1 being the highest
-     * priority.</p>
+     * <p>Your priority preference for using the specified attribute in account
+     * recovery. The highest priority is <code>1</code>.</p>
      */
-    inline int GetPriority() const{ return m_priority; }
-
-    /**
-     * <p>A positive integer specifying priority of a method with 1 being the highest
-     * priority.</p>
-     */
+    inline int GetPriority() const { return m_priority; }
     inline bool PriorityHasBeenSet() const { return m_priorityHasBeenSet; }
-
-    /**
-     * <p>A positive integer specifying priority of a method with 1 being the highest
-     * priority.</p>
-     */
     inline void SetPriority(int value) { m_priorityHasBeenSet = true; m_priority = value; }
-
-    /**
-     * <p>A positive integer specifying priority of a method with 1 being the highest
-     * priority.</p>
-     */
     inline RecoveryOptionType& WithPriority(int value) { SetPriority(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>The recovery method for a user.</p>
+     * <p>The recovery method that this object sets a recovery option for.</p>
      */
-    inline const RecoveryOptionNameType& GetName() const{ return m_name; }
-
-    /**
-     * <p>The recovery method for a user.</p>
-     */
+    inline RecoveryOptionNameType GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>The recovery method for a user.</p>
-     */
-    inline void SetName(const RecoveryOptionNameType& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The recovery method for a user.</p>
-     */
-    inline void SetName(RecoveryOptionNameType&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The recovery method for a user.</p>
-     */
-    inline RecoveryOptionType& WithName(const RecoveryOptionNameType& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The recovery method for a user.</p>
-     */
-    inline RecoveryOptionType& WithName(RecoveryOptionNameType&& value) { SetName(std::move(value)); return *this;}
-
+    inline void SetName(RecoveryOptionNameType value) { m_nameHasBeenSet = true; m_name = value; }
+    inline RecoveryOptionType& WithName(RecoveryOptionNameType value) { SetName(value); return *this;}
+    ///@}
   private:
 
-    int m_priority;
+    int m_priority{0};
     bool m_priorityHasBeenSet = false;
 
-    RecoveryOptionNameType m_name;
+    RecoveryOptionNameType m_name{RecoveryOptionNameType::NOT_SET};
     bool m_nameHasBeenSet = false;
   };
 

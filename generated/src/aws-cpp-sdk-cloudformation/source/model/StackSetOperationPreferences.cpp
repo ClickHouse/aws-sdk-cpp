@@ -20,33 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-StackSetOperationPreferences::StackSetOperationPreferences() : 
-    m_regionConcurrencyType(RegionConcurrencyType::NOT_SET),
-    m_regionConcurrencyTypeHasBeenSet(false),
-    m_regionOrderHasBeenSet(false),
-    m_failureToleranceCount(0),
-    m_failureToleranceCountHasBeenSet(false),
-    m_failureTolerancePercentage(0),
-    m_failureTolerancePercentageHasBeenSet(false),
-    m_maxConcurrentCount(0),
-    m_maxConcurrentCountHasBeenSet(false),
-    m_maxConcurrentPercentage(0),
-    m_maxConcurrentPercentageHasBeenSet(false)
-{
-}
-
-StackSetOperationPreferences::StackSetOperationPreferences(const XmlNode& xmlNode) : 
-    m_regionConcurrencyType(RegionConcurrencyType::NOT_SET),
-    m_regionConcurrencyTypeHasBeenSet(false),
-    m_regionOrderHasBeenSet(false),
-    m_failureToleranceCount(0),
-    m_failureToleranceCountHasBeenSet(false),
-    m_failureTolerancePercentage(0),
-    m_failureTolerancePercentageHasBeenSet(false),
-    m_maxConcurrentCount(0),
-    m_maxConcurrentCountHasBeenSet(false),
-    m_maxConcurrentPercentage(0),
-    m_maxConcurrentPercentageHasBeenSet(false)
+StackSetOperationPreferences::StackSetOperationPreferences(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -60,13 +34,14 @@ StackSetOperationPreferences& StackSetOperationPreferences::operator =(const Xml
     XmlNode regionConcurrencyTypeNode = resultNode.FirstChild("RegionConcurrencyType");
     if(!regionConcurrencyTypeNode.IsNull())
     {
-      m_regionConcurrencyType = RegionConcurrencyTypeMapper::GetRegionConcurrencyTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(regionConcurrencyTypeNode.GetText()).c_str()).c_str());
+      m_regionConcurrencyType = RegionConcurrencyTypeMapper::GetRegionConcurrencyTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(regionConcurrencyTypeNode.GetText()).c_str()));
       m_regionConcurrencyTypeHasBeenSet = true;
     }
     XmlNode regionOrderNode = resultNode.FirstChild("RegionOrder");
     if(!regionOrderNode.IsNull())
     {
       XmlNode regionOrderMember = regionOrderNode.FirstChild("member");
+      m_regionOrderHasBeenSet = !regionOrderMember.IsNull();
       while(!regionOrderMember.IsNull())
       {
         m_regionOrder.push_back(regionOrderMember.GetText());
@@ -99,6 +74,12 @@ StackSetOperationPreferences& StackSetOperationPreferences::operator =(const Xml
       m_maxConcurrentPercentage = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(maxConcurrentPercentageNode.GetText()).c_str()).c_str());
       m_maxConcurrentPercentageHasBeenSet = true;
     }
+    XmlNode concurrencyModeNode = resultNode.FirstChild("ConcurrencyMode");
+    if(!concurrencyModeNode.IsNull())
+    {
+      m_concurrencyMode = ConcurrencyModeMapper::GetConcurrencyModeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(concurrencyModeNode.GetText()).c_str()));
+      m_concurrencyModeHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -108,7 +89,7 @@ void StackSetOperationPreferences::OutputToStream(Aws::OStream& oStream, const c
 {
   if(m_regionConcurrencyTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".RegionConcurrencyType=" << RegionConcurrencyTypeMapper::GetNameForRegionConcurrencyType(m_regionConcurrencyType) << "&";
+      oStream << location << index << locationValue << ".RegionConcurrencyType=" << StringUtils::URLEncode(RegionConcurrencyTypeMapper::GetNameForRegionConcurrencyType(m_regionConcurrencyType)) << "&";
   }
 
   if(m_regionOrderHasBeenSet)
@@ -140,13 +121,18 @@ void StackSetOperationPreferences::OutputToStream(Aws::OStream& oStream, const c
       oStream << location << index << locationValue << ".MaxConcurrentPercentage=" << m_maxConcurrentPercentage << "&";
   }
 
+  if(m_concurrencyModeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".ConcurrencyMode=" << StringUtils::URLEncode(ConcurrencyModeMapper::GetNameForConcurrencyMode(m_concurrencyMode)) << "&";
+  }
+
 }
 
 void StackSetOperationPreferences::OutputToStream(Aws::OStream& oStream, const char* location) const
 {
   if(m_regionConcurrencyTypeHasBeenSet)
   {
-      oStream << location << ".RegionConcurrencyType=" << RegionConcurrencyTypeMapper::GetNameForRegionConcurrencyType(m_regionConcurrencyType) << "&";
+      oStream << location << ".RegionConcurrencyType=" << StringUtils::URLEncode(RegionConcurrencyTypeMapper::GetNameForRegionConcurrencyType(m_regionConcurrencyType)) << "&";
   }
   if(m_regionOrderHasBeenSet)
   {
@@ -171,6 +157,10 @@ void StackSetOperationPreferences::OutputToStream(Aws::OStream& oStream, const c
   if(m_maxConcurrentPercentageHasBeenSet)
   {
       oStream << location << ".MaxConcurrentPercentage=" << m_maxConcurrentPercentage << "&";
+  }
+  if(m_concurrencyModeHasBeenSet)
+  {
+      oStream << location << ".ConcurrencyMode=" << StringUtils::URLEncode(ConcurrencyModeMapper::GetNameForConcurrencyMode(m_concurrencyMode)) << "&";
   }
 }
 

@@ -33,65 +33,35 @@ namespace Model
   class S3GeneratedManifestDescriptor
   {
   public:
-    AWS_S3CONTROL_API S3GeneratedManifestDescriptor();
+    AWS_S3CONTROL_API S3GeneratedManifestDescriptor() = default;
     AWS_S3CONTROL_API S3GeneratedManifestDescriptor(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API S3GeneratedManifestDescriptor& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The format of the generated manifest.</p>
      */
-    inline const GeneratedManifestFormat& GetFormat() const{ return m_format; }
-
-    /**
-     * <p>The format of the generated manifest.</p>
-     */
+    inline GeneratedManifestFormat GetFormat() const { return m_format; }
     inline bool FormatHasBeenSet() const { return m_formatHasBeenSet; }
+    inline void SetFormat(GeneratedManifestFormat value) { m_formatHasBeenSet = true; m_format = value; }
+    inline S3GeneratedManifestDescriptor& WithFormat(GeneratedManifestFormat value) { SetFormat(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The format of the generated manifest.</p>
-     */
-    inline void SetFormat(const GeneratedManifestFormat& value) { m_formatHasBeenSet = true; m_format = value; }
-
-    /**
-     * <p>The format of the generated manifest.</p>
-     */
-    inline void SetFormat(GeneratedManifestFormat&& value) { m_formatHasBeenSet = true; m_format = std::move(value); }
-
-    /**
-     * <p>The format of the generated manifest.</p>
-     */
-    inline S3GeneratedManifestDescriptor& WithFormat(const GeneratedManifestFormat& value) { SetFormat(value); return *this;}
-
-    /**
-     * <p>The format of the generated manifest.</p>
-     */
-    inline S3GeneratedManifestDescriptor& WithFormat(GeneratedManifestFormat&& value) { SetFormat(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const JobManifestLocation& GetLocation() const{ return m_location; }
-
-    
+    inline const JobManifestLocation& GetLocation() const { return m_location; }
     inline bool LocationHasBeenSet() const { return m_locationHasBeenSet; }
-
-    
-    inline void SetLocation(const JobManifestLocation& value) { m_locationHasBeenSet = true; m_location = value; }
-
-    
-    inline void SetLocation(JobManifestLocation&& value) { m_locationHasBeenSet = true; m_location = std::move(value); }
-
-    
-    inline S3GeneratedManifestDescriptor& WithLocation(const JobManifestLocation& value) { SetLocation(value); return *this;}
-
-    
-    inline S3GeneratedManifestDescriptor& WithLocation(JobManifestLocation&& value) { SetLocation(std::move(value)); return *this;}
-
+    template<typename LocationT = JobManifestLocation>
+    void SetLocation(LocationT&& value) { m_locationHasBeenSet = true; m_location = std::forward<LocationT>(value); }
+    template<typename LocationT = JobManifestLocation>
+    S3GeneratedManifestDescriptor& WithLocation(LocationT&& value) { SetLocation(std::forward<LocationT>(value)); return *this;}
+    ///@}
   private:
 
-    GeneratedManifestFormat m_format;
+    GeneratedManifestFormat m_format{GeneratedManifestFormat::NOT_SET};
     bool m_formatHasBeenSet = false;
 
     JobManifestLocation m_location;

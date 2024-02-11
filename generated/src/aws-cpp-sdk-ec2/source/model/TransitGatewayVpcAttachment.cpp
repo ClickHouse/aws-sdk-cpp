@@ -20,31 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGatewayVpcAttachment::TransitGatewayVpcAttachment() : 
-    m_transitGatewayAttachmentIdHasBeenSet(false),
-    m_transitGatewayIdHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_vpcOwnerIdHasBeenSet(false),
-    m_state(TransitGatewayAttachmentState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_optionsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-TransitGatewayVpcAttachment::TransitGatewayVpcAttachment(const XmlNode& xmlNode) : 
-    m_transitGatewayAttachmentIdHasBeenSet(false),
-    m_transitGatewayIdHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_vpcOwnerIdHasBeenSet(false),
-    m_state(TransitGatewayAttachmentState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_optionsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+TransitGatewayVpcAttachment::TransitGatewayVpcAttachment(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -82,13 +58,14 @@ TransitGatewayVpcAttachment& TransitGatewayVpcAttachment::operator =(const XmlNo
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = TransitGatewayAttachmentStateMapper::GetTransitGatewayAttachmentStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = TransitGatewayAttachmentStateMapper::GetTransitGatewayAttachmentStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode subnetIdsNode = resultNode.FirstChild("subnetIds");
     if(!subnetIdsNode.IsNull())
     {
       XmlNode subnetIdsMember = subnetIdsNode.FirstChild("item");
+      m_subnetIdsHasBeenSet = !subnetIdsMember.IsNull();
       while(!subnetIdsMember.IsNull())
       {
         m_subnetIds.push_back(subnetIdsMember.GetText());
@@ -113,6 +90,7 @@ TransitGatewayVpcAttachment& TransitGatewayVpcAttachment::operator =(const XmlNo
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -150,7 +128,7 @@ void TransitGatewayVpcAttachment::OutputToStream(Aws::OStream& oStream, const ch
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << TransitGatewayAttachmentStateMapper::GetNameForTransitGatewayAttachmentState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(TransitGatewayAttachmentStateMapper::GetNameForTransitGatewayAttachmentState(m_state)) << "&";
   }
 
   if(m_subnetIdsHasBeenSet)
@@ -207,7 +185,7 @@ void TransitGatewayVpcAttachment::OutputToStream(Aws::OStream& oStream, const ch
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << TransitGatewayAttachmentStateMapper::GetNameForTransitGatewayAttachmentState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(TransitGatewayAttachmentStateMapper::GetNameForTransitGatewayAttachmentState(m_state)) << "&";
   }
   if(m_subnetIdsHasBeenSet)
   {
@@ -233,7 +211,7 @@ void TransitGatewayVpcAttachment::OutputToStream(Aws::OStream& oStream, const ch
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

@@ -10,16 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateLocalGatewayRouteTableRequest::CreateLocalGatewayRouteTableRequest() : 
-    m_localGatewayIdHasBeenSet(false),
-    m_mode(LocalGatewayRouteTableMode::NOT_SET),
-    m_modeHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String CreateLocalGatewayRouteTableRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -31,7 +21,7 @@ Aws::String CreateLocalGatewayRouteTableRequest::SerializePayload() const
 
   if(m_modeHasBeenSet)
   {
-    ss << "Mode=" << LocalGatewayRouteTableModeMapper::GetNameForLocalGatewayRouteTableMode(m_mode) << "&";
+    ss << "Mode=" << StringUtils::URLEncode(LocalGatewayRouteTableModeMapper::GetNameForLocalGatewayRouteTableMode(m_mode)) << "&";
   }
 
   if(m_tagSpecificationsHasBeenSet)

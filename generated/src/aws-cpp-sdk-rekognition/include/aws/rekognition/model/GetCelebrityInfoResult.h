@@ -29,144 +29,67 @@ namespace Model
   class GetCelebrityInfoResult
   {
   public:
-    AWS_REKOGNITION_API GetCelebrityInfoResult();
+    AWS_REKOGNITION_API GetCelebrityInfoResult() = default;
     AWS_REKOGNITION_API GetCelebrityInfoResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_REKOGNITION_API GetCelebrityInfoResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>An array of URLs pointing to additional celebrity information. </p>
      */
-    inline const Aws::Vector<Aws::String>& GetUrls() const{ return m_urls; }
+    inline const Aws::Vector<Aws::String>& GetUrls() const { return m_urls; }
+    template<typename UrlsT = Aws::Vector<Aws::String>>
+    void SetUrls(UrlsT&& value) { m_urlsHasBeenSet = true; m_urls = std::forward<UrlsT>(value); }
+    template<typename UrlsT = Aws::Vector<Aws::String>>
+    GetCelebrityInfoResult& WithUrls(UrlsT&& value) { SetUrls(std::forward<UrlsT>(value)); return *this;}
+    template<typename UrlsT = Aws::String>
+    GetCelebrityInfoResult& AddUrls(UrlsT&& value) { m_urlsHasBeenSet = true; m_urls.emplace_back(std::forward<UrlsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of URLs pointing to additional celebrity information. </p>
-     */
-    inline void SetUrls(const Aws::Vector<Aws::String>& value) { m_urls = value; }
-
-    /**
-     * <p>An array of URLs pointing to additional celebrity information. </p>
-     */
-    inline void SetUrls(Aws::Vector<Aws::String>&& value) { m_urls = std::move(value); }
-
-    /**
-     * <p>An array of URLs pointing to additional celebrity information. </p>
-     */
-    inline GetCelebrityInfoResult& WithUrls(const Aws::Vector<Aws::String>& value) { SetUrls(value); return *this;}
-
-    /**
-     * <p>An array of URLs pointing to additional celebrity information. </p>
-     */
-    inline GetCelebrityInfoResult& WithUrls(Aws::Vector<Aws::String>&& value) { SetUrls(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of URLs pointing to additional celebrity information. </p>
-     */
-    inline GetCelebrityInfoResult& AddUrls(const Aws::String& value) { m_urls.push_back(value); return *this; }
-
-    /**
-     * <p>An array of URLs pointing to additional celebrity information. </p>
-     */
-    inline GetCelebrityInfoResult& AddUrls(Aws::String&& value) { m_urls.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of URLs pointing to additional celebrity information. </p>
-     */
-    inline GetCelebrityInfoResult& AddUrls(const char* value) { m_urls.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The name of the celebrity.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetCelebrityInfoResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the celebrity.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The name of the celebrity.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The name of the celebrity.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name of the celebrity.</p>
-     */
-    inline GetCelebrityInfoResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the celebrity.</p>
-     */
-    inline GetCelebrityInfoResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the celebrity.</p>
-     */
-    inline GetCelebrityInfoResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Retrieves the known gender for the celebrity.</p>
      */
-    inline const KnownGender& GetKnownGender() const{ return m_knownGender; }
+    inline const KnownGender& GetKnownGender() const { return m_knownGender; }
+    template<typename KnownGenderT = KnownGender>
+    void SetKnownGender(KnownGenderT&& value) { m_knownGenderHasBeenSet = true; m_knownGender = std::forward<KnownGenderT>(value); }
+    template<typename KnownGenderT = KnownGender>
+    GetCelebrityInfoResult& WithKnownGender(KnownGenderT&& value) { SetKnownGender(std::forward<KnownGenderT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Retrieves the known gender for the celebrity.</p>
-     */
-    inline void SetKnownGender(const KnownGender& value) { m_knownGender = value; }
-
-    /**
-     * <p>Retrieves the known gender for the celebrity.</p>
-     */
-    inline void SetKnownGender(KnownGender&& value) { m_knownGender = std::move(value); }
-
-    /**
-     * <p>Retrieves the known gender for the celebrity.</p>
-     */
-    inline GetCelebrityInfoResult& WithKnownGender(const KnownGender& value) { SetKnownGender(value); return *this;}
-
-    /**
-     * <p>Retrieves the known gender for the celebrity.</p>
-     */
-    inline GetCelebrityInfoResult& WithKnownGender(KnownGender&& value) { SetKnownGender(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetCelebrityInfoResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetCelebrityInfoResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetCelebrityInfoResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetCelebrityInfoResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_urls;
+    bool m_urlsHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     KnownGender m_knownGender;
+    bool m_knownGenderHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

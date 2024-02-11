@@ -32,48 +32,24 @@ namespace Model
   class Action
   {
   public:
-    AWS_SSMINCIDENTS_API Action();
+    AWS_SSMINCIDENTS_API Action() = default;
     AWS_SSMINCIDENTS_API Action(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API Action& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Systems Manager automation document to start as the runbook at the
      * beginning of the incident.</p>
      */
-    inline const SsmAutomation& GetSsmAutomation() const{ return m_ssmAutomation; }
-
-    /**
-     * <p>The Systems Manager automation document to start as the runbook at the
-     * beginning of the incident.</p>
-     */
+    inline const SsmAutomation& GetSsmAutomation() const { return m_ssmAutomation; }
     inline bool SsmAutomationHasBeenSet() const { return m_ssmAutomationHasBeenSet; }
-
-    /**
-     * <p>The Systems Manager automation document to start as the runbook at the
-     * beginning of the incident.</p>
-     */
-    inline void SetSsmAutomation(const SsmAutomation& value) { m_ssmAutomationHasBeenSet = true; m_ssmAutomation = value; }
-
-    /**
-     * <p>The Systems Manager automation document to start as the runbook at the
-     * beginning of the incident.</p>
-     */
-    inline void SetSsmAutomation(SsmAutomation&& value) { m_ssmAutomationHasBeenSet = true; m_ssmAutomation = std::move(value); }
-
-    /**
-     * <p>The Systems Manager automation document to start as the runbook at the
-     * beginning of the incident.</p>
-     */
-    inline Action& WithSsmAutomation(const SsmAutomation& value) { SetSsmAutomation(value); return *this;}
-
-    /**
-     * <p>The Systems Manager automation document to start as the runbook at the
-     * beginning of the incident.</p>
-     */
-    inline Action& WithSsmAutomation(SsmAutomation&& value) { SetSsmAutomation(std::move(value)); return *this;}
-
+    template<typename SsmAutomationT = SsmAutomation>
+    void SetSsmAutomation(SsmAutomationT&& value) { m_ssmAutomationHasBeenSet = true; m_ssmAutomation = std::forward<SsmAutomationT>(value); }
+    template<typename SsmAutomationT = SsmAutomation>
+    Action& WithSsmAutomation(SsmAutomationT&& value) { SetSsmAutomation(std::forward<SsmAutomationT>(value)); return *this;}
+    ///@}
   private:
 
     SsmAutomation m_ssmAutomation;

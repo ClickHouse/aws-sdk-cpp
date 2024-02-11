@@ -20,29 +20,7 @@ namespace S3
 namespace Model
 {
 
-Object::Object() : 
-    m_keyHasBeenSet(false),
-    m_lastModifiedHasBeenSet(false),
-    m_eTagHasBeenSet(false),
-    m_checksumAlgorithmHasBeenSet(false),
-    m_size(0),
-    m_sizeHasBeenSet(false),
-    m_storageClass(ObjectStorageClass::NOT_SET),
-    m_storageClassHasBeenSet(false),
-    m_ownerHasBeenSet(false)
-{
-}
-
-Object::Object(const XmlNode& xmlNode) : 
-    m_keyHasBeenSet(false),
-    m_lastModifiedHasBeenSet(false),
-    m_eTagHasBeenSet(false),
-    m_checksumAlgorithmHasBeenSet(false),
-    m_size(0),
-    m_sizeHasBeenSet(false),
-    m_storageClass(ObjectStorageClass::NOT_SET),
-    m_storageClassHasBeenSet(false),
-    m_ownerHasBeenSet(false)
+Object::Object(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -75,6 +53,7 @@ Object& Object::operator =(const XmlNode& xmlNode)
     if(!checksumAlgorithmNode.IsNull())
     {
       XmlNode checksumAlgorithmMember = checksumAlgorithmNode;
+      m_checksumAlgorithmHasBeenSet = !checksumAlgorithmMember.IsNull();
       while(!checksumAlgorithmMember.IsNull())
       {
         m_checksumAlgorithm.push_back(ChecksumAlgorithmMapper::GetChecksumAlgorithmForName(StringUtils::Trim(checksumAlgorithmMember.GetText().c_str())));
@@ -82,6 +61,12 @@ Object& Object::operator =(const XmlNode& xmlNode)
       }
 
       m_checksumAlgorithmHasBeenSet = true;
+    }
+    XmlNode checksumTypeNode = resultNode.FirstChild("ChecksumType");
+    if(!checksumTypeNode.IsNull())
+    {
+      m_checksumType = ChecksumTypeMapper::GetChecksumTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(checksumTypeNode.GetText()).c_str()));
+      m_checksumTypeHasBeenSet = true;
     }
     XmlNode sizeNode = resultNode.FirstChild("Size");
     if(!sizeNode.IsNull())
@@ -92,7 +77,7 @@ Object& Object::operator =(const XmlNode& xmlNode)
     XmlNode storageClassNode = resultNode.FirstChild("StorageClass");
     if(!storageClassNode.IsNull())
     {
-      m_storageClass = ObjectStorageClassMapper::GetObjectStorageClassForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(storageClassNode.GetText()).c_str()).c_str());
+      m_storageClass = ObjectStorageClassMapper::GetObjectStorageClassForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(storageClassNode.GetText()).c_str()));
       m_storageClassHasBeenSet = true;
     }
     XmlNode ownerNode = resultNode.FirstChild("Owner");
@@ -100,6 +85,12 @@ Object& Object::operator =(const XmlNode& xmlNode)
     {
       m_owner = ownerNode;
       m_ownerHasBeenSet = true;
+    }
+    XmlNode restoreStatusNode = resultNode.FirstChild("RestoreStatus");
+    if(!restoreStatusNode.IsNull())
+    {
+      m_restoreStatus = restoreStatusNode;
+      m_restoreStatusHasBeenSet = true;
     }
   }
 
@@ -137,6 +128,12 @@ void Object::AddToNode(XmlNode& parentNode) const
    }
   }
 
+  if(m_checksumTypeHasBeenSet)
+  {
+   XmlNode checksumTypeNode = parentNode.CreateChildElement("ChecksumType");
+   checksumTypeNode.SetText(ChecksumTypeMapper::GetNameForChecksumType(m_checksumType));
+  }
+
   if(m_sizeHasBeenSet)
   {
    XmlNode sizeNode = parentNode.CreateChildElement("Size");
@@ -155,6 +152,12 @@ void Object::AddToNode(XmlNode& parentNode) const
   {
    XmlNode ownerNode = parentNode.CreateChildElement("Owner");
    m_owner.AddToNode(ownerNode);
+  }
+
+  if(m_restoreStatusHasBeenSet)
+  {
+   XmlNode restoreStatusNode = parentNode.CreateChildElement("RestoreStatus");
+   m_restoreStatus.AddToNode(restoreStatusNode);
   }
 
 }

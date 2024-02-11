@@ -12,13 +12,6 @@ using namespace Aws::ApplicationInsights::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListApplicationsRequest::ListApplicationsRequest() : 
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListApplicationsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -32,6 +25,12 @@ Aws::String ListApplicationsRequest::SerializePayload() const
   if(m_nextTokenHasBeenSet)
   {
    payload.WithString("NextToken", m_nextToken);
+
+  }
+
+  if(m_accountIdHasBeenSet)
+  {
+   payload.WithString("AccountId", m_accountId);
 
   }
 

@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-PivotTableAggregatedFieldWells::PivotTableAggregatedFieldWells() : 
-    m_rowsHasBeenSet(false),
-    m_columnsHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-PivotTableAggregatedFieldWells::PivotTableAggregatedFieldWells(JsonView jsonValue) : 
-    m_rowsHasBeenSet(false),
-    m_columnsHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+PivotTableAggregatedFieldWells::PivotTableAggregatedFieldWells(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ PivotTableAggregatedFieldWells& PivotTableAggregatedFieldWells::operator =(JsonV
     }
     m_rowsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Columns"))
   {
     Aws::Utils::Array<JsonView> columnsJsonList = jsonValue.GetArray("Columns");
@@ -54,7 +43,6 @@ PivotTableAggregatedFieldWells& PivotTableAggregatedFieldWells::operator =(JsonV
     }
     m_columnsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("Values");
@@ -64,7 +52,6 @@ PivotTableAggregatedFieldWells& PivotTableAggregatedFieldWells::operator =(JsonV
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

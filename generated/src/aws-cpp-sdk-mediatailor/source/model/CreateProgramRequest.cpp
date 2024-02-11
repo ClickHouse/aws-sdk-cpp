@@ -12,17 +12,6 @@ using namespace Aws::MediaTailor::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateProgramRequest::CreateProgramRequest() : 
-    m_adBreaksHasBeenSet(false),
-    m_channelNameHasBeenSet(false),
-    m_liveSourceNameHasBeenSet(false),
-    m_programNameHasBeenSet(false),
-    m_scheduleConfigurationHasBeenSet(false),
-    m_sourceLocationNameHasBeenSet(false),
-    m_vodSourceNameHasBeenSet(false)
-{
-}
-
 Aws::String CreateProgramRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -59,6 +48,17 @@ Aws::String CreateProgramRequest::SerializePayload() const
   if(m_vodSourceNameHasBeenSet)
   {
    payload.WithString("VodSourceName", m_vodSourceName);
+
+  }
+
+  if(m_audienceMediaHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> audienceMediaJsonList(m_audienceMedia.size());
+   for(unsigned audienceMediaIndex = 0; audienceMediaIndex < audienceMediaJsonList.GetLength(); ++audienceMediaIndex)
+   {
+     audienceMediaJsonList[audienceMediaIndex].AsObject(m_audienceMedia[audienceMediaIndex].Jsonize());
+   }
+   payload.WithArray("AudienceMedia", std::move(audienceMediaJsonList));
 
   }
 

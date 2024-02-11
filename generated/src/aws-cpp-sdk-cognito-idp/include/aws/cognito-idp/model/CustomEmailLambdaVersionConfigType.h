@@ -25,114 +25,48 @@ namespace Model
 {
 
   /**
-   * <p>A custom email sender Lambda configuration type.</p><p><h3>See Also:</h3>  
-   * <a
+   * <p>The properties of a custom email sender Lambda trigger.</p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CustomEmailLambdaVersionConfigType">AWS
    * API Reference</a></p>
    */
   class CustomEmailLambdaVersionConfigType
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API CustomEmailLambdaVersionConfigType();
+    AWS_COGNITOIDENTITYPROVIDER_API CustomEmailLambdaVersionConfigType() = default;
     AWS_COGNITOIDENTITYPROVIDER_API CustomEmailLambdaVersionConfigType(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITYPROVIDER_API CustomEmailLambdaVersionConfigType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>Signature of the "request" attribute in the "event" information Amazon
-     * Cognito passes to your custom email Lambda function. The only supported value is
-     * <code>V1_0</code>.</p>
+     * <p>The user pool trigger version of the request that Amazon Cognito sends to
+     * your Lambda function. Higher-numbered versions add fields that support new
+     * features.</p> <p>You must use a <code>LambdaVersion</code> of <code>V1_0</code>
+     * with a custom sender function.</p>
      */
-    inline const CustomEmailSenderLambdaVersionType& GetLambdaVersion() const{ return m_lambdaVersion; }
-
-    /**
-     * <p>Signature of the "request" attribute in the "event" information Amazon
-     * Cognito passes to your custom email Lambda function. The only supported value is
-     * <code>V1_0</code>.</p>
-     */
+    inline CustomEmailSenderLambdaVersionType GetLambdaVersion() const { return m_lambdaVersion; }
     inline bool LambdaVersionHasBeenSet() const { return m_lambdaVersionHasBeenSet; }
+    inline void SetLambdaVersion(CustomEmailSenderLambdaVersionType value) { m_lambdaVersionHasBeenSet = true; m_lambdaVersion = value; }
+    inline CustomEmailLambdaVersionConfigType& WithLambdaVersion(CustomEmailSenderLambdaVersionType value) { SetLambdaVersion(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Signature of the "request" attribute in the "event" information Amazon
-     * Cognito passes to your custom email Lambda function. The only supported value is
-     * <code>V1_0</code>.</p>
+     * <p>The Amazon Resource Name (ARN) of the function that you want to assign to
+     * your Lambda trigger.</p>
      */
-    inline void SetLambdaVersion(const CustomEmailSenderLambdaVersionType& value) { m_lambdaVersionHasBeenSet = true; m_lambdaVersion = value; }
-
-    /**
-     * <p>Signature of the "request" attribute in the "event" information Amazon
-     * Cognito passes to your custom email Lambda function. The only supported value is
-     * <code>V1_0</code>.</p>
-     */
-    inline void SetLambdaVersion(CustomEmailSenderLambdaVersionType&& value) { m_lambdaVersionHasBeenSet = true; m_lambdaVersion = std::move(value); }
-
-    /**
-     * <p>Signature of the "request" attribute in the "event" information Amazon
-     * Cognito passes to your custom email Lambda function. The only supported value is
-     * <code>V1_0</code>.</p>
-     */
-    inline CustomEmailLambdaVersionConfigType& WithLambdaVersion(const CustomEmailSenderLambdaVersionType& value) { SetLambdaVersion(value); return *this;}
-
-    /**
-     * <p>Signature of the "request" attribute in the "event" information Amazon
-     * Cognito passes to your custom email Lambda function. The only supported value is
-     * <code>V1_0</code>.</p>
-     */
-    inline CustomEmailLambdaVersionConfigType& WithLambdaVersion(CustomEmailSenderLambdaVersionType&& value) { SetLambdaVersion(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function that Amazon Cognito
-     * activates to send email notifications to users.</p>
-     */
-    inline const Aws::String& GetLambdaArn() const{ return m_lambdaArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function that Amazon Cognito
-     * activates to send email notifications to users.</p>
-     */
+    inline const Aws::String& GetLambdaArn() const { return m_lambdaArn; }
     inline bool LambdaArnHasBeenSet() const { return m_lambdaArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function that Amazon Cognito
-     * activates to send email notifications to users.</p>
-     */
-    inline void SetLambdaArn(const Aws::String& value) { m_lambdaArnHasBeenSet = true; m_lambdaArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function that Amazon Cognito
-     * activates to send email notifications to users.</p>
-     */
-    inline void SetLambdaArn(Aws::String&& value) { m_lambdaArnHasBeenSet = true; m_lambdaArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function that Amazon Cognito
-     * activates to send email notifications to users.</p>
-     */
-    inline void SetLambdaArn(const char* value) { m_lambdaArnHasBeenSet = true; m_lambdaArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function that Amazon Cognito
-     * activates to send email notifications to users.</p>
-     */
-    inline CustomEmailLambdaVersionConfigType& WithLambdaArn(const Aws::String& value) { SetLambdaArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function that Amazon Cognito
-     * activates to send email notifications to users.</p>
-     */
-    inline CustomEmailLambdaVersionConfigType& WithLambdaArn(Aws::String&& value) { SetLambdaArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function that Amazon Cognito
-     * activates to send email notifications to users.</p>
-     */
-    inline CustomEmailLambdaVersionConfigType& WithLambdaArn(const char* value) { SetLambdaArn(value); return *this;}
-
+    template<typename LambdaArnT = Aws::String>
+    void SetLambdaArn(LambdaArnT&& value) { m_lambdaArnHasBeenSet = true; m_lambdaArn = std::forward<LambdaArnT>(value); }
+    template<typename LambdaArnT = Aws::String>
+    CustomEmailLambdaVersionConfigType& WithLambdaArn(LambdaArnT&& value) { SetLambdaArn(std::forward<LambdaArnT>(value)); return *this;}
+    ///@}
   private:
 
-    CustomEmailSenderLambdaVersionType m_lambdaVersion;
+    CustomEmailSenderLambdaVersionType m_lambdaVersion{CustomEmailSenderLambdaVersionType::NOT_SET};
     bool m_lambdaVersionHasBeenSet = false;
 
     Aws::String m_lambdaArn;

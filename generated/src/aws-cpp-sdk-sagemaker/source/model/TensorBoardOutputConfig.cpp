@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-TensorBoardOutputConfig::TensorBoardOutputConfig() : 
-    m_localPathHasBeenSet(false),
-    m_s3OutputPathHasBeenSet(false)
-{
-}
-
-TensorBoardOutputConfig::TensorBoardOutputConfig(JsonView jsonValue) : 
-    m_localPathHasBeenSet(false),
-    m_s3OutputPathHasBeenSet(false)
+TensorBoardOutputConfig::TensorBoardOutputConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TensorBoardOutputConfig& TensorBoardOutputConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("LocalPath"))
   {
     m_localPath = jsonValue.GetString("LocalPath");
-
     m_localPathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3OutputPath"))
   {
     m_s3OutputPath = jsonValue.GetString("S3OutputPath");
-
     m_s3OutputPathHasBeenSet = true;
   }
-
   return *this;
 }
 

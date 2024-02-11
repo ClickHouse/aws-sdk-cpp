@@ -28,67 +28,37 @@ namespace Model
   class DeleteTrafficMirrorSessionResponse
   {
   public:
-    AWS_EC2_API DeleteTrafficMirrorSessionResponse();
+    AWS_EC2_API DeleteTrafficMirrorSessionResponse() = default;
     AWS_EC2_API DeleteTrafficMirrorSessionResponse(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_EC2_API DeleteTrafficMirrorSessionResponse& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The ID of the deleted Traffic Mirror session.</p>
      */
-    inline const Aws::String& GetTrafficMirrorSessionId() const{ return m_trafficMirrorSessionId; }
+    inline const Aws::String& GetTrafficMirrorSessionId() const { return m_trafficMirrorSessionId; }
+    template<typename TrafficMirrorSessionIdT = Aws::String>
+    void SetTrafficMirrorSessionId(TrafficMirrorSessionIdT&& value) { m_trafficMirrorSessionIdHasBeenSet = true; m_trafficMirrorSessionId = std::forward<TrafficMirrorSessionIdT>(value); }
+    template<typename TrafficMirrorSessionIdT = Aws::String>
+    DeleteTrafficMirrorSessionResponse& WithTrafficMirrorSessionId(TrafficMirrorSessionIdT&& value) { SetTrafficMirrorSessionId(std::forward<TrafficMirrorSessionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the deleted Traffic Mirror session.</p>
-     */
-    inline void SetTrafficMirrorSessionId(const Aws::String& value) { m_trafficMirrorSessionId = value; }
-
-    /**
-     * <p>The ID of the deleted Traffic Mirror session.</p>
-     */
-    inline void SetTrafficMirrorSessionId(Aws::String&& value) { m_trafficMirrorSessionId = std::move(value); }
-
-    /**
-     * <p>The ID of the deleted Traffic Mirror session.</p>
-     */
-    inline void SetTrafficMirrorSessionId(const char* value) { m_trafficMirrorSessionId.assign(value); }
-
-    /**
-     * <p>The ID of the deleted Traffic Mirror session.</p>
-     */
-    inline DeleteTrafficMirrorSessionResponse& WithTrafficMirrorSessionId(const Aws::String& value) { SetTrafficMirrorSessionId(value); return *this;}
-
-    /**
-     * <p>The ID of the deleted Traffic Mirror session.</p>
-     */
-    inline DeleteTrafficMirrorSessionResponse& WithTrafficMirrorSessionId(Aws::String&& value) { SetTrafficMirrorSessionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the deleted Traffic Mirror session.</p>
-     */
-    inline DeleteTrafficMirrorSessionResponse& WithTrafficMirrorSessionId(const char* value) { SetTrafficMirrorSessionId(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline DeleteTrafficMirrorSessionResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline DeleteTrafficMirrorSessionResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    DeleteTrafficMirrorSessionResponse& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_trafficMirrorSessionId;
+    bool m_trafficMirrorSessionIdHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

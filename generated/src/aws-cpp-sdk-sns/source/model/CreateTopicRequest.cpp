@@ -10,14 +10,6 @@
 using namespace Aws::SNS::Model;
 using namespace Aws::Utils;
 
-CreateTopicRequest::CreateTopicRequest() : 
-    m_nameHasBeenSet(false),
-    m_attributesHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_dataProtectionPolicyHasBeenSet(false)
-{
-}
-
 Aws::String CreateTopicRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -42,11 +34,18 @@ Aws::String CreateTopicRequest::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.member.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 

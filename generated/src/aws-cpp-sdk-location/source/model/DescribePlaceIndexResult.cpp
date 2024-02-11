@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-DescribePlaceIndexResult::DescribePlaceIndexResult()
-{
-}
-
 DescribePlaceIndexResult::DescribePlaceIndexResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,42 +25,41 @@ DescribePlaceIndexResult::DescribePlaceIndexResult(const Aws::AmazonWebServiceRe
 DescribePlaceIndexResult& DescribePlaceIndexResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("CreateTime"))
-  {
-    m_createTime = jsonValue.GetString("CreateTime");
-
-  }
-
-  if(jsonValue.ValueExists("DataSource"))
-  {
-    m_dataSource = jsonValue.GetString("DataSource");
-
-  }
-
-  if(jsonValue.ValueExists("DataSourceConfiguration"))
-  {
-    m_dataSourceConfiguration = jsonValue.GetObject("DataSourceConfiguration");
-
-  }
-
-  if(jsonValue.ValueExists("Description"))
-  {
-    m_description = jsonValue.GetString("Description");
-
-  }
-
-  if(jsonValue.ValueExists("IndexArn"))
-  {
-    m_indexArn = jsonValue.GetString("IndexArn");
-
-  }
-
   if(jsonValue.ValueExists("IndexName"))
   {
     m_indexName = jsonValue.GetString("IndexName");
-
+    m_indexNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("IndexArn"))
+  {
+    m_indexArn = jsonValue.GetString("IndexArn");
+    m_indexArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("Description"))
+  {
+    m_description = jsonValue.GetString("Description");
+    m_descriptionHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("CreateTime"))
+  {
+    m_createTime = jsonValue.GetString("CreateTime");
+    m_createTimeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("UpdateTime"))
+  {
+    m_updateTime = jsonValue.GetString("UpdateTime");
+    m_updateTimeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("DataSource"))
+  {
+    m_dataSource = jsonValue.GetString("DataSource");
+    m_dataSourceHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("DataSourceConfiguration"))
+  {
+    m_dataSourceConfiguration = jsonValue.GetObject("DataSourceConfiguration");
+    m_dataSourceConfigurationHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("Tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("Tags").GetAllObjects();
@@ -72,20 +67,15 @@ DescribePlaceIndexResult& DescribePlaceIndexResult::operator =(const Aws::Amazon
     {
       m_tags[tagsItem.first] = tagsItem.second.AsString();
     }
+    m_tagsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("UpdateTime"))
-  {
-    m_updateTime = jsonValue.GetString("UpdateTime");
-
-  }
-
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

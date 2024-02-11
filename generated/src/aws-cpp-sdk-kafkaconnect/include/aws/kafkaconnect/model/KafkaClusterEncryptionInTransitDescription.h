@@ -32,45 +32,24 @@ namespace Model
   class KafkaClusterEncryptionInTransitDescription
   {
   public:
-    AWS_KAFKACONNECT_API KafkaClusterEncryptionInTransitDescription();
+    AWS_KAFKACONNECT_API KafkaClusterEncryptionInTransitDescription() = default;
     AWS_KAFKACONNECT_API KafkaClusterEncryptionInTransitDescription(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKACONNECT_API KafkaClusterEncryptionInTransitDescription& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of encryption in transit to the Apache Kafka cluster.</p>
      */
-    inline const KafkaClusterEncryptionInTransitType& GetEncryptionType() const{ return m_encryptionType; }
-
-    /**
-     * <p>The type of encryption in transit to the Apache Kafka cluster.</p>
-     */
+    inline KafkaClusterEncryptionInTransitType GetEncryptionType() const { return m_encryptionType; }
     inline bool EncryptionTypeHasBeenSet() const { return m_encryptionTypeHasBeenSet; }
-
-    /**
-     * <p>The type of encryption in transit to the Apache Kafka cluster.</p>
-     */
-    inline void SetEncryptionType(const KafkaClusterEncryptionInTransitType& value) { m_encryptionTypeHasBeenSet = true; m_encryptionType = value; }
-
-    /**
-     * <p>The type of encryption in transit to the Apache Kafka cluster.</p>
-     */
-    inline void SetEncryptionType(KafkaClusterEncryptionInTransitType&& value) { m_encryptionTypeHasBeenSet = true; m_encryptionType = std::move(value); }
-
-    /**
-     * <p>The type of encryption in transit to the Apache Kafka cluster.</p>
-     */
-    inline KafkaClusterEncryptionInTransitDescription& WithEncryptionType(const KafkaClusterEncryptionInTransitType& value) { SetEncryptionType(value); return *this;}
-
-    /**
-     * <p>The type of encryption in transit to the Apache Kafka cluster.</p>
-     */
-    inline KafkaClusterEncryptionInTransitDescription& WithEncryptionType(KafkaClusterEncryptionInTransitType&& value) { SetEncryptionType(std::move(value)); return *this;}
-
+    inline void SetEncryptionType(KafkaClusterEncryptionInTransitType value) { m_encryptionTypeHasBeenSet = true; m_encryptionType = value; }
+    inline KafkaClusterEncryptionInTransitDescription& WithEncryptionType(KafkaClusterEncryptionInTransitType value) { SetEncryptionType(value); return *this;}
+    ///@}
   private:
 
-    KafkaClusterEncryptionInTransitType m_encryptionType;
+    KafkaClusterEncryptionInTransitType m_encryptionType{KafkaClusterEncryptionInTransitType::NOT_SET};
     bool m_encryptionTypeHasBeenSet = false;
   };
 

@@ -10,28 +10,10 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateRouteTableRequest::CreateRouteTableRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false)
-{
-}
-
 Aws::String CreateRouteTableRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=CreateRouteTable&";
-  if(m_dryRunHasBeenSet)
-  {
-    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
-  }
-
-  if(m_vpcIdHasBeenSet)
-  {
-    ss << "VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
-  }
-
   if(m_tagSpecificationsHasBeenSet)
   {
     unsigned tagSpecificationsCount = 1;
@@ -40,6 +22,21 @@ Aws::String CreateRouteTableRequest::SerializePayload() const
       item.OutputToStream(ss, "TagSpecification.", tagSpecificationsCount, "");
       tagSpecificationsCount++;
     }
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+    ss << "ClientToken=" << StringUtils::URLEncode(m_clientToken.c_str()) << "&";
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
+  }
+
+  if(m_vpcIdHasBeenSet)
+  {
+    ss << "VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
   }
 
   ss << "Version=2016-11-15";

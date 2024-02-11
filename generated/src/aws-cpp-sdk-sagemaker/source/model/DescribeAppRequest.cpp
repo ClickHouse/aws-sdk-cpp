@@ -12,16 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeAppRequest::DescribeAppRequest() : 
-    m_domainIdHasBeenSet(false),
-    m_userProfileNameHasBeenSet(false),
-    m_appType(AppType::NOT_SET),
-    m_appTypeHasBeenSet(false),
-    m_appNameHasBeenSet(false),
-    m_spaceNameHasBeenSet(false)
-{
-}
-
 Aws::String DescribeAppRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,6 +28,12 @@ Aws::String DescribeAppRequest::SerializePayload() const
 
   }
 
+  if(m_spaceNameHasBeenSet)
+  {
+   payload.WithString("SpaceName", m_spaceName);
+
+  }
+
   if(m_appTypeHasBeenSet)
   {
    payload.WithString("AppType", AppTypeMapper::GetNameForAppType(m_appType));
@@ -46,12 +42,6 @@ Aws::String DescribeAppRequest::SerializePayload() const
   if(m_appNameHasBeenSet)
   {
    payload.WithString("AppName", m_appName);
-
-  }
-
-  if(m_spaceNameHasBeenSet)
-  {
-   payload.WithString("SpaceName", m_spaceName);
 
   }
 

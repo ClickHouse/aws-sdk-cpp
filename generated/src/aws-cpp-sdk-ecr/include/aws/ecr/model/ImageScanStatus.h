@@ -32,86 +32,36 @@ namespace Model
   class ImageScanStatus
   {
   public:
-    AWS_ECR_API ImageScanStatus();
+    AWS_ECR_API ImageScanStatus() = default;
     AWS_ECR_API ImageScanStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECR_API ImageScanStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The current state of an image scan.</p>
      */
-    inline const ScanStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The current state of an image scan.</p>
-     */
+    inline ScanStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ScanStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ImageScanStatus& WithStatus(ScanStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current state of an image scan.</p>
-     */
-    inline void SetStatus(const ScanStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The current state of an image scan.</p>
-     */
-    inline void SetStatus(ScanStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The current state of an image scan.</p>
-     */
-    inline ImageScanStatus& WithStatus(const ScanStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current state of an image scan.</p>
-     */
-    inline ImageScanStatus& WithStatus(ScanStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the image scan status.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the image scan status.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>The description of the image scan status.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the image scan status.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the image scan status.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the image scan status.</p>
-     */
-    inline ImageScanStatus& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the image scan status.</p>
-     */
-    inline ImageScanStatus& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the image scan status.</p>
-     */
-    inline ImageScanStatus& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ImageScanStatus& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
-    ScanStatus m_status;
+    ScanStatus m_status{ScanStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_description;

@@ -33,45 +33,24 @@ namespace Model
   class SidewalkEventNotificationConfigurations
   {
   public:
-    AWS_IOTWIRELESS_API SidewalkEventNotificationConfigurations();
+    AWS_IOTWIRELESS_API SidewalkEventNotificationConfigurations() = default;
     AWS_IOTWIRELESS_API SidewalkEventNotificationConfigurations(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API SidewalkEventNotificationConfigurations& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Denotes whether the Amazon ID event topic is enabled or disabled.</p>
      */
-    inline const EventNotificationTopicStatus& GetAmazonIdEventTopic() const{ return m_amazonIdEventTopic; }
-
-    /**
-     * <p>Denotes whether the Amazon ID event topic is enabled or disabled.</p>
-     */
+    inline EventNotificationTopicStatus GetAmazonIdEventTopic() const { return m_amazonIdEventTopic; }
     inline bool AmazonIdEventTopicHasBeenSet() const { return m_amazonIdEventTopicHasBeenSet; }
-
-    /**
-     * <p>Denotes whether the Amazon ID event topic is enabled or disabled.</p>
-     */
-    inline void SetAmazonIdEventTopic(const EventNotificationTopicStatus& value) { m_amazonIdEventTopicHasBeenSet = true; m_amazonIdEventTopic = value; }
-
-    /**
-     * <p>Denotes whether the Amazon ID event topic is enabled or disabled.</p>
-     */
-    inline void SetAmazonIdEventTopic(EventNotificationTopicStatus&& value) { m_amazonIdEventTopicHasBeenSet = true; m_amazonIdEventTopic = std::move(value); }
-
-    /**
-     * <p>Denotes whether the Amazon ID event topic is enabled or disabled.</p>
-     */
-    inline SidewalkEventNotificationConfigurations& WithAmazonIdEventTopic(const EventNotificationTopicStatus& value) { SetAmazonIdEventTopic(value); return *this;}
-
-    /**
-     * <p>Denotes whether the Amazon ID event topic is enabled or disabled.</p>
-     */
-    inline SidewalkEventNotificationConfigurations& WithAmazonIdEventTopic(EventNotificationTopicStatus&& value) { SetAmazonIdEventTopic(std::move(value)); return *this;}
-
+    inline void SetAmazonIdEventTopic(EventNotificationTopicStatus value) { m_amazonIdEventTopicHasBeenSet = true; m_amazonIdEventTopic = value; }
+    inline SidewalkEventNotificationConfigurations& WithAmazonIdEventTopic(EventNotificationTopicStatus value) { SetAmazonIdEventTopic(value); return *this;}
+    ///@}
   private:
 
-    EventNotificationTopicStatus m_amazonIdEventTopic;
+    EventNotificationTopicStatus m_amazonIdEventTopic{EventNotificationTopicStatus::NOT_SET};
     bool m_amazonIdEventTopicHasBeenSet = false;
   };
 

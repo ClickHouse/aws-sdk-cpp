@@ -34,105 +34,38 @@ namespace Model
   class InputConfiguration
   {
   public:
-    AWS_KINESISANALYTICS_API InputConfiguration();
+    AWS_KINESISANALYTICS_API InputConfiguration() = default;
     AWS_KINESISANALYTICS_API InputConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICS_API InputConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Input source ID. You can get this ID by calling the <a
      * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html">DescribeApplication</a>
      * operation.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>Input source ID. You can get this ID by calling the <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html">DescribeApplication</a>
-     * operation.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    InputConfiguration& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Input source ID. You can get this ID by calling the <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html">DescribeApplication</a>
-     * operation.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>Input source ID. You can get this ID by calling the <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html">DescribeApplication</a>
-     * operation.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>Input source ID. You can get this ID by calling the <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html">DescribeApplication</a>
-     * operation.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>Input source ID. You can get this ID by calling the <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html">DescribeApplication</a>
-     * operation.</p>
-     */
-    inline InputConfiguration& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>Input source ID. You can get this ID by calling the <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html">DescribeApplication</a>
-     * operation.</p>
-     */
-    inline InputConfiguration& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>Input source ID. You can get this ID by calling the <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html">DescribeApplication</a>
-     * operation.</p>
-     */
-    inline InputConfiguration& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Point at which you want the application to start processing records from the
      * streaming source.</p>
      */
-    inline const InputStartingPositionConfiguration& GetInputStartingPositionConfiguration() const{ return m_inputStartingPositionConfiguration; }
-
-    /**
-     * <p>Point at which you want the application to start processing records from the
-     * streaming source.</p>
-     */
+    inline const InputStartingPositionConfiguration& GetInputStartingPositionConfiguration() const { return m_inputStartingPositionConfiguration; }
     inline bool InputStartingPositionConfigurationHasBeenSet() const { return m_inputStartingPositionConfigurationHasBeenSet; }
-
-    /**
-     * <p>Point at which you want the application to start processing records from the
-     * streaming source.</p>
-     */
-    inline void SetInputStartingPositionConfiguration(const InputStartingPositionConfiguration& value) { m_inputStartingPositionConfigurationHasBeenSet = true; m_inputStartingPositionConfiguration = value; }
-
-    /**
-     * <p>Point at which you want the application to start processing records from the
-     * streaming source.</p>
-     */
-    inline void SetInputStartingPositionConfiguration(InputStartingPositionConfiguration&& value) { m_inputStartingPositionConfigurationHasBeenSet = true; m_inputStartingPositionConfiguration = std::move(value); }
-
-    /**
-     * <p>Point at which you want the application to start processing records from the
-     * streaming source.</p>
-     */
-    inline InputConfiguration& WithInputStartingPositionConfiguration(const InputStartingPositionConfiguration& value) { SetInputStartingPositionConfiguration(value); return *this;}
-
-    /**
-     * <p>Point at which you want the application to start processing records from the
-     * streaming source.</p>
-     */
-    inline InputConfiguration& WithInputStartingPositionConfiguration(InputStartingPositionConfiguration&& value) { SetInputStartingPositionConfiguration(std::move(value)); return *this;}
-
+    template<typename InputStartingPositionConfigurationT = InputStartingPositionConfiguration>
+    void SetInputStartingPositionConfiguration(InputStartingPositionConfigurationT&& value) { m_inputStartingPositionConfigurationHasBeenSet = true; m_inputStartingPositionConfiguration = std::forward<InputStartingPositionConfigurationT>(value); }
+    template<typename InputStartingPositionConfigurationT = InputStartingPositionConfiguration>
+    InputConfiguration& WithInputStartingPositionConfiguration(InputStartingPositionConfigurationT&& value) { SetInputStartingPositionConfiguration(std::forward<InputStartingPositionConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

@@ -7,6 +7,8 @@
 #include <aws/opensearch/OpenSearchService_EXPORTS.h>
 #include <aws/opensearch/OpenSearchServiceRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/opensearch/model/PackageAssociationConfiguration.h>
 #include <utility>
 
 namespace Aws
@@ -25,7 +27,7 @@ namespace Model
   class AssociatePackageRequest : public OpenSearchServiceRequest
   {
   public:
-    AWS_OPENSEARCHSERVICE_API AssociatePackageRequest();
+    AWS_OPENSEARCHSERVICE_API AssociatePackageRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,95 +38,58 @@ namespace Model
     AWS_OPENSEARCHSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Internal ID of the package to associate with a domain. Use
      * <code>DescribePackages</code> to find this value. </p>
      */
-    inline const Aws::String& GetPackageID() const{ return m_packageID; }
-
-    /**
-     * <p>Internal ID of the package to associate with a domain. Use
-     * <code>DescribePackages</code> to find this value. </p>
-     */
+    inline const Aws::String& GetPackageID() const { return m_packageID; }
     inline bool PackageIDHasBeenSet() const { return m_packageIDHasBeenSet; }
+    template<typename PackageIDT = Aws::String>
+    void SetPackageID(PackageIDT&& value) { m_packageIDHasBeenSet = true; m_packageID = std::forward<PackageIDT>(value); }
+    template<typename PackageIDT = Aws::String>
+    AssociatePackageRequest& WithPackageID(PackageIDT&& value) { SetPackageID(std::forward<PackageIDT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Internal ID of the package to associate with a domain. Use
-     * <code>DescribePackages</code> to find this value. </p>
-     */
-    inline void SetPackageID(const Aws::String& value) { m_packageIDHasBeenSet = true; m_packageID = value; }
-
-    /**
-     * <p>Internal ID of the package to associate with a domain. Use
-     * <code>DescribePackages</code> to find this value. </p>
-     */
-    inline void SetPackageID(Aws::String&& value) { m_packageIDHasBeenSet = true; m_packageID = std::move(value); }
-
-    /**
-     * <p>Internal ID of the package to associate with a domain. Use
-     * <code>DescribePackages</code> to find this value. </p>
-     */
-    inline void SetPackageID(const char* value) { m_packageIDHasBeenSet = true; m_packageID.assign(value); }
-
-    /**
-     * <p>Internal ID of the package to associate with a domain. Use
-     * <code>DescribePackages</code> to find this value. </p>
-     */
-    inline AssociatePackageRequest& WithPackageID(const Aws::String& value) { SetPackageID(value); return *this;}
-
-    /**
-     * <p>Internal ID of the package to associate with a domain. Use
-     * <code>DescribePackages</code> to find this value. </p>
-     */
-    inline AssociatePackageRequest& WithPackageID(Aws::String&& value) { SetPackageID(std::move(value)); return *this;}
-
-    /**
-     * <p>Internal ID of the package to associate with a domain. Use
-     * <code>DescribePackages</code> to find this value. </p>
-     */
-    inline AssociatePackageRequest& WithPackageID(const char* value) { SetPackageID(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Name of the domain to associate the package with.</p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
-
-    /**
-     * <p>Name of the domain to associate the package with.</p>
-     */
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
     inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    AssociatePackageRequest& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Name of the domain to associate the package with.</p>
+     * <p>A list of package IDs that must be associated with the domain before the
+     * package specified in the request can be associated.</p>
      */
-    inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
+    inline const Aws::Vector<Aws::String>& GetPrerequisitePackageIDList() const { return m_prerequisitePackageIDList; }
+    inline bool PrerequisitePackageIDListHasBeenSet() const { return m_prerequisitePackageIDListHasBeenSet; }
+    template<typename PrerequisitePackageIDListT = Aws::Vector<Aws::String>>
+    void SetPrerequisitePackageIDList(PrerequisitePackageIDListT&& value) { m_prerequisitePackageIDListHasBeenSet = true; m_prerequisitePackageIDList = std::forward<PrerequisitePackageIDListT>(value); }
+    template<typename PrerequisitePackageIDListT = Aws::Vector<Aws::String>>
+    AssociatePackageRequest& WithPrerequisitePackageIDList(PrerequisitePackageIDListT&& value) { SetPrerequisitePackageIDList(std::forward<PrerequisitePackageIDListT>(value)); return *this;}
+    template<typename PrerequisitePackageIDListT = Aws::String>
+    AssociatePackageRequest& AddPrerequisitePackageIDList(PrerequisitePackageIDListT&& value) { m_prerequisitePackageIDListHasBeenSet = true; m_prerequisitePackageIDList.emplace_back(std::forward<PrerequisitePackageIDListT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>Name of the domain to associate the package with.</p>
+     * <p>The configuration for associating a package with an Amazon OpenSearch Service
+     * domain.</p>
      */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
-
-    /**
-     * <p>Name of the domain to associate the package with.</p>
-     */
-    inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
-
-    /**
-     * <p>Name of the domain to associate the package with.</p>
-     */
-    inline AssociatePackageRequest& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p>Name of the domain to associate the package with.</p>
-     */
-    inline AssociatePackageRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the domain to associate the package with.</p>
-     */
-    inline AssociatePackageRequest& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
+    inline const PackageAssociationConfiguration& GetAssociationConfiguration() const { return m_associationConfiguration; }
+    inline bool AssociationConfigurationHasBeenSet() const { return m_associationConfigurationHasBeenSet; }
+    template<typename AssociationConfigurationT = PackageAssociationConfiguration>
+    void SetAssociationConfiguration(AssociationConfigurationT&& value) { m_associationConfigurationHasBeenSet = true; m_associationConfiguration = std::forward<AssociationConfigurationT>(value); }
+    template<typename AssociationConfigurationT = PackageAssociationConfiguration>
+    AssociatePackageRequest& WithAssociationConfiguration(AssociationConfigurationT&& value) { SetAssociationConfiguration(std::forward<AssociationConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_packageID;
@@ -132,6 +97,12 @@ namespace Model
 
     Aws::String m_domainName;
     bool m_domainNameHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_prerequisitePackageIDList;
+    bool m_prerequisitePackageIDListHasBeenSet = false;
+
+    PackageAssociationConfiguration m_associationConfiguration;
+    bool m_associationConfigurationHasBeenSet = false;
   };
 
 } // namespace Model

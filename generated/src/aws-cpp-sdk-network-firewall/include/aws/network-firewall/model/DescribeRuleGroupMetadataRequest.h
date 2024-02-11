@@ -22,7 +22,7 @@ namespace Model
   class DescribeRuleGroupMetadataRequest : public NetworkFirewallRequest
   {
   public:
-    AWS_NETWORKFIREWALL_API DescribeRuleGroupMetadataRequest();
+    AWS_NETWORKFIREWALL_API DescribeRuleGroupMetadataRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,168 +35,46 @@ namespace Model
     AWS_NETWORKFIREWALL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The descriptive name of the rule group. You can't change the name of a rule
      * group after you create it.</p> <p>You must specify the ARN or the name, and you
      * can specify both. </p>
      */
-    inline const Aws::String& GetRuleGroupName() const{ return m_ruleGroupName; }
-
-    /**
-     * <p>The descriptive name of the rule group. You can't change the name of a rule
-     * group after you create it.</p> <p>You must specify the ARN or the name, and you
-     * can specify both. </p>
-     */
+    inline const Aws::String& GetRuleGroupName() const { return m_ruleGroupName; }
     inline bool RuleGroupNameHasBeenSet() const { return m_ruleGroupNameHasBeenSet; }
+    template<typename RuleGroupNameT = Aws::String>
+    void SetRuleGroupName(RuleGroupNameT&& value) { m_ruleGroupNameHasBeenSet = true; m_ruleGroupName = std::forward<RuleGroupNameT>(value); }
+    template<typename RuleGroupNameT = Aws::String>
+    DescribeRuleGroupMetadataRequest& WithRuleGroupName(RuleGroupNameT&& value) { SetRuleGroupName(std::forward<RuleGroupNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>The descriptive name of the rule group. You can't change the name of a rule
      * group after you create it.</p> <p>You must specify the ARN or the name, and you
      * can specify both. </p>
      */
-    inline void SetRuleGroupName(const Aws::String& value) { m_ruleGroupNameHasBeenSet = true; m_ruleGroupName = value; }
-
-    /**
-     * <p>The descriptive name of the rule group. You can't change the name of a rule
-     * group after you create it.</p> <p>You must specify the ARN or the name, and you
-     * can specify both. </p>
-     */
-    inline void SetRuleGroupName(Aws::String&& value) { m_ruleGroupNameHasBeenSet = true; m_ruleGroupName = std::move(value); }
-
-    /**
-     * <p>The descriptive name of the rule group. You can't change the name of a rule
-     * group after you create it.</p> <p>You must specify the ARN or the name, and you
-     * can specify both. </p>
-     */
-    inline void SetRuleGroupName(const char* value) { m_ruleGroupNameHasBeenSet = true; m_ruleGroupName.assign(value); }
-
-    /**
-     * <p>The descriptive name of the rule group. You can't change the name of a rule
-     * group after you create it.</p> <p>You must specify the ARN or the name, and you
-     * can specify both. </p>
-     */
-    inline DescribeRuleGroupMetadataRequest& WithRuleGroupName(const Aws::String& value) { SetRuleGroupName(value); return *this;}
-
-    /**
-     * <p>The descriptive name of the rule group. You can't change the name of a rule
-     * group after you create it.</p> <p>You must specify the ARN or the name, and you
-     * can specify both. </p>
-     */
-    inline DescribeRuleGroupMetadataRequest& WithRuleGroupName(Aws::String&& value) { SetRuleGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The descriptive name of the rule group. You can't change the name of a rule
-     * group after you create it.</p> <p>You must specify the ARN or the name, and you
-     * can specify both. </p>
-     */
-    inline DescribeRuleGroupMetadataRequest& WithRuleGroupName(const char* value) { SetRuleGroupName(value); return *this;}
-
-
-    /**
-     * <p>The descriptive name of the rule group. You can't change the name of a rule
-     * group after you create it.</p> <p>You must specify the ARN or the name, and you
-     * can specify both. </p>
-     */
-    inline const Aws::String& GetRuleGroupArn() const{ return m_ruleGroupArn; }
-
-    /**
-     * <p>The descriptive name of the rule group. You can't change the name of a rule
-     * group after you create it.</p> <p>You must specify the ARN or the name, and you
-     * can specify both. </p>
-     */
+    inline const Aws::String& GetRuleGroupArn() const { return m_ruleGroupArn; }
     inline bool RuleGroupArnHasBeenSet() const { return m_ruleGroupArnHasBeenSet; }
+    template<typename RuleGroupArnT = Aws::String>
+    void SetRuleGroupArn(RuleGroupArnT&& value) { m_ruleGroupArnHasBeenSet = true; m_ruleGroupArn = std::forward<RuleGroupArnT>(value); }
+    template<typename RuleGroupArnT = Aws::String>
+    DescribeRuleGroupMetadataRequest& WithRuleGroupArn(RuleGroupArnT&& value) { SetRuleGroupArn(std::forward<RuleGroupArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The descriptive name of the rule group. You can't change the name of a rule
-     * group after you create it.</p> <p>You must specify the ARN or the name, and you
-     * can specify both. </p>
-     */
-    inline void SetRuleGroupArn(const Aws::String& value) { m_ruleGroupArnHasBeenSet = true; m_ruleGroupArn = value; }
-
-    /**
-     * <p>The descriptive name of the rule group. You can't change the name of a rule
-     * group after you create it.</p> <p>You must specify the ARN or the name, and you
-     * can specify both. </p>
-     */
-    inline void SetRuleGroupArn(Aws::String&& value) { m_ruleGroupArnHasBeenSet = true; m_ruleGroupArn = std::move(value); }
-
-    /**
-     * <p>The descriptive name of the rule group. You can't change the name of a rule
-     * group after you create it.</p> <p>You must specify the ARN or the name, and you
-     * can specify both. </p>
-     */
-    inline void SetRuleGroupArn(const char* value) { m_ruleGroupArnHasBeenSet = true; m_ruleGroupArn.assign(value); }
-
-    /**
-     * <p>The descriptive name of the rule group. You can't change the name of a rule
-     * group after you create it.</p> <p>You must specify the ARN or the name, and you
-     * can specify both. </p>
-     */
-    inline DescribeRuleGroupMetadataRequest& WithRuleGroupArn(const Aws::String& value) { SetRuleGroupArn(value); return *this;}
-
-    /**
-     * <p>The descriptive name of the rule group. You can't change the name of a rule
-     * group after you create it.</p> <p>You must specify the ARN or the name, and you
-     * can specify both. </p>
-     */
-    inline DescribeRuleGroupMetadataRequest& WithRuleGroupArn(Aws::String&& value) { SetRuleGroupArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The descriptive name of the rule group. You can't change the name of a rule
-     * group after you create it.</p> <p>You must specify the ARN or the name, and you
-     * can specify both. </p>
-     */
-    inline DescribeRuleGroupMetadataRequest& WithRuleGroupArn(const char* value) { SetRuleGroupArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether the rule group is stateless or stateful. If the rule group
      * is stateless, it contains stateless rules. If it is stateful, it contains
      * stateful rules. </p>  <p>This setting is required for requests that do not
      * include the <code>RuleGroupARN</code>.</p> 
      */
-    inline const RuleGroupType& GetType() const{ return m_type; }
-
-    /**
-     * <p>Indicates whether the rule group is stateless or stateful. If the rule group
-     * is stateless, it contains stateless rules. If it is stateful, it contains
-     * stateful rules. </p>  <p>This setting is required for requests that do not
-     * include the <code>RuleGroupARN</code>.</p> 
-     */
+    inline RuleGroupType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>Indicates whether the rule group is stateless or stateful. If the rule group
-     * is stateless, it contains stateless rules. If it is stateful, it contains
-     * stateful rules. </p>  <p>This setting is required for requests that do not
-     * include the <code>RuleGroupARN</code>.</p> 
-     */
-    inline void SetType(const RuleGroupType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>Indicates whether the rule group is stateless or stateful. If the rule group
-     * is stateless, it contains stateless rules. If it is stateful, it contains
-     * stateful rules. </p>  <p>This setting is required for requests that do not
-     * include the <code>RuleGroupARN</code>.</p> 
-     */
-    inline void SetType(RuleGroupType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>Indicates whether the rule group is stateless or stateful. If the rule group
-     * is stateless, it contains stateless rules. If it is stateful, it contains
-     * stateful rules. </p>  <p>This setting is required for requests that do not
-     * include the <code>RuleGroupARN</code>.</p> 
-     */
-    inline DescribeRuleGroupMetadataRequest& WithType(const RuleGroupType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>Indicates whether the rule group is stateless or stateful. If the rule group
-     * is stateless, it contains stateless rules. If it is stateful, it contains
-     * stateful rules. </p>  <p>This setting is required for requests that do not
-     * include the <code>RuleGroupARN</code>.</p> 
-     */
-    inline DescribeRuleGroupMetadataRequest& WithType(RuleGroupType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(RuleGroupType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline DescribeRuleGroupMetadataRequest& WithType(RuleGroupType value) { SetType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_ruleGroupName;
@@ -205,7 +83,7 @@ namespace Model
     Aws::String m_ruleGroupArn;
     bool m_ruleGroupArnHasBeenSet = false;
 
-    RuleGroupType m_type;
+    RuleGroupType m_type{RuleGroupType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

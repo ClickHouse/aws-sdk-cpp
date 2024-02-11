@@ -34,156 +34,61 @@ namespace Model
   class ChildWorkflowExecutionFailedEventAttributes
   {
   public:
-    AWS_SWF_API ChildWorkflowExecutionFailedEventAttributes();
+    AWS_SWF_API ChildWorkflowExecutionFailedEventAttributes() = default;
     AWS_SWF_API ChildWorkflowExecutionFailedEventAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API ChildWorkflowExecutionFailedEventAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The child workflow execution that failed.</p>
      */
-    inline const WorkflowExecution& GetWorkflowExecution() const{ return m_workflowExecution; }
-
-    /**
-     * <p>The child workflow execution that failed.</p>
-     */
+    inline const WorkflowExecution& GetWorkflowExecution() const { return m_workflowExecution; }
     inline bool WorkflowExecutionHasBeenSet() const { return m_workflowExecutionHasBeenSet; }
+    template<typename WorkflowExecutionT = WorkflowExecution>
+    void SetWorkflowExecution(WorkflowExecutionT&& value) { m_workflowExecutionHasBeenSet = true; m_workflowExecution = std::forward<WorkflowExecutionT>(value); }
+    template<typename WorkflowExecutionT = WorkflowExecution>
+    ChildWorkflowExecutionFailedEventAttributes& WithWorkflowExecution(WorkflowExecutionT&& value) { SetWorkflowExecution(std::forward<WorkflowExecutionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The child workflow execution that failed.</p>
-     */
-    inline void SetWorkflowExecution(const WorkflowExecution& value) { m_workflowExecutionHasBeenSet = true; m_workflowExecution = value; }
-
-    /**
-     * <p>The child workflow execution that failed.</p>
-     */
-    inline void SetWorkflowExecution(WorkflowExecution&& value) { m_workflowExecutionHasBeenSet = true; m_workflowExecution = std::move(value); }
-
-    /**
-     * <p>The child workflow execution that failed.</p>
-     */
-    inline ChildWorkflowExecutionFailedEventAttributes& WithWorkflowExecution(const WorkflowExecution& value) { SetWorkflowExecution(value); return *this;}
-
-    /**
-     * <p>The child workflow execution that failed.</p>
-     */
-    inline ChildWorkflowExecutionFailedEventAttributes& WithWorkflowExecution(WorkflowExecution&& value) { SetWorkflowExecution(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the child workflow execution.</p>
      */
-    inline const WorkflowType& GetWorkflowType() const{ return m_workflowType; }
-
-    /**
-     * <p>The type of the child workflow execution.</p>
-     */
+    inline const WorkflowType& GetWorkflowType() const { return m_workflowType; }
     inline bool WorkflowTypeHasBeenSet() const { return m_workflowTypeHasBeenSet; }
+    template<typename WorkflowTypeT = WorkflowType>
+    void SetWorkflowType(WorkflowTypeT&& value) { m_workflowTypeHasBeenSet = true; m_workflowType = std::forward<WorkflowTypeT>(value); }
+    template<typename WorkflowTypeT = WorkflowType>
+    ChildWorkflowExecutionFailedEventAttributes& WithWorkflowType(WorkflowTypeT&& value) { SetWorkflowType(std::forward<WorkflowTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the child workflow execution.</p>
-     */
-    inline void SetWorkflowType(const WorkflowType& value) { m_workflowTypeHasBeenSet = true; m_workflowType = value; }
-
-    /**
-     * <p>The type of the child workflow execution.</p>
-     */
-    inline void SetWorkflowType(WorkflowType&& value) { m_workflowTypeHasBeenSet = true; m_workflowType = std::move(value); }
-
-    /**
-     * <p>The type of the child workflow execution.</p>
-     */
-    inline ChildWorkflowExecutionFailedEventAttributes& WithWorkflowType(const WorkflowType& value) { SetWorkflowType(value); return *this;}
-
-    /**
-     * <p>The type of the child workflow execution.</p>
-     */
-    inline ChildWorkflowExecutionFailedEventAttributes& WithWorkflowType(WorkflowType&& value) { SetWorkflowType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason for the failure (if provided).</p>
      */
-    inline const Aws::String& GetReason() const{ return m_reason; }
-
-    /**
-     * <p>The reason for the failure (if provided).</p>
-     */
+    inline const Aws::String& GetReason() const { return m_reason; }
     inline bool ReasonHasBeenSet() const { return m_reasonHasBeenSet; }
+    template<typename ReasonT = Aws::String>
+    void SetReason(ReasonT&& value) { m_reasonHasBeenSet = true; m_reason = std::forward<ReasonT>(value); }
+    template<typename ReasonT = Aws::String>
+    ChildWorkflowExecutionFailedEventAttributes& WithReason(ReasonT&& value) { SetReason(std::forward<ReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reason for the failure (if provided).</p>
-     */
-    inline void SetReason(const Aws::String& value) { m_reasonHasBeenSet = true; m_reason = value; }
-
-    /**
-     * <p>The reason for the failure (if provided).</p>
-     */
-    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
-
-    /**
-     * <p>The reason for the failure (if provided).</p>
-     */
-    inline void SetReason(const char* value) { m_reasonHasBeenSet = true; m_reason.assign(value); }
-
-    /**
-     * <p>The reason for the failure (if provided).</p>
-     */
-    inline ChildWorkflowExecutionFailedEventAttributes& WithReason(const Aws::String& value) { SetReason(value); return *this;}
-
-    /**
-     * <p>The reason for the failure (if provided).</p>
-     */
-    inline ChildWorkflowExecutionFailedEventAttributes& WithReason(Aws::String&& value) { SetReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason for the failure (if provided).</p>
-     */
-    inline ChildWorkflowExecutionFailedEventAttributes& WithReason(const char* value) { SetReason(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The details of the failure (if provided).</p>
      */
-    inline const Aws::String& GetDetails() const{ return m_details; }
-
-    /**
-     * <p>The details of the failure (if provided).</p>
-     */
+    inline const Aws::String& GetDetails() const { return m_details; }
     inline bool DetailsHasBeenSet() const { return m_detailsHasBeenSet; }
+    template<typename DetailsT = Aws::String>
+    void SetDetails(DetailsT&& value) { m_detailsHasBeenSet = true; m_details = std::forward<DetailsT>(value); }
+    template<typename DetailsT = Aws::String>
+    ChildWorkflowExecutionFailedEventAttributes& WithDetails(DetailsT&& value) { SetDetails(std::forward<DetailsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The details of the failure (if provided).</p>
-     */
-    inline void SetDetails(const Aws::String& value) { m_detailsHasBeenSet = true; m_details = value; }
-
-    /**
-     * <p>The details of the failure (if provided).</p>
-     */
-    inline void SetDetails(Aws::String&& value) { m_detailsHasBeenSet = true; m_details = std::move(value); }
-
-    /**
-     * <p>The details of the failure (if provided).</p>
-     */
-    inline void SetDetails(const char* value) { m_detailsHasBeenSet = true; m_details.assign(value); }
-
-    /**
-     * <p>The details of the failure (if provided).</p>
-     */
-    inline ChildWorkflowExecutionFailedEventAttributes& WithDetails(const Aws::String& value) { SetDetails(value); return *this;}
-
-    /**
-     * <p>The details of the failure (if provided).</p>
-     */
-    inline ChildWorkflowExecutionFailedEventAttributes& WithDetails(Aws::String&& value) { SetDetails(std::move(value)); return *this;}
-
-    /**
-     * <p>The details of the failure (if provided).</p>
-     */
-    inline ChildWorkflowExecutionFailedEventAttributes& WithDetails(const char* value) { SetDetails(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event
      * corresponding to the <code>StartChildWorkflowExecution</code> <a>Decision</a> to
@@ -191,68 +96,24 @@ namespace Model
      * diagnosing problems by tracing back the chain of events leading up to this
      * event.</p>
      */
-    inline long long GetInitiatedEventId() const{ return m_initiatedEventId; }
-
-    /**
-     * <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event
-     * corresponding to the <code>StartChildWorkflowExecution</code> <a>Decision</a> to
-     * start this child workflow execution. This information can be useful for
-     * diagnosing problems by tracing back the chain of events leading up to this
-     * event.</p>
-     */
+    inline long long GetInitiatedEventId() const { return m_initiatedEventId; }
     inline bool InitiatedEventIdHasBeenSet() const { return m_initiatedEventIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event
-     * corresponding to the <code>StartChildWorkflowExecution</code> <a>Decision</a> to
-     * start this child workflow execution. This information can be useful for
-     * diagnosing problems by tracing back the chain of events leading up to this
-     * event.</p>
-     */
     inline void SetInitiatedEventId(long long value) { m_initiatedEventIdHasBeenSet = true; m_initiatedEventId = value; }
-
-    /**
-     * <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event
-     * corresponding to the <code>StartChildWorkflowExecution</code> <a>Decision</a> to
-     * start this child workflow execution. This information can be useful for
-     * diagnosing problems by tracing back the chain of events leading up to this
-     * event.</p>
-     */
     inline ChildWorkflowExecutionFailedEventAttributes& WithInitiatedEventId(long long value) { SetInitiatedEventId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the <code>ChildWorkflowExecutionStarted</code> event recorded when
      * this child workflow execution was started. This information can be useful for
      * diagnosing problems by tracing back the chain of events leading up to this
      * event.</p>
      */
-    inline long long GetStartedEventId() const{ return m_startedEventId; }
-
-    /**
-     * <p>The ID of the <code>ChildWorkflowExecutionStarted</code> event recorded when
-     * this child workflow execution was started. This information can be useful for
-     * diagnosing problems by tracing back the chain of events leading up to this
-     * event.</p>
-     */
+    inline long long GetStartedEventId() const { return m_startedEventId; }
     inline bool StartedEventIdHasBeenSet() const { return m_startedEventIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the <code>ChildWorkflowExecutionStarted</code> event recorded when
-     * this child workflow execution was started. This information can be useful for
-     * diagnosing problems by tracing back the chain of events leading up to this
-     * event.</p>
-     */
     inline void SetStartedEventId(long long value) { m_startedEventIdHasBeenSet = true; m_startedEventId = value; }
-
-    /**
-     * <p>The ID of the <code>ChildWorkflowExecutionStarted</code> event recorded when
-     * this child workflow execution was started. This information can be useful for
-     * diagnosing problems by tracing back the chain of events leading up to this
-     * event.</p>
-     */
     inline ChildWorkflowExecutionFailedEventAttributes& WithStartedEventId(long long value) { SetStartedEventId(value); return *this;}
-
+    ///@}
   private:
 
     WorkflowExecution m_workflowExecution;
@@ -267,10 +128,10 @@ namespace Model
     Aws::String m_details;
     bool m_detailsHasBeenSet = false;
 
-    long long m_initiatedEventId;
+    long long m_initiatedEventId{0};
     bool m_initiatedEventIdHasBeenSet = false;
 
-    long long m_startedEventId;
+    long long m_startedEventId{0};
     bool m_startedEventIdHasBeenSet = false;
   };
 

@@ -28,73 +28,39 @@ namespace Model
   class UpdateFeaturedResultsSetResult
   {
   public:
-    AWS_KENDRA_API UpdateFeaturedResultsSetResult();
+    AWS_KENDRA_API UpdateFeaturedResultsSetResult() = default;
     AWS_KENDRA_API UpdateFeaturedResultsSetResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_KENDRA_API UpdateFeaturedResultsSetResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Information on the set of featured results. This includes the identifier of
      * the featured results set, whether the featured results set is active or
      * inactive, when the featured results set was last updated, and more.</p>
      */
-    inline const FeaturedResultsSet& GetFeaturedResultsSet() const{ return m_featuredResultsSet; }
+    inline const FeaturedResultsSet& GetFeaturedResultsSet() const { return m_featuredResultsSet; }
+    template<typename FeaturedResultsSetT = FeaturedResultsSet>
+    void SetFeaturedResultsSet(FeaturedResultsSetT&& value) { m_featuredResultsSetHasBeenSet = true; m_featuredResultsSet = std::forward<FeaturedResultsSetT>(value); }
+    template<typename FeaturedResultsSetT = FeaturedResultsSet>
+    UpdateFeaturedResultsSetResult& WithFeaturedResultsSet(FeaturedResultsSetT&& value) { SetFeaturedResultsSet(std::forward<FeaturedResultsSetT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information on the set of featured results. This includes the identifier of
-     * the featured results set, whether the featured results set is active or
-     * inactive, when the featured results set was last updated, and more.</p>
-     */
-    inline void SetFeaturedResultsSet(const FeaturedResultsSet& value) { m_featuredResultsSet = value; }
-
-    /**
-     * <p>Information on the set of featured results. This includes the identifier of
-     * the featured results set, whether the featured results set is active or
-     * inactive, when the featured results set was last updated, and more.</p>
-     */
-    inline void SetFeaturedResultsSet(FeaturedResultsSet&& value) { m_featuredResultsSet = std::move(value); }
-
-    /**
-     * <p>Information on the set of featured results. This includes the identifier of
-     * the featured results set, whether the featured results set is active or
-     * inactive, when the featured results set was last updated, and more.</p>
-     */
-    inline UpdateFeaturedResultsSetResult& WithFeaturedResultsSet(const FeaturedResultsSet& value) { SetFeaturedResultsSet(value); return *this;}
-
-    /**
-     * <p>Information on the set of featured results. This includes the identifier of
-     * the featured results set, whether the featured results set is active or
-     * inactive, when the featured results set was last updated, and more.</p>
-     */
-    inline UpdateFeaturedResultsSetResult& WithFeaturedResultsSet(FeaturedResultsSet&& value) { SetFeaturedResultsSet(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateFeaturedResultsSetResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateFeaturedResultsSetResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateFeaturedResultsSetResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateFeaturedResultsSetResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     FeaturedResultsSet m_featuredResultsSet;
+    bool m_featuredResultsSetHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -29,68 +29,28 @@ namespace Model
   class ListClustersResult
   {
   public:
-    AWS_KAFKA_API ListClustersResult();
+    AWS_KAFKA_API ListClustersResult() = default;
     AWS_KAFKA_API ListClustersResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_KAFKA_API ListClustersResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * 
             <p>Information on each of the MSK clusters in the response.</p>
    
      *      
      */
-    inline const Aws::Vector<ClusterInfo>& GetClusterInfoList() const{ return m_clusterInfoList; }
+    inline const Aws::Vector<ClusterInfo>& GetClusterInfoList() const { return m_clusterInfoList; }
+    template<typename ClusterInfoListT = Aws::Vector<ClusterInfo>>
+    void SetClusterInfoList(ClusterInfoListT&& value) { m_clusterInfoListHasBeenSet = true; m_clusterInfoList = std::forward<ClusterInfoListT>(value); }
+    template<typename ClusterInfoListT = Aws::Vector<ClusterInfo>>
+    ListClustersResult& WithClusterInfoList(ClusterInfoListT&& value) { SetClusterInfoList(std::forward<ClusterInfoListT>(value)); return *this;}
+    template<typename ClusterInfoListT = ClusterInfo>
+    ListClustersResult& AddClusterInfoList(ClusterInfoListT&& value) { m_clusterInfoListHasBeenSet = true; m_clusterInfoList.emplace_back(std::forward<ClusterInfoListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * 
-            <p>Information on each of the MSK clusters in the response.</p>
-   
-     *      
-     */
-    inline void SetClusterInfoList(const Aws::Vector<ClusterInfo>& value) { m_clusterInfoList = value; }
-
-    /**
-     * 
-            <p>Information on each of the MSK clusters in the response.</p>
-   
-     *      
-     */
-    inline void SetClusterInfoList(Aws::Vector<ClusterInfo>&& value) { m_clusterInfoList = std::move(value); }
-
-    /**
-     * 
-            <p>Information on each of the MSK clusters in the response.</p>
-   
-     *      
-     */
-    inline ListClustersResult& WithClusterInfoList(const Aws::Vector<ClusterInfo>& value) { SetClusterInfoList(value); return *this;}
-
-    /**
-     * 
-            <p>Information on each of the MSK clusters in the response.</p>
-   
-     *      
-     */
-    inline ListClustersResult& WithClusterInfoList(Aws::Vector<ClusterInfo>&& value) { SetClusterInfoList(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>Information on each of the MSK clusters in the response.</p>
-   
-     *      
-     */
-    inline ListClustersResult& AddClusterInfoList(const ClusterInfo& value) { m_clusterInfoList.push_back(value); return *this; }
-
-    /**
-     * 
-            <p>Information on each of the MSK clusters in the response.</p>
-   
-     *      
-     */
-    inline ListClustersResult& AddClusterInfoList(ClusterInfo&& value) { m_clusterInfoList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * 
             <p>The paginated results marker. When the result of a ListClusters
@@ -100,103 +60,31 @@ namespace Model
  
      *        
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListClustersResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>The paginated results marker. When the result of a ListClusters
-     * operation is truncated, the call returns NextToken in the response. 
-           
-     * To get another batch of clusters, provide this token in your next request.</p>
- 
-     *        
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * 
-            <p>The paginated results marker. When the result of a ListClusters
-     * operation is truncated, the call returns NextToken in the response. 
-           
-     * To get another batch of clusters, provide this token in your next request.</p>
- 
-     *        
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * 
-            <p>The paginated results marker. When the result of a ListClusters
-     * operation is truncated, the call returns NextToken in the response. 
-           
-     * To get another batch of clusters, provide this token in your next request.</p>
- 
-     *        
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * 
-            <p>The paginated results marker. When the result of a ListClusters
-     * operation is truncated, the call returns NextToken in the response. 
-           
-     * To get another batch of clusters, provide this token in your next request.</p>
- 
-     *        
-     */
-    inline ListClustersResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * 
-            <p>The paginated results marker. When the result of a ListClusters
-     * operation is truncated, the call returns NextToken in the response. 
-           
-     * To get another batch of clusters, provide this token in your next request.</p>
- 
-     *        
-     */
-    inline ListClustersResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>The paginated results marker. When the result of a ListClusters
-     * operation is truncated, the call returns NextToken in the response. 
-           
-     * To get another batch of clusters, provide this token in your next request.</p>
- 
-     *        
-     */
-    inline ListClustersResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListClustersResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListClustersResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListClustersResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListClustersResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ClusterInfo> m_clusterInfoList;
+    bool m_clusterInfoListHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

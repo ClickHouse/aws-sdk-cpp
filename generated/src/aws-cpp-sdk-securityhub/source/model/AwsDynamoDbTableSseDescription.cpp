@@ -18,19 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsDynamoDbTableSseDescription::AwsDynamoDbTableSseDescription() : 
-    m_inaccessibleEncryptionDateTimeHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_sseTypeHasBeenSet(false),
-    m_kmsMasterKeyArnHasBeenSet(false)
-{
-}
-
-AwsDynamoDbTableSseDescription::AwsDynamoDbTableSseDescription(JsonView jsonValue) : 
-    m_inaccessibleEncryptionDateTimeHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_sseTypeHasBeenSet(false),
-    m_kmsMasterKeyArnHasBeenSet(false)
+AwsDynamoDbTableSseDescription::AwsDynamoDbTableSseDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ AwsDynamoDbTableSseDescription& AwsDynamoDbTableSseDescription::operator =(JsonV
   if(jsonValue.ValueExists("InaccessibleEncryptionDateTime"))
   {
     m_inaccessibleEncryptionDateTime = jsonValue.GetString("InaccessibleEncryptionDateTime");
-
     m_inaccessibleEncryptionDateTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = jsonValue.GetString("Status");
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SseType"))
   {
     m_sseType = jsonValue.GetString("SseType");
-
     m_sseTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("KmsMasterKeyArn"))
   {
     m_kmsMasterKeyArn = jsonValue.GetString("KmsMasterKeyArn");
-
     m_kmsMasterKeyArnHasBeenSet = true;
   }
-
   return *this;
 }
 

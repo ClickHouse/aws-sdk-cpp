@@ -18,19 +18,7 @@ namespace SageMakerGeospatial
 namespace Model
 {
 
-ResamplingConfigInput::ResamplingConfigInput() : 
-    m_algorithmName(AlgorithmNameResampling::NOT_SET),
-    m_algorithmNameHasBeenSet(false),
-    m_outputResolutionHasBeenSet(false),
-    m_targetBandsHasBeenSet(false)
-{
-}
-
-ResamplingConfigInput::ResamplingConfigInput(JsonView jsonValue) : 
-    m_algorithmName(AlgorithmNameResampling::NOT_SET),
-    m_algorithmNameHasBeenSet(false),
-    m_outputResolutionHasBeenSet(false),
-    m_targetBandsHasBeenSet(false)
+ResamplingConfigInput::ResamplingConfigInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ ResamplingConfigInput& ResamplingConfigInput::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AlgorithmName"))
   {
     m_algorithmName = AlgorithmNameResamplingMapper::GetAlgorithmNameResamplingForName(jsonValue.GetString("AlgorithmName"));
-
     m_algorithmNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OutputResolution"))
   {
     m_outputResolution = jsonValue.GetObject("OutputResolution");
-
     m_outputResolutionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TargetBands"))
   {
     Aws::Utils::Array<JsonView> targetBandsJsonList = jsonValue.GetArray("TargetBands");
@@ -60,7 +44,6 @@ ResamplingConfigInput& ResamplingConfigInput::operator =(JsonView jsonValue)
     }
     m_targetBandsHasBeenSet = true;
   }
-
   return *this;
 }
 

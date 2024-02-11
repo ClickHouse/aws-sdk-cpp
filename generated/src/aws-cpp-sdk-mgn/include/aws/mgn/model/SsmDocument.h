@@ -35,257 +35,87 @@ namespace Model
   class SsmDocument
   {
   public:
-    AWS_MGN_API SsmDocument();
+    AWS_MGN_API SsmDocument() = default;
     AWS_MGN_API SsmDocument(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API SsmDocument& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>User-friendly name for the AWS Systems Manager Document.</p>
      */
-    inline const Aws::String& GetActionName() const{ return m_actionName; }
-
-    /**
-     * <p>User-friendly name for the AWS Systems Manager Document.</p>
-     */
+    inline const Aws::String& GetActionName() const { return m_actionName; }
     inline bool ActionNameHasBeenSet() const { return m_actionNameHasBeenSet; }
+    template<typename ActionNameT = Aws::String>
+    void SetActionName(ActionNameT&& value) { m_actionNameHasBeenSet = true; m_actionName = std::forward<ActionNameT>(value); }
+    template<typename ActionNameT = Aws::String>
+    SsmDocument& WithActionName(ActionNameT&& value) { SetActionName(std::forward<ActionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>User-friendly name for the AWS Systems Manager Document.</p>
-     */
-    inline void SetActionName(const Aws::String& value) { m_actionNameHasBeenSet = true; m_actionName = value; }
-
-    /**
-     * <p>User-friendly name for the AWS Systems Manager Document.</p>
-     */
-    inline void SetActionName(Aws::String&& value) { m_actionNameHasBeenSet = true; m_actionName = std::move(value); }
-
-    /**
-     * <p>User-friendly name for the AWS Systems Manager Document.</p>
-     */
-    inline void SetActionName(const char* value) { m_actionNameHasBeenSet = true; m_actionName.assign(value); }
-
-    /**
-     * <p>User-friendly name for the AWS Systems Manager Document.</p>
-     */
-    inline SsmDocument& WithActionName(const Aws::String& value) { SetActionName(value); return *this;}
-
-    /**
-     * <p>User-friendly name for the AWS Systems Manager Document.</p>
-     */
-    inline SsmDocument& WithActionName(Aws::String&& value) { SetActionName(std::move(value)); return *this;}
-
-    /**
-     * <p>User-friendly name for the AWS Systems Manager Document.</p>
-     */
-    inline SsmDocument& WithActionName(const char* value) { SetActionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>AWS Systems Manager Document external parameters.</p>
      */
-    inline const Aws::Map<Aws::String, SsmExternalParameter>& GetExternalParameters() const{ return m_externalParameters; }
-
-    /**
-     * <p>AWS Systems Manager Document external parameters.</p>
-     */
+    inline const Aws::Map<Aws::String, SsmExternalParameter>& GetExternalParameters() const { return m_externalParameters; }
     inline bool ExternalParametersHasBeenSet() const { return m_externalParametersHasBeenSet; }
+    template<typename ExternalParametersT = Aws::Map<Aws::String, SsmExternalParameter>>
+    void SetExternalParameters(ExternalParametersT&& value) { m_externalParametersHasBeenSet = true; m_externalParameters = std::forward<ExternalParametersT>(value); }
+    template<typename ExternalParametersT = Aws::Map<Aws::String, SsmExternalParameter>>
+    SsmDocument& WithExternalParameters(ExternalParametersT&& value) { SetExternalParameters(std::forward<ExternalParametersT>(value)); return *this;}
+    template<typename ExternalParametersKeyT = Aws::String, typename ExternalParametersValueT = SsmExternalParameter>
+    SsmDocument& AddExternalParameters(ExternalParametersKeyT&& key, ExternalParametersValueT&& value) {
+      m_externalParametersHasBeenSet = true; m_externalParameters.emplace(std::forward<ExternalParametersKeyT>(key), std::forward<ExternalParametersValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>AWS Systems Manager Document external parameters.</p>
-     */
-    inline void SetExternalParameters(const Aws::Map<Aws::String, SsmExternalParameter>& value) { m_externalParametersHasBeenSet = true; m_externalParameters = value; }
-
-    /**
-     * <p>AWS Systems Manager Document external parameters.</p>
-     */
-    inline void SetExternalParameters(Aws::Map<Aws::String, SsmExternalParameter>&& value) { m_externalParametersHasBeenSet = true; m_externalParameters = std::move(value); }
-
-    /**
-     * <p>AWS Systems Manager Document external parameters.</p>
-     */
-    inline SsmDocument& WithExternalParameters(const Aws::Map<Aws::String, SsmExternalParameter>& value) { SetExternalParameters(value); return *this;}
-
-    /**
-     * <p>AWS Systems Manager Document external parameters.</p>
-     */
-    inline SsmDocument& WithExternalParameters(Aws::Map<Aws::String, SsmExternalParameter>&& value) { SetExternalParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>AWS Systems Manager Document external parameters.</p>
-     */
-    inline SsmDocument& AddExternalParameters(const Aws::String& key, const SsmExternalParameter& value) { m_externalParametersHasBeenSet = true; m_externalParameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>AWS Systems Manager Document external parameters.</p>
-     */
-    inline SsmDocument& AddExternalParameters(Aws::String&& key, const SsmExternalParameter& value) { m_externalParametersHasBeenSet = true; m_externalParameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>AWS Systems Manager Document external parameters.</p>
-     */
-    inline SsmDocument& AddExternalParameters(const Aws::String& key, SsmExternalParameter&& value) { m_externalParametersHasBeenSet = true; m_externalParameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>AWS Systems Manager Document external parameters.</p>
-     */
-    inline SsmDocument& AddExternalParameters(Aws::String&& key, SsmExternalParameter&& value) { m_externalParametersHasBeenSet = true; m_externalParameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>AWS Systems Manager Document external parameters.</p>
-     */
-    inline SsmDocument& AddExternalParameters(const char* key, SsmExternalParameter&& value) { m_externalParametersHasBeenSet = true; m_externalParameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>AWS Systems Manager Document external parameters.</p>
-     */
-    inline SsmDocument& AddExternalParameters(const char* key, const SsmExternalParameter& value) { m_externalParametersHasBeenSet = true; m_externalParameters.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>If true, Cutover will not be enabled if the document has failed.</p>
      */
-    inline bool GetMustSucceedForCutover() const{ return m_mustSucceedForCutover; }
-
-    /**
-     * <p>If true, Cutover will not be enabled if the document has failed.</p>
-     */
+    inline bool GetMustSucceedForCutover() const { return m_mustSucceedForCutover; }
     inline bool MustSucceedForCutoverHasBeenSet() const { return m_mustSucceedForCutoverHasBeenSet; }
-
-    /**
-     * <p>If true, Cutover will not be enabled if the document has failed.</p>
-     */
     inline void SetMustSucceedForCutover(bool value) { m_mustSucceedForCutoverHasBeenSet = true; m_mustSucceedForCutover = value; }
-
-    /**
-     * <p>If true, Cutover will not be enabled if the document has failed.</p>
-     */
     inline SsmDocument& WithMustSucceedForCutover(bool value) { SetMustSucceedForCutover(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>AWS Systems Manager Document parameters.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::Vector<SsmParameterStoreParameter>>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>AWS Systems Manager Document parameters.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::Vector<SsmParameterStoreParameter>>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
+    template<typename ParametersT = Aws::Map<Aws::String, Aws::Vector<SsmParameterStoreParameter>>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Map<Aws::String, Aws::Vector<SsmParameterStoreParameter>>>
+    SsmDocument& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersKeyT = Aws::String, typename ParametersValueT = Aws::Vector<SsmParameterStoreParameter>>
+    SsmDocument& AddParameters(ParametersKeyT&& key, ParametersValueT&& value) {
+      m_parametersHasBeenSet = true; m_parameters.emplace(std::forward<ParametersKeyT>(key), std::forward<ParametersValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>AWS Systems Manager Document parameters.</p>
-     */
-    inline void SetParameters(const Aws::Map<Aws::String, Aws::Vector<SsmParameterStoreParameter>>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>AWS Systems Manager Document parameters.</p>
-     */
-    inline void SetParameters(Aws::Map<Aws::String, Aws::Vector<SsmParameterStoreParameter>>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>AWS Systems Manager Document parameters.</p>
-     */
-    inline SsmDocument& WithParameters(const Aws::Map<Aws::String, Aws::Vector<SsmParameterStoreParameter>>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>AWS Systems Manager Document parameters.</p>
-     */
-    inline SsmDocument& WithParameters(Aws::Map<Aws::String, Aws::Vector<SsmParameterStoreParameter>>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>AWS Systems Manager Document parameters.</p>
-     */
-    inline SsmDocument& AddParameters(const Aws::String& key, const Aws::Vector<SsmParameterStoreParameter>& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>AWS Systems Manager Document parameters.</p>
-     */
-    inline SsmDocument& AddParameters(Aws::String&& key, const Aws::Vector<SsmParameterStoreParameter>& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>AWS Systems Manager Document parameters.</p>
-     */
-    inline SsmDocument& AddParameters(const Aws::String& key, Aws::Vector<SsmParameterStoreParameter>&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>AWS Systems Manager Document parameters.</p>
-     */
-    inline SsmDocument& AddParameters(Aws::String&& key, Aws::Vector<SsmParameterStoreParameter>&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>AWS Systems Manager Document parameters.</p>
-     */
-    inline SsmDocument& AddParameters(const char* key, Aws::Vector<SsmParameterStoreParameter>&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>AWS Systems Manager Document parameters.</p>
-     */
-    inline SsmDocument& AddParameters(const char* key, const Aws::Vector<SsmParameterStoreParameter>& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>AWS Systems Manager Document name or full ARN.</p>
      */
-    inline const Aws::String& GetSsmDocumentName() const{ return m_ssmDocumentName; }
-
-    /**
-     * <p>AWS Systems Manager Document name or full ARN.</p>
-     */
+    inline const Aws::String& GetSsmDocumentName() const { return m_ssmDocumentName; }
     inline bool SsmDocumentNameHasBeenSet() const { return m_ssmDocumentNameHasBeenSet; }
+    template<typename SsmDocumentNameT = Aws::String>
+    void SetSsmDocumentName(SsmDocumentNameT&& value) { m_ssmDocumentNameHasBeenSet = true; m_ssmDocumentName = std::forward<SsmDocumentNameT>(value); }
+    template<typename SsmDocumentNameT = Aws::String>
+    SsmDocument& WithSsmDocumentName(SsmDocumentNameT&& value) { SetSsmDocumentName(std::forward<SsmDocumentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>AWS Systems Manager Document name or full ARN.</p>
-     */
-    inline void SetSsmDocumentName(const Aws::String& value) { m_ssmDocumentNameHasBeenSet = true; m_ssmDocumentName = value; }
-
-    /**
-     * <p>AWS Systems Manager Document name or full ARN.</p>
-     */
-    inline void SetSsmDocumentName(Aws::String&& value) { m_ssmDocumentNameHasBeenSet = true; m_ssmDocumentName = std::move(value); }
-
-    /**
-     * <p>AWS Systems Manager Document name or full ARN.</p>
-     */
-    inline void SetSsmDocumentName(const char* value) { m_ssmDocumentNameHasBeenSet = true; m_ssmDocumentName.assign(value); }
-
-    /**
-     * <p>AWS Systems Manager Document name or full ARN.</p>
-     */
-    inline SsmDocument& WithSsmDocumentName(const Aws::String& value) { SetSsmDocumentName(value); return *this;}
-
-    /**
-     * <p>AWS Systems Manager Document name or full ARN.</p>
-     */
-    inline SsmDocument& WithSsmDocumentName(Aws::String&& value) { SetSsmDocumentName(std::move(value)); return *this;}
-
-    /**
-     * <p>AWS Systems Manager Document name or full ARN.</p>
-     */
-    inline SsmDocument& WithSsmDocumentName(const char* value) { SetSsmDocumentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>AWS Systems Manager Document timeout seconds.</p>
      */
-    inline int GetTimeoutSeconds() const{ return m_timeoutSeconds; }
-
-    /**
-     * <p>AWS Systems Manager Document timeout seconds.</p>
-     */
+    inline int GetTimeoutSeconds() const { return m_timeoutSeconds; }
     inline bool TimeoutSecondsHasBeenSet() const { return m_timeoutSecondsHasBeenSet; }
-
-    /**
-     * <p>AWS Systems Manager Document timeout seconds.</p>
-     */
     inline void SetTimeoutSeconds(int value) { m_timeoutSecondsHasBeenSet = true; m_timeoutSeconds = value; }
-
-    /**
-     * <p>AWS Systems Manager Document timeout seconds.</p>
-     */
     inline SsmDocument& WithTimeoutSeconds(int value) { SetTimeoutSeconds(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_actionName;
@@ -294,7 +124,7 @@ namespace Model
     Aws::Map<Aws::String, SsmExternalParameter> m_externalParameters;
     bool m_externalParametersHasBeenSet = false;
 
-    bool m_mustSucceedForCutover;
+    bool m_mustSucceedForCutover{false};
     bool m_mustSucceedForCutoverHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::Vector<SsmParameterStoreParameter>> m_parameters;
@@ -303,7 +133,7 @@ namespace Model
     Aws::String m_ssmDocumentName;
     bool m_ssmDocumentNameHasBeenSet = false;
 
-    int m_timeoutSeconds;
+    int m_timeoutSeconds{0};
     bool m_timeoutSecondsHasBeenSet = false;
   };
 

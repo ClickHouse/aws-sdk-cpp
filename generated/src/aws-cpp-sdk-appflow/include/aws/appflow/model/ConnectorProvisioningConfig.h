@@ -32,48 +32,24 @@ namespace Model
   class ConnectorProvisioningConfig
   {
   public:
-    AWS_APPFLOW_API ConnectorProvisioningConfig();
+    AWS_APPFLOW_API ConnectorProvisioningConfig() = default;
     AWS_APPFLOW_API ConnectorProvisioningConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFLOW_API ConnectorProvisioningConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFLOW_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Contains information about the configuration of the lambda which is being
      * registered as the connector.</p>
      */
-    inline const LambdaConnectorProvisioningConfig& GetLambda() const{ return m_lambda; }
-
-    /**
-     * <p>Contains information about the configuration of the lambda which is being
-     * registered as the connector.</p>
-     */
+    inline const LambdaConnectorProvisioningConfig& GetLambda() const { return m_lambda; }
     inline bool LambdaHasBeenSet() const { return m_lambdaHasBeenSet; }
-
-    /**
-     * <p>Contains information about the configuration of the lambda which is being
-     * registered as the connector.</p>
-     */
-    inline void SetLambda(const LambdaConnectorProvisioningConfig& value) { m_lambdaHasBeenSet = true; m_lambda = value; }
-
-    /**
-     * <p>Contains information about the configuration of the lambda which is being
-     * registered as the connector.</p>
-     */
-    inline void SetLambda(LambdaConnectorProvisioningConfig&& value) { m_lambdaHasBeenSet = true; m_lambda = std::move(value); }
-
-    /**
-     * <p>Contains information about the configuration of the lambda which is being
-     * registered as the connector.</p>
-     */
-    inline ConnectorProvisioningConfig& WithLambda(const LambdaConnectorProvisioningConfig& value) { SetLambda(value); return *this;}
-
-    /**
-     * <p>Contains information about the configuration of the lambda which is being
-     * registered as the connector.</p>
-     */
-    inline ConnectorProvisioningConfig& WithLambda(LambdaConnectorProvisioningConfig&& value) { SetLambda(std::move(value)); return *this;}
-
+    template<typename LambdaT = LambdaConnectorProvisioningConfig>
+    void SetLambda(LambdaT&& value) { m_lambdaHasBeenSet = true; m_lambda = std::forward<LambdaT>(value); }
+    template<typename LambdaT = LambdaConnectorProvisioningConfig>
+    ConnectorProvisioningConfig& WithLambda(LambdaT&& value) { SetLambda(std::forward<LambdaT>(value)); return *this;}
+    ///@}
   private:
 
     LambdaConnectorProvisioningConfig m_lambda;

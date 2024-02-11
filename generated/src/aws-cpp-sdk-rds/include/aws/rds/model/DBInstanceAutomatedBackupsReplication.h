@@ -33,7 +33,7 @@ namespace Model
   class DBInstanceAutomatedBackupsReplication
   {
   public:
-    AWS_RDS_API DBInstanceAutomatedBackupsReplication();
+    AWS_RDS_API DBInstanceAutomatedBackupsReplication() = default;
     AWS_RDS_API DBInstanceAutomatedBackupsReplication(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_RDS_API DBInstanceAutomatedBackupsReplication& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,46 +41,17 @@ namespace Model
     AWS_RDS_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the replicated automated backups.</p>
      */
-    inline const Aws::String& GetDBInstanceAutomatedBackupsArn() const{ return m_dBInstanceAutomatedBackupsArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replicated automated backups.</p>
-     */
+    inline const Aws::String& GetDBInstanceAutomatedBackupsArn() const { return m_dBInstanceAutomatedBackupsArn; }
     inline bool DBInstanceAutomatedBackupsArnHasBeenSet() const { return m_dBInstanceAutomatedBackupsArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replicated automated backups.</p>
-     */
-    inline void SetDBInstanceAutomatedBackupsArn(const Aws::String& value) { m_dBInstanceAutomatedBackupsArnHasBeenSet = true; m_dBInstanceAutomatedBackupsArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replicated automated backups.</p>
-     */
-    inline void SetDBInstanceAutomatedBackupsArn(Aws::String&& value) { m_dBInstanceAutomatedBackupsArnHasBeenSet = true; m_dBInstanceAutomatedBackupsArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replicated automated backups.</p>
-     */
-    inline void SetDBInstanceAutomatedBackupsArn(const char* value) { m_dBInstanceAutomatedBackupsArnHasBeenSet = true; m_dBInstanceAutomatedBackupsArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replicated automated backups.</p>
-     */
-    inline DBInstanceAutomatedBackupsReplication& WithDBInstanceAutomatedBackupsArn(const Aws::String& value) { SetDBInstanceAutomatedBackupsArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replicated automated backups.</p>
-     */
-    inline DBInstanceAutomatedBackupsReplication& WithDBInstanceAutomatedBackupsArn(Aws::String&& value) { SetDBInstanceAutomatedBackupsArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replicated automated backups.</p>
-     */
-    inline DBInstanceAutomatedBackupsReplication& WithDBInstanceAutomatedBackupsArn(const char* value) { SetDBInstanceAutomatedBackupsArn(value); return *this;}
-
+    template<typename DBInstanceAutomatedBackupsArnT = Aws::String>
+    void SetDBInstanceAutomatedBackupsArn(DBInstanceAutomatedBackupsArnT&& value) { m_dBInstanceAutomatedBackupsArnHasBeenSet = true; m_dBInstanceAutomatedBackupsArn = std::forward<DBInstanceAutomatedBackupsArnT>(value); }
+    template<typename DBInstanceAutomatedBackupsArnT = Aws::String>
+    DBInstanceAutomatedBackupsReplication& WithDBInstanceAutomatedBackupsArn(DBInstanceAutomatedBackupsArnT&& value) { SetDBInstanceAutomatedBackupsArn(std::forward<DBInstanceAutomatedBackupsArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dBInstanceAutomatedBackupsArn;

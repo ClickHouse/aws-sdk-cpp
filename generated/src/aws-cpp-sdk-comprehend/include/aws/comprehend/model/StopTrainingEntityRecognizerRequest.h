@@ -21,7 +21,7 @@ namespace Model
   class StopTrainingEntityRecognizerRequest : public ComprehendRequest
   {
   public:
-    AWS_COMPREHEND_API StopTrainingEntityRecognizerRequest();
+    AWS_COMPREHEND_API StopTrainingEntityRecognizerRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_COMPREHEND_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) that identifies the entity recognizer
      * currently being trained.</p>
      */
-    inline const Aws::String& GetEntityRecognizerArn() const{ return m_entityRecognizerArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the entity recognizer
-     * currently being trained.</p>
-     */
+    inline const Aws::String& GetEntityRecognizerArn() const { return m_entityRecognizerArn; }
     inline bool EntityRecognizerArnHasBeenSet() const { return m_entityRecognizerArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the entity recognizer
-     * currently being trained.</p>
-     */
-    inline void SetEntityRecognizerArn(const Aws::String& value) { m_entityRecognizerArnHasBeenSet = true; m_entityRecognizerArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the entity recognizer
-     * currently being trained.</p>
-     */
-    inline void SetEntityRecognizerArn(Aws::String&& value) { m_entityRecognizerArnHasBeenSet = true; m_entityRecognizerArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the entity recognizer
-     * currently being trained.</p>
-     */
-    inline void SetEntityRecognizerArn(const char* value) { m_entityRecognizerArnHasBeenSet = true; m_entityRecognizerArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the entity recognizer
-     * currently being trained.</p>
-     */
-    inline StopTrainingEntityRecognizerRequest& WithEntityRecognizerArn(const Aws::String& value) { SetEntityRecognizerArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the entity recognizer
-     * currently being trained.</p>
-     */
-    inline StopTrainingEntityRecognizerRequest& WithEntityRecognizerArn(Aws::String&& value) { SetEntityRecognizerArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the entity recognizer
-     * currently being trained.</p>
-     */
-    inline StopTrainingEntityRecognizerRequest& WithEntityRecognizerArn(const char* value) { SetEntityRecognizerArn(value); return *this;}
-
+    template<typename EntityRecognizerArnT = Aws::String>
+    void SetEntityRecognizerArn(EntityRecognizerArnT&& value) { m_entityRecognizerArnHasBeenSet = true; m_entityRecognizerArn = std::forward<EntityRecognizerArnT>(value); }
+    template<typename EntityRecognizerArnT = Aws::String>
+    StopTrainingEntityRecognizerRequest& WithEntityRecognizerArn(EntityRecognizerArnT&& value) { SetEntityRecognizerArn(std::forward<EntityRecognizerArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_entityRecognizerArn;

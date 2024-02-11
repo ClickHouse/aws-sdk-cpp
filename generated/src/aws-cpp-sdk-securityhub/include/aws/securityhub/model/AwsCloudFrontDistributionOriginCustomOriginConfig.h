@@ -36,204 +36,94 @@ namespace Model
   class AwsCloudFrontDistributionOriginCustomOriginConfig
   {
   public:
-    AWS_SECURITYHUB_API AwsCloudFrontDistributionOriginCustomOriginConfig();
+    AWS_SECURITYHUB_API AwsCloudFrontDistributionOriginCustomOriginConfig() = default;
     AWS_SECURITYHUB_API AwsCloudFrontDistributionOriginCustomOriginConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsCloudFrontDistributionOriginCustomOriginConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The HTTP port that CloudFront uses to connect to the origin. </p>
      */
-    inline int GetHttpPort() const{ return m_httpPort; }
-
-    /**
-     * <p>The HTTP port that CloudFront uses to connect to the origin. </p>
-     */
+    inline int GetHttpPort() const { return m_httpPort; }
     inline bool HttpPortHasBeenSet() const { return m_httpPortHasBeenSet; }
-
-    /**
-     * <p>The HTTP port that CloudFront uses to connect to the origin. </p>
-     */
     inline void SetHttpPort(int value) { m_httpPortHasBeenSet = true; m_httpPort = value; }
-
-    /**
-     * <p>The HTTP port that CloudFront uses to connect to the origin. </p>
-     */
     inline AwsCloudFrontDistributionOriginCustomOriginConfig& WithHttpPort(int value) { SetHttpPort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The HTTPS port that CloudFront uses to connect to the origin. </p>
      */
-    inline int GetHttpsPort() const{ return m_httpsPort; }
-
-    /**
-     * <p>The HTTPS port that CloudFront uses to connect to the origin. </p>
-     */
+    inline int GetHttpsPort() const { return m_httpsPort; }
     inline bool HttpsPortHasBeenSet() const { return m_httpsPortHasBeenSet; }
-
-    /**
-     * <p>The HTTPS port that CloudFront uses to connect to the origin. </p>
-     */
     inline void SetHttpsPort(int value) { m_httpsPortHasBeenSet = true; m_httpsPort = value; }
-
-    /**
-     * <p>The HTTPS port that CloudFront uses to connect to the origin. </p>
-     */
     inline AwsCloudFrontDistributionOriginCustomOriginConfig& WithHttpsPort(int value) { SetHttpsPort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Specifies how long, in seconds, CloudFront persists its connection to the
      * origin. </p>
      */
-    inline int GetOriginKeepaliveTimeout() const{ return m_originKeepaliveTimeout; }
-
-    /**
-     * <p>Specifies how long, in seconds, CloudFront persists its connection to the
-     * origin. </p>
-     */
+    inline int GetOriginKeepaliveTimeout() const { return m_originKeepaliveTimeout; }
     inline bool OriginKeepaliveTimeoutHasBeenSet() const { return m_originKeepaliveTimeoutHasBeenSet; }
-
-    /**
-     * <p>Specifies how long, in seconds, CloudFront persists its connection to the
-     * origin. </p>
-     */
     inline void SetOriginKeepaliveTimeout(int value) { m_originKeepaliveTimeoutHasBeenSet = true; m_originKeepaliveTimeout = value; }
-
-    /**
-     * <p>Specifies how long, in seconds, CloudFront persists its connection to the
-     * origin. </p>
-     */
     inline AwsCloudFrontDistributionOriginCustomOriginConfig& WithOriginKeepaliveTimeout(int value) { SetOriginKeepaliveTimeout(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Specifies the protocol (HTTP or HTTPS) that CloudFront uses to connect to the
      * origin. </p>
      */
-    inline const Aws::String& GetOriginProtocolPolicy() const{ return m_originProtocolPolicy; }
-
-    /**
-     * <p>Specifies the protocol (HTTP or HTTPS) that CloudFront uses to connect to the
-     * origin. </p>
-     */
+    inline const Aws::String& GetOriginProtocolPolicy() const { return m_originProtocolPolicy; }
     inline bool OriginProtocolPolicyHasBeenSet() const { return m_originProtocolPolicyHasBeenSet; }
+    template<typename OriginProtocolPolicyT = Aws::String>
+    void SetOriginProtocolPolicy(OriginProtocolPolicyT&& value) { m_originProtocolPolicyHasBeenSet = true; m_originProtocolPolicy = std::forward<OriginProtocolPolicyT>(value); }
+    template<typename OriginProtocolPolicyT = Aws::String>
+    AwsCloudFrontDistributionOriginCustomOriginConfig& WithOriginProtocolPolicy(OriginProtocolPolicyT&& value) { SetOriginProtocolPolicy(std::forward<OriginProtocolPolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the protocol (HTTP or HTTPS) that CloudFront uses to connect to the
-     * origin. </p>
-     */
-    inline void SetOriginProtocolPolicy(const Aws::String& value) { m_originProtocolPolicyHasBeenSet = true; m_originProtocolPolicy = value; }
-
-    /**
-     * <p>Specifies the protocol (HTTP or HTTPS) that CloudFront uses to connect to the
-     * origin. </p>
-     */
-    inline void SetOriginProtocolPolicy(Aws::String&& value) { m_originProtocolPolicyHasBeenSet = true; m_originProtocolPolicy = std::move(value); }
-
-    /**
-     * <p>Specifies the protocol (HTTP or HTTPS) that CloudFront uses to connect to the
-     * origin. </p>
-     */
-    inline void SetOriginProtocolPolicy(const char* value) { m_originProtocolPolicyHasBeenSet = true; m_originProtocolPolicy.assign(value); }
-
-    /**
-     * <p>Specifies the protocol (HTTP or HTTPS) that CloudFront uses to connect to the
-     * origin. </p>
-     */
-    inline AwsCloudFrontDistributionOriginCustomOriginConfig& WithOriginProtocolPolicy(const Aws::String& value) { SetOriginProtocolPolicy(value); return *this;}
-
-    /**
-     * <p>Specifies the protocol (HTTP or HTTPS) that CloudFront uses to connect to the
-     * origin. </p>
-     */
-    inline AwsCloudFrontDistributionOriginCustomOriginConfig& WithOriginProtocolPolicy(Aws::String&& value) { SetOriginProtocolPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the protocol (HTTP or HTTPS) that CloudFront uses to connect to the
-     * origin. </p>
-     */
-    inline AwsCloudFrontDistributionOriginCustomOriginConfig& WithOriginProtocolPolicy(const char* value) { SetOriginProtocolPolicy(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies how long, in seconds, CloudFront waits for a response from the
      * origin. </p>
      */
-    inline int GetOriginReadTimeout() const{ return m_originReadTimeout; }
-
-    /**
-     * <p>Specifies how long, in seconds, CloudFront waits for a response from the
-     * origin. </p>
-     */
+    inline int GetOriginReadTimeout() const { return m_originReadTimeout; }
     inline bool OriginReadTimeoutHasBeenSet() const { return m_originReadTimeoutHasBeenSet; }
-
-    /**
-     * <p>Specifies how long, in seconds, CloudFront waits for a response from the
-     * origin. </p>
-     */
     inline void SetOriginReadTimeout(int value) { m_originReadTimeoutHasBeenSet = true; m_originReadTimeout = value; }
-
-    /**
-     * <p>Specifies how long, in seconds, CloudFront waits for a response from the
-     * origin. </p>
-     */
     inline AwsCloudFrontDistributionOriginCustomOriginConfig& WithOriginReadTimeout(int value) { SetOriginReadTimeout(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Specifies the minimum SSL/TLS protocol that CloudFront uses when connecting
      * to your origin over HTTPS. </p>
      */
-    inline const AwsCloudFrontDistributionOriginSslProtocols& GetOriginSslProtocols() const{ return m_originSslProtocols; }
-
-    /**
-     * <p>Specifies the minimum SSL/TLS protocol that CloudFront uses when connecting
-     * to your origin over HTTPS. </p>
-     */
+    inline const AwsCloudFrontDistributionOriginSslProtocols& GetOriginSslProtocols() const { return m_originSslProtocols; }
     inline bool OriginSslProtocolsHasBeenSet() const { return m_originSslProtocolsHasBeenSet; }
-
-    /**
-     * <p>Specifies the minimum SSL/TLS protocol that CloudFront uses when connecting
-     * to your origin over HTTPS. </p>
-     */
-    inline void SetOriginSslProtocols(const AwsCloudFrontDistributionOriginSslProtocols& value) { m_originSslProtocolsHasBeenSet = true; m_originSslProtocols = value; }
-
-    /**
-     * <p>Specifies the minimum SSL/TLS protocol that CloudFront uses when connecting
-     * to your origin over HTTPS. </p>
-     */
-    inline void SetOriginSslProtocols(AwsCloudFrontDistributionOriginSslProtocols&& value) { m_originSslProtocolsHasBeenSet = true; m_originSslProtocols = std::move(value); }
-
-    /**
-     * <p>Specifies the minimum SSL/TLS protocol that CloudFront uses when connecting
-     * to your origin over HTTPS. </p>
-     */
-    inline AwsCloudFrontDistributionOriginCustomOriginConfig& WithOriginSslProtocols(const AwsCloudFrontDistributionOriginSslProtocols& value) { SetOriginSslProtocols(value); return *this;}
-
-    /**
-     * <p>Specifies the minimum SSL/TLS protocol that CloudFront uses when connecting
-     * to your origin over HTTPS. </p>
-     */
-    inline AwsCloudFrontDistributionOriginCustomOriginConfig& WithOriginSslProtocols(AwsCloudFrontDistributionOriginSslProtocols&& value) { SetOriginSslProtocols(std::move(value)); return *this;}
-
+    template<typename OriginSslProtocolsT = AwsCloudFrontDistributionOriginSslProtocols>
+    void SetOriginSslProtocols(OriginSslProtocolsT&& value) { m_originSslProtocolsHasBeenSet = true; m_originSslProtocols = std::forward<OriginSslProtocolsT>(value); }
+    template<typename OriginSslProtocolsT = AwsCloudFrontDistributionOriginSslProtocols>
+    AwsCloudFrontDistributionOriginCustomOriginConfig& WithOriginSslProtocols(OriginSslProtocolsT&& value) { SetOriginSslProtocols(std::forward<OriginSslProtocolsT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_httpPort;
+    int m_httpPort{0};
     bool m_httpPortHasBeenSet = false;
 
-    int m_httpsPort;
+    int m_httpsPort{0};
     bool m_httpsPortHasBeenSet = false;
 
-    int m_originKeepaliveTimeout;
+    int m_originKeepaliveTimeout{0};
     bool m_originKeepaliveTimeoutHasBeenSet = false;
 
     Aws::String m_originProtocolPolicy;
     bool m_originProtocolPolicyHasBeenSet = false;
 
-    int m_originReadTimeout;
+    int m_originReadTimeout{0};
     bool m_originReadTimeoutHasBeenSet = false;
 
     AwsCloudFrontDistributionOriginSslProtocols m_originSslProtocols;

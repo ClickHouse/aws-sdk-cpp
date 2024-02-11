@@ -20,17 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-DefaultClusterParameters::DefaultClusterParameters() : 
-    m_parameterGroupFamilyHasBeenSet(false),
-    m_markerHasBeenSet(false),
-    m_parametersHasBeenSet(false)
-{
-}
-
-DefaultClusterParameters::DefaultClusterParameters(const XmlNode& xmlNode) : 
-    m_parameterGroupFamilyHasBeenSet(false),
-    m_markerHasBeenSet(false),
-    m_parametersHasBeenSet(false)
+DefaultClusterParameters::DefaultClusterParameters(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +47,7 @@ DefaultClusterParameters& DefaultClusterParameters::operator =(const XmlNode& xm
     if(!parametersNode.IsNull())
     {
       XmlNode parametersMember = parametersNode.FirstChild("Parameter");
+      m_parametersHasBeenSet = !parametersMember.IsNull();
       while(!parametersMember.IsNull())
       {
         m_parameters.push_back(parametersMember);
@@ -88,7 +79,7 @@ void DefaultClusterParameters::OutputToStream(Aws::OStream& oStream, const char*
       for(auto& item : m_parameters)
       {
         Aws::StringStream parametersSs;
-        parametersSs << location << index << locationValue << ".Parameter." << parametersIdx++;
+        parametersSs << location << index << locationValue << ".Parameters.Parameter." << parametersIdx++;
         item.OutputToStream(oStream, parametersSs.str().c_str());
       }
   }
@@ -111,7 +102,7 @@ void DefaultClusterParameters::OutputToStream(Aws::OStream& oStream, const char*
       for(auto& item : m_parameters)
       {
         Aws::StringStream parametersSs;
-        parametersSs << location <<  ".Parameter." << parametersIdx++;
+        parametersSs << location << ".Parameters.Parameter." << parametersIdx++;
         item.OutputToStream(oStream, parametersSs.str().c_str());
       }
   }

@@ -20,23 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-ResourceChangeDetail::ResourceChangeDetail() : 
-    m_targetHasBeenSet(false),
-    m_evaluation(EvaluationType::NOT_SET),
-    m_evaluationHasBeenSet(false),
-    m_changeSource(ChangeSource::NOT_SET),
-    m_changeSourceHasBeenSet(false),
-    m_causingEntityHasBeenSet(false)
-{
-}
-
-ResourceChangeDetail::ResourceChangeDetail(const XmlNode& xmlNode) : 
-    m_targetHasBeenSet(false),
-    m_evaluation(EvaluationType::NOT_SET),
-    m_evaluationHasBeenSet(false),
-    m_changeSource(ChangeSource::NOT_SET),
-    m_changeSourceHasBeenSet(false),
-    m_causingEntityHasBeenSet(false)
+ResourceChangeDetail::ResourceChangeDetail(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -56,13 +40,13 @@ ResourceChangeDetail& ResourceChangeDetail::operator =(const XmlNode& xmlNode)
     XmlNode evaluationNode = resultNode.FirstChild("Evaluation");
     if(!evaluationNode.IsNull())
     {
-      m_evaluation = EvaluationTypeMapper::GetEvaluationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(evaluationNode.GetText()).c_str()).c_str());
+      m_evaluation = EvaluationTypeMapper::GetEvaluationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(evaluationNode.GetText()).c_str()));
       m_evaluationHasBeenSet = true;
     }
     XmlNode changeSourceNode = resultNode.FirstChild("ChangeSource");
     if(!changeSourceNode.IsNull())
     {
-      m_changeSource = ChangeSourceMapper::GetChangeSourceForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(changeSourceNode.GetText()).c_str()).c_str());
+      m_changeSource = ChangeSourceMapper::GetChangeSourceForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(changeSourceNode.GetText()).c_str()));
       m_changeSourceHasBeenSet = true;
     }
     XmlNode causingEntityNode = resultNode.FirstChild("CausingEntity");
@@ -87,12 +71,12 @@ void ResourceChangeDetail::OutputToStream(Aws::OStream& oStream, const char* loc
 
   if(m_evaluationHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Evaluation=" << EvaluationTypeMapper::GetNameForEvaluationType(m_evaluation) << "&";
+      oStream << location << index << locationValue << ".Evaluation=" << StringUtils::URLEncode(EvaluationTypeMapper::GetNameForEvaluationType(m_evaluation)) << "&";
   }
 
   if(m_changeSourceHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ChangeSource=" << ChangeSourceMapper::GetNameForChangeSource(m_changeSource) << "&";
+      oStream << location << index << locationValue << ".ChangeSource=" << StringUtils::URLEncode(ChangeSourceMapper::GetNameForChangeSource(m_changeSource)) << "&";
   }
 
   if(m_causingEntityHasBeenSet)
@@ -112,11 +96,11 @@ void ResourceChangeDetail::OutputToStream(Aws::OStream& oStream, const char* loc
   }
   if(m_evaluationHasBeenSet)
   {
-      oStream << location << ".Evaluation=" << EvaluationTypeMapper::GetNameForEvaluationType(m_evaluation) << "&";
+      oStream << location << ".Evaluation=" << StringUtils::URLEncode(EvaluationTypeMapper::GetNameForEvaluationType(m_evaluation)) << "&";
   }
   if(m_changeSourceHasBeenSet)
   {
-      oStream << location << ".ChangeSource=" << ChangeSourceMapper::GetNameForChangeSource(m_changeSource) << "&";
+      oStream << location << ".ChangeSource=" << StringUtils::URLEncode(ChangeSourceMapper::GetNameForChangeSource(m_changeSource)) << "&";
   }
   if(m_causingEntityHasBeenSet)
   {

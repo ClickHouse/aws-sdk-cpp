@@ -18,19 +18,7 @@ namespace DynamoDB
 namespace Model
 {
 
-GlobalTableGlobalSecondaryIndexSettingsUpdate::GlobalTableGlobalSecondaryIndexSettingsUpdate() : 
-    m_indexNameHasBeenSet(false),
-    m_provisionedWriteCapacityUnits(0),
-    m_provisionedWriteCapacityUnitsHasBeenSet(false),
-    m_provisionedWriteCapacityAutoScalingSettingsUpdateHasBeenSet(false)
-{
-}
-
-GlobalTableGlobalSecondaryIndexSettingsUpdate::GlobalTableGlobalSecondaryIndexSettingsUpdate(JsonView jsonValue) : 
-    m_indexNameHasBeenSet(false),
-    m_provisionedWriteCapacityUnits(0),
-    m_provisionedWriteCapacityUnitsHasBeenSet(false),
-    m_provisionedWriteCapacityAutoScalingSettingsUpdateHasBeenSet(false)
+GlobalTableGlobalSecondaryIndexSettingsUpdate::GlobalTableGlobalSecondaryIndexSettingsUpdate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ GlobalTableGlobalSecondaryIndexSettingsUpdate& GlobalTableGlobalSecondaryIndexSe
   if(jsonValue.ValueExists("IndexName"))
   {
     m_indexName = jsonValue.GetString("IndexName");
-
     m_indexNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProvisionedWriteCapacityUnits"))
   {
     m_provisionedWriteCapacityUnits = jsonValue.GetInt64("ProvisionedWriteCapacityUnits");
-
     m_provisionedWriteCapacityUnitsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProvisionedWriteCapacityAutoScalingSettingsUpdate"))
   {
     m_provisionedWriteCapacityAutoScalingSettingsUpdate = jsonValue.GetObject("ProvisionedWriteCapacityAutoScalingSettingsUpdate");
-
     m_provisionedWriteCapacityAutoScalingSettingsUpdateHasBeenSet = true;
   }
-
   return *this;
 }
 

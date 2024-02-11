@@ -31,158 +31,60 @@ namespace Model
   class Session
   {
   public:
-    AWS_PINPOINT_API Session();
+    AWS_PINPOINT_API Session() = default;
     AWS_PINPOINT_API Session(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Session& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The duration of the session, in milliseconds.</p>
      */
-    inline int GetDuration() const{ return m_duration; }
-
-    /**
-     * <p>The duration of the session, in milliseconds.</p>
-     */
+    inline int GetDuration() const { return m_duration; }
     inline bool DurationHasBeenSet() const { return m_durationHasBeenSet; }
-
-    /**
-     * <p>The duration of the session, in milliseconds.</p>
-     */
     inline void SetDuration(int value) { m_durationHasBeenSet = true; m_duration = value; }
-
-    /**
-     * <p>The duration of the session, in milliseconds.</p>
-     */
     inline Session& WithDuration(int value) { SetDuration(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The unique identifier for the session.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The unique identifier for the session.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    Session& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the session.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The unique identifier for the session.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the session.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The unique identifier for the session.</p>
-     */
-    inline Session& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the session.</p>
-     */
-    inline Session& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the session.</p>
-     */
-    inline Session& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time when the session began.</p>
      */
-    inline const Aws::String& GetStartTimestamp() const{ return m_startTimestamp; }
-
-    /**
-     * <p>The date and time when the session began.</p>
-     */
+    inline const Aws::String& GetStartTimestamp() const { return m_startTimestamp; }
     inline bool StartTimestampHasBeenSet() const { return m_startTimestampHasBeenSet; }
+    template<typename StartTimestampT = Aws::String>
+    void SetStartTimestamp(StartTimestampT&& value) { m_startTimestampHasBeenSet = true; m_startTimestamp = std::forward<StartTimestampT>(value); }
+    template<typename StartTimestampT = Aws::String>
+    Session& WithStartTimestamp(StartTimestampT&& value) { SetStartTimestamp(std::forward<StartTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time when the session began.</p>
-     */
-    inline void SetStartTimestamp(const Aws::String& value) { m_startTimestampHasBeenSet = true; m_startTimestamp = value; }
-
-    /**
-     * <p>The date and time when the session began.</p>
-     */
-    inline void SetStartTimestamp(Aws::String&& value) { m_startTimestampHasBeenSet = true; m_startTimestamp = std::move(value); }
-
-    /**
-     * <p>The date and time when the session began.</p>
-     */
-    inline void SetStartTimestamp(const char* value) { m_startTimestampHasBeenSet = true; m_startTimestamp.assign(value); }
-
-    /**
-     * <p>The date and time when the session began.</p>
-     */
-    inline Session& WithStartTimestamp(const Aws::String& value) { SetStartTimestamp(value); return *this;}
-
-    /**
-     * <p>The date and time when the session began.</p>
-     */
-    inline Session& WithStartTimestamp(Aws::String&& value) { SetStartTimestamp(std::move(value)); return *this;}
-
-    /**
-     * <p>The date and time when the session began.</p>
-     */
-    inline Session& WithStartTimestamp(const char* value) { SetStartTimestamp(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time when the session ended.</p>
      */
-    inline const Aws::String& GetStopTimestamp() const{ return m_stopTimestamp; }
-
-    /**
-     * <p>The date and time when the session ended.</p>
-     */
+    inline const Aws::String& GetStopTimestamp() const { return m_stopTimestamp; }
     inline bool StopTimestampHasBeenSet() const { return m_stopTimestampHasBeenSet; }
-
-    /**
-     * <p>The date and time when the session ended.</p>
-     */
-    inline void SetStopTimestamp(const Aws::String& value) { m_stopTimestampHasBeenSet = true; m_stopTimestamp = value; }
-
-    /**
-     * <p>The date and time when the session ended.</p>
-     */
-    inline void SetStopTimestamp(Aws::String&& value) { m_stopTimestampHasBeenSet = true; m_stopTimestamp = std::move(value); }
-
-    /**
-     * <p>The date and time when the session ended.</p>
-     */
-    inline void SetStopTimestamp(const char* value) { m_stopTimestampHasBeenSet = true; m_stopTimestamp.assign(value); }
-
-    /**
-     * <p>The date and time when the session ended.</p>
-     */
-    inline Session& WithStopTimestamp(const Aws::String& value) { SetStopTimestamp(value); return *this;}
-
-    /**
-     * <p>The date and time when the session ended.</p>
-     */
-    inline Session& WithStopTimestamp(Aws::String&& value) { SetStopTimestamp(std::move(value)); return *this;}
-
-    /**
-     * <p>The date and time when the session ended.</p>
-     */
-    inline Session& WithStopTimestamp(const char* value) { SetStopTimestamp(value); return *this;}
-
+    template<typename StopTimestampT = Aws::String>
+    void SetStopTimestamp(StopTimestampT&& value) { m_stopTimestampHasBeenSet = true; m_stopTimestamp = std::forward<StopTimestampT>(value); }
+    template<typename StopTimestampT = Aws::String>
+    Session& WithStopTimestamp(StopTimestampT&& value) { SetStopTimestamp(std::forward<StopTimestampT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_duration;
+    int m_duration{0};
     bool m_durationHasBeenSet = false;
 
     Aws::String m_id;

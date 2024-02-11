@@ -29,117 +29,54 @@ namespace Model
   class ListDomainsResult
   {
   public:
-    AWS_SIMPLEDB_API ListDomainsResult();
+    AWS_SIMPLEDB_API ListDomainsResult() = default;
     AWS_SIMPLEDB_API ListDomainsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_SIMPLEDB_API ListDomainsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * A list of domain names that match the expression.
      */
-    inline const Aws::Vector<Aws::String>& GetDomainNames() const{ return m_domainNames; }
+    inline const Aws::Vector<Aws::String>& GetDomainNames() const { return m_domainNames; }
+    template<typename DomainNamesT = Aws::Vector<Aws::String>>
+    void SetDomainNames(DomainNamesT&& value) { m_domainNamesHasBeenSet = true; m_domainNames = std::forward<DomainNamesT>(value); }
+    template<typename DomainNamesT = Aws::Vector<Aws::String>>
+    ListDomainsResult& WithDomainNames(DomainNamesT&& value) { SetDomainNames(std::forward<DomainNamesT>(value)); return *this;}
+    template<typename DomainNamesT = Aws::String>
+    ListDomainsResult& AddDomainNames(DomainNamesT&& value) { m_domainNamesHasBeenSet = true; m_domainNames.emplace_back(std::forward<DomainNamesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * A list of domain names that match the expression.
-     */
-    inline void SetDomainNames(const Aws::Vector<Aws::String>& value) { m_domainNames = value; }
-
-    /**
-     * A list of domain names that match the expression.
-     */
-    inline void SetDomainNames(Aws::Vector<Aws::String>&& value) { m_domainNames = std::move(value); }
-
-    /**
-     * A list of domain names that match the expression.
-     */
-    inline ListDomainsResult& WithDomainNames(const Aws::Vector<Aws::String>& value) { SetDomainNames(value); return *this;}
-
-    /**
-     * A list of domain names that match the expression.
-     */
-    inline ListDomainsResult& WithDomainNames(Aws::Vector<Aws::String>&& value) { SetDomainNames(std::move(value)); return *this;}
-
-    /**
-     * A list of domain names that match the expression.
-     */
-    inline ListDomainsResult& AddDomainNames(const Aws::String& value) { m_domainNames.push_back(value); return *this; }
-
-    /**
-     * A list of domain names that match the expression.
-     */
-    inline ListDomainsResult& AddDomainNames(Aws::String&& value) { m_domainNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * A list of domain names that match the expression.
-     */
-    inline ListDomainsResult& AddDomainNames(const char* value) { m_domainNames.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * An opaque token indicating that there are more domains than the specified
      * <code>MaxNumberOfDomains</code> still available.
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListDomainsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * An opaque token indicating that there are more domains than the specified
-     * <code>MaxNumberOfDomains</code> still available.
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * An opaque token indicating that there are more domains than the specified
-     * <code>MaxNumberOfDomains</code> still available.
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * An opaque token indicating that there are more domains than the specified
-     * <code>MaxNumberOfDomains</code> still available.
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * An opaque token indicating that there are more domains than the specified
-     * <code>MaxNumberOfDomains</code> still available.
-     */
-    inline ListDomainsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * An opaque token indicating that there are more domains than the specified
-     * <code>MaxNumberOfDomains</code> still available.
-     */
-    inline ListDomainsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * An opaque token indicating that there are more domains than the specified
-     * <code>MaxNumberOfDomains</code> still available.
-     */
-    inline ListDomainsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline ListDomainsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline ListDomainsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    ListDomainsResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_domainNames;
+    bool m_domainNamesHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

@@ -35,241 +35,85 @@ namespace Model
   class DataCatalogOutput
   {
   public:
-    AWS_GLUEDATABREW_API DataCatalogOutput();
+    AWS_GLUEDATABREW_API DataCatalogOutput() = default;
     AWS_GLUEDATABREW_API DataCatalogOutput(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUEDATABREW_API DataCatalogOutput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUEDATABREW_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the Amazon Web Services account that holds the Data
      * Catalog that stores the data.</p>
      */
-    inline const Aws::String& GetCatalogId() const{ return m_catalogId; }
-
-    /**
-     * <p>The unique identifier of the Amazon Web Services account that holds the Data
-     * Catalog that stores the data.</p>
-     */
+    inline const Aws::String& GetCatalogId() const { return m_catalogId; }
     inline bool CatalogIdHasBeenSet() const { return m_catalogIdHasBeenSet; }
+    template<typename CatalogIdT = Aws::String>
+    void SetCatalogId(CatalogIdT&& value) { m_catalogIdHasBeenSet = true; m_catalogId = std::forward<CatalogIdT>(value); }
+    template<typename CatalogIdT = Aws::String>
+    DataCatalogOutput& WithCatalogId(CatalogIdT&& value) { SetCatalogId(std::forward<CatalogIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the Amazon Web Services account that holds the Data
-     * Catalog that stores the data.</p>
-     */
-    inline void SetCatalogId(const Aws::String& value) { m_catalogIdHasBeenSet = true; m_catalogId = value; }
-
-    /**
-     * <p>The unique identifier of the Amazon Web Services account that holds the Data
-     * Catalog that stores the data.</p>
-     */
-    inline void SetCatalogId(Aws::String&& value) { m_catalogIdHasBeenSet = true; m_catalogId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the Amazon Web Services account that holds the Data
-     * Catalog that stores the data.</p>
-     */
-    inline void SetCatalogId(const char* value) { m_catalogIdHasBeenSet = true; m_catalogId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the Amazon Web Services account that holds the Data
-     * Catalog that stores the data.</p>
-     */
-    inline DataCatalogOutput& WithCatalogId(const Aws::String& value) { SetCatalogId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the Amazon Web Services account that holds the Data
-     * Catalog that stores the data.</p>
-     */
-    inline DataCatalogOutput& WithCatalogId(Aws::String&& value) { SetCatalogId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the Amazon Web Services account that holds the Data
-     * Catalog that stores the data.</p>
-     */
-    inline DataCatalogOutput& WithCatalogId(const char* value) { SetCatalogId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of a database in the Data Catalog.</p>
      */
-    inline const Aws::String& GetDatabaseName() const{ return m_databaseName; }
-
-    /**
-     * <p>The name of a database in the Data Catalog.</p>
-     */
+    inline const Aws::String& GetDatabaseName() const { return m_databaseName; }
     inline bool DatabaseNameHasBeenSet() const { return m_databaseNameHasBeenSet; }
+    template<typename DatabaseNameT = Aws::String>
+    void SetDatabaseName(DatabaseNameT&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::forward<DatabaseNameT>(value); }
+    template<typename DatabaseNameT = Aws::String>
+    DataCatalogOutput& WithDatabaseName(DatabaseNameT&& value) { SetDatabaseName(std::forward<DatabaseNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of a database in the Data Catalog.</p>
-     */
-    inline void SetDatabaseName(const Aws::String& value) { m_databaseNameHasBeenSet = true; m_databaseName = value; }
-
-    /**
-     * <p>The name of a database in the Data Catalog.</p>
-     */
-    inline void SetDatabaseName(Aws::String&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::move(value); }
-
-    /**
-     * <p>The name of a database in the Data Catalog.</p>
-     */
-    inline void SetDatabaseName(const char* value) { m_databaseNameHasBeenSet = true; m_databaseName.assign(value); }
-
-    /**
-     * <p>The name of a database in the Data Catalog.</p>
-     */
-    inline DataCatalogOutput& WithDatabaseName(const Aws::String& value) { SetDatabaseName(value); return *this;}
-
-    /**
-     * <p>The name of a database in the Data Catalog.</p>
-     */
-    inline DataCatalogOutput& WithDatabaseName(Aws::String&& value) { SetDatabaseName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a database in the Data Catalog.</p>
-     */
-    inline DataCatalogOutput& WithDatabaseName(const char* value) { SetDatabaseName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of a table in the Data Catalog.</p>
      */
-    inline const Aws::String& GetTableName() const{ return m_tableName; }
-
-    /**
-     * <p>The name of a table in the Data Catalog.</p>
-     */
+    inline const Aws::String& GetTableName() const { return m_tableName; }
     inline bool TableNameHasBeenSet() const { return m_tableNameHasBeenSet; }
+    template<typename TableNameT = Aws::String>
+    void SetTableName(TableNameT&& value) { m_tableNameHasBeenSet = true; m_tableName = std::forward<TableNameT>(value); }
+    template<typename TableNameT = Aws::String>
+    DataCatalogOutput& WithTableName(TableNameT&& value) { SetTableName(std::forward<TableNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of a table in the Data Catalog.</p>
-     */
-    inline void SetTableName(const Aws::String& value) { m_tableNameHasBeenSet = true; m_tableName = value; }
-
-    /**
-     * <p>The name of a table in the Data Catalog.</p>
-     */
-    inline void SetTableName(Aws::String&& value) { m_tableNameHasBeenSet = true; m_tableName = std::move(value); }
-
-    /**
-     * <p>The name of a table in the Data Catalog.</p>
-     */
-    inline void SetTableName(const char* value) { m_tableNameHasBeenSet = true; m_tableName.assign(value); }
-
-    /**
-     * <p>The name of a table in the Data Catalog.</p>
-     */
-    inline DataCatalogOutput& WithTableName(const Aws::String& value) { SetTableName(value); return *this;}
-
-    /**
-     * <p>The name of a table in the Data Catalog.</p>
-     */
-    inline DataCatalogOutput& WithTableName(Aws::String&& value) { SetTableName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a table in the Data Catalog.</p>
-     */
-    inline DataCatalogOutput& WithTableName(const char* value) { SetTableName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Represents options that specify how and where DataBrew writes the Amazon S3
      * output generated by recipe jobs.</p>
      */
-    inline const S3TableOutputOptions& GetS3Options() const{ return m_s3Options; }
-
-    /**
-     * <p>Represents options that specify how and where DataBrew writes the Amazon S3
-     * output generated by recipe jobs.</p>
-     */
+    inline const S3TableOutputOptions& GetS3Options() const { return m_s3Options; }
     inline bool S3OptionsHasBeenSet() const { return m_s3OptionsHasBeenSet; }
+    template<typename S3OptionsT = S3TableOutputOptions>
+    void SetS3Options(S3OptionsT&& value) { m_s3OptionsHasBeenSet = true; m_s3Options = std::forward<S3OptionsT>(value); }
+    template<typename S3OptionsT = S3TableOutputOptions>
+    DataCatalogOutput& WithS3Options(S3OptionsT&& value) { SetS3Options(std::forward<S3OptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Represents options that specify how and where DataBrew writes the Amazon S3
-     * output generated by recipe jobs.</p>
-     */
-    inline void SetS3Options(const S3TableOutputOptions& value) { m_s3OptionsHasBeenSet = true; m_s3Options = value; }
-
-    /**
-     * <p>Represents options that specify how and where DataBrew writes the Amazon S3
-     * output generated by recipe jobs.</p>
-     */
-    inline void SetS3Options(S3TableOutputOptions&& value) { m_s3OptionsHasBeenSet = true; m_s3Options = std::move(value); }
-
-    /**
-     * <p>Represents options that specify how and where DataBrew writes the Amazon S3
-     * output generated by recipe jobs.</p>
-     */
-    inline DataCatalogOutput& WithS3Options(const S3TableOutputOptions& value) { SetS3Options(value); return *this;}
-
-    /**
-     * <p>Represents options that specify how and where DataBrew writes the Amazon S3
-     * output generated by recipe jobs.</p>
-     */
-    inline DataCatalogOutput& WithS3Options(S3TableOutputOptions&& value) { SetS3Options(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Represents options that specify how and where DataBrew writes the database
      * output generated by recipe jobs.</p>
      */
-    inline const DatabaseTableOutputOptions& GetDatabaseOptions() const{ return m_databaseOptions; }
-
-    /**
-     * <p>Represents options that specify how and where DataBrew writes the database
-     * output generated by recipe jobs.</p>
-     */
+    inline const DatabaseTableOutputOptions& GetDatabaseOptions() const { return m_databaseOptions; }
     inline bool DatabaseOptionsHasBeenSet() const { return m_databaseOptionsHasBeenSet; }
+    template<typename DatabaseOptionsT = DatabaseTableOutputOptions>
+    void SetDatabaseOptions(DatabaseOptionsT&& value) { m_databaseOptionsHasBeenSet = true; m_databaseOptions = std::forward<DatabaseOptionsT>(value); }
+    template<typename DatabaseOptionsT = DatabaseTableOutputOptions>
+    DataCatalogOutput& WithDatabaseOptions(DatabaseOptionsT&& value) { SetDatabaseOptions(std::forward<DatabaseOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Represents options that specify how and where DataBrew writes the database
-     * output generated by recipe jobs.</p>
-     */
-    inline void SetDatabaseOptions(const DatabaseTableOutputOptions& value) { m_databaseOptionsHasBeenSet = true; m_databaseOptions = value; }
-
-    /**
-     * <p>Represents options that specify how and where DataBrew writes the database
-     * output generated by recipe jobs.</p>
-     */
-    inline void SetDatabaseOptions(DatabaseTableOutputOptions&& value) { m_databaseOptionsHasBeenSet = true; m_databaseOptions = std::move(value); }
-
-    /**
-     * <p>Represents options that specify how and where DataBrew writes the database
-     * output generated by recipe jobs.</p>
-     */
-    inline DataCatalogOutput& WithDatabaseOptions(const DatabaseTableOutputOptions& value) { SetDatabaseOptions(value); return *this;}
-
-    /**
-     * <p>Represents options that specify how and where DataBrew writes the database
-     * output generated by recipe jobs.</p>
-     */
-    inline DataCatalogOutput& WithDatabaseOptions(DatabaseTableOutputOptions&& value) { SetDatabaseOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A value that, if true, means that any data in the location specified for
      * output is overwritten with new output. Not supported with DatabaseOptions.</p>
      */
-    inline bool GetOverwrite() const{ return m_overwrite; }
-
-    /**
-     * <p>A value that, if true, means that any data in the location specified for
-     * output is overwritten with new output. Not supported with DatabaseOptions.</p>
-     */
+    inline bool GetOverwrite() const { return m_overwrite; }
     inline bool OverwriteHasBeenSet() const { return m_overwriteHasBeenSet; }
-
-    /**
-     * <p>A value that, if true, means that any data in the location specified for
-     * output is overwritten with new output. Not supported with DatabaseOptions.</p>
-     */
     inline void SetOverwrite(bool value) { m_overwriteHasBeenSet = true; m_overwrite = value; }
-
-    /**
-     * <p>A value that, if true, means that any data in the location specified for
-     * output is overwritten with new output. Not supported with DatabaseOptions.</p>
-     */
     inline DataCatalogOutput& WithOverwrite(bool value) { SetOverwrite(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_catalogId;
@@ -287,7 +131,7 @@ namespace Model
     DatabaseTableOutputOptions m_databaseOptions;
     bool m_databaseOptionsHasBeenSet = false;
 
-    bool m_overwrite;
+    bool m_overwrite{false};
     bool m_overwriteHasBeenSet = false;
   };
 

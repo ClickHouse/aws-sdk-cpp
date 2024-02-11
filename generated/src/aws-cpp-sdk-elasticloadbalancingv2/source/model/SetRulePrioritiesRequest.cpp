@@ -10,22 +10,24 @@
 using namespace Aws::ElasticLoadBalancingv2::Model;
 using namespace Aws::Utils;
 
-SetRulePrioritiesRequest::SetRulePrioritiesRequest() : 
-    m_rulePrioritiesHasBeenSet(false)
-{
-}
-
 Aws::String SetRulePrioritiesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=SetRulePriorities&";
   if(m_rulePrioritiesHasBeenSet)
   {
-    unsigned rulePrioritiesCount = 1;
-    for(auto& item : m_rulePriorities)
+    if (m_rulePriorities.empty())
     {
-      item.OutputToStream(ss, "RulePriorities.member.", rulePrioritiesCount, "");
-      rulePrioritiesCount++;
+      ss << "RulePriorities=&";
+    }
+    else
+    {
+      unsigned rulePrioritiesCount = 1;
+      for(auto& item : m_rulePriorities)
+      {
+        item.OutputToStream(ss, "RulePriorities.member.", rulePrioritiesCount, "");
+        rulePrioritiesCount++;
+      }
     }
   }
 

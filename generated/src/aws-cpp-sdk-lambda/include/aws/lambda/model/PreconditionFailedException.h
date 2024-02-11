@@ -25,102 +25,47 @@ namespace Model
 
   /**
    * <p>The RevisionId provided does not match the latest RevisionId for the Lambda
-   * function or alias. Call the <code>GetFunction</code> or the
-   * <code>GetAlias</code> API operation to retrieve the latest RevisionId for your
-   * resource.</p><p><h3>See Also:</h3>   <a
+   * function or alias.</p> <ul> <li> <p> <b>For AddPermission and RemovePermission
+   * API operations:</b> Call <code>GetPolicy</code> to retrieve the latest
+   * RevisionId for your resource.</p> </li> <li> <p> <b>For all other API
+   * operations:</b> Call <code>GetFunction</code> or <code>GetAlias</code> to
+   * retrieve the latest RevisionId for your resource.</p> </li> </ul><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/PreconditionFailedException">AWS
    * API Reference</a></p>
    */
   class PreconditionFailedException
   {
   public:
-    AWS_LAMBDA_API PreconditionFailedException();
+    AWS_LAMBDA_API PreconditionFailedException() = default;
     AWS_LAMBDA_API PreconditionFailedException(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAMBDA_API PreconditionFailedException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAMBDA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The exception type.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The exception type.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    PreconditionFailedException& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The exception type.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The exception type.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The exception type.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The exception type.</p>
-     */
-    inline PreconditionFailedException& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The exception type.</p>
-     */
-    inline PreconditionFailedException& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The exception type.</p>
-     */
-    inline PreconditionFailedException& WithType(const char* value) { SetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The exception message.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The exception message.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>The exception message.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The exception message.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The exception message.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The exception message.</p>
-     */
-    inline PreconditionFailedException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The exception message.</p>
-     */
-    inline PreconditionFailedException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The exception message.</p>
-     */
-    inline PreconditionFailedException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    PreconditionFailedException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_type;

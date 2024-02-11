@@ -18,17 +18,7 @@ namespace CodeCommit
 namespace Model
 {
 
-Approval::Approval() : 
-    m_userArnHasBeenSet(false),
-    m_approvalState(ApprovalState::NOT_SET),
-    m_approvalStateHasBeenSet(false)
-{
-}
-
-Approval::Approval(JsonView jsonValue) : 
-    m_userArnHasBeenSet(false),
-    m_approvalState(ApprovalState::NOT_SET),
-    m_approvalStateHasBeenSet(false)
+Approval::Approval(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ Approval& Approval::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("userArn"))
   {
     m_userArn = jsonValue.GetString("userArn");
-
     m_userArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("approvalState"))
   {
     m_approvalState = ApprovalStateMapper::GetApprovalStateForName(jsonValue.GetString("approvalState"));
-
     m_approvalStateHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -32,93 +32,35 @@ namespace Model
   class UpdateConnectionApiKeyAuthRequestParameters
   {
   public:
-    AWS_CLOUDWATCHEVENTS_API UpdateConnectionApiKeyAuthRequestParameters();
+    AWS_CLOUDWATCHEVENTS_API UpdateConnectionApiKeyAuthRequestParameters() = default;
     AWS_CLOUDWATCHEVENTS_API UpdateConnectionApiKeyAuthRequestParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVENTS_API UpdateConnectionApiKeyAuthRequestParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the API key to use for authorization.</p>
      */
-    inline const Aws::String& GetApiKeyName() const{ return m_apiKeyName; }
-
-    /**
-     * <p>The name of the API key to use for authorization.</p>
-     */
+    inline const Aws::String& GetApiKeyName() const { return m_apiKeyName; }
     inline bool ApiKeyNameHasBeenSet() const { return m_apiKeyNameHasBeenSet; }
+    template<typename ApiKeyNameT = Aws::String>
+    void SetApiKeyName(ApiKeyNameT&& value) { m_apiKeyNameHasBeenSet = true; m_apiKeyName = std::forward<ApiKeyNameT>(value); }
+    template<typename ApiKeyNameT = Aws::String>
+    UpdateConnectionApiKeyAuthRequestParameters& WithApiKeyName(ApiKeyNameT&& value) { SetApiKeyName(std::forward<ApiKeyNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the API key to use for authorization.</p>
-     */
-    inline void SetApiKeyName(const Aws::String& value) { m_apiKeyNameHasBeenSet = true; m_apiKeyName = value; }
-
-    /**
-     * <p>The name of the API key to use for authorization.</p>
-     */
-    inline void SetApiKeyName(Aws::String&& value) { m_apiKeyNameHasBeenSet = true; m_apiKeyName = std::move(value); }
-
-    /**
-     * <p>The name of the API key to use for authorization.</p>
-     */
-    inline void SetApiKeyName(const char* value) { m_apiKeyNameHasBeenSet = true; m_apiKeyName.assign(value); }
-
-    /**
-     * <p>The name of the API key to use for authorization.</p>
-     */
-    inline UpdateConnectionApiKeyAuthRequestParameters& WithApiKeyName(const Aws::String& value) { SetApiKeyName(value); return *this;}
-
-    /**
-     * <p>The name of the API key to use for authorization.</p>
-     */
-    inline UpdateConnectionApiKeyAuthRequestParameters& WithApiKeyName(Aws::String&& value) { SetApiKeyName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the API key to use for authorization.</p>
-     */
-    inline UpdateConnectionApiKeyAuthRequestParameters& WithApiKeyName(const char* value) { SetApiKeyName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value associated with teh API key to use for authorization.</p>
      */
-    inline const Aws::String& GetApiKeyValue() const{ return m_apiKeyValue; }
-
-    /**
-     * <p>The value associated with teh API key to use for authorization.</p>
-     */
+    inline const Aws::String& GetApiKeyValue() const { return m_apiKeyValue; }
     inline bool ApiKeyValueHasBeenSet() const { return m_apiKeyValueHasBeenSet; }
-
-    /**
-     * <p>The value associated with teh API key to use for authorization.</p>
-     */
-    inline void SetApiKeyValue(const Aws::String& value) { m_apiKeyValueHasBeenSet = true; m_apiKeyValue = value; }
-
-    /**
-     * <p>The value associated with teh API key to use for authorization.</p>
-     */
-    inline void SetApiKeyValue(Aws::String&& value) { m_apiKeyValueHasBeenSet = true; m_apiKeyValue = std::move(value); }
-
-    /**
-     * <p>The value associated with teh API key to use for authorization.</p>
-     */
-    inline void SetApiKeyValue(const char* value) { m_apiKeyValueHasBeenSet = true; m_apiKeyValue.assign(value); }
-
-    /**
-     * <p>The value associated with teh API key to use for authorization.</p>
-     */
-    inline UpdateConnectionApiKeyAuthRequestParameters& WithApiKeyValue(const Aws::String& value) { SetApiKeyValue(value); return *this;}
-
-    /**
-     * <p>The value associated with teh API key to use for authorization.</p>
-     */
-    inline UpdateConnectionApiKeyAuthRequestParameters& WithApiKeyValue(Aws::String&& value) { SetApiKeyValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value associated with teh API key to use for authorization.</p>
-     */
-    inline UpdateConnectionApiKeyAuthRequestParameters& WithApiKeyValue(const char* value) { SetApiKeyValue(value); return *this;}
-
+    template<typename ApiKeyValueT = Aws::String>
+    void SetApiKeyValue(ApiKeyValueT&& value) { m_apiKeyValueHasBeenSet = true; m_apiKeyValue = std::forward<ApiKeyValueT>(value); }
+    template<typename ApiKeyValueT = Aws::String>
+    UpdateConnectionApiKeyAuthRequestParameters& WithApiKeyValue(ApiKeyValueT&& value) { SetApiKeyValue(std::forward<ApiKeyValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_apiKeyName;

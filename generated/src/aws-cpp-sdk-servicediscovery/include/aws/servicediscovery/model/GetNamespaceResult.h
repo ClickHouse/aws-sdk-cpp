@@ -28,63 +28,37 @@ namespace Model
   class GetNamespaceResult
   {
   public:
-    AWS_SERVICEDISCOVERY_API GetNamespaceResult();
+    AWS_SERVICEDISCOVERY_API GetNamespaceResult() = default;
     AWS_SERVICEDISCOVERY_API GetNamespaceResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SERVICEDISCOVERY_API GetNamespaceResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A complex type that contains information about the specified namespace.</p>
      */
-    inline const Namespace& GetNamespace() const{ return m_namespace; }
+    inline const Namespace& GetNamespace() const { return m_namespace; }
+    template<typename NamespaceT = Namespace>
+    void SetNamespace(NamespaceT&& value) { m_namespaceHasBeenSet = true; m_namespace = std::forward<NamespaceT>(value); }
+    template<typename NamespaceT = Namespace>
+    GetNamespaceResult& WithNamespace(NamespaceT&& value) { SetNamespace(std::forward<NamespaceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A complex type that contains information about the specified namespace.</p>
-     */
-    inline void SetNamespace(const Namespace& value) { m_namespace = value; }
-
-    /**
-     * <p>A complex type that contains information about the specified namespace.</p>
-     */
-    inline void SetNamespace(Namespace&& value) { m_namespace = std::move(value); }
-
-    /**
-     * <p>A complex type that contains information about the specified namespace.</p>
-     */
-    inline GetNamespaceResult& WithNamespace(const Namespace& value) { SetNamespace(value); return *this;}
-
-    /**
-     * <p>A complex type that contains information about the specified namespace.</p>
-     */
-    inline GetNamespaceResult& WithNamespace(Namespace&& value) { SetNamespace(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetNamespaceResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetNamespaceResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetNamespaceResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetNamespaceResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Namespace m_namespace;
+    bool m_namespaceHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

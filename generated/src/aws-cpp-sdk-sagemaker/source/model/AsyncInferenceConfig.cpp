@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-AsyncInferenceConfig::AsyncInferenceConfig() : 
-    m_clientConfigHasBeenSet(false),
-    m_outputConfigHasBeenSet(false)
-{
-}
-
-AsyncInferenceConfig::AsyncInferenceConfig(JsonView jsonValue) : 
-    m_clientConfigHasBeenSet(false),
-    m_outputConfigHasBeenSet(false)
+AsyncInferenceConfig::AsyncInferenceConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AsyncInferenceConfig& AsyncInferenceConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ClientConfig"))
   {
     m_clientConfig = jsonValue.GetObject("ClientConfig");
-
     m_clientConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OutputConfig"))
   {
     m_outputConfig = jsonValue.GetObject("OutputConfig");
-
     m_outputConfigHasBeenSet = true;
   }
-
   return *this;
 }
 

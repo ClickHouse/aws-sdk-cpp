@@ -4,62 +4,58 @@
  */
 
 #include <aws/sqs/model/ListDeadLetterSourceQueuesResult.h>
-#include <aws/core/utils/xml/XmlSerializer.h>
+#include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
 #include <aws/core/utils/StringUtils.h>
-#include <aws/core/utils/logging/LogMacros.h>
+#include <aws/core/utils/UnreferencedParam.h>
+#include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
 
 using namespace Aws::SQS::Model;
-using namespace Aws::Utils::Xml;
-using namespace Aws::Utils::Logging;
+using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-ListDeadLetterSourceQueuesResult::ListDeadLetterSourceQueuesResult()
-{
-}
-
-ListDeadLetterSourceQueuesResult::ListDeadLetterSourceQueuesResult(const Aws::AmazonWebServiceResult<XmlDocument>& result)
+ListDeadLetterSourceQueuesResult::ListDeadLetterSourceQueuesResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
 }
 
-ListDeadLetterSourceQueuesResult& ListDeadLetterSourceQueuesResult::operator =(const Aws::AmazonWebServiceResult<XmlDocument>& result)
+ListDeadLetterSourceQueuesResult& ListDeadLetterSourceQueuesResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
-  const XmlDocument& xmlDocument = result.GetPayload();
-  XmlNode rootNode = xmlDocument.GetRootElement();
-  XmlNode resultNode = rootNode;
-  if (!rootNode.IsNull() && (rootNode.GetName() != "ListDeadLetterSourceQueuesResult"))
+  JsonView jsonValue = result.GetPayload().View();
+  if(jsonValue.ValueExists("queueUrls"))
   {
-    resultNode = rootNode.FirstChild("ListDeadLetterSourceQueuesResult");
+    Aws::Utils::Array<JsonView> queueUrlsJsonList = jsonValue.GetArray("queueUrls");
+    for(unsigned queueUrlsIndex = 0; queueUrlsIndex < queueUrlsJsonList.GetLength(); ++queueUrlsIndex)
+    {
+      m_queueUrls.push_back(queueUrlsJsonList[queueUrlsIndex].AsString());
+    }
+    m_queueUrlsHasBeenSet = true;
   }
-
-  if(!resultNode.IsNull())
+  if(jsonValue.ValueExists("NextToken"))
   {
-    XmlNode queueUrlsNode = resultNode.FirstChild("QueueUrl");
-    if(!queueUrlsNode.IsNull())
-    {
-      XmlNode queueUrlMember = queueUrlsNode;
-      while(!queueUrlMember.IsNull())
-      {
-        m_queueUrls.push_back(queueUrlMember.GetText());
-        queueUrlMember = queueUrlMember.NextNode("QueueUrl");
-      }
-
-    }
-    XmlNode nextTokenNode = resultNode.FirstChild("NextToken");
-    if(!nextTokenNode.IsNull())
-    {
-      m_nextToken = Aws::Utils::Xml::DecodeEscapedXmlText(nextTokenNode.GetText());
-    }
+    m_nextToken = jsonValue.GetString("NextToken");
+    m_nextTokenHasBeenSet = true;
   }
 
-  if (!rootNode.IsNull()) {
-    XmlNode responseMetadataNode = rootNode.FirstChild("ResponseMetadata");
-    m_responseMetadata = responseMetadataNode;
-    AWS_LOGSTREAM_DEBUG("Aws::SQS::Model::ListDeadLetterSourceQueuesResult", "x-amzn-request-id: " << m_responseMetadata.GetRequestId() );
+  const auto& headers = result.GetHeaderValueCollection();
+  const auto& requestIdIter = headers.find("x-amzn-requestid");
+  if(requestIdIter != headers.end())
+  {
+    m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
+
+  const auto& responseMetadataIter = headers.find("x-amzn-requestid");
+  if(responseMetadataIter != headers.end())
+  {
+    m_responseMetadataHasBeenSet = true;
+     // for backward compatibility for customers used to an old XML Client interface
+     m_responseMetadata.SetRequestId(responseMetadataIter->second);
+  }
+
+
   return *this;
 }

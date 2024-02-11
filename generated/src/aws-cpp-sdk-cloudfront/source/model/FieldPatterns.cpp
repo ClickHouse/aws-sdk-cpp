@@ -20,17 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-FieldPatterns::FieldPatterns() : 
-    m_quantity(0),
-    m_quantityHasBeenSet(false),
-    m_itemsHasBeenSet(false)
-{
-}
-
-FieldPatterns::FieldPatterns(const XmlNode& xmlNode) : 
-    m_quantity(0),
-    m_quantityHasBeenSet(false),
-    m_itemsHasBeenSet(false)
+FieldPatterns::FieldPatterns(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -51,6 +41,7 @@ FieldPatterns& FieldPatterns::operator =(const XmlNode& xmlNode)
     if(!itemsNode.IsNull())
     {
       XmlNode itemsMember = itemsNode.FirstChild("FieldPattern");
+      m_itemsHasBeenSet = !itemsMember.IsNull();
       while(!itemsMember.IsNull())
       {
         m_items.push_back(itemsMember.GetText());

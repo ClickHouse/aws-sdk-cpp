@@ -10,19 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-CreateGlobalClusterRequest::CreateGlobalClusterRequest() : 
-    m_globalClusterIdentifierHasBeenSet(false),
-    m_sourceDBClusterIdentifierHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_deletionProtection(false),
-    m_deletionProtectionHasBeenSet(false),
-    m_databaseNameHasBeenSet(false),
-    m_storageEncrypted(false),
-    m_storageEncryptedHasBeenSet(false)
-{
-}
-
 Aws::String CreateGlobalClusterRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -47,6 +34,11 @@ Aws::String CreateGlobalClusterRequest::SerializePayload() const
     ss << "EngineVersion=" << StringUtils::URLEncode(m_engineVersion.c_str()) << "&";
   }
 
+  if(m_engineLifecycleSupportHasBeenSet)
+  {
+    ss << "EngineLifecycleSupport=" << StringUtils::URLEncode(m_engineLifecycleSupport.c_str()) << "&";
+  }
+
   if(m_deletionProtectionHasBeenSet)
   {
     ss << "DeletionProtection=" << std::boolalpha << m_deletionProtection << "&";
@@ -60,6 +52,23 @@ Aws::String CreateGlobalClusterRequest::SerializePayload() const
   if(m_storageEncryptedHasBeenSet)
   {
     ss << "StorageEncrypted=" << std::boolalpha << m_storageEncrypted << "&";
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+    if (m_tags.empty())
+    {
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
+    }
   }
 
   ss << "Version=2014-10-31";

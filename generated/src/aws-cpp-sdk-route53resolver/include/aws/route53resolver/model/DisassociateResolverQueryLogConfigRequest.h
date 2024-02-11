@@ -21,7 +21,7 @@ namespace Model
   class DisassociateResolverQueryLogConfigRequest : public Route53ResolverRequest
   {
   public:
-    AWS_ROUTE53RESOLVER_API DisassociateResolverQueryLogConfigRequest();
+    AWS_ROUTE53RESOLVER_API DisassociateResolverQueryLogConfigRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,103 +34,31 @@ namespace Model
     AWS_ROUTE53RESOLVER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the query logging configuration that you want to disassociate a
      * specified VPC from.</p>
      */
-    inline const Aws::String& GetResolverQueryLogConfigId() const{ return m_resolverQueryLogConfigId; }
-
-    /**
-     * <p>The ID of the query logging configuration that you want to disassociate a
-     * specified VPC from.</p>
-     */
+    inline const Aws::String& GetResolverQueryLogConfigId() const { return m_resolverQueryLogConfigId; }
     inline bool ResolverQueryLogConfigIdHasBeenSet() const { return m_resolverQueryLogConfigIdHasBeenSet; }
+    template<typename ResolverQueryLogConfigIdT = Aws::String>
+    void SetResolverQueryLogConfigId(ResolverQueryLogConfigIdT&& value) { m_resolverQueryLogConfigIdHasBeenSet = true; m_resolverQueryLogConfigId = std::forward<ResolverQueryLogConfigIdT>(value); }
+    template<typename ResolverQueryLogConfigIdT = Aws::String>
+    DisassociateResolverQueryLogConfigRequest& WithResolverQueryLogConfigId(ResolverQueryLogConfigIdT&& value) { SetResolverQueryLogConfigId(std::forward<ResolverQueryLogConfigIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the query logging configuration that you want to disassociate a
-     * specified VPC from.</p>
-     */
-    inline void SetResolverQueryLogConfigId(const Aws::String& value) { m_resolverQueryLogConfigIdHasBeenSet = true; m_resolverQueryLogConfigId = value; }
-
-    /**
-     * <p>The ID of the query logging configuration that you want to disassociate a
-     * specified VPC from.</p>
-     */
-    inline void SetResolverQueryLogConfigId(Aws::String&& value) { m_resolverQueryLogConfigIdHasBeenSet = true; m_resolverQueryLogConfigId = std::move(value); }
-
-    /**
-     * <p>The ID of the query logging configuration that you want to disassociate a
-     * specified VPC from.</p>
-     */
-    inline void SetResolverQueryLogConfigId(const char* value) { m_resolverQueryLogConfigIdHasBeenSet = true; m_resolverQueryLogConfigId.assign(value); }
-
-    /**
-     * <p>The ID of the query logging configuration that you want to disassociate a
-     * specified VPC from.</p>
-     */
-    inline DisassociateResolverQueryLogConfigRequest& WithResolverQueryLogConfigId(const Aws::String& value) { SetResolverQueryLogConfigId(value); return *this;}
-
-    /**
-     * <p>The ID of the query logging configuration that you want to disassociate a
-     * specified VPC from.</p>
-     */
-    inline DisassociateResolverQueryLogConfigRequest& WithResolverQueryLogConfigId(Aws::String&& value) { SetResolverQueryLogConfigId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the query logging configuration that you want to disassociate a
-     * specified VPC from.</p>
-     */
-    inline DisassociateResolverQueryLogConfigRequest& WithResolverQueryLogConfigId(const char* value) { SetResolverQueryLogConfigId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Amazon VPC that you want to disassociate from a specified query
      * logging configuration.</p>
      */
-    inline const Aws::String& GetResourceId() const{ return m_resourceId; }
-
-    /**
-     * <p>The ID of the Amazon VPC that you want to disassociate from a specified query
-     * logging configuration.</p>
-     */
+    inline const Aws::String& GetResourceId() const { return m_resourceId; }
     inline bool ResourceIdHasBeenSet() const { return m_resourceIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the Amazon VPC that you want to disassociate from a specified query
-     * logging configuration.</p>
-     */
-    inline void SetResourceId(const Aws::String& value) { m_resourceIdHasBeenSet = true; m_resourceId = value; }
-
-    /**
-     * <p>The ID of the Amazon VPC that you want to disassociate from a specified query
-     * logging configuration.</p>
-     */
-    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon VPC that you want to disassociate from a specified query
-     * logging configuration.</p>
-     */
-    inline void SetResourceId(const char* value) { m_resourceIdHasBeenSet = true; m_resourceId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon VPC that you want to disassociate from a specified query
-     * logging configuration.</p>
-     */
-    inline DisassociateResolverQueryLogConfigRequest& WithResourceId(const Aws::String& value) { SetResourceId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon VPC that you want to disassociate from a specified query
-     * logging configuration.</p>
-     */
-    inline DisassociateResolverQueryLogConfigRequest& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon VPC that you want to disassociate from a specified query
-     * logging configuration.</p>
-     */
-    inline DisassociateResolverQueryLogConfigRequest& WithResourceId(const char* value) { SetResourceId(value); return *this;}
-
+    template<typename ResourceIdT = Aws::String>
+    void SetResourceId(ResourceIdT&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::forward<ResourceIdT>(value); }
+    template<typename ResourceIdT = Aws::String>
+    DisassociateResolverQueryLogConfigRequest& WithResourceId(ResourceIdT&& value) { SetResourceId(std::forward<ResourceIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resolverQueryLogConfigId;

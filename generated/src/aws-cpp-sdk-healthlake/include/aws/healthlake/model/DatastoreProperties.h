@@ -11,6 +11,8 @@
 #include <aws/healthlake/model/FHIRVersion.h>
 #include <aws/healthlake/model/SseConfiguration.h>
 #include <aws/healthlake/model/PreloadDataConfig.h>
+#include <aws/healthlake/model/IdentityProviderConfiguration.h>
+#include <aws/healthlake/model/ErrorCause.h>
 #include <utility>
 
 namespace Aws
@@ -29,364 +31,148 @@ namespace Model
 {
 
   /**
-   * <p>Displays the properties of the Data Store, including the ID, Arn, name, and
-   * the status of the Data Store.</p><p><h3>See Also:</h3>   <a
+   * <p>The data store properties.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/healthlake-2017-07-01/DatastoreProperties">AWS
    * API Reference</a></p>
    */
   class DatastoreProperties
   {
   public:
-    AWS_HEALTHLAKE_API DatastoreProperties();
+    AWS_HEALTHLAKE_API DatastoreProperties() = default;
     AWS_HEALTHLAKE_API DatastoreProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_HEALTHLAKE_API DatastoreProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_HEALTHLAKE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The AWS-generated ID number for the Data Store.</p>
+     * <p>The data store identifier.</p>
      */
-    inline const Aws::String& GetDatastoreId() const{ return m_datastoreId; }
-
-    /**
-     * <p>The AWS-generated ID number for the Data Store.</p>
-     */
+    inline const Aws::String& GetDatastoreId() const { return m_datastoreId; }
     inline bool DatastoreIdHasBeenSet() const { return m_datastoreIdHasBeenSet; }
+    template<typename DatastoreIdT = Aws::String>
+    void SetDatastoreId(DatastoreIdT&& value) { m_datastoreIdHasBeenSet = true; m_datastoreId = std::forward<DatastoreIdT>(value); }
+    template<typename DatastoreIdT = Aws::String>
+    DatastoreProperties& WithDatastoreId(DatastoreIdT&& value) { SetDatastoreId(std::forward<DatastoreIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The AWS-generated ID number for the Data Store.</p>
+     * <p>The Amazon Resource Name (ARN) used in the creation of the data store.</p>
      */
-    inline void SetDatastoreId(const Aws::String& value) { m_datastoreIdHasBeenSet = true; m_datastoreId = value; }
-
-    /**
-     * <p>The AWS-generated ID number for the Data Store.</p>
-     */
-    inline void SetDatastoreId(Aws::String&& value) { m_datastoreIdHasBeenSet = true; m_datastoreId = std::move(value); }
-
-    /**
-     * <p>The AWS-generated ID number for the Data Store.</p>
-     */
-    inline void SetDatastoreId(const char* value) { m_datastoreIdHasBeenSet = true; m_datastoreId.assign(value); }
-
-    /**
-     * <p>The AWS-generated ID number for the Data Store.</p>
-     */
-    inline DatastoreProperties& WithDatastoreId(const Aws::String& value) { SetDatastoreId(value); return *this;}
-
-    /**
-     * <p>The AWS-generated ID number for the Data Store.</p>
-     */
-    inline DatastoreProperties& WithDatastoreId(Aws::String&& value) { SetDatastoreId(std::move(value)); return *this;}
-
-    /**
-     * <p>The AWS-generated ID number for the Data Store.</p>
-     */
-    inline DatastoreProperties& WithDatastoreId(const char* value) { SetDatastoreId(value); return *this;}
-
-
-    /**
-     * <p>The Amazon Resource Name used in the creation of the Data Store.</p>
-     */
-    inline const Aws::String& GetDatastoreArn() const{ return m_datastoreArn; }
-
-    /**
-     * <p>The Amazon Resource Name used in the creation of the Data Store.</p>
-     */
+    inline const Aws::String& GetDatastoreArn() const { return m_datastoreArn; }
     inline bool DatastoreArnHasBeenSet() const { return m_datastoreArnHasBeenSet; }
+    template<typename DatastoreArnT = Aws::String>
+    void SetDatastoreArn(DatastoreArnT&& value) { m_datastoreArnHasBeenSet = true; m_datastoreArn = std::forward<DatastoreArnT>(value); }
+    template<typename DatastoreArnT = Aws::String>
+    DatastoreProperties& WithDatastoreArn(DatastoreArnT&& value) { SetDatastoreArn(std::forward<DatastoreArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name used in the creation of the Data Store.</p>
+     * <p>The data store name.</p>
      */
-    inline void SetDatastoreArn(const Aws::String& value) { m_datastoreArnHasBeenSet = true; m_datastoreArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name used in the creation of the Data Store.</p>
-     */
-    inline void SetDatastoreArn(Aws::String&& value) { m_datastoreArnHasBeenSet = true; m_datastoreArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name used in the creation of the Data Store.</p>
-     */
-    inline void SetDatastoreArn(const char* value) { m_datastoreArnHasBeenSet = true; m_datastoreArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name used in the creation of the Data Store.</p>
-     */
-    inline DatastoreProperties& WithDatastoreArn(const Aws::String& value) { SetDatastoreArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name used in the creation of the Data Store.</p>
-     */
-    inline DatastoreProperties& WithDatastoreArn(Aws::String&& value) { SetDatastoreArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name used in the creation of the Data Store.</p>
-     */
-    inline DatastoreProperties& WithDatastoreArn(const char* value) { SetDatastoreArn(value); return *this;}
-
-
-    /**
-     * <p>The user-generated name for the Data Store.</p>
-     */
-    inline const Aws::String& GetDatastoreName() const{ return m_datastoreName; }
-
-    /**
-     * <p>The user-generated name for the Data Store.</p>
-     */
+    inline const Aws::String& GetDatastoreName() const { return m_datastoreName; }
     inline bool DatastoreNameHasBeenSet() const { return m_datastoreNameHasBeenSet; }
+    template<typename DatastoreNameT = Aws::String>
+    void SetDatastoreName(DatastoreNameT&& value) { m_datastoreNameHasBeenSet = true; m_datastoreName = std::forward<DatastoreNameT>(value); }
+    template<typename DatastoreNameT = Aws::String>
+    DatastoreProperties& WithDatastoreName(DatastoreNameT&& value) { SetDatastoreName(std::forward<DatastoreNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The user-generated name for the Data Store.</p>
+     * <p>The data store status.</p>
      */
-    inline void SetDatastoreName(const Aws::String& value) { m_datastoreNameHasBeenSet = true; m_datastoreName = value; }
-
-    /**
-     * <p>The user-generated name for the Data Store.</p>
-     */
-    inline void SetDatastoreName(Aws::String&& value) { m_datastoreNameHasBeenSet = true; m_datastoreName = std::move(value); }
-
-    /**
-     * <p>The user-generated name for the Data Store.</p>
-     */
-    inline void SetDatastoreName(const char* value) { m_datastoreNameHasBeenSet = true; m_datastoreName.assign(value); }
-
-    /**
-     * <p>The user-generated name for the Data Store.</p>
-     */
-    inline DatastoreProperties& WithDatastoreName(const Aws::String& value) { SetDatastoreName(value); return *this;}
-
-    /**
-     * <p>The user-generated name for the Data Store.</p>
-     */
-    inline DatastoreProperties& WithDatastoreName(Aws::String&& value) { SetDatastoreName(std::move(value)); return *this;}
-
-    /**
-     * <p>The user-generated name for the Data Store.</p>
-     */
-    inline DatastoreProperties& WithDatastoreName(const char* value) { SetDatastoreName(value); return *this;}
-
-
-    /**
-     * <p>The status of the Data Store. Possible statuses are 'CREATING', 'ACTIVE',
-     * 'DELETING', or 'DELETED'.</p>
-     */
-    inline const DatastoreStatus& GetDatastoreStatus() const{ return m_datastoreStatus; }
-
-    /**
-     * <p>The status of the Data Store. Possible statuses are 'CREATING', 'ACTIVE',
-     * 'DELETING', or 'DELETED'.</p>
-     */
+    inline DatastoreStatus GetDatastoreStatus() const { return m_datastoreStatus; }
     inline bool DatastoreStatusHasBeenSet() const { return m_datastoreStatusHasBeenSet; }
+    inline void SetDatastoreStatus(DatastoreStatus value) { m_datastoreStatusHasBeenSet = true; m_datastoreStatus = value; }
+    inline DatastoreProperties& WithDatastoreStatus(DatastoreStatus value) { SetDatastoreStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The status of the Data Store. Possible statuses are 'CREATING', 'ACTIVE',
-     * 'DELETING', or 'DELETED'.</p>
+     * <p>The time the data store was created. </p>
      */
-    inline void SetDatastoreStatus(const DatastoreStatus& value) { m_datastoreStatusHasBeenSet = true; m_datastoreStatus = value; }
-
-    /**
-     * <p>The status of the Data Store. Possible statuses are 'CREATING', 'ACTIVE',
-     * 'DELETING', or 'DELETED'.</p>
-     */
-    inline void SetDatastoreStatus(DatastoreStatus&& value) { m_datastoreStatusHasBeenSet = true; m_datastoreStatus = std::move(value); }
-
-    /**
-     * <p>The status of the Data Store. Possible statuses are 'CREATING', 'ACTIVE',
-     * 'DELETING', or 'DELETED'.</p>
-     */
-    inline DatastoreProperties& WithDatastoreStatus(const DatastoreStatus& value) { SetDatastoreStatus(value); return *this;}
-
-    /**
-     * <p>The status of the Data Store. Possible statuses are 'CREATING', 'ACTIVE',
-     * 'DELETING', or 'DELETED'.</p>
-     */
-    inline DatastoreProperties& WithDatastoreStatus(DatastoreStatus&& value) { SetDatastoreStatus(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The time that a Data Store was created. </p>
-     */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The time that a Data Store was created. </p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    DatastoreProperties& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The time that a Data Store was created. </p>
+     * <p>The FHIR release version supported by the data store. Current support is for
+     * version <code>R4</code>.</p>
      */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The time that a Data Store was created. </p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The time that a Data Store was created. </p>
-     */
-    inline DatastoreProperties& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The time that a Data Store was created. </p>
-     */
-    inline DatastoreProperties& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The FHIR version. Only R4 version data is supported.</p>
-     */
-    inline const FHIRVersion& GetDatastoreTypeVersion() const{ return m_datastoreTypeVersion; }
-
-    /**
-     * <p>The FHIR version. Only R4 version data is supported.</p>
-     */
+    inline FHIRVersion GetDatastoreTypeVersion() const { return m_datastoreTypeVersion; }
     inline bool DatastoreTypeVersionHasBeenSet() const { return m_datastoreTypeVersionHasBeenSet; }
+    inline void SetDatastoreTypeVersion(FHIRVersion value) { m_datastoreTypeVersionHasBeenSet = true; m_datastoreTypeVersion = value; }
+    inline DatastoreProperties& WithDatastoreTypeVersion(FHIRVersion value) { SetDatastoreTypeVersion(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The FHIR version. Only R4 version data is supported.</p>
+     * <p>The AWS endpoint for the data store.</p>
      */
-    inline void SetDatastoreTypeVersion(const FHIRVersion& value) { m_datastoreTypeVersionHasBeenSet = true; m_datastoreTypeVersion = value; }
-
-    /**
-     * <p>The FHIR version. Only R4 version data is supported.</p>
-     */
-    inline void SetDatastoreTypeVersion(FHIRVersion&& value) { m_datastoreTypeVersionHasBeenSet = true; m_datastoreTypeVersion = std::move(value); }
-
-    /**
-     * <p>The FHIR version. Only R4 version data is supported.</p>
-     */
-    inline DatastoreProperties& WithDatastoreTypeVersion(const FHIRVersion& value) { SetDatastoreTypeVersion(value); return *this;}
-
-    /**
-     * <p>The FHIR version. Only R4 version data is supported.</p>
-     */
-    inline DatastoreProperties& WithDatastoreTypeVersion(FHIRVersion&& value) { SetDatastoreTypeVersion(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The AWS endpoint for the Data Store. Each Data Store will have it's own
-     * endpoint with Data Store ID in the endpoint URL.</p>
-     */
-    inline const Aws::String& GetDatastoreEndpoint() const{ return m_datastoreEndpoint; }
-
-    /**
-     * <p>The AWS endpoint for the Data Store. Each Data Store will have it's own
-     * endpoint with Data Store ID in the endpoint URL.</p>
-     */
+    inline const Aws::String& GetDatastoreEndpoint() const { return m_datastoreEndpoint; }
     inline bool DatastoreEndpointHasBeenSet() const { return m_datastoreEndpointHasBeenSet; }
+    template<typename DatastoreEndpointT = Aws::String>
+    void SetDatastoreEndpoint(DatastoreEndpointT&& value) { m_datastoreEndpointHasBeenSet = true; m_datastoreEndpoint = std::forward<DatastoreEndpointT>(value); }
+    template<typename DatastoreEndpointT = Aws::String>
+    DatastoreProperties& WithDatastoreEndpoint(DatastoreEndpointT&& value) { SetDatastoreEndpoint(std::forward<DatastoreEndpointT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The AWS endpoint for the Data Store. Each Data Store will have it's own
-     * endpoint with Data Store ID in the endpoint URL.</p>
-     */
-    inline void SetDatastoreEndpoint(const Aws::String& value) { m_datastoreEndpointHasBeenSet = true; m_datastoreEndpoint = value; }
-
-    /**
-     * <p>The AWS endpoint for the Data Store. Each Data Store will have it's own
-     * endpoint with Data Store ID in the endpoint URL.</p>
-     */
-    inline void SetDatastoreEndpoint(Aws::String&& value) { m_datastoreEndpointHasBeenSet = true; m_datastoreEndpoint = std::move(value); }
-
-    /**
-     * <p>The AWS endpoint for the Data Store. Each Data Store will have it's own
-     * endpoint with Data Store ID in the endpoint URL.</p>
-     */
-    inline void SetDatastoreEndpoint(const char* value) { m_datastoreEndpointHasBeenSet = true; m_datastoreEndpoint.assign(value); }
-
-    /**
-     * <p>The AWS endpoint for the Data Store. Each Data Store will have it's own
-     * endpoint with Data Store ID in the endpoint URL.</p>
-     */
-    inline DatastoreProperties& WithDatastoreEndpoint(const Aws::String& value) { SetDatastoreEndpoint(value); return *this;}
-
-    /**
-     * <p>The AWS endpoint for the Data Store. Each Data Store will have it's own
-     * endpoint with Data Store ID in the endpoint URL.</p>
-     */
-    inline DatastoreProperties& WithDatastoreEndpoint(Aws::String&& value) { SetDatastoreEndpoint(std::move(value)); return *this;}
-
-    /**
-     * <p>The AWS endpoint for the Data Store. Each Data Store will have it's own
-     * endpoint with Data Store ID in the endpoint URL.</p>
-     */
-    inline DatastoreProperties& WithDatastoreEndpoint(const char* value) { SetDatastoreEndpoint(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The server-side encryption key configuration for a customer provided
-     * encryption key (CMK). </p>
+     * encryption key.</p>
      */
-    inline const SseConfiguration& GetSseConfiguration() const{ return m_sseConfiguration; }
-
-    /**
-     * <p> The server-side encryption key configuration for a customer provided
-     * encryption key (CMK). </p>
-     */
+    inline const SseConfiguration& GetSseConfiguration() const { return m_sseConfiguration; }
     inline bool SseConfigurationHasBeenSet() const { return m_sseConfigurationHasBeenSet; }
+    template<typename SseConfigurationT = SseConfiguration>
+    void SetSseConfiguration(SseConfigurationT&& value) { m_sseConfigurationHasBeenSet = true; m_sseConfiguration = std::forward<SseConfigurationT>(value); }
+    template<typename SseConfigurationT = SseConfiguration>
+    DatastoreProperties& WithSseConfiguration(SseConfigurationT&& value) { SetSseConfiguration(std::forward<SseConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The server-side encryption key configuration for a customer provided
-     * encryption key (CMK). </p>
+     * <p>The preloaded Synthea data configuration for the data store.</p>
      */
-    inline void SetSseConfiguration(const SseConfiguration& value) { m_sseConfigurationHasBeenSet = true; m_sseConfiguration = value; }
-
-    /**
-     * <p> The server-side encryption key configuration for a customer provided
-     * encryption key (CMK). </p>
-     */
-    inline void SetSseConfiguration(SseConfiguration&& value) { m_sseConfigurationHasBeenSet = true; m_sseConfiguration = std::move(value); }
-
-    /**
-     * <p> The server-side encryption key configuration for a customer provided
-     * encryption key (CMK). </p>
-     */
-    inline DatastoreProperties& WithSseConfiguration(const SseConfiguration& value) { SetSseConfiguration(value); return *this;}
-
-    /**
-     * <p> The server-side encryption key configuration for a customer provided
-     * encryption key (CMK). </p>
-     */
-    inline DatastoreProperties& WithSseConfiguration(SseConfiguration&& value) { SetSseConfiguration(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The preloaded data configuration for the Data Store. Only data preloaded from
-     * Synthea is supported.</p>
-     */
-    inline const PreloadDataConfig& GetPreloadDataConfig() const{ return m_preloadDataConfig; }
-
-    /**
-     * <p>The preloaded data configuration for the Data Store. Only data preloaded from
-     * Synthea is supported.</p>
-     */
+    inline const PreloadDataConfig& GetPreloadDataConfig() const { return m_preloadDataConfig; }
     inline bool PreloadDataConfigHasBeenSet() const { return m_preloadDataConfigHasBeenSet; }
+    template<typename PreloadDataConfigT = PreloadDataConfig>
+    void SetPreloadDataConfig(PreloadDataConfigT&& value) { m_preloadDataConfigHasBeenSet = true; m_preloadDataConfig = std::forward<PreloadDataConfigT>(value); }
+    template<typename PreloadDataConfigT = PreloadDataConfig>
+    DatastoreProperties& WithPreloadDataConfig(PreloadDataConfigT&& value) { SetPreloadDataConfig(std::forward<PreloadDataConfigT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The preloaded data configuration for the Data Store. Only data preloaded from
-     * Synthea is supported.</p>
+     * <p>The identity provider selected during data store creation.</p>
      */
-    inline void SetPreloadDataConfig(const PreloadDataConfig& value) { m_preloadDataConfigHasBeenSet = true; m_preloadDataConfig = value; }
+    inline const IdentityProviderConfiguration& GetIdentityProviderConfiguration() const { return m_identityProviderConfiguration; }
+    inline bool IdentityProviderConfigurationHasBeenSet() const { return m_identityProviderConfigurationHasBeenSet; }
+    template<typename IdentityProviderConfigurationT = IdentityProviderConfiguration>
+    void SetIdentityProviderConfiguration(IdentityProviderConfigurationT&& value) { m_identityProviderConfigurationHasBeenSet = true; m_identityProviderConfiguration = std::forward<IdentityProviderConfigurationT>(value); }
+    template<typename IdentityProviderConfigurationT = IdentityProviderConfiguration>
+    DatastoreProperties& WithIdentityProviderConfiguration(IdentityProviderConfigurationT&& value) { SetIdentityProviderConfiguration(std::forward<IdentityProviderConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The preloaded data configuration for the Data Store. Only data preloaded from
-     * Synthea is supported.</p>
+     * <p>The error cause for the current data store operation.</p>
      */
-    inline void SetPreloadDataConfig(PreloadDataConfig&& value) { m_preloadDataConfigHasBeenSet = true; m_preloadDataConfig = std::move(value); }
-
-    /**
-     * <p>The preloaded data configuration for the Data Store. Only data preloaded from
-     * Synthea is supported.</p>
-     */
-    inline DatastoreProperties& WithPreloadDataConfig(const PreloadDataConfig& value) { SetPreloadDataConfig(value); return *this;}
-
-    /**
-     * <p>The preloaded data configuration for the Data Store. Only data preloaded from
-     * Synthea is supported.</p>
-     */
-    inline DatastoreProperties& WithPreloadDataConfig(PreloadDataConfig&& value) { SetPreloadDataConfig(std::move(value)); return *this;}
-
+    inline const ErrorCause& GetErrorCause() const { return m_errorCause; }
+    inline bool ErrorCauseHasBeenSet() const { return m_errorCauseHasBeenSet; }
+    template<typename ErrorCauseT = ErrorCause>
+    void SetErrorCause(ErrorCauseT&& value) { m_errorCauseHasBeenSet = true; m_errorCause = std::forward<ErrorCauseT>(value); }
+    template<typename ErrorCauseT = ErrorCause>
+    DatastoreProperties& WithErrorCause(ErrorCauseT&& value) { SetErrorCause(std::forward<ErrorCauseT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_datastoreId;
@@ -398,13 +184,13 @@ namespace Model
     Aws::String m_datastoreName;
     bool m_datastoreNameHasBeenSet = false;
 
-    DatastoreStatus m_datastoreStatus;
+    DatastoreStatus m_datastoreStatus{DatastoreStatus::NOT_SET};
     bool m_datastoreStatusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    FHIRVersion m_datastoreTypeVersion;
+    FHIRVersion m_datastoreTypeVersion{FHIRVersion::NOT_SET};
     bool m_datastoreTypeVersionHasBeenSet = false;
 
     Aws::String m_datastoreEndpoint;
@@ -415,6 +201,12 @@ namespace Model
 
     PreloadDataConfig m_preloadDataConfig;
     bool m_preloadDataConfigHasBeenSet = false;
+
+    IdentityProviderConfiguration m_identityProviderConfiguration;
+    bool m_identityProviderConfigurationHasBeenSet = false;
+
+    ErrorCause m_errorCause;
+    bool m_errorCauseHasBeenSet = false;
   };
 
 } // namespace Model

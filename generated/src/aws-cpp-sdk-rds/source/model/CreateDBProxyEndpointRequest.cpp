@@ -10,17 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-CreateDBProxyEndpointRequest::CreateDBProxyEndpointRequest() : 
-    m_dBProxyNameHasBeenSet(false),
-    m_dBProxyEndpointNameHasBeenSet(false),
-    m_vpcSubnetIdsHasBeenSet(false),
-    m_vpcSecurityGroupIdsHasBeenSet(false),
-    m_targetRole(DBProxyEndpointTargetRole::NOT_SET),
-    m_targetRoleHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateDBProxyEndpointRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -37,39 +26,65 @@ Aws::String CreateDBProxyEndpointRequest::SerializePayload() const
 
   if(m_vpcSubnetIdsHasBeenSet)
   {
-    unsigned vpcSubnetIdsCount = 1;
-    for(auto& item : m_vpcSubnetIds)
+    if (m_vpcSubnetIds.empty())
     {
-      ss << "VpcSubnetIds.member." << vpcSubnetIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      vpcSubnetIdsCount++;
+      ss << "VpcSubnetIds=&";
+    }
+    else
+    {
+      unsigned vpcSubnetIdsCount = 1;
+      for(auto& item : m_vpcSubnetIds)
+      {
+        ss << "VpcSubnetIds.member." << vpcSubnetIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        vpcSubnetIdsCount++;
+      }
     }
   }
 
   if(m_vpcSecurityGroupIdsHasBeenSet)
   {
-    unsigned vpcSecurityGroupIdsCount = 1;
-    for(auto& item : m_vpcSecurityGroupIds)
+    if (m_vpcSecurityGroupIds.empty())
     {
-      ss << "VpcSecurityGroupIds.member." << vpcSecurityGroupIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      vpcSecurityGroupIdsCount++;
+      ss << "VpcSecurityGroupIds=&";
+    }
+    else
+    {
+      unsigned vpcSecurityGroupIdsCount = 1;
+      for(auto& item : m_vpcSecurityGroupIds)
+      {
+        ss << "VpcSecurityGroupIds.member." << vpcSecurityGroupIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        vpcSecurityGroupIdsCount++;
+      }
     }
   }
 
   if(m_targetRoleHasBeenSet)
   {
-    ss << "TargetRole=" << DBProxyEndpointTargetRoleMapper::GetNameForDBProxyEndpointTargetRole(m_targetRole) << "&";
+    ss << "TargetRole=" << StringUtils::URLEncode(DBProxyEndpointTargetRoleMapper::GetNameForDBProxyEndpointTargetRole(m_targetRole)) << "&";
   }
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
     }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
+    }
+  }
+
+  if(m_endpointNetworkTypeHasBeenSet)
+  {
+    ss << "EndpointNetworkType=" << StringUtils::URLEncode(EndpointNetworkTypeMapper::GetNameForEndpointNetworkType(m_endpointNetworkType)) << "&";
   }
 
   ss << "Version=2014-10-31";

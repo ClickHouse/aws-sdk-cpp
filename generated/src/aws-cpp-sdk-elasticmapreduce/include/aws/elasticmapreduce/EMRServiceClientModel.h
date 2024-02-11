@@ -23,11 +23,13 @@
 #include <aws/elasticmapreduce/model/AddJobFlowStepsResult.h>
 #include <aws/elasticmapreduce/model/AddTagsResult.h>
 #include <aws/elasticmapreduce/model/CancelStepsResult.h>
+#include <aws/elasticmapreduce/model/CreatePersistentAppUIResult.h>
 #include <aws/elasticmapreduce/model/CreateSecurityConfigurationResult.h>
 #include <aws/elasticmapreduce/model/CreateStudioResult.h>
 #include <aws/elasticmapreduce/model/DeleteSecurityConfigurationResult.h>
 #include <aws/elasticmapreduce/model/DescribeClusterResult.h>
 #include <aws/elasticmapreduce/model/DescribeNotebookExecutionResult.h>
+#include <aws/elasticmapreduce/model/DescribePersistentAppUIResult.h>
 #include <aws/elasticmapreduce/model/DescribeReleaseLabelResult.h>
 #include <aws/elasticmapreduce/model/DescribeSecurityConfigurationResult.h>
 #include <aws/elasticmapreduce/model/DescribeStepResult.h>
@@ -36,6 +38,8 @@
 #include <aws/elasticmapreduce/model/GetBlockPublicAccessConfigurationResult.h>
 #include <aws/elasticmapreduce/model/GetClusterSessionCredentialsResult.h>
 #include <aws/elasticmapreduce/model/GetManagedScalingPolicyResult.h>
+#include <aws/elasticmapreduce/model/GetOnClusterAppUIPresignedURLResult.h>
+#include <aws/elasticmapreduce/model/GetPersistentAppUIPresignedURLResult.h>
 #include <aws/elasticmapreduce/model/GetStudioSessionMappingResult.h>
 #include <aws/elasticmapreduce/model/ListBootstrapActionsResult.h>
 #include <aws/elasticmapreduce/model/ListClustersResult.h>
@@ -48,6 +52,7 @@
 #include <aws/elasticmapreduce/model/ListStepsResult.h>
 #include <aws/elasticmapreduce/model/ListStudioSessionMappingsResult.h>
 #include <aws/elasticmapreduce/model/ListStudiosResult.h>
+#include <aws/elasticmapreduce/model/ListSupportedInstanceTypesResult.h>
 #include <aws/elasticmapreduce/model/ModifyClusterResult.h>
 #include <aws/elasticmapreduce/model/PutAutoScalingPolicyResult.h>
 #include <aws/elasticmapreduce/model/PutAutoTerminationPolicyResult.h>
@@ -59,6 +64,15 @@
 #include <aws/elasticmapreduce/model/RemoveTagsResult.h>
 #include <aws/elasticmapreduce/model/RunJobFlowResult.h>
 #include <aws/elasticmapreduce/model/StartNotebookExecutionResult.h>
+#include <aws/elasticmapreduce/model/DescribeReleaseLabelRequest.h>
+#include <aws/elasticmapreduce/model/ListSecurityConfigurationsRequest.h>
+#include <aws/elasticmapreduce/model/ModifyInstanceGroupsRequest.h>
+#include <aws/elasticmapreduce/model/GetBlockPublicAccessConfigurationRequest.h>
+#include <aws/elasticmapreduce/model/ListClustersRequest.h>
+#include <aws/elasticmapreduce/model/ListNotebookExecutionsRequest.h>
+#include <aws/elasticmapreduce/model/ListReleaseLabelsRequest.h>
+#include <aws/elasticmapreduce/model/ListStudioSessionMappingsRequest.h>
+#include <aws/elasticmapreduce/model/ListStudiosRequest.h>
 #include <aws/core/NoResult.h>
 /* End of service model headers required in EMRClient header */
 
@@ -93,7 +107,7 @@ namespace Aws
 
   namespace EMR
   {
-    using EMRClientConfiguration = Aws::Client::GenericClientConfiguration<false>;
+    using EMRClientConfiguration = Aws::Client::GenericClientConfiguration;
     using EMREndpointProviderBase = Aws::EMR::Endpoint::EMREndpointProviderBase;
     using EMREndpointProvider = Aws::EMR::Endpoint::EMREndpointProvider;
 
@@ -105,6 +119,7 @@ namespace Aws
       class AddJobFlowStepsRequest;
       class AddTagsRequest;
       class CancelStepsRequest;
+      class CreatePersistentAppUIRequest;
       class CreateSecurityConfigurationRequest;
       class CreateStudioRequest;
       class CreateStudioSessionMappingRequest;
@@ -113,6 +128,7 @@ namespace Aws
       class DeleteStudioSessionMappingRequest;
       class DescribeClusterRequest;
       class DescribeNotebookExecutionRequest;
+      class DescribePersistentAppUIRequest;
       class DescribeReleaseLabelRequest;
       class DescribeSecurityConfigurationRequest;
       class DescribeStepRequest;
@@ -121,6 +137,8 @@ namespace Aws
       class GetBlockPublicAccessConfigurationRequest;
       class GetClusterSessionCredentialsRequest;
       class GetManagedScalingPolicyRequest;
+      class GetOnClusterAppUIPresignedURLRequest;
+      class GetPersistentAppUIPresignedURLRequest;
       class GetStudioSessionMappingRequest;
       class ListBootstrapActionsRequest;
       class ListClustersRequest;
@@ -133,6 +151,7 @@ namespace Aws
       class ListStepsRequest;
       class ListStudioSessionMappingsRequest;
       class ListStudiosRequest;
+      class ListSupportedInstanceTypesRequest;
       class ModifyClusterRequest;
       class ModifyInstanceFleetRequest;
       class ModifyInstanceGroupsRequest;
@@ -145,7 +164,9 @@ namespace Aws
       class RemoveManagedScalingPolicyRequest;
       class RemoveTagsRequest;
       class RunJobFlowRequest;
+      class SetKeepJobFlowAliveWhenNoStepsRequest;
       class SetTerminationProtectionRequest;
+      class SetUnhealthyNodeReplacementRequest;
       class SetVisibleToAllUsersRequest;
       class StartNotebookExecutionRequest;
       class StopNotebookExecutionRequest;
@@ -160,6 +181,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<AddJobFlowStepsResult, EMRError> AddJobFlowStepsOutcome;
       typedef Aws::Utils::Outcome<AddTagsResult, EMRError> AddTagsOutcome;
       typedef Aws::Utils::Outcome<CancelStepsResult, EMRError> CancelStepsOutcome;
+      typedef Aws::Utils::Outcome<CreatePersistentAppUIResult, EMRError> CreatePersistentAppUIOutcome;
       typedef Aws::Utils::Outcome<CreateSecurityConfigurationResult, EMRError> CreateSecurityConfigurationOutcome;
       typedef Aws::Utils::Outcome<CreateStudioResult, EMRError> CreateStudioOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EMRError> CreateStudioSessionMappingOutcome;
@@ -168,6 +190,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<Aws::NoResult, EMRError> DeleteStudioSessionMappingOutcome;
       typedef Aws::Utils::Outcome<DescribeClusterResult, EMRError> DescribeClusterOutcome;
       typedef Aws::Utils::Outcome<DescribeNotebookExecutionResult, EMRError> DescribeNotebookExecutionOutcome;
+      typedef Aws::Utils::Outcome<DescribePersistentAppUIResult, EMRError> DescribePersistentAppUIOutcome;
       typedef Aws::Utils::Outcome<DescribeReleaseLabelResult, EMRError> DescribeReleaseLabelOutcome;
       typedef Aws::Utils::Outcome<DescribeSecurityConfigurationResult, EMRError> DescribeSecurityConfigurationOutcome;
       typedef Aws::Utils::Outcome<DescribeStepResult, EMRError> DescribeStepOutcome;
@@ -176,6 +199,8 @@ namespace Aws
       typedef Aws::Utils::Outcome<GetBlockPublicAccessConfigurationResult, EMRError> GetBlockPublicAccessConfigurationOutcome;
       typedef Aws::Utils::Outcome<GetClusterSessionCredentialsResult, EMRError> GetClusterSessionCredentialsOutcome;
       typedef Aws::Utils::Outcome<GetManagedScalingPolicyResult, EMRError> GetManagedScalingPolicyOutcome;
+      typedef Aws::Utils::Outcome<GetOnClusterAppUIPresignedURLResult, EMRError> GetOnClusterAppUIPresignedURLOutcome;
+      typedef Aws::Utils::Outcome<GetPersistentAppUIPresignedURLResult, EMRError> GetPersistentAppUIPresignedURLOutcome;
       typedef Aws::Utils::Outcome<GetStudioSessionMappingResult, EMRError> GetStudioSessionMappingOutcome;
       typedef Aws::Utils::Outcome<ListBootstrapActionsResult, EMRError> ListBootstrapActionsOutcome;
       typedef Aws::Utils::Outcome<ListClustersResult, EMRError> ListClustersOutcome;
@@ -188,6 +213,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<ListStepsResult, EMRError> ListStepsOutcome;
       typedef Aws::Utils::Outcome<ListStudioSessionMappingsResult, EMRError> ListStudioSessionMappingsOutcome;
       typedef Aws::Utils::Outcome<ListStudiosResult, EMRError> ListStudiosOutcome;
+      typedef Aws::Utils::Outcome<ListSupportedInstanceTypesResult, EMRError> ListSupportedInstanceTypesOutcome;
       typedef Aws::Utils::Outcome<ModifyClusterResult, EMRError> ModifyClusterOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EMRError> ModifyInstanceFleetOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EMRError> ModifyInstanceGroupsOutcome;
@@ -200,7 +226,9 @@ namespace Aws
       typedef Aws::Utils::Outcome<RemoveManagedScalingPolicyResult, EMRError> RemoveManagedScalingPolicyOutcome;
       typedef Aws::Utils::Outcome<RemoveTagsResult, EMRError> RemoveTagsOutcome;
       typedef Aws::Utils::Outcome<RunJobFlowResult, EMRError> RunJobFlowOutcome;
+      typedef Aws::Utils::Outcome<Aws::NoResult, EMRError> SetKeepJobFlowAliveWhenNoStepsOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EMRError> SetTerminationProtectionOutcome;
+      typedef Aws::Utils::Outcome<Aws::NoResult, EMRError> SetUnhealthyNodeReplacementOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EMRError> SetVisibleToAllUsersOutcome;
       typedef Aws::Utils::Outcome<StartNotebookExecutionResult, EMRError> StartNotebookExecutionOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EMRError> StopNotebookExecutionOutcome;
@@ -215,6 +243,7 @@ namespace Aws
       typedef std::future<AddJobFlowStepsOutcome> AddJobFlowStepsOutcomeCallable;
       typedef std::future<AddTagsOutcome> AddTagsOutcomeCallable;
       typedef std::future<CancelStepsOutcome> CancelStepsOutcomeCallable;
+      typedef std::future<CreatePersistentAppUIOutcome> CreatePersistentAppUIOutcomeCallable;
       typedef std::future<CreateSecurityConfigurationOutcome> CreateSecurityConfigurationOutcomeCallable;
       typedef std::future<CreateStudioOutcome> CreateStudioOutcomeCallable;
       typedef std::future<CreateStudioSessionMappingOutcome> CreateStudioSessionMappingOutcomeCallable;
@@ -223,6 +252,7 @@ namespace Aws
       typedef std::future<DeleteStudioSessionMappingOutcome> DeleteStudioSessionMappingOutcomeCallable;
       typedef std::future<DescribeClusterOutcome> DescribeClusterOutcomeCallable;
       typedef std::future<DescribeNotebookExecutionOutcome> DescribeNotebookExecutionOutcomeCallable;
+      typedef std::future<DescribePersistentAppUIOutcome> DescribePersistentAppUIOutcomeCallable;
       typedef std::future<DescribeReleaseLabelOutcome> DescribeReleaseLabelOutcomeCallable;
       typedef std::future<DescribeSecurityConfigurationOutcome> DescribeSecurityConfigurationOutcomeCallable;
       typedef std::future<DescribeStepOutcome> DescribeStepOutcomeCallable;
@@ -231,6 +261,8 @@ namespace Aws
       typedef std::future<GetBlockPublicAccessConfigurationOutcome> GetBlockPublicAccessConfigurationOutcomeCallable;
       typedef std::future<GetClusterSessionCredentialsOutcome> GetClusterSessionCredentialsOutcomeCallable;
       typedef std::future<GetManagedScalingPolicyOutcome> GetManagedScalingPolicyOutcomeCallable;
+      typedef std::future<GetOnClusterAppUIPresignedURLOutcome> GetOnClusterAppUIPresignedURLOutcomeCallable;
+      typedef std::future<GetPersistentAppUIPresignedURLOutcome> GetPersistentAppUIPresignedURLOutcomeCallable;
       typedef std::future<GetStudioSessionMappingOutcome> GetStudioSessionMappingOutcomeCallable;
       typedef std::future<ListBootstrapActionsOutcome> ListBootstrapActionsOutcomeCallable;
       typedef std::future<ListClustersOutcome> ListClustersOutcomeCallable;
@@ -243,6 +275,7 @@ namespace Aws
       typedef std::future<ListStepsOutcome> ListStepsOutcomeCallable;
       typedef std::future<ListStudioSessionMappingsOutcome> ListStudioSessionMappingsOutcomeCallable;
       typedef std::future<ListStudiosOutcome> ListStudiosOutcomeCallable;
+      typedef std::future<ListSupportedInstanceTypesOutcome> ListSupportedInstanceTypesOutcomeCallable;
       typedef std::future<ModifyClusterOutcome> ModifyClusterOutcomeCallable;
       typedef std::future<ModifyInstanceFleetOutcome> ModifyInstanceFleetOutcomeCallable;
       typedef std::future<ModifyInstanceGroupsOutcome> ModifyInstanceGroupsOutcomeCallable;
@@ -255,7 +288,9 @@ namespace Aws
       typedef std::future<RemoveManagedScalingPolicyOutcome> RemoveManagedScalingPolicyOutcomeCallable;
       typedef std::future<RemoveTagsOutcome> RemoveTagsOutcomeCallable;
       typedef std::future<RunJobFlowOutcome> RunJobFlowOutcomeCallable;
+      typedef std::future<SetKeepJobFlowAliveWhenNoStepsOutcome> SetKeepJobFlowAliveWhenNoStepsOutcomeCallable;
       typedef std::future<SetTerminationProtectionOutcome> SetTerminationProtectionOutcomeCallable;
+      typedef std::future<SetUnhealthyNodeReplacementOutcome> SetUnhealthyNodeReplacementOutcomeCallable;
       typedef std::future<SetVisibleToAllUsersOutcome> SetVisibleToAllUsersOutcomeCallable;
       typedef std::future<StartNotebookExecutionOutcome> StartNotebookExecutionOutcomeCallable;
       typedef std::future<StopNotebookExecutionOutcome> StopNotebookExecutionOutcomeCallable;
@@ -273,6 +308,7 @@ namespace Aws
     typedef std::function<void(const EMRClient*, const Model::AddJobFlowStepsRequest&, const Model::AddJobFlowStepsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AddJobFlowStepsResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::AddTagsRequest&, const Model::AddTagsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AddTagsResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::CancelStepsRequest&, const Model::CancelStepsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CancelStepsResponseReceivedHandler;
+    typedef std::function<void(const EMRClient*, const Model::CreatePersistentAppUIRequest&, const Model::CreatePersistentAppUIOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreatePersistentAppUIResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::CreateSecurityConfigurationRequest&, const Model::CreateSecurityConfigurationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateSecurityConfigurationResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::CreateStudioRequest&, const Model::CreateStudioOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateStudioResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::CreateStudioSessionMappingRequest&, const Model::CreateStudioSessionMappingOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateStudioSessionMappingResponseReceivedHandler;
@@ -281,6 +317,7 @@ namespace Aws
     typedef std::function<void(const EMRClient*, const Model::DeleteStudioSessionMappingRequest&, const Model::DeleteStudioSessionMappingOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteStudioSessionMappingResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::DescribeClusterRequest&, const Model::DescribeClusterOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeClusterResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::DescribeNotebookExecutionRequest&, const Model::DescribeNotebookExecutionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeNotebookExecutionResponseReceivedHandler;
+    typedef std::function<void(const EMRClient*, const Model::DescribePersistentAppUIRequest&, const Model::DescribePersistentAppUIOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribePersistentAppUIResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::DescribeReleaseLabelRequest&, const Model::DescribeReleaseLabelOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeReleaseLabelResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::DescribeSecurityConfigurationRequest&, const Model::DescribeSecurityConfigurationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSecurityConfigurationResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::DescribeStepRequest&, const Model::DescribeStepOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeStepResponseReceivedHandler;
@@ -289,6 +326,8 @@ namespace Aws
     typedef std::function<void(const EMRClient*, const Model::GetBlockPublicAccessConfigurationRequest&, const Model::GetBlockPublicAccessConfigurationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetBlockPublicAccessConfigurationResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::GetClusterSessionCredentialsRequest&, const Model::GetClusterSessionCredentialsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetClusterSessionCredentialsResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::GetManagedScalingPolicyRequest&, const Model::GetManagedScalingPolicyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetManagedScalingPolicyResponseReceivedHandler;
+    typedef std::function<void(const EMRClient*, const Model::GetOnClusterAppUIPresignedURLRequest&, const Model::GetOnClusterAppUIPresignedURLOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetOnClusterAppUIPresignedURLResponseReceivedHandler;
+    typedef std::function<void(const EMRClient*, const Model::GetPersistentAppUIPresignedURLRequest&, const Model::GetPersistentAppUIPresignedURLOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetPersistentAppUIPresignedURLResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::GetStudioSessionMappingRequest&, const Model::GetStudioSessionMappingOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetStudioSessionMappingResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::ListBootstrapActionsRequest&, const Model::ListBootstrapActionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListBootstrapActionsResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::ListClustersRequest&, const Model::ListClustersOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListClustersResponseReceivedHandler;
@@ -301,6 +340,7 @@ namespace Aws
     typedef std::function<void(const EMRClient*, const Model::ListStepsRequest&, const Model::ListStepsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListStepsResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::ListStudioSessionMappingsRequest&, const Model::ListStudioSessionMappingsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListStudioSessionMappingsResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::ListStudiosRequest&, const Model::ListStudiosOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListStudiosResponseReceivedHandler;
+    typedef std::function<void(const EMRClient*, const Model::ListSupportedInstanceTypesRequest&, const Model::ListSupportedInstanceTypesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListSupportedInstanceTypesResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::ModifyClusterRequest&, const Model::ModifyClusterOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyClusterResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::ModifyInstanceFleetRequest&, const Model::ModifyInstanceFleetOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyInstanceFleetResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::ModifyInstanceGroupsRequest&, const Model::ModifyInstanceGroupsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyInstanceGroupsResponseReceivedHandler;
@@ -313,7 +353,9 @@ namespace Aws
     typedef std::function<void(const EMRClient*, const Model::RemoveManagedScalingPolicyRequest&, const Model::RemoveManagedScalingPolicyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RemoveManagedScalingPolicyResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::RemoveTagsRequest&, const Model::RemoveTagsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RemoveTagsResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::RunJobFlowRequest&, const Model::RunJobFlowOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RunJobFlowResponseReceivedHandler;
+    typedef std::function<void(const EMRClient*, const Model::SetKeepJobFlowAliveWhenNoStepsRequest&, const Model::SetKeepJobFlowAliveWhenNoStepsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > SetKeepJobFlowAliveWhenNoStepsResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::SetTerminationProtectionRequest&, const Model::SetTerminationProtectionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > SetTerminationProtectionResponseReceivedHandler;
+    typedef std::function<void(const EMRClient*, const Model::SetUnhealthyNodeReplacementRequest&, const Model::SetUnhealthyNodeReplacementOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > SetUnhealthyNodeReplacementResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::SetVisibleToAllUsersRequest&, const Model::SetVisibleToAllUsersOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > SetVisibleToAllUsersResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::StartNotebookExecutionRequest&, const Model::StartNotebookExecutionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StartNotebookExecutionResponseReceivedHandler;
     typedef std::function<void(const EMRClient*, const Model::StopNotebookExecutionRequest&, const Model::StopNotebookExecutionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StopNotebookExecutionResponseReceivedHandler;

@@ -29,11 +29,12 @@ namespace Model
   class ListActivatedRulesInRuleGroupResult
   {
   public:
-    AWS_WAFREGIONAL_API ListActivatedRulesInRuleGroupResult();
+    AWS_WAFREGIONAL_API ListActivatedRulesInRuleGroupResult() = default;
     AWS_WAFREGIONAL_API ListActivatedRulesInRuleGroupResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_WAFREGIONAL_API ListActivatedRulesInRuleGroupResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>If you have more <code>ActivatedRules</code> than the number that you
      * specified for <code>Limit</code> in the request, the response includes a
@@ -42,133 +43,44 @@ namespace Model
      * <code>NextMarker</code> value from the response in the <code>NextMarker</code>
      * value in the next request.</p>
      */
-    inline const Aws::String& GetNextMarker() const{ return m_nextMarker; }
+    inline const Aws::String& GetNextMarker() const { return m_nextMarker; }
+    template<typename NextMarkerT = Aws::String>
+    void SetNextMarker(NextMarkerT&& value) { m_nextMarkerHasBeenSet = true; m_nextMarker = std::forward<NextMarkerT>(value); }
+    template<typename NextMarkerT = Aws::String>
+    ListActivatedRulesInRuleGroupResult& WithNextMarker(NextMarkerT&& value) { SetNextMarker(std::forward<NextMarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If you have more <code>ActivatedRules</code> than the number that you
-     * specified for <code>Limit</code> in the request, the response includes a
-     * <code>NextMarker</code> value. To list more <code>ActivatedRules</code>, submit
-     * another <code>ListActivatedRulesInRuleGroup</code> request, and specify the
-     * <code>NextMarker</code> value from the response in the <code>NextMarker</code>
-     * value in the next request.</p>
-     */
-    inline void SetNextMarker(const Aws::String& value) { m_nextMarker = value; }
-
-    /**
-     * <p>If you have more <code>ActivatedRules</code> than the number that you
-     * specified for <code>Limit</code> in the request, the response includes a
-     * <code>NextMarker</code> value. To list more <code>ActivatedRules</code>, submit
-     * another <code>ListActivatedRulesInRuleGroup</code> request, and specify the
-     * <code>NextMarker</code> value from the response in the <code>NextMarker</code>
-     * value in the next request.</p>
-     */
-    inline void SetNextMarker(Aws::String&& value) { m_nextMarker = std::move(value); }
-
-    /**
-     * <p>If you have more <code>ActivatedRules</code> than the number that you
-     * specified for <code>Limit</code> in the request, the response includes a
-     * <code>NextMarker</code> value. To list more <code>ActivatedRules</code>, submit
-     * another <code>ListActivatedRulesInRuleGroup</code> request, and specify the
-     * <code>NextMarker</code> value from the response in the <code>NextMarker</code>
-     * value in the next request.</p>
-     */
-    inline void SetNextMarker(const char* value) { m_nextMarker.assign(value); }
-
-    /**
-     * <p>If you have more <code>ActivatedRules</code> than the number that you
-     * specified for <code>Limit</code> in the request, the response includes a
-     * <code>NextMarker</code> value. To list more <code>ActivatedRules</code>, submit
-     * another <code>ListActivatedRulesInRuleGroup</code> request, and specify the
-     * <code>NextMarker</code> value from the response in the <code>NextMarker</code>
-     * value in the next request.</p>
-     */
-    inline ListActivatedRulesInRuleGroupResult& WithNextMarker(const Aws::String& value) { SetNextMarker(value); return *this;}
-
-    /**
-     * <p>If you have more <code>ActivatedRules</code> than the number that you
-     * specified for <code>Limit</code> in the request, the response includes a
-     * <code>NextMarker</code> value. To list more <code>ActivatedRules</code>, submit
-     * another <code>ListActivatedRulesInRuleGroup</code> request, and specify the
-     * <code>NextMarker</code> value from the response in the <code>NextMarker</code>
-     * value in the next request.</p>
-     */
-    inline ListActivatedRulesInRuleGroupResult& WithNextMarker(Aws::String&& value) { SetNextMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>If you have more <code>ActivatedRules</code> than the number that you
-     * specified for <code>Limit</code> in the request, the response includes a
-     * <code>NextMarker</code> value. To list more <code>ActivatedRules</code>, submit
-     * another <code>ListActivatedRulesInRuleGroup</code> request, and specify the
-     * <code>NextMarker</code> value from the response in the <code>NextMarker</code>
-     * value in the next request.</p>
-     */
-    inline ListActivatedRulesInRuleGroupResult& WithNextMarker(const char* value) { SetNextMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of <code>ActivatedRules</code> objects.</p>
      */
-    inline const Aws::Vector<ActivatedRule>& GetActivatedRules() const{ return m_activatedRules; }
+    inline const Aws::Vector<ActivatedRule>& GetActivatedRules() const { return m_activatedRules; }
+    template<typename ActivatedRulesT = Aws::Vector<ActivatedRule>>
+    void SetActivatedRules(ActivatedRulesT&& value) { m_activatedRulesHasBeenSet = true; m_activatedRules = std::forward<ActivatedRulesT>(value); }
+    template<typename ActivatedRulesT = Aws::Vector<ActivatedRule>>
+    ListActivatedRulesInRuleGroupResult& WithActivatedRules(ActivatedRulesT&& value) { SetActivatedRules(std::forward<ActivatedRulesT>(value)); return *this;}
+    template<typename ActivatedRulesT = ActivatedRule>
+    ListActivatedRulesInRuleGroupResult& AddActivatedRules(ActivatedRulesT&& value) { m_activatedRulesHasBeenSet = true; m_activatedRules.emplace_back(std::forward<ActivatedRulesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of <code>ActivatedRules</code> objects.</p>
-     */
-    inline void SetActivatedRules(const Aws::Vector<ActivatedRule>& value) { m_activatedRules = value; }
-
-    /**
-     * <p>An array of <code>ActivatedRules</code> objects.</p>
-     */
-    inline void SetActivatedRules(Aws::Vector<ActivatedRule>&& value) { m_activatedRules = std::move(value); }
-
-    /**
-     * <p>An array of <code>ActivatedRules</code> objects.</p>
-     */
-    inline ListActivatedRulesInRuleGroupResult& WithActivatedRules(const Aws::Vector<ActivatedRule>& value) { SetActivatedRules(value); return *this;}
-
-    /**
-     * <p>An array of <code>ActivatedRules</code> objects.</p>
-     */
-    inline ListActivatedRulesInRuleGroupResult& WithActivatedRules(Aws::Vector<ActivatedRule>&& value) { SetActivatedRules(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of <code>ActivatedRules</code> objects.</p>
-     */
-    inline ListActivatedRulesInRuleGroupResult& AddActivatedRules(const ActivatedRule& value) { m_activatedRules.push_back(value); return *this; }
-
-    /**
-     * <p>An array of <code>ActivatedRules</code> objects.</p>
-     */
-    inline ListActivatedRulesInRuleGroupResult& AddActivatedRules(ActivatedRule&& value) { m_activatedRules.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListActivatedRulesInRuleGroupResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListActivatedRulesInRuleGroupResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListActivatedRulesInRuleGroupResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListActivatedRulesInRuleGroupResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nextMarker;
+    bool m_nextMarkerHasBeenSet = false;
 
     Aws::Vector<ActivatedRule> m_activatedRules;
+    bool m_activatedRulesHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

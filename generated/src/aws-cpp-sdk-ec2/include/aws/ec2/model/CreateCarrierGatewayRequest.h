@@ -24,7 +24,7 @@ namespace Model
   class CreateCarrierGatewayRequest : public EC2Request
   {
   public:
-    AWS_EC2_API CreateCarrierGatewayRequest();
+    AWS_EC2_API CreateCarrierGatewayRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,185 +39,59 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The ID of the VPC to associate with the carrier gateway.</p>
      */
-    inline const Aws::String& GetVpcId() const{ return m_vpcId; }
-
-    /**
-     * <p>The ID of the VPC to associate with the carrier gateway.</p>
-     */
+    inline const Aws::String& GetVpcId() const { return m_vpcId; }
     inline bool VpcIdHasBeenSet() const { return m_vpcIdHasBeenSet; }
+    template<typename VpcIdT = Aws::String>
+    void SetVpcId(VpcIdT&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::forward<VpcIdT>(value); }
+    template<typename VpcIdT = Aws::String>
+    CreateCarrierGatewayRequest& WithVpcId(VpcIdT&& value) { SetVpcId(std::forward<VpcIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the VPC to associate with the carrier gateway.</p>
-     */
-    inline void SetVpcId(const Aws::String& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
-
-    /**
-     * <p>The ID of the VPC to associate with the carrier gateway.</p>
-     */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
-
-    /**
-     * <p>The ID of the VPC to associate with the carrier gateway.</p>
-     */
-    inline void SetVpcId(const char* value) { m_vpcIdHasBeenSet = true; m_vpcId.assign(value); }
-
-    /**
-     * <p>The ID of the VPC to associate with the carrier gateway.</p>
-     */
-    inline CreateCarrierGatewayRequest& WithVpcId(const Aws::String& value) { SetVpcId(value); return *this;}
-
-    /**
-     * <p>The ID of the VPC to associate with the carrier gateway.</p>
-     */
-    inline CreateCarrierGatewayRequest& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the VPC to associate with the carrier gateway.</p>
-     */
-    inline CreateCarrierGatewayRequest& WithVpcId(const char* value) { SetVpcId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags to associate with the carrier gateway.</p>
      */
-    inline const Aws::Vector<TagSpecification>& GetTagSpecifications() const{ return m_tagSpecifications; }
-
-    /**
-     * <p>The tags to associate with the carrier gateway.</p>
-     */
+    inline const Aws::Vector<TagSpecification>& GetTagSpecifications() const { return m_tagSpecifications; }
     inline bool TagSpecificationsHasBeenSet() const { return m_tagSpecificationsHasBeenSet; }
+    template<typename TagSpecificationsT = Aws::Vector<TagSpecification>>
+    void SetTagSpecifications(TagSpecificationsT&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = std::forward<TagSpecificationsT>(value); }
+    template<typename TagSpecificationsT = Aws::Vector<TagSpecification>>
+    CreateCarrierGatewayRequest& WithTagSpecifications(TagSpecificationsT&& value) { SetTagSpecifications(std::forward<TagSpecificationsT>(value)); return *this;}
+    template<typename TagSpecificationsT = TagSpecification>
+    CreateCarrierGatewayRequest& AddTagSpecifications(TagSpecificationsT&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.emplace_back(std::forward<TagSpecificationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The tags to associate with the carrier gateway.</p>
-     */
-    inline void SetTagSpecifications(const Aws::Vector<TagSpecification>& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = value; }
-
-    /**
-     * <p>The tags to associate with the carrier gateway.</p>
-     */
-    inline void SetTagSpecifications(Aws::Vector<TagSpecification>&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = std::move(value); }
-
-    /**
-     * <p>The tags to associate with the carrier gateway.</p>
-     */
-    inline CreateCarrierGatewayRequest& WithTagSpecifications(const Aws::Vector<TagSpecification>& value) { SetTagSpecifications(value); return *this;}
-
-    /**
-     * <p>The tags to associate with the carrier gateway.</p>
-     */
-    inline CreateCarrierGatewayRequest& WithTagSpecifications(Aws::Vector<TagSpecification>&& value) { SetTagSpecifications(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags to associate with the carrier gateway.</p>
-     */
-    inline CreateCarrierGatewayRequest& AddTagSpecifications(const TagSpecification& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.push_back(value); return *this; }
-
-    /**
-     * <p>The tags to associate with the carrier gateway.</p>
-     */
-    inline CreateCarrierGatewayRequest& AddTagSpecifications(TagSpecification&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline CreateCarrierGatewayRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
      * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
+     * href="https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html">How
      * to ensure idempotency</a>.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
-     * to ensure idempotency</a>.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
-     * to ensure idempotency</a>.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
-     * to ensure idempotency</a>.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
-     * to ensure idempotency</a>.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
-     * to ensure idempotency</a>.</p>
-     */
-    inline CreateCarrierGatewayRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
-     * to ensure idempotency</a>.</p>
-     */
-    inline CreateCarrierGatewayRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
-     * to ensure idempotency</a>.</p>
-     */
-    inline CreateCarrierGatewayRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateCarrierGatewayRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_vpcId;
@@ -226,11 +100,11 @@ namespace Model
     Aws::Vector<TagSpecification> m_tagSpecifications;
     bool m_tagSpecificationsHasBeenSet = false;
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
   };
 
 } // namespace Model

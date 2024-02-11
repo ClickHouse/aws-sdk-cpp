@@ -31,93 +31,35 @@ namespace Model
   class LifeCycleLastCutoverInitiated
   {
   public:
-    AWS_MGN_API LifeCycleLastCutoverInitiated();
+    AWS_MGN_API LifeCycleLastCutoverInitiated() = default;
     AWS_MGN_API LifeCycleLastCutoverInitiated(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API LifeCycleLastCutoverInitiated& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p/>
      */
-    inline const Aws::String& GetApiCallDateTime() const{ return m_apiCallDateTime; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetApiCallDateTime() const { return m_apiCallDateTime; }
     inline bool ApiCallDateTimeHasBeenSet() const { return m_apiCallDateTimeHasBeenSet; }
+    template<typename ApiCallDateTimeT = Aws::String>
+    void SetApiCallDateTime(ApiCallDateTimeT&& value) { m_apiCallDateTimeHasBeenSet = true; m_apiCallDateTime = std::forward<ApiCallDateTimeT>(value); }
+    template<typename ApiCallDateTimeT = Aws::String>
+    LifeCycleLastCutoverInitiated& WithApiCallDateTime(ApiCallDateTimeT&& value) { SetApiCallDateTime(std::forward<ApiCallDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p/>
-     */
-    inline void SetApiCallDateTime(const Aws::String& value) { m_apiCallDateTimeHasBeenSet = true; m_apiCallDateTime = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetApiCallDateTime(Aws::String&& value) { m_apiCallDateTimeHasBeenSet = true; m_apiCallDateTime = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetApiCallDateTime(const char* value) { m_apiCallDateTimeHasBeenSet = true; m_apiCallDateTime.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline LifeCycleLastCutoverInitiated& WithApiCallDateTime(const Aws::String& value) { SetApiCallDateTime(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline LifeCycleLastCutoverInitiated& WithApiCallDateTime(Aws::String&& value) { SetApiCallDateTime(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline LifeCycleLastCutoverInitiated& WithApiCallDateTime(const char* value) { SetApiCallDateTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Lifecycle last Cutover initiated by Job ID.</p>
      */
-    inline const Aws::String& GetJobID() const{ return m_jobID; }
-
-    /**
-     * <p>Lifecycle last Cutover initiated by Job ID.</p>
-     */
+    inline const Aws::String& GetJobID() const { return m_jobID; }
     inline bool JobIDHasBeenSet() const { return m_jobIDHasBeenSet; }
-
-    /**
-     * <p>Lifecycle last Cutover initiated by Job ID.</p>
-     */
-    inline void SetJobID(const Aws::String& value) { m_jobIDHasBeenSet = true; m_jobID = value; }
-
-    /**
-     * <p>Lifecycle last Cutover initiated by Job ID.</p>
-     */
-    inline void SetJobID(Aws::String&& value) { m_jobIDHasBeenSet = true; m_jobID = std::move(value); }
-
-    /**
-     * <p>Lifecycle last Cutover initiated by Job ID.</p>
-     */
-    inline void SetJobID(const char* value) { m_jobIDHasBeenSet = true; m_jobID.assign(value); }
-
-    /**
-     * <p>Lifecycle last Cutover initiated by Job ID.</p>
-     */
-    inline LifeCycleLastCutoverInitiated& WithJobID(const Aws::String& value) { SetJobID(value); return *this;}
-
-    /**
-     * <p>Lifecycle last Cutover initiated by Job ID.</p>
-     */
-    inline LifeCycleLastCutoverInitiated& WithJobID(Aws::String&& value) { SetJobID(std::move(value)); return *this;}
-
-    /**
-     * <p>Lifecycle last Cutover initiated by Job ID.</p>
-     */
-    inline LifeCycleLastCutoverInitiated& WithJobID(const char* value) { SetJobID(value); return *this;}
-
+    template<typename JobIDT = Aws::String>
+    void SetJobID(JobIDT&& value) { m_jobIDHasBeenSet = true; m_jobID = std::forward<JobIDT>(value); }
+    template<typename JobIDT = Aws::String>
+    LifeCycleLastCutoverInitiated& WithJobID(JobIDT&& value) { SetJobID(std::forward<JobIDT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_apiCallDateTime;

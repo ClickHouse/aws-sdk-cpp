@@ -30,108 +30,54 @@ namespace Model
   class BatchCreateChannelMembershipResult
   {
   public:
-    AWS_CHIMESDKMESSAGING_API BatchCreateChannelMembershipResult();
+    AWS_CHIMESDKMESSAGING_API BatchCreateChannelMembershipResult() = default;
     AWS_CHIMESDKMESSAGING_API BatchCreateChannelMembershipResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CHIMESDKMESSAGING_API BatchCreateChannelMembershipResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The list of channel memberships in the response.</p>
      */
-    inline const BatchChannelMemberships& GetBatchChannelMemberships() const{ return m_batchChannelMemberships; }
+    inline const BatchChannelMemberships& GetBatchChannelMemberships() const { return m_batchChannelMemberships; }
+    template<typename BatchChannelMembershipsT = BatchChannelMemberships>
+    void SetBatchChannelMemberships(BatchChannelMembershipsT&& value) { m_batchChannelMembershipsHasBeenSet = true; m_batchChannelMemberships = std::forward<BatchChannelMembershipsT>(value); }
+    template<typename BatchChannelMembershipsT = BatchChannelMemberships>
+    BatchCreateChannelMembershipResult& WithBatchChannelMemberships(BatchChannelMembershipsT&& value) { SetBatchChannelMemberships(std::forward<BatchChannelMembershipsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The list of channel memberships in the response.</p>
-     */
-    inline void SetBatchChannelMemberships(const BatchChannelMemberships& value) { m_batchChannelMemberships = value; }
-
-    /**
-     * <p>The list of channel memberships in the response.</p>
-     */
-    inline void SetBatchChannelMemberships(BatchChannelMemberships&& value) { m_batchChannelMemberships = std::move(value); }
-
-    /**
-     * <p>The list of channel memberships in the response.</p>
-     */
-    inline BatchCreateChannelMembershipResult& WithBatchChannelMemberships(const BatchChannelMemberships& value) { SetBatchChannelMemberships(value); return *this;}
-
-    /**
-     * <p>The list of channel memberships in the response.</p>
-     */
-    inline BatchCreateChannelMembershipResult& WithBatchChannelMemberships(BatchChannelMemberships&& value) { SetBatchChannelMemberships(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the action fails for one or more of the memberships in the request, a list
      * of the memberships is returned, along with error codes and error messages.</p>
      */
-    inline const Aws::Vector<BatchCreateChannelMembershipError>& GetErrors() const{ return m_errors; }
+    inline const Aws::Vector<BatchCreateChannelMembershipError>& GetErrors() const { return m_errors; }
+    template<typename ErrorsT = Aws::Vector<BatchCreateChannelMembershipError>>
+    void SetErrors(ErrorsT&& value) { m_errorsHasBeenSet = true; m_errors = std::forward<ErrorsT>(value); }
+    template<typename ErrorsT = Aws::Vector<BatchCreateChannelMembershipError>>
+    BatchCreateChannelMembershipResult& WithErrors(ErrorsT&& value) { SetErrors(std::forward<ErrorsT>(value)); return *this;}
+    template<typename ErrorsT = BatchCreateChannelMembershipError>
+    BatchCreateChannelMembershipResult& AddErrors(ErrorsT&& value) { m_errorsHasBeenSet = true; m_errors.emplace_back(std::forward<ErrorsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>If the action fails for one or more of the memberships in the request, a list
-     * of the memberships is returned, along with error codes and error messages.</p>
-     */
-    inline void SetErrors(const Aws::Vector<BatchCreateChannelMembershipError>& value) { m_errors = value; }
-
-    /**
-     * <p>If the action fails for one or more of the memberships in the request, a list
-     * of the memberships is returned, along with error codes and error messages.</p>
-     */
-    inline void SetErrors(Aws::Vector<BatchCreateChannelMembershipError>&& value) { m_errors = std::move(value); }
-
-    /**
-     * <p>If the action fails for one or more of the memberships in the request, a list
-     * of the memberships is returned, along with error codes and error messages.</p>
-     */
-    inline BatchCreateChannelMembershipResult& WithErrors(const Aws::Vector<BatchCreateChannelMembershipError>& value) { SetErrors(value); return *this;}
-
-    /**
-     * <p>If the action fails for one or more of the memberships in the request, a list
-     * of the memberships is returned, along with error codes and error messages.</p>
-     */
-    inline BatchCreateChannelMembershipResult& WithErrors(Aws::Vector<BatchCreateChannelMembershipError>&& value) { SetErrors(std::move(value)); return *this;}
-
-    /**
-     * <p>If the action fails for one or more of the memberships in the request, a list
-     * of the memberships is returned, along with error codes and error messages.</p>
-     */
-    inline BatchCreateChannelMembershipResult& AddErrors(const BatchCreateChannelMembershipError& value) { m_errors.push_back(value); return *this; }
-
-    /**
-     * <p>If the action fails for one or more of the memberships in the request, a list
-     * of the memberships is returned, along with error codes and error messages.</p>
-     */
-    inline BatchCreateChannelMembershipResult& AddErrors(BatchCreateChannelMembershipError&& value) { m_errors.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline BatchCreateChannelMembershipResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline BatchCreateChannelMembershipResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline BatchCreateChannelMembershipResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    BatchCreateChannelMembershipResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     BatchChannelMemberships m_batchChannelMemberships;
+    bool m_batchChannelMembershipsHasBeenSet = false;
 
     Aws::Vector<BatchCreateChannelMembershipError> m_errors;
+    bool m_errorsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

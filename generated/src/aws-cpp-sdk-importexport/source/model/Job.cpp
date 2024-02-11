@@ -20,23 +20,7 @@ namespace ImportExport
 namespace Model
 {
 
-Job::Job() : 
-    m_jobIdHasBeenSet(false),
-    m_creationDateHasBeenSet(false),
-    m_isCanceled(false),
-    m_isCanceledHasBeenSet(false),
-    m_jobType(JobType::NOT_SET),
-    m_jobTypeHasBeenSet(false)
-{
-}
-
-Job::Job(const XmlNode& xmlNode) : 
-    m_jobIdHasBeenSet(false),
-    m_creationDateHasBeenSet(false),
-    m_isCanceled(false),
-    m_isCanceledHasBeenSet(false),
-    m_jobType(JobType::NOT_SET),
-    m_jobTypeHasBeenSet(false)
+Job::Job(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -68,7 +52,7 @@ Job& Job::operator =(const XmlNode& xmlNode)
     XmlNode jobTypeNode = resultNode.FirstChild("JobType");
     if(!jobTypeNode.IsNull())
     {
-      m_jobType = JobTypeMapper::GetJobTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(jobTypeNode.GetText()).c_str()).c_str());
+      m_jobType = JobTypeMapper::GetJobTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(jobTypeNode.GetText()).c_str()));
       m_jobTypeHasBeenSet = true;
     }
   }
@@ -95,7 +79,7 @@ void Job::OutputToStream(Aws::OStream& oStream, const char* location, unsigned i
 
   if(m_jobTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".JobType=" << JobTypeMapper::GetNameForJobType(m_jobType) << "&";
+      oStream << location << index << locationValue << ".JobType=" << StringUtils::URLEncode(JobTypeMapper::GetNameForJobType(m_jobType)) << "&";
   }
 
 }
@@ -116,7 +100,7 @@ void Job::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_jobTypeHasBeenSet)
   {
-      oStream << location << ".JobType=" << JobTypeMapper::GetNameForJobType(m_jobType) << "&";
+      oStream << location << ".JobType=" << StringUtils::URLEncode(JobTypeMapper::GetNameForJobType(m_jobType)) << "&";
   }
 }
 

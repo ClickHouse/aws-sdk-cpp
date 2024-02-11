@@ -29,132 +29,56 @@ namespace Model
   class DescribeEndpointSettingsResult
   {
   public:
-    AWS_DATABASEMIGRATIONSERVICE_API DescribeEndpointSettingsResult();
+    AWS_DATABASEMIGRATIONSERVICE_API DescribeEndpointSettingsResult() = default;
     AWS_DATABASEMIGRATIONSERVICE_API DescribeEndpointSettingsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DATABASEMIGRATIONSERVICE_API DescribeEndpointSettingsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>An optional pagination token provided by a previous request. If this
      * parameter is specified, the response includes only records beyond the marker, up
      * to the value specified by <code>MaxRecords</code>.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
+    inline const Aws::String& GetMarker() const { return m_marker; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeEndpointSettingsResult& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_marker = value; }
-
-    /**
-     * <p>An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
-
-    /**
-     * <p>An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(const char* value) { m_marker.assign(value); }
-
-    /**
-     * <p>An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>.</p>
-     */
-    inline DescribeEndpointSettingsResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>.</p>
-     */
-    inline DescribeEndpointSettingsResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>.</p>
-     */
-    inline DescribeEndpointSettingsResult& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Descriptions of the endpoint settings available for your source or target
      * database engine.</p>
      */
-    inline const Aws::Vector<EndpointSetting>& GetEndpointSettings() const{ return m_endpointSettings; }
+    inline const Aws::Vector<EndpointSetting>& GetEndpointSettings() const { return m_endpointSettings; }
+    template<typename EndpointSettingsT = Aws::Vector<EndpointSetting>>
+    void SetEndpointSettings(EndpointSettingsT&& value) { m_endpointSettingsHasBeenSet = true; m_endpointSettings = std::forward<EndpointSettingsT>(value); }
+    template<typename EndpointSettingsT = Aws::Vector<EndpointSetting>>
+    DescribeEndpointSettingsResult& WithEndpointSettings(EndpointSettingsT&& value) { SetEndpointSettings(std::forward<EndpointSettingsT>(value)); return *this;}
+    template<typename EndpointSettingsT = EndpointSetting>
+    DescribeEndpointSettingsResult& AddEndpointSettings(EndpointSettingsT&& value) { m_endpointSettingsHasBeenSet = true; m_endpointSettings.emplace_back(std::forward<EndpointSettingsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Descriptions of the endpoint settings available for your source or target
-     * database engine.</p>
-     */
-    inline void SetEndpointSettings(const Aws::Vector<EndpointSetting>& value) { m_endpointSettings = value; }
-
-    /**
-     * <p>Descriptions of the endpoint settings available for your source or target
-     * database engine.</p>
-     */
-    inline void SetEndpointSettings(Aws::Vector<EndpointSetting>&& value) { m_endpointSettings = std::move(value); }
-
-    /**
-     * <p>Descriptions of the endpoint settings available for your source or target
-     * database engine.</p>
-     */
-    inline DescribeEndpointSettingsResult& WithEndpointSettings(const Aws::Vector<EndpointSetting>& value) { SetEndpointSettings(value); return *this;}
-
-    /**
-     * <p>Descriptions of the endpoint settings available for your source or target
-     * database engine.</p>
-     */
-    inline DescribeEndpointSettingsResult& WithEndpointSettings(Aws::Vector<EndpointSetting>&& value) { SetEndpointSettings(std::move(value)); return *this;}
-
-    /**
-     * <p>Descriptions of the endpoint settings available for your source or target
-     * database engine.</p>
-     */
-    inline DescribeEndpointSettingsResult& AddEndpointSettings(const EndpointSetting& value) { m_endpointSettings.push_back(value); return *this; }
-
-    /**
-     * <p>Descriptions of the endpoint settings available for your source or target
-     * database engine.</p>
-     */
-    inline DescribeEndpointSettingsResult& AddEndpointSettings(EndpointSetting&& value) { m_endpointSettings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeEndpointSettingsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeEndpointSettingsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeEndpointSettingsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeEndpointSettingsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_marker;
+    bool m_markerHasBeenSet = false;
 
     Aws::Vector<EndpointSetting> m_endpointSettings;
+    bool m_endpointSettingsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

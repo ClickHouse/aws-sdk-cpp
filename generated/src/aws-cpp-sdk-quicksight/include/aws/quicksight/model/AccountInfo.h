@@ -26,264 +26,102 @@ namespace Model
 
   /**
    * <p>A structure that contains the following account information elements:</p>
-   * <ul> <li> <p>Your Amazon QuickSight account name.</p> </li> <li> <p>The edition
-   * of Amazon QuickSight that your account is using.</p> </li> <li> <p>The
-   * notification email address that is associated with the Amazon QuickSight
-   * account. </p> </li> <li> <p>The authentication type of the Amazon QuickSight
-   * account.</p> </li> <li> <p>The status of the Amazon QuickSight account's
-   * subscription.</p> </li> </ul><p><h3>See Also:</h3>   <a
+   * <ul> <li> <p>Your QuickSight account name.</p> </li> <li> <p>The edition of
+   * QuickSight that your account is using.</p> </li> <li> <p>The notification email
+   * address that is associated with the QuickSight account. </p> </li> <li> <p>The
+   * authentication type of the QuickSight account.</p> </li> <li> <p>The status of
+   * the QuickSight account's subscription.</p> </li> </ul><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/quicksight-2018-04-01/AccountInfo">AWS
    * API Reference</a></p>
    */
   class AccountInfo
   {
   public:
-    AWS_QUICKSIGHT_API AccountInfo();
+    AWS_QUICKSIGHT_API AccountInfo() = default;
     AWS_QUICKSIGHT_API AccountInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API AccountInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The account name that you provided for the Amazon QuickSight subscription in
-     * your Amazon Web Services account. You create this name when you sign up for
-     * Amazon QuickSight. It's unique over all of Amazon Web Services, and it appears
-     * only when users sign in.</p>
+     * <p>The account name that you provided for the QuickSight subscription in your
+     * Amazon Web Services account. You create this name when you sign up for
+     * QuickSight. It's unique over all of Amazon Web Services, and it appears only
+     * when users sign in.</p>
      */
-    inline const Aws::String& GetAccountName() const{ return m_accountName; }
-
-    /**
-     * <p>The account name that you provided for the Amazon QuickSight subscription in
-     * your Amazon Web Services account. You create this name when you sign up for
-     * Amazon QuickSight. It's unique over all of Amazon Web Services, and it appears
-     * only when users sign in.</p>
-     */
+    inline const Aws::String& GetAccountName() const { return m_accountName; }
     inline bool AccountNameHasBeenSet() const { return m_accountNameHasBeenSet; }
+    template<typename AccountNameT = Aws::String>
+    void SetAccountName(AccountNameT&& value) { m_accountNameHasBeenSet = true; m_accountName = std::forward<AccountNameT>(value); }
+    template<typename AccountNameT = Aws::String>
+    AccountInfo& WithAccountName(AccountNameT&& value) { SetAccountName(std::forward<AccountNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The account name that you provided for the Amazon QuickSight subscription in
-     * your Amazon Web Services account. You create this name when you sign up for
-     * Amazon QuickSight. It's unique over all of Amazon Web Services, and it appears
-     * only when users sign in.</p>
+     * <p>The edition of your QuickSight account.</p>
      */
-    inline void SetAccountName(const Aws::String& value) { m_accountNameHasBeenSet = true; m_accountName = value; }
-
-    /**
-     * <p>The account name that you provided for the Amazon QuickSight subscription in
-     * your Amazon Web Services account. You create this name when you sign up for
-     * Amazon QuickSight. It's unique over all of Amazon Web Services, and it appears
-     * only when users sign in.</p>
-     */
-    inline void SetAccountName(Aws::String&& value) { m_accountNameHasBeenSet = true; m_accountName = std::move(value); }
-
-    /**
-     * <p>The account name that you provided for the Amazon QuickSight subscription in
-     * your Amazon Web Services account. You create this name when you sign up for
-     * Amazon QuickSight. It's unique over all of Amazon Web Services, and it appears
-     * only when users sign in.</p>
-     */
-    inline void SetAccountName(const char* value) { m_accountNameHasBeenSet = true; m_accountName.assign(value); }
-
-    /**
-     * <p>The account name that you provided for the Amazon QuickSight subscription in
-     * your Amazon Web Services account. You create this name when you sign up for
-     * Amazon QuickSight. It's unique over all of Amazon Web Services, and it appears
-     * only when users sign in.</p>
-     */
-    inline AccountInfo& WithAccountName(const Aws::String& value) { SetAccountName(value); return *this;}
-
-    /**
-     * <p>The account name that you provided for the Amazon QuickSight subscription in
-     * your Amazon Web Services account. You create this name when you sign up for
-     * Amazon QuickSight. It's unique over all of Amazon Web Services, and it appears
-     * only when users sign in.</p>
-     */
-    inline AccountInfo& WithAccountName(Aws::String&& value) { SetAccountName(std::move(value)); return *this;}
-
-    /**
-     * <p>The account name that you provided for the Amazon QuickSight subscription in
-     * your Amazon Web Services account. You create this name when you sign up for
-     * Amazon QuickSight. It's unique over all of Amazon Web Services, and it appears
-     * only when users sign in.</p>
-     */
-    inline AccountInfo& WithAccountName(const char* value) { SetAccountName(value); return *this;}
-
-
-    /**
-     * <p>The edition of your Amazon QuickSight account.</p>
-     */
-    inline const Edition& GetEdition() const{ return m_edition; }
-
-    /**
-     * <p>The edition of your Amazon QuickSight account.</p>
-     */
+    inline Edition GetEdition() const { return m_edition; }
     inline bool EditionHasBeenSet() const { return m_editionHasBeenSet; }
+    inline void SetEdition(Edition value) { m_editionHasBeenSet = true; m_edition = value; }
+    inline AccountInfo& WithEdition(Edition value) { SetEdition(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The edition of your Amazon QuickSight account.</p>
+     * <p>The email address that will be used for QuickSight to send notifications
+     * regarding your Amazon Web Services account or QuickSight subscription.</p>
      */
-    inline void SetEdition(const Edition& value) { m_editionHasBeenSet = true; m_edition = value; }
-
-    /**
-     * <p>The edition of your Amazon QuickSight account.</p>
-     */
-    inline void SetEdition(Edition&& value) { m_editionHasBeenSet = true; m_edition = std::move(value); }
-
-    /**
-     * <p>The edition of your Amazon QuickSight account.</p>
-     */
-    inline AccountInfo& WithEdition(const Edition& value) { SetEdition(value); return *this;}
-
-    /**
-     * <p>The edition of your Amazon QuickSight account.</p>
-     */
-    inline AccountInfo& WithEdition(Edition&& value) { SetEdition(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The email address that will be used for Amazon QuickSight to send
-     * notifications regarding your Amazon Web Services account or Amazon QuickSight
-     * subscription.</p>
-     */
-    inline const Aws::String& GetNotificationEmail() const{ return m_notificationEmail; }
-
-    /**
-     * <p>The email address that will be used for Amazon QuickSight to send
-     * notifications regarding your Amazon Web Services account or Amazon QuickSight
-     * subscription.</p>
-     */
+    inline const Aws::String& GetNotificationEmail() const { return m_notificationEmail; }
     inline bool NotificationEmailHasBeenSet() const { return m_notificationEmailHasBeenSet; }
+    template<typename NotificationEmailT = Aws::String>
+    void SetNotificationEmail(NotificationEmailT&& value) { m_notificationEmailHasBeenSet = true; m_notificationEmail = std::forward<NotificationEmailT>(value); }
+    template<typename NotificationEmailT = Aws::String>
+    AccountInfo& WithNotificationEmail(NotificationEmailT&& value) { SetNotificationEmail(std::forward<NotificationEmailT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The email address that will be used for Amazon QuickSight to send
-     * notifications regarding your Amazon Web Services account or Amazon QuickSight
-     * subscription.</p>
+     * <p>The way that your QuickSight account is authenticated.</p>
      */
-    inline void SetNotificationEmail(const Aws::String& value) { m_notificationEmailHasBeenSet = true; m_notificationEmail = value; }
-
-    /**
-     * <p>The email address that will be used for Amazon QuickSight to send
-     * notifications regarding your Amazon Web Services account or Amazon QuickSight
-     * subscription.</p>
-     */
-    inline void SetNotificationEmail(Aws::String&& value) { m_notificationEmailHasBeenSet = true; m_notificationEmail = std::move(value); }
-
-    /**
-     * <p>The email address that will be used for Amazon QuickSight to send
-     * notifications regarding your Amazon Web Services account or Amazon QuickSight
-     * subscription.</p>
-     */
-    inline void SetNotificationEmail(const char* value) { m_notificationEmailHasBeenSet = true; m_notificationEmail.assign(value); }
-
-    /**
-     * <p>The email address that will be used for Amazon QuickSight to send
-     * notifications regarding your Amazon Web Services account or Amazon QuickSight
-     * subscription.</p>
-     */
-    inline AccountInfo& WithNotificationEmail(const Aws::String& value) { SetNotificationEmail(value); return *this;}
-
-    /**
-     * <p>The email address that will be used for Amazon QuickSight to send
-     * notifications regarding your Amazon Web Services account or Amazon QuickSight
-     * subscription.</p>
-     */
-    inline AccountInfo& WithNotificationEmail(Aws::String&& value) { SetNotificationEmail(std::move(value)); return *this;}
-
-    /**
-     * <p>The email address that will be used for Amazon QuickSight to send
-     * notifications regarding your Amazon Web Services account or Amazon QuickSight
-     * subscription.</p>
-     */
-    inline AccountInfo& WithNotificationEmail(const char* value) { SetNotificationEmail(value); return *this;}
-
-
-    /**
-     * <p>The way that your Amazon QuickSight account is authenticated.</p>
-     */
-    inline const Aws::String& GetAuthenticationType() const{ return m_authenticationType; }
-
-    /**
-     * <p>The way that your Amazon QuickSight account is authenticated.</p>
-     */
+    inline const Aws::String& GetAuthenticationType() const { return m_authenticationType; }
     inline bool AuthenticationTypeHasBeenSet() const { return m_authenticationTypeHasBeenSet; }
+    template<typename AuthenticationTypeT = Aws::String>
+    void SetAuthenticationType(AuthenticationTypeT&& value) { m_authenticationTypeHasBeenSet = true; m_authenticationType = std::forward<AuthenticationTypeT>(value); }
+    template<typename AuthenticationTypeT = Aws::String>
+    AccountInfo& WithAuthenticationType(AuthenticationTypeT&& value) { SetAuthenticationType(std::forward<AuthenticationTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The way that your Amazon QuickSight account is authenticated.</p>
-     */
-    inline void SetAuthenticationType(const Aws::String& value) { m_authenticationTypeHasBeenSet = true; m_authenticationType = value; }
-
-    /**
-     * <p>The way that your Amazon QuickSight account is authenticated.</p>
-     */
-    inline void SetAuthenticationType(Aws::String&& value) { m_authenticationTypeHasBeenSet = true; m_authenticationType = std::move(value); }
-
-    /**
-     * <p>The way that your Amazon QuickSight account is authenticated.</p>
-     */
-    inline void SetAuthenticationType(const char* value) { m_authenticationTypeHasBeenSet = true; m_authenticationType.assign(value); }
-
-    /**
-     * <p>The way that your Amazon QuickSight account is authenticated.</p>
-     */
-    inline AccountInfo& WithAuthenticationType(const Aws::String& value) { SetAuthenticationType(value); return *this;}
-
-    /**
-     * <p>The way that your Amazon QuickSight account is authenticated.</p>
-     */
-    inline AccountInfo& WithAuthenticationType(Aws::String&& value) { SetAuthenticationType(std::move(value)); return *this;}
-
-    /**
-     * <p>The way that your Amazon QuickSight account is authenticated.</p>
-     */
-    inline AccountInfo& WithAuthenticationType(const char* value) { SetAuthenticationType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of your account subscription.</p>
      */
-    inline const Aws::String& GetAccountSubscriptionStatus() const{ return m_accountSubscriptionStatus; }
-
-    /**
-     * <p>The status of your account subscription.</p>
-     */
+    inline const Aws::String& GetAccountSubscriptionStatus() const { return m_accountSubscriptionStatus; }
     inline bool AccountSubscriptionStatusHasBeenSet() const { return m_accountSubscriptionStatusHasBeenSet; }
+    template<typename AccountSubscriptionStatusT = Aws::String>
+    void SetAccountSubscriptionStatus(AccountSubscriptionStatusT&& value) { m_accountSubscriptionStatusHasBeenSet = true; m_accountSubscriptionStatus = std::forward<AccountSubscriptionStatusT>(value); }
+    template<typename AccountSubscriptionStatusT = Aws::String>
+    AccountInfo& WithAccountSubscriptionStatus(AccountSubscriptionStatusT&& value) { SetAccountSubscriptionStatus(std::forward<AccountSubscriptionStatusT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The status of your account subscription.</p>
+     * <p>The Amazon Resource Name (ARN) for the IAM Identity Center instance.</p>
      */
-    inline void SetAccountSubscriptionStatus(const Aws::String& value) { m_accountSubscriptionStatusHasBeenSet = true; m_accountSubscriptionStatus = value; }
-
-    /**
-     * <p>The status of your account subscription.</p>
-     */
-    inline void SetAccountSubscriptionStatus(Aws::String&& value) { m_accountSubscriptionStatusHasBeenSet = true; m_accountSubscriptionStatus = std::move(value); }
-
-    /**
-     * <p>The status of your account subscription.</p>
-     */
-    inline void SetAccountSubscriptionStatus(const char* value) { m_accountSubscriptionStatusHasBeenSet = true; m_accountSubscriptionStatus.assign(value); }
-
-    /**
-     * <p>The status of your account subscription.</p>
-     */
-    inline AccountInfo& WithAccountSubscriptionStatus(const Aws::String& value) { SetAccountSubscriptionStatus(value); return *this;}
-
-    /**
-     * <p>The status of your account subscription.</p>
-     */
-    inline AccountInfo& WithAccountSubscriptionStatus(Aws::String&& value) { SetAccountSubscriptionStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of your account subscription.</p>
-     */
-    inline AccountInfo& WithAccountSubscriptionStatus(const char* value) { SetAccountSubscriptionStatus(value); return *this;}
-
+    inline const Aws::String& GetIAMIdentityCenterInstanceArn() const { return m_iAMIdentityCenterInstanceArn; }
+    inline bool IAMIdentityCenterInstanceArnHasBeenSet() const { return m_iAMIdentityCenterInstanceArnHasBeenSet; }
+    template<typename IAMIdentityCenterInstanceArnT = Aws::String>
+    void SetIAMIdentityCenterInstanceArn(IAMIdentityCenterInstanceArnT&& value) { m_iAMIdentityCenterInstanceArnHasBeenSet = true; m_iAMIdentityCenterInstanceArn = std::forward<IAMIdentityCenterInstanceArnT>(value); }
+    template<typename IAMIdentityCenterInstanceArnT = Aws::String>
+    AccountInfo& WithIAMIdentityCenterInstanceArn(IAMIdentityCenterInstanceArnT&& value) { SetIAMIdentityCenterInstanceArn(std::forward<IAMIdentityCenterInstanceArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountName;
     bool m_accountNameHasBeenSet = false;
 
-    Edition m_edition;
+    Edition m_edition{Edition::NOT_SET};
     bool m_editionHasBeenSet = false;
 
     Aws::String m_notificationEmail;
@@ -294,6 +132,9 @@ namespace Model
 
     Aws::String m_accountSubscriptionStatus;
     bool m_accountSubscriptionStatusHasBeenSet = false;
+
+    Aws::String m_iAMIdentityCenterInstanceArn;
+    bool m_iAMIdentityCenterInstanceArnHasBeenSet = false;
   };
 
 } // namespace Model

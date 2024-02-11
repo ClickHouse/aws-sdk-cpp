@@ -22,7 +22,7 @@ namespace Model
   class StartSessionRequest : public AthenaRequest
   {
   public:
-    AWS_ATHENA_API StartSessionRequest();
+    AWS_ATHENA_API StartSessionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,125 +35,44 @@ namespace Model
     AWS_ATHENA_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The session description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The session description.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    StartSessionRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The session description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The session description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The session description.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The session description.</p>
-     */
-    inline StartSessionRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The session description.</p>
-     */
-    inline StartSessionRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The session description.</p>
-     */
-    inline StartSessionRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The workgroup to which the session belongs.</p>
      */
-    inline const Aws::String& GetWorkGroup() const{ return m_workGroup; }
-
-    /**
-     * <p>The workgroup to which the session belongs.</p>
-     */
+    inline const Aws::String& GetWorkGroup() const { return m_workGroup; }
     inline bool WorkGroupHasBeenSet() const { return m_workGroupHasBeenSet; }
+    template<typename WorkGroupT = Aws::String>
+    void SetWorkGroup(WorkGroupT&& value) { m_workGroupHasBeenSet = true; m_workGroup = std::forward<WorkGroupT>(value); }
+    template<typename WorkGroupT = Aws::String>
+    StartSessionRequest& WithWorkGroup(WorkGroupT&& value) { SetWorkGroup(std::forward<WorkGroupT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The workgroup to which the session belongs.</p>
-     */
-    inline void SetWorkGroup(const Aws::String& value) { m_workGroupHasBeenSet = true; m_workGroup = value; }
-
-    /**
-     * <p>The workgroup to which the session belongs.</p>
-     */
-    inline void SetWorkGroup(Aws::String&& value) { m_workGroupHasBeenSet = true; m_workGroup = std::move(value); }
-
-    /**
-     * <p>The workgroup to which the session belongs.</p>
-     */
-    inline void SetWorkGroup(const char* value) { m_workGroupHasBeenSet = true; m_workGroup.assign(value); }
-
-    /**
-     * <p>The workgroup to which the session belongs.</p>
-     */
-    inline StartSessionRequest& WithWorkGroup(const Aws::String& value) { SetWorkGroup(value); return *this;}
-
-    /**
-     * <p>The workgroup to which the session belongs.</p>
-     */
-    inline StartSessionRequest& WithWorkGroup(Aws::String&& value) { SetWorkGroup(std::move(value)); return *this;}
-
-    /**
-     * <p>The workgroup to which the session belongs.</p>
-     */
-    inline StartSessionRequest& WithWorkGroup(const char* value) { SetWorkGroup(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains engine data processing unit (DPU) configuration settings and
      * parameter mappings.</p>
      */
-    inline const EngineConfiguration& GetEngineConfiguration() const{ return m_engineConfiguration; }
-
-    /**
-     * <p>Contains engine data processing unit (DPU) configuration settings and
-     * parameter mappings.</p>
-     */
+    inline const EngineConfiguration& GetEngineConfiguration() const { return m_engineConfiguration; }
     inline bool EngineConfigurationHasBeenSet() const { return m_engineConfigurationHasBeenSet; }
+    template<typename EngineConfigurationT = EngineConfiguration>
+    void SetEngineConfiguration(EngineConfigurationT&& value) { m_engineConfigurationHasBeenSet = true; m_engineConfiguration = std::forward<EngineConfigurationT>(value); }
+    template<typename EngineConfigurationT = EngineConfiguration>
+    StartSessionRequest& WithEngineConfiguration(EngineConfigurationT&& value) { SetEngineConfiguration(std::forward<EngineConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains engine data processing unit (DPU) configuration settings and
-     * parameter mappings.</p>
-     */
-    inline void SetEngineConfiguration(const EngineConfiguration& value) { m_engineConfigurationHasBeenSet = true; m_engineConfiguration = value; }
-
-    /**
-     * <p>Contains engine data processing unit (DPU) configuration settings and
-     * parameter mappings.</p>
-     */
-    inline void SetEngineConfiguration(EngineConfiguration&& value) { m_engineConfigurationHasBeenSet = true; m_engineConfiguration = std::move(value); }
-
-    /**
-     * <p>Contains engine data processing unit (DPU) configuration settings and
-     * parameter mappings.</p>
-     */
-    inline StartSessionRequest& WithEngineConfiguration(const EngineConfiguration& value) { SetEngineConfiguration(value); return *this;}
-
-    /**
-     * <p>Contains engine data processing unit (DPU) configuration settings and
-     * parameter mappings.</p>
-     */
-    inline StartSessionRequest& WithEngineConfiguration(EngineConfiguration&& value) { SetEngineConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The notebook version. This value is supplied automatically for notebook
      * sessions in the Athena console and is not required for programmatic session
@@ -162,100 +81,25 @@ namespace Model
      * specify a value for <code>NotebookId</code>. See
      * <a>EngineConfiguration$AdditionalConfigs</a>.</p>
      */
-    inline const Aws::String& GetNotebookVersion() const{ return m_notebookVersion; }
-
-    /**
-     * <p>The notebook version. This value is supplied automatically for notebook
-     * sessions in the Athena console and is not required for programmatic session
-     * access. The only valid notebook version is <code>Athena notebook version
-     * 1</code>. If you specify a value for <code>NotebookVersion</code>, you must also
-     * specify a value for <code>NotebookId</code>. See
-     * <a>EngineConfiguration$AdditionalConfigs</a>.</p>
-     */
+    inline const Aws::String& GetNotebookVersion() const { return m_notebookVersion; }
     inline bool NotebookVersionHasBeenSet() const { return m_notebookVersionHasBeenSet; }
+    template<typename NotebookVersionT = Aws::String>
+    void SetNotebookVersion(NotebookVersionT&& value) { m_notebookVersionHasBeenSet = true; m_notebookVersion = std::forward<NotebookVersionT>(value); }
+    template<typename NotebookVersionT = Aws::String>
+    StartSessionRequest& WithNotebookVersion(NotebookVersionT&& value) { SetNotebookVersion(std::forward<NotebookVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The notebook version. This value is supplied automatically for notebook
-     * sessions in the Athena console and is not required for programmatic session
-     * access. The only valid notebook version is <code>Athena notebook version
-     * 1</code>. If you specify a value for <code>NotebookVersion</code>, you must also
-     * specify a value for <code>NotebookId</code>. See
-     * <a>EngineConfiguration$AdditionalConfigs</a>.</p>
-     */
-    inline void SetNotebookVersion(const Aws::String& value) { m_notebookVersionHasBeenSet = true; m_notebookVersion = value; }
-
-    /**
-     * <p>The notebook version. This value is supplied automatically for notebook
-     * sessions in the Athena console and is not required for programmatic session
-     * access. The only valid notebook version is <code>Athena notebook version
-     * 1</code>. If you specify a value for <code>NotebookVersion</code>, you must also
-     * specify a value for <code>NotebookId</code>. See
-     * <a>EngineConfiguration$AdditionalConfigs</a>.</p>
-     */
-    inline void SetNotebookVersion(Aws::String&& value) { m_notebookVersionHasBeenSet = true; m_notebookVersion = std::move(value); }
-
-    /**
-     * <p>The notebook version. This value is supplied automatically for notebook
-     * sessions in the Athena console and is not required for programmatic session
-     * access. The only valid notebook version is <code>Athena notebook version
-     * 1</code>. If you specify a value for <code>NotebookVersion</code>, you must also
-     * specify a value for <code>NotebookId</code>. See
-     * <a>EngineConfiguration$AdditionalConfigs</a>.</p>
-     */
-    inline void SetNotebookVersion(const char* value) { m_notebookVersionHasBeenSet = true; m_notebookVersion.assign(value); }
-
-    /**
-     * <p>The notebook version. This value is supplied automatically for notebook
-     * sessions in the Athena console and is not required for programmatic session
-     * access. The only valid notebook version is <code>Athena notebook version
-     * 1</code>. If you specify a value for <code>NotebookVersion</code>, you must also
-     * specify a value for <code>NotebookId</code>. See
-     * <a>EngineConfiguration$AdditionalConfigs</a>.</p>
-     */
-    inline StartSessionRequest& WithNotebookVersion(const Aws::String& value) { SetNotebookVersion(value); return *this;}
-
-    /**
-     * <p>The notebook version. This value is supplied automatically for notebook
-     * sessions in the Athena console and is not required for programmatic session
-     * access. The only valid notebook version is <code>Athena notebook version
-     * 1</code>. If you specify a value for <code>NotebookVersion</code>, you must also
-     * specify a value for <code>NotebookId</code>. See
-     * <a>EngineConfiguration$AdditionalConfigs</a>.</p>
-     */
-    inline StartSessionRequest& WithNotebookVersion(Aws::String&& value) { SetNotebookVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The notebook version. This value is supplied automatically for notebook
-     * sessions in the Athena console and is not required for programmatic session
-     * access. The only valid notebook version is <code>Athena notebook version
-     * 1</code>. If you specify a value for <code>NotebookVersion</code>, you must also
-     * specify a value for <code>NotebookId</code>. See
-     * <a>EngineConfiguration$AdditionalConfigs</a>.</p>
-     */
-    inline StartSessionRequest& WithNotebookVersion(const char* value) { SetNotebookVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The idle timeout in minutes for the session.</p>
      */
-    inline int GetSessionIdleTimeoutInMinutes() const{ return m_sessionIdleTimeoutInMinutes; }
-
-    /**
-     * <p>The idle timeout in minutes for the session.</p>
-     */
+    inline int GetSessionIdleTimeoutInMinutes() const { return m_sessionIdleTimeoutInMinutes; }
     inline bool SessionIdleTimeoutInMinutesHasBeenSet() const { return m_sessionIdleTimeoutInMinutesHasBeenSet; }
-
-    /**
-     * <p>The idle timeout in minutes for the session.</p>
-     */
     inline void SetSessionIdleTimeoutInMinutes(int value) { m_sessionIdleTimeoutInMinutesHasBeenSet = true; m_sessionIdleTimeoutInMinutes = value; }
-
-    /**
-     * <p>The idle timeout in minutes for the session.</p>
-     */
     inline StartSessionRequest& WithSessionIdleTimeoutInMinutes(int value) { SetSessionIdleTimeoutInMinutes(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A unique case-sensitive string used to ensure the request to create the
      * session is idempotent (executes only once). If another
@@ -267,99 +111,13 @@ namespace Model
      * SDK or the Amazon Web Services CLI, you must provide this token or the action
      * will fail.</p> 
      */
-    inline const Aws::String& GetClientRequestToken() const{ return m_clientRequestToken; }
-
-    /**
-     * <p>A unique case-sensitive string used to ensure the request to create the
-     * session is idempotent (executes only once). If another
-     * <code>StartSessionRequest</code> is received, the same response is returned and
-     * another session is not created. If a parameter has changed, an error is
-     * returned.</p>  <p>This token is listed as not required because Amazon
-     * Web Services SDKs (for example the Amazon Web Services SDK for Java)
-     * auto-generate the token for users. If you are not using the Amazon Web Services
-     * SDK or the Amazon Web Services CLI, you must provide this token or the action
-     * will fail.</p> 
-     */
+    inline const Aws::String& GetClientRequestToken() const { return m_clientRequestToken; }
     inline bool ClientRequestTokenHasBeenSet() const { return m_clientRequestTokenHasBeenSet; }
-
-    /**
-     * <p>A unique case-sensitive string used to ensure the request to create the
-     * session is idempotent (executes only once). If another
-     * <code>StartSessionRequest</code> is received, the same response is returned and
-     * another session is not created. If a parameter has changed, an error is
-     * returned.</p>  <p>This token is listed as not required because Amazon
-     * Web Services SDKs (for example the Amazon Web Services SDK for Java)
-     * auto-generate the token for users. If you are not using the Amazon Web Services
-     * SDK or the Amazon Web Services CLI, you must provide this token or the action
-     * will fail.</p> 
-     */
-    inline void SetClientRequestToken(const Aws::String& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = value; }
-
-    /**
-     * <p>A unique case-sensitive string used to ensure the request to create the
-     * session is idempotent (executes only once). If another
-     * <code>StartSessionRequest</code> is received, the same response is returned and
-     * another session is not created. If a parameter has changed, an error is
-     * returned.</p>  <p>This token is listed as not required because Amazon
-     * Web Services SDKs (for example the Amazon Web Services SDK for Java)
-     * auto-generate the token for users. If you are not using the Amazon Web Services
-     * SDK or the Amazon Web Services CLI, you must provide this token or the action
-     * will fail.</p> 
-     */
-    inline void SetClientRequestToken(Aws::String&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::move(value); }
-
-    /**
-     * <p>A unique case-sensitive string used to ensure the request to create the
-     * session is idempotent (executes only once). If another
-     * <code>StartSessionRequest</code> is received, the same response is returned and
-     * another session is not created. If a parameter has changed, an error is
-     * returned.</p>  <p>This token is listed as not required because Amazon
-     * Web Services SDKs (for example the Amazon Web Services SDK for Java)
-     * auto-generate the token for users. If you are not using the Amazon Web Services
-     * SDK or the Amazon Web Services CLI, you must provide this token or the action
-     * will fail.</p> 
-     */
-    inline void SetClientRequestToken(const char* value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken.assign(value); }
-
-    /**
-     * <p>A unique case-sensitive string used to ensure the request to create the
-     * session is idempotent (executes only once). If another
-     * <code>StartSessionRequest</code> is received, the same response is returned and
-     * another session is not created. If a parameter has changed, an error is
-     * returned.</p>  <p>This token is listed as not required because Amazon
-     * Web Services SDKs (for example the Amazon Web Services SDK for Java)
-     * auto-generate the token for users. If you are not using the Amazon Web Services
-     * SDK or the Amazon Web Services CLI, you must provide this token or the action
-     * will fail.</p> 
-     */
-    inline StartSessionRequest& WithClientRequestToken(const Aws::String& value) { SetClientRequestToken(value); return *this;}
-
-    /**
-     * <p>A unique case-sensitive string used to ensure the request to create the
-     * session is idempotent (executes only once). If another
-     * <code>StartSessionRequest</code> is received, the same response is returned and
-     * another session is not created. If a parameter has changed, an error is
-     * returned.</p>  <p>This token is listed as not required because Amazon
-     * Web Services SDKs (for example the Amazon Web Services SDK for Java)
-     * auto-generate the token for users. If you are not using the Amazon Web Services
-     * SDK or the Amazon Web Services CLI, you must provide this token or the action
-     * will fail.</p> 
-     */
-    inline StartSessionRequest& WithClientRequestToken(Aws::String&& value) { SetClientRequestToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique case-sensitive string used to ensure the request to create the
-     * session is idempotent (executes only once). If another
-     * <code>StartSessionRequest</code> is received, the same response is returned and
-     * another session is not created. If a parameter has changed, an error is
-     * returned.</p>  <p>This token is listed as not required because Amazon
-     * Web Services SDKs (for example the Amazon Web Services SDK for Java)
-     * auto-generate the token for users. If you are not using the Amazon Web Services
-     * SDK or the Amazon Web Services CLI, you must provide this token or the action
-     * will fail.</p> 
-     */
-    inline StartSessionRequest& WithClientRequestToken(const char* value) { SetClientRequestToken(value); return *this;}
-
+    template<typename ClientRequestTokenT = Aws::String>
+    void SetClientRequestToken(ClientRequestTokenT&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::forward<ClientRequestTokenT>(value); }
+    template<typename ClientRequestTokenT = Aws::String>
+    StartSessionRequest& WithClientRequestToken(ClientRequestTokenT&& value) { SetClientRequestToken(std::forward<ClientRequestTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_description;
@@ -374,7 +132,7 @@ namespace Model
     Aws::String m_notebookVersion;
     bool m_notebookVersionHasBeenSet = false;
 
-    int m_sessionIdleTimeoutInMinutes;
+    int m_sessionIdleTimeoutInMinutes{0};
     bool m_sessionIdleTimeoutInMinutesHasBeenSet = false;
 
     Aws::String m_clientRequestToken;

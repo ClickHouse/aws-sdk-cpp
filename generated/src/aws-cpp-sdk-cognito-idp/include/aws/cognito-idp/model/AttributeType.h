@@ -24,101 +24,42 @@ namespace Model
 {
 
   /**
-   * <p>Specifies whether the attribute is standard or custom.</p><p><h3>See
-   * Also:</h3>   <a
+   * <p>The name and value of a user attribute.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AttributeType">AWS
    * API Reference</a></p>
    */
   class AttributeType
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API AttributeType();
+    AWS_COGNITOIDENTITYPROVIDER_API AttributeType() = default;
     AWS_COGNITOIDENTITYPROVIDER_API AttributeType(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITYPROVIDER_API AttributeType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the attribute.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the attribute.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    AttributeType& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the attribute.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the attribute.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the attribute.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the attribute.</p>
-     */
-    inline AttributeType& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the attribute.</p>
-     */
-    inline AttributeType& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the attribute.</p>
-     */
-    inline AttributeType& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of the attribute.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
-    inline AttributeType& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
-    inline AttributeType& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
-    inline AttributeType& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    AttributeType& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

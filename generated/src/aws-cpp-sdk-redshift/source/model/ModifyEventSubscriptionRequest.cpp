@@ -10,18 +10,6 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-ModifyEventSubscriptionRequest::ModifyEventSubscriptionRequest() : 
-    m_subscriptionNameHasBeenSet(false),
-    m_snsTopicArnHasBeenSet(false),
-    m_sourceTypeHasBeenSet(false),
-    m_sourceIdsHasBeenSet(false),
-    m_eventCategoriesHasBeenSet(false),
-    m_severityHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
 Aws::String ModifyEventSubscriptionRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -43,23 +31,37 @@ Aws::String ModifyEventSubscriptionRequest::SerializePayload() const
 
   if(m_sourceIdsHasBeenSet)
   {
-    unsigned sourceIdsCount = 1;
-    for(auto& item : m_sourceIds)
+    if (m_sourceIds.empty())
     {
-      ss << "SourceIds.member." << sourceIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      sourceIdsCount++;
+      ss << "SourceIds=&";
+    }
+    else
+    {
+      unsigned sourceIdsCount = 1;
+      for(auto& item : m_sourceIds)
+      {
+        ss << "SourceIds.SourceId." << sourceIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        sourceIdsCount++;
+      }
     }
   }
 
   if(m_eventCategoriesHasBeenSet)
   {
-    unsigned eventCategoriesCount = 1;
-    for(auto& item : m_eventCategories)
+    if (m_eventCategories.empty())
     {
-      ss << "EventCategories.member." << eventCategoriesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      eventCategoriesCount++;
+      ss << "EventCategories=&";
+    }
+    else
+    {
+      unsigned eventCategoriesCount = 1;
+      for(auto& item : m_eventCategories)
+      {
+        ss << "EventCategories.EventCategory." << eventCategoriesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        eventCategoriesCount++;
+      }
     }
   }
 

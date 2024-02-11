@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsWafv2WebAclActionDetails::AwsWafv2WebAclActionDetails() : 
-    m_allowHasBeenSet(false),
-    m_blockHasBeenSet(false)
-{
-}
-
-AwsWafv2WebAclActionDetails::AwsWafv2WebAclActionDetails(JsonView jsonValue) : 
-    m_allowHasBeenSet(false),
-    m_blockHasBeenSet(false)
+AwsWafv2WebAclActionDetails::AwsWafv2WebAclActionDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AwsWafv2WebAclActionDetails& AwsWafv2WebAclActionDetails::operator =(JsonView js
   if(jsonValue.ValueExists("Allow"))
   {
     m_allow = jsonValue.GetObject("Allow");
-
     m_allowHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Block"))
   {
     m_block = jsonValue.GetObject("Block");
-
     m_blockHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -33,7 +33,7 @@ namespace Model
   class Message
   {
   public:
-    AWS_SES_API Message();
+    AWS_SES_API Message() = default;
     AWS_SES_API Message(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_SES_API Message& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,73 +41,30 @@ namespace Model
     AWS_SES_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
-     * <p>The subject of the message: A short summary of the content, which will appear
-     * in the recipient's inbox.</p>
+     * <p>The subject of the message: A short summary of the content, which appears in
+     * the recipient's inbox.</p>
      */
-    inline const Content& GetSubject() const{ return m_subject; }
-
-    /**
-     * <p>The subject of the message: A short summary of the content, which will appear
-     * in the recipient's inbox.</p>
-     */
+    inline const Content& GetSubject() const { return m_subject; }
     inline bool SubjectHasBeenSet() const { return m_subjectHasBeenSet; }
+    template<typename SubjectT = Content>
+    void SetSubject(SubjectT&& value) { m_subjectHasBeenSet = true; m_subject = std::forward<SubjectT>(value); }
+    template<typename SubjectT = Content>
+    Message& WithSubject(SubjectT&& value) { SetSubject(std::forward<SubjectT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The subject of the message: A short summary of the content, which will appear
-     * in the recipient's inbox.</p>
-     */
-    inline void SetSubject(const Content& value) { m_subjectHasBeenSet = true; m_subject = value; }
-
-    /**
-     * <p>The subject of the message: A short summary of the content, which will appear
-     * in the recipient's inbox.</p>
-     */
-    inline void SetSubject(Content&& value) { m_subjectHasBeenSet = true; m_subject = std::move(value); }
-
-    /**
-     * <p>The subject of the message: A short summary of the content, which will appear
-     * in the recipient's inbox.</p>
-     */
-    inline Message& WithSubject(const Content& value) { SetSubject(value); return *this;}
-
-    /**
-     * <p>The subject of the message: A short summary of the content, which will appear
-     * in the recipient's inbox.</p>
-     */
-    inline Message& WithSubject(Content&& value) { SetSubject(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The message body.</p>
      */
-    inline const Body& GetBody() const{ return m_body; }
-
-    /**
-     * <p>The message body.</p>
-     */
+    inline const Body& GetBody() const { return m_body; }
     inline bool BodyHasBeenSet() const { return m_bodyHasBeenSet; }
-
-    /**
-     * <p>The message body.</p>
-     */
-    inline void SetBody(const Body& value) { m_bodyHasBeenSet = true; m_body = value; }
-
-    /**
-     * <p>The message body.</p>
-     */
-    inline void SetBody(Body&& value) { m_bodyHasBeenSet = true; m_body = std::move(value); }
-
-    /**
-     * <p>The message body.</p>
-     */
-    inline Message& WithBody(const Body& value) { SetBody(value); return *this;}
-
-    /**
-     * <p>The message body.</p>
-     */
-    inline Message& WithBody(Body&& value) { SetBody(std::move(value)); return *this;}
-
+    template<typename BodyT = Body>
+    void SetBody(BodyT&& value) { m_bodyHasBeenSet = true; m_body = std::forward<BodyT>(value); }
+    template<typename BodyT = Body>
+    Message& WithBody(BodyT&& value) { SetBody(std::forward<BodyT>(value)); return *this;}
+    ///@}
   private:
 
     Content m_subject;

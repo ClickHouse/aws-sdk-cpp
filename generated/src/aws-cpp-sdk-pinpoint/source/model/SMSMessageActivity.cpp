@@ -18,19 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-SMSMessageActivity::SMSMessageActivity() : 
-    m_messageConfigHasBeenSet(false),
-    m_nextActivityHasBeenSet(false),
-    m_templateNameHasBeenSet(false),
-    m_templateVersionHasBeenSet(false)
-{
-}
-
-SMSMessageActivity::SMSMessageActivity(JsonView jsonValue) : 
-    m_messageConfigHasBeenSet(false),
-    m_nextActivityHasBeenSet(false),
-    m_templateNameHasBeenSet(false),
-    m_templateVersionHasBeenSet(false)
+SMSMessageActivity::SMSMessageActivity(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ SMSMessageActivity& SMSMessageActivity::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MessageConfig"))
   {
     m_messageConfig = jsonValue.GetObject("MessageConfig");
-
     m_messageConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NextActivity"))
   {
     m_nextActivity = jsonValue.GetString("NextActivity");
-
     m_nextActivityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TemplateName"))
   {
     m_templateName = jsonValue.GetString("TemplateName");
-
     m_templateNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TemplateVersion"))
   {
     m_templateVersion = jsonValue.GetString("TemplateVersion");
-
     m_templateVersionHasBeenSet = true;
   }
-
   return *this;
 }
 

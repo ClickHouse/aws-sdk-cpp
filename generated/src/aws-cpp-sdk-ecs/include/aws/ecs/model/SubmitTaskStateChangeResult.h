@@ -27,73 +27,37 @@ namespace Model
   class SubmitTaskStateChangeResult
   {
   public:
-    AWS_ECS_API SubmitTaskStateChangeResult();
+    AWS_ECS_API SubmitTaskStateChangeResult() = default;
     AWS_ECS_API SubmitTaskStateChangeResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ECS_API SubmitTaskStateChangeResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Acknowledgement of the state change.</p>
      */
-    inline const Aws::String& GetAcknowledgment() const{ return m_acknowledgment; }
+    inline const Aws::String& GetAcknowledgment() const { return m_acknowledgment; }
+    template<typename AcknowledgmentT = Aws::String>
+    void SetAcknowledgment(AcknowledgmentT&& value) { m_acknowledgmentHasBeenSet = true; m_acknowledgment = std::forward<AcknowledgmentT>(value); }
+    template<typename AcknowledgmentT = Aws::String>
+    SubmitTaskStateChangeResult& WithAcknowledgment(AcknowledgmentT&& value) { SetAcknowledgment(std::forward<AcknowledgmentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Acknowledgement of the state change.</p>
-     */
-    inline void SetAcknowledgment(const Aws::String& value) { m_acknowledgment = value; }
-
-    /**
-     * <p>Acknowledgement of the state change.</p>
-     */
-    inline void SetAcknowledgment(Aws::String&& value) { m_acknowledgment = std::move(value); }
-
-    /**
-     * <p>Acknowledgement of the state change.</p>
-     */
-    inline void SetAcknowledgment(const char* value) { m_acknowledgment.assign(value); }
-
-    /**
-     * <p>Acknowledgement of the state change.</p>
-     */
-    inline SubmitTaskStateChangeResult& WithAcknowledgment(const Aws::String& value) { SetAcknowledgment(value); return *this;}
-
-    /**
-     * <p>Acknowledgement of the state change.</p>
-     */
-    inline SubmitTaskStateChangeResult& WithAcknowledgment(Aws::String&& value) { SetAcknowledgment(std::move(value)); return *this;}
-
-    /**
-     * <p>Acknowledgement of the state change.</p>
-     */
-    inline SubmitTaskStateChangeResult& WithAcknowledgment(const char* value) { SetAcknowledgment(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline SubmitTaskStateChangeResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline SubmitTaskStateChangeResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline SubmitTaskStateChangeResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    SubmitTaskStateChangeResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_acknowledgment;
+    bool m_acknowledgmentHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

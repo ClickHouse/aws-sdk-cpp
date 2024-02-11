@@ -18,25 +18,7 @@ namespace Rekognition
 namespace Model
 {
 
-Face::Face() : 
-    m_faceIdHasBeenSet(false),
-    m_boundingBoxHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_externalImageIdHasBeenSet(false),
-    m_confidence(0.0),
-    m_confidenceHasBeenSet(false),
-    m_indexFacesModelVersionHasBeenSet(false)
-{
-}
-
-Face::Face(JsonView jsonValue) : 
-    m_faceIdHasBeenSet(false),
-    m_boundingBoxHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_externalImageIdHasBeenSet(false),
-    m_confidence(0.0),
-    m_confidenceHasBeenSet(false),
-    m_indexFacesModelVersionHasBeenSet(false)
+Face::Face(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,45 +28,38 @@ Face& Face::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FaceId"))
   {
     m_faceId = jsonValue.GetString("FaceId");
-
     m_faceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("BoundingBox"))
   {
     m_boundingBox = jsonValue.GetObject("BoundingBox");
-
     m_boundingBoxHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ImageId"))
   {
     m_imageId = jsonValue.GetString("ImageId");
-
     m_imageIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExternalImageId"))
   {
     m_externalImageId = jsonValue.GetString("ExternalImageId");
-
     m_externalImageIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Confidence"))
   {
     m_confidence = jsonValue.GetDouble("Confidence");
-
     m_confidenceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IndexFacesModelVersion"))
   {
     m_indexFacesModelVersion = jsonValue.GetString("IndexFacesModelVersion");
-
     m_indexFacesModelVersionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("UserId"))
+  {
+    m_userId = jsonValue.GetString("UserId");
+    m_userIdHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -125,6 +100,12 @@ JsonValue Face::Jsonize() const
   if(m_indexFacesModelVersionHasBeenSet)
   {
    payload.WithString("IndexFacesModelVersion", m_indexFacesModelVersion);
+
+  }
+
+  if(m_userIdHasBeenSet)
+  {
+   payload.WithString("UserId", m_userId);
 
   }
 

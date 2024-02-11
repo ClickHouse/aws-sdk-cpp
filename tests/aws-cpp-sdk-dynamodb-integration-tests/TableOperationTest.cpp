@@ -18,7 +18,7 @@
 #include <aws/core/utils/memory/stl/AWSSet.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 #include <aws/core/utils/ratelimiter/DefaultRateLimiter.h>
-#include <aws/core/utils/threading/Executor.h>
+#include <aws/core/utils/threading/PooledThreadExecutor.h>
 #include <aws/dynamodb/DynamoDBClient.h>
 #include <aws/dynamodb/DynamoDBErrors.h>
 #include <aws/dynamodb/model/CreateTableRequest.h>
@@ -31,6 +31,7 @@
 #include <aws/dynamodb/model/ScanRequest.h>
 #include <aws/dynamodb/model/UpdateItemRequest.h>
 #include <aws/dynamodb/model/DeleteItemRequest.h>
+#include <aws/dynamodb/model/BatchGetItemRequest.h>
 #include <aws/testing/TestingEnvironment.h>
 #include <aws/core/utils/UUID.h>
 
@@ -77,8 +78,8 @@ Aws::String BuildTableName(const char* baseName)
 class TableOperationTest : public ::testing::Test {
 
 public:
-    static std::shared_ptr<DynamoDBClient> m_client;
-    static std::shared_ptr<Aws::Utils::RateLimits::RateLimiterInterface> m_limiter;
+    std::shared_ptr<DynamoDBClient> m_client;
+    std::shared_ptr<Aws::Utils::RateLimits::RateLimiterInterface> m_limiter;
 
     Aws::Vector<GetItemOutcome> getItemResultsFromCallbackTest;
     Aws::Vector<PutItemOutcome> putItemResultsFromCallbackTest;
@@ -99,6 +100,8 @@ public:
 
     std::mutex updateItemResultMutex;
     std::condition_variable updateItemResultSemaphore;
+
+    Aws::Vector<Aws::String> m_tablesCreated;
 
     void GetItemOutcomeReceived(const DynamoDBClient* sender, const GetItemRequest& request, const GetItemOutcome& outcome, const std::shared_ptr<const AsyncCallerContext>& context)
     {
@@ -159,11 +162,10 @@ public:
             updateItemResultSemaphore.notify_all();
         }
     }
-
-protected:
-
-    static void SetUpClient(Aws::Http::TransferLibType transferType)
+    void SetUp() override
     {
+        Aws::Http::TransferLibType transferType = Aws::Http::TransferLibType::DEFAULT_CLIENT;
+        m_limiter = Aws::MakeShared<Aws::Utils::RateLimits::DefaultRateLimiter<>>(ALLOCATION_TAG, 200000);
         // Create a client
         ClientConfiguration config;
         config.endpointOverride = ENDPOINT_OVERRIDE;
@@ -175,39 +177,25 @@ protected:
         config.httpLibOverride = transferType;
         config.executor = Aws::MakeShared<Aws::Utils::Threading::PooledThreadExecutor>(ALLOCATION_TAG, 4);
         config.disableExpectHeader = true;
+        config.enableHttpClientTrace = true;
 
         //to test proxy functionality, uncomment the next two lines.
         //config.proxyHost = "localhost";
         //config.proxyPort = 8080;
         m_client = Aws::MakeShared<DynamoDBClient>(ALLOCATION_TAG, config);
-    }
-
-    static void SetUpTestCase()
-    {
-        m_limiter = Aws::MakeShared<Aws::Utils::RateLimits::DefaultRateLimiter<>>(ALLOCATION_TAG, 200000);
-        SetUpClient(Aws::Http::TransferLibType::DEFAULT_CLIENT);
         DYNAMODB_INTEGRATION_TEST_ID = Aws::String(Aws::Utils::UUID::RandomUUID()).c_str();
     }
 
-    static void TearDownTestCase()
-    {
-        DeleteAllTables();
-        m_limiter = nullptr;
-        m_client = nullptr;
+    void TearDown() override {
+        for (auto tableName : m_tablesCreated)
+        {
+            DeleteTable(tableName);
+        }
     }
 
-    static void DeleteAllTables()
-    {
-        DeleteTable(BuildTableName(BASE_SIMPLE_TABLE));
-        DeleteTable(BuildTableName(BASE_THROUGHPUT_TABLE));
-        DeleteTable(BuildTableName(BASE_CONDITION_TABLE));
-        DeleteTable(BuildTableName(BASE_VALIDATION_TABLE));
-        DeleteTable(BuildTableName(BASE_CRUD_TEST_TABLE));
-        DeleteTable(BuildTableName(BASE_CRUD_CALLBACKS_TEST_TABLE));
-        DeleteTable(BuildTableName(BASE_THROTTLED_TEST_TABLE));
-        DeleteTable(BuildTableName(BASE_LIMITER_TEST_TABLE));
-        DeleteTable(BuildTableName(BASE_ATTRIBUTEVALUE_TEST_TABLE));
-    }
+
+protected:
+
 
     void CreateTable(Aws::String tableName, long readCap, long writeCap)
     {
@@ -230,6 +218,7 @@ protected:
         if (createTableOutcome.IsSuccess())
         {
             ASSERT_EQ(tableName, createTableOutcome.GetResult().GetTableDescription().GetTableName());
+            m_tablesCreated.emplace_back(tableName);
         }
         else
         {
@@ -240,7 +229,7 @@ protected:
         WaitUntilActive(tableName);
     }
 
-    static void DeleteTable(Aws::String tableName)
+    void DeleteTable(Aws::String tableName)
     {
         DeleteTableRequest deleteTableRequest;
         deleteTableRequest.SetTableName(tableName);
@@ -274,8 +263,6 @@ protected:
     }
 };
 
-std::shared_ptr<DynamoDBClient> TableOperationTest::m_client(nullptr);
-std::shared_ptr<Aws::Utils::RateLimits::RateLimiterInterface> TableOperationTest::m_limiter(nullptr);
 
 TEST_F(TableOperationTest, TestListTable)
 {
@@ -505,6 +492,7 @@ TEST_F(TableOperationTest, TestCrudOperations)
         hashKey.SetS(ss.str());
         getItemRequest.AddKey(HASH_KEY_NAME, hashKey);
         getItemRequest.SetTableName(crudTestTableName);
+        getItemRequest.SetConsistentRead(true);
 
         Aws::Vector<Aws::String> attributesToGet;
         attributesToGet.push_back(HASH_KEY_NAME);
@@ -530,6 +518,7 @@ TEST_F(TableOperationTest, TestCrudOperations)
 
     ScanRequest scanRequest;
     scanRequest.WithTableName(crudTestTableName);
+    scanRequest.SetConsistentRead(true);
 
     ScanOutcome scanOutcome = m_client->Scan(scanRequest);
     AWS_EXPECT_SUCCESS(scanOutcome);
@@ -575,6 +564,8 @@ TEST_F(TableOperationTest, TestCrudOperations)
         hashKey.SetS(ss.str());
         getItemRequest.AddKey(HASH_KEY_NAME, hashKey);
         getItemRequest.SetTableName(crudTestTableName);
+        getItemRequest.SetConsistentRead(true);
+
 
         Aws::Vector<Aws::String> attributesToGet;
         attributesToGet.push_back(HASH_KEY_NAME);
@@ -681,6 +672,7 @@ TEST_F(TableOperationTest, TestCrudOperationsWithCallbacks)
         hashKey.SetS(ss.str());
         getItemRequest.AddKey(HASH_KEY_NAME, hashKey);
         getItemRequest.SetTableName(crudCallbacksTestTableName);
+        getItemRequest.SetConsistentRead(true);
 
         Aws::Vector<Aws::String> attributesToGet;
         attributesToGet.push_back(HASH_KEY_NAME);
@@ -716,6 +708,7 @@ TEST_F(TableOperationTest, TestCrudOperationsWithCallbacks)
 
     ScanRequest scanRequest;
     scanRequest.WithTableName(crudCallbacksTestTableName);
+    scanRequest.WithConsistentRead(true);
 
     ScanOutcome scanOutcome = m_client->Scan(scanRequest);
     AWS_EXPECT_SUCCESS(scanOutcome);
@@ -759,6 +752,7 @@ TEST_F(TableOperationTest, TestCrudOperationsWithCallbacks)
         hashKey.SetS(ss.str());
         getItemRequest.AddKey(HASH_KEY_NAME, hashKey);
         getItemRequest.SetTableName(crudCallbacksTestTableName);
+        getItemRequest.SetConsistentRead(true);
 
 
         Aws::Vector<Aws::String> attributesToGet;
@@ -913,7 +907,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
     const Aws::Utils::ByteBuffer byteBuffer1(buffer1, 6);
     unsigned char buffer2[6] = { 21, 35, 55, 68, 11, 6 };
     const Aws::Utils::ByteBuffer byteBuffer2(buffer2, 6);
-
+    const Aws::Utils::ByteBuffer emptyBuf;
     // create the Hash Key value
     AttributeValue hashKey("TestValue");
 
@@ -935,6 +929,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         GetItemRequest getItemRequest;
         getItemRequest.AddKey(HASH_KEY_NAME, hashKey);
         getItemRequest.SetTableName(attributeValueTestTableName);
+        getItemRequest.SetConsistentRead(true);
 
         Aws::Vector<Aws::String> attributesToGet;
         attributesToGet.push_back(HASH_KEY_NAME);
@@ -952,6 +947,9 @@ TEST_F(TableOperationTest, TestAttributeValues)
         //ReturnedItemCollection returnedItemCollection = result.GetItems();
         EXPECT_EQ("TestValue", returnedItemCollection[HASH_KEY_NAME].GetS());
         EXPECT_EQ("String Value", returnedItemCollection["String"].GetS());
+
+        EXPECT_EQ(emptyBuf, returnedItemCollection["ByteBuffer"].GetB());
+        EXPECT_EQ(emptyBuf, returnedItemCollection["ByteBuffer"].AccessB());
     }
 
     // Number Value
@@ -976,6 +974,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         GetItemRequest getItemRequest;
         getItemRequest.AddKey(HASH_KEY_NAME, hashKey);
         getItemRequest.SetTableName(attributeValueTestTableName);
+        getItemRequest.SetConsistentRead(true);
 
         Aws::Vector<Aws::String> attributesToGet;
         attributesToGet.push_back(HASH_KEY_NAME);
@@ -1011,6 +1010,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         GetItemRequest getItemRequest;
         getItemRequest.AddKey(HASH_KEY_NAME, hashKey);
         getItemRequest.SetTableName(attributeValueTestTableName);
+        getItemRequest.SetConsistentRead(true);
 
         Aws::Vector<Aws::String> attributesToGet;
         attributesToGet.push_back(HASH_KEY_NAME);
@@ -1047,6 +1047,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         GetItemRequest getItemRequest;
         getItemRequest.AddKey(HASH_KEY_NAME, hashKey);
         getItemRequest.SetTableName(attributeValueTestTableName);
+        getItemRequest.SetConsistentRead(true);
 
         Aws::Vector<Aws::String> attributesToGet;
         attributesToGet.push_back(HASH_KEY_NAME);
@@ -1060,6 +1061,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         EXPECT_EQ("String Value", returnedItemCollection["String"].GetS());
         EXPECT_EQ("1001", returnedItemCollection["Number"].GetN());
         EXPECT_EQ(byteBuffer1, returnedItemCollection["ByteBuffer"].GetB()); // on the 3rd day of xmas...
+        EXPECT_EQ(byteBuffer1, returnedItemCollection["ByteBuffer"].AccessB());
     }
 
     // StringSet
@@ -1085,6 +1087,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         GetItemRequest getItemRequest;
         getItemRequest.AddKey(HASH_KEY_NAME, hashKey);
         getItemRequest.SetTableName(attributeValueTestTableName);
+        getItemRequest.SetConsistentRead(true);
 
         Aws::Vector<Aws::String> attributesToGet;
         attributesToGet.push_back(HASH_KEY_NAME);
@@ -1098,6 +1101,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         EXPECT_EQ("String Value", returnedItemCollection["String"].GetS());
         EXPECT_EQ("1001", returnedItemCollection["Number"].GetN());
         EXPECT_EQ(byteBuffer1, returnedItemCollection["ByteBuffer"].GetB());
+        EXPECT_EQ(byteBuffer1, returnedItemCollection["ByteBuffer"].AccessB());
         auto ss = returnedItemCollection["String Set"].GetSS();
         EXPECT_EQ(2u, ss.size());
         EXPECT_NE(ss.end(), std::find(ss.begin(), ss.end(), "test1"));
@@ -1127,6 +1131,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         GetItemRequest getItemRequest;
         getItemRequest.AddKey(HASH_KEY_NAME, hashKey);
         getItemRequest.SetTableName(attributeValueTestTableName);
+        getItemRequest.SetConsistentRead(true);
 
         Aws::Vector<Aws::String> attributesToGet;
         attributesToGet.push_back(HASH_KEY_NAME);
@@ -1140,6 +1145,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         EXPECT_EQ("String Value", returnedItemCollection["String"].GetS());
         EXPECT_EQ("1001", returnedItemCollection["Number"].GetN());
         EXPECT_EQ(byteBuffer1, returnedItemCollection["ByteBuffer"].GetB());
+        EXPECT_EQ(byteBuffer1, returnedItemCollection["ByteBuffer"].AccessB());
         auto ss = returnedItemCollection["String Set"].GetSS();
         EXPECT_EQ(2u, ss.size());
         EXPECT_NE(ss.end(), std::find(ss.begin(), ss.end(), "test1"));
@@ -1173,6 +1179,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         GetItemRequest getItemRequest;
         getItemRequest.AddKey(HASH_KEY_NAME, hashKey);
         getItemRequest.SetTableName(attributeValueTestTableName);
+        getItemRequest.SetConsistentRead(true);
 
         Aws::Vector<Aws::String> attributesToGet;
         attributesToGet.push_back(HASH_KEY_NAME);
@@ -1186,6 +1193,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         EXPECT_EQ("String Value", returnedItemCollection["String"].GetS());
         EXPECT_EQ("1001", returnedItemCollection["Number"].GetN());
         EXPECT_EQ(byteBuffer1, returnedItemCollection["ByteBuffer"].GetB());
+        EXPECT_EQ(byteBuffer1, returnedItemCollection["ByteBuffer"].AccessB());
         auto ss = returnedItemCollection["String Set"].GetSS();
         EXPECT_EQ(2u, ss.size());
         EXPECT_NE(ss.end(), std::find(ss.begin(), ss.end(), "test1"));
@@ -1225,6 +1233,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         GetItemRequest getItemRequest;
         getItemRequest.AddKey(HASH_KEY_NAME, hashKey);
         getItemRequest.SetTableName(attributeValueTestTableName);
+        getItemRequest.SetConsistentRead(true);
 
         Aws::Vector<Aws::String> attributesToGet;
         attributesToGet.push_back(HASH_KEY_NAME);
@@ -1238,6 +1247,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         EXPECT_EQ("String Value", returnedItemCollection["String"].GetS());
         EXPECT_EQ("1001", returnedItemCollection["Number"].GetN());
         EXPECT_EQ(byteBuffer1, returnedItemCollection["ByteBuffer"].GetB());
+        EXPECT_EQ(byteBuffer1, returnedItemCollection["ByteBuffer"].AccessB());
         auto ss = returnedItemCollection["String Set"].GetSS();
         EXPECT_EQ(2u, ss.size());
         EXPECT_NE(ss.end(), std::find(ss.begin(), ss.end(), "test1"));
@@ -1282,6 +1292,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         GetItemRequest getItemRequest;
         getItemRequest.AddKey(HASH_KEY_NAME, hashKey);
         getItemRequest.SetTableName(attributeValueTestTableName);
+        getItemRequest.SetConsistentRead(true);
 
         GetItemOutcome getOutcome = m_client->GetItem(getItemRequest);
         AWS_ASSERT_SUCCESS(getOutcome);
@@ -1317,6 +1328,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         GetItemRequest getItemRequest;
         getItemRequest.AddKey(HASH_KEY_NAME, hashKey);
         getItemRequest.SetTableName(attributeValueTestTableName);
+        getItemRequest.SetConsistentRead(true);
 
         Aws::Vector<Aws::String> attributesToGet;
         attributesToGet.push_back(HASH_KEY_NAME);
@@ -1330,6 +1342,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         EXPECT_EQ("String Value", returnedItemCollection["String"].GetS());
         EXPECT_EQ("1001", returnedItemCollection["Number"].GetN());
         EXPECT_EQ(byteBuffer1, returnedItemCollection["ByteBuffer"].GetB());
+        EXPECT_EQ(byteBuffer1, returnedItemCollection["ByteBuffer"].AccessB());
         auto ss = returnedItemCollection["String Set"].GetSS();
         EXPECT_EQ(2u, ss.size());
         EXPECT_NE(ss.end(), std::find(ss.begin(), ss.end(), "test1"));
@@ -1379,6 +1392,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         GetItemRequest getItemRequest;
         getItemRequest.AddKey(HASH_KEY_NAME, hashKey);
         getItemRequest.SetTableName(attributeValueTestTableName);
+        getItemRequest.SetConsistentRead(true);
 
         GetItemOutcome getOutcome = m_client->GetItem(getItemRequest);
         AWS_ASSERT_SUCCESS(getOutcome);
@@ -1413,6 +1427,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         GetItemRequest getItemRequest;
         getItemRequest.AddKey(HASH_KEY_NAME, hashKey);
         getItemRequest.SetTableName(attributeValueTestTableName);
+        getItemRequest.SetConsistentRead(true);
 
         Aws::Vector<Aws::String> attributesToGet;
         attributesToGet.push_back(HASH_KEY_NAME);
@@ -1447,6 +1462,7 @@ TEST_F(TableOperationTest, TestAttributeValues)
         GetItemRequest getItemRequest;
         getItemRequest.AddKey(HASH_KEY_NAME, hashKey);
         getItemRequest.SetTableName(attributeValueTestTableName);
+        getItemRequest.SetConsistentRead(true);
 
         Aws::Vector<Aws::String> attributesToGet;
         attributesToGet.push_back(HASH_KEY_NAME);
@@ -1505,6 +1521,34 @@ TEST_F(TableOperationTest, TestEndpointOverride)
         Aws::DynamoDB::Model::ListTablesOutcome outcome = client.ListTables(request);
         AWS_ASSERT_SUCCESS(outcome);
     }
+
+    config.endpointOverride.clear();
+    for (const auto val : {true, false})
+    {
+        config.enableEndpointDiscovery = val;
+        DynamoDBClient client(config);
+        Aws::DynamoDB::Model::ListTablesRequest request;
+        Aws::DynamoDB::Model::ListTablesOutcome outcome = client.ListTables(request);
+        AWS_ASSERT_SUCCESS(outcome);
+    }
+}
+
+TEST_F(TableOperationTest, TestBatchGetItem) {
+  Aws::String table_name = BuildTableName(BASE_SIMPLE_TABLE);
+  CreateTable(table_name, 10, 10);
+
+  AttributeValue value{"wheres everyone going, bingo?"};
+  const auto put_item_result = m_client->PutItem(PutItemRequest().WithTableName(table_name).WithItem({{HASH_KEY_NAME, value}}));
+  AWS_ASSERT_SUCCESS(put_item_result);
+
+  const auto batch_get_item_result = m_client->BatchGetItem(BatchGetItemRequest()
+    .WithRequestItems({
+      {
+        table_name, KeysAndAttributes().WithKeys({{{HASH_KEY_NAME, value}}})
+      }
+    }));
+  AWS_ASSERT_SUCCESS(batch_get_item_result);
+  EXPECT_EQ(1ul, batch_get_item_result.GetResult().GetResponses().size());
 }
 
 } // anonymous namespace

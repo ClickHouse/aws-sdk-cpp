@@ -18,23 +18,7 @@ namespace Athena
 namespace Model
 {
 
-WorkGroup::WorkGroup() : 
-    m_nameHasBeenSet(false),
-    m_state(WorkGroupState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_configurationHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_creationTimeHasBeenSet(false)
-{
-}
-
-WorkGroup::WorkGroup(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_state(WorkGroupState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_configurationHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_creationTimeHasBeenSet(false)
+WorkGroup::WorkGroup(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,38 +28,33 @@ WorkGroup& WorkGroup::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("State"))
   {
     m_state = WorkGroupStateMapper::GetWorkGroupStateForName(jsonValue.GetString("State"));
-
     m_stateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Configuration"))
   {
     m_configuration = jsonValue.GetObject("Configuration");
-
     m_configurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreationTime"))
   {
     m_creationTime = jsonValue.GetDouble("CreationTime");
-
     m_creationTimeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("IdentityCenterApplicationArn"))
+  {
+    m_identityCenterApplicationArn = jsonValue.GetString("IdentityCenterApplicationArn");
+    m_identityCenterApplicationArnHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -109,6 +88,12 @@ JsonValue WorkGroup::Jsonize() const
   if(m_creationTimeHasBeenSet)
   {
    payload.WithDouble("CreationTime", m_creationTime.SecondsWithMSPrecision());
+  }
+
+  if(m_identityCenterApplicationArnHasBeenSet)
+  {
+   payload.WithString("IdentityCenterApplicationArn", m_identityCenterApplicationArn);
+
   }
 
   return payload;

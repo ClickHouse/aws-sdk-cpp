@@ -24,60 +24,31 @@ namespace Model
 {
 
   /**
-   * The VPC interface that is used for the media stream associated with the source
-   * or output.<p><h3>See Also:</h3>   <a
+   * <p> The VPC interface that is used for the media stream associated with the
+   * source or output.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/Interface">AWS
    * API Reference</a></p>
    */
   class Interface
   {
   public:
-    AWS_MEDIACONNECT_API Interface();
+    AWS_MEDIACONNECT_API Interface() = default;
     AWS_MEDIACONNECT_API Interface(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Interface& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * The name of the VPC interface.
+     * <p> The name of the VPC interface.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * The name of the VPC interface.
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * The name of the VPC interface.
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * The name of the VPC interface.
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * The name of the VPC interface.
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * The name of the VPC interface.
-     */
-    inline Interface& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * The name of the VPC interface.
-     */
-    inline Interface& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * The name of the VPC interface.
-     */
-    inline Interface& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Interface& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

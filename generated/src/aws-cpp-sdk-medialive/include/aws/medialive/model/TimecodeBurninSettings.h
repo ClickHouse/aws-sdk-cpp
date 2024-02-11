@@ -33,120 +33,49 @@ namespace Model
   class TimecodeBurninSettings
   {
   public:
-    AWS_MEDIALIVE_API TimecodeBurninSettings();
+    AWS_MEDIALIVE_API TimecodeBurninSettings() = default;
     AWS_MEDIALIVE_API TimecodeBurninSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API TimecodeBurninSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Choose a timecode burn-in font size
      */
-    inline const TimecodeBurninFontSize& GetFontSize() const{ return m_fontSize; }
-
-    /**
-     * Choose a timecode burn-in font size
-     */
+    inline TimecodeBurninFontSize GetFontSize() const { return m_fontSize; }
     inline bool FontSizeHasBeenSet() const { return m_fontSizeHasBeenSet; }
+    inline void SetFontSize(TimecodeBurninFontSize value) { m_fontSizeHasBeenSet = true; m_fontSize = value; }
+    inline TimecodeBurninSettings& WithFontSize(TimecodeBurninFontSize value) { SetFontSize(value); return *this;}
+    ///@}
 
-    /**
-     * Choose a timecode burn-in font size
-     */
-    inline void SetFontSize(const TimecodeBurninFontSize& value) { m_fontSizeHasBeenSet = true; m_fontSize = value; }
-
-    /**
-     * Choose a timecode burn-in font size
-     */
-    inline void SetFontSize(TimecodeBurninFontSize&& value) { m_fontSizeHasBeenSet = true; m_fontSize = std::move(value); }
-
-    /**
-     * Choose a timecode burn-in font size
-     */
-    inline TimecodeBurninSettings& WithFontSize(const TimecodeBurninFontSize& value) { SetFontSize(value); return *this;}
-
-    /**
-     * Choose a timecode burn-in font size
-     */
-    inline TimecodeBurninSettings& WithFontSize(TimecodeBurninFontSize&& value) { SetFontSize(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Choose a timecode burn-in output position
      */
-    inline const TimecodeBurninPosition& GetPosition() const{ return m_position; }
-
-    /**
-     * Choose a timecode burn-in output position
-     */
+    inline TimecodeBurninPosition GetPosition() const { return m_position; }
     inline bool PositionHasBeenSet() const { return m_positionHasBeenSet; }
+    inline void SetPosition(TimecodeBurninPosition value) { m_positionHasBeenSet = true; m_position = value; }
+    inline TimecodeBurninSettings& WithPosition(TimecodeBurninPosition value) { SetPosition(value); return *this;}
+    ///@}
 
-    /**
-     * Choose a timecode burn-in output position
-     */
-    inline void SetPosition(const TimecodeBurninPosition& value) { m_positionHasBeenSet = true; m_position = value; }
-
-    /**
-     * Choose a timecode burn-in output position
-     */
-    inline void SetPosition(TimecodeBurninPosition&& value) { m_positionHasBeenSet = true; m_position = std::move(value); }
-
-    /**
-     * Choose a timecode burn-in output position
-     */
-    inline TimecodeBurninSettings& WithPosition(const TimecodeBurninPosition& value) { SetPosition(value); return *this;}
-
-    /**
-     * Choose a timecode burn-in output position
-     */
-    inline TimecodeBurninSettings& WithPosition(TimecodeBurninPosition&& value) { SetPosition(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Create a timecode burn-in prefix (optional)
      */
-    inline const Aws::String& GetPrefix() const{ return m_prefix; }
-
-    /**
-     * Create a timecode burn-in prefix (optional)
-     */
+    inline const Aws::String& GetPrefix() const { return m_prefix; }
     inline bool PrefixHasBeenSet() const { return m_prefixHasBeenSet; }
-
-    /**
-     * Create a timecode burn-in prefix (optional)
-     */
-    inline void SetPrefix(const Aws::String& value) { m_prefixHasBeenSet = true; m_prefix = value; }
-
-    /**
-     * Create a timecode burn-in prefix (optional)
-     */
-    inline void SetPrefix(Aws::String&& value) { m_prefixHasBeenSet = true; m_prefix = std::move(value); }
-
-    /**
-     * Create a timecode burn-in prefix (optional)
-     */
-    inline void SetPrefix(const char* value) { m_prefixHasBeenSet = true; m_prefix.assign(value); }
-
-    /**
-     * Create a timecode burn-in prefix (optional)
-     */
-    inline TimecodeBurninSettings& WithPrefix(const Aws::String& value) { SetPrefix(value); return *this;}
-
-    /**
-     * Create a timecode burn-in prefix (optional)
-     */
-    inline TimecodeBurninSettings& WithPrefix(Aws::String&& value) { SetPrefix(std::move(value)); return *this;}
-
-    /**
-     * Create a timecode burn-in prefix (optional)
-     */
-    inline TimecodeBurninSettings& WithPrefix(const char* value) { SetPrefix(value); return *this;}
-
+    template<typename PrefixT = Aws::String>
+    void SetPrefix(PrefixT&& value) { m_prefixHasBeenSet = true; m_prefix = std::forward<PrefixT>(value); }
+    template<typename PrefixT = Aws::String>
+    TimecodeBurninSettings& WithPrefix(PrefixT&& value) { SetPrefix(std::forward<PrefixT>(value)); return *this;}
+    ///@}
   private:
 
-    TimecodeBurninFontSize m_fontSize;
+    TimecodeBurninFontSize m_fontSize{TimecodeBurninFontSize::NOT_SET};
     bool m_fontSizeHasBeenSet = false;
 
-    TimecodeBurninPosition m_position;
+    TimecodeBurninPosition m_position{TimecodeBurninPosition::NOT_SET};
     bool m_positionHasBeenSet = false;
 
     Aws::String m_prefix;

@@ -36,184 +36,66 @@ namespace Model
   class DirectoryConfig
   {
   public:
-    AWS_APPSTREAM_API DirectoryConfig();
+    AWS_APPSTREAM_API DirectoryConfig() = default;
     AWS_APPSTREAM_API DirectoryConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSTREAM_API DirectoryConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSTREAM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The fully qualified name of the directory (for example,
      * corp.example.com).</p>
      */
-    inline const Aws::String& GetDirectoryName() const{ return m_directoryName; }
-
-    /**
-     * <p>The fully qualified name of the directory (for example,
-     * corp.example.com).</p>
-     */
+    inline const Aws::String& GetDirectoryName() const { return m_directoryName; }
     inline bool DirectoryNameHasBeenSet() const { return m_directoryNameHasBeenSet; }
+    template<typename DirectoryNameT = Aws::String>
+    void SetDirectoryName(DirectoryNameT&& value) { m_directoryNameHasBeenSet = true; m_directoryName = std::forward<DirectoryNameT>(value); }
+    template<typename DirectoryNameT = Aws::String>
+    DirectoryConfig& WithDirectoryName(DirectoryNameT&& value) { SetDirectoryName(std::forward<DirectoryNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The fully qualified name of the directory (for example,
-     * corp.example.com).</p>
-     */
-    inline void SetDirectoryName(const Aws::String& value) { m_directoryNameHasBeenSet = true; m_directoryName = value; }
-
-    /**
-     * <p>The fully qualified name of the directory (for example,
-     * corp.example.com).</p>
-     */
-    inline void SetDirectoryName(Aws::String&& value) { m_directoryNameHasBeenSet = true; m_directoryName = std::move(value); }
-
-    /**
-     * <p>The fully qualified name of the directory (for example,
-     * corp.example.com).</p>
-     */
-    inline void SetDirectoryName(const char* value) { m_directoryNameHasBeenSet = true; m_directoryName.assign(value); }
-
-    /**
-     * <p>The fully qualified name of the directory (for example,
-     * corp.example.com).</p>
-     */
-    inline DirectoryConfig& WithDirectoryName(const Aws::String& value) { SetDirectoryName(value); return *this;}
-
-    /**
-     * <p>The fully qualified name of the directory (for example,
-     * corp.example.com).</p>
-     */
-    inline DirectoryConfig& WithDirectoryName(Aws::String&& value) { SetDirectoryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The fully qualified name of the directory (for example,
-     * corp.example.com).</p>
-     */
-    inline DirectoryConfig& WithDirectoryName(const char* value) { SetDirectoryName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The distinguished names of the organizational units for computer
      * accounts.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetOrganizationalUnitDistinguishedNames() const{ return m_organizationalUnitDistinguishedNames; }
-
-    /**
-     * <p>The distinguished names of the organizational units for computer
-     * accounts.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetOrganizationalUnitDistinguishedNames() const { return m_organizationalUnitDistinguishedNames; }
     inline bool OrganizationalUnitDistinguishedNamesHasBeenSet() const { return m_organizationalUnitDistinguishedNamesHasBeenSet; }
+    template<typename OrganizationalUnitDistinguishedNamesT = Aws::Vector<Aws::String>>
+    void SetOrganizationalUnitDistinguishedNames(OrganizationalUnitDistinguishedNamesT&& value) { m_organizationalUnitDistinguishedNamesHasBeenSet = true; m_organizationalUnitDistinguishedNames = std::forward<OrganizationalUnitDistinguishedNamesT>(value); }
+    template<typename OrganizationalUnitDistinguishedNamesT = Aws::Vector<Aws::String>>
+    DirectoryConfig& WithOrganizationalUnitDistinguishedNames(OrganizationalUnitDistinguishedNamesT&& value) { SetOrganizationalUnitDistinguishedNames(std::forward<OrganizationalUnitDistinguishedNamesT>(value)); return *this;}
+    template<typename OrganizationalUnitDistinguishedNamesT = Aws::String>
+    DirectoryConfig& AddOrganizationalUnitDistinguishedNames(OrganizationalUnitDistinguishedNamesT&& value) { m_organizationalUnitDistinguishedNamesHasBeenSet = true; m_organizationalUnitDistinguishedNames.emplace_back(std::forward<OrganizationalUnitDistinguishedNamesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The distinguished names of the organizational units for computer
-     * accounts.</p>
-     */
-    inline void SetOrganizationalUnitDistinguishedNames(const Aws::Vector<Aws::String>& value) { m_organizationalUnitDistinguishedNamesHasBeenSet = true; m_organizationalUnitDistinguishedNames = value; }
-
-    /**
-     * <p>The distinguished names of the organizational units for computer
-     * accounts.</p>
-     */
-    inline void SetOrganizationalUnitDistinguishedNames(Aws::Vector<Aws::String>&& value) { m_organizationalUnitDistinguishedNamesHasBeenSet = true; m_organizationalUnitDistinguishedNames = std::move(value); }
-
-    /**
-     * <p>The distinguished names of the organizational units for computer
-     * accounts.</p>
-     */
-    inline DirectoryConfig& WithOrganizationalUnitDistinguishedNames(const Aws::Vector<Aws::String>& value) { SetOrganizationalUnitDistinguishedNames(value); return *this;}
-
-    /**
-     * <p>The distinguished names of the organizational units for computer
-     * accounts.</p>
-     */
-    inline DirectoryConfig& WithOrganizationalUnitDistinguishedNames(Aws::Vector<Aws::String>&& value) { SetOrganizationalUnitDistinguishedNames(std::move(value)); return *this;}
-
-    /**
-     * <p>The distinguished names of the organizational units for computer
-     * accounts.</p>
-     */
-    inline DirectoryConfig& AddOrganizationalUnitDistinguishedNames(const Aws::String& value) { m_organizationalUnitDistinguishedNamesHasBeenSet = true; m_organizationalUnitDistinguishedNames.push_back(value); return *this; }
-
-    /**
-     * <p>The distinguished names of the organizational units for computer
-     * accounts.</p>
-     */
-    inline DirectoryConfig& AddOrganizationalUnitDistinguishedNames(Aws::String&& value) { m_organizationalUnitDistinguishedNamesHasBeenSet = true; m_organizationalUnitDistinguishedNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The distinguished names of the organizational units for computer
-     * accounts.</p>
-     */
-    inline DirectoryConfig& AddOrganizationalUnitDistinguishedNames(const char* value) { m_organizationalUnitDistinguishedNamesHasBeenSet = true; m_organizationalUnitDistinguishedNames.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The credentials for the service account used by the fleet or image builder to
      * connect to the directory.</p>
      */
-    inline const ServiceAccountCredentials& GetServiceAccountCredentials() const{ return m_serviceAccountCredentials; }
-
-    /**
-     * <p>The credentials for the service account used by the fleet or image builder to
-     * connect to the directory.</p>
-     */
+    inline const ServiceAccountCredentials& GetServiceAccountCredentials() const { return m_serviceAccountCredentials; }
     inline bool ServiceAccountCredentialsHasBeenSet() const { return m_serviceAccountCredentialsHasBeenSet; }
+    template<typename ServiceAccountCredentialsT = ServiceAccountCredentials>
+    void SetServiceAccountCredentials(ServiceAccountCredentialsT&& value) { m_serviceAccountCredentialsHasBeenSet = true; m_serviceAccountCredentials = std::forward<ServiceAccountCredentialsT>(value); }
+    template<typename ServiceAccountCredentialsT = ServiceAccountCredentials>
+    DirectoryConfig& WithServiceAccountCredentials(ServiceAccountCredentialsT&& value) { SetServiceAccountCredentials(std::forward<ServiceAccountCredentialsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The credentials for the service account used by the fleet or image builder to
-     * connect to the directory.</p>
-     */
-    inline void SetServiceAccountCredentials(const ServiceAccountCredentials& value) { m_serviceAccountCredentialsHasBeenSet = true; m_serviceAccountCredentials = value; }
-
-    /**
-     * <p>The credentials for the service account used by the fleet or image builder to
-     * connect to the directory.</p>
-     */
-    inline void SetServiceAccountCredentials(ServiceAccountCredentials&& value) { m_serviceAccountCredentialsHasBeenSet = true; m_serviceAccountCredentials = std::move(value); }
-
-    /**
-     * <p>The credentials for the service account used by the fleet or image builder to
-     * connect to the directory.</p>
-     */
-    inline DirectoryConfig& WithServiceAccountCredentials(const ServiceAccountCredentials& value) { SetServiceAccountCredentials(value); return *this;}
-
-    /**
-     * <p>The credentials for the service account used by the fleet or image builder to
-     * connect to the directory.</p>
-     */
-    inline DirectoryConfig& WithServiceAccountCredentials(ServiceAccountCredentials&& value) { SetServiceAccountCredentials(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time the directory configuration was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTime() const{ return m_createdTime; }
-
-    /**
-     * <p>The time the directory configuration was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedTime() const { return m_createdTime; }
     inline bool CreatedTimeHasBeenSet() const { return m_createdTimeHasBeenSet; }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    DirectoryConfig& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time the directory configuration was created.</p>
-     */
-    inline void SetCreatedTime(const Aws::Utils::DateTime& value) { m_createdTimeHasBeenSet = true; m_createdTime = value; }
-
-    /**
-     * <p>The time the directory configuration was created.</p>
-     */
-    inline void SetCreatedTime(Aws::Utils::DateTime&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::move(value); }
-
-    /**
-     * <p>The time the directory configuration was created.</p>
-     */
-    inline DirectoryConfig& WithCreatedTime(const Aws::Utils::DateTime& value) { SetCreatedTime(value); return *this;}
-
-    /**
-     * <p>The time the directory configuration was created.</p>
-     */
-    inline DirectoryConfig& WithCreatedTime(Aws::Utils::DateTime&& value) { SetCreatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The certificate-based authentication properties used to authenticate SAML 2.0
      * Identity Provider (IdP) user identities to Active Directory domain-joined
@@ -225,73 +107,13 @@ namespace Model
      * AD domain password. Users will be disconnected to re-authenticate using
      * certificates.</p>
      */
-    inline const CertificateBasedAuthProperties& GetCertificateBasedAuthProperties() const{ return m_certificateBasedAuthProperties; }
-
-    /**
-     * <p>The certificate-based authentication properties used to authenticate SAML 2.0
-     * Identity Provider (IdP) user identities to Active Directory domain-joined
-     * streaming instances. Fallback is turned on by default when certificate-based
-     * authentication is <b>Enabled</b> . Fallback allows users to log in using their
-     * AD domain password if certificate-based authentication is unsuccessful, or to
-     * unlock a desktop lock screen. <b>Enabled_no_directory_login_fallback</b> enables
-     * certificate-based authentication, but does not allow users to log in using their
-     * AD domain password. Users will be disconnected to re-authenticate using
-     * certificates.</p>
-     */
+    inline const CertificateBasedAuthProperties& GetCertificateBasedAuthProperties() const { return m_certificateBasedAuthProperties; }
     inline bool CertificateBasedAuthPropertiesHasBeenSet() const { return m_certificateBasedAuthPropertiesHasBeenSet; }
-
-    /**
-     * <p>The certificate-based authentication properties used to authenticate SAML 2.0
-     * Identity Provider (IdP) user identities to Active Directory domain-joined
-     * streaming instances. Fallback is turned on by default when certificate-based
-     * authentication is <b>Enabled</b> . Fallback allows users to log in using their
-     * AD domain password if certificate-based authentication is unsuccessful, or to
-     * unlock a desktop lock screen. <b>Enabled_no_directory_login_fallback</b> enables
-     * certificate-based authentication, but does not allow users to log in using their
-     * AD domain password. Users will be disconnected to re-authenticate using
-     * certificates.</p>
-     */
-    inline void SetCertificateBasedAuthProperties(const CertificateBasedAuthProperties& value) { m_certificateBasedAuthPropertiesHasBeenSet = true; m_certificateBasedAuthProperties = value; }
-
-    /**
-     * <p>The certificate-based authentication properties used to authenticate SAML 2.0
-     * Identity Provider (IdP) user identities to Active Directory domain-joined
-     * streaming instances. Fallback is turned on by default when certificate-based
-     * authentication is <b>Enabled</b> . Fallback allows users to log in using their
-     * AD domain password if certificate-based authentication is unsuccessful, or to
-     * unlock a desktop lock screen. <b>Enabled_no_directory_login_fallback</b> enables
-     * certificate-based authentication, but does not allow users to log in using their
-     * AD domain password. Users will be disconnected to re-authenticate using
-     * certificates.</p>
-     */
-    inline void SetCertificateBasedAuthProperties(CertificateBasedAuthProperties&& value) { m_certificateBasedAuthPropertiesHasBeenSet = true; m_certificateBasedAuthProperties = std::move(value); }
-
-    /**
-     * <p>The certificate-based authentication properties used to authenticate SAML 2.0
-     * Identity Provider (IdP) user identities to Active Directory domain-joined
-     * streaming instances. Fallback is turned on by default when certificate-based
-     * authentication is <b>Enabled</b> . Fallback allows users to log in using their
-     * AD domain password if certificate-based authentication is unsuccessful, or to
-     * unlock a desktop lock screen. <b>Enabled_no_directory_login_fallback</b> enables
-     * certificate-based authentication, but does not allow users to log in using their
-     * AD domain password. Users will be disconnected to re-authenticate using
-     * certificates.</p>
-     */
-    inline DirectoryConfig& WithCertificateBasedAuthProperties(const CertificateBasedAuthProperties& value) { SetCertificateBasedAuthProperties(value); return *this;}
-
-    /**
-     * <p>The certificate-based authentication properties used to authenticate SAML 2.0
-     * Identity Provider (IdP) user identities to Active Directory domain-joined
-     * streaming instances. Fallback is turned on by default when certificate-based
-     * authentication is <b>Enabled</b> . Fallback allows users to log in using their
-     * AD domain password if certificate-based authentication is unsuccessful, or to
-     * unlock a desktop lock screen. <b>Enabled_no_directory_login_fallback</b> enables
-     * certificate-based authentication, but does not allow users to log in using their
-     * AD domain password. Users will be disconnected to re-authenticate using
-     * certificates.</p>
-     */
-    inline DirectoryConfig& WithCertificateBasedAuthProperties(CertificateBasedAuthProperties&& value) { SetCertificateBasedAuthProperties(std::move(value)); return *this;}
-
+    template<typename CertificateBasedAuthPropertiesT = CertificateBasedAuthProperties>
+    void SetCertificateBasedAuthProperties(CertificateBasedAuthPropertiesT&& value) { m_certificateBasedAuthPropertiesHasBeenSet = true; m_certificateBasedAuthProperties = std::forward<CertificateBasedAuthPropertiesT>(value); }
+    template<typename CertificateBasedAuthPropertiesT = CertificateBasedAuthProperties>
+    DirectoryConfig& WithCertificateBasedAuthProperties(CertificateBasedAuthPropertiesT&& value) { SetCertificateBasedAuthProperties(std::forward<CertificateBasedAuthPropertiesT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_directoryName;
@@ -303,7 +125,7 @@ namespace Model
     ServiceAccountCredentials m_serviceAccountCredentials;
     bool m_serviceAccountCredentialsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTime;
+    Aws::Utils::DateTime m_createdTime{};
     bool m_createdTimeHasBeenSet = false;
 
     CertificateBasedAuthProperties m_certificateBasedAuthProperties;

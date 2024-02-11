@@ -32,81 +32,38 @@ namespace Model
   class ListWavesRequestFilters
   {
   public:
-    AWS_MGN_API ListWavesRequestFilters();
+    AWS_MGN_API ListWavesRequestFilters() = default;
     AWS_MGN_API ListWavesRequestFilters(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API ListWavesRequestFilters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Filter waves list by archival status.</p>
      */
-    inline bool GetIsArchived() const{ return m_isArchived; }
-
-    /**
-     * <p>Filter waves list by archival status.</p>
-     */
+    inline bool GetIsArchived() const { return m_isArchived; }
     inline bool IsArchivedHasBeenSet() const { return m_isArchivedHasBeenSet; }
-
-    /**
-     * <p>Filter waves list by archival status.</p>
-     */
     inline void SetIsArchived(bool value) { m_isArchivedHasBeenSet = true; m_isArchived = value; }
-
-    /**
-     * <p>Filter waves list by archival status.</p>
-     */
     inline ListWavesRequestFilters& WithIsArchived(bool value) { SetIsArchived(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Filter waves list by wave ID.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetWaveIDs() const{ return m_waveIDs; }
-
-    /**
-     * <p>Filter waves list by wave ID.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetWaveIDs() const { return m_waveIDs; }
     inline bool WaveIDsHasBeenSet() const { return m_waveIDsHasBeenSet; }
-
-    /**
-     * <p>Filter waves list by wave ID.</p>
-     */
-    inline void SetWaveIDs(const Aws::Vector<Aws::String>& value) { m_waveIDsHasBeenSet = true; m_waveIDs = value; }
-
-    /**
-     * <p>Filter waves list by wave ID.</p>
-     */
-    inline void SetWaveIDs(Aws::Vector<Aws::String>&& value) { m_waveIDsHasBeenSet = true; m_waveIDs = std::move(value); }
-
-    /**
-     * <p>Filter waves list by wave ID.</p>
-     */
-    inline ListWavesRequestFilters& WithWaveIDs(const Aws::Vector<Aws::String>& value) { SetWaveIDs(value); return *this;}
-
-    /**
-     * <p>Filter waves list by wave ID.</p>
-     */
-    inline ListWavesRequestFilters& WithWaveIDs(Aws::Vector<Aws::String>&& value) { SetWaveIDs(std::move(value)); return *this;}
-
-    /**
-     * <p>Filter waves list by wave ID.</p>
-     */
-    inline ListWavesRequestFilters& AddWaveIDs(const Aws::String& value) { m_waveIDsHasBeenSet = true; m_waveIDs.push_back(value); return *this; }
-
-    /**
-     * <p>Filter waves list by wave ID.</p>
-     */
-    inline ListWavesRequestFilters& AddWaveIDs(Aws::String&& value) { m_waveIDsHasBeenSet = true; m_waveIDs.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Filter waves list by wave ID.</p>
-     */
-    inline ListWavesRequestFilters& AddWaveIDs(const char* value) { m_waveIDsHasBeenSet = true; m_waveIDs.push_back(value); return *this; }
-
+    template<typename WaveIDsT = Aws::Vector<Aws::String>>
+    void SetWaveIDs(WaveIDsT&& value) { m_waveIDsHasBeenSet = true; m_waveIDs = std::forward<WaveIDsT>(value); }
+    template<typename WaveIDsT = Aws::Vector<Aws::String>>
+    ListWavesRequestFilters& WithWaveIDs(WaveIDsT&& value) { SetWaveIDs(std::forward<WaveIDsT>(value)); return *this;}
+    template<typename WaveIDsT = Aws::String>
+    ListWavesRequestFilters& AddWaveIDs(WaveIDsT&& value) { m_waveIDsHasBeenSet = true; m_waveIDs.emplace_back(std::forward<WaveIDsT>(value)); return *this; }
+    ///@}
   private:
 
-    bool m_isArchived;
+    bool m_isArchived{false};
     bool m_isArchivedHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_waveIDs;

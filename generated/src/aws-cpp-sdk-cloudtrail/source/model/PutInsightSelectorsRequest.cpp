@@ -12,12 +12,6 @@ using namespace Aws::CloudTrail::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutInsightSelectorsRequest::PutInsightSelectorsRequest() : 
-    m_trailNameHasBeenSet(false),
-    m_insightSelectorsHasBeenSet(false)
-{
-}
-
 Aws::String PutInsightSelectorsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -36,6 +30,18 @@ Aws::String PutInsightSelectorsRequest::SerializePayload() const
      insightSelectorsJsonList[insightSelectorsIndex].AsObject(m_insightSelectors[insightSelectorsIndex].Jsonize());
    }
    payload.WithArray("InsightSelectors", std::move(insightSelectorsJsonList));
+
+  }
+
+  if(m_eventDataStoreHasBeenSet)
+  {
+   payload.WithString("EventDataStore", m_eventDataStore);
+
+  }
+
+  if(m_insightsDestinationHasBeenSet)
+  {
+   payload.WithString("InsightsDestination", m_insightsDestination);
 
   }
 

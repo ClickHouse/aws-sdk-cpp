@@ -32,117 +32,38 @@ namespace Model
   class CreateExperimentTemplateStopConditionInput
   {
   public:
-    AWS_FIS_API CreateExperimentTemplateStopConditionInput();
+    AWS_FIS_API CreateExperimentTemplateStopConditionInput() = default;
     AWS_FIS_API CreateExperimentTemplateStopConditionInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIS_API CreateExperimentTemplateStopConditionInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The source for the stop condition. Specify <code>aws:cloudwatch:alarm</code>
      * if the stop condition is defined by a CloudWatch alarm. Specify
      * <code>none</code> if there is no stop condition.</p>
      */
-    inline const Aws::String& GetSource() const{ return m_source; }
-
-    /**
-     * <p>The source for the stop condition. Specify <code>aws:cloudwatch:alarm</code>
-     * if the stop condition is defined by a CloudWatch alarm. Specify
-     * <code>none</code> if there is no stop condition.</p>
-     */
+    inline const Aws::String& GetSource() const { return m_source; }
     inline bool SourceHasBeenSet() const { return m_sourceHasBeenSet; }
+    template<typename SourceT = Aws::String>
+    void SetSource(SourceT&& value) { m_sourceHasBeenSet = true; m_source = std::forward<SourceT>(value); }
+    template<typename SourceT = Aws::String>
+    CreateExperimentTemplateStopConditionInput& WithSource(SourceT&& value) { SetSource(std::forward<SourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The source for the stop condition. Specify <code>aws:cloudwatch:alarm</code>
-     * if the stop condition is defined by a CloudWatch alarm. Specify
-     * <code>none</code> if there is no stop condition.</p>
-     */
-    inline void SetSource(const Aws::String& value) { m_sourceHasBeenSet = true; m_source = value; }
-
-    /**
-     * <p>The source for the stop condition. Specify <code>aws:cloudwatch:alarm</code>
-     * if the stop condition is defined by a CloudWatch alarm. Specify
-     * <code>none</code> if there is no stop condition.</p>
-     */
-    inline void SetSource(Aws::String&& value) { m_sourceHasBeenSet = true; m_source = std::move(value); }
-
-    /**
-     * <p>The source for the stop condition. Specify <code>aws:cloudwatch:alarm</code>
-     * if the stop condition is defined by a CloudWatch alarm. Specify
-     * <code>none</code> if there is no stop condition.</p>
-     */
-    inline void SetSource(const char* value) { m_sourceHasBeenSet = true; m_source.assign(value); }
-
-    /**
-     * <p>The source for the stop condition. Specify <code>aws:cloudwatch:alarm</code>
-     * if the stop condition is defined by a CloudWatch alarm. Specify
-     * <code>none</code> if there is no stop condition.</p>
-     */
-    inline CreateExperimentTemplateStopConditionInput& WithSource(const Aws::String& value) { SetSource(value); return *this;}
-
-    /**
-     * <p>The source for the stop condition. Specify <code>aws:cloudwatch:alarm</code>
-     * if the stop condition is defined by a CloudWatch alarm. Specify
-     * <code>none</code> if there is no stop condition.</p>
-     */
-    inline CreateExperimentTemplateStopConditionInput& WithSource(Aws::String&& value) { SetSource(std::move(value)); return *this;}
-
-    /**
-     * <p>The source for the stop condition. Specify <code>aws:cloudwatch:alarm</code>
-     * if the stop condition is defined by a CloudWatch alarm. Specify
-     * <code>none</code> if there is no stop condition.</p>
-     */
-    inline CreateExperimentTemplateStopConditionInput& WithSource(const char* value) { SetSource(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the CloudWatch alarm. This is required if
      * the source is a CloudWatch alarm.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the CloudWatch alarm. This is required if
-     * the source is a CloudWatch alarm.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the CloudWatch alarm. This is required if
-     * the source is a CloudWatch alarm.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the CloudWatch alarm. This is required if
-     * the source is a CloudWatch alarm.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the CloudWatch alarm. This is required if
-     * the source is a CloudWatch alarm.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the CloudWatch alarm. This is required if
-     * the source is a CloudWatch alarm.</p>
-     */
-    inline CreateExperimentTemplateStopConditionInput& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the CloudWatch alarm. This is required if
-     * the source is a CloudWatch alarm.</p>
-     */
-    inline CreateExperimentTemplateStopConditionInput& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the CloudWatch alarm. This is required if
-     * the source is a CloudWatch alarm.</p>
-     */
-    inline CreateExperimentTemplateStopConditionInput& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    CreateExperimentTemplateStopConditionInput& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_source;

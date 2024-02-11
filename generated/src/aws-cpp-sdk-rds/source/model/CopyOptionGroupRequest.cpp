@@ -10,14 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-CopyOptionGroupRequest::CopyOptionGroupRequest() : 
-    m_sourceOptionGroupIdentifierHasBeenSet(false),
-    m_targetOptionGroupIdentifierHasBeenSet(false),
-    m_targetOptionGroupDescriptionHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CopyOptionGroupRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -39,11 +31,18 @@ Aws::String CopyOptionGroupRequest::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 

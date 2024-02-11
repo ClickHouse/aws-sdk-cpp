@@ -18,15 +18,7 @@ namespace ElasticsearchService
 namespace Model
 {
 
-SnapshotOptionsStatus::SnapshotOptionsStatus() : 
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-SnapshotOptionsStatus::SnapshotOptionsStatus(JsonView jsonValue) : 
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false)
+SnapshotOptionsStatus::SnapshotOptionsStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SnapshotOptionsStatus& SnapshotOptionsStatus::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Options"))
   {
     m_options = jsonValue.GetObject("Options");
-
     m_optionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = jsonValue.GetObject("Status");
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

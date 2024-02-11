@@ -18,13 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-CustomActionSetParametersOperation::CustomActionSetParametersOperation() : 
-    m_parameterValueConfigurationsHasBeenSet(false)
-{
-}
-
-CustomActionSetParametersOperation::CustomActionSetParametersOperation(JsonView jsonValue) : 
-    m_parameterValueConfigurationsHasBeenSet(false)
+CustomActionSetParametersOperation::CustomActionSetParametersOperation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ CustomActionSetParametersOperation& CustomActionSetParametersOperation::operator
     }
     m_parameterValueConfigurationsHasBeenSet = true;
   }
-
   return *this;
 }
 

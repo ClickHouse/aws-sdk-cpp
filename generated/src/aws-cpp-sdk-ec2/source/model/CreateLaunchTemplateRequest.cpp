@@ -10,17 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateLaunchTemplateRequest::CreateLaunchTemplateRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_clientTokenHasBeenSet(false),
-    m_launchTemplateNameHasBeenSet(false),
-    m_versionDescriptionHasBeenSet(false),
-    m_launchTemplateDataHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false)
-{
-}
-
 Aws::String CreateLaunchTemplateRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -48,6 +37,11 @@ Aws::String CreateLaunchTemplateRequest::SerializePayload() const
   if(m_launchTemplateDataHasBeenSet)
   {
     m_launchTemplateData.OutputToStream(ss, "LaunchTemplateData");
+  }
+
+  if(m_operatorHasBeenSet)
+  {
+    m_operator.OutputToStream(ss, "Operator");
   }
 
   if(m_tagSpecificationsHasBeenSet)

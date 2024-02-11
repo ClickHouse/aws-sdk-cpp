@@ -35,47 +35,25 @@ namespace Model
   class ListRecommendationsResult
   {
   public:
-    AWS_SESV2_API ListRecommendationsResult();
+    AWS_SESV2_API ListRecommendationsResult() = default;
     AWS_SESV2_API ListRecommendationsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SESV2_API ListRecommendationsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The recommendations applicable to your account.</p>
      */
-    inline const Aws::Vector<Recommendation>& GetRecommendations() const{ return m_recommendations; }
+    inline const Aws::Vector<Recommendation>& GetRecommendations() const { return m_recommendations; }
+    template<typename RecommendationsT = Aws::Vector<Recommendation>>
+    void SetRecommendations(RecommendationsT&& value) { m_recommendationsHasBeenSet = true; m_recommendations = std::forward<RecommendationsT>(value); }
+    template<typename RecommendationsT = Aws::Vector<Recommendation>>
+    ListRecommendationsResult& WithRecommendations(RecommendationsT&& value) { SetRecommendations(std::forward<RecommendationsT>(value)); return *this;}
+    template<typename RecommendationsT = Recommendation>
+    ListRecommendationsResult& AddRecommendations(RecommendationsT&& value) { m_recommendationsHasBeenSet = true; m_recommendations.emplace_back(std::forward<RecommendationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The recommendations applicable to your account.</p>
-     */
-    inline void SetRecommendations(const Aws::Vector<Recommendation>& value) { m_recommendations = value; }
-
-    /**
-     * <p>The recommendations applicable to your account.</p>
-     */
-    inline void SetRecommendations(Aws::Vector<Recommendation>&& value) { m_recommendations = std::move(value); }
-
-    /**
-     * <p>The recommendations applicable to your account.</p>
-     */
-    inline ListRecommendationsResult& WithRecommendations(const Aws::Vector<Recommendation>& value) { SetRecommendations(value); return *this;}
-
-    /**
-     * <p>The recommendations applicable to your account.</p>
-     */
-    inline ListRecommendationsResult& WithRecommendations(Aws::Vector<Recommendation>&& value) { SetRecommendations(std::move(value)); return *this;}
-
-    /**
-     * <p>The recommendations applicable to your account.</p>
-     */
-    inline ListRecommendationsResult& AddRecommendations(const Recommendation& value) { m_recommendations.push_back(value); return *this; }
-
-    /**
-     * <p>The recommendations applicable to your account.</p>
-     */
-    inline ListRecommendationsResult& AddRecommendations(Recommendation&& value) { m_recommendations.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A string token indicating that there might be additional recommendations
      * available to be listed. Use the token provided in the
@@ -83,91 +61,31 @@ namespace Model
      * <code>ListRecommendations</code> with the same parameters to retrieve the next
      * page of recommendations.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListRecommendationsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A string token indicating that there might be additional recommendations
-     * available to be listed. Use the token provided in the
-     * <code>ListRecommendationsResponse</code> to use in the subsequent call to
-     * <code>ListRecommendations</code> with the same parameters to retrieve the next
-     * page of recommendations.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>A string token indicating that there might be additional recommendations
-     * available to be listed. Use the token provided in the
-     * <code>ListRecommendationsResponse</code> to use in the subsequent call to
-     * <code>ListRecommendations</code> with the same parameters to retrieve the next
-     * page of recommendations.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>A string token indicating that there might be additional recommendations
-     * available to be listed. Use the token provided in the
-     * <code>ListRecommendationsResponse</code> to use in the subsequent call to
-     * <code>ListRecommendations</code> with the same parameters to retrieve the next
-     * page of recommendations.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>A string token indicating that there might be additional recommendations
-     * available to be listed. Use the token provided in the
-     * <code>ListRecommendationsResponse</code> to use in the subsequent call to
-     * <code>ListRecommendations</code> with the same parameters to retrieve the next
-     * page of recommendations.</p>
-     */
-    inline ListRecommendationsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A string token indicating that there might be additional recommendations
-     * available to be listed. Use the token provided in the
-     * <code>ListRecommendationsResponse</code> to use in the subsequent call to
-     * <code>ListRecommendations</code> with the same parameters to retrieve the next
-     * page of recommendations.</p>
-     */
-    inline ListRecommendationsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A string token indicating that there might be additional recommendations
-     * available to be listed. Use the token provided in the
-     * <code>ListRecommendationsResponse</code> to use in the subsequent call to
-     * <code>ListRecommendations</code> with the same parameters to retrieve the next
-     * page of recommendations.</p>
-     */
-    inline ListRecommendationsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListRecommendationsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListRecommendationsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListRecommendationsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListRecommendationsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Recommendation> m_recommendations;
+    bool m_recommendationsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,19 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsWafRulePredicateListDetails::AwsWafRulePredicateListDetails() : 
-    m_dataIdHasBeenSet(false),
-    m_negated(false),
-    m_negatedHasBeenSet(false),
-    m_typeHasBeenSet(false)
-{
-}
-
-AwsWafRulePredicateListDetails::AwsWafRulePredicateListDetails(JsonView jsonValue) : 
-    m_dataIdHasBeenSet(false),
-    m_negated(false),
-    m_negatedHasBeenSet(false),
-    m_typeHasBeenSet(false)
+AwsWafRulePredicateListDetails::AwsWafRulePredicateListDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ AwsWafRulePredicateListDetails& AwsWafRulePredicateListDetails::operator =(JsonV
   if(jsonValue.ValueExists("DataId"))
   {
     m_dataId = jsonValue.GetString("DataId");
-
     m_dataIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Negated"))
   {
     m_negated = jsonValue.GetBool("Negated");
-
     m_negatedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Type"))
   {
     m_type = jsonValue.GetString("Type");
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

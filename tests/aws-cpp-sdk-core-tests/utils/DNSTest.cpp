@@ -4,12 +4,16 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
-#include <gtest/gtest.h>
+#include <aws/testing/AwsCppSdkGTestSuite.h>
 #include <aws/core/utils/DNS.h>
 
 using namespace Aws::Utils;
 
-TEST(DnsTest, TestValidDnsLabels)
+class DnsTest : public Aws::Testing::AwsCppSdkGTestSuite
+{
+};
+
+TEST_F(DnsTest, TestValidDnsLabels)
 {
     ASSERT_TRUE(IsValidDnsLabel("a"));
     ASSERT_TRUE(IsValidDnsLabel("ab"));
@@ -22,7 +26,7 @@ TEST(DnsTest, TestValidDnsLabels)
     ASSERT_TRUE(IsValidDnsLabel("012345678901234567890123456789012345678901234567890123456789012")); // 63 characters
 }
 
-TEST(DnsTest, TestInvalidDnsLabels)
+TEST_F(DnsTest, TestInvalidDnsLabels)
 {
     ASSERT_FALSE(IsValidDnsLabel(""));
     ASSERT_FALSE(IsValidDnsLabel("has_underscore"));
@@ -35,7 +39,7 @@ TEST(DnsTest, TestInvalidDnsLabels)
     ASSERT_FALSE(IsValidDnsLabel("0123456789012345678901234567890123456789012345678901234567890123")); // 64 characters
 }
 
-TEST(DnsTest, TestHost)
+TEST_F(DnsTest, TestHost)
 {
     ASSERT_TRUE(IsValidHost("www.amazon.com"));
     ASSERT_TRUE(IsValidHost("a"));
@@ -55,5 +59,31 @@ TEST(DnsTest, TestHost)
     ASSERT_FALSE(IsValidHost("www.-amazon.com"));
     ASSERT_FALSE(IsValidHost("0123456789012345678901234567890123456789012345678901234567890123")); // 64 characters
     ASSERT_FALSE(IsValidHost("0123456789012345678901234567890123456789012345678901234567890123.com")); // 64 characters
+
+}
+
+TEST_F(DnsTest, TestIPV6)
+{
+    Aws::Vector< std::pair<Aws::String, bool> > inputs = {
+        {"2001:0db8:85a3:0000:0000:8a2e:0370:7334", true},
+        {"2001:DB8:85A3::8A2E:370:7334", true},
+        {"::ffff", true},
+        {"::", true},
+        {"ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",true},
+        {"2001:db8:85a3:0:0:8a2e:370:7334",true},
+        {"2001:db8:85a3:0000:0000:8a2e:0370:7334:1", false},
+        {"2001:db8:85a3:0000", false},
+        {"2001:0db8:85a3:0000:0000:8a2e:0370:7334:", false},
+        {"g001:0db8:85a3:0000:0000:8a2e:0370:7334", false},
+        {"2001:db8::85a3::1", false},
+        {":2001:db8:85a3:0000:0000:8a2e:0370:7334", false},
+        {"0:0:0:0:0:0:0:0", true},
+        {"2001:db8::", true}
+    };
+
+    for(auto t : inputs)
+    {
+        ASSERT_EQ(IsValidHost(t.first), t.second);
+    }
 
 }

@@ -24,7 +24,7 @@ namespace Model
   class UpdateRegistryRequest : public SchemasRequest
   {
   public:
-    AWS_SCHEMAS_API UpdateRegistryRequest();
+    AWS_SCHEMAS_API UpdateRegistryRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,87 +35,29 @@ namespace Model
     AWS_SCHEMAS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The description of the registry to update.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the registry to update.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateRegistryRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the registry to update.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the registry to update.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the registry to update.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the registry to update.</p>
-     */
-    inline UpdateRegistryRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the registry to update.</p>
-     */
-    inline UpdateRegistryRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the registry to update.</p>
-     */
-    inline UpdateRegistryRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the registry.</p>
      */
-    inline const Aws::String& GetRegistryName() const{ return m_registryName; }
-
-    /**
-     * <p>The name of the registry.</p>
-     */
+    inline const Aws::String& GetRegistryName() const { return m_registryName; }
     inline bool RegistryNameHasBeenSet() const { return m_registryNameHasBeenSet; }
-
-    /**
-     * <p>The name of the registry.</p>
-     */
-    inline void SetRegistryName(const Aws::String& value) { m_registryNameHasBeenSet = true; m_registryName = value; }
-
-    /**
-     * <p>The name of the registry.</p>
-     */
-    inline void SetRegistryName(Aws::String&& value) { m_registryNameHasBeenSet = true; m_registryName = std::move(value); }
-
-    /**
-     * <p>The name of the registry.</p>
-     */
-    inline void SetRegistryName(const char* value) { m_registryNameHasBeenSet = true; m_registryName.assign(value); }
-
-    /**
-     * <p>The name of the registry.</p>
-     */
-    inline UpdateRegistryRequest& WithRegistryName(const Aws::String& value) { SetRegistryName(value); return *this;}
-
-    /**
-     * <p>The name of the registry.</p>
-     */
-    inline UpdateRegistryRequest& WithRegistryName(Aws::String&& value) { SetRegistryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the registry.</p>
-     */
-    inline UpdateRegistryRequest& WithRegistryName(const char* value) { SetRegistryName(value); return *this;}
-
+    template<typename RegistryNameT = Aws::String>
+    void SetRegistryName(RegistryNameT&& value) { m_registryNameHasBeenSet = true; m_registryName = std::forward<RegistryNameT>(value); }
+    template<typename RegistryNameT = Aws::String>
+    UpdateRegistryRequest& WithRegistryName(RegistryNameT&& value) { SetRegistryName(std::forward<RegistryNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_description;

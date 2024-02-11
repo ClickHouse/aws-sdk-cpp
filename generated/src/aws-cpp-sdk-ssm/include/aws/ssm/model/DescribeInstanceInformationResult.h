@@ -29,118 +29,54 @@ namespace Model
   class DescribeInstanceInformationResult
   {
   public:
-    AWS_SSM_API DescribeInstanceInformationResult();
+    AWS_SSM_API DescribeInstanceInformationResult() = default;
     AWS_SSM_API DescribeInstanceInformationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SSM_API DescribeInstanceInformationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The managed node information list.</p>
      */
-    inline const Aws::Vector<InstanceInformation>& GetInstanceInformationList() const{ return m_instanceInformationList; }
+    inline const Aws::Vector<InstanceInformation>& GetInstanceInformationList() const { return m_instanceInformationList; }
+    template<typename InstanceInformationListT = Aws::Vector<InstanceInformation>>
+    void SetInstanceInformationList(InstanceInformationListT&& value) { m_instanceInformationListHasBeenSet = true; m_instanceInformationList = std::forward<InstanceInformationListT>(value); }
+    template<typename InstanceInformationListT = Aws::Vector<InstanceInformation>>
+    DescribeInstanceInformationResult& WithInstanceInformationList(InstanceInformationListT&& value) { SetInstanceInformationList(std::forward<InstanceInformationListT>(value)); return *this;}
+    template<typename InstanceInformationListT = InstanceInformation>
+    DescribeInstanceInformationResult& AddInstanceInformationList(InstanceInformationListT&& value) { m_instanceInformationListHasBeenSet = true; m_instanceInformationList.emplace_back(std::forward<InstanceInformationListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The managed node information list.</p>
-     */
-    inline void SetInstanceInformationList(const Aws::Vector<InstanceInformation>& value) { m_instanceInformationList = value; }
-
-    /**
-     * <p>The managed node information list.</p>
-     */
-    inline void SetInstanceInformationList(Aws::Vector<InstanceInformation>&& value) { m_instanceInformationList = std::move(value); }
-
-    /**
-     * <p>The managed node information list.</p>
-     */
-    inline DescribeInstanceInformationResult& WithInstanceInformationList(const Aws::Vector<InstanceInformation>& value) { SetInstanceInformationList(value); return *this;}
-
-    /**
-     * <p>The managed node information list.</p>
-     */
-    inline DescribeInstanceInformationResult& WithInstanceInformationList(Aws::Vector<InstanceInformation>&& value) { SetInstanceInformationList(std::move(value)); return *this;}
-
-    /**
-     * <p>The managed node information list.</p>
-     */
-    inline DescribeInstanceInformationResult& AddInstanceInformationList(const InstanceInformation& value) { m_instanceInformationList.push_back(value); return *this; }
-
-    /**
-     * <p>The managed node information list.</p>
-     */
-    inline DescribeInstanceInformationResult& AddInstanceInformationList(InstanceInformation&& value) { m_instanceInformationList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The token to use when requesting the next set of items. If there are no
      * additional items to return, the string is empty. </p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeInstanceInformationResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token to use when requesting the next set of items. If there are no
-     * additional items to return, the string is empty. </p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The token to use when requesting the next set of items. If there are no
-     * additional items to return, the string is empty. </p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token to use when requesting the next set of items. If there are no
-     * additional items to return, the string is empty. </p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The token to use when requesting the next set of items. If there are no
-     * additional items to return, the string is empty. </p>
-     */
-    inline DescribeInstanceInformationResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token to use when requesting the next set of items. If there are no
-     * additional items to return, the string is empty. </p>
-     */
-    inline DescribeInstanceInformationResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token to use when requesting the next set of items. If there are no
-     * additional items to return, the string is empty. </p>
-     */
-    inline DescribeInstanceInformationResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeInstanceInformationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeInstanceInformationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeInstanceInformationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeInstanceInformationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<InstanceInformation> m_instanceInformationList;
+    bool m_instanceInformationListHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

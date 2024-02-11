@@ -21,7 +21,7 @@ namespace Model
   class ReleasePhoneNumberRequest : public PinpointSMSVoiceV2Request
   {
   public:
-    AWS_PINPOINTSMSVOICEV2_API ReleasePhoneNumberRequest();
+    AWS_PINPOINTSMSVOICEV2_API ReleasePhoneNumberRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,62 +34,21 @@ namespace Model
     AWS_PINPOINTSMSVOICEV2_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The PhoneNumberId or PhoneNumberArn of the phone number to release. You can
      * use <a>DescribePhoneNumbers</a> to get the values for PhoneNumberId and
-     * PhoneNumberArn.</p>
+     * PhoneNumberArn.</p>  <p>If you are using a shared AWS End User
+     * Messaging SMS and Voice resource then you must use the full Amazon Resource
+     * Name(ARN).</p> 
      */
-    inline const Aws::String& GetPhoneNumberId() const{ return m_phoneNumberId; }
-
-    /**
-     * <p>The PhoneNumberId or PhoneNumberArn of the phone number to release. You can
-     * use <a>DescribePhoneNumbers</a> to get the values for PhoneNumberId and
-     * PhoneNumberArn.</p>
-     */
+    inline const Aws::String& GetPhoneNumberId() const { return m_phoneNumberId; }
     inline bool PhoneNumberIdHasBeenSet() const { return m_phoneNumberIdHasBeenSet; }
-
-    /**
-     * <p>The PhoneNumberId or PhoneNumberArn of the phone number to release. You can
-     * use <a>DescribePhoneNumbers</a> to get the values for PhoneNumberId and
-     * PhoneNumberArn.</p>
-     */
-    inline void SetPhoneNumberId(const Aws::String& value) { m_phoneNumberIdHasBeenSet = true; m_phoneNumberId = value; }
-
-    /**
-     * <p>The PhoneNumberId or PhoneNumberArn of the phone number to release. You can
-     * use <a>DescribePhoneNumbers</a> to get the values for PhoneNumberId and
-     * PhoneNumberArn.</p>
-     */
-    inline void SetPhoneNumberId(Aws::String&& value) { m_phoneNumberIdHasBeenSet = true; m_phoneNumberId = std::move(value); }
-
-    /**
-     * <p>The PhoneNumberId or PhoneNumberArn of the phone number to release. You can
-     * use <a>DescribePhoneNumbers</a> to get the values for PhoneNumberId and
-     * PhoneNumberArn.</p>
-     */
-    inline void SetPhoneNumberId(const char* value) { m_phoneNumberIdHasBeenSet = true; m_phoneNumberId.assign(value); }
-
-    /**
-     * <p>The PhoneNumberId or PhoneNumberArn of the phone number to release. You can
-     * use <a>DescribePhoneNumbers</a> to get the values for PhoneNumberId and
-     * PhoneNumberArn.</p>
-     */
-    inline ReleasePhoneNumberRequest& WithPhoneNumberId(const Aws::String& value) { SetPhoneNumberId(value); return *this;}
-
-    /**
-     * <p>The PhoneNumberId or PhoneNumberArn of the phone number to release. You can
-     * use <a>DescribePhoneNumbers</a> to get the values for PhoneNumberId and
-     * PhoneNumberArn.</p>
-     */
-    inline ReleasePhoneNumberRequest& WithPhoneNumberId(Aws::String&& value) { SetPhoneNumberId(std::move(value)); return *this;}
-
-    /**
-     * <p>The PhoneNumberId or PhoneNumberArn of the phone number to release. You can
-     * use <a>DescribePhoneNumbers</a> to get the values for PhoneNumberId and
-     * PhoneNumberArn.</p>
-     */
-    inline ReleasePhoneNumberRequest& WithPhoneNumberId(const char* value) { SetPhoneNumberId(value); return *this;}
-
+    template<typename PhoneNumberIdT = Aws::String>
+    void SetPhoneNumberId(PhoneNumberIdT&& value) { m_phoneNumberIdHasBeenSet = true; m_phoneNumberId = std::forward<PhoneNumberIdT>(value); }
+    template<typename PhoneNumberIdT = Aws::String>
+    ReleasePhoneNumberRequest& WithPhoneNumberId(PhoneNumberIdT&& value) { SetPhoneNumberId(std::forward<PhoneNumberIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_phoneNumberId;

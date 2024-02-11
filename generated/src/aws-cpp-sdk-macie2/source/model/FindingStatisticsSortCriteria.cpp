@@ -18,19 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-FindingStatisticsSortCriteria::FindingStatisticsSortCriteria() : 
-    m_attributeName(FindingStatisticsSortAttributeName::NOT_SET),
-    m_attributeNameHasBeenSet(false),
-    m_orderBy(OrderBy::NOT_SET),
-    m_orderByHasBeenSet(false)
-{
-}
-
-FindingStatisticsSortCriteria::FindingStatisticsSortCriteria(JsonView jsonValue) : 
-    m_attributeName(FindingStatisticsSortAttributeName::NOT_SET),
-    m_attributeNameHasBeenSet(false),
-    m_orderBy(OrderBy::NOT_SET),
-    m_orderByHasBeenSet(false)
+FindingStatisticsSortCriteria::FindingStatisticsSortCriteria(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ FindingStatisticsSortCriteria& FindingStatisticsSortCriteria::operator =(JsonVie
   if(jsonValue.ValueExists("attributeName"))
   {
     m_attributeName = FindingStatisticsSortAttributeNameMapper::GetFindingStatisticsSortAttributeNameForName(jsonValue.GetString("attributeName"));
-
     m_attributeNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("orderBy"))
   {
     m_orderBy = OrderByMapper::GetOrderByForName(jsonValue.GetString("orderBy"));
-
     m_orderByHasBeenSet = true;
   }
-
   return *this;
 }
 

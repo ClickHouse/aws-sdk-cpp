@@ -35,12 +35,13 @@ namespace Model
   class Transcript
   {
   public:
-    AWS_TRANSCRIBESTREAMINGSERVICE_API Transcript();
+    AWS_TRANSCRIBESTREAMINGSERVICE_API Transcript() = default;
     AWS_TRANSCRIBESTREAMINGSERVICE_API Transcript(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESTREAMINGSERVICE_API Transcript& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESTREAMINGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Contains a set of transcription results from one or more audio segments,
      * along with additional information per your request parameters. This can include
@@ -48,71 +49,15 @@ namespace Model
      * partial result stabilization, language identification, and other
      * transcription-related data.</p>
      */
-    inline const Aws::Vector<Result>& GetResults() const{ return m_results; }
-
-    /**
-     * <p>Contains a set of transcription results from one or more audio segments,
-     * along with additional information per your request parameters. This can include
-     * information relating to alternative transcriptions, channel identification,
-     * partial result stabilization, language identification, and other
-     * transcription-related data.</p>
-     */
+    inline const Aws::Vector<Result>& GetResults() const { return m_results; }
     inline bool ResultsHasBeenSet() const { return m_resultsHasBeenSet; }
-
-    /**
-     * <p>Contains a set of transcription results from one or more audio segments,
-     * along with additional information per your request parameters. This can include
-     * information relating to alternative transcriptions, channel identification,
-     * partial result stabilization, language identification, and other
-     * transcription-related data.</p>
-     */
-    inline void SetResults(const Aws::Vector<Result>& value) { m_resultsHasBeenSet = true; m_results = value; }
-
-    /**
-     * <p>Contains a set of transcription results from one or more audio segments,
-     * along with additional information per your request parameters. This can include
-     * information relating to alternative transcriptions, channel identification,
-     * partial result stabilization, language identification, and other
-     * transcription-related data.</p>
-     */
-    inline void SetResults(Aws::Vector<Result>&& value) { m_resultsHasBeenSet = true; m_results = std::move(value); }
-
-    /**
-     * <p>Contains a set of transcription results from one or more audio segments,
-     * along with additional information per your request parameters. This can include
-     * information relating to alternative transcriptions, channel identification,
-     * partial result stabilization, language identification, and other
-     * transcription-related data.</p>
-     */
-    inline Transcript& WithResults(const Aws::Vector<Result>& value) { SetResults(value); return *this;}
-
-    /**
-     * <p>Contains a set of transcription results from one or more audio segments,
-     * along with additional information per your request parameters. This can include
-     * information relating to alternative transcriptions, channel identification,
-     * partial result stabilization, language identification, and other
-     * transcription-related data.</p>
-     */
-    inline Transcript& WithResults(Aws::Vector<Result>&& value) { SetResults(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains a set of transcription results from one or more audio segments,
-     * along with additional information per your request parameters. This can include
-     * information relating to alternative transcriptions, channel identification,
-     * partial result stabilization, language identification, and other
-     * transcription-related data.</p>
-     */
-    inline Transcript& AddResults(const Result& value) { m_resultsHasBeenSet = true; m_results.push_back(value); return *this; }
-
-    /**
-     * <p>Contains a set of transcription results from one or more audio segments,
-     * along with additional information per your request parameters. This can include
-     * information relating to alternative transcriptions, channel identification,
-     * partial result stabilization, language identification, and other
-     * transcription-related data.</p>
-     */
-    inline Transcript& AddResults(Result&& value) { m_resultsHasBeenSet = true; m_results.push_back(std::move(value)); return *this; }
-
+    template<typename ResultsT = Aws::Vector<Result>>
+    void SetResults(ResultsT&& value) { m_resultsHasBeenSet = true; m_results = std::forward<ResultsT>(value); }
+    template<typename ResultsT = Aws::Vector<Result>>
+    Transcript& WithResults(ResultsT&& value) { SetResults(std::forward<ResultsT>(value)); return *this;}
+    template<typename ResultsT = Result>
+    Transcript& AddResults(ResultsT&& value) { m_resultsHasBeenSet = true; m_results.emplace_back(std::forward<ResultsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Result> m_results;

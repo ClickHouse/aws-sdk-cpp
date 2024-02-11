@@ -33,134 +33,47 @@ namespace Model
   class S3Location
   {
   public:
-    AWS_GLUEDATABREW_API S3Location();
+    AWS_GLUEDATABREW_API S3Location() = default;
     AWS_GLUEDATABREW_API S3Location(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUEDATABREW_API S3Location& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUEDATABREW_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon S3 bucket name.</p>
      */
-    inline const Aws::String& GetBucket() const{ return m_bucket; }
-
-    /**
-     * <p>The Amazon S3 bucket name.</p>
-     */
+    inline const Aws::String& GetBucket() const { return m_bucket; }
     inline bool BucketHasBeenSet() const { return m_bucketHasBeenSet; }
+    template<typename BucketT = Aws::String>
+    void SetBucket(BucketT&& value) { m_bucketHasBeenSet = true; m_bucket = std::forward<BucketT>(value); }
+    template<typename BucketT = Aws::String>
+    S3Location& WithBucket(BucketT&& value) { SetBucket(std::forward<BucketT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon S3 bucket name.</p>
-     */
-    inline void SetBucket(const Aws::String& value) { m_bucketHasBeenSet = true; m_bucket = value; }
-
-    /**
-     * <p>The Amazon S3 bucket name.</p>
-     */
-    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = std::move(value); }
-
-    /**
-     * <p>The Amazon S3 bucket name.</p>
-     */
-    inline void SetBucket(const char* value) { m_bucketHasBeenSet = true; m_bucket.assign(value); }
-
-    /**
-     * <p>The Amazon S3 bucket name.</p>
-     */
-    inline S3Location& WithBucket(const Aws::String& value) { SetBucket(value); return *this;}
-
-    /**
-     * <p>The Amazon S3 bucket name.</p>
-     */
-    inline S3Location& WithBucket(Aws::String&& value) { SetBucket(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon S3 bucket name.</p>
-     */
-    inline S3Location& WithBucket(const char* value) { SetBucket(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique name of the object in the bucket.</p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The unique name of the object in the bucket.</p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    S3Location& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique name of the object in the bucket.</p>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The unique name of the object in the bucket.</p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The unique name of the object in the bucket.</p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>The unique name of the object in the bucket.</p>
-     */
-    inline S3Location& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The unique name of the object in the bucket.</p>
-     */
-    inline S3Location& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique name of the object in the bucket.</p>
-     */
-    inline S3Location& WithKey(const char* value) { SetKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services account ID of the bucket owner.</p>
      */
-    inline const Aws::String& GetBucketOwner() const{ return m_bucketOwner; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the bucket owner.</p>
-     */
+    inline const Aws::String& GetBucketOwner() const { return m_bucketOwner; }
     inline bool BucketOwnerHasBeenSet() const { return m_bucketOwnerHasBeenSet; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the bucket owner.</p>
-     */
-    inline void SetBucketOwner(const Aws::String& value) { m_bucketOwnerHasBeenSet = true; m_bucketOwner = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the bucket owner.</p>
-     */
-    inline void SetBucketOwner(Aws::String&& value) { m_bucketOwnerHasBeenSet = true; m_bucketOwner = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the bucket owner.</p>
-     */
-    inline void SetBucketOwner(const char* value) { m_bucketOwnerHasBeenSet = true; m_bucketOwner.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the bucket owner.</p>
-     */
-    inline S3Location& WithBucketOwner(const Aws::String& value) { SetBucketOwner(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the bucket owner.</p>
-     */
-    inline S3Location& WithBucketOwner(Aws::String&& value) { SetBucketOwner(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the bucket owner.</p>
-     */
-    inline S3Location& WithBucketOwner(const char* value) { SetBucketOwner(value); return *this;}
-
+    template<typename BucketOwnerT = Aws::String>
+    void SetBucketOwner(BucketOwnerT&& value) { m_bucketOwnerHasBeenSet = true; m_bucketOwner = std::forward<BucketOwnerT>(value); }
+    template<typename BucketOwnerT = Aws::String>
+    S3Location& WithBucketOwner(BucketOwnerT&& value) { SetBucketOwner(std::forward<BucketOwnerT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucket;

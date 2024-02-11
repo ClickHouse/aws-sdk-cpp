@@ -20,15 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-LoadBalancerTargetGroupState::LoadBalancerTargetGroupState() : 
-    m_loadBalancerTargetGroupARNHasBeenSet(false),
-    m_stateHasBeenSet(false)
-{
-}
-
-LoadBalancerTargetGroupState::LoadBalancerTargetGroupState(const XmlNode& xmlNode) : 
-    m_loadBalancerTargetGroupARNHasBeenSet(false),
-    m_stateHasBeenSet(false)
+LoadBalancerTargetGroupState::LoadBalancerTargetGroupState(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

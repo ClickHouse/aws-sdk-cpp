@@ -31,73 +31,38 @@ namespace Model
   class SNOMEDCTTrait
   {
   public:
-    AWS_COMPREHENDMEDICAL_API SNOMEDCTTrait();
+    AWS_COMPREHENDMEDICAL_API SNOMEDCTTrait() = default;
     AWS_COMPREHENDMEDICAL_API SNOMEDCTTrait(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHENDMEDICAL_API SNOMEDCTTrait& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHENDMEDICAL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The name or contextual description of a detected trait. </p>
      */
-    inline const SNOMEDCTTraitName& GetName() const{ return m_name; }
-
-    /**
-     * <p> The name or contextual description of a detected trait. </p>
-     */
+    inline SNOMEDCTTraitName GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    inline void SetName(SNOMEDCTTraitName value) { m_nameHasBeenSet = true; m_name = value; }
+    inline SNOMEDCTTrait& WithName(SNOMEDCTTraitName value) { SetName(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The name or contextual description of a detected trait. </p>
+     * <p> The level of confidence that Amazon Comprehend Medical has in the accuracy
+     * of a detected trait. </p>
      */
-    inline void SetName(const SNOMEDCTTraitName& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p> The name or contextual description of a detected trait. </p>
-     */
-    inline void SetName(SNOMEDCTTraitName&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p> The name or contextual description of a detected trait. </p>
-     */
-    inline SNOMEDCTTrait& WithName(const SNOMEDCTTraitName& value) { SetName(value); return *this;}
-
-    /**
-     * <p> The name or contextual description of a detected trait. </p>
-     */
-    inline SNOMEDCTTrait& WithName(SNOMEDCTTraitName&& value) { SetName(std::move(value)); return *this;}
-
-
-    /**
-     * <p> The level of confidence that Comprehend Medical has in the accuracy of a
-     * detected trait. </p>
-     */
-    inline double GetScore() const{ return m_score; }
-
-    /**
-     * <p> The level of confidence that Comprehend Medical has in the accuracy of a
-     * detected trait. </p>
-     */
+    inline double GetScore() const { return m_score; }
     inline bool ScoreHasBeenSet() const { return m_scoreHasBeenSet; }
-
-    /**
-     * <p> The level of confidence that Comprehend Medical has in the accuracy of a
-     * detected trait. </p>
-     */
     inline void SetScore(double value) { m_scoreHasBeenSet = true; m_score = value; }
-
-    /**
-     * <p> The level of confidence that Comprehend Medical has in the accuracy of a
-     * detected trait. </p>
-     */
     inline SNOMEDCTTrait& WithScore(double value) { SetScore(value); return *this;}
-
+    ///@}
   private:
 
-    SNOMEDCTTraitName m_name;
+    SNOMEDCTTraitName m_name{SNOMEDCTTraitName::NOT_SET};
     bool m_nameHasBeenSet = false;
 
-    double m_score;
+    double m_score{0.0};
     bool m_scoreHasBeenSet = false;
   };
 

@@ -28,177 +28,79 @@ namespace Model
   class GetFederationTokenResult
   {
   public:
-    AWS_CONNECT_API GetFederationTokenResult();
+    AWS_CONNECT_API GetFederationTokenResult() = default;
     AWS_CONNECT_API GetFederationTokenResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CONNECT_API GetFederationTokenResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The credentials to use for federation.</p>
      */
-    inline const Credentials& GetCredentials() const{ return m_credentials; }
+    inline const Credentials& GetCredentials() const { return m_credentials; }
+    template<typename CredentialsT = Credentials>
+    void SetCredentials(CredentialsT&& value) { m_credentialsHasBeenSet = true; m_credentials = std::forward<CredentialsT>(value); }
+    template<typename CredentialsT = Credentials>
+    GetFederationTokenResult& WithCredentials(CredentialsT&& value) { SetCredentials(std::forward<CredentialsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The credentials to use for federation.</p>
-     */
-    inline void SetCredentials(const Credentials& value) { m_credentials = value; }
-
-    /**
-     * <p>The credentials to use for federation.</p>
-     */
-    inline void SetCredentials(Credentials&& value) { m_credentials = std::move(value); }
-
-    /**
-     * <p>The credentials to use for federation.</p>
-     */
-    inline GetFederationTokenResult& WithCredentials(const Credentials& value) { SetCredentials(value); return *this;}
-
-    /**
-     * <p>The credentials to use for federation.</p>
-     */
-    inline GetFederationTokenResult& WithCredentials(Credentials&& value) { SetCredentials(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The URL to sign into the user's instance. </p>
      */
-    inline const Aws::String& GetSignInUrl() const{ return m_signInUrl; }
+    inline const Aws::String& GetSignInUrl() const { return m_signInUrl; }
+    template<typename SignInUrlT = Aws::String>
+    void SetSignInUrl(SignInUrlT&& value) { m_signInUrlHasBeenSet = true; m_signInUrl = std::forward<SignInUrlT>(value); }
+    template<typename SignInUrlT = Aws::String>
+    GetFederationTokenResult& WithSignInUrl(SignInUrlT&& value) { SetSignInUrl(std::forward<SignInUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URL to sign into the user's instance. </p>
-     */
-    inline void SetSignInUrl(const Aws::String& value) { m_signInUrl = value; }
-
-    /**
-     * <p>The URL to sign into the user's instance. </p>
-     */
-    inline void SetSignInUrl(Aws::String&& value) { m_signInUrl = std::move(value); }
-
-    /**
-     * <p>The URL to sign into the user's instance. </p>
-     */
-    inline void SetSignInUrl(const char* value) { m_signInUrl.assign(value); }
-
-    /**
-     * <p>The URL to sign into the user's instance. </p>
-     */
-    inline GetFederationTokenResult& WithSignInUrl(const Aws::String& value) { SetSignInUrl(value); return *this;}
-
-    /**
-     * <p>The URL to sign into the user's instance. </p>
-     */
-    inline GetFederationTokenResult& WithSignInUrl(Aws::String&& value) { SetSignInUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL to sign into the user's instance. </p>
-     */
-    inline GetFederationTokenResult& WithSignInUrl(const char* value) { SetSignInUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the user.</p>
      */
-    inline const Aws::String& GetUserArn() const{ return m_userArn; }
+    inline const Aws::String& GetUserArn() const { return m_userArn; }
+    template<typename UserArnT = Aws::String>
+    void SetUserArn(UserArnT&& value) { m_userArnHasBeenSet = true; m_userArn = std::forward<UserArnT>(value); }
+    template<typename UserArnT = Aws::String>
+    GetFederationTokenResult& WithUserArn(UserArnT&& value) { SetUserArn(std::forward<UserArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the user.</p>
+     * <p>The identifier for the user. This can be the ID or the ARN of the user.</p>
      */
-    inline void SetUserArn(const Aws::String& value) { m_userArn = value; }
+    inline const Aws::String& GetUserId() const { return m_userId; }
+    template<typename UserIdT = Aws::String>
+    void SetUserId(UserIdT&& value) { m_userIdHasBeenSet = true; m_userId = std::forward<UserIdT>(value); }
+    template<typename UserIdT = Aws::String>
+    GetFederationTokenResult& WithUserId(UserIdT&& value) { SetUserId(std::forward<UserIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user.</p>
-     */
-    inline void SetUserArn(Aws::String&& value) { m_userArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user.</p>
-     */
-    inline void SetUserArn(const char* value) { m_userArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user.</p>
-     */
-    inline GetFederationTokenResult& WithUserArn(const Aws::String& value) { SetUserArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user.</p>
-     */
-    inline GetFederationTokenResult& WithUserArn(Aws::String&& value) { SetUserArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user.</p>
-     */
-    inline GetFederationTokenResult& WithUserArn(const char* value) { SetUserArn(value); return *this;}
-
-
-    /**
-     * <p>The identifier for the user.</p>
-     */
-    inline const Aws::String& GetUserId() const{ return m_userId; }
-
-    /**
-     * <p>The identifier for the user.</p>
-     */
-    inline void SetUserId(const Aws::String& value) { m_userId = value; }
-
-    /**
-     * <p>The identifier for the user.</p>
-     */
-    inline void SetUserId(Aws::String&& value) { m_userId = std::move(value); }
-
-    /**
-     * <p>The identifier for the user.</p>
-     */
-    inline void SetUserId(const char* value) { m_userId.assign(value); }
-
-    /**
-     * <p>The identifier for the user.</p>
-     */
-    inline GetFederationTokenResult& WithUserId(const Aws::String& value) { SetUserId(value); return *this;}
-
-    /**
-     * <p>The identifier for the user.</p>
-     */
-    inline GetFederationTokenResult& WithUserId(Aws::String&& value) { SetUserId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the user.</p>
-     */
-    inline GetFederationTokenResult& WithUserId(const char* value) { SetUserId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetFederationTokenResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetFederationTokenResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetFederationTokenResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetFederationTokenResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Credentials m_credentials;
+    bool m_credentialsHasBeenSet = false;
 
     Aws::String m_signInUrl;
+    bool m_signInUrlHasBeenSet = false;
 
     Aws::String m_userArn;
+    bool m_userArnHasBeenSet = false;
 
     Aws::String m_userId;
+    bool m_userIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

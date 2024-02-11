@@ -33,98 +33,46 @@ namespace Model
   class RuleOption
   {
   public:
-    AWS_NETWORKFIREWALL_API RuleOption();
+    AWS_NETWORKFIREWALL_API RuleOption() = default;
     AWS_NETWORKFIREWALL_API RuleOption(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKFIREWALL_API RuleOption& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKFIREWALL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p/>
+     * <p>The keyword for the Suricata compatible rule option. You must include a
+     * <code>sid</code> (signature ID), and can optionally include other keywords. For
+     * information about Suricata compatible keywords, see <a
+     * href="https://suricata.readthedocs.io/en/suricata-7.0.3/rules/intro.html#rule-options">Rule
+     * options</a> in the Suricata documentation.</p>
      */
-    inline const Aws::String& GetKeyword() const{ return m_keyword; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetKeyword() const { return m_keyword; }
     inline bool KeywordHasBeenSet() const { return m_keywordHasBeenSet; }
+    template<typename KeywordT = Aws::String>
+    void SetKeyword(KeywordT&& value) { m_keywordHasBeenSet = true; m_keyword = std::forward<KeywordT>(value); }
+    template<typename KeywordT = Aws::String>
+    RuleOption& WithKeyword(KeywordT&& value) { SetKeyword(std::forward<KeywordT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p/>
+     * <p>The settings of the Suricata compatible rule option. Rule options have zero
+     * or more setting values, and the number of possible and required settings depends
+     * on the <code>Keyword</code>. For more information about the settings for
+     * specific options, see <a
+     * href="https://suricata.readthedocs.io/en/suricata-7.0.3/rules/intro.html#rule-options">Rule
+     * options</a>.</p>
      */
-    inline void SetKeyword(const Aws::String& value) { m_keywordHasBeenSet = true; m_keyword = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetKeyword(Aws::String&& value) { m_keywordHasBeenSet = true; m_keyword = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetKeyword(const char* value) { m_keywordHasBeenSet = true; m_keyword.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline RuleOption& WithKeyword(const Aws::String& value) { SetKeyword(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline RuleOption& WithKeyword(Aws::String&& value) { SetKeyword(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline RuleOption& WithKeyword(const char* value) { SetKeyword(value); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const Aws::Vector<Aws::String>& GetSettings() const{ return m_settings; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::Vector<Aws::String>& GetSettings() const { return m_settings; }
     inline bool SettingsHasBeenSet() const { return m_settingsHasBeenSet; }
-
-    /**
-     * <p/>
-     */
-    inline void SetSettings(const Aws::Vector<Aws::String>& value) { m_settingsHasBeenSet = true; m_settings = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetSettings(Aws::Vector<Aws::String>&& value) { m_settingsHasBeenSet = true; m_settings = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline RuleOption& WithSettings(const Aws::Vector<Aws::String>& value) { SetSettings(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline RuleOption& WithSettings(Aws::Vector<Aws::String>&& value) { SetSettings(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline RuleOption& AddSettings(const Aws::String& value) { m_settingsHasBeenSet = true; m_settings.push_back(value); return *this; }
-
-    /**
-     * <p/>
-     */
-    inline RuleOption& AddSettings(Aws::String&& value) { m_settingsHasBeenSet = true; m_settings.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p/>
-     */
-    inline RuleOption& AddSettings(const char* value) { m_settingsHasBeenSet = true; m_settings.push_back(value); return *this; }
-
+    template<typename SettingsT = Aws::Vector<Aws::String>>
+    void SetSettings(SettingsT&& value) { m_settingsHasBeenSet = true; m_settings = std::forward<SettingsT>(value); }
+    template<typename SettingsT = Aws::Vector<Aws::String>>
+    RuleOption& WithSettings(SettingsT&& value) { SetSettings(std::forward<SettingsT>(value)); return *this;}
+    template<typename SettingsT = Aws::String>
+    RuleOption& AddSettings(SettingsT&& value) { m_settingsHasBeenSet = true; m_settings.emplace_back(std::forward<SettingsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_keyword;

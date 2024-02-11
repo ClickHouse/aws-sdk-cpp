@@ -12,12 +12,6 @@ using namespace Aws::DirectConnect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeVirtualInterfacesRequest::DescribeVirtualInterfacesRequest() : 
-    m_connectionIdHasBeenSet(false),
-    m_virtualInterfaceIdHasBeenSet(false)
-{
-}
-
 Aws::String DescribeVirtualInterfacesRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,18 @@ Aws::String DescribeVirtualInterfacesRequest::SerializePayload() const
   if(m_virtualInterfaceIdHasBeenSet)
   {
    payload.WithString("virtualInterfaceId", m_virtualInterfaceId);
+
+  }
+
+  if(m_maxResultsHasBeenSet)
+  {
+   payload.WithInteger("maxResults", m_maxResults);
+
+  }
+
+  if(m_nextTokenHasBeenSet)
+  {
+   payload.WithString("nextToken", m_nextToken);
 
   }
 

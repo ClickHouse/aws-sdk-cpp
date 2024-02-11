@@ -30,35 +30,24 @@ namespace Model
   class CreateFreeTierConfig
   {
   public:
-    AWS_BILLINGCONDUCTOR_API CreateFreeTierConfig();
+    AWS_BILLINGCONDUCTOR_API CreateFreeTierConfig() = default;
     AWS_BILLINGCONDUCTOR_API CreateFreeTierConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_BILLINGCONDUCTOR_API CreateFreeTierConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BILLINGCONDUCTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Activate or deactivate Amazon Web Services Free Tier. </p>
      */
-    inline bool GetActivated() const{ return m_activated; }
-
-    /**
-     * <p> Activate or deactivate Amazon Web Services Free Tier. </p>
-     */
+    inline bool GetActivated() const { return m_activated; }
     inline bool ActivatedHasBeenSet() const { return m_activatedHasBeenSet; }
-
-    /**
-     * <p> Activate or deactivate Amazon Web Services Free Tier. </p>
-     */
     inline void SetActivated(bool value) { m_activatedHasBeenSet = true; m_activated = value; }
-
-    /**
-     * <p> Activate or deactivate Amazon Web Services Free Tier. </p>
-     */
     inline CreateFreeTierConfig& WithActivated(bool value) { SetActivated(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_activated;
+    bool m_activated{false};
     bool m_activatedHasBeenSet = false;
   };
 

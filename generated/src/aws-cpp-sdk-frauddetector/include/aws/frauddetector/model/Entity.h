@@ -31,101 +31,36 @@ namespace Model
   class Entity
   {
   public:
-    AWS_FRAUDDETECTOR_API Entity();
+    AWS_FRAUDDETECTOR_API Entity() = default;
     AWS_FRAUDDETECTOR_API Entity(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API Entity& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The entity type.</p>
      */
-    inline const Aws::String& GetEntityType() const{ return m_entityType; }
-
-    /**
-     * <p>The entity type.</p>
-     */
+    inline const Aws::String& GetEntityType() const { return m_entityType; }
     inline bool EntityTypeHasBeenSet() const { return m_entityTypeHasBeenSet; }
+    template<typename EntityTypeT = Aws::String>
+    void SetEntityType(EntityTypeT&& value) { m_entityTypeHasBeenSet = true; m_entityType = std::forward<EntityTypeT>(value); }
+    template<typename EntityTypeT = Aws::String>
+    Entity& WithEntityType(EntityTypeT&& value) { SetEntityType(std::forward<EntityTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The entity type.</p>
-     */
-    inline void SetEntityType(const Aws::String& value) { m_entityTypeHasBeenSet = true; m_entityType = value; }
-
-    /**
-     * <p>The entity type.</p>
-     */
-    inline void SetEntityType(Aws::String&& value) { m_entityTypeHasBeenSet = true; m_entityType = std::move(value); }
-
-    /**
-     * <p>The entity type.</p>
-     */
-    inline void SetEntityType(const char* value) { m_entityTypeHasBeenSet = true; m_entityType.assign(value); }
-
-    /**
-     * <p>The entity type.</p>
-     */
-    inline Entity& WithEntityType(const Aws::String& value) { SetEntityType(value); return *this;}
-
-    /**
-     * <p>The entity type.</p>
-     */
-    inline Entity& WithEntityType(Aws::String&& value) { SetEntityType(std::move(value)); return *this;}
-
-    /**
-     * <p>The entity type.</p>
-     */
-    inline Entity& WithEntityType(const char* value) { SetEntityType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The entity ID. If you do not know the <code>entityId</code>, you can pass
      * <code>unknown</code>, which is areserved string literal.</p>
      */
-    inline const Aws::String& GetEntityId() const{ return m_entityId; }
-
-    /**
-     * <p>The entity ID. If you do not know the <code>entityId</code>, you can pass
-     * <code>unknown</code>, which is areserved string literal.</p>
-     */
+    inline const Aws::String& GetEntityId() const { return m_entityId; }
     inline bool EntityIdHasBeenSet() const { return m_entityIdHasBeenSet; }
-
-    /**
-     * <p>The entity ID. If you do not know the <code>entityId</code>, you can pass
-     * <code>unknown</code>, which is areserved string literal.</p>
-     */
-    inline void SetEntityId(const Aws::String& value) { m_entityIdHasBeenSet = true; m_entityId = value; }
-
-    /**
-     * <p>The entity ID. If you do not know the <code>entityId</code>, you can pass
-     * <code>unknown</code>, which is areserved string literal.</p>
-     */
-    inline void SetEntityId(Aws::String&& value) { m_entityIdHasBeenSet = true; m_entityId = std::move(value); }
-
-    /**
-     * <p>The entity ID. If you do not know the <code>entityId</code>, you can pass
-     * <code>unknown</code>, which is areserved string literal.</p>
-     */
-    inline void SetEntityId(const char* value) { m_entityIdHasBeenSet = true; m_entityId.assign(value); }
-
-    /**
-     * <p>The entity ID. If you do not know the <code>entityId</code>, you can pass
-     * <code>unknown</code>, which is areserved string literal.</p>
-     */
-    inline Entity& WithEntityId(const Aws::String& value) { SetEntityId(value); return *this;}
-
-    /**
-     * <p>The entity ID. If you do not know the <code>entityId</code>, you can pass
-     * <code>unknown</code>, which is areserved string literal.</p>
-     */
-    inline Entity& WithEntityId(Aws::String&& value) { SetEntityId(std::move(value)); return *this;}
-
-    /**
-     * <p>The entity ID. If you do not know the <code>entityId</code>, you can pass
-     * <code>unknown</code>, which is areserved string literal.</p>
-     */
-    inline Entity& WithEntityId(const char* value) { SetEntityId(value); return *this;}
-
+    template<typename EntityIdT = Aws::String>
+    void SetEntityId(EntityIdT&& value) { m_entityIdHasBeenSet = true; m_entityId = std::forward<EntityIdT>(value); }
+    template<typename EntityIdT = Aws::String>
+    Entity& WithEntityId(EntityIdT&& value) { SetEntityId(std::forward<EntityIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_entityType;

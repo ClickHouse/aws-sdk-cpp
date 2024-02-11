@@ -37,168 +37,61 @@ namespace Model
   class Channel
   {
   public:
-    AWS_SAGEMAKER_API Channel();
+    AWS_SAGEMAKER_API Channel() = default;
     AWS_SAGEMAKER_API Channel(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Channel& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the channel. </p>
      */
-    inline const Aws::String& GetChannelName() const{ return m_channelName; }
-
-    /**
-     * <p>The name of the channel. </p>
-     */
+    inline const Aws::String& GetChannelName() const { return m_channelName; }
     inline bool ChannelNameHasBeenSet() const { return m_channelNameHasBeenSet; }
+    template<typename ChannelNameT = Aws::String>
+    void SetChannelName(ChannelNameT&& value) { m_channelNameHasBeenSet = true; m_channelName = std::forward<ChannelNameT>(value); }
+    template<typename ChannelNameT = Aws::String>
+    Channel& WithChannelName(ChannelNameT&& value) { SetChannelName(std::forward<ChannelNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the channel. </p>
-     */
-    inline void SetChannelName(const Aws::String& value) { m_channelNameHasBeenSet = true; m_channelName = value; }
-
-    /**
-     * <p>The name of the channel. </p>
-     */
-    inline void SetChannelName(Aws::String&& value) { m_channelNameHasBeenSet = true; m_channelName = std::move(value); }
-
-    /**
-     * <p>The name of the channel. </p>
-     */
-    inline void SetChannelName(const char* value) { m_channelNameHasBeenSet = true; m_channelName.assign(value); }
-
-    /**
-     * <p>The name of the channel. </p>
-     */
-    inline Channel& WithChannelName(const Aws::String& value) { SetChannelName(value); return *this;}
-
-    /**
-     * <p>The name of the channel. </p>
-     */
-    inline Channel& WithChannelName(Aws::String&& value) { SetChannelName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the channel. </p>
-     */
-    inline Channel& WithChannelName(const char* value) { SetChannelName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The location of the channel data.</p>
      */
-    inline const DataSource& GetDataSource() const{ return m_dataSource; }
-
-    /**
-     * <p>The location of the channel data.</p>
-     */
+    inline const DataSource& GetDataSource() const { return m_dataSource; }
     inline bool DataSourceHasBeenSet() const { return m_dataSourceHasBeenSet; }
+    template<typename DataSourceT = DataSource>
+    void SetDataSource(DataSourceT&& value) { m_dataSourceHasBeenSet = true; m_dataSource = std::forward<DataSourceT>(value); }
+    template<typename DataSourceT = DataSource>
+    Channel& WithDataSource(DataSourceT&& value) { SetDataSource(std::forward<DataSourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The location of the channel data.</p>
-     */
-    inline void SetDataSource(const DataSource& value) { m_dataSourceHasBeenSet = true; m_dataSource = value; }
-
-    /**
-     * <p>The location of the channel data.</p>
-     */
-    inline void SetDataSource(DataSource&& value) { m_dataSourceHasBeenSet = true; m_dataSource = std::move(value); }
-
-    /**
-     * <p>The location of the channel data.</p>
-     */
-    inline Channel& WithDataSource(const DataSource& value) { SetDataSource(value); return *this;}
-
-    /**
-     * <p>The location of the channel data.</p>
-     */
-    inline Channel& WithDataSource(DataSource&& value) { SetDataSource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The MIME type of the data.</p>
      */
-    inline const Aws::String& GetContentType() const{ return m_contentType; }
-
-    /**
-     * <p>The MIME type of the data.</p>
-     */
+    inline const Aws::String& GetContentType() const { return m_contentType; }
     inline bool ContentTypeHasBeenSet() const { return m_contentTypeHasBeenSet; }
+    template<typename ContentTypeT = Aws::String>
+    void SetContentType(ContentTypeT&& value) { m_contentTypeHasBeenSet = true; m_contentType = std::forward<ContentTypeT>(value); }
+    template<typename ContentTypeT = Aws::String>
+    Channel& WithContentType(ContentTypeT&& value) { SetContentType(std::forward<ContentTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The MIME type of the data.</p>
-     */
-    inline void SetContentType(const Aws::String& value) { m_contentTypeHasBeenSet = true; m_contentType = value; }
-
-    /**
-     * <p>The MIME type of the data.</p>
-     */
-    inline void SetContentType(Aws::String&& value) { m_contentTypeHasBeenSet = true; m_contentType = std::move(value); }
-
-    /**
-     * <p>The MIME type of the data.</p>
-     */
-    inline void SetContentType(const char* value) { m_contentTypeHasBeenSet = true; m_contentType.assign(value); }
-
-    /**
-     * <p>The MIME type of the data.</p>
-     */
-    inline Channel& WithContentType(const Aws::String& value) { SetContentType(value); return *this;}
-
-    /**
-     * <p>The MIME type of the data.</p>
-     */
-    inline Channel& WithContentType(Aws::String&& value) { SetContentType(std::move(value)); return *this;}
-
-    /**
-     * <p>The MIME type of the data.</p>
-     */
-    inline Channel& WithContentType(const char* value) { SetContentType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If training data is compressed, the compression type. The default value is
      * <code>None</code>. <code>CompressionType</code> is used only in Pipe input mode.
      * In File mode, leave this field unset or set it to None.</p>
      */
-    inline const CompressionType& GetCompressionType() const{ return m_compressionType; }
-
-    /**
-     * <p>If training data is compressed, the compression type. The default value is
-     * <code>None</code>. <code>CompressionType</code> is used only in Pipe input mode.
-     * In File mode, leave this field unset or set it to None.</p>
-     */
+    inline CompressionType GetCompressionType() const { return m_compressionType; }
     inline bool CompressionTypeHasBeenSet() const { return m_compressionTypeHasBeenSet; }
+    inline void SetCompressionType(CompressionType value) { m_compressionTypeHasBeenSet = true; m_compressionType = value; }
+    inline Channel& WithCompressionType(CompressionType value) { SetCompressionType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>If training data is compressed, the compression type. The default value is
-     * <code>None</code>. <code>CompressionType</code> is used only in Pipe input mode.
-     * In File mode, leave this field unset or set it to None.</p>
-     */
-    inline void SetCompressionType(const CompressionType& value) { m_compressionTypeHasBeenSet = true; m_compressionType = value; }
-
-    /**
-     * <p>If training data is compressed, the compression type. The default value is
-     * <code>None</code>. <code>CompressionType</code> is used only in Pipe input mode.
-     * In File mode, leave this field unset or set it to None.</p>
-     */
-    inline void SetCompressionType(CompressionType&& value) { m_compressionTypeHasBeenSet = true; m_compressionType = std::move(value); }
-
-    /**
-     * <p>If training data is compressed, the compression type. The default value is
-     * <code>None</code>. <code>CompressionType</code> is used only in Pipe input mode.
-     * In File mode, leave this field unset or set it to None.</p>
-     */
-    inline Channel& WithCompressionType(const CompressionType& value) { SetCompressionType(value); return *this;}
-
-    /**
-     * <p>If training data is compressed, the compression type. The default value is
-     * <code>None</code>. <code>CompressionType</code> is used only in Pipe input mode.
-     * In File mode, leave this field unset or set it to None.</p>
-     */
-    inline Channel& WithCompressionType(CompressionType&& value) { SetCompressionType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p/> <p>Specify RecordIO as the value when input data is in raw format but the
      * training algorithm requires the RecordIO format. In this case, SageMaker wraps
@@ -209,74 +102,19 @@ namespace Model
      * a Dataset Using RecordIO</a>. </p> <p>In File mode, leave this field unset or
      * set it to None.</p>
      */
-    inline const RecordWrapper& GetRecordWrapperType() const{ return m_recordWrapperType; }
-
-    /**
-     * <p/> <p>Specify RecordIO as the value when input data is in raw format but the
-     * training algorithm requires the RecordIO format. In this case, SageMaker wraps
-     * each individual S3 object in a RecordIO record. If the input data is already in
-     * RecordIO format, you don't need to set this attribute. For more information, see
-     * <a
-     * href="https://mxnet.apache.org/api/architecture/note_data_loading#data-format">Create
-     * a Dataset Using RecordIO</a>. </p> <p>In File mode, leave this field unset or
-     * set it to None.</p>
-     */
+    inline RecordWrapper GetRecordWrapperType() const { return m_recordWrapperType; }
     inline bool RecordWrapperTypeHasBeenSet() const { return m_recordWrapperTypeHasBeenSet; }
+    inline void SetRecordWrapperType(RecordWrapper value) { m_recordWrapperTypeHasBeenSet = true; m_recordWrapperType = value; }
+    inline Channel& WithRecordWrapperType(RecordWrapper value) { SetRecordWrapperType(value); return *this;}
+    ///@}
 
-    /**
-     * <p/> <p>Specify RecordIO as the value when input data is in raw format but the
-     * training algorithm requires the RecordIO format. In this case, SageMaker wraps
-     * each individual S3 object in a RecordIO record. If the input data is already in
-     * RecordIO format, you don't need to set this attribute. For more information, see
-     * <a
-     * href="https://mxnet.apache.org/api/architecture/note_data_loading#data-format">Create
-     * a Dataset Using RecordIO</a>. </p> <p>In File mode, leave this field unset or
-     * set it to None.</p>
-     */
-    inline void SetRecordWrapperType(const RecordWrapper& value) { m_recordWrapperTypeHasBeenSet = true; m_recordWrapperType = value; }
-
-    /**
-     * <p/> <p>Specify RecordIO as the value when input data is in raw format but the
-     * training algorithm requires the RecordIO format. In this case, SageMaker wraps
-     * each individual S3 object in a RecordIO record. If the input data is already in
-     * RecordIO format, you don't need to set this attribute. For more information, see
-     * <a
-     * href="https://mxnet.apache.org/api/architecture/note_data_loading#data-format">Create
-     * a Dataset Using RecordIO</a>. </p> <p>In File mode, leave this field unset or
-     * set it to None.</p>
-     */
-    inline void SetRecordWrapperType(RecordWrapper&& value) { m_recordWrapperTypeHasBeenSet = true; m_recordWrapperType = std::move(value); }
-
-    /**
-     * <p/> <p>Specify RecordIO as the value when input data is in raw format but the
-     * training algorithm requires the RecordIO format. In this case, SageMaker wraps
-     * each individual S3 object in a RecordIO record. If the input data is already in
-     * RecordIO format, you don't need to set this attribute. For more information, see
-     * <a
-     * href="https://mxnet.apache.org/api/architecture/note_data_loading#data-format">Create
-     * a Dataset Using RecordIO</a>. </p> <p>In File mode, leave this field unset or
-     * set it to None.</p>
-     */
-    inline Channel& WithRecordWrapperType(const RecordWrapper& value) { SetRecordWrapperType(value); return *this;}
-
-    /**
-     * <p/> <p>Specify RecordIO as the value when input data is in raw format but the
-     * training algorithm requires the RecordIO format. In this case, SageMaker wraps
-     * each individual S3 object in a RecordIO record. If the input data is already in
-     * RecordIO format, you don't need to set this attribute. For more information, see
-     * <a
-     * href="https://mxnet.apache.org/api/architecture/note_data_loading#data-format">Create
-     * a Dataset Using RecordIO</a>. </p> <p>In File mode, leave this field unset or
-     * set it to None.</p>
-     */
-    inline Channel& WithRecordWrapperType(RecordWrapper&& value) { SetRecordWrapperType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>(Optional) The input mode to use for the data channel in a training job. If
      * you don't set a value for <code>InputMode</code>, SageMaker uses the value set
      * for <code>TrainingInputMode</code>. Use this parameter to override the
-     * <code>TrainingInputMode</code> setting in a <a>AlgorithmSpecification</a>
+     * <code>TrainingInputMode</code> setting in a <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AlgorithmSpecification.html">AlgorithmSpecification</a>
      * request when you have a channel that needs a different input mode from the
      * training job's general setting. To download the data from Amazon Simple Storage
      * Service (Amazon S3) to the provisioned ML storage volume, and mount the
@@ -285,84 +123,13 @@ namespace Model
      * mode.</p> <p>To use a model for incremental training, choose <code>File</code>
      * input model.</p>
      */
-    inline const TrainingInputMode& GetInputMode() const{ return m_inputMode; }
-
-    /**
-     * <p>(Optional) The input mode to use for the data channel in a training job. If
-     * you don't set a value for <code>InputMode</code>, SageMaker uses the value set
-     * for <code>TrainingInputMode</code>. Use this parameter to override the
-     * <code>TrainingInputMode</code> setting in a <a>AlgorithmSpecification</a>
-     * request when you have a channel that needs a different input mode from the
-     * training job's general setting. To download the data from Amazon Simple Storage
-     * Service (Amazon S3) to the provisioned ML storage volume, and mount the
-     * directory to a Docker volume, use <code>File</code> input mode. To stream data
-     * directly from Amazon S3 to the container, choose <code>Pipe</code> input
-     * mode.</p> <p>To use a model for incremental training, choose <code>File</code>
-     * input model.</p>
-     */
+    inline TrainingInputMode GetInputMode() const { return m_inputMode; }
     inline bool InputModeHasBeenSet() const { return m_inputModeHasBeenSet; }
+    inline void SetInputMode(TrainingInputMode value) { m_inputModeHasBeenSet = true; m_inputMode = value; }
+    inline Channel& WithInputMode(TrainingInputMode value) { SetInputMode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>(Optional) The input mode to use for the data channel in a training job. If
-     * you don't set a value for <code>InputMode</code>, SageMaker uses the value set
-     * for <code>TrainingInputMode</code>. Use this parameter to override the
-     * <code>TrainingInputMode</code> setting in a <a>AlgorithmSpecification</a>
-     * request when you have a channel that needs a different input mode from the
-     * training job's general setting. To download the data from Amazon Simple Storage
-     * Service (Amazon S3) to the provisioned ML storage volume, and mount the
-     * directory to a Docker volume, use <code>File</code> input mode. To stream data
-     * directly from Amazon S3 to the container, choose <code>Pipe</code> input
-     * mode.</p> <p>To use a model for incremental training, choose <code>File</code>
-     * input model.</p>
-     */
-    inline void SetInputMode(const TrainingInputMode& value) { m_inputModeHasBeenSet = true; m_inputMode = value; }
-
-    /**
-     * <p>(Optional) The input mode to use for the data channel in a training job. If
-     * you don't set a value for <code>InputMode</code>, SageMaker uses the value set
-     * for <code>TrainingInputMode</code>. Use this parameter to override the
-     * <code>TrainingInputMode</code> setting in a <a>AlgorithmSpecification</a>
-     * request when you have a channel that needs a different input mode from the
-     * training job's general setting. To download the data from Amazon Simple Storage
-     * Service (Amazon S3) to the provisioned ML storage volume, and mount the
-     * directory to a Docker volume, use <code>File</code> input mode. To stream data
-     * directly from Amazon S3 to the container, choose <code>Pipe</code> input
-     * mode.</p> <p>To use a model for incremental training, choose <code>File</code>
-     * input model.</p>
-     */
-    inline void SetInputMode(TrainingInputMode&& value) { m_inputModeHasBeenSet = true; m_inputMode = std::move(value); }
-
-    /**
-     * <p>(Optional) The input mode to use for the data channel in a training job. If
-     * you don't set a value for <code>InputMode</code>, SageMaker uses the value set
-     * for <code>TrainingInputMode</code>. Use this parameter to override the
-     * <code>TrainingInputMode</code> setting in a <a>AlgorithmSpecification</a>
-     * request when you have a channel that needs a different input mode from the
-     * training job's general setting. To download the data from Amazon Simple Storage
-     * Service (Amazon S3) to the provisioned ML storage volume, and mount the
-     * directory to a Docker volume, use <code>File</code> input mode. To stream data
-     * directly from Amazon S3 to the container, choose <code>Pipe</code> input
-     * mode.</p> <p>To use a model for incremental training, choose <code>File</code>
-     * input model.</p>
-     */
-    inline Channel& WithInputMode(const TrainingInputMode& value) { SetInputMode(value); return *this;}
-
-    /**
-     * <p>(Optional) The input mode to use for the data channel in a training job. If
-     * you don't set a value for <code>InputMode</code>, SageMaker uses the value set
-     * for <code>TrainingInputMode</code>. Use this parameter to override the
-     * <code>TrainingInputMode</code> setting in a <a>AlgorithmSpecification</a>
-     * request when you have a channel that needs a different input mode from the
-     * training job's general setting. To download the data from Amazon Simple Storage
-     * Service (Amazon S3) to the provisioned ML storage volume, and mount the
-     * directory to a Docker volume, use <code>File</code> input mode. To stream data
-     * directly from Amazon S3 to the container, choose <code>Pipe</code> input
-     * mode.</p> <p>To use a model for incremental training, choose <code>File</code>
-     * input model.</p>
-     */
-    inline Channel& WithInputMode(TrainingInputMode&& value) { SetInputMode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A configuration for a shuffle option for input data in a channel. If you use
      * <code>S3Prefix</code> for <code>S3DataType</code>, this shuffles the results of
@@ -379,98 +146,13 @@ namespace Model
      * content sent to a particular node on the first epoch might be sent to a
      * different node on the second epoch.</p>
      */
-    inline const ShuffleConfig& GetShuffleConfig() const{ return m_shuffleConfig; }
-
-    /**
-     * <p>A configuration for a shuffle option for input data in a channel. If you use
-     * <code>S3Prefix</code> for <code>S3DataType</code>, this shuffles the results of
-     * the S3 key prefix matches. If you use <code>ManifestFile</code>, the order of
-     * the S3 object references in the <code>ManifestFile</code> is shuffled. If you
-     * use <code>AugmentedManifestFile</code>, the order of the JSON lines in the
-     * <code>AugmentedManifestFile</code> is shuffled. The shuffling order is
-     * determined using the <code>Seed</code> value.</p> <p>For Pipe input mode,
-     * shuffling is done at the start of every epoch. With large datasets this ensures
-     * that the order of the training data is different for each epoch, it helps reduce
-     * bias and possible overfitting. In a multi-node training job when ShuffleConfig
-     * is combined with <code>S3DataDistributionType</code> of
-     * <code>ShardedByS3Key</code>, the data is shuffled across nodes so that the
-     * content sent to a particular node on the first epoch might be sent to a
-     * different node on the second epoch.</p>
-     */
+    inline const ShuffleConfig& GetShuffleConfig() const { return m_shuffleConfig; }
     inline bool ShuffleConfigHasBeenSet() const { return m_shuffleConfigHasBeenSet; }
-
-    /**
-     * <p>A configuration for a shuffle option for input data in a channel. If you use
-     * <code>S3Prefix</code> for <code>S3DataType</code>, this shuffles the results of
-     * the S3 key prefix matches. If you use <code>ManifestFile</code>, the order of
-     * the S3 object references in the <code>ManifestFile</code> is shuffled. If you
-     * use <code>AugmentedManifestFile</code>, the order of the JSON lines in the
-     * <code>AugmentedManifestFile</code> is shuffled. The shuffling order is
-     * determined using the <code>Seed</code> value.</p> <p>For Pipe input mode,
-     * shuffling is done at the start of every epoch. With large datasets this ensures
-     * that the order of the training data is different for each epoch, it helps reduce
-     * bias and possible overfitting. In a multi-node training job when ShuffleConfig
-     * is combined with <code>S3DataDistributionType</code> of
-     * <code>ShardedByS3Key</code>, the data is shuffled across nodes so that the
-     * content sent to a particular node on the first epoch might be sent to a
-     * different node on the second epoch.</p>
-     */
-    inline void SetShuffleConfig(const ShuffleConfig& value) { m_shuffleConfigHasBeenSet = true; m_shuffleConfig = value; }
-
-    /**
-     * <p>A configuration for a shuffle option for input data in a channel. If you use
-     * <code>S3Prefix</code> for <code>S3DataType</code>, this shuffles the results of
-     * the S3 key prefix matches. If you use <code>ManifestFile</code>, the order of
-     * the S3 object references in the <code>ManifestFile</code> is shuffled. If you
-     * use <code>AugmentedManifestFile</code>, the order of the JSON lines in the
-     * <code>AugmentedManifestFile</code> is shuffled. The shuffling order is
-     * determined using the <code>Seed</code> value.</p> <p>For Pipe input mode,
-     * shuffling is done at the start of every epoch. With large datasets this ensures
-     * that the order of the training data is different for each epoch, it helps reduce
-     * bias and possible overfitting. In a multi-node training job when ShuffleConfig
-     * is combined with <code>S3DataDistributionType</code> of
-     * <code>ShardedByS3Key</code>, the data is shuffled across nodes so that the
-     * content sent to a particular node on the first epoch might be sent to a
-     * different node on the second epoch.</p>
-     */
-    inline void SetShuffleConfig(ShuffleConfig&& value) { m_shuffleConfigHasBeenSet = true; m_shuffleConfig = std::move(value); }
-
-    /**
-     * <p>A configuration for a shuffle option for input data in a channel. If you use
-     * <code>S3Prefix</code> for <code>S3DataType</code>, this shuffles the results of
-     * the S3 key prefix matches. If you use <code>ManifestFile</code>, the order of
-     * the S3 object references in the <code>ManifestFile</code> is shuffled. If you
-     * use <code>AugmentedManifestFile</code>, the order of the JSON lines in the
-     * <code>AugmentedManifestFile</code> is shuffled. The shuffling order is
-     * determined using the <code>Seed</code> value.</p> <p>For Pipe input mode,
-     * shuffling is done at the start of every epoch. With large datasets this ensures
-     * that the order of the training data is different for each epoch, it helps reduce
-     * bias and possible overfitting. In a multi-node training job when ShuffleConfig
-     * is combined with <code>S3DataDistributionType</code> of
-     * <code>ShardedByS3Key</code>, the data is shuffled across nodes so that the
-     * content sent to a particular node on the first epoch might be sent to a
-     * different node on the second epoch.</p>
-     */
-    inline Channel& WithShuffleConfig(const ShuffleConfig& value) { SetShuffleConfig(value); return *this;}
-
-    /**
-     * <p>A configuration for a shuffle option for input data in a channel. If you use
-     * <code>S3Prefix</code> for <code>S3DataType</code>, this shuffles the results of
-     * the S3 key prefix matches. If you use <code>ManifestFile</code>, the order of
-     * the S3 object references in the <code>ManifestFile</code> is shuffled. If you
-     * use <code>AugmentedManifestFile</code>, the order of the JSON lines in the
-     * <code>AugmentedManifestFile</code> is shuffled. The shuffling order is
-     * determined using the <code>Seed</code> value.</p> <p>For Pipe input mode,
-     * shuffling is done at the start of every epoch. With large datasets this ensures
-     * that the order of the training data is different for each epoch, it helps reduce
-     * bias and possible overfitting. In a multi-node training job when ShuffleConfig
-     * is combined with <code>S3DataDistributionType</code> of
-     * <code>ShardedByS3Key</code>, the data is shuffled across nodes so that the
-     * content sent to a particular node on the first epoch might be sent to a
-     * different node on the second epoch.</p>
-     */
-    inline Channel& WithShuffleConfig(ShuffleConfig&& value) { SetShuffleConfig(std::move(value)); return *this;}
-
+    template<typename ShuffleConfigT = ShuffleConfig>
+    void SetShuffleConfig(ShuffleConfigT&& value) { m_shuffleConfigHasBeenSet = true; m_shuffleConfig = std::forward<ShuffleConfigT>(value); }
+    template<typename ShuffleConfigT = ShuffleConfig>
+    Channel& WithShuffleConfig(ShuffleConfigT&& value) { SetShuffleConfig(std::forward<ShuffleConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_channelName;
@@ -482,13 +164,13 @@ namespace Model
     Aws::String m_contentType;
     bool m_contentTypeHasBeenSet = false;
 
-    CompressionType m_compressionType;
+    CompressionType m_compressionType{CompressionType::NOT_SET};
     bool m_compressionTypeHasBeenSet = false;
 
-    RecordWrapper m_recordWrapperType;
+    RecordWrapper m_recordWrapperType{RecordWrapper::NOT_SET};
     bool m_recordWrapperTypeHasBeenSet = false;
 
-    TrainingInputMode m_inputMode;
+    TrainingInputMode m_inputMode{TrainingInputMode::NOT_SET};
     bool m_inputModeHasBeenSet = false;
 
     ShuffleConfig m_shuffleConfig;

@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-FpgaImageState::FpgaImageState() : 
-    m_code(FpgaImageStateCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-FpgaImageState::FpgaImageState(const XmlNode& xmlNode) : 
-    m_code(FpgaImageStateCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+FpgaImageState::FpgaImageState(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ FpgaImageState& FpgaImageState::operator =(const XmlNode& xmlNode)
     XmlNode codeNode = resultNode.FirstChild("code");
     if(!codeNode.IsNull())
     {
-      m_code = FpgaImageStateCodeMapper::GetFpgaImageStateCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()).c_str());
+      m_code = FpgaImageStateCodeMapper::GetFpgaImageStateCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()));
       m_codeHasBeenSet = true;
     }
     XmlNode messageNode = resultNode.FirstChild("message");
@@ -62,7 +52,7 @@ void FpgaImageState::OutputToStream(Aws::OStream& oStream, const char* location,
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Code=" << FpgaImageStateCodeMapper::GetNameForFpgaImageStateCode(m_code) << "&";
+      oStream << location << index << locationValue << ".Code=" << StringUtils::URLEncode(FpgaImageStateCodeMapper::GetNameForFpgaImageStateCode(m_code)) << "&";
   }
 
   if(m_messageHasBeenSet)
@@ -76,7 +66,7 @@ void FpgaImageState::OutputToStream(Aws::OStream& oStream, const char* location)
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << ".Code=" << FpgaImageStateCodeMapper::GetNameForFpgaImageStateCode(m_code) << "&";
+      oStream << location << ".Code=" << StringUtils::URLEncode(FpgaImageStateCodeMapper::GetNameForFpgaImageStateCode(m_code)) << "&";
   }
   if(m_messageHasBeenSet)
   {

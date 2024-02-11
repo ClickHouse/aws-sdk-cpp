@@ -33,124 +33,47 @@ namespace Model
   class CreateS3DataAccessFromS3BucketResponseDetails
   {
   public:
-    AWS_DATAEXCHANGE_API CreateS3DataAccessFromS3BucketResponseDetails();
+    AWS_DATAEXCHANGE_API CreateS3DataAccessFromS3BucketResponseDetails() = default;
     AWS_DATAEXCHANGE_API CreateS3DataAccessFromS3BucketResponseDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API CreateS3DataAccessFromS3BucketResponseDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Details about the asset source from an Amazon S3 bucket.</p>
      */
-    inline const S3DataAccessAssetSourceEntry& GetAssetSource() const{ return m_assetSource; }
-
-    /**
-     * <p>Details about the asset source from an Amazon S3 bucket.</p>
-     */
+    inline const S3DataAccessAssetSourceEntry& GetAssetSource() const { return m_assetSource; }
     inline bool AssetSourceHasBeenSet() const { return m_assetSourceHasBeenSet; }
+    template<typename AssetSourceT = S3DataAccessAssetSourceEntry>
+    void SetAssetSource(AssetSourceT&& value) { m_assetSourceHasBeenSet = true; m_assetSource = std::forward<AssetSourceT>(value); }
+    template<typename AssetSourceT = S3DataAccessAssetSourceEntry>
+    CreateS3DataAccessFromS3BucketResponseDetails& WithAssetSource(AssetSourceT&& value) { SetAssetSource(std::forward<AssetSourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about the asset source from an Amazon S3 bucket.</p>
-     */
-    inline void SetAssetSource(const S3DataAccessAssetSourceEntry& value) { m_assetSourceHasBeenSet = true; m_assetSource = value; }
-
-    /**
-     * <p>Details about the asset source from an Amazon S3 bucket.</p>
-     */
-    inline void SetAssetSource(S3DataAccessAssetSourceEntry&& value) { m_assetSourceHasBeenSet = true; m_assetSource = std::move(value); }
-
-    /**
-     * <p>Details about the asset source from an Amazon S3 bucket.</p>
-     */
-    inline CreateS3DataAccessFromS3BucketResponseDetails& WithAssetSource(const S3DataAccessAssetSourceEntry& value) { SetAssetSource(value); return *this;}
-
-    /**
-     * <p>Details about the asset source from an Amazon S3 bucket.</p>
-     */
-    inline CreateS3DataAccessFromS3BucketResponseDetails& WithAssetSource(S3DataAccessAssetSourceEntry&& value) { SetAssetSource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for this data set.</p>
      */
-    inline const Aws::String& GetDataSetId() const{ return m_dataSetId; }
-
-    /**
-     * <p>The unique identifier for this data set.</p>
-     */
+    inline const Aws::String& GetDataSetId() const { return m_dataSetId; }
     inline bool DataSetIdHasBeenSet() const { return m_dataSetIdHasBeenSet; }
+    template<typename DataSetIdT = Aws::String>
+    void SetDataSetId(DataSetIdT&& value) { m_dataSetIdHasBeenSet = true; m_dataSetId = std::forward<DataSetIdT>(value); }
+    template<typename DataSetIdT = Aws::String>
+    CreateS3DataAccessFromS3BucketResponseDetails& WithDataSetId(DataSetIdT&& value) { SetDataSetId(std::forward<DataSetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for this data set.</p>
-     */
-    inline void SetDataSetId(const Aws::String& value) { m_dataSetIdHasBeenSet = true; m_dataSetId = value; }
-
-    /**
-     * <p>The unique identifier for this data set.</p>
-     */
-    inline void SetDataSetId(Aws::String&& value) { m_dataSetIdHasBeenSet = true; m_dataSetId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for this data set.</p>
-     */
-    inline void SetDataSetId(const char* value) { m_dataSetIdHasBeenSet = true; m_dataSetId.assign(value); }
-
-    /**
-     * <p>The unique identifier for this data set.</p>
-     */
-    inline CreateS3DataAccessFromS3BucketResponseDetails& WithDataSetId(const Aws::String& value) { SetDataSetId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for this data set.</p>
-     */
-    inline CreateS3DataAccessFromS3BucketResponseDetails& WithDataSetId(Aws::String&& value) { SetDataSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for this data set.</p>
-     */
-    inline CreateS3DataAccessFromS3BucketResponseDetails& WithDataSetId(const char* value) { SetDataSetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the revision.</p>
      */
-    inline const Aws::String& GetRevisionId() const{ return m_revisionId; }
-
-    /**
-     * <p>The unique identifier for the revision.</p>
-     */
+    inline const Aws::String& GetRevisionId() const { return m_revisionId; }
     inline bool RevisionIdHasBeenSet() const { return m_revisionIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier for the revision.</p>
-     */
-    inline void SetRevisionId(const Aws::String& value) { m_revisionIdHasBeenSet = true; m_revisionId = value; }
-
-    /**
-     * <p>The unique identifier for the revision.</p>
-     */
-    inline void SetRevisionId(Aws::String&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the revision.</p>
-     */
-    inline void SetRevisionId(const char* value) { m_revisionIdHasBeenSet = true; m_revisionId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the revision.</p>
-     */
-    inline CreateS3DataAccessFromS3BucketResponseDetails& WithRevisionId(const Aws::String& value) { SetRevisionId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the revision.</p>
-     */
-    inline CreateS3DataAccessFromS3BucketResponseDetails& WithRevisionId(Aws::String&& value) { SetRevisionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the revision.</p>
-     */
-    inline CreateS3DataAccessFromS3BucketResponseDetails& WithRevisionId(const char* value) { SetRevisionId(value); return *this;}
-
+    template<typename RevisionIdT = Aws::String>
+    void SetRevisionId(RevisionIdT&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::forward<RevisionIdT>(value); }
+    template<typename RevisionIdT = Aws::String>
+    CreateS3DataAccessFromS3BucketResponseDetails& WithRevisionId(RevisionIdT&& value) { SetRevisionId(std::forward<RevisionIdT>(value)); return *this;}
+    ///@}
   private:
 
     S3DataAccessAssetSourceEntry m_assetSource;

@@ -12,11 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribePipelineRequest::DescribePipelineRequest() : 
-    m_pipelineNameHasBeenSet(false)
-{
-}
-
 Aws::String DescribePipelineRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -24,6 +19,12 @@ Aws::String DescribePipelineRequest::SerializePayload() const
   if(m_pipelineNameHasBeenSet)
   {
    payload.WithString("PipelineName", m_pipelineName);
+
+  }
+
+  if(m_pipelineVersionIdHasBeenSet)
+  {
+   payload.WithInt64("PipelineVersionId", m_pipelineVersionId);
 
   }
 

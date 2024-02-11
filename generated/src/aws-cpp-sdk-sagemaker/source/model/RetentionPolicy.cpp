@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-RetentionPolicy::RetentionPolicy() : 
-    m_homeEfsFileSystem(RetentionType::NOT_SET),
-    m_homeEfsFileSystemHasBeenSet(false)
-{
-}
-
-RetentionPolicy::RetentionPolicy(JsonView jsonValue) : 
-    m_homeEfsFileSystem(RetentionType::NOT_SET),
-    m_homeEfsFileSystemHasBeenSet(false)
+RetentionPolicy::RetentionPolicy(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ RetentionPolicy& RetentionPolicy::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("HomeEfsFileSystem"))
   {
     m_homeEfsFileSystem = RetentionTypeMapper::GetRetentionTypeForName(jsonValue.GetString("HomeEfsFileSystem"));
-
     m_homeEfsFileSystemHasBeenSet = true;
   }
-
   return *this;
 }
 

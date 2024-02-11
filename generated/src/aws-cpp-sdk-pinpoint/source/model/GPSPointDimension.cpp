@@ -18,17 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-GPSPointDimension::GPSPointDimension() : 
-    m_coordinatesHasBeenSet(false),
-    m_rangeInKilometers(0.0),
-    m_rangeInKilometersHasBeenSet(false)
-{
-}
-
-GPSPointDimension::GPSPointDimension(JsonView jsonValue) : 
-    m_coordinatesHasBeenSet(false),
-    m_rangeInKilometers(0.0),
-    m_rangeInKilometersHasBeenSet(false)
+GPSPointDimension::GPSPointDimension(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ GPSPointDimension& GPSPointDimension::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Coordinates"))
   {
     m_coordinates = jsonValue.GetObject("Coordinates");
-
     m_coordinatesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RangeInKilometers"))
   {
     m_rangeInKilometers = jsonValue.GetDouble("RangeInKilometers");
-
     m_rangeInKilometersHasBeenSet = true;
   }
-
   return *this;
 }
 

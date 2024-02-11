@@ -25,7 +25,7 @@ namespace Model
   class SetStatusRequest : public DataPipelineRequest
   {
   public:
-    AWS_DATAPIPELINE_API SetStatusRequest();
+    AWS_DATAPIPELINE_API SetStatusRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,166 +38,47 @@ namespace Model
     AWS_DATAPIPELINE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the pipeline that contains the objects.</p>
      */
-    inline const Aws::String& GetPipelineId() const{ return m_pipelineId; }
-
-    /**
-     * <p>The ID of the pipeline that contains the objects.</p>
-     */
+    inline const Aws::String& GetPipelineId() const { return m_pipelineId; }
     inline bool PipelineIdHasBeenSet() const { return m_pipelineIdHasBeenSet; }
+    template<typename PipelineIdT = Aws::String>
+    void SetPipelineId(PipelineIdT&& value) { m_pipelineIdHasBeenSet = true; m_pipelineId = std::forward<PipelineIdT>(value); }
+    template<typename PipelineIdT = Aws::String>
+    SetStatusRequest& WithPipelineId(PipelineIdT&& value) { SetPipelineId(std::forward<PipelineIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the pipeline that contains the objects.</p>
-     */
-    inline void SetPipelineId(const Aws::String& value) { m_pipelineIdHasBeenSet = true; m_pipelineId = value; }
-
-    /**
-     * <p>The ID of the pipeline that contains the objects.</p>
-     */
-    inline void SetPipelineId(Aws::String&& value) { m_pipelineIdHasBeenSet = true; m_pipelineId = std::move(value); }
-
-    /**
-     * <p>The ID of the pipeline that contains the objects.</p>
-     */
-    inline void SetPipelineId(const char* value) { m_pipelineIdHasBeenSet = true; m_pipelineId.assign(value); }
-
-    /**
-     * <p>The ID of the pipeline that contains the objects.</p>
-     */
-    inline SetStatusRequest& WithPipelineId(const Aws::String& value) { SetPipelineId(value); return *this;}
-
-    /**
-     * <p>The ID of the pipeline that contains the objects.</p>
-     */
-    inline SetStatusRequest& WithPipelineId(Aws::String&& value) { SetPipelineId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the pipeline that contains the objects.</p>
-     */
-    inline SetStatusRequest& WithPipelineId(const char* value) { SetPipelineId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IDs of the objects. The corresponding objects can be either physical or
      * components, but not a mix of both types.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetObjectIds() const{ return m_objectIds; }
-
-    /**
-     * <p>The IDs of the objects. The corresponding objects can be either physical or
-     * components, but not a mix of both types.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetObjectIds() const { return m_objectIds; }
     inline bool ObjectIdsHasBeenSet() const { return m_objectIdsHasBeenSet; }
+    template<typename ObjectIdsT = Aws::Vector<Aws::String>>
+    void SetObjectIds(ObjectIdsT&& value) { m_objectIdsHasBeenSet = true; m_objectIds = std::forward<ObjectIdsT>(value); }
+    template<typename ObjectIdsT = Aws::Vector<Aws::String>>
+    SetStatusRequest& WithObjectIds(ObjectIdsT&& value) { SetObjectIds(std::forward<ObjectIdsT>(value)); return *this;}
+    template<typename ObjectIdsT = Aws::String>
+    SetStatusRequest& AddObjectIds(ObjectIdsT&& value) { m_objectIdsHasBeenSet = true; m_objectIds.emplace_back(std::forward<ObjectIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The IDs of the objects. The corresponding objects can be either physical or
-     * components, but not a mix of both types.</p>
-     */
-    inline void SetObjectIds(const Aws::Vector<Aws::String>& value) { m_objectIdsHasBeenSet = true; m_objectIds = value; }
-
-    /**
-     * <p>The IDs of the objects. The corresponding objects can be either physical or
-     * components, but not a mix of both types.</p>
-     */
-    inline void SetObjectIds(Aws::Vector<Aws::String>&& value) { m_objectIdsHasBeenSet = true; m_objectIds = std::move(value); }
-
-    /**
-     * <p>The IDs of the objects. The corresponding objects can be either physical or
-     * components, but not a mix of both types.</p>
-     */
-    inline SetStatusRequest& WithObjectIds(const Aws::Vector<Aws::String>& value) { SetObjectIds(value); return *this;}
-
-    /**
-     * <p>The IDs of the objects. The corresponding objects can be either physical or
-     * components, but not a mix of both types.</p>
-     */
-    inline SetStatusRequest& WithObjectIds(Aws::Vector<Aws::String>&& value) { SetObjectIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The IDs of the objects. The corresponding objects can be either physical or
-     * components, but not a mix of both types.</p>
-     */
-    inline SetStatusRequest& AddObjectIds(const Aws::String& value) { m_objectIdsHasBeenSet = true; m_objectIds.push_back(value); return *this; }
-
-    /**
-     * <p>The IDs of the objects. The corresponding objects can be either physical or
-     * components, but not a mix of both types.</p>
-     */
-    inline SetStatusRequest& AddObjectIds(Aws::String&& value) { m_objectIdsHasBeenSet = true; m_objectIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The IDs of the objects. The corresponding objects can be either physical or
-     * components, but not a mix of both types.</p>
-     */
-    inline SetStatusRequest& AddObjectIds(const char* value) { m_objectIdsHasBeenSet = true; m_objectIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The status to be set on all the objects specified in <code>objectIds</code>.
      * For components, use <code>PAUSE</code> or <code>RESUME</code>. For instances,
      * use <code>TRY_CANCEL</code>, <code>RERUN</code>, or
      * <code>MARK_FINISHED</code>.</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status to be set on all the objects specified in <code>objectIds</code>.
-     * For components, use <code>PAUSE</code> or <code>RESUME</code>. For instances,
-     * use <code>TRY_CANCEL</code>, <code>RERUN</code>, or
-     * <code>MARK_FINISHED</code>.</p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status to be set on all the objects specified in <code>objectIds</code>.
-     * For components, use <code>PAUSE</code> or <code>RESUME</code>. For instances,
-     * use <code>TRY_CANCEL</code>, <code>RERUN</code>, or
-     * <code>MARK_FINISHED</code>.</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status to be set on all the objects specified in <code>objectIds</code>.
-     * For components, use <code>PAUSE</code> or <code>RESUME</code>. For instances,
-     * use <code>TRY_CANCEL</code>, <code>RERUN</code>, or
-     * <code>MARK_FINISHED</code>.</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status to be set on all the objects specified in <code>objectIds</code>.
-     * For components, use <code>PAUSE</code> or <code>RESUME</code>. For instances,
-     * use <code>TRY_CANCEL</code>, <code>RERUN</code>, or
-     * <code>MARK_FINISHED</code>.</p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>The status to be set on all the objects specified in <code>objectIds</code>.
-     * For components, use <code>PAUSE</code> or <code>RESUME</code>. For instances,
-     * use <code>TRY_CANCEL</code>, <code>RERUN</code>, or
-     * <code>MARK_FINISHED</code>.</p>
-     */
-    inline SetStatusRequest& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status to be set on all the objects specified in <code>objectIds</code>.
-     * For components, use <code>PAUSE</code> or <code>RESUME</code>. For instances,
-     * use <code>TRY_CANCEL</code>, <code>RERUN</code>, or
-     * <code>MARK_FINISHED</code>.</p>
-     */
-    inline SetStatusRequest& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status to be set on all the objects specified in <code>objectIds</code>.
-     * For components, use <code>PAUSE</code> or <code>RESUME</code>. For instances,
-     * use <code>TRY_CANCEL</code>, <code>RERUN</code>, or
-     * <code>MARK_FINISHED</code>.</p>
-     */
-    inline SetStatusRequest& WithStatus(const char* value) { SetStatus(value); return *this;}
-
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    SetStatusRequest& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_pipelineId;

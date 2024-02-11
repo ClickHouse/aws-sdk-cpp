@@ -10,29 +10,6 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-UpdateStackRequest::UpdateStackRequest() : 
-    m_stackNameHasBeenSet(false),
-    m_templateBodyHasBeenSet(false),
-    m_templateURLHasBeenSet(false),
-    m_usePreviousTemplate(false),
-    m_usePreviousTemplateHasBeenSet(false),
-    m_stackPolicyDuringUpdateBodyHasBeenSet(false),
-    m_stackPolicyDuringUpdateURLHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_capabilitiesHasBeenSet(false),
-    m_resourceTypesHasBeenSet(false),
-    m_roleARNHasBeenSet(false),
-    m_rollbackConfigurationHasBeenSet(false),
-    m_stackPolicyBodyHasBeenSet(false),
-    m_stackPolicyURLHasBeenSet(false),
-    m_notificationARNsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_disableRollback(false),
-    m_disableRollbackHasBeenSet(false),
-    m_clientRequestTokenHasBeenSet(false)
-{
-}
-
 Aws::String UpdateStackRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -69,33 +46,54 @@ Aws::String UpdateStackRequest::SerializePayload() const
 
   if(m_parametersHasBeenSet)
   {
-    unsigned parametersCount = 1;
-    for(auto& item : m_parameters)
+    if (m_parameters.empty())
     {
-      item.OutputToStream(ss, "Parameters.member.", parametersCount, "");
-      parametersCount++;
+      ss << "Parameters=&";
+    }
+    else
+    {
+      unsigned parametersCount = 1;
+      for(auto& item : m_parameters)
+      {
+        item.OutputToStream(ss, "Parameters.member.", parametersCount, "");
+        parametersCount++;
+      }
     }
   }
 
   if(m_capabilitiesHasBeenSet)
   {
-    unsigned capabilitiesCount = 1;
-    for(auto& item : m_capabilities)
+    if (m_capabilities.empty())
     {
-      ss << "Capabilities.member." << capabilitiesCount << "="
-          << StringUtils::URLEncode(CapabilityMapper::GetNameForCapability(item).c_str()) << "&";
-      capabilitiesCount++;
+      ss << "Capabilities=&";
+    }
+    else
+    {
+      unsigned capabilitiesCount = 1;
+      for(auto& item : m_capabilities)
+      {
+        ss << "Capabilities.member." << capabilitiesCount << "="
+            << StringUtils::URLEncode(CapabilityMapper::GetNameForCapability(item)) << "&";
+        capabilitiesCount++;
+      }
     }
   }
 
   if(m_resourceTypesHasBeenSet)
   {
-    unsigned resourceTypesCount = 1;
-    for(auto& item : m_resourceTypes)
+    if (m_resourceTypes.empty())
     {
-      ss << "ResourceTypes.member." << resourceTypesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      resourceTypesCount++;
+      ss << "ResourceTypes=&";
+    }
+    else
+    {
+      unsigned resourceTypesCount = 1;
+      for(auto& item : m_resourceTypes)
+      {
+        ss << "ResourceTypes.member." << resourceTypesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        resourceTypesCount++;
+      }
     }
   }
 
@@ -121,22 +119,36 @@ Aws::String UpdateStackRequest::SerializePayload() const
 
   if(m_notificationARNsHasBeenSet)
   {
-    unsigned notificationARNsCount = 1;
-    for(auto& item : m_notificationARNs)
+    if (m_notificationARNs.empty())
     {
-      ss << "NotificationARNs.member." << notificationARNsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      notificationARNsCount++;
+      ss << "NotificationARNs=&";
+    }
+    else
+    {
+      unsigned notificationARNsCount = 1;
+      for(auto& item : m_notificationARNs)
+      {
+        ss << "NotificationARNs.member." << notificationARNsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        notificationARNsCount++;
+      }
     }
   }
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.member.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 
@@ -148,6 +160,11 @@ Aws::String UpdateStackRequest::SerializePayload() const
   if(m_clientRequestTokenHasBeenSet)
   {
     ss << "ClientRequestToken=" << StringUtils::URLEncode(m_clientRequestToken.c_str()) << "&";
+  }
+
+  if(m_retainExceptOnCreateHasBeenSet)
+  {
+    ss << "RetainExceptOnCreate=" << std::boolalpha << m_retainExceptOnCreate << "&";
   }
 
   ss << "Version=2010-05-15";

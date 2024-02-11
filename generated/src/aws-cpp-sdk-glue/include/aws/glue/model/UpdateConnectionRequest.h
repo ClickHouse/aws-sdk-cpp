@@ -22,7 +22,7 @@ namespace Model
   class UpdateConnectionRequest : public GlueRequest
   {
   public:
-    AWS_GLUE_API UpdateConnectionRequest();
+    AWS_GLUE_API UpdateConnectionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,132 +35,43 @@ namespace Model
     AWS_GLUE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Data Catalog in which the connection resides. If none is
      * provided, the Amazon Web Services account ID is used by default.</p>
      */
-    inline const Aws::String& GetCatalogId() const{ return m_catalogId; }
-
-    /**
-     * <p>The ID of the Data Catalog in which the connection resides. If none is
-     * provided, the Amazon Web Services account ID is used by default.</p>
-     */
+    inline const Aws::String& GetCatalogId() const { return m_catalogId; }
     inline bool CatalogIdHasBeenSet() const { return m_catalogIdHasBeenSet; }
+    template<typename CatalogIdT = Aws::String>
+    void SetCatalogId(CatalogIdT&& value) { m_catalogIdHasBeenSet = true; m_catalogId = std::forward<CatalogIdT>(value); }
+    template<typename CatalogIdT = Aws::String>
+    UpdateConnectionRequest& WithCatalogId(CatalogIdT&& value) { SetCatalogId(std::forward<CatalogIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Data Catalog in which the connection resides. If none is
-     * provided, the Amazon Web Services account ID is used by default.</p>
-     */
-    inline void SetCatalogId(const Aws::String& value) { m_catalogIdHasBeenSet = true; m_catalogId = value; }
-
-    /**
-     * <p>The ID of the Data Catalog in which the connection resides. If none is
-     * provided, the Amazon Web Services account ID is used by default.</p>
-     */
-    inline void SetCatalogId(Aws::String&& value) { m_catalogIdHasBeenSet = true; m_catalogId = std::move(value); }
-
-    /**
-     * <p>The ID of the Data Catalog in which the connection resides. If none is
-     * provided, the Amazon Web Services account ID is used by default.</p>
-     */
-    inline void SetCatalogId(const char* value) { m_catalogIdHasBeenSet = true; m_catalogId.assign(value); }
-
-    /**
-     * <p>The ID of the Data Catalog in which the connection resides. If none is
-     * provided, the Amazon Web Services account ID is used by default.</p>
-     */
-    inline UpdateConnectionRequest& WithCatalogId(const Aws::String& value) { SetCatalogId(value); return *this;}
-
-    /**
-     * <p>The ID of the Data Catalog in which the connection resides. If none is
-     * provided, the Amazon Web Services account ID is used by default.</p>
-     */
-    inline UpdateConnectionRequest& WithCatalogId(Aws::String&& value) { SetCatalogId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Data Catalog in which the connection resides. If none is
-     * provided, the Amazon Web Services account ID is used by default.</p>
-     */
-    inline UpdateConnectionRequest& WithCatalogId(const char* value) { SetCatalogId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the connection definition to update.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the connection definition to update.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateConnectionRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the connection definition to update.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the connection definition to update.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the connection definition to update.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the connection definition to update.</p>
-     */
-    inline UpdateConnectionRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the connection definition to update.</p>
-     */
-    inline UpdateConnectionRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the connection definition to update.</p>
-     */
-    inline UpdateConnectionRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A <code>ConnectionInput</code> object that redefines the connection in
      * question.</p>
      */
-    inline const ConnectionInput& GetConnectionInput() const{ return m_connectionInput; }
-
-    /**
-     * <p>A <code>ConnectionInput</code> object that redefines the connection in
-     * question.</p>
-     */
+    inline const ConnectionInput& GetConnectionInput() const { return m_connectionInput; }
     inline bool ConnectionInputHasBeenSet() const { return m_connectionInputHasBeenSet; }
-
-    /**
-     * <p>A <code>ConnectionInput</code> object that redefines the connection in
-     * question.</p>
-     */
-    inline void SetConnectionInput(const ConnectionInput& value) { m_connectionInputHasBeenSet = true; m_connectionInput = value; }
-
-    /**
-     * <p>A <code>ConnectionInput</code> object that redefines the connection in
-     * question.</p>
-     */
-    inline void SetConnectionInput(ConnectionInput&& value) { m_connectionInputHasBeenSet = true; m_connectionInput = std::move(value); }
-
-    /**
-     * <p>A <code>ConnectionInput</code> object that redefines the connection in
-     * question.</p>
-     */
-    inline UpdateConnectionRequest& WithConnectionInput(const ConnectionInput& value) { SetConnectionInput(value); return *this;}
-
-    /**
-     * <p>A <code>ConnectionInput</code> object that redefines the connection in
-     * question.</p>
-     */
-    inline UpdateConnectionRequest& WithConnectionInput(ConnectionInput&& value) { SetConnectionInput(std::move(value)); return *this;}
-
+    template<typename ConnectionInputT = ConnectionInput>
+    void SetConnectionInput(ConnectionInputT&& value) { m_connectionInputHasBeenSet = true; m_connectionInput = std::forward<ConnectionInputT>(value); }
+    template<typename ConnectionInputT = ConnectionInput>
+    UpdateConnectionRequest& WithConnectionInput(ConnectionInputT&& value) { SetConnectionInput(std::forward<ConnectionInputT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_catalogId;

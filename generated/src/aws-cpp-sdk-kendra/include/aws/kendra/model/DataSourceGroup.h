@@ -32,117 +32,38 @@ namespace Model
   class DataSourceGroup
   {
   public:
-    AWS_KENDRA_API DataSourceGroup();
+    AWS_KENDRA_API DataSourceGroup() = default;
     AWS_KENDRA_API DataSourceGroup(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API DataSourceGroup& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the group you want to add to your list of groups. This is
      * for filtering search results based on the groups' access to documents.</p>
      */
-    inline const Aws::String& GetGroupId() const{ return m_groupId; }
-
-    /**
-     * <p>The identifier of the group you want to add to your list of groups. This is
-     * for filtering search results based on the groups' access to documents.</p>
-     */
+    inline const Aws::String& GetGroupId() const { return m_groupId; }
     inline bool GroupIdHasBeenSet() const { return m_groupIdHasBeenSet; }
+    template<typename GroupIdT = Aws::String>
+    void SetGroupId(GroupIdT&& value) { m_groupIdHasBeenSet = true; m_groupId = std::forward<GroupIdT>(value); }
+    template<typename GroupIdT = Aws::String>
+    DataSourceGroup& WithGroupId(GroupIdT&& value) { SetGroupId(std::forward<GroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the group you want to add to your list of groups. This is
-     * for filtering search results based on the groups' access to documents.</p>
-     */
-    inline void SetGroupId(const Aws::String& value) { m_groupIdHasBeenSet = true; m_groupId = value; }
-
-    /**
-     * <p>The identifier of the group you want to add to your list of groups. This is
-     * for filtering search results based on the groups' access to documents.</p>
-     */
-    inline void SetGroupId(Aws::String&& value) { m_groupIdHasBeenSet = true; m_groupId = std::move(value); }
-
-    /**
-     * <p>The identifier of the group you want to add to your list of groups. This is
-     * for filtering search results based on the groups' access to documents.</p>
-     */
-    inline void SetGroupId(const char* value) { m_groupIdHasBeenSet = true; m_groupId.assign(value); }
-
-    /**
-     * <p>The identifier of the group you want to add to your list of groups. This is
-     * for filtering search results based on the groups' access to documents.</p>
-     */
-    inline DataSourceGroup& WithGroupId(const Aws::String& value) { SetGroupId(value); return *this;}
-
-    /**
-     * <p>The identifier of the group you want to add to your list of groups. This is
-     * for filtering search results based on the groups' access to documents.</p>
-     */
-    inline DataSourceGroup& WithGroupId(Aws::String&& value) { SetGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the group you want to add to your list of groups. This is
-     * for filtering search results based on the groups' access to documents.</p>
-     */
-    inline DataSourceGroup& WithGroupId(const char* value) { SetGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the data source group you want to add to your list of data
      * source groups. This is for filtering search results based on the groups' access
      * to documents in that data source.</p>
      */
-    inline const Aws::String& GetDataSourceId() const{ return m_dataSourceId; }
-
-    /**
-     * <p>The identifier of the data source group you want to add to your list of data
-     * source groups. This is for filtering search results based on the groups' access
-     * to documents in that data source.</p>
-     */
+    inline const Aws::String& GetDataSourceId() const { return m_dataSourceId; }
     inline bool DataSourceIdHasBeenSet() const { return m_dataSourceIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the data source group you want to add to your list of data
-     * source groups. This is for filtering search results based on the groups' access
-     * to documents in that data source.</p>
-     */
-    inline void SetDataSourceId(const Aws::String& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = value; }
-
-    /**
-     * <p>The identifier of the data source group you want to add to your list of data
-     * source groups. This is for filtering search results based on the groups' access
-     * to documents in that data source.</p>
-     */
-    inline void SetDataSourceId(Aws::String&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = std::move(value); }
-
-    /**
-     * <p>The identifier of the data source group you want to add to your list of data
-     * source groups. This is for filtering search results based on the groups' access
-     * to documents in that data source.</p>
-     */
-    inline void SetDataSourceId(const char* value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId.assign(value); }
-
-    /**
-     * <p>The identifier of the data source group you want to add to your list of data
-     * source groups. This is for filtering search results based on the groups' access
-     * to documents in that data source.</p>
-     */
-    inline DataSourceGroup& WithDataSourceId(const Aws::String& value) { SetDataSourceId(value); return *this;}
-
-    /**
-     * <p>The identifier of the data source group you want to add to your list of data
-     * source groups. This is for filtering search results based on the groups' access
-     * to documents in that data source.</p>
-     */
-    inline DataSourceGroup& WithDataSourceId(Aws::String&& value) { SetDataSourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the data source group you want to add to your list of data
-     * source groups. This is for filtering search results based on the groups' access
-     * to documents in that data source.</p>
-     */
-    inline DataSourceGroup& WithDataSourceId(const char* value) { SetDataSourceId(value); return *this;}
-
+    template<typename DataSourceIdT = Aws::String>
+    void SetDataSourceId(DataSourceIdT&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = std::forward<DataSourceIdT>(value); }
+    template<typename DataSourceIdT = Aws::String>
+    DataSourceGroup& WithDataSourceId(DataSourceIdT&& value) { SetDataSourceId(std::forward<DataSourceIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_groupId;

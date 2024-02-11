@@ -21,7 +21,11 @@ namespace Model
     EbsVolume,
     LambdaFunction,
     NotApplicable,
-    EcsService
+    EcsService,
+    License,
+    RdsDBInstance,
+    AuroraDBClusterStorage,
+    Idle
   };
 
 namespace ResourceTypeMapper

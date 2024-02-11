@@ -18,15 +18,7 @@ namespace MemoryDB
 namespace Model
 {
 
-Subnet::Subnet() : 
-    m_identifierHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false)
-{
-}
-
-Subnet::Subnet(JsonView jsonValue) : 
-    m_identifierHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false)
+Subnet::Subnet(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,22 @@ Subnet& Subnet::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Identifier"))
   {
     m_identifier = jsonValue.GetString("Identifier");
-
     m_identifierHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AvailabilityZone"))
   {
     m_availabilityZone = jsonValue.GetObject("AvailabilityZone");
-
     m_availabilityZoneHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("SupportedNetworkTypes"))
+  {
+    Aws::Utils::Array<JsonView> supportedNetworkTypesJsonList = jsonValue.GetArray("SupportedNetworkTypes");
+    for(unsigned supportedNetworkTypesIndex = 0; supportedNetworkTypesIndex < supportedNetworkTypesJsonList.GetLength(); ++supportedNetworkTypesIndex)
+    {
+      m_supportedNetworkTypes.push_back(NetworkTypeMapper::GetNetworkTypeForName(supportedNetworkTypesJsonList[supportedNetworkTypesIndex].AsString()));
+    }
+    m_supportedNetworkTypesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +60,17 @@ JsonValue Subnet::Jsonize() const
   if(m_availabilityZoneHasBeenSet)
   {
    payload.WithObject("AvailabilityZone", m_availabilityZone.Jsonize());
+
+  }
+
+  if(m_supportedNetworkTypesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> supportedNetworkTypesJsonList(m_supportedNetworkTypes.size());
+   for(unsigned supportedNetworkTypesIndex = 0; supportedNetworkTypesIndex < supportedNetworkTypesJsonList.GetLength(); ++supportedNetworkTypesIndex)
+   {
+     supportedNetworkTypesJsonList[supportedNetworkTypesIndex].AsString(NetworkTypeMapper::GetNameForNetworkType(m_supportedNetworkTypes[supportedNetworkTypesIndex]));
+   }
+   payload.WithArray("SupportedNetworkTypes", std::move(supportedNetworkTypesJsonList));
 
   }
 

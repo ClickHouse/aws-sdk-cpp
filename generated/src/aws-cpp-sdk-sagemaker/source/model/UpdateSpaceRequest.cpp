@@ -12,13 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateSpaceRequest::UpdateSpaceRequest() : 
-    m_domainIdHasBeenSet(false),
-    m_spaceNameHasBeenSet(false),
-    m_spaceSettingsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateSpaceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,6 +31,12 @@ Aws::String UpdateSpaceRequest::SerializePayload() const
   if(m_spaceSettingsHasBeenSet)
   {
    payload.WithObject("SpaceSettings", m_spaceSettings.Jsonize());
+
+  }
+
+  if(m_spaceDisplayNameHasBeenSet)
+  {
+   payload.WithString("SpaceDisplayName", m_spaceDisplayName);
 
   }
 

@@ -18,23 +18,7 @@ namespace ServiceCatalog
 namespace Model
 {
 
-ConstraintDetail::ConstraintDetail() : 
-    m_constraintIdHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_ownerHasBeenSet(false),
-    m_productIdHasBeenSet(false),
-    m_portfolioIdHasBeenSet(false)
-{
-}
-
-ConstraintDetail::ConstraintDetail(JsonView jsonValue) : 
-    m_constraintIdHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_ownerHasBeenSet(false),
-    m_productIdHasBeenSet(false),
-    m_portfolioIdHasBeenSet(false)
+ConstraintDetail::ConstraintDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,45 +28,33 @@ ConstraintDetail& ConstraintDetail::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ConstraintId"))
   {
     m_constraintId = jsonValue.GetString("ConstraintId");
-
     m_constraintIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Type"))
   {
     m_type = jsonValue.GetString("Type");
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Owner"))
   {
     m_owner = jsonValue.GetString("Owner");
-
     m_ownerHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProductId"))
   {
     m_productId = jsonValue.GetString("ProductId");
-
     m_productIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PortfolioId"))
   {
     m_portfolioId = jsonValue.GetString("PortfolioId");
-
     m_portfolioIdHasBeenSet = true;
   }
-
   return *this;
 }
 

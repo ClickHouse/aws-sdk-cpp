@@ -10,31 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateVolumeRequest::CreateVolumeRequest() : 
-    m_availabilityZoneHasBeenSet(false),
-    m_encrypted(false),
-    m_encryptedHasBeenSet(false),
-    m_iops(0),
-    m_iopsHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_outpostArnHasBeenSet(false),
-    m_size(0),
-    m_sizeHasBeenSet(false),
-    m_snapshotIdHasBeenSet(false),
-    m_volumeType(VolumeType::NOT_SET),
-    m_volumeTypeHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_multiAttachEnabled(false),
-    m_multiAttachEnabledHasBeenSet(false),
-    m_throughput(0),
-    m_throughputHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true)
-{
-}
-
 Aws::String CreateVolumeRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -42,6 +17,11 @@ Aws::String CreateVolumeRequest::SerializePayload() const
   if(m_availabilityZoneHasBeenSet)
   {
     ss << "AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
+  }
+
+  if(m_availabilityZoneIdHasBeenSet)
+  {
+    ss << "AvailabilityZoneId=" << StringUtils::URLEncode(m_availabilityZoneId.c_str()) << "&";
   }
 
   if(m_encryptedHasBeenSet)
@@ -76,12 +56,7 @@ Aws::String CreateVolumeRequest::SerializePayload() const
 
   if(m_volumeTypeHasBeenSet)
   {
-    ss << "VolumeType=" << VolumeTypeMapper::GetNameForVolumeType(m_volumeType) << "&";
-  }
-
-  if(m_dryRunHasBeenSet)
-  {
-    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
+    ss << "VolumeType=" << StringUtils::URLEncode(VolumeTypeMapper::GetNameForVolumeType(m_volumeType)) << "&";
   }
 
   if(m_tagSpecificationsHasBeenSet)
@@ -107,6 +82,21 @@ Aws::String CreateVolumeRequest::SerializePayload() const
   if(m_clientTokenHasBeenSet)
   {
     ss << "ClientToken=" << StringUtils::URLEncode(m_clientToken.c_str()) << "&";
+  }
+
+  if(m_volumeInitializationRateHasBeenSet)
+  {
+    ss << "VolumeInitializationRate=" << m_volumeInitializationRate << "&";
+  }
+
+  if(m_operatorHasBeenSet)
+  {
+    m_operator.OutputToStream(ss, "Operator");
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
   }
 
   ss << "Version=2016-11-15";

@@ -43,116 +43,52 @@ namespace Model
   class CreationInfo
   {
   public:
-    AWS_EFS_API CreationInfo();
+    AWS_EFS_API CreationInfo() = default;
     AWS_EFS_API CreationInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_EFS_API CreationInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EFS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the POSIX user ID to apply to the <code>RootDirectory</code>.
      * Accepts values from 0 to 2^32 (4294967295).</p>
      */
-    inline long long GetOwnerUid() const{ return m_ownerUid; }
-
-    /**
-     * <p>Specifies the POSIX user ID to apply to the <code>RootDirectory</code>.
-     * Accepts values from 0 to 2^32 (4294967295).</p>
-     */
+    inline long long GetOwnerUid() const { return m_ownerUid; }
     inline bool OwnerUidHasBeenSet() const { return m_ownerUidHasBeenSet; }
-
-    /**
-     * <p>Specifies the POSIX user ID to apply to the <code>RootDirectory</code>.
-     * Accepts values from 0 to 2^32 (4294967295).</p>
-     */
     inline void SetOwnerUid(long long value) { m_ownerUidHasBeenSet = true; m_ownerUid = value; }
-
-    /**
-     * <p>Specifies the POSIX user ID to apply to the <code>RootDirectory</code>.
-     * Accepts values from 0 to 2^32 (4294967295).</p>
-     */
     inline CreationInfo& WithOwnerUid(long long value) { SetOwnerUid(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Specifies the POSIX group ID to apply to the <code>RootDirectory</code>.
      * Accepts values from 0 to 2^32 (4294967295).</p>
      */
-    inline long long GetOwnerGid() const{ return m_ownerGid; }
-
-    /**
-     * <p>Specifies the POSIX group ID to apply to the <code>RootDirectory</code>.
-     * Accepts values from 0 to 2^32 (4294967295).</p>
-     */
+    inline long long GetOwnerGid() const { return m_ownerGid; }
     inline bool OwnerGidHasBeenSet() const { return m_ownerGidHasBeenSet; }
-
-    /**
-     * <p>Specifies the POSIX group ID to apply to the <code>RootDirectory</code>.
-     * Accepts values from 0 to 2^32 (4294967295).</p>
-     */
     inline void SetOwnerGid(long long value) { m_ownerGidHasBeenSet = true; m_ownerGid = value; }
-
-    /**
-     * <p>Specifies the POSIX group ID to apply to the <code>RootDirectory</code>.
-     * Accepts values from 0 to 2^32 (4294967295).</p>
-     */
     inline CreationInfo& WithOwnerGid(long long value) { SetOwnerGid(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Specifies the POSIX permissions to apply to the <code>RootDirectory</code>,
      * in the format of an octal number representing the file's mode bits.</p>
      */
-    inline const Aws::String& GetPermissions() const{ return m_permissions; }
-
-    /**
-     * <p>Specifies the POSIX permissions to apply to the <code>RootDirectory</code>,
-     * in the format of an octal number representing the file's mode bits.</p>
-     */
+    inline const Aws::String& GetPermissions() const { return m_permissions; }
     inline bool PermissionsHasBeenSet() const { return m_permissionsHasBeenSet; }
-
-    /**
-     * <p>Specifies the POSIX permissions to apply to the <code>RootDirectory</code>,
-     * in the format of an octal number representing the file's mode bits.</p>
-     */
-    inline void SetPermissions(const Aws::String& value) { m_permissionsHasBeenSet = true; m_permissions = value; }
-
-    /**
-     * <p>Specifies the POSIX permissions to apply to the <code>RootDirectory</code>,
-     * in the format of an octal number representing the file's mode bits.</p>
-     */
-    inline void SetPermissions(Aws::String&& value) { m_permissionsHasBeenSet = true; m_permissions = std::move(value); }
-
-    /**
-     * <p>Specifies the POSIX permissions to apply to the <code>RootDirectory</code>,
-     * in the format of an octal number representing the file's mode bits.</p>
-     */
-    inline void SetPermissions(const char* value) { m_permissionsHasBeenSet = true; m_permissions.assign(value); }
-
-    /**
-     * <p>Specifies the POSIX permissions to apply to the <code>RootDirectory</code>,
-     * in the format of an octal number representing the file's mode bits.</p>
-     */
-    inline CreationInfo& WithPermissions(const Aws::String& value) { SetPermissions(value); return *this;}
-
-    /**
-     * <p>Specifies the POSIX permissions to apply to the <code>RootDirectory</code>,
-     * in the format of an octal number representing the file's mode bits.</p>
-     */
-    inline CreationInfo& WithPermissions(Aws::String&& value) { SetPermissions(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the POSIX permissions to apply to the <code>RootDirectory</code>,
-     * in the format of an octal number representing the file's mode bits.</p>
-     */
-    inline CreationInfo& WithPermissions(const char* value) { SetPermissions(value); return *this;}
-
+    template<typename PermissionsT = Aws::String>
+    void SetPermissions(PermissionsT&& value) { m_permissionsHasBeenSet = true; m_permissions = std::forward<PermissionsT>(value); }
+    template<typename PermissionsT = Aws::String>
+    CreationInfo& WithPermissions(PermissionsT&& value) { SetPermissions(std::forward<PermissionsT>(value)); return *this;}
+    ///@}
   private:
 
-    long long m_ownerUid;
+    long long m_ownerUid{0};
     bool m_ownerUidHasBeenSet = false;
 
-    long long m_ownerGid;
+    long long m_ownerGid{0};
     bool m_ownerGidHasBeenSet = false;
 
     Aws::String m_permissions;

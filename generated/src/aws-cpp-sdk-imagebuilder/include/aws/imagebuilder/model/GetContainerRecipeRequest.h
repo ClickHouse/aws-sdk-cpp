@@ -25,7 +25,7 @@ namespace Model
   class GetContainerRecipeRequest : public ImagebuilderRequest
   {
   public:
-    AWS_IMAGEBUILDER_API GetContainerRecipeRequest();
+    AWS_IMAGEBUILDER_API GetContainerRecipeRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,46 +38,17 @@ namespace Model
     AWS_IMAGEBUILDER_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the container recipe to retrieve.</p>
      */
-    inline const Aws::String& GetContainerRecipeArn() const{ return m_containerRecipeArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container recipe to retrieve.</p>
-     */
+    inline const Aws::String& GetContainerRecipeArn() const { return m_containerRecipeArn; }
     inline bool ContainerRecipeArnHasBeenSet() const { return m_containerRecipeArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container recipe to retrieve.</p>
-     */
-    inline void SetContainerRecipeArn(const Aws::String& value) { m_containerRecipeArnHasBeenSet = true; m_containerRecipeArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container recipe to retrieve.</p>
-     */
-    inline void SetContainerRecipeArn(Aws::String&& value) { m_containerRecipeArnHasBeenSet = true; m_containerRecipeArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container recipe to retrieve.</p>
-     */
-    inline void SetContainerRecipeArn(const char* value) { m_containerRecipeArnHasBeenSet = true; m_containerRecipeArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container recipe to retrieve.</p>
-     */
-    inline GetContainerRecipeRequest& WithContainerRecipeArn(const Aws::String& value) { SetContainerRecipeArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container recipe to retrieve.</p>
-     */
-    inline GetContainerRecipeRequest& WithContainerRecipeArn(Aws::String&& value) { SetContainerRecipeArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container recipe to retrieve.</p>
-     */
-    inline GetContainerRecipeRequest& WithContainerRecipeArn(const char* value) { SetContainerRecipeArn(value); return *this;}
-
+    template<typename ContainerRecipeArnT = Aws::String>
+    void SetContainerRecipeArn(ContainerRecipeArnT&& value) { m_containerRecipeArnHasBeenSet = true; m_containerRecipeArn = std::forward<ContainerRecipeArnT>(value); }
+    template<typename ContainerRecipeArnT = Aws::String>
+    GetContainerRecipeRequest& WithContainerRecipeArn(ContainerRecipeArnT&& value) { SetContainerRecipeArn(std::forward<ContainerRecipeArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_containerRecipeArn;

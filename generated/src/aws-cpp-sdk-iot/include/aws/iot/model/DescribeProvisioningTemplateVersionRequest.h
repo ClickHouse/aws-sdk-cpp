@@ -21,7 +21,7 @@ namespace Model
   class DescribeProvisioningTemplateVersionRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API DescribeProvisioningTemplateVersionRequest();
+    AWS_IOT_API DescribeProvisioningTemplateVersionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,73 +32,33 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The template name.</p>
      */
-    inline const Aws::String& GetTemplateName() const{ return m_templateName; }
-
-    /**
-     * <p>The template name.</p>
-     */
+    inline const Aws::String& GetTemplateName() const { return m_templateName; }
     inline bool TemplateNameHasBeenSet() const { return m_templateNameHasBeenSet; }
+    template<typename TemplateNameT = Aws::String>
+    void SetTemplateName(TemplateNameT&& value) { m_templateNameHasBeenSet = true; m_templateName = std::forward<TemplateNameT>(value); }
+    template<typename TemplateNameT = Aws::String>
+    DescribeProvisioningTemplateVersionRequest& WithTemplateName(TemplateNameT&& value) { SetTemplateName(std::forward<TemplateNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The template name.</p>
-     */
-    inline void SetTemplateName(const Aws::String& value) { m_templateNameHasBeenSet = true; m_templateName = value; }
-
-    /**
-     * <p>The template name.</p>
-     */
-    inline void SetTemplateName(Aws::String&& value) { m_templateNameHasBeenSet = true; m_templateName = std::move(value); }
-
-    /**
-     * <p>The template name.</p>
-     */
-    inline void SetTemplateName(const char* value) { m_templateNameHasBeenSet = true; m_templateName.assign(value); }
-
-    /**
-     * <p>The template name.</p>
-     */
-    inline DescribeProvisioningTemplateVersionRequest& WithTemplateName(const Aws::String& value) { SetTemplateName(value); return *this;}
-
-    /**
-     * <p>The template name.</p>
-     */
-    inline DescribeProvisioningTemplateVersionRequest& WithTemplateName(Aws::String&& value) { SetTemplateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The template name.</p>
-     */
-    inline DescribeProvisioningTemplateVersionRequest& WithTemplateName(const char* value) { SetTemplateName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The provisioning template version ID.</p>
      */
-    inline int GetVersionId() const{ return m_versionId; }
-
-    /**
-     * <p>The provisioning template version ID.</p>
-     */
+    inline int GetVersionId() const { return m_versionId; }
     inline bool VersionIdHasBeenSet() const { return m_versionIdHasBeenSet; }
-
-    /**
-     * <p>The provisioning template version ID.</p>
-     */
     inline void SetVersionId(int value) { m_versionIdHasBeenSet = true; m_versionId = value; }
-
-    /**
-     * <p>The provisioning template version ID.</p>
-     */
     inline DescribeProvisioningTemplateVersionRequest& WithVersionId(int value) { SetVersionId(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_templateName;
     bool m_templateNameHasBeenSet = false;
 
-    int m_versionId;
+    int m_versionId{0};
     bool m_versionIdHasBeenSet = false;
   };
 

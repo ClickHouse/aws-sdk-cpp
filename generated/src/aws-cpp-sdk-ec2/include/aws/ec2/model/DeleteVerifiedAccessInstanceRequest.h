@@ -22,7 +22,7 @@ namespace Model
   class DeleteVerifiedAccessInstanceRequest : public EC2Request
   {
   public:
-    AWS_EC2_API DeleteVerifiedAccessInstanceRequest();
+    AWS_EC2_API DeleteVerifiedAccessInstanceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,154 +37,55 @@ namespace Model
 
   public:
 
+    ///@{
     /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
+     * <p>The ID of the Verified Access instance.</p>
      */
-    inline const Aws::String& GetVerifiedAccessInstanceId() const{ return m_verifiedAccessInstanceId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
+    inline const Aws::String& GetVerifiedAccessInstanceId() const { return m_verifiedAccessInstanceId; }
     inline bool VerifiedAccessInstanceIdHasBeenSet() const { return m_verifiedAccessInstanceIdHasBeenSet; }
+    template<typename VerifiedAccessInstanceIdT = Aws::String>
+    void SetVerifiedAccessInstanceId(VerifiedAccessInstanceIdT&& value) { m_verifiedAccessInstanceIdHasBeenSet = true; m_verifiedAccessInstanceId = std::forward<VerifiedAccessInstanceIdT>(value); }
+    template<typename VerifiedAccessInstanceIdT = Aws::String>
+    DeleteVerifiedAccessInstanceRequest& WithVerifiedAccessInstanceId(VerifiedAccessInstanceIdT&& value) { SetVerifiedAccessInstanceId(std::forward<VerifiedAccessInstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
-    inline void SetVerifiedAccessInstanceId(const Aws::String& value) { m_verifiedAccessInstanceIdHasBeenSet = true; m_verifiedAccessInstanceId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
-    inline void SetVerifiedAccessInstanceId(Aws::String&& value) { m_verifiedAccessInstanceIdHasBeenSet = true; m_verifiedAccessInstanceId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
-    inline void SetVerifiedAccessInstanceId(const char* value) { m_verifiedAccessInstanceIdHasBeenSet = true; m_verifiedAccessInstanceId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
-    inline DeleteVerifiedAccessInstanceRequest& WithVerifiedAccessInstanceId(const Aws::String& value) { SetVerifiedAccessInstanceId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
-    inline DeleteVerifiedAccessInstanceRequest& WithVerifiedAccessInstanceId(Aws::String&& value) { SetVerifiedAccessInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
-    inline DeleteVerifiedAccessInstanceRequest& WithVerifiedAccessInstanceId(const char* value) { SetVerifiedAccessInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline DeleteVerifiedAccessInstanceRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A unique, case-sensitive token that you provide to ensure idempotency of your
      * modification request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
+     * href="https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html">Ensuring
+     * idempotency</a>.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>A unique, case-sensitive token that you provide to ensure idempotency of your
-     * modification request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
-
-    /**
-     * <p>A unique, case-sensitive token that you provide to ensure idempotency of your
-     * modification request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>A unique, case-sensitive token that you provide to ensure idempotency of your
-     * modification request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>A unique, case-sensitive token that you provide to ensure idempotency of your
-     * modification request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>A unique, case-sensitive token that you provide to ensure idempotency of your
-     * modification request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
-    inline DeleteVerifiedAccessInstanceRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>A unique, case-sensitive token that you provide to ensure idempotency of your
-     * modification request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
-    inline DeleteVerifiedAccessInstanceRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique, case-sensitive token that you provide to ensure idempotency of your
-     * modification request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
-    inline DeleteVerifiedAccessInstanceRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    DeleteVerifiedAccessInstanceRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_verifiedAccessInstanceId;
     bool m_verifiedAccessInstanceIdHasBeenSet = false;
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
   };
 
 } // namespace Model

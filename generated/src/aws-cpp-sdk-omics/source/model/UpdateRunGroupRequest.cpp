@@ -12,31 +12,19 @@ using namespace Aws::Omics::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateRunGroupRequest::UpdateRunGroupRequest() : 
-    m_idHasBeenSet(false),
-    m_maxCpus(0),
-    m_maxCpusHasBeenSet(false),
-    m_maxDuration(0),
-    m_maxDurationHasBeenSet(false),
-    m_maxRuns(0),
-    m_maxRunsHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
 Aws::String UpdateRunGroupRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_maxCpusHasBeenSet)
+  if(m_nameHasBeenSet)
   {
-   payload.WithInteger("maxCpus", m_maxCpus);
+   payload.WithString("name", m_name);
 
   }
 
-  if(m_maxDurationHasBeenSet)
+  if(m_maxCpusHasBeenSet)
   {
-   payload.WithInteger("maxDuration", m_maxDuration);
+   payload.WithInteger("maxCpus", m_maxCpus);
 
   }
 
@@ -46,9 +34,15 @@ Aws::String UpdateRunGroupRequest::SerializePayload() const
 
   }
 
-  if(m_nameHasBeenSet)
+  if(m_maxDurationHasBeenSet)
   {
-   payload.WithString("name", m_name);
+   payload.WithInteger("maxDuration", m_maxDuration);
+
+  }
+
+  if(m_maxGpusHasBeenSet)
+  {
+   payload.WithInteger("maxGpus", m_maxGpus);
 
   }
 

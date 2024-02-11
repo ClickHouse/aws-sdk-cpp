@@ -18,13 +18,7 @@ namespace Inspector2
 namespace Model
 {
 
-NetworkPath::NetworkPath() : 
-    m_stepsHasBeenSet(false)
-{
-}
-
-NetworkPath::NetworkPath(JsonView jsonValue) : 
-    m_stepsHasBeenSet(false)
+NetworkPath::NetworkPath(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ NetworkPath& NetworkPath::operator =(JsonView jsonValue)
     }
     m_stepsHasBeenSet = true;
   }
-
   return *this;
 }
 

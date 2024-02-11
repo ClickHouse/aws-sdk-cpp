@@ -23,7 +23,7 @@ namespace Model
   class NotifyTerminateProvisionedProductEngineWorkflowResultRequest : public ServiceCatalogRequest
   {
   public:
-    AWS_SERVICECATALOG_API NotifyTerminateProvisionedProductEngineWorkflowResultRequest();
+    AWS_SERVICECATALOG_API NotifyTerminateProvisionedProductEngineWorkflowResultRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,216 +36,65 @@ namespace Model
     AWS_SERVICECATALOG_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p> The encrypted contents of the terminate engine execution payload that
      * Service Catalog sends after the Terraform product terminate workflow starts.
      * </p>
      */
-    inline const Aws::String& GetWorkflowToken() const{ return m_workflowToken; }
-
-    /**
-     * <p> The encrypted contents of the terminate engine execution payload that
-     * Service Catalog sends after the Terraform product terminate workflow starts.
-     * </p>
-     */
+    inline const Aws::String& GetWorkflowToken() const { return m_workflowToken; }
     inline bool WorkflowTokenHasBeenSet() const { return m_workflowTokenHasBeenSet; }
+    template<typename WorkflowTokenT = Aws::String>
+    void SetWorkflowToken(WorkflowTokenT&& value) { m_workflowTokenHasBeenSet = true; m_workflowToken = std::forward<WorkflowTokenT>(value); }
+    template<typename WorkflowTokenT = Aws::String>
+    NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithWorkflowToken(WorkflowTokenT&& value) { SetWorkflowToken(std::forward<WorkflowTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The encrypted contents of the terminate engine execution payload that
-     * Service Catalog sends after the Terraform product terminate workflow starts.
-     * </p>
-     */
-    inline void SetWorkflowToken(const Aws::String& value) { m_workflowTokenHasBeenSet = true; m_workflowToken = value; }
-
-    /**
-     * <p> The encrypted contents of the terminate engine execution payload that
-     * Service Catalog sends after the Terraform product terminate workflow starts.
-     * </p>
-     */
-    inline void SetWorkflowToken(Aws::String&& value) { m_workflowTokenHasBeenSet = true; m_workflowToken = std::move(value); }
-
-    /**
-     * <p> The encrypted contents of the terminate engine execution payload that
-     * Service Catalog sends after the Terraform product terminate workflow starts.
-     * </p>
-     */
-    inline void SetWorkflowToken(const char* value) { m_workflowTokenHasBeenSet = true; m_workflowToken.assign(value); }
-
-    /**
-     * <p> The encrypted contents of the terminate engine execution payload that
-     * Service Catalog sends after the Terraform product terminate workflow starts.
-     * </p>
-     */
-    inline NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithWorkflowToken(const Aws::String& value) { SetWorkflowToken(value); return *this;}
-
-    /**
-     * <p> The encrypted contents of the terminate engine execution payload that
-     * Service Catalog sends after the Terraform product terminate workflow starts.
-     * </p>
-     */
-    inline NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithWorkflowToken(Aws::String&& value) { SetWorkflowToken(std::move(value)); return *this;}
-
-    /**
-     * <p> The encrypted contents of the terminate engine execution payload that
-     * Service Catalog sends after the Terraform product terminate workflow starts.
-     * </p>
-     */
-    inline NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithWorkflowToken(const char* value) { SetWorkflowToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The identifier of the record. </p>
      */
-    inline const Aws::String& GetRecordId() const{ return m_recordId; }
-
-    /**
-     * <p> The identifier of the record. </p>
-     */
+    inline const Aws::String& GetRecordId() const { return m_recordId; }
     inline bool RecordIdHasBeenSet() const { return m_recordIdHasBeenSet; }
+    template<typename RecordIdT = Aws::String>
+    void SetRecordId(RecordIdT&& value) { m_recordIdHasBeenSet = true; m_recordId = std::forward<RecordIdT>(value); }
+    template<typename RecordIdT = Aws::String>
+    NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithRecordId(RecordIdT&& value) { SetRecordId(std::forward<RecordIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The identifier of the record. </p>
-     */
-    inline void SetRecordId(const Aws::String& value) { m_recordIdHasBeenSet = true; m_recordId = value; }
-
-    /**
-     * <p> The identifier of the record. </p>
-     */
-    inline void SetRecordId(Aws::String&& value) { m_recordIdHasBeenSet = true; m_recordId = std::move(value); }
-
-    /**
-     * <p> The identifier of the record. </p>
-     */
-    inline void SetRecordId(const char* value) { m_recordIdHasBeenSet = true; m_recordId.assign(value); }
-
-    /**
-     * <p> The identifier of the record. </p>
-     */
-    inline NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithRecordId(const Aws::String& value) { SetRecordId(value); return *this;}
-
-    /**
-     * <p> The identifier of the record. </p>
-     */
-    inline NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithRecordId(Aws::String&& value) { SetRecordId(std::move(value)); return *this;}
-
-    /**
-     * <p> The identifier of the record. </p>
-     */
-    inline NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithRecordId(const char* value) { SetRecordId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The status of the terminate engine execution. </p>
      */
-    inline const EngineWorkflowStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p> The status of the terminate engine execution. </p>
-     */
+    inline EngineWorkflowStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(EngineWorkflowStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithStatus(EngineWorkflowStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p> The status of the terminate engine execution. </p>
-     */
-    inline void SetStatus(const EngineWorkflowStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p> The status of the terminate engine execution. </p>
-     */
-    inline void SetStatus(EngineWorkflowStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p> The status of the terminate engine execution. </p>
-     */
-    inline NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithStatus(const EngineWorkflowStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p> The status of the terminate engine execution. </p>
-     */
-    inline NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithStatus(EngineWorkflowStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The reason why the terminate engine execution failed. </p>
      */
-    inline const Aws::String& GetFailureReason() const{ return m_failureReason; }
-
-    /**
-     * <p> The reason why the terminate engine execution failed. </p>
-     */
+    inline const Aws::String& GetFailureReason() const { return m_failureReason; }
     inline bool FailureReasonHasBeenSet() const { return m_failureReasonHasBeenSet; }
+    template<typename FailureReasonT = Aws::String>
+    void SetFailureReason(FailureReasonT&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::forward<FailureReasonT>(value); }
+    template<typename FailureReasonT = Aws::String>
+    NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithFailureReason(FailureReasonT&& value) { SetFailureReason(std::forward<FailureReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The reason why the terminate engine execution failed. </p>
-     */
-    inline void SetFailureReason(const Aws::String& value) { m_failureReasonHasBeenSet = true; m_failureReason = value; }
-
-    /**
-     * <p> The reason why the terminate engine execution failed. </p>
-     */
-    inline void SetFailureReason(Aws::String&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::move(value); }
-
-    /**
-     * <p> The reason why the terminate engine execution failed. </p>
-     */
-    inline void SetFailureReason(const char* value) { m_failureReasonHasBeenSet = true; m_failureReason.assign(value); }
-
-    /**
-     * <p> The reason why the terminate engine execution failed. </p>
-     */
-    inline NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithFailureReason(const Aws::String& value) { SetFailureReason(value); return *this;}
-
-    /**
-     * <p> The reason why the terminate engine execution failed. </p>
-     */
-    inline NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithFailureReason(Aws::String&& value) { SetFailureReason(std::move(value)); return *this;}
-
-    /**
-     * <p> The reason why the terminate engine execution failed. </p>
-     */
-    inline NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithFailureReason(const char* value) { SetFailureReason(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The idempotency token that identifies the terminate engine execution. </p>
      */
-    inline const Aws::String& GetIdempotencyToken() const{ return m_idempotencyToken; }
-
-    /**
-     * <p> The idempotency token that identifies the terminate engine execution. </p>
-     */
+    inline const Aws::String& GetIdempotencyToken() const { return m_idempotencyToken; }
     inline bool IdempotencyTokenHasBeenSet() const { return m_idempotencyTokenHasBeenSet; }
-
-    /**
-     * <p> The idempotency token that identifies the terminate engine execution. </p>
-     */
-    inline void SetIdempotencyToken(const Aws::String& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = value; }
-
-    /**
-     * <p> The idempotency token that identifies the terminate engine execution. </p>
-     */
-    inline void SetIdempotencyToken(Aws::String&& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = std::move(value); }
-
-    /**
-     * <p> The idempotency token that identifies the terminate engine execution. </p>
-     */
-    inline void SetIdempotencyToken(const char* value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken.assign(value); }
-
-    /**
-     * <p> The idempotency token that identifies the terminate engine execution. </p>
-     */
-    inline NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithIdempotencyToken(const Aws::String& value) { SetIdempotencyToken(value); return *this;}
-
-    /**
-     * <p> The idempotency token that identifies the terminate engine execution. </p>
-     */
-    inline NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithIdempotencyToken(Aws::String&& value) { SetIdempotencyToken(std::move(value)); return *this;}
-
-    /**
-     * <p> The idempotency token that identifies the terminate engine execution. </p>
-     */
-    inline NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithIdempotencyToken(const char* value) { SetIdempotencyToken(value); return *this;}
-
+    template<typename IdempotencyTokenT = Aws::String>
+    void SetIdempotencyToken(IdempotencyTokenT&& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = std::forward<IdempotencyTokenT>(value); }
+    template<typename IdempotencyTokenT = Aws::String>
+    NotifyTerminateProvisionedProductEngineWorkflowResultRequest& WithIdempotencyToken(IdempotencyTokenT&& value) { SetIdempotencyToken(std::forward<IdempotencyTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_workflowToken;
@@ -254,14 +103,14 @@ namespace Model
     Aws::String m_recordId;
     bool m_recordIdHasBeenSet = false;
 
-    EngineWorkflowStatus m_status;
+    EngineWorkflowStatus m_status{EngineWorkflowStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_failureReason;
     bool m_failureReasonHasBeenSet = false;
 
-    Aws::String m_idempotencyToken;
-    bool m_idempotencyTokenHasBeenSet = false;
+    Aws::String m_idempotencyToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_idempotencyTokenHasBeenSet = true;
   };
 
 } // namespace Model

@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/connect/Connect_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/DateTime.h>
 #include <utility>
 
 namespace Aws
@@ -31,134 +32,71 @@ namespace Model
   class UserSummary
   {
   public:
-    AWS_CONNECT_API UserSummary();
+    AWS_CONNECT_API UserSummary() = default;
     AWS_CONNECT_API UserSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API UserSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the user account.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The identifier of the user account.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    UserSummary& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the user account.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The identifier of the user account.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The identifier of the user account.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The identifier of the user account.</p>
-     */
-    inline UserSummary& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The identifier of the user account.</p>
-     */
-    inline UserSummary& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the user account.</p>
-     */
-    inline UserSummary& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the user account.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user account.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    UserSummary& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user account.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user account.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user account.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user account.</p>
-     */
-    inline UserSummary& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user account.</p>
-     */
-    inline UserSummary& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user account.</p>
-     */
-    inline UserSummary& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Connect user name of the user account.</p>
      */
-    inline const Aws::String& GetUsername() const{ return m_username; }
-
-    /**
-     * <p>The Amazon Connect user name of the user account.</p>
-     */
+    inline const Aws::String& GetUsername() const { return m_username; }
     inline bool UsernameHasBeenSet() const { return m_usernameHasBeenSet; }
+    template<typename UsernameT = Aws::String>
+    void SetUsername(UsernameT&& value) { m_usernameHasBeenSet = true; m_username = std::forward<UsernameT>(value); }
+    template<typename UsernameT = Aws::String>
+    UserSummary& WithUsername(UsernameT&& value) { SetUsername(std::forward<UsernameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Connect user name of the user account.</p>
+     * <p>The timestamp when this resource was last modified.</p>
      */
-    inline void SetUsername(const Aws::String& value) { m_usernameHasBeenSet = true; m_username = value; }
+    inline const Aws::Utils::DateTime& GetLastModifiedTime() const { return m_lastModifiedTime; }
+    inline bool LastModifiedTimeHasBeenSet() const { return m_lastModifiedTimeHasBeenSet; }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    void SetLastModifiedTime(LastModifiedTimeT&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::forward<LastModifiedTimeT>(value); }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    UserSummary& WithLastModifiedTime(LastModifiedTimeT&& value) { SetLastModifiedTime(std::forward<LastModifiedTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Connect user name of the user account.</p>
+     * <p>The Amazon Web Services Region where this resource was last modified.</p>
      */
-    inline void SetUsername(Aws::String&& value) { m_usernameHasBeenSet = true; m_username = std::move(value); }
-
-    /**
-     * <p>The Amazon Connect user name of the user account.</p>
-     */
-    inline void SetUsername(const char* value) { m_usernameHasBeenSet = true; m_username.assign(value); }
-
-    /**
-     * <p>The Amazon Connect user name of the user account.</p>
-     */
-    inline UserSummary& WithUsername(const Aws::String& value) { SetUsername(value); return *this;}
-
-    /**
-     * <p>The Amazon Connect user name of the user account.</p>
-     */
-    inline UserSummary& WithUsername(Aws::String&& value) { SetUsername(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Connect user name of the user account.</p>
-     */
-    inline UserSummary& WithUsername(const char* value) { SetUsername(value); return *this;}
-
+    inline const Aws::String& GetLastModifiedRegion() const { return m_lastModifiedRegion; }
+    inline bool LastModifiedRegionHasBeenSet() const { return m_lastModifiedRegionHasBeenSet; }
+    template<typename LastModifiedRegionT = Aws::String>
+    void SetLastModifiedRegion(LastModifiedRegionT&& value) { m_lastModifiedRegionHasBeenSet = true; m_lastModifiedRegion = std::forward<LastModifiedRegionT>(value); }
+    template<typename LastModifiedRegionT = Aws::String>
+    UserSummary& WithLastModifiedRegion(LastModifiedRegionT&& value) { SetLastModifiedRegion(std::forward<LastModifiedRegionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
@@ -169,6 +107,12 @@ namespace Model
 
     Aws::String m_username;
     bool m_usernameHasBeenSet = false;
+
+    Aws::Utils::DateTime m_lastModifiedTime{};
+    bool m_lastModifiedTimeHasBeenSet = false;
+
+    Aws::String m_lastModifiedRegion;
+    bool m_lastModifiedRegionHasBeenSet = false;
   };
 
 } // namespace Model

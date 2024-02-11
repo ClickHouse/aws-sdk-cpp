@@ -15,17 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListShareInvitationsRequest::ListShareInvitationsRequest() : 
-    m_workloadNamePrefixHasBeenSet(false),
-    m_lensNamePrefixHasBeenSet(false),
-    m_shareResourceType(ShareResourceType::NOT_SET),
-    m_shareResourceTypeHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String ListShareInvitationsRequest::SerializePayload() const
 {
   return {};
@@ -66,6 +55,20 @@ void ListShareInvitationsRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << m_maxResults;
       uri.AddQueryStringParameter("MaxResults", ss.str());
+      ss.str("");
+    }
+
+    if(m_profileNamePrefixHasBeenSet)
+    {
+      ss << m_profileNamePrefix;
+      uri.AddQueryStringParameter("ProfileNamePrefix", ss.str());
+      ss.str("");
+    }
+
+    if(m_templateNamePrefixHasBeenSet)
+    {
+      ss << m_templateNamePrefix;
+      uri.AddQueryStringParameter("TemplateNamePrefix", ss.str());
       ss.str("");
     }
 

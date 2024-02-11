@@ -18,15 +18,7 @@ namespace imagebuilder
 namespace Model
 {
 
-OutputResources::OutputResources() : 
-    m_amisHasBeenSet(false),
-    m_containersHasBeenSet(false)
-{
-}
-
-OutputResources::OutputResources(JsonView jsonValue) : 
-    m_amisHasBeenSet(false),
-    m_containersHasBeenSet(false)
+OutputResources::OutputResources(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ OutputResources& OutputResources::operator =(JsonView jsonValue)
     }
     m_amisHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("containers"))
   {
     Aws::Utils::Array<JsonView> containersJsonList = jsonValue.GetArray("containers");
@@ -52,7 +43,6 @@ OutputResources& OutputResources::operator =(JsonView jsonValue)
     }
     m_containersHasBeenSet = true;
   }
-
   return *this;
 }
 

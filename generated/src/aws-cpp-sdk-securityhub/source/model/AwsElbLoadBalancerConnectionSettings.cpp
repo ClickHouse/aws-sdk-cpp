@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsElbLoadBalancerConnectionSettings::AwsElbLoadBalancerConnectionSettings() : 
-    m_idleTimeout(0),
-    m_idleTimeoutHasBeenSet(false)
-{
-}
-
-AwsElbLoadBalancerConnectionSettings::AwsElbLoadBalancerConnectionSettings(JsonView jsonValue) : 
-    m_idleTimeout(0),
-    m_idleTimeoutHasBeenSet(false)
+AwsElbLoadBalancerConnectionSettings::AwsElbLoadBalancerConnectionSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AwsElbLoadBalancerConnectionSettings& AwsElbLoadBalancerConnectionSettings::oper
   if(jsonValue.ValueExists("IdleTimeout"))
   {
     m_idleTimeout = jsonValue.GetInteger("IdleTimeout");
-
     m_idleTimeoutHasBeenSet = true;
   }
-
   return *this;
 }
 

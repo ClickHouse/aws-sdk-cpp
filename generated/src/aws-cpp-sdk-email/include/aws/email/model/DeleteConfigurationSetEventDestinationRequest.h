@@ -21,7 +21,7 @@ namespace Model
    * Configuration set event destinations are associated with configuration sets,
    * which enable you to publish email sending events. For information about using
    * configuration sets, see the <a
-   * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon
+   * href="https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html">Amazon
    * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteConfigurationSetEventDestinationRequest">AWS
    * API Reference</a></p>
@@ -29,7 +29,7 @@ namespace Model
   class DeleteConfigurationSetEventDestinationRequest : public SESRequest
   {
   public:
-    AWS_SES_API DeleteConfigurationSetEventDestinationRequest();
+    AWS_SES_API DeleteConfigurationSetEventDestinationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -44,95 +44,30 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the configuration set from which to delete the event
      * destination.</p>
      */
-    inline const Aws::String& GetConfigurationSetName() const{ return m_configurationSetName; }
-
-    /**
-     * <p>The name of the configuration set from which to delete the event
-     * destination.</p>
-     */
+    inline const Aws::String& GetConfigurationSetName() const { return m_configurationSetName; }
     inline bool ConfigurationSetNameHasBeenSet() const { return m_configurationSetNameHasBeenSet; }
+    template<typename ConfigurationSetNameT = Aws::String>
+    void SetConfigurationSetName(ConfigurationSetNameT&& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = std::forward<ConfigurationSetNameT>(value); }
+    template<typename ConfigurationSetNameT = Aws::String>
+    DeleteConfigurationSetEventDestinationRequest& WithConfigurationSetName(ConfigurationSetNameT&& value) { SetConfigurationSetName(std::forward<ConfigurationSetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the configuration set from which to delete the event
-     * destination.</p>
-     */
-    inline void SetConfigurationSetName(const Aws::String& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = value; }
-
-    /**
-     * <p>The name of the configuration set from which to delete the event
-     * destination.</p>
-     */
-    inline void SetConfigurationSetName(Aws::String&& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = std::move(value); }
-
-    /**
-     * <p>The name of the configuration set from which to delete the event
-     * destination.</p>
-     */
-    inline void SetConfigurationSetName(const char* value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName.assign(value); }
-
-    /**
-     * <p>The name of the configuration set from which to delete the event
-     * destination.</p>
-     */
-    inline DeleteConfigurationSetEventDestinationRequest& WithConfigurationSetName(const Aws::String& value) { SetConfigurationSetName(value); return *this;}
-
-    /**
-     * <p>The name of the configuration set from which to delete the event
-     * destination.</p>
-     */
-    inline DeleteConfigurationSetEventDestinationRequest& WithConfigurationSetName(Aws::String&& value) { SetConfigurationSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the configuration set from which to delete the event
-     * destination.</p>
-     */
-    inline DeleteConfigurationSetEventDestinationRequest& WithConfigurationSetName(const char* value) { SetConfigurationSetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the event destination to delete.</p>
      */
-    inline const Aws::String& GetEventDestinationName() const{ return m_eventDestinationName; }
-
-    /**
-     * <p>The name of the event destination to delete.</p>
-     */
+    inline const Aws::String& GetEventDestinationName() const { return m_eventDestinationName; }
     inline bool EventDestinationNameHasBeenSet() const { return m_eventDestinationNameHasBeenSet; }
-
-    /**
-     * <p>The name of the event destination to delete.</p>
-     */
-    inline void SetEventDestinationName(const Aws::String& value) { m_eventDestinationNameHasBeenSet = true; m_eventDestinationName = value; }
-
-    /**
-     * <p>The name of the event destination to delete.</p>
-     */
-    inline void SetEventDestinationName(Aws::String&& value) { m_eventDestinationNameHasBeenSet = true; m_eventDestinationName = std::move(value); }
-
-    /**
-     * <p>The name of the event destination to delete.</p>
-     */
-    inline void SetEventDestinationName(const char* value) { m_eventDestinationNameHasBeenSet = true; m_eventDestinationName.assign(value); }
-
-    /**
-     * <p>The name of the event destination to delete.</p>
-     */
-    inline DeleteConfigurationSetEventDestinationRequest& WithEventDestinationName(const Aws::String& value) { SetEventDestinationName(value); return *this;}
-
-    /**
-     * <p>The name of the event destination to delete.</p>
-     */
-    inline DeleteConfigurationSetEventDestinationRequest& WithEventDestinationName(Aws::String&& value) { SetEventDestinationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the event destination to delete.</p>
-     */
-    inline DeleteConfigurationSetEventDestinationRequest& WithEventDestinationName(const char* value) { SetEventDestinationName(value); return *this;}
-
+    template<typename EventDestinationNameT = Aws::String>
+    void SetEventDestinationName(EventDestinationNameT&& value) { m_eventDestinationNameHasBeenSet = true; m_eventDestinationName = std::forward<EventDestinationNameT>(value); }
+    template<typename EventDestinationNameT = Aws::String>
+    DeleteConfigurationSetEventDestinationRequest& WithEventDestinationName(EventDestinationNameT&& value) { SetEventDestinationName(std::forward<EventDestinationNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_configurationSetName;

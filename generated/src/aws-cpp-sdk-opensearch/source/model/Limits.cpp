@@ -18,17 +18,7 @@ namespace OpenSearchService
 namespace Model
 {
 
-Limits::Limits() : 
-    m_storageTypesHasBeenSet(false),
-    m_instanceLimitsHasBeenSet(false),
-    m_additionalLimitsHasBeenSet(false)
-{
-}
-
-Limits::Limits(JsonView jsonValue) : 
-    m_storageTypesHasBeenSet(false),
-    m_instanceLimitsHasBeenSet(false),
-    m_additionalLimitsHasBeenSet(false)
+Limits::Limits(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,14 +34,11 @@ Limits& Limits::operator =(JsonView jsonValue)
     }
     m_storageTypesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InstanceLimits"))
   {
     m_instanceLimits = jsonValue.GetObject("InstanceLimits");
-
     m_instanceLimitsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AdditionalLimits"))
   {
     Aws::Utils::Array<JsonView> additionalLimitsJsonList = jsonValue.GetArray("AdditionalLimits");
@@ -61,7 +48,6 @@ Limits& Limits::operator =(JsonView jsonValue)
     }
     m_additionalLimitsHasBeenSet = true;
   }
-
   return *this;
 }
 

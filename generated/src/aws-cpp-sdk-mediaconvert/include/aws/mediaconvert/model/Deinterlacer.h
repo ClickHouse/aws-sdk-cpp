@@ -33,67 +33,28 @@ namespace Model
   class Deinterlacer
   {
   public:
-    AWS_MEDIACONVERT_API Deinterlacer();
+    AWS_MEDIACONVERT_API Deinterlacer() = default;
     AWS_MEDIACONVERT_API Deinterlacer(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Deinterlacer& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * Only applies when you set Deinterlacer (DeinterlaceMode) to Deinterlace
-     * (DEINTERLACE) or Adaptive (ADAPTIVE). Motion adaptive interpolate (INTERPOLATE)
-     * produces sharper pictures, while blend (BLEND) produces smoother motion. Use
-     * (INTERPOLATE_TICKER) OR (BLEND_TICKER) if your source file includes a ticker,
-     * such as a scrolling headline at the bottom of the frame.
+     * Only applies when you set Deinterlace mode to Deinterlace or Adaptive.
+     * Interpolate produces sharper pictures, while blend produces smoother motion. If
+     * your source file includes a ticker, such as a scrolling headline at the bottom
+     * of the frame: Choose Interpolate ticker or Blend ticker. To apply field
+     * doubling: Choose Linear interpolation. Note that Linear interpolation may
+     * introduce video artifacts into your output.
      */
-    inline const DeinterlaceAlgorithm& GetAlgorithm() const{ return m_algorithm; }
-
-    /**
-     * Only applies when you set Deinterlacer (DeinterlaceMode) to Deinterlace
-     * (DEINTERLACE) or Adaptive (ADAPTIVE). Motion adaptive interpolate (INTERPOLATE)
-     * produces sharper pictures, while blend (BLEND) produces smoother motion. Use
-     * (INTERPOLATE_TICKER) OR (BLEND_TICKER) if your source file includes a ticker,
-     * such as a scrolling headline at the bottom of the frame.
-     */
+    inline DeinterlaceAlgorithm GetAlgorithm() const { return m_algorithm; }
     inline bool AlgorithmHasBeenSet() const { return m_algorithmHasBeenSet; }
+    inline void SetAlgorithm(DeinterlaceAlgorithm value) { m_algorithmHasBeenSet = true; m_algorithm = value; }
+    inline Deinterlacer& WithAlgorithm(DeinterlaceAlgorithm value) { SetAlgorithm(value); return *this;}
+    ///@}
 
-    /**
-     * Only applies when you set Deinterlacer (DeinterlaceMode) to Deinterlace
-     * (DEINTERLACE) or Adaptive (ADAPTIVE). Motion adaptive interpolate (INTERPOLATE)
-     * produces sharper pictures, while blend (BLEND) produces smoother motion. Use
-     * (INTERPOLATE_TICKER) OR (BLEND_TICKER) if your source file includes a ticker,
-     * such as a scrolling headline at the bottom of the frame.
-     */
-    inline void SetAlgorithm(const DeinterlaceAlgorithm& value) { m_algorithmHasBeenSet = true; m_algorithm = value; }
-
-    /**
-     * Only applies when you set Deinterlacer (DeinterlaceMode) to Deinterlace
-     * (DEINTERLACE) or Adaptive (ADAPTIVE). Motion adaptive interpolate (INTERPOLATE)
-     * produces sharper pictures, while blend (BLEND) produces smoother motion. Use
-     * (INTERPOLATE_TICKER) OR (BLEND_TICKER) if your source file includes a ticker,
-     * such as a scrolling headline at the bottom of the frame.
-     */
-    inline void SetAlgorithm(DeinterlaceAlgorithm&& value) { m_algorithmHasBeenSet = true; m_algorithm = std::move(value); }
-
-    /**
-     * Only applies when you set Deinterlacer (DeinterlaceMode) to Deinterlace
-     * (DEINTERLACE) or Adaptive (ADAPTIVE). Motion adaptive interpolate (INTERPOLATE)
-     * produces sharper pictures, while blend (BLEND) produces smoother motion. Use
-     * (INTERPOLATE_TICKER) OR (BLEND_TICKER) if your source file includes a ticker,
-     * such as a scrolling headline at the bottom of the frame.
-     */
-    inline Deinterlacer& WithAlgorithm(const DeinterlaceAlgorithm& value) { SetAlgorithm(value); return *this;}
-
-    /**
-     * Only applies when you set Deinterlacer (DeinterlaceMode) to Deinterlace
-     * (DEINTERLACE) or Adaptive (ADAPTIVE). Motion adaptive interpolate (INTERPOLATE)
-     * produces sharper pictures, while blend (BLEND) produces smoother motion. Use
-     * (INTERPOLATE_TICKER) OR (BLEND_TICKER) if your source file includes a ticker,
-     * such as a scrolling headline at the bottom of the frame.
-     */
-    inline Deinterlacer& WithAlgorithm(DeinterlaceAlgorithm&& value) { SetAlgorithm(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * - When set to NORMAL (default), the deinterlacer does not convert frames that
      * are tagged in metadata as progressive. It will only convert those that are
@@ -104,126 +65,36 @@ namespace Model
      * otherwise; processing frames that are already progressive into progressive will
      * probably result in lower quality video.
      */
-    inline const DeinterlacerControl& GetControl() const{ return m_control; }
-
-    /**
-     * - When set to NORMAL (default), the deinterlacer does not convert frames that
-     * are tagged in metadata as progressive. It will only convert those that are
-     * tagged as some other type. - When set to FORCE_ALL_FRAMES, the deinterlacer
-     * converts every frame to progressive - even those that are already tagged as
-     * progressive. Turn Force mode on only if there is a good chance that the metadata
-     * has tagged frames as progressive when they are not progressive. Do not turn on
-     * otherwise; processing frames that are already progressive into progressive will
-     * probably result in lower quality video.
-     */
+    inline DeinterlacerControl GetControl() const { return m_control; }
     inline bool ControlHasBeenSet() const { return m_controlHasBeenSet; }
+    inline void SetControl(DeinterlacerControl value) { m_controlHasBeenSet = true; m_control = value; }
+    inline Deinterlacer& WithControl(DeinterlacerControl value) { SetControl(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * - When set to NORMAL (default), the deinterlacer does not convert frames that
-     * are tagged in metadata as progressive. It will only convert those that are
-     * tagged as some other type. - When set to FORCE_ALL_FRAMES, the deinterlacer
-     * converts every frame to progressive - even those that are already tagged as
-     * progressive. Turn Force mode on only if there is a good chance that the metadata
-     * has tagged frames as progressive when they are not progressive. Do not turn on
-     * otherwise; processing frames that are already progressive into progressive will
-     * probably result in lower quality video.
+     * Use Deinterlacer to choose how the service will do deinterlacing. Default is
+     * Deinterlace.
+- Deinterlace converts interlaced to progressive.
+- Inverse
+     * telecine converts Hard Telecine 29.97i to progressive 23.976p.
+- Adaptive
+     * auto-detects and converts to progressive.
      */
-    inline void SetControl(const DeinterlacerControl& value) { m_controlHasBeenSet = true; m_control = value; }
-
-    /**
-     * - When set to NORMAL (default), the deinterlacer does not convert frames that
-     * are tagged in metadata as progressive. It will only convert those that are
-     * tagged as some other type. - When set to FORCE_ALL_FRAMES, the deinterlacer
-     * converts every frame to progressive - even those that are already tagged as
-     * progressive. Turn Force mode on only if there is a good chance that the metadata
-     * has tagged frames as progressive when they are not progressive. Do not turn on
-     * otherwise; processing frames that are already progressive into progressive will
-     * probably result in lower quality video.
-     */
-    inline void SetControl(DeinterlacerControl&& value) { m_controlHasBeenSet = true; m_control = std::move(value); }
-
-    /**
-     * - When set to NORMAL (default), the deinterlacer does not convert frames that
-     * are tagged in metadata as progressive. It will only convert those that are
-     * tagged as some other type. - When set to FORCE_ALL_FRAMES, the deinterlacer
-     * converts every frame to progressive - even those that are already tagged as
-     * progressive. Turn Force mode on only if there is a good chance that the metadata
-     * has tagged frames as progressive when they are not progressive. Do not turn on
-     * otherwise; processing frames that are already progressive into progressive will
-     * probably result in lower quality video.
-     */
-    inline Deinterlacer& WithControl(const DeinterlacerControl& value) { SetControl(value); return *this;}
-
-    /**
-     * - When set to NORMAL (default), the deinterlacer does not convert frames that
-     * are tagged in metadata as progressive. It will only convert those that are
-     * tagged as some other type. - When set to FORCE_ALL_FRAMES, the deinterlacer
-     * converts every frame to progressive - even those that are already tagged as
-     * progressive. Turn Force mode on only if there is a good chance that the metadata
-     * has tagged frames as progressive when they are not progressive. Do not turn on
-     * otherwise; processing frames that are already progressive into progressive will
-     * probably result in lower quality video.
-     */
-    inline Deinterlacer& WithControl(DeinterlacerControl&& value) { SetControl(std::move(value)); return *this;}
-
-
-    /**
-     * Use Deinterlacer (DeinterlaceMode) to choose how the service will do
-     * deinterlacing. Default is Deinterlace. - Deinterlace converts interlaced to
-     * progressive. - Inverse telecine converts Hard Telecine 29.97i to progressive
-     * 23.976p. - Adaptive auto-detects and converts to progressive.
-     */
-    inline const DeinterlacerMode& GetMode() const{ return m_mode; }
-
-    /**
-     * Use Deinterlacer (DeinterlaceMode) to choose how the service will do
-     * deinterlacing. Default is Deinterlace. - Deinterlace converts interlaced to
-     * progressive. - Inverse telecine converts Hard Telecine 29.97i to progressive
-     * 23.976p. - Adaptive auto-detects and converts to progressive.
-     */
+    inline DeinterlacerMode GetMode() const { return m_mode; }
     inline bool ModeHasBeenSet() const { return m_modeHasBeenSet; }
-
-    /**
-     * Use Deinterlacer (DeinterlaceMode) to choose how the service will do
-     * deinterlacing. Default is Deinterlace. - Deinterlace converts interlaced to
-     * progressive. - Inverse telecine converts Hard Telecine 29.97i to progressive
-     * 23.976p. - Adaptive auto-detects and converts to progressive.
-     */
-    inline void SetMode(const DeinterlacerMode& value) { m_modeHasBeenSet = true; m_mode = value; }
-
-    /**
-     * Use Deinterlacer (DeinterlaceMode) to choose how the service will do
-     * deinterlacing. Default is Deinterlace. - Deinterlace converts interlaced to
-     * progressive. - Inverse telecine converts Hard Telecine 29.97i to progressive
-     * 23.976p. - Adaptive auto-detects and converts to progressive.
-     */
-    inline void SetMode(DeinterlacerMode&& value) { m_modeHasBeenSet = true; m_mode = std::move(value); }
-
-    /**
-     * Use Deinterlacer (DeinterlaceMode) to choose how the service will do
-     * deinterlacing. Default is Deinterlace. - Deinterlace converts interlaced to
-     * progressive. - Inverse telecine converts Hard Telecine 29.97i to progressive
-     * 23.976p. - Adaptive auto-detects and converts to progressive.
-     */
-    inline Deinterlacer& WithMode(const DeinterlacerMode& value) { SetMode(value); return *this;}
-
-    /**
-     * Use Deinterlacer (DeinterlaceMode) to choose how the service will do
-     * deinterlacing. Default is Deinterlace. - Deinterlace converts interlaced to
-     * progressive. - Inverse telecine converts Hard Telecine 29.97i to progressive
-     * 23.976p. - Adaptive auto-detects and converts to progressive.
-     */
-    inline Deinterlacer& WithMode(DeinterlacerMode&& value) { SetMode(std::move(value)); return *this;}
-
+    inline void SetMode(DeinterlacerMode value) { m_modeHasBeenSet = true; m_mode = value; }
+    inline Deinterlacer& WithMode(DeinterlacerMode value) { SetMode(value); return *this;}
+    ///@}
   private:
 
-    DeinterlaceAlgorithm m_algorithm;
+    DeinterlaceAlgorithm m_algorithm{DeinterlaceAlgorithm::NOT_SET};
     bool m_algorithmHasBeenSet = false;
 
-    DeinterlacerControl m_control;
+    DeinterlacerControl m_control{DeinterlacerControl::NOT_SET};
     bool m_controlHasBeenSet = false;
 
-    DeinterlacerMode m_mode;
+    DeinterlacerMode m_mode{DeinterlacerMode::NOT_SET};
     bool m_modeHasBeenSet = false;
   };
 

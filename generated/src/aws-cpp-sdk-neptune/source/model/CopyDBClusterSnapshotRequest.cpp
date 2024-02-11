@@ -10,18 +10,6 @@
 using namespace Aws::Neptune::Model;
 using namespace Aws::Utils;
 
-CopyDBClusterSnapshotRequest::CopyDBClusterSnapshotRequest() : 
-    m_sourceDBClusterSnapshotIdentifierHasBeenSet(false),
-    m_targetDBClusterSnapshotIdentifierHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_preSignedUrlHasBeenSet(false),
-    m_copyTags(false),
-    m_copyTagsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_sourceRegionHasBeenSet(false)
-{
-}
-
 Aws::String CopyDBClusterSnapshotRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -53,11 +41,18 @@ Aws::String CopyDBClusterSnapshotRequest::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 

@@ -12,30 +12,6 @@ using namespace Aws::OpenSearchService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateDomainConfigRequest::UpdateDomainConfigRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_clusterConfigHasBeenSet(false),
-    m_eBSOptionsHasBeenSet(false),
-    m_snapshotOptionsHasBeenSet(false),
-    m_vPCOptionsHasBeenSet(false),
-    m_cognitoOptionsHasBeenSet(false),
-    m_advancedOptionsHasBeenSet(false),
-    m_accessPoliciesHasBeenSet(false),
-    m_logPublishingOptionsHasBeenSet(false),
-    m_encryptionAtRestOptionsHasBeenSet(false),
-    m_domainEndpointOptionsHasBeenSet(false),
-    m_nodeToNodeEncryptionOptionsHasBeenSet(false),
-    m_advancedSecurityOptionsHasBeenSet(false),
-    m_autoTuneOptionsHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_dryRunMode(DryRunMode::NOT_SET),
-    m_dryRunModeHasBeenSet(false),
-    m_offPeakWindowOptionsHasBeenSet(false),
-    m_softwareUpdateOptionsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateDomainConfigRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -87,6 +63,11 @@ Aws::String UpdateDomainConfigRequest::SerializePayload() const
 
   }
 
+  if(m_iPAddressTypeHasBeenSet)
+  {
+   payload.WithString("IPAddressType", IPAddressTypeMapper::GetNameForIPAddressType(m_iPAddressType));
+  }
+
   if(m_logPublishingOptionsHasBeenSet)
   {
    JsonValue logPublishingOptionsJsonMap;
@@ -122,6 +103,12 @@ Aws::String UpdateDomainConfigRequest::SerializePayload() const
 
   }
 
+  if(m_identityCenterOptionsHasBeenSet)
+  {
+   payload.WithObject("IdentityCenterOptions", m_identityCenterOptions.Jsonize());
+
+  }
+
   if(m_autoTuneOptionsHasBeenSet)
   {
    payload.WithObject("AutoTuneOptions", m_autoTuneOptions.Jsonize());
@@ -148,6 +135,12 @@ Aws::String UpdateDomainConfigRequest::SerializePayload() const
   if(m_softwareUpdateOptionsHasBeenSet)
   {
    payload.WithObject("SoftwareUpdateOptions", m_softwareUpdateOptions.Jsonize());
+
+  }
+
+  if(m_aIMLOptionsHasBeenSet)
+  {
+   payload.WithObject("AIMLOptions", m_aIMLOptions.Jsonize());
 
   }
 

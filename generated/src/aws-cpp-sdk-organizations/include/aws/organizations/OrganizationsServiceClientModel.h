@@ -41,10 +41,12 @@
 #include <aws/organizations/model/ListAWSServiceAccessForOrganizationResult.h>
 #include <aws/organizations/model/ListAccountsResult.h>
 #include <aws/organizations/model/ListAccountsForParentResult.h>
+#include <aws/organizations/model/ListAccountsWithInvalidEffectivePolicyResult.h>
 #include <aws/organizations/model/ListChildrenResult.h>
 #include <aws/organizations/model/ListCreateAccountStatusResult.h>
 #include <aws/organizations/model/ListDelegatedAdministratorsResult.h>
 #include <aws/organizations/model/ListDelegatedServicesForAccountResult.h>
+#include <aws/organizations/model/ListEffectivePolicyValidationErrorsResult.h>
 #include <aws/organizations/model/ListHandshakesForAccountResult.h>
 #include <aws/organizations/model/ListHandshakesForOrganizationResult.h>
 #include <aws/organizations/model/ListOrganizationalUnitsForParentResult.h>
@@ -57,6 +59,20 @@
 #include <aws/organizations/model/PutResourcePolicyResult.h>
 #include <aws/organizations/model/UpdateOrganizationalUnitResult.h>
 #include <aws/organizations/model/UpdatePolicyResult.h>
+#include <aws/organizations/model/DeleteResourcePolicyRequest.h>
+#include <aws/organizations/model/ListAccountsRequest.h>
+#include <aws/organizations/model/CreateOrganizationRequest.h>
+#include <aws/organizations/model/EnableAllFeaturesRequest.h>
+#include <aws/organizations/model/ListHandshakesForOrganizationRequest.h>
+#include <aws/organizations/model/LeaveOrganizationRequest.h>
+#include <aws/organizations/model/ListRootsRequest.h>
+#include <aws/organizations/model/DescribeResourcePolicyRequest.h>
+#include <aws/organizations/model/ListCreateAccountStatusRequest.h>
+#include <aws/organizations/model/ListHandshakesForAccountRequest.h>
+#include <aws/organizations/model/DescribeOrganizationRequest.h>
+#include <aws/organizations/model/DeleteOrganizationRequest.h>
+#include <aws/organizations/model/ListDelegatedAdministratorsRequest.h>
+#include <aws/organizations/model/ListAWSServiceAccessForOrganizationRequest.h>
 #include <aws/core/NoResult.h>
 /* End of service model headers required in OrganizationsClient header */
 
@@ -91,7 +107,7 @@ namespace Aws
 
   namespace Organizations
   {
-    using OrganizationsClientConfiguration = Aws::Client::GenericClientConfiguration<false>;
+    using OrganizationsClientConfiguration = Aws::Client::GenericClientConfiguration;
     using OrganizationsEndpointProviderBase = Aws::Organizations::Endpoint::OrganizationsEndpointProviderBase;
     using OrganizationsEndpointProvider = Aws::Organizations::Endpoint::OrganizationsEndpointProvider;
 
@@ -108,15 +124,19 @@ namespace Aws
       class CreateOrganizationalUnitRequest;
       class CreatePolicyRequest;
       class DeclineHandshakeRequest;
+      class DeleteOrganizationRequest;
       class DeleteOrganizationalUnitRequest;
       class DeletePolicyRequest;
+      class DeleteResourcePolicyRequest;
       class DeregisterDelegatedAdministratorRequest;
       class DescribeAccountRequest;
       class DescribeCreateAccountStatusRequest;
       class DescribeEffectivePolicyRequest;
       class DescribeHandshakeRequest;
+      class DescribeOrganizationRequest;
       class DescribeOrganizationalUnitRequest;
       class DescribePolicyRequest;
+      class DescribeResourcePolicyRequest;
       class DetachPolicyRequest;
       class DisableAWSServiceAccessRequest;
       class DisablePolicyTypeRequest;
@@ -124,13 +144,16 @@ namespace Aws
       class EnableAllFeaturesRequest;
       class EnablePolicyTypeRequest;
       class InviteAccountToOrganizationRequest;
+      class LeaveOrganizationRequest;
       class ListAWSServiceAccessForOrganizationRequest;
       class ListAccountsRequest;
       class ListAccountsForParentRequest;
+      class ListAccountsWithInvalidEffectivePolicyRequest;
       class ListChildrenRequest;
       class ListCreateAccountStatusRequest;
       class ListDelegatedAdministratorsRequest;
       class ListDelegatedServicesForAccountRequest;
+      class ListEffectivePolicyValidationErrorsRequest;
       class ListHandshakesForAccountRequest;
       class ListHandshakesForOrganizationRequest;
       class ListOrganizationalUnitsForParentRequest;
@@ -185,10 +208,12 @@ namespace Aws
       typedef Aws::Utils::Outcome<ListAWSServiceAccessForOrganizationResult, OrganizationsError> ListAWSServiceAccessForOrganizationOutcome;
       typedef Aws::Utils::Outcome<ListAccountsResult, OrganizationsError> ListAccountsOutcome;
       typedef Aws::Utils::Outcome<ListAccountsForParentResult, OrganizationsError> ListAccountsForParentOutcome;
+      typedef Aws::Utils::Outcome<ListAccountsWithInvalidEffectivePolicyResult, OrganizationsError> ListAccountsWithInvalidEffectivePolicyOutcome;
       typedef Aws::Utils::Outcome<ListChildrenResult, OrganizationsError> ListChildrenOutcome;
       typedef Aws::Utils::Outcome<ListCreateAccountStatusResult, OrganizationsError> ListCreateAccountStatusOutcome;
       typedef Aws::Utils::Outcome<ListDelegatedAdministratorsResult, OrganizationsError> ListDelegatedAdministratorsOutcome;
       typedef Aws::Utils::Outcome<ListDelegatedServicesForAccountResult, OrganizationsError> ListDelegatedServicesForAccountOutcome;
+      typedef Aws::Utils::Outcome<ListEffectivePolicyValidationErrorsResult, OrganizationsError> ListEffectivePolicyValidationErrorsOutcome;
       typedef Aws::Utils::Outcome<ListHandshakesForAccountResult, OrganizationsError> ListHandshakesForAccountOutcome;
       typedef Aws::Utils::Outcome<ListHandshakesForOrganizationResult, OrganizationsError> ListHandshakesForOrganizationOutcome;
       typedef Aws::Utils::Outcome<ListOrganizationalUnitsForParentResult, OrganizationsError> ListOrganizationalUnitsForParentOutcome;
@@ -243,10 +268,12 @@ namespace Aws
       typedef std::future<ListAWSServiceAccessForOrganizationOutcome> ListAWSServiceAccessForOrganizationOutcomeCallable;
       typedef std::future<ListAccountsOutcome> ListAccountsOutcomeCallable;
       typedef std::future<ListAccountsForParentOutcome> ListAccountsForParentOutcomeCallable;
+      typedef std::future<ListAccountsWithInvalidEffectivePolicyOutcome> ListAccountsWithInvalidEffectivePolicyOutcomeCallable;
       typedef std::future<ListChildrenOutcome> ListChildrenOutcomeCallable;
       typedef std::future<ListCreateAccountStatusOutcome> ListCreateAccountStatusOutcomeCallable;
       typedef std::future<ListDelegatedAdministratorsOutcome> ListDelegatedAdministratorsOutcomeCallable;
       typedef std::future<ListDelegatedServicesForAccountOutcome> ListDelegatedServicesForAccountOutcomeCallable;
+      typedef std::future<ListEffectivePolicyValidationErrorsOutcome> ListEffectivePolicyValidationErrorsOutcomeCallable;
       typedef std::future<ListHandshakesForAccountOutcome> ListHandshakesForAccountOutcomeCallable;
       typedef std::future<ListHandshakesForOrganizationOutcome> ListHandshakesForOrganizationOutcomeCallable;
       typedef std::future<ListOrganizationalUnitsForParentOutcome> ListOrganizationalUnitsForParentOutcomeCallable;
@@ -280,19 +307,19 @@ namespace Aws
     typedef std::function<void(const OrganizationsClient*, const Model::CreateOrganizationalUnitRequest&, const Model::CreateOrganizationalUnitOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateOrganizationalUnitResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::CreatePolicyRequest&, const Model::CreatePolicyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreatePolicyResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::DeclineHandshakeRequest&, const Model::DeclineHandshakeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeclineHandshakeResponseReceivedHandler;
-    typedef std::function<void(const OrganizationsClient*, const Model::DeleteOrganizationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteOrganizationResponseReceivedHandler;
+    typedef std::function<void(const OrganizationsClient*, const Model::DeleteOrganizationRequest&, const Model::DeleteOrganizationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteOrganizationResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::DeleteOrganizationalUnitRequest&, const Model::DeleteOrganizationalUnitOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteOrganizationalUnitResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::DeletePolicyRequest&, const Model::DeletePolicyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeletePolicyResponseReceivedHandler;
-    typedef std::function<void(const OrganizationsClient*, const Model::DeleteResourcePolicyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteResourcePolicyResponseReceivedHandler;
+    typedef std::function<void(const OrganizationsClient*, const Model::DeleteResourcePolicyRequest&, const Model::DeleteResourcePolicyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteResourcePolicyResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::DeregisterDelegatedAdministratorRequest&, const Model::DeregisterDelegatedAdministratorOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeregisterDelegatedAdministratorResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::DescribeAccountRequest&, const Model::DescribeAccountOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeAccountResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::DescribeCreateAccountStatusRequest&, const Model::DescribeCreateAccountStatusOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeCreateAccountStatusResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::DescribeEffectivePolicyRequest&, const Model::DescribeEffectivePolicyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeEffectivePolicyResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::DescribeHandshakeRequest&, const Model::DescribeHandshakeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeHandshakeResponseReceivedHandler;
-    typedef std::function<void(const OrganizationsClient*, const Model::DescribeOrganizationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeOrganizationResponseReceivedHandler;
+    typedef std::function<void(const OrganizationsClient*, const Model::DescribeOrganizationRequest&, const Model::DescribeOrganizationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeOrganizationResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::DescribeOrganizationalUnitRequest&, const Model::DescribeOrganizationalUnitOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeOrganizationalUnitResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::DescribePolicyRequest&, const Model::DescribePolicyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribePolicyResponseReceivedHandler;
-    typedef std::function<void(const OrganizationsClient*, const Model::DescribeResourcePolicyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeResourcePolicyResponseReceivedHandler;
+    typedef std::function<void(const OrganizationsClient*, const Model::DescribeResourcePolicyRequest&, const Model::DescribeResourcePolicyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeResourcePolicyResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::DetachPolicyRequest&, const Model::DetachPolicyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DetachPolicyResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::DisableAWSServiceAccessRequest&, const Model::DisableAWSServiceAccessOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableAWSServiceAccessResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::DisablePolicyTypeRequest&, const Model::DisablePolicyTypeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisablePolicyTypeResponseReceivedHandler;
@@ -300,14 +327,16 @@ namespace Aws
     typedef std::function<void(const OrganizationsClient*, const Model::EnableAllFeaturesRequest&, const Model::EnableAllFeaturesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableAllFeaturesResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::EnablePolicyTypeRequest&, const Model::EnablePolicyTypeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnablePolicyTypeResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::InviteAccountToOrganizationRequest&, const Model::InviteAccountToOrganizationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > InviteAccountToOrganizationResponseReceivedHandler;
-    typedef std::function<void(const OrganizationsClient*, const Model::LeaveOrganizationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > LeaveOrganizationResponseReceivedHandler;
+    typedef std::function<void(const OrganizationsClient*, const Model::LeaveOrganizationRequest&, const Model::LeaveOrganizationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > LeaveOrganizationResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::ListAWSServiceAccessForOrganizationRequest&, const Model::ListAWSServiceAccessForOrganizationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListAWSServiceAccessForOrganizationResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::ListAccountsRequest&, const Model::ListAccountsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListAccountsResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::ListAccountsForParentRequest&, const Model::ListAccountsForParentOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListAccountsForParentResponseReceivedHandler;
+    typedef std::function<void(const OrganizationsClient*, const Model::ListAccountsWithInvalidEffectivePolicyRequest&, const Model::ListAccountsWithInvalidEffectivePolicyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListAccountsWithInvalidEffectivePolicyResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::ListChildrenRequest&, const Model::ListChildrenOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListChildrenResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::ListCreateAccountStatusRequest&, const Model::ListCreateAccountStatusOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListCreateAccountStatusResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::ListDelegatedAdministratorsRequest&, const Model::ListDelegatedAdministratorsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListDelegatedAdministratorsResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::ListDelegatedServicesForAccountRequest&, const Model::ListDelegatedServicesForAccountOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListDelegatedServicesForAccountResponseReceivedHandler;
+    typedef std::function<void(const OrganizationsClient*, const Model::ListEffectivePolicyValidationErrorsRequest&, const Model::ListEffectivePolicyValidationErrorsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListEffectivePolicyValidationErrorsResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::ListHandshakesForAccountRequest&, const Model::ListHandshakesForAccountOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListHandshakesForAccountResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::ListHandshakesForOrganizationRequest&, const Model::ListHandshakesForOrganizationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListHandshakesForOrganizationResponseReceivedHandler;
     typedef std::function<void(const OrganizationsClient*, const Model::ListOrganizationalUnitsForParentRequest&, const Model::ListOrganizationalUnitsForParentOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListOrganizationalUnitsForParentResponseReceivedHandler;

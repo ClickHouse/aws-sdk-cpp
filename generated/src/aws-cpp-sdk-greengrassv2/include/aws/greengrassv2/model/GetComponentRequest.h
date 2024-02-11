@@ -26,7 +26,7 @@ namespace Model
   class GetComponentRequest : public GreengrassV2Request
   {
   public:
-    AWS_GREENGRASSV2_API GetComponentRequest();
+    AWS_GREENGRASSV2_API GetComponentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,96 +39,32 @@ namespace Model
     AWS_GREENGRASSV2_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The format of the recipe.</p>
      */
-    inline const RecipeOutputFormat& GetRecipeOutputFormat() const{ return m_recipeOutputFormat; }
-
-    /**
-     * <p>The format of the recipe.</p>
-     */
+    inline RecipeOutputFormat GetRecipeOutputFormat() const { return m_recipeOutputFormat; }
     inline bool RecipeOutputFormatHasBeenSet() const { return m_recipeOutputFormatHasBeenSet; }
+    inline void SetRecipeOutputFormat(RecipeOutputFormat value) { m_recipeOutputFormatHasBeenSet = true; m_recipeOutputFormat = value; }
+    inline GetComponentRequest& WithRecipeOutputFormat(RecipeOutputFormat value) { SetRecipeOutputFormat(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The format of the recipe.</p>
-     */
-    inline void SetRecipeOutputFormat(const RecipeOutputFormat& value) { m_recipeOutputFormatHasBeenSet = true; m_recipeOutputFormat = value; }
-
-    /**
-     * <p>The format of the recipe.</p>
-     */
-    inline void SetRecipeOutputFormat(RecipeOutputFormat&& value) { m_recipeOutputFormatHasBeenSet = true; m_recipeOutputFormat = std::move(value); }
-
-    /**
-     * <p>The format of the recipe.</p>
-     */
-    inline GetComponentRequest& WithRecipeOutputFormat(const RecipeOutputFormat& value) { SetRecipeOutputFormat(value); return *this;}
-
-    /**
-     * <p>The format of the recipe.</p>
-     */
-    inline GetComponentRequest& WithRecipeOutputFormat(RecipeOutputFormat&& value) { SetRecipeOutputFormat(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
      * of the component version.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the component version.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the component version.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the component version.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the component version.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the component version.</p>
-     */
-    inline GetComponentRequest& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the component version.</p>
-     */
-    inline GetComponentRequest& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the component version.</p>
-     */
-    inline GetComponentRequest& WithArn(const char* value) { SetArn(value); return *this;}
-
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    GetComponentRequest& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
   private:
 
-    RecipeOutputFormat m_recipeOutputFormat;
+    RecipeOutputFormat m_recipeOutputFormat{RecipeOutputFormat::NOT_SET};
     bool m_recipeOutputFormatHasBeenSet = false;
 
     Aws::String m_arn;

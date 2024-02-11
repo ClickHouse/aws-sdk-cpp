@@ -33,17 +33,18 @@ namespace Model
   class InstanceInformationStringFilter
   {
   public:
-    AWS_SSM_API InstanceInformationStringFilter();
+    AWS_SSM_API InstanceInformationStringFilter() = default;
     AWS_SSM_API InstanceInformationStringFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API InstanceInformationStringFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The filter key name to describe your managed nodes.</p> <p>Valid filter key
      * values: ActivationIds | AgentVersion | AssociationStatus | IamRole | InstanceIds
-     * | PingStatus | PlatformTypes | ResourceType | SourceIds | SourceTypes |
-     * "tag-key" | "tag:<code>{keyname}</code> </p> <ul> <li> <p>Valid values for the
+     * | PingStatus | PlatformType | ResourceType | SourceIds | SourceTypes | "tag-key"
+     * | "tag:<code>{keyname}</code> </p> <ul> <li> <p>Valid values for the
      * <code>AssociationStatus</code> filter key: Success | Pending | Failed</p> </li>
      * <li> <p>Valid values for the <code>PingStatus</code> filter key: Online |
      * ConnectionLost | Inactive (deprecated)</p> </li> <li> <p>Valid values for the
@@ -54,173 +55,27 @@ namespace Model
      * </li> <li> <p>Valid tag examples: <code>Key=tag-key,Values=Purpose</code> |
      * <code>Key=tag:Purpose,Values=Test</code>.</p> </li> </ul>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The filter key name to describe your managed nodes.</p> <p>Valid filter key
-     * values: ActivationIds | AgentVersion | AssociationStatus | IamRole | InstanceIds
-     * | PingStatus | PlatformTypes | ResourceType | SourceIds | SourceTypes |
-     * "tag-key" | "tag:<code>{keyname}</code> </p> <ul> <li> <p>Valid values for the
-     * <code>AssociationStatus</code> filter key: Success | Pending | Failed</p> </li>
-     * <li> <p>Valid values for the <code>PingStatus</code> filter key: Online |
-     * ConnectionLost | Inactive (deprecated)</p> </li> <li> <p>Valid values for the
-     * <code>PlatformType</code> filter key: Windows | Linux | MacOS</p> </li> <li>
-     * <p>Valid values for the <code>ResourceType</code> filter key: EC2Instance |
-     * ManagedInstance</p> </li> <li> <p>Valid values for the <code>SourceType</code>
-     * filter key: AWS::EC2::Instance | AWS::SSM::ManagedInstance | AWS::IoT::Thing</p>
-     * </li> <li> <p>Valid tag examples: <code>Key=tag-key,Values=Purpose</code> |
-     * <code>Key=tag:Purpose,Values=Test</code>.</p> </li> </ul>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    InstanceInformationStringFilter& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The filter key name to describe your managed nodes.</p> <p>Valid filter key
-     * values: ActivationIds | AgentVersion | AssociationStatus | IamRole | InstanceIds
-     * | PingStatus | PlatformTypes | ResourceType | SourceIds | SourceTypes |
-     * "tag-key" | "tag:<code>{keyname}</code> </p> <ul> <li> <p>Valid values for the
-     * <code>AssociationStatus</code> filter key: Success | Pending | Failed</p> </li>
-     * <li> <p>Valid values for the <code>PingStatus</code> filter key: Online |
-     * ConnectionLost | Inactive (deprecated)</p> </li> <li> <p>Valid values for the
-     * <code>PlatformType</code> filter key: Windows | Linux | MacOS</p> </li> <li>
-     * <p>Valid values for the <code>ResourceType</code> filter key: EC2Instance |
-     * ManagedInstance</p> </li> <li> <p>Valid values for the <code>SourceType</code>
-     * filter key: AWS::EC2::Instance | AWS::SSM::ManagedInstance | AWS::IoT::Thing</p>
-     * </li> <li> <p>Valid tag examples: <code>Key=tag-key,Values=Purpose</code> |
-     * <code>Key=tag:Purpose,Values=Test</code>.</p> </li> </ul>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The filter key name to describe your managed nodes.</p> <p>Valid filter key
-     * values: ActivationIds | AgentVersion | AssociationStatus | IamRole | InstanceIds
-     * | PingStatus | PlatformTypes | ResourceType | SourceIds | SourceTypes |
-     * "tag-key" | "tag:<code>{keyname}</code> </p> <ul> <li> <p>Valid values for the
-     * <code>AssociationStatus</code> filter key: Success | Pending | Failed</p> </li>
-     * <li> <p>Valid values for the <code>PingStatus</code> filter key: Online |
-     * ConnectionLost | Inactive (deprecated)</p> </li> <li> <p>Valid values for the
-     * <code>PlatformType</code> filter key: Windows | Linux | MacOS</p> </li> <li>
-     * <p>Valid values for the <code>ResourceType</code> filter key: EC2Instance |
-     * ManagedInstance</p> </li> <li> <p>Valid values for the <code>SourceType</code>
-     * filter key: AWS::EC2::Instance | AWS::SSM::ManagedInstance | AWS::IoT::Thing</p>
-     * </li> <li> <p>Valid tag examples: <code>Key=tag-key,Values=Purpose</code> |
-     * <code>Key=tag:Purpose,Values=Test</code>.</p> </li> </ul>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The filter key name to describe your managed nodes.</p> <p>Valid filter key
-     * values: ActivationIds | AgentVersion | AssociationStatus | IamRole | InstanceIds
-     * | PingStatus | PlatformTypes | ResourceType | SourceIds | SourceTypes |
-     * "tag-key" | "tag:<code>{keyname}</code> </p> <ul> <li> <p>Valid values for the
-     * <code>AssociationStatus</code> filter key: Success | Pending | Failed</p> </li>
-     * <li> <p>Valid values for the <code>PingStatus</code> filter key: Online |
-     * ConnectionLost | Inactive (deprecated)</p> </li> <li> <p>Valid values for the
-     * <code>PlatformType</code> filter key: Windows | Linux | MacOS</p> </li> <li>
-     * <p>Valid values for the <code>ResourceType</code> filter key: EC2Instance |
-     * ManagedInstance</p> </li> <li> <p>Valid values for the <code>SourceType</code>
-     * filter key: AWS::EC2::Instance | AWS::SSM::ManagedInstance | AWS::IoT::Thing</p>
-     * </li> <li> <p>Valid tag examples: <code>Key=tag-key,Values=Purpose</code> |
-     * <code>Key=tag:Purpose,Values=Test</code>.</p> </li> </ul>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>The filter key name to describe your managed nodes.</p> <p>Valid filter key
-     * values: ActivationIds | AgentVersion | AssociationStatus | IamRole | InstanceIds
-     * | PingStatus | PlatformTypes | ResourceType | SourceIds | SourceTypes |
-     * "tag-key" | "tag:<code>{keyname}</code> </p> <ul> <li> <p>Valid values for the
-     * <code>AssociationStatus</code> filter key: Success | Pending | Failed</p> </li>
-     * <li> <p>Valid values for the <code>PingStatus</code> filter key: Online |
-     * ConnectionLost | Inactive (deprecated)</p> </li> <li> <p>Valid values for the
-     * <code>PlatformType</code> filter key: Windows | Linux | MacOS</p> </li> <li>
-     * <p>Valid values for the <code>ResourceType</code> filter key: EC2Instance |
-     * ManagedInstance</p> </li> <li> <p>Valid values for the <code>SourceType</code>
-     * filter key: AWS::EC2::Instance | AWS::SSM::ManagedInstance | AWS::IoT::Thing</p>
-     * </li> <li> <p>Valid tag examples: <code>Key=tag-key,Values=Purpose</code> |
-     * <code>Key=tag:Purpose,Values=Test</code>.</p> </li> </ul>
-     */
-    inline InstanceInformationStringFilter& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The filter key name to describe your managed nodes.</p> <p>Valid filter key
-     * values: ActivationIds | AgentVersion | AssociationStatus | IamRole | InstanceIds
-     * | PingStatus | PlatformTypes | ResourceType | SourceIds | SourceTypes |
-     * "tag-key" | "tag:<code>{keyname}</code> </p> <ul> <li> <p>Valid values for the
-     * <code>AssociationStatus</code> filter key: Success | Pending | Failed</p> </li>
-     * <li> <p>Valid values for the <code>PingStatus</code> filter key: Online |
-     * ConnectionLost | Inactive (deprecated)</p> </li> <li> <p>Valid values for the
-     * <code>PlatformType</code> filter key: Windows | Linux | MacOS</p> </li> <li>
-     * <p>Valid values for the <code>ResourceType</code> filter key: EC2Instance |
-     * ManagedInstance</p> </li> <li> <p>Valid values for the <code>SourceType</code>
-     * filter key: AWS::EC2::Instance | AWS::SSM::ManagedInstance | AWS::IoT::Thing</p>
-     * </li> <li> <p>Valid tag examples: <code>Key=tag-key,Values=Purpose</code> |
-     * <code>Key=tag:Purpose,Values=Test</code>.</p> </li> </ul>
-     */
-    inline InstanceInformationStringFilter& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The filter key name to describe your managed nodes.</p> <p>Valid filter key
-     * values: ActivationIds | AgentVersion | AssociationStatus | IamRole | InstanceIds
-     * | PingStatus | PlatformTypes | ResourceType | SourceIds | SourceTypes |
-     * "tag-key" | "tag:<code>{keyname}</code> </p> <ul> <li> <p>Valid values for the
-     * <code>AssociationStatus</code> filter key: Success | Pending | Failed</p> </li>
-     * <li> <p>Valid values for the <code>PingStatus</code> filter key: Online |
-     * ConnectionLost | Inactive (deprecated)</p> </li> <li> <p>Valid values for the
-     * <code>PlatformType</code> filter key: Windows | Linux | MacOS</p> </li> <li>
-     * <p>Valid values for the <code>ResourceType</code> filter key: EC2Instance |
-     * ManagedInstance</p> </li> <li> <p>Valid values for the <code>SourceType</code>
-     * filter key: AWS::EC2::Instance | AWS::SSM::ManagedInstance | AWS::IoT::Thing</p>
-     * </li> <li> <p>Valid tag examples: <code>Key=tag-key,Values=Purpose</code> |
-     * <code>Key=tag:Purpose,Values=Test</code>.</p> </li> </ul>
-     */
-    inline InstanceInformationStringFilter& WithKey(const char* value) { SetKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The filter values.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>The filter values.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
-
-    /**
-     * <p>The filter values.</p>
-     */
-    inline void SetValues(const Aws::Vector<Aws::String>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>The filter values.</p>
-     */
-    inline void SetValues(Aws::Vector<Aws::String>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>The filter values.</p>
-     */
-    inline InstanceInformationStringFilter& WithValues(const Aws::Vector<Aws::String>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>The filter values.</p>
-     */
-    inline InstanceInformationStringFilter& WithValues(Aws::Vector<Aws::String>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The filter values.</p>
-     */
-    inline InstanceInformationStringFilter& AddValues(const Aws::String& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>The filter values.</p>
-     */
-    inline InstanceInformationStringFilter& AddValues(Aws::String&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The filter values.</p>
-     */
-    inline InstanceInformationStringFilter& AddValues(const char* value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    InstanceInformationStringFilter& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = Aws::String>
+    InstanceInformationStringFilter& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_key;

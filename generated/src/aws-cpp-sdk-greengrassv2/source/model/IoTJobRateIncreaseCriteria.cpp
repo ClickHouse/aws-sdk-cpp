@@ -18,19 +18,7 @@ namespace GreengrassV2
 namespace Model
 {
 
-IoTJobRateIncreaseCriteria::IoTJobRateIncreaseCriteria() : 
-    m_numberOfNotifiedThings(0),
-    m_numberOfNotifiedThingsHasBeenSet(false),
-    m_numberOfSucceededThings(0),
-    m_numberOfSucceededThingsHasBeenSet(false)
-{
-}
-
-IoTJobRateIncreaseCriteria::IoTJobRateIncreaseCriteria(JsonView jsonValue) : 
-    m_numberOfNotifiedThings(0),
-    m_numberOfNotifiedThingsHasBeenSet(false),
-    m_numberOfSucceededThings(0),
-    m_numberOfSucceededThingsHasBeenSet(false)
+IoTJobRateIncreaseCriteria::IoTJobRateIncreaseCriteria(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ IoTJobRateIncreaseCriteria& IoTJobRateIncreaseCriteria::operator =(JsonView json
   if(jsonValue.ValueExists("numberOfNotifiedThings"))
   {
     m_numberOfNotifiedThings = jsonValue.GetInteger("numberOfNotifiedThings");
-
     m_numberOfNotifiedThingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("numberOfSucceededThings"))
   {
     m_numberOfSucceededThings = jsonValue.GetInteger("numberOfSucceededThings");
-
     m_numberOfSucceededThingsHasBeenSet = true;
   }
-
   return *this;
 }
 

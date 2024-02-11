@@ -31,52 +31,23 @@ namespace Model
   class MemberUser
   {
   public:
-    AWS_KENDRA_API MemberUser();
+    AWS_KENDRA_API MemberUser() = default;
     AWS_KENDRA_API MemberUser(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API MemberUser& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the user you want to map to a group.</p>
      */
-    inline const Aws::String& GetUserId() const{ return m_userId; }
-
-    /**
-     * <p>The identifier of the user you want to map to a group.</p>
-     */
+    inline const Aws::String& GetUserId() const { return m_userId; }
     inline bool UserIdHasBeenSet() const { return m_userIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the user you want to map to a group.</p>
-     */
-    inline void SetUserId(const Aws::String& value) { m_userIdHasBeenSet = true; m_userId = value; }
-
-    /**
-     * <p>The identifier of the user you want to map to a group.</p>
-     */
-    inline void SetUserId(Aws::String&& value) { m_userIdHasBeenSet = true; m_userId = std::move(value); }
-
-    /**
-     * <p>The identifier of the user you want to map to a group.</p>
-     */
-    inline void SetUserId(const char* value) { m_userIdHasBeenSet = true; m_userId.assign(value); }
-
-    /**
-     * <p>The identifier of the user you want to map to a group.</p>
-     */
-    inline MemberUser& WithUserId(const Aws::String& value) { SetUserId(value); return *this;}
-
-    /**
-     * <p>The identifier of the user you want to map to a group.</p>
-     */
-    inline MemberUser& WithUserId(Aws::String&& value) { SetUserId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the user you want to map to a group.</p>
-     */
-    inline MemberUser& WithUserId(const char* value) { SetUserId(value); return *this;}
-
+    template<typename UserIdT = Aws::String>
+    void SetUserId(UserIdT&& value) { m_userIdHasBeenSet = true; m_userId = std::forward<UserIdT>(value); }
+    template<typename UserIdT = Aws::String>
+    MemberUser& WithUserId(UserIdT&& value) { SetUserId(std::forward<UserIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userId;

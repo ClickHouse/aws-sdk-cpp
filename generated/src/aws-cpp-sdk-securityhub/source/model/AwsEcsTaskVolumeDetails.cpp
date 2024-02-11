@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsEcsTaskVolumeDetails::AwsEcsTaskVolumeDetails() : 
-    m_nameHasBeenSet(false),
-    m_hostHasBeenSet(false)
-{
-}
-
-AwsEcsTaskVolumeDetails::AwsEcsTaskVolumeDetails(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_hostHasBeenSet(false)
+AwsEcsTaskVolumeDetails::AwsEcsTaskVolumeDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AwsEcsTaskVolumeDetails& AwsEcsTaskVolumeDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Host"))
   {
     m_host = jsonValue.GetObject("Host");
-
     m_hostHasBeenSet = true;
   }
-
   return *this;
 }
 

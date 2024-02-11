@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-RuleGroupSourceStatelessRulesAndCustomActionsDetails::RuleGroupSourceStatelessRulesAndCustomActionsDetails() : 
-    m_customActionsHasBeenSet(false),
-    m_statelessRulesHasBeenSet(false)
-{
-}
-
-RuleGroupSourceStatelessRulesAndCustomActionsDetails::RuleGroupSourceStatelessRulesAndCustomActionsDetails(JsonView jsonValue) : 
-    m_customActionsHasBeenSet(false),
-    m_statelessRulesHasBeenSet(false)
+RuleGroupSourceStatelessRulesAndCustomActionsDetails::RuleGroupSourceStatelessRulesAndCustomActionsDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ RuleGroupSourceStatelessRulesAndCustomActionsDetails& RuleGroupSourceStatelessRu
     }
     m_customActionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatelessRules"))
   {
     Aws::Utils::Array<JsonView> statelessRulesJsonList = jsonValue.GetArray("StatelessRules");
@@ -52,7 +43,6 @@ RuleGroupSourceStatelessRulesAndCustomActionsDetails& RuleGroupSourceStatelessRu
     }
     m_statelessRulesHasBeenSet = true;
   }
-
   return *this;
 }
 

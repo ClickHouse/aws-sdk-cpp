@@ -9,6 +9,8 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/quicksight/model/DecimalDefaultValues.h>
 #include <aws/quicksight/model/DecimalValueWhenUnsetConfiguration.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/quicksight/model/MappedDataSetParameter.h>
 #include <utility>
 
 namespace Aws
@@ -35,166 +37,75 @@ namespace Model
   class DecimalParameterDeclaration
   {
   public:
-    AWS_QUICKSIGHT_API DecimalParameterDeclaration();
+    AWS_QUICKSIGHT_API DecimalParameterDeclaration() = default;
     AWS_QUICKSIGHT_API DecimalParameterDeclaration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API DecimalParameterDeclaration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The value type determines whether the parameter is a single-value or
      * multi-value parameter.</p>
      */
-    inline const ParameterValueType& GetParameterValueType() const{ return m_parameterValueType; }
-
-    /**
-     * <p>The value type determines whether the parameter is a single-value or
-     * multi-value parameter.</p>
-     */
+    inline ParameterValueType GetParameterValueType() const { return m_parameterValueType; }
     inline bool ParameterValueTypeHasBeenSet() const { return m_parameterValueTypeHasBeenSet; }
+    inline void SetParameterValueType(ParameterValueType value) { m_parameterValueTypeHasBeenSet = true; m_parameterValueType = value; }
+    inline DecimalParameterDeclaration& WithParameterValueType(ParameterValueType value) { SetParameterValueType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The value type determines whether the parameter is a single-value or
-     * multi-value parameter.</p>
-     */
-    inline void SetParameterValueType(const ParameterValueType& value) { m_parameterValueTypeHasBeenSet = true; m_parameterValueType = value; }
-
-    /**
-     * <p>The value type determines whether the parameter is a single-value or
-     * multi-value parameter.</p>
-     */
-    inline void SetParameterValueType(ParameterValueType&& value) { m_parameterValueTypeHasBeenSet = true; m_parameterValueType = std::move(value); }
-
-    /**
-     * <p>The value type determines whether the parameter is a single-value or
-     * multi-value parameter.</p>
-     */
-    inline DecimalParameterDeclaration& WithParameterValueType(const ParameterValueType& value) { SetParameterValueType(value); return *this;}
-
-    /**
-     * <p>The value type determines whether the parameter is a single-value or
-     * multi-value parameter.</p>
-     */
-    inline DecimalParameterDeclaration& WithParameterValueType(ParameterValueType&& value) { SetParameterValueType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the parameter that is being declared.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the parameter that is being declared.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DecimalParameterDeclaration& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the parameter that is being declared.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the parameter that is being declared.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the parameter that is being declared.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the parameter that is being declared.</p>
-     */
-    inline DecimalParameterDeclaration& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the parameter that is being declared.</p>
-     */
-    inline DecimalParameterDeclaration& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the parameter that is being declared.</p>
-     */
-    inline DecimalParameterDeclaration& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The default values of a parameter. If the parameter is a single-value
      * parameter, a maximum of one default value can be provided.</p>
      */
-    inline const DecimalDefaultValues& GetDefaultValues() const{ return m_defaultValues; }
-
-    /**
-     * <p>The default values of a parameter. If the parameter is a single-value
-     * parameter, a maximum of one default value can be provided.</p>
-     */
+    inline const DecimalDefaultValues& GetDefaultValues() const { return m_defaultValues; }
     inline bool DefaultValuesHasBeenSet() const { return m_defaultValuesHasBeenSet; }
+    template<typename DefaultValuesT = DecimalDefaultValues>
+    void SetDefaultValues(DefaultValuesT&& value) { m_defaultValuesHasBeenSet = true; m_defaultValues = std::forward<DefaultValuesT>(value); }
+    template<typename DefaultValuesT = DecimalDefaultValues>
+    DecimalParameterDeclaration& WithDefaultValues(DefaultValuesT&& value) { SetDefaultValues(std::forward<DefaultValuesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The default values of a parameter. If the parameter is a single-value
-     * parameter, a maximum of one default value can be provided.</p>
-     */
-    inline void SetDefaultValues(const DecimalDefaultValues& value) { m_defaultValuesHasBeenSet = true; m_defaultValues = value; }
-
-    /**
-     * <p>The default values of a parameter. If the parameter is a single-value
-     * parameter, a maximum of one default value can be provided.</p>
-     */
-    inline void SetDefaultValues(DecimalDefaultValues&& value) { m_defaultValuesHasBeenSet = true; m_defaultValues = std::move(value); }
-
-    /**
-     * <p>The default values of a parameter. If the parameter is a single-value
-     * parameter, a maximum of one default value can be provided.</p>
-     */
-    inline DecimalParameterDeclaration& WithDefaultValues(const DecimalDefaultValues& value) { SetDefaultValues(value); return *this;}
-
-    /**
-     * <p>The default values of a parameter. If the parameter is a single-value
-     * parameter, a maximum of one default value can be provided.</p>
-     */
-    inline DecimalParameterDeclaration& WithDefaultValues(DecimalDefaultValues&& value) { SetDefaultValues(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration that defines the default value of a <code>Decimal</code>
      * parameter when a value has not been set.</p>
      */
-    inline const DecimalValueWhenUnsetConfiguration& GetValueWhenUnset() const{ return m_valueWhenUnset; }
-
-    /**
-     * <p>The configuration that defines the default value of a <code>Decimal</code>
-     * parameter when a value has not been set.</p>
-     */
+    inline const DecimalValueWhenUnsetConfiguration& GetValueWhenUnset() const { return m_valueWhenUnset; }
     inline bool ValueWhenUnsetHasBeenSet() const { return m_valueWhenUnsetHasBeenSet; }
+    template<typename ValueWhenUnsetT = DecimalValueWhenUnsetConfiguration>
+    void SetValueWhenUnset(ValueWhenUnsetT&& value) { m_valueWhenUnsetHasBeenSet = true; m_valueWhenUnset = std::forward<ValueWhenUnsetT>(value); }
+    template<typename ValueWhenUnsetT = DecimalValueWhenUnsetConfiguration>
+    DecimalParameterDeclaration& WithValueWhenUnset(ValueWhenUnsetT&& value) { SetValueWhenUnset(std::forward<ValueWhenUnsetT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration that defines the default value of a <code>Decimal</code>
-     * parameter when a value has not been set.</p>
-     */
-    inline void SetValueWhenUnset(const DecimalValueWhenUnsetConfiguration& value) { m_valueWhenUnsetHasBeenSet = true; m_valueWhenUnset = value; }
-
-    /**
-     * <p>The configuration that defines the default value of a <code>Decimal</code>
-     * parameter when a value has not been set.</p>
-     */
-    inline void SetValueWhenUnset(DecimalValueWhenUnsetConfiguration&& value) { m_valueWhenUnsetHasBeenSet = true; m_valueWhenUnset = std::move(value); }
-
-    /**
-     * <p>The configuration that defines the default value of a <code>Decimal</code>
-     * parameter when a value has not been set.</p>
-     */
-    inline DecimalParameterDeclaration& WithValueWhenUnset(const DecimalValueWhenUnsetConfiguration& value) { SetValueWhenUnset(value); return *this;}
-
-    /**
-     * <p>The configuration that defines the default value of a <code>Decimal</code>
-     * parameter when a value has not been set.</p>
-     */
-    inline DecimalParameterDeclaration& WithValueWhenUnset(DecimalValueWhenUnsetConfiguration&& value) { SetValueWhenUnset(std::move(value)); return *this;}
-
+    ///@{
+    
+    inline const Aws::Vector<MappedDataSetParameter>& GetMappedDataSetParameters() const { return m_mappedDataSetParameters; }
+    inline bool MappedDataSetParametersHasBeenSet() const { return m_mappedDataSetParametersHasBeenSet; }
+    template<typename MappedDataSetParametersT = Aws::Vector<MappedDataSetParameter>>
+    void SetMappedDataSetParameters(MappedDataSetParametersT&& value) { m_mappedDataSetParametersHasBeenSet = true; m_mappedDataSetParameters = std::forward<MappedDataSetParametersT>(value); }
+    template<typename MappedDataSetParametersT = Aws::Vector<MappedDataSetParameter>>
+    DecimalParameterDeclaration& WithMappedDataSetParameters(MappedDataSetParametersT&& value) { SetMappedDataSetParameters(std::forward<MappedDataSetParametersT>(value)); return *this;}
+    template<typename MappedDataSetParametersT = MappedDataSetParameter>
+    DecimalParameterDeclaration& AddMappedDataSetParameters(MappedDataSetParametersT&& value) { m_mappedDataSetParametersHasBeenSet = true; m_mappedDataSetParameters.emplace_back(std::forward<MappedDataSetParametersT>(value)); return *this; }
+    ///@}
   private:
 
-    ParameterValueType m_parameterValueType;
+    ParameterValueType m_parameterValueType{ParameterValueType::NOT_SET};
     bool m_parameterValueTypeHasBeenSet = false;
 
     Aws::String m_name;
@@ -205,6 +116,9 @@ namespace Model
 
     DecimalValueWhenUnsetConfiguration m_valueWhenUnset;
     bool m_valueWhenUnsetHasBeenSet = false;
+
+    Aws::Vector<MappedDataSetParameter> m_mappedDataSetParameters;
+    bool m_mappedDataSetParametersHasBeenSet = false;
   };
 
 } // namespace Model

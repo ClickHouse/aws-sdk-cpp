@@ -7,6 +7,7 @@
 #include <aws/guardduty/GuardDuty_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/guardduty/model/UsageAccountResult.h>
+#include <aws/guardduty/model/UsageTopAccountsResult.h>
 #include <aws/guardduty/model/UsageDataSourceResult.h>
 #include <aws/guardduty/model/UsageResourceResult.h>
 #include <aws/guardduty/model/UsageFeatureResult.h>
@@ -36,228 +37,105 @@ namespace Model
   class UsageStatistics
   {
   public:
-    AWS_GUARDDUTY_API UsageStatistics();
+    AWS_GUARDDUTY_API UsageStatistics() = default;
     AWS_GUARDDUTY_API UsageStatistics(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API UsageStatistics& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The usage statistic sum organized by account ID.</p>
      */
-    inline const Aws::Vector<UsageAccountResult>& GetSumByAccount() const{ return m_sumByAccount; }
-
-    /**
-     * <p>The usage statistic sum organized by account ID.</p>
-     */
+    inline const Aws::Vector<UsageAccountResult>& GetSumByAccount() const { return m_sumByAccount; }
     inline bool SumByAccountHasBeenSet() const { return m_sumByAccountHasBeenSet; }
+    template<typename SumByAccountT = Aws::Vector<UsageAccountResult>>
+    void SetSumByAccount(SumByAccountT&& value) { m_sumByAccountHasBeenSet = true; m_sumByAccount = std::forward<SumByAccountT>(value); }
+    template<typename SumByAccountT = Aws::Vector<UsageAccountResult>>
+    UsageStatistics& WithSumByAccount(SumByAccountT&& value) { SetSumByAccount(std::forward<SumByAccountT>(value)); return *this;}
+    template<typename SumByAccountT = UsageAccountResult>
+    UsageStatistics& AddSumByAccount(SumByAccountT&& value) { m_sumByAccountHasBeenSet = true; m_sumByAccount.emplace_back(std::forward<SumByAccountT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The usage statistic sum organized by account ID.</p>
+     * <p>Lists the top 50 accounts by feature that have generated the most GuardDuty
+     * usage, in the order from most to least expensive.</p> <p>Currently, this doesn't
+     * support <code>RDS_LOGIN_EVENTS</code>.</p>
      */
-    inline void SetSumByAccount(const Aws::Vector<UsageAccountResult>& value) { m_sumByAccountHasBeenSet = true; m_sumByAccount = value; }
+    inline const Aws::Vector<UsageTopAccountsResult>& GetTopAccountsByFeature() const { return m_topAccountsByFeature; }
+    inline bool TopAccountsByFeatureHasBeenSet() const { return m_topAccountsByFeatureHasBeenSet; }
+    template<typename TopAccountsByFeatureT = Aws::Vector<UsageTopAccountsResult>>
+    void SetTopAccountsByFeature(TopAccountsByFeatureT&& value) { m_topAccountsByFeatureHasBeenSet = true; m_topAccountsByFeature = std::forward<TopAccountsByFeatureT>(value); }
+    template<typename TopAccountsByFeatureT = Aws::Vector<UsageTopAccountsResult>>
+    UsageStatistics& WithTopAccountsByFeature(TopAccountsByFeatureT&& value) { SetTopAccountsByFeature(std::forward<TopAccountsByFeatureT>(value)); return *this;}
+    template<typename TopAccountsByFeatureT = UsageTopAccountsResult>
+    UsageStatistics& AddTopAccountsByFeature(TopAccountsByFeatureT&& value) { m_topAccountsByFeatureHasBeenSet = true; m_topAccountsByFeature.emplace_back(std::forward<TopAccountsByFeatureT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The usage statistic sum organized by account ID.</p>
-     */
-    inline void SetSumByAccount(Aws::Vector<UsageAccountResult>&& value) { m_sumByAccountHasBeenSet = true; m_sumByAccount = std::move(value); }
-
-    /**
-     * <p>The usage statistic sum organized by account ID.</p>
-     */
-    inline UsageStatistics& WithSumByAccount(const Aws::Vector<UsageAccountResult>& value) { SetSumByAccount(value); return *this;}
-
-    /**
-     * <p>The usage statistic sum organized by account ID.</p>
-     */
-    inline UsageStatistics& WithSumByAccount(Aws::Vector<UsageAccountResult>&& value) { SetSumByAccount(std::move(value)); return *this;}
-
-    /**
-     * <p>The usage statistic sum organized by account ID.</p>
-     */
-    inline UsageStatistics& AddSumByAccount(const UsageAccountResult& value) { m_sumByAccountHasBeenSet = true; m_sumByAccount.push_back(value); return *this; }
-
-    /**
-     * <p>The usage statistic sum organized by account ID.</p>
-     */
-    inline UsageStatistics& AddSumByAccount(UsageAccountResult&& value) { m_sumByAccountHasBeenSet = true; m_sumByAccount.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The usage statistic sum organized by on data source.</p>
      */
-    inline const Aws::Vector<UsageDataSourceResult>& GetSumByDataSource() const{ return m_sumByDataSource; }
-
-    /**
-     * <p>The usage statistic sum organized by on data source.</p>
-     */
+    inline const Aws::Vector<UsageDataSourceResult>& GetSumByDataSource() const { return m_sumByDataSource; }
     inline bool SumByDataSourceHasBeenSet() const { return m_sumByDataSourceHasBeenSet; }
+    template<typename SumByDataSourceT = Aws::Vector<UsageDataSourceResult>>
+    void SetSumByDataSource(SumByDataSourceT&& value) { m_sumByDataSourceHasBeenSet = true; m_sumByDataSource = std::forward<SumByDataSourceT>(value); }
+    template<typename SumByDataSourceT = Aws::Vector<UsageDataSourceResult>>
+    UsageStatistics& WithSumByDataSource(SumByDataSourceT&& value) { SetSumByDataSource(std::forward<SumByDataSourceT>(value)); return *this;}
+    template<typename SumByDataSourceT = UsageDataSourceResult>
+    UsageStatistics& AddSumByDataSource(SumByDataSourceT&& value) { m_sumByDataSourceHasBeenSet = true; m_sumByDataSource.emplace_back(std::forward<SumByDataSourceT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The usage statistic sum organized by on data source.</p>
-     */
-    inline void SetSumByDataSource(const Aws::Vector<UsageDataSourceResult>& value) { m_sumByDataSourceHasBeenSet = true; m_sumByDataSource = value; }
-
-    /**
-     * <p>The usage statistic sum organized by on data source.</p>
-     */
-    inline void SetSumByDataSource(Aws::Vector<UsageDataSourceResult>&& value) { m_sumByDataSourceHasBeenSet = true; m_sumByDataSource = std::move(value); }
-
-    /**
-     * <p>The usage statistic sum organized by on data source.</p>
-     */
-    inline UsageStatistics& WithSumByDataSource(const Aws::Vector<UsageDataSourceResult>& value) { SetSumByDataSource(value); return *this;}
-
-    /**
-     * <p>The usage statistic sum organized by on data source.</p>
-     */
-    inline UsageStatistics& WithSumByDataSource(Aws::Vector<UsageDataSourceResult>&& value) { SetSumByDataSource(std::move(value)); return *this;}
-
-    /**
-     * <p>The usage statistic sum organized by on data source.</p>
-     */
-    inline UsageStatistics& AddSumByDataSource(const UsageDataSourceResult& value) { m_sumByDataSourceHasBeenSet = true; m_sumByDataSource.push_back(value); return *this; }
-
-    /**
-     * <p>The usage statistic sum organized by on data source.</p>
-     */
-    inline UsageStatistics& AddSumByDataSource(UsageDataSourceResult&& value) { m_sumByDataSourceHasBeenSet = true; m_sumByDataSource.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The usage statistic sum organized by resource.</p>
      */
-    inline const Aws::Vector<UsageResourceResult>& GetSumByResource() const{ return m_sumByResource; }
-
-    /**
-     * <p>The usage statistic sum organized by resource.</p>
-     */
+    inline const Aws::Vector<UsageResourceResult>& GetSumByResource() const { return m_sumByResource; }
     inline bool SumByResourceHasBeenSet() const { return m_sumByResourceHasBeenSet; }
+    template<typename SumByResourceT = Aws::Vector<UsageResourceResult>>
+    void SetSumByResource(SumByResourceT&& value) { m_sumByResourceHasBeenSet = true; m_sumByResource = std::forward<SumByResourceT>(value); }
+    template<typename SumByResourceT = Aws::Vector<UsageResourceResult>>
+    UsageStatistics& WithSumByResource(SumByResourceT&& value) { SetSumByResource(std::forward<SumByResourceT>(value)); return *this;}
+    template<typename SumByResourceT = UsageResourceResult>
+    UsageStatistics& AddSumByResource(SumByResourceT&& value) { m_sumByResourceHasBeenSet = true; m_sumByResource.emplace_back(std::forward<SumByResourceT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The usage statistic sum organized by resource.</p>
-     */
-    inline void SetSumByResource(const Aws::Vector<UsageResourceResult>& value) { m_sumByResourceHasBeenSet = true; m_sumByResource = value; }
-
-    /**
-     * <p>The usage statistic sum organized by resource.</p>
-     */
-    inline void SetSumByResource(Aws::Vector<UsageResourceResult>&& value) { m_sumByResourceHasBeenSet = true; m_sumByResource = std::move(value); }
-
-    /**
-     * <p>The usage statistic sum organized by resource.</p>
-     */
-    inline UsageStatistics& WithSumByResource(const Aws::Vector<UsageResourceResult>& value) { SetSumByResource(value); return *this;}
-
-    /**
-     * <p>The usage statistic sum organized by resource.</p>
-     */
-    inline UsageStatistics& WithSumByResource(Aws::Vector<UsageResourceResult>&& value) { SetSumByResource(std::move(value)); return *this;}
-
-    /**
-     * <p>The usage statistic sum organized by resource.</p>
-     */
-    inline UsageStatistics& AddSumByResource(const UsageResourceResult& value) { m_sumByResourceHasBeenSet = true; m_sumByResource.push_back(value); return *this; }
-
-    /**
-     * <p>The usage statistic sum organized by resource.</p>
-     */
-    inline UsageStatistics& AddSumByResource(UsageResourceResult&& value) { m_sumByResourceHasBeenSet = true; m_sumByResource.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Lists the top 50 resources that have generated the most GuardDuty usage, in
      * order from most to least expensive.</p>
      */
-    inline const Aws::Vector<UsageResourceResult>& GetTopResources() const{ return m_topResources; }
-
-    /**
-     * <p>Lists the top 50 resources that have generated the most GuardDuty usage, in
-     * order from most to least expensive.</p>
-     */
+    inline const Aws::Vector<UsageResourceResult>& GetTopResources() const { return m_topResources; }
     inline bool TopResourcesHasBeenSet() const { return m_topResourcesHasBeenSet; }
+    template<typename TopResourcesT = Aws::Vector<UsageResourceResult>>
+    void SetTopResources(TopResourcesT&& value) { m_topResourcesHasBeenSet = true; m_topResources = std::forward<TopResourcesT>(value); }
+    template<typename TopResourcesT = Aws::Vector<UsageResourceResult>>
+    UsageStatistics& WithTopResources(TopResourcesT&& value) { SetTopResources(std::forward<TopResourcesT>(value)); return *this;}
+    template<typename TopResourcesT = UsageResourceResult>
+    UsageStatistics& AddTopResources(TopResourcesT&& value) { m_topResourcesHasBeenSet = true; m_topResources.emplace_back(std::forward<TopResourcesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Lists the top 50 resources that have generated the most GuardDuty usage, in
-     * order from most to least expensive.</p>
-     */
-    inline void SetTopResources(const Aws::Vector<UsageResourceResult>& value) { m_topResourcesHasBeenSet = true; m_topResources = value; }
-
-    /**
-     * <p>Lists the top 50 resources that have generated the most GuardDuty usage, in
-     * order from most to least expensive.</p>
-     */
-    inline void SetTopResources(Aws::Vector<UsageResourceResult>&& value) { m_topResourcesHasBeenSet = true; m_topResources = std::move(value); }
-
-    /**
-     * <p>Lists the top 50 resources that have generated the most GuardDuty usage, in
-     * order from most to least expensive.</p>
-     */
-    inline UsageStatistics& WithTopResources(const Aws::Vector<UsageResourceResult>& value) { SetTopResources(value); return *this;}
-
-    /**
-     * <p>Lists the top 50 resources that have generated the most GuardDuty usage, in
-     * order from most to least expensive.</p>
-     */
-    inline UsageStatistics& WithTopResources(Aws::Vector<UsageResourceResult>&& value) { SetTopResources(std::move(value)); return *this;}
-
-    /**
-     * <p>Lists the top 50 resources that have generated the most GuardDuty usage, in
-     * order from most to least expensive.</p>
-     */
-    inline UsageStatistics& AddTopResources(const UsageResourceResult& value) { m_topResourcesHasBeenSet = true; m_topResources.push_back(value); return *this; }
-
-    /**
-     * <p>Lists the top 50 resources that have generated the most GuardDuty usage, in
-     * order from most to least expensive.</p>
-     */
-    inline UsageStatistics& AddTopResources(UsageResourceResult&& value) { m_topResourcesHasBeenSet = true; m_topResources.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The usage statistic sum organized by feature.</p>
      */
-    inline const Aws::Vector<UsageFeatureResult>& GetSumByFeature() const{ return m_sumByFeature; }
-
-    /**
-     * <p>The usage statistic sum organized by feature.</p>
-     */
+    inline const Aws::Vector<UsageFeatureResult>& GetSumByFeature() const { return m_sumByFeature; }
     inline bool SumByFeatureHasBeenSet() const { return m_sumByFeatureHasBeenSet; }
-
-    /**
-     * <p>The usage statistic sum organized by feature.</p>
-     */
-    inline void SetSumByFeature(const Aws::Vector<UsageFeatureResult>& value) { m_sumByFeatureHasBeenSet = true; m_sumByFeature = value; }
-
-    /**
-     * <p>The usage statistic sum organized by feature.</p>
-     */
-    inline void SetSumByFeature(Aws::Vector<UsageFeatureResult>&& value) { m_sumByFeatureHasBeenSet = true; m_sumByFeature = std::move(value); }
-
-    /**
-     * <p>The usage statistic sum organized by feature.</p>
-     */
-    inline UsageStatistics& WithSumByFeature(const Aws::Vector<UsageFeatureResult>& value) { SetSumByFeature(value); return *this;}
-
-    /**
-     * <p>The usage statistic sum organized by feature.</p>
-     */
-    inline UsageStatistics& WithSumByFeature(Aws::Vector<UsageFeatureResult>&& value) { SetSumByFeature(std::move(value)); return *this;}
-
-    /**
-     * <p>The usage statistic sum organized by feature.</p>
-     */
-    inline UsageStatistics& AddSumByFeature(const UsageFeatureResult& value) { m_sumByFeatureHasBeenSet = true; m_sumByFeature.push_back(value); return *this; }
-
-    /**
-     * <p>The usage statistic sum organized by feature.</p>
-     */
-    inline UsageStatistics& AddSumByFeature(UsageFeatureResult&& value) { m_sumByFeatureHasBeenSet = true; m_sumByFeature.push_back(std::move(value)); return *this; }
-
+    template<typename SumByFeatureT = Aws::Vector<UsageFeatureResult>>
+    void SetSumByFeature(SumByFeatureT&& value) { m_sumByFeatureHasBeenSet = true; m_sumByFeature = std::forward<SumByFeatureT>(value); }
+    template<typename SumByFeatureT = Aws::Vector<UsageFeatureResult>>
+    UsageStatistics& WithSumByFeature(SumByFeatureT&& value) { SetSumByFeature(std::forward<SumByFeatureT>(value)); return *this;}
+    template<typename SumByFeatureT = UsageFeatureResult>
+    UsageStatistics& AddSumByFeature(SumByFeatureT&& value) { m_sumByFeatureHasBeenSet = true; m_sumByFeature.emplace_back(std::forward<SumByFeatureT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<UsageAccountResult> m_sumByAccount;
     bool m_sumByAccountHasBeenSet = false;
+
+    Aws::Vector<UsageTopAccountsResult> m_topAccountsByFeature;
+    bool m_topAccountsByFeatureHasBeenSet = false;
 
     Aws::Vector<UsageDataSourceResult> m_sumByDataSource;
     bool m_sumByDataSourceHasBeenSet = false;

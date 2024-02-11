@@ -18,21 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-PromptAttemptSpecification::PromptAttemptSpecification() : 
-    m_allowInterrupt(false),
-    m_allowInterruptHasBeenSet(false),
-    m_allowedInputTypesHasBeenSet(false),
-    m_audioAndDTMFInputSpecificationHasBeenSet(false),
-    m_textInputSpecificationHasBeenSet(false)
-{
-}
-
-PromptAttemptSpecification::PromptAttemptSpecification(JsonView jsonValue) : 
-    m_allowInterrupt(false),
-    m_allowInterruptHasBeenSet(false),
-    m_allowedInputTypesHasBeenSet(false),
-    m_audioAndDTMFInputSpecificationHasBeenSet(false),
-    m_textInputSpecificationHasBeenSet(false)
+PromptAttemptSpecification::PromptAttemptSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ PromptAttemptSpecification& PromptAttemptSpecification::operator =(JsonView json
   if(jsonValue.ValueExists("allowInterrupt"))
   {
     m_allowInterrupt = jsonValue.GetBool("allowInterrupt");
-
     m_allowInterruptHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("allowedInputTypes"))
   {
     m_allowedInputTypes = jsonValue.GetObject("allowedInputTypes");
-
     m_allowedInputTypesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("audioAndDTMFInputSpecification"))
   {
     m_audioAndDTMFInputSpecification = jsonValue.GetObject("audioAndDTMFInputSpecification");
-
     m_audioAndDTMFInputSpecificationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("textInputSpecification"))
   {
     m_textInputSpecification = jsonValue.GetObject("textInputSpecification");
-
     m_textInputSpecificationHasBeenSet = true;
   }
-
   return *this;
 }
 

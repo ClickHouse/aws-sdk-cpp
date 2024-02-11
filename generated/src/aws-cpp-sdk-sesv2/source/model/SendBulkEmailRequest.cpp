@@ -12,19 +12,6 @@ using namespace Aws::SESV2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-SendBulkEmailRequest::SendBulkEmailRequest() : 
-    m_fromEmailAddressHasBeenSet(false),
-    m_fromEmailAddressIdentityArnHasBeenSet(false),
-    m_replyToAddressesHasBeenSet(false),
-    m_feedbackForwardingEmailAddressHasBeenSet(false),
-    m_feedbackForwardingEmailAddressIdentityArnHasBeenSet(false),
-    m_defaultEmailTagsHasBeenSet(false),
-    m_defaultContentHasBeenSet(false),
-    m_bulkEmailEntriesHasBeenSet(false),
-    m_configurationSetNameHasBeenSet(false)
-{
-}
-
 Aws::String SendBulkEmailRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -98,9 +85,31 @@ Aws::String SendBulkEmailRequest::SerializePayload() const
 
   }
 
+  if(m_endpointIdHasBeenSet)
+  {
+   payload.WithString("EndpointId", m_endpointId);
+
+  }
+
+  if(m_tenantNameHasBeenSet)
+  {
+   payload.WithString("TenantName", m_tenantName);
+
+  }
+
   return payload.View().WriteReadable();
 }
 
 
+
+SendBulkEmailRequest::EndpointParameters SendBulkEmailRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (EndpointIdHasBeenSet()) {
+        parameters.emplace_back(Aws::String("EndpointId"), this->GetEndpointId(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

@@ -18,27 +18,7 @@ namespace AppStream
 namespace Model
 {
 
-ComputeCapacityStatus::ComputeCapacityStatus() : 
-    m_desired(0),
-    m_desiredHasBeenSet(false),
-    m_running(0),
-    m_runningHasBeenSet(false),
-    m_inUse(0),
-    m_inUseHasBeenSet(false),
-    m_available(0),
-    m_availableHasBeenSet(false)
-{
-}
-
-ComputeCapacityStatus::ComputeCapacityStatus(JsonView jsonValue) : 
-    m_desired(0),
-    m_desiredHasBeenSet(false),
-    m_running(0),
-    m_runningHasBeenSet(false),
-    m_inUse(0),
-    m_inUseHasBeenSet(false),
-    m_available(0),
-    m_availableHasBeenSet(false)
+ComputeCapacityStatus::ComputeCapacityStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,31 +28,43 @@ ComputeCapacityStatus& ComputeCapacityStatus::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Desired"))
   {
     m_desired = jsonValue.GetInteger("Desired");
-
     m_desiredHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Running"))
   {
     m_running = jsonValue.GetInteger("Running");
-
     m_runningHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InUse"))
   {
     m_inUse = jsonValue.GetInteger("InUse");
-
     m_inUseHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Available"))
   {
     m_available = jsonValue.GetInteger("Available");
-
     m_availableHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("DesiredUserSessions"))
+  {
+    m_desiredUserSessions = jsonValue.GetInteger("DesiredUserSessions");
+    m_desiredUserSessionsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("AvailableUserSessions"))
+  {
+    m_availableUserSessions = jsonValue.GetInteger("AvailableUserSessions");
+    m_availableUserSessionsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("ActiveUserSessions"))
+  {
+    m_activeUserSessions = jsonValue.GetInteger("ActiveUserSessions");
+    m_activeUserSessionsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("ActualUserSessions"))
+  {
+    m_actualUserSessions = jsonValue.GetInteger("ActualUserSessions");
+    m_actualUserSessionsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -101,6 +93,30 @@ JsonValue ComputeCapacityStatus::Jsonize() const
   if(m_availableHasBeenSet)
   {
    payload.WithInteger("Available", m_available);
+
+  }
+
+  if(m_desiredUserSessionsHasBeenSet)
+  {
+   payload.WithInteger("DesiredUserSessions", m_desiredUserSessions);
+
+  }
+
+  if(m_availableUserSessionsHasBeenSet)
+  {
+   payload.WithInteger("AvailableUserSessions", m_availableUserSessions);
+
+  }
+
+  if(m_activeUserSessionsHasBeenSet)
+  {
+   payload.WithInteger("ActiveUserSessions", m_activeUserSessions);
+
+  }
+
+  if(m_actualUserSessionsHasBeenSet)
+  {
+   payload.WithInteger("ActualUserSessions", m_actualUserSessions);
 
   }
 

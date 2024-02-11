@@ -12,12 +12,6 @@ using namespace Aws::CloudWatchLogs::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-AssociateKmsKeyRequest::AssociateKmsKeyRequest() : 
-    m_logGroupNameHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false)
-{
-}
-
 Aws::String AssociateKmsKeyRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,12 @@ Aws::String AssociateKmsKeyRequest::SerializePayload() const
   if(m_kmsKeyIdHasBeenSet)
   {
    payload.WithString("kmsKeyId", m_kmsKeyId);
+
+  }
+
+  if(m_resourceIdentifierHasBeenSet)
+  {
+   payload.WithString("resourceIdentifier", m_resourceIdentifier);
 
   }
 

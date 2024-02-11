@@ -30,12 +30,13 @@ namespace Model
   class CacheAttributes
   {
   public:
-    AWS_STORAGEGATEWAY_API CacheAttributes();
+    AWS_STORAGEGATEWAY_API CacheAttributes() = default;
     AWS_STORAGEGATEWAY_API CacheAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_STORAGEGATEWAY_API CacheAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_STORAGEGATEWAY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Refreshes a file share's cache by using Time To Live (TTL). TTL is the length
      * of time since the last refresh after which access to the directory would cause
@@ -43,38 +44,14 @@ namespace Model
      * bucket or Amazon FSx file system. The TTL duration is in seconds.</p> <p>Valid
      * Values:0, 300 to 2,592,000 seconds (5 minutes to 30 days)</p>
      */
-    inline int GetCacheStaleTimeoutInSeconds() const{ return m_cacheStaleTimeoutInSeconds; }
-
-    /**
-     * <p>Refreshes a file share's cache by using Time To Live (TTL). TTL is the length
-     * of time since the last refresh after which access to the directory would cause
-     * the file gateway to first refresh that directory's contents from the Amazon S3
-     * bucket or Amazon FSx file system. The TTL duration is in seconds.</p> <p>Valid
-     * Values:0, 300 to 2,592,000 seconds (5 minutes to 30 days)</p>
-     */
+    inline int GetCacheStaleTimeoutInSeconds() const { return m_cacheStaleTimeoutInSeconds; }
     inline bool CacheStaleTimeoutInSecondsHasBeenSet() const { return m_cacheStaleTimeoutInSecondsHasBeenSet; }
-
-    /**
-     * <p>Refreshes a file share's cache by using Time To Live (TTL). TTL is the length
-     * of time since the last refresh after which access to the directory would cause
-     * the file gateway to first refresh that directory's contents from the Amazon S3
-     * bucket or Amazon FSx file system. The TTL duration is in seconds.</p> <p>Valid
-     * Values:0, 300 to 2,592,000 seconds (5 minutes to 30 days)</p>
-     */
     inline void SetCacheStaleTimeoutInSeconds(int value) { m_cacheStaleTimeoutInSecondsHasBeenSet = true; m_cacheStaleTimeoutInSeconds = value; }
-
-    /**
-     * <p>Refreshes a file share's cache by using Time To Live (TTL). TTL is the length
-     * of time since the last refresh after which access to the directory would cause
-     * the file gateway to first refresh that directory's contents from the Amazon S3
-     * bucket or Amazon FSx file system. The TTL duration is in seconds.</p> <p>Valid
-     * Values:0, 300 to 2,592,000 seconds (5 minutes to 30 days)</p>
-     */
     inline CacheAttributes& WithCacheStaleTimeoutInSeconds(int value) { SetCacheStaleTimeoutInSeconds(value); return *this;}
-
+    ///@}
   private:
 
-    int m_cacheStaleTimeoutInSeconds;
+    int m_cacheStaleTimeoutInSeconds{0};
     bool m_cacheStaleTimeoutInSecondsHasBeenSet = false;
   };
 

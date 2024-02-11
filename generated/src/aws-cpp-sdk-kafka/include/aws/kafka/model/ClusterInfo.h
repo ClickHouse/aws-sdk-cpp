@@ -18,6 +18,7 @@
 #include <aws/kafka/model/StateInfo.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/kafka/model/StorageMode.h>
+#include <aws/kafka/model/CustomerActionStatus.h>
 #include <utility>
 
 namespace Aws
@@ -46,469 +47,141 @@ namespace Model
   class ClusterInfo
   {
   public:
-    AWS_KAFKA_API ClusterInfo();
+    AWS_KAFKA_API ClusterInfo() = default;
     AWS_KAFKA_API ClusterInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API ClusterInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * 
             <p>Arn of active cluster operation.</p>
          
      */
-    inline const Aws::String& GetActiveOperationArn() const{ return m_activeOperationArn; }
-
-    /**
-     * 
-            <p>Arn of active cluster operation.</p>
-         
-     */
+    inline const Aws::String& GetActiveOperationArn() const { return m_activeOperationArn; }
     inline bool ActiveOperationArnHasBeenSet() const { return m_activeOperationArnHasBeenSet; }
+    template<typename ActiveOperationArnT = Aws::String>
+    void SetActiveOperationArn(ActiveOperationArnT&& value) { m_activeOperationArnHasBeenSet = true; m_activeOperationArn = std::forward<ActiveOperationArnT>(value); }
+    template<typename ActiveOperationArnT = Aws::String>
+    ClusterInfo& WithActiveOperationArn(ActiveOperationArnT&& value) { SetActiveOperationArn(std::forward<ActiveOperationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>Arn of active cluster operation.</p>
-         
-     */
-    inline void SetActiveOperationArn(const Aws::String& value) { m_activeOperationArnHasBeenSet = true; m_activeOperationArn = value; }
-
-    /**
-     * 
-            <p>Arn of active cluster operation.</p>
-         
-     */
-    inline void SetActiveOperationArn(Aws::String&& value) { m_activeOperationArnHasBeenSet = true; m_activeOperationArn = std::move(value); }
-
-    /**
-     * 
-            <p>Arn of active cluster operation.</p>
-         
-     */
-    inline void SetActiveOperationArn(const char* value) { m_activeOperationArnHasBeenSet = true; m_activeOperationArn.assign(value); }
-
-    /**
-     * 
-            <p>Arn of active cluster operation.</p>
-         
-     */
-    inline ClusterInfo& WithActiveOperationArn(const Aws::String& value) { SetActiveOperationArn(value); return *this;}
-
-    /**
-     * 
-            <p>Arn of active cluster operation.</p>
-         
-     */
-    inline ClusterInfo& WithActiveOperationArn(Aws::String&& value) { SetActiveOperationArn(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>Arn of active cluster operation.</p>
-         
-     */
-    inline ClusterInfo& WithActiveOperationArn(const char* value) { SetActiveOperationArn(value); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>Information about the broker nodes.</p>
          
      */
-    inline const BrokerNodeGroupInfo& GetBrokerNodeGroupInfo() const{ return m_brokerNodeGroupInfo; }
-
-    /**
-     * 
-            <p>Information about the broker nodes.</p>
-         
-     */
+    inline const BrokerNodeGroupInfo& GetBrokerNodeGroupInfo() const { return m_brokerNodeGroupInfo; }
     inline bool BrokerNodeGroupInfoHasBeenSet() const { return m_brokerNodeGroupInfoHasBeenSet; }
+    template<typename BrokerNodeGroupInfoT = BrokerNodeGroupInfo>
+    void SetBrokerNodeGroupInfo(BrokerNodeGroupInfoT&& value) { m_brokerNodeGroupInfoHasBeenSet = true; m_brokerNodeGroupInfo = std::forward<BrokerNodeGroupInfoT>(value); }
+    template<typename BrokerNodeGroupInfoT = BrokerNodeGroupInfo>
+    ClusterInfo& WithBrokerNodeGroupInfo(BrokerNodeGroupInfoT&& value) { SetBrokerNodeGroupInfo(std::forward<BrokerNodeGroupInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>Information about the broker nodes.</p>
-         
-     */
-    inline void SetBrokerNodeGroupInfo(const BrokerNodeGroupInfo& value) { m_brokerNodeGroupInfoHasBeenSet = true; m_brokerNodeGroupInfo = value; }
-
-    /**
-     * 
-            <p>Information about the broker nodes.</p>
-         
-     */
-    inline void SetBrokerNodeGroupInfo(BrokerNodeGroupInfo&& value) { m_brokerNodeGroupInfoHasBeenSet = true; m_brokerNodeGroupInfo = std::move(value); }
-
-    /**
-     * 
-            <p>Information about the broker nodes.</p>
-         
-     */
-    inline ClusterInfo& WithBrokerNodeGroupInfo(const BrokerNodeGroupInfo& value) { SetBrokerNodeGroupInfo(value); return *this;}
-
-    /**
-     * 
-            <p>Information about the broker nodes.</p>
-         
-     */
-    inline ClusterInfo& WithBrokerNodeGroupInfo(BrokerNodeGroupInfo&& value) { SetBrokerNodeGroupInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>Includes all client authentication information.</p>
          
      */
-    inline const ClientAuthentication& GetClientAuthentication() const{ return m_clientAuthentication; }
-
-    /**
-     * 
-            <p>Includes all client authentication information.</p>
-         
-     */
+    inline const ClientAuthentication& GetClientAuthentication() const { return m_clientAuthentication; }
     inline bool ClientAuthenticationHasBeenSet() const { return m_clientAuthenticationHasBeenSet; }
+    template<typename ClientAuthenticationT = ClientAuthentication>
+    void SetClientAuthentication(ClientAuthenticationT&& value) { m_clientAuthenticationHasBeenSet = true; m_clientAuthentication = std::forward<ClientAuthenticationT>(value); }
+    template<typename ClientAuthenticationT = ClientAuthentication>
+    ClusterInfo& WithClientAuthentication(ClientAuthenticationT&& value) { SetClientAuthentication(std::forward<ClientAuthenticationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>Includes all client authentication information.</p>
-         
-     */
-    inline void SetClientAuthentication(const ClientAuthentication& value) { m_clientAuthenticationHasBeenSet = true; m_clientAuthentication = value; }
-
-    /**
-     * 
-            <p>Includes all client authentication information.</p>
-         
-     */
-    inline void SetClientAuthentication(ClientAuthentication&& value) { m_clientAuthenticationHasBeenSet = true; m_clientAuthentication = std::move(value); }
-
-    /**
-     * 
-            <p>Includes all client authentication information.</p>
-         
-     */
-    inline ClusterInfo& WithClientAuthentication(const ClientAuthentication& value) { SetClientAuthentication(value); return *this;}
-
-    /**
-     * 
-            <p>Includes all client authentication information.</p>
-         
-     */
-    inline ClusterInfo& WithClientAuthentication(ClientAuthentication&& value) { SetClientAuthentication(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>The Amazon Resource Name (ARN) that uniquely identifies the
      * cluster.</p>
          
      */
-    inline const Aws::String& GetClusterArn() const{ return m_clusterArn; }
-
-    /**
-     * 
-            <p>The Amazon Resource Name (ARN) that uniquely identifies the
-     * cluster.</p>
-         
-     */
+    inline const Aws::String& GetClusterArn() const { return m_clusterArn; }
     inline bool ClusterArnHasBeenSet() const { return m_clusterArnHasBeenSet; }
+    template<typename ClusterArnT = Aws::String>
+    void SetClusterArn(ClusterArnT&& value) { m_clusterArnHasBeenSet = true; m_clusterArn = std::forward<ClusterArnT>(value); }
+    template<typename ClusterArnT = Aws::String>
+    ClusterInfo& WithClusterArn(ClusterArnT&& value) { SetClusterArn(std::forward<ClusterArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>The Amazon Resource Name (ARN) that uniquely identifies the
-     * cluster.</p>
-         
-     */
-    inline void SetClusterArn(const Aws::String& value) { m_clusterArnHasBeenSet = true; m_clusterArn = value; }
-
-    /**
-     * 
-            <p>The Amazon Resource Name (ARN) that uniquely identifies the
-     * cluster.</p>
-         
-     */
-    inline void SetClusterArn(Aws::String&& value) { m_clusterArnHasBeenSet = true; m_clusterArn = std::move(value); }
-
-    /**
-     * 
-            <p>The Amazon Resource Name (ARN) that uniquely identifies the
-     * cluster.</p>
-         
-     */
-    inline void SetClusterArn(const char* value) { m_clusterArnHasBeenSet = true; m_clusterArn.assign(value); }
-
-    /**
-     * 
-            <p>The Amazon Resource Name (ARN) that uniquely identifies the
-     * cluster.</p>
-         
-     */
-    inline ClusterInfo& WithClusterArn(const Aws::String& value) { SetClusterArn(value); return *this;}
-
-    /**
-     * 
-            <p>The Amazon Resource Name (ARN) that uniquely identifies the
-     * cluster.</p>
-         
-     */
-    inline ClusterInfo& WithClusterArn(Aws::String&& value) { SetClusterArn(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>The Amazon Resource Name (ARN) that uniquely identifies the
-     * cluster.</p>
-         
-     */
-    inline ClusterInfo& WithClusterArn(const char* value) { SetClusterArn(value); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>The name of the cluster.</p>
          
      */
-    inline const Aws::String& GetClusterName() const{ return m_clusterName; }
-
-    /**
-     * 
-            <p>The name of the cluster.</p>
-         
-     */
+    inline const Aws::String& GetClusterName() const { return m_clusterName; }
     inline bool ClusterNameHasBeenSet() const { return m_clusterNameHasBeenSet; }
+    template<typename ClusterNameT = Aws::String>
+    void SetClusterName(ClusterNameT&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::forward<ClusterNameT>(value); }
+    template<typename ClusterNameT = Aws::String>
+    ClusterInfo& WithClusterName(ClusterNameT&& value) { SetClusterName(std::forward<ClusterNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>The name of the cluster.</p>
-         
-     */
-    inline void SetClusterName(const Aws::String& value) { m_clusterNameHasBeenSet = true; m_clusterName = value; }
-
-    /**
-     * 
-            <p>The name of the cluster.</p>
-         
-     */
-    inline void SetClusterName(Aws::String&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::move(value); }
-
-    /**
-     * 
-            <p>The name of the cluster.</p>
-         
-     */
-    inline void SetClusterName(const char* value) { m_clusterNameHasBeenSet = true; m_clusterName.assign(value); }
-
-    /**
-     * 
-            <p>The name of the cluster.</p>
-         
-     */
-    inline ClusterInfo& WithClusterName(const Aws::String& value) { SetClusterName(value); return *this;}
-
-    /**
-     * 
-            <p>The name of the cluster.</p>
-         
-     */
-    inline ClusterInfo& WithClusterName(Aws::String&& value) { SetClusterName(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>The name of the cluster.</p>
-         
-     */
-    inline ClusterInfo& WithClusterName(const char* value) { SetClusterName(value); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>The time when the cluster was created.</p>
          
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * 
-            <p>The time when the cluster was created.</p>
-         
-     */
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
     inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    ClusterInfo& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>The time when the cluster was created.</p>
-         
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
-
-    /**
-     * 
-            <p>The time when the cluster was created.</p>
-         
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
-
-    /**
-     * 
-            <p>The time when the cluster was created.</p>
-         
-     */
-    inline ClusterInfo& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * 
-            <p>The time when the cluster was created.</p>
-         
-     */
-    inline ClusterInfo& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>Information about the version of software currently deployed on
      * the Apache Kafka brokers in the cluster.</p>
          
      */
-    inline const BrokerSoftwareInfo& GetCurrentBrokerSoftwareInfo() const{ return m_currentBrokerSoftwareInfo; }
-
-    /**
-     * 
-            <p>Information about the version of software currently deployed on
-     * the Apache Kafka brokers in the cluster.</p>
-         
-     */
+    inline const BrokerSoftwareInfo& GetCurrentBrokerSoftwareInfo() const { return m_currentBrokerSoftwareInfo; }
     inline bool CurrentBrokerSoftwareInfoHasBeenSet() const { return m_currentBrokerSoftwareInfoHasBeenSet; }
+    template<typename CurrentBrokerSoftwareInfoT = BrokerSoftwareInfo>
+    void SetCurrentBrokerSoftwareInfo(CurrentBrokerSoftwareInfoT&& value) { m_currentBrokerSoftwareInfoHasBeenSet = true; m_currentBrokerSoftwareInfo = std::forward<CurrentBrokerSoftwareInfoT>(value); }
+    template<typename CurrentBrokerSoftwareInfoT = BrokerSoftwareInfo>
+    ClusterInfo& WithCurrentBrokerSoftwareInfo(CurrentBrokerSoftwareInfoT&& value) { SetCurrentBrokerSoftwareInfo(std::forward<CurrentBrokerSoftwareInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>Information about the version of software currently deployed on
-     * the Apache Kafka brokers in the cluster.</p>
-         
-     */
-    inline void SetCurrentBrokerSoftwareInfo(const BrokerSoftwareInfo& value) { m_currentBrokerSoftwareInfoHasBeenSet = true; m_currentBrokerSoftwareInfo = value; }
-
-    /**
-     * 
-            <p>Information about the version of software currently deployed on
-     * the Apache Kafka brokers in the cluster.</p>
-         
-     */
-    inline void SetCurrentBrokerSoftwareInfo(BrokerSoftwareInfo&& value) { m_currentBrokerSoftwareInfoHasBeenSet = true; m_currentBrokerSoftwareInfo = std::move(value); }
-
-    /**
-     * 
-            <p>Information about the version of software currently deployed on
-     * the Apache Kafka brokers in the cluster.</p>
-         
-     */
-    inline ClusterInfo& WithCurrentBrokerSoftwareInfo(const BrokerSoftwareInfo& value) { SetCurrentBrokerSoftwareInfo(value); return *this;}
-
-    /**
-     * 
-            <p>Information about the version of software currently deployed on
-     * the Apache Kafka brokers in the cluster.</p>
-         
-     */
-    inline ClusterInfo& WithCurrentBrokerSoftwareInfo(BrokerSoftwareInfo&& value) { SetCurrentBrokerSoftwareInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>The current version of the MSK cluster.</p>
          
      */
-    inline const Aws::String& GetCurrentVersion() const{ return m_currentVersion; }
-
-    /**
-     * 
-            <p>The current version of the MSK cluster.</p>
-         
-     */
+    inline const Aws::String& GetCurrentVersion() const { return m_currentVersion; }
     inline bool CurrentVersionHasBeenSet() const { return m_currentVersionHasBeenSet; }
+    template<typename CurrentVersionT = Aws::String>
+    void SetCurrentVersion(CurrentVersionT&& value) { m_currentVersionHasBeenSet = true; m_currentVersion = std::forward<CurrentVersionT>(value); }
+    template<typename CurrentVersionT = Aws::String>
+    ClusterInfo& WithCurrentVersion(CurrentVersionT&& value) { SetCurrentVersion(std::forward<CurrentVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>The current version of the MSK cluster.</p>
-         
-     */
-    inline void SetCurrentVersion(const Aws::String& value) { m_currentVersionHasBeenSet = true; m_currentVersion = value; }
-
-    /**
-     * 
-            <p>The current version of the MSK cluster.</p>
-         
-     */
-    inline void SetCurrentVersion(Aws::String&& value) { m_currentVersionHasBeenSet = true; m_currentVersion = std::move(value); }
-
-    /**
-     * 
-            <p>The current version of the MSK cluster.</p>
-         
-     */
-    inline void SetCurrentVersion(const char* value) { m_currentVersionHasBeenSet = true; m_currentVersion.assign(value); }
-
-    /**
-     * 
-            <p>The current version of the MSK cluster.</p>
-         
-     */
-    inline ClusterInfo& WithCurrentVersion(const Aws::String& value) { SetCurrentVersion(value); return *this;}
-
-    /**
-     * 
-            <p>The current version of the MSK cluster.</p>
-         
-     */
-    inline ClusterInfo& WithCurrentVersion(Aws::String&& value) { SetCurrentVersion(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>The current version of the MSK cluster.</p>
-         
-     */
-    inline ClusterInfo& WithCurrentVersion(const char* value) { SetCurrentVersion(value); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>Includes all encryption-related information.</p>
          
      */
-    inline const EncryptionInfo& GetEncryptionInfo() const{ return m_encryptionInfo; }
-
-    /**
-     * 
-            <p>Includes all encryption-related information.</p>
-         
-     */
+    inline const EncryptionInfo& GetEncryptionInfo() const { return m_encryptionInfo; }
     inline bool EncryptionInfoHasBeenSet() const { return m_encryptionInfoHasBeenSet; }
+    template<typename EncryptionInfoT = EncryptionInfo>
+    void SetEncryptionInfo(EncryptionInfoT&& value) { m_encryptionInfoHasBeenSet = true; m_encryptionInfo = std::forward<EncryptionInfoT>(value); }
+    template<typename EncryptionInfoT = EncryptionInfo>
+    ClusterInfo& WithEncryptionInfo(EncryptionInfoT&& value) { SetEncryptionInfo(std::forward<EncryptionInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>Includes all encryption-related information.</p>
-         
-     */
-    inline void SetEncryptionInfo(const EncryptionInfo& value) { m_encryptionInfoHasBeenSet = true; m_encryptionInfo = value; }
-
-    /**
-     * 
-            <p>Includes all encryption-related information.</p>
-         
-     */
-    inline void SetEncryptionInfo(EncryptionInfo&& value) { m_encryptionInfoHasBeenSet = true; m_encryptionInfo = std::move(value); }
-
-    /**
-     * 
-            <p>Includes all encryption-related information.</p>
-         
-     */
-    inline ClusterInfo& WithEncryptionInfo(const EncryptionInfo& value) { SetEncryptionInfo(value); return *this;}
-
-    /**
-     * 
-            <p>Includes all encryption-related information.</p>
-         
-     */
-    inline ClusterInfo& WithEncryptionInfo(EncryptionInfo&& value) { SetEncryptionInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>Specifies which metrics are gathered for the MSK cluster. This
@@ -519,160 +192,49 @@ namespace Model
 
      *         
      */
-    inline const EnhancedMonitoring& GetEnhancedMonitoring() const{ return m_enhancedMonitoring; }
-
-    /**
-     * 
-            <p>Specifies which metrics are gathered for the MSK cluster. This
-     * property has the following possible values: DEFAULT, PER_BROKER,
-     * PER_TOPIC_PER_BROKER, and PER_TOPIC_PER_PARTITION. For a list of the metrics
-     * associated with each of these levels of monitoring, see <a
-     * href="https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html">Monitoring</a>.</p>
-
-     *         
-     */
+    inline EnhancedMonitoring GetEnhancedMonitoring() const { return m_enhancedMonitoring; }
     inline bool EnhancedMonitoringHasBeenSet() const { return m_enhancedMonitoringHasBeenSet; }
+    inline void SetEnhancedMonitoring(EnhancedMonitoring value) { m_enhancedMonitoringHasBeenSet = true; m_enhancedMonitoring = value; }
+    inline ClusterInfo& WithEnhancedMonitoring(EnhancedMonitoring value) { SetEnhancedMonitoring(value); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>Specifies which metrics are gathered for the MSK cluster. This
-     * property has the following possible values: DEFAULT, PER_BROKER,
-     * PER_TOPIC_PER_BROKER, and PER_TOPIC_PER_PARTITION. For a list of the metrics
-     * associated with each of these levels of monitoring, see <a
-     * href="https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html">Monitoring</a>.</p>
-
-     *         
-     */
-    inline void SetEnhancedMonitoring(const EnhancedMonitoring& value) { m_enhancedMonitoringHasBeenSet = true; m_enhancedMonitoring = value; }
-
-    /**
-     * 
-            <p>Specifies which metrics are gathered for the MSK cluster. This
-     * property has the following possible values: DEFAULT, PER_BROKER,
-     * PER_TOPIC_PER_BROKER, and PER_TOPIC_PER_PARTITION. For a list of the metrics
-     * associated with each of these levels of monitoring, see <a
-     * href="https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html">Monitoring</a>.</p>
-
-     *         
-     */
-    inline void SetEnhancedMonitoring(EnhancedMonitoring&& value) { m_enhancedMonitoringHasBeenSet = true; m_enhancedMonitoring = std::move(value); }
-
-    /**
-     * 
-            <p>Specifies which metrics are gathered for the MSK cluster. This
-     * property has the following possible values: DEFAULT, PER_BROKER,
-     * PER_TOPIC_PER_BROKER, and PER_TOPIC_PER_PARTITION. For a list of the metrics
-     * associated with each of these levels of monitoring, see <a
-     * href="https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html">Monitoring</a>.</p>
-
-     *         
-     */
-    inline ClusterInfo& WithEnhancedMonitoring(const EnhancedMonitoring& value) { SetEnhancedMonitoring(value); return *this;}
-
-    /**
-     * 
-            <p>Specifies which metrics are gathered for the MSK cluster. This
-     * property has the following possible values: DEFAULT, PER_BROKER,
-     * PER_TOPIC_PER_BROKER, and PER_TOPIC_PER_PARTITION. For a list of the metrics
-     * associated with each of these levels of monitoring, see <a
-     * href="https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html">Monitoring</a>.</p>
-
-     *         
-     */
-    inline ClusterInfo& WithEnhancedMonitoring(EnhancedMonitoring&& value) { SetEnhancedMonitoring(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>Settings for open monitoring using Prometheus.</p>
          
      */
-    inline const OpenMonitoring& GetOpenMonitoring() const{ return m_openMonitoring; }
-
-    /**
-     * 
-            <p>Settings for open monitoring using Prometheus.</p>
-         
-     */
+    inline const OpenMonitoring& GetOpenMonitoring() const { return m_openMonitoring; }
     inline bool OpenMonitoringHasBeenSet() const { return m_openMonitoringHasBeenSet; }
+    template<typename OpenMonitoringT = OpenMonitoring>
+    void SetOpenMonitoring(OpenMonitoringT&& value) { m_openMonitoringHasBeenSet = true; m_openMonitoring = std::forward<OpenMonitoringT>(value); }
+    template<typename OpenMonitoringT = OpenMonitoring>
+    ClusterInfo& WithOpenMonitoring(OpenMonitoringT&& value) { SetOpenMonitoring(std::forward<OpenMonitoringT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>Settings for open monitoring using Prometheus.</p>
-         
-     */
-    inline void SetOpenMonitoring(const OpenMonitoring& value) { m_openMonitoringHasBeenSet = true; m_openMonitoring = value; }
-
-    /**
-     * 
-            <p>Settings for open monitoring using Prometheus.</p>
-         
-     */
-    inline void SetOpenMonitoring(OpenMonitoring&& value) { m_openMonitoringHasBeenSet = true; m_openMonitoring = std::move(value); }
-
-    /**
-     * 
-            <p>Settings for open monitoring using Prometheus.</p>
-         
-     */
-    inline ClusterInfo& WithOpenMonitoring(const OpenMonitoring& value) { SetOpenMonitoring(value); return *this;}
-
-    /**
-     * 
-            <p>Settings for open monitoring using Prometheus.</p>
-         
-     */
-    inline ClusterInfo& WithOpenMonitoring(OpenMonitoring&& value) { SetOpenMonitoring(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const LoggingInfo& GetLoggingInfo() const{ return m_loggingInfo; }
-
-    
+    inline const LoggingInfo& GetLoggingInfo() const { return m_loggingInfo; }
     inline bool LoggingInfoHasBeenSet() const { return m_loggingInfoHasBeenSet; }
+    template<typename LoggingInfoT = LoggingInfo>
+    void SetLoggingInfo(LoggingInfoT&& value) { m_loggingInfoHasBeenSet = true; m_loggingInfo = std::forward<LoggingInfoT>(value); }
+    template<typename LoggingInfoT = LoggingInfo>
+    ClusterInfo& WithLoggingInfo(LoggingInfoT&& value) { SetLoggingInfo(std::forward<LoggingInfoT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetLoggingInfo(const LoggingInfo& value) { m_loggingInfoHasBeenSet = true; m_loggingInfo = value; }
-
-    
-    inline void SetLoggingInfo(LoggingInfo&& value) { m_loggingInfoHasBeenSet = true; m_loggingInfo = std::move(value); }
-
-    
-    inline ClusterInfo& WithLoggingInfo(const LoggingInfo& value) { SetLoggingInfo(value); return *this;}
-
-    
-    inline ClusterInfo& WithLoggingInfo(LoggingInfo&& value) { SetLoggingInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>The number of broker nodes in the cluster.</p>
          
      */
-    inline int GetNumberOfBrokerNodes() const{ return m_numberOfBrokerNodes; }
-
-    /**
-     * 
-            <p>The number of broker nodes in the cluster.</p>
-         
-     */
+    inline int GetNumberOfBrokerNodes() const { return m_numberOfBrokerNodes; }
     inline bool NumberOfBrokerNodesHasBeenSet() const { return m_numberOfBrokerNodesHasBeenSet; }
-
-    /**
-     * 
-            <p>The number of broker nodes in the cluster.</p>
-         
-     */
     inline void SetNumberOfBrokerNodes(int value) { m_numberOfBrokerNodesHasBeenSet = true; m_numberOfBrokerNodes = value; }
-
-    /**
-     * 
-            <p>The number of broker nodes in the cluster.</p>
-         
-     */
     inline ClusterInfo& WithNumberOfBrokerNodes(int value) { SetNumberOfBrokerNodes(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * 
             <p>The state of the cluster. The possible states are ACTIVE,
@@ -680,343 +242,95 @@ namespace Model
      * UPDATING.</p>
          
      */
-    inline const ClusterState& GetState() const{ return m_state; }
-
-    /**
-     * 
-            <p>The state of the cluster. The possible states are ACTIVE,
-     * CREATING, DELETING, FAILED, HEALING, MAINTENANCE, REBOOTING_BROKER, and
-     * UPDATING.</p>
-         
-     */
+    inline ClusterState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(ClusterState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline ClusterInfo& WithState(ClusterState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>The state of the cluster. The possible states are ACTIVE,
-     * CREATING, DELETING, FAILED, HEALING, MAINTENANCE, REBOOTING_BROKER, and
-     * UPDATING.</p>
-         
-     */
-    inline void SetState(const ClusterState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * 
-            <p>The state of the cluster. The possible states are ACTIVE,
-     * CREATING, DELETING, FAILED, HEALING, MAINTENANCE, REBOOTING_BROKER, and
-     * UPDATING.</p>
-         
-     */
-    inline void SetState(ClusterState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * 
-            <p>The state of the cluster. The possible states are ACTIVE,
-     * CREATING, DELETING, FAILED, HEALING, MAINTENANCE, REBOOTING_BROKER, and
-     * UPDATING.</p>
-         
-     */
-    inline ClusterInfo& WithState(const ClusterState& value) { SetState(value); return *this;}
-
-    /**
-     * 
-            <p>The state of the cluster. The possible states are ACTIVE,
-     * CREATING, DELETING, FAILED, HEALING, MAINTENANCE, REBOOTING_BROKER, and
-     * UPDATING.</p>
-         
-     */
-    inline ClusterInfo& WithState(ClusterState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const StateInfo& GetStateInfo() const{ return m_stateInfo; }
-
-    
+    inline const StateInfo& GetStateInfo() const { return m_stateInfo; }
     inline bool StateInfoHasBeenSet() const { return m_stateInfoHasBeenSet; }
+    template<typename StateInfoT = StateInfo>
+    void SetStateInfo(StateInfoT&& value) { m_stateInfoHasBeenSet = true; m_stateInfo = std::forward<StateInfoT>(value); }
+    template<typename StateInfoT = StateInfo>
+    ClusterInfo& WithStateInfo(StateInfoT&& value) { SetStateInfo(std::forward<StateInfoT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetStateInfo(const StateInfo& value) { m_stateInfoHasBeenSet = true; m_stateInfo = value; }
-
-    
-    inline void SetStateInfo(StateInfo&& value) { m_stateInfoHasBeenSet = true; m_stateInfo = std::move(value); }
-
-    
-    inline ClusterInfo& WithStateInfo(const StateInfo& value) { SetStateInfo(value); return *this;}
-
-    
-    inline ClusterInfo& WithStateInfo(StateInfo&& value) { SetStateInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>Tags attached to the cluster.</p>
          
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * 
-            <p>Tags attached to the cluster.</p>
-         
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    ClusterInfo& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    ClusterInfo& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * 
-            <p>Tags attached to the cluster.</p>
-         
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * 
-            <p>Tags attached to the cluster.</p>
-         
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * 
-            <p>Tags attached to the cluster.</p>
-         
-     */
-    inline ClusterInfo& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * 
-            <p>Tags attached to the cluster.</p>
-         
-     */
-    inline ClusterInfo& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>Tags attached to the cluster.</p>
-         
-     */
-    inline ClusterInfo& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * 
-            <p>Tags attached to the cluster.</p>
-         
-     */
-    inline ClusterInfo& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * 
-            <p>Tags attached to the cluster.</p>
-         
-     */
-    inline ClusterInfo& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * 
-            <p>Tags attached to the cluster.</p>
-         
-     */
-    inline ClusterInfo& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * 
-            <p>Tags attached to the cluster.</p>
-         
-     */
-    inline ClusterInfo& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * 
-            <p>Tags attached to the cluster.</p>
-         
-     */
-    inline ClusterInfo& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * 
-            <p>Tags attached to the cluster.</p>
-         
-     */
-    inline ClusterInfo& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * 
             <p>The connection string to use to connect to the Apache ZooKeeper
      * cluster.</p>
          
      */
-    inline const Aws::String& GetZookeeperConnectString() const{ return m_zookeeperConnectString; }
-
-    /**
-     * 
-            <p>The connection string to use to connect to the Apache ZooKeeper
-     * cluster.</p>
-         
-     */
+    inline const Aws::String& GetZookeeperConnectString() const { return m_zookeeperConnectString; }
     inline bool ZookeeperConnectStringHasBeenSet() const { return m_zookeeperConnectStringHasBeenSet; }
+    template<typename ZookeeperConnectStringT = Aws::String>
+    void SetZookeeperConnectString(ZookeeperConnectStringT&& value) { m_zookeeperConnectStringHasBeenSet = true; m_zookeeperConnectString = std::forward<ZookeeperConnectStringT>(value); }
+    template<typename ZookeeperConnectStringT = Aws::String>
+    ClusterInfo& WithZookeeperConnectString(ZookeeperConnectStringT&& value) { SetZookeeperConnectString(std::forward<ZookeeperConnectStringT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>The connection string to use to connect to the Apache ZooKeeper
-     * cluster.</p>
-         
-     */
-    inline void SetZookeeperConnectString(const Aws::String& value) { m_zookeeperConnectStringHasBeenSet = true; m_zookeeperConnectString = value; }
-
-    /**
-     * 
-            <p>The connection string to use to connect to the Apache ZooKeeper
-     * cluster.</p>
-         
-     */
-    inline void SetZookeeperConnectString(Aws::String&& value) { m_zookeeperConnectStringHasBeenSet = true; m_zookeeperConnectString = std::move(value); }
-
-    /**
-     * 
-            <p>The connection string to use to connect to the Apache ZooKeeper
-     * cluster.</p>
-         
-     */
-    inline void SetZookeeperConnectString(const char* value) { m_zookeeperConnectStringHasBeenSet = true; m_zookeeperConnectString.assign(value); }
-
-    /**
-     * 
-            <p>The connection string to use to connect to the Apache ZooKeeper
-     * cluster.</p>
-         
-     */
-    inline ClusterInfo& WithZookeeperConnectString(const Aws::String& value) { SetZookeeperConnectString(value); return *this;}
-
-    /**
-     * 
-            <p>The connection string to use to connect to the Apache ZooKeeper
-     * cluster.</p>
-         
-     */
-    inline ClusterInfo& WithZookeeperConnectString(Aws::String&& value) { SetZookeeperConnectString(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>The connection string to use to connect to the Apache ZooKeeper
-     * cluster.</p>
-         
-     */
-    inline ClusterInfo& WithZookeeperConnectString(const char* value) { SetZookeeperConnectString(value); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>The connection string to use to connect to zookeeper cluster on
      * Tls port.</p>
          
      */
-    inline const Aws::String& GetZookeeperConnectStringTls() const{ return m_zookeeperConnectStringTls; }
-
-    /**
-     * 
-            <p>The connection string to use to connect to zookeeper cluster on
-     * Tls port.</p>
-         
-     */
+    inline const Aws::String& GetZookeeperConnectStringTls() const { return m_zookeeperConnectStringTls; }
     inline bool ZookeeperConnectStringTlsHasBeenSet() const { return m_zookeeperConnectStringTlsHasBeenSet; }
+    template<typename ZookeeperConnectStringTlsT = Aws::String>
+    void SetZookeeperConnectStringTls(ZookeeperConnectStringTlsT&& value) { m_zookeeperConnectStringTlsHasBeenSet = true; m_zookeeperConnectStringTls = std::forward<ZookeeperConnectStringTlsT>(value); }
+    template<typename ZookeeperConnectStringTlsT = Aws::String>
+    ClusterInfo& WithZookeeperConnectStringTls(ZookeeperConnectStringTlsT&& value) { SetZookeeperConnectStringTls(std::forward<ZookeeperConnectStringTlsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>The connection string to use to connect to zookeeper cluster on
-     * Tls port.</p>
-         
-     */
-    inline void SetZookeeperConnectStringTls(const Aws::String& value) { m_zookeeperConnectStringTlsHasBeenSet = true; m_zookeeperConnectStringTls = value; }
-
-    /**
-     * 
-            <p>The connection string to use to connect to zookeeper cluster on
-     * Tls port.</p>
-         
-     */
-    inline void SetZookeeperConnectStringTls(Aws::String&& value) { m_zookeeperConnectStringTlsHasBeenSet = true; m_zookeeperConnectStringTls = std::move(value); }
-
-    /**
-     * 
-            <p>The connection string to use to connect to zookeeper cluster on
-     * Tls port.</p>
-         
-     */
-    inline void SetZookeeperConnectStringTls(const char* value) { m_zookeeperConnectStringTlsHasBeenSet = true; m_zookeeperConnectStringTls.assign(value); }
-
-    /**
-     * 
-            <p>The connection string to use to connect to zookeeper cluster on
-     * Tls port.</p>
-         
-     */
-    inline ClusterInfo& WithZookeeperConnectStringTls(const Aws::String& value) { SetZookeeperConnectStringTls(value); return *this;}
-
-    /**
-     * 
-            <p>The connection string to use to connect to zookeeper cluster on
-     * Tls port.</p>
-         
-     */
-    inline ClusterInfo& WithZookeeperConnectStringTls(Aws::String&& value) { SetZookeeperConnectStringTls(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>The connection string to use to connect to zookeeper cluster on
-     * Tls port.</p>
-         
-     */
-    inline ClusterInfo& WithZookeeperConnectStringTls(const char* value) { SetZookeeperConnectStringTls(value); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>This controls storage mode for supported storage tiers.</p>
     
      *     
      */
-    inline const StorageMode& GetStorageMode() const{ return m_storageMode; }
-
-    /**
-     * 
-            <p>This controls storage mode for supported storage tiers.</p>
-    
-     *     
-     */
+    inline StorageMode GetStorageMode() const { return m_storageMode; }
     inline bool StorageModeHasBeenSet() const { return m_storageModeHasBeenSet; }
+    inline void SetStorageMode(StorageMode value) { m_storageModeHasBeenSet = true; m_storageMode = value; }
+    inline ClusterInfo& WithStorageMode(StorageMode value) { SetStorageMode(value); return *this;}
+    ///@}
 
+    ///@{
     /**
      * 
-            <p>This controls storage mode for supported storage tiers.</p>
-    
-     *     
+            <p>Determines if there is an action required from the
+     * customer.</p>
+         
      */
-    inline void SetStorageMode(const StorageMode& value) { m_storageModeHasBeenSet = true; m_storageMode = value; }
-
-    /**
-     * 
-            <p>This controls storage mode for supported storage tiers.</p>
-    
-     *     
-     */
-    inline void SetStorageMode(StorageMode&& value) { m_storageModeHasBeenSet = true; m_storageMode = std::move(value); }
-
-    /**
-     * 
-            <p>This controls storage mode for supported storage tiers.</p>
-    
-     *     
-     */
-    inline ClusterInfo& WithStorageMode(const StorageMode& value) { SetStorageMode(value); return *this;}
-
-    /**
-     * 
-            <p>This controls storage mode for supported storage tiers.</p>
-    
-     *     
-     */
-    inline ClusterInfo& WithStorageMode(StorageMode&& value) { SetStorageMode(std::move(value)); return *this;}
-
+    inline CustomerActionStatus GetCustomerActionStatus() const { return m_customerActionStatus; }
+    inline bool CustomerActionStatusHasBeenSet() const { return m_customerActionStatusHasBeenSet; }
+    inline void SetCustomerActionStatus(CustomerActionStatus value) { m_customerActionStatusHasBeenSet = true; m_customerActionStatus = value; }
+    inline ClusterInfo& WithCustomerActionStatus(CustomerActionStatus value) { SetCustomerActionStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_activeOperationArn;
@@ -1034,7 +348,7 @@ namespace Model
     Aws::String m_clusterName;
     bool m_clusterNameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
     bool m_creationTimeHasBeenSet = false;
 
     BrokerSoftwareInfo m_currentBrokerSoftwareInfo;
@@ -1046,7 +360,7 @@ namespace Model
     EncryptionInfo m_encryptionInfo;
     bool m_encryptionInfoHasBeenSet = false;
 
-    EnhancedMonitoring m_enhancedMonitoring;
+    EnhancedMonitoring m_enhancedMonitoring{EnhancedMonitoring::NOT_SET};
     bool m_enhancedMonitoringHasBeenSet = false;
 
     OpenMonitoring m_openMonitoring;
@@ -1055,10 +369,10 @@ namespace Model
     LoggingInfo m_loggingInfo;
     bool m_loggingInfoHasBeenSet = false;
 
-    int m_numberOfBrokerNodes;
+    int m_numberOfBrokerNodes{0};
     bool m_numberOfBrokerNodesHasBeenSet = false;
 
-    ClusterState m_state;
+    ClusterState m_state{ClusterState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
     StateInfo m_stateInfo;
@@ -1073,8 +387,11 @@ namespace Model
     Aws::String m_zookeeperConnectStringTls;
     bool m_zookeeperConnectStringTlsHasBeenSet = false;
 
-    StorageMode m_storageMode;
+    StorageMode m_storageMode{StorageMode::NOT_SET};
     bool m_storageModeHasBeenSet = false;
+
+    CustomerActionStatus m_customerActionStatus{CustomerActionStatus::NOT_SET};
+    bool m_customerActionStatusHasBeenSet = false;
   };
 
 } // namespace Model

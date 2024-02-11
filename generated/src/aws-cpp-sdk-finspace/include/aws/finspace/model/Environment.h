@@ -34,489 +34,153 @@ namespace Model
   class Environment
   {
   public:
-    AWS_FINSPACE_API Environment();
+    AWS_FINSPACE_API Environment() = default;
     AWS_FINSPACE_API Environment(Aws::Utils::Json::JsonView jsonValue);
     AWS_FINSPACE_API Environment& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FINSPACE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the FinSpace environment.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the FinSpace environment.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Environment& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the FinSpace environment.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the FinSpace environment.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the FinSpace environment.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the FinSpace environment.</p>
-     */
-    inline Environment& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the FinSpace environment.</p>
-     */
-    inline Environment& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the FinSpace environment.</p>
-     */
-    inline Environment& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the FinSpace environment.</p>
      */
-    inline const Aws::String& GetEnvironmentId() const{ return m_environmentId; }
-
-    /**
-     * <p>The identifier of the FinSpace environment.</p>
-     */
+    inline const Aws::String& GetEnvironmentId() const { return m_environmentId; }
     inline bool EnvironmentIdHasBeenSet() const { return m_environmentIdHasBeenSet; }
+    template<typename EnvironmentIdT = Aws::String>
+    void SetEnvironmentId(EnvironmentIdT&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::forward<EnvironmentIdT>(value); }
+    template<typename EnvironmentIdT = Aws::String>
+    Environment& WithEnvironmentId(EnvironmentIdT&& value) { SetEnvironmentId(std::forward<EnvironmentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the FinSpace environment.</p>
-     */
-    inline void SetEnvironmentId(const Aws::String& value) { m_environmentIdHasBeenSet = true; m_environmentId = value; }
-
-    /**
-     * <p>The identifier of the FinSpace environment.</p>
-     */
-    inline void SetEnvironmentId(Aws::String&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::move(value); }
-
-    /**
-     * <p>The identifier of the FinSpace environment.</p>
-     */
-    inline void SetEnvironmentId(const char* value) { m_environmentIdHasBeenSet = true; m_environmentId.assign(value); }
-
-    /**
-     * <p>The identifier of the FinSpace environment.</p>
-     */
-    inline Environment& WithEnvironmentId(const Aws::String& value) { SetEnvironmentId(value); return *this;}
-
-    /**
-     * <p>The identifier of the FinSpace environment.</p>
-     */
-    inline Environment& WithEnvironmentId(Aws::String&& value) { SetEnvironmentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the FinSpace environment.</p>
-     */
-    inline Environment& WithEnvironmentId(const char* value) { SetEnvironmentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the AWS account in which the FinSpace environment is created.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The ID of the AWS account in which the FinSpace environment is created.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    Environment& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the AWS account in which the FinSpace environment is created.</p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The ID of the AWS account in which the FinSpace environment is created.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The ID of the AWS account in which the FinSpace environment is created.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The ID of the AWS account in which the FinSpace environment is created.</p>
-     */
-    inline Environment& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The ID of the AWS account in which the FinSpace environment is created.</p>
-     */
-    inline Environment& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the AWS account in which the FinSpace environment is created.</p>
-     */
-    inline Environment& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of creation of the FinSpace environment.</p>
      */
-    inline const EnvironmentStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The current status of creation of the FinSpace environment.</p>
-     */
+    inline EnvironmentStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(EnvironmentStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline Environment& WithStatus(EnvironmentStatus value) { SetStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The current status of creation of the FinSpace environment.</p>
+     * <p>The sign-in URL for the web application of your FinSpace environment.</p>
      */
-    inline void SetStatus(const EnvironmentStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The current status of creation of the FinSpace environment.</p>
-     */
-    inline void SetStatus(EnvironmentStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The current status of creation of the FinSpace environment.</p>
-     */
-    inline Environment& WithStatus(const EnvironmentStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of creation of the FinSpace environment.</p>
-     */
-    inline Environment& WithStatus(EnvironmentStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The sign-in url for the web application of your FinSpace environment.</p>
-     */
-    inline const Aws::String& GetEnvironmentUrl() const{ return m_environmentUrl; }
-
-    /**
-     * <p>The sign-in url for the web application of your FinSpace environment.</p>
-     */
+    inline const Aws::String& GetEnvironmentUrl() const { return m_environmentUrl; }
     inline bool EnvironmentUrlHasBeenSet() const { return m_environmentUrlHasBeenSet; }
+    template<typename EnvironmentUrlT = Aws::String>
+    void SetEnvironmentUrl(EnvironmentUrlT&& value) { m_environmentUrlHasBeenSet = true; m_environmentUrl = std::forward<EnvironmentUrlT>(value); }
+    template<typename EnvironmentUrlT = Aws::String>
+    Environment& WithEnvironmentUrl(EnvironmentUrlT&& value) { SetEnvironmentUrl(std::forward<EnvironmentUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The sign-in url for the web application of your FinSpace environment.</p>
-     */
-    inline void SetEnvironmentUrl(const Aws::String& value) { m_environmentUrlHasBeenSet = true; m_environmentUrl = value; }
-
-    /**
-     * <p>The sign-in url for the web application of your FinSpace environment.</p>
-     */
-    inline void SetEnvironmentUrl(Aws::String&& value) { m_environmentUrlHasBeenSet = true; m_environmentUrl = std::move(value); }
-
-    /**
-     * <p>The sign-in url for the web application of your FinSpace environment.</p>
-     */
-    inline void SetEnvironmentUrl(const char* value) { m_environmentUrlHasBeenSet = true; m_environmentUrl.assign(value); }
-
-    /**
-     * <p>The sign-in url for the web application of your FinSpace environment.</p>
-     */
-    inline Environment& WithEnvironmentUrl(const Aws::String& value) { SetEnvironmentUrl(value); return *this;}
-
-    /**
-     * <p>The sign-in url for the web application of your FinSpace environment.</p>
-     */
-    inline Environment& WithEnvironmentUrl(Aws::String&& value) { SetEnvironmentUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The sign-in url for the web application of your FinSpace environment.</p>
-     */
-    inline Environment& WithEnvironmentUrl(const char* value) { SetEnvironmentUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the FinSpace environment.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the FinSpace environment.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    Environment& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the FinSpace environment.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the FinSpace environment.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the FinSpace environment.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the FinSpace environment.</p>
-     */
-    inline Environment& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the FinSpace environment.</p>
-     */
-    inline Environment& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the FinSpace environment.</p>
-     */
-    inline Environment& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of your FinSpace environment.</p>
      */
-    inline const Aws::String& GetEnvironmentArn() const{ return m_environmentArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of your FinSpace environment.</p>
-     */
+    inline const Aws::String& GetEnvironmentArn() const { return m_environmentArn; }
     inline bool EnvironmentArnHasBeenSet() const { return m_environmentArnHasBeenSet; }
+    template<typename EnvironmentArnT = Aws::String>
+    void SetEnvironmentArn(EnvironmentArnT&& value) { m_environmentArnHasBeenSet = true; m_environmentArn = std::forward<EnvironmentArnT>(value); }
+    template<typename EnvironmentArnT = Aws::String>
+    Environment& WithEnvironmentArn(EnvironmentArnT&& value) { SetEnvironmentArn(std::forward<EnvironmentArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of your FinSpace environment.</p>
-     */
-    inline void SetEnvironmentArn(const Aws::String& value) { m_environmentArnHasBeenSet = true; m_environmentArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of your FinSpace environment.</p>
-     */
-    inline void SetEnvironmentArn(Aws::String&& value) { m_environmentArnHasBeenSet = true; m_environmentArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of your FinSpace environment.</p>
-     */
-    inline void SetEnvironmentArn(const char* value) { m_environmentArnHasBeenSet = true; m_environmentArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of your FinSpace environment.</p>
-     */
-    inline Environment& WithEnvironmentArn(const Aws::String& value) { SetEnvironmentArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of your FinSpace environment.</p>
-     */
-    inline Environment& WithEnvironmentArn(Aws::String&& value) { SetEnvironmentArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of your FinSpace environment.</p>
-     */
-    inline Environment& WithEnvironmentArn(const char* value) { SetEnvironmentArn(value); return *this;}
-
-
-    /**
-     * <p>The url of the integrated FinSpace notebook environment in your web
+     * <p>The URL of the integrated FinSpace notebook environment in your web
      * application.</p>
      */
-    inline const Aws::String& GetSageMakerStudioDomainUrl() const{ return m_sageMakerStudioDomainUrl; }
-
-    /**
-     * <p>The url of the integrated FinSpace notebook environment in your web
-     * application.</p>
-     */
+    inline const Aws::String& GetSageMakerStudioDomainUrl() const { return m_sageMakerStudioDomainUrl; }
     inline bool SageMakerStudioDomainUrlHasBeenSet() const { return m_sageMakerStudioDomainUrlHasBeenSet; }
+    template<typename SageMakerStudioDomainUrlT = Aws::String>
+    void SetSageMakerStudioDomainUrl(SageMakerStudioDomainUrlT&& value) { m_sageMakerStudioDomainUrlHasBeenSet = true; m_sageMakerStudioDomainUrl = std::forward<SageMakerStudioDomainUrlT>(value); }
+    template<typename SageMakerStudioDomainUrlT = Aws::String>
+    Environment& WithSageMakerStudioDomainUrl(SageMakerStudioDomainUrlT&& value) { SetSageMakerStudioDomainUrl(std::forward<SageMakerStudioDomainUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The url of the integrated FinSpace notebook environment in your web
-     * application.</p>
-     */
-    inline void SetSageMakerStudioDomainUrl(const Aws::String& value) { m_sageMakerStudioDomainUrlHasBeenSet = true; m_sageMakerStudioDomainUrl = value; }
-
-    /**
-     * <p>The url of the integrated FinSpace notebook environment in your web
-     * application.</p>
-     */
-    inline void SetSageMakerStudioDomainUrl(Aws::String&& value) { m_sageMakerStudioDomainUrlHasBeenSet = true; m_sageMakerStudioDomainUrl = std::move(value); }
-
-    /**
-     * <p>The url of the integrated FinSpace notebook environment in your web
-     * application.</p>
-     */
-    inline void SetSageMakerStudioDomainUrl(const char* value) { m_sageMakerStudioDomainUrlHasBeenSet = true; m_sageMakerStudioDomainUrl.assign(value); }
-
-    /**
-     * <p>The url of the integrated FinSpace notebook environment in your web
-     * application.</p>
-     */
-    inline Environment& WithSageMakerStudioDomainUrl(const Aws::String& value) { SetSageMakerStudioDomainUrl(value); return *this;}
-
-    /**
-     * <p>The url of the integrated FinSpace notebook environment in your web
-     * application.</p>
-     */
-    inline Environment& WithSageMakerStudioDomainUrl(Aws::String&& value) { SetSageMakerStudioDomainUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The url of the integrated FinSpace notebook environment in your web
-     * application.</p>
-     */
-    inline Environment& WithSageMakerStudioDomainUrl(const char* value) { SetSageMakerStudioDomainUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The KMS key id used to encrypt in the FinSpace environment.</p>
      */
-    inline const Aws::String& GetKmsKeyId() const{ return m_kmsKeyId; }
-
-    /**
-     * <p>The KMS key id used to encrypt in the FinSpace environment.</p>
-     */
+    inline const Aws::String& GetKmsKeyId() const { return m_kmsKeyId; }
     inline bool KmsKeyIdHasBeenSet() const { return m_kmsKeyIdHasBeenSet; }
+    template<typename KmsKeyIdT = Aws::String>
+    void SetKmsKeyId(KmsKeyIdT&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::forward<KmsKeyIdT>(value); }
+    template<typename KmsKeyIdT = Aws::String>
+    Environment& WithKmsKeyId(KmsKeyIdT&& value) { SetKmsKeyId(std::forward<KmsKeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The KMS key id used to encrypt in the FinSpace environment.</p>
-     */
-    inline void SetKmsKeyId(const Aws::String& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = value; }
-
-    /**
-     * <p>The KMS key id used to encrypt in the FinSpace environment.</p>
-     */
-    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::move(value); }
-
-    /**
-     * <p>The KMS key id used to encrypt in the FinSpace environment.</p>
-     */
-    inline void SetKmsKeyId(const char* value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId.assign(value); }
-
-    /**
-     * <p>The KMS key id used to encrypt in the FinSpace environment.</p>
-     */
-    inline Environment& WithKmsKeyId(const Aws::String& value) { SetKmsKeyId(value); return *this;}
-
-    /**
-     * <p>The KMS key id used to encrypt in the FinSpace environment.</p>
-     */
-    inline Environment& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The KMS key id used to encrypt in the FinSpace environment.</p>
-     */
-    inline Environment& WithKmsKeyId(const char* value) { SetKmsKeyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The AWS account ID of the dedicated service account associated with your
      * FinSpace environment.</p>
      */
-    inline const Aws::String& GetDedicatedServiceAccountId() const{ return m_dedicatedServiceAccountId; }
-
-    /**
-     * <p>The AWS account ID of the dedicated service account associated with your
-     * FinSpace environment.</p>
-     */
+    inline const Aws::String& GetDedicatedServiceAccountId() const { return m_dedicatedServiceAccountId; }
     inline bool DedicatedServiceAccountIdHasBeenSet() const { return m_dedicatedServiceAccountIdHasBeenSet; }
+    template<typename DedicatedServiceAccountIdT = Aws::String>
+    void SetDedicatedServiceAccountId(DedicatedServiceAccountIdT&& value) { m_dedicatedServiceAccountIdHasBeenSet = true; m_dedicatedServiceAccountId = std::forward<DedicatedServiceAccountIdT>(value); }
+    template<typename DedicatedServiceAccountIdT = Aws::String>
+    Environment& WithDedicatedServiceAccountId(DedicatedServiceAccountIdT&& value) { SetDedicatedServiceAccountId(std::forward<DedicatedServiceAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The AWS account ID of the dedicated service account associated with your
-     * FinSpace environment.</p>
-     */
-    inline void SetDedicatedServiceAccountId(const Aws::String& value) { m_dedicatedServiceAccountIdHasBeenSet = true; m_dedicatedServiceAccountId = value; }
-
-    /**
-     * <p>The AWS account ID of the dedicated service account associated with your
-     * FinSpace environment.</p>
-     */
-    inline void SetDedicatedServiceAccountId(Aws::String&& value) { m_dedicatedServiceAccountIdHasBeenSet = true; m_dedicatedServiceAccountId = std::move(value); }
-
-    /**
-     * <p>The AWS account ID of the dedicated service account associated with your
-     * FinSpace environment.</p>
-     */
-    inline void SetDedicatedServiceAccountId(const char* value) { m_dedicatedServiceAccountIdHasBeenSet = true; m_dedicatedServiceAccountId.assign(value); }
-
-    /**
-     * <p>The AWS account ID of the dedicated service account associated with your
-     * FinSpace environment.</p>
-     */
-    inline Environment& WithDedicatedServiceAccountId(const Aws::String& value) { SetDedicatedServiceAccountId(value); return *this;}
-
-    /**
-     * <p>The AWS account ID of the dedicated service account associated with your
-     * FinSpace environment.</p>
-     */
-    inline Environment& WithDedicatedServiceAccountId(Aws::String&& value) { SetDedicatedServiceAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The AWS account ID of the dedicated service account associated with your
-     * FinSpace environment.</p>
-     */
-    inline Environment& WithDedicatedServiceAccountId(const char* value) { SetDedicatedServiceAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The authentication mode for the environment.</p>
      */
-    inline const FederationMode& GetFederationMode() const{ return m_federationMode; }
-
-    /**
-     * <p>The authentication mode for the environment.</p>
-     */
+    inline FederationMode GetFederationMode() const { return m_federationMode; }
     inline bool FederationModeHasBeenSet() const { return m_federationModeHasBeenSet; }
+    inline void SetFederationMode(FederationMode value) { m_federationModeHasBeenSet = true; m_federationMode = value; }
+    inline Environment& WithFederationMode(FederationMode value) { SetFederationMode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The authentication mode for the environment.</p>
-     */
-    inline void SetFederationMode(const FederationMode& value) { m_federationModeHasBeenSet = true; m_federationMode = value; }
-
-    /**
-     * <p>The authentication mode for the environment.</p>
-     */
-    inline void SetFederationMode(FederationMode&& value) { m_federationModeHasBeenSet = true; m_federationMode = std::move(value); }
-
-    /**
-     * <p>The authentication mode for the environment.</p>
-     */
-    inline Environment& WithFederationMode(const FederationMode& value) { SetFederationMode(value); return *this;}
-
-    /**
-     * <p>The authentication mode for the environment.</p>
-     */
-    inline Environment& WithFederationMode(FederationMode&& value) { SetFederationMode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Configuration information when authentication mode is FEDERATED.</p>
      */
-    inline const FederationParameters& GetFederationParameters() const{ return m_federationParameters; }
-
-    /**
-     * <p>Configuration information when authentication mode is FEDERATED.</p>
-     */
+    inline const FederationParameters& GetFederationParameters() const { return m_federationParameters; }
     inline bool FederationParametersHasBeenSet() const { return m_federationParametersHasBeenSet; }
-
-    /**
-     * <p>Configuration information when authentication mode is FEDERATED.</p>
-     */
-    inline void SetFederationParameters(const FederationParameters& value) { m_federationParametersHasBeenSet = true; m_federationParameters = value; }
-
-    /**
-     * <p>Configuration information when authentication mode is FEDERATED.</p>
-     */
-    inline void SetFederationParameters(FederationParameters&& value) { m_federationParametersHasBeenSet = true; m_federationParameters = std::move(value); }
-
-    /**
-     * <p>Configuration information when authentication mode is FEDERATED.</p>
-     */
-    inline Environment& WithFederationParameters(const FederationParameters& value) { SetFederationParameters(value); return *this;}
-
-    /**
-     * <p>Configuration information when authentication mode is FEDERATED.</p>
-     */
-    inline Environment& WithFederationParameters(FederationParameters&& value) { SetFederationParameters(std::move(value)); return *this;}
-
+    template<typename FederationParametersT = FederationParameters>
+    void SetFederationParameters(FederationParametersT&& value) { m_federationParametersHasBeenSet = true; m_federationParameters = std::forward<FederationParametersT>(value); }
+    template<typename FederationParametersT = FederationParameters>
+    Environment& WithFederationParameters(FederationParametersT&& value) { SetFederationParameters(std::forward<FederationParametersT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -528,7 +192,7 @@ namespace Model
     Aws::String m_awsAccountId;
     bool m_awsAccountIdHasBeenSet = false;
 
-    EnvironmentStatus m_status;
+    EnvironmentStatus m_status{EnvironmentStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_environmentUrl;
@@ -549,7 +213,7 @@ namespace Model
     Aws::String m_dedicatedServiceAccountId;
     bool m_dedicatedServiceAccountIdHasBeenSet = false;
 
-    FederationMode m_federationMode;
+    FederationMode m_federationMode{FederationMode::NOT_SET};
     bool m_federationModeHasBeenSet = false;
 
     FederationParameters m_federationParameters;

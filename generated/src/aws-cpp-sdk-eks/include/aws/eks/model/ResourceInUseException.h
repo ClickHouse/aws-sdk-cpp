@@ -31,143 +31,59 @@ namespace Model
   class ResourceInUseException
   {
   public:
-    AWS_EKS_API ResourceInUseException();
+    AWS_EKS_API ResourceInUseException() = default;
     AWS_EKS_API ResourceInUseException(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API ResourceInUseException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon EKS cluster associated with the exception.</p>
      */
-    inline const Aws::String& GetClusterName() const{ return m_clusterName; }
-
-    /**
-     * <p>The Amazon EKS cluster associated with the exception.</p>
-     */
+    inline const Aws::String& GetClusterName() const { return m_clusterName; }
     inline bool ClusterNameHasBeenSet() const { return m_clusterNameHasBeenSet; }
+    template<typename ClusterNameT = Aws::String>
+    void SetClusterName(ClusterNameT&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::forward<ClusterNameT>(value); }
+    template<typename ClusterNameT = Aws::String>
+    ResourceInUseException& WithClusterName(ClusterNameT&& value) { SetClusterName(std::forward<ClusterNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon EKS cluster associated with the exception.</p>
-     */
-    inline void SetClusterName(const Aws::String& value) { m_clusterNameHasBeenSet = true; m_clusterName = value; }
-
-    /**
-     * <p>The Amazon EKS cluster associated with the exception.</p>
-     */
-    inline void SetClusterName(Aws::String&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::move(value); }
-
-    /**
-     * <p>The Amazon EKS cluster associated with the exception.</p>
-     */
-    inline void SetClusterName(const char* value) { m_clusterNameHasBeenSet = true; m_clusterName.assign(value); }
-
-    /**
-     * <p>The Amazon EKS cluster associated with the exception.</p>
-     */
-    inline ResourceInUseException& WithClusterName(const Aws::String& value) { SetClusterName(value); return *this;}
-
-    /**
-     * <p>The Amazon EKS cluster associated with the exception.</p>
-     */
-    inline ResourceInUseException& WithClusterName(Aws::String&& value) { SetClusterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon EKS cluster associated with the exception.</p>
-     */
-    inline ResourceInUseException& WithClusterName(const char* value) { SetClusterName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon EKS managed node group associated with the exception.</p>
      */
-    inline const Aws::String& GetNodegroupName() const{ return m_nodegroupName; }
-
-    /**
-     * <p>The Amazon EKS managed node group associated with the exception.</p>
-     */
+    inline const Aws::String& GetNodegroupName() const { return m_nodegroupName; }
     inline bool NodegroupNameHasBeenSet() const { return m_nodegroupNameHasBeenSet; }
+    template<typename NodegroupNameT = Aws::String>
+    void SetNodegroupName(NodegroupNameT&& value) { m_nodegroupNameHasBeenSet = true; m_nodegroupName = std::forward<NodegroupNameT>(value); }
+    template<typename NodegroupNameT = Aws::String>
+    ResourceInUseException& WithNodegroupName(NodegroupNameT&& value) { SetNodegroupName(std::forward<NodegroupNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon EKS managed node group associated with the exception.</p>
+     * <p>The specified add-on name is in use.</p>
      */
-    inline void SetNodegroupName(const Aws::String& value) { m_nodegroupNameHasBeenSet = true; m_nodegroupName = value; }
-
-    /**
-     * <p>The Amazon EKS managed node group associated with the exception.</p>
-     */
-    inline void SetNodegroupName(Aws::String&& value) { m_nodegroupNameHasBeenSet = true; m_nodegroupName = std::move(value); }
-
-    /**
-     * <p>The Amazon EKS managed node group associated with the exception.</p>
-     */
-    inline void SetNodegroupName(const char* value) { m_nodegroupNameHasBeenSet = true; m_nodegroupName.assign(value); }
-
-    /**
-     * <p>The Amazon EKS managed node group associated with the exception.</p>
-     */
-    inline ResourceInUseException& WithNodegroupName(const Aws::String& value) { SetNodegroupName(value); return *this;}
-
-    /**
-     * <p>The Amazon EKS managed node group associated with the exception.</p>
-     */
-    inline ResourceInUseException& WithNodegroupName(Aws::String&& value) { SetNodegroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon EKS managed node group associated with the exception.</p>
-     */
-    inline ResourceInUseException& WithNodegroupName(const char* value) { SetNodegroupName(value); return *this;}
-
-
-    
-    inline const Aws::String& GetAddonName() const{ return m_addonName; }
-
-    
+    inline const Aws::String& GetAddonName() const { return m_addonName; }
     inline bool AddonNameHasBeenSet() const { return m_addonNameHasBeenSet; }
+    template<typename AddonNameT = Aws::String>
+    void SetAddonName(AddonNameT&& value) { m_addonNameHasBeenSet = true; m_addonName = std::forward<AddonNameT>(value); }
+    template<typename AddonNameT = Aws::String>
+    ResourceInUseException& WithAddonName(AddonNameT&& value) { SetAddonName(std::forward<AddonNameT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetAddonName(const Aws::String& value) { m_addonNameHasBeenSet = true; m_addonName = value; }
-
-    
-    inline void SetAddonName(Aws::String&& value) { m_addonNameHasBeenSet = true; m_addonName = std::move(value); }
-
-    
-    inline void SetAddonName(const char* value) { m_addonNameHasBeenSet = true; m_addonName.assign(value); }
-
-    
-    inline ResourceInUseException& WithAddonName(const Aws::String& value) { SetAddonName(value); return *this;}
-
-    
-    inline ResourceInUseException& WithAddonName(Aws::String&& value) { SetAddonName(std::move(value)); return *this;}
-
-    
-    inline ResourceInUseException& WithAddonName(const char* value) { SetAddonName(value); return *this;}
-
-
-    
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    
+    ///@{
+    /**
+     * <p>The Amazon EKS message associated with the exception.</p>
+     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    
-    inline ResourceInUseException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    
-    inline ResourceInUseException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    
-    inline ResourceInUseException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    ResourceInUseException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterName;

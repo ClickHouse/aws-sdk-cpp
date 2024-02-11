@@ -16,13 +16,7 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws;
 
-GetBucketAccelerateConfigurationResult::GetBucketAccelerateConfigurationResult() : 
-    m_status(BucketAccelerateStatus::NOT_SET)
-{
-}
-
-GetBucketAccelerateConfigurationResult::GetBucketAccelerateConfigurationResult(const Aws::AmazonWebServiceResult<XmlDocument>& result) : 
-    m_status(BucketAccelerateStatus::NOT_SET)
+GetBucketAccelerateConfigurationResult::GetBucketAccelerateConfigurationResult(const Aws::AmazonWebServiceResult<XmlDocument>& result)
 {
   *this = result;
 }
@@ -37,15 +31,24 @@ GetBucketAccelerateConfigurationResult& GetBucketAccelerateConfigurationResult::
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = BucketAccelerateStatusMapper::GetBucketAccelerateStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = BucketAccelerateStatusMapper::GetBucketAccelerateStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
+      m_statusHasBeenSet = true;
     }
   }
 
   const auto& headers = result.GetHeaderValueCollection();
+  const auto& requestChargedIter = headers.find("x-amz-request-charged");
+  if(requestChargedIter != headers.end())
+  {
+    m_requestCharged = RequestChargedMapper::GetRequestChargedForName(requestChargedIter->second);
+    m_requestChargedHasBeenSet = true;
+  }
+
   const auto& requestIdIter = headers.find("x-amz-request-id");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
   return *this;

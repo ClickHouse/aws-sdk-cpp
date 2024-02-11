@@ -18,17 +18,7 @@ namespace IoTWireless
 namespace Model
 {
 
-DeviceRegistrationStateEventConfiguration::DeviceRegistrationStateEventConfiguration() : 
-    m_sidewalkHasBeenSet(false),
-    m_wirelessDeviceIdEventTopic(EventNotificationTopicStatus::NOT_SET),
-    m_wirelessDeviceIdEventTopicHasBeenSet(false)
-{
-}
-
-DeviceRegistrationStateEventConfiguration::DeviceRegistrationStateEventConfiguration(JsonView jsonValue) : 
-    m_sidewalkHasBeenSet(false),
-    m_wirelessDeviceIdEventTopic(EventNotificationTopicStatus::NOT_SET),
-    m_wirelessDeviceIdEventTopicHasBeenSet(false)
+DeviceRegistrationStateEventConfiguration::DeviceRegistrationStateEventConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ DeviceRegistrationStateEventConfiguration& DeviceRegistrationStateEventConfigura
   if(jsonValue.ValueExists("Sidewalk"))
   {
     m_sidewalk = jsonValue.GetObject("Sidewalk");
-
     m_sidewalkHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WirelessDeviceIdEventTopic"))
   {
     m_wirelessDeviceIdEventTopic = EventNotificationTopicStatusMapper::GetEventNotificationTopicStatusForName(jsonValue.GetString("WirelessDeviceIdEventTopic"));
-
     m_wirelessDeviceIdEventTopicHasBeenSet = true;
   }
-
   return *this;
 }
 

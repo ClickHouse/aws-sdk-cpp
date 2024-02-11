@@ -21,7 +21,7 @@ namespace Model
   class DeleteEventsConfigurationRequest : public ChimeRequest
   {
   public:
-    AWS_CHIME_API DeleteEventsConfigurationRequest();
+    AWS_CHIME_API DeleteEventsConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_CHIME_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Chime account ID.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The Amazon Chime account ID.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    DeleteEventsConfigurationRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Chime account ID.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The Amazon Chime account ID.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Chime account ID.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The Amazon Chime account ID.</p>
-     */
-    inline DeleteEventsConfigurationRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Chime account ID.</p>
-     */
-    inline DeleteEventsConfigurationRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Chime account ID.</p>
-     */
-    inline DeleteEventsConfigurationRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The bot ID.</p>
      */
-    inline const Aws::String& GetBotId() const{ return m_botId; }
-
-    /**
-     * <p>The bot ID.</p>
-     */
+    inline const Aws::String& GetBotId() const { return m_botId; }
     inline bool BotIdHasBeenSet() const { return m_botIdHasBeenSet; }
-
-    /**
-     * <p>The bot ID.</p>
-     */
-    inline void SetBotId(const Aws::String& value) { m_botIdHasBeenSet = true; m_botId = value; }
-
-    /**
-     * <p>The bot ID.</p>
-     */
-    inline void SetBotId(Aws::String&& value) { m_botIdHasBeenSet = true; m_botId = std::move(value); }
-
-    /**
-     * <p>The bot ID.</p>
-     */
-    inline void SetBotId(const char* value) { m_botIdHasBeenSet = true; m_botId.assign(value); }
-
-    /**
-     * <p>The bot ID.</p>
-     */
-    inline DeleteEventsConfigurationRequest& WithBotId(const Aws::String& value) { SetBotId(value); return *this;}
-
-    /**
-     * <p>The bot ID.</p>
-     */
-    inline DeleteEventsConfigurationRequest& WithBotId(Aws::String&& value) { SetBotId(std::move(value)); return *this;}
-
-    /**
-     * <p>The bot ID.</p>
-     */
-    inline DeleteEventsConfigurationRequest& WithBotId(const char* value) { SetBotId(value); return *this;}
-
+    template<typename BotIdT = Aws::String>
+    void SetBotId(BotIdT&& value) { m_botIdHasBeenSet = true; m_botId = std::forward<BotIdT>(value); }
+    template<typename BotIdT = Aws::String>
+    DeleteEventsConfigurationRequest& WithBotId(BotIdT&& value) { SetBotId(std::forward<BotIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;

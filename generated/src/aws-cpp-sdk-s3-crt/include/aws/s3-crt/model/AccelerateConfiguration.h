@@ -34,46 +34,25 @@ namespace Model
   class AccelerateConfiguration
   {
   public:
-    AWS_S3CRT_API AccelerateConfiguration();
+    AWS_S3CRT_API AccelerateConfiguration() = default;
     AWS_S3CRT_API AccelerateConfiguration(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API AccelerateConfiguration& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Specifies the transfer acceleration status of the bucket.</p>
      */
-    inline const BucketAccelerateStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Specifies the transfer acceleration status of the bucket.</p>
-     */
+    inline BucketAccelerateStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>Specifies the transfer acceleration status of the bucket.</p>
-     */
-    inline void SetStatus(const BucketAccelerateStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Specifies the transfer acceleration status of the bucket.</p>
-     */
-    inline void SetStatus(BucketAccelerateStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Specifies the transfer acceleration status of the bucket.</p>
-     */
-    inline AccelerateConfiguration& WithStatus(const BucketAccelerateStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Specifies the transfer acceleration status of the bucket.</p>
-     */
-    inline AccelerateConfiguration& WithStatus(BucketAccelerateStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(BucketAccelerateStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline AccelerateConfiguration& WithStatus(BucketAccelerateStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
-    BucketAccelerateStatus m_status;
+    BucketAccelerateStatus m_status{BucketAccelerateStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

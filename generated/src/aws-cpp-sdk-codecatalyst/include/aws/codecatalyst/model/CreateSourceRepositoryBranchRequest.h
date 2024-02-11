@@ -21,7 +21,7 @@ namespace Model
   class CreateSourceRepositoryBranchRequest : public CodeCatalystRequest
   {
   public:
-    AWS_CODECATALYST_API CreateSourceRepositoryBranchRequest();
+    AWS_CODECATALYST_API CreateSourceRepositoryBranchRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,218 +32,66 @@ namespace Model
     AWS_CODECATALYST_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the space.</p>
      */
-    inline const Aws::String& GetSpaceName() const{ return m_spaceName; }
-
-    /**
-     * <p>The name of the space.</p>
-     */
+    inline const Aws::String& GetSpaceName() const { return m_spaceName; }
     inline bool SpaceNameHasBeenSet() const { return m_spaceNameHasBeenSet; }
+    template<typename SpaceNameT = Aws::String>
+    void SetSpaceName(SpaceNameT&& value) { m_spaceNameHasBeenSet = true; m_spaceName = std::forward<SpaceNameT>(value); }
+    template<typename SpaceNameT = Aws::String>
+    CreateSourceRepositoryBranchRequest& WithSpaceName(SpaceNameT&& value) { SetSpaceName(std::forward<SpaceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline void SetSpaceName(const Aws::String& value) { m_spaceNameHasBeenSet = true; m_spaceName = value; }
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline void SetSpaceName(Aws::String&& value) { m_spaceNameHasBeenSet = true; m_spaceName = std::move(value); }
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline void SetSpaceName(const char* value) { m_spaceNameHasBeenSet = true; m_spaceName.assign(value); }
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline CreateSourceRepositoryBranchRequest& WithSpaceName(const Aws::String& value) { SetSpaceName(value); return *this;}
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline CreateSourceRepositoryBranchRequest& WithSpaceName(Aws::String&& value) { SetSpaceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline CreateSourceRepositoryBranchRequest& WithSpaceName(const char* value) { SetSpaceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the project in the space.</p>
      */
-    inline const Aws::String& GetProjectName() const{ return m_projectName; }
-
-    /**
-     * <p>The name of the project in the space.</p>
-     */
+    inline const Aws::String& GetProjectName() const { return m_projectName; }
     inline bool ProjectNameHasBeenSet() const { return m_projectNameHasBeenSet; }
+    template<typename ProjectNameT = Aws::String>
+    void SetProjectName(ProjectNameT&& value) { m_projectNameHasBeenSet = true; m_projectName = std::forward<ProjectNameT>(value); }
+    template<typename ProjectNameT = Aws::String>
+    CreateSourceRepositoryBranchRequest& WithProjectName(ProjectNameT&& value) { SetProjectName(std::forward<ProjectNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the project in the space.</p>
-     */
-    inline void SetProjectName(const Aws::String& value) { m_projectNameHasBeenSet = true; m_projectName = value; }
-
-    /**
-     * <p>The name of the project in the space.</p>
-     */
-    inline void SetProjectName(Aws::String&& value) { m_projectNameHasBeenSet = true; m_projectName = std::move(value); }
-
-    /**
-     * <p>The name of the project in the space.</p>
-     */
-    inline void SetProjectName(const char* value) { m_projectNameHasBeenSet = true; m_projectName.assign(value); }
-
-    /**
-     * <p>The name of the project in the space.</p>
-     */
-    inline CreateSourceRepositoryBranchRequest& WithProjectName(const Aws::String& value) { SetProjectName(value); return *this;}
-
-    /**
-     * <p>The name of the project in the space.</p>
-     */
-    inline CreateSourceRepositoryBranchRequest& WithProjectName(Aws::String&& value) { SetProjectName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the project in the space.</p>
-     */
-    inline CreateSourceRepositoryBranchRequest& WithProjectName(const char* value) { SetProjectName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the repository where you want to create a branch.</p>
      */
-    inline const Aws::String& GetSourceRepositoryName() const{ return m_sourceRepositoryName; }
-
-    /**
-     * <p>The name of the repository where you want to create a branch.</p>
-     */
+    inline const Aws::String& GetSourceRepositoryName() const { return m_sourceRepositoryName; }
     inline bool SourceRepositoryNameHasBeenSet() const { return m_sourceRepositoryNameHasBeenSet; }
+    template<typename SourceRepositoryNameT = Aws::String>
+    void SetSourceRepositoryName(SourceRepositoryNameT&& value) { m_sourceRepositoryNameHasBeenSet = true; m_sourceRepositoryName = std::forward<SourceRepositoryNameT>(value); }
+    template<typename SourceRepositoryNameT = Aws::String>
+    CreateSourceRepositoryBranchRequest& WithSourceRepositoryName(SourceRepositoryNameT&& value) { SetSourceRepositoryName(std::forward<SourceRepositoryNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the repository where you want to create a branch.</p>
-     */
-    inline void SetSourceRepositoryName(const Aws::String& value) { m_sourceRepositoryNameHasBeenSet = true; m_sourceRepositoryName = value; }
-
-    /**
-     * <p>The name of the repository where you want to create a branch.</p>
-     */
-    inline void SetSourceRepositoryName(Aws::String&& value) { m_sourceRepositoryNameHasBeenSet = true; m_sourceRepositoryName = std::move(value); }
-
-    /**
-     * <p>The name of the repository where you want to create a branch.</p>
-     */
-    inline void SetSourceRepositoryName(const char* value) { m_sourceRepositoryNameHasBeenSet = true; m_sourceRepositoryName.assign(value); }
-
-    /**
-     * <p>The name of the repository where you want to create a branch.</p>
-     */
-    inline CreateSourceRepositoryBranchRequest& WithSourceRepositoryName(const Aws::String& value) { SetSourceRepositoryName(value); return *this;}
-
-    /**
-     * <p>The name of the repository where you want to create a branch.</p>
-     */
-    inline CreateSourceRepositoryBranchRequest& WithSourceRepositoryName(Aws::String&& value) { SetSourceRepositoryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the repository where you want to create a branch.</p>
-     */
-    inline CreateSourceRepositoryBranchRequest& WithSourceRepositoryName(const char* value) { SetSourceRepositoryName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name for the branch you're creating.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name for the branch you're creating.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateSourceRepositoryBranchRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name for the branch you're creating.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name for the branch you're creating.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name for the branch you're creating.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name for the branch you're creating.</p>
-     */
-    inline CreateSourceRepositoryBranchRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name for the branch you're creating.</p>
-     */
-    inline CreateSourceRepositoryBranchRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name for the branch you're creating.</p>
-     */
-    inline CreateSourceRepositoryBranchRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The commit ID in an existing branch from which you want to create the new
      * branch.</p>
      */
-    inline const Aws::String& GetHeadCommitId() const{ return m_headCommitId; }
-
-    /**
-     * <p>The commit ID in an existing branch from which you want to create the new
-     * branch.</p>
-     */
+    inline const Aws::String& GetHeadCommitId() const { return m_headCommitId; }
     inline bool HeadCommitIdHasBeenSet() const { return m_headCommitIdHasBeenSet; }
-
-    /**
-     * <p>The commit ID in an existing branch from which you want to create the new
-     * branch.</p>
-     */
-    inline void SetHeadCommitId(const Aws::String& value) { m_headCommitIdHasBeenSet = true; m_headCommitId = value; }
-
-    /**
-     * <p>The commit ID in an existing branch from which you want to create the new
-     * branch.</p>
-     */
-    inline void SetHeadCommitId(Aws::String&& value) { m_headCommitIdHasBeenSet = true; m_headCommitId = std::move(value); }
-
-    /**
-     * <p>The commit ID in an existing branch from which you want to create the new
-     * branch.</p>
-     */
-    inline void SetHeadCommitId(const char* value) { m_headCommitIdHasBeenSet = true; m_headCommitId.assign(value); }
-
-    /**
-     * <p>The commit ID in an existing branch from which you want to create the new
-     * branch.</p>
-     */
-    inline CreateSourceRepositoryBranchRequest& WithHeadCommitId(const Aws::String& value) { SetHeadCommitId(value); return *this;}
-
-    /**
-     * <p>The commit ID in an existing branch from which you want to create the new
-     * branch.</p>
-     */
-    inline CreateSourceRepositoryBranchRequest& WithHeadCommitId(Aws::String&& value) { SetHeadCommitId(std::move(value)); return *this;}
-
-    /**
-     * <p>The commit ID in an existing branch from which you want to create the new
-     * branch.</p>
-     */
-    inline CreateSourceRepositoryBranchRequest& WithHeadCommitId(const char* value) { SetHeadCommitId(value); return *this;}
-
+    template<typename HeadCommitIdT = Aws::String>
+    void SetHeadCommitId(HeadCommitIdT&& value) { m_headCommitIdHasBeenSet = true; m_headCommitId = std::forward<HeadCommitIdT>(value); }
+    template<typename HeadCommitIdT = Aws::String>
+    CreateSourceRepositoryBranchRequest& WithHeadCommitId(HeadCommitIdT&& value) { SetHeadCommitId(std::forward<HeadCommitIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_spaceName;

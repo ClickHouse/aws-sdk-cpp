@@ -22,7 +22,7 @@ namespace Model
   class UpdateEnvironmentRequest : public Cloud9Request
   {
   public:
-    AWS_CLOUD9_API UpdateEnvironmentRequest();
+    AWS_CLOUD9_API UpdateEnvironmentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,129 +35,43 @@ namespace Model
     AWS_CLOUD9_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the environment to change settings.</p>
      */
-    inline const Aws::String& GetEnvironmentId() const{ return m_environmentId; }
-
-    /**
-     * <p>The ID of the environment to change settings.</p>
-     */
+    inline const Aws::String& GetEnvironmentId() const { return m_environmentId; }
     inline bool EnvironmentIdHasBeenSet() const { return m_environmentIdHasBeenSet; }
+    template<typename EnvironmentIdT = Aws::String>
+    void SetEnvironmentId(EnvironmentIdT&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::forward<EnvironmentIdT>(value); }
+    template<typename EnvironmentIdT = Aws::String>
+    UpdateEnvironmentRequest& WithEnvironmentId(EnvironmentIdT&& value) { SetEnvironmentId(std::forward<EnvironmentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the environment to change settings.</p>
-     */
-    inline void SetEnvironmentId(const Aws::String& value) { m_environmentIdHasBeenSet = true; m_environmentId = value; }
-
-    /**
-     * <p>The ID of the environment to change settings.</p>
-     */
-    inline void SetEnvironmentId(Aws::String&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::move(value); }
-
-    /**
-     * <p>The ID of the environment to change settings.</p>
-     */
-    inline void SetEnvironmentId(const char* value) { m_environmentIdHasBeenSet = true; m_environmentId.assign(value); }
-
-    /**
-     * <p>The ID of the environment to change settings.</p>
-     */
-    inline UpdateEnvironmentRequest& WithEnvironmentId(const Aws::String& value) { SetEnvironmentId(value); return *this;}
-
-    /**
-     * <p>The ID of the environment to change settings.</p>
-     */
-    inline UpdateEnvironmentRequest& WithEnvironmentId(Aws::String&& value) { SetEnvironmentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the environment to change settings.</p>
-     */
-    inline UpdateEnvironmentRequest& WithEnvironmentId(const char* value) { SetEnvironmentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A replacement name for the environment.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A replacement name for the environment.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateEnvironmentRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A replacement name for the environment.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A replacement name for the environment.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A replacement name for the environment.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A replacement name for the environment.</p>
-     */
-    inline UpdateEnvironmentRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A replacement name for the environment.</p>
-     */
-    inline UpdateEnvironmentRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A replacement name for the environment.</p>
-     */
-    inline UpdateEnvironmentRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Any new or replacement description for the environment.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>Any new or replacement description for the environment.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateEnvironmentRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Any new or replacement description for the environment.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>Any new or replacement description for the environment.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>Any new or replacement description for the environment.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>Any new or replacement description for the environment.</p>
-     */
-    inline UpdateEnvironmentRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Any new or replacement description for the environment.</p>
-     */
-    inline UpdateEnvironmentRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Any new or replacement description for the environment.</p>
-     */
-    inline UpdateEnvironmentRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Allows the environment owner to turn on or turn off the Amazon Web Services
      * managed temporary credentials for an Cloud9 environment by using one of the
@@ -168,68 +82,11 @@ namespace Model
      * off managed temporary credentials is made by an account that's not the
      * environment owner.</p> 
      */
-    inline const ManagedCredentialsAction& GetManagedCredentialsAction() const{ return m_managedCredentialsAction; }
-
-    /**
-     * <p>Allows the environment owner to turn on or turn off the Amazon Web Services
-     * managed temporary credentials for an Cloud9 environment by using one of the
-     * following values:</p> <ul> <li> <p> <code>ENABLE</code> </p> </li> <li> <p>
-     * <code>DISABLE</code> </p> </li> </ul>  <p>Only the environment owner can
-     * change the status of managed temporary credentials. An
-     * <code>AccessDeniedException</code> is thrown if an attempt to turn on or turn
-     * off managed temporary credentials is made by an account that's not the
-     * environment owner.</p> 
-     */
+    inline ManagedCredentialsAction GetManagedCredentialsAction() const { return m_managedCredentialsAction; }
     inline bool ManagedCredentialsActionHasBeenSet() const { return m_managedCredentialsActionHasBeenSet; }
-
-    /**
-     * <p>Allows the environment owner to turn on or turn off the Amazon Web Services
-     * managed temporary credentials for an Cloud9 environment by using one of the
-     * following values:</p> <ul> <li> <p> <code>ENABLE</code> </p> </li> <li> <p>
-     * <code>DISABLE</code> </p> </li> </ul>  <p>Only the environment owner can
-     * change the status of managed temporary credentials. An
-     * <code>AccessDeniedException</code> is thrown if an attempt to turn on or turn
-     * off managed temporary credentials is made by an account that's not the
-     * environment owner.</p> 
-     */
-    inline void SetManagedCredentialsAction(const ManagedCredentialsAction& value) { m_managedCredentialsActionHasBeenSet = true; m_managedCredentialsAction = value; }
-
-    /**
-     * <p>Allows the environment owner to turn on or turn off the Amazon Web Services
-     * managed temporary credentials for an Cloud9 environment by using one of the
-     * following values:</p> <ul> <li> <p> <code>ENABLE</code> </p> </li> <li> <p>
-     * <code>DISABLE</code> </p> </li> </ul>  <p>Only the environment owner can
-     * change the status of managed temporary credentials. An
-     * <code>AccessDeniedException</code> is thrown if an attempt to turn on or turn
-     * off managed temporary credentials is made by an account that's not the
-     * environment owner.</p> 
-     */
-    inline void SetManagedCredentialsAction(ManagedCredentialsAction&& value) { m_managedCredentialsActionHasBeenSet = true; m_managedCredentialsAction = std::move(value); }
-
-    /**
-     * <p>Allows the environment owner to turn on or turn off the Amazon Web Services
-     * managed temporary credentials for an Cloud9 environment by using one of the
-     * following values:</p> <ul> <li> <p> <code>ENABLE</code> </p> </li> <li> <p>
-     * <code>DISABLE</code> </p> </li> </ul>  <p>Only the environment owner can
-     * change the status of managed temporary credentials. An
-     * <code>AccessDeniedException</code> is thrown if an attempt to turn on or turn
-     * off managed temporary credentials is made by an account that's not the
-     * environment owner.</p> 
-     */
-    inline UpdateEnvironmentRequest& WithManagedCredentialsAction(const ManagedCredentialsAction& value) { SetManagedCredentialsAction(value); return *this;}
-
-    /**
-     * <p>Allows the environment owner to turn on or turn off the Amazon Web Services
-     * managed temporary credentials for an Cloud9 environment by using one of the
-     * following values:</p> <ul> <li> <p> <code>ENABLE</code> </p> </li> <li> <p>
-     * <code>DISABLE</code> </p> </li> </ul>  <p>Only the environment owner can
-     * change the status of managed temporary credentials. An
-     * <code>AccessDeniedException</code> is thrown if an attempt to turn on or turn
-     * off managed temporary credentials is made by an account that's not the
-     * environment owner.</p> 
-     */
-    inline UpdateEnvironmentRequest& WithManagedCredentialsAction(ManagedCredentialsAction&& value) { SetManagedCredentialsAction(std::move(value)); return *this;}
-
+    inline void SetManagedCredentialsAction(ManagedCredentialsAction value) { m_managedCredentialsActionHasBeenSet = true; m_managedCredentialsAction = value; }
+    inline UpdateEnvironmentRequest& WithManagedCredentialsAction(ManagedCredentialsAction value) { SetManagedCredentialsAction(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_environmentId;
@@ -241,7 +98,7 @@ namespace Model
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    ManagedCredentialsAction m_managedCredentialsAction;
+    ManagedCredentialsAction m_managedCredentialsAction{ManagedCredentialsAction::NOT_SET};
     bool m_managedCredentialsActionHasBeenSet = false;
   };
 

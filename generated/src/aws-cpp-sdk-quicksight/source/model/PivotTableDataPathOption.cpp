@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-PivotTableDataPathOption::PivotTableDataPathOption() : 
-    m_dataPathListHasBeenSet(false),
-    m_widthHasBeenSet(false)
-{
-}
-
-PivotTableDataPathOption::PivotTableDataPathOption(JsonView jsonValue) : 
-    m_dataPathListHasBeenSet(false),
-    m_widthHasBeenSet(false)
+PivotTableDataPathOption::PivotTableDataPathOption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ PivotTableDataPathOption& PivotTableDataPathOption::operator =(JsonView jsonValu
     }
     m_dataPathListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Width"))
   {
     m_width = jsonValue.GetString("Width");
-
     m_widthHasBeenSet = true;
   }
-
   return *this;
 }
 

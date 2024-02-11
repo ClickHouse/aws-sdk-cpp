@@ -18,13 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsCloudFrontDistributionOriginGroup::AwsCloudFrontDistributionOriginGroup() : 
-    m_failoverCriteriaHasBeenSet(false)
-{
-}
-
-AwsCloudFrontDistributionOriginGroup::AwsCloudFrontDistributionOriginGroup(JsonView jsonValue) : 
-    m_failoverCriteriaHasBeenSet(false)
+AwsCloudFrontDistributionOriginGroup::AwsCloudFrontDistributionOriginGroup(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ AwsCloudFrontDistributionOriginGroup& AwsCloudFrontDistributionOriginGroup::oper
   if(jsonValue.ValueExists("FailoverCriteria"))
   {
     m_failoverCriteria = jsonValue.GetObject("FailoverCriteria");
-
     m_failoverCriteriaHasBeenSet = true;
   }
-
   return *this;
 }
 

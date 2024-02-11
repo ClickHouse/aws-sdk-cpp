@@ -22,7 +22,7 @@ namespace Model
   class UndeprecateActivityTypeRequest : public SWFRequest
   {
   public:
-    AWS_SWF_API UndeprecateActivityTypeRequest();
+    AWS_SWF_API UndeprecateActivityTypeRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,77 +35,29 @@ namespace Model
     AWS_SWF_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the domain of the deprecated activity type.</p>
      */
-    inline const Aws::String& GetDomain() const{ return m_domain; }
-
-    /**
-     * <p>The name of the domain of the deprecated activity type.</p>
-     */
+    inline const Aws::String& GetDomain() const { return m_domain; }
     inline bool DomainHasBeenSet() const { return m_domainHasBeenSet; }
+    template<typename DomainT = Aws::String>
+    void SetDomain(DomainT&& value) { m_domainHasBeenSet = true; m_domain = std::forward<DomainT>(value); }
+    template<typename DomainT = Aws::String>
+    UndeprecateActivityTypeRequest& WithDomain(DomainT&& value) { SetDomain(std::forward<DomainT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the domain of the deprecated activity type.</p>
-     */
-    inline void SetDomain(const Aws::String& value) { m_domainHasBeenSet = true; m_domain = value; }
-
-    /**
-     * <p>The name of the domain of the deprecated activity type.</p>
-     */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
-
-    /**
-     * <p>The name of the domain of the deprecated activity type.</p>
-     */
-    inline void SetDomain(const char* value) { m_domainHasBeenSet = true; m_domain.assign(value); }
-
-    /**
-     * <p>The name of the domain of the deprecated activity type.</p>
-     */
-    inline UndeprecateActivityTypeRequest& WithDomain(const Aws::String& value) { SetDomain(value); return *this;}
-
-    /**
-     * <p>The name of the domain of the deprecated activity type.</p>
-     */
-    inline UndeprecateActivityTypeRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the domain of the deprecated activity type.</p>
-     */
-    inline UndeprecateActivityTypeRequest& WithDomain(const char* value) { SetDomain(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The activity type to undeprecate.</p>
      */
-    inline const ActivityType& GetActivityType() const{ return m_activityType; }
-
-    /**
-     * <p>The activity type to undeprecate.</p>
-     */
+    inline const ActivityType& GetActivityType() const { return m_activityType; }
     inline bool ActivityTypeHasBeenSet() const { return m_activityTypeHasBeenSet; }
-
-    /**
-     * <p>The activity type to undeprecate.</p>
-     */
-    inline void SetActivityType(const ActivityType& value) { m_activityTypeHasBeenSet = true; m_activityType = value; }
-
-    /**
-     * <p>The activity type to undeprecate.</p>
-     */
-    inline void SetActivityType(ActivityType&& value) { m_activityTypeHasBeenSet = true; m_activityType = std::move(value); }
-
-    /**
-     * <p>The activity type to undeprecate.</p>
-     */
-    inline UndeprecateActivityTypeRequest& WithActivityType(const ActivityType& value) { SetActivityType(value); return *this;}
-
-    /**
-     * <p>The activity type to undeprecate.</p>
-     */
-    inline UndeprecateActivityTypeRequest& WithActivityType(ActivityType&& value) { SetActivityType(std::move(value)); return *this;}
-
+    template<typename ActivityTypeT = ActivityType>
+    void SetActivityType(ActivityTypeT&& value) { m_activityTypeHasBeenSet = true; m_activityType = std::forward<ActivityTypeT>(value); }
+    template<typename ActivityTypeT = ActivityType>
+    UndeprecateActivityTypeRequest& WithActivityType(ActivityTypeT&& value) { SetActivityType(std::forward<ActivityTypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domain;

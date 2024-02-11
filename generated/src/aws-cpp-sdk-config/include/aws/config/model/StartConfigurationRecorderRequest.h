@@ -17,7 +17,7 @@ namespace Model
 {
 
   /**
-   * <p>The input for the <a>StartConfigurationRecorder</a> action.</p><p><h3>See
+   * <p>The input for the <a>StartConfigurationRecorder</a> operation.</p><p><h3>See
    * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/StartConfigurationRecorderRequest">AWS
    * API Reference</a></p>
@@ -25,7 +25,7 @@ namespace Model
   class StartConfigurationRecorderRequest : public ConfigServiceRequest
   {
   public:
-    AWS_CONFIGSERVICE_API StartConfigurationRecorderRequest();
+    AWS_CONFIGSERVICE_API StartConfigurationRecorderRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,54 +38,18 @@ namespace Model
     AWS_CONFIGSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The name of the recorder object that records each configuration change made
-     * to the resources.</p>
+     * <p>The name of the customer managed configuration recorder that you want to
+     * start.</p>
      */
-    inline const Aws::String& GetConfigurationRecorderName() const{ return m_configurationRecorderName; }
-
-    /**
-     * <p>The name of the recorder object that records each configuration change made
-     * to the resources.</p>
-     */
+    inline const Aws::String& GetConfigurationRecorderName() const { return m_configurationRecorderName; }
     inline bool ConfigurationRecorderNameHasBeenSet() const { return m_configurationRecorderNameHasBeenSet; }
-
-    /**
-     * <p>The name of the recorder object that records each configuration change made
-     * to the resources.</p>
-     */
-    inline void SetConfigurationRecorderName(const Aws::String& value) { m_configurationRecorderNameHasBeenSet = true; m_configurationRecorderName = value; }
-
-    /**
-     * <p>The name of the recorder object that records each configuration change made
-     * to the resources.</p>
-     */
-    inline void SetConfigurationRecorderName(Aws::String&& value) { m_configurationRecorderNameHasBeenSet = true; m_configurationRecorderName = std::move(value); }
-
-    /**
-     * <p>The name of the recorder object that records each configuration change made
-     * to the resources.</p>
-     */
-    inline void SetConfigurationRecorderName(const char* value) { m_configurationRecorderNameHasBeenSet = true; m_configurationRecorderName.assign(value); }
-
-    /**
-     * <p>The name of the recorder object that records each configuration change made
-     * to the resources.</p>
-     */
-    inline StartConfigurationRecorderRequest& WithConfigurationRecorderName(const Aws::String& value) { SetConfigurationRecorderName(value); return *this;}
-
-    /**
-     * <p>The name of the recorder object that records each configuration change made
-     * to the resources.</p>
-     */
-    inline StartConfigurationRecorderRequest& WithConfigurationRecorderName(Aws::String&& value) { SetConfigurationRecorderName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the recorder object that records each configuration change made
-     * to the resources.</p>
-     */
-    inline StartConfigurationRecorderRequest& WithConfigurationRecorderName(const char* value) { SetConfigurationRecorderName(value); return *this;}
-
+    template<typename ConfigurationRecorderNameT = Aws::String>
+    void SetConfigurationRecorderName(ConfigurationRecorderNameT&& value) { m_configurationRecorderNameHasBeenSet = true; m_configurationRecorderName = std::forward<ConfigurationRecorderNameT>(value); }
+    template<typename ConfigurationRecorderNameT = Aws::String>
+    StartConfigurationRecorderRequest& WithConfigurationRecorderName(ConfigurationRecorderNameT&& value) { SetConfigurationRecorderName(std::forward<ConfigurationRecorderNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_configurationRecorderName;

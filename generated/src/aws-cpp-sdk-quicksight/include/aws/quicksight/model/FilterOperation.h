@@ -32,60 +32,24 @@ namespace Model
   class FilterOperation
   {
   public:
-    AWS_QUICKSIGHT_API FilterOperation();
+    AWS_QUICKSIGHT_API FilterOperation() = default;
     AWS_QUICKSIGHT_API FilterOperation(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API FilterOperation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An expression that must evaluate to a Boolean value. Rows for which the
      * expression evaluates to true are kept in the dataset.</p>
      */
-    inline const Aws::String& GetConditionExpression() const{ return m_conditionExpression; }
-
-    /**
-     * <p>An expression that must evaluate to a Boolean value. Rows for which the
-     * expression evaluates to true are kept in the dataset.</p>
-     */
+    inline const Aws::String& GetConditionExpression() const { return m_conditionExpression; }
     inline bool ConditionExpressionHasBeenSet() const { return m_conditionExpressionHasBeenSet; }
-
-    /**
-     * <p>An expression that must evaluate to a Boolean value. Rows for which the
-     * expression evaluates to true are kept in the dataset.</p>
-     */
-    inline void SetConditionExpression(const Aws::String& value) { m_conditionExpressionHasBeenSet = true; m_conditionExpression = value; }
-
-    /**
-     * <p>An expression that must evaluate to a Boolean value. Rows for which the
-     * expression evaluates to true are kept in the dataset.</p>
-     */
-    inline void SetConditionExpression(Aws::String&& value) { m_conditionExpressionHasBeenSet = true; m_conditionExpression = std::move(value); }
-
-    /**
-     * <p>An expression that must evaluate to a Boolean value. Rows for which the
-     * expression evaluates to true are kept in the dataset.</p>
-     */
-    inline void SetConditionExpression(const char* value) { m_conditionExpressionHasBeenSet = true; m_conditionExpression.assign(value); }
-
-    /**
-     * <p>An expression that must evaluate to a Boolean value. Rows for which the
-     * expression evaluates to true are kept in the dataset.</p>
-     */
-    inline FilterOperation& WithConditionExpression(const Aws::String& value) { SetConditionExpression(value); return *this;}
-
-    /**
-     * <p>An expression that must evaluate to a Boolean value. Rows for which the
-     * expression evaluates to true are kept in the dataset.</p>
-     */
-    inline FilterOperation& WithConditionExpression(Aws::String&& value) { SetConditionExpression(std::move(value)); return *this;}
-
-    /**
-     * <p>An expression that must evaluate to a Boolean value. Rows for which the
-     * expression evaluates to true are kept in the dataset.</p>
-     */
-    inline FilterOperation& WithConditionExpression(const char* value) { SetConditionExpression(value); return *this;}
-
+    template<typename ConditionExpressionT = Aws::String>
+    void SetConditionExpression(ConditionExpressionT&& value) { m_conditionExpressionHasBeenSet = true; m_conditionExpression = std::forward<ConditionExpressionT>(value); }
+    template<typename ConditionExpressionT = Aws::String>
+    FilterOperation& WithConditionExpression(ConditionExpressionT&& value) { SetConditionExpression(std::forward<ConditionExpressionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_conditionExpression;

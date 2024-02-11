@@ -12,29 +12,6 @@ using namespace Aws::WellArchitected::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateWorkloadRequest::CreateWorkloadRequest() : 
-    m_workloadNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_environment(WorkloadEnvironment::NOT_SET),
-    m_environmentHasBeenSet(false),
-    m_accountIdsHasBeenSet(false),
-    m_awsRegionsHasBeenSet(false),
-    m_nonAwsRegionsHasBeenSet(false),
-    m_pillarPrioritiesHasBeenSet(false),
-    m_architecturalDesignHasBeenSet(false),
-    m_reviewOwnerHasBeenSet(false),
-    m_industryTypeHasBeenSet(false),
-    m_industryHasBeenSet(false),
-    m_lensesHasBeenSet(false),
-    m_notesHasBeenSet(false),
-    m_clientRequestToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientRequestTokenHasBeenSet(true),
-    m_tagsHasBeenSet(false),
-    m_discoveryConfigHasBeenSet(false),
-    m_applicationsHasBeenSet(false)
-{
-}
-
 Aws::String CreateWorkloadRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -172,6 +149,34 @@ Aws::String CreateWorkloadRequest::SerializePayload() const
      applicationsJsonList[applicationsIndex].AsString(m_applications[applicationsIndex]);
    }
    payload.WithArray("Applications", std::move(applicationsJsonList));
+
+  }
+
+  if(m_profileArnsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> profileArnsJsonList(m_profileArns.size());
+   for(unsigned profileArnsIndex = 0; profileArnsIndex < profileArnsJsonList.GetLength(); ++profileArnsIndex)
+   {
+     profileArnsJsonList[profileArnsIndex].AsString(m_profileArns[profileArnsIndex]);
+   }
+   payload.WithArray("ProfileArns", std::move(profileArnsJsonList));
+
+  }
+
+  if(m_reviewTemplateArnsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> reviewTemplateArnsJsonList(m_reviewTemplateArns.size());
+   for(unsigned reviewTemplateArnsIndex = 0; reviewTemplateArnsIndex < reviewTemplateArnsJsonList.GetLength(); ++reviewTemplateArnsIndex)
+   {
+     reviewTemplateArnsJsonList[reviewTemplateArnsIndex].AsString(m_reviewTemplateArns[reviewTemplateArnsIndex]);
+   }
+   payload.WithArray("ReviewTemplateArns", std::move(reviewTemplateArnsJsonList));
+
+  }
+
+  if(m_jiraConfigurationHasBeenSet)
+  {
+   payload.WithObject("JiraConfiguration", m_jiraConfiguration.Jsonize());
 
   }
 

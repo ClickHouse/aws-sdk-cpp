@@ -33,154 +33,51 @@ namespace Model
   class TargetResourceType
   {
   public:
-    AWS_FIS_API TargetResourceType();
+    AWS_FIS_API TargetResourceType() = default;
     AWS_FIS_API TargetResourceType(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIS_API TargetResourceType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The resource type.</p>
      */
-    inline const Aws::String& GetResourceType() const{ return m_resourceType; }
-
-    /**
-     * <p>The resource type.</p>
-     */
+    inline const Aws::String& GetResourceType() const { return m_resourceType; }
     inline bool ResourceTypeHasBeenSet() const { return m_resourceTypeHasBeenSet; }
+    template<typename ResourceTypeT = Aws::String>
+    void SetResourceType(ResourceTypeT&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::forward<ResourceTypeT>(value); }
+    template<typename ResourceTypeT = Aws::String>
+    TargetResourceType& WithResourceType(ResourceTypeT&& value) { SetResourceType(std::forward<ResourceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The resource type.</p>
-     */
-    inline void SetResourceType(const Aws::String& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
-
-    /**
-     * <p>The resource type.</p>
-     */
-    inline void SetResourceType(Aws::String&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
-
-    /**
-     * <p>The resource type.</p>
-     */
-    inline void SetResourceType(const char* value) { m_resourceTypeHasBeenSet = true; m_resourceType.assign(value); }
-
-    /**
-     * <p>The resource type.</p>
-     */
-    inline TargetResourceType& WithResourceType(const Aws::String& value) { SetResourceType(value); return *this;}
-
-    /**
-     * <p>The resource type.</p>
-     */
-    inline TargetResourceType& WithResourceType(Aws::String&& value) { SetResourceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The resource type.</p>
-     */
-    inline TargetResourceType& WithResourceType(const char* value) { SetResourceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the resource type.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the resource type.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    TargetResourceType& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the resource type.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the resource type.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the resource type.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the resource type.</p>
-     */
-    inline TargetResourceType& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the resource type.</p>
-     */
-    inline TargetResourceType& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the resource type.</p>
-     */
-    inline TargetResourceType& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The parameters for the resource type.</p>
      */
-    inline const Aws::Map<Aws::String, TargetResourceTypeParameter>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>The parameters for the resource type.</p>
-     */
+    inline const Aws::Map<Aws::String, TargetResourceTypeParameter>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
-
-    /**
-     * <p>The parameters for the resource type.</p>
-     */
-    inline void SetParameters(const Aws::Map<Aws::String, TargetResourceTypeParameter>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>The parameters for the resource type.</p>
-     */
-    inline void SetParameters(Aws::Map<Aws::String, TargetResourceTypeParameter>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>The parameters for the resource type.</p>
-     */
-    inline TargetResourceType& WithParameters(const Aws::Map<Aws::String, TargetResourceTypeParameter>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>The parameters for the resource type.</p>
-     */
-    inline TargetResourceType& WithParameters(Aws::Map<Aws::String, TargetResourceTypeParameter>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>The parameters for the resource type.</p>
-     */
-    inline TargetResourceType& AddParameters(const Aws::String& key, const TargetResourceTypeParameter& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>The parameters for the resource type.</p>
-     */
-    inline TargetResourceType& AddParameters(Aws::String&& key, const TargetResourceTypeParameter& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The parameters for the resource type.</p>
-     */
-    inline TargetResourceType& AddParameters(const Aws::String& key, TargetResourceTypeParameter&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The parameters for the resource type.</p>
-     */
-    inline TargetResourceType& AddParameters(Aws::String&& key, TargetResourceTypeParameter&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The parameters for the resource type.</p>
-     */
-    inline TargetResourceType& AddParameters(const char* key, TargetResourceTypeParameter&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The parameters for the resource type.</p>
-     */
-    inline TargetResourceType& AddParameters(const char* key, const TargetResourceTypeParameter& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
+    template<typename ParametersT = Aws::Map<Aws::String, TargetResourceTypeParameter>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Map<Aws::String, TargetResourceTypeParameter>>
+    TargetResourceType& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersKeyT = Aws::String, typename ParametersValueT = TargetResourceTypeParameter>
+    TargetResourceType& AddParameters(ParametersKeyT&& key, ParametersValueT&& value) {
+      m_parametersHasBeenSet = true; m_parameters.emplace(std::forward<ParametersKeyT>(key), std::forward<ParametersValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_resourceType;

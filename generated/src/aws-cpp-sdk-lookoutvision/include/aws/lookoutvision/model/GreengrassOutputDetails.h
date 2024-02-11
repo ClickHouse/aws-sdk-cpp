@@ -32,134 +32,47 @@ namespace Model
   class GreengrassOutputDetails
   {
   public:
-    AWS_LOOKOUTFORVISION_API GreengrassOutputDetails();
+    AWS_LOOKOUTFORVISION_API GreengrassOutputDetails() = default;
     AWS_LOOKOUTFORVISION_API GreengrassOutputDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTFORVISION_API GreengrassOutputDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTFORVISION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The Amazon Resource Name (ARN) of the component. </p>
      */
-    inline const Aws::String& GetComponentVersionArn() const{ return m_componentVersionArn; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the component. </p>
-     */
+    inline const Aws::String& GetComponentVersionArn() const { return m_componentVersionArn; }
     inline bool ComponentVersionArnHasBeenSet() const { return m_componentVersionArnHasBeenSet; }
+    template<typename ComponentVersionArnT = Aws::String>
+    void SetComponentVersionArn(ComponentVersionArnT&& value) { m_componentVersionArnHasBeenSet = true; m_componentVersionArn = std::forward<ComponentVersionArnT>(value); }
+    template<typename ComponentVersionArnT = Aws::String>
+    GreengrassOutputDetails& WithComponentVersionArn(ComponentVersionArnT&& value) { SetComponentVersionArn(std::forward<ComponentVersionArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The Amazon Resource Name (ARN) of the component. </p>
-     */
-    inline void SetComponentVersionArn(const Aws::String& value) { m_componentVersionArnHasBeenSet = true; m_componentVersionArn = value; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the component. </p>
-     */
-    inline void SetComponentVersionArn(Aws::String&& value) { m_componentVersionArnHasBeenSet = true; m_componentVersionArn = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the component. </p>
-     */
-    inline void SetComponentVersionArn(const char* value) { m_componentVersionArnHasBeenSet = true; m_componentVersionArn.assign(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the component. </p>
-     */
-    inline GreengrassOutputDetails& WithComponentVersionArn(const Aws::String& value) { SetComponentVersionArn(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the component. </p>
-     */
-    inline GreengrassOutputDetails& WithComponentVersionArn(Aws::String&& value) { SetComponentVersionArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the component. </p>
-     */
-    inline GreengrassOutputDetails& WithComponentVersionArn(const char* value) { SetComponentVersionArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The name of the component. </p>
      */
-    inline const Aws::String& GetComponentName() const{ return m_componentName; }
-
-    /**
-     * <p> The name of the component. </p>
-     */
+    inline const Aws::String& GetComponentName() const { return m_componentName; }
     inline bool ComponentNameHasBeenSet() const { return m_componentNameHasBeenSet; }
+    template<typename ComponentNameT = Aws::String>
+    void SetComponentName(ComponentNameT&& value) { m_componentNameHasBeenSet = true; m_componentName = std::forward<ComponentNameT>(value); }
+    template<typename ComponentNameT = Aws::String>
+    GreengrassOutputDetails& WithComponentName(ComponentNameT&& value) { SetComponentName(std::forward<ComponentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The name of the component. </p>
-     */
-    inline void SetComponentName(const Aws::String& value) { m_componentNameHasBeenSet = true; m_componentName = value; }
-
-    /**
-     * <p> The name of the component. </p>
-     */
-    inline void SetComponentName(Aws::String&& value) { m_componentNameHasBeenSet = true; m_componentName = std::move(value); }
-
-    /**
-     * <p> The name of the component. </p>
-     */
-    inline void SetComponentName(const char* value) { m_componentNameHasBeenSet = true; m_componentName.assign(value); }
-
-    /**
-     * <p> The name of the component. </p>
-     */
-    inline GreengrassOutputDetails& WithComponentName(const Aws::String& value) { SetComponentName(value); return *this;}
-
-    /**
-     * <p> The name of the component. </p>
-     */
-    inline GreengrassOutputDetails& WithComponentName(Aws::String&& value) { SetComponentName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name of the component. </p>
-     */
-    inline GreengrassOutputDetails& WithComponentName(const char* value) { SetComponentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The version of the component. </p>
      */
-    inline const Aws::String& GetComponentVersion() const{ return m_componentVersion; }
-
-    /**
-     * <p> The version of the component. </p>
-     */
+    inline const Aws::String& GetComponentVersion() const { return m_componentVersion; }
     inline bool ComponentVersionHasBeenSet() const { return m_componentVersionHasBeenSet; }
-
-    /**
-     * <p> The version of the component. </p>
-     */
-    inline void SetComponentVersion(const Aws::String& value) { m_componentVersionHasBeenSet = true; m_componentVersion = value; }
-
-    /**
-     * <p> The version of the component. </p>
-     */
-    inline void SetComponentVersion(Aws::String&& value) { m_componentVersionHasBeenSet = true; m_componentVersion = std::move(value); }
-
-    /**
-     * <p> The version of the component. </p>
-     */
-    inline void SetComponentVersion(const char* value) { m_componentVersionHasBeenSet = true; m_componentVersion.assign(value); }
-
-    /**
-     * <p> The version of the component. </p>
-     */
-    inline GreengrassOutputDetails& WithComponentVersion(const Aws::String& value) { SetComponentVersion(value); return *this;}
-
-    /**
-     * <p> The version of the component. </p>
-     */
-    inline GreengrassOutputDetails& WithComponentVersion(Aws::String&& value) { SetComponentVersion(std::move(value)); return *this;}
-
-    /**
-     * <p> The version of the component. </p>
-     */
-    inline GreengrassOutputDetails& WithComponentVersion(const char* value) { SetComponentVersion(value); return *this;}
-
+    template<typename ComponentVersionT = Aws::String>
+    void SetComponentVersion(ComponentVersionT&& value) { m_componentVersionHasBeenSet = true; m_componentVersion = std::forward<ComponentVersionT>(value); }
+    template<typename ComponentVersionT = Aws::String>
+    GreengrassOutputDetails& WithComponentVersion(ComponentVersionT&& value) { SetComponentVersion(std::forward<ComponentVersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_componentVersionArn;

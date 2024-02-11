@@ -36,499 +36,216 @@ namespace Model
   class GetVectorEnrichmentJobResult
   {
   public:
-    AWS_SAGEMAKERGEOSPATIAL_API GetVectorEnrichmentJobResult();
+    AWS_SAGEMAKERGEOSPATIAL_API GetVectorEnrichmentJobResult() = default;
     AWS_SAGEMAKERGEOSPATIAL_API GetVectorEnrichmentJobResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SAGEMAKERGEOSPATIAL_API GetVectorEnrichmentJobResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    GetVectorEnrichmentJobResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The creation time.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    GetVectorEnrichmentJobResult& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The creation time.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTime = value; }
-
-    /**
-     * <p>The creation time.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTime = std::move(value); }
-
-    /**
-     * <p>The creation time.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The creation time.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The duration of the Vector Enrichment job, in seconds.</p>
      */
-    inline int GetDurationInSeconds() const{ return m_durationInSeconds; }
-
-    /**
-     * <p>The duration of the Vector Enrichment job, in seconds.</p>
-     */
-    inline void SetDurationInSeconds(int value) { m_durationInSeconds = value; }
-
-    /**
-     * <p>The duration of the Vector Enrichment job, in seconds.</p>
-     */
+    inline int GetDurationInSeconds() const { return m_durationInSeconds; }
+    inline void SetDurationInSeconds(int value) { m_durationInSecondsHasBeenSet = true; m_durationInSeconds = value; }
     inline GetVectorEnrichmentJobResult& WithDurationInSeconds(int value) { SetDurationInSeconds(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Details about the errors generated during the Vector Enrichment job.</p>
      */
-    inline const VectorEnrichmentJobErrorDetails& GetErrorDetails() const{ return m_errorDetails; }
+    inline const VectorEnrichmentJobErrorDetails& GetErrorDetails() const { return m_errorDetails; }
+    template<typename ErrorDetailsT = VectorEnrichmentJobErrorDetails>
+    void SetErrorDetails(ErrorDetailsT&& value) { m_errorDetailsHasBeenSet = true; m_errorDetails = std::forward<ErrorDetailsT>(value); }
+    template<typename ErrorDetailsT = VectorEnrichmentJobErrorDetails>
+    GetVectorEnrichmentJobResult& WithErrorDetails(ErrorDetailsT&& value) { SetErrorDetails(std::forward<ErrorDetailsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about the errors generated during the Vector Enrichment job.</p>
-     */
-    inline void SetErrorDetails(const VectorEnrichmentJobErrorDetails& value) { m_errorDetails = value; }
-
-    /**
-     * <p>Details about the errors generated during the Vector Enrichment job.</p>
-     */
-    inline void SetErrorDetails(VectorEnrichmentJobErrorDetails&& value) { m_errorDetails = std::move(value); }
-
-    /**
-     * <p>Details about the errors generated during the Vector Enrichment job.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithErrorDetails(const VectorEnrichmentJobErrorDetails& value) { SetErrorDetails(value); return *this;}
-
-    /**
-     * <p>Details about the errors generated during the Vector Enrichment job.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithErrorDetails(VectorEnrichmentJobErrorDetails&& value) { SetErrorDetails(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role that you specified for the
      * job.</p>
      */
-    inline const Aws::String& GetExecutionRoleArn() const{ return m_executionRoleArn; }
+    inline const Aws::String& GetExecutionRoleArn() const { return m_executionRoleArn; }
+    template<typename ExecutionRoleArnT = Aws::String>
+    void SetExecutionRoleArn(ExecutionRoleArnT&& value) { m_executionRoleArnHasBeenSet = true; m_executionRoleArn = std::forward<ExecutionRoleArnT>(value); }
+    template<typename ExecutionRoleArnT = Aws::String>
+    GetVectorEnrichmentJobResult& WithExecutionRoleArn(ExecutionRoleArnT&& value) { SetExecutionRoleArn(std::forward<ExecutionRoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that you specified for the
-     * job.</p>
-     */
-    inline void SetExecutionRoleArn(const Aws::String& value) { m_executionRoleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that you specified for the
-     * job.</p>
-     */
-    inline void SetExecutionRoleArn(Aws::String&& value) { m_executionRoleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that you specified for the
-     * job.</p>
-     */
-    inline void SetExecutionRoleArn(const char* value) { m_executionRoleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that you specified for the
-     * job.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithExecutionRoleArn(const Aws::String& value) { SetExecutionRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that you specified for the
-     * job.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithExecutionRoleArn(Aws::String&& value) { SetExecutionRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that you specified for the
-     * job.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithExecutionRoleArn(const char* value) { SetExecutionRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about the errors generated during the ExportVectorEnrichmentJob.</p>
      */
-    inline const VectorEnrichmentJobExportErrorDetails& GetExportErrorDetails() const{ return m_exportErrorDetails; }
+    inline const VectorEnrichmentJobExportErrorDetails& GetExportErrorDetails() const { return m_exportErrorDetails; }
+    template<typename ExportErrorDetailsT = VectorEnrichmentJobExportErrorDetails>
+    void SetExportErrorDetails(ExportErrorDetailsT&& value) { m_exportErrorDetailsHasBeenSet = true; m_exportErrorDetails = std::forward<ExportErrorDetailsT>(value); }
+    template<typename ExportErrorDetailsT = VectorEnrichmentJobExportErrorDetails>
+    GetVectorEnrichmentJobResult& WithExportErrorDetails(ExportErrorDetailsT&& value) { SetExportErrorDetails(std::forward<ExportErrorDetailsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about the errors generated during the ExportVectorEnrichmentJob.</p>
-     */
-    inline void SetExportErrorDetails(const VectorEnrichmentJobExportErrorDetails& value) { m_exportErrorDetails = value; }
-
-    /**
-     * <p>Details about the errors generated during the ExportVectorEnrichmentJob.</p>
-     */
-    inline void SetExportErrorDetails(VectorEnrichmentJobExportErrorDetails&& value) { m_exportErrorDetails = std::move(value); }
-
-    /**
-     * <p>Details about the errors generated during the ExportVectorEnrichmentJob.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithExportErrorDetails(const VectorEnrichmentJobExportErrorDetails& value) { SetExportErrorDetails(value); return *this;}
-
-    /**
-     * <p>Details about the errors generated during the ExportVectorEnrichmentJob.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithExportErrorDetails(VectorEnrichmentJobExportErrorDetails&& value) { SetExportErrorDetails(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The export status of the Vector Enrichment job being initiated.</p>
      */
-    inline const VectorEnrichmentJobExportStatus& GetExportStatus() const{ return m_exportStatus; }
+    inline VectorEnrichmentJobExportStatus GetExportStatus() const { return m_exportStatus; }
+    inline void SetExportStatus(VectorEnrichmentJobExportStatus value) { m_exportStatusHasBeenSet = true; m_exportStatus = value; }
+    inline GetVectorEnrichmentJobResult& WithExportStatus(VectorEnrichmentJobExportStatus value) { SetExportStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The export status of the Vector Enrichment job being initiated.</p>
-     */
-    inline void SetExportStatus(const VectorEnrichmentJobExportStatus& value) { m_exportStatus = value; }
-
-    /**
-     * <p>The export status of the Vector Enrichment job being initiated.</p>
-     */
-    inline void SetExportStatus(VectorEnrichmentJobExportStatus&& value) { m_exportStatus = std::move(value); }
-
-    /**
-     * <p>The export status of the Vector Enrichment job being initiated.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithExportStatus(const VectorEnrichmentJobExportStatus& value) { SetExportStatus(value); return *this;}
-
-    /**
-     * <p>The export status of the Vector Enrichment job being initiated.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithExportStatus(VectorEnrichmentJobExportStatus&& value) { SetExportStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Input configuration information for the Vector Enrichment job.</p>
      */
-    inline const VectorEnrichmentJobInputConfig& GetInputConfig() const{ return m_inputConfig; }
+    inline const VectorEnrichmentJobInputConfig& GetInputConfig() const { return m_inputConfig; }
+    template<typename InputConfigT = VectorEnrichmentJobInputConfig>
+    void SetInputConfig(InputConfigT&& value) { m_inputConfigHasBeenSet = true; m_inputConfig = std::forward<InputConfigT>(value); }
+    template<typename InputConfigT = VectorEnrichmentJobInputConfig>
+    GetVectorEnrichmentJobResult& WithInputConfig(InputConfigT&& value) { SetInputConfig(std::forward<InputConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Input configuration information for the Vector Enrichment job.</p>
-     */
-    inline void SetInputConfig(const VectorEnrichmentJobInputConfig& value) { m_inputConfig = value; }
-
-    /**
-     * <p>Input configuration information for the Vector Enrichment job.</p>
-     */
-    inline void SetInputConfig(VectorEnrichmentJobInputConfig&& value) { m_inputConfig = std::move(value); }
-
-    /**
-     * <p>Input configuration information for the Vector Enrichment job.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithInputConfig(const VectorEnrichmentJobInputConfig& value) { SetInputConfig(value); return *this;}
-
-    /**
-     * <p>Input configuration information for the Vector Enrichment job.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithInputConfig(VectorEnrichmentJobInputConfig&& value) { SetInputConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An object containing information about the job configuration.</p>
      */
-    inline const VectorEnrichmentJobConfig& GetJobConfig() const{ return m_jobConfig; }
+    inline const VectorEnrichmentJobConfig& GetJobConfig() const { return m_jobConfig; }
+    template<typename JobConfigT = VectorEnrichmentJobConfig>
+    void SetJobConfig(JobConfigT&& value) { m_jobConfigHasBeenSet = true; m_jobConfig = std::forward<JobConfigT>(value); }
+    template<typename JobConfigT = VectorEnrichmentJobConfig>
+    GetVectorEnrichmentJobResult& WithJobConfig(JobConfigT&& value) { SetJobConfig(std::forward<JobConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object containing information about the job configuration.</p>
-     */
-    inline void SetJobConfig(const VectorEnrichmentJobConfig& value) { m_jobConfig = value; }
-
-    /**
-     * <p>An object containing information about the job configuration.</p>
-     */
-    inline void SetJobConfig(VectorEnrichmentJobConfig&& value) { m_jobConfig = std::move(value); }
-
-    /**
-     * <p>An object containing information about the job configuration.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithJobConfig(const VectorEnrichmentJobConfig& value) { SetJobConfig(value); return *this;}
-
-    /**
-     * <p>An object containing information about the job configuration.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithJobConfig(VectorEnrichmentJobConfig&& value) { SetJobConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Key Management Service key ID for server-side encryption.</p>
      */
-    inline const Aws::String& GetKmsKeyId() const{ return m_kmsKeyId; }
+    inline const Aws::String& GetKmsKeyId() const { return m_kmsKeyId; }
+    template<typename KmsKeyIdT = Aws::String>
+    void SetKmsKeyId(KmsKeyIdT&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::forward<KmsKeyIdT>(value); }
+    template<typename KmsKeyIdT = Aws::String>
+    GetVectorEnrichmentJobResult& WithKmsKeyId(KmsKeyIdT&& value) { SetKmsKeyId(std::forward<KmsKeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Key Management Service key ID for server-side encryption.</p>
-     */
-    inline void SetKmsKeyId(const Aws::String& value) { m_kmsKeyId = value; }
-
-    /**
-     * <p>The Key Management Service key ID for server-side encryption.</p>
-     */
-    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyId = std::move(value); }
-
-    /**
-     * <p>The Key Management Service key ID for server-side encryption.</p>
-     */
-    inline void SetKmsKeyId(const char* value) { m_kmsKeyId.assign(value); }
-
-    /**
-     * <p>The Key Management Service key ID for server-side encryption.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithKmsKeyId(const Aws::String& value) { SetKmsKeyId(value); return *this;}
-
-    /**
-     * <p>The Key Management Service key ID for server-side encryption.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Key Management Service key ID for server-side encryption.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithKmsKeyId(const char* value) { SetKmsKeyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the Vector Enrichment job.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetVectorEnrichmentJobResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Vector Enrichment job.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The name of the Vector Enrichment job.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The name of the Vector Enrichment job.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name of the Vector Enrichment job.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the Vector Enrichment job.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Vector Enrichment job.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the initiated Vector Enrichment job.</p>
      */
-    inline const VectorEnrichmentJobStatus& GetStatus() const{ return m_status; }
+    inline VectorEnrichmentJobStatus GetStatus() const { return m_status; }
+    inline void SetStatus(VectorEnrichmentJobStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline GetVectorEnrichmentJobResult& WithStatus(VectorEnrichmentJobStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the initiated Vector Enrichment job.</p>
-     */
-    inline void SetStatus(const VectorEnrichmentJobStatus& value) { m_status = value; }
-
-    /**
-     * <p>The status of the initiated Vector Enrichment job.</p>
-     */
-    inline void SetStatus(VectorEnrichmentJobStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of the initiated Vector Enrichment job.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithStatus(const VectorEnrichmentJobStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the initiated Vector Enrichment job.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithStatus(VectorEnrichmentJobStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Each tag consists of a key and a value.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    GetVectorEnrichmentJobResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    GetVectorEnrichmentJobResult& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>Each tag consists of a key and a value.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tags = value; }
-
-    /**
-     * <p>Each tag consists of a key and a value.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tags = std::move(value); }
-
-    /**
-     * <p>Each tag consists of a key and a value.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Each tag consists of a key and a value.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Each tag consists of a key and a value.</p>
-     */
-    inline GetVectorEnrichmentJobResult& AddTags(const Aws::String& key, const Aws::String& value) { m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>Each tag consists of a key and a value.</p>
-     */
-    inline GetVectorEnrichmentJobResult& AddTags(Aws::String&& key, const Aws::String& value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Each tag consists of a key and a value.</p>
-     */
-    inline GetVectorEnrichmentJobResult& AddTags(const Aws::String& key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Each tag consists of a key and a value.</p>
-     */
-    inline GetVectorEnrichmentJobResult& AddTags(Aws::String&& key, Aws::String&& value) { m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Each tag consists of a key and a value.</p>
-     */
-    inline GetVectorEnrichmentJobResult& AddTags(const char* key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Each tag consists of a key and a value.</p>
-     */
-    inline GetVectorEnrichmentJobResult& AddTags(Aws::String&& key, const char* value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Each tag consists of a key and a value.</p>
-     */
-    inline GetVectorEnrichmentJobResult& AddTags(const char* key, const char* value) { m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The type of the Vector Enrichment job being initiated.</p>
      */
-    inline const VectorEnrichmentJobType& GetType() const{ return m_type; }
+    inline VectorEnrichmentJobType GetType() const { return m_type; }
+    inline void SetType(VectorEnrichmentJobType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline GetVectorEnrichmentJobResult& WithType(VectorEnrichmentJobType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the Vector Enrichment job being initiated.</p>
-     */
-    inline void SetType(const VectorEnrichmentJobType& value) { m_type = value; }
-
-    /**
-     * <p>The type of the Vector Enrichment job being initiated.</p>
-     */
-    inline void SetType(VectorEnrichmentJobType&& value) { m_type = std::move(value); }
-
-    /**
-     * <p>The type of the Vector Enrichment job being initiated.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithType(const VectorEnrichmentJobType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of the Vector Enrichment job being initiated.</p>
-     */
-    inline GetVectorEnrichmentJobResult& WithType(VectorEnrichmentJobType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetVectorEnrichmentJobResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetVectorEnrichmentJobResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetVectorEnrichmentJobResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetVectorEnrichmentJobResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
+    bool m_creationTimeHasBeenSet = false;
 
-    int m_durationInSeconds;
+    int m_durationInSeconds{0};
+    bool m_durationInSecondsHasBeenSet = false;
 
     VectorEnrichmentJobErrorDetails m_errorDetails;
+    bool m_errorDetailsHasBeenSet = false;
 
     Aws::String m_executionRoleArn;
+    bool m_executionRoleArnHasBeenSet = false;
 
     VectorEnrichmentJobExportErrorDetails m_exportErrorDetails;
+    bool m_exportErrorDetailsHasBeenSet = false;
 
-    VectorEnrichmentJobExportStatus m_exportStatus;
+    VectorEnrichmentJobExportStatus m_exportStatus{VectorEnrichmentJobExportStatus::NOT_SET};
+    bool m_exportStatusHasBeenSet = false;
 
     VectorEnrichmentJobInputConfig m_inputConfig;
+    bool m_inputConfigHasBeenSet = false;
 
     VectorEnrichmentJobConfig m_jobConfig;
+    bool m_jobConfigHasBeenSet = false;
 
     Aws::String m_kmsKeyId;
+    bool m_kmsKeyIdHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
-    VectorEnrichmentJobStatus m_status;
+    VectorEnrichmentJobStatus m_status{VectorEnrichmentJobStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
 
-    VectorEnrichmentJobType m_type;
+    VectorEnrichmentJobType m_type{VectorEnrichmentJobType::NOT_SET};
+    bool m_typeHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

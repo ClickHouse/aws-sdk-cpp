@@ -12,19 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-SearchRequest::SearchRequest() : 
-    m_resource(ResourceType::NOT_SET),
-    m_resourceHasBeenSet(false),
-    m_searchExpressionHasBeenSet(false),
-    m_sortByHasBeenSet(false),
-    m_sortOrder(SearchSortOrder::NOT_SET),
-    m_sortOrderHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String SearchRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -60,6 +47,22 @@ Aws::String SearchRequest::SerializePayload() const
   if(m_maxResultsHasBeenSet)
   {
    payload.WithInteger("MaxResults", m_maxResults);
+
+  }
+
+  if(m_crossAccountFilterOptionHasBeenSet)
+  {
+   payload.WithString("CrossAccountFilterOption", CrossAccountFilterOptionMapper::GetNameForCrossAccountFilterOption(m_crossAccountFilterOption));
+  }
+
+  if(m_visibilityConditionsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> visibilityConditionsJsonList(m_visibilityConditions.size());
+   for(unsigned visibilityConditionsIndex = 0; visibilityConditionsIndex < visibilityConditionsJsonList.GetLength(); ++visibilityConditionsIndex)
+   {
+     visibilityConditionsJsonList[visibilityConditionsIndex].AsObject(m_visibilityConditions[visibilityConditionsIndex].Jsonize());
+   }
+   payload.WithArray("VisibilityConditions", std::move(visibilityConditionsJsonList));
 
   }
 

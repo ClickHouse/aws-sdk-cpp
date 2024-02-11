@@ -19,6 +19,7 @@
 
 /* Service model headers required in EC2Client header */
 #include <aws/ec2/model/AcceptAddressTransferResponse.h>
+#include <aws/ec2/model/AcceptCapacityReservationBillingOwnershipResponse.h>
 #include <aws/ec2/model/AcceptReservedInstancesExchangeQuoteResponse.h>
 #include <aws/ec2/model/AcceptTransitGatewayMulticastDomainAssociationsResponse.h>
 #include <aws/ec2/model/AcceptTransitGatewayPeeringAttachmentResponse.h>
@@ -34,13 +35,17 @@
 #include <aws/ec2/model/AssignPrivateIpAddressesResponse.h>
 #include <aws/ec2/model/AssignPrivateNatGatewayAddressResponse.h>
 #include <aws/ec2/model/AssociateAddressResponse.h>
+#include <aws/ec2/model/AssociateCapacityReservationBillingOwnerResponse.h>
 #include <aws/ec2/model/AssociateClientVpnTargetNetworkResponse.h>
 #include <aws/ec2/model/AssociateEnclaveCertificateIamRoleResponse.h>
 #include <aws/ec2/model/AssociateIamInstanceProfileResponse.h>
 #include <aws/ec2/model/AssociateInstanceEventWindowResponse.h>
+#include <aws/ec2/model/AssociateIpamByoasnResponse.h>
 #include <aws/ec2/model/AssociateIpamResourceDiscoveryResponse.h>
 #include <aws/ec2/model/AssociateNatGatewayAddressResponse.h>
+#include <aws/ec2/model/AssociateRouteServerResponse.h>
 #include <aws/ec2/model/AssociateRouteTableResponse.h>
+#include <aws/ec2/model/AssociateSecurityGroupVpcResponse.h>
 #include <aws/ec2/model/AssociateSubnetCidrBlockResponse.h>
 #include <aws/ec2/model/AssociateTransitGatewayMulticastDomainResponse.h>
 #include <aws/ec2/model/AssociateTransitGatewayPolicyTableResponse.h>
@@ -59,6 +64,7 @@
 #include <aws/ec2/model/CancelBundleTaskResponse.h>
 #include <aws/ec2/model/CancelCapacityReservationResponse.h>
 #include <aws/ec2/model/CancelCapacityReservationFleetsResponse.h>
+#include <aws/ec2/model/CancelDeclarativePoliciesReportResponse.h>
 #include <aws/ec2/model/CancelImageLaunchPermissionResponse.h>
 #include <aws/ec2/model/CancelImportTaskResponse.h>
 #include <aws/ec2/model/CancelReservedInstancesListingResponse.h>
@@ -69,6 +75,7 @@
 #include <aws/ec2/model/CopyImageResponse.h>
 #include <aws/ec2/model/CopySnapshotResponse.h>
 #include <aws/ec2/model/CreateCapacityReservationResponse.h>
+#include <aws/ec2/model/CreateCapacityReservationBySplittingResponse.h>
 #include <aws/ec2/model/CreateCapacityReservationFleetResponse.h>
 #include <aws/ec2/model/CreateCarrierGatewayResponse.h>
 #include <aws/ec2/model/CreateClientVpnEndpointResponse.h>
@@ -78,16 +85,20 @@
 #include <aws/ec2/model/CreateCustomerGatewayResponse.h>
 #include <aws/ec2/model/CreateDefaultSubnetResponse.h>
 #include <aws/ec2/model/CreateDefaultVpcResponse.h>
+#include <aws/ec2/model/CreateDelegateMacVolumeOwnershipTaskResponse.h>
 #include <aws/ec2/model/CreateDhcpOptionsResponse.h>
 #include <aws/ec2/model/CreateEgressOnlyInternetGatewayResponse.h>
 #include <aws/ec2/model/CreateFleetResponse.h>
 #include <aws/ec2/model/CreateFlowLogsResponse.h>
 #include <aws/ec2/model/CreateFpgaImageResponse.h>
 #include <aws/ec2/model/CreateImageResponse.h>
+#include <aws/ec2/model/CreateImageUsageReportResponse.h>
+#include <aws/ec2/model/CreateInstanceConnectEndpointResponse.h>
 #include <aws/ec2/model/CreateInstanceEventWindowResponse.h>
 #include <aws/ec2/model/CreateInstanceExportTaskResponse.h>
 #include <aws/ec2/model/CreateInternetGatewayResponse.h>
 #include <aws/ec2/model/CreateIpamResponse.h>
+#include <aws/ec2/model/CreateIpamExternalResourceVerificationTokenResponse.h>
 #include <aws/ec2/model/CreateIpamPoolResponse.h>
 #include <aws/ec2/model/CreateIpamResourceDiscoveryResponse.h>
 #include <aws/ec2/model/CreateIpamScopeResponse.h>
@@ -98,6 +109,9 @@
 #include <aws/ec2/model/CreateLocalGatewayRouteTableResponse.h>
 #include <aws/ec2/model/CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationResponse.h>
 #include <aws/ec2/model/CreateLocalGatewayRouteTableVpcAssociationResponse.h>
+#include <aws/ec2/model/CreateLocalGatewayVirtualInterfaceResponse.h>
+#include <aws/ec2/model/CreateLocalGatewayVirtualInterfaceGroupResponse.h>
+#include <aws/ec2/model/CreateMacSystemIntegrityProtectionModificationTaskResponse.h>
 #include <aws/ec2/model/CreateManagedPrefixListResponse.h>
 #include <aws/ec2/model/CreateNatGatewayResponse.h>
 #include <aws/ec2/model/CreateNetworkAclResponse.h>
@@ -111,6 +125,9 @@
 #include <aws/ec2/model/CreateReservedInstancesListingResponse.h>
 #include <aws/ec2/model/CreateRestoreImageTaskResponse.h>
 #include <aws/ec2/model/CreateRouteResponse.h>
+#include <aws/ec2/model/CreateRouteServerResponse.h>
+#include <aws/ec2/model/CreateRouteServerEndpointResponse.h>
+#include <aws/ec2/model/CreateRouteServerPeerResponse.h>
 #include <aws/ec2/model/CreateRouteTableResponse.h>
 #include <aws/ec2/model/CreateSecurityGroupResponse.h>
 #include <aws/ec2/model/CreateSnapshotResponse.h>
@@ -140,6 +157,7 @@
 #include <aws/ec2/model/CreateVerifiedAccessTrustProviderResponse.h>
 #include <aws/ec2/model/CreateVolumeResponse.h>
 #include <aws/ec2/model/CreateVpcResponse.h>
+#include <aws/ec2/model/CreateVpcBlockPublicAccessExclusionResponse.h>
 #include <aws/ec2/model/CreateVpcEndpointResponse.h>
 #include <aws/ec2/model/CreateVpcEndpointConnectionNotificationResponse.h>
 #include <aws/ec2/model/CreateVpcEndpointServiceConfigurationResponse.h>
@@ -155,17 +173,23 @@
 #include <aws/ec2/model/DeleteFleetsResponse.h>
 #include <aws/ec2/model/DeleteFlowLogsResponse.h>
 #include <aws/ec2/model/DeleteFpgaImageResponse.h>
+#include <aws/ec2/model/DeleteImageUsageReportResponse.h>
+#include <aws/ec2/model/DeleteInstanceConnectEndpointResponse.h>
 #include <aws/ec2/model/DeleteInstanceEventWindowResponse.h>
 #include <aws/ec2/model/DeleteIpamResponse.h>
+#include <aws/ec2/model/DeleteIpamExternalResourceVerificationTokenResponse.h>
 #include <aws/ec2/model/DeleteIpamPoolResponse.h>
 #include <aws/ec2/model/DeleteIpamResourceDiscoveryResponse.h>
 #include <aws/ec2/model/DeleteIpamScopeResponse.h>
+#include <aws/ec2/model/DeleteKeyPairResponse.h>
 #include <aws/ec2/model/DeleteLaunchTemplateResponse.h>
 #include <aws/ec2/model/DeleteLaunchTemplateVersionsResponse.h>
 #include <aws/ec2/model/DeleteLocalGatewayRouteResponse.h>
 #include <aws/ec2/model/DeleteLocalGatewayRouteTableResponse.h>
 #include <aws/ec2/model/DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationResponse.h>
 #include <aws/ec2/model/DeleteLocalGatewayRouteTableVpcAssociationResponse.h>
+#include <aws/ec2/model/DeleteLocalGatewayVirtualInterfaceResponse.h>
+#include <aws/ec2/model/DeleteLocalGatewayVirtualInterfaceGroupResponse.h>
 #include <aws/ec2/model/DeleteManagedPrefixListResponse.h>
 #include <aws/ec2/model/DeleteNatGatewayResponse.h>
 #include <aws/ec2/model/DeleteNetworkInsightsAccessScopeResponse.h>
@@ -175,6 +199,10 @@
 #include <aws/ec2/model/DeleteNetworkInterfacePermissionResponse.h>
 #include <aws/ec2/model/DeletePublicIpv4PoolResponse.h>
 #include <aws/ec2/model/DeleteQueuedReservedInstancesResponse.h>
+#include <aws/ec2/model/DeleteRouteServerResponse.h>
+#include <aws/ec2/model/DeleteRouteServerEndpointResponse.h>
+#include <aws/ec2/model/DeleteRouteServerPeerResponse.h>
+#include <aws/ec2/model/DeleteSecurityGroupResponse.h>
 #include <aws/ec2/model/DeleteSubnetCidrReservationResponse.h>
 #include <aws/ec2/model/DeleteTrafficMirrorFilterResponse.h>
 #include <aws/ec2/model/DeleteTrafficMirrorFilterRuleResponse.h>
@@ -195,13 +223,16 @@
 #include <aws/ec2/model/DeleteVerifiedAccessGroupResponse.h>
 #include <aws/ec2/model/DeleteVerifiedAccessInstanceResponse.h>
 #include <aws/ec2/model/DeleteVerifiedAccessTrustProviderResponse.h>
+#include <aws/ec2/model/DeleteVpcBlockPublicAccessExclusionResponse.h>
 #include <aws/ec2/model/DeleteVpcEndpointConnectionNotificationsResponse.h>
 #include <aws/ec2/model/DeleteVpcEndpointServiceConfigurationsResponse.h>
 #include <aws/ec2/model/DeleteVpcEndpointsResponse.h>
 #include <aws/ec2/model/DeleteVpcPeeringConnectionResponse.h>
 #include <aws/ec2/model/DeprovisionByoipCidrResponse.h>
+#include <aws/ec2/model/DeprovisionIpamByoasnResponse.h>
 #include <aws/ec2/model/DeprovisionIpamPoolCidrResponse.h>
 #include <aws/ec2/model/DeprovisionPublicIpv4PoolCidrResponse.h>
+#include <aws/ec2/model/DeregisterImageResponse.h>
 #include <aws/ec2/model/DeregisterInstanceEventNotificationAttributesResponse.h>
 #include <aws/ec2/model/DeregisterTransitGatewayMulticastGroupMembersResponse.h>
 #include <aws/ec2/model/DeregisterTransitGatewayMulticastGroupSourcesResponse.h>
@@ -214,6 +245,12 @@
 #include <aws/ec2/model/DescribeAwsNetworkPerformanceMetricSubscriptionsResponse.h>
 #include <aws/ec2/model/DescribeBundleTasksResponse.h>
 #include <aws/ec2/model/DescribeByoipCidrsResponse.h>
+#include <aws/ec2/model/DescribeCapacityBlockExtensionHistoryResponse.h>
+#include <aws/ec2/model/DescribeCapacityBlockExtensionOfferingsResponse.h>
+#include <aws/ec2/model/DescribeCapacityBlockOfferingsResponse.h>
+#include <aws/ec2/model/DescribeCapacityBlockStatusResponse.h>
+#include <aws/ec2/model/DescribeCapacityBlocksResponse.h>
+#include <aws/ec2/model/DescribeCapacityReservationBillingRequestsResponse.h>
 #include <aws/ec2/model/DescribeCapacityReservationFleetsResponse.h>
 #include <aws/ec2/model/DescribeCapacityReservationsResponse.h>
 #include <aws/ec2/model/DescribeCarrierGatewaysResponse.h>
@@ -226,6 +263,7 @@
 #include <aws/ec2/model/DescribeCoipPoolsResponse.h>
 #include <aws/ec2/model/DescribeConversionTasksResponse.h>
 #include <aws/ec2/model/DescribeCustomerGatewaysResponse.h>
+#include <aws/ec2/model/DescribeDeclarativePoliciesReportsResponse.h>
 #include <aws/ec2/model/DescribeDhcpOptionsResponse.h>
 #include <aws/ec2/model/DescribeEgressOnlyInternetGatewaysResponse.h>
 #include <aws/ec2/model/DescribeElasticGpusResponse.h>
@@ -246,18 +284,26 @@
 #include <aws/ec2/model/DescribeIdFormatResponse.h>
 #include <aws/ec2/model/DescribeIdentityIdFormatResponse.h>
 #include <aws/ec2/model/DescribeImageAttributeResponse.h>
+#include <aws/ec2/model/DescribeImageReferencesResponse.h>
+#include <aws/ec2/model/DescribeImageUsageReportEntriesResponse.h>
+#include <aws/ec2/model/DescribeImageUsageReportsResponse.h>
 #include <aws/ec2/model/DescribeImagesResponse.h>
 #include <aws/ec2/model/DescribeImportImageTasksResponse.h>
 #include <aws/ec2/model/DescribeImportSnapshotTasksResponse.h>
 #include <aws/ec2/model/DescribeInstanceAttributeResponse.h>
+#include <aws/ec2/model/DescribeInstanceConnectEndpointsResponse.h>
 #include <aws/ec2/model/DescribeInstanceCreditSpecificationsResponse.h>
 #include <aws/ec2/model/DescribeInstanceEventNotificationAttributesResponse.h>
 #include <aws/ec2/model/DescribeInstanceEventWindowsResponse.h>
+#include <aws/ec2/model/DescribeInstanceImageMetadataResponse.h>
 #include <aws/ec2/model/DescribeInstanceStatusResponse.h>
+#include <aws/ec2/model/DescribeInstanceTopologyResponse.h>
 #include <aws/ec2/model/DescribeInstanceTypeOfferingsResponse.h>
 #include <aws/ec2/model/DescribeInstanceTypesResponse.h>
 #include <aws/ec2/model/DescribeInstancesResponse.h>
 #include <aws/ec2/model/DescribeInternetGatewaysResponse.h>
+#include <aws/ec2/model/DescribeIpamByoasnResponse.h>
+#include <aws/ec2/model/DescribeIpamExternalResourceVerificationTokensResponse.h>
 #include <aws/ec2/model/DescribeIpamPoolsResponse.h>
 #include <aws/ec2/model/DescribeIpamResourceDiscoveriesResponse.h>
 #include <aws/ec2/model/DescribeIpamResourceDiscoveryAssociationsResponse.h>
@@ -273,6 +319,9 @@
 #include <aws/ec2/model/DescribeLocalGatewayVirtualInterfaceGroupsResponse.h>
 #include <aws/ec2/model/DescribeLocalGatewayVirtualInterfacesResponse.h>
 #include <aws/ec2/model/DescribeLocalGatewaysResponse.h>
+#include <aws/ec2/model/DescribeLockedSnapshotsResponse.h>
+#include <aws/ec2/model/DescribeMacHostsResponse.h>
+#include <aws/ec2/model/DescribeMacModificationTasksResponse.h>
 #include <aws/ec2/model/DescribeManagedPrefixListsResponse.h>
 #include <aws/ec2/model/DescribeMovingAddressesResponse.h>
 #include <aws/ec2/model/DescribeNatGatewaysResponse.h>
@@ -284,6 +333,7 @@
 #include <aws/ec2/model/DescribeNetworkInterfaceAttributeResponse.h>
 #include <aws/ec2/model/DescribeNetworkInterfacePermissionsResponse.h>
 #include <aws/ec2/model/DescribeNetworkInterfacesResponse.h>
+#include <aws/ec2/model/DescribeOutpostLagsResponse.h>
 #include <aws/ec2/model/DescribePlacementGroupsResponse.h>
 #include <aws/ec2/model/DescribePrefixListsResponse.h>
 #include <aws/ec2/model/DescribePrincipalIdFormatResponse.h>
@@ -294,12 +344,17 @@
 #include <aws/ec2/model/DescribeReservedInstancesListingsResponse.h>
 #include <aws/ec2/model/DescribeReservedInstancesModificationsResponse.h>
 #include <aws/ec2/model/DescribeReservedInstancesOfferingsResponse.h>
+#include <aws/ec2/model/DescribeRouteServerEndpointsResponse.h>
+#include <aws/ec2/model/DescribeRouteServerPeersResponse.h>
+#include <aws/ec2/model/DescribeRouteServersResponse.h>
 #include <aws/ec2/model/DescribeRouteTablesResponse.h>
 #include <aws/ec2/model/DescribeScheduledInstanceAvailabilityResponse.h>
 #include <aws/ec2/model/DescribeScheduledInstancesResponse.h>
 #include <aws/ec2/model/DescribeSecurityGroupReferencesResponse.h>
 #include <aws/ec2/model/DescribeSecurityGroupRulesResponse.h>
+#include <aws/ec2/model/DescribeSecurityGroupVpcAssociationsResponse.h>
 #include <aws/ec2/model/DescribeSecurityGroupsResponse.h>
+#include <aws/ec2/model/DescribeServiceLinkVirtualInterfacesResponse.h>
 #include <aws/ec2/model/DescribeSnapshotAttributeResponse.h>
 #include <aws/ec2/model/DescribeSnapshotTierStatusResponse.h>
 #include <aws/ec2/model/DescribeSnapshotsResponse.h>
@@ -313,6 +368,7 @@
 #include <aws/ec2/model/DescribeStoreImageTasksResponse.h>
 #include <aws/ec2/model/DescribeSubnetsResponse.h>
 #include <aws/ec2/model/DescribeTagsResponse.h>
+#include <aws/ec2/model/DescribeTrafficMirrorFilterRulesResponse.h>
 #include <aws/ec2/model/DescribeTrafficMirrorFiltersResponse.h>
 #include <aws/ec2/model/DescribeTrafficMirrorSessionsResponse.h>
 #include <aws/ec2/model/DescribeTrafficMirrorTargetsResponse.h>
@@ -337,8 +393,11 @@
 #include <aws/ec2/model/DescribeVolumesResponse.h>
 #include <aws/ec2/model/DescribeVolumesModificationsResponse.h>
 #include <aws/ec2/model/DescribeVpcAttributeResponse.h>
+#include <aws/ec2/model/DescribeVpcBlockPublicAccessExclusionsResponse.h>
+#include <aws/ec2/model/DescribeVpcBlockPublicAccessOptionsResponse.h>
 #include <aws/ec2/model/DescribeVpcClassicLinkResponse.h>
 #include <aws/ec2/model/DescribeVpcClassicLinkDnsSupportResponse.h>
+#include <aws/ec2/model/DescribeVpcEndpointAssociationsResponse.h>
 #include <aws/ec2/model/DescribeVpcEndpointConnectionNotificationsResponse.h>
 #include <aws/ec2/model/DescribeVpcEndpointConnectionsResponse.h>
 #include <aws/ec2/model/DescribeVpcEndpointServiceConfigurationsResponse.h>
@@ -353,22 +412,32 @@
 #include <aws/ec2/model/DetachVerifiedAccessTrustProviderResponse.h>
 #include <aws/ec2/model/DetachVolumeResponse.h>
 #include <aws/ec2/model/DisableAddressTransferResponse.h>
+#include <aws/ec2/model/DisableAllowedImagesSettingsResponse.h>
 #include <aws/ec2/model/DisableAwsNetworkPerformanceMetricSubscriptionResponse.h>
 #include <aws/ec2/model/DisableEbsEncryptionByDefaultResponse.h>
 #include <aws/ec2/model/DisableFastLaunchResponse.h>
 #include <aws/ec2/model/DisableFastSnapshotRestoresResponse.h>
+#include <aws/ec2/model/DisableImageResponse.h>
+#include <aws/ec2/model/DisableImageBlockPublicAccessResponse.h>
 #include <aws/ec2/model/DisableImageDeprecationResponse.h>
+#include <aws/ec2/model/DisableImageDeregistrationProtectionResponse.h>
 #include <aws/ec2/model/DisableIpamOrganizationAdminAccountResponse.h>
+#include <aws/ec2/model/DisableRouteServerPropagationResponse.h>
 #include <aws/ec2/model/DisableSerialConsoleAccessResponse.h>
+#include <aws/ec2/model/DisableSnapshotBlockPublicAccessResponse.h>
 #include <aws/ec2/model/DisableTransitGatewayRouteTablePropagationResponse.h>
 #include <aws/ec2/model/DisableVpcClassicLinkResponse.h>
 #include <aws/ec2/model/DisableVpcClassicLinkDnsSupportResponse.h>
+#include <aws/ec2/model/DisassociateCapacityReservationBillingOwnerResponse.h>
 #include <aws/ec2/model/DisassociateClientVpnTargetNetworkResponse.h>
 #include <aws/ec2/model/DisassociateEnclaveCertificateIamRoleResponse.h>
 #include <aws/ec2/model/DisassociateIamInstanceProfileResponse.h>
 #include <aws/ec2/model/DisassociateInstanceEventWindowResponse.h>
+#include <aws/ec2/model/DisassociateIpamByoasnResponse.h>
 #include <aws/ec2/model/DisassociateIpamResourceDiscoveryResponse.h>
 #include <aws/ec2/model/DisassociateNatGatewayAddressResponse.h>
+#include <aws/ec2/model/DisassociateRouteServerResponse.h>
+#include <aws/ec2/model/DisassociateSecurityGroupVpcResponse.h>
 #include <aws/ec2/model/DisassociateSubnetCidrBlockResponse.h>
 #include <aws/ec2/model/DisassociateTransitGatewayMulticastDomainResponse.h>
 #include <aws/ec2/model/DisassociateTransitGatewayPolicyTableResponse.h>
@@ -376,14 +445,20 @@
 #include <aws/ec2/model/DisassociateTrunkInterfaceResponse.h>
 #include <aws/ec2/model/DisassociateVpcCidrBlockResponse.h>
 #include <aws/ec2/model/EnableAddressTransferResponse.h>
+#include <aws/ec2/model/EnableAllowedImagesSettingsResponse.h>
 #include <aws/ec2/model/EnableAwsNetworkPerformanceMetricSubscriptionResponse.h>
 #include <aws/ec2/model/EnableEbsEncryptionByDefaultResponse.h>
 #include <aws/ec2/model/EnableFastLaunchResponse.h>
 #include <aws/ec2/model/EnableFastSnapshotRestoresResponse.h>
+#include <aws/ec2/model/EnableImageResponse.h>
+#include <aws/ec2/model/EnableImageBlockPublicAccessResponse.h>
 #include <aws/ec2/model/EnableImageDeprecationResponse.h>
+#include <aws/ec2/model/EnableImageDeregistrationProtectionResponse.h>
 #include <aws/ec2/model/EnableIpamOrganizationAdminAccountResponse.h>
 #include <aws/ec2/model/EnableReachabilityAnalyzerOrganizationSharingResponse.h>
+#include <aws/ec2/model/EnableRouteServerPropagationResponse.h>
 #include <aws/ec2/model/EnableSerialConsoleAccessResponse.h>
+#include <aws/ec2/model/EnableSnapshotBlockPublicAccessResponse.h>
 #include <aws/ec2/model/EnableTransitGatewayRouteTablePropagationResponse.h>
 #include <aws/ec2/model/EnableVpcClassicLinkResponse.h>
 #include <aws/ec2/model/EnableVpcClassicLinkDnsSupportResponse.h>
@@ -391,6 +466,9 @@
 #include <aws/ec2/model/ExportClientVpnClientConfigurationResponse.h>
 #include <aws/ec2/model/ExportImageResponse.h>
 #include <aws/ec2/model/ExportTransitGatewayRoutesResponse.h>
+#include <aws/ec2/model/ExportVerifiedAccessInstanceClientConfigurationResponse.h>
+#include <aws/ec2/model/GetActiveVpnTunnelStatusResponse.h>
+#include <aws/ec2/model/GetAllowedImagesSettingsResponse.h>
 #include <aws/ec2/model/GetAssociatedEnclaveCertificateIamRolesResponse.h>
 #include <aws/ec2/model/GetAssociatedIpv6PoolCidrsResponse.h>
 #include <aws/ec2/model/GetAwsNetworkPerformanceDataResponse.h>
@@ -398,16 +476,21 @@
 #include <aws/ec2/model/GetCoipPoolUsageResponse.h>
 #include <aws/ec2/model/GetConsoleOutputResponse.h>
 #include <aws/ec2/model/GetConsoleScreenshotResponse.h>
+#include <aws/ec2/model/GetDeclarativePoliciesReportSummaryResponse.h>
 #include <aws/ec2/model/GetDefaultCreditSpecificationResponse.h>
 #include <aws/ec2/model/GetEbsDefaultKmsKeyIdResponse.h>
 #include <aws/ec2/model/GetEbsEncryptionByDefaultResponse.h>
 #include <aws/ec2/model/GetFlowLogsIntegrationTemplateResponse.h>
 #include <aws/ec2/model/GetGroupsForCapacityReservationResponse.h>
 #include <aws/ec2/model/GetHostReservationPurchasePreviewResponse.h>
+#include <aws/ec2/model/GetImageBlockPublicAccessStateResponse.h>
+#include <aws/ec2/model/GetInstanceMetadataDefaultsResponse.h>
+#include <aws/ec2/model/GetInstanceTpmEkPubResponse.h>
 #include <aws/ec2/model/GetInstanceTypesFromInstanceRequirementsResponse.h>
 #include <aws/ec2/model/GetInstanceUefiDataResponse.h>
 #include <aws/ec2/model/GetIpamAddressHistoryResponse.h>
 #include <aws/ec2/model/GetIpamDiscoveredAccountsResponse.h>
+#include <aws/ec2/model/GetIpamDiscoveredPublicAddressesResponse.h>
 #include <aws/ec2/model/GetIpamDiscoveredResourceCidrsResponse.h>
 #include <aws/ec2/model/GetIpamPoolAllocationsResponse.h>
 #include <aws/ec2/model/GetIpamPoolCidrsResponse.h>
@@ -419,7 +502,12 @@
 #include <aws/ec2/model/GetNetworkInsightsAccessScopeContentResponse.h>
 #include <aws/ec2/model/GetPasswordDataResponse.h>
 #include <aws/ec2/model/GetReservedInstancesExchangeQuoteResponse.h>
+#include <aws/ec2/model/GetRouteServerAssociationsResponse.h>
+#include <aws/ec2/model/GetRouteServerPropagationsResponse.h>
+#include <aws/ec2/model/GetRouteServerRoutingDatabaseResponse.h>
+#include <aws/ec2/model/GetSecurityGroupsForVpcResponse.h>
 #include <aws/ec2/model/GetSerialConsoleAccessStatusResponse.h>
+#include <aws/ec2/model/GetSnapshotBlockPublicAccessStateResponse.h>
 #include <aws/ec2/model/GetSpotPlacementScoresResponse.h>
 #include <aws/ec2/model/GetSubnetCidrReservationsResponse.h>
 #include <aws/ec2/model/GetTransitGatewayAttachmentPropagationsResponse.h>
@@ -430,6 +518,7 @@
 #include <aws/ec2/model/GetTransitGatewayRouteTableAssociationsResponse.h>
 #include <aws/ec2/model/GetTransitGatewayRouteTablePropagationsResponse.h>
 #include <aws/ec2/model/GetVerifiedAccessEndpointPolicyResponse.h>
+#include <aws/ec2/model/GetVerifiedAccessEndpointTargetsResponse.h>
 #include <aws/ec2/model/GetVerifiedAccessGroupPolicyResponse.h>
 #include <aws/ec2/model/GetVpnConnectionDeviceSampleConfigurationResponse.h>
 #include <aws/ec2/model/GetVpnConnectionDeviceTypesResponse.h>
@@ -442,6 +531,7 @@
 #include <aws/ec2/model/ImportVolumeResponse.h>
 #include <aws/ec2/model/ListImagesInRecycleBinResponse.h>
 #include <aws/ec2/model/ListSnapshotsInRecycleBinResponse.h>
+#include <aws/ec2/model/LockSnapshotResponse.h>
 #include <aws/ec2/model/ModifyAddressAttributeResponse.h>
 #include <aws/ec2/model/ModifyAvailabilityZoneGroupResponse.h>
 #include <aws/ec2/model/ModifyCapacityReservationResponse.h>
@@ -453,11 +543,15 @@
 #include <aws/ec2/model/ModifyFpgaImageAttributeResponse.h>
 #include <aws/ec2/model/ModifyHostsResponse.h>
 #include <aws/ec2/model/ModifyInstanceCapacityReservationAttributesResponse.h>
+#include <aws/ec2/model/ModifyInstanceConnectEndpointResponse.h>
+#include <aws/ec2/model/ModifyInstanceCpuOptionsResponse.h>
 #include <aws/ec2/model/ModifyInstanceCreditSpecificationResponse.h>
 #include <aws/ec2/model/ModifyInstanceEventStartTimeResponse.h>
 #include <aws/ec2/model/ModifyInstanceEventWindowResponse.h>
 #include <aws/ec2/model/ModifyInstanceMaintenanceOptionsResponse.h>
+#include <aws/ec2/model/ModifyInstanceMetadataDefaultsResponse.h>
 #include <aws/ec2/model/ModifyInstanceMetadataOptionsResponse.h>
+#include <aws/ec2/model/ModifyInstanceNetworkPerformanceOptionsResponse.h>
 #include <aws/ec2/model/ModifyInstancePlacementResponse.h>
 #include <aws/ec2/model/ModifyIpamResponse.h>
 #include <aws/ec2/model/ModifyIpamPoolResponse.h>
@@ -468,7 +562,9 @@
 #include <aws/ec2/model/ModifyLocalGatewayRouteResponse.h>
 #include <aws/ec2/model/ModifyManagedPrefixListResponse.h>
 #include <aws/ec2/model/ModifyPrivateDnsNameOptionsResponse.h>
+#include <aws/ec2/model/ModifyPublicIpDnsNameOptionsResponse.h>
 #include <aws/ec2/model/ModifyReservedInstancesResponse.h>
+#include <aws/ec2/model/ModifyRouteServerResponse.h>
 #include <aws/ec2/model/ModifySecurityGroupRulesResponse.h>
 #include <aws/ec2/model/ModifySnapshotTierResponse.h>
 #include <aws/ec2/model/ModifySpotFleetRequestResponse.h>
@@ -486,6 +582,8 @@
 #include <aws/ec2/model/ModifyVerifiedAccessInstanceLoggingConfigurationResponse.h>
 #include <aws/ec2/model/ModifyVerifiedAccessTrustProviderResponse.h>
 #include <aws/ec2/model/ModifyVolumeResponse.h>
+#include <aws/ec2/model/ModifyVpcBlockPublicAccessExclusionResponse.h>
+#include <aws/ec2/model/ModifyVpcBlockPublicAccessOptionsResponse.h>
 #include <aws/ec2/model/ModifyVpcEndpointResponse.h>
 #include <aws/ec2/model/ModifyVpcEndpointConnectionNotificationResponse.h>
 #include <aws/ec2/model/ModifyVpcEndpointServiceConfigurationResponse.h>
@@ -500,9 +598,13 @@
 #include <aws/ec2/model/MonitorInstancesResponse.h>
 #include <aws/ec2/model/MoveAddressToVpcResponse.h>
 #include <aws/ec2/model/MoveByoipCidrToIpamResponse.h>
+#include <aws/ec2/model/MoveCapacityReservationInstancesResponse.h>
 #include <aws/ec2/model/ProvisionByoipCidrResponse.h>
+#include <aws/ec2/model/ProvisionIpamByoasnResponse.h>
 #include <aws/ec2/model/ProvisionIpamPoolCidrResponse.h>
 #include <aws/ec2/model/ProvisionPublicIpv4PoolCidrResponse.h>
+#include <aws/ec2/model/PurchaseCapacityBlockResponse.h>
+#include <aws/ec2/model/PurchaseCapacityBlockExtensionResponse.h>
 #include <aws/ec2/model/PurchaseHostReservationResponse.h>
 #include <aws/ec2/model/PurchaseReservedInstancesOfferingResponse.h>
 #include <aws/ec2/model/PurchaseScheduledInstancesResponse.h>
@@ -510,6 +612,7 @@
 #include <aws/ec2/model/RegisterInstanceEventNotificationAttributesResponse.h>
 #include <aws/ec2/model/RegisterTransitGatewayMulticastGroupMembersResponse.h>
 #include <aws/ec2/model/RegisterTransitGatewayMulticastGroupSourcesResponse.h>
+#include <aws/ec2/model/RejectCapacityReservationBillingOwnershipResponse.h>
 #include <aws/ec2/model/RejectTransitGatewayMulticastDomainAssociationsResponse.h>
 #include <aws/ec2/model/RejectTransitGatewayPeeringAttachmentResponse.h>
 #include <aws/ec2/model/RejectTransitGatewayVpcAttachmentResponse.h>
@@ -518,6 +621,7 @@
 #include <aws/ec2/model/ReleaseHostsResponse.h>
 #include <aws/ec2/model/ReleaseIpamPoolAllocationResponse.h>
 #include <aws/ec2/model/ReplaceIamInstanceProfileAssociationResponse.h>
+#include <aws/ec2/model/ReplaceImageCriteriaInAllowedImagesSettingsResponse.h>
 #include <aws/ec2/model/ReplaceNetworkAclAssociationResponse.h>
 #include <aws/ec2/model/ReplaceRouteTableAssociationResponse.h>
 #include <aws/ec2/model/ReplaceTransitGatewayRouteResponse.h>
@@ -540,6 +644,7 @@
 #include <aws/ec2/model/SearchLocalGatewayRoutesResponse.h>
 #include <aws/ec2/model/SearchTransitGatewayMulticastGroupsResponse.h>
 #include <aws/ec2/model/SearchTransitGatewayRoutesResponse.h>
+#include <aws/ec2/model/StartDeclarativePoliciesReportResponse.h>
 #include <aws/ec2/model/StartInstancesResponse.h>
 #include <aws/ec2/model/StartNetworkInsightsAccessScopeAnalysisResponse.h>
 #include <aws/ec2/model/StartNetworkInsightsAnalysisResponse.h>
@@ -549,10 +654,221 @@
 #include <aws/ec2/model/TerminateInstancesResponse.h>
 #include <aws/ec2/model/UnassignIpv6AddressesResponse.h>
 #include <aws/ec2/model/UnassignPrivateNatGatewayAddressResponse.h>
+#include <aws/ec2/model/UnlockSnapshotResponse.h>
 #include <aws/ec2/model/UnmonitorInstancesResponse.h>
 #include <aws/ec2/model/UpdateSecurityGroupRuleDescriptionsEgressResponse.h>
 #include <aws/ec2/model/UpdateSecurityGroupRuleDescriptionsIngressResponse.h>
 #include <aws/ec2/model/WithdrawByoipCidrResponse.h>
+#include <aws/ec2/model/DescribeSpotDatafeedSubscriptionRequest.h>
+#include <aws/ec2/model/ResetEbsDefaultKmsKeyIdRequest.h>
+#include <aws/ec2/model/DescribeTrafficMirrorSessionsRequest.h>
+#include <aws/ec2/model/CreatePublicIpv4PoolRequest.h>
+#include <aws/ec2/model/DescribeVerifiedAccessEndpointsRequest.h>
+#include <aws/ec2/model/DescribeSnapshotsRequest.h>
+#include <aws/ec2/model/EnableEbsEncryptionByDefaultRequest.h>
+#include <aws/ec2/model/DeregisterTransitGatewayMulticastGroupSourcesRequest.h>
+#include <aws/ec2/model/DescribeVpcEndpointConnectionsRequest.h>
+#include <aws/ec2/model/GetSerialConsoleAccessStatusRequest.h>
+#include <aws/ec2/model/DescribeTransitGatewayMulticastDomainsRequest.h>
+#include <aws/ec2/model/DescribeAwsNetworkPerformanceMetricSubscriptionsRequest.h>
+#include <aws/ec2/model/DescribeIpv6PoolsRequest.h>
+#include <aws/ec2/model/DescribeSpotPriceHistoryRequest.h>
+#include <aws/ec2/model/CreateDefaultVpcRequest.h>
+#include <aws/ec2/model/DescribeHostsRequest.h>
+#include <aws/ec2/model/DescribeExportImageTasksRequest.h>
+#include <aws/ec2/model/DescribeInstanceTopologyRequest.h>
+#include <aws/ec2/model/DisableEbsEncryptionByDefaultRequest.h>
+#include <aws/ec2/model/DescribeStoreImageTasksRequest.h>
+#include <aws/ec2/model/CreateDefaultSubnetRequest.h>
+#include <aws/ec2/model/DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest.h>
+#include <aws/ec2/model/DescribeInstancesRequest.h>
+#include <aws/ec2/model/DescribeTransitGatewayAttachmentsRequest.h>
+#include <aws/ec2/model/DescribeIpamScopesRequest.h>
+#include <aws/ec2/model/GetImageBlockPublicAccessStateRequest.h>
+#include <aws/ec2/model/GetEbsEncryptionByDefaultRequest.h>
+#include <aws/ec2/model/DescribeDhcpOptionsRequest.h>
+#include <aws/ec2/model/CreateVpcEndpointServiceConfigurationRequest.h>
+#include <aws/ec2/model/AllocateHostsRequest.h>
+#include <aws/ec2/model/DescribeSnapshotTierStatusRequest.h>
+#include <aws/ec2/model/DeleteSecurityGroupRequest.h>
+#include <aws/ec2/model/AllocateAddressRequest.h>
+#include <aws/ec2/model/DescribeTransitGatewayPolicyTablesRequest.h>
+#include <aws/ec2/model/DescribeFastLaunchImagesRequest.h>
+#include <aws/ec2/model/DescribeNetworkInsightsAccessScopeAnalysesRequest.h>
+#include <aws/ec2/model/DescribeVerifiedAccessInstanceLoggingConfigurationsRequest.h>
+#include <aws/ec2/model/DescribeImportSnapshotTasksRequest.h>
+#include <aws/ec2/model/DescribeTransitGatewayRouteTableAnnouncementsRequest.h>
+#include <aws/ec2/model/DescribeVerifiedAccessTrustProvidersRequest.h>
+#include <aws/ec2/model/DescribeInstanceCreditSpecificationsRequest.h>
+#include <aws/ec2/model/RevokeSecurityGroupIngressRequest.h>
+#include <aws/ec2/model/DescribeInstanceConnectEndpointsRequest.h>
+#include <aws/ec2/model/DescribeSecurityGroupVpcAssociationsRequest.h>
+#include <aws/ec2/model/DescribeTransitGatewayConnectsRequest.h>
+#include <aws/ec2/model/DescribeSecurityGroupsRequest.h>
+#include <aws/ec2/model/DescribeFastSnapshotRestoresRequest.h>
+#include <aws/ec2/model/EnableReachabilityAnalyzerOrganizationSharingRequest.h>
+#include <aws/ec2/model/DescribeLocalGatewayRouteTableVpcAssociationsRequest.h>
+#include <aws/ec2/model/DescribeIdFormatRequest.h>
+#include <aws/ec2/model/GetVpnConnectionDeviceTypesRequest.h>
+#include <aws/ec2/model/DescribeSubnetsRequest.h>
+#include <aws/ec2/model/DescribeFlowLogsRequest.h>
+#include <aws/ec2/model/CreateIpamResourceDiscoveryRequest.h>
+#include <aws/ec2/model/DescribeFpgaImagesRequest.h>
+#include <aws/ec2/model/DescribeCapacityBlockStatusRequest.h>
+#include <aws/ec2/model/DescribeVpcPeeringConnectionsRequest.h>
+#include <aws/ec2/model/DescribeCapacityReservationsRequest.h>
+#include <aws/ec2/model/DescribeServiceLinkVirtualInterfacesRequest.h>
+#include <aws/ec2/model/DescribeIpamsRequest.h>
+#include <aws/ec2/model/DescribeHostReservationOfferingsRequest.h>
+#include <aws/ec2/model/DescribeNetworkInsightsAnalysesRequest.h>
+#include <aws/ec2/model/DescribeNetworkInsightsPathsRequest.h>
+#include <aws/ec2/model/CreateTrafficMirrorTargetRequest.h>
+#include <aws/ec2/model/DescribeFleetsRequest.h>
+#include <aws/ec2/model/DescribeVpcEndpointsRequest.h>
+#include <aws/ec2/model/DescribeVpcClassicLinkDnsSupportRequest.h>
+#include <aws/ec2/model/DescribeInstanceImageMetadataRequest.h>
+#include <aws/ec2/model/UpdateSecurityGroupRuleDescriptionsEgressRequest.h>
+#include <aws/ec2/model/DescribeVpcBlockPublicAccessOptionsRequest.h>
+#include <aws/ec2/model/DescribePlacementGroupsRequest.h>
+#include <aws/ec2/model/DescribeReservedInstancesOfferingsRequest.h>
+#include <aws/ec2/model/ReplaceImageCriteriaInAllowedImagesSettingsRequest.h>
+#include <aws/ec2/model/CreateTransitGatewayRequest.h>
+#include <aws/ec2/model/DescribeLockedSnapshotsRequest.h>
+#include <aws/ec2/model/DisableVpcClassicLinkDnsSupportRequest.h>
+#include <aws/ec2/model/DescribeSecurityGroupRulesRequest.h>
+#include <aws/ec2/model/CreateIpamRequest.h>
+#include <aws/ec2/model/UpdateSecurityGroupRuleDescriptionsIngressRequest.h>
+#include <aws/ec2/model/GetSnapshotBlockPublicAccessStateRequest.h>
+#include <aws/ec2/model/DescribeAggregateIdFormatRequest.h>
+#include <aws/ec2/model/DescribeVpcsRequest.h>
+#include <aws/ec2/model/RejectTransitGatewayMulticastDomainAssociationsRequest.h>
+#include <aws/ec2/model/DescribeManagedPrefixListsRequest.h>
+#include <aws/ec2/model/DescribeAddressesRequest.h>
+#include <aws/ec2/model/DescribeTransitGatewayVpcAttachmentsRequest.h>
+#include <aws/ec2/model/DescribeInstanceTypesRequest.h>
+#include <aws/ec2/model/DescribeInstanceTypeOfferingsRequest.h>
+#include <aws/ec2/model/DisassociateAddressRequest.h>
+#include <aws/ec2/model/DescribeNetworkInsightsAccessScopesRequest.h>
+#include <aws/ec2/model/DescribeRouteServerEndpointsRequest.h>
+#include <aws/ec2/model/DescribeIpamByoasnRequest.h>
+#include <aws/ec2/model/DescribeRouteServerPeersRequest.h>
+#include <aws/ec2/model/CreateTrafficMirrorFilterRequest.h>
+#include <aws/ec2/model/DescribeScheduledInstancesRequest.h>
+#include <aws/ec2/model/GetInstanceMetadataDefaultsRequest.h>
+#include <aws/ec2/model/DescribeImageUsageReportEntriesRequest.h>
+#include <aws/ec2/model/DescribeTrunkInterfaceAssociationsRequest.h>
+#include <aws/ec2/model/DescribeIamInstanceProfileAssociationsRequest.h>
+#include <aws/ec2/model/DescribeLocalGatewayRouteTablesRequest.h>
+#include <aws/ec2/model/DescribeElasticGpusRequest.h>
+#include <aws/ec2/model/DescribeLocalGatewaysRequest.h>
+#include <aws/ec2/model/DescribeOutpostLagsRequest.h>
+#include <aws/ec2/model/ListImagesInRecycleBinRequest.h>
+#include <aws/ec2/model/DescribeCapacityReservationFleetsRequest.h>
+#include <aws/ec2/model/ListSnapshotsInRecycleBinRequest.h>
+#include <aws/ec2/model/AuthorizeSecurityGroupIngressRequest.h>
+#include <aws/ec2/model/DescribeCapacityBlocksRequest.h>
+#include <aws/ec2/model/DescribeConversionTasksRequest.h>
+#include <aws/ec2/model/DescribeTrafficMirrorFilterRulesRequest.h>
+#include <aws/ec2/model/CreateInstanceEventWindowRequest.h>
+#include <aws/ec2/model/DescribeCustomerGatewaysRequest.h>
+#include <aws/ec2/model/DescribeSpotFleetRequestsRequest.h>
+#include <aws/ec2/model/DescribeNetworkInterfacePermissionsRequest.h>
+#include <aws/ec2/model/DescribeVolumesModificationsRequest.h>
+#include <aws/ec2/model/DescribeIpamResourceDiscoveryAssociationsRequest.h>
+#include <aws/ec2/model/DisableSnapshotBlockPublicAccessRequest.h>
+#include <aws/ec2/model/DescribeExportTasksRequest.h>
+#include <aws/ec2/model/AssociateAddressRequest.h>
+#include <aws/ec2/model/DescribeReservedInstancesListingsRequest.h>
+#include <aws/ec2/model/DescribePublicIpv4PoolsRequest.h>
+#include <aws/ec2/model/DescribeTagsRequest.h>
+#include <aws/ec2/model/DescribeImagesRequest.h>
+#include <aws/ec2/model/DescribeCoipPoolsRequest.h>
+#include <aws/ec2/model/ImportImageRequest.h>
+#include <aws/ec2/model/DisableSerialConsoleAccessRequest.h>
+#include <aws/ec2/model/ReleaseAddressRequest.h>
+#include <aws/ec2/model/CreateVpcRequest.h>
+#include <aws/ec2/model/DisableImageBlockPublicAccessRequest.h>
+#include <aws/ec2/model/DescribeHostReservationsRequest.h>
+#include <aws/ec2/model/DescribeLocalGatewayVirtualInterfaceGroupsRequest.h>
+#include <aws/ec2/model/DescribeClientVpnEndpointsRequest.h>
+#include <aws/ec2/model/DeleteKeyPairRequest.h>
+#include <aws/ec2/model/DescribeIpamExternalResourceVerificationTokensRequest.h>
+#include <aws/ec2/model/DescribeCarrierGatewaysRequest.h>
+#include <aws/ec2/model/ModifyInstanceMetadataDefaultsRequest.h>
+#include <aws/ec2/model/DescribeImportImageTasksRequest.h>
+#include <aws/ec2/model/DescribeTrafficMirrorTargetsRequest.h>
+#include <aws/ec2/model/DeleteLaunchTemplateRequest.h>
+#include <aws/ec2/model/DescribeVpnConnectionsRequest.h>
+#include <aws/ec2/model/DescribeMacModificationTasksRequest.h>
+#include <aws/ec2/model/DescribeVerifiedAccessGroupsRequest.h>
+#include <aws/ec2/model/CancelImportTaskRequest.h>
+#include <aws/ec2/model/GetEbsDefaultKmsKeyIdRequest.h>
+#include <aws/ec2/model/DescribeInstanceStatusRequest.h>
+#include <aws/ec2/model/DescribeRouteServersRequest.h>
+#include <aws/ec2/model/DescribeNatGatewaysRequest.h>
+#include <aws/ec2/model/DescribeVolumesRequest.h>
+#include <aws/ec2/model/GetAllowedImagesSettingsRequest.h>
+#include <aws/ec2/model/DescribeMacHostsRequest.h>
+#include <aws/ec2/model/DisableAllowedImagesSettingsRequest.h>
+#include <aws/ec2/model/CreateVolumeRequest.h>
+#include <aws/ec2/model/ModifyLaunchTemplateRequest.h>
+#include <aws/ec2/model/EnableAwsNetworkPerformanceMetricSubscriptionRequest.h>
+#include <aws/ec2/model/DeleteSpotDatafeedSubscriptionRequest.h>
+#include <aws/ec2/model/DescribeTrafficMirrorFiltersRequest.h>
+#include <aws/ec2/model/DescribeVpcEndpointServiceConfigurationsRequest.h>
+#include <aws/ec2/model/DescribeReservedInstancesRequest.h>
+#include <aws/ec2/model/DescribeTransitGatewayRouteTablesRequest.h>
+#include <aws/ec2/model/DescribeImageUsageReportsRequest.h>
+#include <aws/ec2/model/DescribeLaunchTemplatesRequest.h>
+#include <aws/ec2/model/DescribeVpcEndpointServicesRequest.h>
+#include <aws/ec2/model/DescribeTransitGatewayPeeringAttachmentsRequest.h>
+#include <aws/ec2/model/DescribeAddressTransfersRequest.h>
+#include <aws/ec2/model/DescribeCapacityBlockExtensionHistoryRequest.h>
+#include <aws/ec2/model/DescribeAvailabilityZonesRequest.h>
+#include <aws/ec2/model/DescribeNetworkAclsRequest.h>
+#include <aws/ec2/model/DescribeAccountAttributesRequest.h>
+#include <aws/ec2/model/DeregisterTransitGatewayMulticastGroupMembersRequest.h>
+#include <aws/ec2/model/DescribePrincipalIdFormatRequest.h>
+#include <aws/ec2/model/DescribeInstanceEventNotificationAttributesRequest.h>
+#include <aws/ec2/model/DescribeLocalGatewayVirtualInterfacesRequest.h>
+#include <aws/ec2/model/DescribeTransitGatewayConnectPeersRequest.h>
+#include <aws/ec2/model/DescribeVpcBlockPublicAccessExclusionsRequest.h>
+#include <aws/ec2/model/DescribeVpcEndpointConnectionNotificationsRequest.h>
+#include <aws/ec2/model/DescribeRouteTablesRequest.h>
+#include <aws/ec2/model/DescribeAddressesAttributeRequest.h>
+#include <aws/ec2/model/DescribeDeclarativePoliciesReportsRequest.h>
+#include <aws/ec2/model/DescribeKeyPairsRequest.h>
+#include <aws/ec2/model/DescribeTransitGatewaysRequest.h>
+#include <aws/ec2/model/CreatePlacementGroupRequest.h>
+#include <aws/ec2/model/CreateVerifiedAccessInstanceRequest.h>
+#include <aws/ec2/model/DescribeSpotInstanceRequestsRequest.h>
+#include <aws/ec2/model/EnableSerialConsoleAccessRequest.h>
+#include <aws/ec2/model/DescribeIpamPoolsRequest.h>
+#include <aws/ec2/model/DescribeInternetGatewaysRequest.h>
+#include <aws/ec2/model/DescribeIpamResourceDiscoveriesRequest.h>
+#include <aws/ec2/model/DescribeVolumeStatusRequest.h>
+#include <aws/ec2/model/DescribePrefixListsRequest.h>
+#include <aws/ec2/model/CreateInternetGatewayRequest.h>
+#include <aws/ec2/model/DescribeReservedInstancesModificationsRequest.h>
+#include <aws/ec2/model/AcceptTransitGatewayMulticastDomainAssociationsRequest.h>
+#include <aws/ec2/model/DescribeRegionsRequest.h>
+#include <aws/ec2/model/DescribeClassicLinkInstancesRequest.h>
+#include <aws/ec2/model/DescribeMovingAddressesRequest.h>
+#include <aws/ec2/model/DescribeBundleTasksRequest.h>
+#include <aws/ec2/model/ImportSnapshotRequest.h>
+#include <aws/ec2/model/DescribeReplaceRootVolumeTasksRequest.h>
+#include <aws/ec2/model/DescribeVpnGatewaysRequest.h>
+#include <aws/ec2/model/DescribeVpcEndpointAssociationsRequest.h>
+#include <aws/ec2/model/EnableVpcClassicLinkDnsSupportRequest.h>
+#include <aws/ec2/model/DescribeInstanceEventWindowsRequest.h>
+#include <aws/ec2/model/RequestSpotInstancesRequest.h>
+#include <aws/ec2/model/DescribeVerifiedAccessInstancesRequest.h>
+#include <aws/ec2/model/DescribeVpcClassicLinkRequest.h>
+#include <aws/ec2/model/DescribeNetworkInterfacesRequest.h>
+#include <aws/ec2/model/DescribeLaunchTemplateVersionsRequest.h>
+#include <aws/ec2/model/GetAwsNetworkPerformanceDataRequest.h>
+#include <aws/ec2/model/DescribeEgressOnlyInternetGatewaysRequest.h>
+#include <aws/ec2/model/DisableAwsNetworkPerformanceMetricSubscriptionRequest.h>
 #include <aws/core/NoResult.h>
 /* End of service model headers required in EC2Client header */
 
@@ -587,7 +903,7 @@ namespace Aws
 
   namespace EC2
   {
-    using EC2ClientConfiguration = Aws::Client::GenericClientConfiguration<false>;
+    using EC2ClientConfiguration = Aws::Client::GenericClientConfiguration;
     using EC2EndpointProviderBase = Aws::EC2::Endpoint::EC2EndpointProviderBase;
     using EC2EndpointProvider = Aws::EC2::Endpoint::EC2EndpointProvider;
 
@@ -595,6 +911,7 @@ namespace Aws
     {
       /* Service model forward declarations required in EC2Client header */
       class AcceptAddressTransferRequest;
+      class AcceptCapacityReservationBillingOwnershipRequest;
       class AcceptReservedInstancesExchangeQuoteRequest;
       class AcceptTransitGatewayMulticastDomainAssociationsRequest;
       class AcceptTransitGatewayPeeringAttachmentRequest;
@@ -610,14 +927,18 @@ namespace Aws
       class AssignPrivateIpAddressesRequest;
       class AssignPrivateNatGatewayAddressRequest;
       class AssociateAddressRequest;
+      class AssociateCapacityReservationBillingOwnerRequest;
       class AssociateClientVpnTargetNetworkRequest;
       class AssociateDhcpOptionsRequest;
       class AssociateEnclaveCertificateIamRoleRequest;
       class AssociateIamInstanceProfileRequest;
       class AssociateInstanceEventWindowRequest;
+      class AssociateIpamByoasnRequest;
       class AssociateIpamResourceDiscoveryRequest;
       class AssociateNatGatewayAddressRequest;
+      class AssociateRouteServerRequest;
       class AssociateRouteTableRequest;
+      class AssociateSecurityGroupVpcRequest;
       class AssociateSubnetCidrBlockRequest;
       class AssociateTransitGatewayMulticastDomainRequest;
       class AssociateTransitGatewayPolicyTableRequest;
@@ -638,6 +959,7 @@ namespace Aws
       class CancelCapacityReservationRequest;
       class CancelCapacityReservationFleetsRequest;
       class CancelConversionTaskRequest;
+      class CancelDeclarativePoliciesReportRequest;
       class CancelExportTaskRequest;
       class CancelImageLaunchPermissionRequest;
       class CancelImportTaskRequest;
@@ -649,6 +971,7 @@ namespace Aws
       class CopyImageRequest;
       class CopySnapshotRequest;
       class CreateCapacityReservationRequest;
+      class CreateCapacityReservationBySplittingRequest;
       class CreateCapacityReservationFleetRequest;
       class CreateCarrierGatewayRequest;
       class CreateClientVpnEndpointRequest;
@@ -658,16 +981,20 @@ namespace Aws
       class CreateCustomerGatewayRequest;
       class CreateDefaultSubnetRequest;
       class CreateDefaultVpcRequest;
+      class CreateDelegateMacVolumeOwnershipTaskRequest;
       class CreateDhcpOptionsRequest;
       class CreateEgressOnlyInternetGatewayRequest;
       class CreateFleetRequest;
       class CreateFlowLogsRequest;
       class CreateFpgaImageRequest;
       class CreateImageRequest;
+      class CreateImageUsageReportRequest;
+      class CreateInstanceConnectEndpointRequest;
       class CreateInstanceEventWindowRequest;
       class CreateInstanceExportTaskRequest;
       class CreateInternetGatewayRequest;
       class CreateIpamRequest;
+      class CreateIpamExternalResourceVerificationTokenRequest;
       class CreateIpamPoolRequest;
       class CreateIpamResourceDiscoveryRequest;
       class CreateIpamScopeRequest;
@@ -678,6 +1005,9 @@ namespace Aws
       class CreateLocalGatewayRouteTableRequest;
       class CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest;
       class CreateLocalGatewayRouteTableVpcAssociationRequest;
+      class CreateLocalGatewayVirtualInterfaceRequest;
+      class CreateLocalGatewayVirtualInterfaceGroupRequest;
+      class CreateMacSystemIntegrityProtectionModificationTaskRequest;
       class CreateManagedPrefixListRequest;
       class CreateNatGatewayRequest;
       class CreateNetworkAclRequest;
@@ -692,6 +1022,9 @@ namespace Aws
       class CreateReservedInstancesListingRequest;
       class CreateRestoreImageTaskRequest;
       class CreateRouteRequest;
+      class CreateRouteServerRequest;
+      class CreateRouteServerEndpointRequest;
+      class CreateRouteServerPeerRequest;
       class CreateRouteTableRequest;
       class CreateSecurityGroupRequest;
       class CreateSnapshotRequest;
@@ -722,6 +1055,7 @@ namespace Aws
       class CreateVerifiedAccessTrustProviderRequest;
       class CreateVolumeRequest;
       class CreateVpcRequest;
+      class CreateVpcBlockPublicAccessExclusionRequest;
       class CreateVpcEndpointRequest;
       class CreateVpcEndpointConnectionNotificationRequest;
       class CreateVpcEndpointServiceConfigurationRequest;
@@ -740,9 +1074,12 @@ namespace Aws
       class DeleteFleetsRequest;
       class DeleteFlowLogsRequest;
       class DeleteFpgaImageRequest;
+      class DeleteImageUsageReportRequest;
+      class DeleteInstanceConnectEndpointRequest;
       class DeleteInstanceEventWindowRequest;
       class DeleteInternetGatewayRequest;
       class DeleteIpamRequest;
+      class DeleteIpamExternalResourceVerificationTokenRequest;
       class DeleteIpamPoolRequest;
       class DeleteIpamResourceDiscoveryRequest;
       class DeleteIpamScopeRequest;
@@ -753,6 +1090,8 @@ namespace Aws
       class DeleteLocalGatewayRouteTableRequest;
       class DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest;
       class DeleteLocalGatewayRouteTableVpcAssociationRequest;
+      class DeleteLocalGatewayVirtualInterfaceRequest;
+      class DeleteLocalGatewayVirtualInterfaceGroupRequest;
       class DeleteManagedPrefixListRequest;
       class DeleteNatGatewayRequest;
       class DeleteNetworkAclRequest;
@@ -767,6 +1106,9 @@ namespace Aws
       class DeletePublicIpv4PoolRequest;
       class DeleteQueuedReservedInstancesRequest;
       class DeleteRouteRequest;
+      class DeleteRouteServerRequest;
+      class DeleteRouteServerEndpointRequest;
+      class DeleteRouteServerPeerRequest;
       class DeleteRouteTableRequest;
       class DeleteSecurityGroupRequest;
       class DeleteSnapshotRequest;
@@ -795,6 +1137,7 @@ namespace Aws
       class DeleteVerifiedAccessTrustProviderRequest;
       class DeleteVolumeRequest;
       class DeleteVpcRequest;
+      class DeleteVpcBlockPublicAccessExclusionRequest;
       class DeleteVpcEndpointConnectionNotificationsRequest;
       class DeleteVpcEndpointServiceConfigurationsRequest;
       class DeleteVpcEndpointsRequest;
@@ -803,6 +1146,7 @@ namespace Aws
       class DeleteVpnConnectionRouteRequest;
       class DeleteVpnGatewayRequest;
       class DeprovisionByoipCidrRequest;
+      class DeprovisionIpamByoasnRequest;
       class DeprovisionIpamPoolCidrRequest;
       class DeprovisionPublicIpv4PoolCidrRequest;
       class DeregisterImageRequest;
@@ -818,6 +1162,12 @@ namespace Aws
       class DescribeAwsNetworkPerformanceMetricSubscriptionsRequest;
       class DescribeBundleTasksRequest;
       class DescribeByoipCidrsRequest;
+      class DescribeCapacityBlockExtensionHistoryRequest;
+      class DescribeCapacityBlockExtensionOfferingsRequest;
+      class DescribeCapacityBlockOfferingsRequest;
+      class DescribeCapacityBlockStatusRequest;
+      class DescribeCapacityBlocksRequest;
+      class DescribeCapacityReservationBillingRequestsRequest;
       class DescribeCapacityReservationFleetsRequest;
       class DescribeCapacityReservationsRequest;
       class DescribeCarrierGatewaysRequest;
@@ -830,6 +1180,7 @@ namespace Aws
       class DescribeCoipPoolsRequest;
       class DescribeConversionTasksRequest;
       class DescribeCustomerGatewaysRequest;
+      class DescribeDeclarativePoliciesReportsRequest;
       class DescribeDhcpOptionsRequest;
       class DescribeEgressOnlyInternetGatewaysRequest;
       class DescribeElasticGpusRequest;
@@ -850,18 +1201,26 @@ namespace Aws
       class DescribeIdFormatRequest;
       class DescribeIdentityIdFormatRequest;
       class DescribeImageAttributeRequest;
+      class DescribeImageReferencesRequest;
+      class DescribeImageUsageReportEntriesRequest;
+      class DescribeImageUsageReportsRequest;
       class DescribeImagesRequest;
       class DescribeImportImageTasksRequest;
       class DescribeImportSnapshotTasksRequest;
       class DescribeInstanceAttributeRequest;
+      class DescribeInstanceConnectEndpointsRequest;
       class DescribeInstanceCreditSpecificationsRequest;
       class DescribeInstanceEventNotificationAttributesRequest;
       class DescribeInstanceEventWindowsRequest;
+      class DescribeInstanceImageMetadataRequest;
       class DescribeInstanceStatusRequest;
+      class DescribeInstanceTopologyRequest;
       class DescribeInstanceTypeOfferingsRequest;
       class DescribeInstanceTypesRequest;
       class DescribeInstancesRequest;
       class DescribeInternetGatewaysRequest;
+      class DescribeIpamByoasnRequest;
+      class DescribeIpamExternalResourceVerificationTokensRequest;
       class DescribeIpamPoolsRequest;
       class DescribeIpamResourceDiscoveriesRequest;
       class DescribeIpamResourceDiscoveryAssociationsRequest;
@@ -877,6 +1236,9 @@ namespace Aws
       class DescribeLocalGatewayVirtualInterfaceGroupsRequest;
       class DescribeLocalGatewayVirtualInterfacesRequest;
       class DescribeLocalGatewaysRequest;
+      class DescribeLockedSnapshotsRequest;
+      class DescribeMacHostsRequest;
+      class DescribeMacModificationTasksRequest;
       class DescribeManagedPrefixListsRequest;
       class DescribeMovingAddressesRequest;
       class DescribeNatGatewaysRequest;
@@ -888,6 +1250,7 @@ namespace Aws
       class DescribeNetworkInterfaceAttributeRequest;
       class DescribeNetworkInterfacePermissionsRequest;
       class DescribeNetworkInterfacesRequest;
+      class DescribeOutpostLagsRequest;
       class DescribePlacementGroupsRequest;
       class DescribePrefixListsRequest;
       class DescribePrincipalIdFormatRequest;
@@ -898,12 +1261,17 @@ namespace Aws
       class DescribeReservedInstancesListingsRequest;
       class DescribeReservedInstancesModificationsRequest;
       class DescribeReservedInstancesOfferingsRequest;
+      class DescribeRouteServerEndpointsRequest;
+      class DescribeRouteServerPeersRequest;
+      class DescribeRouteServersRequest;
       class DescribeRouteTablesRequest;
       class DescribeScheduledInstanceAvailabilityRequest;
       class DescribeScheduledInstancesRequest;
       class DescribeSecurityGroupReferencesRequest;
       class DescribeSecurityGroupRulesRequest;
+      class DescribeSecurityGroupVpcAssociationsRequest;
       class DescribeSecurityGroupsRequest;
+      class DescribeServiceLinkVirtualInterfacesRequest;
       class DescribeSnapshotAttributeRequest;
       class DescribeSnapshotTierStatusRequest;
       class DescribeSnapshotsRequest;
@@ -917,6 +1285,7 @@ namespace Aws
       class DescribeStoreImageTasksRequest;
       class DescribeSubnetsRequest;
       class DescribeTagsRequest;
+      class DescribeTrafficMirrorFilterRulesRequest;
       class DescribeTrafficMirrorFiltersRequest;
       class DescribeTrafficMirrorSessionsRequest;
       class DescribeTrafficMirrorTargetsRequest;
@@ -941,8 +1310,11 @@ namespace Aws
       class DescribeVolumesRequest;
       class DescribeVolumesModificationsRequest;
       class DescribeVpcAttributeRequest;
+      class DescribeVpcBlockPublicAccessExclusionsRequest;
+      class DescribeVpcBlockPublicAccessOptionsRequest;
       class DescribeVpcClassicLinkRequest;
       class DescribeVpcClassicLinkDnsSupportRequest;
+      class DescribeVpcEndpointAssociationsRequest;
       class DescribeVpcEndpointConnectionNotificationsRequest;
       class DescribeVpcEndpointConnectionsRequest;
       class DescribeVpcEndpointServiceConfigurationsRequest;
@@ -960,25 +1332,35 @@ namespace Aws
       class DetachVolumeRequest;
       class DetachVpnGatewayRequest;
       class DisableAddressTransferRequest;
+      class DisableAllowedImagesSettingsRequest;
       class DisableAwsNetworkPerformanceMetricSubscriptionRequest;
       class DisableEbsEncryptionByDefaultRequest;
       class DisableFastLaunchRequest;
       class DisableFastSnapshotRestoresRequest;
+      class DisableImageRequest;
+      class DisableImageBlockPublicAccessRequest;
       class DisableImageDeprecationRequest;
+      class DisableImageDeregistrationProtectionRequest;
       class DisableIpamOrganizationAdminAccountRequest;
+      class DisableRouteServerPropagationRequest;
       class DisableSerialConsoleAccessRequest;
+      class DisableSnapshotBlockPublicAccessRequest;
       class DisableTransitGatewayRouteTablePropagationRequest;
       class DisableVgwRoutePropagationRequest;
       class DisableVpcClassicLinkRequest;
       class DisableVpcClassicLinkDnsSupportRequest;
       class DisassociateAddressRequest;
+      class DisassociateCapacityReservationBillingOwnerRequest;
       class DisassociateClientVpnTargetNetworkRequest;
       class DisassociateEnclaveCertificateIamRoleRequest;
       class DisassociateIamInstanceProfileRequest;
       class DisassociateInstanceEventWindowRequest;
+      class DisassociateIpamByoasnRequest;
       class DisassociateIpamResourceDiscoveryRequest;
       class DisassociateNatGatewayAddressRequest;
+      class DisassociateRouteServerRequest;
       class DisassociateRouteTableRequest;
+      class DisassociateSecurityGroupVpcRequest;
       class DisassociateSubnetCidrBlockRequest;
       class DisassociateTransitGatewayMulticastDomainRequest;
       class DisassociateTransitGatewayPolicyTableRequest;
@@ -986,14 +1368,20 @@ namespace Aws
       class DisassociateTrunkInterfaceRequest;
       class DisassociateVpcCidrBlockRequest;
       class EnableAddressTransferRequest;
+      class EnableAllowedImagesSettingsRequest;
       class EnableAwsNetworkPerformanceMetricSubscriptionRequest;
       class EnableEbsEncryptionByDefaultRequest;
       class EnableFastLaunchRequest;
       class EnableFastSnapshotRestoresRequest;
+      class EnableImageRequest;
+      class EnableImageBlockPublicAccessRequest;
       class EnableImageDeprecationRequest;
+      class EnableImageDeregistrationProtectionRequest;
       class EnableIpamOrganizationAdminAccountRequest;
       class EnableReachabilityAnalyzerOrganizationSharingRequest;
+      class EnableRouteServerPropagationRequest;
       class EnableSerialConsoleAccessRequest;
+      class EnableSnapshotBlockPublicAccessRequest;
       class EnableTransitGatewayRouteTablePropagationRequest;
       class EnableVgwRoutePropagationRequest;
       class EnableVolumeIORequest;
@@ -1003,6 +1391,9 @@ namespace Aws
       class ExportClientVpnClientConfigurationRequest;
       class ExportImageRequest;
       class ExportTransitGatewayRoutesRequest;
+      class ExportVerifiedAccessInstanceClientConfigurationRequest;
+      class GetActiveVpnTunnelStatusRequest;
+      class GetAllowedImagesSettingsRequest;
       class GetAssociatedEnclaveCertificateIamRolesRequest;
       class GetAssociatedIpv6PoolCidrsRequest;
       class GetAwsNetworkPerformanceDataRequest;
@@ -1010,16 +1401,21 @@ namespace Aws
       class GetCoipPoolUsageRequest;
       class GetConsoleOutputRequest;
       class GetConsoleScreenshotRequest;
+      class GetDeclarativePoliciesReportSummaryRequest;
       class GetDefaultCreditSpecificationRequest;
       class GetEbsDefaultKmsKeyIdRequest;
       class GetEbsEncryptionByDefaultRequest;
       class GetFlowLogsIntegrationTemplateRequest;
       class GetGroupsForCapacityReservationRequest;
       class GetHostReservationPurchasePreviewRequest;
+      class GetImageBlockPublicAccessStateRequest;
+      class GetInstanceMetadataDefaultsRequest;
+      class GetInstanceTpmEkPubRequest;
       class GetInstanceTypesFromInstanceRequirementsRequest;
       class GetInstanceUefiDataRequest;
       class GetIpamAddressHistoryRequest;
       class GetIpamDiscoveredAccountsRequest;
+      class GetIpamDiscoveredPublicAddressesRequest;
       class GetIpamDiscoveredResourceCidrsRequest;
       class GetIpamPoolAllocationsRequest;
       class GetIpamPoolCidrsRequest;
@@ -1031,7 +1427,12 @@ namespace Aws
       class GetNetworkInsightsAccessScopeContentRequest;
       class GetPasswordDataRequest;
       class GetReservedInstancesExchangeQuoteRequest;
+      class GetRouteServerAssociationsRequest;
+      class GetRouteServerPropagationsRequest;
+      class GetRouteServerRoutingDatabaseRequest;
+      class GetSecurityGroupsForVpcRequest;
       class GetSerialConsoleAccessStatusRequest;
+      class GetSnapshotBlockPublicAccessStateRequest;
       class GetSpotPlacementScoresRequest;
       class GetSubnetCidrReservationsRequest;
       class GetTransitGatewayAttachmentPropagationsRequest;
@@ -1042,6 +1443,7 @@ namespace Aws
       class GetTransitGatewayRouteTableAssociationsRequest;
       class GetTransitGatewayRouteTablePropagationsRequest;
       class GetVerifiedAccessEndpointPolicyRequest;
+      class GetVerifiedAccessEndpointTargetsRequest;
       class GetVerifiedAccessGroupPolicyRequest;
       class GetVpnConnectionDeviceSampleConfigurationRequest;
       class GetVpnConnectionDeviceTypesRequest;
@@ -1054,6 +1456,7 @@ namespace Aws
       class ImportVolumeRequest;
       class ListImagesInRecycleBinRequest;
       class ListSnapshotsInRecycleBinRequest;
+      class LockSnapshotRequest;
       class ModifyAddressAttributeRequest;
       class ModifyAvailabilityZoneGroupRequest;
       class ModifyCapacityReservationRequest;
@@ -1069,11 +1472,15 @@ namespace Aws
       class ModifyImageAttributeRequest;
       class ModifyInstanceAttributeRequest;
       class ModifyInstanceCapacityReservationAttributesRequest;
+      class ModifyInstanceConnectEndpointRequest;
+      class ModifyInstanceCpuOptionsRequest;
       class ModifyInstanceCreditSpecificationRequest;
       class ModifyInstanceEventStartTimeRequest;
       class ModifyInstanceEventWindowRequest;
       class ModifyInstanceMaintenanceOptionsRequest;
+      class ModifyInstanceMetadataDefaultsRequest;
       class ModifyInstanceMetadataOptionsRequest;
+      class ModifyInstanceNetworkPerformanceOptionsRequest;
       class ModifyInstancePlacementRequest;
       class ModifyIpamRequest;
       class ModifyIpamPoolRequest;
@@ -1085,7 +1492,9 @@ namespace Aws
       class ModifyManagedPrefixListRequest;
       class ModifyNetworkInterfaceAttributeRequest;
       class ModifyPrivateDnsNameOptionsRequest;
+      class ModifyPublicIpDnsNameOptionsRequest;
       class ModifyReservedInstancesRequest;
+      class ModifyRouteServerRequest;
       class ModifySecurityGroupRulesRequest;
       class ModifySnapshotAttributeRequest;
       class ModifySnapshotTierRequest;
@@ -1107,6 +1516,8 @@ namespace Aws
       class ModifyVolumeRequest;
       class ModifyVolumeAttributeRequest;
       class ModifyVpcAttributeRequest;
+      class ModifyVpcBlockPublicAccessExclusionRequest;
+      class ModifyVpcBlockPublicAccessOptionsRequest;
       class ModifyVpcEndpointRequest;
       class ModifyVpcEndpointConnectionNotificationRequest;
       class ModifyVpcEndpointServiceConfigurationRequest;
@@ -1121,9 +1532,13 @@ namespace Aws
       class MonitorInstancesRequest;
       class MoveAddressToVpcRequest;
       class MoveByoipCidrToIpamRequest;
+      class MoveCapacityReservationInstancesRequest;
       class ProvisionByoipCidrRequest;
+      class ProvisionIpamByoasnRequest;
       class ProvisionIpamPoolCidrRequest;
       class ProvisionPublicIpv4PoolCidrRequest;
+      class PurchaseCapacityBlockRequest;
+      class PurchaseCapacityBlockExtensionRequest;
       class PurchaseHostReservationRequest;
       class PurchaseReservedInstancesOfferingRequest;
       class PurchaseScheduledInstancesRequest;
@@ -1132,6 +1547,7 @@ namespace Aws
       class RegisterInstanceEventNotificationAttributesRequest;
       class RegisterTransitGatewayMulticastGroupMembersRequest;
       class RegisterTransitGatewayMulticastGroupSourcesRequest;
+      class RejectCapacityReservationBillingOwnershipRequest;
       class RejectTransitGatewayMulticastDomainAssociationsRequest;
       class RejectTransitGatewayPeeringAttachmentRequest;
       class RejectTransitGatewayVpcAttachmentRequest;
@@ -1141,6 +1557,7 @@ namespace Aws
       class ReleaseHostsRequest;
       class ReleaseIpamPoolAllocationRequest;
       class ReplaceIamInstanceProfileAssociationRequest;
+      class ReplaceImageCriteriaInAllowedImagesSettingsRequest;
       class ReplaceNetworkAclAssociationRequest;
       class ReplaceNetworkAclEntryRequest;
       class ReplaceRouteRequest;
@@ -1171,6 +1588,7 @@ namespace Aws
       class SearchTransitGatewayMulticastGroupsRequest;
       class SearchTransitGatewayRoutesRequest;
       class SendDiagnosticInterruptRequest;
+      class StartDeclarativePoliciesReportRequest;
       class StartInstancesRequest;
       class StartNetworkInsightsAccessScopeAnalysisRequest;
       class StartNetworkInsightsAnalysisRequest;
@@ -1181,6 +1599,7 @@ namespace Aws
       class UnassignIpv6AddressesRequest;
       class UnassignPrivateIpAddressesRequest;
       class UnassignPrivateNatGatewayAddressRequest;
+      class UnlockSnapshotRequest;
       class UnmonitorInstancesRequest;
       class UpdateSecurityGroupRuleDescriptionsEgressRequest;
       class UpdateSecurityGroupRuleDescriptionsIngressRequest;
@@ -1189,6 +1608,7 @@ namespace Aws
 
       /* Service model Outcome class definitions */
       typedef Aws::Utils::Outcome<AcceptAddressTransferResponse, EC2Error> AcceptAddressTransferOutcome;
+      typedef Aws::Utils::Outcome<AcceptCapacityReservationBillingOwnershipResponse, EC2Error> AcceptCapacityReservationBillingOwnershipOutcome;
       typedef Aws::Utils::Outcome<AcceptReservedInstancesExchangeQuoteResponse, EC2Error> AcceptReservedInstancesExchangeQuoteOutcome;
       typedef Aws::Utils::Outcome<AcceptTransitGatewayMulticastDomainAssociationsResponse, EC2Error> AcceptTransitGatewayMulticastDomainAssociationsOutcome;
       typedef Aws::Utils::Outcome<AcceptTransitGatewayPeeringAttachmentResponse, EC2Error> AcceptTransitGatewayPeeringAttachmentOutcome;
@@ -1204,14 +1624,18 @@ namespace Aws
       typedef Aws::Utils::Outcome<AssignPrivateIpAddressesResponse, EC2Error> AssignPrivateIpAddressesOutcome;
       typedef Aws::Utils::Outcome<AssignPrivateNatGatewayAddressResponse, EC2Error> AssignPrivateNatGatewayAddressOutcome;
       typedef Aws::Utils::Outcome<AssociateAddressResponse, EC2Error> AssociateAddressOutcome;
+      typedef Aws::Utils::Outcome<AssociateCapacityReservationBillingOwnerResponse, EC2Error> AssociateCapacityReservationBillingOwnerOutcome;
       typedef Aws::Utils::Outcome<AssociateClientVpnTargetNetworkResponse, EC2Error> AssociateClientVpnTargetNetworkOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> AssociateDhcpOptionsOutcome;
       typedef Aws::Utils::Outcome<AssociateEnclaveCertificateIamRoleResponse, EC2Error> AssociateEnclaveCertificateIamRoleOutcome;
       typedef Aws::Utils::Outcome<AssociateIamInstanceProfileResponse, EC2Error> AssociateIamInstanceProfileOutcome;
       typedef Aws::Utils::Outcome<AssociateInstanceEventWindowResponse, EC2Error> AssociateInstanceEventWindowOutcome;
+      typedef Aws::Utils::Outcome<AssociateIpamByoasnResponse, EC2Error> AssociateIpamByoasnOutcome;
       typedef Aws::Utils::Outcome<AssociateIpamResourceDiscoveryResponse, EC2Error> AssociateIpamResourceDiscoveryOutcome;
       typedef Aws::Utils::Outcome<AssociateNatGatewayAddressResponse, EC2Error> AssociateNatGatewayAddressOutcome;
+      typedef Aws::Utils::Outcome<AssociateRouteServerResponse, EC2Error> AssociateRouteServerOutcome;
       typedef Aws::Utils::Outcome<AssociateRouteTableResponse, EC2Error> AssociateRouteTableOutcome;
+      typedef Aws::Utils::Outcome<AssociateSecurityGroupVpcResponse, EC2Error> AssociateSecurityGroupVpcOutcome;
       typedef Aws::Utils::Outcome<AssociateSubnetCidrBlockResponse, EC2Error> AssociateSubnetCidrBlockOutcome;
       typedef Aws::Utils::Outcome<AssociateTransitGatewayMulticastDomainResponse, EC2Error> AssociateTransitGatewayMulticastDomainOutcome;
       typedef Aws::Utils::Outcome<AssociateTransitGatewayPolicyTableResponse, EC2Error> AssociateTransitGatewayPolicyTableOutcome;
@@ -1232,6 +1656,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<CancelCapacityReservationResponse, EC2Error> CancelCapacityReservationOutcome;
       typedef Aws::Utils::Outcome<CancelCapacityReservationFleetsResponse, EC2Error> CancelCapacityReservationFleetsOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> CancelConversionTaskOutcome;
+      typedef Aws::Utils::Outcome<CancelDeclarativePoliciesReportResponse, EC2Error> CancelDeclarativePoliciesReportOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> CancelExportTaskOutcome;
       typedef Aws::Utils::Outcome<CancelImageLaunchPermissionResponse, EC2Error> CancelImageLaunchPermissionOutcome;
       typedef Aws::Utils::Outcome<CancelImportTaskResponse, EC2Error> CancelImportTaskOutcome;
@@ -1243,6 +1668,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<CopyImageResponse, EC2Error> CopyImageOutcome;
       typedef Aws::Utils::Outcome<CopySnapshotResponse, EC2Error> CopySnapshotOutcome;
       typedef Aws::Utils::Outcome<CreateCapacityReservationResponse, EC2Error> CreateCapacityReservationOutcome;
+      typedef Aws::Utils::Outcome<CreateCapacityReservationBySplittingResponse, EC2Error> CreateCapacityReservationBySplittingOutcome;
       typedef Aws::Utils::Outcome<CreateCapacityReservationFleetResponse, EC2Error> CreateCapacityReservationFleetOutcome;
       typedef Aws::Utils::Outcome<CreateCarrierGatewayResponse, EC2Error> CreateCarrierGatewayOutcome;
       typedef Aws::Utils::Outcome<CreateClientVpnEndpointResponse, EC2Error> CreateClientVpnEndpointOutcome;
@@ -1252,16 +1678,20 @@ namespace Aws
       typedef Aws::Utils::Outcome<CreateCustomerGatewayResponse, EC2Error> CreateCustomerGatewayOutcome;
       typedef Aws::Utils::Outcome<CreateDefaultSubnetResponse, EC2Error> CreateDefaultSubnetOutcome;
       typedef Aws::Utils::Outcome<CreateDefaultVpcResponse, EC2Error> CreateDefaultVpcOutcome;
+      typedef Aws::Utils::Outcome<CreateDelegateMacVolumeOwnershipTaskResponse, EC2Error> CreateDelegateMacVolumeOwnershipTaskOutcome;
       typedef Aws::Utils::Outcome<CreateDhcpOptionsResponse, EC2Error> CreateDhcpOptionsOutcome;
       typedef Aws::Utils::Outcome<CreateEgressOnlyInternetGatewayResponse, EC2Error> CreateEgressOnlyInternetGatewayOutcome;
       typedef Aws::Utils::Outcome<CreateFleetResponse, EC2Error> CreateFleetOutcome;
       typedef Aws::Utils::Outcome<CreateFlowLogsResponse, EC2Error> CreateFlowLogsOutcome;
       typedef Aws::Utils::Outcome<CreateFpgaImageResponse, EC2Error> CreateFpgaImageOutcome;
       typedef Aws::Utils::Outcome<CreateImageResponse, EC2Error> CreateImageOutcome;
+      typedef Aws::Utils::Outcome<CreateImageUsageReportResponse, EC2Error> CreateImageUsageReportOutcome;
+      typedef Aws::Utils::Outcome<CreateInstanceConnectEndpointResponse, EC2Error> CreateInstanceConnectEndpointOutcome;
       typedef Aws::Utils::Outcome<CreateInstanceEventWindowResponse, EC2Error> CreateInstanceEventWindowOutcome;
       typedef Aws::Utils::Outcome<CreateInstanceExportTaskResponse, EC2Error> CreateInstanceExportTaskOutcome;
       typedef Aws::Utils::Outcome<CreateInternetGatewayResponse, EC2Error> CreateInternetGatewayOutcome;
       typedef Aws::Utils::Outcome<CreateIpamResponse, EC2Error> CreateIpamOutcome;
+      typedef Aws::Utils::Outcome<CreateIpamExternalResourceVerificationTokenResponse, EC2Error> CreateIpamExternalResourceVerificationTokenOutcome;
       typedef Aws::Utils::Outcome<CreateIpamPoolResponse, EC2Error> CreateIpamPoolOutcome;
       typedef Aws::Utils::Outcome<CreateIpamResourceDiscoveryResponse, EC2Error> CreateIpamResourceDiscoveryOutcome;
       typedef Aws::Utils::Outcome<CreateIpamScopeResponse, EC2Error> CreateIpamScopeOutcome;
@@ -1272,6 +1702,9 @@ namespace Aws
       typedef Aws::Utils::Outcome<CreateLocalGatewayRouteTableResponse, EC2Error> CreateLocalGatewayRouteTableOutcome;
       typedef Aws::Utils::Outcome<CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationResponse, EC2Error> CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationOutcome;
       typedef Aws::Utils::Outcome<CreateLocalGatewayRouteTableVpcAssociationResponse, EC2Error> CreateLocalGatewayRouteTableVpcAssociationOutcome;
+      typedef Aws::Utils::Outcome<CreateLocalGatewayVirtualInterfaceResponse, EC2Error> CreateLocalGatewayVirtualInterfaceOutcome;
+      typedef Aws::Utils::Outcome<CreateLocalGatewayVirtualInterfaceGroupResponse, EC2Error> CreateLocalGatewayVirtualInterfaceGroupOutcome;
+      typedef Aws::Utils::Outcome<CreateMacSystemIntegrityProtectionModificationTaskResponse, EC2Error> CreateMacSystemIntegrityProtectionModificationTaskOutcome;
       typedef Aws::Utils::Outcome<CreateManagedPrefixListResponse, EC2Error> CreateManagedPrefixListOutcome;
       typedef Aws::Utils::Outcome<CreateNatGatewayResponse, EC2Error> CreateNatGatewayOutcome;
       typedef Aws::Utils::Outcome<CreateNetworkAclResponse, EC2Error> CreateNetworkAclOutcome;
@@ -1286,6 +1719,9 @@ namespace Aws
       typedef Aws::Utils::Outcome<CreateReservedInstancesListingResponse, EC2Error> CreateReservedInstancesListingOutcome;
       typedef Aws::Utils::Outcome<CreateRestoreImageTaskResponse, EC2Error> CreateRestoreImageTaskOutcome;
       typedef Aws::Utils::Outcome<CreateRouteResponse, EC2Error> CreateRouteOutcome;
+      typedef Aws::Utils::Outcome<CreateRouteServerResponse, EC2Error> CreateRouteServerOutcome;
+      typedef Aws::Utils::Outcome<CreateRouteServerEndpointResponse, EC2Error> CreateRouteServerEndpointOutcome;
+      typedef Aws::Utils::Outcome<CreateRouteServerPeerResponse, EC2Error> CreateRouteServerPeerOutcome;
       typedef Aws::Utils::Outcome<CreateRouteTableResponse, EC2Error> CreateRouteTableOutcome;
       typedef Aws::Utils::Outcome<CreateSecurityGroupResponse, EC2Error> CreateSecurityGroupOutcome;
       typedef Aws::Utils::Outcome<CreateSnapshotResponse, EC2Error> CreateSnapshotOutcome;
@@ -1316,6 +1752,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<CreateVerifiedAccessTrustProviderResponse, EC2Error> CreateVerifiedAccessTrustProviderOutcome;
       typedef Aws::Utils::Outcome<CreateVolumeResponse, EC2Error> CreateVolumeOutcome;
       typedef Aws::Utils::Outcome<CreateVpcResponse, EC2Error> CreateVpcOutcome;
+      typedef Aws::Utils::Outcome<CreateVpcBlockPublicAccessExclusionResponse, EC2Error> CreateVpcBlockPublicAccessExclusionOutcome;
       typedef Aws::Utils::Outcome<CreateVpcEndpointResponse, EC2Error> CreateVpcEndpointOutcome;
       typedef Aws::Utils::Outcome<CreateVpcEndpointConnectionNotificationResponse, EC2Error> CreateVpcEndpointConnectionNotificationOutcome;
       typedef Aws::Utils::Outcome<CreateVpcEndpointServiceConfigurationResponse, EC2Error> CreateVpcEndpointServiceConfigurationOutcome;
@@ -1334,19 +1771,24 @@ namespace Aws
       typedef Aws::Utils::Outcome<DeleteFleetsResponse, EC2Error> DeleteFleetsOutcome;
       typedef Aws::Utils::Outcome<DeleteFlowLogsResponse, EC2Error> DeleteFlowLogsOutcome;
       typedef Aws::Utils::Outcome<DeleteFpgaImageResponse, EC2Error> DeleteFpgaImageOutcome;
+      typedef Aws::Utils::Outcome<DeleteImageUsageReportResponse, EC2Error> DeleteImageUsageReportOutcome;
+      typedef Aws::Utils::Outcome<DeleteInstanceConnectEndpointResponse, EC2Error> DeleteInstanceConnectEndpointOutcome;
       typedef Aws::Utils::Outcome<DeleteInstanceEventWindowResponse, EC2Error> DeleteInstanceEventWindowOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> DeleteInternetGatewayOutcome;
       typedef Aws::Utils::Outcome<DeleteIpamResponse, EC2Error> DeleteIpamOutcome;
+      typedef Aws::Utils::Outcome<DeleteIpamExternalResourceVerificationTokenResponse, EC2Error> DeleteIpamExternalResourceVerificationTokenOutcome;
       typedef Aws::Utils::Outcome<DeleteIpamPoolResponse, EC2Error> DeleteIpamPoolOutcome;
       typedef Aws::Utils::Outcome<DeleteIpamResourceDiscoveryResponse, EC2Error> DeleteIpamResourceDiscoveryOutcome;
       typedef Aws::Utils::Outcome<DeleteIpamScopeResponse, EC2Error> DeleteIpamScopeOutcome;
-      typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> DeleteKeyPairOutcome;
+      typedef Aws::Utils::Outcome<DeleteKeyPairResponse, EC2Error> DeleteKeyPairOutcome;
       typedef Aws::Utils::Outcome<DeleteLaunchTemplateResponse, EC2Error> DeleteLaunchTemplateOutcome;
       typedef Aws::Utils::Outcome<DeleteLaunchTemplateVersionsResponse, EC2Error> DeleteLaunchTemplateVersionsOutcome;
       typedef Aws::Utils::Outcome<DeleteLocalGatewayRouteResponse, EC2Error> DeleteLocalGatewayRouteOutcome;
       typedef Aws::Utils::Outcome<DeleteLocalGatewayRouteTableResponse, EC2Error> DeleteLocalGatewayRouteTableOutcome;
       typedef Aws::Utils::Outcome<DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationResponse, EC2Error> DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationOutcome;
       typedef Aws::Utils::Outcome<DeleteLocalGatewayRouteTableVpcAssociationResponse, EC2Error> DeleteLocalGatewayRouteTableVpcAssociationOutcome;
+      typedef Aws::Utils::Outcome<DeleteLocalGatewayVirtualInterfaceResponse, EC2Error> DeleteLocalGatewayVirtualInterfaceOutcome;
+      typedef Aws::Utils::Outcome<DeleteLocalGatewayVirtualInterfaceGroupResponse, EC2Error> DeleteLocalGatewayVirtualInterfaceGroupOutcome;
       typedef Aws::Utils::Outcome<DeleteManagedPrefixListResponse, EC2Error> DeleteManagedPrefixListOutcome;
       typedef Aws::Utils::Outcome<DeleteNatGatewayResponse, EC2Error> DeleteNatGatewayOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> DeleteNetworkAclOutcome;
@@ -1361,8 +1803,11 @@ namespace Aws
       typedef Aws::Utils::Outcome<DeletePublicIpv4PoolResponse, EC2Error> DeletePublicIpv4PoolOutcome;
       typedef Aws::Utils::Outcome<DeleteQueuedReservedInstancesResponse, EC2Error> DeleteQueuedReservedInstancesOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> DeleteRouteOutcome;
+      typedef Aws::Utils::Outcome<DeleteRouteServerResponse, EC2Error> DeleteRouteServerOutcome;
+      typedef Aws::Utils::Outcome<DeleteRouteServerEndpointResponse, EC2Error> DeleteRouteServerEndpointOutcome;
+      typedef Aws::Utils::Outcome<DeleteRouteServerPeerResponse, EC2Error> DeleteRouteServerPeerOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> DeleteRouteTableOutcome;
-      typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> DeleteSecurityGroupOutcome;
+      typedef Aws::Utils::Outcome<DeleteSecurityGroupResponse, EC2Error> DeleteSecurityGroupOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> DeleteSnapshotOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> DeleteSpotDatafeedSubscriptionOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> DeleteSubnetOutcome;
@@ -1389,6 +1834,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<DeleteVerifiedAccessTrustProviderResponse, EC2Error> DeleteVerifiedAccessTrustProviderOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> DeleteVolumeOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> DeleteVpcOutcome;
+      typedef Aws::Utils::Outcome<DeleteVpcBlockPublicAccessExclusionResponse, EC2Error> DeleteVpcBlockPublicAccessExclusionOutcome;
       typedef Aws::Utils::Outcome<DeleteVpcEndpointConnectionNotificationsResponse, EC2Error> DeleteVpcEndpointConnectionNotificationsOutcome;
       typedef Aws::Utils::Outcome<DeleteVpcEndpointServiceConfigurationsResponse, EC2Error> DeleteVpcEndpointServiceConfigurationsOutcome;
       typedef Aws::Utils::Outcome<DeleteVpcEndpointsResponse, EC2Error> DeleteVpcEndpointsOutcome;
@@ -1397,9 +1843,10 @@ namespace Aws
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> DeleteVpnConnectionRouteOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> DeleteVpnGatewayOutcome;
       typedef Aws::Utils::Outcome<DeprovisionByoipCidrResponse, EC2Error> DeprovisionByoipCidrOutcome;
+      typedef Aws::Utils::Outcome<DeprovisionIpamByoasnResponse, EC2Error> DeprovisionIpamByoasnOutcome;
       typedef Aws::Utils::Outcome<DeprovisionIpamPoolCidrResponse, EC2Error> DeprovisionIpamPoolCidrOutcome;
       typedef Aws::Utils::Outcome<DeprovisionPublicIpv4PoolCidrResponse, EC2Error> DeprovisionPublicIpv4PoolCidrOutcome;
-      typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> DeregisterImageOutcome;
+      typedef Aws::Utils::Outcome<DeregisterImageResponse, EC2Error> DeregisterImageOutcome;
       typedef Aws::Utils::Outcome<DeregisterInstanceEventNotificationAttributesResponse, EC2Error> DeregisterInstanceEventNotificationAttributesOutcome;
       typedef Aws::Utils::Outcome<DeregisterTransitGatewayMulticastGroupMembersResponse, EC2Error> DeregisterTransitGatewayMulticastGroupMembersOutcome;
       typedef Aws::Utils::Outcome<DeregisterTransitGatewayMulticastGroupSourcesResponse, EC2Error> DeregisterTransitGatewayMulticastGroupSourcesOutcome;
@@ -1412,6 +1859,12 @@ namespace Aws
       typedef Aws::Utils::Outcome<DescribeAwsNetworkPerformanceMetricSubscriptionsResponse, EC2Error> DescribeAwsNetworkPerformanceMetricSubscriptionsOutcome;
       typedef Aws::Utils::Outcome<DescribeBundleTasksResponse, EC2Error> DescribeBundleTasksOutcome;
       typedef Aws::Utils::Outcome<DescribeByoipCidrsResponse, EC2Error> DescribeByoipCidrsOutcome;
+      typedef Aws::Utils::Outcome<DescribeCapacityBlockExtensionHistoryResponse, EC2Error> DescribeCapacityBlockExtensionHistoryOutcome;
+      typedef Aws::Utils::Outcome<DescribeCapacityBlockExtensionOfferingsResponse, EC2Error> DescribeCapacityBlockExtensionOfferingsOutcome;
+      typedef Aws::Utils::Outcome<DescribeCapacityBlockOfferingsResponse, EC2Error> DescribeCapacityBlockOfferingsOutcome;
+      typedef Aws::Utils::Outcome<DescribeCapacityBlockStatusResponse, EC2Error> DescribeCapacityBlockStatusOutcome;
+      typedef Aws::Utils::Outcome<DescribeCapacityBlocksResponse, EC2Error> DescribeCapacityBlocksOutcome;
+      typedef Aws::Utils::Outcome<DescribeCapacityReservationBillingRequestsResponse, EC2Error> DescribeCapacityReservationBillingRequestsOutcome;
       typedef Aws::Utils::Outcome<DescribeCapacityReservationFleetsResponse, EC2Error> DescribeCapacityReservationFleetsOutcome;
       typedef Aws::Utils::Outcome<DescribeCapacityReservationsResponse, EC2Error> DescribeCapacityReservationsOutcome;
       typedef Aws::Utils::Outcome<DescribeCarrierGatewaysResponse, EC2Error> DescribeCarrierGatewaysOutcome;
@@ -1424,6 +1877,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<DescribeCoipPoolsResponse, EC2Error> DescribeCoipPoolsOutcome;
       typedef Aws::Utils::Outcome<DescribeConversionTasksResponse, EC2Error> DescribeConversionTasksOutcome;
       typedef Aws::Utils::Outcome<DescribeCustomerGatewaysResponse, EC2Error> DescribeCustomerGatewaysOutcome;
+      typedef Aws::Utils::Outcome<DescribeDeclarativePoliciesReportsResponse, EC2Error> DescribeDeclarativePoliciesReportsOutcome;
       typedef Aws::Utils::Outcome<DescribeDhcpOptionsResponse, EC2Error> DescribeDhcpOptionsOutcome;
       typedef Aws::Utils::Outcome<DescribeEgressOnlyInternetGatewaysResponse, EC2Error> DescribeEgressOnlyInternetGatewaysOutcome;
       typedef Aws::Utils::Outcome<DescribeElasticGpusResponse, EC2Error> DescribeElasticGpusOutcome;
@@ -1444,18 +1898,26 @@ namespace Aws
       typedef Aws::Utils::Outcome<DescribeIdFormatResponse, EC2Error> DescribeIdFormatOutcome;
       typedef Aws::Utils::Outcome<DescribeIdentityIdFormatResponse, EC2Error> DescribeIdentityIdFormatOutcome;
       typedef Aws::Utils::Outcome<DescribeImageAttributeResponse, EC2Error> DescribeImageAttributeOutcome;
+      typedef Aws::Utils::Outcome<DescribeImageReferencesResponse, EC2Error> DescribeImageReferencesOutcome;
+      typedef Aws::Utils::Outcome<DescribeImageUsageReportEntriesResponse, EC2Error> DescribeImageUsageReportEntriesOutcome;
+      typedef Aws::Utils::Outcome<DescribeImageUsageReportsResponse, EC2Error> DescribeImageUsageReportsOutcome;
       typedef Aws::Utils::Outcome<DescribeImagesResponse, EC2Error> DescribeImagesOutcome;
       typedef Aws::Utils::Outcome<DescribeImportImageTasksResponse, EC2Error> DescribeImportImageTasksOutcome;
       typedef Aws::Utils::Outcome<DescribeImportSnapshotTasksResponse, EC2Error> DescribeImportSnapshotTasksOutcome;
       typedef Aws::Utils::Outcome<DescribeInstanceAttributeResponse, EC2Error> DescribeInstanceAttributeOutcome;
+      typedef Aws::Utils::Outcome<DescribeInstanceConnectEndpointsResponse, EC2Error> DescribeInstanceConnectEndpointsOutcome;
       typedef Aws::Utils::Outcome<DescribeInstanceCreditSpecificationsResponse, EC2Error> DescribeInstanceCreditSpecificationsOutcome;
       typedef Aws::Utils::Outcome<DescribeInstanceEventNotificationAttributesResponse, EC2Error> DescribeInstanceEventNotificationAttributesOutcome;
       typedef Aws::Utils::Outcome<DescribeInstanceEventWindowsResponse, EC2Error> DescribeInstanceEventWindowsOutcome;
+      typedef Aws::Utils::Outcome<DescribeInstanceImageMetadataResponse, EC2Error> DescribeInstanceImageMetadataOutcome;
       typedef Aws::Utils::Outcome<DescribeInstanceStatusResponse, EC2Error> DescribeInstanceStatusOutcome;
+      typedef Aws::Utils::Outcome<DescribeInstanceTopologyResponse, EC2Error> DescribeInstanceTopologyOutcome;
       typedef Aws::Utils::Outcome<DescribeInstanceTypeOfferingsResponse, EC2Error> DescribeInstanceTypeOfferingsOutcome;
       typedef Aws::Utils::Outcome<DescribeInstanceTypesResponse, EC2Error> DescribeInstanceTypesOutcome;
       typedef Aws::Utils::Outcome<DescribeInstancesResponse, EC2Error> DescribeInstancesOutcome;
       typedef Aws::Utils::Outcome<DescribeInternetGatewaysResponse, EC2Error> DescribeInternetGatewaysOutcome;
+      typedef Aws::Utils::Outcome<DescribeIpamByoasnResponse, EC2Error> DescribeIpamByoasnOutcome;
+      typedef Aws::Utils::Outcome<DescribeIpamExternalResourceVerificationTokensResponse, EC2Error> DescribeIpamExternalResourceVerificationTokensOutcome;
       typedef Aws::Utils::Outcome<DescribeIpamPoolsResponse, EC2Error> DescribeIpamPoolsOutcome;
       typedef Aws::Utils::Outcome<DescribeIpamResourceDiscoveriesResponse, EC2Error> DescribeIpamResourceDiscoveriesOutcome;
       typedef Aws::Utils::Outcome<DescribeIpamResourceDiscoveryAssociationsResponse, EC2Error> DescribeIpamResourceDiscoveryAssociationsOutcome;
@@ -1471,6 +1933,9 @@ namespace Aws
       typedef Aws::Utils::Outcome<DescribeLocalGatewayVirtualInterfaceGroupsResponse, EC2Error> DescribeLocalGatewayVirtualInterfaceGroupsOutcome;
       typedef Aws::Utils::Outcome<DescribeLocalGatewayVirtualInterfacesResponse, EC2Error> DescribeLocalGatewayVirtualInterfacesOutcome;
       typedef Aws::Utils::Outcome<DescribeLocalGatewaysResponse, EC2Error> DescribeLocalGatewaysOutcome;
+      typedef Aws::Utils::Outcome<DescribeLockedSnapshotsResponse, EC2Error> DescribeLockedSnapshotsOutcome;
+      typedef Aws::Utils::Outcome<DescribeMacHostsResponse, EC2Error> DescribeMacHostsOutcome;
+      typedef Aws::Utils::Outcome<DescribeMacModificationTasksResponse, EC2Error> DescribeMacModificationTasksOutcome;
       typedef Aws::Utils::Outcome<DescribeManagedPrefixListsResponse, EC2Error> DescribeManagedPrefixListsOutcome;
       typedef Aws::Utils::Outcome<DescribeMovingAddressesResponse, EC2Error> DescribeMovingAddressesOutcome;
       typedef Aws::Utils::Outcome<DescribeNatGatewaysResponse, EC2Error> DescribeNatGatewaysOutcome;
@@ -1482,6 +1947,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<DescribeNetworkInterfaceAttributeResponse, EC2Error> DescribeNetworkInterfaceAttributeOutcome;
       typedef Aws::Utils::Outcome<DescribeNetworkInterfacePermissionsResponse, EC2Error> DescribeNetworkInterfacePermissionsOutcome;
       typedef Aws::Utils::Outcome<DescribeNetworkInterfacesResponse, EC2Error> DescribeNetworkInterfacesOutcome;
+      typedef Aws::Utils::Outcome<DescribeOutpostLagsResponse, EC2Error> DescribeOutpostLagsOutcome;
       typedef Aws::Utils::Outcome<DescribePlacementGroupsResponse, EC2Error> DescribePlacementGroupsOutcome;
       typedef Aws::Utils::Outcome<DescribePrefixListsResponse, EC2Error> DescribePrefixListsOutcome;
       typedef Aws::Utils::Outcome<DescribePrincipalIdFormatResponse, EC2Error> DescribePrincipalIdFormatOutcome;
@@ -1492,12 +1958,17 @@ namespace Aws
       typedef Aws::Utils::Outcome<DescribeReservedInstancesListingsResponse, EC2Error> DescribeReservedInstancesListingsOutcome;
       typedef Aws::Utils::Outcome<DescribeReservedInstancesModificationsResponse, EC2Error> DescribeReservedInstancesModificationsOutcome;
       typedef Aws::Utils::Outcome<DescribeReservedInstancesOfferingsResponse, EC2Error> DescribeReservedInstancesOfferingsOutcome;
+      typedef Aws::Utils::Outcome<DescribeRouteServerEndpointsResponse, EC2Error> DescribeRouteServerEndpointsOutcome;
+      typedef Aws::Utils::Outcome<DescribeRouteServerPeersResponse, EC2Error> DescribeRouteServerPeersOutcome;
+      typedef Aws::Utils::Outcome<DescribeRouteServersResponse, EC2Error> DescribeRouteServersOutcome;
       typedef Aws::Utils::Outcome<DescribeRouteTablesResponse, EC2Error> DescribeRouteTablesOutcome;
       typedef Aws::Utils::Outcome<DescribeScheduledInstanceAvailabilityResponse, EC2Error> DescribeScheduledInstanceAvailabilityOutcome;
       typedef Aws::Utils::Outcome<DescribeScheduledInstancesResponse, EC2Error> DescribeScheduledInstancesOutcome;
       typedef Aws::Utils::Outcome<DescribeSecurityGroupReferencesResponse, EC2Error> DescribeSecurityGroupReferencesOutcome;
       typedef Aws::Utils::Outcome<DescribeSecurityGroupRulesResponse, EC2Error> DescribeSecurityGroupRulesOutcome;
+      typedef Aws::Utils::Outcome<DescribeSecurityGroupVpcAssociationsResponse, EC2Error> DescribeSecurityGroupVpcAssociationsOutcome;
       typedef Aws::Utils::Outcome<DescribeSecurityGroupsResponse, EC2Error> DescribeSecurityGroupsOutcome;
+      typedef Aws::Utils::Outcome<DescribeServiceLinkVirtualInterfacesResponse, EC2Error> DescribeServiceLinkVirtualInterfacesOutcome;
       typedef Aws::Utils::Outcome<DescribeSnapshotAttributeResponse, EC2Error> DescribeSnapshotAttributeOutcome;
       typedef Aws::Utils::Outcome<DescribeSnapshotTierStatusResponse, EC2Error> DescribeSnapshotTierStatusOutcome;
       typedef Aws::Utils::Outcome<DescribeSnapshotsResponse, EC2Error> DescribeSnapshotsOutcome;
@@ -1511,6 +1982,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<DescribeStoreImageTasksResponse, EC2Error> DescribeStoreImageTasksOutcome;
       typedef Aws::Utils::Outcome<DescribeSubnetsResponse, EC2Error> DescribeSubnetsOutcome;
       typedef Aws::Utils::Outcome<DescribeTagsResponse, EC2Error> DescribeTagsOutcome;
+      typedef Aws::Utils::Outcome<DescribeTrafficMirrorFilterRulesResponse, EC2Error> DescribeTrafficMirrorFilterRulesOutcome;
       typedef Aws::Utils::Outcome<DescribeTrafficMirrorFiltersResponse, EC2Error> DescribeTrafficMirrorFiltersOutcome;
       typedef Aws::Utils::Outcome<DescribeTrafficMirrorSessionsResponse, EC2Error> DescribeTrafficMirrorSessionsOutcome;
       typedef Aws::Utils::Outcome<DescribeTrafficMirrorTargetsResponse, EC2Error> DescribeTrafficMirrorTargetsOutcome;
@@ -1535,8 +2007,11 @@ namespace Aws
       typedef Aws::Utils::Outcome<DescribeVolumesResponse, EC2Error> DescribeVolumesOutcome;
       typedef Aws::Utils::Outcome<DescribeVolumesModificationsResponse, EC2Error> DescribeVolumesModificationsOutcome;
       typedef Aws::Utils::Outcome<DescribeVpcAttributeResponse, EC2Error> DescribeVpcAttributeOutcome;
+      typedef Aws::Utils::Outcome<DescribeVpcBlockPublicAccessExclusionsResponse, EC2Error> DescribeVpcBlockPublicAccessExclusionsOutcome;
+      typedef Aws::Utils::Outcome<DescribeVpcBlockPublicAccessOptionsResponse, EC2Error> DescribeVpcBlockPublicAccessOptionsOutcome;
       typedef Aws::Utils::Outcome<DescribeVpcClassicLinkResponse, EC2Error> DescribeVpcClassicLinkOutcome;
       typedef Aws::Utils::Outcome<DescribeVpcClassicLinkDnsSupportResponse, EC2Error> DescribeVpcClassicLinkDnsSupportOutcome;
+      typedef Aws::Utils::Outcome<DescribeVpcEndpointAssociationsResponse, EC2Error> DescribeVpcEndpointAssociationsOutcome;
       typedef Aws::Utils::Outcome<DescribeVpcEndpointConnectionNotificationsResponse, EC2Error> DescribeVpcEndpointConnectionNotificationsOutcome;
       typedef Aws::Utils::Outcome<DescribeVpcEndpointConnectionsResponse, EC2Error> DescribeVpcEndpointConnectionsOutcome;
       typedef Aws::Utils::Outcome<DescribeVpcEndpointServiceConfigurationsResponse, EC2Error> DescribeVpcEndpointServiceConfigurationsOutcome;
@@ -1554,25 +2029,35 @@ namespace Aws
       typedef Aws::Utils::Outcome<DetachVolumeResponse, EC2Error> DetachVolumeOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> DetachVpnGatewayOutcome;
       typedef Aws::Utils::Outcome<DisableAddressTransferResponse, EC2Error> DisableAddressTransferOutcome;
+      typedef Aws::Utils::Outcome<DisableAllowedImagesSettingsResponse, EC2Error> DisableAllowedImagesSettingsOutcome;
       typedef Aws::Utils::Outcome<DisableAwsNetworkPerformanceMetricSubscriptionResponse, EC2Error> DisableAwsNetworkPerformanceMetricSubscriptionOutcome;
       typedef Aws::Utils::Outcome<DisableEbsEncryptionByDefaultResponse, EC2Error> DisableEbsEncryptionByDefaultOutcome;
       typedef Aws::Utils::Outcome<DisableFastLaunchResponse, EC2Error> DisableFastLaunchOutcome;
       typedef Aws::Utils::Outcome<DisableFastSnapshotRestoresResponse, EC2Error> DisableFastSnapshotRestoresOutcome;
+      typedef Aws::Utils::Outcome<DisableImageResponse, EC2Error> DisableImageOutcome;
+      typedef Aws::Utils::Outcome<DisableImageBlockPublicAccessResponse, EC2Error> DisableImageBlockPublicAccessOutcome;
       typedef Aws::Utils::Outcome<DisableImageDeprecationResponse, EC2Error> DisableImageDeprecationOutcome;
+      typedef Aws::Utils::Outcome<DisableImageDeregistrationProtectionResponse, EC2Error> DisableImageDeregistrationProtectionOutcome;
       typedef Aws::Utils::Outcome<DisableIpamOrganizationAdminAccountResponse, EC2Error> DisableIpamOrganizationAdminAccountOutcome;
+      typedef Aws::Utils::Outcome<DisableRouteServerPropagationResponse, EC2Error> DisableRouteServerPropagationOutcome;
       typedef Aws::Utils::Outcome<DisableSerialConsoleAccessResponse, EC2Error> DisableSerialConsoleAccessOutcome;
+      typedef Aws::Utils::Outcome<DisableSnapshotBlockPublicAccessResponse, EC2Error> DisableSnapshotBlockPublicAccessOutcome;
       typedef Aws::Utils::Outcome<DisableTransitGatewayRouteTablePropagationResponse, EC2Error> DisableTransitGatewayRouteTablePropagationOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> DisableVgwRoutePropagationOutcome;
       typedef Aws::Utils::Outcome<DisableVpcClassicLinkResponse, EC2Error> DisableVpcClassicLinkOutcome;
       typedef Aws::Utils::Outcome<DisableVpcClassicLinkDnsSupportResponse, EC2Error> DisableVpcClassicLinkDnsSupportOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> DisassociateAddressOutcome;
+      typedef Aws::Utils::Outcome<DisassociateCapacityReservationBillingOwnerResponse, EC2Error> DisassociateCapacityReservationBillingOwnerOutcome;
       typedef Aws::Utils::Outcome<DisassociateClientVpnTargetNetworkResponse, EC2Error> DisassociateClientVpnTargetNetworkOutcome;
       typedef Aws::Utils::Outcome<DisassociateEnclaveCertificateIamRoleResponse, EC2Error> DisassociateEnclaveCertificateIamRoleOutcome;
       typedef Aws::Utils::Outcome<DisassociateIamInstanceProfileResponse, EC2Error> DisassociateIamInstanceProfileOutcome;
       typedef Aws::Utils::Outcome<DisassociateInstanceEventWindowResponse, EC2Error> DisassociateInstanceEventWindowOutcome;
+      typedef Aws::Utils::Outcome<DisassociateIpamByoasnResponse, EC2Error> DisassociateIpamByoasnOutcome;
       typedef Aws::Utils::Outcome<DisassociateIpamResourceDiscoveryResponse, EC2Error> DisassociateIpamResourceDiscoveryOutcome;
       typedef Aws::Utils::Outcome<DisassociateNatGatewayAddressResponse, EC2Error> DisassociateNatGatewayAddressOutcome;
+      typedef Aws::Utils::Outcome<DisassociateRouteServerResponse, EC2Error> DisassociateRouteServerOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> DisassociateRouteTableOutcome;
+      typedef Aws::Utils::Outcome<DisassociateSecurityGroupVpcResponse, EC2Error> DisassociateSecurityGroupVpcOutcome;
       typedef Aws::Utils::Outcome<DisassociateSubnetCidrBlockResponse, EC2Error> DisassociateSubnetCidrBlockOutcome;
       typedef Aws::Utils::Outcome<DisassociateTransitGatewayMulticastDomainResponse, EC2Error> DisassociateTransitGatewayMulticastDomainOutcome;
       typedef Aws::Utils::Outcome<DisassociateTransitGatewayPolicyTableResponse, EC2Error> DisassociateTransitGatewayPolicyTableOutcome;
@@ -1580,14 +2065,20 @@ namespace Aws
       typedef Aws::Utils::Outcome<DisassociateTrunkInterfaceResponse, EC2Error> DisassociateTrunkInterfaceOutcome;
       typedef Aws::Utils::Outcome<DisassociateVpcCidrBlockResponse, EC2Error> DisassociateVpcCidrBlockOutcome;
       typedef Aws::Utils::Outcome<EnableAddressTransferResponse, EC2Error> EnableAddressTransferOutcome;
+      typedef Aws::Utils::Outcome<EnableAllowedImagesSettingsResponse, EC2Error> EnableAllowedImagesSettingsOutcome;
       typedef Aws::Utils::Outcome<EnableAwsNetworkPerformanceMetricSubscriptionResponse, EC2Error> EnableAwsNetworkPerformanceMetricSubscriptionOutcome;
       typedef Aws::Utils::Outcome<EnableEbsEncryptionByDefaultResponse, EC2Error> EnableEbsEncryptionByDefaultOutcome;
       typedef Aws::Utils::Outcome<EnableFastLaunchResponse, EC2Error> EnableFastLaunchOutcome;
       typedef Aws::Utils::Outcome<EnableFastSnapshotRestoresResponse, EC2Error> EnableFastSnapshotRestoresOutcome;
+      typedef Aws::Utils::Outcome<EnableImageResponse, EC2Error> EnableImageOutcome;
+      typedef Aws::Utils::Outcome<EnableImageBlockPublicAccessResponse, EC2Error> EnableImageBlockPublicAccessOutcome;
       typedef Aws::Utils::Outcome<EnableImageDeprecationResponse, EC2Error> EnableImageDeprecationOutcome;
+      typedef Aws::Utils::Outcome<EnableImageDeregistrationProtectionResponse, EC2Error> EnableImageDeregistrationProtectionOutcome;
       typedef Aws::Utils::Outcome<EnableIpamOrganizationAdminAccountResponse, EC2Error> EnableIpamOrganizationAdminAccountOutcome;
       typedef Aws::Utils::Outcome<EnableReachabilityAnalyzerOrganizationSharingResponse, EC2Error> EnableReachabilityAnalyzerOrganizationSharingOutcome;
+      typedef Aws::Utils::Outcome<EnableRouteServerPropagationResponse, EC2Error> EnableRouteServerPropagationOutcome;
       typedef Aws::Utils::Outcome<EnableSerialConsoleAccessResponse, EC2Error> EnableSerialConsoleAccessOutcome;
+      typedef Aws::Utils::Outcome<EnableSnapshotBlockPublicAccessResponse, EC2Error> EnableSnapshotBlockPublicAccessOutcome;
       typedef Aws::Utils::Outcome<EnableTransitGatewayRouteTablePropagationResponse, EC2Error> EnableTransitGatewayRouteTablePropagationOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> EnableVgwRoutePropagationOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> EnableVolumeIOOutcome;
@@ -1597,6 +2088,9 @@ namespace Aws
       typedef Aws::Utils::Outcome<ExportClientVpnClientConfigurationResponse, EC2Error> ExportClientVpnClientConfigurationOutcome;
       typedef Aws::Utils::Outcome<ExportImageResponse, EC2Error> ExportImageOutcome;
       typedef Aws::Utils::Outcome<ExportTransitGatewayRoutesResponse, EC2Error> ExportTransitGatewayRoutesOutcome;
+      typedef Aws::Utils::Outcome<ExportVerifiedAccessInstanceClientConfigurationResponse, EC2Error> ExportVerifiedAccessInstanceClientConfigurationOutcome;
+      typedef Aws::Utils::Outcome<GetActiveVpnTunnelStatusResponse, EC2Error> GetActiveVpnTunnelStatusOutcome;
+      typedef Aws::Utils::Outcome<GetAllowedImagesSettingsResponse, EC2Error> GetAllowedImagesSettingsOutcome;
       typedef Aws::Utils::Outcome<GetAssociatedEnclaveCertificateIamRolesResponse, EC2Error> GetAssociatedEnclaveCertificateIamRolesOutcome;
       typedef Aws::Utils::Outcome<GetAssociatedIpv6PoolCidrsResponse, EC2Error> GetAssociatedIpv6PoolCidrsOutcome;
       typedef Aws::Utils::Outcome<GetAwsNetworkPerformanceDataResponse, EC2Error> GetAwsNetworkPerformanceDataOutcome;
@@ -1604,16 +2098,21 @@ namespace Aws
       typedef Aws::Utils::Outcome<GetCoipPoolUsageResponse, EC2Error> GetCoipPoolUsageOutcome;
       typedef Aws::Utils::Outcome<GetConsoleOutputResponse, EC2Error> GetConsoleOutputOutcome;
       typedef Aws::Utils::Outcome<GetConsoleScreenshotResponse, EC2Error> GetConsoleScreenshotOutcome;
+      typedef Aws::Utils::Outcome<GetDeclarativePoliciesReportSummaryResponse, EC2Error> GetDeclarativePoliciesReportSummaryOutcome;
       typedef Aws::Utils::Outcome<GetDefaultCreditSpecificationResponse, EC2Error> GetDefaultCreditSpecificationOutcome;
       typedef Aws::Utils::Outcome<GetEbsDefaultKmsKeyIdResponse, EC2Error> GetEbsDefaultKmsKeyIdOutcome;
       typedef Aws::Utils::Outcome<GetEbsEncryptionByDefaultResponse, EC2Error> GetEbsEncryptionByDefaultOutcome;
       typedef Aws::Utils::Outcome<GetFlowLogsIntegrationTemplateResponse, EC2Error> GetFlowLogsIntegrationTemplateOutcome;
       typedef Aws::Utils::Outcome<GetGroupsForCapacityReservationResponse, EC2Error> GetGroupsForCapacityReservationOutcome;
       typedef Aws::Utils::Outcome<GetHostReservationPurchasePreviewResponse, EC2Error> GetHostReservationPurchasePreviewOutcome;
+      typedef Aws::Utils::Outcome<GetImageBlockPublicAccessStateResponse, EC2Error> GetImageBlockPublicAccessStateOutcome;
+      typedef Aws::Utils::Outcome<GetInstanceMetadataDefaultsResponse, EC2Error> GetInstanceMetadataDefaultsOutcome;
+      typedef Aws::Utils::Outcome<GetInstanceTpmEkPubResponse, EC2Error> GetInstanceTpmEkPubOutcome;
       typedef Aws::Utils::Outcome<GetInstanceTypesFromInstanceRequirementsResponse, EC2Error> GetInstanceTypesFromInstanceRequirementsOutcome;
       typedef Aws::Utils::Outcome<GetInstanceUefiDataResponse, EC2Error> GetInstanceUefiDataOutcome;
       typedef Aws::Utils::Outcome<GetIpamAddressHistoryResponse, EC2Error> GetIpamAddressHistoryOutcome;
       typedef Aws::Utils::Outcome<GetIpamDiscoveredAccountsResponse, EC2Error> GetIpamDiscoveredAccountsOutcome;
+      typedef Aws::Utils::Outcome<GetIpamDiscoveredPublicAddressesResponse, EC2Error> GetIpamDiscoveredPublicAddressesOutcome;
       typedef Aws::Utils::Outcome<GetIpamDiscoveredResourceCidrsResponse, EC2Error> GetIpamDiscoveredResourceCidrsOutcome;
       typedef Aws::Utils::Outcome<GetIpamPoolAllocationsResponse, EC2Error> GetIpamPoolAllocationsOutcome;
       typedef Aws::Utils::Outcome<GetIpamPoolCidrsResponse, EC2Error> GetIpamPoolCidrsOutcome;
@@ -1625,7 +2124,12 @@ namespace Aws
       typedef Aws::Utils::Outcome<GetNetworkInsightsAccessScopeContentResponse, EC2Error> GetNetworkInsightsAccessScopeContentOutcome;
       typedef Aws::Utils::Outcome<GetPasswordDataResponse, EC2Error> GetPasswordDataOutcome;
       typedef Aws::Utils::Outcome<GetReservedInstancesExchangeQuoteResponse, EC2Error> GetReservedInstancesExchangeQuoteOutcome;
+      typedef Aws::Utils::Outcome<GetRouteServerAssociationsResponse, EC2Error> GetRouteServerAssociationsOutcome;
+      typedef Aws::Utils::Outcome<GetRouteServerPropagationsResponse, EC2Error> GetRouteServerPropagationsOutcome;
+      typedef Aws::Utils::Outcome<GetRouteServerRoutingDatabaseResponse, EC2Error> GetRouteServerRoutingDatabaseOutcome;
+      typedef Aws::Utils::Outcome<GetSecurityGroupsForVpcResponse, EC2Error> GetSecurityGroupsForVpcOutcome;
       typedef Aws::Utils::Outcome<GetSerialConsoleAccessStatusResponse, EC2Error> GetSerialConsoleAccessStatusOutcome;
+      typedef Aws::Utils::Outcome<GetSnapshotBlockPublicAccessStateResponse, EC2Error> GetSnapshotBlockPublicAccessStateOutcome;
       typedef Aws::Utils::Outcome<GetSpotPlacementScoresResponse, EC2Error> GetSpotPlacementScoresOutcome;
       typedef Aws::Utils::Outcome<GetSubnetCidrReservationsResponse, EC2Error> GetSubnetCidrReservationsOutcome;
       typedef Aws::Utils::Outcome<GetTransitGatewayAttachmentPropagationsResponse, EC2Error> GetTransitGatewayAttachmentPropagationsOutcome;
@@ -1636,6 +2140,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<GetTransitGatewayRouteTableAssociationsResponse, EC2Error> GetTransitGatewayRouteTableAssociationsOutcome;
       typedef Aws::Utils::Outcome<GetTransitGatewayRouteTablePropagationsResponse, EC2Error> GetTransitGatewayRouteTablePropagationsOutcome;
       typedef Aws::Utils::Outcome<GetVerifiedAccessEndpointPolicyResponse, EC2Error> GetVerifiedAccessEndpointPolicyOutcome;
+      typedef Aws::Utils::Outcome<GetVerifiedAccessEndpointTargetsResponse, EC2Error> GetVerifiedAccessEndpointTargetsOutcome;
       typedef Aws::Utils::Outcome<GetVerifiedAccessGroupPolicyResponse, EC2Error> GetVerifiedAccessGroupPolicyOutcome;
       typedef Aws::Utils::Outcome<GetVpnConnectionDeviceSampleConfigurationResponse, EC2Error> GetVpnConnectionDeviceSampleConfigurationOutcome;
       typedef Aws::Utils::Outcome<GetVpnConnectionDeviceTypesResponse, EC2Error> GetVpnConnectionDeviceTypesOutcome;
@@ -1648,6 +2153,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<ImportVolumeResponse, EC2Error> ImportVolumeOutcome;
       typedef Aws::Utils::Outcome<ListImagesInRecycleBinResponse, EC2Error> ListImagesInRecycleBinOutcome;
       typedef Aws::Utils::Outcome<ListSnapshotsInRecycleBinResponse, EC2Error> ListSnapshotsInRecycleBinOutcome;
+      typedef Aws::Utils::Outcome<LockSnapshotResponse, EC2Error> LockSnapshotOutcome;
       typedef Aws::Utils::Outcome<ModifyAddressAttributeResponse, EC2Error> ModifyAddressAttributeOutcome;
       typedef Aws::Utils::Outcome<ModifyAvailabilityZoneGroupResponse, EC2Error> ModifyAvailabilityZoneGroupOutcome;
       typedef Aws::Utils::Outcome<ModifyCapacityReservationResponse, EC2Error> ModifyCapacityReservationOutcome;
@@ -1663,11 +2169,15 @@ namespace Aws
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> ModifyImageAttributeOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> ModifyInstanceAttributeOutcome;
       typedef Aws::Utils::Outcome<ModifyInstanceCapacityReservationAttributesResponse, EC2Error> ModifyInstanceCapacityReservationAttributesOutcome;
+      typedef Aws::Utils::Outcome<ModifyInstanceConnectEndpointResponse, EC2Error> ModifyInstanceConnectEndpointOutcome;
+      typedef Aws::Utils::Outcome<ModifyInstanceCpuOptionsResponse, EC2Error> ModifyInstanceCpuOptionsOutcome;
       typedef Aws::Utils::Outcome<ModifyInstanceCreditSpecificationResponse, EC2Error> ModifyInstanceCreditSpecificationOutcome;
       typedef Aws::Utils::Outcome<ModifyInstanceEventStartTimeResponse, EC2Error> ModifyInstanceEventStartTimeOutcome;
       typedef Aws::Utils::Outcome<ModifyInstanceEventWindowResponse, EC2Error> ModifyInstanceEventWindowOutcome;
       typedef Aws::Utils::Outcome<ModifyInstanceMaintenanceOptionsResponse, EC2Error> ModifyInstanceMaintenanceOptionsOutcome;
+      typedef Aws::Utils::Outcome<ModifyInstanceMetadataDefaultsResponse, EC2Error> ModifyInstanceMetadataDefaultsOutcome;
       typedef Aws::Utils::Outcome<ModifyInstanceMetadataOptionsResponse, EC2Error> ModifyInstanceMetadataOptionsOutcome;
+      typedef Aws::Utils::Outcome<ModifyInstanceNetworkPerformanceOptionsResponse, EC2Error> ModifyInstanceNetworkPerformanceOptionsOutcome;
       typedef Aws::Utils::Outcome<ModifyInstancePlacementResponse, EC2Error> ModifyInstancePlacementOutcome;
       typedef Aws::Utils::Outcome<ModifyIpamResponse, EC2Error> ModifyIpamOutcome;
       typedef Aws::Utils::Outcome<ModifyIpamPoolResponse, EC2Error> ModifyIpamPoolOutcome;
@@ -1679,7 +2189,9 @@ namespace Aws
       typedef Aws::Utils::Outcome<ModifyManagedPrefixListResponse, EC2Error> ModifyManagedPrefixListOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> ModifyNetworkInterfaceAttributeOutcome;
       typedef Aws::Utils::Outcome<ModifyPrivateDnsNameOptionsResponse, EC2Error> ModifyPrivateDnsNameOptionsOutcome;
+      typedef Aws::Utils::Outcome<ModifyPublicIpDnsNameOptionsResponse, EC2Error> ModifyPublicIpDnsNameOptionsOutcome;
       typedef Aws::Utils::Outcome<ModifyReservedInstancesResponse, EC2Error> ModifyReservedInstancesOutcome;
+      typedef Aws::Utils::Outcome<ModifyRouteServerResponse, EC2Error> ModifyRouteServerOutcome;
       typedef Aws::Utils::Outcome<ModifySecurityGroupRulesResponse, EC2Error> ModifySecurityGroupRulesOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> ModifySnapshotAttributeOutcome;
       typedef Aws::Utils::Outcome<ModifySnapshotTierResponse, EC2Error> ModifySnapshotTierOutcome;
@@ -1701,6 +2213,8 @@ namespace Aws
       typedef Aws::Utils::Outcome<ModifyVolumeResponse, EC2Error> ModifyVolumeOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> ModifyVolumeAttributeOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> ModifyVpcAttributeOutcome;
+      typedef Aws::Utils::Outcome<ModifyVpcBlockPublicAccessExclusionResponse, EC2Error> ModifyVpcBlockPublicAccessExclusionOutcome;
+      typedef Aws::Utils::Outcome<ModifyVpcBlockPublicAccessOptionsResponse, EC2Error> ModifyVpcBlockPublicAccessOptionsOutcome;
       typedef Aws::Utils::Outcome<ModifyVpcEndpointResponse, EC2Error> ModifyVpcEndpointOutcome;
       typedef Aws::Utils::Outcome<ModifyVpcEndpointConnectionNotificationResponse, EC2Error> ModifyVpcEndpointConnectionNotificationOutcome;
       typedef Aws::Utils::Outcome<ModifyVpcEndpointServiceConfigurationResponse, EC2Error> ModifyVpcEndpointServiceConfigurationOutcome;
@@ -1715,9 +2229,13 @@ namespace Aws
       typedef Aws::Utils::Outcome<MonitorInstancesResponse, EC2Error> MonitorInstancesOutcome;
       typedef Aws::Utils::Outcome<MoveAddressToVpcResponse, EC2Error> MoveAddressToVpcOutcome;
       typedef Aws::Utils::Outcome<MoveByoipCidrToIpamResponse, EC2Error> MoveByoipCidrToIpamOutcome;
+      typedef Aws::Utils::Outcome<MoveCapacityReservationInstancesResponse, EC2Error> MoveCapacityReservationInstancesOutcome;
       typedef Aws::Utils::Outcome<ProvisionByoipCidrResponse, EC2Error> ProvisionByoipCidrOutcome;
+      typedef Aws::Utils::Outcome<ProvisionIpamByoasnResponse, EC2Error> ProvisionIpamByoasnOutcome;
       typedef Aws::Utils::Outcome<ProvisionIpamPoolCidrResponse, EC2Error> ProvisionIpamPoolCidrOutcome;
       typedef Aws::Utils::Outcome<ProvisionPublicIpv4PoolCidrResponse, EC2Error> ProvisionPublicIpv4PoolCidrOutcome;
+      typedef Aws::Utils::Outcome<PurchaseCapacityBlockResponse, EC2Error> PurchaseCapacityBlockOutcome;
+      typedef Aws::Utils::Outcome<PurchaseCapacityBlockExtensionResponse, EC2Error> PurchaseCapacityBlockExtensionOutcome;
       typedef Aws::Utils::Outcome<PurchaseHostReservationResponse, EC2Error> PurchaseHostReservationOutcome;
       typedef Aws::Utils::Outcome<PurchaseReservedInstancesOfferingResponse, EC2Error> PurchaseReservedInstancesOfferingOutcome;
       typedef Aws::Utils::Outcome<PurchaseScheduledInstancesResponse, EC2Error> PurchaseScheduledInstancesOutcome;
@@ -1726,6 +2244,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<RegisterInstanceEventNotificationAttributesResponse, EC2Error> RegisterInstanceEventNotificationAttributesOutcome;
       typedef Aws::Utils::Outcome<RegisterTransitGatewayMulticastGroupMembersResponse, EC2Error> RegisterTransitGatewayMulticastGroupMembersOutcome;
       typedef Aws::Utils::Outcome<RegisterTransitGatewayMulticastGroupSourcesResponse, EC2Error> RegisterTransitGatewayMulticastGroupSourcesOutcome;
+      typedef Aws::Utils::Outcome<RejectCapacityReservationBillingOwnershipResponse, EC2Error> RejectCapacityReservationBillingOwnershipOutcome;
       typedef Aws::Utils::Outcome<RejectTransitGatewayMulticastDomainAssociationsResponse, EC2Error> RejectTransitGatewayMulticastDomainAssociationsOutcome;
       typedef Aws::Utils::Outcome<RejectTransitGatewayPeeringAttachmentResponse, EC2Error> RejectTransitGatewayPeeringAttachmentOutcome;
       typedef Aws::Utils::Outcome<RejectTransitGatewayVpcAttachmentResponse, EC2Error> RejectTransitGatewayVpcAttachmentOutcome;
@@ -1735,6 +2254,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<ReleaseHostsResponse, EC2Error> ReleaseHostsOutcome;
       typedef Aws::Utils::Outcome<ReleaseIpamPoolAllocationResponse, EC2Error> ReleaseIpamPoolAllocationOutcome;
       typedef Aws::Utils::Outcome<ReplaceIamInstanceProfileAssociationResponse, EC2Error> ReplaceIamInstanceProfileAssociationOutcome;
+      typedef Aws::Utils::Outcome<ReplaceImageCriteriaInAllowedImagesSettingsResponse, EC2Error> ReplaceImageCriteriaInAllowedImagesSettingsOutcome;
       typedef Aws::Utils::Outcome<ReplaceNetworkAclAssociationResponse, EC2Error> ReplaceNetworkAclAssociationOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> ReplaceNetworkAclEntryOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> ReplaceRouteOutcome;
@@ -1765,6 +2285,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<SearchTransitGatewayMulticastGroupsResponse, EC2Error> SearchTransitGatewayMulticastGroupsOutcome;
       typedef Aws::Utils::Outcome<SearchTransitGatewayRoutesResponse, EC2Error> SearchTransitGatewayRoutesOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> SendDiagnosticInterruptOutcome;
+      typedef Aws::Utils::Outcome<StartDeclarativePoliciesReportResponse, EC2Error> StartDeclarativePoliciesReportOutcome;
       typedef Aws::Utils::Outcome<StartInstancesResponse, EC2Error> StartInstancesOutcome;
       typedef Aws::Utils::Outcome<StartNetworkInsightsAccessScopeAnalysisResponse, EC2Error> StartNetworkInsightsAccessScopeAnalysisOutcome;
       typedef Aws::Utils::Outcome<StartNetworkInsightsAnalysisResponse, EC2Error> StartNetworkInsightsAnalysisOutcome;
@@ -1775,6 +2296,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<UnassignIpv6AddressesResponse, EC2Error> UnassignIpv6AddressesOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, EC2Error> UnassignPrivateIpAddressesOutcome;
       typedef Aws::Utils::Outcome<UnassignPrivateNatGatewayAddressResponse, EC2Error> UnassignPrivateNatGatewayAddressOutcome;
+      typedef Aws::Utils::Outcome<UnlockSnapshotResponse, EC2Error> UnlockSnapshotOutcome;
       typedef Aws::Utils::Outcome<UnmonitorInstancesResponse, EC2Error> UnmonitorInstancesOutcome;
       typedef Aws::Utils::Outcome<UpdateSecurityGroupRuleDescriptionsEgressResponse, EC2Error> UpdateSecurityGroupRuleDescriptionsEgressOutcome;
       typedef Aws::Utils::Outcome<UpdateSecurityGroupRuleDescriptionsIngressResponse, EC2Error> UpdateSecurityGroupRuleDescriptionsIngressOutcome;
@@ -1783,6 +2305,7 @@ namespace Aws
 
       /* Service model Outcome callable definitions */
       typedef std::future<AcceptAddressTransferOutcome> AcceptAddressTransferOutcomeCallable;
+      typedef std::future<AcceptCapacityReservationBillingOwnershipOutcome> AcceptCapacityReservationBillingOwnershipOutcomeCallable;
       typedef std::future<AcceptReservedInstancesExchangeQuoteOutcome> AcceptReservedInstancesExchangeQuoteOutcomeCallable;
       typedef std::future<AcceptTransitGatewayMulticastDomainAssociationsOutcome> AcceptTransitGatewayMulticastDomainAssociationsOutcomeCallable;
       typedef std::future<AcceptTransitGatewayPeeringAttachmentOutcome> AcceptTransitGatewayPeeringAttachmentOutcomeCallable;
@@ -1798,14 +2321,18 @@ namespace Aws
       typedef std::future<AssignPrivateIpAddressesOutcome> AssignPrivateIpAddressesOutcomeCallable;
       typedef std::future<AssignPrivateNatGatewayAddressOutcome> AssignPrivateNatGatewayAddressOutcomeCallable;
       typedef std::future<AssociateAddressOutcome> AssociateAddressOutcomeCallable;
+      typedef std::future<AssociateCapacityReservationBillingOwnerOutcome> AssociateCapacityReservationBillingOwnerOutcomeCallable;
       typedef std::future<AssociateClientVpnTargetNetworkOutcome> AssociateClientVpnTargetNetworkOutcomeCallable;
       typedef std::future<AssociateDhcpOptionsOutcome> AssociateDhcpOptionsOutcomeCallable;
       typedef std::future<AssociateEnclaveCertificateIamRoleOutcome> AssociateEnclaveCertificateIamRoleOutcomeCallable;
       typedef std::future<AssociateIamInstanceProfileOutcome> AssociateIamInstanceProfileOutcomeCallable;
       typedef std::future<AssociateInstanceEventWindowOutcome> AssociateInstanceEventWindowOutcomeCallable;
+      typedef std::future<AssociateIpamByoasnOutcome> AssociateIpamByoasnOutcomeCallable;
       typedef std::future<AssociateIpamResourceDiscoveryOutcome> AssociateIpamResourceDiscoveryOutcomeCallable;
       typedef std::future<AssociateNatGatewayAddressOutcome> AssociateNatGatewayAddressOutcomeCallable;
+      typedef std::future<AssociateRouteServerOutcome> AssociateRouteServerOutcomeCallable;
       typedef std::future<AssociateRouteTableOutcome> AssociateRouteTableOutcomeCallable;
+      typedef std::future<AssociateSecurityGroupVpcOutcome> AssociateSecurityGroupVpcOutcomeCallable;
       typedef std::future<AssociateSubnetCidrBlockOutcome> AssociateSubnetCidrBlockOutcomeCallable;
       typedef std::future<AssociateTransitGatewayMulticastDomainOutcome> AssociateTransitGatewayMulticastDomainOutcomeCallable;
       typedef std::future<AssociateTransitGatewayPolicyTableOutcome> AssociateTransitGatewayPolicyTableOutcomeCallable;
@@ -1826,6 +2353,7 @@ namespace Aws
       typedef std::future<CancelCapacityReservationOutcome> CancelCapacityReservationOutcomeCallable;
       typedef std::future<CancelCapacityReservationFleetsOutcome> CancelCapacityReservationFleetsOutcomeCallable;
       typedef std::future<CancelConversionTaskOutcome> CancelConversionTaskOutcomeCallable;
+      typedef std::future<CancelDeclarativePoliciesReportOutcome> CancelDeclarativePoliciesReportOutcomeCallable;
       typedef std::future<CancelExportTaskOutcome> CancelExportTaskOutcomeCallable;
       typedef std::future<CancelImageLaunchPermissionOutcome> CancelImageLaunchPermissionOutcomeCallable;
       typedef std::future<CancelImportTaskOutcome> CancelImportTaskOutcomeCallable;
@@ -1837,6 +2365,7 @@ namespace Aws
       typedef std::future<CopyImageOutcome> CopyImageOutcomeCallable;
       typedef std::future<CopySnapshotOutcome> CopySnapshotOutcomeCallable;
       typedef std::future<CreateCapacityReservationOutcome> CreateCapacityReservationOutcomeCallable;
+      typedef std::future<CreateCapacityReservationBySplittingOutcome> CreateCapacityReservationBySplittingOutcomeCallable;
       typedef std::future<CreateCapacityReservationFleetOutcome> CreateCapacityReservationFleetOutcomeCallable;
       typedef std::future<CreateCarrierGatewayOutcome> CreateCarrierGatewayOutcomeCallable;
       typedef std::future<CreateClientVpnEndpointOutcome> CreateClientVpnEndpointOutcomeCallable;
@@ -1846,16 +2375,20 @@ namespace Aws
       typedef std::future<CreateCustomerGatewayOutcome> CreateCustomerGatewayOutcomeCallable;
       typedef std::future<CreateDefaultSubnetOutcome> CreateDefaultSubnetOutcomeCallable;
       typedef std::future<CreateDefaultVpcOutcome> CreateDefaultVpcOutcomeCallable;
+      typedef std::future<CreateDelegateMacVolumeOwnershipTaskOutcome> CreateDelegateMacVolumeOwnershipTaskOutcomeCallable;
       typedef std::future<CreateDhcpOptionsOutcome> CreateDhcpOptionsOutcomeCallable;
       typedef std::future<CreateEgressOnlyInternetGatewayOutcome> CreateEgressOnlyInternetGatewayOutcomeCallable;
       typedef std::future<CreateFleetOutcome> CreateFleetOutcomeCallable;
       typedef std::future<CreateFlowLogsOutcome> CreateFlowLogsOutcomeCallable;
       typedef std::future<CreateFpgaImageOutcome> CreateFpgaImageOutcomeCallable;
       typedef std::future<CreateImageOutcome> CreateImageOutcomeCallable;
+      typedef std::future<CreateImageUsageReportOutcome> CreateImageUsageReportOutcomeCallable;
+      typedef std::future<CreateInstanceConnectEndpointOutcome> CreateInstanceConnectEndpointOutcomeCallable;
       typedef std::future<CreateInstanceEventWindowOutcome> CreateInstanceEventWindowOutcomeCallable;
       typedef std::future<CreateInstanceExportTaskOutcome> CreateInstanceExportTaskOutcomeCallable;
       typedef std::future<CreateInternetGatewayOutcome> CreateInternetGatewayOutcomeCallable;
       typedef std::future<CreateIpamOutcome> CreateIpamOutcomeCallable;
+      typedef std::future<CreateIpamExternalResourceVerificationTokenOutcome> CreateIpamExternalResourceVerificationTokenOutcomeCallable;
       typedef std::future<CreateIpamPoolOutcome> CreateIpamPoolOutcomeCallable;
       typedef std::future<CreateIpamResourceDiscoveryOutcome> CreateIpamResourceDiscoveryOutcomeCallable;
       typedef std::future<CreateIpamScopeOutcome> CreateIpamScopeOutcomeCallable;
@@ -1866,6 +2399,9 @@ namespace Aws
       typedef std::future<CreateLocalGatewayRouteTableOutcome> CreateLocalGatewayRouteTableOutcomeCallable;
       typedef std::future<CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationOutcome> CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationOutcomeCallable;
       typedef std::future<CreateLocalGatewayRouteTableVpcAssociationOutcome> CreateLocalGatewayRouteTableVpcAssociationOutcomeCallable;
+      typedef std::future<CreateLocalGatewayVirtualInterfaceOutcome> CreateLocalGatewayVirtualInterfaceOutcomeCallable;
+      typedef std::future<CreateLocalGatewayVirtualInterfaceGroupOutcome> CreateLocalGatewayVirtualInterfaceGroupOutcomeCallable;
+      typedef std::future<CreateMacSystemIntegrityProtectionModificationTaskOutcome> CreateMacSystemIntegrityProtectionModificationTaskOutcomeCallable;
       typedef std::future<CreateManagedPrefixListOutcome> CreateManagedPrefixListOutcomeCallable;
       typedef std::future<CreateNatGatewayOutcome> CreateNatGatewayOutcomeCallable;
       typedef std::future<CreateNetworkAclOutcome> CreateNetworkAclOutcomeCallable;
@@ -1880,6 +2416,9 @@ namespace Aws
       typedef std::future<CreateReservedInstancesListingOutcome> CreateReservedInstancesListingOutcomeCallable;
       typedef std::future<CreateRestoreImageTaskOutcome> CreateRestoreImageTaskOutcomeCallable;
       typedef std::future<CreateRouteOutcome> CreateRouteOutcomeCallable;
+      typedef std::future<CreateRouteServerOutcome> CreateRouteServerOutcomeCallable;
+      typedef std::future<CreateRouteServerEndpointOutcome> CreateRouteServerEndpointOutcomeCallable;
+      typedef std::future<CreateRouteServerPeerOutcome> CreateRouteServerPeerOutcomeCallable;
       typedef std::future<CreateRouteTableOutcome> CreateRouteTableOutcomeCallable;
       typedef std::future<CreateSecurityGroupOutcome> CreateSecurityGroupOutcomeCallable;
       typedef std::future<CreateSnapshotOutcome> CreateSnapshotOutcomeCallable;
@@ -1910,6 +2449,7 @@ namespace Aws
       typedef std::future<CreateVerifiedAccessTrustProviderOutcome> CreateVerifiedAccessTrustProviderOutcomeCallable;
       typedef std::future<CreateVolumeOutcome> CreateVolumeOutcomeCallable;
       typedef std::future<CreateVpcOutcome> CreateVpcOutcomeCallable;
+      typedef std::future<CreateVpcBlockPublicAccessExclusionOutcome> CreateVpcBlockPublicAccessExclusionOutcomeCallable;
       typedef std::future<CreateVpcEndpointOutcome> CreateVpcEndpointOutcomeCallable;
       typedef std::future<CreateVpcEndpointConnectionNotificationOutcome> CreateVpcEndpointConnectionNotificationOutcomeCallable;
       typedef std::future<CreateVpcEndpointServiceConfigurationOutcome> CreateVpcEndpointServiceConfigurationOutcomeCallable;
@@ -1928,9 +2468,12 @@ namespace Aws
       typedef std::future<DeleteFleetsOutcome> DeleteFleetsOutcomeCallable;
       typedef std::future<DeleteFlowLogsOutcome> DeleteFlowLogsOutcomeCallable;
       typedef std::future<DeleteFpgaImageOutcome> DeleteFpgaImageOutcomeCallable;
+      typedef std::future<DeleteImageUsageReportOutcome> DeleteImageUsageReportOutcomeCallable;
+      typedef std::future<DeleteInstanceConnectEndpointOutcome> DeleteInstanceConnectEndpointOutcomeCallable;
       typedef std::future<DeleteInstanceEventWindowOutcome> DeleteInstanceEventWindowOutcomeCallable;
       typedef std::future<DeleteInternetGatewayOutcome> DeleteInternetGatewayOutcomeCallable;
       typedef std::future<DeleteIpamOutcome> DeleteIpamOutcomeCallable;
+      typedef std::future<DeleteIpamExternalResourceVerificationTokenOutcome> DeleteIpamExternalResourceVerificationTokenOutcomeCallable;
       typedef std::future<DeleteIpamPoolOutcome> DeleteIpamPoolOutcomeCallable;
       typedef std::future<DeleteIpamResourceDiscoveryOutcome> DeleteIpamResourceDiscoveryOutcomeCallable;
       typedef std::future<DeleteIpamScopeOutcome> DeleteIpamScopeOutcomeCallable;
@@ -1941,6 +2484,8 @@ namespace Aws
       typedef std::future<DeleteLocalGatewayRouteTableOutcome> DeleteLocalGatewayRouteTableOutcomeCallable;
       typedef std::future<DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationOutcome> DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationOutcomeCallable;
       typedef std::future<DeleteLocalGatewayRouteTableVpcAssociationOutcome> DeleteLocalGatewayRouteTableVpcAssociationOutcomeCallable;
+      typedef std::future<DeleteLocalGatewayVirtualInterfaceOutcome> DeleteLocalGatewayVirtualInterfaceOutcomeCallable;
+      typedef std::future<DeleteLocalGatewayVirtualInterfaceGroupOutcome> DeleteLocalGatewayVirtualInterfaceGroupOutcomeCallable;
       typedef std::future<DeleteManagedPrefixListOutcome> DeleteManagedPrefixListOutcomeCallable;
       typedef std::future<DeleteNatGatewayOutcome> DeleteNatGatewayOutcomeCallable;
       typedef std::future<DeleteNetworkAclOutcome> DeleteNetworkAclOutcomeCallable;
@@ -1955,6 +2500,9 @@ namespace Aws
       typedef std::future<DeletePublicIpv4PoolOutcome> DeletePublicIpv4PoolOutcomeCallable;
       typedef std::future<DeleteQueuedReservedInstancesOutcome> DeleteQueuedReservedInstancesOutcomeCallable;
       typedef std::future<DeleteRouteOutcome> DeleteRouteOutcomeCallable;
+      typedef std::future<DeleteRouteServerOutcome> DeleteRouteServerOutcomeCallable;
+      typedef std::future<DeleteRouteServerEndpointOutcome> DeleteRouteServerEndpointOutcomeCallable;
+      typedef std::future<DeleteRouteServerPeerOutcome> DeleteRouteServerPeerOutcomeCallable;
       typedef std::future<DeleteRouteTableOutcome> DeleteRouteTableOutcomeCallable;
       typedef std::future<DeleteSecurityGroupOutcome> DeleteSecurityGroupOutcomeCallable;
       typedef std::future<DeleteSnapshotOutcome> DeleteSnapshotOutcomeCallable;
@@ -1983,6 +2531,7 @@ namespace Aws
       typedef std::future<DeleteVerifiedAccessTrustProviderOutcome> DeleteVerifiedAccessTrustProviderOutcomeCallable;
       typedef std::future<DeleteVolumeOutcome> DeleteVolumeOutcomeCallable;
       typedef std::future<DeleteVpcOutcome> DeleteVpcOutcomeCallable;
+      typedef std::future<DeleteVpcBlockPublicAccessExclusionOutcome> DeleteVpcBlockPublicAccessExclusionOutcomeCallable;
       typedef std::future<DeleteVpcEndpointConnectionNotificationsOutcome> DeleteVpcEndpointConnectionNotificationsOutcomeCallable;
       typedef std::future<DeleteVpcEndpointServiceConfigurationsOutcome> DeleteVpcEndpointServiceConfigurationsOutcomeCallable;
       typedef std::future<DeleteVpcEndpointsOutcome> DeleteVpcEndpointsOutcomeCallable;
@@ -1991,6 +2540,7 @@ namespace Aws
       typedef std::future<DeleteVpnConnectionRouteOutcome> DeleteVpnConnectionRouteOutcomeCallable;
       typedef std::future<DeleteVpnGatewayOutcome> DeleteVpnGatewayOutcomeCallable;
       typedef std::future<DeprovisionByoipCidrOutcome> DeprovisionByoipCidrOutcomeCallable;
+      typedef std::future<DeprovisionIpamByoasnOutcome> DeprovisionIpamByoasnOutcomeCallable;
       typedef std::future<DeprovisionIpamPoolCidrOutcome> DeprovisionIpamPoolCidrOutcomeCallable;
       typedef std::future<DeprovisionPublicIpv4PoolCidrOutcome> DeprovisionPublicIpv4PoolCidrOutcomeCallable;
       typedef std::future<DeregisterImageOutcome> DeregisterImageOutcomeCallable;
@@ -2006,6 +2556,12 @@ namespace Aws
       typedef std::future<DescribeAwsNetworkPerformanceMetricSubscriptionsOutcome> DescribeAwsNetworkPerformanceMetricSubscriptionsOutcomeCallable;
       typedef std::future<DescribeBundleTasksOutcome> DescribeBundleTasksOutcomeCallable;
       typedef std::future<DescribeByoipCidrsOutcome> DescribeByoipCidrsOutcomeCallable;
+      typedef std::future<DescribeCapacityBlockExtensionHistoryOutcome> DescribeCapacityBlockExtensionHistoryOutcomeCallable;
+      typedef std::future<DescribeCapacityBlockExtensionOfferingsOutcome> DescribeCapacityBlockExtensionOfferingsOutcomeCallable;
+      typedef std::future<DescribeCapacityBlockOfferingsOutcome> DescribeCapacityBlockOfferingsOutcomeCallable;
+      typedef std::future<DescribeCapacityBlockStatusOutcome> DescribeCapacityBlockStatusOutcomeCallable;
+      typedef std::future<DescribeCapacityBlocksOutcome> DescribeCapacityBlocksOutcomeCallable;
+      typedef std::future<DescribeCapacityReservationBillingRequestsOutcome> DescribeCapacityReservationBillingRequestsOutcomeCallable;
       typedef std::future<DescribeCapacityReservationFleetsOutcome> DescribeCapacityReservationFleetsOutcomeCallable;
       typedef std::future<DescribeCapacityReservationsOutcome> DescribeCapacityReservationsOutcomeCallable;
       typedef std::future<DescribeCarrierGatewaysOutcome> DescribeCarrierGatewaysOutcomeCallable;
@@ -2018,6 +2574,7 @@ namespace Aws
       typedef std::future<DescribeCoipPoolsOutcome> DescribeCoipPoolsOutcomeCallable;
       typedef std::future<DescribeConversionTasksOutcome> DescribeConversionTasksOutcomeCallable;
       typedef std::future<DescribeCustomerGatewaysOutcome> DescribeCustomerGatewaysOutcomeCallable;
+      typedef std::future<DescribeDeclarativePoliciesReportsOutcome> DescribeDeclarativePoliciesReportsOutcomeCallable;
       typedef std::future<DescribeDhcpOptionsOutcome> DescribeDhcpOptionsOutcomeCallable;
       typedef std::future<DescribeEgressOnlyInternetGatewaysOutcome> DescribeEgressOnlyInternetGatewaysOutcomeCallable;
       typedef std::future<DescribeElasticGpusOutcome> DescribeElasticGpusOutcomeCallable;
@@ -2038,18 +2595,26 @@ namespace Aws
       typedef std::future<DescribeIdFormatOutcome> DescribeIdFormatOutcomeCallable;
       typedef std::future<DescribeIdentityIdFormatOutcome> DescribeIdentityIdFormatOutcomeCallable;
       typedef std::future<DescribeImageAttributeOutcome> DescribeImageAttributeOutcomeCallable;
+      typedef std::future<DescribeImageReferencesOutcome> DescribeImageReferencesOutcomeCallable;
+      typedef std::future<DescribeImageUsageReportEntriesOutcome> DescribeImageUsageReportEntriesOutcomeCallable;
+      typedef std::future<DescribeImageUsageReportsOutcome> DescribeImageUsageReportsOutcomeCallable;
       typedef std::future<DescribeImagesOutcome> DescribeImagesOutcomeCallable;
       typedef std::future<DescribeImportImageTasksOutcome> DescribeImportImageTasksOutcomeCallable;
       typedef std::future<DescribeImportSnapshotTasksOutcome> DescribeImportSnapshotTasksOutcomeCallable;
       typedef std::future<DescribeInstanceAttributeOutcome> DescribeInstanceAttributeOutcomeCallable;
+      typedef std::future<DescribeInstanceConnectEndpointsOutcome> DescribeInstanceConnectEndpointsOutcomeCallable;
       typedef std::future<DescribeInstanceCreditSpecificationsOutcome> DescribeInstanceCreditSpecificationsOutcomeCallable;
       typedef std::future<DescribeInstanceEventNotificationAttributesOutcome> DescribeInstanceEventNotificationAttributesOutcomeCallable;
       typedef std::future<DescribeInstanceEventWindowsOutcome> DescribeInstanceEventWindowsOutcomeCallable;
+      typedef std::future<DescribeInstanceImageMetadataOutcome> DescribeInstanceImageMetadataOutcomeCallable;
       typedef std::future<DescribeInstanceStatusOutcome> DescribeInstanceStatusOutcomeCallable;
+      typedef std::future<DescribeInstanceTopologyOutcome> DescribeInstanceTopologyOutcomeCallable;
       typedef std::future<DescribeInstanceTypeOfferingsOutcome> DescribeInstanceTypeOfferingsOutcomeCallable;
       typedef std::future<DescribeInstanceTypesOutcome> DescribeInstanceTypesOutcomeCallable;
       typedef std::future<DescribeInstancesOutcome> DescribeInstancesOutcomeCallable;
       typedef std::future<DescribeInternetGatewaysOutcome> DescribeInternetGatewaysOutcomeCallable;
+      typedef std::future<DescribeIpamByoasnOutcome> DescribeIpamByoasnOutcomeCallable;
+      typedef std::future<DescribeIpamExternalResourceVerificationTokensOutcome> DescribeIpamExternalResourceVerificationTokensOutcomeCallable;
       typedef std::future<DescribeIpamPoolsOutcome> DescribeIpamPoolsOutcomeCallable;
       typedef std::future<DescribeIpamResourceDiscoveriesOutcome> DescribeIpamResourceDiscoveriesOutcomeCallable;
       typedef std::future<DescribeIpamResourceDiscoveryAssociationsOutcome> DescribeIpamResourceDiscoveryAssociationsOutcomeCallable;
@@ -2065,6 +2630,9 @@ namespace Aws
       typedef std::future<DescribeLocalGatewayVirtualInterfaceGroupsOutcome> DescribeLocalGatewayVirtualInterfaceGroupsOutcomeCallable;
       typedef std::future<DescribeLocalGatewayVirtualInterfacesOutcome> DescribeLocalGatewayVirtualInterfacesOutcomeCallable;
       typedef std::future<DescribeLocalGatewaysOutcome> DescribeLocalGatewaysOutcomeCallable;
+      typedef std::future<DescribeLockedSnapshotsOutcome> DescribeLockedSnapshotsOutcomeCallable;
+      typedef std::future<DescribeMacHostsOutcome> DescribeMacHostsOutcomeCallable;
+      typedef std::future<DescribeMacModificationTasksOutcome> DescribeMacModificationTasksOutcomeCallable;
       typedef std::future<DescribeManagedPrefixListsOutcome> DescribeManagedPrefixListsOutcomeCallable;
       typedef std::future<DescribeMovingAddressesOutcome> DescribeMovingAddressesOutcomeCallable;
       typedef std::future<DescribeNatGatewaysOutcome> DescribeNatGatewaysOutcomeCallable;
@@ -2076,6 +2644,7 @@ namespace Aws
       typedef std::future<DescribeNetworkInterfaceAttributeOutcome> DescribeNetworkInterfaceAttributeOutcomeCallable;
       typedef std::future<DescribeNetworkInterfacePermissionsOutcome> DescribeNetworkInterfacePermissionsOutcomeCallable;
       typedef std::future<DescribeNetworkInterfacesOutcome> DescribeNetworkInterfacesOutcomeCallable;
+      typedef std::future<DescribeOutpostLagsOutcome> DescribeOutpostLagsOutcomeCallable;
       typedef std::future<DescribePlacementGroupsOutcome> DescribePlacementGroupsOutcomeCallable;
       typedef std::future<DescribePrefixListsOutcome> DescribePrefixListsOutcomeCallable;
       typedef std::future<DescribePrincipalIdFormatOutcome> DescribePrincipalIdFormatOutcomeCallable;
@@ -2086,12 +2655,17 @@ namespace Aws
       typedef std::future<DescribeReservedInstancesListingsOutcome> DescribeReservedInstancesListingsOutcomeCallable;
       typedef std::future<DescribeReservedInstancesModificationsOutcome> DescribeReservedInstancesModificationsOutcomeCallable;
       typedef std::future<DescribeReservedInstancesOfferingsOutcome> DescribeReservedInstancesOfferingsOutcomeCallable;
+      typedef std::future<DescribeRouteServerEndpointsOutcome> DescribeRouteServerEndpointsOutcomeCallable;
+      typedef std::future<DescribeRouteServerPeersOutcome> DescribeRouteServerPeersOutcomeCallable;
+      typedef std::future<DescribeRouteServersOutcome> DescribeRouteServersOutcomeCallable;
       typedef std::future<DescribeRouteTablesOutcome> DescribeRouteTablesOutcomeCallable;
       typedef std::future<DescribeScheduledInstanceAvailabilityOutcome> DescribeScheduledInstanceAvailabilityOutcomeCallable;
       typedef std::future<DescribeScheduledInstancesOutcome> DescribeScheduledInstancesOutcomeCallable;
       typedef std::future<DescribeSecurityGroupReferencesOutcome> DescribeSecurityGroupReferencesOutcomeCallable;
       typedef std::future<DescribeSecurityGroupRulesOutcome> DescribeSecurityGroupRulesOutcomeCallable;
+      typedef std::future<DescribeSecurityGroupVpcAssociationsOutcome> DescribeSecurityGroupVpcAssociationsOutcomeCallable;
       typedef std::future<DescribeSecurityGroupsOutcome> DescribeSecurityGroupsOutcomeCallable;
+      typedef std::future<DescribeServiceLinkVirtualInterfacesOutcome> DescribeServiceLinkVirtualInterfacesOutcomeCallable;
       typedef std::future<DescribeSnapshotAttributeOutcome> DescribeSnapshotAttributeOutcomeCallable;
       typedef std::future<DescribeSnapshotTierStatusOutcome> DescribeSnapshotTierStatusOutcomeCallable;
       typedef std::future<DescribeSnapshotsOutcome> DescribeSnapshotsOutcomeCallable;
@@ -2105,6 +2679,7 @@ namespace Aws
       typedef std::future<DescribeStoreImageTasksOutcome> DescribeStoreImageTasksOutcomeCallable;
       typedef std::future<DescribeSubnetsOutcome> DescribeSubnetsOutcomeCallable;
       typedef std::future<DescribeTagsOutcome> DescribeTagsOutcomeCallable;
+      typedef std::future<DescribeTrafficMirrorFilterRulesOutcome> DescribeTrafficMirrorFilterRulesOutcomeCallable;
       typedef std::future<DescribeTrafficMirrorFiltersOutcome> DescribeTrafficMirrorFiltersOutcomeCallable;
       typedef std::future<DescribeTrafficMirrorSessionsOutcome> DescribeTrafficMirrorSessionsOutcomeCallable;
       typedef std::future<DescribeTrafficMirrorTargetsOutcome> DescribeTrafficMirrorTargetsOutcomeCallable;
@@ -2129,8 +2704,11 @@ namespace Aws
       typedef std::future<DescribeVolumesOutcome> DescribeVolumesOutcomeCallable;
       typedef std::future<DescribeVolumesModificationsOutcome> DescribeVolumesModificationsOutcomeCallable;
       typedef std::future<DescribeVpcAttributeOutcome> DescribeVpcAttributeOutcomeCallable;
+      typedef std::future<DescribeVpcBlockPublicAccessExclusionsOutcome> DescribeVpcBlockPublicAccessExclusionsOutcomeCallable;
+      typedef std::future<DescribeVpcBlockPublicAccessOptionsOutcome> DescribeVpcBlockPublicAccessOptionsOutcomeCallable;
       typedef std::future<DescribeVpcClassicLinkOutcome> DescribeVpcClassicLinkOutcomeCallable;
       typedef std::future<DescribeVpcClassicLinkDnsSupportOutcome> DescribeVpcClassicLinkDnsSupportOutcomeCallable;
+      typedef std::future<DescribeVpcEndpointAssociationsOutcome> DescribeVpcEndpointAssociationsOutcomeCallable;
       typedef std::future<DescribeVpcEndpointConnectionNotificationsOutcome> DescribeVpcEndpointConnectionNotificationsOutcomeCallable;
       typedef std::future<DescribeVpcEndpointConnectionsOutcome> DescribeVpcEndpointConnectionsOutcomeCallable;
       typedef std::future<DescribeVpcEndpointServiceConfigurationsOutcome> DescribeVpcEndpointServiceConfigurationsOutcomeCallable;
@@ -2148,25 +2726,35 @@ namespace Aws
       typedef std::future<DetachVolumeOutcome> DetachVolumeOutcomeCallable;
       typedef std::future<DetachVpnGatewayOutcome> DetachVpnGatewayOutcomeCallable;
       typedef std::future<DisableAddressTransferOutcome> DisableAddressTransferOutcomeCallable;
+      typedef std::future<DisableAllowedImagesSettingsOutcome> DisableAllowedImagesSettingsOutcomeCallable;
       typedef std::future<DisableAwsNetworkPerformanceMetricSubscriptionOutcome> DisableAwsNetworkPerformanceMetricSubscriptionOutcomeCallable;
       typedef std::future<DisableEbsEncryptionByDefaultOutcome> DisableEbsEncryptionByDefaultOutcomeCallable;
       typedef std::future<DisableFastLaunchOutcome> DisableFastLaunchOutcomeCallable;
       typedef std::future<DisableFastSnapshotRestoresOutcome> DisableFastSnapshotRestoresOutcomeCallable;
+      typedef std::future<DisableImageOutcome> DisableImageOutcomeCallable;
+      typedef std::future<DisableImageBlockPublicAccessOutcome> DisableImageBlockPublicAccessOutcomeCallable;
       typedef std::future<DisableImageDeprecationOutcome> DisableImageDeprecationOutcomeCallable;
+      typedef std::future<DisableImageDeregistrationProtectionOutcome> DisableImageDeregistrationProtectionOutcomeCallable;
       typedef std::future<DisableIpamOrganizationAdminAccountOutcome> DisableIpamOrganizationAdminAccountOutcomeCallable;
+      typedef std::future<DisableRouteServerPropagationOutcome> DisableRouteServerPropagationOutcomeCallable;
       typedef std::future<DisableSerialConsoleAccessOutcome> DisableSerialConsoleAccessOutcomeCallable;
+      typedef std::future<DisableSnapshotBlockPublicAccessOutcome> DisableSnapshotBlockPublicAccessOutcomeCallable;
       typedef std::future<DisableTransitGatewayRouteTablePropagationOutcome> DisableTransitGatewayRouteTablePropagationOutcomeCallable;
       typedef std::future<DisableVgwRoutePropagationOutcome> DisableVgwRoutePropagationOutcomeCallable;
       typedef std::future<DisableVpcClassicLinkOutcome> DisableVpcClassicLinkOutcomeCallable;
       typedef std::future<DisableVpcClassicLinkDnsSupportOutcome> DisableVpcClassicLinkDnsSupportOutcomeCallable;
       typedef std::future<DisassociateAddressOutcome> DisassociateAddressOutcomeCallable;
+      typedef std::future<DisassociateCapacityReservationBillingOwnerOutcome> DisassociateCapacityReservationBillingOwnerOutcomeCallable;
       typedef std::future<DisassociateClientVpnTargetNetworkOutcome> DisassociateClientVpnTargetNetworkOutcomeCallable;
       typedef std::future<DisassociateEnclaveCertificateIamRoleOutcome> DisassociateEnclaveCertificateIamRoleOutcomeCallable;
       typedef std::future<DisassociateIamInstanceProfileOutcome> DisassociateIamInstanceProfileOutcomeCallable;
       typedef std::future<DisassociateInstanceEventWindowOutcome> DisassociateInstanceEventWindowOutcomeCallable;
+      typedef std::future<DisassociateIpamByoasnOutcome> DisassociateIpamByoasnOutcomeCallable;
       typedef std::future<DisassociateIpamResourceDiscoveryOutcome> DisassociateIpamResourceDiscoveryOutcomeCallable;
       typedef std::future<DisassociateNatGatewayAddressOutcome> DisassociateNatGatewayAddressOutcomeCallable;
+      typedef std::future<DisassociateRouteServerOutcome> DisassociateRouteServerOutcomeCallable;
       typedef std::future<DisassociateRouteTableOutcome> DisassociateRouteTableOutcomeCallable;
+      typedef std::future<DisassociateSecurityGroupVpcOutcome> DisassociateSecurityGroupVpcOutcomeCallable;
       typedef std::future<DisassociateSubnetCidrBlockOutcome> DisassociateSubnetCidrBlockOutcomeCallable;
       typedef std::future<DisassociateTransitGatewayMulticastDomainOutcome> DisassociateTransitGatewayMulticastDomainOutcomeCallable;
       typedef std::future<DisassociateTransitGatewayPolicyTableOutcome> DisassociateTransitGatewayPolicyTableOutcomeCallable;
@@ -2174,14 +2762,20 @@ namespace Aws
       typedef std::future<DisassociateTrunkInterfaceOutcome> DisassociateTrunkInterfaceOutcomeCallable;
       typedef std::future<DisassociateVpcCidrBlockOutcome> DisassociateVpcCidrBlockOutcomeCallable;
       typedef std::future<EnableAddressTransferOutcome> EnableAddressTransferOutcomeCallable;
+      typedef std::future<EnableAllowedImagesSettingsOutcome> EnableAllowedImagesSettingsOutcomeCallable;
       typedef std::future<EnableAwsNetworkPerformanceMetricSubscriptionOutcome> EnableAwsNetworkPerformanceMetricSubscriptionOutcomeCallable;
       typedef std::future<EnableEbsEncryptionByDefaultOutcome> EnableEbsEncryptionByDefaultOutcomeCallable;
       typedef std::future<EnableFastLaunchOutcome> EnableFastLaunchOutcomeCallable;
       typedef std::future<EnableFastSnapshotRestoresOutcome> EnableFastSnapshotRestoresOutcomeCallable;
+      typedef std::future<EnableImageOutcome> EnableImageOutcomeCallable;
+      typedef std::future<EnableImageBlockPublicAccessOutcome> EnableImageBlockPublicAccessOutcomeCallable;
       typedef std::future<EnableImageDeprecationOutcome> EnableImageDeprecationOutcomeCallable;
+      typedef std::future<EnableImageDeregistrationProtectionOutcome> EnableImageDeregistrationProtectionOutcomeCallable;
       typedef std::future<EnableIpamOrganizationAdminAccountOutcome> EnableIpamOrganizationAdminAccountOutcomeCallable;
       typedef std::future<EnableReachabilityAnalyzerOrganizationSharingOutcome> EnableReachabilityAnalyzerOrganizationSharingOutcomeCallable;
+      typedef std::future<EnableRouteServerPropagationOutcome> EnableRouteServerPropagationOutcomeCallable;
       typedef std::future<EnableSerialConsoleAccessOutcome> EnableSerialConsoleAccessOutcomeCallable;
+      typedef std::future<EnableSnapshotBlockPublicAccessOutcome> EnableSnapshotBlockPublicAccessOutcomeCallable;
       typedef std::future<EnableTransitGatewayRouteTablePropagationOutcome> EnableTransitGatewayRouteTablePropagationOutcomeCallable;
       typedef std::future<EnableVgwRoutePropagationOutcome> EnableVgwRoutePropagationOutcomeCallable;
       typedef std::future<EnableVolumeIOOutcome> EnableVolumeIOOutcomeCallable;
@@ -2191,6 +2785,9 @@ namespace Aws
       typedef std::future<ExportClientVpnClientConfigurationOutcome> ExportClientVpnClientConfigurationOutcomeCallable;
       typedef std::future<ExportImageOutcome> ExportImageOutcomeCallable;
       typedef std::future<ExportTransitGatewayRoutesOutcome> ExportTransitGatewayRoutesOutcomeCallable;
+      typedef std::future<ExportVerifiedAccessInstanceClientConfigurationOutcome> ExportVerifiedAccessInstanceClientConfigurationOutcomeCallable;
+      typedef std::future<GetActiveVpnTunnelStatusOutcome> GetActiveVpnTunnelStatusOutcomeCallable;
+      typedef std::future<GetAllowedImagesSettingsOutcome> GetAllowedImagesSettingsOutcomeCallable;
       typedef std::future<GetAssociatedEnclaveCertificateIamRolesOutcome> GetAssociatedEnclaveCertificateIamRolesOutcomeCallable;
       typedef std::future<GetAssociatedIpv6PoolCidrsOutcome> GetAssociatedIpv6PoolCidrsOutcomeCallable;
       typedef std::future<GetAwsNetworkPerformanceDataOutcome> GetAwsNetworkPerformanceDataOutcomeCallable;
@@ -2198,16 +2795,21 @@ namespace Aws
       typedef std::future<GetCoipPoolUsageOutcome> GetCoipPoolUsageOutcomeCallable;
       typedef std::future<GetConsoleOutputOutcome> GetConsoleOutputOutcomeCallable;
       typedef std::future<GetConsoleScreenshotOutcome> GetConsoleScreenshotOutcomeCallable;
+      typedef std::future<GetDeclarativePoliciesReportSummaryOutcome> GetDeclarativePoliciesReportSummaryOutcomeCallable;
       typedef std::future<GetDefaultCreditSpecificationOutcome> GetDefaultCreditSpecificationOutcomeCallable;
       typedef std::future<GetEbsDefaultKmsKeyIdOutcome> GetEbsDefaultKmsKeyIdOutcomeCallable;
       typedef std::future<GetEbsEncryptionByDefaultOutcome> GetEbsEncryptionByDefaultOutcomeCallable;
       typedef std::future<GetFlowLogsIntegrationTemplateOutcome> GetFlowLogsIntegrationTemplateOutcomeCallable;
       typedef std::future<GetGroupsForCapacityReservationOutcome> GetGroupsForCapacityReservationOutcomeCallable;
       typedef std::future<GetHostReservationPurchasePreviewOutcome> GetHostReservationPurchasePreviewOutcomeCallable;
+      typedef std::future<GetImageBlockPublicAccessStateOutcome> GetImageBlockPublicAccessStateOutcomeCallable;
+      typedef std::future<GetInstanceMetadataDefaultsOutcome> GetInstanceMetadataDefaultsOutcomeCallable;
+      typedef std::future<GetInstanceTpmEkPubOutcome> GetInstanceTpmEkPubOutcomeCallable;
       typedef std::future<GetInstanceTypesFromInstanceRequirementsOutcome> GetInstanceTypesFromInstanceRequirementsOutcomeCallable;
       typedef std::future<GetInstanceUefiDataOutcome> GetInstanceUefiDataOutcomeCallable;
       typedef std::future<GetIpamAddressHistoryOutcome> GetIpamAddressHistoryOutcomeCallable;
       typedef std::future<GetIpamDiscoveredAccountsOutcome> GetIpamDiscoveredAccountsOutcomeCallable;
+      typedef std::future<GetIpamDiscoveredPublicAddressesOutcome> GetIpamDiscoveredPublicAddressesOutcomeCallable;
       typedef std::future<GetIpamDiscoveredResourceCidrsOutcome> GetIpamDiscoveredResourceCidrsOutcomeCallable;
       typedef std::future<GetIpamPoolAllocationsOutcome> GetIpamPoolAllocationsOutcomeCallable;
       typedef std::future<GetIpamPoolCidrsOutcome> GetIpamPoolCidrsOutcomeCallable;
@@ -2219,7 +2821,12 @@ namespace Aws
       typedef std::future<GetNetworkInsightsAccessScopeContentOutcome> GetNetworkInsightsAccessScopeContentOutcomeCallable;
       typedef std::future<GetPasswordDataOutcome> GetPasswordDataOutcomeCallable;
       typedef std::future<GetReservedInstancesExchangeQuoteOutcome> GetReservedInstancesExchangeQuoteOutcomeCallable;
+      typedef std::future<GetRouteServerAssociationsOutcome> GetRouteServerAssociationsOutcomeCallable;
+      typedef std::future<GetRouteServerPropagationsOutcome> GetRouteServerPropagationsOutcomeCallable;
+      typedef std::future<GetRouteServerRoutingDatabaseOutcome> GetRouteServerRoutingDatabaseOutcomeCallable;
+      typedef std::future<GetSecurityGroupsForVpcOutcome> GetSecurityGroupsForVpcOutcomeCallable;
       typedef std::future<GetSerialConsoleAccessStatusOutcome> GetSerialConsoleAccessStatusOutcomeCallable;
+      typedef std::future<GetSnapshotBlockPublicAccessStateOutcome> GetSnapshotBlockPublicAccessStateOutcomeCallable;
       typedef std::future<GetSpotPlacementScoresOutcome> GetSpotPlacementScoresOutcomeCallable;
       typedef std::future<GetSubnetCidrReservationsOutcome> GetSubnetCidrReservationsOutcomeCallable;
       typedef std::future<GetTransitGatewayAttachmentPropagationsOutcome> GetTransitGatewayAttachmentPropagationsOutcomeCallable;
@@ -2230,6 +2837,7 @@ namespace Aws
       typedef std::future<GetTransitGatewayRouteTableAssociationsOutcome> GetTransitGatewayRouteTableAssociationsOutcomeCallable;
       typedef std::future<GetTransitGatewayRouteTablePropagationsOutcome> GetTransitGatewayRouteTablePropagationsOutcomeCallable;
       typedef std::future<GetVerifiedAccessEndpointPolicyOutcome> GetVerifiedAccessEndpointPolicyOutcomeCallable;
+      typedef std::future<GetVerifiedAccessEndpointTargetsOutcome> GetVerifiedAccessEndpointTargetsOutcomeCallable;
       typedef std::future<GetVerifiedAccessGroupPolicyOutcome> GetVerifiedAccessGroupPolicyOutcomeCallable;
       typedef std::future<GetVpnConnectionDeviceSampleConfigurationOutcome> GetVpnConnectionDeviceSampleConfigurationOutcomeCallable;
       typedef std::future<GetVpnConnectionDeviceTypesOutcome> GetVpnConnectionDeviceTypesOutcomeCallable;
@@ -2242,6 +2850,7 @@ namespace Aws
       typedef std::future<ImportVolumeOutcome> ImportVolumeOutcomeCallable;
       typedef std::future<ListImagesInRecycleBinOutcome> ListImagesInRecycleBinOutcomeCallable;
       typedef std::future<ListSnapshotsInRecycleBinOutcome> ListSnapshotsInRecycleBinOutcomeCallable;
+      typedef std::future<LockSnapshotOutcome> LockSnapshotOutcomeCallable;
       typedef std::future<ModifyAddressAttributeOutcome> ModifyAddressAttributeOutcomeCallable;
       typedef std::future<ModifyAvailabilityZoneGroupOutcome> ModifyAvailabilityZoneGroupOutcomeCallable;
       typedef std::future<ModifyCapacityReservationOutcome> ModifyCapacityReservationOutcomeCallable;
@@ -2257,11 +2866,15 @@ namespace Aws
       typedef std::future<ModifyImageAttributeOutcome> ModifyImageAttributeOutcomeCallable;
       typedef std::future<ModifyInstanceAttributeOutcome> ModifyInstanceAttributeOutcomeCallable;
       typedef std::future<ModifyInstanceCapacityReservationAttributesOutcome> ModifyInstanceCapacityReservationAttributesOutcomeCallable;
+      typedef std::future<ModifyInstanceConnectEndpointOutcome> ModifyInstanceConnectEndpointOutcomeCallable;
+      typedef std::future<ModifyInstanceCpuOptionsOutcome> ModifyInstanceCpuOptionsOutcomeCallable;
       typedef std::future<ModifyInstanceCreditSpecificationOutcome> ModifyInstanceCreditSpecificationOutcomeCallable;
       typedef std::future<ModifyInstanceEventStartTimeOutcome> ModifyInstanceEventStartTimeOutcomeCallable;
       typedef std::future<ModifyInstanceEventWindowOutcome> ModifyInstanceEventWindowOutcomeCallable;
       typedef std::future<ModifyInstanceMaintenanceOptionsOutcome> ModifyInstanceMaintenanceOptionsOutcomeCallable;
+      typedef std::future<ModifyInstanceMetadataDefaultsOutcome> ModifyInstanceMetadataDefaultsOutcomeCallable;
       typedef std::future<ModifyInstanceMetadataOptionsOutcome> ModifyInstanceMetadataOptionsOutcomeCallable;
+      typedef std::future<ModifyInstanceNetworkPerformanceOptionsOutcome> ModifyInstanceNetworkPerformanceOptionsOutcomeCallable;
       typedef std::future<ModifyInstancePlacementOutcome> ModifyInstancePlacementOutcomeCallable;
       typedef std::future<ModifyIpamOutcome> ModifyIpamOutcomeCallable;
       typedef std::future<ModifyIpamPoolOutcome> ModifyIpamPoolOutcomeCallable;
@@ -2273,7 +2886,9 @@ namespace Aws
       typedef std::future<ModifyManagedPrefixListOutcome> ModifyManagedPrefixListOutcomeCallable;
       typedef std::future<ModifyNetworkInterfaceAttributeOutcome> ModifyNetworkInterfaceAttributeOutcomeCallable;
       typedef std::future<ModifyPrivateDnsNameOptionsOutcome> ModifyPrivateDnsNameOptionsOutcomeCallable;
+      typedef std::future<ModifyPublicIpDnsNameOptionsOutcome> ModifyPublicIpDnsNameOptionsOutcomeCallable;
       typedef std::future<ModifyReservedInstancesOutcome> ModifyReservedInstancesOutcomeCallable;
+      typedef std::future<ModifyRouteServerOutcome> ModifyRouteServerOutcomeCallable;
       typedef std::future<ModifySecurityGroupRulesOutcome> ModifySecurityGroupRulesOutcomeCallable;
       typedef std::future<ModifySnapshotAttributeOutcome> ModifySnapshotAttributeOutcomeCallable;
       typedef std::future<ModifySnapshotTierOutcome> ModifySnapshotTierOutcomeCallable;
@@ -2295,6 +2910,8 @@ namespace Aws
       typedef std::future<ModifyVolumeOutcome> ModifyVolumeOutcomeCallable;
       typedef std::future<ModifyVolumeAttributeOutcome> ModifyVolumeAttributeOutcomeCallable;
       typedef std::future<ModifyVpcAttributeOutcome> ModifyVpcAttributeOutcomeCallable;
+      typedef std::future<ModifyVpcBlockPublicAccessExclusionOutcome> ModifyVpcBlockPublicAccessExclusionOutcomeCallable;
+      typedef std::future<ModifyVpcBlockPublicAccessOptionsOutcome> ModifyVpcBlockPublicAccessOptionsOutcomeCallable;
       typedef std::future<ModifyVpcEndpointOutcome> ModifyVpcEndpointOutcomeCallable;
       typedef std::future<ModifyVpcEndpointConnectionNotificationOutcome> ModifyVpcEndpointConnectionNotificationOutcomeCallable;
       typedef std::future<ModifyVpcEndpointServiceConfigurationOutcome> ModifyVpcEndpointServiceConfigurationOutcomeCallable;
@@ -2309,9 +2926,13 @@ namespace Aws
       typedef std::future<MonitorInstancesOutcome> MonitorInstancesOutcomeCallable;
       typedef std::future<MoveAddressToVpcOutcome> MoveAddressToVpcOutcomeCallable;
       typedef std::future<MoveByoipCidrToIpamOutcome> MoveByoipCidrToIpamOutcomeCallable;
+      typedef std::future<MoveCapacityReservationInstancesOutcome> MoveCapacityReservationInstancesOutcomeCallable;
       typedef std::future<ProvisionByoipCidrOutcome> ProvisionByoipCidrOutcomeCallable;
+      typedef std::future<ProvisionIpamByoasnOutcome> ProvisionIpamByoasnOutcomeCallable;
       typedef std::future<ProvisionIpamPoolCidrOutcome> ProvisionIpamPoolCidrOutcomeCallable;
       typedef std::future<ProvisionPublicIpv4PoolCidrOutcome> ProvisionPublicIpv4PoolCidrOutcomeCallable;
+      typedef std::future<PurchaseCapacityBlockOutcome> PurchaseCapacityBlockOutcomeCallable;
+      typedef std::future<PurchaseCapacityBlockExtensionOutcome> PurchaseCapacityBlockExtensionOutcomeCallable;
       typedef std::future<PurchaseHostReservationOutcome> PurchaseHostReservationOutcomeCallable;
       typedef std::future<PurchaseReservedInstancesOfferingOutcome> PurchaseReservedInstancesOfferingOutcomeCallable;
       typedef std::future<PurchaseScheduledInstancesOutcome> PurchaseScheduledInstancesOutcomeCallable;
@@ -2320,6 +2941,7 @@ namespace Aws
       typedef std::future<RegisterInstanceEventNotificationAttributesOutcome> RegisterInstanceEventNotificationAttributesOutcomeCallable;
       typedef std::future<RegisterTransitGatewayMulticastGroupMembersOutcome> RegisterTransitGatewayMulticastGroupMembersOutcomeCallable;
       typedef std::future<RegisterTransitGatewayMulticastGroupSourcesOutcome> RegisterTransitGatewayMulticastGroupSourcesOutcomeCallable;
+      typedef std::future<RejectCapacityReservationBillingOwnershipOutcome> RejectCapacityReservationBillingOwnershipOutcomeCallable;
       typedef std::future<RejectTransitGatewayMulticastDomainAssociationsOutcome> RejectTransitGatewayMulticastDomainAssociationsOutcomeCallable;
       typedef std::future<RejectTransitGatewayPeeringAttachmentOutcome> RejectTransitGatewayPeeringAttachmentOutcomeCallable;
       typedef std::future<RejectTransitGatewayVpcAttachmentOutcome> RejectTransitGatewayVpcAttachmentOutcomeCallable;
@@ -2329,6 +2951,7 @@ namespace Aws
       typedef std::future<ReleaseHostsOutcome> ReleaseHostsOutcomeCallable;
       typedef std::future<ReleaseIpamPoolAllocationOutcome> ReleaseIpamPoolAllocationOutcomeCallable;
       typedef std::future<ReplaceIamInstanceProfileAssociationOutcome> ReplaceIamInstanceProfileAssociationOutcomeCallable;
+      typedef std::future<ReplaceImageCriteriaInAllowedImagesSettingsOutcome> ReplaceImageCriteriaInAllowedImagesSettingsOutcomeCallable;
       typedef std::future<ReplaceNetworkAclAssociationOutcome> ReplaceNetworkAclAssociationOutcomeCallable;
       typedef std::future<ReplaceNetworkAclEntryOutcome> ReplaceNetworkAclEntryOutcomeCallable;
       typedef std::future<ReplaceRouteOutcome> ReplaceRouteOutcomeCallable;
@@ -2359,6 +2982,7 @@ namespace Aws
       typedef std::future<SearchTransitGatewayMulticastGroupsOutcome> SearchTransitGatewayMulticastGroupsOutcomeCallable;
       typedef std::future<SearchTransitGatewayRoutesOutcome> SearchTransitGatewayRoutesOutcomeCallable;
       typedef std::future<SendDiagnosticInterruptOutcome> SendDiagnosticInterruptOutcomeCallable;
+      typedef std::future<StartDeclarativePoliciesReportOutcome> StartDeclarativePoliciesReportOutcomeCallable;
       typedef std::future<StartInstancesOutcome> StartInstancesOutcomeCallable;
       typedef std::future<StartNetworkInsightsAccessScopeAnalysisOutcome> StartNetworkInsightsAccessScopeAnalysisOutcomeCallable;
       typedef std::future<StartNetworkInsightsAnalysisOutcome> StartNetworkInsightsAnalysisOutcomeCallable;
@@ -2369,6 +2993,7 @@ namespace Aws
       typedef std::future<UnassignIpv6AddressesOutcome> UnassignIpv6AddressesOutcomeCallable;
       typedef std::future<UnassignPrivateIpAddressesOutcome> UnassignPrivateIpAddressesOutcomeCallable;
       typedef std::future<UnassignPrivateNatGatewayAddressOutcome> UnassignPrivateNatGatewayAddressOutcomeCallable;
+      typedef std::future<UnlockSnapshotOutcome> UnlockSnapshotOutcomeCallable;
       typedef std::future<UnmonitorInstancesOutcome> UnmonitorInstancesOutcomeCallable;
       typedef std::future<UpdateSecurityGroupRuleDescriptionsEgressOutcome> UpdateSecurityGroupRuleDescriptionsEgressOutcomeCallable;
       typedef std::future<UpdateSecurityGroupRuleDescriptionsIngressOutcome> UpdateSecurityGroupRuleDescriptionsIngressOutcomeCallable;
@@ -2380,6 +3005,7 @@ namespace Aws
 
     /* Service model async handlers definitions */
     typedef std::function<void(const EC2Client*, const Model::AcceptAddressTransferRequest&, const Model::AcceptAddressTransferOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AcceptAddressTransferResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::AcceptCapacityReservationBillingOwnershipRequest&, const Model::AcceptCapacityReservationBillingOwnershipOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AcceptCapacityReservationBillingOwnershipResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::AcceptReservedInstancesExchangeQuoteRequest&, const Model::AcceptReservedInstancesExchangeQuoteOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AcceptReservedInstancesExchangeQuoteResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::AcceptTransitGatewayMulticastDomainAssociationsRequest&, const Model::AcceptTransitGatewayMulticastDomainAssociationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AcceptTransitGatewayMulticastDomainAssociationsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::AcceptTransitGatewayPeeringAttachmentRequest&, const Model::AcceptTransitGatewayPeeringAttachmentOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AcceptTransitGatewayPeeringAttachmentResponseReceivedHandler;
@@ -2395,14 +3021,18 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::AssignPrivateIpAddressesRequest&, const Model::AssignPrivateIpAddressesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssignPrivateIpAddressesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::AssignPrivateNatGatewayAddressRequest&, const Model::AssignPrivateNatGatewayAddressOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssignPrivateNatGatewayAddressResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::AssociateAddressRequest&, const Model::AssociateAddressOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssociateAddressResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::AssociateCapacityReservationBillingOwnerRequest&, const Model::AssociateCapacityReservationBillingOwnerOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssociateCapacityReservationBillingOwnerResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::AssociateClientVpnTargetNetworkRequest&, const Model::AssociateClientVpnTargetNetworkOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssociateClientVpnTargetNetworkResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::AssociateDhcpOptionsRequest&, const Model::AssociateDhcpOptionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssociateDhcpOptionsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::AssociateEnclaveCertificateIamRoleRequest&, const Model::AssociateEnclaveCertificateIamRoleOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssociateEnclaveCertificateIamRoleResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::AssociateIamInstanceProfileRequest&, const Model::AssociateIamInstanceProfileOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssociateIamInstanceProfileResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::AssociateInstanceEventWindowRequest&, const Model::AssociateInstanceEventWindowOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssociateInstanceEventWindowResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::AssociateIpamByoasnRequest&, const Model::AssociateIpamByoasnOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssociateIpamByoasnResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::AssociateIpamResourceDiscoveryRequest&, const Model::AssociateIpamResourceDiscoveryOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssociateIpamResourceDiscoveryResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::AssociateNatGatewayAddressRequest&, const Model::AssociateNatGatewayAddressOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssociateNatGatewayAddressResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::AssociateRouteServerRequest&, const Model::AssociateRouteServerOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssociateRouteServerResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::AssociateRouteTableRequest&, const Model::AssociateRouteTableOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssociateRouteTableResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::AssociateSecurityGroupVpcRequest&, const Model::AssociateSecurityGroupVpcOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssociateSecurityGroupVpcResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::AssociateSubnetCidrBlockRequest&, const Model::AssociateSubnetCidrBlockOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssociateSubnetCidrBlockResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::AssociateTransitGatewayMulticastDomainRequest&, const Model::AssociateTransitGatewayMulticastDomainOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssociateTransitGatewayMulticastDomainResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::AssociateTransitGatewayPolicyTableRequest&, const Model::AssociateTransitGatewayPolicyTableOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssociateTransitGatewayPolicyTableResponseReceivedHandler;
@@ -2423,6 +3053,7 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::CancelCapacityReservationRequest&, const Model::CancelCapacityReservationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CancelCapacityReservationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CancelCapacityReservationFleetsRequest&, const Model::CancelCapacityReservationFleetsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CancelCapacityReservationFleetsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CancelConversionTaskRequest&, const Model::CancelConversionTaskOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CancelConversionTaskResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::CancelDeclarativePoliciesReportRequest&, const Model::CancelDeclarativePoliciesReportOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CancelDeclarativePoliciesReportResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CancelExportTaskRequest&, const Model::CancelExportTaskOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CancelExportTaskResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CancelImageLaunchPermissionRequest&, const Model::CancelImageLaunchPermissionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CancelImageLaunchPermissionResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CancelImportTaskRequest&, const Model::CancelImportTaskOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CancelImportTaskResponseReceivedHandler;
@@ -2434,6 +3065,7 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::CopyImageRequest&, const Model::CopyImageOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CopyImageResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CopySnapshotRequest&, const Model::CopySnapshotOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CopySnapshotResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateCapacityReservationRequest&, const Model::CreateCapacityReservationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateCapacityReservationResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::CreateCapacityReservationBySplittingRequest&, const Model::CreateCapacityReservationBySplittingOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateCapacityReservationBySplittingResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateCapacityReservationFleetRequest&, const Model::CreateCapacityReservationFleetOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateCapacityReservationFleetResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateCarrierGatewayRequest&, const Model::CreateCarrierGatewayOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateCarrierGatewayResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateClientVpnEndpointRequest&, const Model::CreateClientVpnEndpointOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateClientVpnEndpointResponseReceivedHandler;
@@ -2443,16 +3075,20 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::CreateCustomerGatewayRequest&, const Model::CreateCustomerGatewayOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateCustomerGatewayResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateDefaultSubnetRequest&, const Model::CreateDefaultSubnetOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateDefaultSubnetResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateDefaultVpcRequest&, const Model::CreateDefaultVpcOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateDefaultVpcResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::CreateDelegateMacVolumeOwnershipTaskRequest&, const Model::CreateDelegateMacVolumeOwnershipTaskOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateDelegateMacVolumeOwnershipTaskResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateDhcpOptionsRequest&, const Model::CreateDhcpOptionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateDhcpOptionsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateEgressOnlyInternetGatewayRequest&, const Model::CreateEgressOnlyInternetGatewayOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateEgressOnlyInternetGatewayResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateFleetRequest&, const Model::CreateFleetOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateFleetResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateFlowLogsRequest&, const Model::CreateFlowLogsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateFlowLogsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateFpgaImageRequest&, const Model::CreateFpgaImageOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateFpgaImageResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateImageRequest&, const Model::CreateImageOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateImageResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::CreateImageUsageReportRequest&, const Model::CreateImageUsageReportOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateImageUsageReportResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::CreateInstanceConnectEndpointRequest&, const Model::CreateInstanceConnectEndpointOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateInstanceConnectEndpointResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateInstanceEventWindowRequest&, const Model::CreateInstanceEventWindowOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateInstanceEventWindowResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateInstanceExportTaskRequest&, const Model::CreateInstanceExportTaskOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateInstanceExportTaskResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateInternetGatewayRequest&, const Model::CreateInternetGatewayOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateInternetGatewayResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateIpamRequest&, const Model::CreateIpamOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateIpamResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::CreateIpamExternalResourceVerificationTokenRequest&, const Model::CreateIpamExternalResourceVerificationTokenOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateIpamExternalResourceVerificationTokenResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateIpamPoolRequest&, const Model::CreateIpamPoolOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateIpamPoolResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateIpamResourceDiscoveryRequest&, const Model::CreateIpamResourceDiscoveryOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateIpamResourceDiscoveryResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateIpamScopeRequest&, const Model::CreateIpamScopeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateIpamScopeResponseReceivedHandler;
@@ -2463,6 +3099,9 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::CreateLocalGatewayRouteTableRequest&, const Model::CreateLocalGatewayRouteTableOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateLocalGatewayRouteTableResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest&, const Model::CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateLocalGatewayRouteTableVpcAssociationRequest&, const Model::CreateLocalGatewayRouteTableVpcAssociationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateLocalGatewayRouteTableVpcAssociationResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::CreateLocalGatewayVirtualInterfaceRequest&, const Model::CreateLocalGatewayVirtualInterfaceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateLocalGatewayVirtualInterfaceResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::CreateLocalGatewayVirtualInterfaceGroupRequest&, const Model::CreateLocalGatewayVirtualInterfaceGroupOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateLocalGatewayVirtualInterfaceGroupResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::CreateMacSystemIntegrityProtectionModificationTaskRequest&, const Model::CreateMacSystemIntegrityProtectionModificationTaskOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateMacSystemIntegrityProtectionModificationTaskResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateManagedPrefixListRequest&, const Model::CreateManagedPrefixListOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateManagedPrefixListResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateNatGatewayRequest&, const Model::CreateNatGatewayOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateNatGatewayResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateNetworkAclRequest&, const Model::CreateNetworkAclOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateNetworkAclResponseReceivedHandler;
@@ -2477,6 +3116,9 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::CreateReservedInstancesListingRequest&, const Model::CreateReservedInstancesListingOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateReservedInstancesListingResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateRestoreImageTaskRequest&, const Model::CreateRestoreImageTaskOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateRestoreImageTaskResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateRouteRequest&, const Model::CreateRouteOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateRouteResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::CreateRouteServerRequest&, const Model::CreateRouteServerOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateRouteServerResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::CreateRouteServerEndpointRequest&, const Model::CreateRouteServerEndpointOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateRouteServerEndpointResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::CreateRouteServerPeerRequest&, const Model::CreateRouteServerPeerOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateRouteServerPeerResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateRouteTableRequest&, const Model::CreateRouteTableOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateRouteTableResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateSecurityGroupRequest&, const Model::CreateSecurityGroupOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateSecurityGroupResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateSnapshotRequest&, const Model::CreateSnapshotOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateSnapshotResponseReceivedHandler;
@@ -2507,6 +3149,7 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::CreateVerifiedAccessTrustProviderRequest&, const Model::CreateVerifiedAccessTrustProviderOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateVerifiedAccessTrustProviderResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateVolumeRequest&, const Model::CreateVolumeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateVolumeResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateVpcRequest&, const Model::CreateVpcOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateVpcResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::CreateVpcBlockPublicAccessExclusionRequest&, const Model::CreateVpcBlockPublicAccessExclusionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateVpcBlockPublicAccessExclusionResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateVpcEndpointRequest&, const Model::CreateVpcEndpointOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateVpcEndpointResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateVpcEndpointConnectionNotificationRequest&, const Model::CreateVpcEndpointConnectionNotificationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateVpcEndpointConnectionNotificationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::CreateVpcEndpointServiceConfigurationRequest&, const Model::CreateVpcEndpointServiceConfigurationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateVpcEndpointServiceConfigurationResponseReceivedHandler;
@@ -2525,9 +3168,12 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::DeleteFleetsRequest&, const Model::DeleteFleetsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteFleetsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteFlowLogsRequest&, const Model::DeleteFlowLogsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteFlowLogsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteFpgaImageRequest&, const Model::DeleteFpgaImageOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteFpgaImageResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DeleteImageUsageReportRequest&, const Model::DeleteImageUsageReportOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteImageUsageReportResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DeleteInstanceConnectEndpointRequest&, const Model::DeleteInstanceConnectEndpointOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteInstanceConnectEndpointResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteInstanceEventWindowRequest&, const Model::DeleteInstanceEventWindowOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteInstanceEventWindowResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteInternetGatewayRequest&, const Model::DeleteInternetGatewayOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteInternetGatewayResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteIpamRequest&, const Model::DeleteIpamOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteIpamResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DeleteIpamExternalResourceVerificationTokenRequest&, const Model::DeleteIpamExternalResourceVerificationTokenOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteIpamExternalResourceVerificationTokenResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteIpamPoolRequest&, const Model::DeleteIpamPoolOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteIpamPoolResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteIpamResourceDiscoveryRequest&, const Model::DeleteIpamResourceDiscoveryOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteIpamResourceDiscoveryResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteIpamScopeRequest&, const Model::DeleteIpamScopeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteIpamScopeResponseReceivedHandler;
@@ -2538,6 +3184,8 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::DeleteLocalGatewayRouteTableRequest&, const Model::DeleteLocalGatewayRouteTableOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteLocalGatewayRouteTableResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest&, const Model::DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteLocalGatewayRouteTableVpcAssociationRequest&, const Model::DeleteLocalGatewayRouteTableVpcAssociationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteLocalGatewayRouteTableVpcAssociationResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DeleteLocalGatewayVirtualInterfaceRequest&, const Model::DeleteLocalGatewayVirtualInterfaceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteLocalGatewayVirtualInterfaceResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DeleteLocalGatewayVirtualInterfaceGroupRequest&, const Model::DeleteLocalGatewayVirtualInterfaceGroupOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteLocalGatewayVirtualInterfaceGroupResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteManagedPrefixListRequest&, const Model::DeleteManagedPrefixListOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteManagedPrefixListResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteNatGatewayRequest&, const Model::DeleteNatGatewayOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteNatGatewayResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteNetworkAclRequest&, const Model::DeleteNetworkAclOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteNetworkAclResponseReceivedHandler;
@@ -2552,6 +3200,9 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::DeletePublicIpv4PoolRequest&, const Model::DeletePublicIpv4PoolOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeletePublicIpv4PoolResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteQueuedReservedInstancesRequest&, const Model::DeleteQueuedReservedInstancesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteQueuedReservedInstancesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteRouteRequest&, const Model::DeleteRouteOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteRouteResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DeleteRouteServerRequest&, const Model::DeleteRouteServerOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteRouteServerResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DeleteRouteServerEndpointRequest&, const Model::DeleteRouteServerEndpointOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteRouteServerEndpointResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DeleteRouteServerPeerRequest&, const Model::DeleteRouteServerPeerOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteRouteServerPeerResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteRouteTableRequest&, const Model::DeleteRouteTableOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteRouteTableResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteSecurityGroupRequest&, const Model::DeleteSecurityGroupOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteSecurityGroupResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteSnapshotRequest&, const Model::DeleteSnapshotOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteSnapshotResponseReceivedHandler;
@@ -2580,6 +3231,7 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::DeleteVerifiedAccessTrustProviderRequest&, const Model::DeleteVerifiedAccessTrustProviderOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteVerifiedAccessTrustProviderResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteVolumeRequest&, const Model::DeleteVolumeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteVolumeResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteVpcRequest&, const Model::DeleteVpcOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteVpcResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DeleteVpcBlockPublicAccessExclusionRequest&, const Model::DeleteVpcBlockPublicAccessExclusionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteVpcBlockPublicAccessExclusionResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteVpcEndpointConnectionNotificationsRequest&, const Model::DeleteVpcEndpointConnectionNotificationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteVpcEndpointConnectionNotificationsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteVpcEndpointServiceConfigurationsRequest&, const Model::DeleteVpcEndpointServiceConfigurationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteVpcEndpointServiceConfigurationsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteVpcEndpointsRequest&, const Model::DeleteVpcEndpointsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteVpcEndpointsResponseReceivedHandler;
@@ -2588,6 +3240,7 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::DeleteVpnConnectionRouteRequest&, const Model::DeleteVpnConnectionRouteOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteVpnConnectionRouteResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeleteVpnGatewayRequest&, const Model::DeleteVpnGatewayOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteVpnGatewayResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeprovisionByoipCidrRequest&, const Model::DeprovisionByoipCidrOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeprovisionByoipCidrResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DeprovisionIpamByoasnRequest&, const Model::DeprovisionIpamByoasnOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeprovisionIpamByoasnResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeprovisionIpamPoolCidrRequest&, const Model::DeprovisionIpamPoolCidrOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeprovisionIpamPoolCidrResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeprovisionPublicIpv4PoolCidrRequest&, const Model::DeprovisionPublicIpv4PoolCidrOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeprovisionPublicIpv4PoolCidrResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DeregisterImageRequest&, const Model::DeregisterImageOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeregisterImageResponseReceivedHandler;
@@ -2603,6 +3256,12 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::DescribeAwsNetworkPerformanceMetricSubscriptionsRequest&, const Model::DescribeAwsNetworkPerformanceMetricSubscriptionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeAwsNetworkPerformanceMetricSubscriptionsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeBundleTasksRequest&, const Model::DescribeBundleTasksOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeBundleTasksResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeByoipCidrsRequest&, const Model::DescribeByoipCidrsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeByoipCidrsResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeCapacityBlockExtensionHistoryRequest&, const Model::DescribeCapacityBlockExtensionHistoryOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeCapacityBlockExtensionHistoryResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeCapacityBlockExtensionOfferingsRequest&, const Model::DescribeCapacityBlockExtensionOfferingsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeCapacityBlockExtensionOfferingsResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeCapacityBlockOfferingsRequest&, const Model::DescribeCapacityBlockOfferingsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeCapacityBlockOfferingsResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeCapacityBlockStatusRequest&, const Model::DescribeCapacityBlockStatusOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeCapacityBlockStatusResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeCapacityBlocksRequest&, const Model::DescribeCapacityBlocksOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeCapacityBlocksResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeCapacityReservationBillingRequestsRequest&, const Model::DescribeCapacityReservationBillingRequestsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeCapacityReservationBillingRequestsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeCapacityReservationFleetsRequest&, const Model::DescribeCapacityReservationFleetsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeCapacityReservationFleetsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeCapacityReservationsRequest&, const Model::DescribeCapacityReservationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeCapacityReservationsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeCarrierGatewaysRequest&, const Model::DescribeCarrierGatewaysOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeCarrierGatewaysResponseReceivedHandler;
@@ -2615,6 +3274,7 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::DescribeCoipPoolsRequest&, const Model::DescribeCoipPoolsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeCoipPoolsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeConversionTasksRequest&, const Model::DescribeConversionTasksOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeConversionTasksResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeCustomerGatewaysRequest&, const Model::DescribeCustomerGatewaysOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeCustomerGatewaysResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeDeclarativePoliciesReportsRequest&, const Model::DescribeDeclarativePoliciesReportsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeDeclarativePoliciesReportsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeDhcpOptionsRequest&, const Model::DescribeDhcpOptionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeDhcpOptionsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeEgressOnlyInternetGatewaysRequest&, const Model::DescribeEgressOnlyInternetGatewaysOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeEgressOnlyInternetGatewaysResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeElasticGpusRequest&, const Model::DescribeElasticGpusOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeElasticGpusResponseReceivedHandler;
@@ -2635,18 +3295,26 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::DescribeIdFormatRequest&, const Model::DescribeIdFormatOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeIdFormatResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeIdentityIdFormatRequest&, const Model::DescribeIdentityIdFormatOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeIdentityIdFormatResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeImageAttributeRequest&, const Model::DescribeImageAttributeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeImageAttributeResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeImageReferencesRequest&, const Model::DescribeImageReferencesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeImageReferencesResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeImageUsageReportEntriesRequest&, const Model::DescribeImageUsageReportEntriesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeImageUsageReportEntriesResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeImageUsageReportsRequest&, const Model::DescribeImageUsageReportsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeImageUsageReportsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeImagesRequest&, const Model::DescribeImagesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeImagesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeImportImageTasksRequest&, const Model::DescribeImportImageTasksOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeImportImageTasksResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeImportSnapshotTasksRequest&, const Model::DescribeImportSnapshotTasksOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeImportSnapshotTasksResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeInstanceAttributeRequest&, const Model::DescribeInstanceAttributeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInstanceAttributeResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeInstanceConnectEndpointsRequest&, const Model::DescribeInstanceConnectEndpointsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInstanceConnectEndpointsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeInstanceCreditSpecificationsRequest&, const Model::DescribeInstanceCreditSpecificationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInstanceCreditSpecificationsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeInstanceEventNotificationAttributesRequest&, const Model::DescribeInstanceEventNotificationAttributesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInstanceEventNotificationAttributesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeInstanceEventWindowsRequest&, const Model::DescribeInstanceEventWindowsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInstanceEventWindowsResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeInstanceImageMetadataRequest&, const Model::DescribeInstanceImageMetadataOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInstanceImageMetadataResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeInstanceStatusRequest&, const Model::DescribeInstanceStatusOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInstanceStatusResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeInstanceTopologyRequest&, const Model::DescribeInstanceTopologyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInstanceTopologyResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeInstanceTypeOfferingsRequest&, const Model::DescribeInstanceTypeOfferingsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInstanceTypeOfferingsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeInstanceTypesRequest&, const Model::DescribeInstanceTypesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInstanceTypesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeInstancesRequest&, const Model::DescribeInstancesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInstancesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeInternetGatewaysRequest&, const Model::DescribeInternetGatewaysOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInternetGatewaysResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeIpamByoasnRequest&, const Model::DescribeIpamByoasnOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeIpamByoasnResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeIpamExternalResourceVerificationTokensRequest&, const Model::DescribeIpamExternalResourceVerificationTokensOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeIpamExternalResourceVerificationTokensResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeIpamPoolsRequest&, const Model::DescribeIpamPoolsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeIpamPoolsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeIpamResourceDiscoveriesRequest&, const Model::DescribeIpamResourceDiscoveriesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeIpamResourceDiscoveriesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeIpamResourceDiscoveryAssociationsRequest&, const Model::DescribeIpamResourceDiscoveryAssociationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeIpamResourceDiscoveryAssociationsResponseReceivedHandler;
@@ -2662,6 +3330,9 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::DescribeLocalGatewayVirtualInterfaceGroupsRequest&, const Model::DescribeLocalGatewayVirtualInterfaceGroupsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeLocalGatewayVirtualInterfaceGroupsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeLocalGatewayVirtualInterfacesRequest&, const Model::DescribeLocalGatewayVirtualInterfacesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeLocalGatewayVirtualInterfacesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeLocalGatewaysRequest&, const Model::DescribeLocalGatewaysOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeLocalGatewaysResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeLockedSnapshotsRequest&, const Model::DescribeLockedSnapshotsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeLockedSnapshotsResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeMacHostsRequest&, const Model::DescribeMacHostsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeMacHostsResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeMacModificationTasksRequest&, const Model::DescribeMacModificationTasksOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeMacModificationTasksResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeManagedPrefixListsRequest&, const Model::DescribeManagedPrefixListsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeManagedPrefixListsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeMovingAddressesRequest&, const Model::DescribeMovingAddressesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeMovingAddressesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeNatGatewaysRequest&, const Model::DescribeNatGatewaysOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeNatGatewaysResponseReceivedHandler;
@@ -2673,6 +3344,7 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::DescribeNetworkInterfaceAttributeRequest&, const Model::DescribeNetworkInterfaceAttributeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeNetworkInterfaceAttributeResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeNetworkInterfacePermissionsRequest&, const Model::DescribeNetworkInterfacePermissionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeNetworkInterfacePermissionsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeNetworkInterfacesRequest&, const Model::DescribeNetworkInterfacesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeNetworkInterfacesResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeOutpostLagsRequest&, const Model::DescribeOutpostLagsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeOutpostLagsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribePlacementGroupsRequest&, const Model::DescribePlacementGroupsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribePlacementGroupsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribePrefixListsRequest&, const Model::DescribePrefixListsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribePrefixListsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribePrincipalIdFormatRequest&, const Model::DescribePrincipalIdFormatOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribePrincipalIdFormatResponseReceivedHandler;
@@ -2683,12 +3355,17 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::DescribeReservedInstancesListingsRequest&, const Model::DescribeReservedInstancesListingsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeReservedInstancesListingsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeReservedInstancesModificationsRequest&, const Model::DescribeReservedInstancesModificationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeReservedInstancesModificationsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeReservedInstancesOfferingsRequest&, const Model::DescribeReservedInstancesOfferingsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeReservedInstancesOfferingsResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeRouteServerEndpointsRequest&, const Model::DescribeRouteServerEndpointsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeRouteServerEndpointsResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeRouteServerPeersRequest&, const Model::DescribeRouteServerPeersOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeRouteServerPeersResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeRouteServersRequest&, const Model::DescribeRouteServersOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeRouteServersResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeRouteTablesRequest&, const Model::DescribeRouteTablesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeRouteTablesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeScheduledInstanceAvailabilityRequest&, const Model::DescribeScheduledInstanceAvailabilityOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeScheduledInstanceAvailabilityResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeScheduledInstancesRequest&, const Model::DescribeScheduledInstancesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeScheduledInstancesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeSecurityGroupReferencesRequest&, const Model::DescribeSecurityGroupReferencesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSecurityGroupReferencesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeSecurityGroupRulesRequest&, const Model::DescribeSecurityGroupRulesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSecurityGroupRulesResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeSecurityGroupVpcAssociationsRequest&, const Model::DescribeSecurityGroupVpcAssociationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSecurityGroupVpcAssociationsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeSecurityGroupsRequest&, const Model::DescribeSecurityGroupsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSecurityGroupsResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeServiceLinkVirtualInterfacesRequest&, const Model::DescribeServiceLinkVirtualInterfacesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeServiceLinkVirtualInterfacesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeSnapshotAttributeRequest&, const Model::DescribeSnapshotAttributeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSnapshotAttributeResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeSnapshotTierStatusRequest&, const Model::DescribeSnapshotTierStatusOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSnapshotTierStatusResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeSnapshotsRequest&, const Model::DescribeSnapshotsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSnapshotsResponseReceivedHandler;
@@ -2702,6 +3379,7 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::DescribeStoreImageTasksRequest&, const Model::DescribeStoreImageTasksOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeStoreImageTasksResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeSubnetsRequest&, const Model::DescribeSubnetsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSubnetsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeTagsRequest&, const Model::DescribeTagsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeTagsResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeTrafficMirrorFilterRulesRequest&, const Model::DescribeTrafficMirrorFilterRulesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeTrafficMirrorFilterRulesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeTrafficMirrorFiltersRequest&, const Model::DescribeTrafficMirrorFiltersOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeTrafficMirrorFiltersResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeTrafficMirrorSessionsRequest&, const Model::DescribeTrafficMirrorSessionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeTrafficMirrorSessionsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeTrafficMirrorTargetsRequest&, const Model::DescribeTrafficMirrorTargetsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeTrafficMirrorTargetsResponseReceivedHandler;
@@ -2726,8 +3404,11 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::DescribeVolumesRequest&, const Model::DescribeVolumesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeVolumesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeVolumesModificationsRequest&, const Model::DescribeVolumesModificationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeVolumesModificationsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeVpcAttributeRequest&, const Model::DescribeVpcAttributeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeVpcAttributeResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeVpcBlockPublicAccessExclusionsRequest&, const Model::DescribeVpcBlockPublicAccessExclusionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeVpcBlockPublicAccessExclusionsResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeVpcBlockPublicAccessOptionsRequest&, const Model::DescribeVpcBlockPublicAccessOptionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeVpcBlockPublicAccessOptionsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeVpcClassicLinkRequest&, const Model::DescribeVpcClassicLinkOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeVpcClassicLinkResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeVpcClassicLinkDnsSupportRequest&, const Model::DescribeVpcClassicLinkDnsSupportOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeVpcClassicLinkDnsSupportResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeVpcEndpointAssociationsRequest&, const Model::DescribeVpcEndpointAssociationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeVpcEndpointAssociationsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeVpcEndpointConnectionNotificationsRequest&, const Model::DescribeVpcEndpointConnectionNotificationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeVpcEndpointConnectionNotificationsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeVpcEndpointConnectionsRequest&, const Model::DescribeVpcEndpointConnectionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeVpcEndpointConnectionsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeVpcEndpointServiceConfigurationsRequest&, const Model::DescribeVpcEndpointServiceConfigurationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeVpcEndpointServiceConfigurationsResponseReceivedHandler;
@@ -2745,25 +3426,35 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::DetachVolumeRequest&, const Model::DetachVolumeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DetachVolumeResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DetachVpnGatewayRequest&, const Model::DetachVpnGatewayOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DetachVpnGatewayResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisableAddressTransferRequest&, const Model::DisableAddressTransferOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableAddressTransferResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DisableAllowedImagesSettingsRequest&, const Model::DisableAllowedImagesSettingsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableAllowedImagesSettingsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisableAwsNetworkPerformanceMetricSubscriptionRequest&, const Model::DisableAwsNetworkPerformanceMetricSubscriptionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableAwsNetworkPerformanceMetricSubscriptionResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisableEbsEncryptionByDefaultRequest&, const Model::DisableEbsEncryptionByDefaultOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableEbsEncryptionByDefaultResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisableFastLaunchRequest&, const Model::DisableFastLaunchOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableFastLaunchResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisableFastSnapshotRestoresRequest&, const Model::DisableFastSnapshotRestoresOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableFastSnapshotRestoresResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DisableImageRequest&, const Model::DisableImageOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableImageResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DisableImageBlockPublicAccessRequest&, const Model::DisableImageBlockPublicAccessOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableImageBlockPublicAccessResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisableImageDeprecationRequest&, const Model::DisableImageDeprecationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableImageDeprecationResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DisableImageDeregistrationProtectionRequest&, const Model::DisableImageDeregistrationProtectionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableImageDeregistrationProtectionResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisableIpamOrganizationAdminAccountRequest&, const Model::DisableIpamOrganizationAdminAccountOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableIpamOrganizationAdminAccountResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DisableRouteServerPropagationRequest&, const Model::DisableRouteServerPropagationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableRouteServerPropagationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisableSerialConsoleAccessRequest&, const Model::DisableSerialConsoleAccessOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableSerialConsoleAccessResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DisableSnapshotBlockPublicAccessRequest&, const Model::DisableSnapshotBlockPublicAccessOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableSnapshotBlockPublicAccessResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisableTransitGatewayRouteTablePropagationRequest&, const Model::DisableTransitGatewayRouteTablePropagationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableTransitGatewayRouteTablePropagationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisableVgwRoutePropagationRequest&, const Model::DisableVgwRoutePropagationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableVgwRoutePropagationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisableVpcClassicLinkRequest&, const Model::DisableVpcClassicLinkOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableVpcClassicLinkResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisableVpcClassicLinkDnsSupportRequest&, const Model::DisableVpcClassicLinkDnsSupportOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableVpcClassicLinkDnsSupportResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisassociateAddressRequest&, const Model::DisassociateAddressOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateAddressResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DisassociateCapacityReservationBillingOwnerRequest&, const Model::DisassociateCapacityReservationBillingOwnerOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateCapacityReservationBillingOwnerResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisassociateClientVpnTargetNetworkRequest&, const Model::DisassociateClientVpnTargetNetworkOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateClientVpnTargetNetworkResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisassociateEnclaveCertificateIamRoleRequest&, const Model::DisassociateEnclaveCertificateIamRoleOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateEnclaveCertificateIamRoleResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisassociateIamInstanceProfileRequest&, const Model::DisassociateIamInstanceProfileOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateIamInstanceProfileResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisassociateInstanceEventWindowRequest&, const Model::DisassociateInstanceEventWindowOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateInstanceEventWindowResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DisassociateIpamByoasnRequest&, const Model::DisassociateIpamByoasnOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateIpamByoasnResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisassociateIpamResourceDiscoveryRequest&, const Model::DisassociateIpamResourceDiscoveryOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateIpamResourceDiscoveryResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisassociateNatGatewayAddressRequest&, const Model::DisassociateNatGatewayAddressOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateNatGatewayAddressResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DisassociateRouteServerRequest&, const Model::DisassociateRouteServerOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateRouteServerResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisassociateRouteTableRequest&, const Model::DisassociateRouteTableOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateRouteTableResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DisassociateSecurityGroupVpcRequest&, const Model::DisassociateSecurityGroupVpcOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateSecurityGroupVpcResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisassociateSubnetCidrBlockRequest&, const Model::DisassociateSubnetCidrBlockOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateSubnetCidrBlockResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisassociateTransitGatewayMulticastDomainRequest&, const Model::DisassociateTransitGatewayMulticastDomainOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateTransitGatewayMulticastDomainResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisassociateTransitGatewayPolicyTableRequest&, const Model::DisassociateTransitGatewayPolicyTableOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateTransitGatewayPolicyTableResponseReceivedHandler;
@@ -2771,14 +3462,20 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::DisassociateTrunkInterfaceRequest&, const Model::DisassociateTrunkInterfaceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateTrunkInterfaceResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DisassociateVpcCidrBlockRequest&, const Model::DisassociateVpcCidrBlockOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateVpcCidrBlockResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::EnableAddressTransferRequest&, const Model::EnableAddressTransferOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableAddressTransferResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::EnableAllowedImagesSettingsRequest&, const Model::EnableAllowedImagesSettingsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableAllowedImagesSettingsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::EnableAwsNetworkPerformanceMetricSubscriptionRequest&, const Model::EnableAwsNetworkPerformanceMetricSubscriptionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableAwsNetworkPerformanceMetricSubscriptionResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::EnableEbsEncryptionByDefaultRequest&, const Model::EnableEbsEncryptionByDefaultOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableEbsEncryptionByDefaultResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::EnableFastLaunchRequest&, const Model::EnableFastLaunchOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableFastLaunchResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::EnableFastSnapshotRestoresRequest&, const Model::EnableFastSnapshotRestoresOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableFastSnapshotRestoresResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::EnableImageRequest&, const Model::EnableImageOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableImageResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::EnableImageBlockPublicAccessRequest&, const Model::EnableImageBlockPublicAccessOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableImageBlockPublicAccessResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::EnableImageDeprecationRequest&, const Model::EnableImageDeprecationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableImageDeprecationResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::EnableImageDeregistrationProtectionRequest&, const Model::EnableImageDeregistrationProtectionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableImageDeregistrationProtectionResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::EnableIpamOrganizationAdminAccountRequest&, const Model::EnableIpamOrganizationAdminAccountOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableIpamOrganizationAdminAccountResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::EnableReachabilityAnalyzerOrganizationSharingRequest&, const Model::EnableReachabilityAnalyzerOrganizationSharingOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableReachabilityAnalyzerOrganizationSharingResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::EnableRouteServerPropagationRequest&, const Model::EnableRouteServerPropagationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableRouteServerPropagationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::EnableSerialConsoleAccessRequest&, const Model::EnableSerialConsoleAccessOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableSerialConsoleAccessResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::EnableSnapshotBlockPublicAccessRequest&, const Model::EnableSnapshotBlockPublicAccessOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableSnapshotBlockPublicAccessResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::EnableTransitGatewayRouteTablePropagationRequest&, const Model::EnableTransitGatewayRouteTablePropagationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableTransitGatewayRouteTablePropagationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::EnableVgwRoutePropagationRequest&, const Model::EnableVgwRoutePropagationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableVgwRoutePropagationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::EnableVolumeIORequest&, const Model::EnableVolumeIOOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableVolumeIOResponseReceivedHandler;
@@ -2788,6 +3485,9 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::ExportClientVpnClientConfigurationRequest&, const Model::ExportClientVpnClientConfigurationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ExportClientVpnClientConfigurationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ExportImageRequest&, const Model::ExportImageOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ExportImageResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ExportTransitGatewayRoutesRequest&, const Model::ExportTransitGatewayRoutesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ExportTransitGatewayRoutesResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::ExportVerifiedAccessInstanceClientConfigurationRequest&, const Model::ExportVerifiedAccessInstanceClientConfigurationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ExportVerifiedAccessInstanceClientConfigurationResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::GetActiveVpnTunnelStatusRequest&, const Model::GetActiveVpnTunnelStatusOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetActiveVpnTunnelStatusResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::GetAllowedImagesSettingsRequest&, const Model::GetAllowedImagesSettingsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetAllowedImagesSettingsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetAssociatedEnclaveCertificateIamRolesRequest&, const Model::GetAssociatedEnclaveCertificateIamRolesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetAssociatedEnclaveCertificateIamRolesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetAssociatedIpv6PoolCidrsRequest&, const Model::GetAssociatedIpv6PoolCidrsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetAssociatedIpv6PoolCidrsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetAwsNetworkPerformanceDataRequest&, const Model::GetAwsNetworkPerformanceDataOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetAwsNetworkPerformanceDataResponseReceivedHandler;
@@ -2795,16 +3495,21 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::GetCoipPoolUsageRequest&, const Model::GetCoipPoolUsageOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetCoipPoolUsageResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetConsoleOutputRequest&, const Model::GetConsoleOutputOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetConsoleOutputResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetConsoleScreenshotRequest&, const Model::GetConsoleScreenshotOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetConsoleScreenshotResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::GetDeclarativePoliciesReportSummaryRequest&, const Model::GetDeclarativePoliciesReportSummaryOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetDeclarativePoliciesReportSummaryResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetDefaultCreditSpecificationRequest&, const Model::GetDefaultCreditSpecificationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetDefaultCreditSpecificationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetEbsDefaultKmsKeyIdRequest&, const Model::GetEbsDefaultKmsKeyIdOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetEbsDefaultKmsKeyIdResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetEbsEncryptionByDefaultRequest&, const Model::GetEbsEncryptionByDefaultOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetEbsEncryptionByDefaultResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetFlowLogsIntegrationTemplateRequest&, const Model::GetFlowLogsIntegrationTemplateOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetFlowLogsIntegrationTemplateResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetGroupsForCapacityReservationRequest&, const Model::GetGroupsForCapacityReservationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetGroupsForCapacityReservationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetHostReservationPurchasePreviewRequest&, const Model::GetHostReservationPurchasePreviewOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetHostReservationPurchasePreviewResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::GetImageBlockPublicAccessStateRequest&, const Model::GetImageBlockPublicAccessStateOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetImageBlockPublicAccessStateResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::GetInstanceMetadataDefaultsRequest&, const Model::GetInstanceMetadataDefaultsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetInstanceMetadataDefaultsResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::GetInstanceTpmEkPubRequest&, const Model::GetInstanceTpmEkPubOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetInstanceTpmEkPubResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetInstanceTypesFromInstanceRequirementsRequest&, const Model::GetInstanceTypesFromInstanceRequirementsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetInstanceTypesFromInstanceRequirementsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetInstanceUefiDataRequest&, const Model::GetInstanceUefiDataOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetInstanceUefiDataResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetIpamAddressHistoryRequest&, const Model::GetIpamAddressHistoryOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetIpamAddressHistoryResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetIpamDiscoveredAccountsRequest&, const Model::GetIpamDiscoveredAccountsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetIpamDiscoveredAccountsResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::GetIpamDiscoveredPublicAddressesRequest&, const Model::GetIpamDiscoveredPublicAddressesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetIpamDiscoveredPublicAddressesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetIpamDiscoveredResourceCidrsRequest&, const Model::GetIpamDiscoveredResourceCidrsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetIpamDiscoveredResourceCidrsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetIpamPoolAllocationsRequest&, const Model::GetIpamPoolAllocationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetIpamPoolAllocationsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetIpamPoolCidrsRequest&, const Model::GetIpamPoolCidrsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetIpamPoolCidrsResponseReceivedHandler;
@@ -2816,7 +3521,12 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::GetNetworkInsightsAccessScopeContentRequest&, const Model::GetNetworkInsightsAccessScopeContentOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetNetworkInsightsAccessScopeContentResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetPasswordDataRequest&, const Model::GetPasswordDataOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetPasswordDataResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetReservedInstancesExchangeQuoteRequest&, const Model::GetReservedInstancesExchangeQuoteOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetReservedInstancesExchangeQuoteResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::GetRouteServerAssociationsRequest&, const Model::GetRouteServerAssociationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetRouteServerAssociationsResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::GetRouteServerPropagationsRequest&, const Model::GetRouteServerPropagationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetRouteServerPropagationsResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::GetRouteServerRoutingDatabaseRequest&, const Model::GetRouteServerRoutingDatabaseOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetRouteServerRoutingDatabaseResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::GetSecurityGroupsForVpcRequest&, const Model::GetSecurityGroupsForVpcOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetSecurityGroupsForVpcResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetSerialConsoleAccessStatusRequest&, const Model::GetSerialConsoleAccessStatusOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetSerialConsoleAccessStatusResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::GetSnapshotBlockPublicAccessStateRequest&, const Model::GetSnapshotBlockPublicAccessStateOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetSnapshotBlockPublicAccessStateResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetSpotPlacementScoresRequest&, const Model::GetSpotPlacementScoresOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetSpotPlacementScoresResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetSubnetCidrReservationsRequest&, const Model::GetSubnetCidrReservationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetSubnetCidrReservationsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetTransitGatewayAttachmentPropagationsRequest&, const Model::GetTransitGatewayAttachmentPropagationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetTransitGatewayAttachmentPropagationsResponseReceivedHandler;
@@ -2827,6 +3537,7 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::GetTransitGatewayRouteTableAssociationsRequest&, const Model::GetTransitGatewayRouteTableAssociationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetTransitGatewayRouteTableAssociationsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetTransitGatewayRouteTablePropagationsRequest&, const Model::GetTransitGatewayRouteTablePropagationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetTransitGatewayRouteTablePropagationsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetVerifiedAccessEndpointPolicyRequest&, const Model::GetVerifiedAccessEndpointPolicyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetVerifiedAccessEndpointPolicyResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::GetVerifiedAccessEndpointTargetsRequest&, const Model::GetVerifiedAccessEndpointTargetsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetVerifiedAccessEndpointTargetsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetVerifiedAccessGroupPolicyRequest&, const Model::GetVerifiedAccessGroupPolicyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetVerifiedAccessGroupPolicyResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetVpnConnectionDeviceSampleConfigurationRequest&, const Model::GetVpnConnectionDeviceSampleConfigurationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetVpnConnectionDeviceSampleConfigurationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetVpnConnectionDeviceTypesRequest&, const Model::GetVpnConnectionDeviceTypesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetVpnConnectionDeviceTypesResponseReceivedHandler;
@@ -2839,6 +3550,7 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::ImportVolumeRequest&, const Model::ImportVolumeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ImportVolumeResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ListImagesInRecycleBinRequest&, const Model::ListImagesInRecycleBinOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListImagesInRecycleBinResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ListSnapshotsInRecycleBinRequest&, const Model::ListSnapshotsInRecycleBinOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListSnapshotsInRecycleBinResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::LockSnapshotRequest&, const Model::LockSnapshotOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > LockSnapshotResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyAddressAttributeRequest&, const Model::ModifyAddressAttributeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyAddressAttributeResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyAvailabilityZoneGroupRequest&, const Model::ModifyAvailabilityZoneGroupOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyAvailabilityZoneGroupResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyCapacityReservationRequest&, const Model::ModifyCapacityReservationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyCapacityReservationResponseReceivedHandler;
@@ -2854,11 +3566,15 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::ModifyImageAttributeRequest&, const Model::ModifyImageAttributeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyImageAttributeResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyInstanceAttributeRequest&, const Model::ModifyInstanceAttributeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyInstanceAttributeResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyInstanceCapacityReservationAttributesRequest&, const Model::ModifyInstanceCapacityReservationAttributesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyInstanceCapacityReservationAttributesResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::ModifyInstanceConnectEndpointRequest&, const Model::ModifyInstanceConnectEndpointOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyInstanceConnectEndpointResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::ModifyInstanceCpuOptionsRequest&, const Model::ModifyInstanceCpuOptionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyInstanceCpuOptionsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyInstanceCreditSpecificationRequest&, const Model::ModifyInstanceCreditSpecificationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyInstanceCreditSpecificationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyInstanceEventStartTimeRequest&, const Model::ModifyInstanceEventStartTimeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyInstanceEventStartTimeResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyInstanceEventWindowRequest&, const Model::ModifyInstanceEventWindowOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyInstanceEventWindowResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyInstanceMaintenanceOptionsRequest&, const Model::ModifyInstanceMaintenanceOptionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyInstanceMaintenanceOptionsResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::ModifyInstanceMetadataDefaultsRequest&, const Model::ModifyInstanceMetadataDefaultsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyInstanceMetadataDefaultsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyInstanceMetadataOptionsRequest&, const Model::ModifyInstanceMetadataOptionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyInstanceMetadataOptionsResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::ModifyInstanceNetworkPerformanceOptionsRequest&, const Model::ModifyInstanceNetworkPerformanceOptionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyInstanceNetworkPerformanceOptionsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyInstancePlacementRequest&, const Model::ModifyInstancePlacementOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyInstancePlacementResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyIpamRequest&, const Model::ModifyIpamOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyIpamResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyIpamPoolRequest&, const Model::ModifyIpamPoolOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyIpamPoolResponseReceivedHandler;
@@ -2870,7 +3586,9 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::ModifyManagedPrefixListRequest&, const Model::ModifyManagedPrefixListOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyManagedPrefixListResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyNetworkInterfaceAttributeRequest&, const Model::ModifyNetworkInterfaceAttributeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyNetworkInterfaceAttributeResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyPrivateDnsNameOptionsRequest&, const Model::ModifyPrivateDnsNameOptionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyPrivateDnsNameOptionsResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::ModifyPublicIpDnsNameOptionsRequest&, const Model::ModifyPublicIpDnsNameOptionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyPublicIpDnsNameOptionsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyReservedInstancesRequest&, const Model::ModifyReservedInstancesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyReservedInstancesResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::ModifyRouteServerRequest&, const Model::ModifyRouteServerOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyRouteServerResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifySecurityGroupRulesRequest&, const Model::ModifySecurityGroupRulesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifySecurityGroupRulesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifySnapshotAttributeRequest&, const Model::ModifySnapshotAttributeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifySnapshotAttributeResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifySnapshotTierRequest&, const Model::ModifySnapshotTierOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifySnapshotTierResponseReceivedHandler;
@@ -2892,6 +3610,8 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::ModifyVolumeRequest&, const Model::ModifyVolumeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyVolumeResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyVolumeAttributeRequest&, const Model::ModifyVolumeAttributeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyVolumeAttributeResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyVpcAttributeRequest&, const Model::ModifyVpcAttributeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyVpcAttributeResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::ModifyVpcBlockPublicAccessExclusionRequest&, const Model::ModifyVpcBlockPublicAccessExclusionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyVpcBlockPublicAccessExclusionResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::ModifyVpcBlockPublicAccessOptionsRequest&, const Model::ModifyVpcBlockPublicAccessOptionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyVpcBlockPublicAccessOptionsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyVpcEndpointRequest&, const Model::ModifyVpcEndpointOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyVpcEndpointResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyVpcEndpointConnectionNotificationRequest&, const Model::ModifyVpcEndpointConnectionNotificationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyVpcEndpointConnectionNotificationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ModifyVpcEndpointServiceConfigurationRequest&, const Model::ModifyVpcEndpointServiceConfigurationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ModifyVpcEndpointServiceConfigurationResponseReceivedHandler;
@@ -2906,9 +3626,13 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::MonitorInstancesRequest&, const Model::MonitorInstancesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > MonitorInstancesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::MoveAddressToVpcRequest&, const Model::MoveAddressToVpcOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > MoveAddressToVpcResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::MoveByoipCidrToIpamRequest&, const Model::MoveByoipCidrToIpamOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > MoveByoipCidrToIpamResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::MoveCapacityReservationInstancesRequest&, const Model::MoveCapacityReservationInstancesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > MoveCapacityReservationInstancesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ProvisionByoipCidrRequest&, const Model::ProvisionByoipCidrOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ProvisionByoipCidrResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::ProvisionIpamByoasnRequest&, const Model::ProvisionIpamByoasnOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ProvisionIpamByoasnResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ProvisionIpamPoolCidrRequest&, const Model::ProvisionIpamPoolCidrOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ProvisionIpamPoolCidrResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ProvisionPublicIpv4PoolCidrRequest&, const Model::ProvisionPublicIpv4PoolCidrOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ProvisionPublicIpv4PoolCidrResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::PurchaseCapacityBlockRequest&, const Model::PurchaseCapacityBlockOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > PurchaseCapacityBlockResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::PurchaseCapacityBlockExtensionRequest&, const Model::PurchaseCapacityBlockExtensionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > PurchaseCapacityBlockExtensionResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::PurchaseHostReservationRequest&, const Model::PurchaseHostReservationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > PurchaseHostReservationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::PurchaseReservedInstancesOfferingRequest&, const Model::PurchaseReservedInstancesOfferingOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > PurchaseReservedInstancesOfferingResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::PurchaseScheduledInstancesRequest&, const Model::PurchaseScheduledInstancesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > PurchaseScheduledInstancesResponseReceivedHandler;
@@ -2917,6 +3641,7 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::RegisterInstanceEventNotificationAttributesRequest&, const Model::RegisterInstanceEventNotificationAttributesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RegisterInstanceEventNotificationAttributesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::RegisterTransitGatewayMulticastGroupMembersRequest&, const Model::RegisterTransitGatewayMulticastGroupMembersOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RegisterTransitGatewayMulticastGroupMembersResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::RegisterTransitGatewayMulticastGroupSourcesRequest&, const Model::RegisterTransitGatewayMulticastGroupSourcesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RegisterTransitGatewayMulticastGroupSourcesResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::RejectCapacityReservationBillingOwnershipRequest&, const Model::RejectCapacityReservationBillingOwnershipOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RejectCapacityReservationBillingOwnershipResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::RejectTransitGatewayMulticastDomainAssociationsRequest&, const Model::RejectTransitGatewayMulticastDomainAssociationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RejectTransitGatewayMulticastDomainAssociationsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::RejectTransitGatewayPeeringAttachmentRequest&, const Model::RejectTransitGatewayPeeringAttachmentOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RejectTransitGatewayPeeringAttachmentResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::RejectTransitGatewayVpcAttachmentRequest&, const Model::RejectTransitGatewayVpcAttachmentOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RejectTransitGatewayVpcAttachmentResponseReceivedHandler;
@@ -2926,6 +3651,7 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::ReleaseHostsRequest&, const Model::ReleaseHostsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ReleaseHostsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ReleaseIpamPoolAllocationRequest&, const Model::ReleaseIpamPoolAllocationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ReleaseIpamPoolAllocationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ReplaceIamInstanceProfileAssociationRequest&, const Model::ReplaceIamInstanceProfileAssociationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ReplaceIamInstanceProfileAssociationResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::ReplaceImageCriteriaInAllowedImagesSettingsRequest&, const Model::ReplaceImageCriteriaInAllowedImagesSettingsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ReplaceImageCriteriaInAllowedImagesSettingsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ReplaceNetworkAclAssociationRequest&, const Model::ReplaceNetworkAclAssociationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ReplaceNetworkAclAssociationResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ReplaceNetworkAclEntryRequest&, const Model::ReplaceNetworkAclEntryOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ReplaceNetworkAclEntryResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ReplaceRouteRequest&, const Model::ReplaceRouteOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ReplaceRouteResponseReceivedHandler;
@@ -2956,6 +3682,7 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::SearchTransitGatewayMulticastGroupsRequest&, const Model::SearchTransitGatewayMulticastGroupsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > SearchTransitGatewayMulticastGroupsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::SearchTransitGatewayRoutesRequest&, const Model::SearchTransitGatewayRoutesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > SearchTransitGatewayRoutesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::SendDiagnosticInterruptRequest&, const Model::SendDiagnosticInterruptOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > SendDiagnosticInterruptResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::StartDeclarativePoliciesReportRequest&, const Model::StartDeclarativePoliciesReportOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StartDeclarativePoliciesReportResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::StartInstancesRequest&, const Model::StartInstancesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StartInstancesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::StartNetworkInsightsAccessScopeAnalysisRequest&, const Model::StartNetworkInsightsAccessScopeAnalysisOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StartNetworkInsightsAccessScopeAnalysisResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::StartNetworkInsightsAnalysisRequest&, const Model::StartNetworkInsightsAnalysisOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StartNetworkInsightsAnalysisResponseReceivedHandler;
@@ -2966,6 +3693,7 @@ namespace Aws
     typedef std::function<void(const EC2Client*, const Model::UnassignIpv6AddressesRequest&, const Model::UnassignIpv6AddressesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UnassignIpv6AddressesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::UnassignPrivateIpAddressesRequest&, const Model::UnassignPrivateIpAddressesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UnassignPrivateIpAddressesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::UnassignPrivateNatGatewayAddressRequest&, const Model::UnassignPrivateNatGatewayAddressOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UnassignPrivateNatGatewayAddressResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::UnlockSnapshotRequest&, const Model::UnlockSnapshotOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UnlockSnapshotResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::UnmonitorInstancesRequest&, const Model::UnmonitorInstancesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UnmonitorInstancesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::UpdateSecurityGroupRuleDescriptionsEgressRequest&, const Model::UpdateSecurityGroupRuleDescriptionsEgressOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateSecurityGroupRuleDescriptionsEgressResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::UpdateSecurityGroupRuleDescriptionsIngressRequest&, const Model::UpdateSecurityGroupRuleDescriptionsIngressOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateSecurityGroupRuleDescriptionsIngressResponseReceivedHandler;

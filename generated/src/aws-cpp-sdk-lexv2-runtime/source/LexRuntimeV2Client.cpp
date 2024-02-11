@@ -17,6 +17,7 @@
 #include <aws/core/utils/DNS.h>
 #include <aws/core/utils/logging/LogMacros.h>
 #include <aws/core/utils/logging/ErrorMacros.h>
+#include <aws/core/client/AWSClientEventStreamingAsyncTask.h>
 #include <aws/core/utils/event/EventStream.h>
 
 #include <aws/lexv2-runtime/LexRuntimeV2Client.h>
@@ -29,6 +30,9 @@
 #include <aws/lexv2-runtime/model/RecognizeUtteranceRequest.h>
 #include <aws/lexv2-runtime/model/StartConversationRequest.h>
 
+#include <smithy/tracing/TracingUtils.h>
+
+
 using namespace Aws;
 using namespace Aws::Auth;
 using namespace Aws::Client;
@@ -36,22 +40,30 @@ using namespace Aws::LexRuntimeV2;
 using namespace Aws::LexRuntimeV2::Model;
 using namespace Aws::Http;
 using namespace Aws::Utils::Json;
+using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* LexRuntimeV2Client::SERVICE_NAME = "lex";
-const char* LexRuntimeV2Client::ALLOCATION_TAG = "LexRuntimeV2Client";
+namespace Aws
+{
+  namespace LexRuntimeV2
+  {
+    const char SERVICE_NAME[] = "lex";
+    const char ALLOCATION_TAG[] = "LexRuntimeV2Client";
+  }
+}
+const char* LexRuntimeV2Client::GetServiceName() {return SERVICE_NAME;}
+const char* LexRuntimeV2Client::GetAllocationTag() {return ALLOCATION_TAG;}
 
 LexRuntimeV2Client::LexRuntimeV2Client(const LexRuntimeV2::LexRuntimeV2ClientConfiguration& clientConfiguration,
                                        std::shared_ptr<LexRuntimeV2EndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<Aws::Auth::DefaultAuthSignerProvider>(ALLOCATION_TAG,
-                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                                                   SERVICE_NAME,
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<LexRuntimeV2ErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<LexRuntimeV2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -66,8 +78,7 @@ LexRuntimeV2Client::LexRuntimeV2Client(const AWSCredentials& credentials,
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<LexRuntimeV2ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<LexRuntimeV2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -82,8 +93,7 @@ LexRuntimeV2Client::LexRuntimeV2Client(const std::shared_ptr<AWSCredentialsProvi
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<LexRuntimeV2ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<LexRuntimeV2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -92,12 +102,11 @@ LexRuntimeV2Client::LexRuntimeV2Client(const std::shared_ptr<AWSCredentialsProvi
   LexRuntimeV2Client::LexRuntimeV2Client(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<Aws::Auth::DefaultAuthSignerProvider>(ALLOCATION_TAG,
-                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                                                   SERVICE_NAME,
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<LexRuntimeV2ErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<LexRuntimeV2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -112,7 +121,6 @@ LexRuntimeV2Client::LexRuntimeV2Client(const AWSCredentials& credentials,
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<LexRuntimeV2ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<LexRuntimeV2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -127,7 +135,6 @@ LexRuntimeV2Client::LexRuntimeV2Client(const std::shared_ptr<AWSCredentialsProvi
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<LexRuntimeV2ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<LexRuntimeV2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -136,6 +143,7 @@ LexRuntimeV2Client::LexRuntimeV2Client(const std::shared_ptr<AWSCredentialsProvi
     /* End of legacy constructors due deprecation */
 LexRuntimeV2Client::~LexRuntimeV2Client()
 {
+  ShutdownSdkClient(this, -1);
 }
 
 std::shared_ptr<LexRuntimeV2EndpointProviderBase>& LexRuntimeV2Client::accessEndpointProvider()
@@ -146,6 +154,14 @@ std::shared_ptr<LexRuntimeV2EndpointProviderBase>& LexRuntimeV2Client::accessEnd
 void LexRuntimeV2Client::init(const LexRuntimeV2::LexRuntimeV2ClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("Lex Runtime V2");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }
@@ -158,6 +174,7 @@ void LexRuntimeV2Client::OverrideEndpoint(const Aws::String& endpoint)
 
 DeleteSessionOutcome LexRuntimeV2Client::DeleteSession(const DeleteSessionRequest& request) const
 {
+  AWS_OPERATION_GUARD(DeleteSession);
   AWS_OPERATION_CHECK_PTR(m_endpointProvider, DeleteSession, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
   if (!request.BotIdHasBeenSet())
   {
@@ -179,21 +196,39 @@ DeleteSessionOutcome LexRuntimeV2Client::DeleteSession(const DeleteSessionReques
     AWS_LOGSTREAM_ERROR("DeleteSession", "Required field: SessionId, is not set");
     return DeleteSessionOutcome(Aws::Client::AWSError<LexRuntimeV2Errors>(LexRuntimeV2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [SessionId]", false));
   }
-  ResolveEndpointOutcome endpointResolutionOutcome = m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams());
-  AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, DeleteSession, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/bots/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotId());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/botAliases/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotAliasId());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/botLocales/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetLocaleId());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/sessions/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetSessionId());
-  return DeleteSessionOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_DELETE, Aws::Auth::SIGV4_SIGNER));
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, DeleteSession, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, DeleteSession, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".DeleteSession",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<DeleteSessionOutcome>(
+    [&]()-> DeleteSessionOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, DeleteSession, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/bots/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/botAliases/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotAliasId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/botLocales/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetLocaleId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/sessions/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetSessionId());
+      return DeleteSessionOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_DELETE, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
 }
 
 GetSessionOutcome LexRuntimeV2Client::GetSession(const GetSessionRequest& request) const
 {
+  AWS_OPERATION_GUARD(GetSession);
   AWS_OPERATION_CHECK_PTR(m_endpointProvider, GetSession, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
   if (!request.BotIdHasBeenSet())
   {
@@ -215,21 +250,39 @@ GetSessionOutcome LexRuntimeV2Client::GetSession(const GetSessionRequest& reques
     AWS_LOGSTREAM_ERROR("GetSession", "Required field: SessionId, is not set");
     return GetSessionOutcome(Aws::Client::AWSError<LexRuntimeV2Errors>(LexRuntimeV2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [SessionId]", false));
   }
-  ResolveEndpointOutcome endpointResolutionOutcome = m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams());
-  AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, GetSession, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/bots/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotId());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/botAliases/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotAliasId());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/botLocales/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetLocaleId());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/sessions/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetSessionId());
-  return GetSessionOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, GetSession, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, GetSession, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".GetSession",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<GetSessionOutcome>(
+    [&]()-> GetSessionOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, GetSession, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/bots/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/botAliases/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotAliasId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/botLocales/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetLocaleId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/sessions/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetSessionId());
+      return GetSessionOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
 }
 
 PutSessionOutcome LexRuntimeV2Client::PutSession(const PutSessionRequest& request) const
 {
+  AWS_OPERATION_GUARD(PutSession);
   AWS_OPERATION_CHECK_PTR(m_endpointProvider, PutSession, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
   if (!request.BotIdHasBeenSet())
   {
@@ -251,21 +304,39 @@ PutSessionOutcome LexRuntimeV2Client::PutSession(const PutSessionRequest& reques
     AWS_LOGSTREAM_ERROR("PutSession", "Required field: SessionId, is not set");
     return PutSessionOutcome(Aws::Client::AWSError<LexRuntimeV2Errors>(LexRuntimeV2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [SessionId]", false));
   }
-  ResolveEndpointOutcome endpointResolutionOutcome = m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams());
-  AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, PutSession, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/bots/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotId());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/botAliases/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotAliasId());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/botLocales/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetLocaleId());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/sessions/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetSessionId());
-  return PutSessionOutcome(MakeRequestWithUnparsedResponse(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST));
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, PutSession, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, PutSession, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".PutSession",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<PutSessionOutcome>(
+    [&]()-> PutSessionOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, PutSession, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/bots/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/botAliases/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotAliasId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/botLocales/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetLocaleId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/sessions/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetSessionId());
+      return PutSessionOutcome(MakeRequestWithUnparsedResponse(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
 }
 
 RecognizeTextOutcome LexRuntimeV2Client::RecognizeText(const RecognizeTextRequest& request) const
 {
+  AWS_OPERATION_GUARD(RecognizeText);
   AWS_OPERATION_CHECK_PTR(m_endpointProvider, RecognizeText, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
   if (!request.BotIdHasBeenSet())
   {
@@ -287,22 +358,40 @@ RecognizeTextOutcome LexRuntimeV2Client::RecognizeText(const RecognizeTextReques
     AWS_LOGSTREAM_ERROR("RecognizeText", "Required field: SessionId, is not set");
     return RecognizeTextOutcome(Aws::Client::AWSError<LexRuntimeV2Errors>(LexRuntimeV2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [SessionId]", false));
   }
-  ResolveEndpointOutcome endpointResolutionOutcome = m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams());
-  AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, RecognizeText, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/bots/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotId());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/botAliases/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotAliasId());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/botLocales/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetLocaleId());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/sessions/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetSessionId());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/text");
-  return RecognizeTextOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, RecognizeText, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, RecognizeText, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".RecognizeText",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<RecognizeTextOutcome>(
+    [&]()-> RecognizeTextOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, RecognizeText, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/bots/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/botAliases/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotAliasId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/botLocales/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetLocaleId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/sessions/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetSessionId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/text");
+      return RecognizeTextOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
 }
 
 RecognizeUtteranceOutcome LexRuntimeV2Client::RecognizeUtterance(const RecognizeUtteranceRequest& request) const
 {
+  AWS_OPERATION_GUARD(RecognizeUtterance);
   AWS_OPERATION_CHECK_PTR(m_endpointProvider, RecognizeUtterance, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
   if (!request.BotIdHasBeenSet())
   {
@@ -329,18 +418,35 @@ RecognizeUtteranceOutcome LexRuntimeV2Client::RecognizeUtterance(const Recognize
     AWS_LOGSTREAM_ERROR("RecognizeUtterance", "Required field: RequestContentType, is not set");
     return RecognizeUtteranceOutcome(Aws::Client::AWSError<LexRuntimeV2Errors>(LexRuntimeV2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [RequestContentType]", false));
   }
-  ResolveEndpointOutcome endpointResolutionOutcome = m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams());
-  AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, RecognizeUtterance, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/bots/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotId());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/botAliases/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotAliasId());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/botLocales/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetLocaleId());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/sessions/");
-  endpointResolutionOutcome.GetResult().AddPathSegment(request.GetSessionId());
-  endpointResolutionOutcome.GetResult().AddPathSegments("/utterance");
-  return RecognizeUtteranceOutcome(MakeRequestWithUnparsedResponse(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST));
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, RecognizeUtterance, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, RecognizeUtterance, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".RecognizeUtterance",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<RecognizeUtteranceOutcome>(
+    [&]()-> RecognizeUtteranceOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, RecognizeUtterance, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/bots/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/botAliases/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotAliasId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/botLocales/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetLocaleId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/sessions/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetSessionId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/utterance");
+      return RecognizeUtteranceOutcome(MakeRequestWithUnparsedResponse(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
 }
 
 void LexRuntimeV2Client::StartConversationAsync(Model::StartConversationRequest& request,
@@ -348,6 +454,7 @@ void LexRuntimeV2Client::StartConversationAsync(Model::StartConversationRequest&
                 const StartConversationResponseReceivedHandler& handler,
                 const std::shared_ptr<const Aws::Client::AsyncCallerContext>& handlerContext) const
 {
+  AWS_ASYNC_OPERATION_GUARD(StartConversation);
   if (!m_endpointProvider) {
     handler(this, request, StartConversationOutcome(Aws::Client::AWSError<LexRuntimeV2Errors>(LexRuntimeV2Errors::INTERNAL_FAILURE, "INTERNAL_FAILURE", "Endpoint provider is not initialized", false)), handlerContext);
     return;
@@ -376,11 +483,16 @@ void LexRuntimeV2Client::StartConversationAsync(Model::StartConversationRequest&
     handler(this, request, StartConversationOutcome(Aws::Client::AWSError<LexRuntimeV2Errors>(LexRuntimeV2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [SessionId]", false)), handlerContext);
     return;
   }
-  ResolveEndpointOutcome endpointResolutionOutcome = m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams());
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+      [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+      TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+      *meter,
+      {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
   if (!endpointResolutionOutcome.IsSuccess()) {
-    handler(this, request, StartConversationOutcome(Aws::Client::AWSError<CoreErrors>(
-        CoreErrors::ENDPOINT_RESOLUTION_FAILURE, "ENDPOINT_RESOLUTION_FAILURE", endpointResolutionOutcome.GetError().GetMessage(), false)), handlerContext);
-    return;
+      handler(this, request, StartConversationOutcome(Aws::Client::AWSError<CoreErrors>(
+          CoreErrors::ENDPOINT_RESOLUTION_FAILURE, "ENDPOINT_RESOLUTION_FAILURE", endpointResolutionOutcome.GetError().GetMessage(), false)), handlerContext);
+      return;
   }
   endpointResolutionOutcome.GetResult().AddPathSegments("/bots/");
   endpointResolutionOutcome.GetResult().AddPathSegment(request.GetBotId());
@@ -391,29 +503,21 @@ void LexRuntimeV2Client::StartConversationAsync(Model::StartConversationRequest&
   endpointResolutionOutcome.GetResult().AddPathSegments("/sessions/");
   endpointResolutionOutcome.GetResult().AddPathSegment(request.GetSessionId());
   endpointResolutionOutcome.GetResult().AddPathSegments("/conversation");
-  request.SetResponseStreamFactory(
-      [&] { request.GetEventStreamDecoder().Reset(); return Aws::New<Aws::Utils::Event::EventDecoderStream>(ALLOCATION_TAG, request.GetEventStreamDecoder()); }
-  );
 
   auto eventEncoderStream = Aws::MakeShared<Model::StartConversationRequestEventStream>(ALLOCATION_TAG);
   eventEncoderStream->SetSigner(GetSignerByName(Aws::Auth::EVENTSTREAM_SIGV4_SIGNER));
-  request.SetRequestEventStream(eventEncoderStream); // this becomes the body of the request
-  auto sem = Aws::MakeShared<Aws::Utils::Threading::Semaphore>(ALLOCATION_TAG, 0, 1);
-  request.SetRequestSignedHandler([eventEncoderStream, sem](const Aws::Http::HttpRequest& httpRequest) { eventEncoderStream->SetSignatureSeed(Aws::Client::GetAuthorizationHeader(httpRequest)); sem->ReleaseAll(); });
+  auto requestCopy = Aws::MakeShared<StartConversationRequest>("StartConversation", request);
+  requestCopy->SetRequestEventStream(eventEncoderStream); // this becomes the body of the request
+  request.SetRequestEventStream(eventEncoderStream);
 
-  m_executor->Submit([this, &endpointResolutionOutcome, &request, handler, handlerContext] () mutable {
-      JsonOutcome outcome = MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::EVENTSTREAM_SIGV4_SIGNER);
-      if(outcome.IsSuccess())
-      {
-        handler(this, request, StartConversationOutcome(NoResult()), handlerContext);
-      }
-      else
-      {
-        request.GetRequestEventStream()->Close();
-        handler(this, request, StartConversationOutcome(outcome.GetError()), handlerContext);
-      }
-      return StartConversationOutcome(NoResult());
-  });
+  auto asyncTask = CreateBidirectionalEventStreamTask<StartConversationOutcome>(this,
+                                         endpointResolutionOutcome.GetResultWithOwnership(),
+                                         requestCopy,
+                                         handler,
+                                         handlerContext,
+                                         eventEncoderStream);
+  auto sem = asyncTask.GetSemaphore();
+  m_clientConfiguration.executor->Submit(std::move(asyncTask));
   sem->WaitOne();
-  streamReadyHandler(*request.GetRequestEventStream());
+  streamReadyHandler(*eventEncoderStream);
 }

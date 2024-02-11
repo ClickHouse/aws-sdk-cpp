@@ -20,35 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-StackSetSummary::StackSetSummary() : 
-    m_stackSetNameHasBeenSet(false),
-    m_stackSetIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_status(StackSetStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_autoDeploymentHasBeenSet(false),
-    m_permissionModel(PermissionModels::NOT_SET),
-    m_permissionModelHasBeenSet(false),
-    m_driftStatus(StackDriftStatus::NOT_SET),
-    m_driftStatusHasBeenSet(false),
-    m_lastDriftCheckTimestampHasBeenSet(false),
-    m_managedExecutionHasBeenSet(false)
-{
-}
-
-StackSetSummary::StackSetSummary(const XmlNode& xmlNode) : 
-    m_stackSetNameHasBeenSet(false),
-    m_stackSetIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_status(StackSetStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_autoDeploymentHasBeenSet(false),
-    m_permissionModel(PermissionModels::NOT_SET),
-    m_permissionModelHasBeenSet(false),
-    m_driftStatus(StackDriftStatus::NOT_SET),
-    m_driftStatusHasBeenSet(false),
-    m_lastDriftCheckTimestampHasBeenSet(false),
-    m_managedExecutionHasBeenSet(false)
+StackSetSummary::StackSetSummary(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -80,7 +52,7 @@ StackSetSummary& StackSetSummary::operator =(const XmlNode& xmlNode)
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = StackSetStatusMapper::GetStackSetStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = StackSetStatusMapper::GetStackSetStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode autoDeploymentNode = resultNode.FirstChild("AutoDeployment");
@@ -92,13 +64,13 @@ StackSetSummary& StackSetSummary::operator =(const XmlNode& xmlNode)
     XmlNode permissionModelNode = resultNode.FirstChild("PermissionModel");
     if(!permissionModelNode.IsNull())
     {
-      m_permissionModel = PermissionModelsMapper::GetPermissionModelsForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(permissionModelNode.GetText()).c_str()).c_str());
+      m_permissionModel = PermissionModelsMapper::GetPermissionModelsForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(permissionModelNode.GetText()).c_str()));
       m_permissionModelHasBeenSet = true;
     }
     XmlNode driftStatusNode = resultNode.FirstChild("DriftStatus");
     if(!driftStatusNode.IsNull())
     {
-      m_driftStatus = StackDriftStatusMapper::GetStackDriftStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(driftStatusNode.GetText()).c_str()).c_str());
+      m_driftStatus = StackDriftStatusMapper::GetStackDriftStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(driftStatusNode.GetText()).c_str()));
       m_driftStatusHasBeenSet = true;
     }
     XmlNode lastDriftCheckTimestampNode = resultNode.FirstChild("LastDriftCheckTimestamp");
@@ -137,7 +109,7 @@ void StackSetSummary::OutputToStream(Aws::OStream& oStream, const char* location
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << StackSetStatusMapper::GetNameForStackSetStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(StackSetStatusMapper::GetNameForStackSetStatus(m_status)) << "&";
   }
 
   if(m_autoDeploymentHasBeenSet)
@@ -149,12 +121,12 @@ void StackSetSummary::OutputToStream(Aws::OStream& oStream, const char* location
 
   if(m_permissionModelHasBeenSet)
   {
-      oStream << location << index << locationValue << ".PermissionModel=" << PermissionModelsMapper::GetNameForPermissionModels(m_permissionModel) << "&";
+      oStream << location << index << locationValue << ".PermissionModel=" << StringUtils::URLEncode(PermissionModelsMapper::GetNameForPermissionModels(m_permissionModel)) << "&";
   }
 
   if(m_driftStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DriftStatus=" << StackDriftStatusMapper::GetNameForStackDriftStatus(m_driftStatus) << "&";
+      oStream << location << index << locationValue << ".DriftStatus=" << StringUtils::URLEncode(StackDriftStatusMapper::GetNameForStackDriftStatus(m_driftStatus)) << "&";
   }
 
   if(m_lastDriftCheckTimestampHasBeenSet)
@@ -187,7 +159,7 @@ void StackSetSummary::OutputToStream(Aws::OStream& oStream, const char* location
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << StackSetStatusMapper::GetNameForStackSetStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(StackSetStatusMapper::GetNameForStackSetStatus(m_status)) << "&";
   }
   if(m_autoDeploymentHasBeenSet)
   {
@@ -197,11 +169,11 @@ void StackSetSummary::OutputToStream(Aws::OStream& oStream, const char* location
   }
   if(m_permissionModelHasBeenSet)
   {
-      oStream << location << ".PermissionModel=" << PermissionModelsMapper::GetNameForPermissionModels(m_permissionModel) << "&";
+      oStream << location << ".PermissionModel=" << StringUtils::URLEncode(PermissionModelsMapper::GetNameForPermissionModels(m_permissionModel)) << "&";
   }
   if(m_driftStatusHasBeenSet)
   {
-      oStream << location << ".DriftStatus=" << StackDriftStatusMapper::GetNameForStackDriftStatus(m_driftStatus) << "&";
+      oStream << location << ".DriftStatus=" << StringUtils::URLEncode(StackDriftStatusMapper::GetNameForStackDriftStatus(m_driftStatus)) << "&";
   }
   if(m_lastDriftCheckTimestampHasBeenSet)
   {

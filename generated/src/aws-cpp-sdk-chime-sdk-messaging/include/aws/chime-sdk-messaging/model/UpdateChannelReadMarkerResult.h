@@ -27,111 +27,37 @@ namespace Model
   class UpdateChannelReadMarkerResult
   {
   public:
-    AWS_CHIMESDKMESSAGING_API UpdateChannelReadMarkerResult();
+    AWS_CHIMESDKMESSAGING_API UpdateChannelReadMarkerResult() = default;
     AWS_CHIMESDKMESSAGING_API UpdateChannelReadMarkerResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CHIMESDKMESSAGING_API UpdateChannelReadMarkerResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ARN of the channel.</p>
      */
-    inline const Aws::String& GetChannelArn() const{ return m_channelArn; }
+    inline const Aws::String& GetChannelArn() const { return m_channelArn; }
+    template<typename ChannelArnT = Aws::String>
+    void SetChannelArn(ChannelArnT&& value) { m_channelArnHasBeenSet = true; m_channelArn = std::forward<ChannelArnT>(value); }
+    template<typename ChannelArnT = Aws::String>
+    UpdateChannelReadMarkerResult& WithChannelArn(ChannelArnT&& value) { SetChannelArn(std::forward<ChannelArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the channel.</p>
-     */
-    inline void SetChannelArn(const Aws::String& value) { m_channelArn = value; }
-
-    /**
-     * <p>The ARN of the channel.</p>
-     */
-    inline void SetChannelArn(Aws::String&& value) { m_channelArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the channel.</p>
-     */
-    inline void SetChannelArn(const char* value) { m_channelArn.assign(value); }
-
-    /**
-     * <p>The ARN of the channel.</p>
-     */
-    inline UpdateChannelReadMarkerResult& WithChannelArn(const Aws::String& value) { SetChannelArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the channel.</p>
-     */
-    inline UpdateChannelReadMarkerResult& WithChannelArn(Aws::String&& value) { SetChannelArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the channel.</p>
-     */
-    inline UpdateChannelReadMarkerResult& WithChannelArn(const char* value) { SetChannelArn(value); return *this;}
-
-
-    /**
-     * <p>The ID of the SubChannel in the response.</p>
-     */
-    inline const Aws::String& GetSubChannelId() const{ return m_subChannelId; }
-
-    /**
-     * <p>The ID of the SubChannel in the response.</p>
-     */
-    inline void SetSubChannelId(const Aws::String& value) { m_subChannelId = value; }
-
-    /**
-     * <p>The ID of the SubChannel in the response.</p>
-     */
-    inline void SetSubChannelId(Aws::String&& value) { m_subChannelId = std::move(value); }
-
-    /**
-     * <p>The ID of the SubChannel in the response.</p>
-     */
-    inline void SetSubChannelId(const char* value) { m_subChannelId.assign(value); }
-
-    /**
-     * <p>The ID of the SubChannel in the response.</p>
-     */
-    inline UpdateChannelReadMarkerResult& WithSubChannelId(const Aws::String& value) { SetSubChannelId(value); return *this;}
-
-    /**
-     * <p>The ID of the SubChannel in the response.</p>
-     */
-    inline UpdateChannelReadMarkerResult& WithSubChannelId(Aws::String&& value) { SetSubChannelId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the SubChannel in the response.</p>
-     */
-    inline UpdateChannelReadMarkerResult& WithSubChannelId(const char* value) { SetSubChannelId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateChannelReadMarkerResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateChannelReadMarkerResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateChannelReadMarkerResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateChannelReadMarkerResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_channelArn;
-
-    Aws::String m_subChannelId;
+    bool m_channelArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

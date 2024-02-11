@@ -14,6 +14,7 @@
 #include <aws/s3control/model/S3SetObjectLegalHoldOperation.h>
 #include <aws/s3control/model/S3SetObjectRetentionOperation.h>
 #include <aws/s3control/model/S3ReplicateObjectOperation.h>
+#include <aws/s3control/model/S3ComputeObjectChecksumOperation.h>
 #include <utility>
 
 namespace Aws
@@ -41,309 +42,141 @@ namespace Model
   class JobOperation
   {
   public:
-    AWS_S3CONTROL_API JobOperation();
+    AWS_S3CONTROL_API JobOperation() = default;
     AWS_S3CONTROL_API JobOperation(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API JobOperation& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Directs the specified job to invoke an Lambda function on every object in the
      * manifest.</p>
      */
-    inline const LambdaInvokeOperation& GetLambdaInvoke() const{ return m_lambdaInvoke; }
-
-    /**
-     * <p>Directs the specified job to invoke an Lambda function on every object in the
-     * manifest.</p>
-     */
+    inline const LambdaInvokeOperation& GetLambdaInvoke() const { return m_lambdaInvoke; }
     inline bool LambdaInvokeHasBeenSet() const { return m_lambdaInvokeHasBeenSet; }
+    template<typename LambdaInvokeT = LambdaInvokeOperation>
+    void SetLambdaInvoke(LambdaInvokeT&& value) { m_lambdaInvokeHasBeenSet = true; m_lambdaInvoke = std::forward<LambdaInvokeT>(value); }
+    template<typename LambdaInvokeT = LambdaInvokeOperation>
+    JobOperation& WithLambdaInvoke(LambdaInvokeT&& value) { SetLambdaInvoke(std::forward<LambdaInvokeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Directs the specified job to invoke an Lambda function on every object in the
-     * manifest.</p>
-     */
-    inline void SetLambdaInvoke(const LambdaInvokeOperation& value) { m_lambdaInvokeHasBeenSet = true; m_lambdaInvoke = value; }
-
-    /**
-     * <p>Directs the specified job to invoke an Lambda function on every object in the
-     * manifest.</p>
-     */
-    inline void SetLambdaInvoke(LambdaInvokeOperation&& value) { m_lambdaInvokeHasBeenSet = true; m_lambdaInvoke = std::move(value); }
-
-    /**
-     * <p>Directs the specified job to invoke an Lambda function on every object in the
-     * manifest.</p>
-     */
-    inline JobOperation& WithLambdaInvoke(const LambdaInvokeOperation& value) { SetLambdaInvoke(value); return *this;}
-
-    /**
-     * <p>Directs the specified job to invoke an Lambda function on every object in the
-     * manifest.</p>
-     */
-    inline JobOperation& WithLambdaInvoke(LambdaInvokeOperation&& value) { SetLambdaInvoke(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Directs the specified job to run a PUT Copy object call on every object in
      * the manifest.</p>
      */
-    inline const S3CopyObjectOperation& GetS3PutObjectCopy() const{ return m_s3PutObjectCopy; }
-
-    /**
-     * <p>Directs the specified job to run a PUT Copy object call on every object in
-     * the manifest.</p>
-     */
+    inline const S3CopyObjectOperation& GetS3PutObjectCopy() const { return m_s3PutObjectCopy; }
     inline bool S3PutObjectCopyHasBeenSet() const { return m_s3PutObjectCopyHasBeenSet; }
+    template<typename S3PutObjectCopyT = S3CopyObjectOperation>
+    void SetS3PutObjectCopy(S3PutObjectCopyT&& value) { m_s3PutObjectCopyHasBeenSet = true; m_s3PutObjectCopy = std::forward<S3PutObjectCopyT>(value); }
+    template<typename S3PutObjectCopyT = S3CopyObjectOperation>
+    JobOperation& WithS3PutObjectCopy(S3PutObjectCopyT&& value) { SetS3PutObjectCopy(std::forward<S3PutObjectCopyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Directs the specified job to run a PUT Copy object call on every object in
-     * the manifest.</p>
-     */
-    inline void SetS3PutObjectCopy(const S3CopyObjectOperation& value) { m_s3PutObjectCopyHasBeenSet = true; m_s3PutObjectCopy = value; }
-
-    /**
-     * <p>Directs the specified job to run a PUT Copy object call on every object in
-     * the manifest.</p>
-     */
-    inline void SetS3PutObjectCopy(S3CopyObjectOperation&& value) { m_s3PutObjectCopyHasBeenSet = true; m_s3PutObjectCopy = std::move(value); }
-
-    /**
-     * <p>Directs the specified job to run a PUT Copy object call on every object in
-     * the manifest.</p>
-     */
-    inline JobOperation& WithS3PutObjectCopy(const S3CopyObjectOperation& value) { SetS3PutObjectCopy(value); return *this;}
-
-    /**
-     * <p>Directs the specified job to run a PUT Copy object call on every object in
-     * the manifest.</p>
-     */
-    inline JobOperation& WithS3PutObjectCopy(S3CopyObjectOperation&& value) { SetS3PutObjectCopy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Directs the specified job to run a <code>PutObjectAcl</code> call on every
-     * object in the manifest.</p>
+     * object in the manifest.</p>  <p>This functionality is not supported by
+     * directory buckets.</p> 
      */
-    inline const S3SetObjectAclOperation& GetS3PutObjectAcl() const{ return m_s3PutObjectAcl; }
-
-    /**
-     * <p>Directs the specified job to run a <code>PutObjectAcl</code> call on every
-     * object in the manifest.</p>
-     */
+    inline const S3SetObjectAclOperation& GetS3PutObjectAcl() const { return m_s3PutObjectAcl; }
     inline bool S3PutObjectAclHasBeenSet() const { return m_s3PutObjectAclHasBeenSet; }
+    template<typename S3PutObjectAclT = S3SetObjectAclOperation>
+    void SetS3PutObjectAcl(S3PutObjectAclT&& value) { m_s3PutObjectAclHasBeenSet = true; m_s3PutObjectAcl = std::forward<S3PutObjectAclT>(value); }
+    template<typename S3PutObjectAclT = S3SetObjectAclOperation>
+    JobOperation& WithS3PutObjectAcl(S3PutObjectAclT&& value) { SetS3PutObjectAcl(std::forward<S3PutObjectAclT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Directs the specified job to run a <code>PutObjectAcl</code> call on every
-     * object in the manifest.</p>
-     */
-    inline void SetS3PutObjectAcl(const S3SetObjectAclOperation& value) { m_s3PutObjectAclHasBeenSet = true; m_s3PutObjectAcl = value; }
-
-    /**
-     * <p>Directs the specified job to run a <code>PutObjectAcl</code> call on every
-     * object in the manifest.</p>
-     */
-    inline void SetS3PutObjectAcl(S3SetObjectAclOperation&& value) { m_s3PutObjectAclHasBeenSet = true; m_s3PutObjectAcl = std::move(value); }
-
-    /**
-     * <p>Directs the specified job to run a <code>PutObjectAcl</code> call on every
-     * object in the manifest.</p>
-     */
-    inline JobOperation& WithS3PutObjectAcl(const S3SetObjectAclOperation& value) { SetS3PutObjectAcl(value); return *this;}
-
-    /**
-     * <p>Directs the specified job to run a <code>PutObjectAcl</code> call on every
-     * object in the manifest.</p>
-     */
-    inline JobOperation& WithS3PutObjectAcl(S3SetObjectAclOperation&& value) { SetS3PutObjectAcl(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Directs the specified job to run a PUT Object tagging call on every object in
-     * the manifest.</p>
+     * the manifest.</p>  <p>This functionality is not supported by directory
+     * buckets.</p> 
      */
-    inline const S3SetObjectTaggingOperation& GetS3PutObjectTagging() const{ return m_s3PutObjectTagging; }
-
-    /**
-     * <p>Directs the specified job to run a PUT Object tagging call on every object in
-     * the manifest.</p>
-     */
+    inline const S3SetObjectTaggingOperation& GetS3PutObjectTagging() const { return m_s3PutObjectTagging; }
     inline bool S3PutObjectTaggingHasBeenSet() const { return m_s3PutObjectTaggingHasBeenSet; }
+    template<typename S3PutObjectTaggingT = S3SetObjectTaggingOperation>
+    void SetS3PutObjectTagging(S3PutObjectTaggingT&& value) { m_s3PutObjectTaggingHasBeenSet = true; m_s3PutObjectTagging = std::forward<S3PutObjectTaggingT>(value); }
+    template<typename S3PutObjectTaggingT = S3SetObjectTaggingOperation>
+    JobOperation& WithS3PutObjectTagging(S3PutObjectTaggingT&& value) { SetS3PutObjectTagging(std::forward<S3PutObjectTaggingT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Directs the specified job to run a PUT Object tagging call on every object in
-     * the manifest.</p>
-     */
-    inline void SetS3PutObjectTagging(const S3SetObjectTaggingOperation& value) { m_s3PutObjectTaggingHasBeenSet = true; m_s3PutObjectTagging = value; }
-
-    /**
-     * <p>Directs the specified job to run a PUT Object tagging call on every object in
-     * the manifest.</p>
-     */
-    inline void SetS3PutObjectTagging(S3SetObjectTaggingOperation&& value) { m_s3PutObjectTaggingHasBeenSet = true; m_s3PutObjectTagging = std::move(value); }
-
-    /**
-     * <p>Directs the specified job to run a PUT Object tagging call on every object in
-     * the manifest.</p>
-     */
-    inline JobOperation& WithS3PutObjectTagging(const S3SetObjectTaggingOperation& value) { SetS3PutObjectTagging(value); return *this;}
-
-    /**
-     * <p>Directs the specified job to run a PUT Object tagging call on every object in
-     * the manifest.</p>
-     */
-    inline JobOperation& WithS3PutObjectTagging(S3SetObjectTaggingOperation&& value) { SetS3PutObjectTagging(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Directs the specified job to execute a DELETE Object tagging call on every
-     * object in the manifest.</p>
+     * object in the manifest.</p>  <p>This functionality is not supported by
+     * directory buckets.</p> 
      */
-    inline const S3DeleteObjectTaggingOperation& GetS3DeleteObjectTagging() const{ return m_s3DeleteObjectTagging; }
-
-    /**
-     * <p>Directs the specified job to execute a DELETE Object tagging call on every
-     * object in the manifest.</p>
-     */
+    inline const S3DeleteObjectTaggingOperation& GetS3DeleteObjectTagging() const { return m_s3DeleteObjectTagging; }
     inline bool S3DeleteObjectTaggingHasBeenSet() const { return m_s3DeleteObjectTaggingHasBeenSet; }
+    template<typename S3DeleteObjectTaggingT = S3DeleteObjectTaggingOperation>
+    void SetS3DeleteObjectTagging(S3DeleteObjectTaggingT&& value) { m_s3DeleteObjectTaggingHasBeenSet = true; m_s3DeleteObjectTagging = std::forward<S3DeleteObjectTaggingT>(value); }
+    template<typename S3DeleteObjectTaggingT = S3DeleteObjectTaggingOperation>
+    JobOperation& WithS3DeleteObjectTagging(S3DeleteObjectTaggingT&& value) { SetS3DeleteObjectTagging(std::forward<S3DeleteObjectTaggingT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Directs the specified job to execute a DELETE Object tagging call on every
-     * object in the manifest.</p>
-     */
-    inline void SetS3DeleteObjectTagging(const S3DeleteObjectTaggingOperation& value) { m_s3DeleteObjectTaggingHasBeenSet = true; m_s3DeleteObjectTagging = value; }
-
-    /**
-     * <p>Directs the specified job to execute a DELETE Object tagging call on every
-     * object in the manifest.</p>
-     */
-    inline void SetS3DeleteObjectTagging(S3DeleteObjectTaggingOperation&& value) { m_s3DeleteObjectTaggingHasBeenSet = true; m_s3DeleteObjectTagging = std::move(value); }
-
-    /**
-     * <p>Directs the specified job to execute a DELETE Object tagging call on every
-     * object in the manifest.</p>
-     */
-    inline JobOperation& WithS3DeleteObjectTagging(const S3DeleteObjectTaggingOperation& value) { SetS3DeleteObjectTagging(value); return *this;}
-
-    /**
-     * <p>Directs the specified job to execute a DELETE Object tagging call on every
-     * object in the manifest.</p>
-     */
-    inline JobOperation& WithS3DeleteObjectTagging(S3DeleteObjectTaggingOperation&& value) { SetS3DeleteObjectTagging(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Directs the specified job to initiate restore requests for every archived
-     * object in the manifest.</p>
+     * object in the manifest.</p>  <p>This functionality is not supported by
+     * directory buckets.</p> 
      */
-    inline const S3InitiateRestoreObjectOperation& GetS3InitiateRestoreObject() const{ return m_s3InitiateRestoreObject; }
-
-    /**
-     * <p>Directs the specified job to initiate restore requests for every archived
-     * object in the manifest.</p>
-     */
+    inline const S3InitiateRestoreObjectOperation& GetS3InitiateRestoreObject() const { return m_s3InitiateRestoreObject; }
     inline bool S3InitiateRestoreObjectHasBeenSet() const { return m_s3InitiateRestoreObjectHasBeenSet; }
+    template<typename S3InitiateRestoreObjectT = S3InitiateRestoreObjectOperation>
+    void SetS3InitiateRestoreObject(S3InitiateRestoreObjectT&& value) { m_s3InitiateRestoreObjectHasBeenSet = true; m_s3InitiateRestoreObject = std::forward<S3InitiateRestoreObjectT>(value); }
+    template<typename S3InitiateRestoreObjectT = S3InitiateRestoreObjectOperation>
+    JobOperation& WithS3InitiateRestoreObject(S3InitiateRestoreObjectT&& value) { SetS3InitiateRestoreObject(std::forward<S3InitiateRestoreObjectT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Directs the specified job to initiate restore requests for every archived
-     * object in the manifest.</p>
-     */
-    inline void SetS3InitiateRestoreObject(const S3InitiateRestoreObjectOperation& value) { m_s3InitiateRestoreObjectHasBeenSet = true; m_s3InitiateRestoreObject = value; }
-
-    /**
-     * <p>Directs the specified job to initiate restore requests for every archived
-     * object in the manifest.</p>
-     */
-    inline void SetS3InitiateRestoreObject(S3InitiateRestoreObjectOperation&& value) { m_s3InitiateRestoreObjectHasBeenSet = true; m_s3InitiateRestoreObject = std::move(value); }
-
-    /**
-     * <p>Directs the specified job to initiate restore requests for every archived
-     * object in the manifest.</p>
-     */
-    inline JobOperation& WithS3InitiateRestoreObject(const S3InitiateRestoreObjectOperation& value) { SetS3InitiateRestoreObject(value); return *this;}
-
-    /**
-     * <p>Directs the specified job to initiate restore requests for every archived
-     * object in the manifest.</p>
-     */
-    inline JobOperation& WithS3InitiateRestoreObject(S3InitiateRestoreObjectOperation&& value) { SetS3InitiateRestoreObject(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const S3SetObjectLegalHoldOperation& GetS3PutObjectLegalHold() const{ return m_s3PutObjectLegalHold; }
-
-    
+    inline const S3SetObjectLegalHoldOperation& GetS3PutObjectLegalHold() const { return m_s3PutObjectLegalHold; }
     inline bool S3PutObjectLegalHoldHasBeenSet() const { return m_s3PutObjectLegalHoldHasBeenSet; }
+    template<typename S3PutObjectLegalHoldT = S3SetObjectLegalHoldOperation>
+    void SetS3PutObjectLegalHold(S3PutObjectLegalHoldT&& value) { m_s3PutObjectLegalHoldHasBeenSet = true; m_s3PutObjectLegalHold = std::forward<S3PutObjectLegalHoldT>(value); }
+    template<typename S3PutObjectLegalHoldT = S3SetObjectLegalHoldOperation>
+    JobOperation& WithS3PutObjectLegalHold(S3PutObjectLegalHoldT&& value) { SetS3PutObjectLegalHold(std::forward<S3PutObjectLegalHoldT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetS3PutObjectLegalHold(const S3SetObjectLegalHoldOperation& value) { m_s3PutObjectLegalHoldHasBeenSet = true; m_s3PutObjectLegalHold = value; }
-
-    
-    inline void SetS3PutObjectLegalHold(S3SetObjectLegalHoldOperation&& value) { m_s3PutObjectLegalHoldHasBeenSet = true; m_s3PutObjectLegalHold = std::move(value); }
-
-    
-    inline JobOperation& WithS3PutObjectLegalHold(const S3SetObjectLegalHoldOperation& value) { SetS3PutObjectLegalHold(value); return *this;}
-
-    
-    inline JobOperation& WithS3PutObjectLegalHold(S3SetObjectLegalHoldOperation&& value) { SetS3PutObjectLegalHold(std::move(value)); return *this;}
-
-
-    
-    inline const S3SetObjectRetentionOperation& GetS3PutObjectRetention() const{ return m_s3PutObjectRetention; }
-
-    
+    inline const S3SetObjectRetentionOperation& GetS3PutObjectRetention() const { return m_s3PutObjectRetention; }
     inline bool S3PutObjectRetentionHasBeenSet() const { return m_s3PutObjectRetentionHasBeenSet; }
+    template<typename S3PutObjectRetentionT = S3SetObjectRetentionOperation>
+    void SetS3PutObjectRetention(S3PutObjectRetentionT&& value) { m_s3PutObjectRetentionHasBeenSet = true; m_s3PutObjectRetention = std::forward<S3PutObjectRetentionT>(value); }
+    template<typename S3PutObjectRetentionT = S3SetObjectRetentionOperation>
+    JobOperation& WithS3PutObjectRetention(S3PutObjectRetentionT&& value) { SetS3PutObjectRetention(std::forward<S3PutObjectRetentionT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetS3PutObjectRetention(const S3SetObjectRetentionOperation& value) { m_s3PutObjectRetentionHasBeenSet = true; m_s3PutObjectRetention = value; }
-
-    
-    inline void SetS3PutObjectRetention(S3SetObjectRetentionOperation&& value) { m_s3PutObjectRetentionHasBeenSet = true; m_s3PutObjectRetention = std::move(value); }
-
-    
-    inline JobOperation& WithS3PutObjectRetention(const S3SetObjectRetentionOperation& value) { SetS3PutObjectRetention(value); return *this;}
-
-    
-    inline JobOperation& WithS3PutObjectRetention(S3SetObjectRetentionOperation&& value) { SetS3PutObjectRetention(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Directs the specified job to invoke <code>ReplicateObject</code> on every
-     * object in the job's manifest.</p>
+     * object in the job's manifest.</p>  <p>This functionality is not supported
+     * by directory buckets.</p> 
      */
-    inline const S3ReplicateObjectOperation& GetS3ReplicateObject() const{ return m_s3ReplicateObject; }
-
-    /**
-     * <p>Directs the specified job to invoke <code>ReplicateObject</code> on every
-     * object in the job's manifest.</p>
-     */
+    inline const S3ReplicateObjectOperation& GetS3ReplicateObject() const { return m_s3ReplicateObject; }
     inline bool S3ReplicateObjectHasBeenSet() const { return m_s3ReplicateObjectHasBeenSet; }
+    template<typename S3ReplicateObjectT = S3ReplicateObjectOperation>
+    void SetS3ReplicateObject(S3ReplicateObjectT&& value) { m_s3ReplicateObjectHasBeenSet = true; m_s3ReplicateObject = std::forward<S3ReplicateObjectT>(value); }
+    template<typename S3ReplicateObjectT = S3ReplicateObjectOperation>
+    JobOperation& WithS3ReplicateObject(S3ReplicateObjectT&& value) { SetS3ReplicateObject(std::forward<S3ReplicateObjectT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Directs the specified job to invoke <code>ReplicateObject</code> on every
-     * object in the job's manifest.</p>
+     * <p>Directs the specified job to compute checksum values for every object in the
+     * manifest.</p>
      */
-    inline void SetS3ReplicateObject(const S3ReplicateObjectOperation& value) { m_s3ReplicateObjectHasBeenSet = true; m_s3ReplicateObject = value; }
-
-    /**
-     * <p>Directs the specified job to invoke <code>ReplicateObject</code> on every
-     * object in the job's manifest.</p>
-     */
-    inline void SetS3ReplicateObject(S3ReplicateObjectOperation&& value) { m_s3ReplicateObjectHasBeenSet = true; m_s3ReplicateObject = std::move(value); }
-
-    /**
-     * <p>Directs the specified job to invoke <code>ReplicateObject</code> on every
-     * object in the job's manifest.</p>
-     */
-    inline JobOperation& WithS3ReplicateObject(const S3ReplicateObjectOperation& value) { SetS3ReplicateObject(value); return *this;}
-
-    /**
-     * <p>Directs the specified job to invoke <code>ReplicateObject</code> on every
-     * object in the job's manifest.</p>
-     */
-    inline JobOperation& WithS3ReplicateObject(S3ReplicateObjectOperation&& value) { SetS3ReplicateObject(std::move(value)); return *this;}
-
+    inline const S3ComputeObjectChecksumOperation& GetS3ComputeObjectChecksum() const { return m_s3ComputeObjectChecksum; }
+    inline bool S3ComputeObjectChecksumHasBeenSet() const { return m_s3ComputeObjectChecksumHasBeenSet; }
+    template<typename S3ComputeObjectChecksumT = S3ComputeObjectChecksumOperation>
+    void SetS3ComputeObjectChecksum(S3ComputeObjectChecksumT&& value) { m_s3ComputeObjectChecksumHasBeenSet = true; m_s3ComputeObjectChecksum = std::forward<S3ComputeObjectChecksumT>(value); }
+    template<typename S3ComputeObjectChecksumT = S3ComputeObjectChecksumOperation>
+    JobOperation& WithS3ComputeObjectChecksum(S3ComputeObjectChecksumT&& value) { SetS3ComputeObjectChecksum(std::forward<S3ComputeObjectChecksumT>(value)); return *this;}
+    ///@}
   private:
 
     LambdaInvokeOperation m_lambdaInvoke;
@@ -372,6 +205,9 @@ namespace Model
 
     S3ReplicateObjectOperation m_s3ReplicateObject;
     bool m_s3ReplicateObjectHasBeenSet = false;
+
+    S3ComputeObjectChecksumOperation m_s3ComputeObjectChecksum;
+    bool m_s3ComputeObjectChecksumHasBeenSet = false;
   };
 
 } // namespace Model

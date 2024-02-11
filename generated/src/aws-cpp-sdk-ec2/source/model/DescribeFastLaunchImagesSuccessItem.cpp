@@ -20,35 +20,7 @@ namespace EC2
 namespace Model
 {
 
-DescribeFastLaunchImagesSuccessItem::DescribeFastLaunchImagesSuccessItem() : 
-    m_imageIdHasBeenSet(false),
-    m_resourceType(FastLaunchResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_snapshotConfigurationHasBeenSet(false),
-    m_launchTemplateHasBeenSet(false),
-    m_maxParallelLaunches(0),
-    m_maxParallelLaunchesHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_state(FastLaunchStateCode::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_stateTransitionReasonHasBeenSet(false),
-    m_stateTransitionTimeHasBeenSet(false)
-{
-}
-
-DescribeFastLaunchImagesSuccessItem::DescribeFastLaunchImagesSuccessItem(const XmlNode& xmlNode) : 
-    m_imageIdHasBeenSet(false),
-    m_resourceType(FastLaunchResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_snapshotConfigurationHasBeenSet(false),
-    m_launchTemplateHasBeenSet(false),
-    m_maxParallelLaunches(0),
-    m_maxParallelLaunchesHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_state(FastLaunchStateCode::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_stateTransitionReasonHasBeenSet(false),
-    m_stateTransitionTimeHasBeenSet(false)
+DescribeFastLaunchImagesSuccessItem::DescribeFastLaunchImagesSuccessItem(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -68,7 +40,7 @@ DescribeFastLaunchImagesSuccessItem& DescribeFastLaunchImagesSuccessItem::operat
     XmlNode resourceTypeNode = resultNode.FirstChild("resourceType");
     if(!resourceTypeNode.IsNull())
     {
-      m_resourceType = FastLaunchResourceTypeMapper::GetFastLaunchResourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceTypeNode.GetText()).c_str()).c_str());
+      m_resourceType = FastLaunchResourceTypeMapper::GetFastLaunchResourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceTypeNode.GetText()).c_str()));
       m_resourceTypeHasBeenSet = true;
     }
     XmlNode snapshotConfigurationNode = resultNode.FirstChild("snapshotConfiguration");
@@ -98,7 +70,7 @@ DescribeFastLaunchImagesSuccessItem& DescribeFastLaunchImagesSuccessItem::operat
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = FastLaunchStateCodeMapper::GetFastLaunchStateCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = FastLaunchStateCodeMapper::GetFastLaunchStateCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode stateTransitionReasonNode = resultNode.FirstChild("stateTransitionReason");
@@ -127,7 +99,7 @@ void DescribeFastLaunchImagesSuccessItem::OutputToStream(Aws::OStream& oStream, 
 
   if(m_resourceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ResourceType=" << FastLaunchResourceTypeMapper::GetNameForFastLaunchResourceType(m_resourceType) << "&";
+      oStream << location << index << locationValue << ".ResourceType=" << StringUtils::URLEncode(FastLaunchResourceTypeMapper::GetNameForFastLaunchResourceType(m_resourceType)) << "&";
   }
 
   if(m_snapshotConfigurationHasBeenSet)
@@ -156,7 +128,7 @@ void DescribeFastLaunchImagesSuccessItem::OutputToStream(Aws::OStream& oStream, 
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << FastLaunchStateCodeMapper::GetNameForFastLaunchStateCode(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(FastLaunchStateCodeMapper::GetNameForFastLaunchStateCode(m_state)) << "&";
   }
 
   if(m_stateTransitionReasonHasBeenSet)
@@ -179,7 +151,7 @@ void DescribeFastLaunchImagesSuccessItem::OutputToStream(Aws::OStream& oStream, 
   }
   if(m_resourceTypeHasBeenSet)
   {
-      oStream << location << ".ResourceType=" << FastLaunchResourceTypeMapper::GetNameForFastLaunchResourceType(m_resourceType) << "&";
+      oStream << location << ".ResourceType=" << StringUtils::URLEncode(FastLaunchResourceTypeMapper::GetNameForFastLaunchResourceType(m_resourceType)) << "&";
   }
   if(m_snapshotConfigurationHasBeenSet)
   {
@@ -203,7 +175,7 @@ void DescribeFastLaunchImagesSuccessItem::OutputToStream(Aws::OStream& oStream, 
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << FastLaunchStateCodeMapper::GetNameForFastLaunchStateCode(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(FastLaunchStateCodeMapper::GetNameForFastLaunchStateCode(m_state)) << "&";
   }
   if(m_stateTransitionReasonHasBeenSet)
   {

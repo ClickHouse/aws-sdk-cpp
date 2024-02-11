@@ -22,7 +22,7 @@ namespace Model
    * <p>Represents a request to return the details of a configuration set.
    * Configuration sets enable you to publish email sending events. For information
    * about using configuration sets, see the <a
-   * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon
+   * href="https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html">Amazon
    * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DescribeConfigurationSetRequest">AWS
    * API Reference</a></p>
@@ -30,7 +30,7 @@ namespace Model
   class DescribeConfigurationSetRequest : public SESRequest
   {
   public:
-    AWS_SES_API DescribeConfigurationSetRequest();
+    AWS_SES_API DescribeConfigurationSetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -45,87 +45,30 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the configuration set to describe.</p>
      */
-    inline const Aws::String& GetConfigurationSetName() const{ return m_configurationSetName; }
-
-    /**
-     * <p>The name of the configuration set to describe.</p>
-     */
+    inline const Aws::String& GetConfigurationSetName() const { return m_configurationSetName; }
     inline bool ConfigurationSetNameHasBeenSet() const { return m_configurationSetNameHasBeenSet; }
+    template<typename ConfigurationSetNameT = Aws::String>
+    void SetConfigurationSetName(ConfigurationSetNameT&& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = std::forward<ConfigurationSetNameT>(value); }
+    template<typename ConfigurationSetNameT = Aws::String>
+    DescribeConfigurationSetRequest& WithConfigurationSetName(ConfigurationSetNameT&& value) { SetConfigurationSetName(std::forward<ConfigurationSetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the configuration set to describe.</p>
-     */
-    inline void SetConfigurationSetName(const Aws::String& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = value; }
-
-    /**
-     * <p>The name of the configuration set to describe.</p>
-     */
-    inline void SetConfigurationSetName(Aws::String&& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = std::move(value); }
-
-    /**
-     * <p>The name of the configuration set to describe.</p>
-     */
-    inline void SetConfigurationSetName(const char* value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName.assign(value); }
-
-    /**
-     * <p>The name of the configuration set to describe.</p>
-     */
-    inline DescribeConfigurationSetRequest& WithConfigurationSetName(const Aws::String& value) { SetConfigurationSetName(value); return *this;}
-
-    /**
-     * <p>The name of the configuration set to describe.</p>
-     */
-    inline DescribeConfigurationSetRequest& WithConfigurationSetName(Aws::String&& value) { SetConfigurationSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the configuration set to describe.</p>
-     */
-    inline DescribeConfigurationSetRequest& WithConfigurationSetName(const char* value) { SetConfigurationSetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of configuration set attributes to return.</p>
      */
-    inline const Aws::Vector<ConfigurationSetAttribute>& GetConfigurationSetAttributeNames() const{ return m_configurationSetAttributeNames; }
-
-    /**
-     * <p>A list of configuration set attributes to return.</p>
-     */
+    inline const Aws::Vector<ConfigurationSetAttribute>& GetConfigurationSetAttributeNames() const { return m_configurationSetAttributeNames; }
     inline bool ConfigurationSetAttributeNamesHasBeenSet() const { return m_configurationSetAttributeNamesHasBeenSet; }
-
-    /**
-     * <p>A list of configuration set attributes to return.</p>
-     */
-    inline void SetConfigurationSetAttributeNames(const Aws::Vector<ConfigurationSetAttribute>& value) { m_configurationSetAttributeNamesHasBeenSet = true; m_configurationSetAttributeNames = value; }
-
-    /**
-     * <p>A list of configuration set attributes to return.</p>
-     */
-    inline void SetConfigurationSetAttributeNames(Aws::Vector<ConfigurationSetAttribute>&& value) { m_configurationSetAttributeNamesHasBeenSet = true; m_configurationSetAttributeNames = std::move(value); }
-
-    /**
-     * <p>A list of configuration set attributes to return.</p>
-     */
-    inline DescribeConfigurationSetRequest& WithConfigurationSetAttributeNames(const Aws::Vector<ConfigurationSetAttribute>& value) { SetConfigurationSetAttributeNames(value); return *this;}
-
-    /**
-     * <p>A list of configuration set attributes to return.</p>
-     */
-    inline DescribeConfigurationSetRequest& WithConfigurationSetAttributeNames(Aws::Vector<ConfigurationSetAttribute>&& value) { SetConfigurationSetAttributeNames(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of configuration set attributes to return.</p>
-     */
-    inline DescribeConfigurationSetRequest& AddConfigurationSetAttributeNames(const ConfigurationSetAttribute& value) { m_configurationSetAttributeNamesHasBeenSet = true; m_configurationSetAttributeNames.push_back(value); return *this; }
-
-    /**
-     * <p>A list of configuration set attributes to return.</p>
-     */
-    inline DescribeConfigurationSetRequest& AddConfigurationSetAttributeNames(ConfigurationSetAttribute&& value) { m_configurationSetAttributeNamesHasBeenSet = true; m_configurationSetAttributeNames.push_back(std::move(value)); return *this; }
-
+    template<typename ConfigurationSetAttributeNamesT = Aws::Vector<ConfigurationSetAttribute>>
+    void SetConfigurationSetAttributeNames(ConfigurationSetAttributeNamesT&& value) { m_configurationSetAttributeNamesHasBeenSet = true; m_configurationSetAttributeNames = std::forward<ConfigurationSetAttributeNamesT>(value); }
+    template<typename ConfigurationSetAttributeNamesT = Aws::Vector<ConfigurationSetAttribute>>
+    DescribeConfigurationSetRequest& WithConfigurationSetAttributeNames(ConfigurationSetAttributeNamesT&& value) { SetConfigurationSetAttributeNames(std::forward<ConfigurationSetAttributeNamesT>(value)); return *this;}
+    inline DescribeConfigurationSetRequest& AddConfigurationSetAttributeNames(ConfigurationSetAttribute value) { m_configurationSetAttributeNamesHasBeenSet = true; m_configurationSetAttributeNames.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::String m_configurationSetName;

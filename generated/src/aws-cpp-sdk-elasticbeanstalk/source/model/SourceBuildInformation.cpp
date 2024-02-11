@@ -20,21 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-SourceBuildInformation::SourceBuildInformation() : 
-    m_sourceType(SourceType::NOT_SET),
-    m_sourceTypeHasBeenSet(false),
-    m_sourceRepository(SourceRepository::NOT_SET),
-    m_sourceRepositoryHasBeenSet(false),
-    m_sourceLocationHasBeenSet(false)
-{
-}
-
-SourceBuildInformation::SourceBuildInformation(const XmlNode& xmlNode) : 
-    m_sourceType(SourceType::NOT_SET),
-    m_sourceTypeHasBeenSet(false),
-    m_sourceRepository(SourceRepository::NOT_SET),
-    m_sourceRepositoryHasBeenSet(false),
-    m_sourceLocationHasBeenSet(false)
+SourceBuildInformation::SourceBuildInformation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -48,13 +34,13 @@ SourceBuildInformation& SourceBuildInformation::operator =(const XmlNode& xmlNod
     XmlNode sourceTypeNode = resultNode.FirstChild("SourceType");
     if(!sourceTypeNode.IsNull())
     {
-      m_sourceType = SourceTypeMapper::GetSourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(sourceTypeNode.GetText()).c_str()).c_str());
+      m_sourceType = SourceTypeMapper::GetSourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(sourceTypeNode.GetText()).c_str()));
       m_sourceTypeHasBeenSet = true;
     }
     XmlNode sourceRepositoryNode = resultNode.FirstChild("SourceRepository");
     if(!sourceRepositoryNode.IsNull())
     {
-      m_sourceRepository = SourceRepositoryMapper::GetSourceRepositoryForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(sourceRepositoryNode.GetText()).c_str()).c_str());
+      m_sourceRepository = SourceRepositoryMapper::GetSourceRepositoryForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(sourceRepositoryNode.GetText()).c_str()));
       m_sourceRepositoryHasBeenSet = true;
     }
     XmlNode sourceLocationNode = resultNode.FirstChild("SourceLocation");
@@ -72,12 +58,12 @@ void SourceBuildInformation::OutputToStream(Aws::OStream& oStream, const char* l
 {
   if(m_sourceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".SourceType=" << SourceTypeMapper::GetNameForSourceType(m_sourceType) << "&";
+      oStream << location << index << locationValue << ".SourceType=" << StringUtils::URLEncode(SourceTypeMapper::GetNameForSourceType(m_sourceType)) << "&";
   }
 
   if(m_sourceRepositoryHasBeenSet)
   {
-      oStream << location << index << locationValue << ".SourceRepository=" << SourceRepositoryMapper::GetNameForSourceRepository(m_sourceRepository) << "&";
+      oStream << location << index << locationValue << ".SourceRepository=" << StringUtils::URLEncode(SourceRepositoryMapper::GetNameForSourceRepository(m_sourceRepository)) << "&";
   }
 
   if(m_sourceLocationHasBeenSet)
@@ -91,11 +77,11 @@ void SourceBuildInformation::OutputToStream(Aws::OStream& oStream, const char* l
 {
   if(m_sourceTypeHasBeenSet)
   {
-      oStream << location << ".SourceType=" << SourceTypeMapper::GetNameForSourceType(m_sourceType) << "&";
+      oStream << location << ".SourceType=" << StringUtils::URLEncode(SourceTypeMapper::GetNameForSourceType(m_sourceType)) << "&";
   }
   if(m_sourceRepositoryHasBeenSet)
   {
-      oStream << location << ".SourceRepository=" << SourceRepositoryMapper::GetNameForSourceRepository(m_sourceRepository) << "&";
+      oStream << location << ".SourceRepository=" << StringUtils::URLEncode(SourceRepositoryMapper::GetNameForSourceRepository(m_sourceRepository)) << "&";
   }
   if(m_sourceLocationHasBeenSet)
   {

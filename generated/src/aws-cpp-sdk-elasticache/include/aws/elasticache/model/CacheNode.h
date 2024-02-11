@@ -28,25 +28,29 @@ namespace Model
   /**
    * <p>Represents an individual cache node within a cluster. Each cache node runs
    * its own instance of the cluster's protocol-compliant caching software - either
-   * Memcached or Redis.</p> <p>The following node types are supported by
+   * Memcached, Valkey or Redis OSS.</p> <p>The following node types are supported by
    * ElastiCache. Generally speaking, the current generation types provide more
    * memory and computational power at lower cost when compared to their equivalent
    * previous generation counterparts.</p> <ul> <li> <p>General purpose:</p> <ul>
-   * <li> <p>Current generation: </p> <p> <b>M6g node types</b> (available only for
-   * Redis engine version 5.0.6 onward and for Memcached engine version 1.5.16
-   * onward): <code>cache.m6g.large</code>, <code>cache.m6g.xlarge</code>,
+   * <li> <p>Current generation: </p> <p> <b>M7g node types</b>:
+   * <code>cache.m7g.large</code>, <code>cache.m7g.xlarge</code>,
+   * <code>cache.m7g.2xlarge</code>, <code>cache.m7g.4xlarge</code>,
+   * <code>cache.m7g.8xlarge</code>, <code>cache.m7g.12xlarge</code>,
+   * <code>cache.m7g.16xlarge</code> </p>  <p>For region availability, see <a
+   * href="https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported
+   * Node Types</a> </p>  <p> <b>M6g node types</b> (available only for Redis
+   * OSS engine version 5.0.6 onward and for Memcached engine version 1.5.16 onward):
+   * <code>cache.m6g.large</code>, <code>cache.m6g.xlarge</code>,
    * <code>cache.m6g.2xlarge</code>, <code>cache.m6g.4xlarge</code>,
    * <code>cache.m6g.8xlarge</code>, <code>cache.m6g.12xlarge</code>,
-   * <code>cache.m6g.16xlarge</code> </p>  <p>For region availability, see <a
-   * href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported
-   * Node Types</a> </p>  <p> <b>M5 node types:</b>
+   * <code>cache.m6g.16xlarge</code> </p> <p> <b>M5 node types:</b>
    * <code>cache.m5.large</code>, <code>cache.m5.xlarge</code>,
    * <code>cache.m5.2xlarge</code>, <code>cache.m5.4xlarge</code>,
    * <code>cache.m5.12xlarge</code>, <code>cache.m5.24xlarge</code> </p> <p> <b>M4
    * node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
    * <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>,
    * <code>cache.m4.10xlarge</code> </p> <p> <b>T4g node types</b> (available only
-   * for Redis engine version 5.0.6 onward and Memcached engine version 1.5.16
+   * for Redis OSS engine version 5.0.6 onward and Memcached engine version 1.5.16
    * onward): <code>cache.t4g.micro</code>, <code>cache.t4g.small</code>,
    * <code>cache.t4g.medium</code> </p> <p> <b>T3 node types:</b>
    * <code>cache.t3.micro</code>, <code>cache.t3.small</code>,
@@ -64,15 +68,18 @@ namespace Model
    * recommended. Existing clusters are still supported but creation of new clusters
    * is not supported for these types.)</p> <p> <b>C1 node types:</b>
    * <code>cache.c1.xlarge</code> </p> </li> </ul> </li> <li> <p>Memory
-   * optimized:</p> <ul> <li> <p>Current generation: </p> <p> <b>R6g node types</b>
-   * (available only for Redis engine version 5.0.6 onward and for Memcached engine
-   * version 1.5.16 onward).</p> <p> <code>cache.r6g.large</code>,
-   * <code>cache.r6g.xlarge</code>, <code>cache.r6g.2xlarge</code>,
-   * <code>cache.r6g.4xlarge</code>, <code>cache.r6g.8xlarge</code>,
-   * <code>cache.r6g.12xlarge</code>, <code>cache.r6g.16xlarge</code> </p> 
-   * <p>For region availability, see <a
-   * href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported
-   * Node Types</a> </p>  <p> <b>R5 node types:</b>
+   * optimized:</p> <ul> <li> <p>Current generation: </p> <p> <b>R7g node types</b>:
+   * <code>cache.r7g.large</code>, <code>cache.r7g.xlarge</code>,
+   * <code>cache.r7g.2xlarge</code>, <code>cache.r7g.4xlarge</code>,
+   * <code>cache.r7g.8xlarge</code>, <code>cache.r7g.12xlarge</code>,
+   * <code>cache.r7g.16xlarge</code> </p>  <p>For region availability, see <a
+   * href="https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported
+   * Node Types</a> </p>  <p> <b>R6g node types</b> (available only for Redis
+   * OSS engine version 5.0.6 onward and for Memcached engine version 1.5.16 onward):
+   * <code>cache.r6g.large</code>, <code>cache.r6g.xlarge</code>,
+   * <code>cache.r6g.2xlarge</code>, <code>cache.r6g.4xlarge</code>,
+   * <code>cache.r6g.8xlarge</code>, <code>cache.r6g.12xlarge</code>,
+   * <code>cache.r6g.16xlarge</code> </p> <p> <b>R5 node types:</b>
    * <code>cache.r5.large</code>, <code>cache.r5.xlarge</code>,
    * <code>cache.r5.2xlarge</code>, <code>cache.r5.4xlarge</code>,
    * <code>cache.r5.12xlarge</code>, <code>cache.r5.24xlarge</code> </p> <p> <b>R4
@@ -87,19 +94,19 @@ namespace Model
    * <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>,
    * <code>cache.r3.8xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Additional
    * node type info</b> </p> <ul> <li> <p>All current generation instance types are
-   * created in Amazon VPC by default.</p> </li> <li> <p>Redis append-only files
-   * (AOF) are not supported for T1 or T2 instances.</p> </li> <li> <p>Redis Multi-AZ
-   * with automatic failover is not supported on T1 instances.</p> </li> <li>
-   * <p>Redis configuration variables <code>appendonly</code> and
-   * <code>appendfsync</code> are not supported on Redis version 2.8.22 and
-   * later.</p> </li> </ul><p><h3>See Also:</h3>   <a
+   * created in Amazon VPC by default.</p> </li> <li> <p>Valkey or Redis OSS
+   * append-only files (AOF) are not supported for T1 or T2 instances.</p> </li> <li>
+   * <p>Valkey or Redis OSS Multi-AZ with automatic failover is not supported on T1
+   * instances.</p> </li> <li> <p>The configuration variables <code>appendonly</code>
+   * and <code>appendfsync</code> are not supported on Valkey, or on Redis OSS
+   * version 2.8.22 and later.</p> </li> </ul><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CacheNode">AWS
    * API Reference</a></p>
    */
   class CacheNode
   {
   public:
-    AWS_ELASTICACHE_API CacheNode();
+    AWS_ELASTICACHE_API CacheNode() = default;
     AWS_ELASTICACHE_API CacheNode(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ELASTICACHE_API CacheNode& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -107,353 +114,106 @@ namespace Model
     AWS_ELASTICACHE_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The cache node identifier. A node ID is a numeric identifier (0001, 0002,
      * etc.). The combination of cluster ID and node ID uniquely identifies every cache
      * node used in a customer's Amazon account.</p>
      */
-    inline const Aws::String& GetCacheNodeId() const{ return m_cacheNodeId; }
-
-    /**
-     * <p>The cache node identifier. A node ID is a numeric identifier (0001, 0002,
-     * etc.). The combination of cluster ID and node ID uniquely identifies every cache
-     * node used in a customer's Amazon account.</p>
-     */
+    inline const Aws::String& GetCacheNodeId() const { return m_cacheNodeId; }
     inline bool CacheNodeIdHasBeenSet() const { return m_cacheNodeIdHasBeenSet; }
+    template<typename CacheNodeIdT = Aws::String>
+    void SetCacheNodeId(CacheNodeIdT&& value) { m_cacheNodeIdHasBeenSet = true; m_cacheNodeId = std::forward<CacheNodeIdT>(value); }
+    template<typename CacheNodeIdT = Aws::String>
+    CacheNode& WithCacheNodeId(CacheNodeIdT&& value) { SetCacheNodeId(std::forward<CacheNodeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The cache node identifier. A node ID is a numeric identifier (0001, 0002,
-     * etc.). The combination of cluster ID and node ID uniquely identifies every cache
-     * node used in a customer's Amazon account.</p>
-     */
-    inline void SetCacheNodeId(const Aws::String& value) { m_cacheNodeIdHasBeenSet = true; m_cacheNodeId = value; }
-
-    /**
-     * <p>The cache node identifier. A node ID is a numeric identifier (0001, 0002,
-     * etc.). The combination of cluster ID and node ID uniquely identifies every cache
-     * node used in a customer's Amazon account.</p>
-     */
-    inline void SetCacheNodeId(Aws::String&& value) { m_cacheNodeIdHasBeenSet = true; m_cacheNodeId = std::move(value); }
-
-    /**
-     * <p>The cache node identifier. A node ID is a numeric identifier (0001, 0002,
-     * etc.). The combination of cluster ID and node ID uniquely identifies every cache
-     * node used in a customer's Amazon account.</p>
-     */
-    inline void SetCacheNodeId(const char* value) { m_cacheNodeIdHasBeenSet = true; m_cacheNodeId.assign(value); }
-
-    /**
-     * <p>The cache node identifier. A node ID is a numeric identifier (0001, 0002,
-     * etc.). The combination of cluster ID and node ID uniquely identifies every cache
-     * node used in a customer's Amazon account.</p>
-     */
-    inline CacheNode& WithCacheNodeId(const Aws::String& value) { SetCacheNodeId(value); return *this;}
-
-    /**
-     * <p>The cache node identifier. A node ID is a numeric identifier (0001, 0002,
-     * etc.). The combination of cluster ID and node ID uniquely identifies every cache
-     * node used in a customer's Amazon account.</p>
-     */
-    inline CacheNode& WithCacheNodeId(Aws::String&& value) { SetCacheNodeId(std::move(value)); return *this;}
-
-    /**
-     * <p>The cache node identifier. A node ID is a numeric identifier (0001, 0002,
-     * etc.). The combination of cluster ID and node ID uniquely identifies every cache
-     * node used in a customer's Amazon account.</p>
-     */
-    inline CacheNode& WithCacheNodeId(const char* value) { SetCacheNodeId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current state of this cache node, one of the following values:
      * <code>available</code>, <code>creating</code>, <code>rebooting</code>, or
      * <code>deleting</code>.</p>
      */
-    inline const Aws::String& GetCacheNodeStatus() const{ return m_cacheNodeStatus; }
-
-    /**
-     * <p>The current state of this cache node, one of the following values:
-     * <code>available</code>, <code>creating</code>, <code>rebooting</code>, or
-     * <code>deleting</code>.</p>
-     */
+    inline const Aws::String& GetCacheNodeStatus() const { return m_cacheNodeStatus; }
     inline bool CacheNodeStatusHasBeenSet() const { return m_cacheNodeStatusHasBeenSet; }
+    template<typename CacheNodeStatusT = Aws::String>
+    void SetCacheNodeStatus(CacheNodeStatusT&& value) { m_cacheNodeStatusHasBeenSet = true; m_cacheNodeStatus = std::forward<CacheNodeStatusT>(value); }
+    template<typename CacheNodeStatusT = Aws::String>
+    CacheNode& WithCacheNodeStatus(CacheNodeStatusT&& value) { SetCacheNodeStatus(std::forward<CacheNodeStatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current state of this cache node, one of the following values:
-     * <code>available</code>, <code>creating</code>, <code>rebooting</code>, or
-     * <code>deleting</code>.</p>
-     */
-    inline void SetCacheNodeStatus(const Aws::String& value) { m_cacheNodeStatusHasBeenSet = true; m_cacheNodeStatus = value; }
-
-    /**
-     * <p>The current state of this cache node, one of the following values:
-     * <code>available</code>, <code>creating</code>, <code>rebooting</code>, or
-     * <code>deleting</code>.</p>
-     */
-    inline void SetCacheNodeStatus(Aws::String&& value) { m_cacheNodeStatusHasBeenSet = true; m_cacheNodeStatus = std::move(value); }
-
-    /**
-     * <p>The current state of this cache node, one of the following values:
-     * <code>available</code>, <code>creating</code>, <code>rebooting</code>, or
-     * <code>deleting</code>.</p>
-     */
-    inline void SetCacheNodeStatus(const char* value) { m_cacheNodeStatusHasBeenSet = true; m_cacheNodeStatus.assign(value); }
-
-    /**
-     * <p>The current state of this cache node, one of the following values:
-     * <code>available</code>, <code>creating</code>, <code>rebooting</code>, or
-     * <code>deleting</code>.</p>
-     */
-    inline CacheNode& WithCacheNodeStatus(const Aws::String& value) { SetCacheNodeStatus(value); return *this;}
-
-    /**
-     * <p>The current state of this cache node, one of the following values:
-     * <code>available</code>, <code>creating</code>, <code>rebooting</code>, or
-     * <code>deleting</code>.</p>
-     */
-    inline CacheNode& WithCacheNodeStatus(Aws::String&& value) { SetCacheNodeStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The current state of this cache node, one of the following values:
-     * <code>available</code>, <code>creating</code>, <code>rebooting</code>, or
-     * <code>deleting</code>.</p>
-     */
-    inline CacheNode& WithCacheNodeStatus(const char* value) { SetCacheNodeStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time when the cache node was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCacheNodeCreateTime() const{ return m_cacheNodeCreateTime; }
-
-    /**
-     * <p>The date and time when the cache node was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCacheNodeCreateTime() const { return m_cacheNodeCreateTime; }
     inline bool CacheNodeCreateTimeHasBeenSet() const { return m_cacheNodeCreateTimeHasBeenSet; }
+    template<typename CacheNodeCreateTimeT = Aws::Utils::DateTime>
+    void SetCacheNodeCreateTime(CacheNodeCreateTimeT&& value) { m_cacheNodeCreateTimeHasBeenSet = true; m_cacheNodeCreateTime = std::forward<CacheNodeCreateTimeT>(value); }
+    template<typename CacheNodeCreateTimeT = Aws::Utils::DateTime>
+    CacheNode& WithCacheNodeCreateTime(CacheNodeCreateTimeT&& value) { SetCacheNodeCreateTime(std::forward<CacheNodeCreateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time when the cache node was created.</p>
-     */
-    inline void SetCacheNodeCreateTime(const Aws::Utils::DateTime& value) { m_cacheNodeCreateTimeHasBeenSet = true; m_cacheNodeCreateTime = value; }
-
-    /**
-     * <p>The date and time when the cache node was created.</p>
-     */
-    inline void SetCacheNodeCreateTime(Aws::Utils::DateTime&& value) { m_cacheNodeCreateTimeHasBeenSet = true; m_cacheNodeCreateTime = std::move(value); }
-
-    /**
-     * <p>The date and time when the cache node was created.</p>
-     */
-    inline CacheNode& WithCacheNodeCreateTime(const Aws::Utils::DateTime& value) { SetCacheNodeCreateTime(value); return *this;}
-
-    /**
-     * <p>The date and time when the cache node was created.</p>
-     */
-    inline CacheNode& WithCacheNodeCreateTime(Aws::Utils::DateTime&& value) { SetCacheNodeCreateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The hostname for connecting to this cache node.</p>
      */
-    inline const Endpoint& GetEndpoint() const{ return m_endpoint; }
-
-    /**
-     * <p>The hostname for connecting to this cache node.</p>
-     */
+    inline const Endpoint& GetEndpoint() const { return m_endpoint; }
     inline bool EndpointHasBeenSet() const { return m_endpointHasBeenSet; }
+    template<typename EndpointT = Endpoint>
+    void SetEndpoint(EndpointT&& value) { m_endpointHasBeenSet = true; m_endpoint = std::forward<EndpointT>(value); }
+    template<typename EndpointT = Endpoint>
+    CacheNode& WithEndpoint(EndpointT&& value) { SetEndpoint(std::forward<EndpointT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The hostname for connecting to this cache node.</p>
-     */
-    inline void SetEndpoint(const Endpoint& value) { m_endpointHasBeenSet = true; m_endpoint = value; }
-
-    /**
-     * <p>The hostname for connecting to this cache node.</p>
-     */
-    inline void SetEndpoint(Endpoint&& value) { m_endpointHasBeenSet = true; m_endpoint = std::move(value); }
-
-    /**
-     * <p>The hostname for connecting to this cache node.</p>
-     */
-    inline CacheNode& WithEndpoint(const Endpoint& value) { SetEndpoint(value); return *this;}
-
-    /**
-     * <p>The hostname for connecting to this cache node.</p>
-     */
-    inline CacheNode& WithEndpoint(Endpoint&& value) { SetEndpoint(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the parameter group applied to this cache node.</p>
      */
-    inline const Aws::String& GetParameterGroupStatus() const{ return m_parameterGroupStatus; }
-
-    /**
-     * <p>The status of the parameter group applied to this cache node.</p>
-     */
+    inline const Aws::String& GetParameterGroupStatus() const { return m_parameterGroupStatus; }
     inline bool ParameterGroupStatusHasBeenSet() const { return m_parameterGroupStatusHasBeenSet; }
+    template<typename ParameterGroupStatusT = Aws::String>
+    void SetParameterGroupStatus(ParameterGroupStatusT&& value) { m_parameterGroupStatusHasBeenSet = true; m_parameterGroupStatus = std::forward<ParameterGroupStatusT>(value); }
+    template<typename ParameterGroupStatusT = Aws::String>
+    CacheNode& WithParameterGroupStatus(ParameterGroupStatusT&& value) { SetParameterGroupStatus(std::forward<ParameterGroupStatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the parameter group applied to this cache node.</p>
-     */
-    inline void SetParameterGroupStatus(const Aws::String& value) { m_parameterGroupStatusHasBeenSet = true; m_parameterGroupStatus = value; }
-
-    /**
-     * <p>The status of the parameter group applied to this cache node.</p>
-     */
-    inline void SetParameterGroupStatus(Aws::String&& value) { m_parameterGroupStatusHasBeenSet = true; m_parameterGroupStatus = std::move(value); }
-
-    /**
-     * <p>The status of the parameter group applied to this cache node.</p>
-     */
-    inline void SetParameterGroupStatus(const char* value) { m_parameterGroupStatusHasBeenSet = true; m_parameterGroupStatus.assign(value); }
-
-    /**
-     * <p>The status of the parameter group applied to this cache node.</p>
-     */
-    inline CacheNode& WithParameterGroupStatus(const Aws::String& value) { SetParameterGroupStatus(value); return *this;}
-
-    /**
-     * <p>The status of the parameter group applied to this cache node.</p>
-     */
-    inline CacheNode& WithParameterGroupStatus(Aws::String&& value) { SetParameterGroupStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the parameter group applied to this cache node.</p>
-     */
-    inline CacheNode& WithParameterGroupStatus(const char* value) { SetParameterGroupStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the primary node to which this read replica node is synchronized.
      * If this field is empty, this node is not associated with a primary cluster.</p>
      */
-    inline const Aws::String& GetSourceCacheNodeId() const{ return m_sourceCacheNodeId; }
-
-    /**
-     * <p>The ID of the primary node to which this read replica node is synchronized.
-     * If this field is empty, this node is not associated with a primary cluster.</p>
-     */
+    inline const Aws::String& GetSourceCacheNodeId() const { return m_sourceCacheNodeId; }
     inline bool SourceCacheNodeIdHasBeenSet() const { return m_sourceCacheNodeIdHasBeenSet; }
+    template<typename SourceCacheNodeIdT = Aws::String>
+    void SetSourceCacheNodeId(SourceCacheNodeIdT&& value) { m_sourceCacheNodeIdHasBeenSet = true; m_sourceCacheNodeId = std::forward<SourceCacheNodeIdT>(value); }
+    template<typename SourceCacheNodeIdT = Aws::String>
+    CacheNode& WithSourceCacheNodeId(SourceCacheNodeIdT&& value) { SetSourceCacheNodeId(std::forward<SourceCacheNodeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the primary node to which this read replica node is synchronized.
-     * If this field is empty, this node is not associated with a primary cluster.</p>
-     */
-    inline void SetSourceCacheNodeId(const Aws::String& value) { m_sourceCacheNodeIdHasBeenSet = true; m_sourceCacheNodeId = value; }
-
-    /**
-     * <p>The ID of the primary node to which this read replica node is synchronized.
-     * If this field is empty, this node is not associated with a primary cluster.</p>
-     */
-    inline void SetSourceCacheNodeId(Aws::String&& value) { m_sourceCacheNodeIdHasBeenSet = true; m_sourceCacheNodeId = std::move(value); }
-
-    /**
-     * <p>The ID of the primary node to which this read replica node is synchronized.
-     * If this field is empty, this node is not associated with a primary cluster.</p>
-     */
-    inline void SetSourceCacheNodeId(const char* value) { m_sourceCacheNodeIdHasBeenSet = true; m_sourceCacheNodeId.assign(value); }
-
-    /**
-     * <p>The ID of the primary node to which this read replica node is synchronized.
-     * If this field is empty, this node is not associated with a primary cluster.</p>
-     */
-    inline CacheNode& WithSourceCacheNodeId(const Aws::String& value) { SetSourceCacheNodeId(value); return *this;}
-
-    /**
-     * <p>The ID of the primary node to which this read replica node is synchronized.
-     * If this field is empty, this node is not associated with a primary cluster.</p>
-     */
-    inline CacheNode& WithSourceCacheNodeId(Aws::String&& value) { SetSourceCacheNodeId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the primary node to which this read replica node is synchronized.
-     * If this field is empty, this node is not associated with a primary cluster.</p>
-     */
-    inline CacheNode& WithSourceCacheNodeId(const char* value) { SetSourceCacheNodeId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Availability Zone where this node was created and now resides.</p>
      */
-    inline const Aws::String& GetCustomerAvailabilityZone() const{ return m_customerAvailabilityZone; }
-
-    /**
-     * <p>The Availability Zone where this node was created and now resides.</p>
-     */
+    inline const Aws::String& GetCustomerAvailabilityZone() const { return m_customerAvailabilityZone; }
     inline bool CustomerAvailabilityZoneHasBeenSet() const { return m_customerAvailabilityZoneHasBeenSet; }
+    template<typename CustomerAvailabilityZoneT = Aws::String>
+    void SetCustomerAvailabilityZone(CustomerAvailabilityZoneT&& value) { m_customerAvailabilityZoneHasBeenSet = true; m_customerAvailabilityZone = std::forward<CustomerAvailabilityZoneT>(value); }
+    template<typename CustomerAvailabilityZoneT = Aws::String>
+    CacheNode& WithCustomerAvailabilityZone(CustomerAvailabilityZoneT&& value) { SetCustomerAvailabilityZone(std::forward<CustomerAvailabilityZoneT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Availability Zone where this node was created and now resides.</p>
-     */
-    inline void SetCustomerAvailabilityZone(const Aws::String& value) { m_customerAvailabilityZoneHasBeenSet = true; m_customerAvailabilityZone = value; }
-
-    /**
-     * <p>The Availability Zone where this node was created and now resides.</p>
-     */
-    inline void SetCustomerAvailabilityZone(Aws::String&& value) { m_customerAvailabilityZoneHasBeenSet = true; m_customerAvailabilityZone = std::move(value); }
-
-    /**
-     * <p>The Availability Zone where this node was created and now resides.</p>
-     */
-    inline void SetCustomerAvailabilityZone(const char* value) { m_customerAvailabilityZoneHasBeenSet = true; m_customerAvailabilityZone.assign(value); }
-
-    /**
-     * <p>The Availability Zone where this node was created and now resides.</p>
-     */
-    inline CacheNode& WithCustomerAvailabilityZone(const Aws::String& value) { SetCustomerAvailabilityZone(value); return *this;}
-
-    /**
-     * <p>The Availability Zone where this node was created and now resides.</p>
-     */
-    inline CacheNode& WithCustomerAvailabilityZone(Aws::String&& value) { SetCustomerAvailabilityZone(std::move(value)); return *this;}
-
-    /**
-     * <p>The Availability Zone where this node was created and now resides.</p>
-     */
-    inline CacheNode& WithCustomerAvailabilityZone(const char* value) { SetCustomerAvailabilityZone(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The customer outpost ARN of the cache node.</p>
      */
-    inline const Aws::String& GetCustomerOutpostArn() const{ return m_customerOutpostArn; }
-
-    /**
-     * <p>The customer outpost ARN of the cache node.</p>
-     */
+    inline const Aws::String& GetCustomerOutpostArn() const { return m_customerOutpostArn; }
     inline bool CustomerOutpostArnHasBeenSet() const { return m_customerOutpostArnHasBeenSet; }
-
-    /**
-     * <p>The customer outpost ARN of the cache node.</p>
-     */
-    inline void SetCustomerOutpostArn(const Aws::String& value) { m_customerOutpostArnHasBeenSet = true; m_customerOutpostArn = value; }
-
-    /**
-     * <p>The customer outpost ARN of the cache node.</p>
-     */
-    inline void SetCustomerOutpostArn(Aws::String&& value) { m_customerOutpostArnHasBeenSet = true; m_customerOutpostArn = std::move(value); }
-
-    /**
-     * <p>The customer outpost ARN of the cache node.</p>
-     */
-    inline void SetCustomerOutpostArn(const char* value) { m_customerOutpostArnHasBeenSet = true; m_customerOutpostArn.assign(value); }
-
-    /**
-     * <p>The customer outpost ARN of the cache node.</p>
-     */
-    inline CacheNode& WithCustomerOutpostArn(const Aws::String& value) { SetCustomerOutpostArn(value); return *this;}
-
-    /**
-     * <p>The customer outpost ARN of the cache node.</p>
-     */
-    inline CacheNode& WithCustomerOutpostArn(Aws::String&& value) { SetCustomerOutpostArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The customer outpost ARN of the cache node.</p>
-     */
-    inline CacheNode& WithCustomerOutpostArn(const char* value) { SetCustomerOutpostArn(value); return *this;}
-
+    template<typename CustomerOutpostArnT = Aws::String>
+    void SetCustomerOutpostArn(CustomerOutpostArnT&& value) { m_customerOutpostArnHasBeenSet = true; m_customerOutpostArn = std::forward<CustomerOutpostArnT>(value); }
+    template<typename CustomerOutpostArnT = Aws::String>
+    CacheNode& WithCustomerOutpostArn(CustomerOutpostArnT&& value) { SetCustomerOutpostArn(std::forward<CustomerOutpostArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_cacheNodeId;
@@ -462,7 +222,7 @@ namespace Model
     Aws::String m_cacheNodeStatus;
     bool m_cacheNodeStatusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_cacheNodeCreateTime;
+    Aws::Utils::DateTime m_cacheNodeCreateTime{};
     bool m_cacheNodeCreateTimeHasBeenSet = false;
 
     Endpoint m_endpoint;

@@ -22,7 +22,7 @@ namespace Model
   class RegisterThingRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API RegisterThingRequest();
+    AWS_IOT_API RegisterThingRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,154 +33,37 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The provisioning template. See <a
      * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-w-cert.html">Provisioning
      * Devices That Have Device Certificates</a> for more information.</p>
      */
-    inline const Aws::String& GetTemplateBody() const{ return m_templateBody; }
-
-    /**
-     * <p>The provisioning template. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-w-cert.html">Provisioning
-     * Devices That Have Device Certificates</a> for more information.</p>
-     */
+    inline const Aws::String& GetTemplateBody() const { return m_templateBody; }
     inline bool TemplateBodyHasBeenSet() const { return m_templateBodyHasBeenSet; }
+    template<typename TemplateBodyT = Aws::String>
+    void SetTemplateBody(TemplateBodyT&& value) { m_templateBodyHasBeenSet = true; m_templateBody = std::forward<TemplateBodyT>(value); }
+    template<typename TemplateBodyT = Aws::String>
+    RegisterThingRequest& WithTemplateBody(TemplateBodyT&& value) { SetTemplateBody(std::forward<TemplateBodyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The provisioning template. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-w-cert.html">Provisioning
-     * Devices That Have Device Certificates</a> for more information.</p>
-     */
-    inline void SetTemplateBody(const Aws::String& value) { m_templateBodyHasBeenSet = true; m_templateBody = value; }
-
-    /**
-     * <p>The provisioning template. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-w-cert.html">Provisioning
-     * Devices That Have Device Certificates</a> for more information.</p>
-     */
-    inline void SetTemplateBody(Aws::String&& value) { m_templateBodyHasBeenSet = true; m_templateBody = std::move(value); }
-
-    /**
-     * <p>The provisioning template. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-w-cert.html">Provisioning
-     * Devices That Have Device Certificates</a> for more information.</p>
-     */
-    inline void SetTemplateBody(const char* value) { m_templateBodyHasBeenSet = true; m_templateBody.assign(value); }
-
-    /**
-     * <p>The provisioning template. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-w-cert.html">Provisioning
-     * Devices That Have Device Certificates</a> for more information.</p>
-     */
-    inline RegisterThingRequest& WithTemplateBody(const Aws::String& value) { SetTemplateBody(value); return *this;}
-
-    /**
-     * <p>The provisioning template. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-w-cert.html">Provisioning
-     * Devices That Have Device Certificates</a> for more information.</p>
-     */
-    inline RegisterThingRequest& WithTemplateBody(Aws::String&& value) { SetTemplateBody(std::move(value)); return *this;}
-
-    /**
-     * <p>The provisioning template. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-w-cert.html">Provisioning
-     * Devices That Have Device Certificates</a> for more information.</p>
-     */
-    inline RegisterThingRequest& WithTemplateBody(const char* value) { SetTemplateBody(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The parameters for provisioning a thing. See <a
      * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html">Provisioning
      * Templates</a> for more information.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>The parameters for provisioning a thing. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html">Provisioning
-     * Templates</a> for more information.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
-
-    /**
-     * <p>The parameters for provisioning a thing. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html">Provisioning
-     * Templates</a> for more information.</p>
-     */
-    inline void SetParameters(const Aws::Map<Aws::String, Aws::String>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>The parameters for provisioning a thing. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html">Provisioning
-     * Templates</a> for more information.</p>
-     */
-    inline void SetParameters(Aws::Map<Aws::String, Aws::String>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>The parameters for provisioning a thing. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html">Provisioning
-     * Templates</a> for more information.</p>
-     */
-    inline RegisterThingRequest& WithParameters(const Aws::Map<Aws::String, Aws::String>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>The parameters for provisioning a thing. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html">Provisioning
-     * Templates</a> for more information.</p>
-     */
-    inline RegisterThingRequest& WithParameters(Aws::Map<Aws::String, Aws::String>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>The parameters for provisioning a thing. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html">Provisioning
-     * Templates</a> for more information.</p>
-     */
-    inline RegisterThingRequest& AddParameters(const Aws::String& key, const Aws::String& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>The parameters for provisioning a thing. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html">Provisioning
-     * Templates</a> for more information.</p>
-     */
-    inline RegisterThingRequest& AddParameters(Aws::String&& key, const Aws::String& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The parameters for provisioning a thing. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html">Provisioning
-     * Templates</a> for more information.</p>
-     */
-    inline RegisterThingRequest& AddParameters(const Aws::String& key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The parameters for provisioning a thing. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html">Provisioning
-     * Templates</a> for more information.</p>
-     */
-    inline RegisterThingRequest& AddParameters(Aws::String&& key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The parameters for provisioning a thing. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html">Provisioning
-     * Templates</a> for more information.</p>
-     */
-    inline RegisterThingRequest& AddParameters(const char* key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The parameters for provisioning a thing. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html">Provisioning
-     * Templates</a> for more information.</p>
-     */
-    inline RegisterThingRequest& AddParameters(Aws::String&& key, const char* value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The parameters for provisioning a thing. See <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html">Provisioning
-     * Templates</a> for more information.</p>
-     */
-    inline RegisterThingRequest& AddParameters(const char* key, const char* value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
+    template<typename ParametersT = Aws::Map<Aws::String, Aws::String>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Map<Aws::String, Aws::String>>
+    RegisterThingRequest& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersKeyT = Aws::String, typename ParametersValueT = Aws::String>
+    RegisterThingRequest& AddParameters(ParametersKeyT&& key, ParametersValueT&& value) {
+      m_parametersHasBeenSet = true; m_parameters.emplace(std::forward<ParametersKeyT>(key), std::forward<ParametersValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_templateBody;

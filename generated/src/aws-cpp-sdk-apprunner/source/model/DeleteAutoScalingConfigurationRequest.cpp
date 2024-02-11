@@ -12,11 +12,6 @@ using namespace Aws::AppRunner::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DeleteAutoScalingConfigurationRequest::DeleteAutoScalingConfigurationRequest() : 
-    m_autoScalingConfigurationArnHasBeenSet(false)
-{
-}
-
 Aws::String DeleteAutoScalingConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -24,6 +19,12 @@ Aws::String DeleteAutoScalingConfigurationRequest::SerializePayload() const
   if(m_autoScalingConfigurationArnHasBeenSet)
   {
    payload.WithString("AutoScalingConfigurationArn", m_autoScalingConfigurationArn);
+
+  }
+
+  if(m_deleteAllRevisionsHasBeenSet)
+  {
+   payload.WithBool("DeleteAllRevisions", m_deleteAllRevisions);
 
   }
 

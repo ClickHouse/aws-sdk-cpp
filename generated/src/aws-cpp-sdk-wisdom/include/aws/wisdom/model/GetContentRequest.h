@@ -21,7 +21,7 @@ namespace Model
   class GetContentRequest : public ConnectWisdomServiceRequest
   {
   public:
-    AWS_CONNECTWISDOMSERVICE_API GetContentRequest();
+    AWS_CONNECTWISDOMSERVICE_API GetContentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,103 +32,32 @@ namespace Model
     AWS_CONNECTWISDOMSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the content. Can be either the ID or the ARN. URLs cannot
      * contain the ARN.</p>
      */
-    inline const Aws::String& GetContentId() const{ return m_contentId; }
-
-    /**
-     * <p>The identifier of the content. Can be either the ID or the ARN. URLs cannot
-     * contain the ARN.</p>
-     */
+    inline const Aws::String& GetContentId() const { return m_contentId; }
     inline bool ContentIdHasBeenSet() const { return m_contentIdHasBeenSet; }
+    template<typename ContentIdT = Aws::String>
+    void SetContentId(ContentIdT&& value) { m_contentIdHasBeenSet = true; m_contentId = std::forward<ContentIdT>(value); }
+    template<typename ContentIdT = Aws::String>
+    GetContentRequest& WithContentId(ContentIdT&& value) { SetContentId(std::forward<ContentIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier of the content. Can be either the ID or the ARN. URLs cannot
-     * contain the ARN.</p>
+     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
+     * type knowledge base if you're storing Wisdom Content resource to it. Can be
+     * either the ID or the ARN. URLs cannot contain the ARN.</p>
      */
-    inline void SetContentId(const Aws::String& value) { m_contentIdHasBeenSet = true; m_contentId = value; }
-
-    /**
-     * <p>The identifier of the content. Can be either the ID or the ARN. URLs cannot
-     * contain the ARN.</p>
-     */
-    inline void SetContentId(Aws::String&& value) { m_contentIdHasBeenSet = true; m_contentId = std::move(value); }
-
-    /**
-     * <p>The identifier of the content. Can be either the ID or the ARN. URLs cannot
-     * contain the ARN.</p>
-     */
-    inline void SetContentId(const char* value) { m_contentIdHasBeenSet = true; m_contentId.assign(value); }
-
-    /**
-     * <p>The identifier of the content. Can be either the ID or the ARN. URLs cannot
-     * contain the ARN.</p>
-     */
-    inline GetContentRequest& WithContentId(const Aws::String& value) { SetContentId(value); return *this;}
-
-    /**
-     * <p>The identifier of the content. Can be either the ID or the ARN. URLs cannot
-     * contain the ARN.</p>
-     */
-    inline GetContentRequest& WithContentId(Aws::String&& value) { SetContentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the content. Can be either the ID or the ARN. URLs cannot
-     * contain the ARN.</p>
-     */
-    inline GetContentRequest& WithContentId(const char* value) { SetContentId(value); return *this;}
-
-
-    /**
-     * <p>The identifier of the knowledge base. Can be either the ID or the ARN. URLs
-     * cannot contain the ARN.</p>
-     */
-    inline const Aws::String& GetKnowledgeBaseId() const{ return m_knowledgeBaseId; }
-
-    /**
-     * <p>The identifier of the knowledge base. Can be either the ID or the ARN. URLs
-     * cannot contain the ARN.</p>
-     */
+    inline const Aws::String& GetKnowledgeBaseId() const { return m_knowledgeBaseId; }
     inline bool KnowledgeBaseIdHasBeenSet() const { return m_knowledgeBaseIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the knowledge base. Can be either the ID or the ARN. URLs
-     * cannot contain the ARN.</p>
-     */
-    inline void SetKnowledgeBaseId(const Aws::String& value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId = value; }
-
-    /**
-     * <p>The identifier of the knowledge base. Can be either the ID or the ARN. URLs
-     * cannot contain the ARN.</p>
-     */
-    inline void SetKnowledgeBaseId(Aws::String&& value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId = std::move(value); }
-
-    /**
-     * <p>The identifier of the knowledge base. Can be either the ID or the ARN. URLs
-     * cannot contain the ARN.</p>
-     */
-    inline void SetKnowledgeBaseId(const char* value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId.assign(value); }
-
-    /**
-     * <p>The identifier of the knowledge base. Can be either the ID or the ARN. URLs
-     * cannot contain the ARN.</p>
-     */
-    inline GetContentRequest& WithKnowledgeBaseId(const Aws::String& value) { SetKnowledgeBaseId(value); return *this;}
-
-    /**
-     * <p>The identifier of the knowledge base. Can be either the ID or the ARN. URLs
-     * cannot contain the ARN.</p>
-     */
-    inline GetContentRequest& WithKnowledgeBaseId(Aws::String&& value) { SetKnowledgeBaseId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the knowledge base. Can be either the ID or the ARN. URLs
-     * cannot contain the ARN.</p>
-     */
-    inline GetContentRequest& WithKnowledgeBaseId(const char* value) { SetKnowledgeBaseId(value); return *this;}
-
+    template<typename KnowledgeBaseIdT = Aws::String>
+    void SetKnowledgeBaseId(KnowledgeBaseIdT&& value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId = std::forward<KnowledgeBaseIdT>(value); }
+    template<typename KnowledgeBaseIdT = Aws::String>
+    GetContentRequest& WithKnowledgeBaseId(KnowledgeBaseIdT&& value) { SetKnowledgeBaseId(std::forward<KnowledgeBaseIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_contentId;

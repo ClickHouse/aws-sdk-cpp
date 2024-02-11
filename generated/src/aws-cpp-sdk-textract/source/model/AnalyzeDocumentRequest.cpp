@@ -12,14 +12,6 @@ using namespace Aws::Textract::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-AnalyzeDocumentRequest::AnalyzeDocumentRequest() : 
-    m_documentHasBeenSet(false),
-    m_featureTypesHasBeenSet(false),
-    m_humanLoopConfigHasBeenSet(false),
-    m_queriesConfigHasBeenSet(false)
-{
-}
-
 Aws::String AnalyzeDocumentRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -50,6 +42,12 @@ Aws::String AnalyzeDocumentRequest::SerializePayload() const
   if(m_queriesConfigHasBeenSet)
   {
    payload.WithObject("QueriesConfig", m_queriesConfig.Jsonize());
+
+  }
+
+  if(m_adaptersConfigHasBeenSet)
+  {
+   payload.WithObject("AdaptersConfig", m_adaptersConfig.Jsonize());
 
   }
 

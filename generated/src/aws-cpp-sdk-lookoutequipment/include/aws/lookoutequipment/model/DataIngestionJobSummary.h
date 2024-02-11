@@ -35,210 +35,71 @@ namespace Model
   class DataIngestionJobSummary
   {
   public:
-    AWS_LOOKOUTEQUIPMENT_API DataIngestionJobSummary();
+    AWS_LOOKOUTEQUIPMENT_API DataIngestionJobSummary() = default;
     AWS_LOOKOUTEQUIPMENT_API DataIngestionJobSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTEQUIPMENT_API DataIngestionJobSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTEQUIPMENT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Indicates the job ID of the data ingestion job. </p>
      */
-    inline const Aws::String& GetJobId() const{ return m_jobId; }
-
-    /**
-     * <p>Indicates the job ID of the data ingestion job. </p>
-     */
+    inline const Aws::String& GetJobId() const { return m_jobId; }
     inline bool JobIdHasBeenSet() const { return m_jobIdHasBeenSet; }
+    template<typename JobIdT = Aws::String>
+    void SetJobId(JobIdT&& value) { m_jobIdHasBeenSet = true; m_jobId = std::forward<JobIdT>(value); }
+    template<typename JobIdT = Aws::String>
+    DataIngestionJobSummary& WithJobId(JobIdT&& value) { SetJobId(std::forward<JobIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates the job ID of the data ingestion job. </p>
-     */
-    inline void SetJobId(const Aws::String& value) { m_jobIdHasBeenSet = true; m_jobId = value; }
-
-    /**
-     * <p>Indicates the job ID of the data ingestion job. </p>
-     */
-    inline void SetJobId(Aws::String&& value) { m_jobIdHasBeenSet = true; m_jobId = std::move(value); }
-
-    /**
-     * <p>Indicates the job ID of the data ingestion job. </p>
-     */
-    inline void SetJobId(const char* value) { m_jobIdHasBeenSet = true; m_jobId.assign(value); }
-
-    /**
-     * <p>Indicates the job ID of the data ingestion job. </p>
-     */
-    inline DataIngestionJobSummary& WithJobId(const Aws::String& value) { SetJobId(value); return *this;}
-
-    /**
-     * <p>Indicates the job ID of the data ingestion job. </p>
-     */
-    inline DataIngestionJobSummary& WithJobId(Aws::String&& value) { SetJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates the job ID of the data ingestion job. </p>
-     */
-    inline DataIngestionJobSummary& WithJobId(const char* value) { SetJobId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the dataset used for the data ingestion job. </p>
      */
-    inline const Aws::String& GetDatasetName() const{ return m_datasetName; }
-
-    /**
-     * <p>The name of the dataset used for the data ingestion job. </p>
-     */
+    inline const Aws::String& GetDatasetName() const { return m_datasetName; }
     inline bool DatasetNameHasBeenSet() const { return m_datasetNameHasBeenSet; }
+    template<typename DatasetNameT = Aws::String>
+    void SetDatasetName(DatasetNameT&& value) { m_datasetNameHasBeenSet = true; m_datasetName = std::forward<DatasetNameT>(value); }
+    template<typename DatasetNameT = Aws::String>
+    DataIngestionJobSummary& WithDatasetName(DatasetNameT&& value) { SetDatasetName(std::forward<DatasetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the dataset used for the data ingestion job. </p>
-     */
-    inline void SetDatasetName(const Aws::String& value) { m_datasetNameHasBeenSet = true; m_datasetName = value; }
-
-    /**
-     * <p>The name of the dataset used for the data ingestion job. </p>
-     */
-    inline void SetDatasetName(Aws::String&& value) { m_datasetNameHasBeenSet = true; m_datasetName = std::move(value); }
-
-    /**
-     * <p>The name of the dataset used for the data ingestion job. </p>
-     */
-    inline void SetDatasetName(const char* value) { m_datasetNameHasBeenSet = true; m_datasetName.assign(value); }
-
-    /**
-     * <p>The name of the dataset used for the data ingestion job. </p>
-     */
-    inline DataIngestionJobSummary& WithDatasetName(const Aws::String& value) { SetDatasetName(value); return *this;}
-
-    /**
-     * <p>The name of the dataset used for the data ingestion job. </p>
-     */
-    inline DataIngestionJobSummary& WithDatasetName(Aws::String&& value) { SetDatasetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the dataset used for the data ingestion job. </p>
-     */
-    inline DataIngestionJobSummary& WithDatasetName(const char* value) { SetDatasetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the dataset used in the data ingestion job.
      * </p>
      */
-    inline const Aws::String& GetDatasetArn() const{ return m_datasetArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset used in the data ingestion job.
-     * </p>
-     */
+    inline const Aws::String& GetDatasetArn() const { return m_datasetArn; }
     inline bool DatasetArnHasBeenSet() const { return m_datasetArnHasBeenSet; }
+    template<typename DatasetArnT = Aws::String>
+    void SetDatasetArn(DatasetArnT&& value) { m_datasetArnHasBeenSet = true; m_datasetArn = std::forward<DatasetArnT>(value); }
+    template<typename DatasetArnT = Aws::String>
+    DataIngestionJobSummary& WithDatasetArn(DatasetArnT&& value) { SetDatasetArn(std::forward<DatasetArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset used in the data ingestion job.
-     * </p>
-     */
-    inline void SetDatasetArn(const Aws::String& value) { m_datasetArnHasBeenSet = true; m_datasetArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset used in the data ingestion job.
-     * </p>
-     */
-    inline void SetDatasetArn(Aws::String&& value) { m_datasetArnHasBeenSet = true; m_datasetArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset used in the data ingestion job.
-     * </p>
-     */
-    inline void SetDatasetArn(const char* value) { m_datasetArnHasBeenSet = true; m_datasetArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset used in the data ingestion job.
-     * </p>
-     */
-    inline DataIngestionJobSummary& WithDatasetArn(const Aws::String& value) { SetDatasetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset used in the data ingestion job.
-     * </p>
-     */
-    inline DataIngestionJobSummary& WithDatasetArn(Aws::String&& value) { SetDatasetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset used in the data ingestion job.
-     * </p>
-     */
-    inline DataIngestionJobSummary& WithDatasetArn(const char* value) { SetDatasetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Specifies information for the input data for the data inference job,
      * including data Amazon S3 location parameters. </p>
      */
-    inline const IngestionInputConfiguration& GetIngestionInputConfiguration() const{ return m_ingestionInputConfiguration; }
-
-    /**
-     * <p> Specifies information for the input data for the data inference job,
-     * including data Amazon S3 location parameters. </p>
-     */
+    inline const IngestionInputConfiguration& GetIngestionInputConfiguration() const { return m_ingestionInputConfiguration; }
     inline bool IngestionInputConfigurationHasBeenSet() const { return m_ingestionInputConfigurationHasBeenSet; }
+    template<typename IngestionInputConfigurationT = IngestionInputConfiguration>
+    void SetIngestionInputConfiguration(IngestionInputConfigurationT&& value) { m_ingestionInputConfigurationHasBeenSet = true; m_ingestionInputConfiguration = std::forward<IngestionInputConfigurationT>(value); }
+    template<typename IngestionInputConfigurationT = IngestionInputConfiguration>
+    DataIngestionJobSummary& WithIngestionInputConfiguration(IngestionInputConfigurationT&& value) { SetIngestionInputConfiguration(std::forward<IngestionInputConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Specifies information for the input data for the data inference job,
-     * including data Amazon S3 location parameters. </p>
-     */
-    inline void SetIngestionInputConfiguration(const IngestionInputConfiguration& value) { m_ingestionInputConfigurationHasBeenSet = true; m_ingestionInputConfiguration = value; }
-
-    /**
-     * <p> Specifies information for the input data for the data inference job,
-     * including data Amazon S3 location parameters. </p>
-     */
-    inline void SetIngestionInputConfiguration(IngestionInputConfiguration&& value) { m_ingestionInputConfigurationHasBeenSet = true; m_ingestionInputConfiguration = std::move(value); }
-
-    /**
-     * <p> Specifies information for the input data for the data inference job,
-     * including data Amazon S3 location parameters. </p>
-     */
-    inline DataIngestionJobSummary& WithIngestionInputConfiguration(const IngestionInputConfiguration& value) { SetIngestionInputConfiguration(value); return *this;}
-
-    /**
-     * <p> Specifies information for the input data for the data inference job,
-     * including data Amazon S3 location parameters. </p>
-     */
-    inline DataIngestionJobSummary& WithIngestionInputConfiguration(IngestionInputConfiguration&& value) { SetIngestionInputConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates the status of the data ingestion job. </p>
      */
-    inline const IngestionJobStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Indicates the status of the data ingestion job. </p>
-     */
+    inline IngestionJobStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>Indicates the status of the data ingestion job. </p>
-     */
-    inline void SetStatus(const IngestionJobStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Indicates the status of the data ingestion job. </p>
-     */
-    inline void SetStatus(IngestionJobStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Indicates the status of the data ingestion job. </p>
-     */
-    inline DataIngestionJobSummary& WithStatus(const IngestionJobStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Indicates the status of the data ingestion job. </p>
-     */
-    inline DataIngestionJobSummary& WithStatus(IngestionJobStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(IngestionJobStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline DataIngestionJobSummary& WithStatus(IngestionJobStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_jobId;
@@ -253,7 +114,7 @@ namespace Model
     IngestionInputConfiguration m_ingestionInputConfiguration;
     bool m_ingestionInputConfigurationHasBeenSet = false;
 
-    IngestionJobStatus m_status;
+    IngestionJobStatus m_status{IngestionJobStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

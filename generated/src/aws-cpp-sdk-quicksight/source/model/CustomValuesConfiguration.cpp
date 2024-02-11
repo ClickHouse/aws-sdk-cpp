@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-CustomValuesConfiguration::CustomValuesConfiguration() : 
-    m_includeNullValue(false),
-    m_includeNullValueHasBeenSet(false),
-    m_customValuesHasBeenSet(false)
-{
-}
-
-CustomValuesConfiguration::CustomValuesConfiguration(JsonView jsonValue) : 
-    m_includeNullValue(false),
-    m_includeNullValueHasBeenSet(false),
-    m_customValuesHasBeenSet(false)
+CustomValuesConfiguration::CustomValuesConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ CustomValuesConfiguration& CustomValuesConfiguration::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("IncludeNullValue"))
   {
     m_includeNullValue = jsonValue.GetBool("IncludeNullValue");
-
     m_includeNullValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CustomValues"))
   {
     m_customValues = jsonValue.GetObject("CustomValues");
-
     m_customValuesHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -12,18 +12,6 @@ using namespace Aws::ResilienceHub::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateAppRequest::CreateAppRequest() : 
-    m_assessmentSchedule(AppAssessmentScheduleType::NOT_SET),
-    m_assessmentScheduleHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_descriptionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_policyArnHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateAppRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +19,12 @@ Aws::String CreateAppRequest::SerializePayload() const
   if(m_assessmentScheduleHasBeenSet)
   {
    payload.WithString("assessmentSchedule", AppAssessmentScheduleTypeMapper::GetNameForAppAssessmentScheduleType(m_assessmentSchedule));
+  }
+
+  if(m_awsApplicationArnHasBeenSet)
+  {
+   payload.WithString("awsApplicationArn", m_awsApplicationArn);
+
   }
 
   if(m_clientTokenHasBeenSet)
@@ -45,9 +39,26 @@ Aws::String CreateAppRequest::SerializePayload() const
 
   }
 
+  if(m_eventSubscriptionsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> eventSubscriptionsJsonList(m_eventSubscriptions.size());
+   for(unsigned eventSubscriptionsIndex = 0; eventSubscriptionsIndex < eventSubscriptionsJsonList.GetLength(); ++eventSubscriptionsIndex)
+   {
+     eventSubscriptionsJsonList[eventSubscriptionsIndex].AsObject(m_eventSubscriptions[eventSubscriptionsIndex].Jsonize());
+   }
+   payload.WithArray("eventSubscriptions", std::move(eventSubscriptionsJsonList));
+
+  }
+
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
+
+  }
+
+  if(m_permissionModelHasBeenSet)
+  {
+   payload.WithObject("permissionModel", m_permissionModel.Jsonize());
 
   }
 

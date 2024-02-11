@@ -35,129 +35,50 @@ namespace Model
   class TimeSeries
   {
   public:
-    AWS_LOOKOUTMETRICS_API TimeSeries();
+    AWS_LOOKOUTMETRICS_API TimeSeries() = default;
     AWS_LOOKOUTMETRICS_API TimeSeries(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API TimeSeries& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the metric.</p>
      */
-    inline const Aws::String& GetTimeSeriesId() const{ return m_timeSeriesId; }
-
-    /**
-     * <p>The ID of the metric.</p>
-     */
+    inline const Aws::String& GetTimeSeriesId() const { return m_timeSeriesId; }
     inline bool TimeSeriesIdHasBeenSet() const { return m_timeSeriesIdHasBeenSet; }
+    template<typename TimeSeriesIdT = Aws::String>
+    void SetTimeSeriesId(TimeSeriesIdT&& value) { m_timeSeriesIdHasBeenSet = true; m_timeSeriesId = std::forward<TimeSeriesIdT>(value); }
+    template<typename TimeSeriesIdT = Aws::String>
+    TimeSeries& WithTimeSeriesId(TimeSeriesIdT&& value) { SetTimeSeriesId(std::forward<TimeSeriesIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the metric.</p>
-     */
-    inline void SetTimeSeriesId(const Aws::String& value) { m_timeSeriesIdHasBeenSet = true; m_timeSeriesId = value; }
-
-    /**
-     * <p>The ID of the metric.</p>
-     */
-    inline void SetTimeSeriesId(Aws::String&& value) { m_timeSeriesIdHasBeenSet = true; m_timeSeriesId = std::move(value); }
-
-    /**
-     * <p>The ID of the metric.</p>
-     */
-    inline void SetTimeSeriesId(const char* value) { m_timeSeriesIdHasBeenSet = true; m_timeSeriesId.assign(value); }
-
-    /**
-     * <p>The ID of the metric.</p>
-     */
-    inline TimeSeries& WithTimeSeriesId(const Aws::String& value) { SetTimeSeriesId(value); return *this;}
-
-    /**
-     * <p>The ID of the metric.</p>
-     */
-    inline TimeSeries& WithTimeSeriesId(Aws::String&& value) { SetTimeSeriesId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the metric.</p>
-     */
-    inline TimeSeries& WithTimeSeriesId(const char* value) { SetTimeSeriesId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The dimensions of the metric.</p>
      */
-    inline const Aws::Vector<DimensionNameValue>& GetDimensionList() const{ return m_dimensionList; }
-
-    /**
-     * <p>The dimensions of the metric.</p>
-     */
+    inline const Aws::Vector<DimensionNameValue>& GetDimensionList() const { return m_dimensionList; }
     inline bool DimensionListHasBeenSet() const { return m_dimensionListHasBeenSet; }
+    template<typename DimensionListT = Aws::Vector<DimensionNameValue>>
+    void SetDimensionList(DimensionListT&& value) { m_dimensionListHasBeenSet = true; m_dimensionList = std::forward<DimensionListT>(value); }
+    template<typename DimensionListT = Aws::Vector<DimensionNameValue>>
+    TimeSeries& WithDimensionList(DimensionListT&& value) { SetDimensionList(std::forward<DimensionListT>(value)); return *this;}
+    template<typename DimensionListT = DimensionNameValue>
+    TimeSeries& AddDimensionList(DimensionListT&& value) { m_dimensionListHasBeenSet = true; m_dimensionList.emplace_back(std::forward<DimensionListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The dimensions of the metric.</p>
-     */
-    inline void SetDimensionList(const Aws::Vector<DimensionNameValue>& value) { m_dimensionListHasBeenSet = true; m_dimensionList = value; }
-
-    /**
-     * <p>The dimensions of the metric.</p>
-     */
-    inline void SetDimensionList(Aws::Vector<DimensionNameValue>&& value) { m_dimensionListHasBeenSet = true; m_dimensionList = std::move(value); }
-
-    /**
-     * <p>The dimensions of the metric.</p>
-     */
-    inline TimeSeries& WithDimensionList(const Aws::Vector<DimensionNameValue>& value) { SetDimensionList(value); return *this;}
-
-    /**
-     * <p>The dimensions of the metric.</p>
-     */
-    inline TimeSeries& WithDimensionList(Aws::Vector<DimensionNameValue>&& value) { SetDimensionList(std::move(value)); return *this;}
-
-    /**
-     * <p>The dimensions of the metric.</p>
-     */
-    inline TimeSeries& AddDimensionList(const DimensionNameValue& value) { m_dimensionListHasBeenSet = true; m_dimensionList.push_back(value); return *this; }
-
-    /**
-     * <p>The dimensions of the metric.</p>
-     */
-    inline TimeSeries& AddDimensionList(DimensionNameValue&& value) { m_dimensionListHasBeenSet = true; m_dimensionList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The values for the metric.</p>
      */
-    inline const Aws::Vector<double>& GetMetricValueList() const{ return m_metricValueList; }
-
-    /**
-     * <p>The values for the metric.</p>
-     */
+    inline const Aws::Vector<double>& GetMetricValueList() const { return m_metricValueList; }
     inline bool MetricValueListHasBeenSet() const { return m_metricValueListHasBeenSet; }
-
-    /**
-     * <p>The values for the metric.</p>
-     */
-    inline void SetMetricValueList(const Aws::Vector<double>& value) { m_metricValueListHasBeenSet = true; m_metricValueList = value; }
-
-    /**
-     * <p>The values for the metric.</p>
-     */
-    inline void SetMetricValueList(Aws::Vector<double>&& value) { m_metricValueListHasBeenSet = true; m_metricValueList = std::move(value); }
-
-    /**
-     * <p>The values for the metric.</p>
-     */
-    inline TimeSeries& WithMetricValueList(const Aws::Vector<double>& value) { SetMetricValueList(value); return *this;}
-
-    /**
-     * <p>The values for the metric.</p>
-     */
-    inline TimeSeries& WithMetricValueList(Aws::Vector<double>&& value) { SetMetricValueList(std::move(value)); return *this;}
-
-    /**
-     * <p>The values for the metric.</p>
-     */
+    template<typename MetricValueListT = Aws::Vector<double>>
+    void SetMetricValueList(MetricValueListT&& value) { m_metricValueListHasBeenSet = true; m_metricValueList = std::forward<MetricValueListT>(value); }
+    template<typename MetricValueListT = Aws::Vector<double>>
+    TimeSeries& WithMetricValueList(MetricValueListT&& value) { SetMetricValueList(std::forward<MetricValueListT>(value)); return *this;}
     inline TimeSeries& AddMetricValueList(double value) { m_metricValueListHasBeenSet = true; m_metricValueList.push_back(value); return *this; }
-
+    ///@}
   private:
 
     Aws::String m_timeSeriesId;

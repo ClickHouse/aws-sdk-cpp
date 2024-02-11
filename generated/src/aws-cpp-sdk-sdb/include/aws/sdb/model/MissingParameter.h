@@ -30,7 +30,7 @@ namespace Model
   class MissingParameter
   {
   public:
-    AWS_SIMPLEDB_API MissingParameter();
+    AWS_SIMPLEDB_API MissingParameter() = default;
     AWS_SIMPLEDB_API MissingParameter(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_SIMPLEDB_API MissingParameter& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -38,21 +38,16 @@ namespace Model
     AWS_SIMPLEDB_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     
-    inline double GetBoxUsage() const{ return m_boxUsage; }
-
-    
+    inline double GetBoxUsage() const { return m_boxUsage; }
     inline bool BoxUsageHasBeenSet() const { return m_boxUsageHasBeenSet; }
-
-    
     inline void SetBoxUsage(double value) { m_boxUsageHasBeenSet = true; m_boxUsage = value; }
-
-    
     inline MissingParameter& WithBoxUsage(double value) { SetBoxUsage(value); return *this;}
-
+    ///@}
   private:
 
-    double m_boxUsage;
+    double m_boxUsage{0.0};
     bool m_boxUsageHasBeenSet = false;
   };
 

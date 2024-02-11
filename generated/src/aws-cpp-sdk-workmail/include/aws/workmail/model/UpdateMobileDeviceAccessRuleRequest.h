@@ -23,7 +23,7 @@ namespace Model
   class UpdateMobileDeviceAccessRuleRequest : public WorkMailRequest
   {
   public:
-    AWS_WORKMAIL_API UpdateMobileDeviceAccessRuleRequest();
+    AWS_WORKMAIL_API UpdateMobileDeviceAccessRuleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,610 +36,180 @@ namespace Model
     AWS_WORKMAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The WorkMail organization under which the rule will be updated.</p>
      */
-    inline const Aws::String& GetOrganizationId() const{ return m_organizationId; }
-
-    /**
-     * <p>The WorkMail organization under which the rule will be updated.</p>
-     */
+    inline const Aws::String& GetOrganizationId() const { return m_organizationId; }
     inline bool OrganizationIdHasBeenSet() const { return m_organizationIdHasBeenSet; }
+    template<typename OrganizationIdT = Aws::String>
+    void SetOrganizationId(OrganizationIdT&& value) { m_organizationIdHasBeenSet = true; m_organizationId = std::forward<OrganizationIdT>(value); }
+    template<typename OrganizationIdT = Aws::String>
+    UpdateMobileDeviceAccessRuleRequest& WithOrganizationId(OrganizationIdT&& value) { SetOrganizationId(std::forward<OrganizationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The WorkMail organization under which the rule will be updated.</p>
-     */
-    inline void SetOrganizationId(const Aws::String& value) { m_organizationIdHasBeenSet = true; m_organizationId = value; }
-
-    /**
-     * <p>The WorkMail organization under which the rule will be updated.</p>
-     */
-    inline void SetOrganizationId(Aws::String&& value) { m_organizationIdHasBeenSet = true; m_organizationId = std::move(value); }
-
-    /**
-     * <p>The WorkMail organization under which the rule will be updated.</p>
-     */
-    inline void SetOrganizationId(const char* value) { m_organizationIdHasBeenSet = true; m_organizationId.assign(value); }
-
-    /**
-     * <p>The WorkMail organization under which the rule will be updated.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithOrganizationId(const Aws::String& value) { SetOrganizationId(value); return *this;}
-
-    /**
-     * <p>The WorkMail organization under which the rule will be updated.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithOrganizationId(Aws::String&& value) { SetOrganizationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The WorkMail organization under which the rule will be updated.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithOrganizationId(const char* value) { SetOrganizationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the rule to be updated.</p>
      */
-    inline const Aws::String& GetMobileDeviceAccessRuleId() const{ return m_mobileDeviceAccessRuleId; }
-
-    /**
-     * <p>The identifier of the rule to be updated.</p>
-     */
+    inline const Aws::String& GetMobileDeviceAccessRuleId() const { return m_mobileDeviceAccessRuleId; }
     inline bool MobileDeviceAccessRuleIdHasBeenSet() const { return m_mobileDeviceAccessRuleIdHasBeenSet; }
+    template<typename MobileDeviceAccessRuleIdT = Aws::String>
+    void SetMobileDeviceAccessRuleId(MobileDeviceAccessRuleIdT&& value) { m_mobileDeviceAccessRuleIdHasBeenSet = true; m_mobileDeviceAccessRuleId = std::forward<MobileDeviceAccessRuleIdT>(value); }
+    template<typename MobileDeviceAccessRuleIdT = Aws::String>
+    UpdateMobileDeviceAccessRuleRequest& WithMobileDeviceAccessRuleId(MobileDeviceAccessRuleIdT&& value) { SetMobileDeviceAccessRuleId(std::forward<MobileDeviceAccessRuleIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the rule to be updated.</p>
-     */
-    inline void SetMobileDeviceAccessRuleId(const Aws::String& value) { m_mobileDeviceAccessRuleIdHasBeenSet = true; m_mobileDeviceAccessRuleId = value; }
-
-    /**
-     * <p>The identifier of the rule to be updated.</p>
-     */
-    inline void SetMobileDeviceAccessRuleId(Aws::String&& value) { m_mobileDeviceAccessRuleIdHasBeenSet = true; m_mobileDeviceAccessRuleId = std::move(value); }
-
-    /**
-     * <p>The identifier of the rule to be updated.</p>
-     */
-    inline void SetMobileDeviceAccessRuleId(const char* value) { m_mobileDeviceAccessRuleIdHasBeenSet = true; m_mobileDeviceAccessRuleId.assign(value); }
-
-    /**
-     * <p>The identifier of the rule to be updated.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithMobileDeviceAccessRuleId(const Aws::String& value) { SetMobileDeviceAccessRuleId(value); return *this;}
-
-    /**
-     * <p>The identifier of the rule to be updated.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithMobileDeviceAccessRuleId(Aws::String&& value) { SetMobileDeviceAccessRuleId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the rule to be updated.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithMobileDeviceAccessRuleId(const char* value) { SetMobileDeviceAccessRuleId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The updated rule name.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The updated rule name.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateMobileDeviceAccessRuleRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The updated rule name.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The updated rule name.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The updated rule name.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The updated rule name.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The updated rule name.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The updated rule name.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The updated rule description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The updated rule description.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateMobileDeviceAccessRuleRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The updated rule description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The updated rule description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The updated rule description.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The updated rule description.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The updated rule description.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The updated rule description.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The effect of the rule when it matches. Allowed values are <code>ALLOW</code>
      * or <code>DENY</code>.</p>
      */
-    inline const MobileDeviceAccessRuleEffect& GetEffect() const{ return m_effect; }
-
-    /**
-     * <p>The effect of the rule when it matches. Allowed values are <code>ALLOW</code>
-     * or <code>DENY</code>.</p>
-     */
+    inline MobileDeviceAccessRuleEffect GetEffect() const { return m_effect; }
     inline bool EffectHasBeenSet() const { return m_effectHasBeenSet; }
+    inline void SetEffect(MobileDeviceAccessRuleEffect value) { m_effectHasBeenSet = true; m_effect = value; }
+    inline UpdateMobileDeviceAccessRuleRequest& WithEffect(MobileDeviceAccessRuleEffect value) { SetEffect(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The effect of the rule when it matches. Allowed values are <code>ALLOW</code>
-     * or <code>DENY</code>.</p>
-     */
-    inline void SetEffect(const MobileDeviceAccessRuleEffect& value) { m_effectHasBeenSet = true; m_effect = value; }
-
-    /**
-     * <p>The effect of the rule when it matches. Allowed values are <code>ALLOW</code>
-     * or <code>DENY</code>.</p>
-     */
-    inline void SetEffect(MobileDeviceAccessRuleEffect&& value) { m_effectHasBeenSet = true; m_effect = std::move(value); }
-
-    /**
-     * <p>The effect of the rule when it matches. Allowed values are <code>ALLOW</code>
-     * or <code>DENY</code>.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithEffect(const MobileDeviceAccessRuleEffect& value) { SetEffect(value); return *this;}
-
-    /**
-     * <p>The effect of the rule when it matches. Allowed values are <code>ALLOW</code>
-     * or <code>DENY</code>.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithEffect(MobileDeviceAccessRuleEffect&& value) { SetEffect(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Device types that the updated rule will match.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetDeviceTypes() const{ return m_deviceTypes; }
-
-    /**
-     * <p>Device types that the updated rule will match.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetDeviceTypes() const { return m_deviceTypes; }
     inline bool DeviceTypesHasBeenSet() const { return m_deviceTypesHasBeenSet; }
+    template<typename DeviceTypesT = Aws::Vector<Aws::String>>
+    void SetDeviceTypes(DeviceTypesT&& value) { m_deviceTypesHasBeenSet = true; m_deviceTypes = std::forward<DeviceTypesT>(value); }
+    template<typename DeviceTypesT = Aws::Vector<Aws::String>>
+    UpdateMobileDeviceAccessRuleRequest& WithDeviceTypes(DeviceTypesT&& value) { SetDeviceTypes(std::forward<DeviceTypesT>(value)); return *this;}
+    template<typename DeviceTypesT = Aws::String>
+    UpdateMobileDeviceAccessRuleRequest& AddDeviceTypes(DeviceTypesT&& value) { m_deviceTypesHasBeenSet = true; m_deviceTypes.emplace_back(std::forward<DeviceTypesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Device types that the updated rule will match.</p>
-     */
-    inline void SetDeviceTypes(const Aws::Vector<Aws::String>& value) { m_deviceTypesHasBeenSet = true; m_deviceTypes = value; }
-
-    /**
-     * <p>Device types that the updated rule will match.</p>
-     */
-    inline void SetDeviceTypes(Aws::Vector<Aws::String>&& value) { m_deviceTypesHasBeenSet = true; m_deviceTypes = std::move(value); }
-
-    /**
-     * <p>Device types that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithDeviceTypes(const Aws::Vector<Aws::String>& value) { SetDeviceTypes(value); return *this;}
-
-    /**
-     * <p>Device types that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithDeviceTypes(Aws::Vector<Aws::String>&& value) { SetDeviceTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>Device types that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddDeviceTypes(const Aws::String& value) { m_deviceTypesHasBeenSet = true; m_deviceTypes.push_back(value); return *this; }
-
-    /**
-     * <p>Device types that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddDeviceTypes(Aws::String&& value) { m_deviceTypesHasBeenSet = true; m_deviceTypes.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Device types that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddDeviceTypes(const char* value) { m_deviceTypesHasBeenSet = true; m_deviceTypes.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Device types that the updated rule <b>will not</b> match. All other device
      * types will match.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetNotDeviceTypes() const{ return m_notDeviceTypes; }
-
-    /**
-     * <p>Device types that the updated rule <b>will not</b> match. All other device
-     * types will match.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetNotDeviceTypes() const { return m_notDeviceTypes; }
     inline bool NotDeviceTypesHasBeenSet() const { return m_notDeviceTypesHasBeenSet; }
+    template<typename NotDeviceTypesT = Aws::Vector<Aws::String>>
+    void SetNotDeviceTypes(NotDeviceTypesT&& value) { m_notDeviceTypesHasBeenSet = true; m_notDeviceTypes = std::forward<NotDeviceTypesT>(value); }
+    template<typename NotDeviceTypesT = Aws::Vector<Aws::String>>
+    UpdateMobileDeviceAccessRuleRequest& WithNotDeviceTypes(NotDeviceTypesT&& value) { SetNotDeviceTypes(std::forward<NotDeviceTypesT>(value)); return *this;}
+    template<typename NotDeviceTypesT = Aws::String>
+    UpdateMobileDeviceAccessRuleRequest& AddNotDeviceTypes(NotDeviceTypesT&& value) { m_notDeviceTypesHasBeenSet = true; m_notDeviceTypes.emplace_back(std::forward<NotDeviceTypesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Device types that the updated rule <b>will not</b> match. All other device
-     * types will match.</p>
-     */
-    inline void SetNotDeviceTypes(const Aws::Vector<Aws::String>& value) { m_notDeviceTypesHasBeenSet = true; m_notDeviceTypes = value; }
-
-    /**
-     * <p>Device types that the updated rule <b>will not</b> match. All other device
-     * types will match.</p>
-     */
-    inline void SetNotDeviceTypes(Aws::Vector<Aws::String>&& value) { m_notDeviceTypesHasBeenSet = true; m_notDeviceTypes = std::move(value); }
-
-    /**
-     * <p>Device types that the updated rule <b>will not</b> match. All other device
-     * types will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithNotDeviceTypes(const Aws::Vector<Aws::String>& value) { SetNotDeviceTypes(value); return *this;}
-
-    /**
-     * <p>Device types that the updated rule <b>will not</b> match. All other device
-     * types will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithNotDeviceTypes(Aws::Vector<Aws::String>&& value) { SetNotDeviceTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>Device types that the updated rule <b>will not</b> match. All other device
-     * types will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddNotDeviceTypes(const Aws::String& value) { m_notDeviceTypesHasBeenSet = true; m_notDeviceTypes.push_back(value); return *this; }
-
-    /**
-     * <p>Device types that the updated rule <b>will not</b> match. All other device
-     * types will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddNotDeviceTypes(Aws::String&& value) { m_notDeviceTypesHasBeenSet = true; m_notDeviceTypes.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Device types that the updated rule <b>will not</b> match. All other device
-     * types will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddNotDeviceTypes(const char* value) { m_notDeviceTypesHasBeenSet = true; m_notDeviceTypes.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Device models that the updated rule will match.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetDeviceModels() const{ return m_deviceModels; }
-
-    /**
-     * <p>Device models that the updated rule will match.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetDeviceModels() const { return m_deviceModels; }
     inline bool DeviceModelsHasBeenSet() const { return m_deviceModelsHasBeenSet; }
+    template<typename DeviceModelsT = Aws::Vector<Aws::String>>
+    void SetDeviceModels(DeviceModelsT&& value) { m_deviceModelsHasBeenSet = true; m_deviceModels = std::forward<DeviceModelsT>(value); }
+    template<typename DeviceModelsT = Aws::Vector<Aws::String>>
+    UpdateMobileDeviceAccessRuleRequest& WithDeviceModels(DeviceModelsT&& value) { SetDeviceModels(std::forward<DeviceModelsT>(value)); return *this;}
+    template<typename DeviceModelsT = Aws::String>
+    UpdateMobileDeviceAccessRuleRequest& AddDeviceModels(DeviceModelsT&& value) { m_deviceModelsHasBeenSet = true; m_deviceModels.emplace_back(std::forward<DeviceModelsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Device models that the updated rule will match.</p>
-     */
-    inline void SetDeviceModels(const Aws::Vector<Aws::String>& value) { m_deviceModelsHasBeenSet = true; m_deviceModels = value; }
-
-    /**
-     * <p>Device models that the updated rule will match.</p>
-     */
-    inline void SetDeviceModels(Aws::Vector<Aws::String>&& value) { m_deviceModelsHasBeenSet = true; m_deviceModels = std::move(value); }
-
-    /**
-     * <p>Device models that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithDeviceModels(const Aws::Vector<Aws::String>& value) { SetDeviceModels(value); return *this;}
-
-    /**
-     * <p>Device models that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithDeviceModels(Aws::Vector<Aws::String>&& value) { SetDeviceModels(std::move(value)); return *this;}
-
-    /**
-     * <p>Device models that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddDeviceModels(const Aws::String& value) { m_deviceModelsHasBeenSet = true; m_deviceModels.push_back(value); return *this; }
-
-    /**
-     * <p>Device models that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddDeviceModels(Aws::String&& value) { m_deviceModelsHasBeenSet = true; m_deviceModels.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Device models that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddDeviceModels(const char* value) { m_deviceModelsHasBeenSet = true; m_deviceModels.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Device models that the updated rule <b>will not</b> match. All other device
      * models will match.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetNotDeviceModels() const{ return m_notDeviceModels; }
-
-    /**
-     * <p>Device models that the updated rule <b>will not</b> match. All other device
-     * models will match.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetNotDeviceModels() const { return m_notDeviceModels; }
     inline bool NotDeviceModelsHasBeenSet() const { return m_notDeviceModelsHasBeenSet; }
+    template<typename NotDeviceModelsT = Aws::Vector<Aws::String>>
+    void SetNotDeviceModels(NotDeviceModelsT&& value) { m_notDeviceModelsHasBeenSet = true; m_notDeviceModels = std::forward<NotDeviceModelsT>(value); }
+    template<typename NotDeviceModelsT = Aws::Vector<Aws::String>>
+    UpdateMobileDeviceAccessRuleRequest& WithNotDeviceModels(NotDeviceModelsT&& value) { SetNotDeviceModels(std::forward<NotDeviceModelsT>(value)); return *this;}
+    template<typename NotDeviceModelsT = Aws::String>
+    UpdateMobileDeviceAccessRuleRequest& AddNotDeviceModels(NotDeviceModelsT&& value) { m_notDeviceModelsHasBeenSet = true; m_notDeviceModels.emplace_back(std::forward<NotDeviceModelsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Device models that the updated rule <b>will not</b> match. All other device
-     * models will match.</p>
-     */
-    inline void SetNotDeviceModels(const Aws::Vector<Aws::String>& value) { m_notDeviceModelsHasBeenSet = true; m_notDeviceModels = value; }
-
-    /**
-     * <p>Device models that the updated rule <b>will not</b> match. All other device
-     * models will match.</p>
-     */
-    inline void SetNotDeviceModels(Aws::Vector<Aws::String>&& value) { m_notDeviceModelsHasBeenSet = true; m_notDeviceModels = std::move(value); }
-
-    /**
-     * <p>Device models that the updated rule <b>will not</b> match. All other device
-     * models will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithNotDeviceModels(const Aws::Vector<Aws::String>& value) { SetNotDeviceModels(value); return *this;}
-
-    /**
-     * <p>Device models that the updated rule <b>will not</b> match. All other device
-     * models will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithNotDeviceModels(Aws::Vector<Aws::String>&& value) { SetNotDeviceModels(std::move(value)); return *this;}
-
-    /**
-     * <p>Device models that the updated rule <b>will not</b> match. All other device
-     * models will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddNotDeviceModels(const Aws::String& value) { m_notDeviceModelsHasBeenSet = true; m_notDeviceModels.push_back(value); return *this; }
-
-    /**
-     * <p>Device models that the updated rule <b>will not</b> match. All other device
-     * models will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddNotDeviceModels(Aws::String&& value) { m_notDeviceModelsHasBeenSet = true; m_notDeviceModels.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Device models that the updated rule <b>will not</b> match. All other device
-     * models will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddNotDeviceModels(const char* value) { m_notDeviceModelsHasBeenSet = true; m_notDeviceModels.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Device operating systems that the updated rule will match.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetDeviceOperatingSystems() const{ return m_deviceOperatingSystems; }
-
-    /**
-     * <p>Device operating systems that the updated rule will match.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetDeviceOperatingSystems() const { return m_deviceOperatingSystems; }
     inline bool DeviceOperatingSystemsHasBeenSet() const { return m_deviceOperatingSystemsHasBeenSet; }
+    template<typename DeviceOperatingSystemsT = Aws::Vector<Aws::String>>
+    void SetDeviceOperatingSystems(DeviceOperatingSystemsT&& value) { m_deviceOperatingSystemsHasBeenSet = true; m_deviceOperatingSystems = std::forward<DeviceOperatingSystemsT>(value); }
+    template<typename DeviceOperatingSystemsT = Aws::Vector<Aws::String>>
+    UpdateMobileDeviceAccessRuleRequest& WithDeviceOperatingSystems(DeviceOperatingSystemsT&& value) { SetDeviceOperatingSystems(std::forward<DeviceOperatingSystemsT>(value)); return *this;}
+    template<typename DeviceOperatingSystemsT = Aws::String>
+    UpdateMobileDeviceAccessRuleRequest& AddDeviceOperatingSystems(DeviceOperatingSystemsT&& value) { m_deviceOperatingSystemsHasBeenSet = true; m_deviceOperatingSystems.emplace_back(std::forward<DeviceOperatingSystemsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Device operating systems that the updated rule will match.</p>
-     */
-    inline void SetDeviceOperatingSystems(const Aws::Vector<Aws::String>& value) { m_deviceOperatingSystemsHasBeenSet = true; m_deviceOperatingSystems = value; }
-
-    /**
-     * <p>Device operating systems that the updated rule will match.</p>
-     */
-    inline void SetDeviceOperatingSystems(Aws::Vector<Aws::String>&& value) { m_deviceOperatingSystemsHasBeenSet = true; m_deviceOperatingSystems = std::move(value); }
-
-    /**
-     * <p>Device operating systems that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithDeviceOperatingSystems(const Aws::Vector<Aws::String>& value) { SetDeviceOperatingSystems(value); return *this;}
-
-    /**
-     * <p>Device operating systems that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithDeviceOperatingSystems(Aws::Vector<Aws::String>&& value) { SetDeviceOperatingSystems(std::move(value)); return *this;}
-
-    /**
-     * <p>Device operating systems that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddDeviceOperatingSystems(const Aws::String& value) { m_deviceOperatingSystemsHasBeenSet = true; m_deviceOperatingSystems.push_back(value); return *this; }
-
-    /**
-     * <p>Device operating systems that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddDeviceOperatingSystems(Aws::String&& value) { m_deviceOperatingSystemsHasBeenSet = true; m_deviceOperatingSystems.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Device operating systems that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddDeviceOperatingSystems(const char* value) { m_deviceOperatingSystemsHasBeenSet = true; m_deviceOperatingSystems.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Device operating systems that the updated rule <b>will not</b> match. All
      * other device operating systems will match.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetNotDeviceOperatingSystems() const{ return m_notDeviceOperatingSystems; }
-
-    /**
-     * <p>Device operating systems that the updated rule <b>will not</b> match. All
-     * other device operating systems will match.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetNotDeviceOperatingSystems() const { return m_notDeviceOperatingSystems; }
     inline bool NotDeviceOperatingSystemsHasBeenSet() const { return m_notDeviceOperatingSystemsHasBeenSet; }
+    template<typename NotDeviceOperatingSystemsT = Aws::Vector<Aws::String>>
+    void SetNotDeviceOperatingSystems(NotDeviceOperatingSystemsT&& value) { m_notDeviceOperatingSystemsHasBeenSet = true; m_notDeviceOperatingSystems = std::forward<NotDeviceOperatingSystemsT>(value); }
+    template<typename NotDeviceOperatingSystemsT = Aws::Vector<Aws::String>>
+    UpdateMobileDeviceAccessRuleRequest& WithNotDeviceOperatingSystems(NotDeviceOperatingSystemsT&& value) { SetNotDeviceOperatingSystems(std::forward<NotDeviceOperatingSystemsT>(value)); return *this;}
+    template<typename NotDeviceOperatingSystemsT = Aws::String>
+    UpdateMobileDeviceAccessRuleRequest& AddNotDeviceOperatingSystems(NotDeviceOperatingSystemsT&& value) { m_notDeviceOperatingSystemsHasBeenSet = true; m_notDeviceOperatingSystems.emplace_back(std::forward<NotDeviceOperatingSystemsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Device operating systems that the updated rule <b>will not</b> match. All
-     * other device operating systems will match.</p>
-     */
-    inline void SetNotDeviceOperatingSystems(const Aws::Vector<Aws::String>& value) { m_notDeviceOperatingSystemsHasBeenSet = true; m_notDeviceOperatingSystems = value; }
-
-    /**
-     * <p>Device operating systems that the updated rule <b>will not</b> match. All
-     * other device operating systems will match.</p>
-     */
-    inline void SetNotDeviceOperatingSystems(Aws::Vector<Aws::String>&& value) { m_notDeviceOperatingSystemsHasBeenSet = true; m_notDeviceOperatingSystems = std::move(value); }
-
-    /**
-     * <p>Device operating systems that the updated rule <b>will not</b> match. All
-     * other device operating systems will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithNotDeviceOperatingSystems(const Aws::Vector<Aws::String>& value) { SetNotDeviceOperatingSystems(value); return *this;}
-
-    /**
-     * <p>Device operating systems that the updated rule <b>will not</b> match. All
-     * other device operating systems will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithNotDeviceOperatingSystems(Aws::Vector<Aws::String>&& value) { SetNotDeviceOperatingSystems(std::move(value)); return *this;}
-
-    /**
-     * <p>Device operating systems that the updated rule <b>will not</b> match. All
-     * other device operating systems will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddNotDeviceOperatingSystems(const Aws::String& value) { m_notDeviceOperatingSystemsHasBeenSet = true; m_notDeviceOperatingSystems.push_back(value); return *this; }
-
-    /**
-     * <p>Device operating systems that the updated rule <b>will not</b> match. All
-     * other device operating systems will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddNotDeviceOperatingSystems(Aws::String&& value) { m_notDeviceOperatingSystemsHasBeenSet = true; m_notDeviceOperatingSystems.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Device operating systems that the updated rule <b>will not</b> match. All
-     * other device operating systems will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddNotDeviceOperatingSystems(const char* value) { m_notDeviceOperatingSystemsHasBeenSet = true; m_notDeviceOperatingSystems.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>User agents that the updated rule will match.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetDeviceUserAgents() const{ return m_deviceUserAgents; }
-
-    /**
-     * <p>User agents that the updated rule will match.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetDeviceUserAgents() const { return m_deviceUserAgents; }
     inline bool DeviceUserAgentsHasBeenSet() const { return m_deviceUserAgentsHasBeenSet; }
+    template<typename DeviceUserAgentsT = Aws::Vector<Aws::String>>
+    void SetDeviceUserAgents(DeviceUserAgentsT&& value) { m_deviceUserAgentsHasBeenSet = true; m_deviceUserAgents = std::forward<DeviceUserAgentsT>(value); }
+    template<typename DeviceUserAgentsT = Aws::Vector<Aws::String>>
+    UpdateMobileDeviceAccessRuleRequest& WithDeviceUserAgents(DeviceUserAgentsT&& value) { SetDeviceUserAgents(std::forward<DeviceUserAgentsT>(value)); return *this;}
+    template<typename DeviceUserAgentsT = Aws::String>
+    UpdateMobileDeviceAccessRuleRequest& AddDeviceUserAgents(DeviceUserAgentsT&& value) { m_deviceUserAgentsHasBeenSet = true; m_deviceUserAgents.emplace_back(std::forward<DeviceUserAgentsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>User agents that the updated rule will match.</p>
-     */
-    inline void SetDeviceUserAgents(const Aws::Vector<Aws::String>& value) { m_deviceUserAgentsHasBeenSet = true; m_deviceUserAgents = value; }
-
-    /**
-     * <p>User agents that the updated rule will match.</p>
-     */
-    inline void SetDeviceUserAgents(Aws::Vector<Aws::String>&& value) { m_deviceUserAgentsHasBeenSet = true; m_deviceUserAgents = std::move(value); }
-
-    /**
-     * <p>User agents that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithDeviceUserAgents(const Aws::Vector<Aws::String>& value) { SetDeviceUserAgents(value); return *this;}
-
-    /**
-     * <p>User agents that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithDeviceUserAgents(Aws::Vector<Aws::String>&& value) { SetDeviceUserAgents(std::move(value)); return *this;}
-
-    /**
-     * <p>User agents that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddDeviceUserAgents(const Aws::String& value) { m_deviceUserAgentsHasBeenSet = true; m_deviceUserAgents.push_back(value); return *this; }
-
-    /**
-     * <p>User agents that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddDeviceUserAgents(Aws::String&& value) { m_deviceUserAgentsHasBeenSet = true; m_deviceUserAgents.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>User agents that the updated rule will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddDeviceUserAgents(const char* value) { m_deviceUserAgentsHasBeenSet = true; m_deviceUserAgents.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>User agents that the updated rule <b>will not</b> match. All other user
      * agents will match.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetNotDeviceUserAgents() const{ return m_notDeviceUserAgents; }
-
-    /**
-     * <p>User agents that the updated rule <b>will not</b> match. All other user
-     * agents will match.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetNotDeviceUserAgents() const { return m_notDeviceUserAgents; }
     inline bool NotDeviceUserAgentsHasBeenSet() const { return m_notDeviceUserAgentsHasBeenSet; }
-
-    /**
-     * <p>User agents that the updated rule <b>will not</b> match. All other user
-     * agents will match.</p>
-     */
-    inline void SetNotDeviceUserAgents(const Aws::Vector<Aws::String>& value) { m_notDeviceUserAgentsHasBeenSet = true; m_notDeviceUserAgents = value; }
-
-    /**
-     * <p>User agents that the updated rule <b>will not</b> match. All other user
-     * agents will match.</p>
-     */
-    inline void SetNotDeviceUserAgents(Aws::Vector<Aws::String>&& value) { m_notDeviceUserAgentsHasBeenSet = true; m_notDeviceUserAgents = std::move(value); }
-
-    /**
-     * <p>User agents that the updated rule <b>will not</b> match. All other user
-     * agents will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithNotDeviceUserAgents(const Aws::Vector<Aws::String>& value) { SetNotDeviceUserAgents(value); return *this;}
-
-    /**
-     * <p>User agents that the updated rule <b>will not</b> match. All other user
-     * agents will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& WithNotDeviceUserAgents(Aws::Vector<Aws::String>&& value) { SetNotDeviceUserAgents(std::move(value)); return *this;}
-
-    /**
-     * <p>User agents that the updated rule <b>will not</b> match. All other user
-     * agents will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddNotDeviceUserAgents(const Aws::String& value) { m_notDeviceUserAgentsHasBeenSet = true; m_notDeviceUserAgents.push_back(value); return *this; }
-
-    /**
-     * <p>User agents that the updated rule <b>will not</b> match. All other user
-     * agents will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddNotDeviceUserAgents(Aws::String&& value) { m_notDeviceUserAgentsHasBeenSet = true; m_notDeviceUserAgents.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>User agents that the updated rule <b>will not</b> match. All other user
-     * agents will match.</p>
-     */
-    inline UpdateMobileDeviceAccessRuleRequest& AddNotDeviceUserAgents(const char* value) { m_notDeviceUserAgentsHasBeenSet = true; m_notDeviceUserAgents.push_back(value); return *this; }
-
+    template<typename NotDeviceUserAgentsT = Aws::Vector<Aws::String>>
+    void SetNotDeviceUserAgents(NotDeviceUserAgentsT&& value) { m_notDeviceUserAgentsHasBeenSet = true; m_notDeviceUserAgents = std::forward<NotDeviceUserAgentsT>(value); }
+    template<typename NotDeviceUserAgentsT = Aws::Vector<Aws::String>>
+    UpdateMobileDeviceAccessRuleRequest& WithNotDeviceUserAgents(NotDeviceUserAgentsT&& value) { SetNotDeviceUserAgents(std::forward<NotDeviceUserAgentsT>(value)); return *this;}
+    template<typename NotDeviceUserAgentsT = Aws::String>
+    UpdateMobileDeviceAccessRuleRequest& AddNotDeviceUserAgents(NotDeviceUserAgentsT&& value) { m_notDeviceUserAgentsHasBeenSet = true; m_notDeviceUserAgents.emplace_back(std::forward<NotDeviceUserAgentsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_organizationId;
@@ -654,7 +224,7 @@ namespace Model
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    MobileDeviceAccessRuleEffect m_effect;
+    MobileDeviceAccessRuleEffect m_effect{MobileDeviceAccessRuleEffect::NOT_SET};
     bool m_effectHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_deviceTypes;

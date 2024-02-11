@@ -18,15 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-VerificationResponse::VerificationResponse() : 
-    m_valid(false),
-    m_validHasBeenSet(false)
-{
-}
-
-VerificationResponse::VerificationResponse(JsonView jsonValue) : 
-    m_valid(false),
-    m_validHasBeenSet(false)
+VerificationResponse::VerificationResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ VerificationResponse& VerificationResponse::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Valid"))
   {
     m_valid = jsonValue.GetBool("Valid");
-
     m_validHasBeenSet = true;
   }
-
   return *this;
 }
 

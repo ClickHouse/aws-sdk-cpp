@@ -12,20 +12,6 @@ using namespace Aws::ApplicationInsights::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateApplicationRequest::UpdateApplicationRequest() : 
-    m_resourceGroupNameHasBeenSet(false),
-    m_opsCenterEnabled(false),
-    m_opsCenterEnabledHasBeenSet(false),
-    m_cWEMonitorEnabled(false),
-    m_cWEMonitorEnabledHasBeenSet(false),
-    m_opsItemSNSTopicArnHasBeenSet(false),
-    m_removeSNSTopic(false),
-    m_removeSNSTopicHasBeenSet(false),
-    m_autoConfigEnabled(false),
-    m_autoConfigEnabledHasBeenSet(false)
-{
-}
-
 Aws::String UpdateApplicationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -54,6 +40,12 @@ Aws::String UpdateApplicationRequest::SerializePayload() const
 
   }
 
+  if(m_sNSNotificationArnHasBeenSet)
+  {
+   payload.WithString("SNSNotificationArn", m_sNSNotificationArn);
+
+  }
+
   if(m_removeSNSTopicHasBeenSet)
   {
    payload.WithBool("RemoveSNSTopic", m_removeSNSTopic);
@@ -63,6 +55,12 @@ Aws::String UpdateApplicationRequest::SerializePayload() const
   if(m_autoConfigEnabledHasBeenSet)
   {
    payload.WithBool("AutoConfigEnabled", m_autoConfigEnabled);
+
+  }
+
+  if(m_attachMissingPermissionHasBeenSet)
+  {
+   payload.WithBool("AttachMissingPermission", m_attachMissingPermission);
 
   }
 

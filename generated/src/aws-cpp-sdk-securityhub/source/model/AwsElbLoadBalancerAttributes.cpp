@@ -18,21 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsElbLoadBalancerAttributes::AwsElbLoadBalancerAttributes() : 
-    m_accessLogHasBeenSet(false),
-    m_connectionDrainingHasBeenSet(false),
-    m_connectionSettingsHasBeenSet(false),
-    m_crossZoneLoadBalancingHasBeenSet(false),
-    m_additionalAttributesHasBeenSet(false)
-{
-}
-
-AwsElbLoadBalancerAttributes::AwsElbLoadBalancerAttributes(JsonView jsonValue) : 
-    m_accessLogHasBeenSet(false),
-    m_connectionDrainingHasBeenSet(false),
-    m_connectionSettingsHasBeenSet(false),
-    m_crossZoneLoadBalancingHasBeenSet(false),
-    m_additionalAttributesHasBeenSet(false)
+AwsElbLoadBalancerAttributes::AwsElbLoadBalancerAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ AwsElbLoadBalancerAttributes& AwsElbLoadBalancerAttributes::operator =(JsonView 
   if(jsonValue.ValueExists("AccessLog"))
   {
     m_accessLog = jsonValue.GetObject("AccessLog");
-
     m_accessLogHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ConnectionDraining"))
   {
     m_connectionDraining = jsonValue.GetObject("ConnectionDraining");
-
     m_connectionDrainingHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ConnectionSettings"))
   {
     m_connectionSettings = jsonValue.GetObject("ConnectionSettings");
-
     m_connectionSettingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CrossZoneLoadBalancing"))
   {
     m_crossZoneLoadBalancing = jsonValue.GetObject("CrossZoneLoadBalancing");
-
     m_crossZoneLoadBalancingHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AdditionalAttributes"))
   {
     Aws::Utils::Array<JsonView> additionalAttributesJsonList = jsonValue.GetArray("AdditionalAttributes");
@@ -76,7 +54,6 @@ AwsElbLoadBalancerAttributes& AwsElbLoadBalancerAttributes::operator =(JsonView 
     }
     m_additionalAttributesHasBeenSet = true;
   }
-
   return *this;
 }
 

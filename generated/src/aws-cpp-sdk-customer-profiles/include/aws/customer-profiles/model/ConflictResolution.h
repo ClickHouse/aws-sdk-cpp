@@ -33,12 +33,13 @@ namespace Model
   class ConflictResolution
   {
   public:
-    AWS_CUSTOMERPROFILES_API ConflictResolution();
+    AWS_CUSTOMERPROFILES_API ConflictResolution() = default;
     AWS_CUSTOMERPROFILES_API ConflictResolution(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API ConflictResolution& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>How the auto-merging process should resolve conflicts between different
      * profiles.</p> <ul> <li> <p> <code>RECENCY</code>: Uses the data that was most
@@ -48,123 +49,28 @@ namespace Model
      * are from the same source, then <code>RECENCY</code> is used again.</p> </li>
      * </ul>
      */
-    inline const ConflictResolvingModel& GetConflictResolvingModel() const{ return m_conflictResolvingModel; }
-
-    /**
-     * <p>How the auto-merging process should resolve conflicts between different
-     * profiles.</p> <ul> <li> <p> <code>RECENCY</code>: Uses the data that was most
-     * recently updated.</p> </li> <li> <p> <code>SOURCE</code>: Uses the data from a
-     * specific source. For example, if a company has been aquired or two departments
-     * have merged, data from the specified source is used. If two duplicate profiles
-     * are from the same source, then <code>RECENCY</code> is used again.</p> </li>
-     * </ul>
-     */
+    inline ConflictResolvingModel GetConflictResolvingModel() const { return m_conflictResolvingModel; }
     inline bool ConflictResolvingModelHasBeenSet() const { return m_conflictResolvingModelHasBeenSet; }
+    inline void SetConflictResolvingModel(ConflictResolvingModel value) { m_conflictResolvingModelHasBeenSet = true; m_conflictResolvingModel = value; }
+    inline ConflictResolution& WithConflictResolvingModel(ConflictResolvingModel value) { SetConflictResolvingModel(value); return *this;}
+    ///@}
 
-    /**
-     * <p>How the auto-merging process should resolve conflicts between different
-     * profiles.</p> <ul> <li> <p> <code>RECENCY</code>: Uses the data that was most
-     * recently updated.</p> </li> <li> <p> <code>SOURCE</code>: Uses the data from a
-     * specific source. For example, if a company has been aquired or two departments
-     * have merged, data from the specified source is used. If two duplicate profiles
-     * are from the same source, then <code>RECENCY</code> is used again.</p> </li>
-     * </ul>
-     */
-    inline void SetConflictResolvingModel(const ConflictResolvingModel& value) { m_conflictResolvingModelHasBeenSet = true; m_conflictResolvingModel = value; }
-
-    /**
-     * <p>How the auto-merging process should resolve conflicts between different
-     * profiles.</p> <ul> <li> <p> <code>RECENCY</code>: Uses the data that was most
-     * recently updated.</p> </li> <li> <p> <code>SOURCE</code>: Uses the data from a
-     * specific source. For example, if a company has been aquired or two departments
-     * have merged, data from the specified source is used. If two duplicate profiles
-     * are from the same source, then <code>RECENCY</code> is used again.</p> </li>
-     * </ul>
-     */
-    inline void SetConflictResolvingModel(ConflictResolvingModel&& value) { m_conflictResolvingModelHasBeenSet = true; m_conflictResolvingModel = std::move(value); }
-
-    /**
-     * <p>How the auto-merging process should resolve conflicts between different
-     * profiles.</p> <ul> <li> <p> <code>RECENCY</code>: Uses the data that was most
-     * recently updated.</p> </li> <li> <p> <code>SOURCE</code>: Uses the data from a
-     * specific source. For example, if a company has been aquired or two departments
-     * have merged, data from the specified source is used. If two duplicate profiles
-     * are from the same source, then <code>RECENCY</code> is used again.</p> </li>
-     * </ul>
-     */
-    inline ConflictResolution& WithConflictResolvingModel(const ConflictResolvingModel& value) { SetConflictResolvingModel(value); return *this;}
-
-    /**
-     * <p>How the auto-merging process should resolve conflicts between different
-     * profiles.</p> <ul> <li> <p> <code>RECENCY</code>: Uses the data that was most
-     * recently updated.</p> </li> <li> <p> <code>SOURCE</code>: Uses the data from a
-     * specific source. For example, if a company has been aquired or two departments
-     * have merged, data from the specified source is used. If two duplicate profiles
-     * are from the same source, then <code>RECENCY</code> is used again.</p> </li>
-     * </ul>
-     */
-    inline ConflictResolution& WithConflictResolvingModel(ConflictResolvingModel&& value) { SetConflictResolvingModel(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The <code>ObjectType</code> name that is used to resolve profile merging
      * conflicts when choosing <code>SOURCE</code> as the
      * <code>ConflictResolvingModel</code>.</p>
      */
-    inline const Aws::String& GetSourceName() const{ return m_sourceName; }
-
-    /**
-     * <p>The <code>ObjectType</code> name that is used to resolve profile merging
-     * conflicts when choosing <code>SOURCE</code> as the
-     * <code>ConflictResolvingModel</code>.</p>
-     */
+    inline const Aws::String& GetSourceName() const { return m_sourceName; }
     inline bool SourceNameHasBeenSet() const { return m_sourceNameHasBeenSet; }
-
-    /**
-     * <p>The <code>ObjectType</code> name that is used to resolve profile merging
-     * conflicts when choosing <code>SOURCE</code> as the
-     * <code>ConflictResolvingModel</code>.</p>
-     */
-    inline void SetSourceName(const Aws::String& value) { m_sourceNameHasBeenSet = true; m_sourceName = value; }
-
-    /**
-     * <p>The <code>ObjectType</code> name that is used to resolve profile merging
-     * conflicts when choosing <code>SOURCE</code> as the
-     * <code>ConflictResolvingModel</code>.</p>
-     */
-    inline void SetSourceName(Aws::String&& value) { m_sourceNameHasBeenSet = true; m_sourceName = std::move(value); }
-
-    /**
-     * <p>The <code>ObjectType</code> name that is used to resolve profile merging
-     * conflicts when choosing <code>SOURCE</code> as the
-     * <code>ConflictResolvingModel</code>.</p>
-     */
-    inline void SetSourceName(const char* value) { m_sourceNameHasBeenSet = true; m_sourceName.assign(value); }
-
-    /**
-     * <p>The <code>ObjectType</code> name that is used to resolve profile merging
-     * conflicts when choosing <code>SOURCE</code> as the
-     * <code>ConflictResolvingModel</code>.</p>
-     */
-    inline ConflictResolution& WithSourceName(const Aws::String& value) { SetSourceName(value); return *this;}
-
-    /**
-     * <p>The <code>ObjectType</code> name that is used to resolve profile merging
-     * conflicts when choosing <code>SOURCE</code> as the
-     * <code>ConflictResolvingModel</code>.</p>
-     */
-    inline ConflictResolution& WithSourceName(Aws::String&& value) { SetSourceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>ObjectType</code> name that is used to resolve profile merging
-     * conflicts when choosing <code>SOURCE</code> as the
-     * <code>ConflictResolvingModel</code>.</p>
-     */
-    inline ConflictResolution& WithSourceName(const char* value) { SetSourceName(value); return *this;}
-
+    template<typename SourceNameT = Aws::String>
+    void SetSourceName(SourceNameT&& value) { m_sourceNameHasBeenSet = true; m_sourceName = std::forward<SourceNameT>(value); }
+    template<typename SourceNameT = Aws::String>
+    ConflictResolution& WithSourceName(SourceNameT&& value) { SetSourceName(std::forward<SourceNameT>(value)); return *this;}
+    ///@}
   private:
 
-    ConflictResolvingModel m_conflictResolvingModel;
+    ConflictResolvingModel m_conflictResolvingModel{ConflictResolvingModel::NOT_SET};
     bool m_conflictResolvingModelHasBeenSet = false;
 
     Aws::String m_sourceName;

@@ -18,17 +18,7 @@ namespace IoTDeviceAdvisor
 namespace Model
 {
 
-GroupResult::GroupResult() : 
-    m_groupIdHasBeenSet(false),
-    m_groupNameHasBeenSet(false),
-    m_testsHasBeenSet(false)
-{
-}
-
-GroupResult::GroupResult(JsonView jsonValue) : 
-    m_groupIdHasBeenSet(false),
-    m_groupNameHasBeenSet(false),
-    m_testsHasBeenSet(false)
+GroupResult::GroupResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ GroupResult& GroupResult::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("groupId"))
   {
     m_groupId = jsonValue.GetString("groupId");
-
     m_groupIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("groupName"))
   {
     m_groupName = jsonValue.GetString("groupName");
-
     m_groupNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tests"))
   {
     Aws::Utils::Array<JsonView> testsJsonList = jsonValue.GetArray("tests");
@@ -58,7 +44,6 @@ GroupResult& GroupResult::operator =(JsonView jsonValue)
     }
     m_testsHasBeenSet = true;
   }
-
   return *this;
 }
 

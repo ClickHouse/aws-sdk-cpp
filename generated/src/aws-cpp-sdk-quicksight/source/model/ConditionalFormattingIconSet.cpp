@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-ConditionalFormattingIconSet::ConditionalFormattingIconSet() : 
-    m_expressionHasBeenSet(false),
-    m_iconSetType(ConditionalFormattingIconSetType::NOT_SET),
-    m_iconSetTypeHasBeenSet(false)
-{
-}
-
-ConditionalFormattingIconSet::ConditionalFormattingIconSet(JsonView jsonValue) : 
-    m_expressionHasBeenSet(false),
-    m_iconSetType(ConditionalFormattingIconSetType::NOT_SET),
-    m_iconSetTypeHasBeenSet(false)
+ConditionalFormattingIconSet::ConditionalFormattingIconSet(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ConditionalFormattingIconSet& ConditionalFormattingIconSet::operator =(JsonView 
   if(jsonValue.ValueExists("Expression"))
   {
     m_expression = jsonValue.GetString("Expression");
-
     m_expressionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IconSetType"))
   {
     m_iconSetType = ConditionalFormattingIconSetTypeMapper::GetConditionalFormattingIconSetTypeForName(jsonValue.GetString("IconSetType"));
-
     m_iconSetTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

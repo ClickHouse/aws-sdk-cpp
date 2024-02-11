@@ -12,19 +12,6 @@ using namespace Aws::Transfer::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateAgreementRequest::CreateAgreementRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_serverIdHasBeenSet(false),
-    m_localProfileIdHasBeenSet(false),
-    m_partnerProfileIdHasBeenSet(false),
-    m_baseDirectoryHasBeenSet(false),
-    m_accessRoleHasBeenSet(false),
-    m_status(AgreementStatusType::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateAgreementRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -78,6 +65,22 @@ Aws::String CreateAgreementRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("Tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_preserveFilenameHasBeenSet)
+  {
+   payload.WithString("PreserveFilename", PreserveFilenameTypeMapper::GetNameForPreserveFilenameType(m_preserveFilename));
+  }
+
+  if(m_enforceMessageSigningHasBeenSet)
+  {
+   payload.WithString("EnforceMessageSigning", EnforceMessageSigningTypeMapper::GetNameForEnforceMessageSigningType(m_enforceMessageSigning));
+  }
+
+  if(m_customDirectoriesHasBeenSet)
+  {
+   payload.WithObject("CustomDirectories", m_customDirectories.Jsonize());
 
   }
 

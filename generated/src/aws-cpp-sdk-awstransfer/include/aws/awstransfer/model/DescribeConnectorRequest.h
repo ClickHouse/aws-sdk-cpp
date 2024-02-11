@@ -21,7 +21,7 @@ namespace Model
   class DescribeConnectorRequest : public TransferRequest
   {
   public:
-    AWS_TRANSFER_API DescribeConnectorRequest();
+    AWS_TRANSFER_API DescribeConnectorRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_TRANSFER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the connector.</p>
      */
-    inline const Aws::String& GetConnectorId() const{ return m_connectorId; }
-
-    /**
-     * <p>The unique identifier for the connector.</p>
-     */
+    inline const Aws::String& GetConnectorId() const { return m_connectorId; }
     inline bool ConnectorIdHasBeenSet() const { return m_connectorIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier for the connector.</p>
-     */
-    inline void SetConnectorId(const Aws::String& value) { m_connectorIdHasBeenSet = true; m_connectorId = value; }
-
-    /**
-     * <p>The unique identifier for the connector.</p>
-     */
-    inline void SetConnectorId(Aws::String&& value) { m_connectorIdHasBeenSet = true; m_connectorId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the connector.</p>
-     */
-    inline void SetConnectorId(const char* value) { m_connectorIdHasBeenSet = true; m_connectorId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the connector.</p>
-     */
-    inline DescribeConnectorRequest& WithConnectorId(const Aws::String& value) { SetConnectorId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the connector.</p>
-     */
-    inline DescribeConnectorRequest& WithConnectorId(Aws::String&& value) { SetConnectorId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the connector.</p>
-     */
-    inline DescribeConnectorRequest& WithConnectorId(const char* value) { SetConnectorId(value); return *this;}
-
+    template<typename ConnectorIdT = Aws::String>
+    void SetConnectorId(ConnectorIdT&& value) { m_connectorIdHasBeenSet = true; m_connectorId = std::forward<ConnectorIdT>(value); }
+    template<typename ConnectorIdT = Aws::String>
+    DescribeConnectorRequest& WithConnectorId(ConnectorIdT&& value) { SetConnectorId(std::forward<ConnectorIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_connectorId;

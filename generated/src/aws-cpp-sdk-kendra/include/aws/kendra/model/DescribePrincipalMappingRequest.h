@@ -21,7 +21,7 @@ namespace Model
   class DescribePrincipalMappingRequest : public KendraRequest
   {
   public:
-    AWS_KENDRA_API DescribePrincipalMappingRequest();
+    AWS_KENDRA_API DescribePrincipalMappingRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,168 +34,46 @@ namespace Model
     AWS_KENDRA_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the index required to check the processing of
      * <code>PUT</code> and <code>DELETE</code> actions for mapping users to their
      * groups.</p>
      */
-    inline const Aws::String& GetIndexId() const{ return m_indexId; }
-
-    /**
-     * <p>The identifier of the index required to check the processing of
-     * <code>PUT</code> and <code>DELETE</code> actions for mapping users to their
-     * groups.</p>
-     */
+    inline const Aws::String& GetIndexId() const { return m_indexId; }
     inline bool IndexIdHasBeenSet() const { return m_indexIdHasBeenSet; }
+    template<typename IndexIdT = Aws::String>
+    void SetIndexId(IndexIdT&& value) { m_indexIdHasBeenSet = true; m_indexId = std::forward<IndexIdT>(value); }
+    template<typename IndexIdT = Aws::String>
+    DescribePrincipalMappingRequest& WithIndexId(IndexIdT&& value) { SetIndexId(std::forward<IndexIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the index required to check the processing of
-     * <code>PUT</code> and <code>DELETE</code> actions for mapping users to their
-     * groups.</p>
-     */
-    inline void SetIndexId(const Aws::String& value) { m_indexIdHasBeenSet = true; m_indexId = value; }
-
-    /**
-     * <p>The identifier of the index required to check the processing of
-     * <code>PUT</code> and <code>DELETE</code> actions for mapping users to their
-     * groups.</p>
-     */
-    inline void SetIndexId(Aws::String&& value) { m_indexIdHasBeenSet = true; m_indexId = std::move(value); }
-
-    /**
-     * <p>The identifier of the index required to check the processing of
-     * <code>PUT</code> and <code>DELETE</code> actions for mapping users to their
-     * groups.</p>
-     */
-    inline void SetIndexId(const char* value) { m_indexIdHasBeenSet = true; m_indexId.assign(value); }
-
-    /**
-     * <p>The identifier of the index required to check the processing of
-     * <code>PUT</code> and <code>DELETE</code> actions for mapping users to their
-     * groups.</p>
-     */
-    inline DescribePrincipalMappingRequest& WithIndexId(const Aws::String& value) { SetIndexId(value); return *this;}
-
-    /**
-     * <p>The identifier of the index required to check the processing of
-     * <code>PUT</code> and <code>DELETE</code> actions for mapping users to their
-     * groups.</p>
-     */
-    inline DescribePrincipalMappingRequest& WithIndexId(Aws::String&& value) { SetIndexId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the index required to check the processing of
-     * <code>PUT</code> and <code>DELETE</code> actions for mapping users to their
-     * groups.</p>
-     */
-    inline DescribePrincipalMappingRequest& WithIndexId(const char* value) { SetIndexId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the data source to check the processing of <code>PUT</code>
      * and <code>DELETE</code> actions for mapping users to their groups.</p>
      */
-    inline const Aws::String& GetDataSourceId() const{ return m_dataSourceId; }
-
-    /**
-     * <p>The identifier of the data source to check the processing of <code>PUT</code>
-     * and <code>DELETE</code> actions for mapping users to their groups.</p>
-     */
+    inline const Aws::String& GetDataSourceId() const { return m_dataSourceId; }
     inline bool DataSourceIdHasBeenSet() const { return m_dataSourceIdHasBeenSet; }
+    template<typename DataSourceIdT = Aws::String>
+    void SetDataSourceId(DataSourceIdT&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = std::forward<DataSourceIdT>(value); }
+    template<typename DataSourceIdT = Aws::String>
+    DescribePrincipalMappingRequest& WithDataSourceId(DataSourceIdT&& value) { SetDataSourceId(std::forward<DataSourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the data source to check the processing of <code>PUT</code>
-     * and <code>DELETE</code> actions for mapping users to their groups.</p>
-     */
-    inline void SetDataSourceId(const Aws::String& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = value; }
-
-    /**
-     * <p>The identifier of the data source to check the processing of <code>PUT</code>
-     * and <code>DELETE</code> actions for mapping users to their groups.</p>
-     */
-    inline void SetDataSourceId(Aws::String&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = std::move(value); }
-
-    /**
-     * <p>The identifier of the data source to check the processing of <code>PUT</code>
-     * and <code>DELETE</code> actions for mapping users to their groups.</p>
-     */
-    inline void SetDataSourceId(const char* value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId.assign(value); }
-
-    /**
-     * <p>The identifier of the data source to check the processing of <code>PUT</code>
-     * and <code>DELETE</code> actions for mapping users to their groups.</p>
-     */
-    inline DescribePrincipalMappingRequest& WithDataSourceId(const Aws::String& value) { SetDataSourceId(value); return *this;}
-
-    /**
-     * <p>The identifier of the data source to check the processing of <code>PUT</code>
-     * and <code>DELETE</code> actions for mapping users to their groups.</p>
-     */
-    inline DescribePrincipalMappingRequest& WithDataSourceId(Aws::String&& value) { SetDataSourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the data source to check the processing of <code>PUT</code>
-     * and <code>DELETE</code> actions for mapping users to their groups.</p>
-     */
-    inline DescribePrincipalMappingRequest& WithDataSourceId(const char* value) { SetDataSourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the group required to check the processing of
      * <code>PUT</code> and <code>DELETE</code> actions for mapping users to their
      * groups.</p>
      */
-    inline const Aws::String& GetGroupId() const{ return m_groupId; }
-
-    /**
-     * <p>The identifier of the group required to check the processing of
-     * <code>PUT</code> and <code>DELETE</code> actions for mapping users to their
-     * groups.</p>
-     */
+    inline const Aws::String& GetGroupId() const { return m_groupId; }
     inline bool GroupIdHasBeenSet() const { return m_groupIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the group required to check the processing of
-     * <code>PUT</code> and <code>DELETE</code> actions for mapping users to their
-     * groups.</p>
-     */
-    inline void SetGroupId(const Aws::String& value) { m_groupIdHasBeenSet = true; m_groupId = value; }
-
-    /**
-     * <p>The identifier of the group required to check the processing of
-     * <code>PUT</code> and <code>DELETE</code> actions for mapping users to their
-     * groups.</p>
-     */
-    inline void SetGroupId(Aws::String&& value) { m_groupIdHasBeenSet = true; m_groupId = std::move(value); }
-
-    /**
-     * <p>The identifier of the group required to check the processing of
-     * <code>PUT</code> and <code>DELETE</code> actions for mapping users to their
-     * groups.</p>
-     */
-    inline void SetGroupId(const char* value) { m_groupIdHasBeenSet = true; m_groupId.assign(value); }
-
-    /**
-     * <p>The identifier of the group required to check the processing of
-     * <code>PUT</code> and <code>DELETE</code> actions for mapping users to their
-     * groups.</p>
-     */
-    inline DescribePrincipalMappingRequest& WithGroupId(const Aws::String& value) { SetGroupId(value); return *this;}
-
-    /**
-     * <p>The identifier of the group required to check the processing of
-     * <code>PUT</code> and <code>DELETE</code> actions for mapping users to their
-     * groups.</p>
-     */
-    inline DescribePrincipalMappingRequest& WithGroupId(Aws::String&& value) { SetGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the group required to check the processing of
-     * <code>PUT</code> and <code>DELETE</code> actions for mapping users to their
-     * groups.</p>
-     */
-    inline DescribePrincipalMappingRequest& WithGroupId(const char* value) { SetGroupId(value); return *this;}
-
+    template<typename GroupIdT = Aws::String>
+    void SetGroupId(GroupIdT&& value) { m_groupIdHasBeenSet = true; m_groupId = std::forward<GroupIdT>(value); }
+    template<typename GroupIdT = Aws::String>
+    DescribePrincipalMappingRequest& WithGroupId(GroupIdT&& value) { SetGroupId(std::forward<GroupIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_indexId;

@@ -12,15 +12,15 @@ using namespace Aws::mgn::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartTestRequest::StartTestRequest() : 
-    m_sourceServerIDsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String StartTestRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_accountIDHasBeenSet)
+  {
+   payload.WithString("accountID", m_accountID);
+
+  }
 
   if(m_sourceServerIDsHasBeenSet)
   {

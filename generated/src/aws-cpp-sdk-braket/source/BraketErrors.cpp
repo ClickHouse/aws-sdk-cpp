@@ -6,15 +6,23 @@
 #include <aws/core/client/AWSError.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/braket/BraketErrors.h>
+#include <aws/braket/model/ValidationException.h>
 
 using namespace Aws::Client;
 using namespace Aws::Utils;
 using namespace Aws::Braket;
+using namespace Aws::Braket::Model;
 
 namespace Aws
 {
 namespace Braket
 {
+template<> AWS_BRAKET_API ValidationException BraketError::GetModeledError()
+{
+  assert(this->GetErrorType() == BraketErrors::VALIDATION);
+  return ValidationException(this->GetJsonPayload().View());
+}
+
 namespace BraketErrorMapper
 {
 
@@ -31,23 +39,23 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
 
   if (hashCode == CONFLICT_HASH)
   {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(BraketErrors::CONFLICT), false);
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(BraketErrors::CONFLICT), RetryableType::NOT_RETRYABLE);
   }
   else if (hashCode == DEVICE_RETIRED_HASH)
   {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(BraketErrors::DEVICE_RETIRED), false);
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(BraketErrors::DEVICE_RETIRED), RetryableType::NOT_RETRYABLE);
   }
   else if (hashCode == SERVICE_QUOTA_EXCEEDED_HASH)
   {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(BraketErrors::SERVICE_QUOTA_EXCEEDED), false);
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(BraketErrors::SERVICE_QUOTA_EXCEEDED), RetryableType::NOT_RETRYABLE);
   }
   else if (hashCode == DEVICE_OFFLINE_HASH)
   {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(BraketErrors::DEVICE_OFFLINE), false);
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(BraketErrors::DEVICE_OFFLINE), RetryableType::NOT_RETRYABLE);
   }
   else if (hashCode == INTERNAL_SERVICE_HASH)
   {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(BraketErrors::INTERNAL_SERVICE), false);
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(BraketErrors::INTERNAL_SERVICE), RetryableType::RETRYABLE);
   }
   return AWSError<CoreErrors>(CoreErrors::UNKNOWN, false);
 }

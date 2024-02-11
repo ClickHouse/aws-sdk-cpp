@@ -33,97 +33,40 @@ namespace Model
   class DelegatedAdminAccount
   {
   public:
-    AWS_INSPECTOR2_API DelegatedAdminAccount();
+    AWS_INSPECTOR2_API DelegatedAdminAccount() = default;
     AWS_INSPECTOR2_API DelegatedAdminAccount(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API DelegatedAdminAccount& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services account ID of the Amazon Inspector delegated
      * administrator for your organization.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the Amazon Inspector delegated
-     * administrator for your organization.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    DelegatedAdminAccount& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID of the Amazon Inspector delegated
-     * administrator for your organization.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the Amazon Inspector delegated
-     * administrator for your organization.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the Amazon Inspector delegated
-     * administrator for your organization.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the Amazon Inspector delegated
-     * administrator for your organization.</p>
-     */
-    inline DelegatedAdminAccount& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the Amazon Inspector delegated
-     * administrator for your organization.</p>
-     */
-    inline DelegatedAdminAccount& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the Amazon Inspector delegated
-     * administrator for your organization.</p>
-     */
-    inline DelegatedAdminAccount& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the Amazon Inspector delegated administrator.</p>
      */
-    inline const DelegatedAdminStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the Amazon Inspector delegated administrator.</p>
-     */
+    inline DelegatedAdminStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the Amazon Inspector delegated administrator.</p>
-     */
-    inline void SetStatus(const DelegatedAdminStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the Amazon Inspector delegated administrator.</p>
-     */
-    inline void SetStatus(DelegatedAdminStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the Amazon Inspector delegated administrator.</p>
-     */
-    inline DelegatedAdminAccount& WithStatus(const DelegatedAdminStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the Amazon Inspector delegated administrator.</p>
-     */
-    inline DelegatedAdminAccount& WithStatus(DelegatedAdminStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(DelegatedAdminStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline DelegatedAdminAccount& WithStatus(DelegatedAdminStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;
     bool m_accountIdHasBeenSet = false;
 
-    DelegatedAdminStatus m_status;
+    DelegatedAdminStatus m_status{DelegatedAdminStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

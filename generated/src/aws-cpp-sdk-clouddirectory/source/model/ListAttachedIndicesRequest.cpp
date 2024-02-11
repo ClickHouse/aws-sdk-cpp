@@ -13,17 +13,6 @@ using namespace Aws::CloudDirectory::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListAttachedIndicesRequest::ListAttachedIndicesRequest() : 
-    m_directoryArnHasBeenSet(false),
-    m_targetReferenceHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_consistencyLevel(ConsistencyLevel::NOT_SET),
-    m_consistencyLevelHasBeenSet(false)
-{
-}
-
 Aws::String ListAttachedIndicesRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -60,7 +49,7 @@ Aws::Http::HeaderValueCollection ListAttachedIndicesRequest::GetRequestSpecificH
     ss.str("");
   }
 
-  if(m_consistencyLevelHasBeenSet)
+  if(m_consistencyLevelHasBeenSet && m_consistencyLevel != ConsistencyLevel::NOT_SET)
   {
     headers.emplace("x-amz-consistency-level", ConsistencyLevelMapper::GetNameForConsistencyLevel(m_consistencyLevel));
   }

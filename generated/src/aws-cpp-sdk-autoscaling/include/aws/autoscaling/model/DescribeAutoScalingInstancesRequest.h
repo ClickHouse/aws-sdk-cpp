@@ -22,7 +22,7 @@ namespace Model
   class DescribeAutoScalingInstancesRequest : public AutoScalingRequest
   {
   public:
-    AWS_AUTOSCALING_API DescribeAutoScalingInstancesRequest();
+    AWS_AUTOSCALING_API DescribeAutoScalingInstancesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,149 +37,51 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The IDs of the instances. If you omit this property, all Auto Scaling
      * instances are described. If you specify an ID that does not exist, it is ignored
      * with no error.</p> <p>Array Members: Maximum number of 50 items.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetInstanceIds() const{ return m_instanceIds; }
-
-    /**
-     * <p>The IDs of the instances. If you omit this property, all Auto Scaling
-     * instances are described. If you specify an ID that does not exist, it is ignored
-     * with no error.</p> <p>Array Members: Maximum number of 50 items.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetInstanceIds() const { return m_instanceIds; }
     inline bool InstanceIdsHasBeenSet() const { return m_instanceIdsHasBeenSet; }
+    template<typename InstanceIdsT = Aws::Vector<Aws::String>>
+    void SetInstanceIds(InstanceIdsT&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds = std::forward<InstanceIdsT>(value); }
+    template<typename InstanceIdsT = Aws::Vector<Aws::String>>
+    DescribeAutoScalingInstancesRequest& WithInstanceIds(InstanceIdsT&& value) { SetInstanceIds(std::forward<InstanceIdsT>(value)); return *this;}
+    template<typename InstanceIdsT = Aws::String>
+    DescribeAutoScalingInstancesRequest& AddInstanceIds(InstanceIdsT&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds.emplace_back(std::forward<InstanceIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The IDs of the instances. If you omit this property, all Auto Scaling
-     * instances are described. If you specify an ID that does not exist, it is ignored
-     * with no error.</p> <p>Array Members: Maximum number of 50 items.</p>
-     */
-    inline void SetInstanceIds(const Aws::Vector<Aws::String>& value) { m_instanceIdsHasBeenSet = true; m_instanceIds = value; }
-
-    /**
-     * <p>The IDs of the instances. If you omit this property, all Auto Scaling
-     * instances are described. If you specify an ID that does not exist, it is ignored
-     * with no error.</p> <p>Array Members: Maximum number of 50 items.</p>
-     */
-    inline void SetInstanceIds(Aws::Vector<Aws::String>&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds = std::move(value); }
-
-    /**
-     * <p>The IDs of the instances. If you omit this property, all Auto Scaling
-     * instances are described. If you specify an ID that does not exist, it is ignored
-     * with no error.</p> <p>Array Members: Maximum number of 50 items.</p>
-     */
-    inline DescribeAutoScalingInstancesRequest& WithInstanceIds(const Aws::Vector<Aws::String>& value) { SetInstanceIds(value); return *this;}
-
-    /**
-     * <p>The IDs of the instances. If you omit this property, all Auto Scaling
-     * instances are described. If you specify an ID that does not exist, it is ignored
-     * with no error.</p> <p>Array Members: Maximum number of 50 items.</p>
-     */
-    inline DescribeAutoScalingInstancesRequest& WithInstanceIds(Aws::Vector<Aws::String>&& value) { SetInstanceIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The IDs of the instances. If you omit this property, all Auto Scaling
-     * instances are described. If you specify an ID that does not exist, it is ignored
-     * with no error.</p> <p>Array Members: Maximum number of 50 items.</p>
-     */
-    inline DescribeAutoScalingInstancesRequest& AddInstanceIds(const Aws::String& value) { m_instanceIdsHasBeenSet = true; m_instanceIds.push_back(value); return *this; }
-
-    /**
-     * <p>The IDs of the instances. If you omit this property, all Auto Scaling
-     * instances are described. If you specify an ID that does not exist, it is ignored
-     * with no error.</p> <p>Array Members: Maximum number of 50 items.</p>
-     */
-    inline DescribeAutoScalingInstancesRequest& AddInstanceIds(Aws::String&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The IDs of the instances. If you omit this property, all Auto Scaling
-     * instances are described. If you specify an ID that does not exist, it is ignored
-     * with no error.</p> <p>Array Members: Maximum number of 50 items.</p>
-     */
-    inline DescribeAutoScalingInstancesRequest& AddInstanceIds(const char* value) { m_instanceIdsHasBeenSet = true; m_instanceIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The maximum number of items to return with this call. The default value is
      * <code>50</code> and the maximum value is <code>50</code>.</p>
      */
-    inline int GetMaxRecords() const{ return m_maxRecords; }
-
-    /**
-     * <p>The maximum number of items to return with this call. The default value is
-     * <code>50</code> and the maximum value is <code>50</code>.</p>
-     */
+    inline int GetMaxRecords() const { return m_maxRecords; }
     inline bool MaxRecordsHasBeenSet() const { return m_maxRecordsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of items to return with this call. The default value is
-     * <code>50</code> and the maximum value is <code>50</code>.</p>
-     */
     inline void SetMaxRecords(int value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
-
-    /**
-     * <p>The maximum number of items to return with this call. The default value is
-     * <code>50</code> and the maximum value is <code>50</code>.</p>
-     */
     inline DescribeAutoScalingInstancesRequest& WithMaxRecords(int value) { SetMaxRecords(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The token for the next set of items to return. (You received this token from
      * a previous call.)</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline DescribeAutoScalingInstancesRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline DescribeAutoScalingInstancesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline DescribeAutoScalingInstancesRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeAutoScalingInstancesRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_instanceIds;
     bool m_instanceIdsHasBeenSet = false;
 
-    int m_maxRecords;
+    int m_maxRecords{0};
     bool m_maxRecordsHasBeenSet = false;
 
     Aws::String m_nextToken;

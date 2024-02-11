@@ -19,7 +19,7 @@ namespace Model
   /**
    * <p>Represents a request to generate the CNAME records needed to set up Easy DKIM
    * with Amazon SES. For more information about setting up Easy DKIM, see the <a
-   * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Amazon
+   * href="https://docs.aws.amazon.com/ses/latest/dg/send-email-authentication-dkim-easy.html">Amazon
    * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/VerifyDomainDkimRequest">AWS
    * API Reference</a></p>
@@ -27,7 +27,7 @@ namespace Model
   class VerifyDomainDkimRequest : public SESRequest
   {
   public:
-    AWS_SES_API VerifyDomainDkimRequest();
+    AWS_SES_API VerifyDomainDkimRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,46 +42,17 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the domain to be verified for Easy DKIM signing.</p>
      */
-    inline const Aws::String& GetDomain() const{ return m_domain; }
-
-    /**
-     * <p>The name of the domain to be verified for Easy DKIM signing.</p>
-     */
+    inline const Aws::String& GetDomain() const { return m_domain; }
     inline bool DomainHasBeenSet() const { return m_domainHasBeenSet; }
-
-    /**
-     * <p>The name of the domain to be verified for Easy DKIM signing.</p>
-     */
-    inline void SetDomain(const Aws::String& value) { m_domainHasBeenSet = true; m_domain = value; }
-
-    /**
-     * <p>The name of the domain to be verified for Easy DKIM signing.</p>
-     */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
-
-    /**
-     * <p>The name of the domain to be verified for Easy DKIM signing.</p>
-     */
-    inline void SetDomain(const char* value) { m_domainHasBeenSet = true; m_domain.assign(value); }
-
-    /**
-     * <p>The name of the domain to be verified for Easy DKIM signing.</p>
-     */
-    inline VerifyDomainDkimRequest& WithDomain(const Aws::String& value) { SetDomain(value); return *this;}
-
-    /**
-     * <p>The name of the domain to be verified for Easy DKIM signing.</p>
-     */
-    inline VerifyDomainDkimRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the domain to be verified for Easy DKIM signing.</p>
-     */
-    inline VerifyDomainDkimRequest& WithDomain(const char* value) { SetDomain(value); return *this;}
-
+    template<typename DomainT = Aws::String>
+    void SetDomain(DomainT&& value) { m_domainHasBeenSet = true; m_domain = std::forward<DomainT>(value); }
+    template<typename DomainT = Aws::String>
+    VerifyDomainDkimRequest& WithDomain(DomainT&& value) { SetDomain(std::forward<DomainT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domain;

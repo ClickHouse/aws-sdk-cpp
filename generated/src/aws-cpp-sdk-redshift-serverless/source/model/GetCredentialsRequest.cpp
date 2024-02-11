@@ -12,17 +12,15 @@ using namespace Aws::RedshiftServerless::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetCredentialsRequest::GetCredentialsRequest() : 
-    m_dbNameHasBeenSet(false),
-    m_durationSeconds(0),
-    m_durationSecondsHasBeenSet(false),
-    m_workgroupNameHasBeenSet(false)
-{
-}
-
 Aws::String GetCredentialsRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_customDomainNameHasBeenSet)
+  {
+   payload.WithString("customDomainName", m_customDomainName);
+
+  }
 
   if(m_dbNameHasBeenSet)
   {

@@ -18,19 +18,7 @@ namespace EMR
 namespace Model
 {
 
-PlacementGroupConfig::PlacementGroupConfig() : 
-    m_instanceRole(InstanceRoleType::NOT_SET),
-    m_instanceRoleHasBeenSet(false),
-    m_placementStrategy(PlacementGroupStrategy::NOT_SET),
-    m_placementStrategyHasBeenSet(false)
-{
-}
-
-PlacementGroupConfig::PlacementGroupConfig(JsonView jsonValue) : 
-    m_instanceRole(InstanceRoleType::NOT_SET),
-    m_instanceRoleHasBeenSet(false),
-    m_placementStrategy(PlacementGroupStrategy::NOT_SET),
-    m_placementStrategyHasBeenSet(false)
+PlacementGroupConfig::PlacementGroupConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ PlacementGroupConfig& PlacementGroupConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("InstanceRole"))
   {
     m_instanceRole = InstanceRoleTypeMapper::GetInstanceRoleTypeForName(jsonValue.GetString("InstanceRole"));
-
     m_instanceRoleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PlacementStrategy"))
   {
     m_placementStrategy = PlacementGroupStrategyMapper::GetPlacementGroupStrategyForName(jsonValue.GetString("PlacementStrategy"));
-
     m_placementStrategyHasBeenSet = true;
   }
-
   return *this;
 }
 

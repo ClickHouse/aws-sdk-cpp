@@ -9,6 +9,9 @@
 #include <aws/quicksight/model/Visibility.h>
 #include <aws/quicksight/model/TableCellStyle.h>
 #include <aws/quicksight/model/RowAlternateColorOptions.h>
+#include <aws/quicksight/model/PivotTableRowsLayout.h>
+#include <aws/quicksight/model/PivotTableRowsLabelOptions.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
 #include <utility>
 
 namespace Aws
@@ -34,351 +37,177 @@ namespace Model
   class PivotTableOptions
   {
   public:
-    AWS_QUICKSIGHT_API PivotTableOptions();
+    AWS_QUICKSIGHT_API PivotTableOptions() = default;
     AWS_QUICKSIGHT_API PivotTableOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API PivotTableOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The metric placement (row, column) options.</p>
      */
-    inline const PivotTableMetricPlacement& GetMetricPlacement() const{ return m_metricPlacement; }
-
-    /**
-     * <p>The metric placement (row, column) options.</p>
-     */
+    inline PivotTableMetricPlacement GetMetricPlacement() const { return m_metricPlacement; }
     inline bool MetricPlacementHasBeenSet() const { return m_metricPlacementHasBeenSet; }
+    inline void SetMetricPlacement(PivotTableMetricPlacement value) { m_metricPlacementHasBeenSet = true; m_metricPlacement = value; }
+    inline PivotTableOptions& WithMetricPlacement(PivotTableMetricPlacement value) { SetMetricPlacement(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The metric placement (row, column) options.</p>
-     */
-    inline void SetMetricPlacement(const PivotTableMetricPlacement& value) { m_metricPlacementHasBeenSet = true; m_metricPlacement = value; }
-
-    /**
-     * <p>The metric placement (row, column) options.</p>
-     */
-    inline void SetMetricPlacement(PivotTableMetricPlacement&& value) { m_metricPlacementHasBeenSet = true; m_metricPlacement = std::move(value); }
-
-    /**
-     * <p>The metric placement (row, column) options.</p>
-     */
-    inline PivotTableOptions& WithMetricPlacement(const PivotTableMetricPlacement& value) { SetMetricPlacement(value); return *this;}
-
-    /**
-     * <p>The metric placement (row, column) options.</p>
-     */
-    inline PivotTableOptions& WithMetricPlacement(PivotTableMetricPlacement&& value) { SetMetricPlacement(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The visibility of the single metric options.</p>
      */
-    inline const Visibility& GetSingleMetricVisibility() const{ return m_singleMetricVisibility; }
-
-    /**
-     * <p>The visibility of the single metric options.</p>
-     */
+    inline Visibility GetSingleMetricVisibility() const { return m_singleMetricVisibility; }
     inline bool SingleMetricVisibilityHasBeenSet() const { return m_singleMetricVisibilityHasBeenSet; }
+    inline void SetSingleMetricVisibility(Visibility value) { m_singleMetricVisibilityHasBeenSet = true; m_singleMetricVisibility = value; }
+    inline PivotTableOptions& WithSingleMetricVisibility(Visibility value) { SetSingleMetricVisibility(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The visibility of the single metric options.</p>
-     */
-    inline void SetSingleMetricVisibility(const Visibility& value) { m_singleMetricVisibilityHasBeenSet = true; m_singleMetricVisibility = value; }
-
-    /**
-     * <p>The visibility of the single metric options.</p>
-     */
-    inline void SetSingleMetricVisibility(Visibility&& value) { m_singleMetricVisibilityHasBeenSet = true; m_singleMetricVisibility = std::move(value); }
-
-    /**
-     * <p>The visibility of the single metric options.</p>
-     */
-    inline PivotTableOptions& WithSingleMetricVisibility(const Visibility& value) { SetSingleMetricVisibility(value); return *this;}
-
-    /**
-     * <p>The visibility of the single metric options.</p>
-     */
-    inline PivotTableOptions& WithSingleMetricVisibility(Visibility&& value) { SetSingleMetricVisibility(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The visibility of the column names.</p>
      */
-    inline const Visibility& GetColumnNamesVisibility() const{ return m_columnNamesVisibility; }
-
-    /**
-     * <p>The visibility of the column names.</p>
-     */
+    inline Visibility GetColumnNamesVisibility() const { return m_columnNamesVisibility; }
     inline bool ColumnNamesVisibilityHasBeenSet() const { return m_columnNamesVisibilityHasBeenSet; }
+    inline void SetColumnNamesVisibility(Visibility value) { m_columnNamesVisibilityHasBeenSet = true; m_columnNamesVisibility = value; }
+    inline PivotTableOptions& WithColumnNamesVisibility(Visibility value) { SetColumnNamesVisibility(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The visibility of the column names.</p>
-     */
-    inline void SetColumnNamesVisibility(const Visibility& value) { m_columnNamesVisibilityHasBeenSet = true; m_columnNamesVisibility = value; }
-
-    /**
-     * <p>The visibility of the column names.</p>
-     */
-    inline void SetColumnNamesVisibility(Visibility&& value) { m_columnNamesVisibilityHasBeenSet = true; m_columnNamesVisibility = std::move(value); }
-
-    /**
-     * <p>The visibility of the column names.</p>
-     */
-    inline PivotTableOptions& WithColumnNamesVisibility(const Visibility& value) { SetColumnNamesVisibility(value); return *this;}
-
-    /**
-     * <p>The visibility of the column names.</p>
-     */
-    inline PivotTableOptions& WithColumnNamesVisibility(Visibility&& value) { SetColumnNamesVisibility(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Determines the visibility of the pivot table.</p>
      */
-    inline const Visibility& GetToggleButtonsVisibility() const{ return m_toggleButtonsVisibility; }
-
-    /**
-     * <p>Determines the visibility of the pivot table.</p>
-     */
+    inline Visibility GetToggleButtonsVisibility() const { return m_toggleButtonsVisibility; }
     inline bool ToggleButtonsVisibilityHasBeenSet() const { return m_toggleButtonsVisibilityHasBeenSet; }
+    inline void SetToggleButtonsVisibility(Visibility value) { m_toggleButtonsVisibilityHasBeenSet = true; m_toggleButtonsVisibility = value; }
+    inline PivotTableOptions& WithToggleButtonsVisibility(Visibility value) { SetToggleButtonsVisibility(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Determines the visibility of the pivot table.</p>
-     */
-    inline void SetToggleButtonsVisibility(const Visibility& value) { m_toggleButtonsVisibilityHasBeenSet = true; m_toggleButtonsVisibility = value; }
-
-    /**
-     * <p>Determines the visibility of the pivot table.</p>
-     */
-    inline void SetToggleButtonsVisibility(Visibility&& value) { m_toggleButtonsVisibilityHasBeenSet = true; m_toggleButtonsVisibility = std::move(value); }
-
-    /**
-     * <p>Determines the visibility of the pivot table.</p>
-     */
-    inline PivotTableOptions& WithToggleButtonsVisibility(const Visibility& value) { SetToggleButtonsVisibility(value); return *this;}
-
-    /**
-     * <p>Determines the visibility of the pivot table.</p>
-     */
-    inline PivotTableOptions& WithToggleButtonsVisibility(Visibility&& value) { SetToggleButtonsVisibility(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The table cell style of the column header.</p>
      */
-    inline const TableCellStyle& GetColumnHeaderStyle() const{ return m_columnHeaderStyle; }
-
-    /**
-     * <p>The table cell style of the column header.</p>
-     */
+    inline const TableCellStyle& GetColumnHeaderStyle() const { return m_columnHeaderStyle; }
     inline bool ColumnHeaderStyleHasBeenSet() const { return m_columnHeaderStyleHasBeenSet; }
+    template<typename ColumnHeaderStyleT = TableCellStyle>
+    void SetColumnHeaderStyle(ColumnHeaderStyleT&& value) { m_columnHeaderStyleHasBeenSet = true; m_columnHeaderStyle = std::forward<ColumnHeaderStyleT>(value); }
+    template<typename ColumnHeaderStyleT = TableCellStyle>
+    PivotTableOptions& WithColumnHeaderStyle(ColumnHeaderStyleT&& value) { SetColumnHeaderStyle(std::forward<ColumnHeaderStyleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The table cell style of the column header.</p>
-     */
-    inline void SetColumnHeaderStyle(const TableCellStyle& value) { m_columnHeaderStyleHasBeenSet = true; m_columnHeaderStyle = value; }
-
-    /**
-     * <p>The table cell style of the column header.</p>
-     */
-    inline void SetColumnHeaderStyle(TableCellStyle&& value) { m_columnHeaderStyleHasBeenSet = true; m_columnHeaderStyle = std::move(value); }
-
-    /**
-     * <p>The table cell style of the column header.</p>
-     */
-    inline PivotTableOptions& WithColumnHeaderStyle(const TableCellStyle& value) { SetColumnHeaderStyle(value); return *this;}
-
-    /**
-     * <p>The table cell style of the column header.</p>
-     */
-    inline PivotTableOptions& WithColumnHeaderStyle(TableCellStyle&& value) { SetColumnHeaderStyle(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The table cell style of the row headers.</p>
      */
-    inline const TableCellStyle& GetRowHeaderStyle() const{ return m_rowHeaderStyle; }
-
-    /**
-     * <p>The table cell style of the row headers.</p>
-     */
+    inline const TableCellStyle& GetRowHeaderStyle() const { return m_rowHeaderStyle; }
     inline bool RowHeaderStyleHasBeenSet() const { return m_rowHeaderStyleHasBeenSet; }
+    template<typename RowHeaderStyleT = TableCellStyle>
+    void SetRowHeaderStyle(RowHeaderStyleT&& value) { m_rowHeaderStyleHasBeenSet = true; m_rowHeaderStyle = std::forward<RowHeaderStyleT>(value); }
+    template<typename RowHeaderStyleT = TableCellStyle>
+    PivotTableOptions& WithRowHeaderStyle(RowHeaderStyleT&& value) { SetRowHeaderStyle(std::forward<RowHeaderStyleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The table cell style of the row headers.</p>
-     */
-    inline void SetRowHeaderStyle(const TableCellStyle& value) { m_rowHeaderStyleHasBeenSet = true; m_rowHeaderStyle = value; }
-
-    /**
-     * <p>The table cell style of the row headers.</p>
-     */
-    inline void SetRowHeaderStyle(TableCellStyle&& value) { m_rowHeaderStyleHasBeenSet = true; m_rowHeaderStyle = std::move(value); }
-
-    /**
-     * <p>The table cell style of the row headers.</p>
-     */
-    inline PivotTableOptions& WithRowHeaderStyle(const TableCellStyle& value) { SetRowHeaderStyle(value); return *this;}
-
-    /**
-     * <p>The table cell style of the row headers.</p>
-     */
-    inline PivotTableOptions& WithRowHeaderStyle(TableCellStyle&& value) { SetRowHeaderStyle(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The table cell style of cells.</p>
      */
-    inline const TableCellStyle& GetCellStyle() const{ return m_cellStyle; }
-
-    /**
-     * <p>The table cell style of cells.</p>
-     */
+    inline const TableCellStyle& GetCellStyle() const { return m_cellStyle; }
     inline bool CellStyleHasBeenSet() const { return m_cellStyleHasBeenSet; }
+    template<typename CellStyleT = TableCellStyle>
+    void SetCellStyle(CellStyleT&& value) { m_cellStyleHasBeenSet = true; m_cellStyle = std::forward<CellStyleT>(value); }
+    template<typename CellStyleT = TableCellStyle>
+    PivotTableOptions& WithCellStyle(CellStyleT&& value) { SetCellStyle(std::forward<CellStyleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The table cell style of cells.</p>
-     */
-    inline void SetCellStyle(const TableCellStyle& value) { m_cellStyleHasBeenSet = true; m_cellStyle = value; }
-
-    /**
-     * <p>The table cell style of cells.</p>
-     */
-    inline void SetCellStyle(TableCellStyle&& value) { m_cellStyleHasBeenSet = true; m_cellStyle = std::move(value); }
-
-    /**
-     * <p>The table cell style of cells.</p>
-     */
-    inline PivotTableOptions& WithCellStyle(const TableCellStyle& value) { SetCellStyle(value); return *this;}
-
-    /**
-     * <p>The table cell style of cells.</p>
-     */
-    inline PivotTableOptions& WithCellStyle(TableCellStyle&& value) { SetCellStyle(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The table cell style of row field names.</p>
      */
-    inline const TableCellStyle& GetRowFieldNamesStyle() const{ return m_rowFieldNamesStyle; }
-
-    /**
-     * <p>The table cell style of row field names.</p>
-     */
+    inline const TableCellStyle& GetRowFieldNamesStyle() const { return m_rowFieldNamesStyle; }
     inline bool RowFieldNamesStyleHasBeenSet() const { return m_rowFieldNamesStyleHasBeenSet; }
+    template<typename RowFieldNamesStyleT = TableCellStyle>
+    void SetRowFieldNamesStyle(RowFieldNamesStyleT&& value) { m_rowFieldNamesStyleHasBeenSet = true; m_rowFieldNamesStyle = std::forward<RowFieldNamesStyleT>(value); }
+    template<typename RowFieldNamesStyleT = TableCellStyle>
+    PivotTableOptions& WithRowFieldNamesStyle(RowFieldNamesStyleT&& value) { SetRowFieldNamesStyle(std::forward<RowFieldNamesStyleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The table cell style of row field names.</p>
-     */
-    inline void SetRowFieldNamesStyle(const TableCellStyle& value) { m_rowFieldNamesStyleHasBeenSet = true; m_rowFieldNamesStyle = value; }
-
-    /**
-     * <p>The table cell style of row field names.</p>
-     */
-    inline void SetRowFieldNamesStyle(TableCellStyle&& value) { m_rowFieldNamesStyleHasBeenSet = true; m_rowFieldNamesStyle = std::move(value); }
-
-    /**
-     * <p>The table cell style of row field names.</p>
-     */
-    inline PivotTableOptions& WithRowFieldNamesStyle(const TableCellStyle& value) { SetRowFieldNamesStyle(value); return *this;}
-
-    /**
-     * <p>The table cell style of row field names.</p>
-     */
-    inline PivotTableOptions& WithRowFieldNamesStyle(TableCellStyle&& value) { SetRowFieldNamesStyle(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The row alternate color options (widget status, row alternate colors).</p>
      */
-    inline const RowAlternateColorOptions& GetRowAlternateColorOptions() const{ return m_rowAlternateColorOptions; }
-
-    /**
-     * <p>The row alternate color options (widget status, row alternate colors).</p>
-     */
+    inline const RowAlternateColorOptions& GetRowAlternateColorOptions() const { return m_rowAlternateColorOptions; }
     inline bool RowAlternateColorOptionsHasBeenSet() const { return m_rowAlternateColorOptionsHasBeenSet; }
+    template<typename RowAlternateColorOptionsT = RowAlternateColorOptions>
+    void SetRowAlternateColorOptions(RowAlternateColorOptionsT&& value) { m_rowAlternateColorOptionsHasBeenSet = true; m_rowAlternateColorOptions = std::forward<RowAlternateColorOptionsT>(value); }
+    template<typename RowAlternateColorOptionsT = RowAlternateColorOptions>
+    PivotTableOptions& WithRowAlternateColorOptions(RowAlternateColorOptionsT&& value) { SetRowAlternateColorOptions(std::forward<RowAlternateColorOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The row alternate color options (widget status, row alternate colors).</p>
-     */
-    inline void SetRowAlternateColorOptions(const RowAlternateColorOptions& value) { m_rowAlternateColorOptionsHasBeenSet = true; m_rowAlternateColorOptions = value; }
-
-    /**
-     * <p>The row alternate color options (widget status, row alternate colors).</p>
-     */
-    inline void SetRowAlternateColorOptions(RowAlternateColorOptions&& value) { m_rowAlternateColorOptionsHasBeenSet = true; m_rowAlternateColorOptions = std::move(value); }
-
-    /**
-     * <p>The row alternate color options (widget status, row alternate colors).</p>
-     */
-    inline PivotTableOptions& WithRowAlternateColorOptions(const RowAlternateColorOptions& value) { SetRowAlternateColorOptions(value); return *this;}
-
-    /**
-     * <p>The row alternate color options (widget status, row alternate colors).</p>
-     */
-    inline PivotTableOptions& WithRowAlternateColorOptions(RowAlternateColorOptions&& value) { SetRowAlternateColorOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The visibility setting of a pivot table's collapsed row dimension fields. If
      * the value of this structure is <code>HIDDEN</code>, all collapsed columns in a
      * pivot table are automatically hidden. The default value is
      * <code>VISIBLE</code>.</p>
      */
-    inline const Visibility& GetCollapsedRowDimensionsVisibility() const{ return m_collapsedRowDimensionsVisibility; }
-
-    /**
-     * <p>The visibility setting of a pivot table's collapsed row dimension fields. If
-     * the value of this structure is <code>HIDDEN</code>, all collapsed columns in a
-     * pivot table are automatically hidden. The default value is
-     * <code>VISIBLE</code>.</p>
-     */
+    inline Visibility GetCollapsedRowDimensionsVisibility() const { return m_collapsedRowDimensionsVisibility; }
     inline bool CollapsedRowDimensionsVisibilityHasBeenSet() const { return m_collapsedRowDimensionsVisibilityHasBeenSet; }
+    inline void SetCollapsedRowDimensionsVisibility(Visibility value) { m_collapsedRowDimensionsVisibilityHasBeenSet = true; m_collapsedRowDimensionsVisibility = value; }
+    inline PivotTableOptions& WithCollapsedRowDimensionsVisibility(Visibility value) { SetCollapsedRowDimensionsVisibility(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The visibility setting of a pivot table's collapsed row dimension fields. If
-     * the value of this structure is <code>HIDDEN</code>, all collapsed columns in a
-     * pivot table are automatically hidden. The default value is
-     * <code>VISIBLE</code>.</p>
+     * <p>The layout for the row dimension headers of a pivot table. Choose one of the
+     * following options.</p> <ul> <li> <p> <code>TABULAR</code>: (Default) Each row
+     * field is displayed in a separate column.</p> </li> <li> <p>
+     * <code>HIERARCHY</code>: All row fields are displayed in a single column.
+     * Indentation is used to differentiate row headers of different fields.</p> </li>
+     * </ul>
      */
-    inline void SetCollapsedRowDimensionsVisibility(const Visibility& value) { m_collapsedRowDimensionsVisibilityHasBeenSet = true; m_collapsedRowDimensionsVisibility = value; }
+    inline PivotTableRowsLayout GetRowsLayout() const { return m_rowsLayout; }
+    inline bool RowsLayoutHasBeenSet() const { return m_rowsLayoutHasBeenSet; }
+    inline void SetRowsLayout(PivotTableRowsLayout value) { m_rowsLayoutHasBeenSet = true; m_rowsLayout = value; }
+    inline PivotTableOptions& WithRowsLayout(PivotTableRowsLayout value) { SetRowsLayout(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The visibility setting of a pivot table's collapsed row dimension fields. If
-     * the value of this structure is <code>HIDDEN</code>, all collapsed columns in a
-     * pivot table are automatically hidden. The default value is
-     * <code>VISIBLE</code>.</p>
+     * <p>The options for the label that is located above the row headers. This option
+     * is only applicable when <code>RowsLayout</code> is set to
+     * <code>HIERARCHY</code>.</p>
      */
-    inline void SetCollapsedRowDimensionsVisibility(Visibility&& value) { m_collapsedRowDimensionsVisibilityHasBeenSet = true; m_collapsedRowDimensionsVisibility = std::move(value); }
+    inline const PivotTableRowsLabelOptions& GetRowsLabelOptions() const { return m_rowsLabelOptions; }
+    inline bool RowsLabelOptionsHasBeenSet() const { return m_rowsLabelOptionsHasBeenSet; }
+    template<typename RowsLabelOptionsT = PivotTableRowsLabelOptions>
+    void SetRowsLabelOptions(RowsLabelOptionsT&& value) { m_rowsLabelOptionsHasBeenSet = true; m_rowsLabelOptions = std::forward<RowsLabelOptionsT>(value); }
+    template<typename RowsLabelOptionsT = PivotTableRowsLabelOptions>
+    PivotTableOptions& WithRowsLabelOptions(RowsLabelOptionsT&& value) { SetRowsLabelOptions(std::forward<RowsLabelOptionsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The visibility setting of a pivot table's collapsed row dimension fields. If
-     * the value of this structure is <code>HIDDEN</code>, all collapsed columns in a
-     * pivot table are automatically hidden. The default value is
-     * <code>VISIBLE</code>.</p>
+     * <p>The default cell width of the pivot table.</p>
      */
-    inline PivotTableOptions& WithCollapsedRowDimensionsVisibility(const Visibility& value) { SetCollapsedRowDimensionsVisibility(value); return *this;}
-
-    /**
-     * <p>The visibility setting of a pivot table's collapsed row dimension fields. If
-     * the value of this structure is <code>HIDDEN</code>, all collapsed columns in a
-     * pivot table are automatically hidden. The default value is
-     * <code>VISIBLE</code>.</p>
-     */
-    inline PivotTableOptions& WithCollapsedRowDimensionsVisibility(Visibility&& value) { SetCollapsedRowDimensionsVisibility(std::move(value)); return *this;}
-
+    inline const Aws::String& GetDefaultCellWidth() const { return m_defaultCellWidth; }
+    inline bool DefaultCellWidthHasBeenSet() const { return m_defaultCellWidthHasBeenSet; }
+    template<typename DefaultCellWidthT = Aws::String>
+    void SetDefaultCellWidth(DefaultCellWidthT&& value) { m_defaultCellWidthHasBeenSet = true; m_defaultCellWidth = std::forward<DefaultCellWidthT>(value); }
+    template<typename DefaultCellWidthT = Aws::String>
+    PivotTableOptions& WithDefaultCellWidth(DefaultCellWidthT&& value) { SetDefaultCellWidth(std::forward<DefaultCellWidthT>(value)); return *this;}
+    ///@}
   private:
 
-    PivotTableMetricPlacement m_metricPlacement;
+    PivotTableMetricPlacement m_metricPlacement{PivotTableMetricPlacement::NOT_SET};
     bool m_metricPlacementHasBeenSet = false;
 
-    Visibility m_singleMetricVisibility;
+    Visibility m_singleMetricVisibility{Visibility::NOT_SET};
     bool m_singleMetricVisibilityHasBeenSet = false;
 
-    Visibility m_columnNamesVisibility;
+    Visibility m_columnNamesVisibility{Visibility::NOT_SET};
     bool m_columnNamesVisibilityHasBeenSet = false;
 
-    Visibility m_toggleButtonsVisibility;
+    Visibility m_toggleButtonsVisibility{Visibility::NOT_SET};
     bool m_toggleButtonsVisibilityHasBeenSet = false;
 
     TableCellStyle m_columnHeaderStyle;
@@ -396,8 +225,17 @@ namespace Model
     RowAlternateColorOptions m_rowAlternateColorOptions;
     bool m_rowAlternateColorOptionsHasBeenSet = false;
 
-    Visibility m_collapsedRowDimensionsVisibility;
+    Visibility m_collapsedRowDimensionsVisibility{Visibility::NOT_SET};
     bool m_collapsedRowDimensionsVisibilityHasBeenSet = false;
+
+    PivotTableRowsLayout m_rowsLayout{PivotTableRowsLayout::NOT_SET};
+    bool m_rowsLayoutHasBeenSet = false;
+
+    PivotTableRowsLabelOptions m_rowsLabelOptions;
+    bool m_rowsLabelOptionsHasBeenSet = false;
+
+    Aws::String m_defaultCellWidth;
+    bool m_defaultCellWidthHasBeenSet = false;
   };
 
 } // namespace Model

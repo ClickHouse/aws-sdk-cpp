@@ -20,17 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-MetricStat::MetricStat() : 
-    m_metricHasBeenSet(false),
-    m_statHasBeenSet(false),
-    m_unitHasBeenSet(false)
-{
-}
-
-MetricStat::MetricStat(const XmlNode& xmlNode) : 
-    m_metricHasBeenSet(false),
-    m_statHasBeenSet(false),
-    m_unitHasBeenSet(false)
+MetricStat::MetricStat(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

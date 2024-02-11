@@ -34,12 +34,13 @@ namespace Model
   class BlueInstanceTerminationOption
   {
   public:
-    AWS_CODEDEPLOY_API BlueInstanceTerminationOption();
+    AWS_CODEDEPLOY_API BlueInstanceTerminationOption() = default;
     AWS_CODEDEPLOY_API BlueInstanceTerminationOption(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API BlueInstanceTerminationOption& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The action to take on instances in the original environment after a
      * successful blue/green deployment.</p> <ul> <li> <p> <code>TERMINATE</code>:
@@ -47,54 +48,13 @@ namespace Model
      * <code>KEEP_ALIVE</code>: Instances are left running after they are deregistered
      * from the load balancer and removed from the deployment group.</p> </li> </ul>
      */
-    inline const InstanceAction& GetAction() const{ return m_action; }
-
-    /**
-     * <p>The action to take on instances in the original environment after a
-     * successful blue/green deployment.</p> <ul> <li> <p> <code>TERMINATE</code>:
-     * Instances are terminated after a specified wait time.</p> </li> <li> <p>
-     * <code>KEEP_ALIVE</code>: Instances are left running after they are deregistered
-     * from the load balancer and removed from the deployment group.</p> </li> </ul>
-     */
+    inline InstanceAction GetAction() const { return m_action; }
     inline bool ActionHasBeenSet() const { return m_actionHasBeenSet; }
+    inline void SetAction(InstanceAction value) { m_actionHasBeenSet = true; m_action = value; }
+    inline BlueInstanceTerminationOption& WithAction(InstanceAction value) { SetAction(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The action to take on instances in the original environment after a
-     * successful blue/green deployment.</p> <ul> <li> <p> <code>TERMINATE</code>:
-     * Instances are terminated after a specified wait time.</p> </li> <li> <p>
-     * <code>KEEP_ALIVE</code>: Instances are left running after they are deregistered
-     * from the load balancer and removed from the deployment group.</p> </li> </ul>
-     */
-    inline void SetAction(const InstanceAction& value) { m_actionHasBeenSet = true; m_action = value; }
-
-    /**
-     * <p>The action to take on instances in the original environment after a
-     * successful blue/green deployment.</p> <ul> <li> <p> <code>TERMINATE</code>:
-     * Instances are terminated after a specified wait time.</p> </li> <li> <p>
-     * <code>KEEP_ALIVE</code>: Instances are left running after they are deregistered
-     * from the load balancer and removed from the deployment group.</p> </li> </ul>
-     */
-    inline void SetAction(InstanceAction&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
-
-    /**
-     * <p>The action to take on instances in the original environment after a
-     * successful blue/green deployment.</p> <ul> <li> <p> <code>TERMINATE</code>:
-     * Instances are terminated after a specified wait time.</p> </li> <li> <p>
-     * <code>KEEP_ALIVE</code>: Instances are left running after they are deregistered
-     * from the load balancer and removed from the deployment group.</p> </li> </ul>
-     */
-    inline BlueInstanceTerminationOption& WithAction(const InstanceAction& value) { SetAction(value); return *this;}
-
-    /**
-     * <p>The action to take on instances in the original environment after a
-     * successful blue/green deployment.</p> <ul> <li> <p> <code>TERMINATE</code>:
-     * Instances are terminated after a specified wait time.</p> </li> <li> <p>
-     * <code>KEEP_ALIVE</code>: Instances are left running after they are deregistered
-     * from the load balancer and removed from the deployment group.</p> </li> </ul>
-     */
-    inline BlueInstanceTerminationOption& WithAction(InstanceAction&& value) { SetAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>For an Amazon EC2 deployment, the number of minutes to wait after a
      * successful blue/green deployment before terminating instances from the original
@@ -103,44 +63,17 @@ namespace Model
      * CodeDeploy shifts traffic from the original (blue) task set to a replacement
      * (green) task set. </p> <p> The maximum setting is 2880 minutes (2 days). </p>
      */
-    inline int GetTerminationWaitTimeInMinutes() const{ return m_terminationWaitTimeInMinutes; }
-
-    /**
-     * <p>For an Amazon EC2 deployment, the number of minutes to wait after a
-     * successful blue/green deployment before terminating instances from the original
-     * environment.</p> <p> For an Amazon ECS deployment, the number of minutes before
-     * deleting the original (blue) task set. During an Amazon ECS deployment,
-     * CodeDeploy shifts traffic from the original (blue) task set to a replacement
-     * (green) task set. </p> <p> The maximum setting is 2880 minutes (2 days). </p>
-     */
+    inline int GetTerminationWaitTimeInMinutes() const { return m_terminationWaitTimeInMinutes; }
     inline bool TerminationWaitTimeInMinutesHasBeenSet() const { return m_terminationWaitTimeInMinutesHasBeenSet; }
-
-    /**
-     * <p>For an Amazon EC2 deployment, the number of minutes to wait after a
-     * successful blue/green deployment before terminating instances from the original
-     * environment.</p> <p> For an Amazon ECS deployment, the number of minutes before
-     * deleting the original (blue) task set. During an Amazon ECS deployment,
-     * CodeDeploy shifts traffic from the original (blue) task set to a replacement
-     * (green) task set. </p> <p> The maximum setting is 2880 minutes (2 days). </p>
-     */
     inline void SetTerminationWaitTimeInMinutes(int value) { m_terminationWaitTimeInMinutesHasBeenSet = true; m_terminationWaitTimeInMinutes = value; }
-
-    /**
-     * <p>For an Amazon EC2 deployment, the number of minutes to wait after a
-     * successful blue/green deployment before terminating instances from the original
-     * environment.</p> <p> For an Amazon ECS deployment, the number of minutes before
-     * deleting the original (blue) task set. During an Amazon ECS deployment,
-     * CodeDeploy shifts traffic from the original (blue) task set to a replacement
-     * (green) task set. </p> <p> The maximum setting is 2880 minutes (2 days). </p>
-     */
     inline BlueInstanceTerminationOption& WithTerminationWaitTimeInMinutes(int value) { SetTerminationWaitTimeInMinutes(value); return *this;}
-
+    ///@}
   private:
 
-    InstanceAction m_action;
+    InstanceAction m_action{InstanceAction::NOT_SET};
     bool m_actionHasBeenSet = false;
 
-    int m_terminationWaitTimeInMinutes;
+    int m_terminationWaitTimeInMinutes{0};
     bool m_terminationWaitTimeInMinutesHasBeenSet = false;
   };
 

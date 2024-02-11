@@ -31,30 +31,21 @@ namespace Model
   class MotionGraphicsSettings
   {
   public:
-    AWS_MEDIALIVE_API MotionGraphicsSettings();
+    AWS_MEDIALIVE_API MotionGraphicsSettings() = default;
     AWS_MEDIALIVE_API MotionGraphicsSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API MotionGraphicsSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const HtmlMotionGraphicsSettings& GetHtmlMotionGraphicsSettings() const{ return m_htmlMotionGraphicsSettings; }
-
-    
+    inline const HtmlMotionGraphicsSettings& GetHtmlMotionGraphicsSettings() const { return m_htmlMotionGraphicsSettings; }
     inline bool HtmlMotionGraphicsSettingsHasBeenSet() const { return m_htmlMotionGraphicsSettingsHasBeenSet; }
-
-    
-    inline void SetHtmlMotionGraphicsSettings(const HtmlMotionGraphicsSettings& value) { m_htmlMotionGraphicsSettingsHasBeenSet = true; m_htmlMotionGraphicsSettings = value; }
-
-    
-    inline void SetHtmlMotionGraphicsSettings(HtmlMotionGraphicsSettings&& value) { m_htmlMotionGraphicsSettingsHasBeenSet = true; m_htmlMotionGraphicsSettings = std::move(value); }
-
-    
-    inline MotionGraphicsSettings& WithHtmlMotionGraphicsSettings(const HtmlMotionGraphicsSettings& value) { SetHtmlMotionGraphicsSettings(value); return *this;}
-
-    
-    inline MotionGraphicsSettings& WithHtmlMotionGraphicsSettings(HtmlMotionGraphicsSettings&& value) { SetHtmlMotionGraphicsSettings(std::move(value)); return *this;}
-
+    template<typename HtmlMotionGraphicsSettingsT = HtmlMotionGraphicsSettings>
+    void SetHtmlMotionGraphicsSettings(HtmlMotionGraphicsSettingsT&& value) { m_htmlMotionGraphicsSettingsHasBeenSet = true; m_htmlMotionGraphicsSettings = std::forward<HtmlMotionGraphicsSettingsT>(value); }
+    template<typename HtmlMotionGraphicsSettingsT = HtmlMotionGraphicsSettings>
+    MotionGraphicsSettings& WithHtmlMotionGraphicsSettings(HtmlMotionGraphicsSettingsT&& value) { SetHtmlMotionGraphicsSettings(std::forward<HtmlMotionGraphicsSettingsT>(value)); return *this;}
+    ///@}
   private:
 
     HtmlMotionGraphicsSettings m_htmlMotionGraphicsSettings;

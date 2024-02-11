@@ -21,7 +21,7 @@ namespace Model
   class PutAccessPointPolicyRequest : public S3ControlRequest
   {
   public:
-    AWS_S3CONTROL_API PutAccessPointPolicyRequest();
+    AWS_S3CONTROL_API PutAccessPointPolicyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,55 +38,20 @@ namespace Model
      */
     AWS_S3CONTROL_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p>The Amazon Web Services account ID for owner of the bucket associated with
      * the specified access point.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The Amazon Web Services account ID for owner of the bucket associated with
-     * the specified access point.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    PutAccessPointPolicyRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID for owner of the bucket associated with
-     * the specified access point.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID for owner of the bucket associated with
-     * the specified access point.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID for owner of the bucket associated with
-     * the specified access point.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID for owner of the bucket associated with
-     * the specified access point.</p>
-     */
-    inline PutAccessPointPolicyRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID for owner of the bucket associated with
-     * the specified access point.</p>
-     */
-    inline PutAccessPointPolicyRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID for owner of the bucket associated with
-     * the specified access point.</p>
-     */
-    inline PutAccessPointPolicyRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the access point that you want to associate with the specified
      * policy.</p> <p>For using this parameter with Amazon S3 on Outposts with the REST
@@ -100,186 +65,31 @@ namespace Model
      * <code>arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/accesspoint/reports-ap</code>.
      * The value must be URL encoded. </p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the access point that you want to associate with the specified
-     * policy.</p> <p>For using this parameter with Amazon S3 on Outposts with the REST
-     * API, you must specify the name and the x-amz-outpost-id as well.</p> <p>For
-     * using this parameter with S3 on Outposts with the Amazon Web Services SDK and
-     * CLI, you must specify the ARN of the access point accessed in the format
-     * <code>arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/accesspoint/&lt;my-accesspoint-name&gt;</code>.
-     * For example, to access the access point <code>reports-ap</code> through Outpost
-     * <code>my-outpost</code> owned by account <code>123456789012</code> in Region
-     * <code>us-west-2</code>, use the URL encoding of
-     * <code>arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/accesspoint/reports-ap</code>.
-     * The value must be URL encoded. </p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    PutAccessPointPolicyRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the access point that you want to associate with the specified
-     * policy.</p> <p>For using this parameter with Amazon S3 on Outposts with the REST
-     * API, you must specify the name and the x-amz-outpost-id as well.</p> <p>For
-     * using this parameter with S3 on Outposts with the Amazon Web Services SDK and
-     * CLI, you must specify the ARN of the access point accessed in the format
-     * <code>arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/accesspoint/&lt;my-accesspoint-name&gt;</code>.
-     * For example, to access the access point <code>reports-ap</code> through Outpost
-     * <code>my-outpost</code> owned by account <code>123456789012</code> in Region
-     * <code>us-west-2</code>, use the URL encoding of
-     * <code>arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/accesspoint/reports-ap</code>.
-     * The value must be URL encoded. </p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the access point that you want to associate with the specified
-     * policy.</p> <p>For using this parameter with Amazon S3 on Outposts with the REST
-     * API, you must specify the name and the x-amz-outpost-id as well.</p> <p>For
-     * using this parameter with S3 on Outposts with the Amazon Web Services SDK and
-     * CLI, you must specify the ARN of the access point accessed in the format
-     * <code>arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/accesspoint/&lt;my-accesspoint-name&gt;</code>.
-     * For example, to access the access point <code>reports-ap</code> through Outpost
-     * <code>my-outpost</code> owned by account <code>123456789012</code> in Region
-     * <code>us-west-2</code>, use the URL encoding of
-     * <code>arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/accesspoint/reports-ap</code>.
-     * The value must be URL encoded. </p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the access point that you want to associate with the specified
-     * policy.</p> <p>For using this parameter with Amazon S3 on Outposts with the REST
-     * API, you must specify the name and the x-amz-outpost-id as well.</p> <p>For
-     * using this parameter with S3 on Outposts with the Amazon Web Services SDK and
-     * CLI, you must specify the ARN of the access point accessed in the format
-     * <code>arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/accesspoint/&lt;my-accesspoint-name&gt;</code>.
-     * For example, to access the access point <code>reports-ap</code> through Outpost
-     * <code>my-outpost</code> owned by account <code>123456789012</code> in Region
-     * <code>us-west-2</code>, use the URL encoding of
-     * <code>arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/accesspoint/reports-ap</code>.
-     * The value must be URL encoded. </p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the access point that you want to associate with the specified
-     * policy.</p> <p>For using this parameter with Amazon S3 on Outposts with the REST
-     * API, you must specify the name and the x-amz-outpost-id as well.</p> <p>For
-     * using this parameter with S3 on Outposts with the Amazon Web Services SDK and
-     * CLI, you must specify the ARN of the access point accessed in the format
-     * <code>arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/accesspoint/&lt;my-accesspoint-name&gt;</code>.
-     * For example, to access the access point <code>reports-ap</code> through Outpost
-     * <code>my-outpost</code> owned by account <code>123456789012</code> in Region
-     * <code>us-west-2</code>, use the URL encoding of
-     * <code>arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/accesspoint/reports-ap</code>.
-     * The value must be URL encoded. </p>
-     */
-    inline PutAccessPointPolicyRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the access point that you want to associate with the specified
-     * policy.</p> <p>For using this parameter with Amazon S3 on Outposts with the REST
-     * API, you must specify the name and the x-amz-outpost-id as well.</p> <p>For
-     * using this parameter with S3 on Outposts with the Amazon Web Services SDK and
-     * CLI, you must specify the ARN of the access point accessed in the format
-     * <code>arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/accesspoint/&lt;my-accesspoint-name&gt;</code>.
-     * For example, to access the access point <code>reports-ap</code> through Outpost
-     * <code>my-outpost</code> owned by account <code>123456789012</code> in Region
-     * <code>us-west-2</code>, use the URL encoding of
-     * <code>arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/accesspoint/reports-ap</code>.
-     * The value must be URL encoded. </p>
-     */
-    inline PutAccessPointPolicyRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the access point that you want to associate with the specified
-     * policy.</p> <p>For using this parameter with Amazon S3 on Outposts with the REST
-     * API, you must specify the name and the x-amz-outpost-id as well.</p> <p>For
-     * using this parameter with S3 on Outposts with the Amazon Web Services SDK and
-     * CLI, you must specify the ARN of the access point accessed in the format
-     * <code>arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/accesspoint/&lt;my-accesspoint-name&gt;</code>.
-     * For example, to access the access point <code>reports-ap</code> through Outpost
-     * <code>my-outpost</code> owned by account <code>123456789012</code> in Region
-     * <code>us-west-2</code>, use the URL encoding of
-     * <code>arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/accesspoint/reports-ap</code>.
-     * The value must be URL encoded. </p>
-     */
-    inline PutAccessPointPolicyRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The policy that you want to apply to the specified access point. For more
      * information about access point policies, see <a
      * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html">Managing
-     * data access with Amazon S3 access points</a> in the <i>Amazon S3 User
-     * Guide</i>.</p>
+     * data access with Amazon S3 access points</a> or <a
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html">Managing
+     * access to shared datasets in directory buckets with access points</a> in the
+     * <i>Amazon S3 User Guide</i>.</p>
      */
-    inline const Aws::String& GetPolicy() const{ return m_policy; }
-
-    /**
-     * <p>The policy that you want to apply to the specified access point. For more
-     * information about access point policies, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html">Managing
-     * data access with Amazon S3 access points</a> in the <i>Amazon S3 User
-     * Guide</i>.</p>
-     */
+    inline const Aws::String& GetPolicy() const { return m_policy; }
     inline bool PolicyHasBeenSet() const { return m_policyHasBeenSet; }
-
-    /**
-     * <p>The policy that you want to apply to the specified access point. For more
-     * information about access point policies, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html">Managing
-     * data access with Amazon S3 access points</a> in the <i>Amazon S3 User
-     * Guide</i>.</p>
-     */
-    inline void SetPolicy(const Aws::String& value) { m_policyHasBeenSet = true; m_policy = value; }
-
-    /**
-     * <p>The policy that you want to apply to the specified access point. For more
-     * information about access point policies, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html">Managing
-     * data access with Amazon S3 access points</a> in the <i>Amazon S3 User
-     * Guide</i>.</p>
-     */
-    inline void SetPolicy(Aws::String&& value) { m_policyHasBeenSet = true; m_policy = std::move(value); }
-
-    /**
-     * <p>The policy that you want to apply to the specified access point. For more
-     * information about access point policies, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html">Managing
-     * data access with Amazon S3 access points</a> in the <i>Amazon S3 User
-     * Guide</i>.</p>
-     */
-    inline void SetPolicy(const char* value) { m_policyHasBeenSet = true; m_policy.assign(value); }
-
-    /**
-     * <p>The policy that you want to apply to the specified access point. For more
-     * information about access point policies, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html">Managing
-     * data access with Amazon S3 access points</a> in the <i>Amazon S3 User
-     * Guide</i>.</p>
-     */
-    inline PutAccessPointPolicyRequest& WithPolicy(const Aws::String& value) { SetPolicy(value); return *this;}
-
-    /**
-     * <p>The policy that you want to apply to the specified access point. For more
-     * information about access point policies, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html">Managing
-     * data access with Amazon S3 access points</a> in the <i>Amazon S3 User
-     * Guide</i>.</p>
-     */
-    inline PutAccessPointPolicyRequest& WithPolicy(Aws::String&& value) { SetPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>The policy that you want to apply to the specified access point. For more
-     * information about access point policies, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html">Managing
-     * data access with Amazon S3 access points</a> in the <i>Amazon S3 User
-     * Guide</i>.</p>
-     */
-    inline PutAccessPointPolicyRequest& WithPolicy(const char* value) { SetPolicy(value); return *this;}
-
+    template<typename PolicyT = Aws::String>
+    void SetPolicy(PolicyT&& value) { m_policyHasBeenSet = true; m_policy = std::forward<PolicyT>(value); }
+    template<typename PolicyT = Aws::String>
+    PutAccessPointPolicyRequest& WithPolicy(PolicyT&& value) { SetPolicy(std::forward<PolicyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;

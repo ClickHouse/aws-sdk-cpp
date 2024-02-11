@@ -20,41 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-RefreshPreferences::RefreshPreferences() : 
-    m_minHealthyPercentage(0),
-    m_minHealthyPercentageHasBeenSet(false),
-    m_instanceWarmup(0),
-    m_instanceWarmupHasBeenSet(false),
-    m_checkpointPercentagesHasBeenSet(false),
-    m_checkpointDelay(0),
-    m_checkpointDelayHasBeenSet(false),
-    m_skipMatching(false),
-    m_skipMatchingHasBeenSet(false),
-    m_autoRollback(false),
-    m_autoRollbackHasBeenSet(false),
-    m_scaleInProtectedInstances(ScaleInProtectedInstances::NOT_SET),
-    m_scaleInProtectedInstancesHasBeenSet(false),
-    m_standbyInstances(StandbyInstances::NOT_SET),
-    m_standbyInstancesHasBeenSet(false)
-{
-}
-
-RefreshPreferences::RefreshPreferences(const XmlNode& xmlNode) : 
-    m_minHealthyPercentage(0),
-    m_minHealthyPercentageHasBeenSet(false),
-    m_instanceWarmup(0),
-    m_instanceWarmupHasBeenSet(false),
-    m_checkpointPercentagesHasBeenSet(false),
-    m_checkpointDelay(0),
-    m_checkpointDelayHasBeenSet(false),
-    m_skipMatching(false),
-    m_skipMatchingHasBeenSet(false),
-    m_autoRollback(false),
-    m_autoRollbackHasBeenSet(false),
-    m_scaleInProtectedInstances(ScaleInProtectedInstances::NOT_SET),
-    m_scaleInProtectedInstancesHasBeenSet(false),
-    m_standbyInstances(StandbyInstances::NOT_SET),
-    m_standbyInstancesHasBeenSet(false)
+RefreshPreferences::RefreshPreferences(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -81,9 +47,10 @@ RefreshPreferences& RefreshPreferences::operator =(const XmlNode& xmlNode)
     if(!checkpointPercentagesNode.IsNull())
     {
       XmlNode checkpointPercentagesMember = checkpointPercentagesNode.FirstChild("member");
+      m_checkpointPercentagesHasBeenSet = !checkpointPercentagesMember.IsNull();
       while(!checkpointPercentagesMember.IsNull())
       {
-         m_checkpointPercentages.push_back(StringUtils::ConvertToInt32(StringUtils::Trim(checkpointPercentagesMember.GetText().c_str()).c_str()));
+        m_checkpointPercentages.push_back(StringUtils::ConvertToInt32(StringUtils::Trim(checkpointPercentagesMember.GetText().c_str()).c_str()));
         checkpointPercentagesMember = checkpointPercentagesMember.NextNode("member");
       }
 
@@ -110,14 +77,32 @@ RefreshPreferences& RefreshPreferences::operator =(const XmlNode& xmlNode)
     XmlNode scaleInProtectedInstancesNode = resultNode.FirstChild("ScaleInProtectedInstances");
     if(!scaleInProtectedInstancesNode.IsNull())
     {
-      m_scaleInProtectedInstances = ScaleInProtectedInstancesMapper::GetScaleInProtectedInstancesForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(scaleInProtectedInstancesNode.GetText()).c_str()).c_str());
+      m_scaleInProtectedInstances = ScaleInProtectedInstancesMapper::GetScaleInProtectedInstancesForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(scaleInProtectedInstancesNode.GetText()).c_str()));
       m_scaleInProtectedInstancesHasBeenSet = true;
     }
     XmlNode standbyInstancesNode = resultNode.FirstChild("StandbyInstances");
     if(!standbyInstancesNode.IsNull())
     {
-      m_standbyInstances = StandbyInstancesMapper::GetStandbyInstancesForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(standbyInstancesNode.GetText()).c_str()).c_str());
+      m_standbyInstances = StandbyInstancesMapper::GetStandbyInstancesForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(standbyInstancesNode.GetText()).c_str()));
       m_standbyInstancesHasBeenSet = true;
+    }
+    XmlNode alarmSpecificationNode = resultNode.FirstChild("AlarmSpecification");
+    if(!alarmSpecificationNode.IsNull())
+    {
+      m_alarmSpecification = alarmSpecificationNode;
+      m_alarmSpecificationHasBeenSet = true;
+    }
+    XmlNode maxHealthyPercentageNode = resultNode.FirstChild("MaxHealthyPercentage");
+    if(!maxHealthyPercentageNode.IsNull())
+    {
+      m_maxHealthyPercentage = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(maxHealthyPercentageNode.GetText()).c_str()).c_str());
+      m_maxHealthyPercentageHasBeenSet = true;
+    }
+    XmlNode bakeTimeNode = resultNode.FirstChild("BakeTime");
+    if(!bakeTimeNode.IsNull())
+    {
+      m_bakeTime = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(bakeTimeNode.GetText()).c_str()).c_str());
+      m_bakeTimeHasBeenSet = true;
     }
   }
 
@@ -162,12 +147,29 @@ void RefreshPreferences::OutputToStream(Aws::OStream& oStream, const char* locat
 
   if(m_scaleInProtectedInstancesHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ScaleInProtectedInstances=" << ScaleInProtectedInstancesMapper::GetNameForScaleInProtectedInstances(m_scaleInProtectedInstances) << "&";
+      oStream << location << index << locationValue << ".ScaleInProtectedInstances=" << StringUtils::URLEncode(ScaleInProtectedInstancesMapper::GetNameForScaleInProtectedInstances(m_scaleInProtectedInstances)) << "&";
   }
 
   if(m_standbyInstancesHasBeenSet)
   {
-      oStream << location << index << locationValue << ".StandbyInstances=" << StandbyInstancesMapper::GetNameForStandbyInstances(m_standbyInstances) << "&";
+      oStream << location << index << locationValue << ".StandbyInstances=" << StringUtils::URLEncode(StandbyInstancesMapper::GetNameForStandbyInstances(m_standbyInstances)) << "&";
+  }
+
+  if(m_alarmSpecificationHasBeenSet)
+  {
+      Aws::StringStream alarmSpecificationLocationAndMemberSs;
+      alarmSpecificationLocationAndMemberSs << location << index << locationValue << ".AlarmSpecification";
+      m_alarmSpecification.OutputToStream(oStream, alarmSpecificationLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_maxHealthyPercentageHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".MaxHealthyPercentage=" << m_maxHealthyPercentage << "&";
+  }
+
+  if(m_bakeTimeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".BakeTime=" << m_bakeTime << "&";
   }
 
 }
@@ -204,11 +206,25 @@ void RefreshPreferences::OutputToStream(Aws::OStream& oStream, const char* locat
   }
   if(m_scaleInProtectedInstancesHasBeenSet)
   {
-      oStream << location << ".ScaleInProtectedInstances=" << ScaleInProtectedInstancesMapper::GetNameForScaleInProtectedInstances(m_scaleInProtectedInstances) << "&";
+      oStream << location << ".ScaleInProtectedInstances=" << StringUtils::URLEncode(ScaleInProtectedInstancesMapper::GetNameForScaleInProtectedInstances(m_scaleInProtectedInstances)) << "&";
   }
   if(m_standbyInstancesHasBeenSet)
   {
-      oStream << location << ".StandbyInstances=" << StandbyInstancesMapper::GetNameForStandbyInstances(m_standbyInstances) << "&";
+      oStream << location << ".StandbyInstances=" << StringUtils::URLEncode(StandbyInstancesMapper::GetNameForStandbyInstances(m_standbyInstances)) << "&";
+  }
+  if(m_alarmSpecificationHasBeenSet)
+  {
+      Aws::String alarmSpecificationLocationAndMember(location);
+      alarmSpecificationLocationAndMember += ".AlarmSpecification";
+      m_alarmSpecification.OutputToStream(oStream, alarmSpecificationLocationAndMember.c_str());
+  }
+  if(m_maxHealthyPercentageHasBeenSet)
+  {
+      oStream << location << ".MaxHealthyPercentage=" << m_maxHealthyPercentage << "&";
+  }
+  if(m_bakeTimeHasBeenSet)
+  {
+      oStream << location << ".BakeTime=" << m_bakeTime << "&";
   }
 }
 

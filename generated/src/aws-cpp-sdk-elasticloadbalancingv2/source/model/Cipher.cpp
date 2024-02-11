@@ -20,17 +20,7 @@ namespace ElasticLoadBalancingv2
 namespace Model
 {
 
-Cipher::Cipher() : 
-    m_nameHasBeenSet(false),
-    m_priority(0),
-    m_priorityHasBeenSet(false)
-{
-}
-
-Cipher::Cipher(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_priority(0),
-    m_priorityHasBeenSet(false)
+Cipher::Cipher(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

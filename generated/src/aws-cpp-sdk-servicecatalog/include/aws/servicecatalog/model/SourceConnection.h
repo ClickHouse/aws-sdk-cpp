@@ -38,76 +38,36 @@ namespace Model
   class SourceConnection
   {
   public:
-    AWS_SERVICECATALOG_API SourceConnection();
+    AWS_SERVICECATALOG_API SourceConnection() = default;
     AWS_SERVICECATALOG_API SourceConnection(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICECATALOG_API SourceConnection& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICECATALOG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The only supported <code>SourceConnection</code> type is Codestar. </p>
      */
-    inline const SourceType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The only supported <code>SourceConnection</code> type is Codestar. </p>
-     */
+    inline SourceType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(SourceType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline SourceConnection& WithType(SourceType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The only supported <code>SourceConnection</code> type is Codestar. </p>
-     */
-    inline void SetType(const SourceType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The only supported <code>SourceConnection</code> type is Codestar. </p>
-     */
-    inline void SetType(SourceType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The only supported <code>SourceConnection</code> type is Codestar. </p>
-     */
-    inline SourceConnection& WithType(const SourceType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The only supported <code>SourceConnection</code> type is Codestar. </p>
-     */
-    inline SourceConnection& WithType(SourceType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The connection details based on the connection <code>Type</code>. </p>
      */
-    inline const SourceConnectionParameters& GetConnectionParameters() const{ return m_connectionParameters; }
-
-    /**
-     * <p>The connection details based on the connection <code>Type</code>. </p>
-     */
+    inline const SourceConnectionParameters& GetConnectionParameters() const { return m_connectionParameters; }
     inline bool ConnectionParametersHasBeenSet() const { return m_connectionParametersHasBeenSet; }
-
-    /**
-     * <p>The connection details based on the connection <code>Type</code>. </p>
-     */
-    inline void SetConnectionParameters(const SourceConnectionParameters& value) { m_connectionParametersHasBeenSet = true; m_connectionParameters = value; }
-
-    /**
-     * <p>The connection details based on the connection <code>Type</code>. </p>
-     */
-    inline void SetConnectionParameters(SourceConnectionParameters&& value) { m_connectionParametersHasBeenSet = true; m_connectionParameters = std::move(value); }
-
-    /**
-     * <p>The connection details based on the connection <code>Type</code>. </p>
-     */
-    inline SourceConnection& WithConnectionParameters(const SourceConnectionParameters& value) { SetConnectionParameters(value); return *this;}
-
-    /**
-     * <p>The connection details based on the connection <code>Type</code>. </p>
-     */
-    inline SourceConnection& WithConnectionParameters(SourceConnectionParameters&& value) { SetConnectionParameters(std::move(value)); return *this;}
-
+    template<typename ConnectionParametersT = SourceConnectionParameters>
+    void SetConnectionParameters(ConnectionParametersT&& value) { m_connectionParametersHasBeenSet = true; m_connectionParameters = std::forward<ConnectionParametersT>(value); }
+    template<typename ConnectionParametersT = SourceConnectionParameters>
+    SourceConnection& WithConnectionParameters(ConnectionParametersT&& value) { SetConnectionParameters(std::forward<ConnectionParametersT>(value)); return *this;}
+    ///@}
   private:
 
-    SourceType m_type;
+    SourceType m_type{SourceType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     SourceConnectionParameters m_connectionParameters;

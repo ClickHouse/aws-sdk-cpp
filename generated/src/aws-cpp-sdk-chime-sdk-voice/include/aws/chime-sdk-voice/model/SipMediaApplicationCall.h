@@ -32,52 +32,23 @@ namespace Model
   class SipMediaApplicationCall
   {
   public:
-    AWS_CHIMESDKVOICE_API SipMediaApplicationCall();
+    AWS_CHIMESDKVOICE_API SipMediaApplicationCall() = default;
     AWS_CHIMESDKVOICE_API SipMediaApplicationCall(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKVOICE_API SipMediaApplicationCall& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKVOICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The call's transaction ID.</p>
      */
-    inline const Aws::String& GetTransactionId() const{ return m_transactionId; }
-
-    /**
-     * <p>The call's transaction ID.</p>
-     */
+    inline const Aws::String& GetTransactionId() const { return m_transactionId; }
     inline bool TransactionIdHasBeenSet() const { return m_transactionIdHasBeenSet; }
-
-    /**
-     * <p>The call's transaction ID.</p>
-     */
-    inline void SetTransactionId(const Aws::String& value) { m_transactionIdHasBeenSet = true; m_transactionId = value; }
-
-    /**
-     * <p>The call's transaction ID.</p>
-     */
-    inline void SetTransactionId(Aws::String&& value) { m_transactionIdHasBeenSet = true; m_transactionId = std::move(value); }
-
-    /**
-     * <p>The call's transaction ID.</p>
-     */
-    inline void SetTransactionId(const char* value) { m_transactionIdHasBeenSet = true; m_transactionId.assign(value); }
-
-    /**
-     * <p>The call's transaction ID.</p>
-     */
-    inline SipMediaApplicationCall& WithTransactionId(const Aws::String& value) { SetTransactionId(value); return *this;}
-
-    /**
-     * <p>The call's transaction ID.</p>
-     */
-    inline SipMediaApplicationCall& WithTransactionId(Aws::String&& value) { SetTransactionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The call's transaction ID.</p>
-     */
-    inline SipMediaApplicationCall& WithTransactionId(const char* value) { SetTransactionId(value); return *this;}
-
+    template<typename TransactionIdT = Aws::String>
+    void SetTransactionId(TransactionIdT&& value) { m_transactionIdHasBeenSet = true; m_transactionId = std::forward<TransactionIdT>(value); }
+    template<typename TransactionIdT = Aws::String>
+    SipMediaApplicationCall& WithTransactionId(TransactionIdT&& value) { SetTransactionId(std::forward<TransactionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_transactionId;

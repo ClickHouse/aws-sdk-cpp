@@ -18,17 +18,7 @@ namespace DynamoDBStreams
 namespace Model
 {
 
-Shard::Shard() : 
-    m_shardIdHasBeenSet(false),
-    m_sequenceNumberRangeHasBeenSet(false),
-    m_parentShardIdHasBeenSet(false)
-{
-}
-
-Shard::Shard(JsonView jsonValue) : 
-    m_shardIdHasBeenSet(false),
-    m_sequenceNumberRangeHasBeenSet(false),
-    m_parentShardIdHasBeenSet(false)
+Shard::Shard(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ Shard& Shard::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ShardId"))
   {
     m_shardId = jsonValue.GetString("ShardId");
-
     m_shardIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SequenceNumberRange"))
   {
     m_sequenceNumberRange = jsonValue.GetObject("SequenceNumberRange");
-
     m_sequenceNumberRangeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ParentShardId"))
   {
     m_parentShardId = jsonValue.GetString("ParentShardId");
-
     m_parentShardIdHasBeenSet = true;
   }
-
   return *this;
 }
 

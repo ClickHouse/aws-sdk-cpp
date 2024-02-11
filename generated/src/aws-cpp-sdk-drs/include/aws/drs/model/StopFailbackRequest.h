@@ -21,7 +21,7 @@ namespace Model
   class StopFailbackRequest : public DrsRequest
   {
   public:
-    AWS_DRS_API StopFailbackRequest();
+    AWS_DRS_API StopFailbackRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_DRS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Recovery Instance we want to stop failback for.</p>
      */
-    inline const Aws::String& GetRecoveryInstanceID() const{ return m_recoveryInstanceID; }
-
-    /**
-     * <p>The ID of the Recovery Instance we want to stop failback for.</p>
-     */
+    inline const Aws::String& GetRecoveryInstanceID() const { return m_recoveryInstanceID; }
     inline bool RecoveryInstanceIDHasBeenSet() const { return m_recoveryInstanceIDHasBeenSet; }
-
-    /**
-     * <p>The ID of the Recovery Instance we want to stop failback for.</p>
-     */
-    inline void SetRecoveryInstanceID(const Aws::String& value) { m_recoveryInstanceIDHasBeenSet = true; m_recoveryInstanceID = value; }
-
-    /**
-     * <p>The ID of the Recovery Instance we want to stop failback for.</p>
-     */
-    inline void SetRecoveryInstanceID(Aws::String&& value) { m_recoveryInstanceIDHasBeenSet = true; m_recoveryInstanceID = std::move(value); }
-
-    /**
-     * <p>The ID of the Recovery Instance we want to stop failback for.</p>
-     */
-    inline void SetRecoveryInstanceID(const char* value) { m_recoveryInstanceIDHasBeenSet = true; m_recoveryInstanceID.assign(value); }
-
-    /**
-     * <p>The ID of the Recovery Instance we want to stop failback for.</p>
-     */
-    inline StopFailbackRequest& WithRecoveryInstanceID(const Aws::String& value) { SetRecoveryInstanceID(value); return *this;}
-
-    /**
-     * <p>The ID of the Recovery Instance we want to stop failback for.</p>
-     */
-    inline StopFailbackRequest& WithRecoveryInstanceID(Aws::String&& value) { SetRecoveryInstanceID(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Recovery Instance we want to stop failback for.</p>
-     */
-    inline StopFailbackRequest& WithRecoveryInstanceID(const char* value) { SetRecoveryInstanceID(value); return *this;}
-
+    template<typename RecoveryInstanceIDT = Aws::String>
+    void SetRecoveryInstanceID(RecoveryInstanceIDT&& value) { m_recoveryInstanceIDHasBeenSet = true; m_recoveryInstanceID = std::forward<RecoveryInstanceIDT>(value); }
+    template<typename RecoveryInstanceIDT = Aws::String>
+    StopFailbackRequest& WithRecoveryInstanceID(RecoveryInstanceIDT&& value) { SetRecoveryInstanceID(std::forward<RecoveryInstanceIDT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_recoveryInstanceID;

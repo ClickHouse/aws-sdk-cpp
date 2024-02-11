@@ -22,6 +22,7 @@ namespace Aws
 
         static const int EXACT_HASH = HashingUtils::HashString("EXACT");
         static const int GOP_MULTIPLE_HASH = HashingUtils::HashString("GOP_MULTIPLE");
+        static const int MATCH_HASH = HashingUtils::HashString("MATCH");
 
 
         DashIsoSegmentLengthControl GetDashIsoSegmentLengthControlForName(const Aws::String& name)
@@ -34,6 +35,10 @@ namespace Aws
           else if (hashCode == GOP_MULTIPLE_HASH)
           {
             return DashIsoSegmentLengthControl::GOP_MULTIPLE;
+          }
+          else if (hashCode == MATCH_HASH)
+          {
+            return DashIsoSegmentLengthControl::MATCH;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -49,10 +54,14 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case DashIsoSegmentLengthControl::NOT_SET:
+            return {};
           case DashIsoSegmentLengthControl::EXACT:
             return "EXACT";
           case DashIsoSegmentLengthControl::GOP_MULTIPLE:
             return "GOP_MULTIPLE";
+          case DashIsoSegmentLengthControl::MATCH:
+            return "MATCH";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

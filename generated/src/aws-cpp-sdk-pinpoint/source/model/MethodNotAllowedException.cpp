@@ -18,15 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-MethodNotAllowedException::MethodNotAllowedException() : 
-    m_messageHasBeenSet(false),
-    m_requestIDHasBeenSet(false)
-{
-}
-
-MethodNotAllowedException::MethodNotAllowedException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_requestIDHasBeenSet(false)
+MethodNotAllowedException::MethodNotAllowedException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ MethodNotAllowedException& MethodNotAllowedException::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RequestID"))
   {
     m_requestID = jsonValue.GetString("RequestID");
-
     m_requestIDHasBeenSet = true;
   }
-
   return *this;
 }
 

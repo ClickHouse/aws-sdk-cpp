@@ -36,98 +36,37 @@ namespace Model
   class EnumerationValue
   {
   public:
-    AWS_LEXMODELBUILDINGSERVICE_API EnumerationValue();
+    AWS_LEXMODELBUILDINGSERVICE_API EnumerationValue() = default;
     AWS_LEXMODELBUILDINGSERVICE_API EnumerationValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELBUILDINGSERVICE_API EnumerationValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELBUILDINGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The value of the slot type.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the slot type.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    EnumerationValue& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The value of the slot type.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the slot type.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of the slot type.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The value of the slot type.</p>
-     */
-    inline EnumerationValue& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of the slot type.</p>
-     */
-    inline EnumerationValue& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value of the slot type.</p>
-     */
-    inline EnumerationValue& WithValue(const char* value) { SetValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Additional values related to the slot type value.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSynonyms() const{ return m_synonyms; }
-
-    /**
-     * <p>Additional values related to the slot type value.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSynonyms() const { return m_synonyms; }
     inline bool SynonymsHasBeenSet() const { return m_synonymsHasBeenSet; }
-
-    /**
-     * <p>Additional values related to the slot type value.</p>
-     */
-    inline void SetSynonyms(const Aws::Vector<Aws::String>& value) { m_synonymsHasBeenSet = true; m_synonyms = value; }
-
-    /**
-     * <p>Additional values related to the slot type value.</p>
-     */
-    inline void SetSynonyms(Aws::Vector<Aws::String>&& value) { m_synonymsHasBeenSet = true; m_synonyms = std::move(value); }
-
-    /**
-     * <p>Additional values related to the slot type value.</p>
-     */
-    inline EnumerationValue& WithSynonyms(const Aws::Vector<Aws::String>& value) { SetSynonyms(value); return *this;}
-
-    /**
-     * <p>Additional values related to the slot type value.</p>
-     */
-    inline EnumerationValue& WithSynonyms(Aws::Vector<Aws::String>&& value) { SetSynonyms(std::move(value)); return *this;}
-
-    /**
-     * <p>Additional values related to the slot type value.</p>
-     */
-    inline EnumerationValue& AddSynonyms(const Aws::String& value) { m_synonymsHasBeenSet = true; m_synonyms.push_back(value); return *this; }
-
-    /**
-     * <p>Additional values related to the slot type value.</p>
-     */
-    inline EnumerationValue& AddSynonyms(Aws::String&& value) { m_synonymsHasBeenSet = true; m_synonyms.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Additional values related to the slot type value.</p>
-     */
-    inline EnumerationValue& AddSynonyms(const char* value) { m_synonymsHasBeenSet = true; m_synonyms.push_back(value); return *this; }
-
+    template<typename SynonymsT = Aws::Vector<Aws::String>>
+    void SetSynonyms(SynonymsT&& value) { m_synonymsHasBeenSet = true; m_synonyms = std::forward<SynonymsT>(value); }
+    template<typename SynonymsT = Aws::Vector<Aws::String>>
+    EnumerationValue& WithSynonyms(SynonymsT&& value) { SetSynonyms(std::forward<SynonymsT>(value)); return *this;}
+    template<typename SynonymsT = Aws::String>
+    EnumerationValue& AddSynonyms(SynonymsT&& value) { m_synonymsHasBeenSet = true; m_synonyms.emplace_back(std::forward<SynonymsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_value;

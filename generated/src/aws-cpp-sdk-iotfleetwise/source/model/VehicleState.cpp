@@ -25,6 +25,7 @@ namespace Aws
         static const int HEALTHY_HASH = HashingUtils::HashString("HEALTHY");
         static const int SUSPENDED_HASH = HashingUtils::HashString("SUSPENDED");
         static const int DELETING_HASH = HashingUtils::HashString("DELETING");
+        static const int READY_FOR_CHECKIN_HASH = HashingUtils::HashString("READY_FOR_CHECKIN");
 
 
         VehicleState GetVehicleStateForName(const Aws::String& name)
@@ -50,6 +51,10 @@ namespace Aws
           {
             return VehicleState::DELETING;
           }
+          else if (hashCode == READY_FOR_CHECKIN_HASH)
+          {
+            return VehicleState::READY_FOR_CHECKIN;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -64,6 +69,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case VehicleState::NOT_SET:
+            return {};
           case VehicleState::CREATED:
             return "CREATED";
           case VehicleState::READY:
@@ -74,6 +81,8 @@ namespace Aws
             return "SUSPENDED";
           case VehicleState::DELETING:
             return "DELETING";
+          case VehicleState::READY_FOR_CHECKIN:
+            return "READY_FOR_CHECKIN";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

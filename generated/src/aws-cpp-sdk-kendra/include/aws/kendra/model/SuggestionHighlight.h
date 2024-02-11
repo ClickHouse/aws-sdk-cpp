@@ -30,63 +30,38 @@ namespace Model
   class SuggestionHighlight
   {
   public:
-    AWS_KENDRA_API SuggestionHighlight();
+    AWS_KENDRA_API SuggestionHighlight() = default;
     AWS_KENDRA_API SuggestionHighlight(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API SuggestionHighlight& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The zero-based location in the response string where the highlight
      * starts.</p>
      */
-    inline int GetBeginOffset() const{ return m_beginOffset; }
-
-    /**
-     * <p>The zero-based location in the response string where the highlight
-     * starts.</p>
-     */
+    inline int GetBeginOffset() const { return m_beginOffset; }
     inline bool BeginOffsetHasBeenSet() const { return m_beginOffsetHasBeenSet; }
-
-    /**
-     * <p>The zero-based location in the response string where the highlight
-     * starts.</p>
-     */
     inline void SetBeginOffset(int value) { m_beginOffsetHasBeenSet = true; m_beginOffset = value; }
-
-    /**
-     * <p>The zero-based location in the response string where the highlight
-     * starts.</p>
-     */
     inline SuggestionHighlight& WithBeginOffset(int value) { SetBeginOffset(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The zero-based location in the response string where the highlight ends.</p>
      */
-    inline int GetEndOffset() const{ return m_endOffset; }
-
-    /**
-     * <p>The zero-based location in the response string where the highlight ends.</p>
-     */
+    inline int GetEndOffset() const { return m_endOffset; }
     inline bool EndOffsetHasBeenSet() const { return m_endOffsetHasBeenSet; }
-
-    /**
-     * <p>The zero-based location in the response string where the highlight ends.</p>
-     */
     inline void SetEndOffset(int value) { m_endOffsetHasBeenSet = true; m_endOffset = value; }
-
-    /**
-     * <p>The zero-based location in the response string where the highlight ends.</p>
-     */
     inline SuggestionHighlight& WithEndOffset(int value) { SetEndOffset(value); return *this;}
-
+    ///@}
   private:
 
-    int m_beginOffset;
+    int m_beginOffset{0};
     bool m_beginOffsetHasBeenSet = false;
 
-    int m_endOffset;
+    int m_endOffset{0};
     bool m_endOffsetHasBeenSet = false;
   };
 

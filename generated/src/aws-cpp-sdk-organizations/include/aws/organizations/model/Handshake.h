@@ -44,77 +44,28 @@ namespace Model
   class Handshake
   {
   public:
-    AWS_ORGANIZATIONS_API Handshake();
+    AWS_ORGANIZATIONS_API Handshake() = default;
     AWS_ORGANIZATIONS_API Handshake(Aws::Utils::Json::JsonView jsonValue);
     AWS_ORGANIZATIONS_API Handshake& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ORGANIZATIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier (ID) of a handshake. The originating account creates
      * the ID when it initiates the handshake.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string
      * requires "h-" followed by from 8 to 32 lowercase letters or digits.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The unique identifier (ID) of a handshake. The originating account creates
-     * the ID when it initiates the handshake.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string
-     * requires "h-" followed by from 8 to 32 lowercase letters or digits.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    Handshake& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier (ID) of a handshake. The originating account creates
-     * the ID when it initiates the handshake.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string
-     * requires "h-" followed by from 8 to 32 lowercase letters or digits.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The unique identifier (ID) of a handshake. The originating account creates
-     * the ID when it initiates the handshake.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string
-     * requires "h-" followed by from 8 to 32 lowercase letters or digits.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The unique identifier (ID) of a handshake. The originating account creates
-     * the ID when it initiates the handshake.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string
-     * requires "h-" followed by from 8 to 32 lowercase letters or digits.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The unique identifier (ID) of a handshake. The originating account creates
-     * the ID when it initiates the handshake.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string
-     * requires "h-" followed by from 8 to 32 lowercase letters or digits.</p>
-     */
-    inline Handshake& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The unique identifier (ID) of a handshake. The originating account creates
-     * the ID when it initiates the handshake.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string
-     * requires "h-" followed by from 8 to 32 lowercase letters or digits.</p>
-     */
-    inline Handshake& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier (ID) of a handshake. The originating account creates
-     * the ID when it initiates the handshake.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string
-     * requires "h-" followed by from 8 to 32 lowercase letters or digits.</p>
-     */
-    inline Handshake& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of a handshake.</p> <p>For more information
      * about ARNs in Organizations, see <a
@@ -122,121 +73,30 @@ namespace Model
      * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
      * Authorization Reference</i>.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a handshake.</p> <p>For more information
-     * about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    Handshake& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of a handshake.</p> <p>For more information
-     * about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a handshake.</p> <p>For more information
-     * about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a handshake.</p> <p>For more information
-     * about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a handshake.</p> <p>For more information
-     * about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline Handshake& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a handshake.</p> <p>For more information
-     * about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline Handshake& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a handshake.</p> <p>For more information
-     * about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline Handshake& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the two accounts that are participating in the
      * handshake.</p>
      */
-    inline const Aws::Vector<HandshakeParty>& GetParties() const{ return m_parties; }
-
-    /**
-     * <p>Information about the two accounts that are participating in the
-     * handshake.</p>
-     */
+    inline const Aws::Vector<HandshakeParty>& GetParties() const { return m_parties; }
     inline bool PartiesHasBeenSet() const { return m_partiesHasBeenSet; }
+    template<typename PartiesT = Aws::Vector<HandshakeParty>>
+    void SetParties(PartiesT&& value) { m_partiesHasBeenSet = true; m_parties = std::forward<PartiesT>(value); }
+    template<typename PartiesT = Aws::Vector<HandshakeParty>>
+    Handshake& WithParties(PartiesT&& value) { SetParties(std::forward<PartiesT>(value)); return *this;}
+    template<typename PartiesT = HandshakeParty>
+    Handshake& AddParties(PartiesT&& value) { m_partiesHasBeenSet = true; m_parties.emplace_back(std::forward<PartiesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about the two accounts that are participating in the
-     * handshake.</p>
-     */
-    inline void SetParties(const Aws::Vector<HandshakeParty>& value) { m_partiesHasBeenSet = true; m_parties = value; }
-
-    /**
-     * <p>Information about the two accounts that are participating in the
-     * handshake.</p>
-     */
-    inline void SetParties(Aws::Vector<HandshakeParty>&& value) { m_partiesHasBeenSet = true; m_parties = std::move(value); }
-
-    /**
-     * <p>Information about the two accounts that are participating in the
-     * handshake.</p>
-     */
-    inline Handshake& WithParties(const Aws::Vector<HandshakeParty>& value) { SetParties(value); return *this;}
-
-    /**
-     * <p>Information about the two accounts that are participating in the
-     * handshake.</p>
-     */
-    inline Handshake& WithParties(Aws::Vector<HandshakeParty>&& value) { SetParties(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the two accounts that are participating in the
-     * handshake.</p>
-     */
-    inline Handshake& AddParties(const HandshakeParty& value) { m_partiesHasBeenSet = true; m_parties.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the two accounts that are participating in the
-     * handshake.</p>
-     */
-    inline Handshake& AddParties(HandshakeParty&& value) { m_partiesHasBeenSet = true; m_parties.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The current state of the handshake. Use the state to trace the flow of the
      * handshake through the process from its creation to its acceptance. The meaning
@@ -255,183 +115,39 @@ namespace Model
      * not receive a response of any kind from the recipient before the expiration time
      * (15 days).</p> </li> </ul>
      */
-    inline const HandshakeState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The current state of the handshake. Use the state to trace the flow of the
-     * handshake through the process from its creation to its acceptance. The meaning
-     * of each of the valid values is as follows:</p> <ul> <li> <p> <b>REQUESTED</b>:
-     * This handshake was sent to multiple recipients (applicable to only some
-     * handshake types) and not all recipients have responded yet. The request stays in
-     * this state until all recipients respond.</p> </li> <li> <p> <b>OPEN</b>: This
-     * handshake was sent to multiple recipients (applicable to only some policy types)
-     * and all recipients have responded, allowing the originator to complete the
-     * handshake action.</p> </li> <li> <p> <b>CANCELED</b>: This handshake is no
-     * longer active because it was canceled by the originating account.</p> </li> <li>
-     * <p> <b>ACCEPTED</b>: This handshake is complete because it has been accepted by
-     * the recipient.</p> </li> <li> <p> <b>DECLINED</b>: This handshake is no longer
-     * active because it was declined by the recipient account.</p> </li> <li> <p>
-     * <b>EXPIRED</b>: This handshake is no longer active because the originator did
-     * not receive a response of any kind from the recipient before the expiration time
-     * (15 days).</p> </li> </ul>
-     */
+    inline HandshakeState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(HandshakeState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline Handshake& WithState(HandshakeState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current state of the handshake. Use the state to trace the flow of the
-     * handshake through the process from its creation to its acceptance. The meaning
-     * of each of the valid values is as follows:</p> <ul> <li> <p> <b>REQUESTED</b>:
-     * This handshake was sent to multiple recipients (applicable to only some
-     * handshake types) and not all recipients have responded yet. The request stays in
-     * this state until all recipients respond.</p> </li> <li> <p> <b>OPEN</b>: This
-     * handshake was sent to multiple recipients (applicable to only some policy types)
-     * and all recipients have responded, allowing the originator to complete the
-     * handshake action.</p> </li> <li> <p> <b>CANCELED</b>: This handshake is no
-     * longer active because it was canceled by the originating account.</p> </li> <li>
-     * <p> <b>ACCEPTED</b>: This handshake is complete because it has been accepted by
-     * the recipient.</p> </li> <li> <p> <b>DECLINED</b>: This handshake is no longer
-     * active because it was declined by the recipient account.</p> </li> <li> <p>
-     * <b>EXPIRED</b>: This handshake is no longer active because the originator did
-     * not receive a response of any kind from the recipient before the expiration time
-     * (15 days).</p> </li> </ul>
-     */
-    inline void SetState(const HandshakeState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The current state of the handshake. Use the state to trace the flow of the
-     * handshake through the process from its creation to its acceptance. The meaning
-     * of each of the valid values is as follows:</p> <ul> <li> <p> <b>REQUESTED</b>:
-     * This handshake was sent to multiple recipients (applicable to only some
-     * handshake types) and not all recipients have responded yet. The request stays in
-     * this state until all recipients respond.</p> </li> <li> <p> <b>OPEN</b>: This
-     * handshake was sent to multiple recipients (applicable to only some policy types)
-     * and all recipients have responded, allowing the originator to complete the
-     * handshake action.</p> </li> <li> <p> <b>CANCELED</b>: This handshake is no
-     * longer active because it was canceled by the originating account.</p> </li> <li>
-     * <p> <b>ACCEPTED</b>: This handshake is complete because it has been accepted by
-     * the recipient.</p> </li> <li> <p> <b>DECLINED</b>: This handshake is no longer
-     * active because it was declined by the recipient account.</p> </li> <li> <p>
-     * <b>EXPIRED</b>: This handshake is no longer active because the originator did
-     * not receive a response of any kind from the recipient before the expiration time
-     * (15 days).</p> </li> </ul>
-     */
-    inline void SetState(HandshakeState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The current state of the handshake. Use the state to trace the flow of the
-     * handshake through the process from its creation to its acceptance. The meaning
-     * of each of the valid values is as follows:</p> <ul> <li> <p> <b>REQUESTED</b>:
-     * This handshake was sent to multiple recipients (applicable to only some
-     * handshake types) and not all recipients have responded yet. The request stays in
-     * this state until all recipients respond.</p> </li> <li> <p> <b>OPEN</b>: This
-     * handshake was sent to multiple recipients (applicable to only some policy types)
-     * and all recipients have responded, allowing the originator to complete the
-     * handshake action.</p> </li> <li> <p> <b>CANCELED</b>: This handshake is no
-     * longer active because it was canceled by the originating account.</p> </li> <li>
-     * <p> <b>ACCEPTED</b>: This handshake is complete because it has been accepted by
-     * the recipient.</p> </li> <li> <p> <b>DECLINED</b>: This handshake is no longer
-     * active because it was declined by the recipient account.</p> </li> <li> <p>
-     * <b>EXPIRED</b>: This handshake is no longer active because the originator did
-     * not receive a response of any kind from the recipient before the expiration time
-     * (15 days).</p> </li> </ul>
-     */
-    inline Handshake& WithState(const HandshakeState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The current state of the handshake. Use the state to trace the flow of the
-     * handshake through the process from its creation to its acceptance. The meaning
-     * of each of the valid values is as follows:</p> <ul> <li> <p> <b>REQUESTED</b>:
-     * This handshake was sent to multiple recipients (applicable to only some
-     * handshake types) and not all recipients have responded yet. The request stays in
-     * this state until all recipients respond.</p> </li> <li> <p> <b>OPEN</b>: This
-     * handshake was sent to multiple recipients (applicable to only some policy types)
-     * and all recipients have responded, allowing the originator to complete the
-     * handshake action.</p> </li> <li> <p> <b>CANCELED</b>: This handshake is no
-     * longer active because it was canceled by the originating account.</p> </li> <li>
-     * <p> <b>ACCEPTED</b>: This handshake is complete because it has been accepted by
-     * the recipient.</p> </li> <li> <p> <b>DECLINED</b>: This handshake is no longer
-     * active because it was declined by the recipient account.</p> </li> <li> <p>
-     * <b>EXPIRED</b>: This handshake is no longer active because the originator did
-     * not receive a response of any kind from the recipient before the expiration time
-     * (15 days).</p> </li> </ul>
-     */
-    inline Handshake& WithState(HandshakeState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the handshake request was made.</p>
      */
-    inline const Aws::Utils::DateTime& GetRequestedTimestamp() const{ return m_requestedTimestamp; }
-
-    /**
-     * <p>The date and time that the handshake request was made.</p>
-     */
+    inline const Aws::Utils::DateTime& GetRequestedTimestamp() const { return m_requestedTimestamp; }
     inline bool RequestedTimestampHasBeenSet() const { return m_requestedTimestampHasBeenSet; }
+    template<typename RequestedTimestampT = Aws::Utils::DateTime>
+    void SetRequestedTimestamp(RequestedTimestampT&& value) { m_requestedTimestampHasBeenSet = true; m_requestedTimestamp = std::forward<RequestedTimestampT>(value); }
+    template<typename RequestedTimestampT = Aws::Utils::DateTime>
+    Handshake& WithRequestedTimestamp(RequestedTimestampT&& value) { SetRequestedTimestamp(std::forward<RequestedTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the handshake request was made.</p>
-     */
-    inline void SetRequestedTimestamp(const Aws::Utils::DateTime& value) { m_requestedTimestampHasBeenSet = true; m_requestedTimestamp = value; }
-
-    /**
-     * <p>The date and time that the handshake request was made.</p>
-     */
-    inline void SetRequestedTimestamp(Aws::Utils::DateTime&& value) { m_requestedTimestampHasBeenSet = true; m_requestedTimestamp = std::move(value); }
-
-    /**
-     * <p>The date and time that the handshake request was made.</p>
-     */
-    inline Handshake& WithRequestedTimestamp(const Aws::Utils::DateTime& value) { SetRequestedTimestamp(value); return *this;}
-
-    /**
-     * <p>The date and time that the handshake request was made.</p>
-     */
-    inline Handshake& WithRequestedTimestamp(Aws::Utils::DateTime&& value) { SetRequestedTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the handshake expires. If the recipient of the
      * handshake request fails to respond before the specified date and time, the
      * handshake becomes inactive and is no longer valid.</p>
      */
-    inline const Aws::Utils::DateTime& GetExpirationTimestamp() const{ return m_expirationTimestamp; }
-
-    /**
-     * <p>The date and time that the handshake expires. If the recipient of the
-     * handshake request fails to respond before the specified date and time, the
-     * handshake becomes inactive and is no longer valid.</p>
-     */
+    inline const Aws::Utils::DateTime& GetExpirationTimestamp() const { return m_expirationTimestamp; }
     inline bool ExpirationTimestampHasBeenSet() const { return m_expirationTimestampHasBeenSet; }
+    template<typename ExpirationTimestampT = Aws::Utils::DateTime>
+    void SetExpirationTimestamp(ExpirationTimestampT&& value) { m_expirationTimestampHasBeenSet = true; m_expirationTimestamp = std::forward<ExpirationTimestampT>(value); }
+    template<typename ExpirationTimestampT = Aws::Utils::DateTime>
+    Handshake& WithExpirationTimestamp(ExpirationTimestampT&& value) { SetExpirationTimestamp(std::forward<ExpirationTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the handshake expires. If the recipient of the
-     * handshake request fails to respond before the specified date and time, the
-     * handshake becomes inactive and is no longer valid.</p>
-     */
-    inline void SetExpirationTimestamp(const Aws::Utils::DateTime& value) { m_expirationTimestampHasBeenSet = true; m_expirationTimestamp = value; }
-
-    /**
-     * <p>The date and time that the handshake expires. If the recipient of the
-     * handshake request fails to respond before the specified date and time, the
-     * handshake becomes inactive and is no longer valid.</p>
-     */
-    inline void SetExpirationTimestamp(Aws::Utils::DateTime&& value) { m_expirationTimestampHasBeenSet = true; m_expirationTimestamp = std::move(value); }
-
-    /**
-     * <p>The date and time that the handshake expires. If the recipient of the
-     * handshake request fails to respond before the specified date and time, the
-     * handshake becomes inactive and is no longer valid.</p>
-     */
-    inline Handshake& WithExpirationTimestamp(const Aws::Utils::DateTime& value) { SetExpirationTimestamp(value); return *this;}
-
-    /**
-     * <p>The date and time that the handshake expires. If the recipient of the
-     * handshake request fails to respond before the specified date and time, the
-     * handshake becomes inactive and is no longer valid.</p>
-     */
-    inline Handshake& WithExpirationTimestamp(Aws::Utils::DateTime&& value) { SetExpirationTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of handshake, indicating what action occurs when the recipient
      * accepts the handshake. The following handshake types are supported:</p> <ul>
@@ -448,139 +164,25 @@ namespace Model
      * account and signals the master that it can finalize the process to enable all
      * features.</p> </li> </ul>
      */
-    inline const ActionType& GetAction() const{ return m_action; }
-
-    /**
-     * <p>The type of handshake, indicating what action occurs when the recipient
-     * accepts the handshake. The following handshake types are supported:</p> <ul>
-     * <li> <p> <b>INVITE</b>: This type of handshake represents a request to join an
-     * organization. It is always sent from the management account to only non-member
-     * accounts.</p> </li> <li> <p> <b>ENABLE_ALL_FEATURES</b>: This type of handshake
-     * represents a request to enable all features in an organization. It is always
-     * sent from the management account to only <i>invited</i> member accounts. Created
-     * accounts do not receive this because those accounts were created by the
-     * organization's management account and approval is inferred.</p> </li> <li> <p>
-     * <b>APPROVE_ALL_FEATURES</b>: This type of handshake is sent from the
-     * Organizations service when all member accounts have approved the
-     * <code>ENABLE_ALL_FEATURES</code> invitation. It is sent only to the management
-     * account and signals the master that it can finalize the process to enable all
-     * features.</p> </li> </ul>
-     */
+    inline ActionType GetAction() const { return m_action; }
     inline bool ActionHasBeenSet() const { return m_actionHasBeenSet; }
+    inline void SetAction(ActionType value) { m_actionHasBeenSet = true; m_action = value; }
+    inline Handshake& WithAction(ActionType value) { SetAction(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of handshake, indicating what action occurs when the recipient
-     * accepts the handshake. The following handshake types are supported:</p> <ul>
-     * <li> <p> <b>INVITE</b>: This type of handshake represents a request to join an
-     * organization. It is always sent from the management account to only non-member
-     * accounts.</p> </li> <li> <p> <b>ENABLE_ALL_FEATURES</b>: This type of handshake
-     * represents a request to enable all features in an organization. It is always
-     * sent from the management account to only <i>invited</i> member accounts. Created
-     * accounts do not receive this because those accounts were created by the
-     * organization's management account and approval is inferred.</p> </li> <li> <p>
-     * <b>APPROVE_ALL_FEATURES</b>: This type of handshake is sent from the
-     * Organizations service when all member accounts have approved the
-     * <code>ENABLE_ALL_FEATURES</code> invitation. It is sent only to the management
-     * account and signals the master that it can finalize the process to enable all
-     * features.</p> </li> </ul>
-     */
-    inline void SetAction(const ActionType& value) { m_actionHasBeenSet = true; m_action = value; }
-
-    /**
-     * <p>The type of handshake, indicating what action occurs when the recipient
-     * accepts the handshake. The following handshake types are supported:</p> <ul>
-     * <li> <p> <b>INVITE</b>: This type of handshake represents a request to join an
-     * organization. It is always sent from the management account to only non-member
-     * accounts.</p> </li> <li> <p> <b>ENABLE_ALL_FEATURES</b>: This type of handshake
-     * represents a request to enable all features in an organization. It is always
-     * sent from the management account to only <i>invited</i> member accounts. Created
-     * accounts do not receive this because those accounts were created by the
-     * organization's management account and approval is inferred.</p> </li> <li> <p>
-     * <b>APPROVE_ALL_FEATURES</b>: This type of handshake is sent from the
-     * Organizations service when all member accounts have approved the
-     * <code>ENABLE_ALL_FEATURES</code> invitation. It is sent only to the management
-     * account and signals the master that it can finalize the process to enable all
-     * features.</p> </li> </ul>
-     */
-    inline void SetAction(ActionType&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
-
-    /**
-     * <p>The type of handshake, indicating what action occurs when the recipient
-     * accepts the handshake. The following handshake types are supported:</p> <ul>
-     * <li> <p> <b>INVITE</b>: This type of handshake represents a request to join an
-     * organization. It is always sent from the management account to only non-member
-     * accounts.</p> </li> <li> <p> <b>ENABLE_ALL_FEATURES</b>: This type of handshake
-     * represents a request to enable all features in an organization. It is always
-     * sent from the management account to only <i>invited</i> member accounts. Created
-     * accounts do not receive this because those accounts were created by the
-     * organization's management account and approval is inferred.</p> </li> <li> <p>
-     * <b>APPROVE_ALL_FEATURES</b>: This type of handshake is sent from the
-     * Organizations service when all member accounts have approved the
-     * <code>ENABLE_ALL_FEATURES</code> invitation. It is sent only to the management
-     * account and signals the master that it can finalize the process to enable all
-     * features.</p> </li> </ul>
-     */
-    inline Handshake& WithAction(const ActionType& value) { SetAction(value); return *this;}
-
-    /**
-     * <p>The type of handshake, indicating what action occurs when the recipient
-     * accepts the handshake. The following handshake types are supported:</p> <ul>
-     * <li> <p> <b>INVITE</b>: This type of handshake represents a request to join an
-     * organization. It is always sent from the management account to only non-member
-     * accounts.</p> </li> <li> <p> <b>ENABLE_ALL_FEATURES</b>: This type of handshake
-     * represents a request to enable all features in an organization. It is always
-     * sent from the management account to only <i>invited</i> member accounts. Created
-     * accounts do not receive this because those accounts were created by the
-     * organization's management account and approval is inferred.</p> </li> <li> <p>
-     * <b>APPROVE_ALL_FEATURES</b>: This type of handshake is sent from the
-     * Organizations service when all member accounts have approved the
-     * <code>ENABLE_ALL_FEATURES</code> invitation. It is sent only to the management
-     * account and signals the master that it can finalize the process to enable all
-     * features.</p> </li> </ul>
-     */
-    inline Handshake& WithAction(ActionType&& value) { SetAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Additional information that is needed to process the handshake.</p>
      */
-    inline const Aws::Vector<HandshakeResource>& GetResources() const{ return m_resources; }
-
-    /**
-     * <p>Additional information that is needed to process the handshake.</p>
-     */
+    inline const Aws::Vector<HandshakeResource>& GetResources() const { return m_resources; }
     inline bool ResourcesHasBeenSet() const { return m_resourcesHasBeenSet; }
-
-    /**
-     * <p>Additional information that is needed to process the handshake.</p>
-     */
-    inline void SetResources(const Aws::Vector<HandshakeResource>& value) { m_resourcesHasBeenSet = true; m_resources = value; }
-
-    /**
-     * <p>Additional information that is needed to process the handshake.</p>
-     */
-    inline void SetResources(Aws::Vector<HandshakeResource>&& value) { m_resourcesHasBeenSet = true; m_resources = std::move(value); }
-
-    /**
-     * <p>Additional information that is needed to process the handshake.</p>
-     */
-    inline Handshake& WithResources(const Aws::Vector<HandshakeResource>& value) { SetResources(value); return *this;}
-
-    /**
-     * <p>Additional information that is needed to process the handshake.</p>
-     */
-    inline Handshake& WithResources(Aws::Vector<HandshakeResource>&& value) { SetResources(std::move(value)); return *this;}
-
-    /**
-     * <p>Additional information that is needed to process the handshake.</p>
-     */
-    inline Handshake& AddResources(const HandshakeResource& value) { m_resourcesHasBeenSet = true; m_resources.push_back(value); return *this; }
-
-    /**
-     * <p>Additional information that is needed to process the handshake.</p>
-     */
-    inline Handshake& AddResources(HandshakeResource&& value) { m_resourcesHasBeenSet = true; m_resources.push_back(std::move(value)); return *this; }
-
+    template<typename ResourcesT = Aws::Vector<HandshakeResource>>
+    void SetResources(ResourcesT&& value) { m_resourcesHasBeenSet = true; m_resources = std::forward<ResourcesT>(value); }
+    template<typename ResourcesT = Aws::Vector<HandshakeResource>>
+    Handshake& WithResources(ResourcesT&& value) { SetResources(std::forward<ResourcesT>(value)); return *this;}
+    template<typename ResourcesT = HandshakeResource>
+    Handshake& AddResources(ResourcesT&& value) { m_resourcesHasBeenSet = true; m_resources.emplace_back(std::forward<ResourcesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_id;
@@ -592,16 +194,16 @@ namespace Model
     Aws::Vector<HandshakeParty> m_parties;
     bool m_partiesHasBeenSet = false;
 
-    HandshakeState m_state;
+    HandshakeState m_state{HandshakeState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_requestedTimestamp;
+    Aws::Utils::DateTime m_requestedTimestamp{};
     bool m_requestedTimestampHasBeenSet = false;
 
-    Aws::Utils::DateTime m_expirationTimestamp;
+    Aws::Utils::DateTime m_expirationTimestamp{};
     bool m_expirationTimestampHasBeenSet = false;
 
-    ActionType m_action;
+    ActionType m_action{ActionType::NOT_SET};
     bool m_actionHasBeenSet = false;
 
     Aws::Vector<HandshakeResource> m_resources;

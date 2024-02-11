@@ -22,6 +22,8 @@ namespace Aws
 
         static const int Contact_HASH = HashingUtils::HashString("Contact");
         static const int Comment_HASH = HashingUtils::HashString("Comment");
+        static const int File_HASH = HashingUtils::HashString("File");
+        static const int Sla_HASH = HashingUtils::HashString("Sla");
 
 
         RelatedItemType GetRelatedItemTypeForName(const Aws::String& name)
@@ -34,6 +36,14 @@ namespace Aws
           else if (hashCode == Comment_HASH)
           {
             return RelatedItemType::Comment;
+          }
+          else if (hashCode == File_HASH)
+          {
+            return RelatedItemType::File;
+          }
+          else if (hashCode == Sla_HASH)
+          {
+            return RelatedItemType::Sla;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -49,10 +59,16 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case RelatedItemType::NOT_SET:
+            return {};
           case RelatedItemType::Contact:
             return "Contact";
           case RelatedItemType::Comment:
             return "Comment";
+          case RelatedItemType::File:
+            return "File";
+          case RelatedItemType::Sla:
+            return "Sla";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

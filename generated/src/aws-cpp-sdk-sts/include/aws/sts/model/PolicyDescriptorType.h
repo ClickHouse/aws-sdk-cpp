@@ -32,7 +32,7 @@ namespace Model
   class PolicyDescriptorType
   {
   public:
-    AWS_STS_API PolicyDescriptorType();
+    AWS_STS_API PolicyDescriptorType() = default;
     AWS_STS_API PolicyDescriptorType(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_STS_API PolicyDescriptorType& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,6 +40,7 @@ namespace Model
     AWS_STS_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM managed policy to use as a session
      * policy for the role. For more information about ARNs, see <a
@@ -47,71 +48,13 @@ namespace Model
      * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a> in the
      * <i>Amazon Web Services General Reference</i>.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM managed policy to use as a session
-     * policy for the role. For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a> in the
-     * <i>Amazon Web Services General Reference</i>.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM managed policy to use as a session
-     * policy for the role. For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a> in the
-     * <i>Amazon Web Services General Reference</i>.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM managed policy to use as a session
-     * policy for the role. For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a> in the
-     * <i>Amazon Web Services General Reference</i>.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM managed policy to use as a session
-     * policy for the role. For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a> in the
-     * <i>Amazon Web Services General Reference</i>.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM managed policy to use as a session
-     * policy for the role. For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a> in the
-     * <i>Amazon Web Services General Reference</i>.</p>
-     */
-    inline PolicyDescriptorType& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM managed policy to use as a session
-     * policy for the role. For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a> in the
-     * <i>Amazon Web Services General Reference</i>.</p>
-     */
-    inline PolicyDescriptorType& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM managed policy to use as a session
-     * policy for the role. For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a> in the
-     * <i>Amazon Web Services General Reference</i>.</p>
-     */
-    inline PolicyDescriptorType& WithArn(const char* value) { SetArn(value); return *this;}
-
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    PolicyDescriptorType& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;

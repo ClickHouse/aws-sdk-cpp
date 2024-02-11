@@ -21,7 +21,7 @@ namespace Model
   class StopExecutionRequest : public SFNRequest
   {
   public:
-    AWS_SFN_API StopExecutionRequest();
+    AWS_SFN_API StopExecutionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,128 +34,41 @@ namespace Model
     AWS_SFN_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the execution to stop.</p>
      */
-    inline const Aws::String& GetExecutionArn() const{ return m_executionArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the execution to stop.</p>
-     */
+    inline const Aws::String& GetExecutionArn() const { return m_executionArn; }
     inline bool ExecutionArnHasBeenSet() const { return m_executionArnHasBeenSet; }
+    template<typename ExecutionArnT = Aws::String>
+    void SetExecutionArn(ExecutionArnT&& value) { m_executionArnHasBeenSet = true; m_executionArn = std::forward<ExecutionArnT>(value); }
+    template<typename ExecutionArnT = Aws::String>
+    StopExecutionRequest& WithExecutionArn(ExecutionArnT&& value) { SetExecutionArn(std::forward<ExecutionArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the execution to stop.</p>
-     */
-    inline void SetExecutionArn(const Aws::String& value) { m_executionArnHasBeenSet = true; m_executionArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the execution to stop.</p>
-     */
-    inline void SetExecutionArn(Aws::String&& value) { m_executionArnHasBeenSet = true; m_executionArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the execution to stop.</p>
-     */
-    inline void SetExecutionArn(const char* value) { m_executionArnHasBeenSet = true; m_executionArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the execution to stop.</p>
-     */
-    inline StopExecutionRequest& WithExecutionArn(const Aws::String& value) { SetExecutionArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the execution to stop.</p>
-     */
-    inline StopExecutionRequest& WithExecutionArn(Aws::String&& value) { SetExecutionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the execution to stop.</p>
-     */
-    inline StopExecutionRequest& WithExecutionArn(const char* value) { SetExecutionArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The error code of the failure.</p>
      */
-    inline const Aws::String& GetError() const{ return m_error; }
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
+    inline const Aws::String& GetError() const { return m_error; }
     inline bool ErrorHasBeenSet() const { return m_errorHasBeenSet; }
+    template<typename ErrorT = Aws::String>
+    void SetError(ErrorT&& value) { m_errorHasBeenSet = true; m_error = std::forward<ErrorT>(value); }
+    template<typename ErrorT = Aws::String>
+    StopExecutionRequest& WithError(ErrorT&& value) { SetError(std::forward<ErrorT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline void SetError(const Aws::String& value) { m_errorHasBeenSet = true; m_error = value; }
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline void SetError(Aws::String&& value) { m_errorHasBeenSet = true; m_error = std::move(value); }
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline void SetError(const char* value) { m_errorHasBeenSet = true; m_error.assign(value); }
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline StopExecutionRequest& WithError(const Aws::String& value) { SetError(value); return *this;}
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline StopExecutionRequest& WithError(Aws::String&& value) { SetError(std::move(value)); return *this;}
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline StopExecutionRequest& WithError(const char* value) { SetError(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A more detailed explanation of the cause of the failure.</p>
      */
-    inline const Aws::String& GetCause() const{ return m_cause; }
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
+    inline const Aws::String& GetCause() const { return m_cause; }
     inline bool CauseHasBeenSet() const { return m_causeHasBeenSet; }
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
-    inline void SetCause(const Aws::String& value) { m_causeHasBeenSet = true; m_cause = value; }
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
-    inline void SetCause(Aws::String&& value) { m_causeHasBeenSet = true; m_cause = std::move(value); }
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
-    inline void SetCause(const char* value) { m_causeHasBeenSet = true; m_cause.assign(value); }
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
-    inline StopExecutionRequest& WithCause(const Aws::String& value) { SetCause(value); return *this;}
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
-    inline StopExecutionRequest& WithCause(Aws::String&& value) { SetCause(std::move(value)); return *this;}
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
-    inline StopExecutionRequest& WithCause(const char* value) { SetCause(value); return *this;}
-
+    template<typename CauseT = Aws::String>
+    void SetCause(CauseT&& value) { m_causeHasBeenSet = true; m_cause = std::forward<CauseT>(value); }
+    template<typename CauseT = Aws::String>
+    StopExecutionRequest& WithCause(CauseT&& value) { SetCause(std::forward<CauseT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_executionArn;

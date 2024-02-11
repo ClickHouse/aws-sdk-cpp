@@ -18,15 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-EndpointUser::EndpointUser() : 
-    m_userAttributesHasBeenSet(false),
-    m_userIdHasBeenSet(false)
-{
-}
-
-EndpointUser::EndpointUser(JsonView jsonValue) : 
-    m_userAttributesHasBeenSet(false),
-    m_userIdHasBeenSet(false)
+EndpointUser::EndpointUser(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -49,14 +41,11 @@ EndpointUser& EndpointUser::operator =(JsonView jsonValue)
     }
     m_userAttributesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UserId"))
   {
     m_userId = jsonValue.GetString("UserId");
-
     m_userIdHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -21,7 +21,7 @@ namespace Model
   class DescribePlatformVersionRequest : public ElasticBeanstalkRequest
   {
   public:
-    AWS_ELASTICBEANSTALK_API DescribePlatformVersionRequest();
+    AWS_ELASTICBEANSTALK_API DescribePlatformVersionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,46 +36,17 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The ARN of the platform version.</p>
      */
-    inline const Aws::String& GetPlatformArn() const{ return m_platformArn; }
-
-    /**
-     * <p>The ARN of the platform version.</p>
-     */
+    inline const Aws::String& GetPlatformArn() const { return m_platformArn; }
     inline bool PlatformArnHasBeenSet() const { return m_platformArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the platform version.</p>
-     */
-    inline void SetPlatformArn(const Aws::String& value) { m_platformArnHasBeenSet = true; m_platformArn = value; }
-
-    /**
-     * <p>The ARN of the platform version.</p>
-     */
-    inline void SetPlatformArn(Aws::String&& value) { m_platformArnHasBeenSet = true; m_platformArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the platform version.</p>
-     */
-    inline void SetPlatformArn(const char* value) { m_platformArnHasBeenSet = true; m_platformArn.assign(value); }
-
-    /**
-     * <p>The ARN of the platform version.</p>
-     */
-    inline DescribePlatformVersionRequest& WithPlatformArn(const Aws::String& value) { SetPlatformArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the platform version.</p>
-     */
-    inline DescribePlatformVersionRequest& WithPlatformArn(Aws::String&& value) { SetPlatformArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the platform version.</p>
-     */
-    inline DescribePlatformVersionRequest& WithPlatformArn(const char* value) { SetPlatformArn(value); return *this;}
-
+    template<typename PlatformArnT = Aws::String>
+    void SetPlatformArn(PlatformArnT&& value) { m_platformArnHasBeenSet = true; m_platformArn = std::forward<PlatformArnT>(value); }
+    template<typename PlatformArnT = Aws::String>
+    DescribePlatformVersionRequest& WithPlatformArn(PlatformArnT&& value) { SetPlatformArn(std::forward<PlatformArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_platformArn;

@@ -21,7 +21,7 @@ namespace Model
   class CancelSimulationJobRequest : public RoboMakerRequest
   {
   public:
-    AWS_ROBOMAKER_API CancelSimulationJobRequest();
+    AWS_ROBOMAKER_API CancelSimulationJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_ROBOMAKER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The simulation job ARN to cancel.</p>
      */
-    inline const Aws::String& GetJob() const{ return m_job; }
-
-    /**
-     * <p>The simulation job ARN to cancel.</p>
-     */
+    inline const Aws::String& GetJob() const { return m_job; }
     inline bool JobHasBeenSet() const { return m_jobHasBeenSet; }
-
-    /**
-     * <p>The simulation job ARN to cancel.</p>
-     */
-    inline void SetJob(const Aws::String& value) { m_jobHasBeenSet = true; m_job = value; }
-
-    /**
-     * <p>The simulation job ARN to cancel.</p>
-     */
-    inline void SetJob(Aws::String&& value) { m_jobHasBeenSet = true; m_job = std::move(value); }
-
-    /**
-     * <p>The simulation job ARN to cancel.</p>
-     */
-    inline void SetJob(const char* value) { m_jobHasBeenSet = true; m_job.assign(value); }
-
-    /**
-     * <p>The simulation job ARN to cancel.</p>
-     */
-    inline CancelSimulationJobRequest& WithJob(const Aws::String& value) { SetJob(value); return *this;}
-
-    /**
-     * <p>The simulation job ARN to cancel.</p>
-     */
-    inline CancelSimulationJobRequest& WithJob(Aws::String&& value) { SetJob(std::move(value)); return *this;}
-
-    /**
-     * <p>The simulation job ARN to cancel.</p>
-     */
-    inline CancelSimulationJobRequest& WithJob(const char* value) { SetJob(value); return *this;}
-
+    template<typename JobT = Aws::String>
+    void SetJob(JobT&& value) { m_jobHasBeenSet = true; m_job = std::forward<JobT>(value); }
+    template<typename JobT = Aws::String>
+    CancelSimulationJobRequest& WithJob(JobT&& value) { SetJob(std::forward<JobT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_job;

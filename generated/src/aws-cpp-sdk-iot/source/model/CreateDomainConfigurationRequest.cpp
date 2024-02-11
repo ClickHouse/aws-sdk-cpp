@@ -12,18 +12,6 @@ using namespace Aws::IoT::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDomainConfigurationRequest::CreateDomainConfigurationRequest() : 
-    m_domainConfigurationNameHasBeenSet(false),
-    m_domainNameHasBeenSet(false),
-    m_serverCertificateArnsHasBeenSet(false),
-    m_validationCertificateArnHasBeenSet(false),
-    m_authorizerConfigHasBeenSet(false),
-    m_serviceType(ServiceType::NOT_SET),
-    m_serviceTypeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateDomainConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -70,6 +58,34 @@ Aws::String CreateDomainConfigurationRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_tlsConfigHasBeenSet)
+  {
+   payload.WithObject("tlsConfig", m_tlsConfig.Jsonize());
+
+  }
+
+  if(m_serverCertificateConfigHasBeenSet)
+  {
+   payload.WithObject("serverCertificateConfig", m_serverCertificateConfig.Jsonize());
+
+  }
+
+  if(m_authenticationTypeHasBeenSet)
+  {
+   payload.WithString("authenticationType", AuthenticationTypeMapper::GetNameForAuthenticationType(m_authenticationType));
+  }
+
+  if(m_applicationProtocolHasBeenSet)
+  {
+   payload.WithString("applicationProtocol", ApplicationProtocolMapper::GetNameForApplicationProtocol(m_applicationProtocol));
+  }
+
+  if(m_clientCertificateConfigHasBeenSet)
+  {
+   payload.WithObject("clientCertificateConfig", m_clientCertificateConfig.Jsonize());
 
   }
 

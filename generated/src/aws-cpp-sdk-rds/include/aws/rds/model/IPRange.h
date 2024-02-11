@@ -32,7 +32,7 @@ namespace Model
   class IPRange
   {
   public:
-    AWS_RDS_API IPRange();
+    AWS_RDS_API IPRange() = default;
     AWS_RDS_API IPRange(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_RDS_API IPRange& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,95 +40,30 @@ namespace Model
     AWS_RDS_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
-     * <p>Specifies the status of the IP range. Status can be "authorizing",
-     * "authorized", "revoking", and "revoked".</p>
+     * <p>The status of the IP range. Status can be "authorizing", "authorized",
+     * "revoking", and "revoked".</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Specifies the status of the IP range. Status can be "authorizing",
-     * "authorized", "revoking", and "revoked".</p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    IPRange& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies the status of the IP range. Status can be "authorizing",
-     * "authorized", "revoking", and "revoked".</p>
+     * <p>The IP range.</p>
      */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Specifies the status of the IP range. Status can be "authorizing",
-     * "authorized", "revoking", and "revoked".</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Specifies the status of the IP range. Status can be "authorizing",
-     * "authorized", "revoking", and "revoked".</p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>Specifies the status of the IP range. Status can be "authorizing",
-     * "authorized", "revoking", and "revoked".</p>
-     */
-    inline IPRange& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Specifies the status of the IP range. Status can be "authorizing",
-     * "authorized", "revoking", and "revoked".</p>
-     */
-    inline IPRange& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the status of the IP range. Status can be "authorizing",
-     * "authorized", "revoking", and "revoked".</p>
-     */
-    inline IPRange& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
-    /**
-     * <p>Specifies the IP range.</p>
-     */
-    inline const Aws::String& GetCIDRIP() const{ return m_cIDRIP; }
-
-    /**
-     * <p>Specifies the IP range.</p>
-     */
+    inline const Aws::String& GetCIDRIP() const { return m_cIDRIP; }
     inline bool CIDRIPHasBeenSet() const { return m_cIDRIPHasBeenSet; }
-
-    /**
-     * <p>Specifies the IP range.</p>
-     */
-    inline void SetCIDRIP(const Aws::String& value) { m_cIDRIPHasBeenSet = true; m_cIDRIP = value; }
-
-    /**
-     * <p>Specifies the IP range.</p>
-     */
-    inline void SetCIDRIP(Aws::String&& value) { m_cIDRIPHasBeenSet = true; m_cIDRIP = std::move(value); }
-
-    /**
-     * <p>Specifies the IP range.</p>
-     */
-    inline void SetCIDRIP(const char* value) { m_cIDRIPHasBeenSet = true; m_cIDRIP.assign(value); }
-
-    /**
-     * <p>Specifies the IP range.</p>
-     */
-    inline IPRange& WithCIDRIP(const Aws::String& value) { SetCIDRIP(value); return *this;}
-
-    /**
-     * <p>Specifies the IP range.</p>
-     */
-    inline IPRange& WithCIDRIP(Aws::String&& value) { SetCIDRIP(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the IP range.</p>
-     */
-    inline IPRange& WithCIDRIP(const char* value) { SetCIDRIP(value); return *this;}
-
+    template<typename CIDRIPT = Aws::String>
+    void SetCIDRIP(CIDRIPT&& value) { m_cIDRIPHasBeenSet = true; m_cIDRIP = std::forward<CIDRIPT>(value); }
+    template<typename CIDRIPT = Aws::String>
+    IPRange& WithCIDRIP(CIDRIPT&& value) { SetCIDRIP(std::forward<CIDRIPT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_status;

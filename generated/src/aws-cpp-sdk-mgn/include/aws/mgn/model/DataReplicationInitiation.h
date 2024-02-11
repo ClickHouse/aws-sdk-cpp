@@ -33,134 +33,49 @@ namespace Model
   class DataReplicationInitiation
   {
   public:
-    AWS_MGN_API DataReplicationInitiation();
+    AWS_MGN_API DataReplicationInitiation() = default;
     AWS_MGN_API DataReplicationInitiation(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API DataReplicationInitiation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Request to query next data initiation date and time.</p>
      */
-    inline const Aws::String& GetNextAttemptDateTime() const{ return m_nextAttemptDateTime; }
-
-    /**
-     * <p>Request to query next data initiation date and time.</p>
-     */
+    inline const Aws::String& GetNextAttemptDateTime() const { return m_nextAttemptDateTime; }
     inline bool NextAttemptDateTimeHasBeenSet() const { return m_nextAttemptDateTimeHasBeenSet; }
+    template<typename NextAttemptDateTimeT = Aws::String>
+    void SetNextAttemptDateTime(NextAttemptDateTimeT&& value) { m_nextAttemptDateTimeHasBeenSet = true; m_nextAttemptDateTime = std::forward<NextAttemptDateTimeT>(value); }
+    template<typename NextAttemptDateTimeT = Aws::String>
+    DataReplicationInitiation& WithNextAttemptDateTime(NextAttemptDateTimeT&& value) { SetNextAttemptDateTime(std::forward<NextAttemptDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Request to query next data initiation date and time.</p>
-     */
-    inline void SetNextAttemptDateTime(const Aws::String& value) { m_nextAttemptDateTimeHasBeenSet = true; m_nextAttemptDateTime = value; }
-
-    /**
-     * <p>Request to query next data initiation date and time.</p>
-     */
-    inline void SetNextAttemptDateTime(Aws::String&& value) { m_nextAttemptDateTimeHasBeenSet = true; m_nextAttemptDateTime = std::move(value); }
-
-    /**
-     * <p>Request to query next data initiation date and time.</p>
-     */
-    inline void SetNextAttemptDateTime(const char* value) { m_nextAttemptDateTimeHasBeenSet = true; m_nextAttemptDateTime.assign(value); }
-
-    /**
-     * <p>Request to query next data initiation date and time.</p>
-     */
-    inline DataReplicationInitiation& WithNextAttemptDateTime(const Aws::String& value) { SetNextAttemptDateTime(value); return *this;}
-
-    /**
-     * <p>Request to query next data initiation date and time.</p>
-     */
-    inline DataReplicationInitiation& WithNextAttemptDateTime(Aws::String&& value) { SetNextAttemptDateTime(std::move(value)); return *this;}
-
-    /**
-     * <p>Request to query next data initiation date and time.</p>
-     */
-    inline DataReplicationInitiation& WithNextAttemptDateTime(const char* value) { SetNextAttemptDateTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Request to query data initiation start date and time.</p>
      */
-    inline const Aws::String& GetStartDateTime() const{ return m_startDateTime; }
-
-    /**
-     * <p>Request to query data initiation start date and time.</p>
-     */
+    inline const Aws::String& GetStartDateTime() const { return m_startDateTime; }
     inline bool StartDateTimeHasBeenSet() const { return m_startDateTimeHasBeenSet; }
+    template<typename StartDateTimeT = Aws::String>
+    void SetStartDateTime(StartDateTimeT&& value) { m_startDateTimeHasBeenSet = true; m_startDateTime = std::forward<StartDateTimeT>(value); }
+    template<typename StartDateTimeT = Aws::String>
+    DataReplicationInitiation& WithStartDateTime(StartDateTimeT&& value) { SetStartDateTime(std::forward<StartDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Request to query data initiation start date and time.</p>
-     */
-    inline void SetStartDateTime(const Aws::String& value) { m_startDateTimeHasBeenSet = true; m_startDateTime = value; }
-
-    /**
-     * <p>Request to query data initiation start date and time.</p>
-     */
-    inline void SetStartDateTime(Aws::String&& value) { m_startDateTimeHasBeenSet = true; m_startDateTime = std::move(value); }
-
-    /**
-     * <p>Request to query data initiation start date and time.</p>
-     */
-    inline void SetStartDateTime(const char* value) { m_startDateTimeHasBeenSet = true; m_startDateTime.assign(value); }
-
-    /**
-     * <p>Request to query data initiation start date and time.</p>
-     */
-    inline DataReplicationInitiation& WithStartDateTime(const Aws::String& value) { SetStartDateTime(value); return *this;}
-
-    /**
-     * <p>Request to query data initiation start date and time.</p>
-     */
-    inline DataReplicationInitiation& WithStartDateTime(Aws::String&& value) { SetStartDateTime(std::move(value)); return *this;}
-
-    /**
-     * <p>Request to query data initiation start date and time.</p>
-     */
-    inline DataReplicationInitiation& WithStartDateTime(const char* value) { SetStartDateTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Request to query data initiation steps.</p>
      */
-    inline const Aws::Vector<DataReplicationInitiationStep>& GetSteps() const{ return m_steps; }
-
-    /**
-     * <p>Request to query data initiation steps.</p>
-     */
+    inline const Aws::Vector<DataReplicationInitiationStep>& GetSteps() const { return m_steps; }
     inline bool StepsHasBeenSet() const { return m_stepsHasBeenSet; }
-
-    /**
-     * <p>Request to query data initiation steps.</p>
-     */
-    inline void SetSteps(const Aws::Vector<DataReplicationInitiationStep>& value) { m_stepsHasBeenSet = true; m_steps = value; }
-
-    /**
-     * <p>Request to query data initiation steps.</p>
-     */
-    inline void SetSteps(Aws::Vector<DataReplicationInitiationStep>&& value) { m_stepsHasBeenSet = true; m_steps = std::move(value); }
-
-    /**
-     * <p>Request to query data initiation steps.</p>
-     */
-    inline DataReplicationInitiation& WithSteps(const Aws::Vector<DataReplicationInitiationStep>& value) { SetSteps(value); return *this;}
-
-    /**
-     * <p>Request to query data initiation steps.</p>
-     */
-    inline DataReplicationInitiation& WithSteps(Aws::Vector<DataReplicationInitiationStep>&& value) { SetSteps(std::move(value)); return *this;}
-
-    /**
-     * <p>Request to query data initiation steps.</p>
-     */
-    inline DataReplicationInitiation& AddSteps(const DataReplicationInitiationStep& value) { m_stepsHasBeenSet = true; m_steps.push_back(value); return *this; }
-
-    /**
-     * <p>Request to query data initiation steps.</p>
-     */
-    inline DataReplicationInitiation& AddSteps(DataReplicationInitiationStep&& value) { m_stepsHasBeenSet = true; m_steps.push_back(std::move(value)); return *this; }
-
+    template<typename StepsT = Aws::Vector<DataReplicationInitiationStep>>
+    void SetSteps(StepsT&& value) { m_stepsHasBeenSet = true; m_steps = std::forward<StepsT>(value); }
+    template<typename StepsT = Aws::Vector<DataReplicationInitiationStep>>
+    DataReplicationInitiation& WithSteps(StepsT&& value) { SetSteps(std::forward<StepsT>(value)); return *this;}
+    template<typename StepsT = DataReplicationInitiationStep>
+    DataReplicationInitiation& AddSteps(StepsT&& value) { m_stepsHasBeenSet = true; m_steps.emplace_back(std::forward<StepsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_nextAttemptDateTime;

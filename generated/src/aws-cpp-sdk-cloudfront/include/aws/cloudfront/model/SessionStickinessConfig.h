@@ -32,76 +32,42 @@ namespace Model
   class SessionStickinessConfig
   {
   public:
-    AWS_CLOUDFRONT_API SessionStickinessConfig();
+    AWS_CLOUDFRONT_API SessionStickinessConfig() = default;
     AWS_CLOUDFRONT_API SessionStickinessConfig(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFRONT_API SessionStickinessConfig& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_CLOUDFRONT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The amount of time after which you want sessions to cease if no requests are
-     * received. Allowed values are 300��3600 seconds (5–60 minutes).</p> <p>The value
+     * received. Allowed values are 300–3600 seconds (5–60 minutes).</p> <p>The value
      * must be less than or equal to <code>MaximumTTL</code>.</p>
      */
-    inline int GetIdleTTL() const{ return m_idleTTL; }
-
-    /**
-     * <p>The amount of time after which you want sessions to cease if no requests are
-     * received. Allowed values are 300��3600 seconds (5–60 minutes).</p> <p>The value
-     * must be less than or equal to <code>MaximumTTL</code>.</p>
-     */
+    inline int GetIdleTTL() const { return m_idleTTL; }
     inline bool IdleTTLHasBeenSet() const { return m_idleTTLHasBeenSet; }
-
-    /**
-     * <p>The amount of time after which you want sessions to cease if no requests are
-     * received. Allowed values are 300��3600 seconds (5–60 minutes).</p> <p>The value
-     * must be less than or equal to <code>MaximumTTL</code>.</p>
-     */
     inline void SetIdleTTL(int value) { m_idleTTLHasBeenSet = true; m_idleTTL = value; }
-
-    /**
-     * <p>The amount of time after which you want sessions to cease if no requests are
-     * received. Allowed values are 300��3600 seconds (5–60 minutes).</p> <p>The value
-     * must be less than or equal to <code>MaximumTTL</code>.</p>
-     */
     inline SessionStickinessConfig& WithIdleTTL(int value) { SetIdleTTL(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The maximum amount of time to consider requests from the viewer as being part
      * of the same session. Allowed values are 300–3600 seconds (5–60 minutes).</p>
-     * <p>The value must be less than or equal to <code>IdleTTL</code>.</p>
+     * <p>The value must be greater than or equal to <code>IdleTTL</code>.</p>
      */
-    inline int GetMaximumTTL() const{ return m_maximumTTL; }
-
-    /**
-     * <p>The maximum amount of time to consider requests from the viewer as being part
-     * of the same session. Allowed values are 300–3600 seconds (5–60 minutes).</p>
-     * <p>The value must be less than or equal to <code>IdleTTL</code>.</p>
-     */
+    inline int GetMaximumTTL() const { return m_maximumTTL; }
     inline bool MaximumTTLHasBeenSet() const { return m_maximumTTLHasBeenSet; }
-
-    /**
-     * <p>The maximum amount of time to consider requests from the viewer as being part
-     * of the same session. Allowed values are 300–3600 seconds (5–60 minutes).</p>
-     * <p>The value must be less than or equal to <code>IdleTTL</code>.</p>
-     */
     inline void SetMaximumTTL(int value) { m_maximumTTLHasBeenSet = true; m_maximumTTL = value; }
-
-    /**
-     * <p>The maximum amount of time to consider requests from the viewer as being part
-     * of the same session. Allowed values are 300–3600 seconds (5–60 minutes).</p>
-     * <p>The value must be less than or equal to <code>IdleTTL</code>.</p>
-     */
     inline SessionStickinessConfig& WithMaximumTTL(int value) { SetMaximumTTL(value); return *this;}
-
+    ///@}
   private:
 
-    int m_idleTTL;
+    int m_idleTTL{0};
     bool m_idleTTLHasBeenSet = false;
 
-    int m_maximumTTL;
+    int m_maximumTTL{0};
     bool m_maximumTTLHasBeenSet = false;
   };
 

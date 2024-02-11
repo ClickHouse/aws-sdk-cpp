@@ -22,7 +22,7 @@ namespace Model
   class PutAppInstanceRetentionSettingsRequest : public ChimeSDKIdentityRequest
   {
   public:
-    AWS_CHIMESDKIDENTITY_API PutAppInstanceRetentionSettingsRequest();
+    AWS_CHIMESDKIDENTITY_API PutAppInstanceRetentionSettingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,77 +33,29 @@ namespace Model
     AWS_CHIMESDKIDENTITY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the <code>AppInstance</code>.</p>
      */
-    inline const Aws::String& GetAppInstanceArn() const{ return m_appInstanceArn; }
-
-    /**
-     * <p>The ARN of the <code>AppInstance</code>.</p>
-     */
+    inline const Aws::String& GetAppInstanceArn() const { return m_appInstanceArn; }
     inline bool AppInstanceArnHasBeenSet() const { return m_appInstanceArnHasBeenSet; }
+    template<typename AppInstanceArnT = Aws::String>
+    void SetAppInstanceArn(AppInstanceArnT&& value) { m_appInstanceArnHasBeenSet = true; m_appInstanceArn = std::forward<AppInstanceArnT>(value); }
+    template<typename AppInstanceArnT = Aws::String>
+    PutAppInstanceRetentionSettingsRequest& WithAppInstanceArn(AppInstanceArnT&& value) { SetAppInstanceArn(std::forward<AppInstanceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the <code>AppInstance</code>.</p>
-     */
-    inline void SetAppInstanceArn(const Aws::String& value) { m_appInstanceArnHasBeenSet = true; m_appInstanceArn = value; }
-
-    /**
-     * <p>The ARN of the <code>AppInstance</code>.</p>
-     */
-    inline void SetAppInstanceArn(Aws::String&& value) { m_appInstanceArnHasBeenSet = true; m_appInstanceArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the <code>AppInstance</code>.</p>
-     */
-    inline void SetAppInstanceArn(const char* value) { m_appInstanceArnHasBeenSet = true; m_appInstanceArn.assign(value); }
-
-    /**
-     * <p>The ARN of the <code>AppInstance</code>.</p>
-     */
-    inline PutAppInstanceRetentionSettingsRequest& WithAppInstanceArn(const Aws::String& value) { SetAppInstanceArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the <code>AppInstance</code>.</p>
-     */
-    inline PutAppInstanceRetentionSettingsRequest& WithAppInstanceArn(Aws::String&& value) { SetAppInstanceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the <code>AppInstance</code>.</p>
-     */
-    inline PutAppInstanceRetentionSettingsRequest& WithAppInstanceArn(const char* value) { SetAppInstanceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time in days to retain data. Data type: number.</p>
      */
-    inline const AppInstanceRetentionSettings& GetAppInstanceRetentionSettings() const{ return m_appInstanceRetentionSettings; }
-
-    /**
-     * <p>The time in days to retain data. Data type: number.</p>
-     */
+    inline const AppInstanceRetentionSettings& GetAppInstanceRetentionSettings() const { return m_appInstanceRetentionSettings; }
     inline bool AppInstanceRetentionSettingsHasBeenSet() const { return m_appInstanceRetentionSettingsHasBeenSet; }
-
-    /**
-     * <p>The time in days to retain data. Data type: number.</p>
-     */
-    inline void SetAppInstanceRetentionSettings(const AppInstanceRetentionSettings& value) { m_appInstanceRetentionSettingsHasBeenSet = true; m_appInstanceRetentionSettings = value; }
-
-    /**
-     * <p>The time in days to retain data. Data type: number.</p>
-     */
-    inline void SetAppInstanceRetentionSettings(AppInstanceRetentionSettings&& value) { m_appInstanceRetentionSettingsHasBeenSet = true; m_appInstanceRetentionSettings = std::move(value); }
-
-    /**
-     * <p>The time in days to retain data. Data type: number.</p>
-     */
-    inline PutAppInstanceRetentionSettingsRequest& WithAppInstanceRetentionSettings(const AppInstanceRetentionSettings& value) { SetAppInstanceRetentionSettings(value); return *this;}
-
-    /**
-     * <p>The time in days to retain data. Data type: number.</p>
-     */
-    inline PutAppInstanceRetentionSettingsRequest& WithAppInstanceRetentionSettings(AppInstanceRetentionSettings&& value) { SetAppInstanceRetentionSettings(std::move(value)); return *this;}
-
+    template<typename AppInstanceRetentionSettingsT = AppInstanceRetentionSettings>
+    void SetAppInstanceRetentionSettings(AppInstanceRetentionSettingsT&& value) { m_appInstanceRetentionSettingsHasBeenSet = true; m_appInstanceRetentionSettings = std::forward<AppInstanceRetentionSettingsT>(value); }
+    template<typename AppInstanceRetentionSettingsT = AppInstanceRetentionSettings>
+    PutAppInstanceRetentionSettingsRequest& WithAppInstanceRetentionSettings(AppInstanceRetentionSettingsT&& value) { SetAppInstanceRetentionSettings(std::forward<AppInstanceRetentionSettingsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_appInstanceArn;

@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-DeleteQueuedReservedInstancesError::DeleteQueuedReservedInstancesError() : 
-    m_code(DeleteQueuedReservedInstancesErrorCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-DeleteQueuedReservedInstancesError::DeleteQueuedReservedInstancesError(const XmlNode& xmlNode) : 
-    m_code(DeleteQueuedReservedInstancesErrorCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+DeleteQueuedReservedInstancesError::DeleteQueuedReservedInstancesError(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ DeleteQueuedReservedInstancesError& DeleteQueuedReservedInstancesError::operator
     XmlNode codeNode = resultNode.FirstChild("code");
     if(!codeNode.IsNull())
     {
-      m_code = DeleteQueuedReservedInstancesErrorCodeMapper::GetDeleteQueuedReservedInstancesErrorCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()).c_str());
+      m_code = DeleteQueuedReservedInstancesErrorCodeMapper::GetDeleteQueuedReservedInstancesErrorCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()));
       m_codeHasBeenSet = true;
     }
     XmlNode messageNode = resultNode.FirstChild("message");
@@ -62,7 +52,7 @@ void DeleteQueuedReservedInstancesError::OutputToStream(Aws::OStream& oStream, c
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Code=" << DeleteQueuedReservedInstancesErrorCodeMapper::GetNameForDeleteQueuedReservedInstancesErrorCode(m_code) << "&";
+      oStream << location << index << locationValue << ".Code=" << StringUtils::URLEncode(DeleteQueuedReservedInstancesErrorCodeMapper::GetNameForDeleteQueuedReservedInstancesErrorCode(m_code)) << "&";
   }
 
   if(m_messageHasBeenSet)
@@ -76,7 +66,7 @@ void DeleteQueuedReservedInstancesError::OutputToStream(Aws::OStream& oStream, c
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << ".Code=" << DeleteQueuedReservedInstancesErrorCodeMapper::GetNameForDeleteQueuedReservedInstancesErrorCode(m_code) << "&";
+      oStream << location << ".Code=" << StringUtils::URLEncode(DeleteQueuedReservedInstancesErrorCodeMapper::GetNameForDeleteQueuedReservedInstancesErrorCode(m_code)) << "&";
   }
   if(m_messageHasBeenSet)
   {

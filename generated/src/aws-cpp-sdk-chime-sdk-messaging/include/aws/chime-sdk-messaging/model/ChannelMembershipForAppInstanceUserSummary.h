@@ -33,73 +33,35 @@ namespace Model
   class ChannelMembershipForAppInstanceUserSummary
   {
   public:
-    AWS_CHIMESDKMESSAGING_API ChannelMembershipForAppInstanceUserSummary();
+    AWS_CHIMESDKMESSAGING_API ChannelMembershipForAppInstanceUserSummary() = default;
     AWS_CHIMESDKMESSAGING_API ChannelMembershipForAppInstanceUserSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMESSAGING_API ChannelMembershipForAppInstanceUserSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMESSAGING_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Returns the channel data for an <code>AppInstance</code>.</p>
      */
-    inline const ChannelSummary& GetChannelSummary() const{ return m_channelSummary; }
-
-    /**
-     * <p>Returns the channel data for an <code>AppInstance</code>.</p>
-     */
+    inline const ChannelSummary& GetChannelSummary() const { return m_channelSummary; }
     inline bool ChannelSummaryHasBeenSet() const { return m_channelSummaryHasBeenSet; }
+    template<typename ChannelSummaryT = ChannelSummary>
+    void SetChannelSummary(ChannelSummaryT&& value) { m_channelSummaryHasBeenSet = true; m_channelSummary = std::forward<ChannelSummaryT>(value); }
+    template<typename ChannelSummaryT = ChannelSummary>
+    ChannelMembershipForAppInstanceUserSummary& WithChannelSummary(ChannelSummaryT&& value) { SetChannelSummary(std::forward<ChannelSummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Returns the channel data for an <code>AppInstance</code>.</p>
-     */
-    inline void SetChannelSummary(const ChannelSummary& value) { m_channelSummaryHasBeenSet = true; m_channelSummary = value; }
-
-    /**
-     * <p>Returns the channel data for an <code>AppInstance</code>.</p>
-     */
-    inline void SetChannelSummary(ChannelSummary&& value) { m_channelSummaryHasBeenSet = true; m_channelSummary = std::move(value); }
-
-    /**
-     * <p>Returns the channel data for an <code>AppInstance</code>.</p>
-     */
-    inline ChannelMembershipForAppInstanceUserSummary& WithChannelSummary(const ChannelSummary& value) { SetChannelSummary(value); return *this;}
-
-    /**
-     * <p>Returns the channel data for an <code>AppInstance</code>.</p>
-     */
-    inline ChannelMembershipForAppInstanceUserSummary& WithChannelSummary(ChannelSummary&& value) { SetChannelSummary(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Returns the channel membership data for an <code>AppInstance</code>.</p>
      */
-    inline const AppInstanceUserMembershipSummary& GetAppInstanceUserMembershipSummary() const{ return m_appInstanceUserMembershipSummary; }
-
-    /**
-     * <p>Returns the channel membership data for an <code>AppInstance</code>.</p>
-     */
+    inline const AppInstanceUserMembershipSummary& GetAppInstanceUserMembershipSummary() const { return m_appInstanceUserMembershipSummary; }
     inline bool AppInstanceUserMembershipSummaryHasBeenSet() const { return m_appInstanceUserMembershipSummaryHasBeenSet; }
-
-    /**
-     * <p>Returns the channel membership data for an <code>AppInstance</code>.</p>
-     */
-    inline void SetAppInstanceUserMembershipSummary(const AppInstanceUserMembershipSummary& value) { m_appInstanceUserMembershipSummaryHasBeenSet = true; m_appInstanceUserMembershipSummary = value; }
-
-    /**
-     * <p>Returns the channel membership data for an <code>AppInstance</code>.</p>
-     */
-    inline void SetAppInstanceUserMembershipSummary(AppInstanceUserMembershipSummary&& value) { m_appInstanceUserMembershipSummaryHasBeenSet = true; m_appInstanceUserMembershipSummary = std::move(value); }
-
-    /**
-     * <p>Returns the channel membership data for an <code>AppInstance</code>.</p>
-     */
-    inline ChannelMembershipForAppInstanceUserSummary& WithAppInstanceUserMembershipSummary(const AppInstanceUserMembershipSummary& value) { SetAppInstanceUserMembershipSummary(value); return *this;}
-
-    /**
-     * <p>Returns the channel membership data for an <code>AppInstance</code>.</p>
-     */
-    inline ChannelMembershipForAppInstanceUserSummary& WithAppInstanceUserMembershipSummary(AppInstanceUserMembershipSummary&& value) { SetAppInstanceUserMembershipSummary(std::move(value)); return *this;}
-
+    template<typename AppInstanceUserMembershipSummaryT = AppInstanceUserMembershipSummary>
+    void SetAppInstanceUserMembershipSummary(AppInstanceUserMembershipSummaryT&& value) { m_appInstanceUserMembershipSummaryHasBeenSet = true; m_appInstanceUserMembershipSummary = std::forward<AppInstanceUserMembershipSummaryT>(value); }
+    template<typename AppInstanceUserMembershipSummaryT = AppInstanceUserMembershipSummary>
+    ChannelMembershipForAppInstanceUserSummary& WithAppInstanceUserMembershipSummary(AppInstanceUserMembershipSummaryT&& value) { SetAppInstanceUserMembershipSummary(std::forward<AppInstanceUserMembershipSummaryT>(value)); return *this;}
+    ///@}
   private:
 
     ChannelSummary m_channelSummary;

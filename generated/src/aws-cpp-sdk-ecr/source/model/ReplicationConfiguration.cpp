@@ -18,13 +18,7 @@ namespace ECR
 namespace Model
 {
 
-ReplicationConfiguration::ReplicationConfiguration() : 
-    m_rulesHasBeenSet(false)
-{
-}
-
-ReplicationConfiguration::ReplicationConfiguration(JsonView jsonValue) : 
-    m_rulesHasBeenSet(false)
+ReplicationConfiguration::ReplicationConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ ReplicationConfiguration& ReplicationConfiguration::operator =(JsonView jsonValu
     }
     m_rulesHasBeenSet = true;
   }
-
   return *this;
 }
 

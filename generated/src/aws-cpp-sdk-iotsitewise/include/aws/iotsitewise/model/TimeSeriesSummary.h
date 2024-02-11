@@ -34,219 +34,73 @@ namespace Model
   class TimeSeriesSummary
   {
   public:
-    AWS_IOTSITEWISE_API TimeSeriesSummary();
+    AWS_IOTSITEWISE_API TimeSeriesSummary() = default;
     AWS_IOTSITEWISE_API TimeSeriesSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API TimeSeriesSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the asset in which the asset property was created.</p>
      */
-    inline const Aws::String& GetAssetId() const{ return m_assetId; }
-
-    /**
-     * <p>The ID of the asset in which the asset property was created.</p>
-     */
+    inline const Aws::String& GetAssetId() const { return m_assetId; }
     inline bool AssetIdHasBeenSet() const { return m_assetIdHasBeenSet; }
+    template<typename AssetIdT = Aws::String>
+    void SetAssetId(AssetIdT&& value) { m_assetIdHasBeenSet = true; m_assetId = std::forward<AssetIdT>(value); }
+    template<typename AssetIdT = Aws::String>
+    TimeSeriesSummary& WithAssetId(AssetIdT&& value) { SetAssetId(std::forward<AssetIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the asset in which the asset property was created.</p>
+     * <p>The ID of the asset property, in UUID format.</p>
      */
-    inline void SetAssetId(const Aws::String& value) { m_assetIdHasBeenSet = true; m_assetId = value; }
-
-    /**
-     * <p>The ID of the asset in which the asset property was created.</p>
-     */
-    inline void SetAssetId(Aws::String&& value) { m_assetIdHasBeenSet = true; m_assetId = std::move(value); }
-
-    /**
-     * <p>The ID of the asset in which the asset property was created.</p>
-     */
-    inline void SetAssetId(const char* value) { m_assetIdHasBeenSet = true; m_assetId.assign(value); }
-
-    /**
-     * <p>The ID of the asset in which the asset property was created.</p>
-     */
-    inline TimeSeriesSummary& WithAssetId(const Aws::String& value) { SetAssetId(value); return *this;}
-
-    /**
-     * <p>The ID of the asset in which the asset property was created.</p>
-     */
-    inline TimeSeriesSummary& WithAssetId(Aws::String&& value) { SetAssetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the asset in which the asset property was created.</p>
-     */
-    inline TimeSeriesSummary& WithAssetId(const char* value) { SetAssetId(value); return *this;}
-
-
-    /**
-     * <p>The ID of the asset property.</p>
-     */
-    inline const Aws::String& GetPropertyId() const{ return m_propertyId; }
-
-    /**
-     * <p>The ID of the asset property.</p>
-     */
+    inline const Aws::String& GetPropertyId() const { return m_propertyId; }
     inline bool PropertyIdHasBeenSet() const { return m_propertyIdHasBeenSet; }
+    template<typename PropertyIdT = Aws::String>
+    void SetPropertyId(PropertyIdT&& value) { m_propertyIdHasBeenSet = true; m_propertyId = std::forward<PropertyIdT>(value); }
+    template<typename PropertyIdT = Aws::String>
+    TimeSeriesSummary& WithPropertyId(PropertyIdT&& value) { SetPropertyId(std::forward<PropertyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the asset property.</p>
-     */
-    inline void SetPropertyId(const Aws::String& value) { m_propertyIdHasBeenSet = true; m_propertyId = value; }
-
-    /**
-     * <p>The ID of the asset property.</p>
-     */
-    inline void SetPropertyId(Aws::String&& value) { m_propertyIdHasBeenSet = true; m_propertyId = std::move(value); }
-
-    /**
-     * <p>The ID of the asset property.</p>
-     */
-    inline void SetPropertyId(const char* value) { m_propertyIdHasBeenSet = true; m_propertyId.assign(value); }
-
-    /**
-     * <p>The ID of the asset property.</p>
-     */
-    inline TimeSeriesSummary& WithPropertyId(const Aws::String& value) { SetPropertyId(value); return *this;}
-
-    /**
-     * <p>The ID of the asset property.</p>
-     */
-    inline TimeSeriesSummary& WithPropertyId(Aws::String&& value) { SetPropertyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the asset property.</p>
-     */
-    inline TimeSeriesSummary& WithPropertyId(const char* value) { SetPropertyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The alias that identifies the time series.</p>
      */
-    inline const Aws::String& GetAlias() const{ return m_alias; }
-
-    /**
-     * <p>The alias that identifies the time series.</p>
-     */
+    inline const Aws::String& GetAlias() const { return m_alias; }
     inline bool AliasHasBeenSet() const { return m_aliasHasBeenSet; }
+    template<typename AliasT = Aws::String>
+    void SetAlias(AliasT&& value) { m_aliasHasBeenSet = true; m_alias = std::forward<AliasT>(value); }
+    template<typename AliasT = Aws::String>
+    TimeSeriesSummary& WithAlias(AliasT&& value) { SetAlias(std::forward<AliasT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The alias that identifies the time series.</p>
-     */
-    inline void SetAlias(const Aws::String& value) { m_aliasHasBeenSet = true; m_alias = value; }
-
-    /**
-     * <p>The alias that identifies the time series.</p>
-     */
-    inline void SetAlias(Aws::String&& value) { m_aliasHasBeenSet = true; m_alias = std::move(value); }
-
-    /**
-     * <p>The alias that identifies the time series.</p>
-     */
-    inline void SetAlias(const char* value) { m_aliasHasBeenSet = true; m_alias.assign(value); }
-
-    /**
-     * <p>The alias that identifies the time series.</p>
-     */
-    inline TimeSeriesSummary& WithAlias(const Aws::String& value) { SetAlias(value); return *this;}
-
-    /**
-     * <p>The alias that identifies the time series.</p>
-     */
-    inline TimeSeriesSummary& WithAlias(Aws::String&& value) { SetAlias(std::move(value)); return *this;}
-
-    /**
-     * <p>The alias that identifies the time series.</p>
-     */
-    inline TimeSeriesSummary& WithAlias(const char* value) { SetAlias(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the time series.</p>
      */
-    inline const Aws::String& GetTimeSeriesId() const{ return m_timeSeriesId; }
-
-    /**
-     * <p>The ID of the time series.</p>
-     */
+    inline const Aws::String& GetTimeSeriesId() const { return m_timeSeriesId; }
     inline bool TimeSeriesIdHasBeenSet() const { return m_timeSeriesIdHasBeenSet; }
+    template<typename TimeSeriesIdT = Aws::String>
+    void SetTimeSeriesId(TimeSeriesIdT&& value) { m_timeSeriesIdHasBeenSet = true; m_timeSeriesId = std::forward<TimeSeriesIdT>(value); }
+    template<typename TimeSeriesIdT = Aws::String>
+    TimeSeriesSummary& WithTimeSeriesId(TimeSeriesIdT&& value) { SetTimeSeriesId(std::forward<TimeSeriesIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the time series.</p>
-     */
-    inline void SetTimeSeriesId(const Aws::String& value) { m_timeSeriesIdHasBeenSet = true; m_timeSeriesId = value; }
-
-    /**
-     * <p>The ID of the time series.</p>
-     */
-    inline void SetTimeSeriesId(Aws::String&& value) { m_timeSeriesIdHasBeenSet = true; m_timeSeriesId = std::move(value); }
-
-    /**
-     * <p>The ID of the time series.</p>
-     */
-    inline void SetTimeSeriesId(const char* value) { m_timeSeriesIdHasBeenSet = true; m_timeSeriesId.assign(value); }
-
-    /**
-     * <p>The ID of the time series.</p>
-     */
-    inline TimeSeriesSummary& WithTimeSeriesId(const Aws::String& value) { SetTimeSeriesId(value); return *this;}
-
-    /**
-     * <p>The ID of the time series.</p>
-     */
-    inline TimeSeriesSummary& WithTimeSeriesId(Aws::String&& value) { SetTimeSeriesId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the time series.</p>
-     */
-    inline TimeSeriesSummary& WithTimeSeriesId(const char* value) { SetTimeSeriesId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The data type of the time series.</p> <p>If you specify <code>STRUCT</code>,
      * you must also specify <code>dataTypeSpec</code> to identify the type of the
      * structure for this time series.</p>
      */
-    inline const PropertyDataType& GetDataType() const{ return m_dataType; }
-
-    /**
-     * <p>The data type of the time series.</p> <p>If you specify <code>STRUCT</code>,
-     * you must also specify <code>dataTypeSpec</code> to identify the type of the
-     * structure for this time series.</p>
-     */
+    inline PropertyDataType GetDataType() const { return m_dataType; }
     inline bool DataTypeHasBeenSet() const { return m_dataTypeHasBeenSet; }
+    inline void SetDataType(PropertyDataType value) { m_dataTypeHasBeenSet = true; m_dataType = value; }
+    inline TimeSeriesSummary& WithDataType(PropertyDataType value) { SetDataType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The data type of the time series.</p> <p>If you specify <code>STRUCT</code>,
-     * you must also specify <code>dataTypeSpec</code> to identify the type of the
-     * structure for this time series.</p>
-     */
-    inline void SetDataType(const PropertyDataType& value) { m_dataTypeHasBeenSet = true; m_dataType = value; }
-
-    /**
-     * <p>The data type of the time series.</p> <p>If you specify <code>STRUCT</code>,
-     * you must also specify <code>dataTypeSpec</code> to identify the type of the
-     * structure for this time series.</p>
-     */
-    inline void SetDataType(PropertyDataType&& value) { m_dataTypeHasBeenSet = true; m_dataType = std::move(value); }
-
-    /**
-     * <p>The data type of the time series.</p> <p>If you specify <code>STRUCT</code>,
-     * you must also specify <code>dataTypeSpec</code> to identify the type of the
-     * structure for this time series.</p>
-     */
-    inline TimeSeriesSummary& WithDataType(const PropertyDataType& value) { SetDataType(value); return *this;}
-
-    /**
-     * <p>The data type of the time series.</p> <p>If you specify <code>STRUCT</code>,
-     * you must also specify <code>dataTypeSpec</code> to identify the type of the
-     * structure for this time series.</p>
-     */
-    inline TimeSeriesSummary& WithDataType(PropertyDataType&& value) { SetDataType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The data type of the structure for this time series. This parameter is
      * required for time series that have the <code>STRUCT</code> data type.</p> <p>The
@@ -254,134 +108,39 @@ namespace Model
      * you created the asset property that is associated with your time series. Use
      * <code>AWS/ALARM_STATE</code> for alarm state in alarm composite models.</p>
      */
-    inline const Aws::String& GetDataTypeSpec() const{ return m_dataTypeSpec; }
-
-    /**
-     * <p>The data type of the structure for this time series. This parameter is
-     * required for time series that have the <code>STRUCT</code> data type.</p> <p>The
-     * options for this parameter depend on the type of the composite model in which
-     * you created the asset property that is associated with your time series. Use
-     * <code>AWS/ALARM_STATE</code> for alarm state in alarm composite models.</p>
-     */
+    inline const Aws::String& GetDataTypeSpec() const { return m_dataTypeSpec; }
     inline bool DataTypeSpecHasBeenSet() const { return m_dataTypeSpecHasBeenSet; }
+    template<typename DataTypeSpecT = Aws::String>
+    void SetDataTypeSpec(DataTypeSpecT&& value) { m_dataTypeSpecHasBeenSet = true; m_dataTypeSpec = std::forward<DataTypeSpecT>(value); }
+    template<typename DataTypeSpecT = Aws::String>
+    TimeSeriesSummary& WithDataTypeSpec(DataTypeSpecT&& value) { SetDataTypeSpec(std::forward<DataTypeSpecT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The data type of the structure for this time series. This parameter is
-     * required for time series that have the <code>STRUCT</code> data type.</p> <p>The
-     * options for this parameter depend on the type of the composite model in which
-     * you created the asset property that is associated with your time series. Use
-     * <code>AWS/ALARM_STATE</code> for alarm state in alarm composite models.</p>
-     */
-    inline void SetDataTypeSpec(const Aws::String& value) { m_dataTypeSpecHasBeenSet = true; m_dataTypeSpec = value; }
-
-    /**
-     * <p>The data type of the structure for this time series. This parameter is
-     * required for time series that have the <code>STRUCT</code> data type.</p> <p>The
-     * options for this parameter depend on the type of the composite model in which
-     * you created the asset property that is associated with your time series. Use
-     * <code>AWS/ALARM_STATE</code> for alarm state in alarm composite models.</p>
-     */
-    inline void SetDataTypeSpec(Aws::String&& value) { m_dataTypeSpecHasBeenSet = true; m_dataTypeSpec = std::move(value); }
-
-    /**
-     * <p>The data type of the structure for this time series. This parameter is
-     * required for time series that have the <code>STRUCT</code> data type.</p> <p>The
-     * options for this parameter depend on the type of the composite model in which
-     * you created the asset property that is associated with your time series. Use
-     * <code>AWS/ALARM_STATE</code> for alarm state in alarm composite models.</p>
-     */
-    inline void SetDataTypeSpec(const char* value) { m_dataTypeSpecHasBeenSet = true; m_dataTypeSpec.assign(value); }
-
-    /**
-     * <p>The data type of the structure for this time series. This parameter is
-     * required for time series that have the <code>STRUCT</code> data type.</p> <p>The
-     * options for this parameter depend on the type of the composite model in which
-     * you created the asset property that is associated with your time series. Use
-     * <code>AWS/ALARM_STATE</code> for alarm state in alarm composite models.</p>
-     */
-    inline TimeSeriesSummary& WithDataTypeSpec(const Aws::String& value) { SetDataTypeSpec(value); return *this;}
-
-    /**
-     * <p>The data type of the structure for this time series. This parameter is
-     * required for time series that have the <code>STRUCT</code> data type.</p> <p>The
-     * options for this parameter depend on the type of the composite model in which
-     * you created the asset property that is associated with your time series. Use
-     * <code>AWS/ALARM_STATE</code> for alarm state in alarm composite models.</p>
-     */
-    inline TimeSeriesSummary& WithDataTypeSpec(Aws::String&& value) { SetDataTypeSpec(std::move(value)); return *this;}
-
-    /**
-     * <p>The data type of the structure for this time series. This parameter is
-     * required for time series that have the <code>STRUCT</code> data type.</p> <p>The
-     * options for this parameter depend on the type of the composite model in which
-     * you created the asset property that is associated with your time series. Use
-     * <code>AWS/ALARM_STATE</code> for alarm state in alarm composite models.</p>
-     */
-    inline TimeSeriesSummary& WithDataTypeSpec(const char* value) { SetDataTypeSpec(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date that the time series was created, in Unix epoch time.</p>
      */
-    inline const Aws::Utils::DateTime& GetTimeSeriesCreationDate() const{ return m_timeSeriesCreationDate; }
-
-    /**
-     * <p>The date that the time series was created, in Unix epoch time.</p>
-     */
+    inline const Aws::Utils::DateTime& GetTimeSeriesCreationDate() const { return m_timeSeriesCreationDate; }
     inline bool TimeSeriesCreationDateHasBeenSet() const { return m_timeSeriesCreationDateHasBeenSet; }
+    template<typename TimeSeriesCreationDateT = Aws::Utils::DateTime>
+    void SetTimeSeriesCreationDate(TimeSeriesCreationDateT&& value) { m_timeSeriesCreationDateHasBeenSet = true; m_timeSeriesCreationDate = std::forward<TimeSeriesCreationDateT>(value); }
+    template<typename TimeSeriesCreationDateT = Aws::Utils::DateTime>
+    TimeSeriesSummary& WithTimeSeriesCreationDate(TimeSeriesCreationDateT&& value) { SetTimeSeriesCreationDate(std::forward<TimeSeriesCreationDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date that the time series was created, in Unix epoch time.</p>
-     */
-    inline void SetTimeSeriesCreationDate(const Aws::Utils::DateTime& value) { m_timeSeriesCreationDateHasBeenSet = true; m_timeSeriesCreationDate = value; }
-
-    /**
-     * <p>The date that the time series was created, in Unix epoch time.</p>
-     */
-    inline void SetTimeSeriesCreationDate(Aws::Utils::DateTime&& value) { m_timeSeriesCreationDateHasBeenSet = true; m_timeSeriesCreationDate = std::move(value); }
-
-    /**
-     * <p>The date that the time series was created, in Unix epoch time.</p>
-     */
-    inline TimeSeriesSummary& WithTimeSeriesCreationDate(const Aws::Utils::DateTime& value) { SetTimeSeriesCreationDate(value); return *this;}
-
-    /**
-     * <p>The date that the time series was created, in Unix epoch time.</p>
-     */
-    inline TimeSeriesSummary& WithTimeSeriesCreationDate(Aws::Utils::DateTime&& value) { SetTimeSeriesCreationDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date that the time series was last updated, in Unix epoch time.</p>
      */
-    inline const Aws::Utils::DateTime& GetTimeSeriesLastUpdateDate() const{ return m_timeSeriesLastUpdateDate; }
-
-    /**
-     * <p>The date that the time series was last updated, in Unix epoch time.</p>
-     */
+    inline const Aws::Utils::DateTime& GetTimeSeriesLastUpdateDate() const { return m_timeSeriesLastUpdateDate; }
     inline bool TimeSeriesLastUpdateDateHasBeenSet() const { return m_timeSeriesLastUpdateDateHasBeenSet; }
+    template<typename TimeSeriesLastUpdateDateT = Aws::Utils::DateTime>
+    void SetTimeSeriesLastUpdateDate(TimeSeriesLastUpdateDateT&& value) { m_timeSeriesLastUpdateDateHasBeenSet = true; m_timeSeriesLastUpdateDate = std::forward<TimeSeriesLastUpdateDateT>(value); }
+    template<typename TimeSeriesLastUpdateDateT = Aws::Utils::DateTime>
+    TimeSeriesSummary& WithTimeSeriesLastUpdateDate(TimeSeriesLastUpdateDateT&& value) { SetTimeSeriesLastUpdateDate(std::forward<TimeSeriesLastUpdateDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date that the time series was last updated, in Unix epoch time.</p>
-     */
-    inline void SetTimeSeriesLastUpdateDate(const Aws::Utils::DateTime& value) { m_timeSeriesLastUpdateDateHasBeenSet = true; m_timeSeriesLastUpdateDate = value; }
-
-    /**
-     * <p>The date that the time series was last updated, in Unix epoch time.</p>
-     */
-    inline void SetTimeSeriesLastUpdateDate(Aws::Utils::DateTime&& value) { m_timeSeriesLastUpdateDateHasBeenSet = true; m_timeSeriesLastUpdateDate = std::move(value); }
-
-    /**
-     * <p>The date that the time series was last updated, in Unix epoch time.</p>
-     */
-    inline TimeSeriesSummary& WithTimeSeriesLastUpdateDate(const Aws::Utils::DateTime& value) { SetTimeSeriesLastUpdateDate(value); return *this;}
-
-    /**
-     * <p>The date that the time series was last updated, in Unix epoch time.</p>
-     */
-    inline TimeSeriesSummary& WithTimeSeriesLastUpdateDate(Aws::Utils::DateTime&& value) { SetTimeSeriesLastUpdateDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
@@ -389,71 +148,13 @@ namespace Model
      * <code>arn:${Partition}:iotsitewise:${Region}:${Account}:time-series/${TimeSeriesId}</code>
      * </p>
      */
-    inline const Aws::String& GetTimeSeriesArn() const{ return m_timeSeriesArn; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the time series, which has the following format.</p> <p>
-     * <code>arn:${Partition}:iotsitewise:${Region}:${Account}:time-series/${TimeSeriesId}</code>
-     * </p>
-     */
+    inline const Aws::String& GetTimeSeriesArn() const { return m_timeSeriesArn; }
     inline bool TimeSeriesArnHasBeenSet() const { return m_timeSeriesArnHasBeenSet; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the time series, which has the following format.</p> <p>
-     * <code>arn:${Partition}:iotsitewise:${Region}:${Account}:time-series/${TimeSeriesId}</code>
-     * </p>
-     */
-    inline void SetTimeSeriesArn(const Aws::String& value) { m_timeSeriesArnHasBeenSet = true; m_timeSeriesArn = value; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the time series, which has the following format.</p> <p>
-     * <code>arn:${Partition}:iotsitewise:${Region}:${Account}:time-series/${TimeSeriesId}</code>
-     * </p>
-     */
-    inline void SetTimeSeriesArn(Aws::String&& value) { m_timeSeriesArnHasBeenSet = true; m_timeSeriesArn = std::move(value); }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the time series, which has the following format.</p> <p>
-     * <code>arn:${Partition}:iotsitewise:${Region}:${Account}:time-series/${TimeSeriesId}</code>
-     * </p>
-     */
-    inline void SetTimeSeriesArn(const char* value) { m_timeSeriesArnHasBeenSet = true; m_timeSeriesArn.assign(value); }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the time series, which has the following format.</p> <p>
-     * <code>arn:${Partition}:iotsitewise:${Region}:${Account}:time-series/${TimeSeriesId}</code>
-     * </p>
-     */
-    inline TimeSeriesSummary& WithTimeSeriesArn(const Aws::String& value) { SetTimeSeriesArn(value); return *this;}
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the time series, which has the following format.</p> <p>
-     * <code>arn:${Partition}:iotsitewise:${Region}:${Account}:time-series/${TimeSeriesId}</code>
-     * </p>
-     */
-    inline TimeSeriesSummary& WithTimeSeriesArn(Aws::String&& value) { SetTimeSeriesArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the time series, which has the following format.</p> <p>
-     * <code>arn:${Partition}:iotsitewise:${Region}:${Account}:time-series/${TimeSeriesId}</code>
-     * </p>
-     */
-    inline TimeSeriesSummary& WithTimeSeriesArn(const char* value) { SetTimeSeriesArn(value); return *this;}
-
+    template<typename TimeSeriesArnT = Aws::String>
+    void SetTimeSeriesArn(TimeSeriesArnT&& value) { m_timeSeriesArnHasBeenSet = true; m_timeSeriesArn = std::forward<TimeSeriesArnT>(value); }
+    template<typename TimeSeriesArnT = Aws::String>
+    TimeSeriesSummary& WithTimeSeriesArn(TimeSeriesArnT&& value) { SetTimeSeriesArn(std::forward<TimeSeriesArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_assetId;
@@ -468,16 +169,16 @@ namespace Model
     Aws::String m_timeSeriesId;
     bool m_timeSeriesIdHasBeenSet = false;
 
-    PropertyDataType m_dataType;
+    PropertyDataType m_dataType{PropertyDataType::NOT_SET};
     bool m_dataTypeHasBeenSet = false;
 
     Aws::String m_dataTypeSpec;
     bool m_dataTypeSpecHasBeenSet = false;
 
-    Aws::Utils::DateTime m_timeSeriesCreationDate;
+    Aws::Utils::DateTime m_timeSeriesCreationDate{};
     bool m_timeSeriesCreationDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_timeSeriesLastUpdateDate;
+    Aws::Utils::DateTime m_timeSeriesLastUpdateDate{};
     bool m_timeSeriesLastUpdateDateHasBeenSet = false;
 
     Aws::String m_timeSeriesArn;

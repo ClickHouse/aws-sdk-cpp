@@ -18,17 +18,7 @@ namespace Glue
 namespace Model
 {
 
-SplitFields::SplitFields() : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_pathsHasBeenSet(false)
-{
-}
-
-SplitFields::SplitFields(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_pathsHasBeenSet(false)
+SplitFields::SplitFields(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ SplitFields& SplitFields::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Inputs"))
   {
     Aws::Utils::Array<JsonView> inputsJsonList = jsonValue.GetArray("Inputs");
@@ -51,7 +39,6 @@ SplitFields& SplitFields::operator =(JsonView jsonValue)
     }
     m_inputsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Paths"))
   {
     Aws::Utils::Array<JsonView> pathsJsonList = jsonValue.GetArray("Paths");
@@ -68,7 +55,6 @@ SplitFields& SplitFields::operator =(JsonView jsonValue)
     }
     m_pathsHasBeenSet = true;
   }
-
   return *this;
 }
 

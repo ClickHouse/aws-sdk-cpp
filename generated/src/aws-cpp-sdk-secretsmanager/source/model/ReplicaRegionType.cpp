@@ -18,15 +18,7 @@ namespace SecretsManager
 namespace Model
 {
 
-ReplicaRegionType::ReplicaRegionType() : 
-    m_regionHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false)
-{
-}
-
-ReplicaRegionType::ReplicaRegionType(JsonView jsonValue) : 
-    m_regionHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false)
+ReplicaRegionType::ReplicaRegionType(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ReplicaRegionType& ReplicaRegionType::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Region"))
   {
     m_region = jsonValue.GetString("Region");
-
     m_regionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("KmsKeyId"))
   {
     m_kmsKeyId = jsonValue.GetString("KmsKeyId");
-
     m_kmsKeyIdHasBeenSet = true;
   }
-
   return *this;
 }
 

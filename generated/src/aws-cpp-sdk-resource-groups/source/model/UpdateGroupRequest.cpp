@@ -12,12 +12,6 @@ using namespace Aws::ResourceGroups::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateGroupRequest::UpdateGroupRequest() : 
-    m_groupHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
-{
-}
-
 Aws::String UpdateGroupRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,24 @@ Aws::String UpdateGroupRequest::SerializePayload() const
   if(m_descriptionHasBeenSet)
   {
    payload.WithString("Description", m_description);
+
+  }
+
+  if(m_criticalityHasBeenSet)
+  {
+   payload.WithInteger("Criticality", m_criticality);
+
+  }
+
+  if(m_ownerHasBeenSet)
+  {
+   payload.WithString("Owner", m_owner);
+
+  }
+
+  if(m_displayNameHasBeenSet)
+  {
+   payload.WithString("DisplayName", m_displayName);
 
   }
 

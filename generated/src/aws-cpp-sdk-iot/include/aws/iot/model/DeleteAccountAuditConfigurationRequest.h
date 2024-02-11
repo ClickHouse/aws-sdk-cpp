@@ -23,7 +23,7 @@ namespace Model
   class DeleteAccountAuditConfigurationRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API DeleteAccountAuditConfigurationRequest();
+    AWS_IOT_API DeleteAccountAuditConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,29 +36,18 @@ namespace Model
     AWS_IOT_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>If true, all scheduled audits are deleted.</p>
      */
-    inline bool GetDeleteScheduledAudits() const{ return m_deleteScheduledAudits; }
-
-    /**
-     * <p>If true, all scheduled audits are deleted.</p>
-     */
+    inline bool GetDeleteScheduledAudits() const { return m_deleteScheduledAudits; }
     inline bool DeleteScheduledAuditsHasBeenSet() const { return m_deleteScheduledAuditsHasBeenSet; }
-
-    /**
-     * <p>If true, all scheduled audits are deleted.</p>
-     */
     inline void SetDeleteScheduledAudits(bool value) { m_deleteScheduledAuditsHasBeenSet = true; m_deleteScheduledAudits = value; }
-
-    /**
-     * <p>If true, all scheduled audits are deleted.</p>
-     */
     inline DeleteAccountAuditConfigurationRequest& WithDeleteScheduledAudits(bool value) { SetDeleteScheduledAudits(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_deleteScheduledAudits;
+    bool m_deleteScheduledAudits{false};
     bool m_deleteScheduledAuditsHasBeenSet = false;
   };
 

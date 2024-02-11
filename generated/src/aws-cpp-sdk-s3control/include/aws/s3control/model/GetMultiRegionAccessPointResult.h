@@ -28,68 +28,54 @@ namespace Model
   class GetMultiRegionAccessPointResult
   {
   public:
-    AWS_S3CONTROL_API GetMultiRegionAccessPointResult();
+    AWS_S3CONTROL_API GetMultiRegionAccessPointResult() = default;
     AWS_S3CONTROL_API GetMultiRegionAccessPointResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_S3CONTROL_API GetMultiRegionAccessPointResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>A container element containing the details of the requested Multi-Region
      * Access Point.</p>
      */
-    inline const MultiRegionAccessPointReport& GetAccessPoint() const{ return m_accessPoint; }
+    inline const MultiRegionAccessPointReport& GetAccessPoint() const { return m_accessPoint; }
+    template<typename AccessPointT = MultiRegionAccessPointReport>
+    void SetAccessPoint(AccessPointT&& value) { m_accessPointHasBeenSet = true; m_accessPoint = std::forward<AccessPointT>(value); }
+    template<typename AccessPointT = MultiRegionAccessPointReport>
+    GetMultiRegionAccessPointResult& WithAccessPoint(AccessPointT&& value) { SetAccessPoint(std::forward<AccessPointT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A container element containing the details of the requested Multi-Region
-     * Access Point.</p>
+     * AWS Request Id value
      */
-    inline void SetAccessPoint(const MultiRegionAccessPointReport& value) { m_accessPoint = value; }
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetMultiRegionAccessPointResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A container element containing the details of the requested Multi-Region
-     * Access Point.</p>
+     * x-amz-id-2 header value, also known as Host Id
      */
-    inline void SetAccessPoint(MultiRegionAccessPointReport&& value) { m_accessPoint = std::move(value); }
-
-    /**
-     * <p>A container element containing the details of the requested Multi-Region
-     * Access Point.</p>
-     */
-    inline GetMultiRegionAccessPointResult& WithAccessPoint(const MultiRegionAccessPointReport& value) { SetAccessPoint(value); return *this;}
-
-    /**
-     * <p>A container element containing the details of the requested Multi-Region
-     * Access Point.</p>
-     */
-    inline GetMultiRegionAccessPointResult& WithAccessPoint(MultiRegionAccessPointReport&& value) { SetAccessPoint(std::move(value)); return *this;}
-
-
-    
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetMultiRegionAccessPointResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetMultiRegionAccessPointResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetMultiRegionAccessPointResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetHostId() const { return m_hostId; }
+    template<typename HostIdT = Aws::String>
+    void SetHostId(HostIdT&& value) { m_hostIdHasBeenSet = true; m_hostId = std::forward<HostIdT>(value); }
+    template<typename HostIdT = Aws::String>
+    GetMultiRegionAccessPointResult& WithHostId(HostIdT&& value) { SetHostId(std::forward<HostIdT>(value)); return *this;}
+    ///@}
   private:
 
     MultiRegionAccessPointReport m_accessPoint;
+    bool m_accessPointHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
+
+    Aws::String m_hostId;
+    bool m_hostIdHasBeenSet = false;
   };
 
 } // namespace Model

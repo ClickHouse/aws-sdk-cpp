@@ -12,24 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDomainRequest::CreateDomainRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_authMode(AuthMode::NOT_SET),
-    m_authModeHasBeenSet(false),
-    m_defaultUserSettingsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_appNetworkAccessType(AppNetworkAccessType::NOT_SET),
-    m_appNetworkAccessTypeHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_appSecurityGroupManagement(AppSecurityGroupManagement::NOT_SET),
-    m_appSecurityGroupManagementHasBeenSet(false),
-    m_domainSettingsHasBeenSet(false),
-    m_defaultSpaceSettingsHasBeenSet(false)
-{
-}
-
 Aws::String CreateDomainRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -48,6 +30,12 @@ Aws::String CreateDomainRequest::SerializePayload() const
   if(m_defaultUserSettingsHasBeenSet)
   {
    payload.WithObject("DefaultUserSettings", m_defaultUserSettings.Jsonize());
+
+  }
+
+  if(m_domainSettingsHasBeenSet)
+  {
+   payload.WithObject("DomainSettings", m_domainSettings.Jsonize());
 
   }
 
@@ -95,10 +83,9 @@ Aws::String CreateDomainRequest::SerializePayload() const
    payload.WithString("AppSecurityGroupManagement", AppSecurityGroupManagementMapper::GetNameForAppSecurityGroupManagement(m_appSecurityGroupManagement));
   }
 
-  if(m_domainSettingsHasBeenSet)
+  if(m_tagPropagationHasBeenSet)
   {
-   payload.WithObject("DomainSettings", m_domainSettings.Jsonize());
-
+   payload.WithString("TagPropagation", TagPropagationMapper::GetNameForTagPropagation(m_tagPropagation));
   }
 
   if(m_defaultSpaceSettingsHasBeenSet)

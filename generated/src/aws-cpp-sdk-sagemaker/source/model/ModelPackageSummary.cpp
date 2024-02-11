@@ -18,33 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ModelPackageSummary::ModelPackageSummary() : 
-    m_modelPackageNameHasBeenSet(false),
-    m_modelPackageGroupNameHasBeenSet(false),
-    m_modelPackageVersion(0),
-    m_modelPackageVersionHasBeenSet(false),
-    m_modelPackageArnHasBeenSet(false),
-    m_modelPackageDescriptionHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_modelPackageStatus(ModelPackageStatus::NOT_SET),
-    m_modelPackageStatusHasBeenSet(false),
-    m_modelApprovalStatus(ModelApprovalStatus::NOT_SET),
-    m_modelApprovalStatusHasBeenSet(false)
-{
-}
-
-ModelPackageSummary::ModelPackageSummary(JsonView jsonValue) : 
-    m_modelPackageNameHasBeenSet(false),
-    m_modelPackageGroupNameHasBeenSet(false),
-    m_modelPackageVersion(0),
-    m_modelPackageVersionHasBeenSet(false),
-    m_modelPackageArnHasBeenSet(false),
-    m_modelPackageDescriptionHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_modelPackageStatus(ModelPackageStatus::NOT_SET),
-    m_modelPackageStatusHasBeenSet(false),
-    m_modelApprovalStatus(ModelApprovalStatus::NOT_SET),
-    m_modelApprovalStatusHasBeenSet(false)
+ModelPackageSummary::ModelPackageSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -54,59 +28,48 @@ ModelPackageSummary& ModelPackageSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ModelPackageName"))
   {
     m_modelPackageName = jsonValue.GetString("ModelPackageName");
-
     m_modelPackageNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ModelPackageGroupName"))
   {
     m_modelPackageGroupName = jsonValue.GetString("ModelPackageGroupName");
-
     m_modelPackageGroupNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ModelPackageVersion"))
   {
     m_modelPackageVersion = jsonValue.GetInteger("ModelPackageVersion");
-
     m_modelPackageVersionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ModelPackageArn"))
   {
     m_modelPackageArn = jsonValue.GetString("ModelPackageArn");
-
     m_modelPackageArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ModelPackageDescription"))
   {
     m_modelPackageDescription = jsonValue.GetString("ModelPackageDescription");
-
     m_modelPackageDescriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreationTime"))
   {
     m_creationTime = jsonValue.GetDouble("CreationTime");
-
     m_creationTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ModelPackageStatus"))
   {
     m_modelPackageStatus = ModelPackageStatusMapper::GetModelPackageStatusForName(jsonValue.GetString("ModelPackageStatus"));
-
     m_modelPackageStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ModelApprovalStatus"))
   {
     m_modelApprovalStatus = ModelApprovalStatusMapper::GetModelApprovalStatusForName(jsonValue.GetString("ModelApprovalStatus"));
-
     m_modelApprovalStatusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ModelLifeCycle"))
+  {
+    m_modelLifeCycle = jsonValue.GetObject("ModelLifeCycle");
+    m_modelLifeCycleHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -157,6 +120,12 @@ JsonValue ModelPackageSummary::Jsonize() const
   if(m_modelApprovalStatusHasBeenSet)
   {
    payload.WithString("ModelApprovalStatus", ModelApprovalStatusMapper::GetNameForModelApprovalStatus(m_modelApprovalStatus));
+  }
+
+  if(m_modelLifeCycleHasBeenSet)
+  {
+   payload.WithObject("ModelLifeCycle", m_modelLifeCycle.Jsonize());
+
   }
 
   return payload;

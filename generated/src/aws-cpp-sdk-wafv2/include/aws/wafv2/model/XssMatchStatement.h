@@ -36,123 +36,44 @@ namespace Model
   class XssMatchStatement
   {
   public:
-    AWS_WAFV2_API XssMatchStatement();
+    AWS_WAFV2_API XssMatchStatement() = default;
     AWS_WAFV2_API XssMatchStatement(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API XssMatchStatement& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The part of the web request that you want WAF to inspect. </p>
      */
-    inline const FieldToMatch& GetFieldToMatch() const{ return m_fieldToMatch; }
-
-    /**
-     * <p>The part of the web request that you want WAF to inspect. </p>
-     */
+    inline const FieldToMatch& GetFieldToMatch() const { return m_fieldToMatch; }
     inline bool FieldToMatchHasBeenSet() const { return m_fieldToMatchHasBeenSet; }
+    template<typename FieldToMatchT = FieldToMatch>
+    void SetFieldToMatch(FieldToMatchT&& value) { m_fieldToMatchHasBeenSet = true; m_fieldToMatch = std::forward<FieldToMatchT>(value); }
+    template<typename FieldToMatchT = FieldToMatch>
+    XssMatchStatement& WithFieldToMatch(FieldToMatchT&& value) { SetFieldToMatch(std::forward<FieldToMatchT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The part of the web request that you want WAF to inspect. </p>
-     */
-    inline void SetFieldToMatch(const FieldToMatch& value) { m_fieldToMatchHasBeenSet = true; m_fieldToMatch = value; }
-
-    /**
-     * <p>The part of the web request that you want WAF to inspect. </p>
-     */
-    inline void SetFieldToMatch(FieldToMatch&& value) { m_fieldToMatchHasBeenSet = true; m_fieldToMatch = std::move(value); }
-
-    /**
-     * <p>The part of the web request that you want WAF to inspect. </p>
-     */
-    inline XssMatchStatement& WithFieldToMatch(const FieldToMatch& value) { SetFieldToMatch(value); return *this;}
-
-    /**
-     * <p>The part of the web request that you want WAF to inspect. </p>
-     */
-    inline XssMatchStatement& WithFieldToMatch(FieldToMatch&& value) { SetFieldToMatch(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. If you specify one or more
-     * transformations in a rule statement, WAF performs all transformations on the
-     * content of the request component identified by <code>FieldToMatch</code>,
-     * starting from the lowest priority setting, before inspecting the content for a
-     * match.</p>
+     * use in web requests in an effort to bypass detection. Text transformations are
+     * used in rule match statements, to transform the <code>FieldToMatch</code>
+     * request component before inspecting it, and they're used in rate-based rule
+     * statements, to transform request components before using them as custom
+     * aggregation keys. If you specify one or more transformations to apply, WAF
+     * performs all transformations on the specified content, starting from the lowest
+     * priority setting, and then uses the transformed component contents. </p>
      */
-    inline const Aws::Vector<TextTransformation>& GetTextTransformations() const{ return m_textTransformations; }
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. If you specify one or more
-     * transformations in a rule statement, WAF performs all transformations on the
-     * content of the request component identified by <code>FieldToMatch</code>,
-     * starting from the lowest priority setting, before inspecting the content for a
-     * match.</p>
-     */
+    inline const Aws::Vector<TextTransformation>& GetTextTransformations() const { return m_textTransformations; }
     inline bool TextTransformationsHasBeenSet() const { return m_textTransformationsHasBeenSet; }
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. If you specify one or more
-     * transformations in a rule statement, WAF performs all transformations on the
-     * content of the request component identified by <code>FieldToMatch</code>,
-     * starting from the lowest priority setting, before inspecting the content for a
-     * match.</p>
-     */
-    inline void SetTextTransformations(const Aws::Vector<TextTransformation>& value) { m_textTransformationsHasBeenSet = true; m_textTransformations = value; }
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. If you specify one or more
-     * transformations in a rule statement, WAF performs all transformations on the
-     * content of the request component identified by <code>FieldToMatch</code>,
-     * starting from the lowest priority setting, before inspecting the content for a
-     * match.</p>
-     */
-    inline void SetTextTransformations(Aws::Vector<TextTransformation>&& value) { m_textTransformationsHasBeenSet = true; m_textTransformations = std::move(value); }
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. If you specify one or more
-     * transformations in a rule statement, WAF performs all transformations on the
-     * content of the request component identified by <code>FieldToMatch</code>,
-     * starting from the lowest priority setting, before inspecting the content for a
-     * match.</p>
-     */
-    inline XssMatchStatement& WithTextTransformations(const Aws::Vector<TextTransformation>& value) { SetTextTransformations(value); return *this;}
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. If you specify one or more
-     * transformations in a rule statement, WAF performs all transformations on the
-     * content of the request component identified by <code>FieldToMatch</code>,
-     * starting from the lowest priority setting, before inspecting the content for a
-     * match.</p>
-     */
-    inline XssMatchStatement& WithTextTransformations(Aws::Vector<TextTransformation>&& value) { SetTextTransformations(std::move(value)); return *this;}
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. If you specify one or more
-     * transformations in a rule statement, WAF performs all transformations on the
-     * content of the request component identified by <code>FieldToMatch</code>,
-     * starting from the lowest priority setting, before inspecting the content for a
-     * match.</p>
-     */
-    inline XssMatchStatement& AddTextTransformations(const TextTransformation& value) { m_textTransformationsHasBeenSet = true; m_textTransformations.push_back(value); return *this; }
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. If you specify one or more
-     * transformations in a rule statement, WAF performs all transformations on the
-     * content of the request component identified by <code>FieldToMatch</code>,
-     * starting from the lowest priority setting, before inspecting the content for a
-     * match.</p>
-     */
-    inline XssMatchStatement& AddTextTransformations(TextTransformation&& value) { m_textTransformationsHasBeenSet = true; m_textTransformations.push_back(std::move(value)); return *this; }
-
+    template<typename TextTransformationsT = Aws::Vector<TextTransformation>>
+    void SetTextTransformations(TextTransformationsT&& value) { m_textTransformationsHasBeenSet = true; m_textTransformations = std::forward<TextTransformationsT>(value); }
+    template<typename TextTransformationsT = Aws::Vector<TextTransformation>>
+    XssMatchStatement& WithTextTransformations(TextTransformationsT&& value) { SetTextTransformations(std::forward<TextTransformationsT>(value)); return *this;}
+    template<typename TextTransformationsT = TextTransformation>
+    XssMatchStatement& AddTextTransformations(TextTransformationsT&& value) { m_textTransformationsHasBeenSet = true; m_textTransformations.emplace_back(std::forward<TextTransformationsT>(value)); return *this; }
+    ///@}
   private:
 
     FieldToMatch m_fieldToMatch;

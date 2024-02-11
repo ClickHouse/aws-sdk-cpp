@@ -18,13 +18,7 @@ namespace SSM
 namespace Model
 {
 
-PatchFilterGroup::PatchFilterGroup() : 
-    m_patchFiltersHasBeenSet(false)
-{
-}
-
-PatchFilterGroup::PatchFilterGroup(JsonView jsonValue) : 
-    m_patchFiltersHasBeenSet(false)
+PatchFilterGroup::PatchFilterGroup(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ PatchFilterGroup& PatchFilterGroup::operator =(JsonView jsonValue)
     }
     m_patchFiltersHasBeenSet = true;
   }
-
   return *this;
 }
 

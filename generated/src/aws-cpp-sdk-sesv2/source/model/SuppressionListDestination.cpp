@@ -18,15 +18,7 @@ namespace SESV2
 namespace Model
 {
 
-SuppressionListDestination::SuppressionListDestination() : 
-    m_suppressionListImportAction(SuppressionListImportAction::NOT_SET),
-    m_suppressionListImportActionHasBeenSet(false)
-{
-}
-
-SuppressionListDestination::SuppressionListDestination(JsonView jsonValue) : 
-    m_suppressionListImportAction(SuppressionListImportAction::NOT_SET),
-    m_suppressionListImportActionHasBeenSet(false)
+SuppressionListDestination::SuppressionListDestination(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ SuppressionListDestination& SuppressionListDestination::operator =(JsonView json
   if(jsonValue.ValueExists("SuppressionListImportAction"))
   {
     m_suppressionListImportAction = SuppressionListImportActionMapper::GetSuppressionListImportActionForName(jsonValue.GetString("SuppressionListImportAction"));
-
     m_suppressionListImportActionHasBeenSet = true;
   }
-
   return *this;
 }
 

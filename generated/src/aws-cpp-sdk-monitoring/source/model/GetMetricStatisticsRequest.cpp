@@ -10,21 +10,6 @@
 using namespace Aws::CloudWatch::Model;
 using namespace Aws::Utils;
 
-GetMetricStatisticsRequest::GetMetricStatisticsRequest() : 
-    m_namespaceHasBeenSet(false),
-    m_metricNameHasBeenSet(false),
-    m_dimensionsHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_period(0),
-    m_periodHasBeenSet(false),
-    m_statisticsHasBeenSet(false),
-    m_extendedStatisticsHasBeenSet(false),
-    m_unit(StandardUnit::NOT_SET),
-    m_unitHasBeenSet(false)
-{
-}
-
 Aws::String GetMetricStatisticsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -41,11 +26,18 @@ Aws::String GetMetricStatisticsRequest::SerializePayload() const
 
   if(m_dimensionsHasBeenSet)
   {
-    unsigned dimensionsCount = 1;
-    for(auto& item : m_dimensions)
+    if (m_dimensions.empty())
     {
-      item.OutputToStream(ss, "Dimensions.member.", dimensionsCount, "");
-      dimensionsCount++;
+      ss << "Dimensions=&";
+    }
+    else
+    {
+      unsigned dimensionsCount = 1;
+      for(auto& item : m_dimensions)
+      {
+        item.OutputToStream(ss, "Dimensions.member.", dimensionsCount, "");
+        dimensionsCount++;
+      }
     }
   }
 
@@ -66,29 +58,43 @@ Aws::String GetMetricStatisticsRequest::SerializePayload() const
 
   if(m_statisticsHasBeenSet)
   {
-    unsigned statisticsCount = 1;
-    for(auto& item : m_statistics)
+    if (m_statistics.empty())
     {
-      ss << "Statistics.member." << statisticsCount << "="
-          << StringUtils::URLEncode(StatisticMapper::GetNameForStatistic(item).c_str()) << "&";
-      statisticsCount++;
+      ss << "Statistics=&";
+    }
+    else
+    {
+      unsigned statisticsCount = 1;
+      for(auto& item : m_statistics)
+      {
+        ss << "Statistics.member." << statisticsCount << "="
+            << StringUtils::URLEncode(StatisticMapper::GetNameForStatistic(item)) << "&";
+        statisticsCount++;
+      }
     }
   }
 
   if(m_extendedStatisticsHasBeenSet)
   {
-    unsigned extendedStatisticsCount = 1;
-    for(auto& item : m_extendedStatistics)
+    if (m_extendedStatistics.empty())
     {
-      ss << "ExtendedStatistics.member." << extendedStatisticsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      extendedStatisticsCount++;
+      ss << "ExtendedStatistics=&";
+    }
+    else
+    {
+      unsigned extendedStatisticsCount = 1;
+      for(auto& item : m_extendedStatistics)
+      {
+        ss << "ExtendedStatistics.member." << extendedStatisticsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        extendedStatisticsCount++;
+      }
     }
   }
 
   if(m_unitHasBeenSet)
   {
-    ss << "Unit=" << StandardUnitMapper::GetNameForStandardUnit(m_unit) << "&";
+    ss << "Unit=" << StringUtils::URLEncode(StandardUnitMapper::GetNameForStandardUnit(m_unit)) << "&";
   }
 
   ss << "Version=2010-08-01";

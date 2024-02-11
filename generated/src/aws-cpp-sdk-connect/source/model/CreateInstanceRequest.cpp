@@ -12,19 +12,6 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateInstanceRequest::CreateInstanceRequest() : 
-    m_clientTokenHasBeenSet(false),
-    m_identityManagementType(DirectoryType::NOT_SET),
-    m_identityManagementTypeHasBeenSet(false),
-    m_instanceAliasHasBeenSet(false),
-    m_directoryIdHasBeenSet(false),
-    m_inboundCallsEnabled(false),
-    m_inboundCallsEnabledHasBeenSet(false),
-    m_outboundCallsEnabled(false),
-    m_outboundCallsEnabledHasBeenSet(false)
-{
-}
-
 Aws::String CreateInstanceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -61,6 +48,17 @@ Aws::String CreateInstanceRequest::SerializePayload() const
   if(m_outboundCallsEnabledHasBeenSet)
   {
    payload.WithBool("OutboundCallsEnabled", m_outboundCallsEnabled);
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("Tags", std::move(tagsJsonMap));
 
   }
 

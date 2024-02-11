@@ -12,12 +12,6 @@ using namespace Aws::RAM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UntagResourceRequest::UntagResourceRequest() : 
-    m_resourceShareArnHasBeenSet(false),
-    m_tagKeysHasBeenSet(false)
-{
-}
-
 Aws::String UntagResourceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -36,6 +30,12 @@ Aws::String UntagResourceRequest::SerializePayload() const
      tagKeysJsonList[tagKeysIndex].AsString(m_tagKeys[tagKeysIndex]);
    }
    payload.WithArray("tagKeys", std::move(tagKeysJsonList));
+
+  }
+
+  if(m_resourceArnHasBeenSet)
+  {
+   payload.WithString("resourceArn", m_resourceArn);
 
   }
 

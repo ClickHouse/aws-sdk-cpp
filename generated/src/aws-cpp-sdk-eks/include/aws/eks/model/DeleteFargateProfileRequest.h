@@ -21,7 +21,7 @@ namespace Model
   class DeleteFargateProfileRequest : public EKSRequest
   {
   public:
-    AWS_EKS_API DeleteFargateProfileRequest();
+    AWS_EKS_API DeleteFargateProfileRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,95 +32,29 @@ namespace Model
     AWS_EKS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The name of the Amazon EKS cluster associated with the Fargate profile to
-     * delete.</p>
+     * <p>The name of your cluster.</p>
      */
-    inline const Aws::String& GetClusterName() const{ return m_clusterName; }
-
-    /**
-     * <p>The name of the Amazon EKS cluster associated with the Fargate profile to
-     * delete.</p>
-     */
+    inline const Aws::String& GetClusterName() const { return m_clusterName; }
     inline bool ClusterNameHasBeenSet() const { return m_clusterNameHasBeenSet; }
+    template<typename ClusterNameT = Aws::String>
+    void SetClusterName(ClusterNameT&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::forward<ClusterNameT>(value); }
+    template<typename ClusterNameT = Aws::String>
+    DeleteFargateProfileRequest& WithClusterName(ClusterNameT&& value) { SetClusterName(std::forward<ClusterNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Amazon EKS cluster associated with the Fargate profile to
-     * delete.</p>
-     */
-    inline void SetClusterName(const Aws::String& value) { m_clusterNameHasBeenSet = true; m_clusterName = value; }
-
-    /**
-     * <p>The name of the Amazon EKS cluster associated with the Fargate profile to
-     * delete.</p>
-     */
-    inline void SetClusterName(Aws::String&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon EKS cluster associated with the Fargate profile to
-     * delete.</p>
-     */
-    inline void SetClusterName(const char* value) { m_clusterNameHasBeenSet = true; m_clusterName.assign(value); }
-
-    /**
-     * <p>The name of the Amazon EKS cluster associated with the Fargate profile to
-     * delete.</p>
-     */
-    inline DeleteFargateProfileRequest& WithClusterName(const Aws::String& value) { SetClusterName(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon EKS cluster associated with the Fargate profile to
-     * delete.</p>
-     */
-    inline DeleteFargateProfileRequest& WithClusterName(Aws::String&& value) { SetClusterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon EKS cluster associated with the Fargate profile to
-     * delete.</p>
-     */
-    inline DeleteFargateProfileRequest& WithClusterName(const char* value) { SetClusterName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the Fargate profile to delete.</p>
      */
-    inline const Aws::String& GetFargateProfileName() const{ return m_fargateProfileName; }
-
-    /**
-     * <p>The name of the Fargate profile to delete.</p>
-     */
+    inline const Aws::String& GetFargateProfileName() const { return m_fargateProfileName; }
     inline bool FargateProfileNameHasBeenSet() const { return m_fargateProfileNameHasBeenSet; }
-
-    /**
-     * <p>The name of the Fargate profile to delete.</p>
-     */
-    inline void SetFargateProfileName(const Aws::String& value) { m_fargateProfileNameHasBeenSet = true; m_fargateProfileName = value; }
-
-    /**
-     * <p>The name of the Fargate profile to delete.</p>
-     */
-    inline void SetFargateProfileName(Aws::String&& value) { m_fargateProfileNameHasBeenSet = true; m_fargateProfileName = std::move(value); }
-
-    /**
-     * <p>The name of the Fargate profile to delete.</p>
-     */
-    inline void SetFargateProfileName(const char* value) { m_fargateProfileNameHasBeenSet = true; m_fargateProfileName.assign(value); }
-
-    /**
-     * <p>The name of the Fargate profile to delete.</p>
-     */
-    inline DeleteFargateProfileRequest& WithFargateProfileName(const Aws::String& value) { SetFargateProfileName(value); return *this;}
-
-    /**
-     * <p>The name of the Fargate profile to delete.</p>
-     */
-    inline DeleteFargateProfileRequest& WithFargateProfileName(Aws::String&& value) { SetFargateProfileName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Fargate profile to delete.</p>
-     */
-    inline DeleteFargateProfileRequest& WithFargateProfileName(const char* value) { SetFargateProfileName(value); return *this;}
-
+    template<typename FargateProfileNameT = Aws::String>
+    void SetFargateProfileName(FargateProfileNameT&& value) { m_fargateProfileNameHasBeenSet = true; m_fargateProfileName = std::forward<FargateProfileNameT>(value); }
+    template<typename FargateProfileNameT = Aws::String>
+    DeleteFargateProfileRequest& WithFargateProfileName(FargateProfileNameT&& value) { SetFargateProfileName(std::forward<FargateProfileNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterName;

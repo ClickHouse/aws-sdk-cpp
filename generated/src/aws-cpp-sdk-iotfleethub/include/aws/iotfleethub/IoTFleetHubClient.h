@@ -16,31 +16,32 @@ namespace Aws
 namespace IoTFleetHub
 {
   /**
-   * <p>With Fleet Hub for AWS IoT Device Management you can build stand-alone web
-   * applications for monitoring the health of your device fleets.</p> 
-   * <p>Fleet Hub for AWS IoT Device Management is in public preview and is subject
-   * to change.</p> 
+   * <p>With Fleet Hub for IoT Device Management you can build stand-alone web
+   * applications for monitoring the health of your device fleets.</p>
    */
   class AWS_IOTFLEETHUB_API IoTFleetHubClient : public Aws::Client::AWSJsonClient, public Aws::Client::ClientWithAsyncTemplateMethods<IoTFleetHubClient>
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef IoTFleetHubClientConfiguration ClientConfigurationType;
+      typedef IoTFleetHubEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         IoTFleetHubClient(const Aws::IoTFleetHub::IoTFleetHubClientConfiguration& clientConfiguration = Aws::IoTFleetHub::IoTFleetHubClientConfiguration(),
-                          std::shared_ptr<IoTFleetHubEndpointProviderBase> endpointProvider = Aws::MakeShared<IoTFleetHubEndpointProvider>(ALLOCATION_TAG));
+                          std::shared_ptr<IoTFleetHubEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         IoTFleetHubClient(const Aws::Auth::AWSCredentials& credentials,
-                          std::shared_ptr<IoTFleetHubEndpointProviderBase> endpointProvider = Aws::MakeShared<IoTFleetHubEndpointProvider>(ALLOCATION_TAG),
+                          std::shared_ptr<IoTFleetHubEndpointProviderBase> endpointProvider = nullptr,
                           const Aws::IoTFleetHub::IoTFleetHubClientConfiguration& clientConfiguration = Aws::IoTFleetHub::IoTFleetHubClientConfiguration());
 
        /**
@@ -48,7 +49,7 @@ namespace IoTFleetHub
         * the default http client factory will be used
         */
         IoTFleetHubClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                          std::shared_ptr<IoTFleetHubEndpointProviderBase> endpointProvider = Aws::MakeShared<IoTFleetHubEndpointProvider>(ALLOCATION_TAG),
+                          std::shared_ptr<IoTFleetHubEndpointProviderBase> endpointProvider = nullptr,
                           const Aws::IoTFleetHub::IoTFleetHubClientConfiguration& clientConfiguration = Aws::IoTFleetHub::IoTFleetHubClientConfiguration());
 
 
@@ -77,9 +78,15 @@ namespace IoTFleetHub
         virtual ~IoTFleetHubClient();
 
         /**
-         * <p>Creates a Fleet Hub for AWS IoT Device Management web application.</p> 
-         * <p>Fleet Hub for AWS IoT Device Management is in public preview and is subject
-         * to change.</p> <p><h3>See Also:</h3>   <a
+         * <p>Creates a Fleet Hub for IoT Device Management web application.</p> <p>When
+         * creating a Fleet Hub application, you must create an organization instance of
+         * IAM Identity Center if you don't already have one. The Fleet Hub application you
+         * create must also be in the same Amazon Web Services Region of the organization
+         * instance of IAM Identity Center. For more information see <a
+         * href="https://docs.aws.amazon.com/singlesignon/latest/userguide/get-set-up-for-idc.html">Enabling
+         * IAM Identity Center</a> and <a
+         * href="https://docs.aws.amazon.com/singlesignon/latest/userguide/organization-instances-identity-center.html">Organization
+         * instances of IAM Identity Center</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotfleethub-2020-11-03/CreateApplication">AWS
          * API Reference</a></p>
          */
@@ -104,9 +111,8 @@ namespace IoTFleetHub
         }
 
         /**
-         * <p>Deletes a Fleet Hub for AWS IoT Device Management web application.</p> 
-         * <p>Fleet Hub for AWS IoT Device Management is in public preview and is subject
-         * to change.</p> <p><h3>See Also:</h3>   <a
+         * <p>Deletes a Fleet Hub for IoT Device Management web application.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotfleethub-2020-11-03/DeleteApplication">AWS
          * API Reference</a></p>
          */
@@ -131,9 +137,8 @@ namespace IoTFleetHub
         }
 
         /**
-         * <p>Gets information about a Fleet Hub for AWS IoT Device Management web
-         * application.</p>  <p>Fleet Hub for AWS IoT Device Management is in public
-         * preview and is subject to change.</p> <p><h3>See Also:</h3>   <a
+         * <p>Gets information about a Fleet Hub for IoT Device Management web
+         * application.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotfleethub-2020-11-03/DescribeApplication">AWS
          * API Reference</a></p>
          */
@@ -158,19 +163,18 @@ namespace IoTFleetHub
         }
 
         /**
-         * <p>Gets a list of Fleet Hub for AWS IoT Device Management web applications for
-         * the current account.</p>  <p>Fleet Hub for AWS IoT Device Management is in
-         * public preview and is subject to change.</p> <p><h3>See Also:</h3>   <a
+         * <p>Gets a list of Fleet Hub for IoT Device Management web applications for the
+         * current account.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotfleethub-2020-11-03/ListApplications">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListApplicationsOutcome ListApplications(const Model::ListApplicationsRequest& request) const;
+        virtual Model::ListApplicationsOutcome ListApplications(const Model::ListApplicationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListApplications that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListApplicationsRequestT = Model::ListApplicationsRequest>
-        Model::ListApplicationsOutcomeCallable ListApplicationsCallable(const ListApplicationsRequestT& request) const
+        Model::ListApplicationsOutcomeCallable ListApplicationsCallable(const ListApplicationsRequestT& request = {}) const
         {
             return SubmitCallable(&IoTFleetHubClient::ListApplications, request);
         }
@@ -179,15 +183,13 @@ namespace IoTFleetHub
          * An Async wrapper for ListApplications that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListApplicationsRequestT = Model::ListApplicationsRequest>
-        void ListApplicationsAsync(const ListApplicationsRequestT& request, const ListApplicationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListApplicationsAsync(const ListApplicationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListApplicationsRequestT& request = {}) const
         {
             return SubmitAsync(&IoTFleetHubClient::ListApplications, request, handler, context);
         }
 
         /**
-         * <p>Lists the tags for the specified resource.</p>  <p>Fleet Hub for AWS
-         * IoT Device Management is in public preview and is subject to change.</p>
-         * <p><h3>See Also:</h3>   <a
+         * <p>Lists the tags for the specified resource.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotfleethub-2020-11-03/ListTagsForResource">AWS
          * API Reference</a></p>
          */
@@ -213,9 +215,7 @@ namespace IoTFleetHub
 
         /**
          * <p>Adds to or modifies the tags of the specified resource. Tags are metadata
-         * which can be used to manage a resource.</p>  <p>Fleet Hub for AWS IoT
-         * Device Management is in public preview and is subject to change.</p>
-         * <p><h3>See Also:</h3>   <a
+         * which can be used to manage a resource.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotfleethub-2020-11-03/TagResource">AWS
          * API Reference</a></p>
          */
@@ -240,9 +240,8 @@ namespace IoTFleetHub
         }
 
         /**
-         * <p>Removes the specified tags (metadata) from the resource.</p>  <p>Fleet
-         * Hub for AWS IoT Device Management is in public preview and is subject to
-         * change.</p> <p><h3>See Also:</h3>   <a
+         * <p>Removes the specified tags (metadata) from the resource.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotfleethub-2020-11-03/UntagResource">AWS
          * API Reference</a></p>
          */
@@ -267,9 +266,8 @@ namespace IoTFleetHub
         }
 
         /**
-         * <p>Updates information about a Fleet Hub for a AWS IoT Device Management web
-         * application.</p>  <p>Fleet Hub for AWS IoT Device Management is in public
-         * preview and is subject to change.</p> <p><h3>See Also:</h3>   <a
+         * <p>Updates information about a Fleet Hub for IoT Device Management web
+         * application.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotfleethub-2020-11-03/UpdateApplication">AWS
          * API Reference</a></p>
          */
@@ -301,7 +299,6 @@ namespace IoTFleetHub
       void init(const IoTFleetHubClientConfiguration& clientConfiguration);
 
       IoTFleetHubClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<IoTFleetHubEndpointProviderBase> m_endpointProvider;
   };
 

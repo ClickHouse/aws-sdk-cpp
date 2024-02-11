@@ -37,316 +37,109 @@ namespace Model
   class LabelingJobSummary
   {
   public:
-    AWS_SAGEMAKER_API LabelingJobSummary();
+    AWS_SAGEMAKER_API LabelingJobSummary() = default;
     AWS_SAGEMAKER_API LabelingJobSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API LabelingJobSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the labeling job.</p>
      */
-    inline const Aws::String& GetLabelingJobName() const{ return m_labelingJobName; }
-
-    /**
-     * <p>The name of the labeling job.</p>
-     */
+    inline const Aws::String& GetLabelingJobName() const { return m_labelingJobName; }
     inline bool LabelingJobNameHasBeenSet() const { return m_labelingJobNameHasBeenSet; }
+    template<typename LabelingJobNameT = Aws::String>
+    void SetLabelingJobName(LabelingJobNameT&& value) { m_labelingJobNameHasBeenSet = true; m_labelingJobName = std::forward<LabelingJobNameT>(value); }
+    template<typename LabelingJobNameT = Aws::String>
+    LabelingJobSummary& WithLabelingJobName(LabelingJobNameT&& value) { SetLabelingJobName(std::forward<LabelingJobNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the labeling job.</p>
-     */
-    inline void SetLabelingJobName(const Aws::String& value) { m_labelingJobNameHasBeenSet = true; m_labelingJobName = value; }
-
-    /**
-     * <p>The name of the labeling job.</p>
-     */
-    inline void SetLabelingJobName(Aws::String&& value) { m_labelingJobNameHasBeenSet = true; m_labelingJobName = std::move(value); }
-
-    /**
-     * <p>The name of the labeling job.</p>
-     */
-    inline void SetLabelingJobName(const char* value) { m_labelingJobNameHasBeenSet = true; m_labelingJobName.assign(value); }
-
-    /**
-     * <p>The name of the labeling job.</p>
-     */
-    inline LabelingJobSummary& WithLabelingJobName(const Aws::String& value) { SetLabelingJobName(value); return *this;}
-
-    /**
-     * <p>The name of the labeling job.</p>
-     */
-    inline LabelingJobSummary& WithLabelingJobName(Aws::String&& value) { SetLabelingJobName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the labeling job.</p>
-     */
-    inline LabelingJobSummary& WithLabelingJobName(const char* value) { SetLabelingJobName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) assigned to the labeling job when it was
      * created.</p>
      */
-    inline const Aws::String& GetLabelingJobArn() const{ return m_labelingJobArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) assigned to the labeling job when it was
-     * created.</p>
-     */
+    inline const Aws::String& GetLabelingJobArn() const { return m_labelingJobArn; }
     inline bool LabelingJobArnHasBeenSet() const { return m_labelingJobArnHasBeenSet; }
+    template<typename LabelingJobArnT = Aws::String>
+    void SetLabelingJobArn(LabelingJobArnT&& value) { m_labelingJobArnHasBeenSet = true; m_labelingJobArn = std::forward<LabelingJobArnT>(value); }
+    template<typename LabelingJobArnT = Aws::String>
+    LabelingJobSummary& WithLabelingJobArn(LabelingJobArnT&& value) { SetLabelingJobArn(std::forward<LabelingJobArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) assigned to the labeling job when it was
-     * created.</p>
-     */
-    inline void SetLabelingJobArn(const Aws::String& value) { m_labelingJobArnHasBeenSet = true; m_labelingJobArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) assigned to the labeling job when it was
-     * created.</p>
-     */
-    inline void SetLabelingJobArn(Aws::String&& value) { m_labelingJobArnHasBeenSet = true; m_labelingJobArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) assigned to the labeling job when it was
-     * created.</p>
-     */
-    inline void SetLabelingJobArn(const char* value) { m_labelingJobArnHasBeenSet = true; m_labelingJobArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) assigned to the labeling job when it was
-     * created.</p>
-     */
-    inline LabelingJobSummary& WithLabelingJobArn(const Aws::String& value) { SetLabelingJobArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) assigned to the labeling job when it was
-     * created.</p>
-     */
-    inline LabelingJobSummary& WithLabelingJobArn(Aws::String&& value) { SetLabelingJobArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) assigned to the labeling job when it was
-     * created.</p>
-     */
-    inline LabelingJobSummary& WithLabelingJobArn(const char* value) { SetLabelingJobArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the job was created (timestamp).</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>The date and time that the job was created (timestamp).</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
     inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    LabelingJobSummary& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the job was created (timestamp).</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
-
-    /**
-     * <p>The date and time that the job was created (timestamp).</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
-
-    /**
-     * <p>The date and time that the job was created (timestamp).</p>
-     */
-    inline LabelingJobSummary& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The date and time that the job was created (timestamp).</p>
-     */
-    inline LabelingJobSummary& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the job was last modified (timestamp).</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModifiedTime() const{ return m_lastModifiedTime; }
-
-    /**
-     * <p>The date and time that the job was last modified (timestamp).</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastModifiedTime() const { return m_lastModifiedTime; }
     inline bool LastModifiedTimeHasBeenSet() const { return m_lastModifiedTimeHasBeenSet; }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    void SetLastModifiedTime(LastModifiedTimeT&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::forward<LastModifiedTimeT>(value); }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    LabelingJobSummary& WithLastModifiedTime(LastModifiedTimeT&& value) { SetLastModifiedTime(std::forward<LastModifiedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the job was last modified (timestamp).</p>
-     */
-    inline void SetLastModifiedTime(const Aws::Utils::DateTime& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = value; }
-
-    /**
-     * <p>The date and time that the job was last modified (timestamp).</p>
-     */
-    inline void SetLastModifiedTime(Aws::Utils::DateTime&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::move(value); }
-
-    /**
-     * <p>The date and time that the job was last modified (timestamp).</p>
-     */
-    inline LabelingJobSummary& WithLastModifiedTime(const Aws::Utils::DateTime& value) { SetLastModifiedTime(value); return *this;}
-
-    /**
-     * <p>The date and time that the job was last modified (timestamp).</p>
-     */
-    inline LabelingJobSummary& WithLastModifiedTime(Aws::Utils::DateTime&& value) { SetLastModifiedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the labeling job. </p>
      */
-    inline const LabelingJobStatus& GetLabelingJobStatus() const{ return m_labelingJobStatus; }
-
-    /**
-     * <p>The current status of the labeling job. </p>
-     */
+    inline LabelingJobStatus GetLabelingJobStatus() const { return m_labelingJobStatus; }
     inline bool LabelingJobStatusHasBeenSet() const { return m_labelingJobStatusHasBeenSet; }
+    inline void SetLabelingJobStatus(LabelingJobStatus value) { m_labelingJobStatusHasBeenSet = true; m_labelingJobStatus = value; }
+    inline LabelingJobSummary& WithLabelingJobStatus(LabelingJobStatus value) { SetLabelingJobStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the labeling job. </p>
-     */
-    inline void SetLabelingJobStatus(const LabelingJobStatus& value) { m_labelingJobStatusHasBeenSet = true; m_labelingJobStatus = value; }
-
-    /**
-     * <p>The current status of the labeling job. </p>
-     */
-    inline void SetLabelingJobStatus(LabelingJobStatus&& value) { m_labelingJobStatusHasBeenSet = true; m_labelingJobStatus = std::move(value); }
-
-    /**
-     * <p>The current status of the labeling job. </p>
-     */
-    inline LabelingJobSummary& WithLabelingJobStatus(const LabelingJobStatus& value) { SetLabelingJobStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the labeling job. </p>
-     */
-    inline LabelingJobSummary& WithLabelingJobStatus(LabelingJobStatus&& value) { SetLabelingJobStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Counts showing the progress of the labeling job.</p>
      */
-    inline const LabelCounters& GetLabelCounters() const{ return m_labelCounters; }
-
-    /**
-     * <p>Counts showing the progress of the labeling job.</p>
-     */
+    inline const LabelCounters& GetLabelCounters() const { return m_labelCounters; }
     inline bool LabelCountersHasBeenSet() const { return m_labelCountersHasBeenSet; }
+    template<typename LabelCountersT = LabelCounters>
+    void SetLabelCounters(LabelCountersT&& value) { m_labelCountersHasBeenSet = true; m_labelCounters = std::forward<LabelCountersT>(value); }
+    template<typename LabelCountersT = LabelCounters>
+    LabelingJobSummary& WithLabelCounters(LabelCountersT&& value) { SetLabelCounters(std::forward<LabelCountersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Counts showing the progress of the labeling job.</p>
-     */
-    inline void SetLabelCounters(const LabelCounters& value) { m_labelCountersHasBeenSet = true; m_labelCounters = value; }
-
-    /**
-     * <p>Counts showing the progress of the labeling job.</p>
-     */
-    inline void SetLabelCounters(LabelCounters&& value) { m_labelCountersHasBeenSet = true; m_labelCounters = std::move(value); }
-
-    /**
-     * <p>Counts showing the progress of the labeling job.</p>
-     */
-    inline LabelingJobSummary& WithLabelCounters(const LabelCounters& value) { SetLabelCounters(value); return *this;}
-
-    /**
-     * <p>Counts showing the progress of the labeling job.</p>
-     */
-    inline LabelingJobSummary& WithLabelCounters(LabelCounters&& value) { SetLabelCounters(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the work team assigned to the job.</p>
      */
-    inline const Aws::String& GetWorkteamArn() const{ return m_workteamArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the work team assigned to the job.</p>
-     */
+    inline const Aws::String& GetWorkteamArn() const { return m_workteamArn; }
     inline bool WorkteamArnHasBeenSet() const { return m_workteamArnHasBeenSet; }
+    template<typename WorkteamArnT = Aws::String>
+    void SetWorkteamArn(WorkteamArnT&& value) { m_workteamArnHasBeenSet = true; m_workteamArn = std::forward<WorkteamArnT>(value); }
+    template<typename WorkteamArnT = Aws::String>
+    LabelingJobSummary& WithWorkteamArn(WorkteamArnT&& value) { SetWorkteamArn(std::forward<WorkteamArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the work team assigned to the job.</p>
-     */
-    inline void SetWorkteamArn(const Aws::String& value) { m_workteamArnHasBeenSet = true; m_workteamArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the work team assigned to the job.</p>
-     */
-    inline void SetWorkteamArn(Aws::String&& value) { m_workteamArnHasBeenSet = true; m_workteamArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the work team assigned to the job.</p>
-     */
-    inline void SetWorkteamArn(const char* value) { m_workteamArnHasBeenSet = true; m_workteamArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the work team assigned to the job.</p>
-     */
-    inline LabelingJobSummary& WithWorkteamArn(const Aws::String& value) { SetWorkteamArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the work team assigned to the job.</p>
-     */
-    inline LabelingJobSummary& WithWorkteamArn(Aws::String&& value) { SetWorkteamArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the work team assigned to the job.</p>
-     */
-    inline LabelingJobSummary& WithWorkteamArn(const char* value) { SetWorkteamArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of a Lambda function. The function is run
      * before each data object is sent to a worker.</p>
      */
-    inline const Aws::String& GetPreHumanTaskLambdaArn() const{ return m_preHumanTaskLambdaArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a Lambda function. The function is run
-     * before each data object is sent to a worker.</p>
-     */
+    inline const Aws::String& GetPreHumanTaskLambdaArn() const { return m_preHumanTaskLambdaArn; }
     inline bool PreHumanTaskLambdaArnHasBeenSet() const { return m_preHumanTaskLambdaArnHasBeenSet; }
+    template<typename PreHumanTaskLambdaArnT = Aws::String>
+    void SetPreHumanTaskLambdaArn(PreHumanTaskLambdaArnT&& value) { m_preHumanTaskLambdaArnHasBeenSet = true; m_preHumanTaskLambdaArn = std::forward<PreHumanTaskLambdaArnT>(value); }
+    template<typename PreHumanTaskLambdaArnT = Aws::String>
+    LabelingJobSummary& WithPreHumanTaskLambdaArn(PreHumanTaskLambdaArnT&& value) { SetPreHumanTaskLambdaArn(std::forward<PreHumanTaskLambdaArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of a Lambda function. The function is run
-     * before each data object is sent to a worker.</p>
-     */
-    inline void SetPreHumanTaskLambdaArn(const Aws::String& value) { m_preHumanTaskLambdaArnHasBeenSet = true; m_preHumanTaskLambdaArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a Lambda function. The function is run
-     * before each data object is sent to a worker.</p>
-     */
-    inline void SetPreHumanTaskLambdaArn(Aws::String&& value) { m_preHumanTaskLambdaArnHasBeenSet = true; m_preHumanTaskLambdaArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a Lambda function. The function is run
-     * before each data object is sent to a worker.</p>
-     */
-    inline void SetPreHumanTaskLambdaArn(const char* value) { m_preHumanTaskLambdaArnHasBeenSet = true; m_preHumanTaskLambdaArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a Lambda function. The function is run
-     * before each data object is sent to a worker.</p>
-     */
-    inline LabelingJobSummary& WithPreHumanTaskLambdaArn(const Aws::String& value) { SetPreHumanTaskLambdaArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a Lambda function. The function is run
-     * before each data object is sent to a worker.</p>
-     */
-    inline LabelingJobSummary& WithPreHumanTaskLambdaArn(Aws::String&& value) { SetPreHumanTaskLambdaArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a Lambda function. The function is run
-     * before each data object is sent to a worker.</p>
-     */
-    inline LabelingJobSummary& WithPreHumanTaskLambdaArn(const char* value) { SetPreHumanTaskLambdaArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Lambda function used to consolidate the
      * annotations from individual workers into a label for a data object. For more
@@ -354,182 +147,50 @@ namespace Model
      * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html">Annotation
      * Consolidation</a>.</p>
      */
-    inline const Aws::String& GetAnnotationConsolidationLambdaArn() const{ return m_annotationConsolidationLambdaArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function used to consolidate the
-     * annotations from individual workers into a label for a data object. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html">Annotation
-     * Consolidation</a>.</p>
-     */
+    inline const Aws::String& GetAnnotationConsolidationLambdaArn() const { return m_annotationConsolidationLambdaArn; }
     inline bool AnnotationConsolidationLambdaArnHasBeenSet() const { return m_annotationConsolidationLambdaArnHasBeenSet; }
+    template<typename AnnotationConsolidationLambdaArnT = Aws::String>
+    void SetAnnotationConsolidationLambdaArn(AnnotationConsolidationLambdaArnT&& value) { m_annotationConsolidationLambdaArnHasBeenSet = true; m_annotationConsolidationLambdaArn = std::forward<AnnotationConsolidationLambdaArnT>(value); }
+    template<typename AnnotationConsolidationLambdaArnT = Aws::String>
+    LabelingJobSummary& WithAnnotationConsolidationLambdaArn(AnnotationConsolidationLambdaArnT&& value) { SetAnnotationConsolidationLambdaArn(std::forward<AnnotationConsolidationLambdaArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function used to consolidate the
-     * annotations from individual workers into a label for a data object. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html">Annotation
-     * Consolidation</a>.</p>
-     */
-    inline void SetAnnotationConsolidationLambdaArn(const Aws::String& value) { m_annotationConsolidationLambdaArnHasBeenSet = true; m_annotationConsolidationLambdaArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function used to consolidate the
-     * annotations from individual workers into a label for a data object. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html">Annotation
-     * Consolidation</a>.</p>
-     */
-    inline void SetAnnotationConsolidationLambdaArn(Aws::String&& value) { m_annotationConsolidationLambdaArnHasBeenSet = true; m_annotationConsolidationLambdaArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function used to consolidate the
-     * annotations from individual workers into a label for a data object. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html">Annotation
-     * Consolidation</a>.</p>
-     */
-    inline void SetAnnotationConsolidationLambdaArn(const char* value) { m_annotationConsolidationLambdaArnHasBeenSet = true; m_annotationConsolidationLambdaArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function used to consolidate the
-     * annotations from individual workers into a label for a data object. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html">Annotation
-     * Consolidation</a>.</p>
-     */
-    inline LabelingJobSummary& WithAnnotationConsolidationLambdaArn(const Aws::String& value) { SetAnnotationConsolidationLambdaArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function used to consolidate the
-     * annotations from individual workers into a label for a data object. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html">Annotation
-     * Consolidation</a>.</p>
-     */
-    inline LabelingJobSummary& WithAnnotationConsolidationLambdaArn(Aws::String&& value) { SetAnnotationConsolidationLambdaArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function used to consolidate the
-     * annotations from individual workers into a label for a data object. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html">Annotation
-     * Consolidation</a>.</p>
-     */
-    inline LabelingJobSummary& WithAnnotationConsolidationLambdaArn(const char* value) { SetAnnotationConsolidationLambdaArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If the <code>LabelingJobStatus</code> field is <code>Failed</code>, this
      * field contains a description of the error.</p>
      */
-    inline const Aws::String& GetFailureReason() const{ return m_failureReason; }
-
-    /**
-     * <p>If the <code>LabelingJobStatus</code> field is <code>Failed</code>, this
-     * field contains a description of the error.</p>
-     */
+    inline const Aws::String& GetFailureReason() const { return m_failureReason; }
     inline bool FailureReasonHasBeenSet() const { return m_failureReasonHasBeenSet; }
+    template<typename FailureReasonT = Aws::String>
+    void SetFailureReason(FailureReasonT&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::forward<FailureReasonT>(value); }
+    template<typename FailureReasonT = Aws::String>
+    LabelingJobSummary& WithFailureReason(FailureReasonT&& value) { SetFailureReason(std::forward<FailureReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the <code>LabelingJobStatus</code> field is <code>Failed</code>, this
-     * field contains a description of the error.</p>
-     */
-    inline void SetFailureReason(const Aws::String& value) { m_failureReasonHasBeenSet = true; m_failureReason = value; }
-
-    /**
-     * <p>If the <code>LabelingJobStatus</code> field is <code>Failed</code>, this
-     * field contains a description of the error.</p>
-     */
-    inline void SetFailureReason(Aws::String&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::move(value); }
-
-    /**
-     * <p>If the <code>LabelingJobStatus</code> field is <code>Failed</code>, this
-     * field contains a description of the error.</p>
-     */
-    inline void SetFailureReason(const char* value) { m_failureReasonHasBeenSet = true; m_failureReason.assign(value); }
-
-    /**
-     * <p>If the <code>LabelingJobStatus</code> field is <code>Failed</code>, this
-     * field contains a description of the error.</p>
-     */
-    inline LabelingJobSummary& WithFailureReason(const Aws::String& value) { SetFailureReason(value); return *this;}
-
-    /**
-     * <p>If the <code>LabelingJobStatus</code> field is <code>Failed</code>, this
-     * field contains a description of the error.</p>
-     */
-    inline LabelingJobSummary& WithFailureReason(Aws::String&& value) { SetFailureReason(std::move(value)); return *this;}
-
-    /**
-     * <p>If the <code>LabelingJobStatus</code> field is <code>Failed</code>, this
-     * field contains a description of the error.</p>
-     */
-    inline LabelingJobSummary& WithFailureReason(const char* value) { SetFailureReason(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The location of the output produced by the labeling job.</p>
      */
-    inline const LabelingJobOutput& GetLabelingJobOutput() const{ return m_labelingJobOutput; }
-
-    /**
-     * <p>The location of the output produced by the labeling job.</p>
-     */
+    inline const LabelingJobOutput& GetLabelingJobOutput() const { return m_labelingJobOutput; }
     inline bool LabelingJobOutputHasBeenSet() const { return m_labelingJobOutputHasBeenSet; }
+    template<typename LabelingJobOutputT = LabelingJobOutput>
+    void SetLabelingJobOutput(LabelingJobOutputT&& value) { m_labelingJobOutputHasBeenSet = true; m_labelingJobOutput = std::forward<LabelingJobOutputT>(value); }
+    template<typename LabelingJobOutputT = LabelingJobOutput>
+    LabelingJobSummary& WithLabelingJobOutput(LabelingJobOutputT&& value) { SetLabelingJobOutput(std::forward<LabelingJobOutputT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The location of the output produced by the labeling job.</p>
-     */
-    inline void SetLabelingJobOutput(const LabelingJobOutput& value) { m_labelingJobOutputHasBeenSet = true; m_labelingJobOutput = value; }
-
-    /**
-     * <p>The location of the output produced by the labeling job.</p>
-     */
-    inline void SetLabelingJobOutput(LabelingJobOutput&& value) { m_labelingJobOutputHasBeenSet = true; m_labelingJobOutput = std::move(value); }
-
-    /**
-     * <p>The location of the output produced by the labeling job.</p>
-     */
-    inline LabelingJobSummary& WithLabelingJobOutput(const LabelingJobOutput& value) { SetLabelingJobOutput(value); return *this;}
-
-    /**
-     * <p>The location of the output produced by the labeling job.</p>
-     */
-    inline LabelingJobSummary& WithLabelingJobOutput(LabelingJobOutput&& value) { SetLabelingJobOutput(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Input configuration for the labeling job.</p>
      */
-    inline const LabelingJobInputConfig& GetInputConfig() const{ return m_inputConfig; }
-
-    /**
-     * <p>Input configuration for the labeling job.</p>
-     */
+    inline const LabelingJobInputConfig& GetInputConfig() const { return m_inputConfig; }
     inline bool InputConfigHasBeenSet() const { return m_inputConfigHasBeenSet; }
-
-    /**
-     * <p>Input configuration for the labeling job.</p>
-     */
-    inline void SetInputConfig(const LabelingJobInputConfig& value) { m_inputConfigHasBeenSet = true; m_inputConfig = value; }
-
-    /**
-     * <p>Input configuration for the labeling job.</p>
-     */
-    inline void SetInputConfig(LabelingJobInputConfig&& value) { m_inputConfigHasBeenSet = true; m_inputConfig = std::move(value); }
-
-    /**
-     * <p>Input configuration for the labeling job.</p>
-     */
-    inline LabelingJobSummary& WithInputConfig(const LabelingJobInputConfig& value) { SetInputConfig(value); return *this;}
-
-    /**
-     * <p>Input configuration for the labeling job.</p>
-     */
-    inline LabelingJobSummary& WithInputConfig(LabelingJobInputConfig&& value) { SetInputConfig(std::move(value)); return *this;}
-
+    template<typename InputConfigT = LabelingJobInputConfig>
+    void SetInputConfig(InputConfigT&& value) { m_inputConfigHasBeenSet = true; m_inputConfig = std::forward<InputConfigT>(value); }
+    template<typename InputConfigT = LabelingJobInputConfig>
+    LabelingJobSummary& WithInputConfig(InputConfigT&& value) { SetInputConfig(std::forward<InputConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_labelingJobName;
@@ -538,13 +199,13 @@ namespace Model
     Aws::String m_labelingJobArn;
     bool m_labelingJobArnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
     bool m_creationTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModifiedTime;
+    Aws::Utils::DateTime m_lastModifiedTime{};
     bool m_lastModifiedTimeHasBeenSet = false;
 
-    LabelingJobStatus m_labelingJobStatus;
+    LabelingJobStatus m_labelingJobStatus{LabelingJobStatus::NOT_SET};
     bool m_labelingJobStatusHasBeenSet = false;
 
     LabelCounters m_labelCounters;

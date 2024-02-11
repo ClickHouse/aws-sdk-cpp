@@ -24,7 +24,7 @@ namespace Model
 {
 
   /**
-   * <p>Information about the S3 bucket where you saved your unsigned
+   * <p>Information about the Amazon S3 bucket where you saved your unsigned
    * code.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/signer-2017-08-25/S3Source">AWS API
    * Reference</a></p>
@@ -32,134 +32,47 @@ namespace Model
   class S3Source
   {
   public:
-    AWS_SIGNER_API S3Source();
+    AWS_SIGNER_API S3Source() = default;
     AWS_SIGNER_API S3Source(Aws::Utils::Json::JsonView jsonValue);
     AWS_SIGNER_API S3Source& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SIGNER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Name of the S3 bucket.</p>
      */
-    inline const Aws::String& GetBucketName() const{ return m_bucketName; }
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
+    inline const Aws::String& GetBucketName() const { return m_bucketName; }
     inline bool BucketNameHasBeenSet() const { return m_bucketNameHasBeenSet; }
+    template<typename BucketNameT = Aws::String>
+    void SetBucketName(BucketNameT&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::forward<BucketNameT>(value); }
+    template<typename BucketNameT = Aws::String>
+    S3Source& WithBucketName(BucketNameT&& value) { SetBucketName(std::forward<BucketNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline void SetBucketName(const Aws::String& value) { m_bucketNameHasBeenSet = true; m_bucketName = value; }
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline void SetBucketName(Aws::String&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::move(value); }
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline void SetBucketName(const char* value) { m_bucketNameHasBeenSet = true; m_bucketName.assign(value); }
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline S3Source& WithBucketName(const Aws::String& value) { SetBucketName(value); return *this;}
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline S3Source& WithBucketName(Aws::String&& value) { SetBucketName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline S3Source& WithBucketName(const char* value) { SetBucketName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Key name of the bucket object that contains your unsigned code.</p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>Key name of the bucket object that contains your unsigned code.</p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    S3Source& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Key name of the bucket object that contains your unsigned code.</p>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>Key name of the bucket object that contains your unsigned code.</p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>Key name of the bucket object that contains your unsigned code.</p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>Key name of the bucket object that contains your unsigned code.</p>
-     */
-    inline S3Source& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>Key name of the bucket object that contains your unsigned code.</p>
-     */
-    inline S3Source& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>Key name of the bucket object that contains your unsigned code.</p>
-     */
-    inline S3Source& WithKey(const char* value) { SetKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Version of your source image in your version enabled S3 bucket.</p>
      */
-    inline const Aws::String& GetVersion() const{ return m_version; }
-
-    /**
-     * <p>Version of your source image in your version enabled S3 bucket.</p>
-     */
+    inline const Aws::String& GetVersion() const { return m_version; }
     inline bool VersionHasBeenSet() const { return m_versionHasBeenSet; }
-
-    /**
-     * <p>Version of your source image in your version enabled S3 bucket.</p>
-     */
-    inline void SetVersion(const Aws::String& value) { m_versionHasBeenSet = true; m_version = value; }
-
-    /**
-     * <p>Version of your source image in your version enabled S3 bucket.</p>
-     */
-    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
-
-    /**
-     * <p>Version of your source image in your version enabled S3 bucket.</p>
-     */
-    inline void SetVersion(const char* value) { m_versionHasBeenSet = true; m_version.assign(value); }
-
-    /**
-     * <p>Version of your source image in your version enabled S3 bucket.</p>
-     */
-    inline S3Source& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
-
-    /**
-     * <p>Version of your source image in your version enabled S3 bucket.</p>
-     */
-    inline S3Source& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>Version of your source image in your version enabled S3 bucket.</p>
-     */
-    inline S3Source& WithVersion(const char* value) { SetVersion(value); return *this;}
-
+    template<typename VersionT = Aws::String>
+    void SetVersion(VersionT&& value) { m_versionHasBeenSet = true; m_version = std::forward<VersionT>(value); }
+    template<typename VersionT = Aws::String>
+    S3Source& WithVersion(VersionT&& value) { SetVersion(std::forward<VersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucketName;

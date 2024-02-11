@@ -28,63 +28,53 @@ namespace Model
   class GetAccessPointConfigurationForObjectLambdaResult
   {
   public:
-    AWS_S3CONTROL_API GetAccessPointConfigurationForObjectLambdaResult();
+    AWS_S3CONTROL_API GetAccessPointConfigurationForObjectLambdaResult() = default;
     AWS_S3CONTROL_API GetAccessPointConfigurationForObjectLambdaResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_S3CONTROL_API GetAccessPointConfigurationForObjectLambdaResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>Object Lambda Access Point configuration document.</p>
      */
-    inline const ObjectLambdaConfiguration& GetConfiguration() const{ return m_configuration; }
+    inline const ObjectLambdaConfiguration& GetConfiguration() const { return m_configuration; }
+    template<typename ConfigurationT = ObjectLambdaConfiguration>
+    void SetConfiguration(ConfigurationT&& value) { m_configurationHasBeenSet = true; m_configuration = std::forward<ConfigurationT>(value); }
+    template<typename ConfigurationT = ObjectLambdaConfiguration>
+    GetAccessPointConfigurationForObjectLambdaResult& WithConfiguration(ConfigurationT&& value) { SetConfiguration(std::forward<ConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Object Lambda Access Point configuration document.</p>
+     * AWS Request Id value
      */
-    inline void SetConfiguration(const ObjectLambdaConfiguration& value) { m_configuration = value; }
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetAccessPointConfigurationForObjectLambdaResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Object Lambda Access Point configuration document.</p>
+     * x-amz-id-2 header value, also known as Host Id
      */
-    inline void SetConfiguration(ObjectLambdaConfiguration&& value) { m_configuration = std::move(value); }
-
-    /**
-     * <p>Object Lambda Access Point configuration document.</p>
-     */
-    inline GetAccessPointConfigurationForObjectLambdaResult& WithConfiguration(const ObjectLambdaConfiguration& value) { SetConfiguration(value); return *this;}
-
-    /**
-     * <p>Object Lambda Access Point configuration document.</p>
-     */
-    inline GetAccessPointConfigurationForObjectLambdaResult& WithConfiguration(ObjectLambdaConfiguration&& value) { SetConfiguration(std::move(value)); return *this;}
-
-
-    
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetAccessPointConfigurationForObjectLambdaResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetAccessPointConfigurationForObjectLambdaResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetAccessPointConfigurationForObjectLambdaResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetHostId() const { return m_hostId; }
+    template<typename HostIdT = Aws::String>
+    void SetHostId(HostIdT&& value) { m_hostIdHasBeenSet = true; m_hostId = std::forward<HostIdT>(value); }
+    template<typename HostIdT = Aws::String>
+    GetAccessPointConfigurationForObjectLambdaResult& WithHostId(HostIdT&& value) { SetHostId(std::forward<HostIdT>(value)); return *this;}
+    ///@}
   private:
 
     ObjectLambdaConfiguration m_configuration;
+    bool m_configurationHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
+
+    Aws::String m_hostId;
+    bool m_hostIdHasBeenSet = false;
   };
 
 } // namespace Model

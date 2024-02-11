@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-GetInstanceResult::GetInstanceResult()
-{
-}
-
 GetInstanceResult::GetInstanceResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,18 +25,23 @@ GetInstanceResult::GetInstanceResult(const Aws::AmazonWebServiceResult<JsonValue
 GetInstanceResult& GetInstanceResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
+  if(jsonValue.ValueExists("ResourceOwner"))
+  {
+    m_resourceOwner = jsonValue.GetString("ResourceOwner");
+    m_resourceOwnerHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("Instance"))
   {
     m_instance = jsonValue.GetObject("Instance");
-
+    m_instanceHasBeenSet = true;
   }
-
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

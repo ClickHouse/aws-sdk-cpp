@@ -22,7 +22,7 @@ namespace Model
   class BatchUpdateDetectorRequest : public IoTEventsDataRequest
   {
   public:
-    AWS_IOTEVENTSDATA_API BatchUpdateDetectorRequest();
+    AWS_IOTEVENTSDATA_API BatchUpdateDetectorRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,54 +33,20 @@ namespace Model
     AWS_IOTEVENTSDATA_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The list of detectors (instances) to update, along with the values to
      * update.</p>
      */
-    inline const Aws::Vector<UpdateDetectorRequest>& GetDetectors() const{ return m_detectors; }
-
-    /**
-     * <p>The list of detectors (instances) to update, along with the values to
-     * update.</p>
-     */
+    inline const Aws::Vector<UpdateDetectorRequest>& GetDetectors() const { return m_detectors; }
     inline bool DetectorsHasBeenSet() const { return m_detectorsHasBeenSet; }
-
-    /**
-     * <p>The list of detectors (instances) to update, along with the values to
-     * update.</p>
-     */
-    inline void SetDetectors(const Aws::Vector<UpdateDetectorRequest>& value) { m_detectorsHasBeenSet = true; m_detectors = value; }
-
-    /**
-     * <p>The list of detectors (instances) to update, along with the values to
-     * update.</p>
-     */
-    inline void SetDetectors(Aws::Vector<UpdateDetectorRequest>&& value) { m_detectorsHasBeenSet = true; m_detectors = std::move(value); }
-
-    /**
-     * <p>The list of detectors (instances) to update, along with the values to
-     * update.</p>
-     */
-    inline BatchUpdateDetectorRequest& WithDetectors(const Aws::Vector<UpdateDetectorRequest>& value) { SetDetectors(value); return *this;}
-
-    /**
-     * <p>The list of detectors (instances) to update, along with the values to
-     * update.</p>
-     */
-    inline BatchUpdateDetectorRequest& WithDetectors(Aws::Vector<UpdateDetectorRequest>&& value) { SetDetectors(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of detectors (instances) to update, along with the values to
-     * update.</p>
-     */
-    inline BatchUpdateDetectorRequest& AddDetectors(const UpdateDetectorRequest& value) { m_detectorsHasBeenSet = true; m_detectors.push_back(value); return *this; }
-
-    /**
-     * <p>The list of detectors (instances) to update, along with the values to
-     * update.</p>
-     */
-    inline BatchUpdateDetectorRequest& AddDetectors(UpdateDetectorRequest&& value) { m_detectorsHasBeenSet = true; m_detectors.push_back(std::move(value)); return *this; }
-
+    template<typename DetectorsT = Aws::Vector<UpdateDetectorRequest>>
+    void SetDetectors(DetectorsT&& value) { m_detectorsHasBeenSet = true; m_detectors = std::forward<DetectorsT>(value); }
+    template<typename DetectorsT = Aws::Vector<UpdateDetectorRequest>>
+    BatchUpdateDetectorRequest& WithDetectors(DetectorsT&& value) { SetDetectors(std::forward<DetectorsT>(value)); return *this;}
+    template<typename DetectorsT = UpdateDetectorRequest>
+    BatchUpdateDetectorRequest& AddDetectors(DetectorsT&& value) { m_detectorsHasBeenSet = true; m_detectors.emplace_back(std::forward<DetectorsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<UpdateDetectorRequest> m_detectors;

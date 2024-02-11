@@ -12,19 +12,6 @@ using namespace Aws::MainframeModernization::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateApplicationRequest::CreateApplicationRequest() : 
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_definitionHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_engineType(EngineType::NOT_SET),
-    m_engineTypeHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateApplicationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -61,6 +48,12 @@ Aws::String CreateApplicationRequest::SerializePayload() const
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
+
+  }
+
+  if(m_roleArnHasBeenSet)
+  {
+   payload.WithString("roleArn", m_roleArn);
 
   }
 

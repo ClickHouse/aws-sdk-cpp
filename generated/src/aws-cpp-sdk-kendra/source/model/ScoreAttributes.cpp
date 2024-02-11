@@ -18,15 +18,7 @@ namespace kendra
 namespace Model
 {
 
-ScoreAttributes::ScoreAttributes() : 
-    m_scoreConfidence(ScoreConfidence::NOT_SET),
-    m_scoreConfidenceHasBeenSet(false)
-{
-}
-
-ScoreAttributes::ScoreAttributes(JsonView jsonValue) : 
-    m_scoreConfidence(ScoreConfidence::NOT_SET),
-    m_scoreConfidenceHasBeenSet(false)
+ScoreAttributes::ScoreAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ScoreAttributes& ScoreAttributes::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ScoreConfidence"))
   {
     m_scoreConfidence = ScoreConfidenceMapper::GetScoreConfidenceForName(jsonValue.GetString("ScoreConfidence"));
-
     m_scoreConfidenceHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -10,15 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ModifyAvailabilityZoneGroupRequest::ModifyAvailabilityZoneGroupRequest() : 
-    m_groupNameHasBeenSet(false),
-    m_optInStatus(ModifyAvailabilityZoneOptInStatus::NOT_SET),
-    m_optInStatusHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String ModifyAvailabilityZoneGroupRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -30,7 +21,7 @@ Aws::String ModifyAvailabilityZoneGroupRequest::SerializePayload() const
 
   if(m_optInStatusHasBeenSet)
   {
-    ss << "OptInStatus=" << ModifyAvailabilityZoneOptInStatusMapper::GetNameForModifyAvailabilityZoneOptInStatus(m_optInStatus) << "&";
+    ss << "OptInStatus=" << StringUtils::URLEncode(ModifyAvailabilityZoneOptInStatusMapper::GetNameForModifyAvailabilityZoneOptInStatus(m_optInStatus)) << "&";
   }
 
   if(m_dryRunHasBeenSet)

@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-GpuDeviceMemoryInfo::GpuDeviceMemoryInfo() : 
-    m_sizeInMiB(0),
-    m_sizeInMiBHasBeenSet(false)
-{
-}
-
-GpuDeviceMemoryInfo::GpuDeviceMemoryInfo(const XmlNode& xmlNode) : 
-    m_sizeInMiB(0),
-    m_sizeInMiBHasBeenSet(false)
+GpuDeviceMemoryInfo::GpuDeviceMemoryInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

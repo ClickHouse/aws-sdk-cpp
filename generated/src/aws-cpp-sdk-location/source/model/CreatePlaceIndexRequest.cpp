@@ -12,28 +12,19 @@ using namespace Aws::LocationService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreatePlaceIndexRequest::CreatePlaceIndexRequest() : 
-    m_dataSourceHasBeenSet(false),
-    m_dataSourceConfigurationHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_indexNameHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreatePlaceIndexRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_dataSourceHasBeenSet)
+  if(m_indexNameHasBeenSet)
   {
-   payload.WithString("DataSource", m_dataSource);
+   payload.WithString("IndexName", m_indexName);
 
   }
 
-  if(m_dataSourceConfigurationHasBeenSet)
+  if(m_dataSourceHasBeenSet)
   {
-   payload.WithObject("DataSourceConfiguration", m_dataSourceConfiguration.Jsonize());
+   payload.WithString("DataSource", m_dataSource);
 
   }
 
@@ -43,9 +34,9 @@ Aws::String CreatePlaceIndexRequest::SerializePayload() const
 
   }
 
-  if(m_indexNameHasBeenSet)
+  if(m_dataSourceConfigurationHasBeenSet)
   {
-   payload.WithString("IndexName", m_indexName);
+   payload.WithObject("DataSourceConfiguration", m_dataSourceConfiguration.Jsonize());
 
   }
 

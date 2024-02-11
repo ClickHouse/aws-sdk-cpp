@@ -10,16 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-CreateBlueGreenDeploymentRequest::CreateBlueGreenDeploymentRequest() : 
-    m_blueGreenDeploymentNameHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_targetEngineVersionHasBeenSet(false),
-    m_targetDBParameterGroupNameHasBeenSet(false),
-    m_targetDBClusterParameterGroupNameHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateBlueGreenDeploymentRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -51,12 +41,49 @@ Aws::String CreateBlueGreenDeploymentRequest::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
     }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
+    }
+  }
+
+  if(m_targetDBInstanceClassHasBeenSet)
+  {
+    ss << "TargetDBInstanceClass=" << StringUtils::URLEncode(m_targetDBInstanceClass.c_str()) << "&";
+  }
+
+  if(m_upgradeTargetStorageConfigHasBeenSet)
+  {
+    ss << "UpgradeTargetStorageConfig=" << std::boolalpha << m_upgradeTargetStorageConfig << "&";
+  }
+
+  if(m_targetIopsHasBeenSet)
+  {
+    ss << "TargetIops=" << m_targetIops << "&";
+  }
+
+  if(m_targetStorageTypeHasBeenSet)
+  {
+    ss << "TargetStorageType=" << StringUtils::URLEncode(m_targetStorageType.c_str()) << "&";
+  }
+
+  if(m_targetAllocatedStorageHasBeenSet)
+  {
+    ss << "TargetAllocatedStorage=" << m_targetAllocatedStorage << "&";
+  }
+
+  if(m_targetStorageThroughputHasBeenSet)
+  {
+    ss << "TargetStorageThroughput=" << m_targetStorageThroughput << "&";
   }
 
   ss << "Version=2014-10-31";

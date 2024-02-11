@@ -12,19 +12,6 @@ using namespace Aws::CleanRooms::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateCollaborationRequest::CreateCollaborationRequest() : 
-    m_membersHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_creatorMemberAbilitiesHasBeenSet(false),
-    m_creatorDisplayNameHasBeenSet(false),
-    m_dataEncryptionMetadataHasBeenSet(false),
-    m_queryLogStatus(CollaborationQueryLogStatus::NOT_SET),
-    m_queryLogStatusHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateCollaborationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -63,6 +50,12 @@ Aws::String CreateCollaborationRequest::SerializePayload() const
 
   }
 
+  if(m_creatorMLMemberAbilitiesHasBeenSet)
+  {
+   payload.WithObject("creatorMLMemberAbilities", m_creatorMLMemberAbilities.Jsonize());
+
+  }
+
   if(m_creatorDisplayNameHasBeenSet)
   {
    payload.WithString("creatorDisplayName", m_creatorDisplayName);
@@ -80,6 +73,11 @@ Aws::String CreateCollaborationRequest::SerializePayload() const
    payload.WithString("queryLogStatus", CollaborationQueryLogStatusMapper::GetNameForCollaborationQueryLogStatus(m_queryLogStatus));
   }
 
+  if(m_jobLogStatusHasBeenSet)
+  {
+   payload.WithString("jobLogStatus", CollaborationJobLogStatusMapper::GetNameForCollaborationJobLogStatus(m_jobLogStatus));
+  }
+
   if(m_tagsHasBeenSet)
   {
    JsonValue tagsJsonMap;
@@ -88,6 +86,28 @@ Aws::String CreateCollaborationRequest::SerializePayload() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_creatorPaymentConfigurationHasBeenSet)
+  {
+   payload.WithObject("creatorPaymentConfiguration", m_creatorPaymentConfiguration.Jsonize());
+
+  }
+
+  if(m_analyticsEngineHasBeenSet)
+  {
+   payload.WithString("analyticsEngine", AnalyticsEngineMapper::GetNameForAnalyticsEngine(m_analyticsEngine));
+  }
+
+  if(m_autoApprovedChangeRequestTypesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> autoApprovedChangeRequestTypesJsonList(m_autoApprovedChangeRequestTypes.size());
+   for(unsigned autoApprovedChangeRequestTypesIndex = 0; autoApprovedChangeRequestTypesIndex < autoApprovedChangeRequestTypesJsonList.GetLength(); ++autoApprovedChangeRequestTypesIndex)
+   {
+     autoApprovedChangeRequestTypesJsonList[autoApprovedChangeRequestTypesIndex].AsString(AutoApprovedChangeTypeMapper::GetNameForAutoApprovedChangeType(m_autoApprovedChangeRequestTypes[autoApprovedChangeRequestTypesIndex]));
+   }
+   payload.WithArray("autoApprovedChangeRequestTypes", std::move(autoApprovedChangeRequestTypesJsonList));
 
   }
 

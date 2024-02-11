@@ -12,20 +12,6 @@ using namespace Aws::LexModelsV2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateBotRequest::UpdateBotRequest() : 
-    m_botIdHasBeenSet(false),
-    m_botNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_dataPrivacyHasBeenSet(false),
-    m_idleSessionTTLInSeconds(0),
-    m_idleSessionTTLInSecondsHasBeenSet(false),
-    m_botType(BotType::NOT_SET),
-    m_botTypeHasBeenSet(false),
-    m_botMembersHasBeenSet(false)
-{
-}
-
 Aws::String UpdateBotRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -73,6 +59,12 @@ Aws::String UpdateBotRequest::SerializePayload() const
      botMembersJsonList[botMembersIndex].AsObject(m_botMembers[botMembersIndex].Jsonize());
    }
    payload.WithArray("botMembers", std::move(botMembersJsonList));
+
+  }
+
+  if(m_errorLogSettingsHasBeenSet)
+  {
+   payload.WithObject("errorLogSettings", m_errorLogSettings.Jsonize());
 
   }
 

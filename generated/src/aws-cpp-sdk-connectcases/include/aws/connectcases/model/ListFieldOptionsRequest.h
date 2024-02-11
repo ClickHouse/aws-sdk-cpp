@@ -26,7 +26,7 @@ namespace Model
   class ListFieldOptionsRequest : public ConnectCasesRequest
   {
   public:
-    AWS_CONNECTCASES_API ListFieldOptionsRequest();
+    AWS_CONNECTCASES_API ListFieldOptionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,212 +39,67 @@ namespace Model
     AWS_CONNECTCASES_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the Cases domain. </p>
      */
-    inline const Aws::String& GetDomainId() const{ return m_domainId; }
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
+    inline const Aws::String& GetDomainId() const { return m_domainId; }
     inline bool DomainIdHasBeenSet() const { return m_domainIdHasBeenSet; }
+    template<typename DomainIdT = Aws::String>
+    void SetDomainId(DomainIdT&& value) { m_domainIdHasBeenSet = true; m_domainId = std::forward<DomainIdT>(value); }
+    template<typename DomainIdT = Aws::String>
+    ListFieldOptionsRequest& WithDomainId(DomainIdT&& value) { SetDomainId(std::forward<DomainIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
-    inline void SetDomainId(const Aws::String& value) { m_domainIdHasBeenSet = true; m_domainId = value; }
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
-    inline void SetDomainId(Aws::String&& value) { m_domainIdHasBeenSet = true; m_domainId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
-    inline void SetDomainId(const char* value) { m_domainIdHasBeenSet = true; m_domainId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
-    inline ListFieldOptionsRequest& WithDomainId(const Aws::String& value) { SetDomainId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
-    inline ListFieldOptionsRequest& WithDomainId(Aws::String&& value) { SetDomainId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
-    inline ListFieldOptionsRequest& WithDomainId(const char* value) { SetDomainId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of a field.</p>
      */
-    inline const Aws::String& GetFieldId() const{ return m_fieldId; }
-
-    /**
-     * <p>The unique identifier of a field.</p>
-     */
+    inline const Aws::String& GetFieldId() const { return m_fieldId; }
     inline bool FieldIdHasBeenSet() const { return m_fieldIdHasBeenSet; }
+    template<typename FieldIdT = Aws::String>
+    void SetFieldId(FieldIdT&& value) { m_fieldIdHasBeenSet = true; m_fieldId = std::forward<FieldIdT>(value); }
+    template<typename FieldIdT = Aws::String>
+    ListFieldOptionsRequest& WithFieldId(FieldIdT&& value) { SetFieldId(std::forward<FieldIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of a field.</p>
-     */
-    inline void SetFieldId(const Aws::String& value) { m_fieldIdHasBeenSet = true; m_fieldId = value; }
-
-    /**
-     * <p>The unique identifier of a field.</p>
-     */
-    inline void SetFieldId(Aws::String&& value) { m_fieldIdHasBeenSet = true; m_fieldId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of a field.</p>
-     */
-    inline void SetFieldId(const char* value) { m_fieldIdHasBeenSet = true; m_fieldId.assign(value); }
-
-    /**
-     * <p>The unique identifier of a field.</p>
-     */
-    inline ListFieldOptionsRequest& WithFieldId(const Aws::String& value) { SetFieldId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of a field.</p>
-     */
-    inline ListFieldOptionsRequest& WithFieldId(Aws::String&& value) { SetFieldId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of a field.</p>
-     */
-    inline ListFieldOptionsRequest& WithFieldId(const char* value) { SetFieldId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to return per page.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return per page.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return per page.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return per page.</p>
-     */
     inline ListFieldOptionsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The token for the next set of results. Use the value returned in the previous
      * response in the next request to retrieve the next set of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListFieldOptionsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline ListFieldOptionsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline ListFieldOptionsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline ListFieldOptionsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of <code>FieldOption</code> values to filter on for
      * <code>ListFieldOptions</code>.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>A list of <code>FieldOption</code> values to filter on for
-     * <code>ListFieldOptions</code>.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
-
-    /**
-     * <p>A list of <code>FieldOption</code> values to filter on for
-     * <code>ListFieldOptions</code>.</p>
-     */
-    inline void SetValues(const Aws::Vector<Aws::String>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>A list of <code>FieldOption</code> values to filter on for
-     * <code>ListFieldOptions</code>.</p>
-     */
-    inline void SetValues(Aws::Vector<Aws::String>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>A list of <code>FieldOption</code> values to filter on for
-     * <code>ListFieldOptions</code>.</p>
-     */
-    inline ListFieldOptionsRequest& WithValues(const Aws::Vector<Aws::String>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>A list of <code>FieldOption</code> values to filter on for
-     * <code>ListFieldOptions</code>.</p>
-     */
-    inline ListFieldOptionsRequest& WithValues(Aws::Vector<Aws::String>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <code>FieldOption</code> values to filter on for
-     * <code>ListFieldOptions</code>.</p>
-     */
-    inline ListFieldOptionsRequest& AddValues(const Aws::String& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <code>FieldOption</code> values to filter on for
-     * <code>ListFieldOptions</code>.</p>
-     */
-    inline ListFieldOptionsRequest& AddValues(Aws::String&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of <code>FieldOption</code> values to filter on for
-     * <code>ListFieldOptions</code>.</p>
-     */
-    inline ListFieldOptionsRequest& AddValues(const char* value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    ListFieldOptionsRequest& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = Aws::String>
+    ListFieldOptionsRequest& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_domainId;
@@ -253,7 +108,7 @@ namespace Model
     Aws::String m_fieldId;
     bool m_fieldIdHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

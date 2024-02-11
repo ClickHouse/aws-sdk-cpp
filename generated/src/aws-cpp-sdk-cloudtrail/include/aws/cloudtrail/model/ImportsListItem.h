@@ -35,206 +35,86 @@ namespace Model
   class ImportsListItem
   {
   public:
-    AWS_CLOUDTRAIL_API ImportsListItem();
+    AWS_CLOUDTRAIL_API ImportsListItem() = default;
     AWS_CLOUDTRAIL_API ImportsListItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDTRAIL_API ImportsListItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDTRAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The ID of the import. </p>
      */
-    inline const Aws::String& GetImportId() const{ return m_importId; }
-
-    /**
-     * <p> The ID of the import. </p>
-     */
+    inline const Aws::String& GetImportId() const { return m_importId; }
     inline bool ImportIdHasBeenSet() const { return m_importIdHasBeenSet; }
+    template<typename ImportIdT = Aws::String>
+    void SetImportId(ImportIdT&& value) { m_importIdHasBeenSet = true; m_importId = std::forward<ImportIdT>(value); }
+    template<typename ImportIdT = Aws::String>
+    ImportsListItem& WithImportId(ImportIdT&& value) { SetImportId(std::forward<ImportIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The ID of the import. </p>
-     */
-    inline void SetImportId(const Aws::String& value) { m_importIdHasBeenSet = true; m_importId = value; }
-
-    /**
-     * <p> The ID of the import. </p>
-     */
-    inline void SetImportId(Aws::String&& value) { m_importIdHasBeenSet = true; m_importId = std::move(value); }
-
-    /**
-     * <p> The ID of the import. </p>
-     */
-    inline void SetImportId(const char* value) { m_importIdHasBeenSet = true; m_importId.assign(value); }
-
-    /**
-     * <p> The ID of the import. </p>
-     */
-    inline ImportsListItem& WithImportId(const Aws::String& value) { SetImportId(value); return *this;}
-
-    /**
-     * <p> The ID of the import. </p>
-     */
-    inline ImportsListItem& WithImportId(Aws::String&& value) { SetImportId(std::move(value)); return *this;}
-
-    /**
-     * <p> The ID of the import. </p>
-     */
-    inline ImportsListItem& WithImportId(const char* value) { SetImportId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The status of the import. </p>
      */
-    inline const ImportStatus& GetImportStatus() const{ return m_importStatus; }
-
-    /**
-     * <p> The status of the import. </p>
-     */
+    inline ImportStatus GetImportStatus() const { return m_importStatus; }
     inline bool ImportStatusHasBeenSet() const { return m_importStatusHasBeenSet; }
+    inline void SetImportStatus(ImportStatus value) { m_importStatusHasBeenSet = true; m_importStatus = value; }
+    inline ImportsListItem& WithImportStatus(ImportStatus value) { SetImportStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p> The status of the import. </p>
-     */
-    inline void SetImportStatus(const ImportStatus& value) { m_importStatusHasBeenSet = true; m_importStatus = value; }
-
-    /**
-     * <p> The status of the import. </p>
-     */
-    inline void SetImportStatus(ImportStatus&& value) { m_importStatusHasBeenSet = true; m_importStatus = std::move(value); }
-
-    /**
-     * <p> The status of the import. </p>
-     */
-    inline ImportsListItem& WithImportStatus(const ImportStatus& value) { SetImportStatus(value); return *this;}
-
-    /**
-     * <p> The status of the import. </p>
-     */
-    inline ImportsListItem& WithImportStatus(ImportStatus&& value) { SetImportStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The ARN of the destination event data store. </p>
      */
-    inline const Aws::Vector<Aws::String>& GetDestinations() const{ return m_destinations; }
-
-    /**
-     * <p> The ARN of the destination event data store. </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetDestinations() const { return m_destinations; }
     inline bool DestinationsHasBeenSet() const { return m_destinationsHasBeenSet; }
+    template<typename DestinationsT = Aws::Vector<Aws::String>>
+    void SetDestinations(DestinationsT&& value) { m_destinationsHasBeenSet = true; m_destinations = std::forward<DestinationsT>(value); }
+    template<typename DestinationsT = Aws::Vector<Aws::String>>
+    ImportsListItem& WithDestinations(DestinationsT&& value) { SetDestinations(std::forward<DestinationsT>(value)); return *this;}
+    template<typename DestinationsT = Aws::String>
+    ImportsListItem& AddDestinations(DestinationsT&& value) { m_destinationsHasBeenSet = true; m_destinations.emplace_back(std::forward<DestinationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> The ARN of the destination event data store. </p>
-     */
-    inline void SetDestinations(const Aws::Vector<Aws::String>& value) { m_destinationsHasBeenSet = true; m_destinations = value; }
-
-    /**
-     * <p> The ARN of the destination event data store. </p>
-     */
-    inline void SetDestinations(Aws::Vector<Aws::String>&& value) { m_destinationsHasBeenSet = true; m_destinations = std::move(value); }
-
-    /**
-     * <p> The ARN of the destination event data store. </p>
-     */
-    inline ImportsListItem& WithDestinations(const Aws::Vector<Aws::String>& value) { SetDestinations(value); return *this;}
-
-    /**
-     * <p> The ARN of the destination event data store. </p>
-     */
-    inline ImportsListItem& WithDestinations(Aws::Vector<Aws::String>&& value) { SetDestinations(std::move(value)); return *this;}
-
-    /**
-     * <p> The ARN of the destination event data store. </p>
-     */
-    inline ImportsListItem& AddDestinations(const Aws::String& value) { m_destinationsHasBeenSet = true; m_destinations.push_back(value); return *this; }
-
-    /**
-     * <p> The ARN of the destination event data store. </p>
-     */
-    inline ImportsListItem& AddDestinations(Aws::String&& value) { m_destinationsHasBeenSet = true; m_destinations.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p> The ARN of the destination event data store. </p>
-     */
-    inline ImportsListItem& AddDestinations(const char* value) { m_destinationsHasBeenSet = true; m_destinations.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p> The timestamp of the import's creation. </p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTimestamp() const{ return m_createdTimestamp; }
-
-    /**
-     * <p> The timestamp of the import's creation. </p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedTimestamp() const { return m_createdTimestamp; }
     inline bool CreatedTimestampHasBeenSet() const { return m_createdTimestampHasBeenSet; }
+    template<typename CreatedTimestampT = Aws::Utils::DateTime>
+    void SetCreatedTimestamp(CreatedTimestampT&& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = std::forward<CreatedTimestampT>(value); }
+    template<typename CreatedTimestampT = Aws::Utils::DateTime>
+    ImportsListItem& WithCreatedTimestamp(CreatedTimestampT&& value) { SetCreatedTimestamp(std::forward<CreatedTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The timestamp of the import's creation. </p>
-     */
-    inline void SetCreatedTimestamp(const Aws::Utils::DateTime& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = value; }
-
-    /**
-     * <p> The timestamp of the import's creation. </p>
-     */
-    inline void SetCreatedTimestamp(Aws::Utils::DateTime&& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = std::move(value); }
-
-    /**
-     * <p> The timestamp of the import's creation. </p>
-     */
-    inline ImportsListItem& WithCreatedTimestamp(const Aws::Utils::DateTime& value) { SetCreatedTimestamp(value); return *this;}
-
-    /**
-     * <p> The timestamp of the import's creation. </p>
-     */
-    inline ImportsListItem& WithCreatedTimestamp(Aws::Utils::DateTime&& value) { SetCreatedTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The timestamp of the import's last update. </p>
      */
-    inline const Aws::Utils::DateTime& GetUpdatedTimestamp() const{ return m_updatedTimestamp; }
-
-    /**
-     * <p> The timestamp of the import's last update. </p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdatedTimestamp() const { return m_updatedTimestamp; }
     inline bool UpdatedTimestampHasBeenSet() const { return m_updatedTimestampHasBeenSet; }
-
-    /**
-     * <p> The timestamp of the import's last update. </p>
-     */
-    inline void SetUpdatedTimestamp(const Aws::Utils::DateTime& value) { m_updatedTimestampHasBeenSet = true; m_updatedTimestamp = value; }
-
-    /**
-     * <p> The timestamp of the import's last update. </p>
-     */
-    inline void SetUpdatedTimestamp(Aws::Utils::DateTime&& value) { m_updatedTimestampHasBeenSet = true; m_updatedTimestamp = std::move(value); }
-
-    /**
-     * <p> The timestamp of the import's last update. </p>
-     */
-    inline ImportsListItem& WithUpdatedTimestamp(const Aws::Utils::DateTime& value) { SetUpdatedTimestamp(value); return *this;}
-
-    /**
-     * <p> The timestamp of the import's last update. </p>
-     */
-    inline ImportsListItem& WithUpdatedTimestamp(Aws::Utils::DateTime&& value) { SetUpdatedTimestamp(std::move(value)); return *this;}
-
+    template<typename UpdatedTimestampT = Aws::Utils::DateTime>
+    void SetUpdatedTimestamp(UpdatedTimestampT&& value) { m_updatedTimestampHasBeenSet = true; m_updatedTimestamp = std::forward<UpdatedTimestampT>(value); }
+    template<typename UpdatedTimestampT = Aws::Utils::DateTime>
+    ImportsListItem& WithUpdatedTimestamp(UpdatedTimestampT&& value) { SetUpdatedTimestamp(std::forward<UpdatedTimestampT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_importId;
     bool m_importIdHasBeenSet = false;
 
-    ImportStatus m_importStatus;
+    ImportStatus m_importStatus{ImportStatus::NOT_SET};
     bool m_importStatusHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_destinations;
     bool m_destinationsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTimestamp;
+    Aws::Utils::DateTime m_createdTimestamp{};
     bool m_createdTimestampHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updatedTimestamp;
+    Aws::Utils::DateTime m_updatedTimestamp{};
     bool m_updatedTimestampHasBeenSet = false;
   };
 

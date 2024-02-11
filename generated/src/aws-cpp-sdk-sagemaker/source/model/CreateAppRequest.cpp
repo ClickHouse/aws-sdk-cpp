@@ -12,18 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateAppRequest::CreateAppRequest() : 
-    m_domainIdHasBeenSet(false),
-    m_userProfileNameHasBeenSet(false),
-    m_appType(AppType::NOT_SET),
-    m_appTypeHasBeenSet(false),
-    m_appNameHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_resourceSpecHasBeenSet(false),
-    m_spaceNameHasBeenSet(false)
-{
-}
-
 Aws::String CreateAppRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -37,6 +25,12 @@ Aws::String CreateAppRequest::SerializePayload() const
   if(m_userProfileNameHasBeenSet)
   {
    payload.WithString("UserProfileName", m_userProfileName);
+
+  }
+
+  if(m_spaceNameHasBeenSet)
+  {
+   payload.WithString("SpaceName", m_spaceName);
 
   }
 
@@ -68,9 +62,9 @@ Aws::String CreateAppRequest::SerializePayload() const
 
   }
 
-  if(m_spaceNameHasBeenSet)
+  if(m_recoveryModeHasBeenSet)
   {
-   payload.WithString("SpaceName", m_spaceName);
+   payload.WithBool("RecoveryMode", m_recoveryMode);
 
   }
 

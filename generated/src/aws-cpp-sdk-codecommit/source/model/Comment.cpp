@@ -18,33 +18,7 @@ namespace CodeCommit
 namespace Model
 {
 
-Comment::Comment() : 
-    m_commentIdHasBeenSet(false),
-    m_contentHasBeenSet(false),
-    m_inReplyToHasBeenSet(false),
-    m_creationDateHasBeenSet(false),
-    m_lastModifiedDateHasBeenSet(false),
-    m_authorArnHasBeenSet(false),
-    m_deleted(false),
-    m_deletedHasBeenSet(false),
-    m_clientRequestTokenHasBeenSet(false),
-    m_callerReactionsHasBeenSet(false),
-    m_reactionCountsHasBeenSet(false)
-{
-}
-
-Comment::Comment(JsonView jsonValue) : 
-    m_commentIdHasBeenSet(false),
-    m_contentHasBeenSet(false),
-    m_inReplyToHasBeenSet(false),
-    m_creationDateHasBeenSet(false),
-    m_lastModifiedDateHasBeenSet(false),
-    m_authorArnHasBeenSet(false),
-    m_deleted(false),
-    m_deletedHasBeenSet(false),
-    m_clientRequestTokenHasBeenSet(false),
-    m_callerReactionsHasBeenSet(false),
-    m_reactionCountsHasBeenSet(false)
+Comment::Comment(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -54,59 +28,43 @@ Comment& Comment::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("commentId"))
   {
     m_commentId = jsonValue.GetString("commentId");
-
     m_commentIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("content"))
   {
     m_content = jsonValue.GetString("content");
-
     m_contentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("inReplyTo"))
   {
     m_inReplyTo = jsonValue.GetString("inReplyTo");
-
     m_inReplyToHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("creationDate"))
   {
     m_creationDate = jsonValue.GetDouble("creationDate");
-
     m_creationDateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastModifiedDate"))
   {
     m_lastModifiedDate = jsonValue.GetDouble("lastModifiedDate");
-
     m_lastModifiedDateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("authorArn"))
   {
     m_authorArn = jsonValue.GetString("authorArn");
-
     m_authorArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("deleted"))
   {
     m_deleted = jsonValue.GetBool("deleted");
-
     m_deletedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("clientRequestToken"))
   {
     m_clientRequestToken = jsonValue.GetString("clientRequestToken");
-
     m_clientRequestTokenHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("callerReactions"))
   {
     Aws::Utils::Array<JsonView> callerReactionsJsonList = jsonValue.GetArray("callerReactions");
@@ -116,7 +74,6 @@ Comment& Comment::operator =(JsonView jsonValue)
     }
     m_callerReactionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("reactionCounts"))
   {
     Aws::Map<Aws::String, JsonView> reactionCountsJsonMap = jsonValue.GetObject("reactionCounts").GetAllObjects();
@@ -126,7 +83,6 @@ Comment& Comment::operator =(JsonView jsonValue)
     }
     m_reactionCountsHasBeenSet = true;
   }
-
   return *this;
 }
 

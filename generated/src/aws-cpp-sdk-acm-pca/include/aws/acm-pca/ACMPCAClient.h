@@ -31,7 +31,7 @@ namespace ACMPCA
    * rejects an otherwise valid request because the request exceeds the operation's
    * quota for the number of requests per second. When a request is throttled, Amazon
    * Web Services Private CA returns a <a
-   * href="https://docs.aws.amazon.com/acm-pca/latest/APIReference/CommonErrors.html">ThrottlingException</a>
+   * href="https://docs.aws.amazon.com/privateca/latest/APIReference/CommonErrors.html">ThrottlingException</a>
    * error. Amazon Web Services Private CA does not guarantee a minimum request rate
    * for APIs. </p> <p>To see an up-to-date list of your Amazon Web Services Private
    * CA quotas, or to request a quota increase, log into your Amazon Web Services
@@ -43,22 +43,25 @@ namespace ACMPCA
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef ACMPCAClientConfiguration ClientConfigurationType;
+      typedef ACMPCAEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         ACMPCAClient(const Aws::ACMPCA::ACMPCAClientConfiguration& clientConfiguration = Aws::ACMPCA::ACMPCAClientConfiguration(),
-                     std::shared_ptr<ACMPCAEndpointProviderBase> endpointProvider = Aws::MakeShared<ACMPCAEndpointProvider>(ALLOCATION_TAG));
+                     std::shared_ptr<ACMPCAEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         ACMPCAClient(const Aws::Auth::AWSCredentials& credentials,
-                     std::shared_ptr<ACMPCAEndpointProviderBase> endpointProvider = Aws::MakeShared<ACMPCAEndpointProvider>(ALLOCATION_TAG),
+                     std::shared_ptr<ACMPCAEndpointProviderBase> endpointProvider = nullptr,
                      const Aws::ACMPCA::ACMPCAClientConfiguration& clientConfiguration = Aws::ACMPCA::ACMPCAClientConfiguration());
 
        /**
@@ -66,7 +69,7 @@ namespace ACMPCA
         * the default http client factory will be used
         */
         ACMPCAClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                     std::shared_ptr<ACMPCAEndpointProviderBase> endpointProvider = Aws::MakeShared<ACMPCAEndpointProvider>(ALLOCATION_TAG),
+                     std::shared_ptr<ACMPCAEndpointProviderBase> endpointProvider = nullptr,
                      const Aws::ACMPCA::ACMPCAClientConfiguration& clientConfiguration = Aws::ACMPCA::ACMPCAClientConfiguration());
 
 
@@ -114,7 +117,7 @@ namespace ACMPCA
          * policies for CRLs in Amazon S3</a>.</p>  <p>Amazon Web Services Private
          * CA assets that are stored in Amazon S3 can be protected with encryption. For
          * more information, see <a
-         * href="https://docs.aws.amazon.com/privateca/latest/userguide/PcaCreateCa.html#crl-encryption">Encrypting
+         * href="https://docs.aws.amazon.com/privateca/latest/userguide/crl-planning.html#crl-encryption">Encrypting
          * Your CRLs</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/acm-pca-2017-08-22/CreateCertificateAuthority">AWS
          * API Reference</a></p>
@@ -141,19 +144,18 @@ namespace ACMPCA
 
         /**
          * <p>Creates an audit report that lists every time that your CA private key is
-         * used. The report is saved in the Amazon S3 bucket that you specify on input. The
-         * <a
+         * used to issue a certificate. The <a
          * href="https://docs.aws.amazon.com/privateca/latest/APIReference/API_IssueCertificate.html">IssueCertificate</a>
          * and <a
          * href="https://docs.aws.amazon.com/privateca/latest/APIReference/API_RevokeCertificate.html">RevokeCertificate</a>
-         * actions use the private key. </p>  <p>Both Amazon Web Services Private CA
-         * and the IAM principal must have permission to write to the S3 bucket that you
-         * specify. If the IAM principal making the call does not have permission to write
-         * to the bucket, then an exception is thrown. For more information, see <a
-         * href="https://docs.aws.amazon.com/privateca/latest/userguide/crl-planning.html#s3-policies">Access
-         * policies for CRLs in Amazon S3</a>.</p>  <p>Amazon Web Services Private
-         * CA assets that are stored in Amazon S3 can be protected with encryption. For
-         * more information, see <a
+         * actions use the private key.</p> <p>To save the audit report to your designated
+         * Amazon S3 bucket, you must create a bucket policy that grants Amazon Web
+         * Services Private CA permission to access and write to it. For an example policy,
+         * see <a
+         * href="https://docs.aws.amazon.com/privateca/latest/userguide/PcaAuditReport.html#s3-access">Prepare
+         * an Amazon S3 bucket for audit reports</a>.</p> <p>Amazon Web Services Private CA
+         * assets that are stored in Amazon S3 can be protected with encryption. For more
+         * information, see <a
          * href="https://docs.aws.amazon.com/privateca/latest/userguide/PcaAuditReport.html#audit-report-encryption">Encrypting
          * Your Audit Reports</a>.</p>  <p>You can generate a maximum of one report
          * every 30 minutes.</p> <p><h3>See Also:</h3>   <a
@@ -250,7 +252,17 @@ namespace ACMPCA
          * action returns the time remaining in the restoration window of a private CA in
          * the <code>DELETED</code> state. To restore an eligible CA, call the <a
          * href="https://docs.aws.amazon.com/privateca/latest/APIReference/API_RestoreCertificateAuthority.html">RestoreCertificateAuthority</a>
-         * action.</p><p><h3>See Also:</h3>   <a
+         * action.</p>  <p>A private CA can be deleted if it is in the
+         * <code>PENDING_CERTIFICATE</code>, <code>CREATING</code>, <code>EXPIRED</code>,
+         * <code>DISABLED</code>, or <code>FAILED</code> state. To delete a CA in the
+         * <code>ACTIVE</code> state, you must first disable it, or else the delete request
+         * results in an exception. If you are deleting a private CA in the
+         * <code>PENDING_CERTIFICATE</code> or <code>DISABLED</code> state, you can set the
+         * length of its restoration period to 7-30 days. The default is 30. During this
+         * time, the status is set to <code>DELETED</code> and the CA can be restored. A
+         * private CA deleted in the <code>CREATING</code> or <code>FAILED</code> state has
+         * no assigned restoration period and cannot be restored.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/acm-pca-2017-08-22/DeleteCertificateAuthority">AWS
          * API Reference</a></p>
          */
@@ -454,8 +466,8 @@ namespace ACMPCA
          * href="https://docs.aws.amazon.com/privateca/latest/APIReference/API_IssueCertificate.html">IssueCertificate</a>
          * action. You must specify both the ARN of your private CA and the ARN of the
          * issued certificate when calling the <b>GetCertificate</b> action. You can
-         * retrieve the certificate if it is in the <b>ISSUED</b> state. You can call the
-         * <a
+         * retrieve the certificate if it is in the <b>ISSUED</b>, <b>EXPIRED</b>, or
+         * <b>REVOKED</b> state. You can call the <a
          * href="https://docs.aws.amazon.com/privateca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html">CreateCertificateAuthorityAuditReport</a>
          * action to create a report that contains information about all of the
          * certificates issued and revoked by your private CA. </p><p><h3>See Also:</h3>  
@@ -628,19 +640,20 @@ namespace ACMPCA
          * size of a certificate chain is 2 MB.</p> </li> </ul> <p> <i>Enforcement of
          * Critical Constraints</i> </p> <p>Amazon Web Services Private CA allows the
          * following extensions to be marked critical in the imported CA certificate or
-         * chain.</p> <ul> <li> <p>Basic constraints (<i>must</i> be marked critical)</p>
-         * </li> <li> <p>Subject alternative names</p> </li> <li> <p>Key usage</p> </li>
-         * <li> <p>Extended key usage</p> </li> <li> <p>Authority key identifier</p> </li>
-         * <li> <p>Subject key identifier</p> </li> <li> <p>Issuer alternative name</p>
-         * </li> <li> <p>Subject directory attributes</p> </li> <li> <p>Subject information
-         * access</p> </li> <li> <p>Certificate policies</p> </li> <li> <p>Policy
-         * mappings</p> </li> <li> <p>Inhibit anyPolicy</p> </li> </ul> <p>Amazon Web
-         * Services Private CA rejects the following extensions when they are marked
-         * critical in an imported CA certificate or chain.</p> <ul> <li> <p>Name
-         * constraints</p> </li> <li> <p>Policy constraints</p> </li> <li> <p>CRL
-         * distribution points</p> </li> <li> <p>Authority information access</p> </li>
-         * <li> <p>Freshest CRL</p> </li> <li> <p>Any other extension</p> </li>
-         * </ul><p><h3>See Also:</h3>   <a
+         * chain.</p> <ul> <li> <p>Authority key identifier</p> </li> <li> <p>Basic
+         * constraints (<i>must</i> be marked critical)</p> </li> <li> <p>Certificate
+         * policies</p> </li> <li> <p>Extended key usage</p> </li> <li> <p>Inhibit
+         * anyPolicy</p> </li> <li> <p>Issuer alternative name</p> </li> <li> <p>Key
+         * usage</p> </li> <li> <p>Name constraints</p> </li> <li> <p>Policy mappings</p>
+         * </li> <li> <p>Subject alternative name</p> </li> <li> <p>Subject directory
+         * attributes</p> </li> <li> <p>Subject key identifier</p> </li> <li> <p>Subject
+         * information access</p> </li> </ul> <p>Amazon Web Services Private CA rejects the
+         * following extensions when they are marked critical in an imported CA certificate
+         * or chain.</p> <ul> <li> <p>Authority information access</p> </li> <li> <p>CRL
+         * distribution points</p> </li> <li> <p>Freshest CRL</p> </li> <li> <p>Policy
+         * constraints</p> </li> </ul> <p>Amazon Web Services Private Certificate Authority
+         * will also reject any other extension marked as critical not contained on the
+         * preceding list of allowed extensions.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/acm-pca-2017-08-22/ImportCertificateAuthorityCertificate">AWS
          * API Reference</a></p>
          */
@@ -704,13 +717,13 @@ namespace ACMPCA
          * href="http://docs.aws.amazon.com/goto/WebAPI/acm-pca-2017-08-22/ListCertificateAuthorities">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListCertificateAuthoritiesOutcome ListCertificateAuthorities(const Model::ListCertificateAuthoritiesRequest& request) const;
+        virtual Model::ListCertificateAuthoritiesOutcome ListCertificateAuthorities(const Model::ListCertificateAuthoritiesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListCertificateAuthorities that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListCertificateAuthoritiesRequestT = Model::ListCertificateAuthoritiesRequest>
-        Model::ListCertificateAuthoritiesOutcomeCallable ListCertificateAuthoritiesCallable(const ListCertificateAuthoritiesRequestT& request) const
+        Model::ListCertificateAuthoritiesOutcomeCallable ListCertificateAuthoritiesCallable(const ListCertificateAuthoritiesRequestT& request = {}) const
         {
             return SubmitCallable(&ACMPCAClient::ListCertificateAuthorities, request);
         }
@@ -719,7 +732,7 @@ namespace ACMPCA
          * An Async wrapper for ListCertificateAuthorities that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListCertificateAuthoritiesRequestT = Model::ListCertificateAuthoritiesRequest>
-        void ListCertificateAuthoritiesAsync(const ListCertificateAuthoritiesRequestT& request, const ListCertificateAuthoritiesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListCertificateAuthoritiesAsync(const ListCertificateAuthoritiesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListCertificateAuthoritiesRequestT& request = {}) const
         {
             return SubmitAsync(&ACMPCAClient::ListCertificateAuthorities, request, handler, context);
         }
@@ -1059,7 +1072,6 @@ namespace ACMPCA
       void init(const ACMPCAClientConfiguration& clientConfiguration);
 
       ACMPCAClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<ACMPCAEndpointProviderBase> m_endpointProvider;
   };
 

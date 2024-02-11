@@ -32,531 +32,192 @@ namespace Model
 {
 
   /**
-   * <p>The details of an Amazon S3 bucket.</p><p><h3>See Also:</h3>   <a
+   * <p>The details of an Amazon Simple Storage Service (Amazon S3)
+   * bucket.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/AwsS3BucketDetails">AWS
    * API Reference</a></p>
    */
   class AwsS3BucketDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsS3BucketDetails();
+    AWS_SECURITYHUB_API AwsS3BucketDetails() = default;
     AWS_SECURITYHUB_API AwsS3BucketDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsS3BucketDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The canonical user ID of the owner of the S3 bucket.</p>
      */
-    inline const Aws::String& GetOwnerId() const{ return m_ownerId; }
-
-    /**
-     * <p>The canonical user ID of the owner of the S3 bucket.</p>
-     */
+    inline const Aws::String& GetOwnerId() const { return m_ownerId; }
     inline bool OwnerIdHasBeenSet() const { return m_ownerIdHasBeenSet; }
+    template<typename OwnerIdT = Aws::String>
+    void SetOwnerId(OwnerIdT&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::forward<OwnerIdT>(value); }
+    template<typename OwnerIdT = Aws::String>
+    AwsS3BucketDetails& WithOwnerId(OwnerIdT&& value) { SetOwnerId(std::forward<OwnerIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The canonical user ID of the owner of the S3 bucket.</p>
-     */
-    inline void SetOwnerId(const Aws::String& value) { m_ownerIdHasBeenSet = true; m_ownerId = value; }
-
-    /**
-     * <p>The canonical user ID of the owner of the S3 bucket.</p>
-     */
-    inline void SetOwnerId(Aws::String&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::move(value); }
-
-    /**
-     * <p>The canonical user ID of the owner of the S3 bucket.</p>
-     */
-    inline void SetOwnerId(const char* value) { m_ownerIdHasBeenSet = true; m_ownerId.assign(value); }
-
-    /**
-     * <p>The canonical user ID of the owner of the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithOwnerId(const Aws::String& value) { SetOwnerId(value); return *this;}
-
-    /**
-     * <p>The canonical user ID of the owner of the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithOwnerId(Aws::String&& value) { SetOwnerId(std::move(value)); return *this;}
-
-    /**
-     * <p>The canonical user ID of the owner of the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithOwnerId(const char* value) { SetOwnerId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The display name of the owner of the S3 bucket.</p>
      */
-    inline const Aws::String& GetOwnerName() const{ return m_ownerName; }
-
-    /**
-     * <p>The display name of the owner of the S3 bucket.</p>
-     */
+    inline const Aws::String& GetOwnerName() const { return m_ownerName; }
     inline bool OwnerNameHasBeenSet() const { return m_ownerNameHasBeenSet; }
+    template<typename OwnerNameT = Aws::String>
+    void SetOwnerName(OwnerNameT&& value) { m_ownerNameHasBeenSet = true; m_ownerName = std::forward<OwnerNameT>(value); }
+    template<typename OwnerNameT = Aws::String>
+    AwsS3BucketDetails& WithOwnerName(OwnerNameT&& value) { SetOwnerName(std::forward<OwnerNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The display name of the owner of the S3 bucket.</p>
-     */
-    inline void SetOwnerName(const Aws::String& value) { m_ownerNameHasBeenSet = true; m_ownerName = value; }
-
-    /**
-     * <p>The display name of the owner of the S3 bucket.</p>
-     */
-    inline void SetOwnerName(Aws::String&& value) { m_ownerNameHasBeenSet = true; m_ownerName = std::move(value); }
-
-    /**
-     * <p>The display name of the owner of the S3 bucket.</p>
-     */
-    inline void SetOwnerName(const char* value) { m_ownerNameHasBeenSet = true; m_ownerName.assign(value); }
-
-    /**
-     * <p>The display name of the owner of the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithOwnerName(const Aws::String& value) { SetOwnerName(value); return *this;}
-
-    /**
-     * <p>The display name of the owner of the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithOwnerName(Aws::String&& value) { SetOwnerName(std::move(value)); return *this;}
-
-    /**
-     * <p>The display name of the owner of the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithOwnerName(const char* value) { SetOwnerName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services account identifier of the account that owns the S3
      * bucket.</p>
      */
-    inline const Aws::String& GetOwnerAccountId() const{ return m_ownerAccountId; }
-
-    /**
-     * <p>The Amazon Web Services account identifier of the account that owns the S3
-     * bucket.</p>
-     */
+    inline const Aws::String& GetOwnerAccountId() const { return m_ownerAccountId; }
     inline bool OwnerAccountIdHasBeenSet() const { return m_ownerAccountIdHasBeenSet; }
+    template<typename OwnerAccountIdT = Aws::String>
+    void SetOwnerAccountId(OwnerAccountIdT&& value) { m_ownerAccountIdHasBeenSet = true; m_ownerAccountId = std::forward<OwnerAccountIdT>(value); }
+    template<typename OwnerAccountIdT = Aws::String>
+    AwsS3BucketDetails& WithOwnerAccountId(OwnerAccountIdT&& value) { SetOwnerAccountId(std::forward<OwnerAccountIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Web Services account identifier of the account that owns the S3
-     * bucket.</p>
+     * <p>Indicates when the S3 bucket was created.</p> <p>For more information about
+     * the validation and formatting of timestamp fields in Security Hub, see <a
+     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/Welcome.html#timestamps">Timestamps</a>.</p>
      */
-    inline void SetOwnerAccountId(const Aws::String& value) { m_ownerAccountIdHasBeenSet = true; m_ownerAccountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account identifier of the account that owns the S3
-     * bucket.</p>
-     */
-    inline void SetOwnerAccountId(Aws::String&& value) { m_ownerAccountIdHasBeenSet = true; m_ownerAccountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account identifier of the account that owns the S3
-     * bucket.</p>
-     */
-    inline void SetOwnerAccountId(const char* value) { m_ownerAccountIdHasBeenSet = true; m_ownerAccountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account identifier of the account that owns the S3
-     * bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithOwnerAccountId(const Aws::String& value) { SetOwnerAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account identifier of the account that owns the S3
-     * bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithOwnerAccountId(Aws::String&& value) { SetOwnerAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account identifier of the account that owns the S3
-     * bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithOwnerAccountId(const char* value) { SetOwnerAccountId(value); return *this;}
-
-
-    /**
-     * <p>Indicates when the S3 bucket was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline const Aws::String& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>Indicates when the S3 bucket was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
+    inline const Aws::String& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::String>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::String>
+    AwsS3BucketDetails& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates when the S3 bucket was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetCreatedAt(const Aws::String& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>Indicates when the S3 bucket was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetCreatedAt(Aws::String&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>Indicates when the S3 bucket was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetCreatedAt(const char* value) { m_createdAtHasBeenSet = true; m_createdAt.assign(value); }
-
-    /**
-     * <p>Indicates when the S3 bucket was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsS3BucketDetails& WithCreatedAt(const Aws::String& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>Indicates when the S3 bucket was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsS3BucketDetails& WithCreatedAt(Aws::String&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates when the S3 bucket was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsS3BucketDetails& WithCreatedAt(const char* value) { SetCreatedAt(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The encryption rules that are applied to the S3 bucket.</p>
      */
-    inline const AwsS3BucketServerSideEncryptionConfiguration& GetServerSideEncryptionConfiguration() const{ return m_serverSideEncryptionConfiguration; }
-
-    /**
-     * <p>The encryption rules that are applied to the S3 bucket.</p>
-     */
+    inline const AwsS3BucketServerSideEncryptionConfiguration& GetServerSideEncryptionConfiguration() const { return m_serverSideEncryptionConfiguration; }
     inline bool ServerSideEncryptionConfigurationHasBeenSet() const { return m_serverSideEncryptionConfigurationHasBeenSet; }
+    template<typename ServerSideEncryptionConfigurationT = AwsS3BucketServerSideEncryptionConfiguration>
+    void SetServerSideEncryptionConfiguration(ServerSideEncryptionConfigurationT&& value) { m_serverSideEncryptionConfigurationHasBeenSet = true; m_serverSideEncryptionConfiguration = std::forward<ServerSideEncryptionConfigurationT>(value); }
+    template<typename ServerSideEncryptionConfigurationT = AwsS3BucketServerSideEncryptionConfiguration>
+    AwsS3BucketDetails& WithServerSideEncryptionConfiguration(ServerSideEncryptionConfigurationT&& value) { SetServerSideEncryptionConfiguration(std::forward<ServerSideEncryptionConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The encryption rules that are applied to the S3 bucket.</p>
+     * <p>The lifecycle configuration for objects in the specified bucket.</p>
      */
-    inline void SetServerSideEncryptionConfiguration(const AwsS3BucketServerSideEncryptionConfiguration& value) { m_serverSideEncryptionConfigurationHasBeenSet = true; m_serverSideEncryptionConfiguration = value; }
-
-    /**
-     * <p>The encryption rules that are applied to the S3 bucket.</p>
-     */
-    inline void SetServerSideEncryptionConfiguration(AwsS3BucketServerSideEncryptionConfiguration&& value) { m_serverSideEncryptionConfigurationHasBeenSet = true; m_serverSideEncryptionConfiguration = std::move(value); }
-
-    /**
-     * <p>The encryption rules that are applied to the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithServerSideEncryptionConfiguration(const AwsS3BucketServerSideEncryptionConfiguration& value) { SetServerSideEncryptionConfiguration(value); return *this;}
-
-    /**
-     * <p>The encryption rules that are applied to the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithServerSideEncryptionConfiguration(AwsS3BucketServerSideEncryptionConfiguration&& value) { SetServerSideEncryptionConfiguration(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The lifecycle configuration for objects in the S3 bucket.</p>
-     */
-    inline const AwsS3BucketBucketLifecycleConfigurationDetails& GetBucketLifecycleConfiguration() const{ return m_bucketLifecycleConfiguration; }
-
-    /**
-     * <p>The lifecycle configuration for objects in the S3 bucket.</p>
-     */
+    inline const AwsS3BucketBucketLifecycleConfigurationDetails& GetBucketLifecycleConfiguration() const { return m_bucketLifecycleConfiguration; }
     inline bool BucketLifecycleConfigurationHasBeenSet() const { return m_bucketLifecycleConfigurationHasBeenSet; }
+    template<typename BucketLifecycleConfigurationT = AwsS3BucketBucketLifecycleConfigurationDetails>
+    void SetBucketLifecycleConfiguration(BucketLifecycleConfigurationT&& value) { m_bucketLifecycleConfigurationHasBeenSet = true; m_bucketLifecycleConfiguration = std::forward<BucketLifecycleConfigurationT>(value); }
+    template<typename BucketLifecycleConfigurationT = AwsS3BucketBucketLifecycleConfigurationDetails>
+    AwsS3BucketDetails& WithBucketLifecycleConfiguration(BucketLifecycleConfigurationT&& value) { SetBucketLifecycleConfiguration(std::forward<BucketLifecycleConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The lifecycle configuration for objects in the S3 bucket.</p>
-     */
-    inline void SetBucketLifecycleConfiguration(const AwsS3BucketBucketLifecycleConfigurationDetails& value) { m_bucketLifecycleConfigurationHasBeenSet = true; m_bucketLifecycleConfiguration = value; }
-
-    /**
-     * <p>The lifecycle configuration for objects in the S3 bucket.</p>
-     */
-    inline void SetBucketLifecycleConfiguration(AwsS3BucketBucketLifecycleConfigurationDetails&& value) { m_bucketLifecycleConfigurationHasBeenSet = true; m_bucketLifecycleConfiguration = std::move(value); }
-
-    /**
-     * <p>The lifecycle configuration for objects in the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithBucketLifecycleConfiguration(const AwsS3BucketBucketLifecycleConfigurationDetails& value) { SetBucketLifecycleConfiguration(value); return *this;}
-
-    /**
-     * <p>The lifecycle configuration for objects in the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithBucketLifecycleConfiguration(AwsS3BucketBucketLifecycleConfigurationDetails&& value) { SetBucketLifecycleConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides information about the Amazon S3 Public Access Block configuration
      * for the S3 bucket.</p>
      */
-    inline const AwsS3AccountPublicAccessBlockDetails& GetPublicAccessBlockConfiguration() const{ return m_publicAccessBlockConfiguration; }
-
-    /**
-     * <p>Provides information about the Amazon S3 Public Access Block configuration
-     * for the S3 bucket.</p>
-     */
+    inline const AwsS3AccountPublicAccessBlockDetails& GetPublicAccessBlockConfiguration() const { return m_publicAccessBlockConfiguration; }
     inline bool PublicAccessBlockConfigurationHasBeenSet() const { return m_publicAccessBlockConfigurationHasBeenSet; }
+    template<typename PublicAccessBlockConfigurationT = AwsS3AccountPublicAccessBlockDetails>
+    void SetPublicAccessBlockConfiguration(PublicAccessBlockConfigurationT&& value) { m_publicAccessBlockConfigurationHasBeenSet = true; m_publicAccessBlockConfiguration = std::forward<PublicAccessBlockConfigurationT>(value); }
+    template<typename PublicAccessBlockConfigurationT = AwsS3AccountPublicAccessBlockDetails>
+    AwsS3BucketDetails& WithPublicAccessBlockConfiguration(PublicAccessBlockConfigurationT&& value) { SetPublicAccessBlockConfiguration(std::forward<PublicAccessBlockConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Provides information about the Amazon S3 Public Access Block configuration
-     * for the S3 bucket.</p>
-     */
-    inline void SetPublicAccessBlockConfiguration(const AwsS3AccountPublicAccessBlockDetails& value) { m_publicAccessBlockConfigurationHasBeenSet = true; m_publicAccessBlockConfiguration = value; }
-
-    /**
-     * <p>Provides information about the Amazon S3 Public Access Block configuration
-     * for the S3 bucket.</p>
-     */
-    inline void SetPublicAccessBlockConfiguration(AwsS3AccountPublicAccessBlockDetails&& value) { m_publicAccessBlockConfigurationHasBeenSet = true; m_publicAccessBlockConfiguration = std::move(value); }
-
-    /**
-     * <p>Provides information about the Amazon S3 Public Access Block configuration
-     * for the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithPublicAccessBlockConfiguration(const AwsS3AccountPublicAccessBlockDetails& value) { SetPublicAccessBlockConfiguration(value); return *this;}
-
-    /**
-     * <p>Provides information about the Amazon S3 Public Access Block configuration
-     * for the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithPublicAccessBlockConfiguration(AwsS3AccountPublicAccessBlockDetails&& value) { SetPublicAccessBlockConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The access control list for the S3 bucket.</p>
      */
-    inline const Aws::String& GetAccessControlList() const{ return m_accessControlList; }
-
-    /**
-     * <p>The access control list for the S3 bucket.</p>
-     */
+    inline const Aws::String& GetAccessControlList() const { return m_accessControlList; }
     inline bool AccessControlListHasBeenSet() const { return m_accessControlListHasBeenSet; }
+    template<typename AccessControlListT = Aws::String>
+    void SetAccessControlList(AccessControlListT&& value) { m_accessControlListHasBeenSet = true; m_accessControlList = std::forward<AccessControlListT>(value); }
+    template<typename AccessControlListT = Aws::String>
+    AwsS3BucketDetails& WithAccessControlList(AccessControlListT&& value) { SetAccessControlList(std::forward<AccessControlListT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The access control list for the S3 bucket.</p>
-     */
-    inline void SetAccessControlList(const Aws::String& value) { m_accessControlListHasBeenSet = true; m_accessControlList = value; }
-
-    /**
-     * <p>The access control list for the S3 bucket.</p>
-     */
-    inline void SetAccessControlList(Aws::String&& value) { m_accessControlListHasBeenSet = true; m_accessControlList = std::move(value); }
-
-    /**
-     * <p>The access control list for the S3 bucket.</p>
-     */
-    inline void SetAccessControlList(const char* value) { m_accessControlListHasBeenSet = true; m_accessControlList.assign(value); }
-
-    /**
-     * <p>The access control list for the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithAccessControlList(const Aws::String& value) { SetAccessControlList(value); return *this;}
-
-    /**
-     * <p>The access control list for the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithAccessControlList(Aws::String&& value) { SetAccessControlList(std::move(value)); return *this;}
-
-    /**
-     * <p>The access control list for the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithAccessControlList(const char* value) { SetAccessControlList(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The logging configuration for the S3 bucket.</p>
      */
-    inline const AwsS3BucketLoggingConfiguration& GetBucketLoggingConfiguration() const{ return m_bucketLoggingConfiguration; }
-
-    /**
-     * <p>The logging configuration for the S3 bucket.</p>
-     */
+    inline const AwsS3BucketLoggingConfiguration& GetBucketLoggingConfiguration() const { return m_bucketLoggingConfiguration; }
     inline bool BucketLoggingConfigurationHasBeenSet() const { return m_bucketLoggingConfigurationHasBeenSet; }
+    template<typename BucketLoggingConfigurationT = AwsS3BucketLoggingConfiguration>
+    void SetBucketLoggingConfiguration(BucketLoggingConfigurationT&& value) { m_bucketLoggingConfigurationHasBeenSet = true; m_bucketLoggingConfiguration = std::forward<BucketLoggingConfigurationT>(value); }
+    template<typename BucketLoggingConfigurationT = AwsS3BucketLoggingConfiguration>
+    AwsS3BucketDetails& WithBucketLoggingConfiguration(BucketLoggingConfigurationT&& value) { SetBucketLoggingConfiguration(std::forward<BucketLoggingConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The logging configuration for the S3 bucket.</p>
-     */
-    inline void SetBucketLoggingConfiguration(const AwsS3BucketLoggingConfiguration& value) { m_bucketLoggingConfigurationHasBeenSet = true; m_bucketLoggingConfiguration = value; }
-
-    /**
-     * <p>The logging configuration for the S3 bucket.</p>
-     */
-    inline void SetBucketLoggingConfiguration(AwsS3BucketLoggingConfiguration&& value) { m_bucketLoggingConfigurationHasBeenSet = true; m_bucketLoggingConfiguration = std::move(value); }
-
-    /**
-     * <p>The logging configuration for the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithBucketLoggingConfiguration(const AwsS3BucketLoggingConfiguration& value) { SetBucketLoggingConfiguration(value); return *this;}
-
-    /**
-     * <p>The logging configuration for the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithBucketLoggingConfiguration(AwsS3BucketLoggingConfiguration&& value) { SetBucketLoggingConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The website configuration parameters for the S3 bucket.</p>
      */
-    inline const AwsS3BucketWebsiteConfiguration& GetBucketWebsiteConfiguration() const{ return m_bucketWebsiteConfiguration; }
-
-    /**
-     * <p>The website configuration parameters for the S3 bucket.</p>
-     */
+    inline const AwsS3BucketWebsiteConfiguration& GetBucketWebsiteConfiguration() const { return m_bucketWebsiteConfiguration; }
     inline bool BucketWebsiteConfigurationHasBeenSet() const { return m_bucketWebsiteConfigurationHasBeenSet; }
+    template<typename BucketWebsiteConfigurationT = AwsS3BucketWebsiteConfiguration>
+    void SetBucketWebsiteConfiguration(BucketWebsiteConfigurationT&& value) { m_bucketWebsiteConfigurationHasBeenSet = true; m_bucketWebsiteConfiguration = std::forward<BucketWebsiteConfigurationT>(value); }
+    template<typename BucketWebsiteConfigurationT = AwsS3BucketWebsiteConfiguration>
+    AwsS3BucketDetails& WithBucketWebsiteConfiguration(BucketWebsiteConfigurationT&& value) { SetBucketWebsiteConfiguration(std::forward<BucketWebsiteConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The website configuration parameters for the S3 bucket.</p>
-     */
-    inline void SetBucketWebsiteConfiguration(const AwsS3BucketWebsiteConfiguration& value) { m_bucketWebsiteConfigurationHasBeenSet = true; m_bucketWebsiteConfiguration = value; }
-
-    /**
-     * <p>The website configuration parameters for the S3 bucket.</p>
-     */
-    inline void SetBucketWebsiteConfiguration(AwsS3BucketWebsiteConfiguration&& value) { m_bucketWebsiteConfigurationHasBeenSet = true; m_bucketWebsiteConfiguration = std::move(value); }
-
-    /**
-     * <p>The website configuration parameters for the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithBucketWebsiteConfiguration(const AwsS3BucketWebsiteConfiguration& value) { SetBucketWebsiteConfiguration(value); return *this;}
-
-    /**
-     * <p>The website configuration parameters for the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithBucketWebsiteConfiguration(AwsS3BucketWebsiteConfiguration&& value) { SetBucketWebsiteConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The notification configuration for the S3 bucket.</p>
      */
-    inline const AwsS3BucketNotificationConfiguration& GetBucketNotificationConfiguration() const{ return m_bucketNotificationConfiguration; }
-
-    /**
-     * <p>The notification configuration for the S3 bucket.</p>
-     */
+    inline const AwsS3BucketNotificationConfiguration& GetBucketNotificationConfiguration() const { return m_bucketNotificationConfiguration; }
     inline bool BucketNotificationConfigurationHasBeenSet() const { return m_bucketNotificationConfigurationHasBeenSet; }
+    template<typename BucketNotificationConfigurationT = AwsS3BucketNotificationConfiguration>
+    void SetBucketNotificationConfiguration(BucketNotificationConfigurationT&& value) { m_bucketNotificationConfigurationHasBeenSet = true; m_bucketNotificationConfiguration = std::forward<BucketNotificationConfigurationT>(value); }
+    template<typename BucketNotificationConfigurationT = AwsS3BucketNotificationConfiguration>
+    AwsS3BucketDetails& WithBucketNotificationConfiguration(BucketNotificationConfigurationT&& value) { SetBucketNotificationConfiguration(std::forward<BucketNotificationConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The notification configuration for the S3 bucket.</p>
-     */
-    inline void SetBucketNotificationConfiguration(const AwsS3BucketNotificationConfiguration& value) { m_bucketNotificationConfigurationHasBeenSet = true; m_bucketNotificationConfiguration = value; }
-
-    /**
-     * <p>The notification configuration for the S3 bucket.</p>
-     */
-    inline void SetBucketNotificationConfiguration(AwsS3BucketNotificationConfiguration&& value) { m_bucketNotificationConfigurationHasBeenSet = true; m_bucketNotificationConfiguration = std::move(value); }
-
-    /**
-     * <p>The notification configuration for the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithBucketNotificationConfiguration(const AwsS3BucketNotificationConfiguration& value) { SetBucketNotificationConfiguration(value); return *this;}
-
-    /**
-     * <p>The notification configuration for the S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithBucketNotificationConfiguration(AwsS3BucketNotificationConfiguration&& value) { SetBucketNotificationConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The versioning state of an S3 bucket.</p>
      */
-    inline const AwsS3BucketBucketVersioningConfiguration& GetBucketVersioningConfiguration() const{ return m_bucketVersioningConfiguration; }
-
-    /**
-     * <p>The versioning state of an S3 bucket.</p>
-     */
+    inline const AwsS3BucketBucketVersioningConfiguration& GetBucketVersioningConfiguration() const { return m_bucketVersioningConfiguration; }
     inline bool BucketVersioningConfigurationHasBeenSet() const { return m_bucketVersioningConfigurationHasBeenSet; }
+    template<typename BucketVersioningConfigurationT = AwsS3BucketBucketVersioningConfiguration>
+    void SetBucketVersioningConfiguration(BucketVersioningConfigurationT&& value) { m_bucketVersioningConfigurationHasBeenSet = true; m_bucketVersioningConfiguration = std::forward<BucketVersioningConfigurationT>(value); }
+    template<typename BucketVersioningConfigurationT = AwsS3BucketBucketVersioningConfiguration>
+    AwsS3BucketDetails& WithBucketVersioningConfiguration(BucketVersioningConfigurationT&& value) { SetBucketVersioningConfiguration(std::forward<BucketVersioningConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The versioning state of an S3 bucket.</p>
-     */
-    inline void SetBucketVersioningConfiguration(const AwsS3BucketBucketVersioningConfiguration& value) { m_bucketVersioningConfigurationHasBeenSet = true; m_bucketVersioningConfiguration = value; }
-
-    /**
-     * <p>The versioning state of an S3 bucket.</p>
-     */
-    inline void SetBucketVersioningConfiguration(AwsS3BucketBucketVersioningConfiguration&& value) { m_bucketVersioningConfigurationHasBeenSet = true; m_bucketVersioningConfiguration = std::move(value); }
-
-    /**
-     * <p>The versioning state of an S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithBucketVersioningConfiguration(const AwsS3BucketBucketVersioningConfiguration& value) { SetBucketVersioningConfiguration(value); return *this;}
-
-    /**
-     * <p>The versioning state of an S3 bucket.</p>
-     */
-    inline AwsS3BucketDetails& WithBucketVersioningConfiguration(AwsS3BucketBucketVersioningConfiguration&& value) { SetBucketVersioningConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> Specifies which rule Amazon S3 applies by default to every new object placed
-     * in the specified bucket. </p>
+     * in the bucket. </p>
      */
-    inline const AwsS3BucketObjectLockConfiguration& GetObjectLockConfiguration() const{ return m_objectLockConfiguration; }
-
-    /**
-     * <p> Specifies which rule Amazon S3 applies by default to every new object placed
-     * in the specified bucket. </p>
-     */
+    inline const AwsS3BucketObjectLockConfiguration& GetObjectLockConfiguration() const { return m_objectLockConfiguration; }
     inline bool ObjectLockConfigurationHasBeenSet() const { return m_objectLockConfigurationHasBeenSet; }
+    template<typename ObjectLockConfigurationT = AwsS3BucketObjectLockConfiguration>
+    void SetObjectLockConfiguration(ObjectLockConfigurationT&& value) { m_objectLockConfigurationHasBeenSet = true; m_objectLockConfiguration = std::forward<ObjectLockConfigurationT>(value); }
+    template<typename ObjectLockConfigurationT = AwsS3BucketObjectLockConfiguration>
+    AwsS3BucketDetails& WithObjectLockConfiguration(ObjectLockConfigurationT&& value) { SetObjectLockConfiguration(std::forward<ObjectLockConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> Specifies which rule Amazon S3 applies by default to every new object placed
-     * in the specified bucket. </p>
+     * <p> The name of the bucket. </p>
      */
-    inline void SetObjectLockConfiguration(const AwsS3BucketObjectLockConfiguration& value) { m_objectLockConfigurationHasBeenSet = true; m_objectLockConfiguration = value; }
-
-    /**
-     * <p> Specifies which rule Amazon S3 applies by default to every new object placed
-     * in the specified bucket. </p>
-     */
-    inline void SetObjectLockConfiguration(AwsS3BucketObjectLockConfiguration&& value) { m_objectLockConfigurationHasBeenSet = true; m_objectLockConfiguration = std::move(value); }
-
-    /**
-     * <p> Specifies which rule Amazon S3 applies by default to every new object placed
-     * in the specified bucket. </p>
-     */
-    inline AwsS3BucketDetails& WithObjectLockConfiguration(const AwsS3BucketObjectLockConfiguration& value) { SetObjectLockConfiguration(value); return *this;}
-
-    /**
-     * <p> Specifies which rule Amazon S3 applies by default to every new object placed
-     * in the specified bucket. </p>
-     */
-    inline AwsS3BucketDetails& WithObjectLockConfiguration(AwsS3BucketObjectLockConfiguration&& value) { SetObjectLockConfiguration(std::move(value)); return *this;}
-
+    inline const Aws::String& GetName() const { return m_name; }
+    inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    AwsS3BucketDetails& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ownerId;
@@ -597,6 +258,9 @@ namespace Model
 
     AwsS3BucketObjectLockConfiguration m_objectLockConfiguration;
     bool m_objectLockConfigurationHasBeenSet = false;
+
+    Aws::String m_name;
+    bool m_nameHasBeenSet = false;
   };
 
 } // namespace Model

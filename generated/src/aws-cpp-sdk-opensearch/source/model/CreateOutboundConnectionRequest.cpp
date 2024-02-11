@@ -12,15 +12,6 @@ using namespace Aws::OpenSearchService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateOutboundConnectionRequest::CreateOutboundConnectionRequest() : 
-    m_localDomainInfoHasBeenSet(false),
-    m_remoteDomainInfoHasBeenSet(false),
-    m_connectionAliasHasBeenSet(false),
-    m_connectionMode(ConnectionMode::NOT_SET),
-    m_connectionModeHasBeenSet(false)
-{
-}
-
 Aws::String CreateOutboundConnectionRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -46,6 +37,12 @@ Aws::String CreateOutboundConnectionRequest::SerializePayload() const
   if(m_connectionModeHasBeenSet)
   {
    payload.WithString("ConnectionMode", ConnectionModeMapper::GetNameForConnectionMode(m_connectionMode));
+  }
+
+  if(m_connectionPropertiesHasBeenSet)
+  {
+   payload.WithObject("ConnectionProperties", m_connectionProperties.Jsonize());
+
   }
 
   return payload.View().WriteReadable();

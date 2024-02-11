@@ -13,18 +13,6 @@ using namespace Aws::KMS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-VerifyRequest::VerifyRequest() : 
-    m_keyIdHasBeenSet(false),
-    m_messageHasBeenSet(false),
-    m_messageType(MessageType::NOT_SET),
-    m_messageTypeHasBeenSet(false),
-    m_signatureHasBeenSet(false),
-    m_signingAlgorithm(SigningAlgorithmSpec::NOT_SET),
-    m_signingAlgorithmHasBeenSet(false),
-    m_grantTokensHasBeenSet(false)
-{
-}
-
 Aws::String VerifyRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -63,6 +51,12 @@ Aws::String VerifyRequest::SerializePayload() const
      grantTokensJsonList[grantTokensIndex].AsString(m_grantTokens[grantTokensIndex]);
    }
    payload.WithArray("GrantTokens", std::move(grantTokensJsonList));
+
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+   payload.WithBool("DryRun", m_dryRun);
 
   }
 

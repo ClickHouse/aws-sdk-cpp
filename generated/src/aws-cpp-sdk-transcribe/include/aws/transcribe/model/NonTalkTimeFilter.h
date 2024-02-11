@@ -39,154 +39,65 @@ namespace Model
   class NonTalkTimeFilter
   {
   public:
-    AWS_TRANSCRIBESERVICE_API NonTalkTimeFilter();
+    AWS_TRANSCRIBESERVICE_API NonTalkTimeFilter() = default;
     AWS_TRANSCRIBESERVICE_API NonTalkTimeFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESERVICE_API NonTalkTimeFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specify the duration, in milliseconds, of the period of silence that you want
      * to flag. For example, you can flag a silent period that lasts 30,000
      * milliseconds.</p>
      */
-    inline long long GetThreshold() const{ return m_threshold; }
-
-    /**
-     * <p>Specify the duration, in milliseconds, of the period of silence that you want
-     * to flag. For example, you can flag a silent period that lasts 30,000
-     * milliseconds.</p>
-     */
+    inline long long GetThreshold() const { return m_threshold; }
     inline bool ThresholdHasBeenSet() const { return m_thresholdHasBeenSet; }
-
-    /**
-     * <p>Specify the duration, in milliseconds, of the period of silence that you want
-     * to flag. For example, you can flag a silent period that lasts 30,000
-     * milliseconds.</p>
-     */
     inline void SetThreshold(long long value) { m_thresholdHasBeenSet = true; m_threshold = value; }
-
-    /**
-     * <p>Specify the duration, in milliseconds, of the period of silence that you want
-     * to flag. For example, you can flag a silent period that lasts 30,000
-     * milliseconds.</p>
-     */
     inline NonTalkTimeFilter& WithThreshold(long long value) { SetThreshold(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Makes it possible to specify a time range (in milliseconds) in your audio,
      * during which you want to search for a period of silence. See for more
      * detail.</p>
      */
-    inline const AbsoluteTimeRange& GetAbsoluteTimeRange() const{ return m_absoluteTimeRange; }
-
-    /**
-     * <p>Makes it possible to specify a time range (in milliseconds) in your audio,
-     * during which you want to search for a period of silence. See for more
-     * detail.</p>
-     */
+    inline const AbsoluteTimeRange& GetAbsoluteTimeRange() const { return m_absoluteTimeRange; }
     inline bool AbsoluteTimeRangeHasBeenSet() const { return m_absoluteTimeRangeHasBeenSet; }
+    template<typename AbsoluteTimeRangeT = AbsoluteTimeRange>
+    void SetAbsoluteTimeRange(AbsoluteTimeRangeT&& value) { m_absoluteTimeRangeHasBeenSet = true; m_absoluteTimeRange = std::forward<AbsoluteTimeRangeT>(value); }
+    template<typename AbsoluteTimeRangeT = AbsoluteTimeRange>
+    NonTalkTimeFilter& WithAbsoluteTimeRange(AbsoluteTimeRangeT&& value) { SetAbsoluteTimeRange(std::forward<AbsoluteTimeRangeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Makes it possible to specify a time range (in milliseconds) in your audio,
-     * during which you want to search for a period of silence. See for more
-     * detail.</p>
-     */
-    inline void SetAbsoluteTimeRange(const AbsoluteTimeRange& value) { m_absoluteTimeRangeHasBeenSet = true; m_absoluteTimeRange = value; }
-
-    /**
-     * <p>Makes it possible to specify a time range (in milliseconds) in your audio,
-     * during which you want to search for a period of silence. See for more
-     * detail.</p>
-     */
-    inline void SetAbsoluteTimeRange(AbsoluteTimeRange&& value) { m_absoluteTimeRangeHasBeenSet = true; m_absoluteTimeRange = std::move(value); }
-
-    /**
-     * <p>Makes it possible to specify a time range (in milliseconds) in your audio,
-     * during which you want to search for a period of silence. See for more
-     * detail.</p>
-     */
-    inline NonTalkTimeFilter& WithAbsoluteTimeRange(const AbsoluteTimeRange& value) { SetAbsoluteTimeRange(value); return *this;}
-
-    /**
-     * <p>Makes it possible to specify a time range (in milliseconds) in your audio,
-     * during which you want to search for a period of silence. See for more
-     * detail.</p>
-     */
-    inline NonTalkTimeFilter& WithAbsoluteTimeRange(AbsoluteTimeRange&& value) { SetAbsoluteTimeRange(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Makes it possible to specify a time range (in percentage) in your media file,
      * during which you want to search for a period of silence. See for more
      * detail.</p>
      */
-    inline const RelativeTimeRange& GetRelativeTimeRange() const{ return m_relativeTimeRange; }
-
-    /**
-     * <p>Makes it possible to specify a time range (in percentage) in your media file,
-     * during which you want to search for a period of silence. See for more
-     * detail.</p>
-     */
+    inline const RelativeTimeRange& GetRelativeTimeRange() const { return m_relativeTimeRange; }
     inline bool RelativeTimeRangeHasBeenSet() const { return m_relativeTimeRangeHasBeenSet; }
+    template<typename RelativeTimeRangeT = RelativeTimeRange>
+    void SetRelativeTimeRange(RelativeTimeRangeT&& value) { m_relativeTimeRangeHasBeenSet = true; m_relativeTimeRange = std::forward<RelativeTimeRangeT>(value); }
+    template<typename RelativeTimeRangeT = RelativeTimeRange>
+    NonTalkTimeFilter& WithRelativeTimeRange(RelativeTimeRangeT&& value) { SetRelativeTimeRange(std::forward<RelativeTimeRangeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Makes it possible to specify a time range (in percentage) in your media file,
-     * during which you want to search for a period of silence. See for more
-     * detail.</p>
-     */
-    inline void SetRelativeTimeRange(const RelativeTimeRange& value) { m_relativeTimeRangeHasBeenSet = true; m_relativeTimeRange = value; }
-
-    /**
-     * <p>Makes it possible to specify a time range (in percentage) in your media file,
-     * during which you want to search for a period of silence. See for more
-     * detail.</p>
-     */
-    inline void SetRelativeTimeRange(RelativeTimeRange&& value) { m_relativeTimeRangeHasBeenSet = true; m_relativeTimeRange = std::move(value); }
-
-    /**
-     * <p>Makes it possible to specify a time range (in percentage) in your media file,
-     * during which you want to search for a period of silence. See for more
-     * detail.</p>
-     */
-    inline NonTalkTimeFilter& WithRelativeTimeRange(const RelativeTimeRange& value) { SetRelativeTimeRange(value); return *this;}
-
-    /**
-     * <p>Makes it possible to specify a time range (in percentage) in your media file,
-     * during which you want to search for a period of silence. See for more
-     * detail.</p>
-     */
-    inline NonTalkTimeFilter& WithRelativeTimeRange(RelativeTimeRange&& value) { SetRelativeTimeRange(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Set to <code>TRUE</code> to flag periods of speech. Set to <code>FALSE</code>
      * to flag periods of silence</p>
      */
-    inline bool GetNegate() const{ return m_negate; }
-
-    /**
-     * <p>Set to <code>TRUE</code> to flag periods of speech. Set to <code>FALSE</code>
-     * to flag periods of silence</p>
-     */
+    inline bool GetNegate() const { return m_negate; }
     inline bool NegateHasBeenSet() const { return m_negateHasBeenSet; }
-
-    /**
-     * <p>Set to <code>TRUE</code> to flag periods of speech. Set to <code>FALSE</code>
-     * to flag periods of silence</p>
-     */
     inline void SetNegate(bool value) { m_negateHasBeenSet = true; m_negate = value; }
-
-    /**
-     * <p>Set to <code>TRUE</code> to flag periods of speech. Set to <code>FALSE</code>
-     * to flag periods of silence</p>
-     */
     inline NonTalkTimeFilter& WithNegate(bool value) { SetNegate(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_threshold;
+    long long m_threshold{0};
     bool m_thresholdHasBeenSet = false;
 
     AbsoluteTimeRange m_absoluteTimeRange;
@@ -195,7 +106,7 @@ namespace Model
     RelativeTimeRange m_relativeTimeRange;
     bool m_relativeTimeRangeHasBeenSet = false;
 
-    bool m_negate;
+    bool m_negate{false};
     bool m_negateHasBeenSet = false;
   };
 

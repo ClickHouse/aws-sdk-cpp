@@ -32,7 +32,7 @@ namespace Model
   class AssignedPrivateIpAddress
   {
   public:
-    AWS_EC2_API AssignedPrivateIpAddress();
+    AWS_EC2_API AssignedPrivateIpAddress() = default;
     AWS_EC2_API AssignedPrivateIpAddress(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API AssignedPrivateIpAddress& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,46 +40,17 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The private IP address assigned to the network interface.</p>
      */
-    inline const Aws::String& GetPrivateIpAddress() const{ return m_privateIpAddress; }
-
-    /**
-     * <p>The private IP address assigned to the network interface.</p>
-     */
+    inline const Aws::String& GetPrivateIpAddress() const { return m_privateIpAddress; }
     inline bool PrivateIpAddressHasBeenSet() const { return m_privateIpAddressHasBeenSet; }
-
-    /**
-     * <p>The private IP address assigned to the network interface.</p>
-     */
-    inline void SetPrivateIpAddress(const Aws::String& value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress = value; }
-
-    /**
-     * <p>The private IP address assigned to the network interface.</p>
-     */
-    inline void SetPrivateIpAddress(Aws::String&& value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress = std::move(value); }
-
-    /**
-     * <p>The private IP address assigned to the network interface.</p>
-     */
-    inline void SetPrivateIpAddress(const char* value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress.assign(value); }
-
-    /**
-     * <p>The private IP address assigned to the network interface.</p>
-     */
-    inline AssignedPrivateIpAddress& WithPrivateIpAddress(const Aws::String& value) { SetPrivateIpAddress(value); return *this;}
-
-    /**
-     * <p>The private IP address assigned to the network interface.</p>
-     */
-    inline AssignedPrivateIpAddress& WithPrivateIpAddress(Aws::String&& value) { SetPrivateIpAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The private IP address assigned to the network interface.</p>
-     */
-    inline AssignedPrivateIpAddress& WithPrivateIpAddress(const char* value) { SetPrivateIpAddress(value); return *this;}
-
+    template<typename PrivateIpAddressT = Aws::String>
+    void SetPrivateIpAddress(PrivateIpAddressT&& value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress = std::forward<PrivateIpAddressT>(value); }
+    template<typename PrivateIpAddressT = Aws::String>
+    AssignedPrivateIpAddress& WithPrivateIpAddress(PrivateIpAddressT&& value) { SetPrivateIpAddress(std::forward<PrivateIpAddressT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_privateIpAddress;

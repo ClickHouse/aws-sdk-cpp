@@ -28,63 +28,37 @@ namespace Model
   class PutAccountSettingResult
   {
   public:
-    AWS_ECS_API PutAccountSettingResult();
+    AWS_ECS_API PutAccountSettingResult() = default;
     AWS_ECS_API PutAccountSettingResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ECS_API PutAccountSettingResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The current account setting for a resource.</p>
      */
-    inline const Setting& GetSetting() const{ return m_setting; }
+    inline const Setting& GetSetting() const { return m_setting; }
+    template<typename SettingT = Setting>
+    void SetSetting(SettingT&& value) { m_settingHasBeenSet = true; m_setting = std::forward<SettingT>(value); }
+    template<typename SettingT = Setting>
+    PutAccountSettingResult& WithSetting(SettingT&& value) { SetSetting(std::forward<SettingT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current account setting for a resource.</p>
-     */
-    inline void SetSetting(const Setting& value) { m_setting = value; }
-
-    /**
-     * <p>The current account setting for a resource.</p>
-     */
-    inline void SetSetting(Setting&& value) { m_setting = std::move(value); }
-
-    /**
-     * <p>The current account setting for a resource.</p>
-     */
-    inline PutAccountSettingResult& WithSetting(const Setting& value) { SetSetting(value); return *this;}
-
-    /**
-     * <p>The current account setting for a resource.</p>
-     */
-    inline PutAccountSettingResult& WithSetting(Setting&& value) { SetSetting(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline PutAccountSettingResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline PutAccountSettingResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline PutAccountSettingResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    PutAccountSettingResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Setting m_setting;
+    bool m_settingHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

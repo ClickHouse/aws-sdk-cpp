@@ -23,6 +23,7 @@ namespace Aws
         static const int CreateRouteTable_HASH = HashingUtils::HashString("CreateRouteTable");
         static const int CreateRoute_HASH = HashingUtils::HashString("CreateRoute");
         static const int EnableVgwRoutePropagation_HASH = HashingUtils::HashString("EnableVgwRoutePropagation");
+        static const int Advertisement_HASH = HashingUtils::HashString("Advertisement");
 
 
         RouteOrigin GetRouteOriginForName(const Aws::String& name)
@@ -40,6 +41,10 @@ namespace Aws
           {
             return RouteOrigin::EnableVgwRoutePropagation;
           }
+          else if (hashCode == Advertisement_HASH)
+          {
+            return RouteOrigin::Advertisement;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -54,12 +59,16 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case RouteOrigin::NOT_SET:
+            return {};
           case RouteOrigin::CreateRouteTable:
             return "CreateRouteTable";
           case RouteOrigin::CreateRoute:
             return "CreateRoute";
           case RouteOrigin::EnableVgwRoutePropagation:
             return "EnableVgwRoutePropagation";
+          case RouteOrigin::Advertisement:
+            return "Advertisement";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

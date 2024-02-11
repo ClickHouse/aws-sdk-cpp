@@ -27,111 +27,51 @@ namespace Model
   class AssociateBrowserSettingsResult
   {
   public:
-    AWS_WORKSPACESWEB_API AssociateBrowserSettingsResult();
+    AWS_WORKSPACESWEB_API AssociateBrowserSettingsResult() = default;
     AWS_WORKSPACESWEB_API AssociateBrowserSettingsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_WORKSPACESWEB_API AssociateBrowserSettingsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline const Aws::String& GetBrowserSettingsArn() const{ return m_browserSettingsArn; }
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline void SetBrowserSettingsArn(const Aws::String& value) { m_browserSettingsArn = value; }
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline void SetBrowserSettingsArn(Aws::String&& value) { m_browserSettingsArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline void SetBrowserSettingsArn(const char* value) { m_browserSettingsArn.assign(value); }
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline AssociateBrowserSettingsResult& WithBrowserSettingsArn(const Aws::String& value) { SetBrowserSettingsArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline AssociateBrowserSettingsResult& WithBrowserSettingsArn(Aws::String&& value) { SetBrowserSettingsArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline AssociateBrowserSettingsResult& WithBrowserSettingsArn(const char* value) { SetBrowserSettingsArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the web portal.</p>
      */
-    inline const Aws::String& GetPortalArn() const{ return m_portalArn; }
+    inline const Aws::String& GetPortalArn() const { return m_portalArn; }
+    template<typename PortalArnT = Aws::String>
+    void SetPortalArn(PortalArnT&& value) { m_portalArnHasBeenSet = true; m_portalArn = std::forward<PortalArnT>(value); }
+    template<typename PortalArnT = Aws::String>
+    AssociateBrowserSettingsResult& WithPortalArn(PortalArnT&& value) { SetPortalArn(std::forward<PortalArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of the web portal.</p>
+     * <p>The ARN of the browser settings.</p>
      */
-    inline void SetPortalArn(const Aws::String& value) { m_portalArn = value; }
+    inline const Aws::String& GetBrowserSettingsArn() const { return m_browserSettingsArn; }
+    template<typename BrowserSettingsArnT = Aws::String>
+    void SetBrowserSettingsArn(BrowserSettingsArnT&& value) { m_browserSettingsArnHasBeenSet = true; m_browserSettingsArn = std::forward<BrowserSettingsArnT>(value); }
+    template<typename BrowserSettingsArnT = Aws::String>
+    AssociateBrowserSettingsResult& WithBrowserSettingsArn(BrowserSettingsArnT&& value) { SetBrowserSettingsArn(std::forward<BrowserSettingsArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the web portal.</p>
-     */
-    inline void SetPortalArn(Aws::String&& value) { m_portalArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the web portal.</p>
-     */
-    inline void SetPortalArn(const char* value) { m_portalArn.assign(value); }
-
-    /**
-     * <p>The ARN of the web portal.</p>
-     */
-    inline AssociateBrowserSettingsResult& WithPortalArn(const Aws::String& value) { SetPortalArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the web portal.</p>
-     */
-    inline AssociateBrowserSettingsResult& WithPortalArn(Aws::String&& value) { SetPortalArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the web portal.</p>
-     */
-    inline AssociateBrowserSettingsResult& WithPortalArn(const char* value) { SetPortalArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline AssociateBrowserSettingsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline AssociateBrowserSettingsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline AssociateBrowserSettingsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    AssociateBrowserSettingsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_browserSettingsArn;
-
     Aws::String m_portalArn;
+    bool m_portalArnHasBeenSet = false;
+
+    Aws::String m_browserSettingsArn;
+    bool m_browserSettingsArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

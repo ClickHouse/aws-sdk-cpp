@@ -12,27 +12,6 @@ using namespace Aws::Snowball::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateClusterRequest::CreateClusterRequest() : 
-    m_jobType(JobType::NOT_SET),
-    m_jobTypeHasBeenSet(false),
-    m_resourcesHasBeenSet(false),
-    m_onDeviceServiceConfigurationHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_addressIdHasBeenSet(false),
-    m_kmsKeyARNHasBeenSet(false),
-    m_roleARNHasBeenSet(false),
-    m_snowballType(SnowballType::NOT_SET),
-    m_snowballTypeHasBeenSet(false),
-    m_shippingOption(ShippingOption::NOT_SET),
-    m_shippingOptionHasBeenSet(false),
-    m_notificationHasBeenSet(false),
-    m_forwardingAddressIdHasBeenSet(false),
-    m_taxDocumentsHasBeenSet(false),
-    m_remoteManagement(RemoteManagement::NOT_SET),
-    m_remoteManagementHasBeenSet(false)
-{
-}
-
 Aws::String CreateClusterRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -109,6 +88,34 @@ Aws::String CreateClusterRequest::SerializePayload() const
   if(m_remoteManagementHasBeenSet)
   {
    payload.WithString("RemoteManagement", RemoteManagementMapper::GetNameForRemoteManagement(m_remoteManagement));
+  }
+
+  if(m_initialClusterSizeHasBeenSet)
+  {
+   payload.WithInteger("InitialClusterSize", m_initialClusterSize);
+
+  }
+
+  if(m_forceCreateJobsHasBeenSet)
+  {
+   payload.WithBool("ForceCreateJobs", m_forceCreateJobs);
+
+  }
+
+  if(m_longTermPricingIdsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> longTermPricingIdsJsonList(m_longTermPricingIds.size());
+   for(unsigned longTermPricingIdsIndex = 0; longTermPricingIdsIndex < longTermPricingIdsJsonList.GetLength(); ++longTermPricingIdsIndex)
+   {
+     longTermPricingIdsJsonList[longTermPricingIdsIndex].AsString(m_longTermPricingIds[longTermPricingIdsIndex]);
+   }
+   payload.WithArray("LongTermPricingIds", std::move(longTermPricingIdsJsonList));
+
+  }
+
+  if(m_snowballCapacityPreferenceHasBeenSet)
+  {
+   payload.WithString("SnowballCapacityPreference", SnowballCapacityMapper::GetNameForSnowballCapacity(m_snowballCapacityPreference));
   }
 
   return payload.View().WriteReadable();

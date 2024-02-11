@@ -20,23 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-ConflictingAliasesList::ConflictingAliasesList() : 
-    m_nextMarkerHasBeenSet(false),
-    m_maxItems(0),
-    m_maxItemsHasBeenSet(false),
-    m_quantity(0),
-    m_quantityHasBeenSet(false),
-    m_itemsHasBeenSet(false)
-{
-}
-
-ConflictingAliasesList::ConflictingAliasesList(const XmlNode& xmlNode) : 
-    m_nextMarkerHasBeenSet(false),
-    m_maxItems(0),
-    m_maxItemsHasBeenSet(false),
-    m_quantity(0),
-    m_quantityHasBeenSet(false),
-    m_itemsHasBeenSet(false)
+ConflictingAliasesList::ConflictingAliasesList(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -69,6 +53,7 @@ ConflictingAliasesList& ConflictingAliasesList::operator =(const XmlNode& xmlNod
     if(!itemsNode.IsNull())
     {
       XmlNode itemsMember = itemsNode.FirstChild("ConflictingAlias");
+      m_itemsHasBeenSet = !itemsMember.IsNull();
       while(!itemsMember.IsNull())
       {
         m_items.push_back(itemsMember);

@@ -18,15 +18,7 @@ namespace OpenSearchService
 namespace Model
 {
 
-AccessPoliciesStatus::AccessPoliciesStatus() : 
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-AccessPoliciesStatus::AccessPoliciesStatus(JsonView jsonValue) : 
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false)
+AccessPoliciesStatus::AccessPoliciesStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AccessPoliciesStatus& AccessPoliciesStatus::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Options"))
   {
     m_options = jsonValue.GetString("Options");
-
     m_optionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = jsonValue.GetObject("Status");
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

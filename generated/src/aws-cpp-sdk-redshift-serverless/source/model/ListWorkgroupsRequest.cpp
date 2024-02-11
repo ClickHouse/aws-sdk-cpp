@@ -12,13 +12,6 @@ using namespace Aws::RedshiftServerless::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListWorkgroupsRequest::ListWorkgroupsRequest() : 
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListWorkgroupsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -32,6 +25,12 @@ Aws::String ListWorkgroupsRequest::SerializePayload() const
   if(m_nextTokenHasBeenSet)
   {
    payload.WithString("nextToken", m_nextToken);
+
+  }
+
+  if(m_ownerAccountHasBeenSet)
+  {
+   payload.WithString("ownerAccount", m_ownerAccount);
 
   }
 

@@ -22,7 +22,7 @@ namespace Model
   class AddApplicationInputRequest : public KinesisAnalyticsV2Request
   {
   public:
-    AWS_KINESISANALYTICSV2_API AddApplicationInputRequest();
+    AWS_KINESISANALYTICSV2_API AddApplicationInputRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,124 +35,49 @@ namespace Model
     AWS_KINESISANALYTICSV2_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of your existing application to which you want to add the streaming
      * source.</p>
      */
-    inline const Aws::String& GetApplicationName() const{ return m_applicationName; }
-
-    /**
-     * <p>The name of your existing application to which you want to add the streaming
-     * source.</p>
-     */
+    inline const Aws::String& GetApplicationName() const { return m_applicationName; }
     inline bool ApplicationNameHasBeenSet() const { return m_applicationNameHasBeenSet; }
+    template<typename ApplicationNameT = Aws::String>
+    void SetApplicationName(ApplicationNameT&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::forward<ApplicationNameT>(value); }
+    template<typename ApplicationNameT = Aws::String>
+    AddApplicationInputRequest& WithApplicationName(ApplicationNameT&& value) { SetApplicationName(std::forward<ApplicationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of your existing application to which you want to add the streaming
-     * source.</p>
-     */
-    inline void SetApplicationName(const Aws::String& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
-
-    /**
-     * <p>The name of your existing application to which you want to add the streaming
-     * source.</p>
-     */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
-
-    /**
-     * <p>The name of your existing application to which you want to add the streaming
-     * source.</p>
-     */
-    inline void SetApplicationName(const char* value) { m_applicationNameHasBeenSet = true; m_applicationName.assign(value); }
-
-    /**
-     * <p>The name of your existing application to which you want to add the streaming
-     * source.</p>
-     */
-    inline AddApplicationInputRequest& WithApplicationName(const Aws::String& value) { SetApplicationName(value); return *this;}
-
-    /**
-     * <p>The name of your existing application to which you want to add the streaming
-     * source.</p>
-     */
-    inline AddApplicationInputRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of your existing application to which you want to add the streaming
-     * source.</p>
-     */
-    inline AddApplicationInputRequest& WithApplicationName(const char* value) { SetApplicationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current version of your application. You must provide the
      * <code>ApplicationVersionID</code> or the <code>ConditionalToken</code>.You can
      * use the <a>DescribeApplication</a> operation to find the current application
      * version.</p>
      */
-    inline long long GetCurrentApplicationVersionId() const{ return m_currentApplicationVersionId; }
-
-    /**
-     * <p>The current version of your application. You must provide the
-     * <code>ApplicationVersionID</code> or the <code>ConditionalToken</code>.You can
-     * use the <a>DescribeApplication</a> operation to find the current application
-     * version.</p>
-     */
+    inline long long GetCurrentApplicationVersionId() const { return m_currentApplicationVersionId; }
     inline bool CurrentApplicationVersionIdHasBeenSet() const { return m_currentApplicationVersionIdHasBeenSet; }
-
-    /**
-     * <p>The current version of your application. You must provide the
-     * <code>ApplicationVersionID</code> or the <code>ConditionalToken</code>.You can
-     * use the <a>DescribeApplication</a> operation to find the current application
-     * version.</p>
-     */
     inline void SetCurrentApplicationVersionId(long long value) { m_currentApplicationVersionIdHasBeenSet = true; m_currentApplicationVersionId = value; }
-
-    /**
-     * <p>The current version of your application. You must provide the
-     * <code>ApplicationVersionID</code> or the <code>ConditionalToken</code>.You can
-     * use the <a>DescribeApplication</a> operation to find the current application
-     * version.</p>
-     */
     inline AddApplicationInputRequest& WithCurrentApplicationVersionId(long long value) { SetCurrentApplicationVersionId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The <a>Input</a> to add.</p>
      */
-    inline const Input& GetInput() const{ return m_input; }
-
-    /**
-     * <p>The <a>Input</a> to add.</p>
-     */
+    inline const Input& GetInput() const { return m_input; }
     inline bool InputHasBeenSet() const { return m_inputHasBeenSet; }
-
-    /**
-     * <p>The <a>Input</a> to add.</p>
-     */
-    inline void SetInput(const Input& value) { m_inputHasBeenSet = true; m_input = value; }
-
-    /**
-     * <p>The <a>Input</a> to add.</p>
-     */
-    inline void SetInput(Input&& value) { m_inputHasBeenSet = true; m_input = std::move(value); }
-
-    /**
-     * <p>The <a>Input</a> to add.</p>
-     */
-    inline AddApplicationInputRequest& WithInput(const Input& value) { SetInput(value); return *this;}
-
-    /**
-     * <p>The <a>Input</a> to add.</p>
-     */
-    inline AddApplicationInputRequest& WithInput(Input&& value) { SetInput(std::move(value)); return *this;}
-
+    template<typename InputT = Input>
+    void SetInput(InputT&& value) { m_inputHasBeenSet = true; m_input = std::forward<InputT>(value); }
+    template<typename InputT = Input>
+    AddApplicationInputRequest& WithInput(InputT&& value) { SetInput(std::forward<InputT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationName;
     bool m_applicationNameHasBeenSet = false;
 
-    long long m_currentApplicationVersionId;
+    long long m_currentApplicationVersionId{0};
     bool m_currentApplicationVersionIdHasBeenSet = false;
 
     Input m_input;

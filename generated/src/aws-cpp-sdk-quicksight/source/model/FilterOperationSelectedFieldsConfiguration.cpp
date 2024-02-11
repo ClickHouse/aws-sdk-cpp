@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-FilterOperationSelectedFieldsConfiguration::FilterOperationSelectedFieldsConfiguration() : 
-    m_selectedFieldsHasBeenSet(false),
-    m_selectedFieldOptions(SelectedFieldOptions::NOT_SET),
-    m_selectedFieldOptionsHasBeenSet(false)
-{
-}
-
-FilterOperationSelectedFieldsConfiguration::FilterOperationSelectedFieldsConfiguration(JsonView jsonValue) : 
-    m_selectedFieldsHasBeenSet(false),
-    m_selectedFieldOptions(SelectedFieldOptions::NOT_SET),
-    m_selectedFieldOptionsHasBeenSet(false)
+FilterOperationSelectedFieldsConfiguration::FilterOperationSelectedFieldsConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,14 +34,20 @@ FilterOperationSelectedFieldsConfiguration& FilterOperationSelectedFieldsConfigu
     }
     m_selectedFieldsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SelectedFieldOptions"))
   {
     m_selectedFieldOptions = SelectedFieldOptionsMapper::GetSelectedFieldOptionsForName(jsonValue.GetString("SelectedFieldOptions"));
-
     m_selectedFieldOptionsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("SelectedColumns"))
+  {
+    Aws::Utils::Array<JsonView> selectedColumnsJsonList = jsonValue.GetArray("SelectedColumns");
+    for(unsigned selectedColumnsIndex = 0; selectedColumnsIndex < selectedColumnsJsonList.GetLength(); ++selectedColumnsIndex)
+    {
+      m_selectedColumns.push_back(selectedColumnsJsonList[selectedColumnsIndex].AsObject());
+    }
+    m_selectedColumnsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -73,6 +69,17 @@ JsonValue FilterOperationSelectedFieldsConfiguration::Jsonize() const
   if(m_selectedFieldOptionsHasBeenSet)
   {
    payload.WithString("SelectedFieldOptions", SelectedFieldOptionsMapper::GetNameForSelectedFieldOptions(m_selectedFieldOptions));
+  }
+
+  if(m_selectedColumnsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> selectedColumnsJsonList(m_selectedColumns.size());
+   for(unsigned selectedColumnsIndex = 0; selectedColumnsIndex < selectedColumnsJsonList.GetLength(); ++selectedColumnsIndex)
+   {
+     selectedColumnsJsonList[selectedColumnsIndex].AsObject(m_selectedColumns[selectedColumnsIndex].Jsonize());
+   }
+   payload.WithArray("SelectedColumns", std::move(selectedColumnsJsonList));
+
   }
 
   return payload;

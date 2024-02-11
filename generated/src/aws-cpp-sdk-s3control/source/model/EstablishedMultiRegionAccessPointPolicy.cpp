@@ -20,13 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-EstablishedMultiRegionAccessPointPolicy::EstablishedMultiRegionAccessPointPolicy() : 
-    m_policyHasBeenSet(false)
-{
-}
-
-EstablishedMultiRegionAccessPointPolicy::EstablishedMultiRegionAccessPointPolicy(const XmlNode& xmlNode) : 
-    m_policyHasBeenSet(false)
+EstablishedMultiRegionAccessPointPolicy::EstablishedMultiRegionAccessPointPolicy(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

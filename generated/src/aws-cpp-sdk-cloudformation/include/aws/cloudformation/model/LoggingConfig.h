@@ -32,7 +32,7 @@ namespace Model
   class LoggingConfig
   {
   public:
-    AWS_CLOUDFORMATION_API LoggingConfig();
+    AWS_CLOUDFORMATION_API LoggingConfig() = default;
     AWS_CLOUDFORMATION_API LoggingConfig(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFORMATION_API LoggingConfig& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,103 +40,31 @@ namespace Model
     AWS_CLOUDFORMATION_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the role that CloudFormation should assume
      * when sending log entries to CloudWatch Logs.</p>
      */
-    inline const Aws::String& GetLogRoleArn() const{ return m_logRoleArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the role that CloudFormation should assume
-     * when sending log entries to CloudWatch Logs.</p>
-     */
+    inline const Aws::String& GetLogRoleArn() const { return m_logRoleArn; }
     inline bool LogRoleArnHasBeenSet() const { return m_logRoleArnHasBeenSet; }
+    template<typename LogRoleArnT = Aws::String>
+    void SetLogRoleArn(LogRoleArnT&& value) { m_logRoleArnHasBeenSet = true; m_logRoleArn = std::forward<LogRoleArnT>(value); }
+    template<typename LogRoleArnT = Aws::String>
+    LoggingConfig& WithLogRoleArn(LogRoleArnT&& value) { SetLogRoleArn(std::forward<LogRoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the role that CloudFormation should assume
-     * when sending log entries to CloudWatch Logs.</p>
-     */
-    inline void SetLogRoleArn(const Aws::String& value) { m_logRoleArnHasBeenSet = true; m_logRoleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the role that CloudFormation should assume
-     * when sending log entries to CloudWatch Logs.</p>
-     */
-    inline void SetLogRoleArn(Aws::String&& value) { m_logRoleArnHasBeenSet = true; m_logRoleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the role that CloudFormation should assume
-     * when sending log entries to CloudWatch Logs.</p>
-     */
-    inline void SetLogRoleArn(const char* value) { m_logRoleArnHasBeenSet = true; m_logRoleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the role that CloudFormation should assume
-     * when sending log entries to CloudWatch Logs.</p>
-     */
-    inline LoggingConfig& WithLogRoleArn(const Aws::String& value) { SetLogRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the role that CloudFormation should assume
-     * when sending log entries to CloudWatch Logs.</p>
-     */
-    inline LoggingConfig& WithLogRoleArn(Aws::String&& value) { SetLogRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the role that CloudFormation should assume
-     * when sending log entries to CloudWatch Logs.</p>
-     */
-    inline LoggingConfig& WithLogRoleArn(const char* value) { SetLogRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon CloudWatch Logs group to which CloudFormation sends error logging
      * information when invoking the extension's handlers.</p>
      */
-    inline const Aws::String& GetLogGroupName() const{ return m_logGroupName; }
-
-    /**
-     * <p>The Amazon CloudWatch Logs group to which CloudFormation sends error logging
-     * information when invoking the extension's handlers.</p>
-     */
+    inline const Aws::String& GetLogGroupName() const { return m_logGroupName; }
     inline bool LogGroupNameHasBeenSet() const { return m_logGroupNameHasBeenSet; }
-
-    /**
-     * <p>The Amazon CloudWatch Logs group to which CloudFormation sends error logging
-     * information when invoking the extension's handlers.</p>
-     */
-    inline void SetLogGroupName(const Aws::String& value) { m_logGroupNameHasBeenSet = true; m_logGroupName = value; }
-
-    /**
-     * <p>The Amazon CloudWatch Logs group to which CloudFormation sends error logging
-     * information when invoking the extension's handlers.</p>
-     */
-    inline void SetLogGroupName(Aws::String&& value) { m_logGroupNameHasBeenSet = true; m_logGroupName = std::move(value); }
-
-    /**
-     * <p>The Amazon CloudWatch Logs group to which CloudFormation sends error logging
-     * information when invoking the extension's handlers.</p>
-     */
-    inline void SetLogGroupName(const char* value) { m_logGroupNameHasBeenSet = true; m_logGroupName.assign(value); }
-
-    /**
-     * <p>The Amazon CloudWatch Logs group to which CloudFormation sends error logging
-     * information when invoking the extension's handlers.</p>
-     */
-    inline LoggingConfig& WithLogGroupName(const Aws::String& value) { SetLogGroupName(value); return *this;}
-
-    /**
-     * <p>The Amazon CloudWatch Logs group to which CloudFormation sends error logging
-     * information when invoking the extension's handlers.</p>
-     */
-    inline LoggingConfig& WithLogGroupName(Aws::String&& value) { SetLogGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon CloudWatch Logs group to which CloudFormation sends error logging
-     * information when invoking the extension's handlers.</p>
-     */
-    inline LoggingConfig& WithLogGroupName(const char* value) { SetLogGroupName(value); return *this;}
-
+    template<typename LogGroupNameT = Aws::String>
+    void SetLogGroupName(LogGroupNameT&& value) { m_logGroupNameHasBeenSet = true; m_logGroupName = std::forward<LogGroupNameT>(value); }
+    template<typename LogGroupNameT = Aws::String>
+    LoggingConfig& WithLogGroupName(LogGroupNameT&& value) { SetLogGroupName(std::forward<LogGroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_logRoleArn;

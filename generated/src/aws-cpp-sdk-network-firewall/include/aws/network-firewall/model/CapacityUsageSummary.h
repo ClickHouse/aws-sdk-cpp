@@ -32,48 +32,24 @@ namespace Model
   class CapacityUsageSummary
   {
   public:
-    AWS_NETWORKFIREWALL_API CapacityUsageSummary();
+    AWS_NETWORKFIREWALL_API CapacityUsageSummary() = default;
     AWS_NETWORKFIREWALL_API CapacityUsageSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKFIREWALL_API CapacityUsageSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKFIREWALL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Describes the capacity usage of the CIDR blocks used by the IP set references
      * in a firewall.</p>
      */
-    inline const CIDRSummary& GetCIDRs() const{ return m_cIDRs; }
-
-    /**
-     * <p>Describes the capacity usage of the CIDR blocks used by the IP set references
-     * in a firewall.</p>
-     */
+    inline const CIDRSummary& GetCIDRs() const { return m_cIDRs; }
     inline bool CIDRsHasBeenSet() const { return m_cIDRsHasBeenSet; }
-
-    /**
-     * <p>Describes the capacity usage of the CIDR blocks used by the IP set references
-     * in a firewall.</p>
-     */
-    inline void SetCIDRs(const CIDRSummary& value) { m_cIDRsHasBeenSet = true; m_cIDRs = value; }
-
-    /**
-     * <p>Describes the capacity usage of the CIDR blocks used by the IP set references
-     * in a firewall.</p>
-     */
-    inline void SetCIDRs(CIDRSummary&& value) { m_cIDRsHasBeenSet = true; m_cIDRs = std::move(value); }
-
-    /**
-     * <p>Describes the capacity usage of the CIDR blocks used by the IP set references
-     * in a firewall.</p>
-     */
-    inline CapacityUsageSummary& WithCIDRs(const CIDRSummary& value) { SetCIDRs(value); return *this;}
-
-    /**
-     * <p>Describes the capacity usage of the CIDR blocks used by the IP set references
-     * in a firewall.</p>
-     */
-    inline CapacityUsageSummary& WithCIDRs(CIDRSummary&& value) { SetCIDRs(std::move(value)); return *this;}
-
+    template<typename CIDRsT = CIDRSummary>
+    void SetCIDRs(CIDRsT&& value) { m_cIDRsHasBeenSet = true; m_cIDRs = std::forward<CIDRsT>(value); }
+    template<typename CIDRsT = CIDRSummary>
+    CapacityUsageSummary& WithCIDRs(CIDRsT&& value) { SetCIDRs(std::forward<CIDRsT>(value)); return *this;}
+    ///@}
   private:
 
     CIDRSummary m_cIDRs;

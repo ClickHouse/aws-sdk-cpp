@@ -21,7 +21,7 @@ namespace Model
   class DescribeFleetPortSettingsRequest : public GameLiftRequest
   {
   public:
-    AWS_GAMELIFT_API DescribeFleetPortSettingsRequest();
+    AWS_GAMELIFT_API DescribeFleetPortSettingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,103 +34,31 @@ namespace Model
     AWS_GAMELIFT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>A unique identifier for the fleet to retrieve port settings for. You can use
      * either the fleet ID or ARN value.</p>
      */
-    inline const Aws::String& GetFleetId() const{ return m_fleetId; }
-
-    /**
-     * <p>A unique identifier for the fleet to retrieve port settings for. You can use
-     * either the fleet ID or ARN value.</p>
-     */
+    inline const Aws::String& GetFleetId() const { return m_fleetId; }
     inline bool FleetIdHasBeenSet() const { return m_fleetIdHasBeenSet; }
+    template<typename FleetIdT = Aws::String>
+    void SetFleetId(FleetIdT&& value) { m_fleetIdHasBeenSet = true; m_fleetId = std::forward<FleetIdT>(value); }
+    template<typename FleetIdT = Aws::String>
+    DescribeFleetPortSettingsRequest& WithFleetId(FleetIdT&& value) { SetFleetId(std::forward<FleetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the fleet to retrieve port settings for. You can use
-     * either the fleet ID or ARN value.</p>
-     */
-    inline void SetFleetId(const Aws::String& value) { m_fleetIdHasBeenSet = true; m_fleetId = value; }
-
-    /**
-     * <p>A unique identifier for the fleet to retrieve port settings for. You can use
-     * either the fleet ID or ARN value.</p>
-     */
-    inline void SetFleetId(Aws::String&& value) { m_fleetIdHasBeenSet = true; m_fleetId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the fleet to retrieve port settings for. You can use
-     * either the fleet ID or ARN value.</p>
-     */
-    inline void SetFleetId(const char* value) { m_fleetIdHasBeenSet = true; m_fleetId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the fleet to retrieve port settings for. You can use
-     * either the fleet ID or ARN value.</p>
-     */
-    inline DescribeFleetPortSettingsRequest& WithFleetId(const Aws::String& value) { SetFleetId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the fleet to retrieve port settings for. You can use
-     * either the fleet ID or ARN value.</p>
-     */
-    inline DescribeFleetPortSettingsRequest& WithFleetId(Aws::String&& value) { SetFleetId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the fleet to retrieve port settings for. You can use
-     * either the fleet ID or ARN value.</p>
-     */
-    inline DescribeFleetPortSettingsRequest& WithFleetId(const char* value) { SetFleetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A remote location to check for status of port setting updates. Use the Amazon
      * Web Services Region code format, such as <code>us-west-2</code>.</p>
      */
-    inline const Aws::String& GetLocation() const{ return m_location; }
-
-    /**
-     * <p>A remote location to check for status of port setting updates. Use the Amazon
-     * Web Services Region code format, such as <code>us-west-2</code>.</p>
-     */
+    inline const Aws::String& GetLocation() const { return m_location; }
     inline bool LocationHasBeenSet() const { return m_locationHasBeenSet; }
-
-    /**
-     * <p>A remote location to check for status of port setting updates. Use the Amazon
-     * Web Services Region code format, such as <code>us-west-2</code>.</p>
-     */
-    inline void SetLocation(const Aws::String& value) { m_locationHasBeenSet = true; m_location = value; }
-
-    /**
-     * <p>A remote location to check for status of port setting updates. Use the Amazon
-     * Web Services Region code format, such as <code>us-west-2</code>.</p>
-     */
-    inline void SetLocation(Aws::String&& value) { m_locationHasBeenSet = true; m_location = std::move(value); }
-
-    /**
-     * <p>A remote location to check for status of port setting updates. Use the Amazon
-     * Web Services Region code format, such as <code>us-west-2</code>.</p>
-     */
-    inline void SetLocation(const char* value) { m_locationHasBeenSet = true; m_location.assign(value); }
-
-    /**
-     * <p>A remote location to check for status of port setting updates. Use the Amazon
-     * Web Services Region code format, such as <code>us-west-2</code>.</p>
-     */
-    inline DescribeFleetPortSettingsRequest& WithLocation(const Aws::String& value) { SetLocation(value); return *this;}
-
-    /**
-     * <p>A remote location to check for status of port setting updates. Use the Amazon
-     * Web Services Region code format, such as <code>us-west-2</code>.</p>
-     */
-    inline DescribeFleetPortSettingsRequest& WithLocation(Aws::String&& value) { SetLocation(std::move(value)); return *this;}
-
-    /**
-     * <p>A remote location to check for status of port setting updates. Use the Amazon
-     * Web Services Region code format, such as <code>us-west-2</code>.</p>
-     */
-    inline DescribeFleetPortSettingsRequest& WithLocation(const char* value) { SetLocation(value); return *this;}
-
+    template<typename LocationT = Aws::String>
+    void SetLocation(LocationT&& value) { m_locationHasBeenSet = true; m_location = std::forward<LocationT>(value); }
+    template<typename LocationT = Aws::String>
+    DescribeFleetPortSettingsRequest& WithLocation(LocationT&& value) { SetLocation(std::forward<LocationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_fleetId;

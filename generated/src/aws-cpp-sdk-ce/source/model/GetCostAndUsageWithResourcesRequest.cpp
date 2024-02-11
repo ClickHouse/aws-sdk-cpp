@@ -12,17 +12,6 @@ using namespace Aws::CostExplorer::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetCostAndUsageWithResourcesRequest::GetCostAndUsageWithResourcesRequest() : 
-    m_timePeriodHasBeenSet(false),
-    m_granularity(Granularity::NOT_SET),
-    m_granularityHasBeenSet(false),
-    m_filterHasBeenSet(false),
-    m_metricsHasBeenSet(false),
-    m_groupByHasBeenSet(false),
-    m_nextPageTokenHasBeenSet(false)
-{
-}
-
 Aws::String GetCostAndUsageWithResourcesRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -63,6 +52,12 @@ Aws::String GetCostAndUsageWithResourcesRequest::SerializePayload() const
      groupByJsonList[groupByIndex].AsObject(m_groupBy[groupByIndex].Jsonize());
    }
    payload.WithArray("GroupBy", std::move(groupByJsonList));
+
+  }
+
+  if(m_billingViewArnHasBeenSet)
+  {
+   payload.WithString("BillingViewArn", m_billingViewArn);
 
   }
 

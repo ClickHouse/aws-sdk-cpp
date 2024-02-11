@@ -18,17 +18,7 @@ namespace DynamoDB
 namespace Model
 {
 
-Endpoint::Endpoint() : 
-    m_addressHasBeenSet(false),
-    m_cachePeriodInMinutes(0),
-    m_cachePeriodInMinutesHasBeenSet(false)
-{
-}
-
-Endpoint::Endpoint(JsonView jsonValue) : 
-    m_addressHasBeenSet(false),
-    m_cachePeriodInMinutes(0),
-    m_cachePeriodInMinutesHasBeenSet(false)
+Endpoint::Endpoint(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ Endpoint& Endpoint::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Address"))
   {
     m_address = jsonValue.GetString("Address");
-
     m_addressHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CachePeriodInMinutes"))
   {
     m_cachePeriodInMinutes = jsonValue.GetInt64("CachePeriodInMinutes");
-
     m_cachePeriodInMinutesHasBeenSet = true;
   }
-
   return *this;
 }
 

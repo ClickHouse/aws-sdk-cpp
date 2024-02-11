@@ -32,7 +32,7 @@ namespace Model
   class InvalidFirehoseDestinationException
   {
   public:
-    AWS_SES_API InvalidFirehoseDestinationException();
+    AWS_SES_API InvalidFirehoseDestinationException() = default;
     AWS_SES_API InvalidFirehoseDestinationException(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_SES_API InvalidFirehoseDestinationException& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,87 +40,29 @@ namespace Model
     AWS_SES_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Indicates that the configuration set does not exist.</p>
      */
-    inline const Aws::String& GetConfigurationSetName() const{ return m_configurationSetName; }
-
-    /**
-     * <p>Indicates that the configuration set does not exist.</p>
-     */
+    inline const Aws::String& GetConfigurationSetName() const { return m_configurationSetName; }
     inline bool ConfigurationSetNameHasBeenSet() const { return m_configurationSetNameHasBeenSet; }
+    template<typename ConfigurationSetNameT = Aws::String>
+    void SetConfigurationSetName(ConfigurationSetNameT&& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = std::forward<ConfigurationSetNameT>(value); }
+    template<typename ConfigurationSetNameT = Aws::String>
+    InvalidFirehoseDestinationException& WithConfigurationSetName(ConfigurationSetNameT&& value) { SetConfigurationSetName(std::forward<ConfigurationSetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates that the configuration set does not exist.</p>
-     */
-    inline void SetConfigurationSetName(const Aws::String& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = value; }
-
-    /**
-     * <p>Indicates that the configuration set does not exist.</p>
-     */
-    inline void SetConfigurationSetName(Aws::String&& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = std::move(value); }
-
-    /**
-     * <p>Indicates that the configuration set does not exist.</p>
-     */
-    inline void SetConfigurationSetName(const char* value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName.assign(value); }
-
-    /**
-     * <p>Indicates that the configuration set does not exist.</p>
-     */
-    inline InvalidFirehoseDestinationException& WithConfigurationSetName(const Aws::String& value) { SetConfigurationSetName(value); return *this;}
-
-    /**
-     * <p>Indicates that the configuration set does not exist.</p>
-     */
-    inline InvalidFirehoseDestinationException& WithConfigurationSetName(Aws::String&& value) { SetConfigurationSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates that the configuration set does not exist.</p>
-     */
-    inline InvalidFirehoseDestinationException& WithConfigurationSetName(const char* value) { SetConfigurationSetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates that the event destination does not exist.</p>
      */
-    inline const Aws::String& GetEventDestinationName() const{ return m_eventDestinationName; }
-
-    /**
-     * <p>Indicates that the event destination does not exist.</p>
-     */
+    inline const Aws::String& GetEventDestinationName() const { return m_eventDestinationName; }
     inline bool EventDestinationNameHasBeenSet() const { return m_eventDestinationNameHasBeenSet; }
-
-    /**
-     * <p>Indicates that the event destination does not exist.</p>
-     */
-    inline void SetEventDestinationName(const Aws::String& value) { m_eventDestinationNameHasBeenSet = true; m_eventDestinationName = value; }
-
-    /**
-     * <p>Indicates that the event destination does not exist.</p>
-     */
-    inline void SetEventDestinationName(Aws::String&& value) { m_eventDestinationNameHasBeenSet = true; m_eventDestinationName = std::move(value); }
-
-    /**
-     * <p>Indicates that the event destination does not exist.</p>
-     */
-    inline void SetEventDestinationName(const char* value) { m_eventDestinationNameHasBeenSet = true; m_eventDestinationName.assign(value); }
-
-    /**
-     * <p>Indicates that the event destination does not exist.</p>
-     */
-    inline InvalidFirehoseDestinationException& WithEventDestinationName(const Aws::String& value) { SetEventDestinationName(value); return *this;}
-
-    /**
-     * <p>Indicates that the event destination does not exist.</p>
-     */
-    inline InvalidFirehoseDestinationException& WithEventDestinationName(Aws::String&& value) { SetEventDestinationName(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates that the event destination does not exist.</p>
-     */
-    inline InvalidFirehoseDestinationException& WithEventDestinationName(const char* value) { SetEventDestinationName(value); return *this;}
-
+    template<typename EventDestinationNameT = Aws::String>
+    void SetEventDestinationName(EventDestinationNameT&& value) { m_eventDestinationNameHasBeenSet = true; m_eventDestinationName = std::forward<EventDestinationNameT>(value); }
+    template<typename EventDestinationNameT = Aws::String>
+    InvalidFirehoseDestinationException& WithEventDestinationName(EventDestinationNameT&& value) { SetEventDestinationName(std::forward<EventDestinationNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_configurationSetName;

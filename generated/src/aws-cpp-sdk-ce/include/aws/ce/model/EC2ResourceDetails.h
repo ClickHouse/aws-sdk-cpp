@@ -31,404 +31,122 @@ namespace Model
   class EC2ResourceDetails
   {
   public:
-    AWS_COSTEXPLORER_API EC2ResourceDetails();
+    AWS_COSTEXPLORER_API EC2ResourceDetails() = default;
     AWS_COSTEXPLORER_API EC2ResourceDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API EC2ResourceDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The hourly public On-Demand rate for the instance type.</p>
      */
-    inline const Aws::String& GetHourlyOnDemandRate() const{ return m_hourlyOnDemandRate; }
-
-    /**
-     * <p>The hourly public On-Demand rate for the instance type.</p>
-     */
+    inline const Aws::String& GetHourlyOnDemandRate() const { return m_hourlyOnDemandRate; }
     inline bool HourlyOnDemandRateHasBeenSet() const { return m_hourlyOnDemandRateHasBeenSet; }
+    template<typename HourlyOnDemandRateT = Aws::String>
+    void SetHourlyOnDemandRate(HourlyOnDemandRateT&& value) { m_hourlyOnDemandRateHasBeenSet = true; m_hourlyOnDemandRate = std::forward<HourlyOnDemandRateT>(value); }
+    template<typename HourlyOnDemandRateT = Aws::String>
+    EC2ResourceDetails& WithHourlyOnDemandRate(HourlyOnDemandRateT&& value) { SetHourlyOnDemandRate(std::forward<HourlyOnDemandRateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The hourly public On-Demand rate for the instance type.</p>
-     */
-    inline void SetHourlyOnDemandRate(const Aws::String& value) { m_hourlyOnDemandRateHasBeenSet = true; m_hourlyOnDemandRate = value; }
-
-    /**
-     * <p>The hourly public On-Demand rate for the instance type.</p>
-     */
-    inline void SetHourlyOnDemandRate(Aws::String&& value) { m_hourlyOnDemandRateHasBeenSet = true; m_hourlyOnDemandRate = std::move(value); }
-
-    /**
-     * <p>The hourly public On-Demand rate for the instance type.</p>
-     */
-    inline void SetHourlyOnDemandRate(const char* value) { m_hourlyOnDemandRateHasBeenSet = true; m_hourlyOnDemandRate.assign(value); }
-
-    /**
-     * <p>The hourly public On-Demand rate for the instance type.</p>
-     */
-    inline EC2ResourceDetails& WithHourlyOnDemandRate(const Aws::String& value) { SetHourlyOnDemandRate(value); return *this;}
-
-    /**
-     * <p>The hourly public On-Demand rate for the instance type.</p>
-     */
-    inline EC2ResourceDetails& WithHourlyOnDemandRate(Aws::String&& value) { SetHourlyOnDemandRate(std::move(value)); return *this;}
-
-    /**
-     * <p>The hourly public On-Demand rate for the instance type.</p>
-     */
-    inline EC2ResourceDetails& WithHourlyOnDemandRate(const char* value) { SetHourlyOnDemandRate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of Amazon Web Services instance.</p>
      */
-    inline const Aws::String& GetInstanceType() const{ return m_instanceType; }
-
-    /**
-     * <p>The type of Amazon Web Services instance.</p>
-     */
+    inline const Aws::String& GetInstanceType() const { return m_instanceType; }
     inline bool InstanceTypeHasBeenSet() const { return m_instanceTypeHasBeenSet; }
+    template<typename InstanceTypeT = Aws::String>
+    void SetInstanceType(InstanceTypeT&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::forward<InstanceTypeT>(value); }
+    template<typename InstanceTypeT = Aws::String>
+    EC2ResourceDetails& WithInstanceType(InstanceTypeT&& value) { SetInstanceType(std::forward<InstanceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of Amazon Web Services instance.</p>
-     */
-    inline void SetInstanceType(const Aws::String& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
-
-    /**
-     * <p>The type of Amazon Web Services instance.</p>
-     */
-    inline void SetInstanceType(Aws::String&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
-
-    /**
-     * <p>The type of Amazon Web Services instance.</p>
-     */
-    inline void SetInstanceType(const char* value) { m_instanceTypeHasBeenSet = true; m_instanceType.assign(value); }
-
-    /**
-     * <p>The type of Amazon Web Services instance.</p>
-     */
-    inline EC2ResourceDetails& WithInstanceType(const Aws::String& value) { SetInstanceType(value); return *this;}
-
-    /**
-     * <p>The type of Amazon Web Services instance.</p>
-     */
-    inline EC2ResourceDetails& WithInstanceType(Aws::String&& value) { SetInstanceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of Amazon Web Services instance.</p>
-     */
-    inline EC2ResourceDetails& WithInstanceType(const char* value) { SetInstanceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The platform of the Amazon Web Services instance. The platform is the
      * specific combination of operating system, license model, and software on an
      * instance.</p>
      */
-    inline const Aws::String& GetPlatform() const{ return m_platform; }
-
-    /**
-     * <p>The platform of the Amazon Web Services instance. The platform is the
-     * specific combination of operating system, license model, and software on an
-     * instance.</p>
-     */
+    inline const Aws::String& GetPlatform() const { return m_platform; }
     inline bool PlatformHasBeenSet() const { return m_platformHasBeenSet; }
+    template<typename PlatformT = Aws::String>
+    void SetPlatform(PlatformT&& value) { m_platformHasBeenSet = true; m_platform = std::forward<PlatformT>(value); }
+    template<typename PlatformT = Aws::String>
+    EC2ResourceDetails& WithPlatform(PlatformT&& value) { SetPlatform(std::forward<PlatformT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The platform of the Amazon Web Services instance. The platform is the
-     * specific combination of operating system, license model, and software on an
-     * instance.</p>
-     */
-    inline void SetPlatform(const Aws::String& value) { m_platformHasBeenSet = true; m_platform = value; }
-
-    /**
-     * <p>The platform of the Amazon Web Services instance. The platform is the
-     * specific combination of operating system, license model, and software on an
-     * instance.</p>
-     */
-    inline void SetPlatform(Aws::String&& value) { m_platformHasBeenSet = true; m_platform = std::move(value); }
-
-    /**
-     * <p>The platform of the Amazon Web Services instance. The platform is the
-     * specific combination of operating system, license model, and software on an
-     * instance.</p>
-     */
-    inline void SetPlatform(const char* value) { m_platformHasBeenSet = true; m_platform.assign(value); }
-
-    /**
-     * <p>The platform of the Amazon Web Services instance. The platform is the
-     * specific combination of operating system, license model, and software on an
-     * instance.</p>
-     */
-    inline EC2ResourceDetails& WithPlatform(const Aws::String& value) { SetPlatform(value); return *this;}
-
-    /**
-     * <p>The platform of the Amazon Web Services instance. The platform is the
-     * specific combination of operating system, license model, and software on an
-     * instance.</p>
-     */
-    inline EC2ResourceDetails& WithPlatform(Aws::String&& value) { SetPlatform(std::move(value)); return *this;}
-
-    /**
-     * <p>The platform of the Amazon Web Services instance. The platform is the
-     * specific combination of operating system, license model, and software on an
-     * instance.</p>
-     */
-    inline EC2ResourceDetails& WithPlatform(const char* value) { SetPlatform(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services Region of the instance.</p>
      */
-    inline const Aws::String& GetRegion() const{ return m_region; }
-
-    /**
-     * <p>The Amazon Web Services Region of the instance.</p>
-     */
+    inline const Aws::String& GetRegion() const { return m_region; }
     inline bool RegionHasBeenSet() const { return m_regionHasBeenSet; }
+    template<typename RegionT = Aws::String>
+    void SetRegion(RegionT&& value) { m_regionHasBeenSet = true; m_region = std::forward<RegionT>(value); }
+    template<typename RegionT = Aws::String>
+    EC2ResourceDetails& WithRegion(RegionT&& value) { SetRegion(std::forward<RegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services Region of the instance.</p>
-     */
-    inline void SetRegion(const Aws::String& value) { m_regionHasBeenSet = true; m_region = value; }
-
-    /**
-     * <p>The Amazon Web Services Region of the instance.</p>
-     */
-    inline void SetRegion(Aws::String&& value) { m_regionHasBeenSet = true; m_region = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services Region of the instance.</p>
-     */
-    inline void SetRegion(const char* value) { m_regionHasBeenSet = true; m_region.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services Region of the instance.</p>
-     */
-    inline EC2ResourceDetails& WithRegion(const Aws::String& value) { SetRegion(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Region of the instance.</p>
-     */
-    inline EC2ResourceDetails& WithRegion(Aws::String&& value) { SetRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Region of the instance.</p>
-     */
-    inline EC2ResourceDetails& WithRegion(const char* value) { SetRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The SKU of the product.</p>
      */
-    inline const Aws::String& GetSku() const{ return m_sku; }
-
-    /**
-     * <p>The SKU of the product.</p>
-     */
+    inline const Aws::String& GetSku() const { return m_sku; }
     inline bool SkuHasBeenSet() const { return m_skuHasBeenSet; }
+    template<typename SkuT = Aws::String>
+    void SetSku(SkuT&& value) { m_skuHasBeenSet = true; m_sku = std::forward<SkuT>(value); }
+    template<typename SkuT = Aws::String>
+    EC2ResourceDetails& WithSku(SkuT&& value) { SetSku(std::forward<SkuT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The SKU of the product.</p>
-     */
-    inline void SetSku(const Aws::String& value) { m_skuHasBeenSet = true; m_sku = value; }
-
-    /**
-     * <p>The SKU of the product.</p>
-     */
-    inline void SetSku(Aws::String&& value) { m_skuHasBeenSet = true; m_sku = std::move(value); }
-
-    /**
-     * <p>The SKU of the product.</p>
-     */
-    inline void SetSku(const char* value) { m_skuHasBeenSet = true; m_sku.assign(value); }
-
-    /**
-     * <p>The SKU of the product.</p>
-     */
-    inline EC2ResourceDetails& WithSku(const Aws::String& value) { SetSku(value); return *this;}
-
-    /**
-     * <p>The SKU of the product.</p>
-     */
-    inline EC2ResourceDetails& WithSku(Aws::String&& value) { SetSku(std::move(value)); return *this;}
-
-    /**
-     * <p>The SKU of the product.</p>
-     */
-    inline EC2ResourceDetails& WithSku(const char* value) { SetSku(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The memory capacity of the Amazon Web Services instance.</p>
      */
-    inline const Aws::String& GetMemory() const{ return m_memory; }
-
-    /**
-     * <p>The memory capacity of the Amazon Web Services instance.</p>
-     */
+    inline const Aws::String& GetMemory() const { return m_memory; }
     inline bool MemoryHasBeenSet() const { return m_memoryHasBeenSet; }
+    template<typename MemoryT = Aws::String>
+    void SetMemory(MemoryT&& value) { m_memoryHasBeenSet = true; m_memory = std::forward<MemoryT>(value); }
+    template<typename MemoryT = Aws::String>
+    EC2ResourceDetails& WithMemory(MemoryT&& value) { SetMemory(std::forward<MemoryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The memory capacity of the Amazon Web Services instance.</p>
-     */
-    inline void SetMemory(const Aws::String& value) { m_memoryHasBeenSet = true; m_memory = value; }
-
-    /**
-     * <p>The memory capacity of the Amazon Web Services instance.</p>
-     */
-    inline void SetMemory(Aws::String&& value) { m_memoryHasBeenSet = true; m_memory = std::move(value); }
-
-    /**
-     * <p>The memory capacity of the Amazon Web Services instance.</p>
-     */
-    inline void SetMemory(const char* value) { m_memoryHasBeenSet = true; m_memory.assign(value); }
-
-    /**
-     * <p>The memory capacity of the Amazon Web Services instance.</p>
-     */
-    inline EC2ResourceDetails& WithMemory(const Aws::String& value) { SetMemory(value); return *this;}
-
-    /**
-     * <p>The memory capacity of the Amazon Web Services instance.</p>
-     */
-    inline EC2ResourceDetails& WithMemory(Aws::String&& value) { SetMemory(std::move(value)); return *this;}
-
-    /**
-     * <p>The memory capacity of the Amazon Web Services instance.</p>
-     */
-    inline EC2ResourceDetails& WithMemory(const char* value) { SetMemory(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The network performance capacity of the Amazon Web Services instance.</p>
      */
-    inline const Aws::String& GetNetworkPerformance() const{ return m_networkPerformance; }
-
-    /**
-     * <p>The network performance capacity of the Amazon Web Services instance.</p>
-     */
+    inline const Aws::String& GetNetworkPerformance() const { return m_networkPerformance; }
     inline bool NetworkPerformanceHasBeenSet() const { return m_networkPerformanceHasBeenSet; }
+    template<typename NetworkPerformanceT = Aws::String>
+    void SetNetworkPerformance(NetworkPerformanceT&& value) { m_networkPerformanceHasBeenSet = true; m_networkPerformance = std::forward<NetworkPerformanceT>(value); }
+    template<typename NetworkPerformanceT = Aws::String>
+    EC2ResourceDetails& WithNetworkPerformance(NetworkPerformanceT&& value) { SetNetworkPerformance(std::forward<NetworkPerformanceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The network performance capacity of the Amazon Web Services instance.</p>
-     */
-    inline void SetNetworkPerformance(const Aws::String& value) { m_networkPerformanceHasBeenSet = true; m_networkPerformance = value; }
-
-    /**
-     * <p>The network performance capacity of the Amazon Web Services instance.</p>
-     */
-    inline void SetNetworkPerformance(Aws::String&& value) { m_networkPerformanceHasBeenSet = true; m_networkPerformance = std::move(value); }
-
-    /**
-     * <p>The network performance capacity of the Amazon Web Services instance.</p>
-     */
-    inline void SetNetworkPerformance(const char* value) { m_networkPerformanceHasBeenSet = true; m_networkPerformance.assign(value); }
-
-    /**
-     * <p>The network performance capacity of the Amazon Web Services instance.</p>
-     */
-    inline EC2ResourceDetails& WithNetworkPerformance(const Aws::String& value) { SetNetworkPerformance(value); return *this;}
-
-    /**
-     * <p>The network performance capacity of the Amazon Web Services instance.</p>
-     */
-    inline EC2ResourceDetails& WithNetworkPerformance(Aws::String&& value) { SetNetworkPerformance(std::move(value)); return *this;}
-
-    /**
-     * <p>The network performance capacity of the Amazon Web Services instance.</p>
-     */
-    inline EC2ResourceDetails& WithNetworkPerformance(const char* value) { SetNetworkPerformance(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The disk storage of the Amazon Web Services instance. This doesn't include
      * EBS storage.</p>
      */
-    inline const Aws::String& GetStorage() const{ return m_storage; }
-
-    /**
-     * <p>The disk storage of the Amazon Web Services instance. This doesn't include
-     * EBS storage.</p>
-     */
+    inline const Aws::String& GetStorage() const { return m_storage; }
     inline bool StorageHasBeenSet() const { return m_storageHasBeenSet; }
+    template<typename StorageT = Aws::String>
+    void SetStorage(StorageT&& value) { m_storageHasBeenSet = true; m_storage = std::forward<StorageT>(value); }
+    template<typename StorageT = Aws::String>
+    EC2ResourceDetails& WithStorage(StorageT&& value) { SetStorage(std::forward<StorageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The disk storage of the Amazon Web Services instance. This doesn't include
-     * EBS storage.</p>
-     */
-    inline void SetStorage(const Aws::String& value) { m_storageHasBeenSet = true; m_storage = value; }
-
-    /**
-     * <p>The disk storage of the Amazon Web Services instance. This doesn't include
-     * EBS storage.</p>
-     */
-    inline void SetStorage(Aws::String&& value) { m_storageHasBeenSet = true; m_storage = std::move(value); }
-
-    /**
-     * <p>The disk storage of the Amazon Web Services instance. This doesn't include
-     * EBS storage.</p>
-     */
-    inline void SetStorage(const char* value) { m_storageHasBeenSet = true; m_storage.assign(value); }
-
-    /**
-     * <p>The disk storage of the Amazon Web Services instance. This doesn't include
-     * EBS storage.</p>
-     */
-    inline EC2ResourceDetails& WithStorage(const Aws::String& value) { SetStorage(value); return *this;}
-
-    /**
-     * <p>The disk storage of the Amazon Web Services instance. This doesn't include
-     * EBS storage.</p>
-     */
-    inline EC2ResourceDetails& WithStorage(Aws::String&& value) { SetStorage(std::move(value)); return *this;}
-
-    /**
-     * <p>The disk storage of the Amazon Web Services instance. This doesn't include
-     * EBS storage.</p>
-     */
-    inline EC2ResourceDetails& WithStorage(const char* value) { SetStorage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of VCPU cores in the Amazon Web Services instance type.</p>
      */
-    inline const Aws::String& GetVcpu() const{ return m_vcpu; }
-
-    /**
-     * <p>The number of VCPU cores in the Amazon Web Services instance type.</p>
-     */
+    inline const Aws::String& GetVcpu() const { return m_vcpu; }
     inline bool VcpuHasBeenSet() const { return m_vcpuHasBeenSet; }
-
-    /**
-     * <p>The number of VCPU cores in the Amazon Web Services instance type.</p>
-     */
-    inline void SetVcpu(const Aws::String& value) { m_vcpuHasBeenSet = true; m_vcpu = value; }
-
-    /**
-     * <p>The number of VCPU cores in the Amazon Web Services instance type.</p>
-     */
-    inline void SetVcpu(Aws::String&& value) { m_vcpuHasBeenSet = true; m_vcpu = std::move(value); }
-
-    /**
-     * <p>The number of VCPU cores in the Amazon Web Services instance type.</p>
-     */
-    inline void SetVcpu(const char* value) { m_vcpuHasBeenSet = true; m_vcpu.assign(value); }
-
-    /**
-     * <p>The number of VCPU cores in the Amazon Web Services instance type.</p>
-     */
-    inline EC2ResourceDetails& WithVcpu(const Aws::String& value) { SetVcpu(value); return *this;}
-
-    /**
-     * <p>The number of VCPU cores in the Amazon Web Services instance type.</p>
-     */
-    inline EC2ResourceDetails& WithVcpu(Aws::String&& value) { SetVcpu(std::move(value)); return *this;}
-
-    /**
-     * <p>The number of VCPU cores in the Amazon Web Services instance type.</p>
-     */
-    inline EC2ResourceDetails& WithVcpu(const char* value) { SetVcpu(value); return *this;}
-
+    template<typename VcpuT = Aws::String>
+    void SetVcpu(VcpuT&& value) { m_vcpuHasBeenSet = true; m_vcpu = std::forward<VcpuT>(value); }
+    template<typename VcpuT = Aws::String>
+    EC2ResourceDetails& WithVcpu(VcpuT&& value) { SetVcpu(std::forward<VcpuT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_hourlyOnDemandRate;

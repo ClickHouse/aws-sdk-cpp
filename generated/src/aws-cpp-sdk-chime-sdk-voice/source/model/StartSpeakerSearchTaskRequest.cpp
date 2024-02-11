@@ -12,14 +12,6 @@ using namespace Aws::ChimeSDKVoice::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartSpeakerSearchTaskRequest::StartSpeakerSearchTaskRequest() : 
-    m_voiceConnectorIdHasBeenSet(false),
-    m_transactionIdHasBeenSet(false),
-    m_voiceProfileDomainIdHasBeenSet(false),
-    m_clientRequestTokenHasBeenSet(false)
-{
-}
-
 Aws::String StartSpeakerSearchTaskRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -40,6 +32,11 @@ Aws::String StartSpeakerSearchTaskRequest::SerializePayload() const
   {
    payload.WithString("ClientRequestToken", m_clientRequestToken);
 
+  }
+
+  if(m_callLegHasBeenSet)
+  {
+   payload.WithString("CallLeg", CallLegTypeMapper::GetNameForCallLegType(m_callLeg));
   }
 
   return payload.View().WriteReadable();

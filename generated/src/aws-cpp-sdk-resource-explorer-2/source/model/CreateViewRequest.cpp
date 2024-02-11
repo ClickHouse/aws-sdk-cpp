@@ -12,16 +12,6 @@ using namespace Aws::ResourceExplorer2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateViewRequest::CreateViewRequest() : 
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_filtersHasBeenSet(false),
-    m_includedPropertiesHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_viewNameHasBeenSet(false)
-{
-}
-
 Aws::String CreateViewRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -46,6 +36,12 @@ Aws::String CreateViewRequest::SerializePayload() const
      includedPropertiesJsonList[includedPropertiesIndex].AsObject(m_includedProperties[includedPropertiesIndex].Jsonize());
    }
    payload.WithArray("IncludedProperties", std::move(includedPropertiesJsonList));
+
+  }
+
+  if(m_scopeHasBeenSet)
+  {
+   payload.WithString("Scope", m_scope);
 
   }
 

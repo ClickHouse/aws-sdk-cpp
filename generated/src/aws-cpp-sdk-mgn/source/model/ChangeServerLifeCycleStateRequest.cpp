@@ -12,15 +12,15 @@ using namespace Aws::mgn::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ChangeServerLifeCycleStateRequest::ChangeServerLifeCycleStateRequest() : 
-    m_lifeCycleHasBeenSet(false),
-    m_sourceServerIDHasBeenSet(false)
-{
-}
-
 Aws::String ChangeServerLifeCycleStateRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_accountIDHasBeenSet)
+  {
+   payload.WithString("accountID", m_accountID);
+
+  }
 
   if(m_lifeCycleHasBeenSet)
   {

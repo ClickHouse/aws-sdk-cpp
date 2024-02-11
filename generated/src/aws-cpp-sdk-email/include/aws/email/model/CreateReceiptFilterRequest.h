@@ -19,7 +19,7 @@ namespace Model
   /**
    * <p>Represents a request to create a new IP address filter. You use IP address
    * filters when you receive email with Amazon SES. For more information, see the <a
-   * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon
+   * href="https://docs.aws.amazon.com/ses/latest/dg/receiving-email-concepts.html">Amazon
    * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateReceiptFilterRequest">AWS
    * API Reference</a></p>
@@ -27,7 +27,7 @@ namespace Model
   class CreateReceiptFilterRequest : public SESRequest
   {
   public:
-    AWS_SES_API CreateReceiptFilterRequest();
+    AWS_SES_API CreateReceiptFilterRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,48 +42,19 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>A data structure that describes the IP address filter to create, which
      * consists of a name, an IP address range, and whether to allow or block mail from
      * it.</p>
      */
-    inline const ReceiptFilter& GetFilter() const{ return m_filter; }
-
-    /**
-     * <p>A data structure that describes the IP address filter to create, which
-     * consists of a name, an IP address range, and whether to allow or block mail from
-     * it.</p>
-     */
+    inline const ReceiptFilter& GetFilter() const { return m_filter; }
     inline bool FilterHasBeenSet() const { return m_filterHasBeenSet; }
-
-    /**
-     * <p>A data structure that describes the IP address filter to create, which
-     * consists of a name, an IP address range, and whether to allow or block mail from
-     * it.</p>
-     */
-    inline void SetFilter(const ReceiptFilter& value) { m_filterHasBeenSet = true; m_filter = value; }
-
-    /**
-     * <p>A data structure that describes the IP address filter to create, which
-     * consists of a name, an IP address range, and whether to allow or block mail from
-     * it.</p>
-     */
-    inline void SetFilter(ReceiptFilter&& value) { m_filterHasBeenSet = true; m_filter = std::move(value); }
-
-    /**
-     * <p>A data structure that describes the IP address filter to create, which
-     * consists of a name, an IP address range, and whether to allow or block mail from
-     * it.</p>
-     */
-    inline CreateReceiptFilterRequest& WithFilter(const ReceiptFilter& value) { SetFilter(value); return *this;}
-
-    /**
-     * <p>A data structure that describes the IP address filter to create, which
-     * consists of a name, an IP address range, and whether to allow or block mail from
-     * it.</p>
-     */
-    inline CreateReceiptFilterRequest& WithFilter(ReceiptFilter&& value) { SetFilter(std::move(value)); return *this;}
-
+    template<typename FilterT = ReceiptFilter>
+    void SetFilter(FilterT&& value) { m_filterHasBeenSet = true; m_filter = std::forward<FilterT>(value); }
+    template<typename FilterT = ReceiptFilter>
+    CreateReceiptFilterRequest& WithFilter(FilterT&& value) { SetFilter(std::forward<FilterT>(value)); return *this;}
+    ///@}
   private:
 
     ReceiptFilter m_filter;

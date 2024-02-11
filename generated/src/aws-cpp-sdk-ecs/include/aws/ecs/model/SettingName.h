@@ -21,7 +21,11 @@ namespace Model
     containerInstanceLongArnFormat,
     awsvpcTrunking,
     containerInsights,
-    fargateFIPSMode
+    fargateFIPSMode,
+    tagResourceAuthorization,
+    fargateTaskRetirementWaitPeriod,
+    guardDutyActivate,
+    defaultLogDriverMode
   };
 
 namespace SettingNameMapper

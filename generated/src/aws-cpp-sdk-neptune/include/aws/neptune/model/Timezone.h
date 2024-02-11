@@ -31,7 +31,7 @@ namespace Model
   class Timezone
   {
   public:
-    AWS_NEPTUNE_API Timezone();
+    AWS_NEPTUNE_API Timezone() = default;
     AWS_NEPTUNE_API Timezone(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_NEPTUNE_API Timezone& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -39,46 +39,17 @@ namespace Model
     AWS_NEPTUNE_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The name of the time zone.</p>
      */
-    inline const Aws::String& GetTimezoneName() const{ return m_timezoneName; }
-
-    /**
-     * <p>The name of the time zone.</p>
-     */
+    inline const Aws::String& GetTimezoneName() const { return m_timezoneName; }
     inline bool TimezoneNameHasBeenSet() const { return m_timezoneNameHasBeenSet; }
-
-    /**
-     * <p>The name of the time zone.</p>
-     */
-    inline void SetTimezoneName(const Aws::String& value) { m_timezoneNameHasBeenSet = true; m_timezoneName = value; }
-
-    /**
-     * <p>The name of the time zone.</p>
-     */
-    inline void SetTimezoneName(Aws::String&& value) { m_timezoneNameHasBeenSet = true; m_timezoneName = std::move(value); }
-
-    /**
-     * <p>The name of the time zone.</p>
-     */
-    inline void SetTimezoneName(const char* value) { m_timezoneNameHasBeenSet = true; m_timezoneName.assign(value); }
-
-    /**
-     * <p>The name of the time zone.</p>
-     */
-    inline Timezone& WithTimezoneName(const Aws::String& value) { SetTimezoneName(value); return *this;}
-
-    /**
-     * <p>The name of the time zone.</p>
-     */
-    inline Timezone& WithTimezoneName(Aws::String&& value) { SetTimezoneName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the time zone.</p>
-     */
-    inline Timezone& WithTimezoneName(const char* value) { SetTimezoneName(value); return *this;}
-
+    template<typename TimezoneNameT = Aws::String>
+    void SetTimezoneName(TimezoneNameT&& value) { m_timezoneNameHasBeenSet = true; m_timezoneName = std::forward<TimezoneNameT>(value); }
+    template<typename TimezoneNameT = Aws::String>
+    Timezone& WithTimezoneName(TimezoneNameT&& value) { SetTimezoneName(std::forward<TimezoneNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_timezoneName;

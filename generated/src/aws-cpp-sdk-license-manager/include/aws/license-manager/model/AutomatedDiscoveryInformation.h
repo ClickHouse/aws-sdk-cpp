@@ -31,45 +31,26 @@ namespace Model
   class AutomatedDiscoveryInformation
   {
   public:
-    AWS_LICENSEMANAGER_API AutomatedDiscoveryInformation();
+    AWS_LICENSEMANAGER_API AutomatedDiscoveryInformation() = default;
     AWS_LICENSEMANAGER_API AutomatedDiscoveryInformation(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGER_API AutomatedDiscoveryInformation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Time that automated discovery last ran.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastRunTime() const{ return m_lastRunTime; }
-
-    /**
-     * <p>Time that automated discovery last ran.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastRunTime() const { return m_lastRunTime; }
     inline bool LastRunTimeHasBeenSet() const { return m_lastRunTimeHasBeenSet; }
-
-    /**
-     * <p>Time that automated discovery last ran.</p>
-     */
-    inline void SetLastRunTime(const Aws::Utils::DateTime& value) { m_lastRunTimeHasBeenSet = true; m_lastRunTime = value; }
-
-    /**
-     * <p>Time that automated discovery last ran.</p>
-     */
-    inline void SetLastRunTime(Aws::Utils::DateTime&& value) { m_lastRunTimeHasBeenSet = true; m_lastRunTime = std::move(value); }
-
-    /**
-     * <p>Time that automated discovery last ran.</p>
-     */
-    inline AutomatedDiscoveryInformation& WithLastRunTime(const Aws::Utils::DateTime& value) { SetLastRunTime(value); return *this;}
-
-    /**
-     * <p>Time that automated discovery last ran.</p>
-     */
-    inline AutomatedDiscoveryInformation& WithLastRunTime(Aws::Utils::DateTime&& value) { SetLastRunTime(std::move(value)); return *this;}
-
+    template<typename LastRunTimeT = Aws::Utils::DateTime>
+    void SetLastRunTime(LastRunTimeT&& value) { m_lastRunTimeHasBeenSet = true; m_lastRunTime = std::forward<LastRunTimeT>(value); }
+    template<typename LastRunTimeT = Aws::Utils::DateTime>
+    AutomatedDiscoveryInformation& WithLastRunTime(LastRunTimeT&& value) { SetLastRunTime(std::forward<LastRunTimeT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_lastRunTime;
+    Aws::Utils::DateTime m_lastRunTime{};
     bool m_lastRunTimeHasBeenSet = false;
   };
 

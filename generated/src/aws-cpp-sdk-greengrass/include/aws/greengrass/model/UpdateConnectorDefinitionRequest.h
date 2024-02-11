@@ -21,7 +21,7 @@ namespace Model
   class UpdateConnectorDefinitionRequest : public GreengrassRequest
   {
   public:
-    AWS_GREENGRASS_API UpdateConnectorDefinitionRequest();
+    AWS_GREENGRASS_API UpdateConnectorDefinitionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_GREENGRASS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * The ID of the connector definition.
      */
-    inline const Aws::String& GetConnectorDefinitionId() const{ return m_connectorDefinitionId; }
-
-    /**
-     * The ID of the connector definition.
-     */
+    inline const Aws::String& GetConnectorDefinitionId() const { return m_connectorDefinitionId; }
     inline bool ConnectorDefinitionIdHasBeenSet() const { return m_connectorDefinitionIdHasBeenSet; }
+    template<typename ConnectorDefinitionIdT = Aws::String>
+    void SetConnectorDefinitionId(ConnectorDefinitionIdT&& value) { m_connectorDefinitionIdHasBeenSet = true; m_connectorDefinitionId = std::forward<ConnectorDefinitionIdT>(value); }
+    template<typename ConnectorDefinitionIdT = Aws::String>
+    UpdateConnectorDefinitionRequest& WithConnectorDefinitionId(ConnectorDefinitionIdT&& value) { SetConnectorDefinitionId(std::forward<ConnectorDefinitionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The ID of the connector definition.
-     */
-    inline void SetConnectorDefinitionId(const Aws::String& value) { m_connectorDefinitionIdHasBeenSet = true; m_connectorDefinitionId = value; }
-
-    /**
-     * The ID of the connector definition.
-     */
-    inline void SetConnectorDefinitionId(Aws::String&& value) { m_connectorDefinitionIdHasBeenSet = true; m_connectorDefinitionId = std::move(value); }
-
-    /**
-     * The ID of the connector definition.
-     */
-    inline void SetConnectorDefinitionId(const char* value) { m_connectorDefinitionIdHasBeenSet = true; m_connectorDefinitionId.assign(value); }
-
-    /**
-     * The ID of the connector definition.
-     */
-    inline UpdateConnectorDefinitionRequest& WithConnectorDefinitionId(const Aws::String& value) { SetConnectorDefinitionId(value); return *this;}
-
-    /**
-     * The ID of the connector definition.
-     */
-    inline UpdateConnectorDefinitionRequest& WithConnectorDefinitionId(Aws::String&& value) { SetConnectorDefinitionId(std::move(value)); return *this;}
-
-    /**
-     * The ID of the connector definition.
-     */
-    inline UpdateConnectorDefinitionRequest& WithConnectorDefinitionId(const char* value) { SetConnectorDefinitionId(value); return *this;}
-
-
+    ///@{
     /**
      * The name of the definition.
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * The name of the definition.
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * The name of the definition.
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * The name of the definition.
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * The name of the definition.
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * The name of the definition.
-     */
-    inline UpdateConnectorDefinitionRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * The name of the definition.
-     */
-    inline UpdateConnectorDefinitionRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * The name of the definition.
-     */
-    inline UpdateConnectorDefinitionRequest& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateConnectorDefinitionRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_connectorDefinitionId;

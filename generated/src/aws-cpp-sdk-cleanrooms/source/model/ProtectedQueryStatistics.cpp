@@ -18,15 +18,7 @@ namespace CleanRooms
 namespace Model
 {
 
-ProtectedQueryStatistics::ProtectedQueryStatistics() : 
-    m_totalDurationInMillis(0),
-    m_totalDurationInMillisHasBeenSet(false)
-{
-}
-
-ProtectedQueryStatistics::ProtectedQueryStatistics(JsonView jsonValue) : 
-    m_totalDurationInMillis(0),
-    m_totalDurationInMillisHasBeenSet(false)
+ProtectedQueryStatistics::ProtectedQueryStatistics(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,13 @@ ProtectedQueryStatistics& ProtectedQueryStatistics::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("totalDurationInMillis"))
   {
     m_totalDurationInMillis = jsonValue.GetInt64("totalDurationInMillis");
-
     m_totalDurationInMillisHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("billedResourceUtilization"))
+  {
+    m_billedResourceUtilization = jsonValue.GetObject("billedResourceUtilization");
+    m_billedResourceUtilizationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -50,6 +45,12 @@ JsonValue ProtectedQueryStatistics::Jsonize() const
   if(m_totalDurationInMillisHasBeenSet)
   {
    payload.WithInt64("totalDurationInMillis", m_totalDurationInMillis);
+
+  }
+
+  if(m_billedResourceUtilizationHasBeenSet)
+  {
+   payload.WithObject("billedResourceUtilization", m_billedResourceUtilization.Jsonize());
 
   }
 

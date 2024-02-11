@@ -13,13 +13,6 @@ using namespace Aws::tnb::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetSolFunctionPackageContentRequest::GetSolFunctionPackageContentRequest() : 
-    m_accept(PackageContentType::NOT_SET),
-    m_acceptHasBeenSet(false),
-    m_vnfPkgIdHasBeenSet(false)
-{
-}
-
 Aws::String GetSolFunctionPackageContentRequest::SerializePayload() const
 {
   return {};
@@ -29,7 +22,7 @@ Aws::Http::HeaderValueCollection GetSolFunctionPackageContentRequest::GetRequest
 {
   Aws::Http::HeaderValueCollection headers;
   Aws::StringStream ss;
-  if(m_acceptHasBeenSet)
+  if(m_acceptHasBeenSet && m_accept != PackageContentType::NOT_SET)
   {
     headers.emplace("accept", PackageContentTypeMapper::GetNameForPackageContentType(m_accept));
   }

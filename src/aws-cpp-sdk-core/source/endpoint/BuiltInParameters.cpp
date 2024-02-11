@@ -42,11 +42,11 @@ namespace Endpoint
             static const char* FIPS_SUFFIX = "-fips";
             if (config.region.rfind(FIPS_PREFIX, 0) == 0) {
                 // Backward compatibility layer for code hacking previous SDK version
-                Aws::String regionOverride = config.region.substr(sizeof(FIPS_PREFIX) - 1);
+                Aws::String regionOverride = config.region.substr(strlen(FIPS_PREFIX));
                 forceFIPS = true;
                 SetStringParameter(AWS_REGION, regionOverride);
             } else if (StringEndsWith(config.region, FIPS_SUFFIX)) {
-                Aws::String regionOverride = config.region.substr(0, config.region.size() - sizeof(FIPS_SUFFIX) - 1);
+                Aws::String regionOverride = config.region.substr(0, config.region.size() - strlen(FIPS_SUFFIX));
                 forceFIPS = true;
                 SetStringParameter(AWS_REGION, regionOverride);
             } else {
@@ -73,14 +73,9 @@ namespace Endpoint
         }
     }
 
-    void BuiltInParameters::SetFromClientConfiguration(const Client::GenericClientConfiguration<false>& config)
+    void BuiltInParameters::SetFromClientConfiguration(const Client::GenericClientConfiguration& config)
     {
         return SetFromClientConfiguration(static_cast<const Client::ClientConfiguration&>(config));
-    }
-
-    void BuiltInParameters::SetFromClientConfiguration(const Client::GenericClientConfiguration<true>& config)
-    {
-        SetFromClientConfiguration(static_cast<const Client::ClientConfiguration&>(config));
     }
 
     const BuiltInParameters::EndpointParameter& BuiltInParameters::GetParameter(const Aws::String& name) const
@@ -123,6 +118,11 @@ namespace Endpoint
     }
 
     void BuiltInParameters::SetBooleanParameter(Aws::String name, bool value)
+    {
+        return SetParameter(EndpointParameter(std::move(name), value, EndpointParameter::ParameterOrigin::BUILT_IN));
+    }
+
+    void BuiltInParameters::SetStringArrayParameter(Aws::String name, const Aws::Vector<Aws::String>&& value)
     {
         return SetParameter(EndpointParameter(std::move(name), value, EndpointParameter::ParameterOrigin::BUILT_IN));
     }

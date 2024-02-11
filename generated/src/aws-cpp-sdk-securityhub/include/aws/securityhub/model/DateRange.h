@@ -31,69 +31,37 @@ namespace Model
   class DateRange
   {
   public:
-    AWS_SECURITYHUB_API DateRange();
+    AWS_SECURITYHUB_API DateRange() = default;
     AWS_SECURITYHUB_API DateRange(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API DateRange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A date range value for the date filter.</p>
      */
-    inline int GetValue() const{ return m_value; }
-
-    /**
-     * <p>A date range value for the date filter.</p>
-     */
+    inline int GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>A date range value for the date filter.</p>
-     */
     inline void SetValue(int value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>A date range value for the date filter.</p>
-     */
     inline DateRange& WithValue(int value) { SetValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A date range unit for the date filter.</p>
      */
-    inline const DateRangeUnit& GetUnit() const{ return m_unit; }
-
-    /**
-     * <p>A date range unit for the date filter.</p>
-     */
+    inline DateRangeUnit GetUnit() const { return m_unit; }
     inline bool UnitHasBeenSet() const { return m_unitHasBeenSet; }
-
-    /**
-     * <p>A date range unit for the date filter.</p>
-     */
-    inline void SetUnit(const DateRangeUnit& value) { m_unitHasBeenSet = true; m_unit = value; }
-
-    /**
-     * <p>A date range unit for the date filter.</p>
-     */
-    inline void SetUnit(DateRangeUnit&& value) { m_unitHasBeenSet = true; m_unit = std::move(value); }
-
-    /**
-     * <p>A date range unit for the date filter.</p>
-     */
-    inline DateRange& WithUnit(const DateRangeUnit& value) { SetUnit(value); return *this;}
-
-    /**
-     * <p>A date range unit for the date filter.</p>
-     */
-    inline DateRange& WithUnit(DateRangeUnit&& value) { SetUnit(std::move(value)); return *this;}
-
+    inline void SetUnit(DateRangeUnit value) { m_unitHasBeenSet = true; m_unit = value; }
+    inline DateRange& WithUnit(DateRangeUnit value) { SetUnit(value); return *this;}
+    ///@}
   private:
 
-    int m_value;
+    int m_value{0};
     bool m_valueHasBeenSet = false;
 
-    DateRangeUnit m_unit;
+    DateRangeUnit m_unit{DateRangeUnit::NOT_SET};
     bool m_unitHasBeenSet = false;
   };
 

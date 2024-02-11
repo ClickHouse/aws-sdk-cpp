@@ -34,63 +34,37 @@ namespace Model
   class DissociatePackageResult
   {
   public:
-    AWS_OPENSEARCHSERVICE_API DissociatePackageResult();
+    AWS_OPENSEARCHSERVICE_API DissociatePackageResult() = default;
     AWS_OPENSEARCHSERVICE_API DissociatePackageResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_OPENSEARCHSERVICE_API DissociatePackageResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p> Information about a package that has been dissociated from the domain.</p>
      */
-    inline const DomainPackageDetails& GetDomainPackageDetails() const{ return m_domainPackageDetails; }
+    inline const DomainPackageDetails& GetDomainPackageDetails() const { return m_domainPackageDetails; }
+    template<typename DomainPackageDetailsT = DomainPackageDetails>
+    void SetDomainPackageDetails(DomainPackageDetailsT&& value) { m_domainPackageDetailsHasBeenSet = true; m_domainPackageDetails = std::forward<DomainPackageDetailsT>(value); }
+    template<typename DomainPackageDetailsT = DomainPackageDetails>
+    DissociatePackageResult& WithDomainPackageDetails(DomainPackageDetailsT&& value) { SetDomainPackageDetails(std::forward<DomainPackageDetailsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Information about a package that has been dissociated from the domain.</p>
-     */
-    inline void SetDomainPackageDetails(const DomainPackageDetails& value) { m_domainPackageDetails = value; }
-
-    /**
-     * <p> Information about a package that has been dissociated from the domain.</p>
-     */
-    inline void SetDomainPackageDetails(DomainPackageDetails&& value) { m_domainPackageDetails = std::move(value); }
-
-    /**
-     * <p> Information about a package that has been dissociated from the domain.</p>
-     */
-    inline DissociatePackageResult& WithDomainPackageDetails(const DomainPackageDetails& value) { SetDomainPackageDetails(value); return *this;}
-
-    /**
-     * <p> Information about a package that has been dissociated from the domain.</p>
-     */
-    inline DissociatePackageResult& WithDomainPackageDetails(DomainPackageDetails&& value) { SetDomainPackageDetails(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DissociatePackageResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DissociatePackageResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DissociatePackageResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DissociatePackageResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     DomainPackageDetails m_domainPackageDetails;
+    bool m_domainPackageDetailsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

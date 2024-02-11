@@ -18,19 +18,7 @@ namespace MediaConnect
 namespace Model
 {
 
-InputConfiguration::InputConfiguration() : 
-    m_inputIpHasBeenSet(false),
-    m_inputPort(0),
-    m_inputPortHasBeenSet(false),
-    m_interfaceHasBeenSet(false)
-{
-}
-
-InputConfiguration::InputConfiguration(JsonView jsonValue) : 
-    m_inputIpHasBeenSet(false),
-    m_inputPort(0),
-    m_inputPortHasBeenSet(false),
-    m_interfaceHasBeenSet(false)
+InputConfiguration::InputConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ InputConfiguration& InputConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("inputIp"))
   {
     m_inputIp = jsonValue.GetString("inputIp");
-
     m_inputIpHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("inputPort"))
   {
     m_inputPort = jsonValue.GetInteger("inputPort");
-
     m_inputPortHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("interface"))
   {
     m_interface = jsonValue.GetObject("interface");
-
     m_interfaceHasBeenSet = true;
   }
-
   return *this;
 }
 

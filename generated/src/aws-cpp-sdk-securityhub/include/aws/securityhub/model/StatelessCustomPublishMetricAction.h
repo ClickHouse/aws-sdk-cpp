@@ -33,52 +33,25 @@ namespace Model
   class StatelessCustomPublishMetricAction
   {
   public:
-    AWS_SECURITYHUB_API StatelessCustomPublishMetricAction();
+    AWS_SECURITYHUB_API StatelessCustomPublishMetricAction() = default;
     AWS_SECURITYHUB_API StatelessCustomPublishMetricAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API StatelessCustomPublishMetricAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Defines CloudWatch dimension values to publish.</p>
      */
-    inline const Aws::Vector<StatelessCustomPublishMetricActionDimension>& GetDimensions() const{ return m_dimensions; }
-
-    /**
-     * <p>Defines CloudWatch dimension values to publish.</p>
-     */
+    inline const Aws::Vector<StatelessCustomPublishMetricActionDimension>& GetDimensions() const { return m_dimensions; }
     inline bool DimensionsHasBeenSet() const { return m_dimensionsHasBeenSet; }
-
-    /**
-     * <p>Defines CloudWatch dimension values to publish.</p>
-     */
-    inline void SetDimensions(const Aws::Vector<StatelessCustomPublishMetricActionDimension>& value) { m_dimensionsHasBeenSet = true; m_dimensions = value; }
-
-    /**
-     * <p>Defines CloudWatch dimension values to publish.</p>
-     */
-    inline void SetDimensions(Aws::Vector<StatelessCustomPublishMetricActionDimension>&& value) { m_dimensionsHasBeenSet = true; m_dimensions = std::move(value); }
-
-    /**
-     * <p>Defines CloudWatch dimension values to publish.</p>
-     */
-    inline StatelessCustomPublishMetricAction& WithDimensions(const Aws::Vector<StatelessCustomPublishMetricActionDimension>& value) { SetDimensions(value); return *this;}
-
-    /**
-     * <p>Defines CloudWatch dimension values to publish.</p>
-     */
-    inline StatelessCustomPublishMetricAction& WithDimensions(Aws::Vector<StatelessCustomPublishMetricActionDimension>&& value) { SetDimensions(std::move(value)); return *this;}
-
-    /**
-     * <p>Defines CloudWatch dimension values to publish.</p>
-     */
-    inline StatelessCustomPublishMetricAction& AddDimensions(const StatelessCustomPublishMetricActionDimension& value) { m_dimensionsHasBeenSet = true; m_dimensions.push_back(value); return *this; }
-
-    /**
-     * <p>Defines CloudWatch dimension values to publish.</p>
-     */
-    inline StatelessCustomPublishMetricAction& AddDimensions(StatelessCustomPublishMetricActionDimension&& value) { m_dimensionsHasBeenSet = true; m_dimensions.push_back(std::move(value)); return *this; }
-
+    template<typename DimensionsT = Aws::Vector<StatelessCustomPublishMetricActionDimension>>
+    void SetDimensions(DimensionsT&& value) { m_dimensionsHasBeenSet = true; m_dimensions = std::forward<DimensionsT>(value); }
+    template<typename DimensionsT = Aws::Vector<StatelessCustomPublishMetricActionDimension>>
+    StatelessCustomPublishMetricAction& WithDimensions(DimensionsT&& value) { SetDimensions(std::forward<DimensionsT>(value)); return *this;}
+    template<typename DimensionsT = StatelessCustomPublishMetricActionDimension>
+    StatelessCustomPublishMetricAction& AddDimensions(DimensionsT&& value) { m_dimensionsHasBeenSet = true; m_dimensions.emplace_back(std::forward<DimensionsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<StatelessCustomPublishMetricActionDimension> m_dimensions;

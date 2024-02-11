@@ -20,33 +20,7 @@ namespace EC2
 namespace Model
 {
 
-Purchase::Purchase() : 
-    m_currencyCode(CurrencyCodeValues::NOT_SET),
-    m_currencyCodeHasBeenSet(false),
-    m_duration(0),
-    m_durationHasBeenSet(false),
-    m_hostIdSetHasBeenSet(false),
-    m_hostReservationIdHasBeenSet(false),
-    m_hourlyPriceHasBeenSet(false),
-    m_instanceFamilyHasBeenSet(false),
-    m_paymentOption(PaymentOption::NOT_SET),
-    m_paymentOptionHasBeenSet(false),
-    m_upfrontPriceHasBeenSet(false)
-{
-}
-
-Purchase::Purchase(const XmlNode& xmlNode) : 
-    m_currencyCode(CurrencyCodeValues::NOT_SET),
-    m_currencyCodeHasBeenSet(false),
-    m_duration(0),
-    m_durationHasBeenSet(false),
-    m_hostIdSetHasBeenSet(false),
-    m_hostReservationIdHasBeenSet(false),
-    m_hourlyPriceHasBeenSet(false),
-    m_instanceFamilyHasBeenSet(false),
-    m_paymentOption(PaymentOption::NOT_SET),
-    m_paymentOptionHasBeenSet(false),
-    m_upfrontPriceHasBeenSet(false)
+Purchase::Purchase(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -60,7 +34,7 @@ Purchase& Purchase::operator =(const XmlNode& xmlNode)
     XmlNode currencyCodeNode = resultNode.FirstChild("currencyCode");
     if(!currencyCodeNode.IsNull())
     {
-      m_currencyCode = CurrencyCodeValuesMapper::GetCurrencyCodeValuesForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(currencyCodeNode.GetText()).c_str()).c_str());
+      m_currencyCode = CurrencyCodeValuesMapper::GetCurrencyCodeValuesForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(currencyCodeNode.GetText()).c_str()));
       m_currencyCodeHasBeenSet = true;
     }
     XmlNode durationNode = resultNode.FirstChild("duration");
@@ -73,6 +47,7 @@ Purchase& Purchase::operator =(const XmlNode& xmlNode)
     if(!hostIdSetNode.IsNull())
     {
       XmlNode hostIdSetMember = hostIdSetNode.FirstChild("item");
+      m_hostIdSetHasBeenSet = !hostIdSetMember.IsNull();
       while(!hostIdSetMember.IsNull())
       {
         m_hostIdSet.push_back(hostIdSetMember.GetText());
@@ -102,7 +77,7 @@ Purchase& Purchase::operator =(const XmlNode& xmlNode)
     XmlNode paymentOptionNode = resultNode.FirstChild("paymentOption");
     if(!paymentOptionNode.IsNull())
     {
-      m_paymentOption = PaymentOptionMapper::GetPaymentOptionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(paymentOptionNode.GetText()).c_str()).c_str());
+      m_paymentOption = PaymentOptionMapper::GetPaymentOptionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(paymentOptionNode.GetText()).c_str()));
       m_paymentOptionHasBeenSet = true;
     }
     XmlNode upfrontPriceNode = resultNode.FirstChild("upfrontPrice");
@@ -120,7 +95,7 @@ void Purchase::OutputToStream(Aws::OStream& oStream, const char* location, unsig
 {
   if(m_currencyCodeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CurrencyCode=" << CurrencyCodeValuesMapper::GetNameForCurrencyCodeValues(m_currencyCode) << "&";
+      oStream << location << index << locationValue << ".CurrencyCode=" << StringUtils::URLEncode(CurrencyCodeValuesMapper::GetNameForCurrencyCodeValues(m_currencyCode)) << "&";
   }
 
   if(m_durationHasBeenSet)
@@ -154,7 +129,7 @@ void Purchase::OutputToStream(Aws::OStream& oStream, const char* location, unsig
 
   if(m_paymentOptionHasBeenSet)
   {
-      oStream << location << index << locationValue << ".PaymentOption=" << PaymentOptionMapper::GetNameForPaymentOption(m_paymentOption) << "&";
+      oStream << location << index << locationValue << ".PaymentOption=" << StringUtils::URLEncode(PaymentOptionMapper::GetNameForPaymentOption(m_paymentOption)) << "&";
   }
 
   if(m_upfrontPriceHasBeenSet)
@@ -168,7 +143,7 @@ void Purchase::OutputToStream(Aws::OStream& oStream, const char* location) const
 {
   if(m_currencyCodeHasBeenSet)
   {
-      oStream << location << ".CurrencyCode=" << CurrencyCodeValuesMapper::GetNameForCurrencyCodeValues(m_currencyCode) << "&";
+      oStream << location << ".CurrencyCode=" << StringUtils::URLEncode(CurrencyCodeValuesMapper::GetNameForCurrencyCodeValues(m_currencyCode)) << "&";
   }
   if(m_durationHasBeenSet)
   {
@@ -196,7 +171,7 @@ void Purchase::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_paymentOptionHasBeenSet)
   {
-      oStream << location << ".PaymentOption=" << PaymentOptionMapper::GetNameForPaymentOption(m_paymentOption) << "&";
+      oStream << location << ".PaymentOption=" << StringUtils::URLEncode(PaymentOptionMapper::GetNameForPaymentOption(m_paymentOption)) << "&";
   }
   if(m_upfrontPriceHasBeenSet)
   {

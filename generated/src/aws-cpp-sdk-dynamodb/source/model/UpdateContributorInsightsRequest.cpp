@@ -12,14 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateContributorInsightsRequest::UpdateContributorInsightsRequest() : 
-    m_tableNameHasBeenSet(false),
-    m_indexNameHasBeenSet(false),
-    m_contributorInsightsAction(ContributorInsightsAction::NOT_SET),
-    m_contributorInsightsActionHasBeenSet(false)
-{
-}
-
 Aws::String UpdateContributorInsightsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -41,6 +33,11 @@ Aws::String UpdateContributorInsightsRequest::SerializePayload() const
    payload.WithString("ContributorInsightsAction", ContributorInsightsActionMapper::GetNameForContributorInsightsAction(m_contributorInsightsAction));
   }
 
+  if(m_contributorInsightsModeHasBeenSet)
+  {
+   payload.WithString("ContributorInsightsMode", ContributorInsightsModeMapper::GetNameForContributorInsightsMode(m_contributorInsightsMode));
+  }
+
   return payload.View().WriteReadable();
 }
 
@@ -53,5 +50,15 @@ Aws::Http::HeaderValueCollection UpdateContributorInsightsRequest::GetRequestSpe
 }
 
 
+
+UpdateContributorInsightsRequest::EndpointParameters UpdateContributorInsightsRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (TableNameHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetTableName(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

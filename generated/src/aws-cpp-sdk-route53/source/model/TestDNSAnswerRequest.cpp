@@ -6,6 +6,7 @@
 #include <aws/route53/model/TestDNSAnswerRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,16 +17,6 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-TestDNSAnswerRequest::TestDNSAnswerRequest() : 
-    m_hostedZoneIdHasBeenSet(false),
-    m_recordNameHasBeenSet(false),
-    m_recordType(RRType::NOT_SET),
-    m_recordTypeHasBeenSet(false),
-    m_resolverIPHasBeenSet(false),
-    m_eDNS0ClientSubnetIPHasBeenSet(false),
-    m_eDNS0ClientSubnetMaskHasBeenSet(false)
-{
-}
 
 Aws::String TestDNSAnswerRequest::SerializePayload() const
 {

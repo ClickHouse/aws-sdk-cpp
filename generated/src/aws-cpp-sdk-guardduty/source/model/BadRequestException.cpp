@@ -18,15 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-BadRequestException::BadRequestException() : 
-    m_messageHasBeenSet(false),
-    m_typeHasBeenSet(false)
-{
-}
-
-BadRequestException::BadRequestException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_typeHasBeenSet(false)
+BadRequestException::BadRequestException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ BadRequestException& BadRequestException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("__type"))
   {
     m_type = jsonValue.GetString("__type");
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

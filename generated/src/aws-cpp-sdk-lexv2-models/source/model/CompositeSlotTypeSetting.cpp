@@ -18,13 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-CompositeSlotTypeSetting::CompositeSlotTypeSetting() : 
-    m_subSlotsHasBeenSet(false)
-{
-}
-
-CompositeSlotTypeSetting::CompositeSlotTypeSetting(JsonView jsonValue) : 
-    m_subSlotsHasBeenSet(false)
+CompositeSlotTypeSetting::CompositeSlotTypeSetting(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ CompositeSlotTypeSetting& CompositeSlotTypeSetting::operator =(JsonView jsonValu
     }
     m_subSlotsHasBeenSet = true;
   }
-
   return *this;
 }
 

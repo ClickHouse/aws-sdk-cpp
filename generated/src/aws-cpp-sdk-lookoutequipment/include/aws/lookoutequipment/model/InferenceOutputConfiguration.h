@@ -34,89 +34,36 @@ namespace Model
   class InferenceOutputConfiguration
   {
   public:
-    AWS_LOOKOUTEQUIPMENT_API InferenceOutputConfiguration();
+    AWS_LOOKOUTEQUIPMENT_API InferenceOutputConfiguration() = default;
     AWS_LOOKOUTEQUIPMENT_API InferenceOutputConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTEQUIPMENT_API InferenceOutputConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTEQUIPMENT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Specifies configuration information for the output results from for the
      * inference, output S3 location. </p>
      */
-    inline const InferenceS3OutputConfiguration& GetS3OutputConfiguration() const{ return m_s3OutputConfiguration; }
-
-    /**
-     * <p> Specifies configuration information for the output results from for the
-     * inference, output S3 location. </p>
-     */
+    inline const InferenceS3OutputConfiguration& GetS3OutputConfiguration() const { return m_s3OutputConfiguration; }
     inline bool S3OutputConfigurationHasBeenSet() const { return m_s3OutputConfigurationHasBeenSet; }
+    template<typename S3OutputConfigurationT = InferenceS3OutputConfiguration>
+    void SetS3OutputConfiguration(S3OutputConfigurationT&& value) { m_s3OutputConfigurationHasBeenSet = true; m_s3OutputConfiguration = std::forward<S3OutputConfigurationT>(value); }
+    template<typename S3OutputConfigurationT = InferenceS3OutputConfiguration>
+    InferenceOutputConfiguration& WithS3OutputConfiguration(S3OutputConfigurationT&& value) { SetS3OutputConfiguration(std::forward<S3OutputConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> Specifies configuration information for the output results from for the
-     * inference, output S3 location. </p>
+     * <p>The ID number for the KMS key key used to encrypt the inference output. </p>
      */
-    inline void SetS3OutputConfiguration(const InferenceS3OutputConfiguration& value) { m_s3OutputConfigurationHasBeenSet = true; m_s3OutputConfiguration = value; }
-
-    /**
-     * <p> Specifies configuration information for the output results from for the
-     * inference, output S3 location. </p>
-     */
-    inline void SetS3OutputConfiguration(InferenceS3OutputConfiguration&& value) { m_s3OutputConfigurationHasBeenSet = true; m_s3OutputConfiguration = std::move(value); }
-
-    /**
-     * <p> Specifies configuration information for the output results from for the
-     * inference, output S3 location. </p>
-     */
-    inline InferenceOutputConfiguration& WithS3OutputConfiguration(const InferenceS3OutputConfiguration& value) { SetS3OutputConfiguration(value); return *this;}
-
-    /**
-     * <p> Specifies configuration information for the output results from for the
-     * inference, output S3 location. </p>
-     */
-    inline InferenceOutputConfiguration& WithS3OutputConfiguration(InferenceS3OutputConfiguration&& value) { SetS3OutputConfiguration(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The ID number for the AWS KMS key used to encrypt the inference output. </p>
-     */
-    inline const Aws::String& GetKmsKeyId() const{ return m_kmsKeyId; }
-
-    /**
-     * <p>The ID number for the AWS KMS key used to encrypt the inference output. </p>
-     */
+    inline const Aws::String& GetKmsKeyId() const { return m_kmsKeyId; }
     inline bool KmsKeyIdHasBeenSet() const { return m_kmsKeyIdHasBeenSet; }
-
-    /**
-     * <p>The ID number for the AWS KMS key used to encrypt the inference output. </p>
-     */
-    inline void SetKmsKeyId(const Aws::String& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = value; }
-
-    /**
-     * <p>The ID number for the AWS KMS key used to encrypt the inference output. </p>
-     */
-    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::move(value); }
-
-    /**
-     * <p>The ID number for the AWS KMS key used to encrypt the inference output. </p>
-     */
-    inline void SetKmsKeyId(const char* value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId.assign(value); }
-
-    /**
-     * <p>The ID number for the AWS KMS key used to encrypt the inference output. </p>
-     */
-    inline InferenceOutputConfiguration& WithKmsKeyId(const Aws::String& value) { SetKmsKeyId(value); return *this;}
-
-    /**
-     * <p>The ID number for the AWS KMS key used to encrypt the inference output. </p>
-     */
-    inline InferenceOutputConfiguration& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID number for the AWS KMS key used to encrypt the inference output. </p>
-     */
-    inline InferenceOutputConfiguration& WithKmsKeyId(const char* value) { SetKmsKeyId(value); return *this;}
-
+    template<typename KmsKeyIdT = Aws::String>
+    void SetKmsKeyId(KmsKeyIdT&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::forward<KmsKeyIdT>(value); }
+    template<typename KmsKeyIdT = Aws::String>
+    InferenceOutputConfiguration& WithKmsKeyId(KmsKeyIdT&& value) { SetKmsKeyId(std::forward<KmsKeyIdT>(value)); return *this;}
+    ///@}
   private:
 
     InferenceS3OutputConfiguration m_s3OutputConfiguration;

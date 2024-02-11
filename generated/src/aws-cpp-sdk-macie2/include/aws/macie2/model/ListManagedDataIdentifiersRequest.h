@@ -21,7 +21,7 @@ namespace Model
   class ListManagedDataIdentifiersRequest : public Macie2Request
   {
   public:
-    AWS_MACIE2_API ListManagedDataIdentifiersRequest();
+    AWS_MACIE2_API ListManagedDataIdentifiersRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,54 +32,18 @@ namespace Model
     AWS_MACIE2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The nextToken string that specifies which page of results to return in a
      * paginated response.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The nextToken string that specifies which page of results to return in a
-     * paginated response.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The nextToken string that specifies which page of results to return in a
-     * paginated response.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The nextToken string that specifies which page of results to return in a
-     * paginated response.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The nextToken string that specifies which page of results to return in a
-     * paginated response.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The nextToken string that specifies which page of results to return in a
-     * paginated response.</p>
-     */
-    inline ListManagedDataIdentifiersRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The nextToken string that specifies which page of results to return in a
-     * paginated response.</p>
-     */
-    inline ListManagedDataIdentifiersRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The nextToken string that specifies which page of results to return in a
-     * paginated response.</p>
-     */
-    inline ListManagedDataIdentifiersRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListManagedDataIdentifiersRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nextToken;

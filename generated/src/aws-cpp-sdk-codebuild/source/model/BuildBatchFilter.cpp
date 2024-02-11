@@ -18,15 +18,7 @@ namespace CodeBuild
 namespace Model
 {
 
-BuildBatchFilter::BuildBatchFilter() : 
-    m_status(StatusType::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-BuildBatchFilter::BuildBatchFilter(JsonView jsonValue) : 
-    m_status(StatusType::NOT_SET),
-    m_statusHasBeenSet(false)
+BuildBatchFilter::BuildBatchFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ BuildBatchFilter& BuildBatchFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("status"))
   {
     m_status = StatusTypeMapper::GetStatusTypeForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

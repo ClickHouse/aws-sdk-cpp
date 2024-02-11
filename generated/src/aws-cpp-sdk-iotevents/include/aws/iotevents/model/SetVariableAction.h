@@ -32,93 +32,35 @@ namespace Model
   class SetVariableAction
   {
   public:
-    AWS_IOTEVENTS_API SetVariableAction();
+    AWS_IOTEVENTS_API SetVariableAction() = default;
     AWS_IOTEVENTS_API SetVariableAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API SetVariableAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the variable.</p>
      */
-    inline const Aws::String& GetVariableName() const{ return m_variableName; }
-
-    /**
-     * <p>The name of the variable.</p>
-     */
+    inline const Aws::String& GetVariableName() const { return m_variableName; }
     inline bool VariableNameHasBeenSet() const { return m_variableNameHasBeenSet; }
+    template<typename VariableNameT = Aws::String>
+    void SetVariableName(VariableNameT&& value) { m_variableNameHasBeenSet = true; m_variableName = std::forward<VariableNameT>(value); }
+    template<typename VariableNameT = Aws::String>
+    SetVariableAction& WithVariableName(VariableNameT&& value) { SetVariableName(std::forward<VariableNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the variable.</p>
-     */
-    inline void SetVariableName(const Aws::String& value) { m_variableNameHasBeenSet = true; m_variableName = value; }
-
-    /**
-     * <p>The name of the variable.</p>
-     */
-    inline void SetVariableName(Aws::String&& value) { m_variableNameHasBeenSet = true; m_variableName = std::move(value); }
-
-    /**
-     * <p>The name of the variable.</p>
-     */
-    inline void SetVariableName(const char* value) { m_variableNameHasBeenSet = true; m_variableName.assign(value); }
-
-    /**
-     * <p>The name of the variable.</p>
-     */
-    inline SetVariableAction& WithVariableName(const Aws::String& value) { SetVariableName(value); return *this;}
-
-    /**
-     * <p>The name of the variable.</p>
-     */
-    inline SetVariableAction& WithVariableName(Aws::String&& value) { SetVariableName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the variable.</p>
-     */
-    inline SetVariableAction& WithVariableName(const char* value) { SetVariableName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The new value of the variable.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The new value of the variable.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The new value of the variable.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The new value of the variable.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The new value of the variable.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The new value of the variable.</p>
-     */
-    inline SetVariableAction& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The new value of the variable.</p>
-     */
-    inline SetVariableAction& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The new value of the variable.</p>
-     */
-    inline SetVariableAction& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    SetVariableAction& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_variableName;

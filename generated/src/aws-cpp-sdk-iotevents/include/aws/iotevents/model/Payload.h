@@ -37,12 +37,13 @@ namespace Model
   class Payload
   {
   public:
-    AWS_IOTEVENTS_API Payload();
+    AWS_IOTEVENTS_API Payload() = default;
     AWS_IOTEVENTS_API Payload(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API Payload& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The content of the payload. You can use a string expression that includes
      * quoted strings (<code>'&lt;string&gt;'</code>), variables
@@ -51,121 +52,30 @@ namespace Model
      * concatenations, and quoted strings that contain <code>${}</code> as the content.
      * The recommended maximum size of a content expression is 1 KB.</p>
      */
-    inline const Aws::String& GetContentExpression() const{ return m_contentExpression; }
-
-    /**
-     * <p>The content of the payload. You can use a string expression that includes
-     * quoted strings (<code>'&lt;string&gt;'</code>), variables
-     * (<code>$variable.&lt;variable-name&gt;</code>), input values
-     * (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>), string
-     * concatenations, and quoted strings that contain <code>${}</code> as the content.
-     * The recommended maximum size of a content expression is 1 KB.</p>
-     */
+    inline const Aws::String& GetContentExpression() const { return m_contentExpression; }
     inline bool ContentExpressionHasBeenSet() const { return m_contentExpressionHasBeenSet; }
+    template<typename ContentExpressionT = Aws::String>
+    void SetContentExpression(ContentExpressionT&& value) { m_contentExpressionHasBeenSet = true; m_contentExpression = std::forward<ContentExpressionT>(value); }
+    template<typename ContentExpressionT = Aws::String>
+    Payload& WithContentExpression(ContentExpressionT&& value) { SetContentExpression(std::forward<ContentExpressionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The content of the payload. You can use a string expression that includes
-     * quoted strings (<code>'&lt;string&gt;'</code>), variables
-     * (<code>$variable.&lt;variable-name&gt;</code>), input values
-     * (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>), string
-     * concatenations, and quoted strings that contain <code>${}</code> as the content.
-     * The recommended maximum size of a content expression is 1 KB.</p>
-     */
-    inline void SetContentExpression(const Aws::String& value) { m_contentExpressionHasBeenSet = true; m_contentExpression = value; }
-
-    /**
-     * <p>The content of the payload. You can use a string expression that includes
-     * quoted strings (<code>'&lt;string&gt;'</code>), variables
-     * (<code>$variable.&lt;variable-name&gt;</code>), input values
-     * (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>), string
-     * concatenations, and quoted strings that contain <code>${}</code> as the content.
-     * The recommended maximum size of a content expression is 1 KB.</p>
-     */
-    inline void SetContentExpression(Aws::String&& value) { m_contentExpressionHasBeenSet = true; m_contentExpression = std::move(value); }
-
-    /**
-     * <p>The content of the payload. You can use a string expression that includes
-     * quoted strings (<code>'&lt;string&gt;'</code>), variables
-     * (<code>$variable.&lt;variable-name&gt;</code>), input values
-     * (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>), string
-     * concatenations, and quoted strings that contain <code>${}</code> as the content.
-     * The recommended maximum size of a content expression is 1 KB.</p>
-     */
-    inline void SetContentExpression(const char* value) { m_contentExpressionHasBeenSet = true; m_contentExpression.assign(value); }
-
-    /**
-     * <p>The content of the payload. You can use a string expression that includes
-     * quoted strings (<code>'&lt;string&gt;'</code>), variables
-     * (<code>$variable.&lt;variable-name&gt;</code>), input values
-     * (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>), string
-     * concatenations, and quoted strings that contain <code>${}</code> as the content.
-     * The recommended maximum size of a content expression is 1 KB.</p>
-     */
-    inline Payload& WithContentExpression(const Aws::String& value) { SetContentExpression(value); return *this;}
-
-    /**
-     * <p>The content of the payload. You can use a string expression that includes
-     * quoted strings (<code>'&lt;string&gt;'</code>), variables
-     * (<code>$variable.&lt;variable-name&gt;</code>), input values
-     * (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>), string
-     * concatenations, and quoted strings that contain <code>${}</code> as the content.
-     * The recommended maximum size of a content expression is 1 KB.</p>
-     */
-    inline Payload& WithContentExpression(Aws::String&& value) { SetContentExpression(std::move(value)); return *this;}
-
-    /**
-     * <p>The content of the payload. You can use a string expression that includes
-     * quoted strings (<code>'&lt;string&gt;'</code>), variables
-     * (<code>$variable.&lt;variable-name&gt;</code>), input values
-     * (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>), string
-     * concatenations, and quoted strings that contain <code>${}</code> as the content.
-     * The recommended maximum size of a content expression is 1 KB.</p>
-     */
-    inline Payload& WithContentExpression(const char* value) { SetContentExpression(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of the payload type can be either <code>STRING</code> or
      * <code>JSON</code>.</p>
      */
-    inline const PayloadType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The value of the payload type can be either <code>STRING</code> or
-     * <code>JSON</code>.</p>
-     */
+    inline PayloadType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The value of the payload type can be either <code>STRING</code> or
-     * <code>JSON</code>.</p>
-     */
-    inline void SetType(const PayloadType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The value of the payload type can be either <code>STRING</code> or
-     * <code>JSON</code>.</p>
-     */
-    inline void SetType(PayloadType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The value of the payload type can be either <code>STRING</code> or
-     * <code>JSON</code>.</p>
-     */
-    inline Payload& WithType(const PayloadType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The value of the payload type can be either <code>STRING</code> or
-     * <code>JSON</code>.</p>
-     */
-    inline Payload& WithType(PayloadType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(PayloadType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline Payload& WithType(PayloadType value) { SetType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_contentExpression;
     bool m_contentExpressionHasBeenSet = false;
 
-    PayloadType m_type;
+    PayloadType m_type{PayloadType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

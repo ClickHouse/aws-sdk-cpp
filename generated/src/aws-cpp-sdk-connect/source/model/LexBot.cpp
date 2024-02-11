@@ -18,15 +18,7 @@ namespace Connect
 namespace Model
 {
 
-LexBot::LexBot() : 
-    m_nameHasBeenSet(false),
-    m_lexRegionHasBeenSet(false)
-{
-}
-
-LexBot::LexBot(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_lexRegionHasBeenSet(false)
+LexBot::LexBot(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ LexBot& LexBot::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LexRegion"))
   {
     m_lexRegion = jsonValue.GetString("LexRegion");
-
     m_lexRegionHasBeenSet = true;
   }
-
   return *this;
 }
 

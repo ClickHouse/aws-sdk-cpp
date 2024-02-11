@@ -34,109 +34,41 @@ namespace Model
   class OnInputLifecycle
   {
   public:
-    AWS_IOTEVENTS_API OnInputLifecycle();
+    AWS_IOTEVENTS_API OnInputLifecycle() = default;
     AWS_IOTEVENTS_API OnInputLifecycle(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API OnInputLifecycle& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the actions performed when the <code>condition</code> evaluates to
      * TRUE.</p>
      */
-    inline const Aws::Vector<Event>& GetEvents() const{ return m_events; }
-
-    /**
-     * <p>Specifies the actions performed when the <code>condition</code> evaluates to
-     * TRUE.</p>
-     */
+    inline const Aws::Vector<Event>& GetEvents() const { return m_events; }
     inline bool EventsHasBeenSet() const { return m_eventsHasBeenSet; }
+    template<typename EventsT = Aws::Vector<Event>>
+    void SetEvents(EventsT&& value) { m_eventsHasBeenSet = true; m_events = std::forward<EventsT>(value); }
+    template<typename EventsT = Aws::Vector<Event>>
+    OnInputLifecycle& WithEvents(EventsT&& value) { SetEvents(std::forward<EventsT>(value)); return *this;}
+    template<typename EventsT = Event>
+    OnInputLifecycle& AddEvents(EventsT&& value) { m_eventsHasBeenSet = true; m_events.emplace_back(std::forward<EventsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Specifies the actions performed when the <code>condition</code> evaluates to
-     * TRUE.</p>
-     */
-    inline void SetEvents(const Aws::Vector<Event>& value) { m_eventsHasBeenSet = true; m_events = value; }
-
-    /**
-     * <p>Specifies the actions performed when the <code>condition</code> evaluates to
-     * TRUE.</p>
-     */
-    inline void SetEvents(Aws::Vector<Event>&& value) { m_eventsHasBeenSet = true; m_events = std::move(value); }
-
-    /**
-     * <p>Specifies the actions performed when the <code>condition</code> evaluates to
-     * TRUE.</p>
-     */
-    inline OnInputLifecycle& WithEvents(const Aws::Vector<Event>& value) { SetEvents(value); return *this;}
-
-    /**
-     * <p>Specifies the actions performed when the <code>condition</code> evaluates to
-     * TRUE.</p>
-     */
-    inline OnInputLifecycle& WithEvents(Aws::Vector<Event>&& value) { SetEvents(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the actions performed when the <code>condition</code> evaluates to
-     * TRUE.</p>
-     */
-    inline OnInputLifecycle& AddEvents(const Event& value) { m_eventsHasBeenSet = true; m_events.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies the actions performed when the <code>condition</code> evaluates to
-     * TRUE.</p>
-     */
-    inline OnInputLifecycle& AddEvents(Event&& value) { m_eventsHasBeenSet = true; m_events.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies the actions performed, and the next state entered, when a
      * <code>condition</code> evaluates to TRUE.</p>
      */
-    inline const Aws::Vector<TransitionEvent>& GetTransitionEvents() const{ return m_transitionEvents; }
-
-    /**
-     * <p>Specifies the actions performed, and the next state entered, when a
-     * <code>condition</code> evaluates to TRUE.</p>
-     */
+    inline const Aws::Vector<TransitionEvent>& GetTransitionEvents() const { return m_transitionEvents; }
     inline bool TransitionEventsHasBeenSet() const { return m_transitionEventsHasBeenSet; }
-
-    /**
-     * <p>Specifies the actions performed, and the next state entered, when a
-     * <code>condition</code> evaluates to TRUE.</p>
-     */
-    inline void SetTransitionEvents(const Aws::Vector<TransitionEvent>& value) { m_transitionEventsHasBeenSet = true; m_transitionEvents = value; }
-
-    /**
-     * <p>Specifies the actions performed, and the next state entered, when a
-     * <code>condition</code> evaluates to TRUE.</p>
-     */
-    inline void SetTransitionEvents(Aws::Vector<TransitionEvent>&& value) { m_transitionEventsHasBeenSet = true; m_transitionEvents = std::move(value); }
-
-    /**
-     * <p>Specifies the actions performed, and the next state entered, when a
-     * <code>condition</code> evaluates to TRUE.</p>
-     */
-    inline OnInputLifecycle& WithTransitionEvents(const Aws::Vector<TransitionEvent>& value) { SetTransitionEvents(value); return *this;}
-
-    /**
-     * <p>Specifies the actions performed, and the next state entered, when a
-     * <code>condition</code> evaluates to TRUE.</p>
-     */
-    inline OnInputLifecycle& WithTransitionEvents(Aws::Vector<TransitionEvent>&& value) { SetTransitionEvents(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the actions performed, and the next state entered, when a
-     * <code>condition</code> evaluates to TRUE.</p>
-     */
-    inline OnInputLifecycle& AddTransitionEvents(const TransitionEvent& value) { m_transitionEventsHasBeenSet = true; m_transitionEvents.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies the actions performed, and the next state entered, when a
-     * <code>condition</code> evaluates to TRUE.</p>
-     */
-    inline OnInputLifecycle& AddTransitionEvents(TransitionEvent&& value) { m_transitionEventsHasBeenSet = true; m_transitionEvents.push_back(std::move(value)); return *this; }
-
+    template<typename TransitionEventsT = Aws::Vector<TransitionEvent>>
+    void SetTransitionEvents(TransitionEventsT&& value) { m_transitionEventsHasBeenSet = true; m_transitionEvents = std::forward<TransitionEventsT>(value); }
+    template<typename TransitionEventsT = Aws::Vector<TransitionEvent>>
+    OnInputLifecycle& WithTransitionEvents(TransitionEventsT&& value) { SetTransitionEvents(std::forward<TransitionEventsT>(value)); return *this;}
+    template<typename TransitionEventsT = TransitionEvent>
+    OnInputLifecycle& AddTransitionEvents(TransitionEventsT&& value) { m_transitionEventsHasBeenSet = true; m_transitionEvents.emplace_back(std::forward<TransitionEventsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Event> m_events;

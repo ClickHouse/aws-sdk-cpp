@@ -20,19 +20,7 @@ namespace Neptune
 namespace Model
 {
 
-ValidStorageOptions::ValidStorageOptions() : 
-    m_storageTypeHasBeenSet(false),
-    m_storageSizeHasBeenSet(false),
-    m_provisionedIopsHasBeenSet(false),
-    m_iopsToStorageRatioHasBeenSet(false)
-{
-}
-
-ValidStorageOptions::ValidStorageOptions(const XmlNode& xmlNode) : 
-    m_storageTypeHasBeenSet(false),
-    m_storageSizeHasBeenSet(false),
-    m_provisionedIopsHasBeenSet(false),
-    m_iopsToStorageRatioHasBeenSet(false)
+ValidStorageOptions::ValidStorageOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -53,6 +41,7 @@ ValidStorageOptions& ValidStorageOptions::operator =(const XmlNode& xmlNode)
     if(!storageSizeNode.IsNull())
     {
       XmlNode storageSizeMember = storageSizeNode.FirstChild("Range");
+      m_storageSizeHasBeenSet = !storageSizeMember.IsNull();
       while(!storageSizeMember.IsNull())
       {
         m_storageSize.push_back(storageSizeMember);
@@ -65,6 +54,7 @@ ValidStorageOptions& ValidStorageOptions::operator =(const XmlNode& xmlNode)
     if(!provisionedIopsNode.IsNull())
     {
       XmlNode provisionedIopsMember = provisionedIopsNode.FirstChild("Range");
+      m_provisionedIopsHasBeenSet = !provisionedIopsMember.IsNull();
       while(!provisionedIopsMember.IsNull())
       {
         m_provisionedIops.push_back(provisionedIopsMember);
@@ -77,6 +67,7 @@ ValidStorageOptions& ValidStorageOptions::operator =(const XmlNode& xmlNode)
     if(!iopsToStorageRatioNode.IsNull())
     {
       XmlNode iopsToStorageRatioMember = iopsToStorageRatioNode.FirstChild("DoubleRange");
+      m_iopsToStorageRatioHasBeenSet = !iopsToStorageRatioMember.IsNull();
       while(!iopsToStorageRatioMember.IsNull())
       {
         m_iopsToStorageRatio.push_back(iopsToStorageRatioMember);
@@ -103,7 +94,7 @@ void ValidStorageOptions::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_storageSize)
       {
         Aws::StringStream storageSizeSs;
-        storageSizeSs << location << index << locationValue << ".Range." << storageSizeIdx++;
+        storageSizeSs << location << index << locationValue << ".StorageSize.Range." << storageSizeIdx++;
         item.OutputToStream(oStream, storageSizeSs.str().c_str());
       }
   }
@@ -114,7 +105,7 @@ void ValidStorageOptions::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_provisionedIops)
       {
         Aws::StringStream provisionedIopsSs;
-        provisionedIopsSs << location << index << locationValue << ".Range." << provisionedIopsIdx++;
+        provisionedIopsSs << location << index << locationValue << ".ProvisionedIops.Range." << provisionedIopsIdx++;
         item.OutputToStream(oStream, provisionedIopsSs.str().c_str());
       }
   }
@@ -125,7 +116,7 @@ void ValidStorageOptions::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_iopsToStorageRatio)
       {
         Aws::StringStream iopsToStorageRatioSs;
-        iopsToStorageRatioSs << location << index << locationValue << ".DoubleRange." << iopsToStorageRatioIdx++;
+        iopsToStorageRatioSs << location << index << locationValue << ".IopsToStorageRatio.DoubleRange." << iopsToStorageRatioIdx++;
         item.OutputToStream(oStream, iopsToStorageRatioSs.str().c_str());
       }
   }
@@ -144,7 +135,7 @@ void ValidStorageOptions::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_storageSize)
       {
         Aws::StringStream storageSizeSs;
-        storageSizeSs << location <<  ".Range." << storageSizeIdx++;
+        storageSizeSs << location << ".StorageSize.Range." << storageSizeIdx++;
         item.OutputToStream(oStream, storageSizeSs.str().c_str());
       }
   }
@@ -154,7 +145,7 @@ void ValidStorageOptions::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_provisionedIops)
       {
         Aws::StringStream provisionedIopsSs;
-        provisionedIopsSs << location <<  ".Range." << provisionedIopsIdx++;
+        provisionedIopsSs << location << ".ProvisionedIops.Range." << provisionedIopsIdx++;
         item.OutputToStream(oStream, provisionedIopsSs.str().c_str());
       }
   }
@@ -164,7 +155,7 @@ void ValidStorageOptions::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_iopsToStorageRatio)
       {
         Aws::StringStream iopsToStorageRatioSs;
-        iopsToStorageRatioSs << location <<  ".DoubleRange." << iopsToStorageRatioIdx++;
+        iopsToStorageRatioSs << location << ".IopsToStorageRatio.DoubleRange." << iopsToStorageRatioIdx++;
         item.OutputToStream(oStream, iopsToStorageRatioSs.str().c_str());
       }
   }

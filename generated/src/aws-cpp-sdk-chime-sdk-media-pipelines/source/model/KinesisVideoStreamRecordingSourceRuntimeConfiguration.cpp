@@ -18,15 +18,7 @@ namespace ChimeSDKMediaPipelines
 namespace Model
 {
 
-KinesisVideoStreamRecordingSourceRuntimeConfiguration::KinesisVideoStreamRecordingSourceRuntimeConfiguration() : 
-    m_streamsHasBeenSet(false),
-    m_fragmentSelectorHasBeenSet(false)
-{
-}
-
-KinesisVideoStreamRecordingSourceRuntimeConfiguration::KinesisVideoStreamRecordingSourceRuntimeConfiguration(JsonView jsonValue) : 
-    m_streamsHasBeenSet(false),
-    m_fragmentSelectorHasBeenSet(false)
+KinesisVideoStreamRecordingSourceRuntimeConfiguration::KinesisVideoStreamRecordingSourceRuntimeConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ KinesisVideoStreamRecordingSourceRuntimeConfiguration& KinesisVideoStreamRecordi
     }
     m_streamsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FragmentSelector"))
   {
     m_fragmentSelector = jsonValue.GetObject("FragmentSelector");
-
     m_fragmentSelectorHasBeenSet = true;
   }
-
   return *this;
 }
 

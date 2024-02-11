@@ -34,103 +34,39 @@ namespace Model
   class PublicKeyConfig
   {
   public:
-    AWS_CLOUDFRONT_API PublicKeyConfig();
+    AWS_CLOUDFRONT_API PublicKeyConfig() = default;
     AWS_CLOUDFRONT_API PublicKeyConfig(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFRONT_API PublicKeyConfig& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_CLOUDFRONT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>A string included in the request to help make sure that the request can't be
      * replayed.</p>
      */
-    inline const Aws::String& GetCallerReference() const{ return m_callerReference; }
-
-    /**
-     * <p>A string included in the request to help make sure that the request can't be
-     * replayed.</p>
-     */
+    inline const Aws::String& GetCallerReference() const { return m_callerReference; }
     inline bool CallerReferenceHasBeenSet() const { return m_callerReferenceHasBeenSet; }
+    template<typename CallerReferenceT = Aws::String>
+    void SetCallerReference(CallerReferenceT&& value) { m_callerReferenceHasBeenSet = true; m_callerReference = std::forward<CallerReferenceT>(value); }
+    template<typename CallerReferenceT = Aws::String>
+    PublicKeyConfig& WithCallerReference(CallerReferenceT&& value) { SetCallerReference(std::forward<CallerReferenceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A string included in the request to help make sure that the request can't be
-     * replayed.</p>
-     */
-    inline void SetCallerReference(const Aws::String& value) { m_callerReferenceHasBeenSet = true; m_callerReference = value; }
-
-    /**
-     * <p>A string included in the request to help make sure that the request can't be
-     * replayed.</p>
-     */
-    inline void SetCallerReference(Aws::String&& value) { m_callerReferenceHasBeenSet = true; m_callerReference = std::move(value); }
-
-    /**
-     * <p>A string included in the request to help make sure that the request can't be
-     * replayed.</p>
-     */
-    inline void SetCallerReference(const char* value) { m_callerReferenceHasBeenSet = true; m_callerReference.assign(value); }
-
-    /**
-     * <p>A string included in the request to help make sure that the request can't be
-     * replayed.</p>
-     */
-    inline PublicKeyConfig& WithCallerReference(const Aws::String& value) { SetCallerReference(value); return *this;}
-
-    /**
-     * <p>A string included in the request to help make sure that the request can't be
-     * replayed.</p>
-     */
-    inline PublicKeyConfig& WithCallerReference(Aws::String&& value) { SetCallerReference(std::move(value)); return *this;}
-
-    /**
-     * <p>A string included in the request to help make sure that the request can't be
-     * replayed.</p>
-     */
-    inline PublicKeyConfig& WithCallerReference(const char* value) { SetCallerReference(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A name to help identify the public key.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A name to help identify the public key.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    PublicKeyConfig& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A name to help identify the public key.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A name to help identify the public key.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A name to help identify the public key.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A name to help identify the public key.</p>
-     */
-    inline PublicKeyConfig& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A name to help identify the public key.</p>
-     */
-    inline PublicKeyConfig& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A name to help identify the public key.</p>
-     */
-    inline PublicKeyConfig& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The public key that you can use with <a
      * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html">signed
@@ -138,120 +74,26 @@ namespace Model
      * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html">field-level
      * encryption</a>.</p>
      */
-    inline const Aws::String& GetEncodedKey() const{ return m_encodedKey; }
-
-    /**
-     * <p>The public key that you can use with <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html">signed
-     * URLs and signed cookies</a>, or with <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html">field-level
-     * encryption</a>.</p>
-     */
+    inline const Aws::String& GetEncodedKey() const { return m_encodedKey; }
     inline bool EncodedKeyHasBeenSet() const { return m_encodedKeyHasBeenSet; }
+    template<typename EncodedKeyT = Aws::String>
+    void SetEncodedKey(EncodedKeyT&& value) { m_encodedKeyHasBeenSet = true; m_encodedKey = std::forward<EncodedKeyT>(value); }
+    template<typename EncodedKeyT = Aws::String>
+    PublicKeyConfig& WithEncodedKey(EncodedKeyT&& value) { SetEncodedKey(std::forward<EncodedKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The public key that you can use with <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html">signed
-     * URLs and signed cookies</a>, or with <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html">field-level
-     * encryption</a>.</p>
-     */
-    inline void SetEncodedKey(const Aws::String& value) { m_encodedKeyHasBeenSet = true; m_encodedKey = value; }
-
-    /**
-     * <p>The public key that you can use with <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html">signed
-     * URLs and signed cookies</a>, or with <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html">field-level
-     * encryption</a>.</p>
-     */
-    inline void SetEncodedKey(Aws::String&& value) { m_encodedKeyHasBeenSet = true; m_encodedKey = std::move(value); }
-
-    /**
-     * <p>The public key that you can use with <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html">signed
-     * URLs and signed cookies</a>, or with <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html">field-level
-     * encryption</a>.</p>
-     */
-    inline void SetEncodedKey(const char* value) { m_encodedKeyHasBeenSet = true; m_encodedKey.assign(value); }
-
-    /**
-     * <p>The public key that you can use with <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html">signed
-     * URLs and signed cookies</a>, or with <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html">field-level
-     * encryption</a>.</p>
-     */
-    inline PublicKeyConfig& WithEncodedKey(const Aws::String& value) { SetEncodedKey(value); return *this;}
-
-    /**
-     * <p>The public key that you can use with <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html">signed
-     * URLs and signed cookies</a>, or with <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html">field-level
-     * encryption</a>.</p>
-     */
-    inline PublicKeyConfig& WithEncodedKey(Aws::String&& value) { SetEncodedKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The public key that you can use with <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html">signed
-     * URLs and signed cookies</a>, or with <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html">field-level
-     * encryption</a>.</p>
-     */
-    inline PublicKeyConfig& WithEncodedKey(const char* value) { SetEncodedKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A comment to describe the public key. The comment cannot be longer than 128
      * characters.</p>
      */
-    inline const Aws::String& GetComment() const{ return m_comment; }
-
-    /**
-     * <p>A comment to describe the public key. The comment cannot be longer than 128
-     * characters.</p>
-     */
+    inline const Aws::String& GetComment() const { return m_comment; }
     inline bool CommentHasBeenSet() const { return m_commentHasBeenSet; }
-
-    /**
-     * <p>A comment to describe the public key. The comment cannot be longer than 128
-     * characters.</p>
-     */
-    inline void SetComment(const Aws::String& value) { m_commentHasBeenSet = true; m_comment = value; }
-
-    /**
-     * <p>A comment to describe the public key. The comment cannot be longer than 128
-     * characters.</p>
-     */
-    inline void SetComment(Aws::String&& value) { m_commentHasBeenSet = true; m_comment = std::move(value); }
-
-    /**
-     * <p>A comment to describe the public key. The comment cannot be longer than 128
-     * characters.</p>
-     */
-    inline void SetComment(const char* value) { m_commentHasBeenSet = true; m_comment.assign(value); }
-
-    /**
-     * <p>A comment to describe the public key. The comment cannot be longer than 128
-     * characters.</p>
-     */
-    inline PublicKeyConfig& WithComment(const Aws::String& value) { SetComment(value); return *this;}
-
-    /**
-     * <p>A comment to describe the public key. The comment cannot be longer than 128
-     * characters.</p>
-     */
-    inline PublicKeyConfig& WithComment(Aws::String&& value) { SetComment(std::move(value)); return *this;}
-
-    /**
-     * <p>A comment to describe the public key. The comment cannot be longer than 128
-     * characters.</p>
-     */
-    inline PublicKeyConfig& WithComment(const char* value) { SetComment(value); return *this;}
-
+    template<typename CommentT = Aws::String>
+    void SetComment(CommentT&& value) { m_commentHasBeenSet = true; m_comment = std::forward<CommentT>(value); }
+    template<typename CommentT = Aws::String>
+    PublicKeyConfig& WithComment(CommentT&& value) { SetComment(std::forward<CommentT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_callerReference;

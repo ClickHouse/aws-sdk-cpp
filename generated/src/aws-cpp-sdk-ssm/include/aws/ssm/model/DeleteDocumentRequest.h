@@ -21,7 +21,7 @@ namespace Model
   class DeleteDocumentRequest : public SSMRequest
   {
   public:
-    AWS_SSM_API DeleteDocumentRequest();
+    AWS_SSM_API DeleteDocumentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,145 +34,45 @@ namespace Model
     AWS_SSM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the document.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the document.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DeleteDocumentRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the document.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the document.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the document.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the document.</p>
-     */
-    inline DeleteDocumentRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the document.</p>
-     */
-    inline DeleteDocumentRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the document.</p>
-     */
-    inline DeleteDocumentRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the document that you want to delete. If not provided, all
      * versions of the document are deleted.</p>
      */
-    inline const Aws::String& GetDocumentVersion() const{ return m_documentVersion; }
-
-    /**
-     * <p>The version of the document that you want to delete. If not provided, all
-     * versions of the document are deleted.</p>
-     */
+    inline const Aws::String& GetDocumentVersion() const { return m_documentVersion; }
     inline bool DocumentVersionHasBeenSet() const { return m_documentVersionHasBeenSet; }
+    template<typename DocumentVersionT = Aws::String>
+    void SetDocumentVersion(DocumentVersionT&& value) { m_documentVersionHasBeenSet = true; m_documentVersion = std::forward<DocumentVersionT>(value); }
+    template<typename DocumentVersionT = Aws::String>
+    DeleteDocumentRequest& WithDocumentVersion(DocumentVersionT&& value) { SetDocumentVersion(std::forward<DocumentVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the document that you want to delete. If not provided, all
-     * versions of the document are deleted.</p>
-     */
-    inline void SetDocumentVersion(const Aws::String& value) { m_documentVersionHasBeenSet = true; m_documentVersion = value; }
-
-    /**
-     * <p>The version of the document that you want to delete. If not provided, all
-     * versions of the document are deleted.</p>
-     */
-    inline void SetDocumentVersion(Aws::String&& value) { m_documentVersionHasBeenSet = true; m_documentVersion = std::move(value); }
-
-    /**
-     * <p>The version of the document that you want to delete. If not provided, all
-     * versions of the document are deleted.</p>
-     */
-    inline void SetDocumentVersion(const char* value) { m_documentVersionHasBeenSet = true; m_documentVersion.assign(value); }
-
-    /**
-     * <p>The version of the document that you want to delete. If not provided, all
-     * versions of the document are deleted.</p>
-     */
-    inline DeleteDocumentRequest& WithDocumentVersion(const Aws::String& value) { SetDocumentVersion(value); return *this;}
-
-    /**
-     * <p>The version of the document that you want to delete. If not provided, all
-     * versions of the document are deleted.</p>
-     */
-    inline DeleteDocumentRequest& WithDocumentVersion(Aws::String&& value) { SetDocumentVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the document that you want to delete. If not provided, all
-     * versions of the document are deleted.</p>
-     */
-    inline DeleteDocumentRequest& WithDocumentVersion(const char* value) { SetDocumentVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version name of the document that you want to delete. If not provided,
      * all versions of the document are deleted.</p>
      */
-    inline const Aws::String& GetVersionName() const{ return m_versionName; }
-
-    /**
-     * <p>The version name of the document that you want to delete. If not provided,
-     * all versions of the document are deleted.</p>
-     */
+    inline const Aws::String& GetVersionName() const { return m_versionName; }
     inline bool VersionNameHasBeenSet() const { return m_versionNameHasBeenSet; }
+    template<typename VersionNameT = Aws::String>
+    void SetVersionName(VersionNameT&& value) { m_versionNameHasBeenSet = true; m_versionName = std::forward<VersionNameT>(value); }
+    template<typename VersionNameT = Aws::String>
+    DeleteDocumentRequest& WithVersionName(VersionNameT&& value) { SetVersionName(std::forward<VersionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version name of the document that you want to delete. If not provided,
-     * all versions of the document are deleted.</p>
-     */
-    inline void SetVersionName(const Aws::String& value) { m_versionNameHasBeenSet = true; m_versionName = value; }
-
-    /**
-     * <p>The version name of the document that you want to delete. If not provided,
-     * all versions of the document are deleted.</p>
-     */
-    inline void SetVersionName(Aws::String&& value) { m_versionNameHasBeenSet = true; m_versionName = std::move(value); }
-
-    /**
-     * <p>The version name of the document that you want to delete. If not provided,
-     * all versions of the document are deleted.</p>
-     */
-    inline void SetVersionName(const char* value) { m_versionNameHasBeenSet = true; m_versionName.assign(value); }
-
-    /**
-     * <p>The version name of the document that you want to delete. If not provided,
-     * all versions of the document are deleted.</p>
-     */
-    inline DeleteDocumentRequest& WithVersionName(const Aws::String& value) { SetVersionName(value); return *this;}
-
-    /**
-     * <p>The version name of the document that you want to delete. If not provided,
-     * all versions of the document are deleted.</p>
-     */
-    inline DeleteDocumentRequest& WithVersionName(Aws::String&& value) { SetVersionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The version name of the document that you want to delete. If not provided,
-     * all versions of the document are deleted.</p>
-     */
-    inline DeleteDocumentRequest& WithVersionName(const char* value) { SetVersionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Some SSM document types require that you specify a <code>Force</code> flag
      * before you can delete the document. For example, you must specify a
@@ -180,35 +80,11 @@ namespace Model
      * <code>ApplicationConfigurationSchema</code>. You can restrict access to the
      * <code>Force</code> flag in an Identity and Access Management (IAM) policy.</p>
      */
-    inline bool GetForce() const{ return m_force; }
-
-    /**
-     * <p>Some SSM document types require that you specify a <code>Force</code> flag
-     * before you can delete the document. For example, you must specify a
-     * <code>Force</code> flag to delete a document of type
-     * <code>ApplicationConfigurationSchema</code>. You can restrict access to the
-     * <code>Force</code> flag in an Identity and Access Management (IAM) policy.</p>
-     */
+    inline bool GetForce() const { return m_force; }
     inline bool ForceHasBeenSet() const { return m_forceHasBeenSet; }
-
-    /**
-     * <p>Some SSM document types require that you specify a <code>Force</code> flag
-     * before you can delete the document. For example, you must specify a
-     * <code>Force</code> flag to delete a document of type
-     * <code>ApplicationConfigurationSchema</code>. You can restrict access to the
-     * <code>Force</code> flag in an Identity and Access Management (IAM) policy.</p>
-     */
     inline void SetForce(bool value) { m_forceHasBeenSet = true; m_force = value; }
-
-    /**
-     * <p>Some SSM document types require that you specify a <code>Force</code> flag
-     * before you can delete the document. For example, you must specify a
-     * <code>Force</code> flag to delete a document of type
-     * <code>ApplicationConfigurationSchema</code>. You can restrict access to the
-     * <code>Force</code> flag in an Identity and Access Management (IAM) policy.</p>
-     */
     inline DeleteDocumentRequest& WithForce(bool value) { SetForce(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_name;
@@ -220,7 +96,7 @@ namespace Model
     Aws::String m_versionName;
     bool m_versionNameHasBeenSet = false;
 
-    bool m_force;
+    bool m_force{false};
     bool m_forceHasBeenSet = false;
   };
 

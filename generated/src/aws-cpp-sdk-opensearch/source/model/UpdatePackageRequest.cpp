@@ -12,14 +12,6 @@ using namespace Aws::OpenSearchService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdatePackageRequest::UpdatePackageRequest() : 
-    m_packageIDHasBeenSet(false),
-    m_packageSourceHasBeenSet(false),
-    m_packageDescriptionHasBeenSet(false),
-    m_commitMessageHasBeenSet(false)
-{
-}
-
 Aws::String UpdatePackageRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -45,6 +37,18 @@ Aws::String UpdatePackageRequest::SerializePayload() const
   if(m_commitMessageHasBeenSet)
   {
    payload.WithString("CommitMessage", m_commitMessage);
+
+  }
+
+  if(m_packageConfigurationHasBeenSet)
+  {
+   payload.WithObject("PackageConfiguration", m_packageConfiguration.Jsonize());
+
+  }
+
+  if(m_packageEncryptionOptionsHasBeenSet)
+  {
+   payload.WithObject("PackageEncryptionOptions", m_packageEncryptionOptions.Jsonize());
 
   }
 

@@ -33,7 +33,7 @@ namespace Model
   class PrincipalIdFormat
   {
   public:
-    AWS_EC2_API PrincipalIdFormat();
+    AWS_EC2_API PrincipalIdFormat() = default;
     AWS_EC2_API PrincipalIdFormat(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API PrincipalIdFormat& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,87 +41,31 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>PrincipalIdFormatARN description</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>PrincipalIdFormatARN description</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    PrincipalIdFormat& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>PrincipalIdFormatARN description</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>PrincipalIdFormatARN description</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>PrincipalIdFormatARN description</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>PrincipalIdFormatARN description</p>
-     */
-    inline PrincipalIdFormat& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>PrincipalIdFormatARN description</p>
-     */
-    inline PrincipalIdFormat& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>PrincipalIdFormatARN description</p>
-     */
-    inline PrincipalIdFormat& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>PrincipalIdFormatStatuses description</p>
      */
-    inline const Aws::Vector<IdFormat>& GetStatuses() const{ return m_statuses; }
-
-    /**
-     * <p>PrincipalIdFormatStatuses description</p>
-     */
+    inline const Aws::Vector<IdFormat>& GetStatuses() const { return m_statuses; }
     inline bool StatusesHasBeenSet() const { return m_statusesHasBeenSet; }
-
-    /**
-     * <p>PrincipalIdFormatStatuses description</p>
-     */
-    inline void SetStatuses(const Aws::Vector<IdFormat>& value) { m_statusesHasBeenSet = true; m_statuses = value; }
-
-    /**
-     * <p>PrincipalIdFormatStatuses description</p>
-     */
-    inline void SetStatuses(Aws::Vector<IdFormat>&& value) { m_statusesHasBeenSet = true; m_statuses = std::move(value); }
-
-    /**
-     * <p>PrincipalIdFormatStatuses description</p>
-     */
-    inline PrincipalIdFormat& WithStatuses(const Aws::Vector<IdFormat>& value) { SetStatuses(value); return *this;}
-
-    /**
-     * <p>PrincipalIdFormatStatuses description</p>
-     */
-    inline PrincipalIdFormat& WithStatuses(Aws::Vector<IdFormat>&& value) { SetStatuses(std::move(value)); return *this;}
-
-    /**
-     * <p>PrincipalIdFormatStatuses description</p>
-     */
-    inline PrincipalIdFormat& AddStatuses(const IdFormat& value) { m_statusesHasBeenSet = true; m_statuses.push_back(value); return *this; }
-
-    /**
-     * <p>PrincipalIdFormatStatuses description</p>
-     */
-    inline PrincipalIdFormat& AddStatuses(IdFormat&& value) { m_statusesHasBeenSet = true; m_statuses.push_back(std::move(value)); return *this; }
-
+    template<typename StatusesT = Aws::Vector<IdFormat>>
+    void SetStatuses(StatusesT&& value) { m_statusesHasBeenSet = true; m_statuses = std::forward<StatusesT>(value); }
+    template<typename StatusesT = Aws::Vector<IdFormat>>
+    PrincipalIdFormat& WithStatuses(StatusesT&& value) { SetStatuses(std::forward<StatusesT>(value)); return *this;}
+    template<typename StatusesT = IdFormat>
+    PrincipalIdFormat& AddStatuses(StatusesT&& value) { m_statusesHasBeenSet = true; m_statuses.emplace_back(std::forward<StatusesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_arn;

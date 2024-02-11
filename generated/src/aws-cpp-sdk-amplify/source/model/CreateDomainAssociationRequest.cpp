@@ -12,17 +12,6 @@ using namespace Aws::Amplify::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDomainAssociationRequest::CreateDomainAssociationRequest() : 
-    m_appIdHasBeenSet(false),
-    m_domainNameHasBeenSet(false),
-    m_enableAutoSubDomain(false),
-    m_enableAutoSubDomainHasBeenSet(false),
-    m_subDomainSettingsHasBeenSet(false),
-    m_autoSubDomainCreationPatternsHasBeenSet(false),
-    m_autoSubDomainIAMRoleHasBeenSet(false)
-{
-}
-
 Aws::String CreateDomainAssociationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -64,6 +53,12 @@ Aws::String CreateDomainAssociationRequest::SerializePayload() const
   if(m_autoSubDomainIAMRoleHasBeenSet)
   {
    payload.WithString("autoSubDomainIAMRole", m_autoSubDomainIAMRole);
+
+  }
+
+  if(m_certificateSettingsHasBeenSet)
+  {
+   payload.WithObject("certificateSettings", m_certificateSettings.Jsonize());
 
   }
 

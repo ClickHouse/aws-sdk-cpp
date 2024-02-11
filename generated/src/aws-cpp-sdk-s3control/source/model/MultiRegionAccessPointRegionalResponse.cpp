@@ -20,15 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-MultiRegionAccessPointRegionalResponse::MultiRegionAccessPointRegionalResponse() : 
-    m_nameHasBeenSet(false),
-    m_requestStatusHasBeenSet(false)
-{
-}
-
-MultiRegionAccessPointRegionalResponse::MultiRegionAccessPointRegionalResponse(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_requestStatusHasBeenSet(false)
+MultiRegionAccessPointRegionalResponse::MultiRegionAccessPointRegionalResponse(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

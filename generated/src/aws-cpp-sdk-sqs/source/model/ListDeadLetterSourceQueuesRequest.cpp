@@ -4,45 +4,47 @@
  */
 
 #include <aws/sqs/model/ListDeadLetterSourceQueuesRequest.h>
-#include <aws/core/utils/StringUtils.h>
-#include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/json/JsonSerializer.h>
+
+#include <utility>
 
 using namespace Aws::SQS::Model;
+using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
-
-ListDeadLetterSourceQueuesRequest::ListDeadLetterSourceQueuesRequest() : 
-    m_queueUrlHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
 
 Aws::String ListDeadLetterSourceQueuesRequest::SerializePayload() const
 {
-  Aws::StringStream ss;
-  ss << "Action=ListDeadLetterSourceQueues&";
+  JsonValue payload;
+
   if(m_queueUrlHasBeenSet)
   {
-    ss << "QueueUrl=" << StringUtils::URLEncode(m_queueUrl.c_str()) << "&";
+   payload.WithString("QueueUrl", m_queueUrl);
+
   }
 
   if(m_nextTokenHasBeenSet)
   {
-    ss << "NextToken=" << StringUtils::URLEncode(m_nextToken.c_str()) << "&";
+   payload.WithString("NextToken", m_nextToken);
+
   }
 
   if(m_maxResultsHasBeenSet)
   {
-    ss << "MaxResults=" << m_maxResults << "&";
+   payload.WithInteger("MaxResults", m_maxResults);
+
   }
 
-  ss << "Version=2012-11-05";
-  return ss.str();
+  return payload.View().WriteReadable();
 }
 
-
-void  ListDeadLetterSourceQueuesRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+Aws::Http::HeaderValueCollection ListDeadLetterSourceQueuesRequest::GetRequestSpecificHeaders() const
 {
-  uri.SetQueryString(SerializePayload());
+  Aws::Http::HeaderValueCollection headers;
+  headers.insert(Aws::Http::HeaderValuePair("X-Amz-Target", "AmazonSQS.ListDeadLetterSourceQueues"));
+  return headers;
+
 }
+
+
+
+

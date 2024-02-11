@@ -22,7 +22,7 @@ namespace Model
   class UpdateAuthEventFeedbackRequest : public CognitoIdentityProviderRequest
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API UpdateAuthEventFeedbackRequest();
+    AWS_COGNITOIDENTITYPROVIDER_API UpdateAuthEventFeedbackRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,200 +35,74 @@ namespace Model
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The user pool ID.</p>
+     * <p>The ID of the user pool where you want to update auth event feedback.</p>
      */
-    inline const Aws::String& GetUserPoolId() const{ return m_userPoolId; }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
+    inline const Aws::String& GetUserPoolId() const { return m_userPoolId; }
     inline bool UserPoolIdHasBeenSet() const { return m_userPoolIdHasBeenSet; }
+    template<typename UserPoolIdT = Aws::String>
+    void SetUserPoolId(UserPoolIdT&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::forward<UserPoolIdT>(value); }
+    template<typename UserPoolIdT = Aws::String>
+    UpdateAuthEventFeedbackRequest& WithUserPoolId(UserPoolIdT&& value) { SetUserPoolId(std::forward<UserPoolIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The user pool ID.</p>
+     * <p>The name of the user that you want to query or modify. The value of this
+     * parameter is typically your user's username, but it can be any of their alias
+     * attributes. If <code>username</code> isn't an alias attribute in your user pool,
+     * this value must be the <code>sub</code> of a local user or the username of a
+     * user from a third-party IdP.</p>
      */
-    inline void SetUserPoolId(const Aws::String& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = value; }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::move(value); }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline void SetUserPoolId(const char* value) { m_userPoolIdHasBeenSet = true; m_userPoolId.assign(value); }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline UpdateAuthEventFeedbackRequest& WithUserPoolId(const Aws::String& value) { SetUserPoolId(value); return *this;}
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline UpdateAuthEventFeedbackRequest& WithUserPoolId(Aws::String&& value) { SetUserPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline UpdateAuthEventFeedbackRequest& WithUserPoolId(const char* value) { SetUserPoolId(value); return *this;}
-
-
-    /**
-     * <p>The user pool username.</p>
-     */
-    inline const Aws::String& GetUsername() const{ return m_username; }
-
-    /**
-     * <p>The user pool username.</p>
-     */
+    inline const Aws::String& GetUsername() const { return m_username; }
     inline bool UsernameHasBeenSet() const { return m_usernameHasBeenSet; }
+    template<typename UsernameT = Aws::String>
+    void SetUsername(UsernameT&& value) { m_usernameHasBeenSet = true; m_username = std::forward<UsernameT>(value); }
+    template<typename UsernameT = Aws::String>
+    UpdateAuthEventFeedbackRequest& WithUsername(UsernameT&& value) { SetUsername(std::forward<UsernameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The user pool username.</p>
+     * <p>The ID of the authentication event that you want to submit feedback for.</p>
      */
-    inline void SetUsername(const Aws::String& value) { m_usernameHasBeenSet = true; m_username = value; }
-
-    /**
-     * <p>The user pool username.</p>
-     */
-    inline void SetUsername(Aws::String&& value) { m_usernameHasBeenSet = true; m_username = std::move(value); }
-
-    /**
-     * <p>The user pool username.</p>
-     */
-    inline void SetUsername(const char* value) { m_usernameHasBeenSet = true; m_username.assign(value); }
-
-    /**
-     * <p>The user pool username.</p>
-     */
-    inline UpdateAuthEventFeedbackRequest& WithUsername(const Aws::String& value) { SetUsername(value); return *this;}
-
-    /**
-     * <p>The user pool username.</p>
-     */
-    inline UpdateAuthEventFeedbackRequest& WithUsername(Aws::String&& value) { SetUsername(std::move(value)); return *this;}
-
-    /**
-     * <p>The user pool username.</p>
-     */
-    inline UpdateAuthEventFeedbackRequest& WithUsername(const char* value) { SetUsername(value); return *this;}
-
-
-    /**
-     * <p>The event ID.</p>
-     */
-    inline const Aws::String& GetEventId() const{ return m_eventId; }
-
-    /**
-     * <p>The event ID.</p>
-     */
+    inline const Aws::String& GetEventId() const { return m_eventId; }
     inline bool EventIdHasBeenSet() const { return m_eventIdHasBeenSet; }
+    template<typename EventIdT = Aws::String>
+    void SetEventId(EventIdT&& value) { m_eventIdHasBeenSet = true; m_eventId = std::forward<EventIdT>(value); }
+    template<typename EventIdT = Aws::String>
+    UpdateAuthEventFeedbackRequest& WithEventId(EventIdT&& value) { SetEventId(std::forward<EventIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The event ID.</p>
+     * <p>The feedback token, an encrypted object generated by Amazon Cognito and
+     * passed to your user in the notification email message from the event.</p>
      */
-    inline void SetEventId(const Aws::String& value) { m_eventIdHasBeenSet = true; m_eventId = value; }
-
-    /**
-     * <p>The event ID.</p>
-     */
-    inline void SetEventId(Aws::String&& value) { m_eventIdHasBeenSet = true; m_eventId = std::move(value); }
-
-    /**
-     * <p>The event ID.</p>
-     */
-    inline void SetEventId(const char* value) { m_eventIdHasBeenSet = true; m_eventId.assign(value); }
-
-    /**
-     * <p>The event ID.</p>
-     */
-    inline UpdateAuthEventFeedbackRequest& WithEventId(const Aws::String& value) { SetEventId(value); return *this;}
-
-    /**
-     * <p>The event ID.</p>
-     */
-    inline UpdateAuthEventFeedbackRequest& WithEventId(Aws::String&& value) { SetEventId(std::move(value)); return *this;}
-
-    /**
-     * <p>The event ID.</p>
-     */
-    inline UpdateAuthEventFeedbackRequest& WithEventId(const char* value) { SetEventId(value); return *this;}
-
-
-    /**
-     * <p>The feedback token.</p>
-     */
-    inline const Aws::String& GetFeedbackToken() const{ return m_feedbackToken; }
-
-    /**
-     * <p>The feedback token.</p>
-     */
+    inline const Aws::String& GetFeedbackToken() const { return m_feedbackToken; }
     inline bool FeedbackTokenHasBeenSet() const { return m_feedbackTokenHasBeenSet; }
+    template<typename FeedbackTokenT = Aws::String>
+    void SetFeedbackToken(FeedbackTokenT&& value) { m_feedbackTokenHasBeenSet = true; m_feedbackToken = std::forward<FeedbackTokenT>(value); }
+    template<typename FeedbackTokenT = Aws::String>
+    UpdateAuthEventFeedbackRequest& WithFeedbackToken(FeedbackTokenT&& value) { SetFeedbackToken(std::forward<FeedbackTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The feedback token.</p>
+     * <p>Your feedback to the authentication event. When you provide a
+     * <code>FeedbackValue</code> value of <code>valid</code>, you tell Amazon Cognito
+     * that you trust a user session where Amazon Cognito has evaluated some level of
+     * risk. When you provide a <code>FeedbackValue</code> value of
+     * <code>invalid</code>, you tell Amazon Cognito that you don't trust a user
+     * session, or you don't believe that Amazon Cognito evaluated a high-enough risk
+     * level.</p>
      */
-    inline void SetFeedbackToken(const Aws::String& value) { m_feedbackTokenHasBeenSet = true; m_feedbackToken = value; }
-
-    /**
-     * <p>The feedback token.</p>
-     */
-    inline void SetFeedbackToken(Aws::String&& value) { m_feedbackTokenHasBeenSet = true; m_feedbackToken = std::move(value); }
-
-    /**
-     * <p>The feedback token.</p>
-     */
-    inline void SetFeedbackToken(const char* value) { m_feedbackTokenHasBeenSet = true; m_feedbackToken.assign(value); }
-
-    /**
-     * <p>The feedback token.</p>
-     */
-    inline UpdateAuthEventFeedbackRequest& WithFeedbackToken(const Aws::String& value) { SetFeedbackToken(value); return *this;}
-
-    /**
-     * <p>The feedback token.</p>
-     */
-    inline UpdateAuthEventFeedbackRequest& WithFeedbackToken(Aws::String&& value) { SetFeedbackToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The feedback token.</p>
-     */
-    inline UpdateAuthEventFeedbackRequest& WithFeedbackToken(const char* value) { SetFeedbackToken(value); return *this;}
-
-
-    /**
-     * <p>The authentication event feedback value.</p>
-     */
-    inline const FeedbackValueType& GetFeedbackValue() const{ return m_feedbackValue; }
-
-    /**
-     * <p>The authentication event feedback value.</p>
-     */
+    inline FeedbackValueType GetFeedbackValue() const { return m_feedbackValue; }
     inline bool FeedbackValueHasBeenSet() const { return m_feedbackValueHasBeenSet; }
-
-    /**
-     * <p>The authentication event feedback value.</p>
-     */
-    inline void SetFeedbackValue(const FeedbackValueType& value) { m_feedbackValueHasBeenSet = true; m_feedbackValue = value; }
-
-    /**
-     * <p>The authentication event feedback value.</p>
-     */
-    inline void SetFeedbackValue(FeedbackValueType&& value) { m_feedbackValueHasBeenSet = true; m_feedbackValue = std::move(value); }
-
-    /**
-     * <p>The authentication event feedback value.</p>
-     */
-    inline UpdateAuthEventFeedbackRequest& WithFeedbackValue(const FeedbackValueType& value) { SetFeedbackValue(value); return *this;}
-
-    /**
-     * <p>The authentication event feedback value.</p>
-     */
-    inline UpdateAuthEventFeedbackRequest& WithFeedbackValue(FeedbackValueType&& value) { SetFeedbackValue(std::move(value)); return *this;}
-
+    inline void SetFeedbackValue(FeedbackValueType value) { m_feedbackValueHasBeenSet = true; m_feedbackValue = value; }
+    inline UpdateAuthEventFeedbackRequest& WithFeedbackValue(FeedbackValueType value) { SetFeedbackValue(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_userPoolId;
@@ -243,7 +117,7 @@ namespace Model
     Aws::String m_feedbackToken;
     bool m_feedbackTokenHasBeenSet = false;
 
-    FeedbackValueType m_feedbackValue;
+    FeedbackValueType m_feedbackValue{FeedbackValueType::NOT_SET};
     bool m_feedbackValueHasBeenSet = false;
   };
 

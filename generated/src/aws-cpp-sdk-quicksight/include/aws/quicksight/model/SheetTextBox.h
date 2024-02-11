@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/quicksight/QuickSight_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/quicksight/model/TextBoxInteractionOptions.h>
 #include <utility>
 
 namespace Aws
@@ -31,109 +32,49 @@ namespace Model
   class SheetTextBox
   {
   public:
-    AWS_QUICKSIGHT_API SheetTextBox();
+    AWS_QUICKSIGHT_API SheetTextBox() = default;
     AWS_QUICKSIGHT_API SheetTextBox(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API SheetTextBox& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier for a text box. This identifier must be unique within
      * the context of a dashboard, template, or analysis. Two dashboards, analyses, or
      * templates can have text boxes that share identifiers.</p>
      */
-    inline const Aws::String& GetSheetTextBoxId() const{ return m_sheetTextBoxId; }
-
-    /**
-     * <p>The unique identifier for a text box. This identifier must be unique within
-     * the context of a dashboard, template, or analysis. Two dashboards, analyses, or
-     * templates can have text boxes that share identifiers.</p>
-     */
+    inline const Aws::String& GetSheetTextBoxId() const { return m_sheetTextBoxId; }
     inline bool SheetTextBoxIdHasBeenSet() const { return m_sheetTextBoxIdHasBeenSet; }
+    template<typename SheetTextBoxIdT = Aws::String>
+    void SetSheetTextBoxId(SheetTextBoxIdT&& value) { m_sheetTextBoxIdHasBeenSet = true; m_sheetTextBoxId = std::forward<SheetTextBoxIdT>(value); }
+    template<typename SheetTextBoxIdT = Aws::String>
+    SheetTextBox& WithSheetTextBoxId(SheetTextBoxIdT&& value) { SetSheetTextBoxId(std::forward<SheetTextBoxIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for a text box. This identifier must be unique within
-     * the context of a dashboard, template, or analysis. Two dashboards, analyses, or
-     * templates can have text boxes that share identifiers.</p>
-     */
-    inline void SetSheetTextBoxId(const Aws::String& value) { m_sheetTextBoxIdHasBeenSet = true; m_sheetTextBoxId = value; }
-
-    /**
-     * <p>The unique identifier for a text box. This identifier must be unique within
-     * the context of a dashboard, template, or analysis. Two dashboards, analyses, or
-     * templates can have text boxes that share identifiers.</p>
-     */
-    inline void SetSheetTextBoxId(Aws::String&& value) { m_sheetTextBoxIdHasBeenSet = true; m_sheetTextBoxId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for a text box. This identifier must be unique within
-     * the context of a dashboard, template, or analysis. Two dashboards, analyses, or
-     * templates can have text boxes that share identifiers.</p>
-     */
-    inline void SetSheetTextBoxId(const char* value) { m_sheetTextBoxIdHasBeenSet = true; m_sheetTextBoxId.assign(value); }
-
-    /**
-     * <p>The unique identifier for a text box. This identifier must be unique within
-     * the context of a dashboard, template, or analysis. Two dashboards, analyses, or
-     * templates can have text boxes that share identifiers.</p>
-     */
-    inline SheetTextBox& WithSheetTextBoxId(const Aws::String& value) { SetSheetTextBoxId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for a text box. This identifier must be unique within
-     * the context of a dashboard, template, or analysis. Two dashboards, analyses, or
-     * templates can have text boxes that share identifiers.</p>
-     */
-    inline SheetTextBox& WithSheetTextBoxId(Aws::String&& value) { SetSheetTextBoxId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for a text box. This identifier must be unique within
-     * the context of a dashboard, template, or analysis. Two dashboards, analyses, or
-     * templates can have text boxes that share identifiers.</p>
-     */
-    inline SheetTextBox& WithSheetTextBoxId(const char* value) { SetSheetTextBoxId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The content that is displayed in the text box.</p>
      */
-    inline const Aws::String& GetContent() const{ return m_content; }
-
-    /**
-     * <p>The content that is displayed in the text box.</p>
-     */
+    inline const Aws::String& GetContent() const { return m_content; }
     inline bool ContentHasBeenSet() const { return m_contentHasBeenSet; }
+    template<typename ContentT = Aws::String>
+    void SetContent(ContentT&& value) { m_contentHasBeenSet = true; m_content = std::forward<ContentT>(value); }
+    template<typename ContentT = Aws::String>
+    SheetTextBox& WithContent(ContentT&& value) { SetContent(std::forward<ContentT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The content that is displayed in the text box.</p>
+     * <p>The general textbox interactions setup for a textbox.</p>
      */
-    inline void SetContent(const Aws::String& value) { m_contentHasBeenSet = true; m_content = value; }
-
-    /**
-     * <p>The content that is displayed in the text box.</p>
-     */
-    inline void SetContent(Aws::String&& value) { m_contentHasBeenSet = true; m_content = std::move(value); }
-
-    /**
-     * <p>The content that is displayed in the text box.</p>
-     */
-    inline void SetContent(const char* value) { m_contentHasBeenSet = true; m_content.assign(value); }
-
-    /**
-     * <p>The content that is displayed in the text box.</p>
-     */
-    inline SheetTextBox& WithContent(const Aws::String& value) { SetContent(value); return *this;}
-
-    /**
-     * <p>The content that is displayed in the text box.</p>
-     */
-    inline SheetTextBox& WithContent(Aws::String&& value) { SetContent(std::move(value)); return *this;}
-
-    /**
-     * <p>The content that is displayed in the text box.</p>
-     */
-    inline SheetTextBox& WithContent(const char* value) { SetContent(value); return *this;}
-
+    inline const TextBoxInteractionOptions& GetInteractions() const { return m_interactions; }
+    inline bool InteractionsHasBeenSet() const { return m_interactionsHasBeenSet; }
+    template<typename InteractionsT = TextBoxInteractionOptions>
+    void SetInteractions(InteractionsT&& value) { m_interactionsHasBeenSet = true; m_interactions = std::forward<InteractionsT>(value); }
+    template<typename InteractionsT = TextBoxInteractionOptions>
+    SheetTextBox& WithInteractions(InteractionsT&& value) { SetInteractions(std::forward<InteractionsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sheetTextBoxId;
@@ -141,6 +82,9 @@ namespace Model
 
     Aws::String m_content;
     bool m_contentHasBeenSet = false;
+
+    TextBoxInteractionOptions m_interactions;
+    bool m_interactionsHasBeenSet = false;
   };
 
 } // namespace Model

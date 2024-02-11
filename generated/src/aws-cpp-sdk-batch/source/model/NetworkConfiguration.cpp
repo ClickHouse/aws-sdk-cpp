@@ -18,15 +18,7 @@ namespace Batch
 namespace Model
 {
 
-NetworkConfiguration::NetworkConfiguration() : 
-    m_assignPublicIp(AssignPublicIp::NOT_SET),
-    m_assignPublicIpHasBeenSet(false)
-{
-}
-
-NetworkConfiguration::NetworkConfiguration(JsonView jsonValue) : 
-    m_assignPublicIp(AssignPublicIp::NOT_SET),
-    m_assignPublicIpHasBeenSet(false)
+NetworkConfiguration::NetworkConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ NetworkConfiguration& NetworkConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("assignPublicIp"))
   {
     m_assignPublicIp = AssignPublicIpMapper::GetAssignPublicIpForName(jsonValue.GetString("assignPublicIp"));
-
     m_assignPublicIpHasBeenSet = true;
   }
-
   return *this;
 }
 

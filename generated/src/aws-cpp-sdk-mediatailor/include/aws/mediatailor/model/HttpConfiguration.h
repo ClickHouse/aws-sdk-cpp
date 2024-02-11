@@ -31,60 +31,24 @@ namespace Model
   class HttpConfiguration
   {
   public:
-    AWS_MEDIATAILOR_API HttpConfiguration();
+    AWS_MEDIATAILOR_API HttpConfiguration() = default;
     AWS_MEDIATAILOR_API HttpConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIATAILOR_API HttpConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIATAILOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The base URL for the source location host server. This string must include
      * the protocol, such as <b>https://</b>.</p>
      */
-    inline const Aws::String& GetBaseUrl() const{ return m_baseUrl; }
-
-    /**
-     * <p>The base URL for the source location host server. This string must include
-     * the protocol, such as <b>https://</b>.</p>
-     */
+    inline const Aws::String& GetBaseUrl() const { return m_baseUrl; }
     inline bool BaseUrlHasBeenSet() const { return m_baseUrlHasBeenSet; }
-
-    /**
-     * <p>The base URL for the source location host server. This string must include
-     * the protocol, such as <b>https://</b>.</p>
-     */
-    inline void SetBaseUrl(const Aws::String& value) { m_baseUrlHasBeenSet = true; m_baseUrl = value; }
-
-    /**
-     * <p>The base URL for the source location host server. This string must include
-     * the protocol, such as <b>https://</b>.</p>
-     */
-    inline void SetBaseUrl(Aws::String&& value) { m_baseUrlHasBeenSet = true; m_baseUrl = std::move(value); }
-
-    /**
-     * <p>The base URL for the source location host server. This string must include
-     * the protocol, such as <b>https://</b>.</p>
-     */
-    inline void SetBaseUrl(const char* value) { m_baseUrlHasBeenSet = true; m_baseUrl.assign(value); }
-
-    /**
-     * <p>The base URL for the source location host server. This string must include
-     * the protocol, such as <b>https://</b>.</p>
-     */
-    inline HttpConfiguration& WithBaseUrl(const Aws::String& value) { SetBaseUrl(value); return *this;}
-
-    /**
-     * <p>The base URL for the source location host server. This string must include
-     * the protocol, such as <b>https://</b>.</p>
-     */
-    inline HttpConfiguration& WithBaseUrl(Aws::String&& value) { SetBaseUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The base URL for the source location host server. This string must include
-     * the protocol, such as <b>https://</b>.</p>
-     */
-    inline HttpConfiguration& WithBaseUrl(const char* value) { SetBaseUrl(value); return *this;}
-
+    template<typename BaseUrlT = Aws::String>
+    void SetBaseUrl(BaseUrlT&& value) { m_baseUrlHasBeenSet = true; m_baseUrl = std::forward<BaseUrlT>(value); }
+    template<typename BaseUrlT = Aws::String>
+    HttpConfiguration& WithBaseUrl(BaseUrlT&& value) { SetBaseUrl(std::forward<BaseUrlT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_baseUrl;

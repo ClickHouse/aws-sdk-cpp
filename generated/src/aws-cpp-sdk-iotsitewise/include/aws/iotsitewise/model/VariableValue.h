@@ -6,6 +6,8 @@
 #pragma once
 #include <aws/iotsitewise/IoTSiteWise_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/iotsitewise/model/AssetModelPropertyPathSegment.h>
 #include <utility>
 
 namespace Aws
@@ -32,157 +34,65 @@ namespace Model
   class VariableValue
   {
   public:
-    AWS_IOTSITEWISE_API VariableValue();
+    AWS_IOTSITEWISE_API VariableValue() = default;
     AWS_IOTSITEWISE_API VariableValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API VariableValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the property to use as the variable. You can use the property
-     * <code>name</code> if it's from the same asset model.</p>
+     * <code>name</code> if it's from the same asset model. If the property has an
+     * external ID, you can specify <code>externalId:</code> followed by the external
+     * ID. For more information, see <a
+     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-ids">Using
+     * external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
      */
-    inline const Aws::String& GetPropertyId() const{ return m_propertyId; }
-
-    /**
-     * <p>The ID of the property to use as the variable. You can use the property
-     * <code>name</code> if it's from the same asset model.</p>
-     */
+    inline const Aws::String& GetPropertyId() const { return m_propertyId; }
     inline bool PropertyIdHasBeenSet() const { return m_propertyIdHasBeenSet; }
+    template<typename PropertyIdT = Aws::String>
+    void SetPropertyId(PropertyIdT&& value) { m_propertyIdHasBeenSet = true; m_propertyId = std::forward<PropertyIdT>(value); }
+    template<typename PropertyIdT = Aws::String>
+    VariableValue& WithPropertyId(PropertyIdT&& value) { SetPropertyId(std::forward<PropertyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the property to use as the variable. You can use the property
-     * <code>name</code> if it's from the same asset model.</p>
-     */
-    inline void SetPropertyId(const Aws::String& value) { m_propertyIdHasBeenSet = true; m_propertyId = value; }
-
-    /**
-     * <p>The ID of the property to use as the variable. You can use the property
-     * <code>name</code> if it's from the same asset model.</p>
-     */
-    inline void SetPropertyId(Aws::String&& value) { m_propertyIdHasBeenSet = true; m_propertyId = std::move(value); }
-
-    /**
-     * <p>The ID of the property to use as the variable. You can use the property
-     * <code>name</code> if it's from the same asset model.</p>
-     */
-    inline void SetPropertyId(const char* value) { m_propertyIdHasBeenSet = true; m_propertyId.assign(value); }
-
-    /**
-     * <p>The ID of the property to use as the variable. You can use the property
-     * <code>name</code> if it's from the same asset model.</p>
-     */
-    inline VariableValue& WithPropertyId(const Aws::String& value) { SetPropertyId(value); return *this;}
-
-    /**
-     * <p>The ID of the property to use as the variable. You can use the property
-     * <code>name</code> if it's from the same asset model.</p>
-     */
-    inline VariableValue& WithPropertyId(Aws::String&& value) { SetPropertyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the property to use as the variable. You can use the property
-     * <code>name</code> if it's from the same asset model.</p>
-     */
-    inline VariableValue& WithPropertyId(const char* value) { SetPropertyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the hierarchy to query for the property ID. You can use the
-     * hierarchy's name instead of the hierarchy's ID.</p> <p>You use a hierarchy ID
-     * instead of a model ID because you can have several hierarchies using the same
-     * model and therefore the same <code>propertyId</code>. For example, you might
-     * have separately grouped assets that come from the same asset model. For more
-     * information, see <a
+     * hierarchy's name instead of the hierarchy's ID. If the hierarchy has an external
+     * ID, you can specify <code>externalId:</code> followed by the external ID. For
+     * more information, see <a
+     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-ids">Using
+     * external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p> <p>You use a
+     * hierarchy ID instead of a model ID because you can have several hierarchies
+     * using the same model and therefore the same <code>propertyId</code>. For
+     * example, you might have separately grouped assets that come from the same asset
+     * model. For more information, see <a
      * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html">Asset
      * hierarchies</a> in the <i>IoT SiteWise User Guide</i>.</p>
      */
-    inline const Aws::String& GetHierarchyId() const{ return m_hierarchyId; }
-
-    /**
-     * <p>The ID of the hierarchy to query for the property ID. You can use the
-     * hierarchy's name instead of the hierarchy's ID.</p> <p>You use a hierarchy ID
-     * instead of a model ID because you can have several hierarchies using the same
-     * model and therefore the same <code>propertyId</code>. For example, you might
-     * have separately grouped assets that come from the same asset model. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html">Asset
-     * hierarchies</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
+    inline const Aws::String& GetHierarchyId() const { return m_hierarchyId; }
     inline bool HierarchyIdHasBeenSet() const { return m_hierarchyIdHasBeenSet; }
+    template<typename HierarchyIdT = Aws::String>
+    void SetHierarchyId(HierarchyIdT&& value) { m_hierarchyIdHasBeenSet = true; m_hierarchyId = std::forward<HierarchyIdT>(value); }
+    template<typename HierarchyIdT = Aws::String>
+    VariableValue& WithHierarchyId(HierarchyIdT&& value) { SetHierarchyId(std::forward<HierarchyIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the hierarchy to query for the property ID. You can use the
-     * hierarchy's name instead of the hierarchy's ID.</p> <p>You use a hierarchy ID
-     * instead of a model ID because you can have several hierarchies using the same
-     * model and therefore the same <code>propertyId</code>. For example, you might
-     * have separately grouped assets that come from the same asset model. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html">Asset
-     * hierarchies</a> in the <i>IoT SiteWise User Guide</i>.</p>
+     * <p>The path of the property.</p>
      */
-    inline void SetHierarchyId(const Aws::String& value) { m_hierarchyIdHasBeenSet = true; m_hierarchyId = value; }
-
-    /**
-     * <p>The ID of the hierarchy to query for the property ID. You can use the
-     * hierarchy's name instead of the hierarchy's ID.</p> <p>You use a hierarchy ID
-     * instead of a model ID because you can have several hierarchies using the same
-     * model and therefore the same <code>propertyId</code>. For example, you might
-     * have separately grouped assets that come from the same asset model. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html">Asset
-     * hierarchies</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline void SetHierarchyId(Aws::String&& value) { m_hierarchyIdHasBeenSet = true; m_hierarchyId = std::move(value); }
-
-    /**
-     * <p>The ID of the hierarchy to query for the property ID. You can use the
-     * hierarchy's name instead of the hierarchy's ID.</p> <p>You use a hierarchy ID
-     * instead of a model ID because you can have several hierarchies using the same
-     * model and therefore the same <code>propertyId</code>. For example, you might
-     * have separately grouped assets that come from the same asset model. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html">Asset
-     * hierarchies</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline void SetHierarchyId(const char* value) { m_hierarchyIdHasBeenSet = true; m_hierarchyId.assign(value); }
-
-    /**
-     * <p>The ID of the hierarchy to query for the property ID. You can use the
-     * hierarchy's name instead of the hierarchy's ID.</p> <p>You use a hierarchy ID
-     * instead of a model ID because you can have several hierarchies using the same
-     * model and therefore the same <code>propertyId</code>. For example, you might
-     * have separately grouped assets that come from the same asset model. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html">Asset
-     * hierarchies</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline VariableValue& WithHierarchyId(const Aws::String& value) { SetHierarchyId(value); return *this;}
-
-    /**
-     * <p>The ID of the hierarchy to query for the property ID. You can use the
-     * hierarchy's name instead of the hierarchy's ID.</p> <p>You use a hierarchy ID
-     * instead of a model ID because you can have several hierarchies using the same
-     * model and therefore the same <code>propertyId</code>. For example, you might
-     * have separately grouped assets that come from the same asset model. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html">Asset
-     * hierarchies</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline VariableValue& WithHierarchyId(Aws::String&& value) { SetHierarchyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the hierarchy to query for the property ID. You can use the
-     * hierarchy's name instead of the hierarchy's ID.</p> <p>You use a hierarchy ID
-     * instead of a model ID because you can have several hierarchies using the same
-     * model and therefore the same <code>propertyId</code>. For example, you might
-     * have separately grouped assets that come from the same asset model. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html">Asset
-     * hierarchies</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline VariableValue& WithHierarchyId(const char* value) { SetHierarchyId(value); return *this;}
-
+    inline const Aws::Vector<AssetModelPropertyPathSegment>& GetPropertyPath() const { return m_propertyPath; }
+    inline bool PropertyPathHasBeenSet() const { return m_propertyPathHasBeenSet; }
+    template<typename PropertyPathT = Aws::Vector<AssetModelPropertyPathSegment>>
+    void SetPropertyPath(PropertyPathT&& value) { m_propertyPathHasBeenSet = true; m_propertyPath = std::forward<PropertyPathT>(value); }
+    template<typename PropertyPathT = Aws::Vector<AssetModelPropertyPathSegment>>
+    VariableValue& WithPropertyPath(PropertyPathT&& value) { SetPropertyPath(std::forward<PropertyPathT>(value)); return *this;}
+    template<typename PropertyPathT = AssetModelPropertyPathSegment>
+    VariableValue& AddPropertyPath(PropertyPathT&& value) { m_propertyPathHasBeenSet = true; m_propertyPath.emplace_back(std::forward<PropertyPathT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_propertyId;
@@ -190,6 +100,9 @@ namespace Model
 
     Aws::String m_hierarchyId;
     bool m_hierarchyIdHasBeenSet = false;
+
+    Aws::Vector<AssetModelPropertyPathSegment> m_propertyPath;
+    bool m_propertyPathHasBeenSet = false;
   };
 
 } // namespace Model

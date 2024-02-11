@@ -25,7 +25,7 @@ namespace Model
 
   /**
    * <p>A location in Amazon Simple Storage Service (Amazon S3) where SimSpace Weaver
-   * stores simulation data, such as your app zip files and schema file. For more
+   * stores simulation data, such as your app .zip files and schema file. For more
    * information about Amazon S3, see the <a
    * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html">
    * <i>Amazon Simple Storage Service User Guide</i> </a>.</p><p><h3>See Also:</h3>  
@@ -36,77 +36,28 @@ namespace Model
   class S3Location
   {
   public:
-    AWS_SIMSPACEWEAVER_API S3Location();
+    AWS_SIMSPACEWEAVER_API S3Location() = default;
     AWS_SIMSPACEWEAVER_API S3Location(Aws::Utils::Json::JsonView jsonValue);
     AWS_SIMSPACEWEAVER_API S3Location& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SIMSPACEWEAVER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of an Amazon S3 bucket. For more information about buckets, see <a
      * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html">Creating,
      * configuring, and working with Amazon S3 buckets</a> in the <i>Amazon Simple
      * Storage Service User Guide</i>.</p>
      */
-    inline const Aws::String& GetBucketName() const{ return m_bucketName; }
-
-    /**
-     * <p>The name of an Amazon S3 bucket. For more information about buckets, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html">Creating,
-     * configuring, and working with Amazon S3 buckets</a> in the <i>Amazon Simple
-     * Storage Service User Guide</i>.</p>
-     */
+    inline const Aws::String& GetBucketName() const { return m_bucketName; }
     inline bool BucketNameHasBeenSet() const { return m_bucketNameHasBeenSet; }
+    template<typename BucketNameT = Aws::String>
+    void SetBucketName(BucketNameT&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::forward<BucketNameT>(value); }
+    template<typename BucketNameT = Aws::String>
+    S3Location& WithBucketName(BucketNameT&& value) { SetBucketName(std::forward<BucketNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of an Amazon S3 bucket. For more information about buckets, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html">Creating,
-     * configuring, and working with Amazon S3 buckets</a> in the <i>Amazon Simple
-     * Storage Service User Guide</i>.</p>
-     */
-    inline void SetBucketName(const Aws::String& value) { m_bucketNameHasBeenSet = true; m_bucketName = value; }
-
-    /**
-     * <p>The name of an Amazon S3 bucket. For more information about buckets, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html">Creating,
-     * configuring, and working with Amazon S3 buckets</a> in the <i>Amazon Simple
-     * Storage Service User Guide</i>.</p>
-     */
-    inline void SetBucketName(Aws::String&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::move(value); }
-
-    /**
-     * <p>The name of an Amazon S3 bucket. For more information about buckets, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html">Creating,
-     * configuring, and working with Amazon S3 buckets</a> in the <i>Amazon Simple
-     * Storage Service User Guide</i>.</p>
-     */
-    inline void SetBucketName(const char* value) { m_bucketNameHasBeenSet = true; m_bucketName.assign(value); }
-
-    /**
-     * <p>The name of an Amazon S3 bucket. For more information about buckets, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html">Creating,
-     * configuring, and working with Amazon S3 buckets</a> in the <i>Amazon Simple
-     * Storage Service User Guide</i>.</p>
-     */
-    inline S3Location& WithBucketName(const Aws::String& value) { SetBucketName(value); return *this;}
-
-    /**
-     * <p>The name of an Amazon S3 bucket. For more information about buckets, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html">Creating,
-     * configuring, and working with Amazon S3 buckets</a> in the <i>Amazon Simple
-     * Storage Service User Guide</i>.</p>
-     */
-    inline S3Location& WithBucketName(Aws::String&& value) { SetBucketName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of an Amazon S3 bucket. For more information about buckets, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html">Creating,
-     * configuring, and working with Amazon S3 buckets</a> in the <i>Amazon Simple
-     * Storage Service User Guide</i>.</p>
-     */
-    inline S3Location& WithBucketName(const char* value) { SetBucketName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The key name of an object in Amazon S3. For more information about Amazon S3
      * objects and object keys, see <a
@@ -114,71 +65,13 @@ namespace Model
      * downloading, and working with objects in Amazon S3</a> in the <i>Amazon Simple
      * Storage Service User Guide</i>.</p>
      */
-    inline const Aws::String& GetObjectKey() const{ return m_objectKey; }
-
-    /**
-     * <p>The key name of an object in Amazon S3. For more information about Amazon S3
-     * objects and object keys, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/uploading-downloading-objects.html">Uploading,
-     * downloading, and working with objects in Amazon S3</a> in the <i>Amazon Simple
-     * Storage Service User Guide</i>.</p>
-     */
+    inline const Aws::String& GetObjectKey() const { return m_objectKey; }
     inline bool ObjectKeyHasBeenSet() const { return m_objectKeyHasBeenSet; }
-
-    /**
-     * <p>The key name of an object in Amazon S3. For more information about Amazon S3
-     * objects and object keys, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/uploading-downloading-objects.html">Uploading,
-     * downloading, and working with objects in Amazon S3</a> in the <i>Amazon Simple
-     * Storage Service User Guide</i>.</p>
-     */
-    inline void SetObjectKey(const Aws::String& value) { m_objectKeyHasBeenSet = true; m_objectKey = value; }
-
-    /**
-     * <p>The key name of an object in Amazon S3. For more information about Amazon S3
-     * objects and object keys, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/uploading-downloading-objects.html">Uploading,
-     * downloading, and working with objects in Amazon S3</a> in the <i>Amazon Simple
-     * Storage Service User Guide</i>.</p>
-     */
-    inline void SetObjectKey(Aws::String&& value) { m_objectKeyHasBeenSet = true; m_objectKey = std::move(value); }
-
-    /**
-     * <p>The key name of an object in Amazon S3. For more information about Amazon S3
-     * objects and object keys, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/uploading-downloading-objects.html">Uploading,
-     * downloading, and working with objects in Amazon S3</a> in the <i>Amazon Simple
-     * Storage Service User Guide</i>.</p>
-     */
-    inline void SetObjectKey(const char* value) { m_objectKeyHasBeenSet = true; m_objectKey.assign(value); }
-
-    /**
-     * <p>The key name of an object in Amazon S3. For more information about Amazon S3
-     * objects and object keys, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/uploading-downloading-objects.html">Uploading,
-     * downloading, and working with objects in Amazon S3</a> in the <i>Amazon Simple
-     * Storage Service User Guide</i>.</p>
-     */
-    inline S3Location& WithObjectKey(const Aws::String& value) { SetObjectKey(value); return *this;}
-
-    /**
-     * <p>The key name of an object in Amazon S3. For more information about Amazon S3
-     * objects and object keys, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/uploading-downloading-objects.html">Uploading,
-     * downloading, and working with objects in Amazon S3</a> in the <i>Amazon Simple
-     * Storage Service User Guide</i>.</p>
-     */
-    inline S3Location& WithObjectKey(Aws::String&& value) { SetObjectKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The key name of an object in Amazon S3. For more information about Amazon S3
-     * objects and object keys, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/uploading-downloading-objects.html">Uploading,
-     * downloading, and working with objects in Amazon S3</a> in the <i>Amazon Simple
-     * Storage Service User Guide</i>.</p>
-     */
-    inline S3Location& WithObjectKey(const char* value) { SetObjectKey(value); return *this;}
-
+    template<typename ObjectKeyT = Aws::String>
+    void SetObjectKey(ObjectKeyT&& value) { m_objectKeyHasBeenSet = true; m_objectKey = std::forward<ObjectKeyT>(value); }
+    template<typename ObjectKeyT = Aws::String>
+    S3Location& WithObjectKey(ObjectKeyT&& value) { SetObjectKey(std::forward<ObjectKeyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucketName;

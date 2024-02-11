@@ -34,241 +34,123 @@ namespace Model
   class SendCommandResult
   {
   public:
-    AWS_QLDBSESSION_API SendCommandResult();
+    AWS_QLDBSESSION_API SendCommandResult() = default;
     AWS_QLDBSESSION_API SendCommandResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_QLDBSESSION_API SendCommandResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Contains the details of the started session that includes a session token.
      * This <code>SessionToken</code> is required for every subsequent command that is
      * issued during the current session.</p>
      */
-    inline const StartSessionResult& GetStartSession() const{ return m_startSession; }
+    inline const StartSessionResult& GetStartSession() const { return m_startSession; }
+    template<typename StartSessionT = StartSessionResult>
+    void SetStartSession(StartSessionT&& value) { m_startSessionHasBeenSet = true; m_startSession = std::forward<StartSessionT>(value); }
+    template<typename StartSessionT = StartSessionResult>
+    SendCommandResult& WithStartSession(StartSessionT&& value) { SetStartSession(std::forward<StartSessionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains the details of the started session that includes a session token.
-     * This <code>SessionToken</code> is required for every subsequent command that is
-     * issued during the current session.</p>
-     */
-    inline void SetStartSession(const StartSessionResult& value) { m_startSession = value; }
-
-    /**
-     * <p>Contains the details of the started session that includes a session token.
-     * This <code>SessionToken</code> is required for every subsequent command that is
-     * issued during the current session.</p>
-     */
-    inline void SetStartSession(StartSessionResult&& value) { m_startSession = std::move(value); }
-
-    /**
-     * <p>Contains the details of the started session that includes a session token.
-     * This <code>SessionToken</code> is required for every subsequent command that is
-     * issued during the current session.</p>
-     */
-    inline SendCommandResult& WithStartSession(const StartSessionResult& value) { SetStartSession(value); return *this;}
-
-    /**
-     * <p>Contains the details of the started session that includes a session token.
-     * This <code>SessionToken</code> is required for every subsequent command that is
-     * issued during the current session.</p>
-     */
-    inline SendCommandResult& WithStartSession(StartSessionResult&& value) { SetStartSession(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains the details of the started transaction.</p>
      */
-    inline const StartTransactionResult& GetStartTransaction() const{ return m_startTransaction; }
+    inline const StartTransactionResult& GetStartTransaction() const { return m_startTransaction; }
+    template<typename StartTransactionT = StartTransactionResult>
+    void SetStartTransaction(StartTransactionT&& value) { m_startTransactionHasBeenSet = true; m_startTransaction = std::forward<StartTransactionT>(value); }
+    template<typename StartTransactionT = StartTransactionResult>
+    SendCommandResult& WithStartTransaction(StartTransactionT&& value) { SetStartTransaction(std::forward<StartTransactionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains the details of the started transaction.</p>
-     */
-    inline void SetStartTransaction(const StartTransactionResult& value) { m_startTransaction = value; }
-
-    /**
-     * <p>Contains the details of the started transaction.</p>
-     */
-    inline void SetStartTransaction(StartTransactionResult&& value) { m_startTransaction = std::move(value); }
-
-    /**
-     * <p>Contains the details of the started transaction.</p>
-     */
-    inline SendCommandResult& WithStartTransaction(const StartTransactionResult& value) { SetStartTransaction(value); return *this;}
-
-    /**
-     * <p>Contains the details of the started transaction.</p>
-     */
-    inline SendCommandResult& WithStartTransaction(StartTransactionResult&& value) { SetStartTransaction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains the details of the ended session.</p>
      */
-    inline const EndSessionResult& GetEndSession() const{ return m_endSession; }
+    inline const EndSessionResult& GetEndSession() const { return m_endSession; }
+    template<typename EndSessionT = EndSessionResult>
+    void SetEndSession(EndSessionT&& value) { m_endSessionHasBeenSet = true; m_endSession = std::forward<EndSessionT>(value); }
+    template<typename EndSessionT = EndSessionResult>
+    SendCommandResult& WithEndSession(EndSessionT&& value) { SetEndSession(std::forward<EndSessionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains the details of the ended session.</p>
-     */
-    inline void SetEndSession(const EndSessionResult& value) { m_endSession = value; }
-
-    /**
-     * <p>Contains the details of the ended session.</p>
-     */
-    inline void SetEndSession(EndSessionResult&& value) { m_endSession = std::move(value); }
-
-    /**
-     * <p>Contains the details of the ended session.</p>
-     */
-    inline SendCommandResult& WithEndSession(const EndSessionResult& value) { SetEndSession(value); return *this;}
-
-    /**
-     * <p>Contains the details of the ended session.</p>
-     */
-    inline SendCommandResult& WithEndSession(EndSessionResult&& value) { SetEndSession(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains the details of the committed transaction.</p>
      */
-    inline const CommitTransactionResult& GetCommitTransaction() const{ return m_commitTransaction; }
+    inline const CommitTransactionResult& GetCommitTransaction() const { return m_commitTransaction; }
+    template<typename CommitTransactionT = CommitTransactionResult>
+    void SetCommitTransaction(CommitTransactionT&& value) { m_commitTransactionHasBeenSet = true; m_commitTransaction = std::forward<CommitTransactionT>(value); }
+    template<typename CommitTransactionT = CommitTransactionResult>
+    SendCommandResult& WithCommitTransaction(CommitTransactionT&& value) { SetCommitTransaction(std::forward<CommitTransactionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains the details of the committed transaction.</p>
-     */
-    inline void SetCommitTransaction(const CommitTransactionResult& value) { m_commitTransaction = value; }
-
-    /**
-     * <p>Contains the details of the committed transaction.</p>
-     */
-    inline void SetCommitTransaction(CommitTransactionResult&& value) { m_commitTransaction = std::move(value); }
-
-    /**
-     * <p>Contains the details of the committed transaction.</p>
-     */
-    inline SendCommandResult& WithCommitTransaction(const CommitTransactionResult& value) { SetCommitTransaction(value); return *this;}
-
-    /**
-     * <p>Contains the details of the committed transaction.</p>
-     */
-    inline SendCommandResult& WithCommitTransaction(CommitTransactionResult&& value) { SetCommitTransaction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains the details of the aborted transaction.</p>
      */
-    inline const AbortTransactionResult& GetAbortTransaction() const{ return m_abortTransaction; }
+    inline const AbortTransactionResult& GetAbortTransaction() const { return m_abortTransaction; }
+    template<typename AbortTransactionT = AbortTransactionResult>
+    void SetAbortTransaction(AbortTransactionT&& value) { m_abortTransactionHasBeenSet = true; m_abortTransaction = std::forward<AbortTransactionT>(value); }
+    template<typename AbortTransactionT = AbortTransactionResult>
+    SendCommandResult& WithAbortTransaction(AbortTransactionT&& value) { SetAbortTransaction(std::forward<AbortTransactionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains the details of the aborted transaction.</p>
-     */
-    inline void SetAbortTransaction(const AbortTransactionResult& value) { m_abortTransaction = value; }
-
-    /**
-     * <p>Contains the details of the aborted transaction.</p>
-     */
-    inline void SetAbortTransaction(AbortTransactionResult&& value) { m_abortTransaction = std::move(value); }
-
-    /**
-     * <p>Contains the details of the aborted transaction.</p>
-     */
-    inline SendCommandResult& WithAbortTransaction(const AbortTransactionResult& value) { SetAbortTransaction(value); return *this;}
-
-    /**
-     * <p>Contains the details of the aborted transaction.</p>
-     */
-    inline SendCommandResult& WithAbortTransaction(AbortTransactionResult&& value) { SetAbortTransaction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains the details of the executed statement.</p>
      */
-    inline const ExecuteStatementResult& GetExecuteStatement() const{ return m_executeStatement; }
+    inline const ExecuteStatementResult& GetExecuteStatement() const { return m_executeStatement; }
+    template<typename ExecuteStatementT = ExecuteStatementResult>
+    void SetExecuteStatement(ExecuteStatementT&& value) { m_executeStatementHasBeenSet = true; m_executeStatement = std::forward<ExecuteStatementT>(value); }
+    template<typename ExecuteStatementT = ExecuteStatementResult>
+    SendCommandResult& WithExecuteStatement(ExecuteStatementT&& value) { SetExecuteStatement(std::forward<ExecuteStatementT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains the details of the executed statement.</p>
-     */
-    inline void SetExecuteStatement(const ExecuteStatementResult& value) { m_executeStatement = value; }
-
-    /**
-     * <p>Contains the details of the executed statement.</p>
-     */
-    inline void SetExecuteStatement(ExecuteStatementResult&& value) { m_executeStatement = std::move(value); }
-
-    /**
-     * <p>Contains the details of the executed statement.</p>
-     */
-    inline SendCommandResult& WithExecuteStatement(const ExecuteStatementResult& value) { SetExecuteStatement(value); return *this;}
-
-    /**
-     * <p>Contains the details of the executed statement.</p>
-     */
-    inline SendCommandResult& WithExecuteStatement(ExecuteStatementResult&& value) { SetExecuteStatement(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains the details of the fetched page.</p>
      */
-    inline const FetchPageResult& GetFetchPage() const{ return m_fetchPage; }
+    inline const FetchPageResult& GetFetchPage() const { return m_fetchPage; }
+    template<typename FetchPageT = FetchPageResult>
+    void SetFetchPage(FetchPageT&& value) { m_fetchPageHasBeenSet = true; m_fetchPage = std::forward<FetchPageT>(value); }
+    template<typename FetchPageT = FetchPageResult>
+    SendCommandResult& WithFetchPage(FetchPageT&& value) { SetFetchPage(std::forward<FetchPageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains the details of the fetched page.</p>
-     */
-    inline void SetFetchPage(const FetchPageResult& value) { m_fetchPage = value; }
-
-    /**
-     * <p>Contains the details of the fetched page.</p>
-     */
-    inline void SetFetchPage(FetchPageResult&& value) { m_fetchPage = std::move(value); }
-
-    /**
-     * <p>Contains the details of the fetched page.</p>
-     */
-    inline SendCommandResult& WithFetchPage(const FetchPageResult& value) { SetFetchPage(value); return *this;}
-
-    /**
-     * <p>Contains the details of the fetched page.</p>
-     */
-    inline SendCommandResult& WithFetchPage(FetchPageResult&& value) { SetFetchPage(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline SendCommandResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline SendCommandResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline SendCommandResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    SendCommandResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     StartSessionResult m_startSession;
+    bool m_startSessionHasBeenSet = false;
 
     StartTransactionResult m_startTransaction;
+    bool m_startTransactionHasBeenSet = false;
 
     EndSessionResult m_endSession;
+    bool m_endSessionHasBeenSet = false;
 
     CommitTransactionResult m_commitTransaction;
+    bool m_commitTransactionHasBeenSet = false;
 
     AbortTransactionResult m_abortTransaction;
+    bool m_abortTransactionHasBeenSet = false;
 
     ExecuteStatementResult m_executeStatement;
+    bool m_executeStatementHasBeenSet = false;
 
     FetchPageResult m_fetchPage;
+    bool m_fetchPageHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

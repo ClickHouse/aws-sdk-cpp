@@ -18,51 +18,7 @@ namespace EMR
 namespace Model
 {
 
-JobFlowInstancesConfig::JobFlowInstancesConfig() : 
-    m_masterInstanceTypeHasBeenSet(false),
-    m_slaveInstanceTypeHasBeenSet(false),
-    m_instanceCount(0),
-    m_instanceCountHasBeenSet(false),
-    m_instanceGroupsHasBeenSet(false),
-    m_instanceFleetsHasBeenSet(false),
-    m_ec2KeyNameHasBeenSet(false),
-    m_placementHasBeenSet(false),
-    m_keepJobFlowAliveWhenNoSteps(false),
-    m_keepJobFlowAliveWhenNoStepsHasBeenSet(false),
-    m_terminationProtected(false),
-    m_terminationProtectedHasBeenSet(false),
-    m_hadoopVersionHasBeenSet(false),
-    m_ec2SubnetIdHasBeenSet(false),
-    m_ec2SubnetIdsHasBeenSet(false),
-    m_emrManagedMasterSecurityGroupHasBeenSet(false),
-    m_emrManagedSlaveSecurityGroupHasBeenSet(false),
-    m_serviceAccessSecurityGroupHasBeenSet(false),
-    m_additionalMasterSecurityGroupsHasBeenSet(false),
-    m_additionalSlaveSecurityGroupsHasBeenSet(false)
-{
-}
-
-JobFlowInstancesConfig::JobFlowInstancesConfig(JsonView jsonValue) : 
-    m_masterInstanceTypeHasBeenSet(false),
-    m_slaveInstanceTypeHasBeenSet(false),
-    m_instanceCount(0),
-    m_instanceCountHasBeenSet(false),
-    m_instanceGroupsHasBeenSet(false),
-    m_instanceFleetsHasBeenSet(false),
-    m_ec2KeyNameHasBeenSet(false),
-    m_placementHasBeenSet(false),
-    m_keepJobFlowAliveWhenNoSteps(false),
-    m_keepJobFlowAliveWhenNoStepsHasBeenSet(false),
-    m_terminationProtected(false),
-    m_terminationProtectedHasBeenSet(false),
-    m_hadoopVersionHasBeenSet(false),
-    m_ec2SubnetIdHasBeenSet(false),
-    m_ec2SubnetIdsHasBeenSet(false),
-    m_emrManagedMasterSecurityGroupHasBeenSet(false),
-    m_emrManagedSlaveSecurityGroupHasBeenSet(false),
-    m_serviceAccessSecurityGroupHasBeenSet(false),
-    m_additionalMasterSecurityGroupsHasBeenSet(false),
-    m_additionalSlaveSecurityGroupsHasBeenSet(false)
+JobFlowInstancesConfig::JobFlowInstancesConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -72,24 +28,18 @@ JobFlowInstancesConfig& JobFlowInstancesConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MasterInstanceType"))
   {
     m_masterInstanceType = jsonValue.GetString("MasterInstanceType");
-
     m_masterInstanceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SlaveInstanceType"))
   {
     m_slaveInstanceType = jsonValue.GetString("SlaveInstanceType");
-
     m_slaveInstanceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InstanceCount"))
   {
     m_instanceCount = jsonValue.GetInteger("InstanceCount");
-
     m_instanceCountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InstanceGroups"))
   {
     Aws::Utils::Array<JsonView> instanceGroupsJsonList = jsonValue.GetArray("InstanceGroups");
@@ -99,7 +49,6 @@ JobFlowInstancesConfig& JobFlowInstancesConfig::operator =(JsonView jsonValue)
     }
     m_instanceGroupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InstanceFleets"))
   {
     Aws::Utils::Array<JsonView> instanceFleetsJsonList = jsonValue.GetArray("InstanceFleets");
@@ -109,49 +58,41 @@ JobFlowInstancesConfig& JobFlowInstancesConfig::operator =(JsonView jsonValue)
     }
     m_instanceFleetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Ec2KeyName"))
   {
     m_ec2KeyName = jsonValue.GetString("Ec2KeyName");
-
     m_ec2KeyNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Placement"))
   {
     m_placement = jsonValue.GetObject("Placement");
-
     m_placementHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("KeepJobFlowAliveWhenNoSteps"))
   {
     m_keepJobFlowAliveWhenNoSteps = jsonValue.GetBool("KeepJobFlowAliveWhenNoSteps");
-
     m_keepJobFlowAliveWhenNoStepsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TerminationProtected"))
   {
     m_terminationProtected = jsonValue.GetBool("TerminationProtected");
-
     m_terminationProtectedHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("UnhealthyNodeReplacement"))
+  {
+    m_unhealthyNodeReplacement = jsonValue.GetBool("UnhealthyNodeReplacement");
+    m_unhealthyNodeReplacementHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("HadoopVersion"))
   {
     m_hadoopVersion = jsonValue.GetString("HadoopVersion");
-
     m_hadoopVersionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Ec2SubnetId"))
   {
     m_ec2SubnetId = jsonValue.GetString("Ec2SubnetId");
-
     m_ec2SubnetIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Ec2SubnetIds"))
   {
     Aws::Utils::Array<JsonView> ec2SubnetIdsJsonList = jsonValue.GetArray("Ec2SubnetIds");
@@ -161,28 +102,21 @@ JobFlowInstancesConfig& JobFlowInstancesConfig::operator =(JsonView jsonValue)
     }
     m_ec2SubnetIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EmrManagedMasterSecurityGroup"))
   {
     m_emrManagedMasterSecurityGroup = jsonValue.GetString("EmrManagedMasterSecurityGroup");
-
     m_emrManagedMasterSecurityGroupHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EmrManagedSlaveSecurityGroup"))
   {
     m_emrManagedSlaveSecurityGroup = jsonValue.GetString("EmrManagedSlaveSecurityGroup");
-
     m_emrManagedSlaveSecurityGroupHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ServiceAccessSecurityGroup"))
   {
     m_serviceAccessSecurityGroup = jsonValue.GetString("ServiceAccessSecurityGroup");
-
     m_serviceAccessSecurityGroupHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AdditionalMasterSecurityGroups"))
   {
     Aws::Utils::Array<JsonView> additionalMasterSecurityGroupsJsonList = jsonValue.GetArray("AdditionalMasterSecurityGroups");
@@ -192,7 +126,6 @@ JobFlowInstancesConfig& JobFlowInstancesConfig::operator =(JsonView jsonValue)
     }
     m_additionalMasterSecurityGroupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AdditionalSlaveSecurityGroups"))
   {
     Aws::Utils::Array<JsonView> additionalSlaveSecurityGroupsJsonList = jsonValue.GetArray("AdditionalSlaveSecurityGroups");
@@ -202,7 +135,6 @@ JobFlowInstancesConfig& JobFlowInstancesConfig::operator =(JsonView jsonValue)
     }
     m_additionalSlaveSecurityGroupsHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -271,6 +203,12 @@ JsonValue JobFlowInstancesConfig::Jsonize() const
   if(m_terminationProtectedHasBeenSet)
   {
    payload.WithBool("TerminationProtected", m_terminationProtected);
+
+  }
+
+  if(m_unhealthyNodeReplacementHasBeenSet)
+  {
+   payload.WithBool("UnhealthyNodeReplacement", m_unhealthyNodeReplacement);
 
   }
 

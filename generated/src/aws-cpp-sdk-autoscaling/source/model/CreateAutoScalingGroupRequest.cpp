@@ -10,46 +10,6 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-CreateAutoScalingGroupRequest::CreateAutoScalingGroupRequest() : 
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_launchConfigurationNameHasBeenSet(false),
-    m_launchTemplateHasBeenSet(false),
-    m_mixedInstancesPolicyHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_minSize(0),
-    m_minSizeHasBeenSet(false),
-    m_maxSize(0),
-    m_maxSizeHasBeenSet(false),
-    m_desiredCapacity(0),
-    m_desiredCapacityHasBeenSet(false),
-    m_defaultCooldown(0),
-    m_defaultCooldownHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false),
-    m_loadBalancerNamesHasBeenSet(false),
-    m_targetGroupARNsHasBeenSet(false),
-    m_healthCheckTypeHasBeenSet(false),
-    m_healthCheckGracePeriod(0),
-    m_healthCheckGracePeriodHasBeenSet(false),
-    m_placementGroupHasBeenSet(false),
-    m_vPCZoneIdentifierHasBeenSet(false),
-    m_terminationPoliciesHasBeenSet(false),
-    m_newInstancesProtectedFromScaleIn(false),
-    m_newInstancesProtectedFromScaleInHasBeenSet(false),
-    m_capacityRebalance(false),
-    m_capacityRebalanceHasBeenSet(false),
-    m_lifecycleHookSpecificationListHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_serviceLinkedRoleARNHasBeenSet(false),
-    m_maxInstanceLifetime(0),
-    m_maxInstanceLifetimeHasBeenSet(false),
-    m_contextHasBeenSet(false),
-    m_desiredCapacityTypeHasBeenSet(false),
-    m_defaultInstanceWarmup(0),
-    m_defaultInstanceWarmupHasBeenSet(false),
-    m_trafficSourcesHasBeenSet(false)
-{
-}
-
 Aws::String CreateAutoScalingGroupRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -101,34 +61,55 @@ Aws::String CreateAutoScalingGroupRequest::SerializePayload() const
 
   if(m_availabilityZonesHasBeenSet)
   {
-    unsigned availabilityZonesCount = 1;
-    for(auto& item : m_availabilityZones)
+    if (m_availabilityZones.empty())
     {
-      ss << "AvailabilityZones.member." << availabilityZonesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      availabilityZonesCount++;
+      ss << "AvailabilityZones=&";
+    }
+    else
+    {
+      unsigned availabilityZonesCount = 1;
+      for(auto& item : m_availabilityZones)
+      {
+        ss << "AvailabilityZones.member." << availabilityZonesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        availabilityZonesCount++;
+      }
     }
   }
 
   if(m_loadBalancerNamesHasBeenSet)
   {
-    unsigned loadBalancerNamesCount = 1;
-    for(auto& item : m_loadBalancerNames)
+    if (m_loadBalancerNames.empty())
     {
-      ss << "LoadBalancerNames.member." << loadBalancerNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      loadBalancerNamesCount++;
+      ss << "LoadBalancerNames=&";
+    }
+    else
+    {
+      unsigned loadBalancerNamesCount = 1;
+      for(auto& item : m_loadBalancerNames)
+      {
+        ss << "LoadBalancerNames.member." << loadBalancerNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        loadBalancerNamesCount++;
+      }
     }
   }
 
   if(m_targetGroupARNsHasBeenSet)
   {
-    unsigned targetGroupARNsCount = 1;
-    for(auto& item : m_targetGroupARNs)
+    if (m_targetGroupARNs.empty())
     {
-      ss << "TargetGroupARNs.member." << targetGroupARNsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      targetGroupARNsCount++;
+      ss << "TargetGroupARNs=&";
+    }
+    else
+    {
+      unsigned targetGroupARNsCount = 1;
+      for(auto& item : m_targetGroupARNs)
+      {
+        ss << "TargetGroupARNs.member." << targetGroupARNsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        targetGroupARNsCount++;
+      }
     }
   }
 
@@ -154,12 +135,19 @@ Aws::String CreateAutoScalingGroupRequest::SerializePayload() const
 
   if(m_terminationPoliciesHasBeenSet)
   {
-    unsigned terminationPoliciesCount = 1;
-    for(auto& item : m_terminationPolicies)
+    if (m_terminationPolicies.empty())
     {
-      ss << "TerminationPolicies.member." << terminationPoliciesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      terminationPoliciesCount++;
+      ss << "TerminationPolicies=&";
+    }
+    else
+    {
+      unsigned terminationPoliciesCount = 1;
+      for(auto& item : m_terminationPolicies)
+      {
+        ss << "TerminationPolicies.member." << terminationPoliciesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        terminationPoliciesCount++;
+      }
     }
   }
 
@@ -175,21 +163,35 @@ Aws::String CreateAutoScalingGroupRequest::SerializePayload() const
 
   if(m_lifecycleHookSpecificationListHasBeenSet)
   {
-    unsigned lifecycleHookSpecificationListCount = 1;
-    for(auto& item : m_lifecycleHookSpecificationList)
+    if (m_lifecycleHookSpecificationList.empty())
     {
-      item.OutputToStream(ss, "LifecycleHookSpecificationList.member.", lifecycleHookSpecificationListCount, "");
-      lifecycleHookSpecificationListCount++;
+      ss << "LifecycleHookSpecificationList=&";
+    }
+    else
+    {
+      unsigned lifecycleHookSpecificationListCount = 1;
+      for(auto& item : m_lifecycleHookSpecificationList)
+      {
+        item.OutputToStream(ss, "LifecycleHookSpecificationList.member.", lifecycleHookSpecificationListCount, "");
+        lifecycleHookSpecificationListCount++;
+      }
     }
   }
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.member.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 
@@ -220,12 +222,44 @@ Aws::String CreateAutoScalingGroupRequest::SerializePayload() const
 
   if(m_trafficSourcesHasBeenSet)
   {
-    unsigned trafficSourcesCount = 1;
-    for(auto& item : m_trafficSources)
+    if (m_trafficSources.empty())
     {
-      item.OutputToStream(ss, "TrafficSources.member.", trafficSourcesCount, "");
-      trafficSourcesCount++;
+      ss << "TrafficSources=&";
     }
+    else
+    {
+      unsigned trafficSourcesCount = 1;
+      for(auto& item : m_trafficSources)
+      {
+        item.OutputToStream(ss, "TrafficSources.member.", trafficSourcesCount, "");
+        trafficSourcesCount++;
+      }
+    }
+  }
+
+  if(m_instanceMaintenancePolicyHasBeenSet)
+  {
+    m_instanceMaintenancePolicy.OutputToStream(ss, "InstanceMaintenancePolicy");
+  }
+
+  if(m_availabilityZoneDistributionHasBeenSet)
+  {
+    m_availabilityZoneDistribution.OutputToStream(ss, "AvailabilityZoneDistribution");
+  }
+
+  if(m_availabilityZoneImpairmentPolicyHasBeenSet)
+  {
+    m_availabilityZoneImpairmentPolicy.OutputToStream(ss, "AvailabilityZoneImpairmentPolicy");
+  }
+
+  if(m_skipZonalShiftValidationHasBeenSet)
+  {
+    ss << "SkipZonalShiftValidation=" << std::boolalpha << m_skipZonalShiftValidation << "&";
+  }
+
+  if(m_capacityReservationSpecificationHasBeenSet)
+  {
+    m_capacityReservationSpecification.OutputToStream(ss, "CapacityReservationSpecification");
   }
 
   ss << "Version=2011-01-01";

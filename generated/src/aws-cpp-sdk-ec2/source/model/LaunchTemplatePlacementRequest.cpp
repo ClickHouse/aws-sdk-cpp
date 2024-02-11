@@ -20,33 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LaunchTemplatePlacementRequest::LaunchTemplatePlacementRequest() : 
-    m_availabilityZoneHasBeenSet(false),
-    m_affinityHasBeenSet(false),
-    m_groupNameHasBeenSet(false),
-    m_hostIdHasBeenSet(false),
-    m_tenancy(Tenancy::NOT_SET),
-    m_tenancyHasBeenSet(false),
-    m_spreadDomainHasBeenSet(false),
-    m_hostResourceGroupArnHasBeenSet(false),
-    m_partitionNumber(0),
-    m_partitionNumberHasBeenSet(false),
-    m_groupIdHasBeenSet(false)
-{
-}
-
-LaunchTemplatePlacementRequest::LaunchTemplatePlacementRequest(const XmlNode& xmlNode) : 
-    m_availabilityZoneHasBeenSet(false),
-    m_affinityHasBeenSet(false),
-    m_groupNameHasBeenSet(false),
-    m_hostIdHasBeenSet(false),
-    m_tenancy(Tenancy::NOT_SET),
-    m_tenancyHasBeenSet(false),
-    m_spreadDomainHasBeenSet(false),
-    m_hostResourceGroupArnHasBeenSet(false),
-    m_partitionNumber(0),
-    m_partitionNumberHasBeenSet(false),
-    m_groupIdHasBeenSet(false)
+LaunchTemplatePlacementRequest::LaunchTemplatePlacementRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -62,6 +36,12 @@ LaunchTemplatePlacementRequest& LaunchTemplatePlacementRequest::operator =(const
     {
       m_availabilityZone = Aws::Utils::Xml::DecodeEscapedXmlText(availabilityZoneNode.GetText());
       m_availabilityZoneHasBeenSet = true;
+    }
+    XmlNode availabilityZoneIdNode = resultNode.FirstChild("AvailabilityZoneId");
+    if(!availabilityZoneIdNode.IsNull())
+    {
+      m_availabilityZoneId = Aws::Utils::Xml::DecodeEscapedXmlText(availabilityZoneIdNode.GetText());
+      m_availabilityZoneIdHasBeenSet = true;
     }
     XmlNode affinityNode = resultNode.FirstChild("Affinity");
     if(!affinityNode.IsNull())
@@ -84,7 +64,7 @@ LaunchTemplatePlacementRequest& LaunchTemplatePlacementRequest::operator =(const
     XmlNode tenancyNode = resultNode.FirstChild("Tenancy");
     if(!tenancyNode.IsNull())
     {
-      m_tenancy = TenancyMapper::GetTenancyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(tenancyNode.GetText()).c_str()).c_str());
+      m_tenancy = TenancyMapper::GetTenancyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(tenancyNode.GetText()).c_str()));
       m_tenancyHasBeenSet = true;
     }
     XmlNode spreadDomainNode = resultNode.FirstChild("SpreadDomain");
@@ -123,6 +103,11 @@ void LaunchTemplatePlacementRequest::OutputToStream(Aws::OStream& oStream, const
       oStream << location << index << locationValue << ".AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
   }
 
+  if(m_availabilityZoneIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".AvailabilityZoneId=" << StringUtils::URLEncode(m_availabilityZoneId.c_str()) << "&";
+  }
+
   if(m_affinityHasBeenSet)
   {
       oStream << location << index << locationValue << ".Affinity=" << StringUtils::URLEncode(m_affinity.c_str()) << "&";
@@ -140,7 +125,7 @@ void LaunchTemplatePlacementRequest::OutputToStream(Aws::OStream& oStream, const
 
   if(m_tenancyHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Tenancy=" << TenancyMapper::GetNameForTenancy(m_tenancy) << "&";
+      oStream << location << index << locationValue << ".Tenancy=" << StringUtils::URLEncode(TenancyMapper::GetNameForTenancy(m_tenancy)) << "&";
   }
 
   if(m_spreadDomainHasBeenSet)
@@ -171,6 +156,10 @@ void LaunchTemplatePlacementRequest::OutputToStream(Aws::OStream& oStream, const
   {
       oStream << location << ".AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
   }
+  if(m_availabilityZoneIdHasBeenSet)
+  {
+      oStream << location << ".AvailabilityZoneId=" << StringUtils::URLEncode(m_availabilityZoneId.c_str()) << "&";
+  }
   if(m_affinityHasBeenSet)
   {
       oStream << location << ".Affinity=" << StringUtils::URLEncode(m_affinity.c_str()) << "&";
@@ -185,7 +174,7 @@ void LaunchTemplatePlacementRequest::OutputToStream(Aws::OStream& oStream, const
   }
   if(m_tenancyHasBeenSet)
   {
-      oStream << location << ".Tenancy=" << TenancyMapper::GetNameForTenancy(m_tenancy) << "&";
+      oStream << location << ".Tenancy=" << StringUtils::URLEncode(TenancyMapper::GetNameForTenancy(m_tenancy)) << "&";
   }
   if(m_spreadDomainHasBeenSet)
   {

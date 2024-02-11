@@ -77,19 +77,22 @@ namespace Aws
                 bool IsLastPart() { return m_lastPart; }
                 void SetLastPart() { m_lastPart = true; }
 
+                Aws::String GetChecksum() const { return m_checksum; };
+                void SetChecksum(const Aws::String& checksum) { m_checksum = checksum; }
             private:
 
-                int m_partId;
+                int m_partId = 0;
 
                 Aws::String m_eTag;
-                uint64_t m_currentProgressInBytes;
-                uint64_t m_bestProgressInBytes;
-                uint64_t m_sizeInBytes;
-                uint64_t m_rangeBegin;
+                uint64_t m_currentProgressInBytes = 0;
+                uint64_t m_bestProgressInBytes = 0;
+                uint64_t m_sizeInBytes = 0;
+                uint64_t m_rangeBegin = 0;
 
                 std::atomic<Aws::IOStream *> m_downloadPartStream;
                 std::atomic<unsigned char*> m_downloadBuffer;
-                bool m_lastPart;
+                bool m_lastPart = false;
+                Aws::String m_checksum;
         };
 
         using PartPointer = std::shared_ptr< PartState >;
@@ -244,7 +247,8 @@ namespace Aws
              *  (2) Never go backwards, in spite of part upload/download failures.  Negative progress (canceling a highly concurrent transfer can
              *      lead to an enormous step backwards if many parts are aborted at once) is a confusing and undesirable user experience.
              * In this sense, progress represents a high-water mark, and in the presence of heavy failures or cancellation, it may appear to pause until the
-             * necessary retries exceed the previous high-water mark.
+             * necessary retries exceed the previous high-water mark. The amount of bytes transferred is the amount of bytes sent by the http client. If
+             * the user input stream is adapted as it is with aws-chunked, there will be a larger amount of bytes transferred than the original object.
              */
             inline uint64_t GetBytesTransferred() const { return m_bytesTransferred.load(); }
             /**
@@ -292,6 +296,12 @@ namespace Aws
             */
             const Aws::String GetVersionId() const { std::lock_guard<std::mutex> locker(m_getterSetterLock); return m_versionId; }
             void SetVersionId(const Aws::String& versionId) { std::lock_guard<std::mutex> locker(m_getterSetterLock); m_versionId = versionId; }
+
+            /**
+             * (Download only) ETAG of the object to retrieve.
+            */
+            const Aws::String GetEtag() const { std::lock_guard<std::mutex> locker(m_getterSetterLock); return m_etag; }
+            void SetEtag(const Aws::String& etag) { std::lock_guard<std::mutex> locker(m_getterSetterLock); m_etag = etag; }
 
             /**
              * Upload or Download?
@@ -357,7 +367,11 @@ namespace Aws
 
             const CreateDownloadStreamCallback& GetCreateDownloadStreamFunction() const { return m_createDownloadStreamFn; }
 
-            void WritePartToDownloadStream(Aws::IOStream* partStream, uint64_t writeOffset);
+            /**
+             * Write @partStream to the configured output (f)stream.
+             * Return empty string on success, string with error message on error.
+             */
+            Aws::String WritePartToDownloadStream(Aws::IOStream* partStream, uint64_t writeOffset);
 
             void ApplyDownloadConfiguration(const DownloadConfiguration& downloadConfig);
 
@@ -372,8 +386,10 @@ namespace Aws
              */
             Aws::String GetId() const;
 
-        private:
+            Aws::String GetChecksum() const { return m_checksum; }
+            void SetChecksum(const Aws::String& checksum) { this->m_checksum = checksum; }
 
+           private:
             void CleanupDownloadStream();
 
             std::atomic<bool> m_isMultipart;
@@ -395,6 +411,7 @@ namespace Aws
             Aws::String m_fileName;
             Aws::String m_contentType;
             Aws::String m_versionId;
+            Aws::String m_etag;
             Aws::Map<Aws::String, Aws::String> m_metadata;
             TransferStatus m_status;
             Aws::Client::AWSError<Aws::S3::S3Errors> m_lastError;
@@ -412,6 +429,7 @@ namespace Aws
             mutable std::mutex m_statusLock;
             mutable std::condition_variable m_waitUntilFinishedSignal;
             mutable std::mutex m_getterSetterLock;
+            Aws::String m_checksum;
         };
 
         AWS_TRANSFER_API Aws::OStream& operator << (Aws::OStream& s, TransferStatus status);

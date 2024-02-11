@@ -24,7 +24,7 @@ namespace Model
   class DeleteConfigurationTemplateRequest : public ElasticBeanstalkRequest
   {
   public:
-    AWS_ELASTICBEANSTALK_API DeleteConfigurationTemplateRequest();
+    AWS_ELASTICBEANSTALK_API DeleteConfigurationTemplateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,87 +39,29 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the application to delete the configuration template from.</p>
      */
-    inline const Aws::String& GetApplicationName() const{ return m_applicationName; }
-
-    /**
-     * <p>The name of the application to delete the configuration template from.</p>
-     */
+    inline const Aws::String& GetApplicationName() const { return m_applicationName; }
     inline bool ApplicationNameHasBeenSet() const { return m_applicationNameHasBeenSet; }
+    template<typename ApplicationNameT = Aws::String>
+    void SetApplicationName(ApplicationNameT&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::forward<ApplicationNameT>(value); }
+    template<typename ApplicationNameT = Aws::String>
+    DeleteConfigurationTemplateRequest& WithApplicationName(ApplicationNameT&& value) { SetApplicationName(std::forward<ApplicationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the application to delete the configuration template from.</p>
-     */
-    inline void SetApplicationName(const Aws::String& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
-
-    /**
-     * <p>The name of the application to delete the configuration template from.</p>
-     */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
-
-    /**
-     * <p>The name of the application to delete the configuration template from.</p>
-     */
-    inline void SetApplicationName(const char* value) { m_applicationNameHasBeenSet = true; m_applicationName.assign(value); }
-
-    /**
-     * <p>The name of the application to delete the configuration template from.</p>
-     */
-    inline DeleteConfigurationTemplateRequest& WithApplicationName(const Aws::String& value) { SetApplicationName(value); return *this;}
-
-    /**
-     * <p>The name of the application to delete the configuration template from.</p>
-     */
-    inline DeleteConfigurationTemplateRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the application to delete the configuration template from.</p>
-     */
-    inline DeleteConfigurationTemplateRequest& WithApplicationName(const char* value) { SetApplicationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the configuration template to delete.</p>
      */
-    inline const Aws::String& GetTemplateName() const{ return m_templateName; }
-
-    /**
-     * <p>The name of the configuration template to delete.</p>
-     */
+    inline const Aws::String& GetTemplateName() const { return m_templateName; }
     inline bool TemplateNameHasBeenSet() const { return m_templateNameHasBeenSet; }
-
-    /**
-     * <p>The name of the configuration template to delete.</p>
-     */
-    inline void SetTemplateName(const Aws::String& value) { m_templateNameHasBeenSet = true; m_templateName = value; }
-
-    /**
-     * <p>The name of the configuration template to delete.</p>
-     */
-    inline void SetTemplateName(Aws::String&& value) { m_templateNameHasBeenSet = true; m_templateName = std::move(value); }
-
-    /**
-     * <p>The name of the configuration template to delete.</p>
-     */
-    inline void SetTemplateName(const char* value) { m_templateNameHasBeenSet = true; m_templateName.assign(value); }
-
-    /**
-     * <p>The name of the configuration template to delete.</p>
-     */
-    inline DeleteConfigurationTemplateRequest& WithTemplateName(const Aws::String& value) { SetTemplateName(value); return *this;}
-
-    /**
-     * <p>The name of the configuration template to delete.</p>
-     */
-    inline DeleteConfigurationTemplateRequest& WithTemplateName(Aws::String&& value) { SetTemplateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the configuration template to delete.</p>
-     */
-    inline DeleteConfigurationTemplateRequest& WithTemplateName(const char* value) { SetTemplateName(value); return *this;}
-
+    template<typename TemplateNameT = Aws::String>
+    void SetTemplateName(TemplateNameT&& value) { m_templateNameHasBeenSet = true; m_templateName = std::forward<TemplateNameT>(value); }
+    template<typename TemplateNameT = Aws::String>
+    DeleteConfigurationTemplateRequest& WithTemplateName(TemplateNameT&& value) { SetTemplateName(std::forward<TemplateNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationName;

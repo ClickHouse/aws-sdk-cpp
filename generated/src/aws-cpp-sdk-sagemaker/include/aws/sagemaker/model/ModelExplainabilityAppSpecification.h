@@ -33,183 +33,54 @@ namespace Model
   class ModelExplainabilityAppSpecification
   {
   public:
-    AWS_SAGEMAKER_API ModelExplainabilityAppSpecification();
+    AWS_SAGEMAKER_API ModelExplainabilityAppSpecification() = default;
     AWS_SAGEMAKER_API ModelExplainabilityAppSpecification(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API ModelExplainabilityAppSpecification& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The container image to be run by the model explainability job.</p>
      */
-    inline const Aws::String& GetImageUri() const{ return m_imageUri; }
-
-    /**
-     * <p>The container image to be run by the model explainability job.</p>
-     */
+    inline const Aws::String& GetImageUri() const { return m_imageUri; }
     inline bool ImageUriHasBeenSet() const { return m_imageUriHasBeenSet; }
+    template<typename ImageUriT = Aws::String>
+    void SetImageUri(ImageUriT&& value) { m_imageUriHasBeenSet = true; m_imageUri = std::forward<ImageUriT>(value); }
+    template<typename ImageUriT = Aws::String>
+    ModelExplainabilityAppSpecification& WithImageUri(ImageUriT&& value) { SetImageUri(std::forward<ImageUriT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The container image to be run by the model explainability job.</p>
-     */
-    inline void SetImageUri(const Aws::String& value) { m_imageUriHasBeenSet = true; m_imageUri = value; }
-
-    /**
-     * <p>The container image to be run by the model explainability job.</p>
-     */
-    inline void SetImageUri(Aws::String&& value) { m_imageUriHasBeenSet = true; m_imageUri = std::move(value); }
-
-    /**
-     * <p>The container image to be run by the model explainability job.</p>
-     */
-    inline void SetImageUri(const char* value) { m_imageUriHasBeenSet = true; m_imageUri.assign(value); }
-
-    /**
-     * <p>The container image to be run by the model explainability job.</p>
-     */
-    inline ModelExplainabilityAppSpecification& WithImageUri(const Aws::String& value) { SetImageUri(value); return *this;}
-
-    /**
-     * <p>The container image to be run by the model explainability job.</p>
-     */
-    inline ModelExplainabilityAppSpecification& WithImageUri(Aws::String&& value) { SetImageUri(std::move(value)); return *this;}
-
-    /**
-     * <p>The container image to be run by the model explainability job.</p>
-     */
-    inline ModelExplainabilityAppSpecification& WithImageUri(const char* value) { SetImageUri(value); return *this;}
-
-
-    /**
-     * <p>JSON formatted S3 file that defines explainability parameters. For more
-     * information on this JSON configuration file, see <a
+     * <p>JSON formatted Amazon S3 file that defines explainability parameters. For
+     * more information on this JSON configuration file, see <a
      * href="https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-config-json-monitor-model-explainability-parameters.html">Configure
      * model explainability parameters</a>.</p>
      */
-    inline const Aws::String& GetConfigUri() const{ return m_configUri; }
-
-    /**
-     * <p>JSON formatted S3 file that defines explainability parameters. For more
-     * information on this JSON configuration file, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-config-json-monitor-model-explainability-parameters.html">Configure
-     * model explainability parameters</a>.</p>
-     */
+    inline const Aws::String& GetConfigUri() const { return m_configUri; }
     inline bool ConfigUriHasBeenSet() const { return m_configUriHasBeenSet; }
+    template<typename ConfigUriT = Aws::String>
+    void SetConfigUri(ConfigUriT&& value) { m_configUriHasBeenSet = true; m_configUri = std::forward<ConfigUriT>(value); }
+    template<typename ConfigUriT = Aws::String>
+    ModelExplainabilityAppSpecification& WithConfigUri(ConfigUriT&& value) { SetConfigUri(std::forward<ConfigUriT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>JSON formatted S3 file that defines explainability parameters. For more
-     * information on this JSON configuration file, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-config-json-monitor-model-explainability-parameters.html">Configure
-     * model explainability parameters</a>.</p>
-     */
-    inline void SetConfigUri(const Aws::String& value) { m_configUriHasBeenSet = true; m_configUri = value; }
-
-    /**
-     * <p>JSON formatted S3 file that defines explainability parameters. For more
-     * information on this JSON configuration file, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-config-json-monitor-model-explainability-parameters.html">Configure
-     * model explainability parameters</a>.</p>
-     */
-    inline void SetConfigUri(Aws::String&& value) { m_configUriHasBeenSet = true; m_configUri = std::move(value); }
-
-    /**
-     * <p>JSON formatted S3 file that defines explainability parameters. For more
-     * information on this JSON configuration file, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-config-json-monitor-model-explainability-parameters.html">Configure
-     * model explainability parameters</a>.</p>
-     */
-    inline void SetConfigUri(const char* value) { m_configUriHasBeenSet = true; m_configUri.assign(value); }
-
-    /**
-     * <p>JSON formatted S3 file that defines explainability parameters. For more
-     * information on this JSON configuration file, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-config-json-monitor-model-explainability-parameters.html">Configure
-     * model explainability parameters</a>.</p>
-     */
-    inline ModelExplainabilityAppSpecification& WithConfigUri(const Aws::String& value) { SetConfigUri(value); return *this;}
-
-    /**
-     * <p>JSON formatted S3 file that defines explainability parameters. For more
-     * information on this JSON configuration file, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-config-json-monitor-model-explainability-parameters.html">Configure
-     * model explainability parameters</a>.</p>
-     */
-    inline ModelExplainabilityAppSpecification& WithConfigUri(Aws::String&& value) { SetConfigUri(std::move(value)); return *this;}
-
-    /**
-     * <p>JSON formatted S3 file that defines explainability parameters. For more
-     * information on this JSON configuration file, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-config-json-monitor-model-explainability-parameters.html">Configure
-     * model explainability parameters</a>.</p>
-     */
-    inline ModelExplainabilityAppSpecification& WithConfigUri(const char* value) { SetConfigUri(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Sets the environment variables in the Docker container.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetEnvironment() const{ return m_environment; }
-
-    /**
-     * <p>Sets the environment variables in the Docker container.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetEnvironment() const { return m_environment; }
     inline bool EnvironmentHasBeenSet() const { return m_environmentHasBeenSet; }
-
-    /**
-     * <p>Sets the environment variables in the Docker container.</p>
-     */
-    inline void SetEnvironment(const Aws::Map<Aws::String, Aws::String>& value) { m_environmentHasBeenSet = true; m_environment = value; }
-
-    /**
-     * <p>Sets the environment variables in the Docker container.</p>
-     */
-    inline void SetEnvironment(Aws::Map<Aws::String, Aws::String>&& value) { m_environmentHasBeenSet = true; m_environment = std::move(value); }
-
-    /**
-     * <p>Sets the environment variables in the Docker container.</p>
-     */
-    inline ModelExplainabilityAppSpecification& WithEnvironment(const Aws::Map<Aws::String, Aws::String>& value) { SetEnvironment(value); return *this;}
-
-    /**
-     * <p>Sets the environment variables in the Docker container.</p>
-     */
-    inline ModelExplainabilityAppSpecification& WithEnvironment(Aws::Map<Aws::String, Aws::String>&& value) { SetEnvironment(std::move(value)); return *this;}
-
-    /**
-     * <p>Sets the environment variables in the Docker container.</p>
-     */
-    inline ModelExplainabilityAppSpecification& AddEnvironment(const Aws::String& key, const Aws::String& value) { m_environmentHasBeenSet = true; m_environment.emplace(key, value); return *this; }
-
-    /**
-     * <p>Sets the environment variables in the Docker container.</p>
-     */
-    inline ModelExplainabilityAppSpecification& AddEnvironment(Aws::String&& key, const Aws::String& value) { m_environmentHasBeenSet = true; m_environment.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Sets the environment variables in the Docker container.</p>
-     */
-    inline ModelExplainabilityAppSpecification& AddEnvironment(const Aws::String& key, Aws::String&& value) { m_environmentHasBeenSet = true; m_environment.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Sets the environment variables in the Docker container.</p>
-     */
-    inline ModelExplainabilityAppSpecification& AddEnvironment(Aws::String&& key, Aws::String&& value) { m_environmentHasBeenSet = true; m_environment.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Sets the environment variables in the Docker container.</p>
-     */
-    inline ModelExplainabilityAppSpecification& AddEnvironment(const char* key, Aws::String&& value) { m_environmentHasBeenSet = true; m_environment.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Sets the environment variables in the Docker container.</p>
-     */
-    inline ModelExplainabilityAppSpecification& AddEnvironment(Aws::String&& key, const char* value) { m_environmentHasBeenSet = true; m_environment.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Sets the environment variables in the Docker container.</p>
-     */
-    inline ModelExplainabilityAppSpecification& AddEnvironment(const char* key, const char* value) { m_environmentHasBeenSet = true; m_environment.emplace(key, value); return *this; }
-
+    template<typename EnvironmentT = Aws::Map<Aws::String, Aws::String>>
+    void SetEnvironment(EnvironmentT&& value) { m_environmentHasBeenSet = true; m_environment = std::forward<EnvironmentT>(value); }
+    template<typename EnvironmentT = Aws::Map<Aws::String, Aws::String>>
+    ModelExplainabilityAppSpecification& WithEnvironment(EnvironmentT&& value) { SetEnvironment(std::forward<EnvironmentT>(value)); return *this;}
+    template<typename EnvironmentKeyT = Aws::String, typename EnvironmentValueT = Aws::String>
+    ModelExplainabilityAppSpecification& AddEnvironment(EnvironmentKeyT&& key, EnvironmentValueT&& value) {
+      m_environmentHasBeenSet = true; m_environment.emplace(std::forward<EnvironmentKeyT>(key), std::forward<EnvironmentValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_imageUri;

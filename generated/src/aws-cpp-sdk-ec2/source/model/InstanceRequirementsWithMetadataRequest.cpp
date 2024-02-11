@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InstanceRequirementsWithMetadataRequest::InstanceRequirementsWithMetadataRequest() : 
-    m_architectureTypesHasBeenSet(false),
-    m_virtualizationTypesHasBeenSet(false),
-    m_instanceRequirementsHasBeenSet(false)
-{
-}
-
-InstanceRequirementsWithMetadataRequest::InstanceRequirementsWithMetadataRequest(const XmlNode& xmlNode) : 
-    m_architectureTypesHasBeenSet(false),
-    m_virtualizationTypesHasBeenSet(false),
-    m_instanceRequirementsHasBeenSet(false)
+InstanceRequirementsWithMetadataRequest::InstanceRequirementsWithMetadataRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -45,6 +35,7 @@ InstanceRequirementsWithMetadataRequest& InstanceRequirementsWithMetadataRequest
     if(!architectureTypesNode.IsNull())
     {
       XmlNode architectureTypesMember = architectureTypesNode.FirstChild("item");
+      m_architectureTypesHasBeenSet = !architectureTypesMember.IsNull();
       while(!architectureTypesMember.IsNull())
       {
         m_architectureTypes.push_back(ArchitectureTypeMapper::GetArchitectureTypeForName(StringUtils::Trim(architectureTypesMember.GetText().c_str())));
@@ -57,6 +48,7 @@ InstanceRequirementsWithMetadataRequest& InstanceRequirementsWithMetadataRequest
     if(!virtualizationTypesNode.IsNull())
     {
       XmlNode virtualizationTypesMember = virtualizationTypesNode.FirstChild("item");
+      m_virtualizationTypesHasBeenSet = !virtualizationTypesMember.IsNull();
       while(!virtualizationTypesMember.IsNull())
       {
         m_virtualizationTypes.push_back(VirtualizationTypeMapper::GetVirtualizationTypeForName(StringUtils::Trim(virtualizationTypesMember.GetText().c_str())));
@@ -83,7 +75,7 @@ void InstanceRequirementsWithMetadataRequest::OutputToStream(Aws::OStream& oStre
       unsigned architectureTypesIdx = 1;
       for(auto& item : m_architectureTypes)
       {
-        oStream << location << index << locationValue << ".ArchitectureType." << architectureTypesIdx++ << "=" << ArchitectureTypeMapper::GetNameForArchitectureType(item) << "&";
+        oStream << location << index << locationValue << ".ArchitectureType." << architectureTypesIdx++ << "=" << StringUtils::URLEncode(ArchitectureTypeMapper::GetNameForArchitectureType(item)) << "&";
       }
   }
 
@@ -92,7 +84,7 @@ void InstanceRequirementsWithMetadataRequest::OutputToStream(Aws::OStream& oStre
       unsigned virtualizationTypesIdx = 1;
       for(auto& item : m_virtualizationTypes)
       {
-        oStream << location << index << locationValue << ".VirtualizationType." << virtualizationTypesIdx++ << "=" << VirtualizationTypeMapper::GetNameForVirtualizationType(item) << "&";
+        oStream << location << index << locationValue << ".VirtualizationType." << virtualizationTypesIdx++ << "=" << StringUtils::URLEncode(VirtualizationTypeMapper::GetNameForVirtualizationType(item)) << "&";
       }
   }
 
@@ -112,7 +104,7 @@ void InstanceRequirementsWithMetadataRequest::OutputToStream(Aws::OStream& oStre
       unsigned architectureTypesIdx = 1;
       for(auto& item : m_architectureTypes)
       {
-        oStream << location << ".ArchitectureType." << architectureTypesIdx++ << "=" << ArchitectureTypeMapper::GetNameForArchitectureType(item) << "&";
+        oStream << location << ".ArchitectureType." << architectureTypesIdx++ << "=" << StringUtils::URLEncode(ArchitectureTypeMapper::GetNameForArchitectureType(item)) << "&";
       }
   }
   if(m_virtualizationTypesHasBeenSet)
@@ -120,7 +112,7 @@ void InstanceRequirementsWithMetadataRequest::OutputToStream(Aws::OStream& oStre
       unsigned virtualizationTypesIdx = 1;
       for(auto& item : m_virtualizationTypes)
       {
-        oStream << location << ".VirtualizationType." << virtualizationTypesIdx++ << "=" << VirtualizationTypeMapper::GetNameForVirtualizationType(item) << "&";
+        oStream << location << ".VirtualizationType." << virtualizationTypesIdx++ << "=" << StringUtils::URLEncode(VirtualizationTypeMapper::GetNameForVirtualizationType(item)) << "&";
       }
   }
   if(m_instanceRequirementsHasBeenSet)

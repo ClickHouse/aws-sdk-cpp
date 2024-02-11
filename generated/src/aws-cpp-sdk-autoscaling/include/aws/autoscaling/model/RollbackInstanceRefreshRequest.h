@@ -21,7 +21,7 @@ namespace Model
   class RollbackInstanceRefreshRequest : public AutoScalingRequest
   {
   public:
-    AWS_AUTOSCALING_API RollbackInstanceRefreshRequest();
+    AWS_AUTOSCALING_API RollbackInstanceRefreshRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,46 +36,17 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the Auto Scaling group.</p>
      */
-    inline const Aws::String& GetAutoScalingGroupName() const{ return m_autoScalingGroupName; }
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
+    inline const Aws::String& GetAutoScalingGroupName() const { return m_autoScalingGroupName; }
     inline bool AutoScalingGroupNameHasBeenSet() const { return m_autoScalingGroupNameHasBeenSet; }
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
-    inline void SetAutoScalingGroupName(const Aws::String& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = value; }
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
-    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
-    inline void SetAutoScalingGroupName(const char* value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName.assign(value); }
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
-    inline RollbackInstanceRefreshRequest& WithAutoScalingGroupName(const Aws::String& value) { SetAutoScalingGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
-    inline RollbackInstanceRefreshRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
-    inline RollbackInstanceRefreshRequest& WithAutoScalingGroupName(const char* value) { SetAutoScalingGroupName(value); return *this;}
-
+    template<typename AutoScalingGroupNameT = Aws::String>
+    void SetAutoScalingGroupName(AutoScalingGroupNameT&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = std::forward<AutoScalingGroupNameT>(value); }
+    template<typename AutoScalingGroupNameT = Aws::String>
+    RollbackInstanceRefreshRequest& WithAutoScalingGroupName(AutoScalingGroupNameT&& value) { SetAutoScalingGroupName(std::forward<AutoScalingGroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_autoScalingGroupName;

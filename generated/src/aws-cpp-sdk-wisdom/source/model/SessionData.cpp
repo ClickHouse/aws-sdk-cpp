@@ -18,21 +18,7 @@ namespace ConnectWisdomService
 namespace Model
 {
 
-SessionData::SessionData() : 
-    m_descriptionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_sessionArnHasBeenSet(false),
-    m_sessionIdHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-SessionData::SessionData(JsonView jsonValue) : 
-    m_descriptionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_sessionArnHasBeenSet(false),
-    m_sessionIdHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+SessionData::SessionData(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,28 @@ SessionData& SessionData::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("integrationConfiguration"))
+  {
+    m_integrationConfiguration = jsonValue.GetObject("integrationConfiguration");
+    m_integrationConfigurationHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sessionArn"))
   {
     m_sessionArn = jsonValue.GetString("sessionArn");
-
     m_sessionArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sessionId"))
   {
     m_sessionId = jsonValue.GetString("sessionId");
-
     m_sessionIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
@@ -76,7 +59,6 @@ SessionData& SessionData::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -87,6 +69,12 @@ JsonValue SessionData::Jsonize() const
   if(m_descriptionHasBeenSet)
   {
    payload.WithString("description", m_description);
+
+  }
+
+  if(m_integrationConfigurationHasBeenSet)
+  {
+   payload.WithObject("integrationConfiguration", m_integrationConfiguration.Jsonize());
 
   }
 

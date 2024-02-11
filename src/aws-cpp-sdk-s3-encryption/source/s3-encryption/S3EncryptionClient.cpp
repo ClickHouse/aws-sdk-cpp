@@ -8,9 +8,6 @@
 
 // TODO: temporary fix for naming conflicts on Windows.
 #ifdef _WIN32
-#ifdef GetMessage
-#undef GetMessage
-#endif
 #ifdef GetObject
 #undef GetObject
 #endif
@@ -34,21 +31,29 @@ namespace Aws
             const Client::ClientConfiguration& clientConfiguration) :
             m_s3Client(Aws::MakeUnique<S3Client>(ALLOCATION_TAG, clientConfiguration)), m_cryptoModuleFactory(), m_encryptionMaterials(encryptionMaterials), m_cryptoConfig(cryptoConfig)
         {
-            m_s3Client->SetServiceClientName("S3CryptoV1n");
+            m_s3Client->AppendToUserAgent("ft/S3CryptoV1n");
         }
 
         S3EncryptionClientBase::S3EncryptionClientBase(const std::shared_ptr<EncryptionMaterials>& encryptionMaterials, const Aws::S3Encryption::CryptoConfiguration& cryptoConfig,
             const Auth::AWSCredentials& credentials, const Client::ClientConfiguration& clientConfiguration) :
             m_s3Client(Aws::MakeUnique<S3Client>(ALLOCATION_TAG, credentials, Aws::MakeShared<S3::Endpoint::S3EndpointProvider>(ALLOCATION_TAG), clientConfiguration)), m_cryptoModuleFactory(), m_encryptionMaterials(encryptionMaterials), m_cryptoConfig(cryptoConfig)
         {
-            m_s3Client->SetServiceClientName("S3CryptoV1n");
+            m_s3Client->AppendToUserAgent("ft/S3CryptoV1n");
         }
 
         S3EncryptionClientBase::S3EncryptionClientBase(const std::shared_ptr<EncryptionMaterials>& encryptionMaterials,
             const Aws::S3Encryption::CryptoConfiguration& cryptoConfig, const std::shared_ptr<Auth::AWSCredentialsProvider>& credentialsProvider, const Client::ClientConfiguration& clientConfiguration) :
             m_s3Client(Aws::MakeUnique<S3Client>(ALLOCATION_TAG, credentialsProvider, Aws::MakeShared<S3::Endpoint::S3EndpointProvider>(ALLOCATION_TAG), clientConfiguration)), m_cryptoModuleFactory(), m_encryptionMaterials(encryptionMaterials), m_cryptoConfig(cryptoConfig)
         {
-            m_s3Client->SetServiceClientName("S3CryptoV1n");
+            m_s3Client->AppendToUserAgent("ft/S3CryptoV1n");
+        }
+
+        S3EncryptionClientBase::S3EncryptionClientBase(const std::shared_ptr<EncryptionMaterials>& encryptionMaterials,
+            const Aws::S3Encryption::CryptoConfiguration& cryptoConfig,
+            const std::function<Aws::UniquePtr<S3::S3Client> ()>& s3ClientFactory) :
+            m_s3Client(s3ClientFactory()), m_cryptoModuleFactory(), m_encryptionMaterials(encryptionMaterials), m_cryptoConfig(cryptoConfig)
+        {
+            m_s3Client->AppendToUserAgent("ft/S3CryptoV1n");
         }
 
         S3EncryptionPutObjectOutcome S3EncryptionClientBase::PutObject(const Aws::S3::Model::PutObjectRequest& request, const Aws::Map<Aws::String, Aws::String>& contextMap) const
@@ -58,7 +63,38 @@ namespace Aws
             return module->PutObjectSecurely(request, putObjectFunction, contextMap);
         }
 
-        S3EncryptionGetObjectOutcome S3EncryptionClientBase::GetObject(const Aws::S3::Model::GetObjectRequest & request) const
+      bool MapsEqual(const Aws::Map<Aws::String, Aws::String>& passed, const Aws::Map<Aws::String, Aws::String>& stored)
+      {
+        // everything in passed must be in stored, withthe same value.
+        auto stored_end = stored.end();
+        auto passed_end = passed.end();
+        for (const auto& pair : passed) {
+            auto it = stored.find(pair.first);
+            if (it == stored_end) return false;
+            if (it->second != pair.second) return false;
+        }
+
+        // everything in stored, if it does not begin with 'amz:' must be in passed.
+        // if it is, then we already checked the value
+        for (const auto& pair : stored) {
+          if (strcmp(pair.first.c_str(),  Materials::kmsEncryptionContextKey)
+              && strcmp(pair.first.c_str(),Materials::cmkID_Identifier)) {
+            auto it = passed.find(pair.first);
+            if (it == passed_end) return false;
+          }
+        }
+        return true;
+      }
+
+      S3EncryptionGetObjectOutcome S3EncryptionClientBase::GetObject(const Aws::S3::Model::GetObjectRequest & request) const
+      {
+        return GetObjectInner(request, nullptr);
+      }
+      S3EncryptionGetObjectOutcome S3EncryptionClientBase::GetObject(const Aws::S3::Model::GetObjectRequest & request, const Aws::Map<Aws::String, Aws::String>& contextMap) const
+      {
+        return GetObjectInner(request, &contextMap);
+      }
+      S3EncryptionGetObjectOutcome S3EncryptionClientBase::GetObjectInner(const Aws::S3::Model::GetObjectRequest & request, const Aws::Map<Aws::String, Aws::String> * contextMap) const
         {
             Aws::S3::Model::HeadObjectRequest headRequest;
             headRequest.WithBucket(request.GetBucket());
@@ -94,6 +130,12 @@ namespace Aws
             {
                 Handlers::MetadataHandler handler;
                 contentCryptoMaterial = handler.ReadContentCryptoMaterial(headOutcome.GetResult());
+            }
+            if (contextMap && !MapsEqual(*contextMap, contentCryptoMaterial.GetMaterialsDescription()))
+            {
+               return S3EncryptionGetObjectOutcome(BuildS3EncryptionError(AWSError<S3Errors>(
+                  S3Errors::INVALID_ACTION, "MaterialsDescriptionMismatch",
+                  "Provided encryption context does not match information retrieved from S3", false/*not retryable*/)));
             }
 
             // security check
@@ -162,7 +204,7 @@ namespace Aws
         {
             m_cryptoConfig.SetSecurityProfile(cryptoConfig.GetSecurityProfile());
             m_cryptoConfig.SetUnAuthenticatedRangeGet(cryptoConfig.GetUnAuthenticatedRangeGet());
-            m_s3Client->SetServiceClientName("S3CryptoV2");
+            m_s3Client->AppendToUserAgent("ft/S3CryptoV2");
 
             if (cryptoConfig.GetSecurityProfile() == SecurityProfile::V2_AND_LEGACY)
             {

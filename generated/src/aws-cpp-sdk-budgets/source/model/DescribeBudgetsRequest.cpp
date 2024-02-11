@@ -12,14 +12,6 @@ using namespace Aws::Budgets::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeBudgetsRequest::DescribeBudgetsRequest() : 
-    m_accountIdHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String DescribeBudgetsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,6 +31,12 @@ Aws::String DescribeBudgetsRequest::SerializePayload() const
   if(m_nextTokenHasBeenSet)
   {
    payload.WithString("NextToken", m_nextToken);
+
+  }
+
+  if(m_showFilterExpressionHasBeenSet)
+  {
+   payload.WithBool("ShowFilterExpression", m_showFilterExpression);
 
   }
 

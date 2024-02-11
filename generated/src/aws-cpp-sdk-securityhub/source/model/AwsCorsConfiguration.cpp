@@ -18,27 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsCorsConfiguration::AwsCorsConfiguration() : 
-    m_allowOriginsHasBeenSet(false),
-    m_allowCredentials(false),
-    m_allowCredentialsHasBeenSet(false),
-    m_exposeHeadersHasBeenSet(false),
-    m_maxAge(0),
-    m_maxAgeHasBeenSet(false),
-    m_allowMethodsHasBeenSet(false),
-    m_allowHeadersHasBeenSet(false)
-{
-}
-
-AwsCorsConfiguration::AwsCorsConfiguration(JsonView jsonValue) : 
-    m_allowOriginsHasBeenSet(false),
-    m_allowCredentials(false),
-    m_allowCredentialsHasBeenSet(false),
-    m_exposeHeadersHasBeenSet(false),
-    m_maxAge(0),
-    m_maxAgeHasBeenSet(false),
-    m_allowMethodsHasBeenSet(false),
-    m_allowHeadersHasBeenSet(false)
+AwsCorsConfiguration::AwsCorsConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -54,14 +34,11 @@ AwsCorsConfiguration& AwsCorsConfiguration::operator =(JsonView jsonValue)
     }
     m_allowOriginsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AllowCredentials"))
   {
     m_allowCredentials = jsonValue.GetBool("AllowCredentials");
-
     m_allowCredentialsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExposeHeaders"))
   {
     Aws::Utils::Array<JsonView> exposeHeadersJsonList = jsonValue.GetArray("ExposeHeaders");
@@ -71,14 +48,11 @@ AwsCorsConfiguration& AwsCorsConfiguration::operator =(JsonView jsonValue)
     }
     m_exposeHeadersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxAge"))
   {
     m_maxAge = jsonValue.GetInteger("MaxAge");
-
     m_maxAgeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AllowMethods"))
   {
     Aws::Utils::Array<JsonView> allowMethodsJsonList = jsonValue.GetArray("AllowMethods");
@@ -88,7 +62,6 @@ AwsCorsConfiguration& AwsCorsConfiguration::operator =(JsonView jsonValue)
     }
     m_allowMethodsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AllowHeaders"))
   {
     Aws::Utils::Array<JsonView> allowHeadersJsonList = jsonValue.GetArray("AllowHeaders");
@@ -98,7 +71,6 @@ AwsCorsConfiguration& AwsCorsConfiguration::operator =(JsonView jsonValue)
     }
     m_allowHeadersHasBeenSet = true;
   }
-
   return *this;
 }
 

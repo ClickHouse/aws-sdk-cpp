@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsDynamoDbTableProjection::AwsDynamoDbTableProjection() : 
-    m_nonKeyAttributesHasBeenSet(false),
-    m_projectionTypeHasBeenSet(false)
-{
-}
-
-AwsDynamoDbTableProjection::AwsDynamoDbTableProjection(JsonView jsonValue) : 
-    m_nonKeyAttributesHasBeenSet(false),
-    m_projectionTypeHasBeenSet(false)
+AwsDynamoDbTableProjection::AwsDynamoDbTableProjection(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ AwsDynamoDbTableProjection& AwsDynamoDbTableProjection::operator =(JsonView json
     }
     m_nonKeyAttributesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProjectionType"))
   {
     m_projectionType = jsonValue.GetString("ProjectionType");
-
     m_projectionTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

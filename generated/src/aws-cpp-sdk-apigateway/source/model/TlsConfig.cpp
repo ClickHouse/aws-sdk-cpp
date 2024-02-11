@@ -18,15 +18,7 @@ namespace APIGateway
 namespace Model
 {
 
-TlsConfig::TlsConfig() : 
-    m_insecureSkipVerification(false),
-    m_insecureSkipVerificationHasBeenSet(false)
-{
-}
-
-TlsConfig::TlsConfig(JsonView jsonValue) : 
-    m_insecureSkipVerification(false),
-    m_insecureSkipVerificationHasBeenSet(false)
+TlsConfig::TlsConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ TlsConfig& TlsConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("insecureSkipVerification"))
   {
     m_insecureSkipVerification = jsonValue.GetBool("insecureSkipVerification");
-
     m_insecureSkipVerificationHasBeenSet = true;
   }
-
   return *this;
 }
 

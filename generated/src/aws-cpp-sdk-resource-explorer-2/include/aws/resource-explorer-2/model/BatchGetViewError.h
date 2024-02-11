@@ -32,117 +32,38 @@ namespace Model
   class BatchGetViewError
   {
   public:
-    AWS_RESOURCEEXPLORER2_API BatchGetViewError();
+    AWS_RESOURCEEXPLORER2_API BatchGetViewError() = default;
     AWS_RESOURCEEXPLORER2_API BatchGetViewError(Aws::Utils::Json::JsonView jsonValue);
     AWS_RESOURCEEXPLORER2_API BatchGetViewError& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_RESOURCEEXPLORER2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The description of the error for the specified view.</p>
      */
-    inline const Aws::String& GetErrorMessage() const{ return m_errorMessage; }
-
-    /**
-     * <p>The description of the error for the specified view.</p>
-     */
+    inline const Aws::String& GetErrorMessage() const { return m_errorMessage; }
     inline bool ErrorMessageHasBeenSet() const { return m_errorMessageHasBeenSet; }
+    template<typename ErrorMessageT = Aws::String>
+    void SetErrorMessage(ErrorMessageT&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::forward<ErrorMessageT>(value); }
+    template<typename ErrorMessageT = Aws::String>
+    BatchGetViewError& WithErrorMessage(ErrorMessageT&& value) { SetErrorMessage(std::forward<ErrorMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the error for the specified view.</p>
-     */
-    inline void SetErrorMessage(const Aws::String& value) { m_errorMessageHasBeenSet = true; m_errorMessage = value; }
-
-    /**
-     * <p>The description of the error for the specified view.</p>
-     */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::move(value); }
-
-    /**
-     * <p>The description of the error for the specified view.</p>
-     */
-    inline void SetErrorMessage(const char* value) { m_errorMessageHasBeenSet = true; m_errorMessage.assign(value); }
-
-    /**
-     * <p>The description of the error for the specified view.</p>
-     */
-    inline BatchGetViewError& WithErrorMessage(const Aws::String& value) { SetErrorMessage(value); return *this;}
-
-    /**
-     * <p>The description of the error for the specified view.</p>
-     */
-    inline BatchGetViewError& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the error for the specified view.</p>
-     */
-    inline BatchGetViewError& WithErrorMessage(const char* value) { SetErrorMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
      * resource name (ARN)</a> of the view for which Resource Explorer failed to
      * retrieve details.</p>
      */
-    inline const Aws::String& GetViewArn() const{ return m_viewArn; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the view for which Resource Explorer failed to
-     * retrieve details.</p>
-     */
+    inline const Aws::String& GetViewArn() const { return m_viewArn; }
     inline bool ViewArnHasBeenSet() const { return m_viewArnHasBeenSet; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the view for which Resource Explorer failed to
-     * retrieve details.</p>
-     */
-    inline void SetViewArn(const Aws::String& value) { m_viewArnHasBeenSet = true; m_viewArn = value; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the view for which Resource Explorer failed to
-     * retrieve details.</p>
-     */
-    inline void SetViewArn(Aws::String&& value) { m_viewArnHasBeenSet = true; m_viewArn = std::move(value); }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the view for which Resource Explorer failed to
-     * retrieve details.</p>
-     */
-    inline void SetViewArn(const char* value) { m_viewArnHasBeenSet = true; m_viewArn.assign(value); }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the view for which Resource Explorer failed to
-     * retrieve details.</p>
-     */
-    inline BatchGetViewError& WithViewArn(const Aws::String& value) { SetViewArn(value); return *this;}
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the view for which Resource Explorer failed to
-     * retrieve details.</p>
-     */
-    inline BatchGetViewError& WithViewArn(Aws::String&& value) { SetViewArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the view for which Resource Explorer failed to
-     * retrieve details.</p>
-     */
-    inline BatchGetViewError& WithViewArn(const char* value) { SetViewArn(value); return *this;}
-
+    template<typename ViewArnT = Aws::String>
+    void SetViewArn(ViewArnT&& value) { m_viewArnHasBeenSet = true; m_viewArn = std::forward<ViewArnT>(value); }
+    template<typename ViewArnT = Aws::String>
+    BatchGetViewError& WithViewArn(ViewArnT&& value) { SetViewArn(std::forward<ViewArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_errorMessage;

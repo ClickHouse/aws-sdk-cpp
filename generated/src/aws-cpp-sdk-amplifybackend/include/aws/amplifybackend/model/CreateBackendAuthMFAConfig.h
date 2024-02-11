@@ -34,88 +34,38 @@ namespace Model
   class CreateBackendAuthMFAConfig
   {
   public:
-    AWS_AMPLIFYBACKEND_API CreateBackendAuthMFAConfig();
+    AWS_AMPLIFYBACKEND_API CreateBackendAuthMFAConfig() = default;
     AWS_AMPLIFYBACKEND_API CreateBackendAuthMFAConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYBACKEND_API CreateBackendAuthMFAConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYBACKEND_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Describes whether MFA should be [ON, OFF, or OPTIONAL] for authentication in
      * your Amplify project.</p>
      */
-    inline const MFAMode& GetMFAMode() const{ return m_mFAMode; }
-
-    /**
-     * <p>Describes whether MFA should be [ON, OFF, or OPTIONAL] for authentication in
-     * your Amplify project.</p>
-     */
+    inline MFAMode GetMFAMode() const { return m_mFAMode; }
     inline bool MFAModeHasBeenSet() const { return m_mFAModeHasBeenSet; }
+    inline void SetMFAMode(MFAMode value) { m_mFAModeHasBeenSet = true; m_mFAMode = value; }
+    inline CreateBackendAuthMFAConfig& WithMFAMode(MFAMode value) { SetMFAMode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes whether MFA should be [ON, OFF, or OPTIONAL] for authentication in
-     * your Amplify project.</p>
-     */
-    inline void SetMFAMode(const MFAMode& value) { m_mFAModeHasBeenSet = true; m_mFAMode = value; }
-
-    /**
-     * <p>Describes whether MFA should be [ON, OFF, or OPTIONAL] for authentication in
-     * your Amplify project.</p>
-     */
-    inline void SetMFAMode(MFAMode&& value) { m_mFAModeHasBeenSet = true; m_mFAMode = std::move(value); }
-
-    /**
-     * <p>Describes whether MFA should be [ON, OFF, or OPTIONAL] for authentication in
-     * your Amplify project.</p>
-     */
-    inline CreateBackendAuthMFAConfig& WithMFAMode(const MFAMode& value) { SetMFAMode(value); return *this;}
-
-    /**
-     * <p>Describes whether MFA should be [ON, OFF, or OPTIONAL] for authentication in
-     * your Amplify project.</p>
-     */
-    inline CreateBackendAuthMFAConfig& WithMFAMode(MFAMode&& value) { SetMFAMode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes the configuration settings and methods for your Amplify app users
      * to use MFA.</p>
      */
-    inline const Settings& GetSettings() const{ return m_settings; }
-
-    /**
-     * <p>Describes the configuration settings and methods for your Amplify app users
-     * to use MFA.</p>
-     */
+    inline const Settings& GetSettings() const { return m_settings; }
     inline bool SettingsHasBeenSet() const { return m_settingsHasBeenSet; }
-
-    /**
-     * <p>Describes the configuration settings and methods for your Amplify app users
-     * to use MFA.</p>
-     */
-    inline void SetSettings(const Settings& value) { m_settingsHasBeenSet = true; m_settings = value; }
-
-    /**
-     * <p>Describes the configuration settings and methods for your Amplify app users
-     * to use MFA.</p>
-     */
-    inline void SetSettings(Settings&& value) { m_settingsHasBeenSet = true; m_settings = std::move(value); }
-
-    /**
-     * <p>Describes the configuration settings and methods for your Amplify app users
-     * to use MFA.</p>
-     */
-    inline CreateBackendAuthMFAConfig& WithSettings(const Settings& value) { SetSettings(value); return *this;}
-
-    /**
-     * <p>Describes the configuration settings and methods for your Amplify app users
-     * to use MFA.</p>
-     */
-    inline CreateBackendAuthMFAConfig& WithSettings(Settings&& value) { SetSettings(std::move(value)); return *this;}
-
+    template<typename SettingsT = Settings>
+    void SetSettings(SettingsT&& value) { m_settingsHasBeenSet = true; m_settings = std::forward<SettingsT>(value); }
+    template<typename SettingsT = Settings>
+    CreateBackendAuthMFAConfig& WithSettings(SettingsT&& value) { SetSettings(std::forward<SettingsT>(value)); return *this;}
+    ///@}
   private:
 
-    MFAMode m_mFAMode;
+    MFAMode m_mFAMode{MFAMode::NOT_SET};
     bool m_mFAModeHasBeenSet = false;
 
     Settings m_settings;

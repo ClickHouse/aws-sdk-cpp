@@ -33,73 +33,47 @@ namespace Model
   class PropertyResponse
   {
   public:
-    AWS_IOTTWINMAKER_API PropertyResponse();
+    AWS_IOTTWINMAKER_API PropertyResponse() = default;
     AWS_IOTTWINMAKER_API PropertyResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API PropertyResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An object that specifies information about a property.</p>
      */
-    inline const PropertyDefinitionResponse& GetDefinition() const{ return m_definition; }
-
-    /**
-     * <p>An object that specifies information about a property.</p>
-     */
+    inline const PropertyDefinitionResponse& GetDefinition() const { return m_definition; }
     inline bool DefinitionHasBeenSet() const { return m_definitionHasBeenSet; }
+    template<typename DefinitionT = PropertyDefinitionResponse>
+    void SetDefinition(DefinitionT&& value) { m_definitionHasBeenSet = true; m_definition = std::forward<DefinitionT>(value); }
+    template<typename DefinitionT = PropertyDefinitionResponse>
+    PropertyResponse& WithDefinition(DefinitionT&& value) { SetDefinition(std::forward<DefinitionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that specifies information about a property.</p>
-     */
-    inline void SetDefinition(const PropertyDefinitionResponse& value) { m_definitionHasBeenSet = true; m_definition = value; }
-
-    /**
-     * <p>An object that specifies information about a property.</p>
-     */
-    inline void SetDefinition(PropertyDefinitionResponse&& value) { m_definitionHasBeenSet = true; m_definition = std::move(value); }
-
-    /**
-     * <p>An object that specifies information about a property.</p>
-     */
-    inline PropertyResponse& WithDefinition(const PropertyDefinitionResponse& value) { SetDefinition(value); return *this;}
-
-    /**
-     * <p>An object that specifies information about a property.</p>
-     */
-    inline PropertyResponse& WithDefinition(PropertyDefinitionResponse&& value) { SetDefinition(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of the property.</p>
      */
-    inline const DataValue& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the property.</p>
-     */
+    inline const DataValue& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = DataValue>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = DataValue>
+    PropertyResponse& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The value of the property.</p>
+     * <p>This flag notes whether all values of a list or map type property are
+     * returned in the API response. The maximum number of values per property returned
+     * is 50.</p>
      */
-    inline void SetValue(const DataValue& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the property.</p>
-     */
-    inline void SetValue(DataValue&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of the property.</p>
-     */
-    inline PropertyResponse& WithValue(const DataValue& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of the property.</p>
-     */
-    inline PropertyResponse& WithValue(DataValue&& value) { SetValue(std::move(value)); return *this;}
-
+    inline bool GetAreAllPropertyValuesReturned() const { return m_areAllPropertyValuesReturned; }
+    inline bool AreAllPropertyValuesReturnedHasBeenSet() const { return m_areAllPropertyValuesReturnedHasBeenSet; }
+    inline void SetAreAllPropertyValuesReturned(bool value) { m_areAllPropertyValuesReturnedHasBeenSet = true; m_areAllPropertyValuesReturned = value; }
+    inline PropertyResponse& WithAreAllPropertyValuesReturned(bool value) { SetAreAllPropertyValuesReturned(value); return *this;}
+    ///@}
   private:
 
     PropertyDefinitionResponse m_definition;
@@ -107,6 +81,9 @@ namespace Model
 
     DataValue m_value;
     bool m_valueHasBeenSet = false;
+
+    bool m_areAllPropertyValuesReturned{false};
+    bool m_areAllPropertyValuesReturnedHasBeenSet = false;
   };
 
 } // namespace Model

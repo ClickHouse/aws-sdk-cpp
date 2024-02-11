@@ -29,35 +29,24 @@ namespace Model
   class S3SnapshotAsset
   {
   public:
-    AWS_DATAEXCHANGE_API S3SnapshotAsset();
+    AWS_DATAEXCHANGE_API S3SnapshotAsset() = default;
     AWS_DATAEXCHANGE_API S3SnapshotAsset(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API S3SnapshotAsset& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The size of the Amazon S3 object that is the object.</p>
      */
-    inline double GetSize() const{ return m_size; }
-
-    /**
-     * <p>The size of the Amazon S3 object that is the object.</p>
-     */
+    inline double GetSize() const { return m_size; }
     inline bool SizeHasBeenSet() const { return m_sizeHasBeenSet; }
-
-    /**
-     * <p>The size of the Amazon S3 object that is the object.</p>
-     */
     inline void SetSize(double value) { m_sizeHasBeenSet = true; m_size = value; }
-
-    /**
-     * <p>The size of the Amazon S3 object that is the object.</p>
-     */
     inline S3SnapshotAsset& WithSize(double value) { SetSize(value); return *this;}
-
+    ///@}
   private:
 
-    double m_size;
+    double m_size{0.0};
     bool m_sizeHasBeenSet = false;
   };
 

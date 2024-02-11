@@ -32,134 +32,47 @@ namespace Model
   class Destination
   {
   public:
-    AWS_INSPECTOR2_API Destination();
+    AWS_INSPECTOR2_API Destination() = default;
     AWS_INSPECTOR2_API Destination(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API Destination& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the Amazon S3 bucket to export findings to.</p>
      */
-    inline const Aws::String& GetBucketName() const{ return m_bucketName; }
-
-    /**
-     * <p>The name of the Amazon S3 bucket to export findings to.</p>
-     */
+    inline const Aws::String& GetBucketName() const { return m_bucketName; }
     inline bool BucketNameHasBeenSet() const { return m_bucketNameHasBeenSet; }
+    template<typename BucketNameT = Aws::String>
+    void SetBucketName(BucketNameT&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::forward<BucketNameT>(value); }
+    template<typename BucketNameT = Aws::String>
+    Destination& WithBucketName(BucketNameT&& value) { SetBucketName(std::forward<BucketNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the Amazon S3 bucket to export findings to.</p>
+     * <p>The prefix that the findings will be written under.</p>
      */
-    inline void SetBucketName(const Aws::String& value) { m_bucketNameHasBeenSet = true; m_bucketName = value; }
-
-    /**
-     * <p>The name of the Amazon S3 bucket to export findings to.</p>
-     */
-    inline void SetBucketName(Aws::String&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon S3 bucket to export findings to.</p>
-     */
-    inline void SetBucketName(const char* value) { m_bucketNameHasBeenSet = true; m_bucketName.assign(value); }
-
-    /**
-     * <p>The name of the Amazon S3 bucket to export findings to.</p>
-     */
-    inline Destination& WithBucketName(const Aws::String& value) { SetBucketName(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon S3 bucket to export findings to.</p>
-     */
-    inline Destination& WithBucketName(Aws::String&& value) { SetBucketName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon S3 bucket to export findings to.</p>
-     */
-    inline Destination& WithBucketName(const char* value) { SetBucketName(value); return *this;}
-
-
-    /**
-     * <p>The prefix of the KMS key used to export findings.</p>
-     */
-    inline const Aws::String& GetKeyPrefix() const{ return m_keyPrefix; }
-
-    /**
-     * <p>The prefix of the KMS key used to export findings.</p>
-     */
+    inline const Aws::String& GetKeyPrefix() const { return m_keyPrefix; }
     inline bool KeyPrefixHasBeenSet() const { return m_keyPrefixHasBeenSet; }
+    template<typename KeyPrefixT = Aws::String>
+    void SetKeyPrefix(KeyPrefixT&& value) { m_keyPrefixHasBeenSet = true; m_keyPrefix = std::forward<KeyPrefixT>(value); }
+    template<typename KeyPrefixT = Aws::String>
+    Destination& WithKeyPrefix(KeyPrefixT&& value) { SetKeyPrefix(std::forward<KeyPrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The prefix of the KMS key used to export findings.</p>
-     */
-    inline void SetKeyPrefix(const Aws::String& value) { m_keyPrefixHasBeenSet = true; m_keyPrefix = value; }
-
-    /**
-     * <p>The prefix of the KMS key used to export findings.</p>
-     */
-    inline void SetKeyPrefix(Aws::String&& value) { m_keyPrefixHasBeenSet = true; m_keyPrefix = std::move(value); }
-
-    /**
-     * <p>The prefix of the KMS key used to export findings.</p>
-     */
-    inline void SetKeyPrefix(const char* value) { m_keyPrefixHasBeenSet = true; m_keyPrefix.assign(value); }
-
-    /**
-     * <p>The prefix of the KMS key used to export findings.</p>
-     */
-    inline Destination& WithKeyPrefix(const Aws::String& value) { SetKeyPrefix(value); return *this;}
-
-    /**
-     * <p>The prefix of the KMS key used to export findings.</p>
-     */
-    inline Destination& WithKeyPrefix(Aws::String&& value) { SetKeyPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>The prefix of the KMS key used to export findings.</p>
-     */
-    inline Destination& WithKeyPrefix(const char* value) { SetKeyPrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the KMS key used to encrypt data when exporting findings.</p>
      */
-    inline const Aws::String& GetKmsKeyArn() const{ return m_kmsKeyArn; }
-
-    /**
-     * <p>The ARN of the KMS key used to encrypt data when exporting findings.</p>
-     */
+    inline const Aws::String& GetKmsKeyArn() const { return m_kmsKeyArn; }
     inline bool KmsKeyArnHasBeenSet() const { return m_kmsKeyArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the KMS key used to encrypt data when exporting findings.</p>
-     */
-    inline void SetKmsKeyArn(const Aws::String& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = value; }
-
-    /**
-     * <p>The ARN of the KMS key used to encrypt data when exporting findings.</p>
-     */
-    inline void SetKmsKeyArn(Aws::String&& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the KMS key used to encrypt data when exporting findings.</p>
-     */
-    inline void SetKmsKeyArn(const char* value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn.assign(value); }
-
-    /**
-     * <p>The ARN of the KMS key used to encrypt data when exporting findings.</p>
-     */
-    inline Destination& WithKmsKeyArn(const Aws::String& value) { SetKmsKeyArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the KMS key used to encrypt data when exporting findings.</p>
-     */
-    inline Destination& WithKmsKeyArn(Aws::String&& value) { SetKmsKeyArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the KMS key used to encrypt data when exporting findings.</p>
-     */
-    inline Destination& WithKmsKeyArn(const char* value) { SetKmsKeyArn(value); return *this;}
-
+    template<typename KmsKeyArnT = Aws::String>
+    void SetKmsKeyArn(KmsKeyArnT&& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = std::forward<KmsKeyArnT>(value); }
+    template<typename KmsKeyArnT = Aws::String>
+    Destination& WithKmsKeyArn(KmsKeyArnT&& value) { SetKmsKeyArn(std::forward<KmsKeyArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucketName;

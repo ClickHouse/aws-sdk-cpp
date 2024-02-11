@@ -32,57 +32,26 @@ namespace Model
   class LineageConfiguration
   {
   public:
-    AWS_GLUE_API LineageConfiguration();
+    AWS_GLUE_API LineageConfiguration() = default;
     AWS_GLUE_API LineageConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API LineageConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies whether data lineage is enabled for the crawler. Valid values
      * are:</p> <ul> <li> <p>ENABLE: enables data lineage for the crawler</p> </li>
      * <li> <p>DISABLE: disables data lineage for the crawler</p> </li> </ul>
      */
-    inline const CrawlerLineageSettings& GetCrawlerLineageSettings() const{ return m_crawlerLineageSettings; }
-
-    /**
-     * <p>Specifies whether data lineage is enabled for the crawler. Valid values
-     * are:</p> <ul> <li> <p>ENABLE: enables data lineage for the crawler</p> </li>
-     * <li> <p>DISABLE: disables data lineage for the crawler</p> </li> </ul>
-     */
+    inline CrawlerLineageSettings GetCrawlerLineageSettings() const { return m_crawlerLineageSettings; }
     inline bool CrawlerLineageSettingsHasBeenSet() const { return m_crawlerLineageSettingsHasBeenSet; }
-
-    /**
-     * <p>Specifies whether data lineage is enabled for the crawler. Valid values
-     * are:</p> <ul> <li> <p>ENABLE: enables data lineage for the crawler</p> </li>
-     * <li> <p>DISABLE: disables data lineage for the crawler</p> </li> </ul>
-     */
-    inline void SetCrawlerLineageSettings(const CrawlerLineageSettings& value) { m_crawlerLineageSettingsHasBeenSet = true; m_crawlerLineageSettings = value; }
-
-    /**
-     * <p>Specifies whether data lineage is enabled for the crawler. Valid values
-     * are:</p> <ul> <li> <p>ENABLE: enables data lineage for the crawler</p> </li>
-     * <li> <p>DISABLE: disables data lineage for the crawler</p> </li> </ul>
-     */
-    inline void SetCrawlerLineageSettings(CrawlerLineageSettings&& value) { m_crawlerLineageSettingsHasBeenSet = true; m_crawlerLineageSettings = std::move(value); }
-
-    /**
-     * <p>Specifies whether data lineage is enabled for the crawler. Valid values
-     * are:</p> <ul> <li> <p>ENABLE: enables data lineage for the crawler</p> </li>
-     * <li> <p>DISABLE: disables data lineage for the crawler</p> </li> </ul>
-     */
-    inline LineageConfiguration& WithCrawlerLineageSettings(const CrawlerLineageSettings& value) { SetCrawlerLineageSettings(value); return *this;}
-
-    /**
-     * <p>Specifies whether data lineage is enabled for the crawler. Valid values
-     * are:</p> <ul> <li> <p>ENABLE: enables data lineage for the crawler</p> </li>
-     * <li> <p>DISABLE: disables data lineage for the crawler</p> </li> </ul>
-     */
-    inline LineageConfiguration& WithCrawlerLineageSettings(CrawlerLineageSettings&& value) { SetCrawlerLineageSettings(std::move(value)); return *this;}
-
+    inline void SetCrawlerLineageSettings(CrawlerLineageSettings value) { m_crawlerLineageSettingsHasBeenSet = true; m_crawlerLineageSettings = value; }
+    inline LineageConfiguration& WithCrawlerLineageSettings(CrawlerLineageSettings value) { SetCrawlerLineageSettings(value); return *this;}
+    ///@}
   private:
 
-    CrawlerLineageSettings m_crawlerLineageSettings;
+    CrawlerLineageSettings m_crawlerLineageSettings{CrawlerLineageSettings::NOT_SET};
     bool m_crawlerLineageSettingsHasBeenSet = false;
   };
 

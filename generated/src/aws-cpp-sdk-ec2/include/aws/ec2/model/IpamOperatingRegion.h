@@ -36,7 +36,7 @@ namespace Model
   class IpamOperatingRegion
   {
   public:
-    AWS_EC2_API IpamOperatingRegion();
+    AWS_EC2_API IpamOperatingRegion() = default;
     AWS_EC2_API IpamOperatingRegion(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API IpamOperatingRegion& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -44,46 +44,17 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The name of the operating Region.</p>
      */
-    inline const Aws::String& GetRegionName() const{ return m_regionName; }
-
-    /**
-     * <p>The name of the operating Region.</p>
-     */
+    inline const Aws::String& GetRegionName() const { return m_regionName; }
     inline bool RegionNameHasBeenSet() const { return m_regionNameHasBeenSet; }
-
-    /**
-     * <p>The name of the operating Region.</p>
-     */
-    inline void SetRegionName(const Aws::String& value) { m_regionNameHasBeenSet = true; m_regionName = value; }
-
-    /**
-     * <p>The name of the operating Region.</p>
-     */
-    inline void SetRegionName(Aws::String&& value) { m_regionNameHasBeenSet = true; m_regionName = std::move(value); }
-
-    /**
-     * <p>The name of the operating Region.</p>
-     */
-    inline void SetRegionName(const char* value) { m_regionNameHasBeenSet = true; m_regionName.assign(value); }
-
-    /**
-     * <p>The name of the operating Region.</p>
-     */
-    inline IpamOperatingRegion& WithRegionName(const Aws::String& value) { SetRegionName(value); return *this;}
-
-    /**
-     * <p>The name of the operating Region.</p>
-     */
-    inline IpamOperatingRegion& WithRegionName(Aws::String&& value) { SetRegionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the operating Region.</p>
-     */
-    inline IpamOperatingRegion& WithRegionName(const char* value) { SetRegionName(value); return *this;}
-
+    template<typename RegionNameT = Aws::String>
+    void SetRegionName(RegionNameT&& value) { m_regionNameHasBeenSet = true; m_regionName = std::forward<RegionNameT>(value); }
+    template<typename RegionNameT = Aws::String>
+    IpamOperatingRegion& WithRegionName(RegionNameT&& value) { SetRegionName(std::forward<RegionNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_regionName;

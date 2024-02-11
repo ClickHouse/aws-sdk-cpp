@@ -23,7 +23,14 @@ namespace Model
     AssociateIdentityProviderConfig,
     DisassociateIdentityProviderConfig,
     AssociateEncryptionConfig,
-    AddonUpdate
+    AddonUpdate,
+    VpcConfigUpdate,
+    AccessConfigUpdate,
+    UpgradePolicyUpdate,
+    ZonalShiftConfigUpdate,
+    AutoModeUpdate,
+    RemoteNetworkConfigUpdate,
+    DeletionProtectionUpdate
   };
 
 namespace UpdateTypeMapper

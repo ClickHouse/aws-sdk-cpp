@@ -18,31 +18,7 @@ namespace Connect
 namespace Model
 {
 
-User::User() : 
-    m_idHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_usernameHasBeenSet(false),
-    m_identityInfoHasBeenSet(false),
-    m_phoneConfigHasBeenSet(false),
-    m_directoryUserIdHasBeenSet(false),
-    m_securityProfileIdsHasBeenSet(false),
-    m_routingProfileIdHasBeenSet(false),
-    m_hierarchyGroupIdHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-User::User(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_usernameHasBeenSet(false),
-    m_identityInfoHasBeenSet(false),
-    m_phoneConfigHasBeenSet(false),
-    m_directoryUserIdHasBeenSet(false),
-    m_securityProfileIdsHasBeenSet(false),
-    m_routingProfileIdHasBeenSet(false),
-    m_hierarchyGroupIdHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+User::User(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -52,45 +28,33 @@ User& User::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetString("Id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Username"))
   {
     m_username = jsonValue.GetString("Username");
-
     m_usernameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IdentityInfo"))
   {
     m_identityInfo = jsonValue.GetObject("IdentityInfo");
-
     m_identityInfoHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PhoneConfig"))
   {
     m_phoneConfig = jsonValue.GetObject("PhoneConfig");
-
     m_phoneConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DirectoryUserId"))
   {
     m_directoryUserId = jsonValue.GetString("DirectoryUserId");
-
     m_directoryUserIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SecurityProfileIds"))
   {
     Aws::Utils::Array<JsonView> securityProfileIdsJsonList = jsonValue.GetArray("SecurityProfileIds");
@@ -100,21 +64,16 @@ User& User::operator =(JsonView jsonValue)
     }
     m_securityProfileIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RoutingProfileId"))
   {
     m_routingProfileId = jsonValue.GetString("RoutingProfileId");
-
     m_routingProfileIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("HierarchyGroupId"))
   {
     m_hierarchyGroupId = jsonValue.GetString("HierarchyGroupId");
-
     m_hierarchyGroupIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("Tags").GetAllObjects();
@@ -124,7 +83,16 @@ User& User::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("LastModifiedTime"))
+  {
+    m_lastModifiedTime = jsonValue.GetDouble("LastModifiedTime");
+    m_lastModifiedTimeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("LastModifiedRegion"))
+  {
+    m_lastModifiedRegion = jsonValue.GetString("LastModifiedRegion");
+    m_lastModifiedRegionHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -199,6 +167,17 @@ JsonValue User::Jsonize() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("Tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_lastModifiedTimeHasBeenSet)
+  {
+   payload.WithDouble("LastModifiedTime", m_lastModifiedTime.SecondsWithMSPrecision());
+  }
+
+  if(m_lastModifiedRegionHasBeenSet)
+  {
+   payload.WithString("LastModifiedRegion", m_lastModifiedRegion);
 
   }
 

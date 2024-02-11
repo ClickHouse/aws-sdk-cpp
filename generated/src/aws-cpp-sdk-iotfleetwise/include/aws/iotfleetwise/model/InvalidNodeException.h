@@ -35,118 +35,47 @@ namespace Model
   class InvalidNodeException
   {
   public:
-    AWS_IOTFLEETWISE_API InvalidNodeException();
+    AWS_IOTFLEETWISE_API InvalidNodeException() = default;
     AWS_IOTFLEETWISE_API InvalidNodeException(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTFLEETWISE_API InvalidNodeException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTFLEETWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The specified node type isn't valid.</p>
      */
-    inline const Aws::Vector<Node>& GetInvalidNodes() const{ return m_invalidNodes; }
-
-    /**
-     * <p>The specified node type isn't valid.</p>
-     */
+    inline const Aws::Vector<Node>& GetInvalidNodes() const { return m_invalidNodes; }
     inline bool InvalidNodesHasBeenSet() const { return m_invalidNodesHasBeenSet; }
+    template<typename InvalidNodesT = Aws::Vector<Node>>
+    void SetInvalidNodes(InvalidNodesT&& value) { m_invalidNodesHasBeenSet = true; m_invalidNodes = std::forward<InvalidNodesT>(value); }
+    template<typename InvalidNodesT = Aws::Vector<Node>>
+    InvalidNodeException& WithInvalidNodes(InvalidNodesT&& value) { SetInvalidNodes(std::forward<InvalidNodesT>(value)); return *this;}
+    template<typename InvalidNodesT = Node>
+    InvalidNodeException& AddInvalidNodes(InvalidNodesT&& value) { m_invalidNodesHasBeenSet = true; m_invalidNodes.emplace_back(std::forward<InvalidNodesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The specified node type isn't valid.</p>
-     */
-    inline void SetInvalidNodes(const Aws::Vector<Node>& value) { m_invalidNodesHasBeenSet = true; m_invalidNodes = value; }
-
-    /**
-     * <p>The specified node type isn't valid.</p>
-     */
-    inline void SetInvalidNodes(Aws::Vector<Node>&& value) { m_invalidNodesHasBeenSet = true; m_invalidNodes = std::move(value); }
-
-    /**
-     * <p>The specified node type isn't valid.</p>
-     */
-    inline InvalidNodeException& WithInvalidNodes(const Aws::Vector<Node>& value) { SetInvalidNodes(value); return *this;}
-
-    /**
-     * <p>The specified node type isn't valid.</p>
-     */
-    inline InvalidNodeException& WithInvalidNodes(Aws::Vector<Node>&& value) { SetInvalidNodes(std::move(value)); return *this;}
-
-    /**
-     * <p>The specified node type isn't valid.</p>
-     */
-    inline InvalidNodeException& AddInvalidNodes(const Node& value) { m_invalidNodesHasBeenSet = true; m_invalidNodes.push_back(value); return *this; }
-
-    /**
-     * <p>The specified node type isn't valid.</p>
-     */
-    inline InvalidNodeException& AddInvalidNodes(Node&& value) { m_invalidNodesHasBeenSet = true; m_invalidNodes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The reason the node validation failed.</p>
      */
-    inline const Aws::String& GetReason() const{ return m_reason; }
-
-    /**
-     * <p>The reason the node validation failed.</p>
-     */
+    inline const Aws::String& GetReason() const { return m_reason; }
     inline bool ReasonHasBeenSet() const { return m_reasonHasBeenSet; }
+    template<typename ReasonT = Aws::String>
+    void SetReason(ReasonT&& value) { m_reasonHasBeenSet = true; m_reason = std::forward<ReasonT>(value); }
+    template<typename ReasonT = Aws::String>
+    InvalidNodeException& WithReason(ReasonT&& value) { SetReason(std::forward<ReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reason the node validation failed.</p>
-     */
-    inline void SetReason(const Aws::String& value) { m_reasonHasBeenSet = true; m_reason = value; }
-
-    /**
-     * <p>The reason the node validation failed.</p>
-     */
-    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
-
-    /**
-     * <p>The reason the node validation failed.</p>
-     */
-    inline void SetReason(const char* value) { m_reasonHasBeenSet = true; m_reason.assign(value); }
-
-    /**
-     * <p>The reason the node validation failed.</p>
-     */
-    inline InvalidNodeException& WithReason(const Aws::String& value) { SetReason(value); return *this;}
-
-    /**
-     * <p>The reason the node validation failed.</p>
-     */
-    inline InvalidNodeException& WithReason(Aws::String&& value) { SetReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason the node validation failed.</p>
-     */
-    inline InvalidNodeException& WithReason(const char* value) { SetReason(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    
-    inline InvalidNodeException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    
-    inline InvalidNodeException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    
-    inline InvalidNodeException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    InvalidNodeException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Node> m_invalidNodes;

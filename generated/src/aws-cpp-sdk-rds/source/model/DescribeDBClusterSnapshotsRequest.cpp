@@ -10,21 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-DescribeDBClusterSnapshotsRequest::DescribeDBClusterSnapshotsRequest() : 
-    m_dBClusterIdentifierHasBeenSet(false),
-    m_dBClusterSnapshotIdentifierHasBeenSet(false),
-    m_snapshotTypeHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false),
-    m_markerHasBeenSet(false),
-    m_includeShared(false),
-    m_includeSharedHasBeenSet(false),
-    m_includePublic(false),
-    m_includePublicHasBeenSet(false)
-{
-}
-
 Aws::String DescribeDBClusterSnapshotsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -46,11 +31,18 @@ Aws::String DescribeDBClusterSnapshotsRequest::SerializePayload() const
 
   if(m_filtersHasBeenSet)
   {
-    unsigned filtersCount = 1;
-    for(auto& item : m_filters)
+    if (m_filters.empty())
     {
-      item.OutputToStream(ss, "Filters.member.", filtersCount, "");
-      filtersCount++;
+      ss << "Filters=&";
+    }
+    else
+    {
+      unsigned filtersCount = 1;
+      for(auto& item : m_filters)
+      {
+        item.OutputToStream(ss, "Filters.Filter.", filtersCount, "");
+        filtersCount++;
+      }
     }
   }
 
@@ -72,6 +64,11 @@ Aws::String DescribeDBClusterSnapshotsRequest::SerializePayload() const
   if(m_includePublicHasBeenSet)
   {
     ss << "IncludePublic=" << std::boolalpha << m_includePublic << "&";
+  }
+
+  if(m_dbClusterResourceIdHasBeenSet)
+  {
+    ss << "DbClusterResourceId=" << StringUtils::URLEncode(m_dbClusterResourceId.c_str()) << "&";
   }
 
   ss << "Version=2014-10-31";

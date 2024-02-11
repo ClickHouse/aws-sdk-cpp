@@ -10,89 +10,25 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-CreateDBClusterRequest::CreateDBClusterRequest() : 
-    m_availabilityZonesHasBeenSet(false),
-    m_backupRetentionPeriod(0),
-    m_backupRetentionPeriodHasBeenSet(false),
-    m_characterSetNameHasBeenSet(false),
-    m_databaseNameHasBeenSet(false),
-    m_dBClusterIdentifierHasBeenSet(false),
-    m_dBClusterParameterGroupNameHasBeenSet(false),
-    m_vpcSecurityGroupIdsHasBeenSet(false),
-    m_dBSubnetGroupNameHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_masterUsernameHasBeenSet(false),
-    m_masterUserPasswordHasBeenSet(false),
-    m_optionGroupNameHasBeenSet(false),
-    m_preferredBackupWindowHasBeenSet(false),
-    m_preferredMaintenanceWindowHasBeenSet(false),
-    m_replicationSourceIdentifierHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_storageEncrypted(false),
-    m_storageEncryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_preSignedUrlHasBeenSet(false),
-    m_enableIAMDatabaseAuthentication(false),
-    m_enableIAMDatabaseAuthenticationHasBeenSet(false),
-    m_backtrackWindow(0),
-    m_backtrackWindowHasBeenSet(false),
-    m_enableCloudwatchLogsExportsHasBeenSet(false),
-    m_engineModeHasBeenSet(false),
-    m_scalingConfigurationHasBeenSet(false),
-    m_deletionProtection(false),
-    m_deletionProtectionHasBeenSet(false),
-    m_globalClusterIdentifierHasBeenSet(false),
-    m_enableHttpEndpoint(false),
-    m_enableHttpEndpointHasBeenSet(false),
-    m_copyTagsToSnapshot(false),
-    m_copyTagsToSnapshotHasBeenSet(false),
-    m_domainHasBeenSet(false),
-    m_domainIAMRoleNameHasBeenSet(false),
-    m_enableGlobalWriteForwarding(false),
-    m_enableGlobalWriteForwardingHasBeenSet(false),
-    m_dBClusterInstanceClassHasBeenSet(false),
-    m_allocatedStorage(0),
-    m_allocatedStorageHasBeenSet(false),
-    m_storageTypeHasBeenSet(false),
-    m_iops(0),
-    m_iopsHasBeenSet(false),
-    m_publiclyAccessible(false),
-    m_publiclyAccessibleHasBeenSet(false),
-    m_autoMinorVersionUpgrade(false),
-    m_autoMinorVersionUpgradeHasBeenSet(false),
-    m_monitoringInterval(0),
-    m_monitoringIntervalHasBeenSet(false),
-    m_monitoringRoleArnHasBeenSet(false),
-    m_enablePerformanceInsights(false),
-    m_enablePerformanceInsightsHasBeenSet(false),
-    m_performanceInsightsKMSKeyIdHasBeenSet(false),
-    m_performanceInsightsRetentionPeriod(0),
-    m_performanceInsightsRetentionPeriodHasBeenSet(false),
-    m_serverlessV2ScalingConfigurationHasBeenSet(false),
-    m_networkTypeHasBeenSet(false),
-    m_dBSystemIdHasBeenSet(false),
-    m_manageMasterUserPassword(false),
-    m_manageMasterUserPasswordHasBeenSet(false),
-    m_masterUserSecretKmsKeyIdHasBeenSet(false),
-    m_sourceRegionHasBeenSet(false)
-{
-}
-
 Aws::String CreateDBClusterRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=CreateDBCluster&";
   if(m_availabilityZonesHasBeenSet)
   {
-    unsigned availabilityZonesCount = 1;
-    for(auto& item : m_availabilityZones)
+    if (m_availabilityZones.empty())
     {
-      ss << "AvailabilityZones.member." << availabilityZonesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      availabilityZonesCount++;
+      ss << "AvailabilityZones=&";
+    }
+    else
+    {
+      unsigned availabilityZonesCount = 1;
+      for(auto& item : m_availabilityZones)
+      {
+        ss << "AvailabilityZones.AvailabilityZone." << availabilityZonesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        availabilityZonesCount++;
+      }
     }
   }
 
@@ -123,12 +59,19 @@ Aws::String CreateDBClusterRequest::SerializePayload() const
 
   if(m_vpcSecurityGroupIdsHasBeenSet)
   {
-    unsigned vpcSecurityGroupIdsCount = 1;
-    for(auto& item : m_vpcSecurityGroupIds)
+    if (m_vpcSecurityGroupIds.empty())
     {
-      ss << "VpcSecurityGroupIds.member." << vpcSecurityGroupIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      vpcSecurityGroupIdsCount++;
+      ss << "VpcSecurityGroupIds=&";
+    }
+    else
+    {
+      unsigned vpcSecurityGroupIdsCount = 1;
+      for(auto& item : m_vpcSecurityGroupIds)
+      {
+        ss << "VpcSecurityGroupIds.VpcSecurityGroupId." << vpcSecurityGroupIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        vpcSecurityGroupIdsCount++;
+      }
     }
   }
 
@@ -184,11 +127,18 @@ Aws::String CreateDBClusterRequest::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 
@@ -219,12 +169,19 @@ Aws::String CreateDBClusterRequest::SerializePayload() const
 
   if(m_enableCloudwatchLogsExportsHasBeenSet)
   {
-    unsigned enableCloudwatchLogsExportsCount = 1;
-    for(auto& item : m_enableCloudwatchLogsExports)
+    if (m_enableCloudwatchLogsExports.empty())
     {
-      ss << "EnableCloudwatchLogsExports.member." << enableCloudwatchLogsExportsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      enableCloudwatchLogsExportsCount++;
+      ss << "EnableCloudwatchLogsExports=&";
+    }
+    else
+    {
+      unsigned enableCloudwatchLogsExportsCount = 1;
+      for(auto& item : m_enableCloudwatchLogsExports)
+      {
+        ss << "EnableCloudwatchLogsExports.member." << enableCloudwatchLogsExportsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        enableCloudwatchLogsExportsCount++;
+      }
     }
   }
 
@@ -236,6 +193,11 @@ Aws::String CreateDBClusterRequest::SerializePayload() const
   if(m_scalingConfigurationHasBeenSet)
   {
     m_scalingConfiguration.OutputToStream(ss, "ScalingConfiguration");
+  }
+
+  if(m_rdsCustomClusterConfigurationHasBeenSet)
+  {
+    m_rdsCustomClusterConfiguration.OutputToStream(ss, "RdsCustomClusterConfiguration");
   }
 
   if(m_deletionProtectionHasBeenSet)
@@ -313,6 +275,11 @@ Aws::String CreateDBClusterRequest::SerializePayload() const
     ss << "MonitoringRoleArn=" << StringUtils::URLEncode(m_monitoringRoleArn.c_str()) << "&";
   }
 
+  if(m_databaseInsightsModeHasBeenSet)
+  {
+    ss << "DatabaseInsightsMode=" << StringUtils::URLEncode(DatabaseInsightsModeMapper::GetNameForDatabaseInsightsMode(m_databaseInsightsMode)) << "&";
+  }
+
   if(m_enablePerformanceInsightsHasBeenSet)
   {
     ss << "EnablePerformanceInsights=" << std::boolalpha << m_enablePerformanceInsights << "&";
@@ -328,6 +295,11 @@ Aws::String CreateDBClusterRequest::SerializePayload() const
     ss << "PerformanceInsightsRetentionPeriod=" << m_performanceInsightsRetentionPeriod << "&";
   }
 
+  if(m_enableLimitlessDatabaseHasBeenSet)
+  {
+    ss << "EnableLimitlessDatabase=" << std::boolalpha << m_enableLimitlessDatabase << "&";
+  }
+
   if(m_serverlessV2ScalingConfigurationHasBeenSet)
   {
     m_serverlessV2ScalingConfiguration.OutputToStream(ss, "ServerlessV2ScalingConfiguration");
@@ -336,6 +308,11 @@ Aws::String CreateDBClusterRequest::SerializePayload() const
   if(m_networkTypeHasBeenSet)
   {
     ss << "NetworkType=" << StringUtils::URLEncode(m_networkType.c_str()) << "&";
+  }
+
+  if(m_clusterScalabilityTypeHasBeenSet)
+  {
+    ss << "ClusterScalabilityType=" << StringUtils::URLEncode(ClusterScalabilityTypeMapper::GetNameForClusterScalabilityType(m_clusterScalabilityType)) << "&";
   }
 
   if(m_dBSystemIdHasBeenSet)
@@ -351,6 +328,26 @@ Aws::String CreateDBClusterRequest::SerializePayload() const
   if(m_masterUserSecretKmsKeyIdHasBeenSet)
   {
     ss << "MasterUserSecretKmsKeyId=" << StringUtils::URLEncode(m_masterUserSecretKmsKeyId.c_str()) << "&";
+  }
+
+  if(m_enableLocalWriteForwardingHasBeenSet)
+  {
+    ss << "EnableLocalWriteForwarding=" << std::boolalpha << m_enableLocalWriteForwarding << "&";
+  }
+
+  if(m_cACertificateIdentifierHasBeenSet)
+  {
+    ss << "CACertificateIdentifier=" << StringUtils::URLEncode(m_cACertificateIdentifier.c_str()) << "&";
+  }
+
+  if(m_engineLifecycleSupportHasBeenSet)
+  {
+    ss << "EngineLifecycleSupport=" << StringUtils::URLEncode(m_engineLifecycleSupport.c_str()) << "&";
+  }
+
+  if(m_masterUserAuthenticationTypeHasBeenSet)
+  {
+    ss << "MasterUserAuthenticationType=" << StringUtils::URLEncode(MasterUserAuthenticationTypeMapper::GetNameForMasterUserAuthenticationType(m_masterUserAuthenticationType)) << "&";
   }
 
   ss << "Version=2014-10-31";

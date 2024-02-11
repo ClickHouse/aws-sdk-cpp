@@ -21,7 +21,7 @@ namespace Model
   class DescribeVpcConnectorRequest : public AppRunnerRequest
   {
   public:
-    AWS_APPRUNNER_API DescribeVpcConnectorRequest();
+    AWS_APPRUNNER_API DescribeVpcConnectorRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_APPRUNNER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the App Runner VPC connector that you want
      * a description for.</p> <p>The ARN must be a full VPC connector ARN.</p>
      */
-    inline const Aws::String& GetVpcConnectorArn() const{ return m_vpcConnectorArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the App Runner VPC connector that you want
-     * a description for.</p> <p>The ARN must be a full VPC connector ARN.</p>
-     */
+    inline const Aws::String& GetVpcConnectorArn() const { return m_vpcConnectorArn; }
     inline bool VpcConnectorArnHasBeenSet() const { return m_vpcConnectorArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the App Runner VPC connector that you want
-     * a description for.</p> <p>The ARN must be a full VPC connector ARN.</p>
-     */
-    inline void SetVpcConnectorArn(const Aws::String& value) { m_vpcConnectorArnHasBeenSet = true; m_vpcConnectorArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the App Runner VPC connector that you want
-     * a description for.</p> <p>The ARN must be a full VPC connector ARN.</p>
-     */
-    inline void SetVpcConnectorArn(Aws::String&& value) { m_vpcConnectorArnHasBeenSet = true; m_vpcConnectorArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the App Runner VPC connector that you want
-     * a description for.</p> <p>The ARN must be a full VPC connector ARN.</p>
-     */
-    inline void SetVpcConnectorArn(const char* value) { m_vpcConnectorArnHasBeenSet = true; m_vpcConnectorArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the App Runner VPC connector that you want
-     * a description for.</p> <p>The ARN must be a full VPC connector ARN.</p>
-     */
-    inline DescribeVpcConnectorRequest& WithVpcConnectorArn(const Aws::String& value) { SetVpcConnectorArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the App Runner VPC connector that you want
-     * a description for.</p> <p>The ARN must be a full VPC connector ARN.</p>
-     */
-    inline DescribeVpcConnectorRequest& WithVpcConnectorArn(Aws::String&& value) { SetVpcConnectorArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the App Runner VPC connector that you want
-     * a description for.</p> <p>The ARN must be a full VPC connector ARN.</p>
-     */
-    inline DescribeVpcConnectorRequest& WithVpcConnectorArn(const char* value) { SetVpcConnectorArn(value); return *this;}
-
+    template<typename VpcConnectorArnT = Aws::String>
+    void SetVpcConnectorArn(VpcConnectorArnT&& value) { m_vpcConnectorArnHasBeenSet = true; m_vpcConnectorArn = std::forward<VpcConnectorArnT>(value); }
+    template<typename VpcConnectorArnT = Aws::String>
+    DescribeVpcConnectorRequest& WithVpcConnectorArn(VpcConnectorArnT&& value) { SetVpcConnectorArn(std::forward<VpcConnectorArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_vpcConnectorArn;

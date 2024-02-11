@@ -18,15 +18,7 @@ namespace AmplifyUIBuilder
 namespace Model
 {
 
-RefreshTokenRequestBody::RefreshTokenRequestBody() : 
-    m_tokenHasBeenSet(false),
-    m_clientIdHasBeenSet(false)
-{
-}
-
-RefreshTokenRequestBody::RefreshTokenRequestBody(JsonView jsonValue) : 
-    m_tokenHasBeenSet(false),
-    m_clientIdHasBeenSet(false)
+RefreshTokenRequestBody::RefreshTokenRequestBody(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ RefreshTokenRequestBody& RefreshTokenRequestBody::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("token"))
   {
     m_token = jsonValue.GetString("token");
-
     m_tokenHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("clientId"))
   {
     m_clientId = jsonValue.GetString("clientId");
-
     m_clientIdHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -21,7 +21,7 @@ namespace Model
   class DeleteClientVpnRouteRequest : public EC2Request
   {
   public:
-    AWS_EC2_API DeleteClientVpnRouteRequest();
+    AWS_EC2_API DeleteClientVpnRouteRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,161 +36,54 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The ID of the Client VPN endpoint from which the route is to be deleted.</p>
      */
-    inline const Aws::String& GetClientVpnEndpointId() const{ return m_clientVpnEndpointId; }
-
-    /**
-     * <p>The ID of the Client VPN endpoint from which the route is to be deleted.</p>
-     */
+    inline const Aws::String& GetClientVpnEndpointId() const { return m_clientVpnEndpointId; }
     inline bool ClientVpnEndpointIdHasBeenSet() const { return m_clientVpnEndpointIdHasBeenSet; }
+    template<typename ClientVpnEndpointIdT = Aws::String>
+    void SetClientVpnEndpointId(ClientVpnEndpointIdT&& value) { m_clientVpnEndpointIdHasBeenSet = true; m_clientVpnEndpointId = std::forward<ClientVpnEndpointIdT>(value); }
+    template<typename ClientVpnEndpointIdT = Aws::String>
+    DeleteClientVpnRouteRequest& WithClientVpnEndpointId(ClientVpnEndpointIdT&& value) { SetClientVpnEndpointId(std::forward<ClientVpnEndpointIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Client VPN endpoint from which the route is to be deleted.</p>
-     */
-    inline void SetClientVpnEndpointId(const Aws::String& value) { m_clientVpnEndpointIdHasBeenSet = true; m_clientVpnEndpointId = value; }
-
-    /**
-     * <p>The ID of the Client VPN endpoint from which the route is to be deleted.</p>
-     */
-    inline void SetClientVpnEndpointId(Aws::String&& value) { m_clientVpnEndpointIdHasBeenSet = true; m_clientVpnEndpointId = std::move(value); }
-
-    /**
-     * <p>The ID of the Client VPN endpoint from which the route is to be deleted.</p>
-     */
-    inline void SetClientVpnEndpointId(const char* value) { m_clientVpnEndpointIdHasBeenSet = true; m_clientVpnEndpointId.assign(value); }
-
-    /**
-     * <p>The ID of the Client VPN endpoint from which the route is to be deleted.</p>
-     */
-    inline DeleteClientVpnRouteRequest& WithClientVpnEndpointId(const Aws::String& value) { SetClientVpnEndpointId(value); return *this;}
-
-    /**
-     * <p>The ID of the Client VPN endpoint from which the route is to be deleted.</p>
-     */
-    inline DeleteClientVpnRouteRequest& WithClientVpnEndpointId(Aws::String&& value) { SetClientVpnEndpointId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Client VPN endpoint from which the route is to be deleted.</p>
-     */
-    inline DeleteClientVpnRouteRequest& WithClientVpnEndpointId(const char* value) { SetClientVpnEndpointId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the target subnet used by the route.</p>
      */
-    inline const Aws::String& GetTargetVpcSubnetId() const{ return m_targetVpcSubnetId; }
-
-    /**
-     * <p>The ID of the target subnet used by the route.</p>
-     */
+    inline const Aws::String& GetTargetVpcSubnetId() const { return m_targetVpcSubnetId; }
     inline bool TargetVpcSubnetIdHasBeenSet() const { return m_targetVpcSubnetIdHasBeenSet; }
+    template<typename TargetVpcSubnetIdT = Aws::String>
+    void SetTargetVpcSubnetId(TargetVpcSubnetIdT&& value) { m_targetVpcSubnetIdHasBeenSet = true; m_targetVpcSubnetId = std::forward<TargetVpcSubnetIdT>(value); }
+    template<typename TargetVpcSubnetIdT = Aws::String>
+    DeleteClientVpnRouteRequest& WithTargetVpcSubnetId(TargetVpcSubnetIdT&& value) { SetTargetVpcSubnetId(std::forward<TargetVpcSubnetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the target subnet used by the route.</p>
-     */
-    inline void SetTargetVpcSubnetId(const Aws::String& value) { m_targetVpcSubnetIdHasBeenSet = true; m_targetVpcSubnetId = value; }
-
-    /**
-     * <p>The ID of the target subnet used by the route.</p>
-     */
-    inline void SetTargetVpcSubnetId(Aws::String&& value) { m_targetVpcSubnetIdHasBeenSet = true; m_targetVpcSubnetId = std::move(value); }
-
-    /**
-     * <p>The ID of the target subnet used by the route.</p>
-     */
-    inline void SetTargetVpcSubnetId(const char* value) { m_targetVpcSubnetIdHasBeenSet = true; m_targetVpcSubnetId.assign(value); }
-
-    /**
-     * <p>The ID of the target subnet used by the route.</p>
-     */
-    inline DeleteClientVpnRouteRequest& WithTargetVpcSubnetId(const Aws::String& value) { SetTargetVpcSubnetId(value); return *this;}
-
-    /**
-     * <p>The ID of the target subnet used by the route.</p>
-     */
-    inline DeleteClientVpnRouteRequest& WithTargetVpcSubnetId(Aws::String&& value) { SetTargetVpcSubnetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the target subnet used by the route.</p>
-     */
-    inline DeleteClientVpnRouteRequest& WithTargetVpcSubnetId(const char* value) { SetTargetVpcSubnetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IPv4 address range, in CIDR notation, of the route to be deleted.</p>
      */
-    inline const Aws::String& GetDestinationCidrBlock() const{ return m_destinationCidrBlock; }
-
-    /**
-     * <p>The IPv4 address range, in CIDR notation, of the route to be deleted.</p>
-     */
+    inline const Aws::String& GetDestinationCidrBlock() const { return m_destinationCidrBlock; }
     inline bool DestinationCidrBlockHasBeenSet() const { return m_destinationCidrBlockHasBeenSet; }
+    template<typename DestinationCidrBlockT = Aws::String>
+    void SetDestinationCidrBlock(DestinationCidrBlockT&& value) { m_destinationCidrBlockHasBeenSet = true; m_destinationCidrBlock = std::forward<DestinationCidrBlockT>(value); }
+    template<typename DestinationCidrBlockT = Aws::String>
+    DeleteClientVpnRouteRequest& WithDestinationCidrBlock(DestinationCidrBlockT&& value) { SetDestinationCidrBlock(std::forward<DestinationCidrBlockT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IPv4 address range, in CIDR notation, of the route to be deleted.</p>
-     */
-    inline void SetDestinationCidrBlock(const Aws::String& value) { m_destinationCidrBlockHasBeenSet = true; m_destinationCidrBlock = value; }
-
-    /**
-     * <p>The IPv4 address range, in CIDR notation, of the route to be deleted.</p>
-     */
-    inline void SetDestinationCidrBlock(Aws::String&& value) { m_destinationCidrBlockHasBeenSet = true; m_destinationCidrBlock = std::move(value); }
-
-    /**
-     * <p>The IPv4 address range, in CIDR notation, of the route to be deleted.</p>
-     */
-    inline void SetDestinationCidrBlock(const char* value) { m_destinationCidrBlockHasBeenSet = true; m_destinationCidrBlock.assign(value); }
-
-    /**
-     * <p>The IPv4 address range, in CIDR notation, of the route to be deleted.</p>
-     */
-    inline DeleteClientVpnRouteRequest& WithDestinationCidrBlock(const Aws::String& value) { SetDestinationCidrBlock(value); return *this;}
-
-    /**
-     * <p>The IPv4 address range, in CIDR notation, of the route to be deleted.</p>
-     */
-    inline DeleteClientVpnRouteRequest& WithDestinationCidrBlock(Aws::String&& value) { SetDestinationCidrBlock(std::move(value)); return *this;}
-
-    /**
-     * <p>The IPv4 address range, in CIDR notation, of the route to be deleted.</p>
-     */
-    inline DeleteClientVpnRouteRequest& WithDestinationCidrBlock(const char* value) { SetDestinationCidrBlock(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline DeleteClientVpnRouteRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_clientVpnEndpointId;
@@ -202,7 +95,7 @@ namespace Model
     Aws::String m_destinationCidrBlock;
     bool m_destinationCidrBlockHasBeenSet = false;
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
   };
 

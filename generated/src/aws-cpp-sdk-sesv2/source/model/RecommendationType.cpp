@@ -24,6 +24,10 @@ namespace Aws
         static const int DMARC_HASH = HashingUtils::HashString("DMARC");
         static const int SPF_HASH = HashingUtils::HashString("SPF");
         static const int BIMI_HASH = HashingUtils::HashString("BIMI");
+        static const int COMPLAINT_HASH = HashingUtils::HashString("COMPLAINT");
+        static const int BOUNCE_HASH = HashingUtils::HashString("BOUNCE");
+        static const int FEEDBACK_3P_HASH = HashingUtils::HashString("FEEDBACK_3P");
+        static const int IP_LISTING_HASH = HashingUtils::HashString("IP_LISTING");
 
 
         RecommendationType GetRecommendationTypeForName(const Aws::String& name)
@@ -45,6 +49,22 @@ namespace Aws
           {
             return RecommendationType::BIMI;
           }
+          else if (hashCode == COMPLAINT_HASH)
+          {
+            return RecommendationType::COMPLAINT;
+          }
+          else if (hashCode == BOUNCE_HASH)
+          {
+            return RecommendationType::BOUNCE;
+          }
+          else if (hashCode == FEEDBACK_3P_HASH)
+          {
+            return RecommendationType::FEEDBACK_3P;
+          }
+          else if (hashCode == IP_LISTING_HASH)
+          {
+            return RecommendationType::IP_LISTING;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -59,6 +79,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case RecommendationType::NOT_SET:
+            return {};
           case RecommendationType::DKIM:
             return "DKIM";
           case RecommendationType::DMARC:
@@ -67,6 +89,14 @@ namespace Aws
             return "SPF";
           case RecommendationType::BIMI:
             return "BIMI";
+          case RecommendationType::COMPLAINT:
+            return "COMPLAINT";
+          case RecommendationType::BOUNCE:
+            return "BOUNCE";
+          case RecommendationType::FEEDBACK_3P:
+            return "FEEDBACK_3P";
+          case RecommendationType::IP_LISTING:
+            return "IP_LISTING";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

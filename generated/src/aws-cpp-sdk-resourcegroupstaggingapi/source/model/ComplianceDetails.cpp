@@ -18,19 +18,7 @@ namespace ResourceGroupsTaggingAPI
 namespace Model
 {
 
-ComplianceDetails::ComplianceDetails() : 
-    m_noncompliantKeysHasBeenSet(false),
-    m_keysWithNoncompliantValuesHasBeenSet(false),
-    m_complianceStatus(false),
-    m_complianceStatusHasBeenSet(false)
-{
-}
-
-ComplianceDetails::ComplianceDetails(JsonView jsonValue) : 
-    m_noncompliantKeysHasBeenSet(false),
-    m_keysWithNoncompliantValuesHasBeenSet(false),
-    m_complianceStatus(false),
-    m_complianceStatusHasBeenSet(false)
+ComplianceDetails::ComplianceDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,7 +34,6 @@ ComplianceDetails& ComplianceDetails::operator =(JsonView jsonValue)
     }
     m_noncompliantKeysHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("KeysWithNoncompliantValues"))
   {
     Aws::Utils::Array<JsonView> keysWithNoncompliantValuesJsonList = jsonValue.GetArray("KeysWithNoncompliantValues");
@@ -56,14 +43,11 @@ ComplianceDetails& ComplianceDetails::operator =(JsonView jsonValue)
     }
     m_keysWithNoncompliantValuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComplianceStatus"))
   {
     m_complianceStatus = jsonValue.GetBool("ComplianceStatus");
-
     m_complianceStatusHasBeenSet = true;
   }
-
   return *this;
 }
 

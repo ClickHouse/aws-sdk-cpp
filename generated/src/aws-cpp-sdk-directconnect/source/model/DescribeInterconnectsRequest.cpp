@@ -12,11 +12,6 @@ using namespace Aws::DirectConnect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeInterconnectsRequest::DescribeInterconnectsRequest() : 
-    m_interconnectIdHasBeenSet(false)
-{
-}
-
 Aws::String DescribeInterconnectsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -24,6 +19,18 @@ Aws::String DescribeInterconnectsRequest::SerializePayload() const
   if(m_interconnectIdHasBeenSet)
   {
    payload.WithString("interconnectId", m_interconnectId);
+
+  }
+
+  if(m_maxResultsHasBeenSet)
+  {
+   payload.WithInteger("maxResults", m_maxResults);
+
+  }
+
+  if(m_nextTokenHasBeenSet)
+  {
+   payload.WithString("nextToken", m_nextToken);
 
   }
 

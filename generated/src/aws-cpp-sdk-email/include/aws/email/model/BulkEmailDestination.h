@@ -36,7 +36,7 @@ namespace Model
   class BulkEmailDestination
   {
   public:
-    AWS_SES_API BulkEmailDestination();
+    AWS_SES_API BulkEmailDestination() = default;
     AWS_SES_API BulkEmailDestination(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_SES_API BulkEmailDestination& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -44,146 +44,46 @@ namespace Model
     AWS_SES_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     
-    inline const Destination& GetDestination() const{ return m_destination; }
-
-    
+    inline const Destination& GetDestination() const { return m_destination; }
     inline bool DestinationHasBeenSet() const { return m_destinationHasBeenSet; }
+    template<typename DestinationT = Destination>
+    void SetDestination(DestinationT&& value) { m_destinationHasBeenSet = true; m_destination = std::forward<DestinationT>(value); }
+    template<typename DestinationT = Destination>
+    BulkEmailDestination& WithDestination(DestinationT&& value) { SetDestination(std::forward<DestinationT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetDestination(const Destination& value) { m_destinationHasBeenSet = true; m_destination = value; }
-
-    
-    inline void SetDestination(Destination&& value) { m_destinationHasBeenSet = true; m_destination = std::move(value); }
-
-    
-    inline BulkEmailDestination& WithDestination(const Destination& value) { SetDestination(value); return *this;}
-
-    
-    inline BulkEmailDestination& WithDestination(Destination&& value) { SetDestination(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of tags, in the form of name/value pairs, to apply to an email that
      * you send using <code>SendBulkTemplatedEmail</code>. Tags correspond to
      * characteristics of the email that you define, so that you can publish email
      * sending events.</p>
      */
-    inline const Aws::Vector<MessageTag>& GetReplacementTags() const{ return m_replacementTags; }
-
-    /**
-     * <p>A list of tags, in the form of name/value pairs, to apply to an email that
-     * you send using <code>SendBulkTemplatedEmail</code>. Tags correspond to
-     * characteristics of the email that you define, so that you can publish email
-     * sending events.</p>
-     */
+    inline const Aws::Vector<MessageTag>& GetReplacementTags() const { return m_replacementTags; }
     inline bool ReplacementTagsHasBeenSet() const { return m_replacementTagsHasBeenSet; }
+    template<typename ReplacementTagsT = Aws::Vector<MessageTag>>
+    void SetReplacementTags(ReplacementTagsT&& value) { m_replacementTagsHasBeenSet = true; m_replacementTags = std::forward<ReplacementTagsT>(value); }
+    template<typename ReplacementTagsT = Aws::Vector<MessageTag>>
+    BulkEmailDestination& WithReplacementTags(ReplacementTagsT&& value) { SetReplacementTags(std::forward<ReplacementTagsT>(value)); return *this;}
+    template<typename ReplacementTagsT = MessageTag>
+    BulkEmailDestination& AddReplacementTags(ReplacementTagsT&& value) { m_replacementTagsHasBeenSet = true; m_replacementTags.emplace_back(std::forward<ReplacementTagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of tags, in the form of name/value pairs, to apply to an email that
-     * you send using <code>SendBulkTemplatedEmail</code>. Tags correspond to
-     * characteristics of the email that you define, so that you can publish email
-     * sending events.</p>
-     */
-    inline void SetReplacementTags(const Aws::Vector<MessageTag>& value) { m_replacementTagsHasBeenSet = true; m_replacementTags = value; }
-
-    /**
-     * <p>A list of tags, in the form of name/value pairs, to apply to an email that
-     * you send using <code>SendBulkTemplatedEmail</code>. Tags correspond to
-     * characteristics of the email that you define, so that you can publish email
-     * sending events.</p>
-     */
-    inline void SetReplacementTags(Aws::Vector<MessageTag>&& value) { m_replacementTagsHasBeenSet = true; m_replacementTags = std::move(value); }
-
-    /**
-     * <p>A list of tags, in the form of name/value pairs, to apply to an email that
-     * you send using <code>SendBulkTemplatedEmail</code>. Tags correspond to
-     * characteristics of the email that you define, so that you can publish email
-     * sending events.</p>
-     */
-    inline BulkEmailDestination& WithReplacementTags(const Aws::Vector<MessageTag>& value) { SetReplacementTags(value); return *this;}
-
-    /**
-     * <p>A list of tags, in the form of name/value pairs, to apply to an email that
-     * you send using <code>SendBulkTemplatedEmail</code>. Tags correspond to
-     * characteristics of the email that you define, so that you can publish email
-     * sending events.</p>
-     */
-    inline BulkEmailDestination& WithReplacementTags(Aws::Vector<MessageTag>&& value) { SetReplacementTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of tags, in the form of name/value pairs, to apply to an email that
-     * you send using <code>SendBulkTemplatedEmail</code>. Tags correspond to
-     * characteristics of the email that you define, so that you can publish email
-     * sending events.</p>
-     */
-    inline BulkEmailDestination& AddReplacementTags(const MessageTag& value) { m_replacementTagsHasBeenSet = true; m_replacementTags.push_back(value); return *this; }
-
-    /**
-     * <p>A list of tags, in the form of name/value pairs, to apply to an email that
-     * you send using <code>SendBulkTemplatedEmail</code>. Tags correspond to
-     * characteristics of the email that you define, so that you can publish email
-     * sending events.</p>
-     */
-    inline BulkEmailDestination& AddReplacementTags(MessageTag&& value) { m_replacementTagsHasBeenSet = true; m_replacementTags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of replacement values to apply to the template. This parameter is a
      * JSON object, typically consisting of key-value pairs in which the keys
      * correspond to replacement tags in the email template.</p>
      */
-    inline const Aws::String& GetReplacementTemplateData() const{ return m_replacementTemplateData; }
-
-    /**
-     * <p>A list of replacement values to apply to the template. This parameter is a
-     * JSON object, typically consisting of key-value pairs in which the keys
-     * correspond to replacement tags in the email template.</p>
-     */
+    inline const Aws::String& GetReplacementTemplateData() const { return m_replacementTemplateData; }
     inline bool ReplacementTemplateDataHasBeenSet() const { return m_replacementTemplateDataHasBeenSet; }
-
-    /**
-     * <p>A list of replacement values to apply to the template. This parameter is a
-     * JSON object, typically consisting of key-value pairs in which the keys
-     * correspond to replacement tags in the email template.</p>
-     */
-    inline void SetReplacementTemplateData(const Aws::String& value) { m_replacementTemplateDataHasBeenSet = true; m_replacementTemplateData = value; }
-
-    /**
-     * <p>A list of replacement values to apply to the template. This parameter is a
-     * JSON object, typically consisting of key-value pairs in which the keys
-     * correspond to replacement tags in the email template.</p>
-     */
-    inline void SetReplacementTemplateData(Aws::String&& value) { m_replacementTemplateDataHasBeenSet = true; m_replacementTemplateData = std::move(value); }
-
-    /**
-     * <p>A list of replacement values to apply to the template. This parameter is a
-     * JSON object, typically consisting of key-value pairs in which the keys
-     * correspond to replacement tags in the email template.</p>
-     */
-    inline void SetReplacementTemplateData(const char* value) { m_replacementTemplateDataHasBeenSet = true; m_replacementTemplateData.assign(value); }
-
-    /**
-     * <p>A list of replacement values to apply to the template. This parameter is a
-     * JSON object, typically consisting of key-value pairs in which the keys
-     * correspond to replacement tags in the email template.</p>
-     */
-    inline BulkEmailDestination& WithReplacementTemplateData(const Aws::String& value) { SetReplacementTemplateData(value); return *this;}
-
-    /**
-     * <p>A list of replacement values to apply to the template. This parameter is a
-     * JSON object, typically consisting of key-value pairs in which the keys
-     * correspond to replacement tags in the email template.</p>
-     */
-    inline BulkEmailDestination& WithReplacementTemplateData(Aws::String&& value) { SetReplacementTemplateData(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of replacement values to apply to the template. This parameter is a
-     * JSON object, typically consisting of key-value pairs in which the keys
-     * correspond to replacement tags in the email template.</p>
-     */
-    inline BulkEmailDestination& WithReplacementTemplateData(const char* value) { SetReplacementTemplateData(value); return *this;}
-
+    template<typename ReplacementTemplateDataT = Aws::String>
+    void SetReplacementTemplateData(ReplacementTemplateDataT&& value) { m_replacementTemplateDataHasBeenSet = true; m_replacementTemplateData = std::forward<ReplacementTemplateDataT>(value); }
+    template<typename ReplacementTemplateDataT = Aws::String>
+    BulkEmailDestination& WithReplacementTemplateData(ReplacementTemplateDataT&& value) { SetReplacementTemplateData(std::forward<ReplacementTemplateDataT>(value)); return *this;}
+    ///@}
   private:
 
     Destination m_destination;

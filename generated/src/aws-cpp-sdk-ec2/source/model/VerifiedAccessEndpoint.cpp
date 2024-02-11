@@ -20,51 +20,7 @@ namespace EC2
 namespace Model
 {
 
-VerifiedAccessEndpoint::VerifiedAccessEndpoint() : 
-    m_verifiedAccessInstanceIdHasBeenSet(false),
-    m_verifiedAccessGroupIdHasBeenSet(false),
-    m_verifiedAccessEndpointIdHasBeenSet(false),
-    m_applicationDomainHasBeenSet(false),
-    m_endpointType(VerifiedAccessEndpointType::NOT_SET),
-    m_endpointTypeHasBeenSet(false),
-    m_attachmentType(VerifiedAccessEndpointAttachmentType::NOT_SET),
-    m_attachmentTypeHasBeenSet(false),
-    m_domainCertificateArnHasBeenSet(false),
-    m_endpointDomainHasBeenSet(false),
-    m_deviceValidationDomainHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_loadBalancerOptionsHasBeenSet(false),
-    m_networkInterfaceOptionsHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_lastUpdatedTimeHasBeenSet(false),
-    m_deletionTimeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-VerifiedAccessEndpoint::VerifiedAccessEndpoint(const XmlNode& xmlNode) : 
-    m_verifiedAccessInstanceIdHasBeenSet(false),
-    m_verifiedAccessGroupIdHasBeenSet(false),
-    m_verifiedAccessEndpointIdHasBeenSet(false),
-    m_applicationDomainHasBeenSet(false),
-    m_endpointType(VerifiedAccessEndpointType::NOT_SET),
-    m_endpointTypeHasBeenSet(false),
-    m_attachmentType(VerifiedAccessEndpointAttachmentType::NOT_SET),
-    m_attachmentTypeHasBeenSet(false),
-    m_domainCertificateArnHasBeenSet(false),
-    m_endpointDomainHasBeenSet(false),
-    m_deviceValidationDomainHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_loadBalancerOptionsHasBeenSet(false),
-    m_networkInterfaceOptionsHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_lastUpdatedTimeHasBeenSet(false),
-    m_deletionTimeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+VerifiedAccessEndpoint::VerifiedAccessEndpoint(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -102,13 +58,13 @@ VerifiedAccessEndpoint& VerifiedAccessEndpoint::operator =(const XmlNode& xmlNod
     XmlNode endpointTypeNode = resultNode.FirstChild("endpointType");
     if(!endpointTypeNode.IsNull())
     {
-      m_endpointType = VerifiedAccessEndpointTypeMapper::GetVerifiedAccessEndpointTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(endpointTypeNode.GetText()).c_str()).c_str());
+      m_endpointType = VerifiedAccessEndpointTypeMapper::GetVerifiedAccessEndpointTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(endpointTypeNode.GetText()).c_str()));
       m_endpointTypeHasBeenSet = true;
     }
     XmlNode attachmentTypeNode = resultNode.FirstChild("attachmentType");
     if(!attachmentTypeNode.IsNull())
     {
-      m_attachmentType = VerifiedAccessEndpointAttachmentTypeMapper::GetVerifiedAccessEndpointAttachmentTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(attachmentTypeNode.GetText()).c_str()).c_str());
+      m_attachmentType = VerifiedAccessEndpointAttachmentTypeMapper::GetVerifiedAccessEndpointAttachmentTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(attachmentTypeNode.GetText()).c_str()));
       m_attachmentTypeHasBeenSet = true;
     }
     XmlNode domainCertificateArnNode = resultNode.FirstChild("domainCertificateArn");
@@ -133,6 +89,7 @@ VerifiedAccessEndpoint& VerifiedAccessEndpoint::operator =(const XmlNode& xmlNod
     if(!securityGroupIdsNode.IsNull())
     {
       XmlNode securityGroupIdsMember = securityGroupIdsNode.FirstChild("item");
+      m_securityGroupIdsHasBeenSet = !securityGroupIdsMember.IsNull();
       while(!securityGroupIdsMember.IsNull())
       {
         m_securityGroupIds.push_back(securityGroupIdsMember.GetText());
@@ -187,6 +144,7 @@ VerifiedAccessEndpoint& VerifiedAccessEndpoint::operator =(const XmlNode& xmlNod
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -194,6 +152,24 @@ VerifiedAccessEndpoint& VerifiedAccessEndpoint::operator =(const XmlNode& xmlNod
       }
 
       m_tagsHasBeenSet = true;
+    }
+    XmlNode sseSpecificationNode = resultNode.FirstChild("sseSpecification");
+    if(!sseSpecificationNode.IsNull())
+    {
+      m_sseSpecification = sseSpecificationNode;
+      m_sseSpecificationHasBeenSet = true;
+    }
+    XmlNode rdsOptionsNode = resultNode.FirstChild("rdsOptions");
+    if(!rdsOptionsNode.IsNull())
+    {
+      m_rdsOptions = rdsOptionsNode;
+      m_rdsOptionsHasBeenSet = true;
+    }
+    XmlNode cidrOptionsNode = resultNode.FirstChild("cidrOptions");
+    if(!cidrOptionsNode.IsNull())
+    {
+      m_cidrOptions = cidrOptionsNode;
+      m_cidrOptionsHasBeenSet = true;
     }
   }
 
@@ -224,12 +200,12 @@ void VerifiedAccessEndpoint::OutputToStream(Aws::OStream& oStream, const char* l
 
   if(m_endpointTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".EndpointType=" << VerifiedAccessEndpointTypeMapper::GetNameForVerifiedAccessEndpointType(m_endpointType) << "&";
+      oStream << location << index << locationValue << ".EndpointType=" << StringUtils::URLEncode(VerifiedAccessEndpointTypeMapper::GetNameForVerifiedAccessEndpointType(m_endpointType)) << "&";
   }
 
   if(m_attachmentTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AttachmentType=" << VerifiedAccessEndpointAttachmentTypeMapper::GetNameForVerifiedAccessEndpointAttachmentType(m_attachmentType) << "&";
+      oStream << location << index << locationValue << ".AttachmentType=" << StringUtils::URLEncode(VerifiedAccessEndpointAttachmentTypeMapper::GetNameForVerifiedAccessEndpointAttachmentType(m_attachmentType)) << "&";
   }
 
   if(m_domainCertificateArnHasBeenSet)
@@ -308,6 +284,27 @@ void VerifiedAccessEndpoint::OutputToStream(Aws::OStream& oStream, const char* l
       }
   }
 
+  if(m_sseSpecificationHasBeenSet)
+  {
+      Aws::StringStream sseSpecificationLocationAndMemberSs;
+      sseSpecificationLocationAndMemberSs << location << index << locationValue << ".SseSpecification";
+      m_sseSpecification.OutputToStream(oStream, sseSpecificationLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_rdsOptionsHasBeenSet)
+  {
+      Aws::StringStream rdsOptionsLocationAndMemberSs;
+      rdsOptionsLocationAndMemberSs << location << index << locationValue << ".RdsOptions";
+      m_rdsOptions.OutputToStream(oStream, rdsOptionsLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_cidrOptionsHasBeenSet)
+  {
+      Aws::StringStream cidrOptionsLocationAndMemberSs;
+      cidrOptionsLocationAndMemberSs << location << index << locationValue << ".CidrOptions";
+      m_cidrOptions.OutputToStream(oStream, cidrOptionsLocationAndMemberSs.str().c_str());
+  }
+
 }
 
 void VerifiedAccessEndpoint::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -330,11 +327,11 @@ void VerifiedAccessEndpoint::OutputToStream(Aws::OStream& oStream, const char* l
   }
   if(m_endpointTypeHasBeenSet)
   {
-      oStream << location << ".EndpointType=" << VerifiedAccessEndpointTypeMapper::GetNameForVerifiedAccessEndpointType(m_endpointType) << "&";
+      oStream << location << ".EndpointType=" << StringUtils::URLEncode(VerifiedAccessEndpointTypeMapper::GetNameForVerifiedAccessEndpointType(m_endpointType)) << "&";
   }
   if(m_attachmentTypeHasBeenSet)
   {
-      oStream << location << ".AttachmentType=" << VerifiedAccessEndpointAttachmentTypeMapper::GetNameForVerifiedAccessEndpointAttachmentType(m_attachmentType) << "&";
+      oStream << location << ".AttachmentType=" << StringUtils::URLEncode(VerifiedAccessEndpointAttachmentTypeMapper::GetNameForVerifiedAccessEndpointAttachmentType(m_attachmentType)) << "&";
   }
   if(m_domainCertificateArnHasBeenSet)
   {
@@ -396,9 +393,27 @@ void VerifiedAccessEndpoint::OutputToStream(Aws::OStream& oStream, const char* l
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
+  }
+  if(m_sseSpecificationHasBeenSet)
+  {
+      Aws::String sseSpecificationLocationAndMember(location);
+      sseSpecificationLocationAndMember += ".SseSpecification";
+      m_sseSpecification.OutputToStream(oStream, sseSpecificationLocationAndMember.c_str());
+  }
+  if(m_rdsOptionsHasBeenSet)
+  {
+      Aws::String rdsOptionsLocationAndMember(location);
+      rdsOptionsLocationAndMember += ".RdsOptions";
+      m_rdsOptions.OutputToStream(oStream, rdsOptionsLocationAndMember.c_str());
+  }
+  if(m_cidrOptionsHasBeenSet)
+  {
+      Aws::String cidrOptionsLocationAndMember(location);
+      cidrOptionsLocationAndMember += ".CidrOptions";
+      m_cidrOptions.OutputToStream(oStream, cidrOptionsLocationAndMember.c_str());
   }
 }
 

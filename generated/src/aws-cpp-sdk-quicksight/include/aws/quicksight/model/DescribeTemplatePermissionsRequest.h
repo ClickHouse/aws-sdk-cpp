@@ -21,7 +21,7 @@ namespace Model
   class DescribeTemplatePermissionsRequest : public QuickSightRequest
   {
   public:
-    AWS_QUICKSIGHT_API DescribeTemplatePermissionsRequest();
+    AWS_QUICKSIGHT_API DescribeTemplatePermissionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,95 +32,30 @@ namespace Model
     AWS_QUICKSIGHT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services account that contains the template that
      * you're describing.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the template that
-     * you're describing.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    DescribeTemplatePermissionsRequest& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the template that
-     * you're describing.</p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the template that
-     * you're describing.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the template that
-     * you're describing.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the template that
-     * you're describing.</p>
-     */
-    inline DescribeTemplatePermissionsRequest& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the template that
-     * you're describing.</p>
-     */
-    inline DescribeTemplatePermissionsRequest& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the template that
-     * you're describing.</p>
-     */
-    inline DescribeTemplatePermissionsRequest& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID for the template.</p>
      */
-    inline const Aws::String& GetTemplateId() const{ return m_templateId; }
-
-    /**
-     * <p>The ID for the template.</p>
-     */
+    inline const Aws::String& GetTemplateId() const { return m_templateId; }
     inline bool TemplateIdHasBeenSet() const { return m_templateIdHasBeenSet; }
-
-    /**
-     * <p>The ID for the template.</p>
-     */
-    inline void SetTemplateId(const Aws::String& value) { m_templateIdHasBeenSet = true; m_templateId = value; }
-
-    /**
-     * <p>The ID for the template.</p>
-     */
-    inline void SetTemplateId(Aws::String&& value) { m_templateIdHasBeenSet = true; m_templateId = std::move(value); }
-
-    /**
-     * <p>The ID for the template.</p>
-     */
-    inline void SetTemplateId(const char* value) { m_templateIdHasBeenSet = true; m_templateId.assign(value); }
-
-    /**
-     * <p>The ID for the template.</p>
-     */
-    inline DescribeTemplatePermissionsRequest& WithTemplateId(const Aws::String& value) { SetTemplateId(value); return *this;}
-
-    /**
-     * <p>The ID for the template.</p>
-     */
-    inline DescribeTemplatePermissionsRequest& WithTemplateId(Aws::String&& value) { SetTemplateId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for the template.</p>
-     */
-    inline DescribeTemplatePermissionsRequest& WithTemplateId(const char* value) { SetTemplateId(value); return *this;}
-
+    template<typename TemplateIdT = Aws::String>
+    void SetTemplateId(TemplateIdT&& value) { m_templateIdHasBeenSet = true; m_templateId = std::forward<TemplateIdT>(value); }
+    template<typename TemplateIdT = Aws::String>
+    DescribeTemplatePermissionsRequest& WithTemplateId(TemplateIdT&& value) { SetTemplateId(std::forward<TemplateIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_awsAccountId;

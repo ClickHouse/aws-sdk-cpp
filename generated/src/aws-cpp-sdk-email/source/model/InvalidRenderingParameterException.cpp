@@ -20,13 +20,7 @@ namespace SES
 namespace Model
 {
 
-InvalidRenderingParameterException::InvalidRenderingParameterException() : 
-    m_templateNameHasBeenSet(false)
-{
-}
-
-InvalidRenderingParameterException::InvalidRenderingParameterException(const XmlNode& xmlNode) : 
-    m_templateNameHasBeenSet(false)
+InvalidRenderingParameterException::InvalidRenderingParameterException(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

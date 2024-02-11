@@ -20,13 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LaunchTemplateLicenseConfigurationRequest::LaunchTemplateLicenseConfigurationRequest() : 
-    m_licenseConfigurationArnHasBeenSet(false)
-{
-}
-
-LaunchTemplateLicenseConfigurationRequest::LaunchTemplateLicenseConfigurationRequest(const XmlNode& xmlNode) : 
-    m_licenseConfigurationArnHasBeenSet(false)
+LaunchTemplateLicenseConfigurationRequest::LaunchTemplateLicenseConfigurationRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

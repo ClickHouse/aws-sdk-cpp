@@ -18,15 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-ItemResponse::ItemResponse() : 
-    m_endpointItemResponseHasBeenSet(false),
-    m_eventsItemResponseHasBeenSet(false)
-{
-}
-
-ItemResponse::ItemResponse(JsonView jsonValue) : 
-    m_endpointItemResponseHasBeenSet(false),
-    m_eventsItemResponseHasBeenSet(false)
+ItemResponse::ItemResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ItemResponse& ItemResponse::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("EndpointItemResponse"))
   {
     m_endpointItemResponse = jsonValue.GetObject("EndpointItemResponse");
-
     m_endpointItemResponseHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EventsItemResponse"))
   {
     Aws::Map<Aws::String, JsonView> eventsItemResponseJsonMap = jsonValue.GetObject("EventsItemResponse").GetAllObjects();
@@ -49,7 +39,6 @@ ItemResponse& ItemResponse::operator =(JsonView jsonValue)
     }
     m_eventsItemResponseHasBeenSet = true;
   }
-
   return *this;
 }
 

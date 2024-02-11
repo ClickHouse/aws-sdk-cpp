@@ -21,7 +21,7 @@ namespace Model
   class PutResolverQueryLogConfigPolicyRequest : public Route53ResolverRequest
   {
   public:
-    AWS_ROUTE53RESOLVER_API PutResolverQueryLogConfigPolicyRequest();
+    AWS_ROUTE53RESOLVER_API PutResolverQueryLogConfigPolicyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,55 +34,20 @@ namespace Model
     AWS_ROUTE53RESOLVER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the account that you want to share rules
      * with.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account that you want to share rules
-     * with.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    PutResolverQueryLogConfigPolicyRequest& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account that you want to share rules
-     * with.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account that you want to share rules
-     * with.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account that you want to share rules
-     * with.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account that you want to share rules
-     * with.</p>
-     */
-    inline PutResolverQueryLogConfigPolicyRequest& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account that you want to share rules
-     * with.</p>
-     */
-    inline PutResolverQueryLogConfigPolicyRequest& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account that you want to share rules
-     * with.</p>
-     */
-    inline PutResolverQueryLogConfigPolicyRequest& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An Identity and Access Management policy statement that lists the query
      * logging configurations that you want to share with another Amazon Web Services
@@ -91,126 +56,18 @@ namespace Model
      * statement:</p> <ul> <li> <p>
      * <code>route53resolver:AssociateResolverQueryLogConfig</code> </p> </li> <li> <p>
      * <code>route53resolver:DisassociateResolverQueryLogConfig</code> </p> </li> <li>
-     * <p> <code>route53resolver:ListResolverQueryLogConfigAssociations</code> </p>
-     * </li> <li> <p> <code>route53resolver:ListResolverQueryLogConfigs</code> </p>
-     * </li> </ul> <p>In the <code>Resource</code> section of the statement, you
-     * specify the ARNs for the query logging configurations that you want to share
-     * with the account that you specified in <code>Arn</code>. </p>
+     * <p> <code>route53resolver:ListResolverQueryLogConfigs</code> </p> </li> </ul>
+     * <p>In the <code>Resource</code> section of the statement, you specify the ARNs
+     * for the query logging configurations that you want to share with the account
+     * that you specified in <code>Arn</code>. </p>
      */
-    inline const Aws::String& GetResolverQueryLogConfigPolicy() const{ return m_resolverQueryLogConfigPolicy; }
-
-    /**
-     * <p>An Identity and Access Management policy statement that lists the query
-     * logging configurations that you want to share with another Amazon Web Services
-     * account and the operations that you want the account to be able to perform. You
-     * can specify the following operations in the <code>Actions</code> section of the
-     * statement:</p> <ul> <li> <p>
-     * <code>route53resolver:AssociateResolverQueryLogConfig</code> </p> </li> <li> <p>
-     * <code>route53resolver:DisassociateResolverQueryLogConfig</code> </p> </li> <li>
-     * <p> <code>route53resolver:ListResolverQueryLogConfigAssociations</code> </p>
-     * </li> <li> <p> <code>route53resolver:ListResolverQueryLogConfigs</code> </p>
-     * </li> </ul> <p>In the <code>Resource</code> section of the statement, you
-     * specify the ARNs for the query logging configurations that you want to share
-     * with the account that you specified in <code>Arn</code>. </p>
-     */
+    inline const Aws::String& GetResolverQueryLogConfigPolicy() const { return m_resolverQueryLogConfigPolicy; }
     inline bool ResolverQueryLogConfigPolicyHasBeenSet() const { return m_resolverQueryLogConfigPolicyHasBeenSet; }
-
-    /**
-     * <p>An Identity and Access Management policy statement that lists the query
-     * logging configurations that you want to share with another Amazon Web Services
-     * account and the operations that you want the account to be able to perform. You
-     * can specify the following operations in the <code>Actions</code> section of the
-     * statement:</p> <ul> <li> <p>
-     * <code>route53resolver:AssociateResolverQueryLogConfig</code> </p> </li> <li> <p>
-     * <code>route53resolver:DisassociateResolverQueryLogConfig</code> </p> </li> <li>
-     * <p> <code>route53resolver:ListResolverQueryLogConfigAssociations</code> </p>
-     * </li> <li> <p> <code>route53resolver:ListResolverQueryLogConfigs</code> </p>
-     * </li> </ul> <p>In the <code>Resource</code> section of the statement, you
-     * specify the ARNs for the query logging configurations that you want to share
-     * with the account that you specified in <code>Arn</code>. </p>
-     */
-    inline void SetResolverQueryLogConfigPolicy(const Aws::String& value) { m_resolverQueryLogConfigPolicyHasBeenSet = true; m_resolverQueryLogConfigPolicy = value; }
-
-    /**
-     * <p>An Identity and Access Management policy statement that lists the query
-     * logging configurations that you want to share with another Amazon Web Services
-     * account and the operations that you want the account to be able to perform. You
-     * can specify the following operations in the <code>Actions</code> section of the
-     * statement:</p> <ul> <li> <p>
-     * <code>route53resolver:AssociateResolverQueryLogConfig</code> </p> </li> <li> <p>
-     * <code>route53resolver:DisassociateResolverQueryLogConfig</code> </p> </li> <li>
-     * <p> <code>route53resolver:ListResolverQueryLogConfigAssociations</code> </p>
-     * </li> <li> <p> <code>route53resolver:ListResolverQueryLogConfigs</code> </p>
-     * </li> </ul> <p>In the <code>Resource</code> section of the statement, you
-     * specify the ARNs for the query logging configurations that you want to share
-     * with the account that you specified in <code>Arn</code>. </p>
-     */
-    inline void SetResolverQueryLogConfigPolicy(Aws::String&& value) { m_resolverQueryLogConfigPolicyHasBeenSet = true; m_resolverQueryLogConfigPolicy = std::move(value); }
-
-    /**
-     * <p>An Identity and Access Management policy statement that lists the query
-     * logging configurations that you want to share with another Amazon Web Services
-     * account and the operations that you want the account to be able to perform. You
-     * can specify the following operations in the <code>Actions</code> section of the
-     * statement:</p> <ul> <li> <p>
-     * <code>route53resolver:AssociateResolverQueryLogConfig</code> </p> </li> <li> <p>
-     * <code>route53resolver:DisassociateResolverQueryLogConfig</code> </p> </li> <li>
-     * <p> <code>route53resolver:ListResolverQueryLogConfigAssociations</code> </p>
-     * </li> <li> <p> <code>route53resolver:ListResolverQueryLogConfigs</code> </p>
-     * </li> </ul> <p>In the <code>Resource</code> section of the statement, you
-     * specify the ARNs for the query logging configurations that you want to share
-     * with the account that you specified in <code>Arn</code>. </p>
-     */
-    inline void SetResolverQueryLogConfigPolicy(const char* value) { m_resolverQueryLogConfigPolicyHasBeenSet = true; m_resolverQueryLogConfigPolicy.assign(value); }
-
-    /**
-     * <p>An Identity and Access Management policy statement that lists the query
-     * logging configurations that you want to share with another Amazon Web Services
-     * account and the operations that you want the account to be able to perform. You
-     * can specify the following operations in the <code>Actions</code> section of the
-     * statement:</p> <ul> <li> <p>
-     * <code>route53resolver:AssociateResolverQueryLogConfig</code> </p> </li> <li> <p>
-     * <code>route53resolver:DisassociateResolverQueryLogConfig</code> </p> </li> <li>
-     * <p> <code>route53resolver:ListResolverQueryLogConfigAssociations</code> </p>
-     * </li> <li> <p> <code>route53resolver:ListResolverQueryLogConfigs</code> </p>
-     * </li> </ul> <p>In the <code>Resource</code> section of the statement, you
-     * specify the ARNs for the query logging configurations that you want to share
-     * with the account that you specified in <code>Arn</code>. </p>
-     */
-    inline PutResolverQueryLogConfigPolicyRequest& WithResolverQueryLogConfigPolicy(const Aws::String& value) { SetResolverQueryLogConfigPolicy(value); return *this;}
-
-    /**
-     * <p>An Identity and Access Management policy statement that lists the query
-     * logging configurations that you want to share with another Amazon Web Services
-     * account and the operations that you want the account to be able to perform. You
-     * can specify the following operations in the <code>Actions</code> section of the
-     * statement:</p> <ul> <li> <p>
-     * <code>route53resolver:AssociateResolverQueryLogConfig</code> </p> </li> <li> <p>
-     * <code>route53resolver:DisassociateResolverQueryLogConfig</code> </p> </li> <li>
-     * <p> <code>route53resolver:ListResolverQueryLogConfigAssociations</code> </p>
-     * </li> <li> <p> <code>route53resolver:ListResolverQueryLogConfigs</code> </p>
-     * </li> </ul> <p>In the <code>Resource</code> section of the statement, you
-     * specify the ARNs for the query logging configurations that you want to share
-     * with the account that you specified in <code>Arn</code>. </p>
-     */
-    inline PutResolverQueryLogConfigPolicyRequest& WithResolverQueryLogConfigPolicy(Aws::String&& value) { SetResolverQueryLogConfigPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>An Identity and Access Management policy statement that lists the query
-     * logging configurations that you want to share with another Amazon Web Services
-     * account and the operations that you want the account to be able to perform. You
-     * can specify the following operations in the <code>Actions</code> section of the
-     * statement:</p> <ul> <li> <p>
-     * <code>route53resolver:AssociateResolverQueryLogConfig</code> </p> </li> <li> <p>
-     * <code>route53resolver:DisassociateResolverQueryLogConfig</code> </p> </li> <li>
-     * <p> <code>route53resolver:ListResolverQueryLogConfigAssociations</code> </p>
-     * </li> <li> <p> <code>route53resolver:ListResolverQueryLogConfigs</code> </p>
-     * </li> </ul> <p>In the <code>Resource</code> section of the statement, you
-     * specify the ARNs for the query logging configurations that you want to share
-     * with the account that you specified in <code>Arn</code>. </p>
-     */
-    inline PutResolverQueryLogConfigPolicyRequest& WithResolverQueryLogConfigPolicy(const char* value) { SetResolverQueryLogConfigPolicy(value); return *this;}
-
+    template<typename ResolverQueryLogConfigPolicyT = Aws::String>
+    void SetResolverQueryLogConfigPolicy(ResolverQueryLogConfigPolicyT&& value) { m_resolverQueryLogConfigPolicyHasBeenSet = true; m_resolverQueryLogConfigPolicy = std::forward<ResolverQueryLogConfigPolicyT>(value); }
+    template<typename ResolverQueryLogConfigPolicyT = Aws::String>
+    PutResolverQueryLogConfigPolicyRequest& WithResolverQueryLogConfigPolicy(ResolverQueryLogConfigPolicyT&& value) { SetResolverQueryLogConfigPolicy(std::forward<ResolverQueryLogConfigPolicyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;

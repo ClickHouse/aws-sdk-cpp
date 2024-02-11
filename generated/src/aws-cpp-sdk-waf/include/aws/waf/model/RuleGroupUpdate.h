@@ -42,55 +42,25 @@ namespace Model
   class RuleGroupUpdate
   {
   public:
-    AWS_WAF_API RuleGroupUpdate();
+    AWS_WAF_API RuleGroupUpdate() = default;
     AWS_WAF_API RuleGroupUpdate(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAF_API RuleGroupUpdate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAF_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specify <code>INSERT</code> to add an <code>ActivatedRule</code> to a
      * <code>RuleGroup</code>. Use <code>DELETE</code> to remove an
      * <code>ActivatedRule</code> from a <code>RuleGroup</code>.</p>
      */
-    inline const ChangeAction& GetAction() const{ return m_action; }
-
-    /**
-     * <p>Specify <code>INSERT</code> to add an <code>ActivatedRule</code> to a
-     * <code>RuleGroup</code>. Use <code>DELETE</code> to remove an
-     * <code>ActivatedRule</code> from a <code>RuleGroup</code>.</p>
-     */
+    inline ChangeAction GetAction() const { return m_action; }
     inline bool ActionHasBeenSet() const { return m_actionHasBeenSet; }
+    inline void SetAction(ChangeAction value) { m_actionHasBeenSet = true; m_action = value; }
+    inline RuleGroupUpdate& WithAction(ChangeAction value) { SetAction(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specify <code>INSERT</code> to add an <code>ActivatedRule</code> to a
-     * <code>RuleGroup</code>. Use <code>DELETE</code> to remove an
-     * <code>ActivatedRule</code> from a <code>RuleGroup</code>.</p>
-     */
-    inline void SetAction(const ChangeAction& value) { m_actionHasBeenSet = true; m_action = value; }
-
-    /**
-     * <p>Specify <code>INSERT</code> to add an <code>ActivatedRule</code> to a
-     * <code>RuleGroup</code>. Use <code>DELETE</code> to remove an
-     * <code>ActivatedRule</code> from a <code>RuleGroup</code>.</p>
-     */
-    inline void SetAction(ChangeAction&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
-
-    /**
-     * <p>Specify <code>INSERT</code> to add an <code>ActivatedRule</code> to a
-     * <code>RuleGroup</code>. Use <code>DELETE</code> to remove an
-     * <code>ActivatedRule</code> from a <code>RuleGroup</code>.</p>
-     */
-    inline RuleGroupUpdate& WithAction(const ChangeAction& value) { SetAction(value); return *this;}
-
-    /**
-     * <p>Specify <code>INSERT</code> to add an <code>ActivatedRule</code> to a
-     * <code>RuleGroup</code>. Use <code>DELETE</code> to remove an
-     * <code>ActivatedRule</code> from a <code>RuleGroup</code>.</p>
-     */
-    inline RuleGroupUpdate& WithAction(ChangeAction&& value) { SetAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The <code>ActivatedRule</code> object specifies a <code>Rule</code> that you
      * want to insert or delete, the priority of the <code>Rule</code> in the
@@ -98,56 +68,16 @@ namespace Model
      * request matches the <code>Rule</code> (<code>ALLOW</code>, <code>BLOCK</code>,
      * or <code>COUNT</code>).</p>
      */
-    inline const ActivatedRule& GetActivatedRule() const{ return m_activatedRule; }
-
-    /**
-     * <p>The <code>ActivatedRule</code> object specifies a <code>Rule</code> that you
-     * want to insert or delete, the priority of the <code>Rule</code> in the
-     * <code>WebACL</code>, and the action that you want AWS WAF to take when a web
-     * request matches the <code>Rule</code> (<code>ALLOW</code>, <code>BLOCK</code>,
-     * or <code>COUNT</code>).</p>
-     */
+    inline const ActivatedRule& GetActivatedRule() const { return m_activatedRule; }
     inline bool ActivatedRuleHasBeenSet() const { return m_activatedRuleHasBeenSet; }
-
-    /**
-     * <p>The <code>ActivatedRule</code> object specifies a <code>Rule</code> that you
-     * want to insert or delete, the priority of the <code>Rule</code> in the
-     * <code>WebACL</code>, and the action that you want AWS WAF to take when a web
-     * request matches the <code>Rule</code> (<code>ALLOW</code>, <code>BLOCK</code>,
-     * or <code>COUNT</code>).</p>
-     */
-    inline void SetActivatedRule(const ActivatedRule& value) { m_activatedRuleHasBeenSet = true; m_activatedRule = value; }
-
-    /**
-     * <p>The <code>ActivatedRule</code> object specifies a <code>Rule</code> that you
-     * want to insert or delete, the priority of the <code>Rule</code> in the
-     * <code>WebACL</code>, and the action that you want AWS WAF to take when a web
-     * request matches the <code>Rule</code> (<code>ALLOW</code>, <code>BLOCK</code>,
-     * or <code>COUNT</code>).</p>
-     */
-    inline void SetActivatedRule(ActivatedRule&& value) { m_activatedRuleHasBeenSet = true; m_activatedRule = std::move(value); }
-
-    /**
-     * <p>The <code>ActivatedRule</code> object specifies a <code>Rule</code> that you
-     * want to insert or delete, the priority of the <code>Rule</code> in the
-     * <code>WebACL</code>, and the action that you want AWS WAF to take when a web
-     * request matches the <code>Rule</code> (<code>ALLOW</code>, <code>BLOCK</code>,
-     * or <code>COUNT</code>).</p>
-     */
-    inline RuleGroupUpdate& WithActivatedRule(const ActivatedRule& value) { SetActivatedRule(value); return *this;}
-
-    /**
-     * <p>The <code>ActivatedRule</code> object specifies a <code>Rule</code> that you
-     * want to insert or delete, the priority of the <code>Rule</code> in the
-     * <code>WebACL</code>, and the action that you want AWS WAF to take when a web
-     * request matches the <code>Rule</code> (<code>ALLOW</code>, <code>BLOCK</code>,
-     * or <code>COUNT</code>).</p>
-     */
-    inline RuleGroupUpdate& WithActivatedRule(ActivatedRule&& value) { SetActivatedRule(std::move(value)); return *this;}
-
+    template<typename ActivatedRuleT = ActivatedRule>
+    void SetActivatedRule(ActivatedRuleT&& value) { m_activatedRuleHasBeenSet = true; m_activatedRule = std::forward<ActivatedRuleT>(value); }
+    template<typename ActivatedRuleT = ActivatedRule>
+    RuleGroupUpdate& WithActivatedRule(ActivatedRuleT&& value) { SetActivatedRule(std::forward<ActivatedRuleT>(value)); return *this;}
+    ///@}
   private:
 
-    ChangeAction m_action;
+    ChangeAction m_action{ChangeAction::NOT_SET};
     bool m_actionHasBeenSet = false;
 
     ActivatedRule m_activatedRule;

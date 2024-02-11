@@ -18,21 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-RefreshFrequency::RefreshFrequency() : 
-    m_interval(RefreshInterval::NOT_SET),
-    m_intervalHasBeenSet(false),
-    m_refreshOnDayHasBeenSet(false),
-    m_timezoneHasBeenSet(false),
-    m_timeOfTheDayHasBeenSet(false)
-{
-}
-
-RefreshFrequency::RefreshFrequency(JsonView jsonValue) : 
-    m_interval(RefreshInterval::NOT_SET),
-    m_intervalHasBeenSet(false),
-    m_refreshOnDayHasBeenSet(false),
-    m_timezoneHasBeenSet(false),
-    m_timeOfTheDayHasBeenSet(false)
+RefreshFrequency::RefreshFrequency(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ RefreshFrequency& RefreshFrequency::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Interval"))
   {
     m_interval = RefreshIntervalMapper::GetRefreshIntervalForName(jsonValue.GetString("Interval"));
-
     m_intervalHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RefreshOnDay"))
   {
     m_refreshOnDay = jsonValue.GetObject("RefreshOnDay");
-
     m_refreshOnDayHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Timezone"))
   {
     m_timezone = jsonValue.GetString("Timezone");
-
     m_timezoneHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TimeOfTheDay"))
   {
     m_timeOfTheDay = jsonValue.GetString("TimeOfTheDay");
-
     m_timeOfTheDayHasBeenSet = true;
   }
-
   return *this;
 }
 

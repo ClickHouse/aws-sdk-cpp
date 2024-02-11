@@ -21,7 +21,7 @@ namespace Model
   class GetRouteAnalysisRequest : public NetworkManagerRequest
   {
   public:
-    AWS_NETWORKMANAGER_API GetRouteAnalysisRequest();
+    AWS_NETWORKMANAGER_API GetRouteAnalysisRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_NETWORKMANAGER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the global network.</p>
      */
-    inline const Aws::String& GetGlobalNetworkId() const{ return m_globalNetworkId; }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
+    inline const Aws::String& GetGlobalNetworkId() const { return m_globalNetworkId; }
     inline bool GlobalNetworkIdHasBeenSet() const { return m_globalNetworkIdHasBeenSet; }
+    template<typename GlobalNetworkIdT = Aws::String>
+    void SetGlobalNetworkId(GlobalNetworkIdT&& value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId = std::forward<GlobalNetworkIdT>(value); }
+    template<typename GlobalNetworkIdT = Aws::String>
+    GetRouteAnalysisRequest& WithGlobalNetworkId(GlobalNetworkIdT&& value) { SetGlobalNetworkId(std::forward<GlobalNetworkIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline void SetGlobalNetworkId(const Aws::String& value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId = value; }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline void SetGlobalNetworkId(Aws::String&& value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId = std::move(value); }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline void SetGlobalNetworkId(const char* value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId.assign(value); }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline GetRouteAnalysisRequest& WithGlobalNetworkId(const Aws::String& value) { SetGlobalNetworkId(value); return *this;}
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline GetRouteAnalysisRequest& WithGlobalNetworkId(Aws::String&& value) { SetGlobalNetworkId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline GetRouteAnalysisRequest& WithGlobalNetworkId(const char* value) { SetGlobalNetworkId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the route analysis.</p>
      */
-    inline const Aws::String& GetRouteAnalysisId() const{ return m_routeAnalysisId; }
-
-    /**
-     * <p>The ID of the route analysis.</p>
-     */
+    inline const Aws::String& GetRouteAnalysisId() const { return m_routeAnalysisId; }
     inline bool RouteAnalysisIdHasBeenSet() const { return m_routeAnalysisIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the route analysis.</p>
-     */
-    inline void SetRouteAnalysisId(const Aws::String& value) { m_routeAnalysisIdHasBeenSet = true; m_routeAnalysisId = value; }
-
-    /**
-     * <p>The ID of the route analysis.</p>
-     */
-    inline void SetRouteAnalysisId(Aws::String&& value) { m_routeAnalysisIdHasBeenSet = true; m_routeAnalysisId = std::move(value); }
-
-    /**
-     * <p>The ID of the route analysis.</p>
-     */
-    inline void SetRouteAnalysisId(const char* value) { m_routeAnalysisIdHasBeenSet = true; m_routeAnalysisId.assign(value); }
-
-    /**
-     * <p>The ID of the route analysis.</p>
-     */
-    inline GetRouteAnalysisRequest& WithRouteAnalysisId(const Aws::String& value) { SetRouteAnalysisId(value); return *this;}
-
-    /**
-     * <p>The ID of the route analysis.</p>
-     */
-    inline GetRouteAnalysisRequest& WithRouteAnalysisId(Aws::String&& value) { SetRouteAnalysisId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the route analysis.</p>
-     */
-    inline GetRouteAnalysisRequest& WithRouteAnalysisId(const char* value) { SetRouteAnalysisId(value); return *this;}
-
+    template<typename RouteAnalysisIdT = Aws::String>
+    void SetRouteAnalysisId(RouteAnalysisIdT&& value) { m_routeAnalysisIdHasBeenSet = true; m_routeAnalysisId = std::forward<RouteAnalysisIdT>(value); }
+    template<typename RouteAnalysisIdT = Aws::String>
+    GetRouteAnalysisRequest& WithRouteAnalysisId(RouteAnalysisIdT&& value) { SetRouteAnalysisId(std::forward<RouteAnalysisIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_globalNetworkId;

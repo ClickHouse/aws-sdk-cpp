@@ -28,40 +28,26 @@ namespace Model
   class JobTimers
   {
   public:
-    AWS_S3CONTROL_API JobTimers();
+    AWS_S3CONTROL_API JobTimers() = default;
     AWS_S3CONTROL_API JobTimers(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API JobTimers& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Indicates the elapsed time in seconds the job has been in the Active job
      * state.</p>
      */
-    inline long long GetElapsedTimeInActiveSeconds() const{ return m_elapsedTimeInActiveSeconds; }
-
-    /**
-     * <p>Indicates the elapsed time in seconds the job has been in the Active job
-     * state.</p>
-     */
+    inline long long GetElapsedTimeInActiveSeconds() const { return m_elapsedTimeInActiveSeconds; }
     inline bool ElapsedTimeInActiveSecondsHasBeenSet() const { return m_elapsedTimeInActiveSecondsHasBeenSet; }
-
-    /**
-     * <p>Indicates the elapsed time in seconds the job has been in the Active job
-     * state.</p>
-     */
     inline void SetElapsedTimeInActiveSeconds(long long value) { m_elapsedTimeInActiveSecondsHasBeenSet = true; m_elapsedTimeInActiveSeconds = value; }
-
-    /**
-     * <p>Indicates the elapsed time in seconds the job has been in the Active job
-     * state.</p>
-     */
     inline JobTimers& WithElapsedTimeInActiveSeconds(long long value) { SetElapsedTimeInActiveSeconds(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_elapsedTimeInActiveSeconds;
+    long long m_elapsedTimeInActiveSeconds{0};
     bool m_elapsedTimeInActiveSecondsHasBeenSet = false;
   };
 

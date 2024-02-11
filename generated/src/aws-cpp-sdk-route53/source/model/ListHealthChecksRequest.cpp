@@ -6,6 +6,7 @@
 #include <aws/route53/model/ListHealthChecksRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,11 +17,6 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListHealthChecksRequest::ListHealthChecksRequest() : 
-    m_markerHasBeenSet(false),
-    m_maxItemsHasBeenSet(false)
-{
-}
 
 Aws::String ListHealthChecksRequest::SerializePayload() const
 {

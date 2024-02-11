@@ -25,7 +25,7 @@ namespace Model
   class UpdateThingRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API UpdateThingRequest();
+    AWS_IOT_API UpdateThingRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,204 +36,69 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the thing to update.</p> <p>You can't change a thing's name. To
      * change a thing's name, you must create a new thing, give it the new name, and
      * then delete the old thing.</p>
      */
-    inline const Aws::String& GetThingName() const{ return m_thingName; }
-
-    /**
-     * <p>The name of the thing to update.</p> <p>You can't change a thing's name. To
-     * change a thing's name, you must create a new thing, give it the new name, and
-     * then delete the old thing.</p>
-     */
+    inline const Aws::String& GetThingName() const { return m_thingName; }
     inline bool ThingNameHasBeenSet() const { return m_thingNameHasBeenSet; }
+    template<typename ThingNameT = Aws::String>
+    void SetThingName(ThingNameT&& value) { m_thingNameHasBeenSet = true; m_thingName = std::forward<ThingNameT>(value); }
+    template<typename ThingNameT = Aws::String>
+    UpdateThingRequest& WithThingName(ThingNameT&& value) { SetThingName(std::forward<ThingNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the thing to update.</p> <p>You can't change a thing's name. To
-     * change a thing's name, you must create a new thing, give it the new name, and
-     * then delete the old thing.</p>
-     */
-    inline void SetThingName(const Aws::String& value) { m_thingNameHasBeenSet = true; m_thingName = value; }
-
-    /**
-     * <p>The name of the thing to update.</p> <p>You can't change a thing's name. To
-     * change a thing's name, you must create a new thing, give it the new name, and
-     * then delete the old thing.</p>
-     */
-    inline void SetThingName(Aws::String&& value) { m_thingNameHasBeenSet = true; m_thingName = std::move(value); }
-
-    /**
-     * <p>The name of the thing to update.</p> <p>You can't change a thing's name. To
-     * change a thing's name, you must create a new thing, give it the new name, and
-     * then delete the old thing.</p>
-     */
-    inline void SetThingName(const char* value) { m_thingNameHasBeenSet = true; m_thingName.assign(value); }
-
-    /**
-     * <p>The name of the thing to update.</p> <p>You can't change a thing's name. To
-     * change a thing's name, you must create a new thing, give it the new name, and
-     * then delete the old thing.</p>
-     */
-    inline UpdateThingRequest& WithThingName(const Aws::String& value) { SetThingName(value); return *this;}
-
-    /**
-     * <p>The name of the thing to update.</p> <p>You can't change a thing's name. To
-     * change a thing's name, you must create a new thing, give it the new name, and
-     * then delete the old thing.</p>
-     */
-    inline UpdateThingRequest& WithThingName(Aws::String&& value) { SetThingName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the thing to update.</p> <p>You can't change a thing's name. To
-     * change a thing's name, you must create a new thing, give it the new name, and
-     * then delete the old thing.</p>
-     */
-    inline UpdateThingRequest& WithThingName(const char* value) { SetThingName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the thing type.</p>
      */
-    inline const Aws::String& GetThingTypeName() const{ return m_thingTypeName; }
-
-    /**
-     * <p>The name of the thing type.</p>
-     */
+    inline const Aws::String& GetThingTypeName() const { return m_thingTypeName; }
     inline bool ThingTypeNameHasBeenSet() const { return m_thingTypeNameHasBeenSet; }
+    template<typename ThingTypeNameT = Aws::String>
+    void SetThingTypeName(ThingTypeNameT&& value) { m_thingTypeNameHasBeenSet = true; m_thingTypeName = std::forward<ThingTypeNameT>(value); }
+    template<typename ThingTypeNameT = Aws::String>
+    UpdateThingRequest& WithThingTypeName(ThingTypeNameT&& value) { SetThingTypeName(std::forward<ThingTypeNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the thing type.</p>
-     */
-    inline void SetThingTypeName(const Aws::String& value) { m_thingTypeNameHasBeenSet = true; m_thingTypeName = value; }
-
-    /**
-     * <p>The name of the thing type.</p>
-     */
-    inline void SetThingTypeName(Aws::String&& value) { m_thingTypeNameHasBeenSet = true; m_thingTypeName = std::move(value); }
-
-    /**
-     * <p>The name of the thing type.</p>
-     */
-    inline void SetThingTypeName(const char* value) { m_thingTypeNameHasBeenSet = true; m_thingTypeName.assign(value); }
-
-    /**
-     * <p>The name of the thing type.</p>
-     */
-    inline UpdateThingRequest& WithThingTypeName(const Aws::String& value) { SetThingTypeName(value); return *this;}
-
-    /**
-     * <p>The name of the thing type.</p>
-     */
-    inline UpdateThingRequest& WithThingTypeName(Aws::String&& value) { SetThingTypeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the thing type.</p>
-     */
-    inline UpdateThingRequest& WithThingTypeName(const char* value) { SetThingTypeName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of thing attributes, a JSON string containing name-value pairs. For
      * example:</p> <p> <code>{\"attributes\":{\"name1\":\"value2\"}}</code> </p>
      * <p>This data is used to add new attributes or update existing attributes.</p>
      */
-    inline const AttributePayload& GetAttributePayload() const{ return m_attributePayload; }
-
-    /**
-     * <p>A list of thing attributes, a JSON string containing name-value pairs. For
-     * example:</p> <p> <code>{\"attributes\":{\"name1\":\"value2\"}}</code> </p>
-     * <p>This data is used to add new attributes or update existing attributes.</p>
-     */
+    inline const AttributePayload& GetAttributePayload() const { return m_attributePayload; }
     inline bool AttributePayloadHasBeenSet() const { return m_attributePayloadHasBeenSet; }
+    template<typename AttributePayloadT = AttributePayload>
+    void SetAttributePayload(AttributePayloadT&& value) { m_attributePayloadHasBeenSet = true; m_attributePayload = std::forward<AttributePayloadT>(value); }
+    template<typename AttributePayloadT = AttributePayload>
+    UpdateThingRequest& WithAttributePayload(AttributePayloadT&& value) { SetAttributePayload(std::forward<AttributePayloadT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A list of thing attributes, a JSON string containing name-value pairs. For
-     * example:</p> <p> <code>{\"attributes\":{\"name1\":\"value2\"}}</code> </p>
-     * <p>This data is used to add new attributes or update existing attributes.</p>
-     */
-    inline void SetAttributePayload(const AttributePayload& value) { m_attributePayloadHasBeenSet = true; m_attributePayload = value; }
-
-    /**
-     * <p>A list of thing attributes, a JSON string containing name-value pairs. For
-     * example:</p> <p> <code>{\"attributes\":{\"name1\":\"value2\"}}</code> </p>
-     * <p>This data is used to add new attributes or update existing attributes.</p>
-     */
-    inline void SetAttributePayload(AttributePayload&& value) { m_attributePayloadHasBeenSet = true; m_attributePayload = std::move(value); }
-
-    /**
-     * <p>A list of thing attributes, a JSON string containing name-value pairs. For
-     * example:</p> <p> <code>{\"attributes\":{\"name1\":\"value2\"}}</code> </p>
-     * <p>This data is used to add new attributes or update existing attributes.</p>
-     */
-    inline UpdateThingRequest& WithAttributePayload(const AttributePayload& value) { SetAttributePayload(value); return *this;}
-
-    /**
-     * <p>A list of thing attributes, a JSON string containing name-value pairs. For
-     * example:</p> <p> <code>{\"attributes\":{\"name1\":\"value2\"}}</code> </p>
-     * <p>This data is used to add new attributes or update existing attributes.</p>
-     */
-    inline UpdateThingRequest& WithAttributePayload(AttributePayload&& value) { SetAttributePayload(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The expected version of the thing record in the registry. If the version of
      * the record in the registry does not match the expected version specified in the
      * request, the <code>UpdateThing</code> request is rejected with a
      * <code>VersionConflictException</code>.</p>
      */
-    inline long long GetExpectedVersion() const{ return m_expectedVersion; }
-
-    /**
-     * <p>The expected version of the thing record in the registry. If the version of
-     * the record in the registry does not match the expected version specified in the
-     * request, the <code>UpdateThing</code> request is rejected with a
-     * <code>VersionConflictException</code>.</p>
-     */
+    inline long long GetExpectedVersion() const { return m_expectedVersion; }
     inline bool ExpectedVersionHasBeenSet() const { return m_expectedVersionHasBeenSet; }
-
-    /**
-     * <p>The expected version of the thing record in the registry. If the version of
-     * the record in the registry does not match the expected version specified in the
-     * request, the <code>UpdateThing</code> request is rejected with a
-     * <code>VersionConflictException</code>.</p>
-     */
     inline void SetExpectedVersion(long long value) { m_expectedVersionHasBeenSet = true; m_expectedVersion = value; }
-
-    /**
-     * <p>The expected version of the thing record in the registry. If the version of
-     * the record in the registry does not match the expected version specified in the
-     * request, the <code>UpdateThing</code> request is rejected with a
-     * <code>VersionConflictException</code>.</p>
-     */
     inline UpdateThingRequest& WithExpectedVersion(long long value) { SetExpectedVersion(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Remove a thing type association. If <b>true</b>, the association is
      * removed.</p>
      */
-    inline bool GetRemoveThingType() const{ return m_removeThingType; }
-
-    /**
-     * <p>Remove a thing type association. If <b>true</b>, the association is
-     * removed.</p>
-     */
+    inline bool GetRemoveThingType() const { return m_removeThingType; }
     inline bool RemoveThingTypeHasBeenSet() const { return m_removeThingTypeHasBeenSet; }
-
-    /**
-     * <p>Remove a thing type association. If <b>true</b>, the association is
-     * removed.</p>
-     */
     inline void SetRemoveThingType(bool value) { m_removeThingTypeHasBeenSet = true; m_removeThingType = value; }
-
-    /**
-     * <p>Remove a thing type association. If <b>true</b>, the association is
-     * removed.</p>
-     */
     inline UpdateThingRequest& WithRemoveThingType(bool value) { SetRemoveThingType(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_thingName;
@@ -245,10 +110,10 @@ namespace Model
     AttributePayload m_attributePayload;
     bool m_attributePayloadHasBeenSet = false;
 
-    long long m_expectedVersion;
+    long long m_expectedVersion{0};
     bool m_expectedVersionHasBeenSet = false;
 
-    bool m_removeThingType;
+    bool m_removeThingType{false};
     bool m_removeThingTypeHasBeenSet = false;
   };
 

@@ -31,134 +31,47 @@ namespace Model
   class FileValidationMessage
   {
   public:
-    AWS_FRAUDDETECTOR_API FileValidationMessage();
+    AWS_FRAUDDETECTOR_API FileValidationMessage() = default;
     AWS_FRAUDDETECTOR_API FileValidationMessage(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API FileValidationMessage& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The message title.</p>
      */
-    inline const Aws::String& GetTitle() const{ return m_title; }
-
-    /**
-     * <p>The message title.</p>
-     */
+    inline const Aws::String& GetTitle() const { return m_title; }
     inline bool TitleHasBeenSet() const { return m_titleHasBeenSet; }
+    template<typename TitleT = Aws::String>
+    void SetTitle(TitleT&& value) { m_titleHasBeenSet = true; m_title = std::forward<TitleT>(value); }
+    template<typename TitleT = Aws::String>
+    FileValidationMessage& WithTitle(TitleT&& value) { SetTitle(std::forward<TitleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The message title.</p>
-     */
-    inline void SetTitle(const Aws::String& value) { m_titleHasBeenSet = true; m_title = value; }
-
-    /**
-     * <p>The message title.</p>
-     */
-    inline void SetTitle(Aws::String&& value) { m_titleHasBeenSet = true; m_title = std::move(value); }
-
-    /**
-     * <p>The message title.</p>
-     */
-    inline void SetTitle(const char* value) { m_titleHasBeenSet = true; m_title.assign(value); }
-
-    /**
-     * <p>The message title.</p>
-     */
-    inline FileValidationMessage& WithTitle(const Aws::String& value) { SetTitle(value); return *this;}
-
-    /**
-     * <p>The message title.</p>
-     */
-    inline FileValidationMessage& WithTitle(Aws::String&& value) { SetTitle(std::move(value)); return *this;}
-
-    /**
-     * <p>The message title.</p>
-     */
-    inline FileValidationMessage& WithTitle(const char* value) { SetTitle(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The message content.</p>
      */
-    inline const Aws::String& GetContent() const{ return m_content; }
-
-    /**
-     * <p>The message content.</p>
-     */
+    inline const Aws::String& GetContent() const { return m_content; }
     inline bool ContentHasBeenSet() const { return m_contentHasBeenSet; }
+    template<typename ContentT = Aws::String>
+    void SetContent(ContentT&& value) { m_contentHasBeenSet = true; m_content = std::forward<ContentT>(value); }
+    template<typename ContentT = Aws::String>
+    FileValidationMessage& WithContent(ContentT&& value) { SetContent(std::forward<ContentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The message content.</p>
-     */
-    inline void SetContent(const Aws::String& value) { m_contentHasBeenSet = true; m_content = value; }
-
-    /**
-     * <p>The message content.</p>
-     */
-    inline void SetContent(Aws::String&& value) { m_contentHasBeenSet = true; m_content = std::move(value); }
-
-    /**
-     * <p>The message content.</p>
-     */
-    inline void SetContent(const char* value) { m_contentHasBeenSet = true; m_content.assign(value); }
-
-    /**
-     * <p>The message content.</p>
-     */
-    inline FileValidationMessage& WithContent(const Aws::String& value) { SetContent(value); return *this;}
-
-    /**
-     * <p>The message content.</p>
-     */
-    inline FileValidationMessage& WithContent(Aws::String&& value) { SetContent(std::move(value)); return *this;}
-
-    /**
-     * <p>The message content.</p>
-     */
-    inline FileValidationMessage& WithContent(const char* value) { SetContent(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The message type.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The message type.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The message type.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The message type.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The message type.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The message type.</p>
-     */
-    inline FileValidationMessage& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The message type.</p>
-     */
-    inline FileValidationMessage& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The message type.</p>
-     */
-    inline FileValidationMessage& WithType(const char* value) { SetType(value); return *this;}
-
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    FileValidationMessage& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_title;

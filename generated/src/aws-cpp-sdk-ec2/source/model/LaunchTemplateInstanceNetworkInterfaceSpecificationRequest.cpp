@@ -20,67 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LaunchTemplateInstanceNetworkInterfaceSpecificationRequest::LaunchTemplateInstanceNetworkInterfaceSpecificationRequest() : 
-    m_associateCarrierIpAddress(false),
-    m_associateCarrierIpAddressHasBeenSet(false),
-    m_associatePublicIpAddress(false),
-    m_associatePublicIpAddressHasBeenSet(false),
-    m_deleteOnTermination(false),
-    m_deleteOnTerminationHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_deviceIndex(0),
-    m_deviceIndexHasBeenSet(false),
-    m_groupsHasBeenSet(false),
-    m_interfaceTypeHasBeenSet(false),
-    m_ipv6AddressCount(0),
-    m_ipv6AddressCountHasBeenSet(false),
-    m_ipv6AddressesHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false),
-    m_privateIpAddressHasBeenSet(false),
-    m_privateIpAddressesHasBeenSet(false),
-    m_secondaryPrivateIpAddressCount(0),
-    m_secondaryPrivateIpAddressCountHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_networkCardIndex(0),
-    m_networkCardIndexHasBeenSet(false),
-    m_ipv4PrefixesHasBeenSet(false),
-    m_ipv4PrefixCount(0),
-    m_ipv4PrefixCountHasBeenSet(false),
-    m_ipv6PrefixesHasBeenSet(false),
-    m_ipv6PrefixCount(0),
-    m_ipv6PrefixCountHasBeenSet(false)
-{
-}
-
-LaunchTemplateInstanceNetworkInterfaceSpecificationRequest::LaunchTemplateInstanceNetworkInterfaceSpecificationRequest(const XmlNode& xmlNode) : 
-    m_associateCarrierIpAddress(false),
-    m_associateCarrierIpAddressHasBeenSet(false),
-    m_associatePublicIpAddress(false),
-    m_associatePublicIpAddressHasBeenSet(false),
-    m_deleteOnTermination(false),
-    m_deleteOnTerminationHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_deviceIndex(0),
-    m_deviceIndexHasBeenSet(false),
-    m_groupsHasBeenSet(false),
-    m_interfaceTypeHasBeenSet(false),
-    m_ipv6AddressCount(0),
-    m_ipv6AddressCountHasBeenSet(false),
-    m_ipv6AddressesHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false),
-    m_privateIpAddressHasBeenSet(false),
-    m_privateIpAddressesHasBeenSet(false),
-    m_secondaryPrivateIpAddressCount(0),
-    m_secondaryPrivateIpAddressCountHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_networkCardIndex(0),
-    m_networkCardIndexHasBeenSet(false),
-    m_ipv4PrefixesHasBeenSet(false),
-    m_ipv4PrefixCount(0),
-    m_ipv4PrefixCountHasBeenSet(false),
-    m_ipv6PrefixesHasBeenSet(false),
-    m_ipv6PrefixCount(0),
-    m_ipv6PrefixCountHasBeenSet(false)
+LaunchTemplateInstanceNetworkInterfaceSpecificationRequest::LaunchTemplateInstanceNetworkInterfaceSpecificationRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -125,6 +65,7 @@ LaunchTemplateInstanceNetworkInterfaceSpecificationRequest& LaunchTemplateInstan
     if(!groupsNode.IsNull())
     {
       XmlNode groupsMember = groupsNode.FirstChild("SecurityGroupId");
+      m_groupsHasBeenSet = !groupsMember.IsNull();
       while(!groupsMember.IsNull())
       {
         m_groups.push_back(groupsMember.GetText());
@@ -149,6 +90,7 @@ LaunchTemplateInstanceNetworkInterfaceSpecificationRequest& LaunchTemplateInstan
     if(!ipv6AddressesNode.IsNull())
     {
       XmlNode ipv6AddressesMember = ipv6AddressesNode.FirstChild("InstanceIpv6Address");
+      m_ipv6AddressesHasBeenSet = !ipv6AddressesMember.IsNull();
       while(!ipv6AddressesMember.IsNull())
       {
         m_ipv6Addresses.push_back(ipv6AddressesMember);
@@ -173,6 +115,7 @@ LaunchTemplateInstanceNetworkInterfaceSpecificationRequest& LaunchTemplateInstan
     if(!privateIpAddressesNode.IsNull())
     {
       XmlNode privateIpAddressesMember = privateIpAddressesNode.FirstChild("item");
+      m_privateIpAddressesHasBeenSet = !privateIpAddressesMember.IsNull();
       while(!privateIpAddressesMember.IsNull())
       {
         m_privateIpAddresses.push_back(privateIpAddressesMember);
@@ -203,6 +146,7 @@ LaunchTemplateInstanceNetworkInterfaceSpecificationRequest& LaunchTemplateInstan
     if(!ipv4PrefixesNode.IsNull())
     {
       XmlNode ipv4PrefixesMember = ipv4PrefixesNode.FirstChild("item");
+      m_ipv4PrefixesHasBeenSet = !ipv4PrefixesMember.IsNull();
       while(!ipv4PrefixesMember.IsNull())
       {
         m_ipv4Prefixes.push_back(ipv4PrefixesMember);
@@ -221,6 +165,7 @@ LaunchTemplateInstanceNetworkInterfaceSpecificationRequest& LaunchTemplateInstan
     if(!ipv6PrefixesNode.IsNull())
     {
       XmlNode ipv6PrefixesMember = ipv6PrefixesNode.FirstChild("item");
+      m_ipv6PrefixesHasBeenSet = !ipv6PrefixesMember.IsNull();
       while(!ipv6PrefixesMember.IsNull())
       {
         m_ipv6Prefixes.push_back(ipv6PrefixesMember);
@@ -234,6 +179,30 @@ LaunchTemplateInstanceNetworkInterfaceSpecificationRequest& LaunchTemplateInstan
     {
       m_ipv6PrefixCount = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(ipv6PrefixCountNode.GetText()).c_str()).c_str());
       m_ipv6PrefixCountHasBeenSet = true;
+    }
+    XmlNode primaryIpv6Node = resultNode.FirstChild("PrimaryIpv6");
+    if(!primaryIpv6Node.IsNull())
+    {
+      m_primaryIpv6 = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(primaryIpv6Node.GetText()).c_str()).c_str());
+      m_primaryIpv6HasBeenSet = true;
+    }
+    XmlNode enaSrdSpecificationNode = resultNode.FirstChild("EnaSrdSpecification");
+    if(!enaSrdSpecificationNode.IsNull())
+    {
+      m_enaSrdSpecification = enaSrdSpecificationNode;
+      m_enaSrdSpecificationHasBeenSet = true;
+    }
+    XmlNode connectionTrackingSpecificationNode = resultNode.FirstChild("ConnectionTrackingSpecification");
+    if(!connectionTrackingSpecificationNode.IsNull())
+    {
+      m_connectionTrackingSpecification = connectionTrackingSpecificationNode;
+      m_connectionTrackingSpecificationHasBeenSet = true;
+    }
+    XmlNode enaQueueCountNode = resultNode.FirstChild("EnaQueueCount");
+    if(!enaQueueCountNode.IsNull())
+    {
+      m_enaQueueCount = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(enaQueueCountNode.GetText()).c_str()).c_str());
+      m_enaQueueCountHasBeenSet = true;
     }
   }
 
@@ -365,6 +334,30 @@ void LaunchTemplateInstanceNetworkInterfaceSpecificationRequest::OutputToStream(
       oStream << location << index << locationValue << ".Ipv6PrefixCount=" << m_ipv6PrefixCount << "&";
   }
 
+  if(m_primaryIpv6HasBeenSet)
+  {
+      oStream << location << index << locationValue << ".PrimaryIpv6=" << std::boolalpha << m_primaryIpv6 << "&";
+  }
+
+  if(m_enaSrdSpecificationHasBeenSet)
+  {
+      Aws::StringStream enaSrdSpecificationLocationAndMemberSs;
+      enaSrdSpecificationLocationAndMemberSs << location << index << locationValue << ".EnaSrdSpecification";
+      m_enaSrdSpecification.OutputToStream(oStream, enaSrdSpecificationLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_connectionTrackingSpecificationHasBeenSet)
+  {
+      Aws::StringStream connectionTrackingSpecificationLocationAndMemberSs;
+      connectionTrackingSpecificationLocationAndMemberSs << location << index << locationValue << ".ConnectionTrackingSpecification";
+      m_connectionTrackingSpecification.OutputToStream(oStream, connectionTrackingSpecificationLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_enaQueueCountHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".EnaQueueCount=" << m_enaQueueCount << "&";
+  }
+
 }
 
 void LaunchTemplateInstanceNetworkInterfaceSpecificationRequest::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -411,7 +404,7 @@ void LaunchTemplateInstanceNetworkInterfaceSpecificationRequest::OutputToStream(
       for(auto& item : m_ipv6Addresses)
       {
         Aws::StringStream ipv6AddressesSs;
-        ipv6AddressesSs << location <<  ".InstanceIpv6Address." << ipv6AddressesIdx++;
+        ipv6AddressesSs << location << ".Ipv6Addresses." << ipv6AddressesIdx++;
         item.OutputToStream(oStream, ipv6AddressesSs.str().c_str());
       }
   }
@@ -429,7 +422,7 @@ void LaunchTemplateInstanceNetworkInterfaceSpecificationRequest::OutputToStream(
       for(auto& item : m_privateIpAddresses)
       {
         Aws::StringStream privateIpAddressesSs;
-        privateIpAddressesSs << location <<  ".Item." << privateIpAddressesIdx++;
+        privateIpAddressesSs << location << ".PrivateIpAddresses." << privateIpAddressesIdx++;
         item.OutputToStream(oStream, privateIpAddressesSs.str().c_str());
       }
   }
@@ -451,7 +444,7 @@ void LaunchTemplateInstanceNetworkInterfaceSpecificationRequest::OutputToStream(
       for(auto& item : m_ipv4Prefixes)
       {
         Aws::StringStream ipv4PrefixesSs;
-        ipv4PrefixesSs << location <<  ".Ipv4Prefix." << ipv4PrefixesIdx++;
+        ipv4PrefixesSs << location << ".Ipv4Prefix." << ipv4PrefixesIdx++;
         item.OutputToStream(oStream, ipv4PrefixesSs.str().c_str());
       }
   }
@@ -465,13 +458,33 @@ void LaunchTemplateInstanceNetworkInterfaceSpecificationRequest::OutputToStream(
       for(auto& item : m_ipv6Prefixes)
       {
         Aws::StringStream ipv6PrefixesSs;
-        ipv6PrefixesSs << location <<  ".Ipv6Prefix." << ipv6PrefixesIdx++;
+        ipv6PrefixesSs << location << ".Ipv6Prefix." << ipv6PrefixesIdx++;
         item.OutputToStream(oStream, ipv6PrefixesSs.str().c_str());
       }
   }
   if(m_ipv6PrefixCountHasBeenSet)
   {
       oStream << location << ".Ipv6PrefixCount=" << m_ipv6PrefixCount << "&";
+  }
+  if(m_primaryIpv6HasBeenSet)
+  {
+      oStream << location << ".PrimaryIpv6=" << std::boolalpha << m_primaryIpv6 << "&";
+  }
+  if(m_enaSrdSpecificationHasBeenSet)
+  {
+      Aws::String enaSrdSpecificationLocationAndMember(location);
+      enaSrdSpecificationLocationAndMember += ".EnaSrdSpecification";
+      m_enaSrdSpecification.OutputToStream(oStream, enaSrdSpecificationLocationAndMember.c_str());
+  }
+  if(m_connectionTrackingSpecificationHasBeenSet)
+  {
+      Aws::String connectionTrackingSpecificationLocationAndMember(location);
+      connectionTrackingSpecificationLocationAndMember += ".ConnectionTrackingSpecification";
+      m_connectionTrackingSpecification.OutputToStream(oStream, connectionTrackingSpecificationLocationAndMember.c_str());
+  }
+  if(m_enaQueueCountHasBeenSet)
+  {
+      oStream << location << ".EnaQueueCount=" << m_enaQueueCount << "&";
   }
 }
 

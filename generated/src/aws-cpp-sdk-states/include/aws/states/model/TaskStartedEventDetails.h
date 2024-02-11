@@ -32,93 +32,35 @@ namespace Model
   class TaskStartedEventDetails
   {
   public:
-    AWS_SFN_API TaskStartedEventDetails();
+    AWS_SFN_API TaskStartedEventDetails() = default;
     AWS_SFN_API TaskStartedEventDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SFN_API TaskStartedEventDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SFN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The service name of the resource in a task state.</p>
      */
-    inline const Aws::String& GetResourceType() const{ return m_resourceType; }
-
-    /**
-     * <p>The service name of the resource in a task state.</p>
-     */
+    inline const Aws::String& GetResourceType() const { return m_resourceType; }
     inline bool ResourceTypeHasBeenSet() const { return m_resourceTypeHasBeenSet; }
+    template<typename ResourceTypeT = Aws::String>
+    void SetResourceType(ResourceTypeT&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::forward<ResourceTypeT>(value); }
+    template<typename ResourceTypeT = Aws::String>
+    TaskStartedEventDetails& WithResourceType(ResourceTypeT&& value) { SetResourceType(std::forward<ResourceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The service name of the resource in a task state.</p>
-     */
-    inline void SetResourceType(const Aws::String& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
-
-    /**
-     * <p>The service name of the resource in a task state.</p>
-     */
-    inline void SetResourceType(Aws::String&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
-
-    /**
-     * <p>The service name of the resource in a task state.</p>
-     */
-    inline void SetResourceType(const char* value) { m_resourceTypeHasBeenSet = true; m_resourceType.assign(value); }
-
-    /**
-     * <p>The service name of the resource in a task state.</p>
-     */
-    inline TaskStartedEventDetails& WithResourceType(const Aws::String& value) { SetResourceType(value); return *this;}
-
-    /**
-     * <p>The service name of the resource in a task state.</p>
-     */
-    inline TaskStartedEventDetails& WithResourceType(Aws::String&& value) { SetResourceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The service name of the resource in a task state.</p>
-     */
-    inline TaskStartedEventDetails& WithResourceType(const char* value) { SetResourceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The action of the resource called by a task state.</p>
      */
-    inline const Aws::String& GetResource() const{ return m_resource; }
-
-    /**
-     * <p>The action of the resource called by a task state.</p>
-     */
+    inline const Aws::String& GetResource() const { return m_resource; }
     inline bool ResourceHasBeenSet() const { return m_resourceHasBeenSet; }
-
-    /**
-     * <p>The action of the resource called by a task state.</p>
-     */
-    inline void SetResource(const Aws::String& value) { m_resourceHasBeenSet = true; m_resource = value; }
-
-    /**
-     * <p>The action of the resource called by a task state.</p>
-     */
-    inline void SetResource(Aws::String&& value) { m_resourceHasBeenSet = true; m_resource = std::move(value); }
-
-    /**
-     * <p>The action of the resource called by a task state.</p>
-     */
-    inline void SetResource(const char* value) { m_resourceHasBeenSet = true; m_resource.assign(value); }
-
-    /**
-     * <p>The action of the resource called by a task state.</p>
-     */
-    inline TaskStartedEventDetails& WithResource(const Aws::String& value) { SetResource(value); return *this;}
-
-    /**
-     * <p>The action of the resource called by a task state.</p>
-     */
-    inline TaskStartedEventDetails& WithResource(Aws::String&& value) { SetResource(std::move(value)); return *this;}
-
-    /**
-     * <p>The action of the resource called by a task state.</p>
-     */
-    inline TaskStartedEventDetails& WithResource(const char* value) { SetResource(value); return *this;}
-
+    template<typename ResourceT = Aws::String>
+    void SetResource(ResourceT&& value) { m_resourceHasBeenSet = true; m_resource = std::forward<ResourceT>(value); }
+    template<typename ResourceT = Aws::String>
+    TaskStartedEventDetails& WithResource(ResourceT&& value) { SetResource(std::forward<ResourceT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceType;

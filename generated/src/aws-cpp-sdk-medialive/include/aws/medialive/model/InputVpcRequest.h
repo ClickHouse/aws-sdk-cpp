@@ -31,8 +31,7 @@ When this property is specified, the input
    * addresses.
 This property requires setting the roleArn property on Input
    * creation.
-Not compatible with the inputSecurityGroups property.
-<p><h3>See
+Not compatible with the inputSecurityGroups property.<p><h3>See
    * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/InputVpcRequest">AWS
    * API Reference</a></p>
@@ -40,166 +39,44 @@ Not compatible with the inputSecurityGroups property.
   class InputVpcRequest
   {
   public:
-    AWS_MEDIALIVE_API InputVpcRequest();
+    AWS_MEDIALIVE_API InputVpcRequest() = default;
     AWS_MEDIALIVE_API InputVpcRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API InputVpcRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * A list of up to 5 EC2 VPC security group IDs to attach to the Input VPC network
      * interfaces.
 Requires subnetIds. If none are specified then the VPC default
      * security group will be used.
-
      */
-    inline const Aws::Vector<Aws::String>& GetSecurityGroupIds() const{ return m_securityGroupIds; }
-
-    /**
-     * A list of up to 5 EC2 VPC security group IDs to attach to the Input VPC network
-     * interfaces.
-Requires subnetIds. If none are specified then the VPC default
-     * security group will be used.
-
-     */
+    inline const Aws::Vector<Aws::String>& GetSecurityGroupIds() const { return m_securityGroupIds; }
     inline bool SecurityGroupIdsHasBeenSet() const { return m_securityGroupIdsHasBeenSet; }
+    template<typename SecurityGroupIdsT = Aws::Vector<Aws::String>>
+    void SetSecurityGroupIds(SecurityGroupIdsT&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = std::forward<SecurityGroupIdsT>(value); }
+    template<typename SecurityGroupIdsT = Aws::Vector<Aws::String>>
+    InputVpcRequest& WithSecurityGroupIds(SecurityGroupIdsT&& value) { SetSecurityGroupIds(std::forward<SecurityGroupIdsT>(value)); return *this;}
+    template<typename SecurityGroupIdsT = Aws::String>
+    InputVpcRequest& AddSecurityGroupIds(SecurityGroupIdsT&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.emplace_back(std::forward<SecurityGroupIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * A list of up to 5 EC2 VPC security group IDs to attach to the Input VPC network
-     * interfaces.
-Requires subnetIds. If none are specified then the VPC default
-     * security group will be used.
-
-     */
-    inline void SetSecurityGroupIds(const Aws::Vector<Aws::String>& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = value; }
-
-    /**
-     * A list of up to 5 EC2 VPC security group IDs to attach to the Input VPC network
-     * interfaces.
-Requires subnetIds. If none are specified then the VPC default
-     * security group will be used.
-
-     */
-    inline void SetSecurityGroupIds(Aws::Vector<Aws::String>&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = std::move(value); }
-
-    /**
-     * A list of up to 5 EC2 VPC security group IDs to attach to the Input VPC network
-     * interfaces.
-Requires subnetIds. If none are specified then the VPC default
-     * security group will be used.
-
-     */
-    inline InputVpcRequest& WithSecurityGroupIds(const Aws::Vector<Aws::String>& value) { SetSecurityGroupIds(value); return *this;}
-
-    /**
-     * A list of up to 5 EC2 VPC security group IDs to attach to the Input VPC network
-     * interfaces.
-Requires subnetIds. If none are specified then the VPC default
-     * security group will be used.
-
-     */
-    inline InputVpcRequest& WithSecurityGroupIds(Aws::Vector<Aws::String>&& value) { SetSecurityGroupIds(std::move(value)); return *this;}
-
-    /**
-     * A list of up to 5 EC2 VPC security group IDs to attach to the Input VPC network
-     * interfaces.
-Requires subnetIds. If none are specified then the VPC default
-     * security group will be used.
-
-     */
-    inline InputVpcRequest& AddSecurityGroupIds(const Aws::String& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(value); return *this; }
-
-    /**
-     * A list of up to 5 EC2 VPC security group IDs to attach to the Input VPC network
-     * interfaces.
-Requires subnetIds. If none are specified then the VPC default
-     * security group will be used.
-
-     */
-    inline InputVpcRequest& AddSecurityGroupIds(Aws::String&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * A list of up to 5 EC2 VPC security group IDs to attach to the Input VPC network
-     * interfaces.
-Requires subnetIds. If none are specified then the VPC default
-     * security group will be used.
-
-     */
-    inline InputVpcRequest& AddSecurityGroupIds(const char* value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * A list of 2 VPC subnet IDs from the same VPC.
 Subnet IDs must be mapped to two
      * unique availability zones (AZ).
-
      */
-    inline const Aws::Vector<Aws::String>& GetSubnetIds() const{ return m_subnetIds; }
-
-    /**
-     * A list of 2 VPC subnet IDs from the same VPC.
-Subnet IDs must be mapped to two
-     * unique availability zones (AZ).
-
-     */
+    inline const Aws::Vector<Aws::String>& GetSubnetIds() const { return m_subnetIds; }
     inline bool SubnetIdsHasBeenSet() const { return m_subnetIdsHasBeenSet; }
-
-    /**
-     * A list of 2 VPC subnet IDs from the same VPC.
-Subnet IDs must be mapped to two
-     * unique availability zones (AZ).
-
-     */
-    inline void SetSubnetIds(const Aws::Vector<Aws::String>& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = value; }
-
-    /**
-     * A list of 2 VPC subnet IDs from the same VPC.
-Subnet IDs must be mapped to two
-     * unique availability zones (AZ).
-
-     */
-    inline void SetSubnetIds(Aws::Vector<Aws::String>&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = std::move(value); }
-
-    /**
-     * A list of 2 VPC subnet IDs from the same VPC.
-Subnet IDs must be mapped to two
-     * unique availability zones (AZ).
-
-     */
-    inline InputVpcRequest& WithSubnetIds(const Aws::Vector<Aws::String>& value) { SetSubnetIds(value); return *this;}
-
-    /**
-     * A list of 2 VPC subnet IDs from the same VPC.
-Subnet IDs must be mapped to two
-     * unique availability zones (AZ).
-
-     */
-    inline InputVpcRequest& WithSubnetIds(Aws::Vector<Aws::String>&& value) { SetSubnetIds(std::move(value)); return *this;}
-
-    /**
-     * A list of 2 VPC subnet IDs from the same VPC.
-Subnet IDs must be mapped to two
-     * unique availability zones (AZ).
-
-     */
-    inline InputVpcRequest& AddSubnetIds(const Aws::String& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
-
-    /**
-     * A list of 2 VPC subnet IDs from the same VPC.
-Subnet IDs must be mapped to two
-     * unique availability zones (AZ).
-
-     */
-    inline InputVpcRequest& AddSubnetIds(Aws::String&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * A list of 2 VPC subnet IDs from the same VPC.
-Subnet IDs must be mapped to two
-     * unique availability zones (AZ).
-
-     */
-    inline InputVpcRequest& AddSubnetIds(const char* value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
-
+    template<typename SubnetIdsT = Aws::Vector<Aws::String>>
+    void SetSubnetIds(SubnetIdsT&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = std::forward<SubnetIdsT>(value); }
+    template<typename SubnetIdsT = Aws::Vector<Aws::String>>
+    InputVpcRequest& WithSubnetIds(SubnetIdsT&& value) { SetSubnetIds(std::forward<SubnetIdsT>(value)); return *this;}
+    template<typename SubnetIdsT = Aws::String>
+    InputVpcRequest& AddSubnetIds(SubnetIdsT&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.emplace_back(std::forward<SubnetIdsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_securityGroupIds;

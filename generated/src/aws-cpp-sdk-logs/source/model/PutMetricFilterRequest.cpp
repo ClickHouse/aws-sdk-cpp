@@ -12,14 +12,6 @@ using namespace Aws::CloudWatchLogs::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutMetricFilterRequest::PutMetricFilterRequest() : 
-    m_logGroupNameHasBeenSet(false),
-    m_filterNameHasBeenSet(false),
-    m_filterPatternHasBeenSet(false),
-    m_metricTransformationsHasBeenSet(false)
-{
-}
-
 Aws::String PutMetricFilterRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -50,6 +42,29 @@ Aws::String PutMetricFilterRequest::SerializePayload() const
      metricTransformationsJsonList[metricTransformationsIndex].AsObject(m_metricTransformations[metricTransformationsIndex].Jsonize());
    }
    payload.WithArray("metricTransformations", std::move(metricTransformationsJsonList));
+
+  }
+
+  if(m_applyOnTransformedLogsHasBeenSet)
+  {
+   payload.WithBool("applyOnTransformedLogs", m_applyOnTransformedLogs);
+
+  }
+
+  if(m_fieldSelectionCriteriaHasBeenSet)
+  {
+   payload.WithString("fieldSelectionCriteria", m_fieldSelectionCriteria);
+
+  }
+
+  if(m_emitSystemFieldDimensionsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> emitSystemFieldDimensionsJsonList(m_emitSystemFieldDimensions.size());
+   for(unsigned emitSystemFieldDimensionsIndex = 0; emitSystemFieldDimensionsIndex < emitSystemFieldDimensionsJsonList.GetLength(); ++emitSystemFieldDimensionsIndex)
+   {
+     emitSystemFieldDimensionsJsonList[emitSystemFieldDimensionsIndex].AsString(m_emitSystemFieldDimensions[emitSystemFieldDimensionsIndex]);
+   }
+   payload.WithArray("emitSystemFieldDimensions", std::move(emitSystemFieldDimensionsJsonList));
 
   }
 

@@ -22,22 +22,25 @@ namespace Pinpoint
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef PinpointClientConfiguration ClientConfigurationType;
+      typedef PinpointEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         PinpointClient(const Aws::Pinpoint::PinpointClientConfiguration& clientConfiguration = Aws::Pinpoint::PinpointClientConfiguration(),
-                       std::shared_ptr<PinpointEndpointProviderBase> endpointProvider = Aws::MakeShared<PinpointEndpointProvider>(ALLOCATION_TAG));
+                       std::shared_ptr<PinpointEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         PinpointClient(const Aws::Auth::AWSCredentials& credentials,
-                       std::shared_ptr<PinpointEndpointProviderBase> endpointProvider = Aws::MakeShared<PinpointEndpointProvider>(ALLOCATION_TAG),
+                       std::shared_ptr<PinpointEndpointProviderBase> endpointProvider = nullptr,
                        const Aws::Pinpoint::PinpointClientConfiguration& clientConfiguration = Aws::Pinpoint::PinpointClientConfiguration());
 
        /**
@@ -45,7 +48,7 @@ namespace Pinpoint
         * the default http client factory will be used
         */
         PinpointClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                       std::shared_ptr<PinpointEndpointProviderBase> endpointProvider = Aws::MakeShared<PinpointEndpointProvider>(ALLOCATION_TAG),
+                       std::shared_ptr<PinpointEndpointProviderBase> endpointProvider = nullptr,
                        const Aws::Pinpoint::PinpointClientConfiguration& clientConfiguration = Aws::Pinpoint::PinpointClientConfiguration());
 
 
@@ -1187,13 +1190,13 @@ namespace Pinpoint
          * href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApps">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetAppsOutcome GetApps(const Model::GetAppsRequest& request) const;
+        virtual Model::GetAppsOutcome GetApps(const Model::GetAppsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetApps that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetAppsRequestT = Model::GetAppsRequest>
-        Model::GetAppsOutcomeCallable GetAppsCallable(const GetAppsRequestT& request) const
+        Model::GetAppsOutcomeCallable GetAppsCallable(const GetAppsRequestT& request = {}) const
         {
             return SubmitCallable(&PinpointClient::GetApps, request);
         }
@@ -1202,7 +1205,7 @@ namespace Pinpoint
          * An Async wrapper for GetApps that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetAppsRequestT = Model::GetAppsRequest>
-        void GetAppsAsync(const GetAppsRequestT& request, const GetAppsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetAppsAsync(const GetAppsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetAppsRequestT& request = {}) const
         {
             return SubmitAsync(&PinpointClient::GetApps, request, handler, context);
         }
@@ -1807,6 +1810,84 @@ namespace Pinpoint
         }
 
         /**
+         * <p>Retrieves (queries) pre-aggregated data for a standard run execution metric
+         * that applies to a journey activity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetJourneyRunExecutionActivityMetrics">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetJourneyRunExecutionActivityMetricsOutcome GetJourneyRunExecutionActivityMetrics(const Model::GetJourneyRunExecutionActivityMetricsRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetJourneyRunExecutionActivityMetrics that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetJourneyRunExecutionActivityMetricsRequestT = Model::GetJourneyRunExecutionActivityMetricsRequest>
+        Model::GetJourneyRunExecutionActivityMetricsOutcomeCallable GetJourneyRunExecutionActivityMetricsCallable(const GetJourneyRunExecutionActivityMetricsRequestT& request) const
+        {
+            return SubmitCallable(&PinpointClient::GetJourneyRunExecutionActivityMetrics, request);
+        }
+
+        /**
+         * An Async wrapper for GetJourneyRunExecutionActivityMetrics that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetJourneyRunExecutionActivityMetricsRequestT = Model::GetJourneyRunExecutionActivityMetricsRequest>
+        void GetJourneyRunExecutionActivityMetricsAsync(const GetJourneyRunExecutionActivityMetricsRequestT& request, const GetJourneyRunExecutionActivityMetricsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&PinpointClient::GetJourneyRunExecutionActivityMetrics, request, handler, context);
+        }
+
+        /**
+         * <p>Retrieves (queries) pre-aggregated data for a standard run execution metric
+         * that applies to a journey.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetJourneyRunExecutionMetrics">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetJourneyRunExecutionMetricsOutcome GetJourneyRunExecutionMetrics(const Model::GetJourneyRunExecutionMetricsRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetJourneyRunExecutionMetrics that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetJourneyRunExecutionMetricsRequestT = Model::GetJourneyRunExecutionMetricsRequest>
+        Model::GetJourneyRunExecutionMetricsOutcomeCallable GetJourneyRunExecutionMetricsCallable(const GetJourneyRunExecutionMetricsRequestT& request) const
+        {
+            return SubmitCallable(&PinpointClient::GetJourneyRunExecutionMetrics, request);
+        }
+
+        /**
+         * An Async wrapper for GetJourneyRunExecutionMetrics that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetJourneyRunExecutionMetricsRequestT = Model::GetJourneyRunExecutionMetricsRequest>
+        void GetJourneyRunExecutionMetricsAsync(const GetJourneyRunExecutionMetricsRequestT& request, const GetJourneyRunExecutionMetricsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&PinpointClient::GetJourneyRunExecutionMetrics, request, handler, context);
+        }
+
+        /**
+         * <p>Provides information about the runs of a journey.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetJourneyRuns">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetJourneyRunsOutcome GetJourneyRuns(const Model::GetJourneyRunsRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetJourneyRuns that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetJourneyRunsRequestT = Model::GetJourneyRunsRequest>
+        Model::GetJourneyRunsOutcomeCallable GetJourneyRunsCallable(const GetJourneyRunsRequestT& request) const
+        {
+            return SubmitCallable(&PinpointClient::GetJourneyRuns, request);
+        }
+
+        /**
+         * An Async wrapper for GetJourneyRuns that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetJourneyRunsRequestT = Model::GetJourneyRunsRequest>
+        void GetJourneyRunsAsync(const GetJourneyRunsRequestT& request, const GetJourneyRunsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&PinpointClient::GetJourneyRuns, request, handler, context);
+        }
+
+        /**
          * <p>Retrieves the content and settings of a message template for messages that
          * are sent through a push notification channel.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetPushTemplate">AWS
@@ -1864,13 +1945,13 @@ namespace Pinpoint
          * href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetRecommenderConfigurations">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetRecommenderConfigurationsOutcome GetRecommenderConfigurations(const Model::GetRecommenderConfigurationsRequest& request) const;
+        virtual Model::GetRecommenderConfigurationsOutcome GetRecommenderConfigurations(const Model::GetRecommenderConfigurationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetRecommenderConfigurations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetRecommenderConfigurationsRequestT = Model::GetRecommenderConfigurationsRequest>
-        Model::GetRecommenderConfigurationsOutcomeCallable GetRecommenderConfigurationsCallable(const GetRecommenderConfigurationsRequestT& request) const
+        Model::GetRecommenderConfigurationsOutcomeCallable GetRecommenderConfigurationsCallable(const GetRecommenderConfigurationsRequestT& request = {}) const
         {
             return SubmitCallable(&PinpointClient::GetRecommenderConfigurations, request);
         }
@@ -1879,7 +1960,7 @@ namespace Pinpoint
          * An Async wrapper for GetRecommenderConfigurations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetRecommenderConfigurationsRequestT = Model::GetRecommenderConfigurationsRequest>
-        void GetRecommenderConfigurationsAsync(const GetRecommenderConfigurationsRequestT& request, const GetRecommenderConfigurationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetRecommenderConfigurationsAsync(const GetRecommenderConfigurationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetRecommenderConfigurationsRequestT& request = {}) const
         {
             return SubmitAsync(&PinpointClient::GetRecommenderConfigurations, request, handler, context);
         }
@@ -2260,13 +2341,13 @@ namespace Pinpoint
          * href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/ListTemplates">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListTemplatesOutcome ListTemplates(const Model::ListTemplatesRequest& request) const;
+        virtual Model::ListTemplatesOutcome ListTemplates(const Model::ListTemplatesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListTemplates that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListTemplatesRequestT = Model::ListTemplatesRequest>
-        Model::ListTemplatesOutcomeCallable ListTemplatesCallable(const ListTemplatesRequestT& request) const
+        Model::ListTemplatesOutcomeCallable ListTemplatesCallable(const ListTemplatesRequestT& request = {}) const
         {
             return SubmitCallable(&PinpointClient::ListTemplates, request);
         }
@@ -2275,7 +2356,7 @@ namespace Pinpoint
          * An Async wrapper for ListTemplates that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListTemplatesRequestT = Model::ListTemplatesRequest>
-        void ListTemplatesAsync(const ListTemplatesRequestT& request, const ListTemplatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListTemplatesAsync(const ListTemplatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListTemplatesRequestT& request = {}) const
         {
             return SubmitAsync(&PinpointClient::ListTemplates, request, handler, context);
         }
@@ -2358,8 +2439,10 @@ namespace Pinpoint
         }
 
         /**
-         * <p>Removes one or more attributes, of the same attribute type, from all the
-         * endpoints that are associated with an application.</p><p><h3>See Also:</h3>   <a
+         * <p>Removes one or more custom attributes, of the same attribute type, from the
+         * application. Existing endpoints still have the attributes but Amazon Pinpoint
+         * will stop capturing new or changed values for these attributes.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/RemoveAttributes">AWS
          * API Reference</a></p>
          */
@@ -3176,7 +3259,6 @@ namespace Pinpoint
       void init(const PinpointClientConfiguration& clientConfiguration);
 
       PinpointClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<PinpointEndpointProviderBase> m_endpointProvider;
   };
 

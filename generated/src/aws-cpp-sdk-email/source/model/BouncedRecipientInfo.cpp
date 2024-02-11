@@ -20,21 +20,7 @@ namespace SES
 namespace Model
 {
 
-BouncedRecipientInfo::BouncedRecipientInfo() : 
-    m_recipientHasBeenSet(false),
-    m_recipientArnHasBeenSet(false),
-    m_bounceType(BounceType::NOT_SET),
-    m_bounceTypeHasBeenSet(false),
-    m_recipientDsnFieldsHasBeenSet(false)
-{
-}
-
-BouncedRecipientInfo::BouncedRecipientInfo(const XmlNode& xmlNode) : 
-    m_recipientHasBeenSet(false),
-    m_recipientArnHasBeenSet(false),
-    m_bounceType(BounceType::NOT_SET),
-    m_bounceTypeHasBeenSet(false),
-    m_recipientDsnFieldsHasBeenSet(false)
+BouncedRecipientInfo::BouncedRecipientInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -60,7 +46,7 @@ BouncedRecipientInfo& BouncedRecipientInfo::operator =(const XmlNode& xmlNode)
     XmlNode bounceTypeNode = resultNode.FirstChild("BounceType");
     if(!bounceTypeNode.IsNull())
     {
-      m_bounceType = BounceTypeMapper::GetBounceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(bounceTypeNode.GetText()).c_str()).c_str());
+      m_bounceType = BounceTypeMapper::GetBounceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(bounceTypeNode.GetText()).c_str()));
       m_bounceTypeHasBeenSet = true;
     }
     XmlNode recipientDsnFieldsNode = resultNode.FirstChild("RecipientDsnFields");
@@ -88,7 +74,7 @@ void BouncedRecipientInfo::OutputToStream(Aws::OStream& oStream, const char* loc
 
   if(m_bounceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".BounceType=" << BounceTypeMapper::GetNameForBounceType(m_bounceType) << "&";
+      oStream << location << index << locationValue << ".BounceType=" << StringUtils::URLEncode(BounceTypeMapper::GetNameForBounceType(m_bounceType)) << "&";
   }
 
   if(m_recipientDsnFieldsHasBeenSet)
@@ -112,7 +98,7 @@ void BouncedRecipientInfo::OutputToStream(Aws::OStream& oStream, const char* loc
   }
   if(m_bounceTypeHasBeenSet)
   {
-      oStream << location << ".BounceType=" << BounceTypeMapper::GetNameForBounceType(m_bounceType) << "&";
+      oStream << location << ".BounceType=" << StringUtils::URLEncode(BounceTypeMapper::GetNameForBounceType(m_bounceType)) << "&";
   }
   if(m_recipientDsnFieldsHasBeenSet)
   {

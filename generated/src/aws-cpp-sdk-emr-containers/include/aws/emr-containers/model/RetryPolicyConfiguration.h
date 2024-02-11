@@ -30,35 +30,24 @@ namespace Model
   class RetryPolicyConfiguration
   {
   public:
-    AWS_EMRCONTAINERS_API RetryPolicyConfiguration();
+    AWS_EMRCONTAINERS_API RetryPolicyConfiguration() = default;
     AWS_EMRCONTAINERS_API RetryPolicyConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMRCONTAINERS_API RetryPolicyConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMRCONTAINERS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The maximum number of attempts on the job's driver.</p>
      */
-    inline int GetMaxAttempts() const{ return m_maxAttempts; }
-
-    /**
-     * <p>The maximum number of attempts on the job's driver.</p>
-     */
+    inline int GetMaxAttempts() const { return m_maxAttempts; }
     inline bool MaxAttemptsHasBeenSet() const { return m_maxAttemptsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of attempts on the job's driver.</p>
-     */
     inline void SetMaxAttempts(int value) { m_maxAttemptsHasBeenSet = true; m_maxAttempts = value; }
-
-    /**
-     * <p>The maximum number of attempts on the job's driver.</p>
-     */
     inline RetryPolicyConfiguration& WithMaxAttempts(int value) { SetMaxAttempts(value); return *this;}
-
+    ///@}
   private:
 
-    int m_maxAttempts;
+    int m_maxAttempts{0};
     bool m_maxAttemptsHasBeenSet = false;
   };
 

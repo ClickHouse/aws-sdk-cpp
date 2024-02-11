@@ -22,7 +22,7 @@ namespace Model
   class GetSearchSuggestionsRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API GetSearchSuggestionsRequest();
+    AWS_SAGEMAKER_API GetSearchSuggestionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,70 +35,30 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the SageMaker resource to search for.</p>
      */
-    inline const ResourceType& GetResource() const{ return m_resource; }
-
-    /**
-     * <p>The name of the SageMaker resource to search for.</p>
-     */
+    inline ResourceType GetResource() const { return m_resource; }
     inline bool ResourceHasBeenSet() const { return m_resourceHasBeenSet; }
+    inline void SetResource(ResourceType value) { m_resourceHasBeenSet = true; m_resource = value; }
+    inline GetSearchSuggestionsRequest& WithResource(ResourceType value) { SetResource(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the SageMaker resource to search for.</p>
-     */
-    inline void SetResource(const ResourceType& value) { m_resourceHasBeenSet = true; m_resource = value; }
-
-    /**
-     * <p>The name of the SageMaker resource to search for.</p>
-     */
-    inline void SetResource(ResourceType&& value) { m_resourceHasBeenSet = true; m_resource = std::move(value); }
-
-    /**
-     * <p>The name of the SageMaker resource to search for.</p>
-     */
-    inline GetSearchSuggestionsRequest& WithResource(const ResourceType& value) { SetResource(value); return *this;}
-
-    /**
-     * <p>The name of the SageMaker resource to search for.</p>
-     */
-    inline GetSearchSuggestionsRequest& WithResource(ResourceType&& value) { SetResource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Limits the property names that are included in the response.</p>
      */
-    inline const SuggestionQuery& GetSuggestionQuery() const{ return m_suggestionQuery; }
-
-    /**
-     * <p>Limits the property names that are included in the response.</p>
-     */
+    inline const SuggestionQuery& GetSuggestionQuery() const { return m_suggestionQuery; }
     inline bool SuggestionQueryHasBeenSet() const { return m_suggestionQueryHasBeenSet; }
-
-    /**
-     * <p>Limits the property names that are included in the response.</p>
-     */
-    inline void SetSuggestionQuery(const SuggestionQuery& value) { m_suggestionQueryHasBeenSet = true; m_suggestionQuery = value; }
-
-    /**
-     * <p>Limits the property names that are included in the response.</p>
-     */
-    inline void SetSuggestionQuery(SuggestionQuery&& value) { m_suggestionQueryHasBeenSet = true; m_suggestionQuery = std::move(value); }
-
-    /**
-     * <p>Limits the property names that are included in the response.</p>
-     */
-    inline GetSearchSuggestionsRequest& WithSuggestionQuery(const SuggestionQuery& value) { SetSuggestionQuery(value); return *this;}
-
-    /**
-     * <p>Limits the property names that are included in the response.</p>
-     */
-    inline GetSearchSuggestionsRequest& WithSuggestionQuery(SuggestionQuery&& value) { SetSuggestionQuery(std::move(value)); return *this;}
-
+    template<typename SuggestionQueryT = SuggestionQuery>
+    void SetSuggestionQuery(SuggestionQueryT&& value) { m_suggestionQueryHasBeenSet = true; m_suggestionQuery = std::forward<SuggestionQueryT>(value); }
+    template<typename SuggestionQueryT = SuggestionQuery>
+    GetSearchSuggestionsRequest& WithSuggestionQuery(SuggestionQueryT&& value) { SetSuggestionQuery(std::forward<SuggestionQueryT>(value)); return *this;}
+    ///@}
   private:
 
-    ResourceType m_resource;
+    ResourceType m_resource{ResourceType::NOT_SET};
     bool m_resourceHasBeenSet = false;
 
     SuggestionQuery m_suggestionQuery;

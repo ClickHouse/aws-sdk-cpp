@@ -46,6 +46,10 @@ namespace Aws
         static const int AMAZON_OPENSEARCH_HASH = HashingUtils::HashString("AMAZON_OPENSEARCH");
         static const int EXASOL_HASH = HashingUtils::HashString("EXASOL");
         static const int DATABRICKS_HASH = HashingUtils::HashString("DATABRICKS");
+        static const int STARBURST_HASH = HashingUtils::HashString("STARBURST");
+        static const int TRINO_HASH = HashingUtils::HashString("TRINO");
+        static const int BIGQUERY_HASH = HashingUtils::HashString("BIGQUERY");
+        static const int GOOGLESHEETS_HASH = HashingUtils::HashString("GOOGLESHEETS");
 
 
         DataSourceType GetDataSourceTypeForName(const Aws::String& name)
@@ -155,6 +159,22 @@ namespace Aws
           {
             return DataSourceType::DATABRICKS;
           }
+          else if (hashCode == STARBURST_HASH)
+          {
+            return DataSourceType::STARBURST;
+          }
+          else if (hashCode == TRINO_HASH)
+          {
+            return DataSourceType::TRINO;
+          }
+          else if (hashCode == BIGQUERY_HASH)
+          {
+            return DataSourceType::BIGQUERY;
+          }
+          else if (hashCode == GOOGLESHEETS_HASH)
+          {
+            return DataSourceType::GOOGLESHEETS;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -169,6 +189,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case DataSourceType::NOT_SET:
+            return {};
           case DataSourceType::ADOBE_ANALYTICS:
             return "ADOBE_ANALYTICS";
           case DataSourceType::AMAZON_ELASTICSEARCH:
@@ -221,6 +243,14 @@ namespace Aws
             return "EXASOL";
           case DataSourceType::DATABRICKS:
             return "DATABRICKS";
+          case DataSourceType::STARBURST:
+            return "STARBURST";
+          case DataSourceType::TRINO:
+            return "TRINO";
+          case DataSourceType::BIGQUERY:
+            return "BIGQUERY";
+          case DataSourceType::GOOGLESHEETS:
+            return "GOOGLESHEETS";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

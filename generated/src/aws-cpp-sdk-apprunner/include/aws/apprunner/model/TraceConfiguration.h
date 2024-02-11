@@ -32,45 +32,24 @@ namespace Model
   class TraceConfiguration
   {
   public:
-    AWS_APPRUNNER_API TraceConfiguration();
+    AWS_APPRUNNER_API TraceConfiguration() = default;
     AWS_APPRUNNER_API TraceConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPRUNNER_API TraceConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPRUNNER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The implementation provider chosen for tracing App Runner services.</p>
      */
-    inline const TracingVendor& GetVendor() const{ return m_vendor; }
-
-    /**
-     * <p>The implementation provider chosen for tracing App Runner services.</p>
-     */
+    inline TracingVendor GetVendor() const { return m_vendor; }
     inline bool VendorHasBeenSet() const { return m_vendorHasBeenSet; }
-
-    /**
-     * <p>The implementation provider chosen for tracing App Runner services.</p>
-     */
-    inline void SetVendor(const TracingVendor& value) { m_vendorHasBeenSet = true; m_vendor = value; }
-
-    /**
-     * <p>The implementation provider chosen for tracing App Runner services.</p>
-     */
-    inline void SetVendor(TracingVendor&& value) { m_vendorHasBeenSet = true; m_vendor = std::move(value); }
-
-    /**
-     * <p>The implementation provider chosen for tracing App Runner services.</p>
-     */
-    inline TraceConfiguration& WithVendor(const TracingVendor& value) { SetVendor(value); return *this;}
-
-    /**
-     * <p>The implementation provider chosen for tracing App Runner services.</p>
-     */
-    inline TraceConfiguration& WithVendor(TracingVendor&& value) { SetVendor(std::move(value)); return *this;}
-
+    inline void SetVendor(TracingVendor value) { m_vendorHasBeenSet = true; m_vendor = value; }
+    inline TraceConfiguration& WithVendor(TracingVendor value) { SetVendor(value); return *this;}
+    ///@}
   private:
 
-    TracingVendor m_vendor;
+    TracingVendor m_vendor{TracingVendor::NOT_SET};
     bool m_vendorHasBeenSet = false;
   };
 

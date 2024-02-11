@@ -35,11 +35,12 @@ namespace Model
   class DescribeClusterSecurityGroupsResult
   {
   public:
-    AWS_REDSHIFT_API DescribeClusterSecurityGroupsResult();
+    AWS_REDSHIFT_API DescribeClusterSecurityGroupsResult() = default;
     AWS_REDSHIFT_API DescribeClusterSecurityGroupsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_REDSHIFT_API DescribeClusterSecurityGroupsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>A value that indicates the starting point for the next set of response
      * records in a subsequent request. If a value is returned in a response, you can
@@ -48,127 +49,44 @@ namespace Model
      * <code>Marker</code> field is empty, all response records have been retrieved for
      * the request. </p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
+    inline const Aws::String& GetMarker() const { return m_marker; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeClusterSecurityGroupsResult& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_marker = value; }
-
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
-
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
-    inline void SetMarker(const char* value) { m_marker.assign(value); }
-
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
-    inline DescribeClusterSecurityGroupsResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
-    inline DescribeClusterSecurityGroupsResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
-    inline DescribeClusterSecurityGroupsResult& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of <a>ClusterSecurityGroup</a> instances. </p>
      */
-    inline const Aws::Vector<ClusterSecurityGroup>& GetClusterSecurityGroups() const{ return m_clusterSecurityGroups; }
+    inline const Aws::Vector<ClusterSecurityGroup>& GetClusterSecurityGroups() const { return m_clusterSecurityGroups; }
+    template<typename ClusterSecurityGroupsT = Aws::Vector<ClusterSecurityGroup>>
+    void SetClusterSecurityGroups(ClusterSecurityGroupsT&& value) { m_clusterSecurityGroupsHasBeenSet = true; m_clusterSecurityGroups = std::forward<ClusterSecurityGroupsT>(value); }
+    template<typename ClusterSecurityGroupsT = Aws::Vector<ClusterSecurityGroup>>
+    DescribeClusterSecurityGroupsResult& WithClusterSecurityGroups(ClusterSecurityGroupsT&& value) { SetClusterSecurityGroups(std::forward<ClusterSecurityGroupsT>(value)); return *this;}
+    template<typename ClusterSecurityGroupsT = ClusterSecurityGroup>
+    DescribeClusterSecurityGroupsResult& AddClusterSecurityGroups(ClusterSecurityGroupsT&& value) { m_clusterSecurityGroupsHasBeenSet = true; m_clusterSecurityGroups.emplace_back(std::forward<ClusterSecurityGroupsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of <a>ClusterSecurityGroup</a> instances. </p>
-     */
-    inline void SetClusterSecurityGroups(const Aws::Vector<ClusterSecurityGroup>& value) { m_clusterSecurityGroups = value; }
-
-    /**
-     * <p>A list of <a>ClusterSecurityGroup</a> instances. </p>
-     */
-    inline void SetClusterSecurityGroups(Aws::Vector<ClusterSecurityGroup>&& value) { m_clusterSecurityGroups = std::move(value); }
-
-    /**
-     * <p>A list of <a>ClusterSecurityGroup</a> instances. </p>
-     */
-    inline DescribeClusterSecurityGroupsResult& WithClusterSecurityGroups(const Aws::Vector<ClusterSecurityGroup>& value) { SetClusterSecurityGroups(value); return *this;}
-
-    /**
-     * <p>A list of <a>ClusterSecurityGroup</a> instances. </p>
-     */
-    inline DescribeClusterSecurityGroupsResult& WithClusterSecurityGroups(Aws::Vector<ClusterSecurityGroup>&& value) { SetClusterSecurityGroups(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <a>ClusterSecurityGroup</a> instances. </p>
-     */
-    inline DescribeClusterSecurityGroupsResult& AddClusterSecurityGroups(const ClusterSecurityGroup& value) { m_clusterSecurityGroups.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <a>ClusterSecurityGroup</a> instances. </p>
-     */
-    inline DescribeClusterSecurityGroupsResult& AddClusterSecurityGroups(ClusterSecurityGroup&& value) { m_clusterSecurityGroups.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline DescribeClusterSecurityGroupsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline DescribeClusterSecurityGroupsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    DescribeClusterSecurityGroupsResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_marker;
+    bool m_markerHasBeenSet = false;
 
     Aws::Vector<ClusterSecurityGroup> m_clusterSecurityGroups;
+    bool m_clusterSecurityGroupsHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

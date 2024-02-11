@@ -18,10 +18,16 @@ namespace Model
     NOT_SET,
     OnPostCallAnalysisAvailable,
     OnRealTimeCallAnalysisAvailable,
+    OnRealTimeChatAnalysisAvailable,
     OnPostChatAnalysisAvailable,
     OnZendeskTicketCreate,
     OnZendeskTicketStatusUpdate,
-    OnSalesforceCaseCreate
+    OnSalesforceCaseCreate,
+    OnContactEvaluationSubmit,
+    OnMetricDataUpdate,
+    OnCaseCreate,
+    OnCaseUpdate,
+    OnSlaBreach
   };
 
 namespace EventSourceNameMapper

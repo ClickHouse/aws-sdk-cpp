@@ -18,17 +18,7 @@ namespace Scheduler
 namespace Model
 {
 
-PlacementConstraint::PlacementConstraint() : 
-    m_expressionHasBeenSet(false),
-    m_type(PlacementConstraintType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-PlacementConstraint::PlacementConstraint(JsonView jsonValue) : 
-    m_expressionHasBeenSet(false),
-    m_type(PlacementConstraintType::NOT_SET),
-    m_typeHasBeenSet(false)
+PlacementConstraint::PlacementConstraint(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ PlacementConstraint& PlacementConstraint::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("expression"))
   {
     m_expression = jsonValue.GetString("expression");
-
     m_expressionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = PlacementConstraintTypeMapper::GetPlacementConstraintTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

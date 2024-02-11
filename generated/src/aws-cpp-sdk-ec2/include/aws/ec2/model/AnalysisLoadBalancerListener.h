@@ -29,7 +29,7 @@ namespace Model
   class AnalysisLoadBalancerListener
   {
   public:
-    AWS_EC2_API AnalysisLoadBalancerListener();
+    AWS_EC2_API AnalysisLoadBalancerListener() = default;
     AWS_EC2_API AnalysisLoadBalancerListener(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API AnalysisLoadBalancerListener& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -37,53 +37,31 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The port on which the load balancer is listening.</p>
      */
-    inline int GetLoadBalancerPort() const{ return m_loadBalancerPort; }
-
-    /**
-     * <p>The port on which the load balancer is listening.</p>
-     */
+    inline int GetLoadBalancerPort() const { return m_loadBalancerPort; }
     inline bool LoadBalancerPortHasBeenSet() const { return m_loadBalancerPortHasBeenSet; }
-
-    /**
-     * <p>The port on which the load balancer is listening.</p>
-     */
     inline void SetLoadBalancerPort(int value) { m_loadBalancerPortHasBeenSet = true; m_loadBalancerPort = value; }
-
-    /**
-     * <p>The port on which the load balancer is listening.</p>
-     */
     inline AnalysisLoadBalancerListener& WithLoadBalancerPort(int value) { SetLoadBalancerPort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>[Classic Load Balancers] The back-end port for the listener.</p>
      */
-    inline int GetInstancePort() const{ return m_instancePort; }
-
-    /**
-     * <p>[Classic Load Balancers] The back-end port for the listener.</p>
-     */
+    inline int GetInstancePort() const { return m_instancePort; }
     inline bool InstancePortHasBeenSet() const { return m_instancePortHasBeenSet; }
-
-    /**
-     * <p>[Classic Load Balancers] The back-end port for the listener.</p>
-     */
     inline void SetInstancePort(int value) { m_instancePortHasBeenSet = true; m_instancePort = value; }
-
-    /**
-     * <p>[Classic Load Balancers] The back-end port for the listener.</p>
-     */
     inline AnalysisLoadBalancerListener& WithInstancePort(int value) { SetInstancePort(value); return *this;}
-
+    ///@}
   private:
 
-    int m_loadBalancerPort;
+    int m_loadBalancerPort{0};
     bool m_loadBalancerPortHasBeenSet = false;
 
-    int m_instancePort;
+    int m_instancePort{0};
     bool m_instancePortHasBeenSet = false;
   };
 

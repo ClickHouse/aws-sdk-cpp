@@ -18,15 +18,7 @@ namespace CodePipeline
 namespace Model
 {
 
-JobWorkerExecutorConfiguration::JobWorkerExecutorConfiguration() : 
-    m_pollingAccountsHasBeenSet(false),
-    m_pollingServicePrincipalsHasBeenSet(false)
-{
-}
-
-JobWorkerExecutorConfiguration::JobWorkerExecutorConfiguration(JsonView jsonValue) : 
-    m_pollingAccountsHasBeenSet(false),
-    m_pollingServicePrincipalsHasBeenSet(false)
+JobWorkerExecutorConfiguration::JobWorkerExecutorConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ JobWorkerExecutorConfiguration& JobWorkerExecutorConfiguration::operator =(JsonV
     }
     m_pollingAccountsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("pollingServicePrincipals"))
   {
     Aws::Utils::Array<JsonView> pollingServicePrincipalsJsonList = jsonValue.GetArray("pollingServicePrincipals");
@@ -52,7 +43,6 @@ JobWorkerExecutorConfiguration& JobWorkerExecutorConfiguration::operator =(JsonV
     }
     m_pollingServicePrincipalsHasBeenSet = true;
   }
-
   return *this;
 }
 

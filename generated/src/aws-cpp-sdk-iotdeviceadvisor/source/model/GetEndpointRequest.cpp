@@ -15,12 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-GetEndpointRequest::GetEndpointRequest() : 
-    m_thingArnHasBeenSet(false),
-    m_certificateArnHasBeenSet(false)
-{
-}
-
 Aws::String GetEndpointRequest::SerializePayload() const
 {
   return {};
@@ -40,6 +34,20 @@ void GetEndpointRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << m_certificateArn;
       uri.AddQueryStringParameter("certificateArn", ss.str());
+      ss.str("");
+    }
+
+    if(m_deviceRoleArnHasBeenSet)
+    {
+      ss << m_deviceRoleArn;
+      uri.AddQueryStringParameter("deviceRoleArn", ss.str());
+      ss.str("");
+    }
+
+    if(m_authenticationMethodHasBeenSet)
+    {
+      ss << AuthenticationMethodMapper::GetNameForAuthenticationMethod(m_authenticationMethod);
+      uri.AddQueryStringParameter("authenticationMethod", ss.str());
       ss.str("");
     }
 

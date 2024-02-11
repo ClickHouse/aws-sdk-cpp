@@ -24,7 +24,7 @@ namespace Model
   class CreateOrganizationRequest : public WorkMailRequest
   {
   public:
-    AWS_WORKMAIL_API CreateOrganizationRequest();
+    AWS_WORKMAIL_API CreateOrganizationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,239 +37,79 @@ namespace Model
     AWS_WORKMAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The AWS Directory Service directory ID.</p>
      */
-    inline const Aws::String& GetDirectoryId() const{ return m_directoryId; }
-
-    /**
-     * <p>The AWS Directory Service directory ID.</p>
-     */
+    inline const Aws::String& GetDirectoryId() const { return m_directoryId; }
     inline bool DirectoryIdHasBeenSet() const { return m_directoryIdHasBeenSet; }
+    template<typename DirectoryIdT = Aws::String>
+    void SetDirectoryId(DirectoryIdT&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::forward<DirectoryIdT>(value); }
+    template<typename DirectoryIdT = Aws::String>
+    CreateOrganizationRequest& WithDirectoryId(DirectoryIdT&& value) { SetDirectoryId(std::forward<DirectoryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The AWS Directory Service directory ID.</p>
-     */
-    inline void SetDirectoryId(const Aws::String& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
-
-    /**
-     * <p>The AWS Directory Service directory ID.</p>
-     */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
-
-    /**
-     * <p>The AWS Directory Service directory ID.</p>
-     */
-    inline void SetDirectoryId(const char* value) { m_directoryIdHasBeenSet = true; m_directoryId.assign(value); }
-
-    /**
-     * <p>The AWS Directory Service directory ID.</p>
-     */
-    inline CreateOrganizationRequest& WithDirectoryId(const Aws::String& value) { SetDirectoryId(value); return *this;}
-
-    /**
-     * <p>The AWS Directory Service directory ID.</p>
-     */
-    inline CreateOrganizationRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The AWS Directory Service directory ID.</p>
-     */
-    inline CreateOrganizationRequest& WithDirectoryId(const char* value) { SetDirectoryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The organization alias.</p>
      */
-    inline const Aws::String& GetAlias() const{ return m_alias; }
-
-    /**
-     * <p>The organization alias.</p>
-     */
+    inline const Aws::String& GetAlias() const { return m_alias; }
     inline bool AliasHasBeenSet() const { return m_aliasHasBeenSet; }
+    template<typename AliasT = Aws::String>
+    void SetAlias(AliasT&& value) { m_aliasHasBeenSet = true; m_alias = std::forward<AliasT>(value); }
+    template<typename AliasT = Aws::String>
+    CreateOrganizationRequest& WithAlias(AliasT&& value) { SetAlias(std::forward<AliasT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The organization alias.</p>
-     */
-    inline void SetAlias(const Aws::String& value) { m_aliasHasBeenSet = true; m_alias = value; }
-
-    /**
-     * <p>The organization alias.</p>
-     */
-    inline void SetAlias(Aws::String&& value) { m_aliasHasBeenSet = true; m_alias = std::move(value); }
-
-    /**
-     * <p>The organization alias.</p>
-     */
-    inline void SetAlias(const char* value) { m_aliasHasBeenSet = true; m_alias.assign(value); }
-
-    /**
-     * <p>The organization alias.</p>
-     */
-    inline CreateOrganizationRequest& WithAlias(const Aws::String& value) { SetAlias(value); return *this;}
-
-    /**
-     * <p>The organization alias.</p>
-     */
-    inline CreateOrganizationRequest& WithAlias(Aws::String&& value) { SetAlias(std::move(value)); return *this;}
-
-    /**
-     * <p>The organization alias.</p>
-     */
-    inline CreateOrganizationRequest& WithAlias(const char* value) { SetAlias(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The idempotency token associated with the request.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>The idempotency token associated with the request.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateOrganizationRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The idempotency token associated with the request.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>The idempotency token associated with the request.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>The idempotency token associated with the request.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>The idempotency token associated with the request.</p>
-     */
-    inline CreateOrganizationRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>The idempotency token associated with the request.</p>
-     */
-    inline CreateOrganizationRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The idempotency token associated with the request.</p>
-     */
-    inline CreateOrganizationRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The email domains to associate with the organization.</p>
      */
-    inline const Aws::Vector<Domain>& GetDomains() const{ return m_domains; }
-
-    /**
-     * <p>The email domains to associate with the organization.</p>
-     */
+    inline const Aws::Vector<Domain>& GetDomains() const { return m_domains; }
     inline bool DomainsHasBeenSet() const { return m_domainsHasBeenSet; }
+    template<typename DomainsT = Aws::Vector<Domain>>
+    void SetDomains(DomainsT&& value) { m_domainsHasBeenSet = true; m_domains = std::forward<DomainsT>(value); }
+    template<typename DomainsT = Aws::Vector<Domain>>
+    CreateOrganizationRequest& WithDomains(DomainsT&& value) { SetDomains(std::forward<DomainsT>(value)); return *this;}
+    template<typename DomainsT = Domain>
+    CreateOrganizationRequest& AddDomains(DomainsT&& value) { m_domainsHasBeenSet = true; m_domains.emplace_back(std::forward<DomainsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The email domains to associate with the organization.</p>
-     */
-    inline void SetDomains(const Aws::Vector<Domain>& value) { m_domainsHasBeenSet = true; m_domains = value; }
-
-    /**
-     * <p>The email domains to associate with the organization.</p>
-     */
-    inline void SetDomains(Aws::Vector<Domain>&& value) { m_domainsHasBeenSet = true; m_domains = std::move(value); }
-
-    /**
-     * <p>The email domains to associate with the organization.</p>
-     */
-    inline CreateOrganizationRequest& WithDomains(const Aws::Vector<Domain>& value) { SetDomains(value); return *this;}
-
-    /**
-     * <p>The email domains to associate with the organization.</p>
-     */
-    inline CreateOrganizationRequest& WithDomains(Aws::Vector<Domain>&& value) { SetDomains(std::move(value)); return *this;}
-
-    /**
-     * <p>The email domains to associate with the organization.</p>
-     */
-    inline CreateOrganizationRequest& AddDomains(const Domain& value) { m_domainsHasBeenSet = true; m_domains.push_back(value); return *this; }
-
-    /**
-     * <p>The email domains to associate with the organization.</p>
-     */
-    inline CreateOrganizationRequest& AddDomains(Domain&& value) { m_domainsHasBeenSet = true; m_domains.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of a customer managed key from AWS KMS.</p>
      */
-    inline const Aws::String& GetKmsKeyArn() const{ return m_kmsKeyArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a customer managed key from AWS KMS.</p>
-     */
+    inline const Aws::String& GetKmsKeyArn() const { return m_kmsKeyArn; }
     inline bool KmsKeyArnHasBeenSet() const { return m_kmsKeyArnHasBeenSet; }
+    template<typename KmsKeyArnT = Aws::String>
+    void SetKmsKeyArn(KmsKeyArnT&& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = std::forward<KmsKeyArnT>(value); }
+    template<typename KmsKeyArnT = Aws::String>
+    CreateOrganizationRequest& WithKmsKeyArn(KmsKeyArnT&& value) { SetKmsKeyArn(std::forward<KmsKeyArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of a customer managed key from AWS KMS.</p>
-     */
-    inline void SetKmsKeyArn(const Aws::String& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a customer managed key from AWS KMS.</p>
-     */
-    inline void SetKmsKeyArn(Aws::String&& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a customer managed key from AWS KMS.</p>
-     */
-    inline void SetKmsKeyArn(const char* value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a customer managed key from AWS KMS.</p>
-     */
-    inline CreateOrganizationRequest& WithKmsKeyArn(const Aws::String& value) { SetKmsKeyArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a customer managed key from AWS KMS.</p>
-     */
-    inline CreateOrganizationRequest& WithKmsKeyArn(Aws::String&& value) { SetKmsKeyArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a customer managed key from AWS KMS.</p>
-     */
-    inline CreateOrganizationRequest& WithKmsKeyArn(const char* value) { SetKmsKeyArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>When <code>true</code>, allows organization interoperability between WorkMail
      * and Microsoft Exchange. If <code>true</code>, you must include a AD Connector
      * directory ID in the request.</p>
      */
-    inline bool GetEnableInteroperability() const{ return m_enableInteroperability; }
-
-    /**
-     * <p>When <code>true</code>, allows organization interoperability between WorkMail
-     * and Microsoft Exchange. If <code>true</code>, you must include a AD Connector
-     * directory ID in the request.</p>
-     */
+    inline bool GetEnableInteroperability() const { return m_enableInteroperability; }
     inline bool EnableInteroperabilityHasBeenSet() const { return m_enableInteroperabilityHasBeenSet; }
-
-    /**
-     * <p>When <code>true</code>, allows organization interoperability between WorkMail
-     * and Microsoft Exchange. If <code>true</code>, you must include a AD Connector
-     * directory ID in the request.</p>
-     */
     inline void SetEnableInteroperability(bool value) { m_enableInteroperabilityHasBeenSet = true; m_enableInteroperability = value; }
-
-    /**
-     * <p>When <code>true</code>, allows organization interoperability between WorkMail
-     * and Microsoft Exchange. If <code>true</code>, you must include a AD Connector
-     * directory ID in the request.</p>
-     */
     inline CreateOrganizationRequest& WithEnableInteroperability(bool value) { SetEnableInteroperability(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_directoryId;
@@ -278,8 +118,8 @@ namespace Model
     Aws::String m_alias;
     bool m_aliasHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
     Aws::Vector<Domain> m_domains;
     bool m_domainsHasBeenSet = false;
@@ -287,7 +127,7 @@ namespace Model
     Aws::String m_kmsKeyArn;
     bool m_kmsKeyArnHasBeenSet = false;
 
-    bool m_enableInteroperability;
+    bool m_enableInteroperability{false};
     bool m_enableInteroperabilityHasBeenSet = false;
   };
 

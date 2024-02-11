@@ -21,7 +21,7 @@ namespace Model
   class UpdateGlobalSettingsRequest : public ChimeSDKVoiceRequest
   {
   public:
-    AWS_CHIMESDKVOICE_API UpdateGlobalSettingsRequest();
+    AWS_CHIMESDKVOICE_API UpdateGlobalSettingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,36 +32,17 @@ namespace Model
     AWS_CHIMESDKVOICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Voice Connector settings.</p>
      */
-    inline const VoiceConnectorSettings& GetVoiceConnector() const{ return m_voiceConnector; }
-
-    /**
-     * <p>The Voice Connector settings.</p>
-     */
+    inline const VoiceConnectorSettings& GetVoiceConnector() const { return m_voiceConnector; }
     inline bool VoiceConnectorHasBeenSet() const { return m_voiceConnectorHasBeenSet; }
-
-    /**
-     * <p>The Voice Connector settings.</p>
-     */
-    inline void SetVoiceConnector(const VoiceConnectorSettings& value) { m_voiceConnectorHasBeenSet = true; m_voiceConnector = value; }
-
-    /**
-     * <p>The Voice Connector settings.</p>
-     */
-    inline void SetVoiceConnector(VoiceConnectorSettings&& value) { m_voiceConnectorHasBeenSet = true; m_voiceConnector = std::move(value); }
-
-    /**
-     * <p>The Voice Connector settings.</p>
-     */
-    inline UpdateGlobalSettingsRequest& WithVoiceConnector(const VoiceConnectorSettings& value) { SetVoiceConnector(value); return *this;}
-
-    /**
-     * <p>The Voice Connector settings.</p>
-     */
-    inline UpdateGlobalSettingsRequest& WithVoiceConnector(VoiceConnectorSettings&& value) { SetVoiceConnector(std::move(value)); return *this;}
-
+    template<typename VoiceConnectorT = VoiceConnectorSettings>
+    void SetVoiceConnector(VoiceConnectorT&& value) { m_voiceConnectorHasBeenSet = true; m_voiceConnector = std::forward<VoiceConnectorT>(value); }
+    template<typename VoiceConnectorT = VoiceConnectorSettings>
+    UpdateGlobalSettingsRequest& WithVoiceConnector(VoiceConnectorT&& value) { SetVoiceConnector(std::forward<VoiceConnectorT>(value)); return *this;}
+    ///@}
   private:
 
     VoiceConnectorSettings m_voiceConnector;

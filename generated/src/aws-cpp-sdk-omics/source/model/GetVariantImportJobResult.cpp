@@ -17,15 +17,7 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-GetVariantImportJobResult::GetVariantImportJobResult() : 
-    m_runLeftNormalization(false),
-    m_status(JobStatus::NOT_SET)
-{
-}
-
-GetVariantImportJobResult::GetVariantImportJobResult(const Aws::AmazonWebServiceResult<JsonValue>& result) : 
-    m_runLeftNormalization(false),
-    m_status(JobStatus::NOT_SET)
+GetVariantImportJobResult::GetVariantImportJobResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
 }
@@ -33,30 +25,46 @@ GetVariantImportJobResult::GetVariantImportJobResult(const Aws::AmazonWebService
 GetVariantImportJobResult& GetVariantImportJobResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("completionTime"))
-  {
-    m_completionTime = jsonValue.GetString("completionTime");
-
-  }
-
-  if(jsonValue.ValueExists("creationTime"))
-  {
-    m_creationTime = jsonValue.GetString("creationTime");
-
-  }
-
-  if(jsonValue.ValueExists("destinationName"))
-  {
-    m_destinationName = jsonValue.GetString("destinationName");
-
-  }
-
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
+    m_idHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("destinationName"))
+  {
+    m_destinationName = jsonValue.GetString("destinationName");
+    m_destinationNameHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("roleArn"))
+  {
+    m_roleArn = jsonValue.GetString("roleArn");
+    m_roleArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("status"))
+  {
+    m_status = JobStatusMapper::GetJobStatusForName(jsonValue.GetString("status"));
+    m_statusHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("statusMessage"))
+  {
+    m_statusMessage = jsonValue.GetString("statusMessage");
+    m_statusMessageHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("creationTime"))
+  {
+    m_creationTime = jsonValue.GetString("creationTime");
+    m_creationTimeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("updateTime"))
+  {
+    m_updateTime = jsonValue.GetString("updateTime");
+    m_updateTimeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("completionTime"))
+  {
+    m_completionTime = jsonValue.GetString("completionTime");
+    m_completionTimeHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("items"))
   {
     Aws::Utils::Array<JsonView> itemsJsonList = jsonValue.GetArray("items");
@@ -64,44 +72,29 @@ GetVariantImportJobResult& GetVariantImportJobResult::operator =(const Aws::Amaz
     {
       m_items.push_back(itemsJsonList[itemsIndex].AsObject());
     }
+    m_itemsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("roleArn"))
-  {
-    m_roleArn = jsonValue.GetString("roleArn");
-
-  }
-
   if(jsonValue.ValueExists("runLeftNormalization"))
   {
     m_runLeftNormalization = jsonValue.GetBool("runLeftNormalization");
-
+    m_runLeftNormalizationHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("status"))
+  if(jsonValue.ValueExists("annotationFields"))
   {
-    m_status = JobStatusMapper::GetJobStatusForName(jsonValue.GetString("status"));
-
+    Aws::Map<Aws::String, JsonView> annotationFieldsJsonMap = jsonValue.GetObject("annotationFields").GetAllObjects();
+    for(auto& annotationFieldsItem : annotationFieldsJsonMap)
+    {
+      m_annotationFields[annotationFieldsItem.first] = annotationFieldsItem.second.AsString();
+    }
+    m_annotationFieldsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("statusMessage"))
-  {
-    m_statusMessage = jsonValue.GetString("statusMessage");
-
-  }
-
-  if(jsonValue.ValueExists("updateTime"))
-  {
-    m_updateTime = jsonValue.GetString("updateTime");
-
-  }
-
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

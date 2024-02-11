@@ -30,39 +30,25 @@ namespace Model
   class AwsElbLoadBalancerConnectionSettings
   {
   public:
-    AWS_SECURITYHUB_API AwsElbLoadBalancerConnectionSettings();
+    AWS_SECURITYHUB_API AwsElbLoadBalancerConnectionSettings() = default;
     AWS_SECURITYHUB_API AwsElbLoadBalancerConnectionSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsElbLoadBalancerConnectionSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The time, in seconds, that the connection can be idle (no data is sent over
      * the connection) before it is closed by the load balancer.</p>
      */
-    inline int GetIdleTimeout() const{ return m_idleTimeout; }
-
-    /**
-     * <p>The time, in seconds, that the connection can be idle (no data is sent over
-     * the connection) before it is closed by the load balancer.</p>
-     */
+    inline int GetIdleTimeout() const { return m_idleTimeout; }
     inline bool IdleTimeoutHasBeenSet() const { return m_idleTimeoutHasBeenSet; }
-
-    /**
-     * <p>The time, in seconds, that the connection can be idle (no data is sent over
-     * the connection) before it is closed by the load balancer.</p>
-     */
     inline void SetIdleTimeout(int value) { m_idleTimeoutHasBeenSet = true; m_idleTimeout = value; }
-
-    /**
-     * <p>The time, in seconds, that the connection can be idle (no data is sent over
-     * the connection) before it is closed by the load balancer.</p>
-     */
     inline AwsElbLoadBalancerConnectionSettings& WithIdleTimeout(int value) { SetIdleTimeout(value); return *this;}
-
+    ///@}
   private:
 
-    int m_idleTimeout;
+    int m_idleTimeout{0};
     bool m_idleTimeoutHasBeenSet = false;
   };
 

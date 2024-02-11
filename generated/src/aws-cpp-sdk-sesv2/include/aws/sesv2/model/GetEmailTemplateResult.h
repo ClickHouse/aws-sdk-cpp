@@ -34,106 +34,52 @@ namespace Model
   class GetEmailTemplateResult
   {
   public:
-    AWS_SESV2_API GetEmailTemplateResult();
+    AWS_SESV2_API GetEmailTemplateResult() = default;
     AWS_SESV2_API GetEmailTemplateResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SESV2_API GetEmailTemplateResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The name of the template.</p>
      */
-    inline const Aws::String& GetTemplateName() const{ return m_templateName; }
+    inline const Aws::String& GetTemplateName() const { return m_templateName; }
+    template<typename TemplateNameT = Aws::String>
+    void SetTemplateName(TemplateNameT&& value) { m_templateNameHasBeenSet = true; m_templateName = std::forward<TemplateNameT>(value); }
+    template<typename TemplateNameT = Aws::String>
+    GetEmailTemplateResult& WithTemplateName(TemplateNameT&& value) { SetTemplateName(std::forward<TemplateNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the template.</p>
-     */
-    inline void SetTemplateName(const Aws::String& value) { m_templateName = value; }
-
-    /**
-     * <p>The name of the template.</p>
-     */
-    inline void SetTemplateName(Aws::String&& value) { m_templateName = std::move(value); }
-
-    /**
-     * <p>The name of the template.</p>
-     */
-    inline void SetTemplateName(const char* value) { m_templateName.assign(value); }
-
-    /**
-     * <p>The name of the template.</p>
-     */
-    inline GetEmailTemplateResult& WithTemplateName(const Aws::String& value) { SetTemplateName(value); return *this;}
-
-    /**
-     * <p>The name of the template.</p>
-     */
-    inline GetEmailTemplateResult& WithTemplateName(Aws::String&& value) { SetTemplateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the template.</p>
-     */
-    inline GetEmailTemplateResult& WithTemplateName(const char* value) { SetTemplateName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The content of the email template, composed of a subject line, an HTML part,
      * and a text-only part.</p>
      */
-    inline const EmailTemplateContent& GetTemplateContent() const{ return m_templateContent; }
+    inline const EmailTemplateContent& GetTemplateContent() const { return m_templateContent; }
+    template<typename TemplateContentT = EmailTemplateContent>
+    void SetTemplateContent(TemplateContentT&& value) { m_templateContentHasBeenSet = true; m_templateContent = std::forward<TemplateContentT>(value); }
+    template<typename TemplateContentT = EmailTemplateContent>
+    GetEmailTemplateResult& WithTemplateContent(TemplateContentT&& value) { SetTemplateContent(std::forward<TemplateContentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The content of the email template, composed of a subject line, an HTML part,
-     * and a text-only part.</p>
-     */
-    inline void SetTemplateContent(const EmailTemplateContent& value) { m_templateContent = value; }
-
-    /**
-     * <p>The content of the email template, composed of a subject line, an HTML part,
-     * and a text-only part.</p>
-     */
-    inline void SetTemplateContent(EmailTemplateContent&& value) { m_templateContent = std::move(value); }
-
-    /**
-     * <p>The content of the email template, composed of a subject line, an HTML part,
-     * and a text-only part.</p>
-     */
-    inline GetEmailTemplateResult& WithTemplateContent(const EmailTemplateContent& value) { SetTemplateContent(value); return *this;}
-
-    /**
-     * <p>The content of the email template, composed of a subject line, an HTML part,
-     * and a text-only part.</p>
-     */
-    inline GetEmailTemplateResult& WithTemplateContent(EmailTemplateContent&& value) { SetTemplateContent(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetEmailTemplateResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetEmailTemplateResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetEmailTemplateResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetEmailTemplateResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_templateName;
+    bool m_templateNameHasBeenSet = false;
 
     EmailTemplateContent m_templateContent;
+    bool m_templateContentHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

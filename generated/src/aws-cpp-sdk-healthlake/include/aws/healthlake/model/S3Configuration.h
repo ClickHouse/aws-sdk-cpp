@@ -24,109 +24,44 @@ namespace Model
 {
 
   /**
-   * <p> The configuration of the S3 bucket for either an import or export job. This
-   * includes assigning permissions for access. </p><p><h3>See Also:</h3>   <a
+   * <p>The configuration of the S3 bucket for either an import or export job. This
+   * includes assigning access permissions.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/healthlake-2017-07-01/S3Configuration">AWS
    * API Reference</a></p>
    */
   class S3Configuration
   {
   public:
-    AWS_HEALTHLAKE_API S3Configuration();
+    AWS_HEALTHLAKE_API S3Configuration() = default;
     AWS_HEALTHLAKE_API S3Configuration(Aws::Utils::Json::JsonView jsonValue);
     AWS_HEALTHLAKE_API S3Configuration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_HEALTHLAKE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p> The S3Uri is the user specified S3 location of the FHIR data to be imported
-     * into Amazon HealthLake. </p>
+     * <p>The <code>S3Uri</code> is the user-specified S3 location of the FHIR data to
+     * be imported into AWS HealthLake.</p>
      */
-    inline const Aws::String& GetS3Uri() const{ return m_s3Uri; }
-
-    /**
-     * <p> The S3Uri is the user specified S3 location of the FHIR data to be imported
-     * into Amazon HealthLake. </p>
-     */
+    inline const Aws::String& GetS3Uri() const { return m_s3Uri; }
     inline bool S3UriHasBeenSet() const { return m_s3UriHasBeenSet; }
+    template<typename S3UriT = Aws::String>
+    void SetS3Uri(S3UriT&& value) { m_s3UriHasBeenSet = true; m_s3Uri = std::forward<S3UriT>(value); }
+    template<typename S3UriT = Aws::String>
+    S3Configuration& WithS3Uri(S3UriT&& value) { SetS3Uri(std::forward<S3UriT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The S3Uri is the user specified S3 location of the FHIR data to be imported
-     * into Amazon HealthLake. </p>
+     * <p>The Key Management Service (KMS) key ID used to access the S3 bucket. </p>
      */
-    inline void SetS3Uri(const Aws::String& value) { m_s3UriHasBeenSet = true; m_s3Uri = value; }
-
-    /**
-     * <p> The S3Uri is the user specified S3 location of the FHIR data to be imported
-     * into Amazon HealthLake. </p>
-     */
-    inline void SetS3Uri(Aws::String&& value) { m_s3UriHasBeenSet = true; m_s3Uri = std::move(value); }
-
-    /**
-     * <p> The S3Uri is the user specified S3 location of the FHIR data to be imported
-     * into Amazon HealthLake. </p>
-     */
-    inline void SetS3Uri(const char* value) { m_s3UriHasBeenSet = true; m_s3Uri.assign(value); }
-
-    /**
-     * <p> The S3Uri is the user specified S3 location of the FHIR data to be imported
-     * into Amazon HealthLake. </p>
-     */
-    inline S3Configuration& WithS3Uri(const Aws::String& value) { SetS3Uri(value); return *this;}
-
-    /**
-     * <p> The S3Uri is the user specified S3 location of the FHIR data to be imported
-     * into Amazon HealthLake. </p>
-     */
-    inline S3Configuration& WithS3Uri(Aws::String&& value) { SetS3Uri(std::move(value)); return *this;}
-
-    /**
-     * <p> The S3Uri is the user specified S3 location of the FHIR data to be imported
-     * into Amazon HealthLake. </p>
-     */
-    inline S3Configuration& WithS3Uri(const char* value) { SetS3Uri(value); return *this;}
-
-
-    /**
-     * <p> The KMS key ID used to access the S3 bucket. </p>
-     */
-    inline const Aws::String& GetKmsKeyId() const{ return m_kmsKeyId; }
-
-    /**
-     * <p> The KMS key ID used to access the S3 bucket. </p>
-     */
+    inline const Aws::String& GetKmsKeyId() const { return m_kmsKeyId; }
     inline bool KmsKeyIdHasBeenSet() const { return m_kmsKeyIdHasBeenSet; }
-
-    /**
-     * <p> The KMS key ID used to access the S3 bucket. </p>
-     */
-    inline void SetKmsKeyId(const Aws::String& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = value; }
-
-    /**
-     * <p> The KMS key ID used to access the S3 bucket. </p>
-     */
-    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::move(value); }
-
-    /**
-     * <p> The KMS key ID used to access the S3 bucket. </p>
-     */
-    inline void SetKmsKeyId(const char* value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId.assign(value); }
-
-    /**
-     * <p> The KMS key ID used to access the S3 bucket. </p>
-     */
-    inline S3Configuration& WithKmsKeyId(const Aws::String& value) { SetKmsKeyId(value); return *this;}
-
-    /**
-     * <p> The KMS key ID used to access the S3 bucket. </p>
-     */
-    inline S3Configuration& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p> The KMS key ID used to access the S3 bucket. </p>
-     */
-    inline S3Configuration& WithKmsKeyId(const char* value) { SetKmsKeyId(value); return *this;}
-
+    template<typename KmsKeyIdT = Aws::String>
+    void SetKmsKeyId(KmsKeyIdT&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::forward<KmsKeyIdT>(value); }
+    template<typename KmsKeyIdT = Aws::String>
+    S3Configuration& WithKmsKeyId(KmsKeyIdT&& value) { SetKmsKeyId(std::forward<KmsKeyIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_s3Uri;

@@ -23,7 +23,7 @@ namespace Model
   class UpdateAlertRequest : public LookoutMetricsRequest
   {
   public:
-    AWS_LOOKOUTMETRICS_API UpdateAlertRequest();
+    AWS_LOOKOUTMETRICS_API UpdateAlertRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,176 +34,64 @@ namespace Model
     AWS_LOOKOUTMETRICS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the alert to update.</p>
      */
-    inline const Aws::String& GetAlertArn() const{ return m_alertArn; }
-
-    /**
-     * <p>The ARN of the alert to update.</p>
-     */
+    inline const Aws::String& GetAlertArn() const { return m_alertArn; }
     inline bool AlertArnHasBeenSet() const { return m_alertArnHasBeenSet; }
+    template<typename AlertArnT = Aws::String>
+    void SetAlertArn(AlertArnT&& value) { m_alertArnHasBeenSet = true; m_alertArn = std::forward<AlertArnT>(value); }
+    template<typename AlertArnT = Aws::String>
+    UpdateAlertRequest& WithAlertArn(AlertArnT&& value) { SetAlertArn(std::forward<AlertArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the alert to update.</p>
-     */
-    inline void SetAlertArn(const Aws::String& value) { m_alertArnHasBeenSet = true; m_alertArn = value; }
-
-    /**
-     * <p>The ARN of the alert to update.</p>
-     */
-    inline void SetAlertArn(Aws::String&& value) { m_alertArnHasBeenSet = true; m_alertArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the alert to update.</p>
-     */
-    inline void SetAlertArn(const char* value) { m_alertArnHasBeenSet = true; m_alertArn.assign(value); }
-
-    /**
-     * <p>The ARN of the alert to update.</p>
-     */
-    inline UpdateAlertRequest& WithAlertArn(const Aws::String& value) { SetAlertArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the alert to update.</p>
-     */
-    inline UpdateAlertRequest& WithAlertArn(Aws::String&& value) { SetAlertArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the alert to update.</p>
-     */
-    inline UpdateAlertRequest& WithAlertArn(const char* value) { SetAlertArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the alert.</p>
      */
-    inline const Aws::String& GetAlertDescription() const{ return m_alertDescription; }
-
-    /**
-     * <p>A description of the alert.</p>
-     */
+    inline const Aws::String& GetAlertDescription() const { return m_alertDescription; }
     inline bool AlertDescriptionHasBeenSet() const { return m_alertDescriptionHasBeenSet; }
+    template<typename AlertDescriptionT = Aws::String>
+    void SetAlertDescription(AlertDescriptionT&& value) { m_alertDescriptionHasBeenSet = true; m_alertDescription = std::forward<AlertDescriptionT>(value); }
+    template<typename AlertDescriptionT = Aws::String>
+    UpdateAlertRequest& WithAlertDescription(AlertDescriptionT&& value) { SetAlertDescription(std::forward<AlertDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the alert.</p>
-     */
-    inline void SetAlertDescription(const Aws::String& value) { m_alertDescriptionHasBeenSet = true; m_alertDescription = value; }
-
-    /**
-     * <p>A description of the alert.</p>
-     */
-    inline void SetAlertDescription(Aws::String&& value) { m_alertDescriptionHasBeenSet = true; m_alertDescription = std::move(value); }
-
-    /**
-     * <p>A description of the alert.</p>
-     */
-    inline void SetAlertDescription(const char* value) { m_alertDescriptionHasBeenSet = true; m_alertDescription.assign(value); }
-
-    /**
-     * <p>A description of the alert.</p>
-     */
-    inline UpdateAlertRequest& WithAlertDescription(const Aws::String& value) { SetAlertDescription(value); return *this;}
-
-    /**
-     * <p>A description of the alert.</p>
-     */
-    inline UpdateAlertRequest& WithAlertDescription(Aws::String&& value) { SetAlertDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the alert.</p>
-     */
-    inline UpdateAlertRequest& WithAlertDescription(const char* value) { SetAlertDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An integer from 0 to 100 specifying the alert sensitivity threshold.</p>
      */
-    inline int GetAlertSensitivityThreshold() const{ return m_alertSensitivityThreshold; }
-
-    /**
-     * <p>An integer from 0 to 100 specifying the alert sensitivity threshold.</p>
-     */
+    inline int GetAlertSensitivityThreshold() const { return m_alertSensitivityThreshold; }
     inline bool AlertSensitivityThresholdHasBeenSet() const { return m_alertSensitivityThresholdHasBeenSet; }
-
-    /**
-     * <p>An integer from 0 to 100 specifying the alert sensitivity threshold.</p>
-     */
     inline void SetAlertSensitivityThreshold(int value) { m_alertSensitivityThresholdHasBeenSet = true; m_alertSensitivityThreshold = value; }
-
-    /**
-     * <p>An integer from 0 to 100 specifying the alert sensitivity threshold.</p>
-     */
     inline UpdateAlertRequest& WithAlertSensitivityThreshold(int value) { SetAlertSensitivityThreshold(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Action that will be triggered when there is an alert.</p>
      */
-    inline const Action& GetAction() const{ return m_action; }
-
-    /**
-     * <p>Action that will be triggered when there is an alert.</p>
-     */
+    inline const Action& GetAction() const { return m_action; }
     inline bool ActionHasBeenSet() const { return m_actionHasBeenSet; }
+    template<typename ActionT = Action>
+    void SetAction(ActionT&& value) { m_actionHasBeenSet = true; m_action = std::forward<ActionT>(value); }
+    template<typename ActionT = Action>
+    UpdateAlertRequest& WithAction(ActionT&& value) { SetAction(std::forward<ActionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Action that will be triggered when there is an alert.</p>
-     */
-    inline void SetAction(const Action& value) { m_actionHasBeenSet = true; m_action = value; }
-
-    /**
-     * <p>Action that will be triggered when there is an alert.</p>
-     */
-    inline void SetAction(Action&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
-
-    /**
-     * <p>Action that will be triggered when there is an alert.</p>
-     */
-    inline UpdateAlertRequest& WithAction(const Action& value) { SetAction(value); return *this;}
-
-    /**
-     * <p>Action that will be triggered when there is an alert.</p>
-     */
-    inline UpdateAlertRequest& WithAction(Action&& value) { SetAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration of the alert filters, containing MetricList and
      * DimensionFilterList.</p>
      */
-    inline const AlertFilters& GetAlertFilters() const{ return m_alertFilters; }
-
-    /**
-     * <p>The configuration of the alert filters, containing MetricList and
-     * DimensionFilterList.</p>
-     */
+    inline const AlertFilters& GetAlertFilters() const { return m_alertFilters; }
     inline bool AlertFiltersHasBeenSet() const { return m_alertFiltersHasBeenSet; }
-
-    /**
-     * <p>The configuration of the alert filters, containing MetricList and
-     * DimensionFilterList.</p>
-     */
-    inline void SetAlertFilters(const AlertFilters& value) { m_alertFiltersHasBeenSet = true; m_alertFilters = value; }
-
-    /**
-     * <p>The configuration of the alert filters, containing MetricList and
-     * DimensionFilterList.</p>
-     */
-    inline void SetAlertFilters(AlertFilters&& value) { m_alertFiltersHasBeenSet = true; m_alertFilters = std::move(value); }
-
-    /**
-     * <p>The configuration of the alert filters, containing MetricList and
-     * DimensionFilterList.</p>
-     */
-    inline UpdateAlertRequest& WithAlertFilters(const AlertFilters& value) { SetAlertFilters(value); return *this;}
-
-    /**
-     * <p>The configuration of the alert filters, containing MetricList and
-     * DimensionFilterList.</p>
-     */
-    inline UpdateAlertRequest& WithAlertFilters(AlertFilters&& value) { SetAlertFilters(std::move(value)); return *this;}
-
+    template<typename AlertFiltersT = AlertFilters>
+    void SetAlertFilters(AlertFiltersT&& value) { m_alertFiltersHasBeenSet = true; m_alertFilters = std::forward<AlertFiltersT>(value); }
+    template<typename AlertFiltersT = AlertFilters>
+    UpdateAlertRequest& WithAlertFilters(AlertFiltersT&& value) { SetAlertFilters(std::forward<AlertFiltersT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_alertArn;
@@ -212,7 +100,7 @@ namespace Model
     Aws::String m_alertDescription;
     bool m_alertDescriptionHasBeenSet = false;
 
-    int m_alertSensitivityThreshold;
+    int m_alertSensitivityThreshold{0};
     bool m_alertSensitivityThresholdHasBeenSet = false;
 
     Action m_action;

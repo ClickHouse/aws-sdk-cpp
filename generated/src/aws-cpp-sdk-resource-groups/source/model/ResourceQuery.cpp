@@ -18,17 +18,7 @@ namespace ResourceGroups
 namespace Model
 {
 
-ResourceQuery::ResourceQuery() : 
-    m_type(QueryType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_queryHasBeenSet(false)
-{
-}
-
-ResourceQuery::ResourceQuery(JsonView jsonValue) : 
-    m_type(QueryType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_queryHasBeenSet(false)
+ResourceQuery::ResourceQuery(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ResourceQuery& ResourceQuery::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Type"))
   {
     m_type = QueryTypeMapper::GetQueryTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Query"))
   {
     m_query = jsonValue.GetString("Query");
-
     m_queryHasBeenSet = true;
   }
-
   return *this;
 }
 

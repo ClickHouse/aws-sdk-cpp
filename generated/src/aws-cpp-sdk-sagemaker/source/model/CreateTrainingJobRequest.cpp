@@ -12,35 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateTrainingJobRequest::CreateTrainingJobRequest() : 
-    m_trainingJobNameHasBeenSet(false),
-    m_hyperParametersHasBeenSet(false),
-    m_algorithmSpecificationHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_inputDataConfigHasBeenSet(false),
-    m_outputDataConfigHasBeenSet(false),
-    m_resourceConfigHasBeenSet(false),
-    m_vpcConfigHasBeenSet(false),
-    m_stoppingConditionHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_enableNetworkIsolation(false),
-    m_enableNetworkIsolationHasBeenSet(false),
-    m_enableInterContainerTrafficEncryption(false),
-    m_enableInterContainerTrafficEncryptionHasBeenSet(false),
-    m_enableManagedSpotTraining(false),
-    m_enableManagedSpotTrainingHasBeenSet(false),
-    m_checkpointConfigHasBeenSet(false),
-    m_debugHookConfigHasBeenSet(false),
-    m_debugRuleConfigurationsHasBeenSet(false),
-    m_tensorBoardOutputConfigHasBeenSet(false),
-    m_experimentConfigHasBeenSet(false),
-    m_profilerConfigHasBeenSet(false),
-    m_profilerRuleConfigurationsHasBeenSet(false),
-    m_environmentHasBeenSet(false),
-    m_retryStrategyHasBeenSet(false)
-{
-}
-
 Aws::String CreateTrainingJobRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -204,6 +175,24 @@ Aws::String CreateTrainingJobRequest::SerializePayload() const
   if(m_retryStrategyHasBeenSet)
   {
    payload.WithObject("RetryStrategy", m_retryStrategy.Jsonize());
+
+  }
+
+  if(m_remoteDebugConfigHasBeenSet)
+  {
+   payload.WithObject("RemoteDebugConfig", m_remoteDebugConfig.Jsonize());
+
+  }
+
+  if(m_infraCheckConfigHasBeenSet)
+  {
+   payload.WithObject("InfraCheckConfig", m_infraCheckConfig.Jsonize());
+
+  }
+
+  if(m_sessionChainingConfigHasBeenSet)
+  {
+   payload.WithObject("SessionChainingConfig", m_sessionChainingConfig.Jsonize());
 
   }
 

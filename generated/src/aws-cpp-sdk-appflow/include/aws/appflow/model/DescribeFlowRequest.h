@@ -21,7 +21,7 @@ namespace Model
   class DescribeFlowRequest : public AppflowRequest
   {
   public:
-    AWS_APPFLOW_API DescribeFlowRequest();
+    AWS_APPFLOW_API DescribeFlowRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,54 +32,18 @@ namespace Model
     AWS_APPFLOW_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p> The specified name of the flow. Spaces are not allowed. Use underscores (_)
      * or hyphens (-) only. </p>
      */
-    inline const Aws::String& GetFlowName() const{ return m_flowName; }
-
-    /**
-     * <p> The specified name of the flow. Spaces are not allowed. Use underscores (_)
-     * or hyphens (-) only. </p>
-     */
+    inline const Aws::String& GetFlowName() const { return m_flowName; }
     inline bool FlowNameHasBeenSet() const { return m_flowNameHasBeenSet; }
-
-    /**
-     * <p> The specified name of the flow. Spaces are not allowed. Use underscores (_)
-     * or hyphens (-) only. </p>
-     */
-    inline void SetFlowName(const Aws::String& value) { m_flowNameHasBeenSet = true; m_flowName = value; }
-
-    /**
-     * <p> The specified name of the flow. Spaces are not allowed. Use underscores (_)
-     * or hyphens (-) only. </p>
-     */
-    inline void SetFlowName(Aws::String&& value) { m_flowNameHasBeenSet = true; m_flowName = std::move(value); }
-
-    /**
-     * <p> The specified name of the flow. Spaces are not allowed. Use underscores (_)
-     * or hyphens (-) only. </p>
-     */
-    inline void SetFlowName(const char* value) { m_flowNameHasBeenSet = true; m_flowName.assign(value); }
-
-    /**
-     * <p> The specified name of the flow. Spaces are not allowed. Use underscores (_)
-     * or hyphens (-) only. </p>
-     */
-    inline DescribeFlowRequest& WithFlowName(const Aws::String& value) { SetFlowName(value); return *this;}
-
-    /**
-     * <p> The specified name of the flow. Spaces are not allowed. Use underscores (_)
-     * or hyphens (-) only. </p>
-     */
-    inline DescribeFlowRequest& WithFlowName(Aws::String&& value) { SetFlowName(std::move(value)); return *this;}
-
-    /**
-     * <p> The specified name of the flow. Spaces are not allowed. Use underscores (_)
-     * or hyphens (-) only. </p>
-     */
-    inline DescribeFlowRequest& WithFlowName(const char* value) { SetFlowName(value); return *this;}
-
+    template<typename FlowNameT = Aws::String>
+    void SetFlowName(FlowNameT&& value) { m_flowNameHasBeenSet = true; m_flowName = std::forward<FlowNameT>(value); }
+    template<typename FlowNameT = Aws::String>
+    DescribeFlowRequest& WithFlowName(FlowNameT&& value) { SetFlowName(std::forward<FlowNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_flowName;

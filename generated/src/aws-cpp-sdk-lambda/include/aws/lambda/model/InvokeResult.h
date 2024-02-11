@@ -22,10 +22,9 @@ namespace Model
   class InvokeResult
   {
   public:
-    AWS_LAMBDA_API InvokeResult();
-    //We have to define these because Microsoft doesn't auto generate them
-    AWS_LAMBDA_API InvokeResult(InvokeResult&&);
-    AWS_LAMBDA_API InvokeResult& operator=(InvokeResult&&);
+    AWS_LAMBDA_API InvokeResult() = default;
+    AWS_LAMBDA_API InvokeResult(InvokeResult&&) = default;
+    AWS_LAMBDA_API InvokeResult& operator=(InvokeResult&&) = default;
     //we delete these because Microsoft doesn't handle move generation correctly
     //and we therefore don't trust them to get it right here either.
     InvokeResult(const InvokeResult&) = delete;
@@ -37,198 +36,89 @@ namespace Model
 
 
 
+    ///@{
     /**
      * <p>The HTTP status code is in the 200 range for a successful request. For the
      * <code>RequestResponse</code> invocation type, this status code is 200. For the
      * <code>Event</code> invocation type, this status code is 202. For the
      * <code>DryRun</code> invocation type, the status code is 204.</p>
      */
-    inline int GetStatusCode() const{ return m_statusCode; }
-
-    /**
-     * <p>The HTTP status code is in the 200 range for a successful request. For the
-     * <code>RequestResponse</code> invocation type, this status code is 200. For the
-     * <code>Event</code> invocation type, this status code is 202. For the
-     * <code>DryRun</code> invocation type, the status code is 204.</p>
-     */
-    inline void SetStatusCode(int value) { m_statusCode = value; }
-
-    /**
-     * <p>The HTTP status code is in the 200 range for a successful request. For the
-     * <code>RequestResponse</code> invocation type, this status code is 200. For the
-     * <code>Event</code> invocation type, this status code is 202. For the
-     * <code>DryRun</code> invocation type, the status code is 204.</p>
-     */
+    inline int GetStatusCode() const { return m_statusCode; }
+    inline void SetStatusCode(int value) { m_statusCodeHasBeenSet = true; m_statusCode = value; }
     inline InvokeResult& WithStatusCode(int value) { SetStatusCode(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>If present, indicates that an error occurred during function execution.
      * Details about the error are included in the response payload.</p>
      */
-    inline const Aws::String& GetFunctionError() const{ return m_functionError; }
+    inline const Aws::String& GetFunctionError() const { return m_functionError; }
+    template<typename FunctionErrorT = Aws::String>
+    void SetFunctionError(FunctionErrorT&& value) { m_functionErrorHasBeenSet = true; m_functionError = std::forward<FunctionErrorT>(value); }
+    template<typename FunctionErrorT = Aws::String>
+    InvokeResult& WithFunctionError(FunctionErrorT&& value) { SetFunctionError(std::forward<FunctionErrorT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If present, indicates that an error occurred during function execution.
-     * Details about the error are included in the response payload.</p>
-     */
-    inline void SetFunctionError(const Aws::String& value) { m_functionError = value; }
-
-    /**
-     * <p>If present, indicates that an error occurred during function execution.
-     * Details about the error are included in the response payload.</p>
-     */
-    inline void SetFunctionError(Aws::String&& value) { m_functionError = std::move(value); }
-
-    /**
-     * <p>If present, indicates that an error occurred during function execution.
-     * Details about the error are included in the response payload.</p>
-     */
-    inline void SetFunctionError(const char* value) { m_functionError.assign(value); }
-
-    /**
-     * <p>If present, indicates that an error occurred during function execution.
-     * Details about the error are included in the response payload.</p>
-     */
-    inline InvokeResult& WithFunctionError(const Aws::String& value) { SetFunctionError(value); return *this;}
-
-    /**
-     * <p>If present, indicates that an error occurred during function execution.
-     * Details about the error are included in the response payload.</p>
-     */
-    inline InvokeResult& WithFunctionError(Aws::String&& value) { SetFunctionError(std::move(value)); return *this;}
-
-    /**
-     * <p>If present, indicates that an error occurred during function execution.
-     * Details about the error are included in the response payload.</p>
-     */
-    inline InvokeResult& WithFunctionError(const char* value) { SetFunctionError(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The last 4 KB of the execution log, which is base64-encoded.</p>
      */
-    inline const Aws::String& GetLogResult() const{ return m_logResult; }
+    inline const Aws::String& GetLogResult() const { return m_logResult; }
+    template<typename LogResultT = Aws::String>
+    void SetLogResult(LogResultT&& value) { m_logResultHasBeenSet = true; m_logResult = std::forward<LogResultT>(value); }
+    template<typename LogResultT = Aws::String>
+    InvokeResult& WithLogResult(LogResultT&& value) { SetLogResult(std::forward<LogResultT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The last 4 KB of the execution log, which is base64-encoded.</p>
-     */
-    inline void SetLogResult(const Aws::String& value) { m_logResult = value; }
-
-    /**
-     * <p>The last 4 KB of the execution log, which is base64-encoded.</p>
-     */
-    inline void SetLogResult(Aws::String&& value) { m_logResult = std::move(value); }
-
-    /**
-     * <p>The last 4 KB of the execution log, which is base64-encoded.</p>
-     */
-    inline void SetLogResult(const char* value) { m_logResult.assign(value); }
-
-    /**
-     * <p>The last 4 KB of the execution log, which is base64-encoded.</p>
-     */
-    inline InvokeResult& WithLogResult(const Aws::String& value) { SetLogResult(value); return *this;}
-
-    /**
-     * <p>The last 4 KB of the execution log, which is base64-encoded.</p>
-     */
-    inline InvokeResult& WithLogResult(Aws::String&& value) { SetLogResult(std::move(value)); return *this;}
-
-    /**
-     * <p>The last 4 KB of the execution log, which is base64-encoded.</p>
-     */
-    inline InvokeResult& WithLogResult(const char* value) { SetLogResult(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The response from the function, or an error object.</p>
      */
     inline Aws::IOStream& GetPayload() const { return m_payload.GetUnderlyingStream(); }
-
-    /**
-     * <p>The response from the function, or an error object.</p>
-     */
     inline void ReplaceBody(Aws::IOStream* body) { m_payload = Aws::Utils::Stream::ResponseStream(body); }
 
+    ///@}
 
+    ///@{
     /**
      * <p>The version of the function that executed. When you invoke a function with an
      * alias, this indicates which version the alias resolved to.</p>
      */
-    inline const Aws::String& GetExecutedVersion() const{ return m_executedVersion; }
+    inline const Aws::String& GetExecutedVersion() const { return m_executedVersion; }
+    template<typename ExecutedVersionT = Aws::String>
+    void SetExecutedVersion(ExecutedVersionT&& value) { m_executedVersionHasBeenSet = true; m_executedVersion = std::forward<ExecutedVersionT>(value); }
+    template<typename ExecutedVersionT = Aws::String>
+    InvokeResult& WithExecutedVersion(ExecutedVersionT&& value) { SetExecutedVersion(std::forward<ExecutedVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the function that executed. When you invoke a function with an
-     * alias, this indicates which version the alias resolved to.</p>
-     */
-    inline void SetExecutedVersion(const Aws::String& value) { m_executedVersion = value; }
-
-    /**
-     * <p>The version of the function that executed. When you invoke a function with an
-     * alias, this indicates which version the alias resolved to.</p>
-     */
-    inline void SetExecutedVersion(Aws::String&& value) { m_executedVersion = std::move(value); }
-
-    /**
-     * <p>The version of the function that executed. When you invoke a function with an
-     * alias, this indicates which version the alias resolved to.</p>
-     */
-    inline void SetExecutedVersion(const char* value) { m_executedVersion.assign(value); }
-
-    /**
-     * <p>The version of the function that executed. When you invoke a function with an
-     * alias, this indicates which version the alias resolved to.</p>
-     */
-    inline InvokeResult& WithExecutedVersion(const Aws::String& value) { SetExecutedVersion(value); return *this;}
-
-    /**
-     * <p>The version of the function that executed. When you invoke a function with an
-     * alias, this indicates which version the alias resolved to.</p>
-     */
-    inline InvokeResult& WithExecutedVersion(Aws::String&& value) { SetExecutedVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the function that executed. When you invoke a function with an
-     * alias, this indicates which version the alias resolved to.</p>
-     */
-    inline InvokeResult& WithExecutedVersion(const char* value) { SetExecutedVersion(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline InvokeResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline InvokeResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline InvokeResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    InvokeResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_statusCode;
+    int m_statusCode{0};
+    bool m_statusCodeHasBeenSet = false;
 
     Aws::String m_functionError;
+    bool m_functionErrorHasBeenSet = false;
 
     Aws::String m_logResult;
+    bool m_logResultHasBeenSet = false;
 
-    Aws::Utils::Stream::ResponseStream m_payload;
+    Aws::Utils::Stream::ResponseStream m_payload{};
+    bool m_payloadHasBeenSet = false;
 
     Aws::String m_executedVersion;
+    bool m_executedVersionHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

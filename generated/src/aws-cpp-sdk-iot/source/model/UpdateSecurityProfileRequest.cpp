@@ -15,23 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-UpdateSecurityProfileRequest::UpdateSecurityProfileRequest() : 
-    m_securityProfileNameHasBeenSet(false),
-    m_securityProfileDescriptionHasBeenSet(false),
-    m_behaviorsHasBeenSet(false),
-    m_alertTargetsHasBeenSet(false),
-    m_additionalMetricsToRetainV2HasBeenSet(false),
-    m_deleteBehaviors(false),
-    m_deleteBehaviorsHasBeenSet(false),
-    m_deleteAlertTargets(false),
-    m_deleteAlertTargetsHasBeenSet(false),
-    m_deleteAdditionalMetricsToRetain(false),
-    m_deleteAdditionalMetricsToRetainHasBeenSet(false),
-    m_expectedVersion(0),
-    m_expectedVersionHasBeenSet(false)
-{
-}
-
 Aws::String UpdateSecurityProfileRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -90,6 +73,18 @@ Aws::String UpdateSecurityProfileRequest::SerializePayload() const
   if(m_deleteAdditionalMetricsToRetainHasBeenSet)
   {
    payload.WithBool("deleteAdditionalMetricsToRetain", m_deleteAdditionalMetricsToRetain);
+
+  }
+
+  if(m_metricsExportConfigHasBeenSet)
+  {
+   payload.WithObject("metricsExportConfig", m_metricsExportConfig.Jsonize());
+
+  }
+
+  if(m_deleteMetricsExportConfigHasBeenSet)
+  {
+   payload.WithBool("deleteMetricsExportConfig", m_deleteMetricsExportConfig);
 
   }
 

@@ -18,13 +18,7 @@ namespace EMRContainers
 namespace Model
 {
 
-S3MonitoringConfiguration::S3MonitoringConfiguration() : 
-    m_logUriHasBeenSet(false)
-{
-}
-
-S3MonitoringConfiguration::S3MonitoringConfiguration(JsonView jsonValue) : 
-    m_logUriHasBeenSet(false)
+S3MonitoringConfiguration::S3MonitoringConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ S3MonitoringConfiguration& S3MonitoringConfiguration::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("logUri"))
   {
     m_logUri = jsonValue.GetString("logUri");
-
     m_logUriHasBeenSet = true;
   }
-
   return *this;
 }
 

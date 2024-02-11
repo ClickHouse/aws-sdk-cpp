@@ -20,15 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-PlatformProgrammingLanguage::PlatformProgrammingLanguage() : 
-    m_nameHasBeenSet(false),
-    m_versionHasBeenSet(false)
-{
-}
-
-PlatformProgrammingLanguage::PlatformProgrammingLanguage(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_versionHasBeenSet(false)
+PlatformProgrammingLanguage::PlatformProgrammingLanguage(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

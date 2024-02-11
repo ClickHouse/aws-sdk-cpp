@@ -22,7 +22,7 @@ namespace Model
   class UpdateRecommenderConfigurationRequest : public PinpointRequest
   {
   public:
-    AWS_PINPOINT_API UpdateRecommenderConfigurationRequest();
+    AWS_PINPOINT_API UpdateRecommenderConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,81 +33,29 @@ namespace Model
     AWS_PINPOINT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the recommender model configuration. This
      * identifier is displayed as the <b>Recommender ID</b> on the Amazon Pinpoint
      * console.</p>
      */
-    inline const Aws::String& GetRecommenderId() const{ return m_recommenderId; }
-
-    /**
-     * <p>The unique identifier for the recommender model configuration. This
-     * identifier is displayed as the <b>Recommender ID</b> on the Amazon Pinpoint
-     * console.</p>
-     */
+    inline const Aws::String& GetRecommenderId() const { return m_recommenderId; }
     inline bool RecommenderIdHasBeenSet() const { return m_recommenderIdHasBeenSet; }
+    template<typename RecommenderIdT = Aws::String>
+    void SetRecommenderId(RecommenderIdT&& value) { m_recommenderIdHasBeenSet = true; m_recommenderId = std::forward<RecommenderIdT>(value); }
+    template<typename RecommenderIdT = Aws::String>
+    UpdateRecommenderConfigurationRequest& WithRecommenderId(RecommenderIdT&& value) { SetRecommenderId(std::forward<RecommenderIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the recommender model configuration. This
-     * identifier is displayed as the <b>Recommender ID</b> on the Amazon Pinpoint
-     * console.</p>
-     */
-    inline void SetRecommenderId(const Aws::String& value) { m_recommenderIdHasBeenSet = true; m_recommenderId = value; }
-
-    /**
-     * <p>The unique identifier for the recommender model configuration. This
-     * identifier is displayed as the <b>Recommender ID</b> on the Amazon Pinpoint
-     * console.</p>
-     */
-    inline void SetRecommenderId(Aws::String&& value) { m_recommenderIdHasBeenSet = true; m_recommenderId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the recommender model configuration. This
-     * identifier is displayed as the <b>Recommender ID</b> on the Amazon Pinpoint
-     * console.</p>
-     */
-    inline void SetRecommenderId(const char* value) { m_recommenderIdHasBeenSet = true; m_recommenderId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the recommender model configuration. This
-     * identifier is displayed as the <b>Recommender ID</b> on the Amazon Pinpoint
-     * console.</p>
-     */
-    inline UpdateRecommenderConfigurationRequest& WithRecommenderId(const Aws::String& value) { SetRecommenderId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the recommender model configuration. This
-     * identifier is displayed as the <b>Recommender ID</b> on the Amazon Pinpoint
-     * console.</p>
-     */
-    inline UpdateRecommenderConfigurationRequest& WithRecommenderId(Aws::String&& value) { SetRecommenderId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the recommender model configuration. This
-     * identifier is displayed as the <b>Recommender ID</b> on the Amazon Pinpoint
-     * console.</p>
-     */
-    inline UpdateRecommenderConfigurationRequest& WithRecommenderId(const char* value) { SetRecommenderId(value); return *this;}
-
-
+    ///@{
     
-    inline const UpdateRecommenderConfiguration& GetUpdateRecommenderConfiguration() const{ return m_updateRecommenderConfiguration; }
-
-    
+    inline const UpdateRecommenderConfiguration& GetUpdateRecommenderConfiguration() const { return m_updateRecommenderConfiguration; }
     inline bool UpdateRecommenderConfigurationHasBeenSet() const { return m_updateRecommenderConfigurationHasBeenSet; }
-
-    
-    inline void SetUpdateRecommenderConfiguration(const UpdateRecommenderConfiguration& value) { m_updateRecommenderConfigurationHasBeenSet = true; m_updateRecommenderConfiguration = value; }
-
-    
-    inline void SetUpdateRecommenderConfiguration(UpdateRecommenderConfiguration&& value) { m_updateRecommenderConfigurationHasBeenSet = true; m_updateRecommenderConfiguration = std::move(value); }
-
-    
-    inline UpdateRecommenderConfigurationRequest& WithUpdateRecommenderConfiguration(const UpdateRecommenderConfiguration& value) { SetUpdateRecommenderConfiguration(value); return *this;}
-
-    
-    inline UpdateRecommenderConfigurationRequest& WithUpdateRecommenderConfiguration(UpdateRecommenderConfiguration&& value) { SetUpdateRecommenderConfiguration(std::move(value)); return *this;}
-
+    template<typename UpdateRecommenderConfigurationT = UpdateRecommenderConfiguration>
+    void SetUpdateRecommenderConfiguration(UpdateRecommenderConfigurationT&& value) { m_updateRecommenderConfigurationHasBeenSet = true; m_updateRecommenderConfiguration = std::forward<UpdateRecommenderConfigurationT>(value); }
+    template<typename UpdateRecommenderConfigurationT = UpdateRecommenderConfiguration>
+    UpdateRecommenderConfigurationRequest& WithUpdateRecommenderConfiguration(UpdateRecommenderConfigurationT&& value) { SetUpdateRecommenderConfiguration(std::forward<UpdateRecommenderConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_recommenderId;

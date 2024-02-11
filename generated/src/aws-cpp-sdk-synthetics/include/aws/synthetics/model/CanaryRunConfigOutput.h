@@ -30,88 +30,69 @@ namespace Model
   class CanaryRunConfigOutput
   {
   public:
-    AWS_SYNTHETICS_API CanaryRunConfigOutput();
+    AWS_SYNTHETICS_API CanaryRunConfigOutput() = default;
     AWS_SYNTHETICS_API CanaryRunConfigOutput(Aws::Utils::Json::JsonView jsonValue);
     AWS_SYNTHETICS_API CanaryRunConfigOutput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SYNTHETICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>How long the canary is allowed to run before it must stop.</p>
      */
-    inline int GetTimeoutInSeconds() const{ return m_timeoutInSeconds; }
-
-    /**
-     * <p>How long the canary is allowed to run before it must stop.</p>
-     */
+    inline int GetTimeoutInSeconds() const { return m_timeoutInSeconds; }
     inline bool TimeoutInSecondsHasBeenSet() const { return m_timeoutInSecondsHasBeenSet; }
-
-    /**
-     * <p>How long the canary is allowed to run before it must stop.</p>
-     */
     inline void SetTimeoutInSeconds(int value) { m_timeoutInSecondsHasBeenSet = true; m_timeoutInSeconds = value; }
-
-    /**
-     * <p>How long the canary is allowed to run before it must stop.</p>
-     */
     inline CanaryRunConfigOutput& WithTimeoutInSeconds(int value) { SetTimeoutInSeconds(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The maximum amount of memory available to the canary while it is running, in
      * MB. This value must be a multiple of 64.</p>
      */
-    inline int GetMemoryInMB() const{ return m_memoryInMB; }
-
-    /**
-     * <p>The maximum amount of memory available to the canary while it is running, in
-     * MB. This value must be a multiple of 64.</p>
-     */
+    inline int GetMemoryInMB() const { return m_memoryInMB; }
     inline bool MemoryInMBHasBeenSet() const { return m_memoryInMBHasBeenSet; }
-
-    /**
-     * <p>The maximum amount of memory available to the canary while it is running, in
-     * MB. This value must be a multiple of 64.</p>
-     */
     inline void SetMemoryInMB(int value) { m_memoryInMBHasBeenSet = true; m_memoryInMB = value; }
-
-    /**
-     * <p>The maximum amount of memory available to the canary while it is running, in
-     * MB. This value must be a multiple of 64.</p>
-     */
     inline CanaryRunConfigOutput& WithMemoryInMB(int value) { SetMemoryInMB(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Displays whether this canary run used active X-Ray tracing. </p>
      */
-    inline bool GetActiveTracing() const{ return m_activeTracing; }
-
-    /**
-     * <p>Displays whether this canary run used active X-Ray tracing. </p>
-     */
+    inline bool GetActiveTracing() const { return m_activeTracing; }
     inline bool ActiveTracingHasBeenSet() const { return m_activeTracingHasBeenSet; }
-
-    /**
-     * <p>Displays whether this canary run used active X-Ray tracing. </p>
-     */
     inline void SetActiveTracing(bool value) { m_activeTracingHasBeenSet = true; m_activeTracing = value; }
-
-    /**
-     * <p>Displays whether this canary run used active X-Ray tracing. </p>
-     */
     inline CanaryRunConfigOutput& WithActiveTracing(bool value) { SetActiveTracing(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>Specifies the amount of ephemeral storage (in MB) to allocate for the canary
+     * run during execution. This temporary storage is used for storing canary run
+     * artifacts (which are uploaded to an Amazon S3 bucket at the end of the run), and
+     * any canary browser operations. This temporary storage is cleared after the run
+     * is completed. Default storage value is 1024 MB.</p>
+     */
+    inline int GetEphemeralStorage() const { return m_ephemeralStorage; }
+    inline bool EphemeralStorageHasBeenSet() const { return m_ephemeralStorageHasBeenSet; }
+    inline void SetEphemeralStorage(int value) { m_ephemeralStorageHasBeenSet = true; m_ephemeralStorage = value; }
+    inline CanaryRunConfigOutput& WithEphemeralStorage(int value) { SetEphemeralStorage(value); return *this;}
+    ///@}
   private:
 
-    int m_timeoutInSeconds;
+    int m_timeoutInSeconds{0};
     bool m_timeoutInSecondsHasBeenSet = false;
 
-    int m_memoryInMB;
+    int m_memoryInMB{0};
     bool m_memoryInMBHasBeenSet = false;
 
-    bool m_activeTracing;
+    bool m_activeTracing{false};
     bool m_activeTracingHasBeenSet = false;
+
+    int m_ephemeralStorage{0};
+    bool m_ephemeralStorageHasBeenSet = false;
   };
 
 } // namespace Model

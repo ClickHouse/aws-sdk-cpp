@@ -30,126 +30,56 @@ namespace Model
   class DescribeNotificationConfigurationsResult
   {
   public:
-    AWS_AUTOSCALING_API DescribeNotificationConfigurationsResult();
+    AWS_AUTOSCALING_API DescribeNotificationConfigurationsResult() = default;
     AWS_AUTOSCALING_API DescribeNotificationConfigurationsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_AUTOSCALING_API DescribeNotificationConfigurationsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The notification configurations.</p>
      */
-    inline const Aws::Vector<NotificationConfiguration>& GetNotificationConfigurations() const{ return m_notificationConfigurations; }
+    inline const Aws::Vector<NotificationConfiguration>& GetNotificationConfigurations() const { return m_notificationConfigurations; }
+    template<typename NotificationConfigurationsT = Aws::Vector<NotificationConfiguration>>
+    void SetNotificationConfigurations(NotificationConfigurationsT&& value) { m_notificationConfigurationsHasBeenSet = true; m_notificationConfigurations = std::forward<NotificationConfigurationsT>(value); }
+    template<typename NotificationConfigurationsT = Aws::Vector<NotificationConfiguration>>
+    DescribeNotificationConfigurationsResult& WithNotificationConfigurations(NotificationConfigurationsT&& value) { SetNotificationConfigurations(std::forward<NotificationConfigurationsT>(value)); return *this;}
+    template<typename NotificationConfigurationsT = NotificationConfiguration>
+    DescribeNotificationConfigurationsResult& AddNotificationConfigurations(NotificationConfigurationsT&& value) { m_notificationConfigurationsHasBeenSet = true; m_notificationConfigurations.emplace_back(std::forward<NotificationConfigurationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The notification configurations.</p>
-     */
-    inline void SetNotificationConfigurations(const Aws::Vector<NotificationConfiguration>& value) { m_notificationConfigurations = value; }
-
-    /**
-     * <p>The notification configurations.</p>
-     */
-    inline void SetNotificationConfigurations(Aws::Vector<NotificationConfiguration>&& value) { m_notificationConfigurations = std::move(value); }
-
-    /**
-     * <p>The notification configurations.</p>
-     */
-    inline DescribeNotificationConfigurationsResult& WithNotificationConfigurations(const Aws::Vector<NotificationConfiguration>& value) { SetNotificationConfigurations(value); return *this;}
-
-    /**
-     * <p>The notification configurations.</p>
-     */
-    inline DescribeNotificationConfigurationsResult& WithNotificationConfigurations(Aws::Vector<NotificationConfiguration>&& value) { SetNotificationConfigurations(std::move(value)); return *this;}
-
-    /**
-     * <p>The notification configurations.</p>
-     */
-    inline DescribeNotificationConfigurationsResult& AddNotificationConfigurations(const NotificationConfiguration& value) { m_notificationConfigurations.push_back(value); return *this; }
-
-    /**
-     * <p>The notification configurations.</p>
-     */
-    inline DescribeNotificationConfigurationsResult& AddNotificationConfigurations(NotificationConfiguration&& value) { m_notificationConfigurations.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A string that indicates that the response contains more items than can be
      * returned in a single response. To receive additional items, specify this string
      * for the <code>NextToken</code> value when requesting the next set of items. This
      * value is null when there are no more items to return.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeNotificationConfigurationsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A string that indicates that the response contains more items than can be
-     * returned in a single response. To receive additional items, specify this string
-     * for the <code>NextToken</code> value when requesting the next set of items. This
-     * value is null when there are no more items to return.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>A string that indicates that the response contains more items than can be
-     * returned in a single response. To receive additional items, specify this string
-     * for the <code>NextToken</code> value when requesting the next set of items. This
-     * value is null when there are no more items to return.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>A string that indicates that the response contains more items than can be
-     * returned in a single response. To receive additional items, specify this string
-     * for the <code>NextToken</code> value when requesting the next set of items. This
-     * value is null when there are no more items to return.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>A string that indicates that the response contains more items than can be
-     * returned in a single response. To receive additional items, specify this string
-     * for the <code>NextToken</code> value when requesting the next set of items. This
-     * value is null when there are no more items to return.</p>
-     */
-    inline DescribeNotificationConfigurationsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A string that indicates that the response contains more items than can be
-     * returned in a single response. To receive additional items, specify this string
-     * for the <code>NextToken</code> value when requesting the next set of items. This
-     * value is null when there are no more items to return.</p>
-     */
-    inline DescribeNotificationConfigurationsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A string that indicates that the response contains more items than can be
-     * returned in a single response. To receive additional items, specify this string
-     * for the <code>NextToken</code> value when requesting the next set of items. This
-     * value is null when there are no more items to return.</p>
-     */
-    inline DescribeNotificationConfigurationsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline DescribeNotificationConfigurationsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline DescribeNotificationConfigurationsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    DescribeNotificationConfigurationsResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<NotificationConfiguration> m_notificationConfigurations;
+    bool m_notificationConfigurationsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

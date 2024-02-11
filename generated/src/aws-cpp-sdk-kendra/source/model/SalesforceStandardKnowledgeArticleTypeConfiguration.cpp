@@ -18,17 +18,7 @@ namespace kendra
 namespace Model
 {
 
-SalesforceStandardKnowledgeArticleTypeConfiguration::SalesforceStandardKnowledgeArticleTypeConfiguration() : 
-    m_documentDataFieldNameHasBeenSet(false),
-    m_documentTitleFieldNameHasBeenSet(false),
-    m_fieldMappingsHasBeenSet(false)
-{
-}
-
-SalesforceStandardKnowledgeArticleTypeConfiguration::SalesforceStandardKnowledgeArticleTypeConfiguration(JsonView jsonValue) : 
-    m_documentDataFieldNameHasBeenSet(false),
-    m_documentTitleFieldNameHasBeenSet(false),
-    m_fieldMappingsHasBeenSet(false)
+SalesforceStandardKnowledgeArticleTypeConfiguration::SalesforceStandardKnowledgeArticleTypeConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ SalesforceStandardKnowledgeArticleTypeConfiguration& SalesforceStandardKnowledge
   if(jsonValue.ValueExists("DocumentDataFieldName"))
   {
     m_documentDataFieldName = jsonValue.GetString("DocumentDataFieldName");
-
     m_documentDataFieldNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DocumentTitleFieldName"))
   {
     m_documentTitleFieldName = jsonValue.GetString("DocumentTitleFieldName");
-
     m_documentTitleFieldNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FieldMappings"))
   {
     Aws::Utils::Array<JsonView> fieldMappingsJsonList = jsonValue.GetArray("FieldMappings");
@@ -58,7 +44,6 @@ SalesforceStandardKnowledgeArticleTypeConfiguration& SalesforceStandardKnowledge
     }
     m_fieldMappingsHasBeenSet = true;
   }
-
   return *this;
 }
 

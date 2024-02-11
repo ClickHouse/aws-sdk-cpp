@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-ModifyAccountResult::ModifyAccountResult()
-{
-}
-
 ModifyAccountResult::ModifyAccountResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -28,13 +24,19 @@ ModifyAccountResult::ModifyAccountResult(const Aws::AmazonWebServiceResult<JsonV
 
 ModifyAccountResult& ModifyAccountResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
-  AWS_UNREFERENCED_PARAM(result);
+  JsonView jsonValue = result.GetPayload().View();
+  if(jsonValue.ValueExists("Message"))
+  {
+    m_message = jsonValue.GetString("Message");
+    m_messageHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

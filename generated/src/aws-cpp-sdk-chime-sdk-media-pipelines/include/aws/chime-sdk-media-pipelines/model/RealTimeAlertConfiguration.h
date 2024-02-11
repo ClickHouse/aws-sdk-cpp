@@ -33,84 +33,39 @@ namespace Model
   class RealTimeAlertConfiguration
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API RealTimeAlertConfiguration();
+    AWS_CHIMESDKMEDIAPIPELINES_API RealTimeAlertConfiguration() = default;
     AWS_CHIMESDKMEDIAPIPELINES_API RealTimeAlertConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API RealTimeAlertConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Turns off real-time alerts.</p>
      */
-    inline bool GetDisabled() const{ return m_disabled; }
-
-    /**
-     * <p>Turns off real-time alerts.</p>
-     */
+    inline bool GetDisabled() const { return m_disabled; }
     inline bool DisabledHasBeenSet() const { return m_disabledHasBeenSet; }
-
-    /**
-     * <p>Turns off real-time alerts.</p>
-     */
     inline void SetDisabled(bool value) { m_disabledHasBeenSet = true; m_disabled = value; }
-
-    /**
-     * <p>Turns off real-time alerts.</p>
-     */
     inline RealTimeAlertConfiguration& WithDisabled(bool value) { SetDisabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The rules in the alert. Rules specify the words or phrases that you want to
      * be notified about.</p>
      */
-    inline const Aws::Vector<RealTimeAlertRule>& GetRules() const{ return m_rules; }
-
-    /**
-     * <p>The rules in the alert. Rules specify the words or phrases that you want to
-     * be notified about.</p>
-     */
+    inline const Aws::Vector<RealTimeAlertRule>& GetRules() const { return m_rules; }
     inline bool RulesHasBeenSet() const { return m_rulesHasBeenSet; }
-
-    /**
-     * <p>The rules in the alert. Rules specify the words or phrases that you want to
-     * be notified about.</p>
-     */
-    inline void SetRules(const Aws::Vector<RealTimeAlertRule>& value) { m_rulesHasBeenSet = true; m_rules = value; }
-
-    /**
-     * <p>The rules in the alert. Rules specify the words or phrases that you want to
-     * be notified about.</p>
-     */
-    inline void SetRules(Aws::Vector<RealTimeAlertRule>&& value) { m_rulesHasBeenSet = true; m_rules = std::move(value); }
-
-    /**
-     * <p>The rules in the alert. Rules specify the words or phrases that you want to
-     * be notified about.</p>
-     */
-    inline RealTimeAlertConfiguration& WithRules(const Aws::Vector<RealTimeAlertRule>& value) { SetRules(value); return *this;}
-
-    /**
-     * <p>The rules in the alert. Rules specify the words or phrases that you want to
-     * be notified about.</p>
-     */
-    inline RealTimeAlertConfiguration& WithRules(Aws::Vector<RealTimeAlertRule>&& value) { SetRules(std::move(value)); return *this;}
-
-    /**
-     * <p>The rules in the alert. Rules specify the words or phrases that you want to
-     * be notified about.</p>
-     */
-    inline RealTimeAlertConfiguration& AddRules(const RealTimeAlertRule& value) { m_rulesHasBeenSet = true; m_rules.push_back(value); return *this; }
-
-    /**
-     * <p>The rules in the alert. Rules specify the words or phrases that you want to
-     * be notified about.</p>
-     */
-    inline RealTimeAlertConfiguration& AddRules(RealTimeAlertRule&& value) { m_rulesHasBeenSet = true; m_rules.push_back(std::move(value)); return *this; }
-
+    template<typename RulesT = Aws::Vector<RealTimeAlertRule>>
+    void SetRules(RulesT&& value) { m_rulesHasBeenSet = true; m_rules = std::forward<RulesT>(value); }
+    template<typename RulesT = Aws::Vector<RealTimeAlertRule>>
+    RealTimeAlertConfiguration& WithRules(RulesT&& value) { SetRules(std::forward<RulesT>(value)); return *this;}
+    template<typename RulesT = RealTimeAlertRule>
+    RealTimeAlertConfiguration& AddRules(RulesT&& value) { m_rulesHasBeenSet = true; m_rules.emplace_back(std::forward<RulesT>(value)); return *this; }
+    ///@}
   private:
 
-    bool m_disabled;
+    bool m_disabled{false};
     bool m_disabledHasBeenSet = false;
 
     Aws::Vector<RealTimeAlertRule> m_rules;

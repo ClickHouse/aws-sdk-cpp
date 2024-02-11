@@ -20,31 +20,7 @@ namespace EC2
 namespace Model
 {
 
-NatGatewayAddress::NatGatewayAddress() : 
-    m_allocationIdHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false),
-    m_privateIpHasBeenSet(false),
-    m_publicIpHasBeenSet(false),
-    m_associationIdHasBeenSet(false),
-    m_isPrimary(false),
-    m_isPrimaryHasBeenSet(false),
-    m_failureMessageHasBeenSet(false),
-    m_status(NatGatewayAddressStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-NatGatewayAddress::NatGatewayAddress(const XmlNode& xmlNode) : 
-    m_allocationIdHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false),
-    m_privateIpHasBeenSet(false),
-    m_publicIpHasBeenSet(false),
-    m_associationIdHasBeenSet(false),
-    m_isPrimary(false),
-    m_isPrimaryHasBeenSet(false),
-    m_failureMessageHasBeenSet(false),
-    m_status(NatGatewayAddressStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+NatGatewayAddress::NatGatewayAddress(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -100,7 +76,7 @@ NatGatewayAddress& NatGatewayAddress::operator =(const XmlNode& xmlNode)
     XmlNode statusNode = resultNode.FirstChild("status");
     if(!statusNode.IsNull())
     {
-      m_status = NatGatewayAddressStatusMapper::GetNatGatewayAddressStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = NatGatewayAddressStatusMapper::GetNatGatewayAddressStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
   }
@@ -147,7 +123,7 @@ void NatGatewayAddress::OutputToStream(Aws::OStream& oStream, const char* locati
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << NatGatewayAddressStatusMapper::GetNameForNatGatewayAddressStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(NatGatewayAddressStatusMapper::GetNameForNatGatewayAddressStatus(m_status)) << "&";
   }
 
 }
@@ -184,7 +160,7 @@ void NatGatewayAddress::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << NatGatewayAddressStatusMapper::GetNameForNatGatewayAddressStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(NatGatewayAddressStatusMapper::GetNameForNatGatewayAddressStatus(m_status)) << "&";
   }
 }
 

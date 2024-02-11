@@ -32,49 +32,25 @@ namespace Model
   class StorageClassAnalysis
   {
   public:
-    AWS_S3CRT_API StorageClassAnalysis();
+    AWS_S3CRT_API StorageClassAnalysis() = default;
     AWS_S3CRT_API StorageClassAnalysis(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API StorageClassAnalysis& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Specifies how data related to the storage class analysis for an Amazon S3
      * bucket should be exported.</p>
      */
-    inline const StorageClassAnalysisDataExport& GetDataExport() const{ return m_dataExport; }
-
-    /**
-     * <p>Specifies how data related to the storage class analysis for an Amazon S3
-     * bucket should be exported.</p>
-     */
+    inline const StorageClassAnalysisDataExport& GetDataExport() const { return m_dataExport; }
     inline bool DataExportHasBeenSet() const { return m_dataExportHasBeenSet; }
-
-    /**
-     * <p>Specifies how data related to the storage class analysis for an Amazon S3
-     * bucket should be exported.</p>
-     */
-    inline void SetDataExport(const StorageClassAnalysisDataExport& value) { m_dataExportHasBeenSet = true; m_dataExport = value; }
-
-    /**
-     * <p>Specifies how data related to the storage class analysis for an Amazon S3
-     * bucket should be exported.</p>
-     */
-    inline void SetDataExport(StorageClassAnalysisDataExport&& value) { m_dataExportHasBeenSet = true; m_dataExport = std::move(value); }
-
-    /**
-     * <p>Specifies how data related to the storage class analysis for an Amazon S3
-     * bucket should be exported.</p>
-     */
-    inline StorageClassAnalysis& WithDataExport(const StorageClassAnalysisDataExport& value) { SetDataExport(value); return *this;}
-
-    /**
-     * <p>Specifies how data related to the storage class analysis for an Amazon S3
-     * bucket should be exported.</p>
-     */
-    inline StorageClassAnalysis& WithDataExport(StorageClassAnalysisDataExport&& value) { SetDataExport(std::move(value)); return *this;}
-
+    template<typename DataExportT = StorageClassAnalysisDataExport>
+    void SetDataExport(DataExportT&& value) { m_dataExportHasBeenSet = true; m_dataExport = std::forward<DataExportT>(value); }
+    template<typename DataExportT = StorageClassAnalysisDataExport>
+    StorageClassAnalysis& WithDataExport(DataExportT&& value) { SetDataExport(std::forward<DataExportT>(value)); return *this;}
+    ///@}
   private:
 
     StorageClassAnalysisDataExport m_dataExport;

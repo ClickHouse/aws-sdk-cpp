@@ -21,7 +21,7 @@ namespace Model
   class DeleteDirectConnectGatewayRequest : public DirectConnectRequest
   {
   public:
-    AWS_DIRECTCONNECT_API DeleteDirectConnectGatewayRequest();
+    AWS_DIRECTCONNECT_API DeleteDirectConnectGatewayRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_DIRECTCONNECT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Direct Connect gateway.</p>
      */
-    inline const Aws::String& GetDirectConnectGatewayId() const{ return m_directConnectGatewayId; }
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
+    inline const Aws::String& GetDirectConnectGatewayId() const { return m_directConnectGatewayId; }
     inline bool DirectConnectGatewayIdHasBeenSet() const { return m_directConnectGatewayIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
-    inline void SetDirectConnectGatewayId(const Aws::String& value) { m_directConnectGatewayIdHasBeenSet = true; m_directConnectGatewayId = value; }
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
-    inline void SetDirectConnectGatewayId(Aws::String&& value) { m_directConnectGatewayIdHasBeenSet = true; m_directConnectGatewayId = std::move(value); }
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
-    inline void SetDirectConnectGatewayId(const char* value) { m_directConnectGatewayIdHasBeenSet = true; m_directConnectGatewayId.assign(value); }
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
-    inline DeleteDirectConnectGatewayRequest& WithDirectConnectGatewayId(const Aws::String& value) { SetDirectConnectGatewayId(value); return *this;}
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
-    inline DeleteDirectConnectGatewayRequest& WithDirectConnectGatewayId(Aws::String&& value) { SetDirectConnectGatewayId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
-    inline DeleteDirectConnectGatewayRequest& WithDirectConnectGatewayId(const char* value) { SetDirectConnectGatewayId(value); return *this;}
-
+    template<typename DirectConnectGatewayIdT = Aws::String>
+    void SetDirectConnectGatewayId(DirectConnectGatewayIdT&& value) { m_directConnectGatewayIdHasBeenSet = true; m_directConnectGatewayId = std::forward<DirectConnectGatewayIdT>(value); }
+    template<typename DirectConnectGatewayIdT = Aws::String>
+    DeleteDirectConnectGatewayRequest& WithDirectConnectGatewayId(DirectConnectGatewayIdT&& value) { SetDirectConnectGatewayId(std::forward<DirectConnectGatewayIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_directConnectGatewayId;

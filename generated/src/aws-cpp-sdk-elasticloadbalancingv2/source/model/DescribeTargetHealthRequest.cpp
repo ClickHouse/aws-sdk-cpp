@@ -10,12 +10,6 @@
 using namespace Aws::ElasticLoadBalancingv2::Model;
 using namespace Aws::Utils;
 
-DescribeTargetHealthRequest::DescribeTargetHealthRequest() : 
-    m_targetGroupArnHasBeenSet(false),
-    m_targetsHasBeenSet(false)
-{
-}
-
 Aws::String DescribeTargetHealthRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,11 +21,36 @@ Aws::String DescribeTargetHealthRequest::SerializePayload() const
 
   if(m_targetsHasBeenSet)
   {
-    unsigned targetsCount = 1;
-    for(auto& item : m_targets)
+    if (m_targets.empty())
     {
-      item.OutputToStream(ss, "Targets.member.", targetsCount, "");
-      targetsCount++;
+      ss << "Targets=&";
+    }
+    else
+    {
+      unsigned targetsCount = 1;
+      for(auto& item : m_targets)
+      {
+        item.OutputToStream(ss, "Targets.member.", targetsCount, "");
+        targetsCount++;
+      }
+    }
+  }
+
+  if(m_includeHasBeenSet)
+  {
+    if (m_include.empty())
+    {
+      ss << "Include=&";
+    }
+    else
+    {
+      unsigned includeCount = 1;
+      for(auto& item : m_include)
+      {
+        ss << "Include.member." << includeCount << "="
+            << StringUtils::URLEncode(DescribeTargetHealthInputIncludeEnumMapper::GetNameForDescribeTargetHealthInputIncludeEnum(item)) << "&";
+        includeCount++;
+      }
     }
   }
 

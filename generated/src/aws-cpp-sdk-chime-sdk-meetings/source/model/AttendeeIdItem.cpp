@@ -18,13 +18,7 @@ namespace ChimeSDKMeetings
 namespace Model
 {
 
-AttendeeIdItem::AttendeeIdItem() : 
-    m_attendeeIdHasBeenSet(false)
-{
-}
-
-AttendeeIdItem::AttendeeIdItem(JsonView jsonValue) : 
-    m_attendeeIdHasBeenSet(false)
+AttendeeIdItem::AttendeeIdItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ AttendeeIdItem& AttendeeIdItem::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AttendeeId"))
   {
     m_attendeeId = jsonValue.GetString("AttendeeId");
-
     m_attendeeIdHasBeenSet = true;
   }
-
   return *this;
 }
 

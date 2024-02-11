@@ -12,14 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateTableReplicaAutoScalingRequest::UpdateTableReplicaAutoScalingRequest() : 
-    m_globalSecondaryIndexUpdatesHasBeenSet(false),
-    m_tableNameHasBeenSet(false),
-    m_provisionedWriteCapacityAutoScalingUpdateHasBeenSet(false),
-    m_replicaUpdatesHasBeenSet(false)
-{
-}
-
 Aws::String UpdateTableReplicaAutoScalingRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -70,5 +62,15 @@ Aws::Http::HeaderValueCollection UpdateTableReplicaAutoScalingRequest::GetReques
 }
 
 
+
+UpdateTableReplicaAutoScalingRequest::EndpointParameters UpdateTableReplicaAutoScalingRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (TableNameHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetTableName(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

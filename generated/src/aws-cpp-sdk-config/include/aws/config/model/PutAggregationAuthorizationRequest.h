@@ -23,7 +23,7 @@ namespace Model
   class PutAggregationAuthorizationRequest : public ConfigServiceRequest
   {
   public:
-    AWS_CONFIGSERVICE_API PutAggregationAuthorizationRequest();
+    AWS_CONFIGSERVICE_API PutAggregationAuthorizationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,128 +36,43 @@ namespace Model
     AWS_CONFIGSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
      */
-    inline const Aws::String& GetAuthorizedAccountId() const{ return m_authorizedAccountId; }
-
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
+    inline const Aws::String& GetAuthorizedAccountId() const { return m_authorizedAccountId; }
     inline bool AuthorizedAccountIdHasBeenSet() const { return m_authorizedAccountIdHasBeenSet; }
+    template<typename AuthorizedAccountIdT = Aws::String>
+    void SetAuthorizedAccountId(AuthorizedAccountIdT&& value) { m_authorizedAccountIdHasBeenSet = true; m_authorizedAccountId = std::forward<AuthorizedAccountIdT>(value); }
+    template<typename AuthorizedAccountIdT = Aws::String>
+    PutAggregationAuthorizationRequest& WithAuthorizedAccountId(AuthorizedAccountIdT&& value) { SetAuthorizedAccountId(std::forward<AuthorizedAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
-    inline void SetAuthorizedAccountId(const Aws::String& value) { m_authorizedAccountIdHasBeenSet = true; m_authorizedAccountId = value; }
-
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
-    inline void SetAuthorizedAccountId(Aws::String&& value) { m_authorizedAccountIdHasBeenSet = true; m_authorizedAccountId = std::move(value); }
-
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
-    inline void SetAuthorizedAccountId(const char* value) { m_authorizedAccountIdHasBeenSet = true; m_authorizedAccountId.assign(value); }
-
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
-    inline PutAggregationAuthorizationRequest& WithAuthorizedAccountId(const Aws::String& value) { SetAuthorizedAccountId(value); return *this;}
-
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
-    inline PutAggregationAuthorizationRequest& WithAuthorizedAccountId(Aws::String&& value) { SetAuthorizedAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
-    inline PutAggregationAuthorizationRequest& WithAuthorizedAccountId(const char* value) { SetAuthorizedAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The region authorized to collect aggregated data.</p>
      */
-    inline const Aws::String& GetAuthorizedAwsRegion() const{ return m_authorizedAwsRegion; }
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
+    inline const Aws::String& GetAuthorizedAwsRegion() const { return m_authorizedAwsRegion; }
     inline bool AuthorizedAwsRegionHasBeenSet() const { return m_authorizedAwsRegionHasBeenSet; }
+    template<typename AuthorizedAwsRegionT = Aws::String>
+    void SetAuthorizedAwsRegion(AuthorizedAwsRegionT&& value) { m_authorizedAwsRegionHasBeenSet = true; m_authorizedAwsRegion = std::forward<AuthorizedAwsRegionT>(value); }
+    template<typename AuthorizedAwsRegionT = Aws::String>
+    PutAggregationAuthorizationRequest& WithAuthorizedAwsRegion(AuthorizedAwsRegionT&& value) { SetAuthorizedAwsRegion(std::forward<AuthorizedAwsRegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
-    inline void SetAuthorizedAwsRegion(const Aws::String& value) { m_authorizedAwsRegionHasBeenSet = true; m_authorizedAwsRegion = value; }
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
-    inline void SetAuthorizedAwsRegion(Aws::String&& value) { m_authorizedAwsRegionHasBeenSet = true; m_authorizedAwsRegion = std::move(value); }
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
-    inline void SetAuthorizedAwsRegion(const char* value) { m_authorizedAwsRegionHasBeenSet = true; m_authorizedAwsRegion.assign(value); }
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
-    inline PutAggregationAuthorizationRequest& WithAuthorizedAwsRegion(const Aws::String& value) { SetAuthorizedAwsRegion(value); return *this;}
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
-    inline PutAggregationAuthorizationRequest& WithAuthorizedAwsRegion(Aws::String&& value) { SetAuthorizedAwsRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
-    inline PutAggregationAuthorizationRequest& WithAuthorizedAwsRegion(const char* value) { SetAuthorizedAwsRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of tag object.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>An array of tag object.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>An array of tag object.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>An array of tag object.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>An array of tag object.</p>
-     */
-    inline PutAggregationAuthorizationRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>An array of tag object.</p>
-     */
-    inline PutAggregationAuthorizationRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of tag object.</p>
-     */
-    inline PutAggregationAuthorizationRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>An array of tag object.</p>
-     */
-    inline PutAggregationAuthorizationRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    PutAggregationAuthorizationRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    PutAggregationAuthorizationRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_authorizedAccountId;

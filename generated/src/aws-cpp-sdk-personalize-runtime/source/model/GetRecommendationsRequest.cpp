@@ -12,20 +12,6 @@ using namespace Aws::PersonalizeRuntime::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetRecommendationsRequest::GetRecommendationsRequest() : 
-    m_campaignArnHasBeenSet(false),
-    m_itemIdHasBeenSet(false),
-    m_userIdHasBeenSet(false),
-    m_numResults(0),
-    m_numResultsHasBeenSet(false),
-    m_contextHasBeenSet(false),
-    m_filterArnHasBeenSet(false),
-    m_filterValuesHasBeenSet(false),
-    m_recommenderArnHasBeenSet(false),
-    m_promotionsHasBeenSet(false)
-{
-}
-
 Aws::String GetRecommendationsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -96,6 +82,22 @@ Aws::String GetRecommendationsRequest::SerializePayload() const
      promotionsJsonList[promotionsIndex].AsObject(m_promotions[promotionsIndex].Jsonize());
    }
    payload.WithArray("promotions", std::move(promotionsJsonList));
+
+  }
+
+  if(m_metadataColumnsHasBeenSet)
+  {
+   JsonValue metadataColumnsJsonMap;
+   for(auto& metadataColumnsItem : m_metadataColumns)
+   {
+     Aws::Utils::Array<JsonValue> columnNamesListJsonList(metadataColumnsItem.second.size());
+     for(unsigned columnNamesListIndex = 0; columnNamesListIndex < columnNamesListJsonList.GetLength(); ++columnNamesListIndex)
+     {
+       columnNamesListJsonList[columnNamesListIndex].AsString(metadataColumnsItem.second[columnNamesListIndex]);
+     }
+     metadataColumnsJsonMap.WithArray(metadataColumnsItem.first, std::move(columnNamesListJsonList));
+   }
+   payload.WithObject("metadataColumns", std::move(metadataColumnsJsonMap));
 
   }
 

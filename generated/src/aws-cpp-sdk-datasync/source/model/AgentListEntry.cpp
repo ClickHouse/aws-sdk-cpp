@@ -18,19 +18,7 @@ namespace DataSync
 namespace Model
 {
 
-AgentListEntry::AgentListEntry() : 
-    m_agentArnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_status(AgentStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-AgentListEntry::AgentListEntry(JsonView jsonValue) : 
-    m_agentArnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_status(AgentStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+AgentListEntry::AgentListEntry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,23 @@ AgentListEntry& AgentListEntry::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AgentArn"))
   {
     m_agentArn = jsonValue.GetString("AgentArn");
-
     m_agentArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = AgentStatusMapper::GetAgentStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Platform"))
+  {
+    m_platform = jsonValue.GetObject("Platform");
+    m_platformHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -80,6 +67,12 @@ JsonValue AgentListEntry::Jsonize() const
   if(m_statusHasBeenSet)
   {
    payload.WithString("Status", AgentStatusMapper::GetNameForAgentStatus(m_status));
+  }
+
+  if(m_platformHasBeenSet)
+  {
+   payload.WithObject("Platform", m_platform.Jsonize());
+
   }
 
   return payload;

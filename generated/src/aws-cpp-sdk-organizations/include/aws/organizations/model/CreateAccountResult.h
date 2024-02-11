@@ -28,11 +28,12 @@ namespace Model
   class CreateAccountResult
   {
   public:
-    AWS_ORGANIZATIONS_API CreateAccountResult();
+    AWS_ORGANIZATIONS_API CreateAccountResult() = default;
     AWS_ORGANIZATIONS_API CreateAccountResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ORGANIZATIONS_API CreateAccountResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A structure that contains details about the request to create an account.
      * This response structure might not be fully populated when you first receive it
@@ -41,95 +42,31 @@ namespace Model
      * <a>DescribeCreateAccountStatus</a> to get status about the progress of the
      * request at later times. You can also check the CloudTrail log for the
      * <code>CreateAccountResult</code> event. For more information, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html">Monitoring
-     * the Activity in Your Organization</a> in the <i>Organizations User
-     * Guide</i>.</p>
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_security_incident-response.html">Logging
+     * and monitoring in Organizations</a> in the <i>Organizations User Guide</i>.</p>
      */
-    inline const CreateAccountStatus& GetCreateAccountStatus() const{ return m_createAccountStatus; }
+    inline const CreateAccountStatus& GetCreateAccountStatus() const { return m_createAccountStatus; }
+    template<typename CreateAccountStatusT = CreateAccountStatus>
+    void SetCreateAccountStatus(CreateAccountStatusT&& value) { m_createAccountStatusHasBeenSet = true; m_createAccountStatus = std::forward<CreateAccountStatusT>(value); }
+    template<typename CreateAccountStatusT = CreateAccountStatus>
+    CreateAccountResult& WithCreateAccountStatus(CreateAccountStatusT&& value) { SetCreateAccountStatus(std::forward<CreateAccountStatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A structure that contains details about the request to create an account.
-     * This response structure might not be fully populated when you first receive it
-     * because account creation is an asynchronous process. You can pass the returned
-     * <code>CreateAccountStatus</code> ID as a parameter to
-     * <a>DescribeCreateAccountStatus</a> to get status about the progress of the
-     * request at later times. You can also check the CloudTrail log for the
-     * <code>CreateAccountResult</code> event. For more information, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html">Monitoring
-     * the Activity in Your Organization</a> in the <i>Organizations User
-     * Guide</i>.</p>
-     */
-    inline void SetCreateAccountStatus(const CreateAccountStatus& value) { m_createAccountStatus = value; }
-
-    /**
-     * <p>A structure that contains details about the request to create an account.
-     * This response structure might not be fully populated when you first receive it
-     * because account creation is an asynchronous process. You can pass the returned
-     * <code>CreateAccountStatus</code> ID as a parameter to
-     * <a>DescribeCreateAccountStatus</a> to get status about the progress of the
-     * request at later times. You can also check the CloudTrail log for the
-     * <code>CreateAccountResult</code> event. For more information, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html">Monitoring
-     * the Activity in Your Organization</a> in the <i>Organizations User
-     * Guide</i>.</p>
-     */
-    inline void SetCreateAccountStatus(CreateAccountStatus&& value) { m_createAccountStatus = std::move(value); }
-
-    /**
-     * <p>A structure that contains details about the request to create an account.
-     * This response structure might not be fully populated when you first receive it
-     * because account creation is an asynchronous process. You can pass the returned
-     * <code>CreateAccountStatus</code> ID as a parameter to
-     * <a>DescribeCreateAccountStatus</a> to get status about the progress of the
-     * request at later times. You can also check the CloudTrail log for the
-     * <code>CreateAccountResult</code> event. For more information, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html">Monitoring
-     * the Activity in Your Organization</a> in the <i>Organizations User
-     * Guide</i>.</p>
-     */
-    inline CreateAccountResult& WithCreateAccountStatus(const CreateAccountStatus& value) { SetCreateAccountStatus(value); return *this;}
-
-    /**
-     * <p>A structure that contains details about the request to create an account.
-     * This response structure might not be fully populated when you first receive it
-     * because account creation is an asynchronous process. You can pass the returned
-     * <code>CreateAccountStatus</code> ID as a parameter to
-     * <a>DescribeCreateAccountStatus</a> to get status about the progress of the
-     * request at later times. You can also check the CloudTrail log for the
-     * <code>CreateAccountResult</code> event. For more information, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html">Monitoring
-     * the Activity in Your Organization</a> in the <i>Organizations User
-     * Guide</i>.</p>
-     */
-    inline CreateAccountResult& WithCreateAccountStatus(CreateAccountStatus&& value) { SetCreateAccountStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateAccountResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateAccountResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateAccountResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateAccountResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     CreateAccountStatus m_createAccountStatus;
+    bool m_createAccountStatusHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

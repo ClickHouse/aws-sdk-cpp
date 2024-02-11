@@ -12,18 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-RestoreTableFromBackupRequest::RestoreTableFromBackupRequest() : 
-    m_targetTableNameHasBeenSet(false),
-    m_backupArnHasBeenSet(false),
-    m_billingModeOverride(BillingMode::NOT_SET),
-    m_billingModeOverrideHasBeenSet(false),
-    m_globalSecondaryIndexOverrideHasBeenSet(false),
-    m_localSecondaryIndexOverrideHasBeenSet(false),
-    m_provisionedThroughputOverrideHasBeenSet(false),
-    m_sSESpecificationOverrideHasBeenSet(false)
-{
-}
-
 Aws::String RestoreTableFromBackupRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -73,6 +61,12 @@ Aws::String RestoreTableFromBackupRequest::SerializePayload() const
 
   }
 
+  if(m_onDemandThroughputOverrideHasBeenSet)
+  {
+   payload.WithObject("OnDemandThroughputOverride", m_onDemandThroughputOverride.Jsonize());
+
+  }
+
   if(m_sSESpecificationOverrideHasBeenSet)
   {
    payload.WithObject("SSESpecificationOverride", m_sSESpecificationOverride.Jsonize());
@@ -91,5 +85,15 @@ Aws::Http::HeaderValueCollection RestoreTableFromBackupRequest::GetRequestSpecif
 }
 
 
+
+RestoreTableFromBackupRequest::EndpointParameters RestoreTableFromBackupRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (TargetTableNameHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetTargetTableName(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

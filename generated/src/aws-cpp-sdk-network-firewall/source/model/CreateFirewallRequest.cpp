@@ -12,23 +12,6 @@ using namespace Aws::NetworkFirewall::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateFirewallRequest::CreateFirewallRequest() : 
-    m_firewallNameHasBeenSet(false),
-    m_firewallPolicyArnHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_subnetMappingsHasBeenSet(false),
-    m_deleteProtection(false),
-    m_deleteProtectionHasBeenSet(false),
-    m_subnetChangeProtection(false),
-    m_subnetChangeProtectionHasBeenSet(false),
-    m_firewallPolicyChangeProtection(false),
-    m_firewallPolicyChangeProtectionHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_encryptionConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String CreateFirewallRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -100,6 +83,40 @@ Aws::String CreateFirewallRequest::SerializePayload() const
   if(m_encryptionConfigurationHasBeenSet)
   {
    payload.WithObject("EncryptionConfiguration", m_encryptionConfiguration.Jsonize());
+
+  }
+
+  if(m_enabledAnalysisTypesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> enabledAnalysisTypesJsonList(m_enabledAnalysisTypes.size());
+   for(unsigned enabledAnalysisTypesIndex = 0; enabledAnalysisTypesIndex < enabledAnalysisTypesJsonList.GetLength(); ++enabledAnalysisTypesIndex)
+   {
+     enabledAnalysisTypesJsonList[enabledAnalysisTypesIndex].AsString(EnabledAnalysisTypeMapper::GetNameForEnabledAnalysisType(m_enabledAnalysisTypes[enabledAnalysisTypesIndex]));
+   }
+   payload.WithArray("EnabledAnalysisTypes", std::move(enabledAnalysisTypesJsonList));
+
+  }
+
+  if(m_transitGatewayIdHasBeenSet)
+  {
+   payload.WithString("TransitGatewayId", m_transitGatewayId);
+
+  }
+
+  if(m_availabilityZoneMappingsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> availabilityZoneMappingsJsonList(m_availabilityZoneMappings.size());
+   for(unsigned availabilityZoneMappingsIndex = 0; availabilityZoneMappingsIndex < availabilityZoneMappingsJsonList.GetLength(); ++availabilityZoneMappingsIndex)
+   {
+     availabilityZoneMappingsJsonList[availabilityZoneMappingsIndex].AsObject(m_availabilityZoneMappings[availabilityZoneMappingsIndex].Jsonize());
+   }
+   payload.WithArray("AvailabilityZoneMappings", std::move(availabilityZoneMappingsJsonList));
+
+  }
+
+  if(m_availabilityZoneChangeProtectionHasBeenSet)
+  {
+   payload.WithBool("AvailabilityZoneChangeProtection", m_availabilityZoneChangeProtection);
 
   }
 

@@ -20,13 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-MetricGranularityType::MetricGranularityType() : 
-    m_granularityHasBeenSet(false)
-{
-}
-
-MetricGranularityType::MetricGranularityType(const XmlNode& xmlNode) : 
-    m_granularityHasBeenSet(false)
+MetricGranularityType::MetricGranularityType(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

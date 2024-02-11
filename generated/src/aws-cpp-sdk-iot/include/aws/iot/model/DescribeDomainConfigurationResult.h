@@ -12,6 +12,11 @@
 #include <aws/iot/model/ServiceType.h>
 #include <aws/iot/model/DomainType.h>
 #include <aws/core/utils/DateTime.h>
+#include <aws/iot/model/TlsConfig.h>
+#include <aws/iot/model/ServerCertificateConfig.h>
+#include <aws/iot/model/AuthenticationType.h>
+#include <aws/iot/model/ApplicationProtocol.h>
+#include <aws/iot/model/ClientCertificateConfig.h>
 #include <aws/iot/model/ServerCertificateSummary.h>
 #include <utility>
 
@@ -34,339 +39,238 @@ namespace Model
   class DescribeDomainConfigurationResult
   {
   public:
-    AWS_IOT_API DescribeDomainConfigurationResult();
+    AWS_IOT_API DescribeDomainConfigurationResult() = default;
     AWS_IOT_API DescribeDomainConfigurationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_IOT_API DescribeDomainConfigurationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The name of the domain configuration.</p>
      */
-    inline const Aws::String& GetDomainConfigurationName() const{ return m_domainConfigurationName; }
+    inline const Aws::String& GetDomainConfigurationName() const { return m_domainConfigurationName; }
+    template<typename DomainConfigurationNameT = Aws::String>
+    void SetDomainConfigurationName(DomainConfigurationNameT&& value) { m_domainConfigurationNameHasBeenSet = true; m_domainConfigurationName = std::forward<DomainConfigurationNameT>(value); }
+    template<typename DomainConfigurationNameT = Aws::String>
+    DescribeDomainConfigurationResult& WithDomainConfigurationName(DomainConfigurationNameT&& value) { SetDomainConfigurationName(std::forward<DomainConfigurationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the domain configuration.</p>
-     */
-    inline void SetDomainConfigurationName(const Aws::String& value) { m_domainConfigurationName = value; }
-
-    /**
-     * <p>The name of the domain configuration.</p>
-     */
-    inline void SetDomainConfigurationName(Aws::String&& value) { m_domainConfigurationName = std::move(value); }
-
-    /**
-     * <p>The name of the domain configuration.</p>
-     */
-    inline void SetDomainConfigurationName(const char* value) { m_domainConfigurationName.assign(value); }
-
-    /**
-     * <p>The name of the domain configuration.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithDomainConfigurationName(const Aws::String& value) { SetDomainConfigurationName(value); return *this;}
-
-    /**
-     * <p>The name of the domain configuration.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithDomainConfigurationName(Aws::String&& value) { SetDomainConfigurationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the domain configuration.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithDomainConfigurationName(const char* value) { SetDomainConfigurationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the domain configuration.</p>
      */
-    inline const Aws::String& GetDomainConfigurationArn() const{ return m_domainConfigurationArn; }
+    inline const Aws::String& GetDomainConfigurationArn() const { return m_domainConfigurationArn; }
+    template<typename DomainConfigurationArnT = Aws::String>
+    void SetDomainConfigurationArn(DomainConfigurationArnT&& value) { m_domainConfigurationArnHasBeenSet = true; m_domainConfigurationArn = std::forward<DomainConfigurationArnT>(value); }
+    template<typename DomainConfigurationArnT = Aws::String>
+    DescribeDomainConfigurationResult& WithDomainConfigurationArn(DomainConfigurationArnT&& value) { SetDomainConfigurationArn(std::forward<DomainConfigurationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the domain configuration.</p>
-     */
-    inline void SetDomainConfigurationArn(const Aws::String& value) { m_domainConfigurationArn = value; }
-
-    /**
-     * <p>The ARN of the domain configuration.</p>
-     */
-    inline void SetDomainConfigurationArn(Aws::String&& value) { m_domainConfigurationArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the domain configuration.</p>
-     */
-    inline void SetDomainConfigurationArn(const char* value) { m_domainConfigurationArn.assign(value); }
-
-    /**
-     * <p>The ARN of the domain configuration.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithDomainConfigurationArn(const Aws::String& value) { SetDomainConfigurationArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the domain configuration.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithDomainConfigurationArn(Aws::String&& value) { SetDomainConfigurationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the domain configuration.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithDomainConfigurationArn(const char* value) { SetDomainConfigurationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the domain.</p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    DescribeDomainConfigurationResult& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the domain.</p>
-     */
-    inline void SetDomainName(const Aws::String& value) { m_domainName = value; }
-
-    /**
-     * <p>The name of the domain.</p>
-     */
-    inline void SetDomainName(Aws::String&& value) { m_domainName = std::move(value); }
-
-    /**
-     * <p>The name of the domain.</p>
-     */
-    inline void SetDomainName(const char* value) { m_domainName.assign(value); }
-
-    /**
-     * <p>The name of the domain.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p>The name of the domain.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the domain.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list containing summary information about the server certificate included
      * in the domain configuration.</p>
      */
-    inline const Aws::Vector<ServerCertificateSummary>& GetServerCertificates() const{ return m_serverCertificates; }
+    inline const Aws::Vector<ServerCertificateSummary>& GetServerCertificates() const { return m_serverCertificates; }
+    template<typename ServerCertificatesT = Aws::Vector<ServerCertificateSummary>>
+    void SetServerCertificates(ServerCertificatesT&& value) { m_serverCertificatesHasBeenSet = true; m_serverCertificates = std::forward<ServerCertificatesT>(value); }
+    template<typename ServerCertificatesT = Aws::Vector<ServerCertificateSummary>>
+    DescribeDomainConfigurationResult& WithServerCertificates(ServerCertificatesT&& value) { SetServerCertificates(std::forward<ServerCertificatesT>(value)); return *this;}
+    template<typename ServerCertificatesT = ServerCertificateSummary>
+    DescribeDomainConfigurationResult& AddServerCertificates(ServerCertificatesT&& value) { m_serverCertificatesHasBeenSet = true; m_serverCertificates.emplace_back(std::forward<ServerCertificatesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list containing summary information about the server certificate included
-     * in the domain configuration.</p>
-     */
-    inline void SetServerCertificates(const Aws::Vector<ServerCertificateSummary>& value) { m_serverCertificates = value; }
-
-    /**
-     * <p>A list containing summary information about the server certificate included
-     * in the domain configuration.</p>
-     */
-    inline void SetServerCertificates(Aws::Vector<ServerCertificateSummary>&& value) { m_serverCertificates = std::move(value); }
-
-    /**
-     * <p>A list containing summary information about the server certificate included
-     * in the domain configuration.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithServerCertificates(const Aws::Vector<ServerCertificateSummary>& value) { SetServerCertificates(value); return *this;}
-
-    /**
-     * <p>A list containing summary information about the server certificate included
-     * in the domain configuration.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithServerCertificates(Aws::Vector<ServerCertificateSummary>&& value) { SetServerCertificates(std::move(value)); return *this;}
-
-    /**
-     * <p>A list containing summary information about the server certificate included
-     * in the domain configuration.</p>
-     */
-    inline DescribeDomainConfigurationResult& AddServerCertificates(const ServerCertificateSummary& value) { m_serverCertificates.push_back(value); return *this; }
-
-    /**
-     * <p>A list containing summary information about the server certificate included
-     * in the domain configuration.</p>
-     */
-    inline DescribeDomainConfigurationResult& AddServerCertificates(ServerCertificateSummary&& value) { m_serverCertificates.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An object that specifies the authorization service for a domain.</p>
      */
-    inline const AuthorizerConfig& GetAuthorizerConfig() const{ return m_authorizerConfig; }
+    inline const AuthorizerConfig& GetAuthorizerConfig() const { return m_authorizerConfig; }
+    template<typename AuthorizerConfigT = AuthorizerConfig>
+    void SetAuthorizerConfig(AuthorizerConfigT&& value) { m_authorizerConfigHasBeenSet = true; m_authorizerConfig = std::forward<AuthorizerConfigT>(value); }
+    template<typename AuthorizerConfigT = AuthorizerConfig>
+    DescribeDomainConfigurationResult& WithAuthorizerConfig(AuthorizerConfigT&& value) { SetAuthorizerConfig(std::forward<AuthorizerConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that specifies the authorization service for a domain.</p>
-     */
-    inline void SetAuthorizerConfig(const AuthorizerConfig& value) { m_authorizerConfig = value; }
-
-    /**
-     * <p>An object that specifies the authorization service for a domain.</p>
-     */
-    inline void SetAuthorizerConfig(AuthorizerConfig&& value) { m_authorizerConfig = std::move(value); }
-
-    /**
-     * <p>An object that specifies the authorization service for a domain.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithAuthorizerConfig(const AuthorizerConfig& value) { SetAuthorizerConfig(value); return *this;}
-
-    /**
-     * <p>An object that specifies the authorization service for a domain.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithAuthorizerConfig(AuthorizerConfig&& value) { SetAuthorizerConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A Boolean value that specifies the current state of the domain
      * configuration.</p>
      */
-    inline const DomainConfigurationStatus& GetDomainConfigurationStatus() const{ return m_domainConfigurationStatus; }
+    inline DomainConfigurationStatus GetDomainConfigurationStatus() const { return m_domainConfigurationStatus; }
+    inline void SetDomainConfigurationStatus(DomainConfigurationStatus value) { m_domainConfigurationStatusHasBeenSet = true; m_domainConfigurationStatus = value; }
+    inline DescribeDomainConfigurationResult& WithDomainConfigurationStatus(DomainConfigurationStatus value) { SetDomainConfigurationStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>A Boolean value that specifies the current state of the domain
-     * configuration.</p>
-     */
-    inline void SetDomainConfigurationStatus(const DomainConfigurationStatus& value) { m_domainConfigurationStatus = value; }
-
-    /**
-     * <p>A Boolean value that specifies the current state of the domain
-     * configuration.</p>
-     */
-    inline void SetDomainConfigurationStatus(DomainConfigurationStatus&& value) { m_domainConfigurationStatus = std::move(value); }
-
-    /**
-     * <p>A Boolean value that specifies the current state of the domain
-     * configuration.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithDomainConfigurationStatus(const DomainConfigurationStatus& value) { SetDomainConfigurationStatus(value); return *this;}
-
-    /**
-     * <p>A Boolean value that specifies the current state of the domain
-     * configuration.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithDomainConfigurationStatus(DomainConfigurationStatus&& value) { SetDomainConfigurationStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of service delivered by the endpoint.</p>
      */
-    inline const ServiceType& GetServiceType() const{ return m_serviceType; }
+    inline ServiceType GetServiceType() const { return m_serviceType; }
+    inline void SetServiceType(ServiceType value) { m_serviceTypeHasBeenSet = true; m_serviceType = value; }
+    inline DescribeDomainConfigurationResult& WithServiceType(ServiceType value) { SetServiceType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of service delivered by the endpoint.</p>
-     */
-    inline void SetServiceType(const ServiceType& value) { m_serviceType = value; }
-
-    /**
-     * <p>The type of service delivered by the endpoint.</p>
-     */
-    inline void SetServiceType(ServiceType&& value) { m_serviceType = std::move(value); }
-
-    /**
-     * <p>The type of service delivered by the endpoint.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithServiceType(const ServiceType& value) { SetServiceType(value); return *this;}
-
-    /**
-     * <p>The type of service delivered by the endpoint.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithServiceType(ServiceType&& value) { SetServiceType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the domain.</p>
      */
-    inline const DomainType& GetDomainType() const{ return m_domainType; }
+    inline DomainType GetDomainType() const { return m_domainType; }
+    inline void SetDomainType(DomainType value) { m_domainTypeHasBeenSet = true; m_domainType = value; }
+    inline DescribeDomainConfigurationResult& WithDomainType(DomainType value) { SetDomainType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the domain.</p>
-     */
-    inline void SetDomainType(const DomainType& value) { m_domainType = value; }
-
-    /**
-     * <p>The type of the domain.</p>
-     */
-    inline void SetDomainType(DomainType&& value) { m_domainType = std::move(value); }
-
-    /**
-     * <p>The type of the domain.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithDomainType(const DomainType& value) { SetDomainType(value); return *this;}
-
-    /**
-     * <p>The type of the domain.</p>
-     */
-    inline DescribeDomainConfigurationResult& WithDomainType(DomainType&& value) { SetDomainType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time the domain configuration's status was last changed.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastStatusChangeDate() const{ return m_lastStatusChangeDate; }
+    inline const Aws::Utils::DateTime& GetLastStatusChangeDate() const { return m_lastStatusChangeDate; }
+    template<typename LastStatusChangeDateT = Aws::Utils::DateTime>
+    void SetLastStatusChangeDate(LastStatusChangeDateT&& value) { m_lastStatusChangeDateHasBeenSet = true; m_lastStatusChangeDate = std::forward<LastStatusChangeDateT>(value); }
+    template<typename LastStatusChangeDateT = Aws::Utils::DateTime>
+    DescribeDomainConfigurationResult& WithLastStatusChangeDate(LastStatusChangeDateT&& value) { SetLastStatusChangeDate(std::forward<LastStatusChangeDateT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The date and time the domain configuration's status was last changed.</p>
+     * <p>An object that specifies the TLS configuration for a domain.</p>
      */
-    inline void SetLastStatusChangeDate(const Aws::Utils::DateTime& value) { m_lastStatusChangeDate = value; }
+    inline const TlsConfig& GetTlsConfig() const { return m_tlsConfig; }
+    template<typename TlsConfigT = TlsConfig>
+    void SetTlsConfig(TlsConfigT&& value) { m_tlsConfigHasBeenSet = true; m_tlsConfig = std::forward<TlsConfigT>(value); }
+    template<typename TlsConfigT = TlsConfig>
+    DescribeDomainConfigurationResult& WithTlsConfig(TlsConfigT&& value) { SetTlsConfig(std::forward<TlsConfigT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The date and time the domain configuration's status was last changed.</p>
+     * <p>The server certificate configuration.</p>
      */
-    inline void SetLastStatusChangeDate(Aws::Utils::DateTime&& value) { m_lastStatusChangeDate = std::move(value); }
+    inline const ServerCertificateConfig& GetServerCertificateConfig() const { return m_serverCertificateConfig; }
+    template<typename ServerCertificateConfigT = ServerCertificateConfig>
+    void SetServerCertificateConfig(ServerCertificateConfigT&& value) { m_serverCertificateConfigHasBeenSet = true; m_serverCertificateConfig = std::forward<ServerCertificateConfigT>(value); }
+    template<typename ServerCertificateConfigT = ServerCertificateConfig>
+    DescribeDomainConfigurationResult& WithServerCertificateConfig(ServerCertificateConfigT&& value) { SetServerCertificateConfig(std::forward<ServerCertificateConfigT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The date and time the domain configuration's status was last changed.</p>
+     * <p>An enumerated string that speciﬁes the authentication type.</p> <ul> <li> <p>
+     * <code>CUSTOM_AUTH_X509</code> - Use custom authentication and authorization with
+     * additional details from the X.509 client certificate.</p> </li> </ul> <ul> <li>
+     * <p> <code>CUSTOM_AUTH</code> - Use custom authentication and authorization. For
+     * more information, see <a
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/custom-authentication.html">Custom
+     * authentication and authorization</a>.</p> </li> </ul> <ul> <li> <p>
+     * <code>AWS_X509</code> - Use X.509 client certificates without custom
+     * authentication and authorization. For more information, see <a
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/x509-client-certs.html">X.509
+     * client certificates</a>.</p> </li> </ul> <ul> <li> <p> <code>AWS_SIGV4</code> -
+     * Use Amazon Web Services Signature Version 4. For more information, see <a
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/custom-authentication.html">IAM
+     * users, groups, and roles</a>.</p> </li> </ul> <ul> <li> <p> <code>DEFAULT</code>
+     * - Use a combination of port and Application Layer Protocol Negotiation (ALPN) to
+     * specify authentication type. For more information, see <a
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/protocols.html">Device
+     * communication protocols</a>.</p> </li> </ul>
      */
-    inline DescribeDomainConfigurationResult& WithLastStatusChangeDate(const Aws::Utils::DateTime& value) { SetLastStatusChangeDate(value); return *this;}
+    inline AuthenticationType GetAuthenticationType() const { return m_authenticationType; }
+    inline void SetAuthenticationType(AuthenticationType value) { m_authenticationTypeHasBeenSet = true; m_authenticationType = value; }
+    inline DescribeDomainConfigurationResult& WithAuthenticationType(AuthenticationType value) { SetAuthenticationType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The date and time the domain configuration's status was last changed.</p>
+     * <p>An enumerated string that speciﬁes the application-layer protocol.</p> <ul>
+     * <li> <p> <code>SECURE_MQTT</code> - MQTT over TLS.</p> </li> </ul> <ul> <li> <p>
+     * <code>MQTT_WSS</code> - MQTT over WebSocket.</p> </li> </ul> <ul> <li> <p>
+     * <code>HTTPS</code> - HTTP over TLS.</p> </li> </ul> <ul> <li> <p>
+     * <code>DEFAULT</code> - Use a combination of port and Application Layer Protocol
+     * Negotiation (ALPN) to specify application_layer protocol. For more information,
+     * see <a
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/protocols.html">Device
+     * communication protocols</a>.</p> </li> </ul>
      */
-    inline DescribeDomainConfigurationResult& WithLastStatusChangeDate(Aws::Utils::DateTime&& value) { SetLastStatusChangeDate(std::move(value)); return *this;}
+    inline ApplicationProtocol GetApplicationProtocol() const { return m_applicationProtocol; }
+    inline void SetApplicationProtocol(ApplicationProtocol value) { m_applicationProtocolHasBeenSet = true; m_applicationProtocol = value; }
+    inline DescribeDomainConfigurationResult& WithApplicationProtocol(ApplicationProtocol value) { SetApplicationProtocol(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>An object that speciﬁes the client certificate conﬁguration for a domain.</p>
+     */
+    inline const ClientCertificateConfig& GetClientCertificateConfig() const { return m_clientCertificateConfig; }
+    template<typename ClientCertificateConfigT = ClientCertificateConfig>
+    void SetClientCertificateConfig(ClientCertificateConfigT&& value) { m_clientCertificateConfigHasBeenSet = true; m_clientCertificateConfig = std::forward<ClientCertificateConfigT>(value); }
+    template<typename ClientCertificateConfigT = ClientCertificateConfig>
+    DescribeDomainConfigurationResult& WithClientCertificateConfig(ClientCertificateConfigT&& value) { SetClientCertificateConfig(std::forward<ClientCertificateConfigT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeDomainConfigurationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeDomainConfigurationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeDomainConfigurationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeDomainConfigurationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainConfigurationName;
+    bool m_domainConfigurationNameHasBeenSet = false;
 
     Aws::String m_domainConfigurationArn;
+    bool m_domainConfigurationArnHasBeenSet = false;
 
     Aws::String m_domainName;
+    bool m_domainNameHasBeenSet = false;
 
     Aws::Vector<ServerCertificateSummary> m_serverCertificates;
+    bool m_serverCertificatesHasBeenSet = false;
 
     AuthorizerConfig m_authorizerConfig;
+    bool m_authorizerConfigHasBeenSet = false;
 
-    DomainConfigurationStatus m_domainConfigurationStatus;
+    DomainConfigurationStatus m_domainConfigurationStatus{DomainConfigurationStatus::NOT_SET};
+    bool m_domainConfigurationStatusHasBeenSet = false;
 
-    ServiceType m_serviceType;
+    ServiceType m_serviceType{ServiceType::NOT_SET};
+    bool m_serviceTypeHasBeenSet = false;
 
-    DomainType m_domainType;
+    DomainType m_domainType{DomainType::NOT_SET};
+    bool m_domainTypeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastStatusChangeDate;
+    Aws::Utils::DateTime m_lastStatusChangeDate{};
+    bool m_lastStatusChangeDateHasBeenSet = false;
+
+    TlsConfig m_tlsConfig;
+    bool m_tlsConfigHasBeenSet = false;
+
+    ServerCertificateConfig m_serverCertificateConfig;
+    bool m_serverCertificateConfigHasBeenSet = false;
+
+    AuthenticationType m_authenticationType{AuthenticationType::NOT_SET};
+    bool m_authenticationTypeHasBeenSet = false;
+
+    ApplicationProtocol m_applicationProtocol{ApplicationProtocol::NOT_SET};
+    bool m_applicationProtocolHasBeenSet = false;
+
+    ClientCertificateConfig m_clientCertificateConfig;
+    bool m_clientCertificateConfigHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

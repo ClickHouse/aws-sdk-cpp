@@ -25,6 +25,8 @@ namespace Aws
         static const int APPSYNC_HASH = HashingUtils::HashString("APPSYNC");
         static const int COGNITO_USER_POOL_HASH = HashingUtils::HashString("COGNITO_USER_POOL");
         static const int APP_RUNNER_SERVICE_HASH = HashingUtils::HashString("APP_RUNNER_SERVICE");
+        static const int VERIFIED_ACCESS_INSTANCE_HASH = HashingUtils::HashString("VERIFIED_ACCESS_INSTANCE");
+        static const int AMPLIFY_HASH = HashingUtils::HashString("AMPLIFY");
 
 
         ResourceType GetResourceTypeForName(const Aws::String& name)
@@ -50,6 +52,14 @@ namespace Aws
           {
             return ResourceType::APP_RUNNER_SERVICE;
           }
+          else if (hashCode == VERIFIED_ACCESS_INSTANCE_HASH)
+          {
+            return ResourceType::VERIFIED_ACCESS_INSTANCE;
+          }
+          else if (hashCode == AMPLIFY_HASH)
+          {
+            return ResourceType::AMPLIFY;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -64,6 +74,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case ResourceType::NOT_SET:
+            return {};
           case ResourceType::APPLICATION_LOAD_BALANCER:
             return "APPLICATION_LOAD_BALANCER";
           case ResourceType::API_GATEWAY:
@@ -74,6 +86,10 @@ namespace Aws
             return "COGNITO_USER_POOL";
           case ResourceType::APP_RUNNER_SERVICE:
             return "APP_RUNNER_SERVICE";
+          case ResourceType::VERIFIED_ACCESS_INSTANCE:
+            return "VERIFIED_ACCESS_INSTANCE";
+          case ResourceType::AMPLIFY:
+            return "AMPLIFY";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

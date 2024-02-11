@@ -18,27 +18,7 @@ namespace ResilienceHub
 namespace Model
 {
 
-PhysicalResource::PhysicalResource() : 
-    m_additionalInfoHasBeenSet(false),
-    m_appComponentsHasBeenSet(false),
-    m_excluded(false),
-    m_excludedHasBeenSet(false),
-    m_logicalResourceIdHasBeenSet(false),
-    m_physicalResourceIdHasBeenSet(false),
-    m_resourceNameHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
-{
-}
-
-PhysicalResource::PhysicalResource(JsonView jsonValue) : 
-    m_additionalInfoHasBeenSet(false),
-    m_appComponentsHasBeenSet(false),
-    m_excluded(false),
-    m_excludedHasBeenSet(false),
-    m_logicalResourceIdHasBeenSet(false),
-    m_physicalResourceIdHasBeenSet(false),
-    m_resourceNameHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
+PhysicalResource::PhysicalResource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -61,7 +41,6 @@ PhysicalResource& PhysicalResource::operator =(JsonView jsonValue)
     }
     m_additionalInfoHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("appComponents"))
   {
     Aws::Utils::Array<JsonView> appComponentsJsonList = jsonValue.GetArray("appComponents");
@@ -71,42 +50,41 @@ PhysicalResource& PhysicalResource::operator =(JsonView jsonValue)
     }
     m_appComponentsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("excluded"))
   {
     m_excluded = jsonValue.GetBool("excluded");
-
     m_excludedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("logicalResourceId"))
   {
     m_logicalResourceId = jsonValue.GetObject("logicalResourceId");
-
     m_logicalResourceIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("parentResourceName"))
+  {
+    m_parentResourceName = jsonValue.GetString("parentResourceName");
+    m_parentResourceNameHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("physicalResourceId"))
   {
     m_physicalResourceId = jsonValue.GetObject("physicalResourceId");
-
     m_physicalResourceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("resourceName"))
   {
     m_resourceName = jsonValue.GetString("resourceName");
-
     m_resourceNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("resourceType"))
   {
     m_resourceType = jsonValue.GetString("resourceType");
-
     m_resourceTypeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("sourceType"))
+  {
+    m_sourceType = ResourceSourceTypeMapper::GetResourceSourceTypeForName(jsonValue.GetString("sourceType"));
+    m_sourceTypeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -153,6 +131,12 @@ JsonValue PhysicalResource::Jsonize() const
 
   }
 
+  if(m_parentResourceNameHasBeenSet)
+  {
+   payload.WithString("parentResourceName", m_parentResourceName);
+
+  }
+
   if(m_physicalResourceIdHasBeenSet)
   {
    payload.WithObject("physicalResourceId", m_physicalResourceId.Jsonize());
@@ -169,6 +153,11 @@ JsonValue PhysicalResource::Jsonize() const
   {
    payload.WithString("resourceType", m_resourceType);
 
+  }
+
+  if(m_sourceTypeHasBeenSet)
+  {
+   payload.WithString("sourceType", ResourceSourceTypeMapper::GetNameForResourceSourceType(m_sourceType));
   }
 
   return payload;

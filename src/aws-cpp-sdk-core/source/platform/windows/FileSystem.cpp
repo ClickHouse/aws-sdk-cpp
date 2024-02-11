@@ -7,11 +7,14 @@
 #include <aws/core/platform/Environment.h>
 #include <aws/core/utils/logging/LogMacros.h>
 #include <aws/core/utils/StringUtils.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <cassert>
 #include <iostream>
 #include <Userenv.h>
 
-#pragma warning( disable : 4996)
+#ifdef _MSC_VER
+#pragma warning(disable: 4996)
+#endif
 
 using namespace Aws::Utils;
 namespace Aws
@@ -180,14 +183,20 @@ Aws::String GetHomeDirectory()
 
 Aws::String GetExecutableDirectory()
 {
-    static const unsigned long long bufferSize = 256;
-    WCHAR buffer[bufferSize];
+    Aws::Vector<wchar_t> buffer(MAX_PATH + 1, NULL);
+    DWORD written = GetModuleFileNameW(nullptr, buffer.data(), static_cast<DWORD>(buffer.size()));
 
-    memset(buffer, 0, sizeof(buffer));
-
-    if (GetModuleFileNameW(nullptr, buffer, static_cast<DWORD>(sizeof(buffer))))
+    if (ERROR_INSUFFICIENT_BUFFER == GetLastError())
     {
-        Aws::String bufferStr(Aws::Utils::StringUtils::FromWString(buffer));
+        /* Max unicode path size is 2^15 + 1 additional byte for null terminator. */
+        const DWORD unicode_max_path = 0x8000 + 1;
+        buffer.resize(unicode_max_path, NULL);
+        written = GetModuleFileNameW(nullptr, buffer.data(), static_cast<DWORD>(buffer.size()));
+    }
+
+    if (written > 0)
+    {
+        Aws::String bufferStr(Aws::Utils::StringUtils::FromWString(buffer.data()));
         auto fileNameStart = bufferStr.find_last_of(PATH_DELIM);
         if (fileNameStart != std::string::npos)
         {
@@ -209,7 +218,7 @@ bool CreateDirectoryIfNotExists(const char* path, bool createParentDirs)
     for (size_t i = createParentDirs ? 0 : directoryName.size() - 1; i < directoryName.size(); i++)
     {
         // Create the intermediate directory if we find a delimiter and the delimiter is not the first char, or if this is the target directory.
-        if (i != 0 && (directoryName[i] == FileSystem::PATH_DELIM || i == directoryName.size() - 1))
+        if (i > 2 && (directoryName[i] == FileSystem::PATH_DELIM || i == directoryName.size() - 1))
         {
             // the last delimeter can be removed safely.
             if (directoryName[i] == FileSystem::PATH_DELIM) 
@@ -304,6 +313,14 @@ Aws::String CreateTempFilePath()
 {
 #ifdef _MSC_VER
 #pragma warning(disable: 4996) // _CRT_SECURE_NO_WARNINGS
+#elif !defined(L_tmpnam_s)
+    // Definition from the MSVC stdio.h
+    #define L_tmpnam_s (sizeof("\\") + 16)
+#endif
+
+#if defined(__MINGW64_VERSION_MAJOR) && __MINGW64_VERSION_MAJOR < 12
+    #undef L_tmpnam_s
+    #define L_tmpnam_s 260
 #endif
     char s_tempName[L_tmpnam_s+1];
 
@@ -316,7 +333,7 @@ Aws::String CreateTempFilePath()
     for more details.
     */
 
-#if _MSC_VER >= 1900
+#if _MSC_VER >= 1900 || defined(_UCRT)
     tmpnam_s(s_tempName, L_tmpnam_s);
 #else
     s_tempName[0] = '.';

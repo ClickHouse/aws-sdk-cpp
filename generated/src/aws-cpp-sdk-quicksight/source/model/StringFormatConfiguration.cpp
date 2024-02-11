@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-StringFormatConfiguration::StringFormatConfiguration() : 
-    m_nullValueFormatConfigurationHasBeenSet(false),
-    m_numericFormatConfigurationHasBeenSet(false)
-{
-}
-
-StringFormatConfiguration::StringFormatConfiguration(JsonView jsonValue) : 
-    m_nullValueFormatConfigurationHasBeenSet(false),
-    m_numericFormatConfigurationHasBeenSet(false)
+StringFormatConfiguration::StringFormatConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ StringFormatConfiguration& StringFormatConfiguration::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("NullValueFormatConfiguration"))
   {
     m_nullValueFormatConfiguration = jsonValue.GetObject("NullValueFormatConfiguration");
-
     m_nullValueFormatConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NumericFormatConfiguration"))
   {
     m_numericFormatConfiguration = jsonValue.GetObject("NumericFormatConfiguration");
-
     m_numericFormatConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

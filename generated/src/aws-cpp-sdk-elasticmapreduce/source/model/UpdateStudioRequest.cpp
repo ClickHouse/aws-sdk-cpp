@@ -12,15 +12,6 @@ using namespace Aws::EMR::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateStudioRequest::UpdateStudioRequest() : 
-    m_studioIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_defaultS3LocationHasBeenSet(false)
-{
-}
-
 Aws::String UpdateStudioRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -57,6 +48,12 @@ Aws::String UpdateStudioRequest::SerializePayload() const
   if(m_defaultS3LocationHasBeenSet)
   {
    payload.WithString("DefaultS3Location", m_defaultS3Location);
+
+  }
+
+  if(m_encryptionKeyArnHasBeenSet)
+  {
+   payload.WithString("EncryptionKeyArn", m_encryptionKeyArn);
 
   }
 

@@ -32,142 +32,48 @@ namespace Model
   class CognitoUserPoolConfig
   {
   public:
-    AWS_APPSYNC_API CognitoUserPoolConfig();
+    AWS_APPSYNC_API CognitoUserPoolConfig() = default;
     AWS_APPSYNC_API CognitoUserPoolConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSYNC_API CognitoUserPoolConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSYNC_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The user pool ID.</p>
      */
-    inline const Aws::String& GetUserPoolId() const{ return m_userPoolId; }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
+    inline const Aws::String& GetUserPoolId() const { return m_userPoolId; }
     inline bool UserPoolIdHasBeenSet() const { return m_userPoolIdHasBeenSet; }
+    template<typename UserPoolIdT = Aws::String>
+    void SetUserPoolId(UserPoolIdT&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::forward<UserPoolIdT>(value); }
+    template<typename UserPoolIdT = Aws::String>
+    CognitoUserPoolConfig& WithUserPoolId(UserPoolIdT&& value) { SetUserPoolId(std::forward<UserPoolIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline void SetUserPoolId(const Aws::String& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = value; }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::move(value); }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline void SetUserPoolId(const char* value) { m_userPoolIdHasBeenSet = true; m_userPoolId.assign(value); }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline CognitoUserPoolConfig& WithUserPoolId(const Aws::String& value) { SetUserPoolId(value); return *this;}
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline CognitoUserPoolConfig& WithUserPoolId(Aws::String&& value) { SetUserPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline CognitoUserPoolConfig& WithUserPoolId(const char* value) { SetUserPoolId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services Region in which the user pool was created.</p>
      */
-    inline const Aws::String& GetAwsRegion() const{ return m_awsRegion; }
-
-    /**
-     * <p>The Amazon Web Services Region in which the user pool was created.</p>
-     */
+    inline const Aws::String& GetAwsRegion() const { return m_awsRegion; }
     inline bool AwsRegionHasBeenSet() const { return m_awsRegionHasBeenSet; }
+    template<typename AwsRegionT = Aws::String>
+    void SetAwsRegion(AwsRegionT&& value) { m_awsRegionHasBeenSet = true; m_awsRegion = std::forward<AwsRegionT>(value); }
+    template<typename AwsRegionT = Aws::String>
+    CognitoUserPoolConfig& WithAwsRegion(AwsRegionT&& value) { SetAwsRegion(std::forward<AwsRegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services Region in which the user pool was created.</p>
-     */
-    inline void SetAwsRegion(const Aws::String& value) { m_awsRegionHasBeenSet = true; m_awsRegion = value; }
-
-    /**
-     * <p>The Amazon Web Services Region in which the user pool was created.</p>
-     */
-    inline void SetAwsRegion(Aws::String&& value) { m_awsRegionHasBeenSet = true; m_awsRegion = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services Region in which the user pool was created.</p>
-     */
-    inline void SetAwsRegion(const char* value) { m_awsRegionHasBeenSet = true; m_awsRegion.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services Region in which the user pool was created.</p>
-     */
-    inline CognitoUserPoolConfig& WithAwsRegion(const Aws::String& value) { SetAwsRegion(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Region in which the user pool was created.</p>
-     */
-    inline CognitoUserPoolConfig& WithAwsRegion(Aws::String&& value) { SetAwsRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Region in which the user pool was created.</p>
-     */
-    inline CognitoUserPoolConfig& WithAwsRegion(const char* value) { SetAwsRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A regular expression for validating the incoming Amazon Cognito user pool app
      * client ID. If this value isn't set, no filtering is applied.</p>
      */
-    inline const Aws::String& GetAppIdClientRegex() const{ return m_appIdClientRegex; }
-
-    /**
-     * <p>A regular expression for validating the incoming Amazon Cognito user pool app
-     * client ID. If this value isn't set, no filtering is applied.</p>
-     */
+    inline const Aws::String& GetAppIdClientRegex() const { return m_appIdClientRegex; }
     inline bool AppIdClientRegexHasBeenSet() const { return m_appIdClientRegexHasBeenSet; }
-
-    /**
-     * <p>A regular expression for validating the incoming Amazon Cognito user pool app
-     * client ID. If this value isn't set, no filtering is applied.</p>
-     */
-    inline void SetAppIdClientRegex(const Aws::String& value) { m_appIdClientRegexHasBeenSet = true; m_appIdClientRegex = value; }
-
-    /**
-     * <p>A regular expression for validating the incoming Amazon Cognito user pool app
-     * client ID. If this value isn't set, no filtering is applied.</p>
-     */
-    inline void SetAppIdClientRegex(Aws::String&& value) { m_appIdClientRegexHasBeenSet = true; m_appIdClientRegex = std::move(value); }
-
-    /**
-     * <p>A regular expression for validating the incoming Amazon Cognito user pool app
-     * client ID. If this value isn't set, no filtering is applied.</p>
-     */
-    inline void SetAppIdClientRegex(const char* value) { m_appIdClientRegexHasBeenSet = true; m_appIdClientRegex.assign(value); }
-
-    /**
-     * <p>A regular expression for validating the incoming Amazon Cognito user pool app
-     * client ID. If this value isn't set, no filtering is applied.</p>
-     */
-    inline CognitoUserPoolConfig& WithAppIdClientRegex(const Aws::String& value) { SetAppIdClientRegex(value); return *this;}
-
-    /**
-     * <p>A regular expression for validating the incoming Amazon Cognito user pool app
-     * client ID. If this value isn't set, no filtering is applied.</p>
-     */
-    inline CognitoUserPoolConfig& WithAppIdClientRegex(Aws::String&& value) { SetAppIdClientRegex(std::move(value)); return *this;}
-
-    /**
-     * <p>A regular expression for validating the incoming Amazon Cognito user pool app
-     * client ID. If this value isn't set, no filtering is applied.</p>
-     */
-    inline CognitoUserPoolConfig& WithAppIdClientRegex(const char* value) { SetAppIdClientRegex(value); return *this;}
-
+    template<typename AppIdClientRegexT = Aws::String>
+    void SetAppIdClientRegex(AppIdClientRegexT&& value) { m_appIdClientRegexHasBeenSet = true; m_appIdClientRegex = std::forward<AppIdClientRegexT>(value); }
+    template<typename AppIdClientRegexT = Aws::String>
+    CognitoUserPoolConfig& WithAppIdClientRegex(AppIdClientRegexT&& value) { SetAppIdClientRegex(std::forward<AppIdClientRegexT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userPoolId;

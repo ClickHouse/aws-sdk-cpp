@@ -32,45 +32,24 @@ namespace Model
   class AnomalyDetectorConfigSummary
   {
   public:
-    AWS_LOOKOUTMETRICS_API AnomalyDetectorConfigSummary();
+    AWS_LOOKOUTMETRICS_API AnomalyDetectorConfigSummary() = default;
     AWS_LOOKOUTMETRICS_API AnomalyDetectorConfigSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API AnomalyDetectorConfigSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The interval at which the detector analyzes its source data.</p>
      */
-    inline const Frequency& GetAnomalyDetectorFrequency() const{ return m_anomalyDetectorFrequency; }
-
-    /**
-     * <p>The interval at which the detector analyzes its source data.</p>
-     */
+    inline Frequency GetAnomalyDetectorFrequency() const { return m_anomalyDetectorFrequency; }
     inline bool AnomalyDetectorFrequencyHasBeenSet() const { return m_anomalyDetectorFrequencyHasBeenSet; }
-
-    /**
-     * <p>The interval at which the detector analyzes its source data.</p>
-     */
-    inline void SetAnomalyDetectorFrequency(const Frequency& value) { m_anomalyDetectorFrequencyHasBeenSet = true; m_anomalyDetectorFrequency = value; }
-
-    /**
-     * <p>The interval at which the detector analyzes its source data.</p>
-     */
-    inline void SetAnomalyDetectorFrequency(Frequency&& value) { m_anomalyDetectorFrequencyHasBeenSet = true; m_anomalyDetectorFrequency = std::move(value); }
-
-    /**
-     * <p>The interval at which the detector analyzes its source data.</p>
-     */
-    inline AnomalyDetectorConfigSummary& WithAnomalyDetectorFrequency(const Frequency& value) { SetAnomalyDetectorFrequency(value); return *this;}
-
-    /**
-     * <p>The interval at which the detector analyzes its source data.</p>
-     */
-    inline AnomalyDetectorConfigSummary& WithAnomalyDetectorFrequency(Frequency&& value) { SetAnomalyDetectorFrequency(std::move(value)); return *this;}
-
+    inline void SetAnomalyDetectorFrequency(Frequency value) { m_anomalyDetectorFrequencyHasBeenSet = true; m_anomalyDetectorFrequency = value; }
+    inline AnomalyDetectorConfigSummary& WithAnomalyDetectorFrequency(Frequency value) { SetAnomalyDetectorFrequency(value); return *this;}
+    ///@}
   private:
 
-    Frequency m_anomalyDetectorFrequency;
+    Frequency m_anomalyDetectorFrequency{Frequency::NOT_SET};
     bool m_anomalyDetectorFrequencyHasBeenSet = false;
   };
 

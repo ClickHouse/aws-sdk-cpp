@@ -18,15 +18,7 @@ namespace DynamoDB
 namespace Model
 {
 
-UpdateGlobalSecondaryIndexAction::UpdateGlobalSecondaryIndexAction() : 
-    m_indexNameHasBeenSet(false),
-    m_provisionedThroughputHasBeenSet(false)
-{
-}
-
-UpdateGlobalSecondaryIndexAction::UpdateGlobalSecondaryIndexAction(JsonView jsonValue) : 
-    m_indexNameHasBeenSet(false),
-    m_provisionedThroughputHasBeenSet(false)
+UpdateGlobalSecondaryIndexAction::UpdateGlobalSecondaryIndexAction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,23 @@ UpdateGlobalSecondaryIndexAction& UpdateGlobalSecondaryIndexAction::operator =(J
   if(jsonValue.ValueExists("IndexName"))
   {
     m_indexName = jsonValue.GetString("IndexName");
-
     m_indexNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProvisionedThroughput"))
   {
     m_provisionedThroughput = jsonValue.GetObject("ProvisionedThroughput");
-
     m_provisionedThroughputHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("OnDemandThroughput"))
+  {
+    m_onDemandThroughput = jsonValue.GetObject("OnDemandThroughput");
+    m_onDemandThroughputHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("WarmThroughput"))
+  {
+    m_warmThroughput = jsonValue.GetObject("WarmThroughput");
+    m_warmThroughputHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +61,18 @@ JsonValue UpdateGlobalSecondaryIndexAction::Jsonize() const
   if(m_provisionedThroughputHasBeenSet)
   {
    payload.WithObject("ProvisionedThroughput", m_provisionedThroughput.Jsonize());
+
+  }
+
+  if(m_onDemandThroughputHasBeenSet)
+  {
+   payload.WithObject("OnDemandThroughput", m_onDemandThroughput.Jsonize());
+
+  }
+
+  if(m_warmThroughputHasBeenSet)
+  {
+   payload.WithObject("WarmThroughput", m_warmThroughput.Jsonize());
 
   }
 

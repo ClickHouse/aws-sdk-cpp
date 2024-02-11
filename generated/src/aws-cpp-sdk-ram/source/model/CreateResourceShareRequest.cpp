@@ -12,18 +12,6 @@ using namespace Aws::RAM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateResourceShareRequest::CreateResourceShareRequest() : 
-    m_nameHasBeenSet(false),
-    m_resourceArnsHasBeenSet(false),
-    m_principalsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_allowExternalPrincipals(false),
-    m_allowExternalPrincipalsHasBeenSet(false),
-    m_clientTokenHasBeenSet(false),
-    m_permissionArnsHasBeenSet(false)
-{
-}
-
 Aws::String CreateResourceShareRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -87,6 +75,17 @@ Aws::String CreateResourceShareRequest::SerializePayload() const
      permissionArnsJsonList[permissionArnsIndex].AsString(m_permissionArns[permissionArnsIndex]);
    }
    payload.WithArray("permissionArns", std::move(permissionArnsJsonList));
+
+  }
+
+  if(m_sourcesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> sourcesJsonList(m_sources.size());
+   for(unsigned sourcesIndex = 0; sourcesIndex < sourcesJsonList.GetLength(); ++sourcesIndex)
+   {
+     sourcesJsonList[sourcesIndex].AsString(m_sources[sourcesIndex]);
+   }
+   payload.WithArray("sources", std::move(sourcesJsonList));
 
   }
 

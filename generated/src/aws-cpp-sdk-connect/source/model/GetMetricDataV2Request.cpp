@@ -12,19 +12,6 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetMetricDataV2Request::GetMetricDataV2Request() : 
-    m_resourceArnHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_groupingsHasBeenSet(false),
-    m_metricsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String GetMetricDataV2Request::SerializePayload() const
 {
   JsonValue payload;
@@ -43,6 +30,12 @@ Aws::String GetMetricDataV2Request::SerializePayload() const
   if(m_endTimeHasBeenSet)
   {
    payload.WithDouble("EndTime", m_endTime.SecondsWithMSPrecision());
+  }
+
+  if(m_intervalHasBeenSet)
+  {
+   payload.WithObject("Interval", m_interval.Jsonize());
+
   }
 
   if(m_filtersHasBeenSet)

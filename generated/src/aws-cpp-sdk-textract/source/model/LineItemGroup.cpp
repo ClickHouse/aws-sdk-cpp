@@ -18,17 +18,7 @@ namespace Textract
 namespace Model
 {
 
-LineItemGroup::LineItemGroup() : 
-    m_lineItemGroupIndex(0),
-    m_lineItemGroupIndexHasBeenSet(false),
-    m_lineItemsHasBeenSet(false)
-{
-}
-
-LineItemGroup::LineItemGroup(JsonView jsonValue) : 
-    m_lineItemGroupIndex(0),
-    m_lineItemGroupIndexHasBeenSet(false),
-    m_lineItemsHasBeenSet(false)
+LineItemGroup::LineItemGroup(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ LineItemGroup& LineItemGroup::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("LineItemGroupIndex"))
   {
     m_lineItemGroupIndex = jsonValue.GetInteger("LineItemGroupIndex");
-
     m_lineItemGroupIndexHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LineItems"))
   {
     Aws::Utils::Array<JsonView> lineItemsJsonList = jsonValue.GetArray("LineItems");
@@ -51,7 +39,6 @@ LineItemGroup& LineItemGroup::operator =(JsonView jsonValue)
     }
     m_lineItemsHasBeenSet = true;
   }
-
   return *this;
 }
 

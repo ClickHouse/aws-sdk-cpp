@@ -33,161 +33,58 @@ namespace Model
   class CACertificate
   {
   public:
-    AWS_IOT_API CACertificate();
+    AWS_IOT_API CACertificate() = default;
     AWS_IOT_API CACertificate(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API CACertificate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the CA certificate.</p>
      */
-    inline const Aws::String& GetCertificateArn() const{ return m_certificateArn; }
-
-    /**
-     * <p>The ARN of the CA certificate.</p>
-     */
+    inline const Aws::String& GetCertificateArn() const { return m_certificateArn; }
     inline bool CertificateArnHasBeenSet() const { return m_certificateArnHasBeenSet; }
+    template<typename CertificateArnT = Aws::String>
+    void SetCertificateArn(CertificateArnT&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = std::forward<CertificateArnT>(value); }
+    template<typename CertificateArnT = Aws::String>
+    CACertificate& WithCertificateArn(CertificateArnT&& value) { SetCertificateArn(std::forward<CertificateArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the CA certificate.</p>
-     */
-    inline void SetCertificateArn(const Aws::String& value) { m_certificateArnHasBeenSet = true; m_certificateArn = value; }
-
-    /**
-     * <p>The ARN of the CA certificate.</p>
-     */
-    inline void SetCertificateArn(Aws::String&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the CA certificate.</p>
-     */
-    inline void SetCertificateArn(const char* value) { m_certificateArnHasBeenSet = true; m_certificateArn.assign(value); }
-
-    /**
-     * <p>The ARN of the CA certificate.</p>
-     */
-    inline CACertificate& WithCertificateArn(const Aws::String& value) { SetCertificateArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the CA certificate.</p>
-     */
-    inline CACertificate& WithCertificateArn(Aws::String&& value) { SetCertificateArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the CA certificate.</p>
-     */
-    inline CACertificate& WithCertificateArn(const char* value) { SetCertificateArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the CA certificate.</p>
      */
-    inline const Aws::String& GetCertificateId() const{ return m_certificateId; }
-
-    /**
-     * <p>The ID of the CA certificate.</p>
-     */
+    inline const Aws::String& GetCertificateId() const { return m_certificateId; }
     inline bool CertificateIdHasBeenSet() const { return m_certificateIdHasBeenSet; }
+    template<typename CertificateIdT = Aws::String>
+    void SetCertificateId(CertificateIdT&& value) { m_certificateIdHasBeenSet = true; m_certificateId = std::forward<CertificateIdT>(value); }
+    template<typename CertificateIdT = Aws::String>
+    CACertificate& WithCertificateId(CertificateIdT&& value) { SetCertificateId(std::forward<CertificateIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the CA certificate.</p>
-     */
-    inline void SetCertificateId(const Aws::String& value) { m_certificateIdHasBeenSet = true; m_certificateId = value; }
-
-    /**
-     * <p>The ID of the CA certificate.</p>
-     */
-    inline void SetCertificateId(Aws::String&& value) { m_certificateIdHasBeenSet = true; m_certificateId = std::move(value); }
-
-    /**
-     * <p>The ID of the CA certificate.</p>
-     */
-    inline void SetCertificateId(const char* value) { m_certificateIdHasBeenSet = true; m_certificateId.assign(value); }
-
-    /**
-     * <p>The ID of the CA certificate.</p>
-     */
-    inline CACertificate& WithCertificateId(const Aws::String& value) { SetCertificateId(value); return *this;}
-
-    /**
-     * <p>The ID of the CA certificate.</p>
-     */
-    inline CACertificate& WithCertificateId(Aws::String&& value) { SetCertificateId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the CA certificate.</p>
-     */
-    inline CACertificate& WithCertificateId(const char* value) { SetCertificateId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the CA certificate.</p> <p>The status value REGISTER_INACTIVE
      * is deprecated and should not be used.</p>
      */
-    inline const CACertificateStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the CA certificate.</p> <p>The status value REGISTER_INACTIVE
-     * is deprecated and should not be used.</p>
-     */
+    inline CACertificateStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(CACertificateStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline CACertificate& WithStatus(CACertificateStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the CA certificate.</p> <p>The status value REGISTER_INACTIVE
-     * is deprecated and should not be used.</p>
-     */
-    inline void SetStatus(const CACertificateStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the CA certificate.</p> <p>The status value REGISTER_INACTIVE
-     * is deprecated and should not be used.</p>
-     */
-    inline void SetStatus(CACertificateStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the CA certificate.</p> <p>The status value REGISTER_INACTIVE
-     * is deprecated and should not be used.</p>
-     */
-    inline CACertificate& WithStatus(const CACertificateStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the CA certificate.</p> <p>The status value REGISTER_INACTIVE
-     * is deprecated and should not be used.</p>
-     */
-    inline CACertificate& WithStatus(CACertificateStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date the CA certificate was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationDate() const{ return m_creationDate; }
-
-    /**
-     * <p>The date the CA certificate was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationDate() const { return m_creationDate; }
     inline bool CreationDateHasBeenSet() const { return m_creationDateHasBeenSet; }
-
-    /**
-     * <p>The date the CA certificate was created.</p>
-     */
-    inline void SetCreationDate(const Aws::Utils::DateTime& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
-
-    /**
-     * <p>The date the CA certificate was created.</p>
-     */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
-
-    /**
-     * <p>The date the CA certificate was created.</p>
-     */
-    inline CACertificate& WithCreationDate(const Aws::Utils::DateTime& value) { SetCreationDate(value); return *this;}
-
-    /**
-     * <p>The date the CA certificate was created.</p>
-     */
-    inline CACertificate& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
-
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    void SetCreationDate(CreationDateT&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::forward<CreationDateT>(value); }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    CACertificate& WithCreationDate(CreationDateT&& value) { SetCreationDate(std::forward<CreationDateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_certificateArn;
@@ -196,10 +93,10 @@ namespace Model
     Aws::String m_certificateId;
     bool m_certificateIdHasBeenSet = false;
 
-    CACertificateStatus m_status;
+    CACertificateStatus m_status{CACertificateStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationDate;
+    Aws::Utils::DateTime m_creationDate{};
     bool m_creationDateHasBeenSet = false;
   };
 

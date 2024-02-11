@@ -22,7 +22,7 @@ namespace Model
   class UpdateDeletionProtectionRequest : public SSMIncidentsRequest
   {
   public:
-    AWS_SSMINCIDENTS_API UpdateDeletionProtectionRequest();
+    AWS_SSMINCIDENTS_API UpdateDeletionProtectionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,125 +33,49 @@ namespace Model
     AWS_SSMINCIDENTS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the replication set to update.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication set to update.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    UpdateDeletionProtectionRequest& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication set to update.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication set to update.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication set to update.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication set to update.</p>
-     */
-    inline UpdateDeletionProtectionRequest& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication set to update.</p>
-     */
-    inline UpdateDeletionProtectionRequest& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication set to update.</p>
-     */
-    inline UpdateDeletionProtectionRequest& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A token that ensures that the operation is called only once with the
      * specified details.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>A token that ensures that the operation is called only once with the
-     * specified details.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    UpdateDeletionProtectionRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A token that ensures that the operation is called only once with the
-     * specified details.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>A token that ensures that the operation is called only once with the
-     * specified details.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>A token that ensures that the operation is called only once with the
-     * specified details.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>A token that ensures that the operation is called only once with the
-     * specified details.</p>
-     */
-    inline UpdateDeletionProtectionRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>A token that ensures that the operation is called only once with the
-     * specified details.</p>
-     */
-    inline UpdateDeletionProtectionRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token that ensures that the operation is called only once with the
-     * specified details.</p>
-     */
-    inline UpdateDeletionProtectionRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies if deletion protection is turned on or off in your account. </p>
      */
-    inline bool GetDeletionProtected() const{ return m_deletionProtected; }
-
-    /**
-     * <p>Specifies if deletion protection is turned on or off in your account. </p>
-     */
+    inline bool GetDeletionProtected() const { return m_deletionProtected; }
     inline bool DeletionProtectedHasBeenSet() const { return m_deletionProtectedHasBeenSet; }
-
-    /**
-     * <p>Specifies if deletion protection is turned on or off in your account. </p>
-     */
     inline void SetDeletionProtected(bool value) { m_deletionProtectedHasBeenSet = true; m_deletionProtected = value; }
-
-    /**
-     * <p>Specifies if deletion protection is turned on or off in your account. </p>
-     */
     inline UpdateDeletionProtectionRequest& WithDeletionProtected(bool value) { SetDeletionProtected(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_arn;
     bool m_arnHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
-    bool m_deletionProtected;
+    bool m_deletionProtected{false};
     bool m_deletionProtectedHasBeenSet = false;
   };
 

@@ -18,15 +18,7 @@ namespace AmplifyBackend
 namespace Model
 {
 
-BackendAPIConflictResolution::BackendAPIConflictResolution() : 
-    m_resolutionStrategy(ResolutionStrategy::NOT_SET),
-    m_resolutionStrategyHasBeenSet(false)
-{
-}
-
-BackendAPIConflictResolution::BackendAPIConflictResolution(JsonView jsonValue) : 
-    m_resolutionStrategy(ResolutionStrategy::NOT_SET),
-    m_resolutionStrategyHasBeenSet(false)
+BackendAPIConflictResolution::BackendAPIConflictResolution(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ BackendAPIConflictResolution& BackendAPIConflictResolution::operator =(JsonView 
   if(jsonValue.ValueExists("resolutionStrategy"))
   {
     m_resolutionStrategy = ResolutionStrategyMapper::GetResolutionStrategyForName(jsonValue.GetString("resolutionStrategy"));
-
     m_resolutionStrategyHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -21,7 +21,7 @@ namespace Model
   class DescribeLagsRequest : public DirectConnectRequest
   {
   public:
-    AWS_DIRECTCONNECT_API DescribeLagsRequest();
+    AWS_DIRECTCONNECT_API DescribeLagsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,50 +34,52 @@ namespace Model
     AWS_DIRECTCONNECT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the LAG.</p>
      */
-    inline const Aws::String& GetLagId() const{ return m_lagId; }
-
-    /**
-     * <p>The ID of the LAG.</p>
-     */
+    inline const Aws::String& GetLagId() const { return m_lagId; }
     inline bool LagIdHasBeenSet() const { return m_lagIdHasBeenSet; }
+    template<typename LagIdT = Aws::String>
+    void SetLagId(LagIdT&& value) { m_lagIdHasBeenSet = true; m_lagId = std::forward<LagIdT>(value); }
+    template<typename LagIdT = Aws::String>
+    DescribeLagsRequest& WithLagId(LagIdT&& value) { SetLagId(std::forward<LagIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the LAG.</p>
+     * <p>The maximum number of results to return with a single call. To retrieve the
+     * remaining results, make another call with the returned <code>nextToken</code>
+     * value.</p> <p>If <code>MaxResults</code> is given a value larger than 100, only
+     * 100 results are returned.</p>
      */
-    inline void SetLagId(const Aws::String& value) { m_lagIdHasBeenSet = true; m_lagId = value; }
+    inline int GetMaxResults() const { return m_maxResults; }
+    inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
+    inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
+    inline DescribeLagsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the LAG.</p>
+     * <p>The token for the next page of results.</p>
      */
-    inline void SetLagId(Aws::String&& value) { m_lagIdHasBeenSet = true; m_lagId = std::move(value); }
-
-    /**
-     * <p>The ID of the LAG.</p>
-     */
-    inline void SetLagId(const char* value) { m_lagIdHasBeenSet = true; m_lagId.assign(value); }
-
-    /**
-     * <p>The ID of the LAG.</p>
-     */
-    inline DescribeLagsRequest& WithLagId(const Aws::String& value) { SetLagId(value); return *this;}
-
-    /**
-     * <p>The ID of the LAG.</p>
-     */
-    inline DescribeLagsRequest& WithLagId(Aws::String&& value) { SetLagId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the LAG.</p>
-     */
-    inline DescribeLagsRequest& WithLagId(const char* value) { SetLagId(value); return *this;}
-
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeLagsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_lagId;
     bool m_lagIdHasBeenSet = false;
+
+    int m_maxResults{0};
+    bool m_maxResultsHasBeenSet = false;
+
+    Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
   };
 
 } // namespace Model

@@ -32,79 +32,37 @@ namespace Model
   class SearchSortResult
   {
   public:
-    AWS_WORKDOCS_API SearchSortResult();
+    AWS_WORKDOCS_API SearchSortResult() = default;
     AWS_WORKDOCS_API SearchSortResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKDOCS_API SearchSortResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKDOCS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Sort search results based on this field name.</p>
      */
-    inline const OrderByFieldType& GetField() const{ return m_field; }
-
-    /**
-     * <p>Sort search results based on this field name.</p>
-     */
+    inline OrderByFieldType GetField() const { return m_field; }
     inline bool FieldHasBeenSet() const { return m_fieldHasBeenSet; }
+    inline void SetField(OrderByFieldType value) { m_fieldHasBeenSet = true; m_field = value; }
+    inline SearchSortResult& WithField(OrderByFieldType value) { SetField(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Sort search results based on this field name.</p>
-     */
-    inline void SetField(const OrderByFieldType& value) { m_fieldHasBeenSet = true; m_field = value; }
-
-    /**
-     * <p>Sort search results based on this field name.</p>
-     */
-    inline void SetField(OrderByFieldType&& value) { m_fieldHasBeenSet = true; m_field = std::move(value); }
-
-    /**
-     * <p>Sort search results based on this field name.</p>
-     */
-    inline SearchSortResult& WithField(const OrderByFieldType& value) { SetField(value); return *this;}
-
-    /**
-     * <p>Sort search results based on this field name.</p>
-     */
-    inline SearchSortResult& WithField(OrderByFieldType&& value) { SetField(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Sort direction.</p>
      */
-    inline const SortOrder& GetOrder() const{ return m_order; }
-
-    /**
-     * <p>Sort direction.</p>
-     */
+    inline SortOrder GetOrder() const { return m_order; }
     inline bool OrderHasBeenSet() const { return m_orderHasBeenSet; }
-
-    /**
-     * <p>Sort direction.</p>
-     */
-    inline void SetOrder(const SortOrder& value) { m_orderHasBeenSet = true; m_order = value; }
-
-    /**
-     * <p>Sort direction.</p>
-     */
-    inline void SetOrder(SortOrder&& value) { m_orderHasBeenSet = true; m_order = std::move(value); }
-
-    /**
-     * <p>Sort direction.</p>
-     */
-    inline SearchSortResult& WithOrder(const SortOrder& value) { SetOrder(value); return *this;}
-
-    /**
-     * <p>Sort direction.</p>
-     */
-    inline SearchSortResult& WithOrder(SortOrder&& value) { SetOrder(std::move(value)); return *this;}
-
+    inline void SetOrder(SortOrder value) { m_orderHasBeenSet = true; m_order = value; }
+    inline SearchSortResult& WithOrder(SortOrder value) { SetOrder(value); return *this;}
+    ///@}
   private:
 
-    OrderByFieldType m_field;
+    OrderByFieldType m_field{OrderByFieldType::NOT_SET};
     bool m_fieldHasBeenSet = false;
 
-    SortOrder m_order;
+    SortOrder m_order{SortOrder::NOT_SET};
     bool m_orderHasBeenSet = false;
   };
 

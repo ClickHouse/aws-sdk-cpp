@@ -30,59 +30,37 @@ namespace Model
   class IOUsage
   {
   public:
-    AWS_QLDBSESSION_API IOUsage();
+    AWS_QLDBSESSION_API IOUsage() = default;
     AWS_QLDBSESSION_API IOUsage(Aws::Utils::Json::JsonView jsonValue);
     AWS_QLDBSESSION_API IOUsage& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QLDBSESSION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of read I/O requests that the command made.</p>
      */
-    inline long long GetReadIOs() const{ return m_readIOs; }
-
-    /**
-     * <p>The number of read I/O requests that the command made.</p>
-     */
+    inline long long GetReadIOs() const { return m_readIOs; }
     inline bool ReadIOsHasBeenSet() const { return m_readIOsHasBeenSet; }
-
-    /**
-     * <p>The number of read I/O requests that the command made.</p>
-     */
     inline void SetReadIOs(long long value) { m_readIOsHasBeenSet = true; m_readIOs = value; }
-
-    /**
-     * <p>The number of read I/O requests that the command made.</p>
-     */
     inline IOUsage& WithReadIOs(long long value) { SetReadIOs(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of write I/O requests that the command made.</p>
      */
-    inline long long GetWriteIOs() const{ return m_writeIOs; }
-
-    /**
-     * <p>The number of write I/O requests that the command made.</p>
-     */
+    inline long long GetWriteIOs() const { return m_writeIOs; }
     inline bool WriteIOsHasBeenSet() const { return m_writeIOsHasBeenSet; }
-
-    /**
-     * <p>The number of write I/O requests that the command made.</p>
-     */
     inline void SetWriteIOs(long long value) { m_writeIOsHasBeenSet = true; m_writeIOs = value; }
-
-    /**
-     * <p>The number of write I/O requests that the command made.</p>
-     */
     inline IOUsage& WithWriteIOs(long long value) { SetWriteIOs(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_readIOs;
+    long long m_readIOs{0};
     bool m_readIOsHasBeenSet = false;
 
-    long long m_writeIOs;
+    long long m_writeIOs{0};
     bool m_writeIOsHasBeenSet = false;
   };
 

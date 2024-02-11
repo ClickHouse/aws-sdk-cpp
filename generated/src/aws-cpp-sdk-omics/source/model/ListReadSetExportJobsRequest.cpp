@@ -15,15 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListReadSetExportJobsRequest::ListReadSetExportJobsRequest() : 
-    m_filterHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_sequenceStoreIdHasBeenSet(false)
-{
-}
-
 Aws::String ListReadSetExportJobsRequest::SerializePayload() const
 {
   JsonValue payload;

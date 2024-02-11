@@ -18,43 +18,7 @@ namespace kendra
 namespace Model
 {
 
-JiraConfiguration::JiraConfiguration() : 
-    m_jiraAccountUrlHasBeenSet(false),
-    m_secretArnHasBeenSet(false),
-    m_useChangeLog(false),
-    m_useChangeLogHasBeenSet(false),
-    m_projectHasBeenSet(false),
-    m_issueTypeHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_issueSubEntityFilterHasBeenSet(false),
-    m_attachmentFieldMappingsHasBeenSet(false),
-    m_commentFieldMappingsHasBeenSet(false),
-    m_issueFieldMappingsHasBeenSet(false),
-    m_projectFieldMappingsHasBeenSet(false),
-    m_workLogFieldMappingsHasBeenSet(false),
-    m_inclusionPatternsHasBeenSet(false),
-    m_exclusionPatternsHasBeenSet(false),
-    m_vpcConfigurationHasBeenSet(false)
-{
-}
-
-JiraConfiguration::JiraConfiguration(JsonView jsonValue) : 
-    m_jiraAccountUrlHasBeenSet(false),
-    m_secretArnHasBeenSet(false),
-    m_useChangeLog(false),
-    m_useChangeLogHasBeenSet(false),
-    m_projectHasBeenSet(false),
-    m_issueTypeHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_issueSubEntityFilterHasBeenSet(false),
-    m_attachmentFieldMappingsHasBeenSet(false),
-    m_commentFieldMappingsHasBeenSet(false),
-    m_issueFieldMappingsHasBeenSet(false),
-    m_projectFieldMappingsHasBeenSet(false),
-    m_workLogFieldMappingsHasBeenSet(false),
-    m_inclusionPatternsHasBeenSet(false),
-    m_exclusionPatternsHasBeenSet(false),
-    m_vpcConfigurationHasBeenSet(false)
+JiraConfiguration::JiraConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -64,24 +28,18 @@ JiraConfiguration& JiraConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("JiraAccountUrl"))
   {
     m_jiraAccountUrl = jsonValue.GetString("JiraAccountUrl");
-
     m_jiraAccountUrlHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SecretArn"))
   {
     m_secretArn = jsonValue.GetString("SecretArn");
-
     m_secretArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UseChangeLog"))
   {
     m_useChangeLog = jsonValue.GetBool("UseChangeLog");
-
     m_useChangeLogHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Project"))
   {
     Aws::Utils::Array<JsonView> projectJsonList = jsonValue.GetArray("Project");
@@ -91,7 +49,6 @@ JiraConfiguration& JiraConfiguration::operator =(JsonView jsonValue)
     }
     m_projectHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IssueType"))
   {
     Aws::Utils::Array<JsonView> issueTypeJsonList = jsonValue.GetArray("IssueType");
@@ -101,7 +58,6 @@ JiraConfiguration& JiraConfiguration::operator =(JsonView jsonValue)
     }
     m_issueTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     Aws::Utils::Array<JsonView> statusJsonList = jsonValue.GetArray("Status");
@@ -111,7 +67,6 @@ JiraConfiguration& JiraConfiguration::operator =(JsonView jsonValue)
     }
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IssueSubEntityFilter"))
   {
     Aws::Utils::Array<JsonView> issueSubEntityFilterJsonList = jsonValue.GetArray("IssueSubEntityFilter");
@@ -121,7 +76,6 @@ JiraConfiguration& JiraConfiguration::operator =(JsonView jsonValue)
     }
     m_issueSubEntityFilterHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AttachmentFieldMappings"))
   {
     Aws::Utils::Array<JsonView> attachmentFieldMappingsJsonList = jsonValue.GetArray("AttachmentFieldMappings");
@@ -131,7 +85,6 @@ JiraConfiguration& JiraConfiguration::operator =(JsonView jsonValue)
     }
     m_attachmentFieldMappingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CommentFieldMappings"))
   {
     Aws::Utils::Array<JsonView> commentFieldMappingsJsonList = jsonValue.GetArray("CommentFieldMappings");
@@ -141,7 +94,6 @@ JiraConfiguration& JiraConfiguration::operator =(JsonView jsonValue)
     }
     m_commentFieldMappingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IssueFieldMappings"))
   {
     Aws::Utils::Array<JsonView> issueFieldMappingsJsonList = jsonValue.GetArray("IssueFieldMappings");
@@ -151,7 +103,6 @@ JiraConfiguration& JiraConfiguration::operator =(JsonView jsonValue)
     }
     m_issueFieldMappingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProjectFieldMappings"))
   {
     Aws::Utils::Array<JsonView> projectFieldMappingsJsonList = jsonValue.GetArray("ProjectFieldMappings");
@@ -161,7 +112,6 @@ JiraConfiguration& JiraConfiguration::operator =(JsonView jsonValue)
     }
     m_projectFieldMappingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WorkLogFieldMappings"))
   {
     Aws::Utils::Array<JsonView> workLogFieldMappingsJsonList = jsonValue.GetArray("WorkLogFieldMappings");
@@ -171,7 +121,6 @@ JiraConfiguration& JiraConfiguration::operator =(JsonView jsonValue)
     }
     m_workLogFieldMappingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InclusionPatterns"))
   {
     Aws::Utils::Array<JsonView> inclusionPatternsJsonList = jsonValue.GetArray("InclusionPatterns");
@@ -181,7 +130,6 @@ JiraConfiguration& JiraConfiguration::operator =(JsonView jsonValue)
     }
     m_inclusionPatternsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExclusionPatterns"))
   {
     Aws::Utils::Array<JsonView> exclusionPatternsJsonList = jsonValue.GetArray("ExclusionPatterns");
@@ -191,14 +139,11 @@ JiraConfiguration& JiraConfiguration::operator =(JsonView jsonValue)
     }
     m_exclusionPatternsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VpcConfiguration"))
   {
     m_vpcConfiguration = jsonValue.GetObject("VpcConfiguration");
-
     m_vpcConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

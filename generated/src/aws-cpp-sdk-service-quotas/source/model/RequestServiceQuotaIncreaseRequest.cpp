@@ -12,14 +12,6 @@ using namespace Aws::ServiceQuotas::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-RequestServiceQuotaIncreaseRequest::RequestServiceQuotaIncreaseRequest() : 
-    m_serviceCodeHasBeenSet(false),
-    m_quotaCodeHasBeenSet(false),
-    m_desiredValue(0.0),
-    m_desiredValueHasBeenSet(false)
-{
-}
-
 Aws::String RequestServiceQuotaIncreaseRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,6 +31,18 @@ Aws::String RequestServiceQuotaIncreaseRequest::SerializePayload() const
   if(m_desiredValueHasBeenSet)
   {
    payload.WithDouble("DesiredValue", m_desiredValue);
+
+  }
+
+  if(m_contextIdHasBeenSet)
+  {
+   payload.WithString("ContextId", m_contextId);
+
+  }
+
+  if(m_supportCaseAllowedHasBeenSet)
+  {
+   payload.WithBool("SupportCaseAllowed", m_supportCaseAllowed);
 
   }
 

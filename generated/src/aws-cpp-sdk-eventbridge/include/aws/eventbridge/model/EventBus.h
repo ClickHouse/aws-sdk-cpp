@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/eventbridge/EventBridge_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/DateTime.h>
 #include <utility>
 
 namespace Aws
@@ -37,142 +38,84 @@ namespace Model
   class EventBus
   {
   public:
-    AWS_EVENTBRIDGE_API EventBus();
+    AWS_EVENTBRIDGE_API EventBus() = default;
     AWS_EVENTBRIDGE_API EventBus(Aws::Utils::Json::JsonView jsonValue);
     AWS_EVENTBRIDGE_API EventBus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EVENTBRIDGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the event bus.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the event bus.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    EventBus& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the event bus.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the event bus.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the event bus.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the event bus.</p>
-     */
-    inline EventBus& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the event bus.</p>
-     */
-    inline EventBus& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the event bus.</p>
-     */
-    inline EventBus& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the event bus.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The ARN of the event bus.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    EventBus& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of the event bus.</p>
+     * <p>The event bus description.</p>
      */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    EventBus& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the event bus.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the event bus.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the event bus.</p>
-     */
-    inline EventBus& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the event bus.</p>
-     */
-    inline EventBus& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the event bus.</p>
-     */
-    inline EventBus& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The permissions policy of the event bus, describing which other Amazon Web
      * Services accounts can write events to this event bus.</p>
      */
-    inline const Aws::String& GetPolicy() const{ return m_policy; }
-
-    /**
-     * <p>The permissions policy of the event bus, describing which other Amazon Web
-     * Services accounts can write events to this event bus.</p>
-     */
+    inline const Aws::String& GetPolicy() const { return m_policy; }
     inline bool PolicyHasBeenSet() const { return m_policyHasBeenSet; }
+    template<typename PolicyT = Aws::String>
+    void SetPolicy(PolicyT&& value) { m_policyHasBeenSet = true; m_policy = std::forward<PolicyT>(value); }
+    template<typename PolicyT = Aws::String>
+    EventBus& WithPolicy(PolicyT&& value) { SetPolicy(std::forward<PolicyT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The permissions policy of the event bus, describing which other Amazon Web
-     * Services accounts can write events to this event bus.</p>
+     * <p>The time the event bus was created.</p>
      */
-    inline void SetPolicy(const Aws::String& value) { m_policyHasBeenSet = true; m_policy = value; }
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
+    inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    EventBus& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The permissions policy of the event bus, describing which other Amazon Web
-     * Services accounts can write events to this event bus.</p>
+     * <p>The time the event bus was last modified.</p>
      */
-    inline void SetPolicy(Aws::String&& value) { m_policyHasBeenSet = true; m_policy = std::move(value); }
-
-    /**
-     * <p>The permissions policy of the event bus, describing which other Amazon Web
-     * Services accounts can write events to this event bus.</p>
-     */
-    inline void SetPolicy(const char* value) { m_policyHasBeenSet = true; m_policy.assign(value); }
-
-    /**
-     * <p>The permissions policy of the event bus, describing which other Amazon Web
-     * Services accounts can write events to this event bus.</p>
-     */
-    inline EventBus& WithPolicy(const Aws::String& value) { SetPolicy(value); return *this;}
-
-    /**
-     * <p>The permissions policy of the event bus, describing which other Amazon Web
-     * Services accounts can write events to this event bus.</p>
-     */
-    inline EventBus& WithPolicy(Aws::String&& value) { SetPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>The permissions policy of the event bus, describing which other Amazon Web
-     * Services accounts can write events to this event bus.</p>
-     */
-    inline EventBus& WithPolicy(const char* value) { SetPolicy(value); return *this;}
-
+    inline const Aws::Utils::DateTime& GetLastModifiedTime() const { return m_lastModifiedTime; }
+    inline bool LastModifiedTimeHasBeenSet() const { return m_lastModifiedTimeHasBeenSet; }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    void SetLastModifiedTime(LastModifiedTimeT&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::forward<LastModifiedTimeT>(value); }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    EventBus& WithLastModifiedTime(LastModifiedTimeT&& value) { SetLastModifiedTime(std::forward<LastModifiedTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -181,8 +124,17 @@ namespace Model
     Aws::String m_arn;
     bool m_arnHasBeenSet = false;
 
+    Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
+
     Aws::String m_policy;
     bool m_policyHasBeenSet = false;
+
+    Aws::Utils::DateTime m_creationTime{};
+    bool m_creationTimeHasBeenSet = false;
+
+    Aws::Utils::DateTime m_lastModifiedTime{};
+    bool m_lastModifiedTimeHasBeenSet = false;
   };
 
 } // namespace Model

@@ -33,101 +33,38 @@ namespace Model
   class ComponentConfiguration
   {
   public:
-    AWS_IMAGEBUILDER_API ComponentConfiguration();
+    AWS_IMAGEBUILDER_API ComponentConfiguration() = default;
     AWS_IMAGEBUILDER_API ComponentConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API ComponentConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the component.</p>
      */
-    inline const Aws::String& GetComponentArn() const{ return m_componentArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the component.</p>
-     */
+    inline const Aws::String& GetComponentArn() const { return m_componentArn; }
     inline bool ComponentArnHasBeenSet() const { return m_componentArnHasBeenSet; }
+    template<typename ComponentArnT = Aws::String>
+    void SetComponentArn(ComponentArnT&& value) { m_componentArnHasBeenSet = true; m_componentArn = std::forward<ComponentArnT>(value); }
+    template<typename ComponentArnT = Aws::String>
+    ComponentConfiguration& WithComponentArn(ComponentArnT&& value) { SetComponentArn(std::forward<ComponentArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the component.</p>
-     */
-    inline void SetComponentArn(const Aws::String& value) { m_componentArnHasBeenSet = true; m_componentArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the component.</p>
-     */
-    inline void SetComponentArn(Aws::String&& value) { m_componentArnHasBeenSet = true; m_componentArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the component.</p>
-     */
-    inline void SetComponentArn(const char* value) { m_componentArnHasBeenSet = true; m_componentArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the component.</p>
-     */
-    inline ComponentConfiguration& WithComponentArn(const Aws::String& value) { SetComponentArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the component.</p>
-     */
-    inline ComponentConfiguration& WithComponentArn(Aws::String&& value) { SetComponentArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the component.</p>
-     */
-    inline ComponentConfiguration& WithComponentArn(const char* value) { SetComponentArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A group of parameter settings that Image Builder uses to configure the
      * component for a specific recipe.</p>
      */
-    inline const Aws::Vector<ComponentParameter>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>A group of parameter settings that Image Builder uses to configure the
-     * component for a specific recipe.</p>
-     */
+    inline const Aws::Vector<ComponentParameter>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
-
-    /**
-     * <p>A group of parameter settings that Image Builder uses to configure the
-     * component for a specific recipe.</p>
-     */
-    inline void SetParameters(const Aws::Vector<ComponentParameter>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>A group of parameter settings that Image Builder uses to configure the
-     * component for a specific recipe.</p>
-     */
-    inline void SetParameters(Aws::Vector<ComponentParameter>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>A group of parameter settings that Image Builder uses to configure the
-     * component for a specific recipe.</p>
-     */
-    inline ComponentConfiguration& WithParameters(const Aws::Vector<ComponentParameter>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>A group of parameter settings that Image Builder uses to configure the
-     * component for a specific recipe.</p>
-     */
-    inline ComponentConfiguration& WithParameters(Aws::Vector<ComponentParameter>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>A group of parameter settings that Image Builder uses to configure the
-     * component for a specific recipe.</p>
-     */
-    inline ComponentConfiguration& AddParameters(const ComponentParameter& value) { m_parametersHasBeenSet = true; m_parameters.push_back(value); return *this; }
-
-    /**
-     * <p>A group of parameter settings that Image Builder uses to configure the
-     * component for a specific recipe.</p>
-     */
-    inline ComponentConfiguration& AddParameters(ComponentParameter&& value) { m_parametersHasBeenSet = true; m_parameters.push_back(std::move(value)); return *this; }
-
+    template<typename ParametersT = Aws::Vector<ComponentParameter>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Vector<ComponentParameter>>
+    ComponentConfiguration& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersT = ComponentParameter>
+    ComponentConfiguration& AddParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters.emplace_back(std::forward<ParametersT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_componentArn;

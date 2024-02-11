@@ -18,17 +18,7 @@ namespace SecurityLake
 namespace Model
 {
 
-ConflictException::ConflictException() : 
-    m_messageHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
-{
-}
-
-ConflictException::ConflictException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
+ConflictException::ConflictException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ ConflictException& ConflictException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("resourceId"))
+  if(jsonValue.ValueExists("resourceName"))
   {
-    m_resourceId = jsonValue.GetString("resourceId");
-
-    m_resourceIdHasBeenSet = true;
+    m_resourceName = jsonValue.GetString("resourceName");
+    m_resourceNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("resourceType"))
   {
     m_resourceType = jsonValue.GetString("resourceType");
-
     m_resourceTypeHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -69,9 +53,9 @@ JsonValue ConflictException::Jsonize() const
 
   }
 
-  if(m_resourceIdHasBeenSet)
+  if(m_resourceNameHasBeenSet)
   {
-   payload.WithString("resourceId", m_resourceId);
+   payload.WithString("resourceName", m_resourceName);
 
   }
 

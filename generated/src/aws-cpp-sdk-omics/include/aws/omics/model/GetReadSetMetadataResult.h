@@ -6,11 +6,13 @@
 #pragma once
 #include <aws/omics/Omics_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
-#include <aws/core/utils/DateTime.h>
-#include <aws/omics/model/FileType.h>
-#include <aws/omics/model/ReadSetFiles.h>
-#include <aws/omics/model/SequenceInformation.h>
 #include <aws/omics/model/ReadSetStatus.h>
+#include <aws/omics/model/FileType.h>
+#include <aws/core/utils/DateTime.h>
+#include <aws/omics/model/SequenceInformation.h>
+#include <aws/omics/model/ReadSetFiles.h>
+#include <aws/omics/model/CreationType.h>
+#include <aws/omics/model/ETag.h>
 #include <utility>
 
 namespace Aws
@@ -32,479 +34,257 @@ namespace Model
   class GetReadSetMetadataResult
   {
   public:
-    AWS_OMICS_API GetReadSetMetadataResult();
+    AWS_OMICS_API GetReadSetMetadataResult() = default;
     AWS_OMICS_API GetReadSetMetadataResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_OMICS_API GetReadSetMetadataResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
-    /**
-     * <p>The read set's ARN.</p>
-     */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The read set's ARN.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The read set's ARN.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The read set's ARN.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The read set's ARN.</p>
-     */
-    inline GetReadSetMetadataResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The read set's ARN.</p>
-     */
-    inline GetReadSetMetadataResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The read set's ARN.</p>
-     */
-    inline GetReadSetMetadataResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
-    /**
-     * <p>When the read set was created.</p>
-     */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>When the read set was created.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTime = value; }
-
-    /**
-     * <p>When the read set was created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTime = std::move(value); }
-
-    /**
-     * <p>When the read set was created.</p>
-     */
-    inline GetReadSetMetadataResult& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>When the read set was created.</p>
-     */
-    inline GetReadSetMetadataResult& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The read set's description.</p>
-     */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The read set's description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>The read set's description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>The read set's description.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>The read set's description.</p>
-     */
-    inline GetReadSetMetadataResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The read set's description.</p>
-     */
-    inline GetReadSetMetadataResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The read set's description.</p>
-     */
-    inline GetReadSetMetadataResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
-    /**
-     * <p>The read set's file type.</p>
-     */
-    inline const FileType& GetFileType() const{ return m_fileType; }
-
-    /**
-     * <p>The read set's file type.</p>
-     */
-    inline void SetFileType(const FileType& value) { m_fileType = value; }
-
-    /**
-     * <p>The read set's file type.</p>
-     */
-    inline void SetFileType(FileType&& value) { m_fileType = std::move(value); }
-
-    /**
-     * <p>The read set's file type.</p>
-     */
-    inline GetReadSetMetadataResult& WithFileType(const FileType& value) { SetFileType(value); return *this;}
-
-    /**
-     * <p>The read set's file type.</p>
-     */
-    inline GetReadSetMetadataResult& WithFileType(FileType&& value) { SetFileType(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The read set's files.</p>
-     */
-    inline const ReadSetFiles& GetFiles() const{ return m_files; }
-
-    /**
-     * <p>The read set's files.</p>
-     */
-    inline void SetFiles(const ReadSetFiles& value) { m_files = value; }
-
-    /**
-     * <p>The read set's files.</p>
-     */
-    inline void SetFiles(ReadSetFiles&& value) { m_files = std::move(value); }
-
-    /**
-     * <p>The read set's files.</p>
-     */
-    inline GetReadSetMetadataResult& WithFiles(const ReadSetFiles& value) { SetFiles(value); return *this;}
-
-    /**
-     * <p>The read set's files.</p>
-     */
-    inline GetReadSetMetadataResult& WithFiles(ReadSetFiles&& value) { SetFiles(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The read set's ID.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    GetReadSetMetadataResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The read set's ID.</p>
+     * <p>The read set's ARN.</p>
      */
-    inline void SetId(const Aws::String& value) { m_id = value; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    GetReadSetMetadataResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The read set's ID.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * <p>The read set's ID.</p>
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * <p>The read set's ID.</p>
-     */
-    inline GetReadSetMetadataResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The read set's ID.</p>
-     */
-    inline GetReadSetMetadataResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The read set's ID.</p>
-     */
-    inline GetReadSetMetadataResult& WithId(const char* value) { SetId(value); return *this;}
-
-
-    /**
-     * <p>The read set's name.</p>
-     */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The read set's name.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The read set's name.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The read set's name.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The read set's name.</p>
-     */
-    inline GetReadSetMetadataResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The read set's name.</p>
-     */
-    inline GetReadSetMetadataResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The read set's name.</p>
-     */
-    inline GetReadSetMetadataResult& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p>The read set's genome reference ARN.</p>
-     */
-    inline const Aws::String& GetReferenceArn() const{ return m_referenceArn; }
-
-    /**
-     * <p>The read set's genome reference ARN.</p>
-     */
-    inline void SetReferenceArn(const Aws::String& value) { m_referenceArn = value; }
-
-    /**
-     * <p>The read set's genome reference ARN.</p>
-     */
-    inline void SetReferenceArn(Aws::String&& value) { m_referenceArn = std::move(value); }
-
-    /**
-     * <p>The read set's genome reference ARN.</p>
-     */
-    inline void SetReferenceArn(const char* value) { m_referenceArn.assign(value); }
-
-    /**
-     * <p>The read set's genome reference ARN.</p>
-     */
-    inline GetReadSetMetadataResult& WithReferenceArn(const Aws::String& value) { SetReferenceArn(value); return *this;}
-
-    /**
-     * <p>The read set's genome reference ARN.</p>
-     */
-    inline GetReadSetMetadataResult& WithReferenceArn(Aws::String&& value) { SetReferenceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The read set's genome reference ARN.</p>
-     */
-    inline GetReadSetMetadataResult& WithReferenceArn(const char* value) { SetReferenceArn(value); return *this;}
-
-
-    /**
-     * <p>The read set's sample ID.</p>
-     */
-    inline const Aws::String& GetSampleId() const{ return m_sampleId; }
-
-    /**
-     * <p>The read set's sample ID.</p>
-     */
-    inline void SetSampleId(const Aws::String& value) { m_sampleId = value; }
-
-    /**
-     * <p>The read set's sample ID.</p>
-     */
-    inline void SetSampleId(Aws::String&& value) { m_sampleId = std::move(value); }
-
-    /**
-     * <p>The read set's sample ID.</p>
-     */
-    inline void SetSampleId(const char* value) { m_sampleId.assign(value); }
-
-    /**
-     * <p>The read set's sample ID.</p>
-     */
-    inline GetReadSetMetadataResult& WithSampleId(const Aws::String& value) { SetSampleId(value); return *this;}
-
-    /**
-     * <p>The read set's sample ID.</p>
-     */
-    inline GetReadSetMetadataResult& WithSampleId(Aws::String&& value) { SetSampleId(std::move(value)); return *this;}
-
-    /**
-     * <p>The read set's sample ID.</p>
-     */
-    inline GetReadSetMetadataResult& WithSampleId(const char* value) { SetSampleId(value); return *this;}
-
-
-    /**
-     * <p>The read set's sequence information.</p>
-     */
-    inline const SequenceInformation& GetSequenceInformation() const{ return m_sequenceInformation; }
-
-    /**
-     * <p>The read set's sequence information.</p>
-     */
-    inline void SetSequenceInformation(const SequenceInformation& value) { m_sequenceInformation = value; }
-
-    /**
-     * <p>The read set's sequence information.</p>
-     */
-    inline void SetSequenceInformation(SequenceInformation&& value) { m_sequenceInformation = std::move(value); }
-
-    /**
-     * <p>The read set's sequence information.</p>
-     */
-    inline GetReadSetMetadataResult& WithSequenceInformation(const SequenceInformation& value) { SetSequenceInformation(value); return *this;}
-
-    /**
-     * <p>The read set's sequence information.</p>
-     */
-    inline GetReadSetMetadataResult& WithSequenceInformation(SequenceInformation&& value) { SetSequenceInformation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The read set's sequence store ID.</p>
      */
-    inline const Aws::String& GetSequenceStoreId() const{ return m_sequenceStoreId; }
+    inline const Aws::String& GetSequenceStoreId() const { return m_sequenceStoreId; }
+    template<typename SequenceStoreIdT = Aws::String>
+    void SetSequenceStoreId(SequenceStoreIdT&& value) { m_sequenceStoreIdHasBeenSet = true; m_sequenceStoreId = std::forward<SequenceStoreIdT>(value); }
+    template<typename SequenceStoreIdT = Aws::String>
+    GetReadSetMetadataResult& WithSequenceStoreId(SequenceStoreIdT&& value) { SetSequenceStoreId(std::forward<SequenceStoreIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The read set's sequence store ID.</p>
+     * <p>The read set's subject ID.</p>
      */
-    inline void SetSequenceStoreId(const Aws::String& value) { m_sequenceStoreId = value; }
+    inline const Aws::String& GetSubjectId() const { return m_subjectId; }
+    template<typename SubjectIdT = Aws::String>
+    void SetSubjectId(SubjectIdT&& value) { m_subjectIdHasBeenSet = true; m_subjectId = std::forward<SubjectIdT>(value); }
+    template<typename SubjectIdT = Aws::String>
+    GetReadSetMetadataResult& WithSubjectId(SubjectIdT&& value) { SetSubjectId(std::forward<SubjectIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The read set's sequence store ID.</p>
+     * <p>The read set's sample ID.</p>
      */
-    inline void SetSequenceStoreId(Aws::String&& value) { m_sequenceStoreId = std::move(value); }
+    inline const Aws::String& GetSampleId() const { return m_sampleId; }
+    template<typename SampleIdT = Aws::String>
+    void SetSampleId(SampleIdT&& value) { m_sampleIdHasBeenSet = true; m_sampleId = std::forward<SampleIdT>(value); }
+    template<typename SampleIdT = Aws::String>
+    GetReadSetMetadataResult& WithSampleId(SampleIdT&& value) { SetSampleId(std::forward<SampleIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The read set's sequence store ID.</p>
-     */
-    inline void SetSequenceStoreId(const char* value) { m_sequenceStoreId.assign(value); }
-
-    /**
-     * <p>The read set's sequence store ID.</p>
-     */
-    inline GetReadSetMetadataResult& WithSequenceStoreId(const Aws::String& value) { SetSequenceStoreId(value); return *this;}
-
-    /**
-     * <p>The read set's sequence store ID.</p>
-     */
-    inline GetReadSetMetadataResult& WithSequenceStoreId(Aws::String&& value) { SetSequenceStoreId(std::move(value)); return *this;}
-
-    /**
-     * <p>The read set's sequence store ID.</p>
-     */
-    inline GetReadSetMetadataResult& WithSequenceStoreId(const char* value) { SetSequenceStoreId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The read set's status.</p>
      */
-    inline const ReadSetStatus& GetStatus() const{ return m_status; }
+    inline ReadSetStatus GetStatus() const { return m_status; }
+    inline void SetStatus(ReadSetStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline GetReadSetMetadataResult& WithStatus(ReadSetStatus value) { SetStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The read set's status.</p>
+     * <p>The read set's name.</p>
      */
-    inline void SetStatus(const ReadSetStatus& value) { m_status = value; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetReadSetMetadataResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The read set's status.</p>
+     * <p>The read set's description.</p>
      */
-    inline void SetStatus(ReadSetStatus&& value) { m_status = std::move(value); }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    GetReadSetMetadataResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The read set's status.</p>
+     * <p>The read set's file type.</p>
      */
-    inline GetReadSetMetadataResult& WithStatus(const ReadSetStatus& value) { SetStatus(value); return *this;}
+    inline FileType GetFileType() const { return m_fileType; }
+    inline void SetFileType(FileType value) { m_fileTypeHasBeenSet = true; m_fileType = value; }
+    inline GetReadSetMetadataResult& WithFileType(FileType value) { SetFileType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The read set's status.</p>
+     * <p>When the read set was created.</p>
      */
-    inline GetReadSetMetadataResult& WithStatus(ReadSetStatus&& value) { SetStatus(std::move(value)); return *this;}
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    GetReadSetMetadataResult& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>The read set's subject ID.</p>
+     * <p>The read set's sequence information.</p>
      */
-    inline const Aws::String& GetSubjectId() const{ return m_subjectId; }
+    inline const SequenceInformation& GetSequenceInformation() const { return m_sequenceInformation; }
+    template<typename SequenceInformationT = SequenceInformation>
+    void SetSequenceInformation(SequenceInformationT&& value) { m_sequenceInformationHasBeenSet = true; m_sequenceInformation = std::forward<SequenceInformationT>(value); }
+    template<typename SequenceInformationT = SequenceInformation>
+    GetReadSetMetadataResult& WithSequenceInformation(SequenceInformationT&& value) { SetSequenceInformation(std::forward<SequenceInformationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The read set's subject ID.</p>
+     * <p>The read set's genome reference ARN.</p>
      */
-    inline void SetSubjectId(const Aws::String& value) { m_subjectId = value; }
+    inline const Aws::String& GetReferenceArn() const { return m_referenceArn; }
+    template<typename ReferenceArnT = Aws::String>
+    void SetReferenceArn(ReferenceArnT&& value) { m_referenceArnHasBeenSet = true; m_referenceArn = std::forward<ReferenceArnT>(value); }
+    template<typename ReferenceArnT = Aws::String>
+    GetReadSetMetadataResult& WithReferenceArn(ReferenceArnT&& value) { SetReferenceArn(std::forward<ReferenceArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The read set's subject ID.</p>
+     * <p>The read set's files.</p>
      */
-    inline void SetSubjectId(Aws::String&& value) { m_subjectId = std::move(value); }
+    inline const ReadSetFiles& GetFiles() const { return m_files; }
+    template<typename FilesT = ReadSetFiles>
+    void SetFiles(FilesT&& value) { m_filesHasBeenSet = true; m_files = std::forward<FilesT>(value); }
+    template<typename FilesT = ReadSetFiles>
+    GetReadSetMetadataResult& WithFiles(FilesT&& value) { SetFiles(std::forward<FilesT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The read set's subject ID.</p>
+     * <p>The status message for a read set. It provides more detail as to why the read
+     * set has a status. </p>
      */
-    inline void SetSubjectId(const char* value) { m_subjectId.assign(value); }
+    inline const Aws::String& GetStatusMessage() const { return m_statusMessage; }
+    template<typename StatusMessageT = Aws::String>
+    void SetStatusMessage(StatusMessageT&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::forward<StatusMessageT>(value); }
+    template<typename StatusMessageT = Aws::String>
+    GetReadSetMetadataResult& WithStatusMessage(StatusMessageT&& value) { SetStatusMessage(std::forward<StatusMessageT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The read set's subject ID.</p>
+     * <p> The creation type of the read set. </p>
      */
-    inline GetReadSetMetadataResult& WithSubjectId(const Aws::String& value) { SetSubjectId(value); return *this;}
+    inline CreationType GetCreationType() const { return m_creationType; }
+    inline void SetCreationType(CreationType value) { m_creationTypeHasBeenSet = true; m_creationType = value; }
+    inline GetReadSetMetadataResult& WithCreationType(CreationType value) { SetCreationType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The read set's subject ID.</p>
+     * <p>The entity tag (ETag) is a hash of the object meant to represent its semantic
+     * content.</p>
      */
-    inline GetReadSetMetadataResult& WithSubjectId(Aws::String&& value) { SetSubjectId(std::move(value)); return *this;}
+    inline const ETag& GetEtag() const { return m_etag; }
+    template<typename EtagT = ETag>
+    void SetEtag(EtagT&& value) { m_etagHasBeenSet = true; m_etag = std::forward<EtagT>(value); }
+    template<typename EtagT = ETag>
+    GetReadSetMetadataResult& WithEtag(EtagT&& value) { SetEtag(std::forward<EtagT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The read set's subject ID.</p>
+     * <p>The read set's creation job ID.</p>
      */
-    inline GetReadSetMetadataResult& WithSubjectId(const char* value) { SetSubjectId(value); return *this;}
+    inline const Aws::String& GetCreationJobId() const { return m_creationJobId; }
+    template<typename CreationJobIdT = Aws::String>
+    void SetCreationJobId(CreationJobIdT&& value) { m_creationJobIdHasBeenSet = true; m_creationJobId = std::forward<CreationJobIdT>(value); }
+    template<typename CreationJobIdT = Aws::String>
+    GetReadSetMetadataResult& WithCreationJobId(CreationJobIdT&& value) { SetCreationJobId(std::forward<CreationJobIdT>(value)); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetReadSetMetadataResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetReadSetMetadataResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetReadSetMetadataResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetReadSetMetadataResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_arn;
-
-    Aws::Utils::DateTime m_creationTime;
-
-    Aws::String m_description;
-
-    FileType m_fileType;
-
-    ReadSetFiles m_files;
-
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
 
-    Aws::String m_name;
-
-    Aws::String m_referenceArn;
-
-    Aws::String m_sampleId;
-
-    SequenceInformation m_sequenceInformation;
+    Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_sequenceStoreId;
-
-    ReadSetStatus m_status;
+    bool m_sequenceStoreIdHasBeenSet = false;
 
     Aws::String m_subjectId;
+    bool m_subjectIdHasBeenSet = false;
+
+    Aws::String m_sampleId;
+    bool m_sampleIdHasBeenSet = false;
+
+    ReadSetStatus m_status{ReadSetStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
+
+    Aws::String m_name;
+    bool m_nameHasBeenSet = false;
+
+    Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
+
+    FileType m_fileType{FileType::NOT_SET};
+    bool m_fileTypeHasBeenSet = false;
+
+    Aws::Utils::DateTime m_creationTime{};
+    bool m_creationTimeHasBeenSet = false;
+
+    SequenceInformation m_sequenceInformation;
+    bool m_sequenceInformationHasBeenSet = false;
+
+    Aws::String m_referenceArn;
+    bool m_referenceArnHasBeenSet = false;
+
+    ReadSetFiles m_files;
+    bool m_filesHasBeenSet = false;
+
+    Aws::String m_statusMessage;
+    bool m_statusMessageHasBeenSet = false;
+
+    CreationType m_creationType{CreationType::NOT_SET};
+    bool m_creationTypeHasBeenSet = false;
+
+    ETag m_etag;
+    bool m_etagHasBeenSet = false;
+
+    Aws::String m_creationJobId;
+    bool m_creationJobIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -33,89 +33,43 @@ namespace Model
   class ReputationOptions
   {
   public:
-    AWS_PINPOINTEMAIL_API ReputationOptions();
+    AWS_PINPOINTEMAIL_API ReputationOptions() = default;
     AWS_PINPOINTEMAIL_API ReputationOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINTEMAIL_API ReputationOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINTEMAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>If <code>true</code>, tracking of reputation metrics is enabled for the
      * configuration set. If <code>false</code>, tracking of reputation metrics is
      * disabled for the configuration set.</p>
      */
-    inline bool GetReputationMetricsEnabled() const{ return m_reputationMetricsEnabled; }
-
-    /**
-     * <p>If <code>true</code>, tracking of reputation metrics is enabled for the
-     * configuration set. If <code>false</code>, tracking of reputation metrics is
-     * disabled for the configuration set.</p>
-     */
+    inline bool GetReputationMetricsEnabled() const { return m_reputationMetricsEnabled; }
     inline bool ReputationMetricsEnabledHasBeenSet() const { return m_reputationMetricsEnabledHasBeenSet; }
-
-    /**
-     * <p>If <code>true</code>, tracking of reputation metrics is enabled for the
-     * configuration set. If <code>false</code>, tracking of reputation metrics is
-     * disabled for the configuration set.</p>
-     */
     inline void SetReputationMetricsEnabled(bool value) { m_reputationMetricsEnabledHasBeenSet = true; m_reputationMetricsEnabled = value; }
-
-    /**
-     * <p>If <code>true</code>, tracking of reputation metrics is enabled for the
-     * configuration set. If <code>false</code>, tracking of reputation metrics is
-     * disabled for the configuration set.</p>
-     */
     inline ReputationOptions& WithReputationMetricsEnabled(bool value) { SetReputationMetricsEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The date and time (in Unix time) when the reputation metrics were last given
      * a fresh start. When your account is given a fresh start, your reputation metrics
      * are calculated starting from the date of the fresh start.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastFreshStart() const{ return m_lastFreshStart; }
-
-    /**
-     * <p>The date and time (in Unix time) when the reputation metrics were last given
-     * a fresh start. When your account is given a fresh start, your reputation metrics
-     * are calculated starting from the date of the fresh start.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastFreshStart() const { return m_lastFreshStart; }
     inline bool LastFreshStartHasBeenSet() const { return m_lastFreshStartHasBeenSet; }
-
-    /**
-     * <p>The date and time (in Unix time) when the reputation metrics were last given
-     * a fresh start. When your account is given a fresh start, your reputation metrics
-     * are calculated starting from the date of the fresh start.</p>
-     */
-    inline void SetLastFreshStart(const Aws::Utils::DateTime& value) { m_lastFreshStartHasBeenSet = true; m_lastFreshStart = value; }
-
-    /**
-     * <p>The date and time (in Unix time) when the reputation metrics were last given
-     * a fresh start. When your account is given a fresh start, your reputation metrics
-     * are calculated starting from the date of the fresh start.</p>
-     */
-    inline void SetLastFreshStart(Aws::Utils::DateTime&& value) { m_lastFreshStartHasBeenSet = true; m_lastFreshStart = std::move(value); }
-
-    /**
-     * <p>The date and time (in Unix time) when the reputation metrics were last given
-     * a fresh start. When your account is given a fresh start, your reputation metrics
-     * are calculated starting from the date of the fresh start.</p>
-     */
-    inline ReputationOptions& WithLastFreshStart(const Aws::Utils::DateTime& value) { SetLastFreshStart(value); return *this;}
-
-    /**
-     * <p>The date and time (in Unix time) when the reputation metrics were last given
-     * a fresh start. When your account is given a fresh start, your reputation metrics
-     * are calculated starting from the date of the fresh start.</p>
-     */
-    inline ReputationOptions& WithLastFreshStart(Aws::Utils::DateTime&& value) { SetLastFreshStart(std::move(value)); return *this;}
-
+    template<typename LastFreshStartT = Aws::Utils::DateTime>
+    void SetLastFreshStart(LastFreshStartT&& value) { m_lastFreshStartHasBeenSet = true; m_lastFreshStart = std::forward<LastFreshStartT>(value); }
+    template<typename LastFreshStartT = Aws::Utils::DateTime>
+    ReputationOptions& WithLastFreshStart(LastFreshStartT&& value) { SetLastFreshStart(std::forward<LastFreshStartT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_reputationMetricsEnabled;
+    bool m_reputationMetricsEnabled{false};
     bool m_reputationMetricsEnabledHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastFreshStart;
+    Aws::Utils::DateTime m_lastFreshStart{};
     bool m_lastFreshStartHasBeenSet = false;
   };
 

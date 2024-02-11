@@ -8,6 +8,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/gamelift/model/EC2InstanceType.h>
 #include <aws/gamelift/model/EC2InstanceCounts.h>
+#include <aws/gamelift/model/GameServerContainerGroupCounts.h>
 #include <utility>
 
 namespace Aws
@@ -26,13 +27,13 @@ namespace Model
 {
 
   /**
-   * <p>Current resource capacity settings in a specified fleet or location. The
-   * location value might refer to a fleet's remote location or its home Region. </p>
-   * <p> <b>Related actions</b> </p> <p> <a
-   * href="https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeFleetCapacity.html">DescribeFleetCapacity</a>
-   * | <a
-   * href="https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeFleetLocationCapacity.html">DescribeFleetLocationCapacity</a>
-   * | <a
+   * <p>Current resource capacity settings for managed EC2 fleets and managed
+   * container fleets. For multi-location fleets, location values might refer to a
+   * fleet's remote location or its home Region. </p> <p> <b>Returned by:</b> <a
+   * href="https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeFleetCapacity.html">DescribeFleetCapacity</a>,
+   * <a
+   * href="https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeFleetLocationCapacity.html">DescribeFleetLocationCapacity</a>,
+   * <a
    * href="https://docs.aws.amazon.com/gamelift/latest/apireference/API_UpdateFleetCapacity.html">UpdateFleetCapacity</a>
    * </p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/FleetCapacity">AWS
@@ -41,248 +42,94 @@ namespace Model
   class FleetCapacity
   {
   public:
-    AWS_GAMELIFT_API FleetCapacity();
+    AWS_GAMELIFT_API FleetCapacity() = default;
     AWS_GAMELIFT_API FleetCapacity(Aws::Utils::Json::JsonView jsonValue);
     AWS_GAMELIFT_API FleetCapacity& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GAMELIFT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A unique identifier for the fleet associated with the location.</p>
      */
-    inline const Aws::String& GetFleetId() const{ return m_fleetId; }
-
-    /**
-     * <p>A unique identifier for the fleet associated with the location.</p>
-     */
+    inline const Aws::String& GetFleetId() const { return m_fleetId; }
     inline bool FleetIdHasBeenSet() const { return m_fleetIdHasBeenSet; }
+    template<typename FleetIdT = Aws::String>
+    void SetFleetId(FleetIdT&& value) { m_fleetIdHasBeenSet = true; m_fleetId = std::forward<FleetIdT>(value); }
+    template<typename FleetIdT = Aws::String>
+    FleetCapacity& WithFleetId(FleetIdT&& value) { SetFleetId(std::forward<FleetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the fleet associated with the location.</p>
-     */
-    inline void SetFleetId(const Aws::String& value) { m_fleetIdHasBeenSet = true; m_fleetId = value; }
-
-    /**
-     * <p>A unique identifier for the fleet associated with the location.</p>
-     */
-    inline void SetFleetId(Aws::String&& value) { m_fleetIdHasBeenSet = true; m_fleetId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the fleet associated with the location.</p>
-     */
-    inline void SetFleetId(const char* value) { m_fleetIdHasBeenSet = true; m_fleetId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the fleet associated with the location.</p>
-     */
-    inline FleetCapacity& WithFleetId(const Aws::String& value) { SetFleetId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the fleet associated with the location.</p>
-     */
-    inline FleetCapacity& WithFleetId(Aws::String&& value) { SetFleetId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the fleet associated with the location.</p>
-     */
-    inline FleetCapacity& WithFleetId(const char* value) { SetFleetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (<a
      * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
-     * that is assigned to a GameLift fleet resource and uniquely identifies it. ARNs
-     * are unique across all Regions. Format is
+     * that is assigned to a Amazon GameLift Servers fleet resource and uniquely
+     * identifies it. ARNs are unique across all Regions. Format is
      * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
      */
-    inline const Aws::String& GetFleetArn() const{ return m_fleetArn; }
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
-     * that is assigned to a GameLift fleet resource and uniquely identifies it. ARNs
-     * are unique across all Regions. Format is
-     * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
-     */
+    inline const Aws::String& GetFleetArn() const { return m_fleetArn; }
     inline bool FleetArnHasBeenSet() const { return m_fleetArnHasBeenSet; }
+    template<typename FleetArnT = Aws::String>
+    void SetFleetArn(FleetArnT&& value) { m_fleetArnHasBeenSet = true; m_fleetArn = std::forward<FleetArnT>(value); }
+    template<typename FleetArnT = Aws::String>
+    FleetCapacity& WithFleetArn(FleetArnT&& value) { SetFleetArn(std::forward<FleetArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
-     * that is assigned to a GameLift fleet resource and uniquely identifies it. ARNs
-     * are unique across all Regions. Format is
-     * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
-     */
-    inline void SetFleetArn(const Aws::String& value) { m_fleetArnHasBeenSet = true; m_fleetArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
-     * that is assigned to a GameLift fleet resource and uniquely identifies it. ARNs
-     * are unique across all Regions. Format is
-     * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
-     */
-    inline void SetFleetArn(Aws::String&& value) { m_fleetArnHasBeenSet = true; m_fleetArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
-     * that is assigned to a GameLift fleet resource and uniquely identifies it. ARNs
-     * are unique across all Regions. Format is
-     * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
-     */
-    inline void SetFleetArn(const char* value) { m_fleetArnHasBeenSet = true; m_fleetArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
-     * that is assigned to a GameLift fleet resource and uniquely identifies it. ARNs
-     * are unique across all Regions. Format is
-     * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
-     */
-    inline FleetCapacity& WithFleetArn(const Aws::String& value) { SetFleetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
-     * that is assigned to a GameLift fleet resource and uniquely identifies it. ARNs
-     * are unique across all Regions. Format is
-     * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
-     */
-    inline FleetCapacity& WithFleetArn(Aws::String&& value) { SetFleetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
-     * that is assigned to a GameLift fleet resource and uniquely identifies it. ARNs
-     * are unique across all Regions. Format is
-     * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
-     */
-    inline FleetCapacity& WithFleetArn(const char* value) { SetFleetArn(value); return *this;}
-
-
-    /**
-     * <p>The Amazon EC2 instance type that is used for all instances in a fleet. The
-     * instance type determines the computing resources in use, including CPU, memory,
-     * storage, and networking capacity. See <a
+     * <p>The Amazon EC2 instance type that is used for instances in a fleet. Instance
+     * type determines the computing resources in use, including CPU, memory, storage,
+     * and networking capacity. See <a
      * href="http://aws.amazon.com/ec2/instance-types/">Amazon Elastic Compute Cloud
      * Instance Types</a> for detailed descriptions.</p>
      */
-    inline const EC2InstanceType& GetInstanceType() const{ return m_instanceType; }
-
-    /**
-     * <p>The Amazon EC2 instance type that is used for all instances in a fleet. The
-     * instance type determines the computing resources in use, including CPU, memory,
-     * storage, and networking capacity. See <a
-     * href="http://aws.amazon.com/ec2/instance-types/">Amazon Elastic Compute Cloud
-     * Instance Types</a> for detailed descriptions.</p>
-     */
+    inline EC2InstanceType GetInstanceType() const { return m_instanceType; }
     inline bool InstanceTypeHasBeenSet() const { return m_instanceTypeHasBeenSet; }
+    inline void SetInstanceType(EC2InstanceType value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
+    inline FleetCapacity& WithInstanceType(EC2InstanceType value) { SetInstanceType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon EC2 instance type that is used for all instances in a fleet. The
-     * instance type determines the computing resources in use, including CPU, memory,
-     * storage, and networking capacity. See <a
-     * href="http://aws.amazon.com/ec2/instance-types/">Amazon Elastic Compute Cloud
-     * Instance Types</a> for detailed descriptions.</p>
+     * <p>The current number of instances in the fleet, listed by instance status.
+     * Counts for pending and terminating instances might be non-zero if the fleet is
+     * adjusting to a scaling event or if access to resources is temporarily
+     * affected.</p>
      */
-    inline void SetInstanceType(const EC2InstanceType& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
-
-    /**
-     * <p>The Amazon EC2 instance type that is used for all instances in a fleet. The
-     * instance type determines the computing resources in use, including CPU, memory,
-     * storage, and networking capacity. See <a
-     * href="http://aws.amazon.com/ec2/instance-types/">Amazon Elastic Compute Cloud
-     * Instance Types</a> for detailed descriptions.</p>
-     */
-    inline void SetInstanceType(EC2InstanceType&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
-
-    /**
-     * <p>The Amazon EC2 instance type that is used for all instances in a fleet. The
-     * instance type determines the computing resources in use, including CPU, memory,
-     * storage, and networking capacity. See <a
-     * href="http://aws.amazon.com/ec2/instance-types/">Amazon Elastic Compute Cloud
-     * Instance Types</a> for detailed descriptions.</p>
-     */
-    inline FleetCapacity& WithInstanceType(const EC2InstanceType& value) { SetInstanceType(value); return *this;}
-
-    /**
-     * <p>The Amazon EC2 instance type that is used for all instances in a fleet. The
-     * instance type determines the computing resources in use, including CPU, memory,
-     * storage, and networking capacity. See <a
-     * href="http://aws.amazon.com/ec2/instance-types/">Amazon Elastic Compute Cloud
-     * Instance Types</a> for detailed descriptions.</p>
-     */
-    inline FleetCapacity& WithInstanceType(EC2InstanceType&& value) { SetInstanceType(std::move(value)); return *this;}
-
-
-    
-    inline const EC2InstanceCounts& GetInstanceCounts() const{ return m_instanceCounts; }
-
-    
+    inline const EC2InstanceCounts& GetInstanceCounts() const { return m_instanceCounts; }
     inline bool InstanceCountsHasBeenSet() const { return m_instanceCountsHasBeenSet; }
+    template<typename InstanceCountsT = EC2InstanceCounts>
+    void SetInstanceCounts(InstanceCountsT&& value) { m_instanceCountsHasBeenSet = true; m_instanceCounts = std::forward<InstanceCountsT>(value); }
+    template<typename InstanceCountsT = EC2InstanceCounts>
+    FleetCapacity& WithInstanceCounts(InstanceCountsT&& value) { SetInstanceCounts(std::forward<InstanceCountsT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetInstanceCounts(const EC2InstanceCounts& value) { m_instanceCountsHasBeenSet = true; m_instanceCounts = value; }
-
-    
-    inline void SetInstanceCounts(EC2InstanceCounts&& value) { m_instanceCountsHasBeenSet = true; m_instanceCounts = std::move(value); }
-
-    
-    inline FleetCapacity& WithInstanceCounts(const EC2InstanceCounts& value) { SetInstanceCounts(value); return *this;}
-
-    
-    inline FleetCapacity& WithInstanceCounts(EC2InstanceCounts&& value) { SetInstanceCounts(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The fleet location for the instance count information, expressed as an Amazon
      * Web Services Region code, such as <code>us-west-2</code>. </p>
      */
-    inline const Aws::String& GetLocation() const{ return m_location; }
-
-    /**
-     * <p>The fleet location for the instance count information, expressed as an Amazon
-     * Web Services Region code, such as <code>us-west-2</code>. </p>
-     */
+    inline const Aws::String& GetLocation() const { return m_location; }
     inline bool LocationHasBeenSet() const { return m_locationHasBeenSet; }
+    template<typename LocationT = Aws::String>
+    void SetLocation(LocationT&& value) { m_locationHasBeenSet = true; m_location = std::forward<LocationT>(value); }
+    template<typename LocationT = Aws::String>
+    FleetCapacity& WithLocation(LocationT&& value) { SetLocation(std::forward<LocationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The fleet location for the instance count information, expressed as an Amazon
-     * Web Services Region code, such as <code>us-west-2</code>. </p>
+     * <p>The number and status of game server container groups deployed in a container
+     * fleet. </p>
      */
-    inline void SetLocation(const Aws::String& value) { m_locationHasBeenSet = true; m_location = value; }
-
-    /**
-     * <p>The fleet location for the instance count information, expressed as an Amazon
-     * Web Services Region code, such as <code>us-west-2</code>. </p>
-     */
-    inline void SetLocation(Aws::String&& value) { m_locationHasBeenSet = true; m_location = std::move(value); }
-
-    /**
-     * <p>The fleet location for the instance count information, expressed as an Amazon
-     * Web Services Region code, such as <code>us-west-2</code>. </p>
-     */
-    inline void SetLocation(const char* value) { m_locationHasBeenSet = true; m_location.assign(value); }
-
-    /**
-     * <p>The fleet location for the instance count information, expressed as an Amazon
-     * Web Services Region code, such as <code>us-west-2</code>. </p>
-     */
-    inline FleetCapacity& WithLocation(const Aws::String& value) { SetLocation(value); return *this;}
-
-    /**
-     * <p>The fleet location for the instance count information, expressed as an Amazon
-     * Web Services Region code, such as <code>us-west-2</code>. </p>
-     */
-    inline FleetCapacity& WithLocation(Aws::String&& value) { SetLocation(std::move(value)); return *this;}
-
-    /**
-     * <p>The fleet location for the instance count information, expressed as an Amazon
-     * Web Services Region code, such as <code>us-west-2</code>. </p>
-     */
-    inline FleetCapacity& WithLocation(const char* value) { SetLocation(value); return *this;}
-
+    inline const GameServerContainerGroupCounts& GetGameServerContainerGroupCounts() const { return m_gameServerContainerGroupCounts; }
+    inline bool GameServerContainerGroupCountsHasBeenSet() const { return m_gameServerContainerGroupCountsHasBeenSet; }
+    template<typename GameServerContainerGroupCountsT = GameServerContainerGroupCounts>
+    void SetGameServerContainerGroupCounts(GameServerContainerGroupCountsT&& value) { m_gameServerContainerGroupCountsHasBeenSet = true; m_gameServerContainerGroupCounts = std::forward<GameServerContainerGroupCountsT>(value); }
+    template<typename GameServerContainerGroupCountsT = GameServerContainerGroupCounts>
+    FleetCapacity& WithGameServerContainerGroupCounts(GameServerContainerGroupCountsT&& value) { SetGameServerContainerGroupCounts(std::forward<GameServerContainerGroupCountsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_fleetId;
@@ -291,7 +138,7 @@ namespace Model
     Aws::String m_fleetArn;
     bool m_fleetArnHasBeenSet = false;
 
-    EC2InstanceType m_instanceType;
+    EC2InstanceType m_instanceType{EC2InstanceType::NOT_SET};
     bool m_instanceTypeHasBeenSet = false;
 
     EC2InstanceCounts m_instanceCounts;
@@ -299,6 +146,9 @@ namespace Model
 
     Aws::String m_location;
     bool m_locationHasBeenSet = false;
+
+    GameServerContainerGroupCounts m_gameServerContainerGroupCounts;
+    bool m_gameServerContainerGroupCountsHasBeenSet = false;
   };
 
 } // namespace Model

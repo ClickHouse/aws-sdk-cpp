@@ -16,28 +16,31 @@ namespace Aws
 namespace QLDB
 {
   /**
-   * <p>The control plane for Amazon QLDB</p>
+   * <p>The resource management API for Amazon QLDB</p>
    */
   class AWS_QLDB_API QLDBClient : public Aws::Client::AWSJsonClient, public Aws::Client::ClientWithAsyncTemplateMethods<QLDBClient>
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef QLDBClientConfiguration ClientConfigurationType;
+      typedef QLDBEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         QLDBClient(const Aws::QLDB::QLDBClientConfiguration& clientConfiguration = Aws::QLDB::QLDBClientConfiguration(),
-                   std::shared_ptr<QLDBEndpointProviderBase> endpointProvider = Aws::MakeShared<QLDBEndpointProvider>(ALLOCATION_TAG));
+                   std::shared_ptr<QLDBEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         QLDBClient(const Aws::Auth::AWSCredentials& credentials,
-                   std::shared_ptr<QLDBEndpointProviderBase> endpointProvider = Aws::MakeShared<QLDBEndpointProvider>(ALLOCATION_TAG),
+                   std::shared_ptr<QLDBEndpointProviderBase> endpointProvider = nullptr,
                    const Aws::QLDB::QLDBClientConfiguration& clientConfiguration = Aws::QLDB::QLDBClientConfiguration());
 
        /**
@@ -45,7 +48,7 @@ namespace QLDB
         * the default http client factory will be used
         */
         QLDBClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                   std::shared_ptr<QLDBEndpointProviderBase> endpointProvider = Aws::MakeShared<QLDBEndpointProvider>(ALLOCATION_TAG),
+                   std::shared_ptr<QLDBEndpointProviderBase> endpointProvider = nullptr,
                    const Aws::QLDB::QLDBClientConfiguration& clientConfiguration = Aws::QLDB::QLDBClientConfiguration());
 
 
@@ -132,7 +135,8 @@ namespace QLDB
          * <p>Deletes a ledger and all of its contents. This action is irreversible.</p>
          * <p>If deletion protection is enabled, you must first disable it before you can
          * delete the ledger. You can disable it by calling the <code>UpdateLedger</code>
-         * operation to set the flag to <code>false</code>.</p><p><h3>See Also:</h3>   <a
+         * operation to set this parameter to <code>false</code>.</p><p><h3>See Also:</h3> 
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/qldb-2019-01-02/DeleteLedger">AWS
          * API Reference</a></p>
          */
@@ -253,13 +257,8 @@ namespace QLDB
          * <p>Exports journal contents within a date and time range from a ledger into a
          * specified Amazon Simple Storage Service (Amazon S3) bucket. A journal export job
          * can write the data objects in either the text or binary representation of Amazon
-         * Ion format, or in <i>JSON Lines</i> text format.</p> <p>In JSON Lines format,
-         * each journal block in the exported data object is a valid JSON object that is
-         * delimited by a newline. You can use this format to easily integrate JSON exports
-         * with analytics tools such as Glue and Amazon Athena because these services can
-         * parse newline-delimited JSON automatically. For more information about the
-         * format, see <a href="https://jsonlines.org/">JSON Lines</a>.</p> <p>If the
-         * ledger with the given <code>Name</code> doesn't exist, then throws
+         * Ion format, or in <i>JSON Lines</i> text format.</p> <p>If the ledger with the
+         * given <code>Name</code> doesn't exist, then throws
          * <code>ResourceNotFoundException</code>.</p> <p>If the ledger with the given
          * <code>Name</code> is in <code>CREATING</code> status, then throws
          * <code>ResourcePreconditionNotMetException</code>.</p> <p>You can initiate up to
@@ -379,10 +378,8 @@ namespace QLDB
         }
 
         /**
-         * <p>Returns an array of all Amazon QLDB journal stream descriptors for a given
-         * ledger. The output of each stream descriptor includes the same details that are
-         * returned by <code>DescribeJournalKinesisStream</code>.</p> <p>This action does
-         * not return any expired journal streams. For more information, see <a
+         * <p>Returns all Amazon QLDB journal streams for a given ledger.</p> <p>This
+         * action does not return any expired journal streams. For more information, see <a
          * href="https://docs.aws.amazon.com/qldb/latest/developerguide/streams.create.html#streams.create.states.expiration">Expiration
          * for terminal streams</a> in the <i>Amazon QLDB Developer Guide</i>.</p> <p>This
          * action returns a maximum of <code>MaxResults</code> items. It is paginated so
@@ -413,25 +410,25 @@ namespace QLDB
         }
 
         /**
-         * <p>Returns an array of journal export job descriptions for all ledgers that are
-         * associated with the current Amazon Web Services account and Region.</p> <p>This
-         * action returns a maximum of <code>MaxResults</code> items, and is paginated so
-         * that you can retrieve all the items by calling <code>ListJournalS3Exports</code>
-         * multiple times.</p> <p>This action does not return any expired export jobs. For
-         * more information, see <a
+         * <p>Returns all journal export jobs for all ledgers that are associated with the
+         * current Amazon Web Services account and Region.</p> <p>This action returns a
+         * maximum of <code>MaxResults</code> items, and is paginated so that you can
+         * retrieve all the items by calling <code>ListJournalS3Exports</code> multiple
+         * times.</p> <p>This action does not return any expired export jobs. For more
+         * information, see <a
          * href="https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration">Export
          * job expiration</a> in the <i>Amazon QLDB Developer Guide</i>.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/qldb-2019-01-02/ListJournalS3Exports">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListJournalS3ExportsOutcome ListJournalS3Exports(const Model::ListJournalS3ExportsRequest& request) const;
+        virtual Model::ListJournalS3ExportsOutcome ListJournalS3Exports(const Model::ListJournalS3ExportsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListJournalS3Exports that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListJournalS3ExportsRequestT = Model::ListJournalS3ExportsRequest>
-        Model::ListJournalS3ExportsOutcomeCallable ListJournalS3ExportsCallable(const ListJournalS3ExportsRequestT& request) const
+        Model::ListJournalS3ExportsOutcomeCallable ListJournalS3ExportsCallable(const ListJournalS3ExportsRequestT& request = {}) const
         {
             return SubmitCallable(&QLDBClient::ListJournalS3Exports, request);
         }
@@ -440,17 +437,17 @@ namespace QLDB
          * An Async wrapper for ListJournalS3Exports that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListJournalS3ExportsRequestT = Model::ListJournalS3ExportsRequest>
-        void ListJournalS3ExportsAsync(const ListJournalS3ExportsRequestT& request, const ListJournalS3ExportsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListJournalS3ExportsAsync(const ListJournalS3ExportsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListJournalS3ExportsRequestT& request = {}) const
         {
             return SubmitAsync(&QLDBClient::ListJournalS3Exports, request, handler, context);
         }
 
         /**
-         * <p>Returns an array of journal export job descriptions for a specified
-         * ledger.</p> <p>This action returns a maximum of <code>MaxResults</code> items,
-         * and is paginated so that you can retrieve all the items by calling
-         * <code>ListJournalS3ExportsForLedger</code> multiple times.</p> <p>This action
-         * does not return any expired export jobs. For more information, see <a
+         * <p>Returns all journal export jobs for a specified ledger.</p> <p>This action
+         * returns a maximum of <code>MaxResults</code> items, and is paginated so that you
+         * can retrieve all the items by calling <code>ListJournalS3ExportsForLedger</code>
+         * multiple times.</p> <p>This action does not return any expired export jobs. For
+         * more information, see <a
          * href="https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration">Export
          * job expiration</a> in the <i>Amazon QLDB Developer Guide</i>.</p><p><h3>See
          * Also:</h3>   <a
@@ -478,20 +475,21 @@ namespace QLDB
         }
 
         /**
-         * <p>Returns an array of ledger summaries that are associated with the current
-         * Amazon Web Services account and Region.</p> <p>This action returns a maximum of
-         * 100 items and is paginated so that you can retrieve all the items by calling
-         * <code>ListLedgers</code> multiple times.</p><p><h3>See Also:</h3>   <a
+         * <p>Returns all ledgers that are associated with the current Amazon Web Services
+         * account and Region.</p> <p>This action returns a maximum of
+         * <code>MaxResults</code> items and is paginated so that you can retrieve all the
+         * items by calling <code>ListLedgers</code> multiple times.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/qldb-2019-01-02/ListLedgers">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListLedgersOutcome ListLedgers(const Model::ListLedgersRequest& request) const;
+        virtual Model::ListLedgersOutcome ListLedgers(const Model::ListLedgersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListLedgers that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListLedgersRequestT = Model::ListLedgersRequest>
-        Model::ListLedgersOutcomeCallable ListLedgersCallable(const ListLedgersRequestT& request) const
+        Model::ListLedgersOutcomeCallable ListLedgersCallable(const ListLedgersRequestT& request = {}) const
         {
             return SubmitCallable(&QLDBClient::ListLedgers, request);
         }
@@ -500,7 +498,7 @@ namespace QLDB
          * An Async wrapper for ListLedgers that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListLedgersRequestT = Model::ListLedgersRequest>
-        void ListLedgersAsync(const ListLedgersRequestT& request, const ListLedgersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListLedgersAsync(const ListLedgersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListLedgersRequestT& request = {}) const
         {
             return SubmitAsync(&QLDBClient::ListLedgers, request, handler, context);
         }
@@ -676,7 +674,6 @@ namespace QLDB
       void init(const QLDBClientConfiguration& clientConfiguration);
 
       QLDBClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<QLDBEndpointProviderBase> m_endpointProvider;
   };
 

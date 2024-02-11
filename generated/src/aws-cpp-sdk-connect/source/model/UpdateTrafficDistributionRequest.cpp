@@ -12,12 +12,6 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateTrafficDistributionRequest::UpdateTrafficDistributionRequest() : 
-    m_idHasBeenSet(false),
-    m_telephonyConfigHasBeenSet(false)
-{
-}
-
 Aws::String UpdateTrafficDistributionRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -25,6 +19,18 @@ Aws::String UpdateTrafficDistributionRequest::SerializePayload() const
   if(m_telephonyConfigHasBeenSet)
   {
    payload.WithObject("TelephonyConfig", m_telephonyConfig.Jsonize());
+
+  }
+
+  if(m_signInConfigHasBeenSet)
+  {
+   payload.WithObject("SignInConfig", m_signInConfig.Jsonize());
+
+  }
+
+  if(m_agentConfigHasBeenSet)
+  {
+   payload.WithObject("AgentConfig", m_agentConfig.Jsonize());
 
   }
 

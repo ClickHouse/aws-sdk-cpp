@@ -24,7 +24,7 @@ namespace Model
   class CreateGatewayRequest : public BackupGatewayRequest
   {
   public:
-    AWS_BACKUPGATEWAY_API CreateGatewayRequest();
+    AWS_BACKUPGATEWAY_API CreateGatewayRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,167 +37,54 @@ namespace Model
     AWS_BACKUPGATEWAY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The activation key of the created gateway.</p>
      */
-    inline const Aws::String& GetActivationKey() const{ return m_activationKey; }
-
-    /**
-     * <p>The activation key of the created gateway.</p>
-     */
+    inline const Aws::String& GetActivationKey() const { return m_activationKey; }
     inline bool ActivationKeyHasBeenSet() const { return m_activationKeyHasBeenSet; }
+    template<typename ActivationKeyT = Aws::String>
+    void SetActivationKey(ActivationKeyT&& value) { m_activationKeyHasBeenSet = true; m_activationKey = std::forward<ActivationKeyT>(value); }
+    template<typename ActivationKeyT = Aws::String>
+    CreateGatewayRequest& WithActivationKey(ActivationKeyT&& value) { SetActivationKey(std::forward<ActivationKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The activation key of the created gateway.</p>
-     */
-    inline void SetActivationKey(const Aws::String& value) { m_activationKeyHasBeenSet = true; m_activationKey = value; }
-
-    /**
-     * <p>The activation key of the created gateway.</p>
-     */
-    inline void SetActivationKey(Aws::String&& value) { m_activationKeyHasBeenSet = true; m_activationKey = std::move(value); }
-
-    /**
-     * <p>The activation key of the created gateway.</p>
-     */
-    inline void SetActivationKey(const char* value) { m_activationKeyHasBeenSet = true; m_activationKey.assign(value); }
-
-    /**
-     * <p>The activation key of the created gateway.</p>
-     */
-    inline CreateGatewayRequest& WithActivationKey(const Aws::String& value) { SetActivationKey(value); return *this;}
-
-    /**
-     * <p>The activation key of the created gateway.</p>
-     */
-    inline CreateGatewayRequest& WithActivationKey(Aws::String&& value) { SetActivationKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The activation key of the created gateway.</p>
-     */
-    inline CreateGatewayRequest& WithActivationKey(const char* value) { SetActivationKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The display name of the created gateway.</p>
      */
-    inline const Aws::String& GetGatewayDisplayName() const{ return m_gatewayDisplayName; }
-
-    /**
-     * <p>The display name of the created gateway.</p>
-     */
+    inline const Aws::String& GetGatewayDisplayName() const { return m_gatewayDisplayName; }
     inline bool GatewayDisplayNameHasBeenSet() const { return m_gatewayDisplayNameHasBeenSet; }
+    template<typename GatewayDisplayNameT = Aws::String>
+    void SetGatewayDisplayName(GatewayDisplayNameT&& value) { m_gatewayDisplayNameHasBeenSet = true; m_gatewayDisplayName = std::forward<GatewayDisplayNameT>(value); }
+    template<typename GatewayDisplayNameT = Aws::String>
+    CreateGatewayRequest& WithGatewayDisplayName(GatewayDisplayNameT&& value) { SetGatewayDisplayName(std::forward<GatewayDisplayNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The display name of the created gateway.</p>
-     */
-    inline void SetGatewayDisplayName(const Aws::String& value) { m_gatewayDisplayNameHasBeenSet = true; m_gatewayDisplayName = value; }
-
-    /**
-     * <p>The display name of the created gateway.</p>
-     */
-    inline void SetGatewayDisplayName(Aws::String&& value) { m_gatewayDisplayNameHasBeenSet = true; m_gatewayDisplayName = std::move(value); }
-
-    /**
-     * <p>The display name of the created gateway.</p>
-     */
-    inline void SetGatewayDisplayName(const char* value) { m_gatewayDisplayNameHasBeenSet = true; m_gatewayDisplayName.assign(value); }
-
-    /**
-     * <p>The display name of the created gateway.</p>
-     */
-    inline CreateGatewayRequest& WithGatewayDisplayName(const Aws::String& value) { SetGatewayDisplayName(value); return *this;}
-
-    /**
-     * <p>The display name of the created gateway.</p>
-     */
-    inline CreateGatewayRequest& WithGatewayDisplayName(Aws::String&& value) { SetGatewayDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The display name of the created gateway.</p>
-     */
-    inline CreateGatewayRequest& WithGatewayDisplayName(const char* value) { SetGatewayDisplayName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of created gateway.</p>
      */
-    inline const GatewayType& GetGatewayType() const{ return m_gatewayType; }
-
-    /**
-     * <p>The type of created gateway.</p>
-     */
+    inline GatewayType GetGatewayType() const { return m_gatewayType; }
     inline bool GatewayTypeHasBeenSet() const { return m_gatewayTypeHasBeenSet; }
+    inline void SetGatewayType(GatewayType value) { m_gatewayTypeHasBeenSet = true; m_gatewayType = value; }
+    inline CreateGatewayRequest& WithGatewayType(GatewayType value) { SetGatewayType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of created gateway.</p>
-     */
-    inline void SetGatewayType(const GatewayType& value) { m_gatewayTypeHasBeenSet = true; m_gatewayType = value; }
-
-    /**
-     * <p>The type of created gateway.</p>
-     */
-    inline void SetGatewayType(GatewayType&& value) { m_gatewayTypeHasBeenSet = true; m_gatewayType = std::move(value); }
-
-    /**
-     * <p>The type of created gateway.</p>
-     */
-    inline CreateGatewayRequest& WithGatewayType(const GatewayType& value) { SetGatewayType(value); return *this;}
-
-    /**
-     * <p>The type of created gateway.</p>
-     */
-    inline CreateGatewayRequest& WithGatewayType(GatewayType&& value) { SetGatewayType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of up to 50 tags to assign to the gateway. Each tag is a key-value
      * pair.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of up to 50 tags to assign to the gateway. Each tag is a key-value
-     * pair.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>A list of up to 50 tags to assign to the gateway. Each tag is a key-value
-     * pair.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of up to 50 tags to assign to the gateway. Each tag is a key-value
-     * pair.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of up to 50 tags to assign to the gateway. Each tag is a key-value
-     * pair.</p>
-     */
-    inline CreateGatewayRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of up to 50 tags to assign to the gateway. Each tag is a key-value
-     * pair.</p>
-     */
-    inline CreateGatewayRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of up to 50 tags to assign to the gateway. Each tag is a key-value
-     * pair.</p>
-     */
-    inline CreateGatewayRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>A list of up to 50 tags to assign to the gateway. Each tag is a key-value
-     * pair.</p>
-     */
-    inline CreateGatewayRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateGatewayRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateGatewayRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_activationKey;
@@ -206,7 +93,7 @@ namespace Model
     Aws::String m_gatewayDisplayName;
     bool m_gatewayDisplayNameHasBeenSet = false;
 
-    GatewayType m_gatewayType;
+    GatewayType m_gatewayType{GatewayType::NOT_SET};
     bool m_gatewayTypeHasBeenSet = false;
 
     Aws::Vector<Tag> m_tags;

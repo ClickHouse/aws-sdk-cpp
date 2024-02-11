@@ -32,52 +32,23 @@ namespace Model
   class StatelessCustomPublishMetricActionDimension
   {
   public:
-    AWS_SECURITYHUB_API StatelessCustomPublishMetricActionDimension();
+    AWS_SECURITYHUB_API StatelessCustomPublishMetricActionDimension() = default;
     AWS_SECURITYHUB_API StatelessCustomPublishMetricActionDimension(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API StatelessCustomPublishMetricActionDimension& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The value to use for the custom metric dimension.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value to use for the custom metric dimension.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value to use for the custom metric dimension.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value to use for the custom metric dimension.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value to use for the custom metric dimension.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The value to use for the custom metric dimension.</p>
-     */
-    inline StatelessCustomPublishMetricActionDimension& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value to use for the custom metric dimension.</p>
-     */
-    inline StatelessCustomPublishMetricActionDimension& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value to use for the custom metric dimension.</p>
-     */
-    inline StatelessCustomPublishMetricActionDimension& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    StatelessCustomPublishMetricActionDimension& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_value;

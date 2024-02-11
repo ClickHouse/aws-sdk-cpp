@@ -32,52 +32,23 @@ namespace Model
   class VirtualRouterServiceProvider
   {
   public:
-    AWS_APPMESH_API VirtualRouterServiceProvider();
+    AWS_APPMESH_API VirtualRouterServiceProvider() = default;
     AWS_APPMESH_API VirtualRouterServiceProvider(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API VirtualRouterServiceProvider& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the virtual router that is acting as a service provider.</p>
      */
-    inline const Aws::String& GetVirtualRouterName() const{ return m_virtualRouterName; }
-
-    /**
-     * <p>The name of the virtual router that is acting as a service provider.</p>
-     */
+    inline const Aws::String& GetVirtualRouterName() const { return m_virtualRouterName; }
     inline bool VirtualRouterNameHasBeenSet() const { return m_virtualRouterNameHasBeenSet; }
-
-    /**
-     * <p>The name of the virtual router that is acting as a service provider.</p>
-     */
-    inline void SetVirtualRouterName(const Aws::String& value) { m_virtualRouterNameHasBeenSet = true; m_virtualRouterName = value; }
-
-    /**
-     * <p>The name of the virtual router that is acting as a service provider.</p>
-     */
-    inline void SetVirtualRouterName(Aws::String&& value) { m_virtualRouterNameHasBeenSet = true; m_virtualRouterName = std::move(value); }
-
-    /**
-     * <p>The name of the virtual router that is acting as a service provider.</p>
-     */
-    inline void SetVirtualRouterName(const char* value) { m_virtualRouterNameHasBeenSet = true; m_virtualRouterName.assign(value); }
-
-    /**
-     * <p>The name of the virtual router that is acting as a service provider.</p>
-     */
-    inline VirtualRouterServiceProvider& WithVirtualRouterName(const Aws::String& value) { SetVirtualRouterName(value); return *this;}
-
-    /**
-     * <p>The name of the virtual router that is acting as a service provider.</p>
-     */
-    inline VirtualRouterServiceProvider& WithVirtualRouterName(Aws::String&& value) { SetVirtualRouterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the virtual router that is acting as a service provider.</p>
-     */
-    inline VirtualRouterServiceProvider& WithVirtualRouterName(const char* value) { SetVirtualRouterName(value); return *this;}
-
+    template<typename VirtualRouterNameT = Aws::String>
+    void SetVirtualRouterName(VirtualRouterNameT&& value) { m_virtualRouterNameHasBeenSet = true; m_virtualRouterName = std::forward<VirtualRouterNameT>(value); }
+    template<typename VirtualRouterNameT = Aws::String>
+    VirtualRouterServiceProvider& WithVirtualRouterName(VirtualRouterNameT&& value) { SetVirtualRouterName(std::forward<VirtualRouterNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_virtualRouterName;

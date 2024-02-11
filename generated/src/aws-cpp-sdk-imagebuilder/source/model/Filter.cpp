@@ -18,15 +18,7 @@ namespace imagebuilder
 namespace Model
 {
 
-Filter::Filter() : 
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-Filter::Filter(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+Filter::Filter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ Filter& Filter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("values");
@@ -49,7 +39,6 @@ Filter& Filter::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

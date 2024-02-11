@@ -18,15 +18,7 @@ namespace Schemas
 namespace Model
 {
 
-ServiceUnavailableException::ServiceUnavailableException() : 
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-ServiceUnavailableException::ServiceUnavailableException(JsonView jsonValue) : 
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+ServiceUnavailableException::ServiceUnavailableException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ServiceUnavailableException& ServiceUnavailableException::operator =(JsonView js
   if(jsonValue.ValueExists("Code"))
   {
     m_code = jsonValue.GetString("Code");
-
     m_codeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -35,273 +35,89 @@ namespace Model
   class Rotation
   {
   public:
-    AWS_SSMCONTACTS_API Rotation();
+    AWS_SSMCONTACTS_API Rotation() = default;
     AWS_SSMCONTACTS_API Rotation(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMCONTACTS_API Rotation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMCONTACTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the rotation.</p>
      */
-    inline const Aws::String& GetRotationArn() const{ return m_rotationArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rotation.</p>
-     */
+    inline const Aws::String& GetRotationArn() const { return m_rotationArn; }
     inline bool RotationArnHasBeenSet() const { return m_rotationArnHasBeenSet; }
+    template<typename RotationArnT = Aws::String>
+    void SetRotationArn(RotationArnT&& value) { m_rotationArnHasBeenSet = true; m_rotationArn = std::forward<RotationArnT>(value); }
+    template<typename RotationArnT = Aws::String>
+    Rotation& WithRotationArn(RotationArnT&& value) { SetRotationArn(std::forward<RotationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rotation.</p>
-     */
-    inline void SetRotationArn(const Aws::String& value) { m_rotationArnHasBeenSet = true; m_rotationArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rotation.</p>
-     */
-    inline void SetRotationArn(Aws::String&& value) { m_rotationArnHasBeenSet = true; m_rotationArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rotation.</p>
-     */
-    inline void SetRotationArn(const char* value) { m_rotationArnHasBeenSet = true; m_rotationArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rotation.</p>
-     */
-    inline Rotation& WithRotationArn(const Aws::String& value) { SetRotationArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rotation.</p>
-     */
-    inline Rotation& WithRotationArn(Aws::String&& value) { SetRotationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rotation.</p>
-     */
-    inline Rotation& WithRotationArn(const char* value) { SetRotationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the rotation.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the rotation.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Rotation& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the rotation.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the rotation.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the rotation.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the rotation.</p>
-     */
-    inline Rotation& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the rotation.</p>
-     */
-    inline Rotation& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the rotation.</p>
-     */
-    inline Rotation& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Names (ARNs) of the contacts assigned to the rotation
      * team.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetContactIds() const{ return m_contactIds; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the contacts assigned to the rotation
-     * team.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetContactIds() const { return m_contactIds; }
     inline bool ContactIdsHasBeenSet() const { return m_contactIdsHasBeenSet; }
+    template<typename ContactIdsT = Aws::Vector<Aws::String>>
+    void SetContactIds(ContactIdsT&& value) { m_contactIdsHasBeenSet = true; m_contactIds = std::forward<ContactIdsT>(value); }
+    template<typename ContactIdsT = Aws::Vector<Aws::String>>
+    Rotation& WithContactIds(ContactIdsT&& value) { SetContactIds(std::forward<ContactIdsT>(value)); return *this;}
+    template<typename ContactIdsT = Aws::String>
+    Rotation& AddContactIds(ContactIdsT&& value) { m_contactIdsHasBeenSet = true; m_contactIds.emplace_back(std::forward<ContactIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the contacts assigned to the rotation
-     * team.</p>
-     */
-    inline void SetContactIds(const Aws::Vector<Aws::String>& value) { m_contactIdsHasBeenSet = true; m_contactIds = value; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the contacts assigned to the rotation
-     * team.</p>
-     */
-    inline void SetContactIds(Aws::Vector<Aws::String>&& value) { m_contactIdsHasBeenSet = true; m_contactIds = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the contacts assigned to the rotation
-     * team.</p>
-     */
-    inline Rotation& WithContactIds(const Aws::Vector<Aws::String>& value) { SetContactIds(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the contacts assigned to the rotation
-     * team.</p>
-     */
-    inline Rotation& WithContactIds(Aws::Vector<Aws::String>&& value) { SetContactIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the contacts assigned to the rotation
-     * team.</p>
-     */
-    inline Rotation& AddContactIds(const Aws::String& value) { m_contactIdsHasBeenSet = true; m_contactIds.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the contacts assigned to the rotation
-     * team.</p>
-     */
-    inline Rotation& AddContactIds(Aws::String&& value) { m_contactIdsHasBeenSet = true; m_contactIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the contacts assigned to the rotation
-     * team.</p>
-     */
-    inline Rotation& AddContactIds(const char* value) { m_contactIdsHasBeenSet = true; m_contactIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The date and time the rotation becomes active.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
-
-    /**
-     * <p>The date and time the rotation becomes active.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartTime() const { return m_startTime; }
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    Rotation& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time the rotation becomes active.</p>
-     */
-    inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    /**
-     * <p>The date and time the rotation becomes active.</p>
-     */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    /**
-     * <p>The date and time the rotation becomes active.</p>
-     */
-    inline Rotation& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>The date and time the rotation becomes active.</p>
-     */
-    inline Rotation& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time zone the rotation’s activity is based on, in Internet Assigned
      * Numbers Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or
      * "Asia/Seoul". </p>
      */
-    inline const Aws::String& GetTimeZoneId() const{ return m_timeZoneId; }
-
-    /**
-     * <p>The time zone the rotation’s activity is based on, in Internet Assigned
-     * Numbers Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or
-     * "Asia/Seoul". </p>
-     */
+    inline const Aws::String& GetTimeZoneId() const { return m_timeZoneId; }
     inline bool TimeZoneIdHasBeenSet() const { return m_timeZoneIdHasBeenSet; }
+    template<typename TimeZoneIdT = Aws::String>
+    void SetTimeZoneId(TimeZoneIdT&& value) { m_timeZoneIdHasBeenSet = true; m_timeZoneId = std::forward<TimeZoneIdT>(value); }
+    template<typename TimeZoneIdT = Aws::String>
+    Rotation& WithTimeZoneId(TimeZoneIdT&& value) { SetTimeZoneId(std::forward<TimeZoneIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time zone the rotation’s activity is based on, in Internet Assigned
-     * Numbers Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or
-     * "Asia/Seoul". </p>
-     */
-    inline void SetTimeZoneId(const Aws::String& value) { m_timeZoneIdHasBeenSet = true; m_timeZoneId = value; }
-
-    /**
-     * <p>The time zone the rotation’s activity is based on, in Internet Assigned
-     * Numbers Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or
-     * "Asia/Seoul". </p>
-     */
-    inline void SetTimeZoneId(Aws::String&& value) { m_timeZoneIdHasBeenSet = true; m_timeZoneId = std::move(value); }
-
-    /**
-     * <p>The time zone the rotation’s activity is based on, in Internet Assigned
-     * Numbers Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or
-     * "Asia/Seoul". </p>
-     */
-    inline void SetTimeZoneId(const char* value) { m_timeZoneIdHasBeenSet = true; m_timeZoneId.assign(value); }
-
-    /**
-     * <p>The time zone the rotation’s activity is based on, in Internet Assigned
-     * Numbers Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or
-     * "Asia/Seoul". </p>
-     */
-    inline Rotation& WithTimeZoneId(const Aws::String& value) { SetTimeZoneId(value); return *this;}
-
-    /**
-     * <p>The time zone the rotation’s activity is based on, in Internet Assigned
-     * Numbers Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or
-     * "Asia/Seoul". </p>
-     */
-    inline Rotation& WithTimeZoneId(Aws::String&& value) { SetTimeZoneId(std::move(value)); return *this;}
-
-    /**
-     * <p>The time zone the rotation’s activity is based on, in Internet Assigned
-     * Numbers Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or
-     * "Asia/Seoul". </p>
-     */
-    inline Rotation& WithTimeZoneId(const char* value) { SetTimeZoneId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about when an on-call rotation is in effect and how long the
      * rotation period lasts.</p>
      */
-    inline const RecurrenceSettings& GetRecurrence() const{ return m_recurrence; }
-
-    /**
-     * <p>Information about when an on-call rotation is in effect and how long the
-     * rotation period lasts.</p>
-     */
+    inline const RecurrenceSettings& GetRecurrence() const { return m_recurrence; }
     inline bool RecurrenceHasBeenSet() const { return m_recurrenceHasBeenSet; }
-
-    /**
-     * <p>Information about when an on-call rotation is in effect and how long the
-     * rotation period lasts.</p>
-     */
-    inline void SetRecurrence(const RecurrenceSettings& value) { m_recurrenceHasBeenSet = true; m_recurrence = value; }
-
-    /**
-     * <p>Information about when an on-call rotation is in effect and how long the
-     * rotation period lasts.</p>
-     */
-    inline void SetRecurrence(RecurrenceSettings&& value) { m_recurrenceHasBeenSet = true; m_recurrence = std::move(value); }
-
-    /**
-     * <p>Information about when an on-call rotation is in effect and how long the
-     * rotation period lasts.</p>
-     */
-    inline Rotation& WithRecurrence(const RecurrenceSettings& value) { SetRecurrence(value); return *this;}
-
-    /**
-     * <p>Information about when an on-call rotation is in effect and how long the
-     * rotation period lasts.</p>
-     */
-    inline Rotation& WithRecurrence(RecurrenceSettings&& value) { SetRecurrence(std::move(value)); return *this;}
-
+    template<typename RecurrenceT = RecurrenceSettings>
+    void SetRecurrence(RecurrenceT&& value) { m_recurrenceHasBeenSet = true; m_recurrence = std::forward<RecurrenceT>(value); }
+    template<typename RecurrenceT = RecurrenceSettings>
+    Rotation& WithRecurrence(RecurrenceT&& value) { SetRecurrence(std::forward<RecurrenceT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_rotationArn;
@@ -313,7 +129,7 @@ namespace Model
     Aws::Vector<Aws::String> m_contactIds;
     bool m_contactIdsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startTime;
+    Aws::Utils::DateTime m_startTime{};
     bool m_startTimeHasBeenSet = false;
 
     Aws::String m_timeZoneId;

@@ -20,15 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-TimeRangeFilter::TimeRangeFilter() : 
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false)
-{
-}
-
-TimeRangeFilter::TimeRangeFilter(const XmlNode& xmlNode) : 
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false)
+TimeRangeFilter::TimeRangeFilter(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

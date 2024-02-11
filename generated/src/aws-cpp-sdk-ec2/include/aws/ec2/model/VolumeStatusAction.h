@@ -31,7 +31,7 @@ namespace Model
   class VolumeStatusAction
   {
   public:
-    AWS_EC2_API VolumeStatusAction();
+    AWS_EC2_API VolumeStatusAction() = default;
     AWS_EC2_API VolumeStatusAction(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API VolumeStatusAction& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -39,177 +39,54 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The code identifying the operation, for example,
      * <code>enable-volume-io</code>.</p>
      */
-    inline const Aws::String& GetCode() const{ return m_code; }
-
-    /**
-     * <p>The code identifying the operation, for example,
-     * <code>enable-volume-io</code>.</p>
-     */
+    inline const Aws::String& GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
+    template<typename CodeT = Aws::String>
+    void SetCode(CodeT&& value) { m_codeHasBeenSet = true; m_code = std::forward<CodeT>(value); }
+    template<typename CodeT = Aws::String>
+    VolumeStatusAction& WithCode(CodeT&& value) { SetCode(std::forward<CodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The code identifying the operation, for example,
-     * <code>enable-volume-io</code>.</p>
-     */
-    inline void SetCode(const Aws::String& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>The code identifying the operation, for example,
-     * <code>enable-volume-io</code>.</p>
-     */
-    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * <p>The code identifying the operation, for example,
-     * <code>enable-volume-io</code>.</p>
-     */
-    inline void SetCode(const char* value) { m_codeHasBeenSet = true; m_code.assign(value); }
-
-    /**
-     * <p>The code identifying the operation, for example,
-     * <code>enable-volume-io</code>.</p>
-     */
-    inline VolumeStatusAction& WithCode(const Aws::String& value) { SetCode(value); return *this;}
-
-    /**
-     * <p>The code identifying the operation, for example,
-     * <code>enable-volume-io</code>.</p>
-     */
-    inline VolumeStatusAction& WithCode(Aws::String&& value) { SetCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The code identifying the operation, for example,
-     * <code>enable-volume-io</code>.</p>
-     */
-    inline VolumeStatusAction& WithCode(const char* value) { SetCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the operation.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the operation.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    VolumeStatusAction& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the operation.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the operation.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the operation.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the operation.</p>
-     */
-    inline VolumeStatusAction& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the operation.</p>
-     */
-    inline VolumeStatusAction& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the operation.</p>
-     */
-    inline VolumeStatusAction& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the event associated with this operation.</p>
      */
-    inline const Aws::String& GetEventId() const{ return m_eventId; }
-
-    /**
-     * <p>The ID of the event associated with this operation.</p>
-     */
+    inline const Aws::String& GetEventId() const { return m_eventId; }
     inline bool EventIdHasBeenSet() const { return m_eventIdHasBeenSet; }
+    template<typename EventIdT = Aws::String>
+    void SetEventId(EventIdT&& value) { m_eventIdHasBeenSet = true; m_eventId = std::forward<EventIdT>(value); }
+    template<typename EventIdT = Aws::String>
+    VolumeStatusAction& WithEventId(EventIdT&& value) { SetEventId(std::forward<EventIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the event associated with this operation.</p>
-     */
-    inline void SetEventId(const Aws::String& value) { m_eventIdHasBeenSet = true; m_eventId = value; }
-
-    /**
-     * <p>The ID of the event associated with this operation.</p>
-     */
-    inline void SetEventId(Aws::String&& value) { m_eventIdHasBeenSet = true; m_eventId = std::move(value); }
-
-    /**
-     * <p>The ID of the event associated with this operation.</p>
-     */
-    inline void SetEventId(const char* value) { m_eventIdHasBeenSet = true; m_eventId.assign(value); }
-
-    /**
-     * <p>The ID of the event associated with this operation.</p>
-     */
-    inline VolumeStatusAction& WithEventId(const Aws::String& value) { SetEventId(value); return *this;}
-
-    /**
-     * <p>The ID of the event associated with this operation.</p>
-     */
-    inline VolumeStatusAction& WithEventId(Aws::String&& value) { SetEventId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the event associated with this operation.</p>
-     */
-    inline VolumeStatusAction& WithEventId(const char* value) { SetEventId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The event type associated with this operation.</p>
      */
-    inline const Aws::String& GetEventType() const{ return m_eventType; }
-
-    /**
-     * <p>The event type associated with this operation.</p>
-     */
+    inline const Aws::String& GetEventType() const { return m_eventType; }
     inline bool EventTypeHasBeenSet() const { return m_eventTypeHasBeenSet; }
-
-    /**
-     * <p>The event type associated with this operation.</p>
-     */
-    inline void SetEventType(const Aws::String& value) { m_eventTypeHasBeenSet = true; m_eventType = value; }
-
-    /**
-     * <p>The event type associated with this operation.</p>
-     */
-    inline void SetEventType(Aws::String&& value) { m_eventTypeHasBeenSet = true; m_eventType = std::move(value); }
-
-    /**
-     * <p>The event type associated with this operation.</p>
-     */
-    inline void SetEventType(const char* value) { m_eventTypeHasBeenSet = true; m_eventType.assign(value); }
-
-    /**
-     * <p>The event type associated with this operation.</p>
-     */
-    inline VolumeStatusAction& WithEventType(const Aws::String& value) { SetEventType(value); return *this;}
-
-    /**
-     * <p>The event type associated with this operation.</p>
-     */
-    inline VolumeStatusAction& WithEventType(Aws::String&& value) { SetEventType(std::move(value)); return *this;}
-
-    /**
-     * <p>The event type associated with this operation.</p>
-     */
-    inline VolumeStatusAction& WithEventType(const char* value) { SetEventType(value); return *this;}
-
+    template<typename EventTypeT = Aws::String>
+    void SetEventType(EventTypeT&& value) { m_eventTypeHasBeenSet = true; m_eventType = std::forward<EventTypeT>(value); }
+    template<typename EventTypeT = Aws::String>
+    VolumeStatusAction& WithEventType(EventTypeT&& value) { SetEventType(std::forward<EventTypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_code;

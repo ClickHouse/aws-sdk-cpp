@@ -5,6 +5,7 @@
 
 #pragma once
 #include <aws/logs/CloudWatchLogs_EXPORTS.h>
+#include <aws/logs/model/QueryLanguage.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/logs/model/QueryStatus.h>
 #include <utility>
@@ -33,199 +34,86 @@ namespace Model
   class QueryInfo
   {
   public:
-    AWS_CLOUDWATCHLOGS_API QueryInfo();
+    AWS_CLOUDWATCHLOGS_API QueryInfo() = default;
     AWS_CLOUDWATCHLOGS_API QueryInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHLOGS_API QueryInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHLOGS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The unique ID number of this query.</p>
+     * <p>The query language used for this query. For more information about the query
+     * languages that CloudWatch Logs supports, see <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData_Languages.html">Supported
+     * query languages</a>.</p>
      */
-    inline const Aws::String& GetQueryId() const{ return m_queryId; }
+    inline QueryLanguage GetQueryLanguage() const { return m_queryLanguage; }
+    inline bool QueryLanguageHasBeenSet() const { return m_queryLanguageHasBeenSet; }
+    inline void SetQueryLanguage(QueryLanguage value) { m_queryLanguageHasBeenSet = true; m_queryLanguage = value; }
+    inline QueryInfo& WithQueryLanguage(QueryLanguage value) { SetQueryLanguage(value); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>The unique ID number of this query.</p>
      */
+    inline const Aws::String& GetQueryId() const { return m_queryId; }
     inline bool QueryIdHasBeenSet() const { return m_queryIdHasBeenSet; }
+    template<typename QueryIdT = Aws::String>
+    void SetQueryId(QueryIdT&& value) { m_queryIdHasBeenSet = true; m_queryId = std::forward<QueryIdT>(value); }
+    template<typename QueryIdT = Aws::String>
+    QueryInfo& WithQueryId(QueryIdT&& value) { SetQueryId(std::forward<QueryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID number of this query.</p>
-     */
-    inline void SetQueryId(const Aws::String& value) { m_queryIdHasBeenSet = true; m_queryId = value; }
-
-    /**
-     * <p>The unique ID number of this query.</p>
-     */
-    inline void SetQueryId(Aws::String&& value) { m_queryIdHasBeenSet = true; m_queryId = std::move(value); }
-
-    /**
-     * <p>The unique ID number of this query.</p>
-     */
-    inline void SetQueryId(const char* value) { m_queryIdHasBeenSet = true; m_queryId.assign(value); }
-
-    /**
-     * <p>The unique ID number of this query.</p>
-     */
-    inline QueryInfo& WithQueryId(const Aws::String& value) { SetQueryId(value); return *this;}
-
-    /**
-     * <p>The unique ID number of this query.</p>
-     */
-    inline QueryInfo& WithQueryId(Aws::String&& value) { SetQueryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID number of this query.</p>
-     */
-    inline QueryInfo& WithQueryId(const char* value) { SetQueryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The query string used in this query.</p>
      */
-    inline const Aws::String& GetQueryString() const{ return m_queryString; }
-
-    /**
-     * <p>The query string used in this query.</p>
-     */
+    inline const Aws::String& GetQueryString() const { return m_queryString; }
     inline bool QueryStringHasBeenSet() const { return m_queryStringHasBeenSet; }
+    template<typename QueryStringT = Aws::String>
+    void SetQueryString(QueryStringT&& value) { m_queryStringHasBeenSet = true; m_queryString = std::forward<QueryStringT>(value); }
+    template<typename QueryStringT = Aws::String>
+    QueryInfo& WithQueryString(QueryStringT&& value) { SetQueryString(std::forward<QueryStringT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The query string used in this query.</p>
-     */
-    inline void SetQueryString(const Aws::String& value) { m_queryStringHasBeenSet = true; m_queryString = value; }
-
-    /**
-     * <p>The query string used in this query.</p>
-     */
-    inline void SetQueryString(Aws::String&& value) { m_queryStringHasBeenSet = true; m_queryString = std::move(value); }
-
-    /**
-     * <p>The query string used in this query.</p>
-     */
-    inline void SetQueryString(const char* value) { m_queryStringHasBeenSet = true; m_queryString.assign(value); }
-
-    /**
-     * <p>The query string used in this query.</p>
-     */
-    inline QueryInfo& WithQueryString(const Aws::String& value) { SetQueryString(value); return *this;}
-
-    /**
-     * <p>The query string used in this query.</p>
-     */
-    inline QueryInfo& WithQueryString(Aws::String&& value) { SetQueryString(std::move(value)); return *this;}
-
-    /**
-     * <p>The query string used in this query.</p>
-     */
-    inline QueryInfo& WithQueryString(const char* value) { SetQueryString(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of this query. Possible values are <code>Cancelled</code>,
      * <code>Complete</code>, <code>Failed</code>, <code>Running</code>,
      * <code>Scheduled</code>, and <code>Unknown</code>.</p>
      */
-    inline const QueryStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of this query. Possible values are <code>Cancelled</code>,
-     * <code>Complete</code>, <code>Failed</code>, <code>Running</code>,
-     * <code>Scheduled</code>, and <code>Unknown</code>.</p>
-     */
+    inline QueryStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(QueryStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline QueryInfo& WithStatus(QueryStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of this query. Possible values are <code>Cancelled</code>,
-     * <code>Complete</code>, <code>Failed</code>, <code>Running</code>,
-     * <code>Scheduled</code>, and <code>Unknown</code>.</p>
-     */
-    inline void SetStatus(const QueryStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of this query. Possible values are <code>Cancelled</code>,
-     * <code>Complete</code>, <code>Failed</code>, <code>Running</code>,
-     * <code>Scheduled</code>, and <code>Unknown</code>.</p>
-     */
-    inline void SetStatus(QueryStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of this query. Possible values are <code>Cancelled</code>,
-     * <code>Complete</code>, <code>Failed</code>, <code>Running</code>,
-     * <code>Scheduled</code>, and <code>Unknown</code>.</p>
-     */
-    inline QueryInfo& WithStatus(const QueryStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of this query. Possible values are <code>Cancelled</code>,
-     * <code>Complete</code>, <code>Failed</code>, <code>Running</code>,
-     * <code>Scheduled</code>, and <code>Unknown</code>.</p>
-     */
-    inline QueryInfo& WithStatus(QueryStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that this query was created.</p>
      */
-    inline long long GetCreateTime() const{ return m_createTime; }
-
-    /**
-     * <p>The date and time that this query was created.</p>
-     */
+    inline long long GetCreateTime() const { return m_createTime; }
     inline bool CreateTimeHasBeenSet() const { return m_createTimeHasBeenSet; }
-
-    /**
-     * <p>The date and time that this query was created.</p>
-     */
     inline void SetCreateTime(long long value) { m_createTimeHasBeenSet = true; m_createTime = value; }
-
-    /**
-     * <p>The date and time that this query was created.</p>
-     */
     inline QueryInfo& WithCreateTime(long long value) { SetCreateTime(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The name of the log group scanned by this query.</p>
      */
-    inline const Aws::String& GetLogGroupName() const{ return m_logGroupName; }
-
-    /**
-     * <p>The name of the log group scanned by this query.</p>
-     */
+    inline const Aws::String& GetLogGroupName() const { return m_logGroupName; }
     inline bool LogGroupNameHasBeenSet() const { return m_logGroupNameHasBeenSet; }
-
-    /**
-     * <p>The name of the log group scanned by this query.</p>
-     */
-    inline void SetLogGroupName(const Aws::String& value) { m_logGroupNameHasBeenSet = true; m_logGroupName = value; }
-
-    /**
-     * <p>The name of the log group scanned by this query.</p>
-     */
-    inline void SetLogGroupName(Aws::String&& value) { m_logGroupNameHasBeenSet = true; m_logGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the log group scanned by this query.</p>
-     */
-    inline void SetLogGroupName(const char* value) { m_logGroupNameHasBeenSet = true; m_logGroupName.assign(value); }
-
-    /**
-     * <p>The name of the log group scanned by this query.</p>
-     */
-    inline QueryInfo& WithLogGroupName(const Aws::String& value) { SetLogGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the log group scanned by this query.</p>
-     */
-    inline QueryInfo& WithLogGroupName(Aws::String&& value) { SetLogGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the log group scanned by this query.</p>
-     */
-    inline QueryInfo& WithLogGroupName(const char* value) { SetLogGroupName(value); return *this;}
-
+    template<typename LogGroupNameT = Aws::String>
+    void SetLogGroupName(LogGroupNameT&& value) { m_logGroupNameHasBeenSet = true; m_logGroupName = std::forward<LogGroupNameT>(value); }
+    template<typename LogGroupNameT = Aws::String>
+    QueryInfo& WithLogGroupName(LogGroupNameT&& value) { SetLogGroupName(std::forward<LogGroupNameT>(value)); return *this;}
+    ///@}
   private:
+
+    QueryLanguage m_queryLanguage{QueryLanguage::NOT_SET};
+    bool m_queryLanguageHasBeenSet = false;
 
     Aws::String m_queryId;
     bool m_queryIdHasBeenSet = false;
@@ -233,10 +121,10 @@ namespace Model
     Aws::String m_queryString;
     bool m_queryStringHasBeenSet = false;
 
-    QueryStatus m_status;
+    QueryStatus m_status{QueryStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
-    long long m_createTime;
+    long long m_createTime{0};
     bool m_createTimeHasBeenSet = false;
 
     Aws::String m_logGroupName;

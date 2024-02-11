@@ -18,37 +18,23 @@ namespace Omics
 namespace Model
 {
 
-AnnotationImportItemDetail::AnnotationImportItemDetail() : 
-    m_jobStatus(JobStatus::NOT_SET),
-    m_jobStatusHasBeenSet(false),
-    m_sourceHasBeenSet(false)
-{
-}
-
-AnnotationImportItemDetail::AnnotationImportItemDetail(JsonView jsonValue) : 
-    m_jobStatus(JobStatus::NOT_SET),
-    m_jobStatusHasBeenSet(false),
-    m_sourceHasBeenSet(false)
+AnnotationImportItemDetail::AnnotationImportItemDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 AnnotationImportItemDetail& AnnotationImportItemDetail::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("jobStatus"))
-  {
-    m_jobStatus = JobStatusMapper::GetJobStatusForName(jsonValue.GetString("jobStatus"));
-
-    m_jobStatusHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("source"))
   {
     m_source = jsonValue.GetString("source");
-
     m_sourceHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("jobStatus"))
+  {
+    m_jobStatus = JobStatusMapper::GetJobStatusForName(jsonValue.GetString("jobStatus"));
+    m_jobStatusHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -56,15 +42,15 @@ JsonValue AnnotationImportItemDetail::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_jobStatusHasBeenSet)
-  {
-   payload.WithString("jobStatus", JobStatusMapper::GetNameForJobStatus(m_jobStatus));
-  }
-
   if(m_sourceHasBeenSet)
   {
    payload.WithString("source", m_source);
 
+  }
+
+  if(m_jobStatusHasBeenSet)
+  {
+   payload.WithString("jobStatus", JobStatusMapper::GetNameForJobStatus(m_jobStatus));
   }
 
   return payload;

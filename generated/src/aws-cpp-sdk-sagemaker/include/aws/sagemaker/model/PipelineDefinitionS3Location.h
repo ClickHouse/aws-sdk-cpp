@@ -32,150 +32,49 @@ namespace Model
   class PipelineDefinitionS3Location
   {
   public:
-    AWS_SAGEMAKER_API PipelineDefinitionS3Location();
+    AWS_SAGEMAKER_API PipelineDefinitionS3Location() = default;
     AWS_SAGEMAKER_API PipelineDefinitionS3Location(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API PipelineDefinitionS3Location& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Name of the S3 bucket.</p>
      */
-    inline const Aws::String& GetBucket() const{ return m_bucket; }
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
+    inline const Aws::String& GetBucket() const { return m_bucket; }
     inline bool BucketHasBeenSet() const { return m_bucketHasBeenSet; }
+    template<typename BucketT = Aws::String>
+    void SetBucket(BucketT&& value) { m_bucketHasBeenSet = true; m_bucket = std::forward<BucketT>(value); }
+    template<typename BucketT = Aws::String>
+    PipelineDefinitionS3Location& WithBucket(BucketT&& value) { SetBucket(std::forward<BucketT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline void SetBucket(const Aws::String& value) { m_bucketHasBeenSet = true; m_bucket = value; }
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = std::move(value); }
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline void SetBucket(const char* value) { m_bucketHasBeenSet = true; m_bucket.assign(value); }
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline PipelineDefinitionS3Location& WithBucket(const Aws::String& value) { SetBucket(value); return *this;}
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline PipelineDefinitionS3Location& WithBucket(Aws::String&& value) { SetBucket(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline PipelineDefinitionS3Location& WithBucket(const char* value) { SetBucket(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The object key (or key name) uniquely identifies the object in an S3 bucket.
      * </p>
      */
-    inline const Aws::String& GetObjectKey() const{ return m_objectKey; }
-
-    /**
-     * <p>The object key (or key name) uniquely identifies the object in an S3 bucket.
-     * </p>
-     */
+    inline const Aws::String& GetObjectKey() const { return m_objectKey; }
     inline bool ObjectKeyHasBeenSet() const { return m_objectKeyHasBeenSet; }
+    template<typename ObjectKeyT = Aws::String>
+    void SetObjectKey(ObjectKeyT&& value) { m_objectKeyHasBeenSet = true; m_objectKey = std::forward<ObjectKeyT>(value); }
+    template<typename ObjectKeyT = Aws::String>
+    PipelineDefinitionS3Location& WithObjectKey(ObjectKeyT&& value) { SetObjectKey(std::forward<ObjectKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The object key (or key name) uniquely identifies the object in an S3 bucket.
-     * </p>
-     */
-    inline void SetObjectKey(const Aws::String& value) { m_objectKeyHasBeenSet = true; m_objectKey = value; }
-
-    /**
-     * <p>The object key (or key name) uniquely identifies the object in an S3 bucket.
-     * </p>
-     */
-    inline void SetObjectKey(Aws::String&& value) { m_objectKeyHasBeenSet = true; m_objectKey = std::move(value); }
-
-    /**
-     * <p>The object key (or key name) uniquely identifies the object in an S3 bucket.
-     * </p>
-     */
-    inline void SetObjectKey(const char* value) { m_objectKeyHasBeenSet = true; m_objectKey.assign(value); }
-
-    /**
-     * <p>The object key (or key name) uniquely identifies the object in an S3 bucket.
-     * </p>
-     */
-    inline PipelineDefinitionS3Location& WithObjectKey(const Aws::String& value) { SetObjectKey(value); return *this;}
-
-    /**
-     * <p>The object key (or key name) uniquely identifies the object in an S3 bucket.
-     * </p>
-     */
-    inline PipelineDefinitionS3Location& WithObjectKey(Aws::String&& value) { SetObjectKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The object key (or key name) uniquely identifies the object in an S3 bucket.
-     * </p>
-     */
-    inline PipelineDefinitionS3Location& WithObjectKey(const char* value) { SetObjectKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Version Id of the pipeline definition file. If not specified, Amazon
      * SageMaker will retrieve the latest version.</p>
      */
-    inline const Aws::String& GetVersionId() const{ return m_versionId; }
-
-    /**
-     * <p>Version Id of the pipeline definition file. If not specified, Amazon
-     * SageMaker will retrieve the latest version.</p>
-     */
+    inline const Aws::String& GetVersionId() const { return m_versionId; }
     inline bool VersionIdHasBeenSet() const { return m_versionIdHasBeenSet; }
-
-    /**
-     * <p>Version Id of the pipeline definition file. If not specified, Amazon
-     * SageMaker will retrieve the latest version.</p>
-     */
-    inline void SetVersionId(const Aws::String& value) { m_versionIdHasBeenSet = true; m_versionId = value; }
-
-    /**
-     * <p>Version Id of the pipeline definition file. If not specified, Amazon
-     * SageMaker will retrieve the latest version.</p>
-     */
-    inline void SetVersionId(Aws::String&& value) { m_versionIdHasBeenSet = true; m_versionId = std::move(value); }
-
-    /**
-     * <p>Version Id of the pipeline definition file. If not specified, Amazon
-     * SageMaker will retrieve the latest version.</p>
-     */
-    inline void SetVersionId(const char* value) { m_versionIdHasBeenSet = true; m_versionId.assign(value); }
-
-    /**
-     * <p>Version Id of the pipeline definition file. If not specified, Amazon
-     * SageMaker will retrieve the latest version.</p>
-     */
-    inline PipelineDefinitionS3Location& WithVersionId(const Aws::String& value) { SetVersionId(value); return *this;}
-
-    /**
-     * <p>Version Id of the pipeline definition file. If not specified, Amazon
-     * SageMaker will retrieve the latest version.</p>
-     */
-    inline PipelineDefinitionS3Location& WithVersionId(Aws::String&& value) { SetVersionId(std::move(value)); return *this;}
-
-    /**
-     * <p>Version Id of the pipeline definition file. If not specified, Amazon
-     * SageMaker will retrieve the latest version.</p>
-     */
-    inline PipelineDefinitionS3Location& WithVersionId(const char* value) { SetVersionId(value); return *this;}
-
+    template<typename VersionIdT = Aws::String>
+    void SetVersionId(VersionIdT&& value) { m_versionIdHasBeenSet = true; m_versionId = std::forward<VersionIdT>(value); }
+    template<typename VersionIdT = Aws::String>
+    PipelineDefinitionS3Location& WithVersionId(VersionIdT&& value) { SetVersionId(std::forward<VersionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucket;

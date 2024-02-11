@@ -18,19 +18,7 @@ namespace WAFV2
 namespace Model
 {
 
-CustomResponse::CustomResponse() : 
-    m_responseCode(0),
-    m_responseCodeHasBeenSet(false),
-    m_customResponseBodyKeyHasBeenSet(false),
-    m_responseHeadersHasBeenSet(false)
-{
-}
-
-CustomResponse::CustomResponse(JsonView jsonValue) : 
-    m_responseCode(0),
-    m_responseCodeHasBeenSet(false),
-    m_customResponseBodyKeyHasBeenSet(false),
-    m_responseHeadersHasBeenSet(false)
+CustomResponse::CustomResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ CustomResponse& CustomResponse::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ResponseCode"))
   {
     m_responseCode = jsonValue.GetInteger("ResponseCode");
-
     m_responseCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CustomResponseBodyKey"))
   {
     m_customResponseBodyKey = jsonValue.GetString("CustomResponseBodyKey");
-
     m_customResponseBodyKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResponseHeaders"))
   {
     Aws::Utils::Array<JsonView> responseHeadersJsonList = jsonValue.GetArray("ResponseHeaders");
@@ -60,7 +44,6 @@ CustomResponse& CustomResponse::operator =(JsonView jsonValue)
     }
     m_responseHeadersHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,25 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGatewayConnectPeer::TransitGatewayConnectPeer() : 
-    m_transitGatewayAttachmentIdHasBeenSet(false),
-    m_transitGatewayConnectPeerIdHasBeenSet(false),
-    m_state(TransitGatewayConnectPeerState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_connectPeerConfigurationHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-TransitGatewayConnectPeer::TransitGatewayConnectPeer(const XmlNode& xmlNode) : 
-    m_transitGatewayAttachmentIdHasBeenSet(false),
-    m_transitGatewayConnectPeerIdHasBeenSet(false),
-    m_state(TransitGatewayConnectPeerState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_connectPeerConfigurationHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+TransitGatewayConnectPeer::TransitGatewayConnectPeer(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -64,7 +46,7 @@ TransitGatewayConnectPeer& TransitGatewayConnectPeer::operator =(const XmlNode& 
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = TransitGatewayConnectPeerStateMapper::GetTransitGatewayConnectPeerStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = TransitGatewayConnectPeerStateMapper::GetTransitGatewayConnectPeerStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode creationTimeNode = resultNode.FirstChild("creationTime");
@@ -83,6 +65,7 @@ TransitGatewayConnectPeer& TransitGatewayConnectPeer::operator =(const XmlNode& 
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -110,7 +93,7 @@ void TransitGatewayConnectPeer::OutputToStream(Aws::OStream& oStream, const char
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << TransitGatewayConnectPeerStateMapper::GetNameForTransitGatewayConnectPeerState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(TransitGatewayConnectPeerStateMapper::GetNameForTransitGatewayConnectPeerState(m_state)) << "&";
   }
 
   if(m_creationTimeHasBeenSet)
@@ -150,7 +133,7 @@ void TransitGatewayConnectPeer::OutputToStream(Aws::OStream& oStream, const char
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << TransitGatewayConnectPeerStateMapper::GetNameForTransitGatewayConnectPeerState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(TransitGatewayConnectPeerStateMapper::GetNameForTransitGatewayConnectPeerState(m_state)) << "&";
   }
   if(m_creationTimeHasBeenSet)
   {
@@ -168,7 +151,7 @@ void TransitGatewayConnectPeer::OutputToStream(Aws::OStream& oStream, const char
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

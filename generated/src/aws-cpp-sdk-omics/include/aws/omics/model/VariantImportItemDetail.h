@@ -5,8 +5,8 @@
 
 #pragma once
 #include <aws/omics/Omics_EXPORTS.h>
-#include <aws/omics/model/JobStatus.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/omics/model/JobStatus.h>
 #include <utility>
 
 namespace Aws
@@ -32,131 +32,52 @@ namespace Model
   class VariantImportItemDetail
   {
   public:
-    AWS_OMICS_API VariantImportItemDetail();
+    AWS_OMICS_API VariantImportItemDetail() = default;
     AWS_OMICS_API VariantImportItemDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API VariantImportItemDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The item's job status.</p>
-     */
-    inline const JobStatus& GetJobStatus() const{ return m_jobStatus; }
-
-    /**
-     * <p>The item's job status.</p>
-     */
-    inline bool JobStatusHasBeenSet() const { return m_jobStatusHasBeenSet; }
-
-    /**
-     * <p>The item's job status.</p>
-     */
-    inline void SetJobStatus(const JobStatus& value) { m_jobStatusHasBeenSet = true; m_jobStatus = value; }
-
-    /**
-     * <p>The item's job status.</p>
-     */
-    inline void SetJobStatus(JobStatus&& value) { m_jobStatusHasBeenSet = true; m_jobStatus = std::move(value); }
-
-    /**
-     * <p>The item's job status.</p>
-     */
-    inline VariantImportItemDetail& WithJobStatus(const JobStatus& value) { SetJobStatus(value); return *this;}
-
-    /**
-     * <p>The item's job status.</p>
-     */
-    inline VariantImportItemDetail& WithJobStatus(JobStatus&& value) { SetJobStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The source file's location in Amazon S3.</p>
      */
-    inline const Aws::String& GetSource() const{ return m_source; }
-
-    /**
-     * <p>The source file's location in Amazon S3.</p>
-     */
+    inline const Aws::String& GetSource() const { return m_source; }
     inline bool SourceHasBeenSet() const { return m_sourceHasBeenSet; }
+    template<typename SourceT = Aws::String>
+    void SetSource(SourceT&& value) { m_sourceHasBeenSet = true; m_source = std::forward<SourceT>(value); }
+    template<typename SourceT = Aws::String>
+    VariantImportItemDetail& WithSource(SourceT&& value) { SetSource(std::forward<SourceT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The source file's location in Amazon S3.</p>
+     * <p>The item's job status.</p>
      */
-    inline void SetSource(const Aws::String& value) { m_sourceHasBeenSet = true; m_source = value; }
+    inline JobStatus GetJobStatus() const { return m_jobStatus; }
+    inline bool JobStatusHasBeenSet() const { return m_jobStatusHasBeenSet; }
+    inline void SetJobStatus(JobStatus value) { m_jobStatusHasBeenSet = true; m_jobStatus = value; }
+    inline VariantImportItemDetail& WithJobStatus(JobStatus value) { SetJobStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The source file's location in Amazon S3.</p>
-     */
-    inline void SetSource(Aws::String&& value) { m_sourceHasBeenSet = true; m_source = std::move(value); }
-
-    /**
-     * <p>The source file's location in Amazon S3.</p>
-     */
-    inline void SetSource(const char* value) { m_sourceHasBeenSet = true; m_source.assign(value); }
-
-    /**
-     * <p>The source file's location in Amazon S3.</p>
-     */
-    inline VariantImportItemDetail& WithSource(const Aws::String& value) { SetSource(value); return *this;}
-
-    /**
-     * <p>The source file's location in Amazon S3.</p>
-     */
-    inline VariantImportItemDetail& WithSource(Aws::String&& value) { SetSource(std::move(value)); return *this;}
-
-    /**
-     * <p>The source file's location in Amazon S3.</p>
-     */
-    inline VariantImportItemDetail& WithSource(const char* value) { SetSource(value); return *this;}
-
-
+    ///@{
     /**
      * <p> A message that provides additional context about a job </p>
      */
-    inline const Aws::String& GetStatusMessage() const{ return m_statusMessage; }
-
-    /**
-     * <p> A message that provides additional context about a job </p>
-     */
+    inline const Aws::String& GetStatusMessage() const { return m_statusMessage; }
     inline bool StatusMessageHasBeenSet() const { return m_statusMessageHasBeenSet; }
-
-    /**
-     * <p> A message that provides additional context about a job </p>
-     */
-    inline void SetStatusMessage(const Aws::String& value) { m_statusMessageHasBeenSet = true; m_statusMessage = value; }
-
-    /**
-     * <p> A message that provides additional context about a job </p>
-     */
-    inline void SetStatusMessage(Aws::String&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::move(value); }
-
-    /**
-     * <p> A message that provides additional context about a job </p>
-     */
-    inline void SetStatusMessage(const char* value) { m_statusMessageHasBeenSet = true; m_statusMessage.assign(value); }
-
-    /**
-     * <p> A message that provides additional context about a job </p>
-     */
-    inline VariantImportItemDetail& WithStatusMessage(const Aws::String& value) { SetStatusMessage(value); return *this;}
-
-    /**
-     * <p> A message that provides additional context about a job </p>
-     */
-    inline VariantImportItemDetail& WithStatusMessage(Aws::String&& value) { SetStatusMessage(std::move(value)); return *this;}
-
-    /**
-     * <p> A message that provides additional context about a job </p>
-     */
-    inline VariantImportItemDetail& WithStatusMessage(const char* value) { SetStatusMessage(value); return *this;}
-
+    template<typename StatusMessageT = Aws::String>
+    void SetStatusMessage(StatusMessageT&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::forward<StatusMessageT>(value); }
+    template<typename StatusMessageT = Aws::String>
+    VariantImportItemDetail& WithStatusMessage(StatusMessageT&& value) { SetStatusMessage(std::forward<StatusMessageT>(value)); return *this;}
+    ///@}
   private:
-
-    JobStatus m_jobStatus;
-    bool m_jobStatusHasBeenSet = false;
 
     Aws::String m_source;
     bool m_sourceHasBeenSet = false;
+
+    JobStatus m_jobStatus{JobStatus::NOT_SET};
+    bool m_jobStatusHasBeenSet = false;
 
     Aws::String m_statusMessage;
     bool m_statusMessageHasBeenSet = false;

@@ -12,14 +12,6 @@ using namespace Aws::MediaLive::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateInputDeviceRequest::UpdateInputDeviceRequest() : 
-    m_hdDeviceSettingsHasBeenSet(false),
-    m_inputDeviceIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_uhdDeviceSettingsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateInputDeviceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,6 +31,12 @@ Aws::String UpdateInputDeviceRequest::SerializePayload() const
   if(m_uhdDeviceSettingsHasBeenSet)
   {
    payload.WithObject("uhdDeviceSettings", m_uhdDeviceSettings.Jsonize());
+
+  }
+
+  if(m_availabilityZoneHasBeenSet)
+  {
+   payload.WithString("availabilityZone", m_availabilityZone);
 
   }
 

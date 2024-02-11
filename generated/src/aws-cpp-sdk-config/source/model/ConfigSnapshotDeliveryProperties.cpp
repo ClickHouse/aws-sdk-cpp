@@ -18,15 +18,7 @@ namespace ConfigService
 namespace Model
 {
 
-ConfigSnapshotDeliveryProperties::ConfigSnapshotDeliveryProperties() : 
-    m_deliveryFrequency(MaximumExecutionFrequency::NOT_SET),
-    m_deliveryFrequencyHasBeenSet(false)
-{
-}
-
-ConfigSnapshotDeliveryProperties::ConfigSnapshotDeliveryProperties(JsonView jsonValue) : 
-    m_deliveryFrequency(MaximumExecutionFrequency::NOT_SET),
-    m_deliveryFrequencyHasBeenSet(false)
+ConfigSnapshotDeliveryProperties::ConfigSnapshotDeliveryProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ConfigSnapshotDeliveryProperties& ConfigSnapshotDeliveryProperties::operator =(J
   if(jsonValue.ValueExists("deliveryFrequency"))
   {
     m_deliveryFrequency = MaximumExecutionFrequencyMapper::GetMaximumExecutionFrequencyForName(jsonValue.GetString("deliveryFrequency"));
-
     m_deliveryFrequencyHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,27 +18,7 @@ namespace ElasticTranscoder
 namespace Model
 {
 
-Thumbnails::Thumbnails() : 
-    m_formatHasBeenSet(false),
-    m_intervalHasBeenSet(false),
-    m_resolutionHasBeenSet(false),
-    m_aspectRatioHasBeenSet(false),
-    m_maxWidthHasBeenSet(false),
-    m_maxHeightHasBeenSet(false),
-    m_sizingPolicyHasBeenSet(false),
-    m_paddingPolicyHasBeenSet(false)
-{
-}
-
-Thumbnails::Thumbnails(JsonView jsonValue) : 
-    m_formatHasBeenSet(false),
-    m_intervalHasBeenSet(false),
-    m_resolutionHasBeenSet(false),
-    m_aspectRatioHasBeenSet(false),
-    m_maxWidthHasBeenSet(false),
-    m_maxHeightHasBeenSet(false),
-    m_sizingPolicyHasBeenSet(false),
-    m_paddingPolicyHasBeenSet(false)
+Thumbnails::Thumbnails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,59 +28,43 @@ Thumbnails& Thumbnails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Format"))
   {
     m_format = jsonValue.GetString("Format");
-
     m_formatHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Interval"))
   {
     m_interval = jsonValue.GetString("Interval");
-
     m_intervalHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Resolution"))
   {
     m_resolution = jsonValue.GetString("Resolution");
-
     m_resolutionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AspectRatio"))
   {
     m_aspectRatio = jsonValue.GetString("AspectRatio");
-
     m_aspectRatioHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxWidth"))
   {
     m_maxWidth = jsonValue.GetString("MaxWidth");
-
     m_maxWidthHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxHeight"))
   {
     m_maxHeight = jsonValue.GetString("MaxHeight");
-
     m_maxHeightHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SizingPolicy"))
   {
     m_sizingPolicy = jsonValue.GetString("SizingPolicy");
-
     m_sizingPolicyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PaddingPolicy"))
   {
     m_paddingPolicy = jsonValue.GetString("PaddingPolicy");
-
     m_paddingPolicyHasBeenSet = true;
   }
-
   return *this;
 }
 

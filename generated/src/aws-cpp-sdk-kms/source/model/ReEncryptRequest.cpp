@@ -13,20 +13,6 @@ using namespace Aws::KMS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ReEncryptRequest::ReEncryptRequest() : 
-    m_ciphertextBlobHasBeenSet(false),
-    m_sourceEncryptionContextHasBeenSet(false),
-    m_sourceKeyIdHasBeenSet(false),
-    m_destinationKeyIdHasBeenSet(false),
-    m_destinationEncryptionContextHasBeenSet(false),
-    m_sourceEncryptionAlgorithm(EncryptionAlgorithmSpec::NOT_SET),
-    m_sourceEncryptionAlgorithmHasBeenSet(false),
-    m_destinationEncryptionAlgorithm(EncryptionAlgorithmSpec::NOT_SET),
-    m_destinationEncryptionAlgorithmHasBeenSet(false),
-    m_grantTokensHasBeenSet(false)
-{
-}
-
 Aws::String ReEncryptRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -88,6 +74,12 @@ Aws::String ReEncryptRequest::SerializePayload() const
      grantTokensJsonList[grantTokensIndex].AsString(m_grantTokens[grantTokensIndex]);
    }
    payload.WithArray("GrantTokens", std::move(grantTokensJsonList));
+
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+   payload.WithBool("DryRun", m_dryRun);
 
   }
 

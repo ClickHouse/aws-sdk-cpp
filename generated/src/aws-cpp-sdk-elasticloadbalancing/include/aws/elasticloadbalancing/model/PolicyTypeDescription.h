@@ -33,7 +33,7 @@ namespace Model
   class PolicyTypeDescription
   {
   public:
-    AWS_ELASTICLOADBALANCING_API PolicyTypeDescription();
+    AWS_ELASTICLOADBALANCING_API PolicyTypeDescription() = default;
     AWS_ELASTICLOADBALANCING_API PolicyTypeDescription(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ELASTICLOADBALANCING_API PolicyTypeDescription& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,136 +41,44 @@ namespace Model
     AWS_ELASTICLOADBALANCING_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The name of the policy type.</p>
      */
-    inline const Aws::String& GetPolicyTypeName() const{ return m_policyTypeName; }
-
-    /**
-     * <p>The name of the policy type.</p>
-     */
+    inline const Aws::String& GetPolicyTypeName() const { return m_policyTypeName; }
     inline bool PolicyTypeNameHasBeenSet() const { return m_policyTypeNameHasBeenSet; }
+    template<typename PolicyTypeNameT = Aws::String>
+    void SetPolicyTypeName(PolicyTypeNameT&& value) { m_policyTypeNameHasBeenSet = true; m_policyTypeName = std::forward<PolicyTypeNameT>(value); }
+    template<typename PolicyTypeNameT = Aws::String>
+    PolicyTypeDescription& WithPolicyTypeName(PolicyTypeNameT&& value) { SetPolicyTypeName(std::forward<PolicyTypeNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the policy type.</p>
-     */
-    inline void SetPolicyTypeName(const Aws::String& value) { m_policyTypeNameHasBeenSet = true; m_policyTypeName = value; }
-
-    /**
-     * <p>The name of the policy type.</p>
-     */
-    inline void SetPolicyTypeName(Aws::String&& value) { m_policyTypeNameHasBeenSet = true; m_policyTypeName = std::move(value); }
-
-    /**
-     * <p>The name of the policy type.</p>
-     */
-    inline void SetPolicyTypeName(const char* value) { m_policyTypeNameHasBeenSet = true; m_policyTypeName.assign(value); }
-
-    /**
-     * <p>The name of the policy type.</p>
-     */
-    inline PolicyTypeDescription& WithPolicyTypeName(const Aws::String& value) { SetPolicyTypeName(value); return *this;}
-
-    /**
-     * <p>The name of the policy type.</p>
-     */
-    inline PolicyTypeDescription& WithPolicyTypeName(Aws::String&& value) { SetPolicyTypeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the policy type.</p>
-     */
-    inline PolicyTypeDescription& WithPolicyTypeName(const char* value) { SetPolicyTypeName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the policy type.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the policy type.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    PolicyTypeDescription& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the policy type.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the policy type.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the policy type.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the policy type.</p>
-     */
-    inline PolicyTypeDescription& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the policy type.</p>
-     */
-    inline PolicyTypeDescription& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the policy type.</p>
-     */
-    inline PolicyTypeDescription& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the policy attributes associated with the policies defined
      * by Elastic Load Balancing.</p>
      */
-    inline const Aws::Vector<PolicyAttributeTypeDescription>& GetPolicyAttributeTypeDescriptions() const{ return m_policyAttributeTypeDescriptions; }
-
-    /**
-     * <p>The description of the policy attributes associated with the policies defined
-     * by Elastic Load Balancing.</p>
-     */
+    inline const Aws::Vector<PolicyAttributeTypeDescription>& GetPolicyAttributeTypeDescriptions() const { return m_policyAttributeTypeDescriptions; }
     inline bool PolicyAttributeTypeDescriptionsHasBeenSet() const { return m_policyAttributeTypeDescriptionsHasBeenSet; }
-
-    /**
-     * <p>The description of the policy attributes associated with the policies defined
-     * by Elastic Load Balancing.</p>
-     */
-    inline void SetPolicyAttributeTypeDescriptions(const Aws::Vector<PolicyAttributeTypeDescription>& value) { m_policyAttributeTypeDescriptionsHasBeenSet = true; m_policyAttributeTypeDescriptions = value; }
-
-    /**
-     * <p>The description of the policy attributes associated with the policies defined
-     * by Elastic Load Balancing.</p>
-     */
-    inline void SetPolicyAttributeTypeDescriptions(Aws::Vector<PolicyAttributeTypeDescription>&& value) { m_policyAttributeTypeDescriptionsHasBeenSet = true; m_policyAttributeTypeDescriptions = std::move(value); }
-
-    /**
-     * <p>The description of the policy attributes associated with the policies defined
-     * by Elastic Load Balancing.</p>
-     */
-    inline PolicyTypeDescription& WithPolicyAttributeTypeDescriptions(const Aws::Vector<PolicyAttributeTypeDescription>& value) { SetPolicyAttributeTypeDescriptions(value); return *this;}
-
-    /**
-     * <p>The description of the policy attributes associated with the policies defined
-     * by Elastic Load Balancing.</p>
-     */
-    inline PolicyTypeDescription& WithPolicyAttributeTypeDescriptions(Aws::Vector<PolicyAttributeTypeDescription>&& value) { SetPolicyAttributeTypeDescriptions(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the policy attributes associated with the policies defined
-     * by Elastic Load Balancing.</p>
-     */
-    inline PolicyTypeDescription& AddPolicyAttributeTypeDescriptions(const PolicyAttributeTypeDescription& value) { m_policyAttributeTypeDescriptionsHasBeenSet = true; m_policyAttributeTypeDescriptions.push_back(value); return *this; }
-
-    /**
-     * <p>The description of the policy attributes associated with the policies defined
-     * by Elastic Load Balancing.</p>
-     */
-    inline PolicyTypeDescription& AddPolicyAttributeTypeDescriptions(PolicyAttributeTypeDescription&& value) { m_policyAttributeTypeDescriptionsHasBeenSet = true; m_policyAttributeTypeDescriptions.push_back(std::move(value)); return *this; }
-
+    template<typename PolicyAttributeTypeDescriptionsT = Aws::Vector<PolicyAttributeTypeDescription>>
+    void SetPolicyAttributeTypeDescriptions(PolicyAttributeTypeDescriptionsT&& value) { m_policyAttributeTypeDescriptionsHasBeenSet = true; m_policyAttributeTypeDescriptions = std::forward<PolicyAttributeTypeDescriptionsT>(value); }
+    template<typename PolicyAttributeTypeDescriptionsT = Aws::Vector<PolicyAttributeTypeDescription>>
+    PolicyTypeDescription& WithPolicyAttributeTypeDescriptions(PolicyAttributeTypeDescriptionsT&& value) { SetPolicyAttributeTypeDescriptions(std::forward<PolicyAttributeTypeDescriptionsT>(value)); return *this;}
+    template<typename PolicyAttributeTypeDescriptionsT = PolicyAttributeTypeDescription>
+    PolicyTypeDescription& AddPolicyAttributeTypeDescriptions(PolicyAttributeTypeDescriptionsT&& value) { m_policyAttributeTypeDescriptionsHasBeenSet = true; m_policyAttributeTypeDescriptions.emplace_back(std::forward<PolicyAttributeTypeDescriptionsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_policyTypeName;

@@ -12,17 +12,6 @@ using namespace Aws::CustomerProfiles::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateDomainRequest::UpdateDomainRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_defaultExpirationDays(0),
-    m_defaultExpirationDaysHasBeenSet(false),
-    m_defaultEncryptionKeyHasBeenSet(false),
-    m_deadLetterQueueUrlHasBeenSet(false),
-    m_matchingHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateDomainRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -48,6 +37,12 @@ Aws::String UpdateDomainRequest::SerializePayload() const
   if(m_matchingHasBeenSet)
   {
    payload.WithObject("Matching", m_matching.Jsonize());
+
+  }
+
+  if(m_ruleBasedMatchingHasBeenSet)
+  {
+   payload.WithObject("RuleBasedMatching", m_ruleBasedMatching.Jsonize());
 
   }
 

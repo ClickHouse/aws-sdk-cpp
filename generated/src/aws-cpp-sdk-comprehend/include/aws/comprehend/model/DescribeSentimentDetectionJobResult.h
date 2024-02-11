@@ -28,68 +28,38 @@ namespace Model
   class DescribeSentimentDetectionJobResult
   {
   public:
-    AWS_COMPREHEND_API DescribeSentimentDetectionJobResult();
+    AWS_COMPREHEND_API DescribeSentimentDetectionJobResult() = default;
     AWS_COMPREHEND_API DescribeSentimentDetectionJobResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_COMPREHEND_API DescribeSentimentDetectionJobResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>An object that contains the properties associated with a sentiment detection
      * job.</p>
      */
-    inline const SentimentDetectionJobProperties& GetSentimentDetectionJobProperties() const{ return m_sentimentDetectionJobProperties; }
+    inline const SentimentDetectionJobProperties& GetSentimentDetectionJobProperties() const { return m_sentimentDetectionJobProperties; }
+    template<typename SentimentDetectionJobPropertiesT = SentimentDetectionJobProperties>
+    void SetSentimentDetectionJobProperties(SentimentDetectionJobPropertiesT&& value) { m_sentimentDetectionJobPropertiesHasBeenSet = true; m_sentimentDetectionJobProperties = std::forward<SentimentDetectionJobPropertiesT>(value); }
+    template<typename SentimentDetectionJobPropertiesT = SentimentDetectionJobProperties>
+    DescribeSentimentDetectionJobResult& WithSentimentDetectionJobProperties(SentimentDetectionJobPropertiesT&& value) { SetSentimentDetectionJobProperties(std::forward<SentimentDetectionJobPropertiesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that contains the properties associated with a sentiment detection
-     * job.</p>
-     */
-    inline void SetSentimentDetectionJobProperties(const SentimentDetectionJobProperties& value) { m_sentimentDetectionJobProperties = value; }
-
-    /**
-     * <p>An object that contains the properties associated with a sentiment detection
-     * job.</p>
-     */
-    inline void SetSentimentDetectionJobProperties(SentimentDetectionJobProperties&& value) { m_sentimentDetectionJobProperties = std::move(value); }
-
-    /**
-     * <p>An object that contains the properties associated with a sentiment detection
-     * job.</p>
-     */
-    inline DescribeSentimentDetectionJobResult& WithSentimentDetectionJobProperties(const SentimentDetectionJobProperties& value) { SetSentimentDetectionJobProperties(value); return *this;}
-
-    /**
-     * <p>An object that contains the properties associated with a sentiment detection
-     * job.</p>
-     */
-    inline DescribeSentimentDetectionJobResult& WithSentimentDetectionJobProperties(SentimentDetectionJobProperties&& value) { SetSentimentDetectionJobProperties(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeSentimentDetectionJobResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeSentimentDetectionJobResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeSentimentDetectionJobResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeSentimentDetectionJobResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     SentimentDetectionJobProperties m_sentimentDetectionJobProperties;
+    bool m_sentimentDetectionJobPropertiesHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

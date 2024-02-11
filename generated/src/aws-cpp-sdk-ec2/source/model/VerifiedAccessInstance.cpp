@@ -20,23 +20,7 @@ namespace EC2
 namespace Model
 {
 
-VerifiedAccessInstance::VerifiedAccessInstance() : 
-    m_verifiedAccessInstanceIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_verifiedAccessTrustProvidersHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_lastUpdatedTimeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-VerifiedAccessInstance::VerifiedAccessInstance(const XmlNode& xmlNode) : 
-    m_verifiedAccessInstanceIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_verifiedAccessTrustProvidersHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_lastUpdatedTimeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+VerifiedAccessInstance::VerifiedAccessInstance(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -63,6 +47,7 @@ VerifiedAccessInstance& VerifiedAccessInstance::operator =(const XmlNode& xmlNod
     if(!verifiedAccessTrustProvidersNode.IsNull())
     {
       XmlNode verifiedAccessTrustProvidersMember = verifiedAccessTrustProvidersNode.FirstChild("item");
+      m_verifiedAccessTrustProvidersHasBeenSet = !verifiedAccessTrustProvidersMember.IsNull();
       while(!verifiedAccessTrustProvidersMember.IsNull())
       {
         m_verifiedAccessTrustProviders.push_back(verifiedAccessTrustProvidersMember);
@@ -87,6 +72,7 @@ VerifiedAccessInstance& VerifiedAccessInstance::operator =(const XmlNode& xmlNod
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -94,6 +80,18 @@ VerifiedAccessInstance& VerifiedAccessInstance::operator =(const XmlNode& xmlNod
       }
 
       m_tagsHasBeenSet = true;
+    }
+    XmlNode fipsEnabledNode = resultNode.FirstChild("fipsEnabled");
+    if(!fipsEnabledNode.IsNull())
+    {
+      m_fipsEnabled = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(fipsEnabledNode.GetText()).c_str()).c_str());
+      m_fipsEnabledHasBeenSet = true;
+    }
+    XmlNode cidrEndpointsCustomSubDomainNode = resultNode.FirstChild("cidrEndpointsCustomSubDomain");
+    if(!cidrEndpointsCustomSubDomainNode.IsNull())
+    {
+      m_cidrEndpointsCustomSubDomain = cidrEndpointsCustomSubDomainNode;
+      m_cidrEndpointsCustomSubDomainHasBeenSet = true;
     }
   }
 
@@ -144,6 +142,18 @@ void VerifiedAccessInstance::OutputToStream(Aws::OStream& oStream, const char* l
       }
   }
 
+  if(m_fipsEnabledHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".FipsEnabled=" << std::boolalpha << m_fipsEnabled << "&";
+  }
+
+  if(m_cidrEndpointsCustomSubDomainHasBeenSet)
+  {
+      Aws::StringStream cidrEndpointsCustomSubDomainLocationAndMemberSs;
+      cidrEndpointsCustomSubDomainLocationAndMemberSs << location << index << locationValue << ".CidrEndpointsCustomSubDomain";
+      m_cidrEndpointsCustomSubDomain.OutputToStream(oStream, cidrEndpointsCustomSubDomainLocationAndMemberSs.str().c_str());
+  }
+
 }
 
 void VerifiedAccessInstance::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -162,7 +172,7 @@ void VerifiedAccessInstance::OutputToStream(Aws::OStream& oStream, const char* l
       for(auto& item : m_verifiedAccessTrustProviders)
       {
         Aws::StringStream verifiedAccessTrustProvidersSs;
-        verifiedAccessTrustProvidersSs << location <<  ".VerifiedAccessTrustProviderSet." << verifiedAccessTrustProvidersIdx++;
+        verifiedAccessTrustProvidersSs << location << ".VerifiedAccessTrustProviderSet." << verifiedAccessTrustProvidersIdx++;
         item.OutputToStream(oStream, verifiedAccessTrustProvidersSs.str().c_str());
       }
   }
@@ -180,9 +190,19 @@ void VerifiedAccessInstance::OutputToStream(Aws::OStream& oStream, const char* l
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
+  }
+  if(m_fipsEnabledHasBeenSet)
+  {
+      oStream << location << ".FipsEnabled=" << std::boolalpha << m_fipsEnabled << "&";
+  }
+  if(m_cidrEndpointsCustomSubDomainHasBeenSet)
+  {
+      Aws::String cidrEndpointsCustomSubDomainLocationAndMember(location);
+      cidrEndpointsCustomSubDomainLocationAndMember += ".CidrEndpointsCustomSubDomain";
+      m_cidrEndpointsCustomSubDomain.OutputToStream(oStream, cidrEndpointsCustomSubDomainLocationAndMember.c_str());
   }
 }
 

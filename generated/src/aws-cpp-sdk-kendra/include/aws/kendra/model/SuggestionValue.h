@@ -32,48 +32,24 @@ namespace Model
   class SuggestionValue
   {
   public:
-    AWS_KENDRA_API SuggestionValue();
+    AWS_KENDRA_API SuggestionValue() = default;
     AWS_KENDRA_API SuggestionValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API SuggestionValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The <code>SuggestionTextWithHighlights</code> structure that contains the
      * query suggestion text and highlights.</p>
      */
-    inline const SuggestionTextWithHighlights& GetText() const{ return m_text; }
-
-    /**
-     * <p>The <code>SuggestionTextWithHighlights</code> structure that contains the
-     * query suggestion text and highlights.</p>
-     */
+    inline const SuggestionTextWithHighlights& GetText() const { return m_text; }
     inline bool TextHasBeenSet() const { return m_textHasBeenSet; }
-
-    /**
-     * <p>The <code>SuggestionTextWithHighlights</code> structure that contains the
-     * query suggestion text and highlights.</p>
-     */
-    inline void SetText(const SuggestionTextWithHighlights& value) { m_textHasBeenSet = true; m_text = value; }
-
-    /**
-     * <p>The <code>SuggestionTextWithHighlights</code> structure that contains the
-     * query suggestion text and highlights.</p>
-     */
-    inline void SetText(SuggestionTextWithHighlights&& value) { m_textHasBeenSet = true; m_text = std::move(value); }
-
-    /**
-     * <p>The <code>SuggestionTextWithHighlights</code> structure that contains the
-     * query suggestion text and highlights.</p>
-     */
-    inline SuggestionValue& WithText(const SuggestionTextWithHighlights& value) { SetText(value); return *this;}
-
-    /**
-     * <p>The <code>SuggestionTextWithHighlights</code> structure that contains the
-     * query suggestion text and highlights.</p>
-     */
-    inline SuggestionValue& WithText(SuggestionTextWithHighlights&& value) { SetText(std::move(value)); return *this;}
-
+    template<typename TextT = SuggestionTextWithHighlights>
+    void SetText(TextT&& value) { m_textHasBeenSet = true; m_text = std::forward<TextT>(value); }
+    template<typename TextT = SuggestionTextWithHighlights>
+    SuggestionValue& WithText(TextT&& value) { SetText(std::forward<TextT>(value)); return *this;}
+    ///@}
   private:
 
     SuggestionTextWithHighlights m_text;

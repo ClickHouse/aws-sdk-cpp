@@ -35,60 +35,24 @@ namespace Model
   class VpcConfiguration
   {
   public:
-    AWS_ACCESSANALYZER_API VpcConfiguration();
+    AWS_ACCESSANALYZER_API VpcConfiguration() = default;
     AWS_ACCESSANALYZER_API VpcConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCESSANALYZER_API VpcConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCESSANALYZER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> If this field is specified, this access point will only allow connections
      * from the specified VPC ID. </p>
      */
-    inline const Aws::String& GetVpcId() const{ return m_vpcId; }
-
-    /**
-     * <p> If this field is specified, this access point will only allow connections
-     * from the specified VPC ID. </p>
-     */
+    inline const Aws::String& GetVpcId() const { return m_vpcId; }
     inline bool VpcIdHasBeenSet() const { return m_vpcIdHasBeenSet; }
-
-    /**
-     * <p> If this field is specified, this access point will only allow connections
-     * from the specified VPC ID. </p>
-     */
-    inline void SetVpcId(const Aws::String& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
-
-    /**
-     * <p> If this field is specified, this access point will only allow connections
-     * from the specified VPC ID. </p>
-     */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
-
-    /**
-     * <p> If this field is specified, this access point will only allow connections
-     * from the specified VPC ID. </p>
-     */
-    inline void SetVpcId(const char* value) { m_vpcIdHasBeenSet = true; m_vpcId.assign(value); }
-
-    /**
-     * <p> If this field is specified, this access point will only allow connections
-     * from the specified VPC ID. </p>
-     */
-    inline VpcConfiguration& WithVpcId(const Aws::String& value) { SetVpcId(value); return *this;}
-
-    /**
-     * <p> If this field is specified, this access point will only allow connections
-     * from the specified VPC ID. </p>
-     */
-    inline VpcConfiguration& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
-
-    /**
-     * <p> If this field is specified, this access point will only allow connections
-     * from the specified VPC ID. </p>
-     */
-    inline VpcConfiguration& WithVpcId(const char* value) { SetVpcId(value); return *this;}
-
+    template<typename VpcIdT = Aws::String>
+    void SetVpcId(VpcIdT&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::forward<VpcIdT>(value); }
+    template<typename VpcIdT = Aws::String>
+    VpcConfiguration& WithVpcId(VpcIdT&& value) { SetVpcId(std::forward<VpcIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_vpcId;

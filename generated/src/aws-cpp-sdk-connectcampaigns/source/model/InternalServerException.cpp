@@ -19,15 +19,7 @@ namespace ConnectCampaigns
 namespace Model
 {
 
-InternalServerException::InternalServerException() : 
-    m_messageHasBeenSet(false),
-    m_xAmzErrorTypeHasBeenSet(false)
-{
-}
-
-InternalServerException::InternalServerException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_xAmzErrorTypeHasBeenSet(false)
+InternalServerException::InternalServerException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -37,10 +29,8 @@ InternalServerException& InternalServerException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

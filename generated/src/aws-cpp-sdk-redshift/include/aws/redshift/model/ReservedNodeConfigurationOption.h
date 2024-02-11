@@ -34,7 +34,7 @@ namespace Model
   class ReservedNodeConfigurationOption
   {
   public:
-    AWS_REDSHIFT_API ReservedNodeConfigurationOption();
+    AWS_REDSHIFT_API ReservedNodeConfigurationOption() = default;
     AWS_REDSHIFT_API ReservedNodeConfigurationOption(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_REDSHIFT_API ReservedNodeConfigurationOption& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,70 +42,41 @@ namespace Model
     AWS_REDSHIFT_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     
-    inline const ReservedNode& GetSourceReservedNode() const{ return m_sourceReservedNode; }
-
-    
+    inline const ReservedNode& GetSourceReservedNode() const { return m_sourceReservedNode; }
     inline bool SourceReservedNodeHasBeenSet() const { return m_sourceReservedNodeHasBeenSet; }
+    template<typename SourceReservedNodeT = ReservedNode>
+    void SetSourceReservedNode(SourceReservedNodeT&& value) { m_sourceReservedNodeHasBeenSet = true; m_sourceReservedNode = std::forward<SourceReservedNodeT>(value); }
+    template<typename SourceReservedNodeT = ReservedNode>
+    ReservedNodeConfigurationOption& WithSourceReservedNode(SourceReservedNodeT&& value) { SetSourceReservedNode(std::forward<SourceReservedNodeT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetSourceReservedNode(const ReservedNode& value) { m_sourceReservedNodeHasBeenSet = true; m_sourceReservedNode = value; }
-
-    
-    inline void SetSourceReservedNode(ReservedNode&& value) { m_sourceReservedNodeHasBeenSet = true; m_sourceReservedNode = std::move(value); }
-
-    
-    inline ReservedNodeConfigurationOption& WithSourceReservedNode(const ReservedNode& value) { SetSourceReservedNode(value); return *this;}
-
-    
-    inline ReservedNodeConfigurationOption& WithSourceReservedNode(ReservedNode&& value) { SetSourceReservedNode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The target reserved-node count.</p>
      */
-    inline int GetTargetReservedNodeCount() const{ return m_targetReservedNodeCount; }
-
-    /**
-     * <p>The target reserved-node count.</p>
-     */
+    inline int GetTargetReservedNodeCount() const { return m_targetReservedNodeCount; }
     inline bool TargetReservedNodeCountHasBeenSet() const { return m_targetReservedNodeCountHasBeenSet; }
-
-    /**
-     * <p>The target reserved-node count.</p>
-     */
     inline void SetTargetReservedNodeCount(int value) { m_targetReservedNodeCountHasBeenSet = true; m_targetReservedNodeCount = value; }
-
-    /**
-     * <p>The target reserved-node count.</p>
-     */
     inline ReservedNodeConfigurationOption& WithTargetReservedNodeCount(int value) { SetTargetReservedNodeCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const ReservedNodeOffering& GetTargetReservedNodeOffering() const{ return m_targetReservedNodeOffering; }
-
-    
+    inline const ReservedNodeOffering& GetTargetReservedNodeOffering() const { return m_targetReservedNodeOffering; }
     inline bool TargetReservedNodeOfferingHasBeenSet() const { return m_targetReservedNodeOfferingHasBeenSet; }
-
-    
-    inline void SetTargetReservedNodeOffering(const ReservedNodeOffering& value) { m_targetReservedNodeOfferingHasBeenSet = true; m_targetReservedNodeOffering = value; }
-
-    
-    inline void SetTargetReservedNodeOffering(ReservedNodeOffering&& value) { m_targetReservedNodeOfferingHasBeenSet = true; m_targetReservedNodeOffering = std::move(value); }
-
-    
-    inline ReservedNodeConfigurationOption& WithTargetReservedNodeOffering(const ReservedNodeOffering& value) { SetTargetReservedNodeOffering(value); return *this;}
-
-    
-    inline ReservedNodeConfigurationOption& WithTargetReservedNodeOffering(ReservedNodeOffering&& value) { SetTargetReservedNodeOffering(std::move(value)); return *this;}
-
+    template<typename TargetReservedNodeOfferingT = ReservedNodeOffering>
+    void SetTargetReservedNodeOffering(TargetReservedNodeOfferingT&& value) { m_targetReservedNodeOfferingHasBeenSet = true; m_targetReservedNodeOffering = std::forward<TargetReservedNodeOfferingT>(value); }
+    template<typename TargetReservedNodeOfferingT = ReservedNodeOffering>
+    ReservedNodeConfigurationOption& WithTargetReservedNodeOffering(TargetReservedNodeOfferingT&& value) { SetTargetReservedNodeOffering(std::forward<TargetReservedNodeOfferingT>(value)); return *this;}
+    ///@}
   private:
 
     ReservedNode m_sourceReservedNode;
     bool m_sourceReservedNodeHasBeenSet = false;
 
-    int m_targetReservedNodeCount;
+    int m_targetReservedNodeCount{0};
     bool m_targetReservedNodeCountHasBeenSet = false;
 
     ReservedNodeOffering m_targetReservedNodeOffering;

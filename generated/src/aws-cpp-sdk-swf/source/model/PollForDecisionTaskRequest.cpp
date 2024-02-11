@@ -12,18 +12,6 @@ using namespace Aws::SWF::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PollForDecisionTaskRequest::PollForDecisionTaskRequest() : 
-    m_domainHasBeenSet(false),
-    m_taskListHasBeenSet(false),
-    m_identityHasBeenSet(false),
-    m_nextPageTokenHasBeenSet(false),
-    m_maximumPageSize(0),
-    m_maximumPageSizeHasBeenSet(false),
-    m_reverseOrder(false),
-    m_reverseOrderHasBeenSet(false)
-{
-}
-
 Aws::String PollForDecisionTaskRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -61,6 +49,12 @@ Aws::String PollForDecisionTaskRequest::SerializePayload() const
   if(m_reverseOrderHasBeenSet)
   {
    payload.WithBool("reverseOrder", m_reverseOrder);
+
+  }
+
+  if(m_startAtPreviousStartedEventHasBeenSet)
+  {
+   payload.WithBool("startAtPreviousStartedEvent", m_startAtPreviousStartedEvent);
 
   }
 

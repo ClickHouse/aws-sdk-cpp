@@ -26,6 +26,9 @@
 #include <aws/acm/model/ListCertificatesResult.h>
 #include <aws/acm/model/ListTagsForCertificateResult.h>
 #include <aws/acm/model/RequestCertificateResult.h>
+#include <aws/acm/model/RevokeCertificateResult.h>
+#include <aws/acm/model/GetAccountConfigurationRequest.h>
+#include <aws/acm/model/ListCertificatesRequest.h>
 #include <aws/core/NoResult.h>
 /* End of service model headers required in ACMClient header */
 
@@ -60,7 +63,7 @@ namespace Aws
 
   namespace ACM
   {
-    using ACMClientConfiguration = Aws::Client::GenericClientConfiguration<false>;
+    using ACMClientConfiguration = Aws::Client::GenericClientConfiguration;
     using ACMEndpointProviderBase = Aws::ACM::Endpoint::ACMEndpointProviderBase;
     using ACMEndpointProvider = Aws::ACM::Endpoint::ACMEndpointProvider;
 
@@ -71,6 +74,7 @@ namespace Aws
       class DeleteCertificateRequest;
       class DescribeCertificateRequest;
       class ExportCertificateRequest;
+      class GetAccountConfigurationRequest;
       class GetCertificateRequest;
       class ImportCertificateRequest;
       class ListCertificatesRequest;
@@ -80,6 +84,7 @@ namespace Aws
       class RenewCertificateRequest;
       class RequestCertificateRequest;
       class ResendValidationEmailRequest;
+      class RevokeCertificateRequest;
       class UpdateCertificateOptionsRequest;
       /* End of service model forward declarations required in ACMClient header */
 
@@ -98,6 +103,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<Aws::NoResult, ACMError> RenewCertificateOutcome;
       typedef Aws::Utils::Outcome<RequestCertificateResult, ACMError> RequestCertificateOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, ACMError> ResendValidationEmailOutcome;
+      typedef Aws::Utils::Outcome<RevokeCertificateResult, ACMError> RevokeCertificateOutcome;
       typedef Aws::Utils::Outcome<Aws::NoResult, ACMError> UpdateCertificateOptionsOutcome;
       /* End of service model Outcome class definitions */
 
@@ -116,6 +122,7 @@ namespace Aws
       typedef std::future<RenewCertificateOutcome> RenewCertificateOutcomeCallable;
       typedef std::future<RequestCertificateOutcome> RequestCertificateOutcomeCallable;
       typedef std::future<ResendValidationEmailOutcome> ResendValidationEmailOutcomeCallable;
+      typedef std::future<RevokeCertificateOutcome> RevokeCertificateOutcomeCallable;
       typedef std::future<UpdateCertificateOptionsOutcome> UpdateCertificateOptionsOutcomeCallable;
       /* End of service model Outcome callable definitions */
     } // namespace Model
@@ -127,7 +134,7 @@ namespace Aws
     typedef std::function<void(const ACMClient*, const Model::DeleteCertificateRequest&, const Model::DeleteCertificateOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteCertificateResponseReceivedHandler;
     typedef std::function<void(const ACMClient*, const Model::DescribeCertificateRequest&, const Model::DescribeCertificateOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeCertificateResponseReceivedHandler;
     typedef std::function<void(const ACMClient*, const Model::ExportCertificateRequest&, const Model::ExportCertificateOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ExportCertificateResponseReceivedHandler;
-    typedef std::function<void(const ACMClient*, const Model::GetAccountConfigurationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetAccountConfigurationResponseReceivedHandler;
+    typedef std::function<void(const ACMClient*, const Model::GetAccountConfigurationRequest&, const Model::GetAccountConfigurationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetAccountConfigurationResponseReceivedHandler;
     typedef std::function<void(const ACMClient*, const Model::GetCertificateRequest&, const Model::GetCertificateOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetCertificateResponseReceivedHandler;
     typedef std::function<void(const ACMClient*, const Model::ImportCertificateRequest&, const Model::ImportCertificateOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ImportCertificateResponseReceivedHandler;
     typedef std::function<void(const ACMClient*, const Model::ListCertificatesRequest&, const Model::ListCertificatesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListCertificatesResponseReceivedHandler;
@@ -137,6 +144,7 @@ namespace Aws
     typedef std::function<void(const ACMClient*, const Model::RenewCertificateRequest&, const Model::RenewCertificateOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RenewCertificateResponseReceivedHandler;
     typedef std::function<void(const ACMClient*, const Model::RequestCertificateRequest&, const Model::RequestCertificateOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RequestCertificateResponseReceivedHandler;
     typedef std::function<void(const ACMClient*, const Model::ResendValidationEmailRequest&, const Model::ResendValidationEmailOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ResendValidationEmailResponseReceivedHandler;
+    typedef std::function<void(const ACMClient*, const Model::RevokeCertificateRequest&, const Model::RevokeCertificateOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RevokeCertificateResponseReceivedHandler;
     typedef std::function<void(const ACMClient*, const Model::UpdateCertificateOptionsRequest&, const Model::UpdateCertificateOptionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateCertificateOptionsResponseReceivedHandler;
     /* End of service model async handlers definitions */
   } // namespace ACM

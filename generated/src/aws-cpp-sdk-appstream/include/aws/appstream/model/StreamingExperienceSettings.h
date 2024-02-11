@@ -33,51 +33,25 @@ namespace Model
   class StreamingExperienceSettings
   {
   public:
-    AWS_APPSTREAM_API StreamingExperienceSettings();
+    AWS_APPSTREAM_API StreamingExperienceSettings() = default;
     AWS_APPSTREAM_API StreamingExperienceSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSTREAM_API StreamingExperienceSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSTREAM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The preferred protocol that you want to use while streaming your
      * application.</p>
      */
-    inline const PreferredProtocol& GetPreferredProtocol() const{ return m_preferredProtocol; }
-
-    /**
-     * <p>The preferred protocol that you want to use while streaming your
-     * application.</p>
-     */
+    inline PreferredProtocol GetPreferredProtocol() const { return m_preferredProtocol; }
     inline bool PreferredProtocolHasBeenSet() const { return m_preferredProtocolHasBeenSet; }
-
-    /**
-     * <p>The preferred protocol that you want to use while streaming your
-     * application.</p>
-     */
-    inline void SetPreferredProtocol(const PreferredProtocol& value) { m_preferredProtocolHasBeenSet = true; m_preferredProtocol = value; }
-
-    /**
-     * <p>The preferred protocol that you want to use while streaming your
-     * application.</p>
-     */
-    inline void SetPreferredProtocol(PreferredProtocol&& value) { m_preferredProtocolHasBeenSet = true; m_preferredProtocol = std::move(value); }
-
-    /**
-     * <p>The preferred protocol that you want to use while streaming your
-     * application.</p>
-     */
-    inline StreamingExperienceSettings& WithPreferredProtocol(const PreferredProtocol& value) { SetPreferredProtocol(value); return *this;}
-
-    /**
-     * <p>The preferred protocol that you want to use while streaming your
-     * application.</p>
-     */
-    inline StreamingExperienceSettings& WithPreferredProtocol(PreferredProtocol&& value) { SetPreferredProtocol(std::move(value)); return *this;}
-
+    inline void SetPreferredProtocol(PreferredProtocol value) { m_preferredProtocolHasBeenSet = true; m_preferredProtocol = value; }
+    inline StreamingExperienceSettings& WithPreferredProtocol(PreferredProtocol value) { SetPreferredProtocol(value); return *this;}
+    ///@}
   private:
 
-    PreferredProtocol m_preferredProtocol;
+    PreferredProtocol m_preferredProtocol{PreferredProtocol::NOT_SET};
     bool m_preferredProtocolHasBeenSet = false;
   };
 

@@ -12,18 +12,6 @@ using namespace Aws::Batch::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateJobQueueRequest::CreateJobQueueRequest() : 
-    m_jobQueueNameHasBeenSet(false),
-    m_state(JQState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_schedulingPolicyArnHasBeenSet(false),
-    m_priority(0),
-    m_priorityHasBeenSet(false),
-    m_computeEnvironmentOrderHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateJobQueueRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -62,6 +50,22 @@ Aws::String CreateJobQueueRequest::SerializePayload() const
 
   }
 
+  if(m_serviceEnvironmentOrderHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> serviceEnvironmentOrderJsonList(m_serviceEnvironmentOrder.size());
+   for(unsigned serviceEnvironmentOrderIndex = 0; serviceEnvironmentOrderIndex < serviceEnvironmentOrderJsonList.GetLength(); ++serviceEnvironmentOrderIndex)
+   {
+     serviceEnvironmentOrderJsonList[serviceEnvironmentOrderIndex].AsObject(m_serviceEnvironmentOrder[serviceEnvironmentOrderIndex].Jsonize());
+   }
+   payload.WithArray("serviceEnvironmentOrder", std::move(serviceEnvironmentOrderJsonList));
+
+  }
+
+  if(m_jobQueueTypeHasBeenSet)
+  {
+   payload.WithString("jobQueueType", JobQueueTypeMapper::GetNameForJobQueueType(m_jobQueueType));
+  }
+
   if(m_tagsHasBeenSet)
   {
    JsonValue tagsJsonMap;
@@ -70,6 +74,17 @@ Aws::String CreateJobQueueRequest::SerializePayload() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_jobStateTimeLimitActionsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> jobStateTimeLimitActionsJsonList(m_jobStateTimeLimitActions.size());
+   for(unsigned jobStateTimeLimitActionsIndex = 0; jobStateTimeLimitActionsIndex < jobStateTimeLimitActionsJsonList.GetLength(); ++jobStateTimeLimitActionsIndex)
+   {
+     jobStateTimeLimitActionsJsonList[jobStateTimeLimitActionsIndex].AsObject(m_jobStateTimeLimitActions[jobStateTimeLimitActionsIndex].Jsonize());
+   }
+   payload.WithArray("jobStateTimeLimitActions", std::move(jobStateTimeLimitActionsJsonList));
 
   }
 

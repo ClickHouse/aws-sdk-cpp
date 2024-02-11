@@ -21,7 +21,7 @@ namespace Model
   class StartApplicationRequest : public MainframeModernizationRequest
   {
   public:
-    AWS_MAINFRAMEMODERNIZATION_API StartApplicationRequest();
+    AWS_MAINFRAMEMODERNIZATION_API StartApplicationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_MAINFRAMEMODERNIZATION_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the application you want to start.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The unique identifier of the application you want to start.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier of the application you want to start.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The unique identifier of the application you want to start.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the application you want to start.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the application you want to start.</p>
-     */
-    inline StartApplicationRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the application you want to start.</p>
-     */
-    inline StartApplicationRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the application you want to start.</p>
-     */
-    inline StartApplicationRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    StartApplicationRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;

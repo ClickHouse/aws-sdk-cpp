@@ -20,31 +20,7 @@ namespace RDS
 namespace Model
 {
 
-OptionGroupOptionSetting::OptionGroupOptionSetting() : 
-    m_settingNameHasBeenSet(false),
-    m_settingDescriptionHasBeenSet(false),
-    m_defaultValueHasBeenSet(false),
-    m_applyTypeHasBeenSet(false),
-    m_allowedValuesHasBeenSet(false),
-    m_isModifiable(false),
-    m_isModifiableHasBeenSet(false),
-    m_isRequired(false),
-    m_isRequiredHasBeenSet(false),
-    m_minimumEngineVersionPerAllowedValueHasBeenSet(false)
-{
-}
-
-OptionGroupOptionSetting::OptionGroupOptionSetting(const XmlNode& xmlNode) : 
-    m_settingNameHasBeenSet(false),
-    m_settingDescriptionHasBeenSet(false),
-    m_defaultValueHasBeenSet(false),
-    m_applyTypeHasBeenSet(false),
-    m_allowedValuesHasBeenSet(false),
-    m_isModifiable(false),
-    m_isModifiableHasBeenSet(false),
-    m_isRequired(false),
-    m_isRequiredHasBeenSet(false),
-    m_minimumEngineVersionPerAllowedValueHasBeenSet(false)
+OptionGroupOptionSetting::OptionGroupOptionSetting(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -101,6 +77,7 @@ OptionGroupOptionSetting& OptionGroupOptionSetting::operator =(const XmlNode& xm
     if(!minimumEngineVersionPerAllowedValueNode.IsNull())
     {
       XmlNode minimumEngineVersionPerAllowedValueMember = minimumEngineVersionPerAllowedValueNode.FirstChild("MinimumEngineVersionPerAllowedValue");
+      m_minimumEngineVersionPerAllowedValueHasBeenSet = !minimumEngineVersionPerAllowedValueMember.IsNull();
       while(!minimumEngineVersionPerAllowedValueMember.IsNull())
       {
         m_minimumEngineVersionPerAllowedValue.push_back(minimumEngineVersionPerAllowedValueMember);
@@ -157,7 +134,7 @@ void OptionGroupOptionSetting::OutputToStream(Aws::OStream& oStream, const char*
       for(auto& item : m_minimumEngineVersionPerAllowedValue)
       {
         Aws::StringStream minimumEngineVersionPerAllowedValueSs;
-        minimumEngineVersionPerAllowedValueSs << location << index << locationValue << ".MinimumEngineVersionPerAllowedValue." << minimumEngineVersionPerAllowedValueIdx++;
+        minimumEngineVersionPerAllowedValueSs << location << index << locationValue << ".MinimumEngineVersionPerAllowedValue.MinimumEngineVersionPerAllowedValue." << minimumEngineVersionPerAllowedValueIdx++;
         item.OutputToStream(oStream, minimumEngineVersionPerAllowedValueSs.str().c_str());
       }
   }
@@ -200,7 +177,7 @@ void OptionGroupOptionSetting::OutputToStream(Aws::OStream& oStream, const char*
       for(auto& item : m_minimumEngineVersionPerAllowedValue)
       {
         Aws::StringStream minimumEngineVersionPerAllowedValueSs;
-        minimumEngineVersionPerAllowedValueSs << location <<  ".MinimumEngineVersionPerAllowedValue." << minimumEngineVersionPerAllowedValueIdx++;
+        minimumEngineVersionPerAllowedValueSs << location << ".MinimumEngineVersionPerAllowedValue.MinimumEngineVersionPerAllowedValue." << minimumEngineVersionPerAllowedValueIdx++;
         item.OutputToStream(oStream, minimumEngineVersionPerAllowedValueSs.str().c_str());
       }
   }

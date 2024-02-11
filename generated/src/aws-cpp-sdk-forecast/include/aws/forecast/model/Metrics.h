@@ -34,146 +34,53 @@ namespace Model
   class Metrics
   {
   public:
-    AWS_FORECASTSERVICE_API Metrics();
+    AWS_FORECASTSERVICE_API Metrics() = default;
     AWS_FORECASTSERVICE_API Metrics(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API Metrics& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An array of weighted quantile losses. Quantiles divide a probability
      * distribution into regions of equal probability. The distribution in this case is
      * the loss function.</p>
      */
-    inline const Aws::Vector<WeightedQuantileLoss>& GetWeightedQuantileLosses() const{ return m_weightedQuantileLosses; }
-
-    /**
-     * <p>An array of weighted quantile losses. Quantiles divide a probability
-     * distribution into regions of equal probability. The distribution in this case is
-     * the loss function.</p>
-     */
+    inline const Aws::Vector<WeightedQuantileLoss>& GetWeightedQuantileLosses() const { return m_weightedQuantileLosses; }
     inline bool WeightedQuantileLossesHasBeenSet() const { return m_weightedQuantileLossesHasBeenSet; }
+    template<typename WeightedQuantileLossesT = Aws::Vector<WeightedQuantileLoss>>
+    void SetWeightedQuantileLosses(WeightedQuantileLossesT&& value) { m_weightedQuantileLossesHasBeenSet = true; m_weightedQuantileLosses = std::forward<WeightedQuantileLossesT>(value); }
+    template<typename WeightedQuantileLossesT = Aws::Vector<WeightedQuantileLoss>>
+    Metrics& WithWeightedQuantileLosses(WeightedQuantileLossesT&& value) { SetWeightedQuantileLosses(std::forward<WeightedQuantileLossesT>(value)); return *this;}
+    template<typename WeightedQuantileLossesT = WeightedQuantileLoss>
+    Metrics& AddWeightedQuantileLosses(WeightedQuantileLossesT&& value) { m_weightedQuantileLossesHasBeenSet = true; m_weightedQuantileLosses.emplace_back(std::forward<WeightedQuantileLossesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of weighted quantile losses. Quantiles divide a probability
-     * distribution into regions of equal probability. The distribution in this case is
-     * the loss function.</p>
-     */
-    inline void SetWeightedQuantileLosses(const Aws::Vector<WeightedQuantileLoss>& value) { m_weightedQuantileLossesHasBeenSet = true; m_weightedQuantileLosses = value; }
-
-    /**
-     * <p>An array of weighted quantile losses. Quantiles divide a probability
-     * distribution into regions of equal probability. The distribution in this case is
-     * the loss function.</p>
-     */
-    inline void SetWeightedQuantileLosses(Aws::Vector<WeightedQuantileLoss>&& value) { m_weightedQuantileLossesHasBeenSet = true; m_weightedQuantileLosses = std::move(value); }
-
-    /**
-     * <p>An array of weighted quantile losses. Quantiles divide a probability
-     * distribution into regions of equal probability. The distribution in this case is
-     * the loss function.</p>
-     */
-    inline Metrics& WithWeightedQuantileLosses(const Aws::Vector<WeightedQuantileLoss>& value) { SetWeightedQuantileLosses(value); return *this;}
-
-    /**
-     * <p>An array of weighted quantile losses. Quantiles divide a probability
-     * distribution into regions of equal probability. The distribution in this case is
-     * the loss function.</p>
-     */
-    inline Metrics& WithWeightedQuantileLosses(Aws::Vector<WeightedQuantileLoss>&& value) { SetWeightedQuantileLosses(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of weighted quantile losses. Quantiles divide a probability
-     * distribution into regions of equal probability. The distribution in this case is
-     * the loss function.</p>
-     */
-    inline Metrics& AddWeightedQuantileLosses(const WeightedQuantileLoss& value) { m_weightedQuantileLossesHasBeenSet = true; m_weightedQuantileLosses.push_back(value); return *this; }
-
-    /**
-     * <p>An array of weighted quantile losses. Quantiles divide a probability
-     * distribution into regions of equal probability. The distribution in this case is
-     * the loss function.</p>
-     */
-    inline Metrics& AddWeightedQuantileLosses(WeightedQuantileLoss&& value) { m_weightedQuantileLossesHasBeenSet = true; m_weightedQuantileLosses.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p> Provides detailed error metrics for each forecast type. Metrics include
      * root-mean square-error (RMSE), mean absolute percentage error (MAPE), mean
      * absolute scaled error (MASE), and weighted average percentage error (WAPE). </p>
      */
-    inline const Aws::Vector<ErrorMetric>& GetErrorMetrics() const{ return m_errorMetrics; }
-
-    /**
-     * <p> Provides detailed error metrics for each forecast type. Metrics include
-     * root-mean square-error (RMSE), mean absolute percentage error (MAPE), mean
-     * absolute scaled error (MASE), and weighted average percentage error (WAPE). </p>
-     */
+    inline const Aws::Vector<ErrorMetric>& GetErrorMetrics() const { return m_errorMetrics; }
     inline bool ErrorMetricsHasBeenSet() const { return m_errorMetricsHasBeenSet; }
+    template<typename ErrorMetricsT = Aws::Vector<ErrorMetric>>
+    void SetErrorMetrics(ErrorMetricsT&& value) { m_errorMetricsHasBeenSet = true; m_errorMetrics = std::forward<ErrorMetricsT>(value); }
+    template<typename ErrorMetricsT = Aws::Vector<ErrorMetric>>
+    Metrics& WithErrorMetrics(ErrorMetricsT&& value) { SetErrorMetrics(std::forward<ErrorMetricsT>(value)); return *this;}
+    template<typename ErrorMetricsT = ErrorMetric>
+    Metrics& AddErrorMetrics(ErrorMetricsT&& value) { m_errorMetricsHasBeenSet = true; m_errorMetrics.emplace_back(std::forward<ErrorMetricsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> Provides detailed error metrics for each forecast type. Metrics include
-     * root-mean square-error (RMSE), mean absolute percentage error (MAPE), mean
-     * absolute scaled error (MASE), and weighted average percentage error (WAPE). </p>
-     */
-    inline void SetErrorMetrics(const Aws::Vector<ErrorMetric>& value) { m_errorMetricsHasBeenSet = true; m_errorMetrics = value; }
-
-    /**
-     * <p> Provides detailed error metrics for each forecast type. Metrics include
-     * root-mean square-error (RMSE), mean absolute percentage error (MAPE), mean
-     * absolute scaled error (MASE), and weighted average percentage error (WAPE). </p>
-     */
-    inline void SetErrorMetrics(Aws::Vector<ErrorMetric>&& value) { m_errorMetricsHasBeenSet = true; m_errorMetrics = std::move(value); }
-
-    /**
-     * <p> Provides detailed error metrics for each forecast type. Metrics include
-     * root-mean square-error (RMSE), mean absolute percentage error (MAPE), mean
-     * absolute scaled error (MASE), and weighted average percentage error (WAPE). </p>
-     */
-    inline Metrics& WithErrorMetrics(const Aws::Vector<ErrorMetric>& value) { SetErrorMetrics(value); return *this;}
-
-    /**
-     * <p> Provides detailed error metrics for each forecast type. Metrics include
-     * root-mean square-error (RMSE), mean absolute percentage error (MAPE), mean
-     * absolute scaled error (MASE), and weighted average percentage error (WAPE). </p>
-     */
-    inline Metrics& WithErrorMetrics(Aws::Vector<ErrorMetric>&& value) { SetErrorMetrics(std::move(value)); return *this;}
-
-    /**
-     * <p> Provides detailed error metrics for each forecast type. Metrics include
-     * root-mean square-error (RMSE), mean absolute percentage error (MAPE), mean
-     * absolute scaled error (MASE), and weighted average percentage error (WAPE). </p>
-     */
-    inline Metrics& AddErrorMetrics(const ErrorMetric& value) { m_errorMetricsHasBeenSet = true; m_errorMetrics.push_back(value); return *this; }
-
-    /**
-     * <p> Provides detailed error metrics for each forecast type. Metrics include
-     * root-mean square-error (RMSE), mean absolute percentage error (MAPE), mean
-     * absolute scaled error (MASE), and weighted average percentage error (WAPE). </p>
-     */
-    inline Metrics& AddErrorMetrics(ErrorMetric&& value) { m_errorMetricsHasBeenSet = true; m_errorMetrics.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The average value of all weighted quantile losses.</p>
      */
-    inline double GetAverageWeightedQuantileLoss() const{ return m_averageWeightedQuantileLoss; }
-
-    /**
-     * <p>The average value of all weighted quantile losses.</p>
-     */
+    inline double GetAverageWeightedQuantileLoss() const { return m_averageWeightedQuantileLoss; }
     inline bool AverageWeightedQuantileLossHasBeenSet() const { return m_averageWeightedQuantileLossHasBeenSet; }
-
-    /**
-     * <p>The average value of all weighted quantile losses.</p>
-     */
     inline void SetAverageWeightedQuantileLoss(double value) { m_averageWeightedQuantileLossHasBeenSet = true; m_averageWeightedQuantileLoss = value; }
-
-    /**
-     * <p>The average value of all weighted quantile losses.</p>
-     */
     inline Metrics& WithAverageWeightedQuantileLoss(double value) { SetAverageWeightedQuantileLoss(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<WeightedQuantileLoss> m_weightedQuantileLosses;
@@ -182,7 +89,7 @@ namespace Model
     Aws::Vector<ErrorMetric> m_errorMetrics;
     bool m_errorMetricsHasBeenSet = false;
 
-    double m_averageWeightedQuantileLoss;
+    double m_averageWeightedQuantileLoss{0.0};
     bool m_averageWeightedQuantileLossHasBeenSet = false;
   };
 

@@ -18,17 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-BotAliasLocaleSettings::BotAliasLocaleSettings() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_codeHookSpecificationHasBeenSet(false)
-{
-}
-
-BotAliasLocaleSettings::BotAliasLocaleSettings(JsonView jsonValue) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_codeHookSpecificationHasBeenSet(false)
+BotAliasLocaleSettings::BotAliasLocaleSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ BotAliasLocaleSettings& BotAliasLocaleSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("enabled"))
   {
     m_enabled = jsonValue.GetBool("enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("codeHookSpecification"))
   {
     m_codeHookSpecification = jsonValue.GetObject("codeHookSpecification");
-
     m_codeHookSpecificationHasBeenSet = true;
   }
-
   return *this;
 }
 

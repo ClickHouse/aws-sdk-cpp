@@ -33,93 +33,37 @@ namespace Model
   class GlobalTable
   {
   public:
-    AWS_DYNAMODB_API GlobalTable();
+    AWS_DYNAMODB_API GlobalTable() = default;
     AWS_DYNAMODB_API GlobalTable(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API GlobalTable& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The global table name.</p>
      */
-    inline const Aws::String& GetGlobalTableName() const{ return m_globalTableName; }
-
-    /**
-     * <p>The global table name.</p>
-     */
+    inline const Aws::String& GetGlobalTableName() const { return m_globalTableName; }
     inline bool GlobalTableNameHasBeenSet() const { return m_globalTableNameHasBeenSet; }
+    template<typename GlobalTableNameT = Aws::String>
+    void SetGlobalTableName(GlobalTableNameT&& value) { m_globalTableNameHasBeenSet = true; m_globalTableName = std::forward<GlobalTableNameT>(value); }
+    template<typename GlobalTableNameT = Aws::String>
+    GlobalTable& WithGlobalTableName(GlobalTableNameT&& value) { SetGlobalTableName(std::forward<GlobalTableNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The global table name.</p>
-     */
-    inline void SetGlobalTableName(const Aws::String& value) { m_globalTableNameHasBeenSet = true; m_globalTableName = value; }
-
-    /**
-     * <p>The global table name.</p>
-     */
-    inline void SetGlobalTableName(Aws::String&& value) { m_globalTableNameHasBeenSet = true; m_globalTableName = std::move(value); }
-
-    /**
-     * <p>The global table name.</p>
-     */
-    inline void SetGlobalTableName(const char* value) { m_globalTableNameHasBeenSet = true; m_globalTableName.assign(value); }
-
-    /**
-     * <p>The global table name.</p>
-     */
-    inline GlobalTable& WithGlobalTableName(const Aws::String& value) { SetGlobalTableName(value); return *this;}
-
-    /**
-     * <p>The global table name.</p>
-     */
-    inline GlobalTable& WithGlobalTableName(Aws::String&& value) { SetGlobalTableName(std::move(value)); return *this;}
-
-    /**
-     * <p>The global table name.</p>
-     */
-    inline GlobalTable& WithGlobalTableName(const char* value) { SetGlobalTableName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Regions where the global table has replicas.</p>
      */
-    inline const Aws::Vector<Replica>& GetReplicationGroup() const{ return m_replicationGroup; }
-
-    /**
-     * <p>The Regions where the global table has replicas.</p>
-     */
+    inline const Aws::Vector<Replica>& GetReplicationGroup() const { return m_replicationGroup; }
     inline bool ReplicationGroupHasBeenSet() const { return m_replicationGroupHasBeenSet; }
-
-    /**
-     * <p>The Regions where the global table has replicas.</p>
-     */
-    inline void SetReplicationGroup(const Aws::Vector<Replica>& value) { m_replicationGroupHasBeenSet = true; m_replicationGroup = value; }
-
-    /**
-     * <p>The Regions where the global table has replicas.</p>
-     */
-    inline void SetReplicationGroup(Aws::Vector<Replica>&& value) { m_replicationGroupHasBeenSet = true; m_replicationGroup = std::move(value); }
-
-    /**
-     * <p>The Regions where the global table has replicas.</p>
-     */
-    inline GlobalTable& WithReplicationGroup(const Aws::Vector<Replica>& value) { SetReplicationGroup(value); return *this;}
-
-    /**
-     * <p>The Regions where the global table has replicas.</p>
-     */
-    inline GlobalTable& WithReplicationGroup(Aws::Vector<Replica>&& value) { SetReplicationGroup(std::move(value)); return *this;}
-
-    /**
-     * <p>The Regions where the global table has replicas.</p>
-     */
-    inline GlobalTable& AddReplicationGroup(const Replica& value) { m_replicationGroupHasBeenSet = true; m_replicationGroup.push_back(value); return *this; }
-
-    /**
-     * <p>The Regions where the global table has replicas.</p>
-     */
-    inline GlobalTable& AddReplicationGroup(Replica&& value) { m_replicationGroupHasBeenSet = true; m_replicationGroup.push_back(std::move(value)); return *this; }
-
+    template<typename ReplicationGroupT = Aws::Vector<Replica>>
+    void SetReplicationGroup(ReplicationGroupT&& value) { m_replicationGroupHasBeenSet = true; m_replicationGroup = std::forward<ReplicationGroupT>(value); }
+    template<typename ReplicationGroupT = Aws::Vector<Replica>>
+    GlobalTable& WithReplicationGroup(ReplicationGroupT&& value) { SetReplicationGroup(std::forward<ReplicationGroupT>(value)); return *this;}
+    template<typename ReplicationGroupT = Replica>
+    GlobalTable& AddReplicationGroup(ReplicationGroupT&& value) { m_replicationGroupHasBeenSet = true; m_replicationGroup.emplace_back(std::forward<ReplicationGroupT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_globalTableName;

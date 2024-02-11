@@ -21,7 +21,7 @@ namespace Model
   class DeleteImageRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API DeleteImageRequest();
+    AWS_SAGEMAKER_API DeleteImageRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the image to delete.</p>
      */
-    inline const Aws::String& GetImageName() const{ return m_imageName; }
-
-    /**
-     * <p>The name of the image to delete.</p>
-     */
+    inline const Aws::String& GetImageName() const { return m_imageName; }
     inline bool ImageNameHasBeenSet() const { return m_imageNameHasBeenSet; }
-
-    /**
-     * <p>The name of the image to delete.</p>
-     */
-    inline void SetImageName(const Aws::String& value) { m_imageNameHasBeenSet = true; m_imageName = value; }
-
-    /**
-     * <p>The name of the image to delete.</p>
-     */
-    inline void SetImageName(Aws::String&& value) { m_imageNameHasBeenSet = true; m_imageName = std::move(value); }
-
-    /**
-     * <p>The name of the image to delete.</p>
-     */
-    inline void SetImageName(const char* value) { m_imageNameHasBeenSet = true; m_imageName.assign(value); }
-
-    /**
-     * <p>The name of the image to delete.</p>
-     */
-    inline DeleteImageRequest& WithImageName(const Aws::String& value) { SetImageName(value); return *this;}
-
-    /**
-     * <p>The name of the image to delete.</p>
-     */
-    inline DeleteImageRequest& WithImageName(Aws::String&& value) { SetImageName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the image to delete.</p>
-     */
-    inline DeleteImageRequest& WithImageName(const char* value) { SetImageName(value); return *this;}
-
+    template<typename ImageNameT = Aws::String>
+    void SetImageName(ImageNameT&& value) { m_imageNameHasBeenSet = true; m_imageName = std::forward<ImageNameT>(value); }
+    template<typename ImageNameT = Aws::String>
+    DeleteImageRequest& WithImageName(ImageNameT&& value) { SetImageName(std::forward<ImageNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_imageName;

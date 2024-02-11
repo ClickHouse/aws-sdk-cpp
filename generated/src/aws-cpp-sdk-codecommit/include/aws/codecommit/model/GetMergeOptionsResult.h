@@ -29,201 +29,82 @@ namespace Model
   class GetMergeOptionsResult
   {
   public:
-    AWS_CODECOMMIT_API GetMergeOptionsResult();
+    AWS_CODECOMMIT_API GetMergeOptionsResult() = default;
     AWS_CODECOMMIT_API GetMergeOptionsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CODECOMMIT_API GetMergeOptionsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The merge option or strategy used to merge the code.</p>
      */
-    inline const Aws::Vector<MergeOptionTypeEnum>& GetMergeOptions() const{ return m_mergeOptions; }
+    inline const Aws::Vector<MergeOptionTypeEnum>& GetMergeOptions() const { return m_mergeOptions; }
+    template<typename MergeOptionsT = Aws::Vector<MergeOptionTypeEnum>>
+    void SetMergeOptions(MergeOptionsT&& value) { m_mergeOptionsHasBeenSet = true; m_mergeOptions = std::forward<MergeOptionsT>(value); }
+    template<typename MergeOptionsT = Aws::Vector<MergeOptionTypeEnum>>
+    GetMergeOptionsResult& WithMergeOptions(MergeOptionsT&& value) { SetMergeOptions(std::forward<MergeOptionsT>(value)); return *this;}
+    inline GetMergeOptionsResult& AddMergeOptions(MergeOptionTypeEnum value) { m_mergeOptionsHasBeenSet = true; m_mergeOptions.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The merge option or strategy used to merge the code.</p>
-     */
-    inline void SetMergeOptions(const Aws::Vector<MergeOptionTypeEnum>& value) { m_mergeOptions = value; }
-
-    /**
-     * <p>The merge option or strategy used to merge the code.</p>
-     */
-    inline void SetMergeOptions(Aws::Vector<MergeOptionTypeEnum>&& value) { m_mergeOptions = std::move(value); }
-
-    /**
-     * <p>The merge option or strategy used to merge the code.</p>
-     */
-    inline GetMergeOptionsResult& WithMergeOptions(const Aws::Vector<MergeOptionTypeEnum>& value) { SetMergeOptions(value); return *this;}
-
-    /**
-     * <p>The merge option or strategy used to merge the code.</p>
-     */
-    inline GetMergeOptionsResult& WithMergeOptions(Aws::Vector<MergeOptionTypeEnum>&& value) { SetMergeOptions(std::move(value)); return *this;}
-
-    /**
-     * <p>The merge option or strategy used to merge the code.</p>
-     */
-    inline GetMergeOptionsResult& AddMergeOptions(const MergeOptionTypeEnum& value) { m_mergeOptions.push_back(value); return *this; }
-
-    /**
-     * <p>The merge option or strategy used to merge the code.</p>
-     */
-    inline GetMergeOptionsResult& AddMergeOptions(MergeOptionTypeEnum&& value) { m_mergeOptions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The commit ID of the source commit specifier that was used in the merge
      * evaluation.</p>
      */
-    inline const Aws::String& GetSourceCommitId() const{ return m_sourceCommitId; }
+    inline const Aws::String& GetSourceCommitId() const { return m_sourceCommitId; }
+    template<typename SourceCommitIdT = Aws::String>
+    void SetSourceCommitId(SourceCommitIdT&& value) { m_sourceCommitIdHasBeenSet = true; m_sourceCommitId = std::forward<SourceCommitIdT>(value); }
+    template<typename SourceCommitIdT = Aws::String>
+    GetMergeOptionsResult& WithSourceCommitId(SourceCommitIdT&& value) { SetSourceCommitId(std::forward<SourceCommitIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The commit ID of the source commit specifier that was used in the merge
-     * evaluation.</p>
-     */
-    inline void SetSourceCommitId(const Aws::String& value) { m_sourceCommitId = value; }
-
-    /**
-     * <p>The commit ID of the source commit specifier that was used in the merge
-     * evaluation.</p>
-     */
-    inline void SetSourceCommitId(Aws::String&& value) { m_sourceCommitId = std::move(value); }
-
-    /**
-     * <p>The commit ID of the source commit specifier that was used in the merge
-     * evaluation.</p>
-     */
-    inline void SetSourceCommitId(const char* value) { m_sourceCommitId.assign(value); }
-
-    /**
-     * <p>The commit ID of the source commit specifier that was used in the merge
-     * evaluation.</p>
-     */
-    inline GetMergeOptionsResult& WithSourceCommitId(const Aws::String& value) { SetSourceCommitId(value); return *this;}
-
-    /**
-     * <p>The commit ID of the source commit specifier that was used in the merge
-     * evaluation.</p>
-     */
-    inline GetMergeOptionsResult& WithSourceCommitId(Aws::String&& value) { SetSourceCommitId(std::move(value)); return *this;}
-
-    /**
-     * <p>The commit ID of the source commit specifier that was used in the merge
-     * evaluation.</p>
-     */
-    inline GetMergeOptionsResult& WithSourceCommitId(const char* value) { SetSourceCommitId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The commit ID of the destination commit specifier that was used in the merge
      * evaluation.</p>
      */
-    inline const Aws::String& GetDestinationCommitId() const{ return m_destinationCommitId; }
+    inline const Aws::String& GetDestinationCommitId() const { return m_destinationCommitId; }
+    template<typename DestinationCommitIdT = Aws::String>
+    void SetDestinationCommitId(DestinationCommitIdT&& value) { m_destinationCommitIdHasBeenSet = true; m_destinationCommitId = std::forward<DestinationCommitIdT>(value); }
+    template<typename DestinationCommitIdT = Aws::String>
+    GetMergeOptionsResult& WithDestinationCommitId(DestinationCommitIdT&& value) { SetDestinationCommitId(std::forward<DestinationCommitIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The commit ID of the destination commit specifier that was used in the merge
-     * evaluation.</p>
-     */
-    inline void SetDestinationCommitId(const Aws::String& value) { m_destinationCommitId = value; }
-
-    /**
-     * <p>The commit ID of the destination commit specifier that was used in the merge
-     * evaluation.</p>
-     */
-    inline void SetDestinationCommitId(Aws::String&& value) { m_destinationCommitId = std::move(value); }
-
-    /**
-     * <p>The commit ID of the destination commit specifier that was used in the merge
-     * evaluation.</p>
-     */
-    inline void SetDestinationCommitId(const char* value) { m_destinationCommitId.assign(value); }
-
-    /**
-     * <p>The commit ID of the destination commit specifier that was used in the merge
-     * evaluation.</p>
-     */
-    inline GetMergeOptionsResult& WithDestinationCommitId(const Aws::String& value) { SetDestinationCommitId(value); return *this;}
-
-    /**
-     * <p>The commit ID of the destination commit specifier that was used in the merge
-     * evaluation.</p>
-     */
-    inline GetMergeOptionsResult& WithDestinationCommitId(Aws::String&& value) { SetDestinationCommitId(std::move(value)); return *this;}
-
-    /**
-     * <p>The commit ID of the destination commit specifier that was used in the merge
-     * evaluation.</p>
-     */
-    inline GetMergeOptionsResult& WithDestinationCommitId(const char* value) { SetDestinationCommitId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The commit ID of the merge base.</p>
      */
-    inline const Aws::String& GetBaseCommitId() const{ return m_baseCommitId; }
+    inline const Aws::String& GetBaseCommitId() const { return m_baseCommitId; }
+    template<typename BaseCommitIdT = Aws::String>
+    void SetBaseCommitId(BaseCommitIdT&& value) { m_baseCommitIdHasBeenSet = true; m_baseCommitId = std::forward<BaseCommitIdT>(value); }
+    template<typename BaseCommitIdT = Aws::String>
+    GetMergeOptionsResult& WithBaseCommitId(BaseCommitIdT&& value) { SetBaseCommitId(std::forward<BaseCommitIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The commit ID of the merge base.</p>
-     */
-    inline void SetBaseCommitId(const Aws::String& value) { m_baseCommitId = value; }
-
-    /**
-     * <p>The commit ID of the merge base.</p>
-     */
-    inline void SetBaseCommitId(Aws::String&& value) { m_baseCommitId = std::move(value); }
-
-    /**
-     * <p>The commit ID of the merge base.</p>
-     */
-    inline void SetBaseCommitId(const char* value) { m_baseCommitId.assign(value); }
-
-    /**
-     * <p>The commit ID of the merge base.</p>
-     */
-    inline GetMergeOptionsResult& WithBaseCommitId(const Aws::String& value) { SetBaseCommitId(value); return *this;}
-
-    /**
-     * <p>The commit ID of the merge base.</p>
-     */
-    inline GetMergeOptionsResult& WithBaseCommitId(Aws::String&& value) { SetBaseCommitId(std::move(value)); return *this;}
-
-    /**
-     * <p>The commit ID of the merge base.</p>
-     */
-    inline GetMergeOptionsResult& WithBaseCommitId(const char* value) { SetBaseCommitId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetMergeOptionsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetMergeOptionsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetMergeOptionsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetMergeOptionsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<MergeOptionTypeEnum> m_mergeOptions;
+    bool m_mergeOptionsHasBeenSet = false;
 
     Aws::String m_sourceCommitId;
+    bool m_sourceCommitIdHasBeenSet = false;
 
     Aws::String m_destinationCommitId;
+    bool m_destinationCommitIdHasBeenSet = false;
 
     Aws::String m_baseCommitId;
+    bool m_baseCommitIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

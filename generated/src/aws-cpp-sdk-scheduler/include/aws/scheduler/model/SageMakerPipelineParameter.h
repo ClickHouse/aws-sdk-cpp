@@ -32,109 +32,37 @@ namespace Model
   class SageMakerPipelineParameter
   {
   public:
-    AWS_SCHEDULER_API SageMakerPipelineParameter();
+    AWS_SCHEDULER_API SageMakerPipelineParameter() = default;
     AWS_SCHEDULER_API SageMakerPipelineParameter(Aws::Utils::Json::JsonView jsonValue);
     AWS_SCHEDULER_API SageMakerPipelineParameter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SCHEDULER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Name of parameter to start execution of a SageMaker Model Building
      * Pipeline.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>Name of parameter to start execution of a SageMaker Model Building
-     * Pipeline.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    SageMakerPipelineParameter& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Name of parameter to start execution of a SageMaker Model Building
-     * Pipeline.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>Name of parameter to start execution of a SageMaker Model Building
-     * Pipeline.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>Name of parameter to start execution of a SageMaker Model Building
-     * Pipeline.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>Name of parameter to start execution of a SageMaker Model Building
-     * Pipeline.</p>
-     */
-    inline SageMakerPipelineParameter& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>Name of parameter to start execution of a SageMaker Model Building
-     * Pipeline.</p>
-     */
-    inline SageMakerPipelineParameter& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of parameter to start execution of a SageMaker Model Building
-     * Pipeline.</p>
-     */
-    inline SageMakerPipelineParameter& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Value of parameter to start execution of a SageMaker Model Building
      * Pipeline.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>Value of parameter to start execution of a SageMaker Model Building
-     * Pipeline.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>Value of parameter to start execution of a SageMaker Model Building
-     * Pipeline.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>Value of parameter to start execution of a SageMaker Model Building
-     * Pipeline.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>Value of parameter to start execution of a SageMaker Model Building
-     * Pipeline.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>Value of parameter to start execution of a SageMaker Model Building
-     * Pipeline.</p>
-     */
-    inline SageMakerPipelineParameter& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>Value of parameter to start execution of a SageMaker Model Building
-     * Pipeline.</p>
-     */
-    inline SageMakerPipelineParameter& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Value of parameter to start execution of a SageMaker Model Building
-     * Pipeline.</p>
-     */
-    inline SageMakerPipelineParameter& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    SageMakerPipelineParameter& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

@@ -18,13 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsEcsTaskDefinitionContainerDefinitionsRepositoryCredentialsDetails::AwsEcsTaskDefinitionContainerDefinitionsRepositoryCredentialsDetails() : 
-    m_credentialsParameterHasBeenSet(false)
-{
-}
-
-AwsEcsTaskDefinitionContainerDefinitionsRepositoryCredentialsDetails::AwsEcsTaskDefinitionContainerDefinitionsRepositoryCredentialsDetails(JsonView jsonValue) : 
-    m_credentialsParameterHasBeenSet(false)
+AwsEcsTaskDefinitionContainerDefinitionsRepositoryCredentialsDetails::AwsEcsTaskDefinitionContainerDefinitionsRepositoryCredentialsDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ AwsEcsTaskDefinitionContainerDefinitionsRepositoryCredentialsDetails& AwsEcsTask
   if(jsonValue.ValueExists("CredentialsParameter"))
   {
     m_credentialsParameter = jsonValue.GetString("CredentialsParameter");
-
     m_credentialsParameterHasBeenSet = true;
   }
-
   return *this;
 }
 

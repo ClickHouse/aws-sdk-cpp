@@ -18,17 +18,7 @@ namespace Kafka
 namespace Model
 {
 
-ConfigurationInfo::ConfigurationInfo() : 
-    m_arnHasBeenSet(false),
-    m_revision(0),
-    m_revisionHasBeenSet(false)
-{
-}
-
-ConfigurationInfo::ConfigurationInfo(JsonView jsonValue) : 
-    m_arnHasBeenSet(false),
-    m_revision(0),
-    m_revisionHasBeenSet(false)
+ConfigurationInfo::ConfigurationInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ConfigurationInfo& ConfigurationInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("arn"))
   {
     m_arn = jsonValue.GetString("arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("revision"))
   {
     m_revision = jsonValue.GetInt64("revision");
-
     m_revisionHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -32,48 +32,24 @@ namespace Model
   class ServiceMetadata
   {
   public:
-    AWS_TRANSFER_API ServiceMetadata();
+    AWS_TRANSFER_API ServiceMetadata() = default;
     AWS_TRANSFER_API ServiceMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSFER_API ServiceMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSFER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Server ID (<code>ServerId</code>), Session ID (<code>SessionId</code>)
      * and user (<code>UserName</code>) make up the <code>UserDetails</code>.</p>
      */
-    inline const UserDetails& GetUserDetails() const{ return m_userDetails; }
-
-    /**
-     * <p>The Server ID (<code>ServerId</code>), Session ID (<code>SessionId</code>)
-     * and user (<code>UserName</code>) make up the <code>UserDetails</code>.</p>
-     */
+    inline const UserDetails& GetUserDetails() const { return m_userDetails; }
     inline bool UserDetailsHasBeenSet() const { return m_userDetailsHasBeenSet; }
-
-    /**
-     * <p>The Server ID (<code>ServerId</code>), Session ID (<code>SessionId</code>)
-     * and user (<code>UserName</code>) make up the <code>UserDetails</code>.</p>
-     */
-    inline void SetUserDetails(const UserDetails& value) { m_userDetailsHasBeenSet = true; m_userDetails = value; }
-
-    /**
-     * <p>The Server ID (<code>ServerId</code>), Session ID (<code>SessionId</code>)
-     * and user (<code>UserName</code>) make up the <code>UserDetails</code>.</p>
-     */
-    inline void SetUserDetails(UserDetails&& value) { m_userDetailsHasBeenSet = true; m_userDetails = std::move(value); }
-
-    /**
-     * <p>The Server ID (<code>ServerId</code>), Session ID (<code>SessionId</code>)
-     * and user (<code>UserName</code>) make up the <code>UserDetails</code>.</p>
-     */
-    inline ServiceMetadata& WithUserDetails(const UserDetails& value) { SetUserDetails(value); return *this;}
-
-    /**
-     * <p>The Server ID (<code>ServerId</code>), Session ID (<code>SessionId</code>)
-     * and user (<code>UserName</code>) make up the <code>UserDetails</code>.</p>
-     */
-    inline ServiceMetadata& WithUserDetails(UserDetails&& value) { SetUserDetails(std::move(value)); return *this;}
-
+    template<typename UserDetailsT = UserDetails>
+    void SetUserDetails(UserDetailsT&& value) { m_userDetailsHasBeenSet = true; m_userDetails = std::forward<UserDetailsT>(value); }
+    template<typename UserDetailsT = UserDetails>
+    ServiceMetadata& WithUserDetails(UserDetailsT&& value) { SetUserDetails(std::forward<UserDetailsT>(value)); return *this;}
+    ///@}
   private:
 
     UserDetails m_userDetails;

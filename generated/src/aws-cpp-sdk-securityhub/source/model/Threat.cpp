@@ -18,21 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-Threat::Threat() : 
-    m_nameHasBeenSet(false),
-    m_severityHasBeenSet(false),
-    m_itemCount(0),
-    m_itemCountHasBeenSet(false),
-    m_filePathsHasBeenSet(false)
-{
-}
-
-Threat::Threat(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_severityHasBeenSet(false),
-    m_itemCount(0),
-    m_itemCountHasBeenSet(false),
-    m_filePathsHasBeenSet(false)
+Threat::Threat(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ Threat& Threat::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Severity"))
   {
     m_severity = jsonValue.GetString("Severity");
-
     m_severityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ItemCount"))
   {
     m_itemCount = jsonValue.GetInteger("ItemCount");
-
     m_itemCountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FilePaths"))
   {
     Aws::Utils::Array<JsonView> filePathsJsonList = jsonValue.GetArray("FilePaths");
@@ -69,7 +49,6 @@ Threat& Threat::operator =(JsonView jsonValue)
     }
     m_filePathsHasBeenSet = true;
   }
-
   return *this;
 }
 

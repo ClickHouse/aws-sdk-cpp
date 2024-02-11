@@ -21,7 +21,7 @@ namespace Model
   class RegisterAccountRequest : public AuditManagerRequest
   {
   public:
-    AWS_AUDITMANAGER_API RegisterAccountRequest();
+    AWS_AUDITMANAGER_API RegisterAccountRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_AUDITMANAGER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p> The KMS key details. </p>
      */
-    inline const Aws::String& GetKmsKey() const{ return m_kmsKey; }
-
-    /**
-     * <p> The KMS key details. </p>
-     */
+    inline const Aws::String& GetKmsKey() const { return m_kmsKey; }
     inline bool KmsKeyHasBeenSet() const { return m_kmsKeyHasBeenSet; }
+    template<typename KmsKeyT = Aws::String>
+    void SetKmsKey(KmsKeyT&& value) { m_kmsKeyHasBeenSet = true; m_kmsKey = std::forward<KmsKeyT>(value); }
+    template<typename KmsKeyT = Aws::String>
+    RegisterAccountRequest& WithKmsKey(KmsKeyT&& value) { SetKmsKey(std::forward<KmsKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The KMS key details. </p>
-     */
-    inline void SetKmsKey(const Aws::String& value) { m_kmsKeyHasBeenSet = true; m_kmsKey = value; }
-
-    /**
-     * <p> The KMS key details. </p>
-     */
-    inline void SetKmsKey(Aws::String&& value) { m_kmsKeyHasBeenSet = true; m_kmsKey = std::move(value); }
-
-    /**
-     * <p> The KMS key details. </p>
-     */
-    inline void SetKmsKey(const char* value) { m_kmsKeyHasBeenSet = true; m_kmsKey.assign(value); }
-
-    /**
-     * <p> The KMS key details. </p>
-     */
-    inline RegisterAccountRequest& WithKmsKey(const Aws::String& value) { SetKmsKey(value); return *this;}
-
-    /**
-     * <p> The KMS key details. </p>
-     */
-    inline RegisterAccountRequest& WithKmsKey(Aws::String&& value) { SetKmsKey(std::move(value)); return *this;}
-
-    /**
-     * <p> The KMS key details. </p>
-     */
-    inline RegisterAccountRequest& WithKmsKey(const char* value) { SetKmsKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The delegated administrator account for Audit Manager. </p>
      */
-    inline const Aws::String& GetDelegatedAdminAccount() const{ return m_delegatedAdminAccount; }
-
-    /**
-     * <p> The delegated administrator account for Audit Manager. </p>
-     */
+    inline const Aws::String& GetDelegatedAdminAccount() const { return m_delegatedAdminAccount; }
     inline bool DelegatedAdminAccountHasBeenSet() const { return m_delegatedAdminAccountHasBeenSet; }
-
-    /**
-     * <p> The delegated administrator account for Audit Manager. </p>
-     */
-    inline void SetDelegatedAdminAccount(const Aws::String& value) { m_delegatedAdminAccountHasBeenSet = true; m_delegatedAdminAccount = value; }
-
-    /**
-     * <p> The delegated administrator account for Audit Manager. </p>
-     */
-    inline void SetDelegatedAdminAccount(Aws::String&& value) { m_delegatedAdminAccountHasBeenSet = true; m_delegatedAdminAccount = std::move(value); }
-
-    /**
-     * <p> The delegated administrator account for Audit Manager. </p>
-     */
-    inline void SetDelegatedAdminAccount(const char* value) { m_delegatedAdminAccountHasBeenSet = true; m_delegatedAdminAccount.assign(value); }
-
-    /**
-     * <p> The delegated administrator account for Audit Manager. </p>
-     */
-    inline RegisterAccountRequest& WithDelegatedAdminAccount(const Aws::String& value) { SetDelegatedAdminAccount(value); return *this;}
-
-    /**
-     * <p> The delegated administrator account for Audit Manager. </p>
-     */
-    inline RegisterAccountRequest& WithDelegatedAdminAccount(Aws::String&& value) { SetDelegatedAdminAccount(std::move(value)); return *this;}
-
-    /**
-     * <p> The delegated administrator account for Audit Manager. </p>
-     */
-    inline RegisterAccountRequest& WithDelegatedAdminAccount(const char* value) { SetDelegatedAdminAccount(value); return *this;}
-
+    template<typename DelegatedAdminAccountT = Aws::String>
+    void SetDelegatedAdminAccount(DelegatedAdminAccountT&& value) { m_delegatedAdminAccountHasBeenSet = true; m_delegatedAdminAccount = std::forward<DelegatedAdminAccountT>(value); }
+    template<typename DelegatedAdminAccountT = Aws::String>
+    RegisterAccountRequest& WithDelegatedAdminAccount(DelegatedAdminAccountT&& value) { SetDelegatedAdminAccount(std::forward<DelegatedAdminAccountT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_kmsKey;

@@ -30,59 +30,37 @@ namespace Model
   class CountPercent
   {
   public:
-    AWS_LOOKOUTEQUIPMENT_API CountPercent();
+    AWS_LOOKOUTEQUIPMENT_API CountPercent() = default;
     AWS_LOOKOUTEQUIPMENT_API CountPercent(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTEQUIPMENT_API CountPercent& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTEQUIPMENT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Indicates the count of occurences of the given statistic. </p>
      */
-    inline int GetCount() const{ return m_count; }
-
-    /**
-     * <p> Indicates the count of occurences of the given statistic. </p>
-     */
+    inline int GetCount() const { return m_count; }
     inline bool CountHasBeenSet() const { return m_countHasBeenSet; }
-
-    /**
-     * <p> Indicates the count of occurences of the given statistic. </p>
-     */
     inline void SetCount(int value) { m_countHasBeenSet = true; m_count = value; }
-
-    /**
-     * <p> Indicates the count of occurences of the given statistic. </p>
-     */
     inline CountPercent& WithCount(int value) { SetCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> Indicates the percentage of occurances of the given statistic. </p>
      */
-    inline double GetPercentage() const{ return m_percentage; }
-
-    /**
-     * <p> Indicates the percentage of occurances of the given statistic. </p>
-     */
+    inline double GetPercentage() const { return m_percentage; }
     inline bool PercentageHasBeenSet() const { return m_percentageHasBeenSet; }
-
-    /**
-     * <p> Indicates the percentage of occurances of the given statistic. </p>
-     */
     inline void SetPercentage(double value) { m_percentageHasBeenSet = true; m_percentage = value; }
-
-    /**
-     * <p> Indicates the percentage of occurances of the given statistic. </p>
-     */
     inline CountPercent& WithPercentage(double value) { SetPercentage(value); return *this;}
-
+    ///@}
   private:
 
-    int m_count;
+    int m_count{0};
     bool m_countHasBeenSet = false;
 
-    double m_percentage;
+    double m_percentage{0.0};
     bool m_percentageHasBeenSet = false;
   };
 

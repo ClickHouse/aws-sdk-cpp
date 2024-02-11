@@ -33,103 +33,50 @@ namespace Model
   class LambdaFunctionMemoryProjectedMetric
   {
   public:
-    AWS_COMPUTEOPTIMIZER_API LambdaFunctionMemoryProjectedMetric();
+    AWS_COMPUTEOPTIMIZER_API LambdaFunctionMemoryProjectedMetric() = default;
     AWS_COMPUTEOPTIMIZER_API LambdaFunctionMemoryProjectedMetric(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPUTEOPTIMIZER_API LambdaFunctionMemoryProjectedMetric& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPUTEOPTIMIZER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the projected utilization metric.</p>
      */
-    inline const LambdaFunctionMemoryMetricName& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the projected utilization metric.</p>
-     */
+    inline LambdaFunctionMemoryMetricName GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    inline void SetName(LambdaFunctionMemoryMetricName value) { m_nameHasBeenSet = true; m_name = value; }
+    inline LambdaFunctionMemoryProjectedMetric& WithName(LambdaFunctionMemoryMetricName value) { SetName(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the projected utilization metric.</p>
-     */
-    inline void SetName(const LambdaFunctionMemoryMetricName& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the projected utilization metric.</p>
-     */
-    inline void SetName(LambdaFunctionMemoryMetricName&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the projected utilization metric.</p>
-     */
-    inline LambdaFunctionMemoryProjectedMetric& WithName(const LambdaFunctionMemoryMetricName& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the projected utilization metric.</p>
-     */
-    inline LambdaFunctionMemoryProjectedMetric& WithName(LambdaFunctionMemoryMetricName&& value) { SetName(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The statistic of the projected utilization metric.</p>
      */
-    inline const LambdaFunctionMemoryMetricStatistic& GetStatistic() const{ return m_statistic; }
-
-    /**
-     * <p>The statistic of the projected utilization metric.</p>
-     */
+    inline LambdaFunctionMemoryMetricStatistic GetStatistic() const { return m_statistic; }
     inline bool StatisticHasBeenSet() const { return m_statisticHasBeenSet; }
+    inline void SetStatistic(LambdaFunctionMemoryMetricStatistic value) { m_statisticHasBeenSet = true; m_statistic = value; }
+    inline LambdaFunctionMemoryProjectedMetric& WithStatistic(LambdaFunctionMemoryMetricStatistic value) { SetStatistic(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The statistic of the projected utilization metric.</p>
-     */
-    inline void SetStatistic(const LambdaFunctionMemoryMetricStatistic& value) { m_statisticHasBeenSet = true; m_statistic = value; }
-
-    /**
-     * <p>The statistic of the projected utilization metric.</p>
-     */
-    inline void SetStatistic(LambdaFunctionMemoryMetricStatistic&& value) { m_statisticHasBeenSet = true; m_statistic = std::move(value); }
-
-    /**
-     * <p>The statistic of the projected utilization metric.</p>
-     */
-    inline LambdaFunctionMemoryProjectedMetric& WithStatistic(const LambdaFunctionMemoryMetricStatistic& value) { SetStatistic(value); return *this;}
-
-    /**
-     * <p>The statistic of the projected utilization metric.</p>
-     */
-    inline LambdaFunctionMemoryProjectedMetric& WithStatistic(LambdaFunctionMemoryMetricStatistic&& value) { SetStatistic(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The values of the projected utilization metrics.</p>
      */
-    inline double GetValue() const{ return m_value; }
-
-    /**
-     * <p>The values of the projected utilization metrics.</p>
-     */
+    inline double GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The values of the projected utilization metrics.</p>
-     */
     inline void SetValue(double value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The values of the projected utilization metrics.</p>
-     */
     inline LambdaFunctionMemoryProjectedMetric& WithValue(double value) { SetValue(value); return *this;}
-
+    ///@}
   private:
 
-    LambdaFunctionMemoryMetricName m_name;
+    LambdaFunctionMemoryMetricName m_name{LambdaFunctionMemoryMetricName::NOT_SET};
     bool m_nameHasBeenSet = false;
 
-    LambdaFunctionMemoryMetricStatistic m_statistic;
+    LambdaFunctionMemoryMetricStatistic m_statistic{LambdaFunctionMemoryMetricStatistic::NOT_SET};
     bool m_statisticHasBeenSet = false;
 
-    double m_value;
+    double m_value{0.0};
     bool m_valueHasBeenSet = false;
   };
 

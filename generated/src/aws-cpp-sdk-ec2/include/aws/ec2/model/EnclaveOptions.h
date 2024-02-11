@@ -30,7 +30,7 @@ namespace Model
   class EnclaveOptions
   {
   public:
-    AWS_EC2_API EnclaveOptions();
+    AWS_EC2_API EnclaveOptions() = default;
     AWS_EC2_API EnclaveOptions(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API EnclaveOptions& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -38,37 +38,20 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>If this parameter is set to <code>true</code>, the instance is enabled for
      * Amazon Web Services Nitro Enclaves; otherwise, it is not enabled for Amazon Web
      * Services Nitro Enclaves.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>If this parameter is set to <code>true</code>, the instance is enabled for
-     * Amazon Web Services Nitro Enclaves; otherwise, it is not enabled for Amazon Web
-     * Services Nitro Enclaves.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>If this parameter is set to <code>true</code>, the instance is enabled for
-     * Amazon Web Services Nitro Enclaves; otherwise, it is not enabled for Amazon Web
-     * Services Nitro Enclaves.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>If this parameter is set to <code>true</code>, the instance is enabled for
-     * Amazon Web Services Nitro Enclaves; otherwise, it is not enabled for Amazon Web
-     * Services Nitro Enclaves.</p>
-     */
     inline EnclaveOptions& WithEnabled(bool value) { SetEnabled(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
   };
 

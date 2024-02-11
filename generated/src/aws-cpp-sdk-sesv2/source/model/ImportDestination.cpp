@@ -18,15 +18,7 @@ namespace SESV2
 namespace Model
 {
 
-ImportDestination::ImportDestination() : 
-    m_suppressionListDestinationHasBeenSet(false),
-    m_contactListDestinationHasBeenSet(false)
-{
-}
-
-ImportDestination::ImportDestination(JsonView jsonValue) : 
-    m_suppressionListDestinationHasBeenSet(false),
-    m_contactListDestinationHasBeenSet(false)
+ImportDestination::ImportDestination(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ImportDestination& ImportDestination::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SuppressionListDestination"))
   {
     m_suppressionListDestination = jsonValue.GetObject("SuppressionListDestination");
-
     m_suppressionListDestinationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ContactListDestination"))
   {
     m_contactListDestination = jsonValue.GetObject("ContactListDestination");
-
     m_contactListDestinationHasBeenSet = true;
   }
-
   return *this;
 }
 

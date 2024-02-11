@@ -31,7 +31,7 @@ namespace Model
   class PlacementResponse
   {
   public:
-    AWS_EC2_API PlacementResponse();
+    AWS_EC2_API PlacementResponse() = default;
     AWS_EC2_API PlacementResponse(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API PlacementResponse& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -39,46 +39,17 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The name of the placement group that the instance is in.</p>
      */
-    inline const Aws::String& GetGroupName() const{ return m_groupName; }
-
-    /**
-     * <p>The name of the placement group that the instance is in.</p>
-     */
+    inline const Aws::String& GetGroupName() const { return m_groupName; }
     inline bool GroupNameHasBeenSet() const { return m_groupNameHasBeenSet; }
-
-    /**
-     * <p>The name of the placement group that the instance is in.</p>
-     */
-    inline void SetGroupName(const Aws::String& value) { m_groupNameHasBeenSet = true; m_groupName = value; }
-
-    /**
-     * <p>The name of the placement group that the instance is in.</p>
-     */
-    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = std::move(value); }
-
-    /**
-     * <p>The name of the placement group that the instance is in.</p>
-     */
-    inline void SetGroupName(const char* value) { m_groupNameHasBeenSet = true; m_groupName.assign(value); }
-
-    /**
-     * <p>The name of the placement group that the instance is in.</p>
-     */
-    inline PlacementResponse& WithGroupName(const Aws::String& value) { SetGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the placement group that the instance is in.</p>
-     */
-    inline PlacementResponse& WithGroupName(Aws::String&& value) { SetGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the placement group that the instance is in.</p>
-     */
-    inline PlacementResponse& WithGroupName(const char* value) { SetGroupName(value); return *this;}
-
+    template<typename GroupNameT = Aws::String>
+    void SetGroupName(GroupNameT&& value) { m_groupNameHasBeenSet = true; m_groupName = std::forward<GroupNameT>(value); }
+    template<typename GroupNameT = Aws::String>
+    PlacementResponse& WithGroupName(GroupNameT&& value) { SetGroupName(std::forward<GroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_groupName;

@@ -18,17 +18,7 @@ namespace IoTSiteWise
 namespace Model
 {
 
-File::File() : 
-    m_bucketHasBeenSet(false),
-    m_keyHasBeenSet(false),
-    m_versionIdHasBeenSet(false)
-{
-}
-
-File::File(JsonView jsonValue) : 
-    m_bucketHasBeenSet(false),
-    m_keyHasBeenSet(false),
-    m_versionIdHasBeenSet(false)
+File::File(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ File& File::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("bucket"))
   {
     m_bucket = jsonValue.GetString("bucket");
-
     m_bucketHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("key"))
   {
     m_key = jsonValue.GetString("key");
-
     m_keyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("versionId"))
   {
     m_versionId = jsonValue.GetString("versionId");
-
     m_versionIdHasBeenSet = true;
   }
-
   return *this;
 }
 

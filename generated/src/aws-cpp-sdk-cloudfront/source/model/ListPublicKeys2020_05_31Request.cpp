@@ -6,6 +6,7 @@
 #include <aws/cloudfront/model/ListPublicKeys2020_05_31Request.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,11 +17,6 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListPublicKeys2020_05_31Request::ListPublicKeys2020_05_31Request() : 
-    m_markerHasBeenSet(false),
-    m_maxItemsHasBeenSet(false)
-{
-}
 
 Aws::String ListPublicKeys2020_05_31Request::SerializePayload() const
 {

@@ -22,7 +22,7 @@ namespace Model
   class ModifyInstanceCapacityReservationAttributesRequest : public EC2Request
   {
   public:
-    AWS_EC2_API ModifyInstanceCapacityReservationAttributesRequest();
+    AWS_EC2_API ModifyInstanceCapacityReservationAttributesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,110 +37,42 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The ID of the instance to be modified.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The ID of the instance to be modified.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    ModifyInstanceCapacityReservationAttributesRequest& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the instance to be modified.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The ID of the instance to be modified.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The ID of the instance to be modified.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The ID of the instance to be modified.</p>
-     */
-    inline ModifyInstanceCapacityReservationAttributesRequest& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The ID of the instance to be modified.</p>
-     */
-    inline ModifyInstanceCapacityReservationAttributesRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the instance to be modified.</p>
-     */
-    inline ModifyInstanceCapacityReservationAttributesRequest& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the Capacity Reservation targeting option.</p>
      */
-    inline const CapacityReservationSpecification& GetCapacityReservationSpecification() const{ return m_capacityReservationSpecification; }
-
-    /**
-     * <p>Information about the Capacity Reservation targeting option.</p>
-     */
+    inline const CapacityReservationSpecification& GetCapacityReservationSpecification() const { return m_capacityReservationSpecification; }
     inline bool CapacityReservationSpecificationHasBeenSet() const { return m_capacityReservationSpecificationHasBeenSet; }
+    template<typename CapacityReservationSpecificationT = CapacityReservationSpecification>
+    void SetCapacityReservationSpecification(CapacityReservationSpecificationT&& value) { m_capacityReservationSpecificationHasBeenSet = true; m_capacityReservationSpecification = std::forward<CapacityReservationSpecificationT>(value); }
+    template<typename CapacityReservationSpecificationT = CapacityReservationSpecification>
+    ModifyInstanceCapacityReservationAttributesRequest& WithCapacityReservationSpecification(CapacityReservationSpecificationT&& value) { SetCapacityReservationSpecification(std::forward<CapacityReservationSpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the Capacity Reservation targeting option.</p>
-     */
-    inline void SetCapacityReservationSpecification(const CapacityReservationSpecification& value) { m_capacityReservationSpecificationHasBeenSet = true; m_capacityReservationSpecification = value; }
-
-    /**
-     * <p>Information about the Capacity Reservation targeting option.</p>
-     */
-    inline void SetCapacityReservationSpecification(CapacityReservationSpecification&& value) { m_capacityReservationSpecificationHasBeenSet = true; m_capacityReservationSpecification = std::move(value); }
-
-    /**
-     * <p>Information about the Capacity Reservation targeting option.</p>
-     */
-    inline ModifyInstanceCapacityReservationAttributesRequest& WithCapacityReservationSpecification(const CapacityReservationSpecification& value) { SetCapacityReservationSpecification(value); return *this;}
-
-    /**
-     * <p>Information about the Capacity Reservation targeting option.</p>
-     */
-    inline ModifyInstanceCapacityReservationAttributesRequest& WithCapacityReservationSpecification(CapacityReservationSpecification&& value) { SetCapacityReservationSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline ModifyInstanceCapacityReservationAttributesRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_instanceId;
@@ -149,7 +81,7 @@ namespace Model
     CapacityReservationSpecification m_capacityReservationSpecification;
     bool m_capacityReservationSpecificationHasBeenSet = false;
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
   };
 

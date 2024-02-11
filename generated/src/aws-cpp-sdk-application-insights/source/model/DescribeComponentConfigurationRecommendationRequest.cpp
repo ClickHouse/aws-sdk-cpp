@@ -12,14 +12,6 @@ using namespace Aws::ApplicationInsights::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeComponentConfigurationRecommendationRequest::DescribeComponentConfigurationRecommendationRequest() : 
-    m_resourceGroupNameHasBeenSet(false),
-    m_componentNameHasBeenSet(false),
-    m_tier(Tier::NOT_SET),
-    m_tierHasBeenSet(false)
-{
-}
-
 Aws::String DescribeComponentConfigurationRecommendationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,6 +31,17 @@ Aws::String DescribeComponentConfigurationRecommendationRequest::SerializePayloa
   if(m_tierHasBeenSet)
   {
    payload.WithString("Tier", TierMapper::GetNameForTier(m_tier));
+  }
+
+  if(m_workloadNameHasBeenSet)
+  {
+   payload.WithString("WorkloadName", m_workloadName);
+
+  }
+
+  if(m_recommendationTypeHasBeenSet)
+  {
+   payload.WithString("RecommendationType", RecommendationTypeMapper::GetNameForRecommendationType(m_recommendationType));
   }
 
   return payload.View().WriteReadable();

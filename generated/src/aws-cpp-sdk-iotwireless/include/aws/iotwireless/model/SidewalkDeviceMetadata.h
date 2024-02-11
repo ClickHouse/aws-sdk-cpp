@@ -33,137 +33,63 @@ namespace Model
   class SidewalkDeviceMetadata
   {
   public:
-    AWS_IOTWIRELESS_API SidewalkDeviceMetadata();
+    AWS_IOTWIRELESS_API SidewalkDeviceMetadata() = default;
     AWS_IOTWIRELESS_API SidewalkDeviceMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API SidewalkDeviceMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The RSSI value.</p>
      */
-    inline int GetRssi() const{ return m_rssi; }
-
-    /**
-     * <p>The RSSI value.</p>
-     */
+    inline int GetRssi() const { return m_rssi; }
     inline bool RssiHasBeenSet() const { return m_rssiHasBeenSet; }
-
-    /**
-     * <p>The RSSI value.</p>
-     */
     inline void SetRssi(int value) { m_rssiHasBeenSet = true; m_rssi = value; }
-
-    /**
-     * <p>The RSSI value.</p>
-     */
     inline SidewalkDeviceMetadata& WithRssi(int value) { SetRssi(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Sidewalk device battery level.</p>
      */
-    inline const BatteryLevel& GetBatteryLevel() const{ return m_batteryLevel; }
-
-    /**
-     * <p>Sidewalk device battery level.</p>
-     */
+    inline BatteryLevel GetBatteryLevel() const { return m_batteryLevel; }
     inline bool BatteryLevelHasBeenSet() const { return m_batteryLevelHasBeenSet; }
+    inline void SetBatteryLevel(BatteryLevel value) { m_batteryLevelHasBeenSet = true; m_batteryLevel = value; }
+    inline SidewalkDeviceMetadata& WithBatteryLevel(BatteryLevel value) { SetBatteryLevel(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Sidewalk device battery level.</p>
-     */
-    inline void SetBatteryLevel(const BatteryLevel& value) { m_batteryLevelHasBeenSet = true; m_batteryLevel = value; }
-
-    /**
-     * <p>Sidewalk device battery level.</p>
-     */
-    inline void SetBatteryLevel(BatteryLevel&& value) { m_batteryLevelHasBeenSet = true; m_batteryLevel = std::move(value); }
-
-    /**
-     * <p>Sidewalk device battery level.</p>
-     */
-    inline SidewalkDeviceMetadata& WithBatteryLevel(const BatteryLevel& value) { SetBatteryLevel(value); return *this;}
-
-    /**
-     * <p>Sidewalk device battery level.</p>
-     */
-    inline SidewalkDeviceMetadata& WithBatteryLevel(BatteryLevel&& value) { SetBatteryLevel(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Sidewalk device status notification.</p>
      */
-    inline const Event& GetEvent() const{ return m_event; }
-
-    /**
-     * <p>Sidewalk device status notification.</p>
-     */
+    inline Event GetEvent() const { return m_event; }
     inline bool EventHasBeenSet() const { return m_eventHasBeenSet; }
+    inline void SetEvent(Event value) { m_eventHasBeenSet = true; m_event = value; }
+    inline SidewalkDeviceMetadata& WithEvent(Event value) { SetEvent(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Sidewalk device status notification.</p>
-     */
-    inline void SetEvent(const Event& value) { m_eventHasBeenSet = true; m_event = value; }
-
-    /**
-     * <p>Sidewalk device status notification.</p>
-     */
-    inline void SetEvent(Event&& value) { m_eventHasBeenSet = true; m_event = std::move(value); }
-
-    /**
-     * <p>Sidewalk device status notification.</p>
-     */
-    inline SidewalkDeviceMetadata& WithEvent(const Event& value) { SetEvent(value); return *this;}
-
-    /**
-     * <p>Sidewalk device status notification.</p>
-     */
-    inline SidewalkDeviceMetadata& WithEvent(Event&& value) { SetEvent(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Device state defines the device status of sidewalk device.</p>
      */
-    inline const DeviceState& GetDeviceState() const{ return m_deviceState; }
-
-    /**
-     * <p>Device state defines the device status of sidewalk device.</p>
-     */
+    inline DeviceState GetDeviceState() const { return m_deviceState; }
     inline bool DeviceStateHasBeenSet() const { return m_deviceStateHasBeenSet; }
-
-    /**
-     * <p>Device state defines the device status of sidewalk device.</p>
-     */
-    inline void SetDeviceState(const DeviceState& value) { m_deviceStateHasBeenSet = true; m_deviceState = value; }
-
-    /**
-     * <p>Device state defines the device status of sidewalk device.</p>
-     */
-    inline void SetDeviceState(DeviceState&& value) { m_deviceStateHasBeenSet = true; m_deviceState = std::move(value); }
-
-    /**
-     * <p>Device state defines the device status of sidewalk device.</p>
-     */
-    inline SidewalkDeviceMetadata& WithDeviceState(const DeviceState& value) { SetDeviceState(value); return *this;}
-
-    /**
-     * <p>Device state defines the device status of sidewalk device.</p>
-     */
-    inline SidewalkDeviceMetadata& WithDeviceState(DeviceState&& value) { SetDeviceState(std::move(value)); return *this;}
-
+    inline void SetDeviceState(DeviceState value) { m_deviceStateHasBeenSet = true; m_deviceState = value; }
+    inline SidewalkDeviceMetadata& WithDeviceState(DeviceState value) { SetDeviceState(value); return *this;}
+    ///@}
   private:
 
-    int m_rssi;
+    int m_rssi{0};
     bool m_rssiHasBeenSet = false;
 
-    BatteryLevel m_batteryLevel;
+    BatteryLevel m_batteryLevel{BatteryLevel::NOT_SET};
     bool m_batteryLevelHasBeenSet = false;
 
-    Event m_event;
+    Event m_event{Event::NOT_SET};
     bool m_eventHasBeenSet = false;
 
-    DeviceState m_deviceState;
+    DeviceState m_deviceState{DeviceState::NOT_SET};
     bool m_deviceStateHasBeenSet = false;
   };
 

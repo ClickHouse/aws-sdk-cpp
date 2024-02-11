@@ -12,14 +12,6 @@ using namespace Aws::PrometheusService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateWorkspaceRequest::CreateWorkspaceRequest() : 
-    m_aliasHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateWorkspaceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -44,6 +36,12 @@ Aws::String CreateWorkspaceRequest::SerializePayload() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_kmsKeyArnHasBeenSet)
+  {
+   payload.WithString("kmsKeyArn", m_kmsKeyArn);
 
   }
 

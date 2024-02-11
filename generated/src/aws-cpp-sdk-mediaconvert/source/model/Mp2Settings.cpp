@@ -18,56 +18,44 @@ namespace MediaConvert
 namespace Model
 {
 
-Mp2Settings::Mp2Settings() : 
-    m_bitrate(0),
-    m_bitrateHasBeenSet(false),
-    m_channels(0),
-    m_channelsHasBeenSet(false),
-    m_sampleRate(0),
-    m_sampleRateHasBeenSet(false)
-{
-}
-
-Mp2Settings::Mp2Settings(JsonView jsonValue) : 
-    m_bitrate(0),
-    m_bitrateHasBeenSet(false),
-    m_channels(0),
-    m_channelsHasBeenSet(false),
-    m_sampleRate(0),
-    m_sampleRateHasBeenSet(false)
+Mp2Settings::Mp2Settings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 Mp2Settings& Mp2Settings::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("audioDescriptionMix"))
+  {
+    m_audioDescriptionMix = Mp2AudioDescriptionMixMapper::GetMp2AudioDescriptionMixForName(jsonValue.GetString("audioDescriptionMix"));
+    m_audioDescriptionMixHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("bitrate"))
   {
     m_bitrate = jsonValue.GetInteger("bitrate");
-
     m_bitrateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("channels"))
   {
     m_channels = jsonValue.GetInteger("channels");
-
     m_channelsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sampleRate"))
   {
     m_sampleRate = jsonValue.GetInteger("sampleRate");
-
     m_sampleRateHasBeenSet = true;
   }
-
   return *this;
 }
 
 JsonValue Mp2Settings::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_audioDescriptionMixHasBeenSet)
+  {
+   payload.WithString("audioDescriptionMix", Mp2AudioDescriptionMixMapper::GetNameForMp2AudioDescriptionMix(m_audioDescriptionMix));
+  }
 
   if(m_bitrateHasBeenSet)
   {

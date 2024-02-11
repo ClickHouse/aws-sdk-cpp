@@ -18,15 +18,7 @@ namespace tnb
 namespace Model
 {
 
-GetSolInstantiatedVnfInfo::GetSolInstantiatedVnfInfo() : 
-    m_vnfState(VnfOperationalState::NOT_SET),
-    m_vnfStateHasBeenSet(false)
-{
-}
-
-GetSolInstantiatedVnfInfo::GetSolInstantiatedVnfInfo(JsonView jsonValue) : 
-    m_vnfState(VnfOperationalState::NOT_SET),
-    m_vnfStateHasBeenSet(false)
+GetSolInstantiatedVnfInfo::GetSolInstantiatedVnfInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ GetSolInstantiatedVnfInfo& GetSolInstantiatedVnfInfo::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("vnfState"))
   {
     m_vnfState = VnfOperationalStateMapper::GetVnfOperationalStateForName(jsonValue.GetString("vnfState"));
-
     m_vnfStateHasBeenSet = true;
   }
-
   return *this;
 }
 

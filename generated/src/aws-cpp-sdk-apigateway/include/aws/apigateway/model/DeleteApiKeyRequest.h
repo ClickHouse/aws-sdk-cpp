@@ -24,7 +24,7 @@ namespace Model
   class DeleteApiKeyRequest : public APIGatewayRequest
   {
   public:
-    AWS_APIGATEWAY_API DeleteApiKeyRequest();
+    AWS_APIGATEWAY_API DeleteApiKeyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,46 +35,17 @@ namespace Model
     AWS_APIGATEWAY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the ApiKey resource to be deleted.</p>
      */
-    inline const Aws::String& GetApiKey() const{ return m_apiKey; }
-
-    /**
-     * <p>The identifier of the ApiKey resource to be deleted.</p>
-     */
+    inline const Aws::String& GetApiKey() const { return m_apiKey; }
     inline bool ApiKeyHasBeenSet() const { return m_apiKeyHasBeenSet; }
-
-    /**
-     * <p>The identifier of the ApiKey resource to be deleted.</p>
-     */
-    inline void SetApiKey(const Aws::String& value) { m_apiKeyHasBeenSet = true; m_apiKey = value; }
-
-    /**
-     * <p>The identifier of the ApiKey resource to be deleted.</p>
-     */
-    inline void SetApiKey(Aws::String&& value) { m_apiKeyHasBeenSet = true; m_apiKey = std::move(value); }
-
-    /**
-     * <p>The identifier of the ApiKey resource to be deleted.</p>
-     */
-    inline void SetApiKey(const char* value) { m_apiKeyHasBeenSet = true; m_apiKey.assign(value); }
-
-    /**
-     * <p>The identifier of the ApiKey resource to be deleted.</p>
-     */
-    inline DeleteApiKeyRequest& WithApiKey(const Aws::String& value) { SetApiKey(value); return *this;}
-
-    /**
-     * <p>The identifier of the ApiKey resource to be deleted.</p>
-     */
-    inline DeleteApiKeyRequest& WithApiKey(Aws::String&& value) { SetApiKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the ApiKey resource to be deleted.</p>
-     */
-    inline DeleteApiKeyRequest& WithApiKey(const char* value) { SetApiKey(value); return *this;}
-
+    template<typename ApiKeyT = Aws::String>
+    void SetApiKey(ApiKeyT&& value) { m_apiKeyHasBeenSet = true; m_apiKey = std::forward<ApiKeyT>(value); }
+    template<typename ApiKeyT = Aws::String>
+    DeleteApiKeyRequest& WithApiKey(ApiKeyT&& value) { SetApiKey(std::forward<ApiKeyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_apiKey;

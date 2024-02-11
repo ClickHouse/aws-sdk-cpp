@@ -18,21 +18,7 @@ namespace Athena
 namespace Model
 {
 
-SessionConfiguration::SessionConfiguration() : 
-    m_executionRoleHasBeenSet(false),
-    m_workingDirectoryHasBeenSet(false),
-    m_idleTimeoutSeconds(0),
-    m_idleTimeoutSecondsHasBeenSet(false),
-    m_encryptionConfigurationHasBeenSet(false)
-{
-}
-
-SessionConfiguration::SessionConfiguration(JsonView jsonValue) : 
-    m_executionRoleHasBeenSet(false),
-    m_workingDirectoryHasBeenSet(false),
-    m_idleTimeoutSeconds(0),
-    m_idleTimeoutSecondsHasBeenSet(false),
-    m_encryptionConfigurationHasBeenSet(false)
+SessionConfiguration::SessionConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ SessionConfiguration& SessionConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ExecutionRole"))
   {
     m_executionRole = jsonValue.GetString("ExecutionRole");
-
     m_executionRoleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WorkingDirectory"))
   {
     m_workingDirectory = jsonValue.GetString("WorkingDirectory");
-
     m_workingDirectoryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IdleTimeoutSeconds"))
   {
     m_idleTimeoutSeconds = jsonValue.GetInt64("IdleTimeoutSeconds");
-
     m_idleTimeoutSecondsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EncryptionConfiguration"))
   {
     m_encryptionConfiguration = jsonValue.GetObject("EncryptionConfiguration");
-
     m_encryptionConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

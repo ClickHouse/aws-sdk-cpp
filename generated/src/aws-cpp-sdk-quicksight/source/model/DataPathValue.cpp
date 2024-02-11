@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-DataPathValue::DataPathValue() : 
-    m_fieldIdHasBeenSet(false),
-    m_fieldValueHasBeenSet(false)
-{
-}
-
-DataPathValue::DataPathValue(JsonView jsonValue) : 
-    m_fieldIdHasBeenSet(false),
-    m_fieldValueHasBeenSet(false)
+DataPathValue::DataPathValue(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ DataPathValue& DataPathValue::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FieldId"))
   {
     m_fieldId = jsonValue.GetString("FieldId");
-
     m_fieldIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FieldValue"))
   {
     m_fieldValue = jsonValue.GetString("FieldValue");
-
     m_fieldValueHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("DataPathType"))
+  {
+    m_dataPathType = jsonValue.GetObject("DataPathType");
+    m_dataPathTypeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +56,12 @@ JsonValue DataPathValue::Jsonize() const
   if(m_fieldValueHasBeenSet)
   {
    payload.WithString("FieldValue", m_fieldValue);
+
+  }
+
+  if(m_dataPathTypeHasBeenSet)
+  {
+   payload.WithObject("DataPathType", m_dataPathType.Jsonize());
 
   }
 

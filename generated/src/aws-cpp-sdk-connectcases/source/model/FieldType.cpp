@@ -25,6 +25,8 @@ namespace Aws
         static const int Boolean_HASH = HashingUtils::HashString("Boolean");
         static const int DateTime_HASH = HashingUtils::HashString("DateTime");
         static const int SingleSelect_HASH = HashingUtils::HashString("SingleSelect");
+        static const int Url_HASH = HashingUtils::HashString("Url");
+        static const int User_HASH = HashingUtils::HashString("User");
 
 
         FieldType GetFieldTypeForName(const Aws::String& name)
@@ -50,6 +52,14 @@ namespace Aws
           {
             return FieldType::SingleSelect;
           }
+          else if (hashCode == Url_HASH)
+          {
+            return FieldType::Url;
+          }
+          else if (hashCode == User_HASH)
+          {
+            return FieldType::User;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -64,6 +74,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case FieldType::NOT_SET:
+            return {};
           case FieldType::Text:
             return "Text";
           case FieldType::Number:
@@ -74,6 +86,10 @@ namespace Aws
             return "DateTime";
           case FieldType::SingleSelect:
             return "SingleSelect";
+          case FieldType::Url:
+            return "Url";
+          case FieldType::User:
+            return "User";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

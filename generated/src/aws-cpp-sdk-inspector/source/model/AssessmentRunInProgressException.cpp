@@ -18,23 +18,7 @@ namespace Inspector
 namespace Model
 {
 
-AssessmentRunInProgressException::AssessmentRunInProgressException() : 
-    m_messageHasBeenSet(false),
-    m_assessmentRunArnsHasBeenSet(false),
-    m_assessmentRunArnsTruncated(false),
-    m_assessmentRunArnsTruncatedHasBeenSet(false),
-    m_canRetry(false),
-    m_canRetryHasBeenSet(false)
-{
-}
-
-AssessmentRunInProgressException::AssessmentRunInProgressException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_assessmentRunArnsHasBeenSet(false),
-    m_assessmentRunArnsTruncated(false),
-    m_assessmentRunArnsTruncatedHasBeenSet(false),
-    m_canRetry(false),
-    m_canRetryHasBeenSet(false)
+AssessmentRunInProgressException::AssessmentRunInProgressException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,10 +28,8 @@ AssessmentRunInProgressException& AssessmentRunInProgressException::operator =(J
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("assessmentRunArns"))
   {
     Aws::Utils::Array<JsonView> assessmentRunArnsJsonList = jsonValue.GetArray("assessmentRunArns");
@@ -57,21 +39,16 @@ AssessmentRunInProgressException& AssessmentRunInProgressException::operator =(J
     }
     m_assessmentRunArnsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("assessmentRunArnsTruncated"))
   {
     m_assessmentRunArnsTruncated = jsonValue.GetBool("assessmentRunArnsTruncated");
-
     m_assessmentRunArnsTruncatedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("canRetry"))
   {
     m_canRetry = jsonValue.GetBool("canRetry");
-
     m_canRetryHasBeenSet = true;
   }
-
   return *this;
 }
 

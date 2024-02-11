@@ -10,18 +10,6 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-GetClusterCredentialsRequest::GetClusterCredentialsRequest() : 
-    m_dbUserHasBeenSet(false),
-    m_dbNameHasBeenSet(false),
-    m_clusterIdentifierHasBeenSet(false),
-    m_durationSeconds(0),
-    m_durationSecondsHasBeenSet(false),
-    m_autoCreate(false),
-    m_autoCreateHasBeenSet(false),
-    m_dbGroupsHasBeenSet(false)
-{
-}
-
 Aws::String GetClusterCredentialsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -53,13 +41,25 @@ Aws::String GetClusterCredentialsRequest::SerializePayload() const
 
   if(m_dbGroupsHasBeenSet)
   {
-    unsigned dbGroupsCount = 1;
-    for(auto& item : m_dbGroups)
+    if (m_dbGroups.empty())
     {
-      ss << "DbGroups.member." << dbGroupsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      dbGroupsCount++;
+      ss << "DbGroups=&";
     }
+    else
+    {
+      unsigned dbGroupsCount = 1;
+      for(auto& item : m_dbGroups)
+      {
+        ss << "DbGroups.DbGroup." << dbGroupsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        dbGroupsCount++;
+      }
+    }
+  }
+
+  if(m_customDomainNameHasBeenSet)
+  {
+    ss << "CustomDomainName=" << StringUtils::URLEncode(m_customDomainName.c_str()) << "&";
   }
 
   ss << "Version=2012-12-01";

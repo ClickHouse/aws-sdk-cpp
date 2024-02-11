@@ -18,15 +18,7 @@ namespace MarketplaceCatalog
 namespace Model
 {
 
-Filter::Filter() : 
-    m_nameHasBeenSet(false),
-    m_valueListHasBeenSet(false)
-{
-}
-
-Filter::Filter(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_valueListHasBeenSet(false)
+Filter::Filter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ Filter& Filter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ValueList"))
   {
     Aws::Utils::Array<JsonView> valueListJsonList = jsonValue.GetArray("ValueList");
@@ -49,7 +39,6 @@ Filter& Filter::operator =(JsonView jsonValue)
     }
     m_valueListHasBeenSet = true;
   }
-
   return *this;
 }
 

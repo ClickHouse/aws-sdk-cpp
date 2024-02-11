@@ -21,7 +21,7 @@ namespace Model
   class DescribeNodegroupRequest : public EKSRequest
   {
   public:
-    AWS_EKS_API DescribeNodegroupRequest();
+    AWS_EKS_API DescribeNodegroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_EKS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The name of the Amazon EKS cluster associated with the node group.</p>
+     * <p>The name of your cluster.</p>
      */
-    inline const Aws::String& GetClusterName() const{ return m_clusterName; }
-
-    /**
-     * <p>The name of the Amazon EKS cluster associated with the node group.</p>
-     */
+    inline const Aws::String& GetClusterName() const { return m_clusterName; }
     inline bool ClusterNameHasBeenSet() const { return m_clusterNameHasBeenSet; }
+    template<typename ClusterNameT = Aws::String>
+    void SetClusterName(ClusterNameT&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::forward<ClusterNameT>(value); }
+    template<typename ClusterNameT = Aws::String>
+    DescribeNodegroupRequest& WithClusterName(ClusterNameT&& value) { SetClusterName(std::forward<ClusterNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Amazon EKS cluster associated with the node group.</p>
-     */
-    inline void SetClusterName(const Aws::String& value) { m_clusterNameHasBeenSet = true; m_clusterName = value; }
-
-    /**
-     * <p>The name of the Amazon EKS cluster associated with the node group.</p>
-     */
-    inline void SetClusterName(Aws::String&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon EKS cluster associated with the node group.</p>
-     */
-    inline void SetClusterName(const char* value) { m_clusterNameHasBeenSet = true; m_clusterName.assign(value); }
-
-    /**
-     * <p>The name of the Amazon EKS cluster associated with the node group.</p>
-     */
-    inline DescribeNodegroupRequest& WithClusterName(const Aws::String& value) { SetClusterName(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon EKS cluster associated with the node group.</p>
-     */
-    inline DescribeNodegroupRequest& WithClusterName(Aws::String&& value) { SetClusterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon EKS cluster associated with the node group.</p>
-     */
-    inline DescribeNodegroupRequest& WithClusterName(const char* value) { SetClusterName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the node group to describe.</p>
      */
-    inline const Aws::String& GetNodegroupName() const{ return m_nodegroupName; }
-
-    /**
-     * <p>The name of the node group to describe.</p>
-     */
+    inline const Aws::String& GetNodegroupName() const { return m_nodegroupName; }
     inline bool NodegroupNameHasBeenSet() const { return m_nodegroupNameHasBeenSet; }
-
-    /**
-     * <p>The name of the node group to describe.</p>
-     */
-    inline void SetNodegroupName(const Aws::String& value) { m_nodegroupNameHasBeenSet = true; m_nodegroupName = value; }
-
-    /**
-     * <p>The name of the node group to describe.</p>
-     */
-    inline void SetNodegroupName(Aws::String&& value) { m_nodegroupNameHasBeenSet = true; m_nodegroupName = std::move(value); }
-
-    /**
-     * <p>The name of the node group to describe.</p>
-     */
-    inline void SetNodegroupName(const char* value) { m_nodegroupNameHasBeenSet = true; m_nodegroupName.assign(value); }
-
-    /**
-     * <p>The name of the node group to describe.</p>
-     */
-    inline DescribeNodegroupRequest& WithNodegroupName(const Aws::String& value) { SetNodegroupName(value); return *this;}
-
-    /**
-     * <p>The name of the node group to describe.</p>
-     */
-    inline DescribeNodegroupRequest& WithNodegroupName(Aws::String&& value) { SetNodegroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the node group to describe.</p>
-     */
-    inline DescribeNodegroupRequest& WithNodegroupName(const char* value) { SetNodegroupName(value); return *this;}
-
+    template<typename NodegroupNameT = Aws::String>
+    void SetNodegroupName(NodegroupNameT&& value) { m_nodegroupNameHasBeenSet = true; m_nodegroupName = std::forward<NodegroupNameT>(value); }
+    template<typename NodegroupNameT = Aws::String>
+    DescribeNodegroupRequest& WithNodegroupName(NodegroupNameT&& value) { SetNodegroupName(std::forward<NodegroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterName;

@@ -34,7 +34,7 @@ namespace Model
   class RollbackTrigger
   {
   public:
-    AWS_CLOUDFORMATION_API RollbackTrigger();
+    AWS_CLOUDFORMATION_API RollbackTrigger() = default;
     AWS_CLOUDFORMATION_API RollbackTrigger(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFORMATION_API RollbackTrigger& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,127 +42,34 @@ namespace Model
     AWS_CLOUDFORMATION_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the rollback trigger.</p> <p>If a specified
      * trigger is missing, the entire stack operation fails and is rolled back.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rollback trigger.</p> <p>If a specified
-     * trigger is missing, the entire stack operation fails and is rolled back.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    RollbackTrigger& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rollback trigger.</p> <p>If a specified
-     * trigger is missing, the entire stack operation fails and is rolled back.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rollback trigger.</p> <p>If a specified
-     * trigger is missing, the entire stack operation fails and is rolled back.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rollback trigger.</p> <p>If a specified
-     * trigger is missing, the entire stack operation fails and is rolled back.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rollback trigger.</p> <p>If a specified
-     * trigger is missing, the entire stack operation fails and is rolled back.</p>
-     */
-    inline RollbackTrigger& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rollback trigger.</p> <p>If a specified
-     * trigger is missing, the entire stack operation fails and is rolled back.</p>
-     */
-    inline RollbackTrigger& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rollback trigger.</p> <p>If a specified
-     * trigger is missing, the entire stack operation fails and is rolled back.</p>
-     */
-    inline RollbackTrigger& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The resource type of the rollback trigger. Specify either <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html">AWS::CloudWatch::Alarm</a>
+     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-cloudwatch-alarm.html">AWS::CloudWatch::Alarm</a>
      * or <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-compositealarm.html">AWS::CloudWatch::CompositeAlarm</a>
+     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-cloudwatch-compositealarm.html">AWS::CloudWatch::CompositeAlarm</a>
      * resource types.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The resource type of the rollback trigger. Specify either <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html">AWS::CloudWatch::Alarm</a>
-     * or <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-compositealarm.html">AWS::CloudWatch::CompositeAlarm</a>
-     * resource types.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The resource type of the rollback trigger. Specify either <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html">AWS::CloudWatch::Alarm</a>
-     * or <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-compositealarm.html">AWS::CloudWatch::CompositeAlarm</a>
-     * resource types.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The resource type of the rollback trigger. Specify either <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html">AWS::CloudWatch::Alarm</a>
-     * or <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-compositealarm.html">AWS::CloudWatch::CompositeAlarm</a>
-     * resource types.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The resource type of the rollback trigger. Specify either <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html">AWS::CloudWatch::Alarm</a>
-     * or <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-compositealarm.html">AWS::CloudWatch::CompositeAlarm</a>
-     * resource types.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The resource type of the rollback trigger. Specify either <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html">AWS::CloudWatch::Alarm</a>
-     * or <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-compositealarm.html">AWS::CloudWatch::CompositeAlarm</a>
-     * resource types.</p>
-     */
-    inline RollbackTrigger& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The resource type of the rollback trigger. Specify either <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html">AWS::CloudWatch::Alarm</a>
-     * or <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-compositealarm.html">AWS::CloudWatch::CompositeAlarm</a>
-     * resource types.</p>
-     */
-    inline RollbackTrigger& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The resource type of the rollback trigger. Specify either <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html">AWS::CloudWatch::Alarm</a>
-     * or <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-compositealarm.html">AWS::CloudWatch::CompositeAlarm</a>
-     * resource types.</p>
-     */
-    inline RollbackTrigger& WithType(const char* value) { SetType(value); return *this;}
-
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    RollbackTrigger& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;

@@ -18,19 +18,7 @@ namespace MediaConnect
 namespace Model
 {
 
-EncodingParametersRequest::EncodingParametersRequest() : 
-    m_compressionFactor(0.0),
-    m_compressionFactorHasBeenSet(false),
-    m_encoderProfile(EncoderProfile::NOT_SET),
-    m_encoderProfileHasBeenSet(false)
-{
-}
-
-EncodingParametersRequest::EncodingParametersRequest(JsonView jsonValue) : 
-    m_compressionFactor(0.0),
-    m_compressionFactorHasBeenSet(false),
-    m_encoderProfile(EncoderProfile::NOT_SET),
-    m_encoderProfileHasBeenSet(false)
+EncodingParametersRequest::EncodingParametersRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ EncodingParametersRequest& EncodingParametersRequest::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("compressionFactor"))
   {
     m_compressionFactor = jsonValue.GetDouble("compressionFactor");
-
     m_compressionFactorHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("encoderProfile"))
   {
     m_encoderProfile = EncoderProfileMapper::GetEncoderProfileForName(jsonValue.GetString("encoderProfile"));
-
     m_encoderProfileHasBeenSet = true;
   }
-
   return *this;
 }
 

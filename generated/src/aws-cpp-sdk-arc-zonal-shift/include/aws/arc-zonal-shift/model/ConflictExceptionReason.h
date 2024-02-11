@@ -18,7 +18,16 @@ namespace Model
     NOT_SET,
     ZonalShiftAlreadyExists,
     ZonalShiftStatusNotActive,
-    SimultaneousZonalShiftsConflict
+    SimultaneousZonalShiftsConflict,
+    PracticeConfigurationAlreadyExists,
+    AutoShiftEnabled,
+    PracticeConfigurationDoesNotExist,
+    ZonalAutoshiftActive,
+    PracticeOutcomeAlarmsRed,
+    PracticeBlockingAlarmsRed,
+    PracticeInBlockedDates,
+    PracticeInBlockedWindows,
+    PracticeOutsideAllowedWindows
   };
 
 namespace ConflictExceptionReasonMapper

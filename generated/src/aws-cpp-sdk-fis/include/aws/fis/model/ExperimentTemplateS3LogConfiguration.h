@@ -32,93 +32,35 @@ namespace Model
   class ExperimentTemplateS3LogConfiguration
   {
   public:
-    AWS_FIS_API ExperimentTemplateS3LogConfiguration();
+    AWS_FIS_API ExperimentTemplateS3LogConfiguration() = default;
     AWS_FIS_API ExperimentTemplateS3LogConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIS_API ExperimentTemplateS3LogConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the destination bucket.</p>
      */
-    inline const Aws::String& GetBucketName() const{ return m_bucketName; }
-
-    /**
-     * <p>The name of the destination bucket.</p>
-     */
+    inline const Aws::String& GetBucketName() const { return m_bucketName; }
     inline bool BucketNameHasBeenSet() const { return m_bucketNameHasBeenSet; }
+    template<typename BucketNameT = Aws::String>
+    void SetBucketName(BucketNameT&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::forward<BucketNameT>(value); }
+    template<typename BucketNameT = Aws::String>
+    ExperimentTemplateS3LogConfiguration& WithBucketName(BucketNameT&& value) { SetBucketName(std::forward<BucketNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the destination bucket.</p>
-     */
-    inline void SetBucketName(const Aws::String& value) { m_bucketNameHasBeenSet = true; m_bucketName = value; }
-
-    /**
-     * <p>The name of the destination bucket.</p>
-     */
-    inline void SetBucketName(Aws::String&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::move(value); }
-
-    /**
-     * <p>The name of the destination bucket.</p>
-     */
-    inline void SetBucketName(const char* value) { m_bucketNameHasBeenSet = true; m_bucketName.assign(value); }
-
-    /**
-     * <p>The name of the destination bucket.</p>
-     */
-    inline ExperimentTemplateS3LogConfiguration& WithBucketName(const Aws::String& value) { SetBucketName(value); return *this;}
-
-    /**
-     * <p>The name of the destination bucket.</p>
-     */
-    inline ExperimentTemplateS3LogConfiguration& WithBucketName(Aws::String&& value) { SetBucketName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the destination bucket.</p>
-     */
-    inline ExperimentTemplateS3LogConfiguration& WithBucketName(const char* value) { SetBucketName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The bucket prefix.</p>
      */
-    inline const Aws::String& GetPrefix() const{ return m_prefix; }
-
-    /**
-     * <p>The bucket prefix.</p>
-     */
+    inline const Aws::String& GetPrefix() const { return m_prefix; }
     inline bool PrefixHasBeenSet() const { return m_prefixHasBeenSet; }
-
-    /**
-     * <p>The bucket prefix.</p>
-     */
-    inline void SetPrefix(const Aws::String& value) { m_prefixHasBeenSet = true; m_prefix = value; }
-
-    /**
-     * <p>The bucket prefix.</p>
-     */
-    inline void SetPrefix(Aws::String&& value) { m_prefixHasBeenSet = true; m_prefix = std::move(value); }
-
-    /**
-     * <p>The bucket prefix.</p>
-     */
-    inline void SetPrefix(const char* value) { m_prefixHasBeenSet = true; m_prefix.assign(value); }
-
-    /**
-     * <p>The bucket prefix.</p>
-     */
-    inline ExperimentTemplateS3LogConfiguration& WithPrefix(const Aws::String& value) { SetPrefix(value); return *this;}
-
-    /**
-     * <p>The bucket prefix.</p>
-     */
-    inline ExperimentTemplateS3LogConfiguration& WithPrefix(Aws::String&& value) { SetPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>The bucket prefix.</p>
-     */
-    inline ExperimentTemplateS3LogConfiguration& WithPrefix(const char* value) { SetPrefix(value); return *this;}
-
+    template<typename PrefixT = Aws::String>
+    void SetPrefix(PrefixT&& value) { m_prefixHasBeenSet = true; m_prefix = std::forward<PrefixT>(value); }
+    template<typename PrefixT = Aws::String>
+    ExperimentTemplateS3LogConfiguration& WithPrefix(PrefixT&& value) { SetPrefix(std::forward<PrefixT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucketName;

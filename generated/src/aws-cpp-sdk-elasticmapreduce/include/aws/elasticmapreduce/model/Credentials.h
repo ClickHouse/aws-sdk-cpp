@@ -32,42 +32,23 @@ namespace Model
   class Credentials
   {
   public:
-    AWS_EMR_API Credentials();
+    AWS_EMR_API Credentials() = default;
     AWS_EMR_API Credentials(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMR_API Credentials& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The username and password that you use to connect to cluster endpoints.</p>
      */
-    inline const UsernamePassword& GetUsernamePassword() const{ return m_usernamePassword; }
-
-    /**
-     * <p>The username and password that you use to connect to cluster endpoints.</p>
-     */
+    inline const UsernamePassword& GetUsernamePassword() const { return m_usernamePassword; }
     inline bool UsernamePasswordHasBeenSet() const { return m_usernamePasswordHasBeenSet; }
-
-    /**
-     * <p>The username and password that you use to connect to cluster endpoints.</p>
-     */
-    inline void SetUsernamePassword(const UsernamePassword& value) { m_usernamePasswordHasBeenSet = true; m_usernamePassword = value; }
-
-    /**
-     * <p>The username and password that you use to connect to cluster endpoints.</p>
-     */
-    inline void SetUsernamePassword(UsernamePassword&& value) { m_usernamePasswordHasBeenSet = true; m_usernamePassword = std::move(value); }
-
-    /**
-     * <p>The username and password that you use to connect to cluster endpoints.</p>
-     */
-    inline Credentials& WithUsernamePassword(const UsernamePassword& value) { SetUsernamePassword(value); return *this;}
-
-    /**
-     * <p>The username and password that you use to connect to cluster endpoints.</p>
-     */
-    inline Credentials& WithUsernamePassword(UsernamePassword&& value) { SetUsernamePassword(std::move(value)); return *this;}
-
+    template<typename UsernamePasswordT = UsernamePassword>
+    void SetUsernamePassword(UsernamePasswordT&& value) { m_usernamePasswordHasBeenSet = true; m_usernamePassword = std::forward<UsernamePasswordT>(value); }
+    template<typename UsernamePasswordT = UsernamePassword>
+    Credentials& WithUsernamePassword(UsernamePasswordT&& value) { SetUsernamePassword(std::forward<UsernamePasswordT>(value)); return *this;}
+    ///@}
   private:
 
     UsernamePassword m_usernamePassword;

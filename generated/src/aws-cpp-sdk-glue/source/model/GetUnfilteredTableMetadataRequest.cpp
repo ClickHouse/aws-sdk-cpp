@@ -12,18 +12,15 @@ using namespace Aws::Glue::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetUnfilteredTableMetadataRequest::GetUnfilteredTableMetadataRequest() : 
-    m_catalogIdHasBeenSet(false),
-    m_databaseNameHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_auditContextHasBeenSet(false),
-    m_supportedPermissionTypesHasBeenSet(false)
-{
-}
-
 Aws::String GetUnfilteredTableMetadataRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_regionHasBeenSet)
+  {
+   payload.WithString("Region", m_region);
+
+  }
 
   if(m_catalogIdHasBeenSet)
   {
@@ -57,6 +54,41 @@ Aws::String GetUnfilteredTableMetadataRequest::SerializePayload() const
      supportedPermissionTypesJsonList[supportedPermissionTypesIndex].AsString(PermissionTypeMapper::GetNameForPermissionType(m_supportedPermissionTypes[supportedPermissionTypesIndex]));
    }
    payload.WithArray("SupportedPermissionTypes", std::move(supportedPermissionTypesJsonList));
+
+  }
+
+  if(m_parentResourceArnHasBeenSet)
+  {
+   payload.WithString("ParentResourceArn", m_parentResourceArn);
+
+  }
+
+  if(m_rootResourceArnHasBeenSet)
+  {
+   payload.WithString("RootResourceArn", m_rootResourceArn);
+
+  }
+
+  if(m_supportedDialectHasBeenSet)
+  {
+   payload.WithObject("SupportedDialect", m_supportedDialect.Jsonize());
+
+  }
+
+  if(m_permissionsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> permissionsJsonList(m_permissions.size());
+   for(unsigned permissionsIndex = 0; permissionsIndex < permissionsJsonList.GetLength(); ++permissionsIndex)
+   {
+     permissionsJsonList[permissionsIndex].AsString(PermissionMapper::GetNameForPermission(m_permissions[permissionsIndex]));
+   }
+   payload.WithArray("Permissions", std::move(permissionsJsonList));
+
+  }
+
+  if(m_querySessionContextHasBeenSet)
+  {
+   payload.WithObject("QuerySessionContext", m_querySessionContext.Jsonize());
 
   }
 

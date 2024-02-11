@@ -11,6 +11,7 @@
 #include <aws/dynamodb/model/BillingMode.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/dynamodb/model/ProvisionedThroughput.h>
+#include <aws/dynamodb/model/OnDemandThroughput.h>
 #include <aws/dynamodb/model/SSESpecification.h>
 #include <aws/dynamodb/model/GlobalSecondaryIndex.h>
 #include <aws/dynamodb/model/LocalSecondaryIndex.h>
@@ -28,7 +29,7 @@ namespace Model
   class RestoreTableToPointInTimeRequest : public DynamoDBRequest
   {
   public:
-    AWS_DYNAMODB_API RestoreTableToPointInTimeRequest();
+    AWS_DYNAMODB_API RestoreTableToPointInTimeRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,404 +41,147 @@ namespace Model
 
     AWS_DYNAMODB_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+    /**
+     * Helper function to collect parameters (configurable and static hardcoded) required for endpoint computation.
+     */
+    AWS_DYNAMODB_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p>The DynamoDB table that will be restored. This value is an Amazon Resource
      * Name (ARN).</p>
      */
-    inline const Aws::String& GetSourceTableArn() const{ return m_sourceTableArn; }
-
-    /**
-     * <p>The DynamoDB table that will be restored. This value is an Amazon Resource
-     * Name (ARN).</p>
-     */
+    inline const Aws::String& GetSourceTableArn() const { return m_sourceTableArn; }
     inline bool SourceTableArnHasBeenSet() const { return m_sourceTableArnHasBeenSet; }
+    template<typename SourceTableArnT = Aws::String>
+    void SetSourceTableArn(SourceTableArnT&& value) { m_sourceTableArnHasBeenSet = true; m_sourceTableArn = std::forward<SourceTableArnT>(value); }
+    template<typename SourceTableArnT = Aws::String>
+    RestoreTableToPointInTimeRequest& WithSourceTableArn(SourceTableArnT&& value) { SetSourceTableArn(std::forward<SourceTableArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The DynamoDB table that will be restored. This value is an Amazon Resource
-     * Name (ARN).</p>
-     */
-    inline void SetSourceTableArn(const Aws::String& value) { m_sourceTableArnHasBeenSet = true; m_sourceTableArn = value; }
-
-    /**
-     * <p>The DynamoDB table that will be restored. This value is an Amazon Resource
-     * Name (ARN).</p>
-     */
-    inline void SetSourceTableArn(Aws::String&& value) { m_sourceTableArnHasBeenSet = true; m_sourceTableArn = std::move(value); }
-
-    /**
-     * <p>The DynamoDB table that will be restored. This value is an Amazon Resource
-     * Name (ARN).</p>
-     */
-    inline void SetSourceTableArn(const char* value) { m_sourceTableArnHasBeenSet = true; m_sourceTableArn.assign(value); }
-
-    /**
-     * <p>The DynamoDB table that will be restored. This value is an Amazon Resource
-     * Name (ARN).</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithSourceTableArn(const Aws::String& value) { SetSourceTableArn(value); return *this;}
-
-    /**
-     * <p>The DynamoDB table that will be restored. This value is an Amazon Resource
-     * Name (ARN).</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithSourceTableArn(Aws::String&& value) { SetSourceTableArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The DynamoDB table that will be restored. This value is an Amazon Resource
-     * Name (ARN).</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithSourceTableArn(const char* value) { SetSourceTableArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Name of the source table that is being restored.</p>
      */
-    inline const Aws::String& GetSourceTableName() const{ return m_sourceTableName; }
-
-    /**
-     * <p>Name of the source table that is being restored.</p>
-     */
+    inline const Aws::String& GetSourceTableName() const { return m_sourceTableName; }
     inline bool SourceTableNameHasBeenSet() const { return m_sourceTableNameHasBeenSet; }
+    template<typename SourceTableNameT = Aws::String>
+    void SetSourceTableName(SourceTableNameT&& value) { m_sourceTableNameHasBeenSet = true; m_sourceTableName = std::forward<SourceTableNameT>(value); }
+    template<typename SourceTableNameT = Aws::String>
+    RestoreTableToPointInTimeRequest& WithSourceTableName(SourceTableNameT&& value) { SetSourceTableName(std::forward<SourceTableNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Name of the source table that is being restored.</p>
-     */
-    inline void SetSourceTableName(const Aws::String& value) { m_sourceTableNameHasBeenSet = true; m_sourceTableName = value; }
-
-    /**
-     * <p>Name of the source table that is being restored.</p>
-     */
-    inline void SetSourceTableName(Aws::String&& value) { m_sourceTableNameHasBeenSet = true; m_sourceTableName = std::move(value); }
-
-    /**
-     * <p>Name of the source table that is being restored.</p>
-     */
-    inline void SetSourceTableName(const char* value) { m_sourceTableNameHasBeenSet = true; m_sourceTableName.assign(value); }
-
-    /**
-     * <p>Name of the source table that is being restored.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithSourceTableName(const Aws::String& value) { SetSourceTableName(value); return *this;}
-
-    /**
-     * <p>Name of the source table that is being restored.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithSourceTableName(Aws::String&& value) { SetSourceTableName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the source table that is being restored.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithSourceTableName(const char* value) { SetSourceTableName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the new table to which it must be restored to.</p>
      */
-    inline const Aws::String& GetTargetTableName() const{ return m_targetTableName; }
-
-    /**
-     * <p>The name of the new table to which it must be restored to.</p>
-     */
+    inline const Aws::String& GetTargetTableName() const { return m_targetTableName; }
     inline bool TargetTableNameHasBeenSet() const { return m_targetTableNameHasBeenSet; }
+    template<typename TargetTableNameT = Aws::String>
+    void SetTargetTableName(TargetTableNameT&& value) { m_targetTableNameHasBeenSet = true; m_targetTableName = std::forward<TargetTableNameT>(value); }
+    template<typename TargetTableNameT = Aws::String>
+    RestoreTableToPointInTimeRequest& WithTargetTableName(TargetTableNameT&& value) { SetTargetTableName(std::forward<TargetTableNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the new table to which it must be restored to.</p>
-     */
-    inline void SetTargetTableName(const Aws::String& value) { m_targetTableNameHasBeenSet = true; m_targetTableName = value; }
-
-    /**
-     * <p>The name of the new table to which it must be restored to.</p>
-     */
-    inline void SetTargetTableName(Aws::String&& value) { m_targetTableNameHasBeenSet = true; m_targetTableName = std::move(value); }
-
-    /**
-     * <p>The name of the new table to which it must be restored to.</p>
-     */
-    inline void SetTargetTableName(const char* value) { m_targetTableNameHasBeenSet = true; m_targetTableName.assign(value); }
-
-    /**
-     * <p>The name of the new table to which it must be restored to.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithTargetTableName(const Aws::String& value) { SetTargetTableName(value); return *this;}
-
-    /**
-     * <p>The name of the new table to which it must be restored to.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithTargetTableName(Aws::String&& value) { SetTargetTableName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the new table to which it must be restored to.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithTargetTableName(const char* value) { SetTargetTableName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Restore the table to the latest possible time.
      * <code>LatestRestorableDateTime</code> is typically 5 minutes before the current
      * time. </p>
      */
-    inline bool GetUseLatestRestorableTime() const{ return m_useLatestRestorableTime; }
-
-    /**
-     * <p>Restore the table to the latest possible time.
-     * <code>LatestRestorableDateTime</code> is typically 5 minutes before the current
-     * time. </p>
-     */
+    inline bool GetUseLatestRestorableTime() const { return m_useLatestRestorableTime; }
     inline bool UseLatestRestorableTimeHasBeenSet() const { return m_useLatestRestorableTimeHasBeenSet; }
-
-    /**
-     * <p>Restore the table to the latest possible time.
-     * <code>LatestRestorableDateTime</code> is typically 5 minutes before the current
-     * time. </p>
-     */
     inline void SetUseLatestRestorableTime(bool value) { m_useLatestRestorableTimeHasBeenSet = true; m_useLatestRestorableTime = value; }
-
-    /**
-     * <p>Restore the table to the latest possible time.
-     * <code>LatestRestorableDateTime</code> is typically 5 minutes before the current
-     * time. </p>
-     */
     inline RestoreTableToPointInTimeRequest& WithUseLatestRestorableTime(bool value) { SetUseLatestRestorableTime(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Time in the past to restore the table to.</p>
      */
-    inline const Aws::Utils::DateTime& GetRestoreDateTime() const{ return m_restoreDateTime; }
-
-    /**
-     * <p>Time in the past to restore the table to.</p>
-     */
+    inline const Aws::Utils::DateTime& GetRestoreDateTime() const { return m_restoreDateTime; }
     inline bool RestoreDateTimeHasBeenSet() const { return m_restoreDateTimeHasBeenSet; }
+    template<typename RestoreDateTimeT = Aws::Utils::DateTime>
+    void SetRestoreDateTime(RestoreDateTimeT&& value) { m_restoreDateTimeHasBeenSet = true; m_restoreDateTime = std::forward<RestoreDateTimeT>(value); }
+    template<typename RestoreDateTimeT = Aws::Utils::DateTime>
+    RestoreTableToPointInTimeRequest& WithRestoreDateTime(RestoreDateTimeT&& value) { SetRestoreDateTime(std::forward<RestoreDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Time in the past to restore the table to.</p>
-     */
-    inline void SetRestoreDateTime(const Aws::Utils::DateTime& value) { m_restoreDateTimeHasBeenSet = true; m_restoreDateTime = value; }
-
-    /**
-     * <p>Time in the past to restore the table to.</p>
-     */
-    inline void SetRestoreDateTime(Aws::Utils::DateTime&& value) { m_restoreDateTimeHasBeenSet = true; m_restoreDateTime = std::move(value); }
-
-    /**
-     * <p>Time in the past to restore the table to.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithRestoreDateTime(const Aws::Utils::DateTime& value) { SetRestoreDateTime(value); return *this;}
-
-    /**
-     * <p>Time in the past to restore the table to.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithRestoreDateTime(Aws::Utils::DateTime&& value) { SetRestoreDateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The billing mode of the restored table.</p>
      */
-    inline const BillingMode& GetBillingModeOverride() const{ return m_billingModeOverride; }
-
-    /**
-     * <p>The billing mode of the restored table.</p>
-     */
+    inline BillingMode GetBillingModeOverride() const { return m_billingModeOverride; }
     inline bool BillingModeOverrideHasBeenSet() const { return m_billingModeOverrideHasBeenSet; }
+    inline void SetBillingModeOverride(BillingMode value) { m_billingModeOverrideHasBeenSet = true; m_billingModeOverride = value; }
+    inline RestoreTableToPointInTimeRequest& WithBillingModeOverride(BillingMode value) { SetBillingModeOverride(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The billing mode of the restored table.</p>
-     */
-    inline void SetBillingModeOverride(const BillingMode& value) { m_billingModeOverrideHasBeenSet = true; m_billingModeOverride = value; }
-
-    /**
-     * <p>The billing mode of the restored table.</p>
-     */
-    inline void SetBillingModeOverride(BillingMode&& value) { m_billingModeOverrideHasBeenSet = true; m_billingModeOverride = std::move(value); }
-
-    /**
-     * <p>The billing mode of the restored table.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithBillingModeOverride(const BillingMode& value) { SetBillingModeOverride(value); return *this;}
-
-    /**
-     * <p>The billing mode of the restored table.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithBillingModeOverride(BillingMode&& value) { SetBillingModeOverride(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>List of global secondary indexes for the restored table. The indexes provided
      * should match existing secondary indexes. You can choose to exclude some or all
      * of the indexes at the time of restore.</p>
      */
-    inline const Aws::Vector<GlobalSecondaryIndex>& GetGlobalSecondaryIndexOverride() const{ return m_globalSecondaryIndexOverride; }
-
-    /**
-     * <p>List of global secondary indexes for the restored table. The indexes provided
-     * should match existing secondary indexes. You can choose to exclude some or all
-     * of the indexes at the time of restore.</p>
-     */
+    inline const Aws::Vector<GlobalSecondaryIndex>& GetGlobalSecondaryIndexOverride() const { return m_globalSecondaryIndexOverride; }
     inline bool GlobalSecondaryIndexOverrideHasBeenSet() const { return m_globalSecondaryIndexOverrideHasBeenSet; }
+    template<typename GlobalSecondaryIndexOverrideT = Aws::Vector<GlobalSecondaryIndex>>
+    void SetGlobalSecondaryIndexOverride(GlobalSecondaryIndexOverrideT&& value) { m_globalSecondaryIndexOverrideHasBeenSet = true; m_globalSecondaryIndexOverride = std::forward<GlobalSecondaryIndexOverrideT>(value); }
+    template<typename GlobalSecondaryIndexOverrideT = Aws::Vector<GlobalSecondaryIndex>>
+    RestoreTableToPointInTimeRequest& WithGlobalSecondaryIndexOverride(GlobalSecondaryIndexOverrideT&& value) { SetGlobalSecondaryIndexOverride(std::forward<GlobalSecondaryIndexOverrideT>(value)); return *this;}
+    template<typename GlobalSecondaryIndexOverrideT = GlobalSecondaryIndex>
+    RestoreTableToPointInTimeRequest& AddGlobalSecondaryIndexOverride(GlobalSecondaryIndexOverrideT&& value) { m_globalSecondaryIndexOverrideHasBeenSet = true; m_globalSecondaryIndexOverride.emplace_back(std::forward<GlobalSecondaryIndexOverrideT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of global secondary indexes for the restored table. The indexes provided
-     * should match existing secondary indexes. You can choose to exclude some or all
-     * of the indexes at the time of restore.</p>
-     */
-    inline void SetGlobalSecondaryIndexOverride(const Aws::Vector<GlobalSecondaryIndex>& value) { m_globalSecondaryIndexOverrideHasBeenSet = true; m_globalSecondaryIndexOverride = value; }
-
-    /**
-     * <p>List of global secondary indexes for the restored table. The indexes provided
-     * should match existing secondary indexes. You can choose to exclude some or all
-     * of the indexes at the time of restore.</p>
-     */
-    inline void SetGlobalSecondaryIndexOverride(Aws::Vector<GlobalSecondaryIndex>&& value) { m_globalSecondaryIndexOverrideHasBeenSet = true; m_globalSecondaryIndexOverride = std::move(value); }
-
-    /**
-     * <p>List of global secondary indexes for the restored table. The indexes provided
-     * should match existing secondary indexes. You can choose to exclude some or all
-     * of the indexes at the time of restore.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithGlobalSecondaryIndexOverride(const Aws::Vector<GlobalSecondaryIndex>& value) { SetGlobalSecondaryIndexOverride(value); return *this;}
-
-    /**
-     * <p>List of global secondary indexes for the restored table. The indexes provided
-     * should match existing secondary indexes. You can choose to exclude some or all
-     * of the indexes at the time of restore.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithGlobalSecondaryIndexOverride(Aws::Vector<GlobalSecondaryIndex>&& value) { SetGlobalSecondaryIndexOverride(std::move(value)); return *this;}
-
-    /**
-     * <p>List of global secondary indexes for the restored table. The indexes provided
-     * should match existing secondary indexes. You can choose to exclude some or all
-     * of the indexes at the time of restore.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& AddGlobalSecondaryIndexOverride(const GlobalSecondaryIndex& value) { m_globalSecondaryIndexOverrideHasBeenSet = true; m_globalSecondaryIndexOverride.push_back(value); return *this; }
-
-    /**
-     * <p>List of global secondary indexes for the restored table. The indexes provided
-     * should match existing secondary indexes. You can choose to exclude some or all
-     * of the indexes at the time of restore.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& AddGlobalSecondaryIndexOverride(GlobalSecondaryIndex&& value) { m_globalSecondaryIndexOverrideHasBeenSet = true; m_globalSecondaryIndexOverride.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>List of local secondary indexes for the restored table. The indexes provided
      * should match existing secondary indexes. You can choose to exclude some or all
      * of the indexes at the time of restore.</p>
      */
-    inline const Aws::Vector<LocalSecondaryIndex>& GetLocalSecondaryIndexOverride() const{ return m_localSecondaryIndexOverride; }
-
-    /**
-     * <p>List of local secondary indexes for the restored table. The indexes provided
-     * should match existing secondary indexes. You can choose to exclude some or all
-     * of the indexes at the time of restore.</p>
-     */
+    inline const Aws::Vector<LocalSecondaryIndex>& GetLocalSecondaryIndexOverride() const { return m_localSecondaryIndexOverride; }
     inline bool LocalSecondaryIndexOverrideHasBeenSet() const { return m_localSecondaryIndexOverrideHasBeenSet; }
+    template<typename LocalSecondaryIndexOverrideT = Aws::Vector<LocalSecondaryIndex>>
+    void SetLocalSecondaryIndexOverride(LocalSecondaryIndexOverrideT&& value) { m_localSecondaryIndexOverrideHasBeenSet = true; m_localSecondaryIndexOverride = std::forward<LocalSecondaryIndexOverrideT>(value); }
+    template<typename LocalSecondaryIndexOverrideT = Aws::Vector<LocalSecondaryIndex>>
+    RestoreTableToPointInTimeRequest& WithLocalSecondaryIndexOverride(LocalSecondaryIndexOverrideT&& value) { SetLocalSecondaryIndexOverride(std::forward<LocalSecondaryIndexOverrideT>(value)); return *this;}
+    template<typename LocalSecondaryIndexOverrideT = LocalSecondaryIndex>
+    RestoreTableToPointInTimeRequest& AddLocalSecondaryIndexOverride(LocalSecondaryIndexOverrideT&& value) { m_localSecondaryIndexOverrideHasBeenSet = true; m_localSecondaryIndexOverride.emplace_back(std::forward<LocalSecondaryIndexOverrideT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of local secondary indexes for the restored table. The indexes provided
-     * should match existing secondary indexes. You can choose to exclude some or all
-     * of the indexes at the time of restore.</p>
-     */
-    inline void SetLocalSecondaryIndexOverride(const Aws::Vector<LocalSecondaryIndex>& value) { m_localSecondaryIndexOverrideHasBeenSet = true; m_localSecondaryIndexOverride = value; }
-
-    /**
-     * <p>List of local secondary indexes for the restored table. The indexes provided
-     * should match existing secondary indexes. You can choose to exclude some or all
-     * of the indexes at the time of restore.</p>
-     */
-    inline void SetLocalSecondaryIndexOverride(Aws::Vector<LocalSecondaryIndex>&& value) { m_localSecondaryIndexOverrideHasBeenSet = true; m_localSecondaryIndexOverride = std::move(value); }
-
-    /**
-     * <p>List of local secondary indexes for the restored table. The indexes provided
-     * should match existing secondary indexes. You can choose to exclude some or all
-     * of the indexes at the time of restore.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithLocalSecondaryIndexOverride(const Aws::Vector<LocalSecondaryIndex>& value) { SetLocalSecondaryIndexOverride(value); return *this;}
-
-    /**
-     * <p>List of local secondary indexes for the restored table. The indexes provided
-     * should match existing secondary indexes. You can choose to exclude some or all
-     * of the indexes at the time of restore.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithLocalSecondaryIndexOverride(Aws::Vector<LocalSecondaryIndex>&& value) { SetLocalSecondaryIndexOverride(std::move(value)); return *this;}
-
-    /**
-     * <p>List of local secondary indexes for the restored table. The indexes provided
-     * should match existing secondary indexes. You can choose to exclude some or all
-     * of the indexes at the time of restore.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& AddLocalSecondaryIndexOverride(const LocalSecondaryIndex& value) { m_localSecondaryIndexOverrideHasBeenSet = true; m_localSecondaryIndexOverride.push_back(value); return *this; }
-
-    /**
-     * <p>List of local secondary indexes for the restored table. The indexes provided
-     * should match existing secondary indexes. You can choose to exclude some or all
-     * of the indexes at the time of restore.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& AddLocalSecondaryIndexOverride(LocalSecondaryIndex&& value) { m_localSecondaryIndexOverrideHasBeenSet = true; m_localSecondaryIndexOverride.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Provisioned throughput settings for the restored table.</p>
      */
-    inline const ProvisionedThroughput& GetProvisionedThroughputOverride() const{ return m_provisionedThroughputOverride; }
-
-    /**
-     * <p>Provisioned throughput settings for the restored table.</p>
-     */
+    inline const ProvisionedThroughput& GetProvisionedThroughputOverride() const { return m_provisionedThroughputOverride; }
     inline bool ProvisionedThroughputOverrideHasBeenSet() const { return m_provisionedThroughputOverrideHasBeenSet; }
+    template<typename ProvisionedThroughputOverrideT = ProvisionedThroughput>
+    void SetProvisionedThroughputOverride(ProvisionedThroughputOverrideT&& value) { m_provisionedThroughputOverrideHasBeenSet = true; m_provisionedThroughputOverride = std::forward<ProvisionedThroughputOverrideT>(value); }
+    template<typename ProvisionedThroughputOverrideT = ProvisionedThroughput>
+    RestoreTableToPointInTimeRequest& WithProvisionedThroughputOverride(ProvisionedThroughputOverrideT&& value) { SetProvisionedThroughputOverride(std::forward<ProvisionedThroughputOverrideT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Provisioned throughput settings for the restored table.</p>
-     */
-    inline void SetProvisionedThroughputOverride(const ProvisionedThroughput& value) { m_provisionedThroughputOverrideHasBeenSet = true; m_provisionedThroughputOverride = value; }
+    ///@{
+    
+    inline const OnDemandThroughput& GetOnDemandThroughputOverride() const { return m_onDemandThroughputOverride; }
+    inline bool OnDemandThroughputOverrideHasBeenSet() const { return m_onDemandThroughputOverrideHasBeenSet; }
+    template<typename OnDemandThroughputOverrideT = OnDemandThroughput>
+    void SetOnDemandThroughputOverride(OnDemandThroughputOverrideT&& value) { m_onDemandThroughputOverrideHasBeenSet = true; m_onDemandThroughputOverride = std::forward<OnDemandThroughputOverrideT>(value); }
+    template<typename OnDemandThroughputOverrideT = OnDemandThroughput>
+    RestoreTableToPointInTimeRequest& WithOnDemandThroughputOverride(OnDemandThroughputOverrideT&& value) { SetOnDemandThroughputOverride(std::forward<OnDemandThroughputOverrideT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Provisioned throughput settings for the restored table.</p>
-     */
-    inline void SetProvisionedThroughputOverride(ProvisionedThroughput&& value) { m_provisionedThroughputOverrideHasBeenSet = true; m_provisionedThroughputOverride = std::move(value); }
-
-    /**
-     * <p>Provisioned throughput settings for the restored table.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithProvisionedThroughputOverride(const ProvisionedThroughput& value) { SetProvisionedThroughputOverride(value); return *this;}
-
-    /**
-     * <p>Provisioned throughput settings for the restored table.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithProvisionedThroughputOverride(ProvisionedThroughput&& value) { SetProvisionedThroughputOverride(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The new server-side encryption settings for the restored table.</p>
      */
-    inline const SSESpecification& GetSSESpecificationOverride() const{ return m_sSESpecificationOverride; }
-
-    /**
-     * <p>The new server-side encryption settings for the restored table.</p>
-     */
+    inline const SSESpecification& GetSSESpecificationOverride() const { return m_sSESpecificationOverride; }
     inline bool SSESpecificationOverrideHasBeenSet() const { return m_sSESpecificationOverrideHasBeenSet; }
-
-    /**
-     * <p>The new server-side encryption settings for the restored table.</p>
-     */
-    inline void SetSSESpecificationOverride(const SSESpecification& value) { m_sSESpecificationOverrideHasBeenSet = true; m_sSESpecificationOverride = value; }
-
-    /**
-     * <p>The new server-side encryption settings for the restored table.</p>
-     */
-    inline void SetSSESpecificationOverride(SSESpecification&& value) { m_sSESpecificationOverrideHasBeenSet = true; m_sSESpecificationOverride = std::move(value); }
-
-    /**
-     * <p>The new server-side encryption settings for the restored table.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithSSESpecificationOverride(const SSESpecification& value) { SetSSESpecificationOverride(value); return *this;}
-
-    /**
-     * <p>The new server-side encryption settings for the restored table.</p>
-     */
-    inline RestoreTableToPointInTimeRequest& WithSSESpecificationOverride(SSESpecification&& value) { SetSSESpecificationOverride(std::move(value)); return *this;}
-
+    template<typename SSESpecificationOverrideT = SSESpecification>
+    void SetSSESpecificationOverride(SSESpecificationOverrideT&& value) { m_sSESpecificationOverrideHasBeenSet = true; m_sSESpecificationOverride = std::forward<SSESpecificationOverrideT>(value); }
+    template<typename SSESpecificationOverrideT = SSESpecification>
+    RestoreTableToPointInTimeRequest& WithSSESpecificationOverride(SSESpecificationOverrideT&& value) { SetSSESpecificationOverride(std::forward<SSESpecificationOverrideT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sourceTableArn;
@@ -449,13 +193,13 @@ namespace Model
     Aws::String m_targetTableName;
     bool m_targetTableNameHasBeenSet = false;
 
-    bool m_useLatestRestorableTime;
+    bool m_useLatestRestorableTime{false};
     bool m_useLatestRestorableTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_restoreDateTime;
+    Aws::Utils::DateTime m_restoreDateTime{};
     bool m_restoreDateTimeHasBeenSet = false;
 
-    BillingMode m_billingModeOverride;
+    BillingMode m_billingModeOverride{BillingMode::NOT_SET};
     bool m_billingModeOverrideHasBeenSet = false;
 
     Aws::Vector<GlobalSecondaryIndex> m_globalSecondaryIndexOverride;
@@ -466,6 +210,9 @@ namespace Model
 
     ProvisionedThroughput m_provisionedThroughputOverride;
     bool m_provisionedThroughputOverrideHasBeenSet = false;
+
+    OnDemandThroughput m_onDemandThroughputOverride;
+    bool m_onDemandThroughputOverrideHasBeenSet = false;
 
     SSESpecification m_sSESpecificationOverride;
     bool m_sSESpecificationOverrideHasBeenSet = false;

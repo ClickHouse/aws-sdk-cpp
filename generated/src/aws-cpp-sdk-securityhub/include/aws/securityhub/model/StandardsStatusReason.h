@@ -24,59 +24,33 @@ namespace Model
 {
 
   /**
-   * <p>The reason for the current status of a standard subscription.</p><p><h3>See
-   * Also:</h3>   <a
+   * <p>The reason for the current status of your subscription to the
+   * standard.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/StandardsStatusReason">AWS
    * API Reference</a></p>
    */
   class StandardsStatusReason
   {
   public:
-    AWS_SECURITYHUB_API StandardsStatusReason();
+    AWS_SECURITYHUB_API StandardsStatusReason() = default;
     AWS_SECURITYHUB_API StandardsStatusReason(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API StandardsStatusReason& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The reason code that represents the reason for the current status of a
      * standard subscription.</p>
      */
-    inline const StatusReasonCode& GetStatusReasonCode() const{ return m_statusReasonCode; }
-
-    /**
-     * <p>The reason code that represents the reason for the current status of a
-     * standard subscription.</p>
-     */
+    inline StatusReasonCode GetStatusReasonCode() const { return m_statusReasonCode; }
     inline bool StatusReasonCodeHasBeenSet() const { return m_statusReasonCodeHasBeenSet; }
-
-    /**
-     * <p>The reason code that represents the reason for the current status of a
-     * standard subscription.</p>
-     */
-    inline void SetStatusReasonCode(const StatusReasonCode& value) { m_statusReasonCodeHasBeenSet = true; m_statusReasonCode = value; }
-
-    /**
-     * <p>The reason code that represents the reason for the current status of a
-     * standard subscription.</p>
-     */
-    inline void SetStatusReasonCode(StatusReasonCode&& value) { m_statusReasonCodeHasBeenSet = true; m_statusReasonCode = std::move(value); }
-
-    /**
-     * <p>The reason code that represents the reason for the current status of a
-     * standard subscription.</p>
-     */
-    inline StandardsStatusReason& WithStatusReasonCode(const StatusReasonCode& value) { SetStatusReasonCode(value); return *this;}
-
-    /**
-     * <p>The reason code that represents the reason for the current status of a
-     * standard subscription.</p>
-     */
-    inline StandardsStatusReason& WithStatusReasonCode(StatusReasonCode&& value) { SetStatusReasonCode(std::move(value)); return *this;}
-
+    inline void SetStatusReasonCode(StatusReasonCode value) { m_statusReasonCodeHasBeenSet = true; m_statusReasonCode = value; }
+    inline StandardsStatusReason& WithStatusReasonCode(StatusReasonCode value) { SetStatusReasonCode(value); return *this;}
+    ///@}
   private:
 
-    StatusReasonCode m_statusReasonCode;
+    StatusReasonCode m_statusReasonCode{StatusReasonCode::NOT_SET};
     bool m_statusReasonCodeHasBeenSet = false;
   };
 

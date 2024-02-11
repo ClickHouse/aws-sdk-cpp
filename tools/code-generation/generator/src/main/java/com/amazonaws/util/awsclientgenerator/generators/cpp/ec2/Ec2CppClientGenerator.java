@@ -8,24 +8,37 @@ package com.amazonaws.util.awsclientgenerator.generators.cpp.ec2;
 import com.amazonaws.util.awsclientgenerator.domainmodels.SdkFileEntry;
 import com.amazonaws.util.awsclientgenerator.domainmodels.codegeneration.*;
 import com.amazonaws.util.awsclientgenerator.domainmodels.codegeneration.Error;
+import com.amazonaws.util.awsclientgenerator.domainmodels.codegeneration.cpp.CppViewHelper;
 import com.amazonaws.util.awsclientgenerator.generators.cpp.QueryCppClientGenerator;
+import com.google.common.collect.ImmutableSet;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
-public class Ec2CppClientGenerator extends QueryCppClientGenerator{
+public class Ec2CppClientGenerator extends QueryCppClientGenerator {
+
+    private static final Set<String> OPS_WITH_PRESIGNED_URLS = ImmutableSet.of(
+            "CopySnapshot"
+    );
 
     public Ec2CppClientGenerator() throws Exception {
         super();
     }
 
-    @Override
-    public SdkFileEntry[] generateSourceFiles(ServiceModel serviceModel) throws Exception {
+    /**
+     * Perform legacy patching of the ec2 model present from the very beginning.
+     */
+    public static void legacyPatchEc2Model(ServiceModel serviceModel) {
+        if (!serviceModel.getMetadata().getProtocol().equals("ec2")) {
+            return;
+        }
 
         List<String> keysToRename = new LinkedList<>();
         Map<String, Shape> shapes = serviceModel.getShapes();
@@ -41,12 +54,19 @@ public class Ec2CppClientGenerator extends QueryCppClientGenerator{
             shapes.remove(key);
             shapes.put(key.replaceAll("Result$", "Response"), shape);
         }
+    }
 
-        //add "disabled" state to SpotInstanceState
-        List<String> spotInstanceStateEnumValues = shapes.get("SpotInstanceState").getEnumValues();
+    @Override
+    public SdkFileEntry[] generateSourceFiles(ServiceModel serviceModel) throws Exception {
+        legacyPatchEc2Model(serviceModel);
+        Map<String, Shape> shapes = serviceModel.getShapes();
 
-        if(!spotInstanceStateEnumValues.contains("disabled")) {
-            spotInstanceStateEnumValues.add("disabled");
+        if (shapes.containsKey("SpotInstanceState")) {
+            // add "disabled" state to SpotInstanceState
+            List<String> spotInstanceStateEnumValues = shapes.get("SpotInstanceState").getEnumValues();
+            if (!spotInstanceStateEnumValues.contains("disabled")) {
+                spotInstanceStateEnumValues.add("disabled");
+            }
         }
 
         final Collection<Error> serviceErrors = serviceModel.getServiceErrors();
@@ -669,7 +689,7 @@ public class Ec2CppClientGenerator extends QueryCppClientGenerator{
         final Error securityGroupsPerInterfaceLimitExceeded = new Error();
         securityGroupsPerInterfaceLimitExceeded.setName("SecurityGroupsPerInterfaceLimitExceeded");
         securityGroupsPerInterfaceLimitExceeded.setText("SecurityGroupsPerInterfaceLimitExceeded");
-        serviceErrors.add(securityGroupsPerInterfaceLimitExceeded);        
+        serviceErrors.add(securityGroupsPerInterfaceLimitExceeded);
         final Error snapshotLimitExceeded = new Error();
         snapshotLimitExceeded.setName("SnapshotLimitExceeded");
         snapshotLimitExceeded.setText("SnapshotLimitExceeded");
@@ -742,6 +762,17 @@ public class Ec2CppClientGenerator extends QueryCppClientGenerator{
         vpnGatewayLimitExceeded.setName("VpnGatewayLimitExceeded");
         vpnGatewayLimitExceeded.setText("VpnGatewayLimitExceeded");
         serviceErrors.add(vpnGatewayLimitExceeded);
+
+        // Add customization for operations with presigned URLs
+        serviceModel.getMetadata().setHasPreSignedUrl(true);
+
+        serviceModel.getOperations().values().stream()
+                .filter(operationEntry -> OPS_WITH_PRESIGNED_URLS.contains(operationEntry.getName()))
+                .forEach(operationEntry -> {
+                    operationEntry.setHasPreSignedUrl(true);
+                    operationEntry.getRequest().getShape().setHasPreSignedUrl(true);
+                });
+
         return super.generateSourceFiles(serviceModel);
     }
 

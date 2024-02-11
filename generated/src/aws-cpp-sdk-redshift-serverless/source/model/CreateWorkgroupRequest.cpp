@@ -12,24 +12,6 @@ using namespace Aws::RedshiftServerless::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateWorkgroupRequest::CreateWorkgroupRequest() : 
-    m_baseCapacity(0),
-    m_baseCapacityHasBeenSet(false),
-    m_configParametersHasBeenSet(false),
-    m_enhancedVpcRouting(false),
-    m_enhancedVpcRoutingHasBeenSet(false),
-    m_namespaceNameHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_publiclyAccessible(false),
-    m_publiclyAccessibleHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_workgroupNameHasBeenSet(false)
-{
-}
-
 Aws::String CreateWorkgroupRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -57,6 +39,18 @@ Aws::String CreateWorkgroupRequest::SerializePayload() const
 
   }
 
+  if(m_ipAddressTypeHasBeenSet)
+  {
+   payload.WithString("ipAddressType", m_ipAddressType);
+
+  }
+
+  if(m_maxCapacityHasBeenSet)
+  {
+   payload.WithInteger("maxCapacity", m_maxCapacity);
+
+  }
+
   if(m_namespaceNameHasBeenSet)
   {
    payload.WithString("namespaceName", m_namespaceName);
@@ -66,6 +60,12 @@ Aws::String CreateWorkgroupRequest::SerializePayload() const
   if(m_portHasBeenSet)
   {
    payload.WithInteger("port", m_port);
+
+  }
+
+  if(m_pricePerformanceTargetHasBeenSet)
+  {
+   payload.WithObject("pricePerformanceTarget", m_pricePerformanceTarget.Jsonize());
 
   }
 
@@ -105,6 +105,12 @@ Aws::String CreateWorkgroupRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_trackNameHasBeenSet)
+  {
+   payload.WithString("trackName", m_trackName);
 
   }
 

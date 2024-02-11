@@ -20,39 +20,7 @@ namespace EC2
 namespace Model
 {
 
-NatGateway::NatGateway() : 
-    m_createTimeHasBeenSet(false),
-    m_deleteTimeHasBeenSet(false),
-    m_failureCodeHasBeenSet(false),
-    m_failureMessageHasBeenSet(false),
-    m_natGatewayAddressesHasBeenSet(false),
-    m_natGatewayIdHasBeenSet(false),
-    m_provisionedBandwidthHasBeenSet(false),
-    m_state(NatGatewayState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_connectivityType(ConnectivityType::NOT_SET),
-    m_connectivityTypeHasBeenSet(false)
-{
-}
-
-NatGateway::NatGateway(const XmlNode& xmlNode) : 
-    m_createTimeHasBeenSet(false),
-    m_deleteTimeHasBeenSet(false),
-    m_failureCodeHasBeenSet(false),
-    m_failureMessageHasBeenSet(false),
-    m_natGatewayAddressesHasBeenSet(false),
-    m_natGatewayIdHasBeenSet(false),
-    m_provisionedBandwidthHasBeenSet(false),
-    m_state(NatGatewayState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_connectivityType(ConnectivityType::NOT_SET),
-    m_connectivityTypeHasBeenSet(false)
+NatGateway::NatGateway(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -91,6 +59,7 @@ NatGateway& NatGateway::operator =(const XmlNode& xmlNode)
     if(!natGatewayAddressesNode.IsNull())
     {
       XmlNode natGatewayAddressesMember = natGatewayAddressesNode.FirstChild("item");
+      m_natGatewayAddressesHasBeenSet = !natGatewayAddressesMember.IsNull();
       while(!natGatewayAddressesMember.IsNull())
       {
         m_natGatewayAddresses.push_back(natGatewayAddressesMember);
@@ -114,7 +83,7 @@ NatGateway& NatGateway::operator =(const XmlNode& xmlNode)
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = NatGatewayStateMapper::GetNatGatewayStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = NatGatewayStateMapper::GetNatGatewayStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode subnetIdNode = resultNode.FirstChild("subnetId");
@@ -133,6 +102,7 @@ NatGateway& NatGateway::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -144,7 +114,7 @@ NatGateway& NatGateway::operator =(const XmlNode& xmlNode)
     XmlNode connectivityTypeNode = resultNode.FirstChild("connectivityType");
     if(!connectivityTypeNode.IsNull())
     {
-      m_connectivityType = ConnectivityTypeMapper::GetConnectivityTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(connectivityTypeNode.GetText()).c_str()).c_str());
+      m_connectivityType = ConnectivityTypeMapper::GetConnectivityTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(connectivityTypeNode.GetText()).c_str()));
       m_connectivityTypeHasBeenSet = true;
     }
   }
@@ -199,7 +169,7 @@ void NatGateway::OutputToStream(Aws::OStream& oStream, const char* location, uns
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << NatGatewayStateMapper::GetNameForNatGatewayState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(NatGatewayStateMapper::GetNameForNatGatewayState(m_state)) << "&";
   }
 
   if(m_subnetIdHasBeenSet)
@@ -225,7 +195,7 @@ void NatGateway::OutputToStream(Aws::OStream& oStream, const char* location, uns
 
   if(m_connectivityTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ConnectivityType=" << ConnectivityTypeMapper::GetNameForConnectivityType(m_connectivityType) << "&";
+      oStream << location << index << locationValue << ".ConnectivityType=" << StringUtils::URLEncode(ConnectivityTypeMapper::GetNameForConnectivityType(m_connectivityType)) << "&";
   }
 
 }
@@ -254,7 +224,7 @@ void NatGateway::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_natGatewayAddresses)
       {
         Aws::StringStream natGatewayAddressesSs;
-        natGatewayAddressesSs << location <<  ".NatGatewayAddressSet." << natGatewayAddressesIdx++;
+        natGatewayAddressesSs << location << ".NatGatewayAddressSet." << natGatewayAddressesIdx++;
         item.OutputToStream(oStream, natGatewayAddressesSs.str().c_str());
       }
   }
@@ -270,7 +240,7 @@ void NatGateway::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << NatGatewayStateMapper::GetNameForNatGatewayState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(NatGatewayStateMapper::GetNameForNatGatewayState(m_state)) << "&";
   }
   if(m_subnetIdHasBeenSet)
   {
@@ -286,13 +256,13 @@ void NatGateway::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
   if(m_connectivityTypeHasBeenSet)
   {
-      oStream << location << ".ConnectivityType=" << ConnectivityTypeMapper::GetNameForConnectivityType(m_connectivityType) << "&";
+      oStream << location << ".ConnectivityType=" << StringUtils::URLEncode(ConnectivityTypeMapper::GetNameForConnectivityType(m_connectivityType)) << "&";
   }
 }
 

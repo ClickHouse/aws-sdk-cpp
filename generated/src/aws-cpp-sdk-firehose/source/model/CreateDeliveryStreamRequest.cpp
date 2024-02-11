@@ -12,23 +12,6 @@ using namespace Aws::Firehose::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDeliveryStreamRequest::CreateDeliveryStreamRequest() : 
-    m_deliveryStreamNameHasBeenSet(false),
-    m_deliveryStreamType(DeliveryStreamType::NOT_SET),
-    m_deliveryStreamTypeHasBeenSet(false),
-    m_kinesisStreamSourceConfigurationHasBeenSet(false),
-    m_deliveryStreamEncryptionConfigurationInputHasBeenSet(false),
-    m_extendedS3DestinationConfigurationHasBeenSet(false),
-    m_redshiftDestinationConfigurationHasBeenSet(false),
-    m_elasticsearchDestinationConfigurationHasBeenSet(false),
-    m_amazonopensearchserviceDestinationConfigurationHasBeenSet(false),
-    m_splunkDestinationConfigurationHasBeenSet(false),
-    m_httpEndpointDestinationConfigurationHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_amazonOpenSearchServerlessDestinationConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String CreateDeliveryStreamRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -42,6 +25,12 @@ Aws::String CreateDeliveryStreamRequest::SerializePayload() const
   if(m_deliveryStreamTypeHasBeenSet)
   {
    payload.WithString("DeliveryStreamType", DeliveryStreamTypeMapper::GetNameForDeliveryStreamType(m_deliveryStreamType));
+  }
+
+  if(m_directPutSourceConfigurationHasBeenSet)
+  {
+   payload.WithObject("DirectPutSourceConfiguration", m_directPutSourceConfiguration.Jsonize());
+
   }
 
   if(m_kinesisStreamSourceConfigurationHasBeenSet)
@@ -106,6 +95,30 @@ Aws::String CreateDeliveryStreamRequest::SerializePayload() const
   if(m_amazonOpenSearchServerlessDestinationConfigurationHasBeenSet)
   {
    payload.WithObject("AmazonOpenSearchServerlessDestinationConfiguration", m_amazonOpenSearchServerlessDestinationConfiguration.Jsonize());
+
+  }
+
+  if(m_mSKSourceConfigurationHasBeenSet)
+  {
+   payload.WithObject("MSKSourceConfiguration", m_mSKSourceConfiguration.Jsonize());
+
+  }
+
+  if(m_snowflakeDestinationConfigurationHasBeenSet)
+  {
+   payload.WithObject("SnowflakeDestinationConfiguration", m_snowflakeDestinationConfiguration.Jsonize());
+
+  }
+
+  if(m_icebergDestinationConfigurationHasBeenSet)
+  {
+   payload.WithObject("IcebergDestinationConfiguration", m_icebergDestinationConfiguration.Jsonize());
+
+  }
+
+  if(m_databaseSourceConfigurationHasBeenSet)
+  {
+   payload.WithObject("DatabaseSourceConfiguration", m_databaseSourceConfiguration.Jsonize());
 
   }
 

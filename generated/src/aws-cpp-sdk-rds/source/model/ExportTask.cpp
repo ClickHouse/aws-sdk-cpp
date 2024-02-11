@@ -20,49 +20,7 @@ namespace RDS
 namespace Model
 {
 
-ExportTask::ExportTask() : 
-    m_exportTaskIdentifierHasBeenSet(false),
-    m_sourceArnHasBeenSet(false),
-    m_exportOnlyHasBeenSet(false),
-    m_snapshotTimeHasBeenSet(false),
-    m_taskStartTimeHasBeenSet(false),
-    m_taskEndTimeHasBeenSet(false),
-    m_s3BucketHasBeenSet(false),
-    m_s3PrefixHasBeenSet(false),
-    m_iamRoleArnHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_percentProgress(0),
-    m_percentProgressHasBeenSet(false),
-    m_totalExtractedDataInGB(0),
-    m_totalExtractedDataInGBHasBeenSet(false),
-    m_failureCauseHasBeenSet(false),
-    m_warningMessageHasBeenSet(false),
-    m_sourceType(ExportSourceType::NOT_SET),
-    m_sourceTypeHasBeenSet(false)
-{
-}
-
-ExportTask::ExportTask(const XmlNode& xmlNode) : 
-    m_exportTaskIdentifierHasBeenSet(false),
-    m_sourceArnHasBeenSet(false),
-    m_exportOnlyHasBeenSet(false),
-    m_snapshotTimeHasBeenSet(false),
-    m_taskStartTimeHasBeenSet(false),
-    m_taskEndTimeHasBeenSet(false),
-    m_s3BucketHasBeenSet(false),
-    m_s3PrefixHasBeenSet(false),
-    m_iamRoleArnHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_percentProgress(0),
-    m_percentProgressHasBeenSet(false),
-    m_totalExtractedDataInGB(0),
-    m_totalExtractedDataInGBHasBeenSet(false),
-    m_failureCauseHasBeenSet(false),
-    m_warningMessageHasBeenSet(false),
-    m_sourceType(ExportSourceType::NOT_SET),
-    m_sourceTypeHasBeenSet(false)
+ExportTask::ExportTask(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -89,6 +47,7 @@ ExportTask& ExportTask::operator =(const XmlNode& xmlNode)
     if(!exportOnlyNode.IsNull())
     {
       XmlNode exportOnlyMember = exportOnlyNode.FirstChild("member");
+      m_exportOnlyHasBeenSet = !exportOnlyMember.IsNull();
       while(!exportOnlyMember.IsNull())
       {
         m_exportOnly.push_back(exportOnlyMember.GetText());
@@ -172,7 +131,7 @@ ExportTask& ExportTask::operator =(const XmlNode& xmlNode)
     XmlNode sourceTypeNode = resultNode.FirstChild("SourceType");
     if(!sourceTypeNode.IsNull())
     {
-      m_sourceType = ExportSourceTypeMapper::GetExportSourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(sourceTypeNode.GetText()).c_str()).c_str());
+      m_sourceType = ExportSourceTypeMapper::GetExportSourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(sourceTypeNode.GetText()).c_str()));
       m_sourceTypeHasBeenSet = true;
     }
   }
@@ -263,7 +222,7 @@ void ExportTask::OutputToStream(Aws::OStream& oStream, const char* location, uns
 
   if(m_sourceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".SourceType=" << ExportSourceTypeMapper::GetNameForExportSourceType(m_sourceType) << "&";
+      oStream << location << index << locationValue << ".SourceType=" << StringUtils::URLEncode(ExportSourceTypeMapper::GetNameForExportSourceType(m_sourceType)) << "&";
   }
 
   Aws::StringStream responseMetadataLocationAndMemberSs;
@@ -339,7 +298,7 @@ void ExportTask::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_sourceTypeHasBeenSet)
   {
-      oStream << location << ".SourceType=" << ExportSourceTypeMapper::GetNameForExportSourceType(m_sourceType) << "&";
+      oStream << location << ".SourceType=" << StringUtils::URLEncode(ExportSourceTypeMapper::GetNameForExportSourceType(m_sourceType)) << "&";
   }
   Aws::String responseMetadataLocationAndMember(location);
   responseMetadataLocationAndMember += ".ResponseMetadata";

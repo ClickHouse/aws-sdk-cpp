@@ -18,15 +18,7 @@ namespace QLDBSession
 namespace Model
 {
 
-FetchPageRequest::FetchPageRequest() : 
-    m_transactionIdHasBeenSet(false),
-    m_nextPageTokenHasBeenSet(false)
-{
-}
-
-FetchPageRequest::FetchPageRequest(JsonView jsonValue) : 
-    m_transactionIdHasBeenSet(false),
-    m_nextPageTokenHasBeenSet(false)
+FetchPageRequest::FetchPageRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ FetchPageRequest& FetchPageRequest::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TransactionId"))
   {
     m_transactionId = jsonValue.GetString("TransactionId");
-
     m_transactionIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NextPageToken"))
   {
     m_nextPageToken = jsonValue.GetString("NextPageToken");
-
     m_nextPageTokenHasBeenSet = true;
   }
-
   return *this;
 }
 

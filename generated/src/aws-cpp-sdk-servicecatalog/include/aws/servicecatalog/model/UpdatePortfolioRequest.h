@@ -23,7 +23,7 @@ namespace Model
   class UpdatePortfolioRequest : public ServiceCatalogRequest
   {
   public:
-    AWS_SERVICECATALOG_API UpdatePortfolioRequest();
+    AWS_SERVICECATALOG_API UpdatePortfolioRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,305 +36,94 @@ namespace Model
     AWS_SERVICECATALOG_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
      * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
      */
-    inline const Aws::String& GetAcceptLanguage() const{ return m_acceptLanguage; }
-
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
+    inline const Aws::String& GetAcceptLanguage() const { return m_acceptLanguage; }
     inline bool AcceptLanguageHasBeenSet() const { return m_acceptLanguageHasBeenSet; }
+    template<typename AcceptLanguageT = Aws::String>
+    void SetAcceptLanguage(AcceptLanguageT&& value) { m_acceptLanguageHasBeenSet = true; m_acceptLanguage = std::forward<AcceptLanguageT>(value); }
+    template<typename AcceptLanguageT = Aws::String>
+    UpdatePortfolioRequest& WithAcceptLanguage(AcceptLanguageT&& value) { SetAcceptLanguage(std::forward<AcceptLanguageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
-    inline void SetAcceptLanguage(const Aws::String& value) { m_acceptLanguageHasBeenSet = true; m_acceptLanguage = value; }
-
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
-    inline void SetAcceptLanguage(Aws::String&& value) { m_acceptLanguageHasBeenSet = true; m_acceptLanguage = std::move(value); }
-
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
-    inline void SetAcceptLanguage(const char* value) { m_acceptLanguageHasBeenSet = true; m_acceptLanguage.assign(value); }
-
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
-    inline UpdatePortfolioRequest& WithAcceptLanguage(const Aws::String& value) { SetAcceptLanguage(value); return *this;}
-
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
-    inline UpdatePortfolioRequest& WithAcceptLanguage(Aws::String&& value) { SetAcceptLanguage(std::move(value)); return *this;}
-
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
-    inline UpdatePortfolioRequest& WithAcceptLanguage(const char* value) { SetAcceptLanguage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The portfolio identifier.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The portfolio identifier.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    UpdatePortfolioRequest& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The portfolio identifier.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The portfolio identifier.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The portfolio identifier.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The portfolio identifier.</p>
-     */
-    inline UpdatePortfolioRequest& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The portfolio identifier.</p>
-     */
-    inline UpdatePortfolioRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The portfolio identifier.</p>
-     */
-    inline UpdatePortfolioRequest& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name to use for display purposes.</p>
      */
-    inline const Aws::String& GetDisplayName() const{ return m_displayName; }
-
-    /**
-     * <p>The name to use for display purposes.</p>
-     */
+    inline const Aws::String& GetDisplayName() const { return m_displayName; }
     inline bool DisplayNameHasBeenSet() const { return m_displayNameHasBeenSet; }
+    template<typename DisplayNameT = Aws::String>
+    void SetDisplayName(DisplayNameT&& value) { m_displayNameHasBeenSet = true; m_displayName = std::forward<DisplayNameT>(value); }
+    template<typename DisplayNameT = Aws::String>
+    UpdatePortfolioRequest& WithDisplayName(DisplayNameT&& value) { SetDisplayName(std::forward<DisplayNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name to use for display purposes.</p>
-     */
-    inline void SetDisplayName(const Aws::String& value) { m_displayNameHasBeenSet = true; m_displayName = value; }
-
-    /**
-     * <p>The name to use for display purposes.</p>
-     */
-    inline void SetDisplayName(Aws::String&& value) { m_displayNameHasBeenSet = true; m_displayName = std::move(value); }
-
-    /**
-     * <p>The name to use for display purposes.</p>
-     */
-    inline void SetDisplayName(const char* value) { m_displayNameHasBeenSet = true; m_displayName.assign(value); }
-
-    /**
-     * <p>The name to use for display purposes.</p>
-     */
-    inline UpdatePortfolioRequest& WithDisplayName(const Aws::String& value) { SetDisplayName(value); return *this;}
-
-    /**
-     * <p>The name to use for display purposes.</p>
-     */
-    inline UpdatePortfolioRequest& WithDisplayName(Aws::String&& value) { SetDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name to use for display purposes.</p>
-     */
-    inline UpdatePortfolioRequest& WithDisplayName(const char* value) { SetDisplayName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The updated description of the portfolio.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The updated description of the portfolio.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdatePortfolioRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The updated description of the portfolio.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The updated description of the portfolio.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The updated description of the portfolio.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The updated description of the portfolio.</p>
-     */
-    inline UpdatePortfolioRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The updated description of the portfolio.</p>
-     */
-    inline UpdatePortfolioRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The updated description of the portfolio.</p>
-     */
-    inline UpdatePortfolioRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The updated name of the portfolio provider.</p>
      */
-    inline const Aws::String& GetProviderName() const{ return m_providerName; }
-
-    /**
-     * <p>The updated name of the portfolio provider.</p>
-     */
+    inline const Aws::String& GetProviderName() const { return m_providerName; }
     inline bool ProviderNameHasBeenSet() const { return m_providerNameHasBeenSet; }
+    template<typename ProviderNameT = Aws::String>
+    void SetProviderName(ProviderNameT&& value) { m_providerNameHasBeenSet = true; m_providerName = std::forward<ProviderNameT>(value); }
+    template<typename ProviderNameT = Aws::String>
+    UpdatePortfolioRequest& WithProviderName(ProviderNameT&& value) { SetProviderName(std::forward<ProviderNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The updated name of the portfolio provider.</p>
-     */
-    inline void SetProviderName(const Aws::String& value) { m_providerNameHasBeenSet = true; m_providerName = value; }
-
-    /**
-     * <p>The updated name of the portfolio provider.</p>
-     */
-    inline void SetProviderName(Aws::String&& value) { m_providerNameHasBeenSet = true; m_providerName = std::move(value); }
-
-    /**
-     * <p>The updated name of the portfolio provider.</p>
-     */
-    inline void SetProviderName(const char* value) { m_providerNameHasBeenSet = true; m_providerName.assign(value); }
-
-    /**
-     * <p>The updated name of the portfolio provider.</p>
-     */
-    inline UpdatePortfolioRequest& WithProviderName(const Aws::String& value) { SetProviderName(value); return *this;}
-
-    /**
-     * <p>The updated name of the portfolio provider.</p>
-     */
-    inline UpdatePortfolioRequest& WithProviderName(Aws::String&& value) { SetProviderName(std::move(value)); return *this;}
-
-    /**
-     * <p>The updated name of the portfolio provider.</p>
-     */
-    inline UpdatePortfolioRequest& WithProviderName(const char* value) { SetProviderName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags to add.</p>
      */
-    inline const Aws::Vector<Tag>& GetAddTags() const{ return m_addTags; }
-
-    /**
-     * <p>The tags to add.</p>
-     */
+    inline const Aws::Vector<Tag>& GetAddTags() const { return m_addTags; }
     inline bool AddTagsHasBeenSet() const { return m_addTagsHasBeenSet; }
+    template<typename AddTagsT = Aws::Vector<Tag>>
+    void SetAddTags(AddTagsT&& value) { m_addTagsHasBeenSet = true; m_addTags = std::forward<AddTagsT>(value); }
+    template<typename AddTagsT = Aws::Vector<Tag>>
+    UpdatePortfolioRequest& WithAddTags(AddTagsT&& value) { SetAddTags(std::forward<AddTagsT>(value)); return *this;}
+    template<typename AddTagsT = Tag>
+    UpdatePortfolioRequest& AddAddTags(AddTagsT&& value) { m_addTagsHasBeenSet = true; m_addTags.emplace_back(std::forward<AddTagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The tags to add.</p>
-     */
-    inline void SetAddTags(const Aws::Vector<Tag>& value) { m_addTagsHasBeenSet = true; m_addTags = value; }
-
-    /**
-     * <p>The tags to add.</p>
-     */
-    inline void SetAddTags(Aws::Vector<Tag>&& value) { m_addTagsHasBeenSet = true; m_addTags = std::move(value); }
-
-    /**
-     * <p>The tags to add.</p>
-     */
-    inline UpdatePortfolioRequest& WithAddTags(const Aws::Vector<Tag>& value) { SetAddTags(value); return *this;}
-
-    /**
-     * <p>The tags to add.</p>
-     */
-    inline UpdatePortfolioRequest& WithAddTags(Aws::Vector<Tag>&& value) { SetAddTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags to add.</p>
-     */
-    inline UpdatePortfolioRequest& AddAddTags(const Tag& value) { m_addTagsHasBeenSet = true; m_addTags.push_back(value); return *this; }
-
-    /**
-     * <p>The tags to add.</p>
-     */
-    inline UpdatePortfolioRequest& AddAddTags(Tag&& value) { m_addTagsHasBeenSet = true; m_addTags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The tags to remove.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetRemoveTags() const{ return m_removeTags; }
-
-    /**
-     * <p>The tags to remove.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetRemoveTags() const { return m_removeTags; }
     inline bool RemoveTagsHasBeenSet() const { return m_removeTagsHasBeenSet; }
-
-    /**
-     * <p>The tags to remove.</p>
-     */
-    inline void SetRemoveTags(const Aws::Vector<Aws::String>& value) { m_removeTagsHasBeenSet = true; m_removeTags = value; }
-
-    /**
-     * <p>The tags to remove.</p>
-     */
-    inline void SetRemoveTags(Aws::Vector<Aws::String>&& value) { m_removeTagsHasBeenSet = true; m_removeTags = std::move(value); }
-
-    /**
-     * <p>The tags to remove.</p>
-     */
-    inline UpdatePortfolioRequest& WithRemoveTags(const Aws::Vector<Aws::String>& value) { SetRemoveTags(value); return *this;}
-
-    /**
-     * <p>The tags to remove.</p>
-     */
-    inline UpdatePortfolioRequest& WithRemoveTags(Aws::Vector<Aws::String>&& value) { SetRemoveTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags to remove.</p>
-     */
-    inline UpdatePortfolioRequest& AddRemoveTags(const Aws::String& value) { m_removeTagsHasBeenSet = true; m_removeTags.push_back(value); return *this; }
-
-    /**
-     * <p>The tags to remove.</p>
-     */
-    inline UpdatePortfolioRequest& AddRemoveTags(Aws::String&& value) { m_removeTagsHasBeenSet = true; m_removeTags.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The tags to remove.</p>
-     */
-    inline UpdatePortfolioRequest& AddRemoveTags(const char* value) { m_removeTagsHasBeenSet = true; m_removeTags.push_back(value); return *this; }
-
+    template<typename RemoveTagsT = Aws::Vector<Aws::String>>
+    void SetRemoveTags(RemoveTagsT&& value) { m_removeTagsHasBeenSet = true; m_removeTags = std::forward<RemoveTagsT>(value); }
+    template<typename RemoveTagsT = Aws::Vector<Aws::String>>
+    UpdatePortfolioRequest& WithRemoveTags(RemoveTagsT&& value) { SetRemoveTags(std::forward<RemoveTagsT>(value)); return *this;}
+    template<typename RemoveTagsT = Aws::String>
+    UpdatePortfolioRequest& AddRemoveTags(RemoveTagsT&& value) { m_removeTagsHasBeenSet = true; m_removeTags.emplace_back(std::forward<RemoveTagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_acceptLanguage;

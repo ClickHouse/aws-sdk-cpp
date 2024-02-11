@@ -18,15 +18,7 @@ namespace MediaPackageVod
 namespace Model
 {
 
-CmafEncryption::CmafEncryption() : 
-    m_constantInitializationVectorHasBeenSet(false),
-    m_spekeKeyProviderHasBeenSet(false)
-{
-}
-
-CmafEncryption::CmafEncryption(JsonView jsonValue) : 
-    m_constantInitializationVectorHasBeenSet(false),
-    m_spekeKeyProviderHasBeenSet(false)
+CmafEncryption::CmafEncryption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ CmafEncryption& CmafEncryption::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("constantInitializationVector"))
   {
     m_constantInitializationVector = jsonValue.GetString("constantInitializationVector");
-
     m_constantInitializationVectorHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("spekeKeyProvider"))
   {
     m_spekeKeyProvider = jsonValue.GetObject("spekeKeyProvider");
-
     m_spekeKeyProviderHasBeenSet = true;
   }
-
   return *this;
 }
 

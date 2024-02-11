@@ -10,12 +10,6 @@
 using namespace Aws::SimpleDB::Model;
 using namespace Aws::Utils;
 
-BatchDeleteAttributesRequest::BatchDeleteAttributesRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_itemsHasBeenSet(false)
-{
-}
-
 Aws::String BatchDeleteAttributesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,11 +21,18 @@ Aws::String BatchDeleteAttributesRequest::SerializePayload() const
 
   if(m_itemsHasBeenSet)
   {
-    unsigned itemsCount = 1;
-    for(auto& item : m_items)
+    if (m_items.empty())
     {
-      item.OutputToStream(ss, "Item.", itemsCount, "");
-      itemsCount++;
+      ss << "Items=&";
+    }
+    else
+    {
+      unsigned itemsCount = 1;
+      for(auto& item : m_items)
+      {
+        item.OutputToStream(ss, "Item.", itemsCount, "");
+        itemsCount++;
+      }
     }
   }
 

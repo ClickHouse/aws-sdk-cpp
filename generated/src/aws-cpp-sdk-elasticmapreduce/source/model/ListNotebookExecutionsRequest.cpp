@@ -12,16 +12,6 @@ using namespace Aws::EMR::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListNotebookExecutionsRequest::ListNotebookExecutionsRequest() : 
-    m_editorIdHasBeenSet(false),
-    m_status(NotebookExecutionStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_fromHasBeenSet(false),
-    m_toHasBeenSet(false),
-    m_markerHasBeenSet(false)
-{
-}
-
 Aws::String ListNotebookExecutionsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -50,6 +40,12 @@ Aws::String ListNotebookExecutionsRequest::SerializePayload() const
   if(m_markerHasBeenSet)
   {
    payload.WithString("Marker", m_marker);
+
+  }
+
+  if(m_executionEngineIdHasBeenSet)
+  {
+   payload.WithString("ExecutionEngineId", m_executionEngineId);
 
   }
 

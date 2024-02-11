@@ -18,15 +18,7 @@ namespace Transfer
 namespace Model
 {
 
-HomeDirectoryMapEntry::HomeDirectoryMapEntry() : 
-    m_entryHasBeenSet(false),
-    m_targetHasBeenSet(false)
-{
-}
-
-HomeDirectoryMapEntry::HomeDirectoryMapEntry(JsonView jsonValue) : 
-    m_entryHasBeenSet(false),
-    m_targetHasBeenSet(false)
+HomeDirectoryMapEntry::HomeDirectoryMapEntry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ HomeDirectoryMapEntry& HomeDirectoryMapEntry::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Entry"))
   {
     m_entry = jsonValue.GetString("Entry");
-
     m_entryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Target"))
   {
     m_target = jsonValue.GetString("Target");
-
     m_targetHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Type"))
+  {
+    m_type = MapTypeMapper::GetMapTypeForName(jsonValue.GetString("Type"));
+    m_typeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -64,6 +57,11 @@ JsonValue HomeDirectoryMapEntry::Jsonize() const
   {
    payload.WithString("Target", m_target);
 
+  }
+
+  if(m_typeHasBeenSet)
+  {
+   payload.WithString("Type", MapTypeMapper::GetNameForMapType(m_type));
   }
 
   return payload;

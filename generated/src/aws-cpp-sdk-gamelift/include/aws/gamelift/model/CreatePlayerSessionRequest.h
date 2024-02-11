@@ -21,7 +21,7 @@ namespace Model
   class CreatePlayerSessionRequest : public GameLiftRequest
   {
   public:
-    AWS_GAMELIFT_API CreatePlayerSessionRequest();
+    AWS_GAMELIFT_API CreatePlayerSessionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,136 +34,43 @@ namespace Model
     AWS_GAMELIFT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>A unique identifier for the game session to add a player to.</p>
      */
-    inline const Aws::String& GetGameSessionId() const{ return m_gameSessionId; }
-
-    /**
-     * <p>A unique identifier for the game session to add a player to.</p>
-     */
+    inline const Aws::String& GetGameSessionId() const { return m_gameSessionId; }
     inline bool GameSessionIdHasBeenSet() const { return m_gameSessionIdHasBeenSet; }
+    template<typename GameSessionIdT = Aws::String>
+    void SetGameSessionId(GameSessionIdT&& value) { m_gameSessionIdHasBeenSet = true; m_gameSessionId = std::forward<GameSessionIdT>(value); }
+    template<typename GameSessionIdT = Aws::String>
+    CreatePlayerSessionRequest& WithGameSessionId(GameSessionIdT&& value) { SetGameSessionId(std::forward<GameSessionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the game session to add a player to.</p>
-     */
-    inline void SetGameSessionId(const Aws::String& value) { m_gameSessionIdHasBeenSet = true; m_gameSessionId = value; }
-
-    /**
-     * <p>A unique identifier for the game session to add a player to.</p>
-     */
-    inline void SetGameSessionId(Aws::String&& value) { m_gameSessionIdHasBeenSet = true; m_gameSessionId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the game session to add a player to.</p>
-     */
-    inline void SetGameSessionId(const char* value) { m_gameSessionIdHasBeenSet = true; m_gameSessionId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the game session to add a player to.</p>
-     */
-    inline CreatePlayerSessionRequest& WithGameSessionId(const Aws::String& value) { SetGameSessionId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the game session to add a player to.</p>
-     */
-    inline CreatePlayerSessionRequest& WithGameSessionId(Aws::String&& value) { SetGameSessionId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the game session to add a player to.</p>
-     */
-    inline CreatePlayerSessionRequest& WithGameSessionId(const char* value) { SetGameSessionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for a player. Player IDs are developer-defined.</p>
      */
-    inline const Aws::String& GetPlayerId() const{ return m_playerId; }
-
-    /**
-     * <p>A unique identifier for a player. Player IDs are developer-defined.</p>
-     */
+    inline const Aws::String& GetPlayerId() const { return m_playerId; }
     inline bool PlayerIdHasBeenSet() const { return m_playerIdHasBeenSet; }
+    template<typename PlayerIdT = Aws::String>
+    void SetPlayerId(PlayerIdT&& value) { m_playerIdHasBeenSet = true; m_playerId = std::forward<PlayerIdT>(value); }
+    template<typename PlayerIdT = Aws::String>
+    CreatePlayerSessionRequest& WithPlayerId(PlayerIdT&& value) { SetPlayerId(std::forward<PlayerIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A unique identifier for a player. Player IDs are developer-defined.</p>
+     * <p>Developer-defined information related to a player. Amazon GameLift Servers
+     * does not use this data, so it can be formatted as needed for use in the
+     * game.</p>
      */
-    inline void SetPlayerId(const Aws::String& value) { m_playerIdHasBeenSet = true; m_playerId = value; }
-
-    /**
-     * <p>A unique identifier for a player. Player IDs are developer-defined.</p>
-     */
-    inline void SetPlayerId(Aws::String&& value) { m_playerIdHasBeenSet = true; m_playerId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for a player. Player IDs are developer-defined.</p>
-     */
-    inline void SetPlayerId(const char* value) { m_playerIdHasBeenSet = true; m_playerId.assign(value); }
-
-    /**
-     * <p>A unique identifier for a player. Player IDs are developer-defined.</p>
-     */
-    inline CreatePlayerSessionRequest& WithPlayerId(const Aws::String& value) { SetPlayerId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for a player. Player IDs are developer-defined.</p>
-     */
-    inline CreatePlayerSessionRequest& WithPlayerId(Aws::String&& value) { SetPlayerId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for a player. Player IDs are developer-defined.</p>
-     */
-    inline CreatePlayerSessionRequest& WithPlayerId(const char* value) { SetPlayerId(value); return *this;}
-
-
-    /**
-     * <p>Developer-defined information related to a player. GameLift does not use this
-     * data, so it can be formatted as needed for use in the game.</p>
-     */
-    inline const Aws::String& GetPlayerData() const{ return m_playerData; }
-
-    /**
-     * <p>Developer-defined information related to a player. GameLift does not use this
-     * data, so it can be formatted as needed for use in the game.</p>
-     */
+    inline const Aws::String& GetPlayerData() const { return m_playerData; }
     inline bool PlayerDataHasBeenSet() const { return m_playerDataHasBeenSet; }
-
-    /**
-     * <p>Developer-defined information related to a player. GameLift does not use this
-     * data, so it can be formatted as needed for use in the game.</p>
-     */
-    inline void SetPlayerData(const Aws::String& value) { m_playerDataHasBeenSet = true; m_playerData = value; }
-
-    /**
-     * <p>Developer-defined information related to a player. GameLift does not use this
-     * data, so it can be formatted as needed for use in the game.</p>
-     */
-    inline void SetPlayerData(Aws::String&& value) { m_playerDataHasBeenSet = true; m_playerData = std::move(value); }
-
-    /**
-     * <p>Developer-defined information related to a player. GameLift does not use this
-     * data, so it can be formatted as needed for use in the game.</p>
-     */
-    inline void SetPlayerData(const char* value) { m_playerDataHasBeenSet = true; m_playerData.assign(value); }
-
-    /**
-     * <p>Developer-defined information related to a player. GameLift does not use this
-     * data, so it can be formatted as needed for use in the game.</p>
-     */
-    inline CreatePlayerSessionRequest& WithPlayerData(const Aws::String& value) { SetPlayerData(value); return *this;}
-
-    /**
-     * <p>Developer-defined information related to a player. GameLift does not use this
-     * data, so it can be formatted as needed for use in the game.</p>
-     */
-    inline CreatePlayerSessionRequest& WithPlayerData(Aws::String&& value) { SetPlayerData(std::move(value)); return *this;}
-
-    /**
-     * <p>Developer-defined information related to a player. GameLift does not use this
-     * data, so it can be formatted as needed for use in the game.</p>
-     */
-    inline CreatePlayerSessionRequest& WithPlayerData(const char* value) { SetPlayerData(value); return *this;}
-
+    template<typename PlayerDataT = Aws::String>
+    void SetPlayerData(PlayerDataT&& value) { m_playerDataHasBeenSet = true; m_playerData = std::forward<PlayerDataT>(value); }
+    template<typename PlayerDataT = Aws::String>
+    CreatePlayerSessionRequest& WithPlayerData(PlayerDataT&& value) { SetPlayerData(std::forward<PlayerDataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_gameSessionId;

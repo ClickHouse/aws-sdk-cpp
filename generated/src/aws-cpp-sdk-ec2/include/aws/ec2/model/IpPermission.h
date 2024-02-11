@@ -8,10 +8,10 @@
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/ec2/model/UserIdGroupPair.h>
 #include <aws/ec2/model/IpRange.h>
 #include <aws/ec2/model/Ipv6Range.h>
 #include <aws/ec2/model/PrefixListId.h>
-#include <aws/ec2/model/UserIdGroupPair.h>
 #include <utility>
 
 namespace Aws
@@ -29,15 +29,14 @@ namespace Model
 {
 
   /**
-   * <p>Describes a set of permissions for a security group rule.</p><p><h3>See
-   * Also:</h3>   <a
-   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/IpPermission">AWS
+   * <p>Describes the permissions for a security group rule.</p><p><h3>See Also:</h3>
+   * <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/IpPermission">AWS
    * API Reference</a></p>
    */
   class IpPermission
   {
   public:
-    AWS_EC2_API IpPermission();
+    AWS_EC2_API IpPermission() = default;
     AWS_EC2_API IpPermission(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API IpPermission& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -45,355 +44,119 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
-    /**
-     * <p>If the protocol is TCP or UDP, this is the start of the port range. If the
-     * protocol is ICMP or ICMPv6, this is the type number. A value of -1 indicates all
-     * ICMP/ICMPv6 types. If you specify all ICMP/ICMPv6 types, you must specify all
-     * ICMP/ICMPv6 codes.</p>
-     */
-    inline int GetFromPort() const{ return m_fromPort; }
-
-    /**
-     * <p>If the protocol is TCP or UDP, this is the start of the port range. If the
-     * protocol is ICMP or ICMPv6, this is the type number. A value of -1 indicates all
-     * ICMP/ICMPv6 types. If you specify all ICMP/ICMPv6 types, you must specify all
-     * ICMP/ICMPv6 codes.</p>
-     */
-    inline bool FromPortHasBeenSet() const { return m_fromPortHasBeenSet; }
-
-    /**
-     * <p>If the protocol is TCP or UDP, this is the start of the port range. If the
-     * protocol is ICMP or ICMPv6, this is the type number. A value of -1 indicates all
-     * ICMP/ICMPv6 types. If you specify all ICMP/ICMPv6 types, you must specify all
-     * ICMP/ICMPv6 codes.</p>
-     */
-    inline void SetFromPort(int value) { m_fromPortHasBeenSet = true; m_fromPort = value; }
-
-    /**
-     * <p>If the protocol is TCP or UDP, this is the start of the port range. If the
-     * protocol is ICMP or ICMPv6, this is the type number. A value of -1 indicates all
-     * ICMP/ICMPv6 types. If you specify all ICMP/ICMPv6 types, you must specify all
-     * ICMP/ICMPv6 codes.</p>
-     */
-    inline IpPermission& WithFromPort(int value) { SetFromPort(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IP protocol name (<code>tcp</code>, <code>udp</code>, <code>icmp</code>,
      * <code>icmpv6</code>) or number (see <a
      * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>).</p> <p>[VPC only] Use <code>-1</code> to specify all protocols.
-     * When authorizing security group rules, specifying <code>-1</code> or a protocol
+     * Numbers</a>).</p> <p>Use <code>-1</code> to specify all protocols. When
+     * authorizing security group rules, specifying <code>-1</code> or a protocol
      * number other than <code>tcp</code>, <code>udp</code>, <code>icmp</code>, or
      * <code>icmpv6</code> allows traffic on all ports, regardless of any port range
      * you specify. For <code>tcp</code>, <code>udp</code>, and <code>icmp</code>, you
      * must specify a port range. For <code>icmpv6</code>, the port range is optional;
      * if you omit the port range, traffic for all types and codes is allowed.</p>
      */
-    inline const Aws::String& GetIpProtocol() const{ return m_ipProtocol; }
-
-    /**
-     * <p>The IP protocol name (<code>tcp</code>, <code>udp</code>, <code>icmp</code>,
-     * <code>icmpv6</code>) or number (see <a
-     * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>).</p> <p>[VPC only] Use <code>-1</code> to specify all protocols.
-     * When authorizing security group rules, specifying <code>-1</code> or a protocol
-     * number other than <code>tcp</code>, <code>udp</code>, <code>icmp</code>, or
-     * <code>icmpv6</code> allows traffic on all ports, regardless of any port range
-     * you specify. For <code>tcp</code>, <code>udp</code>, and <code>icmp</code>, you
-     * must specify a port range. For <code>icmpv6</code>, the port range is optional;
-     * if you omit the port range, traffic for all types and codes is allowed.</p>
-     */
+    inline const Aws::String& GetIpProtocol() const { return m_ipProtocol; }
     inline bool IpProtocolHasBeenSet() const { return m_ipProtocolHasBeenSet; }
+    template<typename IpProtocolT = Aws::String>
+    void SetIpProtocol(IpProtocolT&& value) { m_ipProtocolHasBeenSet = true; m_ipProtocol = std::forward<IpProtocolT>(value); }
+    template<typename IpProtocolT = Aws::String>
+    IpPermission& WithIpProtocol(IpProtocolT&& value) { SetIpProtocol(std::forward<IpProtocolT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The IP protocol name (<code>tcp</code>, <code>udp</code>, <code>icmp</code>,
-     * <code>icmpv6</code>) or number (see <a
-     * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>).</p> <p>[VPC only] Use <code>-1</code> to specify all protocols.
-     * When authorizing security group rules, specifying <code>-1</code> or a protocol
-     * number other than <code>tcp</code>, <code>udp</code>, <code>icmp</code>, or
-     * <code>icmpv6</code> allows traffic on all ports, regardless of any port range
-     * you specify. For <code>tcp</code>, <code>udp</code>, and <code>icmp</code>, you
-     * must specify a port range. For <code>icmpv6</code>, the port range is optional;
-     * if you omit the port range, traffic for all types and codes is allowed.</p>
+     * <p>If the protocol is TCP or UDP, this is the start of the port range. If the
+     * protocol is ICMP or ICMPv6, this is the ICMP type or -1 (all ICMP types).</p>
      */
-    inline void SetIpProtocol(const Aws::String& value) { m_ipProtocolHasBeenSet = true; m_ipProtocol = value; }
+    inline int GetFromPort() const { return m_fromPort; }
+    inline bool FromPortHasBeenSet() const { return m_fromPortHasBeenSet; }
+    inline void SetFromPort(int value) { m_fromPortHasBeenSet = true; m_fromPort = value; }
+    inline IpPermission& WithFromPort(int value) { SetFromPort(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The IP protocol name (<code>tcp</code>, <code>udp</code>, <code>icmp</code>,
-     * <code>icmpv6</code>) or number (see <a
-     * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>).</p> <p>[VPC only] Use <code>-1</code> to specify all protocols.
-     * When authorizing security group rules, specifying <code>-1</code> or a protocol
-     * number other than <code>tcp</code>, <code>udp</code>, <code>icmp</code>, or
-     * <code>icmpv6</code> allows traffic on all ports, regardless of any port range
-     * you specify. For <code>tcp</code>, <code>udp</code>, and <code>icmp</code>, you
-     * must specify a port range. For <code>icmpv6</code>, the port range is optional;
-     * if you omit the port range, traffic for all types and codes is allowed.</p>
-     */
-    inline void SetIpProtocol(Aws::String&& value) { m_ipProtocolHasBeenSet = true; m_ipProtocol = std::move(value); }
-
-    /**
-     * <p>The IP protocol name (<code>tcp</code>, <code>udp</code>, <code>icmp</code>,
-     * <code>icmpv6</code>) or number (see <a
-     * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>).</p> <p>[VPC only] Use <code>-1</code> to specify all protocols.
-     * When authorizing security group rules, specifying <code>-1</code> or a protocol
-     * number other than <code>tcp</code>, <code>udp</code>, <code>icmp</code>, or
-     * <code>icmpv6</code> allows traffic on all ports, regardless of any port range
-     * you specify. For <code>tcp</code>, <code>udp</code>, and <code>icmp</code>, you
-     * must specify a port range. For <code>icmpv6</code>, the port range is optional;
-     * if you omit the port range, traffic for all types and codes is allowed.</p>
-     */
-    inline void SetIpProtocol(const char* value) { m_ipProtocolHasBeenSet = true; m_ipProtocol.assign(value); }
-
-    /**
-     * <p>The IP protocol name (<code>tcp</code>, <code>udp</code>, <code>icmp</code>,
-     * <code>icmpv6</code>) or number (see <a
-     * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>).</p> <p>[VPC only] Use <code>-1</code> to specify all protocols.
-     * When authorizing security group rules, specifying <code>-1</code> or a protocol
-     * number other than <code>tcp</code>, <code>udp</code>, <code>icmp</code>, or
-     * <code>icmpv6</code> allows traffic on all ports, regardless of any port range
-     * you specify. For <code>tcp</code>, <code>udp</code>, and <code>icmp</code>, you
-     * must specify a port range. For <code>icmpv6</code>, the port range is optional;
-     * if you omit the port range, traffic for all types and codes is allowed.</p>
-     */
-    inline IpPermission& WithIpProtocol(const Aws::String& value) { SetIpProtocol(value); return *this;}
-
-    /**
-     * <p>The IP protocol name (<code>tcp</code>, <code>udp</code>, <code>icmp</code>,
-     * <code>icmpv6</code>) or number (see <a
-     * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>).</p> <p>[VPC only] Use <code>-1</code> to specify all protocols.
-     * When authorizing security group rules, specifying <code>-1</code> or a protocol
-     * number other than <code>tcp</code>, <code>udp</code>, <code>icmp</code>, or
-     * <code>icmpv6</code> allows traffic on all ports, regardless of any port range
-     * you specify. For <code>tcp</code>, <code>udp</code>, and <code>icmp</code>, you
-     * must specify a port range. For <code>icmpv6</code>, the port range is optional;
-     * if you omit the port range, traffic for all types and codes is allowed.</p>
-     */
-    inline IpPermission& WithIpProtocol(Aws::String&& value) { SetIpProtocol(std::move(value)); return *this;}
-
-    /**
-     * <p>The IP protocol name (<code>tcp</code>, <code>udp</code>, <code>icmp</code>,
-     * <code>icmpv6</code>) or number (see <a
-     * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>).</p> <p>[VPC only] Use <code>-1</code> to specify all protocols.
-     * When authorizing security group rules, specifying <code>-1</code> or a protocol
-     * number other than <code>tcp</code>, <code>udp</code>, <code>icmp</code>, or
-     * <code>icmpv6</code> allows traffic on all ports, regardless of any port range
-     * you specify. For <code>tcp</code>, <code>udp</code>, and <code>icmp</code>, you
-     * must specify a port range. For <code>icmpv6</code>, the port range is optional;
-     * if you omit the port range, traffic for all types and codes is allowed.</p>
-     */
-    inline IpPermission& WithIpProtocol(const char* value) { SetIpProtocol(value); return *this;}
-
-
-    /**
-     * <p>The IPv4 ranges.</p>
-     */
-    inline const Aws::Vector<IpRange>& GetIpRanges() const{ return m_ipRanges; }
-
-    /**
-     * <p>The IPv4 ranges.</p>
-     */
-    inline bool IpRangesHasBeenSet() const { return m_ipRangesHasBeenSet; }
-
-    /**
-     * <p>The IPv4 ranges.</p>
-     */
-    inline void SetIpRanges(const Aws::Vector<IpRange>& value) { m_ipRangesHasBeenSet = true; m_ipRanges = value; }
-
-    /**
-     * <p>The IPv4 ranges.</p>
-     */
-    inline void SetIpRanges(Aws::Vector<IpRange>&& value) { m_ipRangesHasBeenSet = true; m_ipRanges = std::move(value); }
-
-    /**
-     * <p>The IPv4 ranges.</p>
-     */
-    inline IpPermission& WithIpRanges(const Aws::Vector<IpRange>& value) { SetIpRanges(value); return *this;}
-
-    /**
-     * <p>The IPv4 ranges.</p>
-     */
-    inline IpPermission& WithIpRanges(Aws::Vector<IpRange>&& value) { SetIpRanges(std::move(value)); return *this;}
-
-    /**
-     * <p>The IPv4 ranges.</p>
-     */
-    inline IpPermission& AddIpRanges(const IpRange& value) { m_ipRangesHasBeenSet = true; m_ipRanges.push_back(value); return *this; }
-
-    /**
-     * <p>The IPv4 ranges.</p>
-     */
-    inline IpPermission& AddIpRanges(IpRange&& value) { m_ipRangesHasBeenSet = true; m_ipRanges.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>[VPC only] The IPv6 ranges.</p>
-     */
-    inline const Aws::Vector<Ipv6Range>& GetIpv6Ranges() const{ return m_ipv6Ranges; }
-
-    /**
-     * <p>[VPC only] The IPv6 ranges.</p>
-     */
-    inline bool Ipv6RangesHasBeenSet() const { return m_ipv6RangesHasBeenSet; }
-
-    /**
-     * <p>[VPC only] The IPv6 ranges.</p>
-     */
-    inline void SetIpv6Ranges(const Aws::Vector<Ipv6Range>& value) { m_ipv6RangesHasBeenSet = true; m_ipv6Ranges = value; }
-
-    /**
-     * <p>[VPC only] The IPv6 ranges.</p>
-     */
-    inline void SetIpv6Ranges(Aws::Vector<Ipv6Range>&& value) { m_ipv6RangesHasBeenSet = true; m_ipv6Ranges = std::move(value); }
-
-    /**
-     * <p>[VPC only] The IPv6 ranges.</p>
-     */
-    inline IpPermission& WithIpv6Ranges(const Aws::Vector<Ipv6Range>& value) { SetIpv6Ranges(value); return *this;}
-
-    /**
-     * <p>[VPC only] The IPv6 ranges.</p>
-     */
-    inline IpPermission& WithIpv6Ranges(Aws::Vector<Ipv6Range>&& value) { SetIpv6Ranges(std::move(value)); return *this;}
-
-    /**
-     * <p>[VPC only] The IPv6 ranges.</p>
-     */
-    inline IpPermission& AddIpv6Ranges(const Ipv6Range& value) { m_ipv6RangesHasBeenSet = true; m_ipv6Ranges.push_back(value); return *this; }
-
-    /**
-     * <p>[VPC only] The IPv6 ranges.</p>
-     */
-    inline IpPermission& AddIpv6Ranges(Ipv6Range&& value) { m_ipv6RangesHasBeenSet = true; m_ipv6Ranges.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>[VPC only] The prefix list IDs.</p>
-     */
-    inline const Aws::Vector<PrefixListId>& GetPrefixListIds() const{ return m_prefixListIds; }
-
-    /**
-     * <p>[VPC only] The prefix list IDs.</p>
-     */
-    inline bool PrefixListIdsHasBeenSet() const { return m_prefixListIdsHasBeenSet; }
-
-    /**
-     * <p>[VPC only] The prefix list IDs.</p>
-     */
-    inline void SetPrefixListIds(const Aws::Vector<PrefixListId>& value) { m_prefixListIdsHasBeenSet = true; m_prefixListIds = value; }
-
-    /**
-     * <p>[VPC only] The prefix list IDs.</p>
-     */
-    inline void SetPrefixListIds(Aws::Vector<PrefixListId>&& value) { m_prefixListIdsHasBeenSet = true; m_prefixListIds = std::move(value); }
-
-    /**
-     * <p>[VPC only] The prefix list IDs.</p>
-     */
-    inline IpPermission& WithPrefixListIds(const Aws::Vector<PrefixListId>& value) { SetPrefixListIds(value); return *this;}
-
-    /**
-     * <p>[VPC only] The prefix list IDs.</p>
-     */
-    inline IpPermission& WithPrefixListIds(Aws::Vector<PrefixListId>&& value) { SetPrefixListIds(std::move(value)); return *this;}
-
-    /**
-     * <p>[VPC only] The prefix list IDs.</p>
-     */
-    inline IpPermission& AddPrefixListIds(const PrefixListId& value) { m_prefixListIdsHasBeenSet = true; m_prefixListIds.push_back(value); return *this; }
-
-    /**
-     * <p>[VPC only] The prefix list IDs.</p>
-     */
-    inline IpPermission& AddPrefixListIds(PrefixListId&& value) { m_prefixListIdsHasBeenSet = true; m_prefixListIds.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>If the protocol is TCP or UDP, this is the end of the port range. If the
-     * protocol is ICMP or ICMPv6, this is the code. A value of -1 indicates all
-     * ICMP/ICMPv6 codes. If you specify all ICMP/ICMPv6 types, you must specify all
-     * ICMP/ICMPv6 codes.</p>
+     * protocol is ICMP or ICMPv6, this is the ICMP code or -1 (all ICMP codes). If the
+     * start port is -1 (all ICMP types), then the end port must be -1 (all ICMP
+     * codes).</p>
      */
-    inline int GetToPort() const{ return m_toPort; }
-
-    /**
-     * <p>If the protocol is TCP or UDP, this is the end of the port range. If the
-     * protocol is ICMP or ICMPv6, this is the code. A value of -1 indicates all
-     * ICMP/ICMPv6 codes. If you specify all ICMP/ICMPv6 types, you must specify all
-     * ICMP/ICMPv6 codes.</p>
-     */
+    inline int GetToPort() const { return m_toPort; }
     inline bool ToPortHasBeenSet() const { return m_toPortHasBeenSet; }
-
-    /**
-     * <p>If the protocol is TCP or UDP, this is the end of the port range. If the
-     * protocol is ICMP or ICMPv6, this is the code. A value of -1 indicates all
-     * ICMP/ICMPv6 codes. If you specify all ICMP/ICMPv6 types, you must specify all
-     * ICMP/ICMPv6 codes.</p>
-     */
     inline void SetToPort(int value) { m_toPortHasBeenSet = true; m_toPort = value; }
-
-    /**
-     * <p>If the protocol is TCP or UDP, this is the end of the port range. If the
-     * protocol is ICMP or ICMPv6, this is the code. A value of -1 indicates all
-     * ICMP/ICMPv6 codes. If you specify all ICMP/ICMPv6 types, you must specify all
-     * ICMP/ICMPv6 codes.</p>
-     */
     inline IpPermission& WithToPort(int value) { SetToPort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The security group and Amazon Web Services account ID pairs.</p>
      */
-    inline const Aws::Vector<UserIdGroupPair>& GetUserIdGroupPairs() const{ return m_userIdGroupPairs; }
-
-    /**
-     * <p>The security group and Amazon Web Services account ID pairs.</p>
-     */
+    inline const Aws::Vector<UserIdGroupPair>& GetUserIdGroupPairs() const { return m_userIdGroupPairs; }
     inline bool UserIdGroupPairsHasBeenSet() const { return m_userIdGroupPairsHasBeenSet; }
+    template<typename UserIdGroupPairsT = Aws::Vector<UserIdGroupPair>>
+    void SetUserIdGroupPairs(UserIdGroupPairsT&& value) { m_userIdGroupPairsHasBeenSet = true; m_userIdGroupPairs = std::forward<UserIdGroupPairsT>(value); }
+    template<typename UserIdGroupPairsT = Aws::Vector<UserIdGroupPair>>
+    IpPermission& WithUserIdGroupPairs(UserIdGroupPairsT&& value) { SetUserIdGroupPairs(std::forward<UserIdGroupPairsT>(value)); return *this;}
+    template<typename UserIdGroupPairsT = UserIdGroupPair>
+    IpPermission& AddUserIdGroupPairs(UserIdGroupPairsT&& value) { m_userIdGroupPairsHasBeenSet = true; m_userIdGroupPairs.emplace_back(std::forward<UserIdGroupPairsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The security group and Amazon Web Services account ID pairs.</p>
+     * <p>The IPv4 address ranges.</p>
      */
-    inline void SetUserIdGroupPairs(const Aws::Vector<UserIdGroupPair>& value) { m_userIdGroupPairsHasBeenSet = true; m_userIdGroupPairs = value; }
+    inline const Aws::Vector<IpRange>& GetIpRanges() const { return m_ipRanges; }
+    inline bool IpRangesHasBeenSet() const { return m_ipRangesHasBeenSet; }
+    template<typename IpRangesT = Aws::Vector<IpRange>>
+    void SetIpRanges(IpRangesT&& value) { m_ipRangesHasBeenSet = true; m_ipRanges = std::forward<IpRangesT>(value); }
+    template<typename IpRangesT = Aws::Vector<IpRange>>
+    IpPermission& WithIpRanges(IpRangesT&& value) { SetIpRanges(std::forward<IpRangesT>(value)); return *this;}
+    template<typename IpRangesT = IpRange>
+    IpPermission& AddIpRanges(IpRangesT&& value) { m_ipRangesHasBeenSet = true; m_ipRanges.emplace_back(std::forward<IpRangesT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The security group and Amazon Web Services account ID pairs.</p>
+     * <p>The IPv6 address ranges.</p>
      */
-    inline void SetUserIdGroupPairs(Aws::Vector<UserIdGroupPair>&& value) { m_userIdGroupPairsHasBeenSet = true; m_userIdGroupPairs = std::move(value); }
+    inline const Aws::Vector<Ipv6Range>& GetIpv6Ranges() const { return m_ipv6Ranges; }
+    inline bool Ipv6RangesHasBeenSet() const { return m_ipv6RangesHasBeenSet; }
+    template<typename Ipv6RangesT = Aws::Vector<Ipv6Range>>
+    void SetIpv6Ranges(Ipv6RangesT&& value) { m_ipv6RangesHasBeenSet = true; m_ipv6Ranges = std::forward<Ipv6RangesT>(value); }
+    template<typename Ipv6RangesT = Aws::Vector<Ipv6Range>>
+    IpPermission& WithIpv6Ranges(Ipv6RangesT&& value) { SetIpv6Ranges(std::forward<Ipv6RangesT>(value)); return *this;}
+    template<typename Ipv6RangesT = Ipv6Range>
+    IpPermission& AddIpv6Ranges(Ipv6RangesT&& value) { m_ipv6RangesHasBeenSet = true; m_ipv6Ranges.emplace_back(std::forward<Ipv6RangesT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The security group and Amazon Web Services account ID pairs.</p>
+     * <p>The prefix list IDs.</p>
      */
-    inline IpPermission& WithUserIdGroupPairs(const Aws::Vector<UserIdGroupPair>& value) { SetUserIdGroupPairs(value); return *this;}
-
-    /**
-     * <p>The security group and Amazon Web Services account ID pairs.</p>
-     */
-    inline IpPermission& WithUserIdGroupPairs(Aws::Vector<UserIdGroupPair>&& value) { SetUserIdGroupPairs(std::move(value)); return *this;}
-
-    /**
-     * <p>The security group and Amazon Web Services account ID pairs.</p>
-     */
-    inline IpPermission& AddUserIdGroupPairs(const UserIdGroupPair& value) { m_userIdGroupPairsHasBeenSet = true; m_userIdGroupPairs.push_back(value); return *this; }
-
-    /**
-     * <p>The security group and Amazon Web Services account ID pairs.</p>
-     */
-    inline IpPermission& AddUserIdGroupPairs(UserIdGroupPair&& value) { m_userIdGroupPairsHasBeenSet = true; m_userIdGroupPairs.push_back(std::move(value)); return *this; }
-
+    inline const Aws::Vector<PrefixListId>& GetPrefixListIds() const { return m_prefixListIds; }
+    inline bool PrefixListIdsHasBeenSet() const { return m_prefixListIdsHasBeenSet; }
+    template<typename PrefixListIdsT = Aws::Vector<PrefixListId>>
+    void SetPrefixListIds(PrefixListIdsT&& value) { m_prefixListIdsHasBeenSet = true; m_prefixListIds = std::forward<PrefixListIdsT>(value); }
+    template<typename PrefixListIdsT = Aws::Vector<PrefixListId>>
+    IpPermission& WithPrefixListIds(PrefixListIdsT&& value) { SetPrefixListIds(std::forward<PrefixListIdsT>(value)); return *this;}
+    template<typename PrefixListIdsT = PrefixListId>
+    IpPermission& AddPrefixListIds(PrefixListIdsT&& value) { m_prefixListIdsHasBeenSet = true; m_prefixListIds.emplace_back(std::forward<PrefixListIdsT>(value)); return *this; }
+    ///@}
   private:
-
-    int m_fromPort;
-    bool m_fromPortHasBeenSet = false;
 
     Aws::String m_ipProtocol;
     bool m_ipProtocolHasBeenSet = false;
+
+    int m_fromPort{0};
+    bool m_fromPortHasBeenSet = false;
+
+    int m_toPort{0};
+    bool m_toPortHasBeenSet = false;
+
+    Aws::Vector<UserIdGroupPair> m_userIdGroupPairs;
+    bool m_userIdGroupPairsHasBeenSet = false;
 
     Aws::Vector<IpRange> m_ipRanges;
     bool m_ipRangesHasBeenSet = false;
@@ -403,12 +166,6 @@ namespace Model
 
     Aws::Vector<PrefixListId> m_prefixListIds;
     bool m_prefixListIdsHasBeenSet = false;
-
-    int m_toPort;
-    bool m_toPortHasBeenSet = false;
-
-    Aws::Vector<UserIdGroupPair> m_userIdGroupPairs;
-    bool m_userIdGroupPairsHasBeenSet = false;
   };
 
 } // namespace Model

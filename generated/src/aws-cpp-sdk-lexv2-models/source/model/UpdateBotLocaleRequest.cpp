@@ -12,17 +12,6 @@ using namespace Aws::LexModelsV2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateBotLocaleRequest::UpdateBotLocaleRequest() : 
-    m_botIdHasBeenSet(false),
-    m_botVersionHasBeenSet(false),
-    m_localeIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_nluIntentConfidenceThreshold(0.0),
-    m_nluIntentConfidenceThresholdHasBeenSet(false),
-    m_voiceSettingsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateBotLocaleRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -42,6 +31,12 @@ Aws::String UpdateBotLocaleRequest::SerializePayload() const
   if(m_voiceSettingsHasBeenSet)
   {
    payload.WithObject("voiceSettings", m_voiceSettings.Jsonize());
+
+  }
+
+  if(m_generativeAISettingsHasBeenSet)
+  {
+   payload.WithObject("generativeAISettings", m_generativeAISettings.Jsonize());
 
   }
 

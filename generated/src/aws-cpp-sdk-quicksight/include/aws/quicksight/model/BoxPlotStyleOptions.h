@@ -31,45 +31,24 @@ namespace Model
   class BoxPlotStyleOptions
   {
   public:
-    AWS_QUICKSIGHT_API BoxPlotStyleOptions();
+    AWS_QUICKSIGHT_API BoxPlotStyleOptions() = default;
     AWS_QUICKSIGHT_API BoxPlotStyleOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API BoxPlotStyleOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The fill styles (solid, transparent) of the box plot.</p>
      */
-    inline const BoxPlotFillStyle& GetFillStyle() const{ return m_fillStyle; }
-
-    /**
-     * <p>The fill styles (solid, transparent) of the box plot.</p>
-     */
+    inline BoxPlotFillStyle GetFillStyle() const { return m_fillStyle; }
     inline bool FillStyleHasBeenSet() const { return m_fillStyleHasBeenSet; }
-
-    /**
-     * <p>The fill styles (solid, transparent) of the box plot.</p>
-     */
-    inline void SetFillStyle(const BoxPlotFillStyle& value) { m_fillStyleHasBeenSet = true; m_fillStyle = value; }
-
-    /**
-     * <p>The fill styles (solid, transparent) of the box plot.</p>
-     */
-    inline void SetFillStyle(BoxPlotFillStyle&& value) { m_fillStyleHasBeenSet = true; m_fillStyle = std::move(value); }
-
-    /**
-     * <p>The fill styles (solid, transparent) of the box plot.</p>
-     */
-    inline BoxPlotStyleOptions& WithFillStyle(const BoxPlotFillStyle& value) { SetFillStyle(value); return *this;}
-
-    /**
-     * <p>The fill styles (solid, transparent) of the box plot.</p>
-     */
-    inline BoxPlotStyleOptions& WithFillStyle(BoxPlotFillStyle&& value) { SetFillStyle(std::move(value)); return *this;}
-
+    inline void SetFillStyle(BoxPlotFillStyle value) { m_fillStyleHasBeenSet = true; m_fillStyle = value; }
+    inline BoxPlotStyleOptions& WithFillStyle(BoxPlotFillStyle value) { SetFillStyle(value); return *this;}
+    ///@}
   private:
 
-    BoxPlotFillStyle m_fillStyle;
+    BoxPlotFillStyle m_fillStyle{BoxPlotFillStyle::NOT_SET};
     bool m_fillStyleHasBeenSet = false;
   };
 

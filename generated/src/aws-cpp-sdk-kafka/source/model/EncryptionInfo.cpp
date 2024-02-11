@@ -18,15 +18,7 @@ namespace Kafka
 namespace Model
 {
 
-EncryptionInfo::EncryptionInfo() : 
-    m_encryptionAtRestHasBeenSet(false),
-    m_encryptionInTransitHasBeenSet(false)
-{
-}
-
-EncryptionInfo::EncryptionInfo(JsonView jsonValue) : 
-    m_encryptionAtRestHasBeenSet(false),
-    m_encryptionInTransitHasBeenSet(false)
+EncryptionInfo::EncryptionInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ EncryptionInfo& EncryptionInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("encryptionAtRest"))
   {
     m_encryptionAtRest = jsonValue.GetObject("encryptionAtRest");
-
     m_encryptionAtRestHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("encryptionInTransit"))
   {
     m_encryptionInTransit = jsonValue.GetObject("encryptionInTransit");
-
     m_encryptionInTransitHasBeenSet = true;
   }
-
   return *this;
 }
 

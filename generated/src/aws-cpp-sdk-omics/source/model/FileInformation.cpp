@@ -18,50 +18,33 @@ namespace Omics
 namespace Model
 {
 
-FileInformation::FileInformation() : 
-    m_contentLength(0),
-    m_contentLengthHasBeenSet(false),
-    m_partSize(0),
-    m_partSizeHasBeenSet(false),
-    m_totalParts(0),
-    m_totalPartsHasBeenSet(false)
-{
-}
-
-FileInformation::FileInformation(JsonView jsonValue) : 
-    m_contentLength(0),
-    m_contentLengthHasBeenSet(false),
-    m_partSize(0),
-    m_partSizeHasBeenSet(false),
-    m_totalParts(0),
-    m_totalPartsHasBeenSet(false)
+FileInformation::FileInformation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 FileInformation& FileInformation::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("contentLength"))
-  {
-    m_contentLength = jsonValue.GetInt64("contentLength");
-
-    m_contentLengthHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("partSize"))
-  {
-    m_partSize = jsonValue.GetInt64("partSize");
-
-    m_partSizeHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("totalParts"))
   {
     m_totalParts = jsonValue.GetInteger("totalParts");
-
     m_totalPartsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("partSize"))
+  {
+    m_partSize = jsonValue.GetInt64("partSize");
+    m_partSizeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("contentLength"))
+  {
+    m_contentLength = jsonValue.GetInt64("contentLength");
+    m_contentLengthHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("s3Access"))
+  {
+    m_s3Access = jsonValue.GetObject("s3Access");
+    m_s3AccessHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -69,9 +52,9 @@ JsonValue FileInformation::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_contentLengthHasBeenSet)
+  if(m_totalPartsHasBeenSet)
   {
-   payload.WithInt64("contentLength", m_contentLength);
+   payload.WithInteger("totalParts", m_totalParts);
 
   }
 
@@ -81,9 +64,15 @@ JsonValue FileInformation::Jsonize() const
 
   }
 
-  if(m_totalPartsHasBeenSet)
+  if(m_contentLengthHasBeenSet)
   {
-   payload.WithInteger("totalParts", m_totalParts);
+   payload.WithInt64("contentLength", m_contentLength);
+
+  }
+
+  if(m_s3AccessHasBeenSet)
+  {
+   payload.WithObject("s3Access", m_s3Access.Jsonize());
 
   }
 

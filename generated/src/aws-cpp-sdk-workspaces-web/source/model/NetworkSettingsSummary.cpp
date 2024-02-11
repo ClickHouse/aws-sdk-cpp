@@ -18,15 +18,7 @@ namespace WorkSpacesWeb
 namespace Model
 {
 
-NetworkSettingsSummary::NetworkSettingsSummary() : 
-    m_networkSettingsArnHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
-{
-}
-
-NetworkSettingsSummary::NetworkSettingsSummary(JsonView jsonValue) : 
-    m_networkSettingsArnHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
+NetworkSettingsSummary::NetworkSettingsSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ NetworkSettingsSummary& NetworkSettingsSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("networkSettingsArn"))
   {
     m_networkSettingsArn = jsonValue.GetString("networkSettingsArn");
-
     m_networkSettingsArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("vpcId"))
   {
     m_vpcId = jsonValue.GetString("vpcId");
-
     m_vpcIdHasBeenSet = true;
   }
-
   return *this;
 }
 

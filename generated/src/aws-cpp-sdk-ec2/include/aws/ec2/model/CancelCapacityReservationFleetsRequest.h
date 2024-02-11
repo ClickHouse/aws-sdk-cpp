@@ -22,7 +22,7 @@ namespace Model
   class CancelCapacityReservationFleetsRequest : public EC2Request
   {
   public:
-    AWS_EC2_API CancelCapacityReservationFleetsRequest();
+    AWS_EC2_API CancelCapacityReservationFleetsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,87 +37,35 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline CancelCapacityReservationFleetsRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The IDs of the Capacity Reservation Fleets to cancel.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetCapacityReservationFleetIds() const{ return m_capacityReservationFleetIds; }
-
-    /**
-     * <p>The IDs of the Capacity Reservation Fleets to cancel.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetCapacityReservationFleetIds() const { return m_capacityReservationFleetIds; }
     inline bool CapacityReservationFleetIdsHasBeenSet() const { return m_capacityReservationFleetIdsHasBeenSet; }
-
-    /**
-     * <p>The IDs of the Capacity Reservation Fleets to cancel.</p>
-     */
-    inline void SetCapacityReservationFleetIds(const Aws::Vector<Aws::String>& value) { m_capacityReservationFleetIdsHasBeenSet = true; m_capacityReservationFleetIds = value; }
-
-    /**
-     * <p>The IDs of the Capacity Reservation Fleets to cancel.</p>
-     */
-    inline void SetCapacityReservationFleetIds(Aws::Vector<Aws::String>&& value) { m_capacityReservationFleetIdsHasBeenSet = true; m_capacityReservationFleetIds = std::move(value); }
-
-    /**
-     * <p>The IDs of the Capacity Reservation Fleets to cancel.</p>
-     */
-    inline CancelCapacityReservationFleetsRequest& WithCapacityReservationFleetIds(const Aws::Vector<Aws::String>& value) { SetCapacityReservationFleetIds(value); return *this;}
-
-    /**
-     * <p>The IDs of the Capacity Reservation Fleets to cancel.</p>
-     */
-    inline CancelCapacityReservationFleetsRequest& WithCapacityReservationFleetIds(Aws::Vector<Aws::String>&& value) { SetCapacityReservationFleetIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The IDs of the Capacity Reservation Fleets to cancel.</p>
-     */
-    inline CancelCapacityReservationFleetsRequest& AddCapacityReservationFleetIds(const Aws::String& value) { m_capacityReservationFleetIdsHasBeenSet = true; m_capacityReservationFleetIds.push_back(value); return *this; }
-
-    /**
-     * <p>The IDs of the Capacity Reservation Fleets to cancel.</p>
-     */
-    inline CancelCapacityReservationFleetsRequest& AddCapacityReservationFleetIds(Aws::String&& value) { m_capacityReservationFleetIdsHasBeenSet = true; m_capacityReservationFleetIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The IDs of the Capacity Reservation Fleets to cancel.</p>
-     */
-    inline CancelCapacityReservationFleetsRequest& AddCapacityReservationFleetIds(const char* value) { m_capacityReservationFleetIdsHasBeenSet = true; m_capacityReservationFleetIds.push_back(value); return *this; }
-
+    template<typename CapacityReservationFleetIdsT = Aws::Vector<Aws::String>>
+    void SetCapacityReservationFleetIds(CapacityReservationFleetIdsT&& value) { m_capacityReservationFleetIdsHasBeenSet = true; m_capacityReservationFleetIds = std::forward<CapacityReservationFleetIdsT>(value); }
+    template<typename CapacityReservationFleetIdsT = Aws::Vector<Aws::String>>
+    CancelCapacityReservationFleetsRequest& WithCapacityReservationFleetIds(CapacityReservationFleetIdsT&& value) { SetCapacityReservationFleetIds(std::forward<CapacityReservationFleetIdsT>(value)); return *this;}
+    template<typename CapacityReservationFleetIdsT = Aws::String>
+    CancelCapacityReservationFleetsRequest& AddCapacityReservationFleetIds(CapacityReservationFleetIdsT&& value) { m_capacityReservationFleetIdsHasBeenSet = true; m_capacityReservationFleetIds.emplace_back(std::forward<CapacityReservationFleetIdsT>(value)); return *this; }
+    ///@}
   private:
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_capacityReservationFleetIds;

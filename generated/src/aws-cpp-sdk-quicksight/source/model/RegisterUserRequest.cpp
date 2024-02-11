@@ -12,24 +12,6 @@ using namespace Aws::QuickSight::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-RegisterUserRequest::RegisterUserRequest() : 
-    m_identityType(IdentityType::NOT_SET),
-    m_identityTypeHasBeenSet(false),
-    m_emailHasBeenSet(false),
-    m_userRole(UserRole::NOT_SET),
-    m_userRoleHasBeenSet(false),
-    m_iamArnHasBeenSet(false),
-    m_sessionNameHasBeenSet(false),
-    m_awsAccountIdHasBeenSet(false),
-    m_namespaceHasBeenSet(false),
-    m_userNameHasBeenSet(false),
-    m_customPermissionsNameHasBeenSet(false),
-    m_externalLoginFederationProviderTypeHasBeenSet(false),
-    m_customFederationProviderUrlHasBeenSet(false),
-    m_externalLoginIdHasBeenSet(false)
-{
-}
-
 Aws::String RegisterUserRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -89,6 +71,17 @@ Aws::String RegisterUserRequest::SerializePayload() const
   if(m_externalLoginIdHasBeenSet)
   {
    payload.WithString("ExternalLoginId", m_externalLoginId);
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> tagsJsonList(m_tags.size());
+   for(unsigned tagsIndex = 0; tagsIndex < tagsJsonList.GetLength(); ++tagsIndex)
+   {
+     tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
+   }
+   payload.WithArray("Tags", std::move(tagsJsonList));
 
   }
 

@@ -29,132 +29,55 @@ namespace Model
   class ListAppComponentRecommendationsResult
   {
   public:
-    AWS_RESILIENCEHUB_API ListAppComponentRecommendationsResult();
+    AWS_RESILIENCEHUB_API ListAppComponentRecommendationsResult() = default;
     AWS_RESILIENCEHUB_API ListAppComponentRecommendationsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_RESILIENCEHUB_API ListAppComponentRecommendationsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The recommendations for an Resilience Hub Application Component, returned as
      * an object. This object contains the names of the Application Components,
      * configuration recommendations, and recommendation statuses.</p>
      */
-    inline const Aws::Vector<ComponentRecommendation>& GetComponentRecommendations() const{ return m_componentRecommendations; }
+    inline const Aws::Vector<ComponentRecommendation>& GetComponentRecommendations() const { return m_componentRecommendations; }
+    template<typename ComponentRecommendationsT = Aws::Vector<ComponentRecommendation>>
+    void SetComponentRecommendations(ComponentRecommendationsT&& value) { m_componentRecommendationsHasBeenSet = true; m_componentRecommendations = std::forward<ComponentRecommendationsT>(value); }
+    template<typename ComponentRecommendationsT = Aws::Vector<ComponentRecommendation>>
+    ListAppComponentRecommendationsResult& WithComponentRecommendations(ComponentRecommendationsT&& value) { SetComponentRecommendations(std::forward<ComponentRecommendationsT>(value)); return *this;}
+    template<typename ComponentRecommendationsT = ComponentRecommendation>
+    ListAppComponentRecommendationsResult& AddComponentRecommendations(ComponentRecommendationsT&& value) { m_componentRecommendationsHasBeenSet = true; m_componentRecommendations.emplace_back(std::forward<ComponentRecommendationsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The recommendations for an Resilience Hub Application Component, returned as
-     * an object. This object contains the names of the Application Components,
-     * configuration recommendations, and recommendation statuses.</p>
+     * <p>Token for the next set of results, or null if there are no more results.</p>
      */
-    inline void SetComponentRecommendations(const Aws::Vector<ComponentRecommendation>& value) { m_componentRecommendations = value; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListAppComponentRecommendationsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The recommendations for an Resilience Hub Application Component, returned as
-     * an object. This object contains the names of the Application Components,
-     * configuration recommendations, and recommendation statuses.</p>
-     */
-    inline void SetComponentRecommendations(Aws::Vector<ComponentRecommendation>&& value) { m_componentRecommendations = std::move(value); }
-
-    /**
-     * <p>The recommendations for an Resilience Hub Application Component, returned as
-     * an object. This object contains the names of the Application Components,
-     * configuration recommendations, and recommendation statuses.</p>
-     */
-    inline ListAppComponentRecommendationsResult& WithComponentRecommendations(const Aws::Vector<ComponentRecommendation>& value) { SetComponentRecommendations(value); return *this;}
-
-    /**
-     * <p>The recommendations for an Resilience Hub Application Component, returned as
-     * an object. This object contains the names of the Application Components,
-     * configuration recommendations, and recommendation statuses.</p>
-     */
-    inline ListAppComponentRecommendationsResult& WithComponentRecommendations(Aws::Vector<ComponentRecommendation>&& value) { SetComponentRecommendations(std::move(value)); return *this;}
-
-    /**
-     * <p>The recommendations for an Resilience Hub Application Component, returned as
-     * an object. This object contains the names of the Application Components,
-     * configuration recommendations, and recommendation statuses.</p>
-     */
-    inline ListAppComponentRecommendationsResult& AddComponentRecommendations(const ComponentRecommendation& value) { m_componentRecommendations.push_back(value); return *this; }
-
-    /**
-     * <p>The recommendations for an Resilience Hub Application Component, returned as
-     * an object. This object contains the names of the Application Components,
-     * configuration recommendations, and recommendation statuses.</p>
-     */
-    inline ListAppComponentRecommendationsResult& AddComponentRecommendations(ComponentRecommendation&& value) { m_componentRecommendations.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>The token for the next set of results, or null if there are no more
-     * results.</p>
-     */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token for the next set of results, or null if there are no more
-     * results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The token for the next set of results, or null if there are no more
-     * results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token for the next set of results, or null if there are no more
-     * results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The token for the next set of results, or null if there are no more
-     * results.</p>
-     */
-    inline ListAppComponentRecommendationsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token for the next set of results, or null if there are no more
-     * results.</p>
-     */
-    inline ListAppComponentRecommendationsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token for the next set of results, or null if there are no more
-     * results.</p>
-     */
-    inline ListAppComponentRecommendationsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListAppComponentRecommendationsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListAppComponentRecommendationsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListAppComponentRecommendationsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListAppComponentRecommendationsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ComponentRecommendation> m_componentRecommendations;
+    bool m_componentRecommendationsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

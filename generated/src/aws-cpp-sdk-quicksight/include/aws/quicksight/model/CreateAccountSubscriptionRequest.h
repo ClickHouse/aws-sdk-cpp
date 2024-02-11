@@ -24,7 +24,7 @@ namespace Model
   class CreateAccountSubscriptionRequest : public QuickSightRequest
   {
   public:
-    AWS_QUICKSIGHT_API CreateAccountSubscriptionRequest();
+    AWS_QUICKSIGHT_API CreateAccountSubscriptionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,965 +35,332 @@ namespace Model
     AWS_QUICKSIGHT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The edition of Amazon QuickSight that you want your account to have.
-     * Currently, you can choose from <code>ENTERPRISE</code> or
-     * <code>ENTERPRISE_AND_Q</code>.</p> <p>If you choose
-     * <code>ENTERPRISE_AND_Q</code>, the following parameters are required:</p> <ul>
-     * <li> <p> <code>FirstName</code> </p> </li> <li> <p> <code>LastName</code> </p>
-     * </li> <li> <p> <code>EmailAddress</code> </p> </li> <li> <p>
-     * <code>ContactNumber</code> </p> </li> </ul>
+     * <p>The edition of QuickSight that you want your account to have. Currently, you
+     * can choose from <code>ENTERPRISE</code> or <code>ENTERPRISE_AND_Q</code>.</p>
+     * <p>If you choose <code>ENTERPRISE_AND_Q</code>, the following parameters are
+     * required:</p> <ul> <li> <p> <code>FirstName</code> </p> </li> <li> <p>
+     * <code>LastName</code> </p> </li> <li> <p> <code>EmailAddress</code> </p> </li>
+     * <li> <p> <code>ContactNumber</code> </p> </li> </ul>
      */
-    inline const Edition& GetEdition() const{ return m_edition; }
-
-    /**
-     * <p>The edition of Amazon QuickSight that you want your account to have.
-     * Currently, you can choose from <code>ENTERPRISE</code> or
-     * <code>ENTERPRISE_AND_Q</code>.</p> <p>If you choose
-     * <code>ENTERPRISE_AND_Q</code>, the following parameters are required:</p> <ul>
-     * <li> <p> <code>FirstName</code> </p> </li> <li> <p> <code>LastName</code> </p>
-     * </li> <li> <p> <code>EmailAddress</code> </p> </li> <li> <p>
-     * <code>ContactNumber</code> </p> </li> </ul>
-     */
+    inline Edition GetEdition() const { return m_edition; }
     inline bool EditionHasBeenSet() const { return m_editionHasBeenSet; }
+    inline void SetEdition(Edition value) { m_editionHasBeenSet = true; m_edition = value; }
+    inline CreateAccountSubscriptionRequest& WithEdition(Edition value) { SetEdition(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The edition of Amazon QuickSight that you want your account to have.
-     * Currently, you can choose from <code>ENTERPRISE</code> or
-     * <code>ENTERPRISE_AND_Q</code>.</p> <p>If you choose
-     * <code>ENTERPRISE_AND_Q</code>, the following parameters are required:</p> <ul>
-     * <li> <p> <code>FirstName</code> </p> </li> <li> <p> <code>LastName</code> </p>
-     * </li> <li> <p> <code>EmailAddress</code> </p> </li> <li> <p>
-     * <code>ContactNumber</code> </p> </li> </ul>
+     * <p>The method that you want to use to authenticate your QuickSight account.</p>
+     * <p>If you choose <code>ACTIVE_DIRECTORY</code>, provide an
+     * <code>ActiveDirectoryName</code> and an <code>AdminGroup</code> associated with
+     * your Active Directory.</p> <p>If you choose <code>IAM_IDENTITY_CENTER</code>,
+     * provide an <code>AdminGroup</code> associated with your IAM Identity Center
+     * account.</p>
      */
-    inline void SetEdition(const Edition& value) { m_editionHasBeenSet = true; m_edition = value; }
-
-    /**
-     * <p>The edition of Amazon QuickSight that you want your account to have.
-     * Currently, you can choose from <code>ENTERPRISE</code> or
-     * <code>ENTERPRISE_AND_Q</code>.</p> <p>If you choose
-     * <code>ENTERPRISE_AND_Q</code>, the following parameters are required:</p> <ul>
-     * <li> <p> <code>FirstName</code> </p> </li> <li> <p> <code>LastName</code> </p>
-     * </li> <li> <p> <code>EmailAddress</code> </p> </li> <li> <p>
-     * <code>ContactNumber</code> </p> </li> </ul>
-     */
-    inline void SetEdition(Edition&& value) { m_editionHasBeenSet = true; m_edition = std::move(value); }
-
-    /**
-     * <p>The edition of Amazon QuickSight that you want your account to have.
-     * Currently, you can choose from <code>ENTERPRISE</code> or
-     * <code>ENTERPRISE_AND_Q</code>.</p> <p>If you choose
-     * <code>ENTERPRISE_AND_Q</code>, the following parameters are required:</p> <ul>
-     * <li> <p> <code>FirstName</code> </p> </li> <li> <p> <code>LastName</code> </p>
-     * </li> <li> <p> <code>EmailAddress</code> </p> </li> <li> <p>
-     * <code>ContactNumber</code> </p> </li> </ul>
-     */
-    inline CreateAccountSubscriptionRequest& WithEdition(const Edition& value) { SetEdition(value); return *this;}
-
-    /**
-     * <p>The edition of Amazon QuickSight that you want your account to have.
-     * Currently, you can choose from <code>ENTERPRISE</code> or
-     * <code>ENTERPRISE_AND_Q</code>.</p> <p>If you choose
-     * <code>ENTERPRISE_AND_Q</code>, the following parameters are required:</p> <ul>
-     * <li> <p> <code>FirstName</code> </p> </li> <li> <p> <code>LastName</code> </p>
-     * </li> <li> <p> <code>EmailAddress</code> </p> </li> <li> <p>
-     * <code>ContactNumber</code> </p> </li> </ul>
-     */
-    inline CreateAccountSubscriptionRequest& WithEdition(Edition&& value) { SetEdition(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The method that you want to use to authenticate your Amazon QuickSight
-     * account. Currently, the valid values for this parameter are
-     * <code>IAM_AND_QUICKSIGHT</code>, <code>IAM_ONLY</code>, and
-     * <code>ACTIVE_DIRECTORY</code>.</p> <p>If you choose
-     * <code>ACTIVE_DIRECTORY</code>, provide an <code>ActiveDirectoryName</code> and
-     * an <code>AdminGroup</code> associated with your Active Directory.</p>
-     */
-    inline const AuthenticationMethodOption& GetAuthenticationMethod() const{ return m_authenticationMethod; }
-
-    /**
-     * <p>The method that you want to use to authenticate your Amazon QuickSight
-     * account. Currently, the valid values for this parameter are
-     * <code>IAM_AND_QUICKSIGHT</code>, <code>IAM_ONLY</code>, and
-     * <code>ACTIVE_DIRECTORY</code>.</p> <p>If you choose
-     * <code>ACTIVE_DIRECTORY</code>, provide an <code>ActiveDirectoryName</code> and
-     * an <code>AdminGroup</code> associated with your Active Directory.</p>
-     */
+    inline AuthenticationMethodOption GetAuthenticationMethod() const { return m_authenticationMethod; }
     inline bool AuthenticationMethodHasBeenSet() const { return m_authenticationMethodHasBeenSet; }
+    inline void SetAuthenticationMethod(AuthenticationMethodOption value) { m_authenticationMethodHasBeenSet = true; m_authenticationMethod = value; }
+    inline CreateAccountSubscriptionRequest& WithAuthenticationMethod(AuthenticationMethodOption value) { SetAuthenticationMethod(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The method that you want to use to authenticate your Amazon QuickSight
-     * account. Currently, the valid values for this parameter are
-     * <code>IAM_AND_QUICKSIGHT</code>, <code>IAM_ONLY</code>, and
-     * <code>ACTIVE_DIRECTORY</code>.</p> <p>If you choose
-     * <code>ACTIVE_DIRECTORY</code>, provide an <code>ActiveDirectoryName</code> and
-     * an <code>AdminGroup</code> associated with your Active Directory.</p>
-     */
-    inline void SetAuthenticationMethod(const AuthenticationMethodOption& value) { m_authenticationMethodHasBeenSet = true; m_authenticationMethod = value; }
-
-    /**
-     * <p>The method that you want to use to authenticate your Amazon QuickSight
-     * account. Currently, the valid values for this parameter are
-     * <code>IAM_AND_QUICKSIGHT</code>, <code>IAM_ONLY</code>, and
-     * <code>ACTIVE_DIRECTORY</code>.</p> <p>If you choose
-     * <code>ACTIVE_DIRECTORY</code>, provide an <code>ActiveDirectoryName</code> and
-     * an <code>AdminGroup</code> associated with your Active Directory.</p>
-     */
-    inline void SetAuthenticationMethod(AuthenticationMethodOption&& value) { m_authenticationMethodHasBeenSet = true; m_authenticationMethod = std::move(value); }
-
-    /**
-     * <p>The method that you want to use to authenticate your Amazon QuickSight
-     * account. Currently, the valid values for this parameter are
-     * <code>IAM_AND_QUICKSIGHT</code>, <code>IAM_ONLY</code>, and
-     * <code>ACTIVE_DIRECTORY</code>.</p> <p>If you choose
-     * <code>ACTIVE_DIRECTORY</code>, provide an <code>ActiveDirectoryName</code> and
-     * an <code>AdminGroup</code> associated with your Active Directory.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithAuthenticationMethod(const AuthenticationMethodOption& value) { SetAuthenticationMethod(value); return *this;}
-
-    /**
-     * <p>The method that you want to use to authenticate your Amazon QuickSight
-     * account. Currently, the valid values for this parameter are
-     * <code>IAM_AND_QUICKSIGHT</code>, <code>IAM_ONLY</code>, and
-     * <code>ACTIVE_DIRECTORY</code>.</p> <p>If you choose
-     * <code>ACTIVE_DIRECTORY</code>, provide an <code>ActiveDirectoryName</code> and
-     * an <code>AdminGroup</code> associated with your Active Directory.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithAuthenticationMethod(AuthenticationMethodOption&& value) { SetAuthenticationMethod(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services account ID of the account that you're using to create
-     * your Amazon QuickSight account.</p>
+     * your QuickSight account.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the account that you're using to create
-     * your Amazon QuickSight account.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    CreateAccountSubscriptionRequest& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Web Services account ID of the account that you're using to create
-     * your Amazon QuickSight account.</p>
+     * <p>The name of your QuickSight account. This name is unique over all of Amazon
+     * Web Services, and it appears only when users sign in. You can't change
+     * <code>AccountName</code> value after the QuickSight account is created.</p>
      */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the account that you're using to create
-     * your Amazon QuickSight account.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the account that you're using to create
-     * your Amazon QuickSight account.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the account that you're using to create
-     * your Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the account that you're using to create
-     * your Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the account that you're using to create
-     * your Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
-    /**
-     * <p>The name of your Amazon QuickSight account. This name is unique over all of
-     * Amazon Web Services, and it appears only when users sign in. You can't change
-     * <code>AccountName</code> value after the Amazon QuickSight account is
-     * created.</p>
-     */
-    inline const Aws::String& GetAccountName() const{ return m_accountName; }
-
-    /**
-     * <p>The name of your Amazon QuickSight account. This name is unique over all of
-     * Amazon Web Services, and it appears only when users sign in. You can't change
-     * <code>AccountName</code> value after the Amazon QuickSight account is
-     * created.</p>
-     */
+    inline const Aws::String& GetAccountName() const { return m_accountName; }
     inline bool AccountNameHasBeenSet() const { return m_accountNameHasBeenSet; }
+    template<typename AccountNameT = Aws::String>
+    void SetAccountName(AccountNameT&& value) { m_accountNameHasBeenSet = true; m_accountName = std::forward<AccountNameT>(value); }
+    template<typename AccountNameT = Aws::String>
+    CreateAccountSubscriptionRequest& WithAccountName(AccountNameT&& value) { SetAccountName(std::forward<AccountNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of your Amazon QuickSight account. This name is unique over all of
-     * Amazon Web Services, and it appears only when users sign in. You can't change
-     * <code>AccountName</code> value after the Amazon QuickSight account is
-     * created.</p>
+     * <p>The email address that you want QuickSight to send notifications to regarding
+     * your QuickSight account or QuickSight subscription.</p>
      */
-    inline void SetAccountName(const Aws::String& value) { m_accountNameHasBeenSet = true; m_accountName = value; }
-
-    /**
-     * <p>The name of your Amazon QuickSight account. This name is unique over all of
-     * Amazon Web Services, and it appears only when users sign in. You can't change
-     * <code>AccountName</code> value after the Amazon QuickSight account is
-     * created.</p>
-     */
-    inline void SetAccountName(Aws::String&& value) { m_accountNameHasBeenSet = true; m_accountName = std::move(value); }
-
-    /**
-     * <p>The name of your Amazon QuickSight account. This name is unique over all of
-     * Amazon Web Services, and it appears only when users sign in. You can't change
-     * <code>AccountName</code> value after the Amazon QuickSight account is
-     * created.</p>
-     */
-    inline void SetAccountName(const char* value) { m_accountNameHasBeenSet = true; m_accountName.assign(value); }
-
-    /**
-     * <p>The name of your Amazon QuickSight account. This name is unique over all of
-     * Amazon Web Services, and it appears only when users sign in. You can't change
-     * <code>AccountName</code> value after the Amazon QuickSight account is
-     * created.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithAccountName(const Aws::String& value) { SetAccountName(value); return *this;}
-
-    /**
-     * <p>The name of your Amazon QuickSight account. This name is unique over all of
-     * Amazon Web Services, and it appears only when users sign in. You can't change
-     * <code>AccountName</code> value after the Amazon QuickSight account is
-     * created.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithAccountName(Aws::String&& value) { SetAccountName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of your Amazon QuickSight account. This name is unique over all of
-     * Amazon Web Services, and it appears only when users sign in. You can't change
-     * <code>AccountName</code> value after the Amazon QuickSight account is
-     * created.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithAccountName(const char* value) { SetAccountName(value); return *this;}
-
-
-    /**
-     * <p>The email address that you want Amazon QuickSight to send notifications to
-     * regarding your Amazon QuickSight account or Amazon QuickSight subscription.</p>
-     */
-    inline const Aws::String& GetNotificationEmail() const{ return m_notificationEmail; }
-
-    /**
-     * <p>The email address that you want Amazon QuickSight to send notifications to
-     * regarding your Amazon QuickSight account or Amazon QuickSight subscription.</p>
-     */
+    inline const Aws::String& GetNotificationEmail() const { return m_notificationEmail; }
     inline bool NotificationEmailHasBeenSet() const { return m_notificationEmailHasBeenSet; }
+    template<typename NotificationEmailT = Aws::String>
+    void SetNotificationEmail(NotificationEmailT&& value) { m_notificationEmailHasBeenSet = true; m_notificationEmail = std::forward<NotificationEmailT>(value); }
+    template<typename NotificationEmailT = Aws::String>
+    CreateAccountSubscriptionRequest& WithNotificationEmail(NotificationEmailT&& value) { SetNotificationEmail(std::forward<NotificationEmailT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The email address that you want Amazon QuickSight to send notifications to
-     * regarding your Amazon QuickSight account or Amazon QuickSight subscription.</p>
-     */
-    inline void SetNotificationEmail(const Aws::String& value) { m_notificationEmailHasBeenSet = true; m_notificationEmail = value; }
-
-    /**
-     * <p>The email address that you want Amazon QuickSight to send notifications to
-     * regarding your Amazon QuickSight account or Amazon QuickSight subscription.</p>
-     */
-    inline void SetNotificationEmail(Aws::String&& value) { m_notificationEmailHasBeenSet = true; m_notificationEmail = std::move(value); }
-
-    /**
-     * <p>The email address that you want Amazon QuickSight to send notifications to
-     * regarding your Amazon QuickSight account or Amazon QuickSight subscription.</p>
-     */
-    inline void SetNotificationEmail(const char* value) { m_notificationEmailHasBeenSet = true; m_notificationEmail.assign(value); }
-
-    /**
-     * <p>The email address that you want Amazon QuickSight to send notifications to
-     * regarding your Amazon QuickSight account or Amazon QuickSight subscription.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithNotificationEmail(const Aws::String& value) { SetNotificationEmail(value); return *this;}
-
-    /**
-     * <p>The email address that you want Amazon QuickSight to send notifications to
-     * regarding your Amazon QuickSight account or Amazon QuickSight subscription.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithNotificationEmail(Aws::String&& value) { SetNotificationEmail(std::move(value)); return *this;}
-
-    /**
-     * <p>The email address that you want Amazon QuickSight to send notifications to
-     * regarding your Amazon QuickSight account or Amazon QuickSight subscription.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithNotificationEmail(const char* value) { SetNotificationEmail(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of your Active Directory. This field is required if
      * <code>ACTIVE_DIRECTORY</code> is the selected authentication method of the new
-     * Amazon QuickSight account.</p>
+     * QuickSight account.</p>
      */
-    inline const Aws::String& GetActiveDirectoryName() const{ return m_activeDirectoryName; }
-
-    /**
-     * <p>The name of your Active Directory. This field is required if
-     * <code>ACTIVE_DIRECTORY</code> is the selected authentication method of the new
-     * Amazon QuickSight account.</p>
-     */
+    inline const Aws::String& GetActiveDirectoryName() const { return m_activeDirectoryName; }
     inline bool ActiveDirectoryNameHasBeenSet() const { return m_activeDirectoryNameHasBeenSet; }
+    template<typename ActiveDirectoryNameT = Aws::String>
+    void SetActiveDirectoryName(ActiveDirectoryNameT&& value) { m_activeDirectoryNameHasBeenSet = true; m_activeDirectoryName = std::forward<ActiveDirectoryNameT>(value); }
+    template<typename ActiveDirectoryNameT = Aws::String>
+    CreateAccountSubscriptionRequest& WithActiveDirectoryName(ActiveDirectoryNameT&& value) { SetActiveDirectoryName(std::forward<ActiveDirectoryNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of your Active Directory. This field is required if
-     * <code>ACTIVE_DIRECTORY</code> is the selected authentication method of the new
-     * Amazon QuickSight account.</p>
+     * <p>The realm of the Active Directory that is associated with your QuickSight
+     * account. This field is required if <code>ACTIVE_DIRECTORY</code> is the selected
+     * authentication method of the new QuickSight account.</p>
      */
-    inline void SetActiveDirectoryName(const Aws::String& value) { m_activeDirectoryNameHasBeenSet = true; m_activeDirectoryName = value; }
-
-    /**
-     * <p>The name of your Active Directory. This field is required if
-     * <code>ACTIVE_DIRECTORY</code> is the selected authentication method of the new
-     * Amazon QuickSight account.</p>
-     */
-    inline void SetActiveDirectoryName(Aws::String&& value) { m_activeDirectoryNameHasBeenSet = true; m_activeDirectoryName = std::move(value); }
-
-    /**
-     * <p>The name of your Active Directory. This field is required if
-     * <code>ACTIVE_DIRECTORY</code> is the selected authentication method of the new
-     * Amazon QuickSight account.</p>
-     */
-    inline void SetActiveDirectoryName(const char* value) { m_activeDirectoryNameHasBeenSet = true; m_activeDirectoryName.assign(value); }
-
-    /**
-     * <p>The name of your Active Directory. This field is required if
-     * <code>ACTIVE_DIRECTORY</code> is the selected authentication method of the new
-     * Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithActiveDirectoryName(const Aws::String& value) { SetActiveDirectoryName(value); return *this;}
-
-    /**
-     * <p>The name of your Active Directory. This field is required if
-     * <code>ACTIVE_DIRECTORY</code> is the selected authentication method of the new
-     * Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithActiveDirectoryName(Aws::String&& value) { SetActiveDirectoryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of your Active Directory. This field is required if
-     * <code>ACTIVE_DIRECTORY</code> is the selected authentication method of the new
-     * Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithActiveDirectoryName(const char* value) { SetActiveDirectoryName(value); return *this;}
-
-
-    /**
-     * <p>The realm of the Active Directory that is associated with your Amazon
-     * QuickSight account. This field is required if <code>ACTIVE_DIRECTORY</code> is
-     * the selected authentication method of the new Amazon QuickSight account.</p>
-     */
-    inline const Aws::String& GetRealm() const{ return m_realm; }
-
-    /**
-     * <p>The realm of the Active Directory that is associated with your Amazon
-     * QuickSight account. This field is required if <code>ACTIVE_DIRECTORY</code> is
-     * the selected authentication method of the new Amazon QuickSight account.</p>
-     */
+    inline const Aws::String& GetRealm() const { return m_realm; }
     inline bool RealmHasBeenSet() const { return m_realmHasBeenSet; }
+    template<typename RealmT = Aws::String>
+    void SetRealm(RealmT&& value) { m_realmHasBeenSet = true; m_realm = std::forward<RealmT>(value); }
+    template<typename RealmT = Aws::String>
+    CreateAccountSubscriptionRequest& WithRealm(RealmT&& value) { SetRealm(std::forward<RealmT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The realm of the Active Directory that is associated with your Amazon
-     * QuickSight account. This field is required if <code>ACTIVE_DIRECTORY</code> is
-     * the selected authentication method of the new Amazon QuickSight account.</p>
-     */
-    inline void SetRealm(const Aws::String& value) { m_realmHasBeenSet = true; m_realm = value; }
-
-    /**
-     * <p>The realm of the Active Directory that is associated with your Amazon
-     * QuickSight account. This field is required if <code>ACTIVE_DIRECTORY</code> is
-     * the selected authentication method of the new Amazon QuickSight account.</p>
-     */
-    inline void SetRealm(Aws::String&& value) { m_realmHasBeenSet = true; m_realm = std::move(value); }
-
-    /**
-     * <p>The realm of the Active Directory that is associated with your Amazon
-     * QuickSight account. This field is required if <code>ACTIVE_DIRECTORY</code> is
-     * the selected authentication method of the new Amazon QuickSight account.</p>
-     */
-    inline void SetRealm(const char* value) { m_realmHasBeenSet = true; m_realm.assign(value); }
-
-    /**
-     * <p>The realm of the Active Directory that is associated with your Amazon
-     * QuickSight account. This field is required if <code>ACTIVE_DIRECTORY</code> is
-     * the selected authentication method of the new Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithRealm(const Aws::String& value) { SetRealm(value); return *this;}
-
-    /**
-     * <p>The realm of the Active Directory that is associated with your Amazon
-     * QuickSight account. This field is required if <code>ACTIVE_DIRECTORY</code> is
-     * the selected authentication method of the new Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithRealm(Aws::String&& value) { SetRealm(std::move(value)); return *this;}
-
-    /**
-     * <p>The realm of the Active Directory that is associated with your Amazon
-     * QuickSight account. This field is required if <code>ACTIVE_DIRECTORY</code> is
-     * the selected authentication method of the new Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithRealm(const char* value) { SetRealm(value); return *this;}
-
-
-    /**
-     * <p>The ID of the Active Directory that is associated with your Amazon QuickSight
+     * <p>The ID of the Active Directory that is associated with your QuickSight
      * account.</p>
      */
-    inline const Aws::String& GetDirectoryId() const{ return m_directoryId; }
-
-    /**
-     * <p>The ID of the Active Directory that is associated with your Amazon QuickSight
-     * account.</p>
-     */
+    inline const Aws::String& GetDirectoryId() const { return m_directoryId; }
     inline bool DirectoryIdHasBeenSet() const { return m_directoryIdHasBeenSet; }
+    template<typename DirectoryIdT = Aws::String>
+    void SetDirectoryId(DirectoryIdT&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::forward<DirectoryIdT>(value); }
+    template<typename DirectoryIdT = Aws::String>
+    CreateAccountSubscriptionRequest& WithDirectoryId(DirectoryIdT&& value) { SetDirectoryId(std::forward<DirectoryIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the Active Directory that is associated with your Amazon QuickSight
-     * account.</p>
-     */
-    inline void SetDirectoryId(const Aws::String& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
-
-    /**
-     * <p>The ID of the Active Directory that is associated with your Amazon QuickSight
-     * account.</p>
-     */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
-
-    /**
-     * <p>The ID of the Active Directory that is associated with your Amazon QuickSight
-     * account.</p>
-     */
-    inline void SetDirectoryId(const char* value) { m_directoryIdHasBeenSet = true; m_directoryId.assign(value); }
-
-    /**
-     * <p>The ID of the Active Directory that is associated with your Amazon QuickSight
-     * account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithDirectoryId(const Aws::String& value) { SetDirectoryId(value); return *this;}
-
-    /**
-     * <p>The ID of the Active Directory that is associated with your Amazon QuickSight
-     * account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Active Directory that is associated with your Amazon QuickSight
-     * account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithDirectoryId(const char* value) { SetDirectoryId(value); return *this;}
-
-
-    /**
-     * <p>The admin group associated with your Active Directory. This field is required
-     * if <code>ACTIVE_DIRECTORY</code> is the selected authentication method of the
-     * new Amazon QuickSight account. For more information about using Active Directory
-     * in Amazon QuickSight, see <a
+     * <p>The admin group associated with your Active Directory or IAM Identity Center
+     * account. Either this field or the <code>AdminProGroup</code> field is required
+     * if <code>ACTIVE_DIRECTORY</code> or <code>IAM_IDENTITY_CENTER</code> is the
+     * selected authentication method of the new QuickSight account.</p> <p>For more
+     * information about using IAM Identity Center in QuickSight, see <a
+     * href="https://docs.aws.amazon.com/quicksight/latest/user/sec-identity-management-identity-center.html">Using
+     * IAM Identity Center with QuickSight Enterprise Edition</a> in the QuickSight
+     * User Guide. For more information about using Active Directory in QuickSight, see
+     * <a
      * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the Amazon
-     * QuickSight User Guide.</p>
+     * Active Directory with QuickSight Enterprise Edition</a> in the QuickSight User
+     * Guide.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAdminGroup() const{ return m_adminGroup; }
-
-    /**
-     * <p>The admin group associated with your Active Directory. This field is required
-     * if <code>ACTIVE_DIRECTORY</code> is the selected authentication method of the
-     * new Amazon QuickSight account. For more information about using Active Directory
-     * in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the Amazon
-     * QuickSight User Guide.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAdminGroup() const { return m_adminGroup; }
     inline bool AdminGroupHasBeenSet() const { return m_adminGroupHasBeenSet; }
+    template<typename AdminGroupT = Aws::Vector<Aws::String>>
+    void SetAdminGroup(AdminGroupT&& value) { m_adminGroupHasBeenSet = true; m_adminGroup = std::forward<AdminGroupT>(value); }
+    template<typename AdminGroupT = Aws::Vector<Aws::String>>
+    CreateAccountSubscriptionRequest& WithAdminGroup(AdminGroupT&& value) { SetAdminGroup(std::forward<AdminGroupT>(value)); return *this;}
+    template<typename AdminGroupT = Aws::String>
+    CreateAccountSubscriptionRequest& AddAdminGroup(AdminGroupT&& value) { m_adminGroupHasBeenSet = true; m_adminGroup.emplace_back(std::forward<AdminGroupT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The admin group associated with your Active Directory. This field is required
-     * if <code>ACTIVE_DIRECTORY</code> is the selected authentication method of the
-     * new Amazon QuickSight account. For more information about using Active Directory
-     * in Amazon QuickSight, see <a
+     * <p>The author group associated with your Active Directory or IAM Identity Center
+     * account.</p> <p>For more information about using IAM Identity Center in
+     * QuickSight, see <a
+     * href="https://docs.aws.amazon.com/quicksight/latest/user/sec-identity-management-identity-center.html">Using
+     * IAM Identity Center with QuickSight Enterprise Edition</a> in the QuickSight
+     * User Guide. For more information about using Active Directory in QuickSight, see
+     * <a
      * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the Amazon
-     * QuickSight User Guide.</p>
+     * Active Directory with QuickSight Enterprise Edition</a> in the QuickSight User
+     * Guide.</p>
      */
-    inline void SetAdminGroup(const Aws::Vector<Aws::String>& value) { m_adminGroupHasBeenSet = true; m_adminGroup = value; }
-
-    /**
-     * <p>The admin group associated with your Active Directory. This field is required
-     * if <code>ACTIVE_DIRECTORY</code> is the selected authentication method of the
-     * new Amazon QuickSight account. For more information about using Active Directory
-     * in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the Amazon
-     * QuickSight User Guide.</p>
-     */
-    inline void SetAdminGroup(Aws::Vector<Aws::String>&& value) { m_adminGroupHasBeenSet = true; m_adminGroup = std::move(value); }
-
-    /**
-     * <p>The admin group associated with your Active Directory. This field is required
-     * if <code>ACTIVE_DIRECTORY</code> is the selected authentication method of the
-     * new Amazon QuickSight account. For more information about using Active Directory
-     * in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the Amazon
-     * QuickSight User Guide.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithAdminGroup(const Aws::Vector<Aws::String>& value) { SetAdminGroup(value); return *this;}
-
-    /**
-     * <p>The admin group associated with your Active Directory. This field is required
-     * if <code>ACTIVE_DIRECTORY</code> is the selected authentication method of the
-     * new Amazon QuickSight account. For more information about using Active Directory
-     * in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the Amazon
-     * QuickSight User Guide.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithAdminGroup(Aws::Vector<Aws::String>&& value) { SetAdminGroup(std::move(value)); return *this;}
-
-    /**
-     * <p>The admin group associated with your Active Directory. This field is required
-     * if <code>ACTIVE_DIRECTORY</code> is the selected authentication method of the
-     * new Amazon QuickSight account. For more information about using Active Directory
-     * in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the Amazon
-     * QuickSight User Guide.</p>
-     */
-    inline CreateAccountSubscriptionRequest& AddAdminGroup(const Aws::String& value) { m_adminGroupHasBeenSet = true; m_adminGroup.push_back(value); return *this; }
-
-    /**
-     * <p>The admin group associated with your Active Directory. This field is required
-     * if <code>ACTIVE_DIRECTORY</code> is the selected authentication method of the
-     * new Amazon QuickSight account. For more information about using Active Directory
-     * in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the Amazon
-     * QuickSight User Guide.</p>
-     */
-    inline CreateAccountSubscriptionRequest& AddAdminGroup(Aws::String&& value) { m_adminGroupHasBeenSet = true; m_adminGroup.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The admin group associated with your Active Directory. This field is required
-     * if <code>ACTIVE_DIRECTORY</code> is the selected authentication method of the
-     * new Amazon QuickSight account. For more information about using Active Directory
-     * in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the Amazon
-     * QuickSight User Guide.</p>
-     */
-    inline CreateAccountSubscriptionRequest& AddAdminGroup(const char* value) { m_adminGroupHasBeenSet = true; m_adminGroup.push_back(value); return *this; }
-
-
-    /**
-     * <p>The author group associated with your Active Directory. For more information
-     * about using Active Directory in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the Amazon
-     * QuickSight User Guide.</p>
-     */
-    inline const Aws::Vector<Aws::String>& GetAuthorGroup() const{ return m_authorGroup; }
-
-    /**
-     * <p>The author group associated with your Active Directory. For more information
-     * about using Active Directory in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the Amazon
-     * QuickSight User Guide.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAuthorGroup() const { return m_authorGroup; }
     inline bool AuthorGroupHasBeenSet() const { return m_authorGroupHasBeenSet; }
+    template<typename AuthorGroupT = Aws::Vector<Aws::String>>
+    void SetAuthorGroup(AuthorGroupT&& value) { m_authorGroupHasBeenSet = true; m_authorGroup = std::forward<AuthorGroupT>(value); }
+    template<typename AuthorGroupT = Aws::Vector<Aws::String>>
+    CreateAccountSubscriptionRequest& WithAuthorGroup(AuthorGroupT&& value) { SetAuthorGroup(std::forward<AuthorGroupT>(value)); return *this;}
+    template<typename AuthorGroupT = Aws::String>
+    CreateAccountSubscriptionRequest& AddAuthorGroup(AuthorGroupT&& value) { m_authorGroupHasBeenSet = true; m_authorGroup.emplace_back(std::forward<AuthorGroupT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The author group associated with your Active Directory. For more information
-     * about using Active Directory in Amazon QuickSight, see <a
+     * <p>The reader group associated with your Active Directory or IAM Identity Center
+     * account.</p> <p>For more information about using IAM Identity Center in
+     * QuickSight, see <a
+     * href="https://docs.aws.amazon.com/quicksight/latest/user/sec-identity-management-identity-center.html">Using
+     * IAM Identity Center with QuickSight Enterprise Edition</a> in the QuickSight
+     * User Guide. For more information about using Active Directory in QuickSight, see
+     * <a
      * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the Amazon
-     * QuickSight User Guide.</p>
+     * Active Directory with QuickSight Enterprise Edition</a> in the QuickSight User
+     * Guide.</p>
      */
-    inline void SetAuthorGroup(const Aws::Vector<Aws::String>& value) { m_authorGroupHasBeenSet = true; m_authorGroup = value; }
-
-    /**
-     * <p>The author group associated with your Active Directory. For more information
-     * about using Active Directory in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the Amazon
-     * QuickSight User Guide.</p>
-     */
-    inline void SetAuthorGroup(Aws::Vector<Aws::String>&& value) { m_authorGroupHasBeenSet = true; m_authorGroup = std::move(value); }
-
-    /**
-     * <p>The author group associated with your Active Directory. For more information
-     * about using Active Directory in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the Amazon
-     * QuickSight User Guide.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithAuthorGroup(const Aws::Vector<Aws::String>& value) { SetAuthorGroup(value); return *this;}
-
-    /**
-     * <p>The author group associated with your Active Directory. For more information
-     * about using Active Directory in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the Amazon
-     * QuickSight User Guide.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithAuthorGroup(Aws::Vector<Aws::String>&& value) { SetAuthorGroup(std::move(value)); return *this;}
-
-    /**
-     * <p>The author group associated with your Active Directory. For more information
-     * about using Active Directory in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the Amazon
-     * QuickSight User Guide.</p>
-     */
-    inline CreateAccountSubscriptionRequest& AddAuthorGroup(const Aws::String& value) { m_authorGroupHasBeenSet = true; m_authorGroup.push_back(value); return *this; }
-
-    /**
-     * <p>The author group associated with your Active Directory. For more information
-     * about using Active Directory in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the Amazon
-     * QuickSight User Guide.</p>
-     */
-    inline CreateAccountSubscriptionRequest& AddAuthorGroup(Aws::String&& value) { m_authorGroupHasBeenSet = true; m_authorGroup.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The author group associated with your Active Directory. For more information
-     * about using Active Directory in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the Amazon
-     * QuickSight User Guide.</p>
-     */
-    inline CreateAccountSubscriptionRequest& AddAuthorGroup(const char* value) { m_authorGroupHasBeenSet = true; m_authorGroup.push_back(value); return *this; }
-
-
-    /**
-     * <p>The reader group associated with your Active Direcrtory. For more information
-     * about using Active Directory in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the <i>Amazon
-     * QuickSight User Guide</i>.</p>
-     */
-    inline const Aws::Vector<Aws::String>& GetReaderGroup() const{ return m_readerGroup; }
-
-    /**
-     * <p>The reader group associated with your Active Direcrtory. For more information
-     * about using Active Directory in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the <i>Amazon
-     * QuickSight User Guide</i>.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetReaderGroup() const { return m_readerGroup; }
     inline bool ReaderGroupHasBeenSet() const { return m_readerGroupHasBeenSet; }
+    template<typename ReaderGroupT = Aws::Vector<Aws::String>>
+    void SetReaderGroup(ReaderGroupT&& value) { m_readerGroupHasBeenSet = true; m_readerGroup = std::forward<ReaderGroupT>(value); }
+    template<typename ReaderGroupT = Aws::Vector<Aws::String>>
+    CreateAccountSubscriptionRequest& WithReaderGroup(ReaderGroupT&& value) { SetReaderGroup(std::forward<ReaderGroupT>(value)); return *this;}
+    template<typename ReaderGroupT = Aws::String>
+    CreateAccountSubscriptionRequest& AddReaderGroup(ReaderGroupT&& value) { m_readerGroupHasBeenSet = true; m_readerGroup.emplace_back(std::forward<ReaderGroupT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The reader group associated with your Active Direcrtory. For more information
-     * about using Active Directory in Amazon QuickSight, see <a
+     * <p>The admin pro group associated with your Active Directory or IAM Identity
+     * Center account. Either this field or the <code>AdminGroup</code> field is
+     * required if <code>ACTIVE_DIRECTORY</code> or <code>IAM_IDENTITY_CENTER</code> is
+     * the selected authentication method of the new QuickSight account.</p> <p>For
+     * more information about using IAM Identity Center in QuickSight, see <a
+     * href="https://docs.aws.amazon.com/quicksight/latest/user/sec-identity-management-identity-center.html">Using
+     * IAM Identity Center with QuickSight Enterprise Edition</a> in the QuickSight
+     * User Guide. For more information about using Active Directory in QuickSight, see
+     * <a
      * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the <i>Amazon
-     * QuickSight User Guide</i>.</p>
+     * Active Directory with QuickSight Enterprise Edition</a> in the QuickSight User
+     * Guide.</p>
      */
-    inline void SetReaderGroup(const Aws::Vector<Aws::String>& value) { m_readerGroupHasBeenSet = true; m_readerGroup = value; }
+    inline const Aws::Vector<Aws::String>& GetAdminProGroup() const { return m_adminProGroup; }
+    inline bool AdminProGroupHasBeenSet() const { return m_adminProGroupHasBeenSet; }
+    template<typename AdminProGroupT = Aws::Vector<Aws::String>>
+    void SetAdminProGroup(AdminProGroupT&& value) { m_adminProGroupHasBeenSet = true; m_adminProGroup = std::forward<AdminProGroupT>(value); }
+    template<typename AdminProGroupT = Aws::Vector<Aws::String>>
+    CreateAccountSubscriptionRequest& WithAdminProGroup(AdminProGroupT&& value) { SetAdminProGroup(std::forward<AdminProGroupT>(value)); return *this;}
+    template<typename AdminProGroupT = Aws::String>
+    CreateAccountSubscriptionRequest& AddAdminProGroup(AdminProGroupT&& value) { m_adminProGroupHasBeenSet = true; m_adminProGroup.emplace_back(std::forward<AdminProGroupT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The reader group associated with your Active Direcrtory. For more information
-     * about using Active Directory in Amazon QuickSight, see <a
+     * <p>The author pro group associated with your Active Directory or IAM Identity
+     * Center account.</p> <p>For more information about using IAM Identity Center in
+     * QuickSight, see <a
+     * href="https://docs.aws.amazon.com/quicksight/latest/user/sec-identity-management-identity-center.html">Using
+     * IAM Identity Center with QuickSight Enterprise Edition</a> in the QuickSight
+     * User Guide. For more information about using Active Directory in QuickSight, see
+     * <a
      * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the <i>Amazon
-     * QuickSight User Guide</i>.</p>
+     * Active Directory with QuickSight Enterprise Edition</a> in the QuickSight User
+     * Guide.</p>
      */
-    inline void SetReaderGroup(Aws::Vector<Aws::String>&& value) { m_readerGroupHasBeenSet = true; m_readerGroup = std::move(value); }
+    inline const Aws::Vector<Aws::String>& GetAuthorProGroup() const { return m_authorProGroup; }
+    inline bool AuthorProGroupHasBeenSet() const { return m_authorProGroupHasBeenSet; }
+    template<typename AuthorProGroupT = Aws::Vector<Aws::String>>
+    void SetAuthorProGroup(AuthorProGroupT&& value) { m_authorProGroupHasBeenSet = true; m_authorProGroup = std::forward<AuthorProGroupT>(value); }
+    template<typename AuthorProGroupT = Aws::Vector<Aws::String>>
+    CreateAccountSubscriptionRequest& WithAuthorProGroup(AuthorProGroupT&& value) { SetAuthorProGroup(std::forward<AuthorProGroupT>(value)); return *this;}
+    template<typename AuthorProGroupT = Aws::String>
+    CreateAccountSubscriptionRequest& AddAuthorProGroup(AuthorProGroupT&& value) { m_authorProGroupHasBeenSet = true; m_authorProGroup.emplace_back(std::forward<AuthorProGroupT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The reader group associated with your Active Direcrtory. For more information
-     * about using Active Directory in Amazon QuickSight, see <a
+     * <p>The reader pro group associated with your Active Directory or IAM Identity
+     * Center account.</p> <p>For more information about using IAM Identity Center in
+     * QuickSight, see <a
+     * href="https://docs.aws.amazon.com/quicksight/latest/user/sec-identity-management-identity-center.html">Using
+     * IAM Identity Center with QuickSight Enterprise Edition</a> in the QuickSight
+     * User Guide. For more information about using Active Directory in QuickSight, see
+     * <a
      * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the <i>Amazon
-     * QuickSight User Guide</i>.</p>
+     * Active Directory with QuickSight Enterprise Edition</a> in the QuickSight User
+     * Guide.</p>
      */
-    inline CreateAccountSubscriptionRequest& WithReaderGroup(const Aws::Vector<Aws::String>& value) { SetReaderGroup(value); return *this;}
+    inline const Aws::Vector<Aws::String>& GetReaderProGroup() const { return m_readerProGroup; }
+    inline bool ReaderProGroupHasBeenSet() const { return m_readerProGroupHasBeenSet; }
+    template<typename ReaderProGroupT = Aws::Vector<Aws::String>>
+    void SetReaderProGroup(ReaderProGroupT&& value) { m_readerProGroupHasBeenSet = true; m_readerProGroup = std::forward<ReaderProGroupT>(value); }
+    template<typename ReaderProGroupT = Aws::Vector<Aws::String>>
+    CreateAccountSubscriptionRequest& WithReaderProGroup(ReaderProGroupT&& value) { SetReaderProGroup(std::forward<ReaderProGroupT>(value)); return *this;}
+    template<typename ReaderProGroupT = Aws::String>
+    CreateAccountSubscriptionRequest& AddReaderProGroup(ReaderProGroupT&& value) { m_readerProGroupHasBeenSet = true; m_readerProGroup.emplace_back(std::forward<ReaderProGroupT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The reader group associated with your Active Direcrtory. For more information
-     * about using Active Directory in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the <i>Amazon
-     * QuickSight User Guide</i>.</p>
+     * <p>The first name of the author of the QuickSight account to use for future
+     * communications. This field is required if <code>ENTERPPRISE_AND_Q</code> is the
+     * selected edition of the new QuickSight account.</p>
      */
-    inline CreateAccountSubscriptionRequest& WithReaderGroup(Aws::Vector<Aws::String>&& value) { SetReaderGroup(std::move(value)); return *this;}
-
-    /**
-     * <p>The reader group associated with your Active Direcrtory. For more information
-     * about using Active Directory in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the <i>Amazon
-     * QuickSight User Guide</i>.</p>
-     */
-    inline CreateAccountSubscriptionRequest& AddReaderGroup(const Aws::String& value) { m_readerGroupHasBeenSet = true; m_readerGroup.push_back(value); return *this; }
-
-    /**
-     * <p>The reader group associated with your Active Direcrtory. For more information
-     * about using Active Directory in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the <i>Amazon
-     * QuickSight User Guide</i>.</p>
-     */
-    inline CreateAccountSubscriptionRequest& AddReaderGroup(Aws::String&& value) { m_readerGroupHasBeenSet = true; m_readerGroup.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The reader group associated with your Active Direcrtory. For more information
-     * about using Active Directory in Amazon QuickSight, see <a
-     * href="https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html">Using
-     * Active Directory with Amazon QuickSight Enterprise Edition</a> in the <i>Amazon
-     * QuickSight User Guide</i>.</p>
-     */
-    inline CreateAccountSubscriptionRequest& AddReaderGroup(const char* value) { m_readerGroupHasBeenSet = true; m_readerGroup.push_back(value); return *this; }
-
-
-    /**
-     * <p>The first name of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
-    inline const Aws::String& GetFirstName() const{ return m_firstName; }
-
-    /**
-     * <p>The first name of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
+    inline const Aws::String& GetFirstName() const { return m_firstName; }
     inline bool FirstNameHasBeenSet() const { return m_firstNameHasBeenSet; }
+    template<typename FirstNameT = Aws::String>
+    void SetFirstName(FirstNameT&& value) { m_firstNameHasBeenSet = true; m_firstName = std::forward<FirstNameT>(value); }
+    template<typename FirstNameT = Aws::String>
+    CreateAccountSubscriptionRequest& WithFirstName(FirstNameT&& value) { SetFirstName(std::forward<FirstNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The first name of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
+     * <p>The last name of the author of the QuickSight account to use for future
+     * communications. This field is required if <code>ENTERPPRISE_AND_Q</code> is the
+     * selected edition of the new QuickSight account.</p>
      */
-    inline void SetFirstName(const Aws::String& value) { m_firstNameHasBeenSet = true; m_firstName = value; }
-
-    /**
-     * <p>The first name of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
-    inline void SetFirstName(Aws::String&& value) { m_firstNameHasBeenSet = true; m_firstName = std::move(value); }
-
-    /**
-     * <p>The first name of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
-    inline void SetFirstName(const char* value) { m_firstNameHasBeenSet = true; m_firstName.assign(value); }
-
-    /**
-     * <p>The first name of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithFirstName(const Aws::String& value) { SetFirstName(value); return *this;}
-
-    /**
-     * <p>The first name of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithFirstName(Aws::String&& value) { SetFirstName(std::move(value)); return *this;}
-
-    /**
-     * <p>The first name of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithFirstName(const char* value) { SetFirstName(value); return *this;}
-
-
-    /**
-     * <p>The last name of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
-    inline const Aws::String& GetLastName() const{ return m_lastName; }
-
-    /**
-     * <p>The last name of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
+    inline const Aws::String& GetLastName() const { return m_lastName; }
     inline bool LastNameHasBeenSet() const { return m_lastNameHasBeenSet; }
+    template<typename LastNameT = Aws::String>
+    void SetLastName(LastNameT&& value) { m_lastNameHasBeenSet = true; m_lastName = std::forward<LastNameT>(value); }
+    template<typename LastNameT = Aws::String>
+    CreateAccountSubscriptionRequest& WithLastName(LastNameT&& value) { SetLastName(std::forward<LastNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The last name of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
+     * <p>The email address of the author of the QuickSight account to use for future
+     * communications. This field is required if <code>ENTERPPRISE_AND_Q</code> is the
+     * selected edition of the new QuickSight account.</p>
      */
-    inline void SetLastName(const Aws::String& value) { m_lastNameHasBeenSet = true; m_lastName = value; }
-
-    /**
-     * <p>The last name of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
-    inline void SetLastName(Aws::String&& value) { m_lastNameHasBeenSet = true; m_lastName = std::move(value); }
-
-    /**
-     * <p>The last name of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
-    inline void SetLastName(const char* value) { m_lastNameHasBeenSet = true; m_lastName.assign(value); }
-
-    /**
-     * <p>The last name of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithLastName(const Aws::String& value) { SetLastName(value); return *this;}
-
-    /**
-     * <p>The last name of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithLastName(Aws::String&& value) { SetLastName(std::move(value)); return *this;}
-
-    /**
-     * <p>The last name of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithLastName(const char* value) { SetLastName(value); return *this;}
-
-
-    /**
-     * <p>The email address of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
-    inline const Aws::String& GetEmailAddress() const{ return m_emailAddress; }
-
-    /**
-     * <p>The email address of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
+    inline const Aws::String& GetEmailAddress() const { return m_emailAddress; }
     inline bool EmailAddressHasBeenSet() const { return m_emailAddressHasBeenSet; }
+    template<typename EmailAddressT = Aws::String>
+    void SetEmailAddress(EmailAddressT&& value) { m_emailAddressHasBeenSet = true; m_emailAddress = std::forward<EmailAddressT>(value); }
+    template<typename EmailAddressT = Aws::String>
+    CreateAccountSubscriptionRequest& WithEmailAddress(EmailAddressT&& value) { SetEmailAddress(std::forward<EmailAddressT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The email address of the author of the Amazon QuickSight account to use for
+     * <p>A 10-digit phone number for the author of the QuickSight account to use for
      * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
+     * is the selected edition of the new QuickSight account.</p>
      */
-    inline void SetEmailAddress(const Aws::String& value) { m_emailAddressHasBeenSet = true; m_emailAddress = value; }
-
-    /**
-     * <p>The email address of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
-    inline void SetEmailAddress(Aws::String&& value) { m_emailAddressHasBeenSet = true; m_emailAddress = std::move(value); }
-
-    /**
-     * <p>The email address of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
-    inline void SetEmailAddress(const char* value) { m_emailAddressHasBeenSet = true; m_emailAddress.assign(value); }
-
-    /**
-     * <p>The email address of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithEmailAddress(const Aws::String& value) { SetEmailAddress(value); return *this;}
-
-    /**
-     * <p>The email address of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithEmailAddress(Aws::String&& value) { SetEmailAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The email address of the author of the Amazon QuickSight account to use for
-     * future communications. This field is required if <code>ENTERPPRISE_AND_Q</code>
-     * is the selected edition of the new Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithEmailAddress(const char* value) { SetEmailAddress(value); return *this;}
-
-
-    /**
-     * <p>A 10-digit phone number for the author of the Amazon QuickSight account to
-     * use for future communications. This field is required if
-     * <code>ENTERPPRISE_AND_Q</code> is the selected edition of the new Amazon
-     * QuickSight account.</p>
-     */
-    inline const Aws::String& GetContactNumber() const{ return m_contactNumber; }
-
-    /**
-     * <p>A 10-digit phone number for the author of the Amazon QuickSight account to
-     * use for future communications. This field is required if
-     * <code>ENTERPPRISE_AND_Q</code> is the selected edition of the new Amazon
-     * QuickSight account.</p>
-     */
+    inline const Aws::String& GetContactNumber() const { return m_contactNumber; }
     inline bool ContactNumberHasBeenSet() const { return m_contactNumberHasBeenSet; }
+    template<typename ContactNumberT = Aws::String>
+    void SetContactNumber(ContactNumberT&& value) { m_contactNumberHasBeenSet = true; m_contactNumber = std::forward<ContactNumberT>(value); }
+    template<typename ContactNumberT = Aws::String>
+    CreateAccountSubscriptionRequest& WithContactNumber(ContactNumberT&& value) { SetContactNumber(std::forward<ContactNumberT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A 10-digit phone number for the author of the Amazon QuickSight account to
-     * use for future communications. This field is required if
-     * <code>ENTERPPRISE_AND_Q</code> is the selected edition of the new Amazon
-     * QuickSight account.</p>
+     * <p>The Amazon Resource Name (ARN) for the IAM Identity Center instance.</p>
      */
-    inline void SetContactNumber(const Aws::String& value) { m_contactNumberHasBeenSet = true; m_contactNumber = value; }
-
-    /**
-     * <p>A 10-digit phone number for the author of the Amazon QuickSight account to
-     * use for future communications. This field is required if
-     * <code>ENTERPPRISE_AND_Q</code> is the selected edition of the new Amazon
-     * QuickSight account.</p>
-     */
-    inline void SetContactNumber(Aws::String&& value) { m_contactNumberHasBeenSet = true; m_contactNumber = std::move(value); }
-
-    /**
-     * <p>A 10-digit phone number for the author of the Amazon QuickSight account to
-     * use for future communications. This field is required if
-     * <code>ENTERPPRISE_AND_Q</code> is the selected edition of the new Amazon
-     * QuickSight account.</p>
-     */
-    inline void SetContactNumber(const char* value) { m_contactNumberHasBeenSet = true; m_contactNumber.assign(value); }
-
-    /**
-     * <p>A 10-digit phone number for the author of the Amazon QuickSight account to
-     * use for future communications. This field is required if
-     * <code>ENTERPPRISE_AND_Q</code> is the selected edition of the new Amazon
-     * QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithContactNumber(const Aws::String& value) { SetContactNumber(value); return *this;}
-
-    /**
-     * <p>A 10-digit phone number for the author of the Amazon QuickSight account to
-     * use for future communications. This field is required if
-     * <code>ENTERPPRISE_AND_Q</code> is the selected edition of the new Amazon
-     * QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithContactNumber(Aws::String&& value) { SetContactNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>A 10-digit phone number for the author of the Amazon QuickSight account to
-     * use for future communications. This field is required if
-     * <code>ENTERPPRISE_AND_Q</code> is the selected edition of the new Amazon
-     * QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionRequest& WithContactNumber(const char* value) { SetContactNumber(value); return *this;}
-
+    inline const Aws::String& GetIAMIdentityCenterInstanceArn() const { return m_iAMIdentityCenterInstanceArn; }
+    inline bool IAMIdentityCenterInstanceArnHasBeenSet() const { return m_iAMIdentityCenterInstanceArnHasBeenSet; }
+    template<typename IAMIdentityCenterInstanceArnT = Aws::String>
+    void SetIAMIdentityCenterInstanceArn(IAMIdentityCenterInstanceArnT&& value) { m_iAMIdentityCenterInstanceArnHasBeenSet = true; m_iAMIdentityCenterInstanceArn = std::forward<IAMIdentityCenterInstanceArnT>(value); }
+    template<typename IAMIdentityCenterInstanceArnT = Aws::String>
+    CreateAccountSubscriptionRequest& WithIAMIdentityCenterInstanceArn(IAMIdentityCenterInstanceArnT&& value) { SetIAMIdentityCenterInstanceArn(std::forward<IAMIdentityCenterInstanceArnT>(value)); return *this;}
+    ///@}
   private:
 
-    Edition m_edition;
+    Edition m_edition{Edition::NOT_SET};
     bool m_editionHasBeenSet = false;
 
-    AuthenticationMethodOption m_authenticationMethod;
+    AuthenticationMethodOption m_authenticationMethod{AuthenticationMethodOption::NOT_SET};
     bool m_authenticationMethodHasBeenSet = false;
 
     Aws::String m_awsAccountId;
@@ -1023,6 +390,15 @@ namespace Model
     Aws::Vector<Aws::String> m_readerGroup;
     bool m_readerGroupHasBeenSet = false;
 
+    Aws::Vector<Aws::String> m_adminProGroup;
+    bool m_adminProGroupHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_authorProGroup;
+    bool m_authorProGroupHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_readerProGroup;
+    bool m_readerProGroupHasBeenSet = false;
+
     Aws::String m_firstName;
     bool m_firstNameHasBeenSet = false;
 
@@ -1034,6 +410,9 @@ namespace Model
 
     Aws::String m_contactNumber;
     bool m_contactNumberHasBeenSet = false;
+
+    Aws::String m_iAMIdentityCenterInstanceArn;
+    bool m_iAMIdentityCenterInstanceArnHasBeenSet = false;
   };
 
 } // namespace Model

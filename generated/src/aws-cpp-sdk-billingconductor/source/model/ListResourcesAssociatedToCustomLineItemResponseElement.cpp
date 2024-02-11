@@ -18,19 +18,7 @@ namespace BillingConductor
 namespace Model
 {
 
-ListResourcesAssociatedToCustomLineItemResponseElement::ListResourcesAssociatedToCustomLineItemResponseElement() : 
-    m_arnHasBeenSet(false),
-    m_relationship(CustomLineItemRelationship::NOT_SET),
-    m_relationshipHasBeenSet(false),
-    m_endBillingPeriodHasBeenSet(false)
-{
-}
-
-ListResourcesAssociatedToCustomLineItemResponseElement::ListResourcesAssociatedToCustomLineItemResponseElement(JsonView jsonValue) : 
-    m_arnHasBeenSet(false),
-    m_relationship(CustomLineItemRelationship::NOT_SET),
-    m_relationshipHasBeenSet(false),
-    m_endBillingPeriodHasBeenSet(false)
+ListResourcesAssociatedToCustomLineItemResponseElement::ListResourcesAssociatedToCustomLineItemResponseElement(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ ListResourcesAssociatedToCustomLineItemResponseElement& ListResourcesAssociatedT
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Relationship"))
   {
     m_relationship = CustomLineItemRelationshipMapper::GetCustomLineItemRelationshipForName(jsonValue.GetString("Relationship"));
-
     m_relationshipHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EndBillingPeriod"))
   {
     m_endBillingPeriod = jsonValue.GetString("EndBillingPeriod");
-
     m_endBillingPeriodHasBeenSet = true;
   }
-
   return *this;
 }
 

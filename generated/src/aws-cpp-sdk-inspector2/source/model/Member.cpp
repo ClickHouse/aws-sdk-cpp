@@ -18,21 +18,7 @@ namespace Inspector2
 namespace Model
 {
 
-Member::Member() : 
-    m_accountIdHasBeenSet(false),
-    m_delegatedAdminAccountIdHasBeenSet(false),
-    m_relationshipStatus(RelationshipStatus::NOT_SET),
-    m_relationshipStatusHasBeenSet(false),
-    m_updatedAtHasBeenSet(false)
-{
-}
-
-Member::Member(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_delegatedAdminAccountIdHasBeenSet(false),
-    m_relationshipStatus(RelationshipStatus::NOT_SET),
-    m_relationshipStatusHasBeenSet(false),
-    m_updatedAtHasBeenSet(false)
+Member::Member(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ Member& Member::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("accountId"))
   {
     m_accountId = jsonValue.GetString("accountId");
-
     m_accountIdHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("delegatedAdminAccountId"))
-  {
-    m_delegatedAdminAccountId = jsonValue.GetString("delegatedAdminAccountId");
-
-    m_delegatedAdminAccountIdHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("relationshipStatus"))
   {
     m_relationshipStatus = RelationshipStatusMapper::GetRelationshipStatusForName(jsonValue.GetString("relationshipStatus"));
-
     m_relationshipStatusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("delegatedAdminAccountId"))
+  {
+    m_delegatedAdminAccountId = jsonValue.GetString("delegatedAdminAccountId");
+    m_delegatedAdminAccountIdHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("updatedAt"))
   {
     m_updatedAt = jsonValue.GetDouble("updatedAt");
-
     m_updatedAtHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -80,15 +58,15 @@ JsonValue Member::Jsonize() const
 
   }
 
+  if(m_relationshipStatusHasBeenSet)
+  {
+   payload.WithString("relationshipStatus", RelationshipStatusMapper::GetNameForRelationshipStatus(m_relationshipStatus));
+  }
+
   if(m_delegatedAdminAccountIdHasBeenSet)
   {
    payload.WithString("delegatedAdminAccountId", m_delegatedAdminAccountId);
 
-  }
-
-  if(m_relationshipStatusHasBeenSet)
-  {
-   payload.WithString("relationshipStatus", RelationshipStatusMapper::GetNameForRelationshipStatus(m_relationshipStatus));
   }
 
   if(m_updatedAtHasBeenSet)

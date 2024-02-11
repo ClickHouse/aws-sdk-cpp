@@ -23,14 +23,14 @@ namespace Model
 
   /**
    * <p>Configuration settings for creating and managing pre-provisioned snapshots
-   * for a fast-launch enabled Windows AMI.</p><p><h3>See Also:</h3>   <a
+   * for a Windows fast launch enabled Windows AMI.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/FastLaunchSnapshotConfigurationResponse">AWS
    * API Reference</a></p>
    */
   class FastLaunchSnapshotConfigurationResponse
   {
   public:
-    AWS_EC2_API FastLaunchSnapshotConfigurationResponse();
+    AWS_EC2_API FastLaunchSnapshotConfigurationResponse() = default;
     AWS_EC2_API FastLaunchSnapshotConfigurationResponse(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API FastLaunchSnapshotConfigurationResponse& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -38,33 +38,19 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The number of pre-provisioned snapshots requested to keep on hand for a
-     * fast-launch enabled Windows AMI.</p>
+     * Windows fast launch enabled AMI.</p>
      */
-    inline int GetTargetResourceCount() const{ return m_targetResourceCount; }
-
-    /**
-     * <p>The number of pre-provisioned snapshots requested to keep on hand for a
-     * fast-launch enabled Windows AMI.</p>
-     */
+    inline int GetTargetResourceCount() const { return m_targetResourceCount; }
     inline bool TargetResourceCountHasBeenSet() const { return m_targetResourceCountHasBeenSet; }
-
-    /**
-     * <p>The number of pre-provisioned snapshots requested to keep on hand for a
-     * fast-launch enabled Windows AMI.</p>
-     */
     inline void SetTargetResourceCount(int value) { m_targetResourceCountHasBeenSet = true; m_targetResourceCount = value; }
-
-    /**
-     * <p>The number of pre-provisioned snapshots requested to keep on hand for a
-     * fast-launch enabled Windows AMI.</p>
-     */
     inline FastLaunchSnapshotConfigurationResponse& WithTargetResourceCount(int value) { SetTargetResourceCount(value); return *this;}
-
+    ///@}
   private:
 
-    int m_targetResourceCount;
+    int m_targetResourceCount{0};
     bool m_targetResourceCountHasBeenSet = false;
   };
 

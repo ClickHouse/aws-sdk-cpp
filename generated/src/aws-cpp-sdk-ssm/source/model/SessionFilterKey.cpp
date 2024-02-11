@@ -26,6 +26,7 @@ namespace Aws
         static const int Owner_HASH = HashingUtils::HashString("Owner");
         static const int Status_HASH = HashingUtils::HashString("Status");
         static const int SessionId_HASH = HashingUtils::HashString("SessionId");
+        static const int AccessType_HASH = HashingUtils::HashString("AccessType");
 
 
         SessionFilterKey GetSessionFilterKeyForName(const Aws::String& name)
@@ -55,6 +56,10 @@ namespace Aws
           {
             return SessionFilterKey::SessionId;
           }
+          else if (hashCode == AccessType_HASH)
+          {
+            return SessionFilterKey::AccessType;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -69,6 +74,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case SessionFilterKey::NOT_SET:
+            return {};
           case SessionFilterKey::InvokedAfter:
             return "InvokedAfter";
           case SessionFilterKey::InvokedBefore:
@@ -81,6 +88,8 @@ namespace Aws
             return "Status";
           case SessionFilterKey::SessionId:
             return "SessionId";
+          case SessionFilterKey::AccessType:
+            return "AccessType";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

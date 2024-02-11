@@ -22,7 +22,7 @@ namespace Model
   class GetRemainingFreeTrialDaysRequest : public GuardDutyRequest
   {
   public:
-    AWS_GUARDDUTY_API GetRemainingFreeTrialDaysRequest();
+    AWS_GUARDDUTY_API GetRemainingFreeTrialDaysRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,92 +33,35 @@ namespace Model
     AWS_GUARDDUTY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The unique ID of the detector of the GuardDuty member account.</p>
+     * <p>The unique ID of the detector of the GuardDuty member account.</p> <p>To find
+     * the <code>detectorId</code> in the current Region, see the Settings page in the
+     * GuardDuty console, or run the <a
+     * href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListDetectors.html">ListDetectors</a>
+     * API.</p>
      */
-    inline const Aws::String& GetDetectorId() const{ return m_detectorId; }
-
-    /**
-     * <p>The unique ID of the detector of the GuardDuty member account.</p>
-     */
+    inline const Aws::String& GetDetectorId() const { return m_detectorId; }
     inline bool DetectorIdHasBeenSet() const { return m_detectorIdHasBeenSet; }
+    template<typename DetectorIdT = Aws::String>
+    void SetDetectorId(DetectorIdT&& value) { m_detectorIdHasBeenSet = true; m_detectorId = std::forward<DetectorIdT>(value); }
+    template<typename DetectorIdT = Aws::String>
+    GetRemainingFreeTrialDaysRequest& WithDetectorId(DetectorIdT&& value) { SetDetectorId(std::forward<DetectorIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID of the detector of the GuardDuty member account.</p>
-     */
-    inline void SetDetectorId(const Aws::String& value) { m_detectorIdHasBeenSet = true; m_detectorId = value; }
-
-    /**
-     * <p>The unique ID of the detector of the GuardDuty member account.</p>
-     */
-    inline void SetDetectorId(Aws::String&& value) { m_detectorIdHasBeenSet = true; m_detectorId = std::move(value); }
-
-    /**
-     * <p>The unique ID of the detector of the GuardDuty member account.</p>
-     */
-    inline void SetDetectorId(const char* value) { m_detectorIdHasBeenSet = true; m_detectorId.assign(value); }
-
-    /**
-     * <p>The unique ID of the detector of the GuardDuty member account.</p>
-     */
-    inline GetRemainingFreeTrialDaysRequest& WithDetectorId(const Aws::String& value) { SetDetectorId(value); return *this;}
-
-    /**
-     * <p>The unique ID of the detector of the GuardDuty member account.</p>
-     */
-    inline GetRemainingFreeTrialDaysRequest& WithDetectorId(Aws::String&& value) { SetDetectorId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of the detector of the GuardDuty member account.</p>
-     */
-    inline GetRemainingFreeTrialDaysRequest& WithDetectorId(const char* value) { SetDetectorId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of account identifiers of the GuardDuty member account.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAccountIds() const{ return m_accountIds; }
-
-    /**
-     * <p>A list of account identifiers of the GuardDuty member account.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAccountIds() const { return m_accountIds; }
     inline bool AccountIdsHasBeenSet() const { return m_accountIdsHasBeenSet; }
-
-    /**
-     * <p>A list of account identifiers of the GuardDuty member account.</p>
-     */
-    inline void SetAccountIds(const Aws::Vector<Aws::String>& value) { m_accountIdsHasBeenSet = true; m_accountIds = value; }
-
-    /**
-     * <p>A list of account identifiers of the GuardDuty member account.</p>
-     */
-    inline void SetAccountIds(Aws::Vector<Aws::String>&& value) { m_accountIdsHasBeenSet = true; m_accountIds = std::move(value); }
-
-    /**
-     * <p>A list of account identifiers of the GuardDuty member account.</p>
-     */
-    inline GetRemainingFreeTrialDaysRequest& WithAccountIds(const Aws::Vector<Aws::String>& value) { SetAccountIds(value); return *this;}
-
-    /**
-     * <p>A list of account identifiers of the GuardDuty member account.</p>
-     */
-    inline GetRemainingFreeTrialDaysRequest& WithAccountIds(Aws::Vector<Aws::String>&& value) { SetAccountIds(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of account identifiers of the GuardDuty member account.</p>
-     */
-    inline GetRemainingFreeTrialDaysRequest& AddAccountIds(const Aws::String& value) { m_accountIdsHasBeenSet = true; m_accountIds.push_back(value); return *this; }
-
-    /**
-     * <p>A list of account identifiers of the GuardDuty member account.</p>
-     */
-    inline GetRemainingFreeTrialDaysRequest& AddAccountIds(Aws::String&& value) { m_accountIdsHasBeenSet = true; m_accountIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of account identifiers of the GuardDuty member account.</p>
-     */
-    inline GetRemainingFreeTrialDaysRequest& AddAccountIds(const char* value) { m_accountIdsHasBeenSet = true; m_accountIds.push_back(value); return *this; }
-
+    template<typename AccountIdsT = Aws::Vector<Aws::String>>
+    void SetAccountIds(AccountIdsT&& value) { m_accountIdsHasBeenSet = true; m_accountIds = std::forward<AccountIdsT>(value); }
+    template<typename AccountIdsT = Aws::Vector<Aws::String>>
+    GetRemainingFreeTrialDaysRequest& WithAccountIds(AccountIdsT&& value) { SetAccountIds(std::forward<AccountIdsT>(value)); return *this;}
+    template<typename AccountIdsT = Aws::String>
+    GetRemainingFreeTrialDaysRequest& AddAccountIds(AccountIdsT&& value) { m_accountIdsHasBeenSet = true; m_accountIds.emplace_back(std::forward<AccountIdsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_detectorId;

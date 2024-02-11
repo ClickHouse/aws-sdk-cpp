@@ -10,22 +10,24 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-CreateOrUpdateTagsRequest::CreateOrUpdateTagsRequest() : 
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateOrUpdateTagsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=CreateOrUpdateTags&";
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.member.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 

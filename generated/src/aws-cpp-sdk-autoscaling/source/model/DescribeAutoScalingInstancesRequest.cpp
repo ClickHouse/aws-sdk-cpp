@@ -10,26 +10,25 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-DescribeAutoScalingInstancesRequest::DescribeAutoScalingInstancesRequest() : 
-    m_instanceIdsHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String DescribeAutoScalingInstancesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeAutoScalingInstances&";
   if(m_instanceIdsHasBeenSet)
   {
-    unsigned instanceIdsCount = 1;
-    for(auto& item : m_instanceIds)
+    if (m_instanceIds.empty())
     {
-      ss << "InstanceIds.member." << instanceIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      instanceIdsCount++;
+      ss << "InstanceIds=&";
+    }
+    else
+    {
+      unsigned instanceIdsCount = 1;
+      for(auto& item : m_instanceIds)
+      {
+        ss << "InstanceIds.member." << instanceIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        instanceIdsCount++;
+      }
     }
   }
 

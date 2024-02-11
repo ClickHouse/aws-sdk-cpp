@@ -24,7 +24,7 @@ namespace Model
   class CreatePublishingDestinationRequest : public GuardDutyRequest
   {
   public:
-    AWS_GUARDDUTY_API CreatePublishingDestinationRequest();
+    AWS_GUARDDUTY_API CreatePublishingDestinationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,182 +35,70 @@ namespace Model
     AWS_GUARDDUTY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the GuardDuty detector associated with the publishing
-     * destination.</p>
+     * destination.</p> <p>To find the <code>detectorId</code> in the current Region,
+     * see the Settings page in the GuardDuty console, or run the <a
+     * href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListDetectors.html">ListDetectors</a>
+     * API.</p>
      */
-    inline const Aws::String& GetDetectorId() const{ return m_detectorId; }
-
-    /**
-     * <p>The ID of the GuardDuty detector associated with the publishing
-     * destination.</p>
-     */
+    inline const Aws::String& GetDetectorId() const { return m_detectorId; }
     inline bool DetectorIdHasBeenSet() const { return m_detectorIdHasBeenSet; }
+    template<typename DetectorIdT = Aws::String>
+    void SetDetectorId(DetectorIdT&& value) { m_detectorIdHasBeenSet = true; m_detectorId = std::forward<DetectorIdT>(value); }
+    template<typename DetectorIdT = Aws::String>
+    CreatePublishingDestinationRequest& WithDetectorId(DetectorIdT&& value) { SetDetectorId(std::forward<DetectorIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the GuardDuty detector associated with the publishing
-     * destination.</p>
-     */
-    inline void SetDetectorId(const Aws::String& value) { m_detectorIdHasBeenSet = true; m_detectorId = value; }
-
-    /**
-     * <p>The ID of the GuardDuty detector associated with the publishing
-     * destination.</p>
-     */
-    inline void SetDetectorId(Aws::String&& value) { m_detectorIdHasBeenSet = true; m_detectorId = std::move(value); }
-
-    /**
-     * <p>The ID of the GuardDuty detector associated with the publishing
-     * destination.</p>
-     */
-    inline void SetDetectorId(const char* value) { m_detectorIdHasBeenSet = true; m_detectorId.assign(value); }
-
-    /**
-     * <p>The ID of the GuardDuty detector associated with the publishing
-     * destination.</p>
-     */
-    inline CreatePublishingDestinationRequest& WithDetectorId(const Aws::String& value) { SetDetectorId(value); return *this;}
-
-    /**
-     * <p>The ID of the GuardDuty detector associated with the publishing
-     * destination.</p>
-     */
-    inline CreatePublishingDestinationRequest& WithDetectorId(Aws::String&& value) { SetDetectorId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the GuardDuty detector associated with the publishing
-     * destination.</p>
-     */
-    inline CreatePublishingDestinationRequest& WithDetectorId(const char* value) { SetDetectorId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of resource for the publishing destination. Currently only Amazon S3
      * buckets are supported.</p>
      */
-    inline const DestinationType& GetDestinationType() const{ return m_destinationType; }
-
-    /**
-     * <p>The type of resource for the publishing destination. Currently only Amazon S3
-     * buckets are supported.</p>
-     */
+    inline DestinationType GetDestinationType() const { return m_destinationType; }
     inline bool DestinationTypeHasBeenSet() const { return m_destinationTypeHasBeenSet; }
+    inline void SetDestinationType(DestinationType value) { m_destinationTypeHasBeenSet = true; m_destinationType = value; }
+    inline CreatePublishingDestinationRequest& WithDestinationType(DestinationType value) { SetDestinationType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of resource for the publishing destination. Currently only Amazon S3
-     * buckets are supported.</p>
-     */
-    inline void SetDestinationType(const DestinationType& value) { m_destinationTypeHasBeenSet = true; m_destinationType = value; }
-
-    /**
-     * <p>The type of resource for the publishing destination. Currently only Amazon S3
-     * buckets are supported.</p>
-     */
-    inline void SetDestinationType(DestinationType&& value) { m_destinationTypeHasBeenSet = true; m_destinationType = std::move(value); }
-
-    /**
-     * <p>The type of resource for the publishing destination. Currently only Amazon S3
-     * buckets are supported.</p>
-     */
-    inline CreatePublishingDestinationRequest& WithDestinationType(const DestinationType& value) { SetDestinationType(value); return *this;}
-
-    /**
-     * <p>The type of resource for the publishing destination. Currently only Amazon S3
-     * buckets are supported.</p>
-     */
-    inline CreatePublishingDestinationRequest& WithDestinationType(DestinationType&& value) { SetDestinationType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The properties of the publishing destination, including the ARNs for the
      * destination and the KMS key used for encryption.</p>
      */
-    inline const DestinationProperties& GetDestinationProperties() const{ return m_destinationProperties; }
-
-    /**
-     * <p>The properties of the publishing destination, including the ARNs for the
-     * destination and the KMS key used for encryption.</p>
-     */
+    inline const DestinationProperties& GetDestinationProperties() const { return m_destinationProperties; }
     inline bool DestinationPropertiesHasBeenSet() const { return m_destinationPropertiesHasBeenSet; }
+    template<typename DestinationPropertiesT = DestinationProperties>
+    void SetDestinationProperties(DestinationPropertiesT&& value) { m_destinationPropertiesHasBeenSet = true; m_destinationProperties = std::forward<DestinationPropertiesT>(value); }
+    template<typename DestinationPropertiesT = DestinationProperties>
+    CreatePublishingDestinationRequest& WithDestinationProperties(DestinationPropertiesT&& value) { SetDestinationProperties(std::forward<DestinationPropertiesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The properties of the publishing destination, including the ARNs for the
-     * destination and the KMS key used for encryption.</p>
-     */
-    inline void SetDestinationProperties(const DestinationProperties& value) { m_destinationPropertiesHasBeenSet = true; m_destinationProperties = value; }
-
-    /**
-     * <p>The properties of the publishing destination, including the ARNs for the
-     * destination and the KMS key used for encryption.</p>
-     */
-    inline void SetDestinationProperties(DestinationProperties&& value) { m_destinationPropertiesHasBeenSet = true; m_destinationProperties = std::move(value); }
-
-    /**
-     * <p>The properties of the publishing destination, including the ARNs for the
-     * destination and the KMS key used for encryption.</p>
-     */
-    inline CreatePublishingDestinationRequest& WithDestinationProperties(const DestinationProperties& value) { SetDestinationProperties(value); return *this;}
-
-    /**
-     * <p>The properties of the publishing destination, including the ARNs for the
-     * destination and the KMS key used for encryption.</p>
-     */
-    inline CreatePublishingDestinationRequest& WithDestinationProperties(DestinationProperties&& value) { SetDestinationProperties(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The idempotency token for the request.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>The idempotency token for the request.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
-
-    /**
-     * <p>The idempotency token for the request.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>The idempotency token for the request.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>The idempotency token for the request.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>The idempotency token for the request.</p>
-     */
-    inline CreatePublishingDestinationRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>The idempotency token for the request.</p>
-     */
-    inline CreatePublishingDestinationRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The idempotency token for the request.</p>
-     */
-    inline CreatePublishingDestinationRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreatePublishingDestinationRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_detectorId;
     bool m_detectorIdHasBeenSet = false;
 
-    DestinationType m_destinationType;
+    DestinationType m_destinationType{DestinationType::NOT_SET};
     bool m_destinationTypeHasBeenSet = false;
 
     DestinationProperties m_destinationProperties;
     bool m_destinationPropertiesHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
   };
 
 } // namespace Model

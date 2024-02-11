@@ -34,104 +34,45 @@ namespace Model
   class PropertyRequest
   {
   public:
-    AWS_IOTTWINMAKER_API PropertyRequest();
+    AWS_IOTTWINMAKER_API PropertyRequest() = default;
     AWS_IOTTWINMAKER_API PropertyRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API PropertyRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An object that specifies information about a property.</p>
      */
-    inline const PropertyDefinitionRequest& GetDefinition() const{ return m_definition; }
-
-    /**
-     * <p>An object that specifies information about a property.</p>
-     */
+    inline const PropertyDefinitionRequest& GetDefinition() const { return m_definition; }
     inline bool DefinitionHasBeenSet() const { return m_definitionHasBeenSet; }
+    template<typename DefinitionT = PropertyDefinitionRequest>
+    void SetDefinition(DefinitionT&& value) { m_definitionHasBeenSet = true; m_definition = std::forward<DefinitionT>(value); }
+    template<typename DefinitionT = PropertyDefinitionRequest>
+    PropertyRequest& WithDefinition(DefinitionT&& value) { SetDefinition(std::forward<DefinitionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that specifies information about a property.</p>
-     */
-    inline void SetDefinition(const PropertyDefinitionRequest& value) { m_definitionHasBeenSet = true; m_definition = value; }
-
-    /**
-     * <p>An object that specifies information about a property.</p>
-     */
-    inline void SetDefinition(PropertyDefinitionRequest&& value) { m_definitionHasBeenSet = true; m_definition = std::move(value); }
-
-    /**
-     * <p>An object that specifies information about a property.</p>
-     */
-    inline PropertyRequest& WithDefinition(const PropertyDefinitionRequest& value) { SetDefinition(value); return *this;}
-
-    /**
-     * <p>An object that specifies information about a property.</p>
-     */
-    inline PropertyRequest& WithDefinition(PropertyDefinitionRequest&& value) { SetDefinition(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of the property.</p>
      */
-    inline const DataValue& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the property.</p>
-     */
+    inline const DataValue& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = DataValue>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = DataValue>
+    PropertyRequest& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The value of the property.</p>
-     */
-    inline void SetValue(const DataValue& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the property.</p>
-     */
-    inline void SetValue(DataValue&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of the property.</p>
-     */
-    inline PropertyRequest& WithValue(const DataValue& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of the property.</p>
-     */
-    inline PropertyRequest& WithValue(DataValue&& value) { SetValue(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The update type of the update property request.</p>
      */
-    inline const PropertyUpdateType& GetUpdateType() const{ return m_updateType; }
-
-    /**
-     * <p>The update type of the update property request.</p>
-     */
+    inline PropertyUpdateType GetUpdateType() const { return m_updateType; }
     inline bool UpdateTypeHasBeenSet() const { return m_updateTypeHasBeenSet; }
-
-    /**
-     * <p>The update type of the update property request.</p>
-     */
-    inline void SetUpdateType(const PropertyUpdateType& value) { m_updateTypeHasBeenSet = true; m_updateType = value; }
-
-    /**
-     * <p>The update type of the update property request.</p>
-     */
-    inline void SetUpdateType(PropertyUpdateType&& value) { m_updateTypeHasBeenSet = true; m_updateType = std::move(value); }
-
-    /**
-     * <p>The update type of the update property request.</p>
-     */
-    inline PropertyRequest& WithUpdateType(const PropertyUpdateType& value) { SetUpdateType(value); return *this;}
-
-    /**
-     * <p>The update type of the update property request.</p>
-     */
-    inline PropertyRequest& WithUpdateType(PropertyUpdateType&& value) { SetUpdateType(std::move(value)); return *this;}
-
+    inline void SetUpdateType(PropertyUpdateType value) { m_updateTypeHasBeenSet = true; m_updateType = value; }
+    inline PropertyRequest& WithUpdateType(PropertyUpdateType value) { SetUpdateType(value); return *this;}
+    ///@}
   private:
 
     PropertyDefinitionRequest m_definition;
@@ -140,7 +81,7 @@ namespace Model
     DataValue m_value;
     bool m_valueHasBeenSet = false;
 
-    PropertyUpdateType m_updateType;
+    PropertyUpdateType m_updateType{PropertyUpdateType::NOT_SET};
     bool m_updateTypeHasBeenSet = false;
   };
 

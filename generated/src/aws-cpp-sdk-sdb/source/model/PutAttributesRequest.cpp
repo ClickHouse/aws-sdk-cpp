@@ -10,14 +10,6 @@
 using namespace Aws::SimpleDB::Model;
 using namespace Aws::Utils;
 
-PutAttributesRequest::PutAttributesRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_itemNameHasBeenSet(false),
-    m_attributesHasBeenSet(false),
-    m_expectedHasBeenSet(false)
-{
-}
-
 Aws::String PutAttributesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -34,11 +26,18 @@ Aws::String PutAttributesRequest::SerializePayload() const
 
   if(m_attributesHasBeenSet)
   {
-    unsigned attributesCount = 1;
-    for(auto& item : m_attributes)
+    if (m_attributes.empty())
     {
-      item.OutputToStream(ss, "Attribute.", attributesCount, "");
-      attributesCount++;
+      ss << "Attributes=&";
+    }
+    else
+    {
+      unsigned attributesCount = 1;
+      for(auto& item : m_attributes)
+      {
+        item.OutputToStream(ss, "Attribute.", attributesCount, "");
+        attributesCount++;
+      }
     }
   }
 

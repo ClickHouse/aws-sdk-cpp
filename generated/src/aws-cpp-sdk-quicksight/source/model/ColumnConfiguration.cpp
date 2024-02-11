@@ -18,19 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-ColumnConfiguration::ColumnConfiguration() : 
-    m_columnHasBeenSet(false),
-    m_formatConfigurationHasBeenSet(false),
-    m_role(ColumnRole::NOT_SET),
-    m_roleHasBeenSet(false)
-{
-}
-
-ColumnConfiguration::ColumnConfiguration(JsonView jsonValue) : 
-    m_columnHasBeenSet(false),
-    m_formatConfigurationHasBeenSet(false),
-    m_role(ColumnRole::NOT_SET),
-    m_roleHasBeenSet(false)
+ColumnConfiguration::ColumnConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,23 @@ ColumnConfiguration& ColumnConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Column"))
   {
     m_column = jsonValue.GetObject("Column");
-
     m_columnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FormatConfiguration"))
   {
     m_formatConfiguration = jsonValue.GetObject("FormatConfiguration");
-
     m_formatConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Role"))
   {
     m_role = ColumnRoleMapper::GetColumnRoleForName(jsonValue.GetString("Role"));
-
     m_roleHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ColorsConfiguration"))
+  {
+    m_colorsConfiguration = jsonValue.GetObject("ColorsConfiguration");
+    m_colorsConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -80,6 +67,12 @@ JsonValue ColumnConfiguration::Jsonize() const
   if(m_roleHasBeenSet)
   {
    payload.WithString("Role", ColumnRoleMapper::GetNameForColumnRole(m_role));
+  }
+
+  if(m_colorsConfigurationHasBeenSet)
+  {
+   payload.WithObject("ColorsConfiguration", m_colorsConfiguration.Jsonize());
+
   }
 
   return payload;

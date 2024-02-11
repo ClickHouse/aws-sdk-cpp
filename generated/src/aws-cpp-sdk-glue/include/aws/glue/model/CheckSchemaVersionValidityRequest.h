@@ -22,7 +22,7 @@ namespace Model
   class CheckSchemaVersionValidityRequest : public GlueRequest
   {
   public:
-    AWS_GLUE_API CheckSchemaVersionValidityRequest();
+    AWS_GLUE_API CheckSchemaVersionValidityRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,86 +35,31 @@ namespace Model
     AWS_GLUE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The data format of the schema definition. Currently <code>AVRO</code>,
      * <code>JSON</code> and <code>PROTOBUF</code> are supported.</p>
      */
-    inline const DataFormat& GetDataFormat() const{ return m_dataFormat; }
-
-    /**
-     * <p>The data format of the schema definition. Currently <code>AVRO</code>,
-     * <code>JSON</code> and <code>PROTOBUF</code> are supported.</p>
-     */
+    inline DataFormat GetDataFormat() const { return m_dataFormat; }
     inline bool DataFormatHasBeenSet() const { return m_dataFormatHasBeenSet; }
+    inline void SetDataFormat(DataFormat value) { m_dataFormatHasBeenSet = true; m_dataFormat = value; }
+    inline CheckSchemaVersionValidityRequest& WithDataFormat(DataFormat value) { SetDataFormat(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The data format of the schema definition. Currently <code>AVRO</code>,
-     * <code>JSON</code> and <code>PROTOBUF</code> are supported.</p>
-     */
-    inline void SetDataFormat(const DataFormat& value) { m_dataFormatHasBeenSet = true; m_dataFormat = value; }
-
-    /**
-     * <p>The data format of the schema definition. Currently <code>AVRO</code>,
-     * <code>JSON</code> and <code>PROTOBUF</code> are supported.</p>
-     */
-    inline void SetDataFormat(DataFormat&& value) { m_dataFormatHasBeenSet = true; m_dataFormat = std::move(value); }
-
-    /**
-     * <p>The data format of the schema definition. Currently <code>AVRO</code>,
-     * <code>JSON</code> and <code>PROTOBUF</code> are supported.</p>
-     */
-    inline CheckSchemaVersionValidityRequest& WithDataFormat(const DataFormat& value) { SetDataFormat(value); return *this;}
-
-    /**
-     * <p>The data format of the schema definition. Currently <code>AVRO</code>,
-     * <code>JSON</code> and <code>PROTOBUF</code> are supported.</p>
-     */
-    inline CheckSchemaVersionValidityRequest& WithDataFormat(DataFormat&& value) { SetDataFormat(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The definition of the schema that has to be validated.</p>
      */
-    inline const Aws::String& GetSchemaDefinition() const{ return m_schemaDefinition; }
-
-    /**
-     * <p>The definition of the schema that has to be validated.</p>
-     */
+    inline const Aws::String& GetSchemaDefinition() const { return m_schemaDefinition; }
     inline bool SchemaDefinitionHasBeenSet() const { return m_schemaDefinitionHasBeenSet; }
-
-    /**
-     * <p>The definition of the schema that has to be validated.</p>
-     */
-    inline void SetSchemaDefinition(const Aws::String& value) { m_schemaDefinitionHasBeenSet = true; m_schemaDefinition = value; }
-
-    /**
-     * <p>The definition of the schema that has to be validated.</p>
-     */
-    inline void SetSchemaDefinition(Aws::String&& value) { m_schemaDefinitionHasBeenSet = true; m_schemaDefinition = std::move(value); }
-
-    /**
-     * <p>The definition of the schema that has to be validated.</p>
-     */
-    inline void SetSchemaDefinition(const char* value) { m_schemaDefinitionHasBeenSet = true; m_schemaDefinition.assign(value); }
-
-    /**
-     * <p>The definition of the schema that has to be validated.</p>
-     */
-    inline CheckSchemaVersionValidityRequest& WithSchemaDefinition(const Aws::String& value) { SetSchemaDefinition(value); return *this;}
-
-    /**
-     * <p>The definition of the schema that has to be validated.</p>
-     */
-    inline CheckSchemaVersionValidityRequest& WithSchemaDefinition(Aws::String&& value) { SetSchemaDefinition(std::move(value)); return *this;}
-
-    /**
-     * <p>The definition of the schema that has to be validated.</p>
-     */
-    inline CheckSchemaVersionValidityRequest& WithSchemaDefinition(const char* value) { SetSchemaDefinition(value); return *this;}
-
+    template<typename SchemaDefinitionT = Aws::String>
+    void SetSchemaDefinition(SchemaDefinitionT&& value) { m_schemaDefinitionHasBeenSet = true; m_schemaDefinition = std::forward<SchemaDefinitionT>(value); }
+    template<typename SchemaDefinitionT = Aws::String>
+    CheckSchemaVersionValidityRequest& WithSchemaDefinition(SchemaDefinitionT&& value) { SetSchemaDefinition(std::forward<SchemaDefinitionT>(value)); return *this;}
+    ///@}
   private:
 
-    DataFormat m_dataFormat;
+    DataFormat m_dataFormat{DataFormat::NOT_SET};
     bool m_dataFormatHasBeenSet = false;
 
     Aws::String m_schemaDefinition;

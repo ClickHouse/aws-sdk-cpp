@@ -18,15 +18,7 @@ namespace ChimeSDKVoice
 namespace Model
 {
 
-Credential::Credential() : 
-    m_usernameHasBeenSet(false),
-    m_passwordHasBeenSet(false)
-{
-}
-
-Credential::Credential(JsonView jsonValue) : 
-    m_usernameHasBeenSet(false),
-    m_passwordHasBeenSet(false)
+Credential::Credential(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Credential& Credential::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Username"))
   {
     m_username = jsonValue.GetString("Username");
-
     m_usernameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Password"))
   {
     m_password = jsonValue.GetString("Password");
-
     m_passwordHasBeenSet = true;
   }
-
   return *this;
 }
 

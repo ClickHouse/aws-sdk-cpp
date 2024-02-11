@@ -18,17 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-Scte35InputScheduleActionSettings::Scte35InputScheduleActionSettings() : 
-    m_inputAttachmentNameReferenceHasBeenSet(false),
-    m_mode(Scte35InputMode::NOT_SET),
-    m_modeHasBeenSet(false)
-{
-}
-
-Scte35InputScheduleActionSettings::Scte35InputScheduleActionSettings(JsonView jsonValue) : 
-    m_inputAttachmentNameReferenceHasBeenSet(false),
-    m_mode(Scte35InputMode::NOT_SET),
-    m_modeHasBeenSet(false)
+Scte35InputScheduleActionSettings::Scte35InputScheduleActionSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ Scte35InputScheduleActionSettings& Scte35InputScheduleActionSettings::operator =
   if(jsonValue.ValueExists("inputAttachmentNameReference"))
   {
     m_inputAttachmentNameReference = jsonValue.GetString("inputAttachmentNameReference");
-
     m_inputAttachmentNameReferenceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("mode"))
   {
     m_mode = Scte35InputModeMapper::GetScte35InputModeForName(jsonValue.GetString("mode"));
-
     m_modeHasBeenSet = true;
   }
-
   return *this;
 }
 

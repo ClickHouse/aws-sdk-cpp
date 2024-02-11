@@ -18,19 +18,7 @@ namespace WAFV2
 namespace Model
 {
 
-TextTransformation::TextTransformation() : 
-    m_priority(0),
-    m_priorityHasBeenSet(false),
-    m_type(TextTransformationType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-TextTransformation::TextTransformation(JsonView jsonValue) : 
-    m_priority(0),
-    m_priorityHasBeenSet(false),
-    m_type(TextTransformationType::NOT_SET),
-    m_typeHasBeenSet(false)
+TextTransformation::TextTransformation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ TextTransformation& TextTransformation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Priority"))
   {
     m_priority = jsonValue.GetInteger("Priority");
-
     m_priorityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Type"))
   {
     m_type = TextTransformationTypeMapper::GetTextTransformationTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

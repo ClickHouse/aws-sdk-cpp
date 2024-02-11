@@ -34,151 +34,55 @@ namespace Model
   class SlotValueOverride
   {
   public:
-    AWS_LEXMODELSV2_API SlotValueOverride();
+    AWS_LEXMODELSV2_API SlotValueOverride() = default;
     AWS_LEXMODELSV2_API SlotValueOverride(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API SlotValueOverride& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>When the shape value is <code>List</code>, it indicates that the
      * <code>values</code> field contains a list of slot values. When the value is
      * <code>Scalar</code>, it indicates that the <code>value</code> field contains a
      * single value.</p>
      */
-    inline const SlotShape& GetShape() const{ return m_shape; }
-
-    /**
-     * <p>When the shape value is <code>List</code>, it indicates that the
-     * <code>values</code> field contains a list of slot values. When the value is
-     * <code>Scalar</code>, it indicates that the <code>value</code> field contains a
-     * single value.</p>
-     */
+    inline SlotShape GetShape() const { return m_shape; }
     inline bool ShapeHasBeenSet() const { return m_shapeHasBeenSet; }
+    inline void SetShape(SlotShape value) { m_shapeHasBeenSet = true; m_shape = value; }
+    inline SlotValueOverride& WithShape(SlotShape value) { SetShape(value); return *this;}
+    ///@}
 
-    /**
-     * <p>When the shape value is <code>List</code>, it indicates that the
-     * <code>values</code> field contains a list of slot values. When the value is
-     * <code>Scalar</code>, it indicates that the <code>value</code> field contains a
-     * single value.</p>
-     */
-    inline void SetShape(const SlotShape& value) { m_shapeHasBeenSet = true; m_shape = value; }
-
-    /**
-     * <p>When the shape value is <code>List</code>, it indicates that the
-     * <code>values</code> field contains a list of slot values. When the value is
-     * <code>Scalar</code>, it indicates that the <code>value</code> field contains a
-     * single value.</p>
-     */
-    inline void SetShape(SlotShape&& value) { m_shapeHasBeenSet = true; m_shape = std::move(value); }
-
-    /**
-     * <p>When the shape value is <code>List</code>, it indicates that the
-     * <code>values</code> field contains a list of slot values. When the value is
-     * <code>Scalar</code>, it indicates that the <code>value</code> field contains a
-     * single value.</p>
-     */
-    inline SlotValueOverride& WithShape(const SlotShape& value) { SetShape(value); return *this;}
-
-    /**
-     * <p>When the shape value is <code>List</code>, it indicates that the
-     * <code>values</code> field contains a list of slot values. When the value is
-     * <code>Scalar</code>, it indicates that the <code>value</code> field contains a
-     * single value.</p>
-     */
-    inline SlotValueOverride& WithShape(SlotShape&& value) { SetShape(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The current value of the slot.</p>
      */
-    inline const SlotValue& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The current value of the slot.</p>
-     */
+    inline const SlotValue& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = SlotValue>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = SlotValue>
+    SlotValueOverride& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current value of the slot.</p>
-     */
-    inline void SetValue(const SlotValue& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The current value of the slot.</p>
-     */
-    inline void SetValue(SlotValue&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The current value of the slot.</p>
-     */
-    inline SlotValueOverride& WithValue(const SlotValue& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The current value of the slot.</p>
-     */
-    inline SlotValueOverride& WithValue(SlotValue&& value) { SetValue(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of one or more values that the user provided for the slot. For
      * example, for a slot that elicits pizza toppings, the values might be "pepperoni"
      * and "pineapple."</p>
      */
-    inline const Aws::Vector<SlotValueOverride>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>A list of one or more values that the user provided for the slot. For
-     * example, for a slot that elicits pizza toppings, the values might be "pepperoni"
-     * and "pineapple."</p>
-     */
+    inline const Aws::Vector<SlotValueOverride>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
-
-    /**
-     * <p>A list of one or more values that the user provided for the slot. For
-     * example, for a slot that elicits pizza toppings, the values might be "pepperoni"
-     * and "pineapple."</p>
-     */
-    inline void SetValues(const Aws::Vector<SlotValueOverride>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>A list of one or more values that the user provided for the slot. For
-     * example, for a slot that elicits pizza toppings, the values might be "pepperoni"
-     * and "pineapple."</p>
-     */
-    inline void SetValues(Aws::Vector<SlotValueOverride>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>A list of one or more values that the user provided for the slot. For
-     * example, for a slot that elicits pizza toppings, the values might be "pepperoni"
-     * and "pineapple."</p>
-     */
-    inline SlotValueOverride& WithValues(const Aws::Vector<SlotValueOverride>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>A list of one or more values that the user provided for the slot. For
-     * example, for a slot that elicits pizza toppings, the values might be "pepperoni"
-     * and "pineapple."</p>
-     */
-    inline SlotValueOverride& WithValues(Aws::Vector<SlotValueOverride>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of one or more values that the user provided for the slot. For
-     * example, for a slot that elicits pizza toppings, the values might be "pepperoni"
-     * and "pineapple."</p>
-     */
-    inline SlotValueOverride& AddValues(const SlotValueOverride& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>A list of one or more values that the user provided for the slot. For
-     * example, for a slot that elicits pizza toppings, the values might be "pepperoni"
-     * and "pineapple."</p>
-     */
-    inline SlotValueOverride& AddValues(SlotValueOverride&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
+    template<typename ValuesT = Aws::Vector<SlotValueOverride>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<SlotValueOverride>>
+    SlotValueOverride& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = SlotValueOverride>
+    SlotValueOverride& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
   private:
 
-    SlotShape m_shape;
+    SlotShape m_shape{SlotShape::NOT_SET};
     bool m_shapeHasBeenSet = false;
 
     SlotValue m_value;

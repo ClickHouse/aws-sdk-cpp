@@ -10,60 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-RunInstancesRequest::RunInstancesRequest() : 
-    m_blockDeviceMappingsHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_ipv6AddressCount(0),
-    m_ipv6AddressCountHasBeenSet(false),
-    m_ipv6AddressesHasBeenSet(false),
-    m_kernelIdHasBeenSet(false),
-    m_keyNameHasBeenSet(false),
-    m_maxCount(0),
-    m_maxCountHasBeenSet(false),
-    m_minCount(0),
-    m_minCountHasBeenSet(false),
-    m_monitoringHasBeenSet(false),
-    m_placementHasBeenSet(false),
-    m_ramdiskIdHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_userDataHasBeenSet(false),
-    m_additionalInfoHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_disableApiTermination(false),
-    m_disableApiTerminationHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_ebsOptimized(false),
-    m_ebsOptimizedHasBeenSet(false),
-    m_iamInstanceProfileHasBeenSet(false),
-    m_instanceInitiatedShutdownBehavior(ShutdownBehavior::NOT_SET),
-    m_instanceInitiatedShutdownBehaviorHasBeenSet(false),
-    m_networkInterfacesHasBeenSet(false),
-    m_privateIpAddressHasBeenSet(false),
-    m_elasticGpuSpecificationHasBeenSet(false),
-    m_elasticInferenceAcceleratorsHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_launchTemplateHasBeenSet(false),
-    m_instanceMarketOptionsHasBeenSet(false),
-    m_creditSpecificationHasBeenSet(false),
-    m_cpuOptionsHasBeenSet(false),
-    m_capacityReservationSpecificationHasBeenSet(false),
-    m_hibernationOptionsHasBeenSet(false),
-    m_licenseSpecificationsHasBeenSet(false),
-    m_metadataOptionsHasBeenSet(false),
-    m_enclaveOptionsHasBeenSet(false),
-    m_privateDnsNameOptionsHasBeenSet(false),
-    m_maintenanceOptionsHasBeenSet(false),
-    m_disableApiStop(false),
-    m_disableApiStopHasBeenSet(false)
-{
-}
-
 Aws::String RunInstancesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -85,7 +31,7 @@ Aws::String RunInstancesRequest::SerializePayload() const
 
   if(m_instanceTypeHasBeenSet)
   {
-    ss << "InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+    ss << "InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
 
   if(m_ipv6AddressCountHasBeenSet)
@@ -170,76 +116,6 @@ Aws::String RunInstancesRequest::SerializePayload() const
     ss << "UserData=" << StringUtils::URLEncode(m_userData.c_str()) << "&";
   }
 
-  if(m_additionalInfoHasBeenSet)
-  {
-    ss << "AdditionalInfo=" << StringUtils::URLEncode(m_additionalInfo.c_str()) << "&";
-  }
-
-  if(m_clientTokenHasBeenSet)
-  {
-    ss << "ClientToken=" << StringUtils::URLEncode(m_clientToken.c_str()) << "&";
-  }
-
-  if(m_disableApiTerminationHasBeenSet)
-  {
-    ss << "DisableApiTermination=" << std::boolalpha << m_disableApiTermination << "&";
-  }
-
-  if(m_dryRunHasBeenSet)
-  {
-    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
-  }
-
-  if(m_ebsOptimizedHasBeenSet)
-  {
-    ss << "EbsOptimized=" << std::boolalpha << m_ebsOptimized << "&";
-  }
-
-  if(m_iamInstanceProfileHasBeenSet)
-  {
-    m_iamInstanceProfile.OutputToStream(ss, "IamInstanceProfile");
-  }
-
-  if(m_instanceInitiatedShutdownBehaviorHasBeenSet)
-  {
-    ss << "InstanceInitiatedShutdownBehavior=" << ShutdownBehaviorMapper::GetNameForShutdownBehavior(m_instanceInitiatedShutdownBehavior) << "&";
-  }
-
-  if(m_networkInterfacesHasBeenSet)
-  {
-    unsigned networkInterfacesCount = 1;
-    for(auto& item : m_networkInterfaces)
-    {
-      item.OutputToStream(ss, "NetworkInterface.", networkInterfacesCount, "");
-      networkInterfacesCount++;
-    }
-  }
-
-  if(m_privateIpAddressHasBeenSet)
-  {
-    ss << "PrivateIpAddress=" << StringUtils::URLEncode(m_privateIpAddress.c_str()) << "&";
-  }
-
-  if(m_elasticGpuSpecificationHasBeenSet)
-  {
-    unsigned elasticGpuSpecificationCount = 1;
-    for(auto& item : m_elasticGpuSpecification)
-    {
-      item.OutputToStream(ss, "ElasticGpuSpecification.", elasticGpuSpecificationCount, "");
-      elasticGpuSpecificationCount++;
-    }
-  }
-
-  if(m_elasticInferenceAcceleratorsHasBeenSet)
-  {
-    unsigned elasticInferenceAcceleratorsCount = 1;
-    for(auto& item : m_elasticInferenceAccelerators)
-    {
-      item.OutputToStream(ss, "ElasticInferenceAccelerator.", elasticInferenceAcceleratorsCount, "");
-      elasticInferenceAcceleratorsCount++;
-    }
-  }
-
   if(m_tagSpecificationsHasBeenSet)
   {
     unsigned tagSpecificationsCount = 1;
@@ -313,6 +189,71 @@ Aws::String RunInstancesRequest::SerializePayload() const
   if(m_disableApiStopHasBeenSet)
   {
     ss << "DisableApiStop=" << std::boolalpha << m_disableApiStop << "&";
+  }
+
+  if(m_enablePrimaryIpv6HasBeenSet)
+  {
+    ss << "EnablePrimaryIpv6=" << std::boolalpha << m_enablePrimaryIpv6 << "&";
+  }
+
+  if(m_networkPerformanceOptionsHasBeenSet)
+  {
+    m_networkPerformanceOptions.OutputToStream(ss, "NetworkPerformanceOptions");
+  }
+
+  if(m_operatorHasBeenSet)
+  {
+    m_operator.OutputToStream(ss, "Operator");
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
+  }
+
+  if(m_disableApiTerminationHasBeenSet)
+  {
+    ss << "DisableApiTermination=" << std::boolalpha << m_disableApiTermination << "&";
+  }
+
+  if(m_instanceInitiatedShutdownBehaviorHasBeenSet)
+  {
+    ss << "InstanceInitiatedShutdownBehavior=" << StringUtils::URLEncode(ShutdownBehaviorMapper::GetNameForShutdownBehavior(m_instanceInitiatedShutdownBehavior)) << "&";
+  }
+
+  if(m_privateIpAddressHasBeenSet)
+  {
+    ss << "PrivateIpAddress=" << StringUtils::URLEncode(m_privateIpAddress.c_str()) << "&";
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+    ss << "ClientToken=" << StringUtils::URLEncode(m_clientToken.c_str()) << "&";
+  }
+
+  if(m_additionalInfoHasBeenSet)
+  {
+    ss << "AdditionalInfo=" << StringUtils::URLEncode(m_additionalInfo.c_str()) << "&";
+  }
+
+  if(m_networkInterfacesHasBeenSet)
+  {
+    unsigned networkInterfacesCount = 1;
+    for(auto& item : m_networkInterfaces)
+    {
+      item.OutputToStream(ss, "NetworkInterface.", networkInterfacesCount, "");
+      networkInterfacesCount++;
+    }
+  }
+
+  if(m_iamInstanceProfileHasBeenSet)
+  {
+    m_iamInstanceProfile.OutputToStream(ss, "IamInstanceProfile");
+  }
+
+  if(m_ebsOptimizedHasBeenSet)
+  {
+    ss << "EbsOptimized=" << std::boolalpha << m_ebsOptimized << "&";
   }
 
   ss << "Version=2016-11-15";

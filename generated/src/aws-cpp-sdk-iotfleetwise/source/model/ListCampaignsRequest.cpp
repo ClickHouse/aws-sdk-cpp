@@ -12,14 +12,6 @@ using namespace Aws::IoTFleetWise::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListCampaignsRequest::ListCampaignsRequest() : 
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
 Aws::String ListCampaignsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -40,6 +32,11 @@ Aws::String ListCampaignsRequest::SerializePayload() const
   {
    payload.WithString("status", m_status);
 
+  }
+
+  if(m_listResponseScopeHasBeenSet)
+  {
+   payload.WithString("listResponseScope", ListResponseScopeMapper::GetNameForListResponseScope(m_listResponseScope));
   }
 
   return payload.View().WriteReadable();

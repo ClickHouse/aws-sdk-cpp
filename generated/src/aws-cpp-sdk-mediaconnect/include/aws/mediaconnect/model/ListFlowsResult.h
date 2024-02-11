@@ -29,139 +29,58 @@ namespace Model
   class ListFlowsResult
   {
   public:
-    AWS_MEDIACONNECT_API ListFlowsResult();
+    AWS_MEDIACONNECT_API ListFlowsResult() = default;
     AWS_MEDIACONNECT_API ListFlowsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MEDIACONNECT_API ListFlowsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * A list of flow summaries.
+     * <p> A list of flow summaries.</p>
      */
-    inline const Aws::Vector<ListedFlow>& GetFlows() const{ return m_flows; }
+    inline const Aws::Vector<ListedFlow>& GetFlows() const { return m_flows; }
+    template<typename FlowsT = Aws::Vector<ListedFlow>>
+    void SetFlows(FlowsT&& value) { m_flowsHasBeenSet = true; m_flows = std::forward<FlowsT>(value); }
+    template<typename FlowsT = Aws::Vector<ListedFlow>>
+    ListFlowsResult& WithFlows(FlowsT&& value) { SetFlows(std::forward<FlowsT>(value)); return *this;}
+    template<typename FlowsT = ListedFlow>
+    ListFlowsResult& AddFlows(FlowsT&& value) { m_flowsHasBeenSet = true; m_flows.emplace_back(std::forward<FlowsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * A list of flow summaries.
+     * <p> The token that identifies the batch of results that you want to see. </p>
+     * <p>For example, you submit a <code>ListFlows</code> request with MaxResults set
+     * at 5. The service returns the first batch of results (up to 5) and a
+     * <code>NextToken</code> value. To see the next batch of results, you can submit
+     * the <code>ListFlows</code> request a second time and specify the
+     * <code>NextToken</code> value.</p>
      */
-    inline void SetFlows(const Aws::Vector<ListedFlow>& value) { m_flows = value; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListFlowsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * A list of flow summaries.
-     */
-    inline void SetFlows(Aws::Vector<ListedFlow>&& value) { m_flows = std::move(value); }
-
-    /**
-     * A list of flow summaries.
-     */
-    inline ListFlowsResult& WithFlows(const Aws::Vector<ListedFlow>& value) { SetFlows(value); return *this;}
-
-    /**
-     * A list of flow summaries.
-     */
-    inline ListFlowsResult& WithFlows(Aws::Vector<ListedFlow>&& value) { SetFlows(std::move(value)); return *this;}
-
-    /**
-     * A list of flow summaries.
-     */
-    inline ListFlowsResult& AddFlows(const ListedFlow& value) { m_flows.push_back(value); return *this; }
-
-    /**
-     * A list of flow summaries.
-     */
-    inline ListFlowsResult& AddFlows(ListedFlow&& value) { m_flows.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * The token that identifies which batch of results that you want to see. For
-     * example, you submit a ListFlows request with MaxResults set at 5. The service
-     * returns the first batch of results (up to 5) and a NextToken value. To see the
-     * next batch of results, you can submit the ListFlows request a second time and
-     * specify the NextToken value.
-     */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * The token that identifies which batch of results that you want to see. For
-     * example, you submit a ListFlows request with MaxResults set at 5. The service
-     * returns the first batch of results (up to 5) and a NextToken value. To see the
-     * next batch of results, you can submit the ListFlows request a second time and
-     * specify the NextToken value.
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * The token that identifies which batch of results that you want to see. For
-     * example, you submit a ListFlows request with MaxResults set at 5. The service
-     * returns the first batch of results (up to 5) and a NextToken value. To see the
-     * next batch of results, you can submit the ListFlows request a second time and
-     * specify the NextToken value.
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * The token that identifies which batch of results that you want to see. For
-     * example, you submit a ListFlows request with MaxResults set at 5. The service
-     * returns the first batch of results (up to 5) and a NextToken value. To see the
-     * next batch of results, you can submit the ListFlows request a second time and
-     * specify the NextToken value.
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * The token that identifies which batch of results that you want to see. For
-     * example, you submit a ListFlows request with MaxResults set at 5. The service
-     * returns the first batch of results (up to 5) and a NextToken value. To see the
-     * next batch of results, you can submit the ListFlows request a second time and
-     * specify the NextToken value.
-     */
-    inline ListFlowsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * The token that identifies which batch of results that you want to see. For
-     * example, you submit a ListFlows request with MaxResults set at 5. The service
-     * returns the first batch of results (up to 5) and a NextToken value. To see the
-     * next batch of results, you can submit the ListFlows request a second time and
-     * specify the NextToken value.
-     */
-    inline ListFlowsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * The token that identifies which batch of results that you want to see. For
-     * example, you submit a ListFlows request with MaxResults set at 5. The service
-     * returns the first batch of results (up to 5) and a NextToken value. To see the
-     * next batch of results, you can submit the ListFlows request a second time and
-     * specify the NextToken value.
-     */
-    inline ListFlowsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListFlowsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListFlowsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListFlowsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListFlowsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ListedFlow> m_flows;
+    bool m_flowsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

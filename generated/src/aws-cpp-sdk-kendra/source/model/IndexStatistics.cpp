@@ -18,15 +18,7 @@ namespace kendra
 namespace Model
 {
 
-IndexStatistics::IndexStatistics() : 
-    m_faqStatisticsHasBeenSet(false),
-    m_textDocumentStatisticsHasBeenSet(false)
-{
-}
-
-IndexStatistics::IndexStatistics(JsonView jsonValue) : 
-    m_faqStatisticsHasBeenSet(false),
-    m_textDocumentStatisticsHasBeenSet(false)
+IndexStatistics::IndexStatistics(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ IndexStatistics& IndexStatistics::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FaqStatistics"))
   {
     m_faqStatistics = jsonValue.GetObject("FaqStatistics");
-
     m_faqStatisticsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TextDocumentStatistics"))
   {
     m_textDocumentStatistics = jsonValue.GetObject("TextDocumentStatistics");
-
     m_textDocumentStatisticsHasBeenSet = true;
   }
-
   return *this;
 }
 

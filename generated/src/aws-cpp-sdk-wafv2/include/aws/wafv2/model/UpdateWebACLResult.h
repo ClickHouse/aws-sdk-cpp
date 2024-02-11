@@ -27,87 +27,39 @@ namespace Model
   class UpdateWebACLResult
   {
   public:
-    AWS_WAFV2_API UpdateWebACLResult();
+    AWS_WAFV2_API UpdateWebACLResult() = default;
     AWS_WAFV2_API UpdateWebACLResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_WAFV2_API UpdateWebACLResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A token used for optimistic locking. WAF returns this token to your
      * <code>update</code> requests. You use <code>NextLockToken</code> in the same
      * manner as you use <code>LockToken</code>. </p>
      */
-    inline const Aws::String& GetNextLockToken() const{ return m_nextLockToken; }
+    inline const Aws::String& GetNextLockToken() const { return m_nextLockToken; }
+    template<typename NextLockTokenT = Aws::String>
+    void SetNextLockToken(NextLockTokenT&& value) { m_nextLockTokenHasBeenSet = true; m_nextLockToken = std::forward<NextLockTokenT>(value); }
+    template<typename NextLockTokenT = Aws::String>
+    UpdateWebACLResult& WithNextLockToken(NextLockTokenT&& value) { SetNextLockToken(std::forward<NextLockTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A token used for optimistic locking. WAF returns this token to your
-     * <code>update</code> requests. You use <code>NextLockToken</code> in the same
-     * manner as you use <code>LockToken</code>. </p>
-     */
-    inline void SetNextLockToken(const Aws::String& value) { m_nextLockToken = value; }
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns this token to your
-     * <code>update</code> requests. You use <code>NextLockToken</code> in the same
-     * manner as you use <code>LockToken</code>. </p>
-     */
-    inline void SetNextLockToken(Aws::String&& value) { m_nextLockToken = std::move(value); }
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns this token to your
-     * <code>update</code> requests. You use <code>NextLockToken</code> in the same
-     * manner as you use <code>LockToken</code>. </p>
-     */
-    inline void SetNextLockToken(const char* value) { m_nextLockToken.assign(value); }
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns this token to your
-     * <code>update</code> requests. You use <code>NextLockToken</code> in the same
-     * manner as you use <code>LockToken</code>. </p>
-     */
-    inline UpdateWebACLResult& WithNextLockToken(const Aws::String& value) { SetNextLockToken(value); return *this;}
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns this token to your
-     * <code>update</code> requests. You use <code>NextLockToken</code> in the same
-     * manner as you use <code>LockToken</code>. </p>
-     */
-    inline UpdateWebACLResult& WithNextLockToken(Aws::String&& value) { SetNextLockToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns this token to your
-     * <code>update</code> requests. You use <code>NextLockToken</code> in the same
-     * manner as you use <code>LockToken</code>. </p>
-     */
-    inline UpdateWebACLResult& WithNextLockToken(const char* value) { SetNextLockToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateWebACLResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateWebACLResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateWebACLResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateWebACLResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nextLockToken;
+    bool m_nextLockTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

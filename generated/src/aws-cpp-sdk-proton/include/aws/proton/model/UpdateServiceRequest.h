@@ -21,7 +21,7 @@ namespace Model
   class UpdateServiceRequest : public ProtonRequest
   {
   public:
-    AWS_PROTON_API UpdateServiceRequest();
+    AWS_PROTON_API UpdateServiceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,88 +34,31 @@ namespace Model
     AWS_PROTON_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The edited service description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The edited service description.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateServiceRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The edited service description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The edited service description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The edited service description.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The edited service description.</p>
-     */
-    inline UpdateServiceRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The edited service description.</p>
-     */
-    inline UpdateServiceRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The edited service description.</p>
-     */
-    inline UpdateServiceRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the service to edit.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the service to edit.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateServiceRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the service to edit.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the service to edit.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the service to edit.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the service to edit.</p>
-     */
-    inline UpdateServiceRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the service to edit.</p>
-     */
-    inline UpdateServiceRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the service to edit.</p>
-     */
-    inline UpdateServiceRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Lists the service instances to add and the existing service instances to
      * remain. Omit the existing service instances to delete from the list.
@@ -124,78 +67,13 @@ namespace Model
      * href="https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-update.html">Edit
      * a service</a> in the <i>Proton User Guide</i>.</p>
      */
-    inline const Aws::String& GetSpec() const{ return m_spec; }
-
-    /**
-     * <p>Lists the service instances to add and the existing service instances to
-     * remain. Omit the existing service instances to delete from the list.
-     * <i>Don't</i> include edits to the existing service instances or pipeline. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-update.html">Edit
-     * a service</a> in the <i>Proton User Guide</i>.</p>
-     */
+    inline const Aws::String& GetSpec() const { return m_spec; }
     inline bool SpecHasBeenSet() const { return m_specHasBeenSet; }
-
-    /**
-     * <p>Lists the service instances to add and the existing service instances to
-     * remain. Omit the existing service instances to delete from the list.
-     * <i>Don't</i> include edits to the existing service instances or pipeline. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-update.html">Edit
-     * a service</a> in the <i>Proton User Guide</i>.</p>
-     */
-    inline void SetSpec(const Aws::String& value) { m_specHasBeenSet = true; m_spec = value; }
-
-    /**
-     * <p>Lists the service instances to add and the existing service instances to
-     * remain. Omit the existing service instances to delete from the list.
-     * <i>Don't</i> include edits to the existing service instances or pipeline. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-update.html">Edit
-     * a service</a> in the <i>Proton User Guide</i>.</p>
-     */
-    inline void SetSpec(Aws::String&& value) { m_specHasBeenSet = true; m_spec = std::move(value); }
-
-    /**
-     * <p>Lists the service instances to add and the existing service instances to
-     * remain. Omit the existing service instances to delete from the list.
-     * <i>Don't</i> include edits to the existing service instances or pipeline. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-update.html">Edit
-     * a service</a> in the <i>Proton User Guide</i>.</p>
-     */
-    inline void SetSpec(const char* value) { m_specHasBeenSet = true; m_spec.assign(value); }
-
-    /**
-     * <p>Lists the service instances to add and the existing service instances to
-     * remain. Omit the existing service instances to delete from the list.
-     * <i>Don't</i> include edits to the existing service instances or pipeline. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-update.html">Edit
-     * a service</a> in the <i>Proton User Guide</i>.</p>
-     */
-    inline UpdateServiceRequest& WithSpec(const Aws::String& value) { SetSpec(value); return *this;}
-
-    /**
-     * <p>Lists the service instances to add and the existing service instances to
-     * remain. Omit the existing service instances to delete from the list.
-     * <i>Don't</i> include edits to the existing service instances or pipeline. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-update.html">Edit
-     * a service</a> in the <i>Proton User Guide</i>.</p>
-     */
-    inline UpdateServiceRequest& WithSpec(Aws::String&& value) { SetSpec(std::move(value)); return *this;}
-
-    /**
-     * <p>Lists the service instances to add and the existing service instances to
-     * remain. Omit the existing service instances to delete from the list.
-     * <i>Don't</i> include edits to the existing service instances or pipeline. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-update.html">Edit
-     * a service</a> in the <i>Proton User Guide</i>.</p>
-     */
-    inline UpdateServiceRequest& WithSpec(const char* value) { SetSpec(value); return *this;}
-
+    template<typename SpecT = Aws::String>
+    void SetSpec(SpecT&& value) { m_specHasBeenSet = true; m_spec = std::forward<SpecT>(value); }
+    template<typename SpecT = Aws::String>
+    UpdateServiceRequest& WithSpec(SpecT&& value) { SetSpec(std::forward<SpecT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_description;

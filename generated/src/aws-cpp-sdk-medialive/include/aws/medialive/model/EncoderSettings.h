@@ -14,6 +14,8 @@
 #include <aws/medialive/model/MotionGraphicsConfiguration.h>
 #include <aws/medialive/model/NielsenConfiguration.h>
 #include <aws/medialive/model/TimecodeConfig.h>
+#include <aws/medialive/model/ThumbnailConfiguration.h>
+#include <aws/medialive/model/ColorCorrectionSettings.h>
 #include <aws/medialive/model/AudioDescription.h>
 #include <aws/medialive/model/CaptionDescription.h>
 #include <aws/medialive/model/OutputGroup.h>
@@ -43,375 +45,181 @@ namespace Model
   class EncoderSettings
   {
   public:
-    AWS_MEDIALIVE_API EncoderSettings();
+    AWS_MEDIALIVE_API EncoderSettings() = default;
     AWS_MEDIALIVE_API EncoderSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API EncoderSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Aws::Vector<AudioDescription>& GetAudioDescriptions() const{ return m_audioDescriptions; }
-
-    
+    inline const Aws::Vector<AudioDescription>& GetAudioDescriptions() const { return m_audioDescriptions; }
     inline bool AudioDescriptionsHasBeenSet() const { return m_audioDescriptionsHasBeenSet; }
+    template<typename AudioDescriptionsT = Aws::Vector<AudioDescription>>
+    void SetAudioDescriptions(AudioDescriptionsT&& value) { m_audioDescriptionsHasBeenSet = true; m_audioDescriptions = std::forward<AudioDescriptionsT>(value); }
+    template<typename AudioDescriptionsT = Aws::Vector<AudioDescription>>
+    EncoderSettings& WithAudioDescriptions(AudioDescriptionsT&& value) { SetAudioDescriptions(std::forward<AudioDescriptionsT>(value)); return *this;}
+    template<typename AudioDescriptionsT = AudioDescription>
+    EncoderSettings& AddAudioDescriptions(AudioDescriptionsT&& value) { m_audioDescriptionsHasBeenSet = true; m_audioDescriptions.emplace_back(std::forward<AudioDescriptionsT>(value)); return *this; }
+    ///@}
 
-    
-    inline void SetAudioDescriptions(const Aws::Vector<AudioDescription>& value) { m_audioDescriptionsHasBeenSet = true; m_audioDescriptions = value; }
-
-    
-    inline void SetAudioDescriptions(Aws::Vector<AudioDescription>&& value) { m_audioDescriptionsHasBeenSet = true; m_audioDescriptions = std::move(value); }
-
-    
-    inline EncoderSettings& WithAudioDescriptions(const Aws::Vector<AudioDescription>& value) { SetAudioDescriptions(value); return *this;}
-
-    
-    inline EncoderSettings& WithAudioDescriptions(Aws::Vector<AudioDescription>&& value) { SetAudioDescriptions(std::move(value)); return *this;}
-
-    
-    inline EncoderSettings& AddAudioDescriptions(const AudioDescription& value) { m_audioDescriptionsHasBeenSet = true; m_audioDescriptions.push_back(value); return *this; }
-
-    
-    inline EncoderSettings& AddAudioDescriptions(AudioDescription&& value) { m_audioDescriptionsHasBeenSet = true; m_audioDescriptions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * Settings for ad avail blanking.
      */
-    inline const AvailBlanking& GetAvailBlanking() const{ return m_availBlanking; }
-
-    /**
-     * Settings for ad avail blanking.
-     */
+    inline const AvailBlanking& GetAvailBlanking() const { return m_availBlanking; }
     inline bool AvailBlankingHasBeenSet() const { return m_availBlankingHasBeenSet; }
+    template<typename AvailBlankingT = AvailBlanking>
+    void SetAvailBlanking(AvailBlankingT&& value) { m_availBlankingHasBeenSet = true; m_availBlanking = std::forward<AvailBlankingT>(value); }
+    template<typename AvailBlankingT = AvailBlanking>
+    EncoderSettings& WithAvailBlanking(AvailBlankingT&& value) { SetAvailBlanking(std::forward<AvailBlankingT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Settings for ad avail blanking.
-     */
-    inline void SetAvailBlanking(const AvailBlanking& value) { m_availBlankingHasBeenSet = true; m_availBlanking = value; }
-
-    /**
-     * Settings for ad avail blanking.
-     */
-    inline void SetAvailBlanking(AvailBlanking&& value) { m_availBlankingHasBeenSet = true; m_availBlanking = std::move(value); }
-
-    /**
-     * Settings for ad avail blanking.
-     */
-    inline EncoderSettings& WithAvailBlanking(const AvailBlanking& value) { SetAvailBlanking(value); return *this;}
-
-    /**
-     * Settings for ad avail blanking.
-     */
-    inline EncoderSettings& WithAvailBlanking(AvailBlanking&& value) { SetAvailBlanking(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Event-wide configuration settings for ad avail insertion.
      */
-    inline const AvailConfiguration& GetAvailConfiguration() const{ return m_availConfiguration; }
-
-    /**
-     * Event-wide configuration settings for ad avail insertion.
-     */
+    inline const AvailConfiguration& GetAvailConfiguration() const { return m_availConfiguration; }
     inline bool AvailConfigurationHasBeenSet() const { return m_availConfigurationHasBeenSet; }
+    template<typename AvailConfigurationT = AvailConfiguration>
+    void SetAvailConfiguration(AvailConfigurationT&& value) { m_availConfigurationHasBeenSet = true; m_availConfiguration = std::forward<AvailConfigurationT>(value); }
+    template<typename AvailConfigurationT = AvailConfiguration>
+    EncoderSettings& WithAvailConfiguration(AvailConfigurationT&& value) { SetAvailConfiguration(std::forward<AvailConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Event-wide configuration settings for ad avail insertion.
-     */
-    inline void SetAvailConfiguration(const AvailConfiguration& value) { m_availConfigurationHasBeenSet = true; m_availConfiguration = value; }
-
-    /**
-     * Event-wide configuration settings for ad avail insertion.
-     */
-    inline void SetAvailConfiguration(AvailConfiguration&& value) { m_availConfigurationHasBeenSet = true; m_availConfiguration = std::move(value); }
-
-    /**
-     * Event-wide configuration settings for ad avail insertion.
-     */
-    inline EncoderSettings& WithAvailConfiguration(const AvailConfiguration& value) { SetAvailConfiguration(value); return *this;}
-
-    /**
-     * Event-wide configuration settings for ad avail insertion.
-     */
-    inline EncoderSettings& WithAvailConfiguration(AvailConfiguration&& value) { SetAvailConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Settings for blackout slate.
      */
-    inline const BlackoutSlate& GetBlackoutSlate() const{ return m_blackoutSlate; }
-
-    /**
-     * Settings for blackout slate.
-     */
+    inline const BlackoutSlate& GetBlackoutSlate() const { return m_blackoutSlate; }
     inline bool BlackoutSlateHasBeenSet() const { return m_blackoutSlateHasBeenSet; }
+    template<typename BlackoutSlateT = BlackoutSlate>
+    void SetBlackoutSlate(BlackoutSlateT&& value) { m_blackoutSlateHasBeenSet = true; m_blackoutSlate = std::forward<BlackoutSlateT>(value); }
+    template<typename BlackoutSlateT = BlackoutSlate>
+    EncoderSettings& WithBlackoutSlate(BlackoutSlateT&& value) { SetBlackoutSlate(std::forward<BlackoutSlateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Settings for blackout slate.
-     */
-    inline void SetBlackoutSlate(const BlackoutSlate& value) { m_blackoutSlateHasBeenSet = true; m_blackoutSlate = value; }
-
-    /**
-     * Settings for blackout slate.
-     */
-    inline void SetBlackoutSlate(BlackoutSlate&& value) { m_blackoutSlateHasBeenSet = true; m_blackoutSlate = std::move(value); }
-
-    /**
-     * Settings for blackout slate.
-     */
-    inline EncoderSettings& WithBlackoutSlate(const BlackoutSlate& value) { SetBlackoutSlate(value); return *this;}
-
-    /**
-     * Settings for blackout slate.
-     */
-    inline EncoderSettings& WithBlackoutSlate(BlackoutSlate&& value) { SetBlackoutSlate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Settings for caption decriptions
      */
-    inline const Aws::Vector<CaptionDescription>& GetCaptionDescriptions() const{ return m_captionDescriptions; }
-
-    /**
-     * Settings for caption decriptions
-     */
+    inline const Aws::Vector<CaptionDescription>& GetCaptionDescriptions() const { return m_captionDescriptions; }
     inline bool CaptionDescriptionsHasBeenSet() const { return m_captionDescriptionsHasBeenSet; }
+    template<typename CaptionDescriptionsT = Aws::Vector<CaptionDescription>>
+    void SetCaptionDescriptions(CaptionDescriptionsT&& value) { m_captionDescriptionsHasBeenSet = true; m_captionDescriptions = std::forward<CaptionDescriptionsT>(value); }
+    template<typename CaptionDescriptionsT = Aws::Vector<CaptionDescription>>
+    EncoderSettings& WithCaptionDescriptions(CaptionDescriptionsT&& value) { SetCaptionDescriptions(std::forward<CaptionDescriptionsT>(value)); return *this;}
+    template<typename CaptionDescriptionsT = CaptionDescription>
+    EncoderSettings& AddCaptionDescriptions(CaptionDescriptionsT&& value) { m_captionDescriptionsHasBeenSet = true; m_captionDescriptions.emplace_back(std::forward<CaptionDescriptionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * Settings for caption decriptions
-     */
-    inline void SetCaptionDescriptions(const Aws::Vector<CaptionDescription>& value) { m_captionDescriptionsHasBeenSet = true; m_captionDescriptions = value; }
-
-    /**
-     * Settings for caption decriptions
-     */
-    inline void SetCaptionDescriptions(Aws::Vector<CaptionDescription>&& value) { m_captionDescriptionsHasBeenSet = true; m_captionDescriptions = std::move(value); }
-
-    /**
-     * Settings for caption decriptions
-     */
-    inline EncoderSettings& WithCaptionDescriptions(const Aws::Vector<CaptionDescription>& value) { SetCaptionDescriptions(value); return *this;}
-
-    /**
-     * Settings for caption decriptions
-     */
-    inline EncoderSettings& WithCaptionDescriptions(Aws::Vector<CaptionDescription>&& value) { SetCaptionDescriptions(std::move(value)); return *this;}
-
-    /**
-     * Settings for caption decriptions
-     */
-    inline EncoderSettings& AddCaptionDescriptions(const CaptionDescription& value) { m_captionDescriptionsHasBeenSet = true; m_captionDescriptions.push_back(value); return *this; }
-
-    /**
-     * Settings for caption decriptions
-     */
-    inline EncoderSettings& AddCaptionDescriptions(CaptionDescription&& value) { m_captionDescriptionsHasBeenSet = true; m_captionDescriptions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * Feature Activations
      */
-    inline const FeatureActivations& GetFeatureActivations() const{ return m_featureActivations; }
-
-    /**
-     * Feature Activations
-     */
+    inline const FeatureActivations& GetFeatureActivations() const { return m_featureActivations; }
     inline bool FeatureActivationsHasBeenSet() const { return m_featureActivationsHasBeenSet; }
+    template<typename FeatureActivationsT = FeatureActivations>
+    void SetFeatureActivations(FeatureActivationsT&& value) { m_featureActivationsHasBeenSet = true; m_featureActivations = std::forward<FeatureActivationsT>(value); }
+    template<typename FeatureActivationsT = FeatureActivations>
+    EncoderSettings& WithFeatureActivations(FeatureActivationsT&& value) { SetFeatureActivations(std::forward<FeatureActivationsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Feature Activations
-     */
-    inline void SetFeatureActivations(const FeatureActivations& value) { m_featureActivationsHasBeenSet = true; m_featureActivations = value; }
-
-    /**
-     * Feature Activations
-     */
-    inline void SetFeatureActivations(FeatureActivations&& value) { m_featureActivationsHasBeenSet = true; m_featureActivations = std::move(value); }
-
-    /**
-     * Feature Activations
-     */
-    inline EncoderSettings& WithFeatureActivations(const FeatureActivations& value) { SetFeatureActivations(value); return *this;}
-
-    /**
-     * Feature Activations
-     */
-    inline EncoderSettings& WithFeatureActivations(FeatureActivations&& value) { SetFeatureActivations(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Configuration settings that apply to the event as a whole.
      */
-    inline const GlobalConfiguration& GetGlobalConfiguration() const{ return m_globalConfiguration; }
-
-    /**
-     * Configuration settings that apply to the event as a whole.
-     */
+    inline const GlobalConfiguration& GetGlobalConfiguration() const { return m_globalConfiguration; }
     inline bool GlobalConfigurationHasBeenSet() const { return m_globalConfigurationHasBeenSet; }
+    template<typename GlobalConfigurationT = GlobalConfiguration>
+    void SetGlobalConfiguration(GlobalConfigurationT&& value) { m_globalConfigurationHasBeenSet = true; m_globalConfiguration = std::forward<GlobalConfigurationT>(value); }
+    template<typename GlobalConfigurationT = GlobalConfiguration>
+    EncoderSettings& WithGlobalConfiguration(GlobalConfigurationT&& value) { SetGlobalConfiguration(std::forward<GlobalConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Configuration settings that apply to the event as a whole.
-     */
-    inline void SetGlobalConfiguration(const GlobalConfiguration& value) { m_globalConfigurationHasBeenSet = true; m_globalConfiguration = value; }
-
-    /**
-     * Configuration settings that apply to the event as a whole.
-     */
-    inline void SetGlobalConfiguration(GlobalConfiguration&& value) { m_globalConfigurationHasBeenSet = true; m_globalConfiguration = std::move(value); }
-
-    /**
-     * Configuration settings that apply to the event as a whole.
-     */
-    inline EncoderSettings& WithGlobalConfiguration(const GlobalConfiguration& value) { SetGlobalConfiguration(value); return *this;}
-
-    /**
-     * Configuration settings that apply to the event as a whole.
-     */
-    inline EncoderSettings& WithGlobalConfiguration(GlobalConfiguration&& value) { SetGlobalConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Settings for motion graphics.
      */
-    inline const MotionGraphicsConfiguration& GetMotionGraphicsConfiguration() const{ return m_motionGraphicsConfiguration; }
-
-    /**
-     * Settings for motion graphics.
-     */
+    inline const MotionGraphicsConfiguration& GetMotionGraphicsConfiguration() const { return m_motionGraphicsConfiguration; }
     inline bool MotionGraphicsConfigurationHasBeenSet() const { return m_motionGraphicsConfigurationHasBeenSet; }
+    template<typename MotionGraphicsConfigurationT = MotionGraphicsConfiguration>
+    void SetMotionGraphicsConfiguration(MotionGraphicsConfigurationT&& value) { m_motionGraphicsConfigurationHasBeenSet = true; m_motionGraphicsConfiguration = std::forward<MotionGraphicsConfigurationT>(value); }
+    template<typename MotionGraphicsConfigurationT = MotionGraphicsConfiguration>
+    EncoderSettings& WithMotionGraphicsConfiguration(MotionGraphicsConfigurationT&& value) { SetMotionGraphicsConfiguration(std::forward<MotionGraphicsConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Settings for motion graphics.
-     */
-    inline void SetMotionGraphicsConfiguration(const MotionGraphicsConfiguration& value) { m_motionGraphicsConfigurationHasBeenSet = true; m_motionGraphicsConfiguration = value; }
-
-    /**
-     * Settings for motion graphics.
-     */
-    inline void SetMotionGraphicsConfiguration(MotionGraphicsConfiguration&& value) { m_motionGraphicsConfigurationHasBeenSet = true; m_motionGraphicsConfiguration = std::move(value); }
-
-    /**
-     * Settings for motion graphics.
-     */
-    inline EncoderSettings& WithMotionGraphicsConfiguration(const MotionGraphicsConfiguration& value) { SetMotionGraphicsConfiguration(value); return *this;}
-
-    /**
-     * Settings for motion graphics.
-     */
-    inline EncoderSettings& WithMotionGraphicsConfiguration(MotionGraphicsConfiguration&& value) { SetMotionGraphicsConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Nielsen configuration settings.
      */
-    inline const NielsenConfiguration& GetNielsenConfiguration() const{ return m_nielsenConfiguration; }
-
-    /**
-     * Nielsen configuration settings.
-     */
+    inline const NielsenConfiguration& GetNielsenConfiguration() const { return m_nielsenConfiguration; }
     inline bool NielsenConfigurationHasBeenSet() const { return m_nielsenConfigurationHasBeenSet; }
+    template<typename NielsenConfigurationT = NielsenConfiguration>
+    void SetNielsenConfiguration(NielsenConfigurationT&& value) { m_nielsenConfigurationHasBeenSet = true; m_nielsenConfiguration = std::forward<NielsenConfigurationT>(value); }
+    template<typename NielsenConfigurationT = NielsenConfiguration>
+    EncoderSettings& WithNielsenConfiguration(NielsenConfigurationT&& value) { SetNielsenConfiguration(std::forward<NielsenConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Nielsen configuration settings.
-     */
-    inline void SetNielsenConfiguration(const NielsenConfiguration& value) { m_nielsenConfigurationHasBeenSet = true; m_nielsenConfiguration = value; }
-
-    /**
-     * Nielsen configuration settings.
-     */
-    inline void SetNielsenConfiguration(NielsenConfiguration&& value) { m_nielsenConfigurationHasBeenSet = true; m_nielsenConfiguration = std::move(value); }
-
-    /**
-     * Nielsen configuration settings.
-     */
-    inline EncoderSettings& WithNielsenConfiguration(const NielsenConfiguration& value) { SetNielsenConfiguration(value); return *this;}
-
-    /**
-     * Nielsen configuration settings.
-     */
-    inline EncoderSettings& WithNielsenConfiguration(NielsenConfiguration&& value) { SetNielsenConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::Vector<OutputGroup>& GetOutputGroups() const{ return m_outputGroups; }
-
-    
+    inline const Aws::Vector<OutputGroup>& GetOutputGroups() const { return m_outputGroups; }
     inline bool OutputGroupsHasBeenSet() const { return m_outputGroupsHasBeenSet; }
+    template<typename OutputGroupsT = Aws::Vector<OutputGroup>>
+    void SetOutputGroups(OutputGroupsT&& value) { m_outputGroupsHasBeenSet = true; m_outputGroups = std::forward<OutputGroupsT>(value); }
+    template<typename OutputGroupsT = Aws::Vector<OutputGroup>>
+    EncoderSettings& WithOutputGroups(OutputGroupsT&& value) { SetOutputGroups(std::forward<OutputGroupsT>(value)); return *this;}
+    template<typename OutputGroupsT = OutputGroup>
+    EncoderSettings& AddOutputGroups(OutputGroupsT&& value) { m_outputGroupsHasBeenSet = true; m_outputGroups.emplace_back(std::forward<OutputGroupsT>(value)); return *this; }
+    ///@}
 
-    
-    inline void SetOutputGroups(const Aws::Vector<OutputGroup>& value) { m_outputGroupsHasBeenSet = true; m_outputGroups = value; }
-
-    
-    inline void SetOutputGroups(Aws::Vector<OutputGroup>&& value) { m_outputGroupsHasBeenSet = true; m_outputGroups = std::move(value); }
-
-    
-    inline EncoderSettings& WithOutputGroups(const Aws::Vector<OutputGroup>& value) { SetOutputGroups(value); return *this;}
-
-    
-    inline EncoderSettings& WithOutputGroups(Aws::Vector<OutputGroup>&& value) { SetOutputGroups(std::move(value)); return *this;}
-
-    
-    inline EncoderSettings& AddOutputGroups(const OutputGroup& value) { m_outputGroupsHasBeenSet = true; m_outputGroups.push_back(value); return *this; }
-
-    
-    inline EncoderSettings& AddOutputGroups(OutputGroup&& value) { m_outputGroupsHasBeenSet = true; m_outputGroups.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * Contains settings used to acquire and adjust timecode information from inputs.
      */
-    inline const TimecodeConfig& GetTimecodeConfig() const{ return m_timecodeConfig; }
-
-    /**
-     * Contains settings used to acquire and adjust timecode information from inputs.
-     */
+    inline const TimecodeConfig& GetTimecodeConfig() const { return m_timecodeConfig; }
     inline bool TimecodeConfigHasBeenSet() const { return m_timecodeConfigHasBeenSet; }
+    template<typename TimecodeConfigT = TimecodeConfig>
+    void SetTimecodeConfig(TimecodeConfigT&& value) { m_timecodeConfigHasBeenSet = true; m_timecodeConfig = std::forward<TimecodeConfigT>(value); }
+    template<typename TimecodeConfigT = TimecodeConfig>
+    EncoderSettings& WithTimecodeConfig(TimecodeConfigT&& value) { SetTimecodeConfig(std::forward<TimecodeConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Contains settings used to acquire and adjust timecode information from inputs.
-     */
-    inline void SetTimecodeConfig(const TimecodeConfig& value) { m_timecodeConfigHasBeenSet = true; m_timecodeConfig = value; }
-
-    /**
-     * Contains settings used to acquire and adjust timecode information from inputs.
-     */
-    inline void SetTimecodeConfig(TimecodeConfig&& value) { m_timecodeConfigHasBeenSet = true; m_timecodeConfig = std::move(value); }
-
-    /**
-     * Contains settings used to acquire and adjust timecode information from inputs.
-     */
-    inline EncoderSettings& WithTimecodeConfig(const TimecodeConfig& value) { SetTimecodeConfig(value); return *this;}
-
-    /**
-     * Contains settings used to acquire and adjust timecode information from inputs.
-     */
-    inline EncoderSettings& WithTimecodeConfig(TimecodeConfig&& value) { SetTimecodeConfig(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::Vector<VideoDescription>& GetVideoDescriptions() const{ return m_videoDescriptions; }
-
-    
+    inline const Aws::Vector<VideoDescription>& GetVideoDescriptions() const { return m_videoDescriptions; }
     inline bool VideoDescriptionsHasBeenSet() const { return m_videoDescriptionsHasBeenSet; }
+    template<typename VideoDescriptionsT = Aws::Vector<VideoDescription>>
+    void SetVideoDescriptions(VideoDescriptionsT&& value) { m_videoDescriptionsHasBeenSet = true; m_videoDescriptions = std::forward<VideoDescriptionsT>(value); }
+    template<typename VideoDescriptionsT = Aws::Vector<VideoDescription>>
+    EncoderSettings& WithVideoDescriptions(VideoDescriptionsT&& value) { SetVideoDescriptions(std::forward<VideoDescriptionsT>(value)); return *this;}
+    template<typename VideoDescriptionsT = VideoDescription>
+    EncoderSettings& AddVideoDescriptions(VideoDescriptionsT&& value) { m_videoDescriptionsHasBeenSet = true; m_videoDescriptions.emplace_back(std::forward<VideoDescriptionsT>(value)); return *this; }
+    ///@}
 
-    
-    inline void SetVideoDescriptions(const Aws::Vector<VideoDescription>& value) { m_videoDescriptionsHasBeenSet = true; m_videoDescriptions = value; }
+    ///@{
+    /**
+     * Thumbnail configuration settings.
+     */
+    inline const ThumbnailConfiguration& GetThumbnailConfiguration() const { return m_thumbnailConfiguration; }
+    inline bool ThumbnailConfigurationHasBeenSet() const { return m_thumbnailConfigurationHasBeenSet; }
+    template<typename ThumbnailConfigurationT = ThumbnailConfiguration>
+    void SetThumbnailConfiguration(ThumbnailConfigurationT&& value) { m_thumbnailConfigurationHasBeenSet = true; m_thumbnailConfiguration = std::forward<ThumbnailConfigurationT>(value); }
+    template<typename ThumbnailConfigurationT = ThumbnailConfiguration>
+    EncoderSettings& WithThumbnailConfiguration(ThumbnailConfigurationT&& value) { SetThumbnailConfiguration(std::forward<ThumbnailConfigurationT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetVideoDescriptions(Aws::Vector<VideoDescription>&& value) { m_videoDescriptionsHasBeenSet = true; m_videoDescriptions = std::move(value); }
-
-    
-    inline EncoderSettings& WithVideoDescriptions(const Aws::Vector<VideoDescription>& value) { SetVideoDescriptions(value); return *this;}
-
-    
-    inline EncoderSettings& WithVideoDescriptions(Aws::Vector<VideoDescription>&& value) { SetVideoDescriptions(std::move(value)); return *this;}
-
-    
-    inline EncoderSettings& AddVideoDescriptions(const VideoDescription& value) { m_videoDescriptionsHasBeenSet = true; m_videoDescriptions.push_back(value); return *this; }
-
-    
-    inline EncoderSettings& AddVideoDescriptions(VideoDescription&& value) { m_videoDescriptionsHasBeenSet = true; m_videoDescriptions.push_back(std::move(value)); return *this; }
-
+    ///@{
+    /**
+     * Color Correction Settings
+     */
+    inline const ColorCorrectionSettings& GetColorCorrectionSettings() const { return m_colorCorrectionSettings; }
+    inline bool ColorCorrectionSettingsHasBeenSet() const { return m_colorCorrectionSettingsHasBeenSet; }
+    template<typename ColorCorrectionSettingsT = ColorCorrectionSettings>
+    void SetColorCorrectionSettings(ColorCorrectionSettingsT&& value) { m_colorCorrectionSettingsHasBeenSet = true; m_colorCorrectionSettings = std::forward<ColorCorrectionSettingsT>(value); }
+    template<typename ColorCorrectionSettingsT = ColorCorrectionSettings>
+    EncoderSettings& WithColorCorrectionSettings(ColorCorrectionSettingsT&& value) { SetColorCorrectionSettings(std::forward<ColorCorrectionSettingsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<AudioDescription> m_audioDescriptions;
@@ -449,6 +257,12 @@ namespace Model
 
     Aws::Vector<VideoDescription> m_videoDescriptions;
     bool m_videoDescriptionsHasBeenSet = false;
+
+    ThumbnailConfiguration m_thumbnailConfiguration;
+    bool m_thumbnailConfigurationHasBeenSet = false;
+
+    ColorCorrectionSettings m_colorCorrectionSettings;
+    bool m_colorCorrectionSettingsHasBeenSet = false;
   };
 
 } // namespace Model

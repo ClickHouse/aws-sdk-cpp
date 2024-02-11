@@ -34,7 +34,7 @@ namespace Model
   class SourceBuildInformation
   {
   public:
-    AWS_ELASTICBEANSTALK_API SourceBuildInformation();
+    AWS_ELASTICBEANSTALK_API SourceBuildInformation() = default;
     AWS_ELASTICBEANSTALK_API SourceBuildInformation(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ELASTICBEANSTALK_API SourceBuildInformation& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,80 +42,29 @@ namespace Model
     AWS_ELASTICBEANSTALK_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The type of repository.</p> <ul> <li> <p> <code>Git</code> </p> </li> <li>
      * <p> <code>Zip</code> </p> </li> </ul>
      */
-    inline const SourceType& GetSourceType() const{ return m_sourceType; }
-
-    /**
-     * <p>The type of repository.</p> <ul> <li> <p> <code>Git</code> </p> </li> <li>
-     * <p> <code>Zip</code> </p> </li> </ul>
-     */
+    inline SourceType GetSourceType() const { return m_sourceType; }
     inline bool SourceTypeHasBeenSet() const { return m_sourceTypeHasBeenSet; }
+    inline void SetSourceType(SourceType value) { m_sourceTypeHasBeenSet = true; m_sourceType = value; }
+    inline SourceBuildInformation& WithSourceType(SourceType value) { SetSourceType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of repository.</p> <ul> <li> <p> <code>Git</code> </p> </li> <li>
-     * <p> <code>Zip</code> </p> </li> </ul>
-     */
-    inline void SetSourceType(const SourceType& value) { m_sourceTypeHasBeenSet = true; m_sourceType = value; }
-
-    /**
-     * <p>The type of repository.</p> <ul> <li> <p> <code>Git</code> </p> </li> <li>
-     * <p> <code>Zip</code> </p> </li> </ul>
-     */
-    inline void SetSourceType(SourceType&& value) { m_sourceTypeHasBeenSet = true; m_sourceType = std::move(value); }
-
-    /**
-     * <p>The type of repository.</p> <ul> <li> <p> <code>Git</code> </p> </li> <li>
-     * <p> <code>Zip</code> </p> </li> </ul>
-     */
-    inline SourceBuildInformation& WithSourceType(const SourceType& value) { SetSourceType(value); return *this;}
-
-    /**
-     * <p>The type of repository.</p> <ul> <li> <p> <code>Git</code> </p> </li> <li>
-     * <p> <code>Zip</code> </p> </li> </ul>
-     */
-    inline SourceBuildInformation& WithSourceType(SourceType&& value) { SetSourceType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Location where the repository is stored.</p> <ul> <li> <p>
      * <code>CodeCommit</code> </p> </li> <li> <p> <code>S3</code> </p> </li> </ul>
      */
-    inline const SourceRepository& GetSourceRepository() const{ return m_sourceRepository; }
-
-    /**
-     * <p>Location where the repository is stored.</p> <ul> <li> <p>
-     * <code>CodeCommit</code> </p> </li> <li> <p> <code>S3</code> </p> </li> </ul>
-     */
+    inline SourceRepository GetSourceRepository() const { return m_sourceRepository; }
     inline bool SourceRepositoryHasBeenSet() const { return m_sourceRepositoryHasBeenSet; }
+    inline void SetSourceRepository(SourceRepository value) { m_sourceRepositoryHasBeenSet = true; m_sourceRepository = value; }
+    inline SourceBuildInformation& WithSourceRepository(SourceRepository value) { SetSourceRepository(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Location where the repository is stored.</p> <ul> <li> <p>
-     * <code>CodeCommit</code> </p> </li> <li> <p> <code>S3</code> </p> </li> </ul>
-     */
-    inline void SetSourceRepository(const SourceRepository& value) { m_sourceRepositoryHasBeenSet = true; m_sourceRepository = value; }
-
-    /**
-     * <p>Location where the repository is stored.</p> <ul> <li> <p>
-     * <code>CodeCommit</code> </p> </li> <li> <p> <code>S3</code> </p> </li> </ul>
-     */
-    inline void SetSourceRepository(SourceRepository&& value) { m_sourceRepositoryHasBeenSet = true; m_sourceRepository = std::move(value); }
-
-    /**
-     * <p>Location where the repository is stored.</p> <ul> <li> <p>
-     * <code>CodeCommit</code> </p> </li> <li> <p> <code>S3</code> </p> </li> </ul>
-     */
-    inline SourceBuildInformation& WithSourceRepository(const SourceRepository& value) { SetSourceRepository(value); return *this;}
-
-    /**
-     * <p>Location where the repository is stored.</p> <ul> <li> <p>
-     * <code>CodeCommit</code> </p> </li> <li> <p> <code>S3</code> </p> </li> </ul>
-     */
-    inline SourceBuildInformation& WithSourceRepository(SourceRepository&& value) { SetSourceRepository(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The location of the source code, as a formatted string, depending on the
      * value of <code>SourceRepository</code> </p> <ul> <li> <p>For
@@ -126,98 +75,19 @@ namespace Model
      * separated by a forward slash. For example,
      * <code>my-s3-bucket/Folders/my-source-file</code>.</p> </li> </ul>
      */
-    inline const Aws::String& GetSourceLocation() const{ return m_sourceLocation; }
-
-    /**
-     * <p>The location of the source code, as a formatted string, depending on the
-     * value of <code>SourceRepository</code> </p> <ul> <li> <p>For
-     * <code>CodeCommit</code>, the format is the repository name and commit ID,
-     * separated by a forward slash. For example,
-     * <code>my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a</code>.</p> </li>
-     * <li> <p>For <code>S3</code>, the format is the S3 bucket name and object key,
-     * separated by a forward slash. For example,
-     * <code>my-s3-bucket/Folders/my-source-file</code>.</p> </li> </ul>
-     */
+    inline const Aws::String& GetSourceLocation() const { return m_sourceLocation; }
     inline bool SourceLocationHasBeenSet() const { return m_sourceLocationHasBeenSet; }
-
-    /**
-     * <p>The location of the source code, as a formatted string, depending on the
-     * value of <code>SourceRepository</code> </p> <ul> <li> <p>For
-     * <code>CodeCommit</code>, the format is the repository name and commit ID,
-     * separated by a forward slash. For example,
-     * <code>my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a</code>.</p> </li>
-     * <li> <p>For <code>S3</code>, the format is the S3 bucket name and object key,
-     * separated by a forward slash. For example,
-     * <code>my-s3-bucket/Folders/my-source-file</code>.</p> </li> </ul>
-     */
-    inline void SetSourceLocation(const Aws::String& value) { m_sourceLocationHasBeenSet = true; m_sourceLocation = value; }
-
-    /**
-     * <p>The location of the source code, as a formatted string, depending on the
-     * value of <code>SourceRepository</code> </p> <ul> <li> <p>For
-     * <code>CodeCommit</code>, the format is the repository name and commit ID,
-     * separated by a forward slash. For example,
-     * <code>my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a</code>.</p> </li>
-     * <li> <p>For <code>S3</code>, the format is the S3 bucket name and object key,
-     * separated by a forward slash. For example,
-     * <code>my-s3-bucket/Folders/my-source-file</code>.</p> </li> </ul>
-     */
-    inline void SetSourceLocation(Aws::String&& value) { m_sourceLocationHasBeenSet = true; m_sourceLocation = std::move(value); }
-
-    /**
-     * <p>The location of the source code, as a formatted string, depending on the
-     * value of <code>SourceRepository</code> </p> <ul> <li> <p>For
-     * <code>CodeCommit</code>, the format is the repository name and commit ID,
-     * separated by a forward slash. For example,
-     * <code>my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a</code>.</p> </li>
-     * <li> <p>For <code>S3</code>, the format is the S3 bucket name and object key,
-     * separated by a forward slash. For example,
-     * <code>my-s3-bucket/Folders/my-source-file</code>.</p> </li> </ul>
-     */
-    inline void SetSourceLocation(const char* value) { m_sourceLocationHasBeenSet = true; m_sourceLocation.assign(value); }
-
-    /**
-     * <p>The location of the source code, as a formatted string, depending on the
-     * value of <code>SourceRepository</code> </p> <ul> <li> <p>For
-     * <code>CodeCommit</code>, the format is the repository name and commit ID,
-     * separated by a forward slash. For example,
-     * <code>my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a</code>.</p> </li>
-     * <li> <p>For <code>S3</code>, the format is the S3 bucket name and object key,
-     * separated by a forward slash. For example,
-     * <code>my-s3-bucket/Folders/my-source-file</code>.</p> </li> </ul>
-     */
-    inline SourceBuildInformation& WithSourceLocation(const Aws::String& value) { SetSourceLocation(value); return *this;}
-
-    /**
-     * <p>The location of the source code, as a formatted string, depending on the
-     * value of <code>SourceRepository</code> </p> <ul> <li> <p>For
-     * <code>CodeCommit</code>, the format is the repository name and commit ID,
-     * separated by a forward slash. For example,
-     * <code>my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a</code>.</p> </li>
-     * <li> <p>For <code>S3</code>, the format is the S3 bucket name and object key,
-     * separated by a forward slash. For example,
-     * <code>my-s3-bucket/Folders/my-source-file</code>.</p> </li> </ul>
-     */
-    inline SourceBuildInformation& WithSourceLocation(Aws::String&& value) { SetSourceLocation(std::move(value)); return *this;}
-
-    /**
-     * <p>The location of the source code, as a formatted string, depending on the
-     * value of <code>SourceRepository</code> </p> <ul> <li> <p>For
-     * <code>CodeCommit</code>, the format is the repository name and commit ID,
-     * separated by a forward slash. For example,
-     * <code>my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a</code>.</p> </li>
-     * <li> <p>For <code>S3</code>, the format is the S3 bucket name and object key,
-     * separated by a forward slash. For example,
-     * <code>my-s3-bucket/Folders/my-source-file</code>.</p> </li> </ul>
-     */
-    inline SourceBuildInformation& WithSourceLocation(const char* value) { SetSourceLocation(value); return *this;}
-
+    template<typename SourceLocationT = Aws::String>
+    void SetSourceLocation(SourceLocationT&& value) { m_sourceLocationHasBeenSet = true; m_sourceLocation = std::forward<SourceLocationT>(value); }
+    template<typename SourceLocationT = Aws::String>
+    SourceBuildInformation& WithSourceLocation(SourceLocationT&& value) { SetSourceLocation(std::forward<SourceLocationT>(value)); return *this;}
+    ///@}
   private:
 
-    SourceType m_sourceType;
+    SourceType m_sourceType{SourceType::NOT_SET};
     bool m_sourceTypeHasBeenSet = false;
 
-    SourceRepository m_sourceRepository;
+    SourceRepository m_sourceRepository{SourceRepository::NOT_SET};
     bool m_sourceRepositoryHasBeenSet = false;
 
     Aws::String m_sourceLocation;

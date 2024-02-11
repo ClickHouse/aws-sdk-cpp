@@ -27,22 +27,25 @@ namespace IoTTwinMaker
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef IoTTwinMakerClientConfiguration ClientConfigurationType;
+      typedef IoTTwinMakerEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         IoTTwinMakerClient(const Aws::IoTTwinMaker::IoTTwinMakerClientConfiguration& clientConfiguration = Aws::IoTTwinMaker::IoTTwinMakerClientConfiguration(),
-                           std::shared_ptr<IoTTwinMakerEndpointProviderBase> endpointProvider = Aws::MakeShared<IoTTwinMakerEndpointProvider>(ALLOCATION_TAG));
+                           std::shared_ptr<IoTTwinMakerEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         IoTTwinMakerClient(const Aws::Auth::AWSCredentials& credentials,
-                           std::shared_ptr<IoTTwinMakerEndpointProviderBase> endpointProvider = Aws::MakeShared<IoTTwinMakerEndpointProvider>(ALLOCATION_TAG),
+                           std::shared_ptr<IoTTwinMakerEndpointProviderBase> endpointProvider = nullptr,
                            const Aws::IoTTwinMaker::IoTTwinMakerClientConfiguration& clientConfiguration = Aws::IoTTwinMaker::IoTTwinMakerClientConfiguration());
 
        /**
@@ -50,7 +53,7 @@ namespace IoTTwinMaker
         * the default http client factory will be used
         */
         IoTTwinMakerClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                           std::shared_ptr<IoTTwinMakerEndpointProviderBase> endpointProvider = Aws::MakeShared<IoTTwinMakerEndpointProvider>(ALLOCATION_TAG),
+                           std::shared_ptr<IoTTwinMakerEndpointProviderBase> endpointProvider = nullptr,
                            const Aws::IoTTwinMaker::IoTTwinMakerClientConfiguration& clientConfiguration = Aws::IoTTwinMaker::IoTTwinMakerClientConfiguration());
 
 
@@ -105,6 +108,31 @@ namespace IoTTwinMaker
         }
 
         /**
+         * <p>Cancels the metadata transfer job.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iottwinmaker-2021-11-29/CancelMetadataTransferJob">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CancelMetadataTransferJobOutcome CancelMetadataTransferJob(const Model::CancelMetadataTransferJobRequest& request) const;
+
+        /**
+         * A Callable wrapper for CancelMetadataTransferJob that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CancelMetadataTransferJobRequestT = Model::CancelMetadataTransferJobRequest>
+        Model::CancelMetadataTransferJobOutcomeCallable CancelMetadataTransferJobCallable(const CancelMetadataTransferJobRequestT& request) const
+        {
+            return SubmitCallable(&IoTTwinMakerClient::CancelMetadataTransferJob, request);
+        }
+
+        /**
+         * An Async wrapper for CancelMetadataTransferJob that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CancelMetadataTransferJobRequestT = Model::CancelMetadataTransferJobRequest>
+        void CancelMetadataTransferJobAsync(const CancelMetadataTransferJobRequestT& request, const CancelMetadataTransferJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&IoTTwinMakerClient::CancelMetadataTransferJob, request, handler, context);
+        }
+
+        /**
          * <p>Creates a component type.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iottwinmaker-2021-11-29/CreateComponentType">AWS
          * API Reference</a></p>
@@ -152,6 +180,31 @@ namespace IoTTwinMaker
         void CreateEntityAsync(const CreateEntityRequestT& request, const CreateEntityResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&IoTTwinMakerClient::CreateEntity, request, handler, context);
+        }
+
+        /**
+         * <p>Creates a new metadata transfer job.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iottwinmaker-2021-11-29/CreateMetadataTransferJob">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateMetadataTransferJobOutcome CreateMetadataTransferJob(const Model::CreateMetadataTransferJobRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateMetadataTransferJob that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateMetadataTransferJobRequestT = Model::CreateMetadataTransferJobRequest>
+        Model::CreateMetadataTransferJobOutcomeCallable CreateMetadataTransferJobCallable(const CreateMetadataTransferJobRequestT& request) const
+        {
+            return SubmitCallable(&IoTTwinMakerClient::CreateMetadataTransferJob, request);
+        }
+
+        /**
+         * An Async wrapper for CreateMetadataTransferJob that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateMetadataTransferJobRequestT = Model::CreateMetadataTransferJobRequest>
+        void CreateMetadataTransferJobAsync(const CreateMetadataTransferJobRequestT& request, const CreateMetadataTransferJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&IoTTwinMakerClient::CreateMetadataTransferJob, request, handler, context);
         }
 
         /**
@@ -356,7 +409,11 @@ namespace IoTTwinMaker
 
         /**
          * <p>Run queries to access information from your knowledge graph of entities
-         * within individual workspaces.</p><p><h3>See Also:</h3>   <a
+         * within individual workspaces.</p>  <p>The ExecuteQuery action only works
+         * with <a
+         * href="https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/home.html">Amazon
+         * Web Services Java SDK2</a>. ExecuteQuery will not work with any Amazon Web
+         * Services Java SDK version &lt; 2.x.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iottwinmaker-2021-11-29/ExecuteQuery">AWS
          * API Reference</a></p>
          */
@@ -431,17 +488,42 @@ namespace IoTTwinMaker
         }
 
         /**
+         * <p>Gets a nmetadata transfer job.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iottwinmaker-2021-11-29/GetMetadataTransferJob">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetMetadataTransferJobOutcome GetMetadataTransferJob(const Model::GetMetadataTransferJobRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetMetadataTransferJob that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetMetadataTransferJobRequestT = Model::GetMetadataTransferJobRequest>
+        Model::GetMetadataTransferJobOutcomeCallable GetMetadataTransferJobCallable(const GetMetadataTransferJobRequestT& request) const
+        {
+            return SubmitCallable(&IoTTwinMakerClient::GetMetadataTransferJob, request);
+        }
+
+        /**
+         * An Async wrapper for GetMetadataTransferJob that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetMetadataTransferJobRequestT = Model::GetMetadataTransferJobRequest>
+        void GetMetadataTransferJobAsync(const GetMetadataTransferJobRequestT& request, const GetMetadataTransferJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&IoTTwinMakerClient::GetMetadataTransferJob, request, handler, context);
+        }
+
+        /**
          * <p>Gets the pricing plan.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iottwinmaker-2021-11-29/GetPricingPlan">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetPricingPlanOutcome GetPricingPlan(const Model::GetPricingPlanRequest& request) const;
+        virtual Model::GetPricingPlanOutcome GetPricingPlan(const Model::GetPricingPlanRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetPricingPlan that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetPricingPlanRequestT = Model::GetPricingPlanRequest>
-        Model::GetPricingPlanOutcomeCallable GetPricingPlanCallable(const GetPricingPlanRequestT& request) const
+        Model::GetPricingPlanOutcomeCallable GetPricingPlanCallable(const GetPricingPlanRequestT& request = {}) const
         {
             return SubmitCallable(&IoTTwinMakerClient::GetPricingPlan, request);
         }
@@ -450,7 +532,7 @@ namespace IoTTwinMaker
          * An Async wrapper for GetPricingPlan that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetPricingPlanRequestT = Model::GetPricingPlanRequest>
-        void GetPricingPlanAsync(const GetPricingPlanRequestT& request, const GetPricingPlanResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetPricingPlanAsync(const GetPricingPlanResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetPricingPlanRequestT& request = {}) const
         {
             return SubmitAsync(&IoTTwinMakerClient::GetPricingPlan, request, handler, context);
         }
@@ -613,6 +695,31 @@ namespace IoTTwinMaker
         }
 
         /**
+         * <p>This API lists the components of an entity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iottwinmaker-2021-11-29/ListComponents">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListComponentsOutcome ListComponents(const Model::ListComponentsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListComponents that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListComponentsRequestT = Model::ListComponentsRequest>
+        Model::ListComponentsOutcomeCallable ListComponentsCallable(const ListComponentsRequestT& request) const
+        {
+            return SubmitCallable(&IoTTwinMakerClient::ListComponents, request);
+        }
+
+        /**
+         * An Async wrapper for ListComponents that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListComponentsRequestT = Model::ListComponentsRequest>
+        void ListComponentsAsync(const ListComponentsRequestT& request, const ListComponentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&IoTTwinMakerClient::ListComponents, request, handler, context);
+        }
+
+        /**
          * <p>Lists all entities in a workspace.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iottwinmaker-2021-11-29/ListEntities">AWS
          * API Reference</a></p>
@@ -635,6 +742,56 @@ namespace IoTTwinMaker
         void ListEntitiesAsync(const ListEntitiesRequestT& request, const ListEntitiesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&IoTTwinMakerClient::ListEntities, request, handler, context);
+        }
+
+        /**
+         * <p>Lists the metadata transfer jobs.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iottwinmaker-2021-11-29/ListMetadataTransferJobs">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListMetadataTransferJobsOutcome ListMetadataTransferJobs(const Model::ListMetadataTransferJobsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListMetadataTransferJobs that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListMetadataTransferJobsRequestT = Model::ListMetadataTransferJobsRequest>
+        Model::ListMetadataTransferJobsOutcomeCallable ListMetadataTransferJobsCallable(const ListMetadataTransferJobsRequestT& request) const
+        {
+            return SubmitCallable(&IoTTwinMakerClient::ListMetadataTransferJobs, request);
+        }
+
+        /**
+         * An Async wrapper for ListMetadataTransferJobs that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListMetadataTransferJobsRequestT = Model::ListMetadataTransferJobsRequest>
+        void ListMetadataTransferJobsAsync(const ListMetadataTransferJobsRequestT& request, const ListMetadataTransferJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&IoTTwinMakerClient::ListMetadataTransferJobs, request, handler, context);
+        }
+
+        /**
+         * <p>This API lists the properties of a component.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iottwinmaker-2021-11-29/ListProperties">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListPropertiesOutcome ListProperties(const Model::ListPropertiesRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListProperties that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListPropertiesRequestT = Model::ListPropertiesRequest>
+        Model::ListPropertiesOutcomeCallable ListPropertiesCallable(const ListPropertiesRequestT& request) const
+        {
+            return SubmitCallable(&IoTTwinMakerClient::ListProperties, request);
+        }
+
+        /**
+         * An Async wrapper for ListProperties that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListPropertiesRequestT = Model::ListPropertiesRequest>
+        void ListPropertiesAsync(const ListPropertiesRequestT& request, const ListPropertiesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&IoTTwinMakerClient::ListProperties, request, handler, context);
         }
 
         /**
@@ -743,13 +900,13 @@ namespace IoTTwinMaker
          * href="http://docs.aws.amazon.com/goto/WebAPI/iottwinmaker-2021-11-29/ListWorkspaces">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListWorkspacesOutcome ListWorkspaces(const Model::ListWorkspacesRequest& request) const;
+        virtual Model::ListWorkspacesOutcome ListWorkspaces(const Model::ListWorkspacesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListWorkspaces that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListWorkspacesRequestT = Model::ListWorkspacesRequest>
-        Model::ListWorkspacesOutcomeCallable ListWorkspacesCallable(const ListWorkspacesRequestT& request) const
+        Model::ListWorkspacesOutcomeCallable ListWorkspacesCallable(const ListWorkspacesRequestT& request = {}) const
         {
             return SubmitCallable(&IoTTwinMakerClient::ListWorkspaces, request);
         }
@@ -758,7 +915,7 @@ namespace IoTTwinMaker
          * An Async wrapper for ListWorkspaces that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListWorkspacesRequestT = Model::ListWorkspacesRequest>
-        void ListWorkspacesAsync(const ListWorkspacesRequestT& request, const ListWorkspacesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListWorkspacesAsync(const ListWorkspacesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListWorkspacesRequestT& request = {}) const
         {
             return SubmitAsync(&IoTTwinMakerClient::ListWorkspaces, request, handler, context);
         }
@@ -946,7 +1103,6 @@ namespace IoTTwinMaker
       void init(const IoTTwinMakerClientConfiguration& clientConfiguration);
 
       IoTTwinMakerClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<IoTTwinMakerEndpointProviderBase> m_endpointProvider;
   };
 

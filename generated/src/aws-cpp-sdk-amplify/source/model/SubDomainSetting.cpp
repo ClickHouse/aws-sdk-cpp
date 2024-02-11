@@ -18,15 +18,7 @@ namespace Amplify
 namespace Model
 {
 
-SubDomainSetting::SubDomainSetting() : 
-    m_prefixHasBeenSet(false),
-    m_branchNameHasBeenSet(false)
-{
-}
-
-SubDomainSetting::SubDomainSetting(JsonView jsonValue) : 
-    m_prefixHasBeenSet(false),
-    m_branchNameHasBeenSet(false)
+SubDomainSetting::SubDomainSetting(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SubDomainSetting& SubDomainSetting::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("prefix"))
   {
     m_prefix = jsonValue.GetString("prefix");
-
     m_prefixHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("branchName"))
   {
     m_branchName = jsonValue.GetString("branchName");
-
     m_branchNameHasBeenSet = true;
   }
-
   return *this;
 }
 

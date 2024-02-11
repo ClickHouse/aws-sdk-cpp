@@ -24,7 +24,7 @@ namespace Model
   class CheckoutLicenseRequest : public LicenseManagerRequest
   {
   public:
-    AWS_LICENSEMANAGER_API CheckoutLicenseRequest();
+    AWS_LICENSEMANAGER_API CheckoutLicenseRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,296 +37,96 @@ namespace Model
     AWS_LICENSEMANAGER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Product SKU.</p>
      */
-    inline const Aws::String& GetProductSKU() const{ return m_productSKU; }
-
-    /**
-     * <p>Product SKU.</p>
-     */
+    inline const Aws::String& GetProductSKU() const { return m_productSKU; }
     inline bool ProductSKUHasBeenSet() const { return m_productSKUHasBeenSet; }
+    template<typename ProductSKUT = Aws::String>
+    void SetProductSKU(ProductSKUT&& value) { m_productSKUHasBeenSet = true; m_productSKU = std::forward<ProductSKUT>(value); }
+    template<typename ProductSKUT = Aws::String>
+    CheckoutLicenseRequest& WithProductSKU(ProductSKUT&& value) { SetProductSKU(std::forward<ProductSKUT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Product SKU.</p>
-     */
-    inline void SetProductSKU(const Aws::String& value) { m_productSKUHasBeenSet = true; m_productSKU = value; }
-
-    /**
-     * <p>Product SKU.</p>
-     */
-    inline void SetProductSKU(Aws::String&& value) { m_productSKUHasBeenSet = true; m_productSKU = std::move(value); }
-
-    /**
-     * <p>Product SKU.</p>
-     */
-    inline void SetProductSKU(const char* value) { m_productSKUHasBeenSet = true; m_productSKU.assign(value); }
-
-    /**
-     * <p>Product SKU.</p>
-     */
-    inline CheckoutLicenseRequest& WithProductSKU(const Aws::String& value) { SetProductSKU(value); return *this;}
-
-    /**
-     * <p>Product SKU.</p>
-     */
-    inline CheckoutLicenseRequest& WithProductSKU(Aws::String&& value) { SetProductSKU(std::move(value)); return *this;}
-
-    /**
-     * <p>Product SKU.</p>
-     */
-    inline CheckoutLicenseRequest& WithProductSKU(const char* value) { SetProductSKU(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Checkout type.</p>
      */
-    inline const CheckoutType& GetCheckoutType() const{ return m_checkoutType; }
-
-    /**
-     * <p>Checkout type.</p>
-     */
+    inline CheckoutType GetCheckoutType() const { return m_checkoutType; }
     inline bool CheckoutTypeHasBeenSet() const { return m_checkoutTypeHasBeenSet; }
+    inline void SetCheckoutType(CheckoutType value) { m_checkoutTypeHasBeenSet = true; m_checkoutType = value; }
+    inline CheckoutLicenseRequest& WithCheckoutType(CheckoutType value) { SetCheckoutType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Checkout type.</p>
-     */
-    inline void SetCheckoutType(const CheckoutType& value) { m_checkoutTypeHasBeenSet = true; m_checkoutType = value; }
-
-    /**
-     * <p>Checkout type.</p>
-     */
-    inline void SetCheckoutType(CheckoutType&& value) { m_checkoutTypeHasBeenSet = true; m_checkoutType = std::move(value); }
-
-    /**
-     * <p>Checkout type.</p>
-     */
-    inline CheckoutLicenseRequest& WithCheckoutType(const CheckoutType& value) { SetCheckoutType(value); return *this;}
-
-    /**
-     * <p>Checkout type.</p>
-     */
-    inline CheckoutLicenseRequest& WithCheckoutType(CheckoutType&& value) { SetCheckoutType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Key fingerprint identifying the license.</p>
      */
-    inline const Aws::String& GetKeyFingerprint() const{ return m_keyFingerprint; }
-
-    /**
-     * <p>Key fingerprint identifying the license.</p>
-     */
+    inline const Aws::String& GetKeyFingerprint() const { return m_keyFingerprint; }
     inline bool KeyFingerprintHasBeenSet() const { return m_keyFingerprintHasBeenSet; }
+    template<typename KeyFingerprintT = Aws::String>
+    void SetKeyFingerprint(KeyFingerprintT&& value) { m_keyFingerprintHasBeenSet = true; m_keyFingerprint = std::forward<KeyFingerprintT>(value); }
+    template<typename KeyFingerprintT = Aws::String>
+    CheckoutLicenseRequest& WithKeyFingerprint(KeyFingerprintT&& value) { SetKeyFingerprint(std::forward<KeyFingerprintT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Key fingerprint identifying the license.</p>
-     */
-    inline void SetKeyFingerprint(const Aws::String& value) { m_keyFingerprintHasBeenSet = true; m_keyFingerprint = value; }
-
-    /**
-     * <p>Key fingerprint identifying the license.</p>
-     */
-    inline void SetKeyFingerprint(Aws::String&& value) { m_keyFingerprintHasBeenSet = true; m_keyFingerprint = std::move(value); }
-
-    /**
-     * <p>Key fingerprint identifying the license.</p>
-     */
-    inline void SetKeyFingerprint(const char* value) { m_keyFingerprintHasBeenSet = true; m_keyFingerprint.assign(value); }
-
-    /**
-     * <p>Key fingerprint identifying the license.</p>
-     */
-    inline CheckoutLicenseRequest& WithKeyFingerprint(const Aws::String& value) { SetKeyFingerprint(value); return *this;}
-
-    /**
-     * <p>Key fingerprint identifying the license.</p>
-     */
-    inline CheckoutLicenseRequest& WithKeyFingerprint(Aws::String&& value) { SetKeyFingerprint(std::move(value)); return *this;}
-
-    /**
-     * <p>Key fingerprint identifying the license.</p>
-     */
-    inline CheckoutLicenseRequest& WithKeyFingerprint(const char* value) { SetKeyFingerprint(value); return *this;}
-
-
+    ///@{
     /**
      * <p>License entitlements.</p>
      */
-    inline const Aws::Vector<EntitlementData>& GetEntitlements() const{ return m_entitlements; }
-
-    /**
-     * <p>License entitlements.</p>
-     */
+    inline const Aws::Vector<EntitlementData>& GetEntitlements() const { return m_entitlements; }
     inline bool EntitlementsHasBeenSet() const { return m_entitlementsHasBeenSet; }
+    template<typename EntitlementsT = Aws::Vector<EntitlementData>>
+    void SetEntitlements(EntitlementsT&& value) { m_entitlementsHasBeenSet = true; m_entitlements = std::forward<EntitlementsT>(value); }
+    template<typename EntitlementsT = Aws::Vector<EntitlementData>>
+    CheckoutLicenseRequest& WithEntitlements(EntitlementsT&& value) { SetEntitlements(std::forward<EntitlementsT>(value)); return *this;}
+    template<typename EntitlementsT = EntitlementData>
+    CheckoutLicenseRequest& AddEntitlements(EntitlementsT&& value) { m_entitlementsHasBeenSet = true; m_entitlements.emplace_back(std::forward<EntitlementsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>License entitlements.</p>
-     */
-    inline void SetEntitlements(const Aws::Vector<EntitlementData>& value) { m_entitlementsHasBeenSet = true; m_entitlements = value; }
-
-    /**
-     * <p>License entitlements.</p>
-     */
-    inline void SetEntitlements(Aws::Vector<EntitlementData>&& value) { m_entitlementsHasBeenSet = true; m_entitlements = std::move(value); }
-
-    /**
-     * <p>License entitlements.</p>
-     */
-    inline CheckoutLicenseRequest& WithEntitlements(const Aws::Vector<EntitlementData>& value) { SetEntitlements(value); return *this;}
-
-    /**
-     * <p>License entitlements.</p>
-     */
-    inline CheckoutLicenseRequest& WithEntitlements(Aws::Vector<EntitlementData>&& value) { SetEntitlements(std::move(value)); return *this;}
-
-    /**
-     * <p>License entitlements.</p>
-     */
-    inline CheckoutLicenseRequest& AddEntitlements(const EntitlementData& value) { m_entitlementsHasBeenSet = true; m_entitlements.push_back(value); return *this; }
-
-    /**
-     * <p>License entitlements.</p>
-     */
-    inline CheckoutLicenseRequest& AddEntitlements(EntitlementData&& value) { m_entitlementsHasBeenSet = true; m_entitlements.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
      * of the request.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CheckoutLicenseRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
-    inline CheckoutLicenseRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
-    inline CheckoutLicenseRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
-    inline CheckoutLicenseRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>License beneficiary.</p>
      */
-    inline const Aws::String& GetBeneficiary() const{ return m_beneficiary; }
-
-    /**
-     * <p>License beneficiary.</p>
-     */
+    inline const Aws::String& GetBeneficiary() const { return m_beneficiary; }
     inline bool BeneficiaryHasBeenSet() const { return m_beneficiaryHasBeenSet; }
+    template<typename BeneficiaryT = Aws::String>
+    void SetBeneficiary(BeneficiaryT&& value) { m_beneficiaryHasBeenSet = true; m_beneficiary = std::forward<BeneficiaryT>(value); }
+    template<typename BeneficiaryT = Aws::String>
+    CheckoutLicenseRequest& WithBeneficiary(BeneficiaryT&& value) { SetBeneficiary(std::forward<BeneficiaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>License beneficiary.</p>
-     */
-    inline void SetBeneficiary(const Aws::String& value) { m_beneficiaryHasBeenSet = true; m_beneficiary = value; }
-
-    /**
-     * <p>License beneficiary.</p>
-     */
-    inline void SetBeneficiary(Aws::String&& value) { m_beneficiaryHasBeenSet = true; m_beneficiary = std::move(value); }
-
-    /**
-     * <p>License beneficiary.</p>
-     */
-    inline void SetBeneficiary(const char* value) { m_beneficiaryHasBeenSet = true; m_beneficiary.assign(value); }
-
-    /**
-     * <p>License beneficiary.</p>
-     */
-    inline CheckoutLicenseRequest& WithBeneficiary(const Aws::String& value) { SetBeneficiary(value); return *this;}
-
-    /**
-     * <p>License beneficiary.</p>
-     */
-    inline CheckoutLicenseRequest& WithBeneficiary(Aws::String&& value) { SetBeneficiary(std::move(value)); return *this;}
-
-    /**
-     * <p>License beneficiary.</p>
-     */
-    inline CheckoutLicenseRequest& WithBeneficiary(const char* value) { SetBeneficiary(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Node ID.</p>
      */
-    inline const Aws::String& GetNodeId() const{ return m_nodeId; }
-
-    /**
-     * <p>Node ID.</p>
-     */
+    inline const Aws::String& GetNodeId() const { return m_nodeId; }
     inline bool NodeIdHasBeenSet() const { return m_nodeIdHasBeenSet; }
-
-    /**
-     * <p>Node ID.</p>
-     */
-    inline void SetNodeId(const Aws::String& value) { m_nodeIdHasBeenSet = true; m_nodeId = value; }
-
-    /**
-     * <p>Node ID.</p>
-     */
-    inline void SetNodeId(Aws::String&& value) { m_nodeIdHasBeenSet = true; m_nodeId = std::move(value); }
-
-    /**
-     * <p>Node ID.</p>
-     */
-    inline void SetNodeId(const char* value) { m_nodeIdHasBeenSet = true; m_nodeId.assign(value); }
-
-    /**
-     * <p>Node ID.</p>
-     */
-    inline CheckoutLicenseRequest& WithNodeId(const Aws::String& value) { SetNodeId(value); return *this;}
-
-    /**
-     * <p>Node ID.</p>
-     */
-    inline CheckoutLicenseRequest& WithNodeId(Aws::String&& value) { SetNodeId(std::move(value)); return *this;}
-
-    /**
-     * <p>Node ID.</p>
-     */
-    inline CheckoutLicenseRequest& WithNodeId(const char* value) { SetNodeId(value); return *this;}
-
+    template<typename NodeIdT = Aws::String>
+    void SetNodeId(NodeIdT&& value) { m_nodeIdHasBeenSet = true; m_nodeId = std::forward<NodeIdT>(value); }
+    template<typename NodeIdT = Aws::String>
+    CheckoutLicenseRequest& WithNodeId(NodeIdT&& value) { SetNodeId(std::forward<NodeIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_productSKU;
     bool m_productSKUHasBeenSet = false;
 
-    CheckoutType m_checkoutType;
+    CheckoutType m_checkoutType{CheckoutType::NOT_SET};
     bool m_checkoutTypeHasBeenSet = false;
 
     Aws::String m_keyFingerprint;

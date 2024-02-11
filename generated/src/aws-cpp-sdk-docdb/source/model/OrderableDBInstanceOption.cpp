@@ -20,25 +20,7 @@ namespace DocDB
 namespace Model
 {
 
-OrderableDBInstanceOption::OrderableDBInstanceOption() : 
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_dBInstanceClassHasBeenSet(false),
-    m_licenseModelHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false),
-    m_vpc(false),
-    m_vpcHasBeenSet(false)
-{
-}
-
-OrderableDBInstanceOption::OrderableDBInstanceOption(const XmlNode& xmlNode) : 
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_dBInstanceClassHasBeenSet(false),
-    m_licenseModelHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false),
-    m_vpc(false),
-    m_vpcHasBeenSet(false)
+OrderableDBInstanceOption::OrderableDBInstanceOption(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -77,6 +59,7 @@ OrderableDBInstanceOption& OrderableDBInstanceOption::operator =(const XmlNode& 
     if(!availabilityZonesNode.IsNull())
     {
       XmlNode availabilityZonesMember = availabilityZonesNode.FirstChild("AvailabilityZone");
+      m_availabilityZonesHasBeenSet = !availabilityZonesMember.IsNull();
       while(!availabilityZonesMember.IsNull())
       {
         m_availabilityZones.push_back(availabilityZonesMember);
@@ -90,6 +73,12 @@ OrderableDBInstanceOption& OrderableDBInstanceOption::operator =(const XmlNode& 
     {
       m_vpc = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(vpcNode.GetText()).c_str()).c_str());
       m_vpcHasBeenSet = true;
+    }
+    XmlNode storageTypeNode = resultNode.FirstChild("StorageType");
+    if(!storageTypeNode.IsNull())
+    {
+      m_storageType = Aws::Utils::Xml::DecodeEscapedXmlText(storageTypeNode.GetText());
+      m_storageTypeHasBeenSet = true;
     }
   }
 
@@ -124,7 +113,7 @@ void OrderableDBInstanceOption::OutputToStream(Aws::OStream& oStream, const char
       for(auto& item : m_availabilityZones)
       {
         Aws::StringStream availabilityZonesSs;
-        availabilityZonesSs << location << index << locationValue << ".AvailabilityZone." << availabilityZonesIdx++;
+        availabilityZonesSs << location << index << locationValue << ".AvailabilityZones.AvailabilityZone." << availabilityZonesIdx++;
         item.OutputToStream(oStream, availabilityZonesSs.str().c_str());
       }
   }
@@ -132,6 +121,11 @@ void OrderableDBInstanceOption::OutputToStream(Aws::OStream& oStream, const char
   if(m_vpcHasBeenSet)
   {
       oStream << location << index << locationValue << ".Vpc=" << std::boolalpha << m_vpc << "&";
+  }
+
+  if(m_storageTypeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".StorageType=" << StringUtils::URLEncode(m_storageType.c_str()) << "&";
   }
 
 }
@@ -160,13 +154,17 @@ void OrderableDBInstanceOption::OutputToStream(Aws::OStream& oStream, const char
       for(auto& item : m_availabilityZones)
       {
         Aws::StringStream availabilityZonesSs;
-        availabilityZonesSs << location <<  ".AvailabilityZone." << availabilityZonesIdx++;
+        availabilityZonesSs << location << ".AvailabilityZones.AvailabilityZone." << availabilityZonesIdx++;
         item.OutputToStream(oStream, availabilityZonesSs.str().c_str());
       }
   }
   if(m_vpcHasBeenSet)
   {
       oStream << location << ".Vpc=" << std::boolalpha << m_vpc << "&";
+  }
+  if(m_storageTypeHasBeenSet)
+  {
+      oStream << location << ".StorageType=" << StringUtils::URLEncode(m_storageType.c_str()) << "&";
   }
 }
 

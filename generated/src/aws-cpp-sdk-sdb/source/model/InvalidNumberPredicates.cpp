@@ -20,15 +20,7 @@ namespace SimpleDB
 namespace Model
 {
 
-InvalidNumberPredicates::InvalidNumberPredicates() : 
-    m_boxUsage(0.0),
-    m_boxUsageHasBeenSet(false)
-{
-}
-
-InvalidNumberPredicates::InvalidNumberPredicates(const XmlNode& xmlNode) : 
-    m_boxUsage(0.0),
-    m_boxUsageHasBeenSet(false)
+InvalidNumberPredicates::InvalidNumberPredicates(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

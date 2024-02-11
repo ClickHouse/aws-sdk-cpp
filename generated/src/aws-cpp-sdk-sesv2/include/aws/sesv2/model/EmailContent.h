@@ -27,193 +27,73 @@ namespace Model
 
   /**
    * <p>An object that defines the entire content of the email, including the message
-   * headers and the body content. You can create a simple email message, in which
-   * you specify the subject and the text and HTML versions of the message body. You
-   * can also create raw messages, in which you specify a complete MIME-formatted
-   * message. Raw messages can include attachments and custom headers.</p><p><h3>See
-   * Also:</h3>   <a
+   * headers, body content, and attachments. For a simple email message, you specify
+   * the subject and provide both text and HTML versions of the message body. You can
+   * also add attachments to simple and templated messages. For a raw message, you
+   * provide a complete MIME-formatted message, which can include custom headers and
+   * attachments.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/EmailContent">AWS
    * API Reference</a></p>
    */
   class EmailContent
   {
   public:
-    AWS_SESV2_API EmailContent();
+    AWS_SESV2_API EmailContent() = default;
     AWS_SESV2_API EmailContent(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API EmailContent& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The simple email message. The message consists of a subject and a message
-     * body.</p>
+     * <p>The simple email message. The message consists of a subject, message body and
+     * attachments list.</p>
      */
-    inline const Message& GetSimple() const{ return m_simple; }
-
-    /**
-     * <p>The simple email message. The message consists of a subject and a message
-     * body.</p>
-     */
+    inline const Message& GetSimple() const { return m_simple; }
     inline bool SimpleHasBeenSet() const { return m_simpleHasBeenSet; }
+    template<typename SimpleT = Message>
+    void SetSimple(SimpleT&& value) { m_simpleHasBeenSet = true; m_simple = std::forward<SimpleT>(value); }
+    template<typename SimpleT = Message>
+    EmailContent& WithSimple(SimpleT&& value) { SetSimple(std::forward<SimpleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The simple email message. The message consists of a subject and a message
-     * body.</p>
-     */
-    inline void SetSimple(const Message& value) { m_simpleHasBeenSet = true; m_simple = value; }
-
-    /**
-     * <p>The simple email message. The message consists of a subject and a message
-     * body.</p>
-     */
-    inline void SetSimple(Message&& value) { m_simpleHasBeenSet = true; m_simple = std::move(value); }
-
-    /**
-     * <p>The simple email message. The message consists of a subject and a message
-     * body.</p>
-     */
-    inline EmailContent& WithSimple(const Message& value) { SetSimple(value); return *this;}
-
-    /**
-     * <p>The simple email message. The message consists of a subject and a message
-     * body.</p>
-     */
-    inline EmailContent& WithSimple(Message&& value) { SetSimple(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The raw email message. The message has to meet the following criteria:</p>
      * <ul> <li> <p>The message has to contain a header and a body, separated by one
      * blank line.</p> </li> <li> <p>All of the required header fields must be present
      * in the message.</p> </li> <li> <p>Each part of a multipart MIME message must be
      * formatted properly.</p> </li> <li> <p>If you include attachments, they must be
-     * in a file format that the Amazon SES API v2 supports. </p> </li> <li> <p>The
-     * entire message must be Base64 encoded.</p> </li> <li> <p>If any of the MIME
-     * parts in your message contain content that is outside of the 7-bit ASCII
-     * character range, you should encode that content to ensure that recipients' email
-     * clients render the message properly.</p> </li> <li> <p>The length of any single
-     * line of text in the message can't exceed 1,000 characters. This restriction is
-     * defined in <a href="https://tools.ietf.org/html/rfc5321">RFC 5321</a>.</p> </li>
-     * </ul>
+     * in a file format that the Amazon SES API v2 supports. </p> </li> <li> <p>The raw
+     * data of the message needs to base64-encoded if you are accessing Amazon SES
+     * directly through the HTTPS interface. If you are accessing Amazon SES using an
+     * Amazon Web Services SDK, the SDK takes care of the base 64-encoding for you.</p>
+     * </li> <li> <p>If any of the MIME parts in your message contain content that is
+     * outside of the 7-bit ASCII character range, you should encode that content to
+     * ensure that recipients' email clients render the message properly.</p> </li>
+     * <li> <p>The length of any single line of text in the message can't exceed 1,000
+     * characters. This restriction is defined in <a
+     * href="https://tools.ietf.org/html/rfc5321">RFC 5321</a>.</p> </li> </ul>
      */
-    inline const RawMessage& GetRaw() const{ return m_raw; }
-
-    /**
-     * <p>The raw email message. The message has to meet the following criteria:</p>
-     * <ul> <li> <p>The message has to contain a header and a body, separated by one
-     * blank line.</p> </li> <li> <p>All of the required header fields must be present
-     * in the message.</p> </li> <li> <p>Each part of a multipart MIME message must be
-     * formatted properly.</p> </li> <li> <p>If you include attachments, they must be
-     * in a file format that the Amazon SES API v2 supports. </p> </li> <li> <p>The
-     * entire message must be Base64 encoded.</p> </li> <li> <p>If any of the MIME
-     * parts in your message contain content that is outside of the 7-bit ASCII
-     * character range, you should encode that content to ensure that recipients' email
-     * clients render the message properly.</p> </li> <li> <p>The length of any single
-     * line of text in the message can't exceed 1,000 characters. This restriction is
-     * defined in <a href="https://tools.ietf.org/html/rfc5321">RFC 5321</a>.</p> </li>
-     * </ul>
-     */
+    inline const RawMessage& GetRaw() const { return m_raw; }
     inline bool RawHasBeenSet() const { return m_rawHasBeenSet; }
+    template<typename RawT = RawMessage>
+    void SetRaw(RawT&& value) { m_rawHasBeenSet = true; m_raw = std::forward<RawT>(value); }
+    template<typename RawT = RawMessage>
+    EmailContent& WithRaw(RawT&& value) { SetRaw(std::forward<RawT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The raw email message. The message has to meet the following criteria:</p>
-     * <ul> <li> <p>The message has to contain a header and a body, separated by one
-     * blank line.</p> </li> <li> <p>All of the required header fields must be present
-     * in the message.</p> </li> <li> <p>Each part of a multipart MIME message must be
-     * formatted properly.</p> </li> <li> <p>If you include attachments, they must be
-     * in a file format that the Amazon SES API v2 supports. </p> </li> <li> <p>The
-     * entire message must be Base64 encoded.</p> </li> <li> <p>If any of the MIME
-     * parts in your message contain content that is outside of the 7-bit ASCII
-     * character range, you should encode that content to ensure that recipients' email
-     * clients render the message properly.</p> </li> <li> <p>The length of any single
-     * line of text in the message can't exceed 1,000 characters. This restriction is
-     * defined in <a href="https://tools.ietf.org/html/rfc5321">RFC 5321</a>.</p> </li>
-     * </ul>
-     */
-    inline void SetRaw(const RawMessage& value) { m_rawHasBeenSet = true; m_raw = value; }
-
-    /**
-     * <p>The raw email message. The message has to meet the following criteria:</p>
-     * <ul> <li> <p>The message has to contain a header and a body, separated by one
-     * blank line.</p> </li> <li> <p>All of the required header fields must be present
-     * in the message.</p> </li> <li> <p>Each part of a multipart MIME message must be
-     * formatted properly.</p> </li> <li> <p>If you include attachments, they must be
-     * in a file format that the Amazon SES API v2 supports. </p> </li> <li> <p>The
-     * entire message must be Base64 encoded.</p> </li> <li> <p>If any of the MIME
-     * parts in your message contain content that is outside of the 7-bit ASCII
-     * character range, you should encode that content to ensure that recipients' email
-     * clients render the message properly.</p> </li> <li> <p>The length of any single
-     * line of text in the message can't exceed 1,000 characters. This restriction is
-     * defined in <a href="https://tools.ietf.org/html/rfc5321">RFC 5321</a>.</p> </li>
-     * </ul>
-     */
-    inline void SetRaw(RawMessage&& value) { m_rawHasBeenSet = true; m_raw = std::move(value); }
-
-    /**
-     * <p>The raw email message. The message has to meet the following criteria:</p>
-     * <ul> <li> <p>The message has to contain a header and a body, separated by one
-     * blank line.</p> </li> <li> <p>All of the required header fields must be present
-     * in the message.</p> </li> <li> <p>Each part of a multipart MIME message must be
-     * formatted properly.</p> </li> <li> <p>If you include attachments, they must be
-     * in a file format that the Amazon SES API v2 supports. </p> </li> <li> <p>The
-     * entire message must be Base64 encoded.</p> </li> <li> <p>If any of the MIME
-     * parts in your message contain content that is outside of the 7-bit ASCII
-     * character range, you should encode that content to ensure that recipients' email
-     * clients render the message properly.</p> </li> <li> <p>The length of any single
-     * line of text in the message can't exceed 1,000 characters. This restriction is
-     * defined in <a href="https://tools.ietf.org/html/rfc5321">RFC 5321</a>.</p> </li>
-     * </ul>
-     */
-    inline EmailContent& WithRaw(const RawMessage& value) { SetRaw(value); return *this;}
-
-    /**
-     * <p>The raw email message. The message has to meet the following criteria:</p>
-     * <ul> <li> <p>The message has to contain a header and a body, separated by one
-     * blank line.</p> </li> <li> <p>All of the required header fields must be present
-     * in the message.</p> </li> <li> <p>Each part of a multipart MIME message must be
-     * formatted properly.</p> </li> <li> <p>If you include attachments, they must be
-     * in a file format that the Amazon SES API v2 supports. </p> </li> <li> <p>The
-     * entire message must be Base64 encoded.</p> </li> <li> <p>If any of the MIME
-     * parts in your message contain content that is outside of the 7-bit ASCII
-     * character range, you should encode that content to ensure that recipients' email
-     * clients render the message properly.</p> </li> <li> <p>The length of any single
-     * line of text in the message can't exceed 1,000 characters. This restriction is
-     * defined in <a href="https://tools.ietf.org/html/rfc5321">RFC 5321</a>.</p> </li>
-     * </ul>
-     */
-    inline EmailContent& WithRaw(RawMessage&& value) { SetRaw(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The template to use for the email message.</p>
      */
-    inline const Template& GetTemplate() const{ return m_template; }
-
-    /**
-     * <p>The template to use for the email message.</p>
-     */
+    inline const Template& GetTemplate() const { return m_template; }
     inline bool TemplateHasBeenSet() const { return m_templateHasBeenSet; }
-
-    /**
-     * <p>The template to use for the email message.</p>
-     */
-    inline void SetTemplate(const Template& value) { m_templateHasBeenSet = true; m_template = value; }
-
-    /**
-     * <p>The template to use for the email message.</p>
-     */
-    inline void SetTemplate(Template&& value) { m_templateHasBeenSet = true; m_template = std::move(value); }
-
-    /**
-     * <p>The template to use for the email message.</p>
-     */
-    inline EmailContent& WithTemplate(const Template& value) { SetTemplate(value); return *this;}
-
-    /**
-     * <p>The template to use for the email message.</p>
-     */
-    inline EmailContent& WithTemplate(Template&& value) { SetTemplate(std::move(value)); return *this;}
-
+    template<typename TemplateT = Template>
+    void SetTemplate(TemplateT&& value) { m_templateHasBeenSet = true; m_template = std::forward<TemplateT>(value); }
+    template<typename TemplateT = Template>
+    EmailContent& WithTemplate(TemplateT&& value) { SetTemplate(std::forward<TemplateT>(value)); return *this;}
+    ///@}
   private:
 
     Message m_simple;

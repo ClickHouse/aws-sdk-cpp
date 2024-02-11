@@ -18,13 +18,7 @@ namespace Personalize
 namespace Model
 {
 
-CampaignConfig::CampaignConfig() : 
-    m_itemExplorationConfigHasBeenSet(false)
-{
-}
-
-CampaignConfig::CampaignConfig(JsonView jsonValue) : 
-    m_itemExplorationConfigHasBeenSet(false)
+CampaignConfig::CampaignConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,16 @@ CampaignConfig& CampaignConfig::operator =(JsonView jsonValue)
     }
     m_itemExplorationConfigHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("enableMetadataWithRecommendations"))
+  {
+    m_enableMetadataWithRecommendations = jsonValue.GetBool("enableMetadataWithRecommendations");
+    m_enableMetadataWithRecommendationsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("syncWithLatestSolutionVersion"))
+  {
+    m_syncWithLatestSolutionVersion = jsonValue.GetBool("syncWithLatestSolutionVersion");
+    m_syncWithLatestSolutionVersionHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -56,6 +59,18 @@ JsonValue CampaignConfig::Jsonize() const
      itemExplorationConfigJsonMap.WithString(itemExplorationConfigItem.first, itemExplorationConfigItem.second);
    }
    payload.WithObject("itemExplorationConfig", std::move(itemExplorationConfigJsonMap));
+
+  }
+
+  if(m_enableMetadataWithRecommendationsHasBeenSet)
+  {
+   payload.WithBool("enableMetadataWithRecommendations", m_enableMetadataWithRecommendations);
+
+  }
+
+  if(m_syncWithLatestSolutionVersionHasBeenSet)
+  {
+   payload.WithBool("syncWithLatestSolutionVersion", m_syncWithLatestSolutionVersion);
 
   }
 

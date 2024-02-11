@@ -18,44 +18,28 @@ namespace Omics
 namespace Model
 {
 
-ReadSetBatchError::ReadSetBatchError() : 
-    m_codeHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-ReadSetBatchError::ReadSetBatchError(JsonView jsonValue) : 
-    m_codeHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_messageHasBeenSet(false)
+ReadSetBatchError::ReadSetBatchError(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 ReadSetBatchError& ReadSetBatchError::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("code"))
-  {
-    m_code = jsonValue.GetString("code");
-
-    m_codeHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("code"))
+  {
+    m_code = jsonValue.GetString("code");
+    m_codeHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -63,15 +47,15 @@ JsonValue ReadSetBatchError::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_codeHasBeenSet)
-  {
-   payload.WithString("code", m_code);
-
-  }
-
   if(m_idHasBeenSet)
   {
    payload.WithString("id", m_id);
+
+  }
+
+  if(m_codeHasBeenSet)
+  {
+   payload.WithString("code", m_code);
 
   }
 

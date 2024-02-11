@@ -12,13 +12,6 @@ using namespace Aws::EMR::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ModifyClusterRequest::ModifyClusterRequest() : 
-    m_clusterIdHasBeenSet(false),
-    m_stepConcurrencyLevel(0),
-    m_stepConcurrencyLevelHasBeenSet(false)
-{
-}
-
 Aws::String ModifyClusterRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -32,6 +25,12 @@ Aws::String ModifyClusterRequest::SerializePayload() const
   if(m_stepConcurrencyLevelHasBeenSet)
   {
    payload.WithInteger("StepConcurrencyLevel", m_stepConcurrencyLevel);
+
+  }
+
+  if(m_extendedSupportHasBeenSet)
+  {
+   payload.WithBool("ExtendedSupport", m_extendedSupport);
 
   }
 

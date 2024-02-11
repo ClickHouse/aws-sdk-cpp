@@ -20,7 +20,10 @@ namespace Model
     IN_PROGRESS,
     PENDING,
     COMPLETED,
-    UPDATED_OPTIMIZING
+    UPDATED_OPTIMIZING,
+    OPTIMIZING,
+    PAUSED,
+    CANCELLED
   };
 
 namespace StatusMapper

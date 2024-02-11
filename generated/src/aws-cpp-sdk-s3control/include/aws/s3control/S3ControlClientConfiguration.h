@@ -14,11 +14,11 @@ namespace Aws
 {
     namespace S3Control
     {
-        struct AWS_S3CONTROL_API S3ControlClientConfiguration : public Aws::Client::GenericClientConfiguration</*EndpointDiscoverySupported*/true>
+        struct AWS_S3CONTROL_API S3ControlClientConfiguration : public Aws::Client::GenericClientConfiguration
         {
-            using BaseClientConfigClass = Aws::Client::GenericClientConfiguration</*EndpointDiscoverySupported*/true>;
+            using BaseClientConfigClass = Aws::Client::GenericClientConfiguration;
 
-            S3ControlClientConfiguration();
+            S3ControlClientConfiguration(const Client::ClientConfigurationInitValues &configuration = {});
 
             /**
             * Create a configuration based on settings in the aws configuration file for the given profile name.

@@ -26,7 +26,7 @@ namespace Model
   class UpdateRouteResponseRequest : public ApiGatewayV2Request
   {
   public:
-    AWS_APIGATEWAYV2_API UpdateRouteResponseRequest();
+    AWS_APIGATEWAYV2_API UpdateRouteResponseRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,345 +37,98 @@ namespace Model
     AWS_APIGATEWAYV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The API identifier.</p>
      */
-    inline const Aws::String& GetApiId() const{ return m_apiId; }
-
-    /**
-     * <p>The API identifier.</p>
-     */
+    inline const Aws::String& GetApiId() const { return m_apiId; }
     inline bool ApiIdHasBeenSet() const { return m_apiIdHasBeenSet; }
+    template<typename ApiIdT = Aws::String>
+    void SetApiId(ApiIdT&& value) { m_apiIdHasBeenSet = true; m_apiId = std::forward<ApiIdT>(value); }
+    template<typename ApiIdT = Aws::String>
+    UpdateRouteResponseRequest& WithApiId(ApiIdT&& value) { SetApiId(std::forward<ApiIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline void SetApiId(const Aws::String& value) { m_apiIdHasBeenSet = true; m_apiId = value; }
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline void SetApiId(Aws::String&& value) { m_apiIdHasBeenSet = true; m_apiId = std::move(value); }
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline void SetApiId(const char* value) { m_apiIdHasBeenSet = true; m_apiId.assign(value); }
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline UpdateRouteResponseRequest& WithApiId(const Aws::String& value) { SetApiId(value); return *this;}
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline UpdateRouteResponseRequest& WithApiId(Aws::String&& value) { SetApiId(std::move(value)); return *this;}
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline UpdateRouteResponseRequest& WithApiId(const char* value) { SetApiId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The model selection expression for the route response. Supported only for
      * WebSocket APIs.</p>
      */
-    inline const Aws::String& GetModelSelectionExpression() const{ return m_modelSelectionExpression; }
-
-    /**
-     * <p>The model selection expression for the route response. Supported only for
-     * WebSocket APIs.</p>
-     */
+    inline const Aws::String& GetModelSelectionExpression() const { return m_modelSelectionExpression; }
     inline bool ModelSelectionExpressionHasBeenSet() const { return m_modelSelectionExpressionHasBeenSet; }
+    template<typename ModelSelectionExpressionT = Aws::String>
+    void SetModelSelectionExpression(ModelSelectionExpressionT&& value) { m_modelSelectionExpressionHasBeenSet = true; m_modelSelectionExpression = std::forward<ModelSelectionExpressionT>(value); }
+    template<typename ModelSelectionExpressionT = Aws::String>
+    UpdateRouteResponseRequest& WithModelSelectionExpression(ModelSelectionExpressionT&& value) { SetModelSelectionExpression(std::forward<ModelSelectionExpressionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The model selection expression for the route response. Supported only for
-     * WebSocket APIs.</p>
-     */
-    inline void SetModelSelectionExpression(const Aws::String& value) { m_modelSelectionExpressionHasBeenSet = true; m_modelSelectionExpression = value; }
-
-    /**
-     * <p>The model selection expression for the route response. Supported only for
-     * WebSocket APIs.</p>
-     */
-    inline void SetModelSelectionExpression(Aws::String&& value) { m_modelSelectionExpressionHasBeenSet = true; m_modelSelectionExpression = std::move(value); }
-
-    /**
-     * <p>The model selection expression for the route response. Supported only for
-     * WebSocket APIs.</p>
-     */
-    inline void SetModelSelectionExpression(const char* value) { m_modelSelectionExpressionHasBeenSet = true; m_modelSelectionExpression.assign(value); }
-
-    /**
-     * <p>The model selection expression for the route response. Supported only for
-     * WebSocket APIs.</p>
-     */
-    inline UpdateRouteResponseRequest& WithModelSelectionExpression(const Aws::String& value) { SetModelSelectionExpression(value); return *this;}
-
-    /**
-     * <p>The model selection expression for the route response. Supported only for
-     * WebSocket APIs.</p>
-     */
-    inline UpdateRouteResponseRequest& WithModelSelectionExpression(Aws::String&& value) { SetModelSelectionExpression(std::move(value)); return *this;}
-
-    /**
-     * <p>The model selection expression for the route response. Supported only for
-     * WebSocket APIs.</p>
-     */
-    inline UpdateRouteResponseRequest& WithModelSelectionExpression(const char* value) { SetModelSelectionExpression(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The response models for the route response.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetResponseModels() const{ return m_responseModels; }
-
-    /**
-     * <p>The response models for the route response.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetResponseModels() const { return m_responseModels; }
     inline bool ResponseModelsHasBeenSet() const { return m_responseModelsHasBeenSet; }
+    template<typename ResponseModelsT = Aws::Map<Aws::String, Aws::String>>
+    void SetResponseModels(ResponseModelsT&& value) { m_responseModelsHasBeenSet = true; m_responseModels = std::forward<ResponseModelsT>(value); }
+    template<typename ResponseModelsT = Aws::Map<Aws::String, Aws::String>>
+    UpdateRouteResponseRequest& WithResponseModels(ResponseModelsT&& value) { SetResponseModels(std::forward<ResponseModelsT>(value)); return *this;}
+    template<typename ResponseModelsKeyT = Aws::String, typename ResponseModelsValueT = Aws::String>
+    UpdateRouteResponseRequest& AddResponseModels(ResponseModelsKeyT&& key, ResponseModelsValueT&& value) {
+      m_responseModelsHasBeenSet = true; m_responseModels.emplace(std::forward<ResponseModelsKeyT>(key), std::forward<ResponseModelsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The response models for the route response.</p>
-     */
-    inline void SetResponseModels(const Aws::Map<Aws::String, Aws::String>& value) { m_responseModelsHasBeenSet = true; m_responseModels = value; }
-
-    /**
-     * <p>The response models for the route response.</p>
-     */
-    inline void SetResponseModels(Aws::Map<Aws::String, Aws::String>&& value) { m_responseModelsHasBeenSet = true; m_responseModels = std::move(value); }
-
-    /**
-     * <p>The response models for the route response.</p>
-     */
-    inline UpdateRouteResponseRequest& WithResponseModels(const Aws::Map<Aws::String, Aws::String>& value) { SetResponseModels(value); return *this;}
-
-    /**
-     * <p>The response models for the route response.</p>
-     */
-    inline UpdateRouteResponseRequest& WithResponseModels(Aws::Map<Aws::String, Aws::String>&& value) { SetResponseModels(std::move(value)); return *this;}
-
-    /**
-     * <p>The response models for the route response.</p>
-     */
-    inline UpdateRouteResponseRequest& AddResponseModels(const Aws::String& key, const Aws::String& value) { m_responseModelsHasBeenSet = true; m_responseModels.emplace(key, value); return *this; }
-
-    /**
-     * <p>The response models for the route response.</p>
-     */
-    inline UpdateRouteResponseRequest& AddResponseModels(Aws::String&& key, const Aws::String& value) { m_responseModelsHasBeenSet = true; m_responseModels.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The response models for the route response.</p>
-     */
-    inline UpdateRouteResponseRequest& AddResponseModels(const Aws::String& key, Aws::String&& value) { m_responseModelsHasBeenSet = true; m_responseModels.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The response models for the route response.</p>
-     */
-    inline UpdateRouteResponseRequest& AddResponseModels(Aws::String&& key, Aws::String&& value) { m_responseModelsHasBeenSet = true; m_responseModels.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The response models for the route response.</p>
-     */
-    inline UpdateRouteResponseRequest& AddResponseModels(const char* key, Aws::String&& value) { m_responseModelsHasBeenSet = true; m_responseModels.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The response models for the route response.</p>
-     */
-    inline UpdateRouteResponseRequest& AddResponseModels(Aws::String&& key, const char* value) { m_responseModelsHasBeenSet = true; m_responseModels.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The response models for the route response.</p>
-     */
-    inline UpdateRouteResponseRequest& AddResponseModels(const char* key, const char* value) { m_responseModelsHasBeenSet = true; m_responseModels.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The route response parameters.</p>
      */
-    inline const Aws::Map<Aws::String, ParameterConstraints>& GetResponseParameters() const{ return m_responseParameters; }
-
-    /**
-     * <p>The route response parameters.</p>
-     */
+    inline const Aws::Map<Aws::String, ParameterConstraints>& GetResponseParameters() const { return m_responseParameters; }
     inline bool ResponseParametersHasBeenSet() const { return m_responseParametersHasBeenSet; }
+    template<typename ResponseParametersT = Aws::Map<Aws::String, ParameterConstraints>>
+    void SetResponseParameters(ResponseParametersT&& value) { m_responseParametersHasBeenSet = true; m_responseParameters = std::forward<ResponseParametersT>(value); }
+    template<typename ResponseParametersT = Aws::Map<Aws::String, ParameterConstraints>>
+    UpdateRouteResponseRequest& WithResponseParameters(ResponseParametersT&& value) { SetResponseParameters(std::forward<ResponseParametersT>(value)); return *this;}
+    template<typename ResponseParametersKeyT = Aws::String, typename ResponseParametersValueT = ParameterConstraints>
+    UpdateRouteResponseRequest& AddResponseParameters(ResponseParametersKeyT&& key, ResponseParametersValueT&& value) {
+      m_responseParametersHasBeenSet = true; m_responseParameters.emplace(std::forward<ResponseParametersKeyT>(key), std::forward<ResponseParametersValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The route response parameters.</p>
-     */
-    inline void SetResponseParameters(const Aws::Map<Aws::String, ParameterConstraints>& value) { m_responseParametersHasBeenSet = true; m_responseParameters = value; }
-
-    /**
-     * <p>The route response parameters.</p>
-     */
-    inline void SetResponseParameters(Aws::Map<Aws::String, ParameterConstraints>&& value) { m_responseParametersHasBeenSet = true; m_responseParameters = std::move(value); }
-
-    /**
-     * <p>The route response parameters.</p>
-     */
-    inline UpdateRouteResponseRequest& WithResponseParameters(const Aws::Map<Aws::String, ParameterConstraints>& value) { SetResponseParameters(value); return *this;}
-
-    /**
-     * <p>The route response parameters.</p>
-     */
-    inline UpdateRouteResponseRequest& WithResponseParameters(Aws::Map<Aws::String, ParameterConstraints>&& value) { SetResponseParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>The route response parameters.</p>
-     */
-    inline UpdateRouteResponseRequest& AddResponseParameters(const Aws::String& key, const ParameterConstraints& value) { m_responseParametersHasBeenSet = true; m_responseParameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>The route response parameters.</p>
-     */
-    inline UpdateRouteResponseRequest& AddResponseParameters(Aws::String&& key, const ParameterConstraints& value) { m_responseParametersHasBeenSet = true; m_responseParameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The route response parameters.</p>
-     */
-    inline UpdateRouteResponseRequest& AddResponseParameters(const Aws::String& key, ParameterConstraints&& value) { m_responseParametersHasBeenSet = true; m_responseParameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The route response parameters.</p>
-     */
-    inline UpdateRouteResponseRequest& AddResponseParameters(Aws::String&& key, ParameterConstraints&& value) { m_responseParametersHasBeenSet = true; m_responseParameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The route response parameters.</p>
-     */
-    inline UpdateRouteResponseRequest& AddResponseParameters(const char* key, ParameterConstraints&& value) { m_responseParametersHasBeenSet = true; m_responseParameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The route response parameters.</p>
-     */
-    inline UpdateRouteResponseRequest& AddResponseParameters(const char* key, const ParameterConstraints& value) { m_responseParametersHasBeenSet = true; m_responseParameters.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The route ID.</p>
      */
-    inline const Aws::String& GetRouteId() const{ return m_routeId; }
-
-    /**
-     * <p>The route ID.</p>
-     */
+    inline const Aws::String& GetRouteId() const { return m_routeId; }
     inline bool RouteIdHasBeenSet() const { return m_routeIdHasBeenSet; }
+    template<typename RouteIdT = Aws::String>
+    void SetRouteId(RouteIdT&& value) { m_routeIdHasBeenSet = true; m_routeId = std::forward<RouteIdT>(value); }
+    template<typename RouteIdT = Aws::String>
+    UpdateRouteResponseRequest& WithRouteId(RouteIdT&& value) { SetRouteId(std::forward<RouteIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The route ID.</p>
-     */
-    inline void SetRouteId(const Aws::String& value) { m_routeIdHasBeenSet = true; m_routeId = value; }
-
-    /**
-     * <p>The route ID.</p>
-     */
-    inline void SetRouteId(Aws::String&& value) { m_routeIdHasBeenSet = true; m_routeId = std::move(value); }
-
-    /**
-     * <p>The route ID.</p>
-     */
-    inline void SetRouteId(const char* value) { m_routeIdHasBeenSet = true; m_routeId.assign(value); }
-
-    /**
-     * <p>The route ID.</p>
-     */
-    inline UpdateRouteResponseRequest& WithRouteId(const Aws::String& value) { SetRouteId(value); return *this;}
-
-    /**
-     * <p>The route ID.</p>
-     */
-    inline UpdateRouteResponseRequest& WithRouteId(Aws::String&& value) { SetRouteId(std::move(value)); return *this;}
-
-    /**
-     * <p>The route ID.</p>
-     */
-    inline UpdateRouteResponseRequest& WithRouteId(const char* value) { SetRouteId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The route response ID.</p>
      */
-    inline const Aws::String& GetRouteResponseId() const{ return m_routeResponseId; }
-
-    /**
-     * <p>The route response ID.</p>
-     */
+    inline const Aws::String& GetRouteResponseId() const { return m_routeResponseId; }
     inline bool RouteResponseIdHasBeenSet() const { return m_routeResponseIdHasBeenSet; }
+    template<typename RouteResponseIdT = Aws::String>
+    void SetRouteResponseId(RouteResponseIdT&& value) { m_routeResponseIdHasBeenSet = true; m_routeResponseId = std::forward<RouteResponseIdT>(value); }
+    template<typename RouteResponseIdT = Aws::String>
+    UpdateRouteResponseRequest& WithRouteResponseId(RouteResponseIdT&& value) { SetRouteResponseId(std::forward<RouteResponseIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The route response ID.</p>
-     */
-    inline void SetRouteResponseId(const Aws::String& value) { m_routeResponseIdHasBeenSet = true; m_routeResponseId = value; }
-
-    /**
-     * <p>The route response ID.</p>
-     */
-    inline void SetRouteResponseId(Aws::String&& value) { m_routeResponseIdHasBeenSet = true; m_routeResponseId = std::move(value); }
-
-    /**
-     * <p>The route response ID.</p>
-     */
-    inline void SetRouteResponseId(const char* value) { m_routeResponseIdHasBeenSet = true; m_routeResponseId.assign(value); }
-
-    /**
-     * <p>The route response ID.</p>
-     */
-    inline UpdateRouteResponseRequest& WithRouteResponseId(const Aws::String& value) { SetRouteResponseId(value); return *this;}
-
-    /**
-     * <p>The route response ID.</p>
-     */
-    inline UpdateRouteResponseRequest& WithRouteResponseId(Aws::String&& value) { SetRouteResponseId(std::move(value)); return *this;}
-
-    /**
-     * <p>The route response ID.</p>
-     */
-    inline UpdateRouteResponseRequest& WithRouteResponseId(const char* value) { SetRouteResponseId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The route response key.</p>
      */
-    inline const Aws::String& GetRouteResponseKey() const{ return m_routeResponseKey; }
-
-    /**
-     * <p>The route response key.</p>
-     */
+    inline const Aws::String& GetRouteResponseKey() const { return m_routeResponseKey; }
     inline bool RouteResponseKeyHasBeenSet() const { return m_routeResponseKeyHasBeenSet; }
-
-    /**
-     * <p>The route response key.</p>
-     */
-    inline void SetRouteResponseKey(const Aws::String& value) { m_routeResponseKeyHasBeenSet = true; m_routeResponseKey = value; }
-
-    /**
-     * <p>The route response key.</p>
-     */
-    inline void SetRouteResponseKey(Aws::String&& value) { m_routeResponseKeyHasBeenSet = true; m_routeResponseKey = std::move(value); }
-
-    /**
-     * <p>The route response key.</p>
-     */
-    inline void SetRouteResponseKey(const char* value) { m_routeResponseKeyHasBeenSet = true; m_routeResponseKey.assign(value); }
-
-    /**
-     * <p>The route response key.</p>
-     */
-    inline UpdateRouteResponseRequest& WithRouteResponseKey(const Aws::String& value) { SetRouteResponseKey(value); return *this;}
-
-    /**
-     * <p>The route response key.</p>
-     */
-    inline UpdateRouteResponseRequest& WithRouteResponseKey(Aws::String&& value) { SetRouteResponseKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The route response key.</p>
-     */
-    inline UpdateRouteResponseRequest& WithRouteResponseKey(const char* value) { SetRouteResponseKey(value); return *this;}
-
+    template<typename RouteResponseKeyT = Aws::String>
+    void SetRouteResponseKey(RouteResponseKeyT&& value) { m_routeResponseKeyHasBeenSet = true; m_routeResponseKey = std::forward<RouteResponseKeyT>(value); }
+    template<typename RouteResponseKeyT = Aws::String>
+    UpdateRouteResponseRequest& WithRouteResponseKey(RouteResponseKeyT&& value) { SetRouteResponseKey(std::forward<RouteResponseKeyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_apiId;

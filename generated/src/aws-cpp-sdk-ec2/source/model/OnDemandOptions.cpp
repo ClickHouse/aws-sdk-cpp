@@ -20,31 +20,7 @@ namespace EC2
 namespace Model
 {
 
-OnDemandOptions::OnDemandOptions() : 
-    m_allocationStrategy(FleetOnDemandAllocationStrategy::NOT_SET),
-    m_allocationStrategyHasBeenSet(false),
-    m_capacityReservationOptionsHasBeenSet(false),
-    m_singleInstanceType(false),
-    m_singleInstanceTypeHasBeenSet(false),
-    m_singleAvailabilityZone(false),
-    m_singleAvailabilityZoneHasBeenSet(false),
-    m_minTargetCapacity(0),
-    m_minTargetCapacityHasBeenSet(false),
-    m_maxTotalPriceHasBeenSet(false)
-{
-}
-
-OnDemandOptions::OnDemandOptions(const XmlNode& xmlNode) : 
-    m_allocationStrategy(FleetOnDemandAllocationStrategy::NOT_SET),
-    m_allocationStrategyHasBeenSet(false),
-    m_capacityReservationOptionsHasBeenSet(false),
-    m_singleInstanceType(false),
-    m_singleInstanceTypeHasBeenSet(false),
-    m_singleAvailabilityZone(false),
-    m_singleAvailabilityZoneHasBeenSet(false),
-    m_minTargetCapacity(0),
-    m_minTargetCapacityHasBeenSet(false),
-    m_maxTotalPriceHasBeenSet(false)
+OnDemandOptions::OnDemandOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -58,7 +34,7 @@ OnDemandOptions& OnDemandOptions::operator =(const XmlNode& xmlNode)
     XmlNode allocationStrategyNode = resultNode.FirstChild("allocationStrategy");
     if(!allocationStrategyNode.IsNull())
     {
-      m_allocationStrategy = FleetOnDemandAllocationStrategyMapper::GetFleetOnDemandAllocationStrategyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(allocationStrategyNode.GetText()).c_str()).c_str());
+      m_allocationStrategy = FleetOnDemandAllocationStrategyMapper::GetFleetOnDemandAllocationStrategyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(allocationStrategyNode.GetText()).c_str()));
       m_allocationStrategyHasBeenSet = true;
     }
     XmlNode capacityReservationOptionsNode = resultNode.FirstChild("capacityReservationOptions");
@@ -100,7 +76,7 @@ void OnDemandOptions::OutputToStream(Aws::OStream& oStream, const char* location
 {
   if(m_allocationStrategyHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AllocationStrategy=" << FleetOnDemandAllocationStrategyMapper::GetNameForFleetOnDemandAllocationStrategy(m_allocationStrategy) << "&";
+      oStream << location << index << locationValue << ".AllocationStrategy=" << StringUtils::URLEncode(FleetOnDemandAllocationStrategyMapper::GetNameForFleetOnDemandAllocationStrategy(m_allocationStrategy)) << "&";
   }
 
   if(m_capacityReservationOptionsHasBeenSet)
@@ -136,7 +112,7 @@ void OnDemandOptions::OutputToStream(Aws::OStream& oStream, const char* location
 {
   if(m_allocationStrategyHasBeenSet)
   {
-      oStream << location << ".AllocationStrategy=" << FleetOnDemandAllocationStrategyMapper::GetNameForFleetOnDemandAllocationStrategy(m_allocationStrategy) << "&";
+      oStream << location << ".AllocationStrategy=" << StringUtils::URLEncode(FleetOnDemandAllocationStrategyMapper::GetNameForFleetOnDemandAllocationStrategy(m_allocationStrategy)) << "&";
   }
   if(m_capacityReservationOptionsHasBeenSet)
   {

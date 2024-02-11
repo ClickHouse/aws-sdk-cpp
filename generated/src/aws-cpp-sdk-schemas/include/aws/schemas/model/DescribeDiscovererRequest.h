@@ -21,7 +21,7 @@ namespace Model
   class DescribeDiscovererRequest : public SchemasRequest
   {
   public:
-    AWS_SCHEMAS_API DescribeDiscovererRequest();
+    AWS_SCHEMAS_API DescribeDiscovererRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_SCHEMAS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the discoverer.</p>
      */
-    inline const Aws::String& GetDiscovererId() const{ return m_discovererId; }
-
-    /**
-     * <p>The ID of the discoverer.</p>
-     */
+    inline const Aws::String& GetDiscovererId() const { return m_discovererId; }
     inline bool DiscovererIdHasBeenSet() const { return m_discovererIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the discoverer.</p>
-     */
-    inline void SetDiscovererId(const Aws::String& value) { m_discovererIdHasBeenSet = true; m_discovererId = value; }
-
-    /**
-     * <p>The ID of the discoverer.</p>
-     */
-    inline void SetDiscovererId(Aws::String&& value) { m_discovererIdHasBeenSet = true; m_discovererId = std::move(value); }
-
-    /**
-     * <p>The ID of the discoverer.</p>
-     */
-    inline void SetDiscovererId(const char* value) { m_discovererIdHasBeenSet = true; m_discovererId.assign(value); }
-
-    /**
-     * <p>The ID of the discoverer.</p>
-     */
-    inline DescribeDiscovererRequest& WithDiscovererId(const Aws::String& value) { SetDiscovererId(value); return *this;}
-
-    /**
-     * <p>The ID of the discoverer.</p>
-     */
-    inline DescribeDiscovererRequest& WithDiscovererId(Aws::String&& value) { SetDiscovererId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the discoverer.</p>
-     */
-    inline DescribeDiscovererRequest& WithDiscovererId(const char* value) { SetDiscovererId(value); return *this;}
-
+    template<typename DiscovererIdT = Aws::String>
+    void SetDiscovererId(DiscovererIdT&& value) { m_discovererIdHasBeenSet = true; m_discovererId = std::forward<DiscovererIdT>(value); }
+    template<typename DiscovererIdT = Aws::String>
+    DescribeDiscovererRequest& WithDiscovererId(DiscovererIdT&& value) { SetDiscovererId(std::forward<DiscovererIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_discovererId;

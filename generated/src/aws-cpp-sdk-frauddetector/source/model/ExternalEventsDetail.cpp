@@ -18,15 +18,7 @@ namespace FraudDetector
 namespace Model
 {
 
-ExternalEventsDetail::ExternalEventsDetail() : 
-    m_dataLocationHasBeenSet(false),
-    m_dataAccessRoleArnHasBeenSet(false)
-{
-}
-
-ExternalEventsDetail::ExternalEventsDetail(JsonView jsonValue) : 
-    m_dataLocationHasBeenSet(false),
-    m_dataAccessRoleArnHasBeenSet(false)
+ExternalEventsDetail::ExternalEventsDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ExternalEventsDetail& ExternalEventsDetail::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("dataLocation"))
   {
     m_dataLocation = jsonValue.GetString("dataLocation");
-
     m_dataLocationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("dataAccessRoleArn"))
   {
     m_dataAccessRoleArn = jsonValue.GetString("dataAccessRoleArn");
-
     m_dataAccessRoleArnHasBeenSet = true;
   }
-
   return *this;
 }
 

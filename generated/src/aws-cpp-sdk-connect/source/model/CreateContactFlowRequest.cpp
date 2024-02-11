@@ -12,17 +12,6 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateContactFlowRequest::CreateContactFlowRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_type(ContactFlowType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_contentHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateContactFlowRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -48,6 +37,11 @@ Aws::String CreateContactFlowRequest::SerializePayload() const
   {
    payload.WithString("Content", m_content);
 
+  }
+
+  if(m_statusHasBeenSet)
+  {
+   payload.WithString("Status", ContactFlowStatusMapper::GetNameForContactFlowStatus(m_status));
   }
 
   if(m_tagsHasBeenSet)

@@ -18,17 +18,7 @@ namespace IoTFleetWise
 namespace Model
 {
 
-InvalidSignalDecoder::InvalidSignalDecoder() : 
-    m_nameHasBeenSet(false),
-    m_reason(SignalDecoderFailureReason::NOT_SET),
-    m_reasonHasBeenSet(false)
-{
-}
-
-InvalidSignalDecoder::InvalidSignalDecoder(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_reason(SignalDecoderFailureReason::NOT_SET),
-    m_reasonHasBeenSet(false)
+InvalidSignalDecoder::InvalidSignalDecoder(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,18 @@ InvalidSignalDecoder& InvalidSignalDecoder::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("reason"))
   {
     m_reason = SignalDecoderFailureReasonMapper::GetSignalDecoderFailureReasonForName(jsonValue.GetString("reason"));
-
     m_reasonHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("hint"))
+  {
+    m_hint = jsonValue.GetString("hint");
+    m_hintHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -65,6 +56,12 @@ JsonValue InvalidSignalDecoder::Jsonize() const
   if(m_reasonHasBeenSet)
   {
    payload.WithString("reason", SignalDecoderFailureReasonMapper::GetNameForSignalDecoderFailureReason(m_reason));
+  }
+
+  if(m_hintHasBeenSet)
+  {
+   payload.WithString("hint", m_hint);
+
   }
 
   return payload;

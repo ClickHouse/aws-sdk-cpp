@@ -34,167 +34,67 @@ namespace Model
   class Invite
   {
   public:
-    AWS_CHIME_API Invite();
+    AWS_CHIME_API Invite() = default;
     AWS_CHIME_API Invite(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIME_API Invite& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIME_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The invite ID.</p>
      */
-    inline const Aws::String& GetInviteId() const{ return m_inviteId; }
-
-    /**
-     * <p>The invite ID.</p>
-     */
+    inline const Aws::String& GetInviteId() const { return m_inviteId; }
     inline bool InviteIdHasBeenSet() const { return m_inviteIdHasBeenSet; }
+    template<typename InviteIdT = Aws::String>
+    void SetInviteId(InviteIdT&& value) { m_inviteIdHasBeenSet = true; m_inviteId = std::forward<InviteIdT>(value); }
+    template<typename InviteIdT = Aws::String>
+    Invite& WithInviteId(InviteIdT&& value) { SetInviteId(std::forward<InviteIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The invite ID.</p>
-     */
-    inline void SetInviteId(const Aws::String& value) { m_inviteIdHasBeenSet = true; m_inviteId = value; }
-
-    /**
-     * <p>The invite ID.</p>
-     */
-    inline void SetInviteId(Aws::String&& value) { m_inviteIdHasBeenSet = true; m_inviteId = std::move(value); }
-
-    /**
-     * <p>The invite ID.</p>
-     */
-    inline void SetInviteId(const char* value) { m_inviteIdHasBeenSet = true; m_inviteId.assign(value); }
-
-    /**
-     * <p>The invite ID.</p>
-     */
-    inline Invite& WithInviteId(const Aws::String& value) { SetInviteId(value); return *this;}
-
-    /**
-     * <p>The invite ID.</p>
-     */
-    inline Invite& WithInviteId(Aws::String&& value) { SetInviteId(std::move(value)); return *this;}
-
-    /**
-     * <p>The invite ID.</p>
-     */
-    inline Invite& WithInviteId(const char* value) { SetInviteId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the invite.</p>
      */
-    inline const InviteStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the invite.</p>
-     */
+    inline InviteStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(InviteStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline Invite& WithStatus(InviteStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the invite.</p>
-     */
-    inline void SetStatus(const InviteStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the invite.</p>
-     */
-    inline void SetStatus(InviteStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the invite.</p>
-     */
-    inline Invite& WithStatus(const InviteStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the invite.</p>
-     */
-    inline Invite& WithStatus(InviteStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The email address to which the invite is sent.</p>
      */
-    inline const Aws::String& GetEmailAddress() const{ return m_emailAddress; }
-
-    /**
-     * <p>The email address to which the invite is sent.</p>
-     */
+    inline const Aws::String& GetEmailAddress() const { return m_emailAddress; }
     inline bool EmailAddressHasBeenSet() const { return m_emailAddressHasBeenSet; }
+    template<typename EmailAddressT = Aws::String>
+    void SetEmailAddress(EmailAddressT&& value) { m_emailAddressHasBeenSet = true; m_emailAddress = std::forward<EmailAddressT>(value); }
+    template<typename EmailAddressT = Aws::String>
+    Invite& WithEmailAddress(EmailAddressT&& value) { SetEmailAddress(std::forward<EmailAddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The email address to which the invite is sent.</p>
-     */
-    inline void SetEmailAddress(const Aws::String& value) { m_emailAddressHasBeenSet = true; m_emailAddress = value; }
-
-    /**
-     * <p>The email address to which the invite is sent.</p>
-     */
-    inline void SetEmailAddress(Aws::String&& value) { m_emailAddressHasBeenSet = true; m_emailAddress = std::move(value); }
-
-    /**
-     * <p>The email address to which the invite is sent.</p>
-     */
-    inline void SetEmailAddress(const char* value) { m_emailAddressHasBeenSet = true; m_emailAddress.assign(value); }
-
-    /**
-     * <p>The email address to which the invite is sent.</p>
-     */
-    inline Invite& WithEmailAddress(const Aws::String& value) { SetEmailAddress(value); return *this;}
-
-    /**
-     * <p>The email address to which the invite is sent.</p>
-     */
-    inline Invite& WithEmailAddress(Aws::String&& value) { SetEmailAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The email address to which the invite is sent.</p>
-     */
-    inline Invite& WithEmailAddress(const char* value) { SetEmailAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the invite email.</p>
      */
-    inline const EmailStatus& GetEmailStatus() const{ return m_emailStatus; }
-
-    /**
-     * <p>The status of the invite email.</p>
-     */
+    inline EmailStatus GetEmailStatus() const { return m_emailStatus; }
     inline bool EmailStatusHasBeenSet() const { return m_emailStatusHasBeenSet; }
-
-    /**
-     * <p>The status of the invite email.</p>
-     */
-    inline void SetEmailStatus(const EmailStatus& value) { m_emailStatusHasBeenSet = true; m_emailStatus = value; }
-
-    /**
-     * <p>The status of the invite email.</p>
-     */
-    inline void SetEmailStatus(EmailStatus&& value) { m_emailStatusHasBeenSet = true; m_emailStatus = std::move(value); }
-
-    /**
-     * <p>The status of the invite email.</p>
-     */
-    inline Invite& WithEmailStatus(const EmailStatus& value) { SetEmailStatus(value); return *this;}
-
-    /**
-     * <p>The status of the invite email.</p>
-     */
-    inline Invite& WithEmailStatus(EmailStatus&& value) { SetEmailStatus(std::move(value)); return *this;}
-
+    inline void SetEmailStatus(EmailStatus value) { m_emailStatusHasBeenSet = true; m_emailStatus = value; }
+    inline Invite& WithEmailStatus(EmailStatus value) { SetEmailStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_inviteId;
     bool m_inviteIdHasBeenSet = false;
 
-    InviteStatus m_status;
+    InviteStatus m_status{InviteStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_emailAddress;
     bool m_emailAddressHasBeenSet = false;
 
-    EmailStatus m_emailStatus;
+    EmailStatus m_emailStatus{EmailStatus::NOT_SET};
     bool m_emailStatusHasBeenSet = false;
   };
 

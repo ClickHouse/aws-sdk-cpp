@@ -18,19 +18,7 @@ namespace Glue
 namespace Model
 {
 
-ColumnStatistics::ColumnStatistics() : 
-    m_columnNameHasBeenSet(false),
-    m_columnTypeHasBeenSet(false),
-    m_analyzedTimeHasBeenSet(false),
-    m_statisticsDataHasBeenSet(false)
-{
-}
-
-ColumnStatistics::ColumnStatistics(JsonView jsonValue) : 
-    m_columnNameHasBeenSet(false),
-    m_columnTypeHasBeenSet(false),
-    m_analyzedTimeHasBeenSet(false),
-    m_statisticsDataHasBeenSet(false)
+ColumnStatistics::ColumnStatistics(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ ColumnStatistics& ColumnStatistics::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ColumnName"))
   {
     m_columnName = jsonValue.GetString("ColumnName");
-
     m_columnNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ColumnType"))
   {
     m_columnType = jsonValue.GetString("ColumnType");
-
     m_columnTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AnalyzedTime"))
   {
     m_analyzedTime = jsonValue.GetDouble("AnalyzedTime");
-
     m_analyzedTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatisticsData"))
   {
     m_statisticsData = jsonValue.GetObject("StatisticsData");
-
     m_statisticsDataHasBeenSet = true;
   }
-
   return *this;
 }
 

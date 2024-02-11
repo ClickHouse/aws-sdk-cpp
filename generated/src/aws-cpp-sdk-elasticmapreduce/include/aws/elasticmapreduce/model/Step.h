@@ -34,125 +34,49 @@ namespace Model
   class Step
   {
   public:
-    AWS_EMR_API Step();
+    AWS_EMR_API Step() = default;
     AWS_EMR_API Step(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMR_API Step& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the cluster step.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The identifier of the cluster step.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    Step& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the cluster step.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The identifier of the cluster step.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The identifier of the cluster step.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The identifier of the cluster step.</p>
-     */
-    inline Step& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The identifier of the cluster step.</p>
-     */
-    inline Step& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the cluster step.</p>
-     */
-    inline Step& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the cluster step.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the cluster step.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Step& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the cluster step.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the cluster step.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the cluster step.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the cluster step.</p>
-     */
-    inline Step& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the cluster step.</p>
-     */
-    inline Step& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the cluster step.</p>
-     */
-    inline Step& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Hadoop job configuration of the cluster step.</p>
      */
-    inline const HadoopStepConfig& GetConfig() const{ return m_config; }
-
-    /**
-     * <p>The Hadoop job configuration of the cluster step.</p>
-     */
+    inline const HadoopStepConfig& GetConfig() const { return m_config; }
     inline bool ConfigHasBeenSet() const { return m_configHasBeenSet; }
+    template<typename ConfigT = HadoopStepConfig>
+    void SetConfig(ConfigT&& value) { m_configHasBeenSet = true; m_config = std::forward<ConfigT>(value); }
+    template<typename ConfigT = HadoopStepConfig>
+    Step& WithConfig(ConfigT&& value) { SetConfig(std::forward<ConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Hadoop job configuration of the cluster step.</p>
-     */
-    inline void SetConfig(const HadoopStepConfig& value) { m_configHasBeenSet = true; m_config = value; }
-
-    /**
-     * <p>The Hadoop job configuration of the cluster step.</p>
-     */
-    inline void SetConfig(HadoopStepConfig&& value) { m_configHasBeenSet = true; m_config = std::move(value); }
-
-    /**
-     * <p>The Hadoop job configuration of the cluster step.</p>
-     */
-    inline Step& WithConfig(const HadoopStepConfig& value) { SetConfig(value); return *this;}
-
-    /**
-     * <p>The Hadoop job configuration of the cluster step.</p>
-     */
-    inline Step& WithConfig(HadoopStepConfig&& value) { SetConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The action to take when the cluster step fails. Possible values are
      * <code>TERMINATE_CLUSTER</code>, <code>CANCEL_AND_WAIT</code>, and
@@ -170,215 +94,40 @@ namespace Model
      * step are not canceled; for a step that fails with this parameter set to
      * <code>TERMINATE_CLUSTER</code>, the cluster does not terminate.</p>
      */
-    inline const ActionOnFailure& GetActionOnFailure() const{ return m_actionOnFailure; }
-
-    /**
-     * <p>The action to take when the cluster step fails. Possible values are
-     * <code>TERMINATE_CLUSTER</code>, <code>CANCEL_AND_WAIT</code>, and
-     * <code>CONTINUE</code>. <code>TERMINATE_JOB_FLOW</code> is provided for backward
-     * compatibility. We recommend using <code>TERMINATE_CLUSTER</code> instead.</p>
-     * <p>If a cluster's <code>StepConcurrencyLevel</code> is greater than
-     * <code>1</code>, do not use <code>AddJobFlowSteps</code> to submit a step with
-     * this parameter set to <code>CANCEL_AND_WAIT</code> or
-     * <code>TERMINATE_CLUSTER</code>. The step is not submitted and the action fails
-     * with a message that the <code>ActionOnFailure</code> setting is not valid.</p>
-     * <p>If you change a cluster's <code>StepConcurrencyLevel</code> to be greater
-     * than 1 while a step is running, the <code>ActionOnFailure</code> parameter may
-     * not behave as you expect. In this case, for a step that fails with this
-     * parameter set to <code>CANCEL_AND_WAIT</code>, pending steps and the running
-     * step are not canceled; for a step that fails with this parameter set to
-     * <code>TERMINATE_CLUSTER</code>, the cluster does not terminate.</p>
-     */
+    inline ActionOnFailure GetActionOnFailure() const { return m_actionOnFailure; }
     inline bool ActionOnFailureHasBeenSet() const { return m_actionOnFailureHasBeenSet; }
+    inline void SetActionOnFailure(ActionOnFailure value) { m_actionOnFailureHasBeenSet = true; m_actionOnFailure = value; }
+    inline Step& WithActionOnFailure(ActionOnFailure value) { SetActionOnFailure(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The action to take when the cluster step fails. Possible values are
-     * <code>TERMINATE_CLUSTER</code>, <code>CANCEL_AND_WAIT</code>, and
-     * <code>CONTINUE</code>. <code>TERMINATE_JOB_FLOW</code> is provided for backward
-     * compatibility. We recommend using <code>TERMINATE_CLUSTER</code> instead.</p>
-     * <p>If a cluster's <code>StepConcurrencyLevel</code> is greater than
-     * <code>1</code>, do not use <code>AddJobFlowSteps</code> to submit a step with
-     * this parameter set to <code>CANCEL_AND_WAIT</code> or
-     * <code>TERMINATE_CLUSTER</code>. The step is not submitted and the action fails
-     * with a message that the <code>ActionOnFailure</code> setting is not valid.</p>
-     * <p>If you change a cluster's <code>StepConcurrencyLevel</code> to be greater
-     * than 1 while a step is running, the <code>ActionOnFailure</code> parameter may
-     * not behave as you expect. In this case, for a step that fails with this
-     * parameter set to <code>CANCEL_AND_WAIT</code>, pending steps and the running
-     * step are not canceled; for a step that fails with this parameter set to
-     * <code>TERMINATE_CLUSTER</code>, the cluster does not terminate.</p>
-     */
-    inline void SetActionOnFailure(const ActionOnFailure& value) { m_actionOnFailureHasBeenSet = true; m_actionOnFailure = value; }
-
-    /**
-     * <p>The action to take when the cluster step fails. Possible values are
-     * <code>TERMINATE_CLUSTER</code>, <code>CANCEL_AND_WAIT</code>, and
-     * <code>CONTINUE</code>. <code>TERMINATE_JOB_FLOW</code> is provided for backward
-     * compatibility. We recommend using <code>TERMINATE_CLUSTER</code> instead.</p>
-     * <p>If a cluster's <code>StepConcurrencyLevel</code> is greater than
-     * <code>1</code>, do not use <code>AddJobFlowSteps</code> to submit a step with
-     * this parameter set to <code>CANCEL_AND_WAIT</code> or
-     * <code>TERMINATE_CLUSTER</code>. The step is not submitted and the action fails
-     * with a message that the <code>ActionOnFailure</code> setting is not valid.</p>
-     * <p>If you change a cluster's <code>StepConcurrencyLevel</code> to be greater
-     * than 1 while a step is running, the <code>ActionOnFailure</code> parameter may
-     * not behave as you expect. In this case, for a step that fails with this
-     * parameter set to <code>CANCEL_AND_WAIT</code>, pending steps and the running
-     * step are not canceled; for a step that fails with this parameter set to
-     * <code>TERMINATE_CLUSTER</code>, the cluster does not terminate.</p>
-     */
-    inline void SetActionOnFailure(ActionOnFailure&& value) { m_actionOnFailureHasBeenSet = true; m_actionOnFailure = std::move(value); }
-
-    /**
-     * <p>The action to take when the cluster step fails. Possible values are
-     * <code>TERMINATE_CLUSTER</code>, <code>CANCEL_AND_WAIT</code>, and
-     * <code>CONTINUE</code>. <code>TERMINATE_JOB_FLOW</code> is provided for backward
-     * compatibility. We recommend using <code>TERMINATE_CLUSTER</code> instead.</p>
-     * <p>If a cluster's <code>StepConcurrencyLevel</code> is greater than
-     * <code>1</code>, do not use <code>AddJobFlowSteps</code> to submit a step with
-     * this parameter set to <code>CANCEL_AND_WAIT</code> or
-     * <code>TERMINATE_CLUSTER</code>. The step is not submitted and the action fails
-     * with a message that the <code>ActionOnFailure</code> setting is not valid.</p>
-     * <p>If you change a cluster's <code>StepConcurrencyLevel</code> to be greater
-     * than 1 while a step is running, the <code>ActionOnFailure</code> parameter may
-     * not behave as you expect. In this case, for a step that fails with this
-     * parameter set to <code>CANCEL_AND_WAIT</code>, pending steps and the running
-     * step are not canceled; for a step that fails with this parameter set to
-     * <code>TERMINATE_CLUSTER</code>, the cluster does not terminate.</p>
-     */
-    inline Step& WithActionOnFailure(const ActionOnFailure& value) { SetActionOnFailure(value); return *this;}
-
-    /**
-     * <p>The action to take when the cluster step fails. Possible values are
-     * <code>TERMINATE_CLUSTER</code>, <code>CANCEL_AND_WAIT</code>, and
-     * <code>CONTINUE</code>. <code>TERMINATE_JOB_FLOW</code> is provided for backward
-     * compatibility. We recommend using <code>TERMINATE_CLUSTER</code> instead.</p>
-     * <p>If a cluster's <code>StepConcurrencyLevel</code> is greater than
-     * <code>1</code>, do not use <code>AddJobFlowSteps</code> to submit a step with
-     * this parameter set to <code>CANCEL_AND_WAIT</code> or
-     * <code>TERMINATE_CLUSTER</code>. The step is not submitted and the action fails
-     * with a message that the <code>ActionOnFailure</code> setting is not valid.</p>
-     * <p>If you change a cluster's <code>StepConcurrencyLevel</code> to be greater
-     * than 1 while a step is running, the <code>ActionOnFailure</code> parameter may
-     * not behave as you expect. In this case, for a step that fails with this
-     * parameter set to <code>CANCEL_AND_WAIT</code>, pending steps and the running
-     * step are not canceled; for a step that fails with this parameter set to
-     * <code>TERMINATE_CLUSTER</code>, the cluster does not terminate.</p>
-     */
-    inline Step& WithActionOnFailure(ActionOnFailure&& value) { SetActionOnFailure(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The current execution status details of the cluster step.</p>
      */
-    inline const StepStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The current execution status details of the cluster step.</p>
-     */
+    inline const StepStatus& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = StepStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = StepStatus>
+    Step& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current execution status details of the cluster step.</p>
-     */
-    inline void SetStatus(const StepStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The current execution status details of the cluster step.</p>
-     */
-    inline void SetStatus(StepStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The current execution status details of the cluster step.</p>
-     */
-    inline Step& WithStatus(const StepStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current execution status details of the cluster step.</p>
-     */
-    inline Step& WithStatus(StepStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the runtime role for a step on the cluster.
      * The runtime role can be a cross-account IAM role. The runtime role ARN is a
      * combination of account ID, role name, and role type using the following format:
      * <code>arn:partition:service:region:account:resource</code>. </p> <p>For example,
-     * <code>arn:aws:iam::1234567890:role/ReadOnly</code> is a correctly formatted
+     * <code>arn:aws:IAM::1234567890:role/ReadOnly</code> is a correctly formatted
      * runtime role ARN.</p>
      */
-    inline const Aws::String& GetExecutionRoleArn() const{ return m_executionRoleArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the runtime role for a step on the cluster.
-     * The runtime role can be a cross-account IAM role. The runtime role ARN is a
-     * combination of account ID, role name, and role type using the following format:
-     * <code>arn:partition:service:region:account:resource</code>. </p> <p>For example,
-     * <code>arn:aws:iam::1234567890:role/ReadOnly</code> is a correctly formatted
-     * runtime role ARN.</p>
-     */
+    inline const Aws::String& GetExecutionRoleArn() const { return m_executionRoleArn; }
     inline bool ExecutionRoleArnHasBeenSet() const { return m_executionRoleArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the runtime role for a step on the cluster.
-     * The runtime role can be a cross-account IAM role. The runtime role ARN is a
-     * combination of account ID, role name, and role type using the following format:
-     * <code>arn:partition:service:region:account:resource</code>. </p> <p>For example,
-     * <code>arn:aws:iam::1234567890:role/ReadOnly</code> is a correctly formatted
-     * runtime role ARN.</p>
-     */
-    inline void SetExecutionRoleArn(const Aws::String& value) { m_executionRoleArnHasBeenSet = true; m_executionRoleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the runtime role for a step on the cluster.
-     * The runtime role can be a cross-account IAM role. The runtime role ARN is a
-     * combination of account ID, role name, and role type using the following format:
-     * <code>arn:partition:service:region:account:resource</code>. </p> <p>For example,
-     * <code>arn:aws:iam::1234567890:role/ReadOnly</code> is a correctly formatted
-     * runtime role ARN.</p>
-     */
-    inline void SetExecutionRoleArn(Aws::String&& value) { m_executionRoleArnHasBeenSet = true; m_executionRoleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the runtime role for a step on the cluster.
-     * The runtime role can be a cross-account IAM role. The runtime role ARN is a
-     * combination of account ID, role name, and role type using the following format:
-     * <code>arn:partition:service:region:account:resource</code>. </p> <p>For example,
-     * <code>arn:aws:iam::1234567890:role/ReadOnly</code> is a correctly formatted
-     * runtime role ARN.</p>
-     */
-    inline void SetExecutionRoleArn(const char* value) { m_executionRoleArnHasBeenSet = true; m_executionRoleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the runtime role for a step on the cluster.
-     * The runtime role can be a cross-account IAM role. The runtime role ARN is a
-     * combination of account ID, role name, and role type using the following format:
-     * <code>arn:partition:service:region:account:resource</code>. </p> <p>For example,
-     * <code>arn:aws:iam::1234567890:role/ReadOnly</code> is a correctly formatted
-     * runtime role ARN.</p>
-     */
-    inline Step& WithExecutionRoleArn(const Aws::String& value) { SetExecutionRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the runtime role for a step on the cluster.
-     * The runtime role can be a cross-account IAM role. The runtime role ARN is a
-     * combination of account ID, role name, and role type using the following format:
-     * <code>arn:partition:service:region:account:resource</code>. </p> <p>For example,
-     * <code>arn:aws:iam::1234567890:role/ReadOnly</code> is a correctly formatted
-     * runtime role ARN.</p>
-     */
-    inline Step& WithExecutionRoleArn(Aws::String&& value) { SetExecutionRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the runtime role for a step on the cluster.
-     * The runtime role can be a cross-account IAM role. The runtime role ARN is a
-     * combination of account ID, role name, and role type using the following format:
-     * <code>arn:partition:service:region:account:resource</code>. </p> <p>For example,
-     * <code>arn:aws:iam::1234567890:role/ReadOnly</code> is a correctly formatted
-     * runtime role ARN.</p>
-     */
-    inline Step& WithExecutionRoleArn(const char* value) { SetExecutionRoleArn(value); return *this;}
-
+    template<typename ExecutionRoleArnT = Aws::String>
+    void SetExecutionRoleArn(ExecutionRoleArnT&& value) { m_executionRoleArnHasBeenSet = true; m_executionRoleArn = std::forward<ExecutionRoleArnT>(value); }
+    template<typename ExecutionRoleArnT = Aws::String>
+    Step& WithExecutionRoleArn(ExecutionRoleArnT&& value) { SetExecutionRoleArn(std::forward<ExecutionRoleArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
@@ -390,7 +139,7 @@ namespace Model
     HadoopStepConfig m_config;
     bool m_configHasBeenSet = false;
 
-    ActionOnFailure m_actionOnFailure;
+    ActionOnFailure m_actionOnFailure{ActionOnFailure::NOT_SET};
     bool m_actionOnFailureHasBeenSet = false;
 
     StepStatus m_status;

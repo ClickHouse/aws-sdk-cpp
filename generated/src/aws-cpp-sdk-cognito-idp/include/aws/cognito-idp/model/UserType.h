@@ -36,302 +36,109 @@ namespace Model
   class UserType
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API UserType();
+    AWS_COGNITOIDENTITYPROVIDER_API UserType() = default;
     AWS_COGNITOIDENTITYPROVIDER_API UserType(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITYPROVIDER_API UserType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The user name of the user you want to describe.</p>
+     * <p>The user's username.</p>
      */
-    inline const Aws::String& GetUsername() const{ return m_username; }
-
-    /**
-     * <p>The user name of the user you want to describe.</p>
-     */
+    inline const Aws::String& GetUsername() const { return m_username; }
     inline bool UsernameHasBeenSet() const { return m_usernameHasBeenSet; }
+    template<typename UsernameT = Aws::String>
+    void SetUsername(UsernameT&& value) { m_usernameHasBeenSet = true; m_username = std::forward<UsernameT>(value); }
+    template<typename UsernameT = Aws::String>
+    UserType& WithUsername(UsernameT&& value) { SetUsername(std::forward<UsernameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The user name of the user you want to describe.</p>
+     * <p>Names and values of a user's attributes, for example <code>email</code>.</p>
      */
-    inline void SetUsername(const Aws::String& value) { m_usernameHasBeenSet = true; m_username = value; }
-
-    /**
-     * <p>The user name of the user you want to describe.</p>
-     */
-    inline void SetUsername(Aws::String&& value) { m_usernameHasBeenSet = true; m_username = std::move(value); }
-
-    /**
-     * <p>The user name of the user you want to describe.</p>
-     */
-    inline void SetUsername(const char* value) { m_usernameHasBeenSet = true; m_username.assign(value); }
-
-    /**
-     * <p>The user name of the user you want to describe.</p>
-     */
-    inline UserType& WithUsername(const Aws::String& value) { SetUsername(value); return *this;}
-
-    /**
-     * <p>The user name of the user you want to describe.</p>
-     */
-    inline UserType& WithUsername(Aws::String&& value) { SetUsername(std::move(value)); return *this;}
-
-    /**
-     * <p>The user name of the user you want to describe.</p>
-     */
-    inline UserType& WithUsername(const char* value) { SetUsername(value); return *this;}
-
-
-    /**
-     * <p>A container with information about the user type attributes.</p>
-     */
-    inline const Aws::Vector<AttributeType>& GetAttributes() const{ return m_attributes; }
-
-    /**
-     * <p>A container with information about the user type attributes.</p>
-     */
+    inline const Aws::Vector<AttributeType>& GetAttributes() const { return m_attributes; }
     inline bool AttributesHasBeenSet() const { return m_attributesHasBeenSet; }
+    template<typename AttributesT = Aws::Vector<AttributeType>>
+    void SetAttributes(AttributesT&& value) { m_attributesHasBeenSet = true; m_attributes = std::forward<AttributesT>(value); }
+    template<typename AttributesT = Aws::Vector<AttributeType>>
+    UserType& WithAttributes(AttributesT&& value) { SetAttributes(std::forward<AttributesT>(value)); return *this;}
+    template<typename AttributesT = AttributeType>
+    UserType& AddAttributes(AttributesT&& value) { m_attributesHasBeenSet = true; m_attributes.emplace_back(std::forward<AttributesT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>A container with information about the user type attributes.</p>
+     * <p>The date and time when the item was created. Amazon Cognito returns this
+     * timestamp in UNIX epoch time format. Your SDK might render the output in a
+     * human-readable format like ISO 8601 or a Java <code>Date</code> object.</p>
      */
-    inline void SetAttributes(const Aws::Vector<AttributeType>& value) { m_attributesHasBeenSet = true; m_attributes = value; }
-
-    /**
-     * <p>A container with information about the user type attributes.</p>
-     */
-    inline void SetAttributes(Aws::Vector<AttributeType>&& value) { m_attributesHasBeenSet = true; m_attributes = std::move(value); }
-
-    /**
-     * <p>A container with information about the user type attributes.</p>
-     */
-    inline UserType& WithAttributes(const Aws::Vector<AttributeType>& value) { SetAttributes(value); return *this;}
-
-    /**
-     * <p>A container with information about the user type attributes.</p>
-     */
-    inline UserType& WithAttributes(Aws::Vector<AttributeType>&& value) { SetAttributes(std::move(value)); return *this;}
-
-    /**
-     * <p>A container with information about the user type attributes.</p>
-     */
-    inline UserType& AddAttributes(const AttributeType& value) { m_attributesHasBeenSet = true; m_attributes.push_back(value); return *this; }
-
-    /**
-     * <p>A container with information about the user type attributes.</p>
-     */
-    inline UserType& AddAttributes(AttributeType&& value) { m_attributesHasBeenSet = true; m_attributes.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>The creation date of the user.</p>
-     */
-    inline const Aws::Utils::DateTime& GetUserCreateDate() const{ return m_userCreateDate; }
-
-    /**
-     * <p>The creation date of the user.</p>
-     */
+    inline const Aws::Utils::DateTime& GetUserCreateDate() const { return m_userCreateDate; }
     inline bool UserCreateDateHasBeenSet() const { return m_userCreateDateHasBeenSet; }
+    template<typename UserCreateDateT = Aws::Utils::DateTime>
+    void SetUserCreateDate(UserCreateDateT&& value) { m_userCreateDateHasBeenSet = true; m_userCreateDate = std::forward<UserCreateDateT>(value); }
+    template<typename UserCreateDateT = Aws::Utils::DateTime>
+    UserType& WithUserCreateDate(UserCreateDateT&& value) { SetUserCreateDate(std::forward<UserCreateDateT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The creation date of the user.</p>
+     * <p>The date and time when the item was modified. Amazon Cognito returns this
+     * timestamp in UNIX epoch time format. Your SDK might render the output in a
+     * human-readable format like ISO 8601 or a Java <code>Date</code> object.</p>
      */
-    inline void SetUserCreateDate(const Aws::Utils::DateTime& value) { m_userCreateDateHasBeenSet = true; m_userCreateDate = value; }
-
-    /**
-     * <p>The creation date of the user.</p>
-     */
-    inline void SetUserCreateDate(Aws::Utils::DateTime&& value) { m_userCreateDateHasBeenSet = true; m_userCreateDate = std::move(value); }
-
-    /**
-     * <p>The creation date of the user.</p>
-     */
-    inline UserType& WithUserCreateDate(const Aws::Utils::DateTime& value) { SetUserCreateDate(value); return *this;}
-
-    /**
-     * <p>The creation date of the user.</p>
-     */
-    inline UserType& WithUserCreateDate(Aws::Utils::DateTime&& value) { SetUserCreateDate(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The last modified date of the user.</p>
-     */
-    inline const Aws::Utils::DateTime& GetUserLastModifiedDate() const{ return m_userLastModifiedDate; }
-
-    /**
-     * <p>The last modified date of the user.</p>
-     */
+    inline const Aws::Utils::DateTime& GetUserLastModifiedDate() const { return m_userLastModifiedDate; }
     inline bool UserLastModifiedDateHasBeenSet() const { return m_userLastModifiedDateHasBeenSet; }
+    template<typename UserLastModifiedDateT = Aws::Utils::DateTime>
+    void SetUserLastModifiedDate(UserLastModifiedDateT&& value) { m_userLastModifiedDateHasBeenSet = true; m_userLastModifiedDate = std::forward<UserLastModifiedDateT>(value); }
+    template<typename UserLastModifiedDateT = Aws::Utils::DateTime>
+    UserType& WithUserLastModifiedDate(UserLastModifiedDateT&& value) { SetUserLastModifiedDate(std::forward<UserLastModifiedDateT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The last modified date of the user.</p>
+     * <p>Indicates whether the user's account is enabled or disabled.</p>
      */
-    inline void SetUserLastModifiedDate(const Aws::Utils::DateTime& value) { m_userLastModifiedDateHasBeenSet = true; m_userLastModifiedDate = value; }
-
-    /**
-     * <p>The last modified date of the user.</p>
-     */
-    inline void SetUserLastModifiedDate(Aws::Utils::DateTime&& value) { m_userLastModifiedDateHasBeenSet = true; m_userLastModifiedDate = std::move(value); }
-
-    /**
-     * <p>The last modified date of the user.</p>
-     */
-    inline UserType& WithUserLastModifiedDate(const Aws::Utils::DateTime& value) { SetUserLastModifiedDate(value); return *this;}
-
-    /**
-     * <p>The last modified date of the user.</p>
-     */
-    inline UserType& WithUserLastModifiedDate(Aws::Utils::DateTime&& value) { SetUserLastModifiedDate(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Specifies whether the user is enabled.</p>
-     */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Specifies whether the user is enabled.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the user is enabled.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Specifies whether the user is enabled.</p>
-     */
     inline UserType& WithEnabled(bool value) { SetEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>The user status. This can be one of the following:</p> <ul> <li>
-     * <p>UNCONFIRMED - User has been created but not confirmed.</p> </li> <li>
-     * <p>CONFIRMED - User has been confirmed.</p> </li> <li> <p>EXTERNAL_PROVIDER -
-     * User signed in with a third-party IdP.</p> </li> <li> <p>ARCHIVED - User is no
-     * longer active.</p> </li> <li> <p>UNKNOWN - User status isn't known.</p> </li>
-     * <li> <p>RESET_REQUIRED - User is confirmed, but the user must request a code and
-     * reset their password before they can sign in.</p> </li> <li>
-     * <p>FORCE_CHANGE_PASSWORD - The user is confirmed and the user can sign in using
-     * a temporary password, but on first sign-in, the user must change their password
-     * to a new value before doing anything else. </p> </li> </ul>
+     * <p>The user status. This can be one of the following:</p> <ul> <li> <p>
+     * <code>UNCONFIRMED</code>: User has been created but not confirmed.</p> </li>
+     * <li> <p> <code>CONFIRMED</code>: User has been confirmed.</p> </li> <li> <p>
+     * <code>EXTERNAL_PROVIDER</code>: User signed in with a third-party IdP.</p> </li>
+     * <li> <p> <code>RESET_REQUIRED</code>: User is confirmed, but the user must
+     * request a code and reset their password before they can sign in.</p> </li> <li>
+     * <p> <code>FORCE_CHANGE_PASSWORD</code>: The user is confirmed and the user can
+     * sign in using a temporary password, but on first sign-in, the user must change
+     * their password to a new value before doing anything else. </p> </li> </ul>
+     * <p>The statuses <code>ARCHIVED</code>, <code>UNKNOWN</code>, and
+     * <code>COMPROMISED</code> are no longer used.</p>
      */
-    inline const UserStatusType& GetUserStatus() const{ return m_userStatus; }
-
-    /**
-     * <p>The user status. This can be one of the following:</p> <ul> <li>
-     * <p>UNCONFIRMED - User has been created but not confirmed.</p> </li> <li>
-     * <p>CONFIRMED - User has been confirmed.</p> </li> <li> <p>EXTERNAL_PROVIDER -
-     * User signed in with a third-party IdP.</p> </li> <li> <p>ARCHIVED - User is no
-     * longer active.</p> </li> <li> <p>UNKNOWN - User status isn't known.</p> </li>
-     * <li> <p>RESET_REQUIRED - User is confirmed, but the user must request a code and
-     * reset their password before they can sign in.</p> </li> <li>
-     * <p>FORCE_CHANGE_PASSWORD - The user is confirmed and the user can sign in using
-     * a temporary password, but on first sign-in, the user must change their password
-     * to a new value before doing anything else. </p> </li> </ul>
-     */
+    inline UserStatusType GetUserStatus() const { return m_userStatus; }
     inline bool UserStatusHasBeenSet() const { return m_userStatusHasBeenSet; }
+    inline void SetUserStatus(UserStatusType value) { m_userStatusHasBeenSet = true; m_userStatus = value; }
+    inline UserType& WithUserStatus(UserStatusType value) { SetUserStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The user status. This can be one of the following:</p> <ul> <li>
-     * <p>UNCONFIRMED - User has been created but not confirmed.</p> </li> <li>
-     * <p>CONFIRMED - User has been confirmed.</p> </li> <li> <p>EXTERNAL_PROVIDER -
-     * User signed in with a third-party IdP.</p> </li> <li> <p>ARCHIVED - User is no
-     * longer active.</p> </li> <li> <p>UNKNOWN - User status isn't known.</p> </li>
-     * <li> <p>RESET_REQUIRED - User is confirmed, but the user must request a code and
-     * reset their password before they can sign in.</p> </li> <li>
-     * <p>FORCE_CHANGE_PASSWORD - The user is confirmed and the user can sign in using
-     * a temporary password, but on first sign-in, the user must change their password
-     * to a new value before doing anything else. </p> </li> </ul>
+     * <p>The user's MFA configuration.</p>
      */
-    inline void SetUserStatus(const UserStatusType& value) { m_userStatusHasBeenSet = true; m_userStatus = value; }
-
-    /**
-     * <p>The user status. This can be one of the following:</p> <ul> <li>
-     * <p>UNCONFIRMED - User has been created but not confirmed.</p> </li> <li>
-     * <p>CONFIRMED - User has been confirmed.</p> </li> <li> <p>EXTERNAL_PROVIDER -
-     * User signed in with a third-party IdP.</p> </li> <li> <p>ARCHIVED - User is no
-     * longer active.</p> </li> <li> <p>UNKNOWN - User status isn't known.</p> </li>
-     * <li> <p>RESET_REQUIRED - User is confirmed, but the user must request a code and
-     * reset their password before they can sign in.</p> </li> <li>
-     * <p>FORCE_CHANGE_PASSWORD - The user is confirmed and the user can sign in using
-     * a temporary password, but on first sign-in, the user must change their password
-     * to a new value before doing anything else. </p> </li> </ul>
-     */
-    inline void SetUserStatus(UserStatusType&& value) { m_userStatusHasBeenSet = true; m_userStatus = std::move(value); }
-
-    /**
-     * <p>The user status. This can be one of the following:</p> <ul> <li>
-     * <p>UNCONFIRMED - User has been created but not confirmed.</p> </li> <li>
-     * <p>CONFIRMED - User has been confirmed.</p> </li> <li> <p>EXTERNAL_PROVIDER -
-     * User signed in with a third-party IdP.</p> </li> <li> <p>ARCHIVED - User is no
-     * longer active.</p> </li> <li> <p>UNKNOWN - User status isn't known.</p> </li>
-     * <li> <p>RESET_REQUIRED - User is confirmed, but the user must request a code and
-     * reset their password before they can sign in.</p> </li> <li>
-     * <p>FORCE_CHANGE_PASSWORD - The user is confirmed and the user can sign in using
-     * a temporary password, but on first sign-in, the user must change their password
-     * to a new value before doing anything else. </p> </li> </ul>
-     */
-    inline UserType& WithUserStatus(const UserStatusType& value) { SetUserStatus(value); return *this;}
-
-    /**
-     * <p>The user status. This can be one of the following:</p> <ul> <li>
-     * <p>UNCONFIRMED - User has been created but not confirmed.</p> </li> <li>
-     * <p>CONFIRMED - User has been confirmed.</p> </li> <li> <p>EXTERNAL_PROVIDER -
-     * User signed in with a third-party IdP.</p> </li> <li> <p>ARCHIVED - User is no
-     * longer active.</p> </li> <li> <p>UNKNOWN - User status isn't known.</p> </li>
-     * <li> <p>RESET_REQUIRED - User is confirmed, but the user must request a code and
-     * reset their password before they can sign in.</p> </li> <li>
-     * <p>FORCE_CHANGE_PASSWORD - The user is confirmed and the user can sign in using
-     * a temporary password, but on first sign-in, the user must change their password
-     * to a new value before doing anything else. </p> </li> </ul>
-     */
-    inline UserType& WithUserStatus(UserStatusType&& value) { SetUserStatus(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The MFA options for the user.</p>
-     */
-    inline const Aws::Vector<MFAOptionType>& GetMFAOptions() const{ return m_mFAOptions; }
-
-    /**
-     * <p>The MFA options for the user.</p>
-     */
+    inline const Aws::Vector<MFAOptionType>& GetMFAOptions() const { return m_mFAOptions; }
     inline bool MFAOptionsHasBeenSet() const { return m_mFAOptionsHasBeenSet; }
-
-    /**
-     * <p>The MFA options for the user.</p>
-     */
-    inline void SetMFAOptions(const Aws::Vector<MFAOptionType>& value) { m_mFAOptionsHasBeenSet = true; m_mFAOptions = value; }
-
-    /**
-     * <p>The MFA options for the user.</p>
-     */
-    inline void SetMFAOptions(Aws::Vector<MFAOptionType>&& value) { m_mFAOptionsHasBeenSet = true; m_mFAOptions = std::move(value); }
-
-    /**
-     * <p>The MFA options for the user.</p>
-     */
-    inline UserType& WithMFAOptions(const Aws::Vector<MFAOptionType>& value) { SetMFAOptions(value); return *this;}
-
-    /**
-     * <p>The MFA options for the user.</p>
-     */
-    inline UserType& WithMFAOptions(Aws::Vector<MFAOptionType>&& value) { SetMFAOptions(std::move(value)); return *this;}
-
-    /**
-     * <p>The MFA options for the user.</p>
-     */
-    inline UserType& AddMFAOptions(const MFAOptionType& value) { m_mFAOptionsHasBeenSet = true; m_mFAOptions.push_back(value); return *this; }
-
-    /**
-     * <p>The MFA options for the user.</p>
-     */
-    inline UserType& AddMFAOptions(MFAOptionType&& value) { m_mFAOptionsHasBeenSet = true; m_mFAOptions.push_back(std::move(value)); return *this; }
-
+    template<typename MFAOptionsT = Aws::Vector<MFAOptionType>>
+    void SetMFAOptions(MFAOptionsT&& value) { m_mFAOptionsHasBeenSet = true; m_mFAOptions = std::forward<MFAOptionsT>(value); }
+    template<typename MFAOptionsT = Aws::Vector<MFAOptionType>>
+    UserType& WithMFAOptions(MFAOptionsT&& value) { SetMFAOptions(std::forward<MFAOptionsT>(value)); return *this;}
+    template<typename MFAOptionsT = MFAOptionType>
+    UserType& AddMFAOptions(MFAOptionsT&& value) { m_mFAOptionsHasBeenSet = true; m_mFAOptions.emplace_back(std::forward<MFAOptionsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_username;
@@ -340,16 +147,16 @@ namespace Model
     Aws::Vector<AttributeType> m_attributes;
     bool m_attributesHasBeenSet = false;
 
-    Aws::Utils::DateTime m_userCreateDate;
+    Aws::Utils::DateTime m_userCreateDate{};
     bool m_userCreateDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_userLastModifiedDate;
+    Aws::Utils::DateTime m_userLastModifiedDate{};
     bool m_userLastModifiedDateHasBeenSet = false;
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
 
-    UserStatusType m_userStatus;
+    UserStatusType m_userStatus{UserStatusType::NOT_SET};
     bool m_userStatusHasBeenSet = false;
 
     Aws::Vector<MFAOptionType> m_mFAOptions;

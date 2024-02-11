@@ -21,7 +21,7 @@ namespace Model
   class DeleteGlobalNetworkRequest : public NetworkManagerRequest
   {
   public:
-    AWS_NETWORKMANAGER_API DeleteGlobalNetworkRequest();
+    AWS_NETWORKMANAGER_API DeleteGlobalNetworkRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_NETWORKMANAGER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the global network.</p>
      */
-    inline const Aws::String& GetGlobalNetworkId() const{ return m_globalNetworkId; }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
+    inline const Aws::String& GetGlobalNetworkId() const { return m_globalNetworkId; }
     inline bool GlobalNetworkIdHasBeenSet() const { return m_globalNetworkIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline void SetGlobalNetworkId(const Aws::String& value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId = value; }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline void SetGlobalNetworkId(Aws::String&& value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId = std::move(value); }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline void SetGlobalNetworkId(const char* value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId.assign(value); }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline DeleteGlobalNetworkRequest& WithGlobalNetworkId(const Aws::String& value) { SetGlobalNetworkId(value); return *this;}
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline DeleteGlobalNetworkRequest& WithGlobalNetworkId(Aws::String&& value) { SetGlobalNetworkId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline DeleteGlobalNetworkRequest& WithGlobalNetworkId(const char* value) { SetGlobalNetworkId(value); return *this;}
-
+    template<typename GlobalNetworkIdT = Aws::String>
+    void SetGlobalNetworkId(GlobalNetworkIdT&& value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId = std::forward<GlobalNetworkIdT>(value); }
+    template<typename GlobalNetworkIdT = Aws::String>
+    DeleteGlobalNetworkRequest& WithGlobalNetworkId(GlobalNetworkIdT&& value) { SetGlobalNetworkId(std::forward<GlobalNetworkIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_globalNetworkId;

@@ -17,10 +17,10 @@ namespace Amplify
 {
   /**
    * <p>Amplify enables developers to develop and deploy cloud-powered mobile and web
-   * apps. The Amplify Console provides a continuous delivery and hosting service for
-   * web applications. For more information, see the <a
+   * apps. Amplify Hosting provides a continuous delivery and hosting service for web
+   * applications. For more information, see the <a
    * href="https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html">Amplify
-   * Console User Guide</a>. The Amplify Framework is a comprehensive set of SDKs,
+   * Hosting User Guide</a>. The Amplify Framework is a comprehensive set of SDKs,
    * libraries, tools, and documentation for client app development. For more
    * information, see the <a href="https://docs.amplify.aws/">Amplify Framework.</a>
    * </p>
@@ -29,22 +29,25 @@ namespace Amplify
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef AmplifyClientConfiguration ClientConfigurationType;
+      typedef AmplifyEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         AmplifyClient(const Aws::Amplify::AmplifyClientConfiguration& clientConfiguration = Aws::Amplify::AmplifyClientConfiguration(),
-                      std::shared_ptr<AmplifyEndpointProviderBase> endpointProvider = Aws::MakeShared<AmplifyEndpointProvider>(ALLOCATION_TAG));
+                      std::shared_ptr<AmplifyEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         AmplifyClient(const Aws::Auth::AWSCredentials& credentials,
-                      std::shared_ptr<AmplifyEndpointProviderBase> endpointProvider = Aws::MakeShared<AmplifyEndpointProvider>(ALLOCATION_TAG),
+                      std::shared_ptr<AmplifyEndpointProviderBase> endpointProvider = nullptr,
                       const Aws::Amplify::AmplifyClientConfiguration& clientConfiguration = Aws::Amplify::AmplifyClientConfiguration());
 
        /**
@@ -52,7 +55,7 @@ namespace Amplify
         * the default http client factory will be used
         */
         AmplifyClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                      std::shared_ptr<AmplifyEndpointProviderBase> endpointProvider = Aws::MakeShared<AmplifyEndpointProvider>(ALLOCATION_TAG),
+                      std::shared_ptr<AmplifyEndpointProviderBase> endpointProvider = nullptr,
                       const Aws::Amplify::AmplifyClientConfiguration& clientConfiguration = Aws::Amplify::AmplifyClientConfiguration());
 
 
@@ -81,7 +84,7 @@ namespace Amplify
         virtual ~AmplifyClient();
 
         /**
-         * <p> Creates a new Amplify app. </p><p><h3>See Also:</h3>   <a
+         * <p>Creates a new Amplify app. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/CreateApp">AWS
          * API Reference</a></p>
          */
@@ -106,8 +109,12 @@ namespace Amplify
         }
 
         /**
-         * <p> Creates a new backend environment for an Amplify app. </p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Creates a new backend environment for an Amplify app. </p> <p>This API is
+         * available only to Amplify Gen 1 applications where the backend is created using
+         * Amplify Studio or the Amplify command line interface (CLI). This API isn’t
+         * available to Amplify Gen 2 applications. When you deploy an application with
+         * Amplify Gen 2, you provision the app's backend infrastructure using Typescript
+         * code.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/CreateBackendEnvironment">AWS
          * API Reference</a></p>
          */
@@ -157,8 +164,12 @@ namespace Amplify
         }
 
         /**
-         * <p> Creates a deployment for a manually deployed Amplify app. Manually deployed
-         * apps are not connected to a repository. </p><p><h3>See Also:</h3>   <a
+         * <p>Creates a deployment for a manually deployed Amplify app. Manually deployed
+         * apps are not connected to a Git repository. </p> <p>The maximum duration between
+         * the <code>CreateDeployment</code> call and the <code>StartDeployment</code> call
+         * cannot exceed 8 hours. If the duration exceeds 8 hours, the
+         * <code>StartDeployment</code> call and the associated <code>Job</code> will
+         * fail.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/CreateDeployment">AWS
          * API Reference</a></p>
          */
@@ -183,8 +194,8 @@ namespace Amplify
         }
 
         /**
-         * <p> Creates a new domain association for an Amplify app. This action associates
-         * a custom domain with the Amplify app </p><p><h3>See Also:</h3>   <a
+         * <p>Creates a new domain association for an Amplify app. This action associates a
+         * custom domain with the Amplify app </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/CreateDomainAssociation">AWS
          * API Reference</a></p>
          */
@@ -209,7 +220,7 @@ namespace Amplify
         }
 
         /**
-         * <p> Creates a new webhook on an Amplify app. </p><p><h3>See Also:</h3>   <a
+         * <p>Creates a new webhook on an Amplify app. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/CreateWebhook">AWS
          * API Reference</a></p>
          */
@@ -234,7 +245,7 @@ namespace Amplify
         }
 
         /**
-         * <p> Deletes an existing Amplify app specified by an app ID. </p><p><h3>See
+         * <p>Deletes an existing Amplify app specified by an app ID. </p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/DeleteApp">AWS
          * API Reference</a></p>
@@ -260,8 +271,12 @@ namespace Amplify
         }
 
         /**
-         * <p> Deletes a backend environment for an Amplify app. </p><p><h3>See Also:</h3> 
-         * <a
+         * <p>Deletes a backend environment for an Amplify app. </p> <p>This API is
+         * available only to Amplify Gen 1 applications where the backend is created using
+         * Amplify Studio or the Amplify command line interface (CLI). This API isn’t
+         * available to Amplify Gen 2 applications. When you deploy an application with
+         * Amplify Gen 2, you provision the app's backend infrastructure using Typescript
+         * code.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/DeleteBackendEnvironment">AWS
          * API Reference</a></p>
          */
@@ -311,7 +326,7 @@ namespace Amplify
         }
 
         /**
-         * <p> Deletes a domain association for an Amplify app. </p><p><h3>See Also:</h3>  
+         * <p>Deletes a domain association for an Amplify app. </p><p><h3>See Also:</h3>  
          * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/DeleteDomainAssociation">AWS
          * API Reference</a></p>
@@ -362,7 +377,7 @@ namespace Amplify
         }
 
         /**
-         * <p> Deletes a webhook. </p><p><h3>See Also:</h3>   <a
+         * <p>Deletes a webhook. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/DeleteWebhook">AWS
          * API Reference</a></p>
          */
@@ -387,7 +402,7 @@ namespace Amplify
         }
 
         /**
-         * <p> Returns the website access logs for a specific time range using a presigned
+         * <p>Returns the website access logs for a specific time range using a presigned
          * URL. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/GenerateAccessLogs">AWS
          * API Reference</a></p>
@@ -413,7 +428,8 @@ namespace Amplify
         }
 
         /**
-         * <p> Returns an existing Amplify app by appID. </p><p><h3>See Also:</h3>   <a
+         * <p>Returns an existing Amplify app specified by an app ID.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/GetApp">AWS API
          * Reference</a></p>
          */
@@ -438,7 +454,7 @@ namespace Amplify
         }
 
         /**
-         * <p> Returns the artifact info that corresponds to an artifact id. </p><p><h3>See
+         * <p>Returns the artifact info that corresponds to an artifact id. </p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/GetArtifactUrl">AWS
          * API Reference</a></p>
@@ -464,8 +480,12 @@ namespace Amplify
         }
 
         /**
-         * <p> Returns a backend environment for an Amplify app. </p><p><h3>See Also:</h3> 
-         * <a
+         * <p>Returns a backend environment for an Amplify app. </p> <p>This API is
+         * available only to Amplify Gen 1 applications where the backend is created using
+         * Amplify Studio or the Amplify command line interface (CLI). This API isn’t
+         * available to Amplify Gen 2 applications. When you deploy an application with
+         * Amplify Gen 2, you provision the app's backend infrastructure using Typescript
+         * code.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/GetBackendEnvironment">AWS
          * API Reference</a></p>
          */
@@ -515,7 +535,7 @@ namespace Amplify
         }
 
         /**
-         * <p> Returns the domain information for an Amplify app. </p><p><h3>See Also:</h3>
+         * <p>Returns the domain information for an Amplify app. </p><p><h3>See Also:</h3> 
          * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/GetDomainAssociation">AWS
          * API Reference</a></p>
@@ -566,7 +586,7 @@ namespace Amplify
         }
 
         /**
-         * <p> Returns the webhook information that corresponds to a specified webhook ID.
+         * <p>Returns the webhook information that corresponds to a specified webhook ID.
          * </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/GetWebhook">AWS
          * API Reference</a></p>
@@ -592,17 +612,17 @@ namespace Amplify
         }
 
         /**
-         * <p> Returns a list of the existing Amplify apps. </p><p><h3>See Also:</h3>   <a
+         * <p>Returns a list of the existing Amplify apps. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/ListApps">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListAppsOutcome ListApps(const Model::ListAppsRequest& request) const;
+        virtual Model::ListAppsOutcome ListApps(const Model::ListAppsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListApps that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListAppsRequestT = Model::ListAppsRequest>
-        Model::ListAppsOutcomeCallable ListAppsCallable(const ListAppsRequestT& request) const
+        Model::ListAppsOutcomeCallable ListAppsCallable(const ListAppsRequestT& request = {}) const
         {
             return SubmitCallable(&AmplifyClient::ListApps, request);
         }
@@ -611,14 +631,19 @@ namespace Amplify
          * An Async wrapper for ListApps that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListAppsRequestT = Model::ListAppsRequest>
-        void ListAppsAsync(const ListAppsRequestT& request, const ListAppsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListAppsAsync(const ListAppsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListAppsRequestT& request = {}) const
         {
             return SubmitAsync(&AmplifyClient::ListApps, request, handler, context);
         }
 
         /**
-         * <p> Returns a list of artifacts for a specified app, branch, and job.
-         * </p><p><h3>See Also:</h3>   <a
+         * <p>Returns a list of end-to-end testing artifacts for a specified app, branch,
+         * and job.</p> <p>To return the build artifacts, use the <a
+         * href="https://docs.aws.amazon.com/amplify/latest/APIReference/API_GetJob.html">GetJob</a>
+         * API.</p> <p>For more information about Amplify testing support, see <a
+         * href="https://docs.aws.amazon.com/amplify/latest/userguide/running-tests.html">Setting
+         * up end-to-end Cypress tests for your Amplify application</a> in the <i>Amplify
+         * Hosting User Guide</i>. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/ListArtifacts">AWS
          * API Reference</a></p>
          */
@@ -643,8 +668,12 @@ namespace Amplify
         }
 
         /**
-         * <p> Lists the backend environments for an Amplify app. </p><p><h3>See Also:</h3>
-         * <a
+         * <p>Lists the backend environments for an Amplify app. </p> <p>This API is
+         * available only to Amplify Gen 1 applications where the backend is created using
+         * Amplify Studio or the Amplify command line interface (CLI). This API isn’t
+         * available to Amplify Gen 2 applications. When you deploy an application with
+         * Amplify Gen 2, you provision the app's backend infrastructure using Typescript
+         * code.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/ListBackendEnvironments">AWS
          * API Reference</a></p>
          */
@@ -694,8 +723,8 @@ namespace Amplify
         }
 
         /**
-         * <p> Returns the domain associations for an Amplify app. </p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Returns the domain associations for an Amplify app. </p><p><h3>See Also:</h3>
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/ListDomainAssociations">AWS
          * API Reference</a></p>
          */
@@ -745,8 +774,8 @@ namespace Amplify
         }
 
         /**
-         * <p> Returns a list of tags for a specified Amazon Resource Name (ARN).
-         * </p><p><h3>See Also:</h3>   <a
+         * <p>Returns a list of tags for a specified Amazon Resource Name
+         * (ARN).</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/ListTagsForResource">AWS
          * API Reference</a></p>
          */
@@ -771,8 +800,7 @@ namespace Amplify
         }
 
         /**
-         * <p> Returns a list of webhooks for an Amplify app. </p><p><h3>See Also:</h3>  
-         * <a
+         * <p>Returns a list of webhooks for an Amplify app. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/ListWebhooks">AWS
          * API Reference</a></p>
          */
@@ -797,8 +825,12 @@ namespace Amplify
         }
 
         /**
-         * <p> Starts a deployment for a manually deployed app. Manually deployed apps are
-         * not connected to a repository. </p><p><h3>See Also:</h3>   <a
+         * <p>Starts a deployment for a manually deployed app. Manually deployed apps are
+         * not connected to a Git repository. </p> <p>The maximum duration between the
+         * <code>CreateDeployment</code> call and the <code>StartDeployment</code> call
+         * cannot exceed 8 hours. If the duration exceeds 8 hours, the
+         * <code>StartDeployment</code> call and the associated <code>Job</code> will
+         * fail.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/StartDeployment">AWS
          * API Reference</a></p>
          */
@@ -874,7 +906,7 @@ namespace Amplify
         }
 
         /**
-         * <p> Tags the resource with a tag key and value. </p><p><h3>See Also:</h3>   <a
+         * <p>Tags the resource with a tag key and value.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/TagResource">AWS
          * API Reference</a></p>
          */
@@ -899,8 +931,8 @@ namespace Amplify
         }
 
         /**
-         * <p> Untags a resource with a specified Amazon Resource Name (ARN).
-         * </p><p><h3>See Also:</h3>   <a
+         * <p>Untags a resource with a specified Amazon Resource Name (ARN).</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/UntagResource">AWS
          * API Reference</a></p>
          */
@@ -925,7 +957,7 @@ namespace Amplify
         }
 
         /**
-         * <p> Updates an existing Amplify app. </p><p><h3>See Also:</h3>   <a
+         * <p>Updates an existing Amplify app. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/UpdateApp">AWS
          * API Reference</a></p>
          */
@@ -975,8 +1007,8 @@ namespace Amplify
         }
 
         /**
-         * <p> Creates a new domain association for an Amplify app.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Creates a new domain association for an Amplify app.</p><p><h3>See Also:</h3>
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/UpdateDomainAssociation">AWS
          * API Reference</a></p>
          */
@@ -1001,7 +1033,7 @@ namespace Amplify
         }
 
         /**
-         * <p> Updates a webhook. </p><p><h3>See Also:</h3>   <a
+         * <p>Updates a webhook. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/UpdateWebhook">AWS
          * API Reference</a></p>
          */
@@ -1033,7 +1065,6 @@ namespace Amplify
       void init(const AmplifyClientConfiguration& clientConfiguration);
 
       AmplifyClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<AmplifyEndpointProviderBase> m_endpointProvider;
   };
 

@@ -33,36 +33,25 @@ namespace Model
   class PolicyStatus
   {
   public:
-    AWS_S3CONTROL_API PolicyStatus();
+    AWS_S3CONTROL_API PolicyStatus() = default;
     AWS_S3CONTROL_API PolicyStatus(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API PolicyStatus& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p/>
      */
-    inline bool GetIsPublic() const{ return m_isPublic; }
-
-    /**
-     * <p/>
-     */
+    inline bool GetIsPublic() const { return m_isPublic; }
     inline bool IsPublicHasBeenSet() const { return m_isPublicHasBeenSet; }
-
-    /**
-     * <p/>
-     */
     inline void SetIsPublic(bool value) { m_isPublicHasBeenSet = true; m_isPublic = value; }
-
-    /**
-     * <p/>
-     */
     inline PolicyStatus& WithIsPublic(bool value) { SetIsPublic(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_isPublic;
+    bool m_isPublic{false};
     bool m_isPublicHasBeenSet = false;
   };
 

@@ -21,7 +21,7 @@ namespace Model
   class ListTagsForResourceRequest : public MediaConvertRequest
   {
   public:
-    AWS_MEDIACONVERT_API ListTagsForResourceRequest();
+    AWS_MEDIACONVERT_API ListTagsForResourceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,54 +32,18 @@ namespace Model
     AWS_MEDIACONVERT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * The Amazon Resource Name (ARN) of the resource that you want to list tags for.
      * To get the ARN, send a GET request with the resource name.
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * The Amazon Resource Name (ARN) of the resource that you want to list tags for.
-     * To get the ARN, send a GET request with the resource name.
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
-
-    /**
-     * The Amazon Resource Name (ARN) of the resource that you want to list tags for.
-     * To get the ARN, send a GET request with the resource name.
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * The Amazon Resource Name (ARN) of the resource that you want to list tags for.
-     * To get the ARN, send a GET request with the resource name.
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) of the resource that you want to list tags for.
-     * To get the ARN, send a GET request with the resource name.
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) of the resource that you want to list tags for.
-     * To get the ARN, send a GET request with the resource name.
-     */
-    inline ListTagsForResourceRequest& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) of the resource that you want to list tags for.
-     * To get the ARN, send a GET request with the resource name.
-     */
-    inline ListTagsForResourceRequest& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) of the resource that you want to list tags for.
-     * To get the ARN, send a GET request with the resource name.
-     */
-    inline ListTagsForResourceRequest& WithArn(const char* value) { SetArn(value); return *this;}
-
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    ListTagsForResourceRequest& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;

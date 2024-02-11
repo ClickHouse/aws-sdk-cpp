@@ -35,110 +35,49 @@ namespace Model
   class InstanceGroup
   {
   public:
-    AWS_SAGEMAKER_API InstanceGroup();
+    AWS_SAGEMAKER_API InstanceGroup() = default;
     AWS_SAGEMAKER_API InstanceGroup(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API InstanceGroup& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the instance type of the instance group.</p>
      */
-    inline const TrainingInstanceType& GetInstanceType() const{ return m_instanceType; }
-
-    /**
-     * <p>Specifies the instance type of the instance group.</p>
-     */
+    inline TrainingInstanceType GetInstanceType() const { return m_instanceType; }
     inline bool InstanceTypeHasBeenSet() const { return m_instanceTypeHasBeenSet; }
+    inline void SetInstanceType(TrainingInstanceType value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
+    inline InstanceGroup& WithInstanceType(TrainingInstanceType value) { SetInstanceType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the instance type of the instance group.</p>
-     */
-    inline void SetInstanceType(const TrainingInstanceType& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
-
-    /**
-     * <p>Specifies the instance type of the instance group.</p>
-     */
-    inline void SetInstanceType(TrainingInstanceType&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
-
-    /**
-     * <p>Specifies the instance type of the instance group.</p>
-     */
-    inline InstanceGroup& WithInstanceType(const TrainingInstanceType& value) { SetInstanceType(value); return *this;}
-
-    /**
-     * <p>Specifies the instance type of the instance group.</p>
-     */
-    inline InstanceGroup& WithInstanceType(TrainingInstanceType&& value) { SetInstanceType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the number of instances of the instance group.</p>
      */
-    inline int GetInstanceCount() const{ return m_instanceCount; }
-
-    /**
-     * <p>Specifies the number of instances of the instance group.</p>
-     */
+    inline int GetInstanceCount() const { return m_instanceCount; }
     inline bool InstanceCountHasBeenSet() const { return m_instanceCountHasBeenSet; }
-
-    /**
-     * <p>Specifies the number of instances of the instance group.</p>
-     */
     inline void SetInstanceCount(int value) { m_instanceCountHasBeenSet = true; m_instanceCount = value; }
-
-    /**
-     * <p>Specifies the number of instances of the instance group.</p>
-     */
     inline InstanceGroup& WithInstanceCount(int value) { SetInstanceCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Specifies the name of the instance group.</p>
      */
-    inline const Aws::String& GetInstanceGroupName() const{ return m_instanceGroupName; }
-
-    /**
-     * <p>Specifies the name of the instance group.</p>
-     */
+    inline const Aws::String& GetInstanceGroupName() const { return m_instanceGroupName; }
     inline bool InstanceGroupNameHasBeenSet() const { return m_instanceGroupNameHasBeenSet; }
-
-    /**
-     * <p>Specifies the name of the instance group.</p>
-     */
-    inline void SetInstanceGroupName(const Aws::String& value) { m_instanceGroupNameHasBeenSet = true; m_instanceGroupName = value; }
-
-    /**
-     * <p>Specifies the name of the instance group.</p>
-     */
-    inline void SetInstanceGroupName(Aws::String&& value) { m_instanceGroupNameHasBeenSet = true; m_instanceGroupName = std::move(value); }
-
-    /**
-     * <p>Specifies the name of the instance group.</p>
-     */
-    inline void SetInstanceGroupName(const char* value) { m_instanceGroupNameHasBeenSet = true; m_instanceGroupName.assign(value); }
-
-    /**
-     * <p>Specifies the name of the instance group.</p>
-     */
-    inline InstanceGroup& WithInstanceGroupName(const Aws::String& value) { SetInstanceGroupName(value); return *this;}
-
-    /**
-     * <p>Specifies the name of the instance group.</p>
-     */
-    inline InstanceGroup& WithInstanceGroupName(Aws::String&& value) { SetInstanceGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the name of the instance group.</p>
-     */
-    inline InstanceGroup& WithInstanceGroupName(const char* value) { SetInstanceGroupName(value); return *this;}
-
+    template<typename InstanceGroupNameT = Aws::String>
+    void SetInstanceGroupName(InstanceGroupNameT&& value) { m_instanceGroupNameHasBeenSet = true; m_instanceGroupName = std::forward<InstanceGroupNameT>(value); }
+    template<typename InstanceGroupNameT = Aws::String>
+    InstanceGroup& WithInstanceGroupName(InstanceGroupNameT&& value) { SetInstanceGroupName(std::forward<InstanceGroupNameT>(value)); return *this;}
+    ///@}
   private:
 
-    TrainingInstanceType m_instanceType;
+    TrainingInstanceType m_instanceType{TrainingInstanceType::NOT_SET};
     bool m_instanceTypeHasBeenSet = false;
 
-    int m_instanceCount;
+    int m_instanceCount{0};
     bool m_instanceCountHasBeenSet = false;
 
     Aws::String m_instanceGroupName;

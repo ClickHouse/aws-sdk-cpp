@@ -10,16 +10,6 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-GetTemplateSummaryRequest::GetTemplateSummaryRequest() : 
-    m_templateBodyHasBeenSet(false),
-    m_templateURLHasBeenSet(false),
-    m_stackNameHasBeenSet(false),
-    m_stackSetNameHasBeenSet(false),
-    m_callAs(CallAs::NOT_SET),
-    m_callAsHasBeenSet(false)
-{
-}
-
 Aws::String GetTemplateSummaryRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -46,7 +36,12 @@ Aws::String GetTemplateSummaryRequest::SerializePayload() const
 
   if(m_callAsHasBeenSet)
   {
-    ss << "CallAs=" << CallAsMapper::GetNameForCallAs(m_callAs) << "&";
+    ss << "CallAs=" << StringUtils::URLEncode(CallAsMapper::GetNameForCallAs(m_callAs)) << "&";
+  }
+
+  if(m_templateSummaryConfigHasBeenSet)
+  {
+    m_templateSummaryConfig.OutputToStream(ss, "TemplateSummaryConfig");
   }
 
   ss << "Version=2010-05-15";

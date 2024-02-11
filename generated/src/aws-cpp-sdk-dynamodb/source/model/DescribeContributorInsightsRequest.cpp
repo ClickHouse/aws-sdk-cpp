@@ -12,12 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeContributorInsightsRequest::DescribeContributorInsightsRequest() : 
-    m_tableNameHasBeenSet(false),
-    m_indexNameHasBeenSet(false)
-{
-}
-
 Aws::String DescribeContributorInsightsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -46,5 +40,15 @@ Aws::Http::HeaderValueCollection DescribeContributorInsightsRequest::GetRequestS
 }
 
 
+
+DescribeContributorInsightsRequest::EndpointParameters DescribeContributorInsightsRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (TableNameHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetTableName(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

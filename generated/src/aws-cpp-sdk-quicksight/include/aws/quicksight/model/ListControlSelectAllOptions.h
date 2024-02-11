@@ -32,51 +32,25 @@ namespace Model
   class ListControlSelectAllOptions
   {
   public:
-    AWS_QUICKSIGHT_API ListControlSelectAllOptions();
+    AWS_QUICKSIGHT_API ListControlSelectAllOptions() = default;
     AWS_QUICKSIGHT_API ListControlSelectAllOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API ListControlSelectAllOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The visibility configuration of the <code>Select all</code> options in a list
      * control.</p>
      */
-    inline const Visibility& GetVisibility() const{ return m_visibility; }
-
-    /**
-     * <p>The visibility configuration of the <code>Select all</code> options in a list
-     * control.</p>
-     */
+    inline Visibility GetVisibility() const { return m_visibility; }
     inline bool VisibilityHasBeenSet() const { return m_visibilityHasBeenSet; }
-
-    /**
-     * <p>The visibility configuration of the <code>Select all</code> options in a list
-     * control.</p>
-     */
-    inline void SetVisibility(const Visibility& value) { m_visibilityHasBeenSet = true; m_visibility = value; }
-
-    /**
-     * <p>The visibility configuration of the <code>Select all</code> options in a list
-     * control.</p>
-     */
-    inline void SetVisibility(Visibility&& value) { m_visibilityHasBeenSet = true; m_visibility = std::move(value); }
-
-    /**
-     * <p>The visibility configuration of the <code>Select all</code> options in a list
-     * control.</p>
-     */
-    inline ListControlSelectAllOptions& WithVisibility(const Visibility& value) { SetVisibility(value); return *this;}
-
-    /**
-     * <p>The visibility configuration of the <code>Select all</code> options in a list
-     * control.</p>
-     */
-    inline ListControlSelectAllOptions& WithVisibility(Visibility&& value) { SetVisibility(std::move(value)); return *this;}
-
+    inline void SetVisibility(Visibility value) { m_visibilityHasBeenSet = true; m_visibility = value; }
+    inline ListControlSelectAllOptions& WithVisibility(Visibility value) { SetVisibility(value); return *this;}
+    ///@}
   private:
 
-    Visibility m_visibility;
+    Visibility m_visibility{Visibility::NOT_SET};
     bool m_visibilityHasBeenSet = false;
   };
 

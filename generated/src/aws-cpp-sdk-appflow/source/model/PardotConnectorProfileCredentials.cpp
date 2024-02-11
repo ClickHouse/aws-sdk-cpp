@@ -18,19 +18,7 @@ namespace Appflow
 namespace Model
 {
 
-PardotConnectorProfileCredentials::PardotConnectorProfileCredentials() : 
-    m_accessTokenHasBeenSet(false),
-    m_refreshTokenHasBeenSet(false),
-    m_oAuthRequestHasBeenSet(false),
-    m_clientCredentialsArnHasBeenSet(false)
-{
-}
-
-PardotConnectorProfileCredentials::PardotConnectorProfileCredentials(JsonView jsonValue) : 
-    m_accessTokenHasBeenSet(false),
-    m_refreshTokenHasBeenSet(false),
-    m_oAuthRequestHasBeenSet(false),
-    m_clientCredentialsArnHasBeenSet(false)
+PardotConnectorProfileCredentials::PardotConnectorProfileCredentials(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ PardotConnectorProfileCredentials& PardotConnectorProfileCredentials::operator =
   if(jsonValue.ValueExists("accessToken"))
   {
     m_accessToken = jsonValue.GetString("accessToken");
-
     m_accessTokenHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("refreshToken"))
   {
     m_refreshToken = jsonValue.GetString("refreshToken");
-
     m_refreshTokenHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("oAuthRequest"))
   {
     m_oAuthRequest = jsonValue.GetObject("oAuthRequest");
-
     m_oAuthRequestHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("clientCredentialsArn"))
   {
     m_clientCredentialsArn = jsonValue.GetString("clientCredentialsArn");
-
     m_clientCredentialsArnHasBeenSet = true;
   }
-
   return *this;
 }
 

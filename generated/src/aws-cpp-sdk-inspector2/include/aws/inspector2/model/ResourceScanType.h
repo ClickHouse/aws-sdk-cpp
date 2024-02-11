@@ -18,7 +18,9 @@ namespace Model
     NOT_SET,
     EC2,
     ECR,
-    LAMBDA
+    LAMBDA,
+    LAMBDA_CODE,
+    CODE_REPOSITORY
   };
 
 namespace ResourceScanTypeMapper

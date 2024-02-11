@@ -18,15 +18,7 @@ namespace DevOpsGuru
 namespace Model
 {
 
-PerformanceInsightsReferenceScalar::PerformanceInsightsReferenceScalar() : 
-    m_value(0.0),
-    m_valueHasBeenSet(false)
-{
-}
-
-PerformanceInsightsReferenceScalar::PerformanceInsightsReferenceScalar(JsonView jsonValue) : 
-    m_value(0.0),
-    m_valueHasBeenSet(false)
+PerformanceInsightsReferenceScalar::PerformanceInsightsReferenceScalar(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ PerformanceInsightsReferenceScalar& PerformanceInsightsReferenceScalar::operator
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetDouble("Value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

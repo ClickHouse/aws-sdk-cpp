@@ -25,7 +25,7 @@ namespace Model
   class ListLiveSourcesRequest : public MediaTailorRequest
   {
   public:
-    AWS_MEDIATAILOR_API ListLiveSourcesRequest();
+    AWS_MEDIATAILOR_API ListLiveSourcesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,131 +38,46 @@ namespace Model
     AWS_MEDIATAILOR_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The maximum number of live sources that you want MediaTailor to return in
      * response to the current request. If there are more than <code>MaxResults</code>
      * live sources, use the value of <code>NextToken</code> in the response to get the
      * next page of results.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of live sources that you want MediaTailor to return in
-     * response to the current request. If there are more than <code>MaxResults</code>
-     * live sources, use the value of <code>NextToken</code> in the response to get the
-     * next page of results.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of live sources that you want MediaTailor to return in
-     * response to the current request. If there are more than <code>MaxResults</code>
-     * live sources, use the value of <code>NextToken</code> in the response to get the
-     * next page of results.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of live sources that you want MediaTailor to return in
-     * response to the current request. If there are more than <code>MaxResults</code>
-     * live sources, use the value of <code>NextToken</code> in the response to get the
-     * next page of results.</p>
-     */
     inline ListLiveSourcesRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Pagination token returned by the list request when results exceed the maximum
      * allowed. Use the token to fetch the next page of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>Pagination token returned by the list request when results exceed the maximum
-     * allowed. Use the token to fetch the next page of results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListLiveSourcesRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Pagination token returned by the list request when results exceed the maximum
-     * allowed. Use the token to fetch the next page of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>Pagination token returned by the list request when results exceed the maximum
-     * allowed. Use the token to fetch the next page of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>Pagination token returned by the list request when results exceed the maximum
-     * allowed. Use the token to fetch the next page of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>Pagination token returned by the list request when results exceed the maximum
-     * allowed. Use the token to fetch the next page of results.</p>
-     */
-    inline ListLiveSourcesRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>Pagination token returned by the list request when results exceed the maximum
-     * allowed. Use the token to fetch the next page of results.</p>
-     */
-    inline ListLiveSourcesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Pagination token returned by the list request when results exceed the maximum
-     * allowed. Use the token to fetch the next page of results.</p>
-     */
-    inline ListLiveSourcesRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the source location associated with this Live Sources list.</p>
      */
-    inline const Aws::String& GetSourceLocationName() const{ return m_sourceLocationName; }
-
-    /**
-     * <p>The name of the source location associated with this Live Sources list.</p>
-     */
+    inline const Aws::String& GetSourceLocationName() const { return m_sourceLocationName; }
     inline bool SourceLocationNameHasBeenSet() const { return m_sourceLocationNameHasBeenSet; }
-
-    /**
-     * <p>The name of the source location associated with this Live Sources list.</p>
-     */
-    inline void SetSourceLocationName(const Aws::String& value) { m_sourceLocationNameHasBeenSet = true; m_sourceLocationName = value; }
-
-    /**
-     * <p>The name of the source location associated with this Live Sources list.</p>
-     */
-    inline void SetSourceLocationName(Aws::String&& value) { m_sourceLocationNameHasBeenSet = true; m_sourceLocationName = std::move(value); }
-
-    /**
-     * <p>The name of the source location associated with this Live Sources list.</p>
-     */
-    inline void SetSourceLocationName(const char* value) { m_sourceLocationNameHasBeenSet = true; m_sourceLocationName.assign(value); }
-
-    /**
-     * <p>The name of the source location associated with this Live Sources list.</p>
-     */
-    inline ListLiveSourcesRequest& WithSourceLocationName(const Aws::String& value) { SetSourceLocationName(value); return *this;}
-
-    /**
-     * <p>The name of the source location associated with this Live Sources list.</p>
-     */
-    inline ListLiveSourcesRequest& WithSourceLocationName(Aws::String&& value) { SetSourceLocationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the source location associated with this Live Sources list.</p>
-     */
-    inline ListLiveSourcesRequest& WithSourceLocationName(const char* value) { SetSourceLocationName(value); return *this;}
-
+    template<typename SourceLocationNameT = Aws::String>
+    void SetSourceLocationName(SourceLocationNameT&& value) { m_sourceLocationNameHasBeenSet = true; m_sourceLocationName = std::forward<SourceLocationNameT>(value); }
+    template<typename SourceLocationNameT = Aws::String>
+    ListLiveSourcesRequest& WithSourceLocationName(SourceLocationNameT&& value) { SetSourceLocationName(std::forward<SourceLocationNameT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

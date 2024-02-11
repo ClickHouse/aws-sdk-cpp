@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/ssm-sap/SsmSap_EXPORTS.h>
 #include <aws/ssm-sap/model/Component.h>
+#include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <utility>
 
@@ -28,68 +29,56 @@ namespace Model
   class GetComponentResult
   {
   public:
-    AWS_SSMSAP_API GetComponentResult();
+    AWS_SSMSAP_API GetComponentResult() = default;
     AWS_SSMSAP_API GetComponentResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SSMSAP_API GetComponentResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The component of an application registered with AWS Systems Manager for
      * SAP.</p>
      */
-    inline const Component& GetComponent() const{ return m_component; }
+    inline const Component& GetComponent() const { return m_component; }
+    template<typename ComponentT = Component>
+    void SetComponent(ComponentT&& value) { m_componentHasBeenSet = true; m_component = std::forward<ComponentT>(value); }
+    template<typename ComponentT = Component>
+    GetComponentResult& WithComponent(ComponentT&& value) { SetComponent(std::forward<ComponentT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The component of an application registered with AWS Systems Manager for
-     * SAP.</p>
+     * <p>The tags of a component.</p>
      */
-    inline void SetComponent(const Component& value) { m_component = value; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    GetComponentResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    GetComponentResult& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The component of an application registered with AWS Systems Manager for
-     * SAP.</p>
-     */
-    inline void SetComponent(Component&& value) { m_component = std::move(value); }
-
-    /**
-     * <p>The component of an application registered with AWS Systems Manager for
-     * SAP.</p>
-     */
-    inline GetComponentResult& WithComponent(const Component& value) { SetComponent(value); return *this;}
-
-    /**
-     * <p>The component of an application registered with AWS Systems Manager for
-     * SAP.</p>
-     */
-    inline GetComponentResult& WithComponent(Component&& value) { SetComponent(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetComponentResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetComponentResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetComponentResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetComponentResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Component m_component;
+    bool m_componentHasBeenSet = false;
+
+    Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

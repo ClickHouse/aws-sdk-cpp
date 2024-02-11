@@ -24,7 +24,7 @@ namespace Model
 {
 
   /**
-   * <p>The retention policy for data stored on an Amazon Elastic File System (EFS)
+   * <p>The retention policy for data stored on an Amazon Elastic File System
    * volume.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/RetentionPolicy">AWS
    * API Reference</a></p>
@@ -32,57 +32,26 @@ namespace Model
   class RetentionPolicy
   {
   public:
-    AWS_SAGEMAKER_API RetentionPolicy();
+    AWS_SAGEMAKER_API RetentionPolicy() = default;
     AWS_SAGEMAKER_API RetentionPolicy(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API RetentionPolicy& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The default is <code>Retain</code>, which specifies to keep the data stored
-     * on the EFS volume.</p> <p>Specify <code>Delete</code> to delete the data stored
-     * on the EFS volume.</p>
+     * on the Amazon EFS volume.</p> <p>Specify <code>Delete</code> to delete the data
+     * stored on the Amazon EFS volume.</p>
      */
-    inline const RetentionType& GetHomeEfsFileSystem() const{ return m_homeEfsFileSystem; }
-
-    /**
-     * <p>The default is <code>Retain</code>, which specifies to keep the data stored
-     * on the EFS volume.</p> <p>Specify <code>Delete</code> to delete the data stored
-     * on the EFS volume.</p>
-     */
+    inline RetentionType GetHomeEfsFileSystem() const { return m_homeEfsFileSystem; }
     inline bool HomeEfsFileSystemHasBeenSet() const { return m_homeEfsFileSystemHasBeenSet; }
-
-    /**
-     * <p>The default is <code>Retain</code>, which specifies to keep the data stored
-     * on the EFS volume.</p> <p>Specify <code>Delete</code> to delete the data stored
-     * on the EFS volume.</p>
-     */
-    inline void SetHomeEfsFileSystem(const RetentionType& value) { m_homeEfsFileSystemHasBeenSet = true; m_homeEfsFileSystem = value; }
-
-    /**
-     * <p>The default is <code>Retain</code>, which specifies to keep the data stored
-     * on the EFS volume.</p> <p>Specify <code>Delete</code> to delete the data stored
-     * on the EFS volume.</p>
-     */
-    inline void SetHomeEfsFileSystem(RetentionType&& value) { m_homeEfsFileSystemHasBeenSet = true; m_homeEfsFileSystem = std::move(value); }
-
-    /**
-     * <p>The default is <code>Retain</code>, which specifies to keep the data stored
-     * on the EFS volume.</p> <p>Specify <code>Delete</code> to delete the data stored
-     * on the EFS volume.</p>
-     */
-    inline RetentionPolicy& WithHomeEfsFileSystem(const RetentionType& value) { SetHomeEfsFileSystem(value); return *this;}
-
-    /**
-     * <p>The default is <code>Retain</code>, which specifies to keep the data stored
-     * on the EFS volume.</p> <p>Specify <code>Delete</code> to delete the data stored
-     * on the EFS volume.</p>
-     */
-    inline RetentionPolicy& WithHomeEfsFileSystem(RetentionType&& value) { SetHomeEfsFileSystem(std::move(value)); return *this;}
-
+    inline void SetHomeEfsFileSystem(RetentionType value) { m_homeEfsFileSystemHasBeenSet = true; m_homeEfsFileSystem = value; }
+    inline RetentionPolicy& WithHomeEfsFileSystem(RetentionType value) { SetHomeEfsFileSystem(value); return *this;}
+    ///@}
   private:
 
-    RetentionType m_homeEfsFileSystem;
+    RetentionType m_homeEfsFileSystem{RetentionType::NOT_SET};
     bool m_homeEfsFileSystemHasBeenSet = false;
   };
 

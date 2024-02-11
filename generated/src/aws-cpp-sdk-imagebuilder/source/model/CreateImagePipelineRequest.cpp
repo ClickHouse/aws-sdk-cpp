@@ -12,26 +12,6 @@ using namespace Aws::imagebuilder::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateImagePipelineRequest::CreateImagePipelineRequest() : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_imageRecipeArnHasBeenSet(false),
-    m_containerRecipeArnHasBeenSet(false),
-    m_infrastructureConfigurationArnHasBeenSet(false),
-    m_distributionConfigurationArnHasBeenSet(false),
-    m_imageTestsConfigurationHasBeenSet(false),
-    m_enhancedImageMetadataEnabled(false),
-    m_enhancedImageMetadataEnabledHasBeenSet(false),
-    m_scheduleHasBeenSet(false),
-    m_status(PipelineStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_imageScanningConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String CreateImagePipelineRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -115,6 +95,23 @@ Aws::String CreateImagePipelineRequest::SerializePayload() const
   if(m_imageScanningConfigurationHasBeenSet)
   {
    payload.WithObject("imageScanningConfiguration", m_imageScanningConfiguration.Jsonize());
+
+  }
+
+  if(m_workflowsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> workflowsJsonList(m_workflows.size());
+   for(unsigned workflowsIndex = 0; workflowsIndex < workflowsJsonList.GetLength(); ++workflowsIndex)
+   {
+     workflowsJsonList[workflowsIndex].AsObject(m_workflows[workflowsIndex].Jsonize());
+   }
+   payload.WithArray("workflows", std::move(workflowsJsonList));
+
+  }
+
+  if(m_executionRoleHasBeenSet)
+  {
+   payload.WithString("executionRole", m_executionRole);
 
   }
 

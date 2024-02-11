@@ -12,18 +12,15 @@ using namespace Aws::CloudWatchRUM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutRumEventsRequest::PutRumEventsRequest() : 
-    m_appMonitorDetailsHasBeenSet(false),
-    m_batchIdHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_rumEventsHasBeenSet(false),
-    m_userDetailsHasBeenSet(false)
-{
-}
-
 Aws::String PutRumEventsRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_aliasHasBeenSet)
+  {
+   payload.WithString("Alias", m_alias);
+
+  }
 
   if(m_appMonitorDetailsHasBeenSet)
   {

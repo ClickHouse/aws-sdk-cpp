@@ -29,39 +29,25 @@ namespace Model
   class DvbTdtSettings
   {
   public:
-    AWS_MEDIALIVE_API DvbTdtSettings();
+    AWS_MEDIALIVE_API DvbTdtSettings() = default;
     AWS_MEDIALIVE_API DvbTdtSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API DvbTdtSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * The number of milliseconds between instances of this table in the output
      * transport stream.
      */
-    inline int GetRepInterval() const{ return m_repInterval; }
-
-    /**
-     * The number of milliseconds between instances of this table in the output
-     * transport stream.
-     */
+    inline int GetRepInterval() const { return m_repInterval; }
     inline bool RepIntervalHasBeenSet() const { return m_repIntervalHasBeenSet; }
-
-    /**
-     * The number of milliseconds between instances of this table in the output
-     * transport stream.
-     */
     inline void SetRepInterval(int value) { m_repIntervalHasBeenSet = true; m_repInterval = value; }
-
-    /**
-     * The number of milliseconds between instances of this table in the output
-     * transport stream.
-     */
     inline DvbTdtSettings& WithRepInterval(int value) { SetRepInterval(value); return *this;}
-
+    ///@}
   private:
 
-    int m_repInterval;
+    int m_repInterval{0};
     bool m_repIntervalHasBeenSet = false;
   };
 

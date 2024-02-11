@@ -18,15 +18,7 @@ namespace MigrationHub
 namespace Model
 {
 
-CreatedArtifact::CreatedArtifact() : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
-{
-}
-
-CreatedArtifact::CreatedArtifact(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
+CreatedArtifact::CreatedArtifact(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ CreatedArtifact& CreatedArtifact::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   return *this;
 }
 

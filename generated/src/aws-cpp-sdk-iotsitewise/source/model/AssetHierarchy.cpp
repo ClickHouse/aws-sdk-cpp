@@ -18,15 +18,7 @@ namespace IoTSiteWise
 namespace Model
 {
 
-AssetHierarchy::AssetHierarchy() : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-AssetHierarchy::AssetHierarchy(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false)
+AssetHierarchy::AssetHierarchy(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ AssetHierarchy& AssetHierarchy::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("externalId"))
+  {
+    m_externalId = jsonValue.GetString("externalId");
+    m_externalIdHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -57,6 +50,12 @@ JsonValue AssetHierarchy::Jsonize() const
   if(m_idHasBeenSet)
   {
    payload.WithString("id", m_id);
+
+  }
+
+  if(m_externalIdHasBeenSet)
+  {
+   payload.WithString("externalId", m_externalId);
 
   }
 

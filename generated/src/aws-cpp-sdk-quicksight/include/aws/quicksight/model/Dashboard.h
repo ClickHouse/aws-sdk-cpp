@@ -8,6 +8,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/quicksight/model/DashboardVersion.h>
 #include <aws/core/utils/DateTime.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <utility>
 
 namespace Aws
@@ -33,258 +34,110 @@ namespace Model
   class Dashboard
   {
   public:
-    AWS_QUICKSIGHT_API Dashboard();
+    AWS_QUICKSIGHT_API Dashboard() = default;
     AWS_QUICKSIGHT_API Dashboard(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Dashboard& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Dashboard ID.</p>
      */
-    inline const Aws::String& GetDashboardId() const{ return m_dashboardId; }
-
-    /**
-     * <p>Dashboard ID.</p>
-     */
+    inline const Aws::String& GetDashboardId() const { return m_dashboardId; }
     inline bool DashboardIdHasBeenSet() const { return m_dashboardIdHasBeenSet; }
+    template<typename DashboardIdT = Aws::String>
+    void SetDashboardId(DashboardIdT&& value) { m_dashboardIdHasBeenSet = true; m_dashboardId = std::forward<DashboardIdT>(value); }
+    template<typename DashboardIdT = Aws::String>
+    Dashboard& WithDashboardId(DashboardIdT&& value) { SetDashboardId(std::forward<DashboardIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Dashboard ID.</p>
-     */
-    inline void SetDashboardId(const Aws::String& value) { m_dashboardIdHasBeenSet = true; m_dashboardId = value; }
-
-    /**
-     * <p>Dashboard ID.</p>
-     */
-    inline void SetDashboardId(Aws::String&& value) { m_dashboardIdHasBeenSet = true; m_dashboardId = std::move(value); }
-
-    /**
-     * <p>Dashboard ID.</p>
-     */
-    inline void SetDashboardId(const char* value) { m_dashboardIdHasBeenSet = true; m_dashboardId.assign(value); }
-
-    /**
-     * <p>Dashboard ID.</p>
-     */
-    inline Dashboard& WithDashboardId(const Aws::String& value) { SetDashboardId(value); return *this;}
-
-    /**
-     * <p>Dashboard ID.</p>
-     */
-    inline Dashboard& WithDashboardId(Aws::String&& value) { SetDashboardId(std::move(value)); return *this;}
-
-    /**
-     * <p>Dashboard ID.</p>
-     */
-    inline Dashboard& WithDashboardId(const char* value) { SetDashboardId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the resource.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    Dashboard& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline Dashboard& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline Dashboard& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline Dashboard& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A display name for the dashboard.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A display name for the dashboard.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Dashboard& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A display name for the dashboard.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A display name for the dashboard.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A display name for the dashboard.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A display name for the dashboard.</p>
-     */
-    inline Dashboard& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A display name for the dashboard.</p>
-     */
-    inline Dashboard& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A display name for the dashboard.</p>
-     */
-    inline Dashboard& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Version.</p>
      */
-    inline const DashboardVersion& GetVersion() const{ return m_version; }
-
-    /**
-     * <p>Version.</p>
-     */
+    inline const DashboardVersion& GetVersion() const { return m_version; }
     inline bool VersionHasBeenSet() const { return m_versionHasBeenSet; }
+    template<typename VersionT = DashboardVersion>
+    void SetVersion(VersionT&& value) { m_versionHasBeenSet = true; m_version = std::forward<VersionT>(value); }
+    template<typename VersionT = DashboardVersion>
+    Dashboard& WithVersion(VersionT&& value) { SetVersion(std::forward<VersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Version.</p>
-     */
-    inline void SetVersion(const DashboardVersion& value) { m_versionHasBeenSet = true; m_version = value; }
-
-    /**
-     * <p>Version.</p>
-     */
-    inline void SetVersion(DashboardVersion&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
-
-    /**
-     * <p>Version.</p>
-     */
-    inline Dashboard& WithVersion(const DashboardVersion& value) { SetVersion(value); return *this;}
-
-    /**
-     * <p>Version.</p>
-     */
-    inline Dashboard& WithVersion(DashboardVersion&& value) { SetVersion(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time that this dashboard was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTime() const{ return m_createdTime; }
-
-    /**
-     * <p>The time that this dashboard was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedTime() const { return m_createdTime; }
     inline bool CreatedTimeHasBeenSet() const { return m_createdTimeHasBeenSet; }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    Dashboard& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time that this dashboard was created.</p>
-     */
-    inline void SetCreatedTime(const Aws::Utils::DateTime& value) { m_createdTimeHasBeenSet = true; m_createdTime = value; }
-
-    /**
-     * <p>The time that this dashboard was created.</p>
-     */
-    inline void SetCreatedTime(Aws::Utils::DateTime&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::move(value); }
-
-    /**
-     * <p>The time that this dashboard was created.</p>
-     */
-    inline Dashboard& WithCreatedTime(const Aws::Utils::DateTime& value) { SetCreatedTime(value); return *this;}
-
-    /**
-     * <p>The time that this dashboard was created.</p>
-     */
-    inline Dashboard& WithCreatedTime(Aws::Utils::DateTime&& value) { SetCreatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The last time that this dashboard was published.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastPublishedTime() const{ return m_lastPublishedTime; }
-
-    /**
-     * <p>The last time that this dashboard was published.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastPublishedTime() const { return m_lastPublishedTime; }
     inline bool LastPublishedTimeHasBeenSet() const { return m_lastPublishedTimeHasBeenSet; }
+    template<typename LastPublishedTimeT = Aws::Utils::DateTime>
+    void SetLastPublishedTime(LastPublishedTimeT&& value) { m_lastPublishedTimeHasBeenSet = true; m_lastPublishedTime = std::forward<LastPublishedTimeT>(value); }
+    template<typename LastPublishedTimeT = Aws::Utils::DateTime>
+    Dashboard& WithLastPublishedTime(LastPublishedTimeT&& value) { SetLastPublishedTime(std::forward<LastPublishedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The last time that this dashboard was published.</p>
-     */
-    inline void SetLastPublishedTime(const Aws::Utils::DateTime& value) { m_lastPublishedTimeHasBeenSet = true; m_lastPublishedTime = value; }
-
-    /**
-     * <p>The last time that this dashboard was published.</p>
-     */
-    inline void SetLastPublishedTime(Aws::Utils::DateTime&& value) { m_lastPublishedTimeHasBeenSet = true; m_lastPublishedTime = std::move(value); }
-
-    /**
-     * <p>The last time that this dashboard was published.</p>
-     */
-    inline Dashboard& WithLastPublishedTime(const Aws::Utils::DateTime& value) { SetLastPublishedTime(value); return *this;}
-
-    /**
-     * <p>The last time that this dashboard was published.</p>
-     */
-    inline Dashboard& WithLastPublishedTime(Aws::Utils::DateTime&& value) { SetLastPublishedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The last time that this dashboard was updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const{ return m_lastUpdatedTime; }
-
-    /**
-     * <p>The last time that this dashboard was updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const { return m_lastUpdatedTime; }
     inline bool LastUpdatedTimeHasBeenSet() const { return m_lastUpdatedTimeHasBeenSet; }
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    void SetLastUpdatedTime(LastUpdatedTimeT&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::forward<LastUpdatedTimeT>(value); }
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    Dashboard& WithLastUpdatedTime(LastUpdatedTimeT&& value) { SetLastUpdatedTime(std::forward<LastUpdatedTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The last time that this dashboard was updated.</p>
+     * <p>A list of analysis Amazon Resource Names (ARNs) to be linked to the
+     * dashboard.</p>
      */
-    inline void SetLastUpdatedTime(const Aws::Utils::DateTime& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = value; }
-
-    /**
-     * <p>The last time that this dashboard was updated.</p>
-     */
-    inline void SetLastUpdatedTime(Aws::Utils::DateTime&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::move(value); }
-
-    /**
-     * <p>The last time that this dashboard was updated.</p>
-     */
-    inline Dashboard& WithLastUpdatedTime(const Aws::Utils::DateTime& value) { SetLastUpdatedTime(value); return *this;}
-
-    /**
-     * <p>The last time that this dashboard was updated.</p>
-     */
-    inline Dashboard& WithLastUpdatedTime(Aws::Utils::DateTime&& value) { SetLastUpdatedTime(std::move(value)); return *this;}
-
+    inline const Aws::Vector<Aws::String>& GetLinkEntities() const { return m_linkEntities; }
+    inline bool LinkEntitiesHasBeenSet() const { return m_linkEntitiesHasBeenSet; }
+    template<typename LinkEntitiesT = Aws::Vector<Aws::String>>
+    void SetLinkEntities(LinkEntitiesT&& value) { m_linkEntitiesHasBeenSet = true; m_linkEntities = std::forward<LinkEntitiesT>(value); }
+    template<typename LinkEntitiesT = Aws::Vector<Aws::String>>
+    Dashboard& WithLinkEntities(LinkEntitiesT&& value) { SetLinkEntities(std::forward<LinkEntitiesT>(value)); return *this;}
+    template<typename LinkEntitiesT = Aws::String>
+    Dashboard& AddLinkEntities(LinkEntitiesT&& value) { m_linkEntitiesHasBeenSet = true; m_linkEntities.emplace_back(std::forward<LinkEntitiesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_dashboardId;
@@ -299,14 +152,17 @@ namespace Model
     DashboardVersion m_version;
     bool m_versionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTime;
+    Aws::Utils::DateTime m_createdTime{};
     bool m_createdTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastPublishedTime;
+    Aws::Utils::DateTime m_lastPublishedTime{};
     bool m_lastPublishedTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedTime;
+    Aws::Utils::DateTime m_lastUpdatedTime{};
     bool m_lastUpdatedTimeHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_linkEntities;
+    bool m_linkEntitiesHasBeenSet = false;
   };
 
 } // namespace Model

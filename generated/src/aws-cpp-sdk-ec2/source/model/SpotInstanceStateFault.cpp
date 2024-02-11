@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-SpotInstanceStateFault::SpotInstanceStateFault() : 
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-SpotInstanceStateFault::SpotInstanceStateFault(const XmlNode& xmlNode) : 
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+SpotInstanceStateFault::SpotInstanceStateFault(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

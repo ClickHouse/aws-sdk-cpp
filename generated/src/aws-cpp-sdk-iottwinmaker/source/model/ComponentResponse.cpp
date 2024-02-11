@@ -18,27 +18,7 @@ namespace IoTTwinMaker
 namespace Model
 {
 
-ComponentResponse::ComponentResponse() : 
-    m_componentNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_componentTypeIdHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_definedInHasBeenSet(false),
-    m_propertiesHasBeenSet(false),
-    m_propertyGroupsHasBeenSet(false),
-    m_syncSourceHasBeenSet(false)
-{
-}
-
-ComponentResponse::ComponentResponse(JsonView jsonValue) : 
-    m_componentNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_componentTypeIdHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_definedInHasBeenSet(false),
-    m_propertiesHasBeenSet(false),
-    m_propertyGroupsHasBeenSet(false),
-    m_syncSourceHasBeenSet(false)
+ComponentResponse::ComponentResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,38 +28,28 @@ ComponentResponse& ComponentResponse::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("componentName"))
   {
     m_componentName = jsonValue.GetString("componentName");
-
     m_componentNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("componentTypeId"))
   {
     m_componentTypeId = jsonValue.GetString("componentTypeId");
-
     m_componentTypeIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = jsonValue.GetObject("status");
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("definedIn"))
   {
     m_definedIn = jsonValue.GetString("definedIn");
-
     m_definedInHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("properties"))
   {
     Aws::Map<Aws::String, JsonView> propertiesJsonMap = jsonValue.GetObject("properties").GetAllObjects();
@@ -89,7 +59,6 @@ ComponentResponse& ComponentResponse::operator =(JsonView jsonValue)
     }
     m_propertiesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("propertyGroups"))
   {
     Aws::Map<Aws::String, JsonView> propertyGroupsJsonMap = jsonValue.GetObject("propertyGroups").GetAllObjects();
@@ -99,14 +68,30 @@ ComponentResponse& ComponentResponse::operator =(JsonView jsonValue)
     }
     m_propertyGroupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("syncSource"))
   {
     m_syncSource = jsonValue.GetString("syncSource");
-
     m_syncSourceHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("areAllPropertiesReturned"))
+  {
+    m_areAllPropertiesReturned = jsonValue.GetBool("areAllPropertiesReturned");
+    m_areAllPropertiesReturnedHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("compositeComponents"))
+  {
+    Aws::Map<Aws::String, JsonView> compositeComponentsJsonMap = jsonValue.GetObject("compositeComponents").GetAllObjects();
+    for(auto& compositeComponentsItem : compositeComponentsJsonMap)
+    {
+      m_compositeComponents[compositeComponentsItem.first] = compositeComponentsItem.second.AsObject();
+    }
+    m_compositeComponentsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("areAllCompositeComponentsReturned"))
+  {
+    m_areAllCompositeComponentsReturned = jsonValue.GetBool("areAllCompositeComponentsReturned");
+    m_areAllCompositeComponentsReturnedHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -169,6 +154,29 @@ JsonValue ComponentResponse::Jsonize() const
   if(m_syncSourceHasBeenSet)
   {
    payload.WithString("syncSource", m_syncSource);
+
+  }
+
+  if(m_areAllPropertiesReturnedHasBeenSet)
+  {
+   payload.WithBool("areAllPropertiesReturned", m_areAllPropertiesReturned);
+
+  }
+
+  if(m_compositeComponentsHasBeenSet)
+  {
+   JsonValue compositeComponentsJsonMap;
+   for(auto& compositeComponentsItem : m_compositeComponents)
+   {
+     compositeComponentsJsonMap.WithObject(compositeComponentsItem.first, compositeComponentsItem.second.Jsonize());
+   }
+   payload.WithObject("compositeComponents", std::move(compositeComponentsJsonMap));
+
+  }
+
+  if(m_areAllCompositeComponentsReturnedHasBeenSet)
+  {
+   payload.WithBool("areAllCompositeComponentsReturned", m_areAllCompositeComponentsReturned);
 
   }
 

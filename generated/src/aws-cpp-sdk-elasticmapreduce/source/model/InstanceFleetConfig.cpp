@@ -18,31 +18,7 @@ namespace EMR
 namespace Model
 {
 
-InstanceFleetConfig::InstanceFleetConfig() : 
-    m_nameHasBeenSet(false),
-    m_instanceFleetType(InstanceFleetType::NOT_SET),
-    m_instanceFleetTypeHasBeenSet(false),
-    m_targetOnDemandCapacity(0),
-    m_targetOnDemandCapacityHasBeenSet(false),
-    m_targetSpotCapacity(0),
-    m_targetSpotCapacityHasBeenSet(false),
-    m_instanceTypeConfigsHasBeenSet(false),
-    m_launchSpecificationsHasBeenSet(false),
-    m_resizeSpecificationsHasBeenSet(false)
-{
-}
-
-InstanceFleetConfig::InstanceFleetConfig(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_instanceFleetType(InstanceFleetType::NOT_SET),
-    m_instanceFleetTypeHasBeenSet(false),
-    m_targetOnDemandCapacity(0),
-    m_targetOnDemandCapacityHasBeenSet(false),
-    m_targetSpotCapacity(0),
-    m_targetSpotCapacityHasBeenSet(false),
-    m_instanceTypeConfigsHasBeenSet(false),
-    m_launchSpecificationsHasBeenSet(false),
-    m_resizeSpecificationsHasBeenSet(false)
+InstanceFleetConfig::InstanceFleetConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -52,31 +28,23 @@ InstanceFleetConfig& InstanceFleetConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InstanceFleetType"))
   {
     m_instanceFleetType = InstanceFleetTypeMapper::GetInstanceFleetTypeForName(jsonValue.GetString("InstanceFleetType"));
-
     m_instanceFleetTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TargetOnDemandCapacity"))
   {
     m_targetOnDemandCapacity = jsonValue.GetInteger("TargetOnDemandCapacity");
-
     m_targetOnDemandCapacityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TargetSpotCapacity"))
   {
     m_targetSpotCapacity = jsonValue.GetInteger("TargetSpotCapacity");
-
     m_targetSpotCapacityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InstanceTypeConfigs"))
   {
     Aws::Utils::Array<JsonView> instanceTypeConfigsJsonList = jsonValue.GetArray("InstanceTypeConfigs");
@@ -86,21 +54,21 @@ InstanceFleetConfig& InstanceFleetConfig::operator =(JsonView jsonValue)
     }
     m_instanceTypeConfigsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LaunchSpecifications"))
   {
     m_launchSpecifications = jsonValue.GetObject("LaunchSpecifications");
-
     m_launchSpecificationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResizeSpecifications"))
   {
     m_resizeSpecifications = jsonValue.GetObject("ResizeSpecifications");
-
     m_resizeSpecificationsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Context"))
+  {
+    m_context = jsonValue.GetString("Context");
+    m_contextHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -151,6 +119,12 @@ JsonValue InstanceFleetConfig::Jsonize() const
   if(m_resizeSpecificationsHasBeenSet)
   {
    payload.WithObject("ResizeSpecifications", m_resizeSpecifications.Jsonize());
+
+  }
+
+  if(m_contextHasBeenSet)
+  {
+   payload.WithString("Context", m_context);
 
   }
 

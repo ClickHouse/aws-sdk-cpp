@@ -31,93 +31,35 @@ namespace Model
   class AwsElbv2LoadBalancerAttribute
   {
   public:
-    AWS_SECURITYHUB_API AwsElbv2LoadBalancerAttribute();
+    AWS_SECURITYHUB_API AwsElbv2LoadBalancerAttribute() = default;
     AWS_SECURITYHUB_API AwsElbv2LoadBalancerAttribute(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsElbv2LoadBalancerAttribute& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the load balancer attribute.</p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The name of the load balancer attribute.</p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    AwsElbv2LoadBalancerAttribute& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the load balancer attribute.</p>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The name of the load balancer attribute.</p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The name of the load balancer attribute.</p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>The name of the load balancer attribute.</p>
-     */
-    inline AwsElbv2LoadBalancerAttribute& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The name of the load balancer attribute.</p>
-     */
-    inline AwsElbv2LoadBalancerAttribute& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the load balancer attribute.</p>
-     */
-    inline AwsElbv2LoadBalancerAttribute& WithKey(const char* value) { SetKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of the load balancer attribute.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the load balancer attribute.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value of the load balancer attribute.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the load balancer attribute.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of the load balancer attribute.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The value of the load balancer attribute.</p>
-     */
-    inline AwsElbv2LoadBalancerAttribute& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of the load balancer attribute.</p>
-     */
-    inline AwsElbv2LoadBalancerAttribute& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value of the load balancer attribute.</p>
-     */
-    inline AwsElbv2LoadBalancerAttribute& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    AwsElbv2LoadBalancerAttribute& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_key;

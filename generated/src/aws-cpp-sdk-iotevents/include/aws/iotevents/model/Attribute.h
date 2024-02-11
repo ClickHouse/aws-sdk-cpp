@@ -36,12 +36,13 @@ namespace Model
   class Attribute
   {
   public:
-    AWS_IOTEVENTS_API Attribute();
+    AWS_IOTEVENTS_API Attribute() = default;
     AWS_IOTEVENTS_API Attribute(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API Attribute& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An expression that specifies an attribute-value pair in a JSON structure. Use
      * this to specify an attribute from the JSON payload that is made available by the
@@ -51,85 +52,13 @@ namespace Model
      * <code>condition</code> expressions used by detectors. </p> <p>Syntax:
      * <code>&lt;field-name&gt;.&lt;field-name&gt;...</code> </p>
      */
-    inline const Aws::String& GetJsonPath() const{ return m_jsonPath; }
-
-    /**
-     * <p>An expression that specifies an attribute-value pair in a JSON structure. Use
-     * this to specify an attribute from the JSON payload that is made available by the
-     * input. Inputs are derived from messages sent to AWS IoT Events
-     * (<code>BatchPutMessage</code>). Each such message contains a JSON payload. The
-     * attribute (and its paired value) specified here are available for use in the
-     * <code>condition</code> expressions used by detectors. </p> <p>Syntax:
-     * <code>&lt;field-name&gt;.&lt;field-name&gt;...</code> </p>
-     */
+    inline const Aws::String& GetJsonPath() const { return m_jsonPath; }
     inline bool JsonPathHasBeenSet() const { return m_jsonPathHasBeenSet; }
-
-    /**
-     * <p>An expression that specifies an attribute-value pair in a JSON structure. Use
-     * this to specify an attribute from the JSON payload that is made available by the
-     * input. Inputs are derived from messages sent to AWS IoT Events
-     * (<code>BatchPutMessage</code>). Each such message contains a JSON payload. The
-     * attribute (and its paired value) specified here are available for use in the
-     * <code>condition</code> expressions used by detectors. </p> <p>Syntax:
-     * <code>&lt;field-name&gt;.&lt;field-name&gt;...</code> </p>
-     */
-    inline void SetJsonPath(const Aws::String& value) { m_jsonPathHasBeenSet = true; m_jsonPath = value; }
-
-    /**
-     * <p>An expression that specifies an attribute-value pair in a JSON structure. Use
-     * this to specify an attribute from the JSON payload that is made available by the
-     * input. Inputs are derived from messages sent to AWS IoT Events
-     * (<code>BatchPutMessage</code>). Each such message contains a JSON payload. The
-     * attribute (and its paired value) specified here are available for use in the
-     * <code>condition</code> expressions used by detectors. </p> <p>Syntax:
-     * <code>&lt;field-name&gt;.&lt;field-name&gt;...</code> </p>
-     */
-    inline void SetJsonPath(Aws::String&& value) { m_jsonPathHasBeenSet = true; m_jsonPath = std::move(value); }
-
-    /**
-     * <p>An expression that specifies an attribute-value pair in a JSON structure. Use
-     * this to specify an attribute from the JSON payload that is made available by the
-     * input. Inputs are derived from messages sent to AWS IoT Events
-     * (<code>BatchPutMessage</code>). Each such message contains a JSON payload. The
-     * attribute (and its paired value) specified here are available for use in the
-     * <code>condition</code> expressions used by detectors. </p> <p>Syntax:
-     * <code>&lt;field-name&gt;.&lt;field-name&gt;...</code> </p>
-     */
-    inline void SetJsonPath(const char* value) { m_jsonPathHasBeenSet = true; m_jsonPath.assign(value); }
-
-    /**
-     * <p>An expression that specifies an attribute-value pair in a JSON structure. Use
-     * this to specify an attribute from the JSON payload that is made available by the
-     * input. Inputs are derived from messages sent to AWS IoT Events
-     * (<code>BatchPutMessage</code>). Each such message contains a JSON payload. The
-     * attribute (and its paired value) specified here are available for use in the
-     * <code>condition</code> expressions used by detectors. </p> <p>Syntax:
-     * <code>&lt;field-name&gt;.&lt;field-name&gt;...</code> </p>
-     */
-    inline Attribute& WithJsonPath(const Aws::String& value) { SetJsonPath(value); return *this;}
-
-    /**
-     * <p>An expression that specifies an attribute-value pair in a JSON structure. Use
-     * this to specify an attribute from the JSON payload that is made available by the
-     * input. Inputs are derived from messages sent to AWS IoT Events
-     * (<code>BatchPutMessage</code>). Each such message contains a JSON payload. The
-     * attribute (and its paired value) specified here are available for use in the
-     * <code>condition</code> expressions used by detectors. </p> <p>Syntax:
-     * <code>&lt;field-name&gt;.&lt;field-name&gt;...</code> </p>
-     */
-    inline Attribute& WithJsonPath(Aws::String&& value) { SetJsonPath(std::move(value)); return *this;}
-
-    /**
-     * <p>An expression that specifies an attribute-value pair in a JSON structure. Use
-     * this to specify an attribute from the JSON payload that is made available by the
-     * input. Inputs are derived from messages sent to AWS IoT Events
-     * (<code>BatchPutMessage</code>). Each such message contains a JSON payload. The
-     * attribute (and its paired value) specified here are available for use in the
-     * <code>condition</code> expressions used by detectors. </p> <p>Syntax:
-     * <code>&lt;field-name&gt;.&lt;field-name&gt;...</code> </p>
-     */
-    inline Attribute& WithJsonPath(const char* value) { SetJsonPath(value); return *this;}
-
+    template<typename JsonPathT = Aws::String>
+    void SetJsonPath(JsonPathT&& value) { m_jsonPathHasBeenSet = true; m_jsonPath = std::forward<JsonPathT>(value); }
+    template<typename JsonPathT = Aws::String>
+    Attribute& WithJsonPath(JsonPathT&& value) { SetJsonPath(std::forward<JsonPathT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_jsonPath;

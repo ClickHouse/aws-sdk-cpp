@@ -32,505 +32,228 @@ namespace Model
   class DescribeDatasetResult
   {
   public:
-    AWS_LOOKOUTEQUIPMENT_API DescribeDatasetResult();
+    AWS_LOOKOUTEQUIPMENT_API DescribeDatasetResult() = default;
     AWS_LOOKOUTEQUIPMENT_API DescribeDatasetResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LOOKOUTEQUIPMENT_API DescribeDatasetResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The name of the dataset being described. </p>
      */
-    inline const Aws::String& GetDatasetName() const{ return m_datasetName; }
+    inline const Aws::String& GetDatasetName() const { return m_datasetName; }
+    template<typename DatasetNameT = Aws::String>
+    void SetDatasetName(DatasetNameT&& value) { m_datasetNameHasBeenSet = true; m_datasetName = std::forward<DatasetNameT>(value); }
+    template<typename DatasetNameT = Aws::String>
+    DescribeDatasetResult& WithDatasetName(DatasetNameT&& value) { SetDatasetName(std::forward<DatasetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the dataset being described. </p>
-     */
-    inline void SetDatasetName(const Aws::String& value) { m_datasetName = value; }
-
-    /**
-     * <p>The name of the dataset being described. </p>
-     */
-    inline void SetDatasetName(Aws::String&& value) { m_datasetName = std::move(value); }
-
-    /**
-     * <p>The name of the dataset being described. </p>
-     */
-    inline void SetDatasetName(const char* value) { m_datasetName.assign(value); }
-
-    /**
-     * <p>The name of the dataset being described. </p>
-     */
-    inline DescribeDatasetResult& WithDatasetName(const Aws::String& value) { SetDatasetName(value); return *this;}
-
-    /**
-     * <p>The name of the dataset being described. </p>
-     */
-    inline DescribeDatasetResult& WithDatasetName(Aws::String&& value) { SetDatasetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the dataset being described. </p>
-     */
-    inline DescribeDatasetResult& WithDatasetName(const char* value) { SetDatasetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the dataset being described. </p>
      */
-    inline const Aws::String& GetDatasetArn() const{ return m_datasetArn; }
+    inline const Aws::String& GetDatasetArn() const { return m_datasetArn; }
+    template<typename DatasetArnT = Aws::String>
+    void SetDatasetArn(DatasetArnT&& value) { m_datasetArnHasBeenSet = true; m_datasetArn = std::forward<DatasetArnT>(value); }
+    template<typename DatasetArnT = Aws::String>
+    DescribeDatasetResult& WithDatasetArn(DatasetArnT&& value) { SetDatasetArn(std::forward<DatasetArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset being described. </p>
-     */
-    inline void SetDatasetArn(const Aws::String& value) { m_datasetArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset being described. </p>
-     */
-    inline void SetDatasetArn(Aws::String&& value) { m_datasetArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset being described. </p>
-     */
-    inline void SetDatasetArn(const char* value) { m_datasetArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset being described. </p>
-     */
-    inline DescribeDatasetResult& WithDatasetArn(const Aws::String& value) { SetDatasetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset being described. </p>
-     */
-    inline DescribeDatasetResult& WithDatasetArn(Aws::String&& value) { SetDatasetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset being described. </p>
-     */
-    inline DescribeDatasetResult& WithDatasetArn(const char* value) { SetDatasetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the time the dataset was created in Lookout for Equipment. </p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    DescribeDatasetResult& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the time the dataset was created in Lookout for Equipment. </p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAt = value; }
-
-    /**
-     * <p>Specifies the time the dataset was created in Lookout for Equipment. </p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAt = std::move(value); }
-
-    /**
-     * <p>Specifies the time the dataset was created in Lookout for Equipment. </p>
-     */
-    inline DescribeDatasetResult& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>Specifies the time the dataset was created in Lookout for Equipment. </p>
-     */
-    inline DescribeDatasetResult& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the time the dataset was last updated, if it was. </p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const{ return m_lastUpdatedAt; }
+    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const { return m_lastUpdatedAt; }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    void SetLastUpdatedAt(LastUpdatedAtT&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::forward<LastUpdatedAtT>(value); }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    DescribeDatasetResult& WithLastUpdatedAt(LastUpdatedAtT&& value) { SetLastUpdatedAt(std::forward<LastUpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the time the dataset was last updated, if it was. </p>
-     */
-    inline void SetLastUpdatedAt(const Aws::Utils::DateTime& value) { m_lastUpdatedAt = value; }
-
-    /**
-     * <p>Specifies the time the dataset was last updated, if it was. </p>
-     */
-    inline void SetLastUpdatedAt(Aws::Utils::DateTime&& value) { m_lastUpdatedAt = std::move(value); }
-
-    /**
-     * <p>Specifies the time the dataset was last updated, if it was. </p>
-     */
-    inline DescribeDatasetResult& WithLastUpdatedAt(const Aws::Utils::DateTime& value) { SetLastUpdatedAt(value); return *this;}
-
-    /**
-     * <p>Specifies the time the dataset was last updated, if it was. </p>
-     */
-    inline DescribeDatasetResult& WithLastUpdatedAt(Aws::Utils::DateTime&& value) { SetLastUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates the status of the dataset. </p>
      */
-    inline const DatasetStatus& GetStatus() const{ return m_status; }
+    inline DatasetStatus GetStatus() const { return m_status; }
+    inline void SetStatus(DatasetStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline DescribeDatasetResult& WithStatus(DatasetStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates the status of the dataset. </p>
-     */
-    inline void SetStatus(const DatasetStatus& value) { m_status = value; }
-
-    /**
-     * <p>Indicates the status of the dataset. </p>
-     */
-    inline void SetStatus(DatasetStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>Indicates the status of the dataset. </p>
-     */
-    inline DescribeDatasetResult& WithStatus(const DatasetStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Indicates the status of the dataset. </p>
-     */
-    inline DescribeDatasetResult& WithStatus(DatasetStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A JSON description of the data that is in each time series dataset, including
      * names, column names, and data types. </p>
      */
-    inline const Aws::String& GetSchema() const{ return m_schema; }
+    inline const Aws::String& GetSchema() const { return m_schema; }
+    template<typename SchemaT = Aws::String>
+    void SetSchema(SchemaT&& value) { m_schemaHasBeenSet = true; m_schema = std::forward<SchemaT>(value); }
+    template<typename SchemaT = Aws::String>
+    DescribeDatasetResult& WithSchema(SchemaT&& value) { SetSchema(std::forward<SchemaT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A JSON description of the data that is in each time series dataset, including
-     * names, column names, and data types. </p>
-     */
-    inline void SetSchema(const Aws::String& value) { m_schema = value; }
-
-    /**
-     * <p>A JSON description of the data that is in each time series dataset, including
-     * names, column names, and data types. </p>
-     */
-    inline void SetSchema(Aws::String&& value) { m_schema = std::move(value); }
-
-    /**
-     * <p>A JSON description of the data that is in each time series dataset, including
-     * names, column names, and data types. </p>
-     */
-    inline void SetSchema(const char* value) { m_schema.assign(value); }
-
-    /**
-     * <p>A JSON description of the data that is in each time series dataset, including
-     * names, column names, and data types. </p>
-     */
-    inline DescribeDatasetResult& WithSchema(const Aws::String& value) { SetSchema(value); return *this;}
-
-    /**
-     * <p>A JSON description of the data that is in each time series dataset, including
-     * names, column names, and data types. </p>
-     */
-    inline DescribeDatasetResult& WithSchema(Aws::String&& value) { SetSchema(std::move(value)); return *this;}
-
-    /**
-     * <p>A JSON description of the data that is in each time series dataset, including
-     * names, column names, and data types. </p>
-     */
-    inline DescribeDatasetResult& WithSchema(const char* value) { SetSchema(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides the identifier of the KMS key used to encrypt dataset data by Amazon
      * Lookout for Equipment. </p>
      */
-    inline const Aws::String& GetServerSideKmsKeyId() const{ return m_serverSideKmsKeyId; }
+    inline const Aws::String& GetServerSideKmsKeyId() const { return m_serverSideKmsKeyId; }
+    template<typename ServerSideKmsKeyIdT = Aws::String>
+    void SetServerSideKmsKeyId(ServerSideKmsKeyIdT&& value) { m_serverSideKmsKeyIdHasBeenSet = true; m_serverSideKmsKeyId = std::forward<ServerSideKmsKeyIdT>(value); }
+    template<typename ServerSideKmsKeyIdT = Aws::String>
+    DescribeDatasetResult& WithServerSideKmsKeyId(ServerSideKmsKeyIdT&& value) { SetServerSideKmsKeyId(std::forward<ServerSideKmsKeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Provides the identifier of the KMS key used to encrypt dataset data by Amazon
-     * Lookout for Equipment. </p>
-     */
-    inline void SetServerSideKmsKeyId(const Aws::String& value) { m_serverSideKmsKeyId = value; }
-
-    /**
-     * <p>Provides the identifier of the KMS key used to encrypt dataset data by Amazon
-     * Lookout for Equipment. </p>
-     */
-    inline void SetServerSideKmsKeyId(Aws::String&& value) { m_serverSideKmsKeyId = std::move(value); }
-
-    /**
-     * <p>Provides the identifier of the KMS key used to encrypt dataset data by Amazon
-     * Lookout for Equipment. </p>
-     */
-    inline void SetServerSideKmsKeyId(const char* value) { m_serverSideKmsKeyId.assign(value); }
-
-    /**
-     * <p>Provides the identifier of the KMS key used to encrypt dataset data by Amazon
-     * Lookout for Equipment. </p>
-     */
-    inline DescribeDatasetResult& WithServerSideKmsKeyId(const Aws::String& value) { SetServerSideKmsKeyId(value); return *this;}
-
-    /**
-     * <p>Provides the identifier of the KMS key used to encrypt dataset data by Amazon
-     * Lookout for Equipment. </p>
-     */
-    inline DescribeDatasetResult& WithServerSideKmsKeyId(Aws::String&& value) { SetServerSideKmsKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>Provides the identifier of the KMS key used to encrypt dataset data by Amazon
-     * Lookout for Equipment. </p>
-     */
-    inline DescribeDatasetResult& WithServerSideKmsKeyId(const char* value) { SetServerSideKmsKeyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the S3 location configuration for the data input for the data
      * ingestion job. </p>
      */
-    inline const IngestionInputConfiguration& GetIngestionInputConfiguration() const{ return m_ingestionInputConfiguration; }
+    inline const IngestionInputConfiguration& GetIngestionInputConfiguration() const { return m_ingestionInputConfiguration; }
+    template<typename IngestionInputConfigurationT = IngestionInputConfiguration>
+    void SetIngestionInputConfiguration(IngestionInputConfigurationT&& value) { m_ingestionInputConfigurationHasBeenSet = true; m_ingestionInputConfiguration = std::forward<IngestionInputConfigurationT>(value); }
+    template<typename IngestionInputConfigurationT = IngestionInputConfiguration>
+    DescribeDatasetResult& WithIngestionInputConfiguration(IngestionInputConfigurationT&& value) { SetIngestionInputConfiguration(std::forward<IngestionInputConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the S3 location configuration for the data input for the data
-     * ingestion job. </p>
-     */
-    inline void SetIngestionInputConfiguration(const IngestionInputConfiguration& value) { m_ingestionInputConfiguration = value; }
-
-    /**
-     * <p>Specifies the S3 location configuration for the data input for the data
-     * ingestion job. </p>
-     */
-    inline void SetIngestionInputConfiguration(IngestionInputConfiguration&& value) { m_ingestionInputConfiguration = std::move(value); }
-
-    /**
-     * <p>Specifies the S3 location configuration for the data input for the data
-     * ingestion job. </p>
-     */
-    inline DescribeDatasetResult& WithIngestionInputConfiguration(const IngestionInputConfiguration& value) { SetIngestionInputConfiguration(value); return *this;}
-
-    /**
-     * <p>Specifies the S3 location configuration for the data input for the data
-     * ingestion job. </p>
-     */
-    inline DescribeDatasetResult& WithIngestionInputConfiguration(IngestionInputConfiguration&& value) { SetIngestionInputConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> Gives statistics associated with the given dataset for the latest successful
      * associated ingestion job id. These statistics primarily relate to quantifying
      * incorrect data such as MissingCompleteSensorData, MissingSensorData,
      * UnsupportedDateFormats, InsufficientSensorData, and DuplicateTimeStamps. </p>
      */
-    inline const DataQualitySummary& GetDataQualitySummary() const{ return m_dataQualitySummary; }
+    inline const DataQualitySummary& GetDataQualitySummary() const { return m_dataQualitySummary; }
+    template<typename DataQualitySummaryT = DataQualitySummary>
+    void SetDataQualitySummary(DataQualitySummaryT&& value) { m_dataQualitySummaryHasBeenSet = true; m_dataQualitySummary = std::forward<DataQualitySummaryT>(value); }
+    template<typename DataQualitySummaryT = DataQualitySummary>
+    DescribeDatasetResult& WithDataQualitySummary(DataQualitySummaryT&& value) { SetDataQualitySummary(std::forward<DataQualitySummaryT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> Gives statistics associated with the given dataset for the latest successful
-     * associated ingestion job id. These statistics primarily relate to quantifying
-     * incorrect data such as MissingCompleteSensorData, MissingSensorData,
-     * UnsupportedDateFormats, InsufficientSensorData, and DuplicateTimeStamps. </p>
-     */
-    inline void SetDataQualitySummary(const DataQualitySummary& value) { m_dataQualitySummary = value; }
-
-    /**
-     * <p> Gives statistics associated with the given dataset for the latest successful
-     * associated ingestion job id. These statistics primarily relate to quantifying
-     * incorrect data such as MissingCompleteSensorData, MissingSensorData,
-     * UnsupportedDateFormats, InsufficientSensorData, and DuplicateTimeStamps. </p>
-     */
-    inline void SetDataQualitySummary(DataQualitySummary&& value) { m_dataQualitySummary = std::move(value); }
-
-    /**
-     * <p> Gives statistics associated with the given dataset for the latest successful
-     * associated ingestion job id. These statistics primarily relate to quantifying
-     * incorrect data such as MissingCompleteSensorData, MissingSensorData,
-     * UnsupportedDateFormats, InsufficientSensorData, and DuplicateTimeStamps. </p>
-     */
-    inline DescribeDatasetResult& WithDataQualitySummary(const DataQualitySummary& value) { SetDataQualitySummary(value); return *this;}
-
-    /**
-     * <p> Gives statistics associated with the given dataset for the latest successful
-     * associated ingestion job id. These statistics primarily relate to quantifying
-     * incorrect data such as MissingCompleteSensorData, MissingSensorData,
-     * UnsupportedDateFormats, InsufficientSensorData, and DuplicateTimeStamps. </p>
-     */
-    inline DescribeDatasetResult& WithDataQualitySummary(DataQualitySummary&& value) { SetDataQualitySummary(std::move(value)); return *this;}
-
-
-    /**
-     * <p> IngestedFilesSummary associated with the given dataset for the latest
+     * <p>IngestedFilesSummary associated with the given dataset for the latest
      * successful associated ingestion job id. </p>
      */
-    inline const IngestedFilesSummary& GetIngestedFilesSummary() const{ return m_ingestedFilesSummary; }
+    inline const IngestedFilesSummary& GetIngestedFilesSummary() const { return m_ingestedFilesSummary; }
+    template<typename IngestedFilesSummaryT = IngestedFilesSummary>
+    void SetIngestedFilesSummary(IngestedFilesSummaryT&& value) { m_ingestedFilesSummaryHasBeenSet = true; m_ingestedFilesSummary = std::forward<IngestedFilesSummaryT>(value); }
+    template<typename IngestedFilesSummaryT = IngestedFilesSummary>
+    DescribeDatasetResult& WithIngestedFilesSummary(IngestedFilesSummaryT&& value) { SetIngestedFilesSummary(std::forward<IngestedFilesSummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> IngestedFilesSummary associated with the given dataset for the latest
-     * successful associated ingestion job id. </p>
-     */
-    inline void SetIngestedFilesSummary(const IngestedFilesSummary& value) { m_ingestedFilesSummary = value; }
-
-    /**
-     * <p> IngestedFilesSummary associated with the given dataset for the latest
-     * successful associated ingestion job id. </p>
-     */
-    inline void SetIngestedFilesSummary(IngestedFilesSummary&& value) { m_ingestedFilesSummary = std::move(value); }
-
-    /**
-     * <p> IngestedFilesSummary associated with the given dataset for the latest
-     * successful associated ingestion job id. </p>
-     */
-    inline DescribeDatasetResult& WithIngestedFilesSummary(const IngestedFilesSummary& value) { SetIngestedFilesSummary(value); return *this;}
-
-    /**
-     * <p> IngestedFilesSummary associated with the given dataset for the latest
-     * successful associated ingestion job id. </p>
-     */
-    inline DescribeDatasetResult& WithIngestedFilesSummary(IngestedFilesSummary&& value) { SetIngestedFilesSummary(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The Amazon Resource Name (ARN) of the IAM role that you are using for this
      * the data ingestion job. </p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    DescribeDatasetResult& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role that you are using for this
-     * the data ingestion job. </p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArn = value; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role that you are using for this
-     * the data ingestion job. </p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArn = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role that you are using for this
-     * the data ingestion job. </p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArn.assign(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role that you are using for this
-     * the data ingestion job. </p>
-     */
-    inline DescribeDatasetResult& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role that you are using for this
-     * the data ingestion job. </p>
-     */
-    inline DescribeDatasetResult& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role that you are using for this
-     * the data ingestion job. </p>
-     */
-    inline DescribeDatasetResult& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Indicates the earliest timestamp corresponding to data that was successfully
      * ingested during the most recent ingestion of this particular dataset. </p>
      */
-    inline const Aws::Utils::DateTime& GetDataStartTime() const{ return m_dataStartTime; }
+    inline const Aws::Utils::DateTime& GetDataStartTime() const { return m_dataStartTime; }
+    template<typename DataStartTimeT = Aws::Utils::DateTime>
+    void SetDataStartTime(DataStartTimeT&& value) { m_dataStartTimeHasBeenSet = true; m_dataStartTime = std::forward<DataStartTimeT>(value); }
+    template<typename DataStartTimeT = Aws::Utils::DateTime>
+    DescribeDatasetResult& WithDataStartTime(DataStartTimeT&& value) { SetDataStartTime(std::forward<DataStartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Indicates the earliest timestamp corresponding to data that was successfully
-     * ingested during the most recent ingestion of this particular dataset. </p>
-     */
-    inline void SetDataStartTime(const Aws::Utils::DateTime& value) { m_dataStartTime = value; }
-
-    /**
-     * <p> Indicates the earliest timestamp corresponding to data that was successfully
-     * ingested during the most recent ingestion of this particular dataset. </p>
-     */
-    inline void SetDataStartTime(Aws::Utils::DateTime&& value) { m_dataStartTime = std::move(value); }
-
-    /**
-     * <p> Indicates the earliest timestamp corresponding to data that was successfully
-     * ingested during the most recent ingestion of this particular dataset. </p>
-     */
-    inline DescribeDatasetResult& WithDataStartTime(const Aws::Utils::DateTime& value) { SetDataStartTime(value); return *this;}
-
-    /**
-     * <p> Indicates the earliest timestamp corresponding to data that was successfully
-     * ingested during the most recent ingestion of this particular dataset. </p>
-     */
-    inline DescribeDatasetResult& WithDataStartTime(Aws::Utils::DateTime&& value) { SetDataStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> Indicates the latest timestamp corresponding to data that was successfully
      * ingested during the most recent ingestion of this particular dataset. </p>
      */
-    inline const Aws::Utils::DateTime& GetDataEndTime() const{ return m_dataEndTime; }
+    inline const Aws::Utils::DateTime& GetDataEndTime() const { return m_dataEndTime; }
+    template<typename DataEndTimeT = Aws::Utils::DateTime>
+    void SetDataEndTime(DataEndTimeT&& value) { m_dataEndTimeHasBeenSet = true; m_dataEndTime = std::forward<DataEndTimeT>(value); }
+    template<typename DataEndTimeT = Aws::Utils::DateTime>
+    DescribeDatasetResult& WithDataEndTime(DataEndTimeT&& value) { SetDataEndTime(std::forward<DataEndTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> Indicates the latest timestamp corresponding to data that was successfully
-     * ingested during the most recent ingestion of this particular dataset. </p>
+     * <p>The Amazon Resource Name (ARN) of the source dataset from which the current
+     * data being described was imported from.</p>
      */
-    inline void SetDataEndTime(const Aws::Utils::DateTime& value) { m_dataEndTime = value; }
+    inline const Aws::String& GetSourceDatasetArn() const { return m_sourceDatasetArn; }
+    template<typename SourceDatasetArnT = Aws::String>
+    void SetSourceDatasetArn(SourceDatasetArnT&& value) { m_sourceDatasetArnHasBeenSet = true; m_sourceDatasetArn = std::forward<SourceDatasetArnT>(value); }
+    template<typename SourceDatasetArnT = Aws::String>
+    DescribeDatasetResult& WithSourceDatasetArn(SourceDatasetArnT&& value) { SetSourceDatasetArn(std::forward<SourceDatasetArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Indicates the latest timestamp corresponding to data that was successfully
-     * ingested during the most recent ingestion of this particular dataset. </p>
-     */
-    inline void SetDataEndTime(Aws::Utils::DateTime&& value) { m_dataEndTime = std::move(value); }
-
-    /**
-     * <p> Indicates the latest timestamp corresponding to data that was successfully
-     * ingested during the most recent ingestion of this particular dataset. </p>
-     */
-    inline DescribeDatasetResult& WithDataEndTime(const Aws::Utils::DateTime& value) { SetDataEndTime(value); return *this;}
-
-    /**
-     * <p> Indicates the latest timestamp corresponding to data that was successfully
-     * ingested during the most recent ingestion of this particular dataset. </p>
-     */
-    inline DescribeDatasetResult& WithDataEndTime(Aws::Utils::DateTime&& value) { SetDataEndTime(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeDatasetResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeDatasetResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeDatasetResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeDatasetResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_datasetName;
+    bool m_datasetNameHasBeenSet = false;
 
     Aws::String m_datasetArn;
+    bool m_datasetArnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
+    bool m_createdAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedAt;
+    Aws::Utils::DateTime m_lastUpdatedAt{};
+    bool m_lastUpdatedAtHasBeenSet = false;
 
-    DatasetStatus m_status;
+    DatasetStatus m_status{DatasetStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_schema;
+    bool m_schemaHasBeenSet = false;
 
     Aws::String m_serverSideKmsKeyId;
+    bool m_serverSideKmsKeyIdHasBeenSet = false;
 
     IngestionInputConfiguration m_ingestionInputConfiguration;
+    bool m_ingestionInputConfigurationHasBeenSet = false;
 
     DataQualitySummary m_dataQualitySummary;
+    bool m_dataQualitySummaryHasBeenSet = false;
 
     IngestedFilesSummary m_ingestedFilesSummary;
+    bool m_ingestedFilesSummaryHasBeenSet = false;
 
     Aws::String m_roleArn;
+    bool m_roleArnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_dataStartTime;
+    Aws::Utils::DateTime m_dataStartTime{};
+    bool m_dataStartTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_dataEndTime;
+    Aws::Utils::DateTime m_dataEndTime{};
+    bool m_dataEndTimeHasBeenSet = false;
+
+    Aws::String m_sourceDatasetArn;
+    bool m_sourceDatasetArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

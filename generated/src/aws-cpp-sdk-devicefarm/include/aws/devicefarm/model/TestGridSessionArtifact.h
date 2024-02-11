@@ -35,130 +35,51 @@ namespace Model
   class TestGridSessionArtifact
   {
   public:
-    AWS_DEVICEFARM_API TestGridSessionArtifact();
+    AWS_DEVICEFARM_API TestGridSessionArtifact() = default;
     AWS_DEVICEFARM_API TestGridSessionArtifact(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVICEFARM_API TestGridSessionArtifact& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVICEFARM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The file name of the artifact.</p>
      */
-    inline const Aws::String& GetFilename() const{ return m_filename; }
-
-    /**
-     * <p>The file name of the artifact.</p>
-     */
+    inline const Aws::String& GetFilename() const { return m_filename; }
     inline bool FilenameHasBeenSet() const { return m_filenameHasBeenSet; }
+    template<typename FilenameT = Aws::String>
+    void SetFilename(FilenameT&& value) { m_filenameHasBeenSet = true; m_filename = std::forward<FilenameT>(value); }
+    template<typename FilenameT = Aws::String>
+    TestGridSessionArtifact& WithFilename(FilenameT&& value) { SetFilename(std::forward<FilenameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The file name of the artifact.</p>
-     */
-    inline void SetFilename(const Aws::String& value) { m_filenameHasBeenSet = true; m_filename = value; }
-
-    /**
-     * <p>The file name of the artifact.</p>
-     */
-    inline void SetFilename(Aws::String&& value) { m_filenameHasBeenSet = true; m_filename = std::move(value); }
-
-    /**
-     * <p>The file name of the artifact.</p>
-     */
-    inline void SetFilename(const char* value) { m_filenameHasBeenSet = true; m_filename.assign(value); }
-
-    /**
-     * <p>The file name of the artifact.</p>
-     */
-    inline TestGridSessionArtifact& WithFilename(const Aws::String& value) { SetFilename(value); return *this;}
-
-    /**
-     * <p>The file name of the artifact.</p>
-     */
-    inline TestGridSessionArtifact& WithFilename(Aws::String&& value) { SetFilename(std::move(value)); return *this;}
-
-    /**
-     * <p>The file name of the artifact.</p>
-     */
-    inline TestGridSessionArtifact& WithFilename(const char* value) { SetFilename(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The kind of artifact.</p>
      */
-    inline const TestGridSessionArtifactType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The kind of artifact.</p>
-     */
+    inline TestGridSessionArtifactType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(TestGridSessionArtifactType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline TestGridSessionArtifact& WithType(TestGridSessionArtifactType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The kind of artifact.</p>
-     */
-    inline void SetType(const TestGridSessionArtifactType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The kind of artifact.</p>
-     */
-    inline void SetType(TestGridSessionArtifactType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The kind of artifact.</p>
-     */
-    inline TestGridSessionArtifact& WithType(const TestGridSessionArtifactType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The kind of artifact.</p>
-     */
-    inline TestGridSessionArtifact& WithType(TestGridSessionArtifactType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A semi-stable URL to the content of the object.</p>
      */
-    inline const Aws::String& GetUrl() const{ return m_url; }
-
-    /**
-     * <p>A semi-stable URL to the content of the object.</p>
-     */
+    inline const Aws::String& GetUrl() const { return m_url; }
     inline bool UrlHasBeenSet() const { return m_urlHasBeenSet; }
-
-    /**
-     * <p>A semi-stable URL to the content of the object.</p>
-     */
-    inline void SetUrl(const Aws::String& value) { m_urlHasBeenSet = true; m_url = value; }
-
-    /**
-     * <p>A semi-stable URL to the content of the object.</p>
-     */
-    inline void SetUrl(Aws::String&& value) { m_urlHasBeenSet = true; m_url = std::move(value); }
-
-    /**
-     * <p>A semi-stable URL to the content of the object.</p>
-     */
-    inline void SetUrl(const char* value) { m_urlHasBeenSet = true; m_url.assign(value); }
-
-    /**
-     * <p>A semi-stable URL to the content of the object.</p>
-     */
-    inline TestGridSessionArtifact& WithUrl(const Aws::String& value) { SetUrl(value); return *this;}
-
-    /**
-     * <p>A semi-stable URL to the content of the object.</p>
-     */
-    inline TestGridSessionArtifact& WithUrl(Aws::String&& value) { SetUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>A semi-stable URL to the content of the object.</p>
-     */
-    inline TestGridSessionArtifact& WithUrl(const char* value) { SetUrl(value); return *this;}
-
+    template<typename UrlT = Aws::String>
+    void SetUrl(UrlT&& value) { m_urlHasBeenSet = true; m_url = std::forward<UrlT>(value); }
+    template<typename UrlT = Aws::String>
+    TestGridSessionArtifact& WithUrl(UrlT&& value) { SetUrl(std::forward<UrlT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_filename;
     bool m_filenameHasBeenSet = false;
 
-    TestGridSessionArtifactType m_type;
+    TestGridSessionArtifactType m_type{TestGridSessionArtifactType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_url;

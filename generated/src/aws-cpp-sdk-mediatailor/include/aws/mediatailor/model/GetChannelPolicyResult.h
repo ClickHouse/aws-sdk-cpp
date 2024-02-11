@@ -27,80 +27,38 @@ namespace Model
   class GetChannelPolicyResult
   {
   public:
-    AWS_MEDIATAILOR_API GetChannelPolicyResult();
+    AWS_MEDIATAILOR_API GetChannelPolicyResult() = default;
     AWS_MEDIATAILOR_API GetChannelPolicyResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MEDIATAILOR_API GetChannelPolicyResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The IAM policy for the channel. IAM policies are used to control access to
      * your channel.</p>
      */
-    inline const Aws::String& GetPolicy() const{ return m_policy; }
+    inline const Aws::String& GetPolicy() const { return m_policy; }
+    template<typename PolicyT = Aws::String>
+    void SetPolicy(PolicyT&& value) { m_policyHasBeenSet = true; m_policy = std::forward<PolicyT>(value); }
+    template<typename PolicyT = Aws::String>
+    GetChannelPolicyResult& WithPolicy(PolicyT&& value) { SetPolicy(std::forward<PolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IAM policy for the channel. IAM policies are used to control access to
-     * your channel.</p>
-     */
-    inline void SetPolicy(const Aws::String& value) { m_policy = value; }
-
-    /**
-     * <p>The IAM policy for the channel. IAM policies are used to control access to
-     * your channel.</p>
-     */
-    inline void SetPolicy(Aws::String&& value) { m_policy = std::move(value); }
-
-    /**
-     * <p>The IAM policy for the channel. IAM policies are used to control access to
-     * your channel.</p>
-     */
-    inline void SetPolicy(const char* value) { m_policy.assign(value); }
-
-    /**
-     * <p>The IAM policy for the channel. IAM policies are used to control access to
-     * your channel.</p>
-     */
-    inline GetChannelPolicyResult& WithPolicy(const Aws::String& value) { SetPolicy(value); return *this;}
-
-    /**
-     * <p>The IAM policy for the channel. IAM policies are used to control access to
-     * your channel.</p>
-     */
-    inline GetChannelPolicyResult& WithPolicy(Aws::String&& value) { SetPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>The IAM policy for the channel. IAM policies are used to control access to
-     * your channel.</p>
-     */
-    inline GetChannelPolicyResult& WithPolicy(const char* value) { SetPolicy(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetChannelPolicyResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetChannelPolicyResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetChannelPolicyResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetChannelPolicyResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_policy;
+    bool m_policyHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

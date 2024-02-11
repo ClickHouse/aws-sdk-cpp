@@ -10,18 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-DescribeInstanceTypeOfferingsRequest::DescribeInstanceTypeOfferingsRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_locationType(LocationType::NOT_SET),
-    m_locationTypeHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String DescribeInstanceTypeOfferingsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -33,7 +21,7 @@ Aws::String DescribeInstanceTypeOfferingsRequest::SerializePayload() const
 
   if(m_locationTypeHasBeenSet)
   {
-    ss << "LocationType=" << LocationTypeMapper::GetNameForLocationType(m_locationType) << "&";
+    ss << "LocationType=" << StringUtils::URLEncode(LocationTypeMapper::GetNameForLocationType(m_locationType)) << "&";
   }
 
   if(m_filtersHasBeenSet)

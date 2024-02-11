@@ -33,93 +33,39 @@ namespace Model
   class GaugeChartFieldWells
   {
   public:
-    AWS_QUICKSIGHT_API GaugeChartFieldWells();
+    AWS_QUICKSIGHT_API GaugeChartFieldWells() = default;
     AWS_QUICKSIGHT_API GaugeChartFieldWells(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API GaugeChartFieldWells& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The value field wells of a <code>GaugeChartVisual</code>.</p>
      */
-    inline const Aws::Vector<MeasureField>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>The value field wells of a <code>GaugeChartVisual</code>.</p>
-     */
+    inline const Aws::Vector<MeasureField>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
+    template<typename ValuesT = Aws::Vector<MeasureField>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<MeasureField>>
+    GaugeChartFieldWells& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = MeasureField>
+    GaugeChartFieldWells& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The value field wells of a <code>GaugeChartVisual</code>.</p>
-     */
-    inline void SetValues(const Aws::Vector<MeasureField>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>The value field wells of a <code>GaugeChartVisual</code>.</p>
-     */
-    inline void SetValues(Aws::Vector<MeasureField>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>The value field wells of a <code>GaugeChartVisual</code>.</p>
-     */
-    inline GaugeChartFieldWells& WithValues(const Aws::Vector<MeasureField>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>The value field wells of a <code>GaugeChartVisual</code>.</p>
-     */
-    inline GaugeChartFieldWells& WithValues(Aws::Vector<MeasureField>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The value field wells of a <code>GaugeChartVisual</code>.</p>
-     */
-    inline GaugeChartFieldWells& AddValues(const MeasureField& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>The value field wells of a <code>GaugeChartVisual</code>.</p>
-     */
-    inline GaugeChartFieldWells& AddValues(MeasureField&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The target value field wells of a <code>GaugeChartVisual</code>.</p>
      */
-    inline const Aws::Vector<MeasureField>& GetTargetValues() const{ return m_targetValues; }
-
-    /**
-     * <p>The target value field wells of a <code>GaugeChartVisual</code>.</p>
-     */
+    inline const Aws::Vector<MeasureField>& GetTargetValues() const { return m_targetValues; }
     inline bool TargetValuesHasBeenSet() const { return m_targetValuesHasBeenSet; }
-
-    /**
-     * <p>The target value field wells of a <code>GaugeChartVisual</code>.</p>
-     */
-    inline void SetTargetValues(const Aws::Vector<MeasureField>& value) { m_targetValuesHasBeenSet = true; m_targetValues = value; }
-
-    /**
-     * <p>The target value field wells of a <code>GaugeChartVisual</code>.</p>
-     */
-    inline void SetTargetValues(Aws::Vector<MeasureField>&& value) { m_targetValuesHasBeenSet = true; m_targetValues = std::move(value); }
-
-    /**
-     * <p>The target value field wells of a <code>GaugeChartVisual</code>.</p>
-     */
-    inline GaugeChartFieldWells& WithTargetValues(const Aws::Vector<MeasureField>& value) { SetTargetValues(value); return *this;}
-
-    /**
-     * <p>The target value field wells of a <code>GaugeChartVisual</code>.</p>
-     */
-    inline GaugeChartFieldWells& WithTargetValues(Aws::Vector<MeasureField>&& value) { SetTargetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The target value field wells of a <code>GaugeChartVisual</code>.</p>
-     */
-    inline GaugeChartFieldWells& AddTargetValues(const MeasureField& value) { m_targetValuesHasBeenSet = true; m_targetValues.push_back(value); return *this; }
-
-    /**
-     * <p>The target value field wells of a <code>GaugeChartVisual</code>.</p>
-     */
-    inline GaugeChartFieldWells& AddTargetValues(MeasureField&& value) { m_targetValuesHasBeenSet = true; m_targetValues.push_back(std::move(value)); return *this; }
-
+    template<typename TargetValuesT = Aws::Vector<MeasureField>>
+    void SetTargetValues(TargetValuesT&& value) { m_targetValuesHasBeenSet = true; m_targetValues = std::forward<TargetValuesT>(value); }
+    template<typename TargetValuesT = Aws::Vector<MeasureField>>
+    GaugeChartFieldWells& WithTargetValues(TargetValuesT&& value) { SetTargetValues(std::forward<TargetValuesT>(value)); return *this;}
+    template<typename TargetValuesT = MeasureField>
+    GaugeChartFieldWells& AddTargetValues(TargetValuesT&& value) { m_targetValuesHasBeenSet = true; m_targetValues.emplace_back(std::forward<TargetValuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<MeasureField> m_values;

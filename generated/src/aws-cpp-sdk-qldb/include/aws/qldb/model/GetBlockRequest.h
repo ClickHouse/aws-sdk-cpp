@@ -22,7 +22,7 @@ namespace Model
   class GetBlockRequest : public QLDBRequest
   {
   public:
-    AWS_QLDB_API GetBlockRequest();
+    AWS_QLDB_API GetBlockRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,144 +33,47 @@ namespace Model
     AWS_QLDB_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the ledger.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the ledger.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetBlockRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the ledger.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the ledger.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the ledger.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the ledger.</p>
-     */
-    inline GetBlockRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the ledger.</p>
-     */
-    inline GetBlockRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the ledger.</p>
-     */
-    inline GetBlockRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The location of the block that you want to request. An address is an Amazon
      * Ion structure that has two fields: <code>strandId</code> and
      * <code>sequenceNo</code>.</p> <p>For example:
      * <code>{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:14}</code>.</p>
      */
-    inline const ValueHolder& GetBlockAddress() const{ return m_blockAddress; }
-
-    /**
-     * <p>The location of the block that you want to request. An address is an Amazon
-     * Ion structure that has two fields: <code>strandId</code> and
-     * <code>sequenceNo</code>.</p> <p>For example:
-     * <code>{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:14}</code>.</p>
-     */
+    inline const ValueHolder& GetBlockAddress() const { return m_blockAddress; }
     inline bool BlockAddressHasBeenSet() const { return m_blockAddressHasBeenSet; }
+    template<typename BlockAddressT = ValueHolder>
+    void SetBlockAddress(BlockAddressT&& value) { m_blockAddressHasBeenSet = true; m_blockAddress = std::forward<BlockAddressT>(value); }
+    template<typename BlockAddressT = ValueHolder>
+    GetBlockRequest& WithBlockAddress(BlockAddressT&& value) { SetBlockAddress(std::forward<BlockAddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The location of the block that you want to request. An address is an Amazon
-     * Ion structure that has two fields: <code>strandId</code> and
-     * <code>sequenceNo</code>.</p> <p>For example:
-     * <code>{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:14}</code>.</p>
-     */
-    inline void SetBlockAddress(const ValueHolder& value) { m_blockAddressHasBeenSet = true; m_blockAddress = value; }
-
-    /**
-     * <p>The location of the block that you want to request. An address is an Amazon
-     * Ion structure that has two fields: <code>strandId</code> and
-     * <code>sequenceNo</code>.</p> <p>For example:
-     * <code>{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:14}</code>.</p>
-     */
-    inline void SetBlockAddress(ValueHolder&& value) { m_blockAddressHasBeenSet = true; m_blockAddress = std::move(value); }
-
-    /**
-     * <p>The location of the block that you want to request. An address is an Amazon
-     * Ion structure that has two fields: <code>strandId</code> and
-     * <code>sequenceNo</code>.</p> <p>For example:
-     * <code>{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:14}</code>.</p>
-     */
-    inline GetBlockRequest& WithBlockAddress(const ValueHolder& value) { SetBlockAddress(value); return *this;}
-
-    /**
-     * <p>The location of the block that you want to request. An address is an Amazon
-     * Ion structure that has two fields: <code>strandId</code> and
-     * <code>sequenceNo</code>.</p> <p>For example:
-     * <code>{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:14}</code>.</p>
-     */
-    inline GetBlockRequest& WithBlockAddress(ValueHolder&& value) { SetBlockAddress(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The latest block location covered by the digest for which to request a proof.
      * An address is an Amazon Ion structure that has two fields: <code>strandId</code>
      * and <code>sequenceNo</code>.</p> <p>For example:
      * <code>{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49}</code>.</p>
      */
-    inline const ValueHolder& GetDigestTipAddress() const{ return m_digestTipAddress; }
-
-    /**
-     * <p>The latest block location covered by the digest for which to request a proof.
-     * An address is an Amazon Ion structure that has two fields: <code>strandId</code>
-     * and <code>sequenceNo</code>.</p> <p>For example:
-     * <code>{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49}</code>.</p>
-     */
+    inline const ValueHolder& GetDigestTipAddress() const { return m_digestTipAddress; }
     inline bool DigestTipAddressHasBeenSet() const { return m_digestTipAddressHasBeenSet; }
-
-    /**
-     * <p>The latest block location covered by the digest for which to request a proof.
-     * An address is an Amazon Ion structure that has two fields: <code>strandId</code>
-     * and <code>sequenceNo</code>.</p> <p>For example:
-     * <code>{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49}</code>.</p>
-     */
-    inline void SetDigestTipAddress(const ValueHolder& value) { m_digestTipAddressHasBeenSet = true; m_digestTipAddress = value; }
-
-    /**
-     * <p>The latest block location covered by the digest for which to request a proof.
-     * An address is an Amazon Ion structure that has two fields: <code>strandId</code>
-     * and <code>sequenceNo</code>.</p> <p>For example:
-     * <code>{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49}</code>.</p>
-     */
-    inline void SetDigestTipAddress(ValueHolder&& value) { m_digestTipAddressHasBeenSet = true; m_digestTipAddress = std::move(value); }
-
-    /**
-     * <p>The latest block location covered by the digest for which to request a proof.
-     * An address is an Amazon Ion structure that has two fields: <code>strandId</code>
-     * and <code>sequenceNo</code>.</p> <p>For example:
-     * <code>{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49}</code>.</p>
-     */
-    inline GetBlockRequest& WithDigestTipAddress(const ValueHolder& value) { SetDigestTipAddress(value); return *this;}
-
-    /**
-     * <p>The latest block location covered by the digest for which to request a proof.
-     * An address is an Amazon Ion structure that has two fields: <code>strandId</code>
-     * and <code>sequenceNo</code>.</p> <p>For example:
-     * <code>{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49}</code>.</p>
-     */
-    inline GetBlockRequest& WithDigestTipAddress(ValueHolder&& value) { SetDigestTipAddress(std::move(value)); return *this;}
-
+    template<typename DigestTipAddressT = ValueHolder>
+    void SetDigestTipAddress(DigestTipAddressT&& value) { m_digestTipAddressHasBeenSet = true; m_digestTipAddress = std::forward<DigestTipAddressT>(value); }
+    template<typename DigestTipAddressT = ValueHolder>
+    GetBlockRequest& WithDigestTipAddress(DigestTipAddressT&& value) { SetDigestTipAddress(std::forward<DigestTipAddressT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

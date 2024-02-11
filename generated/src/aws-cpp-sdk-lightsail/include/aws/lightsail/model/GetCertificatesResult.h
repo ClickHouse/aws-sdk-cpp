@@ -29,73 +29,56 @@ namespace Model
   class GetCertificatesResult
   {
   public:
-    AWS_LIGHTSAIL_API GetCertificatesResult();
+    AWS_LIGHTSAIL_API GetCertificatesResult() = default;
     AWS_LIGHTSAIL_API GetCertificatesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LIGHTSAIL_API GetCertificatesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>An object that describes certificates.</p>
      */
-    inline const Aws::Vector<CertificateSummary>& GetCertificates() const{ return m_certificates; }
+    inline const Aws::Vector<CertificateSummary>& GetCertificates() const { return m_certificates; }
+    template<typename CertificatesT = Aws::Vector<CertificateSummary>>
+    void SetCertificates(CertificatesT&& value) { m_certificatesHasBeenSet = true; m_certificates = std::forward<CertificatesT>(value); }
+    template<typename CertificatesT = Aws::Vector<CertificateSummary>>
+    GetCertificatesResult& WithCertificates(CertificatesT&& value) { SetCertificates(std::forward<CertificatesT>(value)); return *this;}
+    template<typename CertificatesT = CertificateSummary>
+    GetCertificatesResult& AddCertificates(CertificatesT&& value) { m_certificatesHasBeenSet = true; m_certificates.emplace_back(std::forward<CertificatesT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>An object that describes certificates.</p>
+     * <p>If <code>NextPageToken</code> is returned there are more results available.
+     * The value of <code>NextPageToken</code> is a unique pagination token for each
+     * page. Make the call again using the returned token to retrieve the next page.
+     * Keep all other arguments unchanged.</p>
      */
-    inline void SetCertificates(const Aws::Vector<CertificateSummary>& value) { m_certificates = value; }
+    inline const Aws::String& GetNextPageToken() const { return m_nextPageToken; }
+    template<typename NextPageTokenT = Aws::String>
+    void SetNextPageToken(NextPageTokenT&& value) { m_nextPageTokenHasBeenSet = true; m_nextPageToken = std::forward<NextPageTokenT>(value); }
+    template<typename NextPageTokenT = Aws::String>
+    GetCertificatesResult& WithNextPageToken(NextPageTokenT&& value) { SetNextPageToken(std::forward<NextPageTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that describes certificates.</p>
-     */
-    inline void SetCertificates(Aws::Vector<CertificateSummary>&& value) { m_certificates = std::move(value); }
-
-    /**
-     * <p>An object that describes certificates.</p>
-     */
-    inline GetCertificatesResult& WithCertificates(const Aws::Vector<CertificateSummary>& value) { SetCertificates(value); return *this;}
-
-    /**
-     * <p>An object that describes certificates.</p>
-     */
-    inline GetCertificatesResult& WithCertificates(Aws::Vector<CertificateSummary>&& value) { SetCertificates(std::move(value)); return *this;}
-
-    /**
-     * <p>An object that describes certificates.</p>
-     */
-    inline GetCertificatesResult& AddCertificates(const CertificateSummary& value) { m_certificates.push_back(value); return *this; }
-
-    /**
-     * <p>An object that describes certificates.</p>
-     */
-    inline GetCertificatesResult& AddCertificates(CertificateSummary&& value) { m_certificates.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetCertificatesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetCertificatesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetCertificatesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetCertificatesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<CertificateSummary> m_certificates;
+    bool m_certificatesHasBeenSet = false;
+
+    Aws::String m_nextPageToken;
+    bool m_nextPageTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

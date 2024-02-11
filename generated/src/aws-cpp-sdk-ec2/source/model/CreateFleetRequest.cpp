@@ -10,29 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateFleetRequest::CreateFleetRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_clientTokenHasBeenSet(false),
-    m_spotOptionsHasBeenSet(false),
-    m_onDemandOptionsHasBeenSet(false),
-    m_excessCapacityTerminationPolicy(FleetExcessCapacityTerminationPolicy::NOT_SET),
-    m_excessCapacityTerminationPolicyHasBeenSet(false),
-    m_launchTemplateConfigsHasBeenSet(false),
-    m_targetCapacitySpecificationHasBeenSet(false),
-    m_terminateInstancesWithExpiration(false),
-    m_terminateInstancesWithExpirationHasBeenSet(false),
-    m_type(FleetType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_validFromHasBeenSet(false),
-    m_validUntilHasBeenSet(false),
-    m_replaceUnhealthyInstances(false),
-    m_replaceUnhealthyInstancesHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_contextHasBeenSet(false)
-{
-}
-
 Aws::String CreateFleetRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -59,7 +36,7 @@ Aws::String CreateFleetRequest::SerializePayload() const
 
   if(m_excessCapacityTerminationPolicyHasBeenSet)
   {
-    ss << "ExcessCapacityTerminationPolicy=" << FleetExcessCapacityTerminationPolicyMapper::GetNameForFleetExcessCapacityTerminationPolicy(m_excessCapacityTerminationPolicy) << "&";
+    ss << "ExcessCapacityTerminationPolicy=" << StringUtils::URLEncode(FleetExcessCapacityTerminationPolicyMapper::GetNameForFleetExcessCapacityTerminationPolicy(m_excessCapacityTerminationPolicy)) << "&";
   }
 
   if(m_launchTemplateConfigsHasBeenSet)
@@ -84,7 +61,7 @@ Aws::String CreateFleetRequest::SerializePayload() const
 
   if(m_typeHasBeenSet)
   {
-    ss << "Type=" << FleetTypeMapper::GetNameForFleetType(m_type) << "&";
+    ss << "Type=" << StringUtils::URLEncode(FleetTypeMapper::GetNameForFleetType(m_type)) << "&";
   }
 
   if(m_validFromHasBeenSet)

@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AvailabilityZone::AvailabilityZone() : 
-    m_zoneNameHasBeenSet(false),
-    m_subnetIdHasBeenSet(false)
-{
-}
-
-AvailabilityZone::AvailabilityZone(JsonView jsonValue) : 
-    m_zoneNameHasBeenSet(false),
-    m_subnetIdHasBeenSet(false)
+AvailabilityZone::AvailabilityZone(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AvailabilityZone& AvailabilityZone::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ZoneName"))
   {
     m_zoneName = jsonValue.GetString("ZoneName");
-
     m_zoneNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SubnetId"))
   {
     m_subnetId = jsonValue.GetString("SubnetId");
-
     m_subnetIdHasBeenSet = true;
   }
-
   return *this;
 }
 

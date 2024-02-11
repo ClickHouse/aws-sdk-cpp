@@ -31,52 +31,23 @@ namespace Model
   class MultiplexMediaConnectOutputDestinationSettings
   {
   public:
-    AWS_MEDIALIVE_API MultiplexMediaConnectOutputDestinationSettings();
+    AWS_MEDIALIVE_API MultiplexMediaConnectOutputDestinationSettings() = default;
     AWS_MEDIALIVE_API MultiplexMediaConnectOutputDestinationSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API MultiplexMediaConnectOutputDestinationSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * The MediaConnect entitlement ARN available as a Flow source.
      */
-    inline const Aws::String& GetEntitlementArn() const{ return m_entitlementArn; }
-
-    /**
-     * The MediaConnect entitlement ARN available as a Flow source.
-     */
+    inline const Aws::String& GetEntitlementArn() const { return m_entitlementArn; }
     inline bool EntitlementArnHasBeenSet() const { return m_entitlementArnHasBeenSet; }
-
-    /**
-     * The MediaConnect entitlement ARN available as a Flow source.
-     */
-    inline void SetEntitlementArn(const Aws::String& value) { m_entitlementArnHasBeenSet = true; m_entitlementArn = value; }
-
-    /**
-     * The MediaConnect entitlement ARN available as a Flow source.
-     */
-    inline void SetEntitlementArn(Aws::String&& value) { m_entitlementArnHasBeenSet = true; m_entitlementArn = std::move(value); }
-
-    /**
-     * The MediaConnect entitlement ARN available as a Flow source.
-     */
-    inline void SetEntitlementArn(const char* value) { m_entitlementArnHasBeenSet = true; m_entitlementArn.assign(value); }
-
-    /**
-     * The MediaConnect entitlement ARN available as a Flow source.
-     */
-    inline MultiplexMediaConnectOutputDestinationSettings& WithEntitlementArn(const Aws::String& value) { SetEntitlementArn(value); return *this;}
-
-    /**
-     * The MediaConnect entitlement ARN available as a Flow source.
-     */
-    inline MultiplexMediaConnectOutputDestinationSettings& WithEntitlementArn(Aws::String&& value) { SetEntitlementArn(std::move(value)); return *this;}
-
-    /**
-     * The MediaConnect entitlement ARN available as a Flow source.
-     */
-    inline MultiplexMediaConnectOutputDestinationSettings& WithEntitlementArn(const char* value) { SetEntitlementArn(value); return *this;}
-
+    template<typename EntitlementArnT = Aws::String>
+    void SetEntitlementArn(EntitlementArnT&& value) { m_entitlementArnHasBeenSet = true; m_entitlementArn = std::forward<EntitlementArnT>(value); }
+    template<typename EntitlementArnT = Aws::String>
+    MultiplexMediaConnectOutputDestinationSettings& WithEntitlementArn(EntitlementArnT&& value) { SetEntitlementArn(std::forward<EntitlementArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_entitlementArn;

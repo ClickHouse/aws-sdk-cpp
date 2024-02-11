@@ -12,16 +12,6 @@ using namespace Aws::RecycleBin::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateRuleRequest::UpdateRuleRequest() : 
-    m_identifierHasBeenSet(false),
-    m_retentionPeriodHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_resourceType(ResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceTagsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateRuleRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -51,6 +41,17 @@ Aws::String UpdateRuleRequest::SerializePayload() const
      resourceTagsJsonList[resourceTagsIndex].AsObject(m_resourceTags[resourceTagsIndex].Jsonize());
    }
    payload.WithArray("ResourceTags", std::move(resourceTagsJsonList));
+
+  }
+
+  if(m_excludeResourceTagsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> excludeResourceTagsJsonList(m_excludeResourceTags.size());
+   for(unsigned excludeResourceTagsIndex = 0; excludeResourceTagsIndex < excludeResourceTagsJsonList.GetLength(); ++excludeResourceTagsIndex)
+   {
+     excludeResourceTagsJsonList[excludeResourceTagsIndex].AsObject(m_excludeResourceTags[excludeResourceTagsIndex].Jsonize());
+   }
+   payload.WithArray("ExcludeResourceTags", std::move(excludeResourceTagsJsonList));
 
   }
 

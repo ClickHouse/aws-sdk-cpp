@@ -10,17 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-DescribeInstanceTypesRequest::DescribeInstanceTypesRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_instanceTypesHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String DescribeInstanceTypesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -36,7 +25,7 @@ Aws::String DescribeInstanceTypesRequest::SerializePayload() const
     for(auto& item : m_instanceTypes)
     {
       ss << "InstanceType." << instanceTypesCount << "="
-          << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(item).c_str()) << "&";
+          << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(item)) << "&";
       instanceTypesCount++;
     }
   }

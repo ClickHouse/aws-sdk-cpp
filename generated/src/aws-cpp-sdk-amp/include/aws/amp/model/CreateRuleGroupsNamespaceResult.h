@@ -27,210 +27,91 @@ namespace PrometheusService
 namespace Model
 {
   /**
-   * <p>Represents the output of a CreateRuleGroupsNamespace operation.</p><p><h3>See
-   * Also:</h3>   <a
+   * <p>Represents the output of a <code>CreateRuleGroupsNamespace</code>
+   * operation.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/amp-2020-08-01/CreateRuleGroupsNamespaceResponse">AWS
    * API Reference</a></p>
    */
   class CreateRuleGroupsNamespaceResult
   {
   public:
-    AWS_PROMETHEUSSERVICE_API CreateRuleGroupsNamespaceResult();
+    AWS_PROMETHEUSSERVICE_API CreateRuleGroupsNamespaceResult() = default;
     AWS_PROMETHEUSSERVICE_API CreateRuleGroupsNamespaceResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_PROMETHEUSSERVICE_API CreateRuleGroupsNamespaceResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of this rule groups namespace.</p>
+     * <p>The name of the new rule groups namespace.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateRuleGroupsNamespaceResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of this rule groups namespace.</p>
+     * <p>The Amazon Resource Name (ARN) of the new rule groups namespace.</p>
      */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    CreateRuleGroupsNamespaceResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of this rule groups namespace.</p>
+     * <p>A structure that returns the current status of the rule groups namespace.</p>
      */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
+    inline const RuleGroupsNamespaceStatus& GetStatus() const { return m_status; }
+    template<typename StatusT = RuleGroupsNamespaceStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = RuleGroupsNamespaceStatus>
+    CreateRuleGroupsNamespaceResult& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of this rule groups namespace.</p>
+     * <p>The list of tag keys and values that are associated with the namespace.</p>
      */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateRuleGroupsNamespaceResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateRuleGroupsNamespaceResult& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of this rule groups namespace.</p>
-     */
-    inline CreateRuleGroupsNamespaceResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this rule groups namespace.</p>
-     */
-    inline CreateRuleGroupsNamespaceResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this rule groups namespace.</p>
-     */
-    inline CreateRuleGroupsNamespaceResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
-    /**
-     * <p>The rule groups namespace name.</p>
-     */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The rule groups namespace name.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The rule groups namespace name.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The rule groups namespace name.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The rule groups namespace name.</p>
-     */
-    inline CreateRuleGroupsNamespaceResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The rule groups namespace name.</p>
-     */
-    inline CreateRuleGroupsNamespaceResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The rule groups namespace name.</p>
-     */
-    inline CreateRuleGroupsNamespaceResult& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p>The status of rule groups namespace.</p>
-     */
-    inline const RuleGroupsNamespaceStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of rule groups namespace.</p>
-     */
-    inline void SetStatus(const RuleGroupsNamespaceStatus& value) { m_status = value; }
-
-    /**
-     * <p>The status of rule groups namespace.</p>
-     */
-    inline void SetStatus(RuleGroupsNamespaceStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of rule groups namespace.</p>
-     */
-    inline CreateRuleGroupsNamespaceResult& WithStatus(const RuleGroupsNamespaceStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of rule groups namespace.</p>
-     */
-    inline CreateRuleGroupsNamespaceResult& WithStatus(RuleGroupsNamespaceStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tags = value; }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tags = std::move(value); }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline CreateRuleGroupsNamespaceResult& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline CreateRuleGroupsNamespaceResult& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline CreateRuleGroupsNamespaceResult& AddTags(const Aws::String& key, const Aws::String& value) { m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline CreateRuleGroupsNamespaceResult& AddTags(Aws::String&& key, const Aws::String& value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline CreateRuleGroupsNamespaceResult& AddTags(const Aws::String& key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline CreateRuleGroupsNamespaceResult& AddTags(Aws::String&& key, Aws::String&& value) { m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline CreateRuleGroupsNamespaceResult& AddTags(const char* key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline CreateRuleGroupsNamespaceResult& AddTags(Aws::String&& key, const char* value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline CreateRuleGroupsNamespaceResult& AddTags(const char* key, const char* value) { m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateRuleGroupsNamespaceResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateRuleGroupsNamespaceResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateRuleGroupsNamespaceResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateRuleGroupsNamespaceResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_arn;
-
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
+
+    Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     RuleGroupsNamespaceStatus m_status;
+    bool m_statusHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

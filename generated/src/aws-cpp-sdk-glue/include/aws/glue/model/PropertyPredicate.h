@@ -32,124 +32,45 @@ namespace Model
   class PropertyPredicate
   {
   public:
-    AWS_GLUE_API PropertyPredicate();
+    AWS_GLUE_API PropertyPredicate() = default;
     AWS_GLUE_API PropertyPredicate(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API PropertyPredicate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The key of the property.</p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The key of the property.</p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    PropertyPredicate& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The key of the property.</p>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The key of the property.</p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The key of the property.</p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>The key of the property.</p>
-     */
-    inline PropertyPredicate& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The key of the property.</p>
-     */
-    inline PropertyPredicate& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The key of the property.</p>
-     */
-    inline PropertyPredicate& WithKey(const char* value) { SetKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of the property.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the property.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    PropertyPredicate& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The value of the property.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the property.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of the property.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The value of the property.</p>
-     */
-    inline PropertyPredicate& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of the property.</p>
-     */
-    inline PropertyPredicate& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value of the property.</p>
-     */
-    inline PropertyPredicate& WithValue(const char* value) { SetValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The comparator used to compare this property to others.</p>
      */
-    inline const Comparator& GetComparator() const{ return m_comparator; }
-
-    /**
-     * <p>The comparator used to compare this property to others.</p>
-     */
+    inline Comparator GetComparator() const { return m_comparator; }
     inline bool ComparatorHasBeenSet() const { return m_comparatorHasBeenSet; }
-
-    /**
-     * <p>The comparator used to compare this property to others.</p>
-     */
-    inline void SetComparator(const Comparator& value) { m_comparatorHasBeenSet = true; m_comparator = value; }
-
-    /**
-     * <p>The comparator used to compare this property to others.</p>
-     */
-    inline void SetComparator(Comparator&& value) { m_comparatorHasBeenSet = true; m_comparator = std::move(value); }
-
-    /**
-     * <p>The comparator used to compare this property to others.</p>
-     */
-    inline PropertyPredicate& WithComparator(const Comparator& value) { SetComparator(value); return *this;}
-
-    /**
-     * <p>The comparator used to compare this property to others.</p>
-     */
-    inline PropertyPredicate& WithComparator(Comparator&& value) { SetComparator(std::move(value)); return *this;}
-
+    inline void SetComparator(Comparator value) { m_comparatorHasBeenSet = true; m_comparator = value; }
+    inline PropertyPredicate& WithComparator(Comparator value) { SetComparator(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_key;
@@ -158,7 +79,7 @@ namespace Model
     Aws::String m_value;
     bool m_valueHasBeenSet = false;
 
-    Comparator m_comparator;
+    Comparator m_comparator{Comparator::NOT_SET};
     bool m_comparatorHasBeenSet = false;
   };
 

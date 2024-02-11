@@ -33,73 +33,35 @@ namespace Model
   class RemediationParameterValue
   {
   public:
-    AWS_CONFIGSERVICE_API RemediationParameterValue();
+    AWS_CONFIGSERVICE_API RemediationParameterValue() = default;
     AWS_CONFIGSERVICE_API RemediationParameterValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API RemediationParameterValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The value is dynamic and changes at run-time.</p>
      */
-    inline const ResourceValue& GetResourceValue() const{ return m_resourceValue; }
-
-    /**
-     * <p>The value is dynamic and changes at run-time.</p>
-     */
+    inline const ResourceValue& GetResourceValue() const { return m_resourceValue; }
     inline bool ResourceValueHasBeenSet() const { return m_resourceValueHasBeenSet; }
+    template<typename ResourceValueT = ResourceValue>
+    void SetResourceValue(ResourceValueT&& value) { m_resourceValueHasBeenSet = true; m_resourceValue = std::forward<ResourceValueT>(value); }
+    template<typename ResourceValueT = ResourceValue>
+    RemediationParameterValue& WithResourceValue(ResourceValueT&& value) { SetResourceValue(std::forward<ResourceValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The value is dynamic and changes at run-time.</p>
-     */
-    inline void SetResourceValue(const ResourceValue& value) { m_resourceValueHasBeenSet = true; m_resourceValue = value; }
-
-    /**
-     * <p>The value is dynamic and changes at run-time.</p>
-     */
-    inline void SetResourceValue(ResourceValue&& value) { m_resourceValueHasBeenSet = true; m_resourceValue = std::move(value); }
-
-    /**
-     * <p>The value is dynamic and changes at run-time.</p>
-     */
-    inline RemediationParameterValue& WithResourceValue(const ResourceValue& value) { SetResourceValue(value); return *this;}
-
-    /**
-     * <p>The value is dynamic and changes at run-time.</p>
-     */
-    inline RemediationParameterValue& WithResourceValue(ResourceValue&& value) { SetResourceValue(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The value is static and does not change at run-time.</p>
      */
-    inline const StaticValue& GetStaticValue() const{ return m_staticValue; }
-
-    /**
-     * <p>The value is static and does not change at run-time.</p>
-     */
+    inline const StaticValue& GetStaticValue() const { return m_staticValue; }
     inline bool StaticValueHasBeenSet() const { return m_staticValueHasBeenSet; }
-
-    /**
-     * <p>The value is static and does not change at run-time.</p>
-     */
-    inline void SetStaticValue(const StaticValue& value) { m_staticValueHasBeenSet = true; m_staticValue = value; }
-
-    /**
-     * <p>The value is static and does not change at run-time.</p>
-     */
-    inline void SetStaticValue(StaticValue&& value) { m_staticValueHasBeenSet = true; m_staticValue = std::move(value); }
-
-    /**
-     * <p>The value is static and does not change at run-time.</p>
-     */
-    inline RemediationParameterValue& WithStaticValue(const StaticValue& value) { SetStaticValue(value); return *this;}
-
-    /**
-     * <p>The value is static and does not change at run-time.</p>
-     */
-    inline RemediationParameterValue& WithStaticValue(StaticValue&& value) { SetStaticValue(std::move(value)); return *this;}
-
+    template<typename StaticValueT = StaticValue>
+    void SetStaticValue(StaticValueT&& value) { m_staticValueHasBeenSet = true; m_staticValue = std::forward<StaticValueT>(value); }
+    template<typename StaticValueT = StaticValue>
+    RemediationParameterValue& WithStaticValue(StaticValueT&& value) { SetStaticValue(std::forward<StaticValueT>(value)); return *this;}
+    ///@}
   private:
 
     ResourceValue m_resourceValue;

@@ -21,7 +21,7 @@ namespace Model
   class DeleteFunction2020_05_31Request : public CloudFrontRequest
   {
   public:
-    AWS_CLOUDFRONT_API DeleteFunction2020_05_31Request();
+    AWS_CLOUDFRONT_API DeleteFunction2020_05_31Request() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,95 +34,30 @@ namespace Model
     AWS_CLOUDFRONT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the function that you are deleting.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the function that you are deleting.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DeleteFunction2020_05_31Request& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the function that you are deleting.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the function that you are deleting.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the function that you are deleting.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the function that you are deleting.</p>
-     */
-    inline DeleteFunction2020_05_31Request& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the function that you are deleting.</p>
-     */
-    inline DeleteFunction2020_05_31Request& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the function that you are deleting.</p>
-     */
-    inline DeleteFunction2020_05_31Request& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current version (<code>ETag</code> value) of the function that you are
      * deleting, which you can get using <code>DescribeFunction</code>.</p>
      */
-    inline const Aws::String& GetIfMatch() const{ return m_ifMatch; }
-
-    /**
-     * <p>The current version (<code>ETag</code> value) of the function that you are
-     * deleting, which you can get using <code>DescribeFunction</code>.</p>
-     */
+    inline const Aws::String& GetIfMatch() const { return m_ifMatch; }
     inline bool IfMatchHasBeenSet() const { return m_ifMatchHasBeenSet; }
-
-    /**
-     * <p>The current version (<code>ETag</code> value) of the function that you are
-     * deleting, which you can get using <code>DescribeFunction</code>.</p>
-     */
-    inline void SetIfMatch(const Aws::String& value) { m_ifMatchHasBeenSet = true; m_ifMatch = value; }
-
-    /**
-     * <p>The current version (<code>ETag</code> value) of the function that you are
-     * deleting, which you can get using <code>DescribeFunction</code>.</p>
-     */
-    inline void SetIfMatch(Aws::String&& value) { m_ifMatchHasBeenSet = true; m_ifMatch = std::move(value); }
-
-    /**
-     * <p>The current version (<code>ETag</code> value) of the function that you are
-     * deleting, which you can get using <code>DescribeFunction</code>.</p>
-     */
-    inline void SetIfMatch(const char* value) { m_ifMatchHasBeenSet = true; m_ifMatch.assign(value); }
-
-    /**
-     * <p>The current version (<code>ETag</code> value) of the function that you are
-     * deleting, which you can get using <code>DescribeFunction</code>.</p>
-     */
-    inline DeleteFunction2020_05_31Request& WithIfMatch(const Aws::String& value) { SetIfMatch(value); return *this;}
-
-    /**
-     * <p>The current version (<code>ETag</code> value) of the function that you are
-     * deleting, which you can get using <code>DescribeFunction</code>.</p>
-     */
-    inline DeleteFunction2020_05_31Request& WithIfMatch(Aws::String&& value) { SetIfMatch(std::move(value)); return *this;}
-
-    /**
-     * <p>The current version (<code>ETag</code> value) of the function that you are
-     * deleting, which you can get using <code>DescribeFunction</code>.</p>
-     */
-    inline DeleteFunction2020_05_31Request& WithIfMatch(const char* value) { SetIfMatch(value); return *this;}
-
+    template<typename IfMatchT = Aws::String>
+    void SetIfMatch(IfMatchT&& value) { m_ifMatchHasBeenSet = true; m_ifMatch = std::forward<IfMatchT>(value); }
+    template<typename IfMatchT = Aws::String>
+    DeleteFunction2020_05_31Request& WithIfMatch(IfMatchT&& value) { SetIfMatch(std::forward<IfMatchT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

@@ -33,22 +33,25 @@ namespace ManagedBlockchain
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef ManagedBlockchainClientConfiguration ClientConfigurationType;
+      typedef ManagedBlockchainEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         ManagedBlockchainClient(const Aws::ManagedBlockchain::ManagedBlockchainClientConfiguration& clientConfiguration = Aws::ManagedBlockchain::ManagedBlockchainClientConfiguration(),
-                                std::shared_ptr<ManagedBlockchainEndpointProviderBase> endpointProvider = Aws::MakeShared<ManagedBlockchainEndpointProvider>(ALLOCATION_TAG));
+                                std::shared_ptr<ManagedBlockchainEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         ManagedBlockchainClient(const Aws::Auth::AWSCredentials& credentials,
-                                std::shared_ptr<ManagedBlockchainEndpointProviderBase> endpointProvider = Aws::MakeShared<ManagedBlockchainEndpointProvider>(ALLOCATION_TAG),
+                                std::shared_ptr<ManagedBlockchainEndpointProviderBase> endpointProvider = nullptr,
                                 const Aws::ManagedBlockchain::ManagedBlockchainClientConfiguration& clientConfiguration = Aws::ManagedBlockchain::ManagedBlockchainClientConfiguration());
 
        /**
@@ -56,7 +59,7 @@ namespace ManagedBlockchain
         * the default http client factory will be used
         */
         ManagedBlockchainClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                                std::shared_ptr<ManagedBlockchainEndpointProviderBase> endpointProvider = Aws::MakeShared<ManagedBlockchainEndpointProvider>(ALLOCATION_TAG),
+                                std::shared_ptr<ManagedBlockchainEndpointProviderBase> endpointProvider = nullptr,
                                 const Aws::ManagedBlockchain::ManagedBlockchainClientConfiguration& clientConfiguration = Aws::ManagedBlockchain::ManagedBlockchainClientConfiguration());
 
 
@@ -85,9 +88,9 @@ namespace ManagedBlockchain
         virtual ~ManagedBlockchainClient();
 
         /**
-         * <p>Creates a new accessor for use with Managed Blockchain Ethereum nodes. An
-         * accessor contains information required for token based access to your Ethereum
-         * nodes.</p><p><h3>See Also:</h3>   <a
+         * <p>Creates a new accessor for use with Amazon Managed Blockchain service that
+         * supports token based access. The accessor contains information required for
+         * token based access.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/managedblockchain-2018-09-24/CreateAccessor">AWS
          * API Reference</a></p>
          */
@@ -448,13 +451,13 @@ namespace ManagedBlockchain
          * href="http://docs.aws.amazon.com/goto/WebAPI/managedblockchain-2018-09-24/ListAccessors">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListAccessorsOutcome ListAccessors(const Model::ListAccessorsRequest& request) const;
+        virtual Model::ListAccessorsOutcome ListAccessors(const Model::ListAccessorsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListAccessors that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListAccessorsRequestT = Model::ListAccessorsRequest>
-        Model::ListAccessorsOutcomeCallable ListAccessorsCallable(const ListAccessorsRequestT& request) const
+        Model::ListAccessorsOutcomeCallable ListAccessorsCallable(const ListAccessorsRequestT& request = {}) const
         {
             return SubmitCallable(&ManagedBlockchainClient::ListAccessors, request);
         }
@@ -463,7 +466,7 @@ namespace ManagedBlockchain
          * An Async wrapper for ListAccessors that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListAccessorsRequestT = Model::ListAccessorsRequest>
-        void ListAccessorsAsync(const ListAccessorsRequestT& request, const ListAccessorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListAccessorsAsync(const ListAccessorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListAccessorsRequestT& request = {}) const
         {
             return SubmitAsync(&ManagedBlockchainClient::ListAccessors, request, handler, context);
         }
@@ -475,13 +478,13 @@ namespace ManagedBlockchain
          * href="http://docs.aws.amazon.com/goto/WebAPI/managedblockchain-2018-09-24/ListInvitations">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListInvitationsOutcome ListInvitations(const Model::ListInvitationsRequest& request) const;
+        virtual Model::ListInvitationsOutcome ListInvitations(const Model::ListInvitationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListInvitations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListInvitationsRequestT = Model::ListInvitationsRequest>
-        Model::ListInvitationsOutcomeCallable ListInvitationsCallable(const ListInvitationsRequestT& request) const
+        Model::ListInvitationsOutcomeCallable ListInvitationsCallable(const ListInvitationsRequestT& request = {}) const
         {
             return SubmitCallable(&ManagedBlockchainClient::ListInvitations, request);
         }
@@ -490,7 +493,7 @@ namespace ManagedBlockchain
          * An Async wrapper for ListInvitations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListInvitationsRequestT = Model::ListInvitationsRequest>
-        void ListInvitationsAsync(const ListInvitationsRequestT& request, const ListInvitationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListInvitationsAsync(const ListInvitationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListInvitationsRequestT& request = {}) const
         {
             return SubmitAsync(&ManagedBlockchainClient::ListInvitations, request, handler, context);
         }
@@ -529,13 +532,13 @@ namespace ManagedBlockchain
          * href="http://docs.aws.amazon.com/goto/WebAPI/managedblockchain-2018-09-24/ListNetworks">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListNetworksOutcome ListNetworks(const Model::ListNetworksRequest& request) const;
+        virtual Model::ListNetworksOutcome ListNetworks(const Model::ListNetworksRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListNetworks that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListNetworksRequestT = Model::ListNetworksRequest>
-        Model::ListNetworksOutcomeCallable ListNetworksCallable(const ListNetworksRequestT& request) const
+        Model::ListNetworksOutcomeCallable ListNetworksCallable(const ListNetworksRequestT& request = {}) const
         {
             return SubmitCallable(&ManagedBlockchainClient::ListNetworks, request);
         }
@@ -544,7 +547,7 @@ namespace ManagedBlockchain
          * An Async wrapper for ListNetworks that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListNetworksRequestT = Model::ListNetworksRequest>
-        void ListNetworksAsync(const ListNetworksRequestT& request, const ListNetworksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListNetworksAsync(const ListNetworksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListNetworksRequestT& request = {}) const
         {
             return SubmitAsync(&ManagedBlockchainClient::ListNetworks, request, handler, context);
         }
@@ -845,7 +848,6 @@ namespace ManagedBlockchain
       void init(const ManagedBlockchainClientConfiguration& clientConfiguration);
 
       ManagedBlockchainClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<ManagedBlockchainEndpointProviderBase> m_endpointProvider;
   };
 

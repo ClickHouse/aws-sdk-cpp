@@ -36,306 +36,125 @@ namespace Model
   class ReservedElasticsearchInstanceOffering
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API ReservedElasticsearchInstanceOffering();
+    AWS_ELASTICSEARCHSERVICE_API ReservedElasticsearchInstanceOffering() = default;
     AWS_ELASTICSEARCHSERVICE_API ReservedElasticsearchInstanceOffering(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API ReservedElasticsearchInstanceOffering& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Elasticsearch reserved instance offering identifier.</p>
      */
-    inline const Aws::String& GetReservedElasticsearchInstanceOfferingId() const{ return m_reservedElasticsearchInstanceOfferingId; }
-
-    /**
-     * <p>The Elasticsearch reserved instance offering identifier.</p>
-     */
+    inline const Aws::String& GetReservedElasticsearchInstanceOfferingId() const { return m_reservedElasticsearchInstanceOfferingId; }
     inline bool ReservedElasticsearchInstanceOfferingIdHasBeenSet() const { return m_reservedElasticsearchInstanceOfferingIdHasBeenSet; }
+    template<typename ReservedElasticsearchInstanceOfferingIdT = Aws::String>
+    void SetReservedElasticsearchInstanceOfferingId(ReservedElasticsearchInstanceOfferingIdT&& value) { m_reservedElasticsearchInstanceOfferingIdHasBeenSet = true; m_reservedElasticsearchInstanceOfferingId = std::forward<ReservedElasticsearchInstanceOfferingIdT>(value); }
+    template<typename ReservedElasticsearchInstanceOfferingIdT = Aws::String>
+    ReservedElasticsearchInstanceOffering& WithReservedElasticsearchInstanceOfferingId(ReservedElasticsearchInstanceOfferingIdT&& value) { SetReservedElasticsearchInstanceOfferingId(std::forward<ReservedElasticsearchInstanceOfferingIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Elasticsearch reserved instance offering identifier.</p>
-     */
-    inline void SetReservedElasticsearchInstanceOfferingId(const Aws::String& value) { m_reservedElasticsearchInstanceOfferingIdHasBeenSet = true; m_reservedElasticsearchInstanceOfferingId = value; }
-
-    /**
-     * <p>The Elasticsearch reserved instance offering identifier.</p>
-     */
-    inline void SetReservedElasticsearchInstanceOfferingId(Aws::String&& value) { m_reservedElasticsearchInstanceOfferingIdHasBeenSet = true; m_reservedElasticsearchInstanceOfferingId = std::move(value); }
-
-    /**
-     * <p>The Elasticsearch reserved instance offering identifier.</p>
-     */
-    inline void SetReservedElasticsearchInstanceOfferingId(const char* value) { m_reservedElasticsearchInstanceOfferingIdHasBeenSet = true; m_reservedElasticsearchInstanceOfferingId.assign(value); }
-
-    /**
-     * <p>The Elasticsearch reserved instance offering identifier.</p>
-     */
-    inline ReservedElasticsearchInstanceOffering& WithReservedElasticsearchInstanceOfferingId(const Aws::String& value) { SetReservedElasticsearchInstanceOfferingId(value); return *this;}
-
-    /**
-     * <p>The Elasticsearch reserved instance offering identifier.</p>
-     */
-    inline ReservedElasticsearchInstanceOffering& WithReservedElasticsearchInstanceOfferingId(Aws::String&& value) { SetReservedElasticsearchInstanceOfferingId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Elasticsearch reserved instance offering identifier.</p>
-     */
-    inline ReservedElasticsearchInstanceOffering& WithReservedElasticsearchInstanceOfferingId(const char* value) { SetReservedElasticsearchInstanceOfferingId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Elasticsearch instance type offered by the reserved instance
      * offering.</p>
      */
-    inline const ESPartitionInstanceType& GetElasticsearchInstanceType() const{ return m_elasticsearchInstanceType; }
-
-    /**
-     * <p>The Elasticsearch instance type offered by the reserved instance
-     * offering.</p>
-     */
+    inline ESPartitionInstanceType GetElasticsearchInstanceType() const { return m_elasticsearchInstanceType; }
     inline bool ElasticsearchInstanceTypeHasBeenSet() const { return m_elasticsearchInstanceTypeHasBeenSet; }
+    inline void SetElasticsearchInstanceType(ESPartitionInstanceType value) { m_elasticsearchInstanceTypeHasBeenSet = true; m_elasticsearchInstanceType = value; }
+    inline ReservedElasticsearchInstanceOffering& WithElasticsearchInstanceType(ESPartitionInstanceType value) { SetElasticsearchInstanceType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The Elasticsearch instance type offered by the reserved instance
-     * offering.</p>
-     */
-    inline void SetElasticsearchInstanceType(const ESPartitionInstanceType& value) { m_elasticsearchInstanceTypeHasBeenSet = true; m_elasticsearchInstanceType = value; }
-
-    /**
-     * <p>The Elasticsearch instance type offered by the reserved instance
-     * offering.</p>
-     */
-    inline void SetElasticsearchInstanceType(ESPartitionInstanceType&& value) { m_elasticsearchInstanceTypeHasBeenSet = true; m_elasticsearchInstanceType = std::move(value); }
-
-    /**
-     * <p>The Elasticsearch instance type offered by the reserved instance
-     * offering.</p>
-     */
-    inline ReservedElasticsearchInstanceOffering& WithElasticsearchInstanceType(const ESPartitionInstanceType& value) { SetElasticsearchInstanceType(value); return *this;}
-
-    /**
-     * <p>The Elasticsearch instance type offered by the reserved instance
-     * offering.</p>
-     */
-    inline ReservedElasticsearchInstanceOffering& WithElasticsearchInstanceType(ESPartitionInstanceType&& value) { SetElasticsearchInstanceType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The duration, in seconds, for which the offering will reserve the
      * Elasticsearch instance.</p>
      */
-    inline int GetDuration() const{ return m_duration; }
-
-    /**
-     * <p>The duration, in seconds, for which the offering will reserve the
-     * Elasticsearch instance.</p>
-     */
+    inline int GetDuration() const { return m_duration; }
     inline bool DurationHasBeenSet() const { return m_durationHasBeenSet; }
-
-    /**
-     * <p>The duration, in seconds, for which the offering will reserve the
-     * Elasticsearch instance.</p>
-     */
     inline void SetDuration(int value) { m_durationHasBeenSet = true; m_duration = value; }
-
-    /**
-     * <p>The duration, in seconds, for which the offering will reserve the
-     * Elasticsearch instance.</p>
-     */
     inline ReservedElasticsearchInstanceOffering& WithDuration(int value) { SetDuration(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The upfront fixed charge you will pay to purchase the specific reserved
      * Elasticsearch instance offering. </p>
      */
-    inline double GetFixedPrice() const{ return m_fixedPrice; }
-
-    /**
-     * <p>The upfront fixed charge you will pay to purchase the specific reserved
-     * Elasticsearch instance offering. </p>
-     */
+    inline double GetFixedPrice() const { return m_fixedPrice; }
     inline bool FixedPriceHasBeenSet() const { return m_fixedPriceHasBeenSet; }
-
-    /**
-     * <p>The upfront fixed charge you will pay to purchase the specific reserved
-     * Elasticsearch instance offering. </p>
-     */
     inline void SetFixedPrice(double value) { m_fixedPriceHasBeenSet = true; m_fixedPrice = value; }
-
-    /**
-     * <p>The upfront fixed charge you will pay to purchase the specific reserved
-     * Elasticsearch instance offering. </p>
-     */
     inline ReservedElasticsearchInstanceOffering& WithFixedPrice(double value) { SetFixedPrice(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The rate you are charged for each hour the domain that is using the offering
      * is running.</p>
      */
-    inline double GetUsagePrice() const{ return m_usagePrice; }
-
-    /**
-     * <p>The rate you are charged for each hour the domain that is using the offering
-     * is running.</p>
-     */
+    inline double GetUsagePrice() const { return m_usagePrice; }
     inline bool UsagePriceHasBeenSet() const { return m_usagePriceHasBeenSet; }
-
-    /**
-     * <p>The rate you are charged for each hour the domain that is using the offering
-     * is running.</p>
-     */
     inline void SetUsagePrice(double value) { m_usagePriceHasBeenSet = true; m_usagePrice = value; }
-
-    /**
-     * <p>The rate you are charged for each hour the domain that is using the offering
-     * is running.</p>
-     */
     inline ReservedElasticsearchInstanceOffering& WithUsagePrice(double value) { SetUsagePrice(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The currency code for the reserved Elasticsearch instance offering.</p>
      */
-    inline const Aws::String& GetCurrencyCode() const{ return m_currencyCode; }
-
-    /**
-     * <p>The currency code for the reserved Elasticsearch instance offering.</p>
-     */
+    inline const Aws::String& GetCurrencyCode() const { return m_currencyCode; }
     inline bool CurrencyCodeHasBeenSet() const { return m_currencyCodeHasBeenSet; }
+    template<typename CurrencyCodeT = Aws::String>
+    void SetCurrencyCode(CurrencyCodeT&& value) { m_currencyCodeHasBeenSet = true; m_currencyCode = std::forward<CurrencyCodeT>(value); }
+    template<typename CurrencyCodeT = Aws::String>
+    ReservedElasticsearchInstanceOffering& WithCurrencyCode(CurrencyCodeT&& value) { SetCurrencyCode(std::forward<CurrencyCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The currency code for the reserved Elasticsearch instance offering.</p>
-     */
-    inline void SetCurrencyCode(const Aws::String& value) { m_currencyCodeHasBeenSet = true; m_currencyCode = value; }
-
-    /**
-     * <p>The currency code for the reserved Elasticsearch instance offering.</p>
-     */
-    inline void SetCurrencyCode(Aws::String&& value) { m_currencyCodeHasBeenSet = true; m_currencyCode = std::move(value); }
-
-    /**
-     * <p>The currency code for the reserved Elasticsearch instance offering.</p>
-     */
-    inline void SetCurrencyCode(const char* value) { m_currencyCodeHasBeenSet = true; m_currencyCode.assign(value); }
-
-    /**
-     * <p>The currency code for the reserved Elasticsearch instance offering.</p>
-     */
-    inline ReservedElasticsearchInstanceOffering& WithCurrencyCode(const Aws::String& value) { SetCurrencyCode(value); return *this;}
-
-    /**
-     * <p>The currency code for the reserved Elasticsearch instance offering.</p>
-     */
-    inline ReservedElasticsearchInstanceOffering& WithCurrencyCode(Aws::String&& value) { SetCurrencyCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The currency code for the reserved Elasticsearch instance offering.</p>
-     */
-    inline ReservedElasticsearchInstanceOffering& WithCurrencyCode(const char* value) { SetCurrencyCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Payment option for the reserved Elasticsearch instance offering</p>
      */
-    inline const ReservedElasticsearchInstancePaymentOption& GetPaymentOption() const{ return m_paymentOption; }
-
-    /**
-     * <p>Payment option for the reserved Elasticsearch instance offering</p>
-     */
+    inline ReservedElasticsearchInstancePaymentOption GetPaymentOption() const { return m_paymentOption; }
     inline bool PaymentOptionHasBeenSet() const { return m_paymentOptionHasBeenSet; }
+    inline void SetPaymentOption(ReservedElasticsearchInstancePaymentOption value) { m_paymentOptionHasBeenSet = true; m_paymentOption = value; }
+    inline ReservedElasticsearchInstanceOffering& WithPaymentOption(ReservedElasticsearchInstancePaymentOption value) { SetPaymentOption(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Payment option for the reserved Elasticsearch instance offering</p>
-     */
-    inline void SetPaymentOption(const ReservedElasticsearchInstancePaymentOption& value) { m_paymentOptionHasBeenSet = true; m_paymentOption = value; }
-
-    /**
-     * <p>Payment option for the reserved Elasticsearch instance offering</p>
-     */
-    inline void SetPaymentOption(ReservedElasticsearchInstancePaymentOption&& value) { m_paymentOptionHasBeenSet = true; m_paymentOption = std::move(value); }
-
-    /**
-     * <p>Payment option for the reserved Elasticsearch instance offering</p>
-     */
-    inline ReservedElasticsearchInstanceOffering& WithPaymentOption(const ReservedElasticsearchInstancePaymentOption& value) { SetPaymentOption(value); return *this;}
-
-    /**
-     * <p>Payment option for the reserved Elasticsearch instance offering</p>
-     */
-    inline ReservedElasticsearchInstanceOffering& WithPaymentOption(ReservedElasticsearchInstancePaymentOption&& value) { SetPaymentOption(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The charge to your account regardless of whether you are creating any domains
      * using the instance offering.</p>
      */
-    inline const Aws::Vector<RecurringCharge>& GetRecurringCharges() const{ return m_recurringCharges; }
-
-    /**
-     * <p>The charge to your account regardless of whether you are creating any domains
-     * using the instance offering.</p>
-     */
+    inline const Aws::Vector<RecurringCharge>& GetRecurringCharges() const { return m_recurringCharges; }
     inline bool RecurringChargesHasBeenSet() const { return m_recurringChargesHasBeenSet; }
-
-    /**
-     * <p>The charge to your account regardless of whether you are creating any domains
-     * using the instance offering.</p>
-     */
-    inline void SetRecurringCharges(const Aws::Vector<RecurringCharge>& value) { m_recurringChargesHasBeenSet = true; m_recurringCharges = value; }
-
-    /**
-     * <p>The charge to your account regardless of whether you are creating any domains
-     * using the instance offering.</p>
-     */
-    inline void SetRecurringCharges(Aws::Vector<RecurringCharge>&& value) { m_recurringChargesHasBeenSet = true; m_recurringCharges = std::move(value); }
-
-    /**
-     * <p>The charge to your account regardless of whether you are creating any domains
-     * using the instance offering.</p>
-     */
-    inline ReservedElasticsearchInstanceOffering& WithRecurringCharges(const Aws::Vector<RecurringCharge>& value) { SetRecurringCharges(value); return *this;}
-
-    /**
-     * <p>The charge to your account regardless of whether you are creating any domains
-     * using the instance offering.</p>
-     */
-    inline ReservedElasticsearchInstanceOffering& WithRecurringCharges(Aws::Vector<RecurringCharge>&& value) { SetRecurringCharges(std::move(value)); return *this;}
-
-    /**
-     * <p>The charge to your account regardless of whether you are creating any domains
-     * using the instance offering.</p>
-     */
-    inline ReservedElasticsearchInstanceOffering& AddRecurringCharges(const RecurringCharge& value) { m_recurringChargesHasBeenSet = true; m_recurringCharges.push_back(value); return *this; }
-
-    /**
-     * <p>The charge to your account regardless of whether you are creating any domains
-     * using the instance offering.</p>
-     */
-    inline ReservedElasticsearchInstanceOffering& AddRecurringCharges(RecurringCharge&& value) { m_recurringChargesHasBeenSet = true; m_recurringCharges.push_back(std::move(value)); return *this; }
-
+    template<typename RecurringChargesT = Aws::Vector<RecurringCharge>>
+    void SetRecurringCharges(RecurringChargesT&& value) { m_recurringChargesHasBeenSet = true; m_recurringCharges = std::forward<RecurringChargesT>(value); }
+    template<typename RecurringChargesT = Aws::Vector<RecurringCharge>>
+    ReservedElasticsearchInstanceOffering& WithRecurringCharges(RecurringChargesT&& value) { SetRecurringCharges(std::forward<RecurringChargesT>(value)); return *this;}
+    template<typename RecurringChargesT = RecurringCharge>
+    ReservedElasticsearchInstanceOffering& AddRecurringCharges(RecurringChargesT&& value) { m_recurringChargesHasBeenSet = true; m_recurringCharges.emplace_back(std::forward<RecurringChargesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_reservedElasticsearchInstanceOfferingId;
     bool m_reservedElasticsearchInstanceOfferingIdHasBeenSet = false;
 
-    ESPartitionInstanceType m_elasticsearchInstanceType;
+    ESPartitionInstanceType m_elasticsearchInstanceType{ESPartitionInstanceType::NOT_SET};
     bool m_elasticsearchInstanceTypeHasBeenSet = false;
 
-    int m_duration;
+    int m_duration{0};
     bool m_durationHasBeenSet = false;
 
-    double m_fixedPrice;
+    double m_fixedPrice{0.0};
     bool m_fixedPriceHasBeenSet = false;
 
-    double m_usagePrice;
+    double m_usagePrice{0.0};
     bool m_usagePriceHasBeenSet = false;
 
     Aws::String m_currencyCode;
     bool m_currencyCodeHasBeenSet = false;
 
-    ReservedElasticsearchInstancePaymentOption m_paymentOption;
+    ReservedElasticsearchInstancePaymentOption m_paymentOption{ReservedElasticsearchInstancePaymentOption::NOT_SET};
     bool m_paymentOptionHasBeenSet = false;
 
     Aws::Vector<RecurringCharge> m_recurringCharges;

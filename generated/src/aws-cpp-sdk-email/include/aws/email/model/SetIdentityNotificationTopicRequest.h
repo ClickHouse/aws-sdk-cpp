@@ -18,11 +18,11 @@ namespace Model
 {
 
   /**
-   * <p>Represents a request to specify the Amazon SNS topic to which Amazon SES will
-   * publish bounce, complaint, or delivery notifications for emails sent with that
-   * identity as the Source. For information about Amazon SES notifications, see the
+   * <p>Represents a request to specify the Amazon SNS topic to which Amazon SES
+   * publishes bounce, complaint, or delivery notifications for emails sent with that
+   * identity as the source. For information about Amazon SES notifications, see the
    * <a
-   * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications-via-sns.html">Amazon
+   * href="https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity-using-notifications-sns.html">Amazon
    * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetIdentityNotificationTopicRequest">AWS
    * API Reference</a></p>
@@ -30,7 +30,7 @@ namespace Model
   class SetIdentityNotificationTopicRequest : public SESRequest
   {
   public:
-    AWS_SES_API SetIdentityNotificationTopicRequest();
+    AWS_SES_API SetIdentityNotificationTopicRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -45,186 +45,53 @@ namespace Model
 
   public:
 
+    ///@{
     /**
-     * <p>The identity (email address or domain) that you want to set the Amazon SNS
-     * topic for.</p>  <p>You can only specify a verified identity for this
-     * parameter.</p>  <p>You can specify an identity by using its name or
-     * by using its Amazon Resource Name (ARN). The following examples are all valid
-     * identities: <code>sender@example.com</code>, <code>example.com</code>,
+     * <p>The identity (email address or domain) for the Amazon SNS topic.</p>
+     *  <p>You can only specify a verified identity for this parameter.</p>
+     *  <p>You can specify an identity by using its name or by using its
+     * Amazon Resource Name (ARN). The following examples are all valid identities:
+     * <code>sender@example.com</code>, <code>example.com</code>,
      * <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p>
      */
-    inline const Aws::String& GetIdentity() const{ return m_identity; }
-
-    /**
-     * <p>The identity (email address or domain) that you want to set the Amazon SNS
-     * topic for.</p>  <p>You can only specify a verified identity for this
-     * parameter.</p>  <p>You can specify an identity by using its name or
-     * by using its Amazon Resource Name (ARN). The following examples are all valid
-     * identities: <code>sender@example.com</code>, <code>example.com</code>,
-     * <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p>
-     */
+    inline const Aws::String& GetIdentity() const { return m_identity; }
     inline bool IdentityHasBeenSet() const { return m_identityHasBeenSet; }
+    template<typename IdentityT = Aws::String>
+    void SetIdentity(IdentityT&& value) { m_identityHasBeenSet = true; m_identity = std::forward<IdentityT>(value); }
+    template<typename IdentityT = Aws::String>
+    SetIdentityNotificationTopicRequest& WithIdentity(IdentityT&& value) { SetIdentity(std::forward<IdentityT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identity (email address or domain) that you want to set the Amazon SNS
-     * topic for.</p>  <p>You can only specify a verified identity for this
-     * parameter.</p>  <p>You can specify an identity by using its name or
-     * by using its Amazon Resource Name (ARN). The following examples are all valid
-     * identities: <code>sender@example.com</code>, <code>example.com</code>,
-     * <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p>
-     */
-    inline void SetIdentity(const Aws::String& value) { m_identityHasBeenSet = true; m_identity = value; }
-
-    /**
-     * <p>The identity (email address or domain) that you want to set the Amazon SNS
-     * topic for.</p>  <p>You can only specify a verified identity for this
-     * parameter.</p>  <p>You can specify an identity by using its name or
-     * by using its Amazon Resource Name (ARN). The following examples are all valid
-     * identities: <code>sender@example.com</code>, <code>example.com</code>,
-     * <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p>
-     */
-    inline void SetIdentity(Aws::String&& value) { m_identityHasBeenSet = true; m_identity = std::move(value); }
-
-    /**
-     * <p>The identity (email address or domain) that you want to set the Amazon SNS
-     * topic for.</p>  <p>You can only specify a verified identity for this
-     * parameter.</p>  <p>You can specify an identity by using its name or
-     * by using its Amazon Resource Name (ARN). The following examples are all valid
-     * identities: <code>sender@example.com</code>, <code>example.com</code>,
-     * <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p>
-     */
-    inline void SetIdentity(const char* value) { m_identityHasBeenSet = true; m_identity.assign(value); }
-
-    /**
-     * <p>The identity (email address or domain) that you want to set the Amazon SNS
-     * topic for.</p>  <p>You can only specify a verified identity for this
-     * parameter.</p>  <p>You can specify an identity by using its name or
-     * by using its Amazon Resource Name (ARN). The following examples are all valid
-     * identities: <code>sender@example.com</code>, <code>example.com</code>,
-     * <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p>
-     */
-    inline SetIdentityNotificationTopicRequest& WithIdentity(const Aws::String& value) { SetIdentity(value); return *this;}
-
-    /**
-     * <p>The identity (email address or domain) that you want to set the Amazon SNS
-     * topic for.</p>  <p>You can only specify a verified identity for this
-     * parameter.</p>  <p>You can specify an identity by using its name or
-     * by using its Amazon Resource Name (ARN). The following examples are all valid
-     * identities: <code>sender@example.com</code>, <code>example.com</code>,
-     * <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p>
-     */
-    inline SetIdentityNotificationTopicRequest& WithIdentity(Aws::String&& value) { SetIdentity(std::move(value)); return *this;}
-
-    /**
-     * <p>The identity (email address or domain) that you want to set the Amazon SNS
-     * topic for.</p>  <p>You can only specify a verified identity for this
-     * parameter.</p>  <p>You can specify an identity by using its name or
-     * by using its Amazon Resource Name (ARN). The following examples are all valid
-     * identities: <code>sender@example.com</code>, <code>example.com</code>,
-     * <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p>
-     */
-    inline SetIdentityNotificationTopicRequest& WithIdentity(const char* value) { SetIdentity(value); return *this;}
-
-
-    /**
-     * <p>The type of notifications that will be published to the specified Amazon SNS
+     * <p>The type of notifications that are published to the specified Amazon SNS
      * topic.</p>
      */
-    inline const NotificationType& GetNotificationType() const{ return m_notificationType; }
-
-    /**
-     * <p>The type of notifications that will be published to the specified Amazon SNS
-     * topic.</p>
-     */
+    inline NotificationType GetNotificationType() const { return m_notificationType; }
     inline bool NotificationTypeHasBeenSet() const { return m_notificationTypeHasBeenSet; }
+    inline void SetNotificationType(NotificationType value) { m_notificationTypeHasBeenSet = true; m_notificationType = value; }
+    inline SetIdentityNotificationTopicRequest& WithNotificationType(NotificationType value) { SetNotificationType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of notifications that will be published to the specified Amazon SNS
-     * topic.</p>
-     */
-    inline void SetNotificationType(const NotificationType& value) { m_notificationTypeHasBeenSet = true; m_notificationType = value; }
-
-    /**
-     * <p>The type of notifications that will be published to the specified Amazon SNS
-     * topic.</p>
-     */
-    inline void SetNotificationType(NotificationType&& value) { m_notificationTypeHasBeenSet = true; m_notificationType = std::move(value); }
-
-    /**
-     * <p>The type of notifications that will be published to the specified Amazon SNS
-     * topic.</p>
-     */
-    inline SetIdentityNotificationTopicRequest& WithNotificationType(const NotificationType& value) { SetNotificationType(value); return *this;}
-
-    /**
-     * <p>The type of notifications that will be published to the specified Amazon SNS
-     * topic.</p>
-     */
-    inline SetIdentityNotificationTopicRequest& WithNotificationType(NotificationType&& value) { SetNotificationType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic. If the parameter is
      * omitted from the request or a null value is passed, <code>SnsTopic</code> is
      * cleared and publishing is disabled.</p>
      */
-    inline const Aws::String& GetSnsTopic() const{ return m_snsTopic; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic. If the parameter is
-     * omitted from the request or a null value is passed, <code>SnsTopic</code> is
-     * cleared and publishing is disabled.</p>
-     */
+    inline const Aws::String& GetSnsTopic() const { return m_snsTopic; }
     inline bool SnsTopicHasBeenSet() const { return m_snsTopicHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic. If the parameter is
-     * omitted from the request or a null value is passed, <code>SnsTopic</code> is
-     * cleared and publishing is disabled.</p>
-     */
-    inline void SetSnsTopic(const Aws::String& value) { m_snsTopicHasBeenSet = true; m_snsTopic = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic. If the parameter is
-     * omitted from the request or a null value is passed, <code>SnsTopic</code> is
-     * cleared and publishing is disabled.</p>
-     */
-    inline void SetSnsTopic(Aws::String&& value) { m_snsTopicHasBeenSet = true; m_snsTopic = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic. If the parameter is
-     * omitted from the request or a null value is passed, <code>SnsTopic</code> is
-     * cleared and publishing is disabled.</p>
-     */
-    inline void SetSnsTopic(const char* value) { m_snsTopicHasBeenSet = true; m_snsTopic.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic. If the parameter is
-     * omitted from the request or a null value is passed, <code>SnsTopic</code> is
-     * cleared and publishing is disabled.</p>
-     */
-    inline SetIdentityNotificationTopicRequest& WithSnsTopic(const Aws::String& value) { SetSnsTopic(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic. If the parameter is
-     * omitted from the request or a null value is passed, <code>SnsTopic</code> is
-     * cleared and publishing is disabled.</p>
-     */
-    inline SetIdentityNotificationTopicRequest& WithSnsTopic(Aws::String&& value) { SetSnsTopic(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic. If the parameter is
-     * omitted from the request or a null value is passed, <code>SnsTopic</code> is
-     * cleared and publishing is disabled.</p>
-     */
-    inline SetIdentityNotificationTopicRequest& WithSnsTopic(const char* value) { SetSnsTopic(value); return *this;}
-
+    template<typename SnsTopicT = Aws::String>
+    void SetSnsTopic(SnsTopicT&& value) { m_snsTopicHasBeenSet = true; m_snsTopic = std::forward<SnsTopicT>(value); }
+    template<typename SnsTopicT = Aws::String>
+    SetIdentityNotificationTopicRequest& WithSnsTopic(SnsTopicT&& value) { SetSnsTopic(std::forward<SnsTopicT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_identity;
     bool m_identityHasBeenSet = false;
 
-    NotificationType m_notificationType;
+    NotificationType m_notificationType{NotificationType::NOT_SET};
     bool m_notificationTypeHasBeenSet = false;
 
     Aws::String m_snsTopic;

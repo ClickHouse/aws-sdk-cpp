@@ -12,14 +12,6 @@ using namespace Aws::ResilienceHub::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListAppVersionsRequest::ListAppVersionsRequest() : 
-    m_appArnHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListAppVersionsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -28,6 +20,11 @@ Aws::String ListAppVersionsRequest::SerializePayload() const
   {
    payload.WithString("appArn", m_appArn);
 
+  }
+
+  if(m_endTimeHasBeenSet)
+  {
+   payload.WithDouble("endTime", m_endTime.SecondsWithMSPrecision());
   }
 
   if(m_maxResultsHasBeenSet)
@@ -40,6 +37,11 @@ Aws::String ListAppVersionsRequest::SerializePayload() const
   {
    payload.WithString("nextToken", m_nextToken);
 
+  }
+
+  if(m_startTimeHasBeenSet)
+  {
+   payload.WithDouble("startTime", m_startTime.SecondsWithMSPrecision());
   }
 
   return payload.View().WriteReadable();

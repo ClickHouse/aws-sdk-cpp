@@ -25,7 +25,7 @@ namespace Model
   class CreateChannelRequest : public IoTAnalyticsRequest
   {
   public:
-    AWS_IOTANALYTICS_API CreateChannelRequest();
+    AWS_IOTANALYTICS_API CreateChannelRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,179 +36,60 @@ namespace Model
     AWS_IOTANALYTICS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the channel.</p>
      */
-    inline const Aws::String& GetChannelName() const{ return m_channelName; }
-
-    /**
-     * <p>The name of the channel.</p>
-     */
+    inline const Aws::String& GetChannelName() const { return m_channelName; }
     inline bool ChannelNameHasBeenSet() const { return m_channelNameHasBeenSet; }
+    template<typename ChannelNameT = Aws::String>
+    void SetChannelName(ChannelNameT&& value) { m_channelNameHasBeenSet = true; m_channelName = std::forward<ChannelNameT>(value); }
+    template<typename ChannelNameT = Aws::String>
+    CreateChannelRequest& WithChannelName(ChannelNameT&& value) { SetChannelName(std::forward<ChannelNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the channel.</p>
-     */
-    inline void SetChannelName(const Aws::String& value) { m_channelNameHasBeenSet = true; m_channelName = value; }
-
-    /**
-     * <p>The name of the channel.</p>
-     */
-    inline void SetChannelName(Aws::String&& value) { m_channelNameHasBeenSet = true; m_channelName = std::move(value); }
-
-    /**
-     * <p>The name of the channel.</p>
-     */
-    inline void SetChannelName(const char* value) { m_channelNameHasBeenSet = true; m_channelName.assign(value); }
-
-    /**
-     * <p>The name of the channel.</p>
-     */
-    inline CreateChannelRequest& WithChannelName(const Aws::String& value) { SetChannelName(value); return *this;}
-
-    /**
-     * <p>The name of the channel.</p>
-     */
-    inline CreateChannelRequest& WithChannelName(Aws::String&& value) { SetChannelName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the channel.</p>
-     */
-    inline CreateChannelRequest& WithChannelName(const char* value) { SetChannelName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Where channel data is stored. You can choose one of
      * <code>serviceManagedS3</code> or <code>customerManagedS3</code> storage. If not
      * specified, the default is <code>serviceManagedS3</code>. You can't change this
      * storage option after the channel is created.</p>
      */
-    inline const ChannelStorage& GetChannelStorage() const{ return m_channelStorage; }
-
-    /**
-     * <p>Where channel data is stored. You can choose one of
-     * <code>serviceManagedS3</code> or <code>customerManagedS3</code> storage. If not
-     * specified, the default is <code>serviceManagedS3</code>. You can't change this
-     * storage option after the channel is created.</p>
-     */
+    inline const ChannelStorage& GetChannelStorage() const { return m_channelStorage; }
     inline bool ChannelStorageHasBeenSet() const { return m_channelStorageHasBeenSet; }
+    template<typename ChannelStorageT = ChannelStorage>
+    void SetChannelStorage(ChannelStorageT&& value) { m_channelStorageHasBeenSet = true; m_channelStorage = std::forward<ChannelStorageT>(value); }
+    template<typename ChannelStorageT = ChannelStorage>
+    CreateChannelRequest& WithChannelStorage(ChannelStorageT&& value) { SetChannelStorage(std::forward<ChannelStorageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Where channel data is stored. You can choose one of
-     * <code>serviceManagedS3</code> or <code>customerManagedS3</code> storage. If not
-     * specified, the default is <code>serviceManagedS3</code>. You can't change this
-     * storage option after the channel is created.</p>
-     */
-    inline void SetChannelStorage(const ChannelStorage& value) { m_channelStorageHasBeenSet = true; m_channelStorage = value; }
-
-    /**
-     * <p>Where channel data is stored. You can choose one of
-     * <code>serviceManagedS3</code> or <code>customerManagedS3</code> storage. If not
-     * specified, the default is <code>serviceManagedS3</code>. You can't change this
-     * storage option after the channel is created.</p>
-     */
-    inline void SetChannelStorage(ChannelStorage&& value) { m_channelStorageHasBeenSet = true; m_channelStorage = std::move(value); }
-
-    /**
-     * <p>Where channel data is stored. You can choose one of
-     * <code>serviceManagedS3</code> or <code>customerManagedS3</code> storage. If not
-     * specified, the default is <code>serviceManagedS3</code>. You can't change this
-     * storage option after the channel is created.</p>
-     */
-    inline CreateChannelRequest& WithChannelStorage(const ChannelStorage& value) { SetChannelStorage(value); return *this;}
-
-    /**
-     * <p>Where channel data is stored. You can choose one of
-     * <code>serviceManagedS3</code> or <code>customerManagedS3</code> storage. If not
-     * specified, the default is <code>serviceManagedS3</code>. You can't change this
-     * storage option after the channel is created.</p>
-     */
-    inline CreateChannelRequest& WithChannelStorage(ChannelStorage&& value) { SetChannelStorage(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>How long, in days, message data is kept for the channel. When
      * <code>customerManagedS3</code> storage is selected, this parameter is
      * ignored.</p>
      */
-    inline const RetentionPeriod& GetRetentionPeriod() const{ return m_retentionPeriod; }
-
-    /**
-     * <p>How long, in days, message data is kept for the channel. When
-     * <code>customerManagedS3</code> storage is selected, this parameter is
-     * ignored.</p>
-     */
+    inline const RetentionPeriod& GetRetentionPeriod() const { return m_retentionPeriod; }
     inline bool RetentionPeriodHasBeenSet() const { return m_retentionPeriodHasBeenSet; }
+    template<typename RetentionPeriodT = RetentionPeriod>
+    void SetRetentionPeriod(RetentionPeriodT&& value) { m_retentionPeriodHasBeenSet = true; m_retentionPeriod = std::forward<RetentionPeriodT>(value); }
+    template<typename RetentionPeriodT = RetentionPeriod>
+    CreateChannelRequest& WithRetentionPeriod(RetentionPeriodT&& value) { SetRetentionPeriod(std::forward<RetentionPeriodT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>How long, in days, message data is kept for the channel. When
-     * <code>customerManagedS3</code> storage is selected, this parameter is
-     * ignored.</p>
-     */
-    inline void SetRetentionPeriod(const RetentionPeriod& value) { m_retentionPeriodHasBeenSet = true; m_retentionPeriod = value; }
-
-    /**
-     * <p>How long, in days, message data is kept for the channel. When
-     * <code>customerManagedS3</code> storage is selected, this parameter is
-     * ignored.</p>
-     */
-    inline void SetRetentionPeriod(RetentionPeriod&& value) { m_retentionPeriodHasBeenSet = true; m_retentionPeriod = std::move(value); }
-
-    /**
-     * <p>How long, in days, message data is kept for the channel. When
-     * <code>customerManagedS3</code> storage is selected, this parameter is
-     * ignored.</p>
-     */
-    inline CreateChannelRequest& WithRetentionPeriod(const RetentionPeriod& value) { SetRetentionPeriod(value); return *this;}
-
-    /**
-     * <p>How long, in days, message data is kept for the channel. When
-     * <code>customerManagedS3</code> storage is selected, this parameter is
-     * ignored.</p>
-     */
-    inline CreateChannelRequest& WithRetentionPeriod(RetentionPeriod&& value) { SetRetentionPeriod(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Metadata which can be used to manage the channel.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Metadata which can be used to manage the channel.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>Metadata which can be used to manage the channel.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Metadata which can be used to manage the channel.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Metadata which can be used to manage the channel.</p>
-     */
-    inline CreateChannelRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Metadata which can be used to manage the channel.</p>
-     */
-    inline CreateChannelRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Metadata which can be used to manage the channel.</p>
-     */
-    inline CreateChannelRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>Metadata which can be used to manage the channel.</p>
-     */
-    inline CreateChannelRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateChannelRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateChannelRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_channelName;

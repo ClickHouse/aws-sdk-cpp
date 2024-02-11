@@ -18,15 +18,7 @@ namespace SSOAdmin
 namespace Model
 {
 
-CustomerManagedPolicyReference::CustomerManagedPolicyReference() : 
-    m_nameHasBeenSet(false),
-    m_pathHasBeenSet(false)
-{
-}
-
-CustomerManagedPolicyReference::CustomerManagedPolicyReference(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_pathHasBeenSet(false)
+CustomerManagedPolicyReference::CustomerManagedPolicyReference(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ CustomerManagedPolicyReference& CustomerManagedPolicyReference::operator =(JsonV
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Path"))
   {
     m_path = jsonValue.GetString("Path");
-
     m_pathHasBeenSet = true;
   }
-
   return *this;
 }
 

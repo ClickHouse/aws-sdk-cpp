@@ -21,7 +21,7 @@ namespace Model
   class CommitTransactionRequest : public LakeFormationRequest
   {
   public:
-    AWS_LAKEFORMATION_API CommitTransactionRequest();
+    AWS_LAKEFORMATION_API CommitTransactionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_LAKEFORMATION_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The transaction to commit.</p>
      */
-    inline const Aws::String& GetTransactionId() const{ return m_transactionId; }
-
-    /**
-     * <p>The transaction to commit.</p>
-     */
+    inline const Aws::String& GetTransactionId() const { return m_transactionId; }
     inline bool TransactionIdHasBeenSet() const { return m_transactionIdHasBeenSet; }
-
-    /**
-     * <p>The transaction to commit.</p>
-     */
-    inline void SetTransactionId(const Aws::String& value) { m_transactionIdHasBeenSet = true; m_transactionId = value; }
-
-    /**
-     * <p>The transaction to commit.</p>
-     */
-    inline void SetTransactionId(Aws::String&& value) { m_transactionIdHasBeenSet = true; m_transactionId = std::move(value); }
-
-    /**
-     * <p>The transaction to commit.</p>
-     */
-    inline void SetTransactionId(const char* value) { m_transactionIdHasBeenSet = true; m_transactionId.assign(value); }
-
-    /**
-     * <p>The transaction to commit.</p>
-     */
-    inline CommitTransactionRequest& WithTransactionId(const Aws::String& value) { SetTransactionId(value); return *this;}
-
-    /**
-     * <p>The transaction to commit.</p>
-     */
-    inline CommitTransactionRequest& WithTransactionId(Aws::String&& value) { SetTransactionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The transaction to commit.</p>
-     */
-    inline CommitTransactionRequest& WithTransactionId(const char* value) { SetTransactionId(value); return *this;}
-
+    template<typename TransactionIdT = Aws::String>
+    void SetTransactionId(TransactionIdT&& value) { m_transactionIdHasBeenSet = true; m_transactionId = std::forward<TransactionIdT>(value); }
+    template<typename TransactionIdT = Aws::String>
+    CommitTransactionRequest& WithTransactionId(TransactionIdT&& value) { SetTransactionId(std::forward<TransactionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_transactionId;

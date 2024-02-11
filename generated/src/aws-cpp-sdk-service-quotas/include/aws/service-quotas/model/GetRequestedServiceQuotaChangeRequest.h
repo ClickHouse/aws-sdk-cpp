@@ -21,7 +21,7 @@ namespace Model
   class GetRequestedServiceQuotaChangeRequest : public ServiceQuotasRequest
   {
   public:
-    AWS_SERVICEQUOTAS_API GetRequestedServiceQuotaChangeRequest();
+    AWS_SERVICEQUOTAS_API GetRequestedServiceQuotaChangeRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_SERVICEQUOTAS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The ID of the quota increase request.</p>
+     * <p>Specifies the ID of the quota increase request.</p>
      */
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    /**
-     * <p>The ID of the quota increase request.</p>
-     */
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
     inline bool RequestIdHasBeenSet() const { return m_requestIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the quota increase request.</p>
-     */
-    inline void SetRequestId(const Aws::String& value) { m_requestIdHasBeenSet = true; m_requestId = value; }
-
-    /**
-     * <p>The ID of the quota increase request.</p>
-     */
-    inline void SetRequestId(Aws::String&& value) { m_requestIdHasBeenSet = true; m_requestId = std::move(value); }
-
-    /**
-     * <p>The ID of the quota increase request.</p>
-     */
-    inline void SetRequestId(const char* value) { m_requestIdHasBeenSet = true; m_requestId.assign(value); }
-
-    /**
-     * <p>The ID of the quota increase request.</p>
-     */
-    inline GetRequestedServiceQuotaChangeRequest& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    /**
-     * <p>The ID of the quota increase request.</p>
-     */
-    inline GetRequestedServiceQuotaChangeRequest& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the quota increase request.</p>
-     */
-    inline GetRequestedServiceQuotaChangeRequest& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetRequestedServiceQuotaChangeRequest& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_requestId;

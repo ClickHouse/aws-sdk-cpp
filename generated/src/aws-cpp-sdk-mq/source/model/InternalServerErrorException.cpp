@@ -18,15 +18,7 @@ namespace MQ
 namespace Model
 {
 
-InternalServerErrorException::InternalServerErrorException() : 
-    m_errorAttributeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-InternalServerErrorException::InternalServerErrorException(JsonView jsonValue) : 
-    m_errorAttributeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+InternalServerErrorException::InternalServerErrorException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ InternalServerErrorException& InternalServerErrorException::operator =(JsonView 
   if(jsonValue.ValueExists("errorAttribute"))
   {
     m_errorAttribute = jsonValue.GetString("errorAttribute");
-
     m_errorAttributeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

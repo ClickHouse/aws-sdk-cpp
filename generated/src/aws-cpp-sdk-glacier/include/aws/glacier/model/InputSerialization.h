@@ -31,42 +31,23 @@ namespace Model
   class InputSerialization
   {
   public:
-    AWS_GLACIER_API InputSerialization();
+    AWS_GLACIER_API InputSerialization() = default;
     AWS_GLACIER_API InputSerialization(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLACIER_API InputSerialization& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLACIER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Describes the serialization of a CSV-encoded object.</p>
      */
-    inline const CSVInput& GetCsv() const{ return m_csv; }
-
-    /**
-     * <p>Describes the serialization of a CSV-encoded object.</p>
-     */
+    inline const CSVInput& GetCsv() const { return m_csv; }
     inline bool CsvHasBeenSet() const { return m_csvHasBeenSet; }
-
-    /**
-     * <p>Describes the serialization of a CSV-encoded object.</p>
-     */
-    inline void SetCsv(const CSVInput& value) { m_csvHasBeenSet = true; m_csv = value; }
-
-    /**
-     * <p>Describes the serialization of a CSV-encoded object.</p>
-     */
-    inline void SetCsv(CSVInput&& value) { m_csvHasBeenSet = true; m_csv = std::move(value); }
-
-    /**
-     * <p>Describes the serialization of a CSV-encoded object.</p>
-     */
-    inline InputSerialization& WithCsv(const CSVInput& value) { SetCsv(value); return *this;}
-
-    /**
-     * <p>Describes the serialization of a CSV-encoded object.</p>
-     */
-    inline InputSerialization& WithCsv(CSVInput&& value) { SetCsv(std::move(value)); return *this;}
-
+    template<typename CsvT = CSVInput>
+    void SetCsv(CsvT&& value) { m_csvHasBeenSet = true; m_csv = std::forward<CsvT>(value); }
+    template<typename CsvT = CSVInput>
+    InputSerialization& WithCsv(CsvT&& value) { SetCsv(std::forward<CsvT>(value)); return *this;}
+    ///@}
   private:
 
     CSVInput m_csv;

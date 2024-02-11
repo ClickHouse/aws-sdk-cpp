@@ -18,15 +18,7 @@ namespace NetworkFirewall
 namespace Model
 {
 
-IPSetMetadata::IPSetMetadata() : 
-    m_resolvedCIDRCount(0),
-    m_resolvedCIDRCountHasBeenSet(false)
-{
-}
-
-IPSetMetadata::IPSetMetadata(JsonView jsonValue) : 
-    m_resolvedCIDRCount(0),
-    m_resolvedCIDRCountHasBeenSet(false)
+IPSetMetadata::IPSetMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ IPSetMetadata& IPSetMetadata::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ResolvedCIDRCount"))
   {
     m_resolvedCIDRCount = jsonValue.GetInteger("ResolvedCIDRCount");
-
     m_resolvedCIDRCountHasBeenSet = true;
   }
-
   return *this;
 }
 

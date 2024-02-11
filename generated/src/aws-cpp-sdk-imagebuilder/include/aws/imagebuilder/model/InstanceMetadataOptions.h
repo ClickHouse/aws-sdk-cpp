@@ -39,12 +39,13 @@ namespace Model
   class InstanceMetadataOptions
   {
   public:
-    AWS_IMAGEBUILDER_API InstanceMetadataOptions();
+    AWS_IMAGEBUILDER_API InstanceMetadataOptions() = default;
     AWS_IMAGEBUILDER_API InstanceMetadataOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API InstanceMetadataOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Indicates whether a signed token header is required for instance metadata
      * retrieval requests. The values affect the response as follows:</p> <ul> <li> <p>
@@ -55,127 +56,31 @@ namespace Model
      * for the IAM role. Otherwise, version 1.0 credentials are returned.</p> </li>
      * </ul> <p>The default setting is <b>optional</b>.</p>
      */
-    inline const Aws::String& GetHttpTokens() const{ return m_httpTokens; }
-
-    /**
-     * <p>Indicates whether a signed token header is required for instance metadata
-     * retrieval requests. The values affect the response as follows:</p> <ul> <li> <p>
-     * <b>required</b> – When you retrieve the IAM role credentials, version 2.0
-     * credentials are returned in all cases.</p> </li> <li> <p> <b>optional</b> – You
-     * can include a signed token header in your request to retrieve instance metadata,
-     * or you can leave it out. If you include it, version 2.0 credentials are returned
-     * for the IAM role. Otherwise, version 1.0 credentials are returned.</p> </li>
-     * </ul> <p>The default setting is <b>optional</b>.</p>
-     */
+    inline const Aws::String& GetHttpTokens() const { return m_httpTokens; }
     inline bool HttpTokensHasBeenSet() const { return m_httpTokensHasBeenSet; }
+    template<typename HttpTokensT = Aws::String>
+    void SetHttpTokens(HttpTokensT&& value) { m_httpTokensHasBeenSet = true; m_httpTokens = std::forward<HttpTokensT>(value); }
+    template<typename HttpTokensT = Aws::String>
+    InstanceMetadataOptions& WithHttpTokens(HttpTokensT&& value) { SetHttpTokens(std::forward<HttpTokensT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates whether a signed token header is required for instance metadata
-     * retrieval requests. The values affect the response as follows:</p> <ul> <li> <p>
-     * <b>required</b> – When you retrieve the IAM role credentials, version 2.0
-     * credentials are returned in all cases.</p> </li> <li> <p> <b>optional</b> – You
-     * can include a signed token header in your request to retrieve instance metadata,
-     * or you can leave it out. If you include it, version 2.0 credentials are returned
-     * for the IAM role. Otherwise, version 1.0 credentials are returned.</p> </li>
-     * </ul> <p>The default setting is <b>optional</b>.</p>
-     */
-    inline void SetHttpTokens(const Aws::String& value) { m_httpTokensHasBeenSet = true; m_httpTokens = value; }
-
-    /**
-     * <p>Indicates whether a signed token header is required for instance metadata
-     * retrieval requests. The values affect the response as follows:</p> <ul> <li> <p>
-     * <b>required</b> – When you retrieve the IAM role credentials, version 2.0
-     * credentials are returned in all cases.</p> </li> <li> <p> <b>optional</b> – You
-     * can include a signed token header in your request to retrieve instance metadata,
-     * or you can leave it out. If you include it, version 2.0 credentials are returned
-     * for the IAM role. Otherwise, version 1.0 credentials are returned.</p> </li>
-     * </ul> <p>The default setting is <b>optional</b>.</p>
-     */
-    inline void SetHttpTokens(Aws::String&& value) { m_httpTokensHasBeenSet = true; m_httpTokens = std::move(value); }
-
-    /**
-     * <p>Indicates whether a signed token header is required for instance metadata
-     * retrieval requests. The values affect the response as follows:</p> <ul> <li> <p>
-     * <b>required</b> – When you retrieve the IAM role credentials, version 2.0
-     * credentials are returned in all cases.</p> </li> <li> <p> <b>optional</b> – You
-     * can include a signed token header in your request to retrieve instance metadata,
-     * or you can leave it out. If you include it, version 2.0 credentials are returned
-     * for the IAM role. Otherwise, version 1.0 credentials are returned.</p> </li>
-     * </ul> <p>The default setting is <b>optional</b>.</p>
-     */
-    inline void SetHttpTokens(const char* value) { m_httpTokensHasBeenSet = true; m_httpTokens.assign(value); }
-
-    /**
-     * <p>Indicates whether a signed token header is required for instance metadata
-     * retrieval requests. The values affect the response as follows:</p> <ul> <li> <p>
-     * <b>required</b> – When you retrieve the IAM role credentials, version 2.0
-     * credentials are returned in all cases.</p> </li> <li> <p> <b>optional</b> – You
-     * can include a signed token header in your request to retrieve instance metadata,
-     * or you can leave it out. If you include it, version 2.0 credentials are returned
-     * for the IAM role. Otherwise, version 1.0 credentials are returned.</p> </li>
-     * </ul> <p>The default setting is <b>optional</b>.</p>
-     */
-    inline InstanceMetadataOptions& WithHttpTokens(const Aws::String& value) { SetHttpTokens(value); return *this;}
-
-    /**
-     * <p>Indicates whether a signed token header is required for instance metadata
-     * retrieval requests. The values affect the response as follows:</p> <ul> <li> <p>
-     * <b>required</b> – When you retrieve the IAM role credentials, version 2.0
-     * credentials are returned in all cases.</p> </li> <li> <p> <b>optional</b> – You
-     * can include a signed token header in your request to retrieve instance metadata,
-     * or you can leave it out. If you include it, version 2.0 credentials are returned
-     * for the IAM role. Otherwise, version 1.0 credentials are returned.</p> </li>
-     * </ul> <p>The default setting is <b>optional</b>.</p>
-     */
-    inline InstanceMetadataOptions& WithHttpTokens(Aws::String&& value) { SetHttpTokens(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates whether a signed token header is required for instance metadata
-     * retrieval requests. The values affect the response as follows:</p> <ul> <li> <p>
-     * <b>required</b> – When you retrieve the IAM role credentials, version 2.0
-     * credentials are returned in all cases.</p> </li> <li> <p> <b>optional</b> – You
-     * can include a signed token header in your request to retrieve instance metadata,
-     * or you can leave it out. If you include it, version 2.0 credentials are returned
-     * for the IAM role. Otherwise, version 1.0 credentials are returned.</p> </li>
-     * </ul> <p>The default setting is <b>optional</b>.</p>
-     */
-    inline InstanceMetadataOptions& WithHttpTokens(const char* value) { SetHttpTokens(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Limit the number of hops that an instance metadata request can traverse to
      * reach its destination. The default is one hop. However, if HTTP tokens are
      * required, container image builds need a minimum of two hops.</p>
      */
-    inline int GetHttpPutResponseHopLimit() const{ return m_httpPutResponseHopLimit; }
-
-    /**
-     * <p>Limit the number of hops that an instance metadata request can traverse to
-     * reach its destination. The default is one hop. However, if HTTP tokens are
-     * required, container image builds need a minimum of two hops.</p>
-     */
+    inline int GetHttpPutResponseHopLimit() const { return m_httpPutResponseHopLimit; }
     inline bool HttpPutResponseHopLimitHasBeenSet() const { return m_httpPutResponseHopLimitHasBeenSet; }
-
-    /**
-     * <p>Limit the number of hops that an instance metadata request can traverse to
-     * reach its destination. The default is one hop. However, if HTTP tokens are
-     * required, container image builds need a minimum of two hops.</p>
-     */
     inline void SetHttpPutResponseHopLimit(int value) { m_httpPutResponseHopLimitHasBeenSet = true; m_httpPutResponseHopLimit = value; }
-
-    /**
-     * <p>Limit the number of hops that an instance metadata request can traverse to
-     * reach its destination. The default is one hop. However, if HTTP tokens are
-     * required, container image builds need a minimum of two hops.</p>
-     */
     inline InstanceMetadataOptions& WithHttpPutResponseHopLimit(int value) { SetHttpPutResponseHopLimit(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_httpTokens;
     bool m_httpTokensHasBeenSet = false;
 
-    int m_httpPutResponseHopLimit;
+    int m_httpPutResponseHopLimit{0};
     bool m_httpPutResponseHopLimitHasBeenSet = false;
   };
 

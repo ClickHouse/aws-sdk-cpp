@@ -18,19 +18,7 @@ namespace ConfigService
 namespace Model
 {
 
-OrganizationAggregationSource::OrganizationAggregationSource() : 
-    m_roleArnHasBeenSet(false),
-    m_awsRegionsHasBeenSet(false),
-    m_allAwsRegions(false),
-    m_allAwsRegionsHasBeenSet(false)
-{
-}
-
-OrganizationAggregationSource::OrganizationAggregationSource(JsonView jsonValue) : 
-    m_roleArnHasBeenSet(false),
-    m_awsRegionsHasBeenSet(false),
-    m_allAwsRegions(false),
-    m_allAwsRegionsHasBeenSet(false)
+OrganizationAggregationSource::OrganizationAggregationSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ OrganizationAggregationSource& OrganizationAggregationSource::operator =(JsonVie
   if(jsonValue.ValueExists("RoleArn"))
   {
     m_roleArn = jsonValue.GetString("RoleArn");
-
     m_roleArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AwsRegions"))
   {
     Aws::Utils::Array<JsonView> awsRegionsJsonList = jsonValue.GetArray("AwsRegions");
@@ -53,14 +39,11 @@ OrganizationAggregationSource& OrganizationAggregationSource::operator =(JsonVie
     }
     m_awsRegionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AllAwsRegions"))
   {
     m_allAwsRegions = jsonValue.GetBool("AllAwsRegions");
-
     m_allAwsRegionsHasBeenSet = true;
   }
-
   return *this;
 }
 

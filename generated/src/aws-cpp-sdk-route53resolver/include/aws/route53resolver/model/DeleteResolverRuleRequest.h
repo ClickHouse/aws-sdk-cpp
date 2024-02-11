@@ -21,7 +21,7 @@ namespace Model
   class DeleteResolverRuleRequest : public Route53ResolverRequest
   {
   public:
-    AWS_ROUTE53RESOLVER_API DeleteResolverRuleRequest();
+    AWS_ROUTE53RESOLVER_API DeleteResolverRuleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_ROUTE53RESOLVER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Resolver rule that you want to delete.</p>
      */
-    inline const Aws::String& GetResolverRuleId() const{ return m_resolverRuleId; }
-
-    /**
-     * <p>The ID of the Resolver rule that you want to delete.</p>
-     */
+    inline const Aws::String& GetResolverRuleId() const { return m_resolverRuleId; }
     inline bool ResolverRuleIdHasBeenSet() const { return m_resolverRuleIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the Resolver rule that you want to delete.</p>
-     */
-    inline void SetResolverRuleId(const Aws::String& value) { m_resolverRuleIdHasBeenSet = true; m_resolverRuleId = value; }
-
-    /**
-     * <p>The ID of the Resolver rule that you want to delete.</p>
-     */
-    inline void SetResolverRuleId(Aws::String&& value) { m_resolverRuleIdHasBeenSet = true; m_resolverRuleId = std::move(value); }
-
-    /**
-     * <p>The ID of the Resolver rule that you want to delete.</p>
-     */
-    inline void SetResolverRuleId(const char* value) { m_resolverRuleIdHasBeenSet = true; m_resolverRuleId.assign(value); }
-
-    /**
-     * <p>The ID of the Resolver rule that you want to delete.</p>
-     */
-    inline DeleteResolverRuleRequest& WithResolverRuleId(const Aws::String& value) { SetResolverRuleId(value); return *this;}
-
-    /**
-     * <p>The ID of the Resolver rule that you want to delete.</p>
-     */
-    inline DeleteResolverRuleRequest& WithResolverRuleId(Aws::String&& value) { SetResolverRuleId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Resolver rule that you want to delete.</p>
-     */
-    inline DeleteResolverRuleRequest& WithResolverRuleId(const char* value) { SetResolverRuleId(value); return *this;}
-
+    template<typename ResolverRuleIdT = Aws::String>
+    void SetResolverRuleId(ResolverRuleIdT&& value) { m_resolverRuleIdHasBeenSet = true; m_resolverRuleId = std::forward<ResolverRuleIdT>(value); }
+    template<typename ResolverRuleIdT = Aws::String>
+    DeleteResolverRuleRequest& WithResolverRuleId(ResolverRuleIdT&& value) { SetResolverRuleId(std::forward<ResolverRuleIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resolverRuleId;

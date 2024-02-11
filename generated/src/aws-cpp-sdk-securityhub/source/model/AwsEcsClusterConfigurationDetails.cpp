@@ -18,13 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsEcsClusterConfigurationDetails::AwsEcsClusterConfigurationDetails() : 
-    m_executeCommandConfigurationHasBeenSet(false)
-{
-}
-
-AwsEcsClusterConfigurationDetails::AwsEcsClusterConfigurationDetails(JsonView jsonValue) : 
-    m_executeCommandConfigurationHasBeenSet(false)
+AwsEcsClusterConfigurationDetails::AwsEcsClusterConfigurationDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ AwsEcsClusterConfigurationDetails& AwsEcsClusterConfigurationDetails::operator =
   if(jsonValue.ValueExists("ExecuteCommandConfiguration"))
   {
     m_executeCommandConfiguration = jsonValue.GetObject("ExecuteCommandConfiguration");
-
     m_executeCommandConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

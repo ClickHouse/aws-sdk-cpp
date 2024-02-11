@@ -23,7 +23,7 @@ namespace Model
   class CreateGameSessionRequest : public GameLiftRequest
   {
   public:
-    AWS_GAMELIFT_API CreateGameSessionRequest();
+    AWS_GAMELIFT_API CreateGameSessionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,413 +36,114 @@ namespace Model
     AWS_GAMELIFT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>A unique identifier for the fleet to create a game session in. You can use
      * either the fleet ID or ARN value. Each request must reference either a fleet ID
      * or alias ID, but not both.</p>
      */
-    inline const Aws::String& GetFleetId() const{ return m_fleetId; }
-
-    /**
-     * <p>A unique identifier for the fleet to create a game session in. You can use
-     * either the fleet ID or ARN value. Each request must reference either a fleet ID
-     * or alias ID, but not both.</p>
-     */
+    inline const Aws::String& GetFleetId() const { return m_fleetId; }
     inline bool FleetIdHasBeenSet() const { return m_fleetIdHasBeenSet; }
+    template<typename FleetIdT = Aws::String>
+    void SetFleetId(FleetIdT&& value) { m_fleetIdHasBeenSet = true; m_fleetId = std::forward<FleetIdT>(value); }
+    template<typename FleetIdT = Aws::String>
+    CreateGameSessionRequest& WithFleetId(FleetIdT&& value) { SetFleetId(std::forward<FleetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the fleet to create a game session in. You can use
-     * either the fleet ID or ARN value. Each request must reference either a fleet ID
-     * or alias ID, but not both.</p>
-     */
-    inline void SetFleetId(const Aws::String& value) { m_fleetIdHasBeenSet = true; m_fleetId = value; }
-
-    /**
-     * <p>A unique identifier for the fleet to create a game session in. You can use
-     * either the fleet ID or ARN value. Each request must reference either a fleet ID
-     * or alias ID, but not both.</p>
-     */
-    inline void SetFleetId(Aws::String&& value) { m_fleetIdHasBeenSet = true; m_fleetId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the fleet to create a game session in. You can use
-     * either the fleet ID or ARN value. Each request must reference either a fleet ID
-     * or alias ID, but not both.</p>
-     */
-    inline void SetFleetId(const char* value) { m_fleetIdHasBeenSet = true; m_fleetId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the fleet to create a game session in. You can use
-     * either the fleet ID or ARN value. Each request must reference either a fleet ID
-     * or alias ID, but not both.</p>
-     */
-    inline CreateGameSessionRequest& WithFleetId(const Aws::String& value) { SetFleetId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the fleet to create a game session in. You can use
-     * either the fleet ID or ARN value. Each request must reference either a fleet ID
-     * or alias ID, but not both.</p>
-     */
-    inline CreateGameSessionRequest& WithFleetId(Aws::String&& value) { SetFleetId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the fleet to create a game session in. You can use
-     * either the fleet ID or ARN value. Each request must reference either a fleet ID
-     * or alias ID, but not both.</p>
-     */
-    inline CreateGameSessionRequest& WithFleetId(const char* value) { SetFleetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for the alias associated with the fleet to create a game
      * session in. You can use either the alias ID or ARN value. Each request must
      * reference either a fleet ID or alias ID, but not both.</p>
      */
-    inline const Aws::String& GetAliasId() const{ return m_aliasId; }
-
-    /**
-     * <p>A unique identifier for the alias associated with the fleet to create a game
-     * session in. You can use either the alias ID or ARN value. Each request must
-     * reference either a fleet ID or alias ID, but not both.</p>
-     */
+    inline const Aws::String& GetAliasId() const { return m_aliasId; }
     inline bool AliasIdHasBeenSet() const { return m_aliasIdHasBeenSet; }
+    template<typename AliasIdT = Aws::String>
+    void SetAliasId(AliasIdT&& value) { m_aliasIdHasBeenSet = true; m_aliasId = std::forward<AliasIdT>(value); }
+    template<typename AliasIdT = Aws::String>
+    CreateGameSessionRequest& WithAliasId(AliasIdT&& value) { SetAliasId(std::forward<AliasIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the alias associated with the fleet to create a game
-     * session in. You can use either the alias ID or ARN value. Each request must
-     * reference either a fleet ID or alias ID, but not both.</p>
-     */
-    inline void SetAliasId(const Aws::String& value) { m_aliasIdHasBeenSet = true; m_aliasId = value; }
-
-    /**
-     * <p>A unique identifier for the alias associated with the fleet to create a game
-     * session in. You can use either the alias ID or ARN value. Each request must
-     * reference either a fleet ID or alias ID, but not both.</p>
-     */
-    inline void SetAliasId(Aws::String&& value) { m_aliasIdHasBeenSet = true; m_aliasId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the alias associated with the fleet to create a game
-     * session in. You can use either the alias ID or ARN value. Each request must
-     * reference either a fleet ID or alias ID, but not both.</p>
-     */
-    inline void SetAliasId(const char* value) { m_aliasIdHasBeenSet = true; m_aliasId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the alias associated with the fleet to create a game
-     * session in. You can use either the alias ID or ARN value. Each request must
-     * reference either a fleet ID or alias ID, but not both.</p>
-     */
-    inline CreateGameSessionRequest& WithAliasId(const Aws::String& value) { SetAliasId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the alias associated with the fleet to create a game
-     * session in. You can use either the alias ID or ARN value. Each request must
-     * reference either a fleet ID or alias ID, but not both.</p>
-     */
-    inline CreateGameSessionRequest& WithAliasId(Aws::String&& value) { SetAliasId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the alias associated with the fleet to create a game
-     * session in. You can use either the alias ID or ARN value. Each request must
-     * reference either a fleet ID or alias ID, but not both.</p>
-     */
-    inline CreateGameSessionRequest& WithAliasId(const char* value) { SetAliasId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of players that can be connected simultaneously to the
      * game session.</p>
      */
-    inline int GetMaximumPlayerSessionCount() const{ return m_maximumPlayerSessionCount; }
-
-    /**
-     * <p>The maximum number of players that can be connected simultaneously to the
-     * game session.</p>
-     */
+    inline int GetMaximumPlayerSessionCount() const { return m_maximumPlayerSessionCount; }
     inline bool MaximumPlayerSessionCountHasBeenSet() const { return m_maximumPlayerSessionCountHasBeenSet; }
-
-    /**
-     * <p>The maximum number of players that can be connected simultaneously to the
-     * game session.</p>
-     */
     inline void SetMaximumPlayerSessionCount(int value) { m_maximumPlayerSessionCountHasBeenSet = true; m_maximumPlayerSessionCount = value; }
-
-    /**
-     * <p>The maximum number of players that can be connected simultaneously to the
-     * game session.</p>
-     */
     inline CreateGameSessionRequest& WithMaximumPlayerSessionCount(int value) { SetMaximumPlayerSessionCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A descriptive label that is associated with a game session. Session names do
      * not need to be unique.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A descriptive label that is associated with a game session. Session names do
-     * not need to be unique.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateGameSessionRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A descriptive label that is associated with a game session. Session names do
-     * not need to be unique.</p>
+     * <p>A set of key-value pairs that can store custom data in a game session. For
+     * example: <code>{"Key": "difficulty", "Value": "novice"}</code>. For an example,
+     * see <a
+     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-api.html#game-properties-create">Create
+     * a game session with custom properties</a>. </p>
      */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A descriptive label that is associated with a game session. Session names do
-     * not need to be unique.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A descriptive label that is associated with a game session. Session names do
-     * not need to be unique.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A descriptive label that is associated with a game session. Session names do
-     * not need to be unique.</p>
-     */
-    inline CreateGameSessionRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A descriptive label that is associated with a game session. Session names do
-     * not need to be unique.</p>
-     */
-    inline CreateGameSessionRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A descriptive label that is associated with a game session. Session names do
-     * not need to be unique.</p>
-     */
-    inline CreateGameSessionRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p>A set of custom properties for a game session, formatted as key:value pairs.
-     * These properties are passed to a game server process with a request to start a
-     * new game session (see <a
-     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession">Start
-     * a Game Session</a>).</p>
-     */
-    inline const Aws::Vector<GameProperty>& GetGameProperties() const{ return m_gameProperties; }
-
-    /**
-     * <p>A set of custom properties for a game session, formatted as key:value pairs.
-     * These properties are passed to a game server process with a request to start a
-     * new game session (see <a
-     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession">Start
-     * a Game Session</a>).</p>
-     */
+    inline const Aws::Vector<GameProperty>& GetGameProperties() const { return m_gameProperties; }
     inline bool GamePropertiesHasBeenSet() const { return m_gamePropertiesHasBeenSet; }
+    template<typename GamePropertiesT = Aws::Vector<GameProperty>>
+    void SetGameProperties(GamePropertiesT&& value) { m_gamePropertiesHasBeenSet = true; m_gameProperties = std::forward<GamePropertiesT>(value); }
+    template<typename GamePropertiesT = Aws::Vector<GameProperty>>
+    CreateGameSessionRequest& WithGameProperties(GamePropertiesT&& value) { SetGameProperties(std::forward<GamePropertiesT>(value)); return *this;}
+    template<typename GamePropertiesT = GameProperty>
+    CreateGameSessionRequest& AddGameProperties(GamePropertiesT&& value) { m_gamePropertiesHasBeenSet = true; m_gameProperties.emplace_back(std::forward<GamePropertiesT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>A set of custom properties for a game session, formatted as key:value pairs.
-     * These properties are passed to a game server process with a request to start a
-     * new game session (see <a
-     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession">Start
-     * a Game Session</a>).</p>
+     * <p>A unique identifier for a player or entity creating the game session. </p>
+     * <p>If you add a resource creation limit policy to a fleet, the
+     * <code>CreateGameSession</code> operation requires a <code>CreatorId</code>.
+     * Amazon GameLift Servers limits the number of game session creation requests with
+     * the same <code>CreatorId</code> in a specified time period.</p> <p>If you your
+     * fleet doesn't have a resource creation limit policy and you provide a
+     * <code>CreatorId</code> in your <code>CreateGameSession</code> requests, Amazon
+     * GameLift Servers limits requests to one request per <code>CreatorId</code> per
+     * second.</p> <p>To not limit <code>CreateGameSession</code> requests with the
+     * same <code>CreatorId</code>, don't provide a <code>CreatorId</code> in your
+     * <code>CreateGameSession</code> request.</p>
      */
-    inline void SetGameProperties(const Aws::Vector<GameProperty>& value) { m_gamePropertiesHasBeenSet = true; m_gameProperties = value; }
-
-    /**
-     * <p>A set of custom properties for a game session, formatted as key:value pairs.
-     * These properties are passed to a game server process with a request to start a
-     * new game session (see <a
-     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession">Start
-     * a Game Session</a>).</p>
-     */
-    inline void SetGameProperties(Aws::Vector<GameProperty>&& value) { m_gamePropertiesHasBeenSet = true; m_gameProperties = std::move(value); }
-
-    /**
-     * <p>A set of custom properties for a game session, formatted as key:value pairs.
-     * These properties are passed to a game server process with a request to start a
-     * new game session (see <a
-     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession">Start
-     * a Game Session</a>).</p>
-     */
-    inline CreateGameSessionRequest& WithGameProperties(const Aws::Vector<GameProperty>& value) { SetGameProperties(value); return *this;}
-
-    /**
-     * <p>A set of custom properties for a game session, formatted as key:value pairs.
-     * These properties are passed to a game server process with a request to start a
-     * new game session (see <a
-     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession">Start
-     * a Game Session</a>).</p>
-     */
-    inline CreateGameSessionRequest& WithGameProperties(Aws::Vector<GameProperty>&& value) { SetGameProperties(std::move(value)); return *this;}
-
-    /**
-     * <p>A set of custom properties for a game session, formatted as key:value pairs.
-     * These properties are passed to a game server process with a request to start a
-     * new game session (see <a
-     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession">Start
-     * a Game Session</a>).</p>
-     */
-    inline CreateGameSessionRequest& AddGameProperties(const GameProperty& value) { m_gamePropertiesHasBeenSet = true; m_gameProperties.push_back(value); return *this; }
-
-    /**
-     * <p>A set of custom properties for a game session, formatted as key:value pairs.
-     * These properties are passed to a game server process with a request to start a
-     * new game session (see <a
-     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession">Start
-     * a Game Session</a>).</p>
-     */
-    inline CreateGameSessionRequest& AddGameProperties(GameProperty&& value) { m_gamePropertiesHasBeenSet = true; m_gameProperties.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>A unique identifier for a player or entity creating the game session. This
-     * parameter is required when requesting a new game session on a fleet with a
-     * resource creation limit policy. This type of policy limits the number of
-     * concurrent active game sessions that one player can create within a certain time
-     * span. GameLift uses the CreatorId to evaluate the new request against the
-     * policy.</p>
-     */
-    inline const Aws::String& GetCreatorId() const{ return m_creatorId; }
-
-    /**
-     * <p>A unique identifier for a player or entity creating the game session. This
-     * parameter is required when requesting a new game session on a fleet with a
-     * resource creation limit policy. This type of policy limits the number of
-     * concurrent active game sessions that one player can create within a certain time
-     * span. GameLift uses the CreatorId to evaluate the new request against the
-     * policy.</p>
-     */
+    inline const Aws::String& GetCreatorId() const { return m_creatorId; }
     inline bool CreatorIdHasBeenSet() const { return m_creatorIdHasBeenSet; }
+    template<typename CreatorIdT = Aws::String>
+    void SetCreatorId(CreatorIdT&& value) { m_creatorIdHasBeenSet = true; m_creatorId = std::forward<CreatorIdT>(value); }
+    template<typename CreatorIdT = Aws::String>
+    CreateGameSessionRequest& WithCreatorId(CreatorIdT&& value) { SetCreatorId(std::forward<CreatorIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for a player or entity creating the game session. This
-     * parameter is required when requesting a new game session on a fleet with a
-     * resource creation limit policy. This type of policy limits the number of
-     * concurrent active game sessions that one player can create within a certain time
-     * span. GameLift uses the CreatorId to evaluate the new request against the
-     * policy.</p>
-     */
-    inline void SetCreatorId(const Aws::String& value) { m_creatorIdHasBeenSet = true; m_creatorId = value; }
-
-    /**
-     * <p>A unique identifier for a player or entity creating the game session. This
-     * parameter is required when requesting a new game session on a fleet with a
-     * resource creation limit policy. This type of policy limits the number of
-     * concurrent active game sessions that one player can create within a certain time
-     * span. GameLift uses the CreatorId to evaluate the new request against the
-     * policy.</p>
-     */
-    inline void SetCreatorId(Aws::String&& value) { m_creatorIdHasBeenSet = true; m_creatorId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for a player or entity creating the game session. This
-     * parameter is required when requesting a new game session on a fleet with a
-     * resource creation limit policy. This type of policy limits the number of
-     * concurrent active game sessions that one player can create within a certain time
-     * span. GameLift uses the CreatorId to evaluate the new request against the
-     * policy.</p>
-     */
-    inline void SetCreatorId(const char* value) { m_creatorIdHasBeenSet = true; m_creatorId.assign(value); }
-
-    /**
-     * <p>A unique identifier for a player or entity creating the game session. This
-     * parameter is required when requesting a new game session on a fleet with a
-     * resource creation limit policy. This type of policy limits the number of
-     * concurrent active game sessions that one player can create within a certain time
-     * span. GameLift uses the CreatorId to evaluate the new request against the
-     * policy.</p>
-     */
-    inline CreateGameSessionRequest& WithCreatorId(const Aws::String& value) { SetCreatorId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for a player or entity creating the game session. This
-     * parameter is required when requesting a new game session on a fleet with a
-     * resource creation limit policy. This type of policy limits the number of
-     * concurrent active game sessions that one player can create within a certain time
-     * span. GameLift uses the CreatorId to evaluate the new request against the
-     * policy.</p>
-     */
-    inline CreateGameSessionRequest& WithCreatorId(Aws::String&& value) { SetCreatorId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for a player or entity creating the game session. This
-     * parameter is required when requesting a new game session on a fleet with a
-     * resource creation limit policy. This type of policy limits the number of
-     * concurrent active game sessions that one player can create within a certain time
-     * span. GameLift uses the CreatorId to evaluate the new request against the
-     * policy.</p>
-     */
-    inline CreateGameSessionRequest& WithCreatorId(const char* value) { SetCreatorId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> <i>This parameter is deprecated. Use <code>IdempotencyToken</code>
      * instead.</i> </p> <p>Custom string that uniquely identifies a request for a new
      * game session. Maximum token length is 48 characters. If provided, this string is
      * included in the new game session's ID.</p>
      */
-    inline const Aws::String& GetGameSessionId() const{ return m_gameSessionId; }
-
-    /**
-     * <p> <i>This parameter is deprecated. Use <code>IdempotencyToken</code>
-     * instead.</i> </p> <p>Custom string that uniquely identifies a request for a new
-     * game session. Maximum token length is 48 characters. If provided, this string is
-     * included in the new game session's ID.</p>
-     */
+    inline const Aws::String& GetGameSessionId() const { return m_gameSessionId; }
     inline bool GameSessionIdHasBeenSet() const { return m_gameSessionIdHasBeenSet; }
+    template<typename GameSessionIdT = Aws::String>
+    void SetGameSessionId(GameSessionIdT&& value) { m_gameSessionIdHasBeenSet = true; m_gameSessionId = std::forward<GameSessionIdT>(value); }
+    template<typename GameSessionIdT = Aws::String>
+    CreateGameSessionRequest& WithGameSessionId(GameSessionIdT&& value) { SetGameSessionId(std::forward<GameSessionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> <i>This parameter is deprecated. Use <code>IdempotencyToken</code>
-     * instead.</i> </p> <p>Custom string that uniquely identifies a request for a new
-     * game session. Maximum token length is 48 characters. If provided, this string is
-     * included in the new game session's ID.</p>
-     */
-    inline void SetGameSessionId(const Aws::String& value) { m_gameSessionIdHasBeenSet = true; m_gameSessionId = value; }
-
-    /**
-     * <p> <i>This parameter is deprecated. Use <code>IdempotencyToken</code>
-     * instead.</i> </p> <p>Custom string that uniquely identifies a request for a new
-     * game session. Maximum token length is 48 characters. If provided, this string is
-     * included in the new game session's ID.</p>
-     */
-    inline void SetGameSessionId(Aws::String&& value) { m_gameSessionIdHasBeenSet = true; m_gameSessionId = std::move(value); }
-
-    /**
-     * <p> <i>This parameter is deprecated. Use <code>IdempotencyToken</code>
-     * instead.</i> </p> <p>Custom string that uniquely identifies a request for a new
-     * game session. Maximum token length is 48 characters. If provided, this string is
-     * included in the new game session's ID.</p>
-     */
-    inline void SetGameSessionId(const char* value) { m_gameSessionIdHasBeenSet = true; m_gameSessionId.assign(value); }
-
-    /**
-     * <p> <i>This parameter is deprecated. Use <code>IdempotencyToken</code>
-     * instead.</i> </p> <p>Custom string that uniquely identifies a request for a new
-     * game session. Maximum token length is 48 characters. If provided, this string is
-     * included in the new game session's ID.</p>
-     */
-    inline CreateGameSessionRequest& WithGameSessionId(const Aws::String& value) { SetGameSessionId(value); return *this;}
-
-    /**
-     * <p> <i>This parameter is deprecated. Use <code>IdempotencyToken</code>
-     * instead.</i> </p> <p>Custom string that uniquely identifies a request for a new
-     * game session. Maximum token length is 48 characters. If provided, this string is
-     * included in the new game session's ID.</p>
-     */
-    inline CreateGameSessionRequest& WithGameSessionId(Aws::String&& value) { SetGameSessionId(std::move(value)); return *this;}
-
-    /**
-     * <p> <i>This parameter is deprecated. Use <code>IdempotencyToken</code>
-     * instead.</i> </p> <p>Custom string that uniquely identifies a request for a new
-     * game session. Maximum token length is 48 characters. If provided, this string is
-     * included in the new game session's ID.</p>
-     */
-    inline CreateGameSessionRequest& WithGameSessionId(const char* value) { SetGameSessionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Custom string that uniquely identifies the new game session request. This is
      * useful for ensuring that game session requests with the same idempotency token
@@ -450,249 +151,50 @@ namespace Model
      * original <code>GameSession</code> object, with an updated status. Maximum token
      * length is 48 characters. If provided, this string is included in the new game
      * session's ID. A game session ARN has the following format:
-     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom
+     * <code>arn:aws:gamelift:&lt;location&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom
      * ID string or idempotency token&gt;</code>. Idempotency tokens remain in use for
      * 30 days after a game session has ended; game session objects are retained for
      * this time period and then deleted.</p>
      */
-    inline const Aws::String& GetIdempotencyToken() const{ return m_idempotencyToken; }
-
-    /**
-     * <p>Custom string that uniquely identifies the new game session request. This is
-     * useful for ensuring that game session requests with the same idempotency token
-     * are processed only once. Subsequent requests with the same string return the
-     * original <code>GameSession</code> object, with an updated status. Maximum token
-     * length is 48 characters. If provided, this string is included in the new game
-     * session's ID. A game session ARN has the following format:
-     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom
-     * ID string or idempotency token&gt;</code>. Idempotency tokens remain in use for
-     * 30 days after a game session has ended; game session objects are retained for
-     * this time period and then deleted.</p>
-     */
+    inline const Aws::String& GetIdempotencyToken() const { return m_idempotencyToken; }
     inline bool IdempotencyTokenHasBeenSet() const { return m_idempotencyTokenHasBeenSet; }
+    template<typename IdempotencyTokenT = Aws::String>
+    void SetIdempotencyToken(IdempotencyTokenT&& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = std::forward<IdempotencyTokenT>(value); }
+    template<typename IdempotencyTokenT = Aws::String>
+    CreateGameSessionRequest& WithIdempotencyToken(IdempotencyTokenT&& value) { SetIdempotencyToken(std::forward<IdempotencyTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Custom string that uniquely identifies the new game session request. This is
-     * useful for ensuring that game session requests with the same idempotency token
-     * are processed only once. Subsequent requests with the same string return the
-     * original <code>GameSession</code> object, with an updated status. Maximum token
-     * length is 48 characters. If provided, this string is included in the new game
-     * session's ID. A game session ARN has the following format:
-     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom
-     * ID string or idempotency token&gt;</code>. Idempotency tokens remain in use for
-     * 30 days after a game session has ended; game session objects are retained for
-     * this time period and then deleted.</p>
-     */
-    inline void SetIdempotencyToken(const Aws::String& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = value; }
-
-    /**
-     * <p>Custom string that uniquely identifies the new game session request. This is
-     * useful for ensuring that game session requests with the same idempotency token
-     * are processed only once. Subsequent requests with the same string return the
-     * original <code>GameSession</code> object, with an updated status. Maximum token
-     * length is 48 characters. If provided, this string is included in the new game
-     * session's ID. A game session ARN has the following format:
-     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom
-     * ID string or idempotency token&gt;</code>. Idempotency tokens remain in use for
-     * 30 days after a game session has ended; game session objects are retained for
-     * this time period and then deleted.</p>
-     */
-    inline void SetIdempotencyToken(Aws::String&& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = std::move(value); }
-
-    /**
-     * <p>Custom string that uniquely identifies the new game session request. This is
-     * useful for ensuring that game session requests with the same idempotency token
-     * are processed only once. Subsequent requests with the same string return the
-     * original <code>GameSession</code> object, with an updated status. Maximum token
-     * length is 48 characters. If provided, this string is included in the new game
-     * session's ID. A game session ARN has the following format:
-     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom
-     * ID string or idempotency token&gt;</code>. Idempotency tokens remain in use for
-     * 30 days after a game session has ended; game session objects are retained for
-     * this time period and then deleted.</p>
-     */
-    inline void SetIdempotencyToken(const char* value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken.assign(value); }
-
-    /**
-     * <p>Custom string that uniquely identifies the new game session request. This is
-     * useful for ensuring that game session requests with the same idempotency token
-     * are processed only once. Subsequent requests with the same string return the
-     * original <code>GameSession</code> object, with an updated status. Maximum token
-     * length is 48 characters. If provided, this string is included in the new game
-     * session's ID. A game session ARN has the following format:
-     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom
-     * ID string or idempotency token&gt;</code>. Idempotency tokens remain in use for
-     * 30 days after a game session has ended; game session objects are retained for
-     * this time period and then deleted.</p>
-     */
-    inline CreateGameSessionRequest& WithIdempotencyToken(const Aws::String& value) { SetIdempotencyToken(value); return *this;}
-
-    /**
-     * <p>Custom string that uniquely identifies the new game session request. This is
-     * useful for ensuring that game session requests with the same idempotency token
-     * are processed only once. Subsequent requests with the same string return the
-     * original <code>GameSession</code> object, with an updated status. Maximum token
-     * length is 48 characters. If provided, this string is included in the new game
-     * session's ID. A game session ARN has the following format:
-     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom
-     * ID string or idempotency token&gt;</code>. Idempotency tokens remain in use for
-     * 30 days after a game session has ended; game session objects are retained for
-     * this time period and then deleted.</p>
-     */
-    inline CreateGameSessionRequest& WithIdempotencyToken(Aws::String&& value) { SetIdempotencyToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Custom string that uniquely identifies the new game session request. This is
-     * useful for ensuring that game session requests with the same idempotency token
-     * are processed only once. Subsequent requests with the same string return the
-     * original <code>GameSession</code> object, with an updated status. Maximum token
-     * length is 48 characters. If provided, this string is included in the new game
-     * session's ID. A game session ARN has the following format:
-     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom
-     * ID string or idempotency token&gt;</code>. Idempotency tokens remain in use for
-     * 30 days after a game session has ended; game session objects are retained for
-     * this time period and then deleted.</p>
-     */
-    inline CreateGameSessionRequest& WithIdempotencyToken(const char* value) { SetIdempotencyToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A set of custom game session properties, formatted as a single string value.
      * This data is passed to a game server process with a request to start a new game
-     * session (see <a
+     * session. For more information, see <a
      * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession">Start
-     * a Game Session</a>).</p>
+     * a game session</a>.</p>
      */
-    inline const Aws::String& GetGameSessionData() const{ return m_gameSessionData; }
-
-    /**
-     * <p>A set of custom game session properties, formatted as a single string value.
-     * This data is passed to a game server process with a request to start a new game
-     * session (see <a
-     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession">Start
-     * a Game Session</a>).</p>
-     */
+    inline const Aws::String& GetGameSessionData() const { return m_gameSessionData; }
     inline bool GameSessionDataHasBeenSet() const { return m_gameSessionDataHasBeenSet; }
+    template<typename GameSessionDataT = Aws::String>
+    void SetGameSessionData(GameSessionDataT&& value) { m_gameSessionDataHasBeenSet = true; m_gameSessionData = std::forward<GameSessionDataT>(value); }
+    template<typename GameSessionDataT = Aws::String>
+    CreateGameSessionRequest& WithGameSessionData(GameSessionDataT&& value) { SetGameSessionData(std::forward<GameSessionDataT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A set of custom game session properties, formatted as a single string value.
-     * This data is passed to a game server process with a request to start a new game
-     * session (see <a
-     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession">Start
-     * a Game Session</a>).</p>
-     */
-    inline void SetGameSessionData(const Aws::String& value) { m_gameSessionDataHasBeenSet = true; m_gameSessionData = value; }
-
-    /**
-     * <p>A set of custom game session properties, formatted as a single string value.
-     * This data is passed to a game server process with a request to start a new game
-     * session (see <a
-     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession">Start
-     * a Game Session</a>).</p>
-     */
-    inline void SetGameSessionData(Aws::String&& value) { m_gameSessionDataHasBeenSet = true; m_gameSessionData = std::move(value); }
-
-    /**
-     * <p>A set of custom game session properties, formatted as a single string value.
-     * This data is passed to a game server process with a request to start a new game
-     * session (see <a
-     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession">Start
-     * a Game Session</a>).</p>
-     */
-    inline void SetGameSessionData(const char* value) { m_gameSessionDataHasBeenSet = true; m_gameSessionData.assign(value); }
-
-    /**
-     * <p>A set of custom game session properties, formatted as a single string value.
-     * This data is passed to a game server process with a request to start a new game
-     * session (see <a
-     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession">Start
-     * a Game Session</a>).</p>
-     */
-    inline CreateGameSessionRequest& WithGameSessionData(const Aws::String& value) { SetGameSessionData(value); return *this;}
-
-    /**
-     * <p>A set of custom game session properties, formatted as a single string value.
-     * This data is passed to a game server process with a request to start a new game
-     * session (see <a
-     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession">Start
-     * a Game Session</a>).</p>
-     */
-    inline CreateGameSessionRequest& WithGameSessionData(Aws::String&& value) { SetGameSessionData(std::move(value)); return *this;}
-
-    /**
-     * <p>A set of custom game session properties, formatted as a single string value.
-     * This data is passed to a game server process with a request to start a new game
-     * session (see <a
-     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession">Start
-     * a Game Session</a>).</p>
-     */
-    inline CreateGameSessionRequest& WithGameSessionData(const char* value) { SetGameSessionData(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A fleet's remote location to place the new game session in. If this parameter
      * is not set, the new game session is placed in the fleet's home Region. Specify a
      * remote location with an Amazon Web Services Region code such as
-     * <code>us-west-2</code>. </p>
+     * <code>us-west-2</code>. When using an Anywhere fleet, this parameter is required
+     * and must be set to the Anywhere fleet's custom location.</p>
      */
-    inline const Aws::String& GetLocation() const{ return m_location; }
-
-    /**
-     * <p>A fleet's remote location to place the new game session in. If this parameter
-     * is not set, the new game session is placed in the fleet's home Region. Specify a
-     * remote location with an Amazon Web Services Region code such as
-     * <code>us-west-2</code>. </p>
-     */
+    inline const Aws::String& GetLocation() const { return m_location; }
     inline bool LocationHasBeenSet() const { return m_locationHasBeenSet; }
-
-    /**
-     * <p>A fleet's remote location to place the new game session in. If this parameter
-     * is not set, the new game session is placed in the fleet's home Region. Specify a
-     * remote location with an Amazon Web Services Region code such as
-     * <code>us-west-2</code>. </p>
-     */
-    inline void SetLocation(const Aws::String& value) { m_locationHasBeenSet = true; m_location = value; }
-
-    /**
-     * <p>A fleet's remote location to place the new game session in. If this parameter
-     * is not set, the new game session is placed in the fleet's home Region. Specify a
-     * remote location with an Amazon Web Services Region code such as
-     * <code>us-west-2</code>. </p>
-     */
-    inline void SetLocation(Aws::String&& value) { m_locationHasBeenSet = true; m_location = std::move(value); }
-
-    /**
-     * <p>A fleet's remote location to place the new game session in. If this parameter
-     * is not set, the new game session is placed in the fleet's home Region. Specify a
-     * remote location with an Amazon Web Services Region code such as
-     * <code>us-west-2</code>. </p>
-     */
-    inline void SetLocation(const char* value) { m_locationHasBeenSet = true; m_location.assign(value); }
-
-    /**
-     * <p>A fleet's remote location to place the new game session in. If this parameter
-     * is not set, the new game session is placed in the fleet's home Region. Specify a
-     * remote location with an Amazon Web Services Region code such as
-     * <code>us-west-2</code>. </p>
-     */
-    inline CreateGameSessionRequest& WithLocation(const Aws::String& value) { SetLocation(value); return *this;}
-
-    /**
-     * <p>A fleet's remote location to place the new game session in. If this parameter
-     * is not set, the new game session is placed in the fleet's home Region. Specify a
-     * remote location with an Amazon Web Services Region code such as
-     * <code>us-west-2</code>. </p>
-     */
-    inline CreateGameSessionRequest& WithLocation(Aws::String&& value) { SetLocation(std::move(value)); return *this;}
-
-    /**
-     * <p>A fleet's remote location to place the new game session in. If this parameter
-     * is not set, the new game session is placed in the fleet's home Region. Specify a
-     * remote location with an Amazon Web Services Region code such as
-     * <code>us-west-2</code>. </p>
-     */
-    inline CreateGameSessionRequest& WithLocation(const char* value) { SetLocation(value); return *this;}
-
+    template<typename LocationT = Aws::String>
+    void SetLocation(LocationT&& value) { m_locationHasBeenSet = true; m_location = std::forward<LocationT>(value); }
+    template<typename LocationT = Aws::String>
+    CreateGameSessionRequest& WithLocation(LocationT&& value) { SetLocation(std::forward<LocationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_fleetId;
@@ -701,7 +203,7 @@ namespace Model
     Aws::String m_aliasId;
     bool m_aliasIdHasBeenSet = false;
 
-    int m_maximumPlayerSessionCount;
+    int m_maximumPlayerSessionCount{0};
     bool m_maximumPlayerSessionCountHasBeenSet = false;
 
     Aws::String m_name;

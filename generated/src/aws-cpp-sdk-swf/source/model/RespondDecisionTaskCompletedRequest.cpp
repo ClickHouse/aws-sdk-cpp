@@ -12,13 +12,6 @@ using namespace Aws::SWF::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-RespondDecisionTaskCompletedRequest::RespondDecisionTaskCompletedRequest() : 
-    m_taskTokenHasBeenSet(false),
-    m_decisionsHasBeenSet(false),
-    m_executionContextHasBeenSet(false)
-{
-}
-
 Aws::String RespondDecisionTaskCompletedRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -43,6 +36,18 @@ Aws::String RespondDecisionTaskCompletedRequest::SerializePayload() const
   if(m_executionContextHasBeenSet)
   {
    payload.WithString("executionContext", m_executionContext);
+
+  }
+
+  if(m_taskListHasBeenSet)
+  {
+   payload.WithObject("taskList", m_taskList.Jsonize());
+
+  }
+
+  if(m_taskListScheduleToStartTimeoutHasBeenSet)
+  {
+   payload.WithString("taskListScheduleToStartTimeout", m_taskListScheduleToStartTimeout);
 
   }
 

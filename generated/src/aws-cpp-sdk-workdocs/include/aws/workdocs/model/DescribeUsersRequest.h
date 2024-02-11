@@ -28,7 +28,7 @@ namespace Model
   class DescribeUsersRequest : public WorkDocsRequest
   {
   public:
-    AWS_WORKDOCS_API DescribeUsersRequest();
+    AWS_WORKDOCS_API DescribeUsersRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -43,137 +43,44 @@ namespace Model
     AWS_WORKDOCS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
      * Services administrator credentials to access the API.</p>
      */
-    inline const Aws::String& GetAuthenticationToken() const{ return m_authenticationToken; }
-
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
+    inline const Aws::String& GetAuthenticationToken() const { return m_authenticationToken; }
     inline bool AuthenticationTokenHasBeenSet() const { return m_authenticationTokenHasBeenSet; }
+    template<typename AuthenticationTokenT = Aws::String>
+    void SetAuthenticationToken(AuthenticationTokenT&& value) { m_authenticationTokenHasBeenSet = true; m_authenticationToken = std::forward<AuthenticationTokenT>(value); }
+    template<typename AuthenticationTokenT = Aws::String>
+    DescribeUsersRequest& WithAuthenticationToken(AuthenticationTokenT&& value) { SetAuthenticationToken(std::forward<AuthenticationTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
-    inline void SetAuthenticationToken(const Aws::String& value) { m_authenticationTokenHasBeenSet = true; m_authenticationToken = value; }
-
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
-    inline void SetAuthenticationToken(Aws::String&& value) { m_authenticationTokenHasBeenSet = true; m_authenticationToken = std::move(value); }
-
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
-    inline void SetAuthenticationToken(const char* value) { m_authenticationTokenHasBeenSet = true; m_authenticationToken.assign(value); }
-
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
-    inline DescribeUsersRequest& WithAuthenticationToken(const Aws::String& value) { SetAuthenticationToken(value); return *this;}
-
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
-    inline DescribeUsersRequest& WithAuthenticationToken(Aws::String&& value) { SetAuthenticationToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
-    inline DescribeUsersRequest& WithAuthenticationToken(const char* value) { SetAuthenticationToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the organization.</p>
      */
-    inline const Aws::String& GetOrganizationId() const{ return m_organizationId; }
-
-    /**
-     * <p>The ID of the organization.</p>
-     */
+    inline const Aws::String& GetOrganizationId() const { return m_organizationId; }
     inline bool OrganizationIdHasBeenSet() const { return m_organizationIdHasBeenSet; }
+    template<typename OrganizationIdT = Aws::String>
+    void SetOrganizationId(OrganizationIdT&& value) { m_organizationIdHasBeenSet = true; m_organizationId = std::forward<OrganizationIdT>(value); }
+    template<typename OrganizationIdT = Aws::String>
+    DescribeUsersRequest& WithOrganizationId(OrganizationIdT&& value) { SetOrganizationId(std::forward<OrganizationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the organization.</p>
-     */
-    inline void SetOrganizationId(const Aws::String& value) { m_organizationIdHasBeenSet = true; m_organizationId = value; }
-
-    /**
-     * <p>The ID of the organization.</p>
-     */
-    inline void SetOrganizationId(Aws::String&& value) { m_organizationIdHasBeenSet = true; m_organizationId = std::move(value); }
-
-    /**
-     * <p>The ID of the organization.</p>
-     */
-    inline void SetOrganizationId(const char* value) { m_organizationIdHasBeenSet = true; m_organizationId.assign(value); }
-
-    /**
-     * <p>The ID of the organization.</p>
-     */
-    inline DescribeUsersRequest& WithOrganizationId(const Aws::String& value) { SetOrganizationId(value); return *this;}
-
-    /**
-     * <p>The ID of the organization.</p>
-     */
-    inline DescribeUsersRequest& WithOrganizationId(Aws::String&& value) { SetOrganizationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the organization.</p>
-     */
-    inline DescribeUsersRequest& WithOrganizationId(const char* value) { SetOrganizationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IDs of the users.</p>
      */
-    inline const Aws::String& GetUserIds() const{ return m_userIds; }
-
-    /**
-     * <p>The IDs of the users.</p>
-     */
+    inline const Aws::String& GetUserIds() const { return m_userIds; }
     inline bool UserIdsHasBeenSet() const { return m_userIdsHasBeenSet; }
+    template<typename UserIdsT = Aws::String>
+    void SetUserIds(UserIdsT&& value) { m_userIdsHasBeenSet = true; m_userIds = std::forward<UserIdsT>(value); }
+    template<typename UserIdsT = Aws::String>
+    DescribeUsersRequest& WithUserIds(UserIdsT&& value) { SetUserIds(std::forward<UserIdsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IDs of the users.</p>
-     */
-    inline void SetUserIds(const Aws::String& value) { m_userIdsHasBeenSet = true; m_userIds = value; }
-
-    /**
-     * <p>The IDs of the users.</p>
-     */
-    inline void SetUserIds(Aws::String&& value) { m_userIdsHasBeenSet = true; m_userIds = std::move(value); }
-
-    /**
-     * <p>The IDs of the users.</p>
-     */
-    inline void SetUserIds(const char* value) { m_userIdsHasBeenSet = true; m_userIds.assign(value); }
-
-    /**
-     * <p>The IDs of the users.</p>
-     */
-    inline DescribeUsersRequest& WithUserIds(const Aws::String& value) { SetUserIds(value); return *this;}
-
-    /**
-     * <p>The IDs of the users.</p>
-     */
-    inline DescribeUsersRequest& WithUserIds(Aws::String&& value) { SetUserIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The IDs of the users.</p>
-     */
-    inline DescribeUsersRequest& WithUserIds(const char* value) { SetUserIds(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A query to filter users by user name. Remember the following about the
      * <code>Userids</code> and <code>Query</code> parameters:</p> <ul> <li> <p>If you
@@ -190,346 +97,79 @@ namespace Model
      * returns data that matches all characters. For example, querying on <code>Ma
      * J</code> only returns Mateo Jackson.</p> </li> </ul>
      */
-    inline const Aws::String& GetQuery() const{ return m_query; }
-
-    /**
-     * <p>A query to filter users by user name. Remember the following about the
-     * <code>Userids</code> and <code>Query</code> parameters:</p> <ul> <li> <p>If you
-     * don't use either parameter, the API returns a paginated list of all users on the
-     * site.</p> </li> <li> <p>If you use both parameters, the API ignores the
-     * <code>Query</code> parameter.</p> </li> <li> <p>The <code>Userid</code>
-     * parameter only returns user names that match a corresponding user ID.</p> </li>
-     * <li> <p>The <code>Query</code> parameter runs a "prefix" search for users by the
-     * <code>GivenName</code>, <code>SurName</code>, or <code>UserName</code> fields
-     * included in a <a
-     * href="https://docs.aws.amazon.com/workdocs/latest/APIReference/API_CreateUser.html">CreateUser</a>
-     * API call. For example, querying on <code>Ma</code> returns Márcia Oliveira,
-     * María García, and Mateo Jackson. If you use multiple characters, the API only
-     * returns data that matches all characters. For example, querying on <code>Ma
-     * J</code> only returns Mateo Jackson.</p> </li> </ul>
-     */
+    inline const Aws::String& GetQuery() const { return m_query; }
     inline bool QueryHasBeenSet() const { return m_queryHasBeenSet; }
+    template<typename QueryT = Aws::String>
+    void SetQuery(QueryT&& value) { m_queryHasBeenSet = true; m_query = std::forward<QueryT>(value); }
+    template<typename QueryT = Aws::String>
+    DescribeUsersRequest& WithQuery(QueryT&& value) { SetQuery(std::forward<QueryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A query to filter users by user name. Remember the following about the
-     * <code>Userids</code> and <code>Query</code> parameters:</p> <ul> <li> <p>If you
-     * don't use either parameter, the API returns a paginated list of all users on the
-     * site.</p> </li> <li> <p>If you use both parameters, the API ignores the
-     * <code>Query</code> parameter.</p> </li> <li> <p>The <code>Userid</code>
-     * parameter only returns user names that match a corresponding user ID.</p> </li>
-     * <li> <p>The <code>Query</code> parameter runs a "prefix" search for users by the
-     * <code>GivenName</code>, <code>SurName</code>, or <code>UserName</code> fields
-     * included in a <a
-     * href="https://docs.aws.amazon.com/workdocs/latest/APIReference/API_CreateUser.html">CreateUser</a>
-     * API call. For example, querying on <code>Ma</code> returns Márcia Oliveira,
-     * María García, and Mateo Jackson. If you use multiple characters, the API only
-     * returns data that matches all characters. For example, querying on <code>Ma
-     * J</code> only returns Mateo Jackson.</p> </li> </ul>
-     */
-    inline void SetQuery(const Aws::String& value) { m_queryHasBeenSet = true; m_query = value; }
-
-    /**
-     * <p>A query to filter users by user name. Remember the following about the
-     * <code>Userids</code> and <code>Query</code> parameters:</p> <ul> <li> <p>If you
-     * don't use either parameter, the API returns a paginated list of all users on the
-     * site.</p> </li> <li> <p>If you use both parameters, the API ignores the
-     * <code>Query</code> parameter.</p> </li> <li> <p>The <code>Userid</code>
-     * parameter only returns user names that match a corresponding user ID.</p> </li>
-     * <li> <p>The <code>Query</code> parameter runs a "prefix" search for users by the
-     * <code>GivenName</code>, <code>SurName</code>, or <code>UserName</code> fields
-     * included in a <a
-     * href="https://docs.aws.amazon.com/workdocs/latest/APIReference/API_CreateUser.html">CreateUser</a>
-     * API call. For example, querying on <code>Ma</code> returns Márcia Oliveira,
-     * María García, and Mateo Jackson. If you use multiple characters, the API only
-     * returns data that matches all characters. For example, querying on <code>Ma
-     * J</code> only returns Mateo Jackson.</p> </li> </ul>
-     */
-    inline void SetQuery(Aws::String&& value) { m_queryHasBeenSet = true; m_query = std::move(value); }
-
-    /**
-     * <p>A query to filter users by user name. Remember the following about the
-     * <code>Userids</code> and <code>Query</code> parameters:</p> <ul> <li> <p>If you
-     * don't use either parameter, the API returns a paginated list of all users on the
-     * site.</p> </li> <li> <p>If you use both parameters, the API ignores the
-     * <code>Query</code> parameter.</p> </li> <li> <p>The <code>Userid</code>
-     * parameter only returns user names that match a corresponding user ID.</p> </li>
-     * <li> <p>The <code>Query</code> parameter runs a "prefix" search for users by the
-     * <code>GivenName</code>, <code>SurName</code>, or <code>UserName</code> fields
-     * included in a <a
-     * href="https://docs.aws.amazon.com/workdocs/latest/APIReference/API_CreateUser.html">CreateUser</a>
-     * API call. For example, querying on <code>Ma</code> returns Márcia Oliveira,
-     * María García, and Mateo Jackson. If you use multiple characters, the API only
-     * returns data that matches all characters. For example, querying on <code>Ma
-     * J</code> only returns Mateo Jackson.</p> </li> </ul>
-     */
-    inline void SetQuery(const char* value) { m_queryHasBeenSet = true; m_query.assign(value); }
-
-    /**
-     * <p>A query to filter users by user name. Remember the following about the
-     * <code>Userids</code> and <code>Query</code> parameters:</p> <ul> <li> <p>If you
-     * don't use either parameter, the API returns a paginated list of all users on the
-     * site.</p> </li> <li> <p>If you use both parameters, the API ignores the
-     * <code>Query</code> parameter.</p> </li> <li> <p>The <code>Userid</code>
-     * parameter only returns user names that match a corresponding user ID.</p> </li>
-     * <li> <p>The <code>Query</code> parameter runs a "prefix" search for users by the
-     * <code>GivenName</code>, <code>SurName</code>, or <code>UserName</code> fields
-     * included in a <a
-     * href="https://docs.aws.amazon.com/workdocs/latest/APIReference/API_CreateUser.html">CreateUser</a>
-     * API call. For example, querying on <code>Ma</code> returns Márcia Oliveira,
-     * María García, and Mateo Jackson. If you use multiple characters, the API only
-     * returns data that matches all characters. For example, querying on <code>Ma
-     * J</code> only returns Mateo Jackson.</p> </li> </ul>
-     */
-    inline DescribeUsersRequest& WithQuery(const Aws::String& value) { SetQuery(value); return *this;}
-
-    /**
-     * <p>A query to filter users by user name. Remember the following about the
-     * <code>Userids</code> and <code>Query</code> parameters:</p> <ul> <li> <p>If you
-     * don't use either parameter, the API returns a paginated list of all users on the
-     * site.</p> </li> <li> <p>If you use both parameters, the API ignores the
-     * <code>Query</code> parameter.</p> </li> <li> <p>The <code>Userid</code>
-     * parameter only returns user names that match a corresponding user ID.</p> </li>
-     * <li> <p>The <code>Query</code> parameter runs a "prefix" search for users by the
-     * <code>GivenName</code>, <code>SurName</code>, or <code>UserName</code> fields
-     * included in a <a
-     * href="https://docs.aws.amazon.com/workdocs/latest/APIReference/API_CreateUser.html">CreateUser</a>
-     * API call. For example, querying on <code>Ma</code> returns Márcia Oliveira,
-     * María García, and Mateo Jackson. If you use multiple characters, the API only
-     * returns data that matches all characters. For example, querying on <code>Ma
-     * J</code> only returns Mateo Jackson.</p> </li> </ul>
-     */
-    inline DescribeUsersRequest& WithQuery(Aws::String&& value) { SetQuery(std::move(value)); return *this;}
-
-    /**
-     * <p>A query to filter users by user name. Remember the following about the
-     * <code>Userids</code> and <code>Query</code> parameters:</p> <ul> <li> <p>If you
-     * don't use either parameter, the API returns a paginated list of all users on the
-     * site.</p> </li> <li> <p>If you use both parameters, the API ignores the
-     * <code>Query</code> parameter.</p> </li> <li> <p>The <code>Userid</code>
-     * parameter only returns user names that match a corresponding user ID.</p> </li>
-     * <li> <p>The <code>Query</code> parameter runs a "prefix" search for users by the
-     * <code>GivenName</code>, <code>SurName</code>, or <code>UserName</code> fields
-     * included in a <a
-     * href="https://docs.aws.amazon.com/workdocs/latest/APIReference/API_CreateUser.html">CreateUser</a>
-     * API call. For example, querying on <code>Ma</code> returns Márcia Oliveira,
-     * María García, and Mateo Jackson. If you use multiple characters, the API only
-     * returns data that matches all characters. For example, querying on <code>Ma
-     * J</code> only returns Mateo Jackson.</p> </li> </ul>
-     */
-    inline DescribeUsersRequest& WithQuery(const char* value) { SetQuery(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the users. Specify "ALL" to include inactive users.</p>
      */
-    inline const UserFilterType& GetInclude() const{ return m_include; }
-
-    /**
-     * <p>The state of the users. Specify "ALL" to include inactive users.</p>
-     */
+    inline UserFilterType GetInclude() const { return m_include; }
     inline bool IncludeHasBeenSet() const { return m_includeHasBeenSet; }
+    inline void SetInclude(UserFilterType value) { m_includeHasBeenSet = true; m_include = value; }
+    inline DescribeUsersRequest& WithInclude(UserFilterType value) { SetInclude(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the users. Specify "ALL" to include inactive users.</p>
-     */
-    inline void SetInclude(const UserFilterType& value) { m_includeHasBeenSet = true; m_include = value; }
-
-    /**
-     * <p>The state of the users. Specify "ALL" to include inactive users.</p>
-     */
-    inline void SetInclude(UserFilterType&& value) { m_includeHasBeenSet = true; m_include = std::move(value); }
-
-    /**
-     * <p>The state of the users. Specify "ALL" to include inactive users.</p>
-     */
-    inline DescribeUsersRequest& WithInclude(const UserFilterType& value) { SetInclude(value); return *this;}
-
-    /**
-     * <p>The state of the users. Specify "ALL" to include inactive users.</p>
-     */
-    inline DescribeUsersRequest& WithInclude(UserFilterType&& value) { SetInclude(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The order for the results.</p>
      */
-    inline const OrderType& GetOrder() const{ return m_order; }
-
-    /**
-     * <p>The order for the results.</p>
-     */
+    inline OrderType GetOrder() const { return m_order; }
     inline bool OrderHasBeenSet() const { return m_orderHasBeenSet; }
+    inline void SetOrder(OrderType value) { m_orderHasBeenSet = true; m_order = value; }
+    inline DescribeUsersRequest& WithOrder(OrderType value) { SetOrder(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The order for the results.</p>
-     */
-    inline void SetOrder(const OrderType& value) { m_orderHasBeenSet = true; m_order = value; }
-
-    /**
-     * <p>The order for the results.</p>
-     */
-    inline void SetOrder(OrderType&& value) { m_orderHasBeenSet = true; m_order = std::move(value); }
-
-    /**
-     * <p>The order for the results.</p>
-     */
-    inline DescribeUsersRequest& WithOrder(const OrderType& value) { SetOrder(value); return *this;}
-
-    /**
-     * <p>The order for the results.</p>
-     */
-    inline DescribeUsersRequest& WithOrder(OrderType&& value) { SetOrder(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The sorting criteria.</p>
      */
-    inline const UserSortType& GetSort() const{ return m_sort; }
-
-    /**
-     * <p>The sorting criteria.</p>
-     */
+    inline UserSortType GetSort() const { return m_sort; }
     inline bool SortHasBeenSet() const { return m_sortHasBeenSet; }
+    inline void SetSort(UserSortType value) { m_sortHasBeenSet = true; m_sort = value; }
+    inline DescribeUsersRequest& WithSort(UserSortType value) { SetSort(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The sorting criteria.</p>
-     */
-    inline void SetSort(const UserSortType& value) { m_sortHasBeenSet = true; m_sort = value; }
-
-    /**
-     * <p>The sorting criteria.</p>
-     */
-    inline void SetSort(UserSortType&& value) { m_sortHasBeenSet = true; m_sort = std::move(value); }
-
-    /**
-     * <p>The sorting criteria.</p>
-     */
-    inline DescribeUsersRequest& WithSort(const UserSortType& value) { SetSort(value); return *this;}
-
-    /**
-     * <p>The sorting criteria.</p>
-     */
-    inline DescribeUsersRequest& WithSort(UserSortType&& value) { SetSort(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The marker for the next set of results. (You received this marker from a
      * previous call.)</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
-
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
+    inline const Aws::String& GetMarker() const { return m_marker; }
     inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeUsersRequest& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
-
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
-
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
-    inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
-
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
-    inline DescribeUsersRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
-    inline DescribeUsersRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
-    inline DescribeUsersRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of items to return.</p>
      */
-    inline int GetLimit() const{ return m_limit; }
-
-    /**
-     * <p>The maximum number of items to return.</p>
-     */
+    inline int GetLimit() const { return m_limit; }
     inline bool LimitHasBeenSet() const { return m_limitHasBeenSet; }
-
-    /**
-     * <p>The maximum number of items to return.</p>
-     */
     inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
-
-    /**
-     * <p>The maximum number of items to return.</p>
-     */
     inline DescribeUsersRequest& WithLimit(int value) { SetLimit(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A comma-separated list of values. Specify "STORAGE_METADATA" to include the
      * user storage quota and utilization information.</p>
      */
-    inline const Aws::String& GetFields() const{ return m_fields; }
-
-    /**
-     * <p>A comma-separated list of values. Specify "STORAGE_METADATA" to include the
-     * user storage quota and utilization information.</p>
-     */
+    inline const Aws::String& GetFields() const { return m_fields; }
     inline bool FieldsHasBeenSet() const { return m_fieldsHasBeenSet; }
-
-    /**
-     * <p>A comma-separated list of values. Specify "STORAGE_METADATA" to include the
-     * user storage quota and utilization information.</p>
-     */
-    inline void SetFields(const Aws::String& value) { m_fieldsHasBeenSet = true; m_fields = value; }
-
-    /**
-     * <p>A comma-separated list of values. Specify "STORAGE_METADATA" to include the
-     * user storage quota and utilization information.</p>
-     */
-    inline void SetFields(Aws::String&& value) { m_fieldsHasBeenSet = true; m_fields = std::move(value); }
-
-    /**
-     * <p>A comma-separated list of values. Specify "STORAGE_METADATA" to include the
-     * user storage quota and utilization information.</p>
-     */
-    inline void SetFields(const char* value) { m_fieldsHasBeenSet = true; m_fields.assign(value); }
-
-    /**
-     * <p>A comma-separated list of values. Specify "STORAGE_METADATA" to include the
-     * user storage quota and utilization information.</p>
-     */
-    inline DescribeUsersRequest& WithFields(const Aws::String& value) { SetFields(value); return *this;}
-
-    /**
-     * <p>A comma-separated list of values. Specify "STORAGE_METADATA" to include the
-     * user storage quota and utilization information.</p>
-     */
-    inline DescribeUsersRequest& WithFields(Aws::String&& value) { SetFields(std::move(value)); return *this;}
-
-    /**
-     * <p>A comma-separated list of values. Specify "STORAGE_METADATA" to include the
-     * user storage quota and utilization information.</p>
-     */
-    inline DescribeUsersRequest& WithFields(const char* value) { SetFields(value); return *this;}
-
+    template<typename FieldsT = Aws::String>
+    void SetFields(FieldsT&& value) { m_fieldsHasBeenSet = true; m_fields = std::forward<FieldsT>(value); }
+    template<typename FieldsT = Aws::String>
+    DescribeUsersRequest& WithFields(FieldsT&& value) { SetFields(std::forward<FieldsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_authenticationToken;
@@ -544,19 +184,19 @@ namespace Model
     Aws::String m_query;
     bool m_queryHasBeenSet = false;
 
-    UserFilterType m_include;
+    UserFilterType m_include{UserFilterType::NOT_SET};
     bool m_includeHasBeenSet = false;
 
-    OrderType m_order;
+    OrderType m_order{OrderType::NOT_SET};
     bool m_orderHasBeenSet = false;
 
-    UserSortType m_sort;
+    UserSortType m_sort{UserSortType::NOT_SET};
     bool m_sortHasBeenSet = false;
 
     Aws::String m_marker;
     bool m_markerHasBeenSet = false;
 
-    int m_limit;
+    int m_limit{0};
     bool m_limitHasBeenSet = false;
 
     Aws::String m_fields;

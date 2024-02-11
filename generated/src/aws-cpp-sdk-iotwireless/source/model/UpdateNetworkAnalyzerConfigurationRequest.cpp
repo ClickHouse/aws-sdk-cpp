@@ -12,17 +12,6 @@ using namespace Aws::IoTWireless::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateNetworkAnalyzerConfigurationRequest::UpdateNetworkAnalyzerConfigurationRequest() : 
-    m_configurationNameHasBeenSet(false),
-    m_traceContentHasBeenSet(false),
-    m_wirelessDevicesToAddHasBeenSet(false),
-    m_wirelessDevicesToRemoveHasBeenSet(false),
-    m_wirelessGatewaysToAddHasBeenSet(false),
-    m_wirelessGatewaysToRemoveHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
-{
-}
-
 Aws::String UpdateNetworkAnalyzerConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -80,6 +69,28 @@ Aws::String UpdateNetworkAnalyzerConfigurationRequest::SerializePayload() const
   if(m_descriptionHasBeenSet)
   {
    payload.WithString("Description", m_description);
+
+  }
+
+  if(m_multicastGroupsToAddHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> multicastGroupsToAddJsonList(m_multicastGroupsToAdd.size());
+   for(unsigned multicastGroupsToAddIndex = 0; multicastGroupsToAddIndex < multicastGroupsToAddJsonList.GetLength(); ++multicastGroupsToAddIndex)
+   {
+     multicastGroupsToAddJsonList[multicastGroupsToAddIndex].AsString(m_multicastGroupsToAdd[multicastGroupsToAddIndex]);
+   }
+   payload.WithArray("MulticastGroupsToAdd", std::move(multicastGroupsToAddJsonList));
+
+  }
+
+  if(m_multicastGroupsToRemoveHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> multicastGroupsToRemoveJsonList(m_multicastGroupsToRemove.size());
+   for(unsigned multicastGroupsToRemoveIndex = 0; multicastGroupsToRemoveIndex < multicastGroupsToRemoveJsonList.GetLength(); ++multicastGroupsToRemoveIndex)
+   {
+     multicastGroupsToRemoveJsonList[multicastGroupsToRemoveIndex].AsString(m_multicastGroupsToRemove[multicastGroupsToRemoveIndex]);
+   }
+   payload.WithArray("MulticastGroupsToRemove", std::move(multicastGroupsToRemoveJsonList));
 
   }
 

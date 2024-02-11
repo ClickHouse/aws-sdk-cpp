@@ -18,17 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-VirtualGatewayConnectionPool::VirtualGatewayConnectionPool() : 
-    m_grpcHasBeenSet(false),
-    m_httpHasBeenSet(false),
-    m_http2HasBeenSet(false)
-{
-}
-
-VirtualGatewayConnectionPool::VirtualGatewayConnectionPool(JsonView jsonValue) : 
-    m_grpcHasBeenSet(false),
-    m_httpHasBeenSet(false),
-    m_http2HasBeenSet(false)
+VirtualGatewayConnectionPool::VirtualGatewayConnectionPool(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ VirtualGatewayConnectionPool& VirtualGatewayConnectionPool::operator =(JsonView 
   if(jsonValue.ValueExists("grpc"))
   {
     m_grpc = jsonValue.GetObject("grpc");
-
     m_grpcHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("http"))
   {
     m_http = jsonValue.GetObject("http");
-
     m_httpHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("http2"))
   {
     m_http2 = jsonValue.GetObject("http2");
-
     m_http2HasBeenSet = true;
   }
-
   return *this;
 }
 

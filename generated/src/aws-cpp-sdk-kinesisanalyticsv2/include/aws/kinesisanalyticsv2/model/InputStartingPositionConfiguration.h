@@ -32,12 +32,13 @@ namespace Model
   class InputStartingPositionConfiguration
   {
   public:
-    AWS_KINESISANALYTICSV2_API InputStartingPositionConfiguration();
+    AWS_KINESISANALYTICSV2_API InputStartingPositionConfiguration() = default;
     AWS_KINESISANALYTICSV2_API InputStartingPositionConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API InputStartingPositionConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The starting position on the stream.</p> <ul> <li> <p> <code>NOW</code> -
      * Start reading just after the most recent record in the stream, and start at the
@@ -48,71 +49,14 @@ namespace Model
      * <p> <code>LAST_STOPPED_POINT</code> - Resume reading from where the application
      * last stopped reading.</p> </li> </ul>
      */
-    inline const InputStartingPosition& GetInputStartingPosition() const{ return m_inputStartingPosition; }
-
-    /**
-     * <p>The starting position on the stream.</p> <ul> <li> <p> <code>NOW</code> -
-     * Start reading just after the most recent record in the stream, and start at the
-     * request timestamp that the customer issued.</p> </li> <li> <p>
-     * <code>TRIM_HORIZON</code> - Start reading at the last untrimmed record in the
-     * stream, which is the oldest record available in the stream. This option is not
-     * available for an Amazon Kinesis Data Firehose delivery stream.</p> </li> <li>
-     * <p> <code>LAST_STOPPED_POINT</code> - Resume reading from where the application
-     * last stopped reading.</p> </li> </ul>
-     */
+    inline InputStartingPosition GetInputStartingPosition() const { return m_inputStartingPosition; }
     inline bool InputStartingPositionHasBeenSet() const { return m_inputStartingPositionHasBeenSet; }
-
-    /**
-     * <p>The starting position on the stream.</p> <ul> <li> <p> <code>NOW</code> -
-     * Start reading just after the most recent record in the stream, and start at the
-     * request timestamp that the customer issued.</p> </li> <li> <p>
-     * <code>TRIM_HORIZON</code> - Start reading at the last untrimmed record in the
-     * stream, which is the oldest record available in the stream. This option is not
-     * available for an Amazon Kinesis Data Firehose delivery stream.</p> </li> <li>
-     * <p> <code>LAST_STOPPED_POINT</code> - Resume reading from where the application
-     * last stopped reading.</p> </li> </ul>
-     */
-    inline void SetInputStartingPosition(const InputStartingPosition& value) { m_inputStartingPositionHasBeenSet = true; m_inputStartingPosition = value; }
-
-    /**
-     * <p>The starting position on the stream.</p> <ul> <li> <p> <code>NOW</code> -
-     * Start reading just after the most recent record in the stream, and start at the
-     * request timestamp that the customer issued.</p> </li> <li> <p>
-     * <code>TRIM_HORIZON</code> - Start reading at the last untrimmed record in the
-     * stream, which is the oldest record available in the stream. This option is not
-     * available for an Amazon Kinesis Data Firehose delivery stream.</p> </li> <li>
-     * <p> <code>LAST_STOPPED_POINT</code> - Resume reading from where the application
-     * last stopped reading.</p> </li> </ul>
-     */
-    inline void SetInputStartingPosition(InputStartingPosition&& value) { m_inputStartingPositionHasBeenSet = true; m_inputStartingPosition = std::move(value); }
-
-    /**
-     * <p>The starting position on the stream.</p> <ul> <li> <p> <code>NOW</code> -
-     * Start reading just after the most recent record in the stream, and start at the
-     * request timestamp that the customer issued.</p> </li> <li> <p>
-     * <code>TRIM_HORIZON</code> - Start reading at the last untrimmed record in the
-     * stream, which is the oldest record available in the stream. This option is not
-     * available for an Amazon Kinesis Data Firehose delivery stream.</p> </li> <li>
-     * <p> <code>LAST_STOPPED_POINT</code> - Resume reading from where the application
-     * last stopped reading.</p> </li> </ul>
-     */
-    inline InputStartingPositionConfiguration& WithInputStartingPosition(const InputStartingPosition& value) { SetInputStartingPosition(value); return *this;}
-
-    /**
-     * <p>The starting position on the stream.</p> <ul> <li> <p> <code>NOW</code> -
-     * Start reading just after the most recent record in the stream, and start at the
-     * request timestamp that the customer issued.</p> </li> <li> <p>
-     * <code>TRIM_HORIZON</code> - Start reading at the last untrimmed record in the
-     * stream, which is the oldest record available in the stream. This option is not
-     * available for an Amazon Kinesis Data Firehose delivery stream.</p> </li> <li>
-     * <p> <code>LAST_STOPPED_POINT</code> - Resume reading from where the application
-     * last stopped reading.</p> </li> </ul>
-     */
-    inline InputStartingPositionConfiguration& WithInputStartingPosition(InputStartingPosition&& value) { SetInputStartingPosition(std::move(value)); return *this;}
-
+    inline void SetInputStartingPosition(InputStartingPosition value) { m_inputStartingPositionHasBeenSet = true; m_inputStartingPosition = value; }
+    inline InputStartingPositionConfiguration& WithInputStartingPosition(InputStartingPosition value) { SetInputStartingPosition(value); return *this;}
+    ///@}
   private:
 
-    InputStartingPosition m_inputStartingPosition;
+    InputStartingPosition m_inputStartingPosition{InputStartingPosition::NOT_SET};
     bool m_inputStartingPositionHasBeenSet = false;
   };
 

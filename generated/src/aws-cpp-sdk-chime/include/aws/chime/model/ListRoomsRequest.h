@@ -25,7 +25,7 @@ namespace Model
   class ListRoomsRequest : public ChimeRequest
   {
   public:
-    AWS_CHIME_API ListRoomsRequest();
+    AWS_CHIME_API ListRoomsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,149 +38,51 @@ namespace Model
     AWS_CHIME_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Chime account ID.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The Amazon Chime account ID.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    ListRoomsRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Chime account ID.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The Amazon Chime account ID.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Chime account ID.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The Amazon Chime account ID.</p>
-     */
-    inline ListRoomsRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Chime account ID.</p>
-     */
-    inline ListRoomsRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Chime account ID.</p>
-     */
-    inline ListRoomsRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The member ID (user ID or bot ID).</p>
      */
-    inline const Aws::String& GetMemberId() const{ return m_memberId; }
-
-    /**
-     * <p>The member ID (user ID or bot ID).</p>
-     */
+    inline const Aws::String& GetMemberId() const { return m_memberId; }
     inline bool MemberIdHasBeenSet() const { return m_memberIdHasBeenSet; }
+    template<typename MemberIdT = Aws::String>
+    void SetMemberId(MemberIdT&& value) { m_memberIdHasBeenSet = true; m_memberId = std::forward<MemberIdT>(value); }
+    template<typename MemberIdT = Aws::String>
+    ListRoomsRequest& WithMemberId(MemberIdT&& value) { SetMemberId(std::forward<MemberIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The member ID (user ID or bot ID).</p>
-     */
-    inline void SetMemberId(const Aws::String& value) { m_memberIdHasBeenSet = true; m_memberId = value; }
-
-    /**
-     * <p>The member ID (user ID or bot ID).</p>
-     */
-    inline void SetMemberId(Aws::String&& value) { m_memberIdHasBeenSet = true; m_memberId = std::move(value); }
-
-    /**
-     * <p>The member ID (user ID or bot ID).</p>
-     */
-    inline void SetMemberId(const char* value) { m_memberIdHasBeenSet = true; m_memberId.assign(value); }
-
-    /**
-     * <p>The member ID (user ID or bot ID).</p>
-     */
-    inline ListRoomsRequest& WithMemberId(const Aws::String& value) { SetMemberId(value); return *this;}
-
-    /**
-     * <p>The member ID (user ID or bot ID).</p>
-     */
-    inline ListRoomsRequest& WithMemberId(Aws::String&& value) { SetMemberId(std::move(value)); return *this;}
-
-    /**
-     * <p>The member ID (user ID or bot ID).</p>
-     */
-    inline ListRoomsRequest& WithMemberId(const char* value) { SetMemberId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to return in a single call.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return in a single call.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return in a single call.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return in a single call.</p>
-     */
     inline ListRoomsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The token to use to retrieve the next page of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token to use to retrieve the next page of results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The token to use to retrieve the next page of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token to use to retrieve the next page of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token to use to retrieve the next page of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token to use to retrieve the next page of results.</p>
-     */
-    inline ListRoomsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token to use to retrieve the next page of results.</p>
-     */
-    inline ListRoomsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token to use to retrieve the next page of results.</p>
-     */
-    inline ListRoomsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListRoomsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;
@@ -189,7 +91,7 @@ namespace Model
     Aws::String m_memberId;
     bool m_memberIdHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

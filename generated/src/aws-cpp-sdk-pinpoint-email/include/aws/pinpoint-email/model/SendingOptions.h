@@ -30,39 +30,25 @@ namespace Model
   class SendingOptions
   {
   public:
-    AWS_PINPOINTEMAIL_API SendingOptions();
+    AWS_PINPOINTEMAIL_API SendingOptions() = default;
     AWS_PINPOINTEMAIL_API SendingOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINTEMAIL_API SendingOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINTEMAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>If <code>true</code>, email sending is enabled for the configuration set. If
      * <code>false</code>, email sending is disabled for the configuration set.</p>
      */
-    inline bool GetSendingEnabled() const{ return m_sendingEnabled; }
-
-    /**
-     * <p>If <code>true</code>, email sending is enabled for the configuration set. If
-     * <code>false</code>, email sending is disabled for the configuration set.</p>
-     */
+    inline bool GetSendingEnabled() const { return m_sendingEnabled; }
     inline bool SendingEnabledHasBeenSet() const { return m_sendingEnabledHasBeenSet; }
-
-    /**
-     * <p>If <code>true</code>, email sending is enabled for the configuration set. If
-     * <code>false</code>, email sending is disabled for the configuration set.</p>
-     */
     inline void SetSendingEnabled(bool value) { m_sendingEnabledHasBeenSet = true; m_sendingEnabled = value; }
-
-    /**
-     * <p>If <code>true</code>, email sending is enabled for the configuration set. If
-     * <code>false</code>, email sending is disabled for the configuration set.</p>
-     */
     inline SendingOptions& WithSendingEnabled(bool value) { SetSendingEnabled(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_sendingEnabled;
+    bool m_sendingEnabled{false};
     bool m_sendingEnabledHasBeenSet = false;
   };
 

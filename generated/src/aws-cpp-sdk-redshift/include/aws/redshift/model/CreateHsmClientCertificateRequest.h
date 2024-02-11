@@ -26,7 +26,7 @@ namespace Model
   class CreateHsmClientCertificateRequest : public RedshiftRequest
   {
   public:
-    AWS_REDSHIFT_API CreateHsmClientCertificateRequest();
+    AWS_REDSHIFT_API CreateHsmClientCertificateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,95 +41,32 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The identifier to be assigned to the new HSM client certificate that the
      * cluster will use to connect to the HSM to use the database encryption keys.</p>
      */
-    inline const Aws::String& GetHsmClientCertificateIdentifier() const{ return m_hsmClientCertificateIdentifier; }
-
-    /**
-     * <p>The identifier to be assigned to the new HSM client certificate that the
-     * cluster will use to connect to the HSM to use the database encryption keys.</p>
-     */
+    inline const Aws::String& GetHsmClientCertificateIdentifier() const { return m_hsmClientCertificateIdentifier; }
     inline bool HsmClientCertificateIdentifierHasBeenSet() const { return m_hsmClientCertificateIdentifierHasBeenSet; }
+    template<typename HsmClientCertificateIdentifierT = Aws::String>
+    void SetHsmClientCertificateIdentifier(HsmClientCertificateIdentifierT&& value) { m_hsmClientCertificateIdentifierHasBeenSet = true; m_hsmClientCertificateIdentifier = std::forward<HsmClientCertificateIdentifierT>(value); }
+    template<typename HsmClientCertificateIdentifierT = Aws::String>
+    CreateHsmClientCertificateRequest& WithHsmClientCertificateIdentifier(HsmClientCertificateIdentifierT&& value) { SetHsmClientCertificateIdentifier(std::forward<HsmClientCertificateIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier to be assigned to the new HSM client certificate that the
-     * cluster will use to connect to the HSM to use the database encryption keys.</p>
-     */
-    inline void SetHsmClientCertificateIdentifier(const Aws::String& value) { m_hsmClientCertificateIdentifierHasBeenSet = true; m_hsmClientCertificateIdentifier = value; }
-
-    /**
-     * <p>The identifier to be assigned to the new HSM client certificate that the
-     * cluster will use to connect to the HSM to use the database encryption keys.</p>
-     */
-    inline void SetHsmClientCertificateIdentifier(Aws::String&& value) { m_hsmClientCertificateIdentifierHasBeenSet = true; m_hsmClientCertificateIdentifier = std::move(value); }
-
-    /**
-     * <p>The identifier to be assigned to the new HSM client certificate that the
-     * cluster will use to connect to the HSM to use the database encryption keys.</p>
-     */
-    inline void SetHsmClientCertificateIdentifier(const char* value) { m_hsmClientCertificateIdentifierHasBeenSet = true; m_hsmClientCertificateIdentifier.assign(value); }
-
-    /**
-     * <p>The identifier to be assigned to the new HSM client certificate that the
-     * cluster will use to connect to the HSM to use the database encryption keys.</p>
-     */
-    inline CreateHsmClientCertificateRequest& WithHsmClientCertificateIdentifier(const Aws::String& value) { SetHsmClientCertificateIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier to be assigned to the new HSM client certificate that the
-     * cluster will use to connect to the HSM to use the database encryption keys.</p>
-     */
-    inline CreateHsmClientCertificateRequest& WithHsmClientCertificateIdentifier(Aws::String&& value) { SetHsmClientCertificateIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier to be assigned to the new HSM client certificate that the
-     * cluster will use to connect to the HSM to use the database encryption keys.</p>
-     */
-    inline CreateHsmClientCertificateRequest& WithHsmClientCertificateIdentifier(const char* value) { SetHsmClientCertificateIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of tag instances.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
-    inline CreateHsmClientCertificateRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
-    inline CreateHsmClientCertificateRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
-    inline CreateHsmClientCertificateRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
-    inline CreateHsmClientCertificateRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateHsmClientCertificateRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateHsmClientCertificateRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_hsmClientCertificateIdentifier;

@@ -23,7 +23,7 @@ namespace Model
   class UpdateGeoMatchSetRequest : public WAFRequest
   {
   public:
-    AWS_WAF_API UpdateGeoMatchSetRequest();
+    AWS_WAF_API UpdateGeoMatchSetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,104 +36,33 @@ namespace Model
     AWS_WAF_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The <code>GeoMatchSetId</code> of the <a>GeoMatchSet</a> that you want to
      * update. <code>GeoMatchSetId</code> is returned by <a>CreateGeoMatchSet</a> and
      * by <a>ListGeoMatchSets</a>.</p>
      */
-    inline const Aws::String& GetGeoMatchSetId() const{ return m_geoMatchSetId; }
-
-    /**
-     * <p>The <code>GeoMatchSetId</code> of the <a>GeoMatchSet</a> that you want to
-     * update. <code>GeoMatchSetId</code> is returned by <a>CreateGeoMatchSet</a> and
-     * by <a>ListGeoMatchSets</a>.</p>
-     */
+    inline const Aws::String& GetGeoMatchSetId() const { return m_geoMatchSetId; }
     inline bool GeoMatchSetIdHasBeenSet() const { return m_geoMatchSetIdHasBeenSet; }
+    template<typename GeoMatchSetIdT = Aws::String>
+    void SetGeoMatchSetId(GeoMatchSetIdT&& value) { m_geoMatchSetIdHasBeenSet = true; m_geoMatchSetId = std::forward<GeoMatchSetIdT>(value); }
+    template<typename GeoMatchSetIdT = Aws::String>
+    UpdateGeoMatchSetRequest& WithGeoMatchSetId(GeoMatchSetIdT&& value) { SetGeoMatchSetId(std::forward<GeoMatchSetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>GeoMatchSetId</code> of the <a>GeoMatchSet</a> that you want to
-     * update. <code>GeoMatchSetId</code> is returned by <a>CreateGeoMatchSet</a> and
-     * by <a>ListGeoMatchSets</a>.</p>
-     */
-    inline void SetGeoMatchSetId(const Aws::String& value) { m_geoMatchSetIdHasBeenSet = true; m_geoMatchSetId = value; }
-
-    /**
-     * <p>The <code>GeoMatchSetId</code> of the <a>GeoMatchSet</a> that you want to
-     * update. <code>GeoMatchSetId</code> is returned by <a>CreateGeoMatchSet</a> and
-     * by <a>ListGeoMatchSets</a>.</p>
-     */
-    inline void SetGeoMatchSetId(Aws::String&& value) { m_geoMatchSetIdHasBeenSet = true; m_geoMatchSetId = std::move(value); }
-
-    /**
-     * <p>The <code>GeoMatchSetId</code> of the <a>GeoMatchSet</a> that you want to
-     * update. <code>GeoMatchSetId</code> is returned by <a>CreateGeoMatchSet</a> and
-     * by <a>ListGeoMatchSets</a>.</p>
-     */
-    inline void SetGeoMatchSetId(const char* value) { m_geoMatchSetIdHasBeenSet = true; m_geoMatchSetId.assign(value); }
-
-    /**
-     * <p>The <code>GeoMatchSetId</code> of the <a>GeoMatchSet</a> that you want to
-     * update. <code>GeoMatchSetId</code> is returned by <a>CreateGeoMatchSet</a> and
-     * by <a>ListGeoMatchSets</a>.</p>
-     */
-    inline UpdateGeoMatchSetRequest& WithGeoMatchSetId(const Aws::String& value) { SetGeoMatchSetId(value); return *this;}
-
-    /**
-     * <p>The <code>GeoMatchSetId</code> of the <a>GeoMatchSet</a> that you want to
-     * update. <code>GeoMatchSetId</code> is returned by <a>CreateGeoMatchSet</a> and
-     * by <a>ListGeoMatchSets</a>.</p>
-     */
-    inline UpdateGeoMatchSetRequest& WithGeoMatchSetId(Aws::String&& value) { SetGeoMatchSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>GeoMatchSetId</code> of the <a>GeoMatchSet</a> that you want to
-     * update. <code>GeoMatchSetId</code> is returned by <a>CreateGeoMatchSet</a> and
-     * by <a>ListGeoMatchSets</a>.</p>
-     */
-    inline UpdateGeoMatchSetRequest& WithGeoMatchSetId(const char* value) { SetGeoMatchSetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
      */
-    inline const Aws::String& GetChangeToken() const{ return m_changeToken; }
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
+    inline const Aws::String& GetChangeToken() const { return m_changeToken; }
     inline bool ChangeTokenHasBeenSet() const { return m_changeTokenHasBeenSet; }
+    template<typename ChangeTokenT = Aws::String>
+    void SetChangeToken(ChangeTokenT&& value) { m_changeTokenHasBeenSet = true; m_changeToken = std::forward<ChangeTokenT>(value); }
+    template<typename ChangeTokenT = Aws::String>
+    UpdateGeoMatchSetRequest& WithChangeToken(ChangeTokenT&& value) { SetChangeToken(std::forward<ChangeTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
-    inline void SetChangeToken(const Aws::String& value) { m_changeTokenHasBeenSet = true; m_changeToken = value; }
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
-    inline void SetChangeToken(Aws::String&& value) { m_changeTokenHasBeenSet = true; m_changeToken = std::move(value); }
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
-    inline void SetChangeToken(const char* value) { m_changeTokenHasBeenSet = true; m_changeToken.assign(value); }
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
-    inline UpdateGeoMatchSetRequest& WithChangeToken(const Aws::String& value) { SetChangeToken(value); return *this;}
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
-    inline UpdateGeoMatchSetRequest& WithChangeToken(Aws::String&& value) { SetChangeToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
-    inline UpdateGeoMatchSetRequest& WithChangeToken(const char* value) { SetChangeToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of <code>GeoMatchSetUpdate</code> objects that you want to insert
      * into or delete from an <a>GeoMatchSet</a>. For more information, see the
@@ -144,92 +73,15 @@ namespace Model
      * <code>GeoMatchConstraint</code>. To add multiple countries, include multiple
      * <code>GeoMatchSetUpdate</code> objects in your request.</p> </li> </ul>
      */
-    inline const Aws::Vector<GeoMatchSetUpdate>& GetUpdates() const{ return m_updates; }
-
-    /**
-     * <p>An array of <code>GeoMatchSetUpdate</code> objects that you want to insert
-     * into or delete from an <a>GeoMatchSet</a>. For more information, see the
-     * applicable data types:</p> <ul> <li> <p> <a>GeoMatchSetUpdate</a>: Contains
-     * <code>Action</code> and <code>GeoMatchConstraint</code> </p> </li> <li> <p>
-     * <a>GeoMatchConstraint</a>: Contains <code>Type</code> and <code>Value</code>
-     * </p> <p>You can have only one <code>Type</code> and <code>Value</code> per
-     * <code>GeoMatchConstraint</code>. To add multiple countries, include multiple
-     * <code>GeoMatchSetUpdate</code> objects in your request.</p> </li> </ul>
-     */
+    inline const Aws::Vector<GeoMatchSetUpdate>& GetUpdates() const { return m_updates; }
     inline bool UpdatesHasBeenSet() const { return m_updatesHasBeenSet; }
-
-    /**
-     * <p>An array of <code>GeoMatchSetUpdate</code> objects that you want to insert
-     * into or delete from an <a>GeoMatchSet</a>. For more information, see the
-     * applicable data types:</p> <ul> <li> <p> <a>GeoMatchSetUpdate</a>: Contains
-     * <code>Action</code> and <code>GeoMatchConstraint</code> </p> </li> <li> <p>
-     * <a>GeoMatchConstraint</a>: Contains <code>Type</code> and <code>Value</code>
-     * </p> <p>You can have only one <code>Type</code> and <code>Value</code> per
-     * <code>GeoMatchConstraint</code>. To add multiple countries, include multiple
-     * <code>GeoMatchSetUpdate</code> objects in your request.</p> </li> </ul>
-     */
-    inline void SetUpdates(const Aws::Vector<GeoMatchSetUpdate>& value) { m_updatesHasBeenSet = true; m_updates = value; }
-
-    /**
-     * <p>An array of <code>GeoMatchSetUpdate</code> objects that you want to insert
-     * into or delete from an <a>GeoMatchSet</a>. For more information, see the
-     * applicable data types:</p> <ul> <li> <p> <a>GeoMatchSetUpdate</a>: Contains
-     * <code>Action</code> and <code>GeoMatchConstraint</code> </p> </li> <li> <p>
-     * <a>GeoMatchConstraint</a>: Contains <code>Type</code> and <code>Value</code>
-     * </p> <p>You can have only one <code>Type</code> and <code>Value</code> per
-     * <code>GeoMatchConstraint</code>. To add multiple countries, include multiple
-     * <code>GeoMatchSetUpdate</code> objects in your request.</p> </li> </ul>
-     */
-    inline void SetUpdates(Aws::Vector<GeoMatchSetUpdate>&& value) { m_updatesHasBeenSet = true; m_updates = std::move(value); }
-
-    /**
-     * <p>An array of <code>GeoMatchSetUpdate</code> objects that you want to insert
-     * into or delete from an <a>GeoMatchSet</a>. For more information, see the
-     * applicable data types:</p> <ul> <li> <p> <a>GeoMatchSetUpdate</a>: Contains
-     * <code>Action</code> and <code>GeoMatchConstraint</code> </p> </li> <li> <p>
-     * <a>GeoMatchConstraint</a>: Contains <code>Type</code> and <code>Value</code>
-     * </p> <p>You can have only one <code>Type</code> and <code>Value</code> per
-     * <code>GeoMatchConstraint</code>. To add multiple countries, include multiple
-     * <code>GeoMatchSetUpdate</code> objects in your request.</p> </li> </ul>
-     */
-    inline UpdateGeoMatchSetRequest& WithUpdates(const Aws::Vector<GeoMatchSetUpdate>& value) { SetUpdates(value); return *this;}
-
-    /**
-     * <p>An array of <code>GeoMatchSetUpdate</code> objects that you want to insert
-     * into or delete from an <a>GeoMatchSet</a>. For more information, see the
-     * applicable data types:</p> <ul> <li> <p> <a>GeoMatchSetUpdate</a>: Contains
-     * <code>Action</code> and <code>GeoMatchConstraint</code> </p> </li> <li> <p>
-     * <a>GeoMatchConstraint</a>: Contains <code>Type</code> and <code>Value</code>
-     * </p> <p>You can have only one <code>Type</code> and <code>Value</code> per
-     * <code>GeoMatchConstraint</code>. To add multiple countries, include multiple
-     * <code>GeoMatchSetUpdate</code> objects in your request.</p> </li> </ul>
-     */
-    inline UpdateGeoMatchSetRequest& WithUpdates(Aws::Vector<GeoMatchSetUpdate>&& value) { SetUpdates(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of <code>GeoMatchSetUpdate</code> objects that you want to insert
-     * into or delete from an <a>GeoMatchSet</a>. For more information, see the
-     * applicable data types:</p> <ul> <li> <p> <a>GeoMatchSetUpdate</a>: Contains
-     * <code>Action</code> and <code>GeoMatchConstraint</code> </p> </li> <li> <p>
-     * <a>GeoMatchConstraint</a>: Contains <code>Type</code> and <code>Value</code>
-     * </p> <p>You can have only one <code>Type</code> and <code>Value</code> per
-     * <code>GeoMatchConstraint</code>. To add multiple countries, include multiple
-     * <code>GeoMatchSetUpdate</code> objects in your request.</p> </li> </ul>
-     */
-    inline UpdateGeoMatchSetRequest& AddUpdates(const GeoMatchSetUpdate& value) { m_updatesHasBeenSet = true; m_updates.push_back(value); return *this; }
-
-    /**
-     * <p>An array of <code>GeoMatchSetUpdate</code> objects that you want to insert
-     * into or delete from an <a>GeoMatchSet</a>. For more information, see the
-     * applicable data types:</p> <ul> <li> <p> <a>GeoMatchSetUpdate</a>: Contains
-     * <code>Action</code> and <code>GeoMatchConstraint</code> </p> </li> <li> <p>
-     * <a>GeoMatchConstraint</a>: Contains <code>Type</code> and <code>Value</code>
-     * </p> <p>You can have only one <code>Type</code> and <code>Value</code> per
-     * <code>GeoMatchConstraint</code>. To add multiple countries, include multiple
-     * <code>GeoMatchSetUpdate</code> objects in your request.</p> </li> </ul>
-     */
-    inline UpdateGeoMatchSetRequest& AddUpdates(GeoMatchSetUpdate&& value) { m_updatesHasBeenSet = true; m_updates.push_back(std::move(value)); return *this; }
-
+    template<typename UpdatesT = Aws::Vector<GeoMatchSetUpdate>>
+    void SetUpdates(UpdatesT&& value) { m_updatesHasBeenSet = true; m_updates = std::forward<UpdatesT>(value); }
+    template<typename UpdatesT = Aws::Vector<GeoMatchSetUpdate>>
+    UpdateGeoMatchSetRequest& WithUpdates(UpdatesT&& value) { SetUpdates(std::forward<UpdatesT>(value)); return *this;}
+    template<typename UpdatesT = GeoMatchSetUpdate>
+    UpdateGeoMatchSetRequest& AddUpdates(UpdatesT&& value) { m_updatesHasBeenSet = true; m_updates.emplace_back(std::forward<UpdatesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_geoMatchSetId;

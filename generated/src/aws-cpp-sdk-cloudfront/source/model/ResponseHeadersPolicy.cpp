@@ -20,17 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-ResponseHeadersPolicy::ResponseHeadersPolicy() : 
-    m_idHasBeenSet(false),
-    m_lastModifiedTimeHasBeenSet(false),
-    m_responseHeadersPolicyConfigHasBeenSet(false)
-{
-}
-
-ResponseHeadersPolicy::ResponseHeadersPolicy(const XmlNode& xmlNode) : 
-    m_idHasBeenSet(false),
-    m_lastModifiedTimeHasBeenSet(false),
-    m_responseHeadersPolicyConfigHasBeenSet(false)
+ResponseHeadersPolicy::ResponseHeadersPolicy(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

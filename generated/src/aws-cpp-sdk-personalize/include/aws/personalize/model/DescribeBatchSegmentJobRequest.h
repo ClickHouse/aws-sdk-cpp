@@ -21,7 +21,7 @@ namespace Model
   class DescribeBatchSegmentJobRequest : public PersonalizeRequest
   {
   public:
-    AWS_PERSONALIZE_API DescribeBatchSegmentJobRequest();
+    AWS_PERSONALIZE_API DescribeBatchSegmentJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_PERSONALIZE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the batch segment job to describe.</p>
      */
-    inline const Aws::String& GetBatchSegmentJobArn() const{ return m_batchSegmentJobArn; }
-
-    /**
-     * <p>The ARN of the batch segment job to describe.</p>
-     */
+    inline const Aws::String& GetBatchSegmentJobArn() const { return m_batchSegmentJobArn; }
     inline bool BatchSegmentJobArnHasBeenSet() const { return m_batchSegmentJobArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the batch segment job to describe.</p>
-     */
-    inline void SetBatchSegmentJobArn(const Aws::String& value) { m_batchSegmentJobArnHasBeenSet = true; m_batchSegmentJobArn = value; }
-
-    /**
-     * <p>The ARN of the batch segment job to describe.</p>
-     */
-    inline void SetBatchSegmentJobArn(Aws::String&& value) { m_batchSegmentJobArnHasBeenSet = true; m_batchSegmentJobArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the batch segment job to describe.</p>
-     */
-    inline void SetBatchSegmentJobArn(const char* value) { m_batchSegmentJobArnHasBeenSet = true; m_batchSegmentJobArn.assign(value); }
-
-    /**
-     * <p>The ARN of the batch segment job to describe.</p>
-     */
-    inline DescribeBatchSegmentJobRequest& WithBatchSegmentJobArn(const Aws::String& value) { SetBatchSegmentJobArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the batch segment job to describe.</p>
-     */
-    inline DescribeBatchSegmentJobRequest& WithBatchSegmentJobArn(Aws::String&& value) { SetBatchSegmentJobArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the batch segment job to describe.</p>
-     */
-    inline DescribeBatchSegmentJobRequest& WithBatchSegmentJobArn(const char* value) { SetBatchSegmentJobArn(value); return *this;}
-
+    template<typename BatchSegmentJobArnT = Aws::String>
+    void SetBatchSegmentJobArn(BatchSegmentJobArnT&& value) { m_batchSegmentJobArnHasBeenSet = true; m_batchSegmentJobArn = std::forward<BatchSegmentJobArnT>(value); }
+    template<typename BatchSegmentJobArnT = Aws::String>
+    DescribeBatchSegmentJobRequest& WithBatchSegmentJobArn(BatchSegmentJobArnT&& value) { SetBatchSegmentJobArn(std::forward<BatchSegmentJobArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_batchSegmentJobArn;

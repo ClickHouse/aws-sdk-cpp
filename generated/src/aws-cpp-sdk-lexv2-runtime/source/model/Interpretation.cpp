@@ -18,17 +18,7 @@ namespace LexRuntimeV2
 namespace Model
 {
 
-Interpretation::Interpretation() : 
-    m_nluConfidenceHasBeenSet(false),
-    m_sentimentResponseHasBeenSet(false),
-    m_intentHasBeenSet(false)
-{
-}
-
-Interpretation::Interpretation(JsonView jsonValue) : 
-    m_nluConfidenceHasBeenSet(false),
-    m_sentimentResponseHasBeenSet(false),
-    m_intentHasBeenSet(false)
+Interpretation::Interpretation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,23 @@ Interpretation& Interpretation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("nluConfidence"))
   {
     m_nluConfidence = jsonValue.GetObject("nluConfidence");
-
     m_nluConfidenceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sentimentResponse"))
   {
     m_sentimentResponse = jsonValue.GetObject("sentimentResponse");
-
     m_sentimentResponseHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("intent"))
   {
     m_intent = jsonValue.GetObject("intent");
-
     m_intentHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("interpretationSource"))
+  {
+    m_interpretationSource = InterpretationSourceMapper::GetInterpretationSourceForName(jsonValue.GetString("interpretationSource"));
+    m_interpretationSourceHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -79,6 +68,11 @@ JsonValue Interpretation::Jsonize() const
   {
    payload.WithObject("intent", m_intent.Jsonize());
 
+  }
+
+  if(m_interpretationSourceHasBeenSet)
+  {
+   payload.WithString("interpretationSource", InterpretationSourceMapper::GetNameForInterpretationSource(m_interpretationSource));
   }
 
   return payload;

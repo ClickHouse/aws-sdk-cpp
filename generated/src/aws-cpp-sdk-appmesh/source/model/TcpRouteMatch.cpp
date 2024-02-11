@@ -18,15 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-TcpRouteMatch::TcpRouteMatch() : 
-    m_port(0),
-    m_portHasBeenSet(false)
-{
-}
-
-TcpRouteMatch::TcpRouteMatch(JsonView jsonValue) : 
-    m_port(0),
-    m_portHasBeenSet(false)
+TcpRouteMatch::TcpRouteMatch(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ TcpRouteMatch& TcpRouteMatch::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("port"))
   {
     m_port = jsonValue.GetInteger("port");
-
     m_portHasBeenSet = true;
   }
-
   return *this;
 }
 

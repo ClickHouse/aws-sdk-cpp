@@ -28,283 +28,105 @@ namespace Model
   /**
    * <p>Provides a summary of a transform job. Multiple
    * <code>TransformJobSummary</code> objects are returned as a list after in
-   * response to a <a>ListTransformJobs</a> call.</p><p><h3>See Also:</h3>   <a
+   * response to a <a
+   * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListTransformJobs.html">ListTransformJobs</a>
+   * call.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/TransformJobSummary">AWS
    * API Reference</a></p>
    */
   class TransformJobSummary
   {
   public:
-    AWS_SAGEMAKER_API TransformJobSummary();
+    AWS_SAGEMAKER_API TransformJobSummary() = default;
     AWS_SAGEMAKER_API TransformJobSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API TransformJobSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the transform job.</p>
      */
-    inline const Aws::String& GetTransformJobName() const{ return m_transformJobName; }
-
-    /**
-     * <p>The name of the transform job.</p>
-     */
+    inline const Aws::String& GetTransformJobName() const { return m_transformJobName; }
     inline bool TransformJobNameHasBeenSet() const { return m_transformJobNameHasBeenSet; }
+    template<typename TransformJobNameT = Aws::String>
+    void SetTransformJobName(TransformJobNameT&& value) { m_transformJobNameHasBeenSet = true; m_transformJobName = std::forward<TransformJobNameT>(value); }
+    template<typename TransformJobNameT = Aws::String>
+    TransformJobSummary& WithTransformJobName(TransformJobNameT&& value) { SetTransformJobName(std::forward<TransformJobNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the transform job.</p>
-     */
-    inline void SetTransformJobName(const Aws::String& value) { m_transformJobNameHasBeenSet = true; m_transformJobName = value; }
-
-    /**
-     * <p>The name of the transform job.</p>
-     */
-    inline void SetTransformJobName(Aws::String&& value) { m_transformJobNameHasBeenSet = true; m_transformJobName = std::move(value); }
-
-    /**
-     * <p>The name of the transform job.</p>
-     */
-    inline void SetTransformJobName(const char* value) { m_transformJobNameHasBeenSet = true; m_transformJobName.assign(value); }
-
-    /**
-     * <p>The name of the transform job.</p>
-     */
-    inline TransformJobSummary& WithTransformJobName(const Aws::String& value) { SetTransformJobName(value); return *this;}
-
-    /**
-     * <p>The name of the transform job.</p>
-     */
-    inline TransformJobSummary& WithTransformJobName(Aws::String&& value) { SetTransformJobName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the transform job.</p>
-     */
-    inline TransformJobSummary& WithTransformJobName(const char* value) { SetTransformJobName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the transform job.</p>
      */
-    inline const Aws::String& GetTransformJobArn() const{ return m_transformJobArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the transform job.</p>
-     */
+    inline const Aws::String& GetTransformJobArn() const { return m_transformJobArn; }
     inline bool TransformJobArnHasBeenSet() const { return m_transformJobArnHasBeenSet; }
+    template<typename TransformJobArnT = Aws::String>
+    void SetTransformJobArn(TransformJobArnT&& value) { m_transformJobArnHasBeenSet = true; m_transformJobArn = std::forward<TransformJobArnT>(value); }
+    template<typename TransformJobArnT = Aws::String>
+    TransformJobSummary& WithTransformJobArn(TransformJobArnT&& value) { SetTransformJobArn(std::forward<TransformJobArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the transform job.</p>
-     */
-    inline void SetTransformJobArn(const Aws::String& value) { m_transformJobArnHasBeenSet = true; m_transformJobArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the transform job.</p>
-     */
-    inline void SetTransformJobArn(Aws::String&& value) { m_transformJobArnHasBeenSet = true; m_transformJobArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the transform job.</p>
-     */
-    inline void SetTransformJobArn(const char* value) { m_transformJobArnHasBeenSet = true; m_transformJobArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the transform job.</p>
-     */
-    inline TransformJobSummary& WithTransformJobArn(const Aws::String& value) { SetTransformJobArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the transform job.</p>
-     */
-    inline TransformJobSummary& WithTransformJobArn(Aws::String&& value) { SetTransformJobArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the transform job.</p>
-     */
-    inline TransformJobSummary& WithTransformJobArn(const char* value) { SetTransformJobArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A timestamp that shows when the transform Job was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>A timestamp that shows when the transform Job was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
     inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    TransformJobSummary& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A timestamp that shows when the transform Job was created.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
-
-    /**
-     * <p>A timestamp that shows when the transform Job was created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
-
-    /**
-     * <p>A timestamp that shows when the transform Job was created.</p>
-     */
-    inline TransformJobSummary& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>A timestamp that shows when the transform Job was created.</p>
-     */
-    inline TransformJobSummary& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates when the transform job ends on compute instances. For successful
      * jobs and stopped jobs, this is the exact time recorded after the results are
      * uploaded. For failed jobs, this is when Amazon SageMaker detected that the job
      * failed.</p>
      */
-    inline const Aws::Utils::DateTime& GetTransformEndTime() const{ return m_transformEndTime; }
-
-    /**
-     * <p>Indicates when the transform job ends on compute instances. For successful
-     * jobs and stopped jobs, this is the exact time recorded after the results are
-     * uploaded. For failed jobs, this is when Amazon SageMaker detected that the job
-     * failed.</p>
-     */
+    inline const Aws::Utils::DateTime& GetTransformEndTime() const { return m_transformEndTime; }
     inline bool TransformEndTimeHasBeenSet() const { return m_transformEndTimeHasBeenSet; }
+    template<typename TransformEndTimeT = Aws::Utils::DateTime>
+    void SetTransformEndTime(TransformEndTimeT&& value) { m_transformEndTimeHasBeenSet = true; m_transformEndTime = std::forward<TransformEndTimeT>(value); }
+    template<typename TransformEndTimeT = Aws::Utils::DateTime>
+    TransformJobSummary& WithTransformEndTime(TransformEndTimeT&& value) { SetTransformEndTime(std::forward<TransformEndTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates when the transform job ends on compute instances. For successful
-     * jobs and stopped jobs, this is the exact time recorded after the results are
-     * uploaded. For failed jobs, this is when Amazon SageMaker detected that the job
-     * failed.</p>
-     */
-    inline void SetTransformEndTime(const Aws::Utils::DateTime& value) { m_transformEndTimeHasBeenSet = true; m_transformEndTime = value; }
-
-    /**
-     * <p>Indicates when the transform job ends on compute instances. For successful
-     * jobs and stopped jobs, this is the exact time recorded after the results are
-     * uploaded. For failed jobs, this is when Amazon SageMaker detected that the job
-     * failed.</p>
-     */
-    inline void SetTransformEndTime(Aws::Utils::DateTime&& value) { m_transformEndTimeHasBeenSet = true; m_transformEndTime = std::move(value); }
-
-    /**
-     * <p>Indicates when the transform job ends on compute instances. For successful
-     * jobs and stopped jobs, this is the exact time recorded after the results are
-     * uploaded. For failed jobs, this is when Amazon SageMaker detected that the job
-     * failed.</p>
-     */
-    inline TransformJobSummary& WithTransformEndTime(const Aws::Utils::DateTime& value) { SetTransformEndTime(value); return *this;}
-
-    /**
-     * <p>Indicates when the transform job ends on compute instances. For successful
-     * jobs and stopped jobs, this is the exact time recorded after the results are
-     * uploaded. For failed jobs, this is when Amazon SageMaker detected that the job
-     * failed.</p>
-     */
-    inline TransformJobSummary& WithTransformEndTime(Aws::Utils::DateTime&& value) { SetTransformEndTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates when the transform job was last modified.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModifiedTime() const{ return m_lastModifiedTime; }
-
-    /**
-     * <p>Indicates when the transform job was last modified.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastModifiedTime() const { return m_lastModifiedTime; }
     inline bool LastModifiedTimeHasBeenSet() const { return m_lastModifiedTimeHasBeenSet; }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    void SetLastModifiedTime(LastModifiedTimeT&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::forward<LastModifiedTimeT>(value); }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    TransformJobSummary& WithLastModifiedTime(LastModifiedTimeT&& value) { SetLastModifiedTime(std::forward<LastModifiedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates when the transform job was last modified.</p>
-     */
-    inline void SetLastModifiedTime(const Aws::Utils::DateTime& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = value; }
-
-    /**
-     * <p>Indicates when the transform job was last modified.</p>
-     */
-    inline void SetLastModifiedTime(Aws::Utils::DateTime&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::move(value); }
-
-    /**
-     * <p>Indicates when the transform job was last modified.</p>
-     */
-    inline TransformJobSummary& WithLastModifiedTime(const Aws::Utils::DateTime& value) { SetLastModifiedTime(value); return *this;}
-
-    /**
-     * <p>Indicates when the transform job was last modified.</p>
-     */
-    inline TransformJobSummary& WithLastModifiedTime(Aws::Utils::DateTime&& value) { SetLastModifiedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the transform job.</p>
      */
-    inline const TransformJobStatus& GetTransformJobStatus() const{ return m_transformJobStatus; }
-
-    /**
-     * <p>The status of the transform job.</p>
-     */
+    inline TransformJobStatus GetTransformJobStatus() const { return m_transformJobStatus; }
     inline bool TransformJobStatusHasBeenSet() const { return m_transformJobStatusHasBeenSet; }
+    inline void SetTransformJobStatus(TransformJobStatus value) { m_transformJobStatusHasBeenSet = true; m_transformJobStatus = value; }
+    inline TransformJobSummary& WithTransformJobStatus(TransformJobStatus value) { SetTransformJobStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the transform job.</p>
-     */
-    inline void SetTransformJobStatus(const TransformJobStatus& value) { m_transformJobStatusHasBeenSet = true; m_transformJobStatus = value; }
-
-    /**
-     * <p>The status of the transform job.</p>
-     */
-    inline void SetTransformJobStatus(TransformJobStatus&& value) { m_transformJobStatusHasBeenSet = true; m_transformJobStatus = std::move(value); }
-
-    /**
-     * <p>The status of the transform job.</p>
-     */
-    inline TransformJobSummary& WithTransformJobStatus(const TransformJobStatus& value) { SetTransformJobStatus(value); return *this;}
-
-    /**
-     * <p>The status of the transform job.</p>
-     */
-    inline TransformJobSummary& WithTransformJobStatus(TransformJobStatus&& value) { SetTransformJobStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the transform job failed, the reason it failed.</p>
      */
-    inline const Aws::String& GetFailureReason() const{ return m_failureReason; }
-
-    /**
-     * <p>If the transform job failed, the reason it failed.</p>
-     */
+    inline const Aws::String& GetFailureReason() const { return m_failureReason; }
     inline bool FailureReasonHasBeenSet() const { return m_failureReasonHasBeenSet; }
-
-    /**
-     * <p>If the transform job failed, the reason it failed.</p>
-     */
-    inline void SetFailureReason(const Aws::String& value) { m_failureReasonHasBeenSet = true; m_failureReason = value; }
-
-    /**
-     * <p>If the transform job failed, the reason it failed.</p>
-     */
-    inline void SetFailureReason(Aws::String&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::move(value); }
-
-    /**
-     * <p>If the transform job failed, the reason it failed.</p>
-     */
-    inline void SetFailureReason(const char* value) { m_failureReasonHasBeenSet = true; m_failureReason.assign(value); }
-
-    /**
-     * <p>If the transform job failed, the reason it failed.</p>
-     */
-    inline TransformJobSummary& WithFailureReason(const Aws::String& value) { SetFailureReason(value); return *this;}
-
-    /**
-     * <p>If the transform job failed, the reason it failed.</p>
-     */
-    inline TransformJobSummary& WithFailureReason(Aws::String&& value) { SetFailureReason(std::move(value)); return *this;}
-
-    /**
-     * <p>If the transform job failed, the reason it failed.</p>
-     */
-    inline TransformJobSummary& WithFailureReason(const char* value) { SetFailureReason(value); return *this;}
-
+    template<typename FailureReasonT = Aws::String>
+    void SetFailureReason(FailureReasonT&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::forward<FailureReasonT>(value); }
+    template<typename FailureReasonT = Aws::String>
+    TransformJobSummary& WithFailureReason(FailureReasonT&& value) { SetFailureReason(std::forward<FailureReasonT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_transformJobName;
@@ -313,16 +135,16 @@ namespace Model
     Aws::String m_transformJobArn;
     bool m_transformJobArnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
     bool m_creationTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_transformEndTime;
+    Aws::Utils::DateTime m_transformEndTime{};
     bool m_transformEndTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModifiedTime;
+    Aws::Utils::DateTime m_lastModifiedTime{};
     bool m_lastModifiedTimeHasBeenSet = false;
 
-    TransformJobStatus m_transformJobStatus;
+    TransformJobStatus m_transformJobStatus{TransformJobStatus::NOT_SET};
     bool m_transformJobStatusHasBeenSet = false;
 
     Aws::String m_failureReason;

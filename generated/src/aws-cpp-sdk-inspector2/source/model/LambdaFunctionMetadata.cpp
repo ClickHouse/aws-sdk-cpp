@@ -18,34 +18,13 @@ namespace Inspector2
 namespace Model
 {
 
-LambdaFunctionMetadata::LambdaFunctionMetadata() : 
-    m_functionNameHasBeenSet(false),
-    m_functionTagsHasBeenSet(false),
-    m_layersHasBeenSet(false),
-    m_runtime(Runtime::NOT_SET),
-    m_runtimeHasBeenSet(false)
-{
-}
-
-LambdaFunctionMetadata::LambdaFunctionMetadata(JsonView jsonValue) : 
-    m_functionNameHasBeenSet(false),
-    m_functionTagsHasBeenSet(false),
-    m_layersHasBeenSet(false),
-    m_runtime(Runtime::NOT_SET),
-    m_runtimeHasBeenSet(false)
+LambdaFunctionMetadata::LambdaFunctionMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 LambdaFunctionMetadata& LambdaFunctionMetadata::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("functionName"))
-  {
-    m_functionName = jsonValue.GetString("functionName");
-
-    m_functionNameHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("functionTags"))
   {
     Aws::Map<Aws::String, JsonView> functionTagsJsonMap = jsonValue.GetObject("functionTags").GetAllObjects();
@@ -55,7 +34,6 @@ LambdaFunctionMetadata& LambdaFunctionMetadata::operator =(JsonView jsonValue)
     }
     m_functionTagsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("layers"))
   {
     Aws::Utils::Array<JsonView> layersJsonList = jsonValue.GetArray("layers");
@@ -65,26 +43,22 @@ LambdaFunctionMetadata& LambdaFunctionMetadata::operator =(JsonView jsonValue)
     }
     m_layersHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("functionName"))
+  {
+    m_functionName = jsonValue.GetString("functionName");
+    m_functionNameHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("runtime"))
   {
     m_runtime = RuntimeMapper::GetRuntimeForName(jsonValue.GetString("runtime"));
-
     m_runtimeHasBeenSet = true;
   }
-
   return *this;
 }
 
 JsonValue LambdaFunctionMetadata::Jsonize() const
 {
   JsonValue payload;
-
-  if(m_functionNameHasBeenSet)
-  {
-   payload.WithString("functionName", m_functionName);
-
-  }
 
   if(m_functionTagsHasBeenSet)
   {
@@ -105,6 +79,12 @@ JsonValue LambdaFunctionMetadata::Jsonize() const
      layersJsonList[layersIndex].AsString(m_layers[layersIndex]);
    }
    payload.WithArray("layers", std::move(layersJsonList));
+
+  }
+
+  if(m_functionNameHasBeenSet)
+  {
+   payload.WithString("functionName", m_functionName);
 
   }
 

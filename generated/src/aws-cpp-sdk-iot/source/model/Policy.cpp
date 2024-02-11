@@ -18,15 +18,7 @@ namespace IoT
 namespace Model
 {
 
-Policy::Policy() : 
-    m_policyNameHasBeenSet(false),
-    m_policyArnHasBeenSet(false)
-{
-}
-
-Policy::Policy(JsonView jsonValue) : 
-    m_policyNameHasBeenSet(false),
-    m_policyArnHasBeenSet(false)
+Policy::Policy(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Policy& Policy::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("policyName"))
   {
     m_policyName = jsonValue.GetString("policyName");
-
     m_policyNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("policyArn"))
   {
     m_policyArn = jsonValue.GetString("policyArn");
-
     m_policyArnHasBeenSet = true;
   }
-
   return *this;
 }
 

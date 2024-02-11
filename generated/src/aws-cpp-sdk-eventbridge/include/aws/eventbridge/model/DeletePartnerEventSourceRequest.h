@@ -21,7 +21,7 @@ namespace Model
   class DeletePartnerEventSourceRequest : public EventBridgeRequest
   {
   public:
-    AWS_EVENTBRIDGE_API DeletePartnerEventSourceRequest();
+    AWS_EVENTBRIDGE_API DeletePartnerEventSourceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,95 +34,30 @@ namespace Model
     AWS_EVENTBRIDGE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the event source to delete.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the event source to delete.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DeletePartnerEventSourceRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the event source to delete.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the event source to delete.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the event source to delete.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the event source to delete.</p>
-     */
-    inline DeletePartnerEventSourceRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the event source to delete.</p>
-     */
-    inline DeletePartnerEventSourceRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the event source to delete.</p>
-     */
-    inline DeletePartnerEventSourceRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services account ID of the Amazon Web Services customer that
      * the event source was created for.</p>
      */
-    inline const Aws::String& GetAccount() const{ return m_account; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the Amazon Web Services customer that
-     * the event source was created for.</p>
-     */
+    inline const Aws::String& GetAccount() const { return m_account; }
     inline bool AccountHasBeenSet() const { return m_accountHasBeenSet; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the Amazon Web Services customer that
-     * the event source was created for.</p>
-     */
-    inline void SetAccount(const Aws::String& value) { m_accountHasBeenSet = true; m_account = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the Amazon Web Services customer that
-     * the event source was created for.</p>
-     */
-    inline void SetAccount(Aws::String&& value) { m_accountHasBeenSet = true; m_account = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the Amazon Web Services customer that
-     * the event source was created for.</p>
-     */
-    inline void SetAccount(const char* value) { m_accountHasBeenSet = true; m_account.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the Amazon Web Services customer that
-     * the event source was created for.</p>
-     */
-    inline DeletePartnerEventSourceRequest& WithAccount(const Aws::String& value) { SetAccount(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the Amazon Web Services customer that
-     * the event source was created for.</p>
-     */
-    inline DeletePartnerEventSourceRequest& WithAccount(Aws::String&& value) { SetAccount(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the Amazon Web Services customer that
-     * the event source was created for.</p>
-     */
-    inline DeletePartnerEventSourceRequest& WithAccount(const char* value) { SetAccount(value); return *this;}
-
+    template<typename AccountT = Aws::String>
+    void SetAccount(AccountT&& value) { m_accountHasBeenSet = true; m_account = std::forward<AccountT>(value); }
+    template<typename AccountT = Aws::String>
+    DeletePartnerEventSourceRequest& WithAccount(AccountT&& value) { SetAccount(std::forward<AccountT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

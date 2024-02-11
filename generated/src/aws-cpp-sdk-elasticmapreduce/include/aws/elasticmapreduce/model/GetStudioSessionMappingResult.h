@@ -28,68 +28,38 @@ namespace Model
   class GetStudioSessionMappingResult
   {
   public:
-    AWS_EMR_API GetStudioSessionMappingResult();
+    AWS_EMR_API GetStudioSessionMappingResult() = default;
     AWS_EMR_API GetStudioSessionMappingResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_EMR_API GetStudioSessionMappingResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The session mapping details for the specified Amazon EMR Studio and identity,
      * including session policy ARN and creation time.</p>
      */
-    inline const SessionMappingDetail& GetSessionMapping() const{ return m_sessionMapping; }
+    inline const SessionMappingDetail& GetSessionMapping() const { return m_sessionMapping; }
+    template<typename SessionMappingT = SessionMappingDetail>
+    void SetSessionMapping(SessionMappingT&& value) { m_sessionMappingHasBeenSet = true; m_sessionMapping = std::forward<SessionMappingT>(value); }
+    template<typename SessionMappingT = SessionMappingDetail>
+    GetStudioSessionMappingResult& WithSessionMapping(SessionMappingT&& value) { SetSessionMapping(std::forward<SessionMappingT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The session mapping details for the specified Amazon EMR Studio and identity,
-     * including session policy ARN and creation time.</p>
-     */
-    inline void SetSessionMapping(const SessionMappingDetail& value) { m_sessionMapping = value; }
-
-    /**
-     * <p>The session mapping details for the specified Amazon EMR Studio and identity,
-     * including session policy ARN and creation time.</p>
-     */
-    inline void SetSessionMapping(SessionMappingDetail&& value) { m_sessionMapping = std::move(value); }
-
-    /**
-     * <p>The session mapping details for the specified Amazon EMR Studio and identity,
-     * including session policy ARN and creation time.</p>
-     */
-    inline GetStudioSessionMappingResult& WithSessionMapping(const SessionMappingDetail& value) { SetSessionMapping(value); return *this;}
-
-    /**
-     * <p>The session mapping details for the specified Amazon EMR Studio and identity,
-     * including session policy ARN and creation time.</p>
-     */
-    inline GetStudioSessionMappingResult& WithSessionMapping(SessionMappingDetail&& value) { SetSessionMapping(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetStudioSessionMappingResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetStudioSessionMappingResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetStudioSessionMappingResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetStudioSessionMappingResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     SessionMappingDetail m_sessionMapping;
+    bool m_sessionMappingHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

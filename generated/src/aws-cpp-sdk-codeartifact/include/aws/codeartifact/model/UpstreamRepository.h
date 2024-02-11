@@ -36,52 +36,23 @@ namespace Model
   class UpstreamRepository
   {
   public:
-    AWS_CODEARTIFACT_API UpstreamRepository();
+    AWS_CODEARTIFACT_API UpstreamRepository() = default;
     AWS_CODEARTIFACT_API UpstreamRepository(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEARTIFACT_API UpstreamRepository& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEARTIFACT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The name of an upstream repository. </p>
      */
-    inline const Aws::String& GetRepositoryName() const{ return m_repositoryName; }
-
-    /**
-     * <p> The name of an upstream repository. </p>
-     */
+    inline const Aws::String& GetRepositoryName() const { return m_repositoryName; }
     inline bool RepositoryNameHasBeenSet() const { return m_repositoryNameHasBeenSet; }
-
-    /**
-     * <p> The name of an upstream repository. </p>
-     */
-    inline void SetRepositoryName(const Aws::String& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = value; }
-
-    /**
-     * <p> The name of an upstream repository. </p>
-     */
-    inline void SetRepositoryName(Aws::String&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::move(value); }
-
-    /**
-     * <p> The name of an upstream repository. </p>
-     */
-    inline void SetRepositoryName(const char* value) { m_repositoryNameHasBeenSet = true; m_repositoryName.assign(value); }
-
-    /**
-     * <p> The name of an upstream repository. </p>
-     */
-    inline UpstreamRepository& WithRepositoryName(const Aws::String& value) { SetRepositoryName(value); return *this;}
-
-    /**
-     * <p> The name of an upstream repository. </p>
-     */
-    inline UpstreamRepository& WithRepositoryName(Aws::String&& value) { SetRepositoryName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name of an upstream repository. </p>
-     */
-    inline UpstreamRepository& WithRepositoryName(const char* value) { SetRepositoryName(value); return *this;}
-
+    template<typename RepositoryNameT = Aws::String>
+    void SetRepositoryName(RepositoryNameT&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::forward<RepositoryNameT>(value); }
+    template<typename RepositoryNameT = Aws::String>
+    UpstreamRepository& WithRepositoryName(RepositoryNameT&& value) { SetRepositoryName(std::forward<RepositoryNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_repositoryName;

@@ -18,19 +18,7 @@ namespace SimSpaceWeaver
 namespace Model
 {
 
-SimulationAppPortMapping::SimulationAppPortMapping() : 
-    m_actual(0),
-    m_actualHasBeenSet(false),
-    m_declared(0),
-    m_declaredHasBeenSet(false)
-{
-}
-
-SimulationAppPortMapping::SimulationAppPortMapping(JsonView jsonValue) : 
-    m_actual(0),
-    m_actualHasBeenSet(false),
-    m_declared(0),
-    m_declaredHasBeenSet(false)
+SimulationAppPortMapping::SimulationAppPortMapping(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ SimulationAppPortMapping& SimulationAppPortMapping::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("Actual"))
   {
     m_actual = jsonValue.GetInteger("Actual");
-
     m_actualHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Declared"))
   {
     m_declared = jsonValue.GetInteger("Declared");
-
     m_declaredHasBeenSet = true;
   }
-
   return *this;
 }
 

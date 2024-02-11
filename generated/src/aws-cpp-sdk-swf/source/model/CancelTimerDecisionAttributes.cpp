@@ -18,13 +18,7 @@ namespace SWF
 namespace Model
 {
 
-CancelTimerDecisionAttributes::CancelTimerDecisionAttributes() : 
-    m_timerIdHasBeenSet(false)
-{
-}
-
-CancelTimerDecisionAttributes::CancelTimerDecisionAttributes(JsonView jsonValue) : 
-    m_timerIdHasBeenSet(false)
+CancelTimerDecisionAttributes::CancelTimerDecisionAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ CancelTimerDecisionAttributes& CancelTimerDecisionAttributes::operator =(JsonVie
   if(jsonValue.ValueExists("timerId"))
   {
     m_timerId = jsonValue.GetString("timerId");
-
     m_timerIdHasBeenSet = true;
   }
-
   return *this;
 }
 

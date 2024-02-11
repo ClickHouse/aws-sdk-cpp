@@ -34,95 +34,40 @@ namespace Model
   class ClusteringKey
   {
   public:
-    AWS_KEYSPACES_API ClusteringKey();
+    AWS_KEYSPACES_API ClusteringKey() = default;
     AWS_KEYSPACES_API ClusteringKey(Aws::Utils::Json::JsonView jsonValue);
     AWS_KEYSPACES_API ClusteringKey& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KEYSPACES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name(s) of the clustering column(s).</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name(s) of the clustering column(s).</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ClusteringKey& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name(s) of the clustering column(s).</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name(s) of the clustering column(s).</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name(s) of the clustering column(s).</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name(s) of the clustering column(s).</p>
-     */
-    inline ClusteringKey& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name(s) of the clustering column(s).</p>
-     */
-    inline ClusteringKey& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name(s) of the clustering column(s).</p>
-     */
-    inline ClusteringKey& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Sets the ascendant (<code>ASC</code>) or descendant (<code>DESC</code>) order
      * modifier.</p>
      */
-    inline const SortOrder& GetOrderBy() const{ return m_orderBy; }
-
-    /**
-     * <p>Sets the ascendant (<code>ASC</code>) or descendant (<code>DESC</code>) order
-     * modifier.</p>
-     */
+    inline SortOrder GetOrderBy() const { return m_orderBy; }
     inline bool OrderByHasBeenSet() const { return m_orderByHasBeenSet; }
-
-    /**
-     * <p>Sets the ascendant (<code>ASC</code>) or descendant (<code>DESC</code>) order
-     * modifier.</p>
-     */
-    inline void SetOrderBy(const SortOrder& value) { m_orderByHasBeenSet = true; m_orderBy = value; }
-
-    /**
-     * <p>Sets the ascendant (<code>ASC</code>) or descendant (<code>DESC</code>) order
-     * modifier.</p>
-     */
-    inline void SetOrderBy(SortOrder&& value) { m_orderByHasBeenSet = true; m_orderBy = std::move(value); }
-
-    /**
-     * <p>Sets the ascendant (<code>ASC</code>) or descendant (<code>DESC</code>) order
-     * modifier.</p>
-     */
-    inline ClusteringKey& WithOrderBy(const SortOrder& value) { SetOrderBy(value); return *this;}
-
-    /**
-     * <p>Sets the ascendant (<code>ASC</code>) or descendant (<code>DESC</code>) order
-     * modifier.</p>
-     */
-    inline ClusteringKey& WithOrderBy(SortOrder&& value) { SetOrderBy(std::move(value)); return *this;}
-
+    inline void SetOrderBy(SortOrder value) { m_orderByHasBeenSet = true; m_orderBy = value; }
+    inline ClusteringKey& WithOrderBy(SortOrder value) { SetOrderBy(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    SortOrder m_orderBy;
+    SortOrder m_orderBy{SortOrder::NOT_SET};
     bool m_orderByHasBeenSet = false;
   };
 

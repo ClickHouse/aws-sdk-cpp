@@ -18,17 +18,7 @@ namespace MediaPackage
 namespace Model
 {
 
-DashEncryption::DashEncryption() : 
-    m_keyRotationIntervalSeconds(0),
-    m_keyRotationIntervalSecondsHasBeenSet(false),
-    m_spekeKeyProviderHasBeenSet(false)
-{
-}
-
-DashEncryption::DashEncryption(JsonView jsonValue) : 
-    m_keyRotationIntervalSeconds(0),
-    m_keyRotationIntervalSecondsHasBeenSet(false),
-    m_spekeKeyProviderHasBeenSet(false)
+DashEncryption::DashEncryption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ DashEncryption& DashEncryption::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("keyRotationIntervalSeconds"))
   {
     m_keyRotationIntervalSeconds = jsonValue.GetInteger("keyRotationIntervalSeconds");
-
     m_keyRotationIntervalSecondsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("spekeKeyProvider"))
   {
     m_spekeKeyProvider = jsonValue.GetObject("spekeKeyProvider");
-
     m_spekeKeyProviderHasBeenSet = true;
   }
-
   return *this;
 }
 

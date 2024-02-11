@@ -12,22 +12,6 @@ using namespace Aws::MQ::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateBrokerRequest::UpdateBrokerRequest() : 
-    m_authenticationStrategy(AuthenticationStrategy::NOT_SET),
-    m_authenticationStrategyHasBeenSet(false),
-    m_autoMinorVersionUpgrade(false),
-    m_autoMinorVersionUpgradeHasBeenSet(false),
-    m_brokerIdHasBeenSet(false),
-    m_configurationHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_hostInstanceTypeHasBeenSet(false),
-    m_ldapServerMetadataHasBeenSet(false),
-    m_logsHasBeenSet(false),
-    m_maintenanceWindowStartTimeHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateBrokerRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -88,6 +72,11 @@ Aws::String UpdateBrokerRequest::SerializePayload() const
    }
    payload.WithArray("securityGroups", std::move(securityGroupsJsonList));
 
+  }
+
+  if(m_dataReplicationModeHasBeenSet)
+  {
+   payload.WithString("dataReplicationMode", DataReplicationModeMapper::GetNameForDataReplicationMode(m_dataReplicationMode));
   }
 
   return payload.View().WriteReadable();

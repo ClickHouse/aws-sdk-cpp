@@ -10,12 +10,6 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-AuthorizeDataShareRequest::AuthorizeDataShareRequest() : 
-    m_dataShareArnHasBeenSet(false),
-    m_consumerIdentifierHasBeenSet(false)
-{
-}
-
 Aws::String AuthorizeDataShareRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -28,6 +22,11 @@ Aws::String AuthorizeDataShareRequest::SerializePayload() const
   if(m_consumerIdentifierHasBeenSet)
   {
     ss << "ConsumerIdentifier=" << StringUtils::URLEncode(m_consumerIdentifier.c_str()) << "&";
+  }
+
+  if(m_allowWritesHasBeenSet)
+  {
+    ss << "AllowWrites=" << std::boolalpha << m_allowWrites << "&";
   }
 
   ss << "Version=2012-12-01";

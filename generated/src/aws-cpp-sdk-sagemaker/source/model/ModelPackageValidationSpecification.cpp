@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ModelPackageValidationSpecification::ModelPackageValidationSpecification() : 
-    m_validationRoleHasBeenSet(false),
-    m_validationProfilesHasBeenSet(false)
-{
-}
-
-ModelPackageValidationSpecification::ModelPackageValidationSpecification(JsonView jsonValue) : 
-    m_validationRoleHasBeenSet(false),
-    m_validationProfilesHasBeenSet(false)
+ModelPackageValidationSpecification::ModelPackageValidationSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ModelPackageValidationSpecification& ModelPackageValidationSpecification::operat
   if(jsonValue.ValueExists("ValidationRole"))
   {
     m_validationRole = jsonValue.GetString("ValidationRole");
-
     m_validationRoleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ValidationProfiles"))
   {
     Aws::Utils::Array<JsonView> validationProfilesJsonList = jsonValue.GetArray("ValidationProfiles");
@@ -49,7 +39,6 @@ ModelPackageValidationSpecification& ModelPackageValidationSpecification::operat
     }
     m_validationProfilesHasBeenSet = true;
   }
-
   return *this;
 }
 

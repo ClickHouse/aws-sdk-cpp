@@ -35,12 +35,13 @@ namespace Model
   class BuildPhase
   {
   public:
-    AWS_CODEBUILD_API BuildPhase();
+    AWS_CODEBUILD_API BuildPhase() = default;
     AWS_CODEBUILD_API BuildPhase(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEBUILD_API BuildPhase& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEBUILD_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the build phase. Valid values include:</p> <dl> <dt>BUILD</dt>
      * <dd> <p>Core build activities typically occur in this build phase.</p> </dd>
@@ -57,99 +58,13 @@ namespace Model
      * build has been submitted.</p> </dd> <dt>UPLOAD_ARTIFACTS</dt> <dd> <p>Build
      * output artifacts are being uploaded to the output location.</p> </dd> </dl>
      */
-    inline const BuildPhaseType& GetPhaseType() const{ return m_phaseType; }
-
-    /**
-     * <p>The name of the build phase. Valid values include:</p> <dl> <dt>BUILD</dt>
-     * <dd> <p>Core build activities typically occur in this build phase.</p> </dd>
-     * <dt>COMPLETED</dt> <dd> <p>The build has been completed.</p> </dd>
-     * <dt>DOWNLOAD_SOURCE</dt> <dd> <p>Source code is being downloaded in this build
-     * phase.</p> </dd> <dt>FINALIZING</dt> <dd> <p>The build process is completing in
-     * this build phase.</p> </dd> <dt>INSTALL</dt> <dd> <p>Installation activities
-     * typically occur in this build phase.</p> </dd> <dt>POST_BUILD</dt> <dd>
-     * <p>Post-build activities typically occur in this build phase.</p> </dd>
-     * <dt>PRE_BUILD</dt> <dd> <p>Pre-build activities typically occur in this build
-     * phase.</p> </dd> <dt>PROVISIONING</dt> <dd> <p>The build environment is being
-     * set up.</p> </dd> <dt>QUEUED</dt> <dd> <p>The build has been submitted and is
-     * queued behind other submitted builds.</p> </dd> <dt>SUBMITTED</dt> <dd> <p>The
-     * build has been submitted.</p> </dd> <dt>UPLOAD_ARTIFACTS</dt> <dd> <p>Build
-     * output artifacts are being uploaded to the output location.</p> </dd> </dl>
-     */
+    inline BuildPhaseType GetPhaseType() const { return m_phaseType; }
     inline bool PhaseTypeHasBeenSet() const { return m_phaseTypeHasBeenSet; }
+    inline void SetPhaseType(BuildPhaseType value) { m_phaseTypeHasBeenSet = true; m_phaseType = value; }
+    inline BuildPhase& WithPhaseType(BuildPhaseType value) { SetPhaseType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the build phase. Valid values include:</p> <dl> <dt>BUILD</dt>
-     * <dd> <p>Core build activities typically occur in this build phase.</p> </dd>
-     * <dt>COMPLETED</dt> <dd> <p>The build has been completed.</p> </dd>
-     * <dt>DOWNLOAD_SOURCE</dt> <dd> <p>Source code is being downloaded in this build
-     * phase.</p> </dd> <dt>FINALIZING</dt> <dd> <p>The build process is completing in
-     * this build phase.</p> </dd> <dt>INSTALL</dt> <dd> <p>Installation activities
-     * typically occur in this build phase.</p> </dd> <dt>POST_BUILD</dt> <dd>
-     * <p>Post-build activities typically occur in this build phase.</p> </dd>
-     * <dt>PRE_BUILD</dt> <dd> <p>Pre-build activities typically occur in this build
-     * phase.</p> </dd> <dt>PROVISIONING</dt> <dd> <p>The build environment is being
-     * set up.</p> </dd> <dt>QUEUED</dt> <dd> <p>The build has been submitted and is
-     * queued behind other submitted builds.</p> </dd> <dt>SUBMITTED</dt> <dd> <p>The
-     * build has been submitted.</p> </dd> <dt>UPLOAD_ARTIFACTS</dt> <dd> <p>Build
-     * output artifacts are being uploaded to the output location.</p> </dd> </dl>
-     */
-    inline void SetPhaseType(const BuildPhaseType& value) { m_phaseTypeHasBeenSet = true; m_phaseType = value; }
-
-    /**
-     * <p>The name of the build phase. Valid values include:</p> <dl> <dt>BUILD</dt>
-     * <dd> <p>Core build activities typically occur in this build phase.</p> </dd>
-     * <dt>COMPLETED</dt> <dd> <p>The build has been completed.</p> </dd>
-     * <dt>DOWNLOAD_SOURCE</dt> <dd> <p>Source code is being downloaded in this build
-     * phase.</p> </dd> <dt>FINALIZING</dt> <dd> <p>The build process is completing in
-     * this build phase.</p> </dd> <dt>INSTALL</dt> <dd> <p>Installation activities
-     * typically occur in this build phase.</p> </dd> <dt>POST_BUILD</dt> <dd>
-     * <p>Post-build activities typically occur in this build phase.</p> </dd>
-     * <dt>PRE_BUILD</dt> <dd> <p>Pre-build activities typically occur in this build
-     * phase.</p> </dd> <dt>PROVISIONING</dt> <dd> <p>The build environment is being
-     * set up.</p> </dd> <dt>QUEUED</dt> <dd> <p>The build has been submitted and is
-     * queued behind other submitted builds.</p> </dd> <dt>SUBMITTED</dt> <dd> <p>The
-     * build has been submitted.</p> </dd> <dt>UPLOAD_ARTIFACTS</dt> <dd> <p>Build
-     * output artifacts are being uploaded to the output location.</p> </dd> </dl>
-     */
-    inline void SetPhaseType(BuildPhaseType&& value) { m_phaseTypeHasBeenSet = true; m_phaseType = std::move(value); }
-
-    /**
-     * <p>The name of the build phase. Valid values include:</p> <dl> <dt>BUILD</dt>
-     * <dd> <p>Core build activities typically occur in this build phase.</p> </dd>
-     * <dt>COMPLETED</dt> <dd> <p>The build has been completed.</p> </dd>
-     * <dt>DOWNLOAD_SOURCE</dt> <dd> <p>Source code is being downloaded in this build
-     * phase.</p> </dd> <dt>FINALIZING</dt> <dd> <p>The build process is completing in
-     * this build phase.</p> </dd> <dt>INSTALL</dt> <dd> <p>Installation activities
-     * typically occur in this build phase.</p> </dd> <dt>POST_BUILD</dt> <dd>
-     * <p>Post-build activities typically occur in this build phase.</p> </dd>
-     * <dt>PRE_BUILD</dt> <dd> <p>Pre-build activities typically occur in this build
-     * phase.</p> </dd> <dt>PROVISIONING</dt> <dd> <p>The build environment is being
-     * set up.</p> </dd> <dt>QUEUED</dt> <dd> <p>The build has been submitted and is
-     * queued behind other submitted builds.</p> </dd> <dt>SUBMITTED</dt> <dd> <p>The
-     * build has been submitted.</p> </dd> <dt>UPLOAD_ARTIFACTS</dt> <dd> <p>Build
-     * output artifacts are being uploaded to the output location.</p> </dd> </dl>
-     */
-    inline BuildPhase& WithPhaseType(const BuildPhaseType& value) { SetPhaseType(value); return *this;}
-
-    /**
-     * <p>The name of the build phase. Valid values include:</p> <dl> <dt>BUILD</dt>
-     * <dd> <p>Core build activities typically occur in this build phase.</p> </dd>
-     * <dt>COMPLETED</dt> <dd> <p>The build has been completed.</p> </dd>
-     * <dt>DOWNLOAD_SOURCE</dt> <dd> <p>Source code is being downloaded in this build
-     * phase.</p> </dd> <dt>FINALIZING</dt> <dd> <p>The build process is completing in
-     * this build phase.</p> </dd> <dt>INSTALL</dt> <dd> <p>Installation activities
-     * typically occur in this build phase.</p> </dd> <dt>POST_BUILD</dt> <dd>
-     * <p>Post-build activities typically occur in this build phase.</p> </dd>
-     * <dt>PRE_BUILD</dt> <dd> <p>Pre-build activities typically occur in this build
-     * phase.</p> </dd> <dt>PROVISIONING</dt> <dd> <p>The build environment is being
-     * set up.</p> </dd> <dt>QUEUED</dt> <dd> <p>The build has been submitted and is
-     * queued behind other submitted builds.</p> </dd> <dt>SUBMITTED</dt> <dd> <p>The
-     * build has been submitted.</p> </dd> <dt>UPLOAD_ARTIFACTS</dt> <dd> <p>Build
-     * output artifacts are being uploaded to the output location.</p> </dd> </dl>
-     */
-    inline BuildPhase& WithPhaseType(BuildPhaseType&& value) { SetPhaseType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the build phase. Valid values include:</p> <dl>
      * <dt>FAILED</dt> <dd> <p>The build phase failed.</p> </dd> <dt>FAULT</dt> <dd>
@@ -158,209 +73,76 @@ namespace Model
      * stopped.</p> </dd> <dt>SUCCEEDED</dt> <dd> <p>The build phase succeeded.</p>
      * </dd> <dt>TIMED_OUT</dt> <dd> <p>The build phase timed out.</p> </dd> </dl>
      */
-    inline const StatusType& GetPhaseStatus() const{ return m_phaseStatus; }
-
-    /**
-     * <p>The current status of the build phase. Valid values include:</p> <dl>
-     * <dt>FAILED</dt> <dd> <p>The build phase failed.</p> </dd> <dt>FAULT</dt> <dd>
-     * <p>The build phase faulted.</p> </dd> <dt>IN_PROGRESS</dt> <dd> <p>The build
-     * phase is still in progress.</p> </dd> <dt>STOPPED</dt> <dd> <p>The build phase
-     * stopped.</p> </dd> <dt>SUCCEEDED</dt> <dd> <p>The build phase succeeded.</p>
-     * </dd> <dt>TIMED_OUT</dt> <dd> <p>The build phase timed out.</p> </dd> </dl>
-     */
+    inline StatusType GetPhaseStatus() const { return m_phaseStatus; }
     inline bool PhaseStatusHasBeenSet() const { return m_phaseStatusHasBeenSet; }
+    inline void SetPhaseStatus(StatusType value) { m_phaseStatusHasBeenSet = true; m_phaseStatus = value; }
+    inline BuildPhase& WithPhaseStatus(StatusType value) { SetPhaseStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the build phase. Valid values include:</p> <dl>
-     * <dt>FAILED</dt> <dd> <p>The build phase failed.</p> </dd> <dt>FAULT</dt> <dd>
-     * <p>The build phase faulted.</p> </dd> <dt>IN_PROGRESS</dt> <dd> <p>The build
-     * phase is still in progress.</p> </dd> <dt>STOPPED</dt> <dd> <p>The build phase
-     * stopped.</p> </dd> <dt>SUCCEEDED</dt> <dd> <p>The build phase succeeded.</p>
-     * </dd> <dt>TIMED_OUT</dt> <dd> <p>The build phase timed out.</p> </dd> </dl>
-     */
-    inline void SetPhaseStatus(const StatusType& value) { m_phaseStatusHasBeenSet = true; m_phaseStatus = value; }
-
-    /**
-     * <p>The current status of the build phase. Valid values include:</p> <dl>
-     * <dt>FAILED</dt> <dd> <p>The build phase failed.</p> </dd> <dt>FAULT</dt> <dd>
-     * <p>The build phase faulted.</p> </dd> <dt>IN_PROGRESS</dt> <dd> <p>The build
-     * phase is still in progress.</p> </dd> <dt>STOPPED</dt> <dd> <p>The build phase
-     * stopped.</p> </dd> <dt>SUCCEEDED</dt> <dd> <p>The build phase succeeded.</p>
-     * </dd> <dt>TIMED_OUT</dt> <dd> <p>The build phase timed out.</p> </dd> </dl>
-     */
-    inline void SetPhaseStatus(StatusType&& value) { m_phaseStatusHasBeenSet = true; m_phaseStatus = std::move(value); }
-
-    /**
-     * <p>The current status of the build phase. Valid values include:</p> <dl>
-     * <dt>FAILED</dt> <dd> <p>The build phase failed.</p> </dd> <dt>FAULT</dt> <dd>
-     * <p>The build phase faulted.</p> </dd> <dt>IN_PROGRESS</dt> <dd> <p>The build
-     * phase is still in progress.</p> </dd> <dt>STOPPED</dt> <dd> <p>The build phase
-     * stopped.</p> </dd> <dt>SUCCEEDED</dt> <dd> <p>The build phase succeeded.</p>
-     * </dd> <dt>TIMED_OUT</dt> <dd> <p>The build phase timed out.</p> </dd> </dl>
-     */
-    inline BuildPhase& WithPhaseStatus(const StatusType& value) { SetPhaseStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the build phase. Valid values include:</p> <dl>
-     * <dt>FAILED</dt> <dd> <p>The build phase failed.</p> </dd> <dt>FAULT</dt> <dd>
-     * <p>The build phase faulted.</p> </dd> <dt>IN_PROGRESS</dt> <dd> <p>The build
-     * phase is still in progress.</p> </dd> <dt>STOPPED</dt> <dd> <p>The build phase
-     * stopped.</p> </dd> <dt>SUCCEEDED</dt> <dd> <p>The build phase succeeded.</p>
-     * </dd> <dt>TIMED_OUT</dt> <dd> <p>The build phase timed out.</p> </dd> </dl>
-     */
-    inline BuildPhase& WithPhaseStatus(StatusType&& value) { SetPhaseStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>When the build phase started, expressed in Unix time format.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
-
-    /**
-     * <p>When the build phase started, expressed in Unix time format.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartTime() const { return m_startTime; }
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    BuildPhase& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When the build phase started, expressed in Unix time format.</p>
-     */
-    inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    /**
-     * <p>When the build phase started, expressed in Unix time format.</p>
-     */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    /**
-     * <p>When the build phase started, expressed in Unix time format.</p>
-     */
-    inline BuildPhase& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>When the build phase started, expressed in Unix time format.</p>
-     */
-    inline BuildPhase& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>When the build phase ended, expressed in Unix time format.</p>
      */
-    inline const Aws::Utils::DateTime& GetEndTime() const{ return m_endTime; }
-
-    /**
-     * <p>When the build phase ended, expressed in Unix time format.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEndTime() const { return m_endTime; }
     inline bool EndTimeHasBeenSet() const { return m_endTimeHasBeenSet; }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    void SetEndTime(EndTimeT&& value) { m_endTimeHasBeenSet = true; m_endTime = std::forward<EndTimeT>(value); }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    BuildPhase& WithEndTime(EndTimeT&& value) { SetEndTime(std::forward<EndTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When the build phase ended, expressed in Unix time format.</p>
-     */
-    inline void SetEndTime(const Aws::Utils::DateTime& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
-
-    /**
-     * <p>When the build phase ended, expressed in Unix time format.</p>
-     */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
-
-    /**
-     * <p>When the build phase ended, expressed in Unix time format.</p>
-     */
-    inline BuildPhase& WithEndTime(const Aws::Utils::DateTime& value) { SetEndTime(value); return *this;}
-
-    /**
-     * <p>When the build phase ended, expressed in Unix time format.</p>
-     */
-    inline BuildPhase& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>How long, in seconds, between the starting and ending times of the build's
      * phase.</p>
      */
-    inline long long GetDurationInSeconds() const{ return m_durationInSeconds; }
-
-    /**
-     * <p>How long, in seconds, between the starting and ending times of the build's
-     * phase.</p>
-     */
+    inline long long GetDurationInSeconds() const { return m_durationInSeconds; }
     inline bool DurationInSecondsHasBeenSet() const { return m_durationInSecondsHasBeenSet; }
-
-    /**
-     * <p>How long, in seconds, between the starting and ending times of the build's
-     * phase.</p>
-     */
     inline void SetDurationInSeconds(long long value) { m_durationInSecondsHasBeenSet = true; m_durationInSeconds = value; }
-
-    /**
-     * <p>How long, in seconds, between the starting and ending times of the build's
-     * phase.</p>
-     */
     inline BuildPhase& WithDurationInSeconds(long long value) { SetDurationInSeconds(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Additional information about a build phase, especially to help troubleshoot a
      * failed build.</p>
      */
-    inline const Aws::Vector<PhaseContext>& GetContexts() const{ return m_contexts; }
-
-    /**
-     * <p>Additional information about a build phase, especially to help troubleshoot a
-     * failed build.</p>
-     */
+    inline const Aws::Vector<PhaseContext>& GetContexts() const { return m_contexts; }
     inline bool ContextsHasBeenSet() const { return m_contextsHasBeenSet; }
-
-    /**
-     * <p>Additional information about a build phase, especially to help troubleshoot a
-     * failed build.</p>
-     */
-    inline void SetContexts(const Aws::Vector<PhaseContext>& value) { m_contextsHasBeenSet = true; m_contexts = value; }
-
-    /**
-     * <p>Additional information about a build phase, especially to help troubleshoot a
-     * failed build.</p>
-     */
-    inline void SetContexts(Aws::Vector<PhaseContext>&& value) { m_contextsHasBeenSet = true; m_contexts = std::move(value); }
-
-    /**
-     * <p>Additional information about a build phase, especially to help troubleshoot a
-     * failed build.</p>
-     */
-    inline BuildPhase& WithContexts(const Aws::Vector<PhaseContext>& value) { SetContexts(value); return *this;}
-
-    /**
-     * <p>Additional information about a build phase, especially to help troubleshoot a
-     * failed build.</p>
-     */
-    inline BuildPhase& WithContexts(Aws::Vector<PhaseContext>&& value) { SetContexts(std::move(value)); return *this;}
-
-    /**
-     * <p>Additional information about a build phase, especially to help troubleshoot a
-     * failed build.</p>
-     */
-    inline BuildPhase& AddContexts(const PhaseContext& value) { m_contextsHasBeenSet = true; m_contexts.push_back(value); return *this; }
-
-    /**
-     * <p>Additional information about a build phase, especially to help troubleshoot a
-     * failed build.</p>
-     */
-    inline BuildPhase& AddContexts(PhaseContext&& value) { m_contextsHasBeenSet = true; m_contexts.push_back(std::move(value)); return *this; }
-
+    template<typename ContextsT = Aws::Vector<PhaseContext>>
+    void SetContexts(ContextsT&& value) { m_contextsHasBeenSet = true; m_contexts = std::forward<ContextsT>(value); }
+    template<typename ContextsT = Aws::Vector<PhaseContext>>
+    BuildPhase& WithContexts(ContextsT&& value) { SetContexts(std::forward<ContextsT>(value)); return *this;}
+    template<typename ContextsT = PhaseContext>
+    BuildPhase& AddContexts(ContextsT&& value) { m_contextsHasBeenSet = true; m_contexts.emplace_back(std::forward<ContextsT>(value)); return *this; }
+    ///@}
   private:
 
-    BuildPhaseType m_phaseType;
+    BuildPhaseType m_phaseType{BuildPhaseType::NOT_SET};
     bool m_phaseTypeHasBeenSet = false;
 
-    StatusType m_phaseStatus;
+    StatusType m_phaseStatus{StatusType::NOT_SET};
     bool m_phaseStatusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startTime;
+    Aws::Utils::DateTime m_startTime{};
     bool m_startTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_endTime;
+    Aws::Utils::DateTime m_endTime{};
     bool m_endTimeHasBeenSet = false;
 
-    long long m_durationInSeconds;
+    long long m_durationInSeconds{0};
     bool m_durationInSecondsHasBeenSet = false;
 
     Aws::Vector<PhaseContext> m_contexts;

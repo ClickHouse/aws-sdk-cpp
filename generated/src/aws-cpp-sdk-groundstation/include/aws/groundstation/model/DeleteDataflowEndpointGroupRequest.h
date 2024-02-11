@@ -24,7 +24,7 @@ namespace Model
   class DeleteDataflowEndpointGroupRequest : public GroundStationRequest
   {
   public:
-    AWS_GROUNDSTATION_API DeleteDataflowEndpointGroupRequest();
+    AWS_GROUNDSTATION_API DeleteDataflowEndpointGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,46 +35,17 @@ namespace Model
     AWS_GROUNDSTATION_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>UUID of a dataflow endpoint group.</p>
      */
-    inline const Aws::String& GetDataflowEndpointGroupId() const{ return m_dataflowEndpointGroupId; }
-
-    /**
-     * <p>UUID of a dataflow endpoint group.</p>
-     */
+    inline const Aws::String& GetDataflowEndpointGroupId() const { return m_dataflowEndpointGroupId; }
     inline bool DataflowEndpointGroupIdHasBeenSet() const { return m_dataflowEndpointGroupIdHasBeenSet; }
-
-    /**
-     * <p>UUID of a dataflow endpoint group.</p>
-     */
-    inline void SetDataflowEndpointGroupId(const Aws::String& value) { m_dataflowEndpointGroupIdHasBeenSet = true; m_dataflowEndpointGroupId = value; }
-
-    /**
-     * <p>UUID of a dataflow endpoint group.</p>
-     */
-    inline void SetDataflowEndpointGroupId(Aws::String&& value) { m_dataflowEndpointGroupIdHasBeenSet = true; m_dataflowEndpointGroupId = std::move(value); }
-
-    /**
-     * <p>UUID of a dataflow endpoint group.</p>
-     */
-    inline void SetDataflowEndpointGroupId(const char* value) { m_dataflowEndpointGroupIdHasBeenSet = true; m_dataflowEndpointGroupId.assign(value); }
-
-    /**
-     * <p>UUID of a dataflow endpoint group.</p>
-     */
-    inline DeleteDataflowEndpointGroupRequest& WithDataflowEndpointGroupId(const Aws::String& value) { SetDataflowEndpointGroupId(value); return *this;}
-
-    /**
-     * <p>UUID of a dataflow endpoint group.</p>
-     */
-    inline DeleteDataflowEndpointGroupRequest& WithDataflowEndpointGroupId(Aws::String&& value) { SetDataflowEndpointGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>UUID of a dataflow endpoint group.</p>
-     */
-    inline DeleteDataflowEndpointGroupRequest& WithDataflowEndpointGroupId(const char* value) { SetDataflowEndpointGroupId(value); return *this;}
-
+    template<typename DataflowEndpointGroupIdT = Aws::String>
+    void SetDataflowEndpointGroupId(DataflowEndpointGroupIdT&& value) { m_dataflowEndpointGroupIdHasBeenSet = true; m_dataflowEndpointGroupId = std::forward<DataflowEndpointGroupIdT>(value); }
+    template<typename DataflowEndpointGroupIdT = Aws::String>
+    DeleteDataflowEndpointGroupRequest& WithDataflowEndpointGroupId(DataflowEndpointGroupIdT&& value) { SetDataflowEndpointGroupId(std::forward<DataflowEndpointGroupIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dataflowEndpointGroupId;

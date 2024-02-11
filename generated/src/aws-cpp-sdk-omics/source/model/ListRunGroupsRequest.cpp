@@ -15,14 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListRunGroupsRequest::ListRunGroupsRequest() : 
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_startingTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListRunGroupsRequest::SerializePayload() const
 {
   return {};
@@ -31,13 +23,6 @@ Aws::String ListRunGroupsRequest::SerializePayload() const
 void ListRunGroupsRequest::AddQueryStringParameters(URI& uri) const
 {
     Aws::StringStream ss;
-    if(m_maxResultsHasBeenSet)
-    {
-      ss << m_maxResults;
-      uri.AddQueryStringParameter("maxResults", ss.str());
-      ss.str("");
-    }
-
     if(m_nameHasBeenSet)
     {
       ss << m_name;
@@ -49,6 +34,13 @@ void ListRunGroupsRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << m_startingToken;
       uri.AddQueryStringParameter("startingToken", ss.str());
+      ss.str("");
+    }
+
+    if(m_maxResultsHasBeenSet)
+    {
+      ss << m_maxResults;
+      uri.AddQueryStringParameter("maxResults", ss.str());
       ss.str("");
     }
 

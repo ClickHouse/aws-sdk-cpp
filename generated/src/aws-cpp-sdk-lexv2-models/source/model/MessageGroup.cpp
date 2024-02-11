@@ -18,15 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-MessageGroup::MessageGroup() : 
-    m_messageHasBeenSet(false),
-    m_variationsHasBeenSet(false)
-{
-}
-
-MessageGroup::MessageGroup(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_variationsHasBeenSet(false)
+MessageGroup::MessageGroup(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ MessageGroup& MessageGroup::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetObject("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("variations"))
   {
     Aws::Utils::Array<JsonView> variationsJsonList = jsonValue.GetArray("variations");
@@ -49,7 +39,6 @@ MessageGroup& MessageGroup::operator =(JsonView jsonValue)
     }
     m_variationsHasBeenSet = true;
   }
-
   return *this;
 }
 

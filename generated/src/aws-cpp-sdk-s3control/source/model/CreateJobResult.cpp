@@ -16,10 +16,6 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws;
 
-CreateJobResult::CreateJobResult()
-{
-}
-
 CreateJobResult::CreateJobResult(const Aws::AmazonWebServiceResult<XmlDocument>& result)
 {
   *this = result;
@@ -36,14 +32,23 @@ CreateJobResult& CreateJobResult::operator =(const Aws::AmazonWebServiceResult<X
     if(!jobIdNode.IsNull())
     {
       m_jobId = Aws::Utils::Xml::DecodeEscapedXmlText(jobIdNode.GetText());
+      m_jobIdHasBeenSet = true;
     }
   }
 
   const auto& headers = result.GetHeaderValueCollection();
-  const auto& requestIdIter = headers.find("x-amzn-requestid");
+  const auto& requestIdIter = headers.find("x-amz-request-id");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
+  }
+
+  const auto& hostIdIter = headers.find("x-amz-id-2");
+  if(hostIdIter != headers.end())
+  {
+    m_hostId = hostIdIter->second;
+    m_hostIdHasBeenSet = true;
   }
 
   return *this;

@@ -12,21 +12,6 @@ using namespace Aws::IoTTwinMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateComponentTypeRequest::CreateComponentTypeRequest() : 
-    m_workspaceIdHasBeenSet(false),
-    m_isSingleton(false),
-    m_isSingletonHasBeenSet(false),
-    m_componentTypeIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_propertyDefinitionsHasBeenSet(false),
-    m_extendsFromHasBeenSet(false),
-    m_functionsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_propertyGroupsHasBeenSet(false),
-    m_componentTypeNameHasBeenSet(false)
-{
-}
-
 Aws::String CreateComponentTypeRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -101,6 +86,17 @@ Aws::String CreateComponentTypeRequest::SerializePayload() const
   if(m_componentTypeNameHasBeenSet)
   {
    payload.WithString("componentTypeName", m_componentTypeName);
+
+  }
+
+  if(m_compositeComponentTypesHasBeenSet)
+  {
+   JsonValue compositeComponentTypesJsonMap;
+   for(auto& compositeComponentTypesItem : m_compositeComponentTypes)
+   {
+     compositeComponentTypesJsonMap.WithObject(compositeComponentTypesItem.first, compositeComponentTypesItem.second.Jsonize());
+   }
+   payload.WithObject("compositeComponentTypes", std::move(compositeComponentTypesJsonMap));
 
   }
 

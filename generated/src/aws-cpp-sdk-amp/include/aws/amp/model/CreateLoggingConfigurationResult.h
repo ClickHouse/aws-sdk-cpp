@@ -26,7 +26,7 @@ namespace PrometheusService
 namespace Model
 {
   /**
-   * <p>Represents the output of a CreateLoggingConfiguration
+   * <p>Represents the output of a <code>CreateLoggingConfiguration</code>
    * operation.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/amp-2020-08-01/CreateLoggingConfigurationResponse">AWS
    * API Reference</a></p>
@@ -34,63 +34,38 @@ namespace Model
   class CreateLoggingConfigurationResult
   {
   public:
-    AWS_PROMETHEUSSERVICE_API CreateLoggingConfigurationResult();
+    AWS_PROMETHEUSSERVICE_API CreateLoggingConfigurationResult() = default;
     AWS_PROMETHEUSSERVICE_API CreateLoggingConfigurationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_PROMETHEUSSERVICE_API CreateLoggingConfigurationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p>The status of the logging configuration.</p>
+     * <p>A structure that displays the current status of the logging
+     * configuration.</p>
      */
-    inline const LoggingConfigurationStatus& GetStatus() const{ return m_status; }
+    inline const LoggingConfigurationStatus& GetStatus() const { return m_status; }
+    template<typename StatusT = LoggingConfigurationStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = LoggingConfigurationStatus>
+    CreateLoggingConfigurationResult& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the logging configuration.</p>
-     */
-    inline void SetStatus(const LoggingConfigurationStatus& value) { m_status = value; }
-
-    /**
-     * <p>The status of the logging configuration.</p>
-     */
-    inline void SetStatus(LoggingConfigurationStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of the logging configuration.</p>
-     */
-    inline CreateLoggingConfigurationResult& WithStatus(const LoggingConfigurationStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the logging configuration.</p>
-     */
-    inline CreateLoggingConfigurationResult& WithStatus(LoggingConfigurationStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateLoggingConfigurationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateLoggingConfigurationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateLoggingConfigurationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateLoggingConfigurationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     LoggingConfigurationStatus m_status;
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

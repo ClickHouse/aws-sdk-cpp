@@ -18,15 +18,7 @@ namespace CodeBuild
 namespace Model
 {
 
-ExportedEnvironmentVariable::ExportedEnvironmentVariable() : 
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-ExportedEnvironmentVariable::ExportedEnvironmentVariable(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
+ExportedEnvironmentVariable::ExportedEnvironmentVariable(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ExportedEnvironmentVariable& ExportedEnvironmentVariable::operator =(JsonView js
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetString("value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

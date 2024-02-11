@@ -18,17 +18,7 @@ namespace Lightsail
 namespace Model
 {
 
-InstanceState::InstanceState() : 
-    m_code(0),
-    m_codeHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-InstanceState::InstanceState(JsonView jsonValue) : 
-    m_code(0),
-    m_codeHasBeenSet(false),
-    m_nameHasBeenSet(false)
+InstanceState::InstanceState(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ InstanceState& InstanceState::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("code"))
   {
     m_code = jsonValue.GetInteger("code");
-
     m_codeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

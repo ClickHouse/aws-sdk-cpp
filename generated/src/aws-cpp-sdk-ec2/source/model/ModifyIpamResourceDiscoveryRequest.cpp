@@ -10,16 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ModifyIpamResourceDiscoveryRequest::ModifyIpamResourceDiscoveryRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_ipamResourceDiscoveryIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_addOperatingRegionsHasBeenSet(false),
-    m_removeOperatingRegionsHasBeenSet(false)
-{
-}
-
 Aws::String ModifyIpamResourceDiscoveryRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -56,6 +46,26 @@ Aws::String ModifyIpamResourceDiscoveryRequest::SerializePayload() const
     {
       item.OutputToStream(ss, "RemoveOperatingRegion.", removeOperatingRegionsCount, "");
       removeOperatingRegionsCount++;
+    }
+  }
+
+  if(m_addOrganizationalUnitExclusionsHasBeenSet)
+  {
+    unsigned addOrganizationalUnitExclusionsCount = 1;
+    for(auto& item : m_addOrganizationalUnitExclusions)
+    {
+      item.OutputToStream(ss, "AddOrganizationalUnitExclusion.", addOrganizationalUnitExclusionsCount, "");
+      addOrganizationalUnitExclusionsCount++;
+    }
+  }
+
+  if(m_removeOrganizationalUnitExclusionsHasBeenSet)
+  {
+    unsigned removeOrganizationalUnitExclusionsCount = 1;
+    for(auto& item : m_removeOrganizationalUnitExclusions)
+    {
+      item.OutputToStream(ss, "RemoveOrganizationalUnitExclusion.", removeOrganizationalUnitExclusionsCount, "");
+      removeOrganizationalUnitExclusionsCount++;
     }
   }
 

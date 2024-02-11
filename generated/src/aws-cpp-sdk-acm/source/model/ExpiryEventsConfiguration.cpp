@@ -18,15 +18,7 @@ namespace ACM
 namespace Model
 {
 
-ExpiryEventsConfiguration::ExpiryEventsConfiguration() : 
-    m_daysBeforeExpiry(0),
-    m_daysBeforeExpiryHasBeenSet(false)
-{
-}
-
-ExpiryEventsConfiguration::ExpiryEventsConfiguration(JsonView jsonValue) : 
-    m_daysBeforeExpiry(0),
-    m_daysBeforeExpiryHasBeenSet(false)
+ExpiryEventsConfiguration::ExpiryEventsConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ExpiryEventsConfiguration& ExpiryEventsConfiguration::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("DaysBeforeExpiry"))
   {
     m_daysBeforeExpiry = jsonValue.GetInteger("DaysBeforeExpiry");
-
     m_daysBeforeExpiryHasBeenSet = true;
   }
-
   return *this;
 }
 

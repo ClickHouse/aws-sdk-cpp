@@ -18,13 +18,7 @@ namespace LakeFormation
 namespace Model
 {
 
-DataLakePrincipal::DataLakePrincipal() : 
-    m_dataLakePrincipalIdentifierHasBeenSet(false)
-{
-}
-
-DataLakePrincipal::DataLakePrincipal(JsonView jsonValue) : 
-    m_dataLakePrincipalIdentifierHasBeenSet(false)
+DataLakePrincipal::DataLakePrincipal(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ DataLakePrincipal& DataLakePrincipal::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DataLakePrincipalIdentifier"))
   {
     m_dataLakePrincipalIdentifier = jsonValue.GetString("DataLakePrincipalIdentifier");
-
     m_dataLakePrincipalIdentifierHasBeenSet = true;
   }
-
   return *this;
 }
 

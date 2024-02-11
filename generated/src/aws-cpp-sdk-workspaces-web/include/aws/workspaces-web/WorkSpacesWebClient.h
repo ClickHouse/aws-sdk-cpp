@@ -16,34 +16,38 @@ namespace Aws
 namespace WorkSpacesWeb
 {
   /**
-   * <p>WorkSpaces Web is a low cost, fully managed WorkSpace built specifically to
-   * facilitate secure, web-based workloads. WorkSpaces Web makes it easy for
-   * customers to safely provide their employees with access to internal websites and
-   * SaaS web applications without the administrative burden of appliances or
-   * specialized client software. WorkSpaces Web provides simple policy tools
-   * tailored for user interactions, while offloading common tasks like capacity
-   * management, scaling, and maintaining browser images.</p>
+   * <p>Amazon WorkSpaces Secure Browser is a low cost, fully managed WorkSpace built
+   * specifically to facilitate secure, web-based workloads. WorkSpaces Secure
+   * Browser makes it easy for customers to safely provide their employees with
+   * access to internal websites and SaaS web applications without the administrative
+   * burden of appliances or specialized client software. WorkSpaces Secure Browser
+   * provides simple policy tools tailored for user interactions, while offloading
+   * common tasks like capacity management, scaling, and maintaining browser
+   * images.</p>
    */
   class AWS_WORKSPACESWEB_API WorkSpacesWebClient : public Aws::Client::AWSJsonClient, public Aws::Client::ClientWithAsyncTemplateMethods<WorkSpacesWebClient>
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef WorkSpacesWebClientConfiguration ClientConfigurationType;
+      typedef WorkSpacesWebEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         WorkSpacesWebClient(const Aws::WorkSpacesWeb::WorkSpacesWebClientConfiguration& clientConfiguration = Aws::WorkSpacesWeb::WorkSpacesWebClientConfiguration(),
-                            std::shared_ptr<WorkSpacesWebEndpointProviderBase> endpointProvider = Aws::MakeShared<WorkSpacesWebEndpointProvider>(ALLOCATION_TAG));
+                            std::shared_ptr<WorkSpacesWebEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         WorkSpacesWebClient(const Aws::Auth::AWSCredentials& credentials,
-                            std::shared_ptr<WorkSpacesWebEndpointProviderBase> endpointProvider = Aws::MakeShared<WorkSpacesWebEndpointProvider>(ALLOCATION_TAG),
+                            std::shared_ptr<WorkSpacesWebEndpointProviderBase> endpointProvider = nullptr,
                             const Aws::WorkSpacesWeb::WorkSpacesWebClientConfiguration& clientConfiguration = Aws::WorkSpacesWeb::WorkSpacesWebClientConfiguration());
 
        /**
@@ -51,7 +55,7 @@ namespace WorkSpacesWeb
         * the default http client factory will be used
         */
         WorkSpacesWebClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                            std::shared_ptr<WorkSpacesWebEndpointProviderBase> endpointProvider = Aws::MakeShared<WorkSpacesWebEndpointProvider>(ALLOCATION_TAG),
+                            std::shared_ptr<WorkSpacesWebEndpointProviderBase> endpointProvider = nullptr,
                             const Aws::WorkSpacesWeb::WorkSpacesWebClientConfiguration& clientConfiguration = Aws::WorkSpacesWeb::WorkSpacesWebClientConfiguration());
 
 
@@ -106,6 +110,58 @@ namespace WorkSpacesWeb
         }
 
         /**
+         * <p>Associates a data protection settings resource with a web
+         * portal.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/AssociateDataProtectionSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::AssociateDataProtectionSettingsOutcome AssociateDataProtectionSettings(const Model::AssociateDataProtectionSettingsRequest& request) const;
+
+        /**
+         * A Callable wrapper for AssociateDataProtectionSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename AssociateDataProtectionSettingsRequestT = Model::AssociateDataProtectionSettingsRequest>
+        Model::AssociateDataProtectionSettingsOutcomeCallable AssociateDataProtectionSettingsCallable(const AssociateDataProtectionSettingsRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::AssociateDataProtectionSettings, request);
+        }
+
+        /**
+         * An Async wrapper for AssociateDataProtectionSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename AssociateDataProtectionSettingsRequestT = Model::AssociateDataProtectionSettingsRequest>
+        void AssociateDataProtectionSettingsAsync(const AssociateDataProtectionSettingsRequestT& request, const AssociateDataProtectionSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::AssociateDataProtectionSettings, request, handler, context);
+        }
+
+        /**
+         * <p>Associates an IP access settings resource with a web portal.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/AssociateIpAccessSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::AssociateIpAccessSettingsOutcome AssociateIpAccessSettings(const Model::AssociateIpAccessSettingsRequest& request) const;
+
+        /**
+         * A Callable wrapper for AssociateIpAccessSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename AssociateIpAccessSettingsRequestT = Model::AssociateIpAccessSettingsRequest>
+        Model::AssociateIpAccessSettingsOutcomeCallable AssociateIpAccessSettingsCallable(const AssociateIpAccessSettingsRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::AssociateIpAccessSettings, request);
+        }
+
+        /**
+         * An Async wrapper for AssociateIpAccessSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename AssociateIpAccessSettingsRequestT = Model::AssociateIpAccessSettingsRequest>
+        void AssociateIpAccessSettingsAsync(const AssociateIpAccessSettingsRequestT& request, const AssociateIpAccessSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::AssociateIpAccessSettings, request, handler, context);
+        }
+
+        /**
          * <p>Associates a network settings resource with a web portal.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/AssociateNetworkSettings">AWS
@@ -129,6 +185,31 @@ namespace WorkSpacesWeb
         void AssociateNetworkSettingsAsync(const AssociateNetworkSettingsRequestT& request, const AssociateNetworkSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&WorkSpacesWebClient::AssociateNetworkSettings, request, handler, context);
+        }
+
+        /**
+         * <p>Associates a session logger with a portal.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/AssociateSessionLogger">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::AssociateSessionLoggerOutcome AssociateSessionLogger(const Model::AssociateSessionLoggerRequest& request) const;
+
+        /**
+         * A Callable wrapper for AssociateSessionLogger that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename AssociateSessionLoggerRequestT = Model::AssociateSessionLoggerRequest>
+        Model::AssociateSessionLoggerOutcomeCallable AssociateSessionLoggerCallable(const AssociateSessionLoggerRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::AssociateSessionLogger, request);
+        }
+
+        /**
+         * An Async wrapper for AssociateSessionLogger that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename AssociateSessionLoggerRequestT = Model::AssociateSessionLoggerRequest>
+        void AssociateSessionLoggerAsync(const AssociateSessionLoggerRequestT& request, const AssociateSessionLoggerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::AssociateSessionLogger, request, handler, context);
         }
 
         /**
@@ -237,6 +318,32 @@ namespace WorkSpacesWeb
         }
 
         /**
+         * <p>Creates a data protection settings resource that can be associated with a web
+         * portal.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/CreateDataProtectionSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateDataProtectionSettingsOutcome CreateDataProtectionSettings(const Model::CreateDataProtectionSettingsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for CreateDataProtectionSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateDataProtectionSettingsRequestT = Model::CreateDataProtectionSettingsRequest>
+        Model::CreateDataProtectionSettingsOutcomeCallable CreateDataProtectionSettingsCallable(const CreateDataProtectionSettingsRequestT& request = {}) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::CreateDataProtectionSettings, request);
+        }
+
+        /**
+         * An Async wrapper for CreateDataProtectionSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateDataProtectionSettingsRequestT = Model::CreateDataProtectionSettingsRequest>
+        void CreateDataProtectionSettingsAsync(const CreateDataProtectionSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateDataProtectionSettingsRequestT& request = {}) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::CreateDataProtectionSettings, request, handler, context);
+        }
+
+        /**
          * <p>Creates an identity provider resource that is then associated with a web
          * portal.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/CreateIdentityProvider">AWS
@@ -260,6 +367,32 @@ namespace WorkSpacesWeb
         void CreateIdentityProviderAsync(const CreateIdentityProviderRequestT& request, const CreateIdentityProviderResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&WorkSpacesWebClient::CreateIdentityProvider, request, handler, context);
+        }
+
+        /**
+         * <p>Creates an IP access settings resource that can be associated with a web
+         * portal.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/CreateIpAccessSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateIpAccessSettingsOutcome CreateIpAccessSettings(const Model::CreateIpAccessSettingsRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateIpAccessSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateIpAccessSettingsRequestT = Model::CreateIpAccessSettingsRequest>
+        Model::CreateIpAccessSettingsOutcomeCallable CreateIpAccessSettingsCallable(const CreateIpAccessSettingsRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::CreateIpAccessSettings, request);
+        }
+
+        /**
+         * An Async wrapper for CreateIpAccessSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateIpAccessSettingsRequestT = Model::CreateIpAccessSettingsRequest>
+        void CreateIpAccessSettingsAsync(const CreateIpAccessSettingsRequestT& request, const CreateIpAccessSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::CreateIpAccessSettings, request, handler, context);
         }
 
         /**
@@ -294,13 +427,13 @@ namespace WorkSpacesWeb
          * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/CreatePortal">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreatePortalOutcome CreatePortal(const Model::CreatePortalRequest& request) const;
+        virtual Model::CreatePortalOutcome CreatePortal(const Model::CreatePortalRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreatePortal that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreatePortalRequestT = Model::CreatePortalRequest>
-        Model::CreatePortalOutcomeCallable CreatePortalCallable(const CreatePortalRequestT& request) const
+        Model::CreatePortalOutcomeCallable CreatePortalCallable(const CreatePortalRequestT& request = {}) const
         {
             return SubmitCallable(&WorkSpacesWebClient::CreatePortal, request);
         }
@@ -309,9 +442,34 @@ namespace WorkSpacesWeb
          * An Async wrapper for CreatePortal that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreatePortalRequestT = Model::CreatePortalRequest>
-        void CreatePortalAsync(const CreatePortalRequestT& request, const CreatePortalResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreatePortalAsync(const CreatePortalResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreatePortalRequestT& request = {}) const
         {
             return SubmitAsync(&WorkSpacesWebClient::CreatePortal, request, handler, context);
+        }
+
+        /**
+         * <p>Creates a session logger.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/CreateSessionLogger">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateSessionLoggerOutcome CreateSessionLogger(const Model::CreateSessionLoggerRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateSessionLogger that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateSessionLoggerRequestT = Model::CreateSessionLoggerRequest>
+        Model::CreateSessionLoggerOutcomeCallable CreateSessionLoggerCallable(const CreateSessionLoggerRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::CreateSessionLogger, request);
+        }
+
+        /**
+         * An Async wrapper for CreateSessionLogger that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateSessionLoggerRequestT = Model::CreateSessionLoggerRequest>
+        void CreateSessionLoggerAsync(const CreateSessionLoggerRequestT& request, const CreateSessionLoggerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::CreateSessionLogger, request, handler, context);
         }
 
         /**
@@ -424,6 +582,31 @@ namespace WorkSpacesWeb
         }
 
         /**
+         * <p>Deletes data protection settings.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/DeleteDataProtectionSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteDataProtectionSettingsOutcome DeleteDataProtectionSettings(const Model::DeleteDataProtectionSettingsRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteDataProtectionSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteDataProtectionSettingsRequestT = Model::DeleteDataProtectionSettingsRequest>
+        Model::DeleteDataProtectionSettingsOutcomeCallable DeleteDataProtectionSettingsCallable(const DeleteDataProtectionSettingsRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::DeleteDataProtectionSettings, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteDataProtectionSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteDataProtectionSettingsRequestT = Model::DeleteDataProtectionSettingsRequest>
+        void DeleteDataProtectionSettingsAsync(const DeleteDataProtectionSettingsRequestT& request, const DeleteDataProtectionSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::DeleteDataProtectionSettings, request, handler, context);
+        }
+
+        /**
          * <p>Deletes the identity provider.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/DeleteIdentityProvider">AWS
          * API Reference</a></p>
@@ -446,6 +629,31 @@ namespace WorkSpacesWeb
         void DeleteIdentityProviderAsync(const DeleteIdentityProviderRequestT& request, const DeleteIdentityProviderResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&WorkSpacesWebClient::DeleteIdentityProvider, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes IP access settings.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/DeleteIpAccessSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteIpAccessSettingsOutcome DeleteIpAccessSettings(const Model::DeleteIpAccessSettingsRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteIpAccessSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteIpAccessSettingsRequestT = Model::DeleteIpAccessSettingsRequest>
+        Model::DeleteIpAccessSettingsOutcomeCallable DeleteIpAccessSettingsCallable(const DeleteIpAccessSettingsRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::DeleteIpAccessSettings, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteIpAccessSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteIpAccessSettingsRequestT = Model::DeleteIpAccessSettingsRequest>
+        void DeleteIpAccessSettingsAsync(const DeleteIpAccessSettingsRequestT& request, const DeleteIpAccessSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::DeleteIpAccessSettings, request, handler, context);
         }
 
         /**
@@ -496,6 +704,31 @@ namespace WorkSpacesWeb
         void DeletePortalAsync(const DeletePortalRequestT& request, const DeletePortalResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&WorkSpacesWebClient::DeletePortal, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes a session logger resource.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/DeleteSessionLogger">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteSessionLoggerOutcome DeleteSessionLogger(const Model::DeleteSessionLoggerRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteSessionLogger that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteSessionLoggerRequestT = Model::DeleteSessionLoggerRequest>
+        Model::DeleteSessionLoggerOutcomeCallable DeleteSessionLoggerCallable(const DeleteSessionLoggerRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::DeleteSessionLogger, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteSessionLogger that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteSessionLoggerRequestT = Model::DeleteSessionLoggerRequest>
+        void DeleteSessionLoggerAsync(const DeleteSessionLoggerRequestT& request, const DeleteSessionLoggerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::DeleteSessionLogger, request, handler, context);
         }
 
         /**
@@ -600,6 +833,58 @@ namespace WorkSpacesWeb
         }
 
         /**
+         * <p>Disassociates data protection settings from a web portal.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/DisassociateDataProtectionSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DisassociateDataProtectionSettingsOutcome DisassociateDataProtectionSettings(const Model::DisassociateDataProtectionSettingsRequest& request) const;
+
+        /**
+         * A Callable wrapper for DisassociateDataProtectionSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DisassociateDataProtectionSettingsRequestT = Model::DisassociateDataProtectionSettingsRequest>
+        Model::DisassociateDataProtectionSettingsOutcomeCallable DisassociateDataProtectionSettingsCallable(const DisassociateDataProtectionSettingsRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::DisassociateDataProtectionSettings, request);
+        }
+
+        /**
+         * An Async wrapper for DisassociateDataProtectionSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DisassociateDataProtectionSettingsRequestT = Model::DisassociateDataProtectionSettingsRequest>
+        void DisassociateDataProtectionSettingsAsync(const DisassociateDataProtectionSettingsRequestT& request, const DisassociateDataProtectionSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::DisassociateDataProtectionSettings, request, handler, context);
+        }
+
+        /**
+         * <p>Disassociates IP access settings from a web portal.</p><p><h3>See Also:</h3> 
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/DisassociateIpAccessSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DisassociateIpAccessSettingsOutcome DisassociateIpAccessSettings(const Model::DisassociateIpAccessSettingsRequest& request) const;
+
+        /**
+         * A Callable wrapper for DisassociateIpAccessSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DisassociateIpAccessSettingsRequestT = Model::DisassociateIpAccessSettingsRequest>
+        Model::DisassociateIpAccessSettingsOutcomeCallable DisassociateIpAccessSettingsCallable(const DisassociateIpAccessSettingsRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::DisassociateIpAccessSettings, request);
+        }
+
+        /**
+         * An Async wrapper for DisassociateIpAccessSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DisassociateIpAccessSettingsRequestT = Model::DisassociateIpAccessSettingsRequest>
+        void DisassociateIpAccessSettingsAsync(const DisassociateIpAccessSettingsRequestT& request, const DisassociateIpAccessSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::DisassociateIpAccessSettings, request, handler, context);
+        }
+
+        /**
          * <p>Disassociates network settings from a web portal.</p><p><h3>See Also:</h3>  
          * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/DisassociateNetworkSettings">AWS
@@ -623,6 +908,31 @@ namespace WorkSpacesWeb
         void DisassociateNetworkSettingsAsync(const DisassociateNetworkSettingsRequestT& request, const DisassociateNetworkSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&WorkSpacesWebClient::DisassociateNetworkSettings, request, handler, context);
+        }
+
+        /**
+         * <p>Disassociates a session logger from a portal.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/DisassociateSessionLogger">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DisassociateSessionLoggerOutcome DisassociateSessionLogger(const Model::DisassociateSessionLoggerRequest& request) const;
+
+        /**
+         * A Callable wrapper for DisassociateSessionLogger that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DisassociateSessionLoggerRequestT = Model::DisassociateSessionLoggerRequest>
+        Model::DisassociateSessionLoggerOutcomeCallable DisassociateSessionLoggerCallable(const DisassociateSessionLoggerRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::DisassociateSessionLogger, request);
+        }
+
+        /**
+         * An Async wrapper for DisassociateSessionLogger that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DisassociateSessionLoggerRequestT = Model::DisassociateSessionLoggerRequest>
+        void DisassociateSessionLoggerAsync(const DisassociateSessionLoggerRequestT& request, const DisassociateSessionLoggerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::DisassociateSessionLogger, request, handler, context);
         }
 
         /**
@@ -702,6 +1012,31 @@ namespace WorkSpacesWeb
         }
 
         /**
+         * <p>Expires an active secure browser session.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/ExpireSession">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ExpireSessionOutcome ExpireSession(const Model::ExpireSessionRequest& request) const;
+
+        /**
+         * A Callable wrapper for ExpireSession that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ExpireSessionRequestT = Model::ExpireSessionRequest>
+        Model::ExpireSessionOutcomeCallable ExpireSessionCallable(const ExpireSessionRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::ExpireSession, request);
+        }
+
+        /**
+         * An Async wrapper for ExpireSession that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ExpireSessionRequestT = Model::ExpireSessionRequest>
+        void ExpireSessionAsync(const ExpireSessionRequestT& request, const ExpireSessionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::ExpireSession, request, handler, context);
+        }
+
+        /**
          * <p>Gets browser settings.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/GetBrowserSettings">AWS
          * API Reference</a></p>
@@ -727,6 +1062,31 @@ namespace WorkSpacesWeb
         }
 
         /**
+         * <p>Gets the data protection settings.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/GetDataProtectionSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetDataProtectionSettingsOutcome GetDataProtectionSettings(const Model::GetDataProtectionSettingsRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetDataProtectionSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetDataProtectionSettingsRequestT = Model::GetDataProtectionSettingsRequest>
+        Model::GetDataProtectionSettingsOutcomeCallable GetDataProtectionSettingsCallable(const GetDataProtectionSettingsRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::GetDataProtectionSettings, request);
+        }
+
+        /**
+         * An Async wrapper for GetDataProtectionSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetDataProtectionSettingsRequestT = Model::GetDataProtectionSettingsRequest>
+        void GetDataProtectionSettingsAsync(const GetDataProtectionSettingsRequestT& request, const GetDataProtectionSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::GetDataProtectionSettings, request, handler, context);
+        }
+
+        /**
          * <p>Gets the identity provider.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/GetIdentityProvider">AWS
          * API Reference</a></p>
@@ -749,6 +1109,31 @@ namespace WorkSpacesWeb
         void GetIdentityProviderAsync(const GetIdentityProviderRequestT& request, const GetIdentityProviderResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&WorkSpacesWebClient::GetIdentityProvider, request, handler, context);
+        }
+
+        /**
+         * <p>Gets the IP access settings.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/GetIpAccessSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetIpAccessSettingsOutcome GetIpAccessSettings(const Model::GetIpAccessSettingsRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetIpAccessSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetIpAccessSettingsRequestT = Model::GetIpAccessSettingsRequest>
+        Model::GetIpAccessSettingsOutcomeCallable GetIpAccessSettingsCallable(const GetIpAccessSettingsRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::GetIpAccessSettings, request);
+        }
+
+        /**
+         * An Async wrapper for GetIpAccessSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetIpAccessSettingsRequestT = Model::GetIpAccessSettingsRequest>
+        void GetIpAccessSettingsAsync(const GetIpAccessSettingsRequestT& request, const GetIpAccessSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::GetIpAccessSettings, request, handler, context);
         }
 
         /**
@@ -824,6 +1209,57 @@ namespace WorkSpacesWeb
         void GetPortalServiceProviderMetadataAsync(const GetPortalServiceProviderMetadataRequestT& request, const GetPortalServiceProviderMetadataResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&WorkSpacesWebClient::GetPortalServiceProviderMetadata, request, handler, context);
+        }
+
+        /**
+         * <p>Gets information for a secure browser session.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/GetSession">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetSessionOutcome GetSession(const Model::GetSessionRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetSession that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetSessionRequestT = Model::GetSessionRequest>
+        Model::GetSessionOutcomeCallable GetSessionCallable(const GetSessionRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::GetSession, request);
+        }
+
+        /**
+         * An Async wrapper for GetSession that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetSessionRequestT = Model::GetSessionRequest>
+        void GetSessionAsync(const GetSessionRequestT& request, const GetSessionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::GetSession, request, handler, context);
+        }
+
+        /**
+         * <p>Gets details about a specific session logger resource.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/GetSessionLogger">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetSessionLoggerOutcome GetSessionLogger(const Model::GetSessionLoggerRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetSessionLogger that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetSessionLoggerRequestT = Model::GetSessionLoggerRequest>
+        Model::GetSessionLoggerOutcomeCallable GetSessionLoggerCallable(const GetSessionLoggerRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::GetSessionLogger, request);
+        }
+
+        /**
+         * An Async wrapper for GetSessionLogger that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetSessionLoggerRequestT = Model::GetSessionLoggerRequest>
+        void GetSessionLoggerAsync(const GetSessionLoggerRequestT& request, const GetSessionLoggerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::GetSessionLogger, request, handler, context);
         }
 
         /**
@@ -931,13 +1367,13 @@ namespace WorkSpacesWeb
          * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/ListBrowserSettings">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListBrowserSettingsOutcome ListBrowserSettings(const Model::ListBrowserSettingsRequest& request) const;
+        virtual Model::ListBrowserSettingsOutcome ListBrowserSettings(const Model::ListBrowserSettingsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListBrowserSettings that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListBrowserSettingsRequestT = Model::ListBrowserSettingsRequest>
-        Model::ListBrowserSettingsOutcomeCallable ListBrowserSettingsCallable(const ListBrowserSettingsRequestT& request) const
+        Model::ListBrowserSettingsOutcomeCallable ListBrowserSettingsCallable(const ListBrowserSettingsRequestT& request = {}) const
         {
             return SubmitCallable(&WorkSpacesWebClient::ListBrowserSettings, request);
         }
@@ -946,9 +1382,34 @@ namespace WorkSpacesWeb
          * An Async wrapper for ListBrowserSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListBrowserSettingsRequestT = Model::ListBrowserSettingsRequest>
-        void ListBrowserSettingsAsync(const ListBrowserSettingsRequestT& request, const ListBrowserSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListBrowserSettingsAsync(const ListBrowserSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListBrowserSettingsRequestT& request = {}) const
         {
             return SubmitAsync(&WorkSpacesWebClient::ListBrowserSettings, request, handler, context);
+        }
+
+        /**
+         * <p>Retrieves a list of data protection settings.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/ListDataProtectionSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListDataProtectionSettingsOutcome ListDataProtectionSettings(const Model::ListDataProtectionSettingsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ListDataProtectionSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListDataProtectionSettingsRequestT = Model::ListDataProtectionSettingsRequest>
+        Model::ListDataProtectionSettingsOutcomeCallable ListDataProtectionSettingsCallable(const ListDataProtectionSettingsRequestT& request = {}) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::ListDataProtectionSettings, request);
+        }
+
+        /**
+         * An Async wrapper for ListDataProtectionSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListDataProtectionSettingsRequestT = Model::ListDataProtectionSettingsRequest>
+        void ListDataProtectionSettingsAsync(const ListDataProtectionSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListDataProtectionSettingsRequestT& request = {}) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::ListDataProtectionSettings, request, handler, context);
         }
 
         /**
@@ -978,17 +1439,42 @@ namespace WorkSpacesWeb
         }
 
         /**
+         * <p>Retrieves a list of IP access settings.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/ListIpAccessSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListIpAccessSettingsOutcome ListIpAccessSettings(const Model::ListIpAccessSettingsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ListIpAccessSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListIpAccessSettingsRequestT = Model::ListIpAccessSettingsRequest>
+        Model::ListIpAccessSettingsOutcomeCallable ListIpAccessSettingsCallable(const ListIpAccessSettingsRequestT& request = {}) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::ListIpAccessSettings, request);
+        }
+
+        /**
+         * An Async wrapper for ListIpAccessSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListIpAccessSettingsRequestT = Model::ListIpAccessSettingsRequest>
+        void ListIpAccessSettingsAsync(const ListIpAccessSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListIpAccessSettingsRequestT& request = {}) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::ListIpAccessSettings, request, handler, context);
+        }
+
+        /**
          * <p>Retrieves a list of network settings.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/ListNetworkSettings">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListNetworkSettingsOutcome ListNetworkSettings(const Model::ListNetworkSettingsRequest& request) const;
+        virtual Model::ListNetworkSettingsOutcome ListNetworkSettings(const Model::ListNetworkSettingsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListNetworkSettings that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListNetworkSettingsRequestT = Model::ListNetworkSettingsRequest>
-        Model::ListNetworkSettingsOutcomeCallable ListNetworkSettingsCallable(const ListNetworkSettingsRequestT& request) const
+        Model::ListNetworkSettingsOutcomeCallable ListNetworkSettingsCallable(const ListNetworkSettingsRequestT& request = {}) const
         {
             return SubmitCallable(&WorkSpacesWebClient::ListNetworkSettings, request);
         }
@@ -997,7 +1483,7 @@ namespace WorkSpacesWeb
          * An Async wrapper for ListNetworkSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListNetworkSettingsRequestT = Model::ListNetworkSettingsRequest>
-        void ListNetworkSettingsAsync(const ListNetworkSettingsRequestT& request, const ListNetworkSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListNetworkSettingsAsync(const ListNetworkSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListNetworkSettingsRequestT& request = {}) const
         {
             return SubmitAsync(&WorkSpacesWebClient::ListNetworkSettings, request, handler, context);
         }
@@ -1007,13 +1493,13 @@ namespace WorkSpacesWeb
          * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/ListPortals">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListPortalsOutcome ListPortals(const Model::ListPortalsRequest& request) const;
+        virtual Model::ListPortalsOutcome ListPortals(const Model::ListPortalsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListPortals that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListPortalsRequestT = Model::ListPortalsRequest>
-        Model::ListPortalsOutcomeCallable ListPortalsCallable(const ListPortalsRequestT& request) const
+        Model::ListPortalsOutcomeCallable ListPortalsCallable(const ListPortalsRequestT& request = {}) const
         {
             return SubmitCallable(&WorkSpacesWebClient::ListPortals, request);
         }
@@ -1022,9 +1508,60 @@ namespace WorkSpacesWeb
          * An Async wrapper for ListPortals that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListPortalsRequestT = Model::ListPortalsRequest>
-        void ListPortalsAsync(const ListPortalsRequestT& request, const ListPortalsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListPortalsAsync(const ListPortalsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListPortalsRequestT& request = {}) const
         {
             return SubmitAsync(&WorkSpacesWebClient::ListPortals, request, handler, context);
+        }
+
+        /**
+         * <p>Lists all available session logger resources.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/ListSessionLoggers">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListSessionLoggersOutcome ListSessionLoggers(const Model::ListSessionLoggersRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ListSessionLoggers that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListSessionLoggersRequestT = Model::ListSessionLoggersRequest>
+        Model::ListSessionLoggersOutcomeCallable ListSessionLoggersCallable(const ListSessionLoggersRequestT& request = {}) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::ListSessionLoggers, request);
+        }
+
+        /**
+         * An Async wrapper for ListSessionLoggers that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListSessionLoggersRequestT = Model::ListSessionLoggersRequest>
+        void ListSessionLoggersAsync(const ListSessionLoggersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListSessionLoggersRequestT& request = {}) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::ListSessionLoggers, request, handler, context);
+        }
+
+        /**
+         * <p>Lists information for multiple secure browser sessions from a specific
+         * portal.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/ListSessions">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListSessionsOutcome ListSessions(const Model::ListSessionsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListSessions that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListSessionsRequestT = Model::ListSessionsRequest>
+        Model::ListSessionsOutcomeCallable ListSessionsCallable(const ListSessionsRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::ListSessions, request);
+        }
+
+        /**
+         * An Async wrapper for ListSessions that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListSessionsRequestT = Model::ListSessionsRequest>
+        void ListSessionsAsync(const ListSessionsRequestT& request, const ListSessionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::ListSessions, request, handler, context);
         }
 
         /**
@@ -1082,13 +1619,13 @@ namespace WorkSpacesWeb
          * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/ListTrustStores">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListTrustStoresOutcome ListTrustStores(const Model::ListTrustStoresRequest& request) const;
+        virtual Model::ListTrustStoresOutcome ListTrustStores(const Model::ListTrustStoresRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListTrustStores that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListTrustStoresRequestT = Model::ListTrustStoresRequest>
-        Model::ListTrustStoresOutcomeCallable ListTrustStoresCallable(const ListTrustStoresRequestT& request) const
+        Model::ListTrustStoresOutcomeCallable ListTrustStoresCallable(const ListTrustStoresRequestT& request = {}) const
         {
             return SubmitCallable(&WorkSpacesWebClient::ListTrustStores, request);
         }
@@ -1097,7 +1634,7 @@ namespace WorkSpacesWeb
          * An Async wrapper for ListTrustStores that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListTrustStoresRequestT = Model::ListTrustStoresRequest>
-        void ListTrustStoresAsync(const ListTrustStoresRequestT& request, const ListTrustStoresResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListTrustStoresAsync(const ListTrustStoresResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListTrustStoresRequestT& request = {}) const
         {
             return SubmitAsync(&WorkSpacesWebClient::ListTrustStores, request, handler, context);
         }
@@ -1108,13 +1645,13 @@ namespace WorkSpacesWeb
          * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/ListUserAccessLoggingSettings">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListUserAccessLoggingSettingsOutcome ListUserAccessLoggingSettings(const Model::ListUserAccessLoggingSettingsRequest& request) const;
+        virtual Model::ListUserAccessLoggingSettingsOutcome ListUserAccessLoggingSettings(const Model::ListUserAccessLoggingSettingsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListUserAccessLoggingSettings that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListUserAccessLoggingSettingsRequestT = Model::ListUserAccessLoggingSettingsRequest>
-        Model::ListUserAccessLoggingSettingsOutcomeCallable ListUserAccessLoggingSettingsCallable(const ListUserAccessLoggingSettingsRequestT& request) const
+        Model::ListUserAccessLoggingSettingsOutcomeCallable ListUserAccessLoggingSettingsCallable(const ListUserAccessLoggingSettingsRequestT& request = {}) const
         {
             return SubmitCallable(&WorkSpacesWebClient::ListUserAccessLoggingSettings, request);
         }
@@ -1123,7 +1660,7 @@ namespace WorkSpacesWeb
          * An Async wrapper for ListUserAccessLoggingSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListUserAccessLoggingSettingsRequestT = Model::ListUserAccessLoggingSettingsRequest>
-        void ListUserAccessLoggingSettingsAsync(const ListUserAccessLoggingSettingsRequestT& request, const ListUserAccessLoggingSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListUserAccessLoggingSettingsAsync(const ListUserAccessLoggingSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListUserAccessLoggingSettingsRequestT& request = {}) const
         {
             return SubmitAsync(&WorkSpacesWebClient::ListUserAccessLoggingSettings, request, handler, context);
         }
@@ -1133,13 +1670,13 @@ namespace WorkSpacesWeb
          * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/ListUserSettings">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListUserSettingsOutcome ListUserSettings(const Model::ListUserSettingsRequest& request) const;
+        virtual Model::ListUserSettingsOutcome ListUserSettings(const Model::ListUserSettingsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListUserSettings that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListUserSettingsRequestT = Model::ListUserSettingsRequest>
-        Model::ListUserSettingsOutcomeCallable ListUserSettingsCallable(const ListUserSettingsRequestT& request) const
+        Model::ListUserSettingsOutcomeCallable ListUserSettingsCallable(const ListUserSettingsRequestT& request = {}) const
         {
             return SubmitCallable(&WorkSpacesWebClient::ListUserSettings, request);
         }
@@ -1148,7 +1685,7 @@ namespace WorkSpacesWeb
          * An Async wrapper for ListUserSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListUserSettingsRequestT = Model::ListUserSettingsRequest>
-        void ListUserSettingsAsync(const ListUserSettingsRequestT& request, const ListUserSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListUserSettingsAsync(const ListUserSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListUserSettingsRequestT& request = {}) const
         {
             return SubmitAsync(&WorkSpacesWebClient::ListUserSettings, request, handler, context);
         }
@@ -1231,6 +1768,31 @@ namespace WorkSpacesWeb
         }
 
         /**
+         * <p>Updates data protection settings.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/UpdateDataProtectionSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateDataProtectionSettingsOutcome UpdateDataProtectionSettings(const Model::UpdateDataProtectionSettingsRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateDataProtectionSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateDataProtectionSettingsRequestT = Model::UpdateDataProtectionSettingsRequest>
+        Model::UpdateDataProtectionSettingsOutcomeCallable UpdateDataProtectionSettingsCallable(const UpdateDataProtectionSettingsRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::UpdateDataProtectionSettings, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateDataProtectionSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateDataProtectionSettingsRequestT = Model::UpdateDataProtectionSettingsRequest>
+        void UpdateDataProtectionSettingsAsync(const UpdateDataProtectionSettingsRequestT& request, const UpdateDataProtectionSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::UpdateDataProtectionSettings, request, handler, context);
+        }
+
+        /**
          * <p>Updates the identity provider. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/UpdateIdentityProvider">AWS
          * API Reference</a></p>
@@ -1253,6 +1815,31 @@ namespace WorkSpacesWeb
         void UpdateIdentityProviderAsync(const UpdateIdentityProviderRequestT& request, const UpdateIdentityProviderResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&WorkSpacesWebClient::UpdateIdentityProvider, request, handler, context);
+        }
+
+        /**
+         * <p>Updates IP access settings.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/UpdateIpAccessSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateIpAccessSettingsOutcome UpdateIpAccessSettings(const Model::UpdateIpAccessSettingsRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateIpAccessSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateIpAccessSettingsRequestT = Model::UpdateIpAccessSettingsRequest>
+        Model::UpdateIpAccessSettingsOutcomeCallable UpdateIpAccessSettingsCallable(const UpdateIpAccessSettingsRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::UpdateIpAccessSettings, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateIpAccessSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateIpAccessSettingsRequestT = Model::UpdateIpAccessSettingsRequest>
+        void UpdateIpAccessSettingsAsync(const UpdateIpAccessSettingsRequestT& request, const UpdateIpAccessSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::UpdateIpAccessSettings, request, handler, context);
         }
 
         /**
@@ -1303,6 +1890,31 @@ namespace WorkSpacesWeb
         void UpdatePortalAsync(const UpdatePortalRequestT& request, const UpdatePortalResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&WorkSpacesWebClient::UpdatePortal, request, handler, context);
+        }
+
+        /**
+         * <p>Updates the details of a session logger.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-web-2020-07-08/UpdateSessionLogger">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateSessionLoggerOutcome UpdateSessionLogger(const Model::UpdateSessionLoggerRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateSessionLogger that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateSessionLoggerRequestT = Model::UpdateSessionLoggerRequest>
+        Model::UpdateSessionLoggerOutcomeCallable UpdateSessionLoggerCallable(const UpdateSessionLoggerRequestT& request) const
+        {
+            return SubmitCallable(&WorkSpacesWebClient::UpdateSessionLogger, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateSessionLogger that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateSessionLoggerRequestT = Model::UpdateSessionLoggerRequest>
+        void UpdateSessionLoggerAsync(const UpdateSessionLoggerRequestT& request, const UpdateSessionLoggerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&WorkSpacesWebClient::UpdateSessionLogger, request, handler, context);
         }
 
         /**
@@ -1388,7 +2000,6 @@ namespace WorkSpacesWeb
       void init(const WorkSpacesWebClientConfiguration& clientConfiguration);
 
       WorkSpacesWebClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<WorkSpacesWebEndpointProviderBase> m_endpointProvider;
   };
 

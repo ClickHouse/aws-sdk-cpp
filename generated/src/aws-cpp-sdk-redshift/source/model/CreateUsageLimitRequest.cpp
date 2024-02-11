@@ -10,22 +10,6 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-CreateUsageLimitRequest::CreateUsageLimitRequest() : 
-    m_clusterIdentifierHasBeenSet(false),
-    m_featureType(UsageLimitFeatureType::NOT_SET),
-    m_featureTypeHasBeenSet(false),
-    m_limitType(UsageLimitLimitType::NOT_SET),
-    m_limitTypeHasBeenSet(false),
-    m_amount(0),
-    m_amountHasBeenSet(false),
-    m_period(UsageLimitPeriod::NOT_SET),
-    m_periodHasBeenSet(false),
-    m_breachAction(UsageLimitBreachAction::NOT_SET),
-    m_breachActionHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateUsageLimitRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -37,12 +21,12 @@ Aws::String CreateUsageLimitRequest::SerializePayload() const
 
   if(m_featureTypeHasBeenSet)
   {
-    ss << "FeatureType=" << UsageLimitFeatureTypeMapper::GetNameForUsageLimitFeatureType(m_featureType) << "&";
+    ss << "FeatureType=" << StringUtils::URLEncode(UsageLimitFeatureTypeMapper::GetNameForUsageLimitFeatureType(m_featureType)) << "&";
   }
 
   if(m_limitTypeHasBeenSet)
   {
-    ss << "LimitType=" << UsageLimitLimitTypeMapper::GetNameForUsageLimitLimitType(m_limitType) << "&";
+    ss << "LimitType=" << StringUtils::URLEncode(UsageLimitLimitTypeMapper::GetNameForUsageLimitLimitType(m_limitType)) << "&";
   }
 
   if(m_amountHasBeenSet)
@@ -52,21 +36,28 @@ Aws::String CreateUsageLimitRequest::SerializePayload() const
 
   if(m_periodHasBeenSet)
   {
-    ss << "Period=" << UsageLimitPeriodMapper::GetNameForUsageLimitPeriod(m_period) << "&";
+    ss << "Period=" << StringUtils::URLEncode(UsageLimitPeriodMapper::GetNameForUsageLimitPeriod(m_period)) << "&";
   }
 
   if(m_breachActionHasBeenSet)
   {
-    ss << "BreachAction=" << UsageLimitBreachActionMapper::GetNameForUsageLimitBreachAction(m_breachAction) << "&";
+    ss << "BreachAction=" << StringUtils::URLEncode(UsageLimitBreachActionMapper::GetNameForUsageLimitBreachAction(m_breachAction)) << "&";
   }
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 

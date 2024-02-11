@@ -18,27 +18,7 @@ namespace IoT
 namespace Model
 {
 
-ThingDocument::ThingDocument() : 
-    m_thingNameHasBeenSet(false),
-    m_thingIdHasBeenSet(false),
-    m_thingTypeNameHasBeenSet(false),
-    m_thingGroupNamesHasBeenSet(false),
-    m_attributesHasBeenSet(false),
-    m_shadowHasBeenSet(false),
-    m_deviceDefenderHasBeenSet(false),
-    m_connectivityHasBeenSet(false)
-{
-}
-
-ThingDocument::ThingDocument(JsonView jsonValue) : 
-    m_thingNameHasBeenSet(false),
-    m_thingIdHasBeenSet(false),
-    m_thingTypeNameHasBeenSet(false),
-    m_thingGroupNamesHasBeenSet(false),
-    m_attributesHasBeenSet(false),
-    m_shadowHasBeenSet(false),
-    m_deviceDefenderHasBeenSet(false),
-    m_connectivityHasBeenSet(false)
+ThingDocument::ThingDocument(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,24 +28,18 @@ ThingDocument& ThingDocument::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("thingName"))
   {
     m_thingName = jsonValue.GetString("thingName");
-
     m_thingNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("thingId"))
   {
     m_thingId = jsonValue.GetString("thingId");
-
     m_thingIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("thingTypeName"))
   {
     m_thingTypeName = jsonValue.GetString("thingTypeName");
-
     m_thingTypeNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("thingGroupNames"))
   {
     Aws::Utils::Array<JsonView> thingGroupNamesJsonList = jsonValue.GetArray("thingGroupNames");
@@ -75,7 +49,6 @@ ThingDocument& ThingDocument::operator =(JsonView jsonValue)
     }
     m_thingGroupNamesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("attributes"))
   {
     Aws::Map<Aws::String, JsonView> attributesJsonMap = jsonValue.GetObject("attributes").GetAllObjects();
@@ -85,28 +58,21 @@ ThingDocument& ThingDocument::operator =(JsonView jsonValue)
     }
     m_attributesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("shadow"))
   {
     m_shadow = jsonValue.GetString("shadow");
-
     m_shadowHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("deviceDefender"))
   {
     m_deviceDefender = jsonValue.GetString("deviceDefender");
-
     m_deviceDefenderHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("connectivity"))
   {
     m_connectivity = jsonValue.GetObject("connectivity");
-
     m_connectivityHasBeenSet = true;
   }
-
   return *this;
 }
 

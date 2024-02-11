@@ -12,18 +12,6 @@ using namespace Aws::AppStream::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeSessionsRequest::DescribeSessionsRequest() : 
-    m_stackNameHasBeenSet(false),
-    m_fleetNameHasBeenSet(false),
-    m_userIdHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_limit(0),
-    m_limitHasBeenSet(false),
-    m_authenticationType(AuthenticationType::NOT_SET),
-    m_authenticationTypeHasBeenSet(false)
-{
-}
-
 Aws::String DescribeSessionsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -61,6 +49,12 @@ Aws::String DescribeSessionsRequest::SerializePayload() const
   if(m_authenticationTypeHasBeenSet)
   {
    payload.WithString("AuthenticationType", AuthenticationTypeMapper::GetNameForAuthenticationType(m_authenticationType));
+  }
+
+  if(m_instanceIdHasBeenSet)
+  {
+   payload.WithString("InstanceId", m_instanceId);
+
   }
 
   return payload.View().WriteReadable();

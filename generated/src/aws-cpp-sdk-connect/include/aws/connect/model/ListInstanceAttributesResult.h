@@ -29,118 +29,54 @@ namespace Model
   class ListInstanceAttributesResult
   {
   public:
-    AWS_CONNECT_API ListInstanceAttributesResult();
+    AWS_CONNECT_API ListInstanceAttributesResult() = default;
     AWS_CONNECT_API ListInstanceAttributesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CONNECT_API ListInstanceAttributesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The attribute types.</p>
      */
-    inline const Aws::Vector<Attribute>& GetAttributes() const{ return m_attributes; }
+    inline const Aws::Vector<Attribute>& GetAttributes() const { return m_attributes; }
+    template<typename AttributesT = Aws::Vector<Attribute>>
+    void SetAttributes(AttributesT&& value) { m_attributesHasBeenSet = true; m_attributes = std::forward<AttributesT>(value); }
+    template<typename AttributesT = Aws::Vector<Attribute>>
+    ListInstanceAttributesResult& WithAttributes(AttributesT&& value) { SetAttributes(std::forward<AttributesT>(value)); return *this;}
+    template<typename AttributesT = Attribute>
+    ListInstanceAttributesResult& AddAttributes(AttributesT&& value) { m_attributesHasBeenSet = true; m_attributes.emplace_back(std::forward<AttributesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The attribute types.</p>
-     */
-    inline void SetAttributes(const Aws::Vector<Attribute>& value) { m_attributes = value; }
-
-    /**
-     * <p>The attribute types.</p>
-     */
-    inline void SetAttributes(Aws::Vector<Attribute>&& value) { m_attributes = std::move(value); }
-
-    /**
-     * <p>The attribute types.</p>
-     */
-    inline ListInstanceAttributesResult& WithAttributes(const Aws::Vector<Attribute>& value) { SetAttributes(value); return *this;}
-
-    /**
-     * <p>The attribute types.</p>
-     */
-    inline ListInstanceAttributesResult& WithAttributes(Aws::Vector<Attribute>&& value) { SetAttributes(std::move(value)); return *this;}
-
-    /**
-     * <p>The attribute types.</p>
-     */
-    inline ListInstanceAttributesResult& AddAttributes(const Attribute& value) { m_attributes.push_back(value); return *this; }
-
-    /**
-     * <p>The attribute types.</p>
-     */
-    inline ListInstanceAttributesResult& AddAttributes(Attribute&& value) { m_attributes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>If there are additional results, this is the token for the next set of
      * results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListInstanceAttributesResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If there are additional results, this is the token for the next set of
-     * results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>If there are additional results, this is the token for the next set of
-     * results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>If there are additional results, this is the token for the next set of
-     * results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>If there are additional results, this is the token for the next set of
-     * results.</p>
-     */
-    inline ListInstanceAttributesResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If there are additional results, this is the token for the next set of
-     * results.</p>
-     */
-    inline ListInstanceAttributesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If there are additional results, this is the token for the next set of
-     * results.</p>
-     */
-    inline ListInstanceAttributesResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListInstanceAttributesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListInstanceAttributesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListInstanceAttributesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListInstanceAttributesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Attribute> m_attributes;
+    bool m_attributesHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -15,13 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListBackupVaultsRequest::ListBackupVaultsRequest() : 
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String ListBackupVaultsRequest::SerializePayload() const
 {
   return {};
@@ -30,6 +23,20 @@ Aws::String ListBackupVaultsRequest::SerializePayload() const
 void ListBackupVaultsRequest::AddQueryStringParameters(URI& uri) const
 {
     Aws::StringStream ss;
+    if(m_byVaultTypeHasBeenSet)
+    {
+      ss << VaultTypeMapper::GetNameForVaultType(m_byVaultType);
+      uri.AddQueryStringParameter("vaultType", ss.str());
+      ss.str("");
+    }
+
+    if(m_bySharedHasBeenSet)
+    {
+      ss << m_byShared;
+      uri.AddQueryStringParameter("shared", ss.str());
+      ss.str("");
+    }
+
     if(m_nextTokenHasBeenSet)
     {
       ss << m_nextToken;

@@ -18,19 +18,7 @@ namespace KinesisAnalyticsV2
 namespace Model
 {
 
-FlinkApplicationConfigurationDescription::FlinkApplicationConfigurationDescription() : 
-    m_checkpointConfigurationDescriptionHasBeenSet(false),
-    m_monitoringConfigurationDescriptionHasBeenSet(false),
-    m_parallelismConfigurationDescriptionHasBeenSet(false),
-    m_jobPlanDescriptionHasBeenSet(false)
-{
-}
-
-FlinkApplicationConfigurationDescription::FlinkApplicationConfigurationDescription(JsonView jsonValue) : 
-    m_checkpointConfigurationDescriptionHasBeenSet(false),
-    m_monitoringConfigurationDescriptionHasBeenSet(false),
-    m_parallelismConfigurationDescriptionHasBeenSet(false),
-    m_jobPlanDescriptionHasBeenSet(false)
+FlinkApplicationConfigurationDescription::FlinkApplicationConfigurationDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ FlinkApplicationConfigurationDescription& FlinkApplicationConfigurationDescripti
   if(jsonValue.ValueExists("CheckpointConfigurationDescription"))
   {
     m_checkpointConfigurationDescription = jsonValue.GetObject("CheckpointConfigurationDescription");
-
     m_checkpointConfigurationDescriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MonitoringConfigurationDescription"))
   {
     m_monitoringConfigurationDescription = jsonValue.GetObject("MonitoringConfigurationDescription");
-
     m_monitoringConfigurationDescriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ParallelismConfigurationDescription"))
   {
     m_parallelismConfigurationDescription = jsonValue.GetObject("ParallelismConfigurationDescription");
-
     m_parallelismConfigurationDescriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("JobPlanDescription"))
   {
     m_jobPlanDescription = jsonValue.GetString("JobPlanDescription");
-
     m_jobPlanDescriptionHasBeenSet = true;
   }
-
   return *this;
 }
 

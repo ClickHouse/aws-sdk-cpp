@@ -34,158 +34,52 @@ namespace Model
   class InsightResults
   {
   public:
-    AWS_SECURITYHUB_API InsightResults();
+    AWS_SECURITYHUB_API InsightResults() = default;
     AWS_SECURITYHUB_API InsightResults(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API InsightResults& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the insight whose results are returned by the
      * <code>GetInsightResults</code> operation.</p>
      */
-    inline const Aws::String& GetInsightArn() const{ return m_insightArn; }
-
-    /**
-     * <p>The ARN of the insight whose results are returned by the
-     * <code>GetInsightResults</code> operation.</p>
-     */
+    inline const Aws::String& GetInsightArn() const { return m_insightArn; }
     inline bool InsightArnHasBeenSet() const { return m_insightArnHasBeenSet; }
+    template<typename InsightArnT = Aws::String>
+    void SetInsightArn(InsightArnT&& value) { m_insightArnHasBeenSet = true; m_insightArn = std::forward<InsightArnT>(value); }
+    template<typename InsightArnT = Aws::String>
+    InsightResults& WithInsightArn(InsightArnT&& value) { SetInsightArn(std::forward<InsightArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the insight whose results are returned by the
-     * <code>GetInsightResults</code> operation.</p>
-     */
-    inline void SetInsightArn(const Aws::String& value) { m_insightArnHasBeenSet = true; m_insightArn = value; }
-
-    /**
-     * <p>The ARN of the insight whose results are returned by the
-     * <code>GetInsightResults</code> operation.</p>
-     */
-    inline void SetInsightArn(Aws::String&& value) { m_insightArnHasBeenSet = true; m_insightArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the insight whose results are returned by the
-     * <code>GetInsightResults</code> operation.</p>
-     */
-    inline void SetInsightArn(const char* value) { m_insightArnHasBeenSet = true; m_insightArn.assign(value); }
-
-    /**
-     * <p>The ARN of the insight whose results are returned by the
-     * <code>GetInsightResults</code> operation.</p>
-     */
-    inline InsightResults& WithInsightArn(const Aws::String& value) { SetInsightArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the insight whose results are returned by the
-     * <code>GetInsightResults</code> operation.</p>
-     */
-    inline InsightResults& WithInsightArn(Aws::String&& value) { SetInsightArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the insight whose results are returned by the
-     * <code>GetInsightResults</code> operation.</p>
-     */
-    inline InsightResults& WithInsightArn(const char* value) { SetInsightArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The attribute that the findings are grouped by for the insight whose results
      * are returned by the <code>GetInsightResults</code> operation.</p>
      */
-    inline const Aws::String& GetGroupByAttribute() const{ return m_groupByAttribute; }
-
-    /**
-     * <p>The attribute that the findings are grouped by for the insight whose results
-     * are returned by the <code>GetInsightResults</code> operation.</p>
-     */
+    inline const Aws::String& GetGroupByAttribute() const { return m_groupByAttribute; }
     inline bool GroupByAttributeHasBeenSet() const { return m_groupByAttributeHasBeenSet; }
+    template<typename GroupByAttributeT = Aws::String>
+    void SetGroupByAttribute(GroupByAttributeT&& value) { m_groupByAttributeHasBeenSet = true; m_groupByAttribute = std::forward<GroupByAttributeT>(value); }
+    template<typename GroupByAttributeT = Aws::String>
+    InsightResults& WithGroupByAttribute(GroupByAttributeT&& value) { SetGroupByAttribute(std::forward<GroupByAttributeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The attribute that the findings are grouped by for the insight whose results
-     * are returned by the <code>GetInsightResults</code> operation.</p>
-     */
-    inline void SetGroupByAttribute(const Aws::String& value) { m_groupByAttributeHasBeenSet = true; m_groupByAttribute = value; }
-
-    /**
-     * <p>The attribute that the findings are grouped by for the insight whose results
-     * are returned by the <code>GetInsightResults</code> operation.</p>
-     */
-    inline void SetGroupByAttribute(Aws::String&& value) { m_groupByAttributeHasBeenSet = true; m_groupByAttribute = std::move(value); }
-
-    /**
-     * <p>The attribute that the findings are grouped by for the insight whose results
-     * are returned by the <code>GetInsightResults</code> operation.</p>
-     */
-    inline void SetGroupByAttribute(const char* value) { m_groupByAttributeHasBeenSet = true; m_groupByAttribute.assign(value); }
-
-    /**
-     * <p>The attribute that the findings are grouped by for the insight whose results
-     * are returned by the <code>GetInsightResults</code> operation.</p>
-     */
-    inline InsightResults& WithGroupByAttribute(const Aws::String& value) { SetGroupByAttribute(value); return *this;}
-
-    /**
-     * <p>The attribute that the findings are grouped by for the insight whose results
-     * are returned by the <code>GetInsightResults</code> operation.</p>
-     */
-    inline InsightResults& WithGroupByAttribute(Aws::String&& value) { SetGroupByAttribute(std::move(value)); return *this;}
-
-    /**
-     * <p>The attribute that the findings are grouped by for the insight whose results
-     * are returned by the <code>GetInsightResults</code> operation.</p>
-     */
-    inline InsightResults& WithGroupByAttribute(const char* value) { SetGroupByAttribute(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of insight result values returned by the
      * <code>GetInsightResults</code> operation.</p>
      */
-    inline const Aws::Vector<InsightResultValue>& GetResultValues() const{ return m_resultValues; }
-
-    /**
-     * <p>The list of insight result values returned by the
-     * <code>GetInsightResults</code> operation.</p>
-     */
+    inline const Aws::Vector<InsightResultValue>& GetResultValues() const { return m_resultValues; }
     inline bool ResultValuesHasBeenSet() const { return m_resultValuesHasBeenSet; }
-
-    /**
-     * <p>The list of insight result values returned by the
-     * <code>GetInsightResults</code> operation.</p>
-     */
-    inline void SetResultValues(const Aws::Vector<InsightResultValue>& value) { m_resultValuesHasBeenSet = true; m_resultValues = value; }
-
-    /**
-     * <p>The list of insight result values returned by the
-     * <code>GetInsightResults</code> operation.</p>
-     */
-    inline void SetResultValues(Aws::Vector<InsightResultValue>&& value) { m_resultValuesHasBeenSet = true; m_resultValues = std::move(value); }
-
-    /**
-     * <p>The list of insight result values returned by the
-     * <code>GetInsightResults</code> operation.</p>
-     */
-    inline InsightResults& WithResultValues(const Aws::Vector<InsightResultValue>& value) { SetResultValues(value); return *this;}
-
-    /**
-     * <p>The list of insight result values returned by the
-     * <code>GetInsightResults</code> operation.</p>
-     */
-    inline InsightResults& WithResultValues(Aws::Vector<InsightResultValue>&& value) { SetResultValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of insight result values returned by the
-     * <code>GetInsightResults</code> operation.</p>
-     */
-    inline InsightResults& AddResultValues(const InsightResultValue& value) { m_resultValuesHasBeenSet = true; m_resultValues.push_back(value); return *this; }
-
-    /**
-     * <p>The list of insight result values returned by the
-     * <code>GetInsightResults</code> operation.</p>
-     */
-    inline InsightResults& AddResultValues(InsightResultValue&& value) { m_resultValuesHasBeenSet = true; m_resultValues.push_back(std::move(value)); return *this; }
-
+    template<typename ResultValuesT = Aws::Vector<InsightResultValue>>
+    void SetResultValues(ResultValuesT&& value) { m_resultValuesHasBeenSet = true; m_resultValues = std::forward<ResultValuesT>(value); }
+    template<typename ResultValuesT = Aws::Vector<InsightResultValue>>
+    InsightResults& WithResultValues(ResultValuesT&& value) { SetResultValues(std::forward<ResultValuesT>(value)); return *this;}
+    template<typename ResultValuesT = InsightResultValue>
+    InsightResults& AddResultValues(ResultValuesT&& value) { m_resultValuesHasBeenSet = true; m_resultValues.emplace_back(std::forward<ResultValuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_insightArn;

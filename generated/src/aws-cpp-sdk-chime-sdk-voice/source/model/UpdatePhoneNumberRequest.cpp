@@ -12,14 +12,6 @@ using namespace Aws::ChimeSDKVoice::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdatePhoneNumberRequest::UpdatePhoneNumberRequest() : 
-    m_phoneNumberIdHasBeenSet(false),
-    m_productType(PhoneNumberProductType::NOT_SET),
-    m_productTypeHasBeenSet(false),
-    m_callingNameHasBeenSet(false)
-{
-}
-
 Aws::String UpdatePhoneNumberRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -32,6 +24,12 @@ Aws::String UpdatePhoneNumberRequest::SerializePayload() const
   if(m_callingNameHasBeenSet)
   {
    payload.WithString("CallingName", m_callingName);
+
+  }
+
+  if(m_nameHasBeenSet)
+  {
+   payload.WithString("Name", m_name);
 
   }
 

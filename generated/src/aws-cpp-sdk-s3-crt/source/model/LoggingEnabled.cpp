@@ -20,17 +20,7 @@ namespace S3Crt
 namespace Model
 {
 
-LoggingEnabled::LoggingEnabled() : 
-    m_targetBucketHasBeenSet(false),
-    m_targetGrantsHasBeenSet(false),
-    m_targetPrefixHasBeenSet(false)
-{
-}
-
-LoggingEnabled::LoggingEnabled(const XmlNode& xmlNode) : 
-    m_targetBucketHasBeenSet(false),
-    m_targetGrantsHasBeenSet(false),
-    m_targetPrefixHasBeenSet(false)
+LoggingEnabled::LoggingEnabled(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -51,6 +41,7 @@ LoggingEnabled& LoggingEnabled::operator =(const XmlNode& xmlNode)
     if(!targetGrantsNode.IsNull())
     {
       XmlNode targetGrantsMember = targetGrantsNode.FirstChild("Grant");
+      m_targetGrantsHasBeenSet = !targetGrantsMember.IsNull();
       while(!targetGrantsMember.IsNull())
       {
         m_targetGrants.push_back(targetGrantsMember);
@@ -64,6 +55,12 @@ LoggingEnabled& LoggingEnabled::operator =(const XmlNode& xmlNode)
     {
       m_targetPrefix = Aws::Utils::Xml::DecodeEscapedXmlText(targetPrefixNode.GetText());
       m_targetPrefixHasBeenSet = true;
+    }
+    XmlNode targetObjectKeyFormatNode = resultNode.FirstChild("TargetObjectKeyFormat");
+    if(!targetObjectKeyFormatNode.IsNull())
+    {
+      m_targetObjectKeyFormat = targetObjectKeyFormatNode;
+      m_targetObjectKeyFormatHasBeenSet = true;
     }
   }
 
@@ -93,6 +90,12 @@ void LoggingEnabled::AddToNode(XmlNode& parentNode) const
   {
    XmlNode targetPrefixNode = parentNode.CreateChildElement("TargetPrefix");
    targetPrefixNode.SetText(m_targetPrefix);
+  }
+
+  if(m_targetObjectKeyFormatHasBeenSet)
+  {
+   XmlNode targetObjectKeyFormatNode = parentNode.CreateChildElement("TargetObjectKeyFormat");
+   m_targetObjectKeyFormat.AddToNode(targetObjectKeyFormatNode);
   }
 
 }

@@ -12,21 +12,13 @@ using namespace Aws::LicenseManagerUserSubscriptions::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StopProductSubscriptionRequest::StopProductSubscriptionRequest() : 
-    m_domainHasBeenSet(false),
-    m_identityProviderHasBeenSet(false),
-    m_productHasBeenSet(false),
-    m_usernameHasBeenSet(false)
-{
-}
-
 Aws::String StopProductSubscriptionRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_domainHasBeenSet)
+  if(m_usernameHasBeenSet)
   {
-   payload.WithString("Domain", m_domain);
+   payload.WithString("Username", m_username);
 
   }
 
@@ -42,9 +34,15 @@ Aws::String StopProductSubscriptionRequest::SerializePayload() const
 
   }
 
-  if(m_usernameHasBeenSet)
+  if(m_productUserArnHasBeenSet)
   {
-   payload.WithString("Username", m_username);
+   payload.WithString("ProductUserArn", m_productUserArn);
+
+  }
+
+  if(m_domainHasBeenSet)
+  {
+   payload.WithString("Domain", m_domain);
 
   }
 

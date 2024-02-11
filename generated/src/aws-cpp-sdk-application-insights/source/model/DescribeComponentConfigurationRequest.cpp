@@ -12,12 +12,6 @@ using namespace Aws::ApplicationInsights::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeComponentConfigurationRequest::DescribeComponentConfigurationRequest() : 
-    m_resourceGroupNameHasBeenSet(false),
-    m_componentNameHasBeenSet(false)
-{
-}
-
 Aws::String DescribeComponentConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,12 @@ Aws::String DescribeComponentConfigurationRequest::SerializePayload() const
   if(m_componentNameHasBeenSet)
   {
    payload.WithString("ComponentName", m_componentName);
+
+  }
+
+  if(m_accountIdHasBeenSet)
+  {
+   payload.WithString("AccountId", m_accountId);
 
   }
 

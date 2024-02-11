@@ -31,83 +31,40 @@ namespace Model
   class Order
   {
   public:
-    AWS_GLUE_API Order();
+    AWS_GLUE_API Order() = default;
     AWS_GLUE_API Order(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Order& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the column.</p>
      */
-    inline const Aws::String& GetColumn() const{ return m_column; }
-
-    /**
-     * <p>The name of the column.</p>
-     */
+    inline const Aws::String& GetColumn() const { return m_column; }
     inline bool ColumnHasBeenSet() const { return m_columnHasBeenSet; }
+    template<typename ColumnT = Aws::String>
+    void SetColumn(ColumnT&& value) { m_columnHasBeenSet = true; m_column = std::forward<ColumnT>(value); }
+    template<typename ColumnT = Aws::String>
+    Order& WithColumn(ColumnT&& value) { SetColumn(std::forward<ColumnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the column.</p>
-     */
-    inline void SetColumn(const Aws::String& value) { m_columnHasBeenSet = true; m_column = value; }
-
-    /**
-     * <p>The name of the column.</p>
-     */
-    inline void SetColumn(Aws::String&& value) { m_columnHasBeenSet = true; m_column = std::move(value); }
-
-    /**
-     * <p>The name of the column.</p>
-     */
-    inline void SetColumn(const char* value) { m_columnHasBeenSet = true; m_column.assign(value); }
-
-    /**
-     * <p>The name of the column.</p>
-     */
-    inline Order& WithColumn(const Aws::String& value) { SetColumn(value); return *this;}
-
-    /**
-     * <p>The name of the column.</p>
-     */
-    inline Order& WithColumn(Aws::String&& value) { SetColumn(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the column.</p>
-     */
-    inline Order& WithColumn(const char* value) { SetColumn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates that the column is sorted in ascending order (<code>== 1</code>),
      * or in descending order (<code>==0</code>).</p>
      */
-    inline int GetSortOrder() const{ return m_sortOrder; }
-
-    /**
-     * <p>Indicates that the column is sorted in ascending order (<code>== 1</code>),
-     * or in descending order (<code>==0</code>).</p>
-     */
+    inline int GetSortOrder() const { return m_sortOrder; }
     inline bool SortOrderHasBeenSet() const { return m_sortOrderHasBeenSet; }
-
-    /**
-     * <p>Indicates that the column is sorted in ascending order (<code>== 1</code>),
-     * or in descending order (<code>==0</code>).</p>
-     */
     inline void SetSortOrder(int value) { m_sortOrderHasBeenSet = true; m_sortOrder = value; }
-
-    /**
-     * <p>Indicates that the column is sorted in ascending order (<code>== 1</code>),
-     * or in descending order (<code>==0</code>).</p>
-     */
     inline Order& WithSortOrder(int value) { SetSortOrder(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_column;
     bool m_columnHasBeenSet = false;
 
-    int m_sortOrder;
+    int m_sortOrder{0};
     bool m_sortOrderHasBeenSet = false;
   };
 

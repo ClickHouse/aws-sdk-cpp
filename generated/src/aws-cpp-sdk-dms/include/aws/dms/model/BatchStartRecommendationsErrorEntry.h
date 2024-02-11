@@ -32,142 +32,48 @@ namespace Model
   class BatchStartRecommendationsErrorEntry
   {
   public:
-    AWS_DATABASEMIGRATIONSERVICE_API BatchStartRecommendationsErrorEntry();
+    AWS_DATABASEMIGRATIONSERVICE_API BatchStartRecommendationsErrorEntry() = default;
     AWS_DATABASEMIGRATIONSERVICE_API BatchStartRecommendationsErrorEntry(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATABASEMIGRATIONSERVICE_API BatchStartRecommendationsErrorEntry& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATABASEMIGRATIONSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the source database.</p>
      */
-    inline const Aws::String& GetDatabaseId() const{ return m_databaseId; }
-
-    /**
-     * <p>The identifier of the source database.</p>
-     */
+    inline const Aws::String& GetDatabaseId() const { return m_databaseId; }
     inline bool DatabaseIdHasBeenSet() const { return m_databaseIdHasBeenSet; }
+    template<typename DatabaseIdT = Aws::String>
+    void SetDatabaseId(DatabaseIdT&& value) { m_databaseIdHasBeenSet = true; m_databaseId = std::forward<DatabaseIdT>(value); }
+    template<typename DatabaseIdT = Aws::String>
+    BatchStartRecommendationsErrorEntry& WithDatabaseId(DatabaseIdT&& value) { SetDatabaseId(std::forward<DatabaseIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the source database.</p>
-     */
-    inline void SetDatabaseId(const Aws::String& value) { m_databaseIdHasBeenSet = true; m_databaseId = value; }
-
-    /**
-     * <p>The identifier of the source database.</p>
-     */
-    inline void SetDatabaseId(Aws::String&& value) { m_databaseIdHasBeenSet = true; m_databaseId = std::move(value); }
-
-    /**
-     * <p>The identifier of the source database.</p>
-     */
-    inline void SetDatabaseId(const char* value) { m_databaseIdHasBeenSet = true; m_databaseId.assign(value); }
-
-    /**
-     * <p>The identifier of the source database.</p>
-     */
-    inline BatchStartRecommendationsErrorEntry& WithDatabaseId(const Aws::String& value) { SetDatabaseId(value); return *this;}
-
-    /**
-     * <p>The identifier of the source database.</p>
-     */
-    inline BatchStartRecommendationsErrorEntry& WithDatabaseId(Aws::String&& value) { SetDatabaseId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the source database.</p>
-     */
-    inline BatchStartRecommendationsErrorEntry& WithDatabaseId(const char* value) { SetDatabaseId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The information about the error.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The information about the error.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    BatchStartRecommendationsErrorEntry& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The information about the error.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The information about the error.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The information about the error.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The information about the error.</p>
-     */
-    inline BatchStartRecommendationsErrorEntry& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The information about the error.</p>
-     */
-    inline BatchStartRecommendationsErrorEntry& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The information about the error.</p>
-     */
-    inline BatchStartRecommendationsErrorEntry& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The code of an error that occurred during the analysis of the source
      * database.</p>
      */
-    inline const Aws::String& GetCode() const{ return m_code; }
-
-    /**
-     * <p>The code of an error that occurred during the analysis of the source
-     * database.</p>
-     */
+    inline const Aws::String& GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
-
-    /**
-     * <p>The code of an error that occurred during the analysis of the source
-     * database.</p>
-     */
-    inline void SetCode(const Aws::String& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>The code of an error that occurred during the analysis of the source
-     * database.</p>
-     */
-    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * <p>The code of an error that occurred during the analysis of the source
-     * database.</p>
-     */
-    inline void SetCode(const char* value) { m_codeHasBeenSet = true; m_code.assign(value); }
-
-    /**
-     * <p>The code of an error that occurred during the analysis of the source
-     * database.</p>
-     */
-    inline BatchStartRecommendationsErrorEntry& WithCode(const Aws::String& value) { SetCode(value); return *this;}
-
-    /**
-     * <p>The code of an error that occurred during the analysis of the source
-     * database.</p>
-     */
-    inline BatchStartRecommendationsErrorEntry& WithCode(Aws::String&& value) { SetCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The code of an error that occurred during the analysis of the source
-     * database.</p>
-     */
-    inline BatchStartRecommendationsErrorEntry& WithCode(const char* value) { SetCode(value); return *this;}
-
+    template<typename CodeT = Aws::String>
+    void SetCode(CodeT&& value) { m_codeHasBeenSet = true; m_code = std::forward<CodeT>(value); }
+    template<typename CodeT = Aws::String>
+    BatchStartRecommendationsErrorEntry& WithCode(CodeT&& value) { SetCode(std::forward<CodeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_databaseId;

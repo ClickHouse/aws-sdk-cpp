@@ -33,177 +33,67 @@ namespace Model
   class TestWindowSummary
   {
   public:
-    AWS_FORECASTSERVICE_API TestWindowSummary();
+    AWS_FORECASTSERVICE_API TestWindowSummary() = default;
     AWS_FORECASTSERVICE_API TestWindowSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API TestWindowSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The time at which the test began.</p>
      */
-    inline const Aws::Utils::DateTime& GetTestWindowStart() const{ return m_testWindowStart; }
-
-    /**
-     * <p>The time at which the test began.</p>
-     */
+    inline const Aws::Utils::DateTime& GetTestWindowStart() const { return m_testWindowStart; }
     inline bool TestWindowStartHasBeenSet() const { return m_testWindowStartHasBeenSet; }
+    template<typename TestWindowStartT = Aws::Utils::DateTime>
+    void SetTestWindowStart(TestWindowStartT&& value) { m_testWindowStartHasBeenSet = true; m_testWindowStart = std::forward<TestWindowStartT>(value); }
+    template<typename TestWindowStartT = Aws::Utils::DateTime>
+    TestWindowSummary& WithTestWindowStart(TestWindowStartT&& value) { SetTestWindowStart(std::forward<TestWindowStartT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time at which the test began.</p>
-     */
-    inline void SetTestWindowStart(const Aws::Utils::DateTime& value) { m_testWindowStartHasBeenSet = true; m_testWindowStart = value; }
-
-    /**
-     * <p>The time at which the test began.</p>
-     */
-    inline void SetTestWindowStart(Aws::Utils::DateTime&& value) { m_testWindowStartHasBeenSet = true; m_testWindowStart = std::move(value); }
-
-    /**
-     * <p>The time at which the test began.</p>
-     */
-    inline TestWindowSummary& WithTestWindowStart(const Aws::Utils::DateTime& value) { SetTestWindowStart(value); return *this;}
-
-    /**
-     * <p>The time at which the test began.</p>
-     */
-    inline TestWindowSummary& WithTestWindowStart(Aws::Utils::DateTime&& value) { SetTestWindowStart(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which the test ended.</p>
      */
-    inline const Aws::Utils::DateTime& GetTestWindowEnd() const{ return m_testWindowEnd; }
-
-    /**
-     * <p>The time at which the test ended.</p>
-     */
+    inline const Aws::Utils::DateTime& GetTestWindowEnd() const { return m_testWindowEnd; }
     inline bool TestWindowEndHasBeenSet() const { return m_testWindowEndHasBeenSet; }
+    template<typename TestWindowEndT = Aws::Utils::DateTime>
+    void SetTestWindowEnd(TestWindowEndT&& value) { m_testWindowEndHasBeenSet = true; m_testWindowEnd = std::forward<TestWindowEndT>(value); }
+    template<typename TestWindowEndT = Aws::Utils::DateTime>
+    TestWindowSummary& WithTestWindowEnd(TestWindowEndT&& value) { SetTestWindowEnd(std::forward<TestWindowEndT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time at which the test ended.</p>
-     */
-    inline void SetTestWindowEnd(const Aws::Utils::DateTime& value) { m_testWindowEndHasBeenSet = true; m_testWindowEnd = value; }
-
-    /**
-     * <p>The time at which the test ended.</p>
-     */
-    inline void SetTestWindowEnd(Aws::Utils::DateTime&& value) { m_testWindowEndHasBeenSet = true; m_testWindowEnd = std::move(value); }
-
-    /**
-     * <p>The time at which the test ended.</p>
-     */
-    inline TestWindowSummary& WithTestWindowEnd(const Aws::Utils::DateTime& value) { SetTestWindowEnd(value); return *this;}
-
-    /**
-     * <p>The time at which the test ended.</p>
-     */
-    inline TestWindowSummary& WithTestWindowEnd(Aws::Utils::DateTime&& value) { SetTestWindowEnd(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the test. Possible status values are:</p> <ul> <li> <p>
      * <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_IN_PROGRESS</code> </p>
      * </li> <li> <p> <code>CREATE_FAILED</code> </p> </li> </ul>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the test. Possible status values are:</p> <ul> <li> <p>
-     * <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_IN_PROGRESS</code> </p>
-     * </li> <li> <p> <code>CREATE_FAILED</code> </p> </li> </ul>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    TestWindowSummary& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the test. Possible status values are:</p> <ul> <li> <p>
-     * <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_IN_PROGRESS</code> </p>
-     * </li> <li> <p> <code>CREATE_FAILED</code> </p> </li> </ul>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the test. Possible status values are:</p> <ul> <li> <p>
-     * <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_IN_PROGRESS</code> </p>
-     * </li> <li> <p> <code>CREATE_FAILED</code> </p> </li> </ul>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the test. Possible status values are:</p> <ul> <li> <p>
-     * <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_IN_PROGRESS</code> </p>
-     * </li> <li> <p> <code>CREATE_FAILED</code> </p> </li> </ul>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>The status of the test. Possible status values are:</p> <ul> <li> <p>
-     * <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_IN_PROGRESS</code> </p>
-     * </li> <li> <p> <code>CREATE_FAILED</code> </p> </li> </ul>
-     */
-    inline TestWindowSummary& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the test. Possible status values are:</p> <ul> <li> <p>
-     * <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_IN_PROGRESS</code> </p>
-     * </li> <li> <p> <code>CREATE_FAILED</code> </p> </li> </ul>
-     */
-    inline TestWindowSummary& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the test. Possible status values are:</p> <ul> <li> <p>
-     * <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_IN_PROGRESS</code> </p>
-     * </li> <li> <p> <code>CREATE_FAILED</code> </p> </li> </ul>
-     */
-    inline TestWindowSummary& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If the test failed, the reason why it failed.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>If the test failed, the reason why it failed.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>If the test failed, the reason why it failed.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>If the test failed, the reason why it failed.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>If the test failed, the reason why it failed.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>If the test failed, the reason why it failed.</p>
-     */
-    inline TestWindowSummary& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>If the test failed, the reason why it failed.</p>
-     */
-    inline TestWindowSummary& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>If the test failed, the reason why it failed.</p>
-     */
-    inline TestWindowSummary& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    TestWindowSummary& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_testWindowStart;
+    Aws::Utils::DateTime m_testWindowStart{};
     bool m_testWindowStartHasBeenSet = false;
 
-    Aws::Utils::DateTime m_testWindowEnd;
+    Aws::Utils::DateTime m_testWindowEnd{};
     bool m_testWindowEndHasBeenSet = false;
 
     Aws::String m_status;

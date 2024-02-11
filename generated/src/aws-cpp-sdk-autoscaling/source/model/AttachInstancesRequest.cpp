@@ -10,24 +10,25 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-AttachInstancesRequest::AttachInstancesRequest() : 
-    m_instanceIdsHasBeenSet(false),
-    m_autoScalingGroupNameHasBeenSet(false)
-{
-}
-
 Aws::String AttachInstancesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=AttachInstances&";
   if(m_instanceIdsHasBeenSet)
   {
-    unsigned instanceIdsCount = 1;
-    for(auto& item : m_instanceIds)
+    if (m_instanceIds.empty())
     {
-      ss << "InstanceIds.member." << instanceIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      instanceIdsCount++;
+      ss << "InstanceIds=&";
+    }
+    else
+    {
+      unsigned instanceIdsCount = 1;
+      for(auto& item : m_instanceIds)
+      {
+        ss << "InstanceIds.member." << instanceIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        instanceIdsCount++;
+      }
     }
   }
 

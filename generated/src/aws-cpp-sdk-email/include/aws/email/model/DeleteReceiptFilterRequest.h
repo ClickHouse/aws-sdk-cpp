@@ -19,7 +19,7 @@ namespace Model
   /**
    * <p>Represents a request to delete an IP address filter. You use IP address
    * filters when you receive email with Amazon SES. For more information, see the <a
-   * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon
+   * href="https://docs.aws.amazon.com/ses/latest/dg/receiving-email-concepts.html">Amazon
    * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteReceiptFilterRequest">AWS
    * API Reference</a></p>
@@ -27,7 +27,7 @@ namespace Model
   class DeleteReceiptFilterRequest : public SESRequest
   {
   public:
-    AWS_SES_API DeleteReceiptFilterRequest();
+    AWS_SES_API DeleteReceiptFilterRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,46 +42,17 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the IP address filter to delete.</p>
      */
-    inline const Aws::String& GetFilterName() const{ return m_filterName; }
-
-    /**
-     * <p>The name of the IP address filter to delete.</p>
-     */
+    inline const Aws::String& GetFilterName() const { return m_filterName; }
     inline bool FilterNameHasBeenSet() const { return m_filterNameHasBeenSet; }
-
-    /**
-     * <p>The name of the IP address filter to delete.</p>
-     */
-    inline void SetFilterName(const Aws::String& value) { m_filterNameHasBeenSet = true; m_filterName = value; }
-
-    /**
-     * <p>The name of the IP address filter to delete.</p>
-     */
-    inline void SetFilterName(Aws::String&& value) { m_filterNameHasBeenSet = true; m_filterName = std::move(value); }
-
-    /**
-     * <p>The name of the IP address filter to delete.</p>
-     */
-    inline void SetFilterName(const char* value) { m_filterNameHasBeenSet = true; m_filterName.assign(value); }
-
-    /**
-     * <p>The name of the IP address filter to delete.</p>
-     */
-    inline DeleteReceiptFilterRequest& WithFilterName(const Aws::String& value) { SetFilterName(value); return *this;}
-
-    /**
-     * <p>The name of the IP address filter to delete.</p>
-     */
-    inline DeleteReceiptFilterRequest& WithFilterName(Aws::String&& value) { SetFilterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the IP address filter to delete.</p>
-     */
-    inline DeleteReceiptFilterRequest& WithFilterName(const char* value) { SetFilterName(value); return *this;}
-
+    template<typename FilterNameT = Aws::String>
+    void SetFilterName(FilterNameT&& value) { m_filterNameHasBeenSet = true; m_filterName = std::forward<FilterNameT>(value); }
+    template<typename FilterNameT = Aws::String>
+    DeleteReceiptFilterRequest& WithFilterName(FilterNameT&& value) { SetFilterName(std::forward<FilterNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_filterName;

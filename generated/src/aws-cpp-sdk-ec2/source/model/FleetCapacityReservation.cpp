@@ -20,47 +20,7 @@ namespace EC2
 namespace Model
 {
 
-FleetCapacityReservation::FleetCapacityReservation() : 
-    m_capacityReservationIdHasBeenSet(false),
-    m_availabilityZoneIdHasBeenSet(false),
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_instancePlatform(CapacityReservationInstancePlatform::NOT_SET),
-    m_instancePlatformHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_totalInstanceCount(0),
-    m_totalInstanceCountHasBeenSet(false),
-    m_fulfilledCapacity(0.0),
-    m_fulfilledCapacityHasBeenSet(false),
-    m_ebsOptimized(false),
-    m_ebsOptimizedHasBeenSet(false),
-    m_createDateHasBeenSet(false),
-    m_weight(0.0),
-    m_weightHasBeenSet(false),
-    m_priority(0),
-    m_priorityHasBeenSet(false)
-{
-}
-
-FleetCapacityReservation::FleetCapacityReservation(const XmlNode& xmlNode) : 
-    m_capacityReservationIdHasBeenSet(false),
-    m_availabilityZoneIdHasBeenSet(false),
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_instancePlatform(CapacityReservationInstancePlatform::NOT_SET),
-    m_instancePlatformHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_totalInstanceCount(0),
-    m_totalInstanceCountHasBeenSet(false),
-    m_fulfilledCapacity(0.0),
-    m_fulfilledCapacityHasBeenSet(false),
-    m_ebsOptimized(false),
-    m_ebsOptimizedHasBeenSet(false),
-    m_createDateHasBeenSet(false),
-    m_weight(0.0),
-    m_weightHasBeenSet(false),
-    m_priority(0),
-    m_priorityHasBeenSet(false)
+FleetCapacityReservation::FleetCapacityReservation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -86,13 +46,13 @@ FleetCapacityReservation& FleetCapacityReservation::operator =(const XmlNode& xm
     XmlNode instanceTypeNode = resultNode.FirstChild("instanceType");
     if(!instanceTypeNode.IsNull())
     {
-      m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText()).c_str()).c_str());
+      m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText()).c_str()));
       m_instanceTypeHasBeenSet = true;
     }
     XmlNode instancePlatformNode = resultNode.FirstChild("instancePlatform");
     if(!instancePlatformNode.IsNull())
     {
-      m_instancePlatform = CapacityReservationInstancePlatformMapper::GetCapacityReservationInstancePlatformForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instancePlatformNode.GetText()).c_str()).c_str());
+      m_instancePlatform = CapacityReservationInstancePlatformMapper::GetCapacityReservationInstancePlatformForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instancePlatformNode.GetText()).c_str()));
       m_instancePlatformHasBeenSet = true;
     }
     XmlNode availabilityZoneNode = resultNode.FirstChild("availabilityZone");
@@ -156,12 +116,12 @@ void FleetCapacityReservation::OutputToStream(Aws::OStream& oStream, const char*
 
   if(m_instanceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+      oStream << location << index << locationValue << ".InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
 
   if(m_instancePlatformHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InstancePlatform=" << CapacityReservationInstancePlatformMapper::GetNameForCapacityReservationInstancePlatform(m_instancePlatform) << "&";
+      oStream << location << index << locationValue << ".InstancePlatform=" << StringUtils::URLEncode(CapacityReservationInstancePlatformMapper::GetNameForCapacityReservationInstancePlatform(m_instancePlatform)) << "&";
   }
 
   if(m_availabilityZoneHasBeenSet)
@@ -213,11 +173,11 @@ void FleetCapacityReservation::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_instanceTypeHasBeenSet)
   {
-      oStream << location << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+      oStream << location << ".InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
   if(m_instancePlatformHasBeenSet)
   {
-      oStream << location << ".InstancePlatform=" << CapacityReservationInstancePlatformMapper::GetNameForCapacityReservationInstancePlatform(m_instancePlatform) << "&";
+      oStream << location << ".InstancePlatform=" << StringUtils::URLEncode(CapacityReservationInstancePlatformMapper::GetNameForCapacityReservationInstancePlatform(m_instancePlatform)) << "&";
   }
   if(m_availabilityZoneHasBeenSet)
   {
@@ -229,7 +189,7 @@ void FleetCapacityReservation::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_fulfilledCapacityHasBeenSet)
   {
-        oStream << location << ".FulfilledCapacity=" << StringUtils::URLEncode(m_fulfilledCapacity) << "&";
+      oStream << location << ".FulfilledCapacity=" << StringUtils::URLEncode(m_fulfilledCapacity) << "&";
   }
   if(m_ebsOptimizedHasBeenSet)
   {
@@ -241,7 +201,7 @@ void FleetCapacityReservation::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_weightHasBeenSet)
   {
-        oStream << location << ".Weight=" << StringUtils::URLEncode(m_weight) << "&";
+      oStream << location << ".Weight=" << StringUtils::URLEncode(m_weight) << "&";
   }
   if(m_priorityHasBeenSet)
   {

@@ -10,26 +10,6 @@
 using namespace Aws::DocDB::Model;
 using namespace Aws::Utils;
 
-ModifyDBInstanceRequest::ModifyDBInstanceRequest() : 
-    m_dBInstanceIdentifierHasBeenSet(false),
-    m_dBInstanceClassHasBeenSet(false),
-    m_applyImmediately(false),
-    m_applyImmediatelyHasBeenSet(false),
-    m_preferredMaintenanceWindowHasBeenSet(false),
-    m_autoMinorVersionUpgrade(false),
-    m_autoMinorVersionUpgradeHasBeenSet(false),
-    m_newDBInstanceIdentifierHasBeenSet(false),
-    m_cACertificateIdentifierHasBeenSet(false),
-    m_copyTagsToSnapshot(false),
-    m_copyTagsToSnapshotHasBeenSet(false),
-    m_promotionTier(0),
-    m_promotionTierHasBeenSet(false),
-    m_enablePerformanceInsights(false),
-    m_enablePerformanceInsightsHasBeenSet(false),
-    m_performanceInsightsKMSKeyIdHasBeenSet(false)
-{
-}
-
 Aws::String ModifyDBInstanceRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -87,6 +67,11 @@ Aws::String ModifyDBInstanceRequest::SerializePayload() const
   if(m_performanceInsightsKMSKeyIdHasBeenSet)
   {
     ss << "PerformanceInsightsKMSKeyId=" << StringUtils::URLEncode(m_performanceInsightsKMSKeyId.c_str()) << "&";
+  }
+
+  if(m_certificateRotationRestartHasBeenSet)
+  {
+    ss << "CertificateRotationRestart=" << std::boolalpha << m_certificateRotationRestart << "&";
   }
 
   ss << "Version=2014-10-31";

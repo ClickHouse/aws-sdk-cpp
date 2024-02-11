@@ -18,15 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-Scoping::Scoping() : 
-    m_excludesHasBeenSet(false),
-    m_includesHasBeenSet(false)
-{
-}
-
-Scoping::Scoping(JsonView jsonValue) : 
-    m_excludesHasBeenSet(false),
-    m_includesHasBeenSet(false)
+Scoping::Scoping(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Scoping& Scoping::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("excludes"))
   {
     m_excludes = jsonValue.GetObject("excludes");
-
     m_excludesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("includes"))
   {
     m_includes = jsonValue.GetObject("includes");
-
     m_includesHasBeenSet = true;
   }
-
   return *this;
 }
 

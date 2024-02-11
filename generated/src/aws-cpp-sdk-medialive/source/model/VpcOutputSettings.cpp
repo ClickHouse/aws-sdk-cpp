@@ -18,17 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-VpcOutputSettings::VpcOutputSettings() : 
-    m_publicAddressAllocationIdsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false)
-{
-}
-
-VpcOutputSettings::VpcOutputSettings(JsonView jsonValue) : 
-    m_publicAddressAllocationIdsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false)
+VpcOutputSettings::VpcOutputSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ VpcOutputSettings& VpcOutputSettings::operator =(JsonView jsonValue)
     }
     m_publicAddressAllocationIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("securityGroupIds"))
   {
     Aws::Utils::Array<JsonView> securityGroupIdsJsonList = jsonValue.GetArray("securityGroupIds");
@@ -54,7 +43,6 @@ VpcOutputSettings& VpcOutputSettings::operator =(JsonView jsonValue)
     }
     m_securityGroupIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("subnetIds"))
   {
     Aws::Utils::Array<JsonView> subnetIdsJsonList = jsonValue.GetArray("subnetIds");
@@ -64,7 +52,6 @@ VpcOutputSettings& VpcOutputSettings::operator =(JsonView jsonValue)
     }
     m_subnetIdsHasBeenSet = true;
   }
-
   return *this;
 }
 

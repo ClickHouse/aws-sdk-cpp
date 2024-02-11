@@ -32,48 +32,24 @@ namespace Model
   class OutputFormatOptions
   {
   public:
-    AWS_GLUEDATABREW_API OutputFormatOptions();
+    AWS_GLUEDATABREW_API OutputFormatOptions() = default;
     AWS_GLUEDATABREW_API OutputFormatOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUEDATABREW_API OutputFormatOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUEDATABREW_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Represents a set of options that define the structure of comma-separated
      * value (CSV) job output.</p>
      */
-    inline const CsvOutputOptions& GetCsv() const{ return m_csv; }
-
-    /**
-     * <p>Represents a set of options that define the structure of comma-separated
-     * value (CSV) job output.</p>
-     */
+    inline const CsvOutputOptions& GetCsv() const { return m_csv; }
     inline bool CsvHasBeenSet() const { return m_csvHasBeenSet; }
-
-    /**
-     * <p>Represents a set of options that define the structure of comma-separated
-     * value (CSV) job output.</p>
-     */
-    inline void SetCsv(const CsvOutputOptions& value) { m_csvHasBeenSet = true; m_csv = value; }
-
-    /**
-     * <p>Represents a set of options that define the structure of comma-separated
-     * value (CSV) job output.</p>
-     */
-    inline void SetCsv(CsvOutputOptions&& value) { m_csvHasBeenSet = true; m_csv = std::move(value); }
-
-    /**
-     * <p>Represents a set of options that define the structure of comma-separated
-     * value (CSV) job output.</p>
-     */
-    inline OutputFormatOptions& WithCsv(const CsvOutputOptions& value) { SetCsv(value); return *this;}
-
-    /**
-     * <p>Represents a set of options that define the structure of comma-separated
-     * value (CSV) job output.</p>
-     */
-    inline OutputFormatOptions& WithCsv(CsvOutputOptions&& value) { SetCsv(std::move(value)); return *this;}
-
+    template<typename CsvT = CsvOutputOptions>
+    void SetCsv(CsvT&& value) { m_csvHasBeenSet = true; m_csv = std::forward<CsvT>(value); }
+    template<typename CsvT = CsvOutputOptions>
+    OutputFormatOptions& WithCsv(CsvT&& value) { SetCsv(std::forward<CsvT>(value)); return *this;}
+    ///@}
   private:
 
     CsvOutputOptions m_csv;

@@ -21,7 +21,7 @@ namespace Model
   class PutDashboardRequest : public CloudWatchRequest
   {
   public:
-    AWS_CLOUDWATCH_API PutDashboardRequest();
+    AWS_CLOUDWATCH_API PutDashboardRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,71 +36,22 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the dashboard. If a dashboard with this name already exists, this
      * call modifies that dashboard, replacing its current contents. Otherwise, a new
      * dashboard is created. The maximum length is 255, and valid characters are A-Z,
      * a-z, 0-9, "-", and "_". This parameter is required.</p>
      */
-    inline const Aws::String& GetDashboardName() const{ return m_dashboardName; }
-
-    /**
-     * <p>The name of the dashboard. If a dashboard with this name already exists, this
-     * call modifies that dashboard, replacing its current contents. Otherwise, a new
-     * dashboard is created. The maximum length is 255, and valid characters are A-Z,
-     * a-z, 0-9, "-", and "_". This parameter is required.</p>
-     */
+    inline const Aws::String& GetDashboardName() const { return m_dashboardName; }
     inline bool DashboardNameHasBeenSet() const { return m_dashboardNameHasBeenSet; }
+    template<typename DashboardNameT = Aws::String>
+    void SetDashboardName(DashboardNameT&& value) { m_dashboardNameHasBeenSet = true; m_dashboardName = std::forward<DashboardNameT>(value); }
+    template<typename DashboardNameT = Aws::String>
+    PutDashboardRequest& WithDashboardName(DashboardNameT&& value) { SetDashboardName(std::forward<DashboardNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the dashboard. If a dashboard with this name already exists, this
-     * call modifies that dashboard, replacing its current contents. Otherwise, a new
-     * dashboard is created. The maximum length is 255, and valid characters are A-Z,
-     * a-z, 0-9, "-", and "_". This parameter is required.</p>
-     */
-    inline void SetDashboardName(const Aws::String& value) { m_dashboardNameHasBeenSet = true; m_dashboardName = value; }
-
-    /**
-     * <p>The name of the dashboard. If a dashboard with this name already exists, this
-     * call modifies that dashboard, replacing its current contents. Otherwise, a new
-     * dashboard is created. The maximum length is 255, and valid characters are A-Z,
-     * a-z, 0-9, "-", and "_". This parameter is required.</p>
-     */
-    inline void SetDashboardName(Aws::String&& value) { m_dashboardNameHasBeenSet = true; m_dashboardName = std::move(value); }
-
-    /**
-     * <p>The name of the dashboard. If a dashboard with this name already exists, this
-     * call modifies that dashboard, replacing its current contents. Otherwise, a new
-     * dashboard is created. The maximum length is 255, and valid characters are A-Z,
-     * a-z, 0-9, "-", and "_". This parameter is required.</p>
-     */
-    inline void SetDashboardName(const char* value) { m_dashboardNameHasBeenSet = true; m_dashboardName.assign(value); }
-
-    /**
-     * <p>The name of the dashboard. If a dashboard with this name already exists, this
-     * call modifies that dashboard, replacing its current contents. Otherwise, a new
-     * dashboard is created. The maximum length is 255, and valid characters are A-Z,
-     * a-z, 0-9, "-", and "_". This parameter is required.</p>
-     */
-    inline PutDashboardRequest& WithDashboardName(const Aws::String& value) { SetDashboardName(value); return *this;}
-
-    /**
-     * <p>The name of the dashboard. If a dashboard with this name already exists, this
-     * call modifies that dashboard, replacing its current contents. Otherwise, a new
-     * dashboard is created. The maximum length is 255, and valid characters are A-Z,
-     * a-z, 0-9, "-", and "_". This parameter is required.</p>
-     */
-    inline PutDashboardRequest& WithDashboardName(Aws::String&& value) { SetDashboardName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the dashboard. If a dashboard with this name already exists, this
-     * call modifies that dashboard, replacing its current contents. Otherwise, a new
-     * dashboard is created. The maximum length is 255, and valid characters are A-Z,
-     * a-z, 0-9, "-", and "_". This parameter is required.</p>
-     */
-    inline PutDashboardRequest& WithDashboardName(const char* value) { SetDashboardName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The detailed information about the dashboard in JSON format, including the
      * widgets to include and their location on the dashboard. This parameter is
@@ -108,71 +59,13 @@ namespace Model
      * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html">Dashboard
      * Body Structure and Syntax</a>.</p>
      */
-    inline const Aws::String& GetDashboardBody() const{ return m_dashboardBody; }
-
-    /**
-     * <p>The detailed information about the dashboard in JSON format, including the
-     * widgets to include and their location on the dashboard. This parameter is
-     * required.</p> <p>For more information about the syntax, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html">Dashboard
-     * Body Structure and Syntax</a>.</p>
-     */
+    inline const Aws::String& GetDashboardBody() const { return m_dashboardBody; }
     inline bool DashboardBodyHasBeenSet() const { return m_dashboardBodyHasBeenSet; }
-
-    /**
-     * <p>The detailed information about the dashboard in JSON format, including the
-     * widgets to include and their location on the dashboard. This parameter is
-     * required.</p> <p>For more information about the syntax, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html">Dashboard
-     * Body Structure and Syntax</a>.</p>
-     */
-    inline void SetDashboardBody(const Aws::String& value) { m_dashboardBodyHasBeenSet = true; m_dashboardBody = value; }
-
-    /**
-     * <p>The detailed information about the dashboard in JSON format, including the
-     * widgets to include and their location on the dashboard. This parameter is
-     * required.</p> <p>For more information about the syntax, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html">Dashboard
-     * Body Structure and Syntax</a>.</p>
-     */
-    inline void SetDashboardBody(Aws::String&& value) { m_dashboardBodyHasBeenSet = true; m_dashboardBody = std::move(value); }
-
-    /**
-     * <p>The detailed information about the dashboard in JSON format, including the
-     * widgets to include and their location on the dashboard. This parameter is
-     * required.</p> <p>For more information about the syntax, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html">Dashboard
-     * Body Structure and Syntax</a>.</p>
-     */
-    inline void SetDashboardBody(const char* value) { m_dashboardBodyHasBeenSet = true; m_dashboardBody.assign(value); }
-
-    /**
-     * <p>The detailed information about the dashboard in JSON format, including the
-     * widgets to include and their location on the dashboard. This parameter is
-     * required.</p> <p>For more information about the syntax, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html">Dashboard
-     * Body Structure and Syntax</a>.</p>
-     */
-    inline PutDashboardRequest& WithDashboardBody(const Aws::String& value) { SetDashboardBody(value); return *this;}
-
-    /**
-     * <p>The detailed information about the dashboard in JSON format, including the
-     * widgets to include and their location on the dashboard. This parameter is
-     * required.</p> <p>For more information about the syntax, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html">Dashboard
-     * Body Structure and Syntax</a>.</p>
-     */
-    inline PutDashboardRequest& WithDashboardBody(Aws::String&& value) { SetDashboardBody(std::move(value)); return *this;}
-
-    /**
-     * <p>The detailed information about the dashboard in JSON format, including the
-     * widgets to include and their location on the dashboard. This parameter is
-     * required.</p> <p>For more information about the syntax, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html">Dashboard
-     * Body Structure and Syntax</a>.</p>
-     */
-    inline PutDashboardRequest& WithDashboardBody(const char* value) { SetDashboardBody(value); return *this;}
-
+    template<typename DashboardBodyT = Aws::String>
+    void SetDashboardBody(DashboardBodyT&& value) { m_dashboardBodyHasBeenSet = true; m_dashboardBody = std::forward<DashboardBodyT>(value); }
+    template<typename DashboardBodyT = Aws::String>
+    PutDashboardRequest& WithDashboardBody(DashboardBodyT&& value) { SetDashboardBody(std::forward<DashboardBodyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dashboardName;

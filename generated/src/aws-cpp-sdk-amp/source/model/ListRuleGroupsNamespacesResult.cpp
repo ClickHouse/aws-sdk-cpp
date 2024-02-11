@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-ListRuleGroupsNamespacesResult::ListRuleGroupsNamespacesResult()
-{
-}
-
 ListRuleGroupsNamespacesResult::ListRuleGroupsNamespacesResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,12 +25,6 @@ ListRuleGroupsNamespacesResult::ListRuleGroupsNamespacesResult(const Aws::Amazon
 ListRuleGroupsNamespacesResult& ListRuleGroupsNamespacesResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("nextToken"))
-  {
-    m_nextToken = jsonValue.GetString("nextToken");
-
-  }
-
   if(jsonValue.ValueExists("ruleGroupsNamespaces"))
   {
     Aws::Utils::Array<JsonView> ruleGroupsNamespacesJsonList = jsonValue.GetArray("ruleGroupsNamespaces");
@@ -42,14 +32,20 @@ ListRuleGroupsNamespacesResult& ListRuleGroupsNamespacesResult::operator =(const
     {
       m_ruleGroupsNamespaces.push_back(ruleGroupsNamespacesJsonList[ruleGroupsNamespacesIndex].AsObject());
     }
+    m_ruleGroupsNamespacesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("nextToken"))
+  {
+    m_nextToken = jsonValue.GetString("nextToken");
+    m_nextTokenHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

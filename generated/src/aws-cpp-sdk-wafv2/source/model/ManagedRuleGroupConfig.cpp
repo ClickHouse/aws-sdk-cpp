@@ -18,15 +18,7 @@ namespace WAFV2
 namespace Model
 {
 
-ManagedRuleGroupConfig::ManagedRuleGroupConfig() : 
-    m_aWSManagedRulesBotControlRuleSetHasBeenSet(false),
-    m_aWSManagedRulesATPRuleSetHasBeenSet(false)
-{
-}
-
-ManagedRuleGroupConfig::ManagedRuleGroupConfig(JsonView jsonValue) : 
-    m_aWSManagedRulesBotControlRuleSetHasBeenSet(false),
-    m_aWSManagedRulesATPRuleSetHasBeenSet(false)
+ManagedRuleGroupConfig::ManagedRuleGroupConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,23 @@ ManagedRuleGroupConfig& ManagedRuleGroupConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AWSManagedRulesBotControlRuleSet"))
   {
     m_aWSManagedRulesBotControlRuleSet = jsonValue.GetObject("AWSManagedRulesBotControlRuleSet");
-
     m_aWSManagedRulesBotControlRuleSetHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AWSManagedRulesATPRuleSet"))
   {
     m_aWSManagedRulesATPRuleSet = jsonValue.GetObject("AWSManagedRulesATPRuleSet");
-
     m_aWSManagedRulesATPRuleSetHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("AWSManagedRulesACFPRuleSet"))
+  {
+    m_aWSManagedRulesACFPRuleSet = jsonValue.GetObject("AWSManagedRulesACFPRuleSet");
+    m_aWSManagedRulesACFPRuleSetHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("AWSManagedRulesAntiDDoSRuleSet"))
+  {
+    m_aWSManagedRulesAntiDDoSRuleSet = jsonValue.GetObject("AWSManagedRulesAntiDDoSRuleSet");
+    m_aWSManagedRulesAntiDDoSRuleSetHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +61,18 @@ JsonValue ManagedRuleGroupConfig::Jsonize() const
   if(m_aWSManagedRulesATPRuleSetHasBeenSet)
   {
    payload.WithObject("AWSManagedRulesATPRuleSet", m_aWSManagedRulesATPRuleSet.Jsonize());
+
+  }
+
+  if(m_aWSManagedRulesACFPRuleSetHasBeenSet)
+  {
+   payload.WithObject("AWSManagedRulesACFPRuleSet", m_aWSManagedRulesACFPRuleSet.Jsonize());
+
+  }
+
+  if(m_aWSManagedRulesAntiDDoSRuleSetHasBeenSet)
+  {
+   payload.WithObject("AWSManagedRulesAntiDDoSRuleSet", m_aWSManagedRulesAntiDDoSRuleSet.Jsonize());
 
   }
 

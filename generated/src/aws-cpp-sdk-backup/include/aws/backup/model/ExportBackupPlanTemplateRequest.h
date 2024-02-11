@@ -21,7 +21,7 @@ namespace Model
   class ExportBackupPlanTemplateRequest : public BackupRequest
   {
   public:
-    AWS_BACKUP_API ExportBackupPlanTemplateRequest();
+    AWS_BACKUP_API ExportBackupPlanTemplateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_BACKUP_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Uniquely identifies a backup plan.</p>
      */
-    inline const Aws::String& GetBackupPlanId() const{ return m_backupPlanId; }
-
-    /**
-     * <p>Uniquely identifies a backup plan.</p>
-     */
+    inline const Aws::String& GetBackupPlanId() const { return m_backupPlanId; }
     inline bool BackupPlanIdHasBeenSet() const { return m_backupPlanIdHasBeenSet; }
-
-    /**
-     * <p>Uniquely identifies a backup plan.</p>
-     */
-    inline void SetBackupPlanId(const Aws::String& value) { m_backupPlanIdHasBeenSet = true; m_backupPlanId = value; }
-
-    /**
-     * <p>Uniquely identifies a backup plan.</p>
-     */
-    inline void SetBackupPlanId(Aws::String&& value) { m_backupPlanIdHasBeenSet = true; m_backupPlanId = std::move(value); }
-
-    /**
-     * <p>Uniquely identifies a backup plan.</p>
-     */
-    inline void SetBackupPlanId(const char* value) { m_backupPlanIdHasBeenSet = true; m_backupPlanId.assign(value); }
-
-    /**
-     * <p>Uniquely identifies a backup plan.</p>
-     */
-    inline ExportBackupPlanTemplateRequest& WithBackupPlanId(const Aws::String& value) { SetBackupPlanId(value); return *this;}
-
-    /**
-     * <p>Uniquely identifies a backup plan.</p>
-     */
-    inline ExportBackupPlanTemplateRequest& WithBackupPlanId(Aws::String&& value) { SetBackupPlanId(std::move(value)); return *this;}
-
-    /**
-     * <p>Uniquely identifies a backup plan.</p>
-     */
-    inline ExportBackupPlanTemplateRequest& WithBackupPlanId(const char* value) { SetBackupPlanId(value); return *this;}
-
+    template<typename BackupPlanIdT = Aws::String>
+    void SetBackupPlanId(BackupPlanIdT&& value) { m_backupPlanIdHasBeenSet = true; m_backupPlanId = std::forward<BackupPlanIdT>(value); }
+    template<typename BackupPlanIdT = Aws::String>
+    ExportBackupPlanTemplateRequest& WithBackupPlanId(BackupPlanIdT&& value) { SetBackupPlanId(std::forward<BackupPlanIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_backupPlanId;

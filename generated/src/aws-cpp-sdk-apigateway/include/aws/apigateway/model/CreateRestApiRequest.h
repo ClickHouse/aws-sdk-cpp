@@ -29,7 +29,7 @@ namespace Model
   class CreateRestApiRequest : public APIGatewayRequest
   {
   public:
-    AWS_APIGATEWAY_API CreateRestApiRequest();
+    AWS_APIGATEWAY_API CreateRestApiRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,225 +40,70 @@ namespace Model
     AWS_APIGATEWAY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the RestApi.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the RestApi.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateRestApiRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the RestApi.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the RestApi.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the RestApi.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the RestApi.</p>
-     */
-    inline CreateRestApiRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the RestApi.</p>
-     */
-    inline CreateRestApiRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the RestApi.</p>
-     */
-    inline CreateRestApiRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the RestApi.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the RestApi.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateRestApiRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the RestApi.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the RestApi.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the RestApi.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the RestApi.</p>
-     */
-    inline CreateRestApiRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the RestApi.</p>
-     */
-    inline CreateRestApiRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the RestApi.</p>
-     */
-    inline CreateRestApiRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A version identifier for the API.</p>
      */
-    inline const Aws::String& GetVersion() const{ return m_version; }
-
-    /**
-     * <p>A version identifier for the API.</p>
-     */
+    inline const Aws::String& GetVersion() const { return m_version; }
     inline bool VersionHasBeenSet() const { return m_versionHasBeenSet; }
+    template<typename VersionT = Aws::String>
+    void SetVersion(VersionT&& value) { m_versionHasBeenSet = true; m_version = std::forward<VersionT>(value); }
+    template<typename VersionT = Aws::String>
+    CreateRestApiRequest& WithVersion(VersionT&& value) { SetVersion(std::forward<VersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A version identifier for the API.</p>
-     */
-    inline void SetVersion(const Aws::String& value) { m_versionHasBeenSet = true; m_version = value; }
-
-    /**
-     * <p>A version identifier for the API.</p>
-     */
-    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
-
-    /**
-     * <p>A version identifier for the API.</p>
-     */
-    inline void SetVersion(const char* value) { m_versionHasBeenSet = true; m_version.assign(value); }
-
-    /**
-     * <p>A version identifier for the API.</p>
-     */
-    inline CreateRestApiRequest& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
-
-    /**
-     * <p>A version identifier for the API.</p>
-     */
-    inline CreateRestApiRequest& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>A version identifier for the API.</p>
-     */
-    inline CreateRestApiRequest& WithVersion(const char* value) { SetVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the RestApi that you want to clone from.</p>
      */
-    inline const Aws::String& GetCloneFrom() const{ return m_cloneFrom; }
-
-    /**
-     * <p>The ID of the RestApi that you want to clone from.</p>
-     */
+    inline const Aws::String& GetCloneFrom() const { return m_cloneFrom; }
     inline bool CloneFromHasBeenSet() const { return m_cloneFromHasBeenSet; }
+    template<typename CloneFromT = Aws::String>
+    void SetCloneFrom(CloneFromT&& value) { m_cloneFromHasBeenSet = true; m_cloneFrom = std::forward<CloneFromT>(value); }
+    template<typename CloneFromT = Aws::String>
+    CreateRestApiRequest& WithCloneFrom(CloneFromT&& value) { SetCloneFrom(std::forward<CloneFromT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the RestApi that you want to clone from.</p>
-     */
-    inline void SetCloneFrom(const Aws::String& value) { m_cloneFromHasBeenSet = true; m_cloneFrom = value; }
-
-    /**
-     * <p>The ID of the RestApi that you want to clone from.</p>
-     */
-    inline void SetCloneFrom(Aws::String&& value) { m_cloneFromHasBeenSet = true; m_cloneFrom = std::move(value); }
-
-    /**
-     * <p>The ID of the RestApi that you want to clone from.</p>
-     */
-    inline void SetCloneFrom(const char* value) { m_cloneFromHasBeenSet = true; m_cloneFrom.assign(value); }
-
-    /**
-     * <p>The ID of the RestApi that you want to clone from.</p>
-     */
-    inline CreateRestApiRequest& WithCloneFrom(const Aws::String& value) { SetCloneFrom(value); return *this;}
-
-    /**
-     * <p>The ID of the RestApi that you want to clone from.</p>
-     */
-    inline CreateRestApiRequest& WithCloneFrom(Aws::String&& value) { SetCloneFrom(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the RestApi that you want to clone from.</p>
-     */
-    inline CreateRestApiRequest& WithCloneFrom(const char* value) { SetCloneFrom(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of binary media types supported by the RestApi. By default, the
      * RestApi supports only UTF-8-encoded text payloads.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetBinaryMediaTypes() const{ return m_binaryMediaTypes; }
-
-    /**
-     * <p>The list of binary media types supported by the RestApi. By default, the
-     * RestApi supports only UTF-8-encoded text payloads.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetBinaryMediaTypes() const { return m_binaryMediaTypes; }
     inline bool BinaryMediaTypesHasBeenSet() const { return m_binaryMediaTypesHasBeenSet; }
+    template<typename BinaryMediaTypesT = Aws::Vector<Aws::String>>
+    void SetBinaryMediaTypes(BinaryMediaTypesT&& value) { m_binaryMediaTypesHasBeenSet = true; m_binaryMediaTypes = std::forward<BinaryMediaTypesT>(value); }
+    template<typename BinaryMediaTypesT = Aws::Vector<Aws::String>>
+    CreateRestApiRequest& WithBinaryMediaTypes(BinaryMediaTypesT&& value) { SetBinaryMediaTypes(std::forward<BinaryMediaTypesT>(value)); return *this;}
+    template<typename BinaryMediaTypesT = Aws::String>
+    CreateRestApiRequest& AddBinaryMediaTypes(BinaryMediaTypesT&& value) { m_binaryMediaTypesHasBeenSet = true; m_binaryMediaTypes.emplace_back(std::forward<BinaryMediaTypesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of binary media types supported by the RestApi. By default, the
-     * RestApi supports only UTF-8-encoded text payloads.</p>
-     */
-    inline void SetBinaryMediaTypes(const Aws::Vector<Aws::String>& value) { m_binaryMediaTypesHasBeenSet = true; m_binaryMediaTypes = value; }
-
-    /**
-     * <p>The list of binary media types supported by the RestApi. By default, the
-     * RestApi supports only UTF-8-encoded text payloads.</p>
-     */
-    inline void SetBinaryMediaTypes(Aws::Vector<Aws::String>&& value) { m_binaryMediaTypesHasBeenSet = true; m_binaryMediaTypes = std::move(value); }
-
-    /**
-     * <p>The list of binary media types supported by the RestApi. By default, the
-     * RestApi supports only UTF-8-encoded text payloads.</p>
-     */
-    inline CreateRestApiRequest& WithBinaryMediaTypes(const Aws::Vector<Aws::String>& value) { SetBinaryMediaTypes(value); return *this;}
-
-    /**
-     * <p>The list of binary media types supported by the RestApi. By default, the
-     * RestApi supports only UTF-8-encoded text payloads.</p>
-     */
-    inline CreateRestApiRequest& WithBinaryMediaTypes(Aws::Vector<Aws::String>&& value) { SetBinaryMediaTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of binary media types supported by the RestApi. By default, the
-     * RestApi supports only UTF-8-encoded text payloads.</p>
-     */
-    inline CreateRestApiRequest& AddBinaryMediaTypes(const Aws::String& value) { m_binaryMediaTypesHasBeenSet = true; m_binaryMediaTypes.push_back(value); return *this; }
-
-    /**
-     * <p>The list of binary media types supported by the RestApi. By default, the
-     * RestApi supports only UTF-8-encoded text payloads.</p>
-     */
-    inline CreateRestApiRequest& AddBinaryMediaTypes(Aws::String&& value) { m_binaryMediaTypesHasBeenSet = true; m_binaryMediaTypes.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The list of binary media types supported by the RestApi. By default, the
-     * RestApi supports only UTF-8-encoded text payloads.</p>
-     */
-    inline CreateRestApiRequest& AddBinaryMediaTypes(const char* value) { m_binaryMediaTypesHasBeenSet = true; m_binaryMediaTypes.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A nullable integer that is used to enable compression (with non-negative
      * between 0 and 10485760 (10M) bytes, inclusive) or disable compression (with a
@@ -266,263 +111,70 @@ namespace Model
      * is not applied on the payload if the payload size is smaller than this value.
      * Setting it to zero allows compression for any payload size.</p>
      */
-    inline int GetMinimumCompressionSize() const{ return m_minimumCompressionSize; }
-
-    /**
-     * <p>A nullable integer that is used to enable compression (with non-negative
-     * between 0 and 10485760 (10M) bytes, inclusive) or disable compression (with a
-     * null value) on an API. When compression is enabled, compression or decompression
-     * is not applied on the payload if the payload size is smaller than this value.
-     * Setting it to zero allows compression for any payload size.</p>
-     */
+    inline int GetMinimumCompressionSize() const { return m_minimumCompressionSize; }
     inline bool MinimumCompressionSizeHasBeenSet() const { return m_minimumCompressionSizeHasBeenSet; }
-
-    /**
-     * <p>A nullable integer that is used to enable compression (with non-negative
-     * between 0 and 10485760 (10M) bytes, inclusive) or disable compression (with a
-     * null value) on an API. When compression is enabled, compression or decompression
-     * is not applied on the payload if the payload size is smaller than this value.
-     * Setting it to zero allows compression for any payload size.</p>
-     */
     inline void SetMinimumCompressionSize(int value) { m_minimumCompressionSizeHasBeenSet = true; m_minimumCompressionSize = value; }
-
-    /**
-     * <p>A nullable integer that is used to enable compression (with non-negative
-     * between 0 and 10485760 (10M) bytes, inclusive) or disable compression (with a
-     * null value) on an API. When compression is enabled, compression or decompression
-     * is not applied on the payload if the payload size is smaller than this value.
-     * Setting it to zero allows compression for any payload size.</p>
-     */
     inline CreateRestApiRequest& WithMinimumCompressionSize(int value) { SetMinimumCompressionSize(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The source of the API key for metering requests according to a usage plan.
-     * Valid values are: &gt;<code>HEADER</code> to read the API key from the
+     * Valid values are: <code>HEADER</code> to read the API key from the
      * <code>X-API-Key</code> header of a request. <code>AUTHORIZER</code> to read the
      * API key from the <code>UsageIdentifierKey</code> from a custom authorizer.</p>
      */
-    inline const ApiKeySourceType& GetApiKeySource() const{ return m_apiKeySource; }
-
-    /**
-     * <p>The source of the API key for metering requests according to a usage plan.
-     * Valid values are: &gt;<code>HEADER</code> to read the API key from the
-     * <code>X-API-Key</code> header of a request. <code>AUTHORIZER</code> to read the
-     * API key from the <code>UsageIdentifierKey</code> from a custom authorizer.</p>
-     */
+    inline ApiKeySourceType GetApiKeySource() const { return m_apiKeySource; }
     inline bool ApiKeySourceHasBeenSet() const { return m_apiKeySourceHasBeenSet; }
+    inline void SetApiKeySource(ApiKeySourceType value) { m_apiKeySourceHasBeenSet = true; m_apiKeySource = value; }
+    inline CreateRestApiRequest& WithApiKeySource(ApiKeySourceType value) { SetApiKeySource(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The source of the API key for metering requests according to a usage plan.
-     * Valid values are: &gt;<code>HEADER</code> to read the API key from the
-     * <code>X-API-Key</code> header of a request. <code>AUTHORIZER</code> to read the
-     * API key from the <code>UsageIdentifierKey</code> from a custom authorizer.</p>
+     * <p>The endpoint configuration of this RestApi showing the endpoint types and IP
+     * address types of the API. </p>
      */
-    inline void SetApiKeySource(const ApiKeySourceType& value) { m_apiKeySourceHasBeenSet = true; m_apiKeySource = value; }
-
-    /**
-     * <p>The source of the API key for metering requests according to a usage plan.
-     * Valid values are: &gt;<code>HEADER</code> to read the API key from the
-     * <code>X-API-Key</code> header of a request. <code>AUTHORIZER</code> to read the
-     * API key from the <code>UsageIdentifierKey</code> from a custom authorizer.</p>
-     */
-    inline void SetApiKeySource(ApiKeySourceType&& value) { m_apiKeySourceHasBeenSet = true; m_apiKeySource = std::move(value); }
-
-    /**
-     * <p>The source of the API key for metering requests according to a usage plan.
-     * Valid values are: &gt;<code>HEADER</code> to read the API key from the
-     * <code>X-API-Key</code> header of a request. <code>AUTHORIZER</code> to read the
-     * API key from the <code>UsageIdentifierKey</code> from a custom authorizer.</p>
-     */
-    inline CreateRestApiRequest& WithApiKeySource(const ApiKeySourceType& value) { SetApiKeySource(value); return *this;}
-
-    /**
-     * <p>The source of the API key for metering requests according to a usage plan.
-     * Valid values are: &gt;<code>HEADER</code> to read the API key from the
-     * <code>X-API-Key</code> header of a request. <code>AUTHORIZER</code> to read the
-     * API key from the <code>UsageIdentifierKey</code> from a custom authorizer.</p>
-     */
-    inline CreateRestApiRequest& WithApiKeySource(ApiKeySourceType&& value) { SetApiKeySource(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The endpoint configuration of this RestApi showing the endpoint types of the
-     * API. </p>
-     */
-    inline const EndpointConfiguration& GetEndpointConfiguration() const{ return m_endpointConfiguration; }
-
-    /**
-     * <p>The endpoint configuration of this RestApi showing the endpoint types of the
-     * API. </p>
-     */
+    inline const EndpointConfiguration& GetEndpointConfiguration() const { return m_endpointConfiguration; }
     inline bool EndpointConfigurationHasBeenSet() const { return m_endpointConfigurationHasBeenSet; }
+    template<typename EndpointConfigurationT = EndpointConfiguration>
+    void SetEndpointConfiguration(EndpointConfigurationT&& value) { m_endpointConfigurationHasBeenSet = true; m_endpointConfiguration = std::forward<EndpointConfigurationT>(value); }
+    template<typename EndpointConfigurationT = EndpointConfiguration>
+    CreateRestApiRequest& WithEndpointConfiguration(EndpointConfigurationT&& value) { SetEndpointConfiguration(std::forward<EndpointConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The endpoint configuration of this RestApi showing the endpoint types of the
-     * API. </p>
-     */
-    inline void SetEndpointConfiguration(const EndpointConfiguration& value) { m_endpointConfigurationHasBeenSet = true; m_endpointConfiguration = value; }
-
-    /**
-     * <p>The endpoint configuration of this RestApi showing the endpoint types of the
-     * API. </p>
-     */
-    inline void SetEndpointConfiguration(EndpointConfiguration&& value) { m_endpointConfigurationHasBeenSet = true; m_endpointConfiguration = std::move(value); }
-
-    /**
-     * <p>The endpoint configuration of this RestApi showing the endpoint types of the
-     * API. </p>
-     */
-    inline CreateRestApiRequest& WithEndpointConfiguration(const EndpointConfiguration& value) { SetEndpointConfiguration(value); return *this;}
-
-    /**
-     * <p>The endpoint configuration of this RestApi showing the endpoint types of the
-     * API. </p>
-     */
-    inline CreateRestApiRequest& WithEndpointConfiguration(EndpointConfiguration&& value) { SetEndpointConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A stringified JSON policy document that applies to this RestApi regardless of
      * the caller and Method configuration.</p>
      */
-    inline const Aws::String& GetPolicy() const{ return m_policy; }
-
-    /**
-     * <p>A stringified JSON policy document that applies to this RestApi regardless of
-     * the caller and Method configuration.</p>
-     */
+    inline const Aws::String& GetPolicy() const { return m_policy; }
     inline bool PolicyHasBeenSet() const { return m_policyHasBeenSet; }
+    template<typename PolicyT = Aws::String>
+    void SetPolicy(PolicyT&& value) { m_policyHasBeenSet = true; m_policy = std::forward<PolicyT>(value); }
+    template<typename PolicyT = Aws::String>
+    CreateRestApiRequest& WithPolicy(PolicyT&& value) { SetPolicy(std::forward<PolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A stringified JSON policy document that applies to this RestApi regardless of
-     * the caller and Method configuration.</p>
-     */
-    inline void SetPolicy(const Aws::String& value) { m_policyHasBeenSet = true; m_policy = value; }
-
-    /**
-     * <p>A stringified JSON policy document that applies to this RestApi regardless of
-     * the caller and Method configuration.</p>
-     */
-    inline void SetPolicy(Aws::String&& value) { m_policyHasBeenSet = true; m_policy = std::move(value); }
-
-    /**
-     * <p>A stringified JSON policy document that applies to this RestApi regardless of
-     * the caller and Method configuration.</p>
-     */
-    inline void SetPolicy(const char* value) { m_policyHasBeenSet = true; m_policy.assign(value); }
-
-    /**
-     * <p>A stringified JSON policy document that applies to this RestApi regardless of
-     * the caller and Method configuration.</p>
-     */
-    inline CreateRestApiRequest& WithPolicy(const Aws::String& value) { SetPolicy(value); return *this;}
-
-    /**
-     * <p>A stringified JSON policy document that applies to this RestApi regardless of
-     * the caller and Method configuration.</p>
-     */
-    inline CreateRestApiRequest& WithPolicy(Aws::String&& value) { SetPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>A stringified JSON policy document that applies to this RestApi regardless of
-     * the caller and Method configuration.</p>
-     */
-    inline CreateRestApiRequest& WithPolicy(const char* value) { SetPolicy(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
      * tag key can be up to 128 characters and must not start with <code>aws:</code>.
      * The tag value can be up to 256 characters.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with <code>aws:</code>.
-     * The tag value can be up to 256 characters.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateRestApiRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateRestApiRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with <code>aws:</code>.
-     * The tag value can be up to 256 characters.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with <code>aws:</code>.
-     * The tag value can be up to 256 characters.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with <code>aws:</code>.
-     * The tag value can be up to 256 characters.</p>
-     */
-    inline CreateRestApiRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with <code>aws:</code>.
-     * The tag value can be up to 256 characters.</p>
-     */
-    inline CreateRestApiRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with <code>aws:</code>.
-     * The tag value can be up to 256 characters.</p>
-     */
-    inline CreateRestApiRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with <code>aws:</code>.
-     * The tag value can be up to 256 characters.</p>
-     */
-    inline CreateRestApiRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with <code>aws:</code>.
-     * The tag value can be up to 256 characters.</p>
-     */
-    inline CreateRestApiRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with <code>aws:</code>.
-     * The tag value can be up to 256 characters.</p>
-     */
-    inline CreateRestApiRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with <code>aws:</code>.
-     * The tag value can be up to 256 characters.</p>
-     */
-    inline CreateRestApiRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with <code>aws:</code>.
-     * The tag value can be up to 256 characters.</p>
-     */
-    inline CreateRestApiRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with <code>aws:</code>.
-     * The tag value can be up to 256 characters.</p>
-     */
-    inline CreateRestApiRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies whether clients can invoke your API by using the default
      * <code>execute-api</code> endpoint. By default, clients can invoke your API with
@@ -530,35 +182,11 @@ namespace Model
      * endpoint. To require that clients use a custom domain name to invoke your API,
      * disable the default endpoint</p>
      */
-    inline bool GetDisableExecuteApiEndpoint() const{ return m_disableExecuteApiEndpoint; }
-
-    /**
-     * <p>Specifies whether clients can invoke your API by using the default
-     * <code>execute-api</code> endpoint. By default, clients can invoke your API with
-     * the default <code>https://{api_id}.execute-api.{region}.amazonaws.com</code>
-     * endpoint. To require that clients use a custom domain name to invoke your API,
-     * disable the default endpoint</p>
-     */
+    inline bool GetDisableExecuteApiEndpoint() const { return m_disableExecuteApiEndpoint; }
     inline bool DisableExecuteApiEndpointHasBeenSet() const { return m_disableExecuteApiEndpointHasBeenSet; }
-
-    /**
-     * <p>Specifies whether clients can invoke your API by using the default
-     * <code>execute-api</code> endpoint. By default, clients can invoke your API with
-     * the default <code>https://{api_id}.execute-api.{region}.amazonaws.com</code>
-     * endpoint. To require that clients use a custom domain name to invoke your API,
-     * disable the default endpoint</p>
-     */
     inline void SetDisableExecuteApiEndpoint(bool value) { m_disableExecuteApiEndpointHasBeenSet = true; m_disableExecuteApiEndpoint = value; }
-
-    /**
-     * <p>Specifies whether clients can invoke your API by using the default
-     * <code>execute-api</code> endpoint. By default, clients can invoke your API with
-     * the default <code>https://{api_id}.execute-api.{region}.amazonaws.com</code>
-     * endpoint. To require that clients use a custom domain name to invoke your API,
-     * disable the default endpoint</p>
-     */
     inline CreateRestApiRequest& WithDisableExecuteApiEndpoint(bool value) { SetDisableExecuteApiEndpoint(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_name;
@@ -576,10 +204,10 @@ namespace Model
     Aws::Vector<Aws::String> m_binaryMediaTypes;
     bool m_binaryMediaTypesHasBeenSet = false;
 
-    int m_minimumCompressionSize;
+    int m_minimumCompressionSize{0};
     bool m_minimumCompressionSizeHasBeenSet = false;
 
-    ApiKeySourceType m_apiKeySource;
+    ApiKeySourceType m_apiKeySource{ApiKeySourceType::NOT_SET};
     bool m_apiKeySourceHasBeenSet = false;
 
     EndpointConfiguration m_endpointConfiguration;
@@ -591,7 +219,7 @@ namespace Model
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet = false;
 
-    bool m_disableExecuteApiEndpoint;
+    bool m_disableExecuteApiEndpoint{false};
     bool m_disableExecuteApiEndpointHasBeenSet = false;
   };
 

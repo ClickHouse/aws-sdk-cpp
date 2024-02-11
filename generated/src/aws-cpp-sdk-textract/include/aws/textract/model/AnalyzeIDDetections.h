@@ -33,110 +33,46 @@ namespace Model
   class AnalyzeIDDetections
   {
   public:
-    AWS_TEXTRACT_API AnalyzeIDDetections();
+    AWS_TEXTRACT_API AnalyzeIDDetections() = default;
     AWS_TEXTRACT_API AnalyzeIDDetections(Aws::Utils::Json::JsonView jsonValue);
     AWS_TEXTRACT_API AnalyzeIDDetections& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TEXTRACT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Text of either the normalized field or value associated with it.</p>
      */
-    inline const Aws::String& GetText() const{ return m_text; }
-
-    /**
-     * <p>Text of either the normalized field or value associated with it.</p>
-     */
+    inline const Aws::String& GetText() const { return m_text; }
     inline bool TextHasBeenSet() const { return m_textHasBeenSet; }
+    template<typename TextT = Aws::String>
+    void SetText(TextT&& value) { m_textHasBeenSet = true; m_text = std::forward<TextT>(value); }
+    template<typename TextT = Aws::String>
+    AnalyzeIDDetections& WithText(TextT&& value) { SetText(std::forward<TextT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Text of either the normalized field or value associated with it.</p>
-     */
-    inline void SetText(const Aws::String& value) { m_textHasBeenSet = true; m_text = value; }
-
-    /**
-     * <p>Text of either the normalized field or value associated with it.</p>
-     */
-    inline void SetText(Aws::String&& value) { m_textHasBeenSet = true; m_text = std::move(value); }
-
-    /**
-     * <p>Text of either the normalized field or value associated with it.</p>
-     */
-    inline void SetText(const char* value) { m_textHasBeenSet = true; m_text.assign(value); }
-
-    /**
-     * <p>Text of either the normalized field or value associated with it.</p>
-     */
-    inline AnalyzeIDDetections& WithText(const Aws::String& value) { SetText(value); return *this;}
-
-    /**
-     * <p>Text of either the normalized field or value associated with it.</p>
-     */
-    inline AnalyzeIDDetections& WithText(Aws::String&& value) { SetText(std::move(value)); return *this;}
-
-    /**
-     * <p>Text of either the normalized field or value associated with it.</p>
-     */
-    inline AnalyzeIDDetections& WithText(const char* value) { SetText(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Only returned for dates, returns the type of value detected and the date
      * written in a more machine readable way.</p>
      */
-    inline const NormalizedValue& GetNormalizedValue() const{ return m_normalizedValue; }
-
-    /**
-     * <p>Only returned for dates, returns the type of value detected and the date
-     * written in a more machine readable way.</p>
-     */
+    inline const NormalizedValue& GetNormalizedValue() const { return m_normalizedValue; }
     inline bool NormalizedValueHasBeenSet() const { return m_normalizedValueHasBeenSet; }
+    template<typename NormalizedValueT = NormalizedValue>
+    void SetNormalizedValue(NormalizedValueT&& value) { m_normalizedValueHasBeenSet = true; m_normalizedValue = std::forward<NormalizedValueT>(value); }
+    template<typename NormalizedValueT = NormalizedValue>
+    AnalyzeIDDetections& WithNormalizedValue(NormalizedValueT&& value) { SetNormalizedValue(std::forward<NormalizedValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Only returned for dates, returns the type of value detected and the date
-     * written in a more machine readable way.</p>
-     */
-    inline void SetNormalizedValue(const NormalizedValue& value) { m_normalizedValueHasBeenSet = true; m_normalizedValue = value; }
-
-    /**
-     * <p>Only returned for dates, returns the type of value detected and the date
-     * written in a more machine readable way.</p>
-     */
-    inline void SetNormalizedValue(NormalizedValue&& value) { m_normalizedValueHasBeenSet = true; m_normalizedValue = std::move(value); }
-
-    /**
-     * <p>Only returned for dates, returns the type of value detected and the date
-     * written in a more machine readable way.</p>
-     */
-    inline AnalyzeIDDetections& WithNormalizedValue(const NormalizedValue& value) { SetNormalizedValue(value); return *this;}
-
-    /**
-     * <p>Only returned for dates, returns the type of value detected and the date
-     * written in a more machine readable way.</p>
-     */
-    inline AnalyzeIDDetections& WithNormalizedValue(NormalizedValue&& value) { SetNormalizedValue(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The confidence score of the detected text.</p>
      */
-    inline double GetConfidence() const{ return m_confidence; }
-
-    /**
-     * <p>The confidence score of the detected text.</p>
-     */
+    inline double GetConfidence() const { return m_confidence; }
     inline bool ConfidenceHasBeenSet() const { return m_confidenceHasBeenSet; }
-
-    /**
-     * <p>The confidence score of the detected text.</p>
-     */
     inline void SetConfidence(double value) { m_confidenceHasBeenSet = true; m_confidence = value; }
-
-    /**
-     * <p>The confidence score of the detected text.</p>
-     */
     inline AnalyzeIDDetections& WithConfidence(double value) { SetConfidence(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_text;
@@ -145,7 +81,7 @@ namespace Model
     NormalizedValue m_normalizedValue;
     bool m_normalizedValueHasBeenSet = false;
 
-    double m_confidence;
+    double m_confidence{0.0};
     bool m_confidenceHasBeenSet = false;
   };
 

@@ -18,13 +18,7 @@ namespace ChimeSDKMeetings
 namespace Model
 {
 
-MeetingFeaturesConfiguration::MeetingFeaturesConfiguration() : 
-    m_audioHasBeenSet(false)
-{
-}
-
-MeetingFeaturesConfiguration::MeetingFeaturesConfiguration(JsonView jsonValue) : 
-    m_audioHasBeenSet(false)
+MeetingFeaturesConfiguration::MeetingFeaturesConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,23 @@ MeetingFeaturesConfiguration& MeetingFeaturesConfiguration::operator =(JsonView 
   if(jsonValue.ValueExists("Audio"))
   {
     m_audio = jsonValue.GetObject("Audio");
-
     m_audioHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Video"))
+  {
+    m_video = jsonValue.GetObject("Video");
+    m_videoHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("Content"))
+  {
+    m_content = jsonValue.GetObject("Content");
+    m_contentHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("Attendee"))
+  {
+    m_attendee = jsonValue.GetObject("Attendee");
+    m_attendeeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +55,24 @@ JsonValue MeetingFeaturesConfiguration::Jsonize() const
   if(m_audioHasBeenSet)
   {
    payload.WithObject("Audio", m_audio.Jsonize());
+
+  }
+
+  if(m_videoHasBeenSet)
+  {
+   payload.WithObject("Video", m_video.Jsonize());
+
+  }
+
+  if(m_contentHasBeenSet)
+  {
+   payload.WithObject("Content", m_content.Jsonize());
+
+  }
+
+  if(m_attendeeHasBeenSet)
+  {
+   payload.WithObject("Attendee", m_attendee.Jsonize());
 
   }
 

@@ -18,15 +18,7 @@ namespace Synthetics
 namespace Model
 {
 
-BaseScreenshot::BaseScreenshot() : 
-    m_screenshotNameHasBeenSet(false),
-    m_ignoreCoordinatesHasBeenSet(false)
-{
-}
-
-BaseScreenshot::BaseScreenshot(JsonView jsonValue) : 
-    m_screenshotNameHasBeenSet(false),
-    m_ignoreCoordinatesHasBeenSet(false)
+BaseScreenshot::BaseScreenshot(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ BaseScreenshot& BaseScreenshot::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ScreenshotName"))
   {
     m_screenshotName = jsonValue.GetString("ScreenshotName");
-
     m_screenshotNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IgnoreCoordinates"))
   {
     Aws::Utils::Array<JsonView> ignoreCoordinatesJsonList = jsonValue.GetArray("IgnoreCoordinates");
@@ -49,7 +39,6 @@ BaseScreenshot& BaseScreenshot::operator =(JsonView jsonValue)
     }
     m_ignoreCoordinatesHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -33,324 +33,114 @@ namespace Model
   class CreateMountTargetResult
   {
   public:
-    AWS_EFS_API CreateMountTargetResult();
+    AWS_EFS_API CreateMountTargetResult() = default;
     AWS_EFS_API CreateMountTargetResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_EFS_API CreateMountTargetResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Amazon Web Services account ID that owns the resource.</p>
      */
-    inline const Aws::String& GetOwnerId() const{ return m_ownerId; }
+    inline const Aws::String& GetOwnerId() const { return m_ownerId; }
+    template<typename OwnerIdT = Aws::String>
+    void SetOwnerId(OwnerIdT&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::forward<OwnerIdT>(value); }
+    template<typename OwnerIdT = Aws::String>
+    CreateMountTargetResult& WithOwnerId(OwnerIdT&& value) { SetOwnerId(std::forward<OwnerIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Amazon Web Services account ID that owns the resource.</p>
-     */
-    inline void SetOwnerId(const Aws::String& value) { m_ownerId = value; }
-
-    /**
-     * <p>Amazon Web Services account ID that owns the resource.</p>
-     */
-    inline void SetOwnerId(Aws::String&& value) { m_ownerId = std::move(value); }
-
-    /**
-     * <p>Amazon Web Services account ID that owns the resource.</p>
-     */
-    inline void SetOwnerId(const char* value) { m_ownerId.assign(value); }
-
-    /**
-     * <p>Amazon Web Services account ID that owns the resource.</p>
-     */
-    inline CreateMountTargetResult& WithOwnerId(const Aws::String& value) { SetOwnerId(value); return *this;}
-
-    /**
-     * <p>Amazon Web Services account ID that owns the resource.</p>
-     */
-    inline CreateMountTargetResult& WithOwnerId(Aws::String&& value) { SetOwnerId(std::move(value)); return *this;}
-
-    /**
-     * <p>Amazon Web Services account ID that owns the resource.</p>
-     */
-    inline CreateMountTargetResult& WithOwnerId(const char* value) { SetOwnerId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>System-assigned mount target ID.</p>
      */
-    inline const Aws::String& GetMountTargetId() const{ return m_mountTargetId; }
+    inline const Aws::String& GetMountTargetId() const { return m_mountTargetId; }
+    template<typename MountTargetIdT = Aws::String>
+    void SetMountTargetId(MountTargetIdT&& value) { m_mountTargetIdHasBeenSet = true; m_mountTargetId = std::forward<MountTargetIdT>(value); }
+    template<typename MountTargetIdT = Aws::String>
+    CreateMountTargetResult& WithMountTargetId(MountTargetIdT&& value) { SetMountTargetId(std::forward<MountTargetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>System-assigned mount target ID.</p>
-     */
-    inline void SetMountTargetId(const Aws::String& value) { m_mountTargetId = value; }
-
-    /**
-     * <p>System-assigned mount target ID.</p>
-     */
-    inline void SetMountTargetId(Aws::String&& value) { m_mountTargetId = std::move(value); }
-
-    /**
-     * <p>System-assigned mount target ID.</p>
-     */
-    inline void SetMountTargetId(const char* value) { m_mountTargetId.assign(value); }
-
-    /**
-     * <p>System-assigned mount target ID.</p>
-     */
-    inline CreateMountTargetResult& WithMountTargetId(const Aws::String& value) { SetMountTargetId(value); return *this;}
-
-    /**
-     * <p>System-assigned mount target ID.</p>
-     */
-    inline CreateMountTargetResult& WithMountTargetId(Aws::String&& value) { SetMountTargetId(std::move(value)); return *this;}
-
-    /**
-     * <p>System-assigned mount target ID.</p>
-     */
-    inline CreateMountTargetResult& WithMountTargetId(const char* value) { SetMountTargetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the file system for which the mount target is intended.</p>
      */
-    inline const Aws::String& GetFileSystemId() const{ return m_fileSystemId; }
+    inline const Aws::String& GetFileSystemId() const { return m_fileSystemId; }
+    template<typename FileSystemIdT = Aws::String>
+    void SetFileSystemId(FileSystemIdT&& value) { m_fileSystemIdHasBeenSet = true; m_fileSystemId = std::forward<FileSystemIdT>(value); }
+    template<typename FileSystemIdT = Aws::String>
+    CreateMountTargetResult& WithFileSystemId(FileSystemIdT&& value) { SetFileSystemId(std::forward<FileSystemIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the file system for which the mount target is intended.</p>
-     */
-    inline void SetFileSystemId(const Aws::String& value) { m_fileSystemId = value; }
-
-    /**
-     * <p>The ID of the file system for which the mount target is intended.</p>
-     */
-    inline void SetFileSystemId(Aws::String&& value) { m_fileSystemId = std::move(value); }
-
-    /**
-     * <p>The ID of the file system for which the mount target is intended.</p>
-     */
-    inline void SetFileSystemId(const char* value) { m_fileSystemId.assign(value); }
-
-    /**
-     * <p>The ID of the file system for which the mount target is intended.</p>
-     */
-    inline CreateMountTargetResult& WithFileSystemId(const Aws::String& value) { SetFileSystemId(value); return *this;}
-
-    /**
-     * <p>The ID of the file system for which the mount target is intended.</p>
-     */
-    inline CreateMountTargetResult& WithFileSystemId(Aws::String&& value) { SetFileSystemId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the file system for which the mount target is intended.</p>
-     */
-    inline CreateMountTargetResult& WithFileSystemId(const char* value) { SetFileSystemId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the mount target's subnet.</p>
      */
-    inline const Aws::String& GetSubnetId() const{ return m_subnetId; }
+    inline const Aws::String& GetSubnetId() const { return m_subnetId; }
+    template<typename SubnetIdT = Aws::String>
+    void SetSubnetId(SubnetIdT&& value) { m_subnetIdHasBeenSet = true; m_subnetId = std::forward<SubnetIdT>(value); }
+    template<typename SubnetIdT = Aws::String>
+    CreateMountTargetResult& WithSubnetId(SubnetIdT&& value) { SetSubnetId(std::forward<SubnetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the mount target's subnet.</p>
-     */
-    inline void SetSubnetId(const Aws::String& value) { m_subnetId = value; }
-
-    /**
-     * <p>The ID of the mount target's subnet.</p>
-     */
-    inline void SetSubnetId(Aws::String&& value) { m_subnetId = std::move(value); }
-
-    /**
-     * <p>The ID of the mount target's subnet.</p>
-     */
-    inline void SetSubnetId(const char* value) { m_subnetId.assign(value); }
-
-    /**
-     * <p>The ID of the mount target's subnet.</p>
-     */
-    inline CreateMountTargetResult& WithSubnetId(const Aws::String& value) { SetSubnetId(value); return *this;}
-
-    /**
-     * <p>The ID of the mount target's subnet.</p>
-     */
-    inline CreateMountTargetResult& WithSubnetId(Aws::String&& value) { SetSubnetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the mount target's subnet.</p>
-     */
-    inline CreateMountTargetResult& WithSubnetId(const char* value) { SetSubnetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Lifecycle state of the mount target.</p>
      */
-    inline const LifeCycleState& GetLifeCycleState() const{ return m_lifeCycleState; }
+    inline LifeCycleState GetLifeCycleState() const { return m_lifeCycleState; }
+    inline void SetLifeCycleState(LifeCycleState value) { m_lifeCycleStateHasBeenSet = true; m_lifeCycleState = value; }
+    inline CreateMountTargetResult& WithLifeCycleState(LifeCycleState value) { SetLifeCycleState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Lifecycle state of the mount target.</p>
-     */
-    inline void SetLifeCycleState(const LifeCycleState& value) { m_lifeCycleState = value; }
-
-    /**
-     * <p>Lifecycle state of the mount target.</p>
-     */
-    inline void SetLifeCycleState(LifeCycleState&& value) { m_lifeCycleState = std::move(value); }
-
-    /**
-     * <p>Lifecycle state of the mount target.</p>
-     */
-    inline CreateMountTargetResult& WithLifeCycleState(const LifeCycleState& value) { SetLifeCycleState(value); return *this;}
-
-    /**
-     * <p>Lifecycle state of the mount target.</p>
-     */
-    inline CreateMountTargetResult& WithLifeCycleState(LifeCycleState&& value) { SetLifeCycleState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Address at which the file system can be mounted by using the mount
      * target.</p>
      */
-    inline const Aws::String& GetIpAddress() const{ return m_ipAddress; }
+    inline const Aws::String& GetIpAddress() const { return m_ipAddress; }
+    template<typename IpAddressT = Aws::String>
+    void SetIpAddress(IpAddressT&& value) { m_ipAddressHasBeenSet = true; m_ipAddress = std::forward<IpAddressT>(value); }
+    template<typename IpAddressT = Aws::String>
+    CreateMountTargetResult& WithIpAddress(IpAddressT&& value) { SetIpAddress(std::forward<IpAddressT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Address at which the file system can be mounted by using the mount
-     * target.</p>
+     * <p>The IPv6 address for the mount target.</p>
      */
-    inline void SetIpAddress(const Aws::String& value) { m_ipAddress = value; }
+    inline const Aws::String& GetIpv6Address() const { return m_ipv6Address; }
+    template<typename Ipv6AddressT = Aws::String>
+    void SetIpv6Address(Ipv6AddressT&& value) { m_ipv6AddressHasBeenSet = true; m_ipv6Address = std::forward<Ipv6AddressT>(value); }
+    template<typename Ipv6AddressT = Aws::String>
+    CreateMountTargetResult& WithIpv6Address(Ipv6AddressT&& value) { SetIpv6Address(std::forward<Ipv6AddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Address at which the file system can be mounted by using the mount
-     * target.</p>
-     */
-    inline void SetIpAddress(Aws::String&& value) { m_ipAddress = std::move(value); }
-
-    /**
-     * <p>Address at which the file system can be mounted by using the mount
-     * target.</p>
-     */
-    inline void SetIpAddress(const char* value) { m_ipAddress.assign(value); }
-
-    /**
-     * <p>Address at which the file system can be mounted by using the mount
-     * target.</p>
-     */
-    inline CreateMountTargetResult& WithIpAddress(const Aws::String& value) { SetIpAddress(value); return *this;}
-
-    /**
-     * <p>Address at which the file system can be mounted by using the mount
-     * target.</p>
-     */
-    inline CreateMountTargetResult& WithIpAddress(Aws::String&& value) { SetIpAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>Address at which the file system can be mounted by using the mount
-     * target.</p>
-     */
-    inline CreateMountTargetResult& WithIpAddress(const char* value) { SetIpAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the network interface that Amazon EFS created when it created the
      * mount target.</p>
      */
-    inline const Aws::String& GetNetworkInterfaceId() const{ return m_networkInterfaceId; }
+    inline const Aws::String& GetNetworkInterfaceId() const { return m_networkInterfaceId; }
+    template<typename NetworkInterfaceIdT = Aws::String>
+    void SetNetworkInterfaceId(NetworkInterfaceIdT&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = std::forward<NetworkInterfaceIdT>(value); }
+    template<typename NetworkInterfaceIdT = Aws::String>
+    CreateMountTargetResult& WithNetworkInterfaceId(NetworkInterfaceIdT&& value) { SetNetworkInterfaceId(std::forward<NetworkInterfaceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the network interface that Amazon EFS created when it created the
-     * mount target.</p>
-     */
-    inline void SetNetworkInterfaceId(const Aws::String& value) { m_networkInterfaceId = value; }
-
-    /**
-     * <p>The ID of the network interface that Amazon EFS created when it created the
-     * mount target.</p>
-     */
-    inline void SetNetworkInterfaceId(Aws::String&& value) { m_networkInterfaceId = std::move(value); }
-
-    /**
-     * <p>The ID of the network interface that Amazon EFS created when it created the
-     * mount target.</p>
-     */
-    inline void SetNetworkInterfaceId(const char* value) { m_networkInterfaceId.assign(value); }
-
-    /**
-     * <p>The ID of the network interface that Amazon EFS created when it created the
-     * mount target.</p>
-     */
-    inline CreateMountTargetResult& WithNetworkInterfaceId(const Aws::String& value) { SetNetworkInterfaceId(value); return *this;}
-
-    /**
-     * <p>The ID of the network interface that Amazon EFS created when it created the
-     * mount target.</p>
-     */
-    inline CreateMountTargetResult& WithNetworkInterfaceId(Aws::String&& value) { SetNetworkInterfaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the network interface that Amazon EFS created when it created the
-     * mount target.</p>
-     */
-    inline CreateMountTargetResult& WithNetworkInterfaceId(const char* value) { SetNetworkInterfaceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique and consistent identifier of the Availability Zone that the mount
      * target resides in. For example, <code>use1-az1</code> is an AZ ID for the
      * us-east-1 Region and it has the same location in every Amazon Web Services
      * account.</p>
      */
-    inline const Aws::String& GetAvailabilityZoneId() const{ return m_availabilityZoneId; }
+    inline const Aws::String& GetAvailabilityZoneId() const { return m_availabilityZoneId; }
+    template<typename AvailabilityZoneIdT = Aws::String>
+    void SetAvailabilityZoneId(AvailabilityZoneIdT&& value) { m_availabilityZoneIdHasBeenSet = true; m_availabilityZoneId = std::forward<AvailabilityZoneIdT>(value); }
+    template<typename AvailabilityZoneIdT = Aws::String>
+    CreateMountTargetResult& WithAvailabilityZoneId(AvailabilityZoneIdT&& value) { SetAvailabilityZoneId(std::forward<AvailabilityZoneIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique and consistent identifier of the Availability Zone that the mount
-     * target resides in. For example, <code>use1-az1</code> is an AZ ID for the
-     * us-east-1 Region and it has the same location in every Amazon Web Services
-     * account.</p>
-     */
-    inline void SetAvailabilityZoneId(const Aws::String& value) { m_availabilityZoneId = value; }
-
-    /**
-     * <p>The unique and consistent identifier of the Availability Zone that the mount
-     * target resides in. For example, <code>use1-az1</code> is an AZ ID for the
-     * us-east-1 Region and it has the same location in every Amazon Web Services
-     * account.</p>
-     */
-    inline void SetAvailabilityZoneId(Aws::String&& value) { m_availabilityZoneId = std::move(value); }
-
-    /**
-     * <p>The unique and consistent identifier of the Availability Zone that the mount
-     * target resides in. For example, <code>use1-az1</code> is an AZ ID for the
-     * us-east-1 Region and it has the same location in every Amazon Web Services
-     * account.</p>
-     */
-    inline void SetAvailabilityZoneId(const char* value) { m_availabilityZoneId.assign(value); }
-
-    /**
-     * <p>The unique and consistent identifier of the Availability Zone that the mount
-     * target resides in. For example, <code>use1-az1</code> is an AZ ID for the
-     * us-east-1 Region and it has the same location in every Amazon Web Services
-     * account.</p>
-     */
-    inline CreateMountTargetResult& WithAvailabilityZoneId(const Aws::String& value) { SetAvailabilityZoneId(value); return *this;}
-
-    /**
-     * <p>The unique and consistent identifier of the Availability Zone that the mount
-     * target resides in. For example, <code>use1-az1</code> is an AZ ID for the
-     * us-east-1 Region and it has the same location in every Amazon Web Services
-     * account.</p>
-     */
-    inline CreateMountTargetResult& WithAvailabilityZoneId(Aws::String&& value) { SetAvailabilityZoneId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique and consistent identifier of the Availability Zone that the mount
-     * target resides in. For example, <code>use1-az1</code> is an AZ ID for the
-     * us-east-1 Region and it has the same location in every Amazon Web Services
-     * account.</p>
-     */
-    inline CreateMountTargetResult& WithAvailabilityZoneId(const char* value) { SetAvailabilityZoneId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the Availability Zone in which the mount target is located.
      * Availability Zones are independently mapped to names for each Amazon Web
@@ -358,150 +148,70 @@ namespace Model
      * your Amazon Web Services account might not be the same location as
      * <code>us-east-1a</code> for another Amazon Web Services account.</p>
      */
-    inline const Aws::String& GetAvailabilityZoneName() const{ return m_availabilityZoneName; }
+    inline const Aws::String& GetAvailabilityZoneName() const { return m_availabilityZoneName; }
+    template<typename AvailabilityZoneNameT = Aws::String>
+    void SetAvailabilityZoneName(AvailabilityZoneNameT&& value) { m_availabilityZoneNameHasBeenSet = true; m_availabilityZoneName = std::forward<AvailabilityZoneNameT>(value); }
+    template<typename AvailabilityZoneNameT = Aws::String>
+    CreateMountTargetResult& WithAvailabilityZoneName(AvailabilityZoneNameT&& value) { SetAvailabilityZoneName(std::forward<AvailabilityZoneNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Availability Zone in which the mount target is located.
-     * Availability Zones are independently mapped to names for each Amazon Web
-     * Services account. For example, the Availability Zone <code>us-east-1a</code> for
-     * your Amazon Web Services account might not be the same location as
-     * <code>us-east-1a</code> for another Amazon Web Services account.</p>
-     */
-    inline void SetAvailabilityZoneName(const Aws::String& value) { m_availabilityZoneName = value; }
-
-    /**
-     * <p>The name of the Availability Zone in which the mount target is located.
-     * Availability Zones are independently mapped to names for each Amazon Web
-     * Services account. For example, the Availability Zone <code>us-east-1a</code> for
-     * your Amazon Web Services account might not be the same location as
-     * <code>us-east-1a</code> for another Amazon Web Services account.</p>
-     */
-    inline void SetAvailabilityZoneName(Aws::String&& value) { m_availabilityZoneName = std::move(value); }
-
-    /**
-     * <p>The name of the Availability Zone in which the mount target is located.
-     * Availability Zones are independently mapped to names for each Amazon Web
-     * Services account. For example, the Availability Zone <code>us-east-1a</code> for
-     * your Amazon Web Services account might not be the same location as
-     * <code>us-east-1a</code> for another Amazon Web Services account.</p>
-     */
-    inline void SetAvailabilityZoneName(const char* value) { m_availabilityZoneName.assign(value); }
-
-    /**
-     * <p>The name of the Availability Zone in which the mount target is located.
-     * Availability Zones are independently mapped to names for each Amazon Web
-     * Services account. For example, the Availability Zone <code>us-east-1a</code> for
-     * your Amazon Web Services account might not be the same location as
-     * <code>us-east-1a</code> for another Amazon Web Services account.</p>
-     */
-    inline CreateMountTargetResult& WithAvailabilityZoneName(const Aws::String& value) { SetAvailabilityZoneName(value); return *this;}
-
-    /**
-     * <p>The name of the Availability Zone in which the mount target is located.
-     * Availability Zones are independently mapped to names for each Amazon Web
-     * Services account. For example, the Availability Zone <code>us-east-1a</code> for
-     * your Amazon Web Services account might not be the same location as
-     * <code>us-east-1a</code> for another Amazon Web Services account.</p>
-     */
-    inline CreateMountTargetResult& WithAvailabilityZoneName(Aws::String&& value) { SetAvailabilityZoneName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Availability Zone in which the mount target is located.
-     * Availability Zones are independently mapped to names for each Amazon Web
-     * Services account. For example, the Availability Zone <code>us-east-1a</code> for
-     * your Amazon Web Services account might not be the same location as
-     * <code>us-east-1a</code> for another Amazon Web Services account.</p>
-     */
-    inline CreateMountTargetResult& WithAvailabilityZoneName(const char* value) { SetAvailabilityZoneName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The virtual private cloud (VPC) ID that the mount target is configured
      * in.</p>
      */
-    inline const Aws::String& GetVpcId() const{ return m_vpcId; }
+    inline const Aws::String& GetVpcId() const { return m_vpcId; }
+    template<typename VpcIdT = Aws::String>
+    void SetVpcId(VpcIdT&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::forward<VpcIdT>(value); }
+    template<typename VpcIdT = Aws::String>
+    CreateMountTargetResult& WithVpcId(VpcIdT&& value) { SetVpcId(std::forward<VpcIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The virtual private cloud (VPC) ID that the mount target is configured
-     * in.</p>
-     */
-    inline void SetVpcId(const Aws::String& value) { m_vpcId = value; }
-
-    /**
-     * <p>The virtual private cloud (VPC) ID that the mount target is configured
-     * in.</p>
-     */
-    inline void SetVpcId(Aws::String&& value) { m_vpcId = std::move(value); }
-
-    /**
-     * <p>The virtual private cloud (VPC) ID that the mount target is configured
-     * in.</p>
-     */
-    inline void SetVpcId(const char* value) { m_vpcId.assign(value); }
-
-    /**
-     * <p>The virtual private cloud (VPC) ID that the mount target is configured
-     * in.</p>
-     */
-    inline CreateMountTargetResult& WithVpcId(const Aws::String& value) { SetVpcId(value); return *this;}
-
-    /**
-     * <p>The virtual private cloud (VPC) ID that the mount target is configured
-     * in.</p>
-     */
-    inline CreateMountTargetResult& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
-
-    /**
-     * <p>The virtual private cloud (VPC) ID that the mount target is configured
-     * in.</p>
-     */
-    inline CreateMountTargetResult& WithVpcId(const char* value) { SetVpcId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateMountTargetResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateMountTargetResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateMountTargetResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateMountTargetResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ownerId;
+    bool m_ownerIdHasBeenSet = false;
 
     Aws::String m_mountTargetId;
+    bool m_mountTargetIdHasBeenSet = false;
 
     Aws::String m_fileSystemId;
+    bool m_fileSystemIdHasBeenSet = false;
 
     Aws::String m_subnetId;
+    bool m_subnetIdHasBeenSet = false;
 
-    LifeCycleState m_lifeCycleState;
+    LifeCycleState m_lifeCycleState{LifeCycleState::NOT_SET};
+    bool m_lifeCycleStateHasBeenSet = false;
 
     Aws::String m_ipAddress;
+    bool m_ipAddressHasBeenSet = false;
+
+    Aws::String m_ipv6Address;
+    bool m_ipv6AddressHasBeenSet = false;
 
     Aws::String m_networkInterfaceId;
+    bool m_networkInterfaceIdHasBeenSet = false;
 
     Aws::String m_availabilityZoneId;
+    bool m_availabilityZoneIdHasBeenSet = false;
 
     Aws::String m_availabilityZoneName;
+    bool m_availabilityZoneNameHasBeenSet = false;
 
     Aws::String m_vpcId;
+    bool m_vpcIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

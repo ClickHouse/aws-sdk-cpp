@@ -29,11 +29,12 @@ namespace Model
   class ListAvailableManagedRuleGroupsResult
   {
   public:
-    AWS_WAFV2_API ListAvailableManagedRuleGroupsResult();
+    AWS_WAFV2_API ListAvailableManagedRuleGroupsResult() = default;
     AWS_WAFV2_API ListAvailableManagedRuleGroupsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_WAFV2_API ListAvailableManagedRuleGroupsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>When you request a list of objects with a <code>Limit</code> setting, if the
      * number of objects that are still available for retrieval exceeds the limit, WAF
@@ -41,127 +42,45 @@ namespace Model
      * batch of objects, provide the marker from the prior call in your next
      * request.</p>
      */
-    inline const Aws::String& GetNextMarker() const{ return m_nextMarker; }
+    inline const Aws::String& GetNextMarker() const { return m_nextMarker; }
+    template<typename NextMarkerT = Aws::String>
+    void SetNextMarker(NextMarkerT&& value) { m_nextMarkerHasBeenSet = true; m_nextMarker = std::forward<NextMarkerT>(value); }
+    template<typename NextMarkerT = Aws::String>
+    ListAvailableManagedRuleGroupsResult& WithNextMarker(NextMarkerT&& value) { SetNextMarker(std::forward<NextMarkerT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>When you request a list of objects with a <code>Limit</code> setting, if the
-     * number of objects that are still available for retrieval exceeds the limit, WAF
-     * returns a <code>NextMarker</code> value in the response. To retrieve the next
-     * batch of objects, provide the marker from the prior call in your next
-     * request.</p>
+     * <p>Array of managed rule groups that you can use. If you specified a
+     * <code>Limit</code> in your request, this might not be the full list. </p>
      */
-    inline void SetNextMarker(const Aws::String& value) { m_nextMarker = value; }
+    inline const Aws::Vector<ManagedRuleGroupSummary>& GetManagedRuleGroups() const { return m_managedRuleGroups; }
+    template<typename ManagedRuleGroupsT = Aws::Vector<ManagedRuleGroupSummary>>
+    void SetManagedRuleGroups(ManagedRuleGroupsT&& value) { m_managedRuleGroupsHasBeenSet = true; m_managedRuleGroups = std::forward<ManagedRuleGroupsT>(value); }
+    template<typename ManagedRuleGroupsT = Aws::Vector<ManagedRuleGroupSummary>>
+    ListAvailableManagedRuleGroupsResult& WithManagedRuleGroups(ManagedRuleGroupsT&& value) { SetManagedRuleGroups(std::forward<ManagedRuleGroupsT>(value)); return *this;}
+    template<typename ManagedRuleGroupsT = ManagedRuleGroupSummary>
+    ListAvailableManagedRuleGroupsResult& AddManagedRuleGroups(ManagedRuleGroupsT&& value) { m_managedRuleGroupsHasBeenSet = true; m_managedRuleGroups.emplace_back(std::forward<ManagedRuleGroupsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>When you request a list of objects with a <code>Limit</code> setting, if the
-     * number of objects that are still available for retrieval exceeds the limit, WAF
-     * returns a <code>NextMarker</code> value in the response. To retrieve the next
-     * batch of objects, provide the marker from the prior call in your next
-     * request.</p>
-     */
-    inline void SetNextMarker(Aws::String&& value) { m_nextMarker = std::move(value); }
-
-    /**
-     * <p>When you request a list of objects with a <code>Limit</code> setting, if the
-     * number of objects that are still available for retrieval exceeds the limit, WAF
-     * returns a <code>NextMarker</code> value in the response. To retrieve the next
-     * batch of objects, provide the marker from the prior call in your next
-     * request.</p>
-     */
-    inline void SetNextMarker(const char* value) { m_nextMarker.assign(value); }
-
-    /**
-     * <p>When you request a list of objects with a <code>Limit</code> setting, if the
-     * number of objects that are still available for retrieval exceeds the limit, WAF
-     * returns a <code>NextMarker</code> value in the response. To retrieve the next
-     * batch of objects, provide the marker from the prior call in your next
-     * request.</p>
-     */
-    inline ListAvailableManagedRuleGroupsResult& WithNextMarker(const Aws::String& value) { SetNextMarker(value); return *this;}
-
-    /**
-     * <p>When you request a list of objects with a <code>Limit</code> setting, if the
-     * number of objects that are still available for retrieval exceeds the limit, WAF
-     * returns a <code>NextMarker</code> value in the response. To retrieve the next
-     * batch of objects, provide the marker from the prior call in your next
-     * request.</p>
-     */
-    inline ListAvailableManagedRuleGroupsResult& WithNextMarker(Aws::String&& value) { SetNextMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>When you request a list of objects with a <code>Limit</code> setting, if the
-     * number of objects that are still available for retrieval exceeds the limit, WAF
-     * returns a <code>NextMarker</code> value in the response. To retrieve the next
-     * batch of objects, provide the marker from the prior call in your next
-     * request.</p>
-     */
-    inline ListAvailableManagedRuleGroupsResult& WithNextMarker(const char* value) { SetNextMarker(value); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const Aws::Vector<ManagedRuleGroupSummary>& GetManagedRuleGroups() const{ return m_managedRuleGroups; }
-
-    /**
-     * <p/>
-     */
-    inline void SetManagedRuleGroups(const Aws::Vector<ManagedRuleGroupSummary>& value) { m_managedRuleGroups = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetManagedRuleGroups(Aws::Vector<ManagedRuleGroupSummary>&& value) { m_managedRuleGroups = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline ListAvailableManagedRuleGroupsResult& WithManagedRuleGroups(const Aws::Vector<ManagedRuleGroupSummary>& value) { SetManagedRuleGroups(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline ListAvailableManagedRuleGroupsResult& WithManagedRuleGroups(Aws::Vector<ManagedRuleGroupSummary>&& value) { SetManagedRuleGroups(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline ListAvailableManagedRuleGroupsResult& AddManagedRuleGroups(const ManagedRuleGroupSummary& value) { m_managedRuleGroups.push_back(value); return *this; }
-
-    /**
-     * <p/>
-     */
-    inline ListAvailableManagedRuleGroupsResult& AddManagedRuleGroups(ManagedRuleGroupSummary&& value) { m_managedRuleGroups.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListAvailableManagedRuleGroupsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListAvailableManagedRuleGroupsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListAvailableManagedRuleGroupsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListAvailableManagedRuleGroupsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nextMarker;
+    bool m_nextMarkerHasBeenSet = false;
 
     Aws::Vector<ManagedRuleGroupSummary> m_managedRuleGroups;
+    bool m_managedRuleGroupsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

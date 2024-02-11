@@ -18,21 +18,7 @@ namespace IoTTwinMaker
 namespace Model
 {
 
-WorkspaceSummary::WorkspaceSummary() : 
-    m_workspaceIdHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_creationDateTimeHasBeenSet(false),
-    m_updateDateTimeHasBeenSet(false)
-{
-}
-
-WorkspaceSummary::WorkspaceSummary(JsonView jsonValue) : 
-    m_workspaceIdHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_creationDateTimeHasBeenSet(false),
-    m_updateDateTimeHasBeenSet(false)
+WorkspaceSummary::WorkspaceSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,38 +28,37 @@ WorkspaceSummary& WorkspaceSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("workspaceId"))
   {
     m_workspaceId = jsonValue.GetString("workspaceId");
-
     m_workspaceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("arn"))
   {
     m_arn = jsonValue.GetString("arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("linkedServices"))
+  {
+    Aws::Utils::Array<JsonView> linkedServicesJsonList = jsonValue.GetArray("linkedServices");
+    for(unsigned linkedServicesIndex = 0; linkedServicesIndex < linkedServicesJsonList.GetLength(); ++linkedServicesIndex)
+    {
+      m_linkedServices.push_back(linkedServicesJsonList[linkedServicesIndex].AsString());
+    }
+    m_linkedServicesHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("creationDateTime"))
   {
     m_creationDateTime = jsonValue.GetDouble("creationDateTime");
-
     m_creationDateTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("updateDateTime"))
   {
     m_updateDateTime = jsonValue.GetDouble("updateDateTime");
-
     m_updateDateTimeHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -96,6 +81,17 @@ JsonValue WorkspaceSummary::Jsonize() const
   if(m_descriptionHasBeenSet)
   {
    payload.WithString("description", m_description);
+
+  }
+
+  if(m_linkedServicesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> linkedServicesJsonList(m_linkedServices.size());
+   for(unsigned linkedServicesIndex = 0; linkedServicesIndex < linkedServicesJsonList.GetLength(); ++linkedServicesIndex)
+   {
+     linkedServicesJsonList[linkedServicesIndex].AsString(m_linkedServices[linkedServicesIndex]);
+   }
+   payload.WithArray("linkedServices", std::move(linkedServicesJsonList));
 
   }
 

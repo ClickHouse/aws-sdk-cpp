@@ -21,7 +21,7 @@ namespace Model
   class UpdateChannelReadMarkerRequest : public ChimeSDKMessagingRequest
   {
   public:
-    AWS_CHIMESDKMESSAGING_API UpdateChannelReadMarkerRequest();
+    AWS_CHIMESDKMESSAGING_API UpdateChannelReadMarkerRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,136 +34,30 @@ namespace Model
     AWS_CHIMESDKMESSAGING_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the channel.</p>
      */
-    inline const Aws::String& GetChannelArn() const{ return m_channelArn; }
-
-    /**
-     * <p>The ARN of the channel.</p>
-     */
+    inline const Aws::String& GetChannelArn() const { return m_channelArn; }
     inline bool ChannelArnHasBeenSet() const { return m_channelArnHasBeenSet; }
+    template<typename ChannelArnT = Aws::String>
+    void SetChannelArn(ChannelArnT&& value) { m_channelArnHasBeenSet = true; m_channelArn = std::forward<ChannelArnT>(value); }
+    template<typename ChannelArnT = Aws::String>
+    UpdateChannelReadMarkerRequest& WithChannelArn(ChannelArnT&& value) { SetChannelArn(std::forward<ChannelArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the channel.</p>
-     */
-    inline void SetChannelArn(const Aws::String& value) { m_channelArnHasBeenSet = true; m_channelArn = value; }
-
-    /**
-     * <p>The ARN of the channel.</p>
-     */
-    inline void SetChannelArn(Aws::String&& value) { m_channelArnHasBeenSet = true; m_channelArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the channel.</p>
-     */
-    inline void SetChannelArn(const char* value) { m_channelArnHasBeenSet = true; m_channelArn.assign(value); }
-
-    /**
-     * <p>The ARN of the channel.</p>
-     */
-    inline UpdateChannelReadMarkerRequest& WithChannelArn(const Aws::String& value) { SetChannelArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the channel.</p>
-     */
-    inline UpdateChannelReadMarkerRequest& WithChannelArn(Aws::String&& value) { SetChannelArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the channel.</p>
-     */
-    inline UpdateChannelReadMarkerRequest& WithChannelArn(const char* value) { SetChannelArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
      * that makes the API call.</p>
      */
-    inline const Aws::String& GetChimeBearer() const{ return m_chimeBearer; }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
+    inline const Aws::String& GetChimeBearer() const { return m_chimeBearer; }
     inline bool ChimeBearerHasBeenSet() const { return m_chimeBearerHasBeenSet; }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
-    inline void SetChimeBearer(const Aws::String& value) { m_chimeBearerHasBeenSet = true; m_chimeBearer = value; }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
-    inline void SetChimeBearer(Aws::String&& value) { m_chimeBearerHasBeenSet = true; m_chimeBearer = std::move(value); }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
-    inline void SetChimeBearer(const char* value) { m_chimeBearerHasBeenSet = true; m_chimeBearer.assign(value); }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
-    inline UpdateChannelReadMarkerRequest& WithChimeBearer(const Aws::String& value) { SetChimeBearer(value); return *this;}
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
-    inline UpdateChannelReadMarkerRequest& WithChimeBearer(Aws::String&& value) { SetChimeBearer(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
-    inline UpdateChannelReadMarkerRequest& WithChimeBearer(const char* value) { SetChimeBearer(value); return *this;}
-
-
-    /**
-     * <p>The ID of the SubChannel in the request.</p>
-     */
-    inline const Aws::String& GetSubChannelId() const{ return m_subChannelId; }
-
-    /**
-     * <p>The ID of the SubChannel in the request.</p>
-     */
-    inline bool SubChannelIdHasBeenSet() const { return m_subChannelIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the SubChannel in the request.</p>
-     */
-    inline void SetSubChannelId(const Aws::String& value) { m_subChannelIdHasBeenSet = true; m_subChannelId = value; }
-
-    /**
-     * <p>The ID of the SubChannel in the request.</p>
-     */
-    inline void SetSubChannelId(Aws::String&& value) { m_subChannelIdHasBeenSet = true; m_subChannelId = std::move(value); }
-
-    /**
-     * <p>The ID of the SubChannel in the request.</p>
-     */
-    inline void SetSubChannelId(const char* value) { m_subChannelIdHasBeenSet = true; m_subChannelId.assign(value); }
-
-    /**
-     * <p>The ID of the SubChannel in the request.</p>
-     */
-    inline UpdateChannelReadMarkerRequest& WithSubChannelId(const Aws::String& value) { SetSubChannelId(value); return *this;}
-
-    /**
-     * <p>The ID of the SubChannel in the request.</p>
-     */
-    inline UpdateChannelReadMarkerRequest& WithSubChannelId(Aws::String&& value) { SetSubChannelId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the SubChannel in the request.</p>
-     */
-    inline UpdateChannelReadMarkerRequest& WithSubChannelId(const char* value) { SetSubChannelId(value); return *this;}
-
+    template<typename ChimeBearerT = Aws::String>
+    void SetChimeBearer(ChimeBearerT&& value) { m_chimeBearerHasBeenSet = true; m_chimeBearer = std::forward<ChimeBearerT>(value); }
+    template<typename ChimeBearerT = Aws::String>
+    UpdateChannelReadMarkerRequest& WithChimeBearer(ChimeBearerT&& value) { SetChimeBearer(std::forward<ChimeBearerT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_channelArn;
@@ -171,9 +65,6 @@ namespace Model
 
     Aws::String m_chimeBearer;
     bool m_chimeBearerHasBeenSet = false;
-
-    Aws::String m_subChannelId;
-    bool m_subChannelIdHasBeenSet = false;
   };
 
 } // namespace Model

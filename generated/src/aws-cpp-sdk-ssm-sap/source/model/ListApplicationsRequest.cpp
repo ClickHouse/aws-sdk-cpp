@@ -12,13 +12,6 @@ using namespace Aws::SsmSap::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListApplicationsRequest::ListApplicationsRequest() : 
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String ListApplicationsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -32,6 +25,17 @@ Aws::String ListApplicationsRequest::SerializePayload() const
   if(m_maxResultsHasBeenSet)
   {
    payload.WithInteger("MaxResults", m_maxResults);
+
+  }
+
+  if(m_filtersHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> filtersJsonList(m_filters.size());
+   for(unsigned filtersIndex = 0; filtersIndex < filtersJsonList.GetLength(); ++filtersIndex)
+   {
+     filtersJsonList[filtersIndex].AsObject(m_filters[filtersIndex].Jsonize());
+   }
+   payload.WithArray("Filters", std::move(filtersJsonList));
 
   }
 

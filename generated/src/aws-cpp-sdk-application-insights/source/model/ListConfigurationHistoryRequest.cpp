@@ -12,18 +12,6 @@ using namespace Aws::ApplicationInsights::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListConfigurationHistoryRequest::ListConfigurationHistoryRequest() : 
-    m_resourceGroupNameHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_eventStatus(ConfigurationEventStatus::NOT_SET),
-    m_eventStatusHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListConfigurationHistoryRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -58,6 +46,12 @@ Aws::String ListConfigurationHistoryRequest::SerializePayload() const
   if(m_nextTokenHasBeenSet)
   {
    payload.WithString("NextToken", m_nextToken);
+
+  }
+
+  if(m_accountIdHasBeenSet)
+  {
+   payload.WithString("AccountId", m_accountId);
 
   }
 

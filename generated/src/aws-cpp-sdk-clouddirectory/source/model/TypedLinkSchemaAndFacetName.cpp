@@ -18,15 +18,7 @@ namespace CloudDirectory
 namespace Model
 {
 
-TypedLinkSchemaAndFacetName::TypedLinkSchemaAndFacetName() : 
-    m_schemaArnHasBeenSet(false),
-    m_typedLinkNameHasBeenSet(false)
-{
-}
-
-TypedLinkSchemaAndFacetName::TypedLinkSchemaAndFacetName(JsonView jsonValue) : 
-    m_schemaArnHasBeenSet(false),
-    m_typedLinkNameHasBeenSet(false)
+TypedLinkSchemaAndFacetName::TypedLinkSchemaAndFacetName(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TypedLinkSchemaAndFacetName& TypedLinkSchemaAndFacetName::operator =(JsonView js
   if(jsonValue.ValueExists("SchemaArn"))
   {
     m_schemaArn = jsonValue.GetString("SchemaArn");
-
     m_schemaArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TypedLinkName"))
   {
     m_typedLinkName = jsonValue.GetString("TypedLinkName");
-
     m_typedLinkNameHasBeenSet = true;
   }
-
   return *this;
 }
 

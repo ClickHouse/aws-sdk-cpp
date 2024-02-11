@@ -18,15 +18,7 @@ namespace GroundStation
 namespace Model
 {
 
-TrackingConfig::TrackingConfig() : 
-    m_autotrack(Criticality::NOT_SET),
-    m_autotrackHasBeenSet(false)
-{
-}
-
-TrackingConfig::TrackingConfig(JsonView jsonValue) : 
-    m_autotrack(Criticality::NOT_SET),
-    m_autotrackHasBeenSet(false)
+TrackingConfig::TrackingConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ TrackingConfig& TrackingConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("autotrack"))
   {
     m_autotrack = CriticalityMapper::GetCriticalityForName(jsonValue.GetString("autotrack"));
-
     m_autotrackHasBeenSet = true;
   }
-
   return *this;
 }
 

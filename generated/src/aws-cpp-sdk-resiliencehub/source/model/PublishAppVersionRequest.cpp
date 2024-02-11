@@ -12,11 +12,6 @@ using namespace Aws::ResilienceHub::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PublishAppVersionRequest::PublishAppVersionRequest() : 
-    m_appArnHasBeenSet(false)
-{
-}
-
 Aws::String PublishAppVersionRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -24,6 +19,12 @@ Aws::String PublishAppVersionRequest::SerializePayload() const
   if(m_appArnHasBeenSet)
   {
    payload.WithString("appArn", m_appArn);
+
+  }
+
+  if(m_versionNameHasBeenSet)
+  {
+   payload.WithString("versionName", m_versionName);
 
   }
 

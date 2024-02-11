@@ -20,39 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-S3ObjectMetadata::S3ObjectMetadata() : 
-    m_cacheControlHasBeenSet(false),
-    m_contentDispositionHasBeenSet(false),
-    m_contentEncodingHasBeenSet(false),
-    m_contentLanguageHasBeenSet(false),
-    m_userMetadataHasBeenSet(false),
-    m_contentLength(0),
-    m_contentLengthHasBeenSet(false),
-    m_contentMD5HasBeenSet(false),
-    m_contentTypeHasBeenSet(false),
-    m_httpExpiresDateHasBeenSet(false),
-    m_requesterCharged(false),
-    m_requesterChargedHasBeenSet(false),
-    m_sSEAlgorithm(S3SSEAlgorithm::NOT_SET),
-    m_sSEAlgorithmHasBeenSet(false)
-{
-}
-
-S3ObjectMetadata::S3ObjectMetadata(const XmlNode& xmlNode) : 
-    m_cacheControlHasBeenSet(false),
-    m_contentDispositionHasBeenSet(false),
-    m_contentEncodingHasBeenSet(false),
-    m_contentLanguageHasBeenSet(false),
-    m_userMetadataHasBeenSet(false),
-    m_contentLength(0),
-    m_contentLengthHasBeenSet(false),
-    m_contentMD5HasBeenSet(false),
-    m_contentTypeHasBeenSet(false),
-    m_httpExpiresDateHasBeenSet(false),
-    m_requesterCharged(false),
-    m_requesterChargedHasBeenSet(false),
-    m_sSEAlgorithm(S3SSEAlgorithm::NOT_SET),
-    m_sSEAlgorithmHasBeenSet(false)
+S3ObjectMetadata::S3ObjectMetadata(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -92,6 +60,7 @@ S3ObjectMetadata& S3ObjectMetadata::operator =(const XmlNode& xmlNode)
     if(!userMetadataNode.IsNull())
     {
       XmlNode userMetadataEntry = userMetadataNode.FirstChild("entry");
+      m_userMetadataHasBeenSet = !userMetadataEntry.IsNull();
       while(!userMetadataEntry.IsNull())
       {
         XmlNode keyNode = userMetadataEntry.FirstChild("key");
@@ -136,7 +105,7 @@ S3ObjectMetadata& S3ObjectMetadata::operator =(const XmlNode& xmlNode)
     XmlNode sSEAlgorithmNode = resultNode.FirstChild("SSEAlgorithm");
     if(!sSEAlgorithmNode.IsNull())
     {
-      m_sSEAlgorithm = S3SSEAlgorithmMapper::GetS3SSEAlgorithmForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(sSEAlgorithmNode.GetText()).c_str()).c_str());
+      m_sSEAlgorithm = S3SSEAlgorithmMapper::GetS3SSEAlgorithmForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(sSEAlgorithmNode.GetText()).c_str()));
       m_sSEAlgorithmHasBeenSet = true;
     }
   }
@@ -173,6 +142,15 @@ void S3ObjectMetadata::AddToNode(XmlNode& parentNode) const
 
   if(m_userMetadataHasBeenSet)
   {
+   XmlNode userMetadataParentNode = parentNode.CreateChildElement("UserMetadata");
+   for(const auto& mapItem : m_userMetadata)
+   {
+     XmlNode userMetadataMapEntryNode = userMetadataParentNode.CreateChildElement("entry");
+     XmlNode userMetadataKeyNode = userMetadataMapEntryNode.CreateChildElement("key");
+     userMetadataKeyNode.SetText(mapItem.first);
+     XmlNode userMetadataValueNode = userMetadataMapEntryNode.CreateChildElement("value");
+     userMetadataValueNode.SetText(mapItem.second);
+   }
   }
 
   if(m_contentLengthHasBeenSet)

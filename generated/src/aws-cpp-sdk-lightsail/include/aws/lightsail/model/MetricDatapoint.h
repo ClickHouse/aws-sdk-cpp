@@ -32,199 +32,104 @@ namespace Model
   class MetricDatapoint
   {
   public:
-    AWS_LIGHTSAIL_API MetricDatapoint();
+    AWS_LIGHTSAIL_API MetricDatapoint() = default;
     AWS_LIGHTSAIL_API MetricDatapoint(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API MetricDatapoint& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The average.</p>
      */
-    inline double GetAverage() const{ return m_average; }
-
-    /**
-     * <p>The average.</p>
-     */
+    inline double GetAverage() const { return m_average; }
     inline bool AverageHasBeenSet() const { return m_averageHasBeenSet; }
-
-    /**
-     * <p>The average.</p>
-     */
     inline void SetAverage(double value) { m_averageHasBeenSet = true; m_average = value; }
-
-    /**
-     * <p>The average.</p>
-     */
     inline MetricDatapoint& WithAverage(double value) { SetAverage(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The maximum.</p>
      */
-    inline double GetMaximum() const{ return m_maximum; }
-
-    /**
-     * <p>The maximum.</p>
-     */
+    inline double GetMaximum() const { return m_maximum; }
     inline bool MaximumHasBeenSet() const { return m_maximumHasBeenSet; }
-
-    /**
-     * <p>The maximum.</p>
-     */
     inline void SetMaximum(double value) { m_maximumHasBeenSet = true; m_maximum = value; }
-
-    /**
-     * <p>The maximum.</p>
-     */
     inline MetricDatapoint& WithMaximum(double value) { SetMaximum(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The minimum.</p>
      */
-    inline double GetMinimum() const{ return m_minimum; }
-
-    /**
-     * <p>The minimum.</p>
-     */
+    inline double GetMinimum() const { return m_minimum; }
     inline bool MinimumHasBeenSet() const { return m_minimumHasBeenSet; }
-
-    /**
-     * <p>The minimum.</p>
-     */
     inline void SetMinimum(double value) { m_minimumHasBeenSet = true; m_minimum = value; }
-
-    /**
-     * <p>The minimum.</p>
-     */
     inline MetricDatapoint& WithMinimum(double value) { SetMinimum(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The sample count.</p>
      */
-    inline double GetSampleCount() const{ return m_sampleCount; }
-
-    /**
-     * <p>The sample count.</p>
-     */
+    inline double GetSampleCount() const { return m_sampleCount; }
     inline bool SampleCountHasBeenSet() const { return m_sampleCountHasBeenSet; }
-
-    /**
-     * <p>The sample count.</p>
-     */
     inline void SetSampleCount(double value) { m_sampleCountHasBeenSet = true; m_sampleCount = value; }
-
-    /**
-     * <p>The sample count.</p>
-     */
     inline MetricDatapoint& WithSampleCount(double value) { SetSampleCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The sum.</p>
      */
-    inline double GetSum() const{ return m_sum; }
-
-    /**
-     * <p>The sum.</p>
-     */
+    inline double GetSum() const { return m_sum; }
     inline bool SumHasBeenSet() const { return m_sumHasBeenSet; }
-
-    /**
-     * <p>The sum.</p>
-     */
     inline void SetSum(double value) { m_sumHasBeenSet = true; m_sum = value; }
-
-    /**
-     * <p>The sum.</p>
-     */
     inline MetricDatapoint& WithSum(double value) { SetSum(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>The timestamp (e.g., <code>1479816991.349</code>).</p>
+     * <p>The timestamp (<code>1479816991.349</code>).</p>
      */
-    inline const Aws::Utils::DateTime& GetTimestamp() const{ return m_timestamp; }
-
-    /**
-     * <p>The timestamp (e.g., <code>1479816991.349</code>).</p>
-     */
+    inline const Aws::Utils::DateTime& GetTimestamp() const { return m_timestamp; }
     inline bool TimestampHasBeenSet() const { return m_timestampHasBeenSet; }
+    template<typename TimestampT = Aws::Utils::DateTime>
+    void SetTimestamp(TimestampT&& value) { m_timestampHasBeenSet = true; m_timestamp = std::forward<TimestampT>(value); }
+    template<typename TimestampT = Aws::Utils::DateTime>
+    MetricDatapoint& WithTimestamp(TimestampT&& value) { SetTimestamp(std::forward<TimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp (e.g., <code>1479816991.349</code>).</p>
-     */
-    inline void SetTimestamp(const Aws::Utils::DateTime& value) { m_timestampHasBeenSet = true; m_timestamp = value; }
-
-    /**
-     * <p>The timestamp (e.g., <code>1479816991.349</code>).</p>
-     */
-    inline void SetTimestamp(Aws::Utils::DateTime&& value) { m_timestampHasBeenSet = true; m_timestamp = std::move(value); }
-
-    /**
-     * <p>The timestamp (e.g., <code>1479816991.349</code>).</p>
-     */
-    inline MetricDatapoint& WithTimestamp(const Aws::Utils::DateTime& value) { SetTimestamp(value); return *this;}
-
-    /**
-     * <p>The timestamp (e.g., <code>1479816991.349</code>).</p>
-     */
-    inline MetricDatapoint& WithTimestamp(Aws::Utils::DateTime&& value) { SetTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The unit. </p>
      */
-    inline const MetricUnit& GetUnit() const{ return m_unit; }
-
-    /**
-     * <p>The unit. </p>
-     */
+    inline MetricUnit GetUnit() const { return m_unit; }
     inline bool UnitHasBeenSet() const { return m_unitHasBeenSet; }
-
-    /**
-     * <p>The unit. </p>
-     */
-    inline void SetUnit(const MetricUnit& value) { m_unitHasBeenSet = true; m_unit = value; }
-
-    /**
-     * <p>The unit. </p>
-     */
-    inline void SetUnit(MetricUnit&& value) { m_unitHasBeenSet = true; m_unit = std::move(value); }
-
-    /**
-     * <p>The unit. </p>
-     */
-    inline MetricDatapoint& WithUnit(const MetricUnit& value) { SetUnit(value); return *this;}
-
-    /**
-     * <p>The unit. </p>
-     */
-    inline MetricDatapoint& WithUnit(MetricUnit&& value) { SetUnit(std::move(value)); return *this;}
-
+    inline void SetUnit(MetricUnit value) { m_unitHasBeenSet = true; m_unit = value; }
+    inline MetricDatapoint& WithUnit(MetricUnit value) { SetUnit(value); return *this;}
+    ///@}
   private:
 
-    double m_average;
+    double m_average{0.0};
     bool m_averageHasBeenSet = false;
 
-    double m_maximum;
+    double m_maximum{0.0};
     bool m_maximumHasBeenSet = false;
 
-    double m_minimum;
+    double m_minimum{0.0};
     bool m_minimumHasBeenSet = false;
 
-    double m_sampleCount;
+    double m_sampleCount{0.0};
     bool m_sampleCountHasBeenSet = false;
 
-    double m_sum;
+    double m_sum{0.0};
     bool m_sumHasBeenSet = false;
 
-    Aws::Utils::DateTime m_timestamp;
+    Aws::Utils::DateTime m_timestamp{};
     bool m_timestampHasBeenSet = false;
 
-    MetricUnit m_unit;
+    MetricUnit m_unit{MetricUnit::NOT_SET};
     bool m_unitHasBeenSet = false;
   };
 

@@ -32,168 +32,66 @@ namespace Model
   class HlsCaptionLanguageMapping
   {
   public:
-    AWS_MEDIACONVERT_API HlsCaptionLanguageMapping();
+    AWS_MEDIACONVERT_API HlsCaptionLanguageMapping() = default;
     AWS_MEDIACONVERT_API HlsCaptionLanguageMapping(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API HlsCaptionLanguageMapping& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Caption channel.
      */
-    inline int GetCaptionChannel() const{ return m_captionChannel; }
-
-    /**
-     * Caption channel.
-     */
+    inline int GetCaptionChannel() const { return m_captionChannel; }
     inline bool CaptionChannelHasBeenSet() const { return m_captionChannelHasBeenSet; }
-
-    /**
-     * Caption channel.
-     */
     inline void SetCaptionChannel(int value) { m_captionChannelHasBeenSet = true; m_captionChannel = value; }
-
-    /**
-     * Caption channel.
-     */
     inline HlsCaptionLanguageMapping& WithCaptionChannel(int value) { SetCaptionChannel(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * Specify the language for this captions channel, using the ISO 639-2 or ISO 639-3
      * three-letter language code
      */
-    inline const Aws::String& GetCustomLanguageCode() const{ return m_customLanguageCode; }
-
-    /**
-     * Specify the language for this captions channel, using the ISO 639-2 or ISO 639-3
-     * three-letter language code
-     */
+    inline const Aws::String& GetCustomLanguageCode() const { return m_customLanguageCode; }
     inline bool CustomLanguageCodeHasBeenSet() const { return m_customLanguageCodeHasBeenSet; }
+    template<typename CustomLanguageCodeT = Aws::String>
+    void SetCustomLanguageCode(CustomLanguageCodeT&& value) { m_customLanguageCodeHasBeenSet = true; m_customLanguageCode = std::forward<CustomLanguageCodeT>(value); }
+    template<typename CustomLanguageCodeT = Aws::String>
+    HlsCaptionLanguageMapping& WithCustomLanguageCode(CustomLanguageCodeT&& value) { SetCustomLanguageCode(std::forward<CustomLanguageCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Specify the language for this captions channel, using the ISO 639-2 or ISO 639-3
-     * three-letter language code
-     */
-    inline void SetCustomLanguageCode(const Aws::String& value) { m_customLanguageCodeHasBeenSet = true; m_customLanguageCode = value; }
-
-    /**
-     * Specify the language for this captions channel, using the ISO 639-2 or ISO 639-3
-     * three-letter language code
-     */
-    inline void SetCustomLanguageCode(Aws::String&& value) { m_customLanguageCodeHasBeenSet = true; m_customLanguageCode = std::move(value); }
-
-    /**
-     * Specify the language for this captions channel, using the ISO 639-2 or ISO 639-3
-     * three-letter language code
-     */
-    inline void SetCustomLanguageCode(const char* value) { m_customLanguageCodeHasBeenSet = true; m_customLanguageCode.assign(value); }
-
-    /**
-     * Specify the language for this captions channel, using the ISO 639-2 or ISO 639-3
-     * three-letter language code
-     */
-    inline HlsCaptionLanguageMapping& WithCustomLanguageCode(const Aws::String& value) { SetCustomLanguageCode(value); return *this;}
-
-    /**
-     * Specify the language for this captions channel, using the ISO 639-2 or ISO 639-3
-     * three-letter language code
-     */
-    inline HlsCaptionLanguageMapping& WithCustomLanguageCode(Aws::String&& value) { SetCustomLanguageCode(std::move(value)); return *this;}
-
-    /**
-     * Specify the language for this captions channel, using the ISO 639-2 or ISO 639-3
-     * three-letter language code
-     */
-    inline HlsCaptionLanguageMapping& WithCustomLanguageCode(const char* value) { SetCustomLanguageCode(value); return *this;}
-
-
+    ///@{
     /**
      * Specify the language, using the ISO 639-2 three-letter code listed at
      * https://www.loc.gov/standards/iso639-2/php/code_list.php.
      */
-    inline const LanguageCode& GetLanguageCode() const{ return m_languageCode; }
-
-    /**
-     * Specify the language, using the ISO 639-2 three-letter code listed at
-     * https://www.loc.gov/standards/iso639-2/php/code_list.php.
-     */
+    inline LanguageCode GetLanguageCode() const { return m_languageCode; }
     inline bool LanguageCodeHasBeenSet() const { return m_languageCodeHasBeenSet; }
+    inline void SetLanguageCode(LanguageCode value) { m_languageCodeHasBeenSet = true; m_languageCode = value; }
+    inline HlsCaptionLanguageMapping& WithLanguageCode(LanguageCode value) { SetLanguageCode(value); return *this;}
+    ///@}
 
-    /**
-     * Specify the language, using the ISO 639-2 three-letter code listed at
-     * https://www.loc.gov/standards/iso639-2/php/code_list.php.
-     */
-    inline void SetLanguageCode(const LanguageCode& value) { m_languageCodeHasBeenSet = true; m_languageCode = value; }
-
-    /**
-     * Specify the language, using the ISO 639-2 three-letter code listed at
-     * https://www.loc.gov/standards/iso639-2/php/code_list.php.
-     */
-    inline void SetLanguageCode(LanguageCode&& value) { m_languageCodeHasBeenSet = true; m_languageCode = std::move(value); }
-
-    /**
-     * Specify the language, using the ISO 639-2 three-letter code listed at
-     * https://www.loc.gov/standards/iso639-2/php/code_list.php.
-     */
-    inline HlsCaptionLanguageMapping& WithLanguageCode(const LanguageCode& value) { SetLanguageCode(value); return *this;}
-
-    /**
-     * Specify the language, using the ISO 639-2 three-letter code listed at
-     * https://www.loc.gov/standards/iso639-2/php/code_list.php.
-     */
-    inline HlsCaptionLanguageMapping& WithLanguageCode(LanguageCode&& value) { SetLanguageCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Caption language description.
      */
-    inline const Aws::String& GetLanguageDescription() const{ return m_languageDescription; }
-
-    /**
-     * Caption language description.
-     */
+    inline const Aws::String& GetLanguageDescription() const { return m_languageDescription; }
     inline bool LanguageDescriptionHasBeenSet() const { return m_languageDescriptionHasBeenSet; }
-
-    /**
-     * Caption language description.
-     */
-    inline void SetLanguageDescription(const Aws::String& value) { m_languageDescriptionHasBeenSet = true; m_languageDescription = value; }
-
-    /**
-     * Caption language description.
-     */
-    inline void SetLanguageDescription(Aws::String&& value) { m_languageDescriptionHasBeenSet = true; m_languageDescription = std::move(value); }
-
-    /**
-     * Caption language description.
-     */
-    inline void SetLanguageDescription(const char* value) { m_languageDescriptionHasBeenSet = true; m_languageDescription.assign(value); }
-
-    /**
-     * Caption language description.
-     */
-    inline HlsCaptionLanguageMapping& WithLanguageDescription(const Aws::String& value) { SetLanguageDescription(value); return *this;}
-
-    /**
-     * Caption language description.
-     */
-    inline HlsCaptionLanguageMapping& WithLanguageDescription(Aws::String&& value) { SetLanguageDescription(std::move(value)); return *this;}
-
-    /**
-     * Caption language description.
-     */
-    inline HlsCaptionLanguageMapping& WithLanguageDescription(const char* value) { SetLanguageDescription(value); return *this;}
-
+    template<typename LanguageDescriptionT = Aws::String>
+    void SetLanguageDescription(LanguageDescriptionT&& value) { m_languageDescriptionHasBeenSet = true; m_languageDescription = std::forward<LanguageDescriptionT>(value); }
+    template<typename LanguageDescriptionT = Aws::String>
+    HlsCaptionLanguageMapping& WithLanguageDescription(LanguageDescriptionT&& value) { SetLanguageDescription(std::forward<LanguageDescriptionT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_captionChannel;
+    int m_captionChannel{0};
     bool m_captionChannelHasBeenSet = false;
 
     Aws::String m_customLanguageCode;
     bool m_customLanguageCodeHasBeenSet = false;
 
-    LanguageCode m_languageCode;
+    LanguageCode m_languageCode{LanguageCode::NOT_SET};
     bool m_languageCodeHasBeenSet = false;
 
     Aws::String m_languageDescription;

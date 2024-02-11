@@ -35,67 +35,39 @@ namespace Model
   class DescribeStackResourcesResult
   {
   public:
-    AWS_CLOUDFORMATION_API DescribeStackResourcesResult();
+    AWS_CLOUDFORMATION_API DescribeStackResourcesResult() = default;
     AWS_CLOUDFORMATION_API DescribeStackResourcesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_CLOUDFORMATION_API DescribeStackResourcesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>A list of <code>StackResource</code> structures.</p>
      */
-    inline const Aws::Vector<StackResource>& GetStackResources() const{ return m_stackResources; }
+    inline const Aws::Vector<StackResource>& GetStackResources() const { return m_stackResources; }
+    template<typename StackResourcesT = Aws::Vector<StackResource>>
+    void SetStackResources(StackResourcesT&& value) { m_stackResourcesHasBeenSet = true; m_stackResources = std::forward<StackResourcesT>(value); }
+    template<typename StackResourcesT = Aws::Vector<StackResource>>
+    DescribeStackResourcesResult& WithStackResources(StackResourcesT&& value) { SetStackResources(std::forward<StackResourcesT>(value)); return *this;}
+    template<typename StackResourcesT = StackResource>
+    DescribeStackResourcesResult& AddStackResources(StackResourcesT&& value) { m_stackResourcesHasBeenSet = true; m_stackResources.emplace_back(std::forward<StackResourcesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of <code>StackResource</code> structures.</p>
-     */
-    inline void SetStackResources(const Aws::Vector<StackResource>& value) { m_stackResources = value; }
-
-    /**
-     * <p>A list of <code>StackResource</code> structures.</p>
-     */
-    inline void SetStackResources(Aws::Vector<StackResource>&& value) { m_stackResources = std::move(value); }
-
-    /**
-     * <p>A list of <code>StackResource</code> structures.</p>
-     */
-    inline DescribeStackResourcesResult& WithStackResources(const Aws::Vector<StackResource>& value) { SetStackResources(value); return *this;}
-
-    /**
-     * <p>A list of <code>StackResource</code> structures.</p>
-     */
-    inline DescribeStackResourcesResult& WithStackResources(Aws::Vector<StackResource>&& value) { SetStackResources(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <code>StackResource</code> structures.</p>
-     */
-    inline DescribeStackResourcesResult& AddStackResources(const StackResource& value) { m_stackResources.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <code>StackResource</code> structures.</p>
-     */
-    inline DescribeStackResourcesResult& AddStackResources(StackResource&& value) { m_stackResources.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline DescribeStackResourcesResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline DescribeStackResourcesResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    DescribeStackResourcesResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<StackResource> m_stackResources;
+    bool m_stackResourcesHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

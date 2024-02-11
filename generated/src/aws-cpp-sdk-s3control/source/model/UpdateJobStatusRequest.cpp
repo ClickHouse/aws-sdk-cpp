@@ -6,6 +6,7 @@
 #include <aws/s3control/model/UpdateJobStatusRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,14 +17,6 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-UpdateJobStatusRequest::UpdateJobStatusRequest() : 
-    m_accountIdHasBeenSet(false),
-    m_jobIdHasBeenSet(false),
-    m_requestedJobStatus(RequestedJobStatus::NOT_SET),
-    m_requestedJobStatusHasBeenSet(false),
-    m_statusUpdateReasonHasBeenSet(false)
-{
-}
 
 Aws::String UpdateJobStatusRequest::SerializePayload() const
 {

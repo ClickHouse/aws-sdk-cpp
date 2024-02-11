@@ -18,50 +18,55 @@ namespace Omics
 namespace Model
 {
 
-SequenceStoreFilter::SequenceStoreFilter() : 
-    m_createdAfterHasBeenSet(false),
-    m_createdBeforeHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-SequenceStoreFilter::SequenceStoreFilter(JsonView jsonValue) : 
-    m_createdAfterHasBeenSet(false),
-    m_createdBeforeHasBeenSet(false),
-    m_nameHasBeenSet(false)
+SequenceStoreFilter::SequenceStoreFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 SequenceStoreFilter& SequenceStoreFilter::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("createdAfter"))
-  {
-    m_createdAfter = jsonValue.GetString("createdAfter");
-
-    m_createdAfterHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("createdBefore"))
-  {
-    m_createdBefore = jsonValue.GetString("createdBefore");
-
-    m_createdBeforeHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("createdAfter"))
+  {
+    m_createdAfter = jsonValue.GetString("createdAfter");
+    m_createdAfterHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("createdBefore"))
+  {
+    m_createdBefore = jsonValue.GetString("createdBefore");
+    m_createdBeforeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("status"))
+  {
+    m_status = SequenceStoreStatusMapper::GetSequenceStoreStatusForName(jsonValue.GetString("status"));
+    m_statusHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("updatedAfter"))
+  {
+    m_updatedAfter = jsonValue.GetString("updatedAfter");
+    m_updatedAfterHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("updatedBefore"))
+  {
+    m_updatedBefore = jsonValue.GetString("updatedBefore");
+    m_updatedBeforeHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue SequenceStoreFilter::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_nameHasBeenSet)
+  {
+   payload.WithString("name", m_name);
+
+  }
 
   if(m_createdAfterHasBeenSet)
   {
@@ -73,10 +78,19 @@ JsonValue SequenceStoreFilter::Jsonize() const
    payload.WithString("createdBefore", m_createdBefore.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
   }
 
-  if(m_nameHasBeenSet)
+  if(m_statusHasBeenSet)
   {
-   payload.WithString("name", m_name);
+   payload.WithString("status", SequenceStoreStatusMapper::GetNameForSequenceStoreStatus(m_status));
+  }
 
+  if(m_updatedAfterHasBeenSet)
+  {
+   payload.WithString("updatedAfter", m_updatedAfter.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
+  }
+
+  if(m_updatedBeforeHasBeenSet)
+  {
+   payload.WithString("updatedBefore", m_updatedBefore.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
   }
 
   return payload;

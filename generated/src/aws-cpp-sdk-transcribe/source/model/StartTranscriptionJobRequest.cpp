@@ -12,34 +12,6 @@ using namespace Aws::TranscribeService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartTranscriptionJobRequest::StartTranscriptionJobRequest() : 
-    m_transcriptionJobNameHasBeenSet(false),
-    m_languageCode(LanguageCode::NOT_SET),
-    m_languageCodeHasBeenSet(false),
-    m_mediaSampleRateHertz(0),
-    m_mediaSampleRateHertzHasBeenSet(false),
-    m_mediaFormat(MediaFormat::NOT_SET),
-    m_mediaFormatHasBeenSet(false),
-    m_mediaHasBeenSet(false),
-    m_outputBucketNameHasBeenSet(false),
-    m_outputKeyHasBeenSet(false),
-    m_outputEncryptionKMSKeyIdHasBeenSet(false),
-    m_kMSEncryptionContextHasBeenSet(false),
-    m_settingsHasBeenSet(false),
-    m_modelSettingsHasBeenSet(false),
-    m_jobExecutionSettingsHasBeenSet(false),
-    m_contentRedactionHasBeenSet(false),
-    m_identifyLanguage(false),
-    m_identifyLanguageHasBeenSet(false),
-    m_identifyMultipleLanguages(false),
-    m_identifyMultipleLanguagesHasBeenSet(false),
-    m_languageOptionsHasBeenSet(false),
-    m_subtitlesHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_languageIdSettingsHasBeenSet(false)
-{
-}
-
 Aws::String StartTranscriptionJobRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -173,6 +145,17 @@ Aws::String StartTranscriptionJobRequest::SerializePayload() const
      languageIdSettingsJsonMap.WithObject(LanguageCodeMapper::GetNameForLanguageCode(languageIdSettingsItem.first), languageIdSettingsItem.second.Jsonize());
    }
    payload.WithObject("LanguageIdSettings", std::move(languageIdSettingsJsonMap));
+
+  }
+
+  if(m_toxicityDetectionHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> toxicityDetectionJsonList(m_toxicityDetection.size());
+   for(unsigned toxicityDetectionIndex = 0; toxicityDetectionIndex < toxicityDetectionJsonList.GetLength(); ++toxicityDetectionIndex)
+   {
+     toxicityDetectionJsonList[toxicityDetectionIndex].AsObject(m_toxicityDetection[toxicityDetectionIndex].Jsonize());
+   }
+   payload.WithArray("ToxicityDetection", std::move(toxicityDetectionJsonList));
 
   }
 

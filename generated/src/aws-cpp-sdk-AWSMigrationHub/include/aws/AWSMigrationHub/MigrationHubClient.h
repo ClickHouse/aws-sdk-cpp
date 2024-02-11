@@ -27,22 +27,25 @@ namespace MigrationHub
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef MigrationHubClientConfiguration ClientConfigurationType;
+      typedef MigrationHubEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         MigrationHubClient(const Aws::MigrationHub::MigrationHubClientConfiguration& clientConfiguration = Aws::MigrationHub::MigrationHubClientConfiguration(),
-                           std::shared_ptr<MigrationHubEndpointProviderBase> endpointProvider = Aws::MakeShared<MigrationHubEndpointProvider>(ALLOCATION_TAG));
+                           std::shared_ptr<MigrationHubEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         MigrationHubClient(const Aws::Auth::AWSCredentials& credentials,
-                           std::shared_ptr<MigrationHubEndpointProviderBase> endpointProvider = Aws::MakeShared<MigrationHubEndpointProvider>(ALLOCATION_TAG),
+                           std::shared_ptr<MigrationHubEndpointProviderBase> endpointProvider = nullptr,
                            const Aws::MigrationHub::MigrationHubClientConfiguration& clientConfiguration = Aws::MigrationHub::MigrationHubClientConfiguration());
 
        /**
@@ -50,7 +53,7 @@ namespace MigrationHub
         * the default http client factory will be used
         */
         MigrationHubClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                           std::shared_ptr<MigrationHubEndpointProviderBase> endpointProvider = Aws::MakeShared<MigrationHubEndpointProvider>(ALLOCATION_TAG),
+                           std::shared_ptr<MigrationHubEndpointProviderBase> endpointProvider = nullptr,
                            const Aws::MigrationHub::MigrationHubClientConfiguration& clientConfiguration = Aws::MigrationHub::MigrationHubClientConfiguration());
 
 
@@ -136,6 +139,33 @@ namespace MigrationHub
         void AssociateDiscoveredResourceAsync(const AssociateDiscoveredResourceRequestT& request, const AssociateDiscoveredResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&MigrationHubClient::AssociateDiscoveredResource, request, handler, context);
+        }
+
+        /**
+         * <p>Associates a source resource with a migration task. For example, the source
+         * resource can be a source server, an application, or a migration
+         * wave.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/AssociateSourceResource">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::AssociateSourceResourceOutcome AssociateSourceResource(const Model::AssociateSourceResourceRequest& request) const;
+
+        /**
+         * A Callable wrapper for AssociateSourceResource that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename AssociateSourceResourceRequestT = Model::AssociateSourceResourceRequest>
+        Model::AssociateSourceResourceOutcomeCallable AssociateSourceResourceCallable(const AssociateSourceResourceRequestT& request) const
+        {
+            return SubmitCallable(&MigrationHubClient::AssociateSourceResource, request);
+        }
+
+        /**
+         * An Async wrapper for AssociateSourceResource that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename AssociateSourceResourceRequestT = Model::AssociateSourceResourceRequest>
+        void AssociateSourceResourceAsync(const AssociateSourceResourceRequestT& request, const AssociateSourceResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&MigrationHubClient::AssociateSourceResource, request, handler, context);
         }
 
         /**
@@ -322,6 +352,32 @@ namespace MigrationHub
         }
 
         /**
+         * <p>Removes the association between a source resource and a migration
+         * task.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/DisassociateSourceResource">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DisassociateSourceResourceOutcome DisassociateSourceResource(const Model::DisassociateSourceResourceRequest& request) const;
+
+        /**
+         * A Callable wrapper for DisassociateSourceResource that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DisassociateSourceResourceRequestT = Model::DisassociateSourceResourceRequest>
+        Model::DisassociateSourceResourceOutcomeCallable DisassociateSourceResourceCallable(const DisassociateSourceResourceRequestT& request) const
+        {
+            return SubmitCallable(&MigrationHubClient::DisassociateSourceResource, request);
+        }
+
+        /**
+         * An Async wrapper for DisassociateSourceResource that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DisassociateSourceResourceRequestT = Model::DisassociateSourceResourceRequest>
+        void DisassociateSourceResourceAsync(const DisassociateSourceResourceRequestT& request, const DisassociateSourceResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&MigrationHubClient::DisassociateSourceResource, request, handler, context);
+        }
+
+        /**
          * <p>Registers a new migration task which represents a server, database, etc.,
          * being migrated to AWS by a migration tool.</p> <p>This API is a prerequisite to
          * calling the <code>NotifyMigrationTaskState</code> API as the migration tool must
@@ -357,13 +413,13 @@ namespace MigrationHub
          * href="http://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/ListApplicationStates">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListApplicationStatesOutcome ListApplicationStates(const Model::ListApplicationStatesRequest& request) const;
+        virtual Model::ListApplicationStatesOutcome ListApplicationStates(const Model::ListApplicationStatesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListApplicationStates that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListApplicationStatesRequestT = Model::ListApplicationStatesRequest>
-        Model::ListApplicationStatesOutcomeCallable ListApplicationStatesCallable(const ListApplicationStatesRequestT& request) const
+        Model::ListApplicationStatesOutcomeCallable ListApplicationStatesCallable(const ListApplicationStatesRequestT& request = {}) const
         {
             return SubmitCallable(&MigrationHubClient::ListApplicationStates, request);
         }
@@ -372,7 +428,7 @@ namespace MigrationHub
          * An Async wrapper for ListApplicationStates that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListApplicationStatesRequestT = Model::ListApplicationStatesRequest>
-        void ListApplicationStatesAsync(const ListApplicationStatesRequestT& request, const ListApplicationStatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListApplicationStatesAsync(const ListApplicationStatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListApplicationStatesRequestT& request = {}) const
         {
             return SubmitAsync(&MigrationHubClient::ListApplicationStates, request, handler, context);
         }
@@ -434,6 +490,33 @@ namespace MigrationHub
         }
 
         /**
+         * <p>This is a paginated API that returns all the migration-task states for the
+         * specified <code>MigrationTaskName</code> and
+         * <code>ProgressUpdateStream</code>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/ListMigrationTaskUpdates">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListMigrationTaskUpdatesOutcome ListMigrationTaskUpdates(const Model::ListMigrationTaskUpdatesRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListMigrationTaskUpdates that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListMigrationTaskUpdatesRequestT = Model::ListMigrationTaskUpdatesRequest>
+        Model::ListMigrationTaskUpdatesOutcomeCallable ListMigrationTaskUpdatesCallable(const ListMigrationTaskUpdatesRequestT& request) const
+        {
+            return SubmitCallable(&MigrationHubClient::ListMigrationTaskUpdates, request);
+        }
+
+        /**
+         * An Async wrapper for ListMigrationTaskUpdates that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListMigrationTaskUpdatesRequestT = Model::ListMigrationTaskUpdatesRequest>
+        void ListMigrationTaskUpdatesAsync(const ListMigrationTaskUpdatesRequestT& request, const ListMigrationTaskUpdatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&MigrationHubClient::ListMigrationTaskUpdates, request, handler, context);
+        }
+
+        /**
          * <p>Lists all, or filtered by resource name, migration tasks associated with the
          * user account making this call. This API has the following traits:</p> <ul> <li>
          * <p>Can show a summary list of the most recent migration tasks.</p> </li> <li>
@@ -443,13 +526,13 @@ namespace MigrationHub
          * href="http://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/ListMigrationTasks">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListMigrationTasksOutcome ListMigrationTasks(const Model::ListMigrationTasksRequest& request) const;
+        virtual Model::ListMigrationTasksOutcome ListMigrationTasks(const Model::ListMigrationTasksRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListMigrationTasks that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListMigrationTasksRequestT = Model::ListMigrationTasksRequest>
-        Model::ListMigrationTasksOutcomeCallable ListMigrationTasksCallable(const ListMigrationTasksRequestT& request) const
+        Model::ListMigrationTasksOutcomeCallable ListMigrationTasksCallable(const ListMigrationTasksRequestT& request = {}) const
         {
             return SubmitCallable(&MigrationHubClient::ListMigrationTasks, request);
         }
@@ -458,7 +541,7 @@ namespace MigrationHub
          * An Async wrapper for ListMigrationTasks that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListMigrationTasksRequestT = Model::ListMigrationTasksRequest>
-        void ListMigrationTasksAsync(const ListMigrationTasksRequestT& request, const ListMigrationTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListMigrationTasksAsync(const ListMigrationTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListMigrationTasksRequestT& request = {}) const
         {
             return SubmitAsync(&MigrationHubClient::ListMigrationTasks, request, handler, context);
         }
@@ -469,13 +552,13 @@ namespace MigrationHub
          * href="http://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/ListProgressUpdateStreams">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListProgressUpdateStreamsOutcome ListProgressUpdateStreams(const Model::ListProgressUpdateStreamsRequest& request) const;
+        virtual Model::ListProgressUpdateStreamsOutcome ListProgressUpdateStreams(const Model::ListProgressUpdateStreamsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListProgressUpdateStreams that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListProgressUpdateStreamsRequestT = Model::ListProgressUpdateStreamsRequest>
-        Model::ListProgressUpdateStreamsOutcomeCallable ListProgressUpdateStreamsCallable(const ListProgressUpdateStreamsRequestT& request) const
+        Model::ListProgressUpdateStreamsOutcomeCallable ListProgressUpdateStreamsCallable(const ListProgressUpdateStreamsRequestT& request = {}) const
         {
             return SubmitCallable(&MigrationHubClient::ListProgressUpdateStreams, request);
         }
@@ -484,9 +567,36 @@ namespace MigrationHub
          * An Async wrapper for ListProgressUpdateStreams that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListProgressUpdateStreamsRequestT = Model::ListProgressUpdateStreamsRequest>
-        void ListProgressUpdateStreamsAsync(const ListProgressUpdateStreamsRequestT& request, const ListProgressUpdateStreamsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListProgressUpdateStreamsAsync(const ListProgressUpdateStreamsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListProgressUpdateStreamsRequestT& request = {}) const
         {
             return SubmitAsync(&MigrationHubClient::ListProgressUpdateStreams, request, handler, context);
+        }
+
+        /**
+         * <p>Lists all the source resource that are associated with the specified
+         * <code>MigrationTaskName</code> and
+         * <code>ProgressUpdateStream</code>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/ListSourceResources">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListSourceResourcesOutcome ListSourceResources(const Model::ListSourceResourcesRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListSourceResources that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListSourceResourcesRequestT = Model::ListSourceResourcesRequest>
+        Model::ListSourceResourcesOutcomeCallable ListSourceResourcesCallable(const ListSourceResourcesRequestT& request) const
+        {
+            return SubmitCallable(&MigrationHubClient::ListSourceResources, request);
+        }
+
+        /**
+         * An Async wrapper for ListSourceResources that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListSourceResourcesRequestT = Model::ListSourceResourcesRequest>
+        void ListSourceResourcesAsync(const ListSourceResourcesRequestT& request, const ListSourceResourcesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&MigrationHubClient::ListSourceResources, request, handler, context);
         }
 
         /**
@@ -597,7 +707,6 @@ namespace MigrationHub
       void init(const MigrationHubClientConfiguration& clientConfiguration);
 
       MigrationHubClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<MigrationHubEndpointProviderBase> m_endpointProvider;
   };
 

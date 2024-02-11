@@ -33,42 +33,23 @@ namespace Model
   class BatchGetObjectInformation
   {
   public:
-    AWS_CLOUDDIRECTORY_API BatchGetObjectInformation();
+    AWS_CLOUDDIRECTORY_API BatchGetObjectInformation() = default;
     AWS_CLOUDDIRECTORY_API BatchGetObjectInformation(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API BatchGetObjectInformation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A reference to the object.</p>
      */
-    inline const ObjectReference& GetObjectReference() const{ return m_objectReference; }
-
-    /**
-     * <p>A reference to the object.</p>
-     */
+    inline const ObjectReference& GetObjectReference() const { return m_objectReference; }
     inline bool ObjectReferenceHasBeenSet() const { return m_objectReferenceHasBeenSet; }
-
-    /**
-     * <p>A reference to the object.</p>
-     */
-    inline void SetObjectReference(const ObjectReference& value) { m_objectReferenceHasBeenSet = true; m_objectReference = value; }
-
-    /**
-     * <p>A reference to the object.</p>
-     */
-    inline void SetObjectReference(ObjectReference&& value) { m_objectReferenceHasBeenSet = true; m_objectReference = std::move(value); }
-
-    /**
-     * <p>A reference to the object.</p>
-     */
-    inline BatchGetObjectInformation& WithObjectReference(const ObjectReference& value) { SetObjectReference(value); return *this;}
-
-    /**
-     * <p>A reference to the object.</p>
-     */
-    inline BatchGetObjectInformation& WithObjectReference(ObjectReference&& value) { SetObjectReference(std::move(value)); return *this;}
-
+    template<typename ObjectReferenceT = ObjectReference>
+    void SetObjectReference(ObjectReferenceT&& value) { m_objectReferenceHasBeenSet = true; m_objectReference = std::forward<ObjectReferenceT>(value); }
+    template<typename ObjectReferenceT = ObjectReference>
+    BatchGetObjectInformation& WithObjectReference(ObjectReferenceT&& value) { SetObjectReference(std::forward<ObjectReferenceT>(value)); return *this;}
+    ///@}
   private:
 
     ObjectReference m_objectReference;

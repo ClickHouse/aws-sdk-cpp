@@ -8,6 +8,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <aws/core/utils/DateTime.h>
 #include <aws/connect/model/HoursOfOperationConfig.h>
 #include <utility>
 
@@ -34,336 +35,126 @@ namespace Model
   class HoursOfOperation
   {
   public:
-    AWS_CONNECT_API HoursOfOperation();
+    AWS_CONNECT_API HoursOfOperation() = default;
     AWS_CONNECT_API HoursOfOperation(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API HoursOfOperation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier for the hours of operation.</p>
      */
-    inline const Aws::String& GetHoursOfOperationId() const{ return m_hoursOfOperationId; }
-
-    /**
-     * <p>The identifier for the hours of operation.</p>
-     */
+    inline const Aws::String& GetHoursOfOperationId() const { return m_hoursOfOperationId; }
     inline bool HoursOfOperationIdHasBeenSet() const { return m_hoursOfOperationIdHasBeenSet; }
+    template<typename HoursOfOperationIdT = Aws::String>
+    void SetHoursOfOperationId(HoursOfOperationIdT&& value) { m_hoursOfOperationIdHasBeenSet = true; m_hoursOfOperationId = std::forward<HoursOfOperationIdT>(value); }
+    template<typename HoursOfOperationIdT = Aws::String>
+    HoursOfOperation& WithHoursOfOperationId(HoursOfOperationIdT&& value) { SetHoursOfOperationId(std::forward<HoursOfOperationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier for the hours of operation.</p>
-     */
-    inline void SetHoursOfOperationId(const Aws::String& value) { m_hoursOfOperationIdHasBeenSet = true; m_hoursOfOperationId = value; }
-
-    /**
-     * <p>The identifier for the hours of operation.</p>
-     */
-    inline void SetHoursOfOperationId(Aws::String&& value) { m_hoursOfOperationIdHasBeenSet = true; m_hoursOfOperationId = std::move(value); }
-
-    /**
-     * <p>The identifier for the hours of operation.</p>
-     */
-    inline void SetHoursOfOperationId(const char* value) { m_hoursOfOperationIdHasBeenSet = true; m_hoursOfOperationId.assign(value); }
-
-    /**
-     * <p>The identifier for the hours of operation.</p>
-     */
-    inline HoursOfOperation& WithHoursOfOperationId(const Aws::String& value) { SetHoursOfOperationId(value); return *this;}
-
-    /**
-     * <p>The identifier for the hours of operation.</p>
-     */
-    inline HoursOfOperation& WithHoursOfOperationId(Aws::String&& value) { SetHoursOfOperationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the hours of operation.</p>
-     */
-    inline HoursOfOperation& WithHoursOfOperationId(const char* value) { SetHoursOfOperationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) for the hours of operation.</p>
      */
-    inline const Aws::String& GetHoursOfOperationArn() const{ return m_hoursOfOperationArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the hours of operation.</p>
-     */
+    inline const Aws::String& GetHoursOfOperationArn() const { return m_hoursOfOperationArn; }
     inline bool HoursOfOperationArnHasBeenSet() const { return m_hoursOfOperationArnHasBeenSet; }
+    template<typename HoursOfOperationArnT = Aws::String>
+    void SetHoursOfOperationArn(HoursOfOperationArnT&& value) { m_hoursOfOperationArnHasBeenSet = true; m_hoursOfOperationArn = std::forward<HoursOfOperationArnT>(value); }
+    template<typename HoursOfOperationArnT = Aws::String>
+    HoursOfOperation& WithHoursOfOperationArn(HoursOfOperationArnT&& value) { SetHoursOfOperationArn(std::forward<HoursOfOperationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) for the hours of operation.</p>
-     */
-    inline void SetHoursOfOperationArn(const Aws::String& value) { m_hoursOfOperationArnHasBeenSet = true; m_hoursOfOperationArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the hours of operation.</p>
-     */
-    inline void SetHoursOfOperationArn(Aws::String&& value) { m_hoursOfOperationArnHasBeenSet = true; m_hoursOfOperationArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the hours of operation.</p>
-     */
-    inline void SetHoursOfOperationArn(const char* value) { m_hoursOfOperationArnHasBeenSet = true; m_hoursOfOperationArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the hours of operation.</p>
-     */
-    inline HoursOfOperation& WithHoursOfOperationArn(const Aws::String& value) { SetHoursOfOperationArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the hours of operation.</p>
-     */
-    inline HoursOfOperation& WithHoursOfOperationArn(Aws::String&& value) { SetHoursOfOperationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the hours of operation.</p>
-     */
-    inline HoursOfOperation& WithHoursOfOperationArn(const char* value) { SetHoursOfOperationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name for the hours of operation.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name for the hours of operation.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    HoursOfOperation& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name for the hours of operation.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name for the hours of operation.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name for the hours of operation.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name for the hours of operation.</p>
-     */
-    inline HoursOfOperation& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name for the hours of operation.</p>
-     */
-    inline HoursOfOperation& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name for the hours of operation.</p>
-     */
-    inline HoursOfOperation& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description for the hours of operation.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description for the hours of operation.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    HoursOfOperation& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description for the hours of operation.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description for the hours of operation.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description for the hours of operation.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description for the hours of operation.</p>
-     */
-    inline HoursOfOperation& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description for the hours of operation.</p>
-     */
-    inline HoursOfOperation& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description for the hours of operation.</p>
-     */
-    inline HoursOfOperation& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time zone for the hours of operation.</p>
      */
-    inline const Aws::String& GetTimeZone() const{ return m_timeZone; }
-
-    /**
-     * <p>The time zone for the hours of operation.</p>
-     */
+    inline const Aws::String& GetTimeZone() const { return m_timeZone; }
     inline bool TimeZoneHasBeenSet() const { return m_timeZoneHasBeenSet; }
+    template<typename TimeZoneT = Aws::String>
+    void SetTimeZone(TimeZoneT&& value) { m_timeZoneHasBeenSet = true; m_timeZone = std::forward<TimeZoneT>(value); }
+    template<typename TimeZoneT = Aws::String>
+    HoursOfOperation& WithTimeZone(TimeZoneT&& value) { SetTimeZone(std::forward<TimeZoneT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time zone for the hours of operation.</p>
-     */
-    inline void SetTimeZone(const Aws::String& value) { m_timeZoneHasBeenSet = true; m_timeZone = value; }
-
-    /**
-     * <p>The time zone for the hours of operation.</p>
-     */
-    inline void SetTimeZone(Aws::String&& value) { m_timeZoneHasBeenSet = true; m_timeZone = std::move(value); }
-
-    /**
-     * <p>The time zone for the hours of operation.</p>
-     */
-    inline void SetTimeZone(const char* value) { m_timeZoneHasBeenSet = true; m_timeZone.assign(value); }
-
-    /**
-     * <p>The time zone for the hours of operation.</p>
-     */
-    inline HoursOfOperation& WithTimeZone(const Aws::String& value) { SetTimeZone(value); return *this;}
-
-    /**
-     * <p>The time zone for the hours of operation.</p>
-     */
-    inline HoursOfOperation& WithTimeZone(Aws::String&& value) { SetTimeZone(std::move(value)); return *this;}
-
-    /**
-     * <p>The time zone for the hours of operation.</p>
-     */
-    inline HoursOfOperation& WithTimeZone(const char* value) { SetTimeZone(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Configuration information for the hours of operation.</p>
      */
-    inline const Aws::Vector<HoursOfOperationConfig>& GetConfig() const{ return m_config; }
-
-    /**
-     * <p>Configuration information for the hours of operation.</p>
-     */
+    inline const Aws::Vector<HoursOfOperationConfig>& GetConfig() const { return m_config; }
     inline bool ConfigHasBeenSet() const { return m_configHasBeenSet; }
+    template<typename ConfigT = Aws::Vector<HoursOfOperationConfig>>
+    void SetConfig(ConfigT&& value) { m_configHasBeenSet = true; m_config = std::forward<ConfigT>(value); }
+    template<typename ConfigT = Aws::Vector<HoursOfOperationConfig>>
+    HoursOfOperation& WithConfig(ConfigT&& value) { SetConfig(std::forward<ConfigT>(value)); return *this;}
+    template<typename ConfigT = HoursOfOperationConfig>
+    HoursOfOperation& AddConfig(ConfigT&& value) { m_configHasBeenSet = true; m_config.emplace_back(std::forward<ConfigT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Configuration information for the hours of operation.</p>
-     */
-    inline void SetConfig(const Aws::Vector<HoursOfOperationConfig>& value) { m_configHasBeenSet = true; m_config = value; }
-
-    /**
-     * <p>Configuration information for the hours of operation.</p>
-     */
-    inline void SetConfig(Aws::Vector<HoursOfOperationConfig>&& value) { m_configHasBeenSet = true; m_config = std::move(value); }
-
-    /**
-     * <p>Configuration information for the hours of operation.</p>
-     */
-    inline HoursOfOperation& WithConfig(const Aws::Vector<HoursOfOperationConfig>& value) { SetConfig(value); return *this;}
-
-    /**
-     * <p>Configuration information for the hours of operation.</p>
-     */
-    inline HoursOfOperation& WithConfig(Aws::Vector<HoursOfOperationConfig>&& value) { SetConfig(std::move(value)); return *this;}
-
-    /**
-     * <p>Configuration information for the hours of operation.</p>
-     */
-    inline HoursOfOperation& AddConfig(const HoursOfOperationConfig& value) { m_configHasBeenSet = true; m_config.push_back(value); return *this; }
-
-    /**
-     * <p>Configuration information for the hours of operation.</p>
-     */
-    inline HoursOfOperation& AddConfig(HoursOfOperationConfig&& value) { m_configHasBeenSet = true; m_config.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
+     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    HoursOfOperation& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    HoursOfOperation& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
+    ///@{
     /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
+     * <p>The timestamp when this resource was last modified.</p>
      */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline const Aws::Utils::DateTime& GetLastModifiedTime() const { return m_lastModifiedTime; }
+    inline bool LastModifiedTimeHasBeenSet() const { return m_lastModifiedTimeHasBeenSet; }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    void SetLastModifiedTime(LastModifiedTimeT&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::forward<LastModifiedTimeT>(value); }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    HoursOfOperation& WithLastModifiedTime(LastModifiedTimeT&& value) { SetLastModifiedTime(std::forward<LastModifiedTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
+     * <p>The Amazon Web Services Region where this resource was last modified.</p>
      */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline HoursOfOperation& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline HoursOfOperation& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline HoursOfOperation& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline HoursOfOperation& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline HoursOfOperation& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline HoursOfOperation& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline HoursOfOperation& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline HoursOfOperation& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline HoursOfOperation& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    inline const Aws::String& GetLastModifiedRegion() const { return m_lastModifiedRegion; }
+    inline bool LastModifiedRegionHasBeenSet() const { return m_lastModifiedRegionHasBeenSet; }
+    template<typename LastModifiedRegionT = Aws::String>
+    void SetLastModifiedRegion(LastModifiedRegionT&& value) { m_lastModifiedRegionHasBeenSet = true; m_lastModifiedRegion = std::forward<LastModifiedRegionT>(value); }
+    template<typename LastModifiedRegionT = Aws::String>
+    HoursOfOperation& WithLastModifiedRegion(LastModifiedRegionT&& value) { SetLastModifiedRegion(std::forward<LastModifiedRegionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_hoursOfOperationId;
@@ -386,6 +177,12 @@ namespace Model
 
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet = false;
+
+    Aws::Utils::DateTime m_lastModifiedTime{};
+    bool m_lastModifiedTimeHasBeenSet = false;
+
+    Aws::String m_lastModifiedRegion;
+    bool m_lastModifiedRegionHasBeenSet = false;
   };
 
 } // namespace Model

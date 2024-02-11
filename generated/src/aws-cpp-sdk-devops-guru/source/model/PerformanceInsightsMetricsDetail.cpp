@@ -18,23 +18,7 @@ namespace DevOpsGuru
 namespace Model
 {
 
-PerformanceInsightsMetricsDetail::PerformanceInsightsMetricsDetail() : 
-    m_metricDisplayNameHasBeenSet(false),
-    m_unitHasBeenSet(false),
-    m_metricQueryHasBeenSet(false),
-    m_referenceDataHasBeenSet(false),
-    m_statsAtAnomalyHasBeenSet(false),
-    m_statsAtBaselineHasBeenSet(false)
-{
-}
-
-PerformanceInsightsMetricsDetail::PerformanceInsightsMetricsDetail(JsonView jsonValue) : 
-    m_metricDisplayNameHasBeenSet(false),
-    m_unitHasBeenSet(false),
-    m_metricQueryHasBeenSet(false),
-    m_referenceDataHasBeenSet(false),
-    m_statsAtAnomalyHasBeenSet(false),
-    m_statsAtBaselineHasBeenSet(false)
+PerformanceInsightsMetricsDetail::PerformanceInsightsMetricsDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,24 +28,18 @@ PerformanceInsightsMetricsDetail& PerformanceInsightsMetricsDetail::operator =(J
   if(jsonValue.ValueExists("MetricDisplayName"))
   {
     m_metricDisplayName = jsonValue.GetString("MetricDisplayName");
-
     m_metricDisplayNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Unit"))
   {
     m_unit = jsonValue.GetString("Unit");
-
     m_unitHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MetricQuery"))
   {
     m_metricQuery = jsonValue.GetObject("MetricQuery");
-
     m_metricQueryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ReferenceData"))
   {
     Aws::Utils::Array<JsonView> referenceDataJsonList = jsonValue.GetArray("ReferenceData");
@@ -71,7 +49,6 @@ PerformanceInsightsMetricsDetail& PerformanceInsightsMetricsDetail::operator =(J
     }
     m_referenceDataHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatsAtAnomaly"))
   {
     Aws::Utils::Array<JsonView> statsAtAnomalyJsonList = jsonValue.GetArray("StatsAtAnomaly");
@@ -81,7 +58,6 @@ PerformanceInsightsMetricsDetail& PerformanceInsightsMetricsDetail::operator =(J
     }
     m_statsAtAnomalyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatsAtBaseline"))
   {
     Aws::Utils::Array<JsonView> statsAtBaselineJsonList = jsonValue.GetArray("StatsAtBaseline");
@@ -91,7 +67,6 @@ PerformanceInsightsMetricsDetail& PerformanceInsightsMetricsDetail::operator =(J
     }
     m_statsAtBaselineHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -12,14 +12,15 @@ using namespace Aws::mgn::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DisconnectFromServiceRequest::DisconnectFromServiceRequest() : 
-    m_sourceServerIDHasBeenSet(false)
-{
-}
-
 Aws::String DisconnectFromServiceRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_accountIDHasBeenSet)
+  {
+   payload.WithString("accountID", m_accountID);
+
+  }
 
   if(m_sourceServerIDHasBeenSet)
   {

@@ -24,7 +24,7 @@ namespace Model
   class CloneBackendRequest : public AmplifyBackendRequest
   {
   public:
-    AWS_AMPLIFYBACKEND_API CloneBackendRequest();
+    AWS_AMPLIFYBACKEND_API CloneBackendRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,128 +35,41 @@ namespace Model
     AWS_AMPLIFYBACKEND_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The app ID.</p>
      */
-    inline const Aws::String& GetAppId() const{ return m_appId; }
-
-    /**
-     * <p>The app ID.</p>
-     */
+    inline const Aws::String& GetAppId() const { return m_appId; }
     inline bool AppIdHasBeenSet() const { return m_appIdHasBeenSet; }
+    template<typename AppIdT = Aws::String>
+    void SetAppId(AppIdT&& value) { m_appIdHasBeenSet = true; m_appId = std::forward<AppIdT>(value); }
+    template<typename AppIdT = Aws::String>
+    CloneBackendRequest& WithAppId(AppIdT&& value) { SetAppId(std::forward<AppIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The app ID.</p>
-     */
-    inline void SetAppId(const Aws::String& value) { m_appIdHasBeenSet = true; m_appId = value; }
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline void SetAppId(Aws::String&& value) { m_appIdHasBeenSet = true; m_appId = std::move(value); }
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline void SetAppId(const char* value) { m_appIdHasBeenSet = true; m_appId.assign(value); }
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline CloneBackendRequest& WithAppId(const Aws::String& value) { SetAppId(value); return *this;}
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline CloneBackendRequest& WithAppId(Aws::String&& value) { SetAppId(std::move(value)); return *this;}
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline CloneBackendRequest& WithAppId(const char* value) { SetAppId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the backend environment.</p>
      */
-    inline const Aws::String& GetBackendEnvironmentName() const{ return m_backendEnvironmentName; }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
+    inline const Aws::String& GetBackendEnvironmentName() const { return m_backendEnvironmentName; }
     inline bool BackendEnvironmentNameHasBeenSet() const { return m_backendEnvironmentNameHasBeenSet; }
+    template<typename BackendEnvironmentNameT = Aws::String>
+    void SetBackendEnvironmentName(BackendEnvironmentNameT&& value) { m_backendEnvironmentNameHasBeenSet = true; m_backendEnvironmentName = std::forward<BackendEnvironmentNameT>(value); }
+    template<typename BackendEnvironmentNameT = Aws::String>
+    CloneBackendRequest& WithBackendEnvironmentName(BackendEnvironmentNameT&& value) { SetBackendEnvironmentName(std::forward<BackendEnvironmentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline void SetBackendEnvironmentName(const Aws::String& value) { m_backendEnvironmentNameHasBeenSet = true; m_backendEnvironmentName = value; }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline void SetBackendEnvironmentName(Aws::String&& value) { m_backendEnvironmentNameHasBeenSet = true; m_backendEnvironmentName = std::move(value); }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline void SetBackendEnvironmentName(const char* value) { m_backendEnvironmentNameHasBeenSet = true; m_backendEnvironmentName.assign(value); }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline CloneBackendRequest& WithBackendEnvironmentName(const Aws::String& value) { SetBackendEnvironmentName(value); return *this;}
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline CloneBackendRequest& WithBackendEnvironmentName(Aws::String&& value) { SetBackendEnvironmentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline CloneBackendRequest& WithBackendEnvironmentName(const char* value) { SetBackendEnvironmentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the destination backend environment to be created.</p>
      */
-    inline const Aws::String& GetTargetEnvironmentName() const{ return m_targetEnvironmentName; }
-
-    /**
-     * <p>The name of the destination backend environment to be created.</p>
-     */
+    inline const Aws::String& GetTargetEnvironmentName() const { return m_targetEnvironmentName; }
     inline bool TargetEnvironmentNameHasBeenSet() const { return m_targetEnvironmentNameHasBeenSet; }
-
-    /**
-     * <p>The name of the destination backend environment to be created.</p>
-     */
-    inline void SetTargetEnvironmentName(const Aws::String& value) { m_targetEnvironmentNameHasBeenSet = true; m_targetEnvironmentName = value; }
-
-    /**
-     * <p>The name of the destination backend environment to be created.</p>
-     */
-    inline void SetTargetEnvironmentName(Aws::String&& value) { m_targetEnvironmentNameHasBeenSet = true; m_targetEnvironmentName = std::move(value); }
-
-    /**
-     * <p>The name of the destination backend environment to be created.</p>
-     */
-    inline void SetTargetEnvironmentName(const char* value) { m_targetEnvironmentNameHasBeenSet = true; m_targetEnvironmentName.assign(value); }
-
-    /**
-     * <p>The name of the destination backend environment to be created.</p>
-     */
-    inline CloneBackendRequest& WithTargetEnvironmentName(const Aws::String& value) { SetTargetEnvironmentName(value); return *this;}
-
-    /**
-     * <p>The name of the destination backend environment to be created.</p>
-     */
-    inline CloneBackendRequest& WithTargetEnvironmentName(Aws::String&& value) { SetTargetEnvironmentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the destination backend environment to be created.</p>
-     */
-    inline CloneBackendRequest& WithTargetEnvironmentName(const char* value) { SetTargetEnvironmentName(value); return *this;}
-
+    template<typename TargetEnvironmentNameT = Aws::String>
+    void SetTargetEnvironmentName(TargetEnvironmentNameT&& value) { m_targetEnvironmentNameHasBeenSet = true; m_targetEnvironmentName = std::forward<TargetEnvironmentNameT>(value); }
+    template<typename TargetEnvironmentNameT = Aws::String>
+    CloneBackendRequest& WithTargetEnvironmentName(TargetEnvironmentNameT&& value) { SetTargetEnvironmentName(std::forward<TargetEnvironmentNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_appId;

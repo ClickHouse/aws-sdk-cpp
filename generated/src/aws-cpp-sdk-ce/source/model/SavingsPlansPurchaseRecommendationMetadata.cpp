@@ -18,17 +18,7 @@ namespace CostExplorer
 namespace Model
 {
 
-SavingsPlansPurchaseRecommendationMetadata::SavingsPlansPurchaseRecommendationMetadata() : 
-    m_recommendationIdHasBeenSet(false),
-    m_generationTimestampHasBeenSet(false),
-    m_additionalMetadataHasBeenSet(false)
-{
-}
-
-SavingsPlansPurchaseRecommendationMetadata::SavingsPlansPurchaseRecommendationMetadata(JsonView jsonValue) : 
-    m_recommendationIdHasBeenSet(false),
-    m_generationTimestampHasBeenSet(false),
-    m_additionalMetadataHasBeenSet(false)
+SavingsPlansPurchaseRecommendationMetadata::SavingsPlansPurchaseRecommendationMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ SavingsPlansPurchaseRecommendationMetadata& SavingsPlansPurchaseRecommendationMe
   if(jsonValue.ValueExists("RecommendationId"))
   {
     m_recommendationId = jsonValue.GetString("RecommendationId");
-
     m_recommendationIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("GenerationTimestamp"))
   {
     m_generationTimestamp = jsonValue.GetString("GenerationTimestamp");
-
     m_generationTimestampHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AdditionalMetadata"))
   {
     m_additionalMetadata = jsonValue.GetString("AdditionalMetadata");
-
     m_additionalMetadataHasBeenSet = true;
   }
-
   return *this;
 }
 

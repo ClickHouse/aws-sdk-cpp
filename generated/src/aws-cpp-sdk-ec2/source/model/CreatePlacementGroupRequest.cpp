@@ -10,39 +10,10 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreatePlacementGroupRequest::CreatePlacementGroupRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_groupNameHasBeenSet(false),
-    m_strategy(PlacementStrategy::NOT_SET),
-    m_strategyHasBeenSet(false),
-    m_partitionCount(0),
-    m_partitionCountHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_spreadLevel(SpreadLevel::NOT_SET),
-    m_spreadLevelHasBeenSet(false)
-{
-}
-
 Aws::String CreatePlacementGroupRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=CreatePlacementGroup&";
-  if(m_dryRunHasBeenSet)
-  {
-    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
-  }
-
-  if(m_groupNameHasBeenSet)
-  {
-    ss << "GroupName=" << StringUtils::URLEncode(m_groupName.c_str()) << "&";
-  }
-
-  if(m_strategyHasBeenSet)
-  {
-    ss << "Strategy=" << PlacementStrategyMapper::GetNameForPlacementStrategy(m_strategy) << "&";
-  }
-
   if(m_partitionCountHasBeenSet)
   {
     ss << "PartitionCount=" << m_partitionCount << "&";
@@ -60,7 +31,22 @@ Aws::String CreatePlacementGroupRequest::SerializePayload() const
 
   if(m_spreadLevelHasBeenSet)
   {
-    ss << "SpreadLevel=" << SpreadLevelMapper::GetNameForSpreadLevel(m_spreadLevel) << "&";
+    ss << "SpreadLevel=" << StringUtils::URLEncode(SpreadLevelMapper::GetNameForSpreadLevel(m_spreadLevel)) << "&";
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
+  }
+
+  if(m_groupNameHasBeenSet)
+  {
+    ss << "GroupName=" << StringUtils::URLEncode(m_groupName.c_str()) << "&";
+  }
+
+  if(m_strategyHasBeenSet)
+  {
+    ss << "Strategy=" << StringUtils::URLEncode(PlacementStrategyMapper::GetNameForPlacementStrategy(m_strategy)) << "&";
   }
 
   ss << "Version=2016-11-15";

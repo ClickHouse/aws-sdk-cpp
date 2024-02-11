@@ -31,6 +31,7 @@ namespace Aws
         static const int srt_caller_HASH = HashingUtils::HashString("srt-caller");
         static const int fujitsu_qos_HASH = HashingUtils::HashString("fujitsu-qos");
         static const int udp_HASH = HashingUtils::HashString("udp");
+        static const int ndi_speed_hq_HASH = HashingUtils::HashString("ndi-speed-hq");
 
 
         Protocol GetProtocolForName(const Aws::String& name)
@@ -80,6 +81,10 @@ namespace Aws
           {
             return Protocol::udp;
           }
+          else if (hashCode == ndi_speed_hq_HASH)
+          {
+            return Protocol::ndi_speed_hq;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -94,6 +99,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case Protocol::NOT_SET:
+            return {};
           case Protocol::zixi_push:
             return "zixi-push";
           case Protocol::rtp_fec:
@@ -116,6 +123,8 @@ namespace Aws
             return "fujitsu-qos";
           case Protocol::udp:
             return "udp";
+          case Protocol::ndi_speed_hq:
+            return "ndi-speed-hq";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

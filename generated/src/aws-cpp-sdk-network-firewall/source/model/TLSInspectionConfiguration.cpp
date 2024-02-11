@@ -18,13 +18,7 @@ namespace NetworkFirewall
 namespace Model
 {
 
-TLSInspectionConfiguration::TLSInspectionConfiguration() : 
-    m_serverCertificateConfigurationsHasBeenSet(false)
-{
-}
-
-TLSInspectionConfiguration::TLSInspectionConfiguration(JsonView jsonValue) : 
-    m_serverCertificateConfigurationsHasBeenSet(false)
+TLSInspectionConfiguration::TLSInspectionConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ TLSInspectionConfiguration& TLSInspectionConfiguration::operator =(JsonView json
     }
     m_serverCertificateConfigurationsHasBeenSet = true;
   }
-
   return *this;
 }
 

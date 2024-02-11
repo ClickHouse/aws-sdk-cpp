@@ -26,7 +26,7 @@ namespace Model
   class CreateHsmConfigurationRequest : public RedshiftRequest
   {
   public:
-    AWS_REDSHIFT_API CreateHsmConfigurationRequest();
+    AWS_REDSHIFT_API CreateHsmConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,324 +41,95 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The identifier to be assigned to the new Amazon Redshift HSM
      * configuration.</p>
      */
-    inline const Aws::String& GetHsmConfigurationIdentifier() const{ return m_hsmConfigurationIdentifier; }
-
-    /**
-     * <p>The identifier to be assigned to the new Amazon Redshift HSM
-     * configuration.</p>
-     */
+    inline const Aws::String& GetHsmConfigurationIdentifier() const { return m_hsmConfigurationIdentifier; }
     inline bool HsmConfigurationIdentifierHasBeenSet() const { return m_hsmConfigurationIdentifierHasBeenSet; }
+    template<typename HsmConfigurationIdentifierT = Aws::String>
+    void SetHsmConfigurationIdentifier(HsmConfigurationIdentifierT&& value) { m_hsmConfigurationIdentifierHasBeenSet = true; m_hsmConfigurationIdentifier = std::forward<HsmConfigurationIdentifierT>(value); }
+    template<typename HsmConfigurationIdentifierT = Aws::String>
+    CreateHsmConfigurationRequest& WithHsmConfigurationIdentifier(HsmConfigurationIdentifierT&& value) { SetHsmConfigurationIdentifier(std::forward<HsmConfigurationIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier to be assigned to the new Amazon Redshift HSM
-     * configuration.</p>
-     */
-    inline void SetHsmConfigurationIdentifier(const Aws::String& value) { m_hsmConfigurationIdentifierHasBeenSet = true; m_hsmConfigurationIdentifier = value; }
-
-    /**
-     * <p>The identifier to be assigned to the new Amazon Redshift HSM
-     * configuration.</p>
-     */
-    inline void SetHsmConfigurationIdentifier(Aws::String&& value) { m_hsmConfigurationIdentifierHasBeenSet = true; m_hsmConfigurationIdentifier = std::move(value); }
-
-    /**
-     * <p>The identifier to be assigned to the new Amazon Redshift HSM
-     * configuration.</p>
-     */
-    inline void SetHsmConfigurationIdentifier(const char* value) { m_hsmConfigurationIdentifierHasBeenSet = true; m_hsmConfigurationIdentifier.assign(value); }
-
-    /**
-     * <p>The identifier to be assigned to the new Amazon Redshift HSM
-     * configuration.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithHsmConfigurationIdentifier(const Aws::String& value) { SetHsmConfigurationIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier to be assigned to the new Amazon Redshift HSM
-     * configuration.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithHsmConfigurationIdentifier(Aws::String&& value) { SetHsmConfigurationIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier to be assigned to the new Amazon Redshift HSM
-     * configuration.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithHsmConfigurationIdentifier(const char* value) { SetHsmConfigurationIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A text description of the HSM configuration to be created.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A text description of the HSM configuration to be created.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateHsmConfigurationRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A text description of the HSM configuration to be created.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A text description of the HSM configuration to be created.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A text description of the HSM configuration to be created.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A text description of the HSM configuration to be created.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A text description of the HSM configuration to be created.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A text description of the HSM configuration to be created.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IP address that the Amazon Redshift cluster must use to access the
      * HSM.</p>
      */
-    inline const Aws::String& GetHsmIpAddress() const{ return m_hsmIpAddress; }
-
-    /**
-     * <p>The IP address that the Amazon Redshift cluster must use to access the
-     * HSM.</p>
-     */
+    inline const Aws::String& GetHsmIpAddress() const { return m_hsmIpAddress; }
     inline bool HsmIpAddressHasBeenSet() const { return m_hsmIpAddressHasBeenSet; }
+    template<typename HsmIpAddressT = Aws::String>
+    void SetHsmIpAddress(HsmIpAddressT&& value) { m_hsmIpAddressHasBeenSet = true; m_hsmIpAddress = std::forward<HsmIpAddressT>(value); }
+    template<typename HsmIpAddressT = Aws::String>
+    CreateHsmConfigurationRequest& WithHsmIpAddress(HsmIpAddressT&& value) { SetHsmIpAddress(std::forward<HsmIpAddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IP address that the Amazon Redshift cluster must use to access the
-     * HSM.</p>
-     */
-    inline void SetHsmIpAddress(const Aws::String& value) { m_hsmIpAddressHasBeenSet = true; m_hsmIpAddress = value; }
-
-    /**
-     * <p>The IP address that the Amazon Redshift cluster must use to access the
-     * HSM.</p>
-     */
-    inline void SetHsmIpAddress(Aws::String&& value) { m_hsmIpAddressHasBeenSet = true; m_hsmIpAddress = std::move(value); }
-
-    /**
-     * <p>The IP address that the Amazon Redshift cluster must use to access the
-     * HSM.</p>
-     */
-    inline void SetHsmIpAddress(const char* value) { m_hsmIpAddressHasBeenSet = true; m_hsmIpAddress.assign(value); }
-
-    /**
-     * <p>The IP address that the Amazon Redshift cluster must use to access the
-     * HSM.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithHsmIpAddress(const Aws::String& value) { SetHsmIpAddress(value); return *this;}
-
-    /**
-     * <p>The IP address that the Amazon Redshift cluster must use to access the
-     * HSM.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithHsmIpAddress(Aws::String&& value) { SetHsmIpAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The IP address that the Amazon Redshift cluster must use to access the
-     * HSM.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithHsmIpAddress(const char* value) { SetHsmIpAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the partition in the HSM where the Amazon Redshift clusters will
      * store their database encryption keys.</p>
      */
-    inline const Aws::String& GetHsmPartitionName() const{ return m_hsmPartitionName; }
-
-    /**
-     * <p>The name of the partition in the HSM where the Amazon Redshift clusters will
-     * store their database encryption keys.</p>
-     */
+    inline const Aws::String& GetHsmPartitionName() const { return m_hsmPartitionName; }
     inline bool HsmPartitionNameHasBeenSet() const { return m_hsmPartitionNameHasBeenSet; }
+    template<typename HsmPartitionNameT = Aws::String>
+    void SetHsmPartitionName(HsmPartitionNameT&& value) { m_hsmPartitionNameHasBeenSet = true; m_hsmPartitionName = std::forward<HsmPartitionNameT>(value); }
+    template<typename HsmPartitionNameT = Aws::String>
+    CreateHsmConfigurationRequest& WithHsmPartitionName(HsmPartitionNameT&& value) { SetHsmPartitionName(std::forward<HsmPartitionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the partition in the HSM where the Amazon Redshift clusters will
-     * store their database encryption keys.</p>
-     */
-    inline void SetHsmPartitionName(const Aws::String& value) { m_hsmPartitionNameHasBeenSet = true; m_hsmPartitionName = value; }
-
-    /**
-     * <p>The name of the partition in the HSM where the Amazon Redshift clusters will
-     * store their database encryption keys.</p>
-     */
-    inline void SetHsmPartitionName(Aws::String&& value) { m_hsmPartitionNameHasBeenSet = true; m_hsmPartitionName = std::move(value); }
-
-    /**
-     * <p>The name of the partition in the HSM where the Amazon Redshift clusters will
-     * store their database encryption keys.</p>
-     */
-    inline void SetHsmPartitionName(const char* value) { m_hsmPartitionNameHasBeenSet = true; m_hsmPartitionName.assign(value); }
-
-    /**
-     * <p>The name of the partition in the HSM where the Amazon Redshift clusters will
-     * store their database encryption keys.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithHsmPartitionName(const Aws::String& value) { SetHsmPartitionName(value); return *this;}
-
-    /**
-     * <p>The name of the partition in the HSM where the Amazon Redshift clusters will
-     * store their database encryption keys.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithHsmPartitionName(Aws::String&& value) { SetHsmPartitionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the partition in the HSM where the Amazon Redshift clusters will
-     * store their database encryption keys.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithHsmPartitionName(const char* value) { SetHsmPartitionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The password required to access the HSM partition.</p>
      */
-    inline const Aws::String& GetHsmPartitionPassword() const{ return m_hsmPartitionPassword; }
-
-    /**
-     * <p>The password required to access the HSM partition.</p>
-     */
+    inline const Aws::String& GetHsmPartitionPassword() const { return m_hsmPartitionPassword; }
     inline bool HsmPartitionPasswordHasBeenSet() const { return m_hsmPartitionPasswordHasBeenSet; }
+    template<typename HsmPartitionPasswordT = Aws::String>
+    void SetHsmPartitionPassword(HsmPartitionPasswordT&& value) { m_hsmPartitionPasswordHasBeenSet = true; m_hsmPartitionPassword = std::forward<HsmPartitionPasswordT>(value); }
+    template<typename HsmPartitionPasswordT = Aws::String>
+    CreateHsmConfigurationRequest& WithHsmPartitionPassword(HsmPartitionPasswordT&& value) { SetHsmPartitionPassword(std::forward<HsmPartitionPasswordT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The password required to access the HSM partition.</p>
-     */
-    inline void SetHsmPartitionPassword(const Aws::String& value) { m_hsmPartitionPasswordHasBeenSet = true; m_hsmPartitionPassword = value; }
-
-    /**
-     * <p>The password required to access the HSM partition.</p>
-     */
-    inline void SetHsmPartitionPassword(Aws::String&& value) { m_hsmPartitionPasswordHasBeenSet = true; m_hsmPartitionPassword = std::move(value); }
-
-    /**
-     * <p>The password required to access the HSM partition.</p>
-     */
-    inline void SetHsmPartitionPassword(const char* value) { m_hsmPartitionPasswordHasBeenSet = true; m_hsmPartitionPassword.assign(value); }
-
-    /**
-     * <p>The password required to access the HSM partition.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithHsmPartitionPassword(const Aws::String& value) { SetHsmPartitionPassword(value); return *this;}
-
-    /**
-     * <p>The password required to access the HSM partition.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithHsmPartitionPassword(Aws::String&& value) { SetHsmPartitionPassword(std::move(value)); return *this;}
-
-    /**
-     * <p>The password required to access the HSM partition.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithHsmPartitionPassword(const char* value) { SetHsmPartitionPassword(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The HSMs public certificate file. When using Cloud HSM, the file name is
      * server.pem.</p>
      */
-    inline const Aws::String& GetHsmServerPublicCertificate() const{ return m_hsmServerPublicCertificate; }
-
-    /**
-     * <p>The HSMs public certificate file. When using Cloud HSM, the file name is
-     * server.pem.</p>
-     */
+    inline const Aws::String& GetHsmServerPublicCertificate() const { return m_hsmServerPublicCertificate; }
     inline bool HsmServerPublicCertificateHasBeenSet() const { return m_hsmServerPublicCertificateHasBeenSet; }
+    template<typename HsmServerPublicCertificateT = Aws::String>
+    void SetHsmServerPublicCertificate(HsmServerPublicCertificateT&& value) { m_hsmServerPublicCertificateHasBeenSet = true; m_hsmServerPublicCertificate = std::forward<HsmServerPublicCertificateT>(value); }
+    template<typename HsmServerPublicCertificateT = Aws::String>
+    CreateHsmConfigurationRequest& WithHsmServerPublicCertificate(HsmServerPublicCertificateT&& value) { SetHsmServerPublicCertificate(std::forward<HsmServerPublicCertificateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The HSMs public certificate file. When using Cloud HSM, the file name is
-     * server.pem.</p>
-     */
-    inline void SetHsmServerPublicCertificate(const Aws::String& value) { m_hsmServerPublicCertificateHasBeenSet = true; m_hsmServerPublicCertificate = value; }
-
-    /**
-     * <p>The HSMs public certificate file. When using Cloud HSM, the file name is
-     * server.pem.</p>
-     */
-    inline void SetHsmServerPublicCertificate(Aws::String&& value) { m_hsmServerPublicCertificateHasBeenSet = true; m_hsmServerPublicCertificate = std::move(value); }
-
-    /**
-     * <p>The HSMs public certificate file. When using Cloud HSM, the file name is
-     * server.pem.</p>
-     */
-    inline void SetHsmServerPublicCertificate(const char* value) { m_hsmServerPublicCertificateHasBeenSet = true; m_hsmServerPublicCertificate.assign(value); }
-
-    /**
-     * <p>The HSMs public certificate file. When using Cloud HSM, the file name is
-     * server.pem.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithHsmServerPublicCertificate(const Aws::String& value) { SetHsmServerPublicCertificate(value); return *this;}
-
-    /**
-     * <p>The HSMs public certificate file. When using Cloud HSM, the file name is
-     * server.pem.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithHsmServerPublicCertificate(Aws::String&& value) { SetHsmServerPublicCertificate(std::move(value)); return *this;}
-
-    /**
-     * <p>The HSMs public certificate file. When using Cloud HSM, the file name is
-     * server.pem.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithHsmServerPublicCertificate(const char* value) { SetHsmServerPublicCertificate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of tag instances.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
-    inline CreateHsmConfigurationRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
-    inline CreateHsmConfigurationRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
-    inline CreateHsmConfigurationRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateHsmConfigurationRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateHsmConfigurationRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_hsmConfigurationIdentifier;

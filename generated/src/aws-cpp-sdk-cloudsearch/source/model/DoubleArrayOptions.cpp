@@ -20,29 +20,7 @@ namespace CloudSearch
 namespace Model
 {
 
-DoubleArrayOptions::DoubleArrayOptions() : 
-    m_defaultValue(0.0),
-    m_defaultValueHasBeenSet(false),
-    m_sourceFieldsHasBeenSet(false),
-    m_facetEnabled(false),
-    m_facetEnabledHasBeenSet(false),
-    m_searchEnabled(false),
-    m_searchEnabledHasBeenSet(false),
-    m_returnEnabled(false),
-    m_returnEnabledHasBeenSet(false)
-{
-}
-
-DoubleArrayOptions::DoubleArrayOptions(const XmlNode& xmlNode) : 
-    m_defaultValue(0.0),
-    m_defaultValueHasBeenSet(false),
-    m_sourceFieldsHasBeenSet(false),
-    m_facetEnabled(false),
-    m_facetEnabledHasBeenSet(false),
-    m_searchEnabled(false),
-    m_searchEnabledHasBeenSet(false),
-    m_returnEnabled(false),
-    m_returnEnabledHasBeenSet(false)
+DoubleArrayOptions::DoubleArrayOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -121,7 +99,7 @@ void DoubleArrayOptions::OutputToStream(Aws::OStream& oStream, const char* locat
 {
   if(m_defaultValueHasBeenSet)
   {
-        oStream << location << ".DefaultValue=" << StringUtils::URLEncode(m_defaultValue) << "&";
+      oStream << location << ".DefaultValue=" << StringUtils::URLEncode(m_defaultValue) << "&";
   }
   if(m_sourceFieldsHasBeenSet)
   {

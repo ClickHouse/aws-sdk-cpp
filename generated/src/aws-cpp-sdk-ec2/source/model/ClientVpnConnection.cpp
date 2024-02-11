@@ -20,39 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ClientVpnConnection::ClientVpnConnection() : 
-    m_clientVpnEndpointIdHasBeenSet(false),
-    m_timestampHasBeenSet(false),
-    m_connectionIdHasBeenSet(false),
-    m_usernameHasBeenSet(false),
-    m_connectionEstablishedTimeHasBeenSet(false),
-    m_ingressBytesHasBeenSet(false),
-    m_egressBytesHasBeenSet(false),
-    m_ingressPacketsHasBeenSet(false),
-    m_egressPacketsHasBeenSet(false),
-    m_clientIpHasBeenSet(false),
-    m_commonNameHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_connectionEndTimeHasBeenSet(false),
-    m_postureComplianceStatusesHasBeenSet(false)
-{
-}
-
-ClientVpnConnection::ClientVpnConnection(const XmlNode& xmlNode) : 
-    m_clientVpnEndpointIdHasBeenSet(false),
-    m_timestampHasBeenSet(false),
-    m_connectionIdHasBeenSet(false),
-    m_usernameHasBeenSet(false),
-    m_connectionEstablishedTimeHasBeenSet(false),
-    m_ingressBytesHasBeenSet(false),
-    m_egressBytesHasBeenSet(false),
-    m_ingressPacketsHasBeenSet(false),
-    m_egressPacketsHasBeenSet(false),
-    m_clientIpHasBeenSet(false),
-    m_commonNameHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_connectionEndTimeHasBeenSet(false),
-    m_postureComplianceStatusesHasBeenSet(false)
+ClientVpnConnection::ClientVpnConnection(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -123,6 +91,12 @@ ClientVpnConnection& ClientVpnConnection::operator =(const XmlNode& xmlNode)
       m_clientIp = Aws::Utils::Xml::DecodeEscapedXmlText(clientIpNode.GetText());
       m_clientIpHasBeenSet = true;
     }
+    XmlNode clientIpv6AddressNode = resultNode.FirstChild("clientIpv6Address");
+    if(!clientIpv6AddressNode.IsNull())
+    {
+      m_clientIpv6Address = Aws::Utils::Xml::DecodeEscapedXmlText(clientIpv6AddressNode.GetText());
+      m_clientIpv6AddressHasBeenSet = true;
+    }
     XmlNode commonNameNode = resultNode.FirstChild("commonName");
     if(!commonNameNode.IsNull())
     {
@@ -145,6 +119,7 @@ ClientVpnConnection& ClientVpnConnection::operator =(const XmlNode& xmlNode)
     if(!postureComplianceStatusesNode.IsNull())
     {
       XmlNode postureComplianceStatusesMember = postureComplianceStatusesNode.FirstChild("item");
+      m_postureComplianceStatusesHasBeenSet = !postureComplianceStatusesMember.IsNull();
       while(!postureComplianceStatusesMember.IsNull())
       {
         m_postureComplianceStatuses.push_back(postureComplianceStatusesMember.GetText());
@@ -208,6 +183,11 @@ void ClientVpnConnection::OutputToStream(Aws::OStream& oStream, const char* loca
   if(m_clientIpHasBeenSet)
   {
       oStream << location << index << locationValue << ".ClientIp=" << StringUtils::URLEncode(m_clientIp.c_str()) << "&";
+  }
+
+  if(m_clientIpv6AddressHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".ClientIpv6Address=" << StringUtils::URLEncode(m_clientIpv6Address.c_str()) << "&";
   }
 
   if(m_commonNameHasBeenSet)
@@ -279,6 +259,10 @@ void ClientVpnConnection::OutputToStream(Aws::OStream& oStream, const char* loca
   if(m_clientIpHasBeenSet)
   {
       oStream << location << ".ClientIp=" << StringUtils::URLEncode(m_clientIp.c_str()) << "&";
+  }
+  if(m_clientIpv6AddressHasBeenSet)
+  {
+      oStream << location << ".ClientIpv6Address=" << StringUtils::URLEncode(m_clientIpv6Address.c_str()) << "&";
   }
   if(m_commonNameHasBeenSet)
   {

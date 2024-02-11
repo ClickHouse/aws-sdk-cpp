@@ -32,142 +32,47 @@ namespace Model
   class GrammarSlotTypeSource
   {
   public:
-    AWS_LEXMODELSV2_API GrammarSlotTypeSource();
+    AWS_LEXMODELSV2_API GrammarSlotTypeSource() = default;
     AWS_LEXMODELSV2_API GrammarSlotTypeSource(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API GrammarSlotTypeSource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The name of the S3 bucket that contains the grammar source.</p>
+     * <p>The name of the Amazon S3 bucket that contains the grammar source.</p>
      */
-    inline const Aws::String& GetS3BucketName() const{ return m_s3BucketName; }
-
-    /**
-     * <p>The name of the S3 bucket that contains the grammar source.</p>
-     */
+    inline const Aws::String& GetS3BucketName() const { return m_s3BucketName; }
     inline bool S3BucketNameHasBeenSet() const { return m_s3BucketNameHasBeenSet; }
+    template<typename S3BucketNameT = Aws::String>
+    void SetS3BucketName(S3BucketNameT&& value) { m_s3BucketNameHasBeenSet = true; m_s3BucketName = std::forward<S3BucketNameT>(value); }
+    template<typename S3BucketNameT = Aws::String>
+    GrammarSlotTypeSource& WithS3BucketName(S3BucketNameT&& value) { SetS3BucketName(std::forward<S3BucketNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the S3 bucket that contains the grammar source.</p>
+     * <p>The path to the grammar in the Amazon S3 bucket.</p>
      */
-    inline void SetS3BucketName(const Aws::String& value) { m_s3BucketNameHasBeenSet = true; m_s3BucketName = value; }
-
-    /**
-     * <p>The name of the S3 bucket that contains the grammar source.</p>
-     */
-    inline void SetS3BucketName(Aws::String&& value) { m_s3BucketNameHasBeenSet = true; m_s3BucketName = std::move(value); }
-
-    /**
-     * <p>The name of the S3 bucket that contains the grammar source.</p>
-     */
-    inline void SetS3BucketName(const char* value) { m_s3BucketNameHasBeenSet = true; m_s3BucketName.assign(value); }
-
-    /**
-     * <p>The name of the S3 bucket that contains the grammar source.</p>
-     */
-    inline GrammarSlotTypeSource& WithS3BucketName(const Aws::String& value) { SetS3BucketName(value); return *this;}
-
-    /**
-     * <p>The name of the S3 bucket that contains the grammar source.</p>
-     */
-    inline GrammarSlotTypeSource& WithS3BucketName(Aws::String&& value) { SetS3BucketName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the S3 bucket that contains the grammar source.</p>
-     */
-    inline GrammarSlotTypeSource& WithS3BucketName(const char* value) { SetS3BucketName(value); return *this;}
-
-
-    /**
-     * <p>The path to the grammar in the S3 bucket.</p>
-     */
-    inline const Aws::String& GetS3ObjectKey() const{ return m_s3ObjectKey; }
-
-    /**
-     * <p>The path to the grammar in the S3 bucket.</p>
-     */
+    inline const Aws::String& GetS3ObjectKey() const { return m_s3ObjectKey; }
     inline bool S3ObjectKeyHasBeenSet() const { return m_s3ObjectKeyHasBeenSet; }
+    template<typename S3ObjectKeyT = Aws::String>
+    void SetS3ObjectKey(S3ObjectKeyT&& value) { m_s3ObjectKeyHasBeenSet = true; m_s3ObjectKey = std::forward<S3ObjectKeyT>(value); }
+    template<typename S3ObjectKeyT = Aws::String>
+    GrammarSlotTypeSource& WithS3ObjectKey(S3ObjectKeyT&& value) { SetS3ObjectKey(std::forward<S3ObjectKeyT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The path to the grammar in the S3 bucket.</p>
+     * <p>The KMS key required to decrypt the contents of the grammar, if any.</p>
      */
-    inline void SetS3ObjectKey(const Aws::String& value) { m_s3ObjectKeyHasBeenSet = true; m_s3ObjectKey = value; }
-
-    /**
-     * <p>The path to the grammar in the S3 bucket.</p>
-     */
-    inline void SetS3ObjectKey(Aws::String&& value) { m_s3ObjectKeyHasBeenSet = true; m_s3ObjectKey = std::move(value); }
-
-    /**
-     * <p>The path to the grammar in the S3 bucket.</p>
-     */
-    inline void SetS3ObjectKey(const char* value) { m_s3ObjectKeyHasBeenSet = true; m_s3ObjectKey.assign(value); }
-
-    /**
-     * <p>The path to the grammar in the S3 bucket.</p>
-     */
-    inline GrammarSlotTypeSource& WithS3ObjectKey(const Aws::String& value) { SetS3ObjectKey(value); return *this;}
-
-    /**
-     * <p>The path to the grammar in the S3 bucket.</p>
-     */
-    inline GrammarSlotTypeSource& WithS3ObjectKey(Aws::String&& value) { SetS3ObjectKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The path to the grammar in the S3 bucket.</p>
-     */
-    inline GrammarSlotTypeSource& WithS3ObjectKey(const char* value) { SetS3ObjectKey(value); return *this;}
-
-
-    /**
-     * <p>The Amazon KMS key required to decrypt the contents of the grammar, if
-     * any.</p>
-     */
-    inline const Aws::String& GetKmsKeyArn() const{ return m_kmsKeyArn; }
-
-    /**
-     * <p>The Amazon KMS key required to decrypt the contents of the grammar, if
-     * any.</p>
-     */
+    inline const Aws::String& GetKmsKeyArn() const { return m_kmsKeyArn; }
     inline bool KmsKeyArnHasBeenSet() const { return m_kmsKeyArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon KMS key required to decrypt the contents of the grammar, if
-     * any.</p>
-     */
-    inline void SetKmsKeyArn(const Aws::String& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = value; }
-
-    /**
-     * <p>The Amazon KMS key required to decrypt the contents of the grammar, if
-     * any.</p>
-     */
-    inline void SetKmsKeyArn(Aws::String&& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = std::move(value); }
-
-    /**
-     * <p>The Amazon KMS key required to decrypt the contents of the grammar, if
-     * any.</p>
-     */
-    inline void SetKmsKeyArn(const char* value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn.assign(value); }
-
-    /**
-     * <p>The Amazon KMS key required to decrypt the contents of the grammar, if
-     * any.</p>
-     */
-    inline GrammarSlotTypeSource& WithKmsKeyArn(const Aws::String& value) { SetKmsKeyArn(value); return *this;}
-
-    /**
-     * <p>The Amazon KMS key required to decrypt the contents of the grammar, if
-     * any.</p>
-     */
-    inline GrammarSlotTypeSource& WithKmsKeyArn(Aws::String&& value) { SetKmsKeyArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon KMS key required to decrypt the contents of the grammar, if
-     * any.</p>
-     */
-    inline GrammarSlotTypeSource& WithKmsKeyArn(const char* value) { SetKmsKeyArn(value); return *this;}
-
+    template<typename KmsKeyArnT = Aws::String>
+    void SetKmsKeyArn(KmsKeyArnT&& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = std::forward<KmsKeyArnT>(value); }
+    template<typename KmsKeyArnT = Aws::String>
+    GrammarSlotTypeSource& WithKmsKeyArn(KmsKeyArnT&& value) { SetKmsKeyArn(std::forward<KmsKeyArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_s3BucketName;

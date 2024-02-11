@@ -30,431 +30,191 @@ namespace Model
   class DescribeReplayResult
   {
   public:
-    AWS_CLOUDWATCHEVENTS_API DescribeReplayResult();
+    AWS_CLOUDWATCHEVENTS_API DescribeReplayResult() = default;
     AWS_CLOUDWATCHEVENTS_API DescribeReplayResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CLOUDWATCHEVENTS_API DescribeReplayResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The name of the replay.</p>
      */
-    inline const Aws::String& GetReplayName() const{ return m_replayName; }
+    inline const Aws::String& GetReplayName() const { return m_replayName; }
+    template<typename ReplayNameT = Aws::String>
+    void SetReplayName(ReplayNameT&& value) { m_replayNameHasBeenSet = true; m_replayName = std::forward<ReplayNameT>(value); }
+    template<typename ReplayNameT = Aws::String>
+    DescribeReplayResult& WithReplayName(ReplayNameT&& value) { SetReplayName(std::forward<ReplayNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the replay.</p>
-     */
-    inline void SetReplayName(const Aws::String& value) { m_replayName = value; }
-
-    /**
-     * <p>The name of the replay.</p>
-     */
-    inline void SetReplayName(Aws::String&& value) { m_replayName = std::move(value); }
-
-    /**
-     * <p>The name of the replay.</p>
-     */
-    inline void SetReplayName(const char* value) { m_replayName.assign(value); }
-
-    /**
-     * <p>The name of the replay.</p>
-     */
-    inline DescribeReplayResult& WithReplayName(const Aws::String& value) { SetReplayName(value); return *this;}
-
-    /**
-     * <p>The name of the replay.</p>
-     */
-    inline DescribeReplayResult& WithReplayName(Aws::String&& value) { SetReplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the replay.</p>
-     */
-    inline DescribeReplayResult& WithReplayName(const char* value) { SetReplayName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the replay.</p>
      */
-    inline const Aws::String& GetReplayArn() const{ return m_replayArn; }
+    inline const Aws::String& GetReplayArn() const { return m_replayArn; }
+    template<typename ReplayArnT = Aws::String>
+    void SetReplayArn(ReplayArnT&& value) { m_replayArnHasBeenSet = true; m_replayArn = std::forward<ReplayArnT>(value); }
+    template<typename ReplayArnT = Aws::String>
+    DescribeReplayResult& WithReplayArn(ReplayArnT&& value) { SetReplayArn(std::forward<ReplayArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the replay.</p>
-     */
-    inline void SetReplayArn(const Aws::String& value) { m_replayArn = value; }
-
-    /**
-     * <p>The ARN of the replay.</p>
-     */
-    inline void SetReplayArn(Aws::String&& value) { m_replayArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the replay.</p>
-     */
-    inline void SetReplayArn(const char* value) { m_replayArn.assign(value); }
-
-    /**
-     * <p>The ARN of the replay.</p>
-     */
-    inline DescribeReplayResult& WithReplayArn(const Aws::String& value) { SetReplayArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the replay.</p>
-     */
-    inline DescribeReplayResult& WithReplayArn(Aws::String&& value) { SetReplayArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the replay.</p>
-     */
-    inline DescribeReplayResult& WithReplayArn(const char* value) { SetReplayArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the replay.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    DescribeReplayResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the replay.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>The description of the replay.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>The description of the replay.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>The description of the replay.</p>
-     */
-    inline DescribeReplayResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the replay.</p>
-     */
-    inline DescribeReplayResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the replay.</p>
-     */
-    inline DescribeReplayResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current state of the replay.</p>
      */
-    inline const ReplayState& GetState() const{ return m_state; }
+    inline ReplayState GetState() const { return m_state; }
+    inline void SetState(ReplayState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline DescribeReplayResult& WithState(ReplayState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current state of the replay.</p>
-     */
-    inline void SetState(const ReplayState& value) { m_state = value; }
-
-    /**
-     * <p>The current state of the replay.</p>
-     */
-    inline void SetState(ReplayState&& value) { m_state = std::move(value); }
-
-    /**
-     * <p>The current state of the replay.</p>
-     */
-    inline DescribeReplayResult& WithState(const ReplayState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The current state of the replay.</p>
-     */
-    inline DescribeReplayResult& WithState(ReplayState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason that the replay is in the current state.</p>
      */
-    inline const Aws::String& GetStateReason() const{ return m_stateReason; }
+    inline const Aws::String& GetStateReason() const { return m_stateReason; }
+    template<typename StateReasonT = Aws::String>
+    void SetStateReason(StateReasonT&& value) { m_stateReasonHasBeenSet = true; m_stateReason = std::forward<StateReasonT>(value); }
+    template<typename StateReasonT = Aws::String>
+    DescribeReplayResult& WithStateReason(StateReasonT&& value) { SetStateReason(std::forward<StateReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reason that the replay is in the current state.</p>
-     */
-    inline void SetStateReason(const Aws::String& value) { m_stateReason = value; }
-
-    /**
-     * <p>The reason that the replay is in the current state.</p>
-     */
-    inline void SetStateReason(Aws::String&& value) { m_stateReason = std::move(value); }
-
-    /**
-     * <p>The reason that the replay is in the current state.</p>
-     */
-    inline void SetStateReason(const char* value) { m_stateReason.assign(value); }
-
-    /**
-     * <p>The reason that the replay is in the current state.</p>
-     */
-    inline DescribeReplayResult& WithStateReason(const Aws::String& value) { SetStateReason(value); return *this;}
-
-    /**
-     * <p>The reason that the replay is in the current state.</p>
-     */
-    inline DescribeReplayResult& WithStateReason(Aws::String&& value) { SetStateReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason that the replay is in the current state.</p>
-     */
-    inline DescribeReplayResult& WithStateReason(const char* value) { SetStateReason(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the archive events were replayed from.</p>
      */
-    inline const Aws::String& GetEventSourceArn() const{ return m_eventSourceArn; }
+    inline const Aws::String& GetEventSourceArn() const { return m_eventSourceArn; }
+    template<typename EventSourceArnT = Aws::String>
+    void SetEventSourceArn(EventSourceArnT&& value) { m_eventSourceArnHasBeenSet = true; m_eventSourceArn = std::forward<EventSourceArnT>(value); }
+    template<typename EventSourceArnT = Aws::String>
+    DescribeReplayResult& WithEventSourceArn(EventSourceArnT&& value) { SetEventSourceArn(std::forward<EventSourceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the archive events were replayed from.</p>
-     */
-    inline void SetEventSourceArn(const Aws::String& value) { m_eventSourceArn = value; }
-
-    /**
-     * <p>The ARN of the archive events were replayed from.</p>
-     */
-    inline void SetEventSourceArn(Aws::String&& value) { m_eventSourceArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the archive events were replayed from.</p>
-     */
-    inline void SetEventSourceArn(const char* value) { m_eventSourceArn.assign(value); }
-
-    /**
-     * <p>The ARN of the archive events were replayed from.</p>
-     */
-    inline DescribeReplayResult& WithEventSourceArn(const Aws::String& value) { SetEventSourceArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the archive events were replayed from.</p>
-     */
-    inline DescribeReplayResult& WithEventSourceArn(Aws::String&& value) { SetEventSourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the archive events were replayed from.</p>
-     */
-    inline DescribeReplayResult& WithEventSourceArn(const char* value) { SetEventSourceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A <code>ReplayDestination</code> object that contains details about the
      * replay.</p>
      */
-    inline const ReplayDestination& GetDestination() const{ return m_destination; }
+    inline const ReplayDestination& GetDestination() const { return m_destination; }
+    template<typename DestinationT = ReplayDestination>
+    void SetDestination(DestinationT&& value) { m_destinationHasBeenSet = true; m_destination = std::forward<DestinationT>(value); }
+    template<typename DestinationT = ReplayDestination>
+    DescribeReplayResult& WithDestination(DestinationT&& value) { SetDestination(std::forward<DestinationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A <code>ReplayDestination</code> object that contains details about the
-     * replay.</p>
-     */
-    inline void SetDestination(const ReplayDestination& value) { m_destination = value; }
-
-    /**
-     * <p>A <code>ReplayDestination</code> object that contains details about the
-     * replay.</p>
-     */
-    inline void SetDestination(ReplayDestination&& value) { m_destination = std::move(value); }
-
-    /**
-     * <p>A <code>ReplayDestination</code> object that contains details about the
-     * replay.</p>
-     */
-    inline DescribeReplayResult& WithDestination(const ReplayDestination& value) { SetDestination(value); return *this;}
-
-    /**
-     * <p>A <code>ReplayDestination</code> object that contains details about the
-     * replay.</p>
-     */
-    inline DescribeReplayResult& WithDestination(ReplayDestination&& value) { SetDestination(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time stamp of the first event that was last replayed from the
      * archive.</p>
      */
-    inline const Aws::Utils::DateTime& GetEventStartTime() const{ return m_eventStartTime; }
+    inline const Aws::Utils::DateTime& GetEventStartTime() const { return m_eventStartTime; }
+    template<typename EventStartTimeT = Aws::Utils::DateTime>
+    void SetEventStartTime(EventStartTimeT&& value) { m_eventStartTimeHasBeenSet = true; m_eventStartTime = std::forward<EventStartTimeT>(value); }
+    template<typename EventStartTimeT = Aws::Utils::DateTime>
+    DescribeReplayResult& WithEventStartTime(EventStartTimeT&& value) { SetEventStartTime(std::forward<EventStartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time stamp of the first event that was last replayed from the
-     * archive.</p>
-     */
-    inline void SetEventStartTime(const Aws::Utils::DateTime& value) { m_eventStartTime = value; }
-
-    /**
-     * <p>The time stamp of the first event that was last replayed from the
-     * archive.</p>
-     */
-    inline void SetEventStartTime(Aws::Utils::DateTime&& value) { m_eventStartTime = std::move(value); }
-
-    /**
-     * <p>The time stamp of the first event that was last replayed from the
-     * archive.</p>
-     */
-    inline DescribeReplayResult& WithEventStartTime(const Aws::Utils::DateTime& value) { SetEventStartTime(value); return *this;}
-
-    /**
-     * <p>The time stamp of the first event that was last replayed from the
-     * archive.</p>
-     */
-    inline DescribeReplayResult& WithEventStartTime(Aws::Utils::DateTime&& value) { SetEventStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time stamp for the last event that was replayed from the archive.</p>
      */
-    inline const Aws::Utils::DateTime& GetEventEndTime() const{ return m_eventEndTime; }
+    inline const Aws::Utils::DateTime& GetEventEndTime() const { return m_eventEndTime; }
+    template<typename EventEndTimeT = Aws::Utils::DateTime>
+    void SetEventEndTime(EventEndTimeT&& value) { m_eventEndTimeHasBeenSet = true; m_eventEndTime = std::forward<EventEndTimeT>(value); }
+    template<typename EventEndTimeT = Aws::Utils::DateTime>
+    DescribeReplayResult& WithEventEndTime(EventEndTimeT&& value) { SetEventEndTime(std::forward<EventEndTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time stamp for the last event that was replayed from the archive.</p>
-     */
-    inline void SetEventEndTime(const Aws::Utils::DateTime& value) { m_eventEndTime = value; }
-
-    /**
-     * <p>The time stamp for the last event that was replayed from the archive.</p>
-     */
-    inline void SetEventEndTime(Aws::Utils::DateTime&& value) { m_eventEndTime = std::move(value); }
-
-    /**
-     * <p>The time stamp for the last event that was replayed from the archive.</p>
-     */
-    inline DescribeReplayResult& WithEventEndTime(const Aws::Utils::DateTime& value) { SetEventEndTime(value); return *this;}
-
-    /**
-     * <p>The time stamp for the last event that was replayed from the archive.</p>
-     */
-    inline DescribeReplayResult& WithEventEndTime(Aws::Utils::DateTime&& value) { SetEventEndTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time that the event was last replayed.</p>
      */
-    inline const Aws::Utils::DateTime& GetEventLastReplayedTime() const{ return m_eventLastReplayedTime; }
+    inline const Aws::Utils::DateTime& GetEventLastReplayedTime() const { return m_eventLastReplayedTime; }
+    template<typename EventLastReplayedTimeT = Aws::Utils::DateTime>
+    void SetEventLastReplayedTime(EventLastReplayedTimeT&& value) { m_eventLastReplayedTimeHasBeenSet = true; m_eventLastReplayedTime = std::forward<EventLastReplayedTimeT>(value); }
+    template<typename EventLastReplayedTimeT = Aws::Utils::DateTime>
+    DescribeReplayResult& WithEventLastReplayedTime(EventLastReplayedTimeT&& value) { SetEventLastReplayedTime(std::forward<EventLastReplayedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time that the event was last replayed.</p>
-     */
-    inline void SetEventLastReplayedTime(const Aws::Utils::DateTime& value) { m_eventLastReplayedTime = value; }
-
-    /**
-     * <p>The time that the event was last replayed.</p>
-     */
-    inline void SetEventLastReplayedTime(Aws::Utils::DateTime&& value) { m_eventLastReplayedTime = std::move(value); }
-
-    /**
-     * <p>The time that the event was last replayed.</p>
-     */
-    inline DescribeReplayResult& WithEventLastReplayedTime(const Aws::Utils::DateTime& value) { SetEventLastReplayedTime(value); return *this;}
-
-    /**
-     * <p>The time that the event was last replayed.</p>
-     */
-    inline DescribeReplayResult& WithEventLastReplayedTime(Aws::Utils::DateTime&& value) { SetEventLastReplayedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A time stamp for the time that the replay started.</p>
      */
-    inline const Aws::Utils::DateTime& GetReplayStartTime() const{ return m_replayStartTime; }
+    inline const Aws::Utils::DateTime& GetReplayStartTime() const { return m_replayStartTime; }
+    template<typename ReplayStartTimeT = Aws::Utils::DateTime>
+    void SetReplayStartTime(ReplayStartTimeT&& value) { m_replayStartTimeHasBeenSet = true; m_replayStartTime = std::forward<ReplayStartTimeT>(value); }
+    template<typename ReplayStartTimeT = Aws::Utils::DateTime>
+    DescribeReplayResult& WithReplayStartTime(ReplayStartTimeT&& value) { SetReplayStartTime(std::forward<ReplayStartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A time stamp for the time that the replay started.</p>
-     */
-    inline void SetReplayStartTime(const Aws::Utils::DateTime& value) { m_replayStartTime = value; }
-
-    /**
-     * <p>A time stamp for the time that the replay started.</p>
-     */
-    inline void SetReplayStartTime(Aws::Utils::DateTime&& value) { m_replayStartTime = std::move(value); }
-
-    /**
-     * <p>A time stamp for the time that the replay started.</p>
-     */
-    inline DescribeReplayResult& WithReplayStartTime(const Aws::Utils::DateTime& value) { SetReplayStartTime(value); return *this;}
-
-    /**
-     * <p>A time stamp for the time that the replay started.</p>
-     */
-    inline DescribeReplayResult& WithReplayStartTime(Aws::Utils::DateTime&& value) { SetReplayStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A time stamp for the time that the replay stopped.</p>
      */
-    inline const Aws::Utils::DateTime& GetReplayEndTime() const{ return m_replayEndTime; }
+    inline const Aws::Utils::DateTime& GetReplayEndTime() const { return m_replayEndTime; }
+    template<typename ReplayEndTimeT = Aws::Utils::DateTime>
+    void SetReplayEndTime(ReplayEndTimeT&& value) { m_replayEndTimeHasBeenSet = true; m_replayEndTime = std::forward<ReplayEndTimeT>(value); }
+    template<typename ReplayEndTimeT = Aws::Utils::DateTime>
+    DescribeReplayResult& WithReplayEndTime(ReplayEndTimeT&& value) { SetReplayEndTime(std::forward<ReplayEndTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A time stamp for the time that the replay stopped.</p>
-     */
-    inline void SetReplayEndTime(const Aws::Utils::DateTime& value) { m_replayEndTime = value; }
-
-    /**
-     * <p>A time stamp for the time that the replay stopped.</p>
-     */
-    inline void SetReplayEndTime(Aws::Utils::DateTime&& value) { m_replayEndTime = std::move(value); }
-
-    /**
-     * <p>A time stamp for the time that the replay stopped.</p>
-     */
-    inline DescribeReplayResult& WithReplayEndTime(const Aws::Utils::DateTime& value) { SetReplayEndTime(value); return *this;}
-
-    /**
-     * <p>A time stamp for the time that the replay stopped.</p>
-     */
-    inline DescribeReplayResult& WithReplayEndTime(Aws::Utils::DateTime&& value) { SetReplayEndTime(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeReplayResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeReplayResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeReplayResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeReplayResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_replayName;
+    bool m_replayNameHasBeenSet = false;
 
     Aws::String m_replayArn;
+    bool m_replayArnHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
-    ReplayState m_state;
+    ReplayState m_state{ReplayState::NOT_SET};
+    bool m_stateHasBeenSet = false;
 
     Aws::String m_stateReason;
+    bool m_stateReasonHasBeenSet = false;
 
     Aws::String m_eventSourceArn;
+    bool m_eventSourceArnHasBeenSet = false;
 
     ReplayDestination m_destination;
+    bool m_destinationHasBeenSet = false;
 
-    Aws::Utils::DateTime m_eventStartTime;
+    Aws::Utils::DateTime m_eventStartTime{};
+    bool m_eventStartTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_eventEndTime;
+    Aws::Utils::DateTime m_eventEndTime{};
+    bool m_eventEndTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_eventLastReplayedTime;
+    Aws::Utils::DateTime m_eventLastReplayedTime{};
+    bool m_eventLastReplayedTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_replayStartTime;
+    Aws::Utils::DateTime m_replayStartTime{};
+    bool m_replayStartTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_replayEndTime;
+    Aws::Utils::DateTime m_replayEndTime{};
+    bool m_replayEndTimeHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

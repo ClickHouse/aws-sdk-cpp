@@ -31,7 +31,7 @@ namespace Model
   class AvailabilityZone
   {
   public:
-    AWS_NEPTUNE_API AvailabilityZone();
+    AWS_NEPTUNE_API AvailabilityZone() = default;
     AWS_NEPTUNE_API AvailabilityZone(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_NEPTUNE_API AvailabilityZone& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -39,46 +39,17 @@ namespace Model
     AWS_NEPTUNE_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The name of the availability zone.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the availability zone.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>The name of the availability zone.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the availability zone.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the availability zone.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the availability zone.</p>
-     */
-    inline AvailabilityZone& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the availability zone.</p>
-     */
-    inline AvailabilityZone& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the availability zone.</p>
-     */
-    inline AvailabilityZone& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    AvailabilityZone& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

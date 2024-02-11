@@ -32,52 +32,23 @@ namespace Model
   class QueryRecommendationTriggerData
   {
   public:
-    AWS_CONNECTWISDOMSERVICE_API QueryRecommendationTriggerData();
+    AWS_CONNECTWISDOMSERVICE_API QueryRecommendationTriggerData() = default;
     AWS_CONNECTWISDOMSERVICE_API QueryRecommendationTriggerData(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTWISDOMSERVICE_API QueryRecommendationTriggerData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTWISDOMSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The text associated with the recommendation trigger.</p>
      */
-    inline const Aws::String& GetText() const{ return m_text; }
-
-    /**
-     * <p>The text associated with the recommendation trigger.</p>
-     */
+    inline const Aws::String& GetText() const { return m_text; }
     inline bool TextHasBeenSet() const { return m_textHasBeenSet; }
-
-    /**
-     * <p>The text associated with the recommendation trigger.</p>
-     */
-    inline void SetText(const Aws::String& value) { m_textHasBeenSet = true; m_text = value; }
-
-    /**
-     * <p>The text associated with the recommendation trigger.</p>
-     */
-    inline void SetText(Aws::String&& value) { m_textHasBeenSet = true; m_text = std::move(value); }
-
-    /**
-     * <p>The text associated with the recommendation trigger.</p>
-     */
-    inline void SetText(const char* value) { m_textHasBeenSet = true; m_text.assign(value); }
-
-    /**
-     * <p>The text associated with the recommendation trigger.</p>
-     */
-    inline QueryRecommendationTriggerData& WithText(const Aws::String& value) { SetText(value); return *this;}
-
-    /**
-     * <p>The text associated with the recommendation trigger.</p>
-     */
-    inline QueryRecommendationTriggerData& WithText(Aws::String&& value) { SetText(std::move(value)); return *this;}
-
-    /**
-     * <p>The text associated with the recommendation trigger.</p>
-     */
-    inline QueryRecommendationTriggerData& WithText(const char* value) { SetText(value); return *this;}
-
+    template<typename TextT = Aws::String>
+    void SetText(TextT&& value) { m_textHasBeenSet = true; m_text = std::forward<TextT>(value); }
+    template<typename TextT = Aws::String>
+    QueryRecommendationTriggerData& WithText(TextT&& value) { SetText(std::forward<TextT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_text;

@@ -10,20 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ProvisionByoipCidrRequest::ProvisionByoipCidrRequest() : 
-    m_cidrHasBeenSet(false),
-    m_cidrAuthorizationContextHasBeenSet(false),
-    m_publiclyAdvertisable(false),
-    m_publiclyAdvertisableHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_poolTagSpecificationsHasBeenSet(false),
-    m_multiRegion(false),
-    m_multiRegionHasBeenSet(false)
-{
-}
-
 Aws::String ProvisionByoipCidrRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -66,6 +52,11 @@ Aws::String ProvisionByoipCidrRequest::SerializePayload() const
   if(m_multiRegionHasBeenSet)
   {
     ss << "MultiRegion=" << std::boolalpha << m_multiRegion << "&";
+  }
+
+  if(m_networkBorderGroupHasBeenSet)
+  {
+    ss << "NetworkBorderGroup=" << StringUtils::URLEncode(m_networkBorderGroup.c_str()) << "&";
   }
 
   ss << "Version=2016-11-15";

@@ -21,7 +21,7 @@ namespace Model
   class DescribeVpcIngressConnectionRequest : public AppRunnerRequest
   {
   public:
-    AWS_APPRUNNER_API DescribeVpcIngressConnectionRequest();
+    AWS_APPRUNNER_API DescribeVpcIngressConnectionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_APPRUNNER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the App Runner VPC Ingress Connection that
      * you want a description for.</p>
      */
-    inline const Aws::String& GetVpcIngressConnectionArn() const{ return m_vpcIngressConnectionArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the App Runner VPC Ingress Connection that
-     * you want a description for.</p>
-     */
+    inline const Aws::String& GetVpcIngressConnectionArn() const { return m_vpcIngressConnectionArn; }
     inline bool VpcIngressConnectionArnHasBeenSet() const { return m_vpcIngressConnectionArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the App Runner VPC Ingress Connection that
-     * you want a description for.</p>
-     */
-    inline void SetVpcIngressConnectionArn(const Aws::String& value) { m_vpcIngressConnectionArnHasBeenSet = true; m_vpcIngressConnectionArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the App Runner VPC Ingress Connection that
-     * you want a description for.</p>
-     */
-    inline void SetVpcIngressConnectionArn(Aws::String&& value) { m_vpcIngressConnectionArnHasBeenSet = true; m_vpcIngressConnectionArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the App Runner VPC Ingress Connection that
-     * you want a description for.</p>
-     */
-    inline void SetVpcIngressConnectionArn(const char* value) { m_vpcIngressConnectionArnHasBeenSet = true; m_vpcIngressConnectionArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the App Runner VPC Ingress Connection that
-     * you want a description for.</p>
-     */
-    inline DescribeVpcIngressConnectionRequest& WithVpcIngressConnectionArn(const Aws::String& value) { SetVpcIngressConnectionArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the App Runner VPC Ingress Connection that
-     * you want a description for.</p>
-     */
-    inline DescribeVpcIngressConnectionRequest& WithVpcIngressConnectionArn(Aws::String&& value) { SetVpcIngressConnectionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the App Runner VPC Ingress Connection that
-     * you want a description for.</p>
-     */
-    inline DescribeVpcIngressConnectionRequest& WithVpcIngressConnectionArn(const char* value) { SetVpcIngressConnectionArn(value); return *this;}
-
+    template<typename VpcIngressConnectionArnT = Aws::String>
+    void SetVpcIngressConnectionArn(VpcIngressConnectionArnT&& value) { m_vpcIngressConnectionArnHasBeenSet = true; m_vpcIngressConnectionArn = std::forward<VpcIngressConnectionArnT>(value); }
+    template<typename VpcIngressConnectionArnT = Aws::String>
+    DescribeVpcIngressConnectionRequest& WithVpcIngressConnectionArn(VpcIngressConnectionArnT&& value) { SetVpcIngressConnectionArn(std::forward<VpcIngressConnectionArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_vpcIngressConnectionArn;

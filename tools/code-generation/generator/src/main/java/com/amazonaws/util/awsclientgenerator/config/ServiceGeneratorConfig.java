@@ -8,6 +8,7 @@ package com.amazonaws.util.awsclientgenerator.config;
 import com.amazonaws.util.awsclientgenerator.SdkSpec;
 import com.amazonaws.util.awsclientgenerator.config.exceptions.GeneratorNotImplementedException;
 import com.amazonaws.util.awsclientgenerator.generators.ClientGenerator;
+import com.amazonaws.util.awsclientgenerator.generators.cpp.CborCppClientGenerator;
 import com.amazonaws.util.awsclientgenerator.generators.cpp.JsonCppClientGenerator;
 import com.amazonaws.util.awsclientgenerator.generators.cpp.QueryCppClientGenerator;
 import com.amazonaws.util.awsclientgenerator.generators.cpp.RestXmlCppClientGenerator;
@@ -20,12 +21,15 @@ import com.amazonaws.util.awsclientgenerator.generators.cpp.eventbridge.EventBri
 import com.amazonaws.util.awsclientgenerator.generators.cpp.glacier.GlacierRestJsonCppClientGenerator;
 import com.amazonaws.util.awsclientgenerator.generators.cpp.lambda.LambdaRestJsonCppClientGenerator;
 import com.amazonaws.util.awsclientgenerator.generators.cpp.machinelearning.MachineLearningJsonCppClientGenerator;
+import com.amazonaws.util.awsclientgenerator.generators.cpp.monitoring.CloudwatchMonitoringJsonCppClientGenerator;
 import com.amazonaws.util.awsclientgenerator.generators.cpp.neptune.NeptuneCppClientGenerator;
 import com.amazonaws.util.awsclientgenerator.generators.cpp.polly.PollyCppClientGenerator;
 import com.amazonaws.util.awsclientgenerator.generators.cpp.rds.RDSCppClientGenerator;
 import com.amazonaws.util.awsclientgenerator.generators.cpp.s3.S3RestXmlCppClientGenerator;
 import com.amazonaws.util.awsclientgenerator.generators.cpp.s3control.S3ControlRestXmlCppClientGenerator;
+import com.amazonaws.util.awsclientgenerator.generators.cpp.sqs.SQSJsonCppClientGenerator;
 import com.amazonaws.util.awsclientgenerator.generators.cpp.sqs.SQSQueryXmlCppClientGenerator;
+import com.amazonaws.util.awsclientgenerator.generators.cpp.dsql.DsqlCppClientGenerator;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,6 +45,7 @@ public class ServiceGeneratorConfig {
             LANGUAGE_PROTOCOL_DEFAULT_MAPPING.put("cpp-application-json", new JsonCppClientGenerator());
             LANGUAGE_PROTOCOL_DEFAULT_MAPPING.put("cpp-rest-xml", new RestXmlCppClientGenerator());
             LANGUAGE_PROTOCOL_DEFAULT_MAPPING.put("cpp-query", new QueryCppClientGenerator());
+            LANGUAGE_PROTOCOL_DEFAULT_MAPPING.put("cpp-smithy-rpc-v2-cbor", new CborCppClientGenerator());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -48,23 +53,29 @@ public class ServiceGeneratorConfig {
 
     static {
         try {
-            SPEC_OVERRIDE_MAPPING.put("cpp-dynamodb", new DynamoDBJsonCppClientGenerator());
-            SPEC_OVERRIDE_MAPPING.put("cpp-glacier", new GlacierRestJsonCppClientGenerator());
-            SPEC_OVERRIDE_MAPPING.put("cpp-lambda", new LambdaRestJsonCppClientGenerator());
-            SPEC_OVERRIDE_MAPPING.put("cpp-sqs", new SQSQueryXmlCppClientGenerator());
-            SPEC_OVERRIDE_MAPPING.put("cpp-s3", new S3RestXmlCppClientGenerator());
-            SPEC_OVERRIDE_MAPPING.put("cpp-s3-crt", new S3RestXmlCppClientGenerator());
-            SPEC_OVERRIDE_MAPPING.put("cpp-s3control", new S3ControlRestXmlCppClientGenerator());
-            SPEC_OVERRIDE_MAPPING.put("cpp-ec2", new Ec2CppClientGenerator());
-            SPEC_OVERRIDE_MAPPING.put("cpp-apigateway", new APIGatewayRestJsonCppClientGenerator());
-            SPEC_OVERRIDE_MAPPING.put("cpp-apigatewayv2", new APIGatewayV2RestJsonCppClientGenerator());
-            SPEC_OVERRIDE_MAPPING.put("cpp-machinelearning", new MachineLearningJsonCppClientGenerator());
-            SPEC_OVERRIDE_MAPPING.put("cpp-polly", new PollyCppClientGenerator());
-            SPEC_OVERRIDE_MAPPING.put("cpp-rds", new RDSCppClientGenerator());
-            SPEC_OVERRIDE_MAPPING.put("cpp-docdb", new DocDBCppClientGenerator());
-            SPEC_OVERRIDE_MAPPING.put("cpp-neptune", new NeptuneCppClientGenerator());
-            SPEC_OVERRIDE_MAPPING.put("cpp-eventbridge", new EventBridgeCppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-dynamodb-json", new DynamoDBJsonCppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-glacier-rest-json", new GlacierRestJsonCppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-lambda-rest-json", new LambdaRestJsonCppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-sqs-query", new SQSQueryXmlCppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-sqs-json", new SQSJsonCppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-s3-rest-xml", new S3RestXmlCppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-s3-crt-rest-xml", new S3RestXmlCppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-s3control-rest-xml", new S3ControlRestXmlCppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-ec2-ec2", new Ec2CppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-apigateway-rest-json", new APIGatewayRestJsonCppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-apigatewayv2-rest-json", new APIGatewayV2RestJsonCppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-machinelearning-json", new MachineLearningJsonCppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-polly-rest-json", new PollyCppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-rds-query", new RDSCppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-docdb-query", new DocDBCppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-neptune-query", new NeptuneCppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-eventbridge-json", new EventBridgeCppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-dsql-rest-json", new DsqlCppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-monitoring-json", new CloudwatchMonitoringJsonCppClientGenerator());
 
+            // protocol tests clients
+            SPEC_OVERRIDE_MAPPING.put("cpp-ec2-protocol-ec2", new Ec2CppClientGenerator());
+            SPEC_OVERRIDE_MAPPING.put("cpp-rpcv2protocol-smithy-rpc-v2-cbor", new CborCppClientGenerator());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -73,7 +84,7 @@ public class ServiceGeneratorConfig {
     public static ClientGenerator findGenerator(final SdkSpec spec, final String protocol)
             throws GeneratorNotImplementedException {
 
-        ClientGenerator generator = SPEC_OVERRIDE_MAPPING.get(String.format("%s-%s", spec.getLanguageBinding(), spec.getServiceName()));
+        ClientGenerator generator = SPEC_OVERRIDE_MAPPING.get(String.format("%s-%s-%s", spec.getLanguageBinding(), spec.getServiceName(), protocol));
 
         if (generator == null) {
             generator = LANGUAGE_PROTOCOL_DEFAULT_MAPPING.get(spec.getLanguageBinding() + "-" + protocol);

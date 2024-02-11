@@ -12,18 +12,6 @@ using namespace Aws::FraudDetector::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutEventTypeRequest::PutEventTypeRequest() : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_eventVariablesHasBeenSet(false),
-    m_labelsHasBeenSet(false),
-    m_entityTypesHasBeenSet(false),
-    m_eventIngestion(EventIngestion::NOT_SET),
-    m_eventIngestionHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String PutEventTypeRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -86,6 +74,12 @@ Aws::String PutEventTypeRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_eventOrchestrationHasBeenSet)
+  {
+   payload.WithObject("eventOrchestration", m_eventOrchestration.Jsonize());
 
   }
 

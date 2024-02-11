@@ -12,12 +12,6 @@ using namespace Aws::WorkMail::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateGroupRequest::CreateGroupRequest() : 
-    m_organizationIdHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
 Aws::String CreateGroupRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,12 @@ Aws::String CreateGroupRequest::SerializePayload() const
   if(m_nameHasBeenSet)
   {
    payload.WithString("Name", m_name);
+
+  }
+
+  if(m_hiddenFromGlobalAddressListHasBeenSet)
+  {
+   payload.WithBool("HiddenFromGlobalAddressList", m_hiddenFromGlobalAddressList);
 
   }
 

@@ -31,52 +31,23 @@ namespace Model
   class DetectorStateSummary
   {
   public:
-    AWS_IOTEVENTSDATA_API DetectorStateSummary();
+    AWS_IOTEVENTSDATA_API DetectorStateSummary() = default;
     AWS_IOTEVENTSDATA_API DetectorStateSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTSDATA_API DetectorStateSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTSDATA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the state.</p>
      */
-    inline const Aws::String& GetStateName() const{ return m_stateName; }
-
-    /**
-     * <p>The name of the state.</p>
-     */
+    inline const Aws::String& GetStateName() const { return m_stateName; }
     inline bool StateNameHasBeenSet() const { return m_stateNameHasBeenSet; }
-
-    /**
-     * <p>The name of the state.</p>
-     */
-    inline void SetStateName(const Aws::String& value) { m_stateNameHasBeenSet = true; m_stateName = value; }
-
-    /**
-     * <p>The name of the state.</p>
-     */
-    inline void SetStateName(Aws::String&& value) { m_stateNameHasBeenSet = true; m_stateName = std::move(value); }
-
-    /**
-     * <p>The name of the state.</p>
-     */
-    inline void SetStateName(const char* value) { m_stateNameHasBeenSet = true; m_stateName.assign(value); }
-
-    /**
-     * <p>The name of the state.</p>
-     */
-    inline DetectorStateSummary& WithStateName(const Aws::String& value) { SetStateName(value); return *this;}
-
-    /**
-     * <p>The name of the state.</p>
-     */
-    inline DetectorStateSummary& WithStateName(Aws::String&& value) { SetStateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the state.</p>
-     */
-    inline DetectorStateSummary& WithStateName(const char* value) { SetStateName(value); return *this;}
-
+    template<typename StateNameT = Aws::String>
+    void SetStateName(StateNameT&& value) { m_stateNameHasBeenSet = true; m_stateName = std::forward<StateNameT>(value); }
+    template<typename StateNameT = Aws::String>
+    DetectorStateSummary& WithStateName(StateNameT&& value) { SetStateName(std::forward<StateNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_stateName;

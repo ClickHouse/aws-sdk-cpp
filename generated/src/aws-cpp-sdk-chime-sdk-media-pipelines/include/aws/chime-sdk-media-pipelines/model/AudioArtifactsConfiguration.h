@@ -31,45 +31,24 @@ namespace Model
   class AudioArtifactsConfiguration
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API AudioArtifactsConfiguration();
+    AWS_CHIMESDKMEDIAPIPELINES_API AudioArtifactsConfiguration() = default;
     AWS_CHIMESDKMEDIAPIPELINES_API AudioArtifactsConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API AudioArtifactsConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The MUX type of the audio artifact configuration object.</p>
      */
-    inline const AudioMuxType& GetMuxType() const{ return m_muxType; }
-
-    /**
-     * <p>The MUX type of the audio artifact configuration object.</p>
-     */
+    inline AudioMuxType GetMuxType() const { return m_muxType; }
     inline bool MuxTypeHasBeenSet() const { return m_muxTypeHasBeenSet; }
-
-    /**
-     * <p>The MUX type of the audio artifact configuration object.</p>
-     */
-    inline void SetMuxType(const AudioMuxType& value) { m_muxTypeHasBeenSet = true; m_muxType = value; }
-
-    /**
-     * <p>The MUX type of the audio artifact configuration object.</p>
-     */
-    inline void SetMuxType(AudioMuxType&& value) { m_muxTypeHasBeenSet = true; m_muxType = std::move(value); }
-
-    /**
-     * <p>The MUX type of the audio artifact configuration object.</p>
-     */
-    inline AudioArtifactsConfiguration& WithMuxType(const AudioMuxType& value) { SetMuxType(value); return *this;}
-
-    /**
-     * <p>The MUX type of the audio artifact configuration object.</p>
-     */
-    inline AudioArtifactsConfiguration& WithMuxType(AudioMuxType&& value) { SetMuxType(std::move(value)); return *this;}
-
+    inline void SetMuxType(AudioMuxType value) { m_muxTypeHasBeenSet = true; m_muxType = value; }
+    inline AudioArtifactsConfiguration& WithMuxType(AudioMuxType value) { SetMuxType(value); return *this;}
+    ///@}
   private:
 
-    AudioMuxType m_muxType;
+    AudioMuxType m_muxType{AudioMuxType::NOT_SET};
     bool m_muxTypeHasBeenSet = false;
   };
 

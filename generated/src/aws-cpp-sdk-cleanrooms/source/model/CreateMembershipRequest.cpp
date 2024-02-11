@@ -12,14 +12,6 @@ using namespace Aws::CleanRooms::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateMembershipRequest::CreateMembershipRequest() : 
-    m_collaborationIdentifierHasBeenSet(false),
-    m_queryLogStatus(MembershipQueryLogStatus::NOT_SET),
-    m_queryLogStatusHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateMembershipRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -35,6 +27,11 @@ Aws::String CreateMembershipRequest::SerializePayload() const
    payload.WithString("queryLogStatus", MembershipQueryLogStatusMapper::GetNameForMembershipQueryLogStatus(m_queryLogStatus));
   }
 
+  if(m_jobLogStatusHasBeenSet)
+  {
+   payload.WithString("jobLogStatus", MembershipJobLogStatusMapper::GetNameForMembershipJobLogStatus(m_jobLogStatus));
+  }
+
   if(m_tagsHasBeenSet)
   {
    JsonValue tagsJsonMap;
@@ -43,6 +40,24 @@ Aws::String CreateMembershipRequest::SerializePayload() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_defaultResultConfigurationHasBeenSet)
+  {
+   payload.WithObject("defaultResultConfiguration", m_defaultResultConfiguration.Jsonize());
+
+  }
+
+  if(m_defaultJobResultConfigurationHasBeenSet)
+  {
+   payload.WithObject("defaultJobResultConfiguration", m_defaultJobResultConfiguration.Jsonize());
+
+  }
+
+  if(m_paymentConfigurationHasBeenSet)
+  {
+   payload.WithObject("paymentConfiguration", m_paymentConfiguration.Jsonize());
 
   }
 

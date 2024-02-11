@@ -18,15 +18,7 @@ namespace SSOOIDC
 namespace Model
 {
 
-InvalidRequestException::InvalidRequestException() : 
-    m_errorHasBeenSet(false),
-    m_error_descriptionHasBeenSet(false)
-{
-}
-
-InvalidRequestException::InvalidRequestException(JsonView jsonValue) : 
-    m_errorHasBeenSet(false),
-    m_error_descriptionHasBeenSet(false)
+InvalidRequestException::InvalidRequestException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ InvalidRequestException& InvalidRequestException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("error"))
   {
     m_error = jsonValue.GetString("error");
-
     m_errorHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("reason"))
+  {
+    m_reason = InvalidRequestExceptionReasonMapper::GetInvalidRequestExceptionReasonForName(jsonValue.GetString("reason"));
+    m_reasonHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("error_description"))
   {
     m_error_description = jsonValue.GetString("error_description");
-
     m_error_descriptionHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -58,6 +51,11 @@ JsonValue InvalidRequestException::Jsonize() const
   {
    payload.WithString("error", m_error);
 
+  }
+
+  if(m_reasonHasBeenSet)
+  {
+   payload.WithString("reason", InvalidRequestExceptionReasonMapper::GetNameForInvalidRequestExceptionReason(m_reason));
   }
 
   if(m_error_descriptionHasBeenSet)

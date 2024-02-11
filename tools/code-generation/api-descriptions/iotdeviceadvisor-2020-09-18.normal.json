@@ -5,12 +5,14 @@
     "endpointPrefix":"api.iotdeviceadvisor",
     "jsonVersion":"1.1",
     "protocol":"rest-json",
+    "protocols":["rest-json"],
     "serviceAbbreviation":"AWSIoTDeviceAdvisor",
     "serviceFullName":"AWS IoT Core Device Advisor",
     "serviceId":"IotDeviceAdvisor",
     "signatureVersion":"v4",
     "signingName":"iotdeviceadvisor",
-    "uid":"iotdeviceadvisor-2020-09-18"
+    "uid":"iotdeviceadvisor-2020-09-18",
+    "auth":["aws.auth#sigv4"]
   },
   "operations":{
     "CreateSuiteDefinition":{
@@ -225,6 +227,19 @@
       "max":2048,
       "min":20
     },
+    "AuthenticationMethod":{
+      "type":"string",
+      "enum":[
+        "X509ClientCertificate",
+        "SignatureVersion4"
+      ]
+    },
+    "ClientToken":{
+      "type":"string",
+      "max":64,
+      "min":1,
+      "pattern":"^[\\u0021-\\u007E]+$"
+    },
     "ConflictException":{
       "type":"structure",
       "members":{
@@ -248,6 +263,11 @@
         "tags":{
           "shape":"TagMap",
           "documentation":"<p>The tags to be attached to the suite definition.</p>"
+        },
+        "clientToken":{
+          "shape":"ClientToken",
+          "documentation":"<p>The client token for the test suite definition creation. This token is used for tracking test suite definition creation using retries and obtaining its status. This parameter is optional.</p>",
+          "idempotencyToken":true
         }
       }
     },
@@ -286,22 +306,25 @@
     },
     "DeleteSuiteDefinitionResponse":{
       "type":"structure",
-      "members":{
-      }
+      "members":{}
     },
     "DeviceUnderTest":{
       "type":"structure",
       "members":{
         "thingArn":{
           "shape":"AmazonResourceName",
-          "documentation":"<p>Lists devices thing ARN.</p>"
+          "documentation":"<p>Lists device's thing ARN.</p>"
         },
         "certificateArn":{
           "shape":"AmazonResourceName",
-          "documentation":"<p>Lists devices certificate ARN.</p>"
+          "documentation":"<p>Lists device's certificate ARN.</p>"
+        },
+        "deviceRoleArn":{
+          "shape":"AmazonResourceName",
+          "documentation":"<p>Lists device's role ARN.</p>"
         }
       },
-      "documentation":"<p>Information of a test device. A thing ARN or a certificate ARN is required.</p>"
+      "documentation":"<p>Information of a test device. A thing ARN, certificate ARN or device role ARN is required.</p>"
     },
     "DeviceUnderTestList":{
       "type":"list",
@@ -330,6 +353,18 @@
           "documentation":"<p>The certificate ARN of the device. This is an optional parameter.</p>",
           "location":"querystring",
           "locationName":"certificateArn"
+        },
+        "deviceRoleArn":{
+          "shape":"AmazonResourceName",
+          "documentation":"<p>The device role ARN of the device. This is an optional parameter.</p>",
+          "location":"querystring",
+          "locationName":"deviceRoleArn"
+        },
+        "authenticationMethod":{
+          "shape":"AuthenticationMethod",
+          "documentation":"<p>The authentication method used during the device connection.</p>",
+          "location":"querystring",
+          "locationName":"authenticationMethod"
         }
       }
     },
@@ -645,7 +680,9 @@
       "type":"string",
       "enum":[
         "MqttV3_1_1",
-        "MqttV5"
+        "MqttV5",
+        "MqttV3_1_1_OverWebSocket",
+        "MqttV5_OverWebSocket"
       ]
     },
     "QualificationReportDownloadUrl":{"type":"string"},
@@ -664,7 +701,7 @@
     "RootGroup":{
       "type":"string",
       "max":2048,
-      "min":1
+      "min":0
     },
     "SelectedTestList":{
       "type":"list",
@@ -757,8 +794,7 @@
     },
     "StopSuiteRunResponse":{
       "type":"structure",
-      "members":{
-      }
+      "members":{}
     },
     "String128":{
       "type":"string",
@@ -796,7 +832,7 @@
         },
         "rootGroup":{
           "shape":"RootGroup",
-          "documentation":"<p>Gets the test suite root group. This is a required parameter.</p>"
+          "documentation":"<p>Gets the test suite root group. This is a required parameter. For updating or creating the latest qualification suite, if <code>intendedForQualification</code> is set to true, <code>rootGroup</code> can be an empty string. If <code>intendedForQualification</code> is false, <code>rootGroup</code> cannot be an empty string. If <code>rootGroup</code> is empty, and <code>intendedForQualification</code> is set to true, all the qualification tests are included, and the configuration is default.</p> <p> For a qualification suite, the minimum length is 0, and the maximum is 2048. For a non-qualification suite, the minimum length is 1, and the maximum is 2048. </p>"
         },
         "devicePermissionRoleArn":{
           "shape":"AmazonResourceName",
@@ -980,8 +1016,7 @@
     },
     "TagResourceResponse":{
       "type":"structure",
-      "members":{
-      }
+      "members":{}
     },
     "TestCaseDefinitionName":{"type":"string"},
     "TestCaseRun":{
@@ -1056,7 +1091,7 @@
         },
         "systemMessage":{
           "shape":"SystemMessage",
-          "documentation":"<p> </p>"
+          "documentation":"<p>Provides test case scenario system messages if any.</p>"
         }
       },
       "documentation":"<p>Provides test case scenario.</p>"
@@ -1130,8 +1165,7 @@
     },
     "UntagResourceResponse":{
       "type":"structure",
-      "members":{
-      }
+      "members":{}
     },
     "UpdateSuiteDefinitionRequest":{
       "type":"structure",

@@ -12,14 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListExportsRequest::ListExportsRequest() : 
-    m_tableArnHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListExportsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -54,5 +46,15 @@ Aws::Http::HeaderValueCollection ListExportsRequest::GetRequestSpecificHeaders()
 }
 
 
+
+ListExportsRequest::EndpointParameters ListExportsRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (TableArnHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetTableArn(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

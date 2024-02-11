@@ -6,10 +6,11 @@
 #pragma once
 #include <aws/mediaconvert/MediaConvert_EXPORTS.h>
 #include <aws/mediaconvert/model/CmfcAudioDuration.h>
+#include <aws/mediaconvert/model/Mp4C2paManifest.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/mediaconvert/model/Mp4CslgAtom.h>
 #include <aws/mediaconvert/model/Mp4FreeSpaceBox.h>
 #include <aws/mediaconvert/model/Mp4MoovPlacement.h>
-#include <aws/core/utils/memory/stl/AWSString.h>
 #include <utility>
 
 namespace Aws
@@ -38,346 +39,167 @@ namespace Model
   class Mp4Settings
   {
   public:
-    AWS_MEDIACONVERT_API Mp4Settings();
+    AWS_MEDIACONVERT_API Mp4Settings() = default;
     AWS_MEDIACONVERT_API Mp4Settings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Mp4Settings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Specify this setting only when your output will be consumed by a downstream
      * repackaging workflow that is sensitive to very small duration differences
-     * between video and audio. For this situation, choose Match video duration
-     * (MATCH_VIDEO_DURATION). In all other cases, keep the default value, Default
-     * codec duration (DEFAULT_CODEC_DURATION). When you choose Match video duration,
-     * MediaConvert pads the output audio streams with silence or trims them to ensure
-     * that the total duration of each audio stream is at least as long as the total
-     * duration of the video stream. After padding or trimming, the audio stream
-     * duration is no more than one frame longer than the video stream. MediaConvert
-     * applies audio padding or trimming only to the end of the last segment of the
-     * output. For unsegmented outputs, MediaConvert adds padding only to the end of
-     * the file. When you keep the default value, any minor discrepancies between audio
-     * and video duration will depend on your output audio codec.
+     * between video and audio. For this situation, choose Match video duration. In all
+     * other cases, keep the default value, Default codec duration. When you choose
+     * Match video duration, MediaConvert pads the output audio streams with silence or
+     * trims them to ensure that the total duration of each audio stream is at least as
+     * long as the total duration of the video stream. After padding or trimming, the
+     * audio stream duration is no more than one frame longer than the video stream.
+     * MediaConvert applies audio padding or trimming only to the end of the last
+     * segment of the output. For unsegmented outputs, MediaConvert adds padding only
+     * to the end of the file. When you keep the default value, any minor discrepancies
+     * between audio and video duration will depend on your output audio codec.
      */
-    inline const CmfcAudioDuration& GetAudioDuration() const{ return m_audioDuration; }
-
-    /**
-     * Specify this setting only when your output will be consumed by a downstream
-     * repackaging workflow that is sensitive to very small duration differences
-     * between video and audio. For this situation, choose Match video duration
-     * (MATCH_VIDEO_DURATION). In all other cases, keep the default value, Default
-     * codec duration (DEFAULT_CODEC_DURATION). When you choose Match video duration,
-     * MediaConvert pads the output audio streams with silence or trims them to ensure
-     * that the total duration of each audio stream is at least as long as the total
-     * duration of the video stream. After padding or trimming, the audio stream
-     * duration is no more than one frame longer than the video stream. MediaConvert
-     * applies audio padding or trimming only to the end of the last segment of the
-     * output. For unsegmented outputs, MediaConvert adds padding only to the end of
-     * the file. When you keep the default value, any minor discrepancies between audio
-     * and video duration will depend on your output audio codec.
-     */
+    inline CmfcAudioDuration GetAudioDuration() const { return m_audioDuration; }
     inline bool AudioDurationHasBeenSet() const { return m_audioDurationHasBeenSet; }
+    inline void SetAudioDuration(CmfcAudioDuration value) { m_audioDurationHasBeenSet = true; m_audioDuration = value; }
+    inline Mp4Settings& WithAudioDuration(CmfcAudioDuration value) { SetAudioDuration(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * Specify this setting only when your output will be consumed by a downstream
-     * repackaging workflow that is sensitive to very small duration differences
-     * between video and audio. For this situation, choose Match video duration
-     * (MATCH_VIDEO_DURATION). In all other cases, keep the default value, Default
-     * codec duration (DEFAULT_CODEC_DURATION). When you choose Match video duration,
-     * MediaConvert pads the output audio streams with silence or trims them to ensure
-     * that the total duration of each audio stream is at least as long as the total
-     * duration of the video stream. After padding or trimming, the audio stream
-     * duration is no more than one frame longer than the video stream. MediaConvert
-     * applies audio padding or trimming only to the end of the last segment of the
-     * output. For unsegmented outputs, MediaConvert adds padding only to the end of
-     * the file. When you keep the default value, any minor discrepancies between audio
-     * and video duration will depend on your output audio codec.
+     * When enabled, a C2PA compliant manifest will be generated, signed and embeded in
+     * the output. For more information on C2PA, see
+     * https://c2pa.org/specifications/specifications/2.1/index.html
      */
-    inline void SetAudioDuration(const CmfcAudioDuration& value) { m_audioDurationHasBeenSet = true; m_audioDuration = value; }
+    inline Mp4C2paManifest GetC2paManifest() const { return m_c2paManifest; }
+    inline bool C2paManifestHasBeenSet() const { return m_c2paManifestHasBeenSet; }
+    inline void SetC2paManifest(Mp4C2paManifest value) { m_c2paManifestHasBeenSet = true; m_c2paManifest = value; }
+    inline Mp4Settings& WithC2paManifest(Mp4C2paManifest value) { SetC2paManifest(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * Specify this setting only when your output will be consumed by a downstream
-     * repackaging workflow that is sensitive to very small duration differences
-     * between video and audio. For this situation, choose Match video duration
-     * (MATCH_VIDEO_DURATION). In all other cases, keep the default value, Default
-     * codec duration (DEFAULT_CODEC_DURATION). When you choose Match video duration,
-     * MediaConvert pads the output audio streams with silence or trims them to ensure
-     * that the total duration of each audio stream is at least as long as the total
-     * duration of the video stream. After padding or trimming, the audio stream
-     * duration is no more than one frame longer than the video stream. MediaConvert
-     * applies audio padding or trimming only to the end of the last segment of the
-     * output. For unsegmented outputs, MediaConvert adds padding only to the end of
-     * the file. When you keep the default value, any minor discrepancies between audio
-     * and video duration will depend on your output audio codec.
+     * Specify the name or ARN of the AWS Secrets Manager secret that contains your
+     * C2PA public certificate chain in PEM format. Provide a valid secret name or ARN.
+     * Note that your MediaConvert service role must allow access to this secret. The
+     * public certificate chain is added to the COSE header (x5chain) for signature
+     * validation. Include the signer's certificate and all intermediate certificates.
+     * Do not include the root certificate. For details on COSE, see:
+     * https://opensource.contentauthenticity.org/docs/manifest/signing-manifests
      */
-    inline void SetAudioDuration(CmfcAudioDuration&& value) { m_audioDurationHasBeenSet = true; m_audioDuration = std::move(value); }
+    inline const Aws::String& GetCertificateSecret() const { return m_certificateSecret; }
+    inline bool CertificateSecretHasBeenSet() const { return m_certificateSecretHasBeenSet; }
+    template<typename CertificateSecretT = Aws::String>
+    void SetCertificateSecret(CertificateSecretT&& value) { m_certificateSecretHasBeenSet = true; m_certificateSecret = std::forward<CertificateSecretT>(value); }
+    template<typename CertificateSecretT = Aws::String>
+    Mp4Settings& WithCertificateSecret(CertificateSecretT&& value) { SetCertificateSecret(std::forward<CertificateSecretT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Specify this setting only when your output will be consumed by a downstream
-     * repackaging workflow that is sensitive to very small duration differences
-     * between video and audio. For this situation, choose Match video duration
-     * (MATCH_VIDEO_DURATION). In all other cases, keep the default value, Default
-     * codec duration (DEFAULT_CODEC_DURATION). When you choose Match video duration,
-     * MediaConvert pads the output audio streams with silence or trims them to ensure
-     * that the total duration of each audio stream is at least as long as the total
-     * duration of the video stream. After padding or trimming, the audio stream
-     * duration is no more than one frame longer than the video stream. MediaConvert
-     * applies audio padding or trimming only to the end of the last segment of the
-     * output. For unsegmented outputs, MediaConvert adds padding only to the end of
-     * the file. When you keep the default value, any minor discrepancies between audio
-     * and video duration will depend on your output audio codec.
-     */
-    inline Mp4Settings& WithAudioDuration(const CmfcAudioDuration& value) { SetAudioDuration(value); return *this;}
-
-    /**
-     * Specify this setting only when your output will be consumed by a downstream
-     * repackaging workflow that is sensitive to very small duration differences
-     * between video and audio. For this situation, choose Match video duration
-     * (MATCH_VIDEO_DURATION). In all other cases, keep the default value, Default
-     * codec duration (DEFAULT_CODEC_DURATION). When you choose Match video duration,
-     * MediaConvert pads the output audio streams with silence or trims them to ensure
-     * that the total duration of each audio stream is at least as long as the total
-     * duration of the video stream. After padding or trimming, the audio stream
-     * duration is no more than one frame longer than the video stream. MediaConvert
-     * applies audio padding or trimming only to the end of the last segment of the
-     * output. For unsegmented outputs, MediaConvert adds padding only to the end of
-     * the file. When you keep the default value, any minor discrepancies between audio
-     * and video duration will depend on your output audio codec.
-     */
-    inline Mp4Settings& WithAudioDuration(CmfcAudioDuration&& value) { SetAudioDuration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * When enabled, file composition times will start at zero, composition times in
      * the 'ctts' (composition time to sample) box for B-frames will be negative, and a
      * 'cslg' (composition shift least greatest) box will be included per 14496-1
      * amendment 1. This improves compatibility with Apple players and tools.
      */
-    inline const Mp4CslgAtom& GetCslgAtom() const{ return m_cslgAtom; }
-
-    /**
-     * When enabled, file composition times will start at zero, composition times in
-     * the 'ctts' (composition time to sample) box for B-frames will be negative, and a
-     * 'cslg' (composition shift least greatest) box will be included per 14496-1
-     * amendment 1. This improves compatibility with Apple players and tools.
-     */
+    inline Mp4CslgAtom GetCslgAtom() const { return m_cslgAtom; }
     inline bool CslgAtomHasBeenSet() const { return m_cslgAtomHasBeenSet; }
+    inline void SetCslgAtom(Mp4CslgAtom value) { m_cslgAtomHasBeenSet = true; m_cslgAtom = value; }
+    inline Mp4Settings& WithCslgAtom(Mp4CslgAtom value) { SetCslgAtom(value); return *this;}
+    ///@}
 
-    /**
-     * When enabled, file composition times will start at zero, composition times in
-     * the 'ctts' (composition time to sample) box for B-frames will be negative, and a
-     * 'cslg' (composition shift least greatest) box will be included per 14496-1
-     * amendment 1. This improves compatibility with Apple players and tools.
-     */
-    inline void SetCslgAtom(const Mp4CslgAtom& value) { m_cslgAtomHasBeenSet = true; m_cslgAtom = value; }
-
-    /**
-     * When enabled, file composition times will start at zero, composition times in
-     * the 'ctts' (composition time to sample) box for B-frames will be negative, and a
-     * 'cslg' (composition shift least greatest) box will be included per 14496-1
-     * amendment 1. This improves compatibility with Apple players and tools.
-     */
-    inline void SetCslgAtom(Mp4CslgAtom&& value) { m_cslgAtomHasBeenSet = true; m_cslgAtom = std::move(value); }
-
-    /**
-     * When enabled, file composition times will start at zero, composition times in
-     * the 'ctts' (composition time to sample) box for B-frames will be negative, and a
-     * 'cslg' (composition shift least greatest) box will be included per 14496-1
-     * amendment 1. This improves compatibility with Apple players and tools.
-     */
-    inline Mp4Settings& WithCslgAtom(const Mp4CslgAtom& value) { SetCslgAtom(value); return *this;}
-
-    /**
-     * When enabled, file composition times will start at zero, composition times in
-     * the 'ctts' (composition time to sample) box for B-frames will be negative, and a
-     * 'cslg' (composition shift least greatest) box will be included per 14496-1
-     * amendment 1. This improves compatibility with Apple players and tools.
-     */
-    inline Mp4Settings& WithCslgAtom(Mp4CslgAtom&& value) { SetCslgAtom(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Ignore this setting unless compliance to the CTTS box version specification
      * matters in your workflow. Specify a value of 1 to set your CTTS box version to 1
      * and make your output compliant with the specification. When you specify a value
-     * of 1, you must also set CSLG atom (cslgAtom) to the value INCLUDE. Keep the
-     * default value 0 to set your CTTS box version to 0. This can provide backward
-     * compatibility for some players and packagers.
+     * of 1, you must also set CSLG atom to the value INCLUDE. Keep the default value 0
+     * to set your CTTS box version to 0. This can provide backward compatibility for
+     * some players and packagers.
      */
-    inline int GetCttsVersion() const{ return m_cttsVersion; }
-
-    /**
-     * Ignore this setting unless compliance to the CTTS box version specification
-     * matters in your workflow. Specify a value of 1 to set your CTTS box version to 1
-     * and make your output compliant with the specification. When you specify a value
-     * of 1, you must also set CSLG atom (cslgAtom) to the value INCLUDE. Keep the
-     * default value 0 to set your CTTS box version to 0. This can provide backward
-     * compatibility for some players and packagers.
-     */
+    inline int GetCttsVersion() const { return m_cttsVersion; }
     inline bool CttsVersionHasBeenSet() const { return m_cttsVersionHasBeenSet; }
-
-    /**
-     * Ignore this setting unless compliance to the CTTS box version specification
-     * matters in your workflow. Specify a value of 1 to set your CTTS box version to 1
-     * and make your output compliant with the specification. When you specify a value
-     * of 1, you must also set CSLG atom (cslgAtom) to the value INCLUDE. Keep the
-     * default value 0 to set your CTTS box version to 0. This can provide backward
-     * compatibility for some players and packagers.
-     */
     inline void SetCttsVersion(int value) { m_cttsVersionHasBeenSet = true; m_cttsVersion = value; }
-
-    /**
-     * Ignore this setting unless compliance to the CTTS box version specification
-     * matters in your workflow. Specify a value of 1 to set your CTTS box version to 1
-     * and make your output compliant with the specification. When you specify a value
-     * of 1, you must also set CSLG atom (cslgAtom) to the value INCLUDE. Keep the
-     * default value 0 to set your CTTS box version to 0. This can provide backward
-     * compatibility for some players and packagers.
-     */
     inline Mp4Settings& WithCttsVersion(int value) { SetCttsVersion(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * Inserts a free-space box immediately after the moov box.
      */
-    inline const Mp4FreeSpaceBox& GetFreeSpaceBox() const{ return m_freeSpaceBox; }
-
-    /**
-     * Inserts a free-space box immediately after the moov box.
-     */
+    inline Mp4FreeSpaceBox GetFreeSpaceBox() const { return m_freeSpaceBox; }
     inline bool FreeSpaceBoxHasBeenSet() const { return m_freeSpaceBoxHasBeenSet; }
+    inline void SetFreeSpaceBox(Mp4FreeSpaceBox value) { m_freeSpaceBoxHasBeenSet = true; m_freeSpaceBox = value; }
+    inline Mp4Settings& WithFreeSpaceBox(Mp4FreeSpaceBox value) { SetFreeSpaceBox(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * Inserts a free-space box immediately after the moov box.
+     * To place the MOOV atom at the beginning of your output, which is useful for
+     * progressive downloading: Leave blank or choose Progressive download. To place
+     * the MOOV at the end of your output: Choose Normal.
      */
-    inline void SetFreeSpaceBox(const Mp4FreeSpaceBox& value) { m_freeSpaceBoxHasBeenSet = true; m_freeSpaceBox = value; }
-
-    /**
-     * Inserts a free-space box immediately after the moov box.
-     */
-    inline void SetFreeSpaceBox(Mp4FreeSpaceBox&& value) { m_freeSpaceBoxHasBeenSet = true; m_freeSpaceBox = std::move(value); }
-
-    /**
-     * Inserts a free-space box immediately after the moov box.
-     */
-    inline Mp4Settings& WithFreeSpaceBox(const Mp4FreeSpaceBox& value) { SetFreeSpaceBox(value); return *this;}
-
-    /**
-     * Inserts a free-space box immediately after the moov box.
-     */
-    inline Mp4Settings& WithFreeSpaceBox(Mp4FreeSpaceBox&& value) { SetFreeSpaceBox(std::move(value)); return *this;}
-
-
-    /**
-     * If set to PROGRESSIVE_DOWNLOAD, the MOOV atom is relocated to the beginning of
-     * the archive as required for progressive downloading. Otherwise it is placed
-     * normally at the end.
-     */
-    inline const Mp4MoovPlacement& GetMoovPlacement() const{ return m_moovPlacement; }
-
-    /**
-     * If set to PROGRESSIVE_DOWNLOAD, the MOOV atom is relocated to the beginning of
-     * the archive as required for progressive downloading. Otherwise it is placed
-     * normally at the end.
-     */
+    inline Mp4MoovPlacement GetMoovPlacement() const { return m_moovPlacement; }
     inline bool MoovPlacementHasBeenSet() const { return m_moovPlacementHasBeenSet; }
+    inline void SetMoovPlacement(Mp4MoovPlacement value) { m_moovPlacementHasBeenSet = true; m_moovPlacement = value; }
+    inline Mp4Settings& WithMoovPlacement(Mp4MoovPlacement value) { SetMoovPlacement(value); return *this;}
+    ///@}
 
-    /**
-     * If set to PROGRESSIVE_DOWNLOAD, the MOOV atom is relocated to the beginning of
-     * the archive as required for progressive downloading. Otherwise it is placed
-     * normally at the end.
-     */
-    inline void SetMoovPlacement(const Mp4MoovPlacement& value) { m_moovPlacementHasBeenSet = true; m_moovPlacement = value; }
-
-    /**
-     * If set to PROGRESSIVE_DOWNLOAD, the MOOV atom is relocated to the beginning of
-     * the archive as required for progressive downloading. Otherwise it is placed
-     * normally at the end.
-     */
-    inline void SetMoovPlacement(Mp4MoovPlacement&& value) { m_moovPlacementHasBeenSet = true; m_moovPlacement = std::move(value); }
-
-    /**
-     * If set to PROGRESSIVE_DOWNLOAD, the MOOV atom is relocated to the beginning of
-     * the archive as required for progressive downloading. Otherwise it is placed
-     * normally at the end.
-     */
-    inline Mp4Settings& WithMoovPlacement(const Mp4MoovPlacement& value) { SetMoovPlacement(value); return *this;}
-
-    /**
-     * If set to PROGRESSIVE_DOWNLOAD, the MOOV atom is relocated to the beginning of
-     * the archive as required for progressive downloading. Otherwise it is placed
-     * normally at the end.
-     */
-    inline Mp4Settings& WithMoovPlacement(Mp4MoovPlacement&& value) { SetMoovPlacement(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Overrides the "Major Brand" field in the output file. Usually not necessary to
      * specify.
      */
-    inline const Aws::String& GetMp4MajorBrand() const{ return m_mp4MajorBrand; }
-
-    /**
-     * Overrides the "Major Brand" field in the output file. Usually not necessary to
-     * specify.
-     */
+    inline const Aws::String& GetMp4MajorBrand() const { return m_mp4MajorBrand; }
     inline bool Mp4MajorBrandHasBeenSet() const { return m_mp4MajorBrandHasBeenSet; }
+    template<typename Mp4MajorBrandT = Aws::String>
+    void SetMp4MajorBrand(Mp4MajorBrandT&& value) { m_mp4MajorBrandHasBeenSet = true; m_mp4MajorBrand = std::forward<Mp4MajorBrandT>(value); }
+    template<typename Mp4MajorBrandT = Aws::String>
+    Mp4Settings& WithMp4MajorBrand(Mp4MajorBrandT&& value) { SetMp4MajorBrand(std::forward<Mp4MajorBrandT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * Overrides the "Major Brand" field in the output file. Usually not necessary to
-     * specify.
+     * Specify the ID or ARN of the AWS KMS key used to sign the C2PA manifest in your
+     * MP4 output. Provide a valid KMS key ARN. Note that your MediaConvert service
+     * role must allow access to this key.
      */
-    inline void SetMp4MajorBrand(const Aws::String& value) { m_mp4MajorBrandHasBeenSet = true; m_mp4MajorBrand = value; }
-
-    /**
-     * Overrides the "Major Brand" field in the output file. Usually not necessary to
-     * specify.
-     */
-    inline void SetMp4MajorBrand(Aws::String&& value) { m_mp4MajorBrandHasBeenSet = true; m_mp4MajorBrand = std::move(value); }
-
-    /**
-     * Overrides the "Major Brand" field in the output file. Usually not necessary to
-     * specify.
-     */
-    inline void SetMp4MajorBrand(const char* value) { m_mp4MajorBrandHasBeenSet = true; m_mp4MajorBrand.assign(value); }
-
-    /**
-     * Overrides the "Major Brand" field in the output file. Usually not necessary to
-     * specify.
-     */
-    inline Mp4Settings& WithMp4MajorBrand(const Aws::String& value) { SetMp4MajorBrand(value); return *this;}
-
-    /**
-     * Overrides the "Major Brand" field in the output file. Usually not necessary to
-     * specify.
-     */
-    inline Mp4Settings& WithMp4MajorBrand(Aws::String&& value) { SetMp4MajorBrand(std::move(value)); return *this;}
-
-    /**
-     * Overrides the "Major Brand" field in the output file. Usually not necessary to
-     * specify.
-     */
-    inline Mp4Settings& WithMp4MajorBrand(const char* value) { SetMp4MajorBrand(value); return *this;}
-
+    inline const Aws::String& GetSigningKmsKey() const { return m_signingKmsKey; }
+    inline bool SigningKmsKeyHasBeenSet() const { return m_signingKmsKeyHasBeenSet; }
+    template<typename SigningKmsKeyT = Aws::String>
+    void SetSigningKmsKey(SigningKmsKeyT&& value) { m_signingKmsKeyHasBeenSet = true; m_signingKmsKey = std::forward<SigningKmsKeyT>(value); }
+    template<typename SigningKmsKeyT = Aws::String>
+    Mp4Settings& WithSigningKmsKey(SigningKmsKeyT&& value) { SetSigningKmsKey(std::forward<SigningKmsKeyT>(value)); return *this;}
+    ///@}
   private:
 
-    CmfcAudioDuration m_audioDuration;
+    CmfcAudioDuration m_audioDuration{CmfcAudioDuration::NOT_SET};
     bool m_audioDurationHasBeenSet = false;
 
-    Mp4CslgAtom m_cslgAtom;
+    Mp4C2paManifest m_c2paManifest{Mp4C2paManifest::NOT_SET};
+    bool m_c2paManifestHasBeenSet = false;
+
+    Aws::String m_certificateSecret;
+    bool m_certificateSecretHasBeenSet = false;
+
+    Mp4CslgAtom m_cslgAtom{Mp4CslgAtom::NOT_SET};
     bool m_cslgAtomHasBeenSet = false;
 
-    int m_cttsVersion;
+    int m_cttsVersion{0};
     bool m_cttsVersionHasBeenSet = false;
 
-    Mp4FreeSpaceBox m_freeSpaceBox;
+    Mp4FreeSpaceBox m_freeSpaceBox{Mp4FreeSpaceBox::NOT_SET};
     bool m_freeSpaceBoxHasBeenSet = false;
 
-    Mp4MoovPlacement m_moovPlacement;
+    Mp4MoovPlacement m_moovPlacement{Mp4MoovPlacement::NOT_SET};
     bool m_moovPlacementHasBeenSet = false;
 
     Aws::String m_mp4MajorBrand;
     bool m_mp4MajorBrandHasBeenSet = false;
+
+    Aws::String m_signingKmsKey;
+    bool m_signingKmsKeyHasBeenSet = false;
   };
 
 } // namespace Model

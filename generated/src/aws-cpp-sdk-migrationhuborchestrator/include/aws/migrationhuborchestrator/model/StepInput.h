@@ -35,188 +35,66 @@ namespace Model
   class StepInput
   {
   public:
-    AWS_MIGRATIONHUBORCHESTRATOR_API StepInput();
+    AWS_MIGRATIONHUBORCHESTRATOR_API StepInput() = default;
     AWS_MIGRATIONHUBORCHESTRATOR_API StepInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBORCHESTRATOR_API StepInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBORCHESTRATOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The value of the integer.</p>
      */
-    inline int GetIntegerValue() const{ return m_integerValue; }
-
-    /**
-     * <p>The value of the integer.</p>
-     */
+    inline int GetIntegerValue() const { return m_integerValue; }
     inline bool IntegerValueHasBeenSet() const { return m_integerValueHasBeenSet; }
-
-    /**
-     * <p>The value of the integer.</p>
-     */
     inline void SetIntegerValue(int value) { m_integerValueHasBeenSet = true; m_integerValue = value; }
-
-    /**
-     * <p>The value of the integer.</p>
-     */
     inline StepInput& WithIntegerValue(int value) { SetIntegerValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>String value.</p>
      */
-    inline const Aws::String& GetStringValue() const{ return m_stringValue; }
-
-    /**
-     * <p>String value.</p>
-     */
+    inline const Aws::String& GetStringValue() const { return m_stringValue; }
     inline bool StringValueHasBeenSet() const { return m_stringValueHasBeenSet; }
+    template<typename StringValueT = Aws::String>
+    void SetStringValue(StringValueT&& value) { m_stringValueHasBeenSet = true; m_stringValue = std::forward<StringValueT>(value); }
+    template<typename StringValueT = Aws::String>
+    StepInput& WithStringValue(StringValueT&& value) { SetStringValue(std::forward<StringValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>String value.</p>
-     */
-    inline void SetStringValue(const Aws::String& value) { m_stringValueHasBeenSet = true; m_stringValue = value; }
-
-    /**
-     * <p>String value.</p>
-     */
-    inline void SetStringValue(Aws::String&& value) { m_stringValueHasBeenSet = true; m_stringValue = std::move(value); }
-
-    /**
-     * <p>String value.</p>
-     */
-    inline void SetStringValue(const char* value) { m_stringValueHasBeenSet = true; m_stringValue.assign(value); }
-
-    /**
-     * <p>String value.</p>
-     */
-    inline StepInput& WithStringValue(const Aws::String& value) { SetStringValue(value); return *this;}
-
-    /**
-     * <p>String value.</p>
-     */
-    inline StepInput& WithStringValue(Aws::String&& value) { SetStringValue(std::move(value)); return *this;}
-
-    /**
-     * <p>String value.</p>
-     */
-    inline StepInput& WithStringValue(const char* value) { SetStringValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>List of string values.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetListOfStringsValue() const{ return m_listOfStringsValue; }
-
-    /**
-     * <p>List of string values.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetListOfStringsValue() const { return m_listOfStringsValue; }
     inline bool ListOfStringsValueHasBeenSet() const { return m_listOfStringsValueHasBeenSet; }
+    template<typename ListOfStringsValueT = Aws::Vector<Aws::String>>
+    void SetListOfStringsValue(ListOfStringsValueT&& value) { m_listOfStringsValueHasBeenSet = true; m_listOfStringsValue = std::forward<ListOfStringsValueT>(value); }
+    template<typename ListOfStringsValueT = Aws::Vector<Aws::String>>
+    StepInput& WithListOfStringsValue(ListOfStringsValueT&& value) { SetListOfStringsValue(std::forward<ListOfStringsValueT>(value)); return *this;}
+    template<typename ListOfStringsValueT = Aws::String>
+    StepInput& AddListOfStringsValue(ListOfStringsValueT&& value) { m_listOfStringsValueHasBeenSet = true; m_listOfStringsValue.emplace_back(std::forward<ListOfStringsValueT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of string values.</p>
-     */
-    inline void SetListOfStringsValue(const Aws::Vector<Aws::String>& value) { m_listOfStringsValueHasBeenSet = true; m_listOfStringsValue = value; }
-
-    /**
-     * <p>List of string values.</p>
-     */
-    inline void SetListOfStringsValue(Aws::Vector<Aws::String>&& value) { m_listOfStringsValueHasBeenSet = true; m_listOfStringsValue = std::move(value); }
-
-    /**
-     * <p>List of string values.</p>
-     */
-    inline StepInput& WithListOfStringsValue(const Aws::Vector<Aws::String>& value) { SetListOfStringsValue(value); return *this;}
-
-    /**
-     * <p>List of string values.</p>
-     */
-    inline StepInput& WithListOfStringsValue(Aws::Vector<Aws::String>&& value) { SetListOfStringsValue(std::move(value)); return *this;}
-
-    /**
-     * <p>List of string values.</p>
-     */
-    inline StepInput& AddListOfStringsValue(const Aws::String& value) { m_listOfStringsValueHasBeenSet = true; m_listOfStringsValue.push_back(value); return *this; }
-
-    /**
-     * <p>List of string values.</p>
-     */
-    inline StepInput& AddListOfStringsValue(Aws::String&& value) { m_listOfStringsValueHasBeenSet = true; m_listOfStringsValue.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>List of string values.</p>
-     */
-    inline StepInput& AddListOfStringsValue(const char* value) { m_listOfStringsValueHasBeenSet = true; m_listOfStringsValue.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Map of string values.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetMapOfStringValue() const{ return m_mapOfStringValue; }
-
-    /**
-     * <p>Map of string values.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetMapOfStringValue() const { return m_mapOfStringValue; }
     inline bool MapOfStringValueHasBeenSet() const { return m_mapOfStringValueHasBeenSet; }
-
-    /**
-     * <p>Map of string values.</p>
-     */
-    inline void SetMapOfStringValue(const Aws::Map<Aws::String, Aws::String>& value) { m_mapOfStringValueHasBeenSet = true; m_mapOfStringValue = value; }
-
-    /**
-     * <p>Map of string values.</p>
-     */
-    inline void SetMapOfStringValue(Aws::Map<Aws::String, Aws::String>&& value) { m_mapOfStringValueHasBeenSet = true; m_mapOfStringValue = std::move(value); }
-
-    /**
-     * <p>Map of string values.</p>
-     */
-    inline StepInput& WithMapOfStringValue(const Aws::Map<Aws::String, Aws::String>& value) { SetMapOfStringValue(value); return *this;}
-
-    /**
-     * <p>Map of string values.</p>
-     */
-    inline StepInput& WithMapOfStringValue(Aws::Map<Aws::String, Aws::String>&& value) { SetMapOfStringValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Map of string values.</p>
-     */
-    inline StepInput& AddMapOfStringValue(const Aws::String& key, const Aws::String& value) { m_mapOfStringValueHasBeenSet = true; m_mapOfStringValue.emplace(key, value); return *this; }
-
-    /**
-     * <p>Map of string values.</p>
-     */
-    inline StepInput& AddMapOfStringValue(Aws::String&& key, const Aws::String& value) { m_mapOfStringValueHasBeenSet = true; m_mapOfStringValue.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Map of string values.</p>
-     */
-    inline StepInput& AddMapOfStringValue(const Aws::String& key, Aws::String&& value) { m_mapOfStringValueHasBeenSet = true; m_mapOfStringValue.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Map of string values.</p>
-     */
-    inline StepInput& AddMapOfStringValue(Aws::String&& key, Aws::String&& value) { m_mapOfStringValueHasBeenSet = true; m_mapOfStringValue.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Map of string values.</p>
-     */
-    inline StepInput& AddMapOfStringValue(const char* key, Aws::String&& value) { m_mapOfStringValueHasBeenSet = true; m_mapOfStringValue.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Map of string values.</p>
-     */
-    inline StepInput& AddMapOfStringValue(Aws::String&& key, const char* value) { m_mapOfStringValueHasBeenSet = true; m_mapOfStringValue.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Map of string values.</p>
-     */
-    inline StepInput& AddMapOfStringValue(const char* key, const char* value) { m_mapOfStringValueHasBeenSet = true; m_mapOfStringValue.emplace(key, value); return *this; }
-
+    template<typename MapOfStringValueT = Aws::Map<Aws::String, Aws::String>>
+    void SetMapOfStringValue(MapOfStringValueT&& value) { m_mapOfStringValueHasBeenSet = true; m_mapOfStringValue = std::forward<MapOfStringValueT>(value); }
+    template<typename MapOfStringValueT = Aws::Map<Aws::String, Aws::String>>
+    StepInput& WithMapOfStringValue(MapOfStringValueT&& value) { SetMapOfStringValue(std::forward<MapOfStringValueT>(value)); return *this;}
+    template<typename MapOfStringValueKeyT = Aws::String, typename MapOfStringValueValueT = Aws::String>
+    StepInput& AddMapOfStringValue(MapOfStringValueKeyT&& key, MapOfStringValueValueT&& value) {
+      m_mapOfStringValueHasBeenSet = true; m_mapOfStringValue.emplace(std::forward<MapOfStringValueKeyT>(key), std::forward<MapOfStringValueValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
-    int m_integerValue;
+    int m_integerValue{0};
     bool m_integerValueHasBeenSet = false;
 
     Aws::String m_stringValue;

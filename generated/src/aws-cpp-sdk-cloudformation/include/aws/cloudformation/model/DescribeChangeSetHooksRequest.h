@@ -21,7 +21,7 @@ namespace Model
   class DescribeChangeSetHooksRequest : public CloudFormationRequest
   {
   public:
-    AWS_CLOUDFORMATION_API DescribeChangeSetHooksRequest();
+    AWS_CLOUDFORMATION_API DescribeChangeSetHooksRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,209 +36,58 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name or Amazon Resource Name (ARN) of the change set that you want to
      * describe.</p>
      */
-    inline const Aws::String& GetChangeSetName() const{ return m_changeSetName; }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the change set that you want to
-     * describe.</p>
-     */
+    inline const Aws::String& GetChangeSetName() const { return m_changeSetName; }
     inline bool ChangeSetNameHasBeenSet() const { return m_changeSetNameHasBeenSet; }
+    template<typename ChangeSetNameT = Aws::String>
+    void SetChangeSetName(ChangeSetNameT&& value) { m_changeSetNameHasBeenSet = true; m_changeSetName = std::forward<ChangeSetNameT>(value); }
+    template<typename ChangeSetNameT = Aws::String>
+    DescribeChangeSetHooksRequest& WithChangeSetName(ChangeSetNameT&& value) { SetChangeSetName(std::forward<ChangeSetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the change set that you want to
-     * describe.</p>
-     */
-    inline void SetChangeSetName(const Aws::String& value) { m_changeSetNameHasBeenSet = true; m_changeSetName = value; }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the change set that you want to
-     * describe.</p>
-     */
-    inline void SetChangeSetName(Aws::String&& value) { m_changeSetNameHasBeenSet = true; m_changeSetName = std::move(value); }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the change set that you want to
-     * describe.</p>
-     */
-    inline void SetChangeSetName(const char* value) { m_changeSetNameHasBeenSet = true; m_changeSetName.assign(value); }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the change set that you want to
-     * describe.</p>
-     */
-    inline DescribeChangeSetHooksRequest& WithChangeSetName(const Aws::String& value) { SetChangeSetName(value); return *this;}
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the change set that you want to
-     * describe.</p>
-     */
-    inline DescribeChangeSetHooksRequest& WithChangeSetName(Aws::String&& value) { SetChangeSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the change set that you want to
-     * describe.</p>
-     */
-    inline DescribeChangeSetHooksRequest& WithChangeSetName(const char* value) { SetChangeSetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If you specified the name of a change set, specify the stack name or stack ID
      * (ARN) of the change set you want to describe.</p>
      */
-    inline const Aws::String& GetStackName() const{ return m_stackName; }
-
-    /**
-     * <p>If you specified the name of a change set, specify the stack name or stack ID
-     * (ARN) of the change set you want to describe.</p>
-     */
+    inline const Aws::String& GetStackName() const { return m_stackName; }
     inline bool StackNameHasBeenSet() const { return m_stackNameHasBeenSet; }
+    template<typename StackNameT = Aws::String>
+    void SetStackName(StackNameT&& value) { m_stackNameHasBeenSet = true; m_stackName = std::forward<StackNameT>(value); }
+    template<typename StackNameT = Aws::String>
+    DescribeChangeSetHooksRequest& WithStackName(StackNameT&& value) { SetStackName(std::forward<StackNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If you specified the name of a change set, specify the stack name or stack ID
-     * (ARN) of the change set you want to describe.</p>
-     */
-    inline void SetStackName(const Aws::String& value) { m_stackNameHasBeenSet = true; m_stackName = value; }
-
-    /**
-     * <p>If you specified the name of a change set, specify the stack name or stack ID
-     * (ARN) of the change set you want to describe.</p>
-     */
-    inline void SetStackName(Aws::String&& value) { m_stackNameHasBeenSet = true; m_stackName = std::move(value); }
-
-    /**
-     * <p>If you specified the name of a change set, specify the stack name or stack ID
-     * (ARN) of the change set you want to describe.</p>
-     */
-    inline void SetStackName(const char* value) { m_stackNameHasBeenSet = true; m_stackName.assign(value); }
-
-    /**
-     * <p>If you specified the name of a change set, specify the stack name or stack ID
-     * (ARN) of the change set you want to describe.</p>
-     */
-    inline DescribeChangeSetHooksRequest& WithStackName(const Aws::String& value) { SetStackName(value); return *this;}
-
-    /**
-     * <p>If you specified the name of a change set, specify the stack name or stack ID
-     * (ARN) of the change set you want to describe.</p>
-     */
-    inline DescribeChangeSetHooksRequest& WithStackName(Aws::String&& value) { SetStackName(std::move(value)); return *this;}
-
-    /**
-     * <p>If you specified the name of a change set, specify the stack name or stack ID
-     * (ARN) of the change set you want to describe.</p>
-     */
-    inline DescribeChangeSetHooksRequest& WithStackName(const char* value) { SetStackName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A string, provided by the <code>DescribeChangeSetHooks</code> response
      * output, that identifies the next page of information that you want to
      * retrieve.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>A string, provided by the <code>DescribeChangeSetHooks</code> response
-     * output, that identifies the next page of information that you want to
-     * retrieve.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeChangeSetHooksRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A string, provided by the <code>DescribeChangeSetHooks</code> response
-     * output, that identifies the next page of information that you want to
-     * retrieve.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>A string, provided by the <code>DescribeChangeSetHooks</code> response
-     * output, that identifies the next page of information that you want to
-     * retrieve.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>A string, provided by the <code>DescribeChangeSetHooks</code> response
-     * output, that identifies the next page of information that you want to
-     * retrieve.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>A string, provided by the <code>DescribeChangeSetHooks</code> response
-     * output, that identifies the next page of information that you want to
-     * retrieve.</p>
-     */
-    inline DescribeChangeSetHooksRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A string, provided by the <code>DescribeChangeSetHooks</code> response
-     * output, that identifies the next page of information that you want to
-     * retrieve.</p>
-     */
-    inline DescribeChangeSetHooksRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A string, provided by the <code>DescribeChangeSetHooks</code> response
-     * output, that identifies the next page of information that you want to
-     * retrieve.</p>
-     */
-    inline DescribeChangeSetHooksRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
-    /**
-     * <p>If specified, lists only the hooks related to the specified
+     * <p>If specified, lists only the Hooks related to the specified
      * <code>LogicalResourceId</code>.</p>
      */
-    inline const Aws::String& GetLogicalResourceId() const{ return m_logicalResourceId; }
-
-    /**
-     * <p>If specified, lists only the hooks related to the specified
-     * <code>LogicalResourceId</code>.</p>
-     */
+    inline const Aws::String& GetLogicalResourceId() const { return m_logicalResourceId; }
     inline bool LogicalResourceIdHasBeenSet() const { return m_logicalResourceIdHasBeenSet; }
-
-    /**
-     * <p>If specified, lists only the hooks related to the specified
-     * <code>LogicalResourceId</code>.</p>
-     */
-    inline void SetLogicalResourceId(const Aws::String& value) { m_logicalResourceIdHasBeenSet = true; m_logicalResourceId = value; }
-
-    /**
-     * <p>If specified, lists only the hooks related to the specified
-     * <code>LogicalResourceId</code>.</p>
-     */
-    inline void SetLogicalResourceId(Aws::String&& value) { m_logicalResourceIdHasBeenSet = true; m_logicalResourceId = std::move(value); }
-
-    /**
-     * <p>If specified, lists only the hooks related to the specified
-     * <code>LogicalResourceId</code>.</p>
-     */
-    inline void SetLogicalResourceId(const char* value) { m_logicalResourceIdHasBeenSet = true; m_logicalResourceId.assign(value); }
-
-    /**
-     * <p>If specified, lists only the hooks related to the specified
-     * <code>LogicalResourceId</code>.</p>
-     */
-    inline DescribeChangeSetHooksRequest& WithLogicalResourceId(const Aws::String& value) { SetLogicalResourceId(value); return *this;}
-
-    /**
-     * <p>If specified, lists only the hooks related to the specified
-     * <code>LogicalResourceId</code>.</p>
-     */
-    inline DescribeChangeSetHooksRequest& WithLogicalResourceId(Aws::String&& value) { SetLogicalResourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>If specified, lists only the hooks related to the specified
-     * <code>LogicalResourceId</code>.</p>
-     */
-    inline DescribeChangeSetHooksRequest& WithLogicalResourceId(const char* value) { SetLogicalResourceId(value); return *this;}
-
+    template<typename LogicalResourceIdT = Aws::String>
+    void SetLogicalResourceId(LogicalResourceIdT&& value) { m_logicalResourceIdHasBeenSet = true; m_logicalResourceId = std::forward<LogicalResourceIdT>(value); }
+    template<typename LogicalResourceIdT = Aws::String>
+    DescribeChangeSetHooksRequest& WithLogicalResourceId(LogicalResourceIdT&& value) { SetLogicalResourceId(std::forward<LogicalResourceIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_changeSetName;

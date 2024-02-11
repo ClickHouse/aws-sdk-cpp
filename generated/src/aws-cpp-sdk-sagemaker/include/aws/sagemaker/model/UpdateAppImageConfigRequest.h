@@ -8,6 +8,8 @@
 #include <aws/sagemaker/SageMakerRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/sagemaker/model/KernelGatewayImageConfig.h>
+#include <aws/sagemaker/model/JupyterLabAppImageConfig.h>
+#include <aws/sagemaker/model/CodeEditorAppImageConfig.h>
 #include <utility>
 
 namespace Aws
@@ -22,7 +24,7 @@ namespace Model
   class UpdateAppImageConfigRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API UpdateAppImageConfigRequest();
+    AWS_SAGEMAKER_API UpdateAppImageConfigRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,77 +37,53 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the AppImageConfig to update.</p>
      */
-    inline const Aws::String& GetAppImageConfigName() const{ return m_appImageConfigName; }
-
-    /**
-     * <p>The name of the AppImageConfig to update.</p>
-     */
+    inline const Aws::String& GetAppImageConfigName() const { return m_appImageConfigName; }
     inline bool AppImageConfigNameHasBeenSet() const { return m_appImageConfigNameHasBeenSet; }
+    template<typename AppImageConfigNameT = Aws::String>
+    void SetAppImageConfigName(AppImageConfigNameT&& value) { m_appImageConfigNameHasBeenSet = true; m_appImageConfigName = std::forward<AppImageConfigNameT>(value); }
+    template<typename AppImageConfigNameT = Aws::String>
+    UpdateAppImageConfigRequest& WithAppImageConfigName(AppImageConfigNameT&& value) { SetAppImageConfigName(std::forward<AppImageConfigNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the AppImageConfig to update.</p>
-     */
-    inline void SetAppImageConfigName(const Aws::String& value) { m_appImageConfigNameHasBeenSet = true; m_appImageConfigName = value; }
-
-    /**
-     * <p>The name of the AppImageConfig to update.</p>
-     */
-    inline void SetAppImageConfigName(Aws::String&& value) { m_appImageConfigNameHasBeenSet = true; m_appImageConfigName = std::move(value); }
-
-    /**
-     * <p>The name of the AppImageConfig to update.</p>
-     */
-    inline void SetAppImageConfigName(const char* value) { m_appImageConfigNameHasBeenSet = true; m_appImageConfigName.assign(value); }
-
-    /**
-     * <p>The name of the AppImageConfig to update.</p>
-     */
-    inline UpdateAppImageConfigRequest& WithAppImageConfigName(const Aws::String& value) { SetAppImageConfigName(value); return *this;}
-
-    /**
-     * <p>The name of the AppImageConfig to update.</p>
-     */
-    inline UpdateAppImageConfigRequest& WithAppImageConfigName(Aws::String&& value) { SetAppImageConfigName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the AppImageConfig to update.</p>
-     */
-    inline UpdateAppImageConfigRequest& WithAppImageConfigName(const char* value) { SetAppImageConfigName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The new KernelGateway app to run on the image.</p>
      */
-    inline const KernelGatewayImageConfig& GetKernelGatewayImageConfig() const{ return m_kernelGatewayImageConfig; }
-
-    /**
-     * <p>The new KernelGateway app to run on the image.</p>
-     */
+    inline const KernelGatewayImageConfig& GetKernelGatewayImageConfig() const { return m_kernelGatewayImageConfig; }
     inline bool KernelGatewayImageConfigHasBeenSet() const { return m_kernelGatewayImageConfigHasBeenSet; }
+    template<typename KernelGatewayImageConfigT = KernelGatewayImageConfig>
+    void SetKernelGatewayImageConfig(KernelGatewayImageConfigT&& value) { m_kernelGatewayImageConfigHasBeenSet = true; m_kernelGatewayImageConfig = std::forward<KernelGatewayImageConfigT>(value); }
+    template<typename KernelGatewayImageConfigT = KernelGatewayImageConfig>
+    UpdateAppImageConfigRequest& WithKernelGatewayImageConfig(KernelGatewayImageConfigT&& value) { SetKernelGatewayImageConfig(std::forward<KernelGatewayImageConfigT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The new KernelGateway app to run on the image.</p>
+     * <p>The JupyterLab app running on the image.</p>
      */
-    inline void SetKernelGatewayImageConfig(const KernelGatewayImageConfig& value) { m_kernelGatewayImageConfigHasBeenSet = true; m_kernelGatewayImageConfig = value; }
+    inline const JupyterLabAppImageConfig& GetJupyterLabAppImageConfig() const { return m_jupyterLabAppImageConfig; }
+    inline bool JupyterLabAppImageConfigHasBeenSet() const { return m_jupyterLabAppImageConfigHasBeenSet; }
+    template<typename JupyterLabAppImageConfigT = JupyterLabAppImageConfig>
+    void SetJupyterLabAppImageConfig(JupyterLabAppImageConfigT&& value) { m_jupyterLabAppImageConfigHasBeenSet = true; m_jupyterLabAppImageConfig = std::forward<JupyterLabAppImageConfigT>(value); }
+    template<typename JupyterLabAppImageConfigT = JupyterLabAppImageConfig>
+    UpdateAppImageConfigRequest& WithJupyterLabAppImageConfig(JupyterLabAppImageConfigT&& value) { SetJupyterLabAppImageConfig(std::forward<JupyterLabAppImageConfigT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The new KernelGateway app to run on the image.</p>
+     * <p>The Code Editor app running on the image.</p>
      */
-    inline void SetKernelGatewayImageConfig(KernelGatewayImageConfig&& value) { m_kernelGatewayImageConfigHasBeenSet = true; m_kernelGatewayImageConfig = std::move(value); }
-
-    /**
-     * <p>The new KernelGateway app to run on the image.</p>
-     */
-    inline UpdateAppImageConfigRequest& WithKernelGatewayImageConfig(const KernelGatewayImageConfig& value) { SetKernelGatewayImageConfig(value); return *this;}
-
-    /**
-     * <p>The new KernelGateway app to run on the image.</p>
-     */
-    inline UpdateAppImageConfigRequest& WithKernelGatewayImageConfig(KernelGatewayImageConfig&& value) { SetKernelGatewayImageConfig(std::move(value)); return *this;}
-
+    inline const CodeEditorAppImageConfig& GetCodeEditorAppImageConfig() const { return m_codeEditorAppImageConfig; }
+    inline bool CodeEditorAppImageConfigHasBeenSet() const { return m_codeEditorAppImageConfigHasBeenSet; }
+    template<typename CodeEditorAppImageConfigT = CodeEditorAppImageConfig>
+    void SetCodeEditorAppImageConfig(CodeEditorAppImageConfigT&& value) { m_codeEditorAppImageConfigHasBeenSet = true; m_codeEditorAppImageConfig = std::forward<CodeEditorAppImageConfigT>(value); }
+    template<typename CodeEditorAppImageConfigT = CodeEditorAppImageConfig>
+    UpdateAppImageConfigRequest& WithCodeEditorAppImageConfig(CodeEditorAppImageConfigT&& value) { SetCodeEditorAppImageConfig(std::forward<CodeEditorAppImageConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_appImageConfigName;
@@ -113,6 +91,12 @@ namespace Model
 
     KernelGatewayImageConfig m_kernelGatewayImageConfig;
     bool m_kernelGatewayImageConfigHasBeenSet = false;
+
+    JupyterLabAppImageConfig m_jupyterLabAppImageConfig;
+    bool m_jupyterLabAppImageConfigHasBeenSet = false;
+
+    CodeEditorAppImageConfig m_codeEditorAppImageConfig;
+    bool m_codeEditorAppImageConfigHasBeenSet = false;
   };
 
 } // namespace Model

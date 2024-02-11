@@ -12,17 +12,14 @@ using namespace Aws::CloudWatchLogs::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutQueryDefinitionRequest::PutQueryDefinitionRequest() : 
-    m_nameHasBeenSet(false),
-    m_queryDefinitionIdHasBeenSet(false),
-    m_logGroupNamesHasBeenSet(false),
-    m_queryStringHasBeenSet(false)
-{
-}
-
 Aws::String PutQueryDefinitionRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_queryLanguageHasBeenSet)
+  {
+   payload.WithString("queryLanguage", QueryLanguageMapper::GetNameForQueryLanguage(m_queryLanguage));
+  }
 
   if(m_nameHasBeenSet)
   {
@@ -50,6 +47,12 @@ Aws::String PutQueryDefinitionRequest::SerializePayload() const
   if(m_queryStringHasBeenSet)
   {
    payload.WithString("queryString", m_queryString);
+
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("clientToken", m_clientToken);
 
   }
 

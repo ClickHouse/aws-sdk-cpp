@@ -29,80 +29,40 @@ namespace Model
   class ListCuratedEnvironmentImagesResult
   {
   public:
-    AWS_CODEBUILD_API ListCuratedEnvironmentImagesResult();
+    AWS_CODEBUILD_API ListCuratedEnvironmentImagesResult() = default;
     AWS_CODEBUILD_API ListCuratedEnvironmentImagesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CODEBUILD_API ListCuratedEnvironmentImagesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Information about supported platforms for Docker images that are managed by
      * CodeBuild.</p>
      */
-    inline const Aws::Vector<EnvironmentPlatform>& GetPlatforms() const{ return m_platforms; }
+    inline const Aws::Vector<EnvironmentPlatform>& GetPlatforms() const { return m_platforms; }
+    template<typename PlatformsT = Aws::Vector<EnvironmentPlatform>>
+    void SetPlatforms(PlatformsT&& value) { m_platformsHasBeenSet = true; m_platforms = std::forward<PlatformsT>(value); }
+    template<typename PlatformsT = Aws::Vector<EnvironmentPlatform>>
+    ListCuratedEnvironmentImagesResult& WithPlatforms(PlatformsT&& value) { SetPlatforms(std::forward<PlatformsT>(value)); return *this;}
+    template<typename PlatformsT = EnvironmentPlatform>
+    ListCuratedEnvironmentImagesResult& AddPlatforms(PlatformsT&& value) { m_platformsHasBeenSet = true; m_platforms.emplace_back(std::forward<PlatformsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about supported platforms for Docker images that are managed by
-     * CodeBuild.</p>
-     */
-    inline void SetPlatforms(const Aws::Vector<EnvironmentPlatform>& value) { m_platforms = value; }
-
-    /**
-     * <p>Information about supported platforms for Docker images that are managed by
-     * CodeBuild.</p>
-     */
-    inline void SetPlatforms(Aws::Vector<EnvironmentPlatform>&& value) { m_platforms = std::move(value); }
-
-    /**
-     * <p>Information about supported platforms for Docker images that are managed by
-     * CodeBuild.</p>
-     */
-    inline ListCuratedEnvironmentImagesResult& WithPlatforms(const Aws::Vector<EnvironmentPlatform>& value) { SetPlatforms(value); return *this;}
-
-    /**
-     * <p>Information about supported platforms for Docker images that are managed by
-     * CodeBuild.</p>
-     */
-    inline ListCuratedEnvironmentImagesResult& WithPlatforms(Aws::Vector<EnvironmentPlatform>&& value) { SetPlatforms(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about supported platforms for Docker images that are managed by
-     * CodeBuild.</p>
-     */
-    inline ListCuratedEnvironmentImagesResult& AddPlatforms(const EnvironmentPlatform& value) { m_platforms.push_back(value); return *this; }
-
-    /**
-     * <p>Information about supported platforms for Docker images that are managed by
-     * CodeBuild.</p>
-     */
-    inline ListCuratedEnvironmentImagesResult& AddPlatforms(EnvironmentPlatform&& value) { m_platforms.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListCuratedEnvironmentImagesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListCuratedEnvironmentImagesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListCuratedEnvironmentImagesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListCuratedEnvironmentImagesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<EnvironmentPlatform> m_platforms;
+    bool m_platformsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

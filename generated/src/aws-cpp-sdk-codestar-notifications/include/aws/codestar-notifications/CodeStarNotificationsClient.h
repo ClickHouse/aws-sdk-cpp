@@ -16,9 +16,9 @@ namespace Aws
 namespace CodeStarNotifications
 {
   /**
-   * <p>This AWS CodeStar Notifications API Reference provides descriptions and usage
-   * examples of the operations and data types for the AWS CodeStar Notifications
-   * API. You can use the AWS CodeStar Notifications API to work with the following
+   * <p>This CodeStar Notifications API Reference provides descriptions and usage
+   * examples of the operations and data types for the CodeStar Notifications API.
+   * You can use the CodeStar Notifications API to work with the following
    * objects:</p> <p>Notification rules, by calling the following: </p> <ul> <li> <p>
    * <a>CreateNotificationRule</a>, which creates a notification rule for a resource
    * in your account. </p> </li> <li> <p> <a>DeleteNotificationRule</a>, which
@@ -41,7 +41,7 @@ namespace CodeStarNotifications
    * </li> <li> <p> <a>TagResource</a>, which associates a tag you provide with a
    * notification rule in your account. </p> </li> <li> <p> <a>UntagResource</a>,
    * which removes a tag from a notification rule in your account. </p> </li> </ul>
-   * <p> For information about how to use AWS CodeStar Notifications, see the <a
+   * <p> For information about how to use CodeStar Notifications, see the <a
    * href="https://docs.aws.amazon.com/dtconsole/latest/userguide/what-is-dtconsole.html">Amazon
    * Web Services Developer Tools Console User Guide</a>. </p>
    */
@@ -49,22 +49,25 @@ namespace CodeStarNotifications
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef CodeStarNotificationsClientConfiguration ClientConfigurationType;
+      typedef CodeStarNotificationsEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         CodeStarNotificationsClient(const Aws::CodeStarNotifications::CodeStarNotificationsClientConfiguration& clientConfiguration = Aws::CodeStarNotifications::CodeStarNotificationsClientConfiguration(),
-                                    std::shared_ptr<CodeStarNotificationsEndpointProviderBase> endpointProvider = Aws::MakeShared<CodeStarNotificationsEndpointProvider>(ALLOCATION_TAG));
+                                    std::shared_ptr<CodeStarNotificationsEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         CodeStarNotificationsClient(const Aws::Auth::AWSCredentials& credentials,
-                                    std::shared_ptr<CodeStarNotificationsEndpointProviderBase> endpointProvider = Aws::MakeShared<CodeStarNotificationsEndpointProvider>(ALLOCATION_TAG),
+                                    std::shared_ptr<CodeStarNotificationsEndpointProviderBase> endpointProvider = nullptr,
                                     const Aws::CodeStarNotifications::CodeStarNotificationsClientConfiguration& clientConfiguration = Aws::CodeStarNotifications::CodeStarNotificationsClientConfiguration());
 
        /**
@@ -72,7 +75,7 @@ namespace CodeStarNotifications
         * the default http client factory will be used
         */
         CodeStarNotificationsClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                                    std::shared_ptr<CodeStarNotificationsEndpointProviderBase> endpointProvider = Aws::MakeShared<CodeStarNotificationsEndpointProvider>(ALLOCATION_TAG),
+                                    std::shared_ptr<CodeStarNotificationsEndpointProviderBase> endpointProvider = nullptr,
                                     const Aws::CodeStarNotifications::CodeStarNotificationsClientConfiguration& clientConfiguration = Aws::CodeStarNotifications::CodeStarNotificationsClientConfiguration());
 
 
@@ -102,9 +105,10 @@ namespace CodeStarNotifications
 
         /**
          * <p>Creates a notification rule for a resource. The rule specifies the events you
-         * want notifications about and the targets (such as Chatbot topics or Chatbot
-         * clients configured for Slack) where you want to receive them.</p><p><h3>See
-         * Also:</h3>   <a
+         * want notifications about and the targets (such as Amazon Q Developer in chat
+         * applications topics or Amazon Q Developer in chat applications clients
+         * configured for Slack) where you want to receive them.</p><p><h3>See Also:</h3>  
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/codestar-notifications-2019-10-15/CreateNotificationRule">AWS
          * API Reference</a></p>
          */
@@ -210,13 +214,13 @@ namespace CodeStarNotifications
          * href="http://docs.aws.amazon.com/goto/WebAPI/codestar-notifications-2019-10-15/ListEventTypes">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListEventTypesOutcome ListEventTypes(const Model::ListEventTypesRequest& request) const;
+        virtual Model::ListEventTypesOutcome ListEventTypes(const Model::ListEventTypesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListEventTypes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListEventTypesRequestT = Model::ListEventTypesRequest>
-        Model::ListEventTypesOutcomeCallable ListEventTypesCallable(const ListEventTypesRequestT& request) const
+        Model::ListEventTypesOutcomeCallable ListEventTypesCallable(const ListEventTypesRequestT& request = {}) const
         {
             return SubmitCallable(&CodeStarNotificationsClient::ListEventTypes, request);
         }
@@ -225,7 +229,7 @@ namespace CodeStarNotifications
          * An Async wrapper for ListEventTypes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListEventTypesRequestT = Model::ListEventTypesRequest>
-        void ListEventTypesAsync(const ListEventTypesRequestT& request, const ListEventTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListEventTypesAsync(const ListEventTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListEventTypesRequestT& request = {}) const
         {
             return SubmitAsync(&CodeStarNotificationsClient::ListEventTypes, request, handler, context);
         }
@@ -236,13 +240,13 @@ namespace CodeStarNotifications
          * href="http://docs.aws.amazon.com/goto/WebAPI/codestar-notifications-2019-10-15/ListNotificationRules">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListNotificationRulesOutcome ListNotificationRules(const Model::ListNotificationRulesRequest& request) const;
+        virtual Model::ListNotificationRulesOutcome ListNotificationRules(const Model::ListNotificationRulesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListNotificationRules that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListNotificationRulesRequestT = Model::ListNotificationRulesRequest>
-        Model::ListNotificationRulesOutcomeCallable ListNotificationRulesCallable(const ListNotificationRulesRequestT& request) const
+        Model::ListNotificationRulesOutcomeCallable ListNotificationRulesCallable(const ListNotificationRulesRequestT& request = {}) const
         {
             return SubmitCallable(&CodeStarNotificationsClient::ListNotificationRules, request);
         }
@@ -251,7 +255,7 @@ namespace CodeStarNotifications
          * An Async wrapper for ListNotificationRules that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListNotificationRulesRequestT = Model::ListNotificationRulesRequest>
-        void ListNotificationRulesAsync(const ListNotificationRulesRequestT& request, const ListNotificationRulesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListNotificationRulesAsync(const ListNotificationRulesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListNotificationRulesRequestT& request = {}) const
         {
             return SubmitAsync(&CodeStarNotificationsClient::ListNotificationRules, request, handler, context);
         }
@@ -288,13 +292,13 @@ namespace CodeStarNotifications
          * href="http://docs.aws.amazon.com/goto/WebAPI/codestar-notifications-2019-10-15/ListTargets">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListTargetsOutcome ListTargets(const Model::ListTargetsRequest& request) const;
+        virtual Model::ListTargetsOutcome ListTargets(const Model::ListTargetsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListTargets that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListTargetsRequestT = Model::ListTargetsRequest>
-        Model::ListTargetsOutcomeCallable ListTargetsCallable(const ListTargetsRequestT& request) const
+        Model::ListTargetsOutcomeCallable ListTargetsCallable(const ListTargetsRequestT& request = {}) const
         {
             return SubmitCallable(&CodeStarNotificationsClient::ListTargets, request);
         }
@@ -303,15 +307,16 @@ namespace CodeStarNotifications
          * An Async wrapper for ListTargets that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListTargetsRequestT = Model::ListTargetsRequest>
-        void ListTargetsAsync(const ListTargetsRequestT& request, const ListTargetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListTargetsAsync(const ListTargetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListTargetsRequestT& request = {}) const
         {
             return SubmitAsync(&CodeStarNotificationsClient::ListTargets, request, handler, context);
         }
 
         /**
-         * <p>Creates an association between a notification rule and an Chatbot topic or
-         * Chatbot client so that the associated target can receive notifications when the
-         * events described in the rule are triggered.</p><p><h3>See Also:</h3>   <a
+         * <p>Creates an association between a notification rule and an Amazon Q Developer
+         * in chat applications topic or Amazon Q Developer in chat applications client so
+         * that the associated target can receive notifications when the events described
+         * in the rule are triggered.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/codestar-notifications-2019-10-15/Subscribe">AWS
          * API Reference</a></p>
          */
@@ -362,9 +367,10 @@ namespace CodeStarNotifications
         }
 
         /**
-         * <p>Removes an association between a notification rule and an Chatbot topic so
-         * that subscribers to that topic stop receiving notifications when the events
-         * described in the rule are triggered.</p><p><h3>See Also:</h3>   <a
+         * <p>Removes an association between a notification rule and an Amazon Q Developer
+         * in chat applications topic so that subscribers to that topic stop receiving
+         * notifications when the events described in the rule are triggered.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/codestar-notifications-2019-10-15/Unsubscribe">AWS
          * API Reference</a></p>
          */
@@ -451,7 +457,6 @@ namespace CodeStarNotifications
       void init(const CodeStarNotificationsClientConfiguration& clientConfiguration);
 
       CodeStarNotificationsClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<CodeStarNotificationsEndpointProviderBase> m_endpointProvider;
   };
 

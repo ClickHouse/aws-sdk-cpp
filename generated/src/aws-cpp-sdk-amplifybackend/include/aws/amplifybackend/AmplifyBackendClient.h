@@ -22,22 +22,25 @@ namespace AmplifyBackend
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef AmplifyBackendClientConfiguration ClientConfigurationType;
+      typedef AmplifyBackendEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         AmplifyBackendClient(const Aws::AmplifyBackend::AmplifyBackendClientConfiguration& clientConfiguration = Aws::AmplifyBackend::AmplifyBackendClientConfiguration(),
-                             std::shared_ptr<AmplifyBackendEndpointProviderBase> endpointProvider = Aws::MakeShared<AmplifyBackendEndpointProvider>(ALLOCATION_TAG));
+                             std::shared_ptr<AmplifyBackendEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         AmplifyBackendClient(const Aws::Auth::AWSCredentials& credentials,
-                             std::shared_ptr<AmplifyBackendEndpointProviderBase> endpointProvider = Aws::MakeShared<AmplifyBackendEndpointProvider>(ALLOCATION_TAG),
+                             std::shared_ptr<AmplifyBackendEndpointProviderBase> endpointProvider = nullptr,
                              const Aws::AmplifyBackend::AmplifyBackendClientConfiguration& clientConfiguration = Aws::AmplifyBackend::AmplifyBackendClientConfiguration());
 
        /**
@@ -45,7 +48,7 @@ namespace AmplifyBackend
         * the default http client factory will be used
         */
         AmplifyBackendClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                             std::shared_ptr<AmplifyBackendEndpointProviderBase> endpointProvider = Aws::MakeShared<AmplifyBackendEndpointProvider>(ALLOCATION_TAG),
+                             std::shared_ptr<AmplifyBackendEndpointProviderBase> endpointProvider = nullptr,
                              const Aws::AmplifyBackend::AmplifyBackendClientConfiguration& clientConfiguration = Aws::AmplifyBackend::AmplifyBackendClientConfiguration());
 
 
@@ -664,13 +667,13 @@ namespace AmplifyBackend
          * href="http://docs.aws.amazon.com/goto/WebAPI/amplifybackend-2020-08-11/ListS3Buckets">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListS3BucketsOutcome ListS3Buckets(const Model::ListS3BucketsRequest& request) const;
+        virtual Model::ListS3BucketsOutcome ListS3Buckets(const Model::ListS3BucketsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListS3Buckets that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListS3BucketsRequestT = Model::ListS3BucketsRequest>
-        Model::ListS3BucketsOutcomeCallable ListS3BucketsCallable(const ListS3BucketsRequestT& request) const
+        Model::ListS3BucketsOutcomeCallable ListS3BucketsCallable(const ListS3BucketsRequestT& request = {}) const
         {
             return SubmitCallable(&AmplifyBackendClient::ListS3Buckets, request);
         }
@@ -679,7 +682,7 @@ namespace AmplifyBackend
          * An Async wrapper for ListS3Buckets that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListS3BucketsRequestT = Model::ListS3BucketsRequest>
-        void ListS3BucketsAsync(const ListS3BucketsRequestT& request, const ListS3BucketsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListS3BucketsAsync(const ListS3BucketsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListS3BucketsRequestT& request = {}) const
         {
             return SubmitAsync(&AmplifyBackendClient::ListS3Buckets, request, handler, context);
         }
@@ -871,7 +874,6 @@ namespace AmplifyBackend
       void init(const AmplifyBackendClientConfiguration& clientConfiguration);
 
       AmplifyBackendClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<AmplifyBackendEndpointProviderBase> m_endpointProvider;
   };
 

@@ -34,64 +34,73 @@ namespace Model
   class RecoveryPointMember
   {
   public:
-    AWS_BACKUP_API RecoveryPointMember();
+    AWS_BACKUP_API RecoveryPointMember() = default;
     AWS_BACKUP_API RecoveryPointMember(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API RecoveryPointMember& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>This is the Amazon Resource Name (ARN) of the parent (composite) recovery
-     * point.</p>
+     * <p>The Amazon Resource Name (ARN) of the parent (composite) recovery point.</p>
      */
-    inline const Aws::String& GetRecoveryPointArn() const{ return m_recoveryPointArn; }
-
-    /**
-     * <p>This is the Amazon Resource Name (ARN) of the parent (composite) recovery
-     * point.</p>
-     */
+    inline const Aws::String& GetRecoveryPointArn() const { return m_recoveryPointArn; }
     inline bool RecoveryPointArnHasBeenSet() const { return m_recoveryPointArnHasBeenSet; }
+    template<typename RecoveryPointArnT = Aws::String>
+    void SetRecoveryPointArn(RecoveryPointArnT&& value) { m_recoveryPointArnHasBeenSet = true; m_recoveryPointArn = std::forward<RecoveryPointArnT>(value); }
+    template<typename RecoveryPointArnT = Aws::String>
+    RecoveryPointMember& WithRecoveryPointArn(RecoveryPointArnT&& value) { SetRecoveryPointArn(std::forward<RecoveryPointArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>This is the Amazon Resource Name (ARN) of the parent (composite) recovery
-     * point.</p>
+     * <p>The Amazon Resource Name (ARN) that uniquely identifies a saved resource.</p>
      */
-    inline void SetRecoveryPointArn(const Aws::String& value) { m_recoveryPointArnHasBeenSet = true; m_recoveryPointArn = value; }
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
+    inline bool ResourceArnHasBeenSet() const { return m_resourceArnHasBeenSet; }
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    RecoveryPointMember& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>This is the Amazon Resource Name (ARN) of the parent (composite) recovery
-     * point.</p>
+     * <p>The Amazon Web Services resource type that is saved as a recovery point.</p>
      */
-    inline void SetRecoveryPointArn(Aws::String&& value) { m_recoveryPointArnHasBeenSet = true; m_recoveryPointArn = std::move(value); }
+    inline const Aws::String& GetResourceType() const { return m_resourceType; }
+    inline bool ResourceTypeHasBeenSet() const { return m_resourceTypeHasBeenSet; }
+    template<typename ResourceTypeT = Aws::String>
+    void SetResourceType(ResourceTypeT&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::forward<ResourceTypeT>(value); }
+    template<typename ResourceTypeT = Aws::String>
+    RecoveryPointMember& WithResourceType(ResourceTypeT&& value) { SetResourceType(std::forward<ResourceTypeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>This is the Amazon Resource Name (ARN) of the parent (composite) recovery
-     * point.</p>
+     * <p>The name of the backup vault (the logical container in which backups are
+     * stored).</p>
      */
-    inline void SetRecoveryPointArn(const char* value) { m_recoveryPointArnHasBeenSet = true; m_recoveryPointArn.assign(value); }
-
-    /**
-     * <p>This is the Amazon Resource Name (ARN) of the parent (composite) recovery
-     * point.</p>
-     */
-    inline RecoveryPointMember& WithRecoveryPointArn(const Aws::String& value) { SetRecoveryPointArn(value); return *this;}
-
-    /**
-     * <p>This is the Amazon Resource Name (ARN) of the parent (composite) recovery
-     * point.</p>
-     */
-    inline RecoveryPointMember& WithRecoveryPointArn(Aws::String&& value) { SetRecoveryPointArn(std::move(value)); return *this;}
-
-    /**
-     * <p>This is the Amazon Resource Name (ARN) of the parent (composite) recovery
-     * point.</p>
-     */
-    inline RecoveryPointMember& WithRecoveryPointArn(const char* value) { SetRecoveryPointArn(value); return *this;}
-
+    inline const Aws::String& GetBackupVaultName() const { return m_backupVaultName; }
+    inline bool BackupVaultNameHasBeenSet() const { return m_backupVaultNameHasBeenSet; }
+    template<typename BackupVaultNameT = Aws::String>
+    void SetBackupVaultName(BackupVaultNameT&& value) { m_backupVaultNameHasBeenSet = true; m_backupVaultName = std::forward<BackupVaultNameT>(value); }
+    template<typename BackupVaultNameT = Aws::String>
+    RecoveryPointMember& WithBackupVaultName(BackupVaultNameT&& value) { SetBackupVaultName(std::forward<BackupVaultNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_recoveryPointArn;
     bool m_recoveryPointArnHasBeenSet = false;
+
+    Aws::String m_resourceArn;
+    bool m_resourceArnHasBeenSet = false;
+
+    Aws::String m_resourceType;
+    bool m_resourceTypeHasBeenSet = false;
+
+    Aws::String m_backupVaultName;
+    bool m_backupVaultNameHasBeenSet = false;
   };
 
 } // namespace Model

@@ -35,224 +35,82 @@ namespace Model
   class FaqSummary
   {
   public:
-    AWS_KENDRA_API FaqSummary();
+    AWS_KENDRA_API FaqSummary() = default;
     AWS_KENDRA_API FaqSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API FaqSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the FAQ.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The identifier of the FAQ.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    FaqSummary& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the FAQ.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The identifier of the FAQ.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The identifier of the FAQ.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The identifier of the FAQ.</p>
-     */
-    inline FaqSummary& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The identifier of the FAQ.</p>
-     */
-    inline FaqSummary& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the FAQ.</p>
-     */
-    inline FaqSummary& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name that you assigned the FAQ when you created or updated the FAQ.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name that you assigned the FAQ when you created or updated the FAQ.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    FaqSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name that you assigned the FAQ when you created or updated the FAQ.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name that you assigned the FAQ when you created or updated the FAQ.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name that you assigned the FAQ when you created or updated the FAQ.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name that you assigned the FAQ when you created or updated the FAQ.</p>
-     */
-    inline FaqSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name that you assigned the FAQ when you created or updated the FAQ.</p>
-     */
-    inline FaqSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name that you assigned the FAQ when you created or updated the FAQ.</p>
-     */
-    inline FaqSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the FAQ. When the status is <code>ACTIVE</code> the FAQ
      * is ready for use.</p>
      */
-    inline const FaqStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The current status of the FAQ. When the status is <code>ACTIVE</code> the FAQ
-     * is ready for use.</p>
-     */
+    inline FaqStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(FaqStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline FaqSummary& WithStatus(FaqStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the FAQ. When the status is <code>ACTIVE</code> the FAQ
-     * is ready for use.</p>
-     */
-    inline void SetStatus(const FaqStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The current status of the FAQ. When the status is <code>ACTIVE</code> the FAQ
-     * is ready for use.</p>
-     */
-    inline void SetStatus(FaqStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The current status of the FAQ. When the status is <code>ACTIVE</code> the FAQ
-     * is ready for use.</p>
-     */
-    inline FaqSummary& WithStatus(const FaqStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the FAQ. When the status is <code>ACTIVE</code> the FAQ
-     * is ready for use.</p>
-     */
-    inline FaqSummary& WithStatus(FaqStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Unix timestamp when the FAQ was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The Unix timestamp when the FAQ was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    FaqSummary& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Unix timestamp when the FAQ was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The Unix timestamp when the FAQ was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The Unix timestamp when the FAQ was created.</p>
-     */
-    inline FaqSummary& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The Unix timestamp when the FAQ was created.</p>
-     */
-    inline FaqSummary& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Unix timestamp when the FAQ was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdatedAt() const{ return m_updatedAt; }
-
-    /**
-     * <p>The Unix timestamp when the FAQ was last updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdatedAt() const { return m_updatedAt; }
     inline bool UpdatedAtHasBeenSet() const { return m_updatedAtHasBeenSet; }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    void SetUpdatedAt(UpdatedAtT&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::forward<UpdatedAtT>(value); }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    FaqSummary& WithUpdatedAt(UpdatedAtT&& value) { SetUpdatedAt(std::forward<UpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Unix timestamp when the FAQ was last updated.</p>
-     */
-    inline void SetUpdatedAt(const Aws::Utils::DateTime& value) { m_updatedAtHasBeenSet = true; m_updatedAt = value; }
-
-    /**
-     * <p>The Unix timestamp when the FAQ was last updated.</p>
-     */
-    inline void SetUpdatedAt(Aws::Utils::DateTime&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::move(value); }
-
-    /**
-     * <p>The Unix timestamp when the FAQ was last updated.</p>
-     */
-    inline FaqSummary& WithUpdatedAt(const Aws::Utils::DateTime& value) { SetUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The Unix timestamp when the FAQ was last updated.</p>
-     */
-    inline FaqSummary& WithUpdatedAt(Aws::Utils::DateTime&& value) { SetUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The file type used to create the FAQ. </p>
      */
-    inline const FaqFileFormat& GetFileFormat() const{ return m_fileFormat; }
-
-    /**
-     * <p>The file type used to create the FAQ. </p>
-     */
+    inline FaqFileFormat GetFileFormat() const { return m_fileFormat; }
     inline bool FileFormatHasBeenSet() const { return m_fileFormatHasBeenSet; }
+    inline void SetFileFormat(FaqFileFormat value) { m_fileFormatHasBeenSet = true; m_fileFormat = value; }
+    inline FaqSummary& WithFileFormat(FaqFileFormat value) { SetFileFormat(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The file type used to create the FAQ. </p>
-     */
-    inline void SetFileFormat(const FaqFileFormat& value) { m_fileFormatHasBeenSet = true; m_fileFormat = value; }
-
-    /**
-     * <p>The file type used to create the FAQ. </p>
-     */
-    inline void SetFileFormat(FaqFileFormat&& value) { m_fileFormatHasBeenSet = true; m_fileFormat = std::move(value); }
-
-    /**
-     * <p>The file type used to create the FAQ. </p>
-     */
-    inline FaqSummary& WithFileFormat(const FaqFileFormat& value) { SetFileFormat(value); return *this;}
-
-    /**
-     * <p>The file type used to create the FAQ. </p>
-     */
-    inline FaqSummary& WithFileFormat(FaqFileFormat&& value) { SetFileFormat(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The code for a language. This shows a supported language for the FAQ document
      * as part of the summary information for FAQs. English is supported by default.
@@ -260,71 +118,13 @@ namespace Model
      * href="https://docs.aws.amazon.com/kendra/latest/dg/in-adding-languages.html">Adding
      * documents in languages other than English</a>.</p>
      */
-    inline const Aws::String& GetLanguageCode() const{ return m_languageCode; }
-
-    /**
-     * <p>The code for a language. This shows a supported language for the FAQ document
-     * as part of the summary information for FAQs. English is supported by default.
-     * For more information on supported languages, including their codes, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/in-adding-languages.html">Adding
-     * documents in languages other than English</a>.</p>
-     */
+    inline const Aws::String& GetLanguageCode() const { return m_languageCode; }
     inline bool LanguageCodeHasBeenSet() const { return m_languageCodeHasBeenSet; }
-
-    /**
-     * <p>The code for a language. This shows a supported language for the FAQ document
-     * as part of the summary information for FAQs. English is supported by default.
-     * For more information on supported languages, including their codes, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/in-adding-languages.html">Adding
-     * documents in languages other than English</a>.</p>
-     */
-    inline void SetLanguageCode(const Aws::String& value) { m_languageCodeHasBeenSet = true; m_languageCode = value; }
-
-    /**
-     * <p>The code for a language. This shows a supported language for the FAQ document
-     * as part of the summary information for FAQs. English is supported by default.
-     * For more information on supported languages, including their codes, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/in-adding-languages.html">Adding
-     * documents in languages other than English</a>.</p>
-     */
-    inline void SetLanguageCode(Aws::String&& value) { m_languageCodeHasBeenSet = true; m_languageCode = std::move(value); }
-
-    /**
-     * <p>The code for a language. This shows a supported language for the FAQ document
-     * as part of the summary information for FAQs. English is supported by default.
-     * For more information on supported languages, including their codes, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/in-adding-languages.html">Adding
-     * documents in languages other than English</a>.</p>
-     */
-    inline void SetLanguageCode(const char* value) { m_languageCodeHasBeenSet = true; m_languageCode.assign(value); }
-
-    /**
-     * <p>The code for a language. This shows a supported language for the FAQ document
-     * as part of the summary information for FAQs. English is supported by default.
-     * For more information on supported languages, including their codes, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/in-adding-languages.html">Adding
-     * documents in languages other than English</a>.</p>
-     */
-    inline FaqSummary& WithLanguageCode(const Aws::String& value) { SetLanguageCode(value); return *this;}
-
-    /**
-     * <p>The code for a language. This shows a supported language for the FAQ document
-     * as part of the summary information for FAQs. English is supported by default.
-     * For more information on supported languages, including their codes, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/in-adding-languages.html">Adding
-     * documents in languages other than English</a>.</p>
-     */
-    inline FaqSummary& WithLanguageCode(Aws::String&& value) { SetLanguageCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The code for a language. This shows a supported language for the FAQ document
-     * as part of the summary information for FAQs. English is supported by default.
-     * For more information on supported languages, including their codes, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/in-adding-languages.html">Adding
-     * documents in languages other than English</a>.</p>
-     */
-    inline FaqSummary& WithLanguageCode(const char* value) { SetLanguageCode(value); return *this;}
-
+    template<typename LanguageCodeT = Aws::String>
+    void SetLanguageCode(LanguageCodeT&& value) { m_languageCodeHasBeenSet = true; m_languageCode = std::forward<LanguageCodeT>(value); }
+    template<typename LanguageCodeT = Aws::String>
+    FaqSummary& WithLanguageCode(LanguageCodeT&& value) { SetLanguageCode(std::forward<LanguageCodeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
@@ -333,16 +133,16 @@ namespace Model
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    FaqStatus m_status;
+    FaqStatus m_status{FaqStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updatedAt;
+    Aws::Utils::DateTime m_updatedAt{};
     bool m_updatedAtHasBeenSet = false;
 
-    FaqFileFormat m_fileFormat;
+    FaqFileFormat m_fileFormat{FaqFileFormat::NOT_SET};
     bool m_fileFormatHasBeenSet = false;
 
     Aws::String m_languageCode;

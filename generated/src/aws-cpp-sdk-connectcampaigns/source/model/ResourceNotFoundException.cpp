@@ -19,15 +19,7 @@ namespace ConnectCampaigns
 namespace Model
 {
 
-ResourceNotFoundException::ResourceNotFoundException() : 
-    m_messageHasBeenSet(false),
-    m_xAmzErrorTypeHasBeenSet(false)
-{
-}
-
-ResourceNotFoundException::ResourceNotFoundException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_xAmzErrorTypeHasBeenSet(false)
+ResourceNotFoundException::ResourceNotFoundException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -37,10 +29,8 @@ ResourceNotFoundException& ResourceNotFoundException::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

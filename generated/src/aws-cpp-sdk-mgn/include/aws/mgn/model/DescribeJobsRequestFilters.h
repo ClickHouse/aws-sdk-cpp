@@ -32,139 +32,49 @@ namespace Model
   class DescribeJobsRequestFilters
   {
   public:
-    AWS_MGN_API DescribeJobsRequestFilters();
+    AWS_MGN_API DescribeJobsRequestFilters() = default;
     AWS_MGN_API DescribeJobsRequestFilters(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API DescribeJobsRequestFilters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Request to describe Job log filters by date.</p>
      */
-    inline const Aws::String& GetFromDate() const{ return m_fromDate; }
-
-    /**
-     * <p>Request to describe Job log filters by date.</p>
-     */
+    inline const Aws::String& GetFromDate() const { return m_fromDate; }
     inline bool FromDateHasBeenSet() const { return m_fromDateHasBeenSet; }
+    template<typename FromDateT = Aws::String>
+    void SetFromDate(FromDateT&& value) { m_fromDateHasBeenSet = true; m_fromDate = std::forward<FromDateT>(value); }
+    template<typename FromDateT = Aws::String>
+    DescribeJobsRequestFilters& WithFromDate(FromDateT&& value) { SetFromDate(std::forward<FromDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Request to describe Job log filters by date.</p>
-     */
-    inline void SetFromDate(const Aws::String& value) { m_fromDateHasBeenSet = true; m_fromDate = value; }
-
-    /**
-     * <p>Request to describe Job log filters by date.</p>
-     */
-    inline void SetFromDate(Aws::String&& value) { m_fromDateHasBeenSet = true; m_fromDate = std::move(value); }
-
-    /**
-     * <p>Request to describe Job log filters by date.</p>
-     */
-    inline void SetFromDate(const char* value) { m_fromDateHasBeenSet = true; m_fromDate.assign(value); }
-
-    /**
-     * <p>Request to describe Job log filters by date.</p>
-     */
-    inline DescribeJobsRequestFilters& WithFromDate(const Aws::String& value) { SetFromDate(value); return *this;}
-
-    /**
-     * <p>Request to describe Job log filters by date.</p>
-     */
-    inline DescribeJobsRequestFilters& WithFromDate(Aws::String&& value) { SetFromDate(std::move(value)); return *this;}
-
-    /**
-     * <p>Request to describe Job log filters by date.</p>
-     */
-    inline DescribeJobsRequestFilters& WithFromDate(const char* value) { SetFromDate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Request to describe Job log filters by job ID.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetJobIDs() const{ return m_jobIDs; }
-
-    /**
-     * <p>Request to describe Job log filters by job ID.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetJobIDs() const { return m_jobIDs; }
     inline bool JobIDsHasBeenSet() const { return m_jobIDsHasBeenSet; }
+    template<typename JobIDsT = Aws::Vector<Aws::String>>
+    void SetJobIDs(JobIDsT&& value) { m_jobIDsHasBeenSet = true; m_jobIDs = std::forward<JobIDsT>(value); }
+    template<typename JobIDsT = Aws::Vector<Aws::String>>
+    DescribeJobsRequestFilters& WithJobIDs(JobIDsT&& value) { SetJobIDs(std::forward<JobIDsT>(value)); return *this;}
+    template<typename JobIDsT = Aws::String>
+    DescribeJobsRequestFilters& AddJobIDs(JobIDsT&& value) { m_jobIDsHasBeenSet = true; m_jobIDs.emplace_back(std::forward<JobIDsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Request to describe Job log filters by job ID.</p>
-     */
-    inline void SetJobIDs(const Aws::Vector<Aws::String>& value) { m_jobIDsHasBeenSet = true; m_jobIDs = value; }
-
-    /**
-     * <p>Request to describe Job log filters by job ID.</p>
-     */
-    inline void SetJobIDs(Aws::Vector<Aws::String>&& value) { m_jobIDsHasBeenSet = true; m_jobIDs = std::move(value); }
-
-    /**
-     * <p>Request to describe Job log filters by job ID.</p>
-     */
-    inline DescribeJobsRequestFilters& WithJobIDs(const Aws::Vector<Aws::String>& value) { SetJobIDs(value); return *this;}
-
-    /**
-     * <p>Request to describe Job log filters by job ID.</p>
-     */
-    inline DescribeJobsRequestFilters& WithJobIDs(Aws::Vector<Aws::String>&& value) { SetJobIDs(std::move(value)); return *this;}
-
-    /**
-     * <p>Request to describe Job log filters by job ID.</p>
-     */
-    inline DescribeJobsRequestFilters& AddJobIDs(const Aws::String& value) { m_jobIDsHasBeenSet = true; m_jobIDs.push_back(value); return *this; }
-
-    /**
-     * <p>Request to describe Job log filters by job ID.</p>
-     */
-    inline DescribeJobsRequestFilters& AddJobIDs(Aws::String&& value) { m_jobIDsHasBeenSet = true; m_jobIDs.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Request to describe Job log filters by job ID.</p>
-     */
-    inline DescribeJobsRequestFilters& AddJobIDs(const char* value) { m_jobIDsHasBeenSet = true; m_jobIDs.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Request to describe job log items by last date.</p>
      */
-    inline const Aws::String& GetToDate() const{ return m_toDate; }
-
-    /**
-     * <p>Request to describe job log items by last date.</p>
-     */
+    inline const Aws::String& GetToDate() const { return m_toDate; }
     inline bool ToDateHasBeenSet() const { return m_toDateHasBeenSet; }
-
-    /**
-     * <p>Request to describe job log items by last date.</p>
-     */
-    inline void SetToDate(const Aws::String& value) { m_toDateHasBeenSet = true; m_toDate = value; }
-
-    /**
-     * <p>Request to describe job log items by last date.</p>
-     */
-    inline void SetToDate(Aws::String&& value) { m_toDateHasBeenSet = true; m_toDate = std::move(value); }
-
-    /**
-     * <p>Request to describe job log items by last date.</p>
-     */
-    inline void SetToDate(const char* value) { m_toDateHasBeenSet = true; m_toDate.assign(value); }
-
-    /**
-     * <p>Request to describe job log items by last date.</p>
-     */
-    inline DescribeJobsRequestFilters& WithToDate(const Aws::String& value) { SetToDate(value); return *this;}
-
-    /**
-     * <p>Request to describe job log items by last date.</p>
-     */
-    inline DescribeJobsRequestFilters& WithToDate(Aws::String&& value) { SetToDate(std::move(value)); return *this;}
-
-    /**
-     * <p>Request to describe job log items by last date.</p>
-     */
-    inline DescribeJobsRequestFilters& WithToDate(const char* value) { SetToDate(value); return *this;}
-
+    template<typename ToDateT = Aws::String>
+    void SetToDate(ToDateT&& value) { m_toDateHasBeenSet = true; m_toDate = std::forward<ToDateT>(value); }
+    template<typename ToDateT = Aws::String>
+    DescribeJobsRequestFilters& WithToDate(ToDateT&& value) { SetToDate(std::forward<ToDateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_fromDate;

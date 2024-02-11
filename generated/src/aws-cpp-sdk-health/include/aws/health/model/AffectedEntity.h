@@ -35,12 +35,13 @@ namespace Model
   class AffectedEntity
   {
   public:
-    AWS_HEALTH_API AffectedEntity();
+    AWS_HEALTH_API AffectedEntity() = default;
     AWS_HEALTH_API AffectedEntity(Aws::Utils::Json::JsonView jsonValue);
     AWS_HEALTH_API AffectedEntity& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_HEALTH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the entity. Format:
      * <code>arn:aws:health:<i>entity-region</i>:<i>aws-account</i>:entity/<i>entity-id</i>
@@ -48,72 +49,15 @@ namespace Model
      * <code>arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K</code>
      * </p>
      */
-    inline const Aws::String& GetEntityArn() const{ return m_entityArn; }
-
-    /**
-     * <p>The unique identifier for the entity. Format:
-     * <code>arn:aws:health:<i>entity-region</i>:<i>aws-account</i>:entity/<i>entity-id</i>
-     * </code>. Example:
-     * <code>arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K</code>
-     * </p>
-     */
+    inline const Aws::String& GetEntityArn() const { return m_entityArn; }
     inline bool EntityArnHasBeenSet() const { return m_entityArnHasBeenSet; }
+    template<typename EntityArnT = Aws::String>
+    void SetEntityArn(EntityArnT&& value) { m_entityArnHasBeenSet = true; m_entityArn = std::forward<EntityArnT>(value); }
+    template<typename EntityArnT = Aws::String>
+    AffectedEntity& WithEntityArn(EntityArnT&& value) { SetEntityArn(std::forward<EntityArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the entity. Format:
-     * <code>arn:aws:health:<i>entity-region</i>:<i>aws-account</i>:entity/<i>entity-id</i>
-     * </code>. Example:
-     * <code>arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K</code>
-     * </p>
-     */
-    inline void SetEntityArn(const Aws::String& value) { m_entityArnHasBeenSet = true; m_entityArn = value; }
-
-    /**
-     * <p>The unique identifier for the entity. Format:
-     * <code>arn:aws:health:<i>entity-region</i>:<i>aws-account</i>:entity/<i>entity-id</i>
-     * </code>. Example:
-     * <code>arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K</code>
-     * </p>
-     */
-    inline void SetEntityArn(Aws::String&& value) { m_entityArnHasBeenSet = true; m_entityArn = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the entity. Format:
-     * <code>arn:aws:health:<i>entity-region</i>:<i>aws-account</i>:entity/<i>entity-id</i>
-     * </code>. Example:
-     * <code>arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K</code>
-     * </p>
-     */
-    inline void SetEntityArn(const char* value) { m_entityArnHasBeenSet = true; m_entityArn.assign(value); }
-
-    /**
-     * <p>The unique identifier for the entity. Format:
-     * <code>arn:aws:health:<i>entity-region</i>:<i>aws-account</i>:entity/<i>entity-id</i>
-     * </code>. Example:
-     * <code>arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K</code>
-     * </p>
-     */
-    inline AffectedEntity& WithEntityArn(const Aws::String& value) { SetEntityArn(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the entity. Format:
-     * <code>arn:aws:health:<i>entity-region</i>:<i>aws-account</i>:entity/<i>entity-id</i>
-     * </code>. Example:
-     * <code>arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K</code>
-     * </p>
-     */
-    inline AffectedEntity& WithEntityArn(Aws::String&& value) { SetEntityArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the entity. Format:
-     * <code>arn:aws:health:<i>entity-region</i>:<i>aws-account</i>:entity/<i>entity-id</i>
-     * </code>. Example:
-     * <code>arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K</code>
-     * </p>
-     */
-    inline AffectedEntity& WithEntityArn(const char* value) { SetEntityArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the event. The event ARN has the
      * <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i>
@@ -122,362 +66,107 @@ namespace Model
      * <code>arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code>
      * </p>
      */
-    inline const Aws::String& GetEventArn() const{ return m_eventArn; }
-
-    /**
-     * <p>The unique identifier for the event. The event ARN has the
-     * <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i>
-     * </code> format.</p> <p>For example, an event ARN might look like the
-     * following:</p> <p>
-     * <code>arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code>
-     * </p>
-     */
+    inline const Aws::String& GetEventArn() const { return m_eventArn; }
     inline bool EventArnHasBeenSet() const { return m_eventArnHasBeenSet; }
+    template<typename EventArnT = Aws::String>
+    void SetEventArn(EventArnT&& value) { m_eventArnHasBeenSet = true; m_eventArn = std::forward<EventArnT>(value); }
+    template<typename EventArnT = Aws::String>
+    AffectedEntity& WithEventArn(EventArnT&& value) { SetEventArn(std::forward<EventArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the event. The event ARN has the
-     * <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i>
-     * </code> format.</p> <p>For example, an event ARN might look like the
-     * following:</p> <p>
-     * <code>arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code>
-     * </p>
-     */
-    inline void SetEventArn(const Aws::String& value) { m_eventArnHasBeenSet = true; m_eventArn = value; }
-
-    /**
-     * <p>The unique identifier for the event. The event ARN has the
-     * <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i>
-     * </code> format.</p> <p>For example, an event ARN might look like the
-     * following:</p> <p>
-     * <code>arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code>
-     * </p>
-     */
-    inline void SetEventArn(Aws::String&& value) { m_eventArnHasBeenSet = true; m_eventArn = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the event. The event ARN has the
-     * <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i>
-     * </code> format.</p> <p>For example, an event ARN might look like the
-     * following:</p> <p>
-     * <code>arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code>
-     * </p>
-     */
-    inline void SetEventArn(const char* value) { m_eventArnHasBeenSet = true; m_eventArn.assign(value); }
-
-    /**
-     * <p>The unique identifier for the event. The event ARN has the
-     * <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i>
-     * </code> format.</p> <p>For example, an event ARN might look like the
-     * following:</p> <p>
-     * <code>arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code>
-     * </p>
-     */
-    inline AffectedEntity& WithEventArn(const Aws::String& value) { SetEventArn(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the event. The event ARN has the
-     * <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i>
-     * </code> format.</p> <p>For example, an event ARN might look like the
-     * following:</p> <p>
-     * <code>arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code>
-     * </p>
-     */
-    inline AffectedEntity& WithEventArn(Aws::String&& value) { SetEventArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the event. The event ARN has the
-     * <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i>
-     * </code> format.</p> <p>For example, an event ARN might look like the
-     * following:</p> <p>
-     * <code>arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code>
-     * </p>
-     */
-    inline AffectedEntity& WithEventArn(const char* value) { SetEventArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the affected entity.</p>
      */
-    inline const Aws::String& GetEntityValue() const{ return m_entityValue; }
-
-    /**
-     * <p>The ID of the affected entity.</p>
-     */
+    inline const Aws::String& GetEntityValue() const { return m_entityValue; }
     inline bool EntityValueHasBeenSet() const { return m_entityValueHasBeenSet; }
+    template<typename EntityValueT = Aws::String>
+    void SetEntityValue(EntityValueT&& value) { m_entityValueHasBeenSet = true; m_entityValue = std::forward<EntityValueT>(value); }
+    template<typename EntityValueT = Aws::String>
+    AffectedEntity& WithEntityValue(EntityValueT&& value) { SetEntityValue(std::forward<EntityValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the affected entity.</p>
-     */
-    inline void SetEntityValue(const Aws::String& value) { m_entityValueHasBeenSet = true; m_entityValue = value; }
-
-    /**
-     * <p>The ID of the affected entity.</p>
-     */
-    inline void SetEntityValue(Aws::String&& value) { m_entityValueHasBeenSet = true; m_entityValue = std::move(value); }
-
-    /**
-     * <p>The ID of the affected entity.</p>
-     */
-    inline void SetEntityValue(const char* value) { m_entityValueHasBeenSet = true; m_entityValue.assign(value); }
-
-    /**
-     * <p>The ID of the affected entity.</p>
-     */
-    inline AffectedEntity& WithEntityValue(const Aws::String& value) { SetEntityValue(value); return *this;}
-
-    /**
-     * <p>The ID of the affected entity.</p>
-     */
-    inline AffectedEntity& WithEntityValue(Aws::String&& value) { SetEntityValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the affected entity.</p>
-     */
-    inline AffectedEntity& WithEntityValue(const char* value) { SetEntityValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The URL of the affected entity.</p>
      */
-    inline const Aws::String& GetEntityUrl() const{ return m_entityUrl; }
-
-    /**
-     * <p>The URL of the affected entity.</p>
-     */
+    inline const Aws::String& GetEntityUrl() const { return m_entityUrl; }
     inline bool EntityUrlHasBeenSet() const { return m_entityUrlHasBeenSet; }
+    template<typename EntityUrlT = Aws::String>
+    void SetEntityUrl(EntityUrlT&& value) { m_entityUrlHasBeenSet = true; m_entityUrl = std::forward<EntityUrlT>(value); }
+    template<typename EntityUrlT = Aws::String>
+    AffectedEntity& WithEntityUrl(EntityUrlT&& value) { SetEntityUrl(std::forward<EntityUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URL of the affected entity.</p>
-     */
-    inline void SetEntityUrl(const Aws::String& value) { m_entityUrlHasBeenSet = true; m_entityUrl = value; }
-
-    /**
-     * <p>The URL of the affected entity.</p>
-     */
-    inline void SetEntityUrl(Aws::String&& value) { m_entityUrlHasBeenSet = true; m_entityUrl = std::move(value); }
-
-    /**
-     * <p>The URL of the affected entity.</p>
-     */
-    inline void SetEntityUrl(const char* value) { m_entityUrlHasBeenSet = true; m_entityUrl.assign(value); }
-
-    /**
-     * <p>The URL of the affected entity.</p>
-     */
-    inline AffectedEntity& WithEntityUrl(const Aws::String& value) { SetEntityUrl(value); return *this;}
-
-    /**
-     * <p>The URL of the affected entity.</p>
-     */
-    inline AffectedEntity& WithEntityUrl(Aws::String&& value) { SetEntityUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL of the affected entity.</p>
-     */
-    inline AffectedEntity& WithEntityUrl(const char* value) { SetEntityUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The 12-digit Amazon Web Services account number that contains the affected
      * entity.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The 12-digit Amazon Web Services account number that contains the affected
-     * entity.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    AffectedEntity& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The 12-digit Amazon Web Services account number that contains the affected
-     * entity.</p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The 12-digit Amazon Web Services account number that contains the affected
-     * entity.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The 12-digit Amazon Web Services account number that contains the affected
-     * entity.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The 12-digit Amazon Web Services account number that contains the affected
-     * entity.</p>
-     */
-    inline AffectedEntity& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The 12-digit Amazon Web Services account number that contains the affected
-     * entity.</p>
-     */
-    inline AffectedEntity& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The 12-digit Amazon Web Services account number that contains the affected
-     * entity.</p>
-     */
-    inline AffectedEntity& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The most recent time that the entity was updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const{ return m_lastUpdatedTime; }
-
-    /**
-     * <p>The most recent time that the entity was updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const { return m_lastUpdatedTime; }
     inline bool LastUpdatedTimeHasBeenSet() const { return m_lastUpdatedTimeHasBeenSet; }
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    void SetLastUpdatedTime(LastUpdatedTimeT&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::forward<LastUpdatedTimeT>(value); }
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    AffectedEntity& WithLastUpdatedTime(LastUpdatedTimeT&& value) { SetLastUpdatedTime(std::forward<LastUpdatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The most recent time that the entity was updated.</p>
-     */
-    inline void SetLastUpdatedTime(const Aws::Utils::DateTime& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = value; }
-
-    /**
-     * <p>The most recent time that the entity was updated.</p>
-     */
-    inline void SetLastUpdatedTime(Aws::Utils::DateTime&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::move(value); }
-
-    /**
-     * <p>The most recent time that the entity was updated.</p>
-     */
-    inline AffectedEntity& WithLastUpdatedTime(const Aws::Utils::DateTime& value) { SetLastUpdatedTime(value); return *this;}
-
-    /**
-     * <p>The most recent time that the entity was updated.</p>
-     */
-    inline AffectedEntity& WithLastUpdatedTime(Aws::Utils::DateTime&& value) { SetLastUpdatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The most recent status of the entity affected by the event. The possible
      * values are <code>IMPAIRED</code>, <code>UNIMPAIRED</code>, and
      * <code>UNKNOWN</code>.</p>
      */
-    inline const EntityStatusCode& GetStatusCode() const{ return m_statusCode; }
-
-    /**
-     * <p>The most recent status of the entity affected by the event. The possible
-     * values are <code>IMPAIRED</code>, <code>UNIMPAIRED</code>, and
-     * <code>UNKNOWN</code>.</p>
-     */
+    inline EntityStatusCode GetStatusCode() const { return m_statusCode; }
     inline bool StatusCodeHasBeenSet() const { return m_statusCodeHasBeenSet; }
+    inline void SetStatusCode(EntityStatusCode value) { m_statusCodeHasBeenSet = true; m_statusCode = value; }
+    inline AffectedEntity& WithStatusCode(EntityStatusCode value) { SetStatusCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The most recent status of the entity affected by the event. The possible
-     * values are <code>IMPAIRED</code>, <code>UNIMPAIRED</code>, and
-     * <code>UNKNOWN</code>.</p>
-     */
-    inline void SetStatusCode(const EntityStatusCode& value) { m_statusCodeHasBeenSet = true; m_statusCode = value; }
-
-    /**
-     * <p>The most recent status of the entity affected by the event. The possible
-     * values are <code>IMPAIRED</code>, <code>UNIMPAIRED</code>, and
-     * <code>UNKNOWN</code>.</p>
-     */
-    inline void SetStatusCode(EntityStatusCode&& value) { m_statusCodeHasBeenSet = true; m_statusCode = std::move(value); }
-
-    /**
-     * <p>The most recent status of the entity affected by the event. The possible
-     * values are <code>IMPAIRED</code>, <code>UNIMPAIRED</code>, and
-     * <code>UNKNOWN</code>.</p>
-     */
-    inline AffectedEntity& WithStatusCode(const EntityStatusCode& value) { SetStatusCode(value); return *this;}
-
-    /**
-     * <p>The most recent status of the entity affected by the event. The possible
-     * values are <code>IMPAIRED</code>, <code>UNIMPAIRED</code>, and
-     * <code>UNKNOWN</code>.</p>
-     */
-    inline AffectedEntity& WithStatusCode(EntityStatusCode&& value) { SetStatusCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A map of entity tags attached to the affected entity.</p> 
      * <p>Currently, the <code>tags</code> property isn't supported.</p> 
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    AffectedEntity& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    AffectedEntity& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
+    ///@{
     /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
+     * <p>Additional metadata about the affected entity.</p>
      */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
-     */
-    inline AffectedEntity& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
-     */
-    inline AffectedEntity& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
-     */
-    inline AffectedEntity& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
-     */
-    inline AffectedEntity& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
-     */
-    inline AffectedEntity& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
-     */
-    inline AffectedEntity& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
-     */
-    inline AffectedEntity& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
-     */
-    inline AffectedEntity& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
-     */
-    inline AffectedEntity& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    inline const Aws::Map<Aws::String, Aws::String>& GetEntityMetadata() const { return m_entityMetadata; }
+    inline bool EntityMetadataHasBeenSet() const { return m_entityMetadataHasBeenSet; }
+    template<typename EntityMetadataT = Aws::Map<Aws::String, Aws::String>>
+    void SetEntityMetadata(EntityMetadataT&& value) { m_entityMetadataHasBeenSet = true; m_entityMetadata = std::forward<EntityMetadataT>(value); }
+    template<typename EntityMetadataT = Aws::Map<Aws::String, Aws::String>>
+    AffectedEntity& WithEntityMetadata(EntityMetadataT&& value) { SetEntityMetadata(std::forward<EntityMetadataT>(value)); return *this;}
+    template<typename EntityMetadataKeyT = Aws::String, typename EntityMetadataValueT = Aws::String>
+    AffectedEntity& AddEntityMetadata(EntityMetadataKeyT&& key, EntityMetadataValueT&& value) {
+      m_entityMetadataHasBeenSet = true; m_entityMetadata.emplace(std::forward<EntityMetadataKeyT>(key), std::forward<EntityMetadataValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_entityArn;
@@ -495,14 +184,17 @@ namespace Model
     Aws::String m_awsAccountId;
     bool m_awsAccountIdHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedTime;
+    Aws::Utils::DateTime m_lastUpdatedTime{};
     bool m_lastUpdatedTimeHasBeenSet = false;
 
-    EntityStatusCode m_statusCode;
+    EntityStatusCode m_statusCode{EntityStatusCode::NOT_SET};
     bool m_statusCodeHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet = false;
+
+    Aws::Map<Aws::String, Aws::String> m_entityMetadata;
+    bool m_entityMetadataHasBeenSet = false;
   };
 
 } // namespace Model

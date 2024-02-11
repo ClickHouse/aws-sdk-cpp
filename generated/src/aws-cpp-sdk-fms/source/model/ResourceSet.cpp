@@ -18,23 +18,7 @@ namespace FMS
 namespace Model
 {
 
-ResourceSet::ResourceSet() : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_updateTokenHasBeenSet(false),
-    m_resourceTypeListHasBeenSet(false),
-    m_lastUpdateTimeHasBeenSet(false)
-{
-}
-
-ResourceSet::ResourceSet(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_updateTokenHasBeenSet(false),
-    m_resourceTypeListHasBeenSet(false),
-    m_lastUpdateTimeHasBeenSet(false)
+ResourceSet::ResourceSet(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,31 +28,23 @@ ResourceSet& ResourceSet::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetString("Id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UpdateToken"))
   {
     m_updateToken = jsonValue.GetString("UpdateToken");
-
     m_updateTokenHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceTypeList"))
   {
     Aws::Utils::Array<JsonView> resourceTypeListJsonList = jsonValue.GetArray("ResourceTypeList");
@@ -78,14 +54,16 @@ ResourceSet& ResourceSet::operator =(JsonView jsonValue)
     }
     m_resourceTypeListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastUpdateTime"))
   {
     m_lastUpdateTime = jsonValue.GetDouble("LastUpdateTime");
-
     m_lastUpdateTimeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ResourceSetStatus"))
+  {
+    m_resourceSetStatus = ResourceSetStatusMapper::GetResourceSetStatusForName(jsonValue.GetString("ResourceSetStatus"));
+    m_resourceSetStatusHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -131,6 +109,11 @@ JsonValue ResourceSet::Jsonize() const
   if(m_lastUpdateTimeHasBeenSet)
   {
    payload.WithDouble("LastUpdateTime", m_lastUpdateTime.SecondsWithMSPrecision());
+  }
+
+  if(m_resourceSetStatusHasBeenSet)
+  {
+   payload.WithString("ResourceSetStatus", ResourceSetStatusMapper::GetNameForResourceSetStatus(m_resourceSetStatus));
   }
 
   return payload;

@@ -18,15 +18,7 @@ namespace OpenSearchServerless
 namespace Model
 {
 
-VpcEndpointFilters::VpcEndpointFilters() : 
-    m_status(VpcEndpointStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-VpcEndpointFilters::VpcEndpointFilters(JsonView jsonValue) : 
-    m_status(VpcEndpointStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+VpcEndpointFilters::VpcEndpointFilters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ VpcEndpointFilters& VpcEndpointFilters::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("status"))
   {
     m_status = VpcEndpointStatusMapper::GetVpcEndpointStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

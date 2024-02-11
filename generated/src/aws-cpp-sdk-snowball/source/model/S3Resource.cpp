@@ -18,17 +18,7 @@ namespace Snowball
 namespace Model
 {
 
-S3Resource::S3Resource() : 
-    m_bucketArnHasBeenSet(false),
-    m_keyRangeHasBeenSet(false),
-    m_targetOnDeviceServicesHasBeenSet(false)
-{
-}
-
-S3Resource::S3Resource(JsonView jsonValue) : 
-    m_bucketArnHasBeenSet(false),
-    m_keyRangeHasBeenSet(false),
-    m_targetOnDeviceServicesHasBeenSet(false)
+S3Resource::S3Resource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ S3Resource& S3Resource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("BucketArn"))
   {
     m_bucketArn = jsonValue.GetString("BucketArn");
-
     m_bucketArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("KeyRange"))
   {
     m_keyRange = jsonValue.GetObject("KeyRange");
-
     m_keyRangeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TargetOnDeviceServices"))
   {
     Aws::Utils::Array<JsonView> targetOnDeviceServicesJsonList = jsonValue.GetArray("TargetOnDeviceServices");
@@ -58,7 +44,6 @@ S3Resource& S3Resource::operator =(JsonView jsonValue)
     }
     m_targetOnDeviceServicesHasBeenSet = true;
   }
-
   return *this;
 }
 

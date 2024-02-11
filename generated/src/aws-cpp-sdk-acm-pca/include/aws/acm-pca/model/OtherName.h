@@ -35,93 +35,35 @@ namespace Model
   class OtherName
   {
   public:
-    AWS_ACMPCA_API OtherName();
+    AWS_ACMPCA_API OtherName() = default;
     AWS_ACMPCA_API OtherName(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACMPCA_API OtherName& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACMPCA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies an OID. </p>
      */
-    inline const Aws::String& GetTypeId() const{ return m_typeId; }
-
-    /**
-     * <p>Specifies an OID. </p>
-     */
+    inline const Aws::String& GetTypeId() const { return m_typeId; }
     inline bool TypeIdHasBeenSet() const { return m_typeIdHasBeenSet; }
+    template<typename TypeIdT = Aws::String>
+    void SetTypeId(TypeIdT&& value) { m_typeIdHasBeenSet = true; m_typeId = std::forward<TypeIdT>(value); }
+    template<typename TypeIdT = Aws::String>
+    OtherName& WithTypeId(TypeIdT&& value) { SetTypeId(std::forward<TypeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies an OID. </p>
-     */
-    inline void SetTypeId(const Aws::String& value) { m_typeIdHasBeenSet = true; m_typeId = value; }
-
-    /**
-     * <p>Specifies an OID. </p>
-     */
-    inline void SetTypeId(Aws::String&& value) { m_typeIdHasBeenSet = true; m_typeId = std::move(value); }
-
-    /**
-     * <p>Specifies an OID. </p>
-     */
-    inline void SetTypeId(const char* value) { m_typeIdHasBeenSet = true; m_typeId.assign(value); }
-
-    /**
-     * <p>Specifies an OID. </p>
-     */
-    inline OtherName& WithTypeId(const Aws::String& value) { SetTypeId(value); return *this;}
-
-    /**
-     * <p>Specifies an OID. </p>
-     */
-    inline OtherName& WithTypeId(Aws::String&& value) { SetTypeId(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies an OID. </p>
-     */
-    inline OtherName& WithTypeId(const char* value) { SetTypeId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies an OID value.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>Specifies an OID value.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>Specifies an OID value.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>Specifies an OID value.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>Specifies an OID value.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>Specifies an OID value.</p>
-     */
-    inline OtherName& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>Specifies an OID value.</p>
-     */
-    inline OtherName& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies an OID value.</p>
-     */
-    inline OtherName& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    OtherName& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_typeId;

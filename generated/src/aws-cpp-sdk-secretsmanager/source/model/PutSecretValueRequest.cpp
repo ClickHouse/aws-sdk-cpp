@@ -13,16 +13,6 @@ using namespace Aws::SecretsManager::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutSecretValueRequest::PutSecretValueRequest() : 
-    m_secretIdHasBeenSet(false),
-    m_clientRequestToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientRequestTokenHasBeenSet(true),
-    m_secretBinaryHasBeenSet(false),
-    m_secretStringHasBeenSet(false),
-    m_versionStagesHasBeenSet(false)
-{
-}
-
 Aws::String PutSecretValueRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -58,6 +48,12 @@ Aws::String PutSecretValueRequest::SerializePayload() const
      versionStagesJsonList[versionStagesIndex].AsString(m_versionStages[versionStagesIndex]);
    }
    payload.WithArray("VersionStages", std::move(versionStagesJsonList));
+
+  }
+
+  if(m_rotationTokenHasBeenSet)
+  {
+   payload.WithString("RotationToken", m_rotationToken);
 
   }
 

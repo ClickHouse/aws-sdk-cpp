@@ -29,149 +29,60 @@ namespace Model
    * in a file that is separate from the video container. Set up sidecar captions in
    * the same output group, but different output from your video. For more
    * information, see
-   * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
-   * When you work directly in your JSON job specification, include this object and
-   * any required children when you set destinationType to IMSC.<p><h3>See Also:</h3>
-   * <a
+   * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.<p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/ImscDestinationSettings">AWS
    * API Reference</a></p>
    */
   class ImscDestinationSettings
   {
   public:
-    AWS_MEDIACONVERT_API ImscDestinationSettings();
+    AWS_MEDIACONVERT_API ImscDestinationSettings() = default;
     AWS_MEDIACONVERT_API ImscDestinationSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API ImscDestinationSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * Set Accessibility subtitles to Enabled if the ISMC or WebVTT captions track is
-     * intended to provide accessibility for people who are deaf or hard of hearing.
-     * When you enable this feature, MediaConvert adds the following attributes under
-     * EXT-X-MEDIA in the HLS or CMAF manifest for this track:
+     * If the IMSC captions track is intended to provide accessibility for people who
+     * are deaf or hard of hearing: Set Accessibility subtitles to Enabled. When you
+     * do, MediaConvert adds accessibility attributes to your output HLS or DASH
+     * manifest. For HLS manifests, MediaConvert adds the following accessibility
+     * attributes under EXT-X-MEDIA for this track:
      * CHARACTERISTICS="public.accessibility.describes-spoken-dialog,public.accessibility.describes-music-and-sound"
-     * and AUTOSELECT="YES". Keep the default value, Disabled, if the captions track is
-     * not intended to provide such accessibility. MediaConvert will not add the above
-     * attributes.
+     * and AUTOSELECT="YES". For DASH manifests, MediaConvert adds the following in the
+     * adaptation set for this track: <Accessibility
+     * schemeIdUri="urn:mpeg:dash:role:2011" value="caption"/>. If the captions track
+     * is not intended to provide such accessibility: Keep the default value, Disabled.
+     * When you do, for DASH manifests, MediaConvert instead adds the following in the
+     * adaptation set for this track: <Role schemeIDUri="urn:mpeg:dash:role:2011"
+     * value="subtitle"/>.
      */
-    inline const ImscAccessibilitySubs& GetAccessibility() const{ return m_accessibility; }
-
-    /**
-     * Set Accessibility subtitles to Enabled if the ISMC or WebVTT captions track is
-     * intended to provide accessibility for people who are deaf or hard of hearing.
-     * When you enable this feature, MediaConvert adds the following attributes under
-     * EXT-X-MEDIA in the HLS or CMAF manifest for this track:
-     * CHARACTERISTICS="public.accessibility.describes-spoken-dialog,public.accessibility.describes-music-and-sound"
-     * and AUTOSELECT="YES". Keep the default value, Disabled, if the captions track is
-     * not intended to provide such accessibility. MediaConvert will not add the above
-     * attributes.
-     */
+    inline ImscAccessibilitySubs GetAccessibility() const { return m_accessibility; }
     inline bool AccessibilityHasBeenSet() const { return m_accessibilityHasBeenSet; }
+    inline void SetAccessibility(ImscAccessibilitySubs value) { m_accessibilityHasBeenSet = true; m_accessibility = value; }
+    inline ImscDestinationSettings& WithAccessibility(ImscAccessibilitySubs value) { SetAccessibility(value); return *this;}
+    ///@}
 
-    /**
-     * Set Accessibility subtitles to Enabled if the ISMC or WebVTT captions track is
-     * intended to provide accessibility for people who are deaf or hard of hearing.
-     * When you enable this feature, MediaConvert adds the following attributes under
-     * EXT-X-MEDIA in the HLS or CMAF manifest for this track:
-     * CHARACTERISTICS="public.accessibility.describes-spoken-dialog,public.accessibility.describes-music-and-sound"
-     * and AUTOSELECT="YES". Keep the default value, Disabled, if the captions track is
-     * not intended to provide such accessibility. MediaConvert will not add the above
-     * attributes.
-     */
-    inline void SetAccessibility(const ImscAccessibilitySubs& value) { m_accessibilityHasBeenSet = true; m_accessibility = value; }
-
-    /**
-     * Set Accessibility subtitles to Enabled if the ISMC or WebVTT captions track is
-     * intended to provide accessibility for people who are deaf or hard of hearing.
-     * When you enable this feature, MediaConvert adds the following attributes under
-     * EXT-X-MEDIA in the HLS or CMAF manifest for this track:
-     * CHARACTERISTICS="public.accessibility.describes-spoken-dialog,public.accessibility.describes-music-and-sound"
-     * and AUTOSELECT="YES". Keep the default value, Disabled, if the captions track is
-     * not intended to provide such accessibility. MediaConvert will not add the above
-     * attributes.
-     */
-    inline void SetAccessibility(ImscAccessibilitySubs&& value) { m_accessibilityHasBeenSet = true; m_accessibility = std::move(value); }
-
-    /**
-     * Set Accessibility subtitles to Enabled if the ISMC or WebVTT captions track is
-     * intended to provide accessibility for people who are deaf or hard of hearing.
-     * When you enable this feature, MediaConvert adds the following attributes under
-     * EXT-X-MEDIA in the HLS or CMAF manifest for this track:
-     * CHARACTERISTICS="public.accessibility.describes-spoken-dialog,public.accessibility.describes-music-and-sound"
-     * and AUTOSELECT="YES". Keep the default value, Disabled, if the captions track is
-     * not intended to provide such accessibility. MediaConvert will not add the above
-     * attributes.
-     */
-    inline ImscDestinationSettings& WithAccessibility(const ImscAccessibilitySubs& value) { SetAccessibility(value); return *this;}
-
-    /**
-     * Set Accessibility subtitles to Enabled if the ISMC or WebVTT captions track is
-     * intended to provide accessibility for people who are deaf or hard of hearing.
-     * When you enable this feature, MediaConvert adds the following attributes under
-     * EXT-X-MEDIA in the HLS or CMAF manifest for this track:
-     * CHARACTERISTICS="public.accessibility.describes-spoken-dialog,public.accessibility.describes-music-and-sound"
-     * and AUTOSELECT="YES". Keep the default value, Disabled, if the captions track is
-     * not intended to provide such accessibility. MediaConvert will not add the above
-     * attributes.
-     */
-    inline ImscDestinationSettings& WithAccessibility(ImscAccessibilitySubs&& value) { SetAccessibility(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Keep this setting enabled to have MediaConvert use the font style and position
      * information from the captions source in the output. This option is available
      * only when your input captions are IMSC, SMPTE-TT, or TTML. Disable this setting
      * for simplified output captions.
      */
-    inline const ImscStylePassthrough& GetStylePassthrough() const{ return m_stylePassthrough; }
-
-    /**
-     * Keep this setting enabled to have MediaConvert use the font style and position
-     * information from the captions source in the output. This option is available
-     * only when your input captions are IMSC, SMPTE-TT, or TTML. Disable this setting
-     * for simplified output captions.
-     */
+    inline ImscStylePassthrough GetStylePassthrough() const { return m_stylePassthrough; }
     inline bool StylePassthroughHasBeenSet() const { return m_stylePassthroughHasBeenSet; }
-
-    /**
-     * Keep this setting enabled to have MediaConvert use the font style and position
-     * information from the captions source in the output. This option is available
-     * only when your input captions are IMSC, SMPTE-TT, or TTML. Disable this setting
-     * for simplified output captions.
-     */
-    inline void SetStylePassthrough(const ImscStylePassthrough& value) { m_stylePassthroughHasBeenSet = true; m_stylePassthrough = value; }
-
-    /**
-     * Keep this setting enabled to have MediaConvert use the font style and position
-     * information from the captions source in the output. This option is available
-     * only when your input captions are IMSC, SMPTE-TT, or TTML. Disable this setting
-     * for simplified output captions.
-     */
-    inline void SetStylePassthrough(ImscStylePassthrough&& value) { m_stylePassthroughHasBeenSet = true; m_stylePassthrough = std::move(value); }
-
-    /**
-     * Keep this setting enabled to have MediaConvert use the font style and position
-     * information from the captions source in the output. This option is available
-     * only when your input captions are IMSC, SMPTE-TT, or TTML. Disable this setting
-     * for simplified output captions.
-     */
-    inline ImscDestinationSettings& WithStylePassthrough(const ImscStylePassthrough& value) { SetStylePassthrough(value); return *this;}
-
-    /**
-     * Keep this setting enabled to have MediaConvert use the font style and position
-     * information from the captions source in the output. This option is available
-     * only when your input captions are IMSC, SMPTE-TT, or TTML. Disable this setting
-     * for simplified output captions.
-     */
-    inline ImscDestinationSettings& WithStylePassthrough(ImscStylePassthrough&& value) { SetStylePassthrough(std::move(value)); return *this;}
-
+    inline void SetStylePassthrough(ImscStylePassthrough value) { m_stylePassthroughHasBeenSet = true; m_stylePassthrough = value; }
+    inline ImscDestinationSettings& WithStylePassthrough(ImscStylePassthrough value) { SetStylePassthrough(value); return *this;}
+    ///@}
   private:
 
-    ImscAccessibilitySubs m_accessibility;
+    ImscAccessibilitySubs m_accessibility{ImscAccessibilitySubs::NOT_SET};
     bool m_accessibilityHasBeenSet = false;
 
-    ImscStylePassthrough m_stylePassthrough;
+    ImscStylePassthrough m_stylePassthrough{ImscStylePassthrough::NOT_SET};
     bool m_stylePassthroughHasBeenSet = false;
   };
 

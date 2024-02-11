@@ -27,132 +27,54 @@ namespace Model
   class CreateImageRecipeResult
   {
   public:
-    AWS_IMAGEBUILDER_API CreateImageRecipeResult();
+    AWS_IMAGEBUILDER_API CreateImageRecipeResult() = default;
     AWS_IMAGEBUILDER_API CreateImageRecipeResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_IMAGEBUILDER_API CreateImageRecipeResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The request ID that uniquely identifies this request.</p>
      */
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateImageRecipeResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The request ID that uniquely identifies this request.</p>
+     * <p>The client token that uniquely identifies the request.</p>
      */
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateImageRecipeResult& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The request ID that uniquely identifies this request.</p>
-     */
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    /**
-     * <p>The request ID that uniquely identifies this request.</p>
-     */
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    /**
-     * <p>The request ID that uniquely identifies this request.</p>
-     */
-    inline CreateImageRecipeResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    /**
-     * <p>The request ID that uniquely identifies this request.</p>
-     */
-    inline CreateImageRecipeResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>The request ID that uniquely identifies this request.</p>
-     */
-    inline CreateImageRecipeResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
-
-    /**
-     * <p>The idempotency token used to make this request idempotent.</p>
-     */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>The idempotency token used to make this request idempotent.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientToken = value; }
-
-    /**
-     * <p>The idempotency token used to make this request idempotent.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientToken = std::move(value); }
-
-    /**
-     * <p>The idempotency token used to make this request idempotent.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientToken.assign(value); }
-
-    /**
-     * <p>The idempotency token used to make this request idempotent.</p>
-     */
-    inline CreateImageRecipeResult& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>The idempotency token used to make this request idempotent.</p>
-     */
-    inline CreateImageRecipeResult& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The idempotency token used to make this request idempotent.</p>
-     */
-    inline CreateImageRecipeResult& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the image recipe that was created by this
      * request.</p>
      */
-    inline const Aws::String& GetImageRecipeArn() const{ return m_imageRecipeArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image recipe that was created by this
-     * request.</p>
-     */
-    inline void SetImageRecipeArn(const Aws::String& value) { m_imageRecipeArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image recipe that was created by this
-     * request.</p>
-     */
-    inline void SetImageRecipeArn(Aws::String&& value) { m_imageRecipeArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image recipe that was created by this
-     * request.</p>
-     */
-    inline void SetImageRecipeArn(const char* value) { m_imageRecipeArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image recipe that was created by this
-     * request.</p>
-     */
-    inline CreateImageRecipeResult& WithImageRecipeArn(const Aws::String& value) { SetImageRecipeArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image recipe that was created by this
-     * request.</p>
-     */
-    inline CreateImageRecipeResult& WithImageRecipeArn(Aws::String&& value) { SetImageRecipeArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image recipe that was created by this
-     * request.</p>
-     */
-    inline CreateImageRecipeResult& WithImageRecipeArn(const char* value) { SetImageRecipeArn(value); return *this;}
-
+    inline const Aws::String& GetImageRecipeArn() const { return m_imageRecipeArn; }
+    template<typename ImageRecipeArnT = Aws::String>
+    void SetImageRecipeArn(ImageRecipeArnT&& value) { m_imageRecipeArnHasBeenSet = true; m_imageRecipeArn = std::forward<ImageRecipeArnT>(value); }
+    template<typename ImageRecipeArnT = Aws::String>
+    CreateImageRecipeResult& WithImageRecipeArn(ImageRecipeArnT&& value) { SetImageRecipeArn(std::forward<ImageRecipeArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
 
     Aws::String m_clientToken;
+    bool m_clientTokenHasBeenSet = false;
 
     Aws::String m_imageRecipeArn;
+    bool m_imageRecipeArnHasBeenSet = false;
   };
 
 } // namespace Model

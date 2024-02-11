@@ -18,197 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsSecurityFindingFilters::AwsSecurityFindingFilters() : 
-    m_productArnHasBeenSet(false),
-    m_awsAccountIdHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_generatorIdHasBeenSet(false),
-    m_regionHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_firstObservedAtHasBeenSet(false),
-    m_lastObservedAtHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_updatedAtHasBeenSet(false),
-    m_severityLabelHasBeenSet(false),
-    m_confidenceHasBeenSet(false),
-    m_criticalityHasBeenSet(false),
-    m_titleHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_recommendationTextHasBeenSet(false),
-    m_sourceUrlHasBeenSet(false),
-    m_productFieldsHasBeenSet(false),
-    m_productNameHasBeenSet(false),
-    m_companyNameHasBeenSet(false),
-    m_userDefinedFieldsHasBeenSet(false),
-    m_malwareNameHasBeenSet(false),
-    m_malwareTypeHasBeenSet(false),
-    m_malwarePathHasBeenSet(false),
-    m_malwareStateHasBeenSet(false),
-    m_networkDirectionHasBeenSet(false),
-    m_networkProtocolHasBeenSet(false),
-    m_networkSourceIpV4HasBeenSet(false),
-    m_networkSourceIpV6HasBeenSet(false),
-    m_networkSourcePortHasBeenSet(false),
-    m_networkSourceDomainHasBeenSet(false),
-    m_networkSourceMacHasBeenSet(false),
-    m_networkDestinationIpV4HasBeenSet(false),
-    m_networkDestinationIpV6HasBeenSet(false),
-    m_networkDestinationPortHasBeenSet(false),
-    m_networkDestinationDomainHasBeenSet(false),
-    m_processNameHasBeenSet(false),
-    m_processPathHasBeenSet(false),
-    m_processPidHasBeenSet(false),
-    m_processParentPidHasBeenSet(false),
-    m_processLaunchedAtHasBeenSet(false),
-    m_processTerminatedAtHasBeenSet(false),
-    m_threatIntelIndicatorTypeHasBeenSet(false),
-    m_threatIntelIndicatorValueHasBeenSet(false),
-    m_threatIntelIndicatorCategoryHasBeenSet(false),
-    m_threatIntelIndicatorLastObservedAtHasBeenSet(false),
-    m_threatIntelIndicatorSourceHasBeenSet(false),
-    m_threatIntelIndicatorSourceUrlHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourcePartitionHasBeenSet(false),
-    m_resourceRegionHasBeenSet(false),
-    m_resourceTagsHasBeenSet(false),
-    m_resourceAwsEc2InstanceTypeHasBeenSet(false),
-    m_resourceAwsEc2InstanceImageIdHasBeenSet(false),
-    m_resourceAwsEc2InstanceIpV4AddressesHasBeenSet(false),
-    m_resourceAwsEc2InstanceIpV6AddressesHasBeenSet(false),
-    m_resourceAwsEc2InstanceKeyNameHasBeenSet(false),
-    m_resourceAwsEc2InstanceIamInstanceProfileArnHasBeenSet(false),
-    m_resourceAwsEc2InstanceVpcIdHasBeenSet(false),
-    m_resourceAwsEc2InstanceSubnetIdHasBeenSet(false),
-    m_resourceAwsEc2InstanceLaunchedAtHasBeenSet(false),
-    m_resourceAwsS3BucketOwnerIdHasBeenSet(false),
-    m_resourceAwsS3BucketOwnerNameHasBeenSet(false),
-    m_resourceAwsIamAccessKeyPrincipalNameHasBeenSet(false),
-    m_resourceAwsIamAccessKeyStatusHasBeenSet(false),
-    m_resourceAwsIamAccessKeyCreatedAtHasBeenSet(false),
-    m_resourceAwsIamUserUserNameHasBeenSet(false),
-    m_resourceContainerNameHasBeenSet(false),
-    m_resourceContainerImageIdHasBeenSet(false),
-    m_resourceContainerImageNameHasBeenSet(false),
-    m_resourceContainerLaunchedAtHasBeenSet(false),
-    m_resourceDetailsOtherHasBeenSet(false),
-    m_complianceStatusHasBeenSet(false),
-    m_verificationStateHasBeenSet(false),
-    m_workflowStateHasBeenSet(false),
-    m_workflowStatusHasBeenSet(false),
-    m_recordStateHasBeenSet(false),
-    m_relatedFindingsProductArnHasBeenSet(false),
-    m_relatedFindingsIdHasBeenSet(false),
-    m_noteTextHasBeenSet(false),
-    m_noteUpdatedAtHasBeenSet(false),
-    m_noteUpdatedByHasBeenSet(false),
-    m_findingProviderFieldsConfidenceHasBeenSet(false),
-    m_findingProviderFieldsCriticalityHasBeenSet(false),
-    m_findingProviderFieldsRelatedFindingsIdHasBeenSet(false),
-    m_findingProviderFieldsRelatedFindingsProductArnHasBeenSet(false),
-    m_findingProviderFieldsSeverityLabelHasBeenSet(false),
-    m_findingProviderFieldsSeverityOriginalHasBeenSet(false),
-    m_findingProviderFieldsTypesHasBeenSet(false),
-    m_sampleHasBeenSet(false),
-    m_complianceSecurityControlIdHasBeenSet(false),
-    m_complianceAssociatedStandardsIdHasBeenSet(false)
-{
-}
-
-AwsSecurityFindingFilters::AwsSecurityFindingFilters(JsonView jsonValue) : 
-    m_productArnHasBeenSet(false),
-    m_awsAccountIdHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_generatorIdHasBeenSet(false),
-    m_regionHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_firstObservedAtHasBeenSet(false),
-    m_lastObservedAtHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_updatedAtHasBeenSet(false),
-    m_severityLabelHasBeenSet(false),
-    m_confidenceHasBeenSet(false),
-    m_criticalityHasBeenSet(false),
-    m_titleHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_recommendationTextHasBeenSet(false),
-    m_sourceUrlHasBeenSet(false),
-    m_productFieldsHasBeenSet(false),
-    m_productNameHasBeenSet(false),
-    m_companyNameHasBeenSet(false),
-    m_userDefinedFieldsHasBeenSet(false),
-    m_malwareNameHasBeenSet(false),
-    m_malwareTypeHasBeenSet(false),
-    m_malwarePathHasBeenSet(false),
-    m_malwareStateHasBeenSet(false),
-    m_networkDirectionHasBeenSet(false),
-    m_networkProtocolHasBeenSet(false),
-    m_networkSourceIpV4HasBeenSet(false),
-    m_networkSourceIpV6HasBeenSet(false),
-    m_networkSourcePortHasBeenSet(false),
-    m_networkSourceDomainHasBeenSet(false),
-    m_networkSourceMacHasBeenSet(false),
-    m_networkDestinationIpV4HasBeenSet(false),
-    m_networkDestinationIpV6HasBeenSet(false),
-    m_networkDestinationPortHasBeenSet(false),
-    m_networkDestinationDomainHasBeenSet(false),
-    m_processNameHasBeenSet(false),
-    m_processPathHasBeenSet(false),
-    m_processPidHasBeenSet(false),
-    m_processParentPidHasBeenSet(false),
-    m_processLaunchedAtHasBeenSet(false),
-    m_processTerminatedAtHasBeenSet(false),
-    m_threatIntelIndicatorTypeHasBeenSet(false),
-    m_threatIntelIndicatorValueHasBeenSet(false),
-    m_threatIntelIndicatorCategoryHasBeenSet(false),
-    m_threatIntelIndicatorLastObservedAtHasBeenSet(false),
-    m_threatIntelIndicatorSourceHasBeenSet(false),
-    m_threatIntelIndicatorSourceUrlHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourcePartitionHasBeenSet(false),
-    m_resourceRegionHasBeenSet(false),
-    m_resourceTagsHasBeenSet(false),
-    m_resourceAwsEc2InstanceTypeHasBeenSet(false),
-    m_resourceAwsEc2InstanceImageIdHasBeenSet(false),
-    m_resourceAwsEc2InstanceIpV4AddressesHasBeenSet(false),
-    m_resourceAwsEc2InstanceIpV6AddressesHasBeenSet(false),
-    m_resourceAwsEc2InstanceKeyNameHasBeenSet(false),
-    m_resourceAwsEc2InstanceIamInstanceProfileArnHasBeenSet(false),
-    m_resourceAwsEc2InstanceVpcIdHasBeenSet(false),
-    m_resourceAwsEc2InstanceSubnetIdHasBeenSet(false),
-    m_resourceAwsEc2InstanceLaunchedAtHasBeenSet(false),
-    m_resourceAwsS3BucketOwnerIdHasBeenSet(false),
-    m_resourceAwsS3BucketOwnerNameHasBeenSet(false),
-    m_resourceAwsIamAccessKeyPrincipalNameHasBeenSet(false),
-    m_resourceAwsIamAccessKeyStatusHasBeenSet(false),
-    m_resourceAwsIamAccessKeyCreatedAtHasBeenSet(false),
-    m_resourceAwsIamUserUserNameHasBeenSet(false),
-    m_resourceContainerNameHasBeenSet(false),
-    m_resourceContainerImageIdHasBeenSet(false),
-    m_resourceContainerImageNameHasBeenSet(false),
-    m_resourceContainerLaunchedAtHasBeenSet(false),
-    m_resourceDetailsOtherHasBeenSet(false),
-    m_complianceStatusHasBeenSet(false),
-    m_verificationStateHasBeenSet(false),
-    m_workflowStateHasBeenSet(false),
-    m_workflowStatusHasBeenSet(false),
-    m_recordStateHasBeenSet(false),
-    m_relatedFindingsProductArnHasBeenSet(false),
-    m_relatedFindingsIdHasBeenSet(false),
-    m_noteTextHasBeenSet(false),
-    m_noteUpdatedAtHasBeenSet(false),
-    m_noteUpdatedByHasBeenSet(false),
-    m_findingProviderFieldsConfidenceHasBeenSet(false),
-    m_findingProviderFieldsCriticalityHasBeenSet(false),
-    m_findingProviderFieldsRelatedFindingsIdHasBeenSet(false),
-    m_findingProviderFieldsRelatedFindingsProductArnHasBeenSet(false),
-    m_findingProviderFieldsSeverityLabelHasBeenSet(false),
-    m_findingProviderFieldsSeverityOriginalHasBeenSet(false),
-    m_findingProviderFieldsTypesHasBeenSet(false),
-    m_sampleHasBeenSet(false),
-    m_complianceSecurityControlIdHasBeenSet(false),
-    m_complianceAssociatedStandardsIdHasBeenSet(false)
+AwsSecurityFindingFilters::AwsSecurityFindingFilters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -224,7 +34,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_productArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AwsAccountId"))
   {
     Aws::Utils::Array<JsonView> awsAccountIdJsonList = jsonValue.GetArray("AwsAccountId");
@@ -234,7 +43,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_awsAccountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Id"))
   {
     Aws::Utils::Array<JsonView> idJsonList = jsonValue.GetArray("Id");
@@ -244,7 +52,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("GeneratorId"))
   {
     Aws::Utils::Array<JsonView> generatorIdJsonList = jsonValue.GetArray("GeneratorId");
@@ -254,7 +61,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_generatorIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Region"))
   {
     Aws::Utils::Array<JsonView> regionJsonList = jsonValue.GetArray("Region");
@@ -264,7 +70,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_regionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Type"))
   {
     Aws::Utils::Array<JsonView> typeJsonList = jsonValue.GetArray("Type");
@@ -274,7 +79,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FirstObservedAt"))
   {
     Aws::Utils::Array<JsonView> firstObservedAtJsonList = jsonValue.GetArray("FirstObservedAt");
@@ -284,7 +88,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_firstObservedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastObservedAt"))
   {
     Aws::Utils::Array<JsonView> lastObservedAtJsonList = jsonValue.GetArray("LastObservedAt");
@@ -294,7 +97,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_lastObservedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatedAt"))
   {
     Aws::Utils::Array<JsonView> createdAtJsonList = jsonValue.GetArray("CreatedAt");
@@ -304,7 +106,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UpdatedAt"))
   {
     Aws::Utils::Array<JsonView> updatedAtJsonList = jsonValue.GetArray("UpdatedAt");
@@ -314,7 +115,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_updatedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SeverityLabel"))
   {
     Aws::Utils::Array<JsonView> severityLabelJsonList = jsonValue.GetArray("SeverityLabel");
@@ -324,7 +124,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_severityLabelHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Confidence"))
   {
     Aws::Utils::Array<JsonView> confidenceJsonList = jsonValue.GetArray("Confidence");
@@ -334,7 +133,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_confidenceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Criticality"))
   {
     Aws::Utils::Array<JsonView> criticalityJsonList = jsonValue.GetArray("Criticality");
@@ -344,7 +142,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_criticalityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Title"))
   {
     Aws::Utils::Array<JsonView> titleJsonList = jsonValue.GetArray("Title");
@@ -354,7 +151,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_titleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     Aws::Utils::Array<JsonView> descriptionJsonList = jsonValue.GetArray("Description");
@@ -364,7 +160,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RecommendationText"))
   {
     Aws::Utils::Array<JsonView> recommendationTextJsonList = jsonValue.GetArray("RecommendationText");
@@ -374,7 +169,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_recommendationTextHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourceUrl"))
   {
     Aws::Utils::Array<JsonView> sourceUrlJsonList = jsonValue.GetArray("SourceUrl");
@@ -384,7 +178,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_sourceUrlHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProductFields"))
   {
     Aws::Utils::Array<JsonView> productFieldsJsonList = jsonValue.GetArray("ProductFields");
@@ -394,7 +187,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_productFieldsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProductName"))
   {
     Aws::Utils::Array<JsonView> productNameJsonList = jsonValue.GetArray("ProductName");
@@ -404,7 +196,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_productNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CompanyName"))
   {
     Aws::Utils::Array<JsonView> companyNameJsonList = jsonValue.GetArray("CompanyName");
@@ -414,7 +205,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_companyNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UserDefinedFields"))
   {
     Aws::Utils::Array<JsonView> userDefinedFieldsJsonList = jsonValue.GetArray("UserDefinedFields");
@@ -424,7 +214,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_userDefinedFieldsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MalwareName"))
   {
     Aws::Utils::Array<JsonView> malwareNameJsonList = jsonValue.GetArray("MalwareName");
@@ -434,7 +223,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_malwareNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MalwareType"))
   {
     Aws::Utils::Array<JsonView> malwareTypeJsonList = jsonValue.GetArray("MalwareType");
@@ -444,7 +232,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_malwareTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MalwarePath"))
   {
     Aws::Utils::Array<JsonView> malwarePathJsonList = jsonValue.GetArray("MalwarePath");
@@ -454,7 +241,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_malwarePathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MalwareState"))
   {
     Aws::Utils::Array<JsonView> malwareStateJsonList = jsonValue.GetArray("MalwareState");
@@ -464,7 +250,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_malwareStateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NetworkDirection"))
   {
     Aws::Utils::Array<JsonView> networkDirectionJsonList = jsonValue.GetArray("NetworkDirection");
@@ -474,7 +259,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_networkDirectionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NetworkProtocol"))
   {
     Aws::Utils::Array<JsonView> networkProtocolJsonList = jsonValue.GetArray("NetworkProtocol");
@@ -484,7 +268,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_networkProtocolHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NetworkSourceIpV4"))
   {
     Aws::Utils::Array<JsonView> networkSourceIpV4JsonList = jsonValue.GetArray("NetworkSourceIpV4");
@@ -494,7 +277,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_networkSourceIpV4HasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NetworkSourceIpV6"))
   {
     Aws::Utils::Array<JsonView> networkSourceIpV6JsonList = jsonValue.GetArray("NetworkSourceIpV6");
@@ -504,7 +286,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_networkSourceIpV6HasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NetworkSourcePort"))
   {
     Aws::Utils::Array<JsonView> networkSourcePortJsonList = jsonValue.GetArray("NetworkSourcePort");
@@ -514,7 +295,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_networkSourcePortHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NetworkSourceDomain"))
   {
     Aws::Utils::Array<JsonView> networkSourceDomainJsonList = jsonValue.GetArray("NetworkSourceDomain");
@@ -524,7 +304,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_networkSourceDomainHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NetworkSourceMac"))
   {
     Aws::Utils::Array<JsonView> networkSourceMacJsonList = jsonValue.GetArray("NetworkSourceMac");
@@ -534,7 +313,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_networkSourceMacHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NetworkDestinationIpV4"))
   {
     Aws::Utils::Array<JsonView> networkDestinationIpV4JsonList = jsonValue.GetArray("NetworkDestinationIpV4");
@@ -544,7 +322,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_networkDestinationIpV4HasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NetworkDestinationIpV6"))
   {
     Aws::Utils::Array<JsonView> networkDestinationIpV6JsonList = jsonValue.GetArray("NetworkDestinationIpV6");
@@ -554,7 +331,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_networkDestinationIpV6HasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NetworkDestinationPort"))
   {
     Aws::Utils::Array<JsonView> networkDestinationPortJsonList = jsonValue.GetArray("NetworkDestinationPort");
@@ -564,7 +340,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_networkDestinationPortHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NetworkDestinationDomain"))
   {
     Aws::Utils::Array<JsonView> networkDestinationDomainJsonList = jsonValue.GetArray("NetworkDestinationDomain");
@@ -574,7 +349,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_networkDestinationDomainHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProcessName"))
   {
     Aws::Utils::Array<JsonView> processNameJsonList = jsonValue.GetArray("ProcessName");
@@ -584,7 +358,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_processNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProcessPath"))
   {
     Aws::Utils::Array<JsonView> processPathJsonList = jsonValue.GetArray("ProcessPath");
@@ -594,7 +367,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_processPathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProcessPid"))
   {
     Aws::Utils::Array<JsonView> processPidJsonList = jsonValue.GetArray("ProcessPid");
@@ -604,7 +376,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_processPidHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProcessParentPid"))
   {
     Aws::Utils::Array<JsonView> processParentPidJsonList = jsonValue.GetArray("ProcessParentPid");
@@ -614,7 +385,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_processParentPidHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProcessLaunchedAt"))
   {
     Aws::Utils::Array<JsonView> processLaunchedAtJsonList = jsonValue.GetArray("ProcessLaunchedAt");
@@ -624,7 +394,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_processLaunchedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProcessTerminatedAt"))
   {
     Aws::Utils::Array<JsonView> processTerminatedAtJsonList = jsonValue.GetArray("ProcessTerminatedAt");
@@ -634,7 +403,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_processTerminatedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ThreatIntelIndicatorType"))
   {
     Aws::Utils::Array<JsonView> threatIntelIndicatorTypeJsonList = jsonValue.GetArray("ThreatIntelIndicatorType");
@@ -644,7 +412,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_threatIntelIndicatorTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ThreatIntelIndicatorValue"))
   {
     Aws::Utils::Array<JsonView> threatIntelIndicatorValueJsonList = jsonValue.GetArray("ThreatIntelIndicatorValue");
@@ -654,7 +421,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_threatIntelIndicatorValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ThreatIntelIndicatorCategory"))
   {
     Aws::Utils::Array<JsonView> threatIntelIndicatorCategoryJsonList = jsonValue.GetArray("ThreatIntelIndicatorCategory");
@@ -664,7 +430,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_threatIntelIndicatorCategoryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ThreatIntelIndicatorLastObservedAt"))
   {
     Aws::Utils::Array<JsonView> threatIntelIndicatorLastObservedAtJsonList = jsonValue.GetArray("ThreatIntelIndicatorLastObservedAt");
@@ -674,7 +439,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_threatIntelIndicatorLastObservedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ThreatIntelIndicatorSource"))
   {
     Aws::Utils::Array<JsonView> threatIntelIndicatorSourceJsonList = jsonValue.GetArray("ThreatIntelIndicatorSource");
@@ -684,7 +448,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_threatIntelIndicatorSourceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ThreatIntelIndicatorSourceUrl"))
   {
     Aws::Utils::Array<JsonView> threatIntelIndicatorSourceUrlJsonList = jsonValue.GetArray("ThreatIntelIndicatorSourceUrl");
@@ -694,7 +457,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_threatIntelIndicatorSourceUrlHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceType"))
   {
     Aws::Utils::Array<JsonView> resourceTypeJsonList = jsonValue.GetArray("ResourceType");
@@ -704,7 +466,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceId"))
   {
     Aws::Utils::Array<JsonView> resourceIdJsonList = jsonValue.GetArray("ResourceId");
@@ -714,7 +475,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourcePartition"))
   {
     Aws::Utils::Array<JsonView> resourcePartitionJsonList = jsonValue.GetArray("ResourcePartition");
@@ -724,7 +484,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourcePartitionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceRegion"))
   {
     Aws::Utils::Array<JsonView> resourceRegionJsonList = jsonValue.GetArray("ResourceRegion");
@@ -734,7 +493,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceRegionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceTags"))
   {
     Aws::Utils::Array<JsonView> resourceTagsJsonList = jsonValue.GetArray("ResourceTags");
@@ -744,7 +502,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceTagsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceAwsEc2InstanceType"))
   {
     Aws::Utils::Array<JsonView> resourceAwsEc2InstanceTypeJsonList = jsonValue.GetArray("ResourceAwsEc2InstanceType");
@@ -754,7 +511,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceAwsEc2InstanceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceAwsEc2InstanceImageId"))
   {
     Aws::Utils::Array<JsonView> resourceAwsEc2InstanceImageIdJsonList = jsonValue.GetArray("ResourceAwsEc2InstanceImageId");
@@ -764,7 +520,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceAwsEc2InstanceImageIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceAwsEc2InstanceIpV4Addresses"))
   {
     Aws::Utils::Array<JsonView> resourceAwsEc2InstanceIpV4AddressesJsonList = jsonValue.GetArray("ResourceAwsEc2InstanceIpV4Addresses");
@@ -774,7 +529,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceAwsEc2InstanceIpV4AddressesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceAwsEc2InstanceIpV6Addresses"))
   {
     Aws::Utils::Array<JsonView> resourceAwsEc2InstanceIpV6AddressesJsonList = jsonValue.GetArray("ResourceAwsEc2InstanceIpV6Addresses");
@@ -784,7 +538,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceAwsEc2InstanceIpV6AddressesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceAwsEc2InstanceKeyName"))
   {
     Aws::Utils::Array<JsonView> resourceAwsEc2InstanceKeyNameJsonList = jsonValue.GetArray("ResourceAwsEc2InstanceKeyName");
@@ -794,7 +547,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceAwsEc2InstanceKeyNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceAwsEc2InstanceIamInstanceProfileArn"))
   {
     Aws::Utils::Array<JsonView> resourceAwsEc2InstanceIamInstanceProfileArnJsonList = jsonValue.GetArray("ResourceAwsEc2InstanceIamInstanceProfileArn");
@@ -804,7 +556,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceAwsEc2InstanceIamInstanceProfileArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceAwsEc2InstanceVpcId"))
   {
     Aws::Utils::Array<JsonView> resourceAwsEc2InstanceVpcIdJsonList = jsonValue.GetArray("ResourceAwsEc2InstanceVpcId");
@@ -814,7 +565,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceAwsEc2InstanceVpcIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceAwsEc2InstanceSubnetId"))
   {
     Aws::Utils::Array<JsonView> resourceAwsEc2InstanceSubnetIdJsonList = jsonValue.GetArray("ResourceAwsEc2InstanceSubnetId");
@@ -824,7 +574,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceAwsEc2InstanceSubnetIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceAwsEc2InstanceLaunchedAt"))
   {
     Aws::Utils::Array<JsonView> resourceAwsEc2InstanceLaunchedAtJsonList = jsonValue.GetArray("ResourceAwsEc2InstanceLaunchedAt");
@@ -834,7 +583,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceAwsEc2InstanceLaunchedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceAwsS3BucketOwnerId"))
   {
     Aws::Utils::Array<JsonView> resourceAwsS3BucketOwnerIdJsonList = jsonValue.GetArray("ResourceAwsS3BucketOwnerId");
@@ -844,7 +592,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceAwsS3BucketOwnerIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceAwsS3BucketOwnerName"))
   {
     Aws::Utils::Array<JsonView> resourceAwsS3BucketOwnerNameJsonList = jsonValue.GetArray("ResourceAwsS3BucketOwnerName");
@@ -854,7 +601,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceAwsS3BucketOwnerNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceAwsIamAccessKeyPrincipalName"))
   {
     Aws::Utils::Array<JsonView> resourceAwsIamAccessKeyPrincipalNameJsonList = jsonValue.GetArray("ResourceAwsIamAccessKeyPrincipalName");
@@ -864,7 +610,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceAwsIamAccessKeyPrincipalNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceAwsIamAccessKeyStatus"))
   {
     Aws::Utils::Array<JsonView> resourceAwsIamAccessKeyStatusJsonList = jsonValue.GetArray("ResourceAwsIamAccessKeyStatus");
@@ -874,7 +619,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceAwsIamAccessKeyStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceAwsIamAccessKeyCreatedAt"))
   {
     Aws::Utils::Array<JsonView> resourceAwsIamAccessKeyCreatedAtJsonList = jsonValue.GetArray("ResourceAwsIamAccessKeyCreatedAt");
@@ -884,7 +628,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceAwsIamAccessKeyCreatedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceAwsIamUserUserName"))
   {
     Aws::Utils::Array<JsonView> resourceAwsIamUserUserNameJsonList = jsonValue.GetArray("ResourceAwsIamUserUserName");
@@ -894,7 +637,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceAwsIamUserUserNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceContainerName"))
   {
     Aws::Utils::Array<JsonView> resourceContainerNameJsonList = jsonValue.GetArray("ResourceContainerName");
@@ -904,7 +646,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceContainerNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceContainerImageId"))
   {
     Aws::Utils::Array<JsonView> resourceContainerImageIdJsonList = jsonValue.GetArray("ResourceContainerImageId");
@@ -914,7 +655,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceContainerImageIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceContainerImageName"))
   {
     Aws::Utils::Array<JsonView> resourceContainerImageNameJsonList = jsonValue.GetArray("ResourceContainerImageName");
@@ -924,7 +664,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceContainerImageNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceContainerLaunchedAt"))
   {
     Aws::Utils::Array<JsonView> resourceContainerLaunchedAtJsonList = jsonValue.GetArray("ResourceContainerLaunchedAt");
@@ -934,7 +673,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceContainerLaunchedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceDetailsOther"))
   {
     Aws::Utils::Array<JsonView> resourceDetailsOtherJsonList = jsonValue.GetArray("ResourceDetailsOther");
@@ -944,7 +682,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_resourceDetailsOtherHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComplianceStatus"))
   {
     Aws::Utils::Array<JsonView> complianceStatusJsonList = jsonValue.GetArray("ComplianceStatus");
@@ -954,7 +691,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_complianceStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VerificationState"))
   {
     Aws::Utils::Array<JsonView> verificationStateJsonList = jsonValue.GetArray("VerificationState");
@@ -964,7 +700,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_verificationStateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WorkflowState"))
   {
     Aws::Utils::Array<JsonView> workflowStateJsonList = jsonValue.GetArray("WorkflowState");
@@ -974,7 +709,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_workflowStateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WorkflowStatus"))
   {
     Aws::Utils::Array<JsonView> workflowStatusJsonList = jsonValue.GetArray("WorkflowStatus");
@@ -984,7 +718,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_workflowStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RecordState"))
   {
     Aws::Utils::Array<JsonView> recordStateJsonList = jsonValue.GetArray("RecordState");
@@ -994,7 +727,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_recordStateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RelatedFindingsProductArn"))
   {
     Aws::Utils::Array<JsonView> relatedFindingsProductArnJsonList = jsonValue.GetArray("RelatedFindingsProductArn");
@@ -1004,7 +736,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_relatedFindingsProductArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RelatedFindingsId"))
   {
     Aws::Utils::Array<JsonView> relatedFindingsIdJsonList = jsonValue.GetArray("RelatedFindingsId");
@@ -1014,7 +745,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_relatedFindingsIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NoteText"))
   {
     Aws::Utils::Array<JsonView> noteTextJsonList = jsonValue.GetArray("NoteText");
@@ -1024,7 +754,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_noteTextHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NoteUpdatedAt"))
   {
     Aws::Utils::Array<JsonView> noteUpdatedAtJsonList = jsonValue.GetArray("NoteUpdatedAt");
@@ -1034,7 +763,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_noteUpdatedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NoteUpdatedBy"))
   {
     Aws::Utils::Array<JsonView> noteUpdatedByJsonList = jsonValue.GetArray("NoteUpdatedBy");
@@ -1044,7 +772,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_noteUpdatedByHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FindingProviderFieldsConfidence"))
   {
     Aws::Utils::Array<JsonView> findingProviderFieldsConfidenceJsonList = jsonValue.GetArray("FindingProviderFieldsConfidence");
@@ -1054,7 +781,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_findingProviderFieldsConfidenceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FindingProviderFieldsCriticality"))
   {
     Aws::Utils::Array<JsonView> findingProviderFieldsCriticalityJsonList = jsonValue.GetArray("FindingProviderFieldsCriticality");
@@ -1064,7 +790,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_findingProviderFieldsCriticalityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FindingProviderFieldsRelatedFindingsId"))
   {
     Aws::Utils::Array<JsonView> findingProviderFieldsRelatedFindingsIdJsonList = jsonValue.GetArray("FindingProviderFieldsRelatedFindingsId");
@@ -1074,7 +799,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_findingProviderFieldsRelatedFindingsIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FindingProviderFieldsRelatedFindingsProductArn"))
   {
     Aws::Utils::Array<JsonView> findingProviderFieldsRelatedFindingsProductArnJsonList = jsonValue.GetArray("FindingProviderFieldsRelatedFindingsProductArn");
@@ -1084,7 +808,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_findingProviderFieldsRelatedFindingsProductArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FindingProviderFieldsSeverityLabel"))
   {
     Aws::Utils::Array<JsonView> findingProviderFieldsSeverityLabelJsonList = jsonValue.GetArray("FindingProviderFieldsSeverityLabel");
@@ -1094,7 +817,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_findingProviderFieldsSeverityLabelHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FindingProviderFieldsSeverityOriginal"))
   {
     Aws::Utils::Array<JsonView> findingProviderFieldsSeverityOriginalJsonList = jsonValue.GetArray("FindingProviderFieldsSeverityOriginal");
@@ -1104,7 +826,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_findingProviderFieldsSeverityOriginalHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FindingProviderFieldsTypes"))
   {
     Aws::Utils::Array<JsonView> findingProviderFieldsTypesJsonList = jsonValue.GetArray("FindingProviderFieldsTypes");
@@ -1114,7 +835,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_findingProviderFieldsTypesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Sample"))
   {
     Aws::Utils::Array<JsonView> sampleJsonList = jsonValue.GetArray("Sample");
@@ -1124,7 +844,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_sampleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComplianceSecurityControlId"))
   {
     Aws::Utils::Array<JsonView> complianceSecurityControlIdJsonList = jsonValue.GetArray("ComplianceSecurityControlId");
@@ -1134,7 +853,6 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_complianceSecurityControlIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComplianceAssociatedStandardsId"))
   {
     Aws::Utils::Array<JsonView> complianceAssociatedStandardsIdJsonList = jsonValue.GetArray("ComplianceAssociatedStandardsId");
@@ -1144,7 +862,69 @@ AwsSecurityFindingFilters& AwsSecurityFindingFilters::operator =(JsonView jsonVa
     }
     m_complianceAssociatedStandardsIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("VulnerabilitiesExploitAvailable"))
+  {
+    Aws::Utils::Array<JsonView> vulnerabilitiesExploitAvailableJsonList = jsonValue.GetArray("VulnerabilitiesExploitAvailable");
+    for(unsigned vulnerabilitiesExploitAvailableIndex = 0; vulnerabilitiesExploitAvailableIndex < vulnerabilitiesExploitAvailableJsonList.GetLength(); ++vulnerabilitiesExploitAvailableIndex)
+    {
+      m_vulnerabilitiesExploitAvailable.push_back(vulnerabilitiesExploitAvailableJsonList[vulnerabilitiesExploitAvailableIndex].AsObject());
+    }
+    m_vulnerabilitiesExploitAvailableHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("VulnerabilitiesFixAvailable"))
+  {
+    Aws::Utils::Array<JsonView> vulnerabilitiesFixAvailableJsonList = jsonValue.GetArray("VulnerabilitiesFixAvailable");
+    for(unsigned vulnerabilitiesFixAvailableIndex = 0; vulnerabilitiesFixAvailableIndex < vulnerabilitiesFixAvailableJsonList.GetLength(); ++vulnerabilitiesFixAvailableIndex)
+    {
+      m_vulnerabilitiesFixAvailable.push_back(vulnerabilitiesFixAvailableJsonList[vulnerabilitiesFixAvailableIndex].AsObject());
+    }
+    m_vulnerabilitiesFixAvailableHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("ComplianceSecurityControlParametersName"))
+  {
+    Aws::Utils::Array<JsonView> complianceSecurityControlParametersNameJsonList = jsonValue.GetArray("ComplianceSecurityControlParametersName");
+    for(unsigned complianceSecurityControlParametersNameIndex = 0; complianceSecurityControlParametersNameIndex < complianceSecurityControlParametersNameJsonList.GetLength(); ++complianceSecurityControlParametersNameIndex)
+    {
+      m_complianceSecurityControlParametersName.push_back(complianceSecurityControlParametersNameJsonList[complianceSecurityControlParametersNameIndex].AsObject());
+    }
+    m_complianceSecurityControlParametersNameHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("ComplianceSecurityControlParametersValue"))
+  {
+    Aws::Utils::Array<JsonView> complianceSecurityControlParametersValueJsonList = jsonValue.GetArray("ComplianceSecurityControlParametersValue");
+    for(unsigned complianceSecurityControlParametersValueIndex = 0; complianceSecurityControlParametersValueIndex < complianceSecurityControlParametersValueJsonList.GetLength(); ++complianceSecurityControlParametersValueIndex)
+    {
+      m_complianceSecurityControlParametersValue.push_back(complianceSecurityControlParametersValueJsonList[complianceSecurityControlParametersValueIndex].AsObject());
+    }
+    m_complianceSecurityControlParametersValueHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("AwsAccountName"))
+  {
+    Aws::Utils::Array<JsonView> awsAccountNameJsonList = jsonValue.GetArray("AwsAccountName");
+    for(unsigned awsAccountNameIndex = 0; awsAccountNameIndex < awsAccountNameJsonList.GetLength(); ++awsAccountNameIndex)
+    {
+      m_awsAccountName.push_back(awsAccountNameJsonList[awsAccountNameIndex].AsObject());
+    }
+    m_awsAccountNameHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("ResourceApplicationName"))
+  {
+    Aws::Utils::Array<JsonView> resourceApplicationNameJsonList = jsonValue.GetArray("ResourceApplicationName");
+    for(unsigned resourceApplicationNameIndex = 0; resourceApplicationNameIndex < resourceApplicationNameJsonList.GetLength(); ++resourceApplicationNameIndex)
+    {
+      m_resourceApplicationName.push_back(resourceApplicationNameJsonList[resourceApplicationNameIndex].AsObject());
+    }
+    m_resourceApplicationNameHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("ResourceApplicationArn"))
+  {
+    Aws::Utils::Array<JsonView> resourceApplicationArnJsonList = jsonValue.GetArray("ResourceApplicationArn");
+    for(unsigned resourceApplicationArnIndex = 0; resourceApplicationArnIndex < resourceApplicationArnJsonList.GetLength(); ++resourceApplicationArnIndex)
+    {
+      m_resourceApplicationArn.push_back(resourceApplicationArnJsonList[resourceApplicationArnIndex].AsObject());
+    }
+    m_resourceApplicationArnHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -2172,6 +1952,83 @@ JsonValue AwsSecurityFindingFilters::Jsonize() const
      complianceAssociatedStandardsIdJsonList[complianceAssociatedStandardsIdIndex].AsObject(m_complianceAssociatedStandardsId[complianceAssociatedStandardsIdIndex].Jsonize());
    }
    payload.WithArray("ComplianceAssociatedStandardsId", std::move(complianceAssociatedStandardsIdJsonList));
+
+  }
+
+  if(m_vulnerabilitiesExploitAvailableHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> vulnerabilitiesExploitAvailableJsonList(m_vulnerabilitiesExploitAvailable.size());
+   for(unsigned vulnerabilitiesExploitAvailableIndex = 0; vulnerabilitiesExploitAvailableIndex < vulnerabilitiesExploitAvailableJsonList.GetLength(); ++vulnerabilitiesExploitAvailableIndex)
+   {
+     vulnerabilitiesExploitAvailableJsonList[vulnerabilitiesExploitAvailableIndex].AsObject(m_vulnerabilitiesExploitAvailable[vulnerabilitiesExploitAvailableIndex].Jsonize());
+   }
+   payload.WithArray("VulnerabilitiesExploitAvailable", std::move(vulnerabilitiesExploitAvailableJsonList));
+
+  }
+
+  if(m_vulnerabilitiesFixAvailableHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> vulnerabilitiesFixAvailableJsonList(m_vulnerabilitiesFixAvailable.size());
+   for(unsigned vulnerabilitiesFixAvailableIndex = 0; vulnerabilitiesFixAvailableIndex < vulnerabilitiesFixAvailableJsonList.GetLength(); ++vulnerabilitiesFixAvailableIndex)
+   {
+     vulnerabilitiesFixAvailableJsonList[vulnerabilitiesFixAvailableIndex].AsObject(m_vulnerabilitiesFixAvailable[vulnerabilitiesFixAvailableIndex].Jsonize());
+   }
+   payload.WithArray("VulnerabilitiesFixAvailable", std::move(vulnerabilitiesFixAvailableJsonList));
+
+  }
+
+  if(m_complianceSecurityControlParametersNameHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> complianceSecurityControlParametersNameJsonList(m_complianceSecurityControlParametersName.size());
+   for(unsigned complianceSecurityControlParametersNameIndex = 0; complianceSecurityControlParametersNameIndex < complianceSecurityControlParametersNameJsonList.GetLength(); ++complianceSecurityControlParametersNameIndex)
+   {
+     complianceSecurityControlParametersNameJsonList[complianceSecurityControlParametersNameIndex].AsObject(m_complianceSecurityControlParametersName[complianceSecurityControlParametersNameIndex].Jsonize());
+   }
+   payload.WithArray("ComplianceSecurityControlParametersName", std::move(complianceSecurityControlParametersNameJsonList));
+
+  }
+
+  if(m_complianceSecurityControlParametersValueHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> complianceSecurityControlParametersValueJsonList(m_complianceSecurityControlParametersValue.size());
+   for(unsigned complianceSecurityControlParametersValueIndex = 0; complianceSecurityControlParametersValueIndex < complianceSecurityControlParametersValueJsonList.GetLength(); ++complianceSecurityControlParametersValueIndex)
+   {
+     complianceSecurityControlParametersValueJsonList[complianceSecurityControlParametersValueIndex].AsObject(m_complianceSecurityControlParametersValue[complianceSecurityControlParametersValueIndex].Jsonize());
+   }
+   payload.WithArray("ComplianceSecurityControlParametersValue", std::move(complianceSecurityControlParametersValueJsonList));
+
+  }
+
+  if(m_awsAccountNameHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> awsAccountNameJsonList(m_awsAccountName.size());
+   for(unsigned awsAccountNameIndex = 0; awsAccountNameIndex < awsAccountNameJsonList.GetLength(); ++awsAccountNameIndex)
+   {
+     awsAccountNameJsonList[awsAccountNameIndex].AsObject(m_awsAccountName[awsAccountNameIndex].Jsonize());
+   }
+   payload.WithArray("AwsAccountName", std::move(awsAccountNameJsonList));
+
+  }
+
+  if(m_resourceApplicationNameHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> resourceApplicationNameJsonList(m_resourceApplicationName.size());
+   for(unsigned resourceApplicationNameIndex = 0; resourceApplicationNameIndex < resourceApplicationNameJsonList.GetLength(); ++resourceApplicationNameIndex)
+   {
+     resourceApplicationNameJsonList[resourceApplicationNameIndex].AsObject(m_resourceApplicationName[resourceApplicationNameIndex].Jsonize());
+   }
+   payload.WithArray("ResourceApplicationName", std::move(resourceApplicationNameJsonList));
+
+  }
+
+  if(m_resourceApplicationArnHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> resourceApplicationArnJsonList(m_resourceApplicationArn.size());
+   for(unsigned resourceApplicationArnIndex = 0; resourceApplicationArnIndex < resourceApplicationArnJsonList.GetLength(); ++resourceApplicationArnIndex)
+   {
+     resourceApplicationArnJsonList[resourceApplicationArnIndex].AsObject(m_resourceApplicationArn[resourceApplicationArnIndex].Jsonize());
+   }
+   payload.WithArray("ResourceApplicationArn", std::move(resourceApplicationArnJsonList));
 
   }
 

@@ -18,31 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ModelPackageContainerDefinition::ModelPackageContainerDefinition() : 
-    m_containerHostnameHasBeenSet(false),
-    m_imageHasBeenSet(false),
-    m_imageDigestHasBeenSet(false),
-    m_modelDataUrlHasBeenSet(false),
-    m_productIdHasBeenSet(false),
-    m_environmentHasBeenSet(false),
-    m_modelInputHasBeenSet(false),
-    m_frameworkHasBeenSet(false),
-    m_frameworkVersionHasBeenSet(false),
-    m_nearestModelNameHasBeenSet(false)
-{
-}
-
-ModelPackageContainerDefinition::ModelPackageContainerDefinition(JsonView jsonValue) : 
-    m_containerHostnameHasBeenSet(false),
-    m_imageHasBeenSet(false),
-    m_imageDigestHasBeenSet(false),
-    m_modelDataUrlHasBeenSet(false),
-    m_productIdHasBeenSet(false),
-    m_environmentHasBeenSet(false),
-    m_modelInputHasBeenSet(false),
-    m_frameworkHasBeenSet(false),
-    m_frameworkVersionHasBeenSet(false),
-    m_nearestModelNameHasBeenSet(false)
+ModelPackageContainerDefinition::ModelPackageContainerDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -52,38 +28,33 @@ ModelPackageContainerDefinition& ModelPackageContainerDefinition::operator =(Jso
   if(jsonValue.ValueExists("ContainerHostname"))
   {
     m_containerHostname = jsonValue.GetString("ContainerHostname");
-
     m_containerHostnameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Image"))
   {
     m_image = jsonValue.GetString("Image");
-
     m_imageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ImageDigest"))
   {
     m_imageDigest = jsonValue.GetString("ImageDigest");
-
     m_imageDigestHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ModelDataUrl"))
   {
     m_modelDataUrl = jsonValue.GetString("ModelDataUrl");
-
     m_modelDataUrlHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ModelDataSource"))
+  {
+    m_modelDataSource = jsonValue.GetObject("ModelDataSource");
+    m_modelDataSourceHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("ProductId"))
   {
     m_productId = jsonValue.GetString("ProductId");
-
     m_productIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Environment"))
   {
     Aws::Map<Aws::String, JsonView> environmentJsonMap = jsonValue.GetObject("Environment").GetAllObjects();
@@ -93,35 +64,36 @@ ModelPackageContainerDefinition& ModelPackageContainerDefinition::operator =(Jso
     }
     m_environmentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ModelInput"))
   {
     m_modelInput = jsonValue.GetObject("ModelInput");
-
     m_modelInputHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Framework"))
   {
     m_framework = jsonValue.GetString("Framework");
-
     m_frameworkHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FrameworkVersion"))
   {
     m_frameworkVersion = jsonValue.GetString("FrameworkVersion");
-
     m_frameworkVersionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NearestModelName"))
   {
     m_nearestModelName = jsonValue.GetString("NearestModelName");
-
     m_nearestModelNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("AdditionalS3DataSource"))
+  {
+    m_additionalS3DataSource = jsonValue.GetObject("AdditionalS3DataSource");
+    m_additionalS3DataSourceHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("ModelDataETag"))
+  {
+    m_modelDataETag = jsonValue.GetString("ModelDataETag");
+    m_modelDataETagHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -150,6 +122,12 @@ JsonValue ModelPackageContainerDefinition::Jsonize() const
   if(m_modelDataUrlHasBeenSet)
   {
    payload.WithString("ModelDataUrl", m_modelDataUrl);
+
+  }
+
+  if(m_modelDataSourceHasBeenSet)
+  {
+   payload.WithObject("ModelDataSource", m_modelDataSource.Jsonize());
 
   }
 
@@ -191,6 +169,18 @@ JsonValue ModelPackageContainerDefinition::Jsonize() const
   if(m_nearestModelNameHasBeenSet)
   {
    payload.WithString("NearestModelName", m_nearestModelName);
+
+  }
+
+  if(m_additionalS3DataSourceHasBeenSet)
+  {
+   payload.WithObject("AdditionalS3DataSource", m_additionalS3DataSource.Jsonize());
+
+  }
+
+  if(m_modelDataETagHasBeenSet)
+  {
+   payload.WithString("ModelDataETag", m_modelDataETag);
 
   }
 

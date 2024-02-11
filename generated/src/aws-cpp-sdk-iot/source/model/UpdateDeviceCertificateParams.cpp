@@ -18,15 +18,7 @@ namespace IoT
 namespace Model
 {
 
-UpdateDeviceCertificateParams::UpdateDeviceCertificateParams() : 
-    m_action(DeviceCertificateUpdateAction::NOT_SET),
-    m_actionHasBeenSet(false)
-{
-}
-
-UpdateDeviceCertificateParams::UpdateDeviceCertificateParams(JsonView jsonValue) : 
-    m_action(DeviceCertificateUpdateAction::NOT_SET),
-    m_actionHasBeenSet(false)
+UpdateDeviceCertificateParams::UpdateDeviceCertificateParams(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ UpdateDeviceCertificateParams& UpdateDeviceCertificateParams::operator =(JsonVie
   if(jsonValue.ValueExists("action"))
   {
     m_action = DeviceCertificateUpdateActionMapper::GetDeviceCertificateUpdateActionForName(jsonValue.GetString("action"));
-
     m_actionHasBeenSet = true;
   }
-
   return *this;
 }
 

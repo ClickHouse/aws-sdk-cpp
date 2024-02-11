@@ -30,22 +30,25 @@ namespace MarketplaceEntitlementService
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef MarketplaceEntitlementServiceClientConfiguration ClientConfigurationType;
+      typedef MarketplaceEntitlementServiceEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         MarketplaceEntitlementServiceClient(const Aws::MarketplaceEntitlementService::MarketplaceEntitlementServiceClientConfiguration& clientConfiguration = Aws::MarketplaceEntitlementService::MarketplaceEntitlementServiceClientConfiguration(),
-                                            std::shared_ptr<MarketplaceEntitlementServiceEndpointProviderBase> endpointProvider = Aws::MakeShared<MarketplaceEntitlementServiceEndpointProvider>(ALLOCATION_TAG));
+                                            std::shared_ptr<MarketplaceEntitlementServiceEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         MarketplaceEntitlementServiceClient(const Aws::Auth::AWSCredentials& credentials,
-                                            std::shared_ptr<MarketplaceEntitlementServiceEndpointProviderBase> endpointProvider = Aws::MakeShared<MarketplaceEntitlementServiceEndpointProvider>(ALLOCATION_TAG),
+                                            std::shared_ptr<MarketplaceEntitlementServiceEndpointProviderBase> endpointProvider = nullptr,
                                             const Aws::MarketplaceEntitlementService::MarketplaceEntitlementServiceClientConfiguration& clientConfiguration = Aws::MarketplaceEntitlementService::MarketplaceEntitlementServiceClientConfiguration());
 
        /**
@@ -53,7 +56,7 @@ namespace MarketplaceEntitlementService
         * the default http client factory will be used
         */
         MarketplaceEntitlementServiceClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                                            std::shared_ptr<MarketplaceEntitlementServiceEndpointProviderBase> endpointProvider = Aws::MakeShared<MarketplaceEntitlementServiceEndpointProvider>(ALLOCATION_TAG),
+                                            std::shared_ptr<MarketplaceEntitlementServiceEndpointProviderBase> endpointProvider = nullptr,
                                             const Aws::MarketplaceEntitlementService::MarketplaceEntitlementServiceClientConfiguration& clientConfiguration = Aws::MarketplaceEntitlementService::MarketplaceEntitlementServiceClientConfiguration());
 
 
@@ -83,8 +86,12 @@ namespace MarketplaceEntitlementService
 
         /**
          * <p>GetEntitlements retrieves entitlement values for a given product. The results
-         * can be filtered based on customer identifier or product
-         * dimensions.</p><p><h3>See Also:</h3>   <a
+         * can be filtered based on customer identifier, AWS account ID, or product
+         * dimensions.</p>  <p> The <code>CustomerIdentifier</code> parameter is
+         * on path for deprecation. Use <code>CustomerAWSAccountID</code> instead.</p>
+         * <p>These parameters are mutually exclusive. You can't specify both
+         * <code>CustomerIdentifier</code> and <code>CustomerAWSAccountID</code> in the
+         * same request. </p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/entitlement.marketplace-2017-01-11/GetEntitlements">AWS
          * API Reference</a></p>
          */
@@ -116,7 +123,6 @@ namespace MarketplaceEntitlementService
       void init(const MarketplaceEntitlementServiceClientConfiguration& clientConfiguration);
 
       MarketplaceEntitlementServiceClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<MarketplaceEntitlementServiceEndpointProviderBase> m_endpointProvider;
   };
 

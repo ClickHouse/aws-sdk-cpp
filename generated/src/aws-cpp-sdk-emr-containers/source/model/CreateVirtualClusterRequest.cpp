@@ -12,15 +12,6 @@ using namespace Aws::EMRContainers::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateVirtualClusterRequest::CreateVirtualClusterRequest() : 
-    m_nameHasBeenSet(false),
-    m_containerProviderHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateVirtualClusterRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -51,6 +42,12 @@ Aws::String CreateVirtualClusterRequest::SerializePayload() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_securityConfigurationIdHasBeenSet)
+  {
+   payload.WithString("securityConfigurationId", m_securityConfigurationId);
 
   }
 

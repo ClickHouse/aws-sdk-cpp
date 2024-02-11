@@ -12,34 +12,19 @@ using namespace Aws::Omics::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateSequenceStoreRequest::CreateSequenceStoreRequest() : 
-    m_clientTokenHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_sseConfigHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateSequenceStoreRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_clientTokenHasBeenSet)
+  if(m_nameHasBeenSet)
   {
-   payload.WithString("clientToken", m_clientToken);
+   payload.WithString("name", m_name);
 
   }
 
   if(m_descriptionHasBeenSet)
   {
    payload.WithString("description", m_description);
-
-  }
-
-  if(m_nameHasBeenSet)
-  {
-   payload.WithString("name", m_name);
 
   }
 
@@ -57,6 +42,40 @@ Aws::String CreateSequenceStoreRequest::SerializePayload() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("clientToken", m_clientToken);
+
+  }
+
+  if(m_fallbackLocationHasBeenSet)
+  {
+   payload.WithString("fallbackLocation", m_fallbackLocation);
+
+  }
+
+  if(m_eTagAlgorithmFamilyHasBeenSet)
+  {
+   payload.WithString("eTagAlgorithmFamily", ETagAlgorithmFamilyMapper::GetNameForETagAlgorithmFamily(m_eTagAlgorithmFamily));
+  }
+
+  if(m_propagatedSetLevelTagsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> propagatedSetLevelTagsJsonList(m_propagatedSetLevelTags.size());
+   for(unsigned propagatedSetLevelTagsIndex = 0; propagatedSetLevelTagsIndex < propagatedSetLevelTagsJsonList.GetLength(); ++propagatedSetLevelTagsIndex)
+   {
+     propagatedSetLevelTagsJsonList[propagatedSetLevelTagsIndex].AsString(m_propagatedSetLevelTags[propagatedSetLevelTagsIndex]);
+   }
+   payload.WithArray("propagatedSetLevelTags", std::move(propagatedSetLevelTagsJsonList));
+
+  }
+
+  if(m_s3AccessConfigHasBeenSet)
+  {
+   payload.WithObject("s3AccessConfig", m_s3AccessConfig.Jsonize());
 
   }
 

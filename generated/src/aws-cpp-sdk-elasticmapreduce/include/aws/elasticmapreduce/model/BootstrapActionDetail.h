@@ -32,42 +32,23 @@ namespace Model
   class BootstrapActionDetail
   {
   public:
-    AWS_EMR_API BootstrapActionDetail();
+    AWS_EMR_API BootstrapActionDetail() = default;
     AWS_EMR_API BootstrapActionDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMR_API BootstrapActionDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A description of the bootstrap action.</p>
      */
-    inline const BootstrapActionConfig& GetBootstrapActionConfig() const{ return m_bootstrapActionConfig; }
-
-    /**
-     * <p>A description of the bootstrap action.</p>
-     */
+    inline const BootstrapActionConfig& GetBootstrapActionConfig() const { return m_bootstrapActionConfig; }
     inline bool BootstrapActionConfigHasBeenSet() const { return m_bootstrapActionConfigHasBeenSet; }
-
-    /**
-     * <p>A description of the bootstrap action.</p>
-     */
-    inline void SetBootstrapActionConfig(const BootstrapActionConfig& value) { m_bootstrapActionConfigHasBeenSet = true; m_bootstrapActionConfig = value; }
-
-    /**
-     * <p>A description of the bootstrap action.</p>
-     */
-    inline void SetBootstrapActionConfig(BootstrapActionConfig&& value) { m_bootstrapActionConfigHasBeenSet = true; m_bootstrapActionConfig = std::move(value); }
-
-    /**
-     * <p>A description of the bootstrap action.</p>
-     */
-    inline BootstrapActionDetail& WithBootstrapActionConfig(const BootstrapActionConfig& value) { SetBootstrapActionConfig(value); return *this;}
-
-    /**
-     * <p>A description of the bootstrap action.</p>
-     */
-    inline BootstrapActionDetail& WithBootstrapActionConfig(BootstrapActionConfig&& value) { SetBootstrapActionConfig(std::move(value)); return *this;}
-
+    template<typename BootstrapActionConfigT = BootstrapActionConfig>
+    void SetBootstrapActionConfig(BootstrapActionConfigT&& value) { m_bootstrapActionConfigHasBeenSet = true; m_bootstrapActionConfig = std::forward<BootstrapActionConfigT>(value); }
+    template<typename BootstrapActionConfigT = BootstrapActionConfig>
+    BootstrapActionDetail& WithBootstrapActionConfig(BootstrapActionConfigT&& value) { SetBootstrapActionConfig(std::forward<BootstrapActionConfigT>(value)); return *this;}
+    ///@}
   private:
 
     BootstrapActionConfig m_bootstrapActionConfig;

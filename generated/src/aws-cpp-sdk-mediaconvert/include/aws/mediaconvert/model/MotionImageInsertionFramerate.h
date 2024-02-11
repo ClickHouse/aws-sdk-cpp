@@ -32,67 +32,39 @@ namespace Model
   class MotionImageInsertionFramerate
   {
   public:
-    AWS_MEDIACONVERT_API MotionImageInsertionFramerate();
+    AWS_MEDIACONVERT_API MotionImageInsertionFramerate() = default;
     AWS_MEDIACONVERT_API MotionImageInsertionFramerate(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API MotionImageInsertionFramerate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * The bottom of the fraction that expresses your overlay frame rate. For example,
      * if your frame rate is 24 fps, set this value to 1.
      */
-    inline int GetFramerateDenominator() const{ return m_framerateDenominator; }
-
-    /**
-     * The bottom of the fraction that expresses your overlay frame rate. For example,
-     * if your frame rate is 24 fps, set this value to 1.
-     */
+    inline int GetFramerateDenominator() const { return m_framerateDenominator; }
     inline bool FramerateDenominatorHasBeenSet() const { return m_framerateDenominatorHasBeenSet; }
-
-    /**
-     * The bottom of the fraction that expresses your overlay frame rate. For example,
-     * if your frame rate is 24 fps, set this value to 1.
-     */
     inline void SetFramerateDenominator(int value) { m_framerateDenominatorHasBeenSet = true; m_framerateDenominator = value; }
-
-    /**
-     * The bottom of the fraction that expresses your overlay frame rate. For example,
-     * if your frame rate is 24 fps, set this value to 1.
-     */
     inline MotionImageInsertionFramerate& WithFramerateDenominator(int value) { SetFramerateDenominator(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * The top of the fraction that expresses your overlay frame rate. For example, if
      * your frame rate is 24 fps, set this value to 24.
      */
-    inline int GetFramerateNumerator() const{ return m_framerateNumerator; }
-
-    /**
-     * The top of the fraction that expresses your overlay frame rate. For example, if
-     * your frame rate is 24 fps, set this value to 24.
-     */
+    inline int GetFramerateNumerator() const { return m_framerateNumerator; }
     inline bool FramerateNumeratorHasBeenSet() const { return m_framerateNumeratorHasBeenSet; }
-
-    /**
-     * The top of the fraction that expresses your overlay frame rate. For example, if
-     * your frame rate is 24 fps, set this value to 24.
-     */
     inline void SetFramerateNumerator(int value) { m_framerateNumeratorHasBeenSet = true; m_framerateNumerator = value; }
-
-    /**
-     * The top of the fraction that expresses your overlay frame rate. For example, if
-     * your frame rate is 24 fps, set this value to 24.
-     */
     inline MotionImageInsertionFramerate& WithFramerateNumerator(int value) { SetFramerateNumerator(value); return *this;}
-
+    ///@}
   private:
 
-    int m_framerateDenominator;
+    int m_framerateDenominator{0};
     bool m_framerateDenominatorHasBeenSet = false;
 
-    int m_framerateNumerator;
+    int m_framerateNumerator{0};
     bool m_framerateNumeratorHasBeenSet = false;
   };
 

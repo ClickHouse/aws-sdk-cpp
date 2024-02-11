@@ -36,207 +36,67 @@ namespace Model
   class VPCDerivedInfo
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API VPCDerivedInfo();
+    AWS_ELASTICSEARCHSERVICE_API VPCDerivedInfo() = default;
     AWS_ELASTICSEARCHSERVICE_API VPCDerivedInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API VPCDerivedInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The VPC Id for the Elasticsearch domain. Exists only if the domain was
      * created with VPCOptions.</p>
      */
-    inline const Aws::String& GetVPCId() const{ return m_vPCId; }
-
-    /**
-     * <p>The VPC Id for the Elasticsearch domain. Exists only if the domain was
-     * created with VPCOptions.</p>
-     */
+    inline const Aws::String& GetVPCId() const { return m_vPCId; }
     inline bool VPCIdHasBeenSet() const { return m_vPCIdHasBeenSet; }
+    template<typename VPCIdT = Aws::String>
+    void SetVPCId(VPCIdT&& value) { m_vPCIdHasBeenSet = true; m_vPCId = std::forward<VPCIdT>(value); }
+    template<typename VPCIdT = Aws::String>
+    VPCDerivedInfo& WithVPCId(VPCIdT&& value) { SetVPCId(std::forward<VPCIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The VPC Id for the Elasticsearch domain. Exists only if the domain was
-     * created with VPCOptions.</p>
-     */
-    inline void SetVPCId(const Aws::String& value) { m_vPCIdHasBeenSet = true; m_vPCId = value; }
-
-    /**
-     * <p>The VPC Id for the Elasticsearch domain. Exists only if the domain was
-     * created with VPCOptions.</p>
-     */
-    inline void SetVPCId(Aws::String&& value) { m_vPCIdHasBeenSet = true; m_vPCId = std::move(value); }
-
-    /**
-     * <p>The VPC Id for the Elasticsearch domain. Exists only if the domain was
-     * created with VPCOptions.</p>
-     */
-    inline void SetVPCId(const char* value) { m_vPCIdHasBeenSet = true; m_vPCId.assign(value); }
-
-    /**
-     * <p>The VPC Id for the Elasticsearch domain. Exists only if the domain was
-     * created with VPCOptions.</p>
-     */
-    inline VPCDerivedInfo& WithVPCId(const Aws::String& value) { SetVPCId(value); return *this;}
-
-    /**
-     * <p>The VPC Id for the Elasticsearch domain. Exists only if the domain was
-     * created with VPCOptions.</p>
-     */
-    inline VPCDerivedInfo& WithVPCId(Aws::String&& value) { SetVPCId(std::move(value)); return *this;}
-
-    /**
-     * <p>The VPC Id for the Elasticsearch domain. Exists only if the domain was
-     * created with VPCOptions.</p>
-     */
-    inline VPCDerivedInfo& WithVPCId(const char* value) { SetVPCId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the subnets for VPC endpoint.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSubnetIds() const{ return m_subnetIds; }
-
-    /**
-     * <p>Specifies the subnets for VPC endpoint.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSubnetIds() const { return m_subnetIds; }
     inline bool SubnetIdsHasBeenSet() const { return m_subnetIdsHasBeenSet; }
+    template<typename SubnetIdsT = Aws::Vector<Aws::String>>
+    void SetSubnetIds(SubnetIdsT&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = std::forward<SubnetIdsT>(value); }
+    template<typename SubnetIdsT = Aws::Vector<Aws::String>>
+    VPCDerivedInfo& WithSubnetIds(SubnetIdsT&& value) { SetSubnetIds(std::forward<SubnetIdsT>(value)); return *this;}
+    template<typename SubnetIdsT = Aws::String>
+    VPCDerivedInfo& AddSubnetIds(SubnetIdsT&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.emplace_back(std::forward<SubnetIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Specifies the subnets for VPC endpoint.</p>
-     */
-    inline void SetSubnetIds(const Aws::Vector<Aws::String>& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = value; }
-
-    /**
-     * <p>Specifies the subnets for VPC endpoint.</p>
-     */
-    inline void SetSubnetIds(Aws::Vector<Aws::String>&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = std::move(value); }
-
-    /**
-     * <p>Specifies the subnets for VPC endpoint.</p>
-     */
-    inline VPCDerivedInfo& WithSubnetIds(const Aws::Vector<Aws::String>& value) { SetSubnetIds(value); return *this;}
-
-    /**
-     * <p>Specifies the subnets for VPC endpoint.</p>
-     */
-    inline VPCDerivedInfo& WithSubnetIds(Aws::Vector<Aws::String>&& value) { SetSubnetIds(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the subnets for VPC endpoint.</p>
-     */
-    inline VPCDerivedInfo& AddSubnetIds(const Aws::String& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies the subnets for VPC endpoint.</p>
-     */
-    inline VPCDerivedInfo& AddSubnetIds(Aws::String&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Specifies the subnets for VPC endpoint.</p>
-     */
-    inline VPCDerivedInfo& AddSubnetIds(const char* value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The availability zones for the Elasticsearch domain. Exists only if the
      * domain was created with VPCOptions.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAvailabilityZones() const{ return m_availabilityZones; }
-
-    /**
-     * <p>The availability zones for the Elasticsearch domain. Exists only if the
-     * domain was created with VPCOptions.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAvailabilityZones() const { return m_availabilityZones; }
     inline bool AvailabilityZonesHasBeenSet() const { return m_availabilityZonesHasBeenSet; }
+    template<typename AvailabilityZonesT = Aws::Vector<Aws::String>>
+    void SetAvailabilityZones(AvailabilityZonesT&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = std::forward<AvailabilityZonesT>(value); }
+    template<typename AvailabilityZonesT = Aws::Vector<Aws::String>>
+    VPCDerivedInfo& WithAvailabilityZones(AvailabilityZonesT&& value) { SetAvailabilityZones(std::forward<AvailabilityZonesT>(value)); return *this;}
+    template<typename AvailabilityZonesT = Aws::String>
+    VPCDerivedInfo& AddAvailabilityZones(AvailabilityZonesT&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.emplace_back(std::forward<AvailabilityZonesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The availability zones for the Elasticsearch domain. Exists only if the
-     * domain was created with VPCOptions.</p>
-     */
-    inline void SetAvailabilityZones(const Aws::Vector<Aws::String>& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = value; }
-
-    /**
-     * <p>The availability zones for the Elasticsearch domain. Exists only if the
-     * domain was created with VPCOptions.</p>
-     */
-    inline void SetAvailabilityZones(Aws::Vector<Aws::String>&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = std::move(value); }
-
-    /**
-     * <p>The availability zones for the Elasticsearch domain. Exists only if the
-     * domain was created with VPCOptions.</p>
-     */
-    inline VPCDerivedInfo& WithAvailabilityZones(const Aws::Vector<Aws::String>& value) { SetAvailabilityZones(value); return *this;}
-
-    /**
-     * <p>The availability zones for the Elasticsearch domain. Exists only if the
-     * domain was created with VPCOptions.</p>
-     */
-    inline VPCDerivedInfo& WithAvailabilityZones(Aws::Vector<Aws::String>&& value) { SetAvailabilityZones(std::move(value)); return *this;}
-
-    /**
-     * <p>The availability zones for the Elasticsearch domain. Exists only if the
-     * domain was created with VPCOptions.</p>
-     */
-    inline VPCDerivedInfo& AddAvailabilityZones(const Aws::String& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(value); return *this; }
-
-    /**
-     * <p>The availability zones for the Elasticsearch domain. Exists only if the
-     * domain was created with VPCOptions.</p>
-     */
-    inline VPCDerivedInfo& AddAvailabilityZones(Aws::String&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The availability zones for the Elasticsearch domain. Exists only if the
-     * domain was created with VPCOptions.</p>
-     */
-    inline VPCDerivedInfo& AddAvailabilityZones(const char* value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies the security groups for VPC endpoint.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSecurityGroupIds() const{ return m_securityGroupIds; }
-
-    /**
-     * <p>Specifies the security groups for VPC endpoint.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSecurityGroupIds() const { return m_securityGroupIds; }
     inline bool SecurityGroupIdsHasBeenSet() const { return m_securityGroupIdsHasBeenSet; }
-
-    /**
-     * <p>Specifies the security groups for VPC endpoint.</p>
-     */
-    inline void SetSecurityGroupIds(const Aws::Vector<Aws::String>& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = value; }
-
-    /**
-     * <p>Specifies the security groups for VPC endpoint.</p>
-     */
-    inline void SetSecurityGroupIds(Aws::Vector<Aws::String>&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = std::move(value); }
-
-    /**
-     * <p>Specifies the security groups for VPC endpoint.</p>
-     */
-    inline VPCDerivedInfo& WithSecurityGroupIds(const Aws::Vector<Aws::String>& value) { SetSecurityGroupIds(value); return *this;}
-
-    /**
-     * <p>Specifies the security groups for VPC endpoint.</p>
-     */
-    inline VPCDerivedInfo& WithSecurityGroupIds(Aws::Vector<Aws::String>&& value) { SetSecurityGroupIds(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the security groups for VPC endpoint.</p>
-     */
-    inline VPCDerivedInfo& AddSecurityGroupIds(const Aws::String& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies the security groups for VPC endpoint.</p>
-     */
-    inline VPCDerivedInfo& AddSecurityGroupIds(Aws::String&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Specifies the security groups for VPC endpoint.</p>
-     */
-    inline VPCDerivedInfo& AddSecurityGroupIds(const char* value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(value); return *this; }
-
+    template<typename SecurityGroupIdsT = Aws::Vector<Aws::String>>
+    void SetSecurityGroupIds(SecurityGroupIdsT&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = std::forward<SecurityGroupIdsT>(value); }
+    template<typename SecurityGroupIdsT = Aws::Vector<Aws::String>>
+    VPCDerivedInfo& WithSecurityGroupIds(SecurityGroupIdsT&& value) { SetSecurityGroupIds(std::forward<SecurityGroupIdsT>(value)); return *this;}
+    template<typename SecurityGroupIdsT = Aws::String>
+    VPCDerivedInfo& AddSecurityGroupIds(SecurityGroupIdsT&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.emplace_back(std::forward<SecurityGroupIdsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_vPCId;

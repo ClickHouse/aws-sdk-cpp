@@ -18,15 +18,7 @@ namespace MainframeModernization
 namespace Model
 {
 
-HighAvailabilityConfig::HighAvailabilityConfig() : 
-    m_desiredCapacity(0),
-    m_desiredCapacityHasBeenSet(false)
-{
-}
-
-HighAvailabilityConfig::HighAvailabilityConfig(JsonView jsonValue) : 
-    m_desiredCapacity(0),
-    m_desiredCapacityHasBeenSet(false)
+HighAvailabilityConfig::HighAvailabilityConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ HighAvailabilityConfig& HighAvailabilityConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("desiredCapacity"))
   {
     m_desiredCapacity = jsonValue.GetInteger("desiredCapacity");
-
     m_desiredCapacityHasBeenSet = true;
   }
-
   return *this;
 }
 

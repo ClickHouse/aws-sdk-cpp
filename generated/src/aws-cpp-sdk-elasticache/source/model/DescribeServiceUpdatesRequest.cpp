@@ -10,15 +10,6 @@
 using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils;
 
-DescribeServiceUpdatesRequest::DescribeServiceUpdatesRequest() : 
-    m_serviceUpdateNameHasBeenSet(false),
-    m_serviceUpdateStatusHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false),
-    m_markerHasBeenSet(false)
-{
-}
-
 Aws::String DescribeServiceUpdatesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -30,12 +21,19 @@ Aws::String DescribeServiceUpdatesRequest::SerializePayload() const
 
   if(m_serviceUpdateStatusHasBeenSet)
   {
-    unsigned serviceUpdateStatusCount = 1;
-    for(auto& item : m_serviceUpdateStatus)
+    if (m_serviceUpdateStatus.empty())
     {
-      ss << "ServiceUpdateStatus.member." << serviceUpdateStatusCount << "="
-          << StringUtils::URLEncode(ServiceUpdateStatusMapper::GetNameForServiceUpdateStatus(item).c_str()) << "&";
-      serviceUpdateStatusCount++;
+      ss << "ServiceUpdateStatus=&";
+    }
+    else
+    {
+      unsigned serviceUpdateStatusCount = 1;
+      for(auto& item : m_serviceUpdateStatus)
+      {
+        ss << "ServiceUpdateStatus.member." << serviceUpdateStatusCount << "="
+            << StringUtils::URLEncode(ServiceUpdateStatusMapper::GetNameForServiceUpdateStatus(item)) << "&";
+        serviceUpdateStatusCount++;
+      }
     }
   }
 

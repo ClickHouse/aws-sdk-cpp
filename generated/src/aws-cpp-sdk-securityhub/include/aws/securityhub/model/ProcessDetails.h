@@ -32,301 +32,86 @@ namespace Model
   class ProcessDetails
   {
   public:
-    AWS_SECURITYHUB_API ProcessDetails();
+    AWS_SECURITYHUB_API ProcessDetails() = default;
     AWS_SECURITYHUB_API ProcessDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API ProcessDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The name of the process.</p>
+     * <p>The name of the process.</p> <p>Length Constraints: Minimum of 1. Maximum of
+     * 64.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the process.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ProcessDetails& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the process.</p>
+     * <p>The path to the process executable.</p> <p>Length Constraints: Minimum of 1.
+     * Maximum of 512.</p>
      */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the process.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the process.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the process.</p>
-     */
-    inline ProcessDetails& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the process.</p>
-     */
-    inline ProcessDetails& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the process.</p>
-     */
-    inline ProcessDetails& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p>The path to the process executable.</p>
-     */
-    inline const Aws::String& GetPath() const{ return m_path; }
-
-    /**
-     * <p>The path to the process executable.</p>
-     */
+    inline const Aws::String& GetPath() const { return m_path; }
     inline bool PathHasBeenSet() const { return m_pathHasBeenSet; }
+    template<typename PathT = Aws::String>
+    void SetPath(PathT&& value) { m_pathHasBeenSet = true; m_path = std::forward<PathT>(value); }
+    template<typename PathT = Aws::String>
+    ProcessDetails& WithPath(PathT&& value) { SetPath(std::forward<PathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The path to the process executable.</p>
-     */
-    inline void SetPath(const Aws::String& value) { m_pathHasBeenSet = true; m_path = value; }
-
-    /**
-     * <p>The path to the process executable.</p>
-     */
-    inline void SetPath(Aws::String&& value) { m_pathHasBeenSet = true; m_path = std::move(value); }
-
-    /**
-     * <p>The path to the process executable.</p>
-     */
-    inline void SetPath(const char* value) { m_pathHasBeenSet = true; m_path.assign(value); }
-
-    /**
-     * <p>The path to the process executable.</p>
-     */
-    inline ProcessDetails& WithPath(const Aws::String& value) { SetPath(value); return *this;}
-
-    /**
-     * <p>The path to the process executable.</p>
-     */
-    inline ProcessDetails& WithPath(Aws::String&& value) { SetPath(std::move(value)); return *this;}
-
-    /**
-     * <p>The path to the process executable.</p>
-     */
-    inline ProcessDetails& WithPath(const char* value) { SetPath(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The process ID.</p>
      */
-    inline int GetPid() const{ return m_pid; }
-
-    /**
-     * <p>The process ID.</p>
-     */
+    inline int GetPid() const { return m_pid; }
     inline bool PidHasBeenSet() const { return m_pidHasBeenSet; }
-
-    /**
-     * <p>The process ID.</p>
-     */
     inline void SetPid(int value) { m_pidHasBeenSet = true; m_pid = value; }
-
-    /**
-     * <p>The process ID.</p>
-     */
     inline ProcessDetails& WithPid(int value) { SetPid(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The parent process ID. This field accepts positive integers between
      * <code>O</code> and <code>2147483647</code>.</p>
      */
-    inline int GetParentPid() const{ return m_parentPid; }
-
-    /**
-     * <p>The parent process ID. This field accepts positive integers between
-     * <code>O</code> and <code>2147483647</code>.</p>
-     */
+    inline int GetParentPid() const { return m_parentPid; }
     inline bool ParentPidHasBeenSet() const { return m_parentPidHasBeenSet; }
-
-    /**
-     * <p>The parent process ID. This field accepts positive integers between
-     * <code>O</code> and <code>2147483647</code>.</p>
-     */
     inline void SetParentPid(int value) { m_parentPidHasBeenSet = true; m_parentPid = value; }
-
-    /**
-     * <p>The parent process ID. This field accepts positive integers between
-     * <code>O</code> and <code>2147483647</code>.</p>
-     */
     inline ProcessDetails& WithParentPid(int value) { SetParentPid(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>Indicates when the process was launched.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
+     * <p>Indicates when the process was launched.</p> <p>For more information about
+     * the validation and formatting of timestamp fields in Security Hub, see <a
+     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/Welcome.html#timestamps">Timestamps</a>.</p>
      */
-    inline const Aws::String& GetLaunchedAt() const{ return m_launchedAt; }
-
-    /**
-     * <p>Indicates when the process was launched.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
+    inline const Aws::String& GetLaunchedAt() const { return m_launchedAt; }
     inline bool LaunchedAtHasBeenSet() const { return m_launchedAtHasBeenSet; }
+    template<typename LaunchedAtT = Aws::String>
+    void SetLaunchedAt(LaunchedAtT&& value) { m_launchedAtHasBeenSet = true; m_launchedAt = std::forward<LaunchedAtT>(value); }
+    template<typename LaunchedAtT = Aws::String>
+    ProcessDetails& WithLaunchedAt(LaunchedAtT&& value) { SetLaunchedAt(std::forward<LaunchedAtT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Indicates when the process was launched.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
+     * <p>Indicates when the process was terminated.</p> <p>For more information about
+     * the validation and formatting of timestamp fields in Security Hub, see <a
+     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/Welcome.html#timestamps">Timestamps</a>.</p>
      */
-    inline void SetLaunchedAt(const Aws::String& value) { m_launchedAtHasBeenSet = true; m_launchedAt = value; }
-
-    /**
-     * <p>Indicates when the process was launched.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetLaunchedAt(Aws::String&& value) { m_launchedAtHasBeenSet = true; m_launchedAt = std::move(value); }
-
-    /**
-     * <p>Indicates when the process was launched.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetLaunchedAt(const char* value) { m_launchedAtHasBeenSet = true; m_launchedAt.assign(value); }
-
-    /**
-     * <p>Indicates when the process was launched.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline ProcessDetails& WithLaunchedAt(const Aws::String& value) { SetLaunchedAt(value); return *this;}
-
-    /**
-     * <p>Indicates when the process was launched.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline ProcessDetails& WithLaunchedAt(Aws::String&& value) { SetLaunchedAt(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates when the process was launched.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline ProcessDetails& WithLaunchedAt(const char* value) { SetLaunchedAt(value); return *this;}
-
-
-    /**
-     * <p>Indicates when the process was terminated.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline const Aws::String& GetTerminatedAt() const{ return m_terminatedAt; }
-
-    /**
-     * <p>Indicates when the process was terminated.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
+    inline const Aws::String& GetTerminatedAt() const { return m_terminatedAt; }
     inline bool TerminatedAtHasBeenSet() const { return m_terminatedAtHasBeenSet; }
-
-    /**
-     * <p>Indicates when the process was terminated.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetTerminatedAt(const Aws::String& value) { m_terminatedAtHasBeenSet = true; m_terminatedAt = value; }
-
-    /**
-     * <p>Indicates when the process was terminated.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetTerminatedAt(Aws::String&& value) { m_terminatedAtHasBeenSet = true; m_terminatedAt = std::move(value); }
-
-    /**
-     * <p>Indicates when the process was terminated.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetTerminatedAt(const char* value) { m_terminatedAtHasBeenSet = true; m_terminatedAt.assign(value); }
-
-    /**
-     * <p>Indicates when the process was terminated.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline ProcessDetails& WithTerminatedAt(const Aws::String& value) { SetTerminatedAt(value); return *this;}
-
-    /**
-     * <p>Indicates when the process was terminated.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline ProcessDetails& WithTerminatedAt(Aws::String&& value) { SetTerminatedAt(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates when the process was terminated.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline ProcessDetails& WithTerminatedAt(const char* value) { SetTerminatedAt(value); return *this;}
-
+    template<typename TerminatedAtT = Aws::String>
+    void SetTerminatedAt(TerminatedAtT&& value) { m_terminatedAtHasBeenSet = true; m_terminatedAt = std::forward<TerminatedAtT>(value); }
+    template<typename TerminatedAtT = Aws::String>
+    ProcessDetails& WithTerminatedAt(TerminatedAtT&& value) { SetTerminatedAt(std::forward<TerminatedAtT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -335,10 +120,10 @@ namespace Model
     Aws::String m_path;
     bool m_pathHasBeenSet = false;
 
-    int m_pid;
+    int m_pid{0};
     bool m_pidHasBeenSet = false;
 
-    int m_parentPid;
+    int m_parentPid{0};
     bool m_parentPidHasBeenSet = false;
 
     Aws::String m_launchedAt;

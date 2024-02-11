@@ -18,15 +18,7 @@ namespace AmplifyBackend
 namespace Model
 {
 
-UpdateBackendAuthIdentityPoolConfig::UpdateBackendAuthIdentityPoolConfig() : 
-    m_unauthenticatedLogin(false),
-    m_unauthenticatedLoginHasBeenSet(false)
-{
-}
-
-UpdateBackendAuthIdentityPoolConfig::UpdateBackendAuthIdentityPoolConfig(JsonView jsonValue) : 
-    m_unauthenticatedLogin(false),
-    m_unauthenticatedLoginHasBeenSet(false)
+UpdateBackendAuthIdentityPoolConfig::UpdateBackendAuthIdentityPoolConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ UpdateBackendAuthIdentityPoolConfig& UpdateBackendAuthIdentityPoolConfig::operat
   if(jsonValue.ValueExists("unauthenticatedLogin"))
   {
     m_unauthenticatedLogin = jsonValue.GetBool("unauthenticatedLogin");
-
     m_unauthenticatedLoginHasBeenSet = true;
   }
-
   return *this;
 }
 

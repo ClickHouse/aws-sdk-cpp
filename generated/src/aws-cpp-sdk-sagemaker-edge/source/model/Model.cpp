@@ -18,21 +18,7 @@ namespace SagemakerEdgeManager
 namespace Model
 {
 
-Model::Model() : 
-    m_modelNameHasBeenSet(false),
-    m_modelVersionHasBeenSet(false),
-    m_latestSampleTimeHasBeenSet(false),
-    m_latestInferenceHasBeenSet(false),
-    m_modelMetricsHasBeenSet(false)
-{
-}
-
-Model::Model(JsonView jsonValue) : 
-    m_modelNameHasBeenSet(false),
-    m_modelVersionHasBeenSet(false),
-    m_latestSampleTimeHasBeenSet(false),
-    m_latestInferenceHasBeenSet(false),
-    m_modelMetricsHasBeenSet(false)
+Model::Model(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ Model& Model::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ModelName"))
   {
     m_modelName = jsonValue.GetString("ModelName");
-
     m_modelNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ModelVersion"))
   {
     m_modelVersion = jsonValue.GetString("ModelVersion");
-
     m_modelVersionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LatestSampleTime"))
   {
     m_latestSampleTime = jsonValue.GetDouble("LatestSampleTime");
-
     m_latestSampleTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LatestInference"))
   {
     m_latestInference = jsonValue.GetDouble("LatestInference");
-
     m_latestInferenceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ModelMetrics"))
   {
     Aws::Utils::Array<JsonView> modelMetricsJsonList = jsonValue.GetArray("ModelMetrics");
@@ -76,7 +54,6 @@ Model& Model::operator =(JsonView jsonValue)
     }
     m_modelMetricsHasBeenSet = true;
   }
-
   return *this;
 }
 

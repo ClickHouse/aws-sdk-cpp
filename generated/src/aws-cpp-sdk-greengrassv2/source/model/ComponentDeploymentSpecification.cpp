@@ -18,17 +18,7 @@ namespace GreengrassV2
 namespace Model
 {
 
-ComponentDeploymentSpecification::ComponentDeploymentSpecification() : 
-    m_componentVersionHasBeenSet(false),
-    m_configurationUpdateHasBeenSet(false),
-    m_runWithHasBeenSet(false)
-{
-}
-
-ComponentDeploymentSpecification::ComponentDeploymentSpecification(JsonView jsonValue) : 
-    m_componentVersionHasBeenSet(false),
-    m_configurationUpdateHasBeenSet(false),
-    m_runWithHasBeenSet(false)
+ComponentDeploymentSpecification::ComponentDeploymentSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ ComponentDeploymentSpecification& ComponentDeploymentSpecification::operator =(J
   if(jsonValue.ValueExists("componentVersion"))
   {
     m_componentVersion = jsonValue.GetString("componentVersion");
-
     m_componentVersionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("configurationUpdate"))
   {
     m_configurationUpdate = jsonValue.GetObject("configurationUpdate");
-
     m_configurationUpdateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("runWith"))
   {
     m_runWith = jsonValue.GetObject("runWith");
-
     m_runWithHasBeenSet = true;
   }
-
   return *this;
 }
 

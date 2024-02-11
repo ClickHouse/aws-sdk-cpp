@@ -12,17 +12,6 @@ using namespace Aws::AccessAnalyzer::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateAnalyzerRequest::CreateAnalyzerRequest() : 
-    m_analyzerNameHasBeenSet(false),
-    m_type(Type::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_archiveRulesHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true)
-{
-}
-
 Aws::String CreateAnalyzerRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -63,6 +52,12 @@ Aws::String CreateAnalyzerRequest::SerializePayload() const
   if(m_clientTokenHasBeenSet)
   {
    payload.WithString("clientToken", m_clientToken);
+
+  }
+
+  if(m_configurationHasBeenSet)
+  {
+   payload.WithObject("configuration", m_configuration.Jsonize());
 
   }
 

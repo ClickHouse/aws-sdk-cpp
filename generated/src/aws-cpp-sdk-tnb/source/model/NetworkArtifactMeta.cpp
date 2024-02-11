@@ -18,13 +18,7 @@ namespace tnb
 namespace Model
 {
 
-NetworkArtifactMeta::NetworkArtifactMeta() : 
-    m_overridesHasBeenSet(false)
-{
-}
-
-NetworkArtifactMeta::NetworkArtifactMeta(JsonView jsonValue) : 
-    m_overridesHasBeenSet(false)
+NetworkArtifactMeta::NetworkArtifactMeta(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ NetworkArtifactMeta& NetworkArtifactMeta::operator =(JsonView jsonValue)
     }
     m_overridesHasBeenSet = true;
   }
-
   return *this;
 }
 

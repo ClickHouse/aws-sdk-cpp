@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-PutDialRequestBatchResult::PutDialRequestBatchResult()
-{
-}
-
 PutDialRequestBatchResult::PutDialRequestBatchResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,15 +25,6 @@ PutDialRequestBatchResult::PutDialRequestBatchResult(const Aws::AmazonWebService
 PutDialRequestBatchResult& PutDialRequestBatchResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("failedRequests"))
-  {
-    Aws::Utils::Array<JsonView> failedRequestsJsonList = jsonValue.GetArray("failedRequests");
-    for(unsigned failedRequestsIndex = 0; failedRequestsIndex < failedRequestsJsonList.GetLength(); ++failedRequestsIndex)
-    {
-      m_failedRequests.push_back(failedRequestsJsonList[failedRequestsIndex].AsObject());
-    }
-  }
-
   if(jsonValue.ValueExists("successfulRequests"))
   {
     Aws::Utils::Array<JsonView> successfulRequestsJsonList = jsonValue.GetArray("successfulRequests");
@@ -45,14 +32,24 @@ PutDialRequestBatchResult& PutDialRequestBatchResult::operator =(const Aws::Amaz
     {
       m_successfulRequests.push_back(successfulRequestsJsonList[successfulRequestsIndex].AsObject());
     }
+    m_successfulRequestsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("failedRequests"))
+  {
+    Aws::Utils::Array<JsonView> failedRequestsJsonList = jsonValue.GetArray("failedRequests");
+    for(unsigned failedRequestsIndex = 0; failedRequestsIndex < failedRequestsJsonList.GetLength(); ++failedRequestsIndex)
+    {
+      m_failedRequests.push_back(failedRequestsJsonList[failedRequestsIndex].AsObject());
+    }
+    m_failedRequestsHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

@@ -33,119 +33,45 @@ namespace Model
   class AuthorizationData
   {
   public:
-    AWS_ECRPUBLIC_API AuthorizationData();
+    AWS_ECRPUBLIC_API AuthorizationData() = default;
     AWS_ECRPUBLIC_API AuthorizationData(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECRPUBLIC_API AuthorizationData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECRPUBLIC_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A base64-encoded string that contains authorization data for a public Amazon
      * ECR registry. When the string is decoded, it's presented in the format
      * <code>user:password</code> for public registry authentication using <code>docker
      * login</code>.</p>
      */
-    inline const Aws::String& GetAuthorizationToken() const{ return m_authorizationToken; }
-
-    /**
-     * <p>A base64-encoded string that contains authorization data for a public Amazon
-     * ECR registry. When the string is decoded, it's presented in the format
-     * <code>user:password</code> for public registry authentication using <code>docker
-     * login</code>.</p>
-     */
+    inline const Aws::String& GetAuthorizationToken() const { return m_authorizationToken; }
     inline bool AuthorizationTokenHasBeenSet() const { return m_authorizationTokenHasBeenSet; }
+    template<typename AuthorizationTokenT = Aws::String>
+    void SetAuthorizationToken(AuthorizationTokenT&& value) { m_authorizationTokenHasBeenSet = true; m_authorizationToken = std::forward<AuthorizationTokenT>(value); }
+    template<typename AuthorizationTokenT = Aws::String>
+    AuthorizationData& WithAuthorizationToken(AuthorizationTokenT&& value) { SetAuthorizationToken(std::forward<AuthorizationTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A base64-encoded string that contains authorization data for a public Amazon
-     * ECR registry. When the string is decoded, it's presented in the format
-     * <code>user:password</code> for public registry authentication using <code>docker
-     * login</code>.</p>
-     */
-    inline void SetAuthorizationToken(const Aws::String& value) { m_authorizationTokenHasBeenSet = true; m_authorizationToken = value; }
-
-    /**
-     * <p>A base64-encoded string that contains authorization data for a public Amazon
-     * ECR registry. When the string is decoded, it's presented in the format
-     * <code>user:password</code> for public registry authentication using <code>docker
-     * login</code>.</p>
-     */
-    inline void SetAuthorizationToken(Aws::String&& value) { m_authorizationTokenHasBeenSet = true; m_authorizationToken = std::move(value); }
-
-    /**
-     * <p>A base64-encoded string that contains authorization data for a public Amazon
-     * ECR registry. When the string is decoded, it's presented in the format
-     * <code>user:password</code> for public registry authentication using <code>docker
-     * login</code>.</p>
-     */
-    inline void SetAuthorizationToken(const char* value) { m_authorizationTokenHasBeenSet = true; m_authorizationToken.assign(value); }
-
-    /**
-     * <p>A base64-encoded string that contains authorization data for a public Amazon
-     * ECR registry. When the string is decoded, it's presented in the format
-     * <code>user:password</code> for public registry authentication using <code>docker
-     * login</code>.</p>
-     */
-    inline AuthorizationData& WithAuthorizationToken(const Aws::String& value) { SetAuthorizationToken(value); return *this;}
-
-    /**
-     * <p>A base64-encoded string that contains authorization data for a public Amazon
-     * ECR registry. When the string is decoded, it's presented in the format
-     * <code>user:password</code> for public registry authentication using <code>docker
-     * login</code>.</p>
-     */
-    inline AuthorizationData& WithAuthorizationToken(Aws::String&& value) { SetAuthorizationToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A base64-encoded string that contains authorization data for a public Amazon
-     * ECR registry. When the string is decoded, it's presented in the format
-     * <code>user:password</code> for public registry authentication using <code>docker
-     * login</code>.</p>
-     */
-    inline AuthorizationData& WithAuthorizationToken(const char* value) { SetAuthorizationToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Unix time in seconds and milliseconds when the authorization token
      * expires. Authorization tokens are valid for 12 hours.</p>
      */
-    inline const Aws::Utils::DateTime& GetExpiresAt() const{ return m_expiresAt; }
-
-    /**
-     * <p>The Unix time in seconds and milliseconds when the authorization token
-     * expires. Authorization tokens are valid for 12 hours.</p>
-     */
+    inline const Aws::Utils::DateTime& GetExpiresAt() const { return m_expiresAt; }
     inline bool ExpiresAtHasBeenSet() const { return m_expiresAtHasBeenSet; }
-
-    /**
-     * <p>The Unix time in seconds and milliseconds when the authorization token
-     * expires. Authorization tokens are valid for 12 hours.</p>
-     */
-    inline void SetExpiresAt(const Aws::Utils::DateTime& value) { m_expiresAtHasBeenSet = true; m_expiresAt = value; }
-
-    /**
-     * <p>The Unix time in seconds and milliseconds when the authorization token
-     * expires. Authorization tokens are valid for 12 hours.</p>
-     */
-    inline void SetExpiresAt(Aws::Utils::DateTime&& value) { m_expiresAtHasBeenSet = true; m_expiresAt = std::move(value); }
-
-    /**
-     * <p>The Unix time in seconds and milliseconds when the authorization token
-     * expires. Authorization tokens are valid for 12 hours.</p>
-     */
-    inline AuthorizationData& WithExpiresAt(const Aws::Utils::DateTime& value) { SetExpiresAt(value); return *this;}
-
-    /**
-     * <p>The Unix time in seconds and milliseconds when the authorization token
-     * expires. Authorization tokens are valid for 12 hours.</p>
-     */
-    inline AuthorizationData& WithExpiresAt(Aws::Utils::DateTime&& value) { SetExpiresAt(std::move(value)); return *this;}
-
+    template<typename ExpiresAtT = Aws::Utils::DateTime>
+    void SetExpiresAt(ExpiresAtT&& value) { m_expiresAtHasBeenSet = true; m_expiresAt = std::forward<ExpiresAtT>(value); }
+    template<typename ExpiresAtT = Aws::Utils::DateTime>
+    AuthorizationData& WithExpiresAt(ExpiresAtT&& value) { SetExpiresAt(std::forward<ExpiresAtT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_authorizationToken;
     bool m_authorizationTokenHasBeenSet = false;
 
-    Aws::Utils::DateTime m_expiresAt;
+    Aws::Utils::DateTime m_expiresAt{};
     bool m_expiresAtHasBeenSet = false;
   };
 

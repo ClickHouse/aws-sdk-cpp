@@ -20,13 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-Builder::Builder() : 
-    m_aRNHasBeenSet(false)
-{
-}
-
-Builder::Builder(const XmlNode& xmlNode) : 
-    m_aRNHasBeenSet(false)
+Builder::Builder(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -22,22 +22,25 @@ namespace MTurk
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef MTurkClientConfiguration ClientConfigurationType;
+      typedef MTurkEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         MTurkClient(const Aws::MTurk::MTurkClientConfiguration& clientConfiguration = Aws::MTurk::MTurkClientConfiguration(),
-                    std::shared_ptr<MTurkEndpointProviderBase> endpointProvider = Aws::MakeShared<MTurkEndpointProvider>(ALLOCATION_TAG));
+                    std::shared_ptr<MTurkEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         MTurkClient(const Aws::Auth::AWSCredentials& credentials,
-                    std::shared_ptr<MTurkEndpointProviderBase> endpointProvider = Aws::MakeShared<MTurkEndpointProvider>(ALLOCATION_TAG),
+                    std::shared_ptr<MTurkEndpointProviderBase> endpointProvider = nullptr,
                     const Aws::MTurk::MTurkClientConfiguration& clientConfiguration = Aws::MTurk::MTurkClientConfiguration());
 
        /**
@@ -45,7 +48,7 @@ namespace MTurk
         * the default http client factory will be used
         */
         MTurkClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                    std::shared_ptr<MTurkEndpointProviderBase> endpointProvider = Aws::MakeShared<MTurkEndpointProvider>(ALLOCATION_TAG),
+                    std::shared_ptr<MTurkEndpointProviderBase> endpointProvider = nullptr,
                     const Aws::MTurk::MTurkClientConfiguration& clientConfiguration = Aws::MTurk::MTurkClientConfiguration());
 
 
@@ -517,13 +520,13 @@ namespace MTurk
          * href="http://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/GetAccountBalance">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetAccountBalanceOutcome GetAccountBalance(const Model::GetAccountBalanceRequest& request) const;
+        virtual Model::GetAccountBalanceOutcome GetAccountBalance(const Model::GetAccountBalanceRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetAccountBalance that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetAccountBalanceRequestT = Model::GetAccountBalanceRequest>
-        Model::GetAccountBalanceOutcomeCallable GetAccountBalanceCallable(const GetAccountBalanceRequestT& request) const
+        Model::GetAccountBalanceOutcomeCallable GetAccountBalanceCallable(const GetAccountBalanceRequestT& request = {}) const
         {
             return SubmitCallable(&MTurkClient::GetAccountBalance, request);
         }
@@ -532,7 +535,7 @@ namespace MTurk
          * An Async wrapper for GetAccountBalance that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetAccountBalanceRequestT = Model::GetAccountBalanceRequest>
-        void GetAccountBalanceAsync(const GetAccountBalanceRequestT& request, const GetAccountBalanceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetAccountBalanceAsync(const GetAccountBalanceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetAccountBalanceRequestT& request = {}) const
         {
             return SubmitAsync(&MTurkClient::GetAccountBalance, request, handler, context);
         }
@@ -727,13 +730,13 @@ namespace MTurk
          * href="http://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/ListBonusPayments">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListBonusPaymentsOutcome ListBonusPayments(const Model::ListBonusPaymentsRequest& request) const;
+        virtual Model::ListBonusPaymentsOutcome ListBonusPayments(const Model::ListBonusPaymentsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListBonusPayments that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListBonusPaymentsRequestT = Model::ListBonusPaymentsRequest>
-        Model::ListBonusPaymentsOutcomeCallable ListBonusPaymentsCallable(const ListBonusPaymentsRequestT& request) const
+        Model::ListBonusPaymentsOutcomeCallable ListBonusPaymentsCallable(const ListBonusPaymentsRequestT& request = {}) const
         {
             return SubmitCallable(&MTurkClient::ListBonusPayments, request);
         }
@@ -742,7 +745,7 @@ namespace MTurk
          * An Async wrapper for ListBonusPayments that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListBonusPaymentsRequestT = Model::ListBonusPaymentsRequest>
-        void ListBonusPaymentsAsync(const ListBonusPaymentsRequestT& request, const ListBonusPaymentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListBonusPaymentsAsync(const ListBonusPaymentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListBonusPaymentsRequestT& request = {}) const
         {
             return SubmitAsync(&MTurkClient::ListBonusPayments, request, handler, context);
         }
@@ -755,13 +758,13 @@ namespace MTurk
          * href="http://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/ListHITs">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListHITsOutcome ListHITs(const Model::ListHITsRequest& request) const;
+        virtual Model::ListHITsOutcome ListHITs(const Model::ListHITsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListHITs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListHITsRequestT = Model::ListHITsRequest>
-        Model::ListHITsOutcomeCallable ListHITsCallable(const ListHITsRequestT& request) const
+        Model::ListHITsOutcomeCallable ListHITsCallable(const ListHITsRequestT& request = {}) const
         {
             return SubmitCallable(&MTurkClient::ListHITs, request);
         }
@@ -770,7 +773,7 @@ namespace MTurk
          * An Async wrapper for ListHITs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListHITsRequestT = Model::ListHITsRequest>
-        void ListHITsAsync(const ListHITsRequestT& request, const ListHITsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListHITsAsync(const ListHITsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListHITsRequestT& request = {}) const
         {
             return SubmitAsync(&MTurkClient::ListHITs, request, handler, context);
         }
@@ -813,13 +816,13 @@ namespace MTurk
          * href="http://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/ListQualificationRequests">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListQualificationRequestsOutcome ListQualificationRequests(const Model::ListQualificationRequestsRequest& request) const;
+        virtual Model::ListQualificationRequestsOutcome ListQualificationRequests(const Model::ListQualificationRequestsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListQualificationRequests that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListQualificationRequestsRequestT = Model::ListQualificationRequestsRequest>
-        Model::ListQualificationRequestsOutcomeCallable ListQualificationRequestsCallable(const ListQualificationRequestsRequestT& request) const
+        Model::ListQualificationRequestsOutcomeCallable ListQualificationRequestsCallable(const ListQualificationRequestsRequestT& request = {}) const
         {
             return SubmitCallable(&MTurkClient::ListQualificationRequests, request);
         }
@@ -828,7 +831,7 @@ namespace MTurk
          * An Async wrapper for ListQualificationRequests that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListQualificationRequestsRequestT = Model::ListQualificationRequestsRequest>
-        void ListQualificationRequestsAsync(const ListQualificationRequestsRequestT& request, const ListQualificationRequestsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListQualificationRequestsAsync(const ListQualificationRequestsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListQualificationRequestsRequestT& request = {}) const
         {
             return SubmitAsync(&MTurkClient::ListQualificationRequests, request, handler, context);
         }
@@ -897,13 +900,13 @@ namespace MTurk
          * href="http://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/ListReviewableHITs">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListReviewableHITsOutcome ListReviewableHITs(const Model::ListReviewableHITsRequest& request) const;
+        virtual Model::ListReviewableHITsOutcome ListReviewableHITs(const Model::ListReviewableHITsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListReviewableHITs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListReviewableHITsRequestT = Model::ListReviewableHITsRequest>
-        Model::ListReviewableHITsOutcomeCallable ListReviewableHITsCallable(const ListReviewableHITsRequestT& request) const
+        Model::ListReviewableHITsOutcomeCallable ListReviewableHITsCallable(const ListReviewableHITsRequestT& request = {}) const
         {
             return SubmitCallable(&MTurkClient::ListReviewableHITs, request);
         }
@@ -912,7 +915,7 @@ namespace MTurk
          * An Async wrapper for ListReviewableHITs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListReviewableHITsRequestT = Model::ListReviewableHITsRequest>
-        void ListReviewableHITsAsync(const ListReviewableHITsRequestT& request, const ListReviewableHITsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListReviewableHITsAsync(const ListReviewableHITsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListReviewableHITsRequestT& request = {}) const
         {
             return SubmitAsync(&MTurkClient::ListReviewableHITs, request, handler, context);
         }
@@ -923,13 +926,13 @@ namespace MTurk
          * href="http://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/ListWorkerBlocks">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListWorkerBlocksOutcome ListWorkerBlocks(const Model::ListWorkerBlocksRequest& request) const;
+        virtual Model::ListWorkerBlocksOutcome ListWorkerBlocks(const Model::ListWorkerBlocksRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListWorkerBlocks that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListWorkerBlocksRequestT = Model::ListWorkerBlocksRequest>
-        Model::ListWorkerBlocksOutcomeCallable ListWorkerBlocksCallable(const ListWorkerBlocksRequestT& request) const
+        Model::ListWorkerBlocksOutcomeCallable ListWorkerBlocksCallable(const ListWorkerBlocksRequestT& request = {}) const
         {
             return SubmitCallable(&MTurkClient::ListWorkerBlocks, request);
         }
@@ -938,7 +941,7 @@ namespace MTurk
          * An Async wrapper for ListWorkerBlocks that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListWorkerBlocksRequestT = Model::ListWorkerBlocksRequest>
-        void ListWorkerBlocksAsync(const ListWorkerBlocksRequestT& request, const ListWorkerBlocksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListWorkerBlocksAsync(const ListWorkerBlocksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListWorkerBlocksRequestT& request = {}) const
         {
             return SubmitAsync(&MTurkClient::ListWorkerBlocks, request, handler, context);
         }
@@ -1300,7 +1303,6 @@ namespace MTurk
       void init(const MTurkClientConfiguration& clientConfiguration);
 
       MTurkClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<MTurkEndpointProviderBase> m_endpointProvider;
   };
 

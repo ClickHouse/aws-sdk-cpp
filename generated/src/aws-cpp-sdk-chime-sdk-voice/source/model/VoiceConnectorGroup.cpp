@@ -18,23 +18,7 @@ namespace ChimeSDKVoice
 namespace Model
 {
 
-VoiceConnectorGroup::VoiceConnectorGroup() : 
-    m_voiceConnectorGroupIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_voiceConnectorItemsHasBeenSet(false),
-    m_createdTimestampHasBeenSet(false),
-    m_updatedTimestampHasBeenSet(false),
-    m_voiceConnectorGroupArnHasBeenSet(false)
-{
-}
-
-VoiceConnectorGroup::VoiceConnectorGroup(JsonView jsonValue) : 
-    m_voiceConnectorGroupIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_voiceConnectorItemsHasBeenSet(false),
-    m_createdTimestampHasBeenSet(false),
-    m_updatedTimestampHasBeenSet(false),
-    m_voiceConnectorGroupArnHasBeenSet(false)
+VoiceConnectorGroup::VoiceConnectorGroup(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,17 +28,13 @@ VoiceConnectorGroup& VoiceConnectorGroup::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("VoiceConnectorGroupId"))
   {
     m_voiceConnectorGroupId = jsonValue.GetString("VoiceConnectorGroupId");
-
     m_voiceConnectorGroupIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VoiceConnectorItems"))
   {
     Aws::Utils::Array<JsonView> voiceConnectorItemsJsonList = jsonValue.GetArray("VoiceConnectorItems");
@@ -64,28 +44,21 @@ VoiceConnectorGroup& VoiceConnectorGroup::operator =(JsonView jsonValue)
     }
     m_voiceConnectorItemsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatedTimestamp"))
   {
     m_createdTimestamp = jsonValue.GetString("CreatedTimestamp");
-
     m_createdTimestampHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UpdatedTimestamp"))
   {
     m_updatedTimestamp = jsonValue.GetString("UpdatedTimestamp");
-
     m_updatedTimestampHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VoiceConnectorGroupArn"))
   {
     m_voiceConnectorGroupArn = jsonValue.GetString("VoiceConnectorGroupArn");
-
     m_voiceConnectorGroupArnHasBeenSet = true;
   }
-
   return *this;
 }
 

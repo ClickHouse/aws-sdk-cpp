@@ -30,12 +30,13 @@ namespace Model
   class ATIModelPerformance
   {
   public:
-    AWS_FRAUDDETECTOR_API ATIModelPerformance();
+    AWS_FRAUDDETECTOR_API ATIModelPerformance() = default;
     AWS_FRAUDDETECTOR_API ATIModelPerformance(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API ATIModelPerformance& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The anomaly separation index (ASI) score. This metric summarizes the overall
      * ability of the model to separate anomalous activities from the normal behavior.
@@ -45,44 +46,14 @@ namespace Model
      * model with a high separability power will have the highest possible ASI score of
      * 1.0 </p>
      */
-    inline double GetAsi() const{ return m_asi; }
-
-    /**
-     * <p> The anomaly separation index (ASI) score. This metric summarizes the overall
-     * ability of the model to separate anomalous activities from the normal behavior.
-     * Depending on the business, a large fraction of these anomalous activities can be
-     * malicious and correspond to the account takeover attacks. A model with no
-     * separability power will have the lowest possible ASI score of 0.5, whereas the a
-     * model with a high separability power will have the highest possible ASI score of
-     * 1.0 </p>
-     */
+    inline double GetAsi() const { return m_asi; }
     inline bool AsiHasBeenSet() const { return m_asiHasBeenSet; }
-
-    /**
-     * <p> The anomaly separation index (ASI) score. This metric summarizes the overall
-     * ability of the model to separate anomalous activities from the normal behavior.
-     * Depending on the business, a large fraction of these anomalous activities can be
-     * malicious and correspond to the account takeover attacks. A model with no
-     * separability power will have the lowest possible ASI score of 0.5, whereas the a
-     * model with a high separability power will have the highest possible ASI score of
-     * 1.0 </p>
-     */
     inline void SetAsi(double value) { m_asiHasBeenSet = true; m_asi = value; }
-
-    /**
-     * <p> The anomaly separation index (ASI) score. This metric summarizes the overall
-     * ability of the model to separate anomalous activities from the normal behavior.
-     * Depending on the business, a large fraction of these anomalous activities can be
-     * malicious and correspond to the account takeover attacks. A model with no
-     * separability power will have the lowest possible ASI score of 0.5, whereas the a
-     * model with a high separability power will have the highest possible ASI score of
-     * 1.0 </p>
-     */
     inline ATIModelPerformance& WithAsi(double value) { SetAsi(value); return *this;}
-
+    ///@}
   private:
 
-    double m_asi;
+    double m_asi{0.0};
     bool m_asiHasBeenSet = false;
   };
 

@@ -12,11 +12,6 @@ using namespace Aws::CloudTrail::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetInsightSelectorsRequest::GetInsightSelectorsRequest() : 
-    m_trailNameHasBeenSet(false)
-{
-}
-
 Aws::String GetInsightSelectorsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -24,6 +19,12 @@ Aws::String GetInsightSelectorsRequest::SerializePayload() const
   if(m_trailNameHasBeenSet)
   {
    payload.WithString("TrailName", m_trailName);
+
+  }
+
+  if(m_eventDataStoreHasBeenSet)
+  {
+   payload.WithString("EventDataStore", m_eventDataStore);
 
   }
 

@@ -22,7 +22,7 @@ namespace Model
   class SendOTPMessageRequest : public PinpointRequest
   {
   public:
-    AWS_PINPOINT_API SendOTPMessageRequest();
+    AWS_PINPOINT_API SendOTPMessageRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,65 +33,27 @@ namespace Model
     AWS_PINPOINT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique ID of your Amazon Pinpoint application.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The unique ID of your Amazon Pinpoint application.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    SendOTPMessageRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID of your Amazon Pinpoint application.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The unique ID of your Amazon Pinpoint application.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The unique ID of your Amazon Pinpoint application.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The unique ID of your Amazon Pinpoint application.</p>
-     */
-    inline SendOTPMessageRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The unique ID of your Amazon Pinpoint application.</p>
-     */
-    inline SendOTPMessageRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of your Amazon Pinpoint application.</p>
-     */
-    inline SendOTPMessageRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     
-    inline const SendOTPMessageRequestParameters& GetSendOTPMessageRequestParameters() const{ return m_sendOTPMessageRequestParameters; }
-
-    
+    inline const SendOTPMessageRequestParameters& GetSendOTPMessageRequestParameters() const { return m_sendOTPMessageRequestParameters; }
     inline bool SendOTPMessageRequestParametersHasBeenSet() const { return m_sendOTPMessageRequestParametersHasBeenSet; }
-
-    
-    inline void SetSendOTPMessageRequestParameters(const SendOTPMessageRequestParameters& value) { m_sendOTPMessageRequestParametersHasBeenSet = true; m_sendOTPMessageRequestParameters = value; }
-
-    
-    inline void SetSendOTPMessageRequestParameters(SendOTPMessageRequestParameters&& value) { m_sendOTPMessageRequestParametersHasBeenSet = true; m_sendOTPMessageRequestParameters = std::move(value); }
-
-    
-    inline SendOTPMessageRequest& WithSendOTPMessageRequestParameters(const SendOTPMessageRequestParameters& value) { SetSendOTPMessageRequestParameters(value); return *this;}
-
-    
-    inline SendOTPMessageRequest& WithSendOTPMessageRequestParameters(SendOTPMessageRequestParameters&& value) { SetSendOTPMessageRequestParameters(std::move(value)); return *this;}
-
+    template<typename SendOTPMessageRequestParametersT = SendOTPMessageRequestParameters>
+    void SetSendOTPMessageRequestParameters(SendOTPMessageRequestParametersT&& value) { m_sendOTPMessageRequestParametersHasBeenSet = true; m_sendOTPMessageRequestParameters = std::forward<SendOTPMessageRequestParametersT>(value); }
+    template<typename SendOTPMessageRequestParametersT = SendOTPMessageRequestParameters>
+    SendOTPMessageRequest& WithSendOTPMessageRequestParameters(SendOTPMessageRequestParametersT&& value) { SetSendOTPMessageRequestParameters(std::forward<SendOTPMessageRequestParametersT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;

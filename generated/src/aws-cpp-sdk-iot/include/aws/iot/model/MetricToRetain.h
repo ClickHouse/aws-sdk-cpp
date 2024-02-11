@@ -33,83 +33,46 @@ namespace Model
   class MetricToRetain
   {
   public:
-    AWS_IOT_API MetricToRetain();
+    AWS_IOT_API MetricToRetain() = default;
     AWS_IOT_API MetricToRetain(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API MetricToRetain& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>What is measured by the behavior.</p>
      */
-    inline const Aws::String& GetMetric() const{ return m_metric; }
-
-    /**
-     * <p>What is measured by the behavior.</p>
-     */
+    inline const Aws::String& GetMetric() const { return m_metric; }
     inline bool MetricHasBeenSet() const { return m_metricHasBeenSet; }
+    template<typename MetricT = Aws::String>
+    void SetMetric(MetricT&& value) { m_metricHasBeenSet = true; m_metric = std::forward<MetricT>(value); }
+    template<typename MetricT = Aws::String>
+    MetricToRetain& WithMetric(MetricT&& value) { SetMetric(std::forward<MetricT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>What is measured by the behavior.</p>
-     */
-    inline void SetMetric(const Aws::String& value) { m_metricHasBeenSet = true; m_metric = value; }
-
-    /**
-     * <p>What is measured by the behavior.</p>
-     */
-    inline void SetMetric(Aws::String&& value) { m_metricHasBeenSet = true; m_metric = std::move(value); }
-
-    /**
-     * <p>What is measured by the behavior.</p>
-     */
-    inline void SetMetric(const char* value) { m_metricHasBeenSet = true; m_metric.assign(value); }
-
-    /**
-     * <p>What is measured by the behavior.</p>
-     */
-    inline MetricToRetain& WithMetric(const Aws::String& value) { SetMetric(value); return *this;}
-
-    /**
-     * <p>What is measured by the behavior.</p>
-     */
-    inline MetricToRetain& WithMetric(Aws::String&& value) { SetMetric(std::move(value)); return *this;}
-
-    /**
-     * <p>What is measured by the behavior.</p>
-     */
-    inline MetricToRetain& WithMetric(const char* value) { SetMetric(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The dimension of a metric. This can't be used with custom metrics.</p>
      */
-    inline const MetricDimension& GetMetricDimension() const{ return m_metricDimension; }
-
-    /**
-     * <p>The dimension of a metric. This can't be used with custom metrics.</p>
-     */
+    inline const MetricDimension& GetMetricDimension() const { return m_metricDimension; }
     inline bool MetricDimensionHasBeenSet() const { return m_metricDimensionHasBeenSet; }
+    template<typename MetricDimensionT = MetricDimension>
+    void SetMetricDimension(MetricDimensionT&& value) { m_metricDimensionHasBeenSet = true; m_metricDimension = std::forward<MetricDimensionT>(value); }
+    template<typename MetricDimensionT = MetricDimension>
+    MetricToRetain& WithMetricDimension(MetricDimensionT&& value) { SetMetricDimension(std::forward<MetricDimensionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The dimension of a metric. This can't be used with custom metrics.</p>
+     * <p>The value indicates exporting metrics related to the <code>MetricToRetain
+     * </code> when it's true.</p>
      */
-    inline void SetMetricDimension(const MetricDimension& value) { m_metricDimensionHasBeenSet = true; m_metricDimension = value; }
-
-    /**
-     * <p>The dimension of a metric. This can't be used with custom metrics.</p>
-     */
-    inline void SetMetricDimension(MetricDimension&& value) { m_metricDimensionHasBeenSet = true; m_metricDimension = std::move(value); }
-
-    /**
-     * <p>The dimension of a metric. This can't be used with custom metrics.</p>
-     */
-    inline MetricToRetain& WithMetricDimension(const MetricDimension& value) { SetMetricDimension(value); return *this;}
-
-    /**
-     * <p>The dimension of a metric. This can't be used with custom metrics.</p>
-     */
-    inline MetricToRetain& WithMetricDimension(MetricDimension&& value) { SetMetricDimension(std::move(value)); return *this;}
-
+    inline bool GetExportMetric() const { return m_exportMetric; }
+    inline bool ExportMetricHasBeenSet() const { return m_exportMetricHasBeenSet; }
+    inline void SetExportMetric(bool value) { m_exportMetricHasBeenSet = true; m_exportMetric = value; }
+    inline MetricToRetain& WithExportMetric(bool value) { SetExportMetric(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_metric;
@@ -117,6 +80,9 @@ namespace Model
 
     MetricDimension m_metricDimension;
     bool m_metricDimensionHasBeenSet = false;
+
+    bool m_exportMetric{false};
+    bool m_exportMetricHasBeenSet = false;
   };
 
 } // namespace Model

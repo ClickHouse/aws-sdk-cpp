@@ -12,14 +12,6 @@ using namespace Aws::Rekognition::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DetectModerationLabelsRequest::DetectModerationLabelsRequest() : 
-    m_imageHasBeenSet(false),
-    m_minConfidence(0.0),
-    m_minConfidenceHasBeenSet(false),
-    m_humanLoopConfigHasBeenSet(false)
-{
-}
-
 Aws::String DetectModerationLabelsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,6 +31,12 @@ Aws::String DetectModerationLabelsRequest::SerializePayload() const
   if(m_humanLoopConfigHasBeenSet)
   {
    payload.WithObject("HumanLoopConfig", m_humanLoopConfig.Jsonize());
+
+  }
+
+  if(m_projectVersionHasBeenSet)
+  {
+   payload.WithString("ProjectVersion", m_projectVersion);
 
   }
 

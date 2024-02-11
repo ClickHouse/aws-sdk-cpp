@@ -22,7 +22,7 @@ namespace Model
   class ListArchivesRequest : public EventBridgeRequest
   {
   public:
-    AWS_EVENTBRIDGE_API ListArchivesRequest();
+    AWS_EVENTBRIDGE_API ListArchivesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,196 +35,67 @@ namespace Model
     AWS_EVENTBRIDGE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>A name prefix to filter the archives returned. Only archives with name that
      * match the prefix are returned.</p>
      */
-    inline const Aws::String& GetNamePrefix() const{ return m_namePrefix; }
-
-    /**
-     * <p>A name prefix to filter the archives returned. Only archives with name that
-     * match the prefix are returned.</p>
-     */
+    inline const Aws::String& GetNamePrefix() const { return m_namePrefix; }
     inline bool NamePrefixHasBeenSet() const { return m_namePrefixHasBeenSet; }
+    template<typename NamePrefixT = Aws::String>
+    void SetNamePrefix(NamePrefixT&& value) { m_namePrefixHasBeenSet = true; m_namePrefix = std::forward<NamePrefixT>(value); }
+    template<typename NamePrefixT = Aws::String>
+    ListArchivesRequest& WithNamePrefix(NamePrefixT&& value) { SetNamePrefix(std::forward<NamePrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A name prefix to filter the archives returned. Only archives with name that
-     * match the prefix are returned.</p>
-     */
-    inline void SetNamePrefix(const Aws::String& value) { m_namePrefixHasBeenSet = true; m_namePrefix = value; }
-
-    /**
-     * <p>A name prefix to filter the archives returned. Only archives with name that
-     * match the prefix are returned.</p>
-     */
-    inline void SetNamePrefix(Aws::String&& value) { m_namePrefixHasBeenSet = true; m_namePrefix = std::move(value); }
-
-    /**
-     * <p>A name prefix to filter the archives returned. Only archives with name that
-     * match the prefix are returned.</p>
-     */
-    inline void SetNamePrefix(const char* value) { m_namePrefixHasBeenSet = true; m_namePrefix.assign(value); }
-
-    /**
-     * <p>A name prefix to filter the archives returned. Only archives with name that
-     * match the prefix are returned.</p>
-     */
-    inline ListArchivesRequest& WithNamePrefix(const Aws::String& value) { SetNamePrefix(value); return *this;}
-
-    /**
-     * <p>A name prefix to filter the archives returned. Only archives with name that
-     * match the prefix are returned.</p>
-     */
-    inline ListArchivesRequest& WithNamePrefix(Aws::String&& value) { SetNamePrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>A name prefix to filter the archives returned. Only archives with name that
-     * match the prefix are returned.</p>
-     */
-    inline ListArchivesRequest& WithNamePrefix(const char* value) { SetNamePrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the event source associated with the archive.</p>
      */
-    inline const Aws::String& GetEventSourceArn() const{ return m_eventSourceArn; }
-
-    /**
-     * <p>The ARN of the event source associated with the archive.</p>
-     */
+    inline const Aws::String& GetEventSourceArn() const { return m_eventSourceArn; }
     inline bool EventSourceArnHasBeenSet() const { return m_eventSourceArnHasBeenSet; }
+    template<typename EventSourceArnT = Aws::String>
+    void SetEventSourceArn(EventSourceArnT&& value) { m_eventSourceArnHasBeenSet = true; m_eventSourceArn = std::forward<EventSourceArnT>(value); }
+    template<typename EventSourceArnT = Aws::String>
+    ListArchivesRequest& WithEventSourceArn(EventSourceArnT&& value) { SetEventSourceArn(std::forward<EventSourceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the event source associated with the archive.</p>
-     */
-    inline void SetEventSourceArn(const Aws::String& value) { m_eventSourceArnHasBeenSet = true; m_eventSourceArn = value; }
-
-    /**
-     * <p>The ARN of the event source associated with the archive.</p>
-     */
-    inline void SetEventSourceArn(Aws::String&& value) { m_eventSourceArnHasBeenSet = true; m_eventSourceArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the event source associated with the archive.</p>
-     */
-    inline void SetEventSourceArn(const char* value) { m_eventSourceArnHasBeenSet = true; m_eventSourceArn.assign(value); }
-
-    /**
-     * <p>The ARN of the event source associated with the archive.</p>
-     */
-    inline ListArchivesRequest& WithEventSourceArn(const Aws::String& value) { SetEventSourceArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the event source associated with the archive.</p>
-     */
-    inline ListArchivesRequest& WithEventSourceArn(Aws::String&& value) { SetEventSourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the event source associated with the archive.</p>
-     */
-    inline ListArchivesRequest& WithEventSourceArn(const char* value) { SetEventSourceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the archive.</p>
      */
-    inline const ArchiveState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state of the archive.</p>
-     */
+    inline ArchiveState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(ArchiveState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline ListArchivesRequest& WithState(ArchiveState value) { SetState(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The state of the archive.</p>
+     * <p>The token returned by a previous call, which you can use to retrieve the next
+     * set of results.</p> <p>The value of <code>nextToken</code> is a unique
+     * pagination token for each page. To retrieve the next page of results, make the
+     * call again using the returned token. Keep all other arguments unchanged.</p> <p>
+     * Using an expired pagination token results in an <code>HTTP 400
+     * InvalidToken</code> error.</p>
      */
-    inline void SetState(const ArchiveState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state of the archive.</p>
-     */
-    inline void SetState(ArchiveState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state of the archive.</p>
-     */
-    inline ListArchivesRequest& WithState(const ArchiveState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the archive.</p>
-     */
-    inline ListArchivesRequest& WithState(ArchiveState&& value) { SetState(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The token returned by a previous call to retrieve the next set of
-     * results.</p>
-     */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token returned by a previous call to retrieve the next set of
-     * results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListArchivesRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token returned by a previous call to retrieve the next set of
-     * results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token returned by a previous call to retrieve the next set of
-     * results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token returned by a previous call to retrieve the next set of
-     * results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token returned by a previous call to retrieve the next set of
-     * results.</p>
-     */
-    inline ListArchivesRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token returned by a previous call to retrieve the next set of
-     * results.</p>
-     */
-    inline ListArchivesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token returned by a previous call to retrieve the next set of
-     * results.</p>
-     */
-    inline ListArchivesRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to return.</p>
      */
-    inline int GetLimit() const{ return m_limit; }
-
-    /**
-     * <p>The maximum number of results to return.</p>
-     */
+    inline int GetLimit() const { return m_limit; }
     inline bool LimitHasBeenSet() const { return m_limitHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return.</p>
-     */
     inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
-
-    /**
-     * <p>The maximum number of results to return.</p>
-     */
     inline ListArchivesRequest& WithLimit(int value) { SetLimit(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_namePrefix;
@@ -233,13 +104,13 @@ namespace Model
     Aws::String m_eventSourceArn;
     bool m_eventSourceArnHasBeenSet = false;
 
-    ArchiveState m_state;
+    ArchiveState m_state{ArchiveState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_limit;
+    int m_limit{0};
     bool m_limitHasBeenSet = false;
   };
 

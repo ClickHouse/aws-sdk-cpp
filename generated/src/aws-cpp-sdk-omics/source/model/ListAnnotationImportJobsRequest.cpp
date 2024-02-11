@@ -15,24 +15,9 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListAnnotationImportJobsRequest::ListAnnotationImportJobsRequest() : 
-    m_filterHasBeenSet(false),
-    m_idsHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListAnnotationImportJobsRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_filterHasBeenSet)
-  {
-   payload.WithObject("filter", m_filter.Jsonize());
-
-  }
 
   if(m_idsHasBeenSet)
   {
@@ -42,6 +27,12 @@ Aws::String ListAnnotationImportJobsRequest::SerializePayload() const
      idsJsonList[idsIndex].AsString(m_ids[idsIndex]);
    }
    payload.WithArray("ids", std::move(idsJsonList));
+
+  }
+
+  if(m_filterHasBeenSet)
+  {
+   payload.WithObject("filter", m_filter.Jsonize());
 
   }
 

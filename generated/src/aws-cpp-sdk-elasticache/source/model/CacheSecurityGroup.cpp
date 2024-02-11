@@ -20,21 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-CacheSecurityGroup::CacheSecurityGroup() : 
-    m_ownerIdHasBeenSet(false),
-    m_cacheSecurityGroupNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_eC2SecurityGroupsHasBeenSet(false),
-    m_aRNHasBeenSet(false)
-{
-}
-
-CacheSecurityGroup::CacheSecurityGroup(const XmlNode& xmlNode) : 
-    m_ownerIdHasBeenSet(false),
-    m_cacheSecurityGroupNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_eC2SecurityGroupsHasBeenSet(false),
-    m_aRNHasBeenSet(false)
+CacheSecurityGroup::CacheSecurityGroup(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -67,6 +53,7 @@ CacheSecurityGroup& CacheSecurityGroup::operator =(const XmlNode& xmlNode)
     if(!eC2SecurityGroupsNode.IsNull())
     {
       XmlNode eC2SecurityGroupsMember = eC2SecurityGroupsNode.FirstChild("EC2SecurityGroup");
+      m_eC2SecurityGroupsHasBeenSet = !eC2SecurityGroupsMember.IsNull();
       while(!eC2SecurityGroupsMember.IsNull())
       {
         m_eC2SecurityGroups.push_back(eC2SecurityGroupsMember);
@@ -109,7 +96,7 @@ void CacheSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* locat
       for(auto& item : m_eC2SecurityGroups)
       {
         Aws::StringStream eC2SecurityGroupsSs;
-        eC2SecurityGroupsSs << location << index << locationValue << ".EC2SecurityGroup." << eC2SecurityGroupsIdx++;
+        eC2SecurityGroupsSs << location << index << locationValue << ".EC2SecurityGroups.EC2SecurityGroup." << eC2SecurityGroupsIdx++;
         item.OutputToStream(oStream, eC2SecurityGroupsSs.str().c_str());
       }
   }
@@ -141,7 +128,7 @@ void CacheSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* locat
       for(auto& item : m_eC2SecurityGroups)
       {
         Aws::StringStream eC2SecurityGroupsSs;
-        eC2SecurityGroupsSs << location <<  ".EC2SecurityGroup." << eC2SecurityGroupsIdx++;
+        eC2SecurityGroupsSs << location << ".EC2SecurityGroups.EC2SecurityGroup." << eC2SecurityGroupsIdx++;
         item.OutputToStream(oStream, eC2SecurityGroupsSs.str().c_str());
       }
   }

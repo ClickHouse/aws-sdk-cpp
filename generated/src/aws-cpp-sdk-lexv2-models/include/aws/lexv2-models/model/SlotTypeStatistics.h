@@ -30,39 +30,25 @@ namespace Model
   class SlotTypeStatistics
   {
   public:
-    AWS_LEXMODELSV2_API SlotTypeStatistics();
+    AWS_LEXMODELSV2_API SlotTypeStatistics() = default;
     AWS_LEXMODELSV2_API SlotTypeStatistics(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API SlotTypeStatistics& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of recommended slot types associated with the bot
      * recommendation.</p>
      */
-    inline int GetDiscoveredSlotTypeCount() const{ return m_discoveredSlotTypeCount; }
-
-    /**
-     * <p>The number of recommended slot types associated with the bot
-     * recommendation.</p>
-     */
+    inline int GetDiscoveredSlotTypeCount() const { return m_discoveredSlotTypeCount; }
     inline bool DiscoveredSlotTypeCountHasBeenSet() const { return m_discoveredSlotTypeCountHasBeenSet; }
-
-    /**
-     * <p>The number of recommended slot types associated with the bot
-     * recommendation.</p>
-     */
     inline void SetDiscoveredSlotTypeCount(int value) { m_discoveredSlotTypeCountHasBeenSet = true; m_discoveredSlotTypeCount = value; }
-
-    /**
-     * <p>The number of recommended slot types associated with the bot
-     * recommendation.</p>
-     */
     inline SlotTypeStatistics& WithDiscoveredSlotTypeCount(int value) { SetDiscoveredSlotTypeCount(value); return *this;}
-
+    ///@}
   private:
 
-    int m_discoveredSlotTypeCount;
+    int m_discoveredSlotTypeCount{0};
     bool m_discoveredSlotTypeCountHasBeenSet = false;
   };
 

@@ -18,23 +18,7 @@ namespace Inspector2
 namespace Model
 {
 
-ResourceStatus::ResourceStatus() : 
-    m_ec2(Status::NOT_SET),
-    m_ec2HasBeenSet(false),
-    m_ecr(Status::NOT_SET),
-    m_ecrHasBeenSet(false),
-    m_lambda(Status::NOT_SET),
-    m_lambdaHasBeenSet(false)
-{
-}
-
-ResourceStatus::ResourceStatus(JsonView jsonValue) : 
-    m_ec2(Status::NOT_SET),
-    m_ec2HasBeenSet(false),
-    m_ecr(Status::NOT_SET),
-    m_ecrHasBeenSet(false),
-    m_lambda(Status::NOT_SET),
-    m_lambdaHasBeenSet(false)
+ResourceStatus::ResourceStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,24 +28,28 @@ ResourceStatus& ResourceStatus::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ec2"))
   {
     m_ec2 = StatusMapper::GetStatusForName(jsonValue.GetString("ec2"));
-
     m_ec2HasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ecr"))
   {
     m_ecr = StatusMapper::GetStatusForName(jsonValue.GetString("ecr"));
-
     m_ecrHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lambda"))
   {
     m_lambda = StatusMapper::GetStatusForName(jsonValue.GetString("lambda"));
-
     m_lambdaHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("lambdaCode"))
+  {
+    m_lambdaCode = StatusMapper::GetStatusForName(jsonValue.GetString("lambdaCode"));
+    m_lambdaCodeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("codeRepository"))
+  {
+    m_codeRepository = StatusMapper::GetStatusForName(jsonValue.GetString("codeRepository"));
+    m_codeRepositoryHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -82,6 +70,16 @@ JsonValue ResourceStatus::Jsonize() const
   if(m_lambdaHasBeenSet)
   {
    payload.WithString("lambda", StatusMapper::GetNameForStatus(m_lambda));
+  }
+
+  if(m_lambdaCodeHasBeenSet)
+  {
+   payload.WithString("lambdaCode", StatusMapper::GetNameForStatus(m_lambdaCode));
+  }
+
+  if(m_codeRepositoryHasBeenSet)
+  {
+   payload.WithString("codeRepository", StatusMapper::GetNameForStatus(m_codeRepository));
   }
 
   return payload;

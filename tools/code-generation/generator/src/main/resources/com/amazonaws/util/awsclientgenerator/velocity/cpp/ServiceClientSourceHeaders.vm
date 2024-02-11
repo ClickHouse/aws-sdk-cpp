@@ -1,10 +1,17 @@
-#set($hasEventStream = false)
+#set($hasEventStreamResult = false)
+#set($hasEventStreamRequest = false)
 #foreach($operation in $serviceModel.operations)
 #if($operation.result.shape.hasEventStreamMembers())
-    #set($hasEventStream = true)
+#set($hasEventStreamResult = true)
+#end
+#if($operation.request.shape.hasEventStreamMembers())
+#set($hasEventStreamRequest = true)
 #end
 #end
-#if($hasEventStream)
+#if($hasEventStreamResult)
+#if($hasEventStreamRequest)
+\#include <aws/core/client/AWSClientEventStreamingAsyncTask.h>
+#end
 \#include <aws/core/utils/event/EventStream.h>
 #end
 #if($arnEndpointSupported || $metadata.hasEndpointDiscoveryTrait)
@@ -31,6 +38,27 @@
 \#include <aws/${metadata.projectName}/model/${operation.request.shape.name}.h>
 #end
 #end
+#if($serviceModel.metadata.serviceId == "S3")
+#if(!$serviceModel.isUseSmithyClient())
+\#include <aws/${metadata.projectName}/S3ExpressSignerProvider.h>
+#else
+\#include <smithy/identity/auth/built-in/SigV4AuthScheme.h>
+\#include <aws/${metadata.projectName}/S3ExpressIdentityProvider.h>
+\#include <aws/$metadata.projectName/S3ExpressSigV4AuthScheme.h>
+\#include <aws/$metadata.projectName/S3ExpressSigner.h>
+\#include <aws/$metadata.projectName/S3ExpressSigV4AuthSchemeOption.h>
+\#include <aws/$metadata.projectName/S3ExpressAuthSchemeResolver.h>
+#end
+#end
+#if($serviceModel.metadata.namespace == "S3Crt")
+\#include <aws/s3-crt/S3CrtIdentityProviderAdapter.h>
+#if($serviceModel.isUseSmithyClient())
+\#include <smithy/client/AwsSmithyClientAsyncRequestContext.h>
+#end
+#end
+
+\#include <smithy/tracing/TracingUtils.h>
+
 #if($serviceModel.metadata.namespace == "S3Crt")
 \#include <aws/core/Version.h>
 \#include <aws/core/platform/OSVersionInfo.h>
@@ -39,6 +67,7 @@
 \#include <aws/crt/Types.h>
 \#include <aws/crt/auth/Credentials.h>
 \#include <aws/crt/http/HttpRequestResponse.h>
+\#include <aws/crt/http/HttpProxyStrategy.h>
 \#include <aws/crt/io/Stream.h>
 \#include <aws/crt/io/Uri.h>
 \#include <aws/http/request_response.h>

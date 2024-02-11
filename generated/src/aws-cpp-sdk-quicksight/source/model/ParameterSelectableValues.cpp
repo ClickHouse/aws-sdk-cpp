@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-ParameterSelectableValues::ParameterSelectableValues() : 
-    m_valuesHasBeenSet(false),
-    m_linkToDataSetColumnHasBeenSet(false)
-{
-}
-
-ParameterSelectableValues::ParameterSelectableValues(JsonView jsonValue) : 
-    m_valuesHasBeenSet(false),
-    m_linkToDataSetColumnHasBeenSet(false)
+ParameterSelectableValues::ParameterSelectableValues(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ ParameterSelectableValues& ParameterSelectableValues::operator =(JsonView jsonVa
     }
     m_valuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LinkToDataSetColumn"))
   {
     m_linkToDataSetColumn = jsonValue.GetObject("LinkToDataSetColumn");
-
     m_linkToDataSetColumnHasBeenSet = true;
   }
-
   return *this;
 }
 

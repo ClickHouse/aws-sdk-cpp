@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-VpcClassicLink::VpcClassicLink() : 
-    m_classicLinkEnabled(false),
-    m_classicLinkEnabledHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
-{
-}
-
-VpcClassicLink::VpcClassicLink(const XmlNode& xmlNode) : 
-    m_classicLinkEnabled(false),
-    m_classicLinkEnabledHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
+VpcClassicLink::VpcClassicLink(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -53,6 +41,7 @@ VpcClassicLink& VpcClassicLink::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -109,7 +98,7 @@ void VpcClassicLink::OutputToStream(Aws::OStream& oStream, const char* location)
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

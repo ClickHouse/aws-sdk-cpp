@@ -20,63 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-Stack::Stack() : 
-    m_stackIdHasBeenSet(false),
-    m_stackNameHasBeenSet(false),
-    m_changeSetIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_deletionTimeHasBeenSet(false),
-    m_lastUpdatedTimeHasBeenSet(false),
-    m_rollbackConfigurationHasBeenSet(false),
-    m_stackStatus(StackStatus::NOT_SET),
-    m_stackStatusHasBeenSet(false),
-    m_stackStatusReasonHasBeenSet(false),
-    m_disableRollback(false),
-    m_disableRollbackHasBeenSet(false),
-    m_notificationARNsHasBeenSet(false),
-    m_timeoutInMinutes(0),
-    m_timeoutInMinutesHasBeenSet(false),
-    m_capabilitiesHasBeenSet(false),
-    m_outputsHasBeenSet(false),
-    m_roleARNHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_enableTerminationProtection(false),
-    m_enableTerminationProtectionHasBeenSet(false),
-    m_parentIdHasBeenSet(false),
-    m_rootIdHasBeenSet(false),
-    m_driftInformationHasBeenSet(false)
-{
-}
-
-Stack::Stack(const XmlNode& xmlNode) : 
-    m_stackIdHasBeenSet(false),
-    m_stackNameHasBeenSet(false),
-    m_changeSetIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_deletionTimeHasBeenSet(false),
-    m_lastUpdatedTimeHasBeenSet(false),
-    m_rollbackConfigurationHasBeenSet(false),
-    m_stackStatus(StackStatus::NOT_SET),
-    m_stackStatusHasBeenSet(false),
-    m_stackStatusReasonHasBeenSet(false),
-    m_disableRollback(false),
-    m_disableRollbackHasBeenSet(false),
-    m_notificationARNsHasBeenSet(false),
-    m_timeoutInMinutes(0),
-    m_timeoutInMinutesHasBeenSet(false),
-    m_capabilitiesHasBeenSet(false),
-    m_outputsHasBeenSet(false),
-    m_roleARNHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_enableTerminationProtection(false),
-    m_enableTerminationProtectionHasBeenSet(false),
-    m_parentIdHasBeenSet(false),
-    m_rootIdHasBeenSet(false),
-    m_driftInformationHasBeenSet(false)
+Stack::Stack(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -115,6 +59,7 @@ Stack& Stack::operator =(const XmlNode& xmlNode)
     if(!parametersNode.IsNull())
     {
       XmlNode parametersMember = parametersNode.FirstChild("member");
+      m_parametersHasBeenSet = !parametersMember.IsNull();
       while(!parametersMember.IsNull())
       {
         m_parameters.push_back(parametersMember);
@@ -150,7 +95,7 @@ Stack& Stack::operator =(const XmlNode& xmlNode)
     XmlNode stackStatusNode = resultNode.FirstChild("StackStatus");
     if(!stackStatusNode.IsNull())
     {
-      m_stackStatus = StackStatusMapper::GetStackStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stackStatusNode.GetText()).c_str()).c_str());
+      m_stackStatus = StackStatusMapper::GetStackStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stackStatusNode.GetText()).c_str()));
       m_stackStatusHasBeenSet = true;
     }
     XmlNode stackStatusReasonNode = resultNode.FirstChild("StackStatusReason");
@@ -169,6 +114,7 @@ Stack& Stack::operator =(const XmlNode& xmlNode)
     if(!notificationARNsNode.IsNull())
     {
       XmlNode notificationARNsMember = notificationARNsNode.FirstChild("member");
+      m_notificationARNsHasBeenSet = !notificationARNsMember.IsNull();
       while(!notificationARNsMember.IsNull())
       {
         m_notificationARNs.push_back(notificationARNsMember.GetText());
@@ -187,6 +133,7 @@ Stack& Stack::operator =(const XmlNode& xmlNode)
     if(!capabilitiesNode.IsNull())
     {
       XmlNode capabilitiesMember = capabilitiesNode.FirstChild("member");
+      m_capabilitiesHasBeenSet = !capabilitiesMember.IsNull();
       while(!capabilitiesMember.IsNull())
       {
         m_capabilities.push_back(CapabilityMapper::GetCapabilityForName(StringUtils::Trim(capabilitiesMember.GetText().c_str())));
@@ -199,6 +146,7 @@ Stack& Stack::operator =(const XmlNode& xmlNode)
     if(!outputsNode.IsNull())
     {
       XmlNode outputsMember = outputsNode.FirstChild("member");
+      m_outputsHasBeenSet = !outputsMember.IsNull();
       while(!outputsMember.IsNull())
       {
         m_outputs.push_back(outputsMember);
@@ -217,6 +165,7 @@ Stack& Stack::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("member");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -248,6 +197,24 @@ Stack& Stack::operator =(const XmlNode& xmlNode)
     {
       m_driftInformation = driftInformationNode;
       m_driftInformationHasBeenSet = true;
+    }
+    XmlNode retainExceptOnCreateNode = resultNode.FirstChild("RetainExceptOnCreate");
+    if(!retainExceptOnCreateNode.IsNull())
+    {
+      m_retainExceptOnCreate = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(retainExceptOnCreateNode.GetText()).c_str()).c_str());
+      m_retainExceptOnCreateHasBeenSet = true;
+    }
+    XmlNode deletionModeNode = resultNode.FirstChild("DeletionMode");
+    if(!deletionModeNode.IsNull())
+    {
+      m_deletionMode = DeletionModeMapper::GetDeletionModeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(deletionModeNode.GetText()).c_str()));
+      m_deletionModeHasBeenSet = true;
+    }
+    XmlNode detailedStatusNode = resultNode.FirstChild("DetailedStatus");
+    if(!detailedStatusNode.IsNull())
+    {
+      m_detailedStatus = DetailedStatusMapper::GetDetailedStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(detailedStatusNode.GetText()).c_str()));
+      m_detailedStatusHasBeenSet = true;
     }
   }
 
@@ -311,7 +278,7 @@ void Stack::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
 
   if(m_stackStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".StackStatus=" << StackStatusMapper::GetNameForStackStatus(m_stackStatus) << "&";
+      oStream << location << index << locationValue << ".StackStatus=" << StringUtils::URLEncode(StackStatusMapper::GetNameForStackStatus(m_stackStatus)) << "&";
   }
 
   if(m_stackStatusReasonHasBeenSet)
@@ -343,7 +310,7 @@ void Stack::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
       unsigned capabilitiesIdx = 1;
       for(auto& item : m_capabilities)
       {
-        oStream << location << index << locationValue << ".Capabilities.member." << capabilitiesIdx++ << "=" << CapabilityMapper::GetNameForCapability(item) << "&";
+        oStream << location << index << locationValue << ".Capabilities.member." << capabilitiesIdx++ << "=" << StringUtils::URLEncode(CapabilityMapper::GetNameForCapability(item)) << "&";
       }
   }
 
@@ -396,6 +363,21 @@ void Stack::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
       m_driftInformation.OutputToStream(oStream, driftInformationLocationAndMemberSs.str().c_str());
   }
 
+  if(m_retainExceptOnCreateHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".RetainExceptOnCreate=" << std::boolalpha << m_retainExceptOnCreate << "&";
+  }
+
+  if(m_deletionModeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".DeletionMode=" << StringUtils::URLEncode(DeletionModeMapper::GetNameForDeletionMode(m_deletionMode)) << "&";
+  }
+
+  if(m_detailedStatusHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".DetailedStatus=" << StringUtils::URLEncode(DetailedStatusMapper::GetNameForDetailedStatus(m_detailedStatus)) << "&";
+  }
+
 }
 
 void Stack::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -422,7 +404,7 @@ void Stack::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_parameters)
       {
         Aws::StringStream parametersSs;
-        parametersSs << location <<  ".Parameters.member." << parametersIdx++;
+        parametersSs << location << ".Parameters.member." << parametersIdx++;
         item.OutputToStream(oStream, parametersSs.str().c_str());
       }
   }
@@ -446,7 +428,7 @@ void Stack::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_stackStatusHasBeenSet)
   {
-      oStream << location << ".StackStatus=" << StackStatusMapper::GetNameForStackStatus(m_stackStatus) << "&";
+      oStream << location << ".StackStatus=" << StringUtils::URLEncode(StackStatusMapper::GetNameForStackStatus(m_stackStatus)) << "&";
   }
   if(m_stackStatusReasonHasBeenSet)
   {
@@ -473,7 +455,7 @@ void Stack::OutputToStream(Aws::OStream& oStream, const char* location) const
       unsigned capabilitiesIdx = 1;
       for(auto& item : m_capabilities)
       {
-        oStream << location << ".Capabilities.member." << capabilitiesIdx++ << "=" << CapabilityMapper::GetNameForCapability(item) << "&";
+        oStream << location << ".Capabilities.member." << capabilitiesIdx++ << "=" << StringUtils::URLEncode(CapabilityMapper::GetNameForCapability(item)) << "&";
       }
   }
   if(m_outputsHasBeenSet)
@@ -482,7 +464,7 @@ void Stack::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_outputs)
       {
         Aws::StringStream outputsSs;
-        outputsSs << location <<  ".Outputs.member." << outputsIdx++;
+        outputsSs << location << ".Outputs.member." << outputsIdx++;
         item.OutputToStream(oStream, outputsSs.str().c_str());
       }
   }
@@ -496,7 +478,7 @@ void Stack::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".Tags.member." << tagsIdx++;
+        tagsSs << location << ".Tags.member." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -517,6 +499,18 @@ void Stack::OutputToStream(Aws::OStream& oStream, const char* location) const
       Aws::String driftInformationLocationAndMember(location);
       driftInformationLocationAndMember += ".DriftInformation";
       m_driftInformation.OutputToStream(oStream, driftInformationLocationAndMember.c_str());
+  }
+  if(m_retainExceptOnCreateHasBeenSet)
+  {
+      oStream << location << ".RetainExceptOnCreate=" << std::boolalpha << m_retainExceptOnCreate << "&";
+  }
+  if(m_deletionModeHasBeenSet)
+  {
+      oStream << location << ".DeletionMode=" << StringUtils::URLEncode(DeletionModeMapper::GetNameForDeletionMode(m_deletionMode)) << "&";
+  }
+  if(m_detailedStatusHasBeenSet)
+  {
+      oStream << location << ".DetailedStatus=" << StringUtils::URLEncode(DetailedStatusMapper::GetNameForDetailedStatus(m_detailedStatus)) << "&";
   }
 }
 

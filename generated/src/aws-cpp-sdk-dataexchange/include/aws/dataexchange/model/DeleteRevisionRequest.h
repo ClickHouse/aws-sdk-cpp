@@ -21,7 +21,7 @@ namespace Model
   class DeleteRevisionRequest : public DataExchangeRequest
   {
   public:
-    AWS_DATAEXCHANGE_API DeleteRevisionRequest();
+    AWS_DATAEXCHANGE_API DeleteRevisionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_DATAEXCHANGE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier for a data set.</p>
      */
-    inline const Aws::String& GetDataSetId() const{ return m_dataSetId; }
-
-    /**
-     * <p>The unique identifier for a data set.</p>
-     */
+    inline const Aws::String& GetDataSetId() const { return m_dataSetId; }
     inline bool DataSetIdHasBeenSet() const { return m_dataSetIdHasBeenSet; }
+    template<typename DataSetIdT = Aws::String>
+    void SetDataSetId(DataSetIdT&& value) { m_dataSetIdHasBeenSet = true; m_dataSetId = std::forward<DataSetIdT>(value); }
+    template<typename DataSetIdT = Aws::String>
+    DeleteRevisionRequest& WithDataSetId(DataSetIdT&& value) { SetDataSetId(std::forward<DataSetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for a data set.</p>
-     */
-    inline void SetDataSetId(const Aws::String& value) { m_dataSetIdHasBeenSet = true; m_dataSetId = value; }
-
-    /**
-     * <p>The unique identifier for a data set.</p>
-     */
-    inline void SetDataSetId(Aws::String&& value) { m_dataSetIdHasBeenSet = true; m_dataSetId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for a data set.</p>
-     */
-    inline void SetDataSetId(const char* value) { m_dataSetIdHasBeenSet = true; m_dataSetId.assign(value); }
-
-    /**
-     * <p>The unique identifier for a data set.</p>
-     */
-    inline DeleteRevisionRequest& WithDataSetId(const Aws::String& value) { SetDataSetId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for a data set.</p>
-     */
-    inline DeleteRevisionRequest& WithDataSetId(Aws::String&& value) { SetDataSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for a data set.</p>
-     */
-    inline DeleteRevisionRequest& WithDataSetId(const char* value) { SetDataSetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for a revision.</p>
      */
-    inline const Aws::String& GetRevisionId() const{ return m_revisionId; }
-
-    /**
-     * <p>The unique identifier for a revision.</p>
-     */
+    inline const Aws::String& GetRevisionId() const { return m_revisionId; }
     inline bool RevisionIdHasBeenSet() const { return m_revisionIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier for a revision.</p>
-     */
-    inline void SetRevisionId(const Aws::String& value) { m_revisionIdHasBeenSet = true; m_revisionId = value; }
-
-    /**
-     * <p>The unique identifier for a revision.</p>
-     */
-    inline void SetRevisionId(Aws::String&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for a revision.</p>
-     */
-    inline void SetRevisionId(const char* value) { m_revisionIdHasBeenSet = true; m_revisionId.assign(value); }
-
-    /**
-     * <p>The unique identifier for a revision.</p>
-     */
-    inline DeleteRevisionRequest& WithRevisionId(const Aws::String& value) { SetRevisionId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for a revision.</p>
-     */
-    inline DeleteRevisionRequest& WithRevisionId(Aws::String&& value) { SetRevisionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for a revision.</p>
-     */
-    inline DeleteRevisionRequest& WithRevisionId(const char* value) { SetRevisionId(value); return *this;}
-
+    template<typename RevisionIdT = Aws::String>
+    void SetRevisionId(RevisionIdT&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::forward<RevisionIdT>(value); }
+    template<typename RevisionIdT = Aws::String>
+    DeleteRevisionRequest& WithRevisionId(RevisionIdT&& value) { SetRevisionId(std::forward<RevisionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dataSetId;

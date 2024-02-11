@@ -34,109 +34,41 @@ namespace Model
   class PrometheusInfo
   {
   public:
-    AWS_KAFKA_API PrometheusInfo();
+    AWS_KAFKA_API PrometheusInfo() = default;
     AWS_KAFKA_API PrometheusInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API PrometheusInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * 
             <p>Indicates whether you want to turn on or turn off the JMX
      * Exporter.</p>
          
      */
-    inline const JmxExporterInfo& GetJmxExporter() const{ return m_jmxExporter; }
-
-    /**
-     * 
-            <p>Indicates whether you want to turn on or turn off the JMX
-     * Exporter.</p>
-         
-     */
+    inline const JmxExporterInfo& GetJmxExporter() const { return m_jmxExporter; }
     inline bool JmxExporterHasBeenSet() const { return m_jmxExporterHasBeenSet; }
+    template<typename JmxExporterT = JmxExporterInfo>
+    void SetJmxExporter(JmxExporterT&& value) { m_jmxExporterHasBeenSet = true; m_jmxExporter = std::forward<JmxExporterT>(value); }
+    template<typename JmxExporterT = JmxExporterInfo>
+    PrometheusInfo& WithJmxExporter(JmxExporterT&& value) { SetJmxExporter(std::forward<JmxExporterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>Indicates whether you want to turn on or turn off the JMX
-     * Exporter.</p>
-         
-     */
-    inline void SetJmxExporter(const JmxExporterInfo& value) { m_jmxExporterHasBeenSet = true; m_jmxExporter = value; }
-
-    /**
-     * 
-            <p>Indicates whether you want to turn on or turn off the JMX
-     * Exporter.</p>
-         
-     */
-    inline void SetJmxExporter(JmxExporterInfo&& value) { m_jmxExporterHasBeenSet = true; m_jmxExporter = std::move(value); }
-
-    /**
-     * 
-            <p>Indicates whether you want to turn on or turn off the JMX
-     * Exporter.</p>
-         
-     */
-    inline PrometheusInfo& WithJmxExporter(const JmxExporterInfo& value) { SetJmxExporter(value); return *this;}
-
-    /**
-     * 
-            <p>Indicates whether you want to turn on or turn off the JMX
-     * Exporter.</p>
-         
-     */
-    inline PrometheusInfo& WithJmxExporter(JmxExporterInfo&& value) { SetJmxExporter(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>Indicates whether you want to turn on or turn off the Node
      * Exporter.</p>
          
      */
-    inline const NodeExporterInfo& GetNodeExporter() const{ return m_nodeExporter; }
-
-    /**
-     * 
-            <p>Indicates whether you want to turn on or turn off the Node
-     * Exporter.</p>
-         
-     */
+    inline const NodeExporterInfo& GetNodeExporter() const { return m_nodeExporter; }
     inline bool NodeExporterHasBeenSet() const { return m_nodeExporterHasBeenSet; }
-
-    /**
-     * 
-            <p>Indicates whether you want to turn on or turn off the Node
-     * Exporter.</p>
-         
-     */
-    inline void SetNodeExporter(const NodeExporterInfo& value) { m_nodeExporterHasBeenSet = true; m_nodeExporter = value; }
-
-    /**
-     * 
-            <p>Indicates whether you want to turn on or turn off the Node
-     * Exporter.</p>
-         
-     */
-    inline void SetNodeExporter(NodeExporterInfo&& value) { m_nodeExporterHasBeenSet = true; m_nodeExporter = std::move(value); }
-
-    /**
-     * 
-            <p>Indicates whether you want to turn on or turn off the Node
-     * Exporter.</p>
-         
-     */
-    inline PrometheusInfo& WithNodeExporter(const NodeExporterInfo& value) { SetNodeExporter(value); return *this;}
-
-    /**
-     * 
-            <p>Indicates whether you want to turn on or turn off the Node
-     * Exporter.</p>
-         
-     */
-    inline PrometheusInfo& WithNodeExporter(NodeExporterInfo&& value) { SetNodeExporter(std::move(value)); return *this;}
-
+    template<typename NodeExporterT = NodeExporterInfo>
+    void SetNodeExporter(NodeExporterT&& value) { m_nodeExporterHasBeenSet = true; m_nodeExporter = std::forward<NodeExporterT>(value); }
+    template<typename NodeExporterT = NodeExporterInfo>
+    PrometheusInfo& WithNodeExporter(NodeExporterT&& value) { SetNodeExporter(std::forward<NodeExporterT>(value)); return *this;}
+    ///@}
   private:
 
     JmxExporterInfo m_jmxExporter;

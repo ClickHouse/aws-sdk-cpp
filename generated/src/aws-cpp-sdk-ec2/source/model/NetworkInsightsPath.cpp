@@ -20,43 +20,7 @@ namespace EC2
 namespace Model
 {
 
-NetworkInsightsPath::NetworkInsightsPath() : 
-    m_networkInsightsPathIdHasBeenSet(false),
-    m_networkInsightsPathArnHasBeenSet(false),
-    m_createdDateHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_destinationHasBeenSet(false),
-    m_sourceArnHasBeenSet(false),
-    m_destinationArnHasBeenSet(false),
-    m_sourceIpHasBeenSet(false),
-    m_destinationIpHasBeenSet(false),
-    m_protocol(Protocol::NOT_SET),
-    m_protocolHasBeenSet(false),
-    m_destinationPort(0),
-    m_destinationPortHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_filterAtSourceHasBeenSet(false),
-    m_filterAtDestinationHasBeenSet(false)
-{
-}
-
-NetworkInsightsPath::NetworkInsightsPath(const XmlNode& xmlNode) : 
-    m_networkInsightsPathIdHasBeenSet(false),
-    m_networkInsightsPathArnHasBeenSet(false),
-    m_createdDateHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_destinationHasBeenSet(false),
-    m_sourceArnHasBeenSet(false),
-    m_destinationArnHasBeenSet(false),
-    m_sourceIpHasBeenSet(false),
-    m_destinationIpHasBeenSet(false),
-    m_protocol(Protocol::NOT_SET),
-    m_protocolHasBeenSet(false),
-    m_destinationPort(0),
-    m_destinationPortHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_filterAtSourceHasBeenSet(false),
-    m_filterAtDestinationHasBeenSet(false)
+NetworkInsightsPath::NetworkInsightsPath(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -124,7 +88,7 @@ NetworkInsightsPath& NetworkInsightsPath::operator =(const XmlNode& xmlNode)
     XmlNode protocolNode = resultNode.FirstChild("protocol");
     if(!protocolNode.IsNull())
     {
-      m_protocol = ProtocolMapper::GetProtocolForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(protocolNode.GetText()).c_str()).c_str());
+      m_protocol = ProtocolMapper::GetProtocolForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(protocolNode.GetText()).c_str()));
       m_protocolHasBeenSet = true;
     }
     XmlNode destinationPortNode = resultNode.FirstChild("destinationPort");
@@ -137,6 +101,7 @@ NetworkInsightsPath& NetworkInsightsPath::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -211,7 +176,7 @@ void NetworkInsightsPath::OutputToStream(Aws::OStream& oStream, const char* loca
 
   if(m_protocolHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Protocol=" << ProtocolMapper::GetNameForProtocol(m_protocol) << "&";
+      oStream << location << index << locationValue << ".Protocol=" << StringUtils::URLEncode(ProtocolMapper::GetNameForProtocol(m_protocol)) << "&";
   }
 
   if(m_destinationPortHasBeenSet)
@@ -286,7 +251,7 @@ void NetworkInsightsPath::OutputToStream(Aws::OStream& oStream, const char* loca
   }
   if(m_protocolHasBeenSet)
   {
-      oStream << location << ".Protocol=" << ProtocolMapper::GetNameForProtocol(m_protocol) << "&";
+      oStream << location << ".Protocol=" << StringUtils::URLEncode(ProtocolMapper::GetNameForProtocol(m_protocol)) << "&";
   }
   if(m_destinationPortHasBeenSet)
   {
@@ -298,7 +263,7 @@ void NetworkInsightsPath::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

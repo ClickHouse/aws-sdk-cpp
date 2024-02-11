@@ -31,225 +31,79 @@ namespace Model
   class AlreadyExistsException
   {
   public:
-    AWS_BACKUP_API AlreadyExistsException();
+    AWS_BACKUP_API AlreadyExistsException() = default;
     AWS_BACKUP_API AlreadyExistsException(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API AlreadyExistsException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Aws::String& GetCode() const{ return m_code; }
-
-    
+    inline const Aws::String& GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
+    template<typename CodeT = Aws::String>
+    void SetCode(CodeT&& value) { m_codeHasBeenSet = true; m_code = std::forward<CodeT>(value); }
+    template<typename CodeT = Aws::String>
+    AlreadyExistsException& WithCode(CodeT&& value) { SetCode(std::forward<CodeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetCode(const Aws::String& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    
-    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    
-    inline void SetCode(const char* value) { m_codeHasBeenSet = true; m_code.assign(value); }
-
-    
-    inline AlreadyExistsException& WithCode(const Aws::String& value) { SetCode(value); return *this;}
-
-    
-    inline AlreadyExistsException& WithCode(Aws::String&& value) { SetCode(std::move(value)); return *this;}
-
-    
-    inline AlreadyExistsException& WithCode(const char* value) { SetCode(value); return *this;}
-
-
-    
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    AlreadyExistsException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    
-    inline AlreadyExistsException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    
-    inline AlreadyExistsException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    
-    inline AlreadyExistsException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p/>
      */
-    inline const Aws::String& GetCreatorRequestId() const{ return m_creatorRequestId; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetCreatorRequestId() const { return m_creatorRequestId; }
     inline bool CreatorRequestIdHasBeenSet() const { return m_creatorRequestIdHasBeenSet; }
+    template<typename CreatorRequestIdT = Aws::String>
+    void SetCreatorRequestId(CreatorRequestIdT&& value) { m_creatorRequestIdHasBeenSet = true; m_creatorRequestId = std::forward<CreatorRequestIdT>(value); }
+    template<typename CreatorRequestIdT = Aws::String>
+    AlreadyExistsException& WithCreatorRequestId(CreatorRequestIdT&& value) { SetCreatorRequestId(std::forward<CreatorRequestIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p/>
      */
-    inline void SetCreatorRequestId(const Aws::String& value) { m_creatorRequestIdHasBeenSet = true; m_creatorRequestId = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetCreatorRequestId(Aws::String&& value) { m_creatorRequestIdHasBeenSet = true; m_creatorRequestId = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetCreatorRequestId(const char* value) { m_creatorRequestIdHasBeenSet = true; m_creatorRequestId.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline AlreadyExistsException& WithCreatorRequestId(const Aws::String& value) { SetCreatorRequestId(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline AlreadyExistsException& WithCreatorRequestId(Aws::String&& value) { SetCreatorRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline AlreadyExistsException& WithCreatorRequestId(const char* value) { SetCreatorRequestId(value); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    AlreadyExistsException& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p/>
      */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline AlreadyExistsException& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline AlreadyExistsException& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline AlreadyExistsException& WithArn(const char* value) { SetArn(value); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    AlreadyExistsException& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p/>
      */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline AlreadyExistsException& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline AlreadyExistsException& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline AlreadyExistsException& WithType(const char* value) { SetType(value); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const Aws::String& GetContext() const{ return m_context; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetContext() const { return m_context; }
     inline bool ContextHasBeenSet() const { return m_contextHasBeenSet; }
-
-    /**
-     * <p/>
-     */
-    inline void SetContext(const Aws::String& value) { m_contextHasBeenSet = true; m_context = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetContext(Aws::String&& value) { m_contextHasBeenSet = true; m_context = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetContext(const char* value) { m_contextHasBeenSet = true; m_context.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline AlreadyExistsException& WithContext(const Aws::String& value) { SetContext(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline AlreadyExistsException& WithContext(Aws::String&& value) { SetContext(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline AlreadyExistsException& WithContext(const char* value) { SetContext(value); return *this;}
-
+    template<typename ContextT = Aws::String>
+    void SetContext(ContextT&& value) { m_contextHasBeenSet = true; m_context = std::forward<ContextT>(value); }
+    template<typename ContextT = Aws::String>
+    AlreadyExistsException& WithContext(ContextT&& value) { SetContext(std::forward<ContextT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_code;

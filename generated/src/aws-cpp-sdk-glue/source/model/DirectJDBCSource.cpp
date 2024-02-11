@@ -18,25 +18,7 @@ namespace Glue
 namespace Model
 {
 
-DirectJDBCSource::DirectJDBCSource() : 
-    m_nameHasBeenSet(false),
-    m_databaseHasBeenSet(false),
-    m_tableHasBeenSet(false),
-    m_connectionNameHasBeenSet(false),
-    m_connectionType(JDBCConnectionType::NOT_SET),
-    m_connectionTypeHasBeenSet(false),
-    m_redshiftTmpDirHasBeenSet(false)
-{
-}
-
-DirectJDBCSource::DirectJDBCSource(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_databaseHasBeenSet(false),
-    m_tableHasBeenSet(false),
-    m_connectionNameHasBeenSet(false),
-    m_connectionType(JDBCConnectionType::NOT_SET),
-    m_connectionTypeHasBeenSet(false),
-    m_redshiftTmpDirHasBeenSet(false)
+DirectJDBCSource::DirectJDBCSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,45 +28,42 @@ DirectJDBCSource& DirectJDBCSource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Database"))
   {
     m_database = jsonValue.GetString("Database");
-
     m_databaseHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Table"))
   {
     m_table = jsonValue.GetString("Table");
-
     m_tableHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ConnectionName"))
   {
     m_connectionName = jsonValue.GetString("ConnectionName");
-
     m_connectionNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ConnectionType"))
   {
     m_connectionType = JDBCConnectionTypeMapper::GetJDBCConnectionTypeForName(jsonValue.GetString("ConnectionType"));
-
     m_connectionTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RedshiftTmpDir"))
   {
     m_redshiftTmpDir = jsonValue.GetString("RedshiftTmpDir");
-
     m_redshiftTmpDirHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("OutputSchemas"))
+  {
+    Aws::Utils::Array<JsonView> outputSchemasJsonList = jsonValue.GetArray("OutputSchemas");
+    for(unsigned outputSchemasIndex = 0; outputSchemasIndex < outputSchemasJsonList.GetLength(); ++outputSchemasIndex)
+    {
+      m_outputSchemas.push_back(outputSchemasJsonList[outputSchemasIndex].AsObject());
+    }
+    m_outputSchemasHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -124,6 +103,17 @@ JsonValue DirectJDBCSource::Jsonize() const
   if(m_redshiftTmpDirHasBeenSet)
   {
    payload.WithString("RedshiftTmpDir", m_redshiftTmpDir);
+
+  }
+
+  if(m_outputSchemasHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> outputSchemasJsonList(m_outputSchemas.size());
+   for(unsigned outputSchemasIndex = 0; outputSchemasIndex < outputSchemasJsonList.GetLength(); ++outputSchemasIndex)
+   {
+     outputSchemasJsonList[outputSchemasIndex].AsObject(m_outputSchemas[outputSchemasIndex].Jsonize());
+   }
+   payload.WithArray("OutputSchemas", std::move(outputSchemasJsonList));
 
   }
 

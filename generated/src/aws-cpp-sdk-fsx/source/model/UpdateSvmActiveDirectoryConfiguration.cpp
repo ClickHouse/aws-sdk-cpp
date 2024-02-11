@@ -18,13 +18,7 @@ namespace FSx
 namespace Model
 {
 
-UpdateSvmActiveDirectoryConfiguration::UpdateSvmActiveDirectoryConfiguration() : 
-    m_selfManagedActiveDirectoryConfigurationHasBeenSet(false)
-{
-}
-
-UpdateSvmActiveDirectoryConfiguration::UpdateSvmActiveDirectoryConfiguration(JsonView jsonValue) : 
-    m_selfManagedActiveDirectoryConfigurationHasBeenSet(false)
+UpdateSvmActiveDirectoryConfiguration::UpdateSvmActiveDirectoryConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,13 @@ UpdateSvmActiveDirectoryConfiguration& UpdateSvmActiveDirectoryConfiguration::op
   if(jsonValue.ValueExists("SelfManagedActiveDirectoryConfiguration"))
   {
     m_selfManagedActiveDirectoryConfiguration = jsonValue.GetObject("SelfManagedActiveDirectoryConfiguration");
-
     m_selfManagedActiveDirectoryConfigurationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("NetBiosName"))
+  {
+    m_netBiosName = jsonValue.GetString("NetBiosName");
+    m_netBiosNameHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +45,12 @@ JsonValue UpdateSvmActiveDirectoryConfiguration::Jsonize() const
   if(m_selfManagedActiveDirectoryConfigurationHasBeenSet)
   {
    payload.WithObject("SelfManagedActiveDirectoryConfiguration", m_selfManagedActiveDirectoryConfiguration.Jsonize());
+
+  }
+
+  if(m_netBiosNameHasBeenSet)
+  {
+   payload.WithString("NetBiosName", m_netBiosName);
 
   }
 

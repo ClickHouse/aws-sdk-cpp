@@ -18,19 +18,7 @@ namespace AmplifyUIBuilder
 namespace Model
 {
 
-FieldValidationConfiguration::FieldValidationConfiguration() : 
-    m_typeHasBeenSet(false),
-    m_strValuesHasBeenSet(false),
-    m_numValuesHasBeenSet(false),
-    m_validationMessageHasBeenSet(false)
-{
-}
-
-FieldValidationConfiguration::FieldValidationConfiguration(JsonView jsonValue) : 
-    m_typeHasBeenSet(false),
-    m_strValuesHasBeenSet(false),
-    m_numValuesHasBeenSet(false),
-    m_validationMessageHasBeenSet(false)
+FieldValidationConfiguration::FieldValidationConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ FieldValidationConfiguration& FieldValidationConfiguration::operator =(JsonView 
   if(jsonValue.ValueExists("type"))
   {
     m_type = jsonValue.GetString("type");
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("strValues"))
   {
     Aws::Utils::Array<JsonView> strValuesJsonList = jsonValue.GetArray("strValues");
@@ -53,7 +39,6 @@ FieldValidationConfiguration& FieldValidationConfiguration::operator =(JsonView 
     }
     m_strValuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("numValues"))
   {
     Aws::Utils::Array<JsonView> numValuesJsonList = jsonValue.GetArray("numValues");
@@ -63,14 +48,11 @@ FieldValidationConfiguration& FieldValidationConfiguration::operator =(JsonView 
     }
     m_numValuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("validationMessage"))
   {
     m_validationMessage = jsonValue.GetString("validationMessage");
-
     m_validationMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,17 +18,7 @@ namespace DirectoryService
 namespace Model
 {
 
-Computer::Computer() : 
-    m_computerIdHasBeenSet(false),
-    m_computerNameHasBeenSet(false),
-    m_computerAttributesHasBeenSet(false)
-{
-}
-
-Computer::Computer(JsonView jsonValue) : 
-    m_computerIdHasBeenSet(false),
-    m_computerNameHasBeenSet(false),
-    m_computerAttributesHasBeenSet(false)
+Computer::Computer(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ Computer& Computer::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ComputerId"))
   {
     m_computerId = jsonValue.GetString("ComputerId");
-
     m_computerIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComputerName"))
   {
     m_computerName = jsonValue.GetString("ComputerName");
-
     m_computerNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComputerAttributes"))
   {
     Aws::Utils::Array<JsonView> computerAttributesJsonList = jsonValue.GetArray("ComputerAttributes");
@@ -58,7 +44,6 @@ Computer& Computer::operator =(JsonView jsonValue)
     }
     m_computerAttributesHasBeenSet = true;
   }
-
   return *this;
 }
 

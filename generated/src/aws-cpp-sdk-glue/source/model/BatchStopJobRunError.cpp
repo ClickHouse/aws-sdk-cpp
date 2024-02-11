@@ -18,17 +18,7 @@ namespace Glue
 namespace Model
 {
 
-BatchStopJobRunError::BatchStopJobRunError() : 
-    m_jobNameHasBeenSet(false),
-    m_jobRunIdHasBeenSet(false),
-    m_errorDetailHasBeenSet(false)
-{
-}
-
-BatchStopJobRunError::BatchStopJobRunError(JsonView jsonValue) : 
-    m_jobNameHasBeenSet(false),
-    m_jobRunIdHasBeenSet(false),
-    m_errorDetailHasBeenSet(false)
+BatchStopJobRunError::BatchStopJobRunError(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ BatchStopJobRunError& BatchStopJobRunError::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("JobName"))
   {
     m_jobName = jsonValue.GetString("JobName");
-
     m_jobNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("JobRunId"))
   {
     m_jobRunId = jsonValue.GetString("JobRunId");
-
     m_jobRunIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorDetail"))
   {
     m_errorDetail = jsonValue.GetObject("ErrorDetail");
-
     m_errorDetailHasBeenSet = true;
   }
-
   return *this;
 }
 

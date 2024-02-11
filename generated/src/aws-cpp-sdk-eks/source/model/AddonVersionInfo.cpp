@@ -18,21 +18,7 @@ namespace EKS
 namespace Model
 {
 
-AddonVersionInfo::AddonVersionInfo() : 
-    m_addonVersionHasBeenSet(false),
-    m_architectureHasBeenSet(false),
-    m_compatibilitiesHasBeenSet(false),
-    m_requiresConfiguration(false),
-    m_requiresConfigurationHasBeenSet(false)
-{
-}
-
-AddonVersionInfo::AddonVersionInfo(JsonView jsonValue) : 
-    m_addonVersionHasBeenSet(false),
-    m_architectureHasBeenSet(false),
-    m_compatibilitiesHasBeenSet(false),
-    m_requiresConfiguration(false),
-    m_requiresConfigurationHasBeenSet(false)
+AddonVersionInfo::AddonVersionInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,10 +28,8 @@ AddonVersionInfo& AddonVersionInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("addonVersion"))
   {
     m_addonVersion = jsonValue.GetString("addonVersion");
-
     m_addonVersionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("architecture"))
   {
     Aws::Utils::Array<JsonView> architectureJsonList = jsonValue.GetArray("architecture");
@@ -55,7 +39,15 @@ AddonVersionInfo& AddonVersionInfo::operator =(JsonView jsonValue)
     }
     m_architectureHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("computeTypes"))
+  {
+    Aws::Utils::Array<JsonView> computeTypesJsonList = jsonValue.GetArray("computeTypes");
+    for(unsigned computeTypesIndex = 0; computeTypesIndex < computeTypesJsonList.GetLength(); ++computeTypesIndex)
+    {
+      m_computeTypes.push_back(computeTypesJsonList[computeTypesIndex].AsString());
+    }
+    m_computeTypesHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("compatibilities"))
   {
     Aws::Utils::Array<JsonView> compatibilitiesJsonList = jsonValue.GetArray("compatibilities");
@@ -65,14 +57,16 @@ AddonVersionInfo& AddonVersionInfo::operator =(JsonView jsonValue)
     }
     m_compatibilitiesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("requiresConfiguration"))
   {
     m_requiresConfiguration = jsonValue.GetBool("requiresConfiguration");
-
     m_requiresConfigurationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("requiresIamPermissions"))
+  {
+    m_requiresIamPermissions = jsonValue.GetBool("requiresIamPermissions");
+    m_requiresIamPermissionsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -97,6 +91,17 @@ JsonValue AddonVersionInfo::Jsonize() const
 
   }
 
+  if(m_computeTypesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> computeTypesJsonList(m_computeTypes.size());
+   for(unsigned computeTypesIndex = 0; computeTypesIndex < computeTypesJsonList.GetLength(); ++computeTypesIndex)
+   {
+     computeTypesJsonList[computeTypesIndex].AsString(m_computeTypes[computeTypesIndex]);
+   }
+   payload.WithArray("computeTypes", std::move(computeTypesJsonList));
+
+  }
+
   if(m_compatibilitiesHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> compatibilitiesJsonList(m_compatibilities.size());
@@ -111,6 +116,12 @@ JsonValue AddonVersionInfo::Jsonize() const
   if(m_requiresConfigurationHasBeenSet)
   {
    payload.WithBool("requiresConfiguration", m_requiresConfiguration);
+
+  }
+
+  if(m_requiresIamPermissionsHasBeenSet)
+  {
+   payload.WithBool("requiresIamPermissions", m_requiresIamPermissions);
 
   }
 

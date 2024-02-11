@@ -12,15 +12,6 @@ using namespace Aws::WorkMail::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DeleteOrganizationRequest::DeleteOrganizationRequest() : 
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_organizationIdHasBeenSet(false),
-    m_deleteDirectory(false),
-    m_deleteDirectoryHasBeenSet(false)
-{
-}
-
 Aws::String DeleteOrganizationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -40,6 +31,18 @@ Aws::String DeleteOrganizationRequest::SerializePayload() const
   if(m_deleteDirectoryHasBeenSet)
   {
    payload.WithBool("DeleteDirectory", m_deleteDirectory);
+
+  }
+
+  if(m_forceDeleteHasBeenSet)
+  {
+   payload.WithBool("ForceDelete", m_forceDelete);
+
+  }
+
+  if(m_deleteIdentityCenterApplicationHasBeenSet)
+  {
+   payload.WithBool("DeleteIdentityCenterApplication", m_deleteIdentityCenterApplication);
 
   }
 

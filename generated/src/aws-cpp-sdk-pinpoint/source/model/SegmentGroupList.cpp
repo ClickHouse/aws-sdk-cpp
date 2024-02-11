@@ -18,17 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-SegmentGroupList::SegmentGroupList() : 
-    m_groupsHasBeenSet(false),
-    m_include(Include::NOT_SET),
-    m_includeHasBeenSet(false)
-{
-}
-
-SegmentGroupList::SegmentGroupList(JsonView jsonValue) : 
-    m_groupsHasBeenSet(false),
-    m_include(Include::NOT_SET),
-    m_includeHasBeenSet(false)
+SegmentGroupList::SegmentGroupList(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,14 +34,11 @@ SegmentGroupList& SegmentGroupList::operator =(JsonView jsonValue)
     }
     m_groupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Include"))
   {
     m_include = IncludeMapper::GetIncludeForName(jsonValue.GetString("Include"));
-
     m_includeHasBeenSet = true;
   }
-
   return *this;
 }
 

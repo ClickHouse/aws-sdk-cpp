@@ -35,212 +35,77 @@ namespace Model
   class PostLaunchActions
   {
   public:
-    AWS_MGN_API PostLaunchActions();
+    AWS_MGN_API PostLaunchActions() = default;
     AWS_MGN_API PostLaunchActions(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API PostLaunchActions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>AWS Systems Manager Command's CloudWatch log group name.</p>
      */
-    inline const Aws::String& GetCloudWatchLogGroupName() const{ return m_cloudWatchLogGroupName; }
-
-    /**
-     * <p>AWS Systems Manager Command's CloudWatch log group name.</p>
-     */
+    inline const Aws::String& GetCloudWatchLogGroupName() const { return m_cloudWatchLogGroupName; }
     inline bool CloudWatchLogGroupNameHasBeenSet() const { return m_cloudWatchLogGroupNameHasBeenSet; }
+    template<typename CloudWatchLogGroupNameT = Aws::String>
+    void SetCloudWatchLogGroupName(CloudWatchLogGroupNameT&& value) { m_cloudWatchLogGroupNameHasBeenSet = true; m_cloudWatchLogGroupName = std::forward<CloudWatchLogGroupNameT>(value); }
+    template<typename CloudWatchLogGroupNameT = Aws::String>
+    PostLaunchActions& WithCloudWatchLogGroupName(CloudWatchLogGroupNameT&& value) { SetCloudWatchLogGroupName(std::forward<CloudWatchLogGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>AWS Systems Manager Command's CloudWatch log group name.</p>
-     */
-    inline void SetCloudWatchLogGroupName(const Aws::String& value) { m_cloudWatchLogGroupNameHasBeenSet = true; m_cloudWatchLogGroupName = value; }
-
-    /**
-     * <p>AWS Systems Manager Command's CloudWatch log group name.</p>
-     */
-    inline void SetCloudWatchLogGroupName(Aws::String&& value) { m_cloudWatchLogGroupNameHasBeenSet = true; m_cloudWatchLogGroupName = std::move(value); }
-
-    /**
-     * <p>AWS Systems Manager Command's CloudWatch log group name.</p>
-     */
-    inline void SetCloudWatchLogGroupName(const char* value) { m_cloudWatchLogGroupNameHasBeenSet = true; m_cloudWatchLogGroupName.assign(value); }
-
-    /**
-     * <p>AWS Systems Manager Command's CloudWatch log group name.</p>
-     */
-    inline PostLaunchActions& WithCloudWatchLogGroupName(const Aws::String& value) { SetCloudWatchLogGroupName(value); return *this;}
-
-    /**
-     * <p>AWS Systems Manager Command's CloudWatch log group name.</p>
-     */
-    inline PostLaunchActions& WithCloudWatchLogGroupName(Aws::String&& value) { SetCloudWatchLogGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>AWS Systems Manager Command's CloudWatch log group name.</p>
-     */
-    inline PostLaunchActions& WithCloudWatchLogGroupName(const char* value) { SetCloudWatchLogGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Deployment type in which AWS Systems Manager Documents will be executed.</p>
      */
-    inline const PostLaunchActionsDeploymentType& GetDeployment() const{ return m_deployment; }
-
-    /**
-     * <p>Deployment type in which AWS Systems Manager Documents will be executed.</p>
-     */
+    inline PostLaunchActionsDeploymentType GetDeployment() const { return m_deployment; }
     inline bool DeploymentHasBeenSet() const { return m_deploymentHasBeenSet; }
+    inline void SetDeployment(PostLaunchActionsDeploymentType value) { m_deploymentHasBeenSet = true; m_deployment = value; }
+    inline PostLaunchActions& WithDeployment(PostLaunchActionsDeploymentType value) { SetDeployment(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Deployment type in which AWS Systems Manager Documents will be executed.</p>
-     */
-    inline void SetDeployment(const PostLaunchActionsDeploymentType& value) { m_deploymentHasBeenSet = true; m_deployment = value; }
-
-    /**
-     * <p>Deployment type in which AWS Systems Manager Documents will be executed.</p>
-     */
-    inline void SetDeployment(PostLaunchActionsDeploymentType&& value) { m_deploymentHasBeenSet = true; m_deployment = std::move(value); }
-
-    /**
-     * <p>Deployment type in which AWS Systems Manager Documents will be executed.</p>
-     */
-    inline PostLaunchActions& WithDeployment(const PostLaunchActionsDeploymentType& value) { SetDeployment(value); return *this;}
-
-    /**
-     * <p>Deployment type in which AWS Systems Manager Documents will be executed.</p>
-     */
-    inline PostLaunchActions& WithDeployment(PostLaunchActionsDeploymentType&& value) { SetDeployment(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>AWS Systems Manager Command's logs S3 log bucket.</p>
      */
-    inline const Aws::String& GetS3LogBucket() const{ return m_s3LogBucket; }
-
-    /**
-     * <p>AWS Systems Manager Command's logs S3 log bucket.</p>
-     */
+    inline const Aws::String& GetS3LogBucket() const { return m_s3LogBucket; }
     inline bool S3LogBucketHasBeenSet() const { return m_s3LogBucketHasBeenSet; }
+    template<typename S3LogBucketT = Aws::String>
+    void SetS3LogBucket(S3LogBucketT&& value) { m_s3LogBucketHasBeenSet = true; m_s3LogBucket = std::forward<S3LogBucketT>(value); }
+    template<typename S3LogBucketT = Aws::String>
+    PostLaunchActions& WithS3LogBucket(S3LogBucketT&& value) { SetS3LogBucket(std::forward<S3LogBucketT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>AWS Systems Manager Command's logs S3 log bucket.</p>
-     */
-    inline void SetS3LogBucket(const Aws::String& value) { m_s3LogBucketHasBeenSet = true; m_s3LogBucket = value; }
-
-    /**
-     * <p>AWS Systems Manager Command's logs S3 log bucket.</p>
-     */
-    inline void SetS3LogBucket(Aws::String&& value) { m_s3LogBucketHasBeenSet = true; m_s3LogBucket = std::move(value); }
-
-    /**
-     * <p>AWS Systems Manager Command's logs S3 log bucket.</p>
-     */
-    inline void SetS3LogBucket(const char* value) { m_s3LogBucketHasBeenSet = true; m_s3LogBucket.assign(value); }
-
-    /**
-     * <p>AWS Systems Manager Command's logs S3 log bucket.</p>
-     */
-    inline PostLaunchActions& WithS3LogBucket(const Aws::String& value) { SetS3LogBucket(value); return *this;}
-
-    /**
-     * <p>AWS Systems Manager Command's logs S3 log bucket.</p>
-     */
-    inline PostLaunchActions& WithS3LogBucket(Aws::String&& value) { SetS3LogBucket(std::move(value)); return *this;}
-
-    /**
-     * <p>AWS Systems Manager Command's logs S3 log bucket.</p>
-     */
-    inline PostLaunchActions& WithS3LogBucket(const char* value) { SetS3LogBucket(value); return *this;}
-
-
+    ///@{
     /**
      * <p>AWS Systems Manager Command's logs S3 output key prefix.</p>
      */
-    inline const Aws::String& GetS3OutputKeyPrefix() const{ return m_s3OutputKeyPrefix; }
-
-    /**
-     * <p>AWS Systems Manager Command's logs S3 output key prefix.</p>
-     */
+    inline const Aws::String& GetS3OutputKeyPrefix() const { return m_s3OutputKeyPrefix; }
     inline bool S3OutputKeyPrefixHasBeenSet() const { return m_s3OutputKeyPrefixHasBeenSet; }
+    template<typename S3OutputKeyPrefixT = Aws::String>
+    void SetS3OutputKeyPrefix(S3OutputKeyPrefixT&& value) { m_s3OutputKeyPrefixHasBeenSet = true; m_s3OutputKeyPrefix = std::forward<S3OutputKeyPrefixT>(value); }
+    template<typename S3OutputKeyPrefixT = Aws::String>
+    PostLaunchActions& WithS3OutputKeyPrefix(S3OutputKeyPrefixT&& value) { SetS3OutputKeyPrefix(std::forward<S3OutputKeyPrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>AWS Systems Manager Command's logs S3 output key prefix.</p>
-     */
-    inline void SetS3OutputKeyPrefix(const Aws::String& value) { m_s3OutputKeyPrefixHasBeenSet = true; m_s3OutputKeyPrefix = value; }
-
-    /**
-     * <p>AWS Systems Manager Command's logs S3 output key prefix.</p>
-     */
-    inline void SetS3OutputKeyPrefix(Aws::String&& value) { m_s3OutputKeyPrefixHasBeenSet = true; m_s3OutputKeyPrefix = std::move(value); }
-
-    /**
-     * <p>AWS Systems Manager Command's logs S3 output key prefix.</p>
-     */
-    inline void SetS3OutputKeyPrefix(const char* value) { m_s3OutputKeyPrefixHasBeenSet = true; m_s3OutputKeyPrefix.assign(value); }
-
-    /**
-     * <p>AWS Systems Manager Command's logs S3 output key prefix.</p>
-     */
-    inline PostLaunchActions& WithS3OutputKeyPrefix(const Aws::String& value) { SetS3OutputKeyPrefix(value); return *this;}
-
-    /**
-     * <p>AWS Systems Manager Command's logs S3 output key prefix.</p>
-     */
-    inline PostLaunchActions& WithS3OutputKeyPrefix(Aws::String&& value) { SetS3OutputKeyPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>AWS Systems Manager Command's logs S3 output key prefix.</p>
-     */
-    inline PostLaunchActions& WithS3OutputKeyPrefix(const char* value) { SetS3OutputKeyPrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p>AWS Systems Manager Documents.</p>
      */
-    inline const Aws::Vector<SsmDocument>& GetSsmDocuments() const{ return m_ssmDocuments; }
-
-    /**
-     * <p>AWS Systems Manager Documents.</p>
-     */
+    inline const Aws::Vector<SsmDocument>& GetSsmDocuments() const { return m_ssmDocuments; }
     inline bool SsmDocumentsHasBeenSet() const { return m_ssmDocumentsHasBeenSet; }
-
-    /**
-     * <p>AWS Systems Manager Documents.</p>
-     */
-    inline void SetSsmDocuments(const Aws::Vector<SsmDocument>& value) { m_ssmDocumentsHasBeenSet = true; m_ssmDocuments = value; }
-
-    /**
-     * <p>AWS Systems Manager Documents.</p>
-     */
-    inline void SetSsmDocuments(Aws::Vector<SsmDocument>&& value) { m_ssmDocumentsHasBeenSet = true; m_ssmDocuments = std::move(value); }
-
-    /**
-     * <p>AWS Systems Manager Documents.</p>
-     */
-    inline PostLaunchActions& WithSsmDocuments(const Aws::Vector<SsmDocument>& value) { SetSsmDocuments(value); return *this;}
-
-    /**
-     * <p>AWS Systems Manager Documents.</p>
-     */
-    inline PostLaunchActions& WithSsmDocuments(Aws::Vector<SsmDocument>&& value) { SetSsmDocuments(std::move(value)); return *this;}
-
-    /**
-     * <p>AWS Systems Manager Documents.</p>
-     */
-    inline PostLaunchActions& AddSsmDocuments(const SsmDocument& value) { m_ssmDocumentsHasBeenSet = true; m_ssmDocuments.push_back(value); return *this; }
-
-    /**
-     * <p>AWS Systems Manager Documents.</p>
-     */
-    inline PostLaunchActions& AddSsmDocuments(SsmDocument&& value) { m_ssmDocumentsHasBeenSet = true; m_ssmDocuments.push_back(std::move(value)); return *this; }
-
+    template<typename SsmDocumentsT = Aws::Vector<SsmDocument>>
+    void SetSsmDocuments(SsmDocumentsT&& value) { m_ssmDocumentsHasBeenSet = true; m_ssmDocuments = std::forward<SsmDocumentsT>(value); }
+    template<typename SsmDocumentsT = Aws::Vector<SsmDocument>>
+    PostLaunchActions& WithSsmDocuments(SsmDocumentsT&& value) { SetSsmDocuments(std::forward<SsmDocumentsT>(value)); return *this;}
+    template<typename SsmDocumentsT = SsmDocument>
+    PostLaunchActions& AddSsmDocuments(SsmDocumentsT&& value) { m_ssmDocumentsHasBeenSet = true; m_ssmDocuments.emplace_back(std::forward<SsmDocumentsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_cloudWatchLogGroupName;
     bool m_cloudWatchLogGroupNameHasBeenSet = false;
 
-    PostLaunchActionsDeploymentType m_deployment;
+    PostLaunchActionsDeploymentType m_deployment{PostLaunchActionsDeploymentType::NOT_SET};
     bool m_deploymentHasBeenSet = false;
 
     Aws::String m_s3LogBucket;

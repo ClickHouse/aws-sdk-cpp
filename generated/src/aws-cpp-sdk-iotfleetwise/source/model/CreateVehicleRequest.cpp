@@ -12,17 +12,6 @@ using namespace Aws::IoTFleetWise::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateVehicleRequest::CreateVehicleRequest() : 
-    m_vehicleNameHasBeenSet(false),
-    m_modelManifestArnHasBeenSet(false),
-    m_decoderManifestArnHasBeenSet(false),
-    m_attributesHasBeenSet(false),
-    m_associationBehavior(VehicleAssociationBehavior::NOT_SET),
-    m_associationBehaviorHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateVehicleRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -69,6 +58,17 @@ Aws::String CreateVehicleRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_stateTemplatesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> stateTemplatesJsonList(m_stateTemplates.size());
+   for(unsigned stateTemplatesIndex = 0; stateTemplatesIndex < stateTemplatesJsonList.GetLength(); ++stateTemplatesIndex)
+   {
+     stateTemplatesJsonList[stateTemplatesIndex].AsObject(m_stateTemplates[stateTemplatesIndex].Jsonize());
+   }
+   payload.WithArray("stateTemplates", std::move(stateTemplatesJsonList));
 
   }
 

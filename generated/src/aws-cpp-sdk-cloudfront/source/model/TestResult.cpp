@@ -20,21 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-TestResult::TestResult() : 
-    m_functionSummaryHasBeenSet(false),
-    m_computeUtilizationHasBeenSet(false),
-    m_functionExecutionLogsHasBeenSet(false),
-    m_functionErrorMessageHasBeenSet(false),
-    m_functionOutputHasBeenSet(false)
-{
-}
-
-TestResult::TestResult(const XmlNode& xmlNode) : 
-    m_functionSummaryHasBeenSet(false),
-    m_computeUtilizationHasBeenSet(false),
-    m_functionExecutionLogsHasBeenSet(false),
-    m_functionErrorMessageHasBeenSet(false),
-    m_functionOutputHasBeenSet(false)
+TestResult::TestResult(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -61,6 +47,7 @@ TestResult& TestResult::operator =(const XmlNode& xmlNode)
     if(!functionExecutionLogsNode.IsNull())
     {
       XmlNode functionExecutionLogsMember = functionExecutionLogsNode.FirstChild("member");
+      m_functionExecutionLogsHasBeenSet = !functionExecutionLogsMember.IsNull();
       while(!functionExecutionLogsMember.IsNull())
       {
         m_functionExecutionLogs.push_back(functionExecutionLogsMember.GetText());
@@ -106,7 +93,7 @@ void TestResult::AddToNode(XmlNode& parentNode) const
    XmlNode functionExecutionLogsParentNode = parentNode.CreateChildElement("FunctionExecutionLogs");
    for(const auto& item : m_functionExecutionLogs)
    {
-     XmlNode functionExecutionLogsNode = functionExecutionLogsParentNode.CreateChildElement("String");
+     XmlNode functionExecutionLogsNode = functionExecutionLogsParentNode.CreateChildElement("member");
      functionExecutionLogsNode.SetText(item);
    }
   }

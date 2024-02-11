@@ -10,19 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ProvisionIpamPoolCidrRequest::ProvisionIpamPoolCidrRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_ipamPoolIdHasBeenSet(false),
-    m_cidrHasBeenSet(false),
-    m_cidrAuthorizationContextHasBeenSet(false),
-    m_netmaskLength(0),
-    m_netmaskLengthHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true)
-{
-}
-
 Aws::String ProvisionIpamPoolCidrRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -55,6 +42,16 @@ Aws::String ProvisionIpamPoolCidrRequest::SerializePayload() const
   if(m_clientTokenHasBeenSet)
   {
     ss << "ClientToken=" << StringUtils::URLEncode(m_clientToken.c_str()) << "&";
+  }
+
+  if(m_verificationMethodHasBeenSet)
+  {
+    ss << "VerificationMethod=" << StringUtils::URLEncode(VerificationMethodMapper::GetNameForVerificationMethod(m_verificationMethod)) << "&";
+  }
+
+  if(m_ipamExternalResourceVerificationTokenIdHasBeenSet)
+  {
+    ss << "IpamExternalResourceVerificationTokenId=" << StringUtils::URLEncode(m_ipamExternalResourceVerificationTokenId.c_str()) << "&";
   }
 
   ss << "Version=2016-11-15";

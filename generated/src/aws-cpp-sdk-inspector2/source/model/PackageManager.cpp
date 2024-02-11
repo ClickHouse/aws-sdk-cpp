@@ -36,6 +36,8 @@ namespace Aws
         static const int PYTHONPKG_HASH = HashingUtils::HashString("PYTHONPKG");
         static const int NODEPKG_HASH = HashingUtils::HashString("NODEPKG");
         static const int POM_HASH = HashingUtils::HashString("POM");
+        static const int GEMSPEC_HASH = HashingUtils::HashString("GEMSPEC");
+        static const int DOTNET_CORE_HASH = HashingUtils::HashString("DOTNET_CORE");
 
 
         PackageManager GetPackageManagerForName(const Aws::String& name)
@@ -105,6 +107,14 @@ namespace Aws
           {
             return PackageManager::POM;
           }
+          else if (hashCode == GEMSPEC_HASH)
+          {
+            return PackageManager::GEMSPEC;
+          }
+          else if (hashCode == DOTNET_CORE_HASH)
+          {
+            return PackageManager::DOTNET_CORE;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -119,6 +129,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case PackageManager::NOT_SET:
+            return {};
           case PackageManager::BUNDLER:
             return "BUNDLER";
           case PackageManager::CARGO:
@@ -151,6 +163,10 @@ namespace Aws
             return "NODEPKG";
           case PackageManager::POM:
             return "POM";
+          case PackageManager::GEMSPEC:
+            return "GEMSPEC";
+          case PackageManager::DOTNET_CORE:
+            return "DOTNET_CORE";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

@@ -35,115 +35,44 @@ namespace Model
   class SameSheetTargetVisualConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API SameSheetTargetVisualConfiguration();
+    AWS_QUICKSIGHT_API SameSheetTargetVisualConfiguration() = default;
     AWS_QUICKSIGHT_API SameSheetTargetVisualConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API SameSheetTargetVisualConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of the target visual IDs that are located in the same sheet of the
      * analysis.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetTargetVisuals() const{ return m_targetVisuals; }
-
-    /**
-     * <p>A list of the target visual IDs that are located in the same sheet of the
-     * analysis.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetTargetVisuals() const { return m_targetVisuals; }
     inline bool TargetVisualsHasBeenSet() const { return m_targetVisualsHasBeenSet; }
+    template<typename TargetVisualsT = Aws::Vector<Aws::String>>
+    void SetTargetVisuals(TargetVisualsT&& value) { m_targetVisualsHasBeenSet = true; m_targetVisuals = std::forward<TargetVisualsT>(value); }
+    template<typename TargetVisualsT = Aws::Vector<Aws::String>>
+    SameSheetTargetVisualConfiguration& WithTargetVisuals(TargetVisualsT&& value) { SetTargetVisuals(std::forward<TargetVisualsT>(value)); return *this;}
+    template<typename TargetVisualsT = Aws::String>
+    SameSheetTargetVisualConfiguration& AddTargetVisuals(TargetVisualsT&& value) { m_targetVisualsHasBeenSet = true; m_targetVisuals.emplace_back(std::forward<TargetVisualsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of the target visual IDs that are located in the same sheet of the
-     * analysis.</p>
-     */
-    inline void SetTargetVisuals(const Aws::Vector<Aws::String>& value) { m_targetVisualsHasBeenSet = true; m_targetVisuals = value; }
-
-    /**
-     * <p>A list of the target visual IDs that are located in the same sheet of the
-     * analysis.</p>
-     */
-    inline void SetTargetVisuals(Aws::Vector<Aws::String>&& value) { m_targetVisualsHasBeenSet = true; m_targetVisuals = std::move(value); }
-
-    /**
-     * <p>A list of the target visual IDs that are located in the same sheet of the
-     * analysis.</p>
-     */
-    inline SameSheetTargetVisualConfiguration& WithTargetVisuals(const Aws::Vector<Aws::String>& value) { SetTargetVisuals(value); return *this;}
-
-    /**
-     * <p>A list of the target visual IDs that are located in the same sheet of the
-     * analysis.</p>
-     */
-    inline SameSheetTargetVisualConfiguration& WithTargetVisuals(Aws::Vector<Aws::String>&& value) { SetTargetVisuals(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the target visual IDs that are located in the same sheet of the
-     * analysis.</p>
-     */
-    inline SameSheetTargetVisualConfiguration& AddTargetVisuals(const Aws::String& value) { m_targetVisualsHasBeenSet = true; m_targetVisuals.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the target visual IDs that are located in the same sheet of the
-     * analysis.</p>
-     */
-    inline SameSheetTargetVisualConfiguration& AddTargetVisuals(Aws::String&& value) { m_targetVisualsHasBeenSet = true; m_targetVisuals.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of the target visual IDs that are located in the same sheet of the
-     * analysis.</p>
-     */
-    inline SameSheetTargetVisualConfiguration& AddTargetVisuals(const char* value) { m_targetVisualsHasBeenSet = true; m_targetVisuals.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The options that choose the target visual in the same sheet.</p> <p>Valid
      * values are defined as follows:</p> <ul> <li> <p> <code>ALL_VISUALS</code>:
      * Applies the filter operation to all visuals in the same sheet.</p> </li> </ul>
      */
-    inline const TargetVisualOptions& GetTargetVisualOptions() const{ return m_targetVisualOptions; }
-
-    /**
-     * <p>The options that choose the target visual in the same sheet.</p> <p>Valid
-     * values are defined as follows:</p> <ul> <li> <p> <code>ALL_VISUALS</code>:
-     * Applies the filter operation to all visuals in the same sheet.</p> </li> </ul>
-     */
+    inline TargetVisualOptions GetTargetVisualOptions() const { return m_targetVisualOptions; }
     inline bool TargetVisualOptionsHasBeenSet() const { return m_targetVisualOptionsHasBeenSet; }
-
-    /**
-     * <p>The options that choose the target visual in the same sheet.</p> <p>Valid
-     * values are defined as follows:</p> <ul> <li> <p> <code>ALL_VISUALS</code>:
-     * Applies the filter operation to all visuals in the same sheet.</p> </li> </ul>
-     */
-    inline void SetTargetVisualOptions(const TargetVisualOptions& value) { m_targetVisualOptionsHasBeenSet = true; m_targetVisualOptions = value; }
-
-    /**
-     * <p>The options that choose the target visual in the same sheet.</p> <p>Valid
-     * values are defined as follows:</p> <ul> <li> <p> <code>ALL_VISUALS</code>:
-     * Applies the filter operation to all visuals in the same sheet.</p> </li> </ul>
-     */
-    inline void SetTargetVisualOptions(TargetVisualOptions&& value) { m_targetVisualOptionsHasBeenSet = true; m_targetVisualOptions = std::move(value); }
-
-    /**
-     * <p>The options that choose the target visual in the same sheet.</p> <p>Valid
-     * values are defined as follows:</p> <ul> <li> <p> <code>ALL_VISUALS</code>:
-     * Applies the filter operation to all visuals in the same sheet.</p> </li> </ul>
-     */
-    inline SameSheetTargetVisualConfiguration& WithTargetVisualOptions(const TargetVisualOptions& value) { SetTargetVisualOptions(value); return *this;}
-
-    /**
-     * <p>The options that choose the target visual in the same sheet.</p> <p>Valid
-     * values are defined as follows:</p> <ul> <li> <p> <code>ALL_VISUALS</code>:
-     * Applies the filter operation to all visuals in the same sheet.</p> </li> </ul>
-     */
-    inline SameSheetTargetVisualConfiguration& WithTargetVisualOptions(TargetVisualOptions&& value) { SetTargetVisualOptions(std::move(value)); return *this;}
-
+    inline void SetTargetVisualOptions(TargetVisualOptions value) { m_targetVisualOptionsHasBeenSet = true; m_targetVisualOptions = value; }
+    inline SameSheetTargetVisualConfiguration& WithTargetVisualOptions(TargetVisualOptions value) { SetTargetVisualOptions(value); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_targetVisuals;
     bool m_targetVisualsHasBeenSet = false;
 
-    TargetVisualOptions m_targetVisualOptions;
+    TargetVisualOptions m_targetVisualOptions{TargetVisualOptions::NOT_SET};
     bool m_targetVisualOptionsHasBeenSet = false;
   };
 

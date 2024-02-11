@@ -12,15 +12,6 @@ using namespace Aws::SFN::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateStateMachineRequest::UpdateStateMachineRequest() : 
-    m_stateMachineArnHasBeenSet(false),
-    m_definitionHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_loggingConfigurationHasBeenSet(false),
-    m_tracingConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String UpdateStateMachineRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -52,6 +43,24 @@ Aws::String UpdateStateMachineRequest::SerializePayload() const
   if(m_tracingConfigurationHasBeenSet)
   {
    payload.WithObject("tracingConfiguration", m_tracingConfiguration.Jsonize());
+
+  }
+
+  if(m_publishHasBeenSet)
+  {
+   payload.WithBool("publish", m_publish);
+
+  }
+
+  if(m_versionDescriptionHasBeenSet)
+  {
+   payload.WithString("versionDescription", m_versionDescription);
+
+  }
+
+  if(m_encryptionConfigurationHasBeenSet)
+  {
+   payload.WithObject("encryptionConfiguration", m_encryptionConfiguration.Jsonize());
 
   }
 

@@ -32,86 +32,36 @@ namespace Model
   class ThemeError
   {
   public:
-    AWS_QUICKSIGHT_API ThemeError();
+    AWS_QUICKSIGHT_API ThemeError() = default;
     AWS_QUICKSIGHT_API ThemeError(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API ThemeError& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of error.</p>
      */
-    inline const ThemeErrorType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of error.</p>
-     */
+    inline ThemeErrorType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(ThemeErrorType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline ThemeError& WithType(ThemeErrorType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of error.</p>
-     */
-    inline void SetType(const ThemeErrorType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of error.</p>
-     */
-    inline void SetType(ThemeErrorType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of error.</p>
-     */
-    inline ThemeError& WithType(const ThemeErrorType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of error.</p>
-     */
-    inline ThemeError& WithType(ThemeErrorType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The error message.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The error message.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline ThemeError& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline ThemeError& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline ThemeError& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    ThemeError& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
-    ThemeErrorType m_type;
+    ThemeErrorType m_type{ThemeErrorType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_message;

@@ -11,6 +11,8 @@
 #include <aws/quicksight/model/ComparisonConfiguration.h>
 #include <aws/quicksight/model/PrimaryValueDisplayType.h>
 #include <aws/quicksight/model/FontConfiguration.h>
+#include <aws/quicksight/model/KPISparklineOptions.h>
+#include <aws/quicksight/model/KPIVisualLayoutOptions.h>
 #include <utility>
 
 namespace Aws
@@ -37,246 +39,121 @@ namespace Model
   class KPIOptions
   {
   public:
-    AWS_QUICKSIGHT_API KPIOptions();
+    AWS_QUICKSIGHT_API KPIOptions() = default;
     AWS_QUICKSIGHT_API KPIOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API KPIOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The options that determine the presentation of the progress bar of a KPI
      * visual.</p>
      */
-    inline const ProgressBarOptions& GetProgressBar() const{ return m_progressBar; }
-
-    /**
-     * <p>The options that determine the presentation of the progress bar of a KPI
-     * visual.</p>
-     */
+    inline const ProgressBarOptions& GetProgressBar() const { return m_progressBar; }
     inline bool ProgressBarHasBeenSet() const { return m_progressBarHasBeenSet; }
+    template<typename ProgressBarT = ProgressBarOptions>
+    void SetProgressBar(ProgressBarT&& value) { m_progressBarHasBeenSet = true; m_progressBar = std::forward<ProgressBarT>(value); }
+    template<typename ProgressBarT = ProgressBarOptions>
+    KPIOptions& WithProgressBar(ProgressBarT&& value) { SetProgressBar(std::forward<ProgressBarT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The options that determine the presentation of the progress bar of a KPI
-     * visual.</p>
-     */
-    inline void SetProgressBar(const ProgressBarOptions& value) { m_progressBarHasBeenSet = true; m_progressBar = value; }
-
-    /**
-     * <p>The options that determine the presentation of the progress bar of a KPI
-     * visual.</p>
-     */
-    inline void SetProgressBar(ProgressBarOptions&& value) { m_progressBarHasBeenSet = true; m_progressBar = std::move(value); }
-
-    /**
-     * <p>The options that determine the presentation of the progress bar of a KPI
-     * visual.</p>
-     */
-    inline KPIOptions& WithProgressBar(const ProgressBarOptions& value) { SetProgressBar(value); return *this;}
-
-    /**
-     * <p>The options that determine the presentation of the progress bar of a KPI
-     * visual.</p>
-     */
-    inline KPIOptions& WithProgressBar(ProgressBarOptions&& value) { SetProgressBar(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine the presentation of trend arrows in a KPI
      * visual.</p>
      */
-    inline const TrendArrowOptions& GetTrendArrows() const{ return m_trendArrows; }
-
-    /**
-     * <p>The options that determine the presentation of trend arrows in a KPI
-     * visual.</p>
-     */
+    inline const TrendArrowOptions& GetTrendArrows() const { return m_trendArrows; }
     inline bool TrendArrowsHasBeenSet() const { return m_trendArrowsHasBeenSet; }
+    template<typename TrendArrowsT = TrendArrowOptions>
+    void SetTrendArrows(TrendArrowsT&& value) { m_trendArrowsHasBeenSet = true; m_trendArrows = std::forward<TrendArrowsT>(value); }
+    template<typename TrendArrowsT = TrendArrowOptions>
+    KPIOptions& WithTrendArrows(TrendArrowsT&& value) { SetTrendArrows(std::forward<TrendArrowsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The options that determine the presentation of trend arrows in a KPI
-     * visual.</p>
-     */
-    inline void SetTrendArrows(const TrendArrowOptions& value) { m_trendArrowsHasBeenSet = true; m_trendArrows = value; }
-
-    /**
-     * <p>The options that determine the presentation of trend arrows in a KPI
-     * visual.</p>
-     */
-    inline void SetTrendArrows(TrendArrowOptions&& value) { m_trendArrowsHasBeenSet = true; m_trendArrows = std::move(value); }
-
-    /**
-     * <p>The options that determine the presentation of trend arrows in a KPI
-     * visual.</p>
-     */
-    inline KPIOptions& WithTrendArrows(const TrendArrowOptions& value) { SetTrendArrows(value); return *this;}
-
-    /**
-     * <p>The options that determine the presentation of trend arrows in a KPI
-     * visual.</p>
-     */
-    inline KPIOptions& WithTrendArrows(TrendArrowOptions&& value) { SetTrendArrows(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine the presentation of the secondary value of a KPI
      * visual.</p>
      */
-    inline const SecondaryValueOptions& GetSecondaryValue() const{ return m_secondaryValue; }
-
-    /**
-     * <p>The options that determine the presentation of the secondary value of a KPI
-     * visual.</p>
-     */
+    inline const SecondaryValueOptions& GetSecondaryValue() const { return m_secondaryValue; }
     inline bool SecondaryValueHasBeenSet() const { return m_secondaryValueHasBeenSet; }
+    template<typename SecondaryValueT = SecondaryValueOptions>
+    void SetSecondaryValue(SecondaryValueT&& value) { m_secondaryValueHasBeenSet = true; m_secondaryValue = std::forward<SecondaryValueT>(value); }
+    template<typename SecondaryValueT = SecondaryValueOptions>
+    KPIOptions& WithSecondaryValue(SecondaryValueT&& value) { SetSecondaryValue(std::forward<SecondaryValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The options that determine the presentation of the secondary value of a KPI
-     * visual.</p>
-     */
-    inline void SetSecondaryValue(const SecondaryValueOptions& value) { m_secondaryValueHasBeenSet = true; m_secondaryValue = value; }
-
-    /**
-     * <p>The options that determine the presentation of the secondary value of a KPI
-     * visual.</p>
-     */
-    inline void SetSecondaryValue(SecondaryValueOptions&& value) { m_secondaryValueHasBeenSet = true; m_secondaryValue = std::move(value); }
-
-    /**
-     * <p>The options that determine the presentation of the secondary value of a KPI
-     * visual.</p>
-     */
-    inline KPIOptions& WithSecondaryValue(const SecondaryValueOptions& value) { SetSecondaryValue(value); return *this;}
-
-    /**
-     * <p>The options that determine the presentation of the secondary value of a KPI
-     * visual.</p>
-     */
-    inline KPIOptions& WithSecondaryValue(SecondaryValueOptions&& value) { SetSecondaryValue(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The comparison configuration of a KPI visual.</p>
      */
-    inline const ComparisonConfiguration& GetComparison() const{ return m_comparison; }
-
-    /**
-     * <p>The comparison configuration of a KPI visual.</p>
-     */
+    inline const ComparisonConfiguration& GetComparison() const { return m_comparison; }
     inline bool ComparisonHasBeenSet() const { return m_comparisonHasBeenSet; }
+    template<typename ComparisonT = ComparisonConfiguration>
+    void SetComparison(ComparisonT&& value) { m_comparisonHasBeenSet = true; m_comparison = std::forward<ComparisonT>(value); }
+    template<typename ComparisonT = ComparisonConfiguration>
+    KPIOptions& WithComparison(ComparisonT&& value) { SetComparison(std::forward<ComparisonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The comparison configuration of a KPI visual.</p>
-     */
-    inline void SetComparison(const ComparisonConfiguration& value) { m_comparisonHasBeenSet = true; m_comparison = value; }
-
-    /**
-     * <p>The comparison configuration of a KPI visual.</p>
-     */
-    inline void SetComparison(ComparisonConfiguration&& value) { m_comparisonHasBeenSet = true; m_comparison = std::move(value); }
-
-    /**
-     * <p>The comparison configuration of a KPI visual.</p>
-     */
-    inline KPIOptions& WithComparison(const ComparisonConfiguration& value) { SetComparison(value); return *this;}
-
-    /**
-     * <p>The comparison configuration of a KPI visual.</p>
-     */
-    inline KPIOptions& WithComparison(ComparisonConfiguration&& value) { SetComparison(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine the primary value display type.</p>
      */
-    inline const PrimaryValueDisplayType& GetPrimaryValueDisplayType() const{ return m_primaryValueDisplayType; }
-
-    /**
-     * <p>The options that determine the primary value display type.</p>
-     */
+    inline PrimaryValueDisplayType GetPrimaryValueDisplayType() const { return m_primaryValueDisplayType; }
     inline bool PrimaryValueDisplayTypeHasBeenSet() const { return m_primaryValueDisplayTypeHasBeenSet; }
+    inline void SetPrimaryValueDisplayType(PrimaryValueDisplayType value) { m_primaryValueDisplayTypeHasBeenSet = true; m_primaryValueDisplayType = value; }
+    inline KPIOptions& WithPrimaryValueDisplayType(PrimaryValueDisplayType value) { SetPrimaryValueDisplayType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The options that determine the primary value display type.</p>
-     */
-    inline void SetPrimaryValueDisplayType(const PrimaryValueDisplayType& value) { m_primaryValueDisplayTypeHasBeenSet = true; m_primaryValueDisplayType = value; }
-
-    /**
-     * <p>The options that determine the primary value display type.</p>
-     */
-    inline void SetPrimaryValueDisplayType(PrimaryValueDisplayType&& value) { m_primaryValueDisplayTypeHasBeenSet = true; m_primaryValueDisplayType = std::move(value); }
-
-    /**
-     * <p>The options that determine the primary value display type.</p>
-     */
-    inline KPIOptions& WithPrimaryValueDisplayType(const PrimaryValueDisplayType& value) { SetPrimaryValueDisplayType(value); return *this;}
-
-    /**
-     * <p>The options that determine the primary value display type.</p>
-     */
-    inline KPIOptions& WithPrimaryValueDisplayType(PrimaryValueDisplayType&& value) { SetPrimaryValueDisplayType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine the primary value font configuration.</p>
      */
-    inline const FontConfiguration& GetPrimaryValueFontConfiguration() const{ return m_primaryValueFontConfiguration; }
-
-    /**
-     * <p>The options that determine the primary value font configuration.</p>
-     */
+    inline const FontConfiguration& GetPrimaryValueFontConfiguration() const { return m_primaryValueFontConfiguration; }
     inline bool PrimaryValueFontConfigurationHasBeenSet() const { return m_primaryValueFontConfigurationHasBeenSet; }
+    template<typename PrimaryValueFontConfigurationT = FontConfiguration>
+    void SetPrimaryValueFontConfiguration(PrimaryValueFontConfigurationT&& value) { m_primaryValueFontConfigurationHasBeenSet = true; m_primaryValueFontConfiguration = std::forward<PrimaryValueFontConfigurationT>(value); }
+    template<typename PrimaryValueFontConfigurationT = FontConfiguration>
+    KPIOptions& WithPrimaryValueFontConfiguration(PrimaryValueFontConfigurationT&& value) { SetPrimaryValueFontConfiguration(std::forward<PrimaryValueFontConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The options that determine the primary value font configuration.</p>
-     */
-    inline void SetPrimaryValueFontConfiguration(const FontConfiguration& value) { m_primaryValueFontConfigurationHasBeenSet = true; m_primaryValueFontConfiguration = value; }
-
-    /**
-     * <p>The options that determine the primary value font configuration.</p>
-     */
-    inline void SetPrimaryValueFontConfiguration(FontConfiguration&& value) { m_primaryValueFontConfigurationHasBeenSet = true; m_primaryValueFontConfiguration = std::move(value); }
-
-    /**
-     * <p>The options that determine the primary value font configuration.</p>
-     */
-    inline KPIOptions& WithPrimaryValueFontConfiguration(const FontConfiguration& value) { SetPrimaryValueFontConfiguration(value); return *this;}
-
-    /**
-     * <p>The options that determine the primary value font configuration.</p>
-     */
-    inline KPIOptions& WithPrimaryValueFontConfiguration(FontConfiguration&& value) { SetPrimaryValueFontConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine the secondary value font configuration.</p>
      */
-    inline const FontConfiguration& GetSecondaryValueFontConfiguration() const{ return m_secondaryValueFontConfiguration; }
-
-    /**
-     * <p>The options that determine the secondary value font configuration.</p>
-     */
+    inline const FontConfiguration& GetSecondaryValueFontConfiguration() const { return m_secondaryValueFontConfiguration; }
     inline bool SecondaryValueFontConfigurationHasBeenSet() const { return m_secondaryValueFontConfigurationHasBeenSet; }
+    template<typename SecondaryValueFontConfigurationT = FontConfiguration>
+    void SetSecondaryValueFontConfiguration(SecondaryValueFontConfigurationT&& value) { m_secondaryValueFontConfigurationHasBeenSet = true; m_secondaryValueFontConfiguration = std::forward<SecondaryValueFontConfigurationT>(value); }
+    template<typename SecondaryValueFontConfigurationT = FontConfiguration>
+    KPIOptions& WithSecondaryValueFontConfiguration(SecondaryValueFontConfigurationT&& value) { SetSecondaryValueFontConfiguration(std::forward<SecondaryValueFontConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The options that determine the secondary value font configuration.</p>
+     * <p>The options that determine the visibility, color, type, and tooltip
+     * visibility of the sparkline of a KPI visual.</p>
      */
-    inline void SetSecondaryValueFontConfiguration(const FontConfiguration& value) { m_secondaryValueFontConfigurationHasBeenSet = true; m_secondaryValueFontConfiguration = value; }
+    inline const KPISparklineOptions& GetSparkline() const { return m_sparkline; }
+    inline bool SparklineHasBeenSet() const { return m_sparklineHasBeenSet; }
+    template<typename SparklineT = KPISparklineOptions>
+    void SetSparkline(SparklineT&& value) { m_sparklineHasBeenSet = true; m_sparkline = std::forward<SparklineT>(value); }
+    template<typename SparklineT = KPISparklineOptions>
+    KPIOptions& WithSparkline(SparklineT&& value) { SetSparkline(std::forward<SparklineT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The options that determine the secondary value font configuration.</p>
+     * <p>The options that determine the layout a KPI visual.</p>
      */
-    inline void SetSecondaryValueFontConfiguration(FontConfiguration&& value) { m_secondaryValueFontConfigurationHasBeenSet = true; m_secondaryValueFontConfiguration = std::move(value); }
-
-    /**
-     * <p>The options that determine the secondary value font configuration.</p>
-     */
-    inline KPIOptions& WithSecondaryValueFontConfiguration(const FontConfiguration& value) { SetSecondaryValueFontConfiguration(value); return *this;}
-
-    /**
-     * <p>The options that determine the secondary value font configuration.</p>
-     */
-    inline KPIOptions& WithSecondaryValueFontConfiguration(FontConfiguration&& value) { SetSecondaryValueFontConfiguration(std::move(value)); return *this;}
-
+    inline const KPIVisualLayoutOptions& GetVisualLayoutOptions() const { return m_visualLayoutOptions; }
+    inline bool VisualLayoutOptionsHasBeenSet() const { return m_visualLayoutOptionsHasBeenSet; }
+    template<typename VisualLayoutOptionsT = KPIVisualLayoutOptions>
+    void SetVisualLayoutOptions(VisualLayoutOptionsT&& value) { m_visualLayoutOptionsHasBeenSet = true; m_visualLayoutOptions = std::forward<VisualLayoutOptionsT>(value); }
+    template<typename VisualLayoutOptionsT = KPIVisualLayoutOptions>
+    KPIOptions& WithVisualLayoutOptions(VisualLayoutOptionsT&& value) { SetVisualLayoutOptions(std::forward<VisualLayoutOptionsT>(value)); return *this;}
+    ///@}
   private:
 
     ProgressBarOptions m_progressBar;
@@ -291,7 +168,7 @@ namespace Model
     ComparisonConfiguration m_comparison;
     bool m_comparisonHasBeenSet = false;
 
-    PrimaryValueDisplayType m_primaryValueDisplayType;
+    PrimaryValueDisplayType m_primaryValueDisplayType{PrimaryValueDisplayType::NOT_SET};
     bool m_primaryValueDisplayTypeHasBeenSet = false;
 
     FontConfiguration m_primaryValueFontConfiguration;
@@ -299,6 +176,12 @@ namespace Model
 
     FontConfiguration m_secondaryValueFontConfiguration;
     bool m_secondaryValueFontConfigurationHasBeenSet = false;
+
+    KPISparklineOptions m_sparkline;
+    bool m_sparklineHasBeenSet = false;
+
+    KPIVisualLayoutOptions m_visualLayoutOptions;
+    bool m_visualLayoutOptionsHasBeenSet = false;
   };
 
 } // namespace Model

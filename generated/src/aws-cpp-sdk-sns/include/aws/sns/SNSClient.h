@@ -40,22 +40,25 @@ namespace SNS
   {
     public:
       typedef Aws::Client::AWSXMLClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef SNSClientConfiguration ClientConfigurationType;
+      typedef SNSEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         SNSClient(const Aws::SNS::SNSClientConfiguration& clientConfiguration = Aws::SNS::SNSClientConfiguration(),
-                  std::shared_ptr<SNSEndpointProviderBase> endpointProvider = Aws::MakeShared<SNSEndpointProvider>(ALLOCATION_TAG));
+                  std::shared_ptr<SNSEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         SNSClient(const Aws::Auth::AWSCredentials& credentials,
-                  std::shared_ptr<SNSEndpointProviderBase> endpointProvider = Aws::MakeShared<SNSEndpointProvider>(ALLOCATION_TAG),
+                  std::shared_ptr<SNSEndpointProviderBase> endpointProvider = nullptr,
                   const Aws::SNS::SNSClientConfiguration& clientConfiguration = Aws::SNS::SNSClientConfiguration());
 
        /**
@@ -63,7 +66,7 @@ namespace SNS
         * the default http client factory will be used
         */
         SNSClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                  std::shared_ptr<SNSEndpointProviderBase> endpointProvider = Aws::MakeShared<SNSEndpointProvider>(ALLOCATION_TAG),
+                  std::shared_ptr<SNSEndpointProviderBase> endpointProvider = nullptr,
                   const Aws::SNS::SNSClientConfiguration& clientConfiguration = Aws::SNS::SNSClientConfiguration());
 
 
@@ -194,25 +197,30 @@ namespace SNS
          * <code>PlatformPrincipal</code> and <code>PlatformCredential</code> attributes
          * when using the <code>CreatePlatformApplication</code> action.</p> <p>
          * <code>PlatformPrincipal</code> and <code>PlatformCredential</code> are received
-         * from the notification service.</p> <ul> <li> <p>For <code>ADM</code>,
+         * from the notification service.</p> <ul> <li> <p>For ADM,
          * <code>PlatformPrincipal</code> is <code>client id</code> and
          * <code>PlatformCredential</code> is <code>client secret</code>.</p> </li> <li>
-         * <p>For <code>Baidu</code>, <code>PlatformPrincipal</code> is <code>API
-         * key</code> and <code>PlatformCredential</code> is <code>secret key</code>.</p>
-         * </li> <li> <p>For <code>APNS</code> and <code>APNS_SANDBOX</code> using
-         * certificate credentials, <code>PlatformPrincipal</code> is <code>SSL
-         * certificate</code> and <code>PlatformCredential</code> is <code>private
-         * key</code>.</p> </li> <li> <p>For <code>APNS</code> and
-         * <code>APNS_SANDBOX</code> using token credentials,
+         * <p>For APNS and <code>APNS_SANDBOX</code> using certificate credentials,
+         * <code>PlatformPrincipal</code> is <code>SSL certificate</code> and
+         * <code>PlatformCredential</code> is <code>private key</code>.</p> </li> <li>
+         * <p>For APNS and <code>APNS_SANDBOX</code> using token credentials,
          * <code>PlatformPrincipal</code> is <code>signing key ID</code> and
          * <code>PlatformCredential</code> is <code>signing key</code>.</p> </li> <li>
-         * <p>For <code>GCM</code> (Firebase Cloud Messaging), there is no
-         * <code>PlatformPrincipal</code> and the <code>PlatformCredential</code> is
-         * <code>API key</code>.</p> </li> <li> <p>For <code>MPNS</code>,
-         * <code>PlatformPrincipal</code> is <code>TLS certificate</code> and
+         * <p>For Baidu, <code>PlatformPrincipal</code> is <code>API key</code> and
+         * <code>PlatformCredential</code> is <code>secret key</code>.</p> </li> <li>
+         * <p>For GCM (Firebase Cloud Messaging) using key credentials, there is no
+         * <code>PlatformPrincipal</code>. The <code>PlatformCredential</code> is <code>API
+         * key</code>.</p> </li> <li> <p>For GCM (Firebase Cloud Messaging) using token
+         * credentials, there is no <code>PlatformPrincipal</code>. The
+         * <code>PlatformCredential</code> is a JSON formatted private key file. When using
+         * the Amazon Web Services CLI or Amazon Web Services SDKs, the file must be in
+         * string format and special characters must be ignored. To format the file
+         * correctly, Amazon SNS recommends using the following command:
+         * <code>SERVICE_JSON=$(jq @json &lt; service.json)</code>.</p> </li> <li> <p>For
+         * MPNS, <code>PlatformPrincipal</code> is <code>TLS certificate</code> and
          * <code>PlatformCredential</code> is <code>private key</code>.</p> </li> <li>
-         * <p>For <code>WNS</code>, <code>PlatformPrincipal</code> is <code>Package
-         * Security Identifier</code> and <code>PlatformCredential</code> is <code>secret
+         * <p>For WNS, <code>PlatformPrincipal</code> is <code>Package Security
+         * Identifier</code> and <code>PlatformCredential</code> is <code>secret
          * key</code>.</p> </li> </ul> <p>You can use the returned
          * <code>PlatformApplicationArn</code> as an attribute for the
          * <code>CreatePlatformEndpoint</code> action.</p><p><h3>See Also:</h3>   <a
@@ -563,13 +571,13 @@ namespace SNS
          * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetSMSAttributes">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetSMSAttributesOutcome GetSMSAttributes(const Model::GetSMSAttributesRequest& request) const;
+        virtual Model::GetSMSAttributesOutcome GetSMSAttributes(const Model::GetSMSAttributesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetSMSAttributes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetSMSAttributesRequestT = Model::GetSMSAttributesRequest>
-        Model::GetSMSAttributesOutcomeCallable GetSMSAttributesCallable(const GetSMSAttributesRequestT& request) const
+        Model::GetSMSAttributesOutcomeCallable GetSMSAttributesCallable(const GetSMSAttributesRequestT& request = {}) const
         {
             return SubmitCallable(&SNSClient::GetSMSAttributes, request);
         }
@@ -578,7 +586,7 @@ namespace SNS
          * An Async wrapper for GetSMSAttributes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetSMSAttributesRequestT = Model::GetSMSAttributesRequest>
-        void GetSMSAttributesAsync(const GetSMSAttributesRequestT& request, const GetSMSAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetSMSAttributesAsync(const GetSMSAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetSMSAttributesRequestT& request = {}) const
         {
             return SubmitAsync(&SNSClient::GetSMSAttributes, request, handler, context);
         }
@@ -599,13 +607,13 @@ namespace SNS
          * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetSMSSandboxAccountStatus">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetSMSSandboxAccountStatusOutcome GetSMSSandboxAccountStatus(const Model::GetSMSSandboxAccountStatusRequest& request) const;
+        virtual Model::GetSMSSandboxAccountStatusOutcome GetSMSSandboxAccountStatus(const Model::GetSMSSandboxAccountStatusRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetSMSSandboxAccountStatus that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetSMSSandboxAccountStatusRequestT = Model::GetSMSSandboxAccountStatusRequest>
-        Model::GetSMSSandboxAccountStatusOutcomeCallable GetSMSSandboxAccountStatusCallable(const GetSMSSandboxAccountStatusRequestT& request) const
+        Model::GetSMSSandboxAccountStatusOutcomeCallable GetSMSSandboxAccountStatusCallable(const GetSMSSandboxAccountStatusRequestT& request = {}) const
         {
             return SubmitCallable(&SNSClient::GetSMSSandboxAccountStatus, request);
         }
@@ -614,7 +622,7 @@ namespace SNS
          * An Async wrapper for GetSMSSandboxAccountStatus that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetSMSSandboxAccountStatusRequestT = Model::GetSMSSandboxAccountStatusRequest>
-        void GetSMSSandboxAccountStatusAsync(const GetSMSSandboxAccountStatusRequestT& request, const GetSMSSandboxAccountStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetSMSSandboxAccountStatusAsync(const GetSMSSandboxAccountStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetSMSSandboxAccountStatusRequestT& request = {}) const
         {
             return SubmitAsync(&SNSClient::GetSMSSandboxAccountStatus, request, handler, context);
         }
@@ -716,13 +724,13 @@ namespace SNS
          * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListOriginationNumbers">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListOriginationNumbersOutcome ListOriginationNumbers(const Model::ListOriginationNumbersRequest& request) const;
+        virtual Model::ListOriginationNumbersOutcome ListOriginationNumbers(const Model::ListOriginationNumbersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListOriginationNumbers that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListOriginationNumbersRequestT = Model::ListOriginationNumbersRequest>
-        Model::ListOriginationNumbersOutcomeCallable ListOriginationNumbersCallable(const ListOriginationNumbersRequestT& request) const
+        Model::ListOriginationNumbersOutcomeCallable ListOriginationNumbersCallable(const ListOriginationNumbersRequestT& request = {}) const
         {
             return SubmitCallable(&SNSClient::ListOriginationNumbers, request);
         }
@@ -731,7 +739,7 @@ namespace SNS
          * An Async wrapper for ListOriginationNumbers that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListOriginationNumbersRequestT = Model::ListOriginationNumbersRequest>
-        void ListOriginationNumbersAsync(const ListOriginationNumbersRequestT& request, const ListOriginationNumbersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListOriginationNumbersAsync(const ListOriginationNumbersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListOriginationNumbersRequestT& request = {}) const
         {
             return SubmitAsync(&SNSClient::ListOriginationNumbers, request, handler, context);
         }
@@ -749,13 +757,13 @@ namespace SNS
          * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListPhoneNumbersOptedOut">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListPhoneNumbersOptedOutOutcome ListPhoneNumbersOptedOut(const Model::ListPhoneNumbersOptedOutRequest& request) const;
+        virtual Model::ListPhoneNumbersOptedOutOutcome ListPhoneNumbersOptedOut(const Model::ListPhoneNumbersOptedOutRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListPhoneNumbersOptedOut that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListPhoneNumbersOptedOutRequestT = Model::ListPhoneNumbersOptedOutRequest>
-        Model::ListPhoneNumbersOptedOutOutcomeCallable ListPhoneNumbersOptedOutCallable(const ListPhoneNumbersOptedOutRequestT& request) const
+        Model::ListPhoneNumbersOptedOutOutcomeCallable ListPhoneNumbersOptedOutCallable(const ListPhoneNumbersOptedOutRequestT& request = {}) const
         {
             return SubmitCallable(&SNSClient::ListPhoneNumbersOptedOut, request);
         }
@@ -764,7 +772,7 @@ namespace SNS
          * An Async wrapper for ListPhoneNumbersOptedOut that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListPhoneNumbersOptedOutRequestT = Model::ListPhoneNumbersOptedOutRequest>
-        void ListPhoneNumbersOptedOutAsync(const ListPhoneNumbersOptedOutRequestT& request, const ListPhoneNumbersOptedOutResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListPhoneNumbersOptedOutAsync(const ListPhoneNumbersOptedOutResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListPhoneNumbersOptedOutRequestT& request = {}) const
         {
             return SubmitAsync(&SNSClient::ListPhoneNumbersOptedOut, request, handler, context);
         }
@@ -784,13 +792,13 @@ namespace SNS
          * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListPlatformApplications">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListPlatformApplicationsOutcome ListPlatformApplications(const Model::ListPlatformApplicationsRequest& request) const;
+        virtual Model::ListPlatformApplicationsOutcome ListPlatformApplications(const Model::ListPlatformApplicationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListPlatformApplications that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListPlatformApplicationsRequestT = Model::ListPlatformApplicationsRequest>
-        Model::ListPlatformApplicationsOutcomeCallable ListPlatformApplicationsCallable(const ListPlatformApplicationsRequestT& request) const
+        Model::ListPlatformApplicationsOutcomeCallable ListPlatformApplicationsCallable(const ListPlatformApplicationsRequestT& request = {}) const
         {
             return SubmitCallable(&SNSClient::ListPlatformApplications, request);
         }
@@ -799,7 +807,7 @@ namespace SNS
          * An Async wrapper for ListPlatformApplications that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListPlatformApplicationsRequestT = Model::ListPlatformApplicationsRequest>
-        void ListPlatformApplicationsAsync(const ListPlatformApplicationsRequestT& request, const ListPlatformApplicationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListPlatformApplicationsAsync(const ListPlatformApplicationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListPlatformApplicationsRequestT& request = {}) const
         {
             return SubmitAsync(&SNSClient::ListPlatformApplications, request, handler, context);
         }
@@ -820,13 +828,13 @@ namespace SNS
          * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListSMSSandboxPhoneNumbers">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListSMSSandboxPhoneNumbersOutcome ListSMSSandboxPhoneNumbers(const Model::ListSMSSandboxPhoneNumbersRequest& request) const;
+        virtual Model::ListSMSSandboxPhoneNumbersOutcome ListSMSSandboxPhoneNumbers(const Model::ListSMSSandboxPhoneNumbersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListSMSSandboxPhoneNumbers that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListSMSSandboxPhoneNumbersRequestT = Model::ListSMSSandboxPhoneNumbersRequest>
-        Model::ListSMSSandboxPhoneNumbersOutcomeCallable ListSMSSandboxPhoneNumbersCallable(const ListSMSSandboxPhoneNumbersRequestT& request) const
+        Model::ListSMSSandboxPhoneNumbersOutcomeCallable ListSMSSandboxPhoneNumbersCallable(const ListSMSSandboxPhoneNumbersRequestT& request = {}) const
         {
             return SubmitCallable(&SNSClient::ListSMSSandboxPhoneNumbers, request);
         }
@@ -835,7 +843,7 @@ namespace SNS
          * An Async wrapper for ListSMSSandboxPhoneNumbers that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListSMSSandboxPhoneNumbersRequestT = Model::ListSMSSandboxPhoneNumbersRequest>
-        void ListSMSSandboxPhoneNumbersAsync(const ListSMSSandboxPhoneNumbersRequestT& request, const ListSMSSandboxPhoneNumbersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListSMSSandboxPhoneNumbersAsync(const ListSMSSandboxPhoneNumbersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListSMSSandboxPhoneNumbersRequestT& request = {}) const
         {
             return SubmitAsync(&SNSClient::ListSMSSandboxPhoneNumbers, request, handler, context);
         }
@@ -850,13 +858,13 @@ namespace SNS
          * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListSubscriptions">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListSubscriptionsOutcome ListSubscriptions(const Model::ListSubscriptionsRequest& request) const;
+        virtual Model::ListSubscriptionsOutcome ListSubscriptions(const Model::ListSubscriptionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListSubscriptions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListSubscriptionsRequestT = Model::ListSubscriptionsRequest>
-        Model::ListSubscriptionsOutcomeCallable ListSubscriptionsCallable(const ListSubscriptionsRequestT& request) const
+        Model::ListSubscriptionsOutcomeCallable ListSubscriptionsCallable(const ListSubscriptionsRequestT& request = {}) const
         {
             return SubmitCallable(&SNSClient::ListSubscriptions, request);
         }
@@ -865,7 +873,7 @@ namespace SNS
          * An Async wrapper for ListSubscriptions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListSubscriptionsRequestT = Model::ListSubscriptionsRequest>
-        void ListSubscriptionsAsync(const ListSubscriptionsRequestT& request, const ListSubscriptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListSubscriptionsAsync(const ListSubscriptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListSubscriptionsRequestT& request = {}) const
         {
             return SubmitAsync(&SNSClient::ListSubscriptions, request, handler, context);
         }
@@ -937,13 +945,13 @@ namespace SNS
          * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListTopics">AWS API
          * Reference</a></p>
          */
-        virtual Model::ListTopicsOutcome ListTopics(const Model::ListTopicsRequest& request) const;
+        virtual Model::ListTopicsOutcome ListTopics(const Model::ListTopicsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListTopics that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListTopicsRequestT = Model::ListTopicsRequest>
-        Model::ListTopicsOutcomeCallable ListTopicsCallable(const ListTopicsRequestT& request) const
+        Model::ListTopicsOutcomeCallable ListTopicsCallable(const ListTopicsRequestT& request = {}) const
         {
             return SubmitCallable(&SNSClient::ListTopics, request);
         }
@@ -952,7 +960,7 @@ namespace SNS
          * An Async wrapper for ListTopics that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListTopicsRequestT = Model::ListTopicsRequest>
-        void ListTopicsAsync(const ListTopicsRequestT& request, const ListTopicsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListTopicsAsync(const ListTopicsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListTopicsRequestT& request = {}) const
         {
             return SubmitAsync(&SNSClient::ListTopics, request, handler, context);
         }
@@ -1025,24 +1033,32 @@ namespace SNS
         }
 
         /**
-         * <p>Publishes up to ten messages to the specified topic. This is a batch version
-         * of <code>Publish</code>. For FIFO topics, multiple messages within a single
-         * batch are published in the order they are sent, and messages are deduplicated
-         * within the batch and across batches for 5 minutes.</p> <p>The result of
-         * publishing each message is reported individually in the response. Because the
-         * batch request can result in a combination of successful and unsuccessful
-         * actions, you should check for batch errors even when the call returns an HTTP
-         * status code of <code>200</code>.</p> <p>The maximum allowed individual message
-         * size and the maximum total payload size (the sum of the individual lengths of
-         * all of the batched messages) are both 256 KB (262,144 bytes). </p> <p>Some
-         * actions take lists of parameters. These lists are specified using the
-         * <code>param.n</code> notation. Values of <code>n</code> are integers starting
-         * from 1. For example, a parameter list with two elements looks like this: </p>
-         * <p>&amp;AttributeName.1=first</p> <p>&amp;AttributeName.2=second</p> <p>If you
-         * send a batch message to a topic, Amazon SNS publishes the batch message to each
-         * endpoint that is subscribed to the topic. The format of the batch message
-         * depends on the notification protocol for each subscribed endpoint.</p> <p>When a
-         * <code>messageId</code> is returned, the batch message is saved and Amazon SNS
+         * <p>Publishes up to 10 messages to the specified topic in a single batch. This is
+         * a batch version of the <code>Publish</code> API. If you try to send more than 10
+         * messages in a single batch request, you will receive a
+         * <code>TooManyEntriesInBatchRequest</code> exception.</p> <p>For FIFO topics,
+         * multiple messages within a single batch are published in the order they are
+         * sent, and messages are deduplicated within the batch and across batches for five
+         * minutes.</p> <p>The result of publishing each message is reported individually
+         * in the response. Because the batch request can result in a combination of
+         * successful and unsuccessful actions, you should check for batch errors even when
+         * the call returns an HTTP status code of 200.</p> <p>The maximum allowed
+         * individual message size and the maximum total payload size (the sum of the
+         * individual lengths of all of the batched messages) are both 256 KB (262,144
+         * bytes).</p>  <p>The <code>PublishBatch</code> API can send up to 10
+         * messages at a time. If you attempt to send more than 10 messages in one request,
+         * you will encounter a <code>TooManyEntriesInBatchRequest</code> exception. In
+         * such cases, split your messages into multiple requests, each containing no more
+         * than 10 messages.</p>  <p>Some actions take lists of parameters.
+         * These lists are specified using the <code>param.n</code> notation. Values of
+         * <code>n</code> are integers starting from <b>1</b>. For example, a parameter
+         * list with two elements looks like this:</p> <p>
+         * <code>&amp;AttributeName.1=first</code> </p> <p>
+         * <code>&amp;AttributeName.2=second</code> </p> <p>If you send a batch message to
+         * a topic, Amazon SNS publishes the batch message to each endpoint that is
+         * subscribed to the topic. The format of the batch message depends on the
+         * notification protocol for each subscribed endpoint.</p> <p>When a
+         * <code>messageId</code> is returned, the batch message is saved, and Amazon SNS
          * immediately delivers the message to subscribers.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/PublishBatch">AWS
          * API Reference</a></p>
@@ -1279,7 +1295,7 @@ namespace SNS
          * Services account, the endpoint owner must run the
          * <code>ConfirmSubscription</code> action to confirm the subscription.</p> <p>You
          * call the <code>ConfirmSubscription</code> action with the token from the
-         * subscription response. Confirmation tokens are valid for three days.</p> <p>This
+         * subscription response. Confirmation tokens are valid for two days.</p> <p>This
          * action is throttled at 100 transactions per second (TPS).</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/Subscribe">AWS API
@@ -1349,11 +1365,8 @@ namespace SNS
          * <code>Unsubscribe</code> call does not require authentication and the requester
          * is not the subscription owner, a final cancellation message is delivered to the
          * endpoint, so that the endpoint owner can easily resubscribe to the topic if the
-         * <code>Unsubscribe</code> request was unintended.</p>  <p>Amazon SQS queue
-         * subscriptions require authentication for deletion. Only the owner of the
-         * subscription, or the owner of the topic can unsubscribe using the required
-         * Amazon Web Services signature.</p>  <p>This action is throttled at 100
-         * transactions per second (TPS).</p><p><h3>See Also:</h3>   <a
+         * <code>Unsubscribe</code> request was unintended.</p> <p>This action is throttled
+         * at 100 transactions per second (TPS).</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/Unsubscribe">AWS API
          * Reference</a></p>
          */
@@ -1448,7 +1461,6 @@ namespace SNS
         void init(const SNSClientConfiguration& clientConfiguration);
 
         SNSClientConfiguration m_clientConfiguration;
-        std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
         std::shared_ptr<SNSEndpointProviderBase> m_endpointProvider;
   };
 

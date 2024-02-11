@@ -18,15 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-HttpPathMatch::HttpPathMatch() : 
-    m_exactHasBeenSet(false),
-    m_regexHasBeenSet(false)
-{
-}
-
-HttpPathMatch::HttpPathMatch(JsonView jsonValue) : 
-    m_exactHasBeenSet(false),
-    m_regexHasBeenSet(false)
+HttpPathMatch::HttpPathMatch(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ HttpPathMatch& HttpPathMatch::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("exact"))
   {
     m_exact = jsonValue.GetString("exact");
-
     m_exactHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("regex"))
   {
     m_regex = jsonValue.GetString("regex");
-
     m_regexHasBeenSet = true;
   }
-
   return *this;
 }
 

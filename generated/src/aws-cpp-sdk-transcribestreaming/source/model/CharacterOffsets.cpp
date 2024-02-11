@@ -18,19 +18,7 @@ namespace TranscribeStreamingService
 namespace Model
 {
 
-CharacterOffsets::CharacterOffsets() : 
-    m_begin(0),
-    m_beginHasBeenSet(false),
-    m_end(0),
-    m_endHasBeenSet(false)
-{
-}
-
-CharacterOffsets::CharacterOffsets(JsonView jsonValue) : 
-    m_begin(0),
-    m_beginHasBeenSet(false),
-    m_end(0),
-    m_endHasBeenSet(false)
+CharacterOffsets::CharacterOffsets(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ CharacterOffsets& CharacterOffsets::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Begin"))
   {
     m_begin = jsonValue.GetInteger("Begin");
-
     m_beginHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("End"))
   {
     m_end = jsonValue.GetInteger("End");
-
     m_endHasBeenSet = true;
   }
-
   return *this;
 }
 

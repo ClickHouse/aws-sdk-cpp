@@ -31,93 +31,35 @@ namespace Model
   class Identity
   {
   public:
-    AWS_CHIMESDKMESSAGING_API Identity();
+    AWS_CHIMESDKMESSAGING_API Identity() = default;
     AWS_CHIMESDKMESSAGING_API Identity(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMESSAGING_API Identity& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMESSAGING_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN in an Identity.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The ARN in an Identity.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    Identity& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN in an Identity.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The ARN in an Identity.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN in an Identity.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The ARN in an Identity.</p>
-     */
-    inline Identity& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN in an Identity.</p>
-     */
-    inline Identity& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN in an Identity.</p>
-     */
-    inline Identity& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name in an Identity.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name in an Identity.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>The name in an Identity.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name in an Identity.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name in an Identity.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name in an Identity.</p>
-     */
-    inline Identity& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name in an Identity.</p>
-     */
-    inline Identity& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name in an Identity.</p>
-     */
-    inline Identity& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Identity& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;

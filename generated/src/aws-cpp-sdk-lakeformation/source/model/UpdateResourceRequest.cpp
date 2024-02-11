@@ -12,14 +12,6 @@ using namespace Aws::LakeFormation::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateResourceRequest::UpdateResourceRequest() : 
-    m_roleArnHasBeenSet(false),
-    m_resourceArnHasBeenSet(false),
-    m_withFederation(false),
-    m_withFederationHasBeenSet(false)
-{
-}
-
 Aws::String UpdateResourceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,6 +31,12 @@ Aws::String UpdateResourceRequest::SerializePayload() const
   if(m_withFederationHasBeenSet)
   {
    payload.WithBool("WithFederation", m_withFederation);
+
+  }
+
+  if(m_hybridAccessEnabledHasBeenSet)
+  {
+   payload.WithBool("HybridAccessEnabled", m_hybridAccessEnabled);
 
   }
 

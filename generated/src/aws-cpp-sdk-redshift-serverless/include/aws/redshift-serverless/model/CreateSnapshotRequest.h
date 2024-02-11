@@ -23,7 +23,7 @@ namespace Model
   class CreateSnapshotRequest : public RedshiftServerlessRequest
   {
   public:
-    AWS_REDSHIFTSERVERLESS_API CreateSnapshotRequest();
+    AWS_REDSHIFTSERVERLESS_API CreateSnapshotRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,171 +36,61 @@ namespace Model
     AWS_REDSHIFTSERVERLESS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The namespace to create a snapshot for.</p>
      */
-    inline const Aws::String& GetNamespaceName() const{ return m_namespaceName; }
-
-    /**
-     * <p>The namespace to create a snapshot for.</p>
-     */
+    inline const Aws::String& GetNamespaceName() const { return m_namespaceName; }
     inline bool NamespaceNameHasBeenSet() const { return m_namespaceNameHasBeenSet; }
+    template<typename NamespaceNameT = Aws::String>
+    void SetNamespaceName(NamespaceNameT&& value) { m_namespaceNameHasBeenSet = true; m_namespaceName = std::forward<NamespaceNameT>(value); }
+    template<typename NamespaceNameT = Aws::String>
+    CreateSnapshotRequest& WithNamespaceName(NamespaceNameT&& value) { SetNamespaceName(std::forward<NamespaceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The namespace to create a snapshot for.</p>
-     */
-    inline void SetNamespaceName(const Aws::String& value) { m_namespaceNameHasBeenSet = true; m_namespaceName = value; }
-
-    /**
-     * <p>The namespace to create a snapshot for.</p>
-     */
-    inline void SetNamespaceName(Aws::String&& value) { m_namespaceNameHasBeenSet = true; m_namespaceName = std::move(value); }
-
-    /**
-     * <p>The namespace to create a snapshot for.</p>
-     */
-    inline void SetNamespaceName(const char* value) { m_namespaceNameHasBeenSet = true; m_namespaceName.assign(value); }
-
-    /**
-     * <p>The namespace to create a snapshot for.</p>
-     */
-    inline CreateSnapshotRequest& WithNamespaceName(const Aws::String& value) { SetNamespaceName(value); return *this;}
-
-    /**
-     * <p>The namespace to create a snapshot for.</p>
-     */
-    inline CreateSnapshotRequest& WithNamespaceName(Aws::String&& value) { SetNamespaceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The namespace to create a snapshot for.</p>
-     */
-    inline CreateSnapshotRequest& WithNamespaceName(const char* value) { SetNamespaceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>How long to retain the created snapshot.</p>
      */
-    inline int GetRetentionPeriod() const{ return m_retentionPeriod; }
-
-    /**
-     * <p>How long to retain the created snapshot.</p>
-     */
+    inline int GetRetentionPeriod() const { return m_retentionPeriod; }
     inline bool RetentionPeriodHasBeenSet() const { return m_retentionPeriodHasBeenSet; }
-
-    /**
-     * <p>How long to retain the created snapshot.</p>
-     */
     inline void SetRetentionPeriod(int value) { m_retentionPeriodHasBeenSet = true; m_retentionPeriod = value; }
-
-    /**
-     * <p>How long to retain the created snapshot.</p>
-     */
     inline CreateSnapshotRequest& WithRetentionPeriod(int value) { SetRetentionPeriod(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The name of the snapshot.</p>
      */
-    inline const Aws::String& GetSnapshotName() const{ return m_snapshotName; }
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
+    inline const Aws::String& GetSnapshotName() const { return m_snapshotName; }
     inline bool SnapshotNameHasBeenSet() const { return m_snapshotNameHasBeenSet; }
+    template<typename SnapshotNameT = Aws::String>
+    void SetSnapshotName(SnapshotNameT&& value) { m_snapshotNameHasBeenSet = true; m_snapshotName = std::forward<SnapshotNameT>(value); }
+    template<typename SnapshotNameT = Aws::String>
+    CreateSnapshotRequest& WithSnapshotName(SnapshotNameT&& value) { SetSnapshotName(std::forward<SnapshotNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the snapshot.</p>
-     */
-    inline void SetSnapshotName(const Aws::String& value) { m_snapshotNameHasBeenSet = true; m_snapshotName = value; }
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
-    inline void SetSnapshotName(Aws::String&& value) { m_snapshotNameHasBeenSet = true; m_snapshotName = std::move(value); }
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
-    inline void SetSnapshotName(const char* value) { m_snapshotNameHasBeenSet = true; m_snapshotName.assign(value); }
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
-    inline CreateSnapshotRequest& WithSnapshotName(const Aws::String& value) { SetSnapshotName(value); return *this;}
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
-    inline CreateSnapshotRequest& WithSnapshotName(Aws::String&& value) { SetSnapshotName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
-    inline CreateSnapshotRequest& WithSnapshotName(const char* value) { SetSnapshotName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of <a
      * href="https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html">Tag
      * objects</a> to associate with the snapshot.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>An array of <a
-     * href="https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html">Tag
-     * objects</a> to associate with the snapshot.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>An array of <a
-     * href="https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html">Tag
-     * objects</a> to associate with the snapshot.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>An array of <a
-     * href="https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html">Tag
-     * objects</a> to associate with the snapshot.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>An array of <a
-     * href="https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html">Tag
-     * objects</a> to associate with the snapshot.</p>
-     */
-    inline CreateSnapshotRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>An array of <a
-     * href="https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html">Tag
-     * objects</a> to associate with the snapshot.</p>
-     */
-    inline CreateSnapshotRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of <a
-     * href="https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html">Tag
-     * objects</a> to associate with the snapshot.</p>
-     */
-    inline CreateSnapshotRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>An array of <a
-     * href="https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html">Tag
-     * objects</a> to associate with the snapshot.</p>
-     */
-    inline CreateSnapshotRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateSnapshotRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateSnapshotRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_namespaceName;
     bool m_namespaceNameHasBeenSet = false;
 
-    int m_retentionPeriod;
+    int m_retentionPeriod{0};
     bool m_retentionPeriodHasBeenSet = false;
 
     Aws::String m_snapshotName;

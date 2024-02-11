@@ -33,79 +33,39 @@ namespace Model
   class BatchGetAssetPropertyValueErrorInfo
   {
   public:
-    AWS_IOTSITEWISE_API BatchGetAssetPropertyValueErrorInfo();
+    AWS_IOTSITEWISE_API BatchGetAssetPropertyValueErrorInfo() = default;
     AWS_IOTSITEWISE_API BatchGetAssetPropertyValueErrorInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API BatchGetAssetPropertyValueErrorInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The error code.</p>
      */
-    inline const BatchGetAssetPropertyValueErrorCode& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p>The error code.</p>
-     */
+    inline BatchGetAssetPropertyValueErrorCode GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
+    inline void SetErrorCode(BatchGetAssetPropertyValueErrorCode value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
+    inline BatchGetAssetPropertyValueErrorInfo& WithErrorCode(BatchGetAssetPropertyValueErrorCode value) { SetErrorCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The error code.</p>
-     */
-    inline void SetErrorCode(const BatchGetAssetPropertyValueErrorCode& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline void SetErrorCode(BatchGetAssetPropertyValueErrorCode&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline BatchGetAssetPropertyValueErrorInfo& WithErrorCode(const BatchGetAssetPropertyValueErrorCode& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline BatchGetAssetPropertyValueErrorInfo& WithErrorCode(BatchGetAssetPropertyValueErrorCode&& value) { SetErrorCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date the error occurred, in Unix epoch time.</p>
      */
-    inline const Aws::Utils::DateTime& GetErrorTimestamp() const{ return m_errorTimestamp; }
-
-    /**
-     * <p>The date the error occurred, in Unix epoch time.</p>
-     */
+    inline const Aws::Utils::DateTime& GetErrorTimestamp() const { return m_errorTimestamp; }
     inline bool ErrorTimestampHasBeenSet() const { return m_errorTimestampHasBeenSet; }
-
-    /**
-     * <p>The date the error occurred, in Unix epoch time.</p>
-     */
-    inline void SetErrorTimestamp(const Aws::Utils::DateTime& value) { m_errorTimestampHasBeenSet = true; m_errorTimestamp = value; }
-
-    /**
-     * <p>The date the error occurred, in Unix epoch time.</p>
-     */
-    inline void SetErrorTimestamp(Aws::Utils::DateTime&& value) { m_errorTimestampHasBeenSet = true; m_errorTimestamp = std::move(value); }
-
-    /**
-     * <p>The date the error occurred, in Unix epoch time.</p>
-     */
-    inline BatchGetAssetPropertyValueErrorInfo& WithErrorTimestamp(const Aws::Utils::DateTime& value) { SetErrorTimestamp(value); return *this;}
-
-    /**
-     * <p>The date the error occurred, in Unix epoch time.</p>
-     */
-    inline BatchGetAssetPropertyValueErrorInfo& WithErrorTimestamp(Aws::Utils::DateTime&& value) { SetErrorTimestamp(std::move(value)); return *this;}
-
+    template<typename ErrorTimestampT = Aws::Utils::DateTime>
+    void SetErrorTimestamp(ErrorTimestampT&& value) { m_errorTimestampHasBeenSet = true; m_errorTimestamp = std::forward<ErrorTimestampT>(value); }
+    template<typename ErrorTimestampT = Aws::Utils::DateTime>
+    BatchGetAssetPropertyValueErrorInfo& WithErrorTimestamp(ErrorTimestampT&& value) { SetErrorTimestamp(std::forward<ErrorTimestampT>(value)); return *this;}
+    ///@}
   private:
 
-    BatchGetAssetPropertyValueErrorCode m_errorCode;
+    BatchGetAssetPropertyValueErrorCode m_errorCode{BatchGetAssetPropertyValueErrorCode::NOT_SET};
     bool m_errorCodeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_errorTimestamp;
+    Aws::Utils::DateTime m_errorTimestamp{};
     bool m_errorTimestampHasBeenSet = false;
   };
 

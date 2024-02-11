@@ -16,32 +16,35 @@ namespace Aws
 namespace ACM
 {
   /**
-   * <fullname>Certificate Manager</fullname> <p>You can use Certificate Manager
+   * <p><fullname>Certificate Manager</fullname> <p>You can use Certificate Manager
    * (ACM) to manage SSL/TLS certificates for your Amazon Web Services-based websites
    * and applications. For more information about using ACM, see the <a
    * href="https://docs.aws.amazon.com/acm/latest/userguide/">Certificate Manager
-   * User Guide</a>.</p>
+   * User Guide</a>.</p></p>
    */
   class AWS_ACM_API ACMClient : public Aws::Client::AWSJsonClient, public Aws::Client::ClientWithAsyncTemplateMethods<ACMClient>
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef ACMClientConfiguration ClientConfigurationType;
+      typedef ACMEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         ACMClient(const Aws::ACM::ACMClientConfiguration& clientConfiguration = Aws::ACM::ACMClientConfiguration(),
-                  std::shared_ptr<ACMEndpointProviderBase> endpointProvider = Aws::MakeShared<ACMEndpointProvider>(ALLOCATION_TAG));
+                  std::shared_ptr<ACMEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         ACMClient(const Aws::Auth::AWSCredentials& credentials,
-                  std::shared_ptr<ACMEndpointProviderBase> endpointProvider = Aws::MakeShared<ACMEndpointProvider>(ALLOCATION_TAG),
+                  std::shared_ptr<ACMEndpointProviderBase> endpointProvider = nullptr,
                   const Aws::ACM::ACMClientConfiguration& clientConfiguration = Aws::ACM::ACMClientConfiguration());
 
        /**
@@ -49,7 +52,7 @@ namespace ACM
         * the default http client factory will be used
         */
         ACMClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                  std::shared_ptr<ACMEndpointProviderBase> endpointProvider = Aws::MakeShared<ACMEndpointProvider>(ALLOCATION_TAG),
+                  std::shared_ptr<ACMEndpointProviderBase> endpointProvider = nullptr,
                   const Aws::ACM::ACMClientConfiguration& clientConfiguration = Aws::ACM::ACMClientConfiguration());
 
 
@@ -180,13 +183,16 @@ namespace ACM
 
         /**
          * <p>Exports a private certificate issued by a private certificate authority (CA)
-         * for use anywhere. The exported file contains the certificate, the certificate
-         * chain, and the encrypted private 2048-bit RSA key associated with the public key
-         * that is embedded in the certificate. For security, you must assign a passphrase
-         * for the private key when exporting it. </p> <p>For information about exporting
-         * and formatting a certificate using the ACM console or CLI, see <a
-         * href="https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-export-private.html">Export
-         * a Private Certificate</a>.</p><p><h3>See Also:</h3>   <a
+         * or public certificate for use anywhere. The exported file contains the
+         * certificate, the certificate chain, and the encrypted private key associated
+         * with the public key that is embedded in the certificate. For security, you must
+         * assign a passphrase for the private key when exporting it. </p> <p>For
+         * information about exporting and formatting a certificate using the ACM console
+         * or CLI, see <a
+         * href="https://docs.aws.amazon.com/acm/latest/userguide/export-private.html">Export
+         * a private certificate</a> and <a
+         * href="https://docs.aws.amazon.com/acm/latest/userguide/export-public-certificate">Export
+         * a public certificate</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ExportCertificate">AWS
          * API Reference</a></p>
          */
@@ -216,30 +222,33 @@ namespace ACM
          * href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/GetAccountConfiguration">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetAccountConfigurationOutcome GetAccountConfiguration() const;
+        virtual Model::GetAccountConfigurationOutcome GetAccountConfiguration(const Model::GetAccountConfigurationRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetAccountConfiguration that returns a future to the operation so that it can be executed in parallel to other requests.
          */
-        template<typename = void>
-        Model::GetAccountConfigurationOutcomeCallable GetAccountConfigurationCallable() const
+        template<typename GetAccountConfigurationRequestT = Model::GetAccountConfigurationRequest>
+        Model::GetAccountConfigurationOutcomeCallable GetAccountConfigurationCallable(const GetAccountConfigurationRequestT& request = {}) const
         {
-            return SubmitCallable(&ACMClient::GetAccountConfiguration);
+            return SubmitCallable(&ACMClient::GetAccountConfiguration, request);
         }
 
         /**
          * An Async wrapper for GetAccountConfiguration that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
-        template<typename = void>
-        void GetAccountConfigurationAsync(const GetAccountConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        template<typename GetAccountConfigurationRequestT = Model::GetAccountConfigurationRequest>
+        void GetAccountConfigurationAsync(const GetAccountConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetAccountConfigurationRequestT& request = {}) const
         {
-            return SubmitAsync(&ACMClient::GetAccountConfiguration, handler, context);
+            return SubmitAsync(&ACMClient::GetAccountConfiguration, request, handler, context);
         }
+
         /**
-         * <p>Retrieves an Amazon-issued certificate and its certificate chain. The chain
-         * consists of the certificate of the issuing CA and the intermediate certificates
-         * of any other subordinate CAs. All of the certificates are base64 encoded. You
-         * can use <a
+         * <p>Retrieves a certificate and its certificate chain. The certificate may be
+         * either a public or private certificate issued using the ACM
+         * <code>RequestCertificate</code> action, or a certificate imported into ACM using
+         * the <code>ImportCertificate</code> action. The chain consists of the certificate
+         * of the issuing CA and the intermediate certificates of any other subordinate
+         * CAs. All of the certificates are base64 encoded. You can use <a
          * href="https://wiki.openssl.org/index.php/Command_Line_Utilities">OpenSSL</a> to
          * decode the certificates and inspect individual fields.</p><p><h3>See Also:</h3> 
          * <a
@@ -284,10 +293,7 @@ namespace ACM
          * enter the private key that matches the certificate you are importing.</p> </li>
          * <li> <p>The private key must be unencrypted. You cannot import a private key
          * that is protected by a password or a passphrase.</p> </li> <li> <p>The private
-         * key must be no larger than 5 KB (5,120 bytes).</p> </li> <li> <p>If the
-         * certificate you are importing is not self-signed, you must enter its certificate
-         * chain.</p> </li> <li> <p>If a certificate chain is included, the issuer must be
-         * the subject of one of the certificates in the chain.</p> </li> <li> <p>The
+         * key must be no larger than 5 KB (5,120 bytes).</p> </li> <li> <p>The
          * certificate, private key, and certificate chain must be PEM-encoded.</p> </li>
          * <li> <p>The current time must be between the <code>Not Before</code> and
          * <code>Not After</code> certificate fields.</p> </li> <li> <p>The
@@ -343,13 +349,13 @@ namespace ACM
          * href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ListCertificates">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListCertificatesOutcome ListCertificates(const Model::ListCertificatesRequest& request) const;
+        virtual Model::ListCertificatesOutcome ListCertificates(const Model::ListCertificatesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListCertificates that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListCertificatesRequestT = Model::ListCertificatesRequest>
-        Model::ListCertificatesOutcomeCallable ListCertificatesCallable(const ListCertificatesRequestT& request) const
+        Model::ListCertificatesOutcomeCallable ListCertificatesCallable(const ListCertificatesRequestT& request = {}) const
         {
             return SubmitCallable(&ACMClient::ListCertificates, request);
         }
@@ -358,7 +364,7 @@ namespace ACM
          * An Async wrapper for ListCertificates that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListCertificatesRequestT = Model::ListCertificatesRequest>
-        void ListCertificatesAsync(const ListCertificatesRequestT& request, const ListCertificatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListCertificatesAsync(const ListCertificatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListCertificatesRequestT& request = {}) const
         {
             return SubmitAsync(&ACMClient::ListCertificates, request, handler, context);
         }
@@ -455,9 +461,10 @@ namespace ACM
         }
 
         /**
-         * <p>Renews an eligible ACM certificate. At this time, only exported private
-         * certificates can be renewed with this operation. In order to renew your Amazon
-         * Web Services Private CA certificates with ACM, you must first <a
+         * <p>Renews an <a
+         * href="https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html">eligible
+         * ACM certificate</a>. In order to renew your Amazon Web Services Private CA
+         * certificates with ACM, you must first <a
          * href="https://docs.aws.amazon.com/privateca/latest/userguide/PcaPermissions.html">grant
          * the ACM service principal permission to do so</a>. For more information, see <a
          * href="https://docs.aws.amazon.com/acm/latest/userguide/manual-renewal.html">Testing
@@ -496,8 +503,7 @@ namespace ACM
          * href="https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html">DNS
          * validation</a> or <a
          * href="https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html">email
-         * validation</a>. We recommend that you use DNS validation. ACM issues public
-         * certificates after receiving approval from the domain owner. </p>  <p>ACM
+         * validation</a>. We recommend that you use DNS validation.</p>  <p>ACM
          * behavior differs from the <a
          * href="https://datatracker.ietf.org/doc/html/rfc6125#appendix-B.2">RFC 6125</a>
          * specification of the certificate validation process. ACM first checks for a
@@ -566,12 +572,39 @@ namespace ACM
         }
 
         /**
-         * <p>Updates a certificate. Currently, you can use this function to specify
-         * whether to opt in to or out of recording your certificate in a certificate
-         * transparency log. For more information, see <a
+         * <p>Revokes a public ACM certificate. You can only revoke certificates that have
+         * been previously exported.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/RevokeCertificate">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::RevokeCertificateOutcome RevokeCertificate(const Model::RevokeCertificateRequest& request) const;
+
+        /**
+         * A Callable wrapper for RevokeCertificate that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename RevokeCertificateRequestT = Model::RevokeCertificateRequest>
+        Model::RevokeCertificateOutcomeCallable RevokeCertificateCallable(const RevokeCertificateRequestT& request) const
+        {
+            return SubmitCallable(&ACMClient::RevokeCertificate, request);
+        }
+
+        /**
+         * An Async wrapper for RevokeCertificate that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename RevokeCertificateRequestT = Model::RevokeCertificateRequest>
+        void RevokeCertificateAsync(const RevokeCertificateRequestT& request, const RevokeCertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&ACMClient::RevokeCertificate, request, handler, context);
+        }
+
+        /**
+         * <p>Updates a certificate. You can use this function to specify whether to opt in
+         * to or out of recording your certificate in a certificate transparency log and
+         * exporting. For more information, see <a
          * href="https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency">
-         * Opting Out of Certificate Transparency Logging</a>. </p><p><h3>See Also:</h3>  
-         * <a
+         * Opting Out of Certificate Transparency Logging</a> and <a
+         * href="https://docs.aws.amazon.com/acm/latest/userguide/acm-exportable-certificates.html">Certificate
+         * Manager Exportable Managed Certificates</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/UpdateCertificateOptions">AWS
          * API Reference</a></p>
          */
@@ -603,7 +636,6 @@ namespace ACM
       void init(const ACMClientConfiguration& clientConfiguration);
 
       ACMClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<ACMEndpointProviderBase> m_endpointProvider;
   };
 

@@ -18,15 +18,7 @@ namespace DatabaseMigrationService
 namespace Model
 {
 
-RecommendationSettings::RecommendationSettings() : 
-    m_instanceSizingTypeHasBeenSet(false),
-    m_workloadTypeHasBeenSet(false)
-{
-}
-
-RecommendationSettings::RecommendationSettings(JsonView jsonValue) : 
-    m_instanceSizingTypeHasBeenSet(false),
-    m_workloadTypeHasBeenSet(false)
+RecommendationSettings::RecommendationSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ RecommendationSettings& RecommendationSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("InstanceSizingType"))
   {
     m_instanceSizingType = jsonValue.GetString("InstanceSizingType");
-
     m_instanceSizingTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WorkloadType"))
   {
     m_workloadType = jsonValue.GetString("WorkloadType");
-
     m_workloadTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

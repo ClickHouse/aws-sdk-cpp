@@ -18,17 +18,7 @@ namespace Batch
 namespace Model
 {
 
-LaunchTemplateSpecification::LaunchTemplateSpecification() : 
-    m_launchTemplateIdHasBeenSet(false),
-    m_launchTemplateNameHasBeenSet(false),
-    m_versionHasBeenSet(false)
-{
-}
-
-LaunchTemplateSpecification::LaunchTemplateSpecification(JsonView jsonValue) : 
-    m_launchTemplateIdHasBeenSet(false),
-    m_launchTemplateNameHasBeenSet(false),
-    m_versionHasBeenSet(false)
+LaunchTemplateSpecification::LaunchTemplateSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,32 @@ LaunchTemplateSpecification& LaunchTemplateSpecification::operator =(JsonView js
   if(jsonValue.ValueExists("launchTemplateId"))
   {
     m_launchTemplateId = jsonValue.GetString("launchTemplateId");
-
     m_launchTemplateIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("launchTemplateName"))
   {
     m_launchTemplateName = jsonValue.GetString("launchTemplateName");
-
     m_launchTemplateNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("version"))
   {
     m_version = jsonValue.GetString("version");
-
     m_versionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("overrides"))
+  {
+    Aws::Utils::Array<JsonView> overridesJsonList = jsonValue.GetArray("overrides");
+    for(unsigned overridesIndex = 0; overridesIndex < overridesJsonList.GetLength(); ++overridesIndex)
+    {
+      m_overrides.push_back(overridesJsonList[overridesIndex].AsObject());
+    }
+    m_overridesHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("userdataType"))
+  {
+    m_userdataType = UserdataTypeMapper::GetUserdataTypeForName(jsonValue.GetString("userdataType"));
+    m_userdataTypeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -79,6 +77,22 @@ JsonValue LaunchTemplateSpecification::Jsonize() const
   {
    payload.WithString("version", m_version);
 
+  }
+
+  if(m_overridesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> overridesJsonList(m_overrides.size());
+   for(unsigned overridesIndex = 0; overridesIndex < overridesJsonList.GetLength(); ++overridesIndex)
+   {
+     overridesJsonList[overridesIndex].AsObject(m_overrides[overridesIndex].Jsonize());
+   }
+   payload.WithArray("overrides", std::move(overridesJsonList));
+
+  }
+
+  if(m_userdataTypeHasBeenSet)
+  {
+   payload.WithString("userdataType", UserdataTypeMapper::GetNameForUserdataType(m_userdataType));
   }
 
   return payload;

@@ -18,15 +18,7 @@ namespace DAX
 namespace Model
 {
 
-ParameterNameValue::ParameterNameValue() : 
-    m_parameterNameHasBeenSet(false),
-    m_parameterValueHasBeenSet(false)
-{
-}
-
-ParameterNameValue::ParameterNameValue(JsonView jsonValue) : 
-    m_parameterNameHasBeenSet(false),
-    m_parameterValueHasBeenSet(false)
+ParameterNameValue::ParameterNameValue(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ParameterNameValue& ParameterNameValue::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ParameterName"))
   {
     m_parameterName = jsonValue.GetString("ParameterName");
-
     m_parameterNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ParameterValue"))
   {
     m_parameterValue = jsonValue.GetString("ParameterValue");
-
     m_parameterValueHasBeenSet = true;
   }
-
   return *this;
 }
 

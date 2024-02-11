@@ -22,7 +22,7 @@ namespace Model
   class CreateInAppTemplateRequest : public PinpointRequest
   {
   public:
-    AWS_PINPOINT_API CreateInAppTemplateRequest();
+    AWS_PINPOINT_API CreateInAppTemplateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,89 +33,30 @@ namespace Model
     AWS_PINPOINT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     
-    inline const InAppTemplateRequest& GetInAppTemplateRequest() const{ return m_inAppTemplateRequest; }
-
-    
+    inline const InAppTemplateRequest& GetInAppTemplateRequest() const { return m_inAppTemplateRequest; }
     inline bool InAppTemplateRequestHasBeenSet() const { return m_inAppTemplateRequestHasBeenSet; }
+    template<typename InAppTemplateRequestT = InAppTemplateRequest>
+    void SetInAppTemplateRequest(InAppTemplateRequestT&& value) { m_inAppTemplateRequestHasBeenSet = true; m_inAppTemplateRequest = std::forward<InAppTemplateRequestT>(value); }
+    template<typename InAppTemplateRequestT = InAppTemplateRequest>
+    CreateInAppTemplateRequest& WithInAppTemplateRequest(InAppTemplateRequestT&& value) { SetInAppTemplateRequest(std::forward<InAppTemplateRequestT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetInAppTemplateRequest(const InAppTemplateRequest& value) { m_inAppTemplateRequestHasBeenSet = true; m_inAppTemplateRequest = value; }
-
-    
-    inline void SetInAppTemplateRequest(InAppTemplateRequest&& value) { m_inAppTemplateRequestHasBeenSet = true; m_inAppTemplateRequest = std::move(value); }
-
-    
-    inline CreateInAppTemplateRequest& WithInAppTemplateRequest(const InAppTemplateRequest& value) { SetInAppTemplateRequest(value); return *this;}
-
-    
-    inline CreateInAppTemplateRequest& WithInAppTemplateRequest(InAppTemplateRequest&& value) { SetInAppTemplateRequest(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the message template. A template name must start with an
      * alphanumeric character and can contain a maximum of 128 characters. The
      * characters can be alphanumeric characters, underscores (_), or hyphens (-).
      * Template names are case sensitive.</p>
      */
-    inline const Aws::String& GetTemplateName() const{ return m_templateName; }
-
-    /**
-     * <p>The name of the message template. A template name must start with an
-     * alphanumeric character and can contain a maximum of 128 characters. The
-     * characters can be alphanumeric characters, underscores (_), or hyphens (-).
-     * Template names are case sensitive.</p>
-     */
+    inline const Aws::String& GetTemplateName() const { return m_templateName; }
     inline bool TemplateNameHasBeenSet() const { return m_templateNameHasBeenSet; }
-
-    /**
-     * <p>The name of the message template. A template name must start with an
-     * alphanumeric character and can contain a maximum of 128 characters. The
-     * characters can be alphanumeric characters, underscores (_), or hyphens (-).
-     * Template names are case sensitive.</p>
-     */
-    inline void SetTemplateName(const Aws::String& value) { m_templateNameHasBeenSet = true; m_templateName = value; }
-
-    /**
-     * <p>The name of the message template. A template name must start with an
-     * alphanumeric character and can contain a maximum of 128 characters. The
-     * characters can be alphanumeric characters, underscores (_), or hyphens (-).
-     * Template names are case sensitive.</p>
-     */
-    inline void SetTemplateName(Aws::String&& value) { m_templateNameHasBeenSet = true; m_templateName = std::move(value); }
-
-    /**
-     * <p>The name of the message template. A template name must start with an
-     * alphanumeric character and can contain a maximum of 128 characters. The
-     * characters can be alphanumeric characters, underscores (_), or hyphens (-).
-     * Template names are case sensitive.</p>
-     */
-    inline void SetTemplateName(const char* value) { m_templateNameHasBeenSet = true; m_templateName.assign(value); }
-
-    /**
-     * <p>The name of the message template. A template name must start with an
-     * alphanumeric character and can contain a maximum of 128 characters. The
-     * characters can be alphanumeric characters, underscores (_), or hyphens (-).
-     * Template names are case sensitive.</p>
-     */
-    inline CreateInAppTemplateRequest& WithTemplateName(const Aws::String& value) { SetTemplateName(value); return *this;}
-
-    /**
-     * <p>The name of the message template. A template name must start with an
-     * alphanumeric character and can contain a maximum of 128 characters. The
-     * characters can be alphanumeric characters, underscores (_), or hyphens (-).
-     * Template names are case sensitive.</p>
-     */
-    inline CreateInAppTemplateRequest& WithTemplateName(Aws::String&& value) { SetTemplateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the message template. A template name must start with an
-     * alphanumeric character and can contain a maximum of 128 characters. The
-     * characters can be alphanumeric characters, underscores (_), or hyphens (-).
-     * Template names are case sensitive.</p>
-     */
-    inline CreateInAppTemplateRequest& WithTemplateName(const char* value) { SetTemplateName(value); return *this;}
-
+    template<typename TemplateNameT = Aws::String>
+    void SetTemplateName(TemplateNameT&& value) { m_templateNameHasBeenSet = true; m_templateName = std::forward<TemplateNameT>(value); }
+    template<typename TemplateNameT = Aws::String>
+    CreateInAppTemplateRequest& WithTemplateName(TemplateNameT&& value) { SetTemplateName(std::forward<TemplateNameT>(value)); return *this;}
+    ///@}
   private:
 
     InAppTemplateRequest m_inAppTemplateRequest;

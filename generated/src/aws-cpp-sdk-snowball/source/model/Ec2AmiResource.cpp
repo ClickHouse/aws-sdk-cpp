@@ -18,15 +18,7 @@ namespace Snowball
 namespace Model
 {
 
-Ec2AmiResource::Ec2AmiResource() : 
-    m_amiIdHasBeenSet(false),
-    m_snowballAmiIdHasBeenSet(false)
-{
-}
-
-Ec2AmiResource::Ec2AmiResource(JsonView jsonValue) : 
-    m_amiIdHasBeenSet(false),
-    m_snowballAmiIdHasBeenSet(false)
+Ec2AmiResource::Ec2AmiResource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Ec2AmiResource& Ec2AmiResource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AmiId"))
   {
     m_amiId = jsonValue.GetString("AmiId");
-
     m_amiIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SnowballAmiId"))
   {
     m_snowballAmiId = jsonValue.GetString("SnowballAmiId");
-
     m_snowballAmiIdHasBeenSet = true;
   }
-
   return *this;
 }
 

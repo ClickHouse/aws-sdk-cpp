@@ -32,216 +32,71 @@ namespace Model
   class OpenSearchAction
   {
   public:
-    AWS_IOT_API OpenSearchAction();
+    AWS_IOT_API OpenSearchAction() = default;
     AWS_IOT_API OpenSearchAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API OpenSearchAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The IAM role ARN that has access to OpenSearch.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The IAM role ARN that has access to OpenSearch.</p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    OpenSearchAction& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IAM role ARN that has access to OpenSearch.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The IAM role ARN that has access to OpenSearch.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The IAM role ARN that has access to OpenSearch.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The IAM role ARN that has access to OpenSearch.</p>
-     */
-    inline OpenSearchAction& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The IAM role ARN that has access to OpenSearch.</p>
-     */
-    inline OpenSearchAction& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The IAM role ARN that has access to OpenSearch.</p>
-     */
-    inline OpenSearchAction& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The endpoint of your OpenSearch domain.</p>
      */
-    inline const Aws::String& GetEndpoint() const{ return m_endpoint; }
-
-    /**
-     * <p>The endpoint of your OpenSearch domain.</p>
-     */
+    inline const Aws::String& GetEndpoint() const { return m_endpoint; }
     inline bool EndpointHasBeenSet() const { return m_endpointHasBeenSet; }
+    template<typename EndpointT = Aws::String>
+    void SetEndpoint(EndpointT&& value) { m_endpointHasBeenSet = true; m_endpoint = std::forward<EndpointT>(value); }
+    template<typename EndpointT = Aws::String>
+    OpenSearchAction& WithEndpoint(EndpointT&& value) { SetEndpoint(std::forward<EndpointT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The endpoint of your OpenSearch domain.</p>
-     */
-    inline void SetEndpoint(const Aws::String& value) { m_endpointHasBeenSet = true; m_endpoint = value; }
-
-    /**
-     * <p>The endpoint of your OpenSearch domain.</p>
-     */
-    inline void SetEndpoint(Aws::String&& value) { m_endpointHasBeenSet = true; m_endpoint = std::move(value); }
-
-    /**
-     * <p>The endpoint of your OpenSearch domain.</p>
-     */
-    inline void SetEndpoint(const char* value) { m_endpointHasBeenSet = true; m_endpoint.assign(value); }
-
-    /**
-     * <p>The endpoint of your OpenSearch domain.</p>
-     */
-    inline OpenSearchAction& WithEndpoint(const Aws::String& value) { SetEndpoint(value); return *this;}
-
-    /**
-     * <p>The endpoint of your OpenSearch domain.</p>
-     */
-    inline OpenSearchAction& WithEndpoint(Aws::String&& value) { SetEndpoint(std::move(value)); return *this;}
-
-    /**
-     * <p>The endpoint of your OpenSearch domain.</p>
-     */
-    inline OpenSearchAction& WithEndpoint(const char* value) { SetEndpoint(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The OpenSearch index where you want to store your data.</p>
      */
-    inline const Aws::String& GetIndex() const{ return m_index; }
-
-    /**
-     * <p>The OpenSearch index where you want to store your data.</p>
-     */
+    inline const Aws::String& GetIndex() const { return m_index; }
     inline bool IndexHasBeenSet() const { return m_indexHasBeenSet; }
+    template<typename IndexT = Aws::String>
+    void SetIndex(IndexT&& value) { m_indexHasBeenSet = true; m_index = std::forward<IndexT>(value); }
+    template<typename IndexT = Aws::String>
+    OpenSearchAction& WithIndex(IndexT&& value) { SetIndex(std::forward<IndexT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The OpenSearch index where you want to store your data.</p>
-     */
-    inline void SetIndex(const Aws::String& value) { m_indexHasBeenSet = true; m_index = value; }
-
-    /**
-     * <p>The OpenSearch index where you want to store your data.</p>
-     */
-    inline void SetIndex(Aws::String&& value) { m_indexHasBeenSet = true; m_index = std::move(value); }
-
-    /**
-     * <p>The OpenSearch index where you want to store your data.</p>
-     */
-    inline void SetIndex(const char* value) { m_indexHasBeenSet = true; m_index.assign(value); }
-
-    /**
-     * <p>The OpenSearch index where you want to store your data.</p>
-     */
-    inline OpenSearchAction& WithIndex(const Aws::String& value) { SetIndex(value); return *this;}
-
-    /**
-     * <p>The OpenSearch index where you want to store your data.</p>
-     */
-    inline OpenSearchAction& WithIndex(Aws::String&& value) { SetIndex(std::move(value)); return *this;}
-
-    /**
-     * <p>The OpenSearch index where you want to store your data.</p>
-     */
-    inline OpenSearchAction& WithIndex(const char* value) { SetIndex(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of document you are storing.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of document you are storing.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    OpenSearchAction& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of document you are storing.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of document you are storing.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of document you are storing.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of document you are storing.</p>
-     */
-    inline OpenSearchAction& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of document you are storing.</p>
-     */
-    inline OpenSearchAction& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of document you are storing.</p>
-     */
-    inline OpenSearchAction& WithType(const char* value) { SetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the document you are storing.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The unique identifier for the document you are storing.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
-
-    /**
-     * <p>The unique identifier for the document you are storing.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The unique identifier for the document you are storing.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the document you are storing.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The unique identifier for the document you are storing.</p>
-     */
-    inline OpenSearchAction& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the document you are storing.</p>
-     */
-    inline OpenSearchAction& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the document you are storing.</p>
-     */
-    inline OpenSearchAction& WithId(const char* value) { SetId(value); return *this;}
-
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    OpenSearchAction& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_roleArn;

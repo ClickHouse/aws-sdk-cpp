@@ -19,6 +19,13 @@
 #include <aws/ec2/model/FpgaInfo.h>
 #include <aws/ec2/model/PlacementGroupInfo.h>
 #include <aws/ec2/model/InferenceAcceleratorInfo.h>
+#include <aws/ec2/model/NitroEnclavesSupport.h>
+#include <aws/ec2/model/NitroTpmSupport.h>
+#include <aws/ec2/model/NitroTpmInfo.h>
+#include <aws/ec2/model/MediaAcceleratorInfo.h>
+#include <aws/ec2/model/NeuronInfo.h>
+#include <aws/ec2/model/PhcSupport.h>
+#include <aws/ec2/model/RebootMigrationSupport.h>
 #include <aws/ec2/model/UsageClassType.h>
 #include <aws/ec2/model/RootDeviceType.h>
 #include <aws/ec2/model/VirtualizationType.h>
@@ -47,7 +54,7 @@ namespace Model
   class InstanceTypeInfo
   {
   public:
-    AWS_EC2_API InstanceTypeInfo();
+    AWS_EC2_API InstanceTypeInfo() = default;
     AWS_EC2_API InstanceTypeInfo(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API InstanceTypeInfo& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -55,750 +62,375 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The instance type. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance
      * types</a> in the <i>Amazon EC2 User Guide</i>.</p>
      */
-    inline const InstanceType& GetInstanceType() const{ return m_instanceType; }
-
-    /**
-     * <p>The instance type. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance
-     * types</a> in the <i>Amazon EC2 User Guide</i>.</p>
-     */
+    inline InstanceType GetInstanceType() const { return m_instanceType; }
     inline bool InstanceTypeHasBeenSet() const { return m_instanceTypeHasBeenSet; }
+    inline void SetInstanceType(InstanceType value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
+    inline InstanceTypeInfo& WithInstanceType(InstanceType value) { SetInstanceType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The instance type. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance
-     * types</a> in the <i>Amazon EC2 User Guide</i>.</p>
-     */
-    inline void SetInstanceType(const InstanceType& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
-
-    /**
-     * <p>The instance type. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance
-     * types</a> in the <i>Amazon EC2 User Guide</i>.</p>
-     */
-    inline void SetInstanceType(InstanceType&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
-
-    /**
-     * <p>The instance type. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance
-     * types</a> in the <i>Amazon EC2 User Guide</i>.</p>
-     */
-    inline InstanceTypeInfo& WithInstanceType(const InstanceType& value) { SetInstanceType(value); return *this;}
-
-    /**
-     * <p>The instance type. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance
-     * types</a> in the <i>Amazon EC2 User Guide</i>.</p>
-     */
-    inline InstanceTypeInfo& WithInstanceType(InstanceType&& value) { SetInstanceType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether the instance type is current generation.</p>
      */
-    inline bool GetCurrentGeneration() const{ return m_currentGeneration; }
-
-    /**
-     * <p>Indicates whether the instance type is current generation.</p>
-     */
+    inline bool GetCurrentGeneration() const { return m_currentGeneration; }
     inline bool CurrentGenerationHasBeenSet() const { return m_currentGenerationHasBeenSet; }
-
-    /**
-     * <p>Indicates whether the instance type is current generation.</p>
-     */
     inline void SetCurrentGeneration(bool value) { m_currentGenerationHasBeenSet = true; m_currentGeneration = value; }
-
-    /**
-     * <p>Indicates whether the instance type is current generation.</p>
-     */
     inline InstanceTypeInfo& WithCurrentGeneration(bool value) { SetCurrentGeneration(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Indicates whether the instance type is eligible for the free tier.</p>
      */
-    inline bool GetFreeTierEligible() const{ return m_freeTierEligible; }
-
-    /**
-     * <p>Indicates whether the instance type is eligible for the free tier.</p>
-     */
+    inline bool GetFreeTierEligible() const { return m_freeTierEligible; }
     inline bool FreeTierEligibleHasBeenSet() const { return m_freeTierEligibleHasBeenSet; }
-
-    /**
-     * <p>Indicates whether the instance type is eligible for the free tier.</p>
-     */
     inline void SetFreeTierEligible(bool value) { m_freeTierEligibleHasBeenSet = true; m_freeTierEligible = value; }
-
-    /**
-     * <p>Indicates whether the instance type is eligible for the free tier.</p>
-     */
     inline InstanceTypeInfo& WithFreeTierEligible(bool value) { SetFreeTierEligible(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>Indicates whether the instance type is offered for spot or On-Demand.</p>
+     * <p>Indicates whether the instance type is offered for spot, On-Demand, or
+     * Capacity Blocks.</p>
      */
-    inline const Aws::Vector<UsageClassType>& GetSupportedUsageClasses() const{ return m_supportedUsageClasses; }
-
-    /**
-     * <p>Indicates whether the instance type is offered for spot or On-Demand.</p>
-     */
+    inline const Aws::Vector<UsageClassType>& GetSupportedUsageClasses() const { return m_supportedUsageClasses; }
     inline bool SupportedUsageClassesHasBeenSet() const { return m_supportedUsageClassesHasBeenSet; }
+    template<typename SupportedUsageClassesT = Aws::Vector<UsageClassType>>
+    void SetSupportedUsageClasses(SupportedUsageClassesT&& value) { m_supportedUsageClassesHasBeenSet = true; m_supportedUsageClasses = std::forward<SupportedUsageClassesT>(value); }
+    template<typename SupportedUsageClassesT = Aws::Vector<UsageClassType>>
+    InstanceTypeInfo& WithSupportedUsageClasses(SupportedUsageClassesT&& value) { SetSupportedUsageClasses(std::forward<SupportedUsageClassesT>(value)); return *this;}
+    inline InstanceTypeInfo& AddSupportedUsageClasses(UsageClassType value) { m_supportedUsageClassesHasBeenSet = true; m_supportedUsageClasses.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>Indicates whether the instance type is offered for spot or On-Demand.</p>
-     */
-    inline void SetSupportedUsageClasses(const Aws::Vector<UsageClassType>& value) { m_supportedUsageClassesHasBeenSet = true; m_supportedUsageClasses = value; }
-
-    /**
-     * <p>Indicates whether the instance type is offered for spot or On-Demand.</p>
-     */
-    inline void SetSupportedUsageClasses(Aws::Vector<UsageClassType>&& value) { m_supportedUsageClassesHasBeenSet = true; m_supportedUsageClasses = std::move(value); }
-
-    /**
-     * <p>Indicates whether the instance type is offered for spot or On-Demand.</p>
-     */
-    inline InstanceTypeInfo& WithSupportedUsageClasses(const Aws::Vector<UsageClassType>& value) { SetSupportedUsageClasses(value); return *this;}
-
-    /**
-     * <p>Indicates whether the instance type is offered for spot or On-Demand.</p>
-     */
-    inline InstanceTypeInfo& WithSupportedUsageClasses(Aws::Vector<UsageClassType>&& value) { SetSupportedUsageClasses(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates whether the instance type is offered for spot or On-Demand.</p>
-     */
-    inline InstanceTypeInfo& AddSupportedUsageClasses(const UsageClassType& value) { m_supportedUsageClassesHasBeenSet = true; m_supportedUsageClasses.push_back(value); return *this; }
-
-    /**
-     * <p>Indicates whether the instance type is offered for spot or On-Demand.</p>
-     */
-    inline InstanceTypeInfo& AddSupportedUsageClasses(UsageClassType&& value) { m_supportedUsageClassesHasBeenSet = true; m_supportedUsageClasses.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The supported root device types.</p>
      */
-    inline const Aws::Vector<RootDeviceType>& GetSupportedRootDeviceTypes() const{ return m_supportedRootDeviceTypes; }
-
-    /**
-     * <p>The supported root device types.</p>
-     */
+    inline const Aws::Vector<RootDeviceType>& GetSupportedRootDeviceTypes() const { return m_supportedRootDeviceTypes; }
     inline bool SupportedRootDeviceTypesHasBeenSet() const { return m_supportedRootDeviceTypesHasBeenSet; }
+    template<typename SupportedRootDeviceTypesT = Aws::Vector<RootDeviceType>>
+    void SetSupportedRootDeviceTypes(SupportedRootDeviceTypesT&& value) { m_supportedRootDeviceTypesHasBeenSet = true; m_supportedRootDeviceTypes = std::forward<SupportedRootDeviceTypesT>(value); }
+    template<typename SupportedRootDeviceTypesT = Aws::Vector<RootDeviceType>>
+    InstanceTypeInfo& WithSupportedRootDeviceTypes(SupportedRootDeviceTypesT&& value) { SetSupportedRootDeviceTypes(std::forward<SupportedRootDeviceTypesT>(value)); return *this;}
+    inline InstanceTypeInfo& AddSupportedRootDeviceTypes(RootDeviceType value) { m_supportedRootDeviceTypesHasBeenSet = true; m_supportedRootDeviceTypes.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The supported root device types.</p>
-     */
-    inline void SetSupportedRootDeviceTypes(const Aws::Vector<RootDeviceType>& value) { m_supportedRootDeviceTypesHasBeenSet = true; m_supportedRootDeviceTypes = value; }
-
-    /**
-     * <p>The supported root device types.</p>
-     */
-    inline void SetSupportedRootDeviceTypes(Aws::Vector<RootDeviceType>&& value) { m_supportedRootDeviceTypesHasBeenSet = true; m_supportedRootDeviceTypes = std::move(value); }
-
-    /**
-     * <p>The supported root device types.</p>
-     */
-    inline InstanceTypeInfo& WithSupportedRootDeviceTypes(const Aws::Vector<RootDeviceType>& value) { SetSupportedRootDeviceTypes(value); return *this;}
-
-    /**
-     * <p>The supported root device types.</p>
-     */
-    inline InstanceTypeInfo& WithSupportedRootDeviceTypes(Aws::Vector<RootDeviceType>&& value) { SetSupportedRootDeviceTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>The supported root device types.</p>
-     */
-    inline InstanceTypeInfo& AddSupportedRootDeviceTypes(const RootDeviceType& value) { m_supportedRootDeviceTypesHasBeenSet = true; m_supportedRootDeviceTypes.push_back(value); return *this; }
-
-    /**
-     * <p>The supported root device types.</p>
-     */
-    inline InstanceTypeInfo& AddSupportedRootDeviceTypes(RootDeviceType&& value) { m_supportedRootDeviceTypesHasBeenSet = true; m_supportedRootDeviceTypes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The supported virtualization types.</p>
      */
-    inline const Aws::Vector<VirtualizationType>& GetSupportedVirtualizationTypes() const{ return m_supportedVirtualizationTypes; }
-
-    /**
-     * <p>The supported virtualization types.</p>
-     */
+    inline const Aws::Vector<VirtualizationType>& GetSupportedVirtualizationTypes() const { return m_supportedVirtualizationTypes; }
     inline bool SupportedVirtualizationTypesHasBeenSet() const { return m_supportedVirtualizationTypesHasBeenSet; }
+    template<typename SupportedVirtualizationTypesT = Aws::Vector<VirtualizationType>>
+    void SetSupportedVirtualizationTypes(SupportedVirtualizationTypesT&& value) { m_supportedVirtualizationTypesHasBeenSet = true; m_supportedVirtualizationTypes = std::forward<SupportedVirtualizationTypesT>(value); }
+    template<typename SupportedVirtualizationTypesT = Aws::Vector<VirtualizationType>>
+    InstanceTypeInfo& WithSupportedVirtualizationTypes(SupportedVirtualizationTypesT&& value) { SetSupportedVirtualizationTypes(std::forward<SupportedVirtualizationTypesT>(value)); return *this;}
+    inline InstanceTypeInfo& AddSupportedVirtualizationTypes(VirtualizationType value) { m_supportedVirtualizationTypesHasBeenSet = true; m_supportedVirtualizationTypes.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The supported virtualization types.</p>
-     */
-    inline void SetSupportedVirtualizationTypes(const Aws::Vector<VirtualizationType>& value) { m_supportedVirtualizationTypesHasBeenSet = true; m_supportedVirtualizationTypes = value; }
-
-    /**
-     * <p>The supported virtualization types.</p>
-     */
-    inline void SetSupportedVirtualizationTypes(Aws::Vector<VirtualizationType>&& value) { m_supportedVirtualizationTypesHasBeenSet = true; m_supportedVirtualizationTypes = std::move(value); }
-
-    /**
-     * <p>The supported virtualization types.</p>
-     */
-    inline InstanceTypeInfo& WithSupportedVirtualizationTypes(const Aws::Vector<VirtualizationType>& value) { SetSupportedVirtualizationTypes(value); return *this;}
-
-    /**
-     * <p>The supported virtualization types.</p>
-     */
-    inline InstanceTypeInfo& WithSupportedVirtualizationTypes(Aws::Vector<VirtualizationType>&& value) { SetSupportedVirtualizationTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>The supported virtualization types.</p>
-     */
-    inline InstanceTypeInfo& AddSupportedVirtualizationTypes(const VirtualizationType& value) { m_supportedVirtualizationTypesHasBeenSet = true; m_supportedVirtualizationTypes.push_back(value); return *this; }
-
-    /**
-     * <p>The supported virtualization types.</p>
-     */
-    inline InstanceTypeInfo& AddSupportedVirtualizationTypes(VirtualizationType&& value) { m_supportedVirtualizationTypesHasBeenSet = true; m_supportedVirtualizationTypes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Indicates whether the instance is a bare metal instance type.</p>
      */
-    inline bool GetBareMetal() const{ return m_bareMetal; }
-
-    /**
-     * <p>Indicates whether the instance is a bare metal instance type.</p>
-     */
+    inline bool GetBareMetal() const { return m_bareMetal; }
     inline bool BareMetalHasBeenSet() const { return m_bareMetalHasBeenSet; }
-
-    /**
-     * <p>Indicates whether the instance is a bare metal instance type.</p>
-     */
     inline void SetBareMetal(bool value) { m_bareMetalHasBeenSet = true; m_bareMetal = value; }
-
-    /**
-     * <p>Indicates whether the instance is a bare metal instance type.</p>
-     */
     inline InstanceTypeInfo& WithBareMetal(bool value) { SetBareMetal(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The hypervisor for the instance type.</p>
      */
-    inline const InstanceTypeHypervisor& GetHypervisor() const{ return m_hypervisor; }
-
-    /**
-     * <p>The hypervisor for the instance type.</p>
-     */
+    inline InstanceTypeHypervisor GetHypervisor() const { return m_hypervisor; }
     inline bool HypervisorHasBeenSet() const { return m_hypervisorHasBeenSet; }
+    inline void SetHypervisor(InstanceTypeHypervisor value) { m_hypervisorHasBeenSet = true; m_hypervisor = value; }
+    inline InstanceTypeInfo& WithHypervisor(InstanceTypeHypervisor value) { SetHypervisor(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The hypervisor for the instance type.</p>
-     */
-    inline void SetHypervisor(const InstanceTypeHypervisor& value) { m_hypervisorHasBeenSet = true; m_hypervisor = value; }
-
-    /**
-     * <p>The hypervisor for the instance type.</p>
-     */
-    inline void SetHypervisor(InstanceTypeHypervisor&& value) { m_hypervisorHasBeenSet = true; m_hypervisor = std::move(value); }
-
-    /**
-     * <p>The hypervisor for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithHypervisor(const InstanceTypeHypervisor& value) { SetHypervisor(value); return *this;}
-
-    /**
-     * <p>The hypervisor for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithHypervisor(InstanceTypeHypervisor&& value) { SetHypervisor(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes the processor.</p>
      */
-    inline const ProcessorInfo& GetProcessorInfo() const{ return m_processorInfo; }
-
-    /**
-     * <p>Describes the processor.</p>
-     */
+    inline const ProcessorInfo& GetProcessorInfo() const { return m_processorInfo; }
     inline bool ProcessorInfoHasBeenSet() const { return m_processorInfoHasBeenSet; }
+    template<typename ProcessorInfoT = ProcessorInfo>
+    void SetProcessorInfo(ProcessorInfoT&& value) { m_processorInfoHasBeenSet = true; m_processorInfo = std::forward<ProcessorInfoT>(value); }
+    template<typename ProcessorInfoT = ProcessorInfo>
+    InstanceTypeInfo& WithProcessorInfo(ProcessorInfoT&& value) { SetProcessorInfo(std::forward<ProcessorInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes the processor.</p>
-     */
-    inline void SetProcessorInfo(const ProcessorInfo& value) { m_processorInfoHasBeenSet = true; m_processorInfo = value; }
-
-    /**
-     * <p>Describes the processor.</p>
-     */
-    inline void SetProcessorInfo(ProcessorInfo&& value) { m_processorInfoHasBeenSet = true; m_processorInfo = std::move(value); }
-
-    /**
-     * <p>Describes the processor.</p>
-     */
-    inline InstanceTypeInfo& WithProcessorInfo(const ProcessorInfo& value) { SetProcessorInfo(value); return *this;}
-
-    /**
-     * <p>Describes the processor.</p>
-     */
-    inline InstanceTypeInfo& WithProcessorInfo(ProcessorInfo&& value) { SetProcessorInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes the vCPU configurations for the instance type.</p>
      */
-    inline const VCpuInfo& GetVCpuInfo() const{ return m_vCpuInfo; }
-
-    /**
-     * <p>Describes the vCPU configurations for the instance type.</p>
-     */
+    inline const VCpuInfo& GetVCpuInfo() const { return m_vCpuInfo; }
     inline bool VCpuInfoHasBeenSet() const { return m_vCpuInfoHasBeenSet; }
+    template<typename VCpuInfoT = VCpuInfo>
+    void SetVCpuInfo(VCpuInfoT&& value) { m_vCpuInfoHasBeenSet = true; m_vCpuInfo = std::forward<VCpuInfoT>(value); }
+    template<typename VCpuInfoT = VCpuInfo>
+    InstanceTypeInfo& WithVCpuInfo(VCpuInfoT&& value) { SetVCpuInfo(std::forward<VCpuInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes the vCPU configurations for the instance type.</p>
-     */
-    inline void SetVCpuInfo(const VCpuInfo& value) { m_vCpuInfoHasBeenSet = true; m_vCpuInfo = value; }
-
-    /**
-     * <p>Describes the vCPU configurations for the instance type.</p>
-     */
-    inline void SetVCpuInfo(VCpuInfo&& value) { m_vCpuInfoHasBeenSet = true; m_vCpuInfo = std::move(value); }
-
-    /**
-     * <p>Describes the vCPU configurations for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithVCpuInfo(const VCpuInfo& value) { SetVCpuInfo(value); return *this;}
-
-    /**
-     * <p>Describes the vCPU configurations for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithVCpuInfo(VCpuInfo&& value) { SetVCpuInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes the memory for the instance type.</p>
      */
-    inline const MemoryInfo& GetMemoryInfo() const{ return m_memoryInfo; }
-
-    /**
-     * <p>Describes the memory for the instance type.</p>
-     */
+    inline const MemoryInfo& GetMemoryInfo() const { return m_memoryInfo; }
     inline bool MemoryInfoHasBeenSet() const { return m_memoryInfoHasBeenSet; }
+    template<typename MemoryInfoT = MemoryInfo>
+    void SetMemoryInfo(MemoryInfoT&& value) { m_memoryInfoHasBeenSet = true; m_memoryInfo = std::forward<MemoryInfoT>(value); }
+    template<typename MemoryInfoT = MemoryInfo>
+    InstanceTypeInfo& WithMemoryInfo(MemoryInfoT&& value) { SetMemoryInfo(std::forward<MemoryInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes the memory for the instance type.</p>
-     */
-    inline void SetMemoryInfo(const MemoryInfo& value) { m_memoryInfoHasBeenSet = true; m_memoryInfo = value; }
-
-    /**
-     * <p>Describes the memory for the instance type.</p>
-     */
-    inline void SetMemoryInfo(MemoryInfo&& value) { m_memoryInfoHasBeenSet = true; m_memoryInfo = std::move(value); }
-
-    /**
-     * <p>Describes the memory for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithMemoryInfo(const MemoryInfo& value) { SetMemoryInfo(value); return *this;}
-
-    /**
-     * <p>Describes the memory for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithMemoryInfo(MemoryInfo&& value) { SetMemoryInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether instance storage is supported.</p>
      */
-    inline bool GetInstanceStorageSupported() const{ return m_instanceStorageSupported; }
-
-    /**
-     * <p>Indicates whether instance storage is supported.</p>
-     */
+    inline bool GetInstanceStorageSupported() const { return m_instanceStorageSupported; }
     inline bool InstanceStorageSupportedHasBeenSet() const { return m_instanceStorageSupportedHasBeenSet; }
-
-    /**
-     * <p>Indicates whether instance storage is supported.</p>
-     */
     inline void SetInstanceStorageSupported(bool value) { m_instanceStorageSupportedHasBeenSet = true; m_instanceStorageSupported = value; }
-
-    /**
-     * <p>Indicates whether instance storage is supported.</p>
-     */
     inline InstanceTypeInfo& WithInstanceStorageSupported(bool value) { SetInstanceStorageSupported(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Describes the instance storage for the instance type.</p>
      */
-    inline const InstanceStorageInfo& GetInstanceStorageInfo() const{ return m_instanceStorageInfo; }
-
-    /**
-     * <p>Describes the instance storage for the instance type.</p>
-     */
+    inline const InstanceStorageInfo& GetInstanceStorageInfo() const { return m_instanceStorageInfo; }
     inline bool InstanceStorageInfoHasBeenSet() const { return m_instanceStorageInfoHasBeenSet; }
+    template<typename InstanceStorageInfoT = InstanceStorageInfo>
+    void SetInstanceStorageInfo(InstanceStorageInfoT&& value) { m_instanceStorageInfoHasBeenSet = true; m_instanceStorageInfo = std::forward<InstanceStorageInfoT>(value); }
+    template<typename InstanceStorageInfoT = InstanceStorageInfo>
+    InstanceTypeInfo& WithInstanceStorageInfo(InstanceStorageInfoT&& value) { SetInstanceStorageInfo(std::forward<InstanceStorageInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes the instance storage for the instance type.</p>
-     */
-    inline void SetInstanceStorageInfo(const InstanceStorageInfo& value) { m_instanceStorageInfoHasBeenSet = true; m_instanceStorageInfo = value; }
-
-    /**
-     * <p>Describes the instance storage for the instance type.</p>
-     */
-    inline void SetInstanceStorageInfo(InstanceStorageInfo&& value) { m_instanceStorageInfoHasBeenSet = true; m_instanceStorageInfo = std::move(value); }
-
-    /**
-     * <p>Describes the instance storage for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithInstanceStorageInfo(const InstanceStorageInfo& value) { SetInstanceStorageInfo(value); return *this;}
-
-    /**
-     * <p>Describes the instance storage for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithInstanceStorageInfo(InstanceStorageInfo&& value) { SetInstanceStorageInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes the Amazon EBS settings for the instance type.</p>
      */
-    inline const EbsInfo& GetEbsInfo() const{ return m_ebsInfo; }
-
-    /**
-     * <p>Describes the Amazon EBS settings for the instance type.</p>
-     */
+    inline const EbsInfo& GetEbsInfo() const { return m_ebsInfo; }
     inline bool EbsInfoHasBeenSet() const { return m_ebsInfoHasBeenSet; }
+    template<typename EbsInfoT = EbsInfo>
+    void SetEbsInfo(EbsInfoT&& value) { m_ebsInfoHasBeenSet = true; m_ebsInfo = std::forward<EbsInfoT>(value); }
+    template<typename EbsInfoT = EbsInfo>
+    InstanceTypeInfo& WithEbsInfo(EbsInfoT&& value) { SetEbsInfo(std::forward<EbsInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes the Amazon EBS settings for the instance type.</p>
-     */
-    inline void SetEbsInfo(const EbsInfo& value) { m_ebsInfoHasBeenSet = true; m_ebsInfo = value; }
-
-    /**
-     * <p>Describes the Amazon EBS settings for the instance type.</p>
-     */
-    inline void SetEbsInfo(EbsInfo&& value) { m_ebsInfoHasBeenSet = true; m_ebsInfo = std::move(value); }
-
-    /**
-     * <p>Describes the Amazon EBS settings for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithEbsInfo(const EbsInfo& value) { SetEbsInfo(value); return *this;}
-
-    /**
-     * <p>Describes the Amazon EBS settings for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithEbsInfo(EbsInfo&& value) { SetEbsInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes the network settings for the instance type.</p>
      */
-    inline const NetworkInfo& GetNetworkInfo() const{ return m_networkInfo; }
-
-    /**
-     * <p>Describes the network settings for the instance type.</p>
-     */
+    inline const NetworkInfo& GetNetworkInfo() const { return m_networkInfo; }
     inline bool NetworkInfoHasBeenSet() const { return m_networkInfoHasBeenSet; }
+    template<typename NetworkInfoT = NetworkInfo>
+    void SetNetworkInfo(NetworkInfoT&& value) { m_networkInfoHasBeenSet = true; m_networkInfo = std::forward<NetworkInfoT>(value); }
+    template<typename NetworkInfoT = NetworkInfo>
+    InstanceTypeInfo& WithNetworkInfo(NetworkInfoT&& value) { SetNetworkInfo(std::forward<NetworkInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes the network settings for the instance type.</p>
-     */
-    inline void SetNetworkInfo(const NetworkInfo& value) { m_networkInfoHasBeenSet = true; m_networkInfo = value; }
-
-    /**
-     * <p>Describes the network settings for the instance type.</p>
-     */
-    inline void SetNetworkInfo(NetworkInfo&& value) { m_networkInfoHasBeenSet = true; m_networkInfo = std::move(value); }
-
-    /**
-     * <p>Describes the network settings for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithNetworkInfo(const NetworkInfo& value) { SetNetworkInfo(value); return *this;}
-
-    /**
-     * <p>Describes the network settings for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithNetworkInfo(NetworkInfo&& value) { SetNetworkInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes the GPU accelerator settings for the instance type.</p>
      */
-    inline const GpuInfo& GetGpuInfo() const{ return m_gpuInfo; }
-
-    /**
-     * <p>Describes the GPU accelerator settings for the instance type.</p>
-     */
+    inline const GpuInfo& GetGpuInfo() const { return m_gpuInfo; }
     inline bool GpuInfoHasBeenSet() const { return m_gpuInfoHasBeenSet; }
+    template<typename GpuInfoT = GpuInfo>
+    void SetGpuInfo(GpuInfoT&& value) { m_gpuInfoHasBeenSet = true; m_gpuInfo = std::forward<GpuInfoT>(value); }
+    template<typename GpuInfoT = GpuInfo>
+    InstanceTypeInfo& WithGpuInfo(GpuInfoT&& value) { SetGpuInfo(std::forward<GpuInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes the GPU accelerator settings for the instance type.</p>
-     */
-    inline void SetGpuInfo(const GpuInfo& value) { m_gpuInfoHasBeenSet = true; m_gpuInfo = value; }
-
-    /**
-     * <p>Describes the GPU accelerator settings for the instance type.</p>
-     */
-    inline void SetGpuInfo(GpuInfo&& value) { m_gpuInfoHasBeenSet = true; m_gpuInfo = std::move(value); }
-
-    /**
-     * <p>Describes the GPU accelerator settings for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithGpuInfo(const GpuInfo& value) { SetGpuInfo(value); return *this;}
-
-    /**
-     * <p>Describes the GPU accelerator settings for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithGpuInfo(GpuInfo&& value) { SetGpuInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes the FPGA accelerator settings for the instance type.</p>
      */
-    inline const FpgaInfo& GetFpgaInfo() const{ return m_fpgaInfo; }
-
-    /**
-     * <p>Describes the FPGA accelerator settings for the instance type.</p>
-     */
+    inline const FpgaInfo& GetFpgaInfo() const { return m_fpgaInfo; }
     inline bool FpgaInfoHasBeenSet() const { return m_fpgaInfoHasBeenSet; }
+    template<typename FpgaInfoT = FpgaInfo>
+    void SetFpgaInfo(FpgaInfoT&& value) { m_fpgaInfoHasBeenSet = true; m_fpgaInfo = std::forward<FpgaInfoT>(value); }
+    template<typename FpgaInfoT = FpgaInfo>
+    InstanceTypeInfo& WithFpgaInfo(FpgaInfoT&& value) { SetFpgaInfo(std::forward<FpgaInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes the FPGA accelerator settings for the instance type.</p>
-     */
-    inline void SetFpgaInfo(const FpgaInfo& value) { m_fpgaInfoHasBeenSet = true; m_fpgaInfo = value; }
-
-    /**
-     * <p>Describes the FPGA accelerator settings for the instance type.</p>
-     */
-    inline void SetFpgaInfo(FpgaInfo&& value) { m_fpgaInfoHasBeenSet = true; m_fpgaInfo = std::move(value); }
-
-    /**
-     * <p>Describes the FPGA accelerator settings for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithFpgaInfo(const FpgaInfo& value) { SetFpgaInfo(value); return *this;}
-
-    /**
-     * <p>Describes the FPGA accelerator settings for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithFpgaInfo(FpgaInfo&& value) { SetFpgaInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes the placement group settings for the instance type.</p>
      */
-    inline const PlacementGroupInfo& GetPlacementGroupInfo() const{ return m_placementGroupInfo; }
-
-    /**
-     * <p>Describes the placement group settings for the instance type.</p>
-     */
+    inline const PlacementGroupInfo& GetPlacementGroupInfo() const { return m_placementGroupInfo; }
     inline bool PlacementGroupInfoHasBeenSet() const { return m_placementGroupInfoHasBeenSet; }
+    template<typename PlacementGroupInfoT = PlacementGroupInfo>
+    void SetPlacementGroupInfo(PlacementGroupInfoT&& value) { m_placementGroupInfoHasBeenSet = true; m_placementGroupInfo = std::forward<PlacementGroupInfoT>(value); }
+    template<typename PlacementGroupInfoT = PlacementGroupInfo>
+    InstanceTypeInfo& WithPlacementGroupInfo(PlacementGroupInfoT&& value) { SetPlacementGroupInfo(std::forward<PlacementGroupInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes the placement group settings for the instance type.</p>
-     */
-    inline void SetPlacementGroupInfo(const PlacementGroupInfo& value) { m_placementGroupInfoHasBeenSet = true; m_placementGroupInfo = value; }
-
-    /**
-     * <p>Describes the placement group settings for the instance type.</p>
-     */
-    inline void SetPlacementGroupInfo(PlacementGroupInfo&& value) { m_placementGroupInfoHasBeenSet = true; m_placementGroupInfo = std::move(value); }
-
-    /**
-     * <p>Describes the placement group settings for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithPlacementGroupInfo(const PlacementGroupInfo& value) { SetPlacementGroupInfo(value); return *this;}
-
-    /**
-     * <p>Describes the placement group settings for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithPlacementGroupInfo(PlacementGroupInfo&& value) { SetPlacementGroupInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes the Inference accelerator settings for the instance type.</p>
      */
-    inline const InferenceAcceleratorInfo& GetInferenceAcceleratorInfo() const{ return m_inferenceAcceleratorInfo; }
-
-    /**
-     * <p>Describes the Inference accelerator settings for the instance type.</p>
-     */
+    inline const InferenceAcceleratorInfo& GetInferenceAcceleratorInfo() const { return m_inferenceAcceleratorInfo; }
     inline bool InferenceAcceleratorInfoHasBeenSet() const { return m_inferenceAcceleratorInfoHasBeenSet; }
+    template<typename InferenceAcceleratorInfoT = InferenceAcceleratorInfo>
+    void SetInferenceAcceleratorInfo(InferenceAcceleratorInfoT&& value) { m_inferenceAcceleratorInfoHasBeenSet = true; m_inferenceAcceleratorInfo = std::forward<InferenceAcceleratorInfoT>(value); }
+    template<typename InferenceAcceleratorInfoT = InferenceAcceleratorInfo>
+    InstanceTypeInfo& WithInferenceAcceleratorInfo(InferenceAcceleratorInfoT&& value) { SetInferenceAcceleratorInfo(std::forward<InferenceAcceleratorInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes the Inference accelerator settings for the instance type.</p>
-     */
-    inline void SetInferenceAcceleratorInfo(const InferenceAcceleratorInfo& value) { m_inferenceAcceleratorInfoHasBeenSet = true; m_inferenceAcceleratorInfo = value; }
-
-    /**
-     * <p>Describes the Inference accelerator settings for the instance type.</p>
-     */
-    inline void SetInferenceAcceleratorInfo(InferenceAcceleratorInfo&& value) { m_inferenceAcceleratorInfoHasBeenSet = true; m_inferenceAcceleratorInfo = std::move(value); }
-
-    /**
-     * <p>Describes the Inference accelerator settings for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithInferenceAcceleratorInfo(const InferenceAcceleratorInfo& value) { SetInferenceAcceleratorInfo(value); return *this;}
-
-    /**
-     * <p>Describes the Inference accelerator settings for the instance type.</p>
-     */
-    inline InstanceTypeInfo& WithInferenceAcceleratorInfo(InferenceAcceleratorInfo&& value) { SetInferenceAcceleratorInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether On-Demand hibernation is supported.</p>
      */
-    inline bool GetHibernationSupported() const{ return m_hibernationSupported; }
-
-    /**
-     * <p>Indicates whether On-Demand hibernation is supported.</p>
-     */
+    inline bool GetHibernationSupported() const { return m_hibernationSupported; }
     inline bool HibernationSupportedHasBeenSet() const { return m_hibernationSupportedHasBeenSet; }
-
-    /**
-     * <p>Indicates whether On-Demand hibernation is supported.</p>
-     */
     inline void SetHibernationSupported(bool value) { m_hibernationSupportedHasBeenSet = true; m_hibernationSupported = value; }
-
-    /**
-     * <p>Indicates whether On-Demand hibernation is supported.</p>
-     */
     inline InstanceTypeInfo& WithHibernationSupported(bool value) { SetHibernationSupported(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>Indicates whether the instance type is a burstable performance instance
-     * type.</p>
+     * <p>Indicates whether the instance type is a burstable performance T instance
+     * type. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html">Burstable
+     * performance instances</a>.</p>
      */
-    inline bool GetBurstablePerformanceSupported() const{ return m_burstablePerformanceSupported; }
-
-    /**
-     * <p>Indicates whether the instance type is a burstable performance instance
-     * type.</p>
-     */
+    inline bool GetBurstablePerformanceSupported() const { return m_burstablePerformanceSupported; }
     inline bool BurstablePerformanceSupportedHasBeenSet() const { return m_burstablePerformanceSupportedHasBeenSet; }
-
-    /**
-     * <p>Indicates whether the instance type is a burstable performance instance
-     * type.</p>
-     */
     inline void SetBurstablePerformanceSupported(bool value) { m_burstablePerformanceSupportedHasBeenSet = true; m_burstablePerformanceSupported = value; }
-
-    /**
-     * <p>Indicates whether the instance type is a burstable performance instance
-     * type.</p>
-     */
     inline InstanceTypeInfo& WithBurstablePerformanceSupported(bool value) { SetBurstablePerformanceSupported(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Indicates whether Dedicated Hosts are supported on the instance type.</p>
      */
-    inline bool GetDedicatedHostsSupported() const{ return m_dedicatedHostsSupported; }
-
-    /**
-     * <p>Indicates whether Dedicated Hosts are supported on the instance type.</p>
-     */
+    inline bool GetDedicatedHostsSupported() const { return m_dedicatedHostsSupported; }
     inline bool DedicatedHostsSupportedHasBeenSet() const { return m_dedicatedHostsSupportedHasBeenSet; }
-
-    /**
-     * <p>Indicates whether Dedicated Hosts are supported on the instance type.</p>
-     */
     inline void SetDedicatedHostsSupported(bool value) { m_dedicatedHostsSupportedHasBeenSet = true; m_dedicatedHostsSupported = value; }
-
-    /**
-     * <p>Indicates whether Dedicated Hosts are supported on the instance type.</p>
-     */
     inline InstanceTypeInfo& WithDedicatedHostsSupported(bool value) { SetDedicatedHostsSupported(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>Indicates whether auto recovery is supported.</p>
+     * <p>Indicates whether Amazon CloudWatch action based recovery is supported.</p>
      */
-    inline bool GetAutoRecoverySupported() const{ return m_autoRecoverySupported; }
-
-    /**
-     * <p>Indicates whether auto recovery is supported.</p>
-     */
+    inline bool GetAutoRecoverySupported() const { return m_autoRecoverySupported; }
     inline bool AutoRecoverySupportedHasBeenSet() const { return m_autoRecoverySupportedHasBeenSet; }
-
-    /**
-     * <p>Indicates whether auto recovery is supported.</p>
-     */
     inline void SetAutoRecoverySupported(bool value) { m_autoRecoverySupportedHasBeenSet = true; m_autoRecoverySupported = value; }
-
-    /**
-     * <p>Indicates whether auto recovery is supported.</p>
-     */
     inline InstanceTypeInfo& WithAutoRecoverySupported(bool value) { SetAutoRecoverySupported(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The supported boot modes. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html">Boot
      * modes</a> in the <i>Amazon EC2 User Guide</i>.</p>
      */
-    inline const Aws::Vector<BootModeType>& GetSupportedBootModes() const{ return m_supportedBootModes; }
-
-    /**
-     * <p>The supported boot modes. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html">Boot
-     * modes</a> in the <i>Amazon EC2 User Guide</i>.</p>
-     */
+    inline const Aws::Vector<BootModeType>& GetSupportedBootModes() const { return m_supportedBootModes; }
     inline bool SupportedBootModesHasBeenSet() const { return m_supportedBootModesHasBeenSet; }
+    template<typename SupportedBootModesT = Aws::Vector<BootModeType>>
+    void SetSupportedBootModes(SupportedBootModesT&& value) { m_supportedBootModesHasBeenSet = true; m_supportedBootModes = std::forward<SupportedBootModesT>(value); }
+    template<typename SupportedBootModesT = Aws::Vector<BootModeType>>
+    InstanceTypeInfo& WithSupportedBootModes(SupportedBootModesT&& value) { SetSupportedBootModes(std::forward<SupportedBootModesT>(value)); return *this;}
+    inline InstanceTypeInfo& AddSupportedBootModes(BootModeType value) { m_supportedBootModesHasBeenSet = true; m_supportedBootModes.push_back(value); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The supported boot modes. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html">Boot
-     * modes</a> in the <i>Amazon EC2 User Guide</i>.</p>
+     * <p>Indicates whether Nitro Enclaves is supported.</p>
      */
-    inline void SetSupportedBootModes(const Aws::Vector<BootModeType>& value) { m_supportedBootModesHasBeenSet = true; m_supportedBootModes = value; }
+    inline NitroEnclavesSupport GetNitroEnclavesSupport() const { return m_nitroEnclavesSupport; }
+    inline bool NitroEnclavesSupportHasBeenSet() const { return m_nitroEnclavesSupportHasBeenSet; }
+    inline void SetNitroEnclavesSupport(NitroEnclavesSupport value) { m_nitroEnclavesSupportHasBeenSet = true; m_nitroEnclavesSupport = value; }
+    inline InstanceTypeInfo& WithNitroEnclavesSupport(NitroEnclavesSupport value) { SetNitroEnclavesSupport(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The supported boot modes. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html">Boot
-     * modes</a> in the <i>Amazon EC2 User Guide</i>.</p>
+     * <p>Indicates whether NitroTPM is supported.</p>
      */
-    inline void SetSupportedBootModes(Aws::Vector<BootModeType>&& value) { m_supportedBootModesHasBeenSet = true; m_supportedBootModes = std::move(value); }
+    inline NitroTpmSupport GetNitroTpmSupport() const { return m_nitroTpmSupport; }
+    inline bool NitroTpmSupportHasBeenSet() const { return m_nitroTpmSupportHasBeenSet; }
+    inline void SetNitroTpmSupport(NitroTpmSupport value) { m_nitroTpmSupportHasBeenSet = true; m_nitroTpmSupport = value; }
+    inline InstanceTypeInfo& WithNitroTpmSupport(NitroTpmSupport value) { SetNitroTpmSupport(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The supported boot modes. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html">Boot
-     * modes</a> in the <i>Amazon EC2 User Guide</i>.</p>
+     * <p>Describes the supported NitroTPM versions for the instance type.</p>
      */
-    inline InstanceTypeInfo& WithSupportedBootModes(const Aws::Vector<BootModeType>& value) { SetSupportedBootModes(value); return *this;}
+    inline const NitroTpmInfo& GetNitroTpmInfo() const { return m_nitroTpmInfo; }
+    inline bool NitroTpmInfoHasBeenSet() const { return m_nitroTpmInfoHasBeenSet; }
+    template<typename NitroTpmInfoT = NitroTpmInfo>
+    void SetNitroTpmInfo(NitroTpmInfoT&& value) { m_nitroTpmInfoHasBeenSet = true; m_nitroTpmInfo = std::forward<NitroTpmInfoT>(value); }
+    template<typename NitroTpmInfoT = NitroTpmInfo>
+    InstanceTypeInfo& WithNitroTpmInfo(NitroTpmInfoT&& value) { SetNitroTpmInfo(std::forward<NitroTpmInfoT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The supported boot modes. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html">Boot
-     * modes</a> in the <i>Amazon EC2 User Guide</i>.</p>
+     * <p>Describes the media accelerator settings for the instance type.</p>
      */
-    inline InstanceTypeInfo& WithSupportedBootModes(Aws::Vector<BootModeType>&& value) { SetSupportedBootModes(std::move(value)); return *this;}
+    inline const MediaAcceleratorInfo& GetMediaAcceleratorInfo() const { return m_mediaAcceleratorInfo; }
+    inline bool MediaAcceleratorInfoHasBeenSet() const { return m_mediaAcceleratorInfoHasBeenSet; }
+    template<typename MediaAcceleratorInfoT = MediaAcceleratorInfo>
+    void SetMediaAcceleratorInfo(MediaAcceleratorInfoT&& value) { m_mediaAcceleratorInfoHasBeenSet = true; m_mediaAcceleratorInfo = std::forward<MediaAcceleratorInfoT>(value); }
+    template<typename MediaAcceleratorInfoT = MediaAcceleratorInfo>
+    InstanceTypeInfo& WithMediaAcceleratorInfo(MediaAcceleratorInfoT&& value) { SetMediaAcceleratorInfo(std::forward<MediaAcceleratorInfoT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The supported boot modes. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html">Boot
-     * modes</a> in the <i>Amazon EC2 User Guide</i>.</p>
+     * <p>Describes the Neuron accelerator settings for the instance type.</p>
      */
-    inline InstanceTypeInfo& AddSupportedBootModes(const BootModeType& value) { m_supportedBootModesHasBeenSet = true; m_supportedBootModes.push_back(value); return *this; }
+    inline const NeuronInfo& GetNeuronInfo() const { return m_neuronInfo; }
+    inline bool NeuronInfoHasBeenSet() const { return m_neuronInfoHasBeenSet; }
+    template<typename NeuronInfoT = NeuronInfo>
+    void SetNeuronInfo(NeuronInfoT&& value) { m_neuronInfoHasBeenSet = true; m_neuronInfo = std::forward<NeuronInfoT>(value); }
+    template<typename NeuronInfoT = NeuronInfo>
+    InstanceTypeInfo& WithNeuronInfo(NeuronInfoT&& value) { SetNeuronInfo(std::forward<NeuronInfoT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The supported boot modes. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html">Boot
-     * modes</a> in the <i>Amazon EC2 User Guide</i>.</p>
+     * <p>Indicates whether a local Precision Time Protocol (PTP) hardware clock (PHC)
+     * is supported.</p>
      */
-    inline InstanceTypeInfo& AddSupportedBootModes(BootModeType&& value) { m_supportedBootModesHasBeenSet = true; m_supportedBootModes.push_back(std::move(value)); return *this; }
+    inline PhcSupport GetPhcSupport() const { return m_phcSupport; }
+    inline bool PhcSupportHasBeenSet() const { return m_phcSupportHasBeenSet; }
+    inline void SetPhcSupport(PhcSupport value) { m_phcSupportHasBeenSet = true; m_phcSupport = value; }
+    inline InstanceTypeInfo& WithPhcSupport(PhcSupport value) { SetPhcSupport(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>Indicates whether reboot migration during a user-initiated reboot is
+     * supported for instances that have a scheduled <code>system-reboot</code> event.
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/schedevents_actions_reboot.html#reboot-migration">Enable
+     * or disable reboot migration</a> in the <i>Amazon EC2 User Guide</i>.</p>
+     */
+    inline RebootMigrationSupport GetRebootMigrationSupport() const { return m_rebootMigrationSupport; }
+    inline bool RebootMigrationSupportHasBeenSet() const { return m_rebootMigrationSupportHasBeenSet; }
+    inline void SetRebootMigrationSupport(RebootMigrationSupport value) { m_rebootMigrationSupportHasBeenSet = true; m_rebootMigrationSupport = value; }
+    inline InstanceTypeInfo& WithRebootMigrationSupport(RebootMigrationSupport value) { SetRebootMigrationSupport(value); return *this;}
+    ///@}
   private:
 
-    InstanceType m_instanceType;
+    InstanceType m_instanceType{InstanceType::NOT_SET};
     bool m_instanceTypeHasBeenSet = false;
 
-    bool m_currentGeneration;
+    bool m_currentGeneration{false};
     bool m_currentGenerationHasBeenSet = false;
 
-    bool m_freeTierEligible;
+    bool m_freeTierEligible{false};
     bool m_freeTierEligibleHasBeenSet = false;
 
     Aws::Vector<UsageClassType> m_supportedUsageClasses;
@@ -810,10 +442,10 @@ namespace Model
     Aws::Vector<VirtualizationType> m_supportedVirtualizationTypes;
     bool m_supportedVirtualizationTypesHasBeenSet = false;
 
-    bool m_bareMetal;
+    bool m_bareMetal{false};
     bool m_bareMetalHasBeenSet = false;
 
-    InstanceTypeHypervisor m_hypervisor;
+    InstanceTypeHypervisor m_hypervisor{InstanceTypeHypervisor::NOT_SET};
     bool m_hypervisorHasBeenSet = false;
 
     ProcessorInfo m_processorInfo;
@@ -825,7 +457,7 @@ namespace Model
     MemoryInfo m_memoryInfo;
     bool m_memoryInfoHasBeenSet = false;
 
-    bool m_instanceStorageSupported;
+    bool m_instanceStorageSupported{false};
     bool m_instanceStorageSupportedHasBeenSet = false;
 
     InstanceStorageInfo m_instanceStorageInfo;
@@ -849,20 +481,41 @@ namespace Model
     InferenceAcceleratorInfo m_inferenceAcceleratorInfo;
     bool m_inferenceAcceleratorInfoHasBeenSet = false;
 
-    bool m_hibernationSupported;
+    bool m_hibernationSupported{false};
     bool m_hibernationSupportedHasBeenSet = false;
 
-    bool m_burstablePerformanceSupported;
+    bool m_burstablePerformanceSupported{false};
     bool m_burstablePerformanceSupportedHasBeenSet = false;
 
-    bool m_dedicatedHostsSupported;
+    bool m_dedicatedHostsSupported{false};
     bool m_dedicatedHostsSupportedHasBeenSet = false;
 
-    bool m_autoRecoverySupported;
+    bool m_autoRecoverySupported{false};
     bool m_autoRecoverySupportedHasBeenSet = false;
 
     Aws::Vector<BootModeType> m_supportedBootModes;
     bool m_supportedBootModesHasBeenSet = false;
+
+    NitroEnclavesSupport m_nitroEnclavesSupport{NitroEnclavesSupport::NOT_SET};
+    bool m_nitroEnclavesSupportHasBeenSet = false;
+
+    NitroTpmSupport m_nitroTpmSupport{NitroTpmSupport::NOT_SET};
+    bool m_nitroTpmSupportHasBeenSet = false;
+
+    NitroTpmInfo m_nitroTpmInfo;
+    bool m_nitroTpmInfoHasBeenSet = false;
+
+    MediaAcceleratorInfo m_mediaAcceleratorInfo;
+    bool m_mediaAcceleratorInfoHasBeenSet = false;
+
+    NeuronInfo m_neuronInfo;
+    bool m_neuronInfoHasBeenSet = false;
+
+    PhcSupport m_phcSupport{PhcSupport::NOT_SET};
+    bool m_phcSupportHasBeenSet = false;
+
+    RebootMigrationSupport m_rebootMigrationSupport{RebootMigrationSupport::NOT_SET};
+    bool m_rebootMigrationSupportHasBeenSet = false;
   };
 
 } // namespace Model

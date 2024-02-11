@@ -18,15 +18,7 @@ namespace AppStream
 namespace Model
 {
 
-ServiceAccountCredentials::ServiceAccountCredentials() : 
-    m_accountNameHasBeenSet(false),
-    m_accountPasswordHasBeenSet(false)
-{
-}
-
-ServiceAccountCredentials::ServiceAccountCredentials(JsonView jsonValue) : 
-    m_accountNameHasBeenSet(false),
-    m_accountPasswordHasBeenSet(false)
+ServiceAccountCredentials::ServiceAccountCredentials(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ServiceAccountCredentials& ServiceAccountCredentials::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("AccountName"))
   {
     m_accountName = jsonValue.GetString("AccountName");
-
     m_accountNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AccountPassword"))
   {
     m_accountPassword = jsonValue.GetString("AccountPassword");
-
     m_accountPasswordHasBeenSet = true;
   }
-
   return *this;
 }
 

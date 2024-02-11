@@ -25,22 +25,25 @@ namespace AppRegistry
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef AppRegistryClientConfiguration ClientConfigurationType;
+      typedef AppRegistryEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         AppRegistryClient(const Aws::AppRegistry::AppRegistryClientConfiguration& clientConfiguration = Aws::AppRegistry::AppRegistryClientConfiguration(),
-                          std::shared_ptr<AppRegistryEndpointProviderBase> endpointProvider = Aws::MakeShared<AppRegistryEndpointProvider>(ALLOCATION_TAG));
+                          std::shared_ptr<AppRegistryEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         AppRegistryClient(const Aws::Auth::AWSCredentials& credentials,
-                          std::shared_ptr<AppRegistryEndpointProviderBase> endpointProvider = Aws::MakeShared<AppRegistryEndpointProvider>(ALLOCATION_TAG),
+                          std::shared_ptr<AppRegistryEndpointProviderBase> endpointProvider = nullptr,
                           const Aws::AppRegistry::AppRegistryClientConfiguration& clientConfiguration = Aws::AppRegistry::AppRegistryClientConfiguration());
 
        /**
@@ -48,7 +51,7 @@ namespace AppRegistry
         * the default http client factory will be used
         */
         AppRegistryClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                          std::shared_ptr<AppRegistryEndpointProviderBase> endpointProvider = Aws::MakeShared<AppRegistryEndpointProvider>(ALLOCATION_TAG),
+                          std::shared_ptr<AppRegistryEndpointProviderBase> endpointProvider = nullptr,
                           const Aws::AppRegistry::AppRegistryClientConfiguration& clientConfiguration = Aws::AppRegistry::AppRegistryClientConfiguration());
 
 
@@ -107,8 +110,24 @@ namespace AppRegistry
 
         /**
          * <p> Associates a resource with an application. The resource can be specified by
-         * its ARN or name. The application can be specified by ARN, ID, or name.
-         * </p><p><h3>See Also:</h3>   <a
+         * its ARN or name. The application can be specified by ARN, ID, or name. </p> <p>
+         * <b>Minimum permissions</b> </p> <p> You must have the following permissions to
+         * associate a resource using the <code>OPTIONS</code> parameter set to
+         * <code>APPLY_APPLICATION_TAG</code>. </p> <ul> <li> <p>
+         * <code>tag:GetResources</code> </p> </li> <li> <p> <code>tag:TagResources</code>
+         * </p> </li> </ul> <p> You must also have these additional permissions if you
+         * don't use the <code>AWSServiceCatalogAppRegistryFullAccess</code> policy. For
+         * more information, see <a
+         * href="https://docs.aws.amazon.com/servicecatalog/latest/arguide/full.html">AWSServiceCatalogAppRegistryFullAccess</a>
+         * in the AppRegistry Administrator Guide. </p> <ul> <li> <p>
+         * <code>resource-groups:AssociateResource</code> </p> </li> <li> <p>
+         * <code>cloudformation:UpdateStack</code> </p> </li> <li> <p>
+         * <code>cloudformation:DescribeStacks</code> </p> </li> </ul>  <p> In
+         * addition, you must have the tagging permission defined by the Amazon Web
+         * Services service that creates the resource. For more information, see <a
+         * href="https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/API_TagResources.html">TagResources</a>
+         * in the <i>Resource Groups Tagging API Reference</i>. </p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/AWS242AppRegistry-2020-06-24/AssociateResource">AWS
          * API Reference</a></p>
          */
@@ -268,8 +287,27 @@ namespace AppRegistry
         }
 
         /**
-         * <p>Disassociates a resource from application. Both the resource and the
-         * application can be specified either by ID or name.</p><p><h3>See Also:</h3>   <a
+         * <p> Disassociates a resource from application. Both the resource and the
+         * application can be specified either by ID or name. </p> <p> <b>Minimum
+         * permissions</b> </p> <p> You must have the following permissions to remove a
+         * resource that's been associated with an application using the
+         * <code>APPLY_APPLICATION_TAG</code> option for <a
+         * href="https://docs.aws.amazon.com/servicecatalog/latest/dg/API_app-registry_AssociateResource.html">AssociateResource</a>.
+         * </p> <ul> <li> <p> <code>tag:GetResources</code> </p> </li> <li> <p>
+         * <code>tag:UntagResources</code> </p> </li> </ul> <p> You must also have the
+         * following permissions if you don't use the
+         * <code>AWSServiceCatalogAppRegistryFullAccess</code> policy. For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/servicecatalog/latest/arguide/full.html">AWSServiceCatalogAppRegistryFullAccess</a>
+         * in the AppRegistry Administrator Guide. </p> <ul> <li> <p>
+         * <code>resource-groups:DisassociateResource</code> </p> </li> <li> <p>
+         * <code>cloudformation:UpdateStack</code> </p> </li> <li> <p>
+         * <code>cloudformation:DescribeStacks</code> </p> </li> </ul>  <p> In
+         * addition, you must have the tagging permission defined by the Amazon Web
+         * Services service that creates the resource. For more information, see <a
+         * href="https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/API_UntTagResources.html">UntagResources</a>
+         * in the <i>Resource Groups Tagging API Reference</i>. </p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/AWS242AppRegistry-2020-06-24/DisassociateResource">AWS
          * API Reference</a></p>
          */
@@ -381,38 +419,39 @@ namespace AppRegistry
          * href="http://docs.aws.amazon.com/goto/WebAPI/AWS242AppRegistry-2020-06-24/GetConfiguration">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetConfigurationOutcome GetConfiguration() const;
+        virtual Model::GetConfigurationOutcome GetConfiguration(const Model::GetConfigurationRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetConfiguration that returns a future to the operation so that it can be executed in parallel to other requests.
          */
-        template<typename = void>
-        Model::GetConfigurationOutcomeCallable GetConfigurationCallable() const
+        template<typename GetConfigurationRequestT = Model::GetConfigurationRequest>
+        Model::GetConfigurationOutcomeCallable GetConfigurationCallable(const GetConfigurationRequestT& request = {}) const
         {
-            return SubmitCallable(&AppRegistryClient::GetConfiguration);
+            return SubmitCallable(&AppRegistryClient::GetConfiguration, request);
         }
 
         /**
          * An Async wrapper for GetConfiguration that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
-        template<typename = void>
-        void GetConfigurationAsync(const GetConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        template<typename GetConfigurationRequestT = Model::GetConfigurationRequest>
+        void GetConfigurationAsync(const GetConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetConfigurationRequestT& request = {}) const
         {
-            return SubmitAsync(&AppRegistryClient::GetConfiguration, handler, context);
+            return SubmitAsync(&AppRegistryClient::GetConfiguration, request, handler, context);
         }
+
         /**
          * <p>Retrieves a list of all of your applications. Results are
          * paginated.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/AWS242AppRegistry-2020-06-24/ListApplications">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListApplicationsOutcome ListApplications(const Model::ListApplicationsRequest& request) const;
+        virtual Model::ListApplicationsOutcome ListApplications(const Model::ListApplicationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListApplications that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListApplicationsRequestT = Model::ListApplicationsRequest>
-        Model::ListApplicationsOutcomeCallable ListApplicationsCallable(const ListApplicationsRequestT& request) const
+        Model::ListApplicationsOutcomeCallable ListApplicationsCallable(const ListApplicationsRequestT& request = {}) const
         {
             return SubmitCallable(&AppRegistryClient::ListApplications, request);
         }
@@ -421,7 +460,7 @@ namespace AppRegistry
          * An Async wrapper for ListApplications that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListApplicationsRequestT = Model::ListApplicationsRequest>
-        void ListApplicationsAsync(const ListApplicationsRequestT& request, const ListApplicationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListApplicationsAsync(const ListApplicationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListApplicationsRequestT& request = {}) const
         {
             return SubmitAsync(&AppRegistryClient::ListApplications, request, handler, context);
         }
@@ -488,13 +527,13 @@ namespace AppRegistry
          * href="http://docs.aws.amazon.com/goto/WebAPI/AWS242AppRegistry-2020-06-24/ListAttributeGroups">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListAttributeGroupsOutcome ListAttributeGroups(const Model::ListAttributeGroupsRequest& request) const;
+        virtual Model::ListAttributeGroupsOutcome ListAttributeGroups(const Model::ListAttributeGroupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListAttributeGroups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListAttributeGroupsRequestT = Model::ListAttributeGroupsRequest>
-        Model::ListAttributeGroupsOutcomeCallable ListAttributeGroupsCallable(const ListAttributeGroupsRequestT& request) const
+        Model::ListAttributeGroupsOutcomeCallable ListAttributeGroupsCallable(const ListAttributeGroupsRequestT& request = {}) const
         {
             return SubmitCallable(&AppRegistryClient::ListAttributeGroups, request);
         }
@@ -503,7 +542,7 @@ namespace AppRegistry
          * An Async wrapper for ListAttributeGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListAttributeGroupsRequestT = Model::ListAttributeGroupsRequest>
-        void ListAttributeGroupsAsync(const ListAttributeGroupsRequestT& request, const ListAttributeGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListAttributeGroupsAsync(const ListAttributeGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListAttributeGroupsRequestT& request = {}) const
         {
             return SubmitAsync(&AppRegistryClient::ListAttributeGroups, request, handler, context);
         }
@@ -729,7 +768,6 @@ namespace AppRegistry
       void init(const AppRegistryClientConfiguration& clientConfiguration);
 
       AppRegistryClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<AppRegistryEndpointProviderBase> m_endpointProvider;
   };
 

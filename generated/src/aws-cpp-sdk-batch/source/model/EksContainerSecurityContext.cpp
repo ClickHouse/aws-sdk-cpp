@@ -18,31 +18,7 @@ namespace Batch
 namespace Model
 {
 
-EksContainerSecurityContext::EksContainerSecurityContext() : 
-    m_runAsUser(0),
-    m_runAsUserHasBeenSet(false),
-    m_runAsGroup(0),
-    m_runAsGroupHasBeenSet(false),
-    m_privileged(false),
-    m_privilegedHasBeenSet(false),
-    m_readOnlyRootFilesystem(false),
-    m_readOnlyRootFilesystemHasBeenSet(false),
-    m_runAsNonRoot(false),
-    m_runAsNonRootHasBeenSet(false)
-{
-}
-
-EksContainerSecurityContext::EksContainerSecurityContext(JsonView jsonValue) : 
-    m_runAsUser(0),
-    m_runAsUserHasBeenSet(false),
-    m_runAsGroup(0),
-    m_runAsGroupHasBeenSet(false),
-    m_privileged(false),
-    m_privilegedHasBeenSet(false),
-    m_readOnlyRootFilesystem(false),
-    m_readOnlyRootFilesystemHasBeenSet(false),
-    m_runAsNonRoot(false),
-    m_runAsNonRootHasBeenSet(false)
+EksContainerSecurityContext::EksContainerSecurityContext(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -52,38 +28,33 @@ EksContainerSecurityContext& EksContainerSecurityContext::operator =(JsonView js
   if(jsonValue.ValueExists("runAsUser"))
   {
     m_runAsUser = jsonValue.GetInt64("runAsUser");
-
     m_runAsUserHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("runAsGroup"))
   {
     m_runAsGroup = jsonValue.GetInt64("runAsGroup");
-
     m_runAsGroupHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("privileged"))
   {
     m_privileged = jsonValue.GetBool("privileged");
-
     m_privilegedHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("allowPrivilegeEscalation"))
+  {
+    m_allowPrivilegeEscalation = jsonValue.GetBool("allowPrivilegeEscalation");
+    m_allowPrivilegeEscalationHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("readOnlyRootFilesystem"))
   {
     m_readOnlyRootFilesystem = jsonValue.GetBool("readOnlyRootFilesystem");
-
     m_readOnlyRootFilesystemHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("runAsNonRoot"))
   {
     m_runAsNonRoot = jsonValue.GetBool("runAsNonRoot");
-
     m_runAsNonRootHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -106,6 +77,12 @@ JsonValue EksContainerSecurityContext::Jsonize() const
   if(m_privilegedHasBeenSet)
   {
    payload.WithBool("privileged", m_privileged);
+
+  }
+
+  if(m_allowPrivilegeEscalationHasBeenSet)
+  {
+   payload.WithBool("allowPrivilegeEscalation", m_allowPrivilegeEscalation);
 
   }
 

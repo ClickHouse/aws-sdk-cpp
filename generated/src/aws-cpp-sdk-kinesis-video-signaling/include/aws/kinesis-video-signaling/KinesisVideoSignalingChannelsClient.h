@@ -25,22 +25,25 @@ namespace KinesisVideoSignalingChannels
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef KinesisVideoSignalingChannelsClientConfiguration ClientConfigurationType;
+      typedef KinesisVideoSignalingChannelsEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         KinesisVideoSignalingChannelsClient(const Aws::KinesisVideoSignalingChannels::KinesisVideoSignalingChannelsClientConfiguration& clientConfiguration = Aws::KinesisVideoSignalingChannels::KinesisVideoSignalingChannelsClientConfiguration(),
-                                            std::shared_ptr<KinesisVideoSignalingChannelsEndpointProviderBase> endpointProvider = Aws::MakeShared<KinesisVideoSignalingChannelsEndpointProvider>(ALLOCATION_TAG));
+                                            std::shared_ptr<KinesisVideoSignalingChannelsEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         KinesisVideoSignalingChannelsClient(const Aws::Auth::AWSCredentials& credentials,
-                                            std::shared_ptr<KinesisVideoSignalingChannelsEndpointProviderBase> endpointProvider = Aws::MakeShared<KinesisVideoSignalingChannelsEndpointProvider>(ALLOCATION_TAG),
+                                            std::shared_ptr<KinesisVideoSignalingChannelsEndpointProviderBase> endpointProvider = nullptr,
                                             const Aws::KinesisVideoSignalingChannels::KinesisVideoSignalingChannelsClientConfiguration& clientConfiguration = Aws::KinesisVideoSignalingChannels::KinesisVideoSignalingChannelsClientConfiguration());
 
        /**
@@ -48,7 +51,7 @@ namespace KinesisVideoSignalingChannels
         * the default http client factory will be used
         */
         KinesisVideoSignalingChannelsClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                                            std::shared_ptr<KinesisVideoSignalingChannelsEndpointProviderBase> endpointProvider = Aws::MakeShared<KinesisVideoSignalingChannelsEndpointProvider>(ALLOCATION_TAG),
+                                            std::shared_ptr<KinesisVideoSignalingChannelsEndpointProviderBase> endpointProvider = nullptr,
                                             const Aws::KinesisVideoSignalingChannels::KinesisVideoSignalingChannelsClientConfiguration& clientConfiguration = Aws::KinesisVideoSignalingChannels::KinesisVideoSignalingChannelsClientConfiguration());
 
 
@@ -154,7 +157,6 @@ namespace KinesisVideoSignalingChannels
       void init(const KinesisVideoSignalingChannelsClientConfiguration& clientConfiguration);
 
       KinesisVideoSignalingChannelsClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<KinesisVideoSignalingChannelsEndpointProviderBase> m_endpointProvider;
   };
 

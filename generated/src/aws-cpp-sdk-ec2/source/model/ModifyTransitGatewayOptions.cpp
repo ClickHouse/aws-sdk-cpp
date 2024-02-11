@@ -20,43 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ModifyTransitGatewayOptions::ModifyTransitGatewayOptions() : 
-    m_addTransitGatewayCidrBlocksHasBeenSet(false),
-    m_removeTransitGatewayCidrBlocksHasBeenSet(false),
-    m_vpnEcmpSupport(VpnEcmpSupportValue::NOT_SET),
-    m_vpnEcmpSupportHasBeenSet(false),
-    m_dnsSupport(DnsSupportValue::NOT_SET),
-    m_dnsSupportHasBeenSet(false),
-    m_autoAcceptSharedAttachments(AutoAcceptSharedAttachmentsValue::NOT_SET),
-    m_autoAcceptSharedAttachmentsHasBeenSet(false),
-    m_defaultRouteTableAssociation(DefaultRouteTableAssociationValue::NOT_SET),
-    m_defaultRouteTableAssociationHasBeenSet(false),
-    m_associationDefaultRouteTableIdHasBeenSet(false),
-    m_defaultRouteTablePropagation(DefaultRouteTablePropagationValue::NOT_SET),
-    m_defaultRouteTablePropagationHasBeenSet(false),
-    m_propagationDefaultRouteTableIdHasBeenSet(false),
-    m_amazonSideAsn(0),
-    m_amazonSideAsnHasBeenSet(false)
-{
-}
-
-ModifyTransitGatewayOptions::ModifyTransitGatewayOptions(const XmlNode& xmlNode) : 
-    m_addTransitGatewayCidrBlocksHasBeenSet(false),
-    m_removeTransitGatewayCidrBlocksHasBeenSet(false),
-    m_vpnEcmpSupport(VpnEcmpSupportValue::NOT_SET),
-    m_vpnEcmpSupportHasBeenSet(false),
-    m_dnsSupport(DnsSupportValue::NOT_SET),
-    m_dnsSupportHasBeenSet(false),
-    m_autoAcceptSharedAttachments(AutoAcceptSharedAttachmentsValue::NOT_SET),
-    m_autoAcceptSharedAttachmentsHasBeenSet(false),
-    m_defaultRouteTableAssociation(DefaultRouteTableAssociationValue::NOT_SET),
-    m_defaultRouteTableAssociationHasBeenSet(false),
-    m_associationDefaultRouteTableIdHasBeenSet(false),
-    m_defaultRouteTablePropagation(DefaultRouteTablePropagationValue::NOT_SET),
-    m_defaultRouteTablePropagationHasBeenSet(false),
-    m_propagationDefaultRouteTableIdHasBeenSet(false),
-    m_amazonSideAsn(0),
-    m_amazonSideAsnHasBeenSet(false)
+ModifyTransitGatewayOptions::ModifyTransitGatewayOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -71,6 +35,7 @@ ModifyTransitGatewayOptions& ModifyTransitGatewayOptions::operator =(const XmlNo
     if(!addTransitGatewayCidrBlocksNode.IsNull())
     {
       XmlNode addTransitGatewayCidrBlocksMember = addTransitGatewayCidrBlocksNode.FirstChild("item");
+      m_addTransitGatewayCidrBlocksHasBeenSet = !addTransitGatewayCidrBlocksMember.IsNull();
       while(!addTransitGatewayCidrBlocksMember.IsNull())
       {
         m_addTransitGatewayCidrBlocks.push_back(addTransitGatewayCidrBlocksMember.GetText());
@@ -83,6 +48,7 @@ ModifyTransitGatewayOptions& ModifyTransitGatewayOptions::operator =(const XmlNo
     if(!removeTransitGatewayCidrBlocksNode.IsNull())
     {
       XmlNode removeTransitGatewayCidrBlocksMember = removeTransitGatewayCidrBlocksNode.FirstChild("item");
+      m_removeTransitGatewayCidrBlocksHasBeenSet = !removeTransitGatewayCidrBlocksMember.IsNull();
       while(!removeTransitGatewayCidrBlocksMember.IsNull())
       {
         m_removeTransitGatewayCidrBlocks.push_back(removeTransitGatewayCidrBlocksMember.GetText());
@@ -94,25 +60,31 @@ ModifyTransitGatewayOptions& ModifyTransitGatewayOptions::operator =(const XmlNo
     XmlNode vpnEcmpSupportNode = resultNode.FirstChild("VpnEcmpSupport");
     if(!vpnEcmpSupportNode.IsNull())
     {
-      m_vpnEcmpSupport = VpnEcmpSupportValueMapper::GetVpnEcmpSupportValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(vpnEcmpSupportNode.GetText()).c_str()).c_str());
+      m_vpnEcmpSupport = VpnEcmpSupportValueMapper::GetVpnEcmpSupportValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(vpnEcmpSupportNode.GetText()).c_str()));
       m_vpnEcmpSupportHasBeenSet = true;
     }
     XmlNode dnsSupportNode = resultNode.FirstChild("DnsSupport");
     if(!dnsSupportNode.IsNull())
     {
-      m_dnsSupport = DnsSupportValueMapper::GetDnsSupportValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(dnsSupportNode.GetText()).c_str()).c_str());
+      m_dnsSupport = DnsSupportValueMapper::GetDnsSupportValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(dnsSupportNode.GetText()).c_str()));
       m_dnsSupportHasBeenSet = true;
+    }
+    XmlNode securityGroupReferencingSupportNode = resultNode.FirstChild("SecurityGroupReferencingSupport");
+    if(!securityGroupReferencingSupportNode.IsNull())
+    {
+      m_securityGroupReferencingSupport = SecurityGroupReferencingSupportValueMapper::GetSecurityGroupReferencingSupportValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(securityGroupReferencingSupportNode.GetText()).c_str()));
+      m_securityGroupReferencingSupportHasBeenSet = true;
     }
     XmlNode autoAcceptSharedAttachmentsNode = resultNode.FirstChild("AutoAcceptSharedAttachments");
     if(!autoAcceptSharedAttachmentsNode.IsNull())
     {
-      m_autoAcceptSharedAttachments = AutoAcceptSharedAttachmentsValueMapper::GetAutoAcceptSharedAttachmentsValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(autoAcceptSharedAttachmentsNode.GetText()).c_str()).c_str());
+      m_autoAcceptSharedAttachments = AutoAcceptSharedAttachmentsValueMapper::GetAutoAcceptSharedAttachmentsValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(autoAcceptSharedAttachmentsNode.GetText()).c_str()));
       m_autoAcceptSharedAttachmentsHasBeenSet = true;
     }
     XmlNode defaultRouteTableAssociationNode = resultNode.FirstChild("DefaultRouteTableAssociation");
     if(!defaultRouteTableAssociationNode.IsNull())
     {
-      m_defaultRouteTableAssociation = DefaultRouteTableAssociationValueMapper::GetDefaultRouteTableAssociationValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(defaultRouteTableAssociationNode.GetText()).c_str()).c_str());
+      m_defaultRouteTableAssociation = DefaultRouteTableAssociationValueMapper::GetDefaultRouteTableAssociationValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(defaultRouteTableAssociationNode.GetText()).c_str()));
       m_defaultRouteTableAssociationHasBeenSet = true;
     }
     XmlNode associationDefaultRouteTableIdNode = resultNode.FirstChild("AssociationDefaultRouteTableId");
@@ -124,7 +96,7 @@ ModifyTransitGatewayOptions& ModifyTransitGatewayOptions::operator =(const XmlNo
     XmlNode defaultRouteTablePropagationNode = resultNode.FirstChild("DefaultRouteTablePropagation");
     if(!defaultRouteTablePropagationNode.IsNull())
     {
-      m_defaultRouteTablePropagation = DefaultRouteTablePropagationValueMapper::GetDefaultRouteTablePropagationValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(defaultRouteTablePropagationNode.GetText()).c_str()).c_str());
+      m_defaultRouteTablePropagation = DefaultRouteTablePropagationValueMapper::GetDefaultRouteTablePropagationValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(defaultRouteTablePropagationNode.GetText()).c_str()));
       m_defaultRouteTablePropagationHasBeenSet = true;
     }
     XmlNode propagationDefaultRouteTableIdNode = resultNode.FirstChild("PropagationDefaultRouteTableId");
@@ -166,22 +138,27 @@ void ModifyTransitGatewayOptions::OutputToStream(Aws::OStream& oStream, const ch
 
   if(m_vpnEcmpSupportHasBeenSet)
   {
-      oStream << location << index << locationValue << ".VpnEcmpSupport=" << VpnEcmpSupportValueMapper::GetNameForVpnEcmpSupportValue(m_vpnEcmpSupport) << "&";
+      oStream << location << index << locationValue << ".VpnEcmpSupport=" << StringUtils::URLEncode(VpnEcmpSupportValueMapper::GetNameForVpnEcmpSupportValue(m_vpnEcmpSupport)) << "&";
   }
 
   if(m_dnsSupportHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DnsSupport=" << DnsSupportValueMapper::GetNameForDnsSupportValue(m_dnsSupport) << "&";
+      oStream << location << index << locationValue << ".DnsSupport=" << StringUtils::URLEncode(DnsSupportValueMapper::GetNameForDnsSupportValue(m_dnsSupport)) << "&";
+  }
+
+  if(m_securityGroupReferencingSupportHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".SecurityGroupReferencingSupport=" << StringUtils::URLEncode(SecurityGroupReferencingSupportValueMapper::GetNameForSecurityGroupReferencingSupportValue(m_securityGroupReferencingSupport)) << "&";
   }
 
   if(m_autoAcceptSharedAttachmentsHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AutoAcceptSharedAttachments=" << AutoAcceptSharedAttachmentsValueMapper::GetNameForAutoAcceptSharedAttachmentsValue(m_autoAcceptSharedAttachments) << "&";
+      oStream << location << index << locationValue << ".AutoAcceptSharedAttachments=" << StringUtils::URLEncode(AutoAcceptSharedAttachmentsValueMapper::GetNameForAutoAcceptSharedAttachmentsValue(m_autoAcceptSharedAttachments)) << "&";
   }
 
   if(m_defaultRouteTableAssociationHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DefaultRouteTableAssociation=" << DefaultRouteTableAssociationValueMapper::GetNameForDefaultRouteTableAssociationValue(m_defaultRouteTableAssociation) << "&";
+      oStream << location << index << locationValue << ".DefaultRouteTableAssociation=" << StringUtils::URLEncode(DefaultRouteTableAssociationValueMapper::GetNameForDefaultRouteTableAssociationValue(m_defaultRouteTableAssociation)) << "&";
   }
 
   if(m_associationDefaultRouteTableIdHasBeenSet)
@@ -191,7 +168,7 @@ void ModifyTransitGatewayOptions::OutputToStream(Aws::OStream& oStream, const ch
 
   if(m_defaultRouteTablePropagationHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DefaultRouteTablePropagation=" << DefaultRouteTablePropagationValueMapper::GetNameForDefaultRouteTablePropagationValue(m_defaultRouteTablePropagation) << "&";
+      oStream << location << index << locationValue << ".DefaultRouteTablePropagation=" << StringUtils::URLEncode(DefaultRouteTablePropagationValueMapper::GetNameForDefaultRouteTablePropagationValue(m_defaultRouteTablePropagation)) << "&";
   }
 
   if(m_propagationDefaultRouteTableIdHasBeenSet)
@@ -213,7 +190,7 @@ void ModifyTransitGatewayOptions::OutputToStream(Aws::OStream& oStream, const ch
       unsigned addTransitGatewayCidrBlocksIdx = 1;
       for(auto& item : m_addTransitGatewayCidrBlocks)
       {
-        oStream << location << ".Item." << addTransitGatewayCidrBlocksIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".AddTransitGatewayCidrBlocks." << addTransitGatewayCidrBlocksIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_removeTransitGatewayCidrBlocksHasBeenSet)
@@ -221,24 +198,28 @@ void ModifyTransitGatewayOptions::OutputToStream(Aws::OStream& oStream, const ch
       unsigned removeTransitGatewayCidrBlocksIdx = 1;
       for(auto& item : m_removeTransitGatewayCidrBlocks)
       {
-        oStream << location << ".Item." << removeTransitGatewayCidrBlocksIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".RemoveTransitGatewayCidrBlocks." << removeTransitGatewayCidrBlocksIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_vpnEcmpSupportHasBeenSet)
   {
-      oStream << location << ".VpnEcmpSupport=" << VpnEcmpSupportValueMapper::GetNameForVpnEcmpSupportValue(m_vpnEcmpSupport) << "&";
+      oStream << location << ".VpnEcmpSupport=" << StringUtils::URLEncode(VpnEcmpSupportValueMapper::GetNameForVpnEcmpSupportValue(m_vpnEcmpSupport)) << "&";
   }
   if(m_dnsSupportHasBeenSet)
   {
-      oStream << location << ".DnsSupport=" << DnsSupportValueMapper::GetNameForDnsSupportValue(m_dnsSupport) << "&";
+      oStream << location << ".DnsSupport=" << StringUtils::URLEncode(DnsSupportValueMapper::GetNameForDnsSupportValue(m_dnsSupport)) << "&";
+  }
+  if(m_securityGroupReferencingSupportHasBeenSet)
+  {
+      oStream << location << ".SecurityGroupReferencingSupport=" << StringUtils::URLEncode(SecurityGroupReferencingSupportValueMapper::GetNameForSecurityGroupReferencingSupportValue(m_securityGroupReferencingSupport)) << "&";
   }
   if(m_autoAcceptSharedAttachmentsHasBeenSet)
   {
-      oStream << location << ".AutoAcceptSharedAttachments=" << AutoAcceptSharedAttachmentsValueMapper::GetNameForAutoAcceptSharedAttachmentsValue(m_autoAcceptSharedAttachments) << "&";
+      oStream << location << ".AutoAcceptSharedAttachments=" << StringUtils::URLEncode(AutoAcceptSharedAttachmentsValueMapper::GetNameForAutoAcceptSharedAttachmentsValue(m_autoAcceptSharedAttachments)) << "&";
   }
   if(m_defaultRouteTableAssociationHasBeenSet)
   {
-      oStream << location << ".DefaultRouteTableAssociation=" << DefaultRouteTableAssociationValueMapper::GetNameForDefaultRouteTableAssociationValue(m_defaultRouteTableAssociation) << "&";
+      oStream << location << ".DefaultRouteTableAssociation=" << StringUtils::URLEncode(DefaultRouteTableAssociationValueMapper::GetNameForDefaultRouteTableAssociationValue(m_defaultRouteTableAssociation)) << "&";
   }
   if(m_associationDefaultRouteTableIdHasBeenSet)
   {
@@ -246,7 +227,7 @@ void ModifyTransitGatewayOptions::OutputToStream(Aws::OStream& oStream, const ch
   }
   if(m_defaultRouteTablePropagationHasBeenSet)
   {
-      oStream << location << ".DefaultRouteTablePropagation=" << DefaultRouteTablePropagationValueMapper::GetNameForDefaultRouteTablePropagationValue(m_defaultRouteTablePropagation) << "&";
+      oStream << location << ".DefaultRouteTablePropagation=" << StringUtils::URLEncode(DefaultRouteTablePropagationValueMapper::GetNameForDefaultRouteTablePropagationValue(m_defaultRouteTablePropagation)) << "&";
   }
   if(m_propagationDefaultRouteTableIdHasBeenSet)
   {

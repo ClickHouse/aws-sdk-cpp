@@ -18,19 +18,7 @@ namespace EKS
 namespace Model
 {
 
-NodegroupUpdateConfig::NodegroupUpdateConfig() : 
-    m_maxUnavailable(0),
-    m_maxUnavailableHasBeenSet(false),
-    m_maxUnavailablePercentage(0),
-    m_maxUnavailablePercentageHasBeenSet(false)
-{
-}
-
-NodegroupUpdateConfig::NodegroupUpdateConfig(JsonView jsonValue) : 
-    m_maxUnavailable(0),
-    m_maxUnavailableHasBeenSet(false),
-    m_maxUnavailablePercentage(0),
-    m_maxUnavailablePercentageHasBeenSet(false)
+NodegroupUpdateConfig::NodegroupUpdateConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,18 @@ NodegroupUpdateConfig& NodegroupUpdateConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("maxUnavailable"))
   {
     m_maxUnavailable = jsonValue.GetInteger("maxUnavailable");
-
     m_maxUnavailableHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("maxUnavailablePercentage"))
   {
     m_maxUnavailablePercentage = jsonValue.GetInteger("maxUnavailablePercentage");
-
     m_maxUnavailablePercentageHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("updateStrategy"))
+  {
+    m_updateStrategy = NodegroupUpdateStrategiesMapper::GetNodegroupUpdateStrategiesForName(jsonValue.GetString("updateStrategy"));
+    m_updateStrategyHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -68,6 +57,11 @@ JsonValue NodegroupUpdateConfig::Jsonize() const
   {
    payload.WithInteger("maxUnavailablePercentage", m_maxUnavailablePercentage);
 
+  }
+
+  if(m_updateStrategyHasBeenSet)
+  {
+   payload.WithString("updateStrategy", NodegroupUpdateStrategiesMapper::GetNameForNodegroupUpdateStrategies(m_updateStrategy));
   }
 
   return payload;

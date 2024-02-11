@@ -20,65 +20,7 @@ namespace RDS
 namespace Model
 {
 
-PendingModifiedValues::PendingModifiedValues() : 
-    m_dBInstanceClassHasBeenSet(false),
-    m_allocatedStorage(0),
-    m_allocatedStorageHasBeenSet(false),
-    m_masterUserPasswordHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_backupRetentionPeriod(0),
-    m_backupRetentionPeriodHasBeenSet(false),
-    m_multiAZ(false),
-    m_multiAZHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_licenseModelHasBeenSet(false),
-    m_iops(0),
-    m_iopsHasBeenSet(false),
-    m_dBInstanceIdentifierHasBeenSet(false),
-    m_storageTypeHasBeenSet(false),
-    m_cACertificateIdentifierHasBeenSet(false),
-    m_dBSubnetGroupNameHasBeenSet(false),
-    m_pendingCloudwatchLogsExportsHasBeenSet(false),
-    m_processorFeaturesHasBeenSet(false),
-    m_iAMDatabaseAuthenticationEnabled(false),
-    m_iAMDatabaseAuthenticationEnabledHasBeenSet(false),
-    m_automationMode(AutomationMode::NOT_SET),
-    m_automationModeHasBeenSet(false),
-    m_resumeFullAutomationModeTimeHasBeenSet(false),
-    m_storageThroughput(0),
-    m_storageThroughputHasBeenSet(false)
-{
-}
-
-PendingModifiedValues::PendingModifiedValues(const XmlNode& xmlNode) : 
-    m_dBInstanceClassHasBeenSet(false),
-    m_allocatedStorage(0),
-    m_allocatedStorageHasBeenSet(false),
-    m_masterUserPasswordHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_backupRetentionPeriod(0),
-    m_backupRetentionPeriodHasBeenSet(false),
-    m_multiAZ(false),
-    m_multiAZHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_licenseModelHasBeenSet(false),
-    m_iops(0),
-    m_iopsHasBeenSet(false),
-    m_dBInstanceIdentifierHasBeenSet(false),
-    m_storageTypeHasBeenSet(false),
-    m_cACertificateIdentifierHasBeenSet(false),
-    m_dBSubnetGroupNameHasBeenSet(false),
-    m_pendingCloudwatchLogsExportsHasBeenSet(false),
-    m_processorFeaturesHasBeenSet(false),
-    m_iAMDatabaseAuthenticationEnabled(false),
-    m_iAMDatabaseAuthenticationEnabledHasBeenSet(false),
-    m_automationMode(AutomationMode::NOT_SET),
-    m_automationModeHasBeenSet(false),
-    m_resumeFullAutomationModeTimeHasBeenSet(false),
-    m_storageThroughput(0),
-    m_storageThroughputHasBeenSet(false)
+PendingModifiedValues::PendingModifiedValues(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -177,6 +119,7 @@ PendingModifiedValues& PendingModifiedValues::operator =(const XmlNode& xmlNode)
     if(!processorFeaturesNode.IsNull())
     {
       XmlNode processorFeaturesMember = processorFeaturesNode.FirstChild("ProcessorFeature");
+      m_processorFeaturesHasBeenSet = !processorFeaturesMember.IsNull();
       while(!processorFeaturesMember.IsNull())
       {
         m_processorFeatures.push_back(processorFeaturesMember);
@@ -194,7 +137,7 @@ PendingModifiedValues& PendingModifiedValues::operator =(const XmlNode& xmlNode)
     XmlNode automationModeNode = resultNode.FirstChild("AutomationMode");
     if(!automationModeNode.IsNull())
     {
-      m_automationMode = AutomationModeMapper::GetAutomationModeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(automationModeNode.GetText()).c_str()).c_str());
+      m_automationMode = AutomationModeMapper::GetAutomationModeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(automationModeNode.GetText()).c_str()));
       m_automationModeHasBeenSet = true;
     }
     XmlNode resumeFullAutomationModeTimeNode = resultNode.FirstChild("ResumeFullAutomationModeTime");
@@ -208,6 +151,24 @@ PendingModifiedValues& PendingModifiedValues::operator =(const XmlNode& xmlNode)
     {
       m_storageThroughput = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(storageThroughputNode.GetText()).c_str()).c_str());
       m_storageThroughputHasBeenSet = true;
+    }
+    XmlNode engineNode = resultNode.FirstChild("Engine");
+    if(!engineNode.IsNull())
+    {
+      m_engine = Aws::Utils::Xml::DecodeEscapedXmlText(engineNode.GetText());
+      m_engineHasBeenSet = true;
+    }
+    XmlNode dedicatedLogVolumeNode = resultNode.FirstChild("DedicatedLogVolume");
+    if(!dedicatedLogVolumeNode.IsNull())
+    {
+      m_dedicatedLogVolume = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(dedicatedLogVolumeNode.GetText()).c_str()).c_str());
+      m_dedicatedLogVolumeHasBeenSet = true;
+    }
+    XmlNode multiTenantNode = resultNode.FirstChild("MultiTenant");
+    if(!multiTenantNode.IsNull())
+    {
+      m_multiTenant = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(multiTenantNode.GetText()).c_str()).c_str());
+      m_multiTenantHasBeenSet = true;
     }
   }
 
@@ -294,7 +255,7 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
       for(auto& item : m_processorFeatures)
       {
         Aws::StringStream processorFeaturesSs;
-        processorFeaturesSs << location << index << locationValue << ".ProcessorFeature." << processorFeaturesIdx++;
+        processorFeaturesSs << location << index << locationValue << ".ProcessorFeatures.ProcessorFeature." << processorFeaturesIdx++;
         item.OutputToStream(oStream, processorFeaturesSs.str().c_str());
       }
   }
@@ -306,7 +267,7 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
 
   if(m_automationModeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AutomationMode=" << AutomationModeMapper::GetNameForAutomationMode(m_automationMode) << "&";
+      oStream << location << index << locationValue << ".AutomationMode=" << StringUtils::URLEncode(AutomationModeMapper::GetNameForAutomationMode(m_automationMode)) << "&";
   }
 
   if(m_resumeFullAutomationModeTimeHasBeenSet)
@@ -317,6 +278,21 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
   if(m_storageThroughputHasBeenSet)
   {
       oStream << location << index << locationValue << ".StorageThroughput=" << m_storageThroughput << "&";
+  }
+
+  if(m_engineHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".Engine=" << StringUtils::URLEncode(m_engine.c_str()) << "&";
+  }
+
+  if(m_dedicatedLogVolumeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".DedicatedLogVolume=" << std::boolalpha << m_dedicatedLogVolume << "&";
+  }
+
+  if(m_multiTenantHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".MultiTenant=" << std::boolalpha << m_multiTenant << "&";
   }
 
 }
@@ -387,7 +363,7 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
       for(auto& item : m_processorFeatures)
       {
         Aws::StringStream processorFeaturesSs;
-        processorFeaturesSs << location <<  ".ProcessorFeature." << processorFeaturesIdx++;
+        processorFeaturesSs << location << ".ProcessorFeatures.ProcessorFeature." << processorFeaturesIdx++;
         item.OutputToStream(oStream, processorFeaturesSs.str().c_str());
       }
   }
@@ -397,7 +373,7 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
   }
   if(m_automationModeHasBeenSet)
   {
-      oStream << location << ".AutomationMode=" << AutomationModeMapper::GetNameForAutomationMode(m_automationMode) << "&";
+      oStream << location << ".AutomationMode=" << StringUtils::URLEncode(AutomationModeMapper::GetNameForAutomationMode(m_automationMode)) << "&";
   }
   if(m_resumeFullAutomationModeTimeHasBeenSet)
   {
@@ -406,6 +382,18 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
   if(m_storageThroughputHasBeenSet)
   {
       oStream << location << ".StorageThroughput=" << m_storageThroughput << "&";
+  }
+  if(m_engineHasBeenSet)
+  {
+      oStream << location << ".Engine=" << StringUtils::URLEncode(m_engine.c_str()) << "&";
+  }
+  if(m_dedicatedLogVolumeHasBeenSet)
+  {
+      oStream << location << ".DedicatedLogVolume=" << std::boolalpha << m_dedicatedLogVolume << "&";
+  }
+  if(m_multiTenantHasBeenSet)
+  {
+      oStream << location << ".MultiTenant=" << std::boolalpha << m_multiTenant << "&";
   }
 }
 

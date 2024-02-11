@@ -18,13 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsWafv2CustomRequestHandlingDetails::AwsWafv2CustomRequestHandlingDetails() : 
-    m_insertHeadersHasBeenSet(false)
-{
-}
-
-AwsWafv2CustomRequestHandlingDetails::AwsWafv2CustomRequestHandlingDetails(JsonView jsonValue) : 
-    m_insertHeadersHasBeenSet(false)
+AwsWafv2CustomRequestHandlingDetails::AwsWafv2CustomRequestHandlingDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ AwsWafv2CustomRequestHandlingDetails& AwsWafv2CustomRequestHandlingDetails::oper
     }
     m_insertHeadersHasBeenSet = true;
   }
-
   return *this;
 }
 

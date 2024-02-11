@@ -33,60 +33,26 @@ namespace Model
   class PipeTargetSageMakerPipelineParameters
   {
   public:
-    AWS_PIPES_API PipeTargetSageMakerPipelineParameters();
+    AWS_PIPES_API PipeTargetSageMakerPipelineParameters() = default;
     AWS_PIPES_API PipeTargetSageMakerPipelineParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_PIPES_API PipeTargetSageMakerPipelineParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PIPES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>List of Parameter names and values for SageMaker Model Building Pipeline
      * execution.</p>
      */
-    inline const Aws::Vector<SageMakerPipelineParameter>& GetPipelineParameterList() const{ return m_pipelineParameterList; }
-
-    /**
-     * <p>List of Parameter names and values for SageMaker Model Building Pipeline
-     * execution.</p>
-     */
+    inline const Aws::Vector<SageMakerPipelineParameter>& GetPipelineParameterList() const { return m_pipelineParameterList; }
     inline bool PipelineParameterListHasBeenSet() const { return m_pipelineParameterListHasBeenSet; }
-
-    /**
-     * <p>List of Parameter names and values for SageMaker Model Building Pipeline
-     * execution.</p>
-     */
-    inline void SetPipelineParameterList(const Aws::Vector<SageMakerPipelineParameter>& value) { m_pipelineParameterListHasBeenSet = true; m_pipelineParameterList = value; }
-
-    /**
-     * <p>List of Parameter names and values for SageMaker Model Building Pipeline
-     * execution.</p>
-     */
-    inline void SetPipelineParameterList(Aws::Vector<SageMakerPipelineParameter>&& value) { m_pipelineParameterListHasBeenSet = true; m_pipelineParameterList = std::move(value); }
-
-    /**
-     * <p>List of Parameter names and values for SageMaker Model Building Pipeline
-     * execution.</p>
-     */
-    inline PipeTargetSageMakerPipelineParameters& WithPipelineParameterList(const Aws::Vector<SageMakerPipelineParameter>& value) { SetPipelineParameterList(value); return *this;}
-
-    /**
-     * <p>List of Parameter names and values for SageMaker Model Building Pipeline
-     * execution.</p>
-     */
-    inline PipeTargetSageMakerPipelineParameters& WithPipelineParameterList(Aws::Vector<SageMakerPipelineParameter>&& value) { SetPipelineParameterList(std::move(value)); return *this;}
-
-    /**
-     * <p>List of Parameter names and values for SageMaker Model Building Pipeline
-     * execution.</p>
-     */
-    inline PipeTargetSageMakerPipelineParameters& AddPipelineParameterList(const SageMakerPipelineParameter& value) { m_pipelineParameterListHasBeenSet = true; m_pipelineParameterList.push_back(value); return *this; }
-
-    /**
-     * <p>List of Parameter names and values for SageMaker Model Building Pipeline
-     * execution.</p>
-     */
-    inline PipeTargetSageMakerPipelineParameters& AddPipelineParameterList(SageMakerPipelineParameter&& value) { m_pipelineParameterListHasBeenSet = true; m_pipelineParameterList.push_back(std::move(value)); return *this; }
-
+    template<typename PipelineParameterListT = Aws::Vector<SageMakerPipelineParameter>>
+    void SetPipelineParameterList(PipelineParameterListT&& value) { m_pipelineParameterListHasBeenSet = true; m_pipelineParameterList = std::forward<PipelineParameterListT>(value); }
+    template<typename PipelineParameterListT = Aws::Vector<SageMakerPipelineParameter>>
+    PipeTargetSageMakerPipelineParameters& WithPipelineParameterList(PipelineParameterListT&& value) { SetPipelineParameterList(std::forward<PipelineParameterListT>(value)); return *this;}
+    template<typename PipelineParameterListT = SageMakerPipelineParameter>
+    PipeTargetSageMakerPipelineParameters& AddPipelineParameterList(PipelineParameterListT&& value) { m_pipelineParameterListHasBeenSet = true; m_pipelineParameterList.emplace_back(std::forward<PipelineParameterListT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<SageMakerPipelineParameter> m_pipelineParameterList;

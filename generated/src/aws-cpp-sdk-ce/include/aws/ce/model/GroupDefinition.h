@@ -33,86 +33,36 @@ namespace Model
   class GroupDefinition
   {
   public:
-    AWS_COSTEXPLORER_API GroupDefinition();
+    AWS_COSTEXPLORER_API GroupDefinition() = default;
     AWS_COSTEXPLORER_API GroupDefinition(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API GroupDefinition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The string that represents the type of group.</p>
      */
-    inline const GroupDefinitionType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The string that represents the type of group.</p>
-     */
+    inline GroupDefinitionType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(GroupDefinitionType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline GroupDefinition& WithType(GroupDefinitionType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The string that represents the type of group.</p>
-     */
-    inline void SetType(const GroupDefinitionType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The string that represents the type of group.</p>
-     */
-    inline void SetType(GroupDefinitionType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The string that represents the type of group.</p>
-     */
-    inline GroupDefinition& WithType(const GroupDefinitionType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The string that represents the type of group.</p>
-     */
-    inline GroupDefinition& WithType(GroupDefinitionType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The string that represents a key for a specified group.</p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The string that represents a key for a specified group.</p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
-
-    /**
-     * <p>The string that represents a key for a specified group.</p>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The string that represents a key for a specified group.</p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The string that represents a key for a specified group.</p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>The string that represents a key for a specified group.</p>
-     */
-    inline GroupDefinition& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The string that represents a key for a specified group.</p>
-     */
-    inline GroupDefinition& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The string that represents a key for a specified group.</p>
-     */
-    inline GroupDefinition& WithKey(const char* value) { SetKey(value); return *this;}
-
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    GroupDefinition& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
   private:
 
-    GroupDefinitionType m_type;
+    GroupDefinitionType m_type{GroupDefinitionType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_key;

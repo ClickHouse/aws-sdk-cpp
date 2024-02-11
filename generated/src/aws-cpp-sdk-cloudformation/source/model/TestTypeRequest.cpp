@@ -10,16 +10,6 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-TestTypeRequest::TestTypeRequest() : 
-    m_arnHasBeenSet(false),
-    m_type(ThirdPartyType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_typeNameHasBeenSet(false),
-    m_versionIdHasBeenSet(false),
-    m_logDeliveryBucketHasBeenSet(false)
-{
-}
-
 Aws::String TestTypeRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -31,7 +21,7 @@ Aws::String TestTypeRequest::SerializePayload() const
 
   if(m_typeHasBeenSet)
   {
-    ss << "Type=" << ThirdPartyTypeMapper::GetNameForThirdPartyType(m_type) << "&";
+    ss << "Type=" << StringUtils::URLEncode(ThirdPartyTypeMapper::GetNameForThirdPartyType(m_type)) << "&";
   }
 
   if(m_typeNameHasBeenSet)

@@ -18,25 +18,7 @@ namespace CodeDeploy
 namespace Model
 {
 
-DeploymentConfigInfo::DeploymentConfigInfo() : 
-    m_deploymentConfigIdHasBeenSet(false),
-    m_deploymentConfigNameHasBeenSet(false),
-    m_minimumHealthyHostsHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_computePlatform(ComputePlatform::NOT_SET),
-    m_computePlatformHasBeenSet(false),
-    m_trafficRoutingConfigHasBeenSet(false)
-{
-}
-
-DeploymentConfigInfo::DeploymentConfigInfo(JsonView jsonValue) : 
-    m_deploymentConfigIdHasBeenSet(false),
-    m_deploymentConfigNameHasBeenSet(false),
-    m_minimumHealthyHostsHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_computePlatform(ComputePlatform::NOT_SET),
-    m_computePlatformHasBeenSet(false),
-    m_trafficRoutingConfigHasBeenSet(false)
+DeploymentConfigInfo::DeploymentConfigInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,45 +28,38 @@ DeploymentConfigInfo& DeploymentConfigInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("deploymentConfigId"))
   {
     m_deploymentConfigId = jsonValue.GetString("deploymentConfigId");
-
     m_deploymentConfigIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("deploymentConfigName"))
   {
     m_deploymentConfigName = jsonValue.GetString("deploymentConfigName");
-
     m_deploymentConfigNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("minimumHealthyHosts"))
   {
     m_minimumHealthyHosts = jsonValue.GetObject("minimumHealthyHosts");
-
     m_minimumHealthyHostsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("createTime"))
   {
     m_createTime = jsonValue.GetDouble("createTime");
-
     m_createTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("computePlatform"))
   {
     m_computePlatform = ComputePlatformMapper::GetComputePlatformForName(jsonValue.GetString("computePlatform"));
-
     m_computePlatformHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("trafficRoutingConfig"))
   {
     m_trafficRoutingConfig = jsonValue.GetObject("trafficRoutingConfig");
-
     m_trafficRoutingConfigHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("zonalConfig"))
+  {
+    m_zonalConfig = jsonValue.GetObject("zonalConfig");
+    m_zonalConfigHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -123,6 +98,12 @@ JsonValue DeploymentConfigInfo::Jsonize() const
   if(m_trafficRoutingConfigHasBeenSet)
   {
    payload.WithObject("trafficRoutingConfig", m_trafficRoutingConfig.Jsonize());
+
+  }
+
+  if(m_zonalConfigHasBeenSet)
+  {
+   payload.WithObject("zonalConfig", m_zonalConfig.Jsonize());
 
   }
 

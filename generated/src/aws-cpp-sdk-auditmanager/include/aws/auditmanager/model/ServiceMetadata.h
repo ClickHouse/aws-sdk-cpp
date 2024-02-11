@@ -24,191 +24,68 @@ namespace Model
 {
 
   /**
-   * <p> The metadata that's associated with the Amazon Web Service. </p><p><h3>See
-   * Also:</h3>   <a
+   * <p> The metadata that's associated with the Amazon Web Services service.
+   * </p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/auditmanager-2017-07-25/ServiceMetadata">AWS
    * API Reference</a></p>
    */
   class ServiceMetadata
   {
   public:
-    AWS_AUDITMANAGER_API ServiceMetadata();
+    AWS_AUDITMANAGER_API ServiceMetadata() = default;
     AWS_AUDITMANAGER_API ServiceMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_AUDITMANAGER_API ServiceMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AUDITMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p> The name of the Amazon Web Service. </p>
+     * <p> The name of the Amazon Web Services service. </p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p> The name of the Amazon Web Service. </p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ServiceMetadata& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The name of the Amazon Web Service. </p>
+     * <p> The display name of the Amazon Web Services service. </p>
      */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p> The name of the Amazon Web Service. </p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p> The name of the Amazon Web Service. </p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p> The name of the Amazon Web Service. </p>
-     */
-    inline ServiceMetadata& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p> The name of the Amazon Web Service. </p>
-     */
-    inline ServiceMetadata& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name of the Amazon Web Service. </p>
-     */
-    inline ServiceMetadata& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p> The display name of the Amazon Web Service. </p>
-     */
-    inline const Aws::String& GetDisplayName() const{ return m_displayName; }
-
-    /**
-     * <p> The display name of the Amazon Web Service. </p>
-     */
+    inline const Aws::String& GetDisplayName() const { return m_displayName; }
     inline bool DisplayNameHasBeenSet() const { return m_displayNameHasBeenSet; }
+    template<typename DisplayNameT = Aws::String>
+    void SetDisplayName(DisplayNameT&& value) { m_displayNameHasBeenSet = true; m_displayName = std::forward<DisplayNameT>(value); }
+    template<typename DisplayNameT = Aws::String>
+    ServiceMetadata& WithDisplayName(DisplayNameT&& value) { SetDisplayName(std::forward<DisplayNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The display name of the Amazon Web Service. </p>
+     * <p> The description of the Amazon Web Services service. </p>
      */
-    inline void SetDisplayName(const Aws::String& value) { m_displayNameHasBeenSet = true; m_displayName = value; }
-
-    /**
-     * <p> The display name of the Amazon Web Service. </p>
-     */
-    inline void SetDisplayName(Aws::String&& value) { m_displayNameHasBeenSet = true; m_displayName = std::move(value); }
-
-    /**
-     * <p> The display name of the Amazon Web Service. </p>
-     */
-    inline void SetDisplayName(const char* value) { m_displayNameHasBeenSet = true; m_displayName.assign(value); }
-
-    /**
-     * <p> The display name of the Amazon Web Service. </p>
-     */
-    inline ServiceMetadata& WithDisplayName(const Aws::String& value) { SetDisplayName(value); return *this;}
-
-    /**
-     * <p> The display name of the Amazon Web Service. </p>
-     */
-    inline ServiceMetadata& WithDisplayName(Aws::String&& value) { SetDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p> The display name of the Amazon Web Service. </p>
-     */
-    inline ServiceMetadata& WithDisplayName(const char* value) { SetDisplayName(value); return *this;}
-
-
-    /**
-     * <p> The description of the Amazon Web Service. </p>
-     */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p> The description of the Amazon Web Service. </p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ServiceMetadata& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The description of the Amazon Web Service. </p>
+     * <p> The category that the Amazon Web Services service belongs to, such as
+     * compute, storage, or database. </p>
      */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p> The description of the Amazon Web Service. </p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p> The description of the Amazon Web Service. </p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p> The description of the Amazon Web Service. </p>
-     */
-    inline ServiceMetadata& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p> The description of the Amazon Web Service. </p>
-     */
-    inline ServiceMetadata& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p> The description of the Amazon Web Service. </p>
-     */
-    inline ServiceMetadata& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
-    /**
-     * <p> The category that the Amazon Web Service belongs to, such as compute,
-     * storage, or database. </p>
-     */
-    inline const Aws::String& GetCategory() const{ return m_category; }
-
-    /**
-     * <p> The category that the Amazon Web Service belongs to, such as compute,
-     * storage, or database. </p>
-     */
+    inline const Aws::String& GetCategory() const { return m_category; }
     inline bool CategoryHasBeenSet() const { return m_categoryHasBeenSet; }
-
-    /**
-     * <p> The category that the Amazon Web Service belongs to, such as compute,
-     * storage, or database. </p>
-     */
-    inline void SetCategory(const Aws::String& value) { m_categoryHasBeenSet = true; m_category = value; }
-
-    /**
-     * <p> The category that the Amazon Web Service belongs to, such as compute,
-     * storage, or database. </p>
-     */
-    inline void SetCategory(Aws::String&& value) { m_categoryHasBeenSet = true; m_category = std::move(value); }
-
-    /**
-     * <p> The category that the Amazon Web Service belongs to, such as compute,
-     * storage, or database. </p>
-     */
-    inline void SetCategory(const char* value) { m_categoryHasBeenSet = true; m_category.assign(value); }
-
-    /**
-     * <p> The category that the Amazon Web Service belongs to, such as compute,
-     * storage, or database. </p>
-     */
-    inline ServiceMetadata& WithCategory(const Aws::String& value) { SetCategory(value); return *this;}
-
-    /**
-     * <p> The category that the Amazon Web Service belongs to, such as compute,
-     * storage, or database. </p>
-     */
-    inline ServiceMetadata& WithCategory(Aws::String&& value) { SetCategory(std::move(value)); return *this;}
-
-    /**
-     * <p> The category that the Amazon Web Service belongs to, such as compute,
-     * storage, or database. </p>
-     */
-    inline ServiceMetadata& WithCategory(const char* value) { SetCategory(value); return *this;}
-
+    template<typename CategoryT = Aws::String>
+    void SetCategory(CategoryT&& value) { m_categoryHasBeenSet = true; m_category = std::forward<CategoryT>(value); }
+    template<typename CategoryT = Aws::String>
+    ServiceMetadata& WithCategory(CategoryT&& value) { SetCategory(std::forward<CategoryT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

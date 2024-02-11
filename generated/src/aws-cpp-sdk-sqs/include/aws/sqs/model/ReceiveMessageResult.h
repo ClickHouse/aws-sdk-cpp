@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/sqs/SQS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/sqs/model/ResponseMetadata.h>
 #include <aws/sqs/model/Message.h>
 #include <utility>
@@ -17,10 +18,10 @@ class AmazonWebServiceResult;
 
 namespace Utils
 {
-namespace Xml
+namespace Json
 {
-  class XmlDocument;
-} // namespace Xml
+  class JsonValue;
+} // namespace Json
 } // namespace Utils
 namespace SQS
 {
@@ -34,67 +35,51 @@ namespace Model
   class ReceiveMessageResult
   {
   public:
-    AWS_SQS_API ReceiveMessageResult();
-    AWS_SQS_API ReceiveMessageResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
-    AWS_SQS_API ReceiveMessageResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
+    AWS_SQS_API ReceiveMessageResult() = default;
+    AWS_SQS_API ReceiveMessageResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
+    AWS_SQS_API ReceiveMessageResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A list of messages.</p>
      */
-    inline const Aws::Vector<Message>& GetMessages() const{ return m_messages; }
+    inline const Aws::Vector<Message>& GetMessages() const { return m_messages; }
+    template<typename MessagesT = Aws::Vector<Message>>
+    void SetMessages(MessagesT&& value) { m_messagesHasBeenSet = true; m_messages = std::forward<MessagesT>(value); }
+    template<typename MessagesT = Aws::Vector<Message>>
+    ReceiveMessageResult& WithMessages(MessagesT&& value) { SetMessages(std::forward<MessagesT>(value)); return *this;}
+    template<typename MessagesT = Message>
+    ReceiveMessageResult& AddMessages(MessagesT&& value) { m_messagesHasBeenSet = true; m_messages.emplace_back(std::forward<MessagesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of messages.</p>
-     */
-    inline void SetMessages(const Aws::Vector<Message>& value) { m_messages = value; }
-
-    /**
-     * <p>A list of messages.</p>
-     */
-    inline void SetMessages(Aws::Vector<Message>&& value) { m_messages = std::move(value); }
-
-    /**
-     * <p>A list of messages.</p>
-     */
-    inline ReceiveMessageResult& WithMessages(const Aws::Vector<Message>& value) { SetMessages(value); return *this;}
-
-    /**
-     * <p>A list of messages.</p>
-     */
-    inline ReceiveMessageResult& WithMessages(Aws::Vector<Message>&& value) { SetMessages(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of messages.</p>
-     */
-    inline ReceiveMessageResult& AddMessages(const Message& value) { m_messages.push_back(value); return *this; }
-
-    /**
-     * <p>A list of messages.</p>
-     */
-    inline ReceiveMessageResult& AddMessages(Message&& value) { m_messages.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ReceiveMessageResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline ReceiveMessageResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline ReceiveMessageResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    ReceiveMessageResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Message> m_messages;
+    bool m_messagesHasBeenSet = false;
+
+    Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

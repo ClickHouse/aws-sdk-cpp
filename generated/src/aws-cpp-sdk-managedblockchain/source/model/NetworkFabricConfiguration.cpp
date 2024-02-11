@@ -18,15 +18,7 @@ namespace ManagedBlockchain
 namespace Model
 {
 
-NetworkFabricConfiguration::NetworkFabricConfiguration() : 
-    m_edition(Edition::NOT_SET),
-    m_editionHasBeenSet(false)
-{
-}
-
-NetworkFabricConfiguration::NetworkFabricConfiguration(JsonView jsonValue) : 
-    m_edition(Edition::NOT_SET),
-    m_editionHasBeenSet(false)
+NetworkFabricConfiguration::NetworkFabricConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ NetworkFabricConfiguration& NetworkFabricConfiguration::operator =(JsonView json
   if(jsonValue.ValueExists("Edition"))
   {
     m_edition = EditionMapper::GetEditionForName(jsonValue.GetString("Edition"));
-
     m_editionHasBeenSet = true;
   }
-
   return *this;
 }
 

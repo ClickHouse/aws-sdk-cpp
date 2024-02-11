@@ -6,6 +6,8 @@
 #pragma once
 #include <aws/servicecatalog-appregistry/AppRegistry_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/servicecatalog-appregistry/model/AssociationOption.h>
 #include <utility>
 
 namespace Aws
@@ -27,118 +29,67 @@ namespace Model
   class AssociateResourceResult
   {
   public:
-    AWS_APPREGISTRY_API AssociateResourceResult();
+    AWS_APPREGISTRY_API AssociateResourceResult() = default;
     AWS_APPREGISTRY_API AssociateResourceResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_APPREGISTRY_API AssociateResourceResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon resource name (ARN) of the application that was augmented with
      * attributes.</p>
      */
-    inline const Aws::String& GetApplicationArn() const{ return m_applicationArn; }
+    inline const Aws::String& GetApplicationArn() const { return m_applicationArn; }
+    template<typename ApplicationArnT = Aws::String>
+    void SetApplicationArn(ApplicationArnT&& value) { m_applicationArnHasBeenSet = true; m_applicationArn = std::forward<ApplicationArnT>(value); }
+    template<typename ApplicationArnT = Aws::String>
+    AssociateResourceResult& WithApplicationArn(ApplicationArnT&& value) { SetApplicationArn(std::forward<ApplicationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon resource name (ARN) of the application that was augmented with
-     * attributes.</p>
-     */
-    inline void SetApplicationArn(const Aws::String& value) { m_applicationArn = value; }
-
-    /**
-     * <p>The Amazon resource name (ARN) of the application that was augmented with
-     * attributes.</p>
-     */
-    inline void SetApplicationArn(Aws::String&& value) { m_applicationArn = std::move(value); }
-
-    /**
-     * <p>The Amazon resource name (ARN) of the application that was augmented with
-     * attributes.</p>
-     */
-    inline void SetApplicationArn(const char* value) { m_applicationArn.assign(value); }
-
-    /**
-     * <p>The Amazon resource name (ARN) of the application that was augmented with
-     * attributes.</p>
-     */
-    inline AssociateResourceResult& WithApplicationArn(const Aws::String& value) { SetApplicationArn(value); return *this;}
-
-    /**
-     * <p>The Amazon resource name (ARN) of the application that was augmented with
-     * attributes.</p>
-     */
-    inline AssociateResourceResult& WithApplicationArn(Aws::String&& value) { SetApplicationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon resource name (ARN) of the application that was augmented with
-     * attributes.</p>
-     */
-    inline AssociateResourceResult& WithApplicationArn(const char* value) { SetApplicationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon resource name (ARN) that specifies the resource.</p>
      */
-    inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    AssociateResourceResult& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon resource name (ARN) that specifies the resource.</p>
+     * <p> Determines whether an application tag is applied or skipped. </p>
      */
-    inline void SetResourceArn(const Aws::String& value) { m_resourceArn = value; }
+    inline const Aws::Vector<AssociationOption>& GetOptions() const { return m_options; }
+    template<typename OptionsT = Aws::Vector<AssociationOption>>
+    void SetOptions(OptionsT&& value) { m_optionsHasBeenSet = true; m_options = std::forward<OptionsT>(value); }
+    template<typename OptionsT = Aws::Vector<AssociationOption>>
+    AssociateResourceResult& WithOptions(OptionsT&& value) { SetOptions(std::forward<OptionsT>(value)); return *this;}
+    inline AssociateResourceResult& AddOptions(AssociationOption value) { m_optionsHasBeenSet = true; m_options.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The Amazon resource name (ARN) that specifies the resource.</p>
-     */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArn = std::move(value); }
-
-    /**
-     * <p>The Amazon resource name (ARN) that specifies the resource.</p>
-     */
-    inline void SetResourceArn(const char* value) { m_resourceArn.assign(value); }
-
-    /**
-     * <p>The Amazon resource name (ARN) that specifies the resource.</p>
-     */
-    inline AssociateResourceResult& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
-
-    /**
-     * <p>The Amazon resource name (ARN) that specifies the resource.</p>
-     */
-    inline AssociateResourceResult& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon resource name (ARN) that specifies the resource.</p>
-     */
-    inline AssociateResourceResult& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline AssociateResourceResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline AssociateResourceResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline AssociateResourceResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    AssociateResourceResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationArn;
+    bool m_applicationArnHasBeenSet = false;
 
     Aws::String m_resourceArn;
+    bool m_resourceArnHasBeenSet = false;
+
+    Aws::Vector<AssociationOption> m_options;
+    bool m_optionsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

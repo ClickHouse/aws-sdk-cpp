@@ -26,7 +26,7 @@ namespace Model
   class DisableStageTransitionRequest : public CodePipelineRequest
   {
   public:
-    AWS_CODEPIPELINE_API DisableStageTransitionRequest();
+    AWS_CODEPIPELINE_API DisableStageTransitionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,209 +39,58 @@ namespace Model
     AWS_CODEPIPELINE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the pipeline in which you want to disable the flow of artifacts
      * from one stage to another.</p>
      */
-    inline const Aws::String& GetPipelineName() const{ return m_pipelineName; }
-
-    /**
-     * <p>The name of the pipeline in which you want to disable the flow of artifacts
-     * from one stage to another.</p>
-     */
+    inline const Aws::String& GetPipelineName() const { return m_pipelineName; }
     inline bool PipelineNameHasBeenSet() const { return m_pipelineNameHasBeenSet; }
+    template<typename PipelineNameT = Aws::String>
+    void SetPipelineName(PipelineNameT&& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = std::forward<PipelineNameT>(value); }
+    template<typename PipelineNameT = Aws::String>
+    DisableStageTransitionRequest& WithPipelineName(PipelineNameT&& value) { SetPipelineName(std::forward<PipelineNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the pipeline in which you want to disable the flow of artifacts
-     * from one stage to another.</p>
-     */
-    inline void SetPipelineName(const Aws::String& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = value; }
-
-    /**
-     * <p>The name of the pipeline in which you want to disable the flow of artifacts
-     * from one stage to another.</p>
-     */
-    inline void SetPipelineName(Aws::String&& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = std::move(value); }
-
-    /**
-     * <p>The name of the pipeline in which you want to disable the flow of artifacts
-     * from one stage to another.</p>
-     */
-    inline void SetPipelineName(const char* value) { m_pipelineNameHasBeenSet = true; m_pipelineName.assign(value); }
-
-    /**
-     * <p>The name of the pipeline in which you want to disable the flow of artifacts
-     * from one stage to another.</p>
-     */
-    inline DisableStageTransitionRequest& WithPipelineName(const Aws::String& value) { SetPipelineName(value); return *this;}
-
-    /**
-     * <p>The name of the pipeline in which you want to disable the flow of artifacts
-     * from one stage to another.</p>
-     */
-    inline DisableStageTransitionRequest& WithPipelineName(Aws::String&& value) { SetPipelineName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the pipeline in which you want to disable the flow of artifacts
-     * from one stage to another.</p>
-     */
-    inline DisableStageTransitionRequest& WithPipelineName(const char* value) { SetPipelineName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the stage where you want to disable the inbound or outbound
      * transition of artifacts.</p>
      */
-    inline const Aws::String& GetStageName() const{ return m_stageName; }
-
-    /**
-     * <p>The name of the stage where you want to disable the inbound or outbound
-     * transition of artifacts.</p>
-     */
+    inline const Aws::String& GetStageName() const { return m_stageName; }
     inline bool StageNameHasBeenSet() const { return m_stageNameHasBeenSet; }
+    template<typename StageNameT = Aws::String>
+    void SetStageName(StageNameT&& value) { m_stageNameHasBeenSet = true; m_stageName = std::forward<StageNameT>(value); }
+    template<typename StageNameT = Aws::String>
+    DisableStageTransitionRequest& WithStageName(StageNameT&& value) { SetStageName(std::forward<StageNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the stage where you want to disable the inbound or outbound
-     * transition of artifacts.</p>
-     */
-    inline void SetStageName(const Aws::String& value) { m_stageNameHasBeenSet = true; m_stageName = value; }
-
-    /**
-     * <p>The name of the stage where you want to disable the inbound or outbound
-     * transition of artifacts.</p>
-     */
-    inline void SetStageName(Aws::String&& value) { m_stageNameHasBeenSet = true; m_stageName = std::move(value); }
-
-    /**
-     * <p>The name of the stage where you want to disable the inbound or outbound
-     * transition of artifacts.</p>
-     */
-    inline void SetStageName(const char* value) { m_stageNameHasBeenSet = true; m_stageName.assign(value); }
-
-    /**
-     * <p>The name of the stage where you want to disable the inbound or outbound
-     * transition of artifacts.</p>
-     */
-    inline DisableStageTransitionRequest& WithStageName(const Aws::String& value) { SetStageName(value); return *this;}
-
-    /**
-     * <p>The name of the stage where you want to disable the inbound or outbound
-     * transition of artifacts.</p>
-     */
-    inline DisableStageTransitionRequest& WithStageName(Aws::String&& value) { SetStageName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the stage where you want to disable the inbound or outbound
-     * transition of artifacts.</p>
-     */
-    inline DisableStageTransitionRequest& WithStageName(const char* value) { SetStageName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether artifacts are prevented from transitioning into the stage
      * and being processed by the actions in that stage (inbound), or prevented from
      * transitioning from the stage after they have been processed by the actions in
      * that stage (outbound).</p>
      */
-    inline const StageTransitionType& GetTransitionType() const{ return m_transitionType; }
-
-    /**
-     * <p>Specifies whether artifacts are prevented from transitioning into the stage
-     * and being processed by the actions in that stage (inbound), or prevented from
-     * transitioning from the stage after they have been processed by the actions in
-     * that stage (outbound).</p>
-     */
+    inline StageTransitionType GetTransitionType() const { return m_transitionType; }
     inline bool TransitionTypeHasBeenSet() const { return m_transitionTypeHasBeenSet; }
+    inline void SetTransitionType(StageTransitionType value) { m_transitionTypeHasBeenSet = true; m_transitionType = value; }
+    inline DisableStageTransitionRequest& WithTransitionType(StageTransitionType value) { SetTransitionType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies whether artifacts are prevented from transitioning into the stage
-     * and being processed by the actions in that stage (inbound), or prevented from
-     * transitioning from the stage after they have been processed by the actions in
-     * that stage (outbound).</p>
-     */
-    inline void SetTransitionType(const StageTransitionType& value) { m_transitionTypeHasBeenSet = true; m_transitionType = value; }
-
-    /**
-     * <p>Specifies whether artifacts are prevented from transitioning into the stage
-     * and being processed by the actions in that stage (inbound), or prevented from
-     * transitioning from the stage after they have been processed by the actions in
-     * that stage (outbound).</p>
-     */
-    inline void SetTransitionType(StageTransitionType&& value) { m_transitionTypeHasBeenSet = true; m_transitionType = std::move(value); }
-
-    /**
-     * <p>Specifies whether artifacts are prevented from transitioning into the stage
-     * and being processed by the actions in that stage (inbound), or prevented from
-     * transitioning from the stage after they have been processed by the actions in
-     * that stage (outbound).</p>
-     */
-    inline DisableStageTransitionRequest& WithTransitionType(const StageTransitionType& value) { SetTransitionType(value); return *this;}
-
-    /**
-     * <p>Specifies whether artifacts are prevented from transitioning into the stage
-     * and being processed by the actions in that stage (inbound), or prevented from
-     * transitioning from the stage after they have been processed by the actions in
-     * that stage (outbound).</p>
-     */
-    inline DisableStageTransitionRequest& WithTransitionType(StageTransitionType&& value) { SetTransitionType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason given to the user that a stage is disabled, such as waiting for
      * manual approval or manual tests. This message is displayed in the pipeline
      * console UI.</p>
      */
-    inline const Aws::String& GetReason() const{ return m_reason; }
-
-    /**
-     * <p>The reason given to the user that a stage is disabled, such as waiting for
-     * manual approval or manual tests. This message is displayed in the pipeline
-     * console UI.</p>
-     */
+    inline const Aws::String& GetReason() const { return m_reason; }
     inline bool ReasonHasBeenSet() const { return m_reasonHasBeenSet; }
-
-    /**
-     * <p>The reason given to the user that a stage is disabled, such as waiting for
-     * manual approval or manual tests. This message is displayed in the pipeline
-     * console UI.</p>
-     */
-    inline void SetReason(const Aws::String& value) { m_reasonHasBeenSet = true; m_reason = value; }
-
-    /**
-     * <p>The reason given to the user that a stage is disabled, such as waiting for
-     * manual approval or manual tests. This message is displayed in the pipeline
-     * console UI.</p>
-     */
-    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
-
-    /**
-     * <p>The reason given to the user that a stage is disabled, such as waiting for
-     * manual approval or manual tests. This message is displayed in the pipeline
-     * console UI.</p>
-     */
-    inline void SetReason(const char* value) { m_reasonHasBeenSet = true; m_reason.assign(value); }
-
-    /**
-     * <p>The reason given to the user that a stage is disabled, such as waiting for
-     * manual approval or manual tests. This message is displayed in the pipeline
-     * console UI.</p>
-     */
-    inline DisableStageTransitionRequest& WithReason(const Aws::String& value) { SetReason(value); return *this;}
-
-    /**
-     * <p>The reason given to the user that a stage is disabled, such as waiting for
-     * manual approval or manual tests. This message is displayed in the pipeline
-     * console UI.</p>
-     */
-    inline DisableStageTransitionRequest& WithReason(Aws::String&& value) { SetReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason given to the user that a stage is disabled, such as waiting for
-     * manual approval or manual tests. This message is displayed in the pipeline
-     * console UI.</p>
-     */
-    inline DisableStageTransitionRequest& WithReason(const char* value) { SetReason(value); return *this;}
-
+    template<typename ReasonT = Aws::String>
+    void SetReason(ReasonT&& value) { m_reasonHasBeenSet = true; m_reason = std::forward<ReasonT>(value); }
+    template<typename ReasonT = Aws::String>
+    DisableStageTransitionRequest& WithReason(ReasonT&& value) { SetReason(std::forward<ReasonT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_pipelineName;
@@ -250,7 +99,7 @@ namespace Model
     Aws::String m_stageName;
     bool m_stageNameHasBeenSet = false;
 
-    StageTransitionType m_transitionType;
+    StageTransitionType m_transitionType{StageTransitionType::NOT_SET};
     bool m_transitionTypeHasBeenSet = false;
 
     Aws::String m_reason;

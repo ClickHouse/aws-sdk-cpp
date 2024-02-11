@@ -18,13 +18,7 @@ namespace EKS
 namespace Model
 {
 
-ControlPlanePlacementRequest::ControlPlanePlacementRequest() : 
-    m_groupNameHasBeenSet(false)
-{
-}
-
-ControlPlanePlacementRequest::ControlPlanePlacementRequest(JsonView jsonValue) : 
-    m_groupNameHasBeenSet(false)
+ControlPlanePlacementRequest::ControlPlanePlacementRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ ControlPlanePlacementRequest& ControlPlanePlacementRequest::operator =(JsonView 
   if(jsonValue.ValueExists("groupName"))
   {
     m_groupName = jsonValue.GetString("groupName");
-
     m_groupNameHasBeenSet = true;
   }
-
   return *this;
 }
 

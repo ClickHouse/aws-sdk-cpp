@@ -24,7 +24,7 @@ namespace Model
   class DescribeAgentRequest : public DataSyncRequest
   {
   public:
-    AWS_DATASYNC_API DescribeAgentRequest();
+    AWS_DATASYNC_API DescribeAgentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,54 +37,18 @@ namespace Model
     AWS_DATASYNC_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the DataSync agent to
-     * describe.</p>
+     * <p>Specifies the Amazon Resource Name (ARN) of the DataSync agent that you want
+     * information about.</p>
      */
-    inline const Aws::String& GetAgentArn() const{ return m_agentArn; }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the DataSync agent to
-     * describe.</p>
-     */
+    inline const Aws::String& GetAgentArn() const { return m_agentArn; }
     inline bool AgentArnHasBeenSet() const { return m_agentArnHasBeenSet; }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the DataSync agent to
-     * describe.</p>
-     */
-    inline void SetAgentArn(const Aws::String& value) { m_agentArnHasBeenSet = true; m_agentArn = value; }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the DataSync agent to
-     * describe.</p>
-     */
-    inline void SetAgentArn(Aws::String&& value) { m_agentArnHasBeenSet = true; m_agentArn = std::move(value); }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the DataSync agent to
-     * describe.</p>
-     */
-    inline void SetAgentArn(const char* value) { m_agentArnHasBeenSet = true; m_agentArn.assign(value); }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the DataSync agent to
-     * describe.</p>
-     */
-    inline DescribeAgentRequest& WithAgentArn(const Aws::String& value) { SetAgentArn(value); return *this;}
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the DataSync agent to
-     * describe.</p>
-     */
-    inline DescribeAgentRequest& WithAgentArn(Aws::String&& value) { SetAgentArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the DataSync agent to
-     * describe.</p>
-     */
-    inline DescribeAgentRequest& WithAgentArn(const char* value) { SetAgentArn(value); return *this;}
-
+    template<typename AgentArnT = Aws::String>
+    void SetAgentArn(AgentArnT&& value) { m_agentArnHasBeenSet = true; m_agentArn = std::forward<AgentArnT>(value); }
+    template<typename AgentArnT = Aws::String>
+    DescribeAgentRequest& WithAgentArn(AgentArnT&& value) { SetAgentArn(std::forward<AgentArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_agentArn;

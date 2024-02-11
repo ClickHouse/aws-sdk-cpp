@@ -12,22 +12,6 @@ using namespace Aws::IoT::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateJobTemplateRequest::CreateJobTemplateRequest() : 
-    m_jobTemplateIdHasBeenSet(false),
-    m_jobArnHasBeenSet(false),
-    m_documentSourceHasBeenSet(false),
-    m_documentHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_presignedUrlConfigHasBeenSet(false),
-    m_jobExecutionsRolloutConfigHasBeenSet(false),
-    m_abortConfigHasBeenSet(false),
-    m_timeoutConfigHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_jobExecutionsRetryConfigHasBeenSet(false),
-    m_maintenanceWindowsHasBeenSet(false)
-{
-}
-
 Aws::String CreateJobTemplateRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -105,6 +89,17 @@ Aws::String CreateJobTemplateRequest::SerializePayload() const
      maintenanceWindowsJsonList[maintenanceWindowsIndex].AsObject(m_maintenanceWindows[maintenanceWindowsIndex].Jsonize());
    }
    payload.WithArray("maintenanceWindows", std::move(maintenanceWindowsJsonList));
+
+  }
+
+  if(m_destinationPackageVersionsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> destinationPackageVersionsJsonList(m_destinationPackageVersions.size());
+   for(unsigned destinationPackageVersionsIndex = 0; destinationPackageVersionsIndex < destinationPackageVersionsJsonList.GetLength(); ++destinationPackageVersionsIndex)
+   {
+     destinationPackageVersionsJsonList[destinationPackageVersionsIndex].AsString(m_destinationPackageVersions[destinationPackageVersionsIndex]);
+   }
+   payload.WithArray("destinationPackageVersions", std::move(destinationPackageVersionsJsonList));
 
   }
 

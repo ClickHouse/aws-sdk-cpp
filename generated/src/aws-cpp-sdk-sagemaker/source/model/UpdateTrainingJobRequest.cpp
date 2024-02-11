@@ -12,14 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateTrainingJobRequest::UpdateTrainingJobRequest() : 
-    m_trainingJobNameHasBeenSet(false),
-    m_profilerConfigHasBeenSet(false),
-    m_profilerRuleConfigurationsHasBeenSet(false),
-    m_resourceConfigHasBeenSet(false)
-{
-}
-
 Aws::String UpdateTrainingJobRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -50,6 +42,12 @@ Aws::String UpdateTrainingJobRequest::SerializePayload() const
   if(m_resourceConfigHasBeenSet)
   {
    payload.WithObject("ResourceConfig", m_resourceConfig.Jsonize());
+
+  }
+
+  if(m_remoteDebugConfigHasBeenSet)
+  {
+   payload.WithObject("RemoteDebugConfig", m_remoteDebugConfig.Jsonize());
 
   }
 

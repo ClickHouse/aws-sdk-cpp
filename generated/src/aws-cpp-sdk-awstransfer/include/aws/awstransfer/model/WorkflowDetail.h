@@ -28,117 +28,45 @@ namespace Model
    * that's used for executing the workflow.</p> <p>In addition to a workflow to
    * execute when a file is uploaded completely, <code>WorkflowDetails</code> can
    * also contain a workflow ID (and execution role) for a workflow to execute on
-   * partial upload. A partial upload occurs when a file is open when the session
-   * disconnects.</p><p><h3>See Also:</h3>   <a
+   * partial upload. A partial upload occurs when the server session disconnects
+   * while the file is still being uploaded.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/transfer-2018-11-05/WorkflowDetail">AWS
    * API Reference</a></p>
    */
   class WorkflowDetail
   {
   public:
-    AWS_TRANSFER_API WorkflowDetail();
+    AWS_TRANSFER_API WorkflowDetail() = default;
     AWS_TRANSFER_API WorkflowDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSFER_API WorkflowDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSFER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A unique identifier for the workflow.</p>
      */
-    inline const Aws::String& GetWorkflowId() const{ return m_workflowId; }
-
-    /**
-     * <p>A unique identifier for the workflow.</p>
-     */
+    inline const Aws::String& GetWorkflowId() const { return m_workflowId; }
     inline bool WorkflowIdHasBeenSet() const { return m_workflowIdHasBeenSet; }
+    template<typename WorkflowIdT = Aws::String>
+    void SetWorkflowId(WorkflowIdT&& value) { m_workflowIdHasBeenSet = true; m_workflowId = std::forward<WorkflowIdT>(value); }
+    template<typename WorkflowIdT = Aws::String>
+    WorkflowDetail& WithWorkflowId(WorkflowIdT&& value) { SetWorkflowId(std::forward<WorkflowIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the workflow.</p>
-     */
-    inline void SetWorkflowId(const Aws::String& value) { m_workflowIdHasBeenSet = true; m_workflowId = value; }
-
-    /**
-     * <p>A unique identifier for the workflow.</p>
-     */
-    inline void SetWorkflowId(Aws::String&& value) { m_workflowIdHasBeenSet = true; m_workflowId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the workflow.</p>
-     */
-    inline void SetWorkflowId(const char* value) { m_workflowIdHasBeenSet = true; m_workflowId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the workflow.</p>
-     */
-    inline WorkflowDetail& WithWorkflowId(const Aws::String& value) { SetWorkflowId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the workflow.</p>
-     */
-    inline WorkflowDetail& WithWorkflowId(Aws::String&& value) { SetWorkflowId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the workflow.</p>
-     */
-    inline WorkflowDetail& WithWorkflowId(const char* value) { SetWorkflowId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Includes the necessary permissions for S3, EFS, and Lambda operations that
      * Transfer can assume, so that all workflow steps can operate on the required
      * resources</p>
      */
-    inline const Aws::String& GetExecutionRole() const{ return m_executionRole; }
-
-    /**
-     * <p>Includes the necessary permissions for S3, EFS, and Lambda operations that
-     * Transfer can assume, so that all workflow steps can operate on the required
-     * resources</p>
-     */
+    inline const Aws::String& GetExecutionRole() const { return m_executionRole; }
     inline bool ExecutionRoleHasBeenSet() const { return m_executionRoleHasBeenSet; }
-
-    /**
-     * <p>Includes the necessary permissions for S3, EFS, and Lambda operations that
-     * Transfer can assume, so that all workflow steps can operate on the required
-     * resources</p>
-     */
-    inline void SetExecutionRole(const Aws::String& value) { m_executionRoleHasBeenSet = true; m_executionRole = value; }
-
-    /**
-     * <p>Includes the necessary permissions for S3, EFS, and Lambda operations that
-     * Transfer can assume, so that all workflow steps can operate on the required
-     * resources</p>
-     */
-    inline void SetExecutionRole(Aws::String&& value) { m_executionRoleHasBeenSet = true; m_executionRole = std::move(value); }
-
-    /**
-     * <p>Includes the necessary permissions for S3, EFS, and Lambda operations that
-     * Transfer can assume, so that all workflow steps can operate on the required
-     * resources</p>
-     */
-    inline void SetExecutionRole(const char* value) { m_executionRoleHasBeenSet = true; m_executionRole.assign(value); }
-
-    /**
-     * <p>Includes the necessary permissions for S3, EFS, and Lambda operations that
-     * Transfer can assume, so that all workflow steps can operate on the required
-     * resources</p>
-     */
-    inline WorkflowDetail& WithExecutionRole(const Aws::String& value) { SetExecutionRole(value); return *this;}
-
-    /**
-     * <p>Includes the necessary permissions for S3, EFS, and Lambda operations that
-     * Transfer can assume, so that all workflow steps can operate on the required
-     * resources</p>
-     */
-    inline WorkflowDetail& WithExecutionRole(Aws::String&& value) { SetExecutionRole(std::move(value)); return *this;}
-
-    /**
-     * <p>Includes the necessary permissions for S3, EFS, and Lambda operations that
-     * Transfer can assume, so that all workflow steps can operate on the required
-     * resources</p>
-     */
-    inline WorkflowDetail& WithExecutionRole(const char* value) { SetExecutionRole(value); return *this;}
-
+    template<typename ExecutionRoleT = Aws::String>
+    void SetExecutionRole(ExecutionRoleT&& value) { m_executionRoleHasBeenSet = true; m_executionRole = std::forward<ExecutionRoleT>(value); }
+    template<typename ExecutionRoleT = Aws::String>
+    WorkflowDetail& WithExecutionRole(ExecutionRoleT&& value) { SetExecutionRole(std::forward<ExecutionRoleT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_workflowId;

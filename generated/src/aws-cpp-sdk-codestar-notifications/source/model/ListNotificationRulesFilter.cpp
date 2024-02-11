@@ -18,17 +18,7 @@ namespace CodeStarNotifications
 namespace Model
 {
 
-ListNotificationRulesFilter::ListNotificationRulesFilter() : 
-    m_name(ListNotificationRulesFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-ListNotificationRulesFilter::ListNotificationRulesFilter(JsonView jsonValue) : 
-    m_name(ListNotificationRulesFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
+ListNotificationRulesFilter::ListNotificationRulesFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ListNotificationRulesFilter& ListNotificationRulesFilter::operator =(JsonView js
   if(jsonValue.ValueExists("Name"))
   {
     m_name = ListNotificationRulesFilterNameMapper::GetListNotificationRulesFilterNameForName(jsonValue.GetString("Name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

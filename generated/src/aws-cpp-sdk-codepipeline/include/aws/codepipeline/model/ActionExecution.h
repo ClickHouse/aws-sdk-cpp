@@ -35,12 +35,13 @@ namespace Model
   class ActionExecution
   {
   public:
-    AWS_CODEPIPELINE_API ActionExecution();
+    AWS_CODEPIPELINE_API ActionExecution() = default;
     AWS_CODEPIPELINE_API ActionExecution(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API ActionExecution& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>ID of the workflow action execution in the current stage. Use the
      * <a>GetPipelineState</a> action to retrieve the current action execution details
@@ -48,440 +49,147 @@ namespace Model
      * empty. The action execution ID is available for executions run on or after March
      * 2020.</p> 
      */
-    inline const Aws::String& GetActionExecutionId() const{ return m_actionExecutionId; }
-
-    /**
-     * <p>ID of the workflow action execution in the current stage. Use the
-     * <a>GetPipelineState</a> action to retrieve the current action execution details
-     * of the current stage.</p>  <p>For older executions, this field might be
-     * empty. The action execution ID is available for executions run on or after March
-     * 2020.</p> 
-     */
+    inline const Aws::String& GetActionExecutionId() const { return m_actionExecutionId; }
     inline bool ActionExecutionIdHasBeenSet() const { return m_actionExecutionIdHasBeenSet; }
+    template<typename ActionExecutionIdT = Aws::String>
+    void SetActionExecutionId(ActionExecutionIdT&& value) { m_actionExecutionIdHasBeenSet = true; m_actionExecutionId = std::forward<ActionExecutionIdT>(value); }
+    template<typename ActionExecutionIdT = Aws::String>
+    ActionExecution& WithActionExecutionId(ActionExecutionIdT&& value) { SetActionExecutionId(std::forward<ActionExecutionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>ID of the workflow action execution in the current stage. Use the
-     * <a>GetPipelineState</a> action to retrieve the current action execution details
-     * of the current stage.</p>  <p>For older executions, this field might be
-     * empty. The action execution ID is available for executions run on or after March
-     * 2020.</p> 
-     */
-    inline void SetActionExecutionId(const Aws::String& value) { m_actionExecutionIdHasBeenSet = true; m_actionExecutionId = value; }
-
-    /**
-     * <p>ID of the workflow action execution in the current stage. Use the
-     * <a>GetPipelineState</a> action to retrieve the current action execution details
-     * of the current stage.</p>  <p>For older executions, this field might be
-     * empty. The action execution ID is available for executions run on or after March
-     * 2020.</p> 
-     */
-    inline void SetActionExecutionId(Aws::String&& value) { m_actionExecutionIdHasBeenSet = true; m_actionExecutionId = std::move(value); }
-
-    /**
-     * <p>ID of the workflow action execution in the current stage. Use the
-     * <a>GetPipelineState</a> action to retrieve the current action execution details
-     * of the current stage.</p>  <p>For older executions, this field might be
-     * empty. The action execution ID is available for executions run on or after March
-     * 2020.</p> 
-     */
-    inline void SetActionExecutionId(const char* value) { m_actionExecutionIdHasBeenSet = true; m_actionExecutionId.assign(value); }
-
-    /**
-     * <p>ID of the workflow action execution in the current stage. Use the
-     * <a>GetPipelineState</a> action to retrieve the current action execution details
-     * of the current stage.</p>  <p>For older executions, this field might be
-     * empty. The action execution ID is available for executions run on or after March
-     * 2020.</p> 
-     */
-    inline ActionExecution& WithActionExecutionId(const Aws::String& value) { SetActionExecutionId(value); return *this;}
-
-    /**
-     * <p>ID of the workflow action execution in the current stage. Use the
-     * <a>GetPipelineState</a> action to retrieve the current action execution details
-     * of the current stage.</p>  <p>For older executions, this field might be
-     * empty. The action execution ID is available for executions run on or after March
-     * 2020.</p> 
-     */
-    inline ActionExecution& WithActionExecutionId(Aws::String&& value) { SetActionExecutionId(std::move(value)); return *this;}
-
-    /**
-     * <p>ID of the workflow action execution in the current stage. Use the
-     * <a>GetPipelineState</a> action to retrieve the current action execution details
-     * of the current stage.</p>  <p>For older executions, this field might be
-     * empty. The action execution ID is available for executions run on or after March
-     * 2020.</p> 
-     */
-    inline ActionExecution& WithActionExecutionId(const char* value) { SetActionExecutionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the action, or for a completed action, the last status of the
      * action.</p>
      */
-    inline const ActionExecutionStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the action, or for a completed action, the last status of the
-     * action.</p>
-     */
+    inline ActionExecutionStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ActionExecutionStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ActionExecution& WithStatus(ActionExecutionStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the action, or for a completed action, the last status of the
-     * action.</p>
-     */
-    inline void SetStatus(const ActionExecutionStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the action, or for a completed action, the last status of the
-     * action.</p>
-     */
-    inline void SetStatus(ActionExecutionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the action, or for a completed action, the last status of the
-     * action.</p>
-     */
-    inline ActionExecution& WithStatus(const ActionExecutionStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the action, or for a completed action, the last status of the
-     * action.</p>
-     */
-    inline ActionExecution& WithStatus(ActionExecutionStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A summary of the run of the action.</p>
      */
-    inline const Aws::String& GetSummary() const{ return m_summary; }
-
-    /**
-     * <p>A summary of the run of the action.</p>
-     */
+    inline const Aws::String& GetSummary() const { return m_summary; }
     inline bool SummaryHasBeenSet() const { return m_summaryHasBeenSet; }
+    template<typename SummaryT = Aws::String>
+    void SetSummary(SummaryT&& value) { m_summaryHasBeenSet = true; m_summary = std::forward<SummaryT>(value); }
+    template<typename SummaryT = Aws::String>
+    ActionExecution& WithSummary(SummaryT&& value) { SetSummary(std::forward<SummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A summary of the run of the action.</p>
-     */
-    inline void SetSummary(const Aws::String& value) { m_summaryHasBeenSet = true; m_summary = value; }
-
-    /**
-     * <p>A summary of the run of the action.</p>
-     */
-    inline void SetSummary(Aws::String&& value) { m_summaryHasBeenSet = true; m_summary = std::move(value); }
-
-    /**
-     * <p>A summary of the run of the action.</p>
-     */
-    inline void SetSummary(const char* value) { m_summaryHasBeenSet = true; m_summary.assign(value); }
-
-    /**
-     * <p>A summary of the run of the action.</p>
-     */
-    inline ActionExecution& WithSummary(const Aws::String& value) { SetSummary(value); return *this;}
-
-    /**
-     * <p>A summary of the run of the action.</p>
-     */
-    inline ActionExecution& WithSummary(Aws::String&& value) { SetSummary(std::move(value)); return *this;}
-
-    /**
-     * <p>A summary of the run of the action.</p>
-     */
-    inline ActionExecution& WithSummary(const char* value) { SetSummary(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The last status change of the action.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastStatusChange() const{ return m_lastStatusChange; }
-
-    /**
-     * <p>The last status change of the action.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastStatusChange() const { return m_lastStatusChange; }
     inline bool LastStatusChangeHasBeenSet() const { return m_lastStatusChangeHasBeenSet; }
+    template<typename LastStatusChangeT = Aws::Utils::DateTime>
+    void SetLastStatusChange(LastStatusChangeT&& value) { m_lastStatusChangeHasBeenSet = true; m_lastStatusChange = std::forward<LastStatusChangeT>(value); }
+    template<typename LastStatusChangeT = Aws::Utils::DateTime>
+    ActionExecution& WithLastStatusChange(LastStatusChangeT&& value) { SetLastStatusChange(std::forward<LastStatusChangeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The last status change of the action.</p>
-     */
-    inline void SetLastStatusChange(const Aws::Utils::DateTime& value) { m_lastStatusChangeHasBeenSet = true; m_lastStatusChange = value; }
-
-    /**
-     * <p>The last status change of the action.</p>
-     */
-    inline void SetLastStatusChange(Aws::Utils::DateTime&& value) { m_lastStatusChangeHasBeenSet = true; m_lastStatusChange = std::move(value); }
-
-    /**
-     * <p>The last status change of the action.</p>
-     */
-    inline ActionExecution& WithLastStatusChange(const Aws::Utils::DateTime& value) { SetLastStatusChange(value); return *this;}
-
-    /**
-     * <p>The last status change of the action.</p>
-     */
-    inline ActionExecution& WithLastStatusChange(Aws::Utils::DateTime&& value) { SetLastStatusChange(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The system-generated token used to identify a unique approval request. The
      * token for each open approval request can be obtained using the
      * <code>GetPipelineState</code> command. It is used to validate that the approval
      * request corresponding to this token is still valid.</p>
      */
-    inline const Aws::String& GetToken() const{ return m_token; }
-
-    /**
-     * <p>The system-generated token used to identify a unique approval request. The
-     * token for each open approval request can be obtained using the
-     * <code>GetPipelineState</code> command. It is used to validate that the approval
-     * request corresponding to this token is still valid.</p>
-     */
+    inline const Aws::String& GetToken() const { return m_token; }
     inline bool TokenHasBeenSet() const { return m_tokenHasBeenSet; }
+    template<typename TokenT = Aws::String>
+    void SetToken(TokenT&& value) { m_tokenHasBeenSet = true; m_token = std::forward<TokenT>(value); }
+    template<typename TokenT = Aws::String>
+    ActionExecution& WithToken(TokenT&& value) { SetToken(std::forward<TokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The system-generated token used to identify a unique approval request. The
-     * token for each open approval request can be obtained using the
-     * <code>GetPipelineState</code> command. It is used to validate that the approval
-     * request corresponding to this token is still valid.</p>
-     */
-    inline void SetToken(const Aws::String& value) { m_tokenHasBeenSet = true; m_token = value; }
-
-    /**
-     * <p>The system-generated token used to identify a unique approval request. The
-     * token for each open approval request can be obtained using the
-     * <code>GetPipelineState</code> command. It is used to validate that the approval
-     * request corresponding to this token is still valid.</p>
-     */
-    inline void SetToken(Aws::String&& value) { m_tokenHasBeenSet = true; m_token = std::move(value); }
-
-    /**
-     * <p>The system-generated token used to identify a unique approval request. The
-     * token for each open approval request can be obtained using the
-     * <code>GetPipelineState</code> command. It is used to validate that the approval
-     * request corresponding to this token is still valid.</p>
-     */
-    inline void SetToken(const char* value) { m_tokenHasBeenSet = true; m_token.assign(value); }
-
-    /**
-     * <p>The system-generated token used to identify a unique approval request. The
-     * token for each open approval request can be obtained using the
-     * <code>GetPipelineState</code> command. It is used to validate that the approval
-     * request corresponding to this token is still valid.</p>
-     */
-    inline ActionExecution& WithToken(const Aws::String& value) { SetToken(value); return *this;}
-
-    /**
-     * <p>The system-generated token used to identify a unique approval request. The
-     * token for each open approval request can be obtained using the
-     * <code>GetPipelineState</code> command. It is used to validate that the approval
-     * request corresponding to this token is still valid.</p>
-     */
-    inline ActionExecution& WithToken(Aws::String&& value) { SetToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The system-generated token used to identify a unique approval request. The
-     * token for each open approval request can be obtained using the
-     * <code>GetPipelineState</code> command. It is used to validate that the approval
-     * request corresponding to this token is still valid.</p>
-     */
-    inline ActionExecution& WithToken(const char* value) { SetToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the user who last changed the pipeline.</p>
      */
-    inline const Aws::String& GetLastUpdatedBy() const{ return m_lastUpdatedBy; }
-
-    /**
-     * <p>The ARN of the user who last changed the pipeline.</p>
-     */
+    inline const Aws::String& GetLastUpdatedBy() const { return m_lastUpdatedBy; }
     inline bool LastUpdatedByHasBeenSet() const { return m_lastUpdatedByHasBeenSet; }
+    template<typename LastUpdatedByT = Aws::String>
+    void SetLastUpdatedBy(LastUpdatedByT&& value) { m_lastUpdatedByHasBeenSet = true; m_lastUpdatedBy = std::forward<LastUpdatedByT>(value); }
+    template<typename LastUpdatedByT = Aws::String>
+    ActionExecution& WithLastUpdatedBy(LastUpdatedByT&& value) { SetLastUpdatedBy(std::forward<LastUpdatedByT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the user who last changed the pipeline.</p>
-     */
-    inline void SetLastUpdatedBy(const Aws::String& value) { m_lastUpdatedByHasBeenSet = true; m_lastUpdatedBy = value; }
-
-    /**
-     * <p>The ARN of the user who last changed the pipeline.</p>
-     */
-    inline void SetLastUpdatedBy(Aws::String&& value) { m_lastUpdatedByHasBeenSet = true; m_lastUpdatedBy = std::move(value); }
-
-    /**
-     * <p>The ARN of the user who last changed the pipeline.</p>
-     */
-    inline void SetLastUpdatedBy(const char* value) { m_lastUpdatedByHasBeenSet = true; m_lastUpdatedBy.assign(value); }
-
-    /**
-     * <p>The ARN of the user who last changed the pipeline.</p>
-     */
-    inline ActionExecution& WithLastUpdatedBy(const Aws::String& value) { SetLastUpdatedBy(value); return *this;}
-
-    /**
-     * <p>The ARN of the user who last changed the pipeline.</p>
-     */
-    inline ActionExecution& WithLastUpdatedBy(Aws::String&& value) { SetLastUpdatedBy(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the user who last changed the pipeline.</p>
-     */
-    inline ActionExecution& WithLastUpdatedBy(const char* value) { SetLastUpdatedBy(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The external ID of the run of the action.</p>
      */
-    inline const Aws::String& GetExternalExecutionId() const{ return m_externalExecutionId; }
-
-    /**
-     * <p>The external ID of the run of the action.</p>
-     */
+    inline const Aws::String& GetExternalExecutionId() const { return m_externalExecutionId; }
     inline bool ExternalExecutionIdHasBeenSet() const { return m_externalExecutionIdHasBeenSet; }
+    template<typename ExternalExecutionIdT = Aws::String>
+    void SetExternalExecutionId(ExternalExecutionIdT&& value) { m_externalExecutionIdHasBeenSet = true; m_externalExecutionId = std::forward<ExternalExecutionIdT>(value); }
+    template<typename ExternalExecutionIdT = Aws::String>
+    ActionExecution& WithExternalExecutionId(ExternalExecutionIdT&& value) { SetExternalExecutionId(std::forward<ExternalExecutionIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The external ID of the run of the action.</p>
+     * <p>The URL of a resource external to Amazon Web Services that is used when
+     * running the action (for example, an external repository URL).</p>
      */
-    inline void SetExternalExecutionId(const Aws::String& value) { m_externalExecutionIdHasBeenSet = true; m_externalExecutionId = value; }
-
-    /**
-     * <p>The external ID of the run of the action.</p>
-     */
-    inline void SetExternalExecutionId(Aws::String&& value) { m_externalExecutionIdHasBeenSet = true; m_externalExecutionId = std::move(value); }
-
-    /**
-     * <p>The external ID of the run of the action.</p>
-     */
-    inline void SetExternalExecutionId(const char* value) { m_externalExecutionIdHasBeenSet = true; m_externalExecutionId.assign(value); }
-
-    /**
-     * <p>The external ID of the run of the action.</p>
-     */
-    inline ActionExecution& WithExternalExecutionId(const Aws::String& value) { SetExternalExecutionId(value); return *this;}
-
-    /**
-     * <p>The external ID of the run of the action.</p>
-     */
-    inline ActionExecution& WithExternalExecutionId(Aws::String&& value) { SetExternalExecutionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The external ID of the run of the action.</p>
-     */
-    inline ActionExecution& WithExternalExecutionId(const char* value) { SetExternalExecutionId(value); return *this;}
-
-
-    /**
-     * <p>The URL of a resource external to AWS that is used when running the action
-     * (for example, an external repository URL).</p>
-     */
-    inline const Aws::String& GetExternalExecutionUrl() const{ return m_externalExecutionUrl; }
-
-    /**
-     * <p>The URL of a resource external to AWS that is used when running the action
-     * (for example, an external repository URL).</p>
-     */
+    inline const Aws::String& GetExternalExecutionUrl() const { return m_externalExecutionUrl; }
     inline bool ExternalExecutionUrlHasBeenSet() const { return m_externalExecutionUrlHasBeenSet; }
+    template<typename ExternalExecutionUrlT = Aws::String>
+    void SetExternalExecutionUrl(ExternalExecutionUrlT&& value) { m_externalExecutionUrlHasBeenSet = true; m_externalExecutionUrl = std::forward<ExternalExecutionUrlT>(value); }
+    template<typename ExternalExecutionUrlT = Aws::String>
+    ActionExecution& WithExternalExecutionUrl(ExternalExecutionUrlT&& value) { SetExternalExecutionUrl(std::forward<ExternalExecutionUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URL of a resource external to AWS that is used when running the action
-     * (for example, an external repository URL).</p>
-     */
-    inline void SetExternalExecutionUrl(const Aws::String& value) { m_externalExecutionUrlHasBeenSet = true; m_externalExecutionUrl = value; }
-
-    /**
-     * <p>The URL of a resource external to AWS that is used when running the action
-     * (for example, an external repository URL).</p>
-     */
-    inline void SetExternalExecutionUrl(Aws::String&& value) { m_externalExecutionUrlHasBeenSet = true; m_externalExecutionUrl = std::move(value); }
-
-    /**
-     * <p>The URL of a resource external to AWS that is used when running the action
-     * (for example, an external repository URL).</p>
-     */
-    inline void SetExternalExecutionUrl(const char* value) { m_externalExecutionUrlHasBeenSet = true; m_externalExecutionUrl.assign(value); }
-
-    /**
-     * <p>The URL of a resource external to AWS that is used when running the action
-     * (for example, an external repository URL).</p>
-     */
-    inline ActionExecution& WithExternalExecutionUrl(const Aws::String& value) { SetExternalExecutionUrl(value); return *this;}
-
-    /**
-     * <p>The URL of a resource external to AWS that is used when running the action
-     * (for example, an external repository URL).</p>
-     */
-    inline ActionExecution& WithExternalExecutionUrl(Aws::String&& value) { SetExternalExecutionUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL of a resource external to AWS that is used when running the action
-     * (for example, an external repository URL).</p>
-     */
-    inline ActionExecution& WithExternalExecutionUrl(const char* value) { SetExternalExecutionUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A percentage of completeness of the action as it runs.</p>
      */
-    inline int GetPercentComplete() const{ return m_percentComplete; }
-
-    /**
-     * <p>A percentage of completeness of the action as it runs.</p>
-     */
+    inline int GetPercentComplete() const { return m_percentComplete; }
     inline bool PercentCompleteHasBeenSet() const { return m_percentCompleteHasBeenSet; }
-
-    /**
-     * <p>A percentage of completeness of the action as it runs.</p>
-     */
     inline void SetPercentComplete(int value) { m_percentCompleteHasBeenSet = true; m_percentComplete = value; }
-
-    /**
-     * <p>A percentage of completeness of the action as it runs.</p>
-     */
     inline ActionExecution& WithPercentComplete(int value) { SetPercentComplete(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>The details of an error returned by a URL external to AWS.</p>
+     * <p>The details of an error returned by a URL external to Amazon Web
+     * Services.</p>
      */
-    inline const ErrorDetails& GetErrorDetails() const{ return m_errorDetails; }
-
-    /**
-     * <p>The details of an error returned by a URL external to AWS.</p>
-     */
+    inline const ErrorDetails& GetErrorDetails() const { return m_errorDetails; }
     inline bool ErrorDetailsHasBeenSet() const { return m_errorDetailsHasBeenSet; }
+    template<typename ErrorDetailsT = ErrorDetails>
+    void SetErrorDetails(ErrorDetailsT&& value) { m_errorDetailsHasBeenSet = true; m_errorDetails = std::forward<ErrorDetailsT>(value); }
+    template<typename ErrorDetailsT = ErrorDetails>
+    ActionExecution& WithErrorDetails(ErrorDetailsT&& value) { SetErrorDetails(std::forward<ErrorDetailsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The details of an error returned by a URL external to AWS.</p>
+     * <p>The Amazon Resource Name (ARN) of the log stream for the action compute.</p>
      */
-    inline void SetErrorDetails(const ErrorDetails& value) { m_errorDetailsHasBeenSet = true; m_errorDetails = value; }
-
-    /**
-     * <p>The details of an error returned by a URL external to AWS.</p>
-     */
-    inline void SetErrorDetails(ErrorDetails&& value) { m_errorDetailsHasBeenSet = true; m_errorDetails = std::move(value); }
-
-    /**
-     * <p>The details of an error returned by a URL external to AWS.</p>
-     */
-    inline ActionExecution& WithErrorDetails(const ErrorDetails& value) { SetErrorDetails(value); return *this;}
-
-    /**
-     * <p>The details of an error returned by a URL external to AWS.</p>
-     */
-    inline ActionExecution& WithErrorDetails(ErrorDetails&& value) { SetErrorDetails(std::move(value)); return *this;}
-
+    inline const Aws::String& GetLogStreamARN() const { return m_logStreamARN; }
+    inline bool LogStreamARNHasBeenSet() const { return m_logStreamARNHasBeenSet; }
+    template<typename LogStreamARNT = Aws::String>
+    void SetLogStreamARN(LogStreamARNT&& value) { m_logStreamARNHasBeenSet = true; m_logStreamARN = std::forward<LogStreamARNT>(value); }
+    template<typename LogStreamARNT = Aws::String>
+    ActionExecution& WithLogStreamARN(LogStreamARNT&& value) { SetLogStreamARN(std::forward<LogStreamARNT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_actionExecutionId;
     bool m_actionExecutionIdHasBeenSet = false;
 
-    ActionExecutionStatus m_status;
+    ActionExecutionStatus m_status{ActionExecutionStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_summary;
     bool m_summaryHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastStatusChange;
+    Aws::Utils::DateTime m_lastStatusChange{};
     bool m_lastStatusChangeHasBeenSet = false;
 
     Aws::String m_token;
@@ -496,11 +204,14 @@ namespace Model
     Aws::String m_externalExecutionUrl;
     bool m_externalExecutionUrlHasBeenSet = false;
 
-    int m_percentComplete;
+    int m_percentComplete{0};
     bool m_percentCompleteHasBeenSet = false;
 
     ErrorDetails m_errorDetails;
     bool m_errorDetailsHasBeenSet = false;
+
+    Aws::String m_logStreamARN;
+    bool m_logStreamARNHasBeenSet = false;
   };
 
 } // namespace Model

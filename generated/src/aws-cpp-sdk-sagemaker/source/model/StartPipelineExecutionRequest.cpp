@@ -12,17 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartPipelineExecutionRequest::StartPipelineExecutionRequest() : 
-    m_pipelineNameHasBeenSet(false),
-    m_pipelineExecutionDisplayNameHasBeenSet(false),
-    m_pipelineParametersHasBeenSet(false),
-    m_pipelineExecutionDescriptionHasBeenSet(false),
-    m_clientRequestToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientRequestTokenHasBeenSet(true),
-    m_parallelismConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String StartPipelineExecutionRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -65,6 +54,18 @@ Aws::String StartPipelineExecutionRequest::SerializePayload() const
   if(m_parallelismConfigurationHasBeenSet)
   {
    payload.WithObject("ParallelismConfiguration", m_parallelismConfiguration.Jsonize());
+
+  }
+
+  if(m_selectiveExecutionConfigHasBeenSet)
+  {
+   payload.WithObject("SelectiveExecutionConfig", m_selectiveExecutionConfig.Jsonize());
+
+  }
+
+  if(m_pipelineVersionIdHasBeenSet)
+  {
+   payload.WithInt64("PipelineVersionId", m_pipelineVersionId);
 
   }
 

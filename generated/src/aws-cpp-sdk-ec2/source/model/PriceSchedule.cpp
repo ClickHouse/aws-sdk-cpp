@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-PriceSchedule::PriceSchedule() : 
-    m_active(false),
-    m_activeHasBeenSet(false),
-    m_currencyCode(CurrencyCodeValues::NOT_SET),
-    m_currencyCodeHasBeenSet(false),
-    m_price(0.0),
-    m_priceHasBeenSet(false),
-    m_term(0),
-    m_termHasBeenSet(false)
-{
-}
-
-PriceSchedule::PriceSchedule(const XmlNode& xmlNode) : 
-    m_active(false),
-    m_activeHasBeenSet(false),
-    m_currencyCode(CurrencyCodeValues::NOT_SET),
-    m_currencyCodeHasBeenSet(false),
-    m_price(0.0),
-    m_priceHasBeenSet(false),
-    m_term(0),
-    m_termHasBeenSet(false)
+PriceSchedule::PriceSchedule(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -60,7 +40,7 @@ PriceSchedule& PriceSchedule::operator =(const XmlNode& xmlNode)
     XmlNode currencyCodeNode = resultNode.FirstChild("currencyCode");
     if(!currencyCodeNode.IsNull())
     {
-      m_currencyCode = CurrencyCodeValuesMapper::GetCurrencyCodeValuesForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(currencyCodeNode.GetText()).c_str()).c_str());
+      m_currencyCode = CurrencyCodeValuesMapper::GetCurrencyCodeValuesForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(currencyCodeNode.GetText()).c_str()));
       m_currencyCodeHasBeenSet = true;
     }
     XmlNode priceNode = resultNode.FirstChild("price");
@@ -89,7 +69,7 @@ void PriceSchedule::OutputToStream(Aws::OStream& oStream, const char* location, 
 
   if(m_currencyCodeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CurrencyCode=" << CurrencyCodeValuesMapper::GetNameForCurrencyCodeValues(m_currencyCode) << "&";
+      oStream << location << index << locationValue << ".CurrencyCode=" << StringUtils::URLEncode(CurrencyCodeValuesMapper::GetNameForCurrencyCodeValues(m_currencyCode)) << "&";
   }
 
   if(m_priceHasBeenSet)
@@ -112,11 +92,11 @@ void PriceSchedule::OutputToStream(Aws::OStream& oStream, const char* location) 
   }
   if(m_currencyCodeHasBeenSet)
   {
-      oStream << location << ".CurrencyCode=" << CurrencyCodeValuesMapper::GetNameForCurrencyCodeValues(m_currencyCode) << "&";
+      oStream << location << ".CurrencyCode=" << StringUtils::URLEncode(CurrencyCodeValuesMapper::GetNameForCurrencyCodeValues(m_currencyCode)) << "&";
   }
   if(m_priceHasBeenSet)
   {
-        oStream << location << ".Price=" << StringUtils::URLEncode(m_price) << "&";
+      oStream << location << ".Price=" << StringUtils::URLEncode(m_price) << "&";
   }
   if(m_termHasBeenSet)
   {

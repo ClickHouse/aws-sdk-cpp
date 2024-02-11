@@ -18,15 +18,7 @@ namespace NetworkFirewall
 namespace Model
 {
 
-StatefulRuleOptions::StatefulRuleOptions() : 
-    m_ruleOrder(RuleOrder::NOT_SET),
-    m_ruleOrderHasBeenSet(false)
-{
-}
-
-StatefulRuleOptions::StatefulRuleOptions(JsonView jsonValue) : 
-    m_ruleOrder(RuleOrder::NOT_SET),
-    m_ruleOrderHasBeenSet(false)
+StatefulRuleOptions::StatefulRuleOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ StatefulRuleOptions& StatefulRuleOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("RuleOrder"))
   {
     m_ruleOrder = RuleOrderMapper::GetRuleOrderForName(jsonValue.GetString("RuleOrder"));
-
     m_ruleOrderHasBeenSet = true;
   }
-
   return *this;
 }
 

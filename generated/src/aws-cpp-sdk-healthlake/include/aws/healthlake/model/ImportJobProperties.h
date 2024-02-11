@@ -10,6 +10,8 @@
 #include <aws/core/utils/DateTime.h>
 #include <aws/healthlake/model/InputDataConfig.h>
 #include <aws/healthlake/model/OutputDataConfig.h>
+#include <aws/healthlake/model/JobProgressReport.h>
+#include <aws/healthlake/model/ValidationLevel.h>
 #include <utility>
 
 namespace Aws
@@ -28,395 +30,159 @@ namespace Model
 {
 
   /**
-   * <p>Displays the properties of the import job, including the ID, Arn, Name, and
-   * the status of the Data Store.</p><p><h3>See Also:</h3>   <a
+   * <p>The import job properties.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/healthlake-2017-07-01/ImportJobProperties">AWS
    * API Reference</a></p>
    */
   class ImportJobProperties
   {
   public:
-    AWS_HEALTHLAKE_API ImportJobProperties();
+    AWS_HEALTHLAKE_API ImportJobProperties() = default;
     AWS_HEALTHLAKE_API ImportJobProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_HEALTHLAKE_API ImportJobProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_HEALTHLAKE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The AWS-generated id number for the Import job.</p>
+     * <p>The import job identifier.</p>
      */
-    inline const Aws::String& GetJobId() const{ return m_jobId; }
-
-    /**
-     * <p>The AWS-generated id number for the Import job.</p>
-     */
+    inline const Aws::String& GetJobId() const { return m_jobId; }
     inline bool JobIdHasBeenSet() const { return m_jobIdHasBeenSet; }
+    template<typename JobIdT = Aws::String>
+    void SetJobId(JobIdT&& value) { m_jobIdHasBeenSet = true; m_jobId = std::forward<JobIdT>(value); }
+    template<typename JobIdT = Aws::String>
+    ImportJobProperties& WithJobId(JobIdT&& value) { SetJobId(std::forward<JobIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The AWS-generated id number for the Import job.</p>
+     * <p>The import job name.</p>
      */
-    inline void SetJobId(const Aws::String& value) { m_jobIdHasBeenSet = true; m_jobId = value; }
-
-    /**
-     * <p>The AWS-generated id number for the Import job.</p>
-     */
-    inline void SetJobId(Aws::String&& value) { m_jobIdHasBeenSet = true; m_jobId = std::move(value); }
-
-    /**
-     * <p>The AWS-generated id number for the Import job.</p>
-     */
-    inline void SetJobId(const char* value) { m_jobIdHasBeenSet = true; m_jobId.assign(value); }
-
-    /**
-     * <p>The AWS-generated id number for the Import job.</p>
-     */
-    inline ImportJobProperties& WithJobId(const Aws::String& value) { SetJobId(value); return *this;}
-
-    /**
-     * <p>The AWS-generated id number for the Import job.</p>
-     */
-    inline ImportJobProperties& WithJobId(Aws::String&& value) { SetJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>The AWS-generated id number for the Import job.</p>
-     */
-    inline ImportJobProperties& WithJobId(const char* value) { SetJobId(value); return *this;}
-
-
-    /**
-     * <p>The user-generated name for an Import job.</p>
-     */
-    inline const Aws::String& GetJobName() const{ return m_jobName; }
-
-    /**
-     * <p>The user-generated name for an Import job.</p>
-     */
+    inline const Aws::String& GetJobName() const { return m_jobName; }
     inline bool JobNameHasBeenSet() const { return m_jobNameHasBeenSet; }
+    template<typename JobNameT = Aws::String>
+    void SetJobName(JobNameT&& value) { m_jobNameHasBeenSet = true; m_jobName = std::forward<JobNameT>(value); }
+    template<typename JobNameT = Aws::String>
+    ImportJobProperties& WithJobName(JobNameT&& value) { SetJobName(std::forward<JobNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The user-generated name for an Import job.</p>
+     * <p>The import job status.</p>
      */
-    inline void SetJobName(const Aws::String& value) { m_jobNameHasBeenSet = true; m_jobName = value; }
-
-    /**
-     * <p>The user-generated name for an Import job.</p>
-     */
-    inline void SetJobName(Aws::String&& value) { m_jobNameHasBeenSet = true; m_jobName = std::move(value); }
-
-    /**
-     * <p>The user-generated name for an Import job.</p>
-     */
-    inline void SetJobName(const char* value) { m_jobNameHasBeenSet = true; m_jobName.assign(value); }
-
-    /**
-     * <p>The user-generated name for an Import job.</p>
-     */
-    inline ImportJobProperties& WithJobName(const Aws::String& value) { SetJobName(value); return *this;}
-
-    /**
-     * <p>The user-generated name for an Import job.</p>
-     */
-    inline ImportJobProperties& WithJobName(Aws::String&& value) { SetJobName(std::move(value)); return *this;}
-
-    /**
-     * <p>The user-generated name for an Import job.</p>
-     */
-    inline ImportJobProperties& WithJobName(const char* value) { SetJobName(value); return *this;}
-
-
-    /**
-     * <p>The job status for an Import job. Possible statuses are SUBMITTED,
-     * IN_PROGRESS, COMPLETED, FAILED.</p>
-     */
-    inline const JobStatus& GetJobStatus() const{ return m_jobStatus; }
-
-    /**
-     * <p>The job status for an Import job. Possible statuses are SUBMITTED,
-     * IN_PROGRESS, COMPLETED, FAILED.</p>
-     */
+    inline JobStatus GetJobStatus() const { return m_jobStatus; }
     inline bool JobStatusHasBeenSet() const { return m_jobStatusHasBeenSet; }
+    inline void SetJobStatus(JobStatus value) { m_jobStatusHasBeenSet = true; m_jobStatus = value; }
+    inline ImportJobProperties& WithJobStatus(JobStatus value) { SetJobStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The job status for an Import job. Possible statuses are SUBMITTED,
-     * IN_PROGRESS, COMPLETED, FAILED.</p>
+     * <p>The time the import job was submitted for processing.</p>
      */
-    inline void SetJobStatus(const JobStatus& value) { m_jobStatusHasBeenSet = true; m_jobStatus = value; }
-
-    /**
-     * <p>The job status for an Import job. Possible statuses are SUBMITTED,
-     * IN_PROGRESS, COMPLETED, FAILED.</p>
-     */
-    inline void SetJobStatus(JobStatus&& value) { m_jobStatusHasBeenSet = true; m_jobStatus = std::move(value); }
-
-    /**
-     * <p>The job status for an Import job. Possible statuses are SUBMITTED,
-     * IN_PROGRESS, COMPLETED, FAILED.</p>
-     */
-    inline ImportJobProperties& WithJobStatus(const JobStatus& value) { SetJobStatus(value); return *this;}
-
-    /**
-     * <p>The job status for an Import job. Possible statuses are SUBMITTED,
-     * IN_PROGRESS, COMPLETED, FAILED.</p>
-     */
-    inline ImportJobProperties& WithJobStatus(JobStatus&& value) { SetJobStatus(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The time that the Import job was submitted for processing.</p>
-     */
-    inline const Aws::Utils::DateTime& GetSubmitTime() const{ return m_submitTime; }
-
-    /**
-     * <p>The time that the Import job was submitted for processing.</p>
-     */
+    inline const Aws::Utils::DateTime& GetSubmitTime() const { return m_submitTime; }
     inline bool SubmitTimeHasBeenSet() const { return m_submitTimeHasBeenSet; }
+    template<typename SubmitTimeT = Aws::Utils::DateTime>
+    void SetSubmitTime(SubmitTimeT&& value) { m_submitTimeHasBeenSet = true; m_submitTime = std::forward<SubmitTimeT>(value); }
+    template<typename SubmitTimeT = Aws::Utils::DateTime>
+    ImportJobProperties& WithSubmitTime(SubmitTimeT&& value) { SetSubmitTime(std::forward<SubmitTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The time that the Import job was submitted for processing.</p>
+     * <p>The time the import job was completed.</p>
      */
-    inline void SetSubmitTime(const Aws::Utils::DateTime& value) { m_submitTimeHasBeenSet = true; m_submitTime = value; }
-
-    /**
-     * <p>The time that the Import job was submitted for processing.</p>
-     */
-    inline void SetSubmitTime(Aws::Utils::DateTime&& value) { m_submitTimeHasBeenSet = true; m_submitTime = std::move(value); }
-
-    /**
-     * <p>The time that the Import job was submitted for processing.</p>
-     */
-    inline ImportJobProperties& WithSubmitTime(const Aws::Utils::DateTime& value) { SetSubmitTime(value); return *this;}
-
-    /**
-     * <p>The time that the Import job was submitted for processing.</p>
-     */
-    inline ImportJobProperties& WithSubmitTime(Aws::Utils::DateTime&& value) { SetSubmitTime(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The time that the Import job was completed.</p>
-     */
-    inline const Aws::Utils::DateTime& GetEndTime() const{ return m_endTime; }
-
-    /**
-     * <p>The time that the Import job was completed.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEndTime() const { return m_endTime; }
     inline bool EndTimeHasBeenSet() const { return m_endTimeHasBeenSet; }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    void SetEndTime(EndTimeT&& value) { m_endTimeHasBeenSet = true; m_endTime = std::forward<EndTimeT>(value); }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    ImportJobProperties& WithEndTime(EndTimeT&& value) { SetEndTime(std::forward<EndTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The time that the Import job was completed.</p>
+     * <p>The data store identifier. </p>
      */
-    inline void SetEndTime(const Aws::Utils::DateTime& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
-
-    /**
-     * <p>The time that the Import job was completed.</p>
-     */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
-
-    /**
-     * <p>The time that the Import job was completed.</p>
-     */
-    inline ImportJobProperties& WithEndTime(const Aws::Utils::DateTime& value) { SetEndTime(value); return *this;}
-
-    /**
-     * <p>The time that the Import job was completed.</p>
-     */
-    inline ImportJobProperties& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The datastore id used when the Import job was created. </p>
-     */
-    inline const Aws::String& GetDatastoreId() const{ return m_datastoreId; }
-
-    /**
-     * <p>The datastore id used when the Import job was created. </p>
-     */
+    inline const Aws::String& GetDatastoreId() const { return m_datastoreId; }
     inline bool DatastoreIdHasBeenSet() const { return m_datastoreIdHasBeenSet; }
+    template<typename DatastoreIdT = Aws::String>
+    void SetDatastoreId(DatastoreIdT&& value) { m_datastoreIdHasBeenSet = true; m_datastoreId = std::forward<DatastoreIdT>(value); }
+    template<typename DatastoreIdT = Aws::String>
+    ImportJobProperties& WithDatastoreId(DatastoreIdT&& value) { SetDatastoreId(std::forward<DatastoreIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The datastore id used when the Import job was created. </p>
+     * <p>The input data configuration supplied when the import job was created.</p>
      */
-    inline void SetDatastoreId(const Aws::String& value) { m_datastoreIdHasBeenSet = true; m_datastoreId = value; }
-
-    /**
-     * <p>The datastore id used when the Import job was created. </p>
-     */
-    inline void SetDatastoreId(Aws::String&& value) { m_datastoreIdHasBeenSet = true; m_datastoreId = std::move(value); }
-
-    /**
-     * <p>The datastore id used when the Import job was created. </p>
-     */
-    inline void SetDatastoreId(const char* value) { m_datastoreIdHasBeenSet = true; m_datastoreId.assign(value); }
-
-    /**
-     * <p>The datastore id used when the Import job was created. </p>
-     */
-    inline ImportJobProperties& WithDatastoreId(const Aws::String& value) { SetDatastoreId(value); return *this;}
-
-    /**
-     * <p>The datastore id used when the Import job was created. </p>
-     */
-    inline ImportJobProperties& WithDatastoreId(Aws::String&& value) { SetDatastoreId(std::move(value)); return *this;}
-
-    /**
-     * <p>The datastore id used when the Import job was created. </p>
-     */
-    inline ImportJobProperties& WithDatastoreId(const char* value) { SetDatastoreId(value); return *this;}
-
-
-    /**
-     * <p>The input data configuration that was supplied when the Import job was
-     * created.</p>
-     */
-    inline const InputDataConfig& GetInputDataConfig() const{ return m_inputDataConfig; }
-
-    /**
-     * <p>The input data configuration that was supplied when the Import job was
-     * created.</p>
-     */
+    inline const InputDataConfig& GetInputDataConfig() const { return m_inputDataConfig; }
     inline bool InputDataConfigHasBeenSet() const { return m_inputDataConfigHasBeenSet; }
+    template<typename InputDataConfigT = InputDataConfig>
+    void SetInputDataConfig(InputDataConfigT&& value) { m_inputDataConfigHasBeenSet = true; m_inputDataConfig = std::forward<InputDataConfigT>(value); }
+    template<typename InputDataConfigT = InputDataConfig>
+    ImportJobProperties& WithInputDataConfig(InputDataConfigT&& value) { SetInputDataConfig(std::forward<InputDataConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The input data configuration that was supplied when the Import job was
-     * created.</p>
-     */
-    inline void SetInputDataConfig(const InputDataConfig& value) { m_inputDataConfigHasBeenSet = true; m_inputDataConfig = value; }
-
-    /**
-     * <p>The input data configuration that was supplied when the Import job was
-     * created.</p>
-     */
-    inline void SetInputDataConfig(InputDataConfig&& value) { m_inputDataConfigHasBeenSet = true; m_inputDataConfig = std::move(value); }
-
-    /**
-     * <p>The input data configuration that was supplied when the Import job was
-     * created.</p>
-     */
-    inline ImportJobProperties& WithInputDataConfig(const InputDataConfig& value) { SetInputDataConfig(value); return *this;}
-
-    /**
-     * <p>The input data configuration that was supplied when the Import job was
-     * created.</p>
-     */
-    inline ImportJobProperties& WithInputDataConfig(InputDataConfig&& value) { SetInputDataConfig(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const OutputDataConfig& GetJobOutputDataConfig() const{ return m_jobOutputDataConfig; }
-
-    
+    inline const OutputDataConfig& GetJobOutputDataConfig() const { return m_jobOutputDataConfig; }
     inline bool JobOutputDataConfigHasBeenSet() const { return m_jobOutputDataConfigHasBeenSet; }
+    template<typename JobOutputDataConfigT = OutputDataConfig>
+    void SetJobOutputDataConfig(JobOutputDataConfigT&& value) { m_jobOutputDataConfigHasBeenSet = true; m_jobOutputDataConfig = std::forward<JobOutputDataConfigT>(value); }
+    template<typename JobOutputDataConfigT = OutputDataConfig>
+    ImportJobProperties& WithJobOutputDataConfig(JobOutputDataConfigT&& value) { SetJobOutputDataConfig(std::forward<JobOutputDataConfigT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetJobOutputDataConfig(const OutputDataConfig& value) { m_jobOutputDataConfigHasBeenSet = true; m_jobOutputDataConfig = value; }
-
-    
-    inline void SetJobOutputDataConfig(OutputDataConfig&& value) { m_jobOutputDataConfigHasBeenSet = true; m_jobOutputDataConfig = std::move(value); }
-
-    
-    inline ImportJobProperties& WithJobOutputDataConfig(const OutputDataConfig& value) { SetJobOutputDataConfig(value); return *this;}
-
-    
-    inline ImportJobProperties& WithJobOutputDataConfig(OutputDataConfig&& value) { SetJobOutputDataConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) that gives Amazon HealthLake access to your
-     * input data.</p>
+     * <p>Displays the progress of the import job, including total resources scanned,
+     * total resources imported, and total size of data imported.</p>
      */
-    inline const Aws::String& GetDataAccessRoleArn() const{ return m_dataAccessRoleArn; }
+    inline const JobProgressReport& GetJobProgressReport() const { return m_jobProgressReport; }
+    inline bool JobProgressReportHasBeenSet() const { return m_jobProgressReportHasBeenSet; }
+    template<typename JobProgressReportT = JobProgressReport>
+    void SetJobProgressReport(JobProgressReportT&& value) { m_jobProgressReportHasBeenSet = true; m_jobProgressReport = std::forward<JobProgressReportT>(value); }
+    template<typename JobProgressReportT = JobProgressReport>
+    ImportJobProperties& WithJobProgressReport(JobProgressReportT&& value) { SetJobProgressReport(std::forward<JobProgressReportT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) that gives Amazon HealthLake access to your
-     * input data.</p>
+     * <p>The Amazon Resource Name (ARN) that grants AWS HealthLake access to the input
+     * data.</p>
      */
+    inline const Aws::String& GetDataAccessRoleArn() const { return m_dataAccessRoleArn; }
     inline bool DataAccessRoleArnHasBeenSet() const { return m_dataAccessRoleArnHasBeenSet; }
+    template<typename DataAccessRoleArnT = Aws::String>
+    void SetDataAccessRoleArn(DataAccessRoleArnT&& value) { m_dataAccessRoleArnHasBeenSet = true; m_dataAccessRoleArn = std::forward<DataAccessRoleArnT>(value); }
+    template<typename DataAccessRoleArnT = Aws::String>
+    ImportJobProperties& WithDataAccessRoleArn(DataAccessRoleArnT&& value) { SetDataAccessRoleArn(std::forward<DataAccessRoleArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) that gives Amazon HealthLake access to your
-     * input data.</p>
+     * <p>An explanation of any errors that might have occurred during the FHIR import
+     * job.</p>
      */
-    inline void SetDataAccessRoleArn(const Aws::String& value) { m_dataAccessRoleArnHasBeenSet = true; m_dataAccessRoleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that gives Amazon HealthLake access to your
-     * input data.</p>
-     */
-    inline void SetDataAccessRoleArn(Aws::String&& value) { m_dataAccessRoleArnHasBeenSet = true; m_dataAccessRoleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that gives Amazon HealthLake access to your
-     * input data.</p>
-     */
-    inline void SetDataAccessRoleArn(const char* value) { m_dataAccessRoleArnHasBeenSet = true; m_dataAccessRoleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that gives Amazon HealthLake access to your
-     * input data.</p>
-     */
-    inline ImportJobProperties& WithDataAccessRoleArn(const Aws::String& value) { SetDataAccessRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that gives Amazon HealthLake access to your
-     * input data.</p>
-     */
-    inline ImportJobProperties& WithDataAccessRoleArn(Aws::String&& value) { SetDataAccessRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that gives Amazon HealthLake access to your
-     * input data.</p>
-     */
-    inline ImportJobProperties& WithDataAccessRoleArn(const char* value) { SetDataAccessRoleArn(value); return *this;}
-
-
-    /**
-     * <p>An explanation of any errors that may have occurred during the FHIR import
-     * job. </p>
-     */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>An explanation of any errors that may have occurred during the FHIR import
-     * job. </p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    ImportJobProperties& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>An explanation of any errors that may have occurred during the FHIR import
-     * job. </p>
+     * <p>The validation level of the import job.</p>
      */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>An explanation of any errors that may have occurred during the FHIR import
-     * job. </p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>An explanation of any errors that may have occurred during the FHIR import
-     * job. </p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>An explanation of any errors that may have occurred during the FHIR import
-     * job. </p>
-     */
-    inline ImportJobProperties& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>An explanation of any errors that may have occurred during the FHIR import
-     * job. </p>
-     */
-    inline ImportJobProperties& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>An explanation of any errors that may have occurred during the FHIR import
-     * job. </p>
-     */
-    inline ImportJobProperties& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    inline ValidationLevel GetValidationLevel() const { return m_validationLevel; }
+    inline bool ValidationLevelHasBeenSet() const { return m_validationLevelHasBeenSet; }
+    inline void SetValidationLevel(ValidationLevel value) { m_validationLevelHasBeenSet = true; m_validationLevel = value; }
+    inline ImportJobProperties& WithValidationLevel(ValidationLevel value) { SetValidationLevel(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_jobId;
@@ -425,13 +191,13 @@ namespace Model
     Aws::String m_jobName;
     bool m_jobNameHasBeenSet = false;
 
-    JobStatus m_jobStatus;
+    JobStatus m_jobStatus{JobStatus::NOT_SET};
     bool m_jobStatusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_submitTime;
+    Aws::Utils::DateTime m_submitTime{};
     bool m_submitTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_endTime;
+    Aws::Utils::DateTime m_endTime{};
     bool m_endTimeHasBeenSet = false;
 
     Aws::String m_datastoreId;
@@ -443,11 +209,17 @@ namespace Model
     OutputDataConfig m_jobOutputDataConfig;
     bool m_jobOutputDataConfigHasBeenSet = false;
 
+    JobProgressReport m_jobProgressReport;
+    bool m_jobProgressReportHasBeenSet = false;
+
     Aws::String m_dataAccessRoleArn;
     bool m_dataAccessRoleArnHasBeenSet = false;
 
     Aws::String m_message;
     bool m_messageHasBeenSet = false;
+
+    ValidationLevel m_validationLevel{ValidationLevel::NOT_SET};
+    bool m_validationLevelHasBeenSet = false;
   };
 
 } // namespace Model

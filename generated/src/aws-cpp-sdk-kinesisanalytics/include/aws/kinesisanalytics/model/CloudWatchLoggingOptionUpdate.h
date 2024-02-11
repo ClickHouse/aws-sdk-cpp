@@ -31,150 +31,49 @@ namespace Model
   class CloudWatchLoggingOptionUpdate
   {
   public:
-    AWS_KINESISANALYTICS_API CloudWatchLoggingOptionUpdate();
+    AWS_KINESISANALYTICS_API CloudWatchLoggingOptionUpdate() = default;
     AWS_KINESISANALYTICS_API CloudWatchLoggingOptionUpdate(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICS_API CloudWatchLoggingOptionUpdate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>ID of the CloudWatch logging option to update</p>
      */
-    inline const Aws::String& GetCloudWatchLoggingOptionId() const{ return m_cloudWatchLoggingOptionId; }
-
-    /**
-     * <p>ID of the CloudWatch logging option to update</p>
-     */
+    inline const Aws::String& GetCloudWatchLoggingOptionId() const { return m_cloudWatchLoggingOptionId; }
     inline bool CloudWatchLoggingOptionIdHasBeenSet() const { return m_cloudWatchLoggingOptionIdHasBeenSet; }
+    template<typename CloudWatchLoggingOptionIdT = Aws::String>
+    void SetCloudWatchLoggingOptionId(CloudWatchLoggingOptionIdT&& value) { m_cloudWatchLoggingOptionIdHasBeenSet = true; m_cloudWatchLoggingOptionId = std::forward<CloudWatchLoggingOptionIdT>(value); }
+    template<typename CloudWatchLoggingOptionIdT = Aws::String>
+    CloudWatchLoggingOptionUpdate& WithCloudWatchLoggingOptionId(CloudWatchLoggingOptionIdT&& value) { SetCloudWatchLoggingOptionId(std::forward<CloudWatchLoggingOptionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>ID of the CloudWatch logging option to update</p>
-     */
-    inline void SetCloudWatchLoggingOptionId(const Aws::String& value) { m_cloudWatchLoggingOptionIdHasBeenSet = true; m_cloudWatchLoggingOptionId = value; }
-
-    /**
-     * <p>ID of the CloudWatch logging option to update</p>
-     */
-    inline void SetCloudWatchLoggingOptionId(Aws::String&& value) { m_cloudWatchLoggingOptionIdHasBeenSet = true; m_cloudWatchLoggingOptionId = std::move(value); }
-
-    /**
-     * <p>ID of the CloudWatch logging option to update</p>
-     */
-    inline void SetCloudWatchLoggingOptionId(const char* value) { m_cloudWatchLoggingOptionIdHasBeenSet = true; m_cloudWatchLoggingOptionId.assign(value); }
-
-    /**
-     * <p>ID of the CloudWatch logging option to update</p>
-     */
-    inline CloudWatchLoggingOptionUpdate& WithCloudWatchLoggingOptionId(const Aws::String& value) { SetCloudWatchLoggingOptionId(value); return *this;}
-
-    /**
-     * <p>ID of the CloudWatch logging option to update</p>
-     */
-    inline CloudWatchLoggingOptionUpdate& WithCloudWatchLoggingOptionId(Aws::String&& value) { SetCloudWatchLoggingOptionId(std::move(value)); return *this;}
-
-    /**
-     * <p>ID of the CloudWatch logging option to update</p>
-     */
-    inline CloudWatchLoggingOptionUpdate& WithCloudWatchLoggingOptionId(const char* value) { SetCloudWatchLoggingOptionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>ARN of the CloudWatch log to receive application messages.</p>
      */
-    inline const Aws::String& GetLogStreamARNUpdate() const{ return m_logStreamARNUpdate; }
-
-    /**
-     * <p>ARN of the CloudWatch log to receive application messages.</p>
-     */
+    inline const Aws::String& GetLogStreamARNUpdate() const { return m_logStreamARNUpdate; }
     inline bool LogStreamARNUpdateHasBeenSet() const { return m_logStreamARNUpdateHasBeenSet; }
+    template<typename LogStreamARNUpdateT = Aws::String>
+    void SetLogStreamARNUpdate(LogStreamARNUpdateT&& value) { m_logStreamARNUpdateHasBeenSet = true; m_logStreamARNUpdate = std::forward<LogStreamARNUpdateT>(value); }
+    template<typename LogStreamARNUpdateT = Aws::String>
+    CloudWatchLoggingOptionUpdate& WithLogStreamARNUpdate(LogStreamARNUpdateT&& value) { SetLogStreamARNUpdate(std::forward<LogStreamARNUpdateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>ARN of the CloudWatch log to receive application messages.</p>
-     */
-    inline void SetLogStreamARNUpdate(const Aws::String& value) { m_logStreamARNUpdateHasBeenSet = true; m_logStreamARNUpdate = value; }
-
-    /**
-     * <p>ARN of the CloudWatch log to receive application messages.</p>
-     */
-    inline void SetLogStreamARNUpdate(Aws::String&& value) { m_logStreamARNUpdateHasBeenSet = true; m_logStreamARNUpdate = std::move(value); }
-
-    /**
-     * <p>ARN of the CloudWatch log to receive application messages.</p>
-     */
-    inline void SetLogStreamARNUpdate(const char* value) { m_logStreamARNUpdateHasBeenSet = true; m_logStreamARNUpdate.assign(value); }
-
-    /**
-     * <p>ARN of the CloudWatch log to receive application messages.</p>
-     */
-    inline CloudWatchLoggingOptionUpdate& WithLogStreamARNUpdate(const Aws::String& value) { SetLogStreamARNUpdate(value); return *this;}
-
-    /**
-     * <p>ARN of the CloudWatch log to receive application messages.</p>
-     */
-    inline CloudWatchLoggingOptionUpdate& WithLogStreamARNUpdate(Aws::String&& value) { SetLogStreamARNUpdate(std::move(value)); return *this;}
-
-    /**
-     * <p>ARN of the CloudWatch log to receive application messages.</p>
-     */
-    inline CloudWatchLoggingOptionUpdate& WithLogStreamARNUpdate(const char* value) { SetLogStreamARNUpdate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>IAM ARN of the role to use to send application messages. Note: To write
      * application messages to CloudWatch, the IAM role used must have the
      * <code>PutLogEvents</code> policy action enabled.</p>
      */
-    inline const Aws::String& GetRoleARNUpdate() const{ return m_roleARNUpdate; }
-
-    /**
-     * <p>IAM ARN of the role to use to send application messages. Note: To write
-     * application messages to CloudWatch, the IAM role used must have the
-     * <code>PutLogEvents</code> policy action enabled.</p>
-     */
+    inline const Aws::String& GetRoleARNUpdate() const { return m_roleARNUpdate; }
     inline bool RoleARNUpdateHasBeenSet() const { return m_roleARNUpdateHasBeenSet; }
-
-    /**
-     * <p>IAM ARN of the role to use to send application messages. Note: To write
-     * application messages to CloudWatch, the IAM role used must have the
-     * <code>PutLogEvents</code> policy action enabled.</p>
-     */
-    inline void SetRoleARNUpdate(const Aws::String& value) { m_roleARNUpdateHasBeenSet = true; m_roleARNUpdate = value; }
-
-    /**
-     * <p>IAM ARN of the role to use to send application messages. Note: To write
-     * application messages to CloudWatch, the IAM role used must have the
-     * <code>PutLogEvents</code> policy action enabled.</p>
-     */
-    inline void SetRoleARNUpdate(Aws::String&& value) { m_roleARNUpdateHasBeenSet = true; m_roleARNUpdate = std::move(value); }
-
-    /**
-     * <p>IAM ARN of the role to use to send application messages. Note: To write
-     * application messages to CloudWatch, the IAM role used must have the
-     * <code>PutLogEvents</code> policy action enabled.</p>
-     */
-    inline void SetRoleARNUpdate(const char* value) { m_roleARNUpdateHasBeenSet = true; m_roleARNUpdate.assign(value); }
-
-    /**
-     * <p>IAM ARN of the role to use to send application messages. Note: To write
-     * application messages to CloudWatch, the IAM role used must have the
-     * <code>PutLogEvents</code> policy action enabled.</p>
-     */
-    inline CloudWatchLoggingOptionUpdate& WithRoleARNUpdate(const Aws::String& value) { SetRoleARNUpdate(value); return *this;}
-
-    /**
-     * <p>IAM ARN of the role to use to send application messages. Note: To write
-     * application messages to CloudWatch, the IAM role used must have the
-     * <code>PutLogEvents</code> policy action enabled.</p>
-     */
-    inline CloudWatchLoggingOptionUpdate& WithRoleARNUpdate(Aws::String&& value) { SetRoleARNUpdate(std::move(value)); return *this;}
-
-    /**
-     * <p>IAM ARN of the role to use to send application messages. Note: To write
-     * application messages to CloudWatch, the IAM role used must have the
-     * <code>PutLogEvents</code> policy action enabled.</p>
-     */
-    inline CloudWatchLoggingOptionUpdate& WithRoleARNUpdate(const char* value) { SetRoleARNUpdate(value); return *this;}
-
+    template<typename RoleARNUpdateT = Aws::String>
+    void SetRoleARNUpdate(RoleARNUpdateT&& value) { m_roleARNUpdateHasBeenSet = true; m_roleARNUpdate = std::forward<RoleARNUpdateT>(value); }
+    template<typename RoleARNUpdateT = Aws::String>
+    CloudWatchLoggingOptionUpdate& WithRoleARNUpdate(RoleARNUpdateT&& value) { SetRoleARNUpdate(std::forward<RoleARNUpdateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_cloudWatchLoggingOptionId;

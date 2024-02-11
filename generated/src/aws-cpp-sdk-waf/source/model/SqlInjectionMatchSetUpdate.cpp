@@ -18,17 +18,7 @@ namespace WAF
 namespace Model
 {
 
-SqlInjectionMatchSetUpdate::SqlInjectionMatchSetUpdate() : 
-    m_action(ChangeAction::NOT_SET),
-    m_actionHasBeenSet(false),
-    m_sqlInjectionMatchTupleHasBeenSet(false)
-{
-}
-
-SqlInjectionMatchSetUpdate::SqlInjectionMatchSetUpdate(JsonView jsonValue) : 
-    m_action(ChangeAction::NOT_SET),
-    m_actionHasBeenSet(false),
-    m_sqlInjectionMatchTupleHasBeenSet(false)
+SqlInjectionMatchSetUpdate::SqlInjectionMatchSetUpdate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ SqlInjectionMatchSetUpdate& SqlInjectionMatchSetUpdate::operator =(JsonView json
   if(jsonValue.ValueExists("Action"))
   {
     m_action = ChangeActionMapper::GetChangeActionForName(jsonValue.GetString("Action"));
-
     m_actionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SqlInjectionMatchTuple"))
   {
     m_sqlInjectionMatchTuple = jsonValue.GetObject("SqlInjectionMatchTuple");
-
     m_sqlInjectionMatchTupleHasBeenSet = true;
   }
-
   return *this;
 }
 

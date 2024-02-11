@@ -35,172 +35,69 @@ namespace Model
   class AutoSnapshotDetails
   {
   public:
-    AWS_LIGHTSAIL_API AutoSnapshotDetails();
+    AWS_LIGHTSAIL_API AutoSnapshotDetails() = default;
     AWS_LIGHTSAIL_API AutoSnapshotDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API AutoSnapshotDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The date of the automatic snapshot in <code>YYYY-MM-DD</code> format.</p>
      */
-    inline const Aws::String& GetDate() const{ return m_date; }
-
-    /**
-     * <p>The date of the automatic snapshot in <code>YYYY-MM-DD</code> format.</p>
-     */
+    inline const Aws::String& GetDate() const { return m_date; }
     inline bool DateHasBeenSet() const { return m_dateHasBeenSet; }
+    template<typename DateT = Aws::String>
+    void SetDate(DateT&& value) { m_dateHasBeenSet = true; m_date = std::forward<DateT>(value); }
+    template<typename DateT = Aws::String>
+    AutoSnapshotDetails& WithDate(DateT&& value) { SetDate(std::forward<DateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date of the automatic snapshot in <code>YYYY-MM-DD</code> format.</p>
-     */
-    inline void SetDate(const Aws::String& value) { m_dateHasBeenSet = true; m_date = value; }
-
-    /**
-     * <p>The date of the automatic snapshot in <code>YYYY-MM-DD</code> format.</p>
-     */
-    inline void SetDate(Aws::String&& value) { m_dateHasBeenSet = true; m_date = std::move(value); }
-
-    /**
-     * <p>The date of the automatic snapshot in <code>YYYY-MM-DD</code> format.</p>
-     */
-    inline void SetDate(const char* value) { m_dateHasBeenSet = true; m_date.assign(value); }
-
-    /**
-     * <p>The date of the automatic snapshot in <code>YYYY-MM-DD</code> format.</p>
-     */
-    inline AutoSnapshotDetails& WithDate(const Aws::String& value) { SetDate(value); return *this;}
-
-    /**
-     * <p>The date of the automatic snapshot in <code>YYYY-MM-DD</code> format.</p>
-     */
-    inline AutoSnapshotDetails& WithDate(Aws::String&& value) { SetDate(std::move(value)); return *this;}
-
-    /**
-     * <p>The date of the automatic snapshot in <code>YYYY-MM-DD</code> format.</p>
-     */
-    inline AutoSnapshotDetails& WithDate(const char* value) { SetDate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp when the automatic snapshot was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The timestamp when the automatic snapshot was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    AutoSnapshotDetails& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp when the automatic snapshot was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The timestamp when the automatic snapshot was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The timestamp when the automatic snapshot was created.</p>
-     */
-    inline AutoSnapshotDetails& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp when the automatic snapshot was created.</p>
-     */
-    inline AutoSnapshotDetails& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the automatic snapshot.</p>
      */
-    inline const AutoSnapshotStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the automatic snapshot.</p>
-     */
+    inline AutoSnapshotStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(AutoSnapshotStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline AutoSnapshotDetails& WithStatus(AutoSnapshotStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the automatic snapshot.</p>
-     */
-    inline void SetStatus(const AutoSnapshotStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the automatic snapshot.</p>
-     */
-    inline void SetStatus(AutoSnapshotStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the automatic snapshot.</p>
-     */
-    inline AutoSnapshotDetails& WithStatus(const AutoSnapshotStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the automatic snapshot.</p>
-     */
-    inline AutoSnapshotDetails& WithStatus(AutoSnapshotStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of objects that describe the block storage disks attached to the
      * instance when the automatic snapshot was created.</p>
      */
-    inline const Aws::Vector<AttachedDisk>& GetFromAttachedDisks() const{ return m_fromAttachedDisks; }
-
-    /**
-     * <p>An array of objects that describe the block storage disks attached to the
-     * instance when the automatic snapshot was created.</p>
-     */
+    inline const Aws::Vector<AttachedDisk>& GetFromAttachedDisks() const { return m_fromAttachedDisks; }
     inline bool FromAttachedDisksHasBeenSet() const { return m_fromAttachedDisksHasBeenSet; }
-
-    /**
-     * <p>An array of objects that describe the block storage disks attached to the
-     * instance when the automatic snapshot was created.</p>
-     */
-    inline void SetFromAttachedDisks(const Aws::Vector<AttachedDisk>& value) { m_fromAttachedDisksHasBeenSet = true; m_fromAttachedDisks = value; }
-
-    /**
-     * <p>An array of objects that describe the block storage disks attached to the
-     * instance when the automatic snapshot was created.</p>
-     */
-    inline void SetFromAttachedDisks(Aws::Vector<AttachedDisk>&& value) { m_fromAttachedDisksHasBeenSet = true; m_fromAttachedDisks = std::move(value); }
-
-    /**
-     * <p>An array of objects that describe the block storage disks attached to the
-     * instance when the automatic snapshot was created.</p>
-     */
-    inline AutoSnapshotDetails& WithFromAttachedDisks(const Aws::Vector<AttachedDisk>& value) { SetFromAttachedDisks(value); return *this;}
-
-    /**
-     * <p>An array of objects that describe the block storage disks attached to the
-     * instance when the automatic snapshot was created.</p>
-     */
-    inline AutoSnapshotDetails& WithFromAttachedDisks(Aws::Vector<AttachedDisk>&& value) { SetFromAttachedDisks(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of objects that describe the block storage disks attached to the
-     * instance when the automatic snapshot was created.</p>
-     */
-    inline AutoSnapshotDetails& AddFromAttachedDisks(const AttachedDisk& value) { m_fromAttachedDisksHasBeenSet = true; m_fromAttachedDisks.push_back(value); return *this; }
-
-    /**
-     * <p>An array of objects that describe the block storage disks attached to the
-     * instance when the automatic snapshot was created.</p>
-     */
-    inline AutoSnapshotDetails& AddFromAttachedDisks(AttachedDisk&& value) { m_fromAttachedDisksHasBeenSet = true; m_fromAttachedDisks.push_back(std::move(value)); return *this; }
-
+    template<typename FromAttachedDisksT = Aws::Vector<AttachedDisk>>
+    void SetFromAttachedDisks(FromAttachedDisksT&& value) { m_fromAttachedDisksHasBeenSet = true; m_fromAttachedDisks = std::forward<FromAttachedDisksT>(value); }
+    template<typename FromAttachedDisksT = Aws::Vector<AttachedDisk>>
+    AutoSnapshotDetails& WithFromAttachedDisks(FromAttachedDisksT&& value) { SetFromAttachedDisks(std::forward<FromAttachedDisksT>(value)); return *this;}
+    template<typename FromAttachedDisksT = AttachedDisk>
+    AutoSnapshotDetails& AddFromAttachedDisks(FromAttachedDisksT&& value) { m_fromAttachedDisksHasBeenSet = true; m_fromAttachedDisks.emplace_back(std::forward<FromAttachedDisksT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_date;
     bool m_dateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    AutoSnapshotStatus m_status;
+    AutoSnapshotStatus m_status{AutoSnapshotStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::Vector<AttachedDisk> m_fromAttachedDisks;

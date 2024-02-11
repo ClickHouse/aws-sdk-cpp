@@ -12,13 +12,6 @@ using namespace Aws::ApplicationInsights::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeLogPatternRequest::DescribeLogPatternRequest() : 
-    m_resourceGroupNameHasBeenSet(false),
-    m_patternSetNameHasBeenSet(false),
-    m_patternNameHasBeenSet(false)
-{
-}
-
 Aws::String DescribeLogPatternRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,6 +31,12 @@ Aws::String DescribeLogPatternRequest::SerializePayload() const
   if(m_patternNameHasBeenSet)
   {
    payload.WithString("PatternName", m_patternName);
+
+  }
+
+  if(m_accountIdHasBeenSet)
+  {
+   payload.WithString("AccountId", m_accountId);
 
   }
 

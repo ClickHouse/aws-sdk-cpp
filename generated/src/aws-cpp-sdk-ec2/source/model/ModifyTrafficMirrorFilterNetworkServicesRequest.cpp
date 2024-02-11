@@ -10,15 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ModifyTrafficMirrorFilterNetworkServicesRequest::ModifyTrafficMirrorFilterNetworkServicesRequest() : 
-    m_trafficMirrorFilterIdHasBeenSet(false),
-    m_addNetworkServicesHasBeenSet(false),
-    m_removeNetworkServicesHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String ModifyTrafficMirrorFilterNetworkServicesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -34,7 +25,7 @@ Aws::String ModifyTrafficMirrorFilterNetworkServicesRequest::SerializePayload() 
     for(auto& item : m_addNetworkServices)
     {
       ss << "AddNetworkService." << addNetworkServicesCount << "="
-          << StringUtils::URLEncode(TrafficMirrorNetworkServiceMapper::GetNameForTrafficMirrorNetworkService(item).c_str()) << "&";
+          << StringUtils::URLEncode(TrafficMirrorNetworkServiceMapper::GetNameForTrafficMirrorNetworkService(item)) << "&";
       addNetworkServicesCount++;
     }
   }
@@ -45,7 +36,7 @@ Aws::String ModifyTrafficMirrorFilterNetworkServicesRequest::SerializePayload() 
     for(auto& item : m_removeNetworkServices)
     {
       ss << "RemoveNetworkService." << removeNetworkServicesCount << "="
-          << StringUtils::URLEncode(TrafficMirrorNetworkServiceMapper::GetNameForTrafficMirrorNetworkService(item).c_str()) << "&";
+          << StringUtils::URLEncode(TrafficMirrorNetworkServiceMapper::GetNameForTrafficMirrorNetworkService(item)) << "&";
       removeNetworkServicesCount++;
     }
   }

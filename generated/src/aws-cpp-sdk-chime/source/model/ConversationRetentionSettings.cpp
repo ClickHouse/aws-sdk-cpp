@@ -18,15 +18,7 @@ namespace Chime
 namespace Model
 {
 
-ConversationRetentionSettings::ConversationRetentionSettings() : 
-    m_retentionDays(0),
-    m_retentionDaysHasBeenSet(false)
-{
-}
-
-ConversationRetentionSettings::ConversationRetentionSettings(JsonView jsonValue) : 
-    m_retentionDays(0),
-    m_retentionDaysHasBeenSet(false)
+ConversationRetentionSettings::ConversationRetentionSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ConversationRetentionSettings& ConversationRetentionSettings::operator =(JsonVie
   if(jsonValue.ValueExists("RetentionDays"))
   {
     m_retentionDays = jsonValue.GetInteger("RetentionDays");
-
     m_retentionDaysHasBeenSet = true;
   }
-
   return *this;
 }
 

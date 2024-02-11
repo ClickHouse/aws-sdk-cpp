@@ -21,7 +21,7 @@ namespace Model
   class GetVerifiedAccessGroupPolicyRequest : public EC2Request
   {
   public:
-    AWS_EC2_API GetVerifiedAccessGroupPolicyRequest();
+    AWS_EC2_API GetVerifiedAccessGroupPolicyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,85 +36,36 @@ namespace Model
 
   public:
 
+    ///@{
     /**
-     * <p>The ID of the Amazon Web Services Verified Access group.</p>
+     * <p>The ID of the Verified Access group.</p>
      */
-    inline const Aws::String& GetVerifiedAccessGroupId() const{ return m_verifiedAccessGroupId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access group.</p>
-     */
+    inline const Aws::String& GetVerifiedAccessGroupId() const { return m_verifiedAccessGroupId; }
     inline bool VerifiedAccessGroupIdHasBeenSet() const { return m_verifiedAccessGroupIdHasBeenSet; }
+    template<typename VerifiedAccessGroupIdT = Aws::String>
+    void SetVerifiedAccessGroupId(VerifiedAccessGroupIdT&& value) { m_verifiedAccessGroupIdHasBeenSet = true; m_verifiedAccessGroupId = std::forward<VerifiedAccessGroupIdT>(value); }
+    template<typename VerifiedAccessGroupIdT = Aws::String>
+    GetVerifiedAccessGroupPolicyRequest& WithVerifiedAccessGroupId(VerifiedAccessGroupIdT&& value) { SetVerifiedAccessGroupId(std::forward<VerifiedAccessGroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access group.</p>
-     */
-    inline void SetVerifiedAccessGroupId(const Aws::String& value) { m_verifiedAccessGroupIdHasBeenSet = true; m_verifiedAccessGroupId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access group.</p>
-     */
-    inline void SetVerifiedAccessGroupId(Aws::String&& value) { m_verifiedAccessGroupIdHasBeenSet = true; m_verifiedAccessGroupId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access group.</p>
-     */
-    inline void SetVerifiedAccessGroupId(const char* value) { m_verifiedAccessGroupIdHasBeenSet = true; m_verifiedAccessGroupId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access group.</p>
-     */
-    inline GetVerifiedAccessGroupPolicyRequest& WithVerifiedAccessGroupId(const Aws::String& value) { SetVerifiedAccessGroupId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access group.</p>
-     */
-    inline GetVerifiedAccessGroupPolicyRequest& WithVerifiedAccessGroupId(Aws::String&& value) { SetVerifiedAccessGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access group.</p>
-     */
-    inline GetVerifiedAccessGroupPolicyRequest& WithVerifiedAccessGroupId(const char* value) { SetVerifiedAccessGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline GetVerifiedAccessGroupPolicyRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_verifiedAccessGroupId;
     bool m_verifiedAccessGroupIdHasBeenSet = false;
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
   };
 

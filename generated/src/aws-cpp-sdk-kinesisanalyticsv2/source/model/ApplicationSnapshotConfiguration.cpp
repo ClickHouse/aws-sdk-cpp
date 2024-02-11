@@ -18,15 +18,7 @@ namespace KinesisAnalyticsV2
 namespace Model
 {
 
-ApplicationSnapshotConfiguration::ApplicationSnapshotConfiguration() : 
-    m_snapshotsEnabled(false),
-    m_snapshotsEnabledHasBeenSet(false)
-{
-}
-
-ApplicationSnapshotConfiguration::ApplicationSnapshotConfiguration(JsonView jsonValue) : 
-    m_snapshotsEnabled(false),
-    m_snapshotsEnabledHasBeenSet(false)
+ApplicationSnapshotConfiguration::ApplicationSnapshotConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ApplicationSnapshotConfiguration& ApplicationSnapshotConfiguration::operator =(J
   if(jsonValue.ValueExists("SnapshotsEnabled"))
   {
     m_snapshotsEnabled = jsonValue.GetBool("SnapshotsEnabled");
-
     m_snapshotsEnabledHasBeenSet = true;
   }
-
   return *this;
 }
 

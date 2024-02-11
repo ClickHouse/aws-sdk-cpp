@@ -13,13 +13,6 @@ using namespace Aws::MediaLive::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeInputDeviceThumbnailRequest::DescribeInputDeviceThumbnailRequest() : 
-    m_inputDeviceIdHasBeenSet(false),
-    m_accept(AcceptHeader::NOT_SET),
-    m_acceptHasBeenSet(false)
-{
-}
-
 Aws::String DescribeInputDeviceThumbnailRequest::SerializePayload() const
 {
   return {};
@@ -29,7 +22,7 @@ Aws::Http::HeaderValueCollection DescribeInputDeviceThumbnailRequest::GetRequest
 {
   Aws::Http::HeaderValueCollection headers;
   Aws::StringStream ss;
-  if(m_acceptHasBeenSet)
+  if(m_acceptHasBeenSet && m_accept != AcceptHeader::NOT_SET)
   {
     headers.emplace("accept", AcceptHeaderMapper::GetNameForAcceptHeader(m_accept));
   }

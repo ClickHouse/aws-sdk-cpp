@@ -21,7 +21,7 @@ namespace Model
   class DeleteBlueGreenDeploymentRequest : public RDSRequest
   {
   public:
-    AWS_RDS_API DeleteBlueGreenDeploymentRequest();
+    AWS_RDS_API DeleteBlueGreenDeploymentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,101 +36,38 @@ namespace Model
 
   public:
 
+    ///@{
     /**
-     * <p>The blue/green deployment identifier of the deployment to be deleted. This
-     * parameter isn't case-sensitive.</p> <p>Constraints: </p> <ul> <li> <p>Must match
-     * an existing blue/green deployment identifier.</p> </li> </ul>
+     * <p>The unique identifier of the blue/green deployment to delete. This parameter
+     * isn't case-sensitive.</p> <p>Constraints: </p> <ul> <li> <p>Must match an
+     * existing blue/green deployment identifier.</p> </li> </ul>
      */
-    inline const Aws::String& GetBlueGreenDeploymentIdentifier() const{ return m_blueGreenDeploymentIdentifier; }
-
-    /**
-     * <p>The blue/green deployment identifier of the deployment to be deleted. This
-     * parameter isn't case-sensitive.</p> <p>Constraints: </p> <ul> <li> <p>Must match
-     * an existing blue/green deployment identifier.</p> </li> </ul>
-     */
+    inline const Aws::String& GetBlueGreenDeploymentIdentifier() const { return m_blueGreenDeploymentIdentifier; }
     inline bool BlueGreenDeploymentIdentifierHasBeenSet() const { return m_blueGreenDeploymentIdentifierHasBeenSet; }
+    template<typename BlueGreenDeploymentIdentifierT = Aws::String>
+    void SetBlueGreenDeploymentIdentifier(BlueGreenDeploymentIdentifierT&& value) { m_blueGreenDeploymentIdentifierHasBeenSet = true; m_blueGreenDeploymentIdentifier = std::forward<BlueGreenDeploymentIdentifierT>(value); }
+    template<typename BlueGreenDeploymentIdentifierT = Aws::String>
+    DeleteBlueGreenDeploymentRequest& WithBlueGreenDeploymentIdentifier(BlueGreenDeploymentIdentifierT&& value) { SetBlueGreenDeploymentIdentifier(std::forward<BlueGreenDeploymentIdentifierT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The blue/green deployment identifier of the deployment to be deleted. This
-     * parameter isn't case-sensitive.</p> <p>Constraints: </p> <ul> <li> <p>Must match
-     * an existing blue/green deployment identifier.</p> </li> </ul>
-     */
-    inline void SetBlueGreenDeploymentIdentifier(const Aws::String& value) { m_blueGreenDeploymentIdentifierHasBeenSet = true; m_blueGreenDeploymentIdentifier = value; }
-
-    /**
-     * <p>The blue/green deployment identifier of the deployment to be deleted. This
-     * parameter isn't case-sensitive.</p> <p>Constraints: </p> <ul> <li> <p>Must match
-     * an existing blue/green deployment identifier.</p> </li> </ul>
-     */
-    inline void SetBlueGreenDeploymentIdentifier(Aws::String&& value) { m_blueGreenDeploymentIdentifierHasBeenSet = true; m_blueGreenDeploymentIdentifier = std::move(value); }
-
-    /**
-     * <p>The blue/green deployment identifier of the deployment to be deleted. This
-     * parameter isn't case-sensitive.</p> <p>Constraints: </p> <ul> <li> <p>Must match
-     * an existing blue/green deployment identifier.</p> </li> </ul>
-     */
-    inline void SetBlueGreenDeploymentIdentifier(const char* value) { m_blueGreenDeploymentIdentifierHasBeenSet = true; m_blueGreenDeploymentIdentifier.assign(value); }
-
-    /**
-     * <p>The blue/green deployment identifier of the deployment to be deleted. This
-     * parameter isn't case-sensitive.</p> <p>Constraints: </p> <ul> <li> <p>Must match
-     * an existing blue/green deployment identifier.</p> </li> </ul>
-     */
-    inline DeleteBlueGreenDeploymentRequest& WithBlueGreenDeploymentIdentifier(const Aws::String& value) { SetBlueGreenDeploymentIdentifier(value); return *this;}
-
-    /**
-     * <p>The blue/green deployment identifier of the deployment to be deleted. This
-     * parameter isn't case-sensitive.</p> <p>Constraints: </p> <ul> <li> <p>Must match
-     * an existing blue/green deployment identifier.</p> </li> </ul>
-     */
-    inline DeleteBlueGreenDeploymentRequest& WithBlueGreenDeploymentIdentifier(Aws::String&& value) { SetBlueGreenDeploymentIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The blue/green deployment identifier of the deployment to be deleted. This
-     * parameter isn't case-sensitive.</p> <p>Constraints: </p> <ul> <li> <p>Must match
-     * an existing blue/green deployment identifier.</p> </li> </ul>
-     */
-    inline DeleteBlueGreenDeploymentRequest& WithBlueGreenDeploymentIdentifier(const char* value) { SetBlueGreenDeploymentIdentifier(value); return *this;}
-
-
-    /**
-     * <p>A value that indicates whether to delete the resources in the green
-     * environment. You can't specify this option if the blue/green deployment <a
+     * <p>Specifies whether to delete the resources in the green environment. You can't
+     * specify this option if the blue/green deployment <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_BlueGreenDeployment.html">status</a>
      * is <code>SWITCHOVER_COMPLETED</code>.</p>
      */
-    inline bool GetDeleteTarget() const{ return m_deleteTarget; }
-
-    /**
-     * <p>A value that indicates whether to delete the resources in the green
-     * environment. You can't specify this option if the blue/green deployment <a
-     * href="https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_BlueGreenDeployment.html">status</a>
-     * is <code>SWITCHOVER_COMPLETED</code>.</p>
-     */
+    inline bool GetDeleteTarget() const { return m_deleteTarget; }
     inline bool DeleteTargetHasBeenSet() const { return m_deleteTargetHasBeenSet; }
-
-    /**
-     * <p>A value that indicates whether to delete the resources in the green
-     * environment. You can't specify this option if the blue/green deployment <a
-     * href="https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_BlueGreenDeployment.html">status</a>
-     * is <code>SWITCHOVER_COMPLETED</code>.</p>
-     */
     inline void SetDeleteTarget(bool value) { m_deleteTargetHasBeenSet = true; m_deleteTarget = value; }
-
-    /**
-     * <p>A value that indicates whether to delete the resources in the green
-     * environment. You can't specify this option if the blue/green deployment <a
-     * href="https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_BlueGreenDeployment.html">status</a>
-     * is <code>SWITCHOVER_COMPLETED</code>.</p>
-     */
     inline DeleteBlueGreenDeploymentRequest& WithDeleteTarget(bool value) { SetDeleteTarget(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_blueGreenDeploymentIdentifier;
     bool m_blueGreenDeploymentIdentifierHasBeenSet = false;
 
-    bool m_deleteTarget;
+    bool m_deleteTarget{false};
     bool m_deleteTargetHasBeenSet = false;
   };
 

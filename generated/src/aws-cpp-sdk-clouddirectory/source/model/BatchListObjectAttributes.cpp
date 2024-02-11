@@ -18,21 +18,7 @@ namespace CloudDirectory
 namespace Model
 {
 
-BatchListObjectAttributes::BatchListObjectAttributes() : 
-    m_objectReferenceHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_facetFilterHasBeenSet(false)
-{
-}
-
-BatchListObjectAttributes::BatchListObjectAttributes(JsonView jsonValue) : 
-    m_objectReferenceHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_facetFilterHasBeenSet(false)
+BatchListObjectAttributes::BatchListObjectAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ BatchListObjectAttributes& BatchListObjectAttributes::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("ObjectReference"))
   {
     m_objectReference = jsonValue.GetObject("ObjectReference");
-
     m_objectReferenceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NextToken"))
   {
     m_nextToken = jsonValue.GetString("NextToken");
-
     m_nextTokenHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxResults"))
   {
     m_maxResults = jsonValue.GetInteger("MaxResults");
-
     m_maxResultsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FacetFilter"))
   {
     m_facetFilter = jsonValue.GetObject("FacetFilter");
-
     m_facetFilterHasBeenSet = true;
   }
-
   return *this;
 }
 

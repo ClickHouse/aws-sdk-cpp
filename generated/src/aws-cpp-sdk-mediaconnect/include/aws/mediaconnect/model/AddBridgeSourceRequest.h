@@ -25,56 +25,42 @@ namespace Model
 {
 
   /**
-   * Add a source to an existing bridge.<p><h3>See Also:</h3>   <a
+   * <p> Add an output to a bridge. </p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/AddBridgeSourceRequest">AWS
    * API Reference</a></p>
    */
   class AddBridgeSourceRequest
   {
   public:
-    AWS_MEDIACONNECT_API AddBridgeSourceRequest();
+    AWS_MEDIACONNECT_API AddBridgeSourceRequest() = default;
     AWS_MEDIACONNECT_API AddBridgeSourceRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API AddBridgeSourceRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    
-    inline const AddBridgeFlowSourceRequest& GetFlowSource() const{ return m_flowSource; }
-
-    
+    ///@{
+    /**
+     * <p> The source of the flow. </p>
+     */
+    inline const AddBridgeFlowSourceRequest& GetFlowSource() const { return m_flowSource; }
     inline bool FlowSourceHasBeenSet() const { return m_flowSourceHasBeenSet; }
+    template<typename FlowSourceT = AddBridgeFlowSourceRequest>
+    void SetFlowSource(FlowSourceT&& value) { m_flowSourceHasBeenSet = true; m_flowSource = std::forward<FlowSourceT>(value); }
+    template<typename FlowSourceT = AddBridgeFlowSourceRequest>
+    AddBridgeSourceRequest& WithFlowSource(FlowSourceT&& value) { SetFlowSource(std::forward<FlowSourceT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetFlowSource(const AddBridgeFlowSourceRequest& value) { m_flowSourceHasBeenSet = true; m_flowSource = value; }
-
-    
-    inline void SetFlowSource(AddBridgeFlowSourceRequest&& value) { m_flowSourceHasBeenSet = true; m_flowSource = std::move(value); }
-
-    
-    inline AddBridgeSourceRequest& WithFlowSource(const AddBridgeFlowSourceRequest& value) { SetFlowSource(value); return *this;}
-
-    
-    inline AddBridgeSourceRequest& WithFlowSource(AddBridgeFlowSourceRequest&& value) { SetFlowSource(std::move(value)); return *this;}
-
-
-    
-    inline const AddBridgeNetworkSourceRequest& GetNetworkSource() const{ return m_networkSource; }
-
-    
+    ///@{
+    /**
+     * <p> The source of the network. </p>
+     */
+    inline const AddBridgeNetworkSourceRequest& GetNetworkSource() const { return m_networkSource; }
     inline bool NetworkSourceHasBeenSet() const { return m_networkSourceHasBeenSet; }
-
-    
-    inline void SetNetworkSource(const AddBridgeNetworkSourceRequest& value) { m_networkSourceHasBeenSet = true; m_networkSource = value; }
-
-    
-    inline void SetNetworkSource(AddBridgeNetworkSourceRequest&& value) { m_networkSourceHasBeenSet = true; m_networkSource = std::move(value); }
-
-    
-    inline AddBridgeSourceRequest& WithNetworkSource(const AddBridgeNetworkSourceRequest& value) { SetNetworkSource(value); return *this;}
-
-    
-    inline AddBridgeSourceRequest& WithNetworkSource(AddBridgeNetworkSourceRequest&& value) { SetNetworkSource(std::move(value)); return *this;}
-
+    template<typename NetworkSourceT = AddBridgeNetworkSourceRequest>
+    void SetNetworkSource(NetworkSourceT&& value) { m_networkSourceHasBeenSet = true; m_networkSource = std::forward<NetworkSourceT>(value); }
+    template<typename NetworkSourceT = AddBridgeNetworkSourceRequest>
+    AddBridgeSourceRequest& WithNetworkSource(NetworkSourceT&& value) { SetNetworkSource(std::forward<NetworkSourceT>(value)); return *this;}
+    ///@}
   private:
 
     AddBridgeFlowSourceRequest m_flowSource;

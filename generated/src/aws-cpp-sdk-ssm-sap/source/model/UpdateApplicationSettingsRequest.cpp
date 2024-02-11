@@ -12,13 +12,6 @@ using namespace Aws::SsmSap::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateApplicationSettingsRequest::UpdateApplicationSettingsRequest() : 
-    m_applicationIdHasBeenSet(false),
-    m_credentialsToAddOrUpdateHasBeenSet(false),
-    m_credentialsToRemoveHasBeenSet(false)
-{
-}
-
 Aws::String UpdateApplicationSettingsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -48,6 +41,18 @@ Aws::String UpdateApplicationSettingsRequest::SerializePayload() const
      credentialsToRemoveJsonList[credentialsToRemoveIndex].AsObject(m_credentialsToRemove[credentialsToRemoveIndex].Jsonize());
    }
    payload.WithArray("CredentialsToRemove", std::move(credentialsToRemoveJsonList));
+
+  }
+
+  if(m_backintHasBeenSet)
+  {
+   payload.WithObject("Backint", m_backint.Jsonize());
+
+  }
+
+  if(m_databaseArnHasBeenSet)
+  {
+   payload.WithString("DatabaseArn", m_databaseArn);
 
   }
 

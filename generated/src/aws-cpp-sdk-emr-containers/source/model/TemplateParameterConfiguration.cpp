@@ -18,17 +18,7 @@ namespace EMRContainers
 namespace Model
 {
 
-TemplateParameterConfiguration::TemplateParameterConfiguration() : 
-    m_type(TemplateParameterDataType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_defaultValueHasBeenSet(false)
-{
-}
-
-TemplateParameterConfiguration::TemplateParameterConfiguration(JsonView jsonValue) : 
-    m_type(TemplateParameterDataType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_defaultValueHasBeenSet(false)
+TemplateParameterConfiguration::TemplateParameterConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ TemplateParameterConfiguration& TemplateParameterConfiguration::operator =(JsonV
   if(jsonValue.ValueExists("type"))
   {
     m_type = TemplateParameterDataTypeMapper::GetTemplateParameterDataTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("defaultValue"))
   {
     m_defaultValue = jsonValue.GetString("defaultValue");
-
     m_defaultValueHasBeenSet = true;
   }
-
   return *this;
 }
 

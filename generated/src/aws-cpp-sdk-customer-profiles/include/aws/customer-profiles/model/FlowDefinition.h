@@ -37,267 +37,89 @@ namespace Model
   class FlowDefinition
   {
   public:
-    AWS_CUSTOMERPROFILES_API FlowDefinition();
+    AWS_CUSTOMERPROFILES_API FlowDefinition() = default;
     AWS_CUSTOMERPROFILES_API FlowDefinition(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API FlowDefinition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A description of the flow you want to create.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the flow you want to create.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    FlowDefinition& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the flow you want to create.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the flow you want to create.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the flow you want to create.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the flow you want to create.</p>
-     */
-    inline FlowDefinition& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the flow you want to create.</p>
-     */
-    inline FlowDefinition& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the flow you want to create.</p>
-     */
-    inline FlowDefinition& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The specified name of the flow. Use underscores (_) or hyphens (-) only.
      * Spaces are not allowed.</p>
      */
-    inline const Aws::String& GetFlowName() const{ return m_flowName; }
-
-    /**
-     * <p>The specified name of the flow. Use underscores (_) or hyphens (-) only.
-     * Spaces are not allowed.</p>
-     */
+    inline const Aws::String& GetFlowName() const { return m_flowName; }
     inline bool FlowNameHasBeenSet() const { return m_flowNameHasBeenSet; }
+    template<typename FlowNameT = Aws::String>
+    void SetFlowName(FlowNameT&& value) { m_flowNameHasBeenSet = true; m_flowName = std::forward<FlowNameT>(value); }
+    template<typename FlowNameT = Aws::String>
+    FlowDefinition& WithFlowName(FlowNameT&& value) { SetFlowName(std::forward<FlowNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The specified name of the flow. Use underscores (_) or hyphens (-) only.
-     * Spaces are not allowed.</p>
-     */
-    inline void SetFlowName(const Aws::String& value) { m_flowNameHasBeenSet = true; m_flowName = value; }
-
-    /**
-     * <p>The specified name of the flow. Use underscores (_) or hyphens (-) only.
-     * Spaces are not allowed.</p>
-     */
-    inline void SetFlowName(Aws::String&& value) { m_flowNameHasBeenSet = true; m_flowName = std::move(value); }
-
-    /**
-     * <p>The specified name of the flow. Use underscores (_) or hyphens (-) only.
-     * Spaces are not allowed.</p>
-     */
-    inline void SetFlowName(const char* value) { m_flowNameHasBeenSet = true; m_flowName.assign(value); }
-
-    /**
-     * <p>The specified name of the flow. Use underscores (_) or hyphens (-) only.
-     * Spaces are not allowed.</p>
-     */
-    inline FlowDefinition& WithFlowName(const Aws::String& value) { SetFlowName(value); return *this;}
-
-    /**
-     * <p>The specified name of the flow. Use underscores (_) or hyphens (-) only.
-     * Spaces are not allowed.</p>
-     */
-    inline FlowDefinition& WithFlowName(Aws::String&& value) { SetFlowName(std::move(value)); return *this;}
-
-    /**
-     * <p>The specified name of the flow. Use underscores (_) or hyphens (-) only.
-     * Spaces are not allowed.</p>
-     */
-    inline FlowDefinition& WithFlowName(const char* value) { SetFlowName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name of the AWS Key Management Service (KMS) key you
      * provide for encryption.</p>
      */
-    inline const Aws::String& GetKmsArn() const{ return m_kmsArn; }
-
-    /**
-     * <p>The Amazon Resource Name of the AWS Key Management Service (KMS) key you
-     * provide for encryption.</p>
-     */
+    inline const Aws::String& GetKmsArn() const { return m_kmsArn; }
     inline bool KmsArnHasBeenSet() const { return m_kmsArnHasBeenSet; }
+    template<typename KmsArnT = Aws::String>
+    void SetKmsArn(KmsArnT&& value) { m_kmsArnHasBeenSet = true; m_kmsArn = std::forward<KmsArnT>(value); }
+    template<typename KmsArnT = Aws::String>
+    FlowDefinition& WithKmsArn(KmsArnT&& value) { SetKmsArn(std::forward<KmsArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name of the AWS Key Management Service (KMS) key you
-     * provide for encryption.</p>
-     */
-    inline void SetKmsArn(const Aws::String& value) { m_kmsArnHasBeenSet = true; m_kmsArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name of the AWS Key Management Service (KMS) key you
-     * provide for encryption.</p>
-     */
-    inline void SetKmsArn(Aws::String&& value) { m_kmsArnHasBeenSet = true; m_kmsArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name of the AWS Key Management Service (KMS) key you
-     * provide for encryption.</p>
-     */
-    inline void SetKmsArn(const char* value) { m_kmsArnHasBeenSet = true; m_kmsArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name of the AWS Key Management Service (KMS) key you
-     * provide for encryption.</p>
-     */
-    inline FlowDefinition& WithKmsArn(const Aws::String& value) { SetKmsArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name of the AWS Key Management Service (KMS) key you
-     * provide for encryption.</p>
-     */
-    inline FlowDefinition& WithKmsArn(Aws::String&& value) { SetKmsArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name of the AWS Key Management Service (KMS) key you
-     * provide for encryption.</p>
-     */
-    inline FlowDefinition& WithKmsArn(const char* value) { SetKmsArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration that controls how Customer Profiles retrieves data from the
      * source.</p>
      */
-    inline const SourceFlowConfig& GetSourceFlowConfig() const{ return m_sourceFlowConfig; }
-
-    /**
-     * <p>The configuration that controls how Customer Profiles retrieves data from the
-     * source.</p>
-     */
+    inline const SourceFlowConfig& GetSourceFlowConfig() const { return m_sourceFlowConfig; }
     inline bool SourceFlowConfigHasBeenSet() const { return m_sourceFlowConfigHasBeenSet; }
+    template<typename SourceFlowConfigT = SourceFlowConfig>
+    void SetSourceFlowConfig(SourceFlowConfigT&& value) { m_sourceFlowConfigHasBeenSet = true; m_sourceFlowConfig = std::forward<SourceFlowConfigT>(value); }
+    template<typename SourceFlowConfigT = SourceFlowConfig>
+    FlowDefinition& WithSourceFlowConfig(SourceFlowConfigT&& value) { SetSourceFlowConfig(std::forward<SourceFlowConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration that controls how Customer Profiles retrieves data from the
-     * source.</p>
-     */
-    inline void SetSourceFlowConfig(const SourceFlowConfig& value) { m_sourceFlowConfigHasBeenSet = true; m_sourceFlowConfig = value; }
-
-    /**
-     * <p>The configuration that controls how Customer Profiles retrieves data from the
-     * source.</p>
-     */
-    inline void SetSourceFlowConfig(SourceFlowConfig&& value) { m_sourceFlowConfigHasBeenSet = true; m_sourceFlowConfig = std::move(value); }
-
-    /**
-     * <p>The configuration that controls how Customer Profiles retrieves data from the
-     * source.</p>
-     */
-    inline FlowDefinition& WithSourceFlowConfig(const SourceFlowConfig& value) { SetSourceFlowConfig(value); return *this;}
-
-    /**
-     * <p>The configuration that controls how Customer Profiles retrieves data from the
-     * source.</p>
-     */
-    inline FlowDefinition& WithSourceFlowConfig(SourceFlowConfig&& value) { SetSourceFlowConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of tasks that Customer Profiles performs while transferring the data
      * in the flow run.</p>
      */
-    inline const Aws::Vector<Task>& GetTasks() const{ return m_tasks; }
-
-    /**
-     * <p>A list of tasks that Customer Profiles performs while transferring the data
-     * in the flow run.</p>
-     */
+    inline const Aws::Vector<Task>& GetTasks() const { return m_tasks; }
     inline bool TasksHasBeenSet() const { return m_tasksHasBeenSet; }
+    template<typename TasksT = Aws::Vector<Task>>
+    void SetTasks(TasksT&& value) { m_tasksHasBeenSet = true; m_tasks = std::forward<TasksT>(value); }
+    template<typename TasksT = Aws::Vector<Task>>
+    FlowDefinition& WithTasks(TasksT&& value) { SetTasks(std::forward<TasksT>(value)); return *this;}
+    template<typename TasksT = Task>
+    FlowDefinition& AddTasks(TasksT&& value) { m_tasksHasBeenSet = true; m_tasks.emplace_back(std::forward<TasksT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of tasks that Customer Profiles performs while transferring the data
-     * in the flow run.</p>
-     */
-    inline void SetTasks(const Aws::Vector<Task>& value) { m_tasksHasBeenSet = true; m_tasks = value; }
-
-    /**
-     * <p>A list of tasks that Customer Profiles performs while transferring the data
-     * in the flow run.</p>
-     */
-    inline void SetTasks(Aws::Vector<Task>&& value) { m_tasksHasBeenSet = true; m_tasks = std::move(value); }
-
-    /**
-     * <p>A list of tasks that Customer Profiles performs while transferring the data
-     * in the flow run.</p>
-     */
-    inline FlowDefinition& WithTasks(const Aws::Vector<Task>& value) { SetTasks(value); return *this;}
-
-    /**
-     * <p>A list of tasks that Customer Profiles performs while transferring the data
-     * in the flow run.</p>
-     */
-    inline FlowDefinition& WithTasks(Aws::Vector<Task>&& value) { SetTasks(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of tasks that Customer Profiles performs while transferring the data
-     * in the flow run.</p>
-     */
-    inline FlowDefinition& AddTasks(const Task& value) { m_tasksHasBeenSet = true; m_tasks.push_back(value); return *this; }
-
-    /**
-     * <p>A list of tasks that Customer Profiles performs while transferring the data
-     * in the flow run.</p>
-     */
-    inline FlowDefinition& AddTasks(Task&& value) { m_tasksHasBeenSet = true; m_tasks.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The trigger settings that determine how and when the flow runs.</p>
      */
-    inline const TriggerConfig& GetTriggerConfig() const{ return m_triggerConfig; }
-
-    /**
-     * <p>The trigger settings that determine how and when the flow runs.</p>
-     */
+    inline const TriggerConfig& GetTriggerConfig() const { return m_triggerConfig; }
     inline bool TriggerConfigHasBeenSet() const { return m_triggerConfigHasBeenSet; }
-
-    /**
-     * <p>The trigger settings that determine how and when the flow runs.</p>
-     */
-    inline void SetTriggerConfig(const TriggerConfig& value) { m_triggerConfigHasBeenSet = true; m_triggerConfig = value; }
-
-    /**
-     * <p>The trigger settings that determine how and when the flow runs.</p>
-     */
-    inline void SetTriggerConfig(TriggerConfig&& value) { m_triggerConfigHasBeenSet = true; m_triggerConfig = std::move(value); }
-
-    /**
-     * <p>The trigger settings that determine how and when the flow runs.</p>
-     */
-    inline FlowDefinition& WithTriggerConfig(const TriggerConfig& value) { SetTriggerConfig(value); return *this;}
-
-    /**
-     * <p>The trigger settings that determine how and when the flow runs.</p>
-     */
-    inline FlowDefinition& WithTriggerConfig(TriggerConfig&& value) { SetTriggerConfig(std::move(value)); return *this;}
-
+    template<typename TriggerConfigT = TriggerConfig>
+    void SetTriggerConfig(TriggerConfigT&& value) { m_triggerConfigHasBeenSet = true; m_triggerConfig = std::forward<TriggerConfigT>(value); }
+    template<typename TriggerConfigT = TriggerConfig>
+    FlowDefinition& WithTriggerConfig(TriggerConfigT&& value) { SetTriggerConfig(std::forward<TriggerConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_description;

@@ -30,35 +30,24 @@ namespace Model
   class VoiceSpoofingRisk
   {
   public:
-    AWS_VOICEID_API VoiceSpoofingRisk();
+    AWS_VOICEID_API VoiceSpoofingRisk() = default;
     AWS_VOICEID_API VoiceSpoofingRisk(Aws::Utils::Json::JsonView jsonValue);
     AWS_VOICEID_API VoiceSpoofingRisk& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_VOICEID_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The score indicating the likelihood of speaker’s voice being spoofed.</p>
      */
-    inline int GetRiskScore() const{ return m_riskScore; }
-
-    /**
-     * <p>The score indicating the likelihood of speaker’s voice being spoofed.</p>
-     */
+    inline int GetRiskScore() const { return m_riskScore; }
     inline bool RiskScoreHasBeenSet() const { return m_riskScoreHasBeenSet; }
-
-    /**
-     * <p>The score indicating the likelihood of speaker’s voice being spoofed.</p>
-     */
     inline void SetRiskScore(int value) { m_riskScoreHasBeenSet = true; m_riskScore = value; }
-
-    /**
-     * <p>The score indicating the likelihood of speaker’s voice being spoofed.</p>
-     */
     inline VoiceSpoofingRisk& WithRiskScore(int value) { SetRiskScore(value); return *this;}
-
+    ///@}
   private:
 
-    int m_riskScore;
+    int m_riskScore{0};
     bool m_riskScoreHasBeenSet = false;
   };
 

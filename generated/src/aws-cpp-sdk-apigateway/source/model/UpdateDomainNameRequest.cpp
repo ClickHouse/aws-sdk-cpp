@@ -5,18 +5,15 @@
 
 #include <aws/apigateway/model/UpdateDomainNameRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
+#include <aws/core/http/URI.h>
+#include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
 
 using namespace Aws::APIGateway::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
-
-UpdateDomainNameRequest::UpdateDomainNameRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_patchOperationsHasBeenSet(false)
-{
-}
+using namespace Aws::Http;
 
 Aws::String UpdateDomainNameRequest::SerializePayload() const
 {
@@ -36,6 +33,17 @@ Aws::String UpdateDomainNameRequest::SerializePayload() const
   return payload.View().WriteReadable();
 }
 
+void UpdateDomainNameRequest::AddQueryStringParameters(URI& uri) const
+{
+    Aws::StringStream ss;
+    if(m_domainNameIdHasBeenSet)
+    {
+      ss << m_domainNameId;
+      uri.AddQueryStringParameter("domainNameId", ss.str());
+      ss.str("");
+    }
+
+}
 
 
 

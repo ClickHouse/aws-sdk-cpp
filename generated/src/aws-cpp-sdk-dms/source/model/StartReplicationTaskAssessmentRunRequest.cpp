@@ -12,19 +12,6 @@ using namespace Aws::DatabaseMigrationService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartReplicationTaskAssessmentRunRequest::StartReplicationTaskAssessmentRunRequest() : 
-    m_replicationTaskArnHasBeenSet(false),
-    m_serviceAccessRoleArnHasBeenSet(false),
-    m_resultLocationBucketHasBeenSet(false),
-    m_resultLocationFolderHasBeenSet(false),
-    m_resultEncryptionModeHasBeenSet(false),
-    m_resultKmsKeyArnHasBeenSet(false),
-    m_assessmentRunNameHasBeenSet(false),
-    m_includeOnlyHasBeenSet(false),
-    m_excludeHasBeenSet(false)
-{
-}
-
 Aws::String StartReplicationTaskAssessmentRunRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -90,6 +77,17 @@ Aws::String StartReplicationTaskAssessmentRunRequest::SerializePayload() const
      excludeJsonList[excludeIndex].AsString(m_exclude[excludeIndex]);
    }
    payload.WithArray("Exclude", std::move(excludeJsonList));
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> tagsJsonList(m_tags.size());
+   for(unsigned tagsIndex = 0; tagsIndex < tagsJsonList.GetLength(); ++tagsIndex)
+   {
+     tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
+   }
+   payload.WithArray("Tags", std::move(tagsJsonList));
 
   }
 

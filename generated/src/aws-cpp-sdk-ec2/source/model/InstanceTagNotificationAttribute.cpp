@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InstanceTagNotificationAttribute::InstanceTagNotificationAttribute() : 
-    m_instanceTagKeysHasBeenSet(false),
-    m_includeAllTagsOfInstance(false),
-    m_includeAllTagsOfInstanceHasBeenSet(false)
-{
-}
-
-InstanceTagNotificationAttribute::InstanceTagNotificationAttribute(const XmlNode& xmlNode) : 
-    m_instanceTagKeysHasBeenSet(false),
-    m_includeAllTagsOfInstance(false),
-    m_includeAllTagsOfInstanceHasBeenSet(false)
+InstanceTagNotificationAttribute::InstanceTagNotificationAttribute(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -45,6 +35,7 @@ InstanceTagNotificationAttribute& InstanceTagNotificationAttribute::operator =(c
     if(!instanceTagKeysNode.IsNull())
     {
       XmlNode instanceTagKeysMember = instanceTagKeysNode.FirstChild("item");
+      m_instanceTagKeysHasBeenSet = !instanceTagKeysMember.IsNull();
       while(!instanceTagKeysMember.IsNull())
       {
         m_instanceTagKeys.push_back(instanceTagKeysMember.GetText());

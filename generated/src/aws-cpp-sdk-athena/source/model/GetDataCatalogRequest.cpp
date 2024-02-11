@@ -12,11 +12,6 @@ using namespace Aws::Athena::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetDataCatalogRequest::GetDataCatalogRequest() : 
-    m_nameHasBeenSet(false)
-{
-}
-
 Aws::String GetDataCatalogRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -24,6 +19,12 @@ Aws::String GetDataCatalogRequest::SerializePayload() const
   if(m_nameHasBeenSet)
   {
    payload.WithString("Name", m_name);
+
+  }
+
+  if(m_workGroupHasBeenSet)
+  {
+   payload.WithString("WorkGroup", m_workGroup);
 
   }
 

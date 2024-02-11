@@ -34,245 +34,71 @@ namespace Model
   class Hit
   {
   public:
-    AWS_CLOUDSEARCHDOMAIN_API Hit();
+    AWS_CLOUDSEARCHDOMAIN_API Hit() = default;
     AWS_CLOUDSEARCHDOMAIN_API Hit(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDSEARCHDOMAIN_API Hit& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDSEARCHDOMAIN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The document ID of a document that matches the search request.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The document ID of a document that matches the search request.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    Hit& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The document ID of a document that matches the search request.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The document ID of a document that matches the search request.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The document ID of a document that matches the search request.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The document ID of a document that matches the search request.</p>
-     */
-    inline Hit& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The document ID of a document that matches the search request.</p>
-     */
-    inline Hit& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The document ID of a document that matches the search request.</p>
-     */
-    inline Hit& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The fields returned from a document that matches the search request.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::Vector<Aws::String>>& GetFields() const{ return m_fields; }
-
-    /**
-     * <p>The fields returned from a document that matches the search request.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::Vector<Aws::String>>& GetFields() const { return m_fields; }
     inline bool FieldsHasBeenSet() const { return m_fieldsHasBeenSet; }
+    template<typename FieldsT = Aws::Map<Aws::String, Aws::Vector<Aws::String>>>
+    void SetFields(FieldsT&& value) { m_fieldsHasBeenSet = true; m_fields = std::forward<FieldsT>(value); }
+    template<typename FieldsT = Aws::Map<Aws::String, Aws::Vector<Aws::String>>>
+    Hit& WithFields(FieldsT&& value) { SetFields(std::forward<FieldsT>(value)); return *this;}
+    template<typename FieldsKeyT = Aws::String, typename FieldsValueT = Aws::Vector<Aws::String>>
+    Hit& AddFields(FieldsKeyT&& key, FieldsValueT&& value) {
+      m_fieldsHasBeenSet = true; m_fields.emplace(std::forward<FieldsKeyT>(key), std::forward<FieldsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The fields returned from a document that matches the search request.</p>
-     */
-    inline void SetFields(const Aws::Map<Aws::String, Aws::Vector<Aws::String>>& value) { m_fieldsHasBeenSet = true; m_fields = value; }
-
-    /**
-     * <p>The fields returned from a document that matches the search request.</p>
-     */
-    inline void SetFields(Aws::Map<Aws::String, Aws::Vector<Aws::String>>&& value) { m_fieldsHasBeenSet = true; m_fields = std::move(value); }
-
-    /**
-     * <p>The fields returned from a document that matches the search request.</p>
-     */
-    inline Hit& WithFields(const Aws::Map<Aws::String, Aws::Vector<Aws::String>>& value) { SetFields(value); return *this;}
-
-    /**
-     * <p>The fields returned from a document that matches the search request.</p>
-     */
-    inline Hit& WithFields(Aws::Map<Aws::String, Aws::Vector<Aws::String>>&& value) { SetFields(std::move(value)); return *this;}
-
-    /**
-     * <p>The fields returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddFields(const Aws::String& key, const Aws::Vector<Aws::String>& value) { m_fieldsHasBeenSet = true; m_fields.emplace(key, value); return *this; }
-
-    /**
-     * <p>The fields returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddFields(Aws::String&& key, const Aws::Vector<Aws::String>& value) { m_fieldsHasBeenSet = true; m_fields.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The fields returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddFields(const Aws::String& key, Aws::Vector<Aws::String>&& value) { m_fieldsHasBeenSet = true; m_fields.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The fields returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddFields(Aws::String&& key, Aws::Vector<Aws::String>&& value) { m_fieldsHasBeenSet = true; m_fields.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The fields returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddFields(const char* key, Aws::Vector<Aws::String>&& value) { m_fieldsHasBeenSet = true; m_fields.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The fields returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddFields(const char* key, const Aws::Vector<Aws::String>& value) { m_fieldsHasBeenSet = true; m_fields.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The expressions returned from a document that matches the search request.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetExprs() const{ return m_exprs; }
-
-    /**
-     * <p>The expressions returned from a document that matches the search request.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetExprs() const { return m_exprs; }
     inline bool ExprsHasBeenSet() const { return m_exprsHasBeenSet; }
+    template<typename ExprsT = Aws::Map<Aws::String, Aws::String>>
+    void SetExprs(ExprsT&& value) { m_exprsHasBeenSet = true; m_exprs = std::forward<ExprsT>(value); }
+    template<typename ExprsT = Aws::Map<Aws::String, Aws::String>>
+    Hit& WithExprs(ExprsT&& value) { SetExprs(std::forward<ExprsT>(value)); return *this;}
+    template<typename ExprsKeyT = Aws::String, typename ExprsValueT = Aws::String>
+    Hit& AddExprs(ExprsKeyT&& key, ExprsValueT&& value) {
+      m_exprsHasBeenSet = true; m_exprs.emplace(std::forward<ExprsKeyT>(key), std::forward<ExprsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The expressions returned from a document that matches the search request.</p>
-     */
-    inline void SetExprs(const Aws::Map<Aws::String, Aws::String>& value) { m_exprsHasBeenSet = true; m_exprs = value; }
-
-    /**
-     * <p>The expressions returned from a document that matches the search request.</p>
-     */
-    inline void SetExprs(Aws::Map<Aws::String, Aws::String>&& value) { m_exprsHasBeenSet = true; m_exprs = std::move(value); }
-
-    /**
-     * <p>The expressions returned from a document that matches the search request.</p>
-     */
-    inline Hit& WithExprs(const Aws::Map<Aws::String, Aws::String>& value) { SetExprs(value); return *this;}
-
-    /**
-     * <p>The expressions returned from a document that matches the search request.</p>
-     */
-    inline Hit& WithExprs(Aws::Map<Aws::String, Aws::String>&& value) { SetExprs(std::move(value)); return *this;}
-
-    /**
-     * <p>The expressions returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddExprs(const Aws::String& key, const Aws::String& value) { m_exprsHasBeenSet = true; m_exprs.emplace(key, value); return *this; }
-
-    /**
-     * <p>The expressions returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddExprs(Aws::String&& key, const Aws::String& value) { m_exprsHasBeenSet = true; m_exprs.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The expressions returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddExprs(const Aws::String& key, Aws::String&& value) { m_exprsHasBeenSet = true; m_exprs.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The expressions returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddExprs(Aws::String&& key, Aws::String&& value) { m_exprsHasBeenSet = true; m_exprs.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The expressions returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddExprs(const char* key, Aws::String&& value) { m_exprsHasBeenSet = true; m_exprs.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The expressions returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddExprs(Aws::String&& key, const char* value) { m_exprsHasBeenSet = true; m_exprs.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The expressions returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddExprs(const char* key, const char* value) { m_exprsHasBeenSet = true; m_exprs.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The highlights returned from a document that matches the search request.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetHighlights() const{ return m_highlights; }
-
-    /**
-     * <p>The highlights returned from a document that matches the search request.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetHighlights() const { return m_highlights; }
     inline bool HighlightsHasBeenSet() const { return m_highlightsHasBeenSet; }
-
-    /**
-     * <p>The highlights returned from a document that matches the search request.</p>
-     */
-    inline void SetHighlights(const Aws::Map<Aws::String, Aws::String>& value) { m_highlightsHasBeenSet = true; m_highlights = value; }
-
-    /**
-     * <p>The highlights returned from a document that matches the search request.</p>
-     */
-    inline void SetHighlights(Aws::Map<Aws::String, Aws::String>&& value) { m_highlightsHasBeenSet = true; m_highlights = std::move(value); }
-
-    /**
-     * <p>The highlights returned from a document that matches the search request.</p>
-     */
-    inline Hit& WithHighlights(const Aws::Map<Aws::String, Aws::String>& value) { SetHighlights(value); return *this;}
-
-    /**
-     * <p>The highlights returned from a document that matches the search request.</p>
-     */
-    inline Hit& WithHighlights(Aws::Map<Aws::String, Aws::String>&& value) { SetHighlights(std::move(value)); return *this;}
-
-    /**
-     * <p>The highlights returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddHighlights(const Aws::String& key, const Aws::String& value) { m_highlightsHasBeenSet = true; m_highlights.emplace(key, value); return *this; }
-
-    /**
-     * <p>The highlights returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddHighlights(Aws::String&& key, const Aws::String& value) { m_highlightsHasBeenSet = true; m_highlights.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The highlights returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddHighlights(const Aws::String& key, Aws::String&& value) { m_highlightsHasBeenSet = true; m_highlights.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The highlights returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddHighlights(Aws::String&& key, Aws::String&& value) { m_highlightsHasBeenSet = true; m_highlights.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The highlights returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddHighlights(const char* key, Aws::String&& value) { m_highlightsHasBeenSet = true; m_highlights.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The highlights returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddHighlights(Aws::String&& key, const char* value) { m_highlightsHasBeenSet = true; m_highlights.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The highlights returned from a document that matches the search request.</p>
-     */
-    inline Hit& AddHighlights(const char* key, const char* value) { m_highlightsHasBeenSet = true; m_highlights.emplace(key, value); return *this; }
-
+    template<typename HighlightsT = Aws::Map<Aws::String, Aws::String>>
+    void SetHighlights(HighlightsT&& value) { m_highlightsHasBeenSet = true; m_highlights = std::forward<HighlightsT>(value); }
+    template<typename HighlightsT = Aws::Map<Aws::String, Aws::String>>
+    Hit& WithHighlights(HighlightsT&& value) { SetHighlights(std::forward<HighlightsT>(value)); return *this;}
+    template<typename HighlightsKeyT = Aws::String, typename HighlightsValueT = Aws::String>
+    Hit& AddHighlights(HighlightsKeyT&& key, HighlightsValueT&& value) {
+      m_highlightsHasBeenSet = true; m_highlights.emplace(std::forward<HighlightsKeyT>(key), std::forward<HighlightsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_id;

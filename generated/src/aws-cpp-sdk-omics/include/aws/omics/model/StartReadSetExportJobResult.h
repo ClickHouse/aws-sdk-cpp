@@ -5,9 +5,9 @@
 
 #pragma once
 #include <aws/omics/Omics_EXPORTS.h>
-#include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/omics/model/ReadSetExportJobStatus.h>
+#include <aws/core/utils/DateTime.h>
 #include <utility>
 
 namespace Aws
@@ -29,205 +29,91 @@ namespace Model
   class StartReadSetExportJobResult
   {
   public:
-    AWS_OMICS_API StartReadSetExportJobResult();
+    AWS_OMICS_API StartReadSetExportJobResult() = default;
     AWS_OMICS_API StartReadSetExportJobResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_OMICS_API StartReadSetExportJobResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
-    /**
-     * <p>When the job was created.</p>
-     */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>When the job was created.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTime = value; }
-
-    /**
-     * <p>When the job was created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTime = std::move(value); }
-
-    /**
-     * <p>When the job was created.</p>
-     */
-    inline StartReadSetExportJobResult& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>When the job was created.</p>
-     */
-    inline StartReadSetExportJobResult& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The job's output location.</p>
-     */
-    inline const Aws::String& GetDestination() const{ return m_destination; }
-
-    /**
-     * <p>The job's output location.</p>
-     */
-    inline void SetDestination(const Aws::String& value) { m_destination = value; }
-
-    /**
-     * <p>The job's output location.</p>
-     */
-    inline void SetDestination(Aws::String&& value) { m_destination = std::move(value); }
-
-    /**
-     * <p>The job's output location.</p>
-     */
-    inline void SetDestination(const char* value) { m_destination.assign(value); }
-
-    /**
-     * <p>The job's output location.</p>
-     */
-    inline StartReadSetExportJobResult& WithDestination(const Aws::String& value) { SetDestination(value); return *this;}
-
-    /**
-     * <p>The job's output location.</p>
-     */
-    inline StartReadSetExportJobResult& WithDestination(Aws::String&& value) { SetDestination(std::move(value)); return *this;}
-
-    /**
-     * <p>The job's output location.</p>
-     */
-    inline StartReadSetExportJobResult& WithDestination(const char* value) { SetDestination(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The job's ID.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    StartReadSetExportJobResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The job's ID.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_id = value; }
-
-    /**
-     * <p>The job's ID.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * <p>The job's ID.</p>
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * <p>The job's ID.</p>
-     */
-    inline StartReadSetExportJobResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The job's ID.</p>
-     */
-    inline StartReadSetExportJobResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The job's ID.</p>
-     */
-    inline StartReadSetExportJobResult& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The read set's sequence store ID.</p>
      */
-    inline const Aws::String& GetSequenceStoreId() const{ return m_sequenceStoreId; }
+    inline const Aws::String& GetSequenceStoreId() const { return m_sequenceStoreId; }
+    template<typename SequenceStoreIdT = Aws::String>
+    void SetSequenceStoreId(SequenceStoreIdT&& value) { m_sequenceStoreIdHasBeenSet = true; m_sequenceStoreId = std::forward<SequenceStoreIdT>(value); }
+    template<typename SequenceStoreIdT = Aws::String>
+    StartReadSetExportJobResult& WithSequenceStoreId(SequenceStoreIdT&& value) { SetSequenceStoreId(std::forward<SequenceStoreIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The read set's sequence store ID.</p>
+     * <p>The job's output location.</p>
      */
-    inline void SetSequenceStoreId(const Aws::String& value) { m_sequenceStoreId = value; }
+    inline const Aws::String& GetDestination() const { return m_destination; }
+    template<typename DestinationT = Aws::String>
+    void SetDestination(DestinationT&& value) { m_destinationHasBeenSet = true; m_destination = std::forward<DestinationT>(value); }
+    template<typename DestinationT = Aws::String>
+    StartReadSetExportJobResult& WithDestination(DestinationT&& value) { SetDestination(std::forward<DestinationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The read set's sequence store ID.</p>
-     */
-    inline void SetSequenceStoreId(Aws::String&& value) { m_sequenceStoreId = std::move(value); }
-
-    /**
-     * <p>The read set's sequence store ID.</p>
-     */
-    inline void SetSequenceStoreId(const char* value) { m_sequenceStoreId.assign(value); }
-
-    /**
-     * <p>The read set's sequence store ID.</p>
-     */
-    inline StartReadSetExportJobResult& WithSequenceStoreId(const Aws::String& value) { SetSequenceStoreId(value); return *this;}
-
-    /**
-     * <p>The read set's sequence store ID.</p>
-     */
-    inline StartReadSetExportJobResult& WithSequenceStoreId(Aws::String&& value) { SetSequenceStoreId(std::move(value)); return *this;}
-
-    /**
-     * <p>The read set's sequence store ID.</p>
-     */
-    inline StartReadSetExportJobResult& WithSequenceStoreId(const char* value) { SetSequenceStoreId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The job's status.</p>
      */
-    inline const ReadSetExportJobStatus& GetStatus() const{ return m_status; }
+    inline ReadSetExportJobStatus GetStatus() const { return m_status; }
+    inline void SetStatus(ReadSetExportJobStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline StartReadSetExportJobResult& WithStatus(ReadSetExportJobStatus value) { SetStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The job's status.</p>
+     * <p>When the job was created.</p>
      */
-    inline void SetStatus(const ReadSetExportJobStatus& value) { m_status = value; }
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    StartReadSetExportJobResult& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The job's status.</p>
-     */
-    inline void SetStatus(ReadSetExportJobStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The job's status.</p>
-     */
-    inline StartReadSetExportJobResult& WithStatus(const ReadSetExportJobStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The job's status.</p>
-     */
-    inline StartReadSetExportJobResult& WithStatus(ReadSetExportJobStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StartReadSetExportJobResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StartReadSetExportJobResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StartReadSetExportJobResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StartReadSetExportJobResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_creationTime;
-
-    Aws::String m_destination;
-
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
 
     Aws::String m_sequenceStoreId;
+    bool m_sequenceStoreIdHasBeenSet = false;
 
-    ReadSetExportJobStatus m_status;
+    Aws::String m_destination;
+    bool m_destinationHasBeenSet = false;
+
+    ReadSetExportJobStatus m_status{ReadSetExportJobStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
+
+    Aws::Utils::DateTime m_creationTime{};
+    bool m_creationTimeHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

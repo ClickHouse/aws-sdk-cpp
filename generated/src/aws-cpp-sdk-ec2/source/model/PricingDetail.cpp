@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-PricingDetail::PricingDetail() : 
-    m_count(0),
-    m_countHasBeenSet(false),
-    m_price(0.0),
-    m_priceHasBeenSet(false)
-{
-}
-
-PricingDetail::PricingDetail(const XmlNode& xmlNode) : 
-    m_count(0),
-    m_countHasBeenSet(false),
-    m_price(0.0),
-    m_priceHasBeenSet(false)
+PricingDetail::PricingDetail(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -82,7 +70,7 @@ void PricingDetail::OutputToStream(Aws::OStream& oStream, const char* location) 
   }
   if(m_priceHasBeenSet)
   {
-        oStream << location << ".Price=" << StringUtils::URLEncode(m_price) << "&";
+      oStream << location << ".Price=" << StringUtils::URLEncode(m_price) << "&";
   }
 }
 

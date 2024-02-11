@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-DnsServersOptionsModifyStructure::DnsServersOptionsModifyStructure() : 
-    m_customDnsServersHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
-DnsServersOptionsModifyStructure::DnsServersOptionsModifyStructure(const XmlNode& xmlNode) : 
-    m_customDnsServersHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
+DnsServersOptionsModifyStructure::DnsServersOptionsModifyStructure(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -45,6 +35,7 @@ DnsServersOptionsModifyStructure& DnsServersOptionsModifyStructure::operator =(c
     if(!customDnsServersNode.IsNull())
     {
       XmlNode customDnsServersMember = customDnsServersNode.FirstChild("item");
+      m_customDnsServersHasBeenSet = !customDnsServersMember.IsNull();
       while(!customDnsServersMember.IsNull())
       {
         m_customDnsServers.push_back(customDnsServersMember.GetText());
@@ -89,7 +80,7 @@ void DnsServersOptionsModifyStructure::OutputToStream(Aws::OStream& oStream, con
       unsigned customDnsServersIdx = 1;
       for(auto& item : m_customDnsServers)
       {
-        oStream << location << ".Item." << customDnsServersIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".CustomDnsServers." << customDnsServersIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_enabledHasBeenSet)

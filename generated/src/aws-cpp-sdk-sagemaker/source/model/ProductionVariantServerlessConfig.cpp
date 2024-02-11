@@ -18,19 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ProductionVariantServerlessConfig::ProductionVariantServerlessConfig() : 
-    m_memorySizeInMB(0),
-    m_memorySizeInMBHasBeenSet(false),
-    m_maxConcurrency(0),
-    m_maxConcurrencyHasBeenSet(false)
-{
-}
-
-ProductionVariantServerlessConfig::ProductionVariantServerlessConfig(JsonView jsonValue) : 
-    m_memorySizeInMB(0),
-    m_memorySizeInMBHasBeenSet(false),
-    m_maxConcurrency(0),
-    m_maxConcurrencyHasBeenSet(false)
+ProductionVariantServerlessConfig::ProductionVariantServerlessConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,18 @@ ProductionVariantServerlessConfig& ProductionVariantServerlessConfig::operator =
   if(jsonValue.ValueExists("MemorySizeInMB"))
   {
     m_memorySizeInMB = jsonValue.GetInteger("MemorySizeInMB");
-
     m_memorySizeInMBHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxConcurrency"))
   {
     m_maxConcurrency = jsonValue.GetInteger("MaxConcurrency");
-
     m_maxConcurrencyHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ProvisionedConcurrency"))
+  {
+    m_provisionedConcurrency = jsonValue.GetInteger("ProvisionedConcurrency");
+    m_provisionedConcurrencyHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -67,6 +56,12 @@ JsonValue ProductionVariantServerlessConfig::Jsonize() const
   if(m_maxConcurrencyHasBeenSet)
   {
    payload.WithInteger("MaxConcurrency", m_maxConcurrency);
+
+  }
+
+  if(m_provisionedConcurrencyHasBeenSet)
+  {
+   payload.WithInteger("ProvisionedConcurrency", m_provisionedConcurrency);
 
   }
 

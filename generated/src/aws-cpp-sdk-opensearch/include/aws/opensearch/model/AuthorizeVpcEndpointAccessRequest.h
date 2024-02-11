@@ -7,6 +7,7 @@
 #include <aws/opensearch/OpenSearchService_EXPORTS.h>
 #include <aws/opensearch/OpenSearchServiceRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/opensearch/model/AWSServicePrincipal.h>
 #include <utility>
 
 namespace Aws
@@ -21,7 +22,7 @@ namespace Model
   class AuthorizeVpcEndpointAccessRequest : public OpenSearchServiceRequest
   {
   public:
-    AWS_OPENSEARCHSERVICE_API AuthorizeVpcEndpointAccessRequest();
+    AWS_OPENSEARCHSERVICE_API AuthorizeVpcEndpointAccessRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +33,39 @@ namespace Model
     AWS_OPENSEARCHSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the OpenSearch Service domain to provide access to.</p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
-
-    /**
-     * <p>The name of the OpenSearch Service domain to provide access to.</p>
-     */
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
     inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    AuthorizeVpcEndpointAccessRequest& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the OpenSearch Service domain to provide access to.</p>
-     */
-    inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
-
-    /**
-     * <p>The name of the OpenSearch Service domain to provide access to.</p>
-     */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
-
-    /**
-     * <p>The name of the OpenSearch Service domain to provide access to.</p>
-     */
-    inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
-
-    /**
-     * <p>The name of the OpenSearch Service domain to provide access to.</p>
-     */
-    inline AuthorizeVpcEndpointAccessRequest& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p>The name of the OpenSearch Service domain to provide access to.</p>
-     */
-    inline AuthorizeVpcEndpointAccessRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the OpenSearch Service domain to provide access to.</p>
-     */
-    inline AuthorizeVpcEndpointAccessRequest& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services account ID to grant access to.</p>
      */
-    inline const Aws::String& GetAccount() const{ return m_account; }
-
-    /**
-     * <p>The Amazon Web Services account ID to grant access to.</p>
-     */
+    inline const Aws::String& GetAccount() const { return m_account; }
     inline bool AccountHasBeenSet() const { return m_accountHasBeenSet; }
+    template<typename AccountT = Aws::String>
+    void SetAccount(AccountT&& value) { m_accountHasBeenSet = true; m_account = std::forward<AccountT>(value); }
+    template<typename AccountT = Aws::String>
+    AuthorizeVpcEndpointAccessRequest& WithAccount(AccountT&& value) { SetAccount(std::forward<AccountT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Web Services account ID to grant access to.</p>
+     * <p>The Amazon Web Services service SP to grant access to.</p>
      */
-    inline void SetAccount(const Aws::String& value) { m_accountHasBeenSet = true; m_account = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID to grant access to.</p>
-     */
-    inline void SetAccount(Aws::String&& value) { m_accountHasBeenSet = true; m_account = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID to grant access to.</p>
-     */
-    inline void SetAccount(const char* value) { m_accountHasBeenSet = true; m_account.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID to grant access to.</p>
-     */
-    inline AuthorizeVpcEndpointAccessRequest& WithAccount(const Aws::String& value) { SetAccount(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID to grant access to.</p>
-     */
-    inline AuthorizeVpcEndpointAccessRequest& WithAccount(Aws::String&& value) { SetAccount(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID to grant access to.</p>
-     */
-    inline AuthorizeVpcEndpointAccessRequest& WithAccount(const char* value) { SetAccount(value); return *this;}
-
+    inline AWSServicePrincipal GetService() const { return m_service; }
+    inline bool ServiceHasBeenSet() const { return m_serviceHasBeenSet; }
+    inline void SetService(AWSServicePrincipal value) { m_serviceHasBeenSet = true; m_service = value; }
+    inline AuthorizeVpcEndpointAccessRequest& WithService(AWSServicePrincipal value) { SetService(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainName;
@@ -120,6 +73,9 @@ namespace Model
 
     Aws::String m_account;
     bool m_accountHasBeenSet = false;
+
+    AWSServicePrincipal m_service{AWSServicePrincipal::NOT_SET};
+    bool m_serviceHasBeenSet = false;
   };
 
 } // namespace Model

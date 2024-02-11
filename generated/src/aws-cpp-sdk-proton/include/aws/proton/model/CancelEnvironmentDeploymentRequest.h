@@ -21,7 +21,7 @@ namespace Model
   class CancelEnvironmentDeploymentRequest : public ProtonRequest
   {
   public:
-    AWS_PROTON_API CancelEnvironmentDeploymentRequest();
+    AWS_PROTON_API CancelEnvironmentDeploymentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_PROTON_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the environment with the deployment to cancel.</p>
      */
-    inline const Aws::String& GetEnvironmentName() const{ return m_environmentName; }
-
-    /**
-     * <p>The name of the environment with the deployment to cancel.</p>
-     */
+    inline const Aws::String& GetEnvironmentName() const { return m_environmentName; }
     inline bool EnvironmentNameHasBeenSet() const { return m_environmentNameHasBeenSet; }
-
-    /**
-     * <p>The name of the environment with the deployment to cancel.</p>
-     */
-    inline void SetEnvironmentName(const Aws::String& value) { m_environmentNameHasBeenSet = true; m_environmentName = value; }
-
-    /**
-     * <p>The name of the environment with the deployment to cancel.</p>
-     */
-    inline void SetEnvironmentName(Aws::String&& value) { m_environmentNameHasBeenSet = true; m_environmentName = std::move(value); }
-
-    /**
-     * <p>The name of the environment with the deployment to cancel.</p>
-     */
-    inline void SetEnvironmentName(const char* value) { m_environmentNameHasBeenSet = true; m_environmentName.assign(value); }
-
-    /**
-     * <p>The name of the environment with the deployment to cancel.</p>
-     */
-    inline CancelEnvironmentDeploymentRequest& WithEnvironmentName(const Aws::String& value) { SetEnvironmentName(value); return *this;}
-
-    /**
-     * <p>The name of the environment with the deployment to cancel.</p>
-     */
-    inline CancelEnvironmentDeploymentRequest& WithEnvironmentName(Aws::String&& value) { SetEnvironmentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the environment with the deployment to cancel.</p>
-     */
-    inline CancelEnvironmentDeploymentRequest& WithEnvironmentName(const char* value) { SetEnvironmentName(value); return *this;}
-
+    template<typename EnvironmentNameT = Aws::String>
+    void SetEnvironmentName(EnvironmentNameT&& value) { m_environmentNameHasBeenSet = true; m_environmentName = std::forward<EnvironmentNameT>(value); }
+    template<typename EnvironmentNameT = Aws::String>
+    CancelEnvironmentDeploymentRequest& WithEnvironmentName(EnvironmentNameT&& value) { SetEnvironmentName(std::forward<EnvironmentNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_environmentName;

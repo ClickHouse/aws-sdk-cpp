@@ -27,7 +27,7 @@ namespace Model
   class CreateApplicationRequest : public KinesisAnalyticsV2Request
   {
   public:
-    AWS_KINESISANALYTICSV2_API CreateApplicationRequest();
+    AWS_KINESISANALYTICSV2_API CreateApplicationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,256 +40,82 @@ namespace Model
     AWS_KINESISANALYTICSV2_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of your application (for example, <code>sample-app</code>).</p>
      */
-    inline const Aws::String& GetApplicationName() const{ return m_applicationName; }
-
-    /**
-     * <p>The name of your application (for example, <code>sample-app</code>).</p>
-     */
+    inline const Aws::String& GetApplicationName() const { return m_applicationName; }
     inline bool ApplicationNameHasBeenSet() const { return m_applicationNameHasBeenSet; }
+    template<typename ApplicationNameT = Aws::String>
+    void SetApplicationName(ApplicationNameT&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::forward<ApplicationNameT>(value); }
+    template<typename ApplicationNameT = Aws::String>
+    CreateApplicationRequest& WithApplicationName(ApplicationNameT&& value) { SetApplicationName(std::forward<ApplicationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of your application (for example, <code>sample-app</code>).</p>
-     */
-    inline void SetApplicationName(const Aws::String& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
-
-    /**
-     * <p>The name of your application (for example, <code>sample-app</code>).</p>
-     */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
-
-    /**
-     * <p>The name of your application (for example, <code>sample-app</code>).</p>
-     */
-    inline void SetApplicationName(const char* value) { m_applicationNameHasBeenSet = true; m_applicationName.assign(value); }
-
-    /**
-     * <p>The name of your application (for example, <code>sample-app</code>).</p>
-     */
-    inline CreateApplicationRequest& WithApplicationName(const Aws::String& value) { SetApplicationName(value); return *this;}
-
-    /**
-     * <p>The name of your application (for example, <code>sample-app</code>).</p>
-     */
-    inline CreateApplicationRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of your application (for example, <code>sample-app</code>).</p>
-     */
-    inline CreateApplicationRequest& WithApplicationName(const char* value) { SetApplicationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A summary description of the application.</p>
      */
-    inline const Aws::String& GetApplicationDescription() const{ return m_applicationDescription; }
-
-    /**
-     * <p>A summary description of the application.</p>
-     */
+    inline const Aws::String& GetApplicationDescription() const { return m_applicationDescription; }
     inline bool ApplicationDescriptionHasBeenSet() const { return m_applicationDescriptionHasBeenSet; }
+    template<typename ApplicationDescriptionT = Aws::String>
+    void SetApplicationDescription(ApplicationDescriptionT&& value) { m_applicationDescriptionHasBeenSet = true; m_applicationDescription = std::forward<ApplicationDescriptionT>(value); }
+    template<typename ApplicationDescriptionT = Aws::String>
+    CreateApplicationRequest& WithApplicationDescription(ApplicationDescriptionT&& value) { SetApplicationDescription(std::forward<ApplicationDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A summary description of the application.</p>
-     */
-    inline void SetApplicationDescription(const Aws::String& value) { m_applicationDescriptionHasBeenSet = true; m_applicationDescription = value; }
-
-    /**
-     * <p>A summary description of the application.</p>
-     */
-    inline void SetApplicationDescription(Aws::String&& value) { m_applicationDescriptionHasBeenSet = true; m_applicationDescription = std::move(value); }
-
-    /**
-     * <p>A summary description of the application.</p>
-     */
-    inline void SetApplicationDescription(const char* value) { m_applicationDescriptionHasBeenSet = true; m_applicationDescription.assign(value); }
-
-    /**
-     * <p>A summary description of the application.</p>
-     */
-    inline CreateApplicationRequest& WithApplicationDescription(const Aws::String& value) { SetApplicationDescription(value); return *this;}
-
-    /**
-     * <p>A summary description of the application.</p>
-     */
-    inline CreateApplicationRequest& WithApplicationDescription(Aws::String&& value) { SetApplicationDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A summary description of the application.</p>
-     */
-    inline CreateApplicationRequest& WithApplicationDescription(const char* value) { SetApplicationDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The runtime environment for the application.</p>
      */
-    inline const RuntimeEnvironment& GetRuntimeEnvironment() const{ return m_runtimeEnvironment; }
-
-    /**
-     * <p>The runtime environment for the application.</p>
-     */
+    inline RuntimeEnvironment GetRuntimeEnvironment() const { return m_runtimeEnvironment; }
     inline bool RuntimeEnvironmentHasBeenSet() const { return m_runtimeEnvironmentHasBeenSet; }
+    inline void SetRuntimeEnvironment(RuntimeEnvironment value) { m_runtimeEnvironmentHasBeenSet = true; m_runtimeEnvironment = value; }
+    inline CreateApplicationRequest& WithRuntimeEnvironment(RuntimeEnvironment value) { SetRuntimeEnvironment(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The runtime environment for the application.</p>
-     */
-    inline void SetRuntimeEnvironment(const RuntimeEnvironment& value) { m_runtimeEnvironmentHasBeenSet = true; m_runtimeEnvironment = value; }
-
-    /**
-     * <p>The runtime environment for the application.</p>
-     */
-    inline void SetRuntimeEnvironment(RuntimeEnvironment&& value) { m_runtimeEnvironmentHasBeenSet = true; m_runtimeEnvironment = std::move(value); }
-
-    /**
-     * <p>The runtime environment for the application.</p>
-     */
-    inline CreateApplicationRequest& WithRuntimeEnvironment(const RuntimeEnvironment& value) { SetRuntimeEnvironment(value); return *this;}
-
-    /**
-     * <p>The runtime environment for the application.</p>
-     */
-    inline CreateApplicationRequest& WithRuntimeEnvironment(RuntimeEnvironment&& value) { SetRuntimeEnvironment(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The IAM role used by the application to access Kinesis data streams, Kinesis
      * Data Firehose delivery streams, Amazon S3 objects, and other external
      * resources.</p>
      */
-    inline const Aws::String& GetServiceExecutionRole() const{ return m_serviceExecutionRole; }
-
-    /**
-     * <p>The IAM role used by the application to access Kinesis data streams, Kinesis
-     * Data Firehose delivery streams, Amazon S3 objects, and other external
-     * resources.</p>
-     */
+    inline const Aws::String& GetServiceExecutionRole() const { return m_serviceExecutionRole; }
     inline bool ServiceExecutionRoleHasBeenSet() const { return m_serviceExecutionRoleHasBeenSet; }
+    template<typename ServiceExecutionRoleT = Aws::String>
+    void SetServiceExecutionRole(ServiceExecutionRoleT&& value) { m_serviceExecutionRoleHasBeenSet = true; m_serviceExecutionRole = std::forward<ServiceExecutionRoleT>(value); }
+    template<typename ServiceExecutionRoleT = Aws::String>
+    CreateApplicationRequest& WithServiceExecutionRole(ServiceExecutionRoleT&& value) { SetServiceExecutionRole(std::forward<ServiceExecutionRoleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IAM role used by the application to access Kinesis data streams, Kinesis
-     * Data Firehose delivery streams, Amazon S3 objects, and other external
-     * resources.</p>
-     */
-    inline void SetServiceExecutionRole(const Aws::String& value) { m_serviceExecutionRoleHasBeenSet = true; m_serviceExecutionRole = value; }
-
-    /**
-     * <p>The IAM role used by the application to access Kinesis data streams, Kinesis
-     * Data Firehose delivery streams, Amazon S3 objects, and other external
-     * resources.</p>
-     */
-    inline void SetServiceExecutionRole(Aws::String&& value) { m_serviceExecutionRoleHasBeenSet = true; m_serviceExecutionRole = std::move(value); }
-
-    /**
-     * <p>The IAM role used by the application to access Kinesis data streams, Kinesis
-     * Data Firehose delivery streams, Amazon S3 objects, and other external
-     * resources.</p>
-     */
-    inline void SetServiceExecutionRole(const char* value) { m_serviceExecutionRoleHasBeenSet = true; m_serviceExecutionRole.assign(value); }
-
-    /**
-     * <p>The IAM role used by the application to access Kinesis data streams, Kinesis
-     * Data Firehose delivery streams, Amazon S3 objects, and other external
-     * resources.</p>
-     */
-    inline CreateApplicationRequest& WithServiceExecutionRole(const Aws::String& value) { SetServiceExecutionRole(value); return *this;}
-
-    /**
-     * <p>The IAM role used by the application to access Kinesis data streams, Kinesis
-     * Data Firehose delivery streams, Amazon S3 objects, and other external
-     * resources.</p>
-     */
-    inline CreateApplicationRequest& WithServiceExecutionRole(Aws::String&& value) { SetServiceExecutionRole(std::move(value)); return *this;}
-
-    /**
-     * <p>The IAM role used by the application to access Kinesis data streams, Kinesis
-     * Data Firehose delivery streams, Amazon S3 objects, and other external
-     * resources.</p>
-     */
-    inline CreateApplicationRequest& WithServiceExecutionRole(const char* value) { SetServiceExecutionRole(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Use this parameter to configure the application.</p>
      */
-    inline const ApplicationConfiguration& GetApplicationConfiguration() const{ return m_applicationConfiguration; }
-
-    /**
-     * <p>Use this parameter to configure the application.</p>
-     */
+    inline const ApplicationConfiguration& GetApplicationConfiguration() const { return m_applicationConfiguration; }
     inline bool ApplicationConfigurationHasBeenSet() const { return m_applicationConfigurationHasBeenSet; }
+    template<typename ApplicationConfigurationT = ApplicationConfiguration>
+    void SetApplicationConfiguration(ApplicationConfigurationT&& value) { m_applicationConfigurationHasBeenSet = true; m_applicationConfiguration = std::forward<ApplicationConfigurationT>(value); }
+    template<typename ApplicationConfigurationT = ApplicationConfiguration>
+    CreateApplicationRequest& WithApplicationConfiguration(ApplicationConfigurationT&& value) { SetApplicationConfiguration(std::forward<ApplicationConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Use this parameter to configure the application.</p>
-     */
-    inline void SetApplicationConfiguration(const ApplicationConfiguration& value) { m_applicationConfigurationHasBeenSet = true; m_applicationConfiguration = value; }
-
-    /**
-     * <p>Use this parameter to configure the application.</p>
-     */
-    inline void SetApplicationConfiguration(ApplicationConfiguration&& value) { m_applicationConfigurationHasBeenSet = true; m_applicationConfiguration = std::move(value); }
-
-    /**
-     * <p>Use this parameter to configure the application.</p>
-     */
-    inline CreateApplicationRequest& WithApplicationConfiguration(const ApplicationConfiguration& value) { SetApplicationConfiguration(value); return *this;}
-
-    /**
-     * <p>Use this parameter to configure the application.</p>
-     */
-    inline CreateApplicationRequest& WithApplicationConfiguration(ApplicationConfiguration&& value) { SetApplicationConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Use this parameter to configure an Amazon CloudWatch log stream to monitor
      * application configuration errors. </p>
      */
-    inline const Aws::Vector<CloudWatchLoggingOption>& GetCloudWatchLoggingOptions() const{ return m_cloudWatchLoggingOptions; }
-
-    /**
-     * <p>Use this parameter to configure an Amazon CloudWatch log stream to monitor
-     * application configuration errors. </p>
-     */
+    inline const Aws::Vector<CloudWatchLoggingOption>& GetCloudWatchLoggingOptions() const { return m_cloudWatchLoggingOptions; }
     inline bool CloudWatchLoggingOptionsHasBeenSet() const { return m_cloudWatchLoggingOptionsHasBeenSet; }
+    template<typename CloudWatchLoggingOptionsT = Aws::Vector<CloudWatchLoggingOption>>
+    void SetCloudWatchLoggingOptions(CloudWatchLoggingOptionsT&& value) { m_cloudWatchLoggingOptionsHasBeenSet = true; m_cloudWatchLoggingOptions = std::forward<CloudWatchLoggingOptionsT>(value); }
+    template<typename CloudWatchLoggingOptionsT = Aws::Vector<CloudWatchLoggingOption>>
+    CreateApplicationRequest& WithCloudWatchLoggingOptions(CloudWatchLoggingOptionsT&& value) { SetCloudWatchLoggingOptions(std::forward<CloudWatchLoggingOptionsT>(value)); return *this;}
+    template<typename CloudWatchLoggingOptionsT = CloudWatchLoggingOption>
+    CreateApplicationRequest& AddCloudWatchLoggingOptions(CloudWatchLoggingOptionsT&& value) { m_cloudWatchLoggingOptionsHasBeenSet = true; m_cloudWatchLoggingOptions.emplace_back(std::forward<CloudWatchLoggingOptionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Use this parameter to configure an Amazon CloudWatch log stream to monitor
-     * application configuration errors. </p>
-     */
-    inline void SetCloudWatchLoggingOptions(const Aws::Vector<CloudWatchLoggingOption>& value) { m_cloudWatchLoggingOptionsHasBeenSet = true; m_cloudWatchLoggingOptions = value; }
-
-    /**
-     * <p>Use this parameter to configure an Amazon CloudWatch log stream to monitor
-     * application configuration errors. </p>
-     */
-    inline void SetCloudWatchLoggingOptions(Aws::Vector<CloudWatchLoggingOption>&& value) { m_cloudWatchLoggingOptionsHasBeenSet = true; m_cloudWatchLoggingOptions = std::move(value); }
-
-    /**
-     * <p>Use this parameter to configure an Amazon CloudWatch log stream to monitor
-     * application configuration errors. </p>
-     */
-    inline CreateApplicationRequest& WithCloudWatchLoggingOptions(const Aws::Vector<CloudWatchLoggingOption>& value) { SetCloudWatchLoggingOptions(value); return *this;}
-
-    /**
-     * <p>Use this parameter to configure an Amazon CloudWatch log stream to monitor
-     * application configuration errors. </p>
-     */
-    inline CreateApplicationRequest& WithCloudWatchLoggingOptions(Aws::Vector<CloudWatchLoggingOption>&& value) { SetCloudWatchLoggingOptions(std::move(value)); return *this;}
-
-    /**
-     * <p>Use this parameter to configure an Amazon CloudWatch log stream to monitor
-     * application configuration errors. </p>
-     */
-    inline CreateApplicationRequest& AddCloudWatchLoggingOptions(const CloudWatchLoggingOption& value) { m_cloudWatchLoggingOptionsHasBeenSet = true; m_cloudWatchLoggingOptions.push_back(value); return *this; }
-
-    /**
-     * <p>Use this parameter to configure an Amazon CloudWatch log stream to monitor
-     * application configuration errors. </p>
-     */
-    inline CreateApplicationRequest& AddCloudWatchLoggingOptions(CloudWatchLoggingOption&& value) { m_cloudWatchLoggingOptionsHasBeenSet = true; m_cloudWatchLoggingOptions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of one or more tags to assign to the application. A tag is a key-value
      * pair that identifies an application. Note that the maximum number of application
@@ -298,121 +124,27 @@ namespace Model
      * href="https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html">Using
      * Tagging</a>.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of one or more tags to assign to the application. A tag is a key-value
-     * pair that identifies an application. Note that the maximum number of application
-     * tags includes system tags. The maximum number of user-defined application tags
-     * is 50. For more information, see <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html">Using
-     * Tagging</a>.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateApplicationRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateApplicationRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>A list of one or more tags to assign to the application. A tag is a key-value
-     * pair that identifies an application. Note that the maximum number of application
-     * tags includes system tags. The maximum number of user-defined application tags
-     * is 50. For more information, see <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html">Using
-     * Tagging</a>.</p>
+     * <p>Use the <code>STREAMING</code> mode to create a Managed Service for Apache
+     * Flink application. To create a Managed Service for Apache Flink Studio notebook,
+     * use the <code>INTERACTIVE</code> mode.</p>
      */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of one or more tags to assign to the application. A tag is a key-value
-     * pair that identifies an application. Note that the maximum number of application
-     * tags includes system tags. The maximum number of user-defined application tags
-     * is 50. For more information, see <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html">Using
-     * Tagging</a>.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of one or more tags to assign to the application. A tag is a key-value
-     * pair that identifies an application. Note that the maximum number of application
-     * tags includes system tags. The maximum number of user-defined application tags
-     * is 50. For more information, see <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html">Using
-     * Tagging</a>.</p>
-     */
-    inline CreateApplicationRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of one or more tags to assign to the application. A tag is a key-value
-     * pair that identifies an application. Note that the maximum number of application
-     * tags includes system tags. The maximum number of user-defined application tags
-     * is 50. For more information, see <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html">Using
-     * Tagging</a>.</p>
-     */
-    inline CreateApplicationRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of one or more tags to assign to the application. A tag is a key-value
-     * pair that identifies an application. Note that the maximum number of application
-     * tags includes system tags. The maximum number of user-defined application tags
-     * is 50. For more information, see <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html">Using
-     * Tagging</a>.</p>
-     */
-    inline CreateApplicationRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>A list of one or more tags to assign to the application. A tag is a key-value
-     * pair that identifies an application. Note that the maximum number of application
-     * tags includes system tags. The maximum number of user-defined application tags
-     * is 50. For more information, see <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html">Using
-     * Tagging</a>.</p>
-     */
-    inline CreateApplicationRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>Use the <code>STREAMING</code> mode to create a Kinesis Data Analytics For
-     * Flink application. To create a Kinesis Data Analytics Studio notebook, use the
-     * <code>INTERACTIVE</code> mode.</p>
-     */
-    inline const ApplicationMode& GetApplicationMode() const{ return m_applicationMode; }
-
-    /**
-     * <p>Use the <code>STREAMING</code> mode to create a Kinesis Data Analytics For
-     * Flink application. To create a Kinesis Data Analytics Studio notebook, use the
-     * <code>INTERACTIVE</code> mode.</p>
-     */
+    inline ApplicationMode GetApplicationMode() const { return m_applicationMode; }
     inline bool ApplicationModeHasBeenSet() const { return m_applicationModeHasBeenSet; }
-
-    /**
-     * <p>Use the <code>STREAMING</code> mode to create a Kinesis Data Analytics For
-     * Flink application. To create a Kinesis Data Analytics Studio notebook, use the
-     * <code>INTERACTIVE</code> mode.</p>
-     */
-    inline void SetApplicationMode(const ApplicationMode& value) { m_applicationModeHasBeenSet = true; m_applicationMode = value; }
-
-    /**
-     * <p>Use the <code>STREAMING</code> mode to create a Kinesis Data Analytics For
-     * Flink application. To create a Kinesis Data Analytics Studio notebook, use the
-     * <code>INTERACTIVE</code> mode.</p>
-     */
-    inline void SetApplicationMode(ApplicationMode&& value) { m_applicationModeHasBeenSet = true; m_applicationMode = std::move(value); }
-
-    /**
-     * <p>Use the <code>STREAMING</code> mode to create a Kinesis Data Analytics For
-     * Flink application. To create a Kinesis Data Analytics Studio notebook, use the
-     * <code>INTERACTIVE</code> mode.</p>
-     */
-    inline CreateApplicationRequest& WithApplicationMode(const ApplicationMode& value) { SetApplicationMode(value); return *this;}
-
-    /**
-     * <p>Use the <code>STREAMING</code> mode to create a Kinesis Data Analytics For
-     * Flink application. To create a Kinesis Data Analytics Studio notebook, use the
-     * <code>INTERACTIVE</code> mode.</p>
-     */
-    inline CreateApplicationRequest& WithApplicationMode(ApplicationMode&& value) { SetApplicationMode(std::move(value)); return *this;}
-
+    inline void SetApplicationMode(ApplicationMode value) { m_applicationModeHasBeenSet = true; m_applicationMode = value; }
+    inline CreateApplicationRequest& WithApplicationMode(ApplicationMode value) { SetApplicationMode(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationName;
@@ -421,7 +153,7 @@ namespace Model
     Aws::String m_applicationDescription;
     bool m_applicationDescriptionHasBeenSet = false;
 
-    RuntimeEnvironment m_runtimeEnvironment;
+    RuntimeEnvironment m_runtimeEnvironment{RuntimeEnvironment::NOT_SET};
     bool m_runtimeEnvironmentHasBeenSet = false;
 
     Aws::String m_serviceExecutionRole;
@@ -436,7 +168,7 @@ namespace Model
     Aws::Vector<Tag> m_tags;
     bool m_tagsHasBeenSet = false;
 
-    ApplicationMode m_applicationMode;
+    ApplicationMode m_applicationMode{ApplicationMode::NOT_SET};
     bool m_applicationModeHasBeenSet = false;
   };
 

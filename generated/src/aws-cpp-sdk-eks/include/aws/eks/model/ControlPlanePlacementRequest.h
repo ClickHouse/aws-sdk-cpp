@@ -28,7 +28,7 @@ namespace Model
    * Amazon EKS cluster on an Amazon Web Services Outpost. For more information, see
    * <a
    * href="https://docs.aws.amazon.com/eks/latest/userguide/eks-outposts-capacity-considerations.html">Capacity
-   * considerations</a> in the <i>Amazon EKS User Guide</i> </p><p><h3>See Also:</h3>
+   * considerations</a> in the <i>Amazon EKS User Guide</i>.</p><p><h3>See Also:</h3>
    * <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ControlPlanePlacementRequest">AWS
    * API Reference</a></p>
@@ -36,60 +36,24 @@ namespace Model
   class ControlPlanePlacementRequest
   {
   public:
-    AWS_EKS_API ControlPlanePlacementRequest();
+    AWS_EKS_API ControlPlanePlacementRequest() = default;
     AWS_EKS_API ControlPlanePlacementRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API ControlPlanePlacementRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the placement group for the Kubernetes control plane instances.
      * This setting can't be changed after cluster creation. </p>
      */
-    inline const Aws::String& GetGroupName() const{ return m_groupName; }
-
-    /**
-     * <p>The name of the placement group for the Kubernetes control plane instances.
-     * This setting can't be changed after cluster creation. </p>
-     */
+    inline const Aws::String& GetGroupName() const { return m_groupName; }
     inline bool GroupNameHasBeenSet() const { return m_groupNameHasBeenSet; }
-
-    /**
-     * <p>The name of the placement group for the Kubernetes control plane instances.
-     * This setting can't be changed after cluster creation. </p>
-     */
-    inline void SetGroupName(const Aws::String& value) { m_groupNameHasBeenSet = true; m_groupName = value; }
-
-    /**
-     * <p>The name of the placement group for the Kubernetes control plane instances.
-     * This setting can't be changed after cluster creation. </p>
-     */
-    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = std::move(value); }
-
-    /**
-     * <p>The name of the placement group for the Kubernetes control plane instances.
-     * This setting can't be changed after cluster creation. </p>
-     */
-    inline void SetGroupName(const char* value) { m_groupNameHasBeenSet = true; m_groupName.assign(value); }
-
-    /**
-     * <p>The name of the placement group for the Kubernetes control plane instances.
-     * This setting can't be changed after cluster creation. </p>
-     */
-    inline ControlPlanePlacementRequest& WithGroupName(const Aws::String& value) { SetGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the placement group for the Kubernetes control plane instances.
-     * This setting can't be changed after cluster creation. </p>
-     */
-    inline ControlPlanePlacementRequest& WithGroupName(Aws::String&& value) { SetGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the placement group for the Kubernetes control plane instances.
-     * This setting can't be changed after cluster creation. </p>
-     */
-    inline ControlPlanePlacementRequest& WithGroupName(const char* value) { SetGroupName(value); return *this;}
-
+    template<typename GroupNameT = Aws::String>
+    void SetGroupName(GroupNameT&& value) { m_groupNameHasBeenSet = true; m_groupName = std::forward<GroupNameT>(value); }
+    template<typename GroupNameT = Aws::String>
+    ControlPlanePlacementRequest& WithGroupName(GroupNameT&& value) { SetGroupName(std::forward<GroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_groupName;

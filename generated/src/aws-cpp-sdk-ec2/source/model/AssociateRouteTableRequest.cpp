@@ -10,27 +10,23 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-AssociateRouteTableRequest::AssociateRouteTableRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_routeTableIdHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_gatewayIdHasBeenSet(false)
-{
-}
-
 Aws::String AssociateRouteTableRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=AssociateRouteTable&";
+  if(m_gatewayIdHasBeenSet)
+  {
+    ss << "GatewayId=" << StringUtils::URLEncode(m_gatewayId.c_str()) << "&";
+  }
+
+  if(m_publicIpv4PoolHasBeenSet)
+  {
+    ss << "PublicIpv4Pool=" << StringUtils::URLEncode(m_publicIpv4Pool.c_str()) << "&";
+  }
+
   if(m_dryRunHasBeenSet)
   {
     ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
-  }
-
-  if(m_routeTableIdHasBeenSet)
-  {
-    ss << "RouteTableId=" << StringUtils::URLEncode(m_routeTableId.c_str()) << "&";
   }
 
   if(m_subnetIdHasBeenSet)
@@ -38,9 +34,9 @@ Aws::String AssociateRouteTableRequest::SerializePayload() const
     ss << "SubnetId=" << StringUtils::URLEncode(m_subnetId.c_str()) << "&";
   }
 
-  if(m_gatewayIdHasBeenSet)
+  if(m_routeTableIdHasBeenSet)
   {
-    ss << "GatewayId=" << StringUtils::URLEncode(m_gatewayId.c_str()) << "&";
+    ss << "RouteTableId=" << StringUtils::URLEncode(m_routeTableId.c_str()) << "&";
   }
 
   ss << "Version=2016-11-15";

@@ -20,19 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-FieldLevelEncryptionConfig::FieldLevelEncryptionConfig() : 
-    m_callerReferenceHasBeenSet(false),
-    m_commentHasBeenSet(false),
-    m_queryArgProfileConfigHasBeenSet(false),
-    m_contentTypeProfileConfigHasBeenSet(false)
-{
-}
-
-FieldLevelEncryptionConfig::FieldLevelEncryptionConfig(const XmlNode& xmlNode) : 
-    m_callerReferenceHasBeenSet(false),
-    m_commentHasBeenSet(false),
-    m_queryArgProfileConfigHasBeenSet(false),
-    m_contentTypeProfileConfigHasBeenSet(false)
+FieldLevelEncryptionConfig::FieldLevelEncryptionConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -18,27 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-RecommendationJobContainerConfig::RecommendationJobContainerConfig() : 
-    m_domainHasBeenSet(false),
-    m_taskHasBeenSet(false),
-    m_frameworkHasBeenSet(false),
-    m_frameworkVersionHasBeenSet(false),
-    m_payloadConfigHasBeenSet(false),
-    m_nearestModelNameHasBeenSet(false),
-    m_supportedInstanceTypesHasBeenSet(false),
-    m_dataInputConfigHasBeenSet(false)
-{
-}
-
-RecommendationJobContainerConfig::RecommendationJobContainerConfig(JsonView jsonValue) : 
-    m_domainHasBeenSet(false),
-    m_taskHasBeenSet(false),
-    m_frameworkHasBeenSet(false),
-    m_frameworkVersionHasBeenSet(false),
-    m_payloadConfigHasBeenSet(false),
-    m_nearestModelNameHasBeenSet(false),
-    m_supportedInstanceTypesHasBeenSet(false),
-    m_dataInputConfigHasBeenSet(false)
+RecommendationJobContainerConfig::RecommendationJobContainerConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,45 +28,33 @@ RecommendationJobContainerConfig& RecommendationJobContainerConfig::operator =(J
   if(jsonValue.ValueExists("Domain"))
   {
     m_domain = jsonValue.GetString("Domain");
-
     m_domainHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Task"))
   {
     m_task = jsonValue.GetString("Task");
-
     m_taskHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Framework"))
   {
     m_framework = jsonValue.GetString("Framework");
-
     m_frameworkHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FrameworkVersion"))
   {
     m_frameworkVersion = jsonValue.GetString("FrameworkVersion");
-
     m_frameworkVersionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PayloadConfig"))
   {
     m_payloadConfig = jsonValue.GetObject("PayloadConfig");
-
     m_payloadConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NearestModelName"))
   {
     m_nearestModelName = jsonValue.GetString("NearestModelName");
-
     m_nearestModelNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SupportedInstanceTypes"))
   {
     Aws::Utils::Array<JsonView> supportedInstanceTypesJsonList = jsonValue.GetArray("SupportedInstanceTypes");
@@ -96,14 +64,25 @@ RecommendationJobContainerConfig& RecommendationJobContainerConfig::operator =(J
     }
     m_supportedInstanceTypesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("SupportedEndpointType"))
+  {
+    m_supportedEndpointType = RecommendationJobSupportedEndpointTypeMapper::GetRecommendationJobSupportedEndpointTypeForName(jsonValue.GetString("SupportedEndpointType"));
+    m_supportedEndpointTypeHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("DataInputConfig"))
   {
     m_dataInputConfig = jsonValue.GetString("DataInputConfig");
-
     m_dataInputConfigHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("SupportedResponseMIMETypes"))
+  {
+    Aws::Utils::Array<JsonView> supportedResponseMIMETypesJsonList = jsonValue.GetArray("SupportedResponseMIMETypes");
+    for(unsigned supportedResponseMIMETypesIndex = 0; supportedResponseMIMETypesIndex < supportedResponseMIMETypesJsonList.GetLength(); ++supportedResponseMIMETypesIndex)
+    {
+      m_supportedResponseMIMETypes.push_back(supportedResponseMIMETypesJsonList[supportedResponseMIMETypesIndex].AsString());
+    }
+    m_supportedResponseMIMETypesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -158,9 +137,25 @@ JsonValue RecommendationJobContainerConfig::Jsonize() const
 
   }
 
+  if(m_supportedEndpointTypeHasBeenSet)
+  {
+   payload.WithString("SupportedEndpointType", RecommendationJobSupportedEndpointTypeMapper::GetNameForRecommendationJobSupportedEndpointType(m_supportedEndpointType));
+  }
+
   if(m_dataInputConfigHasBeenSet)
   {
    payload.WithString("DataInputConfig", m_dataInputConfig);
+
+  }
+
+  if(m_supportedResponseMIMETypesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> supportedResponseMIMETypesJsonList(m_supportedResponseMIMETypes.size());
+   for(unsigned supportedResponseMIMETypesIndex = 0; supportedResponseMIMETypesIndex < supportedResponseMIMETypesJsonList.GetLength(); ++supportedResponseMIMETypesIndex)
+   {
+     supportedResponseMIMETypesJsonList[supportedResponseMIMETypesIndex].AsString(m_supportedResponseMIMETypes[supportedResponseMIMETypesIndex]);
+   }
+   payload.WithArray("SupportedResponseMIMETypes", std::move(supportedResponseMIMETypesJsonList));
 
   }
 

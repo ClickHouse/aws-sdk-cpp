@@ -32,467 +32,196 @@ namespace Model
   class DescribeLocationHdfsResult
   {
   public:
-    AWS_DATASYNC_API DescribeLocationHdfsResult();
+    AWS_DATASYNC_API DescribeLocationHdfsResult() = default;
     AWS_DATASYNC_API DescribeLocationHdfsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DATASYNC_API DescribeLocationHdfsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p>The ARN of the HDFS cluster location.</p>
+     * <p>The ARN of the HDFS location.</p>
      */
-    inline const Aws::String& GetLocationArn() const{ return m_locationArn; }
+    inline const Aws::String& GetLocationArn() const { return m_locationArn; }
+    template<typename LocationArnT = Aws::String>
+    void SetLocationArn(LocationArnT&& value) { m_locationArnHasBeenSet = true; m_locationArn = std::forward<LocationArnT>(value); }
+    template<typename LocationArnT = Aws::String>
+    DescribeLocationHdfsResult& WithLocationArn(LocationArnT&& value) { SetLocationArn(std::forward<LocationArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of the HDFS cluster location.</p>
+     * <p>The URI of the HDFS location.</p>
      */
-    inline void SetLocationArn(const Aws::String& value) { m_locationArn = value; }
+    inline const Aws::String& GetLocationUri() const { return m_locationUri; }
+    template<typename LocationUriT = Aws::String>
+    void SetLocationUri(LocationUriT&& value) { m_locationUriHasBeenSet = true; m_locationUri = std::forward<LocationUriT>(value); }
+    template<typename LocationUriT = Aws::String>
+    DescribeLocationHdfsResult& WithLocationUri(LocationUriT&& value) { SetLocationUri(std::forward<LocationUriT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of the HDFS cluster location.</p>
+     * <p>The NameNode that manages the HDFS namespace. </p>
      */
-    inline void SetLocationArn(Aws::String&& value) { m_locationArn = std::move(value); }
+    inline const Aws::Vector<HdfsNameNode>& GetNameNodes() const { return m_nameNodes; }
+    template<typename NameNodesT = Aws::Vector<HdfsNameNode>>
+    void SetNameNodes(NameNodesT&& value) { m_nameNodesHasBeenSet = true; m_nameNodes = std::forward<NameNodesT>(value); }
+    template<typename NameNodesT = Aws::Vector<HdfsNameNode>>
+    DescribeLocationHdfsResult& WithNameNodes(NameNodesT&& value) { SetNameNodes(std::forward<NameNodesT>(value)); return *this;}
+    template<typename NameNodesT = HdfsNameNode>
+    DescribeLocationHdfsResult& AddNameNodes(NameNodesT&& value) { m_nameNodesHasBeenSet = true; m_nameNodes.emplace_back(std::forward<NameNodesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The ARN of the HDFS cluster location.</p>
-     */
-    inline void SetLocationArn(const char* value) { m_locationArn.assign(value); }
-
-    /**
-     * <p>The ARN of the HDFS cluster location.</p>
-     */
-    inline DescribeLocationHdfsResult& WithLocationArn(const Aws::String& value) { SetLocationArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the HDFS cluster location.</p>
-     */
-    inline DescribeLocationHdfsResult& WithLocationArn(Aws::String&& value) { SetLocationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the HDFS cluster location.</p>
-     */
-    inline DescribeLocationHdfsResult& WithLocationArn(const char* value) { SetLocationArn(value); return *this;}
-
-
-    /**
-     * <p>The URI of the HDFS cluster location.</p>
-     */
-    inline const Aws::String& GetLocationUri() const{ return m_locationUri; }
-
-    /**
-     * <p>The URI of the HDFS cluster location.</p>
-     */
-    inline void SetLocationUri(const Aws::String& value) { m_locationUri = value; }
-
-    /**
-     * <p>The URI of the HDFS cluster location.</p>
-     */
-    inline void SetLocationUri(Aws::String&& value) { m_locationUri = std::move(value); }
-
-    /**
-     * <p>The URI of the HDFS cluster location.</p>
-     */
-    inline void SetLocationUri(const char* value) { m_locationUri.assign(value); }
-
-    /**
-     * <p>The URI of the HDFS cluster location.</p>
-     */
-    inline DescribeLocationHdfsResult& WithLocationUri(const Aws::String& value) { SetLocationUri(value); return *this;}
-
-    /**
-     * <p>The URI of the HDFS cluster location.</p>
-     */
-    inline DescribeLocationHdfsResult& WithLocationUri(Aws::String&& value) { SetLocationUri(std::move(value)); return *this;}
-
-    /**
-     * <p>The URI of the HDFS cluster location.</p>
-     */
-    inline DescribeLocationHdfsResult& WithLocationUri(const char* value) { SetLocationUri(value); return *this;}
-
-
-    /**
-     * <p>The NameNode that manage the HDFS namespace. </p>
-     */
-    inline const Aws::Vector<HdfsNameNode>& GetNameNodes() const{ return m_nameNodes; }
-
-    /**
-     * <p>The NameNode that manage the HDFS namespace. </p>
-     */
-    inline void SetNameNodes(const Aws::Vector<HdfsNameNode>& value) { m_nameNodes = value; }
-
-    /**
-     * <p>The NameNode that manage the HDFS namespace. </p>
-     */
-    inline void SetNameNodes(Aws::Vector<HdfsNameNode>&& value) { m_nameNodes = std::move(value); }
-
-    /**
-     * <p>The NameNode that manage the HDFS namespace. </p>
-     */
-    inline DescribeLocationHdfsResult& WithNameNodes(const Aws::Vector<HdfsNameNode>& value) { SetNameNodes(value); return *this;}
-
-    /**
-     * <p>The NameNode that manage the HDFS namespace. </p>
-     */
-    inline DescribeLocationHdfsResult& WithNameNodes(Aws::Vector<HdfsNameNode>&& value) { SetNameNodes(std::move(value)); return *this;}
-
-    /**
-     * <p>The NameNode that manage the HDFS namespace. </p>
-     */
-    inline DescribeLocationHdfsResult& AddNameNodes(const HdfsNameNode& value) { m_nameNodes.push_back(value); return *this; }
-
-    /**
-     * <p>The NameNode that manage the HDFS namespace. </p>
-     */
-    inline DescribeLocationHdfsResult& AddNameNodes(HdfsNameNode&& value) { m_nameNodes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The size of the data blocks to write into the HDFS cluster. </p>
      */
-    inline int GetBlockSize() const{ return m_blockSize; }
-
-    /**
-     * <p>The size of the data blocks to write into the HDFS cluster. </p>
-     */
-    inline void SetBlockSize(int value) { m_blockSize = value; }
-
-    /**
-     * <p>The size of the data blocks to write into the HDFS cluster. </p>
-     */
+    inline int GetBlockSize() const { return m_blockSize; }
+    inline void SetBlockSize(int value) { m_blockSizeHasBeenSet = true; m_blockSize = value; }
     inline DescribeLocationHdfsResult& WithBlockSize(int value) { SetBlockSize(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of DataNodes to replicate the data to when writing to the HDFS
      * cluster. </p>
      */
-    inline int GetReplicationFactor() const{ return m_replicationFactor; }
-
-    /**
-     * <p>The number of DataNodes to replicate the data to when writing to the HDFS
-     * cluster. </p>
-     */
-    inline void SetReplicationFactor(int value) { m_replicationFactor = value; }
-
-    /**
-     * <p>The number of DataNodes to replicate the data to when writing to the HDFS
-     * cluster. </p>
-     */
+    inline int GetReplicationFactor() const { return m_replicationFactor; }
+    inline void SetReplicationFactor(int value) { m_replicationFactorHasBeenSet = true; m_replicationFactor = value; }
     inline DescribeLocationHdfsResult& WithReplicationFactor(int value) { SetReplicationFactor(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> The URI of the HDFS cluster's Key Management Server (KMS). </p>
      */
-    inline const Aws::String& GetKmsKeyProviderUri() const{ return m_kmsKeyProviderUri; }
+    inline const Aws::String& GetKmsKeyProviderUri() const { return m_kmsKeyProviderUri; }
+    template<typename KmsKeyProviderUriT = Aws::String>
+    void SetKmsKeyProviderUri(KmsKeyProviderUriT&& value) { m_kmsKeyProviderUriHasBeenSet = true; m_kmsKeyProviderUri = std::forward<KmsKeyProviderUriT>(value); }
+    template<typename KmsKeyProviderUriT = Aws::String>
+    DescribeLocationHdfsResult& WithKmsKeyProviderUri(KmsKeyProviderUriT&& value) { SetKmsKeyProviderUri(std::forward<KmsKeyProviderUriT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The URI of the HDFS cluster's Key Management Server (KMS). </p>
+     * <p>The Quality of Protection (QOP) configuration, which specifies the Remote
+     * Procedure Call (RPC) and data transfer protection settings configured on the
+     * HDFS cluster. </p>
      */
-    inline void SetKmsKeyProviderUri(const Aws::String& value) { m_kmsKeyProviderUri = value; }
+    inline const QopConfiguration& GetQopConfiguration() const { return m_qopConfiguration; }
+    template<typename QopConfigurationT = QopConfiguration>
+    void SetQopConfiguration(QopConfigurationT&& value) { m_qopConfigurationHasBeenSet = true; m_qopConfiguration = std::forward<QopConfigurationT>(value); }
+    template<typename QopConfigurationT = QopConfiguration>
+    DescribeLocationHdfsResult& WithQopConfiguration(QopConfigurationT&& value) { SetQopConfiguration(std::forward<QopConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The URI of the HDFS cluster's Key Management Server (KMS). </p>
-     */
-    inline void SetKmsKeyProviderUri(Aws::String&& value) { m_kmsKeyProviderUri = std::move(value); }
-
-    /**
-     * <p> The URI of the HDFS cluster's Key Management Server (KMS). </p>
-     */
-    inline void SetKmsKeyProviderUri(const char* value) { m_kmsKeyProviderUri.assign(value); }
-
-    /**
-     * <p> The URI of the HDFS cluster's Key Management Server (KMS). </p>
-     */
-    inline DescribeLocationHdfsResult& WithKmsKeyProviderUri(const Aws::String& value) { SetKmsKeyProviderUri(value); return *this;}
-
-    /**
-     * <p> The URI of the HDFS cluster's Key Management Server (KMS). </p>
-     */
-    inline DescribeLocationHdfsResult& WithKmsKeyProviderUri(Aws::String&& value) { SetKmsKeyProviderUri(std::move(value)); return *this;}
-
-    /**
-     * <p> The URI of the HDFS cluster's Key Management Server (KMS). </p>
-     */
-    inline DescribeLocationHdfsResult& WithKmsKeyProviderUri(const char* value) { SetKmsKeyProviderUri(value); return *this;}
-
-
-    /**
-     * <p>The Quality of Protection (QOP) configuration specifies the Remote Procedure
-     * Call (RPC) and data transfer protection settings configured on the Hadoop
-     * Distributed File System (HDFS) cluster. </p>
-     */
-    inline const QopConfiguration& GetQopConfiguration() const{ return m_qopConfiguration; }
-
-    /**
-     * <p>The Quality of Protection (QOP) configuration specifies the Remote Procedure
-     * Call (RPC) and data transfer protection settings configured on the Hadoop
-     * Distributed File System (HDFS) cluster. </p>
-     */
-    inline void SetQopConfiguration(const QopConfiguration& value) { m_qopConfiguration = value; }
-
-    /**
-     * <p>The Quality of Protection (QOP) configuration specifies the Remote Procedure
-     * Call (RPC) and data transfer protection settings configured on the Hadoop
-     * Distributed File System (HDFS) cluster. </p>
-     */
-    inline void SetQopConfiguration(QopConfiguration&& value) { m_qopConfiguration = std::move(value); }
-
-    /**
-     * <p>The Quality of Protection (QOP) configuration specifies the Remote Procedure
-     * Call (RPC) and data transfer protection settings configured on the Hadoop
-     * Distributed File System (HDFS) cluster. </p>
-     */
-    inline DescribeLocationHdfsResult& WithQopConfiguration(const QopConfiguration& value) { SetQopConfiguration(value); return *this;}
-
-    /**
-     * <p>The Quality of Protection (QOP) configuration specifies the Remote Procedure
-     * Call (RPC) and data transfer protection settings configured on the Hadoop
-     * Distributed File System (HDFS) cluster. </p>
-     */
-    inline DescribeLocationHdfsResult& WithQopConfiguration(QopConfiguration&& value) { SetQopConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of authentication used to determine the identity of the user. </p>
      */
-    inline const HdfsAuthenticationType& GetAuthenticationType() const{ return m_authenticationType; }
+    inline HdfsAuthenticationType GetAuthenticationType() const { return m_authenticationType; }
+    inline void SetAuthenticationType(HdfsAuthenticationType value) { m_authenticationTypeHasBeenSet = true; m_authenticationType = value; }
+    inline DescribeLocationHdfsResult& WithAuthenticationType(HdfsAuthenticationType value) { SetAuthenticationType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The type of authentication used to determine the identity of the user. </p>
-     */
-    inline void SetAuthenticationType(const HdfsAuthenticationType& value) { m_authenticationType = value; }
-
-    /**
-     * <p>The type of authentication used to determine the identity of the user. </p>
-     */
-    inline void SetAuthenticationType(HdfsAuthenticationType&& value) { m_authenticationType = std::move(value); }
-
-    /**
-     * <p>The type of authentication used to determine the identity of the user. </p>
-     */
-    inline DescribeLocationHdfsResult& WithAuthenticationType(const HdfsAuthenticationType& value) { SetAuthenticationType(value); return *this;}
-
-    /**
-     * <p>The type of authentication used to determine the identity of the user. </p>
-     */
-    inline DescribeLocationHdfsResult& WithAuthenticationType(HdfsAuthenticationType&& value) { SetAuthenticationType(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The user name used to identify the client on the host operating system. This
+     * <p>The user name to identify the client on the host operating system. This
      * parameter is used if the <code>AuthenticationType</code> is defined as
      * <code>SIMPLE</code>.</p>
      */
-    inline const Aws::String& GetSimpleUser() const{ return m_simpleUser; }
+    inline const Aws::String& GetSimpleUser() const { return m_simpleUser; }
+    template<typename SimpleUserT = Aws::String>
+    void SetSimpleUser(SimpleUserT&& value) { m_simpleUserHasBeenSet = true; m_simpleUser = std::forward<SimpleUserT>(value); }
+    template<typename SimpleUserT = Aws::String>
+    DescribeLocationHdfsResult& WithSimpleUser(SimpleUserT&& value) { SetSimpleUser(std::forward<SimpleUserT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The user name used to identify the client on the host operating system. This
-     * parameter is used if the <code>AuthenticationType</code> is defined as
-     * <code>SIMPLE</code>.</p>
-     */
-    inline void SetSimpleUser(const Aws::String& value) { m_simpleUser = value; }
-
-    /**
-     * <p>The user name used to identify the client on the host operating system. This
-     * parameter is used if the <code>AuthenticationType</code> is defined as
-     * <code>SIMPLE</code>.</p>
-     */
-    inline void SetSimpleUser(Aws::String&& value) { m_simpleUser = std::move(value); }
-
-    /**
-     * <p>The user name used to identify the client on the host operating system. This
-     * parameter is used if the <code>AuthenticationType</code> is defined as
-     * <code>SIMPLE</code>.</p>
-     */
-    inline void SetSimpleUser(const char* value) { m_simpleUser.assign(value); }
-
-    /**
-     * <p>The user name used to identify the client on the host operating system. This
-     * parameter is used if the <code>AuthenticationType</code> is defined as
-     * <code>SIMPLE</code>.</p>
-     */
-    inline DescribeLocationHdfsResult& WithSimpleUser(const Aws::String& value) { SetSimpleUser(value); return *this;}
-
-    /**
-     * <p>The user name used to identify the client on the host operating system. This
-     * parameter is used if the <code>AuthenticationType</code> is defined as
-     * <code>SIMPLE</code>.</p>
-     */
-    inline DescribeLocationHdfsResult& WithSimpleUser(Aws::String&& value) { SetSimpleUser(std::move(value)); return *this;}
-
-    /**
-     * <p>The user name used to identify the client on the host operating system. This
-     * parameter is used if the <code>AuthenticationType</code> is defined as
-     * <code>SIMPLE</code>.</p>
-     */
-    inline DescribeLocationHdfsResult& WithSimpleUser(const char* value) { SetSimpleUser(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Kerberos principal with access to the files and folders on the HDFS
      * cluster. This parameter is used if the <code>AuthenticationType</code> is
      * defined as <code>KERBEROS</code>.</p>
      */
-    inline const Aws::String& GetKerberosPrincipal() const{ return m_kerberosPrincipal; }
+    inline const Aws::String& GetKerberosPrincipal() const { return m_kerberosPrincipal; }
+    template<typename KerberosPrincipalT = Aws::String>
+    void SetKerberosPrincipal(KerberosPrincipalT&& value) { m_kerberosPrincipalHasBeenSet = true; m_kerberosPrincipal = std::forward<KerberosPrincipalT>(value); }
+    template<typename KerberosPrincipalT = Aws::String>
+    DescribeLocationHdfsResult& WithKerberosPrincipal(KerberosPrincipalT&& value) { SetKerberosPrincipal(std::forward<KerberosPrincipalT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Kerberos principal with access to the files and folders on the HDFS
-     * cluster. This parameter is used if the <code>AuthenticationType</code> is
-     * defined as <code>KERBEROS</code>.</p>
+     * <p>The ARNs of the DataSync agents that can connect with your HDFS cluster.</p>
      */
-    inline void SetKerberosPrincipal(const Aws::String& value) { m_kerberosPrincipal = value; }
+    inline const Aws::Vector<Aws::String>& GetAgentArns() const { return m_agentArns; }
+    template<typename AgentArnsT = Aws::Vector<Aws::String>>
+    void SetAgentArns(AgentArnsT&& value) { m_agentArnsHasBeenSet = true; m_agentArns = std::forward<AgentArnsT>(value); }
+    template<typename AgentArnsT = Aws::Vector<Aws::String>>
+    DescribeLocationHdfsResult& WithAgentArns(AgentArnsT&& value) { SetAgentArns(std::forward<AgentArnsT>(value)); return *this;}
+    template<typename AgentArnsT = Aws::String>
+    DescribeLocationHdfsResult& AddAgentArns(AgentArnsT&& value) { m_agentArnsHasBeenSet = true; m_agentArns.emplace_back(std::forward<AgentArnsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The Kerberos principal with access to the files and folders on the HDFS
-     * cluster. This parameter is used if the <code>AuthenticationType</code> is
-     * defined as <code>KERBEROS</code>.</p>
-     */
-    inline void SetKerberosPrincipal(Aws::String&& value) { m_kerberosPrincipal = std::move(value); }
-
-    /**
-     * <p>The Kerberos principal with access to the files and folders on the HDFS
-     * cluster. This parameter is used if the <code>AuthenticationType</code> is
-     * defined as <code>KERBEROS</code>.</p>
-     */
-    inline void SetKerberosPrincipal(const char* value) { m_kerberosPrincipal.assign(value); }
-
-    /**
-     * <p>The Kerberos principal with access to the files and folders on the HDFS
-     * cluster. This parameter is used if the <code>AuthenticationType</code> is
-     * defined as <code>KERBEROS</code>.</p>
-     */
-    inline DescribeLocationHdfsResult& WithKerberosPrincipal(const Aws::String& value) { SetKerberosPrincipal(value); return *this;}
-
-    /**
-     * <p>The Kerberos principal with access to the files and folders on the HDFS
-     * cluster. This parameter is used if the <code>AuthenticationType</code> is
-     * defined as <code>KERBEROS</code>.</p>
-     */
-    inline DescribeLocationHdfsResult& WithKerberosPrincipal(Aws::String&& value) { SetKerberosPrincipal(std::move(value)); return *this;}
-
-    /**
-     * <p>The Kerberos principal with access to the files and folders on the HDFS
-     * cluster. This parameter is used if the <code>AuthenticationType</code> is
-     * defined as <code>KERBEROS</code>.</p>
-     */
-    inline DescribeLocationHdfsResult& WithKerberosPrincipal(const char* value) { SetKerberosPrincipal(value); return *this;}
-
-
-    /**
-     * <p>The ARNs of the agents that are used to connect to the HDFS cluster. </p>
-     */
-    inline const Aws::Vector<Aws::String>& GetAgentArns() const{ return m_agentArns; }
-
-    /**
-     * <p>The ARNs of the agents that are used to connect to the HDFS cluster. </p>
-     */
-    inline void SetAgentArns(const Aws::Vector<Aws::String>& value) { m_agentArns = value; }
-
-    /**
-     * <p>The ARNs of the agents that are used to connect to the HDFS cluster. </p>
-     */
-    inline void SetAgentArns(Aws::Vector<Aws::String>&& value) { m_agentArns = std::move(value); }
-
-    /**
-     * <p>The ARNs of the agents that are used to connect to the HDFS cluster. </p>
-     */
-    inline DescribeLocationHdfsResult& WithAgentArns(const Aws::Vector<Aws::String>& value) { SetAgentArns(value); return *this;}
-
-    /**
-     * <p>The ARNs of the agents that are used to connect to the HDFS cluster. </p>
-     */
-    inline DescribeLocationHdfsResult& WithAgentArns(Aws::Vector<Aws::String>&& value) { SetAgentArns(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARNs of the agents that are used to connect to the HDFS cluster. </p>
-     */
-    inline DescribeLocationHdfsResult& AddAgentArns(const Aws::String& value) { m_agentArns.push_back(value); return *this; }
-
-    /**
-     * <p>The ARNs of the agents that are used to connect to the HDFS cluster. </p>
-     */
-    inline DescribeLocationHdfsResult& AddAgentArns(Aws::String&& value) { m_agentArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The ARNs of the agents that are used to connect to the HDFS cluster. </p>
-     */
-    inline DescribeLocationHdfsResult& AddAgentArns(const char* value) { m_agentArns.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The time that the HDFS location was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    DescribeLocationHdfsResult& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time that the HDFS location was created.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTime = value; }
-
-    /**
-     * <p>The time that the HDFS location was created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTime = std::move(value); }
-
-    /**
-     * <p>The time that the HDFS location was created.</p>
-     */
-    inline DescribeLocationHdfsResult& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The time that the HDFS location was created.</p>
-     */
-    inline DescribeLocationHdfsResult& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeLocationHdfsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeLocationHdfsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeLocationHdfsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeLocationHdfsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_locationArn;
+    bool m_locationArnHasBeenSet = false;
 
     Aws::String m_locationUri;
+    bool m_locationUriHasBeenSet = false;
 
     Aws::Vector<HdfsNameNode> m_nameNodes;
+    bool m_nameNodesHasBeenSet = false;
 
-    int m_blockSize;
+    int m_blockSize{0};
+    bool m_blockSizeHasBeenSet = false;
 
-    int m_replicationFactor;
+    int m_replicationFactor{0};
+    bool m_replicationFactorHasBeenSet = false;
 
     Aws::String m_kmsKeyProviderUri;
+    bool m_kmsKeyProviderUriHasBeenSet = false;
 
     QopConfiguration m_qopConfiguration;
+    bool m_qopConfigurationHasBeenSet = false;
 
-    HdfsAuthenticationType m_authenticationType;
+    HdfsAuthenticationType m_authenticationType{HdfsAuthenticationType::NOT_SET};
+    bool m_authenticationTypeHasBeenSet = false;
 
     Aws::String m_simpleUser;
+    bool m_simpleUserHasBeenSet = false;
 
     Aws::String m_kerberosPrincipal;
+    bool m_kerberosPrincipalHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_agentArns;
+    bool m_agentArnsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
+    bool m_creationTimeHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -9,6 +9,7 @@
 #include <aws/chime-sdk-media-pipelines/model/MediaLiveConnectorPipeline.h>
 #include <aws/chime-sdk-media-pipelines/model/MediaConcatenationPipeline.h>
 #include <aws/chime-sdk-media-pipelines/model/MediaInsightsPipeline.h>
+#include <aws/chime-sdk-media-pipelines/model/MediaStreamPipeline.h>
 #include <utility>
 
 namespace Aws
@@ -35,135 +36,71 @@ namespace Model
   class MediaPipeline
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API MediaPipeline();
+    AWS_CHIMESDKMEDIAPIPELINES_API MediaPipeline() = default;
     AWS_CHIMESDKMEDIAPIPELINES_API MediaPipeline(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API MediaPipeline& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A pipeline that enables users to capture audio and video.</p>
      */
-    inline const MediaCapturePipeline& GetMediaCapturePipeline() const{ return m_mediaCapturePipeline; }
-
-    /**
-     * <p>A pipeline that enables users to capture audio and video.</p>
-     */
+    inline const MediaCapturePipeline& GetMediaCapturePipeline() const { return m_mediaCapturePipeline; }
     inline bool MediaCapturePipelineHasBeenSet() const { return m_mediaCapturePipelineHasBeenSet; }
+    template<typename MediaCapturePipelineT = MediaCapturePipeline>
+    void SetMediaCapturePipeline(MediaCapturePipelineT&& value) { m_mediaCapturePipelineHasBeenSet = true; m_mediaCapturePipeline = std::forward<MediaCapturePipelineT>(value); }
+    template<typename MediaCapturePipelineT = MediaCapturePipeline>
+    MediaPipeline& WithMediaCapturePipeline(MediaCapturePipelineT&& value) { SetMediaCapturePipeline(std::forward<MediaCapturePipelineT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A pipeline that enables users to capture audio and video.</p>
-     */
-    inline void SetMediaCapturePipeline(const MediaCapturePipeline& value) { m_mediaCapturePipelineHasBeenSet = true; m_mediaCapturePipeline = value; }
-
-    /**
-     * <p>A pipeline that enables users to capture audio and video.</p>
-     */
-    inline void SetMediaCapturePipeline(MediaCapturePipeline&& value) { m_mediaCapturePipelineHasBeenSet = true; m_mediaCapturePipeline = std::move(value); }
-
-    /**
-     * <p>A pipeline that enables users to capture audio and video.</p>
-     */
-    inline MediaPipeline& WithMediaCapturePipeline(const MediaCapturePipeline& value) { SetMediaCapturePipeline(value); return *this;}
-
-    /**
-     * <p>A pipeline that enables users to capture audio and video.</p>
-     */
-    inline MediaPipeline& WithMediaCapturePipeline(MediaCapturePipeline&& value) { SetMediaCapturePipeline(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The connector pipeline of the media pipeline.</p>
      */
-    inline const MediaLiveConnectorPipeline& GetMediaLiveConnectorPipeline() const{ return m_mediaLiveConnectorPipeline; }
-
-    /**
-     * <p>The connector pipeline of the media pipeline.</p>
-     */
+    inline const MediaLiveConnectorPipeline& GetMediaLiveConnectorPipeline() const { return m_mediaLiveConnectorPipeline; }
     inline bool MediaLiveConnectorPipelineHasBeenSet() const { return m_mediaLiveConnectorPipelineHasBeenSet; }
+    template<typename MediaLiveConnectorPipelineT = MediaLiveConnectorPipeline>
+    void SetMediaLiveConnectorPipeline(MediaLiveConnectorPipelineT&& value) { m_mediaLiveConnectorPipelineHasBeenSet = true; m_mediaLiveConnectorPipeline = std::forward<MediaLiveConnectorPipelineT>(value); }
+    template<typename MediaLiveConnectorPipelineT = MediaLiveConnectorPipeline>
+    MediaPipeline& WithMediaLiveConnectorPipeline(MediaLiveConnectorPipelineT&& value) { SetMediaLiveConnectorPipeline(std::forward<MediaLiveConnectorPipelineT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The connector pipeline of the media pipeline.</p>
-     */
-    inline void SetMediaLiveConnectorPipeline(const MediaLiveConnectorPipeline& value) { m_mediaLiveConnectorPipelineHasBeenSet = true; m_mediaLiveConnectorPipeline = value; }
-
-    /**
-     * <p>The connector pipeline of the media pipeline.</p>
-     */
-    inline void SetMediaLiveConnectorPipeline(MediaLiveConnectorPipeline&& value) { m_mediaLiveConnectorPipelineHasBeenSet = true; m_mediaLiveConnectorPipeline = std::move(value); }
-
-    /**
-     * <p>The connector pipeline of the media pipeline.</p>
-     */
-    inline MediaPipeline& WithMediaLiveConnectorPipeline(const MediaLiveConnectorPipeline& value) { SetMediaLiveConnectorPipeline(value); return *this;}
-
-    /**
-     * <p>The connector pipeline of the media pipeline.</p>
-     */
-    inline MediaPipeline& WithMediaLiveConnectorPipeline(MediaLiveConnectorPipeline&& value) { SetMediaLiveConnectorPipeline(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The media concatenation pipeline in a media pipeline.</p>
      */
-    inline const MediaConcatenationPipeline& GetMediaConcatenationPipeline() const{ return m_mediaConcatenationPipeline; }
-
-    /**
-     * <p>The media concatenation pipeline in a media pipeline.</p>
-     */
+    inline const MediaConcatenationPipeline& GetMediaConcatenationPipeline() const { return m_mediaConcatenationPipeline; }
     inline bool MediaConcatenationPipelineHasBeenSet() const { return m_mediaConcatenationPipelineHasBeenSet; }
+    template<typename MediaConcatenationPipelineT = MediaConcatenationPipeline>
+    void SetMediaConcatenationPipeline(MediaConcatenationPipelineT&& value) { m_mediaConcatenationPipelineHasBeenSet = true; m_mediaConcatenationPipeline = std::forward<MediaConcatenationPipelineT>(value); }
+    template<typename MediaConcatenationPipelineT = MediaConcatenationPipeline>
+    MediaPipeline& WithMediaConcatenationPipeline(MediaConcatenationPipelineT&& value) { SetMediaConcatenationPipeline(std::forward<MediaConcatenationPipelineT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The media concatenation pipeline in a media pipeline.</p>
-     */
-    inline void SetMediaConcatenationPipeline(const MediaConcatenationPipeline& value) { m_mediaConcatenationPipelineHasBeenSet = true; m_mediaConcatenationPipeline = value; }
-
-    /**
-     * <p>The media concatenation pipeline in a media pipeline.</p>
-     */
-    inline void SetMediaConcatenationPipeline(MediaConcatenationPipeline&& value) { m_mediaConcatenationPipelineHasBeenSet = true; m_mediaConcatenationPipeline = std::move(value); }
-
-    /**
-     * <p>The media concatenation pipeline in a media pipeline.</p>
-     */
-    inline MediaPipeline& WithMediaConcatenationPipeline(const MediaConcatenationPipeline& value) { SetMediaConcatenationPipeline(value); return *this;}
-
-    /**
-     * <p>The media concatenation pipeline in a media pipeline.</p>
-     */
-    inline MediaPipeline& WithMediaConcatenationPipeline(MediaConcatenationPipeline&& value) { SetMediaConcatenationPipeline(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The media insights pipeline of a media pipeline.</p>
      */
-    inline const MediaInsightsPipeline& GetMediaInsightsPipeline() const{ return m_mediaInsightsPipeline; }
-
-    /**
-     * <p>The media insights pipeline of a media pipeline.</p>
-     */
+    inline const MediaInsightsPipeline& GetMediaInsightsPipeline() const { return m_mediaInsightsPipeline; }
     inline bool MediaInsightsPipelineHasBeenSet() const { return m_mediaInsightsPipelineHasBeenSet; }
+    template<typename MediaInsightsPipelineT = MediaInsightsPipeline>
+    void SetMediaInsightsPipeline(MediaInsightsPipelineT&& value) { m_mediaInsightsPipelineHasBeenSet = true; m_mediaInsightsPipeline = std::forward<MediaInsightsPipelineT>(value); }
+    template<typename MediaInsightsPipelineT = MediaInsightsPipeline>
+    MediaPipeline& WithMediaInsightsPipeline(MediaInsightsPipelineT&& value) { SetMediaInsightsPipeline(std::forward<MediaInsightsPipelineT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The media insights pipeline of a media pipeline.</p>
+     * <p>Designates a media pipeline as a media stream pipeline.</p>
      */
-    inline void SetMediaInsightsPipeline(const MediaInsightsPipeline& value) { m_mediaInsightsPipelineHasBeenSet = true; m_mediaInsightsPipeline = value; }
-
-    /**
-     * <p>The media insights pipeline of a media pipeline.</p>
-     */
-    inline void SetMediaInsightsPipeline(MediaInsightsPipeline&& value) { m_mediaInsightsPipelineHasBeenSet = true; m_mediaInsightsPipeline = std::move(value); }
-
-    /**
-     * <p>The media insights pipeline of a media pipeline.</p>
-     */
-    inline MediaPipeline& WithMediaInsightsPipeline(const MediaInsightsPipeline& value) { SetMediaInsightsPipeline(value); return *this;}
-
-    /**
-     * <p>The media insights pipeline of a media pipeline.</p>
-     */
-    inline MediaPipeline& WithMediaInsightsPipeline(MediaInsightsPipeline&& value) { SetMediaInsightsPipeline(std::move(value)); return *this;}
-
+    inline const MediaStreamPipeline& GetMediaStreamPipeline() const { return m_mediaStreamPipeline; }
+    inline bool MediaStreamPipelineHasBeenSet() const { return m_mediaStreamPipelineHasBeenSet; }
+    template<typename MediaStreamPipelineT = MediaStreamPipeline>
+    void SetMediaStreamPipeline(MediaStreamPipelineT&& value) { m_mediaStreamPipelineHasBeenSet = true; m_mediaStreamPipeline = std::forward<MediaStreamPipelineT>(value); }
+    template<typename MediaStreamPipelineT = MediaStreamPipeline>
+    MediaPipeline& WithMediaStreamPipeline(MediaStreamPipelineT&& value) { SetMediaStreamPipeline(std::forward<MediaStreamPipelineT>(value)); return *this;}
+    ///@}
   private:
 
     MediaCapturePipeline m_mediaCapturePipeline;
@@ -177,6 +114,9 @@ namespace Model
 
     MediaInsightsPipeline m_mediaInsightsPipeline;
     bool m_mediaInsightsPipelineHasBeenSet = false;
+
+    MediaStreamPipeline m_mediaStreamPipeline;
+    bool m_mediaStreamPipelineHasBeenSet = false;
   };
 
 } // namespace Model

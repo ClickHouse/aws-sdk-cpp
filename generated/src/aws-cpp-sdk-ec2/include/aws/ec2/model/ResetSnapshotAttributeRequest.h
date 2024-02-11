@@ -22,7 +22,7 @@ namespace Model
   class ResetSnapshotAttributeRequest : public EC2Request
   {
   public:
-    AWS_EC2_API ResetSnapshotAttributeRequest();
+    AWS_EC2_API ResetSnapshotAttributeRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,125 +37,50 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The attribute to reset. Currently, only the attribute for permission to
      * create volumes can be reset.</p>
      */
-    inline const SnapshotAttributeName& GetAttribute() const{ return m_attribute; }
-
-    /**
-     * <p>The attribute to reset. Currently, only the attribute for permission to
-     * create volumes can be reset.</p>
-     */
+    inline SnapshotAttributeName GetAttribute() const { return m_attribute; }
     inline bool AttributeHasBeenSet() const { return m_attributeHasBeenSet; }
+    inline void SetAttribute(SnapshotAttributeName value) { m_attributeHasBeenSet = true; m_attribute = value; }
+    inline ResetSnapshotAttributeRequest& WithAttribute(SnapshotAttributeName value) { SetAttribute(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The attribute to reset. Currently, only the attribute for permission to
-     * create volumes can be reset.</p>
-     */
-    inline void SetAttribute(const SnapshotAttributeName& value) { m_attributeHasBeenSet = true; m_attribute = value; }
-
-    /**
-     * <p>The attribute to reset. Currently, only the attribute for permission to
-     * create volumes can be reset.</p>
-     */
-    inline void SetAttribute(SnapshotAttributeName&& value) { m_attributeHasBeenSet = true; m_attribute = std::move(value); }
-
-    /**
-     * <p>The attribute to reset. Currently, only the attribute for permission to
-     * create volumes can be reset.</p>
-     */
-    inline ResetSnapshotAttributeRequest& WithAttribute(const SnapshotAttributeName& value) { SetAttribute(value); return *this;}
-
-    /**
-     * <p>The attribute to reset. Currently, only the attribute for permission to
-     * create volumes can be reset.</p>
-     */
-    inline ResetSnapshotAttributeRequest& WithAttribute(SnapshotAttributeName&& value) { SetAttribute(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the snapshot.</p>
      */
-    inline const Aws::String& GetSnapshotId() const{ return m_snapshotId; }
-
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
+    inline const Aws::String& GetSnapshotId() const { return m_snapshotId; }
     inline bool SnapshotIdHasBeenSet() const { return m_snapshotIdHasBeenSet; }
+    template<typename SnapshotIdT = Aws::String>
+    void SetSnapshotId(SnapshotIdT&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = std::forward<SnapshotIdT>(value); }
+    template<typename SnapshotIdT = Aws::String>
+    ResetSnapshotAttributeRequest& WithSnapshotId(SnapshotIdT&& value) { SetSnapshotId(std::forward<SnapshotIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
-    inline void SetSnapshotId(const Aws::String& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = value; }
-
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
-    inline void SetSnapshotId(Aws::String&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = std::move(value); }
-
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
-    inline void SetSnapshotId(const char* value) { m_snapshotIdHasBeenSet = true; m_snapshotId.assign(value); }
-
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
-    inline ResetSnapshotAttributeRequest& WithSnapshotId(const Aws::String& value) { SetSnapshotId(value); return *this;}
-
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
-    inline ResetSnapshotAttributeRequest& WithSnapshotId(Aws::String&& value) { SetSnapshotId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
-    inline ResetSnapshotAttributeRequest& WithSnapshotId(const char* value) { SetSnapshotId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline ResetSnapshotAttributeRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
-
+    ///@}
   private:
 
-    SnapshotAttributeName m_attribute;
+    SnapshotAttributeName m_attribute{SnapshotAttributeName::NOT_SET};
     bool m_attributeHasBeenSet = false;
 
     Aws::String m_snapshotId;
     bool m_snapshotIdHasBeenSet = false;
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
   };
 

@@ -35,159 +35,52 @@ namespace Model
   class IPSetSummary
   {
   public:
-    AWS_WAFV2_API IPSetSummary();
+    AWS_WAFV2_API IPSetSummary() = default;
     AWS_WAFV2_API IPSetSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API IPSetSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the IP set. You cannot change the name of an <code>IPSet</code>
      * after you create it.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the IP set. You cannot change the name of an <code>IPSet</code>
-     * after you create it.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    IPSetSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the IP set. You cannot change the name of an <code>IPSet</code>
-     * after you create it.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the IP set. You cannot change the name of an <code>IPSet</code>
-     * after you create it.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the IP set. You cannot change the name of an <code>IPSet</code>
-     * after you create it.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the IP set. You cannot change the name of an <code>IPSet</code>
-     * after you create it.</p>
-     */
-    inline IPSetSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the IP set. You cannot change the name of an <code>IPSet</code>
-     * after you create it.</p>
-     */
-    inline IPSetSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the IP set. You cannot change the name of an <code>IPSet</code>
-     * after you create it.</p>
-     */
-    inline IPSetSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for the set. This ID is returned in the responses to
      * create and list commands. You provide it to operations like update and
      * delete.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    IPSetSummary& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline IPSetSummary& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline IPSetSummary& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline IPSetSummary& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the IP set that helps with identification. </p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the IP set that helps with identification. </p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    IPSetSummary& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the IP set that helps with identification. </p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the IP set that helps with identification. </p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the IP set that helps with identification. </p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the IP set that helps with identification. </p>
-     */
-    inline IPSetSummary& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the IP set that helps with identification. </p>
-     */
-    inline IPSetSummary& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the IP set that helps with identification. </p>
-     */
-    inline IPSetSummary& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A token used for optimistic locking. WAF returns a token to your
      * <code>get</code> and <code>list</code> requests, to mark the state of the entity
@@ -198,133 +91,25 @@ namespace Model
      * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
      * another <code>get</code>, and use the new token returned by that operation. </p>
      */
-    inline const Aws::String& GetLockToken() const{ return m_lockToken; }
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
+    inline const Aws::String& GetLockToken() const { return m_lockToken; }
     inline bool LockTokenHasBeenSet() const { return m_lockTokenHasBeenSet; }
+    template<typename LockTokenT = Aws::String>
+    void SetLockToken(LockTokenT&& value) { m_lockTokenHasBeenSet = true; m_lockToken = std::forward<LockTokenT>(value); }
+    template<typename LockTokenT = Aws::String>
+    IPSetSummary& WithLockToken(LockTokenT&& value) { SetLockToken(std::forward<LockTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
-    inline void SetLockToken(const Aws::String& value) { m_lockTokenHasBeenSet = true; m_lockToken = value; }
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
-    inline void SetLockToken(Aws::String&& value) { m_lockTokenHasBeenSet = true; m_lockToken = std::move(value); }
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
-    inline void SetLockToken(const char* value) { m_lockTokenHasBeenSet = true; m_lockToken.assign(value); }
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
-    inline IPSetSummary& WithLockToken(const Aws::String& value) { SetLockToken(value); return *this;}
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
-    inline IPSetSummary& WithLockToken(Aws::String&& value) { SetLockToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
-    inline IPSetSummary& WithLockToken(const char* value) { SetLockToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the entity.</p>
      */
-    inline const Aws::String& GetARN() const{ return m_aRN; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
+    inline const Aws::String& GetARN() const { return m_aRN; }
     inline bool ARNHasBeenSet() const { return m_aRNHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline void SetARN(const Aws::String& value) { m_aRNHasBeenSet = true; m_aRN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline void SetARN(Aws::String&& value) { m_aRNHasBeenSet = true; m_aRN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline void SetARN(const char* value) { m_aRNHasBeenSet = true; m_aRN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline IPSetSummary& WithARN(const Aws::String& value) { SetARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline IPSetSummary& WithARN(Aws::String&& value) { SetARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline IPSetSummary& WithARN(const char* value) { SetARN(value); return *this;}
-
+    template<typename ARNT = Aws::String>
+    void SetARN(ARNT&& value) { m_aRNHasBeenSet = true; m_aRN = std::forward<ARNT>(value); }
+    template<typename ARNT = Aws::String>
+    IPSetSummary& WithARN(ARNT&& value) { SetARN(std::forward<ARNT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

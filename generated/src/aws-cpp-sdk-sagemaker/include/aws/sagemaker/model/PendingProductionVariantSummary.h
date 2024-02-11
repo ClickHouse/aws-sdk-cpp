@@ -10,6 +10,8 @@
 #include <aws/sagemaker/model/ProductionVariantInstanceType.h>
 #include <aws/sagemaker/model/ProductionVariantAcceleratorType.h>
 #include <aws/sagemaker/model/ProductionVariantServerlessConfig.h>
+#include <aws/sagemaker/model/ProductionVariantManagedInstanceScaling.h>
+#include <aws/sagemaker/model/ProductionVariantRoutingConfig.h>
 #include <aws/sagemaker/model/DeployedImage.h>
 #include <aws/sagemaker/model/ProductionVariantStatus.h>
 #include <utility>
@@ -31,422 +33,187 @@ namespace Model
 
   /**
    * <p>The production variant summary for a deployment when an endpoint is creating
-   * or updating with the <code> <a>CreateEndpoint</a> </code> or <code>
-   * <a>UpdateEndpoint</a> </code> operations. Describes the <code>VariantStatus
-   * </code>, weight and capacity for a production variant associated with an
-   * endpoint. </p><p><h3>See Also:</h3>   <a
+   * or updating with the <a
+   * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html">CreateEndpoint</a>
+   * or <a
+   * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateEndpoint.html">UpdateEndpoint</a>
+   * operations. Describes the <code>VariantStatus </code>, weight and capacity for a
+   * production variant associated with an endpoint. </p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/PendingProductionVariantSummary">AWS
    * API Reference</a></p>
    */
   class PendingProductionVariantSummary
   {
   public:
-    AWS_SAGEMAKER_API PendingProductionVariantSummary();
+    AWS_SAGEMAKER_API PendingProductionVariantSummary() = default;
     AWS_SAGEMAKER_API PendingProductionVariantSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API PendingProductionVariantSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the variant.</p>
      */
-    inline const Aws::String& GetVariantName() const{ return m_variantName; }
-
-    /**
-     * <p>The name of the variant.</p>
-     */
+    inline const Aws::String& GetVariantName() const { return m_variantName; }
     inline bool VariantNameHasBeenSet() const { return m_variantNameHasBeenSet; }
+    template<typename VariantNameT = Aws::String>
+    void SetVariantName(VariantNameT&& value) { m_variantNameHasBeenSet = true; m_variantName = std::forward<VariantNameT>(value); }
+    template<typename VariantNameT = Aws::String>
+    PendingProductionVariantSummary& WithVariantName(VariantNameT&& value) { SetVariantName(std::forward<VariantNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the variant.</p>
-     */
-    inline void SetVariantName(const Aws::String& value) { m_variantNameHasBeenSet = true; m_variantName = value; }
-
-    /**
-     * <p>The name of the variant.</p>
-     */
-    inline void SetVariantName(Aws::String&& value) { m_variantNameHasBeenSet = true; m_variantName = std::move(value); }
-
-    /**
-     * <p>The name of the variant.</p>
-     */
-    inline void SetVariantName(const char* value) { m_variantNameHasBeenSet = true; m_variantName.assign(value); }
-
-    /**
-     * <p>The name of the variant.</p>
-     */
-    inline PendingProductionVariantSummary& WithVariantName(const Aws::String& value) { SetVariantName(value); return *this;}
-
-    /**
-     * <p>The name of the variant.</p>
-     */
-    inline PendingProductionVariantSummary& WithVariantName(Aws::String&& value) { SetVariantName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the variant.</p>
-     */
-    inline PendingProductionVariantSummary& WithVariantName(const char* value) { SetVariantName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of <code>DeployedImage</code> objects that specify the Amazon EC2
      * Container Registry paths of the inference images deployed on instances of this
      * <code>ProductionVariant</code>.</p>
      */
-    inline const Aws::Vector<DeployedImage>& GetDeployedImages() const{ return m_deployedImages; }
-
-    /**
-     * <p>An array of <code>DeployedImage</code> objects that specify the Amazon EC2
-     * Container Registry paths of the inference images deployed on instances of this
-     * <code>ProductionVariant</code>.</p>
-     */
+    inline const Aws::Vector<DeployedImage>& GetDeployedImages() const { return m_deployedImages; }
     inline bool DeployedImagesHasBeenSet() const { return m_deployedImagesHasBeenSet; }
+    template<typename DeployedImagesT = Aws::Vector<DeployedImage>>
+    void SetDeployedImages(DeployedImagesT&& value) { m_deployedImagesHasBeenSet = true; m_deployedImages = std::forward<DeployedImagesT>(value); }
+    template<typename DeployedImagesT = Aws::Vector<DeployedImage>>
+    PendingProductionVariantSummary& WithDeployedImages(DeployedImagesT&& value) { SetDeployedImages(std::forward<DeployedImagesT>(value)); return *this;}
+    template<typename DeployedImagesT = DeployedImage>
+    PendingProductionVariantSummary& AddDeployedImages(DeployedImagesT&& value) { m_deployedImagesHasBeenSet = true; m_deployedImages.emplace_back(std::forward<DeployedImagesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of <code>DeployedImage</code> objects that specify the Amazon EC2
-     * Container Registry paths of the inference images deployed on instances of this
-     * <code>ProductionVariant</code>.</p>
-     */
-    inline void SetDeployedImages(const Aws::Vector<DeployedImage>& value) { m_deployedImagesHasBeenSet = true; m_deployedImages = value; }
-
-    /**
-     * <p>An array of <code>DeployedImage</code> objects that specify the Amazon EC2
-     * Container Registry paths of the inference images deployed on instances of this
-     * <code>ProductionVariant</code>.</p>
-     */
-    inline void SetDeployedImages(Aws::Vector<DeployedImage>&& value) { m_deployedImagesHasBeenSet = true; m_deployedImages = std::move(value); }
-
-    /**
-     * <p>An array of <code>DeployedImage</code> objects that specify the Amazon EC2
-     * Container Registry paths of the inference images deployed on instances of this
-     * <code>ProductionVariant</code>.</p>
-     */
-    inline PendingProductionVariantSummary& WithDeployedImages(const Aws::Vector<DeployedImage>& value) { SetDeployedImages(value); return *this;}
-
-    /**
-     * <p>An array of <code>DeployedImage</code> objects that specify the Amazon EC2
-     * Container Registry paths of the inference images deployed on instances of this
-     * <code>ProductionVariant</code>.</p>
-     */
-    inline PendingProductionVariantSummary& WithDeployedImages(Aws::Vector<DeployedImage>&& value) { SetDeployedImages(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of <code>DeployedImage</code> objects that specify the Amazon EC2
-     * Container Registry paths of the inference images deployed on instances of this
-     * <code>ProductionVariant</code>.</p>
-     */
-    inline PendingProductionVariantSummary& AddDeployedImages(const DeployedImage& value) { m_deployedImagesHasBeenSet = true; m_deployedImages.push_back(value); return *this; }
-
-    /**
-     * <p>An array of <code>DeployedImage</code> objects that specify the Amazon EC2
-     * Container Registry paths of the inference images deployed on instances of this
-     * <code>ProductionVariant</code>.</p>
-     */
-    inline PendingProductionVariantSummary& AddDeployedImages(DeployedImage&& value) { m_deployedImagesHasBeenSet = true; m_deployedImages.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The weight associated with the variant.</p>
      */
-    inline double GetCurrentWeight() const{ return m_currentWeight; }
-
-    /**
-     * <p>The weight associated with the variant.</p>
-     */
+    inline double GetCurrentWeight() const { return m_currentWeight; }
     inline bool CurrentWeightHasBeenSet() const { return m_currentWeightHasBeenSet; }
-
-    /**
-     * <p>The weight associated with the variant.</p>
-     */
     inline void SetCurrentWeight(double value) { m_currentWeightHasBeenSet = true; m_currentWeight = value; }
-
-    /**
-     * <p>The weight associated with the variant.</p>
-     */
     inline PendingProductionVariantSummary& WithCurrentWeight(double value) { SetCurrentWeight(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The requested weight for the variant in this deployment, as specified in the
      * endpoint configuration for the endpoint. The value is taken from the request to
-     * the <code> <a>CreateEndpointConfig</a> </code> operation.</p>
+     * the <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html">CreateEndpointConfig</a>
+     * operation.</p>
      */
-    inline double GetDesiredWeight() const{ return m_desiredWeight; }
-
-    /**
-     * <p>The requested weight for the variant in this deployment, as specified in the
-     * endpoint configuration for the endpoint. The value is taken from the request to
-     * the <code> <a>CreateEndpointConfig</a> </code> operation.</p>
-     */
+    inline double GetDesiredWeight() const { return m_desiredWeight; }
     inline bool DesiredWeightHasBeenSet() const { return m_desiredWeightHasBeenSet; }
-
-    /**
-     * <p>The requested weight for the variant in this deployment, as specified in the
-     * endpoint configuration for the endpoint. The value is taken from the request to
-     * the <code> <a>CreateEndpointConfig</a> </code> operation.</p>
-     */
     inline void SetDesiredWeight(double value) { m_desiredWeightHasBeenSet = true; m_desiredWeight = value; }
-
-    /**
-     * <p>The requested weight for the variant in this deployment, as specified in the
-     * endpoint configuration for the endpoint. The value is taken from the request to
-     * the <code> <a>CreateEndpointConfig</a> </code> operation.</p>
-     */
     inline PendingProductionVariantSummary& WithDesiredWeight(double value) { SetDesiredWeight(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of instances associated with the variant.</p>
      */
-    inline int GetCurrentInstanceCount() const{ return m_currentInstanceCount; }
-
-    /**
-     * <p>The number of instances associated with the variant.</p>
-     */
+    inline int GetCurrentInstanceCount() const { return m_currentInstanceCount; }
     inline bool CurrentInstanceCountHasBeenSet() const { return m_currentInstanceCountHasBeenSet; }
-
-    /**
-     * <p>The number of instances associated with the variant.</p>
-     */
     inline void SetCurrentInstanceCount(int value) { m_currentInstanceCountHasBeenSet = true; m_currentInstanceCount = value; }
-
-    /**
-     * <p>The number of instances associated with the variant.</p>
-     */
     inline PendingProductionVariantSummary& WithCurrentInstanceCount(int value) { SetCurrentInstanceCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of instances requested in this deployment, as specified in the
      * endpoint configuration for the endpoint. The value is taken from the request to
-     * the <code> <a>CreateEndpointConfig</a> </code> operation.</p>
+     * the <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html">CreateEndpointConfig</a>
+     * operation.</p>
      */
-    inline int GetDesiredInstanceCount() const{ return m_desiredInstanceCount; }
-
-    /**
-     * <p>The number of instances requested in this deployment, as specified in the
-     * endpoint configuration for the endpoint. The value is taken from the request to
-     * the <code> <a>CreateEndpointConfig</a> </code> operation.</p>
-     */
+    inline int GetDesiredInstanceCount() const { return m_desiredInstanceCount; }
     inline bool DesiredInstanceCountHasBeenSet() const { return m_desiredInstanceCountHasBeenSet; }
-
-    /**
-     * <p>The number of instances requested in this deployment, as specified in the
-     * endpoint configuration for the endpoint. The value is taken from the request to
-     * the <code> <a>CreateEndpointConfig</a> </code> operation.</p>
-     */
     inline void SetDesiredInstanceCount(int value) { m_desiredInstanceCountHasBeenSet = true; m_desiredInstanceCount = value; }
-
-    /**
-     * <p>The number of instances requested in this deployment, as specified in the
-     * endpoint configuration for the endpoint. The value is taken from the request to
-     * the <code> <a>CreateEndpointConfig</a> </code> operation.</p>
-     */
     inline PendingProductionVariantSummary& WithDesiredInstanceCount(int value) { SetDesiredInstanceCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The type of instances associated with the variant.</p>
      */
-    inline const ProductionVariantInstanceType& GetInstanceType() const{ return m_instanceType; }
-
-    /**
-     * <p>The type of instances associated with the variant.</p>
-     */
+    inline ProductionVariantInstanceType GetInstanceType() const { return m_instanceType; }
     inline bool InstanceTypeHasBeenSet() const { return m_instanceTypeHasBeenSet; }
+    inline void SetInstanceType(ProductionVariantInstanceType value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
+    inline PendingProductionVariantSummary& WithInstanceType(ProductionVariantInstanceType value) { SetInstanceType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The type of instances associated with the variant.</p>
+     * <p>This parameter is no longer supported. Elastic Inference (EI) is no longer
+     * available.</p> <p>This parameter was used to specify the size of the EI instance
+     * to use for the production variant.</p>
      */
-    inline void SetInstanceType(const ProductionVariantInstanceType& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
-
-    /**
-     * <p>The type of instances associated with the variant.</p>
-     */
-    inline void SetInstanceType(ProductionVariantInstanceType&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
-
-    /**
-     * <p>The type of instances associated with the variant.</p>
-     */
-    inline PendingProductionVariantSummary& WithInstanceType(const ProductionVariantInstanceType& value) { SetInstanceType(value); return *this;}
-
-    /**
-     * <p>The type of instances associated with the variant.</p>
-     */
-    inline PendingProductionVariantSummary& WithInstanceType(ProductionVariantInstanceType&& value) { SetInstanceType(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The size of the Elastic Inference (EI) instance to use for the production
-     * variant. EI instances provide on-demand GPU computing for inference. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html">Using Elastic
-     * Inference in Amazon SageMaker</a>.</p>
-     */
-    inline const ProductionVariantAcceleratorType& GetAcceleratorType() const{ return m_acceleratorType; }
-
-    /**
-     * <p>The size of the Elastic Inference (EI) instance to use for the production
-     * variant. EI instances provide on-demand GPU computing for inference. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html">Using Elastic
-     * Inference in Amazon SageMaker</a>.</p>
-     */
+    inline ProductionVariantAcceleratorType GetAcceleratorType() const { return m_acceleratorType; }
     inline bool AcceleratorTypeHasBeenSet() const { return m_acceleratorTypeHasBeenSet; }
+    inline void SetAcceleratorType(ProductionVariantAcceleratorType value) { m_acceleratorTypeHasBeenSet = true; m_acceleratorType = value; }
+    inline PendingProductionVariantSummary& WithAcceleratorType(ProductionVariantAcceleratorType value) { SetAcceleratorType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The size of the Elastic Inference (EI) instance to use for the production
-     * variant. EI instances provide on-demand GPU computing for inference. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html">Using Elastic
-     * Inference in Amazon SageMaker</a>.</p>
-     */
-    inline void SetAcceleratorType(const ProductionVariantAcceleratorType& value) { m_acceleratorTypeHasBeenSet = true; m_acceleratorType = value; }
-
-    /**
-     * <p>The size of the Elastic Inference (EI) instance to use for the production
-     * variant. EI instances provide on-demand GPU computing for inference. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html">Using Elastic
-     * Inference in Amazon SageMaker</a>.</p>
-     */
-    inline void SetAcceleratorType(ProductionVariantAcceleratorType&& value) { m_acceleratorTypeHasBeenSet = true; m_acceleratorType = std::move(value); }
-
-    /**
-     * <p>The size of the Elastic Inference (EI) instance to use for the production
-     * variant. EI instances provide on-demand GPU computing for inference. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html">Using Elastic
-     * Inference in Amazon SageMaker</a>.</p>
-     */
-    inline PendingProductionVariantSummary& WithAcceleratorType(const ProductionVariantAcceleratorType& value) { SetAcceleratorType(value); return *this;}
-
-    /**
-     * <p>The size of the Elastic Inference (EI) instance to use for the production
-     * variant. EI instances provide on-demand GPU computing for inference. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html">Using Elastic
-     * Inference in Amazon SageMaker</a>.</p>
-     */
-    inline PendingProductionVariantSummary& WithAcceleratorType(ProductionVariantAcceleratorType&& value) { SetAcceleratorType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The endpoint variant status which describes the current deployment stage
      * status or operational status.</p>
      */
-    inline const Aws::Vector<ProductionVariantStatus>& GetVariantStatus() const{ return m_variantStatus; }
-
-    /**
-     * <p>The endpoint variant status which describes the current deployment stage
-     * status or operational status.</p>
-     */
+    inline const Aws::Vector<ProductionVariantStatus>& GetVariantStatus() const { return m_variantStatus; }
     inline bool VariantStatusHasBeenSet() const { return m_variantStatusHasBeenSet; }
+    template<typename VariantStatusT = Aws::Vector<ProductionVariantStatus>>
+    void SetVariantStatus(VariantStatusT&& value) { m_variantStatusHasBeenSet = true; m_variantStatus = std::forward<VariantStatusT>(value); }
+    template<typename VariantStatusT = Aws::Vector<ProductionVariantStatus>>
+    PendingProductionVariantSummary& WithVariantStatus(VariantStatusT&& value) { SetVariantStatus(std::forward<VariantStatusT>(value)); return *this;}
+    template<typename VariantStatusT = ProductionVariantStatus>
+    PendingProductionVariantSummary& AddVariantStatus(VariantStatusT&& value) { m_variantStatusHasBeenSet = true; m_variantStatus.emplace_back(std::forward<VariantStatusT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The endpoint variant status which describes the current deployment stage
-     * status or operational status.</p>
-     */
-    inline void SetVariantStatus(const Aws::Vector<ProductionVariantStatus>& value) { m_variantStatusHasBeenSet = true; m_variantStatus = value; }
-
-    /**
-     * <p>The endpoint variant status which describes the current deployment stage
-     * status or operational status.</p>
-     */
-    inline void SetVariantStatus(Aws::Vector<ProductionVariantStatus>&& value) { m_variantStatusHasBeenSet = true; m_variantStatus = std::move(value); }
-
-    /**
-     * <p>The endpoint variant status which describes the current deployment stage
-     * status or operational status.</p>
-     */
-    inline PendingProductionVariantSummary& WithVariantStatus(const Aws::Vector<ProductionVariantStatus>& value) { SetVariantStatus(value); return *this;}
-
-    /**
-     * <p>The endpoint variant status which describes the current deployment stage
-     * status or operational status.</p>
-     */
-    inline PendingProductionVariantSummary& WithVariantStatus(Aws::Vector<ProductionVariantStatus>&& value) { SetVariantStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The endpoint variant status which describes the current deployment stage
-     * status or operational status.</p>
-     */
-    inline PendingProductionVariantSummary& AddVariantStatus(const ProductionVariantStatus& value) { m_variantStatusHasBeenSet = true; m_variantStatus.push_back(value); return *this; }
-
-    /**
-     * <p>The endpoint variant status which describes the current deployment stage
-     * status or operational status.</p>
-     */
-    inline PendingProductionVariantSummary& AddVariantStatus(ProductionVariantStatus&& value) { m_variantStatusHasBeenSet = true; m_variantStatus.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The serverless configuration for the endpoint.</p>
      */
-    inline const ProductionVariantServerlessConfig& GetCurrentServerlessConfig() const{ return m_currentServerlessConfig; }
-
-    /**
-     * <p>The serverless configuration for the endpoint.</p>
-     */
+    inline const ProductionVariantServerlessConfig& GetCurrentServerlessConfig() const { return m_currentServerlessConfig; }
     inline bool CurrentServerlessConfigHasBeenSet() const { return m_currentServerlessConfigHasBeenSet; }
+    template<typename CurrentServerlessConfigT = ProductionVariantServerlessConfig>
+    void SetCurrentServerlessConfig(CurrentServerlessConfigT&& value) { m_currentServerlessConfigHasBeenSet = true; m_currentServerlessConfig = std::forward<CurrentServerlessConfigT>(value); }
+    template<typename CurrentServerlessConfigT = ProductionVariantServerlessConfig>
+    PendingProductionVariantSummary& WithCurrentServerlessConfig(CurrentServerlessConfigT&& value) { SetCurrentServerlessConfig(std::forward<CurrentServerlessConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The serverless configuration for the endpoint.</p>
-     */
-    inline void SetCurrentServerlessConfig(const ProductionVariantServerlessConfig& value) { m_currentServerlessConfigHasBeenSet = true; m_currentServerlessConfig = value; }
-
-    /**
-     * <p>The serverless configuration for the endpoint.</p>
-     */
-    inline void SetCurrentServerlessConfig(ProductionVariantServerlessConfig&& value) { m_currentServerlessConfigHasBeenSet = true; m_currentServerlessConfig = std::move(value); }
-
-    /**
-     * <p>The serverless configuration for the endpoint.</p>
-     */
-    inline PendingProductionVariantSummary& WithCurrentServerlessConfig(const ProductionVariantServerlessConfig& value) { SetCurrentServerlessConfig(value); return *this;}
-
-    /**
-     * <p>The serverless configuration for the endpoint.</p>
-     */
-    inline PendingProductionVariantSummary& WithCurrentServerlessConfig(ProductionVariantServerlessConfig&& value) { SetCurrentServerlessConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The serverless configuration requested for this deployment, as specified in
      * the endpoint configuration for the endpoint.</p>
      */
-    inline const ProductionVariantServerlessConfig& GetDesiredServerlessConfig() const{ return m_desiredServerlessConfig; }
-
-    /**
-     * <p>The serverless configuration requested for this deployment, as specified in
-     * the endpoint configuration for the endpoint.</p>
-     */
+    inline const ProductionVariantServerlessConfig& GetDesiredServerlessConfig() const { return m_desiredServerlessConfig; }
     inline bool DesiredServerlessConfigHasBeenSet() const { return m_desiredServerlessConfigHasBeenSet; }
+    template<typename DesiredServerlessConfigT = ProductionVariantServerlessConfig>
+    void SetDesiredServerlessConfig(DesiredServerlessConfigT&& value) { m_desiredServerlessConfigHasBeenSet = true; m_desiredServerlessConfig = std::forward<DesiredServerlessConfigT>(value); }
+    template<typename DesiredServerlessConfigT = ProductionVariantServerlessConfig>
+    PendingProductionVariantSummary& WithDesiredServerlessConfig(DesiredServerlessConfigT&& value) { SetDesiredServerlessConfig(std::forward<DesiredServerlessConfigT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The serverless configuration requested for this deployment, as specified in
-     * the endpoint configuration for the endpoint.</p>
+     * <p>Settings that control the range in the number of instances that the endpoint
+     * provisions as it scales up or down to accommodate traffic. </p>
      */
-    inline void SetDesiredServerlessConfig(const ProductionVariantServerlessConfig& value) { m_desiredServerlessConfigHasBeenSet = true; m_desiredServerlessConfig = value; }
+    inline const ProductionVariantManagedInstanceScaling& GetManagedInstanceScaling() const { return m_managedInstanceScaling; }
+    inline bool ManagedInstanceScalingHasBeenSet() const { return m_managedInstanceScalingHasBeenSet; }
+    template<typename ManagedInstanceScalingT = ProductionVariantManagedInstanceScaling>
+    void SetManagedInstanceScaling(ManagedInstanceScalingT&& value) { m_managedInstanceScalingHasBeenSet = true; m_managedInstanceScaling = std::forward<ManagedInstanceScalingT>(value); }
+    template<typename ManagedInstanceScalingT = ProductionVariantManagedInstanceScaling>
+    PendingProductionVariantSummary& WithManagedInstanceScaling(ManagedInstanceScalingT&& value) { SetManagedInstanceScaling(std::forward<ManagedInstanceScalingT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The serverless configuration requested for this deployment, as specified in
-     * the endpoint configuration for the endpoint.</p>
+     * <p>Settings that control how the endpoint routes incoming traffic to the
+     * instances that the endpoint hosts.</p>
      */
-    inline void SetDesiredServerlessConfig(ProductionVariantServerlessConfig&& value) { m_desiredServerlessConfigHasBeenSet = true; m_desiredServerlessConfig = std::move(value); }
-
-    /**
-     * <p>The serverless configuration requested for this deployment, as specified in
-     * the endpoint configuration for the endpoint.</p>
-     */
-    inline PendingProductionVariantSummary& WithDesiredServerlessConfig(const ProductionVariantServerlessConfig& value) { SetDesiredServerlessConfig(value); return *this;}
-
-    /**
-     * <p>The serverless configuration requested for this deployment, as specified in
-     * the endpoint configuration for the endpoint.</p>
-     */
-    inline PendingProductionVariantSummary& WithDesiredServerlessConfig(ProductionVariantServerlessConfig&& value) { SetDesiredServerlessConfig(std::move(value)); return *this;}
-
+    inline const ProductionVariantRoutingConfig& GetRoutingConfig() const { return m_routingConfig; }
+    inline bool RoutingConfigHasBeenSet() const { return m_routingConfigHasBeenSet; }
+    template<typename RoutingConfigT = ProductionVariantRoutingConfig>
+    void SetRoutingConfig(RoutingConfigT&& value) { m_routingConfigHasBeenSet = true; m_routingConfig = std::forward<RoutingConfigT>(value); }
+    template<typename RoutingConfigT = ProductionVariantRoutingConfig>
+    PendingProductionVariantSummary& WithRoutingConfig(RoutingConfigT&& value) { SetRoutingConfig(std::forward<RoutingConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_variantName;
@@ -455,22 +222,22 @@ namespace Model
     Aws::Vector<DeployedImage> m_deployedImages;
     bool m_deployedImagesHasBeenSet = false;
 
-    double m_currentWeight;
+    double m_currentWeight{0.0};
     bool m_currentWeightHasBeenSet = false;
 
-    double m_desiredWeight;
+    double m_desiredWeight{0.0};
     bool m_desiredWeightHasBeenSet = false;
 
-    int m_currentInstanceCount;
+    int m_currentInstanceCount{0};
     bool m_currentInstanceCountHasBeenSet = false;
 
-    int m_desiredInstanceCount;
+    int m_desiredInstanceCount{0};
     bool m_desiredInstanceCountHasBeenSet = false;
 
-    ProductionVariantInstanceType m_instanceType;
+    ProductionVariantInstanceType m_instanceType{ProductionVariantInstanceType::NOT_SET};
     bool m_instanceTypeHasBeenSet = false;
 
-    ProductionVariantAcceleratorType m_acceleratorType;
+    ProductionVariantAcceleratorType m_acceleratorType{ProductionVariantAcceleratorType::NOT_SET};
     bool m_acceleratorTypeHasBeenSet = false;
 
     Aws::Vector<ProductionVariantStatus> m_variantStatus;
@@ -481,6 +248,12 @@ namespace Model
 
     ProductionVariantServerlessConfig m_desiredServerlessConfig;
     bool m_desiredServerlessConfigHasBeenSet = false;
+
+    ProductionVariantManagedInstanceScaling m_managedInstanceScaling;
+    bool m_managedInstanceScalingHasBeenSet = false;
+
+    ProductionVariantRoutingConfig m_routingConfig;
+    bool m_routingConfigHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,15 +18,7 @@ namespace GroundStation
 namespace Model
 {
 
-DataflowEndpointConfig::DataflowEndpointConfig() : 
-    m_dataflowEndpointNameHasBeenSet(false),
-    m_dataflowEndpointRegionHasBeenSet(false)
-{
-}
-
-DataflowEndpointConfig::DataflowEndpointConfig(JsonView jsonValue) : 
-    m_dataflowEndpointNameHasBeenSet(false),
-    m_dataflowEndpointRegionHasBeenSet(false)
+DataflowEndpointConfig::DataflowEndpointConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DataflowEndpointConfig& DataflowEndpointConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("dataflowEndpointName"))
   {
     m_dataflowEndpointName = jsonValue.GetString("dataflowEndpointName");
-
     m_dataflowEndpointNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("dataflowEndpointRegion"))
   {
     m_dataflowEndpointRegion = jsonValue.GetString("dataflowEndpointRegion");
-
     m_dataflowEndpointRegionHasBeenSet = true;
   }
-
   return *this;
 }
 

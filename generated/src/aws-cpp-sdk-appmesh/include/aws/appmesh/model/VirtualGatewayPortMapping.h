@@ -31,69 +31,37 @@ namespace Model
   class VirtualGatewayPortMapping
   {
   public:
-    AWS_APPMESH_API VirtualGatewayPortMapping();
+    AWS_APPMESH_API VirtualGatewayPortMapping() = default;
     AWS_APPMESH_API VirtualGatewayPortMapping(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API VirtualGatewayPortMapping& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The port used for the port mapping. Specify one protocol.</p>
      */
-    inline int GetPort() const{ return m_port; }
-
-    /**
-     * <p>The port used for the port mapping. Specify one protocol.</p>
-     */
+    inline int GetPort() const { return m_port; }
     inline bool PortHasBeenSet() const { return m_portHasBeenSet; }
-
-    /**
-     * <p>The port used for the port mapping. Specify one protocol.</p>
-     */
     inline void SetPort(int value) { m_portHasBeenSet = true; m_port = value; }
-
-    /**
-     * <p>The port used for the port mapping. Specify one protocol.</p>
-     */
     inline VirtualGatewayPortMapping& WithPort(int value) { SetPort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The protocol used for the port mapping.</p>
      */
-    inline const VirtualGatewayPortProtocol& GetProtocol() const{ return m_protocol; }
-
-    /**
-     * <p>The protocol used for the port mapping.</p>
-     */
+    inline VirtualGatewayPortProtocol GetProtocol() const { return m_protocol; }
     inline bool ProtocolHasBeenSet() const { return m_protocolHasBeenSet; }
-
-    /**
-     * <p>The protocol used for the port mapping.</p>
-     */
-    inline void SetProtocol(const VirtualGatewayPortProtocol& value) { m_protocolHasBeenSet = true; m_protocol = value; }
-
-    /**
-     * <p>The protocol used for the port mapping.</p>
-     */
-    inline void SetProtocol(VirtualGatewayPortProtocol&& value) { m_protocolHasBeenSet = true; m_protocol = std::move(value); }
-
-    /**
-     * <p>The protocol used for the port mapping.</p>
-     */
-    inline VirtualGatewayPortMapping& WithProtocol(const VirtualGatewayPortProtocol& value) { SetProtocol(value); return *this;}
-
-    /**
-     * <p>The protocol used for the port mapping.</p>
-     */
-    inline VirtualGatewayPortMapping& WithProtocol(VirtualGatewayPortProtocol&& value) { SetProtocol(std::move(value)); return *this;}
-
+    inline void SetProtocol(VirtualGatewayPortProtocol value) { m_protocolHasBeenSet = true; m_protocol = value; }
+    inline VirtualGatewayPortMapping& WithProtocol(VirtualGatewayPortProtocol value) { SetProtocol(value); return *this;}
+    ///@}
   private:
 
-    int m_port;
+    int m_port{0};
     bool m_portHasBeenSet = false;
 
-    VirtualGatewayPortProtocol m_protocol;
+    VirtualGatewayPortProtocol m_protocol{VirtualGatewayPortProtocol::NOT_SET};
     bool m_protocolHasBeenSet = false;
   };
 

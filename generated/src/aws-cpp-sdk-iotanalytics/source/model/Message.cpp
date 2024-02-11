@@ -19,15 +19,7 @@ namespace IoTAnalytics
 namespace Model
 {
 
-Message::Message() : 
-    m_messageIdHasBeenSet(false),
-    m_payloadHasBeenSet(false)
-{
-}
-
-Message::Message(JsonView jsonValue) : 
-    m_messageIdHasBeenSet(false),
-    m_payloadHasBeenSet(false)
+Message::Message(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -37,16 +29,13 @@ Message& Message::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("messageId"))
   {
     m_messageId = jsonValue.GetString("messageId");
-
     m_messageIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("payload"))
   {
     m_payload = HashingUtils::Base64Decode(jsonValue.GetString("payload"));
     m_payloadHasBeenSet = true;
   }
-
   return *this;
 }
 

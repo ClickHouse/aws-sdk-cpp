@@ -18,37 +18,7 @@ namespace OpenSearchService
 namespace Model
 {
 
-InstanceTypeDetails::InstanceTypeDetails() : 
-    m_instanceType(OpenSearchPartitionInstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_encryptionEnabled(false),
-    m_encryptionEnabledHasBeenSet(false),
-    m_cognitoEnabled(false),
-    m_cognitoEnabledHasBeenSet(false),
-    m_appLogsEnabled(false),
-    m_appLogsEnabledHasBeenSet(false),
-    m_advancedSecurityEnabled(false),
-    m_advancedSecurityEnabledHasBeenSet(false),
-    m_warmEnabled(false),
-    m_warmEnabledHasBeenSet(false),
-    m_instanceRoleHasBeenSet(false)
-{
-}
-
-InstanceTypeDetails::InstanceTypeDetails(JsonView jsonValue) : 
-    m_instanceType(OpenSearchPartitionInstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_encryptionEnabled(false),
-    m_encryptionEnabledHasBeenSet(false),
-    m_cognitoEnabled(false),
-    m_cognitoEnabledHasBeenSet(false),
-    m_appLogsEnabled(false),
-    m_appLogsEnabledHasBeenSet(false),
-    m_advancedSecurityEnabled(false),
-    m_advancedSecurityEnabledHasBeenSet(false),
-    m_warmEnabled(false),
-    m_warmEnabledHasBeenSet(false),
-    m_instanceRoleHasBeenSet(false)
+InstanceTypeDetails::InstanceTypeDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -58,45 +28,33 @@ InstanceTypeDetails& InstanceTypeDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("InstanceType"))
   {
     m_instanceType = OpenSearchPartitionInstanceTypeMapper::GetOpenSearchPartitionInstanceTypeForName(jsonValue.GetString("InstanceType"));
-
     m_instanceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EncryptionEnabled"))
   {
     m_encryptionEnabled = jsonValue.GetBool("EncryptionEnabled");
-
     m_encryptionEnabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CognitoEnabled"))
   {
     m_cognitoEnabled = jsonValue.GetBool("CognitoEnabled");
-
     m_cognitoEnabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AppLogsEnabled"))
   {
     m_appLogsEnabled = jsonValue.GetBool("AppLogsEnabled");
-
     m_appLogsEnabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AdvancedSecurityEnabled"))
   {
     m_advancedSecurityEnabled = jsonValue.GetBool("AdvancedSecurityEnabled");
-
     m_advancedSecurityEnabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WarmEnabled"))
   {
     m_warmEnabled = jsonValue.GetBool("WarmEnabled");
-
     m_warmEnabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InstanceRole"))
   {
     Aws::Utils::Array<JsonView> instanceRoleJsonList = jsonValue.GetArray("InstanceRole");
@@ -106,7 +64,15 @@ InstanceTypeDetails& InstanceTypeDetails::operator =(JsonView jsonValue)
     }
     m_instanceRoleHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("AvailabilityZones"))
+  {
+    Aws::Utils::Array<JsonView> availabilityZonesJsonList = jsonValue.GetArray("AvailabilityZones");
+    for(unsigned availabilityZonesIndex = 0; availabilityZonesIndex < availabilityZonesJsonList.GetLength(); ++availabilityZonesIndex)
+    {
+      m_availabilityZones.push_back(availabilityZonesJsonList[availabilityZonesIndex].AsString());
+    }
+    m_availabilityZonesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -157,6 +123,17 @@ JsonValue InstanceTypeDetails::Jsonize() const
      instanceRoleJsonList[instanceRoleIndex].AsString(m_instanceRole[instanceRoleIndex]);
    }
    payload.WithArray("InstanceRole", std::move(instanceRoleJsonList));
+
+  }
+
+  if(m_availabilityZonesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> availabilityZonesJsonList(m_availabilityZones.size());
+   for(unsigned availabilityZonesIndex = 0; availabilityZonesIndex < availabilityZonesJsonList.GetLength(); ++availabilityZonesIndex)
+   {
+     availabilityZonesJsonList[availabilityZonesIndex].AsString(m_availabilityZones[availabilityZonesIndex]);
+   }
+   payload.WithArray("AvailabilityZones", std::move(availabilityZonesJsonList));
 
   }
 

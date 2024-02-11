@@ -12,16 +12,6 @@ using namespace Aws::DLM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateLifecyclePolicyRequest::CreateLifecyclePolicyRequest() : 
-    m_executionRoleArnHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_state(SettablePolicyStateValues::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_policyDetailsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateLifecyclePolicyRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -57,6 +47,52 @@ Aws::String CreateLifecyclePolicyRequest::SerializePayload() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("Tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_defaultPolicyHasBeenSet)
+  {
+   payload.WithString("DefaultPolicy", DefaultPolicyTypeValuesMapper::GetNameForDefaultPolicyTypeValues(m_defaultPolicy));
+  }
+
+  if(m_createIntervalHasBeenSet)
+  {
+   payload.WithInteger("CreateInterval", m_createInterval);
+
+  }
+
+  if(m_retainIntervalHasBeenSet)
+  {
+   payload.WithInteger("RetainInterval", m_retainInterval);
+
+  }
+
+  if(m_copyTagsHasBeenSet)
+  {
+   payload.WithBool("CopyTags", m_copyTags);
+
+  }
+
+  if(m_extendDeletionHasBeenSet)
+  {
+   payload.WithBool("ExtendDeletion", m_extendDeletion);
+
+  }
+
+  if(m_crossRegionCopyTargetsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> crossRegionCopyTargetsJsonList(m_crossRegionCopyTargets.size());
+   for(unsigned crossRegionCopyTargetsIndex = 0; crossRegionCopyTargetsIndex < crossRegionCopyTargetsJsonList.GetLength(); ++crossRegionCopyTargetsIndex)
+   {
+     crossRegionCopyTargetsJsonList[crossRegionCopyTargetsIndex].AsObject(m_crossRegionCopyTargets[crossRegionCopyTargetsIndex].Jsonize());
+   }
+   payload.WithArray("CrossRegionCopyTargets", std::move(crossRegionCopyTargetsJsonList));
+
+  }
+
+  if(m_exclusionsHasBeenSet)
+  {
+   payload.WithObject("Exclusions", m_exclusions.Jsonize());
 
   }
 

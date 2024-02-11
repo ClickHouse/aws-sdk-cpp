@@ -18,21 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-FirewallPolicyDetails::FirewallPolicyDetails() : 
-    m_statefulRuleGroupReferencesHasBeenSet(false),
-    m_statelessCustomActionsHasBeenSet(false),
-    m_statelessDefaultActionsHasBeenSet(false),
-    m_statelessFragmentDefaultActionsHasBeenSet(false),
-    m_statelessRuleGroupReferencesHasBeenSet(false)
-{
-}
-
-FirewallPolicyDetails::FirewallPolicyDetails(JsonView jsonValue) : 
-    m_statefulRuleGroupReferencesHasBeenSet(false),
-    m_statelessCustomActionsHasBeenSet(false),
-    m_statelessDefaultActionsHasBeenSet(false),
-    m_statelessFragmentDefaultActionsHasBeenSet(false),
-    m_statelessRuleGroupReferencesHasBeenSet(false)
+FirewallPolicyDetails::FirewallPolicyDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,7 +34,6 @@ FirewallPolicyDetails& FirewallPolicyDetails::operator =(JsonView jsonValue)
     }
     m_statefulRuleGroupReferencesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatelessCustomActions"))
   {
     Aws::Utils::Array<JsonView> statelessCustomActionsJsonList = jsonValue.GetArray("StatelessCustomActions");
@@ -58,7 +43,6 @@ FirewallPolicyDetails& FirewallPolicyDetails::operator =(JsonView jsonValue)
     }
     m_statelessCustomActionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatelessDefaultActions"))
   {
     Aws::Utils::Array<JsonView> statelessDefaultActionsJsonList = jsonValue.GetArray("StatelessDefaultActions");
@@ -68,7 +52,6 @@ FirewallPolicyDetails& FirewallPolicyDetails::operator =(JsonView jsonValue)
     }
     m_statelessDefaultActionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatelessFragmentDefaultActions"))
   {
     Aws::Utils::Array<JsonView> statelessFragmentDefaultActionsJsonList = jsonValue.GetArray("StatelessFragmentDefaultActions");
@@ -78,7 +61,6 @@ FirewallPolicyDetails& FirewallPolicyDetails::operator =(JsonView jsonValue)
     }
     m_statelessFragmentDefaultActionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatelessRuleGroupReferences"))
   {
     Aws::Utils::Array<JsonView> statelessRuleGroupReferencesJsonList = jsonValue.GetArray("StatelessRuleGroupReferences");
@@ -88,7 +70,6 @@ FirewallPolicyDetails& FirewallPolicyDetails::operator =(JsonView jsonValue)
     }
     m_statelessRuleGroupReferencesHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -10,18 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-EnableAwsNetworkPerformanceMetricSubscriptionRequest::EnableAwsNetworkPerformanceMetricSubscriptionRequest() : 
-    m_sourceHasBeenSet(false),
-    m_destinationHasBeenSet(false),
-    m_metric(MetricType::NOT_SET),
-    m_metricHasBeenSet(false),
-    m_statistic(StatisticType::NOT_SET),
-    m_statisticHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String EnableAwsNetworkPerformanceMetricSubscriptionRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -38,12 +26,12 @@ Aws::String EnableAwsNetworkPerformanceMetricSubscriptionRequest::SerializePaylo
 
   if(m_metricHasBeenSet)
   {
-    ss << "Metric=" << MetricTypeMapper::GetNameForMetricType(m_metric) << "&";
+    ss << "Metric=" << StringUtils::URLEncode(MetricTypeMapper::GetNameForMetricType(m_metric)) << "&";
   }
 
   if(m_statisticHasBeenSet)
   {
-    ss << "Statistic=" << StatisticTypeMapper::GetNameForStatisticType(m_statistic) << "&";
+    ss << "Statistic=" << StringUtils::URLEncode(StatisticTypeMapper::GetNameForStatisticType(m_statistic)) << "&";
   }
 
   if(m_dryRunHasBeenSet)

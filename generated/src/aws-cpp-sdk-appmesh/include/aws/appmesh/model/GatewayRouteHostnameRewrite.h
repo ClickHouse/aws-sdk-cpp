@@ -32,45 +32,24 @@ namespace Model
   class GatewayRouteHostnameRewrite
   {
   public:
-    AWS_APPMESH_API GatewayRouteHostnameRewrite();
+    AWS_APPMESH_API GatewayRouteHostnameRewrite() = default;
     AWS_APPMESH_API GatewayRouteHostnameRewrite(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API GatewayRouteHostnameRewrite& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The default target host name to write to.</p>
      */
-    inline const DefaultGatewayRouteRewrite& GetDefaultTargetHostname() const{ return m_defaultTargetHostname; }
-
-    /**
-     * <p>The default target host name to write to.</p>
-     */
+    inline DefaultGatewayRouteRewrite GetDefaultTargetHostname() const { return m_defaultTargetHostname; }
     inline bool DefaultTargetHostnameHasBeenSet() const { return m_defaultTargetHostnameHasBeenSet; }
-
-    /**
-     * <p>The default target host name to write to.</p>
-     */
-    inline void SetDefaultTargetHostname(const DefaultGatewayRouteRewrite& value) { m_defaultTargetHostnameHasBeenSet = true; m_defaultTargetHostname = value; }
-
-    /**
-     * <p>The default target host name to write to.</p>
-     */
-    inline void SetDefaultTargetHostname(DefaultGatewayRouteRewrite&& value) { m_defaultTargetHostnameHasBeenSet = true; m_defaultTargetHostname = std::move(value); }
-
-    /**
-     * <p>The default target host name to write to.</p>
-     */
-    inline GatewayRouteHostnameRewrite& WithDefaultTargetHostname(const DefaultGatewayRouteRewrite& value) { SetDefaultTargetHostname(value); return *this;}
-
-    /**
-     * <p>The default target host name to write to.</p>
-     */
-    inline GatewayRouteHostnameRewrite& WithDefaultTargetHostname(DefaultGatewayRouteRewrite&& value) { SetDefaultTargetHostname(std::move(value)); return *this;}
-
+    inline void SetDefaultTargetHostname(DefaultGatewayRouteRewrite value) { m_defaultTargetHostnameHasBeenSet = true; m_defaultTargetHostname = value; }
+    inline GatewayRouteHostnameRewrite& WithDefaultTargetHostname(DefaultGatewayRouteRewrite value) { SetDefaultTargetHostname(value); return *this;}
+    ///@}
   private:
 
-    DefaultGatewayRouteRewrite m_defaultTargetHostname;
+    DefaultGatewayRouteRewrite m_defaultTargetHostname{DefaultGatewayRouteRewrite::NOT_SET};
     bool m_defaultTargetHostnameHasBeenSet = false;
   };
 

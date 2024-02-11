@@ -27,7 +27,7 @@ namespace Model
   class UpdateDocumentationPartRequest : public APIGatewayRequest
   {
   public:
-    AWS_APIGATEWAY_API UpdateDocumentationPartRequest();
+    AWS_APIGATEWAY_API UpdateDocumentationPartRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,144 +38,45 @@ namespace Model
     AWS_APIGATEWAY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The string identifier of the associated RestApi.</p>
      */
-    inline const Aws::String& GetRestApiId() const{ return m_restApiId; }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
+    inline const Aws::String& GetRestApiId() const { return m_restApiId; }
     inline bool RestApiIdHasBeenSet() const { return m_restApiIdHasBeenSet; }
+    template<typename RestApiIdT = Aws::String>
+    void SetRestApiId(RestApiIdT&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::forward<RestApiIdT>(value); }
+    template<typename RestApiIdT = Aws::String>
+    UpdateDocumentationPartRequest& WithRestApiId(RestApiIdT&& value) { SetRestApiId(std::forward<RestApiIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(const Aws::String& value) { m_restApiIdHasBeenSet = true; m_restApiId = value; }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::move(value); }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(const char* value) { m_restApiIdHasBeenSet = true; m_restApiId.assign(value); }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline UpdateDocumentationPartRequest& WithRestApiId(const Aws::String& value) { SetRestApiId(value); return *this;}
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline UpdateDocumentationPartRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(std::move(value)); return *this;}
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline UpdateDocumentationPartRequest& WithRestApiId(const char* value) { SetRestApiId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the to-be-updated documentation part.</p>
      */
-    inline const Aws::String& GetDocumentationPartId() const{ return m_documentationPartId; }
-
-    /**
-     * <p>The identifier of the to-be-updated documentation part.</p>
-     */
+    inline const Aws::String& GetDocumentationPartId() const { return m_documentationPartId; }
     inline bool DocumentationPartIdHasBeenSet() const { return m_documentationPartIdHasBeenSet; }
+    template<typename DocumentationPartIdT = Aws::String>
+    void SetDocumentationPartId(DocumentationPartIdT&& value) { m_documentationPartIdHasBeenSet = true; m_documentationPartId = std::forward<DocumentationPartIdT>(value); }
+    template<typename DocumentationPartIdT = Aws::String>
+    UpdateDocumentationPartRequest& WithDocumentationPartId(DocumentationPartIdT&& value) { SetDocumentationPartId(std::forward<DocumentationPartIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the to-be-updated documentation part.</p>
-     */
-    inline void SetDocumentationPartId(const Aws::String& value) { m_documentationPartIdHasBeenSet = true; m_documentationPartId = value; }
-
-    /**
-     * <p>The identifier of the to-be-updated documentation part.</p>
-     */
-    inline void SetDocumentationPartId(Aws::String&& value) { m_documentationPartIdHasBeenSet = true; m_documentationPartId = std::move(value); }
-
-    /**
-     * <p>The identifier of the to-be-updated documentation part.</p>
-     */
-    inline void SetDocumentationPartId(const char* value) { m_documentationPartIdHasBeenSet = true; m_documentationPartId.assign(value); }
-
-    /**
-     * <p>The identifier of the to-be-updated documentation part.</p>
-     */
-    inline UpdateDocumentationPartRequest& WithDocumentationPartId(const Aws::String& value) { SetDocumentationPartId(value); return *this;}
-
-    /**
-     * <p>The identifier of the to-be-updated documentation part.</p>
-     */
-    inline UpdateDocumentationPartRequest& WithDocumentationPartId(Aws::String&& value) { SetDocumentationPartId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the to-be-updated documentation part.</p>
-     */
-    inline UpdateDocumentationPartRequest& WithDocumentationPartId(const char* value) { SetDocumentationPartId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>For more information about supported patch operations, see <a
      * href="https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html">Patch
      * Operations</a>.</p>
      */
-    inline const Aws::Vector<PatchOperation>& GetPatchOperations() const{ return m_patchOperations; }
-
-    /**
-     * <p>For more information about supported patch operations, see <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html">Patch
-     * Operations</a>.</p>
-     */
+    inline const Aws::Vector<PatchOperation>& GetPatchOperations() const { return m_patchOperations; }
     inline bool PatchOperationsHasBeenSet() const { return m_patchOperationsHasBeenSet; }
-
-    /**
-     * <p>For more information about supported patch operations, see <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html">Patch
-     * Operations</a>.</p>
-     */
-    inline void SetPatchOperations(const Aws::Vector<PatchOperation>& value) { m_patchOperationsHasBeenSet = true; m_patchOperations = value; }
-
-    /**
-     * <p>For more information about supported patch operations, see <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html">Patch
-     * Operations</a>.</p>
-     */
-    inline void SetPatchOperations(Aws::Vector<PatchOperation>&& value) { m_patchOperationsHasBeenSet = true; m_patchOperations = std::move(value); }
-
-    /**
-     * <p>For more information about supported patch operations, see <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html">Patch
-     * Operations</a>.</p>
-     */
-    inline UpdateDocumentationPartRequest& WithPatchOperations(const Aws::Vector<PatchOperation>& value) { SetPatchOperations(value); return *this;}
-
-    /**
-     * <p>For more information about supported patch operations, see <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html">Patch
-     * Operations</a>.</p>
-     */
-    inline UpdateDocumentationPartRequest& WithPatchOperations(Aws::Vector<PatchOperation>&& value) { SetPatchOperations(std::move(value)); return *this;}
-
-    /**
-     * <p>For more information about supported patch operations, see <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html">Patch
-     * Operations</a>.</p>
-     */
-    inline UpdateDocumentationPartRequest& AddPatchOperations(const PatchOperation& value) { m_patchOperationsHasBeenSet = true; m_patchOperations.push_back(value); return *this; }
-
-    /**
-     * <p>For more information about supported patch operations, see <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html">Patch
-     * Operations</a>.</p>
-     */
-    inline UpdateDocumentationPartRequest& AddPatchOperations(PatchOperation&& value) { m_patchOperationsHasBeenSet = true; m_patchOperations.push_back(std::move(value)); return *this; }
-
+    template<typename PatchOperationsT = Aws::Vector<PatchOperation>>
+    void SetPatchOperations(PatchOperationsT&& value) { m_patchOperationsHasBeenSet = true; m_patchOperations = std::forward<PatchOperationsT>(value); }
+    template<typename PatchOperationsT = Aws::Vector<PatchOperation>>
+    UpdateDocumentationPartRequest& WithPatchOperations(PatchOperationsT&& value) { SetPatchOperations(std::forward<PatchOperationsT>(value)); return *this;}
+    template<typename PatchOperationsT = PatchOperation>
+    UpdateDocumentationPartRequest& AddPatchOperations(PatchOperationsT&& value) { m_patchOperationsHasBeenSet = true; m_patchOperations.emplace_back(std::forward<PatchOperationsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_restApiId;

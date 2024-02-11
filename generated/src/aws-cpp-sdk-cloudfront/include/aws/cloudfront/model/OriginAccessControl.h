@@ -32,84 +32,36 @@ namespace Model
   class OriginAccessControl
   {
   public:
-    AWS_CLOUDFRONT_API OriginAccessControl();
+    AWS_CLOUDFRONT_API OriginAccessControl() = default;
     AWS_CLOUDFRONT_API OriginAccessControl(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFRONT_API OriginAccessControl& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_CLOUDFRONT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the origin access control.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The unique identifier of the origin access control.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    OriginAccessControl& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the origin access control.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The unique identifier of the origin access control.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the origin access control.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The unique identifier of the origin access control.</p>
-     */
-    inline OriginAccessControl& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the origin access control.</p>
-     */
-    inline OriginAccessControl& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the origin access control.</p>
-     */
-    inline OriginAccessControl& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The origin access control.</p>
      */
-    inline const OriginAccessControlConfig& GetOriginAccessControlConfig() const{ return m_originAccessControlConfig; }
-
-    /**
-     * <p>The origin access control.</p>
-     */
+    inline const OriginAccessControlConfig& GetOriginAccessControlConfig() const { return m_originAccessControlConfig; }
     inline bool OriginAccessControlConfigHasBeenSet() const { return m_originAccessControlConfigHasBeenSet; }
-
-    /**
-     * <p>The origin access control.</p>
-     */
-    inline void SetOriginAccessControlConfig(const OriginAccessControlConfig& value) { m_originAccessControlConfigHasBeenSet = true; m_originAccessControlConfig = value; }
-
-    /**
-     * <p>The origin access control.</p>
-     */
-    inline void SetOriginAccessControlConfig(OriginAccessControlConfig&& value) { m_originAccessControlConfigHasBeenSet = true; m_originAccessControlConfig = std::move(value); }
-
-    /**
-     * <p>The origin access control.</p>
-     */
-    inline OriginAccessControl& WithOriginAccessControlConfig(const OriginAccessControlConfig& value) { SetOriginAccessControlConfig(value); return *this;}
-
-    /**
-     * <p>The origin access control.</p>
-     */
-    inline OriginAccessControl& WithOriginAccessControlConfig(OriginAccessControlConfig&& value) { SetOriginAccessControlConfig(std::move(value)); return *this;}
-
+    template<typename OriginAccessControlConfigT = OriginAccessControlConfig>
+    void SetOriginAccessControlConfig(OriginAccessControlConfigT&& value) { m_originAccessControlConfigHasBeenSet = true; m_originAccessControlConfig = std::forward<OriginAccessControlConfigT>(value); }
+    template<typename OriginAccessControlConfigT = OriginAccessControlConfig>
+    OriginAccessControl& WithOriginAccessControlConfig(OriginAccessControlConfigT&& value) { SetOriginAccessControlConfig(std::forward<OriginAccessControlConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

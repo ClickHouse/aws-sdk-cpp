@@ -10,27 +10,13 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ModifySnapshotAttributeRequest::ModifySnapshotAttributeRequest() : 
-    m_attribute(SnapshotAttributeName::NOT_SET),
-    m_attributeHasBeenSet(false),
-    m_createVolumePermissionHasBeenSet(false),
-    m_groupNamesHasBeenSet(false),
-    m_operationType(OperationType::NOT_SET),
-    m_operationTypeHasBeenSet(false),
-    m_snapshotIdHasBeenSet(false),
-    m_userIdsHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String ModifySnapshotAttributeRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=ModifySnapshotAttribute&";
   if(m_attributeHasBeenSet)
   {
-    ss << "Attribute=" << SnapshotAttributeNameMapper::GetNameForSnapshotAttributeName(m_attribute) << "&";
+    ss << "Attribute=" << StringUtils::URLEncode(SnapshotAttributeNameMapper::GetNameForSnapshotAttributeName(m_attribute)) << "&";
   }
 
   if(m_createVolumePermissionHasBeenSet)
@@ -51,7 +37,7 @@ Aws::String ModifySnapshotAttributeRequest::SerializePayload() const
 
   if(m_operationTypeHasBeenSet)
   {
-    ss << "OperationType=" << OperationTypeMapper::GetNameForOperationType(m_operationType) << "&";
+    ss << "OperationType=" << StringUtils::URLEncode(OperationTypeMapper::GetNameForOperationType(m_operationType)) << "&";
   }
 
   if(m_snapshotIdHasBeenSet)

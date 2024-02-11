@@ -31,69 +31,39 @@ namespace Model
   class AxisTickLabelOptions
   {
   public:
-    AWS_QUICKSIGHT_API AxisTickLabelOptions();
+    AWS_QUICKSIGHT_API AxisTickLabelOptions() = default;
     AWS_QUICKSIGHT_API AxisTickLabelOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API AxisTickLabelOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Determines whether or not the axis ticks are visible.</p>
      */
-    inline const LabelOptions& GetLabelOptions() const{ return m_labelOptions; }
-
-    /**
-     * <p>Determines whether or not the axis ticks are visible.</p>
-     */
+    inline const LabelOptions& GetLabelOptions() const { return m_labelOptions; }
     inline bool LabelOptionsHasBeenSet() const { return m_labelOptionsHasBeenSet; }
+    template<typename LabelOptionsT = LabelOptions>
+    void SetLabelOptions(LabelOptionsT&& value) { m_labelOptionsHasBeenSet = true; m_labelOptions = std::forward<LabelOptionsT>(value); }
+    template<typename LabelOptionsT = LabelOptions>
+    AxisTickLabelOptions& WithLabelOptions(LabelOptionsT&& value) { SetLabelOptions(std::forward<LabelOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Determines whether or not the axis ticks are visible.</p>
-     */
-    inline void SetLabelOptions(const LabelOptions& value) { m_labelOptionsHasBeenSet = true; m_labelOptions = value; }
-
-    /**
-     * <p>Determines whether or not the axis ticks are visible.</p>
-     */
-    inline void SetLabelOptions(LabelOptions&& value) { m_labelOptionsHasBeenSet = true; m_labelOptions = std::move(value); }
-
-    /**
-     * <p>Determines whether or not the axis ticks are visible.</p>
-     */
-    inline AxisTickLabelOptions& WithLabelOptions(const LabelOptions& value) { SetLabelOptions(value); return *this;}
-
-    /**
-     * <p>Determines whether or not the axis ticks are visible.</p>
-     */
-    inline AxisTickLabelOptions& WithLabelOptions(LabelOptions&& value) { SetLabelOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The rotation angle of the axis tick labels.</p>
      */
-    inline double GetRotationAngle() const{ return m_rotationAngle; }
-
-    /**
-     * <p>The rotation angle of the axis tick labels.</p>
-     */
+    inline double GetRotationAngle() const { return m_rotationAngle; }
     inline bool RotationAngleHasBeenSet() const { return m_rotationAngleHasBeenSet; }
-
-    /**
-     * <p>The rotation angle of the axis tick labels.</p>
-     */
     inline void SetRotationAngle(double value) { m_rotationAngleHasBeenSet = true; m_rotationAngle = value; }
-
-    /**
-     * <p>The rotation angle of the axis tick labels.</p>
-     */
     inline AxisTickLabelOptions& WithRotationAngle(double value) { SetRotationAngle(value); return *this;}
-
+    ///@}
   private:
 
     LabelOptions m_labelOptions;
     bool m_labelOptionsHasBeenSet = false;
 
-    double m_rotationAngle;
+    double m_rotationAngle{0.0};
     bool m_rotationAngleHasBeenSet = false;
   };
 

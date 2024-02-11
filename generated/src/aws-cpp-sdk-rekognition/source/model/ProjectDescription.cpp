@@ -18,21 +18,7 @@ namespace Rekognition
 namespace Model
 {
 
-ProjectDescription::ProjectDescription() : 
-    m_projectArnHasBeenSet(false),
-    m_creationTimestampHasBeenSet(false),
-    m_status(ProjectStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_datasetsHasBeenSet(false)
-{
-}
-
-ProjectDescription::ProjectDescription(JsonView jsonValue) : 
-    m_projectArnHasBeenSet(false),
-    m_creationTimestampHasBeenSet(false),
-    m_status(ProjectStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_datasetsHasBeenSet(false)
+ProjectDescription::ProjectDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ ProjectDescription& ProjectDescription::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ProjectArn"))
   {
     m_projectArn = jsonValue.GetString("ProjectArn");
-
     m_projectArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreationTimestamp"))
   {
     m_creationTimestamp = jsonValue.GetDouble("CreationTimestamp");
-
     m_creationTimestampHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = ProjectStatusMapper::GetProjectStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Datasets"))
   {
     Aws::Utils::Array<JsonView> datasetsJsonList = jsonValue.GetArray("Datasets");
@@ -69,7 +49,16 @@ ProjectDescription& ProjectDescription::operator =(JsonView jsonValue)
     }
     m_datasetsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Feature"))
+  {
+    m_feature = CustomizationFeatureMapper::GetCustomizationFeatureForName(jsonValue.GetString("Feature"));
+    m_featureHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("AutoUpdate"))
+  {
+    m_autoUpdate = ProjectAutoUpdateMapper::GetProjectAutoUpdateForName(jsonValue.GetString("AutoUpdate"));
+    m_autoUpdateHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -102,6 +91,16 @@ JsonValue ProjectDescription::Jsonize() const
    }
    payload.WithArray("Datasets", std::move(datasetsJsonList));
 
+  }
+
+  if(m_featureHasBeenSet)
+  {
+   payload.WithString("Feature", CustomizationFeatureMapper::GetNameForCustomizationFeature(m_feature));
+  }
+
+  if(m_autoUpdateHasBeenSet)
+  {
+   payload.WithString("AutoUpdate", ProjectAutoUpdateMapper::GetNameForProjectAutoUpdate(m_autoUpdate));
   }
 
   return payload;

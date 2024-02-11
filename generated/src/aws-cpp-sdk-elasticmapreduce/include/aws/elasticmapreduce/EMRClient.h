@@ -26,22 +26,25 @@ namespace EMR
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef EMRClientConfiguration ClientConfigurationType;
+      typedef EMREndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         EMRClient(const Aws::EMR::EMRClientConfiguration& clientConfiguration = Aws::EMR::EMRClientConfiguration(),
-                  std::shared_ptr<EMREndpointProviderBase> endpointProvider = Aws::MakeShared<EMREndpointProvider>(ALLOCATION_TAG));
+                  std::shared_ptr<EMREndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         EMRClient(const Aws::Auth::AWSCredentials& credentials,
-                  std::shared_ptr<EMREndpointProviderBase> endpointProvider = Aws::MakeShared<EMREndpointProvider>(ALLOCATION_TAG),
+                  std::shared_ptr<EMREndpointProviderBase> endpointProvider = nullptr,
                   const Aws::EMR::EMRClientConfiguration& clientConfiguration = Aws::EMR::EMRClientConfiguration());
 
        /**
@@ -49,7 +52,7 @@ namespace EMR
         * the default http client factory will be used
         */
         EMRClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                  std::shared_ptr<EMREndpointProviderBase> endpointProvider = Aws::MakeShared<EMREndpointProvider>(ALLOCATION_TAG),
+                  std::shared_ptr<EMREndpointProviderBase> endpointProvider = nullptr,
                   const Aws::EMR::EMRClientConfiguration& clientConfiguration = Aws::EMR::EMRClientConfiguration());
 
 
@@ -79,7 +82,7 @@ namespace EMR
 
         /**
          * <p>Adds an instance fleet to a running cluster.</p>  <p>The instance fleet
-         * configuration is available only in Amazon EMR versions 4.8.0 and later,
+         * configuration is available only in Amazon EMR releases 4.8.0 and later,
          * excluding 5.0.x.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/AddInstanceFleet">AWS
          * API Reference</a></p>
@@ -206,7 +209,7 @@ namespace EMR
          * Amazon EMR versions 4.8.0 and later, excluding version 5.0.0. A maximum of 256
          * steps are allowed in each CancelSteps request. CancelSteps is idempotent but
          * asynchronous; it does not guarantee that a step will be canceled, even if the
-         * request is successfully submitted. When you use Amazon EMR versions 5.28.0 and
+         * request is successfully submitted. When you use Amazon EMR releases 5.28.0 and
          * later, you can cancel steps that are in a <code>PENDING</code> or
          * <code>RUNNING</code> state. In earlier versions of Amazon EMR, you can only
          * cancel steps that are in a <code>PENDING</code> state. </p><p><h3>See Also:</h3>
@@ -232,6 +235,32 @@ namespace EMR
         void CancelStepsAsync(const CancelStepsRequestT& request, const CancelStepsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EMRClient::CancelSteps, request, handler, context);
+        }
+
+        /**
+         * <p>Creates a persistent application user interface.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/CreatePersistentAppUI">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreatePersistentAppUIOutcome CreatePersistentAppUI(const Model::CreatePersistentAppUIRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreatePersistentAppUI that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreatePersistentAppUIRequestT = Model::CreatePersistentAppUIRequest>
+        Model::CreatePersistentAppUIOutcomeCallable CreatePersistentAppUICallable(const CreatePersistentAppUIRequestT& request) const
+        {
+            return SubmitCallable(&EMRClient::CreatePersistentAppUI, request);
+        }
+
+        /**
+         * An Async wrapper for CreatePersistentAppUI that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreatePersistentAppUIRequestT = Model::CreatePersistentAppUIRequest>
+        void CreatePersistentAppUIAsync(const CreatePersistentAppUIRequestT& request, const CreatePersistentAppUIResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EMRClient::CreatePersistentAppUI, request, handler, context);
         }
 
         /**
@@ -446,20 +475,46 @@ namespace EMR
         }
 
         /**
-         * <p>Provides EMR release label details, such as releases available the region
-         * where the API request is run, and the available applications for a specific EMR
-         * release label. Can also list EMR release versions that support a specified
-         * version of Spark.</p><p><h3>See Also:</h3>   <a
+         * <p>Describes a persistent application user interface.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/DescribePersistentAppUI">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribePersistentAppUIOutcome DescribePersistentAppUI(const Model::DescribePersistentAppUIRequest& request) const;
+
+        /**
+         * A Callable wrapper for DescribePersistentAppUI that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribePersistentAppUIRequestT = Model::DescribePersistentAppUIRequest>
+        Model::DescribePersistentAppUIOutcomeCallable DescribePersistentAppUICallable(const DescribePersistentAppUIRequestT& request) const
+        {
+            return SubmitCallable(&EMRClient::DescribePersistentAppUI, request);
+        }
+
+        /**
+         * An Async wrapper for DescribePersistentAppUI that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribePersistentAppUIRequestT = Model::DescribePersistentAppUIRequest>
+        void DescribePersistentAppUIAsync(const DescribePersistentAppUIRequestT& request, const DescribePersistentAppUIResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EMRClient::DescribePersistentAppUI, request, handler, context);
+        }
+
+        /**
+         * <p>Provides Amazon EMR release label details, such as the releases available the
+         * Region where the API request is run, and the available applications for a
+         * specific Amazon EMR release label. Can also list Amazon EMR releases that
+         * support a specified version of Spark.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/DescribeReleaseLabel">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeReleaseLabelOutcome DescribeReleaseLabel(const Model::DescribeReleaseLabelRequest& request) const;
+        virtual Model::DescribeReleaseLabelOutcome DescribeReleaseLabel(const Model::DescribeReleaseLabelRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeReleaseLabel that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeReleaseLabelRequestT = Model::DescribeReleaseLabelRequest>
-        Model::DescribeReleaseLabelOutcomeCallable DescribeReleaseLabelCallable(const DescribeReleaseLabelRequestT& request) const
+        Model::DescribeReleaseLabelOutcomeCallable DescribeReleaseLabelCallable(const DescribeReleaseLabelRequestT& request = {}) const
         {
             return SubmitCallable(&EMRClient::DescribeReleaseLabel, request);
         }
@@ -468,7 +523,7 @@ namespace EMR
          * An Async wrapper for DescribeReleaseLabel that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeReleaseLabelRequestT = Model::DescribeReleaseLabelRequest>
-        void DescribeReleaseLabelAsync(const DescribeReleaseLabelRequestT& request, const DescribeReleaseLabelResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeReleaseLabelAsync(const DescribeReleaseLabelResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeReleaseLabelRequestT& request = {}) const
         {
             return SubmitAsync(&EMRClient::DescribeReleaseLabel, request, handler, context);
         }
@@ -585,13 +640,13 @@ namespace EMR
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/GetBlockPublicAccessConfiguration">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetBlockPublicAccessConfigurationOutcome GetBlockPublicAccessConfiguration(const Model::GetBlockPublicAccessConfigurationRequest& request) const;
+        virtual Model::GetBlockPublicAccessConfigurationOutcome GetBlockPublicAccessConfiguration(const Model::GetBlockPublicAccessConfigurationRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetBlockPublicAccessConfiguration that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetBlockPublicAccessConfigurationRequestT = Model::GetBlockPublicAccessConfigurationRequest>
-        Model::GetBlockPublicAccessConfigurationOutcomeCallable GetBlockPublicAccessConfigurationCallable(const GetBlockPublicAccessConfigurationRequestT& request) const
+        Model::GetBlockPublicAccessConfigurationOutcomeCallable GetBlockPublicAccessConfigurationCallable(const GetBlockPublicAccessConfigurationRequestT& request = {}) const
         {
             return SubmitCallable(&EMRClient::GetBlockPublicAccessConfiguration, request);
         }
@@ -600,7 +655,7 @@ namespace EMR
          * An Async wrapper for GetBlockPublicAccessConfiguration that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetBlockPublicAccessConfigurationRequestT = Model::GetBlockPublicAccessConfigurationRequest>
-        void GetBlockPublicAccessConfigurationAsync(const GetBlockPublicAccessConfigurationRequestT& request, const GetBlockPublicAccessConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetBlockPublicAccessConfigurationAsync(const GetBlockPublicAccessConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetBlockPublicAccessConfigurationRequestT& request = {}) const
         {
             return SubmitAsync(&EMRClient::GetBlockPublicAccessConfiguration, request, handler, context);
         }
@@ -657,6 +712,58 @@ namespace EMR
         void GetManagedScalingPolicyAsync(const GetManagedScalingPolicyRequestT& request, const GetManagedScalingPolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EMRClient::GetManagedScalingPolicy, request, handler, context);
+        }
+
+        /**
+         * <p>The presigned URL properties for the cluster's application user
+         * interface.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/GetOnClusterAppUIPresignedURL">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetOnClusterAppUIPresignedURLOutcome GetOnClusterAppUIPresignedURL(const Model::GetOnClusterAppUIPresignedURLRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetOnClusterAppUIPresignedURL that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetOnClusterAppUIPresignedURLRequestT = Model::GetOnClusterAppUIPresignedURLRequest>
+        Model::GetOnClusterAppUIPresignedURLOutcomeCallable GetOnClusterAppUIPresignedURLCallable(const GetOnClusterAppUIPresignedURLRequestT& request) const
+        {
+            return SubmitCallable(&EMRClient::GetOnClusterAppUIPresignedURL, request);
+        }
+
+        /**
+         * An Async wrapper for GetOnClusterAppUIPresignedURL that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetOnClusterAppUIPresignedURLRequestT = Model::GetOnClusterAppUIPresignedURLRequest>
+        void GetOnClusterAppUIPresignedURLAsync(const GetOnClusterAppUIPresignedURLRequestT& request, const GetOnClusterAppUIPresignedURLResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EMRClient::GetOnClusterAppUIPresignedURL, request, handler, context);
+        }
+
+        /**
+         * <p>The presigned URL properties for the cluster's application user
+         * interface.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/GetPersistentAppUIPresignedURL">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetPersistentAppUIPresignedURLOutcome GetPersistentAppUIPresignedURL(const Model::GetPersistentAppUIPresignedURLRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetPersistentAppUIPresignedURL that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetPersistentAppUIPresignedURLRequestT = Model::GetPersistentAppUIPresignedURLRequest>
+        Model::GetPersistentAppUIPresignedURLOutcomeCallable GetPersistentAppUIPresignedURLCallable(const GetPersistentAppUIPresignedURLRequestT& request) const
+        {
+            return SubmitCallable(&EMRClient::GetPersistentAppUIPresignedURL, request);
+        }
+
+        /**
+         * An Async wrapper for GetPersistentAppUIPresignedURL that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetPersistentAppUIPresignedURLRequestT = Model::GetPersistentAppUIPresignedURLRequest>
+        void GetPersistentAppUIPresignedURLAsync(const GetPersistentAppUIPresignedURLRequestT& request, const GetPersistentAppUIPresignedURLResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EMRClient::GetPersistentAppUIPresignedURL, request, handler, context);
         }
 
         /**
@@ -721,13 +828,13 @@ namespace EMR
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListClusters">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListClustersOutcome ListClusters(const Model::ListClustersRequest& request) const;
+        virtual Model::ListClustersOutcome ListClusters(const Model::ListClustersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListClusters that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListClustersRequestT = Model::ListClustersRequest>
-        Model::ListClustersOutcomeCallable ListClustersCallable(const ListClustersRequestT& request) const
+        Model::ListClustersOutcomeCallable ListClustersCallable(const ListClustersRequestT& request = {}) const
         {
             return SubmitCallable(&EMRClient::ListClusters, request);
         }
@@ -736,7 +843,7 @@ namespace EMR
          * An Async wrapper for ListClusters that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListClustersRequestT = Model::ListClustersRequest>
-        void ListClustersAsync(const ListClustersRequestT& request, const ListClustersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListClustersAsync(const ListClustersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListClustersRequestT& request = {}) const
         {
             return SubmitAsync(&EMRClient::ListClusters, request, handler, context);
         }
@@ -744,7 +851,7 @@ namespace EMR
         /**
          * <p>Lists all available details about the instance fleets in a cluster.</p>
          *  <p>The instance fleet configuration is available only in Amazon EMR
-         * versions 4.8.0 and later, excluding 5.0.x versions.</p> <p><h3>See
+         * releases 4.8.0 and later, excluding 5.0.x versions.</p> <p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListInstanceFleets">AWS
          * API Reference</a></p>
@@ -796,10 +903,11 @@ namespace EMR
         }
 
         /**
-         * <p>Provides information for all active EC2 instances and EC2 instances
-         * terminated in the last 30 days, up to a maximum of 2,000. EC2 instances in any
-         * of the following states are considered active: AWAITING_FULFILLMENT,
-         * PROVISIONING, BOOTSTRAPPING, RUNNING.</p><p><h3>See Also:</h3>   <a
+         * <p>Provides information for all active Amazon EC2 instances and Amazon EC2
+         * instances terminated in the last 30 days, up to a maximum of 2,000. Amazon EC2
+         * instances in any of the following states are considered active:
+         * AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListInstances">AWS
          * API Reference</a></p>
          */
@@ -827,18 +935,18 @@ namespace EMR
          * <p>Provides summaries of all notebook executions. You can filter the list based
          * on multiple criteria such as status, time range, and editor id. Returns a
          * maximum of 50 notebook executions and a marker to track the paging of a longer
-         * notebook execution list across multiple <code>ListNotebookExecution</code>
+         * notebook execution list across multiple <code>ListNotebookExecutions</code>
          * calls.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListNotebookExecutions">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListNotebookExecutionsOutcome ListNotebookExecutions(const Model::ListNotebookExecutionsRequest& request) const;
+        virtual Model::ListNotebookExecutionsOutcome ListNotebookExecutions(const Model::ListNotebookExecutionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListNotebookExecutions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListNotebookExecutionsRequestT = Model::ListNotebookExecutionsRequest>
-        Model::ListNotebookExecutionsOutcomeCallable ListNotebookExecutionsCallable(const ListNotebookExecutionsRequestT& request) const
+        Model::ListNotebookExecutionsOutcomeCallable ListNotebookExecutionsCallable(const ListNotebookExecutionsRequestT& request = {}) const
         {
             return SubmitCallable(&EMRClient::ListNotebookExecutions, request);
         }
@@ -847,24 +955,24 @@ namespace EMR
          * An Async wrapper for ListNotebookExecutions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListNotebookExecutionsRequestT = Model::ListNotebookExecutionsRequest>
-        void ListNotebookExecutionsAsync(const ListNotebookExecutionsRequestT& request, const ListNotebookExecutionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListNotebookExecutionsAsync(const ListNotebookExecutionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListNotebookExecutionsRequestT& request = {}) const
         {
             return SubmitAsync(&EMRClient::ListNotebookExecutions, request, handler, context);
         }
 
         /**
-         * <p>Retrieves release labels of EMR services in the region where the API is
-         * called.</p><p><h3>See Also:</h3>   <a
+         * <p>Retrieves release labels of Amazon EMR services in the Region where the API
+         * is called.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListReleaseLabels">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListReleaseLabelsOutcome ListReleaseLabels(const Model::ListReleaseLabelsRequest& request) const;
+        virtual Model::ListReleaseLabelsOutcome ListReleaseLabels(const Model::ListReleaseLabelsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListReleaseLabels that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListReleaseLabelsRequestT = Model::ListReleaseLabelsRequest>
-        Model::ListReleaseLabelsOutcomeCallable ListReleaseLabelsCallable(const ListReleaseLabelsRequestT& request) const
+        Model::ListReleaseLabelsOutcomeCallable ListReleaseLabelsCallable(const ListReleaseLabelsRequestT& request = {}) const
         {
             return SubmitCallable(&EMRClient::ListReleaseLabels, request);
         }
@@ -873,7 +981,7 @@ namespace EMR
          * An Async wrapper for ListReleaseLabels that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListReleaseLabelsRequestT = Model::ListReleaseLabelsRequest>
-        void ListReleaseLabelsAsync(const ListReleaseLabelsRequestT& request, const ListReleaseLabelsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListReleaseLabelsAsync(const ListReleaseLabelsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListReleaseLabelsRequestT& request = {}) const
         {
             return SubmitAsync(&EMRClient::ListReleaseLabels, request, handler, context);
         }
@@ -887,13 +995,13 @@ namespace EMR
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListSecurityConfigurations">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListSecurityConfigurationsOutcome ListSecurityConfigurations(const Model::ListSecurityConfigurationsRequest& request) const;
+        virtual Model::ListSecurityConfigurationsOutcome ListSecurityConfigurations(const Model::ListSecurityConfigurationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListSecurityConfigurations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListSecurityConfigurationsRequestT = Model::ListSecurityConfigurationsRequest>
-        Model::ListSecurityConfigurationsOutcomeCallable ListSecurityConfigurationsCallable(const ListSecurityConfigurationsRequestT& request) const
+        Model::ListSecurityConfigurationsOutcomeCallable ListSecurityConfigurationsCallable(const ListSecurityConfigurationsRequestT& request = {}) const
         {
             return SubmitCallable(&EMRClient::ListSecurityConfigurations, request);
         }
@@ -902,7 +1010,7 @@ namespace EMR
          * An Async wrapper for ListSecurityConfigurations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListSecurityConfigurationsRequestT = Model::ListSecurityConfigurationsRequest>
-        void ListSecurityConfigurationsAsync(const ListSecurityConfigurationsRequestT& request, const ListSecurityConfigurationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListSecurityConfigurationsAsync(const ListSecurityConfigurationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListSecurityConfigurationsRequestT& request = {}) const
         {
             return SubmitAsync(&EMRClient::ListSecurityConfigurations, request, handler, context);
         }
@@ -943,13 +1051,13 @@ namespace EMR
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListStudioSessionMappings">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListStudioSessionMappingsOutcome ListStudioSessionMappings(const Model::ListStudioSessionMappingsRequest& request) const;
+        virtual Model::ListStudioSessionMappingsOutcome ListStudioSessionMappings(const Model::ListStudioSessionMappingsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListStudioSessionMappings that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListStudioSessionMappingsRequestT = Model::ListStudioSessionMappingsRequest>
-        Model::ListStudioSessionMappingsOutcomeCallable ListStudioSessionMappingsCallable(const ListStudioSessionMappingsRequestT& request) const
+        Model::ListStudioSessionMappingsOutcomeCallable ListStudioSessionMappingsCallable(const ListStudioSessionMappingsRequestT& request = {}) const
         {
             return SubmitCallable(&EMRClient::ListStudioSessionMappings, request);
         }
@@ -958,7 +1066,7 @@ namespace EMR
          * An Async wrapper for ListStudioSessionMappings that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListStudioSessionMappingsRequestT = Model::ListStudioSessionMappingsRequest>
-        void ListStudioSessionMappingsAsync(const ListStudioSessionMappingsRequestT& request, const ListStudioSessionMappingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListStudioSessionMappingsAsync(const ListStudioSessionMappingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListStudioSessionMappingsRequestT& request = {}) const
         {
             return SubmitAsync(&EMRClient::ListStudioSessionMappings, request, handler, context);
         }
@@ -970,13 +1078,13 @@ namespace EMR
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListStudios">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListStudiosOutcome ListStudios(const Model::ListStudiosRequest& request) const;
+        virtual Model::ListStudiosOutcome ListStudios(const Model::ListStudiosRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListStudios that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListStudiosRequestT = Model::ListStudiosRequest>
-        Model::ListStudiosOutcomeCallable ListStudiosCallable(const ListStudiosRequestT& request) const
+        Model::ListStudiosOutcomeCallable ListStudiosCallable(const ListStudiosRequestT& request = {}) const
         {
             return SubmitCallable(&EMRClient::ListStudios, request);
         }
@@ -985,9 +1093,36 @@ namespace EMR
          * An Async wrapper for ListStudios that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListStudiosRequestT = Model::ListStudiosRequest>
-        void ListStudiosAsync(const ListStudiosRequestT& request, const ListStudiosResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListStudiosAsync(const ListStudiosResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListStudiosRequestT& request = {}) const
         {
             return SubmitAsync(&EMRClient::ListStudios, request, handler, context);
+        }
+
+        /**
+         * <p>A list of the instance types that Amazon EMR supports. You can filter the
+         * list by Amazon Web Services Region and Amazon EMR release. </p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListSupportedInstanceTypes">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListSupportedInstanceTypesOutcome ListSupportedInstanceTypes(const Model::ListSupportedInstanceTypesRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListSupportedInstanceTypes that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListSupportedInstanceTypesRequestT = Model::ListSupportedInstanceTypesRequest>
+        Model::ListSupportedInstanceTypesOutcomeCallable ListSupportedInstanceTypesCallable(const ListSupportedInstanceTypesRequestT& request) const
+        {
+            return SubmitCallable(&EMRClient::ListSupportedInstanceTypes, request);
+        }
+
+        /**
+         * An Async wrapper for ListSupportedInstanceTypes that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListSupportedInstanceTypesRequestT = Model::ListSupportedInstanceTypesRequest>
+        void ListSupportedInstanceTypesAsync(const ListSupportedInstanceTypesRequestT& request, const ListSupportedInstanceTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EMRClient::ListSupportedInstanceTypes, request, handler, context);
         }
 
         /**
@@ -1020,7 +1155,7 @@ namespace EMR
          * <p>Modifies the target On-Demand and target Spot capacities for the instance
          * fleet with the specified InstanceFleetID within the cluster specified using
          * ClusterID. The call either succeeds or fails atomically.</p>  <p>The
-         * instance fleet configuration is available only in Amazon EMR versions 4.8.0 and
+         * instance fleet configuration is available only in Amazon EMR releases 4.8.0 and
          * later, excluding 5.0.x versions.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ModifyInstanceFleet">AWS
          * API Reference</a></p>
@@ -1053,13 +1188,13 @@ namespace EMR
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ModifyInstanceGroups">AWS
          * API Reference</a></p>
          */
-        virtual Model::ModifyInstanceGroupsOutcome ModifyInstanceGroups(const Model::ModifyInstanceGroupsRequest& request) const;
+        virtual Model::ModifyInstanceGroupsOutcome ModifyInstanceGroups(const Model::ModifyInstanceGroupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ModifyInstanceGroups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ModifyInstanceGroupsRequestT = Model::ModifyInstanceGroupsRequest>
-        Model::ModifyInstanceGroupsOutcomeCallable ModifyInstanceGroupsCallable(const ModifyInstanceGroupsRequestT& request) const
+        Model::ModifyInstanceGroupsOutcomeCallable ModifyInstanceGroupsCallable(const ModifyInstanceGroupsRequestT& request = {}) const
         {
             return SubmitCallable(&EMRClient::ModifyInstanceGroups, request);
         }
@@ -1068,7 +1203,7 @@ namespace EMR
          * An Async wrapper for ModifyInstanceGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ModifyInstanceGroupsRequestT = Model::ModifyInstanceGroupsRequest>
-        void ModifyInstanceGroupsAsync(const ModifyInstanceGroupsRequestT& request, const ModifyInstanceGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ModifyInstanceGroupsAsync(const ModifyInstanceGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ModifyInstanceGroupsRequestT& request = {}) const
         {
             return SubmitAsync(&EMRClient::ModifyInstanceGroups, request, handler, context);
         }
@@ -1076,8 +1211,9 @@ namespace EMR
         /**
          * <p>Creates or updates an automatic scaling policy for a core instance group or
          * task instance group in an Amazon EMR cluster. The automatic scaling policy
-         * defines how an instance group dynamically adds and terminates EC2 instances in
-         * response to the value of a CloudWatch metric.</p><p><h3>See Also:</h3>   <a
+         * defines how an instance group dynamically adds and terminates Amazon EC2
+         * instances in response to the value of a CloudWatch metric.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/PutAutoScalingPolicy">AWS
          * API Reference</a></p>
          */
@@ -1102,7 +1238,7 @@ namespace EMR
         }
 
         /**
-         *  <p>Auto-termination is supported in Amazon EMR versions 5.30.0 and 6.1.0
+         *  <p>Auto-termination is supported in Amazon EMR releases 5.30.0 and 6.1.0
          * and later. For more information, see <a
          * href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-auto-termination-policy.html">Using
          * an auto-termination policy</a>.</p>  <p>Creates or updates an
@@ -1165,10 +1301,10 @@ namespace EMR
 
         /**
          * <p>Creates or updates a managed scaling policy for an Amazon EMR cluster. The
-         * managed scaling policy defines the limits for resources, such as EC2 instances
-         * that can be added or terminated from a cluster. The policy only applies to the
-         * core and task nodes. The master node cannot be scaled after initial
-         * configuration. </p><p><h3>See Also:</h3>   <a
+         * managed scaling policy defines the limits for resources, such as Amazon EC2
+         * instances that can be added or terminated from a cluster. The policy only
+         * applies to the core and task nodes. The master node cannot be scaled after
+         * initial configuration. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/PutManagedScalingPolicy">AWS
          * API Reference</a></p>
          */
@@ -1194,7 +1330,7 @@ namespace EMR
 
         /**
          * <p>Removes an automatic scaling policy from a specified instance group within an
-         * EMR cluster.</p><p><h3>See Also:</h3>   <a
+         * Amazon EMR cluster.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/RemoveAutoScalingPolicy">AWS
          * API Reference</a></p>
          */
@@ -1245,7 +1381,7 @@ namespace EMR
         }
 
         /**
-         * <p> Removes a managed scaling policy from a specified EMR cluster.
+         * <p> Removes a managed scaling policy from a specified Amazon EMR cluster.
          * </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/RemoveManagedScalingPolicy">AWS
          * API Reference</a></p>
@@ -1319,7 +1455,7 @@ namespace EMR
          * submitting queries directly to the software running on the master node, such as
          * Hive and Hadoop.</p> <p>For long-running clusters, we recommend that you
          * periodically store your results.</p>  <p>The instance fleets configuration
-         * is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x
+         * is available only in Amazon EMR releases 4.8.0 and later, excluding 5.0.x
          * versions. The RunJobFlow request can contain InstanceFleets parameters or
          * InstanceGroups parameters, but not both.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/RunJobFlow">AWS
@@ -1346,20 +1482,54 @@ namespace EMR
         }
 
         /**
-         * <p>SetTerminationProtection locks a cluster (job flow) so the EC2 instances in
-         * the cluster cannot be terminated by user intervention, an API call, or in the
-         * event of a job-flow error. The cluster still terminates upon successful
-         * completion of the job flow. Calling <code>SetTerminationProtection</code> on a
-         * cluster is similar to calling the Amazon EC2 <code>DisableAPITermination</code>
-         * API on all EC2 instances in a cluster.</p> <p>
-         * <code>SetTerminationProtection</code> is used to prevent accidental termination
-         * of a cluster and to ensure that in the event of an error, the instances persist
-         * so that you can recover any data stored in their ephemeral instance storage.</p>
-         * <p> To terminate a cluster that has been locked by setting
+         * <p>You can use the <code>SetKeepJobFlowAliveWhenNoSteps</code> to configure a
+         * cluster (job flow) to terminate after the step execution, i.e., all your steps
+         * are executed. If you want a transient cluster that shuts down after the last of
+         * the current executing steps are completed, you can configure
+         * <code>SetKeepJobFlowAliveWhenNoSteps</code> to false. If you want a long running
+         * cluster, configure <code>SetKeepJobFlowAliveWhenNoSteps</code> to true.</p>
+         * <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html">Managing
+         * Cluster Termination</a> in the <i>Amazon EMR Management Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/SetKeepJobFlowAliveWhenNoSteps">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::SetKeepJobFlowAliveWhenNoStepsOutcome SetKeepJobFlowAliveWhenNoSteps(const Model::SetKeepJobFlowAliveWhenNoStepsRequest& request) const;
+
+        /**
+         * A Callable wrapper for SetKeepJobFlowAliveWhenNoSteps that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename SetKeepJobFlowAliveWhenNoStepsRequestT = Model::SetKeepJobFlowAliveWhenNoStepsRequest>
+        Model::SetKeepJobFlowAliveWhenNoStepsOutcomeCallable SetKeepJobFlowAliveWhenNoStepsCallable(const SetKeepJobFlowAliveWhenNoStepsRequestT& request) const
+        {
+            return SubmitCallable(&EMRClient::SetKeepJobFlowAliveWhenNoSteps, request);
+        }
+
+        /**
+         * An Async wrapper for SetKeepJobFlowAliveWhenNoSteps that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename SetKeepJobFlowAliveWhenNoStepsRequestT = Model::SetKeepJobFlowAliveWhenNoStepsRequest>
+        void SetKeepJobFlowAliveWhenNoStepsAsync(const SetKeepJobFlowAliveWhenNoStepsRequestT& request, const SetKeepJobFlowAliveWhenNoStepsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EMRClient::SetKeepJobFlowAliveWhenNoSteps, request, handler, context);
+        }
+
+        /**
+         * <p>SetTerminationProtection locks a cluster (job flow) so the Amazon EC2
+         * instances in the cluster cannot be terminated by user intervention, an API call,
+         * or in the event of a job-flow error. The cluster still terminates upon
+         * successful completion of the job flow. Calling
+         * <code>SetTerminationProtection</code> on a cluster is similar to calling the
+         * Amazon EC2 <code>DisableAPITermination</code> API on all Amazon EC2 instances in
+         * a cluster.</p> <p> <code>SetTerminationProtection</code> is used to prevent
+         * accidental termination of a cluster and to ensure that in the event of an error,
+         * the instances persist so that you can recover any data stored in their ephemeral
+         * instance storage.</p> <p> To terminate a cluster that has been locked by setting
          * <code>SetTerminationProtection</code> to <code>true</code>, you must first
          * unlock the job flow by a subsequent call to
          * <code>SetTerminationProtection</code> in which you set the value to
-         * <code>false</code>. </p> <p> For more information, see<a
+         * <code>false</code>. </p> <p> For more information, see <a
          * href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html">Managing
          * Cluster Termination</a> in the <i>Amazon EMR Management Guide</i>.
          * </p><p><h3>See Also:</h3>   <a
@@ -1387,23 +1557,61 @@ namespace EMR
         }
 
         /**
+         * <p>Specify whether to enable unhealthy node replacement, which lets Amazon EMR
+         * gracefully replace core nodes on a cluster if any nodes become unhealthy. For
+         * example, a node becomes unhealthy if disk usage is above 90%. If unhealthy node
+         * replacement is on and <code>TerminationProtected</code> are off, Amazon EMR
+         * immediately terminates the unhealthy core nodes. To use unhealthy node
+         * replacement and retain unhealthy core nodes, use to turn on termination
+         * protection. In such cases, Amazon EMR adds the unhealthy nodes to a denylist,
+         * reducing job interruptions and failures.</p> <p>If unhealthy node replacement is
+         * on, Amazon EMR notifies YARN and other applications on the cluster to stop
+         * scheduling tasks with these nodes, moves the data, and then terminates the
+         * nodes.</p> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-node-replacement.html">graceful
+         * node replacement</a> in the <i>Amazon EMR Management Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/SetUnhealthyNodeReplacement">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::SetUnhealthyNodeReplacementOutcome SetUnhealthyNodeReplacement(const Model::SetUnhealthyNodeReplacementRequest& request) const;
+
+        /**
+         * A Callable wrapper for SetUnhealthyNodeReplacement that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename SetUnhealthyNodeReplacementRequestT = Model::SetUnhealthyNodeReplacementRequest>
+        Model::SetUnhealthyNodeReplacementOutcomeCallable SetUnhealthyNodeReplacementCallable(const SetUnhealthyNodeReplacementRequestT& request) const
+        {
+            return SubmitCallable(&EMRClient::SetUnhealthyNodeReplacement, request);
+        }
+
+        /**
+         * An Async wrapper for SetUnhealthyNodeReplacement that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename SetUnhealthyNodeReplacementRequestT = Model::SetUnhealthyNodeReplacementRequest>
+        void SetUnhealthyNodeReplacementAsync(const SetUnhealthyNodeReplacementRequestT& request, const SetUnhealthyNodeReplacementResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EMRClient::SetUnhealthyNodeReplacement, request, handler, context);
+        }
+
+        /**
          *  <p>The SetVisibleToAllUsers parameter is no longer supported. Your
          * cluster may be visible to all users in your account. To restrict cluster access
          * using an IAM policy, see <a
-         * href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-access-iam.html">Identity
-         * and Access Management for EMR</a>. </p>  <p>Sets the
-         * <a>Cluster$VisibleToAllUsers</a> value for an EMR cluster. When
+         * href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-access-IAM.html">Identity
+         * and Access Management for Amazon EMR</a>. </p>  <p>Sets the
+         * <a>Cluster$VisibleToAllUsers</a> value for an Amazon EMR cluster. When
          * <code>true</code>, IAM principals in the Amazon Web Services account can perform
-         * EMR cluster actions that their IAM policies allow. When <code>false</code>, only
-         * the IAM principal that created the cluster and the Amazon Web Services account
-         * root user can perform EMR actions on the cluster, regardless of IAM permissions
-         * policies attached to other IAM principals.</p> <p>This action works on running
-         * clusters. When you create a cluster, use the
-         * <a>RunJobFlowInput$VisibleToAllUsers</a> parameter.</p> <p>For more information,
-         * see <a
-         * href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/security_iam_emr-with-iam.html#security_set_visible_to_all_users">Understanding
-         * the EMR Cluster VisibleToAllUsers Setting</a> in the <i>Amazon EMRManagement
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * Amazon EMR cluster actions that their IAM policies allow. When
+         * <code>false</code>, only the IAM principal that created the cluster and the
+         * Amazon Web Services account root user can perform Amazon EMR actions on the
+         * cluster, regardless of IAM permissions policies attached to other IAM
+         * principals.</p> <p>This action works on running clusters. When you create a
+         * cluster, use the <a>RunJobFlowInput$VisibleToAllUsers</a> parameter.</p> <p>For
+         * more information, see <a
+         * href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/security_IAM_emr-with-IAM.html#security_set_visible_to_all_users">Understanding
+         * the Amazon EMR Cluster VisibleToAllUsers Setting</a> in the <i>Amazon EMR
+         * Management Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/SetVisibleToAllUsers">AWS
          * API Reference</a></p>
          */
@@ -1479,9 +1687,9 @@ namespace EMR
 
         /**
          * <p>TerminateJobFlows shuts a list of clusters (job flows) down. When a job flow
-         * is shut down, any step not yet completed is canceled and the EC2 instances on
-         * which the cluster is running are stopped. Any log files not already saved are
-         * uploaded to Amazon S3 if a LogUri was specified when the cluster was
+         * is shut down, any step not yet completed is canceled and the Amazon EC2
+         * instances on which the cluster is running are stopped. Any log files not already
+         * saved are uploaded to Amazon S3 if a LogUri was specified when the cluster was
          * created.</p> <p>The maximum number of clusters allowed is 10. The call to
          * <code>TerminateJobFlows</code> is asynchronous. Depending on the configuration
          * of the cluster, it may take up to 1-5 minutes for the cluster to completely
@@ -1570,7 +1778,6 @@ namespace EMR
       void init(const EMRClientConfiguration& clientConfiguration);
 
       EMRClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<EMREndpointProviderBase> m_endpointProvider;
   };
 

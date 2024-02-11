@@ -12,17 +12,6 @@ using namespace Aws::ResilienceHub::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateAppRequest::UpdateAppRequest() : 
-    m_appArnHasBeenSet(false),
-    m_assessmentSchedule(AppAssessmentScheduleType::NOT_SET),
-    m_assessmentScheduleHasBeenSet(false),
-    m_clearResiliencyPolicyArn(false),
-    m_clearResiliencyPolicyArnHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_policyArnHasBeenSet(false)
-{
-}
-
 Aws::String UpdateAppRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -47,6 +36,23 @@ Aws::String UpdateAppRequest::SerializePayload() const
   if(m_descriptionHasBeenSet)
   {
    payload.WithString("description", m_description);
+
+  }
+
+  if(m_eventSubscriptionsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> eventSubscriptionsJsonList(m_eventSubscriptions.size());
+   for(unsigned eventSubscriptionsIndex = 0; eventSubscriptionsIndex < eventSubscriptionsJsonList.GetLength(); ++eventSubscriptionsIndex)
+   {
+     eventSubscriptionsJsonList[eventSubscriptionsIndex].AsObject(m_eventSubscriptions[eventSubscriptionsIndex].Jsonize());
+   }
+   payload.WithArray("eventSubscriptions", std::move(eventSubscriptionsJsonList));
+
+  }
+
+  if(m_permissionModelHasBeenSet)
+  {
+   payload.WithObject("permissionModel", m_permissionModel.Jsonize());
 
   }
 

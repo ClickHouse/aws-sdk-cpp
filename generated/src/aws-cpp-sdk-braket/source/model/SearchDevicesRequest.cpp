@@ -12,26 +12,13 @@ using namespace Aws::Braket::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-SearchDevicesRequest::SearchDevicesRequest() : 
-    m_filtersHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String SearchDevicesRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_filtersHasBeenSet)
+  if(m_nextTokenHasBeenSet)
   {
-   Aws::Utils::Array<JsonValue> filtersJsonList(m_filters.size());
-   for(unsigned filtersIndex = 0; filtersIndex < filtersJsonList.GetLength(); ++filtersIndex)
-   {
-     filtersJsonList[filtersIndex].AsObject(m_filters[filtersIndex].Jsonize());
-   }
-   payload.WithArray("filters", std::move(filtersJsonList));
+   payload.WithString("nextToken", m_nextToken);
 
   }
 
@@ -41,9 +28,14 @@ Aws::String SearchDevicesRequest::SerializePayload() const
 
   }
 
-  if(m_nextTokenHasBeenSet)
+  if(m_filtersHasBeenSet)
   {
-   payload.WithString("nextToken", m_nextToken);
+   Aws::Utils::Array<JsonValue> filtersJsonList(m_filters.size());
+   for(unsigned filtersIndex = 0; filtersIndex < filtersJsonList.GetLength(); ++filtersIndex)
+   {
+     filtersJsonList[filtersIndex].AsObject(m_filters[filtersIndex].Jsonize());
+   }
+   payload.WithArray("filters", std::move(filtersJsonList));
 
   }
 

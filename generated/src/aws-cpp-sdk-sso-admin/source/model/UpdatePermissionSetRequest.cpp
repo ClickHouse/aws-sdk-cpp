@@ -12,15 +12,6 @@ using namespace Aws::SSOAdmin::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdatePermissionSetRequest::UpdatePermissionSetRequest() : 
-    m_instanceArnHasBeenSet(false),
-    m_permissionSetArnHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_sessionDurationHasBeenSet(false),
-    m_relayStateHasBeenSet(false)
-{
-}
-
 Aws::String UpdatePermissionSetRequest::SerializePayload() const
 {
   JsonValue payload;

@@ -18,15 +18,7 @@ namespace Shield
 namespace Model
 {
 
-TimeRange::TimeRange() : 
-    m_fromInclusiveHasBeenSet(false),
-    m_toExclusiveHasBeenSet(false)
-{
-}
-
-TimeRange::TimeRange(JsonView jsonValue) : 
-    m_fromInclusiveHasBeenSet(false),
-    m_toExclusiveHasBeenSet(false)
+TimeRange::TimeRange(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TimeRange& TimeRange::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FromInclusive"))
   {
     m_fromInclusive = jsonValue.GetDouble("FromInclusive");
-
     m_fromInclusiveHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ToExclusive"))
   {
     m_toExclusive = jsonValue.GetDouble("ToExclusive");
-
     m_toExclusiveHasBeenSet = true;
   }
-
   return *this;
 }
 

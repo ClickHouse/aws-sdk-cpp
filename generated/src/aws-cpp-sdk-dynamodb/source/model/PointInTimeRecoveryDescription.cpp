@@ -18,19 +18,7 @@ namespace DynamoDB
 namespace Model
 {
 
-PointInTimeRecoveryDescription::PointInTimeRecoveryDescription() : 
-    m_pointInTimeRecoveryStatus(PointInTimeRecoveryStatus::NOT_SET),
-    m_pointInTimeRecoveryStatusHasBeenSet(false),
-    m_earliestRestorableDateTimeHasBeenSet(false),
-    m_latestRestorableDateTimeHasBeenSet(false)
-{
-}
-
-PointInTimeRecoveryDescription::PointInTimeRecoveryDescription(JsonView jsonValue) : 
-    m_pointInTimeRecoveryStatus(PointInTimeRecoveryStatus::NOT_SET),
-    m_pointInTimeRecoveryStatusHasBeenSet(false),
-    m_earliestRestorableDateTimeHasBeenSet(false),
-    m_latestRestorableDateTimeHasBeenSet(false)
+PointInTimeRecoveryDescription::PointInTimeRecoveryDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,23 @@ PointInTimeRecoveryDescription& PointInTimeRecoveryDescription::operator =(JsonV
   if(jsonValue.ValueExists("PointInTimeRecoveryStatus"))
   {
     m_pointInTimeRecoveryStatus = PointInTimeRecoveryStatusMapper::GetPointInTimeRecoveryStatusForName(jsonValue.GetString("PointInTimeRecoveryStatus"));
-
     m_pointInTimeRecoveryStatusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("RecoveryPeriodInDays"))
+  {
+    m_recoveryPeriodInDays = jsonValue.GetInteger("RecoveryPeriodInDays");
+    m_recoveryPeriodInDaysHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("EarliestRestorableDateTime"))
   {
     m_earliestRestorableDateTime = jsonValue.GetDouble("EarliestRestorableDateTime");
-
     m_earliestRestorableDateTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LatestRestorableDateTime"))
   {
     m_latestRestorableDateTime = jsonValue.GetDouble("LatestRestorableDateTime");
-
     m_latestRestorableDateTimeHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -68,6 +55,12 @@ JsonValue PointInTimeRecoveryDescription::Jsonize() const
   if(m_pointInTimeRecoveryStatusHasBeenSet)
   {
    payload.WithString("PointInTimeRecoveryStatus", PointInTimeRecoveryStatusMapper::GetNameForPointInTimeRecoveryStatus(m_pointInTimeRecoveryStatus));
+  }
+
+  if(m_recoveryPeriodInDaysHasBeenSet)
+  {
+   payload.WithInteger("RecoveryPeriodInDays", m_recoveryPeriodInDays);
+
   }
 
   if(m_earliestRestorableDateTimeHasBeenSet)

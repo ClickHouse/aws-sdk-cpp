@@ -30,7 +30,7 @@ namespace Model
   class CreateCloudFrontOriginAccessIdentity2020_05_31Request : public CloudFrontRequest
   {
   public:
-    AWS_CLOUDFRONT_API CreateCloudFrontOriginAccessIdentity2020_05_31Request();
+    AWS_CLOUDFRONT_API CreateCloudFrontOriginAccessIdentity2020_05_31Request() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,36 +41,17 @@ namespace Model
     AWS_CLOUDFRONT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The current configuration information for the identity.</p>
      */
-    inline const CloudFrontOriginAccessIdentityConfig& GetCloudFrontOriginAccessIdentityConfig() const{ return m_cloudFrontOriginAccessIdentityConfig; }
-
-    /**
-     * <p>The current configuration information for the identity.</p>
-     */
+    inline const CloudFrontOriginAccessIdentityConfig& GetCloudFrontOriginAccessIdentityConfig() const { return m_cloudFrontOriginAccessIdentityConfig; }
     inline bool CloudFrontOriginAccessIdentityConfigHasBeenSet() const { return m_cloudFrontOriginAccessIdentityConfigHasBeenSet; }
-
-    /**
-     * <p>The current configuration information for the identity.</p>
-     */
-    inline void SetCloudFrontOriginAccessIdentityConfig(const CloudFrontOriginAccessIdentityConfig& value) { m_cloudFrontOriginAccessIdentityConfigHasBeenSet = true; m_cloudFrontOriginAccessIdentityConfig = value; }
-
-    /**
-     * <p>The current configuration information for the identity.</p>
-     */
-    inline void SetCloudFrontOriginAccessIdentityConfig(CloudFrontOriginAccessIdentityConfig&& value) { m_cloudFrontOriginAccessIdentityConfigHasBeenSet = true; m_cloudFrontOriginAccessIdentityConfig = std::move(value); }
-
-    /**
-     * <p>The current configuration information for the identity.</p>
-     */
-    inline CreateCloudFrontOriginAccessIdentity2020_05_31Request& WithCloudFrontOriginAccessIdentityConfig(const CloudFrontOriginAccessIdentityConfig& value) { SetCloudFrontOriginAccessIdentityConfig(value); return *this;}
-
-    /**
-     * <p>The current configuration information for the identity.</p>
-     */
-    inline CreateCloudFrontOriginAccessIdentity2020_05_31Request& WithCloudFrontOriginAccessIdentityConfig(CloudFrontOriginAccessIdentityConfig&& value) { SetCloudFrontOriginAccessIdentityConfig(std::move(value)); return *this;}
-
+    template<typename CloudFrontOriginAccessIdentityConfigT = CloudFrontOriginAccessIdentityConfig>
+    void SetCloudFrontOriginAccessIdentityConfig(CloudFrontOriginAccessIdentityConfigT&& value) { m_cloudFrontOriginAccessIdentityConfigHasBeenSet = true; m_cloudFrontOriginAccessIdentityConfig = std::forward<CloudFrontOriginAccessIdentityConfigT>(value); }
+    template<typename CloudFrontOriginAccessIdentityConfigT = CloudFrontOriginAccessIdentityConfig>
+    CreateCloudFrontOriginAccessIdentity2020_05_31Request& WithCloudFrontOriginAccessIdentityConfig(CloudFrontOriginAccessIdentityConfigT&& value) { SetCloudFrontOriginAccessIdentityConfig(std::forward<CloudFrontOriginAccessIdentityConfigT>(value)); return *this;}
+    ///@}
   private:
 
     CloudFrontOriginAccessIdentityConfig m_cloudFrontOriginAccessIdentityConfig;

@@ -12,17 +12,6 @@ using namespace Aws::Rekognition::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateProjectVersionRequest::CreateProjectVersionRequest() : 
-    m_projectArnHasBeenSet(false),
-    m_versionNameHasBeenSet(false),
-    m_outputConfigHasBeenSet(false),
-    m_trainingDataHasBeenSet(false),
-    m_testingDataHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false)
-{
-}
-
 Aws::String CreateProjectVersionRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -71,6 +60,18 @@ Aws::String CreateProjectVersionRequest::SerializePayload() const
   if(m_kmsKeyIdHasBeenSet)
   {
    payload.WithString("KmsKeyId", m_kmsKeyId);
+
+  }
+
+  if(m_versionDescriptionHasBeenSet)
+  {
+   payload.WithString("VersionDescription", m_versionDescription);
+
+  }
+
+  if(m_featureConfigHasBeenSet)
+  {
+   payload.WithObject("FeatureConfig", m_featureConfig.Jsonize());
 
   }
 

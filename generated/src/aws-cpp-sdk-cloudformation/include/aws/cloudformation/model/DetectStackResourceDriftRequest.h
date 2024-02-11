@@ -21,7 +21,7 @@ namespace Model
   class DetectStackResourceDriftRequest : public CloudFormationRequest
   {
   public:
-    AWS_CLOUDFORMATION_API DetectStackResourceDriftRequest();
+    AWS_CLOUDFORMATION_API DetectStackResourceDriftRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,87 +36,29 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the stack to which the resource belongs.</p>
      */
-    inline const Aws::String& GetStackName() const{ return m_stackName; }
-
-    /**
-     * <p>The name of the stack to which the resource belongs.</p>
-     */
+    inline const Aws::String& GetStackName() const { return m_stackName; }
     inline bool StackNameHasBeenSet() const { return m_stackNameHasBeenSet; }
+    template<typename StackNameT = Aws::String>
+    void SetStackName(StackNameT&& value) { m_stackNameHasBeenSet = true; m_stackName = std::forward<StackNameT>(value); }
+    template<typename StackNameT = Aws::String>
+    DetectStackResourceDriftRequest& WithStackName(StackNameT&& value) { SetStackName(std::forward<StackNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the stack to which the resource belongs.</p>
-     */
-    inline void SetStackName(const Aws::String& value) { m_stackNameHasBeenSet = true; m_stackName = value; }
-
-    /**
-     * <p>The name of the stack to which the resource belongs.</p>
-     */
-    inline void SetStackName(Aws::String&& value) { m_stackNameHasBeenSet = true; m_stackName = std::move(value); }
-
-    /**
-     * <p>The name of the stack to which the resource belongs.</p>
-     */
-    inline void SetStackName(const char* value) { m_stackNameHasBeenSet = true; m_stackName.assign(value); }
-
-    /**
-     * <p>The name of the stack to which the resource belongs.</p>
-     */
-    inline DetectStackResourceDriftRequest& WithStackName(const Aws::String& value) { SetStackName(value); return *this;}
-
-    /**
-     * <p>The name of the stack to which the resource belongs.</p>
-     */
-    inline DetectStackResourceDriftRequest& WithStackName(Aws::String&& value) { SetStackName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the stack to which the resource belongs.</p>
-     */
-    inline DetectStackResourceDriftRequest& WithStackName(const char* value) { SetStackName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The logical name of the resource for which to return drift information.</p>
      */
-    inline const Aws::String& GetLogicalResourceId() const{ return m_logicalResourceId; }
-
-    /**
-     * <p>The logical name of the resource for which to return drift information.</p>
-     */
+    inline const Aws::String& GetLogicalResourceId() const { return m_logicalResourceId; }
     inline bool LogicalResourceIdHasBeenSet() const { return m_logicalResourceIdHasBeenSet; }
-
-    /**
-     * <p>The logical name of the resource for which to return drift information.</p>
-     */
-    inline void SetLogicalResourceId(const Aws::String& value) { m_logicalResourceIdHasBeenSet = true; m_logicalResourceId = value; }
-
-    /**
-     * <p>The logical name of the resource for which to return drift information.</p>
-     */
-    inline void SetLogicalResourceId(Aws::String&& value) { m_logicalResourceIdHasBeenSet = true; m_logicalResourceId = std::move(value); }
-
-    /**
-     * <p>The logical name of the resource for which to return drift information.</p>
-     */
-    inline void SetLogicalResourceId(const char* value) { m_logicalResourceIdHasBeenSet = true; m_logicalResourceId.assign(value); }
-
-    /**
-     * <p>The logical name of the resource for which to return drift information.</p>
-     */
-    inline DetectStackResourceDriftRequest& WithLogicalResourceId(const Aws::String& value) { SetLogicalResourceId(value); return *this;}
-
-    /**
-     * <p>The logical name of the resource for which to return drift information.</p>
-     */
-    inline DetectStackResourceDriftRequest& WithLogicalResourceId(Aws::String&& value) { SetLogicalResourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The logical name of the resource for which to return drift information.</p>
-     */
-    inline DetectStackResourceDriftRequest& WithLogicalResourceId(const char* value) { SetLogicalResourceId(value); return *this;}
-
+    template<typename LogicalResourceIdT = Aws::String>
+    void SetLogicalResourceId(LogicalResourceIdT&& value) { m_logicalResourceIdHasBeenSet = true; m_logicalResourceId = std::forward<LogicalResourceIdT>(value); }
+    template<typename LogicalResourceIdT = Aws::String>
+    DetectStackResourceDriftRequest& WithLogicalResourceId(LogicalResourceIdT&& value) { SetLogicalResourceId(std::forward<LogicalResourceIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_stackName;

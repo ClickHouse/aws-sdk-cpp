@@ -18,17 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ParameterRanges::ParameterRanges() : 
-    m_integerParameterRangesHasBeenSet(false),
-    m_continuousParameterRangesHasBeenSet(false),
-    m_categoricalParameterRangesHasBeenSet(false)
-{
-}
-
-ParameterRanges::ParameterRanges(JsonView jsonValue) : 
-    m_integerParameterRangesHasBeenSet(false),
-    m_continuousParameterRangesHasBeenSet(false),
-    m_categoricalParameterRangesHasBeenSet(false)
+ParameterRanges::ParameterRanges(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ ParameterRanges& ParameterRanges::operator =(JsonView jsonValue)
     }
     m_integerParameterRangesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ContinuousParameterRanges"))
   {
     Aws::Utils::Array<JsonView> continuousParameterRangesJsonList = jsonValue.GetArray("ContinuousParameterRanges");
@@ -54,7 +43,6 @@ ParameterRanges& ParameterRanges::operator =(JsonView jsonValue)
     }
     m_continuousParameterRangesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CategoricalParameterRanges"))
   {
     Aws::Utils::Array<JsonView> categoricalParameterRangesJsonList = jsonValue.GetArray("CategoricalParameterRanges");
@@ -64,7 +52,15 @@ ParameterRanges& ParameterRanges::operator =(JsonView jsonValue)
     }
     m_categoricalParameterRangesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("AutoParameters"))
+  {
+    Aws::Utils::Array<JsonView> autoParametersJsonList = jsonValue.GetArray("AutoParameters");
+    for(unsigned autoParametersIndex = 0; autoParametersIndex < autoParametersJsonList.GetLength(); ++autoParametersIndex)
+    {
+      m_autoParameters.push_back(autoParametersJsonList[autoParametersIndex].AsObject());
+    }
+    m_autoParametersHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -102,6 +98,17 @@ JsonValue ParameterRanges::Jsonize() const
      categoricalParameterRangesJsonList[categoricalParameterRangesIndex].AsObject(m_categoricalParameterRanges[categoricalParameterRangesIndex].Jsonize());
    }
    payload.WithArray("CategoricalParameterRanges", std::move(categoricalParameterRangesJsonList));
+
+  }
+
+  if(m_autoParametersHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> autoParametersJsonList(m_autoParameters.size());
+   for(unsigned autoParametersIndex = 0; autoParametersIndex < autoParametersJsonList.GetLength(); ++autoParametersIndex)
+   {
+     autoParametersJsonList[autoParametersIndex].AsObject(m_autoParameters[autoParametersIndex].Jsonize());
+   }
+   payload.WithArray("AutoParameters", std::move(autoParametersJsonList));
 
   }
 

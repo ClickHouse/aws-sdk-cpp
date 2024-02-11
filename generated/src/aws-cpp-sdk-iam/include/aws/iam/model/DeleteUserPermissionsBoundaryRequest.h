@@ -21,7 +21,7 @@ namespace Model
   class DeleteUserPermissionsBoundaryRequest : public IAMRequest
   {
   public:
-    AWS_IAM_API DeleteUserPermissionsBoundaryRequest();
+    AWS_IAM_API DeleteUserPermissionsBoundaryRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,54 +36,18 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name (friendly name, not ARN) of the IAM user from which you want to
      * remove the permissions boundary.</p>
      */
-    inline const Aws::String& GetUserName() const{ return m_userName; }
-
-    /**
-     * <p>The name (friendly name, not ARN) of the IAM user from which you want to
-     * remove the permissions boundary.</p>
-     */
+    inline const Aws::String& GetUserName() const { return m_userName; }
     inline bool UserNameHasBeenSet() const { return m_userNameHasBeenSet; }
-
-    /**
-     * <p>The name (friendly name, not ARN) of the IAM user from which you want to
-     * remove the permissions boundary.</p>
-     */
-    inline void SetUserName(const Aws::String& value) { m_userNameHasBeenSet = true; m_userName = value; }
-
-    /**
-     * <p>The name (friendly name, not ARN) of the IAM user from which you want to
-     * remove the permissions boundary.</p>
-     */
-    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = std::move(value); }
-
-    /**
-     * <p>The name (friendly name, not ARN) of the IAM user from which you want to
-     * remove the permissions boundary.</p>
-     */
-    inline void SetUserName(const char* value) { m_userNameHasBeenSet = true; m_userName.assign(value); }
-
-    /**
-     * <p>The name (friendly name, not ARN) of the IAM user from which you want to
-     * remove the permissions boundary.</p>
-     */
-    inline DeleteUserPermissionsBoundaryRequest& WithUserName(const Aws::String& value) { SetUserName(value); return *this;}
-
-    /**
-     * <p>The name (friendly name, not ARN) of the IAM user from which you want to
-     * remove the permissions boundary.</p>
-     */
-    inline DeleteUserPermissionsBoundaryRequest& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name (friendly name, not ARN) of the IAM user from which you want to
-     * remove the permissions boundary.</p>
-     */
-    inline DeleteUserPermissionsBoundaryRequest& WithUserName(const char* value) { SetUserName(value); return *this;}
-
+    template<typename UserNameT = Aws::String>
+    void SetUserName(UserNameT&& value) { m_userNameHasBeenSet = true; m_userName = std::forward<UserNameT>(value); }
+    template<typename UserNameT = Aws::String>
+    DeleteUserPermissionsBoundaryRequest& WithUserName(UserNameT&& value) { SetUserName(std::forward<UserNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userName;

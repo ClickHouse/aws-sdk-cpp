@@ -41,12 +41,13 @@ namespace Model
   class GeoMatchSet
   {
   public:
-    AWS_WAFREGIONAL_API GeoMatchSet();
+    AWS_WAFREGIONAL_API GeoMatchSet() = default;
     AWS_WAFREGIONAL_API GeoMatchSet(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFREGIONAL_API GeoMatchSet& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFREGIONAL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The <code>GeoMatchSetId</code> for an <code>GeoMatchSet</code>. You use
      * <code>GeoMatchSetId</code> to get information about a <code>GeoMatchSet</code>
@@ -57,190 +58,41 @@ namespace Model
      * <a>DeleteGeoMatchSet</a>).</p> <p> <code>GeoMatchSetId</code> is returned by
      * <a>CreateGeoMatchSet</a> and by <a>ListGeoMatchSets</a>.</p>
      */
-    inline const Aws::String& GetGeoMatchSetId() const{ return m_geoMatchSetId; }
-
-    /**
-     * <p>The <code>GeoMatchSetId</code> for an <code>GeoMatchSet</code>. You use
-     * <code>GeoMatchSetId</code> to get information about a <code>GeoMatchSet</code>
-     * (see <a>GeoMatchSet</a>), update a <code>GeoMatchSet</code> (see
-     * <a>UpdateGeoMatchSet</a>), insert a <code>GeoMatchSet</code> into a
-     * <code>Rule</code> or delete one from a <code>Rule</code> (see
-     * <a>UpdateRule</a>), and delete a <code>GeoMatchSet</code> from AWS WAF (see
-     * <a>DeleteGeoMatchSet</a>).</p> <p> <code>GeoMatchSetId</code> is returned by
-     * <a>CreateGeoMatchSet</a> and by <a>ListGeoMatchSets</a>.</p>
-     */
+    inline const Aws::String& GetGeoMatchSetId() const { return m_geoMatchSetId; }
     inline bool GeoMatchSetIdHasBeenSet() const { return m_geoMatchSetIdHasBeenSet; }
+    template<typename GeoMatchSetIdT = Aws::String>
+    void SetGeoMatchSetId(GeoMatchSetIdT&& value) { m_geoMatchSetIdHasBeenSet = true; m_geoMatchSetId = std::forward<GeoMatchSetIdT>(value); }
+    template<typename GeoMatchSetIdT = Aws::String>
+    GeoMatchSet& WithGeoMatchSetId(GeoMatchSetIdT&& value) { SetGeoMatchSetId(std::forward<GeoMatchSetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>GeoMatchSetId</code> for an <code>GeoMatchSet</code>. You use
-     * <code>GeoMatchSetId</code> to get information about a <code>GeoMatchSet</code>
-     * (see <a>GeoMatchSet</a>), update a <code>GeoMatchSet</code> (see
-     * <a>UpdateGeoMatchSet</a>), insert a <code>GeoMatchSet</code> into a
-     * <code>Rule</code> or delete one from a <code>Rule</code> (see
-     * <a>UpdateRule</a>), and delete a <code>GeoMatchSet</code> from AWS WAF (see
-     * <a>DeleteGeoMatchSet</a>).</p> <p> <code>GeoMatchSetId</code> is returned by
-     * <a>CreateGeoMatchSet</a> and by <a>ListGeoMatchSets</a>.</p>
-     */
-    inline void SetGeoMatchSetId(const Aws::String& value) { m_geoMatchSetIdHasBeenSet = true; m_geoMatchSetId = value; }
-
-    /**
-     * <p>The <code>GeoMatchSetId</code> for an <code>GeoMatchSet</code>. You use
-     * <code>GeoMatchSetId</code> to get information about a <code>GeoMatchSet</code>
-     * (see <a>GeoMatchSet</a>), update a <code>GeoMatchSet</code> (see
-     * <a>UpdateGeoMatchSet</a>), insert a <code>GeoMatchSet</code> into a
-     * <code>Rule</code> or delete one from a <code>Rule</code> (see
-     * <a>UpdateRule</a>), and delete a <code>GeoMatchSet</code> from AWS WAF (see
-     * <a>DeleteGeoMatchSet</a>).</p> <p> <code>GeoMatchSetId</code> is returned by
-     * <a>CreateGeoMatchSet</a> and by <a>ListGeoMatchSets</a>.</p>
-     */
-    inline void SetGeoMatchSetId(Aws::String&& value) { m_geoMatchSetIdHasBeenSet = true; m_geoMatchSetId = std::move(value); }
-
-    /**
-     * <p>The <code>GeoMatchSetId</code> for an <code>GeoMatchSet</code>. You use
-     * <code>GeoMatchSetId</code> to get information about a <code>GeoMatchSet</code>
-     * (see <a>GeoMatchSet</a>), update a <code>GeoMatchSet</code> (see
-     * <a>UpdateGeoMatchSet</a>), insert a <code>GeoMatchSet</code> into a
-     * <code>Rule</code> or delete one from a <code>Rule</code> (see
-     * <a>UpdateRule</a>), and delete a <code>GeoMatchSet</code> from AWS WAF (see
-     * <a>DeleteGeoMatchSet</a>).</p> <p> <code>GeoMatchSetId</code> is returned by
-     * <a>CreateGeoMatchSet</a> and by <a>ListGeoMatchSets</a>.</p>
-     */
-    inline void SetGeoMatchSetId(const char* value) { m_geoMatchSetIdHasBeenSet = true; m_geoMatchSetId.assign(value); }
-
-    /**
-     * <p>The <code>GeoMatchSetId</code> for an <code>GeoMatchSet</code>. You use
-     * <code>GeoMatchSetId</code> to get information about a <code>GeoMatchSet</code>
-     * (see <a>GeoMatchSet</a>), update a <code>GeoMatchSet</code> (see
-     * <a>UpdateGeoMatchSet</a>), insert a <code>GeoMatchSet</code> into a
-     * <code>Rule</code> or delete one from a <code>Rule</code> (see
-     * <a>UpdateRule</a>), and delete a <code>GeoMatchSet</code> from AWS WAF (see
-     * <a>DeleteGeoMatchSet</a>).</p> <p> <code>GeoMatchSetId</code> is returned by
-     * <a>CreateGeoMatchSet</a> and by <a>ListGeoMatchSets</a>.</p>
-     */
-    inline GeoMatchSet& WithGeoMatchSetId(const Aws::String& value) { SetGeoMatchSetId(value); return *this;}
-
-    /**
-     * <p>The <code>GeoMatchSetId</code> for an <code>GeoMatchSet</code>. You use
-     * <code>GeoMatchSetId</code> to get information about a <code>GeoMatchSet</code>
-     * (see <a>GeoMatchSet</a>), update a <code>GeoMatchSet</code> (see
-     * <a>UpdateGeoMatchSet</a>), insert a <code>GeoMatchSet</code> into a
-     * <code>Rule</code> or delete one from a <code>Rule</code> (see
-     * <a>UpdateRule</a>), and delete a <code>GeoMatchSet</code> from AWS WAF (see
-     * <a>DeleteGeoMatchSet</a>).</p> <p> <code>GeoMatchSetId</code> is returned by
-     * <a>CreateGeoMatchSet</a> and by <a>ListGeoMatchSets</a>.</p>
-     */
-    inline GeoMatchSet& WithGeoMatchSetId(Aws::String&& value) { SetGeoMatchSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>GeoMatchSetId</code> for an <code>GeoMatchSet</code>. You use
-     * <code>GeoMatchSetId</code> to get information about a <code>GeoMatchSet</code>
-     * (see <a>GeoMatchSet</a>), update a <code>GeoMatchSet</code> (see
-     * <a>UpdateGeoMatchSet</a>), insert a <code>GeoMatchSet</code> into a
-     * <code>Rule</code> or delete one from a <code>Rule</code> (see
-     * <a>UpdateRule</a>), and delete a <code>GeoMatchSet</code> from AWS WAF (see
-     * <a>DeleteGeoMatchSet</a>).</p> <p> <code>GeoMatchSetId</code> is returned by
-     * <a>CreateGeoMatchSet</a> and by <a>ListGeoMatchSets</a>.</p>
-     */
-    inline GeoMatchSet& WithGeoMatchSetId(const char* value) { SetGeoMatchSetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change
      * the name of an <code>GeoMatchSet</code> after you create it.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change
-     * the name of an <code>GeoMatchSet</code> after you create it.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GeoMatchSet& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change
-     * the name of an <code>GeoMatchSet</code> after you create it.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change
-     * the name of an <code>GeoMatchSet</code> after you create it.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change
-     * the name of an <code>GeoMatchSet</code> after you create it.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change
-     * the name of an <code>GeoMatchSet</code> after you create it.</p>
-     */
-    inline GeoMatchSet& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change
-     * the name of an <code>GeoMatchSet</code> after you create it.</p>
-     */
-    inline GeoMatchSet& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change
-     * the name of an <code>GeoMatchSet</code> after you create it.</p>
-     */
-    inline GeoMatchSet& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of <a>GeoMatchConstraint</a> objects, which contain the country that
      * you want AWS WAF to search for.</p>
      */
-    inline const Aws::Vector<GeoMatchConstraint>& GetGeoMatchConstraints() const{ return m_geoMatchConstraints; }
-
-    /**
-     * <p>An array of <a>GeoMatchConstraint</a> objects, which contain the country that
-     * you want AWS WAF to search for.</p>
-     */
+    inline const Aws::Vector<GeoMatchConstraint>& GetGeoMatchConstraints() const { return m_geoMatchConstraints; }
     inline bool GeoMatchConstraintsHasBeenSet() const { return m_geoMatchConstraintsHasBeenSet; }
-
-    /**
-     * <p>An array of <a>GeoMatchConstraint</a> objects, which contain the country that
-     * you want AWS WAF to search for.</p>
-     */
-    inline void SetGeoMatchConstraints(const Aws::Vector<GeoMatchConstraint>& value) { m_geoMatchConstraintsHasBeenSet = true; m_geoMatchConstraints = value; }
-
-    /**
-     * <p>An array of <a>GeoMatchConstraint</a> objects, which contain the country that
-     * you want AWS WAF to search for.</p>
-     */
-    inline void SetGeoMatchConstraints(Aws::Vector<GeoMatchConstraint>&& value) { m_geoMatchConstraintsHasBeenSet = true; m_geoMatchConstraints = std::move(value); }
-
-    /**
-     * <p>An array of <a>GeoMatchConstraint</a> objects, which contain the country that
-     * you want AWS WAF to search for.</p>
-     */
-    inline GeoMatchSet& WithGeoMatchConstraints(const Aws::Vector<GeoMatchConstraint>& value) { SetGeoMatchConstraints(value); return *this;}
-
-    /**
-     * <p>An array of <a>GeoMatchConstraint</a> objects, which contain the country that
-     * you want AWS WAF to search for.</p>
-     */
-    inline GeoMatchSet& WithGeoMatchConstraints(Aws::Vector<GeoMatchConstraint>&& value) { SetGeoMatchConstraints(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of <a>GeoMatchConstraint</a> objects, which contain the country that
-     * you want AWS WAF to search for.</p>
-     */
-    inline GeoMatchSet& AddGeoMatchConstraints(const GeoMatchConstraint& value) { m_geoMatchConstraintsHasBeenSet = true; m_geoMatchConstraints.push_back(value); return *this; }
-
-    /**
-     * <p>An array of <a>GeoMatchConstraint</a> objects, which contain the country that
-     * you want AWS WAF to search for.</p>
-     */
-    inline GeoMatchSet& AddGeoMatchConstraints(GeoMatchConstraint&& value) { m_geoMatchConstraintsHasBeenSet = true; m_geoMatchConstraints.push_back(std::move(value)); return *this; }
-
+    template<typename GeoMatchConstraintsT = Aws::Vector<GeoMatchConstraint>>
+    void SetGeoMatchConstraints(GeoMatchConstraintsT&& value) { m_geoMatchConstraintsHasBeenSet = true; m_geoMatchConstraints = std::forward<GeoMatchConstraintsT>(value); }
+    template<typename GeoMatchConstraintsT = Aws::Vector<GeoMatchConstraint>>
+    GeoMatchSet& WithGeoMatchConstraints(GeoMatchConstraintsT&& value) { SetGeoMatchConstraints(std::forward<GeoMatchConstraintsT>(value)); return *this;}
+    template<typename GeoMatchConstraintsT = GeoMatchConstraint>
+    GeoMatchSet& AddGeoMatchConstraints(GeoMatchConstraintsT&& value) { m_geoMatchConstraintsHasBeenSet = true; m_geoMatchConstraints.emplace_back(std::forward<GeoMatchConstraintsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_geoMatchSetId;

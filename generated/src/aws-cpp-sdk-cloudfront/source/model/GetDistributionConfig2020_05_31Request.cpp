@@ -6,6 +6,7 @@
 #include <aws/cloudfront/model/GetDistributionConfig2020_05_31Request.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 
 #include <utility>
 
@@ -13,10 +14,6 @@ using namespace Aws::CloudFront::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-GetDistributionConfig2020_05_31Request::GetDistributionConfig2020_05_31Request() : 
-    m_idHasBeenSet(false)
-{
-}
 
 Aws::String GetDistributionConfig2020_05_31Request::SerializePayload() const
 {

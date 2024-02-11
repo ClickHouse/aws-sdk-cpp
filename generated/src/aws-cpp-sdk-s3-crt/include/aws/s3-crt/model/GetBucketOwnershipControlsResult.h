@@ -28,73 +28,39 @@ namespace Model
   class GetBucketOwnershipControlsResult
   {
   public:
-    AWS_S3CRT_API GetBucketOwnershipControlsResult();
+    AWS_S3CRT_API GetBucketOwnershipControlsResult() = default;
     AWS_S3CRT_API GetBucketOwnershipControlsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_S3CRT_API GetBucketOwnershipControlsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The <code>OwnershipControls</code> (BucketOwnerEnforced,
      * BucketOwnerPreferred, or ObjectWriter) currently in effect for this Amazon S3
      * bucket.</p>
      */
-    inline const OwnershipControls& GetOwnershipControls() const{ return m_ownershipControls; }
+    inline const OwnershipControls& GetOwnershipControls() const { return m_ownershipControls; }
+    template<typename OwnershipControlsT = OwnershipControls>
+    void SetOwnershipControls(OwnershipControlsT&& value) { m_ownershipControlsHasBeenSet = true; m_ownershipControls = std::forward<OwnershipControlsT>(value); }
+    template<typename OwnershipControlsT = OwnershipControls>
+    GetBucketOwnershipControlsResult& WithOwnershipControls(OwnershipControlsT&& value) { SetOwnershipControls(std::forward<OwnershipControlsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>OwnershipControls</code> (BucketOwnerEnforced,
-     * BucketOwnerPreferred, or ObjectWriter) currently in effect for this Amazon S3
-     * bucket.</p>
-     */
-    inline void SetOwnershipControls(const OwnershipControls& value) { m_ownershipControls = value; }
-
-    /**
-     * <p>The <code>OwnershipControls</code> (BucketOwnerEnforced,
-     * BucketOwnerPreferred, or ObjectWriter) currently in effect for this Amazon S3
-     * bucket.</p>
-     */
-    inline void SetOwnershipControls(OwnershipControls&& value) { m_ownershipControls = std::move(value); }
-
-    /**
-     * <p>The <code>OwnershipControls</code> (BucketOwnerEnforced,
-     * BucketOwnerPreferred, or ObjectWriter) currently in effect for this Amazon S3
-     * bucket.</p>
-     */
-    inline GetBucketOwnershipControlsResult& WithOwnershipControls(const OwnershipControls& value) { SetOwnershipControls(value); return *this;}
-
-    /**
-     * <p>The <code>OwnershipControls</code> (BucketOwnerEnforced,
-     * BucketOwnerPreferred, or ObjectWriter) currently in effect for this Amazon S3
-     * bucket.</p>
-     */
-    inline GetBucketOwnershipControlsResult& WithOwnershipControls(OwnershipControls&& value) { SetOwnershipControls(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetBucketOwnershipControlsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetBucketOwnershipControlsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetBucketOwnershipControlsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetBucketOwnershipControlsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     OwnershipControls m_ownershipControls;
+    bool m_ownershipControlsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

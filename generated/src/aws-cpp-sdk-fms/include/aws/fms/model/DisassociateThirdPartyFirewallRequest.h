@@ -21,7 +21,7 @@ namespace Model
   class DisassociateThirdPartyFirewallRequest : public FMSRequest
   {
   public:
-    AWS_FMS_API DisassociateThirdPartyFirewallRequest();
+    AWS_FMS_API DisassociateThirdPartyFirewallRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,39 +34,18 @@ namespace Model
     AWS_FMS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the third-party firewall vendor.</p>
      */
-    inline const ThirdPartyFirewall& GetThirdPartyFirewall() const{ return m_thirdPartyFirewall; }
-
-    /**
-     * <p>The name of the third-party firewall vendor.</p>
-     */
+    inline ThirdPartyFirewall GetThirdPartyFirewall() const { return m_thirdPartyFirewall; }
     inline bool ThirdPartyFirewallHasBeenSet() const { return m_thirdPartyFirewallHasBeenSet; }
-
-    /**
-     * <p>The name of the third-party firewall vendor.</p>
-     */
-    inline void SetThirdPartyFirewall(const ThirdPartyFirewall& value) { m_thirdPartyFirewallHasBeenSet = true; m_thirdPartyFirewall = value; }
-
-    /**
-     * <p>The name of the third-party firewall vendor.</p>
-     */
-    inline void SetThirdPartyFirewall(ThirdPartyFirewall&& value) { m_thirdPartyFirewallHasBeenSet = true; m_thirdPartyFirewall = std::move(value); }
-
-    /**
-     * <p>The name of the third-party firewall vendor.</p>
-     */
-    inline DisassociateThirdPartyFirewallRequest& WithThirdPartyFirewall(const ThirdPartyFirewall& value) { SetThirdPartyFirewall(value); return *this;}
-
-    /**
-     * <p>The name of the third-party firewall vendor.</p>
-     */
-    inline DisassociateThirdPartyFirewallRequest& WithThirdPartyFirewall(ThirdPartyFirewall&& value) { SetThirdPartyFirewall(std::move(value)); return *this;}
-
+    inline void SetThirdPartyFirewall(ThirdPartyFirewall value) { m_thirdPartyFirewallHasBeenSet = true; m_thirdPartyFirewall = value; }
+    inline DisassociateThirdPartyFirewallRequest& WithThirdPartyFirewall(ThirdPartyFirewall value) { SetThirdPartyFirewall(value); return *this;}
+    ///@}
   private:
 
-    ThirdPartyFirewall m_thirdPartyFirewall;
+    ThirdPartyFirewall m_thirdPartyFirewall{ThirdPartyFirewall::NOT_SET};
     bool m_thirdPartyFirewallHasBeenSet = false;
   };
 

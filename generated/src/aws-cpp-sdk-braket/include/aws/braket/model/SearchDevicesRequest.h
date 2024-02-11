@@ -6,8 +6,8 @@
 #pragma once
 #include <aws/braket/Braket_EXPORTS.h>
 #include <aws/braket/BraketRequest.h>
-#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/braket/model/SearchDevicesFilter.h>
 #include <utility>
 
@@ -23,7 +23,7 @@ namespace Model
   class SearchDevicesRequest : public BraketRequest
   {
   public:
-    AWS_BRAKET_API SearchDevicesRequest();
+    AWS_BRAKET_API SearchDevicesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,134 +34,53 @@ namespace Model
     AWS_BRAKET_API Aws::String SerializePayload() const override;
 
 
-    /**
-     * <p>The filter values to use to search for a device.</p>
-     */
-    inline const Aws::Vector<SearchDevicesFilter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>The filter values to use to search for a device.</p>
-     */
-    inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
-
-    /**
-     * <p>The filter values to use to search for a device.</p>
-     */
-    inline void SetFilters(const Aws::Vector<SearchDevicesFilter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>The filter values to use to search for a device.</p>
-     */
-    inline void SetFilters(Aws::Vector<SearchDevicesFilter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>The filter values to use to search for a device.</p>
-     */
-    inline SearchDevicesRequest& WithFilters(const Aws::Vector<SearchDevicesFilter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>The filter values to use to search for a device.</p>
-     */
-    inline SearchDevicesRequest& WithFilters(Aws::Vector<SearchDevicesFilter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>The filter values to use to search for a device.</p>
-     */
-    inline SearchDevicesRequest& AddFilters(const SearchDevicesFilter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>The filter values to use to search for a device.</p>
-     */
-    inline SearchDevicesRequest& AddFilters(SearchDevicesFilter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>The maximum number of results to return in the response.</p>
-     */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return in the response.</p>
-     */
-    inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return in the response.</p>
-     */
-    inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return in the response.</p>
-     */
-    inline SearchDevicesRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A token used for pagination of results returned in the response. Use the
-     * token returned from the previous request continue results where the previous
+     * token returned from the previous request to continue search where the previous
      * request ended.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>A token used for pagination of results returned in the response. Use the
-     * token returned from the previous request continue results where the previous
-     * request ended.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    SearchDevicesRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A token used for pagination of results returned in the response. Use the
-     * token returned from the previous request continue results where the previous
-     * request ended.</p>
+     * <p>The maximum number of results to return in the response.</p>
      */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline int GetMaxResults() const { return m_maxResults; }
+    inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
+    inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
+    inline SearchDevicesRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A token used for pagination of results returned in the response. Use the
-     * token returned from the previous request continue results where the previous
-     * request ended.</p>
+     * <p>Array of SearchDevicesFilter objects to use when searching for devices.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>A token used for pagination of results returned in the response. Use the
-     * token returned from the previous request continue results where the previous
-     * request ended.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>A token used for pagination of results returned in the response. Use the
-     * token returned from the previous request continue results where the previous
-     * request ended.</p>
-     */
-    inline SearchDevicesRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A token used for pagination of results returned in the response. Use the
-     * token returned from the previous request continue results where the previous
-     * request ended.</p>
-     */
-    inline SearchDevicesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token used for pagination of results returned in the response. Use the
-     * token returned from the previous request continue results where the previous
-     * request ended.</p>
-     */
-    inline SearchDevicesRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    inline const Aws::Vector<SearchDevicesFilter>& GetFilters() const { return m_filters; }
+    inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = Aws::Vector<SearchDevicesFilter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<SearchDevicesFilter>>
+    SearchDevicesRequest& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = SearchDevicesFilter>
+    SearchDevicesRequest& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
   private:
-
-    Aws::Vector<SearchDevicesFilter> m_filters;
-    bool m_filtersHasBeenSet = false;
-
-    int m_maxResults;
-    bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
+
+    int m_maxResults{0};
+    bool m_maxResultsHasBeenSet = false;
+
+    Aws::Vector<SearchDevicesFilter> m_filters;
+    bool m_filtersHasBeenSet = false;
   };
 
 } // namespace Model

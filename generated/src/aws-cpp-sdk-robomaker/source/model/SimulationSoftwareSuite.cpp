@@ -18,17 +18,7 @@ namespace RoboMaker
 namespace Model
 {
 
-SimulationSoftwareSuite::SimulationSoftwareSuite() : 
-    m_name(SimulationSoftwareSuiteType::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_versionHasBeenSet(false)
-{
-}
-
-SimulationSoftwareSuite::SimulationSoftwareSuite(JsonView jsonValue) : 
-    m_name(SimulationSoftwareSuiteType::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_versionHasBeenSet(false)
+SimulationSoftwareSuite::SimulationSoftwareSuite(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ SimulationSoftwareSuite& SimulationSoftwareSuite::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = SimulationSoftwareSuiteTypeMapper::GetSimulationSoftwareSuiteTypeForName(jsonValue.GetString("name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("version"))
   {
     m_version = jsonValue.GetString("version");
-
     m_versionHasBeenSet = true;
   }
-
   return *this;
 }
 

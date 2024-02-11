@@ -10,22 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-AllocateIpamPoolCidrRequest::AllocateIpamPoolCidrRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_ipamPoolIdHasBeenSet(false),
-    m_cidrHasBeenSet(false),
-    m_netmaskLength(0),
-    m_netmaskLengthHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_descriptionHasBeenSet(false),
-    m_previewNextCidr(false),
-    m_previewNextCidrHasBeenSet(false),
-    m_disallowedCidrsHasBeenSet(false)
-{
-}
-
 Aws::String AllocateIpamPoolCidrRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -63,6 +47,17 @@ Aws::String AllocateIpamPoolCidrRequest::SerializePayload() const
   if(m_previewNextCidrHasBeenSet)
   {
     ss << "PreviewNextCidr=" << std::boolalpha << m_previewNextCidr << "&";
+  }
+
+  if(m_allowedCidrsHasBeenSet)
+  {
+    unsigned allowedCidrsCount = 1;
+    for(auto& item : m_allowedCidrs)
+    {
+      ss << "AllowedCidr." << allowedCidrsCount << "="
+          << StringUtils::URLEncode(item.c_str()) << "&";
+      allowedCidrsCount++;
+    }
   }
 
   if(m_disallowedCidrsHasBeenSet)

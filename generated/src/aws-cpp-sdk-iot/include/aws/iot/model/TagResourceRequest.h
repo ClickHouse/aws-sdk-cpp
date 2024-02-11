@@ -23,7 +23,7 @@ namespace Model
   class TagResourceRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API TagResourceRequest();
+    AWS_IOT_API TagResourceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,31 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the resource.</p>
      */
-    inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
-
-    /**
-     * <p>The ARN of the resource.</p>
-     */
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
     inline bool ResourceArnHasBeenSet() const { return m_resourceArnHasBeenSet; }
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    TagResourceRequest& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the resource.</p>
-     */
-    inline void SetResourceArn(const Aws::String& value) { m_resourceArnHasBeenSet = true; m_resourceArn = value; }
-
-    /**
-     * <p>The ARN of the resource.</p>
-     */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the resource.</p>
-     */
-    inline void SetResourceArn(const char* value) { m_resourceArnHasBeenSet = true; m_resourceArn.assign(value); }
-
-    /**
-     * <p>The ARN of the resource.</p>
-     */
-    inline TagResourceRequest& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the resource.</p>
-     */
-    inline TagResourceRequest& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the resource.</p>
-     */
-    inline TagResourceRequest& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The new or modified tags for the resource.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The new or modified tags for the resource.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The new or modified tags for the resource.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The new or modified tags for the resource.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The new or modified tags for the resource.</p>
-     */
-    inline TagResourceRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The new or modified tags for the resource.</p>
-     */
-    inline TagResourceRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The new or modified tags for the resource.</p>
-     */
-    inline TagResourceRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The new or modified tags for the resource.</p>
-     */
-    inline TagResourceRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    TagResourceRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    TagResourceRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_resourceArn;

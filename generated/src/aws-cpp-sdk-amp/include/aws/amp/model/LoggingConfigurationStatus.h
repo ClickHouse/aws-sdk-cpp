@@ -25,94 +25,45 @@ namespace Model
 {
 
   /**
-   * <p>Represents the status of a logging configuration.</p><p><h3>See Also:</h3>  
-   * <a
+   * <p>The status of the logging configuration. </p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/amp-2020-08-01/LoggingConfigurationStatus">AWS
    * API Reference</a></p>
    */
   class LoggingConfigurationStatus
   {
   public:
-    AWS_PROMETHEUSSERVICE_API LoggingConfigurationStatus();
+    AWS_PROMETHEUSSERVICE_API LoggingConfigurationStatus() = default;
     AWS_PROMETHEUSSERVICE_API LoggingConfigurationStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_PROMETHEUSSERVICE_API LoggingConfigurationStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PROMETHEUSSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>Status code of the logging configuration.</p>
+     * <p>The current status of the current rules and alerting logging
+     * configuration.</p>  <p>These logging configurations are only for rules and
+     * alerting logs.</p> 
      */
-    inline const LoggingConfigurationStatusCode& GetStatusCode() const{ return m_statusCode; }
-
-    /**
-     * <p>Status code of the logging configuration.</p>
-     */
+    inline LoggingConfigurationStatusCode GetStatusCode() const { return m_statusCode; }
     inline bool StatusCodeHasBeenSet() const { return m_statusCodeHasBeenSet; }
+    inline void SetStatusCode(LoggingConfigurationStatusCode value) { m_statusCodeHasBeenSet = true; m_statusCode = value; }
+    inline LoggingConfigurationStatus& WithStatusCode(LoggingConfigurationStatusCode value) { SetStatusCode(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Status code of the logging configuration.</p>
+     * <p>If failed, the reason for the failure.</p>
      */
-    inline void SetStatusCode(const LoggingConfigurationStatusCode& value) { m_statusCodeHasBeenSet = true; m_statusCode = value; }
-
-    /**
-     * <p>Status code of the logging configuration.</p>
-     */
-    inline void SetStatusCode(LoggingConfigurationStatusCode&& value) { m_statusCodeHasBeenSet = true; m_statusCode = std::move(value); }
-
-    /**
-     * <p>Status code of the logging configuration.</p>
-     */
-    inline LoggingConfigurationStatus& WithStatusCode(const LoggingConfigurationStatusCode& value) { SetStatusCode(value); return *this;}
-
-    /**
-     * <p>Status code of the logging configuration.</p>
-     */
-    inline LoggingConfigurationStatus& WithStatusCode(LoggingConfigurationStatusCode&& value) { SetStatusCode(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The reason for failure if any.</p>
-     */
-    inline const Aws::String& GetStatusReason() const{ return m_statusReason; }
-
-    /**
-     * <p>The reason for failure if any.</p>
-     */
+    inline const Aws::String& GetStatusReason() const { return m_statusReason; }
     inline bool StatusReasonHasBeenSet() const { return m_statusReasonHasBeenSet; }
-
-    /**
-     * <p>The reason for failure if any.</p>
-     */
-    inline void SetStatusReason(const Aws::String& value) { m_statusReasonHasBeenSet = true; m_statusReason = value; }
-
-    /**
-     * <p>The reason for failure if any.</p>
-     */
-    inline void SetStatusReason(Aws::String&& value) { m_statusReasonHasBeenSet = true; m_statusReason = std::move(value); }
-
-    /**
-     * <p>The reason for failure if any.</p>
-     */
-    inline void SetStatusReason(const char* value) { m_statusReasonHasBeenSet = true; m_statusReason.assign(value); }
-
-    /**
-     * <p>The reason for failure if any.</p>
-     */
-    inline LoggingConfigurationStatus& WithStatusReason(const Aws::String& value) { SetStatusReason(value); return *this;}
-
-    /**
-     * <p>The reason for failure if any.</p>
-     */
-    inline LoggingConfigurationStatus& WithStatusReason(Aws::String&& value) { SetStatusReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason for failure if any.</p>
-     */
-    inline LoggingConfigurationStatus& WithStatusReason(const char* value) { SetStatusReason(value); return *this;}
-
+    template<typename StatusReasonT = Aws::String>
+    void SetStatusReason(StatusReasonT&& value) { m_statusReasonHasBeenSet = true; m_statusReason = std::forward<StatusReasonT>(value); }
+    template<typename StatusReasonT = Aws::String>
+    LoggingConfigurationStatus& WithStatusReason(StatusReasonT&& value) { SetStatusReason(std::forward<StatusReasonT>(value)); return *this;}
+    ///@}
   private:
 
-    LoggingConfigurationStatusCode m_statusCode;
+    LoggingConfigurationStatusCode m_statusCode{LoggingConfigurationStatusCode::NOT_SET};
     bool m_statusCodeHasBeenSet = false;
 
     Aws::String m_statusReason;

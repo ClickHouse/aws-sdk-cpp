@@ -33,42 +33,23 @@ namespace Model
   class TreeMapFieldWells
   {
   public:
-    AWS_QUICKSIGHT_API TreeMapFieldWells();
+    AWS_QUICKSIGHT_API TreeMapFieldWells() = default;
     AWS_QUICKSIGHT_API TreeMapFieldWells(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API TreeMapFieldWells& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The aggregated field wells of a tree map.</p>
      */
-    inline const TreeMapAggregatedFieldWells& GetTreeMapAggregatedFieldWells() const{ return m_treeMapAggregatedFieldWells; }
-
-    /**
-     * <p>The aggregated field wells of a tree map.</p>
-     */
+    inline const TreeMapAggregatedFieldWells& GetTreeMapAggregatedFieldWells() const { return m_treeMapAggregatedFieldWells; }
     inline bool TreeMapAggregatedFieldWellsHasBeenSet() const { return m_treeMapAggregatedFieldWellsHasBeenSet; }
-
-    /**
-     * <p>The aggregated field wells of a tree map.</p>
-     */
-    inline void SetTreeMapAggregatedFieldWells(const TreeMapAggregatedFieldWells& value) { m_treeMapAggregatedFieldWellsHasBeenSet = true; m_treeMapAggregatedFieldWells = value; }
-
-    /**
-     * <p>The aggregated field wells of a tree map.</p>
-     */
-    inline void SetTreeMapAggregatedFieldWells(TreeMapAggregatedFieldWells&& value) { m_treeMapAggregatedFieldWellsHasBeenSet = true; m_treeMapAggregatedFieldWells = std::move(value); }
-
-    /**
-     * <p>The aggregated field wells of a tree map.</p>
-     */
-    inline TreeMapFieldWells& WithTreeMapAggregatedFieldWells(const TreeMapAggregatedFieldWells& value) { SetTreeMapAggregatedFieldWells(value); return *this;}
-
-    /**
-     * <p>The aggregated field wells of a tree map.</p>
-     */
-    inline TreeMapFieldWells& WithTreeMapAggregatedFieldWells(TreeMapAggregatedFieldWells&& value) { SetTreeMapAggregatedFieldWells(std::move(value)); return *this;}
-
+    template<typename TreeMapAggregatedFieldWellsT = TreeMapAggregatedFieldWells>
+    void SetTreeMapAggregatedFieldWells(TreeMapAggregatedFieldWellsT&& value) { m_treeMapAggregatedFieldWellsHasBeenSet = true; m_treeMapAggregatedFieldWells = std::forward<TreeMapAggregatedFieldWellsT>(value); }
+    template<typename TreeMapAggregatedFieldWellsT = TreeMapAggregatedFieldWells>
+    TreeMapFieldWells& WithTreeMapAggregatedFieldWells(TreeMapAggregatedFieldWellsT&& value) { SetTreeMapAggregatedFieldWells(std::forward<TreeMapAggregatedFieldWellsT>(value)); return *this;}
+    ///@}
   private:
 
     TreeMapAggregatedFieldWells m_treeMapAggregatedFieldWells;

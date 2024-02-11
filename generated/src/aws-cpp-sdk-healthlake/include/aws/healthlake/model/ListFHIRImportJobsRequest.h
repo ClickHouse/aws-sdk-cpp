@@ -23,7 +23,7 @@ namespace Model
   class ListFHIRImportJobsRequest : public HealthLakeRequest
   {
   public:
-    AWS_HEALTHLAKE_API ListFHIRImportJobsRequest();
+    AWS_HEALTHLAKE_API ListFHIRImportJobsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,288 +36,88 @@ namespace Model
     AWS_HEALTHLAKE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p> This parameter limits the response to the import job with the specified Data
-     * Store ID. </p>
+     * <p>Limits the response to the import job with the specified data store ID. </p>
      */
-    inline const Aws::String& GetDatastoreId() const{ return m_datastoreId; }
-
-    /**
-     * <p> This parameter limits the response to the import job with the specified Data
-     * Store ID. </p>
-     */
+    inline const Aws::String& GetDatastoreId() const { return m_datastoreId; }
     inline bool DatastoreIdHasBeenSet() const { return m_datastoreIdHasBeenSet; }
+    template<typename DatastoreIdT = Aws::String>
+    void SetDatastoreId(DatastoreIdT&& value) { m_datastoreIdHasBeenSet = true; m_datastoreId = std::forward<DatastoreIdT>(value); }
+    template<typename DatastoreIdT = Aws::String>
+    ListFHIRImportJobsRequest& WithDatastoreId(DatastoreIdT&& value) { SetDatastoreId(std::forward<DatastoreIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> This parameter limits the response to the import job with the specified Data
-     * Store ID. </p>
+     * <p>The pagination token used to identify the next page of results to return.</p>
      */
-    inline void SetDatastoreId(const Aws::String& value) { m_datastoreIdHasBeenSet = true; m_datastoreId = value; }
-
-    /**
-     * <p> This parameter limits the response to the import job with the specified Data
-     * Store ID. </p>
-     */
-    inline void SetDatastoreId(Aws::String&& value) { m_datastoreIdHasBeenSet = true; m_datastoreId = std::move(value); }
-
-    /**
-     * <p> This parameter limits the response to the import job with the specified Data
-     * Store ID. </p>
-     */
-    inline void SetDatastoreId(const char* value) { m_datastoreIdHasBeenSet = true; m_datastoreId.assign(value); }
-
-    /**
-     * <p> This parameter limits the response to the import job with the specified Data
-     * Store ID. </p>
-     */
-    inline ListFHIRImportJobsRequest& WithDatastoreId(const Aws::String& value) { SetDatastoreId(value); return *this;}
-
-    /**
-     * <p> This parameter limits the response to the import job with the specified Data
-     * Store ID. </p>
-     */
-    inline ListFHIRImportJobsRequest& WithDatastoreId(Aws::String&& value) { SetDatastoreId(std::move(value)); return *this;}
-
-    /**
-     * <p> This parameter limits the response to the import job with the specified Data
-     * Store ID. </p>
-     */
-    inline ListFHIRImportJobsRequest& WithDatastoreId(const char* value) { SetDatastoreId(value); return *this;}
-
-
-    /**
-     * <p> A pagination token used to identify the next page of results to return for a
-     * ListFHIRImportJobs query. </p>
-     */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p> A pagination token used to identify the next page of results to return for a
-     * ListFHIRImportJobs query. </p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListFHIRImportJobsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> A pagination token used to identify the next page of results to return for a
-     * ListFHIRImportJobs query. </p>
+     * <p>Limits the number of results returned for <code>ListFHIRImportJobs</code> to
+     * a maximum quantity specified by the user.</p>
      */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p> A pagination token used to identify the next page of results to return for a
-     * ListFHIRImportJobs query. </p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p> A pagination token used to identify the next page of results to return for a
-     * ListFHIRImportJobs query. </p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p> A pagination token used to identify the next page of results to return for a
-     * ListFHIRImportJobs query. </p>
-     */
-    inline ListFHIRImportJobsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p> A pagination token used to identify the next page of results to return for a
-     * ListFHIRImportJobs query. </p>
-     */
-    inline ListFHIRImportJobsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p> A pagination token used to identify the next page of results to return for a
-     * ListFHIRImportJobs query. </p>
-     */
-    inline ListFHIRImportJobsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
-    /**
-     * <p> This parameter limits the number of results returned for a
-     * ListFHIRImportJobs to a maximum quantity specified by the user. </p>
-     */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p> This parameter limits the number of results returned for a
-     * ListFHIRImportJobs to a maximum quantity specified by the user. </p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p> This parameter limits the number of results returned for a
-     * ListFHIRImportJobs to a maximum quantity specified by the user. </p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p> This parameter limits the number of results returned for a
-     * ListFHIRImportJobs to a maximum quantity specified by the user. </p>
-     */
     inline ListFHIRImportJobsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p> This parameter limits the response to the import job with the specified job
-     * name. </p>
+     * <p>Limits the response to the import job with the specified job name. </p>
      */
-    inline const Aws::String& GetJobName() const{ return m_jobName; }
-
-    /**
-     * <p> This parameter limits the response to the import job with the specified job
-     * name. </p>
-     */
+    inline const Aws::String& GetJobName() const { return m_jobName; }
     inline bool JobNameHasBeenSet() const { return m_jobNameHasBeenSet; }
+    template<typename JobNameT = Aws::String>
+    void SetJobName(JobNameT&& value) { m_jobNameHasBeenSet = true; m_jobName = std::forward<JobNameT>(value); }
+    template<typename JobNameT = Aws::String>
+    ListFHIRImportJobsRequest& WithJobName(JobNameT&& value) { SetJobName(std::forward<JobNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> This parameter limits the response to the import job with the specified job
-     * name. </p>
+     * <p>Limits the response to the import job with the specified job status. </p>
      */
-    inline void SetJobName(const Aws::String& value) { m_jobNameHasBeenSet = true; m_jobName = value; }
-
-    /**
-     * <p> This parameter limits the response to the import job with the specified job
-     * name. </p>
-     */
-    inline void SetJobName(Aws::String&& value) { m_jobNameHasBeenSet = true; m_jobName = std::move(value); }
-
-    /**
-     * <p> This parameter limits the response to the import job with the specified job
-     * name. </p>
-     */
-    inline void SetJobName(const char* value) { m_jobNameHasBeenSet = true; m_jobName.assign(value); }
-
-    /**
-     * <p> This parameter limits the response to the import job with the specified job
-     * name. </p>
-     */
-    inline ListFHIRImportJobsRequest& WithJobName(const Aws::String& value) { SetJobName(value); return *this;}
-
-    /**
-     * <p> This parameter limits the response to the import job with the specified job
-     * name. </p>
-     */
-    inline ListFHIRImportJobsRequest& WithJobName(Aws::String&& value) { SetJobName(std::move(value)); return *this;}
-
-    /**
-     * <p> This parameter limits the response to the import job with the specified job
-     * name. </p>
-     */
-    inline ListFHIRImportJobsRequest& WithJobName(const char* value) { SetJobName(value); return *this;}
-
-
-    /**
-     * <p> This parameter limits the response to the import job with the specified job
-     * status. </p>
-     */
-    inline const JobStatus& GetJobStatus() const{ return m_jobStatus; }
-
-    /**
-     * <p> This parameter limits the response to the import job with the specified job
-     * status. </p>
-     */
+    inline JobStatus GetJobStatus() const { return m_jobStatus; }
     inline bool JobStatusHasBeenSet() const { return m_jobStatusHasBeenSet; }
+    inline void SetJobStatus(JobStatus value) { m_jobStatusHasBeenSet = true; m_jobStatus = value; }
+    inline ListFHIRImportJobsRequest& WithJobStatus(JobStatus value) { SetJobStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> This parameter limits the response to the import job with the specified job
-     * status. </p>
+     * <p>Limits the response to FHIR import jobs submitted before a user- specified
+     * date. </p>
      */
-    inline void SetJobStatus(const JobStatus& value) { m_jobStatusHasBeenSet = true; m_jobStatus = value; }
-
-    /**
-     * <p> This parameter limits the response to the import job with the specified job
-     * status. </p>
-     */
-    inline void SetJobStatus(JobStatus&& value) { m_jobStatusHasBeenSet = true; m_jobStatus = std::move(value); }
-
-    /**
-     * <p> This parameter limits the response to the import job with the specified job
-     * status. </p>
-     */
-    inline ListFHIRImportJobsRequest& WithJobStatus(const JobStatus& value) { SetJobStatus(value); return *this;}
-
-    /**
-     * <p> This parameter limits the response to the import job with the specified job
-     * status. </p>
-     */
-    inline ListFHIRImportJobsRequest& WithJobStatus(JobStatus&& value) { SetJobStatus(std::move(value)); return *this;}
-
-
-    /**
-     * <p> This parameter limits the response to FHIR import jobs submitted before a
-     * user specified date. </p>
-     */
-    inline const Aws::Utils::DateTime& GetSubmittedBefore() const{ return m_submittedBefore; }
-
-    /**
-     * <p> This parameter limits the response to FHIR import jobs submitted before a
-     * user specified date. </p>
-     */
+    inline const Aws::Utils::DateTime& GetSubmittedBefore() const { return m_submittedBefore; }
     inline bool SubmittedBeforeHasBeenSet() const { return m_submittedBeforeHasBeenSet; }
+    template<typename SubmittedBeforeT = Aws::Utils::DateTime>
+    void SetSubmittedBefore(SubmittedBeforeT&& value) { m_submittedBeforeHasBeenSet = true; m_submittedBefore = std::forward<SubmittedBeforeT>(value); }
+    template<typename SubmittedBeforeT = Aws::Utils::DateTime>
+    ListFHIRImportJobsRequest& WithSubmittedBefore(SubmittedBeforeT&& value) { SetSubmittedBefore(std::forward<SubmittedBeforeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> This parameter limits the response to FHIR import jobs submitted before a
-     * user specified date. </p>
+     * <p>Limits the response to FHIR import jobs submitted after a user-specified
+     * date.</p>
      */
-    inline void SetSubmittedBefore(const Aws::Utils::DateTime& value) { m_submittedBeforeHasBeenSet = true; m_submittedBefore = value; }
-
-    /**
-     * <p> This parameter limits the response to FHIR import jobs submitted before a
-     * user specified date. </p>
-     */
-    inline void SetSubmittedBefore(Aws::Utils::DateTime&& value) { m_submittedBeforeHasBeenSet = true; m_submittedBefore = std::move(value); }
-
-    /**
-     * <p> This parameter limits the response to FHIR import jobs submitted before a
-     * user specified date. </p>
-     */
-    inline ListFHIRImportJobsRequest& WithSubmittedBefore(const Aws::Utils::DateTime& value) { SetSubmittedBefore(value); return *this;}
-
-    /**
-     * <p> This parameter limits the response to FHIR import jobs submitted before a
-     * user specified date. </p>
-     */
-    inline ListFHIRImportJobsRequest& WithSubmittedBefore(Aws::Utils::DateTime&& value) { SetSubmittedBefore(std::move(value)); return *this;}
-
-
-    /**
-     * <p> This parameter limits the response to FHIR import jobs submitted after a
-     * user specified date. </p>
-     */
-    inline const Aws::Utils::DateTime& GetSubmittedAfter() const{ return m_submittedAfter; }
-
-    /**
-     * <p> This parameter limits the response to FHIR import jobs submitted after a
-     * user specified date. </p>
-     */
+    inline const Aws::Utils::DateTime& GetSubmittedAfter() const { return m_submittedAfter; }
     inline bool SubmittedAfterHasBeenSet() const { return m_submittedAfterHasBeenSet; }
-
-    /**
-     * <p> This parameter limits the response to FHIR import jobs submitted after a
-     * user specified date. </p>
-     */
-    inline void SetSubmittedAfter(const Aws::Utils::DateTime& value) { m_submittedAfterHasBeenSet = true; m_submittedAfter = value; }
-
-    /**
-     * <p> This parameter limits the response to FHIR import jobs submitted after a
-     * user specified date. </p>
-     */
-    inline void SetSubmittedAfter(Aws::Utils::DateTime&& value) { m_submittedAfterHasBeenSet = true; m_submittedAfter = std::move(value); }
-
-    /**
-     * <p> This parameter limits the response to FHIR import jobs submitted after a
-     * user specified date. </p>
-     */
-    inline ListFHIRImportJobsRequest& WithSubmittedAfter(const Aws::Utils::DateTime& value) { SetSubmittedAfter(value); return *this;}
-
-    /**
-     * <p> This parameter limits the response to FHIR import jobs submitted after a
-     * user specified date. </p>
-     */
-    inline ListFHIRImportJobsRequest& WithSubmittedAfter(Aws::Utils::DateTime&& value) { SetSubmittedAfter(std::move(value)); return *this;}
-
+    template<typename SubmittedAfterT = Aws::Utils::DateTime>
+    void SetSubmittedAfter(SubmittedAfterT&& value) { m_submittedAfterHasBeenSet = true; m_submittedAfter = std::forward<SubmittedAfterT>(value); }
+    template<typename SubmittedAfterT = Aws::Utils::DateTime>
+    ListFHIRImportJobsRequest& WithSubmittedAfter(SubmittedAfterT&& value) { SetSubmittedAfter(std::forward<SubmittedAfterT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_datastoreId;
@@ -326,19 +126,19 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_jobName;
     bool m_jobNameHasBeenSet = false;
 
-    JobStatus m_jobStatus;
+    JobStatus m_jobStatus{JobStatus::NOT_SET};
     bool m_jobStatusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_submittedBefore;
+    Aws::Utils::DateTime m_submittedBefore{};
     bool m_submittedBeforeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_submittedAfter;
+    Aws::Utils::DateTime m_submittedAfter{};
     bool m_submittedAfterHasBeenSet = false;
   };
 

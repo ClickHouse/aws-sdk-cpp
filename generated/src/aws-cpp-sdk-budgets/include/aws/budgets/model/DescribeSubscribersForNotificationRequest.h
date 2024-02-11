@@ -25,7 +25,7 @@ namespace Model
   class DescribeSubscribersForNotificationRequest : public BudgetsRequest
   {
   public:
-    AWS_BUDGETS_API DescribeSubscribersForNotificationRequest();
+    AWS_BUDGETS_API DescribeSubscribersForNotificationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,200 +38,66 @@ namespace Model
     AWS_BUDGETS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The <code>accountId</code> that is associated with the budget whose
      * subscribers you want descriptions of.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * subscribers you want descriptions of.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    DescribeSubscribersForNotificationRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * subscribers you want descriptions of.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * subscribers you want descriptions of.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * subscribers you want descriptions of.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * subscribers you want descriptions of.</p>
-     */
-    inline DescribeSubscribersForNotificationRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * subscribers you want descriptions of.</p>
-     */
-    inline DescribeSubscribersForNotificationRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * subscribers you want descriptions of.</p>
-     */
-    inline DescribeSubscribersForNotificationRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the budget whose subscribers you want descriptions of.</p>
      */
-    inline const Aws::String& GetBudgetName() const{ return m_budgetName; }
-
-    /**
-     * <p>The name of the budget whose subscribers you want descriptions of.</p>
-     */
+    inline const Aws::String& GetBudgetName() const { return m_budgetName; }
     inline bool BudgetNameHasBeenSet() const { return m_budgetNameHasBeenSet; }
+    template<typename BudgetNameT = Aws::String>
+    void SetBudgetName(BudgetNameT&& value) { m_budgetNameHasBeenSet = true; m_budgetName = std::forward<BudgetNameT>(value); }
+    template<typename BudgetNameT = Aws::String>
+    DescribeSubscribersForNotificationRequest& WithBudgetName(BudgetNameT&& value) { SetBudgetName(std::forward<BudgetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the budget whose subscribers you want descriptions of.</p>
-     */
-    inline void SetBudgetName(const Aws::String& value) { m_budgetNameHasBeenSet = true; m_budgetName = value; }
-
-    /**
-     * <p>The name of the budget whose subscribers you want descriptions of.</p>
-     */
-    inline void SetBudgetName(Aws::String&& value) { m_budgetNameHasBeenSet = true; m_budgetName = std::move(value); }
-
-    /**
-     * <p>The name of the budget whose subscribers you want descriptions of.</p>
-     */
-    inline void SetBudgetName(const char* value) { m_budgetNameHasBeenSet = true; m_budgetName.assign(value); }
-
-    /**
-     * <p>The name of the budget whose subscribers you want descriptions of.</p>
-     */
-    inline DescribeSubscribersForNotificationRequest& WithBudgetName(const Aws::String& value) { SetBudgetName(value); return *this;}
-
-    /**
-     * <p>The name of the budget whose subscribers you want descriptions of.</p>
-     */
-    inline DescribeSubscribersForNotificationRequest& WithBudgetName(Aws::String&& value) { SetBudgetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the budget whose subscribers you want descriptions of.</p>
-     */
-    inline DescribeSubscribersForNotificationRequest& WithBudgetName(const char* value) { SetBudgetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The notification whose subscribers you want to list.</p>
      */
-    inline const Notification& GetNotification() const{ return m_notification; }
-
-    /**
-     * <p>The notification whose subscribers you want to list.</p>
-     */
+    inline const Notification& GetNotification() const { return m_notification; }
     inline bool NotificationHasBeenSet() const { return m_notificationHasBeenSet; }
+    template<typename NotificationT = Notification>
+    void SetNotification(NotificationT&& value) { m_notificationHasBeenSet = true; m_notification = std::forward<NotificationT>(value); }
+    template<typename NotificationT = Notification>
+    DescribeSubscribersForNotificationRequest& WithNotification(NotificationT&& value) { SetNotification(std::forward<NotificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The notification whose subscribers you want to list.</p>
-     */
-    inline void SetNotification(const Notification& value) { m_notificationHasBeenSet = true; m_notification = value; }
-
-    /**
-     * <p>The notification whose subscribers you want to list.</p>
-     */
-    inline void SetNotification(Notification&& value) { m_notificationHasBeenSet = true; m_notification = std::move(value); }
-
-    /**
-     * <p>The notification whose subscribers you want to list.</p>
-     */
-    inline DescribeSubscribersForNotificationRequest& WithNotification(const Notification& value) { SetNotification(value); return *this;}
-
-    /**
-     * <p>The notification whose subscribers you want to list.</p>
-     */
-    inline DescribeSubscribersForNotificationRequest& WithNotification(Notification&& value) { SetNotification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An optional integer that represents how many entries a paginated response
-     * contains. The maximum is 100.</p>
+     * contains.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>An optional integer that represents how many entries a paginated response
-     * contains. The maximum is 100.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>An optional integer that represents how many entries a paginated response
-     * contains. The maximum is 100.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>An optional integer that represents how many entries a paginated response
-     * contains. The maximum is 100.</p>
-     */
     inline DescribeSubscribersForNotificationRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The pagination token that you include in your request to indicate the next
      * set of results that you want to retrieve.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The pagination token that you include in your request to indicate the next
-     * set of results that you want to retrieve.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The pagination token that you include in your request to indicate the next
-     * set of results that you want to retrieve.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The pagination token that you include in your request to indicate the next
-     * set of results that you want to retrieve.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token that you include in your request to indicate the next
-     * set of results that you want to retrieve.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token that you include in your request to indicate the next
-     * set of results that you want to retrieve.</p>
-     */
-    inline DescribeSubscribersForNotificationRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token that you include in your request to indicate the next
-     * set of results that you want to retrieve.</p>
-     */
-    inline DescribeSubscribersForNotificationRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token that you include in your request to indicate the next
-     * set of results that you want to retrieve.</p>
-     */
-    inline DescribeSubscribersForNotificationRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeSubscribersForNotificationRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;
@@ -243,7 +109,7 @@ namespace Model
     Notification m_notification;
     bool m_notificationHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

@@ -12,26 +12,6 @@ using namespace Aws::imagebuilder::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateInfrastructureConfigurationRequest::CreateInfrastructureConfigurationRequest() : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_instanceTypesHasBeenSet(false),
-    m_instanceProfileNameHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_loggingHasBeenSet(false),
-    m_keyPairHasBeenSet(false),
-    m_terminateInstanceOnFailure(false),
-    m_terminateInstanceOnFailureHasBeenSet(false),
-    m_snsTopicArnHasBeenSet(false),
-    m_resourceTagsHasBeenSet(false),
-    m_instanceMetadataOptionsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true)
-{
-}
-
 Aws::String CreateInfrastructureConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -131,6 +111,12 @@ Aws::String CreateInfrastructureConfigurationRequest::SerializePayload() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_placementHasBeenSet)
+  {
+   payload.WithObject("placement", m_placement.Jsonize());
 
   }
 

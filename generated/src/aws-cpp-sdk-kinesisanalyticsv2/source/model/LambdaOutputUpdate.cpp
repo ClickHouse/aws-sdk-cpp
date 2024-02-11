@@ -18,13 +18,7 @@ namespace KinesisAnalyticsV2
 namespace Model
 {
 
-LambdaOutputUpdate::LambdaOutputUpdate() : 
-    m_resourceARNUpdateHasBeenSet(false)
-{
-}
-
-LambdaOutputUpdate::LambdaOutputUpdate(JsonView jsonValue) : 
-    m_resourceARNUpdateHasBeenSet(false)
+LambdaOutputUpdate::LambdaOutputUpdate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ LambdaOutputUpdate& LambdaOutputUpdate::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ResourceARNUpdate"))
   {
     m_resourceARNUpdate = jsonValue.GetString("ResourceARNUpdate");
-
     m_resourceARNUpdateHasBeenSet = true;
   }
-
   return *this;
 }
 

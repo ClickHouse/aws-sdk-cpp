@@ -25,268 +25,77 @@ namespace Model
 {
 
   /**
-   * <p>The VPC endpoint, subnet, and security group that an agent uses to access IP
-   * addresses in a VPC (Virtual Private Cloud).</p><p><h3>See Also:</h3>   <a
+   * <p>Specifies how your DataSync agent connects to Amazon Web Services using a <a
+   * href="https://docs.aws.amazon.com/datasync/latest/userguide/choose-service-endpoint.html#choose-service-endpoint-vpc">virtual
+   * private cloud (VPC) service endpoint</a>. An agent that uses a VPC endpoint
+   * isn't accessible over the public internet.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/PrivateLinkConfig">AWS
    * API Reference</a></p>
    */
   class PrivateLinkConfig
   {
   public:
-    AWS_DATASYNC_API PrivateLinkConfig();
+    AWS_DATASYNC_API PrivateLinkConfig() = default;
     AWS_DATASYNC_API PrivateLinkConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATASYNC_API PrivateLinkConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATASYNC_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The ID of the VPC endpoint that is configured for an agent. An agent that is
-     * configured with a VPC endpoint will not be accessible over the public
-     * internet.</p>
+     * <p>Specifies the ID of the VPC endpoint that your agent connects to.</p>
      */
-    inline const Aws::String& GetVpcEndpointId() const{ return m_vpcEndpointId; }
-
-    /**
-     * <p>The ID of the VPC endpoint that is configured for an agent. An agent that is
-     * configured with a VPC endpoint will not be accessible over the public
-     * internet.</p>
-     */
+    inline const Aws::String& GetVpcEndpointId() const { return m_vpcEndpointId; }
     inline bool VpcEndpointIdHasBeenSet() const { return m_vpcEndpointIdHasBeenSet; }
+    template<typename VpcEndpointIdT = Aws::String>
+    void SetVpcEndpointId(VpcEndpointIdT&& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = std::forward<VpcEndpointIdT>(value); }
+    template<typename VpcEndpointIdT = Aws::String>
+    PrivateLinkConfig& WithVpcEndpointId(VpcEndpointIdT&& value) { SetVpcEndpointId(std::forward<VpcEndpointIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the VPC endpoint that is configured for an agent. An agent that is
-     * configured with a VPC endpoint will not be accessible over the public
-     * internet.</p>
+     * <p>Specifies the VPC endpoint provided by <a
+     * href="https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html">Amazon
+     * Web Services PrivateLink</a> that your agent connects to.</p>
      */
-    inline void SetVpcEndpointId(const Aws::String& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = value; }
-
-    /**
-     * <p>The ID of the VPC endpoint that is configured for an agent. An agent that is
-     * configured with a VPC endpoint will not be accessible over the public
-     * internet.</p>
-     */
-    inline void SetVpcEndpointId(Aws::String&& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = std::move(value); }
-
-    /**
-     * <p>The ID of the VPC endpoint that is configured for an agent. An agent that is
-     * configured with a VPC endpoint will not be accessible over the public
-     * internet.</p>
-     */
-    inline void SetVpcEndpointId(const char* value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId.assign(value); }
-
-    /**
-     * <p>The ID of the VPC endpoint that is configured for an agent. An agent that is
-     * configured with a VPC endpoint will not be accessible over the public
-     * internet.</p>
-     */
-    inline PrivateLinkConfig& WithVpcEndpointId(const Aws::String& value) { SetVpcEndpointId(value); return *this;}
-
-    /**
-     * <p>The ID of the VPC endpoint that is configured for an agent. An agent that is
-     * configured with a VPC endpoint will not be accessible over the public
-     * internet.</p>
-     */
-    inline PrivateLinkConfig& WithVpcEndpointId(Aws::String&& value) { SetVpcEndpointId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the VPC endpoint that is configured for an agent. An agent that is
-     * configured with a VPC endpoint will not be accessible over the public
-     * internet.</p>
-     */
-    inline PrivateLinkConfig& WithVpcEndpointId(const char* value) { SetVpcEndpointId(value); return *this;}
-
-
-    /**
-     * <p>The private endpoint that is configured for an agent that has access to IP
-     * addresses in a <a
-     * href="https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html">PrivateLink</a>.
-     * An agent that is configured with this endpoint will not be accessible over the
-     * public internet.</p>
-     */
-    inline const Aws::String& GetPrivateLinkEndpoint() const{ return m_privateLinkEndpoint; }
-
-    /**
-     * <p>The private endpoint that is configured for an agent that has access to IP
-     * addresses in a <a
-     * href="https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html">PrivateLink</a>.
-     * An agent that is configured with this endpoint will not be accessible over the
-     * public internet.</p>
-     */
+    inline const Aws::String& GetPrivateLinkEndpoint() const { return m_privateLinkEndpoint; }
     inline bool PrivateLinkEndpointHasBeenSet() const { return m_privateLinkEndpointHasBeenSet; }
+    template<typename PrivateLinkEndpointT = Aws::String>
+    void SetPrivateLinkEndpoint(PrivateLinkEndpointT&& value) { m_privateLinkEndpointHasBeenSet = true; m_privateLinkEndpoint = std::forward<PrivateLinkEndpointT>(value); }
+    template<typename PrivateLinkEndpointT = Aws::String>
+    PrivateLinkConfig& WithPrivateLinkEndpoint(PrivateLinkEndpointT&& value) { SetPrivateLinkEndpoint(std::forward<PrivateLinkEndpointT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The private endpoint that is configured for an agent that has access to IP
-     * addresses in a <a
-     * href="https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html">PrivateLink</a>.
-     * An agent that is configured with this endpoint will not be accessible over the
-     * public internet.</p>
+     * <p>Specifies the ARN of the subnet where your VPC endpoint is located. You can
+     * only specify one ARN.</p>
      */
-    inline void SetPrivateLinkEndpoint(const Aws::String& value) { m_privateLinkEndpointHasBeenSet = true; m_privateLinkEndpoint = value; }
-
-    /**
-     * <p>The private endpoint that is configured for an agent that has access to IP
-     * addresses in a <a
-     * href="https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html">PrivateLink</a>.
-     * An agent that is configured with this endpoint will not be accessible over the
-     * public internet.</p>
-     */
-    inline void SetPrivateLinkEndpoint(Aws::String&& value) { m_privateLinkEndpointHasBeenSet = true; m_privateLinkEndpoint = std::move(value); }
-
-    /**
-     * <p>The private endpoint that is configured for an agent that has access to IP
-     * addresses in a <a
-     * href="https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html">PrivateLink</a>.
-     * An agent that is configured with this endpoint will not be accessible over the
-     * public internet.</p>
-     */
-    inline void SetPrivateLinkEndpoint(const char* value) { m_privateLinkEndpointHasBeenSet = true; m_privateLinkEndpoint.assign(value); }
-
-    /**
-     * <p>The private endpoint that is configured for an agent that has access to IP
-     * addresses in a <a
-     * href="https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html">PrivateLink</a>.
-     * An agent that is configured with this endpoint will not be accessible over the
-     * public internet.</p>
-     */
-    inline PrivateLinkConfig& WithPrivateLinkEndpoint(const Aws::String& value) { SetPrivateLinkEndpoint(value); return *this;}
-
-    /**
-     * <p>The private endpoint that is configured for an agent that has access to IP
-     * addresses in a <a
-     * href="https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html">PrivateLink</a>.
-     * An agent that is configured with this endpoint will not be accessible over the
-     * public internet.</p>
-     */
-    inline PrivateLinkConfig& WithPrivateLinkEndpoint(Aws::String&& value) { SetPrivateLinkEndpoint(std::move(value)); return *this;}
-
-    /**
-     * <p>The private endpoint that is configured for an agent that has access to IP
-     * addresses in a <a
-     * href="https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html">PrivateLink</a>.
-     * An agent that is configured with this endpoint will not be accessible over the
-     * public internet.</p>
-     */
-    inline PrivateLinkConfig& WithPrivateLinkEndpoint(const char* value) { SetPrivateLinkEndpoint(value); return *this;}
-
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the subnets that are configured for an
-     * agent activated in a VPC or an agent that has access to a VPC endpoint.</p>
-     */
-    inline const Aws::Vector<Aws::String>& GetSubnetArns() const{ return m_subnetArns; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the subnets that are configured for an
-     * agent activated in a VPC or an agent that has access to a VPC endpoint.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSubnetArns() const { return m_subnetArns; }
     inline bool SubnetArnsHasBeenSet() const { return m_subnetArnsHasBeenSet; }
+    template<typename SubnetArnsT = Aws::Vector<Aws::String>>
+    void SetSubnetArns(SubnetArnsT&& value) { m_subnetArnsHasBeenSet = true; m_subnetArns = std::forward<SubnetArnsT>(value); }
+    template<typename SubnetArnsT = Aws::Vector<Aws::String>>
+    PrivateLinkConfig& WithSubnetArns(SubnetArnsT&& value) { SetSubnetArns(std::forward<SubnetArnsT>(value)); return *this;}
+    template<typename SubnetArnsT = Aws::String>
+    PrivateLinkConfig& AddSubnetArns(SubnetArnsT&& value) { m_subnetArnsHasBeenSet = true; m_subnetArns.emplace_back(std::forward<SubnetArnsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Names (ARNs) of the subnets that are configured for an
-     * agent activated in a VPC or an agent that has access to a VPC endpoint.</p>
+     * <p>Specifies the Amazon Resource Names (ARN) of the security group that provides
+     * DataSync access to your VPC endpoint. You can only specify one ARN.</p>
      */
-    inline void SetSubnetArns(const Aws::Vector<Aws::String>& value) { m_subnetArnsHasBeenSet = true; m_subnetArns = value; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the subnets that are configured for an
-     * agent activated in a VPC or an agent that has access to a VPC endpoint.</p>
-     */
-    inline void SetSubnetArns(Aws::Vector<Aws::String>&& value) { m_subnetArnsHasBeenSet = true; m_subnetArns = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the subnets that are configured for an
-     * agent activated in a VPC or an agent that has access to a VPC endpoint.</p>
-     */
-    inline PrivateLinkConfig& WithSubnetArns(const Aws::Vector<Aws::String>& value) { SetSubnetArns(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the subnets that are configured for an
-     * agent activated in a VPC or an agent that has access to a VPC endpoint.</p>
-     */
-    inline PrivateLinkConfig& WithSubnetArns(Aws::Vector<Aws::String>&& value) { SetSubnetArns(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the subnets that are configured for an
-     * agent activated in a VPC or an agent that has access to a VPC endpoint.</p>
-     */
-    inline PrivateLinkConfig& AddSubnetArns(const Aws::String& value) { m_subnetArnsHasBeenSet = true; m_subnetArns.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the subnets that are configured for an
-     * agent activated in a VPC or an agent that has access to a VPC endpoint.</p>
-     */
-    inline PrivateLinkConfig& AddSubnetArns(Aws::String&& value) { m_subnetArnsHasBeenSet = true; m_subnetArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the subnets that are configured for an
-     * agent activated in a VPC or an agent that has access to a VPC endpoint.</p>
-     */
-    inline PrivateLinkConfig& AddSubnetArns(const char* value) { m_subnetArnsHasBeenSet = true; m_subnetArns.push_back(value); return *this; }
-
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the security groups that are configured
-     * for the EC2 resource that hosts an agent activated in a VPC or an agent that has
-     * access to a VPC endpoint.</p>
-     */
-    inline const Aws::Vector<Aws::String>& GetSecurityGroupArns() const{ return m_securityGroupArns; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the security groups that are configured
-     * for the EC2 resource that hosts an agent activated in a VPC or an agent that has
-     * access to a VPC endpoint.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSecurityGroupArns() const { return m_securityGroupArns; }
     inline bool SecurityGroupArnsHasBeenSet() const { return m_securityGroupArnsHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the security groups that are configured
-     * for the EC2 resource that hosts an agent activated in a VPC or an agent that has
-     * access to a VPC endpoint.</p>
-     */
-    inline void SetSecurityGroupArns(const Aws::Vector<Aws::String>& value) { m_securityGroupArnsHasBeenSet = true; m_securityGroupArns = value; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the security groups that are configured
-     * for the EC2 resource that hosts an agent activated in a VPC or an agent that has
-     * access to a VPC endpoint.</p>
-     */
-    inline void SetSecurityGroupArns(Aws::Vector<Aws::String>&& value) { m_securityGroupArnsHasBeenSet = true; m_securityGroupArns = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the security groups that are configured
-     * for the EC2 resource that hosts an agent activated in a VPC or an agent that has
-     * access to a VPC endpoint.</p>
-     */
-    inline PrivateLinkConfig& WithSecurityGroupArns(const Aws::Vector<Aws::String>& value) { SetSecurityGroupArns(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the security groups that are configured
-     * for the EC2 resource that hosts an agent activated in a VPC or an agent that has
-     * access to a VPC endpoint.</p>
-     */
-    inline PrivateLinkConfig& WithSecurityGroupArns(Aws::Vector<Aws::String>&& value) { SetSecurityGroupArns(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the security groups that are configured
-     * for the EC2 resource that hosts an agent activated in a VPC or an agent that has
-     * access to a VPC endpoint.</p>
-     */
-    inline PrivateLinkConfig& AddSecurityGroupArns(const Aws::String& value) { m_securityGroupArnsHasBeenSet = true; m_securityGroupArns.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the security groups that are configured
-     * for the EC2 resource that hosts an agent activated in a VPC or an agent that has
-     * access to a VPC endpoint.</p>
-     */
-    inline PrivateLinkConfig& AddSecurityGroupArns(Aws::String&& value) { m_securityGroupArnsHasBeenSet = true; m_securityGroupArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the security groups that are configured
-     * for the EC2 resource that hosts an agent activated in a VPC or an agent that has
-     * access to a VPC endpoint.</p>
-     */
-    inline PrivateLinkConfig& AddSecurityGroupArns(const char* value) { m_securityGroupArnsHasBeenSet = true; m_securityGroupArns.push_back(value); return *this; }
-
+    template<typename SecurityGroupArnsT = Aws::Vector<Aws::String>>
+    void SetSecurityGroupArns(SecurityGroupArnsT&& value) { m_securityGroupArnsHasBeenSet = true; m_securityGroupArns = std::forward<SecurityGroupArnsT>(value); }
+    template<typename SecurityGroupArnsT = Aws::Vector<Aws::String>>
+    PrivateLinkConfig& WithSecurityGroupArns(SecurityGroupArnsT&& value) { SetSecurityGroupArns(std::forward<SecurityGroupArnsT>(value)); return *this;}
+    template<typename SecurityGroupArnsT = Aws::String>
+    PrivateLinkConfig& AddSecurityGroupArns(SecurityGroupArnsT&& value) { m_securityGroupArnsHasBeenSet = true; m_securityGroupArns.emplace_back(std::forward<SecurityGroupArnsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_vpcEndpointId;

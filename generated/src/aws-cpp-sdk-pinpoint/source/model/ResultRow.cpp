@@ -18,15 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-ResultRow::ResultRow() : 
-    m_groupedBysHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-ResultRow::ResultRow(JsonView jsonValue) : 
-    m_groupedBysHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+ResultRow::ResultRow(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ ResultRow& ResultRow::operator =(JsonView jsonValue)
     }
     m_groupedBysHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("Values");
@@ -52,7 +43,6 @@ ResultRow& ResultRow::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

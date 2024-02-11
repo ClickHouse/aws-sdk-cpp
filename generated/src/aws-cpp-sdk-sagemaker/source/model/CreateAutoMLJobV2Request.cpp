@@ -12,20 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateAutoMLJobV2Request::CreateAutoMLJobV2Request() : 
-    m_autoMLJobNameHasBeenSet(false),
-    m_autoMLJobInputDataConfigHasBeenSet(false),
-    m_outputDataConfigHasBeenSet(false),
-    m_autoMLProblemTypeConfigHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_securityConfigHasBeenSet(false),
-    m_autoMLJobObjectiveHasBeenSet(false),
-    m_modelDeployConfigHasBeenSet(false),
-    m_dataSplitConfigHasBeenSet(false)
-{
-}
-
 Aws::String CreateAutoMLJobV2Request::SerializePayload() const
 {
   JsonValue payload;
@@ -97,6 +83,12 @@ Aws::String CreateAutoMLJobV2Request::SerializePayload() const
   if(m_dataSplitConfigHasBeenSet)
   {
    payload.WithObject("DataSplitConfig", m_dataSplitConfig.Jsonize());
+
+  }
+
+  if(m_autoMLComputeConfigHasBeenSet)
+  {
+   payload.WithObject("AutoMLComputeConfig", m_autoMLComputeConfig.Jsonize());
 
   }
 

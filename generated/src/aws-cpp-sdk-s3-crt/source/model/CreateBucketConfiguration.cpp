@@ -20,15 +20,7 @@ namespace S3Crt
 namespace Model
 {
 
-CreateBucketConfiguration::CreateBucketConfiguration() : 
-    m_locationConstraint(BucketLocationConstraint::NOT_SET),
-    m_locationConstraintHasBeenSet(false)
-{
-}
-
-CreateBucketConfiguration::CreateBucketConfiguration(const XmlNode& xmlNode) : 
-    m_locationConstraint(BucketLocationConstraint::NOT_SET),
-    m_locationConstraintHasBeenSet(false)
+CreateBucketConfiguration::CreateBucketConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -42,8 +34,33 @@ CreateBucketConfiguration& CreateBucketConfiguration::operator =(const XmlNode& 
     XmlNode locationConstraintNode = resultNode.FirstChild("LocationConstraint");
     if(!locationConstraintNode.IsNull())
     {
-      m_locationConstraint = BucketLocationConstraintMapper::GetBucketLocationConstraintForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(locationConstraintNode.GetText()).c_str()).c_str());
+      m_locationConstraint = BucketLocationConstraintMapper::GetBucketLocationConstraintForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(locationConstraintNode.GetText()).c_str()));
       m_locationConstraintHasBeenSet = true;
+    }
+    XmlNode locationNode = resultNode.FirstChild("Location");
+    if(!locationNode.IsNull())
+    {
+      m_location = locationNode;
+      m_locationHasBeenSet = true;
+    }
+    XmlNode bucketNode = resultNode.FirstChild("Bucket");
+    if(!bucketNode.IsNull())
+    {
+      m_bucket = bucketNode;
+      m_bucketHasBeenSet = true;
+    }
+    XmlNode tagsNode = resultNode.FirstChild("Tags");
+    if(!tagsNode.IsNull())
+    {
+      XmlNode tagsMember = tagsNode.FirstChild("Tag");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
+      while(!tagsMember.IsNull())
+      {
+        m_tags.push_back(tagsMember);
+        tagsMember = tagsMember.NextNode("Tag");
+      }
+
+      m_tagsHasBeenSet = true;
     }
   }
 
@@ -57,6 +74,28 @@ void CreateBucketConfiguration::AddToNode(XmlNode& parentNode) const
   {
    XmlNode locationConstraintNode = parentNode.CreateChildElement("LocationConstraint");
    locationConstraintNode.SetText(BucketLocationConstraintMapper::GetNameForBucketLocationConstraint(m_locationConstraint));
+  }
+
+  if(m_locationHasBeenSet)
+  {
+   XmlNode locationNode = parentNode.CreateChildElement("Location");
+   m_location.AddToNode(locationNode);
+  }
+
+  if(m_bucketHasBeenSet)
+  {
+   XmlNode bucketNode = parentNode.CreateChildElement("Bucket");
+   m_bucket.AddToNode(bucketNode);
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   XmlNode tagsParentNode = parentNode.CreateChildElement("Tags");
+   for(const auto& item : m_tags)
+   {
+     XmlNode tagsNode = tagsParentNode.CreateChildElement("Tag");
+     item.AddToNode(tagsNode);
+   }
   }
 
 }

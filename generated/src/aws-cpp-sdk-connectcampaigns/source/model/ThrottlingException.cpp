@@ -19,15 +19,7 @@ namespace ConnectCampaigns
 namespace Model
 {
 
-ThrottlingException::ThrottlingException() : 
-    m_messageHasBeenSet(false),
-    m_xAmzErrorTypeHasBeenSet(false)
-{
-}
-
-ThrottlingException::ThrottlingException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_xAmzErrorTypeHasBeenSet(false)
+ThrottlingException::ThrottlingException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -37,10 +29,8 @@ ThrottlingException& ThrottlingException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

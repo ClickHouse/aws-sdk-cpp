@@ -10,20 +10,6 @@
 using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils;
 
-DescribeEventsRequest::DescribeEventsRequest() : 
-    m_sourceIdentifierHasBeenSet(false),
-    m_sourceType(SourceType::NOT_SET),
-    m_sourceTypeHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_duration(0),
-    m_durationHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false),
-    m_markerHasBeenSet(false)
-{
-}
-
 Aws::String DescribeEventsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -35,7 +21,7 @@ Aws::String DescribeEventsRequest::SerializePayload() const
 
   if(m_sourceTypeHasBeenSet)
   {
-    ss << "SourceType=" << SourceTypeMapper::GetNameForSourceType(m_sourceType) << "&";
+    ss << "SourceType=" << StringUtils::URLEncode(SourceTypeMapper::GetNameForSourceType(m_sourceType)) << "&";
   }
 
   if(m_startTimeHasBeenSet)

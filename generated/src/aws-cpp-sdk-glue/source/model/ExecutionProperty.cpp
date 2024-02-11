@@ -18,15 +18,7 @@ namespace Glue
 namespace Model
 {
 
-ExecutionProperty::ExecutionProperty() : 
-    m_maxConcurrentRuns(0),
-    m_maxConcurrentRunsHasBeenSet(false)
-{
-}
-
-ExecutionProperty::ExecutionProperty(JsonView jsonValue) : 
-    m_maxConcurrentRuns(0),
-    m_maxConcurrentRunsHasBeenSet(false)
+ExecutionProperty::ExecutionProperty(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ExecutionProperty& ExecutionProperty::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MaxConcurrentRuns"))
   {
     m_maxConcurrentRuns = jsonValue.GetInteger("MaxConcurrentRuns");
-
     m_maxConcurrentRunsHasBeenSet = true;
   }
-
   return *this;
 }
 

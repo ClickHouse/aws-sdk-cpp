@@ -12,11 +12,6 @@ using namespace Aws::SageMakerFeatureStoreRuntime::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-BatchGetRecordRequest::BatchGetRecordRequest() : 
-    m_identifiersHasBeenSet(false)
-{
-}
-
 Aws::String BatchGetRecordRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -30,6 +25,11 @@ Aws::String BatchGetRecordRequest::SerializePayload() const
    }
    payload.WithArray("Identifiers", std::move(identifiersJsonList));
 
+  }
+
+  if(m_expirationTimeResponseHasBeenSet)
+  {
+   payload.WithString("ExpirationTimeResponse", ExpirationTimeResponseMapper::GetNameForExpirationTimeResponse(m_expirationTimeResponse));
   }
 
   return payload.View().WriteReadable();

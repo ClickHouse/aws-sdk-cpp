@@ -12,18 +12,6 @@ using namespace Aws::AppConfig::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartDeploymentRequest::StartDeploymentRequest() : 
-    m_applicationIdHasBeenSet(false),
-    m_environmentIdHasBeenSet(false),
-    m_deploymentStrategyIdHasBeenSet(false),
-    m_configurationProfileIdHasBeenSet(false),
-    m_configurationVersionHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_kmsKeyIdentifierHasBeenSet(false)
-{
-}
-
 Aws::String StartDeploymentRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -66,6 +54,17 @@ Aws::String StartDeploymentRequest::SerializePayload() const
   if(m_kmsKeyIdentifierHasBeenSet)
   {
    payload.WithString("KmsKeyIdentifier", m_kmsKeyIdentifier);
+
+  }
+
+  if(m_dynamicExtensionParametersHasBeenSet)
+  {
+   JsonValue dynamicExtensionParametersJsonMap;
+   for(auto& dynamicExtensionParametersItem : m_dynamicExtensionParameters)
+   {
+     dynamicExtensionParametersJsonMap.WithString(dynamicExtensionParametersItem.first, dynamicExtensionParametersItem.second);
+   }
+   payload.WithObject("DynamicExtensionParameters", std::move(dynamicExtensionParametersJsonMap));
 
   }
 

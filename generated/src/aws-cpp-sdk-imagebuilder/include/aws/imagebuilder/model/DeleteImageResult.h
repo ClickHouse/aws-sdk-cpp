@@ -27,87 +27,39 @@ namespace Model
   class DeleteImageResult
   {
   public:
-    AWS_IMAGEBUILDER_API DeleteImageResult();
+    AWS_IMAGEBUILDER_API DeleteImageResult() = default;
     AWS_IMAGEBUILDER_API DeleteImageResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_IMAGEBUILDER_API DeleteImageResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The request ID that uniquely identifies this request.</p>
      */
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteImageResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The request ID that uniquely identifies this request.</p>
-     */
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    /**
-     * <p>The request ID that uniquely identifies this request.</p>
-     */
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    /**
-     * <p>The request ID that uniquely identifies this request.</p>
-     */
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    /**
-     * <p>The request ID that uniquely identifies this request.</p>
-     */
-    inline DeleteImageResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    /**
-     * <p>The request ID that uniquely identifies this request.</p>
-     */
-    inline DeleteImageResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>The request ID that uniquely identifies this request.</p>
-     */
-    inline DeleteImageResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the Image Builder image resource that this request deleted.</p>
      */
-    inline const Aws::String& GetImageBuildVersionArn() const{ return m_imageBuildVersionArn; }
-
-    /**
-     * <p>The ARN of the Image Builder image resource that this request deleted.</p>
-     */
-    inline void SetImageBuildVersionArn(const Aws::String& value) { m_imageBuildVersionArn = value; }
-
-    /**
-     * <p>The ARN of the Image Builder image resource that this request deleted.</p>
-     */
-    inline void SetImageBuildVersionArn(Aws::String&& value) { m_imageBuildVersionArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the Image Builder image resource that this request deleted.</p>
-     */
-    inline void SetImageBuildVersionArn(const char* value) { m_imageBuildVersionArn.assign(value); }
-
-    /**
-     * <p>The ARN of the Image Builder image resource that this request deleted.</p>
-     */
-    inline DeleteImageResult& WithImageBuildVersionArn(const Aws::String& value) { SetImageBuildVersionArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the Image Builder image resource that this request deleted.</p>
-     */
-    inline DeleteImageResult& WithImageBuildVersionArn(Aws::String&& value) { SetImageBuildVersionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the Image Builder image resource that this request deleted.</p>
-     */
-    inline DeleteImageResult& WithImageBuildVersionArn(const char* value) { SetImageBuildVersionArn(value); return *this;}
-
+    inline const Aws::String& GetImageBuildVersionArn() const { return m_imageBuildVersionArn; }
+    template<typename ImageBuildVersionArnT = Aws::String>
+    void SetImageBuildVersionArn(ImageBuildVersionArnT&& value) { m_imageBuildVersionArnHasBeenSet = true; m_imageBuildVersionArn = std::forward<ImageBuildVersionArnT>(value); }
+    template<typename ImageBuildVersionArnT = Aws::String>
+    DeleteImageResult& WithImageBuildVersionArn(ImageBuildVersionArnT&& value) { SetImageBuildVersionArn(std::forward<ImageBuildVersionArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
 
     Aws::String m_imageBuildVersionArn;
+    bool m_imageBuildVersionArnHasBeenSet = false;
   };
 
 } // namespace Model

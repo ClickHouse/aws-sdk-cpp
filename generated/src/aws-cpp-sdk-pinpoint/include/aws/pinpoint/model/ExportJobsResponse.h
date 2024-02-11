@@ -35,117 +35,40 @@ namespace Model
   class ExportJobsResponse
   {
   public:
-    AWS_PINPOINT_API ExportJobsResponse();
+    AWS_PINPOINT_API ExportJobsResponse() = default;
     AWS_PINPOINT_API ExportJobsResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API ExportJobsResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An array of responses, one for each export job that's associated with the
      * application (Export Jobs resource) or segment (Segment Export Jobs
      * resource).</p>
      */
-    inline const Aws::Vector<ExportJobResponse>& GetItem() const{ return m_item; }
-
-    /**
-     * <p>An array of responses, one for each export job that's associated with the
-     * application (Export Jobs resource) or segment (Segment Export Jobs
-     * resource).</p>
-     */
+    inline const Aws::Vector<ExportJobResponse>& GetItem() const { return m_item; }
     inline bool ItemHasBeenSet() const { return m_itemHasBeenSet; }
+    template<typename ItemT = Aws::Vector<ExportJobResponse>>
+    void SetItem(ItemT&& value) { m_itemHasBeenSet = true; m_item = std::forward<ItemT>(value); }
+    template<typename ItemT = Aws::Vector<ExportJobResponse>>
+    ExportJobsResponse& WithItem(ItemT&& value) { SetItem(std::forward<ItemT>(value)); return *this;}
+    template<typename ItemT = ExportJobResponse>
+    ExportJobsResponse& AddItem(ItemT&& value) { m_itemHasBeenSet = true; m_item.emplace_back(std::forward<ItemT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of responses, one for each export job that's associated with the
-     * application (Export Jobs resource) or segment (Segment Export Jobs
-     * resource).</p>
-     */
-    inline void SetItem(const Aws::Vector<ExportJobResponse>& value) { m_itemHasBeenSet = true; m_item = value; }
-
-    /**
-     * <p>An array of responses, one for each export job that's associated with the
-     * application (Export Jobs resource) or segment (Segment Export Jobs
-     * resource).</p>
-     */
-    inline void SetItem(Aws::Vector<ExportJobResponse>&& value) { m_itemHasBeenSet = true; m_item = std::move(value); }
-
-    /**
-     * <p>An array of responses, one for each export job that's associated with the
-     * application (Export Jobs resource) or segment (Segment Export Jobs
-     * resource).</p>
-     */
-    inline ExportJobsResponse& WithItem(const Aws::Vector<ExportJobResponse>& value) { SetItem(value); return *this;}
-
-    /**
-     * <p>An array of responses, one for each export job that's associated with the
-     * application (Export Jobs resource) or segment (Segment Export Jobs
-     * resource).</p>
-     */
-    inline ExportJobsResponse& WithItem(Aws::Vector<ExportJobResponse>&& value) { SetItem(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of responses, one for each export job that's associated with the
-     * application (Export Jobs resource) or segment (Segment Export Jobs
-     * resource).</p>
-     */
-    inline ExportJobsResponse& AddItem(const ExportJobResponse& value) { m_itemHasBeenSet = true; m_item.push_back(value); return *this; }
-
-    /**
-     * <p>An array of responses, one for each export job that's associated with the
-     * application (Export Jobs resource) or segment (Segment Export Jobs
-     * resource).</p>
-     */
-    inline ExportJobsResponse& AddItem(ExportJobResponse&& value) { m_itemHasBeenSet = true; m_item.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The string to use in a subsequent request to get the next page of results in
      * a paginated response. This value is null if there are no additional pages.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The string to use in a subsequent request to get the next page of results in
-     * a paginated response. This value is null if there are no additional pages.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The string to use in a subsequent request to get the next page of results in
-     * a paginated response. This value is null if there are no additional pages.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The string to use in a subsequent request to get the next page of results in
-     * a paginated response. This value is null if there are no additional pages.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The string to use in a subsequent request to get the next page of results in
-     * a paginated response. This value is null if there are no additional pages.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The string to use in a subsequent request to get the next page of results in
-     * a paginated response. This value is null if there are no additional pages.</p>
-     */
-    inline ExportJobsResponse& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The string to use in a subsequent request to get the next page of results in
-     * a paginated response. This value is null if there are no additional pages.</p>
-     */
-    inline ExportJobsResponse& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The string to use in a subsequent request to get the next page of results in
-     * a paginated response. This value is null if there are no additional pages.</p>
-     */
-    inline ExportJobsResponse& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ExportJobsResponse& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ExportJobResponse> m_item;

@@ -33,42 +33,23 @@ namespace Model
   class HeatMapFieldWells
   {
   public:
-    AWS_QUICKSIGHT_API HeatMapFieldWells();
+    AWS_QUICKSIGHT_API HeatMapFieldWells() = default;
     AWS_QUICKSIGHT_API HeatMapFieldWells(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API HeatMapFieldWells& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The aggregated field wells of a heat map.</p>
      */
-    inline const HeatMapAggregatedFieldWells& GetHeatMapAggregatedFieldWells() const{ return m_heatMapAggregatedFieldWells; }
-
-    /**
-     * <p>The aggregated field wells of a heat map.</p>
-     */
+    inline const HeatMapAggregatedFieldWells& GetHeatMapAggregatedFieldWells() const { return m_heatMapAggregatedFieldWells; }
     inline bool HeatMapAggregatedFieldWellsHasBeenSet() const { return m_heatMapAggregatedFieldWellsHasBeenSet; }
-
-    /**
-     * <p>The aggregated field wells of a heat map.</p>
-     */
-    inline void SetHeatMapAggregatedFieldWells(const HeatMapAggregatedFieldWells& value) { m_heatMapAggregatedFieldWellsHasBeenSet = true; m_heatMapAggregatedFieldWells = value; }
-
-    /**
-     * <p>The aggregated field wells of a heat map.</p>
-     */
-    inline void SetHeatMapAggregatedFieldWells(HeatMapAggregatedFieldWells&& value) { m_heatMapAggregatedFieldWellsHasBeenSet = true; m_heatMapAggregatedFieldWells = std::move(value); }
-
-    /**
-     * <p>The aggregated field wells of a heat map.</p>
-     */
-    inline HeatMapFieldWells& WithHeatMapAggregatedFieldWells(const HeatMapAggregatedFieldWells& value) { SetHeatMapAggregatedFieldWells(value); return *this;}
-
-    /**
-     * <p>The aggregated field wells of a heat map.</p>
-     */
-    inline HeatMapFieldWells& WithHeatMapAggregatedFieldWells(HeatMapAggregatedFieldWells&& value) { SetHeatMapAggregatedFieldWells(std::move(value)); return *this;}
-
+    template<typename HeatMapAggregatedFieldWellsT = HeatMapAggregatedFieldWells>
+    void SetHeatMapAggregatedFieldWells(HeatMapAggregatedFieldWellsT&& value) { m_heatMapAggregatedFieldWellsHasBeenSet = true; m_heatMapAggregatedFieldWells = std::forward<HeatMapAggregatedFieldWellsT>(value); }
+    template<typename HeatMapAggregatedFieldWellsT = HeatMapAggregatedFieldWells>
+    HeatMapFieldWells& WithHeatMapAggregatedFieldWells(HeatMapAggregatedFieldWellsT&& value) { SetHeatMapAggregatedFieldWells(std::forward<HeatMapAggregatedFieldWellsT>(value)); return *this;}
+    ///@}
   private:
 
     HeatMapAggregatedFieldWells m_heatMapAggregatedFieldWells;

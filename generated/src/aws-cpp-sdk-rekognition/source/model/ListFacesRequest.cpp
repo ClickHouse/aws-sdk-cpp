@@ -12,14 +12,6 @@ using namespace Aws::Rekognition::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListFacesRequest::ListFacesRequest() : 
-    m_collectionIdHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String ListFacesRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,6 +31,23 @@ Aws::String ListFacesRequest::SerializePayload() const
   if(m_maxResultsHasBeenSet)
   {
    payload.WithInteger("MaxResults", m_maxResults);
+
+  }
+
+  if(m_userIdHasBeenSet)
+  {
+   payload.WithString("UserId", m_userId);
+
+  }
+
+  if(m_faceIdsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> faceIdsJsonList(m_faceIds.size());
+   for(unsigned faceIdsIndex = 0; faceIdsIndex < faceIdsJsonList.GetLength(); ++faceIdsIndex)
+   {
+     faceIdsJsonList[faceIdsIndex].AsString(m_faceIds[faceIdsIndex]);
+   }
+   payload.WithArray("FaceIds", std::move(faceIdsJsonList));
 
   }
 

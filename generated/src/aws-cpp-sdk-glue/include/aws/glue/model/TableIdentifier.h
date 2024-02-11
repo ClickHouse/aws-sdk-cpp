@@ -32,134 +32,59 @@ namespace Model
   class TableIdentifier
   {
   public:
-    AWS_GLUE_API TableIdentifier();
+    AWS_GLUE_API TableIdentifier() = default;
     AWS_GLUE_API TableIdentifier(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API TableIdentifier& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the Data Catalog in which the table resides.</p>
      */
-    inline const Aws::String& GetCatalogId() const{ return m_catalogId; }
-
-    /**
-     * <p>The ID of the Data Catalog in which the table resides.</p>
-     */
+    inline const Aws::String& GetCatalogId() const { return m_catalogId; }
     inline bool CatalogIdHasBeenSet() const { return m_catalogIdHasBeenSet; }
+    template<typename CatalogIdT = Aws::String>
+    void SetCatalogId(CatalogIdT&& value) { m_catalogIdHasBeenSet = true; m_catalogId = std::forward<CatalogIdT>(value); }
+    template<typename CatalogIdT = Aws::String>
+    TableIdentifier& WithCatalogId(CatalogIdT&& value) { SetCatalogId(std::forward<CatalogIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Data Catalog in which the table resides.</p>
-     */
-    inline void SetCatalogId(const Aws::String& value) { m_catalogIdHasBeenSet = true; m_catalogId = value; }
-
-    /**
-     * <p>The ID of the Data Catalog in which the table resides.</p>
-     */
-    inline void SetCatalogId(Aws::String&& value) { m_catalogIdHasBeenSet = true; m_catalogId = std::move(value); }
-
-    /**
-     * <p>The ID of the Data Catalog in which the table resides.</p>
-     */
-    inline void SetCatalogId(const char* value) { m_catalogIdHasBeenSet = true; m_catalogId.assign(value); }
-
-    /**
-     * <p>The ID of the Data Catalog in which the table resides.</p>
-     */
-    inline TableIdentifier& WithCatalogId(const Aws::String& value) { SetCatalogId(value); return *this;}
-
-    /**
-     * <p>The ID of the Data Catalog in which the table resides.</p>
-     */
-    inline TableIdentifier& WithCatalogId(Aws::String&& value) { SetCatalogId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Data Catalog in which the table resides.</p>
-     */
-    inline TableIdentifier& WithCatalogId(const char* value) { SetCatalogId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the catalog database that contains the target table.</p>
      */
-    inline const Aws::String& GetDatabaseName() const{ return m_databaseName; }
-
-    /**
-     * <p>The name of the catalog database that contains the target table.</p>
-     */
+    inline const Aws::String& GetDatabaseName() const { return m_databaseName; }
     inline bool DatabaseNameHasBeenSet() const { return m_databaseNameHasBeenSet; }
+    template<typename DatabaseNameT = Aws::String>
+    void SetDatabaseName(DatabaseNameT&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::forward<DatabaseNameT>(value); }
+    template<typename DatabaseNameT = Aws::String>
+    TableIdentifier& WithDatabaseName(DatabaseNameT&& value) { SetDatabaseName(std::forward<DatabaseNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the catalog database that contains the target table.</p>
-     */
-    inline void SetDatabaseName(const Aws::String& value) { m_databaseNameHasBeenSet = true; m_databaseName = value; }
-
-    /**
-     * <p>The name of the catalog database that contains the target table.</p>
-     */
-    inline void SetDatabaseName(Aws::String&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::move(value); }
-
-    /**
-     * <p>The name of the catalog database that contains the target table.</p>
-     */
-    inline void SetDatabaseName(const char* value) { m_databaseNameHasBeenSet = true; m_databaseName.assign(value); }
-
-    /**
-     * <p>The name of the catalog database that contains the target table.</p>
-     */
-    inline TableIdentifier& WithDatabaseName(const Aws::String& value) { SetDatabaseName(value); return *this;}
-
-    /**
-     * <p>The name of the catalog database that contains the target table.</p>
-     */
-    inline TableIdentifier& WithDatabaseName(Aws::String&& value) { SetDatabaseName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the catalog database that contains the target table.</p>
-     */
-    inline TableIdentifier& WithDatabaseName(const char* value) { SetDatabaseName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the target table.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the target table.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    TableIdentifier& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the target table.</p>
+     * <p>Region of the target table.</p>
      */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the target table.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the target table.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the target table.</p>
-     */
-    inline TableIdentifier& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the target table.</p>
-     */
-    inline TableIdentifier& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the target table.</p>
-     */
-    inline TableIdentifier& WithName(const char* value) { SetName(value); return *this;}
-
+    inline const Aws::String& GetRegion() const { return m_region; }
+    inline bool RegionHasBeenSet() const { return m_regionHasBeenSet; }
+    template<typename RegionT = Aws::String>
+    void SetRegion(RegionT&& value) { m_regionHasBeenSet = true; m_region = std::forward<RegionT>(value); }
+    template<typename RegionT = Aws::String>
+    TableIdentifier& WithRegion(RegionT&& value) { SetRegion(std::forward<RegionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_catalogId;
@@ -170,6 +95,9 @@ namespace Model
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
+
+    Aws::String m_region;
+    bool m_regionHasBeenSet = false;
   };
 
 } // namespace Model

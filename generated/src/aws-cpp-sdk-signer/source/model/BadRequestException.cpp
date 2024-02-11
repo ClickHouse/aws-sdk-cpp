@@ -18,15 +18,7 @@ namespace signer
 namespace Model
 {
 
-BadRequestException::BadRequestException() : 
-    m_messageHasBeenSet(false),
-    m_codeHasBeenSet(false)
-{
-}
-
-BadRequestException::BadRequestException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_codeHasBeenSet(false)
+BadRequestException::BadRequestException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ BadRequestException& BadRequestException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("code"))
   {
     m_code = jsonValue.GetString("code");
-
     m_codeHasBeenSet = true;
   }
-
   return *this;
 }
 

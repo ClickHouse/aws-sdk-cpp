@@ -35,224 +35,89 @@ namespace Model
   class AssetModelCompositeModel
   {
   public:
-    AWS_IOTSITEWISE_API AssetModelCompositeModel();
+    AWS_IOTSITEWISE_API AssetModelCompositeModel() = default;
     AWS_IOTSITEWISE_API AssetModelCompositeModel(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API AssetModelCompositeModel& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the composite model.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the composite model.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    AssetModelCompositeModel& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the composite model.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the composite model.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the composite model.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the composite model.</p>
-     */
-    inline AssetModelCompositeModel& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the composite model.</p>
-     */
-    inline AssetModelCompositeModel& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the composite model.</p>
-     */
-    inline AssetModelCompositeModel& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the composite model.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the composite model.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    AssetModelCompositeModel& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the composite model.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the composite model.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the composite model.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the composite model.</p>
-     */
-    inline AssetModelCompositeModel& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the composite model.</p>
-     */
-    inline AssetModelCompositeModel& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the composite model.</p>
-     */
-    inline AssetModelCompositeModel& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the composite model. For alarm composite models, this type is
      * <code>AWS/ALARM</code>.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of the composite model. For alarm composite models, this type is
-     * <code>AWS/ALARM</code>.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    AssetModelCompositeModel& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the composite model. For alarm composite models, this type is
-     * <code>AWS/ALARM</code>.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of the composite model. For alarm composite models, this type is
-     * <code>AWS/ALARM</code>.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of the composite model. For alarm composite models, this type is
-     * <code>AWS/ALARM</code>.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of the composite model. For alarm composite models, this type is
-     * <code>AWS/ALARM</code>.</p>
-     */
-    inline AssetModelCompositeModel& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of the composite model. For alarm composite models, this type is
-     * <code>AWS/ALARM</code>.</p>
-     */
-    inline AssetModelCompositeModel& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of the composite model. For alarm composite models, this type is
-     * <code>AWS/ALARM</code>.</p>
-     */
-    inline AssetModelCompositeModel& WithType(const char* value) { SetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The asset property definitions for this composite model.</p>
      */
-    inline const Aws::Vector<AssetModelProperty>& GetProperties() const{ return m_properties; }
-
-    /**
-     * <p>The asset property definitions for this composite model.</p>
-     */
+    inline const Aws::Vector<AssetModelProperty>& GetProperties() const { return m_properties; }
     inline bool PropertiesHasBeenSet() const { return m_propertiesHasBeenSet; }
+    template<typename PropertiesT = Aws::Vector<AssetModelProperty>>
+    void SetProperties(PropertiesT&& value) { m_propertiesHasBeenSet = true; m_properties = std::forward<PropertiesT>(value); }
+    template<typename PropertiesT = Aws::Vector<AssetModelProperty>>
+    AssetModelCompositeModel& WithProperties(PropertiesT&& value) { SetProperties(std::forward<PropertiesT>(value)); return *this;}
+    template<typename PropertiesT = AssetModelProperty>
+    AssetModelCompositeModel& AddProperties(PropertiesT&& value) { m_propertiesHasBeenSet = true; m_properties.emplace_back(std::forward<PropertiesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The asset property definitions for this composite model.</p>
-     */
-    inline void SetProperties(const Aws::Vector<AssetModelProperty>& value) { m_propertiesHasBeenSet = true; m_properties = value; }
-
-    /**
-     * <p>The asset property definitions for this composite model.</p>
-     */
-    inline void SetProperties(Aws::Vector<AssetModelProperty>&& value) { m_propertiesHasBeenSet = true; m_properties = std::move(value); }
-
-    /**
-     * <p>The asset property definitions for this composite model.</p>
-     */
-    inline AssetModelCompositeModel& WithProperties(const Aws::Vector<AssetModelProperty>& value) { SetProperties(value); return *this;}
-
-    /**
-     * <p>The asset property definitions for this composite model.</p>
-     */
-    inline AssetModelCompositeModel& WithProperties(Aws::Vector<AssetModelProperty>&& value) { SetProperties(std::move(value)); return *this;}
-
-    /**
-     * <p>The asset property definitions for this composite model.</p>
-     */
-    inline AssetModelCompositeModel& AddProperties(const AssetModelProperty& value) { m_propertiesHasBeenSet = true; m_properties.push_back(value); return *this; }
-
-    /**
-     * <p>The asset property definitions for this composite model.</p>
-     */
-    inline AssetModelCompositeModel& AddProperties(AssetModelProperty&& value) { m_propertiesHasBeenSet = true; m_properties.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p> The ID of the asset model composite model. </p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p> The ID of the asset model composite model. </p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    AssetModelCompositeModel& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The ID of the asset model composite model. </p>
+     * <p>The external ID of the asset model composite model. For more information, see
+     * <a
+     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-ids">Using
+     * external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
      */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p> The ID of the asset model composite model. </p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p> The ID of the asset model composite model. </p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p> The ID of the asset model composite model. </p>
-     */
-    inline AssetModelCompositeModel& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p> The ID of the asset model composite model. </p>
-     */
-    inline AssetModelCompositeModel& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p> The ID of the asset model composite model. </p>
-     */
-    inline AssetModelCompositeModel& WithId(const char* value) { SetId(value); return *this;}
-
+    inline const Aws::String& GetExternalId() const { return m_externalId; }
+    inline bool ExternalIdHasBeenSet() const { return m_externalIdHasBeenSet; }
+    template<typename ExternalIdT = Aws::String>
+    void SetExternalId(ExternalIdT&& value) { m_externalIdHasBeenSet = true; m_externalId = std::forward<ExternalIdT>(value); }
+    template<typename ExternalIdT = Aws::String>
+    AssetModelCompositeModel& WithExternalId(ExternalIdT&& value) { SetExternalId(std::forward<ExternalIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -269,6 +134,9 @@ namespace Model
 
     Aws::String m_id;
     bool m_idHasBeenSet = false;
+
+    Aws::String m_externalId;
+    bool m_externalIdHasBeenSet = false;
   };
 
 } // namespace Model

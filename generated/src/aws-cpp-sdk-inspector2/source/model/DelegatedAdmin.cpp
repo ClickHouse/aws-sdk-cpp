@@ -18,17 +18,7 @@ namespace Inspector2
 namespace Model
 {
 
-DelegatedAdmin::DelegatedAdmin() : 
-    m_accountIdHasBeenSet(false),
-    m_relationshipStatus(RelationshipStatus::NOT_SET),
-    m_relationshipStatusHasBeenSet(false)
-{
-}
-
-DelegatedAdmin::DelegatedAdmin(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_relationshipStatus(RelationshipStatus::NOT_SET),
-    m_relationshipStatusHasBeenSet(false)
+DelegatedAdmin::DelegatedAdmin(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ DelegatedAdmin& DelegatedAdmin::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("accountId"))
   {
     m_accountId = jsonValue.GetString("accountId");
-
     m_accountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("relationshipStatus"))
   {
     m_relationshipStatus = RelationshipStatusMapper::GetRelationshipStatusForName(jsonValue.GetString("relationshipStatus"));
-
     m_relationshipStatusHasBeenSet = true;
   }
-
   return *this;
 }
 

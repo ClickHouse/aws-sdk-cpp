@@ -10,22 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CopySnapshotRequest::CopySnapshotRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_destinationOutpostArnHasBeenSet(false),
-    m_destinationRegionHasBeenSet(false),
-    m_encrypted(false),
-    m_encryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_presignedUrlHasBeenSet(false),
-    m_sourceRegionHasBeenSet(false),
-    m_sourceSnapshotIdHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String CopySnapshotRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -38,11 +22,6 @@ Aws::String CopySnapshotRequest::SerializePayload() const
   if(m_destinationOutpostArnHasBeenSet)
   {
     ss << "DestinationOutpostArn=" << StringUtils::URLEncode(m_destinationOutpostArn.c_str()) << "&";
-  }
-
-  if(m_destinationRegionHasBeenSet)
-  {
-    ss << "DestinationRegion=" << StringUtils::URLEncode(m_destinationRegion.c_str()) << "&";
   }
 
   if(m_encryptedHasBeenSet)
@@ -78,6 +57,16 @@ Aws::String CopySnapshotRequest::SerializePayload() const
       item.OutputToStream(ss, "TagSpecification.", tagSpecificationsCount, "");
       tagSpecificationsCount++;
     }
+  }
+
+  if(m_completionDurationMinutesHasBeenSet)
+  {
+    ss << "CompletionDurationMinutes=" << m_completionDurationMinutes << "&";
+  }
+
+  if(m_destinationAvailabilityZoneHasBeenSet)
+  {
+    ss << "DestinationAvailabilityZone=" << StringUtils::URLEncode(m_destinationAvailabilityZone.c_str()) << "&";
   }
 
   if(m_dryRunHasBeenSet)

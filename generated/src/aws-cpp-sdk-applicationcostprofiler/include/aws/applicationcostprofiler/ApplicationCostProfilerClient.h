@@ -28,22 +28,25 @@ namespace ApplicationCostProfiler
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef ApplicationCostProfilerClientConfiguration ClientConfigurationType;
+      typedef ApplicationCostProfilerEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         ApplicationCostProfilerClient(const Aws::ApplicationCostProfiler::ApplicationCostProfilerClientConfiguration& clientConfiguration = Aws::ApplicationCostProfiler::ApplicationCostProfilerClientConfiguration(),
-                                      std::shared_ptr<ApplicationCostProfilerEndpointProviderBase> endpointProvider = Aws::MakeShared<ApplicationCostProfilerEndpointProvider>(ALLOCATION_TAG));
+                                      std::shared_ptr<ApplicationCostProfilerEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         ApplicationCostProfilerClient(const Aws::Auth::AWSCredentials& credentials,
-                                      std::shared_ptr<ApplicationCostProfilerEndpointProviderBase> endpointProvider = Aws::MakeShared<ApplicationCostProfilerEndpointProvider>(ALLOCATION_TAG),
+                                      std::shared_ptr<ApplicationCostProfilerEndpointProviderBase> endpointProvider = nullptr,
                                       const Aws::ApplicationCostProfiler::ApplicationCostProfilerClientConfiguration& clientConfiguration = Aws::ApplicationCostProfiler::ApplicationCostProfilerClientConfiguration());
 
        /**
@@ -51,7 +54,7 @@ namespace ApplicationCostProfiler
         * the default http client factory will be used
         */
         ApplicationCostProfilerClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                                      std::shared_ptr<ApplicationCostProfilerEndpointProviderBase> endpointProvider = Aws::MakeShared<ApplicationCostProfilerEndpointProvider>(ALLOCATION_TAG),
+                                      std::shared_ptr<ApplicationCostProfilerEndpointProviderBase> endpointProvider = nullptr,
                                       const Aws::ApplicationCostProfiler::ApplicationCostProfilerClientConfiguration& clientConfiguration = Aws::ApplicationCostProfiler::ApplicationCostProfilerClientConfiguration());
 
 
@@ -167,13 +170,13 @@ namespace ApplicationCostProfiler
          * href="http://docs.aws.amazon.com/goto/WebAPI/AWSApplicationCostProfiler-2020-09-10/ListReportDefinitions">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListReportDefinitionsOutcome ListReportDefinitions(const Model::ListReportDefinitionsRequest& request) const;
+        virtual Model::ListReportDefinitionsOutcome ListReportDefinitions(const Model::ListReportDefinitionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListReportDefinitions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListReportDefinitionsRequestT = Model::ListReportDefinitionsRequest>
-        Model::ListReportDefinitionsOutcomeCallable ListReportDefinitionsCallable(const ListReportDefinitionsRequestT& request) const
+        Model::ListReportDefinitionsOutcomeCallable ListReportDefinitionsCallable(const ListReportDefinitionsRequestT& request = {}) const
         {
             return SubmitCallable(&ApplicationCostProfilerClient::ListReportDefinitions, request);
         }
@@ -182,7 +185,7 @@ namespace ApplicationCostProfiler
          * An Async wrapper for ListReportDefinitions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListReportDefinitionsRequestT = Model::ListReportDefinitionsRequest>
-        void ListReportDefinitionsAsync(const ListReportDefinitionsRequestT& request, const ListReportDefinitionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListReportDefinitionsAsync(const ListReportDefinitionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListReportDefinitionsRequestT& request = {}) const
         {
             return SubmitAsync(&ApplicationCostProfilerClient::ListReportDefinitions, request, handler, context);
         }
@@ -247,7 +250,6 @@ namespace ApplicationCostProfiler
       void init(const ApplicationCostProfilerClientConfiguration& clientConfiguration);
 
       ApplicationCostProfilerClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<ApplicationCostProfilerEndpointProviderBase> m_endpointProvider;
   };
 

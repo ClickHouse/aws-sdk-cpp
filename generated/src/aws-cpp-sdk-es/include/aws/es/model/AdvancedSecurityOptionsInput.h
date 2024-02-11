@@ -35,146 +35,72 @@ namespace Model
   class AdvancedSecurityOptionsInput
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API AdvancedSecurityOptionsInput();
+    AWS_ELASTICSEARCHSERVICE_API AdvancedSecurityOptionsInput() = default;
     AWS_ELASTICSEARCHSERVICE_API AdvancedSecurityOptionsInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API AdvancedSecurityOptionsInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>True if advanced security is enabled.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>True if advanced security is enabled.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>True if advanced security is enabled.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>True if advanced security is enabled.</p>
-     */
     inline AdvancedSecurityOptionsInput& WithEnabled(bool value) { SetEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>True if the internal user database is enabled.</p>
      */
-    inline bool GetInternalUserDatabaseEnabled() const{ return m_internalUserDatabaseEnabled; }
-
-    /**
-     * <p>True if the internal user database is enabled.</p>
-     */
+    inline bool GetInternalUserDatabaseEnabled() const { return m_internalUserDatabaseEnabled; }
     inline bool InternalUserDatabaseEnabledHasBeenSet() const { return m_internalUserDatabaseEnabledHasBeenSet; }
-
-    /**
-     * <p>True if the internal user database is enabled.</p>
-     */
     inline void SetInternalUserDatabaseEnabled(bool value) { m_internalUserDatabaseEnabledHasBeenSet = true; m_internalUserDatabaseEnabled = value; }
-
-    /**
-     * <p>True if the internal user database is enabled.</p>
-     */
     inline AdvancedSecurityOptionsInput& WithInternalUserDatabaseEnabled(bool value) { SetInternalUserDatabaseEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Credentials for the master user: username and password, ARN, or both.</p>
      */
-    inline const MasterUserOptions& GetMasterUserOptions() const{ return m_masterUserOptions; }
-
-    /**
-     * <p>Credentials for the master user: username and password, ARN, or both.</p>
-     */
+    inline const MasterUserOptions& GetMasterUserOptions() const { return m_masterUserOptions; }
     inline bool MasterUserOptionsHasBeenSet() const { return m_masterUserOptionsHasBeenSet; }
+    template<typename MasterUserOptionsT = MasterUserOptions>
+    void SetMasterUserOptions(MasterUserOptionsT&& value) { m_masterUserOptionsHasBeenSet = true; m_masterUserOptions = std::forward<MasterUserOptionsT>(value); }
+    template<typename MasterUserOptionsT = MasterUserOptions>
+    AdvancedSecurityOptionsInput& WithMasterUserOptions(MasterUserOptionsT&& value) { SetMasterUserOptions(std::forward<MasterUserOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Credentials for the master user: username and password, ARN, or both.</p>
-     */
-    inline void SetMasterUserOptions(const MasterUserOptions& value) { m_masterUserOptionsHasBeenSet = true; m_masterUserOptions = value; }
-
-    /**
-     * <p>Credentials for the master user: username and password, ARN, or both.</p>
-     */
-    inline void SetMasterUserOptions(MasterUserOptions&& value) { m_masterUserOptionsHasBeenSet = true; m_masterUserOptions = std::move(value); }
-
-    /**
-     * <p>Credentials for the master user: username and password, ARN, or both.</p>
-     */
-    inline AdvancedSecurityOptionsInput& WithMasterUserOptions(const MasterUserOptions& value) { SetMasterUserOptions(value); return *this;}
-
-    /**
-     * <p>Credentials for the master user: username and password, ARN, or both.</p>
-     */
-    inline AdvancedSecurityOptionsInput& WithMasterUserOptions(MasterUserOptions&& value) { SetMasterUserOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the SAML application configuration for the domain.</p>
      */
-    inline const SAMLOptionsInput& GetSAMLOptions() const{ return m_sAMLOptions; }
-
-    /**
-     * <p>Specifies the SAML application configuration for the domain.</p>
-     */
+    inline const SAMLOptionsInput& GetSAMLOptions() const { return m_sAMLOptions; }
     inline bool SAMLOptionsHasBeenSet() const { return m_sAMLOptionsHasBeenSet; }
+    template<typename SAMLOptionsT = SAMLOptionsInput>
+    void SetSAMLOptions(SAMLOptionsT&& value) { m_sAMLOptionsHasBeenSet = true; m_sAMLOptions = std::forward<SAMLOptionsT>(value); }
+    template<typename SAMLOptionsT = SAMLOptionsInput>
+    AdvancedSecurityOptionsInput& WithSAMLOptions(SAMLOptionsT&& value) { SetSAMLOptions(std::forward<SAMLOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the SAML application configuration for the domain.</p>
-     */
-    inline void SetSAMLOptions(const SAMLOptionsInput& value) { m_sAMLOptionsHasBeenSet = true; m_sAMLOptions = value; }
-
-    /**
-     * <p>Specifies the SAML application configuration for the domain.</p>
-     */
-    inline void SetSAMLOptions(SAMLOptionsInput&& value) { m_sAMLOptionsHasBeenSet = true; m_sAMLOptions = std::move(value); }
-
-    /**
-     * <p>Specifies the SAML application configuration for the domain.</p>
-     */
-    inline AdvancedSecurityOptionsInput& WithSAMLOptions(const SAMLOptionsInput& value) { SetSAMLOptions(value); return *this;}
-
-    /**
-     * <p>Specifies the SAML application configuration for the domain.</p>
-     */
-    inline AdvancedSecurityOptionsInput& WithSAMLOptions(SAMLOptionsInput&& value) { SetSAMLOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>True if Anonymous auth is enabled. Anonymous auth can be enabled only when
      * AdvancedSecurity is enabled on existing domains.</p>
      */
-    inline bool GetAnonymousAuthEnabled() const{ return m_anonymousAuthEnabled; }
-
-    /**
-     * <p>True if Anonymous auth is enabled. Anonymous auth can be enabled only when
-     * AdvancedSecurity is enabled on existing domains.</p>
-     */
+    inline bool GetAnonymousAuthEnabled() const { return m_anonymousAuthEnabled; }
     inline bool AnonymousAuthEnabledHasBeenSet() const { return m_anonymousAuthEnabledHasBeenSet; }
-
-    /**
-     * <p>True if Anonymous auth is enabled. Anonymous auth can be enabled only when
-     * AdvancedSecurity is enabled on existing domains.</p>
-     */
     inline void SetAnonymousAuthEnabled(bool value) { m_anonymousAuthEnabledHasBeenSet = true; m_anonymousAuthEnabled = value; }
-
-    /**
-     * <p>True if Anonymous auth is enabled. Anonymous auth can be enabled only when
-     * AdvancedSecurity is enabled on existing domains.</p>
-     */
     inline AdvancedSecurityOptionsInput& WithAnonymousAuthEnabled(bool value) { SetAnonymousAuthEnabled(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
 
-    bool m_internalUserDatabaseEnabled;
+    bool m_internalUserDatabaseEnabled{false};
     bool m_internalUserDatabaseEnabledHasBeenSet = false;
 
     MasterUserOptions m_masterUserOptions;
@@ -183,7 +109,7 @@ namespace Model
     SAMLOptionsInput m_sAMLOptions;
     bool m_sAMLOptionsHasBeenSet = false;
 
-    bool m_anonymousAuthEnabled;
+    bool m_anonymousAuthEnabled{false};
     bool m_anonymousAuthEnabledHasBeenSet = false;
   };
 

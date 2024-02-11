@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-CollectionConfiguration::CollectionConfiguration() : 
-    m_collectionNameHasBeenSet(false),
-    m_collectionParametersHasBeenSet(false)
-{
-}
-
-CollectionConfiguration::CollectionConfiguration(JsonView jsonValue) : 
-    m_collectionNameHasBeenSet(false),
-    m_collectionParametersHasBeenSet(false)
+CollectionConfiguration::CollectionConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ CollectionConfiguration& CollectionConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CollectionName"))
   {
     m_collectionName = jsonValue.GetString("CollectionName");
-
     m_collectionNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CollectionParameters"))
   {
     Aws::Map<Aws::String, JsonView> collectionParametersJsonMap = jsonValue.GetObject("CollectionParameters").GetAllObjects();
@@ -49,7 +39,6 @@ CollectionConfiguration& CollectionConfiguration::operator =(JsonView jsonValue)
     }
     m_collectionParametersHasBeenSet = true;
   }
-
   return *this;
 }
 

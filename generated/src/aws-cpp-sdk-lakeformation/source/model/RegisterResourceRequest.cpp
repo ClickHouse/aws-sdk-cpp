@@ -12,16 +12,6 @@ using namespace Aws::LakeFormation::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-RegisterResourceRequest::RegisterResourceRequest() : 
-    m_resourceArnHasBeenSet(false),
-    m_useServiceLinkedRole(false),
-    m_useServiceLinkedRoleHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_withFederation(false),
-    m_withFederationHasBeenSet(false)
-{
-}
-
 Aws::String RegisterResourceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -47,6 +37,18 @@ Aws::String RegisterResourceRequest::SerializePayload() const
   if(m_withFederationHasBeenSet)
   {
    payload.WithBool("WithFederation", m_withFederation);
+
+  }
+
+  if(m_hybridAccessEnabledHasBeenSet)
+  {
+   payload.WithBool("HybridAccessEnabled", m_hybridAccessEnabled);
+
+  }
+
+  if(m_withPrivilegedAccessHasBeenSet)
+  {
+   payload.WithBool("WithPrivilegedAccess", m_withPrivilegedAccess);
 
   }
 

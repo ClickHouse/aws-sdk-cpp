@@ -24,109 +24,44 @@ namespace Model
 {
 
   /**
-   * <p>The name and prefix of the S3 bucket where code signing saves your signed
-   * objects.</p><p><h3>See Also:</h3>   <a
+   * <p>The name and prefix of the Amazon S3 bucket where AWS Signer saves your
+   * signed objects.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/signer-2017-08-25/S3Destination">AWS
    * API Reference</a></p>
    */
   class S3Destination
   {
   public:
-    AWS_SIGNER_API S3Destination();
+    AWS_SIGNER_API S3Destination() = default;
     AWS_SIGNER_API S3Destination(Aws::Utils::Json::JsonView jsonValue);
     AWS_SIGNER_API S3Destination& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SIGNER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Name of the S3 bucket.</p>
      */
-    inline const Aws::String& GetBucketName() const{ return m_bucketName; }
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
+    inline const Aws::String& GetBucketName() const { return m_bucketName; }
     inline bool BucketNameHasBeenSet() const { return m_bucketNameHasBeenSet; }
+    template<typename BucketNameT = Aws::String>
+    void SetBucketName(BucketNameT&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::forward<BucketNameT>(value); }
+    template<typename BucketNameT = Aws::String>
+    S3Destination& WithBucketName(BucketNameT&& value) { SetBucketName(std::forward<BucketNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Name of the S3 bucket.</p>
+     * <p>An S3 prefix that you can use to limit responses to those that begin with the
+     * specified prefix.</p>
      */
-    inline void SetBucketName(const Aws::String& value) { m_bucketNameHasBeenSet = true; m_bucketName = value; }
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline void SetBucketName(Aws::String&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::move(value); }
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline void SetBucketName(const char* value) { m_bucketNameHasBeenSet = true; m_bucketName.assign(value); }
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline S3Destination& WithBucketName(const Aws::String& value) { SetBucketName(value); return *this;}
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline S3Destination& WithBucketName(Aws::String&& value) { SetBucketName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline S3Destination& WithBucketName(const char* value) { SetBucketName(value); return *this;}
-
-
-    /**
-     * <p>An Amazon S3 prefix that you can use to limit responses to those that begin
-     * with the specified prefix.</p>
-     */
-    inline const Aws::String& GetPrefix() const{ return m_prefix; }
-
-    /**
-     * <p>An Amazon S3 prefix that you can use to limit responses to those that begin
-     * with the specified prefix.</p>
-     */
+    inline const Aws::String& GetPrefix() const { return m_prefix; }
     inline bool PrefixHasBeenSet() const { return m_prefixHasBeenSet; }
-
-    /**
-     * <p>An Amazon S3 prefix that you can use to limit responses to those that begin
-     * with the specified prefix.</p>
-     */
-    inline void SetPrefix(const Aws::String& value) { m_prefixHasBeenSet = true; m_prefix = value; }
-
-    /**
-     * <p>An Amazon S3 prefix that you can use to limit responses to those that begin
-     * with the specified prefix.</p>
-     */
-    inline void SetPrefix(Aws::String&& value) { m_prefixHasBeenSet = true; m_prefix = std::move(value); }
-
-    /**
-     * <p>An Amazon S3 prefix that you can use to limit responses to those that begin
-     * with the specified prefix.</p>
-     */
-    inline void SetPrefix(const char* value) { m_prefixHasBeenSet = true; m_prefix.assign(value); }
-
-    /**
-     * <p>An Amazon S3 prefix that you can use to limit responses to those that begin
-     * with the specified prefix.</p>
-     */
-    inline S3Destination& WithPrefix(const Aws::String& value) { SetPrefix(value); return *this;}
-
-    /**
-     * <p>An Amazon S3 prefix that you can use to limit responses to those that begin
-     * with the specified prefix.</p>
-     */
-    inline S3Destination& WithPrefix(Aws::String&& value) { SetPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>An Amazon S3 prefix that you can use to limit responses to those that begin
-     * with the specified prefix.</p>
-     */
-    inline S3Destination& WithPrefix(const char* value) { SetPrefix(value); return *this;}
-
+    template<typename PrefixT = Aws::String>
+    void SetPrefix(PrefixT&& value) { m_prefixHasBeenSet = true; m_prefix = std::forward<PrefixT>(value); }
+    template<typename PrefixT = Aws::String>
+    S3Destination& WithPrefix(PrefixT&& value) { SetPrefix(std::forward<PrefixT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucketName;

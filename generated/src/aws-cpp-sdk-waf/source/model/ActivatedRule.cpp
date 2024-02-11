@@ -18,27 +18,7 @@ namespace WAF
 namespace Model
 {
 
-ActivatedRule::ActivatedRule() : 
-    m_priority(0),
-    m_priorityHasBeenSet(false),
-    m_ruleIdHasBeenSet(false),
-    m_actionHasBeenSet(false),
-    m_overrideActionHasBeenSet(false),
-    m_type(WafRuleType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_excludedRulesHasBeenSet(false)
-{
-}
-
-ActivatedRule::ActivatedRule(JsonView jsonValue) : 
-    m_priority(0),
-    m_priorityHasBeenSet(false),
-    m_ruleIdHasBeenSet(false),
-    m_actionHasBeenSet(false),
-    m_overrideActionHasBeenSet(false),
-    m_type(WafRuleType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_excludedRulesHasBeenSet(false)
+ActivatedRule::ActivatedRule(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,38 +28,28 @@ ActivatedRule& ActivatedRule::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Priority"))
   {
     m_priority = jsonValue.GetInteger("Priority");
-
     m_priorityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RuleId"))
   {
     m_ruleId = jsonValue.GetString("RuleId");
-
     m_ruleIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Action"))
   {
     m_action = jsonValue.GetObject("Action");
-
     m_actionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OverrideAction"))
   {
     m_overrideAction = jsonValue.GetObject("OverrideAction");
-
     m_overrideActionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Type"))
   {
     m_type = WafRuleTypeMapper::GetWafRuleTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExcludedRules"))
   {
     Aws::Utils::Array<JsonView> excludedRulesJsonList = jsonValue.GetArray("ExcludedRules");
@@ -89,7 +59,6 @@ ActivatedRule& ActivatedRule::operator =(JsonView jsonValue)
     }
     m_excludedRulesHasBeenSet = true;
   }
-
   return *this;
 }
 

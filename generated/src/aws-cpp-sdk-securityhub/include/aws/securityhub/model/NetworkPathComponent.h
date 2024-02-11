@@ -32,167 +32,63 @@ namespace Model
   class NetworkPathComponent
   {
   public:
-    AWS_SECURITYHUB_API NetworkPathComponent();
+    AWS_SECURITYHUB_API NetworkPathComponent() = default;
     AWS_SECURITYHUB_API NetworkPathComponent(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API NetworkPathComponent& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The identifier of a component in the network path.</p>
+     * <p>The identifier of a component in the network path.</p> <p>Length Constraints:
+     * Minimum of 1. Maximum of 32.</p>
      */
-    inline const Aws::String& GetComponentId() const{ return m_componentId; }
-
-    /**
-     * <p>The identifier of a component in the network path.</p>
-     */
+    inline const Aws::String& GetComponentId() const { return m_componentId; }
     inline bool ComponentIdHasBeenSet() const { return m_componentIdHasBeenSet; }
+    template<typename ComponentIdT = Aws::String>
+    void SetComponentId(ComponentIdT&& value) { m_componentIdHasBeenSet = true; m_componentId = std::forward<ComponentIdT>(value); }
+    template<typename ComponentIdT = Aws::String>
+    NetworkPathComponent& WithComponentId(ComponentIdT&& value) { SetComponentId(std::forward<ComponentIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier of a component in the network path.</p>
+     * <p>The type of component.</p> <p>Length Constraints: Minimum of 1. Maximum of
+     * 32.</p>
      */
-    inline void SetComponentId(const Aws::String& value) { m_componentIdHasBeenSet = true; m_componentId = value; }
-
-    /**
-     * <p>The identifier of a component in the network path.</p>
-     */
-    inline void SetComponentId(Aws::String&& value) { m_componentIdHasBeenSet = true; m_componentId = std::move(value); }
-
-    /**
-     * <p>The identifier of a component in the network path.</p>
-     */
-    inline void SetComponentId(const char* value) { m_componentIdHasBeenSet = true; m_componentId.assign(value); }
-
-    /**
-     * <p>The identifier of a component in the network path.</p>
-     */
-    inline NetworkPathComponent& WithComponentId(const Aws::String& value) { SetComponentId(value); return *this;}
-
-    /**
-     * <p>The identifier of a component in the network path.</p>
-     */
-    inline NetworkPathComponent& WithComponentId(Aws::String&& value) { SetComponentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of a component in the network path.</p>
-     */
-    inline NetworkPathComponent& WithComponentId(const char* value) { SetComponentId(value); return *this;}
-
-
-    /**
-     * <p>The type of component.</p>
-     */
-    inline const Aws::String& GetComponentType() const{ return m_componentType; }
-
-    /**
-     * <p>The type of component.</p>
-     */
+    inline const Aws::String& GetComponentType() const { return m_componentType; }
     inline bool ComponentTypeHasBeenSet() const { return m_componentTypeHasBeenSet; }
+    template<typename ComponentTypeT = Aws::String>
+    void SetComponentType(ComponentTypeT&& value) { m_componentTypeHasBeenSet = true; m_componentType = std::forward<ComponentTypeT>(value); }
+    template<typename ComponentTypeT = Aws::String>
+    NetworkPathComponent& WithComponentType(ComponentTypeT&& value) { SetComponentType(std::forward<ComponentTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of component.</p>
-     */
-    inline void SetComponentType(const Aws::String& value) { m_componentTypeHasBeenSet = true; m_componentType = value; }
-
-    /**
-     * <p>The type of component.</p>
-     */
-    inline void SetComponentType(Aws::String&& value) { m_componentTypeHasBeenSet = true; m_componentType = std::move(value); }
-
-    /**
-     * <p>The type of component.</p>
-     */
-    inline void SetComponentType(const char* value) { m_componentTypeHasBeenSet = true; m_componentType.assign(value); }
-
-    /**
-     * <p>The type of component.</p>
-     */
-    inline NetworkPathComponent& WithComponentType(const Aws::String& value) { SetComponentType(value); return *this;}
-
-    /**
-     * <p>The type of component.</p>
-     */
-    inline NetworkPathComponent& WithComponentType(Aws::String&& value) { SetComponentType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of component.</p>
-     */
-    inline NetworkPathComponent& WithComponentType(const char* value) { SetComponentType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the component that comes after the current component in the
      * network path.</p>
      */
-    inline const NetworkHeader& GetEgress() const{ return m_egress; }
-
-    /**
-     * <p>Information about the component that comes after the current component in the
-     * network path.</p>
-     */
+    inline const NetworkHeader& GetEgress() const { return m_egress; }
     inline bool EgressHasBeenSet() const { return m_egressHasBeenSet; }
+    template<typename EgressT = NetworkHeader>
+    void SetEgress(EgressT&& value) { m_egressHasBeenSet = true; m_egress = std::forward<EgressT>(value); }
+    template<typename EgressT = NetworkHeader>
+    NetworkPathComponent& WithEgress(EgressT&& value) { SetEgress(std::forward<EgressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the component that comes after the current component in the
-     * network path.</p>
-     */
-    inline void SetEgress(const NetworkHeader& value) { m_egressHasBeenSet = true; m_egress = value; }
-
-    /**
-     * <p>Information about the component that comes after the current component in the
-     * network path.</p>
-     */
-    inline void SetEgress(NetworkHeader&& value) { m_egressHasBeenSet = true; m_egress = std::move(value); }
-
-    /**
-     * <p>Information about the component that comes after the current component in the
-     * network path.</p>
-     */
-    inline NetworkPathComponent& WithEgress(const NetworkHeader& value) { SetEgress(value); return *this;}
-
-    /**
-     * <p>Information about the component that comes after the current component in the
-     * network path.</p>
-     */
-    inline NetworkPathComponent& WithEgress(NetworkHeader&& value) { SetEgress(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the component that comes before the current node in the
      * network path.</p>
      */
-    inline const NetworkHeader& GetIngress() const{ return m_ingress; }
-
-    /**
-     * <p>Information about the component that comes before the current node in the
-     * network path.</p>
-     */
+    inline const NetworkHeader& GetIngress() const { return m_ingress; }
     inline bool IngressHasBeenSet() const { return m_ingressHasBeenSet; }
-
-    /**
-     * <p>Information about the component that comes before the current node in the
-     * network path.</p>
-     */
-    inline void SetIngress(const NetworkHeader& value) { m_ingressHasBeenSet = true; m_ingress = value; }
-
-    /**
-     * <p>Information about the component that comes before the current node in the
-     * network path.</p>
-     */
-    inline void SetIngress(NetworkHeader&& value) { m_ingressHasBeenSet = true; m_ingress = std::move(value); }
-
-    /**
-     * <p>Information about the component that comes before the current node in the
-     * network path.</p>
-     */
-    inline NetworkPathComponent& WithIngress(const NetworkHeader& value) { SetIngress(value); return *this;}
-
-    /**
-     * <p>Information about the component that comes before the current node in the
-     * network path.</p>
-     */
-    inline NetworkPathComponent& WithIngress(NetworkHeader&& value) { SetIngress(std::move(value)); return *this;}
-
+    template<typename IngressT = NetworkHeader>
+    void SetIngress(IngressT&& value) { m_ingressHasBeenSet = true; m_ingress = std::forward<IngressT>(value); }
+    template<typename IngressT = NetworkHeader>
+    NetworkPathComponent& WithIngress(IngressT&& value) { SetIngress(std::forward<IngressT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_componentId;

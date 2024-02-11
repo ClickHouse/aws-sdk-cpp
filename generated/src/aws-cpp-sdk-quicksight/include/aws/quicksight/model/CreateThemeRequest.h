@@ -25,7 +25,7 @@ namespace Model
   class CreateThemeRequest : public QuickSightRequest
   {
   public:
-    AWS_QUICKSIGHT_API CreateThemeRequest();
+    AWS_QUICKSIGHT_API CreateThemeRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,395 +36,114 @@ namespace Model
     AWS_QUICKSIGHT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services account where you want to store the new
      * theme. </p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account where you want to store the new
-     * theme. </p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    CreateThemeRequest& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services account where you want to store the new
-     * theme. </p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account where you want to store the new
-     * theme. </p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account where you want to store the new
-     * theme. </p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account where you want to store the new
-     * theme. </p>
-     */
-    inline CreateThemeRequest& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account where you want to store the new
-     * theme. </p>
-     */
-    inline CreateThemeRequest& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account where you want to store the new
-     * theme. </p>
-     */
-    inline CreateThemeRequest& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An ID for the theme that you want to create. The theme ID is unique per
      * Amazon Web Services Region in each Amazon Web Services account.</p>
      */
-    inline const Aws::String& GetThemeId() const{ return m_themeId; }
-
-    /**
-     * <p>An ID for the theme that you want to create. The theme ID is unique per
-     * Amazon Web Services Region in each Amazon Web Services account.</p>
-     */
+    inline const Aws::String& GetThemeId() const { return m_themeId; }
     inline bool ThemeIdHasBeenSet() const { return m_themeIdHasBeenSet; }
+    template<typename ThemeIdT = Aws::String>
+    void SetThemeId(ThemeIdT&& value) { m_themeIdHasBeenSet = true; m_themeId = std::forward<ThemeIdT>(value); }
+    template<typename ThemeIdT = Aws::String>
+    CreateThemeRequest& WithThemeId(ThemeIdT&& value) { SetThemeId(std::forward<ThemeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An ID for the theme that you want to create. The theme ID is unique per
-     * Amazon Web Services Region in each Amazon Web Services account.</p>
-     */
-    inline void SetThemeId(const Aws::String& value) { m_themeIdHasBeenSet = true; m_themeId = value; }
-
-    /**
-     * <p>An ID for the theme that you want to create. The theme ID is unique per
-     * Amazon Web Services Region in each Amazon Web Services account.</p>
-     */
-    inline void SetThemeId(Aws::String&& value) { m_themeIdHasBeenSet = true; m_themeId = std::move(value); }
-
-    /**
-     * <p>An ID for the theme that you want to create. The theme ID is unique per
-     * Amazon Web Services Region in each Amazon Web Services account.</p>
-     */
-    inline void SetThemeId(const char* value) { m_themeIdHasBeenSet = true; m_themeId.assign(value); }
-
-    /**
-     * <p>An ID for the theme that you want to create. The theme ID is unique per
-     * Amazon Web Services Region in each Amazon Web Services account.</p>
-     */
-    inline CreateThemeRequest& WithThemeId(const Aws::String& value) { SetThemeId(value); return *this;}
-
-    /**
-     * <p>An ID for the theme that you want to create. The theme ID is unique per
-     * Amazon Web Services Region in each Amazon Web Services account.</p>
-     */
-    inline CreateThemeRequest& WithThemeId(Aws::String&& value) { SetThemeId(std::move(value)); return *this;}
-
-    /**
-     * <p>An ID for the theme that you want to create. The theme ID is unique per
-     * Amazon Web Services Region in each Amazon Web Services account.</p>
-     */
-    inline CreateThemeRequest& WithThemeId(const char* value) { SetThemeId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A display name for the theme.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A display name for the theme.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateThemeRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A display name for the theme.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A display name for the theme.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A display name for the theme.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A display name for the theme.</p>
-     */
-    inline CreateThemeRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A display name for the theme.</p>
-     */
-    inline CreateThemeRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A display name for the theme.</p>
-     */
-    inline CreateThemeRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the theme that a custom theme will inherit from. All themes inherit
      * from one of the starting themes defined by Amazon QuickSight. For a list of the
      * starting themes, use <code>ListThemes</code> or choose <b>Themes</b> from within
      * an analysis. </p>
      */
-    inline const Aws::String& GetBaseThemeId() const{ return m_baseThemeId; }
-
-    /**
-     * <p>The ID of the theme that a custom theme will inherit from. All themes inherit
-     * from one of the starting themes defined by Amazon QuickSight. For a list of the
-     * starting themes, use <code>ListThemes</code> or choose <b>Themes</b> from within
-     * an analysis. </p>
-     */
+    inline const Aws::String& GetBaseThemeId() const { return m_baseThemeId; }
     inline bool BaseThemeIdHasBeenSet() const { return m_baseThemeIdHasBeenSet; }
+    template<typename BaseThemeIdT = Aws::String>
+    void SetBaseThemeId(BaseThemeIdT&& value) { m_baseThemeIdHasBeenSet = true; m_baseThemeId = std::forward<BaseThemeIdT>(value); }
+    template<typename BaseThemeIdT = Aws::String>
+    CreateThemeRequest& WithBaseThemeId(BaseThemeIdT&& value) { SetBaseThemeId(std::forward<BaseThemeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the theme that a custom theme will inherit from. All themes inherit
-     * from one of the starting themes defined by Amazon QuickSight. For a list of the
-     * starting themes, use <code>ListThemes</code> or choose <b>Themes</b> from within
-     * an analysis. </p>
-     */
-    inline void SetBaseThemeId(const Aws::String& value) { m_baseThemeIdHasBeenSet = true; m_baseThemeId = value; }
-
-    /**
-     * <p>The ID of the theme that a custom theme will inherit from. All themes inherit
-     * from one of the starting themes defined by Amazon QuickSight. For a list of the
-     * starting themes, use <code>ListThemes</code> or choose <b>Themes</b> from within
-     * an analysis. </p>
-     */
-    inline void SetBaseThemeId(Aws::String&& value) { m_baseThemeIdHasBeenSet = true; m_baseThemeId = std::move(value); }
-
-    /**
-     * <p>The ID of the theme that a custom theme will inherit from. All themes inherit
-     * from one of the starting themes defined by Amazon QuickSight. For a list of the
-     * starting themes, use <code>ListThemes</code> or choose <b>Themes</b> from within
-     * an analysis. </p>
-     */
-    inline void SetBaseThemeId(const char* value) { m_baseThemeIdHasBeenSet = true; m_baseThemeId.assign(value); }
-
-    /**
-     * <p>The ID of the theme that a custom theme will inherit from. All themes inherit
-     * from one of the starting themes defined by Amazon QuickSight. For a list of the
-     * starting themes, use <code>ListThemes</code> or choose <b>Themes</b> from within
-     * an analysis. </p>
-     */
-    inline CreateThemeRequest& WithBaseThemeId(const Aws::String& value) { SetBaseThemeId(value); return *this;}
-
-    /**
-     * <p>The ID of the theme that a custom theme will inherit from. All themes inherit
-     * from one of the starting themes defined by Amazon QuickSight. For a list of the
-     * starting themes, use <code>ListThemes</code> or choose <b>Themes</b> from within
-     * an analysis. </p>
-     */
-    inline CreateThemeRequest& WithBaseThemeId(Aws::String&& value) { SetBaseThemeId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the theme that a custom theme will inherit from. All themes inherit
-     * from one of the starting themes defined by Amazon QuickSight. For a list of the
-     * starting themes, use <code>ListThemes</code> or choose <b>Themes</b> from within
-     * an analysis. </p>
-     */
-    inline CreateThemeRequest& WithBaseThemeId(const char* value) { SetBaseThemeId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the first version of the theme that you're creating. Every
      * time <code>UpdateTheme</code> is called, a new version is created. Each version
      * of the theme has a description of the version in the
      * <code>VersionDescription</code> field.</p>
      */
-    inline const Aws::String& GetVersionDescription() const{ return m_versionDescription; }
-
-    /**
-     * <p>A description of the first version of the theme that you're creating. Every
-     * time <code>UpdateTheme</code> is called, a new version is created. Each version
-     * of the theme has a description of the version in the
-     * <code>VersionDescription</code> field.</p>
-     */
+    inline const Aws::String& GetVersionDescription() const { return m_versionDescription; }
     inline bool VersionDescriptionHasBeenSet() const { return m_versionDescriptionHasBeenSet; }
+    template<typename VersionDescriptionT = Aws::String>
+    void SetVersionDescription(VersionDescriptionT&& value) { m_versionDescriptionHasBeenSet = true; m_versionDescription = std::forward<VersionDescriptionT>(value); }
+    template<typename VersionDescriptionT = Aws::String>
+    CreateThemeRequest& WithVersionDescription(VersionDescriptionT&& value) { SetVersionDescription(std::forward<VersionDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the first version of the theme that you're creating. Every
-     * time <code>UpdateTheme</code> is called, a new version is created. Each version
-     * of the theme has a description of the version in the
-     * <code>VersionDescription</code> field.</p>
-     */
-    inline void SetVersionDescription(const Aws::String& value) { m_versionDescriptionHasBeenSet = true; m_versionDescription = value; }
-
-    /**
-     * <p>A description of the first version of the theme that you're creating. Every
-     * time <code>UpdateTheme</code> is called, a new version is created. Each version
-     * of the theme has a description of the version in the
-     * <code>VersionDescription</code> field.</p>
-     */
-    inline void SetVersionDescription(Aws::String&& value) { m_versionDescriptionHasBeenSet = true; m_versionDescription = std::move(value); }
-
-    /**
-     * <p>A description of the first version of the theme that you're creating. Every
-     * time <code>UpdateTheme</code> is called, a new version is created. Each version
-     * of the theme has a description of the version in the
-     * <code>VersionDescription</code> field.</p>
-     */
-    inline void SetVersionDescription(const char* value) { m_versionDescriptionHasBeenSet = true; m_versionDescription.assign(value); }
-
-    /**
-     * <p>A description of the first version of the theme that you're creating. Every
-     * time <code>UpdateTheme</code> is called, a new version is created. Each version
-     * of the theme has a description of the version in the
-     * <code>VersionDescription</code> field.</p>
-     */
-    inline CreateThemeRequest& WithVersionDescription(const Aws::String& value) { SetVersionDescription(value); return *this;}
-
-    /**
-     * <p>A description of the first version of the theme that you're creating. Every
-     * time <code>UpdateTheme</code> is called, a new version is created. Each version
-     * of the theme has a description of the version in the
-     * <code>VersionDescription</code> field.</p>
-     */
-    inline CreateThemeRequest& WithVersionDescription(Aws::String&& value) { SetVersionDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the first version of the theme that you're creating. Every
-     * time <code>UpdateTheme</code> is called, a new version is created. Each version
-     * of the theme has a description of the version in the
-     * <code>VersionDescription</code> field.</p>
-     */
-    inline CreateThemeRequest& WithVersionDescription(const char* value) { SetVersionDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The theme configuration, which contains the theme display properties.</p>
      */
-    inline const ThemeConfiguration& GetConfiguration() const{ return m_configuration; }
-
-    /**
-     * <p>The theme configuration, which contains the theme display properties.</p>
-     */
+    inline const ThemeConfiguration& GetConfiguration() const { return m_configuration; }
     inline bool ConfigurationHasBeenSet() const { return m_configurationHasBeenSet; }
+    template<typename ConfigurationT = ThemeConfiguration>
+    void SetConfiguration(ConfigurationT&& value) { m_configurationHasBeenSet = true; m_configuration = std::forward<ConfigurationT>(value); }
+    template<typename ConfigurationT = ThemeConfiguration>
+    CreateThemeRequest& WithConfiguration(ConfigurationT&& value) { SetConfiguration(std::forward<ConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The theme configuration, which contains the theme display properties.</p>
-     */
-    inline void SetConfiguration(const ThemeConfiguration& value) { m_configurationHasBeenSet = true; m_configuration = value; }
-
-    /**
-     * <p>The theme configuration, which contains the theme display properties.</p>
-     */
-    inline void SetConfiguration(ThemeConfiguration&& value) { m_configurationHasBeenSet = true; m_configuration = std::move(value); }
-
-    /**
-     * <p>The theme configuration, which contains the theme display properties.</p>
-     */
-    inline CreateThemeRequest& WithConfiguration(const ThemeConfiguration& value) { SetConfiguration(value); return *this;}
-
-    /**
-     * <p>The theme configuration, which contains the theme display properties.</p>
-     */
-    inline CreateThemeRequest& WithConfiguration(ThemeConfiguration&& value) { SetConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A valid grouping of resource permissions to apply to the new theme. </p>
      */
-    inline const Aws::Vector<ResourcePermission>& GetPermissions() const{ return m_permissions; }
-
-    /**
-     * <p>A valid grouping of resource permissions to apply to the new theme. </p>
-     */
+    inline const Aws::Vector<ResourcePermission>& GetPermissions() const { return m_permissions; }
     inline bool PermissionsHasBeenSet() const { return m_permissionsHasBeenSet; }
+    template<typename PermissionsT = Aws::Vector<ResourcePermission>>
+    void SetPermissions(PermissionsT&& value) { m_permissionsHasBeenSet = true; m_permissions = std::forward<PermissionsT>(value); }
+    template<typename PermissionsT = Aws::Vector<ResourcePermission>>
+    CreateThemeRequest& WithPermissions(PermissionsT&& value) { SetPermissions(std::forward<PermissionsT>(value)); return *this;}
+    template<typename PermissionsT = ResourcePermission>
+    CreateThemeRequest& AddPermissions(PermissionsT&& value) { m_permissionsHasBeenSet = true; m_permissions.emplace_back(std::forward<PermissionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A valid grouping of resource permissions to apply to the new theme. </p>
-     */
-    inline void SetPermissions(const Aws::Vector<ResourcePermission>& value) { m_permissionsHasBeenSet = true; m_permissions = value; }
-
-    /**
-     * <p>A valid grouping of resource permissions to apply to the new theme. </p>
-     */
-    inline void SetPermissions(Aws::Vector<ResourcePermission>&& value) { m_permissionsHasBeenSet = true; m_permissions = std::move(value); }
-
-    /**
-     * <p>A valid grouping of resource permissions to apply to the new theme. </p>
-     */
-    inline CreateThemeRequest& WithPermissions(const Aws::Vector<ResourcePermission>& value) { SetPermissions(value); return *this;}
-
-    /**
-     * <p>A valid grouping of resource permissions to apply to the new theme. </p>
-     */
-    inline CreateThemeRequest& WithPermissions(Aws::Vector<ResourcePermission>&& value) { SetPermissions(std::move(value)); return *this;}
-
-    /**
-     * <p>A valid grouping of resource permissions to apply to the new theme. </p>
-     */
-    inline CreateThemeRequest& AddPermissions(const ResourcePermission& value) { m_permissionsHasBeenSet = true; m_permissions.push_back(value); return *this; }
-
-    /**
-     * <p>A valid grouping of resource permissions to apply to the new theme. </p>
-     */
-    inline CreateThemeRequest& AddPermissions(ResourcePermission&& value) { m_permissionsHasBeenSet = true; m_permissions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A map of the key-value pairs for the resource tag or tags that you want to
      * add to the resource.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A map of the key-value pairs for the resource tag or tags that you want to
-     * add to the resource.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>A map of the key-value pairs for the resource tag or tags that you want to
-     * add to the resource.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A map of the key-value pairs for the resource tag or tags that you want to
-     * add to the resource.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A map of the key-value pairs for the resource tag or tags that you want to
-     * add to the resource.</p>
-     */
-    inline CreateThemeRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A map of the key-value pairs for the resource tag or tags that you want to
-     * add to the resource.</p>
-     */
-    inline CreateThemeRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A map of the key-value pairs for the resource tag or tags that you want to
-     * add to the resource.</p>
-     */
-    inline CreateThemeRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>A map of the key-value pairs for the resource tag or tags that you want to
-     * add to the resource.</p>
-     */
-    inline CreateThemeRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateThemeRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateThemeRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_awsAccountId;

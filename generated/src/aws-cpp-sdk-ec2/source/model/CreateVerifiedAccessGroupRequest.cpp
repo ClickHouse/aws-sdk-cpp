@@ -10,18 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateVerifiedAccessGroupRequest::CreateVerifiedAccessGroupRequest() : 
-    m_verifiedAccessInstanceIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_policyDocumentHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String CreateVerifiedAccessGroupRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -59,6 +47,11 @@ Aws::String CreateVerifiedAccessGroupRequest::SerializePayload() const
   if(m_dryRunHasBeenSet)
   {
     ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
+  }
+
+  if(m_sseSpecificationHasBeenSet)
+  {
+    m_sseSpecification.OutputToStream(ss, "SseSpecification");
   }
 
   ss << "Version=2016-11-15";

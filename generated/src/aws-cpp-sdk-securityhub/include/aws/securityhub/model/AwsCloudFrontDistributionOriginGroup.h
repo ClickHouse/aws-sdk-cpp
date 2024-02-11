@@ -32,42 +32,23 @@ namespace Model
   class AwsCloudFrontDistributionOriginGroup
   {
   public:
-    AWS_SECURITYHUB_API AwsCloudFrontDistributionOriginGroup();
+    AWS_SECURITYHUB_API AwsCloudFrontDistributionOriginGroup() = default;
     AWS_SECURITYHUB_API AwsCloudFrontDistributionOriginGroup(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsCloudFrontDistributionOriginGroup& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Provides the criteria for an origin group to fail over.</p>
      */
-    inline const AwsCloudFrontDistributionOriginGroupFailover& GetFailoverCriteria() const{ return m_failoverCriteria; }
-
-    /**
-     * <p>Provides the criteria for an origin group to fail over.</p>
-     */
+    inline const AwsCloudFrontDistributionOriginGroupFailover& GetFailoverCriteria() const { return m_failoverCriteria; }
     inline bool FailoverCriteriaHasBeenSet() const { return m_failoverCriteriaHasBeenSet; }
-
-    /**
-     * <p>Provides the criteria for an origin group to fail over.</p>
-     */
-    inline void SetFailoverCriteria(const AwsCloudFrontDistributionOriginGroupFailover& value) { m_failoverCriteriaHasBeenSet = true; m_failoverCriteria = value; }
-
-    /**
-     * <p>Provides the criteria for an origin group to fail over.</p>
-     */
-    inline void SetFailoverCriteria(AwsCloudFrontDistributionOriginGroupFailover&& value) { m_failoverCriteriaHasBeenSet = true; m_failoverCriteria = std::move(value); }
-
-    /**
-     * <p>Provides the criteria for an origin group to fail over.</p>
-     */
-    inline AwsCloudFrontDistributionOriginGroup& WithFailoverCriteria(const AwsCloudFrontDistributionOriginGroupFailover& value) { SetFailoverCriteria(value); return *this;}
-
-    /**
-     * <p>Provides the criteria for an origin group to fail over.</p>
-     */
-    inline AwsCloudFrontDistributionOriginGroup& WithFailoverCriteria(AwsCloudFrontDistributionOriginGroupFailover&& value) { SetFailoverCriteria(std::move(value)); return *this;}
-
+    template<typename FailoverCriteriaT = AwsCloudFrontDistributionOriginGroupFailover>
+    void SetFailoverCriteria(FailoverCriteriaT&& value) { m_failoverCriteriaHasBeenSet = true; m_failoverCriteria = std::forward<FailoverCriteriaT>(value); }
+    template<typename FailoverCriteriaT = AwsCloudFrontDistributionOriginGroupFailover>
+    AwsCloudFrontDistributionOriginGroup& WithFailoverCriteria(FailoverCriteriaT&& value) { SetFailoverCriteria(std::forward<FailoverCriteriaT>(value)); return *this;}
+    ///@}
   private:
 
     AwsCloudFrontDistributionOriginGroupFailover m_failoverCriteria;

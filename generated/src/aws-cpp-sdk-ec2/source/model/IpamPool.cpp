@@ -20,79 +20,7 @@ namespace EC2
 namespace Model
 {
 
-IpamPool::IpamPool() : 
-    m_ownerIdHasBeenSet(false),
-    m_ipamPoolIdHasBeenSet(false),
-    m_sourceIpamPoolIdHasBeenSet(false),
-    m_ipamPoolArnHasBeenSet(false),
-    m_ipamScopeArnHasBeenSet(false),
-    m_ipamScopeType(IpamScopeType::NOT_SET),
-    m_ipamScopeTypeHasBeenSet(false),
-    m_ipamArnHasBeenSet(false),
-    m_ipamRegionHasBeenSet(false),
-    m_localeHasBeenSet(false),
-    m_poolDepth(0),
-    m_poolDepthHasBeenSet(false),
-    m_state(IpamPoolState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_stateMessageHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_autoImport(false),
-    m_autoImportHasBeenSet(false),
-    m_publiclyAdvertisable(false),
-    m_publiclyAdvertisableHasBeenSet(false),
-    m_addressFamily(AddressFamily::NOT_SET),
-    m_addressFamilyHasBeenSet(false),
-    m_allocationMinNetmaskLength(0),
-    m_allocationMinNetmaskLengthHasBeenSet(false),
-    m_allocationMaxNetmaskLength(0),
-    m_allocationMaxNetmaskLengthHasBeenSet(false),
-    m_allocationDefaultNetmaskLength(0),
-    m_allocationDefaultNetmaskLengthHasBeenSet(false),
-    m_allocationResourceTagsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_awsService(IpamPoolAwsService::NOT_SET),
-    m_awsServiceHasBeenSet(false),
-    m_publicIpSource(IpamPoolPublicIpSource::NOT_SET),
-    m_publicIpSourceHasBeenSet(false)
-{
-}
-
-IpamPool::IpamPool(const XmlNode& xmlNode) : 
-    m_ownerIdHasBeenSet(false),
-    m_ipamPoolIdHasBeenSet(false),
-    m_sourceIpamPoolIdHasBeenSet(false),
-    m_ipamPoolArnHasBeenSet(false),
-    m_ipamScopeArnHasBeenSet(false),
-    m_ipamScopeType(IpamScopeType::NOT_SET),
-    m_ipamScopeTypeHasBeenSet(false),
-    m_ipamArnHasBeenSet(false),
-    m_ipamRegionHasBeenSet(false),
-    m_localeHasBeenSet(false),
-    m_poolDepth(0),
-    m_poolDepthHasBeenSet(false),
-    m_state(IpamPoolState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_stateMessageHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_autoImport(false),
-    m_autoImportHasBeenSet(false),
-    m_publiclyAdvertisable(false),
-    m_publiclyAdvertisableHasBeenSet(false),
-    m_addressFamily(AddressFamily::NOT_SET),
-    m_addressFamilyHasBeenSet(false),
-    m_allocationMinNetmaskLength(0),
-    m_allocationMinNetmaskLengthHasBeenSet(false),
-    m_allocationMaxNetmaskLength(0),
-    m_allocationMaxNetmaskLengthHasBeenSet(false),
-    m_allocationDefaultNetmaskLength(0),
-    m_allocationDefaultNetmaskLengthHasBeenSet(false),
-    m_allocationResourceTagsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_awsService(IpamPoolAwsService::NOT_SET),
-    m_awsServiceHasBeenSet(false),
-    m_publicIpSource(IpamPoolPublicIpSource::NOT_SET),
-    m_publicIpSourceHasBeenSet(false)
+IpamPool::IpamPool(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -136,7 +64,7 @@ IpamPool& IpamPool::operator =(const XmlNode& xmlNode)
     XmlNode ipamScopeTypeNode = resultNode.FirstChild("ipamScopeType");
     if(!ipamScopeTypeNode.IsNull())
     {
-      m_ipamScopeType = IpamScopeTypeMapper::GetIpamScopeTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(ipamScopeTypeNode.GetText()).c_str()).c_str());
+      m_ipamScopeType = IpamScopeTypeMapper::GetIpamScopeTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(ipamScopeTypeNode.GetText()).c_str()));
       m_ipamScopeTypeHasBeenSet = true;
     }
     XmlNode ipamArnNode = resultNode.FirstChild("ipamArn");
@@ -166,7 +94,7 @@ IpamPool& IpamPool::operator =(const XmlNode& xmlNode)
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = IpamPoolStateMapper::GetIpamPoolStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = IpamPoolStateMapper::GetIpamPoolStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode stateMessageNode = resultNode.FirstChild("stateMessage");
@@ -196,7 +124,7 @@ IpamPool& IpamPool::operator =(const XmlNode& xmlNode)
     XmlNode addressFamilyNode = resultNode.FirstChild("addressFamily");
     if(!addressFamilyNode.IsNull())
     {
-      m_addressFamily = AddressFamilyMapper::GetAddressFamilyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(addressFamilyNode.GetText()).c_str()).c_str());
+      m_addressFamily = AddressFamilyMapper::GetAddressFamilyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(addressFamilyNode.GetText()).c_str()));
       m_addressFamilyHasBeenSet = true;
     }
     XmlNode allocationMinNetmaskLengthNode = resultNode.FirstChild("allocationMinNetmaskLength");
@@ -221,6 +149,7 @@ IpamPool& IpamPool::operator =(const XmlNode& xmlNode)
     if(!allocationResourceTagsNode.IsNull())
     {
       XmlNode allocationResourceTagsMember = allocationResourceTagsNode.FirstChild("item");
+      m_allocationResourceTagsHasBeenSet = !allocationResourceTagsMember.IsNull();
       while(!allocationResourceTagsMember.IsNull())
       {
         m_allocationResourceTags.push_back(allocationResourceTagsMember);
@@ -233,6 +162,7 @@ IpamPool& IpamPool::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -244,14 +174,20 @@ IpamPool& IpamPool::operator =(const XmlNode& xmlNode)
     XmlNode awsServiceNode = resultNode.FirstChild("awsService");
     if(!awsServiceNode.IsNull())
     {
-      m_awsService = IpamPoolAwsServiceMapper::GetIpamPoolAwsServiceForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(awsServiceNode.GetText()).c_str()).c_str());
+      m_awsService = IpamPoolAwsServiceMapper::GetIpamPoolAwsServiceForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(awsServiceNode.GetText()).c_str()));
       m_awsServiceHasBeenSet = true;
     }
     XmlNode publicIpSourceNode = resultNode.FirstChild("publicIpSource");
     if(!publicIpSourceNode.IsNull())
     {
-      m_publicIpSource = IpamPoolPublicIpSourceMapper::GetIpamPoolPublicIpSourceForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(publicIpSourceNode.GetText()).c_str()).c_str());
+      m_publicIpSource = IpamPoolPublicIpSourceMapper::GetIpamPoolPublicIpSourceForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(publicIpSourceNode.GetText()).c_str()));
       m_publicIpSourceHasBeenSet = true;
+    }
+    XmlNode sourceResourceNode = resultNode.FirstChild("sourceResource");
+    if(!sourceResourceNode.IsNull())
+    {
+      m_sourceResource = sourceResourceNode;
+      m_sourceResourceHasBeenSet = true;
     }
   }
 
@@ -287,7 +223,7 @@ void IpamPool::OutputToStream(Aws::OStream& oStream, const char* location, unsig
 
   if(m_ipamScopeTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".IpamScopeType=" << IpamScopeTypeMapper::GetNameForIpamScopeType(m_ipamScopeType) << "&";
+      oStream << location << index << locationValue << ".IpamScopeType=" << StringUtils::URLEncode(IpamScopeTypeMapper::GetNameForIpamScopeType(m_ipamScopeType)) << "&";
   }
 
   if(m_ipamArnHasBeenSet)
@@ -312,7 +248,7 @@ void IpamPool::OutputToStream(Aws::OStream& oStream, const char* location, unsig
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << IpamPoolStateMapper::GetNameForIpamPoolState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(IpamPoolStateMapper::GetNameForIpamPoolState(m_state)) << "&";
   }
 
   if(m_stateMessageHasBeenSet)
@@ -337,7 +273,7 @@ void IpamPool::OutputToStream(Aws::OStream& oStream, const char* location, unsig
 
   if(m_addressFamilyHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AddressFamily=" << AddressFamilyMapper::GetNameForAddressFamily(m_addressFamily) << "&";
+      oStream << location << index << locationValue << ".AddressFamily=" << StringUtils::URLEncode(AddressFamilyMapper::GetNameForAddressFamily(m_addressFamily)) << "&";
   }
 
   if(m_allocationMinNetmaskLengthHasBeenSet)
@@ -379,12 +315,19 @@ void IpamPool::OutputToStream(Aws::OStream& oStream, const char* location, unsig
 
   if(m_awsServiceHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AwsService=" << IpamPoolAwsServiceMapper::GetNameForIpamPoolAwsService(m_awsService) << "&";
+      oStream << location << index << locationValue << ".AwsService=" << StringUtils::URLEncode(IpamPoolAwsServiceMapper::GetNameForIpamPoolAwsService(m_awsService)) << "&";
   }
 
   if(m_publicIpSourceHasBeenSet)
   {
-      oStream << location << index << locationValue << ".PublicIpSource=" << IpamPoolPublicIpSourceMapper::GetNameForIpamPoolPublicIpSource(m_publicIpSource) << "&";
+      oStream << location << index << locationValue << ".PublicIpSource=" << StringUtils::URLEncode(IpamPoolPublicIpSourceMapper::GetNameForIpamPoolPublicIpSource(m_publicIpSource)) << "&";
+  }
+
+  if(m_sourceResourceHasBeenSet)
+  {
+      Aws::StringStream sourceResourceLocationAndMemberSs;
+      sourceResourceLocationAndMemberSs << location << index << locationValue << ".SourceResource";
+      m_sourceResource.OutputToStream(oStream, sourceResourceLocationAndMemberSs.str().c_str());
   }
 
 }
@@ -413,7 +356,7 @@ void IpamPool::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_ipamScopeTypeHasBeenSet)
   {
-      oStream << location << ".IpamScopeType=" << IpamScopeTypeMapper::GetNameForIpamScopeType(m_ipamScopeType) << "&";
+      oStream << location << ".IpamScopeType=" << StringUtils::URLEncode(IpamScopeTypeMapper::GetNameForIpamScopeType(m_ipamScopeType)) << "&";
   }
   if(m_ipamArnHasBeenSet)
   {
@@ -433,7 +376,7 @@ void IpamPool::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << IpamPoolStateMapper::GetNameForIpamPoolState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(IpamPoolStateMapper::GetNameForIpamPoolState(m_state)) << "&";
   }
   if(m_stateMessageHasBeenSet)
   {
@@ -453,7 +396,7 @@ void IpamPool::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_addressFamilyHasBeenSet)
   {
-      oStream << location << ".AddressFamily=" << AddressFamilyMapper::GetNameForAddressFamily(m_addressFamily) << "&";
+      oStream << location << ".AddressFamily=" << StringUtils::URLEncode(AddressFamilyMapper::GetNameForAddressFamily(m_addressFamily)) << "&";
   }
   if(m_allocationMinNetmaskLengthHasBeenSet)
   {
@@ -473,7 +416,7 @@ void IpamPool::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_allocationResourceTags)
       {
         Aws::StringStream allocationResourceTagsSs;
-        allocationResourceTagsSs << location <<  ".AllocationResourceTagSet." << allocationResourceTagsIdx++;
+        allocationResourceTagsSs << location << ".AllocationResourceTagSet." << allocationResourceTagsIdx++;
         item.OutputToStream(oStream, allocationResourceTagsSs.str().c_str());
       }
   }
@@ -483,17 +426,23 @@ void IpamPool::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
   if(m_awsServiceHasBeenSet)
   {
-      oStream << location << ".AwsService=" << IpamPoolAwsServiceMapper::GetNameForIpamPoolAwsService(m_awsService) << "&";
+      oStream << location << ".AwsService=" << StringUtils::URLEncode(IpamPoolAwsServiceMapper::GetNameForIpamPoolAwsService(m_awsService)) << "&";
   }
   if(m_publicIpSourceHasBeenSet)
   {
-      oStream << location << ".PublicIpSource=" << IpamPoolPublicIpSourceMapper::GetNameForIpamPoolPublicIpSource(m_publicIpSource) << "&";
+      oStream << location << ".PublicIpSource=" << StringUtils::URLEncode(IpamPoolPublicIpSourceMapper::GetNameForIpamPoolPublicIpSource(m_publicIpSource)) << "&";
+  }
+  if(m_sourceResourceHasBeenSet)
+  {
+      Aws::String sourceResourceLocationAndMember(location);
+      sourceResourceLocationAndMember += ".SourceResource";
+      m_sourceResource.OutputToStream(oStream, sourceResourceLocationAndMember.c_str());
   }
 }
 

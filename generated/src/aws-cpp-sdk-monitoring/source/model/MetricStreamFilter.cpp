@@ -20,13 +20,7 @@ namespace CloudWatch
 namespace Model
 {
 
-MetricStreamFilter::MetricStreamFilter() : 
-    m_namespaceHasBeenSet(false)
-{
-}
-
-MetricStreamFilter::MetricStreamFilter(const XmlNode& xmlNode) : 
-    m_namespaceHasBeenSet(false)
+MetricStreamFilter::MetricStreamFilter(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -43,6 +37,19 @@ MetricStreamFilter& MetricStreamFilter::operator =(const XmlNode& xmlNode)
       m_namespace = Aws::Utils::Xml::DecodeEscapedXmlText(namespaceNode.GetText());
       m_namespaceHasBeenSet = true;
     }
+    XmlNode metricNamesNode = resultNode.FirstChild("MetricNames");
+    if(!metricNamesNode.IsNull())
+    {
+      XmlNode metricNamesMember = metricNamesNode.FirstChild("member");
+      m_metricNamesHasBeenSet = !metricNamesMember.IsNull();
+      while(!metricNamesMember.IsNull())
+      {
+        m_metricNames.push_back(metricNamesMember.GetText());
+        metricNamesMember = metricNamesMember.NextNode("member");
+      }
+
+      m_metricNamesHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -55,6 +62,15 @@ void MetricStreamFilter::OutputToStream(Aws::OStream& oStream, const char* locat
       oStream << location << index << locationValue << ".Namespace=" << StringUtils::URLEncode(m_namespace.c_str()) << "&";
   }
 
+  if(m_metricNamesHasBeenSet)
+  {
+      unsigned metricNamesIdx = 1;
+      for(auto& item : m_metricNames)
+      {
+        oStream << location << index << locationValue << ".MetricNames.member." << metricNamesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
+
 }
 
 void MetricStreamFilter::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -62,6 +78,14 @@ void MetricStreamFilter::OutputToStream(Aws::OStream& oStream, const char* locat
   if(m_namespaceHasBeenSet)
   {
       oStream << location << ".Namespace=" << StringUtils::URLEncode(m_namespace.c_str()) << "&";
+  }
+  if(m_metricNamesHasBeenSet)
+  {
+      unsigned metricNamesIdx = 1;
+      for(auto& item : m_metricNames)
+      {
+        oStream << location << ".MetricNames.member." << metricNamesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
   }
 }
 

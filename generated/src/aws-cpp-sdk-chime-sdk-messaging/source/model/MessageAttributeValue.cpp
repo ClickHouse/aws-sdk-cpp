@@ -18,13 +18,7 @@ namespace ChimeSDKMessaging
 namespace Model
 {
 
-MessageAttributeValue::MessageAttributeValue() : 
-    m_stringValuesHasBeenSet(false)
-{
-}
-
-MessageAttributeValue::MessageAttributeValue(JsonView jsonValue) : 
-    m_stringValuesHasBeenSet(false)
+MessageAttributeValue::MessageAttributeValue(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ MessageAttributeValue& MessageAttributeValue::operator =(JsonView jsonValue)
     }
     m_stringValuesHasBeenSet = true;
   }
-
   return *this;
 }
 

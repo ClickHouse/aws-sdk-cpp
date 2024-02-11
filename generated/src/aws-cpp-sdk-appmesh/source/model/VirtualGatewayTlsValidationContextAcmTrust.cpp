@@ -18,13 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-VirtualGatewayTlsValidationContextAcmTrust::VirtualGatewayTlsValidationContextAcmTrust() : 
-    m_certificateAuthorityArnsHasBeenSet(false)
-{
-}
-
-VirtualGatewayTlsValidationContextAcmTrust::VirtualGatewayTlsValidationContextAcmTrust(JsonView jsonValue) : 
-    m_certificateAuthorityArnsHasBeenSet(false)
+VirtualGatewayTlsValidationContextAcmTrust::VirtualGatewayTlsValidationContextAcmTrust(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ VirtualGatewayTlsValidationContextAcmTrust& VirtualGatewayTlsValidationContextAc
     }
     m_certificateAuthorityArnsHasBeenSet = true;
   }
-
   return *this;
 }
 

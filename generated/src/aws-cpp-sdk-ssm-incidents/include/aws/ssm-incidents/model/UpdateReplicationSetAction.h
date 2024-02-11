@@ -32,85 +32,37 @@ namespace Model
   class UpdateReplicationSetAction
   {
   public:
-    AWS_SSMINCIDENTS_API UpdateReplicationSetAction();
+    AWS_SSMINCIDENTS_API UpdateReplicationSetAction() = default;
     AWS_SSMINCIDENTS_API UpdateReplicationSetAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API UpdateReplicationSetAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Details about the Amazon Web Services Region that you're adding to the
      * replication set.</p>
      */
-    inline const AddRegionAction& GetAddRegionAction() const{ return m_addRegionAction; }
-
-    /**
-     * <p>Details about the Amazon Web Services Region that you're adding to the
-     * replication set.</p>
-     */
+    inline const AddRegionAction& GetAddRegionAction() const { return m_addRegionAction; }
     inline bool AddRegionActionHasBeenSet() const { return m_addRegionActionHasBeenSet; }
+    template<typename AddRegionActionT = AddRegionAction>
+    void SetAddRegionAction(AddRegionActionT&& value) { m_addRegionActionHasBeenSet = true; m_addRegionAction = std::forward<AddRegionActionT>(value); }
+    template<typename AddRegionActionT = AddRegionAction>
+    UpdateReplicationSetAction& WithAddRegionAction(AddRegionActionT&& value) { SetAddRegionAction(std::forward<AddRegionActionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about the Amazon Web Services Region that you're adding to the
-     * replication set.</p>
-     */
-    inline void SetAddRegionAction(const AddRegionAction& value) { m_addRegionActionHasBeenSet = true; m_addRegionAction = value; }
-
-    /**
-     * <p>Details about the Amazon Web Services Region that you're adding to the
-     * replication set.</p>
-     */
-    inline void SetAddRegionAction(AddRegionAction&& value) { m_addRegionActionHasBeenSet = true; m_addRegionAction = std::move(value); }
-
-    /**
-     * <p>Details about the Amazon Web Services Region that you're adding to the
-     * replication set.</p>
-     */
-    inline UpdateReplicationSetAction& WithAddRegionAction(const AddRegionAction& value) { SetAddRegionAction(value); return *this;}
-
-    /**
-     * <p>Details about the Amazon Web Services Region that you're adding to the
-     * replication set.</p>
-     */
-    inline UpdateReplicationSetAction& WithAddRegionAction(AddRegionAction&& value) { SetAddRegionAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about the Amazon Web Services Region that you're deleting to the
      * replication set.</p>
      */
-    inline const DeleteRegionAction& GetDeleteRegionAction() const{ return m_deleteRegionAction; }
-
-    /**
-     * <p>Details about the Amazon Web Services Region that you're deleting to the
-     * replication set.</p>
-     */
+    inline const DeleteRegionAction& GetDeleteRegionAction() const { return m_deleteRegionAction; }
     inline bool DeleteRegionActionHasBeenSet() const { return m_deleteRegionActionHasBeenSet; }
-
-    /**
-     * <p>Details about the Amazon Web Services Region that you're deleting to the
-     * replication set.</p>
-     */
-    inline void SetDeleteRegionAction(const DeleteRegionAction& value) { m_deleteRegionActionHasBeenSet = true; m_deleteRegionAction = value; }
-
-    /**
-     * <p>Details about the Amazon Web Services Region that you're deleting to the
-     * replication set.</p>
-     */
-    inline void SetDeleteRegionAction(DeleteRegionAction&& value) { m_deleteRegionActionHasBeenSet = true; m_deleteRegionAction = std::move(value); }
-
-    /**
-     * <p>Details about the Amazon Web Services Region that you're deleting to the
-     * replication set.</p>
-     */
-    inline UpdateReplicationSetAction& WithDeleteRegionAction(const DeleteRegionAction& value) { SetDeleteRegionAction(value); return *this;}
-
-    /**
-     * <p>Details about the Amazon Web Services Region that you're deleting to the
-     * replication set.</p>
-     */
-    inline UpdateReplicationSetAction& WithDeleteRegionAction(DeleteRegionAction&& value) { SetDeleteRegionAction(std::move(value)); return *this;}
-
+    template<typename DeleteRegionActionT = DeleteRegionAction>
+    void SetDeleteRegionAction(DeleteRegionActionT&& value) { m_deleteRegionActionHasBeenSet = true; m_deleteRegionAction = std::forward<DeleteRegionActionT>(value); }
+    template<typename DeleteRegionActionT = DeleteRegionAction>
+    UpdateReplicationSetAction& WithDeleteRegionAction(DeleteRegionActionT&& value) { SetDeleteRegionAction(std::forward<DeleteRegionActionT>(value)); return *this;}
+    ///@}
   private:
 
     AddRegionAction m_addRegionAction;

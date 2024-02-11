@@ -12,19 +12,6 @@ using namespace Aws::QuickSight::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateAnalysisRequest::CreateAnalysisRequest() : 
-    m_awsAccountIdHasBeenSet(false),
-    m_analysisIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_permissionsHasBeenSet(false),
-    m_sourceEntityHasBeenSet(false),
-    m_themeArnHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_definitionHasBeenSet(false)
-{
-}
-
 Aws::String CreateAnalysisRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -78,6 +65,23 @@ Aws::String CreateAnalysisRequest::SerializePayload() const
   if(m_definitionHasBeenSet)
   {
    payload.WithObject("Definition", m_definition.Jsonize());
+
+  }
+
+  if(m_validationStrategyHasBeenSet)
+  {
+   payload.WithObject("ValidationStrategy", m_validationStrategy.Jsonize());
+
+  }
+
+  if(m_folderArnsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> folderArnsJsonList(m_folderArns.size());
+   for(unsigned folderArnsIndex = 0; folderArnsIndex < folderArnsJsonList.GetLength(); ++folderArnsIndex)
+   {
+     folderArnsJsonList[folderArnsIndex].AsString(m_folderArns[folderArnsIndex]);
+   }
+   payload.WithArray("FolderArns", std::move(folderArnsJsonList));
 
   }
 

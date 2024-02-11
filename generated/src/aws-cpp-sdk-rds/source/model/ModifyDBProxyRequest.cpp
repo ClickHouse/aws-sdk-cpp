@@ -10,21 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-ModifyDBProxyRequest::ModifyDBProxyRequest() : 
-    m_dBProxyNameHasBeenSet(false),
-    m_newDBProxyNameHasBeenSet(false),
-    m_authHasBeenSet(false),
-    m_requireTLS(false),
-    m_requireTLSHasBeenSet(false),
-    m_idleClientTimeout(0),
-    m_idleClientTimeoutHasBeenSet(false),
-    m_debugLogging(false),
-    m_debugLoggingHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false)
-{
-}
-
 Aws::String ModifyDBProxyRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -39,13 +24,25 @@ Aws::String ModifyDBProxyRequest::SerializePayload() const
     ss << "NewDBProxyName=" << StringUtils::URLEncode(m_newDBProxyName.c_str()) << "&";
   }
 
+  if(m_defaultAuthSchemeHasBeenSet)
+  {
+    ss << "DefaultAuthScheme=" << StringUtils::URLEncode(DefaultAuthSchemeMapper::GetNameForDefaultAuthScheme(m_defaultAuthScheme)) << "&";
+  }
+
   if(m_authHasBeenSet)
   {
-    unsigned authCount = 1;
-    for(auto& item : m_auth)
+    if (m_auth.empty())
     {
-      item.OutputToStream(ss, "Auth.member.", authCount, "");
-      authCount++;
+      ss << "Auth=&";
+    }
+    else
+    {
+      unsigned authCount = 1;
+      for(auto& item : m_auth)
+      {
+        item.OutputToStream(ss, "Auth.member.", authCount, "");
+        authCount++;
+      }
     }
   }
 
@@ -71,12 +68,19 @@ Aws::String ModifyDBProxyRequest::SerializePayload() const
 
   if(m_securityGroupsHasBeenSet)
   {
-    unsigned securityGroupsCount = 1;
-    for(auto& item : m_securityGroups)
+    if (m_securityGroups.empty())
     {
-      ss << "SecurityGroups.member." << securityGroupsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      securityGroupsCount++;
+      ss << "SecurityGroups=&";
+    }
+    else
+    {
+      unsigned securityGroupsCount = 1;
+      for(auto& item : m_securityGroups)
+      {
+        ss << "SecurityGroups.member." << securityGroupsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        securityGroupsCount++;
+      }
     }
   }
 

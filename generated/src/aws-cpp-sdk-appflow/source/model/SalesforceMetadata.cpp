@@ -18,15 +18,7 @@ namespace Appflow
 namespace Model
 {
 
-SalesforceMetadata::SalesforceMetadata() : 
-    m_oAuthScopesHasBeenSet(false),
-    m_dataTransferApisHasBeenSet(false)
-{
-}
-
-SalesforceMetadata::SalesforceMetadata(JsonView jsonValue) : 
-    m_oAuthScopesHasBeenSet(false),
-    m_dataTransferApisHasBeenSet(false)
+SalesforceMetadata::SalesforceMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ SalesforceMetadata& SalesforceMetadata::operator =(JsonView jsonValue)
     }
     m_oAuthScopesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("dataTransferApis"))
   {
     Aws::Utils::Array<JsonView> dataTransferApisJsonList = jsonValue.GetArray("dataTransferApis");
@@ -52,7 +43,15 @@ SalesforceMetadata& SalesforceMetadata::operator =(JsonView jsonValue)
     }
     m_dataTransferApisHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("oauth2GrantTypesSupported"))
+  {
+    Aws::Utils::Array<JsonView> oauth2GrantTypesSupportedJsonList = jsonValue.GetArray("oauth2GrantTypesSupported");
+    for(unsigned oauth2GrantTypesSupportedIndex = 0; oauth2GrantTypesSupportedIndex < oauth2GrantTypesSupportedJsonList.GetLength(); ++oauth2GrantTypesSupportedIndex)
+    {
+      m_oauth2GrantTypesSupported.push_back(OAuth2GrantTypeMapper::GetOAuth2GrantTypeForName(oauth2GrantTypesSupportedJsonList[oauth2GrantTypesSupportedIndex].AsString()));
+    }
+    m_oauth2GrantTypesSupportedHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -79,6 +78,17 @@ JsonValue SalesforceMetadata::Jsonize() const
      dataTransferApisJsonList[dataTransferApisIndex].AsString(SalesforceDataTransferApiMapper::GetNameForSalesforceDataTransferApi(m_dataTransferApis[dataTransferApisIndex]));
    }
    payload.WithArray("dataTransferApis", std::move(dataTransferApisJsonList));
+
+  }
+
+  if(m_oauth2GrantTypesSupportedHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> oauth2GrantTypesSupportedJsonList(m_oauth2GrantTypesSupported.size());
+   for(unsigned oauth2GrantTypesSupportedIndex = 0; oauth2GrantTypesSupportedIndex < oauth2GrantTypesSupportedJsonList.GetLength(); ++oauth2GrantTypesSupportedIndex)
+   {
+     oauth2GrantTypesSupportedJsonList[oauth2GrantTypesSupportedIndex].AsString(OAuth2GrantTypeMapper::GetNameForOAuth2GrantType(m_oauth2GrantTypesSupported[oauth2GrantTypesSupportedIndex]));
+   }
+   payload.WithArray("oauth2GrantTypesSupported", std::move(oauth2GrantTypesSupportedJsonList));
 
   }
 

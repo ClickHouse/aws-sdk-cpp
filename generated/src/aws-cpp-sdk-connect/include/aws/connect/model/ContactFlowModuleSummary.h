@@ -32,165 +32,57 @@ namespace Model
   class ContactFlowModuleSummary
   {
   public:
-    AWS_CONNECT_API ContactFlowModuleSummary();
+    AWS_CONNECT_API ContactFlowModuleSummary() = default;
     AWS_CONNECT_API ContactFlowModuleSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API ContactFlowModuleSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the flow module.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The identifier of the flow module.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    ContactFlowModuleSummary& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the flow module.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The identifier of the flow module.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The identifier of the flow module.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The identifier of the flow module.</p>
-     */
-    inline ContactFlowModuleSummary& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The identifier of the flow module.</p>
-     */
-    inline ContactFlowModuleSummary& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the flow module.</p>
-     */
-    inline ContactFlowModuleSummary& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the flow module.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the flow module.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    ContactFlowModuleSummary& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the flow module.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the flow module.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the flow module.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the flow module.</p>
-     */
-    inline ContactFlowModuleSummary& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the flow module.</p>
-     */
-    inline ContactFlowModuleSummary& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the flow module.</p>
-     */
-    inline ContactFlowModuleSummary& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the flow module.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the flow module.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ContactFlowModuleSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the flow module.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the flow module.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the flow module.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the flow module.</p>
-     */
-    inline ContactFlowModuleSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the flow module.</p>
-     */
-    inline ContactFlowModuleSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the flow module.</p>
-     */
-    inline ContactFlowModuleSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of flow module.</p>
      */
-    inline const ContactFlowModuleState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The type of flow module.</p>
-     */
+    inline ContactFlowModuleState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
-
-    /**
-     * <p>The type of flow module.</p>
-     */
-    inline void SetState(const ContactFlowModuleState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The type of flow module.</p>
-     */
-    inline void SetState(ContactFlowModuleState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The type of flow module.</p>
-     */
-    inline ContactFlowModuleSummary& WithState(const ContactFlowModuleState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The type of flow module.</p>
-     */
-    inline ContactFlowModuleSummary& WithState(ContactFlowModuleState&& value) { SetState(std::move(value)); return *this;}
-
+    inline void SetState(ContactFlowModuleState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline ContactFlowModuleSummary& WithState(ContactFlowModuleState value) { SetState(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
@@ -202,7 +94,7 @@ namespace Model
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    ContactFlowModuleState m_state;
+    ContactFlowModuleState m_state{ContactFlowModuleState::NOT_SET};
     bool m_stateHasBeenSet = false;
   };
 

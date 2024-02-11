@@ -18,21 +18,7 @@ namespace ResourceGroupsTaggingAPI
 namespace Model
 {
 
-FailureInfo::FailureInfo() : 
-    m_statusCode(0),
-    m_statusCodeHasBeenSet(false),
-    m_errorCode(ErrorCode::NOT_SET),
-    m_errorCodeHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
-{
-}
-
-FailureInfo::FailureInfo(JsonView jsonValue) : 
-    m_statusCode(0),
-    m_statusCodeHasBeenSet(false),
-    m_errorCode(ErrorCode::NOT_SET),
-    m_errorCodeHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
+FailureInfo::FailureInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ FailureInfo& FailureInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("StatusCode"))
   {
     m_statusCode = jsonValue.GetInteger("StatusCode");
-
     m_statusCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorCode"))
   {
     m_errorCode = ErrorCodeMapper::GetErrorCodeForName(jsonValue.GetString("ErrorCode"));
-
     m_errorCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorMessage"))
   {
     m_errorMessage = jsonValue.GetString("ErrorMessage");
-
     m_errorMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

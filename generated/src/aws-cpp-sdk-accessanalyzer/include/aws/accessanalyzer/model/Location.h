@@ -34,83 +34,37 @@ namespace Model
   class Location
   {
   public:
-    AWS_ACCESSANALYZER_API Location();
+    AWS_ACCESSANALYZER_API Location() = default;
     AWS_ACCESSANALYZER_API Location(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCESSANALYZER_API Location& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCESSANALYZER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A path in a policy, represented as a sequence of path elements.</p>
      */
-    inline const Aws::Vector<PathElement>& GetPath() const{ return m_path; }
-
-    /**
-     * <p>A path in a policy, represented as a sequence of path elements.</p>
-     */
+    inline const Aws::Vector<PathElement>& GetPath() const { return m_path; }
     inline bool PathHasBeenSet() const { return m_pathHasBeenSet; }
+    template<typename PathT = Aws::Vector<PathElement>>
+    void SetPath(PathT&& value) { m_pathHasBeenSet = true; m_path = std::forward<PathT>(value); }
+    template<typename PathT = Aws::Vector<PathElement>>
+    Location& WithPath(PathT&& value) { SetPath(std::forward<PathT>(value)); return *this;}
+    template<typename PathT = PathElement>
+    Location& AddPath(PathT&& value) { m_pathHasBeenSet = true; m_path.emplace_back(std::forward<PathT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A path in a policy, represented as a sequence of path elements.</p>
-     */
-    inline void SetPath(const Aws::Vector<PathElement>& value) { m_pathHasBeenSet = true; m_path = value; }
-
-    /**
-     * <p>A path in a policy, represented as a sequence of path elements.</p>
-     */
-    inline void SetPath(Aws::Vector<PathElement>&& value) { m_pathHasBeenSet = true; m_path = std::move(value); }
-
-    /**
-     * <p>A path in a policy, represented as a sequence of path elements.</p>
-     */
-    inline Location& WithPath(const Aws::Vector<PathElement>& value) { SetPath(value); return *this;}
-
-    /**
-     * <p>A path in a policy, represented as a sequence of path elements.</p>
-     */
-    inline Location& WithPath(Aws::Vector<PathElement>&& value) { SetPath(std::move(value)); return *this;}
-
-    /**
-     * <p>A path in a policy, represented as a sequence of path elements.</p>
-     */
-    inline Location& AddPath(const PathElement& value) { m_pathHasBeenSet = true; m_path.push_back(value); return *this; }
-
-    /**
-     * <p>A path in a policy, represented as a sequence of path elements.</p>
-     */
-    inline Location& AddPath(PathElement&& value) { m_pathHasBeenSet = true; m_path.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A span in a policy.</p>
      */
-    inline const Span& GetSpan() const{ return m_span; }
-
-    /**
-     * <p>A span in a policy.</p>
-     */
+    inline const Span& GetSpan() const { return m_span; }
     inline bool SpanHasBeenSet() const { return m_spanHasBeenSet; }
-
-    /**
-     * <p>A span in a policy.</p>
-     */
-    inline void SetSpan(const Span& value) { m_spanHasBeenSet = true; m_span = value; }
-
-    /**
-     * <p>A span in a policy.</p>
-     */
-    inline void SetSpan(Span&& value) { m_spanHasBeenSet = true; m_span = std::move(value); }
-
-    /**
-     * <p>A span in a policy.</p>
-     */
-    inline Location& WithSpan(const Span& value) { SetSpan(value); return *this;}
-
-    /**
-     * <p>A span in a policy.</p>
-     */
-    inline Location& WithSpan(Span&& value) { SetSpan(std::move(value)); return *this;}
-
+    template<typename SpanT = Span>
+    void SetSpan(SpanT&& value) { m_spanHasBeenSet = true; m_span = std::forward<SpanT>(value); }
+    template<typename SpanT = Span>
+    Location& WithSpan(SpanT&& value) { SetSpan(std::forward<SpanT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<PathElement> m_path;

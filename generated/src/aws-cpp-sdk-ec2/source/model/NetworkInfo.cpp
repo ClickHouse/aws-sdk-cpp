@@ -20,57 +20,7 @@ namespace EC2
 namespace Model
 {
 
-NetworkInfo::NetworkInfo() : 
-    m_networkPerformanceHasBeenSet(false),
-    m_maximumNetworkInterfaces(0),
-    m_maximumNetworkInterfacesHasBeenSet(false),
-    m_maximumNetworkCards(0),
-    m_maximumNetworkCardsHasBeenSet(false),
-    m_defaultNetworkCardIndex(0),
-    m_defaultNetworkCardIndexHasBeenSet(false),
-    m_networkCardsHasBeenSet(false),
-    m_ipv4AddressesPerInterface(0),
-    m_ipv4AddressesPerInterfaceHasBeenSet(false),
-    m_ipv6AddressesPerInterface(0),
-    m_ipv6AddressesPerInterfaceHasBeenSet(false),
-    m_ipv6Supported(false),
-    m_ipv6SupportedHasBeenSet(false),
-    m_enaSupport(EnaSupport::NOT_SET),
-    m_enaSupportHasBeenSet(false),
-    m_efaSupported(false),
-    m_efaSupportedHasBeenSet(false),
-    m_efaInfoHasBeenSet(false),
-    m_encryptionInTransitSupported(false),
-    m_encryptionInTransitSupportedHasBeenSet(false),
-    m_enaSrdSupported(false),
-    m_enaSrdSupportedHasBeenSet(false)
-{
-}
-
-NetworkInfo::NetworkInfo(const XmlNode& xmlNode) : 
-    m_networkPerformanceHasBeenSet(false),
-    m_maximumNetworkInterfaces(0),
-    m_maximumNetworkInterfacesHasBeenSet(false),
-    m_maximumNetworkCards(0),
-    m_maximumNetworkCardsHasBeenSet(false),
-    m_defaultNetworkCardIndex(0),
-    m_defaultNetworkCardIndexHasBeenSet(false),
-    m_networkCardsHasBeenSet(false),
-    m_ipv4AddressesPerInterface(0),
-    m_ipv4AddressesPerInterfaceHasBeenSet(false),
-    m_ipv6AddressesPerInterface(0),
-    m_ipv6AddressesPerInterfaceHasBeenSet(false),
-    m_ipv6Supported(false),
-    m_ipv6SupportedHasBeenSet(false),
-    m_enaSupport(EnaSupport::NOT_SET),
-    m_enaSupportHasBeenSet(false),
-    m_efaSupported(false),
-    m_efaSupportedHasBeenSet(false),
-    m_efaInfoHasBeenSet(false),
-    m_encryptionInTransitSupported(false),
-    m_encryptionInTransitSupportedHasBeenSet(false),
-    m_enaSrdSupported(false),
-    m_enaSrdSupportedHasBeenSet(false)
+NetworkInfo::NetworkInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -109,6 +59,7 @@ NetworkInfo& NetworkInfo::operator =(const XmlNode& xmlNode)
     if(!networkCardsNode.IsNull())
     {
       XmlNode networkCardsMember = networkCardsNode.FirstChild("item");
+      m_networkCardsHasBeenSet = !networkCardsMember.IsNull();
       while(!networkCardsMember.IsNull())
       {
         m_networkCards.push_back(networkCardsMember);
@@ -138,7 +89,7 @@ NetworkInfo& NetworkInfo::operator =(const XmlNode& xmlNode)
     XmlNode enaSupportNode = resultNode.FirstChild("enaSupport");
     if(!enaSupportNode.IsNull())
     {
-      m_enaSupport = EnaSupportMapper::GetEnaSupportForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(enaSupportNode.GetText()).c_str()).c_str());
+      m_enaSupport = EnaSupportMapper::GetEnaSupportForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(enaSupportNode.GetText()).c_str()));
       m_enaSupportHasBeenSet = true;
     }
     XmlNode efaSupportedNode = resultNode.FirstChild("efaSupported");
@@ -164,6 +115,25 @@ NetworkInfo& NetworkInfo::operator =(const XmlNode& xmlNode)
     {
       m_enaSrdSupported = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(enaSrdSupportedNode.GetText()).c_str()).c_str());
       m_enaSrdSupportedHasBeenSet = true;
+    }
+    XmlNode bandwidthWeightingsNode = resultNode.FirstChild("bandwidthWeightings");
+    if(!bandwidthWeightingsNode.IsNull())
+    {
+      XmlNode bandwidthWeightingsMember = bandwidthWeightingsNode.FirstChild("item");
+      m_bandwidthWeightingsHasBeenSet = !bandwidthWeightingsMember.IsNull();
+      while(!bandwidthWeightingsMember.IsNull())
+      {
+        m_bandwidthWeightings.push_back(BandwidthWeightingTypeMapper::GetBandwidthWeightingTypeForName(StringUtils::Trim(bandwidthWeightingsMember.GetText().c_str())));
+        bandwidthWeightingsMember = bandwidthWeightingsMember.NextNode("item");
+      }
+
+      m_bandwidthWeightingsHasBeenSet = true;
+    }
+    XmlNode flexibleEnaQueuesSupportNode = resultNode.FirstChild("flexibleEnaQueuesSupport");
+    if(!flexibleEnaQueuesSupportNode.IsNull())
+    {
+      m_flexibleEnaQueuesSupport = FlexibleEnaQueuesSupportMapper::GetFlexibleEnaQueuesSupportForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(flexibleEnaQueuesSupportNode.GetText()).c_str()));
+      m_flexibleEnaQueuesSupportHasBeenSet = true;
     }
   }
 
@@ -220,7 +190,7 @@ void NetworkInfo::OutputToStream(Aws::OStream& oStream, const char* location, un
 
   if(m_enaSupportHasBeenSet)
   {
-      oStream << location << index << locationValue << ".EnaSupport=" << EnaSupportMapper::GetNameForEnaSupport(m_enaSupport) << "&";
+      oStream << location << index << locationValue << ".EnaSupport=" << StringUtils::URLEncode(EnaSupportMapper::GetNameForEnaSupport(m_enaSupport)) << "&";
   }
 
   if(m_efaSupportedHasBeenSet)
@@ -243,6 +213,20 @@ void NetworkInfo::OutputToStream(Aws::OStream& oStream, const char* location, un
   if(m_enaSrdSupportedHasBeenSet)
   {
       oStream << location << index << locationValue << ".EnaSrdSupported=" << std::boolalpha << m_enaSrdSupported << "&";
+  }
+
+  if(m_bandwidthWeightingsHasBeenSet)
+  {
+      unsigned bandwidthWeightingsIdx = 1;
+      for(auto& item : m_bandwidthWeightings)
+      {
+        oStream << location << index << locationValue << ".BandwidthWeightings." << bandwidthWeightingsIdx++ << "=" << StringUtils::URLEncode(BandwidthWeightingTypeMapper::GetNameForBandwidthWeightingType(item)) << "&";
+      }
+  }
+
+  if(m_flexibleEnaQueuesSupportHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".FlexibleEnaQueuesSupport=" << StringUtils::URLEncode(FlexibleEnaQueuesSupportMapper::GetNameForFlexibleEnaQueuesSupport(m_flexibleEnaQueuesSupport)) << "&";
   }
 
 }
@@ -271,7 +255,7 @@ void NetworkInfo::OutputToStream(Aws::OStream& oStream, const char* location) co
       for(auto& item : m_networkCards)
       {
         Aws::StringStream networkCardsSs;
-        networkCardsSs << location <<  ".NetworkCards." << networkCardsIdx++;
+        networkCardsSs << location << ".NetworkCards." << networkCardsIdx++;
         item.OutputToStream(oStream, networkCardsSs.str().c_str());
       }
   }
@@ -289,7 +273,7 @@ void NetworkInfo::OutputToStream(Aws::OStream& oStream, const char* location) co
   }
   if(m_enaSupportHasBeenSet)
   {
-      oStream << location << ".EnaSupport=" << EnaSupportMapper::GetNameForEnaSupport(m_enaSupport) << "&";
+      oStream << location << ".EnaSupport=" << StringUtils::URLEncode(EnaSupportMapper::GetNameForEnaSupport(m_enaSupport)) << "&";
   }
   if(m_efaSupportedHasBeenSet)
   {
@@ -308,6 +292,18 @@ void NetworkInfo::OutputToStream(Aws::OStream& oStream, const char* location) co
   if(m_enaSrdSupportedHasBeenSet)
   {
       oStream << location << ".EnaSrdSupported=" << std::boolalpha << m_enaSrdSupported << "&";
+  }
+  if(m_bandwidthWeightingsHasBeenSet)
+  {
+      unsigned bandwidthWeightingsIdx = 1;
+      for(auto& item : m_bandwidthWeightings)
+      {
+        oStream << location << ".BandwidthWeightings." << bandwidthWeightingsIdx++ << "=" << StringUtils::URLEncode(BandwidthWeightingTypeMapper::GetNameForBandwidthWeightingType(item)) << "&";
+      }
+  }
+  if(m_flexibleEnaQueuesSupportHasBeenSet)
+  {
+      oStream << location << ".FlexibleEnaQueuesSupport=" << StringUtils::URLEncode(FlexibleEnaQueuesSupportMapper::GetNameForFlexibleEnaQueuesSupport(m_flexibleEnaQueuesSupport)) << "&";
   }
 }
 

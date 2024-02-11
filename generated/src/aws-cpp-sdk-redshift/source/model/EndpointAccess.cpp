@@ -20,33 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-EndpointAccess::EndpointAccess() : 
-    m_clusterIdentifierHasBeenSet(false),
-    m_resourceOwnerHasBeenSet(false),
-    m_subnetGroupNameHasBeenSet(false),
-    m_endpointStatusHasBeenSet(false),
-    m_endpointNameHasBeenSet(false),
-    m_endpointCreateTimeHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_addressHasBeenSet(false),
-    m_vpcSecurityGroupsHasBeenSet(false),
-    m_vpcEndpointHasBeenSet(false)
-{
-}
-
-EndpointAccess::EndpointAccess(const XmlNode& xmlNode) : 
-    m_clusterIdentifierHasBeenSet(false),
-    m_resourceOwnerHasBeenSet(false),
-    m_subnetGroupNameHasBeenSet(false),
-    m_endpointStatusHasBeenSet(false),
-    m_endpointNameHasBeenSet(false),
-    m_endpointCreateTimeHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_addressHasBeenSet(false),
-    m_vpcSecurityGroupsHasBeenSet(false),
-    m_vpcEndpointHasBeenSet(false)
+EndpointAccess::EndpointAccess(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -109,6 +83,7 @@ EndpointAccess& EndpointAccess::operator =(const XmlNode& xmlNode)
     if(!vpcSecurityGroupsNode.IsNull())
     {
       XmlNode vpcSecurityGroupsMember = vpcSecurityGroupsNode.FirstChild("VpcSecurityGroup");
+      m_vpcSecurityGroupsHasBeenSet = !vpcSecurityGroupsMember.IsNull();
       while(!vpcSecurityGroupsMember.IsNull())
       {
         m_vpcSecurityGroups.push_back(vpcSecurityGroupsMember);
@@ -176,7 +151,7 @@ void EndpointAccess::OutputToStream(Aws::OStream& oStream, const char* location,
       for(auto& item : m_vpcSecurityGroups)
       {
         Aws::StringStream vpcSecurityGroupsSs;
-        vpcSecurityGroupsSs << location << index << locationValue << ".VpcSecurityGroup." << vpcSecurityGroupsIdx++;
+        vpcSecurityGroupsSs << location << index << locationValue << ".VpcSecurityGroups.VpcSecurityGroup." << vpcSecurityGroupsIdx++;
         item.OutputToStream(oStream, vpcSecurityGroupsSs.str().c_str());
       }
   }
@@ -233,7 +208,7 @@ void EndpointAccess::OutputToStream(Aws::OStream& oStream, const char* location)
       for(auto& item : m_vpcSecurityGroups)
       {
         Aws::StringStream vpcSecurityGroupsSs;
-        vpcSecurityGroupsSs << location <<  ".VpcSecurityGroup." << vpcSecurityGroupsIdx++;
+        vpcSecurityGroupsSs << location << ".VpcSecurityGroups.VpcSecurityGroup." << vpcSecurityGroupsIdx++;
         item.OutputToStream(oStream, vpcSecurityGroupsSs.str().c_str());
       }
   }

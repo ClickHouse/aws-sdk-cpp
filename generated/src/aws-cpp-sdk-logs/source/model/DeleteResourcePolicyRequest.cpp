@@ -12,11 +12,6 @@ using namespace Aws::CloudWatchLogs::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DeleteResourcePolicyRequest::DeleteResourcePolicyRequest() : 
-    m_policyNameHasBeenSet(false)
-{
-}
-
 Aws::String DeleteResourcePolicyRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -24,6 +19,18 @@ Aws::String DeleteResourcePolicyRequest::SerializePayload() const
   if(m_policyNameHasBeenSet)
   {
    payload.WithString("policyName", m_policyName);
+
+  }
+
+  if(m_resourceArnHasBeenSet)
+  {
+   payload.WithString("resourceArn", m_resourceArn);
+
+  }
+
+  if(m_expectedRevisionIdHasBeenSet)
+  {
+   payload.WithString("expectedRevisionId", m_expectedRevisionId);
 
   }
 

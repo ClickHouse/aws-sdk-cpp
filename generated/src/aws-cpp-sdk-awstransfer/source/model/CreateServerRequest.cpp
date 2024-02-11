@@ -12,28 +12,6 @@ using namespace Aws::Transfer::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateServerRequest::CreateServerRequest() : 
-    m_certificateHasBeenSet(false),
-    m_domain(Domain::NOT_SET),
-    m_domainHasBeenSet(false),
-    m_endpointDetailsHasBeenSet(false),
-    m_endpointType(EndpointType::NOT_SET),
-    m_endpointTypeHasBeenSet(false),
-    m_hostKeyHasBeenSet(false),
-    m_identityProviderDetailsHasBeenSet(false),
-    m_identityProviderType(IdentityProviderType::NOT_SET),
-    m_identityProviderTypeHasBeenSet(false),
-    m_loggingRoleHasBeenSet(false),
-    m_postAuthenticationLoginBannerHasBeenSet(false),
-    m_preAuthenticationLoginBannerHasBeenSet(false),
-    m_protocolsHasBeenSet(false),
-    m_protocolDetailsHasBeenSet(false),
-    m_securityPolicyNameHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_workflowDetailsHasBeenSet(false)
-{
-}
-
 Aws::String CreateServerRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -133,6 +111,28 @@ Aws::String CreateServerRequest::SerializePayload() const
   {
    payload.WithObject("WorkflowDetails", m_workflowDetails.Jsonize());
 
+  }
+
+  if(m_structuredLogDestinationsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> structuredLogDestinationsJsonList(m_structuredLogDestinations.size());
+   for(unsigned structuredLogDestinationsIndex = 0; structuredLogDestinationsIndex < structuredLogDestinationsJsonList.GetLength(); ++structuredLogDestinationsIndex)
+   {
+     structuredLogDestinationsJsonList[structuredLogDestinationsIndex].AsString(m_structuredLogDestinations[structuredLogDestinationsIndex]);
+   }
+   payload.WithArray("StructuredLogDestinations", std::move(structuredLogDestinationsJsonList));
+
+  }
+
+  if(m_s3StorageOptionsHasBeenSet)
+  {
+   payload.WithObject("S3StorageOptions", m_s3StorageOptions.Jsonize());
+
+  }
+
+  if(m_ipAddressTypeHasBeenSet)
+  {
+   payload.WithString("IpAddressType", IpAddressTypeMapper::GetNameForIpAddressType(m_ipAddressType));
   }
 
   return payload.View().WriteReadable();

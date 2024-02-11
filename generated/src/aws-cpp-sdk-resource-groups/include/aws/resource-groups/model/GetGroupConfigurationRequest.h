@@ -21,7 +21,7 @@ namespace Model
   class GetGroupConfigurationRequest : public ResourceGroupsRequest
   {
   public:
-    AWS_RESOURCEGROUPS_API GetGroupConfigurationRequest();
+    AWS_RESOURCEGROUPS_API GetGroupConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,54 +32,18 @@ namespace Model
     AWS_RESOURCEGROUPS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The name or the ARN of the resource group for which you want to retrive the
-     * service configuration.</p>
+     * <p>The name or the Amazon resource name (ARN) of the resource group for which
+     * you want to retrive the service configuration.</p>
      */
-    inline const Aws::String& GetGroup() const{ return m_group; }
-
-    /**
-     * <p>The name or the ARN of the resource group for which you want to retrive the
-     * service configuration.</p>
-     */
+    inline const Aws::String& GetGroup() const { return m_group; }
     inline bool GroupHasBeenSet() const { return m_groupHasBeenSet; }
-
-    /**
-     * <p>The name or the ARN of the resource group for which you want to retrive the
-     * service configuration.</p>
-     */
-    inline void SetGroup(const Aws::String& value) { m_groupHasBeenSet = true; m_group = value; }
-
-    /**
-     * <p>The name or the ARN of the resource group for which you want to retrive the
-     * service configuration.</p>
-     */
-    inline void SetGroup(Aws::String&& value) { m_groupHasBeenSet = true; m_group = std::move(value); }
-
-    /**
-     * <p>The name or the ARN of the resource group for which you want to retrive the
-     * service configuration.</p>
-     */
-    inline void SetGroup(const char* value) { m_groupHasBeenSet = true; m_group.assign(value); }
-
-    /**
-     * <p>The name or the ARN of the resource group for which you want to retrive the
-     * service configuration.</p>
-     */
-    inline GetGroupConfigurationRequest& WithGroup(const Aws::String& value) { SetGroup(value); return *this;}
-
-    /**
-     * <p>The name or the ARN of the resource group for which you want to retrive the
-     * service configuration.</p>
-     */
-    inline GetGroupConfigurationRequest& WithGroup(Aws::String&& value) { SetGroup(std::move(value)); return *this;}
-
-    /**
-     * <p>The name or the ARN of the resource group for which you want to retrive the
-     * service configuration.</p>
-     */
-    inline GetGroupConfigurationRequest& WithGroup(const char* value) { SetGroup(value); return *this;}
-
+    template<typename GroupT = Aws::String>
+    void SetGroup(GroupT&& value) { m_groupHasBeenSet = true; m_group = std::forward<GroupT>(value); }
+    template<typename GroupT = Aws::String>
+    GetGroupConfigurationRequest& WithGroup(GroupT&& value) { SetGroup(std::forward<GroupT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_group;

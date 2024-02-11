@@ -18,49 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-AvcIntraSettings::AvcIntraSettings() : 
-    m_avcIntraClass(AvcIntraClass::NOT_SET),
-    m_avcIntraClassHasBeenSet(false),
-    m_avcIntraUhdSettingsHasBeenSet(false),
-    m_framerateControl(AvcIntraFramerateControl::NOT_SET),
-    m_framerateControlHasBeenSet(false),
-    m_framerateConversionAlgorithm(AvcIntraFramerateConversionAlgorithm::NOT_SET),
-    m_framerateConversionAlgorithmHasBeenSet(false),
-    m_framerateDenominator(0),
-    m_framerateDenominatorHasBeenSet(false),
-    m_framerateNumerator(0),
-    m_framerateNumeratorHasBeenSet(false),
-    m_interlaceMode(AvcIntraInterlaceMode::NOT_SET),
-    m_interlaceModeHasBeenSet(false),
-    m_scanTypeConversionMode(AvcIntraScanTypeConversionMode::NOT_SET),
-    m_scanTypeConversionModeHasBeenSet(false),
-    m_slowPal(AvcIntraSlowPal::NOT_SET),
-    m_slowPalHasBeenSet(false),
-    m_telecine(AvcIntraTelecine::NOT_SET),
-    m_telecineHasBeenSet(false)
-{
-}
-
-AvcIntraSettings::AvcIntraSettings(JsonView jsonValue) : 
-    m_avcIntraClass(AvcIntraClass::NOT_SET),
-    m_avcIntraClassHasBeenSet(false),
-    m_avcIntraUhdSettingsHasBeenSet(false),
-    m_framerateControl(AvcIntraFramerateControl::NOT_SET),
-    m_framerateControlHasBeenSet(false),
-    m_framerateConversionAlgorithm(AvcIntraFramerateConversionAlgorithm::NOT_SET),
-    m_framerateConversionAlgorithmHasBeenSet(false),
-    m_framerateDenominator(0),
-    m_framerateDenominatorHasBeenSet(false),
-    m_framerateNumerator(0),
-    m_framerateNumeratorHasBeenSet(false),
-    m_interlaceMode(AvcIntraInterlaceMode::NOT_SET),
-    m_interlaceModeHasBeenSet(false),
-    m_scanTypeConversionMode(AvcIntraScanTypeConversionMode::NOT_SET),
-    m_scanTypeConversionModeHasBeenSet(false),
-    m_slowPal(AvcIntraSlowPal::NOT_SET),
-    m_slowPalHasBeenSet(false),
-    m_telecine(AvcIntraTelecine::NOT_SET),
-    m_telecineHasBeenSet(false)
+AvcIntraSettings::AvcIntraSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -70,73 +28,62 @@ AvcIntraSettings& AvcIntraSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("avcIntraClass"))
   {
     m_avcIntraClass = AvcIntraClassMapper::GetAvcIntraClassForName(jsonValue.GetString("avcIntraClass"));
-
     m_avcIntraClassHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("avcIntraUhdSettings"))
   {
     m_avcIntraUhdSettings = jsonValue.GetObject("avcIntraUhdSettings");
-
     m_avcIntraUhdSettingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("framerateControl"))
   {
     m_framerateControl = AvcIntraFramerateControlMapper::GetAvcIntraFramerateControlForName(jsonValue.GetString("framerateControl"));
-
     m_framerateControlHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("framerateConversionAlgorithm"))
   {
     m_framerateConversionAlgorithm = AvcIntraFramerateConversionAlgorithmMapper::GetAvcIntraFramerateConversionAlgorithmForName(jsonValue.GetString("framerateConversionAlgorithm"));
-
     m_framerateConversionAlgorithmHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("framerateDenominator"))
   {
     m_framerateDenominator = jsonValue.GetInteger("framerateDenominator");
-
     m_framerateDenominatorHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("framerateNumerator"))
   {
     m_framerateNumerator = jsonValue.GetInteger("framerateNumerator");
-
     m_framerateNumeratorHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("interlaceMode"))
   {
     m_interlaceMode = AvcIntraInterlaceModeMapper::GetAvcIntraInterlaceModeForName(jsonValue.GetString("interlaceMode"));
-
     m_interlaceModeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("perFrameMetrics"))
+  {
+    Aws::Utils::Array<JsonView> perFrameMetricsJsonList = jsonValue.GetArray("perFrameMetrics");
+    for(unsigned perFrameMetricsIndex = 0; perFrameMetricsIndex < perFrameMetricsJsonList.GetLength(); ++perFrameMetricsIndex)
+    {
+      m_perFrameMetrics.push_back(FrameMetricTypeMapper::GetFrameMetricTypeForName(perFrameMetricsJsonList[perFrameMetricsIndex].AsString()));
+    }
+    m_perFrameMetricsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("scanTypeConversionMode"))
   {
     m_scanTypeConversionMode = AvcIntraScanTypeConversionModeMapper::GetAvcIntraScanTypeConversionModeForName(jsonValue.GetString("scanTypeConversionMode"));
-
     m_scanTypeConversionModeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("slowPal"))
   {
     m_slowPal = AvcIntraSlowPalMapper::GetAvcIntraSlowPalForName(jsonValue.GetString("slowPal"));
-
     m_slowPalHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("telecine"))
   {
     m_telecine = AvcIntraTelecineMapper::GetAvcIntraTelecineForName(jsonValue.GetString("telecine"));
-
     m_telecineHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -180,6 +127,17 @@ JsonValue AvcIntraSettings::Jsonize() const
   if(m_interlaceModeHasBeenSet)
   {
    payload.WithString("interlaceMode", AvcIntraInterlaceModeMapper::GetNameForAvcIntraInterlaceMode(m_interlaceMode));
+  }
+
+  if(m_perFrameMetricsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> perFrameMetricsJsonList(m_perFrameMetrics.size());
+   for(unsigned perFrameMetricsIndex = 0; perFrameMetricsIndex < perFrameMetricsJsonList.GetLength(); ++perFrameMetricsIndex)
+   {
+     perFrameMetricsJsonList[perFrameMetricsIndex].AsString(FrameMetricTypeMapper::GetNameForFrameMetricType(m_perFrameMetrics[perFrameMetricsIndex]));
+   }
+   payload.WithArray("perFrameMetrics", std::move(perFrameMetricsJsonList));
+
   }
 
   if(m_scanTypeConversionModeHasBeenSet)

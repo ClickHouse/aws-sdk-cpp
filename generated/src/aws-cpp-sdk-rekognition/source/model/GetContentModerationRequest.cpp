@@ -12,16 +12,6 @@ using namespace Aws::Rekognition::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetContentModerationRequest::GetContentModerationRequest() : 
-    m_jobIdHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_sortBy(ContentModerationSortBy::NOT_SET),
-    m_sortByHasBeenSet(false)
-{
-}
-
 Aws::String GetContentModerationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -47,6 +37,11 @@ Aws::String GetContentModerationRequest::SerializePayload() const
   if(m_sortByHasBeenSet)
   {
    payload.WithString("SortBy", ContentModerationSortByMapper::GetNameForContentModerationSortBy(m_sortBy));
+  }
+
+  if(m_aggregateByHasBeenSet)
+  {
+   payload.WithString("AggregateBy", ContentModerationAggregateByMapper::GetNameForContentModerationAggregateBy(m_aggregateBy));
   }
 
   return payload.View().WriteReadable();

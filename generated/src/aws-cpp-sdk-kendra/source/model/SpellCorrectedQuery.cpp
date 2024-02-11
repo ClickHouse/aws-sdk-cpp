@@ -18,15 +18,7 @@ namespace kendra
 namespace Model
 {
 
-SpellCorrectedQuery::SpellCorrectedQuery() : 
-    m_suggestedQueryTextHasBeenSet(false),
-    m_correctionsHasBeenSet(false)
-{
-}
-
-SpellCorrectedQuery::SpellCorrectedQuery(JsonView jsonValue) : 
-    m_suggestedQueryTextHasBeenSet(false),
-    m_correctionsHasBeenSet(false)
+SpellCorrectedQuery::SpellCorrectedQuery(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ SpellCorrectedQuery& SpellCorrectedQuery::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SuggestedQueryText"))
   {
     m_suggestedQueryText = jsonValue.GetString("SuggestedQueryText");
-
     m_suggestedQueryTextHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Corrections"))
   {
     Aws::Utils::Array<JsonView> correctionsJsonList = jsonValue.GetArray("Corrections");
@@ -49,7 +39,6 @@ SpellCorrectedQuery& SpellCorrectedQuery::operator =(JsonView jsonValue)
     }
     m_correctionsHasBeenSet = true;
   }
-
   return *this;
 }
 

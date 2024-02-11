@@ -18,21 +18,7 @@ namespace Batch
 namespace Model
 {
 
-Ulimit::Ulimit() : 
-    m_hardLimit(0),
-    m_hardLimitHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_softLimit(0),
-    m_softLimitHasBeenSet(false)
-{
-}
-
-Ulimit::Ulimit(JsonView jsonValue) : 
-    m_hardLimit(0),
-    m_hardLimitHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_softLimit(0),
-    m_softLimitHasBeenSet(false)
+Ulimit::Ulimit(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ Ulimit& Ulimit::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("hardLimit"))
   {
     m_hardLimit = jsonValue.GetInteger("hardLimit");
-
     m_hardLimitHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("softLimit"))
   {
     m_softLimit = jsonValue.GetInteger("softLimit");
-
     m_softLimitHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,17 +18,7 @@ namespace ChimeSDKMediaPipelines
 namespace Model
 {
 
-ConcatenationSink::ConcatenationSink() : 
-    m_type(ConcatenationSinkType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_s3BucketSinkConfigurationHasBeenSet(false)
-{
-}
-
-ConcatenationSink::ConcatenationSink(JsonView jsonValue) : 
-    m_type(ConcatenationSinkType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_s3BucketSinkConfigurationHasBeenSet(false)
+ConcatenationSink::ConcatenationSink(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ConcatenationSink& ConcatenationSink::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Type"))
   {
     m_type = ConcatenationSinkTypeMapper::GetConcatenationSinkTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3BucketSinkConfiguration"))
   {
     m_s3BucketSinkConfiguration = jsonValue.GetObject("S3BucketSinkConfiguration");
-
     m_s3BucketSinkConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

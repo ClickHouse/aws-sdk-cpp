@@ -18,15 +18,7 @@ namespace VoiceID
 namespace Model
 {
 
-OutputDataConfig::OutputDataConfig() : 
-    m_kmsKeyIdHasBeenSet(false),
-    m_s3UriHasBeenSet(false)
-{
-}
-
-OutputDataConfig::OutputDataConfig(JsonView jsonValue) : 
-    m_kmsKeyIdHasBeenSet(false),
-    m_s3UriHasBeenSet(false)
+OutputDataConfig::OutputDataConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ OutputDataConfig& OutputDataConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("KmsKeyId"))
   {
     m_kmsKeyId = jsonValue.GetString("KmsKeyId");
-
     m_kmsKeyIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3Uri"))
   {
     m_s3Uri = jsonValue.GetString("S3Uri");
-
     m_s3UriHasBeenSet = true;
   }
-
   return *this;
 }
 

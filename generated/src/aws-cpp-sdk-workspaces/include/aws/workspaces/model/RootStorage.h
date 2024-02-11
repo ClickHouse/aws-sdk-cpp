@@ -32,52 +32,23 @@ namespace Model
   class RootStorage
   {
   public:
-    AWS_WORKSPACES_API RootStorage();
+    AWS_WORKSPACES_API RootStorage() = default;
     AWS_WORKSPACES_API RootStorage(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API RootStorage& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The size of the root volume.</p>
      */
-    inline const Aws::String& GetCapacity() const{ return m_capacity; }
-
-    /**
-     * <p>The size of the root volume.</p>
-     */
+    inline const Aws::String& GetCapacity() const { return m_capacity; }
     inline bool CapacityHasBeenSet() const { return m_capacityHasBeenSet; }
-
-    /**
-     * <p>The size of the root volume.</p>
-     */
-    inline void SetCapacity(const Aws::String& value) { m_capacityHasBeenSet = true; m_capacity = value; }
-
-    /**
-     * <p>The size of the root volume.</p>
-     */
-    inline void SetCapacity(Aws::String&& value) { m_capacityHasBeenSet = true; m_capacity = std::move(value); }
-
-    /**
-     * <p>The size of the root volume.</p>
-     */
-    inline void SetCapacity(const char* value) { m_capacityHasBeenSet = true; m_capacity.assign(value); }
-
-    /**
-     * <p>The size of the root volume.</p>
-     */
-    inline RootStorage& WithCapacity(const Aws::String& value) { SetCapacity(value); return *this;}
-
-    /**
-     * <p>The size of the root volume.</p>
-     */
-    inline RootStorage& WithCapacity(Aws::String&& value) { SetCapacity(std::move(value)); return *this;}
-
-    /**
-     * <p>The size of the root volume.</p>
-     */
-    inline RootStorage& WithCapacity(const char* value) { SetCapacity(value); return *this;}
-
+    template<typename CapacityT = Aws::String>
+    void SetCapacity(CapacityT&& value) { m_capacityHasBeenSet = true; m_capacity = std::forward<CapacityT>(value); }
+    template<typename CapacityT = Aws::String>
+    RootStorage& WithCapacity(CapacityT&& value) { SetCapacity(std::forward<CapacityT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_capacity;

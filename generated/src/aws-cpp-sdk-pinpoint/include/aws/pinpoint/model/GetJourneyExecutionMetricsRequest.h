@@ -25,7 +25,7 @@ namespace Model
   class GetJourneyExecutionMetricsRequest : public PinpointRequest
   {
   public:
-    AWS_PINPOINT_API GetJourneyExecutionMetricsRequest();
+    AWS_PINPOINT_API GetJourneyExecutionMetricsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,209 +38,58 @@ namespace Model
     AWS_PINPOINT_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the application. This identifier is displayed as
      * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    GetJourneyExecutionMetricsRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline GetJourneyExecutionMetricsRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline GetJourneyExecutionMetricsRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline GetJourneyExecutionMetricsRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the journey.</p>
      */
-    inline const Aws::String& GetJourneyId() const{ return m_journeyId; }
-
-    /**
-     * <p>The unique identifier for the journey.</p>
-     */
+    inline const Aws::String& GetJourneyId() const { return m_journeyId; }
     inline bool JourneyIdHasBeenSet() const { return m_journeyIdHasBeenSet; }
+    template<typename JourneyIdT = Aws::String>
+    void SetJourneyId(JourneyIdT&& value) { m_journeyIdHasBeenSet = true; m_journeyId = std::forward<JourneyIdT>(value); }
+    template<typename JourneyIdT = Aws::String>
+    GetJourneyExecutionMetricsRequest& WithJourneyId(JourneyIdT&& value) { SetJourneyId(std::forward<JourneyIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The unique identifier for the journey.</p>
+     * <p>The <code/> string that specifies which page of results to return in a
+     * paginated response. This parameter is not supported for application, campaign,
+     * and journey metrics.</p>
      */
-    inline void SetJourneyId(const Aws::String& value) { m_journeyIdHasBeenSet = true; m_journeyId = value; }
-
-    /**
-     * <p>The unique identifier for the journey.</p>
-     */
-    inline void SetJourneyId(Aws::String&& value) { m_journeyIdHasBeenSet = true; m_journeyId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the journey.</p>
-     */
-    inline void SetJourneyId(const char* value) { m_journeyIdHasBeenSet = true; m_journeyId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the journey.</p>
-     */
-    inline GetJourneyExecutionMetricsRequest& WithJourneyId(const Aws::String& value) { SetJourneyId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the journey.</p>
-     */
-    inline GetJourneyExecutionMetricsRequest& WithJourneyId(Aws::String&& value) { SetJourneyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the journey.</p>
-     */
-    inline GetJourneyExecutionMetricsRequest& WithJourneyId(const char* value) { SetJourneyId(value); return *this;}
-
-
-    /**
-     * <p>The  string that specifies which page of results to return in a paginated
-     * response. This parameter is not supported for application, campaign, and journey
-     * metrics.</p>
-     */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The  string that specifies which page of results to return in a paginated
-     * response. This parameter is not supported for application, campaign, and journey
-     * metrics.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    GetJourneyExecutionMetricsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The  string that specifies which page of results to return in a paginated
-     * response. This parameter is not supported for application, campaign, and journey
-     * metrics.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The  string that specifies which page of results to return in a paginated
-     * response. This parameter is not supported for application, campaign, and journey
-     * metrics.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The  string that specifies which page of results to return in a paginated
-     * response. This parameter is not supported for application, campaign, and journey
-     * metrics.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The  string that specifies which page of results to return in a paginated
-     * response. This parameter is not supported for application, campaign, and journey
-     * metrics.</p>
-     */
-    inline GetJourneyExecutionMetricsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The  string that specifies which page of results to return in a paginated
-     * response. This parameter is not supported for application, campaign, and journey
-     * metrics.</p>
-     */
-    inline GetJourneyExecutionMetricsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The  string that specifies which page of results to return in a paginated
-     * response. This parameter is not supported for application, campaign, and journey
-     * metrics.</p>
-     */
-    inline GetJourneyExecutionMetricsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of items to include in each page of a paginated response.
      * This parameter is not supported for application, campaign, and journey
      * metrics.</p>
      */
-    inline const Aws::String& GetPageSize() const{ return m_pageSize; }
-
-    /**
-     * <p>The maximum number of items to include in each page of a paginated response.
-     * This parameter is not supported for application, campaign, and journey
-     * metrics.</p>
-     */
+    inline const Aws::String& GetPageSize() const { return m_pageSize; }
     inline bool PageSizeHasBeenSet() const { return m_pageSizeHasBeenSet; }
-
-    /**
-     * <p>The maximum number of items to include in each page of a paginated response.
-     * This parameter is not supported for application, campaign, and journey
-     * metrics.</p>
-     */
-    inline void SetPageSize(const Aws::String& value) { m_pageSizeHasBeenSet = true; m_pageSize = value; }
-
-    /**
-     * <p>The maximum number of items to include in each page of a paginated response.
-     * This parameter is not supported for application, campaign, and journey
-     * metrics.</p>
-     */
-    inline void SetPageSize(Aws::String&& value) { m_pageSizeHasBeenSet = true; m_pageSize = std::move(value); }
-
-    /**
-     * <p>The maximum number of items to include in each page of a paginated response.
-     * This parameter is not supported for application, campaign, and journey
-     * metrics.</p>
-     */
-    inline void SetPageSize(const char* value) { m_pageSizeHasBeenSet = true; m_pageSize.assign(value); }
-
-    /**
-     * <p>The maximum number of items to include in each page of a paginated response.
-     * This parameter is not supported for application, campaign, and journey
-     * metrics.</p>
-     */
-    inline GetJourneyExecutionMetricsRequest& WithPageSize(const Aws::String& value) { SetPageSize(value); return *this;}
-
-    /**
-     * <p>The maximum number of items to include in each page of a paginated response.
-     * This parameter is not supported for application, campaign, and journey
-     * metrics.</p>
-     */
-    inline GetJourneyExecutionMetricsRequest& WithPageSize(Aws::String&& value) { SetPageSize(std::move(value)); return *this;}
-
-    /**
-     * <p>The maximum number of items to include in each page of a paginated response.
-     * This parameter is not supported for application, campaign, and journey
-     * metrics.</p>
-     */
-    inline GetJourneyExecutionMetricsRequest& WithPageSize(const char* value) { SetPageSize(value); return *this;}
-
+    template<typename PageSizeT = Aws::String>
+    void SetPageSize(PageSizeT&& value) { m_pageSizeHasBeenSet = true; m_pageSize = std::forward<PageSizeT>(value); }
+    template<typename PageSizeT = Aws::String>
+    GetJourneyExecutionMetricsRequest& WithPageSize(PageSizeT&& value) { SetPageSize(std::forward<PageSizeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;

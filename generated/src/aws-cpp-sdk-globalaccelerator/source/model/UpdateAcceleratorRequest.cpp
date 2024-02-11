@@ -12,16 +12,6 @@ using namespace Aws::GlobalAccelerator::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateAcceleratorRequest::UpdateAcceleratorRequest() : 
-    m_acceleratorArnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_ipAddressType(IpAddressType::NOT_SET),
-    m_ipAddressTypeHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
 Aws::String UpdateAcceleratorRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -41,6 +31,17 @@ Aws::String UpdateAcceleratorRequest::SerializePayload() const
   if(m_ipAddressTypeHasBeenSet)
   {
    payload.WithString("IpAddressType", IpAddressTypeMapper::GetNameForIpAddressType(m_ipAddressType));
+  }
+
+  if(m_ipAddressesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> ipAddressesJsonList(m_ipAddresses.size());
+   for(unsigned ipAddressesIndex = 0; ipAddressesIndex < ipAddressesJsonList.GetLength(); ++ipAddressesIndex)
+   {
+     ipAddressesJsonList[ipAddressesIndex].AsString(m_ipAddresses[ipAddressesIndex]);
+   }
+   payload.WithArray("IpAddresses", std::move(ipAddressesJsonList));
+
   }
 
   if(m_enabledHasBeenSet)

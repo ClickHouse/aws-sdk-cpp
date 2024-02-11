@@ -25,7 +25,7 @@ namespace Model
   class ModifyFleetRequest : public EC2Request
   {
   public:
-    AWS_EC2_API ModifyFleetRequest();
+    AWS_EC2_API ModifyFleetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,241 +40,86 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline ModifyFleetRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Indicates whether running instances should be terminated if the total target
      * capacity of the EC2 Fleet is decreased below the current size of the EC2
      * Fleet.</p> <p>Supported only for fleets of type <code>maintain</code>.</p>
      */
-    inline const FleetExcessCapacityTerminationPolicy& GetExcessCapacityTerminationPolicy() const{ return m_excessCapacityTerminationPolicy; }
-
-    /**
-     * <p>Indicates whether running instances should be terminated if the total target
-     * capacity of the EC2 Fleet is decreased below the current size of the EC2
-     * Fleet.</p> <p>Supported only for fleets of type <code>maintain</code>.</p>
-     */
+    inline FleetExcessCapacityTerminationPolicy GetExcessCapacityTerminationPolicy() const { return m_excessCapacityTerminationPolicy; }
     inline bool ExcessCapacityTerminationPolicyHasBeenSet() const { return m_excessCapacityTerminationPolicyHasBeenSet; }
+    inline void SetExcessCapacityTerminationPolicy(FleetExcessCapacityTerminationPolicy value) { m_excessCapacityTerminationPolicyHasBeenSet = true; m_excessCapacityTerminationPolicy = value; }
+    inline ModifyFleetRequest& WithExcessCapacityTerminationPolicy(FleetExcessCapacityTerminationPolicy value) { SetExcessCapacityTerminationPolicy(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates whether running instances should be terminated if the total target
-     * capacity of the EC2 Fleet is decreased below the current size of the EC2
-     * Fleet.</p> <p>Supported only for fleets of type <code>maintain</code>.</p>
-     */
-    inline void SetExcessCapacityTerminationPolicy(const FleetExcessCapacityTerminationPolicy& value) { m_excessCapacityTerminationPolicyHasBeenSet = true; m_excessCapacityTerminationPolicy = value; }
-
-    /**
-     * <p>Indicates whether running instances should be terminated if the total target
-     * capacity of the EC2 Fleet is decreased below the current size of the EC2
-     * Fleet.</p> <p>Supported only for fleets of type <code>maintain</code>.</p>
-     */
-    inline void SetExcessCapacityTerminationPolicy(FleetExcessCapacityTerminationPolicy&& value) { m_excessCapacityTerminationPolicyHasBeenSet = true; m_excessCapacityTerminationPolicy = std::move(value); }
-
-    /**
-     * <p>Indicates whether running instances should be terminated if the total target
-     * capacity of the EC2 Fleet is decreased below the current size of the EC2
-     * Fleet.</p> <p>Supported only for fleets of type <code>maintain</code>.</p>
-     */
-    inline ModifyFleetRequest& WithExcessCapacityTerminationPolicy(const FleetExcessCapacityTerminationPolicy& value) { SetExcessCapacityTerminationPolicy(value); return *this;}
-
-    /**
-     * <p>Indicates whether running instances should be terminated if the total target
-     * capacity of the EC2 Fleet is decreased below the current size of the EC2
-     * Fleet.</p> <p>Supported only for fleets of type <code>maintain</code>.</p>
-     */
-    inline ModifyFleetRequest& WithExcessCapacityTerminationPolicy(FleetExcessCapacityTerminationPolicy&& value) { SetExcessCapacityTerminationPolicy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The launch template and overrides.</p>
      */
-    inline const Aws::Vector<FleetLaunchTemplateConfigRequest>& GetLaunchTemplateConfigs() const{ return m_launchTemplateConfigs; }
-
-    /**
-     * <p>The launch template and overrides.</p>
-     */
+    inline const Aws::Vector<FleetLaunchTemplateConfigRequest>& GetLaunchTemplateConfigs() const { return m_launchTemplateConfigs; }
     inline bool LaunchTemplateConfigsHasBeenSet() const { return m_launchTemplateConfigsHasBeenSet; }
+    template<typename LaunchTemplateConfigsT = Aws::Vector<FleetLaunchTemplateConfigRequest>>
+    void SetLaunchTemplateConfigs(LaunchTemplateConfigsT&& value) { m_launchTemplateConfigsHasBeenSet = true; m_launchTemplateConfigs = std::forward<LaunchTemplateConfigsT>(value); }
+    template<typename LaunchTemplateConfigsT = Aws::Vector<FleetLaunchTemplateConfigRequest>>
+    ModifyFleetRequest& WithLaunchTemplateConfigs(LaunchTemplateConfigsT&& value) { SetLaunchTemplateConfigs(std::forward<LaunchTemplateConfigsT>(value)); return *this;}
+    template<typename LaunchTemplateConfigsT = FleetLaunchTemplateConfigRequest>
+    ModifyFleetRequest& AddLaunchTemplateConfigs(LaunchTemplateConfigsT&& value) { m_launchTemplateConfigsHasBeenSet = true; m_launchTemplateConfigs.emplace_back(std::forward<LaunchTemplateConfigsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The launch template and overrides.</p>
-     */
-    inline void SetLaunchTemplateConfigs(const Aws::Vector<FleetLaunchTemplateConfigRequest>& value) { m_launchTemplateConfigsHasBeenSet = true; m_launchTemplateConfigs = value; }
-
-    /**
-     * <p>The launch template and overrides.</p>
-     */
-    inline void SetLaunchTemplateConfigs(Aws::Vector<FleetLaunchTemplateConfigRequest>&& value) { m_launchTemplateConfigsHasBeenSet = true; m_launchTemplateConfigs = std::move(value); }
-
-    /**
-     * <p>The launch template and overrides.</p>
-     */
-    inline ModifyFleetRequest& WithLaunchTemplateConfigs(const Aws::Vector<FleetLaunchTemplateConfigRequest>& value) { SetLaunchTemplateConfigs(value); return *this;}
-
-    /**
-     * <p>The launch template and overrides.</p>
-     */
-    inline ModifyFleetRequest& WithLaunchTemplateConfigs(Aws::Vector<FleetLaunchTemplateConfigRequest>&& value) { SetLaunchTemplateConfigs(std::move(value)); return *this;}
-
-    /**
-     * <p>The launch template and overrides.</p>
-     */
-    inline ModifyFleetRequest& AddLaunchTemplateConfigs(const FleetLaunchTemplateConfigRequest& value) { m_launchTemplateConfigsHasBeenSet = true; m_launchTemplateConfigs.push_back(value); return *this; }
-
-    /**
-     * <p>The launch template and overrides.</p>
-     */
-    inline ModifyFleetRequest& AddLaunchTemplateConfigs(FleetLaunchTemplateConfigRequest&& value) { m_launchTemplateConfigsHasBeenSet = true; m_launchTemplateConfigs.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The ID of the EC2 Fleet.</p>
      */
-    inline const Aws::String& GetFleetId() const{ return m_fleetId; }
-
-    /**
-     * <p>The ID of the EC2 Fleet.</p>
-     */
+    inline const Aws::String& GetFleetId() const { return m_fleetId; }
     inline bool FleetIdHasBeenSet() const { return m_fleetIdHasBeenSet; }
+    template<typename FleetIdT = Aws::String>
+    void SetFleetId(FleetIdT&& value) { m_fleetIdHasBeenSet = true; m_fleetId = std::forward<FleetIdT>(value); }
+    template<typename FleetIdT = Aws::String>
+    ModifyFleetRequest& WithFleetId(FleetIdT&& value) { SetFleetId(std::forward<FleetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the EC2 Fleet.</p>
-     */
-    inline void SetFleetId(const Aws::String& value) { m_fleetIdHasBeenSet = true; m_fleetId = value; }
-
-    /**
-     * <p>The ID of the EC2 Fleet.</p>
-     */
-    inline void SetFleetId(Aws::String&& value) { m_fleetIdHasBeenSet = true; m_fleetId = std::move(value); }
-
-    /**
-     * <p>The ID of the EC2 Fleet.</p>
-     */
-    inline void SetFleetId(const char* value) { m_fleetIdHasBeenSet = true; m_fleetId.assign(value); }
-
-    /**
-     * <p>The ID of the EC2 Fleet.</p>
-     */
-    inline ModifyFleetRequest& WithFleetId(const Aws::String& value) { SetFleetId(value); return *this;}
-
-    /**
-     * <p>The ID of the EC2 Fleet.</p>
-     */
-    inline ModifyFleetRequest& WithFleetId(Aws::String&& value) { SetFleetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the EC2 Fleet.</p>
-     */
-    inline ModifyFleetRequest& WithFleetId(const char* value) { SetFleetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The size of the EC2 Fleet.</p>
      */
-    inline const TargetCapacitySpecificationRequest& GetTargetCapacitySpecification() const{ return m_targetCapacitySpecification; }
-
-    /**
-     * <p>The size of the EC2 Fleet.</p>
-     */
+    inline const TargetCapacitySpecificationRequest& GetTargetCapacitySpecification() const { return m_targetCapacitySpecification; }
     inline bool TargetCapacitySpecificationHasBeenSet() const { return m_targetCapacitySpecificationHasBeenSet; }
+    template<typename TargetCapacitySpecificationT = TargetCapacitySpecificationRequest>
+    void SetTargetCapacitySpecification(TargetCapacitySpecificationT&& value) { m_targetCapacitySpecificationHasBeenSet = true; m_targetCapacitySpecification = std::forward<TargetCapacitySpecificationT>(value); }
+    template<typename TargetCapacitySpecificationT = TargetCapacitySpecificationRequest>
+    ModifyFleetRequest& WithTargetCapacitySpecification(TargetCapacitySpecificationT&& value) { SetTargetCapacitySpecification(std::forward<TargetCapacitySpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The size of the EC2 Fleet.</p>
-     */
-    inline void SetTargetCapacitySpecification(const TargetCapacitySpecificationRequest& value) { m_targetCapacitySpecificationHasBeenSet = true; m_targetCapacitySpecification = value; }
-
-    /**
-     * <p>The size of the EC2 Fleet.</p>
-     */
-    inline void SetTargetCapacitySpecification(TargetCapacitySpecificationRequest&& value) { m_targetCapacitySpecificationHasBeenSet = true; m_targetCapacitySpecification = std::move(value); }
-
-    /**
-     * <p>The size of the EC2 Fleet.</p>
-     */
-    inline ModifyFleetRequest& WithTargetCapacitySpecification(const TargetCapacitySpecificationRequest& value) { SetTargetCapacitySpecification(value); return *this;}
-
-    /**
-     * <p>The size of the EC2 Fleet.</p>
-     */
-    inline ModifyFleetRequest& WithTargetCapacitySpecification(TargetCapacitySpecificationRequest&& value) { SetTargetCapacitySpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Reserved.</p>
      */
-    inline const Aws::String& GetContext() const{ return m_context; }
-
-    /**
-     * <p>Reserved.</p>
-     */
+    inline const Aws::String& GetContext() const { return m_context; }
     inline bool ContextHasBeenSet() const { return m_contextHasBeenSet; }
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline void SetContext(const Aws::String& value) { m_contextHasBeenSet = true; m_context = value; }
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline void SetContext(Aws::String&& value) { m_contextHasBeenSet = true; m_context = std::move(value); }
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline void SetContext(const char* value) { m_contextHasBeenSet = true; m_context.assign(value); }
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline ModifyFleetRequest& WithContext(const Aws::String& value) { SetContext(value); return *this;}
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline ModifyFleetRequest& WithContext(Aws::String&& value) { SetContext(std::move(value)); return *this;}
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline ModifyFleetRequest& WithContext(const char* value) { SetContext(value); return *this;}
-
+    template<typename ContextT = Aws::String>
+    void SetContext(ContextT&& value) { m_contextHasBeenSet = true; m_context = std::forward<ContextT>(value); }
+    template<typename ContextT = Aws::String>
+    ModifyFleetRequest& WithContext(ContextT&& value) { SetContext(std::forward<ContextT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
-    FleetExcessCapacityTerminationPolicy m_excessCapacityTerminationPolicy;
+    FleetExcessCapacityTerminationPolicy m_excessCapacityTerminationPolicy{FleetExcessCapacityTerminationPolicy::NOT_SET};
     bool m_excessCapacityTerminationPolicyHasBeenSet = false;
 
     Aws::Vector<FleetLaunchTemplateConfigRequest> m_launchTemplateConfigs;

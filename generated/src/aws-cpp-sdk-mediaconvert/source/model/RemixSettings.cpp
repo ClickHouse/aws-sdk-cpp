@@ -18,54 +18,56 @@ namespace MediaConvert
 namespace Model
 {
 
-RemixSettings::RemixSettings() : 
-    m_channelMappingHasBeenSet(false),
-    m_channelsIn(0),
-    m_channelsInHasBeenSet(false),
-    m_channelsOut(0),
-    m_channelsOutHasBeenSet(false)
-{
-}
-
-RemixSettings::RemixSettings(JsonView jsonValue) : 
-    m_channelMappingHasBeenSet(false),
-    m_channelsIn(0),
-    m_channelsInHasBeenSet(false),
-    m_channelsOut(0),
-    m_channelsOutHasBeenSet(false)
+RemixSettings::RemixSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 RemixSettings& RemixSettings::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("audioDescriptionAudioChannel"))
+  {
+    m_audioDescriptionAudioChannel = jsonValue.GetInteger("audioDescriptionAudioChannel");
+    m_audioDescriptionAudioChannelHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("audioDescriptionDataChannel"))
+  {
+    m_audioDescriptionDataChannel = jsonValue.GetInteger("audioDescriptionDataChannel");
+    m_audioDescriptionDataChannelHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("channelMapping"))
   {
     m_channelMapping = jsonValue.GetObject("channelMapping");
-
     m_channelMappingHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("channelsIn"))
   {
     m_channelsIn = jsonValue.GetInteger("channelsIn");
-
     m_channelsInHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("channelsOut"))
   {
     m_channelsOut = jsonValue.GetInteger("channelsOut");
-
     m_channelsOutHasBeenSet = true;
   }
-
   return *this;
 }
 
 JsonValue RemixSettings::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_audioDescriptionAudioChannelHasBeenSet)
+  {
+   payload.WithInteger("audioDescriptionAudioChannel", m_audioDescriptionAudioChannel);
+
+  }
+
+  if(m_audioDescriptionDataChannelHasBeenSet)
+  {
+   payload.WithInteger("audioDescriptionDataChannel", m_audioDescriptionDataChannel);
+
+  }
 
   if(m_channelMappingHasBeenSet)
   {

@@ -18,15 +18,7 @@ namespace IoTEventsData
 namespace Model
 {
 
-TimestampValue::TimestampValue() : 
-    m_timeInMillis(0),
-    m_timeInMillisHasBeenSet(false)
-{
-}
-
-TimestampValue::TimestampValue(JsonView jsonValue) : 
-    m_timeInMillis(0),
-    m_timeInMillisHasBeenSet(false)
+TimestampValue::TimestampValue(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ TimestampValue& TimestampValue::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("timeInMillis"))
   {
     m_timeInMillis = jsonValue.GetInt64("timeInMillis");
-
     m_timeInMillisHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,33 +18,7 @@ namespace CleanRooms
 namespace Model
 {
 
-SchemaSummary::SchemaSummary() : 
-    m_nameHasBeenSet(false),
-    m_type(SchemaType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_creatorAccountIdHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_updateTimeHasBeenSet(false),
-    m_collaborationIdHasBeenSet(false),
-    m_collaborationArnHasBeenSet(false),
-    m_analysisRuleTypesHasBeenSet(false),
-    m_analysisMethod(AnalysisMethod::NOT_SET),
-    m_analysisMethodHasBeenSet(false)
-{
-}
-
-SchemaSummary::SchemaSummary(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_type(SchemaType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_creatorAccountIdHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_updateTimeHasBeenSet(false),
-    m_collaborationIdHasBeenSet(false),
-    m_collaborationArnHasBeenSet(false),
-    m_analysisRuleTypesHasBeenSet(false),
-    m_analysisMethod(AnalysisMethod::NOT_SET),
-    m_analysisMethodHasBeenSet(false)
+SchemaSummary::SchemaSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -54,52 +28,38 @@ SchemaSummary& SchemaSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = SchemaTypeMapper::GetSchemaTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("creatorAccountId"))
   {
     m_creatorAccountId = jsonValue.GetString("creatorAccountId");
-
     m_creatorAccountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("createTime"))
   {
     m_createTime = jsonValue.GetDouble("createTime");
-
     m_createTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("updateTime"))
   {
     m_updateTime = jsonValue.GetDouble("updateTime");
-
     m_updateTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("collaborationId"))
   {
     m_collaborationId = jsonValue.GetString("collaborationId");
-
     m_collaborationIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("collaborationArn"))
   {
     m_collaborationArn = jsonValue.GetString("collaborationArn");
-
     m_collaborationArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("analysisRuleTypes"))
   {
     Aws::Utils::Array<JsonView> analysisRuleTypesJsonList = jsonValue.GetArray("analysisRuleTypes");
@@ -109,14 +69,20 @@ SchemaSummary& SchemaSummary::operator =(JsonView jsonValue)
     }
     m_analysisRuleTypesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("analysisMethod"))
   {
     m_analysisMethod = AnalysisMethodMapper::GetAnalysisMethodForName(jsonValue.GetString("analysisMethod"));
-
     m_analysisMethodHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("selectedAnalysisMethods"))
+  {
+    Aws::Utils::Array<JsonView> selectedAnalysisMethodsJsonList = jsonValue.GetArray("selectedAnalysisMethods");
+    for(unsigned selectedAnalysisMethodsIndex = 0; selectedAnalysisMethodsIndex < selectedAnalysisMethodsJsonList.GetLength(); ++selectedAnalysisMethodsIndex)
+    {
+      m_selectedAnalysisMethods.push_back(SelectedAnalysisMethodMapper::GetSelectedAnalysisMethodForName(selectedAnalysisMethodsJsonList[selectedAnalysisMethodsIndex].AsString()));
+    }
+    m_selectedAnalysisMethodsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -177,6 +143,17 @@ JsonValue SchemaSummary::Jsonize() const
   if(m_analysisMethodHasBeenSet)
   {
    payload.WithString("analysisMethod", AnalysisMethodMapper::GetNameForAnalysisMethod(m_analysisMethod));
+  }
+
+  if(m_selectedAnalysisMethodsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> selectedAnalysisMethodsJsonList(m_selectedAnalysisMethods.size());
+   for(unsigned selectedAnalysisMethodsIndex = 0; selectedAnalysisMethodsIndex < selectedAnalysisMethodsJsonList.GetLength(); ++selectedAnalysisMethodsIndex)
+   {
+     selectedAnalysisMethodsJsonList[selectedAnalysisMethodsIndex].AsString(SelectedAnalysisMethodMapper::GetNameForSelectedAnalysisMethod(m_selectedAnalysisMethods[selectedAnalysisMethodsIndex]));
+   }
+   payload.WithArray("selectedAnalysisMethods", std::move(selectedAnalysisMethodsJsonList));
+
   }
 
   return payload;

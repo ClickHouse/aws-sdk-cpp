@@ -18,13 +18,7 @@ namespace Personalize
 namespace Model
 {
 
-BatchInferenceJobConfig::BatchInferenceJobConfig() : 
-    m_itemExplorationConfigHasBeenSet(false)
-{
-}
-
-BatchInferenceJobConfig::BatchInferenceJobConfig(JsonView jsonValue) : 
-    m_itemExplorationConfigHasBeenSet(false)
+BatchInferenceJobConfig::BatchInferenceJobConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ BatchInferenceJobConfig& BatchInferenceJobConfig::operator =(JsonView jsonValue)
     }
     m_itemExplorationConfigHasBeenSet = true;
   }
-
   return *this;
 }
 

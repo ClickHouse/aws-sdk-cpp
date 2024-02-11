@@ -18,70 +18,81 @@ namespace Omics
 namespace Model
 {
 
-ReadSetFilter::ReadSetFilter() : 
-    m_createdAfterHasBeenSet(false),
-    m_createdBeforeHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_referenceArnHasBeenSet(false),
-    m_status(ReadSetStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-ReadSetFilter::ReadSetFilter(JsonView jsonValue) : 
-    m_createdAfterHasBeenSet(false),
-    m_createdBeforeHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_referenceArnHasBeenSet(false),
-    m_status(ReadSetStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+ReadSetFilter::ReadSetFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 ReadSetFilter& ReadSetFilter::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("createdAfter"))
-  {
-    m_createdAfter = jsonValue.GetString("createdAfter");
-
-    m_createdAfterHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("createdBefore"))
-  {
-    m_createdBefore = jsonValue.GetString("createdBefore");
-
-    m_createdBeforeHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("referenceArn"))
-  {
-    m_referenceArn = jsonValue.GetString("referenceArn");
-
-    m_referenceArnHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = ReadSetStatusMapper::GetReadSetStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("referenceArn"))
+  {
+    m_referenceArn = jsonValue.GetString("referenceArn");
+    m_referenceArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("createdAfter"))
+  {
+    m_createdAfter = jsonValue.GetString("createdAfter");
+    m_createdAfterHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("createdBefore"))
+  {
+    m_createdBefore = jsonValue.GetString("createdBefore");
+    m_createdBeforeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("sampleId"))
+  {
+    m_sampleId = jsonValue.GetString("sampleId");
+    m_sampleIdHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("subjectId"))
+  {
+    m_subjectId = jsonValue.GetString("subjectId");
+    m_subjectIdHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("generatedFrom"))
+  {
+    m_generatedFrom = jsonValue.GetString("generatedFrom");
+    m_generatedFromHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("creationType"))
+  {
+    m_creationType = CreationTypeMapper::GetCreationTypeForName(jsonValue.GetString("creationType"));
+    m_creationTypeHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue ReadSetFilter::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_nameHasBeenSet)
+  {
+   payload.WithString("name", m_name);
+
+  }
+
+  if(m_statusHasBeenSet)
+  {
+   payload.WithString("status", ReadSetStatusMapper::GetNameForReadSetStatus(m_status));
+  }
+
+  if(m_referenceArnHasBeenSet)
+  {
+   payload.WithString("referenceArn", m_referenceArn);
+
+  }
 
   if(m_createdAfterHasBeenSet)
   {
@@ -93,21 +104,27 @@ JsonValue ReadSetFilter::Jsonize() const
    payload.WithString("createdBefore", m_createdBefore.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
   }
 
-  if(m_nameHasBeenSet)
+  if(m_sampleIdHasBeenSet)
   {
-   payload.WithString("name", m_name);
+   payload.WithString("sampleId", m_sampleId);
 
   }
 
-  if(m_referenceArnHasBeenSet)
+  if(m_subjectIdHasBeenSet)
   {
-   payload.WithString("referenceArn", m_referenceArn);
+   payload.WithString("subjectId", m_subjectId);
 
   }
 
-  if(m_statusHasBeenSet)
+  if(m_generatedFromHasBeenSet)
   {
-   payload.WithString("status", ReadSetStatusMapper::GetNameForReadSetStatus(m_status));
+   payload.WithString("generatedFrom", m_generatedFrom);
+
+  }
+
+  if(m_creationTypeHasBeenSet)
+  {
+   payload.WithString("creationType", CreationTypeMapper::GetNameForCreationType(m_creationType));
   }
 
   return payload;

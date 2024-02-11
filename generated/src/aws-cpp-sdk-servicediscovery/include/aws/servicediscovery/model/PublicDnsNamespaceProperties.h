@@ -31,42 +31,23 @@ namespace Model
   class PublicDnsNamespaceProperties
   {
   public:
-    AWS_SERVICEDISCOVERY_API PublicDnsNamespaceProperties();
+    AWS_SERVICEDISCOVERY_API PublicDnsNamespaceProperties() = default;
     AWS_SERVICEDISCOVERY_API PublicDnsNamespaceProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEDISCOVERY_API PublicDnsNamespaceProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEDISCOVERY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>DNS properties for the public DNS namespace.</p>
      */
-    inline const PublicDnsPropertiesMutable& GetDnsProperties() const{ return m_dnsProperties; }
-
-    /**
-     * <p>DNS properties for the public DNS namespace.</p>
-     */
+    inline const PublicDnsPropertiesMutable& GetDnsProperties() const { return m_dnsProperties; }
     inline bool DnsPropertiesHasBeenSet() const { return m_dnsPropertiesHasBeenSet; }
-
-    /**
-     * <p>DNS properties for the public DNS namespace.</p>
-     */
-    inline void SetDnsProperties(const PublicDnsPropertiesMutable& value) { m_dnsPropertiesHasBeenSet = true; m_dnsProperties = value; }
-
-    /**
-     * <p>DNS properties for the public DNS namespace.</p>
-     */
-    inline void SetDnsProperties(PublicDnsPropertiesMutable&& value) { m_dnsPropertiesHasBeenSet = true; m_dnsProperties = std::move(value); }
-
-    /**
-     * <p>DNS properties for the public DNS namespace.</p>
-     */
-    inline PublicDnsNamespaceProperties& WithDnsProperties(const PublicDnsPropertiesMutable& value) { SetDnsProperties(value); return *this;}
-
-    /**
-     * <p>DNS properties for the public DNS namespace.</p>
-     */
-    inline PublicDnsNamespaceProperties& WithDnsProperties(PublicDnsPropertiesMutable&& value) { SetDnsProperties(std::move(value)); return *this;}
-
+    template<typename DnsPropertiesT = PublicDnsPropertiesMutable>
+    void SetDnsProperties(DnsPropertiesT&& value) { m_dnsPropertiesHasBeenSet = true; m_dnsProperties = std::forward<DnsPropertiesT>(value); }
+    template<typename DnsPropertiesT = PublicDnsPropertiesMutable>
+    PublicDnsNamespaceProperties& WithDnsProperties(DnsPropertiesT&& value) { SetDnsProperties(std::forward<DnsPropertiesT>(value)); return *this;}
+    ///@}
   private:
 
     PublicDnsPropertiesMutable m_dnsProperties;

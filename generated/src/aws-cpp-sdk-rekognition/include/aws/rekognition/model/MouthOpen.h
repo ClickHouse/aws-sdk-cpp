@@ -30,63 +30,38 @@ namespace Model
   class MouthOpen
   {
   public:
-    AWS_REKOGNITION_API MouthOpen();
+    AWS_REKOGNITION_API MouthOpen() = default;
     AWS_REKOGNITION_API MouthOpen(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API MouthOpen& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Boolean value that indicates whether the mouth on the face is open or
      * not.</p>
      */
-    inline bool GetValue() const{ return m_value; }
-
-    /**
-     * <p>Boolean value that indicates whether the mouth on the face is open or
-     * not.</p>
-     */
+    inline bool GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>Boolean value that indicates whether the mouth on the face is open or
-     * not.</p>
-     */
     inline void SetValue(bool value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>Boolean value that indicates whether the mouth on the face is open or
-     * not.</p>
-     */
     inline MouthOpen& WithValue(bool value) { SetValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Level of confidence in the determination.</p>
      */
-    inline double GetConfidence() const{ return m_confidence; }
-
-    /**
-     * <p>Level of confidence in the determination.</p>
-     */
+    inline double GetConfidence() const { return m_confidence; }
     inline bool ConfidenceHasBeenSet() const { return m_confidenceHasBeenSet; }
-
-    /**
-     * <p>Level of confidence in the determination.</p>
-     */
     inline void SetConfidence(double value) { m_confidenceHasBeenSet = true; m_confidence = value; }
-
-    /**
-     * <p>Level of confidence in the determination.</p>
-     */
     inline MouthOpen& WithConfidence(double value) { SetConfidence(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_value;
+    bool m_value{false};
     bool m_valueHasBeenSet = false;
 
-    double m_confidence;
+    double m_confidence{0.0};
     bool m_confidenceHasBeenSet = false;
   };
 

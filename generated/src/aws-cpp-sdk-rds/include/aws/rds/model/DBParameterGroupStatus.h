@@ -38,7 +38,7 @@ namespace Model
   class DBParameterGroupStatus
   {
   public:
-    AWS_RDS_API DBParameterGroupStatus();
+    AWS_RDS_API DBParameterGroupStatus() = default;
     AWS_RDS_API DBParameterGroupStatus(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_RDS_API DBParameterGroupStatus& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -46,87 +46,37 @@ namespace Model
     AWS_RDS_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The name of the DB parameter group.</p>
      */
-    inline const Aws::String& GetDBParameterGroupName() const{ return m_dBParameterGroupName; }
-
-    /**
-     * <p>The name of the DB parameter group.</p>
-     */
+    inline const Aws::String& GetDBParameterGroupName() const { return m_dBParameterGroupName; }
     inline bool DBParameterGroupNameHasBeenSet() const { return m_dBParameterGroupNameHasBeenSet; }
+    template<typename DBParameterGroupNameT = Aws::String>
+    void SetDBParameterGroupName(DBParameterGroupNameT&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = std::forward<DBParameterGroupNameT>(value); }
+    template<typename DBParameterGroupNameT = Aws::String>
+    DBParameterGroupStatus& WithDBParameterGroupName(DBParameterGroupNameT&& value) { SetDBParameterGroupName(std::forward<DBParameterGroupNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the DB parameter group.</p>
+     * <p>The status of parameter updates. Valid values are:</p> <ul> <li> <p>
+     * <code>applying</code>: The parameter group change is being applied to the
+     * database.</p> </li> <li> <p> <code>failed-to-apply</code>: The parameter group
+     * is in an invalid state.</p> </li> <li> <p> <code>in-sync</code>: The parameter
+     * group change is synchronized with the database.</p> </li> <li> <p>
+     * <code>pending-database-upgrade</code>: The parameter group change will be
+     * applied after the DB instance is upgraded.</p> </li> <li> <p>
+     * <code>pending-reboot</code>: The parameter group change will be applied after
+     * the DB instance reboots.</p> </li> </ul>
      */
-    inline void SetDBParameterGroupName(const Aws::String& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = value; }
-
-    /**
-     * <p>The name of the DB parameter group.</p>
-     */
-    inline void SetDBParameterGroupName(Aws::String&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the DB parameter group.</p>
-     */
-    inline void SetDBParameterGroupName(const char* value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName.assign(value); }
-
-    /**
-     * <p>The name of the DB parameter group.</p>
-     */
-    inline DBParameterGroupStatus& WithDBParameterGroupName(const Aws::String& value) { SetDBParameterGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the DB parameter group.</p>
-     */
-    inline DBParameterGroupStatus& WithDBParameterGroupName(Aws::String&& value) { SetDBParameterGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the DB parameter group.</p>
-     */
-    inline DBParameterGroupStatus& WithDBParameterGroupName(const char* value) { SetDBParameterGroupName(value); return *this;}
-
-
-    /**
-     * <p>The status of parameter updates.</p>
-     */
-    inline const Aws::String& GetParameterApplyStatus() const{ return m_parameterApplyStatus; }
-
-    /**
-     * <p>The status of parameter updates.</p>
-     */
+    inline const Aws::String& GetParameterApplyStatus() const { return m_parameterApplyStatus; }
     inline bool ParameterApplyStatusHasBeenSet() const { return m_parameterApplyStatusHasBeenSet; }
-
-    /**
-     * <p>The status of parameter updates.</p>
-     */
-    inline void SetParameterApplyStatus(const Aws::String& value) { m_parameterApplyStatusHasBeenSet = true; m_parameterApplyStatus = value; }
-
-    /**
-     * <p>The status of parameter updates.</p>
-     */
-    inline void SetParameterApplyStatus(Aws::String&& value) { m_parameterApplyStatusHasBeenSet = true; m_parameterApplyStatus = std::move(value); }
-
-    /**
-     * <p>The status of parameter updates.</p>
-     */
-    inline void SetParameterApplyStatus(const char* value) { m_parameterApplyStatusHasBeenSet = true; m_parameterApplyStatus.assign(value); }
-
-    /**
-     * <p>The status of parameter updates.</p>
-     */
-    inline DBParameterGroupStatus& WithParameterApplyStatus(const Aws::String& value) { SetParameterApplyStatus(value); return *this;}
-
-    /**
-     * <p>The status of parameter updates.</p>
-     */
-    inline DBParameterGroupStatus& WithParameterApplyStatus(Aws::String&& value) { SetParameterApplyStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of parameter updates.</p>
-     */
-    inline DBParameterGroupStatus& WithParameterApplyStatus(const char* value) { SetParameterApplyStatus(value); return *this;}
-
+    template<typename ParameterApplyStatusT = Aws::String>
+    void SetParameterApplyStatus(ParameterApplyStatusT&& value) { m_parameterApplyStatusHasBeenSet = true; m_parameterApplyStatus = std::forward<ParameterApplyStatusT>(value); }
+    template<typename ParameterApplyStatusT = Aws::String>
+    DBParameterGroupStatus& WithParameterApplyStatus(ParameterApplyStatusT&& value) { SetParameterApplyStatus(std::forward<ParameterApplyStatusT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dBParameterGroupName;

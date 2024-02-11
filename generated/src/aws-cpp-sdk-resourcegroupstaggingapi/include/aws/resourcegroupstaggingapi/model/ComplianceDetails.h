@@ -34,142 +34,51 @@ namespace Model
   class ComplianceDetails
   {
   public:
-    AWS_RESOURCEGROUPSTAGGINGAPI_API ComplianceDetails();
+    AWS_RESOURCEGROUPSTAGGINGAPI_API ComplianceDetails() = default;
     AWS_RESOURCEGROUPSTAGGINGAPI_API ComplianceDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_RESOURCEGROUPSTAGGINGAPI_API ComplianceDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_RESOURCEGROUPSTAGGINGAPI_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>These tag keys on the resource are noncompliant with the effective tag
      * policy.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetNoncompliantKeys() const{ return m_noncompliantKeys; }
-
-    /**
-     * <p>These tag keys on the resource are noncompliant with the effective tag
-     * policy.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetNoncompliantKeys() const { return m_noncompliantKeys; }
     inline bool NoncompliantKeysHasBeenSet() const { return m_noncompliantKeysHasBeenSet; }
+    template<typename NoncompliantKeysT = Aws::Vector<Aws::String>>
+    void SetNoncompliantKeys(NoncompliantKeysT&& value) { m_noncompliantKeysHasBeenSet = true; m_noncompliantKeys = std::forward<NoncompliantKeysT>(value); }
+    template<typename NoncompliantKeysT = Aws::Vector<Aws::String>>
+    ComplianceDetails& WithNoncompliantKeys(NoncompliantKeysT&& value) { SetNoncompliantKeys(std::forward<NoncompliantKeysT>(value)); return *this;}
+    template<typename NoncompliantKeysT = Aws::String>
+    ComplianceDetails& AddNoncompliantKeys(NoncompliantKeysT&& value) { m_noncompliantKeysHasBeenSet = true; m_noncompliantKeys.emplace_back(std::forward<NoncompliantKeysT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>These tag keys on the resource are noncompliant with the effective tag
-     * policy.</p>
-     */
-    inline void SetNoncompliantKeys(const Aws::Vector<Aws::String>& value) { m_noncompliantKeysHasBeenSet = true; m_noncompliantKeys = value; }
-
-    /**
-     * <p>These tag keys on the resource are noncompliant with the effective tag
-     * policy.</p>
-     */
-    inline void SetNoncompliantKeys(Aws::Vector<Aws::String>&& value) { m_noncompliantKeysHasBeenSet = true; m_noncompliantKeys = std::move(value); }
-
-    /**
-     * <p>These tag keys on the resource are noncompliant with the effective tag
-     * policy.</p>
-     */
-    inline ComplianceDetails& WithNoncompliantKeys(const Aws::Vector<Aws::String>& value) { SetNoncompliantKeys(value); return *this;}
-
-    /**
-     * <p>These tag keys on the resource are noncompliant with the effective tag
-     * policy.</p>
-     */
-    inline ComplianceDetails& WithNoncompliantKeys(Aws::Vector<Aws::String>&& value) { SetNoncompliantKeys(std::move(value)); return *this;}
-
-    /**
-     * <p>These tag keys on the resource are noncompliant with the effective tag
-     * policy.</p>
-     */
-    inline ComplianceDetails& AddNoncompliantKeys(const Aws::String& value) { m_noncompliantKeysHasBeenSet = true; m_noncompliantKeys.push_back(value); return *this; }
-
-    /**
-     * <p>These tag keys on the resource are noncompliant with the effective tag
-     * policy.</p>
-     */
-    inline ComplianceDetails& AddNoncompliantKeys(Aws::String&& value) { m_noncompliantKeysHasBeenSet = true; m_noncompliantKeys.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>These tag keys on the resource are noncompliant with the effective tag
-     * policy.</p>
-     */
-    inline ComplianceDetails& AddNoncompliantKeys(const char* value) { m_noncompliantKeysHasBeenSet = true; m_noncompliantKeys.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>These are keys defined in the effective policy that are on the resource with
      * either incorrect case treatment or noncompliant values. </p>
      */
-    inline const Aws::Vector<Aws::String>& GetKeysWithNoncompliantValues() const{ return m_keysWithNoncompliantValues; }
-
-    /**
-     * <p>These are keys defined in the effective policy that are on the resource with
-     * either incorrect case treatment or noncompliant values. </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetKeysWithNoncompliantValues() const { return m_keysWithNoncompliantValues; }
     inline bool KeysWithNoncompliantValuesHasBeenSet() const { return m_keysWithNoncompliantValuesHasBeenSet; }
+    template<typename KeysWithNoncompliantValuesT = Aws::Vector<Aws::String>>
+    void SetKeysWithNoncompliantValues(KeysWithNoncompliantValuesT&& value) { m_keysWithNoncompliantValuesHasBeenSet = true; m_keysWithNoncompliantValues = std::forward<KeysWithNoncompliantValuesT>(value); }
+    template<typename KeysWithNoncompliantValuesT = Aws::Vector<Aws::String>>
+    ComplianceDetails& WithKeysWithNoncompliantValues(KeysWithNoncompliantValuesT&& value) { SetKeysWithNoncompliantValues(std::forward<KeysWithNoncompliantValuesT>(value)); return *this;}
+    template<typename KeysWithNoncompliantValuesT = Aws::String>
+    ComplianceDetails& AddKeysWithNoncompliantValues(KeysWithNoncompliantValuesT&& value) { m_keysWithNoncompliantValuesHasBeenSet = true; m_keysWithNoncompliantValues.emplace_back(std::forward<KeysWithNoncompliantValuesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>These are keys defined in the effective policy that are on the resource with
-     * either incorrect case treatment or noncompliant values. </p>
-     */
-    inline void SetKeysWithNoncompliantValues(const Aws::Vector<Aws::String>& value) { m_keysWithNoncompliantValuesHasBeenSet = true; m_keysWithNoncompliantValues = value; }
-
-    /**
-     * <p>These are keys defined in the effective policy that are on the resource with
-     * either incorrect case treatment or noncompliant values. </p>
-     */
-    inline void SetKeysWithNoncompliantValues(Aws::Vector<Aws::String>&& value) { m_keysWithNoncompliantValuesHasBeenSet = true; m_keysWithNoncompliantValues = std::move(value); }
-
-    /**
-     * <p>These are keys defined in the effective policy that are on the resource with
-     * either incorrect case treatment or noncompliant values. </p>
-     */
-    inline ComplianceDetails& WithKeysWithNoncompliantValues(const Aws::Vector<Aws::String>& value) { SetKeysWithNoncompliantValues(value); return *this;}
-
-    /**
-     * <p>These are keys defined in the effective policy that are on the resource with
-     * either incorrect case treatment or noncompliant values. </p>
-     */
-    inline ComplianceDetails& WithKeysWithNoncompliantValues(Aws::Vector<Aws::String>&& value) { SetKeysWithNoncompliantValues(std::move(value)); return *this;}
-
-    /**
-     * <p>These are keys defined in the effective policy that are on the resource with
-     * either incorrect case treatment or noncompliant values. </p>
-     */
-    inline ComplianceDetails& AddKeysWithNoncompliantValues(const Aws::String& value) { m_keysWithNoncompliantValuesHasBeenSet = true; m_keysWithNoncompliantValues.push_back(value); return *this; }
-
-    /**
-     * <p>These are keys defined in the effective policy that are on the resource with
-     * either incorrect case treatment or noncompliant values. </p>
-     */
-    inline ComplianceDetails& AddKeysWithNoncompliantValues(Aws::String&& value) { m_keysWithNoncompliantValuesHasBeenSet = true; m_keysWithNoncompliantValues.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>These are keys defined in the effective policy that are on the resource with
-     * either incorrect case treatment or noncompliant values. </p>
-     */
-    inline ComplianceDetails& AddKeysWithNoncompliantValues(const char* value) { m_keysWithNoncompliantValuesHasBeenSet = true; m_keysWithNoncompliantValues.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Whether a resource is compliant with the effective tag policy.</p>
      */
-    inline bool GetComplianceStatus() const{ return m_complianceStatus; }
-
-    /**
-     * <p>Whether a resource is compliant with the effective tag policy.</p>
-     */
+    inline bool GetComplianceStatus() const { return m_complianceStatus; }
     inline bool ComplianceStatusHasBeenSet() const { return m_complianceStatusHasBeenSet; }
-
-    /**
-     * <p>Whether a resource is compliant with the effective tag policy.</p>
-     */
     inline void SetComplianceStatus(bool value) { m_complianceStatusHasBeenSet = true; m_complianceStatus = value; }
-
-    /**
-     * <p>Whether a resource is compliant with the effective tag policy.</p>
-     */
     inline ComplianceDetails& WithComplianceStatus(bool value) { SetComplianceStatus(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_noncompliantKeys;
@@ -178,7 +87,7 @@ namespace Model
     Aws::Vector<Aws::String> m_keysWithNoncompliantValues;
     bool m_keysWithNoncompliantValuesHasBeenSet = false;
 
-    bool m_complianceStatus;
+    bool m_complianceStatus{false};
     bool m_complianceStatusHasBeenSet = false;
   };
 

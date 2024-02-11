@@ -21,7 +21,7 @@ namespace Model
   class SendAlexaOfferToMasterRequest : public KinesisVideoSignalingChannelsRequest
   {
   public:
-    AWS_KINESISVIDEOSIGNALINGCHANNELS_API SendAlexaOfferToMasterRequest();
+    AWS_KINESISVIDEOSIGNALINGCHANNELS_API SendAlexaOfferToMasterRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,136 +32,42 @@ namespace Model
     AWS_KINESISVIDEOSIGNALINGCHANNELS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the signaling channel by which Alexa and the master peer
      * communicate.</p>
      */
-    inline const Aws::String& GetChannelARN() const{ return m_channelARN; }
-
-    /**
-     * <p>The ARN of the signaling channel by which Alexa and the master peer
-     * communicate.</p>
-     */
+    inline const Aws::String& GetChannelARN() const { return m_channelARN; }
     inline bool ChannelARNHasBeenSet() const { return m_channelARNHasBeenSet; }
+    template<typename ChannelARNT = Aws::String>
+    void SetChannelARN(ChannelARNT&& value) { m_channelARNHasBeenSet = true; m_channelARN = std::forward<ChannelARNT>(value); }
+    template<typename ChannelARNT = Aws::String>
+    SendAlexaOfferToMasterRequest& WithChannelARN(ChannelARNT&& value) { SetChannelARN(std::forward<ChannelARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the signaling channel by which Alexa and the master peer
-     * communicate.</p>
-     */
-    inline void SetChannelARN(const Aws::String& value) { m_channelARNHasBeenSet = true; m_channelARN = value; }
-
-    /**
-     * <p>The ARN of the signaling channel by which Alexa and the master peer
-     * communicate.</p>
-     */
-    inline void SetChannelARN(Aws::String&& value) { m_channelARNHasBeenSet = true; m_channelARN = std::move(value); }
-
-    /**
-     * <p>The ARN of the signaling channel by which Alexa and the master peer
-     * communicate.</p>
-     */
-    inline void SetChannelARN(const char* value) { m_channelARNHasBeenSet = true; m_channelARN.assign(value); }
-
-    /**
-     * <p>The ARN of the signaling channel by which Alexa and the master peer
-     * communicate.</p>
-     */
-    inline SendAlexaOfferToMasterRequest& WithChannelARN(const Aws::String& value) { SetChannelARN(value); return *this;}
-
-    /**
-     * <p>The ARN of the signaling channel by which Alexa and the master peer
-     * communicate.</p>
-     */
-    inline SendAlexaOfferToMasterRequest& WithChannelARN(Aws::String&& value) { SetChannelARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the signaling channel by which Alexa and the master peer
-     * communicate.</p>
-     */
-    inline SendAlexaOfferToMasterRequest& WithChannelARN(const char* value) { SetChannelARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the sender client.</p>
      */
-    inline const Aws::String& GetSenderClientId() const{ return m_senderClientId; }
-
-    /**
-     * <p>The unique identifier for the sender client.</p>
-     */
+    inline const Aws::String& GetSenderClientId() const { return m_senderClientId; }
     inline bool SenderClientIdHasBeenSet() const { return m_senderClientIdHasBeenSet; }
+    template<typename SenderClientIdT = Aws::String>
+    void SetSenderClientId(SenderClientIdT&& value) { m_senderClientIdHasBeenSet = true; m_senderClientId = std::forward<SenderClientIdT>(value); }
+    template<typename SenderClientIdT = Aws::String>
+    SendAlexaOfferToMasterRequest& WithSenderClientId(SenderClientIdT&& value) { SetSenderClientId(std::forward<SenderClientIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the sender client.</p>
-     */
-    inline void SetSenderClientId(const Aws::String& value) { m_senderClientIdHasBeenSet = true; m_senderClientId = value; }
-
-    /**
-     * <p>The unique identifier for the sender client.</p>
-     */
-    inline void SetSenderClientId(Aws::String&& value) { m_senderClientIdHasBeenSet = true; m_senderClientId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the sender client.</p>
-     */
-    inline void SetSenderClientId(const char* value) { m_senderClientIdHasBeenSet = true; m_senderClientId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the sender client.</p>
-     */
-    inline SendAlexaOfferToMasterRequest& WithSenderClientId(const Aws::String& value) { SetSenderClientId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the sender client.</p>
-     */
-    inline SendAlexaOfferToMasterRequest& WithSenderClientId(Aws::String&& value) { SetSenderClientId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the sender client.</p>
-     */
-    inline SendAlexaOfferToMasterRequest& WithSenderClientId(const char* value) { SetSenderClientId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The base64-encoded SDP offer content.</p>
      */
-    inline const Aws::String& GetMessagePayload() const{ return m_messagePayload; }
-
-    /**
-     * <p>The base64-encoded SDP offer content.</p>
-     */
+    inline const Aws::String& GetMessagePayload() const { return m_messagePayload; }
     inline bool MessagePayloadHasBeenSet() const { return m_messagePayloadHasBeenSet; }
-
-    /**
-     * <p>The base64-encoded SDP offer content.</p>
-     */
-    inline void SetMessagePayload(const Aws::String& value) { m_messagePayloadHasBeenSet = true; m_messagePayload = value; }
-
-    /**
-     * <p>The base64-encoded SDP offer content.</p>
-     */
-    inline void SetMessagePayload(Aws::String&& value) { m_messagePayloadHasBeenSet = true; m_messagePayload = std::move(value); }
-
-    /**
-     * <p>The base64-encoded SDP offer content.</p>
-     */
-    inline void SetMessagePayload(const char* value) { m_messagePayloadHasBeenSet = true; m_messagePayload.assign(value); }
-
-    /**
-     * <p>The base64-encoded SDP offer content.</p>
-     */
-    inline SendAlexaOfferToMasterRequest& WithMessagePayload(const Aws::String& value) { SetMessagePayload(value); return *this;}
-
-    /**
-     * <p>The base64-encoded SDP offer content.</p>
-     */
-    inline SendAlexaOfferToMasterRequest& WithMessagePayload(Aws::String&& value) { SetMessagePayload(std::move(value)); return *this;}
-
-    /**
-     * <p>The base64-encoded SDP offer content.</p>
-     */
-    inline SendAlexaOfferToMasterRequest& WithMessagePayload(const char* value) { SetMessagePayload(value); return *this;}
-
+    template<typename MessagePayloadT = Aws::String>
+    void SetMessagePayload(MessagePayloadT&& value) { m_messagePayloadHasBeenSet = true; m_messagePayload = std::forward<MessagePayloadT>(value); }
+    template<typename MessagePayloadT = Aws::String>
+    SendAlexaOfferToMasterRequest& WithMessagePayload(MessagePayloadT&& value) { SetMessagePayload(std::forward<MessagePayloadT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_channelARN;

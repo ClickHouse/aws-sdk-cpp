@@ -18,19 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-CaptionSourceFramerate::CaptionSourceFramerate() : 
-    m_framerateDenominator(0),
-    m_framerateDenominatorHasBeenSet(false),
-    m_framerateNumerator(0),
-    m_framerateNumeratorHasBeenSet(false)
-{
-}
-
-CaptionSourceFramerate::CaptionSourceFramerate(JsonView jsonValue) : 
-    m_framerateDenominator(0),
-    m_framerateDenominatorHasBeenSet(false),
-    m_framerateNumerator(0),
-    m_framerateNumeratorHasBeenSet(false)
+CaptionSourceFramerate::CaptionSourceFramerate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ CaptionSourceFramerate& CaptionSourceFramerate::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("framerateDenominator"))
   {
     m_framerateDenominator = jsonValue.GetInteger("framerateDenominator");
-
     m_framerateDenominatorHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("framerateNumerator"))
   {
     m_framerateNumerator = jsonValue.GetInteger("framerateNumerator");
-
     m_framerateNumeratorHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -23,7 +23,7 @@ namespace Model
   class UpdateRelatedItemsRequest : public SSMIncidentsRequest
   {
   public:
-    AWS_SSMINCIDENTS_API UpdateRelatedItemsRequest();
+    AWS_SSMINCIDENTS_API UpdateRelatedItemsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,138 +34,47 @@ namespace Model
     AWS_SSMINCIDENTS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>A token that ensures that a client calls the operation only once with the
      * specified details.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>A token that ensures that a client calls the operation only once with the
-     * specified details.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    UpdateRelatedItemsRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A token that ensures that a client calls the operation only once with the
-     * specified details.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>A token that ensures that a client calls the operation only once with the
-     * specified details.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>A token that ensures that a client calls the operation only once with the
-     * specified details.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>A token that ensures that a client calls the operation only once with the
-     * specified details.</p>
-     */
-    inline UpdateRelatedItemsRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>A token that ensures that a client calls the operation only once with the
-     * specified details.</p>
-     */
-    inline UpdateRelatedItemsRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token that ensures that a client calls the operation only once with the
-     * specified details.</p>
-     */
-    inline UpdateRelatedItemsRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the incident record that contains the
      * related items that you update.</p>
      */
-    inline const Aws::String& GetIncidentRecordArn() const{ return m_incidentRecordArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the incident record that contains the
-     * related items that you update.</p>
-     */
+    inline const Aws::String& GetIncidentRecordArn() const { return m_incidentRecordArn; }
     inline bool IncidentRecordArnHasBeenSet() const { return m_incidentRecordArnHasBeenSet; }
+    template<typename IncidentRecordArnT = Aws::String>
+    void SetIncidentRecordArn(IncidentRecordArnT&& value) { m_incidentRecordArnHasBeenSet = true; m_incidentRecordArn = std::forward<IncidentRecordArnT>(value); }
+    template<typename IncidentRecordArnT = Aws::String>
+    UpdateRelatedItemsRequest& WithIncidentRecordArn(IncidentRecordArnT&& value) { SetIncidentRecordArn(std::forward<IncidentRecordArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the incident record that contains the
-     * related items that you update.</p>
-     */
-    inline void SetIncidentRecordArn(const Aws::String& value) { m_incidentRecordArnHasBeenSet = true; m_incidentRecordArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the incident record that contains the
-     * related items that you update.</p>
-     */
-    inline void SetIncidentRecordArn(Aws::String&& value) { m_incidentRecordArnHasBeenSet = true; m_incidentRecordArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the incident record that contains the
-     * related items that you update.</p>
-     */
-    inline void SetIncidentRecordArn(const char* value) { m_incidentRecordArnHasBeenSet = true; m_incidentRecordArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the incident record that contains the
-     * related items that you update.</p>
-     */
-    inline UpdateRelatedItemsRequest& WithIncidentRecordArn(const Aws::String& value) { SetIncidentRecordArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the incident record that contains the
-     * related items that you update.</p>
-     */
-    inline UpdateRelatedItemsRequest& WithIncidentRecordArn(Aws::String&& value) { SetIncidentRecordArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the incident record that contains the
-     * related items that you update.</p>
-     */
-    inline UpdateRelatedItemsRequest& WithIncidentRecordArn(const char* value) { SetIncidentRecordArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about the item that you are add to, or delete from, an incident.</p>
      */
-    inline const RelatedItemsUpdate& GetRelatedItemsUpdate() const{ return m_relatedItemsUpdate; }
-
-    /**
-     * <p>Details about the item that you are add to, or delete from, an incident.</p>
-     */
+    inline const RelatedItemsUpdate& GetRelatedItemsUpdate() const { return m_relatedItemsUpdate; }
     inline bool RelatedItemsUpdateHasBeenSet() const { return m_relatedItemsUpdateHasBeenSet; }
-
-    /**
-     * <p>Details about the item that you are add to, or delete from, an incident.</p>
-     */
-    inline void SetRelatedItemsUpdate(const RelatedItemsUpdate& value) { m_relatedItemsUpdateHasBeenSet = true; m_relatedItemsUpdate = value; }
-
-    /**
-     * <p>Details about the item that you are add to, or delete from, an incident.</p>
-     */
-    inline void SetRelatedItemsUpdate(RelatedItemsUpdate&& value) { m_relatedItemsUpdateHasBeenSet = true; m_relatedItemsUpdate = std::move(value); }
-
-    /**
-     * <p>Details about the item that you are add to, or delete from, an incident.</p>
-     */
-    inline UpdateRelatedItemsRequest& WithRelatedItemsUpdate(const RelatedItemsUpdate& value) { SetRelatedItemsUpdate(value); return *this;}
-
-    /**
-     * <p>Details about the item that you are add to, or delete from, an incident.</p>
-     */
-    inline UpdateRelatedItemsRequest& WithRelatedItemsUpdate(RelatedItemsUpdate&& value) { SetRelatedItemsUpdate(std::move(value)); return *this;}
-
+    template<typename RelatedItemsUpdateT = RelatedItemsUpdate>
+    void SetRelatedItemsUpdate(RelatedItemsUpdateT&& value) { m_relatedItemsUpdateHasBeenSet = true; m_relatedItemsUpdate = std::forward<RelatedItemsUpdateT>(value); }
+    template<typename RelatedItemsUpdateT = RelatedItemsUpdate>
+    UpdateRelatedItemsRequest& WithRelatedItemsUpdate(RelatedItemsUpdateT&& value) { SetRelatedItemsUpdate(std::forward<RelatedItemsUpdateT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
     Aws::String m_incidentRecordArn;
     bool m_incidentRecordArnHasBeenSet = false;

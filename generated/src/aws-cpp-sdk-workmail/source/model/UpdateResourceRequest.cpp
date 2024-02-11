@@ -12,14 +12,6 @@ using namespace Aws::WorkMail::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateResourceRequest::UpdateResourceRequest() : 
-    m_organizationIdHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_bookingOptionsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateResourceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -45,6 +37,23 @@ Aws::String UpdateResourceRequest::SerializePayload() const
   if(m_bookingOptionsHasBeenSet)
   {
    payload.WithObject("BookingOptions", m_bookingOptions.Jsonize());
+
+  }
+
+  if(m_descriptionHasBeenSet)
+  {
+   payload.WithString("Description", m_description);
+
+  }
+
+  if(m_typeHasBeenSet)
+  {
+   payload.WithString("Type", ResourceTypeMapper::GetNameForResourceType(m_type));
+  }
+
+  if(m_hiddenFromGlobalAddressListHasBeenSet)
+  {
+   payload.WithBool("HiddenFromGlobalAddressList", m_hiddenFromGlobalAddressList);
 
   }
 

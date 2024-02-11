@@ -18,21 +18,7 @@ namespace WellArchitected
 namespace Model
 {
 
-MilestoneSummary::MilestoneSummary() : 
-    m_milestoneNumber(0),
-    m_milestoneNumberHasBeenSet(false),
-    m_milestoneNameHasBeenSet(false),
-    m_recordedAtHasBeenSet(false),
-    m_workloadSummaryHasBeenSet(false)
-{
-}
-
-MilestoneSummary::MilestoneSummary(JsonView jsonValue) : 
-    m_milestoneNumber(0),
-    m_milestoneNumberHasBeenSet(false),
-    m_milestoneNameHasBeenSet(false),
-    m_recordedAtHasBeenSet(false),
-    m_workloadSummaryHasBeenSet(false)
+MilestoneSummary::MilestoneSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ MilestoneSummary& MilestoneSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MilestoneNumber"))
   {
     m_milestoneNumber = jsonValue.GetInteger("MilestoneNumber");
-
     m_milestoneNumberHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MilestoneName"))
   {
     m_milestoneName = jsonValue.GetString("MilestoneName");
-
     m_milestoneNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RecordedAt"))
   {
     m_recordedAt = jsonValue.GetDouble("RecordedAt");
-
     m_recordedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WorkloadSummary"))
   {
     m_workloadSummary = jsonValue.GetObject("WorkloadSummary");
-
     m_workloadSummaryHasBeenSet = true;
   }
-
   return *this;
 }
 

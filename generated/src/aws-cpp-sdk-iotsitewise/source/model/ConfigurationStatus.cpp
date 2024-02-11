@@ -18,17 +18,7 @@ namespace IoTSiteWise
 namespace Model
 {
 
-ConfigurationStatus::ConfigurationStatus() : 
-    m_state(ConfigurationState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_errorHasBeenSet(false)
-{
-}
-
-ConfigurationStatus::ConfigurationStatus(JsonView jsonValue) : 
-    m_state(ConfigurationState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_errorHasBeenSet(false)
+ConfigurationStatus::ConfigurationStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ConfigurationStatus& ConfigurationStatus::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("state"))
   {
     m_state = ConfigurationStateMapper::GetConfigurationStateForName(jsonValue.GetString("state"));
-
     m_stateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("error"))
   {
     m_error = jsonValue.GetObject("error");
-
     m_errorHasBeenSet = true;
   }
-
   return *this;
 }
 

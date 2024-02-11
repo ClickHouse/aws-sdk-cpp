@@ -18,19 +18,7 @@ namespace IoTEventsData
 namespace Model
 {
 
-DisableAlarmActionRequest::DisableAlarmActionRequest() : 
-    m_requestIdHasBeenSet(false),
-    m_alarmModelNameHasBeenSet(false),
-    m_keyValueHasBeenSet(false),
-    m_noteHasBeenSet(false)
-{
-}
-
-DisableAlarmActionRequest::DisableAlarmActionRequest(JsonView jsonValue) : 
-    m_requestIdHasBeenSet(false),
-    m_alarmModelNameHasBeenSet(false),
-    m_keyValueHasBeenSet(false),
-    m_noteHasBeenSet(false)
+DisableAlarmActionRequest::DisableAlarmActionRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ DisableAlarmActionRequest& DisableAlarmActionRequest::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("requestId"))
   {
     m_requestId = jsonValue.GetString("requestId");
-
     m_requestIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("alarmModelName"))
   {
     m_alarmModelName = jsonValue.GetString("alarmModelName");
-
     m_alarmModelNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("keyValue"))
   {
     m_keyValue = jsonValue.GetString("keyValue");
-
     m_keyValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("note"))
   {
     m_note = jsonValue.GetString("note");
-
     m_noteHasBeenSet = true;
   }
-
   return *this;
 }
 

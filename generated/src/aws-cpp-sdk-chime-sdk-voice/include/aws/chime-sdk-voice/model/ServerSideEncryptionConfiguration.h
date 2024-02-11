@@ -33,60 +33,24 @@ namespace Model
   class ServerSideEncryptionConfiguration
   {
   public:
-    AWS_CHIMESDKVOICE_API ServerSideEncryptionConfiguration();
+    AWS_CHIMESDKVOICE_API ServerSideEncryptionConfiguration() = default;
     AWS_CHIMESDKVOICE_API ServerSideEncryptionConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKVOICE_API ServerSideEncryptionConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKVOICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the KMS key used to encrypt the enrollment data in a voice profile
      * domain. Asymmetric customer managed keys are not supported.</p>
      */
-    inline const Aws::String& GetKmsKeyArn() const{ return m_kmsKeyArn; }
-
-    /**
-     * <p>The ARN of the KMS key used to encrypt the enrollment data in a voice profile
-     * domain. Asymmetric customer managed keys are not supported.</p>
-     */
+    inline const Aws::String& GetKmsKeyArn() const { return m_kmsKeyArn; }
     inline bool KmsKeyArnHasBeenSet() const { return m_kmsKeyArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the KMS key used to encrypt the enrollment data in a voice profile
-     * domain. Asymmetric customer managed keys are not supported.</p>
-     */
-    inline void SetKmsKeyArn(const Aws::String& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = value; }
-
-    /**
-     * <p>The ARN of the KMS key used to encrypt the enrollment data in a voice profile
-     * domain. Asymmetric customer managed keys are not supported.</p>
-     */
-    inline void SetKmsKeyArn(Aws::String&& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the KMS key used to encrypt the enrollment data in a voice profile
-     * domain. Asymmetric customer managed keys are not supported.</p>
-     */
-    inline void SetKmsKeyArn(const char* value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn.assign(value); }
-
-    /**
-     * <p>The ARN of the KMS key used to encrypt the enrollment data in a voice profile
-     * domain. Asymmetric customer managed keys are not supported.</p>
-     */
-    inline ServerSideEncryptionConfiguration& WithKmsKeyArn(const Aws::String& value) { SetKmsKeyArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the KMS key used to encrypt the enrollment data in a voice profile
-     * domain. Asymmetric customer managed keys are not supported.</p>
-     */
-    inline ServerSideEncryptionConfiguration& WithKmsKeyArn(Aws::String&& value) { SetKmsKeyArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the KMS key used to encrypt the enrollment data in a voice profile
-     * domain. Asymmetric customer managed keys are not supported.</p>
-     */
-    inline ServerSideEncryptionConfiguration& WithKmsKeyArn(const char* value) { SetKmsKeyArn(value); return *this;}
-
+    template<typename KmsKeyArnT = Aws::String>
+    void SetKmsKeyArn(KmsKeyArnT&& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = std::forward<KmsKeyArnT>(value); }
+    template<typename KmsKeyArnT = Aws::String>
+    ServerSideEncryptionConfiguration& WithKmsKeyArn(KmsKeyArnT&& value) { SetKmsKeyArn(std::forward<KmsKeyArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_kmsKeyArn;

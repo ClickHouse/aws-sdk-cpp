@@ -18,17 +18,7 @@ namespace VPCLattice
 namespace Model
 {
 
-Target::Target() : 
-    m_idHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false)
-{
-}
-
-Target::Target(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false)
+Target::Target(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ Target& Target::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("port"))
   {
     m_port = jsonValue.GetInteger("port");
-
     m_portHasBeenSet = true;
   }
-
   return *this;
 }
 

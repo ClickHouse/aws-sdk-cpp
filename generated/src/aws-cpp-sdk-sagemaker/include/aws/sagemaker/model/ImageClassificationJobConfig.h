@@ -24,56 +24,32 @@ namespace Model
 {
 
   /**
-   * <p>Stores the configuration information for the image classification problem of
-   * an AutoML job using the V2 API.</p><p><h3>See Also:</h3>   <a
+   * <p>The collection of settings used by an AutoML job V2 for the image
+   * classification problem type.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/ImageClassificationJobConfig">AWS
    * API Reference</a></p>
    */
   class ImageClassificationJobConfig
   {
   public:
-    AWS_SAGEMAKER_API ImageClassificationJobConfig();
+    AWS_SAGEMAKER_API ImageClassificationJobConfig() = default;
     AWS_SAGEMAKER_API ImageClassificationJobConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API ImageClassificationJobConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>How long a job is allowed to run, or how many candidates a job is allowed to
      * generate.</p>
      */
-    inline const AutoMLJobCompletionCriteria& GetCompletionCriteria() const{ return m_completionCriteria; }
-
-    /**
-     * <p>How long a job is allowed to run, or how many candidates a job is allowed to
-     * generate.</p>
-     */
+    inline const AutoMLJobCompletionCriteria& GetCompletionCriteria() const { return m_completionCriteria; }
     inline bool CompletionCriteriaHasBeenSet() const { return m_completionCriteriaHasBeenSet; }
-
-    /**
-     * <p>How long a job is allowed to run, or how many candidates a job is allowed to
-     * generate.</p>
-     */
-    inline void SetCompletionCriteria(const AutoMLJobCompletionCriteria& value) { m_completionCriteriaHasBeenSet = true; m_completionCriteria = value; }
-
-    /**
-     * <p>How long a job is allowed to run, or how many candidates a job is allowed to
-     * generate.</p>
-     */
-    inline void SetCompletionCriteria(AutoMLJobCompletionCriteria&& value) { m_completionCriteriaHasBeenSet = true; m_completionCriteria = std::move(value); }
-
-    /**
-     * <p>How long a job is allowed to run, or how many candidates a job is allowed to
-     * generate.</p>
-     */
-    inline ImageClassificationJobConfig& WithCompletionCriteria(const AutoMLJobCompletionCriteria& value) { SetCompletionCriteria(value); return *this;}
-
-    /**
-     * <p>How long a job is allowed to run, or how many candidates a job is allowed to
-     * generate.</p>
-     */
-    inline ImageClassificationJobConfig& WithCompletionCriteria(AutoMLJobCompletionCriteria&& value) { SetCompletionCriteria(std::move(value)); return *this;}
-
+    template<typename CompletionCriteriaT = AutoMLJobCompletionCriteria>
+    void SetCompletionCriteria(CompletionCriteriaT&& value) { m_completionCriteriaHasBeenSet = true; m_completionCriteria = std::forward<CompletionCriteriaT>(value); }
+    template<typename CompletionCriteriaT = AutoMLJobCompletionCriteria>
+    ImageClassificationJobConfig& WithCompletionCriteria(CompletionCriteriaT&& value) { SetCompletionCriteria(std::forward<CompletionCriteriaT>(value)); return *this;}
+    ///@}
   private:
 
     AutoMLJobCompletionCriteria m_completionCriteria;

@@ -18,19 +18,7 @@ namespace DevOpsGuru
 namespace Model
 {
 
-AccountInsightHealth::AccountInsightHealth() : 
-    m_openProactiveInsights(0),
-    m_openProactiveInsightsHasBeenSet(false),
-    m_openReactiveInsights(0),
-    m_openReactiveInsightsHasBeenSet(false)
-{
-}
-
-AccountInsightHealth::AccountInsightHealth(JsonView jsonValue) : 
-    m_openProactiveInsights(0),
-    m_openProactiveInsightsHasBeenSet(false),
-    m_openReactiveInsights(0),
-    m_openReactiveInsightsHasBeenSet(false)
+AccountInsightHealth::AccountInsightHealth(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ AccountInsightHealth& AccountInsightHealth::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("OpenProactiveInsights"))
   {
     m_openProactiveInsights = jsonValue.GetInteger("OpenProactiveInsights");
-
     m_openProactiveInsightsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OpenReactiveInsights"))
   {
     m_openReactiveInsights = jsonValue.GetInteger("OpenReactiveInsights");
-
     m_openReactiveInsightsHasBeenSet = true;
   }
-
   return *this;
 }
 

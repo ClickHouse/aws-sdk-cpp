@@ -12,17 +12,6 @@ using namespace Aws::QuickSight::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateAnalysisRequest::UpdateAnalysisRequest() : 
-    m_awsAccountIdHasBeenSet(false),
-    m_analysisIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_sourceEntityHasBeenSet(false),
-    m_themeArnHasBeenSet(false),
-    m_definitionHasBeenSet(false)
-{
-}
-
 Aws::String UpdateAnalysisRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -54,6 +43,12 @@ Aws::String UpdateAnalysisRequest::SerializePayload() const
   if(m_definitionHasBeenSet)
   {
    payload.WithObject("Definition", m_definition.Jsonize());
+
+  }
+
+  if(m_validationStrategyHasBeenSet)
+  {
+   payload.WithObject("ValidationStrategy", m_validationStrategy.Jsonize());
 
   }
 

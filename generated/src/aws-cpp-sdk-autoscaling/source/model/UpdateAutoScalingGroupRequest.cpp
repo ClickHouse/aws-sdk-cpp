@@ -10,40 +10,6 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-UpdateAutoScalingGroupRequest::UpdateAutoScalingGroupRequest() : 
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_launchConfigurationNameHasBeenSet(false),
-    m_launchTemplateHasBeenSet(false),
-    m_mixedInstancesPolicyHasBeenSet(false),
-    m_minSize(0),
-    m_minSizeHasBeenSet(false),
-    m_maxSize(0),
-    m_maxSizeHasBeenSet(false),
-    m_desiredCapacity(0),
-    m_desiredCapacityHasBeenSet(false),
-    m_defaultCooldown(0),
-    m_defaultCooldownHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false),
-    m_healthCheckTypeHasBeenSet(false),
-    m_healthCheckGracePeriod(0),
-    m_healthCheckGracePeriodHasBeenSet(false),
-    m_placementGroupHasBeenSet(false),
-    m_vPCZoneIdentifierHasBeenSet(false),
-    m_terminationPoliciesHasBeenSet(false),
-    m_newInstancesProtectedFromScaleIn(false),
-    m_newInstancesProtectedFromScaleInHasBeenSet(false),
-    m_serviceLinkedRoleARNHasBeenSet(false),
-    m_maxInstanceLifetime(0),
-    m_maxInstanceLifetimeHasBeenSet(false),
-    m_capacityRebalance(false),
-    m_capacityRebalanceHasBeenSet(false),
-    m_contextHasBeenSet(false),
-    m_desiredCapacityTypeHasBeenSet(false),
-    m_defaultInstanceWarmup(0),
-    m_defaultInstanceWarmupHasBeenSet(false)
-{
-}
-
 Aws::String UpdateAutoScalingGroupRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -90,12 +56,19 @@ Aws::String UpdateAutoScalingGroupRequest::SerializePayload() const
 
   if(m_availabilityZonesHasBeenSet)
   {
-    unsigned availabilityZonesCount = 1;
-    for(auto& item : m_availabilityZones)
+    if (m_availabilityZones.empty())
     {
-      ss << "AvailabilityZones.member." << availabilityZonesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      availabilityZonesCount++;
+      ss << "AvailabilityZones=&";
+    }
+    else
+    {
+      unsigned availabilityZonesCount = 1;
+      for(auto& item : m_availabilityZones)
+      {
+        ss << "AvailabilityZones.member." << availabilityZonesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        availabilityZonesCount++;
+      }
     }
   }
 
@@ -121,12 +94,19 @@ Aws::String UpdateAutoScalingGroupRequest::SerializePayload() const
 
   if(m_terminationPoliciesHasBeenSet)
   {
-    unsigned terminationPoliciesCount = 1;
-    for(auto& item : m_terminationPolicies)
+    if (m_terminationPolicies.empty())
     {
-      ss << "TerminationPolicies.member." << terminationPoliciesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      terminationPoliciesCount++;
+      ss << "TerminationPolicies=&";
+    }
+    else
+    {
+      unsigned terminationPoliciesCount = 1;
+      for(auto& item : m_terminationPolicies)
+      {
+        ss << "TerminationPolicies.member." << terminationPoliciesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        terminationPoliciesCount++;
+      }
     }
   }
 
@@ -163,6 +143,31 @@ Aws::String UpdateAutoScalingGroupRequest::SerializePayload() const
   if(m_defaultInstanceWarmupHasBeenSet)
   {
     ss << "DefaultInstanceWarmup=" << m_defaultInstanceWarmup << "&";
+  }
+
+  if(m_instanceMaintenancePolicyHasBeenSet)
+  {
+    m_instanceMaintenancePolicy.OutputToStream(ss, "InstanceMaintenancePolicy");
+  }
+
+  if(m_availabilityZoneDistributionHasBeenSet)
+  {
+    m_availabilityZoneDistribution.OutputToStream(ss, "AvailabilityZoneDistribution");
+  }
+
+  if(m_availabilityZoneImpairmentPolicyHasBeenSet)
+  {
+    m_availabilityZoneImpairmentPolicy.OutputToStream(ss, "AvailabilityZoneImpairmentPolicy");
+  }
+
+  if(m_skipZonalShiftValidationHasBeenSet)
+  {
+    ss << "SkipZonalShiftValidation=" << std::boolalpha << m_skipZonalShiftValidation << "&";
+  }
+
+  if(m_capacityReservationSpecificationHasBeenSet)
+  {
+    m_capacityReservationSpecification.OutputToStream(ss, "CapacityReservationSpecification");
   }
 
   ss << "Version=2011-01-01";

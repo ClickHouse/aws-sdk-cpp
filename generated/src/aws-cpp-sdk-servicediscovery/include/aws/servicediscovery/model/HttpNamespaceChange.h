@@ -31,52 +31,23 @@ namespace Model
   class HttpNamespaceChange
   {
   public:
-    AWS_SERVICEDISCOVERY_API HttpNamespaceChange();
+    AWS_SERVICEDISCOVERY_API HttpNamespaceChange() = default;
     AWS_SERVICEDISCOVERY_API HttpNamespaceChange(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEDISCOVERY_API HttpNamespaceChange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEDISCOVERY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An updated description for the HTTP namespace.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>An updated description for the HTTP namespace.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>An updated description for the HTTP namespace.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>An updated description for the HTTP namespace.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>An updated description for the HTTP namespace.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>An updated description for the HTTP namespace.</p>
-     */
-    inline HttpNamespaceChange& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>An updated description for the HTTP namespace.</p>
-     */
-    inline HttpNamespaceChange& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>An updated description for the HTTP namespace.</p>
-     */
-    inline HttpNamespaceChange& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    HttpNamespaceChange& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_description;

@@ -33,85 +33,37 @@ namespace Model
   class NetworkFrameworkAttributes
   {
   public:
-    AWS_MANAGEDBLOCKCHAIN_API NetworkFrameworkAttributes();
+    AWS_MANAGEDBLOCKCHAIN_API NetworkFrameworkAttributes() = default;
     AWS_MANAGEDBLOCKCHAIN_API NetworkFrameworkAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDBLOCKCHAIN_API NetworkFrameworkAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDBLOCKCHAIN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Attributes of Hyperledger Fabric for a Managed Blockchain network that uses
      * Hyperledger Fabric.</p>
      */
-    inline const NetworkFabricAttributes& GetFabric() const{ return m_fabric; }
-
-    /**
-     * <p>Attributes of Hyperledger Fabric for a Managed Blockchain network that uses
-     * Hyperledger Fabric.</p>
-     */
+    inline const NetworkFabricAttributes& GetFabric() const { return m_fabric; }
     inline bool FabricHasBeenSet() const { return m_fabricHasBeenSet; }
+    template<typename FabricT = NetworkFabricAttributes>
+    void SetFabric(FabricT&& value) { m_fabricHasBeenSet = true; m_fabric = std::forward<FabricT>(value); }
+    template<typename FabricT = NetworkFabricAttributes>
+    NetworkFrameworkAttributes& WithFabric(FabricT&& value) { SetFabric(std::forward<FabricT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Attributes of Hyperledger Fabric for a Managed Blockchain network that uses
-     * Hyperledger Fabric.</p>
-     */
-    inline void SetFabric(const NetworkFabricAttributes& value) { m_fabricHasBeenSet = true; m_fabric = value; }
-
-    /**
-     * <p>Attributes of Hyperledger Fabric for a Managed Blockchain network that uses
-     * Hyperledger Fabric.</p>
-     */
-    inline void SetFabric(NetworkFabricAttributes&& value) { m_fabricHasBeenSet = true; m_fabric = std::move(value); }
-
-    /**
-     * <p>Attributes of Hyperledger Fabric for a Managed Blockchain network that uses
-     * Hyperledger Fabric.</p>
-     */
-    inline NetworkFrameworkAttributes& WithFabric(const NetworkFabricAttributes& value) { SetFabric(value); return *this;}
-
-    /**
-     * <p>Attributes of Hyperledger Fabric for a Managed Blockchain network that uses
-     * Hyperledger Fabric.</p>
-     */
-    inline NetworkFrameworkAttributes& WithFabric(NetworkFabricAttributes&& value) { SetFabric(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Attributes of an Ethereum network for Managed Blockchain resources
      * participating in an Ethereum network. </p>
      */
-    inline const NetworkEthereumAttributes& GetEthereum() const{ return m_ethereum; }
-
-    /**
-     * <p>Attributes of an Ethereum network for Managed Blockchain resources
-     * participating in an Ethereum network. </p>
-     */
+    inline const NetworkEthereumAttributes& GetEthereum() const { return m_ethereum; }
     inline bool EthereumHasBeenSet() const { return m_ethereumHasBeenSet; }
-
-    /**
-     * <p>Attributes of an Ethereum network for Managed Blockchain resources
-     * participating in an Ethereum network. </p>
-     */
-    inline void SetEthereum(const NetworkEthereumAttributes& value) { m_ethereumHasBeenSet = true; m_ethereum = value; }
-
-    /**
-     * <p>Attributes of an Ethereum network for Managed Blockchain resources
-     * participating in an Ethereum network. </p>
-     */
-    inline void SetEthereum(NetworkEthereumAttributes&& value) { m_ethereumHasBeenSet = true; m_ethereum = std::move(value); }
-
-    /**
-     * <p>Attributes of an Ethereum network for Managed Blockchain resources
-     * participating in an Ethereum network. </p>
-     */
-    inline NetworkFrameworkAttributes& WithEthereum(const NetworkEthereumAttributes& value) { SetEthereum(value); return *this;}
-
-    /**
-     * <p>Attributes of an Ethereum network for Managed Blockchain resources
-     * participating in an Ethereum network. </p>
-     */
-    inline NetworkFrameworkAttributes& WithEthereum(NetworkEthereumAttributes&& value) { SetEthereum(std::move(value)); return *this;}
-
+    template<typename EthereumT = NetworkEthereumAttributes>
+    void SetEthereum(EthereumT&& value) { m_ethereumHasBeenSet = true; m_ethereum = std::forward<EthereumT>(value); }
+    template<typename EthereumT = NetworkEthereumAttributes>
+    NetworkFrameworkAttributes& WithEthereum(EthereumT&& value) { SetEthereum(std::forward<EthereumT>(value)); return *this;}
+    ///@}
   private:
 
     NetworkFabricAttributes m_fabric;

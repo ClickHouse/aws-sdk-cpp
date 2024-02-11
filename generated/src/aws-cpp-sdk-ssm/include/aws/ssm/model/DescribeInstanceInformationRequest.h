@@ -24,7 +24,7 @@ namespace Model
   class DescribeInstanceInformationRequest : public SSMRequest
   {
   public:
-    AWS_SSM_API DescribeInstanceInformationRequest();
+    AWS_SSM_API DescribeInstanceInformationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,6 +37,7 @@ namespace Model
     AWS_SSM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>This is a legacy method. We recommend that you don't use this method.
      * Instead, use the <code>Filters</code> data type. <code>Filters</code> enables
@@ -45,221 +46,58 @@ namespace Model
      * <code>InstanceInformationFilterList</code> and <code>Filters</code> leads to an
      * exception error. </p> 
      */
-    inline const Aws::Vector<InstanceInformationFilter>& GetInstanceInformationFilterList() const{ return m_instanceInformationFilterList; }
-
-    /**
-     * <p>This is a legacy method. We recommend that you don't use this method.
-     * Instead, use the <code>Filters</code> data type. <code>Filters</code> enables
-     * you to return node information by filtering based on tags applied to managed
-     * nodes.</p>  <p>Attempting to use
-     * <code>InstanceInformationFilterList</code> and <code>Filters</code> leads to an
-     * exception error. </p> 
-     */
+    inline const Aws::Vector<InstanceInformationFilter>& GetInstanceInformationFilterList() const { return m_instanceInformationFilterList; }
     inline bool InstanceInformationFilterListHasBeenSet() const { return m_instanceInformationFilterListHasBeenSet; }
+    template<typename InstanceInformationFilterListT = Aws::Vector<InstanceInformationFilter>>
+    void SetInstanceInformationFilterList(InstanceInformationFilterListT&& value) { m_instanceInformationFilterListHasBeenSet = true; m_instanceInformationFilterList = std::forward<InstanceInformationFilterListT>(value); }
+    template<typename InstanceInformationFilterListT = Aws::Vector<InstanceInformationFilter>>
+    DescribeInstanceInformationRequest& WithInstanceInformationFilterList(InstanceInformationFilterListT&& value) { SetInstanceInformationFilterList(std::forward<InstanceInformationFilterListT>(value)); return *this;}
+    template<typename InstanceInformationFilterListT = InstanceInformationFilter>
+    DescribeInstanceInformationRequest& AddInstanceInformationFilterList(InstanceInformationFilterListT&& value) { m_instanceInformationFilterListHasBeenSet = true; m_instanceInformationFilterList.emplace_back(std::forward<InstanceInformationFilterListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>This is a legacy method. We recommend that you don't use this method.
-     * Instead, use the <code>Filters</code> data type. <code>Filters</code> enables
-     * you to return node information by filtering based on tags applied to managed
-     * nodes.</p>  <p>Attempting to use
-     * <code>InstanceInformationFilterList</code> and <code>Filters</code> leads to an
-     * exception error. </p> 
-     */
-    inline void SetInstanceInformationFilterList(const Aws::Vector<InstanceInformationFilter>& value) { m_instanceInformationFilterListHasBeenSet = true; m_instanceInformationFilterList = value; }
-
-    /**
-     * <p>This is a legacy method. We recommend that you don't use this method.
-     * Instead, use the <code>Filters</code> data type. <code>Filters</code> enables
-     * you to return node information by filtering based on tags applied to managed
-     * nodes.</p>  <p>Attempting to use
-     * <code>InstanceInformationFilterList</code> and <code>Filters</code> leads to an
-     * exception error. </p> 
-     */
-    inline void SetInstanceInformationFilterList(Aws::Vector<InstanceInformationFilter>&& value) { m_instanceInformationFilterListHasBeenSet = true; m_instanceInformationFilterList = std::move(value); }
-
-    /**
-     * <p>This is a legacy method. We recommend that you don't use this method.
-     * Instead, use the <code>Filters</code> data type. <code>Filters</code> enables
-     * you to return node information by filtering based on tags applied to managed
-     * nodes.</p>  <p>Attempting to use
-     * <code>InstanceInformationFilterList</code> and <code>Filters</code> leads to an
-     * exception error. </p> 
-     */
-    inline DescribeInstanceInformationRequest& WithInstanceInformationFilterList(const Aws::Vector<InstanceInformationFilter>& value) { SetInstanceInformationFilterList(value); return *this;}
-
-    /**
-     * <p>This is a legacy method. We recommend that you don't use this method.
-     * Instead, use the <code>Filters</code> data type. <code>Filters</code> enables
-     * you to return node information by filtering based on tags applied to managed
-     * nodes.</p>  <p>Attempting to use
-     * <code>InstanceInformationFilterList</code> and <code>Filters</code> leads to an
-     * exception error. </p> 
-     */
-    inline DescribeInstanceInformationRequest& WithInstanceInformationFilterList(Aws::Vector<InstanceInformationFilter>&& value) { SetInstanceInformationFilterList(std::move(value)); return *this;}
-
-    /**
-     * <p>This is a legacy method. We recommend that you don't use this method.
-     * Instead, use the <code>Filters</code> data type. <code>Filters</code> enables
-     * you to return node information by filtering based on tags applied to managed
-     * nodes.</p>  <p>Attempting to use
-     * <code>InstanceInformationFilterList</code> and <code>Filters</code> leads to an
-     * exception error. </p> 
-     */
-    inline DescribeInstanceInformationRequest& AddInstanceInformationFilterList(const InstanceInformationFilter& value) { m_instanceInformationFilterListHasBeenSet = true; m_instanceInformationFilterList.push_back(value); return *this; }
-
-    /**
-     * <p>This is a legacy method. We recommend that you don't use this method.
-     * Instead, use the <code>Filters</code> data type. <code>Filters</code> enables
-     * you to return node information by filtering based on tags applied to managed
-     * nodes.</p>  <p>Attempting to use
-     * <code>InstanceInformationFilterList</code> and <code>Filters</code> leads to an
-     * exception error. </p> 
-     */
-    inline DescribeInstanceInformationRequest& AddInstanceInformationFilterList(InstanceInformationFilter&& value) { m_instanceInformationFilterListHasBeenSet = true; m_instanceInformationFilterList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>One or more filters. Use a filter to return a more specific list of managed
-     * nodes. You can filter based on tags applied to your managed nodes. Use this
-     * <code>Filters</code> data type instead of
-     * <code>InstanceInformationFilterList</code>, which is deprecated.</p>
+     * nodes. You can filter based on tags applied to your managed nodes. Tag filters
+     * can't be combined with other filter types. Use this <code>Filters</code> data
+     * type instead of <code>InstanceInformationFilterList</code>, which is
+     * deprecated.</p>
      */
-    inline const Aws::Vector<InstanceInformationStringFilter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>One or more filters. Use a filter to return a more specific list of managed
-     * nodes. You can filter based on tags applied to your managed nodes. Use this
-     * <code>Filters</code> data type instead of
-     * <code>InstanceInformationFilterList</code>, which is deprecated.</p>
-     */
+    inline const Aws::Vector<InstanceInformationStringFilter>& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = Aws::Vector<InstanceInformationStringFilter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<InstanceInformationStringFilter>>
+    DescribeInstanceInformationRequest& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = InstanceInformationStringFilter>
+    DescribeInstanceInformationRequest& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>One or more filters. Use a filter to return a more specific list of managed
-     * nodes. You can filter based on tags applied to your managed nodes. Use this
-     * <code>Filters</code> data type instead of
-     * <code>InstanceInformationFilterList</code>, which is deprecated.</p>
-     */
-    inline void SetFilters(const Aws::Vector<InstanceInformationStringFilter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>One or more filters. Use a filter to return a more specific list of managed
-     * nodes. You can filter based on tags applied to your managed nodes. Use this
-     * <code>Filters</code> data type instead of
-     * <code>InstanceInformationFilterList</code>, which is deprecated.</p>
-     */
-    inline void SetFilters(Aws::Vector<InstanceInformationStringFilter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>One or more filters. Use a filter to return a more specific list of managed
-     * nodes. You can filter based on tags applied to your managed nodes. Use this
-     * <code>Filters</code> data type instead of
-     * <code>InstanceInformationFilterList</code>, which is deprecated.</p>
-     */
-    inline DescribeInstanceInformationRequest& WithFilters(const Aws::Vector<InstanceInformationStringFilter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>One or more filters. Use a filter to return a more specific list of managed
-     * nodes. You can filter based on tags applied to your managed nodes. Use this
-     * <code>Filters</code> data type instead of
-     * <code>InstanceInformationFilterList</code>, which is deprecated.</p>
-     */
-    inline DescribeInstanceInformationRequest& WithFilters(Aws::Vector<InstanceInformationStringFilter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>One or more filters. Use a filter to return a more specific list of managed
-     * nodes. You can filter based on tags applied to your managed nodes. Use this
-     * <code>Filters</code> data type instead of
-     * <code>InstanceInformationFilterList</code>, which is deprecated.</p>
-     */
-    inline DescribeInstanceInformationRequest& AddFilters(const InstanceInformationStringFilter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>One or more filters. Use a filter to return a more specific list of managed
-     * nodes. You can filter based on tags applied to your managed nodes. Use this
-     * <code>Filters</code> data type instead of
-     * <code>InstanceInformationFilterList</code>, which is deprecated.</p>
-     */
-    inline DescribeInstanceInformationRequest& AddFilters(InstanceInformationStringFilter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The maximum number of items to return for this call. The call also returns a
      * token that you can specify in a subsequent call to get the next set of results.
-     * </p>
+     * The default value is 10 items. </p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of items to return for this call. The call also returns a
-     * token that you can specify in a subsequent call to get the next set of results.
-     * </p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of items to return for this call. The call also returns a
-     * token that you can specify in a subsequent call to get the next set of results.
-     * </p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of items to return for this call. The call also returns a
-     * token that you can specify in a subsequent call to get the next set of results.
-     * </p>
-     */
     inline DescribeInstanceInformationRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The token for the next set of items to return. (You received this token from
      * a previous call.)</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline DescribeInstanceInformationRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline DescribeInstanceInformationRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline DescribeInstanceInformationRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeInstanceInformationRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<InstanceInformationFilter> m_instanceInformationFilterList;
@@ -268,7 +106,7 @@ namespace Model
     Aws::Vector<InstanceInformationStringFilter> m_filters;
     bool m_filtersHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

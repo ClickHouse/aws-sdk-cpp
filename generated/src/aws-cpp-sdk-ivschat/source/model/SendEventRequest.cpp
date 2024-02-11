@@ -12,25 +12,13 @@ using namespace Aws::ivschat::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-SendEventRequest::SendEventRequest() : 
-    m_attributesHasBeenSet(false),
-    m_eventNameHasBeenSet(false),
-    m_roomIdentifierHasBeenSet(false)
-{
-}
-
 Aws::String SendEventRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_attributesHasBeenSet)
+  if(m_roomIdentifierHasBeenSet)
   {
-   JsonValue attributesJsonMap;
-   for(auto& attributesItem : m_attributes)
-   {
-     attributesJsonMap.WithString(attributesItem.first, attributesItem.second);
-   }
-   payload.WithObject("attributes", std::move(attributesJsonMap));
+   payload.WithString("roomIdentifier", m_roomIdentifier);
 
   }
 
@@ -40,9 +28,14 @@ Aws::String SendEventRequest::SerializePayload() const
 
   }
 
-  if(m_roomIdentifierHasBeenSet)
+  if(m_attributesHasBeenSet)
   {
-   payload.WithString("roomIdentifier", m_roomIdentifier);
+   JsonValue attributesJsonMap;
+   for(auto& attributesItem : m_attributes)
+   {
+     attributesJsonMap.WithString(attributesItem.first, attributesItem.second);
+   }
+   payload.WithObject("attributes", std::move(attributesJsonMap));
 
   }
 

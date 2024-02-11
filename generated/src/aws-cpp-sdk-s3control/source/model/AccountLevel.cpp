@@ -20,21 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-AccountLevel::AccountLevel() : 
-    m_activityMetricsHasBeenSet(false),
-    m_bucketLevelHasBeenSet(false),
-    m_advancedCostOptimizationMetricsHasBeenSet(false),
-    m_advancedDataProtectionMetricsHasBeenSet(false),
-    m_detailedStatusCodesMetricsHasBeenSet(false)
-{
-}
-
-AccountLevel::AccountLevel(const XmlNode& xmlNode) : 
-    m_activityMetricsHasBeenSet(false),
-    m_bucketLevelHasBeenSet(false),
-    m_advancedCostOptimizationMetricsHasBeenSet(false),
-    m_advancedDataProtectionMetricsHasBeenSet(false),
-    m_detailedStatusCodesMetricsHasBeenSet(false)
+AccountLevel::AccountLevel(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -75,6 +61,12 @@ AccountLevel& AccountLevel::operator =(const XmlNode& xmlNode)
       m_detailedStatusCodesMetrics = detailedStatusCodesMetricsNode;
       m_detailedStatusCodesMetricsHasBeenSet = true;
     }
+    XmlNode storageLensGroupLevelNode = resultNode.FirstChild("StorageLensGroupLevel");
+    if(!storageLensGroupLevelNode.IsNull())
+    {
+      m_storageLensGroupLevel = storageLensGroupLevelNode;
+      m_storageLensGroupLevelHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -111,6 +103,12 @@ void AccountLevel::AddToNode(XmlNode& parentNode) const
   {
    XmlNode detailedStatusCodesMetricsNode = parentNode.CreateChildElement("DetailedStatusCodesMetrics");
    m_detailedStatusCodesMetrics.AddToNode(detailedStatusCodesMetricsNode);
+  }
+
+  if(m_storageLensGroupLevelHasBeenSet)
+  {
+   XmlNode storageLensGroupLevelNode = parentNode.CreateChildElement("StorageLensGroupLevel");
+   m_storageLensGroupLevel.AddToNode(storageLensGroupLevelNode);
   }
 
 }

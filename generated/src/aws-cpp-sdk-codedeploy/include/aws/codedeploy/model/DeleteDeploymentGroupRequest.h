@@ -25,7 +25,7 @@ namespace Model
   class DeleteDeploymentGroupRequest : public CodeDeployRequest
   {
   public:
-    AWS_CODEDEPLOY_API DeleteDeploymentGroupRequest();
+    AWS_CODEDEPLOY_API DeleteDeploymentGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,95 +38,30 @@ namespace Model
     AWS_CODEDEPLOY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The name of an CodeDeploy application associated with the IAM user or Amazon
-     * Web Services account.</p>
+     * <p>The name of an CodeDeploy application associated with the user or Amazon Web
+     * Services account.</p>
      */
-    inline const Aws::String& GetApplicationName() const{ return m_applicationName; }
-
-    /**
-     * <p>The name of an CodeDeploy application associated with the IAM user or Amazon
-     * Web Services account.</p>
-     */
+    inline const Aws::String& GetApplicationName() const { return m_applicationName; }
     inline bool ApplicationNameHasBeenSet() const { return m_applicationNameHasBeenSet; }
+    template<typename ApplicationNameT = Aws::String>
+    void SetApplicationName(ApplicationNameT&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::forward<ApplicationNameT>(value); }
+    template<typename ApplicationNameT = Aws::String>
+    DeleteDeploymentGroupRequest& WithApplicationName(ApplicationNameT&& value) { SetApplicationName(std::forward<ApplicationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of an CodeDeploy application associated with the IAM user or Amazon
-     * Web Services account.</p>
-     */
-    inline void SetApplicationName(const Aws::String& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
-
-    /**
-     * <p>The name of an CodeDeploy application associated with the IAM user or Amazon
-     * Web Services account.</p>
-     */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
-
-    /**
-     * <p>The name of an CodeDeploy application associated with the IAM user or Amazon
-     * Web Services account.</p>
-     */
-    inline void SetApplicationName(const char* value) { m_applicationNameHasBeenSet = true; m_applicationName.assign(value); }
-
-    /**
-     * <p>The name of an CodeDeploy application associated with the IAM user or Amazon
-     * Web Services account.</p>
-     */
-    inline DeleteDeploymentGroupRequest& WithApplicationName(const Aws::String& value) { SetApplicationName(value); return *this;}
-
-    /**
-     * <p>The name of an CodeDeploy application associated with the IAM user or Amazon
-     * Web Services account.</p>
-     */
-    inline DeleteDeploymentGroupRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of an CodeDeploy application associated with the IAM user or Amazon
-     * Web Services account.</p>
-     */
-    inline DeleteDeploymentGroupRequest& WithApplicationName(const char* value) { SetApplicationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of a deployment group for the specified application.</p>
      */
-    inline const Aws::String& GetDeploymentGroupName() const{ return m_deploymentGroupName; }
-
-    /**
-     * <p>The name of a deployment group for the specified application.</p>
-     */
+    inline const Aws::String& GetDeploymentGroupName() const { return m_deploymentGroupName; }
     inline bool DeploymentGroupNameHasBeenSet() const { return m_deploymentGroupNameHasBeenSet; }
-
-    /**
-     * <p>The name of a deployment group for the specified application.</p>
-     */
-    inline void SetDeploymentGroupName(const Aws::String& value) { m_deploymentGroupNameHasBeenSet = true; m_deploymentGroupName = value; }
-
-    /**
-     * <p>The name of a deployment group for the specified application.</p>
-     */
-    inline void SetDeploymentGroupName(Aws::String&& value) { m_deploymentGroupNameHasBeenSet = true; m_deploymentGroupName = std::move(value); }
-
-    /**
-     * <p>The name of a deployment group for the specified application.</p>
-     */
-    inline void SetDeploymentGroupName(const char* value) { m_deploymentGroupNameHasBeenSet = true; m_deploymentGroupName.assign(value); }
-
-    /**
-     * <p>The name of a deployment group for the specified application.</p>
-     */
-    inline DeleteDeploymentGroupRequest& WithDeploymentGroupName(const Aws::String& value) { SetDeploymentGroupName(value); return *this;}
-
-    /**
-     * <p>The name of a deployment group for the specified application.</p>
-     */
-    inline DeleteDeploymentGroupRequest& WithDeploymentGroupName(Aws::String&& value) { SetDeploymentGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a deployment group for the specified application.</p>
-     */
-    inline DeleteDeploymentGroupRequest& WithDeploymentGroupName(const char* value) { SetDeploymentGroupName(value); return *this;}
-
+    template<typename DeploymentGroupNameT = Aws::String>
+    void SetDeploymentGroupName(DeploymentGroupNameT&& value) { m_deploymentGroupNameHasBeenSet = true; m_deploymentGroupName = std::forward<DeploymentGroupNameT>(value); }
+    template<typename DeploymentGroupNameT = Aws::String>
+    DeleteDeploymentGroupRequest& WithDeploymentGroupName(DeploymentGroupNameT&& value) { SetDeploymentGroupName(std::forward<DeploymentGroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationName;

@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-Monitoring::Monitoring() : 
-    m_state(MonitoringState::NOT_SET),
-    m_stateHasBeenSet(false)
-{
-}
-
-Monitoring::Monitoring(const XmlNode& xmlNode) : 
-    m_state(MonitoringState::NOT_SET),
-    m_stateHasBeenSet(false)
+Monitoring::Monitoring(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -42,7 +34,7 @@ Monitoring& Monitoring::operator =(const XmlNode& xmlNode)
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = MonitoringStateMapper::GetMonitoringStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = MonitoringStateMapper::GetMonitoringStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
   }
@@ -54,7 +46,7 @@ void Monitoring::OutputToStream(Aws::OStream& oStream, const char* location, uns
 {
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << MonitoringStateMapper::GetNameForMonitoringState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(MonitoringStateMapper::GetNameForMonitoringState(m_state)) << "&";
   }
 
 }
@@ -63,7 +55,7 @@ void Monitoring::OutputToStream(Aws::OStream& oStream, const char* location) con
 {
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << MonitoringStateMapper::GetNameForMonitoringState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(MonitoringStateMapper::GetNameForMonitoringState(m_state)) << "&";
   }
 }
 

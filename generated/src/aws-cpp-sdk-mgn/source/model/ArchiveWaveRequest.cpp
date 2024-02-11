@@ -12,14 +12,15 @@ using namespace Aws::mgn::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ArchiveWaveRequest::ArchiveWaveRequest() : 
-    m_waveIDHasBeenSet(false)
-{
-}
-
 Aws::String ArchiveWaveRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_accountIDHasBeenSet)
+  {
+   payload.WithString("accountID", m_accountID);
+
+  }
 
   if(m_waveIDHasBeenSet)
   {

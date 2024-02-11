@@ -12,14 +12,6 @@ using namespace Aws::NetworkFirewall::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeRuleGroupRequest::DescribeRuleGroupRequest() : 
-    m_ruleGroupNameHasBeenSet(false),
-    m_ruleGroupArnHasBeenSet(false),
-    m_type(RuleGroupType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
 Aws::String DescribeRuleGroupRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,6 +31,12 @@ Aws::String DescribeRuleGroupRequest::SerializePayload() const
   if(m_typeHasBeenSet)
   {
    payload.WithString("Type", RuleGroupTypeMapper::GetNameForRuleGroupType(m_type));
+  }
+
+  if(m_analyzeRuleGroupHasBeenSet)
+  {
+   payload.WithBool("AnalyzeRuleGroup", m_analyzeRuleGroup);
+
   }
 
   return payload.View().WriteReadable();

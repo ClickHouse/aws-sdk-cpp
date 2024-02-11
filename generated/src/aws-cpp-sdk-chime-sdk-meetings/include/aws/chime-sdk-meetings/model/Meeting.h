@@ -34,159 +34,52 @@ namespace Model
   class Meeting
   {
   public:
-    AWS_CHIMESDKMEETINGS_API Meeting();
+    AWS_CHIMESDKMEETINGS_API Meeting() = default;
     AWS_CHIMESDKMEETINGS_API Meeting(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEETINGS_API Meeting& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEETINGS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Chime SDK meeting ID.</p>
      */
-    inline const Aws::String& GetMeetingId() const{ return m_meetingId; }
-
-    /**
-     * <p>The Amazon Chime SDK meeting ID.</p>
-     */
+    inline const Aws::String& GetMeetingId() const { return m_meetingId; }
     inline bool MeetingIdHasBeenSet() const { return m_meetingIdHasBeenSet; }
+    template<typename MeetingIdT = Aws::String>
+    void SetMeetingId(MeetingIdT&& value) { m_meetingIdHasBeenSet = true; m_meetingId = std::forward<MeetingIdT>(value); }
+    template<typename MeetingIdT = Aws::String>
+    Meeting& WithMeetingId(MeetingIdT&& value) { SetMeetingId(std::forward<MeetingIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Chime SDK meeting ID.</p>
-     */
-    inline void SetMeetingId(const Aws::String& value) { m_meetingIdHasBeenSet = true; m_meetingId = value; }
-
-    /**
-     * <p>The Amazon Chime SDK meeting ID.</p>
-     */
-    inline void SetMeetingId(Aws::String&& value) { m_meetingIdHasBeenSet = true; m_meetingId = std::move(value); }
-
-    /**
-     * <p>The Amazon Chime SDK meeting ID.</p>
-     */
-    inline void SetMeetingId(const char* value) { m_meetingIdHasBeenSet = true; m_meetingId.assign(value); }
-
-    /**
-     * <p>The Amazon Chime SDK meeting ID.</p>
-     */
-    inline Meeting& WithMeetingId(const Aws::String& value) { SetMeetingId(value); return *this;}
-
-    /**
-     * <p>The Amazon Chime SDK meeting ID.</p>
-     */
-    inline Meeting& WithMeetingId(Aws::String&& value) { SetMeetingId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Chime SDK meeting ID.</p>
-     */
-    inline Meeting& WithMeetingId(const char* value) { SetMeetingId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Reserved.</p>
      */
-    inline const Aws::String& GetMeetingHostId() const{ return m_meetingHostId; }
-
-    /**
-     * <p>Reserved.</p>
-     */
+    inline const Aws::String& GetMeetingHostId() const { return m_meetingHostId; }
     inline bool MeetingHostIdHasBeenSet() const { return m_meetingHostIdHasBeenSet; }
+    template<typename MeetingHostIdT = Aws::String>
+    void SetMeetingHostId(MeetingHostIdT&& value) { m_meetingHostIdHasBeenSet = true; m_meetingHostId = std::forward<MeetingHostIdT>(value); }
+    template<typename MeetingHostIdT = Aws::String>
+    Meeting& WithMeetingHostId(MeetingHostIdT&& value) { SetMeetingHostId(std::forward<MeetingHostIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Reserved.</p>
-     */
-    inline void SetMeetingHostId(const Aws::String& value) { m_meetingHostIdHasBeenSet = true; m_meetingHostId = value; }
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline void SetMeetingHostId(Aws::String&& value) { m_meetingHostIdHasBeenSet = true; m_meetingHostId = std::move(value); }
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline void SetMeetingHostId(const char* value) { m_meetingHostIdHasBeenSet = true; m_meetingHostId.assign(value); }
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline Meeting& WithMeetingHostId(const Aws::String& value) { SetMeetingHostId(value); return *this;}
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline Meeting& WithMeetingHostId(Aws::String&& value) { SetMeetingHostId(std::move(value)); return *this;}
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline Meeting& WithMeetingHostId(const char* value) { SetMeetingHostId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The external meeting ID.</p> <p>Pattern:
      * <code>[-_&amp;@+=,(){}\[\]\/«».:|'"#a-zA-Z0-9À-ÿ\s]*</code> </p> <p>Values that
      * begin with <code>aws:</code> are reserved. You can't configure a value that uses
      * this prefix. Case insensitive.</p>
      */
-    inline const Aws::String& GetExternalMeetingId() const{ return m_externalMeetingId; }
-
-    /**
-     * <p>The external meeting ID.</p> <p>Pattern:
-     * <code>[-_&amp;@+=,(){}\[\]\/«».:|'"#a-zA-Z0-9À-ÿ\s]*</code> </p> <p>Values that
-     * begin with <code>aws:</code> are reserved. You can't configure a value that uses
-     * this prefix. Case insensitive.</p>
-     */
+    inline const Aws::String& GetExternalMeetingId() const { return m_externalMeetingId; }
     inline bool ExternalMeetingIdHasBeenSet() const { return m_externalMeetingIdHasBeenSet; }
+    template<typename ExternalMeetingIdT = Aws::String>
+    void SetExternalMeetingId(ExternalMeetingIdT&& value) { m_externalMeetingIdHasBeenSet = true; m_externalMeetingId = std::forward<ExternalMeetingIdT>(value); }
+    template<typename ExternalMeetingIdT = Aws::String>
+    Meeting& WithExternalMeetingId(ExternalMeetingIdT&& value) { SetExternalMeetingId(std::forward<ExternalMeetingIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The external meeting ID.</p> <p>Pattern:
-     * <code>[-_&amp;@+=,(){}\[\]\/«».:|'"#a-zA-Z0-9À-ÿ\s]*</code> </p> <p>Values that
-     * begin with <code>aws:</code> are reserved. You can't configure a value that uses
-     * this prefix. Case insensitive.</p>
-     */
-    inline void SetExternalMeetingId(const Aws::String& value) { m_externalMeetingIdHasBeenSet = true; m_externalMeetingId = value; }
-
-    /**
-     * <p>The external meeting ID.</p> <p>Pattern:
-     * <code>[-_&amp;@+=,(){}\[\]\/«».:|'"#a-zA-Z0-9À-ÿ\s]*</code> </p> <p>Values that
-     * begin with <code>aws:</code> are reserved. You can't configure a value that uses
-     * this prefix. Case insensitive.</p>
-     */
-    inline void SetExternalMeetingId(Aws::String&& value) { m_externalMeetingIdHasBeenSet = true; m_externalMeetingId = std::move(value); }
-
-    /**
-     * <p>The external meeting ID.</p> <p>Pattern:
-     * <code>[-_&amp;@+=,(){}\[\]\/«».:|'"#a-zA-Z0-9À-ÿ\s]*</code> </p> <p>Values that
-     * begin with <code>aws:</code> are reserved. You can't configure a value that uses
-     * this prefix. Case insensitive.</p>
-     */
-    inline void SetExternalMeetingId(const char* value) { m_externalMeetingIdHasBeenSet = true; m_externalMeetingId.assign(value); }
-
-    /**
-     * <p>The external meeting ID.</p> <p>Pattern:
-     * <code>[-_&amp;@+=,(){}\[\]\/«».:|'"#a-zA-Z0-9À-ÿ\s]*</code> </p> <p>Values that
-     * begin with <code>aws:</code> are reserved. You can't configure a value that uses
-     * this prefix. Case insensitive.</p>
-     */
-    inline Meeting& WithExternalMeetingId(const Aws::String& value) { SetExternalMeetingId(value); return *this;}
-
-    /**
-     * <p>The external meeting ID.</p> <p>Pattern:
-     * <code>[-_&amp;@+=,(){}\[\]\/«».:|'"#a-zA-Z0-9À-ÿ\s]*</code> </p> <p>Values that
-     * begin with <code>aws:</code> are reserved. You can't configure a value that uses
-     * this prefix. Case insensitive.</p>
-     */
-    inline Meeting& WithExternalMeetingId(Aws::String&& value) { SetExternalMeetingId(std::move(value)); return *this;}
-
-    /**
-     * <p>The external meeting ID.</p> <p>Pattern:
-     * <code>[-_&amp;@+=,(){}\[\]\/«».:|'"#a-zA-Z0-9À-ÿ\s]*</code> </p> <p>Values that
-     * begin with <code>aws:</code> are reserved. You can't configure a value that uses
-     * this prefix. Case insensitive.</p>
-     */
-    inline Meeting& WithExternalMeetingId(const char* value) { SetExternalMeetingId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Region in which you create the meeting. Available values:
      * <code>af-south-1</code>, <code>ap-northeast-1</code>,
@@ -196,307 +89,79 @@ namespace Model
      * <code>eu-south-1</code>, <code>eu-west-1</code>, <code>eu-west-2</code>,
      * <code>eu-west-3</code>, <code>sa-east-1</code>, <code>us-east-1</code>,
      * <code>us-east-2</code>, <code>us-west-1</code>, <code>us-west-2</code>.</p>
-     * <p>Available values in AWS GovCloud (US) Regions: <code>us-gov-east-1</code>,
-     * <code>us-gov-west-1</code>.</p>
+     * <p>Available values in Amazon Web Services GovCloud (US) Regions:
+     * <code>us-gov-east-1</code>, <code>us-gov-west-1</code>.</p>
      */
-    inline const Aws::String& GetMediaRegion() const{ return m_mediaRegion; }
-
-    /**
-     * <p>The Region in which you create the meeting. Available values:
-     * <code>af-south-1</code>, <code>ap-northeast-1</code>,
-     * <code>ap-northeast-2</code>, <code>ap-south-1</code>,
-     * <code>ap-southeast-1</code>, <code>ap-southeast-2</code>,
-     * <code>ca-central-1</code>, <code>eu-central-1</code>, <code>eu-north-1</code>,
-     * <code>eu-south-1</code>, <code>eu-west-1</code>, <code>eu-west-2</code>,
-     * <code>eu-west-3</code>, <code>sa-east-1</code>, <code>us-east-1</code>,
-     * <code>us-east-2</code>, <code>us-west-1</code>, <code>us-west-2</code>.</p>
-     * <p>Available values in AWS GovCloud (US) Regions: <code>us-gov-east-1</code>,
-     * <code>us-gov-west-1</code>.</p>
-     */
+    inline const Aws::String& GetMediaRegion() const { return m_mediaRegion; }
     inline bool MediaRegionHasBeenSet() const { return m_mediaRegionHasBeenSet; }
+    template<typename MediaRegionT = Aws::String>
+    void SetMediaRegion(MediaRegionT&& value) { m_mediaRegionHasBeenSet = true; m_mediaRegion = std::forward<MediaRegionT>(value); }
+    template<typename MediaRegionT = Aws::String>
+    Meeting& WithMediaRegion(MediaRegionT&& value) { SetMediaRegion(std::forward<MediaRegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Region in which you create the meeting. Available values:
-     * <code>af-south-1</code>, <code>ap-northeast-1</code>,
-     * <code>ap-northeast-2</code>, <code>ap-south-1</code>,
-     * <code>ap-southeast-1</code>, <code>ap-southeast-2</code>,
-     * <code>ca-central-1</code>, <code>eu-central-1</code>, <code>eu-north-1</code>,
-     * <code>eu-south-1</code>, <code>eu-west-1</code>, <code>eu-west-2</code>,
-     * <code>eu-west-3</code>, <code>sa-east-1</code>, <code>us-east-1</code>,
-     * <code>us-east-2</code>, <code>us-west-1</code>, <code>us-west-2</code>.</p>
-     * <p>Available values in AWS GovCloud (US) Regions: <code>us-gov-east-1</code>,
-     * <code>us-gov-west-1</code>.</p>
-     */
-    inline void SetMediaRegion(const Aws::String& value) { m_mediaRegionHasBeenSet = true; m_mediaRegion = value; }
-
-    /**
-     * <p>The Region in which you create the meeting. Available values:
-     * <code>af-south-1</code>, <code>ap-northeast-1</code>,
-     * <code>ap-northeast-2</code>, <code>ap-south-1</code>,
-     * <code>ap-southeast-1</code>, <code>ap-southeast-2</code>,
-     * <code>ca-central-1</code>, <code>eu-central-1</code>, <code>eu-north-1</code>,
-     * <code>eu-south-1</code>, <code>eu-west-1</code>, <code>eu-west-2</code>,
-     * <code>eu-west-3</code>, <code>sa-east-1</code>, <code>us-east-1</code>,
-     * <code>us-east-2</code>, <code>us-west-1</code>, <code>us-west-2</code>.</p>
-     * <p>Available values in AWS GovCloud (US) Regions: <code>us-gov-east-1</code>,
-     * <code>us-gov-west-1</code>.</p>
-     */
-    inline void SetMediaRegion(Aws::String&& value) { m_mediaRegionHasBeenSet = true; m_mediaRegion = std::move(value); }
-
-    /**
-     * <p>The Region in which you create the meeting. Available values:
-     * <code>af-south-1</code>, <code>ap-northeast-1</code>,
-     * <code>ap-northeast-2</code>, <code>ap-south-1</code>,
-     * <code>ap-southeast-1</code>, <code>ap-southeast-2</code>,
-     * <code>ca-central-1</code>, <code>eu-central-1</code>, <code>eu-north-1</code>,
-     * <code>eu-south-1</code>, <code>eu-west-1</code>, <code>eu-west-2</code>,
-     * <code>eu-west-3</code>, <code>sa-east-1</code>, <code>us-east-1</code>,
-     * <code>us-east-2</code>, <code>us-west-1</code>, <code>us-west-2</code>.</p>
-     * <p>Available values in AWS GovCloud (US) Regions: <code>us-gov-east-1</code>,
-     * <code>us-gov-west-1</code>.</p>
-     */
-    inline void SetMediaRegion(const char* value) { m_mediaRegionHasBeenSet = true; m_mediaRegion.assign(value); }
-
-    /**
-     * <p>The Region in which you create the meeting. Available values:
-     * <code>af-south-1</code>, <code>ap-northeast-1</code>,
-     * <code>ap-northeast-2</code>, <code>ap-south-1</code>,
-     * <code>ap-southeast-1</code>, <code>ap-southeast-2</code>,
-     * <code>ca-central-1</code>, <code>eu-central-1</code>, <code>eu-north-1</code>,
-     * <code>eu-south-1</code>, <code>eu-west-1</code>, <code>eu-west-2</code>,
-     * <code>eu-west-3</code>, <code>sa-east-1</code>, <code>us-east-1</code>,
-     * <code>us-east-2</code>, <code>us-west-1</code>, <code>us-west-2</code>.</p>
-     * <p>Available values in AWS GovCloud (US) Regions: <code>us-gov-east-1</code>,
-     * <code>us-gov-west-1</code>.</p>
-     */
-    inline Meeting& WithMediaRegion(const Aws::String& value) { SetMediaRegion(value); return *this;}
-
-    /**
-     * <p>The Region in which you create the meeting. Available values:
-     * <code>af-south-1</code>, <code>ap-northeast-1</code>,
-     * <code>ap-northeast-2</code>, <code>ap-south-1</code>,
-     * <code>ap-southeast-1</code>, <code>ap-southeast-2</code>,
-     * <code>ca-central-1</code>, <code>eu-central-1</code>, <code>eu-north-1</code>,
-     * <code>eu-south-1</code>, <code>eu-west-1</code>, <code>eu-west-2</code>,
-     * <code>eu-west-3</code>, <code>sa-east-1</code>, <code>us-east-1</code>,
-     * <code>us-east-2</code>, <code>us-west-1</code>, <code>us-west-2</code>.</p>
-     * <p>Available values in AWS GovCloud (US) Regions: <code>us-gov-east-1</code>,
-     * <code>us-gov-west-1</code>.</p>
-     */
-    inline Meeting& WithMediaRegion(Aws::String&& value) { SetMediaRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The Region in which you create the meeting. Available values:
-     * <code>af-south-1</code>, <code>ap-northeast-1</code>,
-     * <code>ap-northeast-2</code>, <code>ap-south-1</code>,
-     * <code>ap-southeast-1</code>, <code>ap-southeast-2</code>,
-     * <code>ca-central-1</code>, <code>eu-central-1</code>, <code>eu-north-1</code>,
-     * <code>eu-south-1</code>, <code>eu-west-1</code>, <code>eu-west-2</code>,
-     * <code>eu-west-3</code>, <code>sa-east-1</code>, <code>us-east-1</code>,
-     * <code>us-east-2</code>, <code>us-west-1</code>, <code>us-west-2</code>.</p>
-     * <p>Available values in AWS GovCloud (US) Regions: <code>us-gov-east-1</code>,
-     * <code>us-gov-west-1</code>.</p>
-     */
-    inline Meeting& WithMediaRegion(const char* value) { SetMediaRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The media placement for the meeting.</p>
      */
-    inline const MediaPlacement& GetMediaPlacement() const{ return m_mediaPlacement; }
-
-    /**
-     * <p>The media placement for the meeting.</p>
-     */
+    inline const MediaPlacement& GetMediaPlacement() const { return m_mediaPlacement; }
     inline bool MediaPlacementHasBeenSet() const { return m_mediaPlacementHasBeenSet; }
+    template<typename MediaPlacementT = MediaPlacement>
+    void SetMediaPlacement(MediaPlacementT&& value) { m_mediaPlacementHasBeenSet = true; m_mediaPlacement = std::forward<MediaPlacementT>(value); }
+    template<typename MediaPlacementT = MediaPlacement>
+    Meeting& WithMediaPlacement(MediaPlacementT&& value) { SetMediaPlacement(std::forward<MediaPlacementT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The media placement for the meeting.</p>
-     */
-    inline void SetMediaPlacement(const MediaPlacement& value) { m_mediaPlacementHasBeenSet = true; m_mediaPlacement = value; }
-
-    /**
-     * <p>The media placement for the meeting.</p>
-     */
-    inline void SetMediaPlacement(MediaPlacement&& value) { m_mediaPlacementHasBeenSet = true; m_mediaPlacement = std::move(value); }
-
-    /**
-     * <p>The media placement for the meeting.</p>
-     */
-    inline Meeting& WithMediaPlacement(const MediaPlacement& value) { SetMediaPlacement(value); return *this;}
-
-    /**
-     * <p>The media placement for the meeting.</p>
-     */
-    inline Meeting& WithMediaPlacement(MediaPlacement&& value) { SetMediaPlacement(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The features available to a meeting, such as echo reduction.</p>
      */
-    inline const MeetingFeaturesConfiguration& GetMeetingFeatures() const{ return m_meetingFeatures; }
-
-    /**
-     * <p>The features available to a meeting, such as echo reduction.</p>
-     */
+    inline const MeetingFeaturesConfiguration& GetMeetingFeatures() const { return m_meetingFeatures; }
     inline bool MeetingFeaturesHasBeenSet() const { return m_meetingFeaturesHasBeenSet; }
+    template<typename MeetingFeaturesT = MeetingFeaturesConfiguration>
+    void SetMeetingFeatures(MeetingFeaturesT&& value) { m_meetingFeaturesHasBeenSet = true; m_meetingFeatures = std::forward<MeetingFeaturesT>(value); }
+    template<typename MeetingFeaturesT = MeetingFeaturesConfiguration>
+    Meeting& WithMeetingFeatures(MeetingFeaturesT&& value) { SetMeetingFeatures(std::forward<MeetingFeaturesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The features available to a meeting, such as echo reduction.</p>
-     */
-    inline void SetMeetingFeatures(const MeetingFeaturesConfiguration& value) { m_meetingFeaturesHasBeenSet = true; m_meetingFeatures = value; }
-
-    /**
-     * <p>The features available to a meeting, such as echo reduction.</p>
-     */
-    inline void SetMeetingFeatures(MeetingFeaturesConfiguration&& value) { m_meetingFeaturesHasBeenSet = true; m_meetingFeatures = std::move(value); }
-
-    /**
-     * <p>The features available to a meeting, such as echo reduction.</p>
-     */
-    inline Meeting& WithMeetingFeatures(const MeetingFeaturesConfiguration& value) { SetMeetingFeatures(value); return *this;}
-
-    /**
-     * <p>The features available to a meeting, such as echo reduction.</p>
-     */
-    inline Meeting& WithMeetingFeatures(MeetingFeaturesConfiguration&& value) { SetMeetingFeatures(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>When specified, replicates the media from the primary meeting to this
      * meeting.</p>
      */
-    inline const Aws::String& GetPrimaryMeetingId() const{ return m_primaryMeetingId; }
-
-    /**
-     * <p>When specified, replicates the media from the primary meeting to this
-     * meeting.</p>
-     */
+    inline const Aws::String& GetPrimaryMeetingId() const { return m_primaryMeetingId; }
     inline bool PrimaryMeetingIdHasBeenSet() const { return m_primaryMeetingIdHasBeenSet; }
+    template<typename PrimaryMeetingIdT = Aws::String>
+    void SetPrimaryMeetingId(PrimaryMeetingIdT&& value) { m_primaryMeetingIdHasBeenSet = true; m_primaryMeetingId = std::forward<PrimaryMeetingIdT>(value); }
+    template<typename PrimaryMeetingIdT = Aws::String>
+    Meeting& WithPrimaryMeetingId(PrimaryMeetingIdT&& value) { SetPrimaryMeetingId(std::forward<PrimaryMeetingIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When specified, replicates the media from the primary meeting to this
-     * meeting.</p>
-     */
-    inline void SetPrimaryMeetingId(const Aws::String& value) { m_primaryMeetingIdHasBeenSet = true; m_primaryMeetingId = value; }
-
-    /**
-     * <p>When specified, replicates the media from the primary meeting to this
-     * meeting.</p>
-     */
-    inline void SetPrimaryMeetingId(Aws::String&& value) { m_primaryMeetingIdHasBeenSet = true; m_primaryMeetingId = std::move(value); }
-
-    /**
-     * <p>When specified, replicates the media from the primary meeting to this
-     * meeting.</p>
-     */
-    inline void SetPrimaryMeetingId(const char* value) { m_primaryMeetingIdHasBeenSet = true; m_primaryMeetingId.assign(value); }
-
-    /**
-     * <p>When specified, replicates the media from the primary meeting to this
-     * meeting.</p>
-     */
-    inline Meeting& WithPrimaryMeetingId(const Aws::String& value) { SetPrimaryMeetingId(value); return *this;}
-
-    /**
-     * <p>When specified, replicates the media from the primary meeting to this
-     * meeting.</p>
-     */
-    inline Meeting& WithPrimaryMeetingId(Aws::String&& value) { SetPrimaryMeetingId(std::move(value)); return *this;}
-
-    /**
-     * <p>When specified, replicates the media from the primary meeting to this
-     * meeting.</p>
-     */
-    inline Meeting& WithPrimaryMeetingId(const char* value) { SetPrimaryMeetingId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Array of strings.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetTenantIds() const{ return m_tenantIds; }
-
-    /**
-     * <p>Array of strings.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetTenantIds() const { return m_tenantIds; }
     inline bool TenantIdsHasBeenSet() const { return m_tenantIdsHasBeenSet; }
+    template<typename TenantIdsT = Aws::Vector<Aws::String>>
+    void SetTenantIds(TenantIdsT&& value) { m_tenantIdsHasBeenSet = true; m_tenantIds = std::forward<TenantIdsT>(value); }
+    template<typename TenantIdsT = Aws::Vector<Aws::String>>
+    Meeting& WithTenantIds(TenantIdsT&& value) { SetTenantIds(std::forward<TenantIdsT>(value)); return *this;}
+    template<typename TenantIdsT = Aws::String>
+    Meeting& AddTenantIds(TenantIdsT&& value) { m_tenantIdsHasBeenSet = true; m_tenantIds.emplace_back(std::forward<TenantIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Array of strings.</p>
-     */
-    inline void SetTenantIds(const Aws::Vector<Aws::String>& value) { m_tenantIdsHasBeenSet = true; m_tenantIds = value; }
-
-    /**
-     * <p>Array of strings.</p>
-     */
-    inline void SetTenantIds(Aws::Vector<Aws::String>&& value) { m_tenantIdsHasBeenSet = true; m_tenantIds = std::move(value); }
-
-    /**
-     * <p>Array of strings.</p>
-     */
-    inline Meeting& WithTenantIds(const Aws::Vector<Aws::String>& value) { SetTenantIds(value); return *this;}
-
-    /**
-     * <p>Array of strings.</p>
-     */
-    inline Meeting& WithTenantIds(Aws::Vector<Aws::String>&& value) { SetTenantIds(std::move(value)); return *this;}
-
-    /**
-     * <p>Array of strings.</p>
-     */
-    inline Meeting& AddTenantIds(const Aws::String& value) { m_tenantIdsHasBeenSet = true; m_tenantIds.push_back(value); return *this; }
-
-    /**
-     * <p>Array of strings.</p>
-     */
-    inline Meeting& AddTenantIds(Aws::String&& value) { m_tenantIdsHasBeenSet = true; m_tenantIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Array of strings.</p>
-     */
-    inline Meeting& AddTenantIds(const char* value) { m_tenantIdsHasBeenSet = true; m_tenantIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The ARN of the meeting.</p>
      */
-    inline const Aws::String& GetMeetingArn() const{ return m_meetingArn; }
-
-    /**
-     * <p>The ARN of the meeting.</p>
-     */
+    inline const Aws::String& GetMeetingArn() const { return m_meetingArn; }
     inline bool MeetingArnHasBeenSet() const { return m_meetingArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the meeting.</p>
-     */
-    inline void SetMeetingArn(const Aws::String& value) { m_meetingArnHasBeenSet = true; m_meetingArn = value; }
-
-    /**
-     * <p>The ARN of the meeting.</p>
-     */
-    inline void SetMeetingArn(Aws::String&& value) { m_meetingArnHasBeenSet = true; m_meetingArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the meeting.</p>
-     */
-    inline void SetMeetingArn(const char* value) { m_meetingArnHasBeenSet = true; m_meetingArn.assign(value); }
-
-    /**
-     * <p>The ARN of the meeting.</p>
-     */
-    inline Meeting& WithMeetingArn(const Aws::String& value) { SetMeetingArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the meeting.</p>
-     */
-    inline Meeting& WithMeetingArn(Aws::String&& value) { SetMeetingArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the meeting.</p>
-     */
-    inline Meeting& WithMeetingArn(const char* value) { SetMeetingArn(value); return *this;}
-
+    template<typename MeetingArnT = Aws::String>
+    void SetMeetingArn(MeetingArnT&& value) { m_meetingArnHasBeenSet = true; m_meetingArn = std::forward<MeetingArnT>(value); }
+    template<typename MeetingArnT = Aws::String>
+    Meeting& WithMeetingArn(MeetingArnT&& value) { SetMeetingArn(std::forward<MeetingArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_meetingId;

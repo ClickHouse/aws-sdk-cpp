@@ -31,51 +31,25 @@ namespace Model
   class BuildBatchFilter
   {
   public:
-    AWS_CODEBUILD_API BuildBatchFilter();
+    AWS_CODEBUILD_API BuildBatchFilter() = default;
     AWS_CODEBUILD_API BuildBatchFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEBUILD_API BuildBatchFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEBUILD_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The status of the batch builds to retrieve. Only batch builds that have this
      * status will be retrieved.</p>
      */
-    inline const StatusType& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the batch builds to retrieve. Only batch builds that have this
-     * status will be retrieved.</p>
-     */
+    inline StatusType GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the batch builds to retrieve. Only batch builds that have this
-     * status will be retrieved.</p>
-     */
-    inline void SetStatus(const StatusType& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the batch builds to retrieve. Only batch builds that have this
-     * status will be retrieved.</p>
-     */
-    inline void SetStatus(StatusType&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the batch builds to retrieve. Only batch builds that have this
-     * status will be retrieved.</p>
-     */
-    inline BuildBatchFilter& WithStatus(const StatusType& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the batch builds to retrieve. Only batch builds that have this
-     * status will be retrieved.</p>
-     */
-    inline BuildBatchFilter& WithStatus(StatusType&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(StatusType value) { m_statusHasBeenSet = true; m_status = value; }
+    inline BuildBatchFilter& WithStatus(StatusType value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
-    StatusType m_status;
+    StatusType m_status{StatusType::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

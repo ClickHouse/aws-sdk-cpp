@@ -31,42 +31,23 @@ namespace Model
   class ReshardingStatus
   {
   public:
-    AWS_MEMORYDB_API ReshardingStatus();
+    AWS_MEMORYDB_API ReshardingStatus() = default;
     AWS_MEMORYDB_API ReshardingStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEMORYDB_API ReshardingStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEMORYDB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The status of the online resharding slot migration</p>
      */
-    inline const SlotMigration& GetSlotMigration() const{ return m_slotMigration; }
-
-    /**
-     * <p>The status of the online resharding slot migration</p>
-     */
+    inline const SlotMigration& GetSlotMigration() const { return m_slotMigration; }
     inline bool SlotMigrationHasBeenSet() const { return m_slotMigrationHasBeenSet; }
-
-    /**
-     * <p>The status of the online resharding slot migration</p>
-     */
-    inline void SetSlotMigration(const SlotMigration& value) { m_slotMigrationHasBeenSet = true; m_slotMigration = value; }
-
-    /**
-     * <p>The status of the online resharding slot migration</p>
-     */
-    inline void SetSlotMigration(SlotMigration&& value) { m_slotMigrationHasBeenSet = true; m_slotMigration = std::move(value); }
-
-    /**
-     * <p>The status of the online resharding slot migration</p>
-     */
-    inline ReshardingStatus& WithSlotMigration(const SlotMigration& value) { SetSlotMigration(value); return *this;}
-
-    /**
-     * <p>The status of the online resharding slot migration</p>
-     */
-    inline ReshardingStatus& WithSlotMigration(SlotMigration&& value) { SetSlotMigration(std::move(value)); return *this;}
-
+    template<typename SlotMigrationT = SlotMigration>
+    void SetSlotMigration(SlotMigrationT&& value) { m_slotMigrationHasBeenSet = true; m_slotMigration = std::forward<SlotMigrationT>(value); }
+    template<typename SlotMigrationT = SlotMigration>
+    ReshardingStatus& WithSlotMigration(SlotMigrationT&& value) { SetSlotMigration(std::forward<SlotMigrationT>(value)); return *this;}
+    ///@}
   private:
 
     SlotMigration m_slotMigration;

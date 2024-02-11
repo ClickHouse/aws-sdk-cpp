@@ -33,146 +33,50 @@ namespace Model
   class UpsolverDestinationProperties
   {
   public:
-    AWS_APPFLOW_API UpsolverDestinationProperties();
+    AWS_APPFLOW_API UpsolverDestinationProperties() = default;
     AWS_APPFLOW_API UpsolverDestinationProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFLOW_API UpsolverDestinationProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFLOW_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The Upsolver Amazon S3 bucket name in which Amazon AppFlow places the
      * transferred data. </p>
      */
-    inline const Aws::String& GetBucketName() const{ return m_bucketName; }
-
-    /**
-     * <p> The Upsolver Amazon S3 bucket name in which Amazon AppFlow places the
-     * transferred data. </p>
-     */
+    inline const Aws::String& GetBucketName() const { return m_bucketName; }
     inline bool BucketNameHasBeenSet() const { return m_bucketNameHasBeenSet; }
+    template<typename BucketNameT = Aws::String>
+    void SetBucketName(BucketNameT&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::forward<BucketNameT>(value); }
+    template<typename BucketNameT = Aws::String>
+    UpsolverDestinationProperties& WithBucketName(BucketNameT&& value) { SetBucketName(std::forward<BucketNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The Upsolver Amazon S3 bucket name in which Amazon AppFlow places the
-     * transferred data. </p>
-     */
-    inline void SetBucketName(const Aws::String& value) { m_bucketNameHasBeenSet = true; m_bucketName = value; }
-
-    /**
-     * <p> The Upsolver Amazon S3 bucket name in which Amazon AppFlow places the
-     * transferred data. </p>
-     */
-    inline void SetBucketName(Aws::String&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::move(value); }
-
-    /**
-     * <p> The Upsolver Amazon S3 bucket name in which Amazon AppFlow places the
-     * transferred data. </p>
-     */
-    inline void SetBucketName(const char* value) { m_bucketNameHasBeenSet = true; m_bucketName.assign(value); }
-
-    /**
-     * <p> The Upsolver Amazon S3 bucket name in which Amazon AppFlow places the
-     * transferred data. </p>
-     */
-    inline UpsolverDestinationProperties& WithBucketName(const Aws::String& value) { SetBucketName(value); return *this;}
-
-    /**
-     * <p> The Upsolver Amazon S3 bucket name in which Amazon AppFlow places the
-     * transferred data. </p>
-     */
-    inline UpsolverDestinationProperties& WithBucketName(Aws::String&& value) { SetBucketName(std::move(value)); return *this;}
-
-    /**
-     * <p> The Upsolver Amazon S3 bucket name in which Amazon AppFlow places the
-     * transferred data. </p>
-     */
-    inline UpsolverDestinationProperties& WithBucketName(const char* value) { SetBucketName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The object key for the destination Upsolver Amazon S3 bucket in which Amazon
      * AppFlow places the files. </p>
      */
-    inline const Aws::String& GetBucketPrefix() const{ return m_bucketPrefix; }
-
-    /**
-     * <p> The object key for the destination Upsolver Amazon S3 bucket in which Amazon
-     * AppFlow places the files. </p>
-     */
+    inline const Aws::String& GetBucketPrefix() const { return m_bucketPrefix; }
     inline bool BucketPrefixHasBeenSet() const { return m_bucketPrefixHasBeenSet; }
+    template<typename BucketPrefixT = Aws::String>
+    void SetBucketPrefix(BucketPrefixT&& value) { m_bucketPrefixHasBeenSet = true; m_bucketPrefix = std::forward<BucketPrefixT>(value); }
+    template<typename BucketPrefixT = Aws::String>
+    UpsolverDestinationProperties& WithBucketPrefix(BucketPrefixT&& value) { SetBucketPrefix(std::forward<BucketPrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The object key for the destination Upsolver Amazon S3 bucket in which Amazon
-     * AppFlow places the files. </p>
-     */
-    inline void SetBucketPrefix(const Aws::String& value) { m_bucketPrefixHasBeenSet = true; m_bucketPrefix = value; }
-
-    /**
-     * <p> The object key for the destination Upsolver Amazon S3 bucket in which Amazon
-     * AppFlow places the files. </p>
-     */
-    inline void SetBucketPrefix(Aws::String&& value) { m_bucketPrefixHasBeenSet = true; m_bucketPrefix = std::move(value); }
-
-    /**
-     * <p> The object key for the destination Upsolver Amazon S3 bucket in which Amazon
-     * AppFlow places the files. </p>
-     */
-    inline void SetBucketPrefix(const char* value) { m_bucketPrefixHasBeenSet = true; m_bucketPrefix.assign(value); }
-
-    /**
-     * <p> The object key for the destination Upsolver Amazon S3 bucket in which Amazon
-     * AppFlow places the files. </p>
-     */
-    inline UpsolverDestinationProperties& WithBucketPrefix(const Aws::String& value) { SetBucketPrefix(value); return *this;}
-
-    /**
-     * <p> The object key for the destination Upsolver Amazon S3 bucket in which Amazon
-     * AppFlow places the files. </p>
-     */
-    inline UpsolverDestinationProperties& WithBucketPrefix(Aws::String&& value) { SetBucketPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p> The object key for the destination Upsolver Amazon S3 bucket in which Amazon
-     * AppFlow places the files. </p>
-     */
-    inline UpsolverDestinationProperties& WithBucketPrefix(const char* value) { SetBucketPrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The configuration that determines how data is formatted when Upsolver is
      * used as the flow destination. </p>
      */
-    inline const UpsolverS3OutputFormatConfig& GetS3OutputFormatConfig() const{ return m_s3OutputFormatConfig; }
-
-    /**
-     * <p> The configuration that determines how data is formatted when Upsolver is
-     * used as the flow destination. </p>
-     */
+    inline const UpsolverS3OutputFormatConfig& GetS3OutputFormatConfig() const { return m_s3OutputFormatConfig; }
     inline bool S3OutputFormatConfigHasBeenSet() const { return m_s3OutputFormatConfigHasBeenSet; }
-
-    /**
-     * <p> The configuration that determines how data is formatted when Upsolver is
-     * used as the flow destination. </p>
-     */
-    inline void SetS3OutputFormatConfig(const UpsolverS3OutputFormatConfig& value) { m_s3OutputFormatConfigHasBeenSet = true; m_s3OutputFormatConfig = value; }
-
-    /**
-     * <p> The configuration that determines how data is formatted when Upsolver is
-     * used as the flow destination. </p>
-     */
-    inline void SetS3OutputFormatConfig(UpsolverS3OutputFormatConfig&& value) { m_s3OutputFormatConfigHasBeenSet = true; m_s3OutputFormatConfig = std::move(value); }
-
-    /**
-     * <p> The configuration that determines how data is formatted when Upsolver is
-     * used as the flow destination. </p>
-     */
-    inline UpsolverDestinationProperties& WithS3OutputFormatConfig(const UpsolverS3OutputFormatConfig& value) { SetS3OutputFormatConfig(value); return *this;}
-
-    /**
-     * <p> The configuration that determines how data is formatted when Upsolver is
-     * used as the flow destination. </p>
-     */
-    inline UpsolverDestinationProperties& WithS3OutputFormatConfig(UpsolverS3OutputFormatConfig&& value) { SetS3OutputFormatConfig(std::move(value)); return *this;}
-
+    template<typename S3OutputFormatConfigT = UpsolverS3OutputFormatConfig>
+    void SetS3OutputFormatConfig(S3OutputFormatConfigT&& value) { m_s3OutputFormatConfigHasBeenSet = true; m_s3OutputFormatConfig = std::forward<S3OutputFormatConfigT>(value); }
+    template<typename S3OutputFormatConfigT = UpsolverS3OutputFormatConfig>
+    UpsolverDestinationProperties& WithS3OutputFormatConfig(S3OutputFormatConfigT&& value) { SetS3OutputFormatConfig(std::forward<S3OutputFormatConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucketName;

@@ -18,35 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-EncoderSettings::EncoderSettings() : 
-    m_audioDescriptionsHasBeenSet(false),
-    m_availBlankingHasBeenSet(false),
-    m_availConfigurationHasBeenSet(false),
-    m_blackoutSlateHasBeenSet(false),
-    m_captionDescriptionsHasBeenSet(false),
-    m_featureActivationsHasBeenSet(false),
-    m_globalConfigurationHasBeenSet(false),
-    m_motionGraphicsConfigurationHasBeenSet(false),
-    m_nielsenConfigurationHasBeenSet(false),
-    m_outputGroupsHasBeenSet(false),
-    m_timecodeConfigHasBeenSet(false),
-    m_videoDescriptionsHasBeenSet(false)
-{
-}
-
-EncoderSettings::EncoderSettings(JsonView jsonValue) : 
-    m_audioDescriptionsHasBeenSet(false),
-    m_availBlankingHasBeenSet(false),
-    m_availConfigurationHasBeenSet(false),
-    m_blackoutSlateHasBeenSet(false),
-    m_captionDescriptionsHasBeenSet(false),
-    m_featureActivationsHasBeenSet(false),
-    m_globalConfigurationHasBeenSet(false),
-    m_motionGraphicsConfigurationHasBeenSet(false),
-    m_nielsenConfigurationHasBeenSet(false),
-    m_outputGroupsHasBeenSet(false),
-    m_timecodeConfigHasBeenSet(false),
-    m_videoDescriptionsHasBeenSet(false)
+EncoderSettings::EncoderSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -62,28 +34,21 @@ EncoderSettings& EncoderSettings::operator =(JsonView jsonValue)
     }
     m_audioDescriptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("availBlanking"))
   {
     m_availBlanking = jsonValue.GetObject("availBlanking");
-
     m_availBlankingHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("availConfiguration"))
   {
     m_availConfiguration = jsonValue.GetObject("availConfiguration");
-
     m_availConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("blackoutSlate"))
   {
     m_blackoutSlate = jsonValue.GetObject("blackoutSlate");
-
     m_blackoutSlateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("captionDescriptions"))
   {
     Aws::Utils::Array<JsonView> captionDescriptionsJsonList = jsonValue.GetArray("captionDescriptions");
@@ -93,35 +58,26 @@ EncoderSettings& EncoderSettings::operator =(JsonView jsonValue)
     }
     m_captionDescriptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("featureActivations"))
   {
     m_featureActivations = jsonValue.GetObject("featureActivations");
-
     m_featureActivationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("globalConfiguration"))
   {
     m_globalConfiguration = jsonValue.GetObject("globalConfiguration");
-
     m_globalConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("motionGraphicsConfiguration"))
   {
     m_motionGraphicsConfiguration = jsonValue.GetObject("motionGraphicsConfiguration");
-
     m_motionGraphicsConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("nielsenConfiguration"))
   {
     m_nielsenConfiguration = jsonValue.GetObject("nielsenConfiguration");
-
     m_nielsenConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("outputGroups"))
   {
     Aws::Utils::Array<JsonView> outputGroupsJsonList = jsonValue.GetArray("outputGroups");
@@ -131,14 +87,11 @@ EncoderSettings& EncoderSettings::operator =(JsonView jsonValue)
     }
     m_outputGroupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("timecodeConfig"))
   {
     m_timecodeConfig = jsonValue.GetObject("timecodeConfig");
-
     m_timecodeConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("videoDescriptions"))
   {
     Aws::Utils::Array<JsonView> videoDescriptionsJsonList = jsonValue.GetArray("videoDescriptions");
@@ -148,7 +101,16 @@ EncoderSettings& EncoderSettings::operator =(JsonView jsonValue)
     }
     m_videoDescriptionsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("thumbnailConfiguration"))
+  {
+    m_thumbnailConfiguration = jsonValue.GetObject("thumbnailConfiguration");
+    m_thumbnailConfigurationHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("colorCorrectionSettings"))
+  {
+    m_colorCorrectionSettings = jsonValue.GetObject("colorCorrectionSettings");
+    m_colorCorrectionSettingsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -245,6 +207,18 @@ JsonValue EncoderSettings::Jsonize() const
      videoDescriptionsJsonList[videoDescriptionsIndex].AsObject(m_videoDescriptions[videoDescriptionsIndex].Jsonize());
    }
    payload.WithArray("videoDescriptions", std::move(videoDescriptionsJsonList));
+
+  }
+
+  if(m_thumbnailConfigurationHasBeenSet)
+  {
+   payload.WithObject("thumbnailConfiguration", m_thumbnailConfiguration.Jsonize());
+
+  }
+
+  if(m_colorCorrectionSettingsHasBeenSet)
+  {
+   payload.WithObject("colorCorrectionSettings", m_colorCorrectionSettings.Jsonize());
 
   }
 

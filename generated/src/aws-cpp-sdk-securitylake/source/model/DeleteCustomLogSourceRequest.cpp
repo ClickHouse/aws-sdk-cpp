@@ -15,11 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-DeleteCustomLogSourceRequest::DeleteCustomLogSourceRequest() : 
-    m_customSourceNameHasBeenSet(false)
-{
-}
-
 Aws::String DeleteCustomLogSourceRequest::SerializePayload() const
 {
   return {};
@@ -28,10 +23,10 @@ Aws::String DeleteCustomLogSourceRequest::SerializePayload() const
 void DeleteCustomLogSourceRequest::AddQueryStringParameters(URI& uri) const
 {
     Aws::StringStream ss;
-    if(m_customSourceNameHasBeenSet)
+    if(m_sourceVersionHasBeenSet)
     {
-      ss << m_customSourceName;
-      uri.AddQueryStringParameter("customSourceName", ss.str());
+      ss << m_sourceVersion;
+      uri.AddQueryStringParameter("sourceVersion", ss.str());
       ss.str("");
     }
 

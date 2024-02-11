@@ -30,94 +30,36 @@ namespace Model
   class S3ObjectOwner
   {
   public:
-    AWS_S3CONTROL_API S3ObjectOwner();
+    AWS_S3CONTROL_API S3ObjectOwner() = default;
     AWS_S3CONTROL_API S3ObjectOwner(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API S3ObjectOwner& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p/>
      */
-    inline const Aws::String& GetID() const{ return m_iD; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetID() const { return m_iD; }
     inline bool IDHasBeenSet() const { return m_iDHasBeenSet; }
+    template<typename IDT = Aws::String>
+    void SetID(IDT&& value) { m_iDHasBeenSet = true; m_iD = std::forward<IDT>(value); }
+    template<typename IDT = Aws::String>
+    S3ObjectOwner& WithID(IDT&& value) { SetID(std::forward<IDT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p/>
      */
-    inline void SetID(const Aws::String& value) { m_iDHasBeenSet = true; m_iD = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetID(Aws::String&& value) { m_iDHasBeenSet = true; m_iD = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetID(const char* value) { m_iDHasBeenSet = true; m_iD.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline S3ObjectOwner& WithID(const Aws::String& value) { SetID(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline S3ObjectOwner& WithID(Aws::String&& value) { SetID(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline S3ObjectOwner& WithID(const char* value) { SetID(value); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const Aws::String& GetDisplayName() const{ return m_displayName; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetDisplayName() const { return m_displayName; }
     inline bool DisplayNameHasBeenSet() const { return m_displayNameHasBeenSet; }
-
-    /**
-     * <p/>
-     */
-    inline void SetDisplayName(const Aws::String& value) { m_displayNameHasBeenSet = true; m_displayName = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetDisplayName(Aws::String&& value) { m_displayNameHasBeenSet = true; m_displayName = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetDisplayName(const char* value) { m_displayNameHasBeenSet = true; m_displayName.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline S3ObjectOwner& WithDisplayName(const Aws::String& value) { SetDisplayName(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline S3ObjectOwner& WithDisplayName(Aws::String&& value) { SetDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline S3ObjectOwner& WithDisplayName(const char* value) { SetDisplayName(value); return *this;}
-
+    template<typename DisplayNameT = Aws::String>
+    void SetDisplayName(DisplayNameT&& value) { m_displayNameHasBeenSet = true; m_displayName = std::forward<DisplayNameT>(value); }
+    template<typename DisplayNameT = Aws::String>
+    S3ObjectOwner& WithDisplayName(DisplayNameT&& value) { SetDisplayName(std::forward<DisplayNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_iD;

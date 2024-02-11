@@ -32,71 +32,37 @@ namespace Model
   class Beaconing
   {
   public:
-    AWS_IOTWIRELESS_API Beaconing();
+    AWS_IOTWIRELESS_API Beaconing() = default;
     AWS_IOTWIRELESS_API Beaconing(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API Beaconing& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The data rate for gateways that are sending the beacons.</p>
      */
-    inline int GetDataRate() const{ return m_dataRate; }
-
-    /**
-     * <p>The data rate for gateways that are sending the beacons.</p>
-     */
+    inline int GetDataRate() const { return m_dataRate; }
     inline bool DataRateHasBeenSet() const { return m_dataRateHasBeenSet; }
-
-    /**
-     * <p>The data rate for gateways that are sending the beacons.</p>
-     */
     inline void SetDataRate(int value) { m_dataRateHasBeenSet = true; m_dataRate = value; }
-
-    /**
-     * <p>The data rate for gateways that are sending the beacons.</p>
-     */
     inline Beaconing& WithDataRate(int value) { SetDataRate(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The frequency list for the gateways to send the beacons.</p>
      */
-    inline const Aws::Vector<int>& GetFrequencies() const{ return m_frequencies; }
-
-    /**
-     * <p>The frequency list for the gateways to send the beacons.</p>
-     */
+    inline const Aws::Vector<int>& GetFrequencies() const { return m_frequencies; }
     inline bool FrequenciesHasBeenSet() const { return m_frequenciesHasBeenSet; }
-
-    /**
-     * <p>The frequency list for the gateways to send the beacons.</p>
-     */
-    inline void SetFrequencies(const Aws::Vector<int>& value) { m_frequenciesHasBeenSet = true; m_frequencies = value; }
-
-    /**
-     * <p>The frequency list for the gateways to send the beacons.</p>
-     */
-    inline void SetFrequencies(Aws::Vector<int>&& value) { m_frequenciesHasBeenSet = true; m_frequencies = std::move(value); }
-
-    /**
-     * <p>The frequency list for the gateways to send the beacons.</p>
-     */
-    inline Beaconing& WithFrequencies(const Aws::Vector<int>& value) { SetFrequencies(value); return *this;}
-
-    /**
-     * <p>The frequency list for the gateways to send the beacons.</p>
-     */
-    inline Beaconing& WithFrequencies(Aws::Vector<int>&& value) { SetFrequencies(std::move(value)); return *this;}
-
-    /**
-     * <p>The frequency list for the gateways to send the beacons.</p>
-     */
+    template<typename FrequenciesT = Aws::Vector<int>>
+    void SetFrequencies(FrequenciesT&& value) { m_frequenciesHasBeenSet = true; m_frequencies = std::forward<FrequenciesT>(value); }
+    template<typename FrequenciesT = Aws::Vector<int>>
+    Beaconing& WithFrequencies(FrequenciesT&& value) { SetFrequencies(std::forward<FrequenciesT>(value)); return *this;}
     inline Beaconing& AddFrequencies(int value) { m_frequenciesHasBeenSet = true; m_frequencies.push_back(value); return *this; }
-
+    ///@}
   private:
 
-    int m_dataRate;
+    int m_dataRate{0};
     bool m_dataRateHasBeenSet = false;
 
     Aws::Vector<int> m_frequencies;

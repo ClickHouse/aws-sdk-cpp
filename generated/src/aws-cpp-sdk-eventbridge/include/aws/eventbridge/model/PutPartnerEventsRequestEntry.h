@@ -34,248 +34,96 @@ namespace Model
   class PutPartnerEventsRequestEntry
   {
   public:
-    AWS_EVENTBRIDGE_API PutPartnerEventsRequestEntry();
+    AWS_EVENTBRIDGE_API PutPartnerEventsRequestEntry() = default;
     AWS_EVENTBRIDGE_API PutPartnerEventsRequestEntry(Aws::Utils::Json::JsonView jsonValue);
     AWS_EVENTBRIDGE_API PutPartnerEventsRequestEntry& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EVENTBRIDGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The date and time of the event.</p>
      */
-    inline const Aws::Utils::DateTime& GetTime() const{ return m_time; }
-
-    /**
-     * <p>The date and time of the event.</p>
-     */
+    inline const Aws::Utils::DateTime& GetTime() const { return m_time; }
     inline bool TimeHasBeenSet() const { return m_timeHasBeenSet; }
+    template<typename TimeT = Aws::Utils::DateTime>
+    void SetTime(TimeT&& value) { m_timeHasBeenSet = true; m_time = std::forward<TimeT>(value); }
+    template<typename TimeT = Aws::Utils::DateTime>
+    PutPartnerEventsRequestEntry& WithTime(TimeT&& value) { SetTime(std::forward<TimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The date and time of the event.</p>
+     * <p>The event source that is generating the entry.</p>  <p>
+     * <code>Detail</code>, <code>DetailType</code>, and <code>Source</code> are
+     * required for EventBridge to successfully send an event to an event bus. If you
+     * include event entries in a request that do not include each of those properties,
+     * EventBridge fails that entry. If you submit a request in which <i>none</i> of
+     * the entries have each of these properties, EventBridge fails the entire request.
+     * </p> 
      */
-    inline void SetTime(const Aws::Utils::DateTime& value) { m_timeHasBeenSet = true; m_time = value; }
-
-    /**
-     * <p>The date and time of the event.</p>
-     */
-    inline void SetTime(Aws::Utils::DateTime&& value) { m_timeHasBeenSet = true; m_time = std::move(value); }
-
-    /**
-     * <p>The date and time of the event.</p>
-     */
-    inline PutPartnerEventsRequestEntry& WithTime(const Aws::Utils::DateTime& value) { SetTime(value); return *this;}
-
-    /**
-     * <p>The date and time of the event.</p>
-     */
-    inline PutPartnerEventsRequestEntry& WithTime(Aws::Utils::DateTime&& value) { SetTime(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The event source that is generating the entry.</p>
-     */
-    inline const Aws::String& GetSource() const{ return m_source; }
-
-    /**
-     * <p>The event source that is generating the entry.</p>
-     */
+    inline const Aws::String& GetSource() const { return m_source; }
     inline bool SourceHasBeenSet() const { return m_sourceHasBeenSet; }
+    template<typename SourceT = Aws::String>
+    void SetSource(SourceT&& value) { m_sourceHasBeenSet = true; m_source = std::forward<SourceT>(value); }
+    template<typename SourceT = Aws::String>
+    PutPartnerEventsRequestEntry& WithSource(SourceT&& value) { SetSource(std::forward<SourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The event source that is generating the entry.</p>
-     */
-    inline void SetSource(const Aws::String& value) { m_sourceHasBeenSet = true; m_source = value; }
-
-    /**
-     * <p>The event source that is generating the entry.</p>
-     */
-    inline void SetSource(Aws::String&& value) { m_sourceHasBeenSet = true; m_source = std::move(value); }
-
-    /**
-     * <p>The event source that is generating the entry.</p>
-     */
-    inline void SetSource(const char* value) { m_sourceHasBeenSet = true; m_source.assign(value); }
-
-    /**
-     * <p>The event source that is generating the entry.</p>
-     */
-    inline PutPartnerEventsRequestEntry& WithSource(const Aws::String& value) { SetSource(value); return *this;}
-
-    /**
-     * <p>The event source that is generating the entry.</p>
-     */
-    inline PutPartnerEventsRequestEntry& WithSource(Aws::String&& value) { SetSource(std::move(value)); return *this;}
-
-    /**
-     * <p>The event source that is generating the entry.</p>
-     */
-    inline PutPartnerEventsRequestEntry& WithSource(const char* value) { SetSource(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Amazon Web Services resources, identified by Amazon Resource Name (ARN),
      * which the event primarily concerns. Any number, including zero, may be
      * present.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetResources() const{ return m_resources; }
-
-    /**
-     * <p>Amazon Web Services resources, identified by Amazon Resource Name (ARN),
-     * which the event primarily concerns. Any number, including zero, may be
-     * present.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetResources() const { return m_resources; }
     inline bool ResourcesHasBeenSet() const { return m_resourcesHasBeenSet; }
+    template<typename ResourcesT = Aws::Vector<Aws::String>>
+    void SetResources(ResourcesT&& value) { m_resourcesHasBeenSet = true; m_resources = std::forward<ResourcesT>(value); }
+    template<typename ResourcesT = Aws::Vector<Aws::String>>
+    PutPartnerEventsRequestEntry& WithResources(ResourcesT&& value) { SetResources(std::forward<ResourcesT>(value)); return *this;}
+    template<typename ResourcesT = Aws::String>
+    PutPartnerEventsRequestEntry& AddResources(ResourcesT&& value) { m_resourcesHasBeenSet = true; m_resources.emplace_back(std::forward<ResourcesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Amazon Web Services resources, identified by Amazon Resource Name (ARN),
-     * which the event primarily concerns. Any number, including zero, may be
-     * present.</p>
-     */
-    inline void SetResources(const Aws::Vector<Aws::String>& value) { m_resourcesHasBeenSet = true; m_resources = value; }
-
-    /**
-     * <p>Amazon Web Services resources, identified by Amazon Resource Name (ARN),
-     * which the event primarily concerns. Any number, including zero, may be
-     * present.</p>
-     */
-    inline void SetResources(Aws::Vector<Aws::String>&& value) { m_resourcesHasBeenSet = true; m_resources = std::move(value); }
-
-    /**
-     * <p>Amazon Web Services resources, identified by Amazon Resource Name (ARN),
-     * which the event primarily concerns. Any number, including zero, may be
-     * present.</p>
-     */
-    inline PutPartnerEventsRequestEntry& WithResources(const Aws::Vector<Aws::String>& value) { SetResources(value); return *this;}
-
-    /**
-     * <p>Amazon Web Services resources, identified by Amazon Resource Name (ARN),
-     * which the event primarily concerns. Any number, including zero, may be
-     * present.</p>
-     */
-    inline PutPartnerEventsRequestEntry& WithResources(Aws::Vector<Aws::String>&& value) { SetResources(std::move(value)); return *this;}
-
-    /**
-     * <p>Amazon Web Services resources, identified by Amazon Resource Name (ARN),
-     * which the event primarily concerns. Any number, including zero, may be
-     * present.</p>
-     */
-    inline PutPartnerEventsRequestEntry& AddResources(const Aws::String& value) { m_resourcesHasBeenSet = true; m_resources.push_back(value); return *this; }
-
-    /**
-     * <p>Amazon Web Services resources, identified by Amazon Resource Name (ARN),
-     * which the event primarily concerns. Any number, including zero, may be
-     * present.</p>
-     */
-    inline PutPartnerEventsRequestEntry& AddResources(Aws::String&& value) { m_resourcesHasBeenSet = true; m_resources.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Amazon Web Services resources, identified by Amazon Resource Name (ARN),
-     * which the event primarily concerns. Any number, including zero, may be
-     * present.</p>
-     */
-    inline PutPartnerEventsRequestEntry& AddResources(const char* value) { m_resourcesHasBeenSet = true; m_resources.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A free-form string, with a maximum of 128 characters, used to decide what
-     * fields to expect in the event detail.</p>
+     * fields to expect in the event detail.</p>  <p> <code>Detail</code>,
+     * <code>DetailType</code>, and <code>Source</code> are required for EventBridge to
+     * successfully send an event to an event bus. If you include event entries in a
+     * request that do not include each of those properties, EventBridge fails that
+     * entry. If you submit a request in which <i>none</i> of the entries have each of
+     * these properties, EventBridge fails the entire request. </p> 
      */
-    inline const Aws::String& GetDetailType() const{ return m_detailType; }
-
-    /**
-     * <p>A free-form string, with a maximum of 128 characters, used to decide what
-     * fields to expect in the event detail.</p>
-     */
+    inline const Aws::String& GetDetailType() const { return m_detailType; }
     inline bool DetailTypeHasBeenSet() const { return m_detailTypeHasBeenSet; }
+    template<typename DetailTypeT = Aws::String>
+    void SetDetailType(DetailTypeT&& value) { m_detailTypeHasBeenSet = true; m_detailType = std::forward<DetailTypeT>(value); }
+    template<typename DetailTypeT = Aws::String>
+    PutPartnerEventsRequestEntry& WithDetailType(DetailTypeT&& value) { SetDetailType(std::forward<DetailTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A free-form string, with a maximum of 128 characters, used to decide what
-     * fields to expect in the event detail.</p>
-     */
-    inline void SetDetailType(const Aws::String& value) { m_detailTypeHasBeenSet = true; m_detailType = value; }
-
-    /**
-     * <p>A free-form string, with a maximum of 128 characters, used to decide what
-     * fields to expect in the event detail.</p>
-     */
-    inline void SetDetailType(Aws::String&& value) { m_detailTypeHasBeenSet = true; m_detailType = std::move(value); }
-
-    /**
-     * <p>A free-form string, with a maximum of 128 characters, used to decide what
-     * fields to expect in the event detail.</p>
-     */
-    inline void SetDetailType(const char* value) { m_detailTypeHasBeenSet = true; m_detailType.assign(value); }
-
-    /**
-     * <p>A free-form string, with a maximum of 128 characters, used to decide what
-     * fields to expect in the event detail.</p>
-     */
-    inline PutPartnerEventsRequestEntry& WithDetailType(const Aws::String& value) { SetDetailType(value); return *this;}
-
-    /**
-     * <p>A free-form string, with a maximum of 128 characters, used to decide what
-     * fields to expect in the event detail.</p>
-     */
-    inline PutPartnerEventsRequestEntry& WithDetailType(Aws::String&& value) { SetDetailType(std::move(value)); return *this;}
-
-    /**
-     * <p>A free-form string, with a maximum of 128 characters, used to decide what
-     * fields to expect in the event detail.</p>
-     */
-    inline PutPartnerEventsRequestEntry& WithDetailType(const char* value) { SetDetailType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A valid JSON string. There is no other schema imposed. The JSON string may
-     * contain fields and nested subobjects.</p>
+     * contain fields and nested sub-objects.</p>  <p> <code>Detail</code>,
+     * <code>DetailType</code>, and <code>Source</code> are required for EventBridge to
+     * successfully send an event to an event bus. If you include event entries in a
+     * request that do not include each of those properties, EventBridge fails that
+     * entry. If you submit a request in which <i>none</i> of the entries have each of
+     * these properties, EventBridge fails the entire request. </p> 
      */
-    inline const Aws::String& GetDetail() const{ return m_detail; }
-
-    /**
-     * <p>A valid JSON string. There is no other schema imposed. The JSON string may
-     * contain fields and nested subobjects.</p>
-     */
+    inline const Aws::String& GetDetail() const { return m_detail; }
     inline bool DetailHasBeenSet() const { return m_detailHasBeenSet; }
-
-    /**
-     * <p>A valid JSON string. There is no other schema imposed. The JSON string may
-     * contain fields and nested subobjects.</p>
-     */
-    inline void SetDetail(const Aws::String& value) { m_detailHasBeenSet = true; m_detail = value; }
-
-    /**
-     * <p>A valid JSON string. There is no other schema imposed. The JSON string may
-     * contain fields and nested subobjects.</p>
-     */
-    inline void SetDetail(Aws::String&& value) { m_detailHasBeenSet = true; m_detail = std::move(value); }
-
-    /**
-     * <p>A valid JSON string. There is no other schema imposed. The JSON string may
-     * contain fields and nested subobjects.</p>
-     */
-    inline void SetDetail(const char* value) { m_detailHasBeenSet = true; m_detail.assign(value); }
-
-    /**
-     * <p>A valid JSON string. There is no other schema imposed. The JSON string may
-     * contain fields and nested subobjects.</p>
-     */
-    inline PutPartnerEventsRequestEntry& WithDetail(const Aws::String& value) { SetDetail(value); return *this;}
-
-    /**
-     * <p>A valid JSON string. There is no other schema imposed. The JSON string may
-     * contain fields and nested subobjects.</p>
-     */
-    inline PutPartnerEventsRequestEntry& WithDetail(Aws::String&& value) { SetDetail(std::move(value)); return *this;}
-
-    /**
-     * <p>A valid JSON string. There is no other schema imposed. The JSON string may
-     * contain fields and nested subobjects.</p>
-     */
-    inline PutPartnerEventsRequestEntry& WithDetail(const char* value) { SetDetail(value); return *this;}
-
+    template<typename DetailT = Aws::String>
+    void SetDetail(DetailT&& value) { m_detailHasBeenSet = true; m_detail = std::forward<DetailT>(value); }
+    template<typename DetailT = Aws::String>
+    PutPartnerEventsRequestEntry& WithDetail(DetailT&& value) { SetDetail(std::forward<DetailT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_time;
+    Aws::Utils::DateTime m_time{};
     bool m_timeHasBeenSet = false;
 
     Aws::String m_source;

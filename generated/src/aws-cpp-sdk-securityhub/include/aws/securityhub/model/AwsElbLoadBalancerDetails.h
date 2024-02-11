@@ -39,525 +39,168 @@ namespace Model
   class AwsElbLoadBalancerDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsElbLoadBalancerDetails();
+    AWS_SECURITYHUB_API AwsElbLoadBalancerDetails() = default;
     AWS_SECURITYHUB_API AwsElbLoadBalancerDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsElbLoadBalancerDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The list of Availability Zones for the load balancer.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAvailabilityZones() const{ return m_availabilityZones; }
-
-    /**
-     * <p>The list of Availability Zones for the load balancer.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAvailabilityZones() const { return m_availabilityZones; }
     inline bool AvailabilityZonesHasBeenSet() const { return m_availabilityZonesHasBeenSet; }
+    template<typename AvailabilityZonesT = Aws::Vector<Aws::String>>
+    void SetAvailabilityZones(AvailabilityZonesT&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = std::forward<AvailabilityZonesT>(value); }
+    template<typename AvailabilityZonesT = Aws::Vector<Aws::String>>
+    AwsElbLoadBalancerDetails& WithAvailabilityZones(AvailabilityZonesT&& value) { SetAvailabilityZones(std::forward<AvailabilityZonesT>(value)); return *this;}
+    template<typename AvailabilityZonesT = Aws::String>
+    AwsElbLoadBalancerDetails& AddAvailabilityZones(AvailabilityZonesT&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.emplace_back(std::forward<AvailabilityZonesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of Availability Zones for the load balancer.</p>
-     */
-    inline void SetAvailabilityZones(const Aws::Vector<Aws::String>& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = value; }
-
-    /**
-     * <p>The list of Availability Zones for the load balancer.</p>
-     */
-    inline void SetAvailabilityZones(Aws::Vector<Aws::String>&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = std::move(value); }
-
-    /**
-     * <p>The list of Availability Zones for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithAvailabilityZones(const Aws::Vector<Aws::String>& value) { SetAvailabilityZones(value); return *this;}
-
-    /**
-     * <p>The list of Availability Zones for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithAvailabilityZones(Aws::Vector<Aws::String>&& value) { SetAvailabilityZones(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of Availability Zones for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& AddAvailabilityZones(const Aws::String& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(value); return *this; }
-
-    /**
-     * <p>The list of Availability Zones for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& AddAvailabilityZones(Aws::String&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The list of Availability Zones for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& AddAvailabilityZones(const char* value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Information about the configuration of the EC2 instances.</p>
      */
-    inline const Aws::Vector<AwsElbLoadBalancerBackendServerDescription>& GetBackendServerDescriptions() const{ return m_backendServerDescriptions; }
-
-    /**
-     * <p>Information about the configuration of the EC2 instances.</p>
-     */
+    inline const Aws::Vector<AwsElbLoadBalancerBackendServerDescription>& GetBackendServerDescriptions() const { return m_backendServerDescriptions; }
     inline bool BackendServerDescriptionsHasBeenSet() const { return m_backendServerDescriptionsHasBeenSet; }
+    template<typename BackendServerDescriptionsT = Aws::Vector<AwsElbLoadBalancerBackendServerDescription>>
+    void SetBackendServerDescriptions(BackendServerDescriptionsT&& value) { m_backendServerDescriptionsHasBeenSet = true; m_backendServerDescriptions = std::forward<BackendServerDescriptionsT>(value); }
+    template<typename BackendServerDescriptionsT = Aws::Vector<AwsElbLoadBalancerBackendServerDescription>>
+    AwsElbLoadBalancerDetails& WithBackendServerDescriptions(BackendServerDescriptionsT&& value) { SetBackendServerDescriptions(std::forward<BackendServerDescriptionsT>(value)); return *this;}
+    template<typename BackendServerDescriptionsT = AwsElbLoadBalancerBackendServerDescription>
+    AwsElbLoadBalancerDetails& AddBackendServerDescriptions(BackendServerDescriptionsT&& value) { m_backendServerDescriptionsHasBeenSet = true; m_backendServerDescriptions.emplace_back(std::forward<BackendServerDescriptionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about the configuration of the EC2 instances.</p>
-     */
-    inline void SetBackendServerDescriptions(const Aws::Vector<AwsElbLoadBalancerBackendServerDescription>& value) { m_backendServerDescriptionsHasBeenSet = true; m_backendServerDescriptions = value; }
-
-    /**
-     * <p>Information about the configuration of the EC2 instances.</p>
-     */
-    inline void SetBackendServerDescriptions(Aws::Vector<AwsElbLoadBalancerBackendServerDescription>&& value) { m_backendServerDescriptionsHasBeenSet = true; m_backendServerDescriptions = std::move(value); }
-
-    /**
-     * <p>Information about the configuration of the EC2 instances.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithBackendServerDescriptions(const Aws::Vector<AwsElbLoadBalancerBackendServerDescription>& value) { SetBackendServerDescriptions(value); return *this;}
-
-    /**
-     * <p>Information about the configuration of the EC2 instances.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithBackendServerDescriptions(Aws::Vector<AwsElbLoadBalancerBackendServerDescription>&& value) { SetBackendServerDescriptions(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the configuration of the EC2 instances.</p>
-     */
-    inline AwsElbLoadBalancerDetails& AddBackendServerDescriptions(const AwsElbLoadBalancerBackendServerDescription& value) { m_backendServerDescriptionsHasBeenSet = true; m_backendServerDescriptions.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the configuration of the EC2 instances.</p>
-     */
-    inline AwsElbLoadBalancerDetails& AddBackendServerDescriptions(AwsElbLoadBalancerBackendServerDescription&& value) { m_backendServerDescriptionsHasBeenSet = true; m_backendServerDescriptions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The name of the Amazon Route 53 hosted zone for the load balancer.</p>
      */
-    inline const Aws::String& GetCanonicalHostedZoneName() const{ return m_canonicalHostedZoneName; }
-
-    /**
-     * <p>The name of the Amazon Route 53 hosted zone for the load balancer.</p>
-     */
+    inline const Aws::String& GetCanonicalHostedZoneName() const { return m_canonicalHostedZoneName; }
     inline bool CanonicalHostedZoneNameHasBeenSet() const { return m_canonicalHostedZoneNameHasBeenSet; }
+    template<typename CanonicalHostedZoneNameT = Aws::String>
+    void SetCanonicalHostedZoneName(CanonicalHostedZoneNameT&& value) { m_canonicalHostedZoneNameHasBeenSet = true; m_canonicalHostedZoneName = std::forward<CanonicalHostedZoneNameT>(value); }
+    template<typename CanonicalHostedZoneNameT = Aws::String>
+    AwsElbLoadBalancerDetails& WithCanonicalHostedZoneName(CanonicalHostedZoneNameT&& value) { SetCanonicalHostedZoneName(std::forward<CanonicalHostedZoneNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Amazon Route 53 hosted zone for the load balancer.</p>
-     */
-    inline void SetCanonicalHostedZoneName(const Aws::String& value) { m_canonicalHostedZoneNameHasBeenSet = true; m_canonicalHostedZoneName = value; }
-
-    /**
-     * <p>The name of the Amazon Route 53 hosted zone for the load balancer.</p>
-     */
-    inline void SetCanonicalHostedZoneName(Aws::String&& value) { m_canonicalHostedZoneNameHasBeenSet = true; m_canonicalHostedZoneName = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon Route 53 hosted zone for the load balancer.</p>
-     */
-    inline void SetCanonicalHostedZoneName(const char* value) { m_canonicalHostedZoneNameHasBeenSet = true; m_canonicalHostedZoneName.assign(value); }
-
-    /**
-     * <p>The name of the Amazon Route 53 hosted zone for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithCanonicalHostedZoneName(const Aws::String& value) { SetCanonicalHostedZoneName(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon Route 53 hosted zone for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithCanonicalHostedZoneName(Aws::String&& value) { SetCanonicalHostedZoneName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon Route 53 hosted zone for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithCanonicalHostedZoneName(const char* value) { SetCanonicalHostedZoneName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Amazon Route 53 hosted zone for the load balancer.</p>
      */
-    inline const Aws::String& GetCanonicalHostedZoneNameID() const{ return m_canonicalHostedZoneNameID; }
-
-    /**
-     * <p>The ID of the Amazon Route 53 hosted zone for the load balancer.</p>
-     */
+    inline const Aws::String& GetCanonicalHostedZoneNameID() const { return m_canonicalHostedZoneNameID; }
     inline bool CanonicalHostedZoneNameIDHasBeenSet() const { return m_canonicalHostedZoneNameIDHasBeenSet; }
+    template<typename CanonicalHostedZoneNameIDT = Aws::String>
+    void SetCanonicalHostedZoneNameID(CanonicalHostedZoneNameIDT&& value) { m_canonicalHostedZoneNameIDHasBeenSet = true; m_canonicalHostedZoneNameID = std::forward<CanonicalHostedZoneNameIDT>(value); }
+    template<typename CanonicalHostedZoneNameIDT = Aws::String>
+    AwsElbLoadBalancerDetails& WithCanonicalHostedZoneNameID(CanonicalHostedZoneNameIDT&& value) { SetCanonicalHostedZoneNameID(std::forward<CanonicalHostedZoneNameIDT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the Amazon Route 53 hosted zone for the load balancer.</p>
+     * <p>Indicates when the load balancer was created.</p> <p>For more information
+     * about the validation and formatting of timestamp fields in Security Hub, see <a
+     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/Welcome.html#timestamps">Timestamps</a>.</p>
      */
-    inline void SetCanonicalHostedZoneNameID(const Aws::String& value) { m_canonicalHostedZoneNameIDHasBeenSet = true; m_canonicalHostedZoneNameID = value; }
-
-    /**
-     * <p>The ID of the Amazon Route 53 hosted zone for the load balancer.</p>
-     */
-    inline void SetCanonicalHostedZoneNameID(Aws::String&& value) { m_canonicalHostedZoneNameIDHasBeenSet = true; m_canonicalHostedZoneNameID = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Route 53 hosted zone for the load balancer.</p>
-     */
-    inline void SetCanonicalHostedZoneNameID(const char* value) { m_canonicalHostedZoneNameIDHasBeenSet = true; m_canonicalHostedZoneNameID.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Route 53 hosted zone for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithCanonicalHostedZoneNameID(const Aws::String& value) { SetCanonicalHostedZoneNameID(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Route 53 hosted zone for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithCanonicalHostedZoneNameID(Aws::String&& value) { SetCanonicalHostedZoneNameID(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Route 53 hosted zone for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithCanonicalHostedZoneNameID(const char* value) { SetCanonicalHostedZoneNameID(value); return *this;}
-
-
-    /**
-     * <p>Indicates when the load balancer was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline const Aws::String& GetCreatedTime() const{ return m_createdTime; }
-
-    /**
-     * <p>Indicates when the load balancer was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
+    inline const Aws::String& GetCreatedTime() const { return m_createdTime; }
     inline bool CreatedTimeHasBeenSet() const { return m_createdTimeHasBeenSet; }
+    template<typename CreatedTimeT = Aws::String>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::String>
+    AwsElbLoadBalancerDetails& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates when the load balancer was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetCreatedTime(const Aws::String& value) { m_createdTimeHasBeenSet = true; m_createdTime = value; }
-
-    /**
-     * <p>Indicates when the load balancer was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetCreatedTime(Aws::String&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::move(value); }
-
-    /**
-     * <p>Indicates when the load balancer was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetCreatedTime(const char* value) { m_createdTimeHasBeenSet = true; m_createdTime.assign(value); }
-
-    /**
-     * <p>Indicates when the load balancer was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithCreatedTime(const Aws::String& value) { SetCreatedTime(value); return *this;}
-
-    /**
-     * <p>Indicates when the load balancer was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithCreatedTime(Aws::String&& value) { SetCreatedTime(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates when the load balancer was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithCreatedTime(const char* value) { SetCreatedTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The DNS name of the load balancer.</p>
      */
-    inline const Aws::String& GetDnsName() const{ return m_dnsName; }
-
-    /**
-     * <p>The DNS name of the load balancer.</p>
-     */
+    inline const Aws::String& GetDnsName() const { return m_dnsName; }
     inline bool DnsNameHasBeenSet() const { return m_dnsNameHasBeenSet; }
+    template<typename DnsNameT = Aws::String>
+    void SetDnsName(DnsNameT&& value) { m_dnsNameHasBeenSet = true; m_dnsName = std::forward<DnsNameT>(value); }
+    template<typename DnsNameT = Aws::String>
+    AwsElbLoadBalancerDetails& WithDnsName(DnsNameT&& value) { SetDnsName(std::forward<DnsNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The DNS name of the load balancer.</p>
-     */
-    inline void SetDnsName(const Aws::String& value) { m_dnsNameHasBeenSet = true; m_dnsName = value; }
-
-    /**
-     * <p>The DNS name of the load balancer.</p>
-     */
-    inline void SetDnsName(Aws::String&& value) { m_dnsNameHasBeenSet = true; m_dnsName = std::move(value); }
-
-    /**
-     * <p>The DNS name of the load balancer.</p>
-     */
-    inline void SetDnsName(const char* value) { m_dnsNameHasBeenSet = true; m_dnsName.assign(value); }
-
-    /**
-     * <p>The DNS name of the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithDnsName(const Aws::String& value) { SetDnsName(value); return *this;}
-
-    /**
-     * <p>The DNS name of the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithDnsName(Aws::String&& value) { SetDnsName(std::move(value)); return *this;}
-
-    /**
-     * <p>The DNS name of the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithDnsName(const char* value) { SetDnsName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the health checks that are conducted on the load
      * balancer.</p>
      */
-    inline const AwsElbLoadBalancerHealthCheck& GetHealthCheck() const{ return m_healthCheck; }
-
-    /**
-     * <p>Information about the health checks that are conducted on the load
-     * balancer.</p>
-     */
+    inline const AwsElbLoadBalancerHealthCheck& GetHealthCheck() const { return m_healthCheck; }
     inline bool HealthCheckHasBeenSet() const { return m_healthCheckHasBeenSet; }
+    template<typename HealthCheckT = AwsElbLoadBalancerHealthCheck>
+    void SetHealthCheck(HealthCheckT&& value) { m_healthCheckHasBeenSet = true; m_healthCheck = std::forward<HealthCheckT>(value); }
+    template<typename HealthCheckT = AwsElbLoadBalancerHealthCheck>
+    AwsElbLoadBalancerDetails& WithHealthCheck(HealthCheckT&& value) { SetHealthCheck(std::forward<HealthCheckT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the health checks that are conducted on the load
-     * balancer.</p>
-     */
-    inline void SetHealthCheck(const AwsElbLoadBalancerHealthCheck& value) { m_healthCheckHasBeenSet = true; m_healthCheck = value; }
-
-    /**
-     * <p>Information about the health checks that are conducted on the load
-     * balancer.</p>
-     */
-    inline void SetHealthCheck(AwsElbLoadBalancerHealthCheck&& value) { m_healthCheckHasBeenSet = true; m_healthCheck = std::move(value); }
-
-    /**
-     * <p>Information about the health checks that are conducted on the load
-     * balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithHealthCheck(const AwsElbLoadBalancerHealthCheck& value) { SetHealthCheck(value); return *this;}
-
-    /**
-     * <p>Information about the health checks that are conducted on the load
-     * balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithHealthCheck(AwsElbLoadBalancerHealthCheck&& value) { SetHealthCheck(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>List of EC2 instances for the load balancer.</p>
      */
-    inline const Aws::Vector<AwsElbLoadBalancerInstance>& GetInstances() const{ return m_instances; }
-
-    /**
-     * <p>List of EC2 instances for the load balancer.</p>
-     */
+    inline const Aws::Vector<AwsElbLoadBalancerInstance>& GetInstances() const { return m_instances; }
     inline bool InstancesHasBeenSet() const { return m_instancesHasBeenSet; }
+    template<typename InstancesT = Aws::Vector<AwsElbLoadBalancerInstance>>
+    void SetInstances(InstancesT&& value) { m_instancesHasBeenSet = true; m_instances = std::forward<InstancesT>(value); }
+    template<typename InstancesT = Aws::Vector<AwsElbLoadBalancerInstance>>
+    AwsElbLoadBalancerDetails& WithInstances(InstancesT&& value) { SetInstances(std::forward<InstancesT>(value)); return *this;}
+    template<typename InstancesT = AwsElbLoadBalancerInstance>
+    AwsElbLoadBalancerDetails& AddInstances(InstancesT&& value) { m_instancesHasBeenSet = true; m_instances.emplace_back(std::forward<InstancesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of EC2 instances for the load balancer.</p>
-     */
-    inline void SetInstances(const Aws::Vector<AwsElbLoadBalancerInstance>& value) { m_instancesHasBeenSet = true; m_instances = value; }
-
-    /**
-     * <p>List of EC2 instances for the load balancer.</p>
-     */
-    inline void SetInstances(Aws::Vector<AwsElbLoadBalancerInstance>&& value) { m_instancesHasBeenSet = true; m_instances = std::move(value); }
-
-    /**
-     * <p>List of EC2 instances for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithInstances(const Aws::Vector<AwsElbLoadBalancerInstance>& value) { SetInstances(value); return *this;}
-
-    /**
-     * <p>List of EC2 instances for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithInstances(Aws::Vector<AwsElbLoadBalancerInstance>&& value) { SetInstances(std::move(value)); return *this;}
-
-    /**
-     * <p>List of EC2 instances for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& AddInstances(const AwsElbLoadBalancerInstance& value) { m_instancesHasBeenSet = true; m_instances.push_back(value); return *this; }
-
-    /**
-     * <p>List of EC2 instances for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& AddInstances(AwsElbLoadBalancerInstance&& value) { m_instancesHasBeenSet = true; m_instances.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The policies that are enabled for the load balancer listeners.</p>
      */
-    inline const Aws::Vector<AwsElbLoadBalancerListenerDescription>& GetListenerDescriptions() const{ return m_listenerDescriptions; }
-
-    /**
-     * <p>The policies that are enabled for the load balancer listeners.</p>
-     */
+    inline const Aws::Vector<AwsElbLoadBalancerListenerDescription>& GetListenerDescriptions() const { return m_listenerDescriptions; }
     inline bool ListenerDescriptionsHasBeenSet() const { return m_listenerDescriptionsHasBeenSet; }
+    template<typename ListenerDescriptionsT = Aws::Vector<AwsElbLoadBalancerListenerDescription>>
+    void SetListenerDescriptions(ListenerDescriptionsT&& value) { m_listenerDescriptionsHasBeenSet = true; m_listenerDescriptions = std::forward<ListenerDescriptionsT>(value); }
+    template<typename ListenerDescriptionsT = Aws::Vector<AwsElbLoadBalancerListenerDescription>>
+    AwsElbLoadBalancerDetails& WithListenerDescriptions(ListenerDescriptionsT&& value) { SetListenerDescriptions(std::forward<ListenerDescriptionsT>(value)); return *this;}
+    template<typename ListenerDescriptionsT = AwsElbLoadBalancerListenerDescription>
+    AwsElbLoadBalancerDetails& AddListenerDescriptions(ListenerDescriptionsT&& value) { m_listenerDescriptionsHasBeenSet = true; m_listenerDescriptions.emplace_back(std::forward<ListenerDescriptionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The policies that are enabled for the load balancer listeners.</p>
-     */
-    inline void SetListenerDescriptions(const Aws::Vector<AwsElbLoadBalancerListenerDescription>& value) { m_listenerDescriptionsHasBeenSet = true; m_listenerDescriptions = value; }
-
-    /**
-     * <p>The policies that are enabled for the load balancer listeners.</p>
-     */
-    inline void SetListenerDescriptions(Aws::Vector<AwsElbLoadBalancerListenerDescription>&& value) { m_listenerDescriptionsHasBeenSet = true; m_listenerDescriptions = std::move(value); }
-
-    /**
-     * <p>The policies that are enabled for the load balancer listeners.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithListenerDescriptions(const Aws::Vector<AwsElbLoadBalancerListenerDescription>& value) { SetListenerDescriptions(value); return *this;}
-
-    /**
-     * <p>The policies that are enabled for the load balancer listeners.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithListenerDescriptions(Aws::Vector<AwsElbLoadBalancerListenerDescription>&& value) { SetListenerDescriptions(std::move(value)); return *this;}
-
-    /**
-     * <p>The policies that are enabled for the load balancer listeners.</p>
-     */
-    inline AwsElbLoadBalancerDetails& AddListenerDescriptions(const AwsElbLoadBalancerListenerDescription& value) { m_listenerDescriptionsHasBeenSet = true; m_listenerDescriptions.push_back(value); return *this; }
-
-    /**
-     * <p>The policies that are enabled for the load balancer listeners.</p>
-     */
-    inline AwsElbLoadBalancerDetails& AddListenerDescriptions(AwsElbLoadBalancerListenerDescription&& value) { m_listenerDescriptionsHasBeenSet = true; m_listenerDescriptions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The attributes for a load balancer.</p>
      */
-    inline const AwsElbLoadBalancerAttributes& GetLoadBalancerAttributes() const{ return m_loadBalancerAttributes; }
-
-    /**
-     * <p>The attributes for a load balancer.</p>
-     */
+    inline const AwsElbLoadBalancerAttributes& GetLoadBalancerAttributes() const { return m_loadBalancerAttributes; }
     inline bool LoadBalancerAttributesHasBeenSet() const { return m_loadBalancerAttributesHasBeenSet; }
+    template<typename LoadBalancerAttributesT = AwsElbLoadBalancerAttributes>
+    void SetLoadBalancerAttributes(LoadBalancerAttributesT&& value) { m_loadBalancerAttributesHasBeenSet = true; m_loadBalancerAttributes = std::forward<LoadBalancerAttributesT>(value); }
+    template<typename LoadBalancerAttributesT = AwsElbLoadBalancerAttributes>
+    AwsElbLoadBalancerDetails& WithLoadBalancerAttributes(LoadBalancerAttributesT&& value) { SetLoadBalancerAttributes(std::forward<LoadBalancerAttributesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The attributes for a load balancer.</p>
-     */
-    inline void SetLoadBalancerAttributes(const AwsElbLoadBalancerAttributes& value) { m_loadBalancerAttributesHasBeenSet = true; m_loadBalancerAttributes = value; }
-
-    /**
-     * <p>The attributes for a load balancer.</p>
-     */
-    inline void SetLoadBalancerAttributes(AwsElbLoadBalancerAttributes&& value) { m_loadBalancerAttributesHasBeenSet = true; m_loadBalancerAttributes = std::move(value); }
-
-    /**
-     * <p>The attributes for a load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithLoadBalancerAttributes(const AwsElbLoadBalancerAttributes& value) { SetLoadBalancerAttributes(value); return *this;}
-
-    /**
-     * <p>The attributes for a load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithLoadBalancerAttributes(AwsElbLoadBalancerAttributes&& value) { SetLoadBalancerAttributes(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the load balancer.</p>
      */
-    inline const Aws::String& GetLoadBalancerName() const{ return m_loadBalancerName; }
-
-    /**
-     * <p>The name of the load balancer.</p>
-     */
+    inline const Aws::String& GetLoadBalancerName() const { return m_loadBalancerName; }
     inline bool LoadBalancerNameHasBeenSet() const { return m_loadBalancerNameHasBeenSet; }
+    template<typename LoadBalancerNameT = Aws::String>
+    void SetLoadBalancerName(LoadBalancerNameT&& value) { m_loadBalancerNameHasBeenSet = true; m_loadBalancerName = std::forward<LoadBalancerNameT>(value); }
+    template<typename LoadBalancerNameT = Aws::String>
+    AwsElbLoadBalancerDetails& WithLoadBalancerName(LoadBalancerNameT&& value) { SetLoadBalancerName(std::forward<LoadBalancerNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the load balancer.</p>
-     */
-    inline void SetLoadBalancerName(const Aws::String& value) { m_loadBalancerNameHasBeenSet = true; m_loadBalancerName = value; }
-
-    /**
-     * <p>The name of the load balancer.</p>
-     */
-    inline void SetLoadBalancerName(Aws::String&& value) { m_loadBalancerNameHasBeenSet = true; m_loadBalancerName = std::move(value); }
-
-    /**
-     * <p>The name of the load balancer.</p>
-     */
-    inline void SetLoadBalancerName(const char* value) { m_loadBalancerNameHasBeenSet = true; m_loadBalancerName.assign(value); }
-
-    /**
-     * <p>The name of the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithLoadBalancerName(const Aws::String& value) { SetLoadBalancerName(value); return *this;}
-
-    /**
-     * <p>The name of the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithLoadBalancerName(Aws::String&& value) { SetLoadBalancerName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithLoadBalancerName(const char* value) { SetLoadBalancerName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The policies for a load balancer.</p>
      */
-    inline const AwsElbLoadBalancerPolicies& GetPolicies() const{ return m_policies; }
-
-    /**
-     * <p>The policies for a load balancer.</p>
-     */
+    inline const AwsElbLoadBalancerPolicies& GetPolicies() const { return m_policies; }
     inline bool PoliciesHasBeenSet() const { return m_policiesHasBeenSet; }
+    template<typename PoliciesT = AwsElbLoadBalancerPolicies>
+    void SetPolicies(PoliciesT&& value) { m_policiesHasBeenSet = true; m_policies = std::forward<PoliciesT>(value); }
+    template<typename PoliciesT = AwsElbLoadBalancerPolicies>
+    AwsElbLoadBalancerDetails& WithPolicies(PoliciesT&& value) { SetPolicies(std::forward<PoliciesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The policies for a load balancer.</p>
-     */
-    inline void SetPolicies(const AwsElbLoadBalancerPolicies& value) { m_policiesHasBeenSet = true; m_policies = value; }
-
-    /**
-     * <p>The policies for a load balancer.</p>
-     */
-    inline void SetPolicies(AwsElbLoadBalancerPolicies&& value) { m_policiesHasBeenSet = true; m_policies = std::move(value); }
-
-    /**
-     * <p>The policies for a load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithPolicies(const AwsElbLoadBalancerPolicies& value) { SetPolicies(value); return *this;}
-
-    /**
-     * <p>The policies for a load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithPolicies(AwsElbLoadBalancerPolicies&& value) { SetPolicies(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of load balancer. Only provided if the load balancer is in a
      * VPC.</p> <p>If <code>Scheme</code> is <code>internet-facing</code>, the load
@@ -565,250 +208,67 @@ namespace Model
      * <code>Scheme</code> is <code>internal</code>, the load balancer has a public DNS
      * name that resolves to a private IP address.</p>
      */
-    inline const Aws::String& GetScheme() const{ return m_scheme; }
-
-    /**
-     * <p>The type of load balancer. Only provided if the load balancer is in a
-     * VPC.</p> <p>If <code>Scheme</code> is <code>internet-facing</code>, the load
-     * balancer has a public DNS name that resolves to a public IP address.</p> <p>If
-     * <code>Scheme</code> is <code>internal</code>, the load balancer has a public DNS
-     * name that resolves to a private IP address.</p>
-     */
+    inline const Aws::String& GetScheme() const { return m_scheme; }
     inline bool SchemeHasBeenSet() const { return m_schemeHasBeenSet; }
+    template<typename SchemeT = Aws::String>
+    void SetScheme(SchemeT&& value) { m_schemeHasBeenSet = true; m_scheme = std::forward<SchemeT>(value); }
+    template<typename SchemeT = Aws::String>
+    AwsElbLoadBalancerDetails& WithScheme(SchemeT&& value) { SetScheme(std::forward<SchemeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of load balancer. Only provided if the load balancer is in a
-     * VPC.</p> <p>If <code>Scheme</code> is <code>internet-facing</code>, the load
-     * balancer has a public DNS name that resolves to a public IP address.</p> <p>If
-     * <code>Scheme</code> is <code>internal</code>, the load balancer has a public DNS
-     * name that resolves to a private IP address.</p>
-     */
-    inline void SetScheme(const Aws::String& value) { m_schemeHasBeenSet = true; m_scheme = value; }
-
-    /**
-     * <p>The type of load balancer. Only provided if the load balancer is in a
-     * VPC.</p> <p>If <code>Scheme</code> is <code>internet-facing</code>, the load
-     * balancer has a public DNS name that resolves to a public IP address.</p> <p>If
-     * <code>Scheme</code> is <code>internal</code>, the load balancer has a public DNS
-     * name that resolves to a private IP address.</p>
-     */
-    inline void SetScheme(Aws::String&& value) { m_schemeHasBeenSet = true; m_scheme = std::move(value); }
-
-    /**
-     * <p>The type of load balancer. Only provided if the load balancer is in a
-     * VPC.</p> <p>If <code>Scheme</code> is <code>internet-facing</code>, the load
-     * balancer has a public DNS name that resolves to a public IP address.</p> <p>If
-     * <code>Scheme</code> is <code>internal</code>, the load balancer has a public DNS
-     * name that resolves to a private IP address.</p>
-     */
-    inline void SetScheme(const char* value) { m_schemeHasBeenSet = true; m_scheme.assign(value); }
-
-    /**
-     * <p>The type of load balancer. Only provided if the load balancer is in a
-     * VPC.</p> <p>If <code>Scheme</code> is <code>internet-facing</code>, the load
-     * balancer has a public DNS name that resolves to a public IP address.</p> <p>If
-     * <code>Scheme</code> is <code>internal</code>, the load balancer has a public DNS
-     * name that resolves to a private IP address.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithScheme(const Aws::String& value) { SetScheme(value); return *this;}
-
-    /**
-     * <p>The type of load balancer. Only provided if the load balancer is in a
-     * VPC.</p> <p>If <code>Scheme</code> is <code>internet-facing</code>, the load
-     * balancer has a public DNS name that resolves to a public IP address.</p> <p>If
-     * <code>Scheme</code> is <code>internal</code>, the load balancer has a public DNS
-     * name that resolves to a private IP address.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithScheme(Aws::String&& value) { SetScheme(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of load balancer. Only provided if the load balancer is in a
-     * VPC.</p> <p>If <code>Scheme</code> is <code>internet-facing</code>, the load
-     * balancer has a public DNS name that resolves to a public IP address.</p> <p>If
-     * <code>Scheme</code> is <code>internal</code>, the load balancer has a public DNS
-     * name that resolves to a private IP address.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithScheme(const char* value) { SetScheme(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The security groups for the load balancer. Only provided if the load balancer
      * is in a VPC.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSecurityGroups() const{ return m_securityGroups; }
-
-    /**
-     * <p>The security groups for the load balancer. Only provided if the load balancer
-     * is in a VPC.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSecurityGroups() const { return m_securityGroups; }
     inline bool SecurityGroupsHasBeenSet() const { return m_securityGroupsHasBeenSet; }
+    template<typename SecurityGroupsT = Aws::Vector<Aws::String>>
+    void SetSecurityGroups(SecurityGroupsT&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = std::forward<SecurityGroupsT>(value); }
+    template<typename SecurityGroupsT = Aws::Vector<Aws::String>>
+    AwsElbLoadBalancerDetails& WithSecurityGroups(SecurityGroupsT&& value) { SetSecurityGroups(std::forward<SecurityGroupsT>(value)); return *this;}
+    template<typename SecurityGroupsT = Aws::String>
+    AwsElbLoadBalancerDetails& AddSecurityGroups(SecurityGroupsT&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.emplace_back(std::forward<SecurityGroupsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The security groups for the load balancer. Only provided if the load balancer
-     * is in a VPC.</p>
-     */
-    inline void SetSecurityGroups(const Aws::Vector<Aws::String>& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = value; }
-
-    /**
-     * <p>The security groups for the load balancer. Only provided if the load balancer
-     * is in a VPC.</p>
-     */
-    inline void SetSecurityGroups(Aws::Vector<Aws::String>&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = std::move(value); }
-
-    /**
-     * <p>The security groups for the load balancer. Only provided if the load balancer
-     * is in a VPC.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithSecurityGroups(const Aws::Vector<Aws::String>& value) { SetSecurityGroups(value); return *this;}
-
-    /**
-     * <p>The security groups for the load balancer. Only provided if the load balancer
-     * is in a VPC.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithSecurityGroups(Aws::Vector<Aws::String>&& value) { SetSecurityGroups(std::move(value)); return *this;}
-
-    /**
-     * <p>The security groups for the load balancer. Only provided if the load balancer
-     * is in a VPC.</p>
-     */
-    inline AwsElbLoadBalancerDetails& AddSecurityGroups(const Aws::String& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(value); return *this; }
-
-    /**
-     * <p>The security groups for the load balancer. Only provided if the load balancer
-     * is in a VPC.</p>
-     */
-    inline AwsElbLoadBalancerDetails& AddSecurityGroups(Aws::String&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The security groups for the load balancer. Only provided if the load balancer
-     * is in a VPC.</p>
-     */
-    inline AwsElbLoadBalancerDetails& AddSecurityGroups(const char* value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Information about the security group for the load balancer. This is the
      * security group that is used for inbound rules.</p>
      */
-    inline const AwsElbLoadBalancerSourceSecurityGroup& GetSourceSecurityGroup() const{ return m_sourceSecurityGroup; }
-
-    /**
-     * <p>Information about the security group for the load balancer. This is the
-     * security group that is used for inbound rules.</p>
-     */
+    inline const AwsElbLoadBalancerSourceSecurityGroup& GetSourceSecurityGroup() const { return m_sourceSecurityGroup; }
     inline bool SourceSecurityGroupHasBeenSet() const { return m_sourceSecurityGroupHasBeenSet; }
+    template<typename SourceSecurityGroupT = AwsElbLoadBalancerSourceSecurityGroup>
+    void SetSourceSecurityGroup(SourceSecurityGroupT&& value) { m_sourceSecurityGroupHasBeenSet = true; m_sourceSecurityGroup = std::forward<SourceSecurityGroupT>(value); }
+    template<typename SourceSecurityGroupT = AwsElbLoadBalancerSourceSecurityGroup>
+    AwsElbLoadBalancerDetails& WithSourceSecurityGroup(SourceSecurityGroupT&& value) { SetSourceSecurityGroup(std::forward<SourceSecurityGroupT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the security group for the load balancer. This is the
-     * security group that is used for inbound rules.</p>
-     */
-    inline void SetSourceSecurityGroup(const AwsElbLoadBalancerSourceSecurityGroup& value) { m_sourceSecurityGroupHasBeenSet = true; m_sourceSecurityGroup = value; }
-
-    /**
-     * <p>Information about the security group for the load balancer. This is the
-     * security group that is used for inbound rules.</p>
-     */
-    inline void SetSourceSecurityGroup(AwsElbLoadBalancerSourceSecurityGroup&& value) { m_sourceSecurityGroupHasBeenSet = true; m_sourceSecurityGroup = std::move(value); }
-
-    /**
-     * <p>Information about the security group for the load balancer. This is the
-     * security group that is used for inbound rules.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithSourceSecurityGroup(const AwsElbLoadBalancerSourceSecurityGroup& value) { SetSourceSecurityGroup(value); return *this;}
-
-    /**
-     * <p>Information about the security group for the load balancer. This is the
-     * security group that is used for inbound rules.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithSourceSecurityGroup(AwsElbLoadBalancerSourceSecurityGroup&& value) { SetSourceSecurityGroup(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of subnet identifiers for the load balancer.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSubnets() const{ return m_subnets; }
-
-    /**
-     * <p>The list of subnet identifiers for the load balancer.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSubnets() const { return m_subnets; }
     inline bool SubnetsHasBeenSet() const { return m_subnetsHasBeenSet; }
+    template<typename SubnetsT = Aws::Vector<Aws::String>>
+    void SetSubnets(SubnetsT&& value) { m_subnetsHasBeenSet = true; m_subnets = std::forward<SubnetsT>(value); }
+    template<typename SubnetsT = Aws::Vector<Aws::String>>
+    AwsElbLoadBalancerDetails& WithSubnets(SubnetsT&& value) { SetSubnets(std::forward<SubnetsT>(value)); return *this;}
+    template<typename SubnetsT = Aws::String>
+    AwsElbLoadBalancerDetails& AddSubnets(SubnetsT&& value) { m_subnetsHasBeenSet = true; m_subnets.emplace_back(std::forward<SubnetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of subnet identifiers for the load balancer.</p>
-     */
-    inline void SetSubnets(const Aws::Vector<Aws::String>& value) { m_subnetsHasBeenSet = true; m_subnets = value; }
-
-    /**
-     * <p>The list of subnet identifiers for the load balancer.</p>
-     */
-    inline void SetSubnets(Aws::Vector<Aws::String>&& value) { m_subnetsHasBeenSet = true; m_subnets = std::move(value); }
-
-    /**
-     * <p>The list of subnet identifiers for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithSubnets(const Aws::Vector<Aws::String>& value) { SetSubnets(value); return *this;}
-
-    /**
-     * <p>The list of subnet identifiers for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithSubnets(Aws::Vector<Aws::String>&& value) { SetSubnets(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of subnet identifiers for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& AddSubnets(const Aws::String& value) { m_subnetsHasBeenSet = true; m_subnets.push_back(value); return *this; }
-
-    /**
-     * <p>The list of subnet identifiers for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& AddSubnets(Aws::String&& value) { m_subnetsHasBeenSet = true; m_subnets.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The list of subnet identifiers for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& AddSubnets(const char* value) { m_subnetsHasBeenSet = true; m_subnets.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The identifier of the VPC for the load balancer.</p>
      */
-    inline const Aws::String& GetVpcId() const{ return m_vpcId; }
-
-    /**
-     * <p>The identifier of the VPC for the load balancer.</p>
-     */
+    inline const Aws::String& GetVpcId() const { return m_vpcId; }
     inline bool VpcIdHasBeenSet() const { return m_vpcIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the VPC for the load balancer.</p>
-     */
-    inline void SetVpcId(const Aws::String& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
-
-    /**
-     * <p>The identifier of the VPC for the load balancer.</p>
-     */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
-
-    /**
-     * <p>The identifier of the VPC for the load balancer.</p>
-     */
-    inline void SetVpcId(const char* value) { m_vpcIdHasBeenSet = true; m_vpcId.assign(value); }
-
-    /**
-     * <p>The identifier of the VPC for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithVpcId(const Aws::String& value) { SetVpcId(value); return *this;}
-
-    /**
-     * <p>The identifier of the VPC for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the VPC for the load balancer.</p>
-     */
-    inline AwsElbLoadBalancerDetails& WithVpcId(const char* value) { SetVpcId(value); return *this;}
-
+    template<typename VpcIdT = Aws::String>
+    void SetVpcId(VpcIdT&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::forward<VpcIdT>(value); }
+    template<typename VpcIdT = Aws::String>
+    AwsElbLoadBalancerDetails& WithVpcId(VpcIdT&& value) { SetVpcId(std::forward<VpcIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_availabilityZones;

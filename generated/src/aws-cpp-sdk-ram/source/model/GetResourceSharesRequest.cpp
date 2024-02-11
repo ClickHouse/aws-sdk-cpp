@@ -12,21 +12,6 @@ using namespace Aws::RAM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetResourceSharesRequest::GetResourceSharesRequest() : 
-    m_resourceShareArnsHasBeenSet(false),
-    m_resourceShareStatus(ResourceShareStatus::NOT_SET),
-    m_resourceShareStatusHasBeenSet(false),
-    m_resourceOwner(ResourceOwner::NOT_SET),
-    m_resourceOwnerHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_tagFiltersHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_permissionArnHasBeenSet(false)
-{
-}
-
 Aws::String GetResourceSharesRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -84,6 +69,12 @@ Aws::String GetResourceSharesRequest::SerializePayload() const
   if(m_permissionArnHasBeenSet)
   {
    payload.WithString("permissionArn", m_permissionArn);
+
+  }
+
+  if(m_permissionVersionHasBeenSet)
+  {
+   payload.WithInteger("permissionVersion", m_permissionVersion);
 
   }
 

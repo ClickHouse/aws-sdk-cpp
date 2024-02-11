@@ -18,17 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ShadowModelVariantConfig::ShadowModelVariantConfig() : 
-    m_shadowModelVariantNameHasBeenSet(false),
-    m_samplingPercentage(0),
-    m_samplingPercentageHasBeenSet(false)
-{
-}
-
-ShadowModelVariantConfig::ShadowModelVariantConfig(JsonView jsonValue) : 
-    m_shadowModelVariantNameHasBeenSet(false),
-    m_samplingPercentage(0),
-    m_samplingPercentageHasBeenSet(false)
+ShadowModelVariantConfig::ShadowModelVariantConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ShadowModelVariantConfig& ShadowModelVariantConfig::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("ShadowModelVariantName"))
   {
     m_shadowModelVariantName = jsonValue.GetString("ShadowModelVariantName");
-
     m_shadowModelVariantNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SamplingPercentage"))
   {
     m_samplingPercentage = jsonValue.GetInteger("SamplingPercentage");
-
     m_samplingPercentageHasBeenSet = true;
   }
-
   return *this;
 }
 

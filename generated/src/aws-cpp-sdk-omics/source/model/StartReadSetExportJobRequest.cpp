@@ -12,24 +12,9 @@ using namespace Aws::Omics::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartReadSetExportJobRequest::StartReadSetExportJobRequest() : 
-    m_clientTokenHasBeenSet(false),
-    m_destinationHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_sequenceStoreIdHasBeenSet(false),
-    m_sourcesHasBeenSet(false)
-{
-}
-
 Aws::String StartReadSetExportJobRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_clientTokenHasBeenSet)
-  {
-   payload.WithString("clientToken", m_clientToken);
-
-  }
 
   if(m_destinationHasBeenSet)
   {
@@ -40,6 +25,12 @@ Aws::String StartReadSetExportJobRequest::SerializePayload() const
   if(m_roleArnHasBeenSet)
   {
    payload.WithString("roleArn", m_roleArn);
+
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("clientToken", m_clientToken);
 
   }
 

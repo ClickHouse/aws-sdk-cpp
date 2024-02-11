@@ -20,31 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LaunchTemplateInstanceMetadataOptionsRequest::LaunchTemplateInstanceMetadataOptionsRequest() : 
-    m_httpTokens(LaunchTemplateHttpTokensState::NOT_SET),
-    m_httpTokensHasBeenSet(false),
-    m_httpPutResponseHopLimit(0),
-    m_httpPutResponseHopLimitHasBeenSet(false),
-    m_httpEndpoint(LaunchTemplateInstanceMetadataEndpointState::NOT_SET),
-    m_httpEndpointHasBeenSet(false),
-    m_httpProtocolIpv6(LaunchTemplateInstanceMetadataProtocolIpv6::NOT_SET),
-    m_httpProtocolIpv6HasBeenSet(false),
-    m_instanceMetadataTags(LaunchTemplateInstanceMetadataTagsState::NOT_SET),
-    m_instanceMetadataTagsHasBeenSet(false)
-{
-}
-
-LaunchTemplateInstanceMetadataOptionsRequest::LaunchTemplateInstanceMetadataOptionsRequest(const XmlNode& xmlNode) : 
-    m_httpTokens(LaunchTemplateHttpTokensState::NOT_SET),
-    m_httpTokensHasBeenSet(false),
-    m_httpPutResponseHopLimit(0),
-    m_httpPutResponseHopLimitHasBeenSet(false),
-    m_httpEndpoint(LaunchTemplateInstanceMetadataEndpointState::NOT_SET),
-    m_httpEndpointHasBeenSet(false),
-    m_httpProtocolIpv6(LaunchTemplateInstanceMetadataProtocolIpv6::NOT_SET),
-    m_httpProtocolIpv6HasBeenSet(false),
-    m_instanceMetadataTags(LaunchTemplateInstanceMetadataTagsState::NOT_SET),
-    m_instanceMetadataTagsHasBeenSet(false)
+LaunchTemplateInstanceMetadataOptionsRequest::LaunchTemplateInstanceMetadataOptionsRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -58,7 +34,7 @@ LaunchTemplateInstanceMetadataOptionsRequest& LaunchTemplateInstanceMetadataOpti
     XmlNode httpTokensNode = resultNode.FirstChild("HttpTokens");
     if(!httpTokensNode.IsNull())
     {
-      m_httpTokens = LaunchTemplateHttpTokensStateMapper::GetLaunchTemplateHttpTokensStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(httpTokensNode.GetText()).c_str()).c_str());
+      m_httpTokens = LaunchTemplateHttpTokensStateMapper::GetLaunchTemplateHttpTokensStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(httpTokensNode.GetText()).c_str()));
       m_httpTokensHasBeenSet = true;
     }
     XmlNode httpPutResponseHopLimitNode = resultNode.FirstChild("HttpPutResponseHopLimit");
@@ -70,19 +46,19 @@ LaunchTemplateInstanceMetadataOptionsRequest& LaunchTemplateInstanceMetadataOpti
     XmlNode httpEndpointNode = resultNode.FirstChild("HttpEndpoint");
     if(!httpEndpointNode.IsNull())
     {
-      m_httpEndpoint = LaunchTemplateInstanceMetadataEndpointStateMapper::GetLaunchTemplateInstanceMetadataEndpointStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(httpEndpointNode.GetText()).c_str()).c_str());
+      m_httpEndpoint = LaunchTemplateInstanceMetadataEndpointStateMapper::GetLaunchTemplateInstanceMetadataEndpointStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(httpEndpointNode.GetText()).c_str()));
       m_httpEndpointHasBeenSet = true;
     }
     XmlNode httpProtocolIpv6Node = resultNode.FirstChild("HttpProtocolIpv6");
     if(!httpProtocolIpv6Node.IsNull())
     {
-      m_httpProtocolIpv6 = LaunchTemplateInstanceMetadataProtocolIpv6Mapper::GetLaunchTemplateInstanceMetadataProtocolIpv6ForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(httpProtocolIpv6Node.GetText()).c_str()).c_str());
+      m_httpProtocolIpv6 = LaunchTemplateInstanceMetadataProtocolIpv6Mapper::GetLaunchTemplateInstanceMetadataProtocolIpv6ForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(httpProtocolIpv6Node.GetText()).c_str()));
       m_httpProtocolIpv6HasBeenSet = true;
     }
     XmlNode instanceMetadataTagsNode = resultNode.FirstChild("InstanceMetadataTags");
     if(!instanceMetadataTagsNode.IsNull())
     {
-      m_instanceMetadataTags = LaunchTemplateInstanceMetadataTagsStateMapper::GetLaunchTemplateInstanceMetadataTagsStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceMetadataTagsNode.GetText()).c_str()).c_str());
+      m_instanceMetadataTags = LaunchTemplateInstanceMetadataTagsStateMapper::GetLaunchTemplateInstanceMetadataTagsStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceMetadataTagsNode.GetText()).c_str()));
       m_instanceMetadataTagsHasBeenSet = true;
     }
   }
@@ -94,7 +70,7 @@ void LaunchTemplateInstanceMetadataOptionsRequest::OutputToStream(Aws::OStream& 
 {
   if(m_httpTokensHasBeenSet)
   {
-      oStream << location << index << locationValue << ".HttpTokens=" << LaunchTemplateHttpTokensStateMapper::GetNameForLaunchTemplateHttpTokensState(m_httpTokens) << "&";
+      oStream << location << index << locationValue << ".HttpTokens=" << StringUtils::URLEncode(LaunchTemplateHttpTokensStateMapper::GetNameForLaunchTemplateHttpTokensState(m_httpTokens)) << "&";
   }
 
   if(m_httpPutResponseHopLimitHasBeenSet)
@@ -104,17 +80,17 @@ void LaunchTemplateInstanceMetadataOptionsRequest::OutputToStream(Aws::OStream& 
 
   if(m_httpEndpointHasBeenSet)
   {
-      oStream << location << index << locationValue << ".HttpEndpoint=" << LaunchTemplateInstanceMetadataEndpointStateMapper::GetNameForLaunchTemplateInstanceMetadataEndpointState(m_httpEndpoint) << "&";
+      oStream << location << index << locationValue << ".HttpEndpoint=" << StringUtils::URLEncode(LaunchTemplateInstanceMetadataEndpointStateMapper::GetNameForLaunchTemplateInstanceMetadataEndpointState(m_httpEndpoint)) << "&";
   }
 
   if(m_httpProtocolIpv6HasBeenSet)
   {
-      oStream << location << index << locationValue << ".HttpProtocolIpv6=" << LaunchTemplateInstanceMetadataProtocolIpv6Mapper::GetNameForLaunchTemplateInstanceMetadataProtocolIpv6(m_httpProtocolIpv6) << "&";
+      oStream << location << index << locationValue << ".HttpProtocolIpv6=" << StringUtils::URLEncode(LaunchTemplateInstanceMetadataProtocolIpv6Mapper::GetNameForLaunchTemplateInstanceMetadataProtocolIpv6(m_httpProtocolIpv6)) << "&";
   }
 
   if(m_instanceMetadataTagsHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InstanceMetadataTags=" << LaunchTemplateInstanceMetadataTagsStateMapper::GetNameForLaunchTemplateInstanceMetadataTagsState(m_instanceMetadataTags) << "&";
+      oStream << location << index << locationValue << ".InstanceMetadataTags=" << StringUtils::URLEncode(LaunchTemplateInstanceMetadataTagsStateMapper::GetNameForLaunchTemplateInstanceMetadataTagsState(m_instanceMetadataTags)) << "&";
   }
 
 }
@@ -123,7 +99,7 @@ void LaunchTemplateInstanceMetadataOptionsRequest::OutputToStream(Aws::OStream& 
 {
   if(m_httpTokensHasBeenSet)
   {
-      oStream << location << ".HttpTokens=" << LaunchTemplateHttpTokensStateMapper::GetNameForLaunchTemplateHttpTokensState(m_httpTokens) << "&";
+      oStream << location << ".HttpTokens=" << StringUtils::URLEncode(LaunchTemplateHttpTokensStateMapper::GetNameForLaunchTemplateHttpTokensState(m_httpTokens)) << "&";
   }
   if(m_httpPutResponseHopLimitHasBeenSet)
   {
@@ -131,15 +107,15 @@ void LaunchTemplateInstanceMetadataOptionsRequest::OutputToStream(Aws::OStream& 
   }
   if(m_httpEndpointHasBeenSet)
   {
-      oStream << location << ".HttpEndpoint=" << LaunchTemplateInstanceMetadataEndpointStateMapper::GetNameForLaunchTemplateInstanceMetadataEndpointState(m_httpEndpoint) << "&";
+      oStream << location << ".HttpEndpoint=" << StringUtils::URLEncode(LaunchTemplateInstanceMetadataEndpointStateMapper::GetNameForLaunchTemplateInstanceMetadataEndpointState(m_httpEndpoint)) << "&";
   }
   if(m_httpProtocolIpv6HasBeenSet)
   {
-      oStream << location << ".HttpProtocolIpv6=" << LaunchTemplateInstanceMetadataProtocolIpv6Mapper::GetNameForLaunchTemplateInstanceMetadataProtocolIpv6(m_httpProtocolIpv6) << "&";
+      oStream << location << ".HttpProtocolIpv6=" << StringUtils::URLEncode(LaunchTemplateInstanceMetadataProtocolIpv6Mapper::GetNameForLaunchTemplateInstanceMetadataProtocolIpv6(m_httpProtocolIpv6)) << "&";
   }
   if(m_instanceMetadataTagsHasBeenSet)
   {
-      oStream << location << ".InstanceMetadataTags=" << LaunchTemplateInstanceMetadataTagsStateMapper::GetNameForLaunchTemplateInstanceMetadataTagsState(m_instanceMetadataTags) << "&";
+      oStream << location << ".InstanceMetadataTags=" << StringUtils::URLEncode(LaunchTemplateInstanceMetadataTagsStateMapper::GetNameForLaunchTemplateInstanceMetadataTagsState(m_instanceMetadataTags)) << "&";
   }
 }
 

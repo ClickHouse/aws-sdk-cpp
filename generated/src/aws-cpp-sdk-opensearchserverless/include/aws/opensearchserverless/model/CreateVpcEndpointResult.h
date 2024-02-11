@@ -28,63 +28,37 @@ namespace Model
   class CreateVpcEndpointResult
   {
   public:
-    AWS_OPENSEARCHSERVERLESS_API CreateVpcEndpointResult();
+    AWS_OPENSEARCHSERVERLESS_API CreateVpcEndpointResult() = default;
     AWS_OPENSEARCHSERVERLESS_API CreateVpcEndpointResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_OPENSEARCHSERVERLESS_API CreateVpcEndpointResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Details about the created interface VPC endpoint.</p>
      */
-    inline const CreateVpcEndpointDetail& GetCreateVpcEndpointDetail() const{ return m_createVpcEndpointDetail; }
+    inline const CreateVpcEndpointDetail& GetCreateVpcEndpointDetail() const { return m_createVpcEndpointDetail; }
+    template<typename CreateVpcEndpointDetailT = CreateVpcEndpointDetail>
+    void SetCreateVpcEndpointDetail(CreateVpcEndpointDetailT&& value) { m_createVpcEndpointDetailHasBeenSet = true; m_createVpcEndpointDetail = std::forward<CreateVpcEndpointDetailT>(value); }
+    template<typename CreateVpcEndpointDetailT = CreateVpcEndpointDetail>
+    CreateVpcEndpointResult& WithCreateVpcEndpointDetail(CreateVpcEndpointDetailT&& value) { SetCreateVpcEndpointDetail(std::forward<CreateVpcEndpointDetailT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about the created interface VPC endpoint.</p>
-     */
-    inline void SetCreateVpcEndpointDetail(const CreateVpcEndpointDetail& value) { m_createVpcEndpointDetail = value; }
-
-    /**
-     * <p>Details about the created interface VPC endpoint.</p>
-     */
-    inline void SetCreateVpcEndpointDetail(CreateVpcEndpointDetail&& value) { m_createVpcEndpointDetail = std::move(value); }
-
-    /**
-     * <p>Details about the created interface VPC endpoint.</p>
-     */
-    inline CreateVpcEndpointResult& WithCreateVpcEndpointDetail(const CreateVpcEndpointDetail& value) { SetCreateVpcEndpointDetail(value); return *this;}
-
-    /**
-     * <p>Details about the created interface VPC endpoint.</p>
-     */
-    inline CreateVpcEndpointResult& WithCreateVpcEndpointDetail(CreateVpcEndpointDetail&& value) { SetCreateVpcEndpointDetail(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateVpcEndpointResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateVpcEndpointResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateVpcEndpointResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateVpcEndpointResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     CreateVpcEndpointDetail m_createVpcEndpointDetail;
+    bool m_createVpcEndpointDetailHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

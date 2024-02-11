@@ -7,6 +7,8 @@
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/rds/model/Tag.h>
 #include <utility>
 
 namespace Aws
@@ -21,7 +23,7 @@ namespace Model
   class CreateGlobalClusterRequest : public RDSRequest
   {
   public:
-    AWS_RDS_API CreateGlobalClusterRequest();
+    AWS_RDS_API CreateGlobalClusterRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,288 +38,149 @@ namespace Model
 
   public:
 
+    ///@{
     /**
-     * <p>The cluster identifier of the new global database cluster. This parameter is
+     * <p>The cluster identifier for this global database cluster. This parameter is
      * stored as a lowercase string.</p>
      */
-    inline const Aws::String& GetGlobalClusterIdentifier() const{ return m_globalClusterIdentifier; }
-
-    /**
-     * <p>The cluster identifier of the new global database cluster. This parameter is
-     * stored as a lowercase string.</p>
-     */
+    inline const Aws::String& GetGlobalClusterIdentifier() const { return m_globalClusterIdentifier; }
     inline bool GlobalClusterIdentifierHasBeenSet() const { return m_globalClusterIdentifierHasBeenSet; }
+    template<typename GlobalClusterIdentifierT = Aws::String>
+    void SetGlobalClusterIdentifier(GlobalClusterIdentifierT&& value) { m_globalClusterIdentifierHasBeenSet = true; m_globalClusterIdentifier = std::forward<GlobalClusterIdentifierT>(value); }
+    template<typename GlobalClusterIdentifierT = Aws::String>
+    CreateGlobalClusterRequest& WithGlobalClusterIdentifier(GlobalClusterIdentifierT&& value) { SetGlobalClusterIdentifier(std::forward<GlobalClusterIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The cluster identifier of the new global database cluster. This parameter is
-     * stored as a lowercase string.</p>
-     */
-    inline void SetGlobalClusterIdentifier(const Aws::String& value) { m_globalClusterIdentifierHasBeenSet = true; m_globalClusterIdentifier = value; }
-
-    /**
-     * <p>The cluster identifier of the new global database cluster. This parameter is
-     * stored as a lowercase string.</p>
-     */
-    inline void SetGlobalClusterIdentifier(Aws::String&& value) { m_globalClusterIdentifierHasBeenSet = true; m_globalClusterIdentifier = std::move(value); }
-
-    /**
-     * <p>The cluster identifier of the new global database cluster. This parameter is
-     * stored as a lowercase string.</p>
-     */
-    inline void SetGlobalClusterIdentifier(const char* value) { m_globalClusterIdentifierHasBeenSet = true; m_globalClusterIdentifier.assign(value); }
-
-    /**
-     * <p>The cluster identifier of the new global database cluster. This parameter is
-     * stored as a lowercase string.</p>
-     */
-    inline CreateGlobalClusterRequest& WithGlobalClusterIdentifier(const Aws::String& value) { SetGlobalClusterIdentifier(value); return *this;}
-
-    /**
-     * <p>The cluster identifier of the new global database cluster. This parameter is
-     * stored as a lowercase string.</p>
-     */
-    inline CreateGlobalClusterRequest& WithGlobalClusterIdentifier(Aws::String&& value) { SetGlobalClusterIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The cluster identifier of the new global database cluster. This parameter is
-     * stored as a lowercase string.</p>
-     */
-    inline CreateGlobalClusterRequest& WithGlobalClusterIdentifier(const char* value) { SetGlobalClusterIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) to use as the primary cluster of the global
-     * database. This parameter is optional.</p>
+     * database.</p> <p>If you provide a value for this parameter, don't specify values
+     * for the following settings because Amazon Aurora uses the values from the
+     * specified source DB cluster:</p> <ul> <li> <p> <code>DatabaseName</code> </p>
+     * </li> <li> <p> <code>Engine</code> </p> </li> <li> <p>
+     * <code>EngineVersion</code> </p> </li> <li> <p> <code>StorageEncrypted</code>
+     * </p> </li> </ul>
      */
-    inline const Aws::String& GetSourceDBClusterIdentifier() const{ return m_sourceDBClusterIdentifier; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) to use as the primary cluster of the global
-     * database. This parameter is optional.</p>
-     */
+    inline const Aws::String& GetSourceDBClusterIdentifier() const { return m_sourceDBClusterIdentifier; }
     inline bool SourceDBClusterIdentifierHasBeenSet() const { return m_sourceDBClusterIdentifierHasBeenSet; }
+    template<typename SourceDBClusterIdentifierT = Aws::String>
+    void SetSourceDBClusterIdentifier(SourceDBClusterIdentifierT&& value) { m_sourceDBClusterIdentifierHasBeenSet = true; m_sourceDBClusterIdentifier = std::forward<SourceDBClusterIdentifierT>(value); }
+    template<typename SourceDBClusterIdentifierT = Aws::String>
+    CreateGlobalClusterRequest& WithSourceDBClusterIdentifier(SourceDBClusterIdentifierT&& value) { SetSourceDBClusterIdentifier(std::forward<SourceDBClusterIdentifierT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) to use as the primary cluster of the global
-     * database. This parameter is optional.</p>
+     * <p>The database engine to use for this global database cluster.</p> <p>Valid
+     * Values: <code>aurora-mysql | aurora-postgresql</code> </p> <p>Constraints:</p>
+     * <ul> <li> <p>Can't be specified if <code>SourceDBClusterIdentifier</code> is
+     * specified. In this case, Amazon Aurora uses the engine of the source DB
+     * cluster.</p> </li> </ul>
      */
-    inline void SetSourceDBClusterIdentifier(const Aws::String& value) { m_sourceDBClusterIdentifierHasBeenSet = true; m_sourceDBClusterIdentifier = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) to use as the primary cluster of the global
-     * database. This parameter is optional.</p>
-     */
-    inline void SetSourceDBClusterIdentifier(Aws::String&& value) { m_sourceDBClusterIdentifierHasBeenSet = true; m_sourceDBClusterIdentifier = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) to use as the primary cluster of the global
-     * database. This parameter is optional.</p>
-     */
-    inline void SetSourceDBClusterIdentifier(const char* value) { m_sourceDBClusterIdentifierHasBeenSet = true; m_sourceDBClusterIdentifier.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) to use as the primary cluster of the global
-     * database. This parameter is optional.</p>
-     */
-    inline CreateGlobalClusterRequest& WithSourceDBClusterIdentifier(const Aws::String& value) { SetSourceDBClusterIdentifier(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) to use as the primary cluster of the global
-     * database. This parameter is optional.</p>
-     */
-    inline CreateGlobalClusterRequest& WithSourceDBClusterIdentifier(Aws::String&& value) { SetSourceDBClusterIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) to use as the primary cluster of the global
-     * database. This parameter is optional.</p>
-     */
-    inline CreateGlobalClusterRequest& WithSourceDBClusterIdentifier(const char* value) { SetSourceDBClusterIdentifier(value); return *this;}
-
-
-    /**
-     * <p>The name of the database engine to be used for this DB cluster.</p>
-     */
-    inline const Aws::String& GetEngine() const{ return m_engine; }
-
-    /**
-     * <p>The name of the database engine to be used for this DB cluster.</p>
-     */
+    inline const Aws::String& GetEngine() const { return m_engine; }
     inline bool EngineHasBeenSet() const { return m_engineHasBeenSet; }
+    template<typename EngineT = Aws::String>
+    void SetEngine(EngineT&& value) { m_engineHasBeenSet = true; m_engine = std::forward<EngineT>(value); }
+    template<typename EngineT = Aws::String>
+    CreateGlobalClusterRequest& WithEngine(EngineT&& value) { SetEngine(std::forward<EngineT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the database engine to be used for this DB cluster.</p>
+     * <p>The engine version to use for this global database cluster.</p>
+     * <p>Constraints:</p> <ul> <li> <p>Can't be specified if
+     * <code>SourceDBClusterIdentifier</code> is specified. In this case, Amazon Aurora
+     * uses the engine version of the source DB cluster.</p> </li> </ul>
      */
-    inline void SetEngine(const Aws::String& value) { m_engineHasBeenSet = true; m_engine = value; }
-
-    /**
-     * <p>The name of the database engine to be used for this DB cluster.</p>
-     */
-    inline void SetEngine(Aws::String&& value) { m_engineHasBeenSet = true; m_engine = std::move(value); }
-
-    /**
-     * <p>The name of the database engine to be used for this DB cluster.</p>
-     */
-    inline void SetEngine(const char* value) { m_engineHasBeenSet = true; m_engine.assign(value); }
-
-    /**
-     * <p>The name of the database engine to be used for this DB cluster.</p>
-     */
-    inline CreateGlobalClusterRequest& WithEngine(const Aws::String& value) { SetEngine(value); return *this;}
-
-    /**
-     * <p>The name of the database engine to be used for this DB cluster.</p>
-     */
-    inline CreateGlobalClusterRequest& WithEngine(Aws::String&& value) { SetEngine(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the database engine to be used for this DB cluster.</p>
-     */
-    inline CreateGlobalClusterRequest& WithEngine(const char* value) { SetEngine(value); return *this;}
-
-
-    /**
-     * <p>The engine version of the Aurora global database.</p>
-     */
-    inline const Aws::String& GetEngineVersion() const{ return m_engineVersion; }
-
-    /**
-     * <p>The engine version of the Aurora global database.</p>
-     */
+    inline const Aws::String& GetEngineVersion() const { return m_engineVersion; }
     inline bool EngineVersionHasBeenSet() const { return m_engineVersionHasBeenSet; }
+    template<typename EngineVersionT = Aws::String>
+    void SetEngineVersion(EngineVersionT&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::forward<EngineVersionT>(value); }
+    template<typename EngineVersionT = Aws::String>
+    CreateGlobalClusterRequest& WithEngineVersion(EngineVersionT&& value) { SetEngineVersion(std::forward<EngineVersionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The engine version of the Aurora global database.</p>
+     * <p>The life cycle type for this global database cluster.</p>  <p>By
+     * default, this value is set to <code>open-source-rds-extended-support</code>,
+     * which enrolls your global cluster into Amazon RDS Extended Support. At the end
+     * of standard support, you can avoid charges for Extended Support by setting the
+     * value to <code>open-source-rds-extended-support-disabled</code>. In this case,
+     * creating the global cluster will fail if the DB major version is past its end of
+     * standard support date.</p>  <p>This setting only applies to Aurora
+     * PostgreSQL-based global databases.</p> <p>You can use this setting to enroll
+     * your global cluster into Amazon RDS Extended Support. With RDS Extended Support,
+     * you can run the selected major engine version on your global cluster past the
+     * end of standard support for that engine version. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html">Amazon
+     * RDS Extended Support with Amazon Aurora</a> in the <i>Amazon Aurora User
+     * Guide</i>.</p> <p>Valid Values: <code>open-source-rds-extended-support |
+     * open-source-rds-extended-support-disabled</code> </p> <p>Default:
+     * <code>open-source-rds-extended-support</code> </p>
      */
-    inline void SetEngineVersion(const Aws::String& value) { m_engineVersionHasBeenSet = true; m_engineVersion = value; }
+    inline const Aws::String& GetEngineLifecycleSupport() const { return m_engineLifecycleSupport; }
+    inline bool EngineLifecycleSupportHasBeenSet() const { return m_engineLifecycleSupportHasBeenSet; }
+    template<typename EngineLifecycleSupportT = Aws::String>
+    void SetEngineLifecycleSupport(EngineLifecycleSupportT&& value) { m_engineLifecycleSupportHasBeenSet = true; m_engineLifecycleSupport = std::forward<EngineLifecycleSupportT>(value); }
+    template<typename EngineLifecycleSupportT = Aws::String>
+    CreateGlobalClusterRequest& WithEngineLifecycleSupport(EngineLifecycleSupportT&& value) { SetEngineLifecycleSupport(std::forward<EngineLifecycleSupportT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The engine version of the Aurora global database.</p>
+     * <p>Specifies whether to enable deletion protection for the new global database
+     * cluster. The global database can't be deleted when deletion protection is
+     * enabled.</p>
      */
-    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::move(value); }
-
-    /**
-     * <p>The engine version of the Aurora global database.</p>
-     */
-    inline void SetEngineVersion(const char* value) { m_engineVersionHasBeenSet = true; m_engineVersion.assign(value); }
-
-    /**
-     * <p>The engine version of the Aurora global database.</p>
-     */
-    inline CreateGlobalClusterRequest& WithEngineVersion(const Aws::String& value) { SetEngineVersion(value); return *this;}
-
-    /**
-     * <p>The engine version of the Aurora global database.</p>
-     */
-    inline CreateGlobalClusterRequest& WithEngineVersion(Aws::String&& value) { SetEngineVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The engine version of the Aurora global database.</p>
-     */
-    inline CreateGlobalClusterRequest& WithEngineVersion(const char* value) { SetEngineVersion(value); return *this;}
-
-
-    /**
-     * <p>The deletion protection setting for the new global database. The global
-     * database can't be deleted when deletion protection is enabled.</p>
-     */
-    inline bool GetDeletionProtection() const{ return m_deletionProtection; }
-
-    /**
-     * <p>The deletion protection setting for the new global database. The global
-     * database can't be deleted when deletion protection is enabled.</p>
-     */
+    inline bool GetDeletionProtection() const { return m_deletionProtection; }
     inline bool DeletionProtectionHasBeenSet() const { return m_deletionProtectionHasBeenSet; }
-
-    /**
-     * <p>The deletion protection setting for the new global database. The global
-     * database can't be deleted when deletion protection is enabled.</p>
-     */
     inline void SetDeletionProtection(bool value) { m_deletionProtectionHasBeenSet = true; m_deletionProtection = value; }
-
-    /**
-     * <p>The deletion protection setting for the new global database. The global
-     * database can't be deleted when deletion protection is enabled.</p>
-     */
     inline CreateGlobalClusterRequest& WithDeletionProtection(bool value) { SetDeletionProtection(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>The name for your database of up to 64 alphanumeric characters. If you do not
-     * provide a name, Amazon Aurora will not create a database in the global database
-     * cluster you are creating.</p>
+     * <p>The name for your database of up to 64 alphanumeric characters. If you don't
+     * specify a name, Amazon Aurora doesn't create a database in the global database
+     * cluster.</p> <p>Constraints:</p> <ul> <li> <p>Can't be specified if
+     * <code>SourceDBClusterIdentifier</code> is specified. In this case, Amazon Aurora
+     * uses the database name from the source DB cluster.</p> </li> </ul>
      */
-    inline const Aws::String& GetDatabaseName() const{ return m_databaseName; }
-
-    /**
-     * <p>The name for your database of up to 64 alphanumeric characters. If you do not
-     * provide a name, Amazon Aurora will not create a database in the global database
-     * cluster you are creating.</p>
-     */
+    inline const Aws::String& GetDatabaseName() const { return m_databaseName; }
     inline bool DatabaseNameHasBeenSet() const { return m_databaseNameHasBeenSet; }
+    template<typename DatabaseNameT = Aws::String>
+    void SetDatabaseName(DatabaseNameT&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::forward<DatabaseNameT>(value); }
+    template<typename DatabaseNameT = Aws::String>
+    CreateGlobalClusterRequest& WithDatabaseName(DatabaseNameT&& value) { SetDatabaseName(std::forward<DatabaseNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name for your database of up to 64 alphanumeric characters. If you do not
-     * provide a name, Amazon Aurora will not create a database in the global database
-     * cluster you are creating.</p>
+     * <p>Specifies whether to enable storage encryption for the new global database
+     * cluster.</p> <p>Constraints:</p> <ul> <li> <p>Can't be specified if
+     * <code>SourceDBClusterIdentifier</code> is specified. In this case, Amazon Aurora
+     * uses the setting from the source DB cluster.</p> </li> </ul>
      */
-    inline void SetDatabaseName(const Aws::String& value) { m_databaseNameHasBeenSet = true; m_databaseName = value; }
-
-    /**
-     * <p>The name for your database of up to 64 alphanumeric characters. If you do not
-     * provide a name, Amazon Aurora will not create a database in the global database
-     * cluster you are creating.</p>
-     */
-    inline void SetDatabaseName(Aws::String&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::move(value); }
-
-    /**
-     * <p>The name for your database of up to 64 alphanumeric characters. If you do not
-     * provide a name, Amazon Aurora will not create a database in the global database
-     * cluster you are creating.</p>
-     */
-    inline void SetDatabaseName(const char* value) { m_databaseNameHasBeenSet = true; m_databaseName.assign(value); }
-
-    /**
-     * <p>The name for your database of up to 64 alphanumeric characters. If you do not
-     * provide a name, Amazon Aurora will not create a database in the global database
-     * cluster you are creating.</p>
-     */
-    inline CreateGlobalClusterRequest& WithDatabaseName(const Aws::String& value) { SetDatabaseName(value); return *this;}
-
-    /**
-     * <p>The name for your database of up to 64 alphanumeric characters. If you do not
-     * provide a name, Amazon Aurora will not create a database in the global database
-     * cluster you are creating.</p>
-     */
-    inline CreateGlobalClusterRequest& WithDatabaseName(Aws::String&& value) { SetDatabaseName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name for your database of up to 64 alphanumeric characters. If you do not
-     * provide a name, Amazon Aurora will not create a database in the global database
-     * cluster you are creating.</p>
-     */
-    inline CreateGlobalClusterRequest& WithDatabaseName(const char* value) { SetDatabaseName(value); return *this;}
-
-
-    /**
-     * <p>The storage encryption setting for the new global database cluster.</p>
-     */
-    inline bool GetStorageEncrypted() const{ return m_storageEncrypted; }
-
-    /**
-     * <p>The storage encryption setting for the new global database cluster.</p>
-     */
+    inline bool GetStorageEncrypted() const { return m_storageEncrypted; }
     inline bool StorageEncryptedHasBeenSet() const { return m_storageEncryptedHasBeenSet; }
-
-    /**
-     * <p>The storage encryption setting for the new global database cluster.</p>
-     */
     inline void SetStorageEncrypted(bool value) { m_storageEncryptedHasBeenSet = true; m_storageEncrypted = value; }
-
-    /**
-     * <p>The storage encryption setting for the new global database cluster.</p>
-     */
     inline CreateGlobalClusterRequest& WithStorageEncrypted(bool value) { SetStorageEncrypted(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>Tags to assign to the global cluster.</p>
+     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
+    inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateGlobalClusterRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateGlobalClusterRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_globalClusterIdentifier;
@@ -332,14 +195,20 @@ namespace Model
     Aws::String m_engineVersion;
     bool m_engineVersionHasBeenSet = false;
 
-    bool m_deletionProtection;
+    Aws::String m_engineLifecycleSupport;
+    bool m_engineLifecycleSupportHasBeenSet = false;
+
+    bool m_deletionProtection{false};
     bool m_deletionProtectionHasBeenSet = false;
 
     Aws::String m_databaseName;
     bool m_databaseNameHasBeenSet = false;
 
-    bool m_storageEncrypted;
+    bool m_storageEncrypted{false};
     bool m_storageEncryptedHasBeenSet = false;
+
+    Aws::Vector<Tag> m_tags;
+    bool m_tagsHasBeenSet = false;
   };
 
 } // namespace Model

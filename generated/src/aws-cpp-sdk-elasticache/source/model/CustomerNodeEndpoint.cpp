@@ -20,17 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-CustomerNodeEndpoint::CustomerNodeEndpoint() : 
-    m_addressHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false)
-{
-}
-
-CustomerNodeEndpoint::CustomerNodeEndpoint(const XmlNode& xmlNode) : 
-    m_addressHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false)
+CustomerNodeEndpoint::CustomerNodeEndpoint(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

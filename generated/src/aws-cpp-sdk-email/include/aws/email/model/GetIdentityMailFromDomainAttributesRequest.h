@@ -20,8 +20,7 @@ namespace Model
   /**
    * <p>Represents a request to return the Amazon SES custom MAIL FROM attributes for
    * a list of identities. For information about using a custom MAIL FROM domain, see
-   * the <a
-   * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html">Amazon
+   * the <a href="https://docs.aws.amazon.com/ses/latest/dg/mail-from.html">Amazon
    * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetIdentityMailFromDomainAttributesRequest">AWS
    * API Reference</a></p>
@@ -29,7 +28,7 @@ namespace Model
   class GetIdentityMailFromDomainAttributesRequest : public SESRequest
   {
   public:
-    AWS_SES_API GetIdentityMailFromDomainAttributesRequest();
+    AWS_SES_API GetIdentityMailFromDomainAttributesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -44,51 +43,19 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>A list of one or more identities.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetIdentities() const{ return m_identities; }
-
-    /**
-     * <p>A list of one or more identities.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetIdentities() const { return m_identities; }
     inline bool IdentitiesHasBeenSet() const { return m_identitiesHasBeenSet; }
-
-    /**
-     * <p>A list of one or more identities.</p>
-     */
-    inline void SetIdentities(const Aws::Vector<Aws::String>& value) { m_identitiesHasBeenSet = true; m_identities = value; }
-
-    /**
-     * <p>A list of one or more identities.</p>
-     */
-    inline void SetIdentities(Aws::Vector<Aws::String>&& value) { m_identitiesHasBeenSet = true; m_identities = std::move(value); }
-
-    /**
-     * <p>A list of one or more identities.</p>
-     */
-    inline GetIdentityMailFromDomainAttributesRequest& WithIdentities(const Aws::Vector<Aws::String>& value) { SetIdentities(value); return *this;}
-
-    /**
-     * <p>A list of one or more identities.</p>
-     */
-    inline GetIdentityMailFromDomainAttributesRequest& WithIdentities(Aws::Vector<Aws::String>&& value) { SetIdentities(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of one or more identities.</p>
-     */
-    inline GetIdentityMailFromDomainAttributesRequest& AddIdentities(const Aws::String& value) { m_identitiesHasBeenSet = true; m_identities.push_back(value); return *this; }
-
-    /**
-     * <p>A list of one or more identities.</p>
-     */
-    inline GetIdentityMailFromDomainAttributesRequest& AddIdentities(Aws::String&& value) { m_identitiesHasBeenSet = true; m_identities.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of one or more identities.</p>
-     */
-    inline GetIdentityMailFromDomainAttributesRequest& AddIdentities(const char* value) { m_identitiesHasBeenSet = true; m_identities.push_back(value); return *this; }
-
+    template<typename IdentitiesT = Aws::Vector<Aws::String>>
+    void SetIdentities(IdentitiesT&& value) { m_identitiesHasBeenSet = true; m_identities = std::forward<IdentitiesT>(value); }
+    template<typename IdentitiesT = Aws::Vector<Aws::String>>
+    GetIdentityMailFromDomainAttributesRequest& WithIdentities(IdentitiesT&& value) { SetIdentities(std::forward<IdentitiesT>(value)); return *this;}
+    template<typename IdentitiesT = Aws::String>
+    GetIdentityMailFromDomainAttributesRequest& AddIdentities(IdentitiesT&& value) { m_identitiesHasBeenSet = true; m_identities.emplace_back(std::forward<IdentitiesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_identities;

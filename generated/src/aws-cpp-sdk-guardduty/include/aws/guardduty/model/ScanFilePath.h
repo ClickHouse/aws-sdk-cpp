@@ -32,175 +32,59 @@ namespace Model
   class ScanFilePath
   {
   public:
-    AWS_GUARDDUTY_API ScanFilePath();
+    AWS_GUARDDUTY_API ScanFilePath() = default;
     AWS_GUARDDUTY_API ScanFilePath(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API ScanFilePath& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The file path of the infected file.</p>
      */
-    inline const Aws::String& GetFilePath() const{ return m_filePath; }
-
-    /**
-     * <p>The file path of the infected file.</p>
-     */
+    inline const Aws::String& GetFilePath() const { return m_filePath; }
     inline bool FilePathHasBeenSet() const { return m_filePathHasBeenSet; }
+    template<typename FilePathT = Aws::String>
+    void SetFilePath(FilePathT&& value) { m_filePathHasBeenSet = true; m_filePath = std::forward<FilePathT>(value); }
+    template<typename FilePathT = Aws::String>
+    ScanFilePath& WithFilePath(FilePathT&& value) { SetFilePath(std::forward<FilePathT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The file path of the infected file.</p>
+     * <p>EBS volume ARN details of the infected file.</p>
      */
-    inline void SetFilePath(const Aws::String& value) { m_filePathHasBeenSet = true; m_filePath = value; }
-
-    /**
-     * <p>The file path of the infected file.</p>
-     */
-    inline void SetFilePath(Aws::String&& value) { m_filePathHasBeenSet = true; m_filePath = std::move(value); }
-
-    /**
-     * <p>The file path of the infected file.</p>
-     */
-    inline void SetFilePath(const char* value) { m_filePathHasBeenSet = true; m_filePath.assign(value); }
-
-    /**
-     * <p>The file path of the infected file.</p>
-     */
-    inline ScanFilePath& WithFilePath(const Aws::String& value) { SetFilePath(value); return *this;}
-
-    /**
-     * <p>The file path of the infected file.</p>
-     */
-    inline ScanFilePath& WithFilePath(Aws::String&& value) { SetFilePath(std::move(value)); return *this;}
-
-    /**
-     * <p>The file path of the infected file.</p>
-     */
-    inline ScanFilePath& WithFilePath(const char* value) { SetFilePath(value); return *this;}
-
-
-    /**
-     * <p>EBS volume Arn details of the infected file.</p>
-     */
-    inline const Aws::String& GetVolumeArn() const{ return m_volumeArn; }
-
-    /**
-     * <p>EBS volume Arn details of the infected file.</p>
-     */
+    inline const Aws::String& GetVolumeArn() const { return m_volumeArn; }
     inline bool VolumeArnHasBeenSet() const { return m_volumeArnHasBeenSet; }
+    template<typename VolumeArnT = Aws::String>
+    void SetVolumeArn(VolumeArnT&& value) { m_volumeArnHasBeenSet = true; m_volumeArn = std::forward<VolumeArnT>(value); }
+    template<typename VolumeArnT = Aws::String>
+    ScanFilePath& WithVolumeArn(VolumeArnT&& value) { SetVolumeArn(std::forward<VolumeArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>EBS volume Arn details of the infected file.</p>
-     */
-    inline void SetVolumeArn(const Aws::String& value) { m_volumeArnHasBeenSet = true; m_volumeArn = value; }
-
-    /**
-     * <p>EBS volume Arn details of the infected file.</p>
-     */
-    inline void SetVolumeArn(Aws::String&& value) { m_volumeArnHasBeenSet = true; m_volumeArn = std::move(value); }
-
-    /**
-     * <p>EBS volume Arn details of the infected file.</p>
-     */
-    inline void SetVolumeArn(const char* value) { m_volumeArnHasBeenSet = true; m_volumeArn.assign(value); }
-
-    /**
-     * <p>EBS volume Arn details of the infected file.</p>
-     */
-    inline ScanFilePath& WithVolumeArn(const Aws::String& value) { SetVolumeArn(value); return *this;}
-
-    /**
-     * <p>EBS volume Arn details of the infected file.</p>
-     */
-    inline ScanFilePath& WithVolumeArn(Aws::String&& value) { SetVolumeArn(std::move(value)); return *this;}
-
-    /**
-     * <p>EBS volume Arn details of the infected file.</p>
-     */
-    inline ScanFilePath& WithVolumeArn(const char* value) { SetVolumeArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The hash value of the infected file.</p>
      */
-    inline const Aws::String& GetHash() const{ return m_hash; }
-
-    /**
-     * <p>The hash value of the infected file.</p>
-     */
+    inline const Aws::String& GetHash() const { return m_hash; }
     inline bool HashHasBeenSet() const { return m_hashHasBeenSet; }
+    template<typename HashT = Aws::String>
+    void SetHash(HashT&& value) { m_hashHasBeenSet = true; m_hash = std::forward<HashT>(value); }
+    template<typename HashT = Aws::String>
+    ScanFilePath& WithHash(HashT&& value) { SetHash(std::forward<HashT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The hash value of the infected file.</p>
-     */
-    inline void SetHash(const Aws::String& value) { m_hashHasBeenSet = true; m_hash = value; }
-
-    /**
-     * <p>The hash value of the infected file.</p>
-     */
-    inline void SetHash(Aws::String&& value) { m_hashHasBeenSet = true; m_hash = std::move(value); }
-
-    /**
-     * <p>The hash value of the infected file.</p>
-     */
-    inline void SetHash(const char* value) { m_hashHasBeenSet = true; m_hash.assign(value); }
-
-    /**
-     * <p>The hash value of the infected file.</p>
-     */
-    inline ScanFilePath& WithHash(const Aws::String& value) { SetHash(value); return *this;}
-
-    /**
-     * <p>The hash value of the infected file.</p>
-     */
-    inline ScanFilePath& WithHash(Aws::String&& value) { SetHash(std::move(value)); return *this;}
-
-    /**
-     * <p>The hash value of the infected file.</p>
-     */
-    inline ScanFilePath& WithHash(const char* value) { SetHash(value); return *this;}
-
-
+    ///@{
     /**
      * <p>File name of the infected file.</p>
      */
-    inline const Aws::String& GetFileName() const{ return m_fileName; }
-
-    /**
-     * <p>File name of the infected file.</p>
-     */
+    inline const Aws::String& GetFileName() const { return m_fileName; }
     inline bool FileNameHasBeenSet() const { return m_fileNameHasBeenSet; }
-
-    /**
-     * <p>File name of the infected file.</p>
-     */
-    inline void SetFileName(const Aws::String& value) { m_fileNameHasBeenSet = true; m_fileName = value; }
-
-    /**
-     * <p>File name of the infected file.</p>
-     */
-    inline void SetFileName(Aws::String&& value) { m_fileNameHasBeenSet = true; m_fileName = std::move(value); }
-
-    /**
-     * <p>File name of the infected file.</p>
-     */
-    inline void SetFileName(const char* value) { m_fileNameHasBeenSet = true; m_fileName.assign(value); }
-
-    /**
-     * <p>File name of the infected file.</p>
-     */
-    inline ScanFilePath& WithFileName(const Aws::String& value) { SetFileName(value); return *this;}
-
-    /**
-     * <p>File name of the infected file.</p>
-     */
-    inline ScanFilePath& WithFileName(Aws::String&& value) { SetFileName(std::move(value)); return *this;}
-
-    /**
-     * <p>File name of the infected file.</p>
-     */
-    inline ScanFilePath& WithFileName(const char* value) { SetFileName(value); return *this;}
-
+    template<typename FileNameT = Aws::String>
+    void SetFileName(FileNameT&& value) { m_fileNameHasBeenSet = true; m_fileName = std::forward<FileNameT>(value); }
+    template<typename FileNameT = Aws::String>
+    ScanFilePath& WithFileName(FileNameT&& value) { SetFileName(std::forward<FileNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_filePath;

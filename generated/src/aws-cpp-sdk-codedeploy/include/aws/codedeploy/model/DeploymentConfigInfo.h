@@ -10,6 +10,7 @@
 #include <aws/core/utils/DateTime.h>
 #include <aws/codedeploy/model/ComputePlatform.h>
 #include <aws/codedeploy/model/TrafficRoutingConfig.h>
+#include <aws/codedeploy/model/ZonalConfig.h>
 #include <utility>
 
 namespace Aws
@@ -35,229 +36,95 @@ namespace Model
   class DeploymentConfigInfo
   {
   public:
-    AWS_CODEDEPLOY_API DeploymentConfigInfo();
+    AWS_CODEDEPLOY_API DeploymentConfigInfo() = default;
     AWS_CODEDEPLOY_API DeploymentConfigInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API DeploymentConfigInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The deployment configuration ID.</p>
      */
-    inline const Aws::String& GetDeploymentConfigId() const{ return m_deploymentConfigId; }
-
-    /**
-     * <p>The deployment configuration ID.</p>
-     */
+    inline const Aws::String& GetDeploymentConfigId() const { return m_deploymentConfigId; }
     inline bool DeploymentConfigIdHasBeenSet() const { return m_deploymentConfigIdHasBeenSet; }
+    template<typename DeploymentConfigIdT = Aws::String>
+    void SetDeploymentConfigId(DeploymentConfigIdT&& value) { m_deploymentConfigIdHasBeenSet = true; m_deploymentConfigId = std::forward<DeploymentConfigIdT>(value); }
+    template<typename DeploymentConfigIdT = Aws::String>
+    DeploymentConfigInfo& WithDeploymentConfigId(DeploymentConfigIdT&& value) { SetDeploymentConfigId(std::forward<DeploymentConfigIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The deployment configuration ID.</p>
-     */
-    inline void SetDeploymentConfigId(const Aws::String& value) { m_deploymentConfigIdHasBeenSet = true; m_deploymentConfigId = value; }
-
-    /**
-     * <p>The deployment configuration ID.</p>
-     */
-    inline void SetDeploymentConfigId(Aws::String&& value) { m_deploymentConfigIdHasBeenSet = true; m_deploymentConfigId = std::move(value); }
-
-    /**
-     * <p>The deployment configuration ID.</p>
-     */
-    inline void SetDeploymentConfigId(const char* value) { m_deploymentConfigIdHasBeenSet = true; m_deploymentConfigId.assign(value); }
-
-    /**
-     * <p>The deployment configuration ID.</p>
-     */
-    inline DeploymentConfigInfo& WithDeploymentConfigId(const Aws::String& value) { SetDeploymentConfigId(value); return *this;}
-
-    /**
-     * <p>The deployment configuration ID.</p>
-     */
-    inline DeploymentConfigInfo& WithDeploymentConfigId(Aws::String&& value) { SetDeploymentConfigId(std::move(value)); return *this;}
-
-    /**
-     * <p>The deployment configuration ID.</p>
-     */
-    inline DeploymentConfigInfo& WithDeploymentConfigId(const char* value) { SetDeploymentConfigId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The deployment configuration name.</p>
      */
-    inline const Aws::String& GetDeploymentConfigName() const{ return m_deploymentConfigName; }
-
-    /**
-     * <p>The deployment configuration name.</p>
-     */
+    inline const Aws::String& GetDeploymentConfigName() const { return m_deploymentConfigName; }
     inline bool DeploymentConfigNameHasBeenSet() const { return m_deploymentConfigNameHasBeenSet; }
+    template<typename DeploymentConfigNameT = Aws::String>
+    void SetDeploymentConfigName(DeploymentConfigNameT&& value) { m_deploymentConfigNameHasBeenSet = true; m_deploymentConfigName = std::forward<DeploymentConfigNameT>(value); }
+    template<typename DeploymentConfigNameT = Aws::String>
+    DeploymentConfigInfo& WithDeploymentConfigName(DeploymentConfigNameT&& value) { SetDeploymentConfigName(std::forward<DeploymentConfigNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The deployment configuration name.</p>
+     * <p>Information about the number or percentage of minimum healthy instances.</p>
      */
-    inline void SetDeploymentConfigName(const Aws::String& value) { m_deploymentConfigNameHasBeenSet = true; m_deploymentConfigName = value; }
-
-    /**
-     * <p>The deployment configuration name.</p>
-     */
-    inline void SetDeploymentConfigName(Aws::String&& value) { m_deploymentConfigNameHasBeenSet = true; m_deploymentConfigName = std::move(value); }
-
-    /**
-     * <p>The deployment configuration name.</p>
-     */
-    inline void SetDeploymentConfigName(const char* value) { m_deploymentConfigNameHasBeenSet = true; m_deploymentConfigName.assign(value); }
-
-    /**
-     * <p>The deployment configuration name.</p>
-     */
-    inline DeploymentConfigInfo& WithDeploymentConfigName(const Aws::String& value) { SetDeploymentConfigName(value); return *this;}
-
-    /**
-     * <p>The deployment configuration name.</p>
-     */
-    inline DeploymentConfigInfo& WithDeploymentConfigName(Aws::String&& value) { SetDeploymentConfigName(std::move(value)); return *this;}
-
-    /**
-     * <p>The deployment configuration name.</p>
-     */
-    inline DeploymentConfigInfo& WithDeploymentConfigName(const char* value) { SetDeploymentConfigName(value); return *this;}
-
-
-    /**
-     * <p>Information about the number or percentage of minimum healthy instance.</p>
-     */
-    inline const MinimumHealthyHosts& GetMinimumHealthyHosts() const{ return m_minimumHealthyHosts; }
-
-    /**
-     * <p>Information about the number or percentage of minimum healthy instance.</p>
-     */
+    inline const MinimumHealthyHosts& GetMinimumHealthyHosts() const { return m_minimumHealthyHosts; }
     inline bool MinimumHealthyHostsHasBeenSet() const { return m_minimumHealthyHostsHasBeenSet; }
+    template<typename MinimumHealthyHostsT = MinimumHealthyHosts>
+    void SetMinimumHealthyHosts(MinimumHealthyHostsT&& value) { m_minimumHealthyHostsHasBeenSet = true; m_minimumHealthyHosts = std::forward<MinimumHealthyHostsT>(value); }
+    template<typename MinimumHealthyHostsT = MinimumHealthyHosts>
+    DeploymentConfigInfo& WithMinimumHealthyHosts(MinimumHealthyHostsT&& value) { SetMinimumHealthyHosts(std::forward<MinimumHealthyHostsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the number or percentage of minimum healthy instance.</p>
-     */
-    inline void SetMinimumHealthyHosts(const MinimumHealthyHosts& value) { m_minimumHealthyHostsHasBeenSet = true; m_minimumHealthyHosts = value; }
-
-    /**
-     * <p>Information about the number or percentage of minimum healthy instance.</p>
-     */
-    inline void SetMinimumHealthyHosts(MinimumHealthyHosts&& value) { m_minimumHealthyHostsHasBeenSet = true; m_minimumHealthyHosts = std::move(value); }
-
-    /**
-     * <p>Information about the number or percentage of minimum healthy instance.</p>
-     */
-    inline DeploymentConfigInfo& WithMinimumHealthyHosts(const MinimumHealthyHosts& value) { SetMinimumHealthyHosts(value); return *this;}
-
-    /**
-     * <p>Information about the number or percentage of minimum healthy instance.</p>
-     */
-    inline DeploymentConfigInfo& WithMinimumHealthyHosts(MinimumHealthyHosts&& value) { SetMinimumHealthyHosts(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which the deployment configuration was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreateTime() const{ return m_createTime; }
-
-    /**
-     * <p>The time at which the deployment configuration was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreateTime() const { return m_createTime; }
     inline bool CreateTimeHasBeenSet() const { return m_createTimeHasBeenSet; }
+    template<typename CreateTimeT = Aws::Utils::DateTime>
+    void SetCreateTime(CreateTimeT&& value) { m_createTimeHasBeenSet = true; m_createTime = std::forward<CreateTimeT>(value); }
+    template<typename CreateTimeT = Aws::Utils::DateTime>
+    DeploymentConfigInfo& WithCreateTime(CreateTimeT&& value) { SetCreateTime(std::forward<CreateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time at which the deployment configuration was created.</p>
-     */
-    inline void SetCreateTime(const Aws::Utils::DateTime& value) { m_createTimeHasBeenSet = true; m_createTime = value; }
-
-    /**
-     * <p>The time at which the deployment configuration was created.</p>
-     */
-    inline void SetCreateTime(Aws::Utils::DateTime&& value) { m_createTimeHasBeenSet = true; m_createTime = std::move(value); }
-
-    /**
-     * <p>The time at which the deployment configuration was created.</p>
-     */
-    inline DeploymentConfigInfo& WithCreateTime(const Aws::Utils::DateTime& value) { SetCreateTime(value); return *this;}
-
-    /**
-     * <p>The time at which the deployment configuration was created.</p>
-     */
-    inline DeploymentConfigInfo& WithCreateTime(Aws::Utils::DateTime&& value) { SetCreateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The destination platform type for the deployment (<code>Lambda</code>,
      * <code>Server</code>, or <code>ECS</code>).</p>
      */
-    inline const ComputePlatform& GetComputePlatform() const{ return m_computePlatform; }
-
-    /**
-     * <p>The destination platform type for the deployment (<code>Lambda</code>,
-     * <code>Server</code>, or <code>ECS</code>).</p>
-     */
+    inline ComputePlatform GetComputePlatform() const { return m_computePlatform; }
     inline bool ComputePlatformHasBeenSet() const { return m_computePlatformHasBeenSet; }
+    inline void SetComputePlatform(ComputePlatform value) { m_computePlatformHasBeenSet = true; m_computePlatform = value; }
+    inline DeploymentConfigInfo& WithComputePlatform(ComputePlatform value) { SetComputePlatform(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The destination platform type for the deployment (<code>Lambda</code>,
-     * <code>Server</code>, or <code>ECS</code>).</p>
-     */
-    inline void SetComputePlatform(const ComputePlatform& value) { m_computePlatformHasBeenSet = true; m_computePlatform = value; }
-
-    /**
-     * <p>The destination platform type for the deployment (<code>Lambda</code>,
-     * <code>Server</code>, or <code>ECS</code>).</p>
-     */
-    inline void SetComputePlatform(ComputePlatform&& value) { m_computePlatformHasBeenSet = true; m_computePlatform = std::move(value); }
-
-    /**
-     * <p>The destination platform type for the deployment (<code>Lambda</code>,
-     * <code>Server</code>, or <code>ECS</code>).</p>
-     */
-    inline DeploymentConfigInfo& WithComputePlatform(const ComputePlatform& value) { SetComputePlatform(value); return *this;}
-
-    /**
-     * <p>The destination platform type for the deployment (<code>Lambda</code>,
-     * <code>Server</code>, or <code>ECS</code>).</p>
-     */
-    inline DeploymentConfigInfo& WithComputePlatform(ComputePlatform&& value) { SetComputePlatform(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration that specifies how the deployment traffic is routed. Used
      * for deployments with a Lambda or Amazon ECS compute platform only.</p>
      */
-    inline const TrafficRoutingConfig& GetTrafficRoutingConfig() const{ return m_trafficRoutingConfig; }
-
-    /**
-     * <p>The configuration that specifies how the deployment traffic is routed. Used
-     * for deployments with a Lambda or Amazon ECS compute platform only.</p>
-     */
+    inline const TrafficRoutingConfig& GetTrafficRoutingConfig() const { return m_trafficRoutingConfig; }
     inline bool TrafficRoutingConfigHasBeenSet() const { return m_trafficRoutingConfigHasBeenSet; }
+    template<typename TrafficRoutingConfigT = TrafficRoutingConfig>
+    void SetTrafficRoutingConfig(TrafficRoutingConfigT&& value) { m_trafficRoutingConfigHasBeenSet = true; m_trafficRoutingConfig = std::forward<TrafficRoutingConfigT>(value); }
+    template<typename TrafficRoutingConfigT = TrafficRoutingConfig>
+    DeploymentConfigInfo& WithTrafficRoutingConfig(TrafficRoutingConfigT&& value) { SetTrafficRoutingConfig(std::forward<TrafficRoutingConfigT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The configuration that specifies how the deployment traffic is routed. Used
-     * for deployments with a Lambda or Amazon ECS compute platform only.</p>
+     * <p>Information about a zonal configuration.</p>
      */
-    inline void SetTrafficRoutingConfig(const TrafficRoutingConfig& value) { m_trafficRoutingConfigHasBeenSet = true; m_trafficRoutingConfig = value; }
-
-    /**
-     * <p>The configuration that specifies how the deployment traffic is routed. Used
-     * for deployments with a Lambda or Amazon ECS compute platform only.</p>
-     */
-    inline void SetTrafficRoutingConfig(TrafficRoutingConfig&& value) { m_trafficRoutingConfigHasBeenSet = true; m_trafficRoutingConfig = std::move(value); }
-
-    /**
-     * <p>The configuration that specifies how the deployment traffic is routed. Used
-     * for deployments with a Lambda or Amazon ECS compute platform only.</p>
-     */
-    inline DeploymentConfigInfo& WithTrafficRoutingConfig(const TrafficRoutingConfig& value) { SetTrafficRoutingConfig(value); return *this;}
-
-    /**
-     * <p>The configuration that specifies how the deployment traffic is routed. Used
-     * for deployments with a Lambda or Amazon ECS compute platform only.</p>
-     */
-    inline DeploymentConfigInfo& WithTrafficRoutingConfig(TrafficRoutingConfig&& value) { SetTrafficRoutingConfig(std::move(value)); return *this;}
-
+    inline const ZonalConfig& GetZonalConfig() const { return m_zonalConfig; }
+    inline bool ZonalConfigHasBeenSet() const { return m_zonalConfigHasBeenSet; }
+    template<typename ZonalConfigT = ZonalConfig>
+    void SetZonalConfig(ZonalConfigT&& value) { m_zonalConfigHasBeenSet = true; m_zonalConfig = std::forward<ZonalConfigT>(value); }
+    template<typename ZonalConfigT = ZonalConfig>
+    DeploymentConfigInfo& WithZonalConfig(ZonalConfigT&& value) { SetZonalConfig(std::forward<ZonalConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_deploymentConfigId;
@@ -269,14 +136,17 @@ namespace Model
     MinimumHealthyHosts m_minimumHealthyHosts;
     bool m_minimumHealthyHostsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createTime;
+    Aws::Utils::DateTime m_createTime{};
     bool m_createTimeHasBeenSet = false;
 
-    ComputePlatform m_computePlatform;
+    ComputePlatform m_computePlatform{ComputePlatform::NOT_SET};
     bool m_computePlatformHasBeenSet = false;
 
     TrafficRoutingConfig m_trafficRoutingConfig;
     bool m_trafficRoutingConfigHasBeenSet = false;
+
+    ZonalConfig m_zonalConfig;
+    bool m_zonalConfigHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,17 +18,7 @@ namespace SSM
 namespace Model
 {
 
-ResolvedTargets::ResolvedTargets() : 
-    m_parameterValuesHasBeenSet(false),
-    m_truncated(false),
-    m_truncatedHasBeenSet(false)
-{
-}
-
-ResolvedTargets::ResolvedTargets(JsonView jsonValue) : 
-    m_parameterValuesHasBeenSet(false),
-    m_truncated(false),
-    m_truncatedHasBeenSet(false)
+ResolvedTargets::ResolvedTargets(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,14 +34,11 @@ ResolvedTargets& ResolvedTargets::operator =(JsonView jsonValue)
     }
     m_parameterValuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Truncated"))
   {
     m_truncated = jsonValue.GetBool("Truncated");
-
     m_truncatedHasBeenSet = true;
   }
-
   return *this;
 }
 

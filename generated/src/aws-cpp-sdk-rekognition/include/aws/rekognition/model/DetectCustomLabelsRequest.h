@@ -22,7 +22,7 @@ namespace Model
   class DetectCustomLabelsRequest : public RekognitionRequest
   {
   public:
-    AWS_REKOGNITION_API DetectCustomLabelsRequest();
+    AWS_REKOGNITION_API DetectCustomLabelsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,95 +35,44 @@ namespace Model
     AWS_REKOGNITION_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The ARN of the model version that you want to use.</p>
+     * <p>The ARN of the model version that you want to use. Only models associated
+     * with Custom Labels projects accepted by the operation. If a provided ARN refers
+     * to a model version associated with a project for a different feature type, then
+     * an InvalidParameterException is returned.</p>
      */
-    inline const Aws::String& GetProjectVersionArn() const{ return m_projectVersionArn; }
-
-    /**
-     * <p>The ARN of the model version that you want to use.</p>
-     */
+    inline const Aws::String& GetProjectVersionArn() const { return m_projectVersionArn; }
     inline bool ProjectVersionArnHasBeenSet() const { return m_projectVersionArnHasBeenSet; }
+    template<typename ProjectVersionArnT = Aws::String>
+    void SetProjectVersionArn(ProjectVersionArnT&& value) { m_projectVersionArnHasBeenSet = true; m_projectVersionArn = std::forward<ProjectVersionArnT>(value); }
+    template<typename ProjectVersionArnT = Aws::String>
+    DetectCustomLabelsRequest& WithProjectVersionArn(ProjectVersionArnT&& value) { SetProjectVersionArn(std::forward<ProjectVersionArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the model version that you want to use.</p>
-     */
-    inline void SetProjectVersionArn(const Aws::String& value) { m_projectVersionArnHasBeenSet = true; m_projectVersionArn = value; }
-
-    /**
-     * <p>The ARN of the model version that you want to use.</p>
-     */
-    inline void SetProjectVersionArn(Aws::String&& value) { m_projectVersionArnHasBeenSet = true; m_projectVersionArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the model version that you want to use.</p>
-     */
-    inline void SetProjectVersionArn(const char* value) { m_projectVersionArnHasBeenSet = true; m_projectVersionArn.assign(value); }
-
-    /**
-     * <p>The ARN of the model version that you want to use.</p>
-     */
-    inline DetectCustomLabelsRequest& WithProjectVersionArn(const Aws::String& value) { SetProjectVersionArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the model version that you want to use.</p>
-     */
-    inline DetectCustomLabelsRequest& WithProjectVersionArn(Aws::String&& value) { SetProjectVersionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the model version that you want to use.</p>
-     */
-    inline DetectCustomLabelsRequest& WithProjectVersionArn(const char* value) { SetProjectVersionArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Image& GetImage() const{ return m_image; }
-
-    
+    inline const Image& GetImage() const { return m_image; }
     inline bool ImageHasBeenSet() const { return m_imageHasBeenSet; }
+    template<typename ImageT = Image>
+    void SetImage(ImageT&& value) { m_imageHasBeenSet = true; m_image = std::forward<ImageT>(value); }
+    template<typename ImageT = Image>
+    DetectCustomLabelsRequest& WithImage(ImageT&& value) { SetImage(std::forward<ImageT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetImage(const Image& value) { m_imageHasBeenSet = true; m_image = value; }
-
-    
-    inline void SetImage(Image&& value) { m_imageHasBeenSet = true; m_image = std::move(value); }
-
-    
-    inline DetectCustomLabelsRequest& WithImage(const Image& value) { SetImage(value); return *this;}
-
-    
-    inline DetectCustomLabelsRequest& WithImage(Image&& value) { SetImage(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Maximum number of results you want the service to return in the response. The
      * service returns the specified number of highest confidence labels ranked from
      * highest confidence to lowest.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>Maximum number of results you want the service to return in the response. The
-     * service returns the specified number of highest confidence labels ranked from
-     * highest confidence to lowest.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>Maximum number of results you want the service to return in the response. The
-     * service returns the specified number of highest confidence labels ranked from
-     * highest confidence to lowest.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>Maximum number of results you want the service to return in the response. The
-     * service returns the specified number of highest confidence labels ranked from
-     * highest confidence to lowest.</p>
-     */
     inline DetectCustomLabelsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Specifies the minimum confidence level for the labels to return.
      * <code>DetectCustomLabels</code> doesn't return any labels with a confidence
@@ -133,41 +82,11 @@ namespace Model
      * <code>MinConfidence</code>, <code>DetectCustomLabels</code> returns labels based
      * on the assumed threshold of each label.</p>
      */
-    inline double GetMinConfidence() const{ return m_minConfidence; }
-
-    /**
-     * <p>Specifies the minimum confidence level for the labels to return.
-     * <code>DetectCustomLabels</code> doesn't return any labels with a confidence
-     * value that's lower than this specified value. If you specify a value of 0,
-     * <code>DetectCustomLabels</code> returns all labels, regardless of the assumed
-     * threshold applied to each label. If you don't specify a value for
-     * <code>MinConfidence</code>, <code>DetectCustomLabels</code> returns labels based
-     * on the assumed threshold of each label.</p>
-     */
+    inline double GetMinConfidence() const { return m_minConfidence; }
     inline bool MinConfidenceHasBeenSet() const { return m_minConfidenceHasBeenSet; }
-
-    /**
-     * <p>Specifies the minimum confidence level for the labels to return.
-     * <code>DetectCustomLabels</code> doesn't return any labels with a confidence
-     * value that's lower than this specified value. If you specify a value of 0,
-     * <code>DetectCustomLabels</code> returns all labels, regardless of the assumed
-     * threshold applied to each label. If you don't specify a value for
-     * <code>MinConfidence</code>, <code>DetectCustomLabels</code> returns labels based
-     * on the assumed threshold of each label.</p>
-     */
     inline void SetMinConfidence(double value) { m_minConfidenceHasBeenSet = true; m_minConfidence = value; }
-
-    /**
-     * <p>Specifies the minimum confidence level for the labels to return.
-     * <code>DetectCustomLabels</code> doesn't return any labels with a confidence
-     * value that's lower than this specified value. If you specify a value of 0,
-     * <code>DetectCustomLabels</code> returns all labels, regardless of the assumed
-     * threshold applied to each label. If you don't specify a value for
-     * <code>MinConfidence</code>, <code>DetectCustomLabels</code> returns labels based
-     * on the assumed threshold of each label.</p>
-     */
     inline DetectCustomLabelsRequest& WithMinConfidence(double value) { SetMinConfidence(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_projectVersionArn;
@@ -176,10 +95,10 @@ namespace Model
     Image m_image;
     bool m_imageHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
-    double m_minConfidence;
+    double m_minConfidence{0.0};
     bool m_minConfidenceHasBeenSet = false;
   };
 

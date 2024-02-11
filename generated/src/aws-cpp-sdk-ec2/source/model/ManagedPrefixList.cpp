@@ -20,37 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ManagedPrefixList::ManagedPrefixList() : 
-    m_prefixListIdHasBeenSet(false),
-    m_addressFamilyHasBeenSet(false),
-    m_state(PrefixListState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_stateMessageHasBeenSet(false),
-    m_prefixListArnHasBeenSet(false),
-    m_prefixListNameHasBeenSet(false),
-    m_maxEntries(0),
-    m_maxEntriesHasBeenSet(false),
-    m_version(0),
-    m_versionHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_ownerIdHasBeenSet(false)
-{
-}
-
-ManagedPrefixList::ManagedPrefixList(const XmlNode& xmlNode) : 
-    m_prefixListIdHasBeenSet(false),
-    m_addressFamilyHasBeenSet(false),
-    m_state(PrefixListState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_stateMessageHasBeenSet(false),
-    m_prefixListArnHasBeenSet(false),
-    m_prefixListNameHasBeenSet(false),
-    m_maxEntries(0),
-    m_maxEntriesHasBeenSet(false),
-    m_version(0),
-    m_versionHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_ownerIdHasBeenSet(false)
+ManagedPrefixList::ManagedPrefixList(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -76,7 +46,7 @@ ManagedPrefixList& ManagedPrefixList::operator =(const XmlNode& xmlNode)
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = PrefixListStateMapper::GetPrefixListStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = PrefixListStateMapper::GetPrefixListStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode stateMessageNode = resultNode.FirstChild("stateMessage");
@@ -113,6 +83,7 @@ ManagedPrefixList& ManagedPrefixList::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -146,7 +117,7 @@ void ManagedPrefixList::OutputToStream(Aws::OStream& oStream, const char* locati
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << PrefixListStateMapper::GetNameForPrefixListState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(PrefixListStateMapper::GetNameForPrefixListState(m_state)) << "&";
   }
 
   if(m_stateMessageHasBeenSet)
@@ -204,7 +175,7 @@ void ManagedPrefixList::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << PrefixListStateMapper::GetNameForPrefixListState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(PrefixListStateMapper::GetNameForPrefixListState(m_state)) << "&";
   }
   if(m_stateMessageHasBeenSet)
   {
@@ -232,7 +203,7 @@ void ManagedPrefixList::OutputToStream(Aws::OStream& oStream, const char* locati
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

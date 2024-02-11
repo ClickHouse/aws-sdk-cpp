@@ -34,258 +34,103 @@ namespace Model
   class Resource
   {
   public:
-    AWS_WORKMAIL_API Resource();
+    AWS_WORKMAIL_API Resource() = default;
     AWS_WORKMAIL_API Resource(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKMAIL_API Resource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKMAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the resource.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The identifier of the resource.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    Resource& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the resource.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The identifier of the resource.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The identifier of the resource.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The identifier of the resource.</p>
-     */
-    inline Resource& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The identifier of the resource.</p>
-     */
-    inline Resource& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the resource.</p>
-     */
-    inline Resource& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The email of the resource.</p>
      */
-    inline const Aws::String& GetEmail() const{ return m_email; }
-
-    /**
-     * <p>The email of the resource.</p>
-     */
+    inline const Aws::String& GetEmail() const { return m_email; }
     inline bool EmailHasBeenSet() const { return m_emailHasBeenSet; }
+    template<typename EmailT = Aws::String>
+    void SetEmail(EmailT&& value) { m_emailHasBeenSet = true; m_email = std::forward<EmailT>(value); }
+    template<typename EmailT = Aws::String>
+    Resource& WithEmail(EmailT&& value) { SetEmail(std::forward<EmailT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The email of the resource.</p>
-     */
-    inline void SetEmail(const Aws::String& value) { m_emailHasBeenSet = true; m_email = value; }
-
-    /**
-     * <p>The email of the resource.</p>
-     */
-    inline void SetEmail(Aws::String&& value) { m_emailHasBeenSet = true; m_email = std::move(value); }
-
-    /**
-     * <p>The email of the resource.</p>
-     */
-    inline void SetEmail(const char* value) { m_emailHasBeenSet = true; m_email.assign(value); }
-
-    /**
-     * <p>The email of the resource.</p>
-     */
-    inline Resource& WithEmail(const Aws::String& value) { SetEmail(value); return *this;}
-
-    /**
-     * <p>The email of the resource.</p>
-     */
-    inline Resource& WithEmail(Aws::String&& value) { SetEmail(std::move(value)); return *this;}
-
-    /**
-     * <p>The email of the resource.</p>
-     */
-    inline Resource& WithEmail(const char* value) { SetEmail(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the resource.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Resource& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline Resource& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline Resource& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline Resource& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the resource: equipment or room.</p>
      */
-    inline const ResourceType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of the resource: equipment or room.</p>
-     */
+    inline ResourceType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(ResourceType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline Resource& WithType(ResourceType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the resource: equipment or room.</p>
-     */
-    inline void SetType(const ResourceType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of the resource: equipment or room.</p>
-     */
-    inline void SetType(ResourceType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of the resource: equipment or room.</p>
-     */
-    inline Resource& WithType(const ResourceType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of the resource: equipment or room.</p>
-     */
-    inline Resource& WithType(ResourceType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the resource, which can be ENABLED, DISABLED, or DELETED.</p>
      */
-    inline const EntityState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state of the resource, which can be ENABLED, DISABLED, or DELETED.</p>
-     */
+    inline EntityState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(EntityState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline Resource& WithState(EntityState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the resource, which can be ENABLED, DISABLED, or DELETED.</p>
-     */
-    inline void SetState(const EntityState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state of the resource, which can be ENABLED, DISABLED, or DELETED.</p>
-     */
-    inline void SetState(EntityState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state of the resource, which can be ENABLED, DISABLED, or DELETED.</p>
-     */
-    inline Resource& WithState(const EntityState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the resource, which can be ENABLED, DISABLED, or DELETED.</p>
-     */
-    inline Resource& WithState(EntityState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date indicating when the resource was enabled for WorkMail use.</p>
      */
-    inline const Aws::Utils::DateTime& GetEnabledDate() const{ return m_enabledDate; }
-
-    /**
-     * <p>The date indicating when the resource was enabled for WorkMail use.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEnabledDate() const { return m_enabledDate; }
     inline bool EnabledDateHasBeenSet() const { return m_enabledDateHasBeenSet; }
+    template<typename EnabledDateT = Aws::Utils::DateTime>
+    void SetEnabledDate(EnabledDateT&& value) { m_enabledDateHasBeenSet = true; m_enabledDate = std::forward<EnabledDateT>(value); }
+    template<typename EnabledDateT = Aws::Utils::DateTime>
+    Resource& WithEnabledDate(EnabledDateT&& value) { SetEnabledDate(std::forward<EnabledDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date indicating when the resource was enabled for WorkMail use.</p>
-     */
-    inline void SetEnabledDate(const Aws::Utils::DateTime& value) { m_enabledDateHasBeenSet = true; m_enabledDate = value; }
-
-    /**
-     * <p>The date indicating when the resource was enabled for WorkMail use.</p>
-     */
-    inline void SetEnabledDate(Aws::Utils::DateTime&& value) { m_enabledDateHasBeenSet = true; m_enabledDate = std::move(value); }
-
-    /**
-     * <p>The date indicating when the resource was enabled for WorkMail use.</p>
-     */
-    inline Resource& WithEnabledDate(const Aws::Utils::DateTime& value) { SetEnabledDate(value); return *this;}
-
-    /**
-     * <p>The date indicating when the resource was enabled for WorkMail use.</p>
-     */
-    inline Resource& WithEnabledDate(Aws::Utils::DateTime&& value) { SetEnabledDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date indicating when the resource was disabled from WorkMail use.</p>
      */
-    inline const Aws::Utils::DateTime& GetDisabledDate() const{ return m_disabledDate; }
-
-    /**
-     * <p>The date indicating when the resource was disabled from WorkMail use.</p>
-     */
+    inline const Aws::Utils::DateTime& GetDisabledDate() const { return m_disabledDate; }
     inline bool DisabledDateHasBeenSet() const { return m_disabledDateHasBeenSet; }
+    template<typename DisabledDateT = Aws::Utils::DateTime>
+    void SetDisabledDate(DisabledDateT&& value) { m_disabledDateHasBeenSet = true; m_disabledDate = std::forward<DisabledDateT>(value); }
+    template<typename DisabledDateT = Aws::Utils::DateTime>
+    Resource& WithDisabledDate(DisabledDateT&& value) { SetDisabledDate(std::forward<DisabledDateT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The date indicating when the resource was disabled from WorkMail use.</p>
+     * <p>Resource description.</p>
      */
-    inline void SetDisabledDate(const Aws::Utils::DateTime& value) { m_disabledDateHasBeenSet = true; m_disabledDate = value; }
-
-    /**
-     * <p>The date indicating when the resource was disabled from WorkMail use.</p>
-     */
-    inline void SetDisabledDate(Aws::Utils::DateTime&& value) { m_disabledDateHasBeenSet = true; m_disabledDate = std::move(value); }
-
-    /**
-     * <p>The date indicating when the resource was disabled from WorkMail use.</p>
-     */
-    inline Resource& WithDisabledDate(const Aws::Utils::DateTime& value) { SetDisabledDate(value); return *this;}
-
-    /**
-     * <p>The date indicating when the resource was disabled from WorkMail use.</p>
-     */
-    inline Resource& WithDisabledDate(Aws::Utils::DateTime&& value) { SetDisabledDate(std::move(value)); return *this;}
-
+    inline const Aws::String& GetDescription() const { return m_description; }
+    inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    Resource& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
@@ -297,17 +142,20 @@ namespace Model
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    ResourceType m_type;
+    ResourceType m_type{ResourceType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
-    EntityState m_state;
+    EntityState m_state{EntityState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_enabledDate;
+    Aws::Utils::DateTime m_enabledDate{};
     bool m_enabledDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_disabledDate;
+    Aws::Utils::DateTime m_disabledDate{};
     bool m_disabledDateHasBeenSet = false;
+
+    Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,23 +18,18 @@ namespace WorkSpacesWeb
 namespace Model
 {
 
-BrowserSettings::BrowserSettings() : 
-    m_associatedPortalArnsHasBeenSet(false),
-    m_browserPolicyHasBeenSet(false),
-    m_browserSettingsArnHasBeenSet(false)
-{
-}
-
-BrowserSettings::BrowserSettings(JsonView jsonValue) : 
-    m_associatedPortalArnsHasBeenSet(false),
-    m_browserPolicyHasBeenSet(false),
-    m_browserSettingsArnHasBeenSet(false)
+BrowserSettings::BrowserSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 BrowserSettings& BrowserSettings::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("browserSettingsArn"))
+  {
+    m_browserSettingsArn = jsonValue.GetString("browserSettingsArn");
+    m_browserSettingsArnHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("associatedPortalArns"))
   {
     Aws::Utils::Array<JsonView> associatedPortalArnsJsonList = jsonValue.GetArray("associatedPortalArns");
@@ -44,27 +39,37 @@ BrowserSettings& BrowserSettings::operator =(JsonView jsonValue)
     }
     m_associatedPortalArnsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("browserPolicy"))
   {
     m_browserPolicy = jsonValue.GetString("browserPolicy");
-
     m_browserPolicyHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("browserSettingsArn"))
+  if(jsonValue.ValueExists("customerManagedKey"))
   {
-    m_browserSettingsArn = jsonValue.GetString("browserSettingsArn");
-
-    m_browserSettingsArnHasBeenSet = true;
+    m_customerManagedKey = jsonValue.GetString("customerManagedKey");
+    m_customerManagedKeyHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("additionalEncryptionContext"))
+  {
+    Aws::Map<Aws::String, JsonView> additionalEncryptionContextJsonMap = jsonValue.GetObject("additionalEncryptionContext").GetAllObjects();
+    for(auto& additionalEncryptionContextItem : additionalEncryptionContextJsonMap)
+    {
+      m_additionalEncryptionContext[additionalEncryptionContextItem.first] = additionalEncryptionContextItem.second.AsString();
+    }
+    m_additionalEncryptionContextHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue BrowserSettings::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_browserSettingsArnHasBeenSet)
+  {
+   payload.WithString("browserSettingsArn", m_browserSettingsArn);
+
+  }
 
   if(m_associatedPortalArnsHasBeenSet)
   {
@@ -83,9 +88,20 @@ JsonValue BrowserSettings::Jsonize() const
 
   }
 
-  if(m_browserSettingsArnHasBeenSet)
+  if(m_customerManagedKeyHasBeenSet)
   {
-   payload.WithString("browserSettingsArn", m_browserSettingsArn);
+   payload.WithString("customerManagedKey", m_customerManagedKey);
+
+  }
+
+  if(m_additionalEncryptionContextHasBeenSet)
+  {
+   JsonValue additionalEncryptionContextJsonMap;
+   for(auto& additionalEncryptionContextItem : m_additionalEncryptionContext)
+   {
+     additionalEncryptionContextJsonMap.WithString(additionalEncryptionContextItem.first, additionalEncryptionContextItem.second);
+   }
+   payload.WithObject("additionalEncryptionContext", std::move(additionalEncryptionContextJsonMap));
 
   }
 

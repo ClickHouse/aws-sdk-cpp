@@ -23,7 +23,7 @@ namespace Model
   class RunPipelineActivityRequest : public IoTAnalyticsRequest
   {
   public:
-    AWS_IOTANALYTICS_API RunPipelineActivityRequest();
+    AWS_IOTANALYTICS_API RunPipelineActivityRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,6 +34,7 @@ namespace Model
     AWS_IOTANALYTICS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The pipeline activity that is run. This must not be a channel activity or a
      * data store activity because these activities are used in a pipeline only to load
@@ -41,94 +42,27 @@ namespace Model
      * Lambda activity is specified, only short-running Lambda functions (those with a
      * timeout of less than 30 seconds or less) can be used.</p>
      */
-    inline const PipelineActivity& GetPipelineActivity() const{ return m_pipelineActivity; }
-
-    /**
-     * <p>The pipeline activity that is run. This must not be a channel activity or a
-     * data store activity because these activities are used in a pipeline only to load
-     * the original message and to store the (possibly) transformed message. If a
-     * Lambda activity is specified, only short-running Lambda functions (those with a
-     * timeout of less than 30 seconds or less) can be used.</p>
-     */
+    inline const PipelineActivity& GetPipelineActivity() const { return m_pipelineActivity; }
     inline bool PipelineActivityHasBeenSet() const { return m_pipelineActivityHasBeenSet; }
+    template<typename PipelineActivityT = PipelineActivity>
+    void SetPipelineActivity(PipelineActivityT&& value) { m_pipelineActivityHasBeenSet = true; m_pipelineActivity = std::forward<PipelineActivityT>(value); }
+    template<typename PipelineActivityT = PipelineActivity>
+    RunPipelineActivityRequest& WithPipelineActivity(PipelineActivityT&& value) { SetPipelineActivity(std::forward<PipelineActivityT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pipeline activity that is run. This must not be a channel activity or a
-     * data store activity because these activities are used in a pipeline only to load
-     * the original message and to store the (possibly) transformed message. If a
-     * Lambda activity is specified, only short-running Lambda functions (those with a
-     * timeout of less than 30 seconds or less) can be used.</p>
-     */
-    inline void SetPipelineActivity(const PipelineActivity& value) { m_pipelineActivityHasBeenSet = true; m_pipelineActivity = value; }
-
-    /**
-     * <p>The pipeline activity that is run. This must not be a channel activity or a
-     * data store activity because these activities are used in a pipeline only to load
-     * the original message and to store the (possibly) transformed message. If a
-     * Lambda activity is specified, only short-running Lambda functions (those with a
-     * timeout of less than 30 seconds or less) can be used.</p>
-     */
-    inline void SetPipelineActivity(PipelineActivity&& value) { m_pipelineActivityHasBeenSet = true; m_pipelineActivity = std::move(value); }
-
-    /**
-     * <p>The pipeline activity that is run. This must not be a channel activity or a
-     * data store activity because these activities are used in a pipeline only to load
-     * the original message and to store the (possibly) transformed message. If a
-     * Lambda activity is specified, only short-running Lambda functions (those with a
-     * timeout of less than 30 seconds or less) can be used.</p>
-     */
-    inline RunPipelineActivityRequest& WithPipelineActivity(const PipelineActivity& value) { SetPipelineActivity(value); return *this;}
-
-    /**
-     * <p>The pipeline activity that is run. This must not be a channel activity or a
-     * data store activity because these activities are used in a pipeline only to load
-     * the original message and to store the (possibly) transformed message. If a
-     * Lambda activity is specified, only short-running Lambda functions (those with a
-     * timeout of less than 30 seconds or less) can be used.</p>
-     */
-    inline RunPipelineActivityRequest& WithPipelineActivity(PipelineActivity&& value) { SetPipelineActivity(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The sample message payloads on which the pipeline activity is run.</p>
      */
-    inline const Aws::Vector<Aws::Utils::ByteBuffer>& GetPayloads() const{ return m_payloads; }
-
-    /**
-     * <p>The sample message payloads on which the pipeline activity is run.</p>
-     */
+    inline const Aws::Vector<Aws::Utils::ByteBuffer>& GetPayloads() const { return m_payloads; }
     inline bool PayloadsHasBeenSet() const { return m_payloadsHasBeenSet; }
-
-    /**
-     * <p>The sample message payloads on which the pipeline activity is run.</p>
-     */
-    inline void SetPayloads(const Aws::Vector<Aws::Utils::ByteBuffer>& value) { m_payloadsHasBeenSet = true; m_payloads = value; }
-
-    /**
-     * <p>The sample message payloads on which the pipeline activity is run.</p>
-     */
-    inline void SetPayloads(Aws::Vector<Aws::Utils::ByteBuffer>&& value) { m_payloadsHasBeenSet = true; m_payloads = std::move(value); }
-
-    /**
-     * <p>The sample message payloads on which the pipeline activity is run.</p>
-     */
-    inline RunPipelineActivityRequest& WithPayloads(const Aws::Vector<Aws::Utils::ByteBuffer>& value) { SetPayloads(value); return *this;}
-
-    /**
-     * <p>The sample message payloads on which the pipeline activity is run.</p>
-     */
-    inline RunPipelineActivityRequest& WithPayloads(Aws::Vector<Aws::Utils::ByteBuffer>&& value) { SetPayloads(std::move(value)); return *this;}
-
-    /**
-     * <p>The sample message payloads on which the pipeline activity is run.</p>
-     */
-    inline RunPipelineActivityRequest& AddPayloads(const Aws::Utils::ByteBuffer& value) { m_payloadsHasBeenSet = true; m_payloads.push_back(value); return *this; }
-
-    /**
-     * <p>The sample message payloads on which the pipeline activity is run.</p>
-     */
-    inline RunPipelineActivityRequest& AddPayloads(Aws::Utils::ByteBuffer&& value) { m_payloadsHasBeenSet = true; m_payloads.push_back(std::move(value)); return *this; }
-
+    template<typename PayloadsT = Aws::Vector<Aws::Utils::ByteBuffer>>
+    void SetPayloads(PayloadsT&& value) { m_payloadsHasBeenSet = true; m_payloads = std::forward<PayloadsT>(value); }
+    template<typename PayloadsT = Aws::Vector<Aws::Utils::ByteBuffer>>
+    RunPipelineActivityRequest& WithPayloads(PayloadsT&& value) { SetPayloads(std::forward<PayloadsT>(value)); return *this;}
+    template<typename PayloadsT = Aws::Utils::ByteBuffer>
+    RunPipelineActivityRequest& AddPayloads(PayloadsT&& value) { m_payloadsHasBeenSet = true; m_payloads.emplace_back(std::forward<PayloadsT>(value)); return *this; }
+    ///@}
   private:
 
     PipelineActivity m_pipelineActivity;

@@ -33,171 +33,59 @@ namespace Model
   class ThrottlingException
   {
   public:
-    AWS_GREENGRASSV2_API ThrottlingException();
+    AWS_GREENGRASSV2_API ThrottlingException() = default;
     AWS_GREENGRASSV2_API ThrottlingException(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASSV2_API ThrottlingException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    ThrottlingException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    
-    inline ThrottlingException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    
-    inline ThrottlingException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    
-    inline ThrottlingException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The code for the quota in <a
      * href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html">Service
      * Quotas</a>.</p>
      */
-    inline const Aws::String& GetQuotaCode() const{ return m_quotaCode; }
-
-    /**
-     * <p>The code for the quota in <a
-     * href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html">Service
-     * Quotas</a>.</p>
-     */
+    inline const Aws::String& GetQuotaCode() const { return m_quotaCode; }
     inline bool QuotaCodeHasBeenSet() const { return m_quotaCodeHasBeenSet; }
+    template<typename QuotaCodeT = Aws::String>
+    void SetQuotaCode(QuotaCodeT&& value) { m_quotaCodeHasBeenSet = true; m_quotaCode = std::forward<QuotaCodeT>(value); }
+    template<typename QuotaCodeT = Aws::String>
+    ThrottlingException& WithQuotaCode(QuotaCodeT&& value) { SetQuotaCode(std::forward<QuotaCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The code for the quota in <a
-     * href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html">Service
-     * Quotas</a>.</p>
-     */
-    inline void SetQuotaCode(const Aws::String& value) { m_quotaCodeHasBeenSet = true; m_quotaCode = value; }
-
-    /**
-     * <p>The code for the quota in <a
-     * href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html">Service
-     * Quotas</a>.</p>
-     */
-    inline void SetQuotaCode(Aws::String&& value) { m_quotaCodeHasBeenSet = true; m_quotaCode = std::move(value); }
-
-    /**
-     * <p>The code for the quota in <a
-     * href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html">Service
-     * Quotas</a>.</p>
-     */
-    inline void SetQuotaCode(const char* value) { m_quotaCodeHasBeenSet = true; m_quotaCode.assign(value); }
-
-    /**
-     * <p>The code for the quota in <a
-     * href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html">Service
-     * Quotas</a>.</p>
-     */
-    inline ThrottlingException& WithQuotaCode(const Aws::String& value) { SetQuotaCode(value); return *this;}
-
-    /**
-     * <p>The code for the quota in <a
-     * href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html">Service
-     * Quotas</a>.</p>
-     */
-    inline ThrottlingException& WithQuotaCode(Aws::String&& value) { SetQuotaCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The code for the quota in <a
-     * href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html">Service
-     * Quotas</a>.</p>
-     */
-    inline ThrottlingException& WithQuotaCode(const char* value) { SetQuotaCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The code for the service in <a
      * href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html">Service
      * Quotas</a>.</p>
      */
-    inline const Aws::String& GetServiceCode() const{ return m_serviceCode; }
-
-    /**
-     * <p>The code for the service in <a
-     * href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html">Service
-     * Quotas</a>.</p>
-     */
+    inline const Aws::String& GetServiceCode() const { return m_serviceCode; }
     inline bool ServiceCodeHasBeenSet() const { return m_serviceCodeHasBeenSet; }
+    template<typename ServiceCodeT = Aws::String>
+    void SetServiceCode(ServiceCodeT&& value) { m_serviceCodeHasBeenSet = true; m_serviceCode = std::forward<ServiceCodeT>(value); }
+    template<typename ServiceCodeT = Aws::String>
+    ThrottlingException& WithServiceCode(ServiceCodeT&& value) { SetServiceCode(std::forward<ServiceCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The code for the service in <a
-     * href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html">Service
-     * Quotas</a>.</p>
-     */
-    inline void SetServiceCode(const Aws::String& value) { m_serviceCodeHasBeenSet = true; m_serviceCode = value; }
-
-    /**
-     * <p>The code for the service in <a
-     * href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html">Service
-     * Quotas</a>.</p>
-     */
-    inline void SetServiceCode(Aws::String&& value) { m_serviceCodeHasBeenSet = true; m_serviceCode = std::move(value); }
-
-    /**
-     * <p>The code for the service in <a
-     * href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html">Service
-     * Quotas</a>.</p>
-     */
-    inline void SetServiceCode(const char* value) { m_serviceCodeHasBeenSet = true; m_serviceCode.assign(value); }
-
-    /**
-     * <p>The code for the service in <a
-     * href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html">Service
-     * Quotas</a>.</p>
-     */
-    inline ThrottlingException& WithServiceCode(const Aws::String& value) { SetServiceCode(value); return *this;}
-
-    /**
-     * <p>The code for the service in <a
-     * href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html">Service
-     * Quotas</a>.</p>
-     */
-    inline ThrottlingException& WithServiceCode(Aws::String&& value) { SetServiceCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The code for the service in <a
-     * href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html">Service
-     * Quotas</a>.</p>
-     */
-    inline ThrottlingException& WithServiceCode(const char* value) { SetServiceCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The amount of time to wait before you retry the request.</p>
      */
-    inline int GetRetryAfterSeconds() const{ return m_retryAfterSeconds; }
-
-    /**
-     * <p>The amount of time to wait before you retry the request.</p>
-     */
+    inline int GetRetryAfterSeconds() const { return m_retryAfterSeconds; }
     inline bool RetryAfterSecondsHasBeenSet() const { return m_retryAfterSecondsHasBeenSet; }
-
-    /**
-     * <p>The amount of time to wait before you retry the request.</p>
-     */
     inline void SetRetryAfterSeconds(int value) { m_retryAfterSecondsHasBeenSet = true; m_retryAfterSeconds = value; }
-
-    /**
-     * <p>The amount of time to wait before you retry the request.</p>
-     */
     inline ThrottlingException& WithRetryAfterSeconds(int value) { SetRetryAfterSeconds(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_message;
@@ -209,7 +97,7 @@ namespace Model
     Aws::String m_serviceCode;
     bool m_serviceCodeHasBeenSet = false;
 
-    int m_retryAfterSeconds;
+    int m_retryAfterSeconds{0};
     bool m_retryAfterSecondsHasBeenSet = false;
   };
 

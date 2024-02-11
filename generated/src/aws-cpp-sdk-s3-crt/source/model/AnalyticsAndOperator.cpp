@@ -20,15 +20,7 @@ namespace S3Crt
 namespace Model
 {
 
-AnalyticsAndOperator::AnalyticsAndOperator() : 
-    m_prefixHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-AnalyticsAndOperator::AnalyticsAndOperator(const XmlNode& xmlNode) : 
-    m_prefixHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+AnalyticsAndOperator::AnalyticsAndOperator(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ AnalyticsAndOperator& AnalyticsAndOperator::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagMember = tagsNode;
+      m_tagsHasBeenSet = !tagMember.IsNull();
       while(!tagMember.IsNull())
       {
         m_tags.push_back(tagMember);
@@ -73,10 +66,9 @@ void AnalyticsAndOperator::AddToNode(XmlNode& parentNode) const
 
   if(m_tagsHasBeenSet)
   {
-   XmlNode tagsParentNode = parentNode.CreateChildElement("Tags");
    for(const auto& item : m_tags)
    {
-     XmlNode tagsNode = tagsParentNode.CreateChildElement("Tag");
+     XmlNode tagsNode = parentNode.CreateChildElement("Tag");
      item.AddToNode(tagsNode);
    }
   }

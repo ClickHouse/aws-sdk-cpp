@@ -21,7 +21,7 @@ namespace Model
   class DeleteTargetGroupRequest : public VPCLatticeRequest
   {
   public:
-    AWS_VPCLATTICE_API DeleteTargetGroupRequest();
+    AWS_VPCLATTICE_API DeleteTargetGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_VPCLATTICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The ID or Amazon Resource Name (ARN) of the target group.</p>
+     * <p>The ID or ARN of the target group.</p>
      */
-    inline const Aws::String& GetTargetGroupIdentifier() const{ return m_targetGroupIdentifier; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the target group.</p>
-     */
+    inline const Aws::String& GetTargetGroupIdentifier() const { return m_targetGroupIdentifier; }
     inline bool TargetGroupIdentifierHasBeenSet() const { return m_targetGroupIdentifierHasBeenSet; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the target group.</p>
-     */
-    inline void SetTargetGroupIdentifier(const Aws::String& value) { m_targetGroupIdentifierHasBeenSet = true; m_targetGroupIdentifier = value; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the target group.</p>
-     */
-    inline void SetTargetGroupIdentifier(Aws::String&& value) { m_targetGroupIdentifierHasBeenSet = true; m_targetGroupIdentifier = std::move(value); }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the target group.</p>
-     */
-    inline void SetTargetGroupIdentifier(const char* value) { m_targetGroupIdentifierHasBeenSet = true; m_targetGroupIdentifier.assign(value); }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the target group.</p>
-     */
-    inline DeleteTargetGroupRequest& WithTargetGroupIdentifier(const Aws::String& value) { SetTargetGroupIdentifier(value); return *this;}
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the target group.</p>
-     */
-    inline DeleteTargetGroupRequest& WithTargetGroupIdentifier(Aws::String&& value) { SetTargetGroupIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the target group.</p>
-     */
-    inline DeleteTargetGroupRequest& WithTargetGroupIdentifier(const char* value) { SetTargetGroupIdentifier(value); return *this;}
-
+    template<typename TargetGroupIdentifierT = Aws::String>
+    void SetTargetGroupIdentifier(TargetGroupIdentifierT&& value) { m_targetGroupIdentifierHasBeenSet = true; m_targetGroupIdentifier = std::forward<TargetGroupIdentifierT>(value); }
+    template<typename TargetGroupIdentifierT = Aws::String>
+    DeleteTargetGroupRequest& WithTargetGroupIdentifier(TargetGroupIdentifierT&& value) { SetTargetGroupIdentifier(std::forward<TargetGroupIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_targetGroupIdentifier;

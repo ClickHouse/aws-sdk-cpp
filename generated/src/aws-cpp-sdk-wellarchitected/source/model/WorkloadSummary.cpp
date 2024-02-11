@@ -18,29 +18,7 @@ namespace WellArchitected
 namespace Model
 {
 
-WorkloadSummary::WorkloadSummary() : 
-    m_workloadIdHasBeenSet(false),
-    m_workloadArnHasBeenSet(false),
-    m_workloadNameHasBeenSet(false),
-    m_ownerHasBeenSet(false),
-    m_updatedAtHasBeenSet(false),
-    m_lensesHasBeenSet(false),
-    m_riskCountsHasBeenSet(false),
-    m_improvementStatus(WorkloadImprovementStatus::NOT_SET),
-    m_improvementStatusHasBeenSet(false)
-{
-}
-
-WorkloadSummary::WorkloadSummary(JsonView jsonValue) : 
-    m_workloadIdHasBeenSet(false),
-    m_workloadArnHasBeenSet(false),
-    m_workloadNameHasBeenSet(false),
-    m_ownerHasBeenSet(false),
-    m_updatedAtHasBeenSet(false),
-    m_lensesHasBeenSet(false),
-    m_riskCountsHasBeenSet(false),
-    m_improvementStatus(WorkloadImprovementStatus::NOT_SET),
-    m_improvementStatusHasBeenSet(false)
+WorkloadSummary::WorkloadSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,38 +28,28 @@ WorkloadSummary& WorkloadSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("WorkloadId"))
   {
     m_workloadId = jsonValue.GetString("WorkloadId");
-
     m_workloadIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WorkloadArn"))
   {
     m_workloadArn = jsonValue.GetString("WorkloadArn");
-
     m_workloadArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WorkloadName"))
   {
     m_workloadName = jsonValue.GetString("WorkloadName");
-
     m_workloadNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Owner"))
   {
     m_owner = jsonValue.GetString("Owner");
-
     m_ownerHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UpdatedAt"))
   {
     m_updatedAt = jsonValue.GetDouble("UpdatedAt");
-
     m_updatedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Lenses"))
   {
     Aws::Utils::Array<JsonView> lensesJsonList = jsonValue.GetArray("Lenses");
@@ -91,7 +59,6 @@ WorkloadSummary& WorkloadSummary::operator =(JsonView jsonValue)
     }
     m_lensesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RiskCounts"))
   {
     Aws::Map<Aws::String, JsonView> riskCountsJsonMap = jsonValue.GetObject("RiskCounts").GetAllObjects();
@@ -101,14 +68,29 @@ WorkloadSummary& WorkloadSummary::operator =(JsonView jsonValue)
     }
     m_riskCountsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ImprovementStatus"))
   {
     m_improvementStatus = WorkloadImprovementStatusMapper::GetWorkloadImprovementStatusForName(jsonValue.GetString("ImprovementStatus"));
-
     m_improvementStatusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Profiles"))
+  {
+    Aws::Utils::Array<JsonView> profilesJsonList = jsonValue.GetArray("Profiles");
+    for(unsigned profilesIndex = 0; profilesIndex < profilesJsonList.GetLength(); ++profilesIndex)
+    {
+      m_profiles.push_back(profilesJsonList[profilesIndex].AsObject());
+    }
+    m_profilesHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("PrioritizedRiskCounts"))
+  {
+    Aws::Map<Aws::String, JsonView> prioritizedRiskCountsJsonMap = jsonValue.GetObject("PrioritizedRiskCounts").GetAllObjects();
+    for(auto& prioritizedRiskCountsItem : prioritizedRiskCountsJsonMap)
+    {
+      m_prioritizedRiskCounts[RiskMapper::GetRiskForName(prioritizedRiskCountsItem.first)] = prioritizedRiskCountsItem.second.AsInteger();
+    }
+    m_prioritizedRiskCountsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -170,6 +152,28 @@ JsonValue WorkloadSummary::Jsonize() const
   if(m_improvementStatusHasBeenSet)
   {
    payload.WithString("ImprovementStatus", WorkloadImprovementStatusMapper::GetNameForWorkloadImprovementStatus(m_improvementStatus));
+  }
+
+  if(m_profilesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> profilesJsonList(m_profiles.size());
+   for(unsigned profilesIndex = 0; profilesIndex < profilesJsonList.GetLength(); ++profilesIndex)
+   {
+     profilesJsonList[profilesIndex].AsObject(m_profiles[profilesIndex].Jsonize());
+   }
+   payload.WithArray("Profiles", std::move(profilesJsonList));
+
+  }
+
+  if(m_prioritizedRiskCountsHasBeenSet)
+  {
+   JsonValue prioritizedRiskCountsJsonMap;
+   for(auto& prioritizedRiskCountsItem : m_prioritizedRiskCounts)
+   {
+     prioritizedRiskCountsJsonMap.WithInteger(RiskMapper::GetNameForRisk(prioritizedRiskCountsItem.first), prioritizedRiskCountsItem.second);
+   }
+   payload.WithObject("PrioritizedRiskCounts", std::move(prioritizedRiskCountsJsonMap));
+
   }
 
   return payload;

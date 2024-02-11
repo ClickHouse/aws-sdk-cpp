@@ -20,15 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-AwsLambdaTransformation::AwsLambdaTransformation() : 
-    m_functionArnHasBeenSet(false),
-    m_functionPayloadHasBeenSet(false)
-{
-}
-
-AwsLambdaTransformation::AwsLambdaTransformation(const XmlNode& xmlNode) : 
-    m_functionArnHasBeenSet(false),
-    m_functionPayloadHasBeenSet(false)
+AwsLambdaTransformation::AwsLambdaTransformation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

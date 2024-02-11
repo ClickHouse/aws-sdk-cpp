@@ -18,23 +18,7 @@ namespace SSOAdmin
 namespace Model
 {
 
-PermissionSet::PermissionSet() : 
-    m_nameHasBeenSet(false),
-    m_permissionSetArnHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_createdDateHasBeenSet(false),
-    m_sessionDurationHasBeenSet(false),
-    m_relayStateHasBeenSet(false)
-{
-}
-
-PermissionSet::PermissionSet(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_permissionSetArnHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_createdDateHasBeenSet(false),
-    m_sessionDurationHasBeenSet(false),
-    m_relayStateHasBeenSet(false)
+PermissionSet::PermissionSet(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,45 +28,33 @@ PermissionSet& PermissionSet::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PermissionSetArn"))
   {
     m_permissionSetArn = jsonValue.GetString("PermissionSetArn");
-
     m_permissionSetArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatedDate"))
   {
     m_createdDate = jsonValue.GetDouble("CreatedDate");
-
     m_createdDateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SessionDuration"))
   {
     m_sessionDuration = jsonValue.GetString("SessionDuration");
-
     m_sessionDurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RelayState"))
   {
     m_relayState = jsonValue.GetString("RelayState");
-
     m_relayStateHasBeenSet = true;
   }
-
   return *this;
 }
 

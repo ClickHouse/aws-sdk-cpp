@@ -15,15 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListInstanceTypeDetailsRequest::ListInstanceTypeDetailsRequest() : 
-    m_engineVersionHasBeenSet(false),
-    m_domainNameHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListInstanceTypeDetailsRequest::SerializePayload() const
 {
   return {};
@@ -50,6 +41,20 @@ void ListInstanceTypeDetailsRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << m_nextToken;
       uri.AddQueryStringParameter("nextToken", ss.str());
+      ss.str("");
+    }
+
+    if(m_retrieveAZsHasBeenSet)
+    {
+      ss << m_retrieveAZs;
+      uri.AddQueryStringParameter("retrieveAZs", ss.str());
+      ss.str("");
+    }
+
+    if(m_instanceTypeHasBeenSet)
+    {
+      ss << m_instanceType;
+      uri.AddQueryStringParameter("instanceType", ss.str());
       ss.str("");
     }
 

@@ -18,17 +18,7 @@ namespace EBS
 namespace Model
 {
 
-Block::Block() : 
-    m_blockIndex(0),
-    m_blockIndexHasBeenSet(false),
-    m_blockTokenHasBeenSet(false)
-{
-}
-
-Block::Block(JsonView jsonValue) : 
-    m_blockIndex(0),
-    m_blockIndexHasBeenSet(false),
-    m_blockTokenHasBeenSet(false)
+Block::Block(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ Block& Block::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("BlockIndex"))
   {
     m_blockIndex = jsonValue.GetInteger("BlockIndex");
-
     m_blockIndexHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("BlockToken"))
   {
     m_blockToken = jsonValue.GetString("BlockToken");
-
     m_blockTokenHasBeenSet = true;
   }
-
   return *this;
 }
 

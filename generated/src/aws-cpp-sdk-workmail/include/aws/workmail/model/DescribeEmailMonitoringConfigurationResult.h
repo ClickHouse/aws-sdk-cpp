@@ -27,125 +27,53 @@ namespace Model
   class DescribeEmailMonitoringConfigurationResult
   {
   public:
-    AWS_WORKMAIL_API DescribeEmailMonitoringConfigurationResult();
+    AWS_WORKMAIL_API DescribeEmailMonitoringConfigurationResult() = default;
     AWS_WORKMAIL_API DescribeEmailMonitoringConfigurationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_WORKMAIL_API DescribeEmailMonitoringConfigurationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM Role associated with the email
      * monitoring configuration.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    DescribeEmailMonitoringConfigurationResult& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM Role associated with the email
-     * monitoring configuration.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM Role associated with the email
-     * monitoring configuration.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM Role associated with the email
-     * monitoring configuration.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM Role associated with the email
-     * monitoring configuration.</p>
-     */
-    inline DescribeEmailMonitoringConfigurationResult& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM Role associated with the email
-     * monitoring configuration.</p>
-     */
-    inline DescribeEmailMonitoringConfigurationResult& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM Role associated with the email
-     * monitoring configuration.</p>
-     */
-    inline DescribeEmailMonitoringConfigurationResult& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the CloudWatch Log group associated with
      * the email monitoring configuration.</p>
      */
-    inline const Aws::String& GetLogGroupArn() const{ return m_logGroupArn; }
+    inline const Aws::String& GetLogGroupArn() const { return m_logGroupArn; }
+    template<typename LogGroupArnT = Aws::String>
+    void SetLogGroupArn(LogGroupArnT&& value) { m_logGroupArnHasBeenSet = true; m_logGroupArn = std::forward<LogGroupArnT>(value); }
+    template<typename LogGroupArnT = Aws::String>
+    DescribeEmailMonitoringConfigurationResult& WithLogGroupArn(LogGroupArnT&& value) { SetLogGroupArn(std::forward<LogGroupArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the CloudWatch Log group associated with
-     * the email monitoring configuration.</p>
-     */
-    inline void SetLogGroupArn(const Aws::String& value) { m_logGroupArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the CloudWatch Log group associated with
-     * the email monitoring configuration.</p>
-     */
-    inline void SetLogGroupArn(Aws::String&& value) { m_logGroupArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the CloudWatch Log group associated with
-     * the email monitoring configuration.</p>
-     */
-    inline void SetLogGroupArn(const char* value) { m_logGroupArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the CloudWatch Log group associated with
-     * the email monitoring configuration.</p>
-     */
-    inline DescribeEmailMonitoringConfigurationResult& WithLogGroupArn(const Aws::String& value) { SetLogGroupArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the CloudWatch Log group associated with
-     * the email monitoring configuration.</p>
-     */
-    inline DescribeEmailMonitoringConfigurationResult& WithLogGroupArn(Aws::String&& value) { SetLogGroupArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the CloudWatch Log group associated with
-     * the email monitoring configuration.</p>
-     */
-    inline DescribeEmailMonitoringConfigurationResult& WithLogGroupArn(const char* value) { SetLogGroupArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeEmailMonitoringConfigurationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeEmailMonitoringConfigurationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeEmailMonitoringConfigurationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeEmailMonitoringConfigurationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_roleArn;
+    bool m_roleArnHasBeenSet = false;
 
     Aws::String m_logGroupArn;
+    bool m_logGroupArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

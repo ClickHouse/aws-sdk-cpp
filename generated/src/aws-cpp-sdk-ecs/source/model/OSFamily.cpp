@@ -26,6 +26,8 @@ namespace Aws
         static const int WINDOWS_SERVER_2004_CORE_HASH = HashingUtils::HashString("WINDOWS_SERVER_2004_CORE");
         static const int WINDOWS_SERVER_2022_CORE_HASH = HashingUtils::HashString("WINDOWS_SERVER_2022_CORE");
         static const int WINDOWS_SERVER_2022_FULL_HASH = HashingUtils::HashString("WINDOWS_SERVER_2022_FULL");
+        static const int WINDOWS_SERVER_2025_CORE_HASH = HashingUtils::HashString("WINDOWS_SERVER_2025_CORE");
+        static const int WINDOWS_SERVER_2025_FULL_HASH = HashingUtils::HashString("WINDOWS_SERVER_2025_FULL");
         static const int WINDOWS_SERVER_20H2_CORE_HASH = HashingUtils::HashString("WINDOWS_SERVER_20H2_CORE");
         static const int LINUX_HASH = HashingUtils::HashString("LINUX");
 
@@ -57,6 +59,14 @@ namespace Aws
           {
             return OSFamily::WINDOWS_SERVER_2022_FULL;
           }
+          else if (hashCode == WINDOWS_SERVER_2025_CORE_HASH)
+          {
+            return OSFamily::WINDOWS_SERVER_2025_CORE;
+          }
+          else if (hashCode == WINDOWS_SERVER_2025_FULL_HASH)
+          {
+            return OSFamily::WINDOWS_SERVER_2025_FULL;
+          }
           else if (hashCode == WINDOWS_SERVER_20H2_CORE_HASH)
           {
             return OSFamily::WINDOWS_SERVER_20H2_CORE;
@@ -79,6 +89,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case OSFamily::NOT_SET:
+            return {};
           case OSFamily::WINDOWS_SERVER_2019_FULL:
             return "WINDOWS_SERVER_2019_FULL";
           case OSFamily::WINDOWS_SERVER_2019_CORE:
@@ -91,6 +103,10 @@ namespace Aws
             return "WINDOWS_SERVER_2022_CORE";
           case OSFamily::WINDOWS_SERVER_2022_FULL:
             return "WINDOWS_SERVER_2022_FULL";
+          case OSFamily::WINDOWS_SERVER_2025_CORE:
+            return "WINDOWS_SERVER_2025_CORE";
+          case OSFamily::WINDOWS_SERVER_2025_FULL:
+            return "WINDOWS_SERVER_2025_FULL";
           case OSFamily::WINDOWS_SERVER_20H2_CORE:
             return "WINDOWS_SERVER_20H2_CORE";
           case OSFamily::LINUX:

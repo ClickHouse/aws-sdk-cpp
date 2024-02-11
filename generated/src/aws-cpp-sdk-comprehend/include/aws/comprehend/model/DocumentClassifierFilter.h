@@ -35,187 +35,74 @@ namespace Model
   class DocumentClassifierFilter
   {
   public:
-    AWS_COMPREHEND_API DocumentClassifierFilter();
+    AWS_COMPREHEND_API DocumentClassifierFilter() = default;
     AWS_COMPREHEND_API DocumentClassifierFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API DocumentClassifierFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Filters the list of classifiers based on status.</p>
      */
-    inline const ModelStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Filters the list of classifiers based on status.</p>
-     */
+    inline ModelStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ModelStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline DocumentClassifierFilter& WithStatus(ModelStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Filters the list of classifiers based on status.</p>
-     */
-    inline void SetStatus(const ModelStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Filters the list of classifiers based on status.</p>
-     */
-    inline void SetStatus(ModelStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Filters the list of classifiers based on status.</p>
-     */
-    inline DocumentClassifierFilter& WithStatus(const ModelStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Filters the list of classifiers based on status.</p>
-     */
-    inline DocumentClassifierFilter& WithStatus(ModelStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name that you assigned to the document classifier</p>
      */
-    inline const Aws::String& GetDocumentClassifierName() const{ return m_documentClassifierName; }
-
-    /**
-     * <p>The name that you assigned to the document classifier</p>
-     */
+    inline const Aws::String& GetDocumentClassifierName() const { return m_documentClassifierName; }
     inline bool DocumentClassifierNameHasBeenSet() const { return m_documentClassifierNameHasBeenSet; }
+    template<typename DocumentClassifierNameT = Aws::String>
+    void SetDocumentClassifierName(DocumentClassifierNameT&& value) { m_documentClassifierNameHasBeenSet = true; m_documentClassifierName = std::forward<DocumentClassifierNameT>(value); }
+    template<typename DocumentClassifierNameT = Aws::String>
+    DocumentClassifierFilter& WithDocumentClassifierName(DocumentClassifierNameT&& value) { SetDocumentClassifierName(std::forward<DocumentClassifierNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name that you assigned to the document classifier</p>
-     */
-    inline void SetDocumentClassifierName(const Aws::String& value) { m_documentClassifierNameHasBeenSet = true; m_documentClassifierName = value; }
-
-    /**
-     * <p>The name that you assigned to the document classifier</p>
-     */
-    inline void SetDocumentClassifierName(Aws::String&& value) { m_documentClassifierNameHasBeenSet = true; m_documentClassifierName = std::move(value); }
-
-    /**
-     * <p>The name that you assigned to the document classifier</p>
-     */
-    inline void SetDocumentClassifierName(const char* value) { m_documentClassifierNameHasBeenSet = true; m_documentClassifierName.assign(value); }
-
-    /**
-     * <p>The name that you assigned to the document classifier</p>
-     */
-    inline DocumentClassifierFilter& WithDocumentClassifierName(const Aws::String& value) { SetDocumentClassifierName(value); return *this;}
-
-    /**
-     * <p>The name that you assigned to the document classifier</p>
-     */
-    inline DocumentClassifierFilter& WithDocumentClassifierName(Aws::String&& value) { SetDocumentClassifierName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name that you assigned to the document classifier</p>
-     */
-    inline DocumentClassifierFilter& WithDocumentClassifierName(const char* value) { SetDocumentClassifierName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Filters the list of classifiers based on the time that the classifier was
      * submitted for processing. Returns only classifiers submitted before the
      * specified time. Classifiers are returned in ascending order, oldest to
      * newest.</p>
      */
-    inline const Aws::Utils::DateTime& GetSubmitTimeBefore() const{ return m_submitTimeBefore; }
-
-    /**
-     * <p>Filters the list of classifiers based on the time that the classifier was
-     * submitted for processing. Returns only classifiers submitted before the
-     * specified time. Classifiers are returned in ascending order, oldest to
-     * newest.</p>
-     */
+    inline const Aws::Utils::DateTime& GetSubmitTimeBefore() const { return m_submitTimeBefore; }
     inline bool SubmitTimeBeforeHasBeenSet() const { return m_submitTimeBeforeHasBeenSet; }
+    template<typename SubmitTimeBeforeT = Aws::Utils::DateTime>
+    void SetSubmitTimeBefore(SubmitTimeBeforeT&& value) { m_submitTimeBeforeHasBeenSet = true; m_submitTimeBefore = std::forward<SubmitTimeBeforeT>(value); }
+    template<typename SubmitTimeBeforeT = Aws::Utils::DateTime>
+    DocumentClassifierFilter& WithSubmitTimeBefore(SubmitTimeBeforeT&& value) { SetSubmitTimeBefore(std::forward<SubmitTimeBeforeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Filters the list of classifiers based on the time that the classifier was
-     * submitted for processing. Returns only classifiers submitted before the
-     * specified time. Classifiers are returned in ascending order, oldest to
-     * newest.</p>
-     */
-    inline void SetSubmitTimeBefore(const Aws::Utils::DateTime& value) { m_submitTimeBeforeHasBeenSet = true; m_submitTimeBefore = value; }
-
-    /**
-     * <p>Filters the list of classifiers based on the time that the classifier was
-     * submitted for processing. Returns only classifiers submitted before the
-     * specified time. Classifiers are returned in ascending order, oldest to
-     * newest.</p>
-     */
-    inline void SetSubmitTimeBefore(Aws::Utils::DateTime&& value) { m_submitTimeBeforeHasBeenSet = true; m_submitTimeBefore = std::move(value); }
-
-    /**
-     * <p>Filters the list of classifiers based on the time that the classifier was
-     * submitted for processing. Returns only classifiers submitted before the
-     * specified time. Classifiers are returned in ascending order, oldest to
-     * newest.</p>
-     */
-    inline DocumentClassifierFilter& WithSubmitTimeBefore(const Aws::Utils::DateTime& value) { SetSubmitTimeBefore(value); return *this;}
-
-    /**
-     * <p>Filters the list of classifiers based on the time that the classifier was
-     * submitted for processing. Returns only classifiers submitted before the
-     * specified time. Classifiers are returned in ascending order, oldest to
-     * newest.</p>
-     */
-    inline DocumentClassifierFilter& WithSubmitTimeBefore(Aws::Utils::DateTime&& value) { SetSubmitTimeBefore(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Filters the list of classifiers based on the time that the classifier was
      * submitted for processing. Returns only classifiers submitted after the specified
      * time. Classifiers are returned in descending order, newest to oldest.</p>
      */
-    inline const Aws::Utils::DateTime& GetSubmitTimeAfter() const{ return m_submitTimeAfter; }
-
-    /**
-     * <p>Filters the list of classifiers based on the time that the classifier was
-     * submitted for processing. Returns only classifiers submitted after the specified
-     * time. Classifiers are returned in descending order, newest to oldest.</p>
-     */
+    inline const Aws::Utils::DateTime& GetSubmitTimeAfter() const { return m_submitTimeAfter; }
     inline bool SubmitTimeAfterHasBeenSet() const { return m_submitTimeAfterHasBeenSet; }
-
-    /**
-     * <p>Filters the list of classifiers based on the time that the classifier was
-     * submitted for processing. Returns only classifiers submitted after the specified
-     * time. Classifiers are returned in descending order, newest to oldest.</p>
-     */
-    inline void SetSubmitTimeAfter(const Aws::Utils::DateTime& value) { m_submitTimeAfterHasBeenSet = true; m_submitTimeAfter = value; }
-
-    /**
-     * <p>Filters the list of classifiers based on the time that the classifier was
-     * submitted for processing. Returns only classifiers submitted after the specified
-     * time. Classifiers are returned in descending order, newest to oldest.</p>
-     */
-    inline void SetSubmitTimeAfter(Aws::Utils::DateTime&& value) { m_submitTimeAfterHasBeenSet = true; m_submitTimeAfter = std::move(value); }
-
-    /**
-     * <p>Filters the list of classifiers based on the time that the classifier was
-     * submitted for processing. Returns only classifiers submitted after the specified
-     * time. Classifiers are returned in descending order, newest to oldest.</p>
-     */
-    inline DocumentClassifierFilter& WithSubmitTimeAfter(const Aws::Utils::DateTime& value) { SetSubmitTimeAfter(value); return *this;}
-
-    /**
-     * <p>Filters the list of classifiers based on the time that the classifier was
-     * submitted for processing. Returns only classifiers submitted after the specified
-     * time. Classifiers are returned in descending order, newest to oldest.</p>
-     */
-    inline DocumentClassifierFilter& WithSubmitTimeAfter(Aws::Utils::DateTime&& value) { SetSubmitTimeAfter(std::move(value)); return *this;}
-
+    template<typename SubmitTimeAfterT = Aws::Utils::DateTime>
+    void SetSubmitTimeAfter(SubmitTimeAfterT&& value) { m_submitTimeAfterHasBeenSet = true; m_submitTimeAfter = std::forward<SubmitTimeAfterT>(value); }
+    template<typename SubmitTimeAfterT = Aws::Utils::DateTime>
+    DocumentClassifierFilter& WithSubmitTimeAfter(SubmitTimeAfterT&& value) { SetSubmitTimeAfter(std::forward<SubmitTimeAfterT>(value)); return *this;}
+    ///@}
   private:
 
-    ModelStatus m_status;
+    ModelStatus m_status{ModelStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_documentClassifierName;
     bool m_documentClassifierNameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_submitTimeBefore;
+    Aws::Utils::DateTime m_submitTimeBefore{};
     bool m_submitTimeBeforeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_submitTimeAfter;
+    Aws::Utils::DateTime m_submitTimeAfter{};
     bool m_submitTimeAfterHasBeenSet = false;
   };
 

@@ -12,18 +12,6 @@ using namespace Aws::AppConfig::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateConfigurationProfileRequest::CreateConfigurationProfileRequest() : 
-    m_applicationIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_locationUriHasBeenSet(false),
-    m_retrievalRoleArnHasBeenSet(false),
-    m_validatorsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_typeHasBeenSet(false)
-{
-}
-
 Aws::String CreateConfigurationProfileRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -77,6 +65,12 @@ Aws::String CreateConfigurationProfileRequest::SerializePayload() const
   if(m_typeHasBeenSet)
   {
    payload.WithString("Type", m_type);
+
+  }
+
+  if(m_kmsKeyIdentifierHasBeenSet)
+  {
+   payload.WithString("KmsKeyIdentifier", m_kmsKeyIdentifier);
 
   }
 

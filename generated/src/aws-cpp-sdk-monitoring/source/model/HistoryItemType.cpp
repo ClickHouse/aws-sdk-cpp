@@ -23,6 +23,8 @@ namespace Aws
         static const int ConfigurationUpdate_HASH = HashingUtils::HashString("ConfigurationUpdate");
         static const int StateUpdate_HASH = HashingUtils::HashString("StateUpdate");
         static const int Action_HASH = HashingUtils::HashString("Action");
+        static const int AlarmContributorStateUpdate_HASH = HashingUtils::HashString("AlarmContributorStateUpdate");
+        static const int AlarmContributorAction_HASH = HashingUtils::HashString("AlarmContributorAction");
 
 
         HistoryItemType GetHistoryItemTypeForName(const Aws::String& name)
@@ -40,6 +42,14 @@ namespace Aws
           {
             return HistoryItemType::Action;
           }
+          else if (hashCode == AlarmContributorStateUpdate_HASH)
+          {
+            return HistoryItemType::AlarmContributorStateUpdate;
+          }
+          else if (hashCode == AlarmContributorAction_HASH)
+          {
+            return HistoryItemType::AlarmContributorAction;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -54,12 +64,18 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case HistoryItemType::NOT_SET:
+            return {};
           case HistoryItemType::ConfigurationUpdate:
             return "ConfigurationUpdate";
           case HistoryItemType::StateUpdate:
             return "StateUpdate";
           case HistoryItemType::Action:
             return "Action";
+          case HistoryItemType::AlarmContributorStateUpdate:
+            return "AlarmContributorStateUpdate";
+          case HistoryItemType::AlarmContributorAction:
+            return "AlarmContributorAction";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

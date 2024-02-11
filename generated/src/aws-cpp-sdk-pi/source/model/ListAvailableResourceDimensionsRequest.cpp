@@ -12,17 +12,6 @@ using namespace Aws::PI::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListAvailableResourceDimensionsRequest::ListAvailableResourceDimensionsRequest() : 
-    m_serviceType(ServiceType::NOT_SET),
-    m_serviceTypeHasBeenSet(false),
-    m_identifierHasBeenSet(false),
-    m_metricsHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListAvailableResourceDimensionsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -58,6 +47,17 @@ Aws::String ListAvailableResourceDimensionsRequest::SerializePayload() const
   if(m_nextTokenHasBeenSet)
   {
    payload.WithString("NextToken", m_nextToken);
+
+  }
+
+  if(m_authorizedActionsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> authorizedActionsJsonList(m_authorizedActions.size());
+   for(unsigned authorizedActionsIndex = 0; authorizedActionsIndex < authorizedActionsJsonList.GetLength(); ++authorizedActionsIndex)
+   {
+     authorizedActionsJsonList[authorizedActionsIndex].AsString(FineGrainedActionMapper::GetNameForFineGrainedAction(m_authorizedActions[authorizedActionsIndex]));
+   }
+   payload.WithArray("AuthorizedActions", std::move(authorizedActionsJsonList));
 
   }
 

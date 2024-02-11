@@ -12,19 +12,6 @@ using namespace Aws::MarketplaceCatalog::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListEntitiesRequest::ListEntitiesRequest() : 
-    m_catalogHasBeenSet(false),
-    m_entityTypeHasBeenSet(false),
-    m_filterListHasBeenSet(false),
-    m_sortHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_ownershipType(OwnershipType::NOT_SET),
-    m_ownershipTypeHasBeenSet(false)
-{
-}
-
 Aws::String ListEntitiesRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -73,6 +60,18 @@ Aws::String ListEntitiesRequest::SerializePayload() const
   if(m_ownershipTypeHasBeenSet)
   {
    payload.WithString("OwnershipType", OwnershipTypeMapper::GetNameForOwnershipType(m_ownershipType));
+  }
+
+  if(m_entityTypeFiltersHasBeenSet)
+  {
+   payload.WithObject("EntityTypeFilters", m_entityTypeFilters.Jsonize());
+
+  }
+
+  if(m_entityTypeSortHasBeenSet)
+  {
+   payload.WithObject("EntityTypeSort", m_entityTypeSort.Jsonize());
+
   }
 
   return payload.View().WriteReadable();

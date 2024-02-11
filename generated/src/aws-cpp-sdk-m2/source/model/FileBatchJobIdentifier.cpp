@@ -18,15 +18,7 @@ namespace MainframeModernization
 namespace Model
 {
 
-FileBatchJobIdentifier::FileBatchJobIdentifier() : 
-    m_fileNameHasBeenSet(false),
-    m_folderPathHasBeenSet(false)
-{
-}
-
-FileBatchJobIdentifier::FileBatchJobIdentifier(JsonView jsonValue) : 
-    m_fileNameHasBeenSet(false),
-    m_folderPathHasBeenSet(false)
+FileBatchJobIdentifier::FileBatchJobIdentifier(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ FileBatchJobIdentifier& FileBatchJobIdentifier::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("fileName"))
   {
     m_fileName = jsonValue.GetString("fileName");
-
     m_fileNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("folderPath"))
   {
     m_folderPath = jsonValue.GetString("folderPath");
-
     m_folderPathHasBeenSet = true;
   }
-
   return *this;
 }
 

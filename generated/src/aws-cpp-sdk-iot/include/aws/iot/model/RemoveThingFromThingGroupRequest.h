@@ -21,7 +21,7 @@ namespace Model
   class RemoveThingFromThingGroupRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API RemoveThingFromThingGroupRequest();
+    AWS_IOT_API RemoveThingFromThingGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,169 +32,53 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The group name.</p>
      */
-    inline const Aws::String& GetThingGroupName() const{ return m_thingGroupName; }
-
-    /**
-     * <p>The group name.</p>
-     */
+    inline const Aws::String& GetThingGroupName() const { return m_thingGroupName; }
     inline bool ThingGroupNameHasBeenSet() const { return m_thingGroupNameHasBeenSet; }
+    template<typename ThingGroupNameT = Aws::String>
+    void SetThingGroupName(ThingGroupNameT&& value) { m_thingGroupNameHasBeenSet = true; m_thingGroupName = std::forward<ThingGroupNameT>(value); }
+    template<typename ThingGroupNameT = Aws::String>
+    RemoveThingFromThingGroupRequest& WithThingGroupName(ThingGroupNameT&& value) { SetThingGroupName(std::forward<ThingGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The group name.</p>
-     */
-    inline void SetThingGroupName(const Aws::String& value) { m_thingGroupNameHasBeenSet = true; m_thingGroupName = value; }
-
-    /**
-     * <p>The group name.</p>
-     */
-    inline void SetThingGroupName(Aws::String&& value) { m_thingGroupNameHasBeenSet = true; m_thingGroupName = std::move(value); }
-
-    /**
-     * <p>The group name.</p>
-     */
-    inline void SetThingGroupName(const char* value) { m_thingGroupNameHasBeenSet = true; m_thingGroupName.assign(value); }
-
-    /**
-     * <p>The group name.</p>
-     */
-    inline RemoveThingFromThingGroupRequest& WithThingGroupName(const Aws::String& value) { SetThingGroupName(value); return *this;}
-
-    /**
-     * <p>The group name.</p>
-     */
-    inline RemoveThingFromThingGroupRequest& WithThingGroupName(Aws::String&& value) { SetThingGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The group name.</p>
-     */
-    inline RemoveThingFromThingGroupRequest& WithThingGroupName(const char* value) { SetThingGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The group ARN.</p>
      */
-    inline const Aws::String& GetThingGroupArn() const{ return m_thingGroupArn; }
-
-    /**
-     * <p>The group ARN.</p>
-     */
+    inline const Aws::String& GetThingGroupArn() const { return m_thingGroupArn; }
     inline bool ThingGroupArnHasBeenSet() const { return m_thingGroupArnHasBeenSet; }
+    template<typename ThingGroupArnT = Aws::String>
+    void SetThingGroupArn(ThingGroupArnT&& value) { m_thingGroupArnHasBeenSet = true; m_thingGroupArn = std::forward<ThingGroupArnT>(value); }
+    template<typename ThingGroupArnT = Aws::String>
+    RemoveThingFromThingGroupRequest& WithThingGroupArn(ThingGroupArnT&& value) { SetThingGroupArn(std::forward<ThingGroupArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The group ARN.</p>
-     */
-    inline void SetThingGroupArn(const Aws::String& value) { m_thingGroupArnHasBeenSet = true; m_thingGroupArn = value; }
-
-    /**
-     * <p>The group ARN.</p>
-     */
-    inline void SetThingGroupArn(Aws::String&& value) { m_thingGroupArnHasBeenSet = true; m_thingGroupArn = std::move(value); }
-
-    /**
-     * <p>The group ARN.</p>
-     */
-    inline void SetThingGroupArn(const char* value) { m_thingGroupArnHasBeenSet = true; m_thingGroupArn.assign(value); }
-
-    /**
-     * <p>The group ARN.</p>
-     */
-    inline RemoveThingFromThingGroupRequest& WithThingGroupArn(const Aws::String& value) { SetThingGroupArn(value); return *this;}
-
-    /**
-     * <p>The group ARN.</p>
-     */
-    inline RemoveThingFromThingGroupRequest& WithThingGroupArn(Aws::String&& value) { SetThingGroupArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The group ARN.</p>
-     */
-    inline RemoveThingFromThingGroupRequest& WithThingGroupArn(const char* value) { SetThingGroupArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the thing to remove from the group.</p>
      */
-    inline const Aws::String& GetThingName() const{ return m_thingName; }
-
-    /**
-     * <p>The name of the thing to remove from the group.</p>
-     */
+    inline const Aws::String& GetThingName() const { return m_thingName; }
     inline bool ThingNameHasBeenSet() const { return m_thingNameHasBeenSet; }
+    template<typename ThingNameT = Aws::String>
+    void SetThingName(ThingNameT&& value) { m_thingNameHasBeenSet = true; m_thingName = std::forward<ThingNameT>(value); }
+    template<typename ThingNameT = Aws::String>
+    RemoveThingFromThingGroupRequest& WithThingName(ThingNameT&& value) { SetThingName(std::forward<ThingNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the thing to remove from the group.</p>
-     */
-    inline void SetThingName(const Aws::String& value) { m_thingNameHasBeenSet = true; m_thingName = value; }
-
-    /**
-     * <p>The name of the thing to remove from the group.</p>
-     */
-    inline void SetThingName(Aws::String&& value) { m_thingNameHasBeenSet = true; m_thingName = std::move(value); }
-
-    /**
-     * <p>The name of the thing to remove from the group.</p>
-     */
-    inline void SetThingName(const char* value) { m_thingNameHasBeenSet = true; m_thingName.assign(value); }
-
-    /**
-     * <p>The name of the thing to remove from the group.</p>
-     */
-    inline RemoveThingFromThingGroupRequest& WithThingName(const Aws::String& value) { SetThingName(value); return *this;}
-
-    /**
-     * <p>The name of the thing to remove from the group.</p>
-     */
-    inline RemoveThingFromThingGroupRequest& WithThingName(Aws::String&& value) { SetThingName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the thing to remove from the group.</p>
-     */
-    inline RemoveThingFromThingGroupRequest& WithThingName(const char* value) { SetThingName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the thing to remove from the group.</p>
      */
-    inline const Aws::String& GetThingArn() const{ return m_thingArn; }
-
-    /**
-     * <p>The ARN of the thing to remove from the group.</p>
-     */
+    inline const Aws::String& GetThingArn() const { return m_thingArn; }
     inline bool ThingArnHasBeenSet() const { return m_thingArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the thing to remove from the group.</p>
-     */
-    inline void SetThingArn(const Aws::String& value) { m_thingArnHasBeenSet = true; m_thingArn = value; }
-
-    /**
-     * <p>The ARN of the thing to remove from the group.</p>
-     */
-    inline void SetThingArn(Aws::String&& value) { m_thingArnHasBeenSet = true; m_thingArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the thing to remove from the group.</p>
-     */
-    inline void SetThingArn(const char* value) { m_thingArnHasBeenSet = true; m_thingArn.assign(value); }
-
-    /**
-     * <p>The ARN of the thing to remove from the group.</p>
-     */
-    inline RemoveThingFromThingGroupRequest& WithThingArn(const Aws::String& value) { SetThingArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the thing to remove from the group.</p>
-     */
-    inline RemoveThingFromThingGroupRequest& WithThingArn(Aws::String&& value) { SetThingArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the thing to remove from the group.</p>
-     */
-    inline RemoveThingFromThingGroupRequest& WithThingArn(const char* value) { SetThingArn(value); return *this;}
-
+    template<typename ThingArnT = Aws::String>
+    void SetThingArn(ThingArnT&& value) { m_thingArnHasBeenSet = true; m_thingArn = std::forward<ThingArnT>(value); }
+    template<typename ThingArnT = Aws::String>
+    RemoveThingFromThingGroupRequest& WithThingArn(ThingArnT&& value) { SetThingArn(std::forward<ThingArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_thingGroupName;

@@ -19,15 +19,7 @@ namespace Support
 namespace Model
 {
 
-Attachment::Attachment() : 
-    m_fileNameHasBeenSet(false),
-    m_dataHasBeenSet(false)
-{
-}
-
-Attachment::Attachment(JsonView jsonValue) : 
-    m_fileNameHasBeenSet(false),
-    m_dataHasBeenSet(false)
+Attachment::Attachment(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -37,16 +29,13 @@ Attachment& Attachment::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("fileName"))
   {
     m_fileName = jsonValue.GetString("fileName");
-
     m_fileNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("data"))
   {
     m_data = HashingUtils::Base64Decode(jsonValue.GetString("data"));
     m_dataHasBeenSet = true;
   }
-
   return *this;
 }
 

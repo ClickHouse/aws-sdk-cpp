@@ -15,16 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListRunTasksRequest::ListRunTasksRequest() : 
-    m_idHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_startingTokenHasBeenSet(false),
-    m_status(TaskStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
 Aws::String ListRunTasksRequest::SerializePayload() const
 {
   return {};
@@ -33,10 +23,10 @@ Aws::String ListRunTasksRequest::SerializePayload() const
 void ListRunTasksRequest::AddQueryStringParameters(URI& uri) const
 {
     Aws::StringStream ss;
-    if(m_maxResultsHasBeenSet)
+    if(m_statusHasBeenSet)
     {
-      ss << m_maxResults;
-      uri.AddQueryStringParameter("maxResults", ss.str());
+      ss << TaskStatusMapper::GetNameForTaskStatus(m_status);
+      uri.AddQueryStringParameter("status", ss.str());
       ss.str("");
     }
 
@@ -47,10 +37,10 @@ void ListRunTasksRequest::AddQueryStringParameters(URI& uri) const
       ss.str("");
     }
 
-    if(m_statusHasBeenSet)
+    if(m_maxResultsHasBeenSet)
     {
-      ss << TaskStatusMapper::GetNameForTaskStatus(m_status);
-      uri.AddQueryStringParameter("status", ss.str());
+      ss << m_maxResults;
+      uri.AddQueryStringParameter("maxResults", ss.str());
       ss.str("");
     }
 

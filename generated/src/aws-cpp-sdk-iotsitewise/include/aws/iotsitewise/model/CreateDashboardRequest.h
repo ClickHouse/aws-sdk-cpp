@@ -23,7 +23,7 @@ namespace Model
   class CreateDashboardRequest : public IoTSiteWiseRequest
   {
   public:
-    AWS_IOTSITEWISE_API CreateDashboardRequest();
+    AWS_IOTSITEWISE_API CreateDashboardRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,355 +34,92 @@ namespace Model
     AWS_IOTSITEWISE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the project in which to create the dashboard.</p>
      */
-    inline const Aws::String& GetProjectId() const{ return m_projectId; }
-
-    /**
-     * <p>The ID of the project in which to create the dashboard.</p>
-     */
+    inline const Aws::String& GetProjectId() const { return m_projectId; }
     inline bool ProjectIdHasBeenSet() const { return m_projectIdHasBeenSet; }
+    template<typename ProjectIdT = Aws::String>
+    void SetProjectId(ProjectIdT&& value) { m_projectIdHasBeenSet = true; m_projectId = std::forward<ProjectIdT>(value); }
+    template<typename ProjectIdT = Aws::String>
+    CreateDashboardRequest& WithProjectId(ProjectIdT&& value) { SetProjectId(std::forward<ProjectIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the project in which to create the dashboard.</p>
-     */
-    inline void SetProjectId(const Aws::String& value) { m_projectIdHasBeenSet = true; m_projectId = value; }
-
-    /**
-     * <p>The ID of the project in which to create the dashboard.</p>
-     */
-    inline void SetProjectId(Aws::String&& value) { m_projectIdHasBeenSet = true; m_projectId = std::move(value); }
-
-    /**
-     * <p>The ID of the project in which to create the dashboard.</p>
-     */
-    inline void SetProjectId(const char* value) { m_projectIdHasBeenSet = true; m_projectId.assign(value); }
-
-    /**
-     * <p>The ID of the project in which to create the dashboard.</p>
-     */
-    inline CreateDashboardRequest& WithProjectId(const Aws::String& value) { SetProjectId(value); return *this;}
-
-    /**
-     * <p>The ID of the project in which to create the dashboard.</p>
-     */
-    inline CreateDashboardRequest& WithProjectId(Aws::String&& value) { SetProjectId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the project in which to create the dashboard.</p>
-     */
-    inline CreateDashboardRequest& WithProjectId(const char* value) { SetProjectId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A friendly name for the dashboard.</p>
      */
-    inline const Aws::String& GetDashboardName() const{ return m_dashboardName; }
-
-    /**
-     * <p>A friendly name for the dashboard.</p>
-     */
+    inline const Aws::String& GetDashboardName() const { return m_dashboardName; }
     inline bool DashboardNameHasBeenSet() const { return m_dashboardNameHasBeenSet; }
+    template<typename DashboardNameT = Aws::String>
+    void SetDashboardName(DashboardNameT&& value) { m_dashboardNameHasBeenSet = true; m_dashboardName = std::forward<DashboardNameT>(value); }
+    template<typename DashboardNameT = Aws::String>
+    CreateDashboardRequest& WithDashboardName(DashboardNameT&& value) { SetDashboardName(std::forward<DashboardNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A friendly name for the dashboard.</p>
-     */
-    inline void SetDashboardName(const Aws::String& value) { m_dashboardNameHasBeenSet = true; m_dashboardName = value; }
-
-    /**
-     * <p>A friendly name for the dashboard.</p>
-     */
-    inline void SetDashboardName(Aws::String&& value) { m_dashboardNameHasBeenSet = true; m_dashboardName = std::move(value); }
-
-    /**
-     * <p>A friendly name for the dashboard.</p>
-     */
-    inline void SetDashboardName(const char* value) { m_dashboardNameHasBeenSet = true; m_dashboardName.assign(value); }
-
-    /**
-     * <p>A friendly name for the dashboard.</p>
-     */
-    inline CreateDashboardRequest& WithDashboardName(const Aws::String& value) { SetDashboardName(value); return *this;}
-
-    /**
-     * <p>A friendly name for the dashboard.</p>
-     */
-    inline CreateDashboardRequest& WithDashboardName(Aws::String&& value) { SetDashboardName(std::move(value)); return *this;}
-
-    /**
-     * <p>A friendly name for the dashboard.</p>
-     */
-    inline CreateDashboardRequest& WithDashboardName(const char* value) { SetDashboardName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description for the dashboard.</p>
      */
-    inline const Aws::String& GetDashboardDescription() const{ return m_dashboardDescription; }
-
-    /**
-     * <p>A description for the dashboard.</p>
-     */
+    inline const Aws::String& GetDashboardDescription() const { return m_dashboardDescription; }
     inline bool DashboardDescriptionHasBeenSet() const { return m_dashboardDescriptionHasBeenSet; }
+    template<typename DashboardDescriptionT = Aws::String>
+    void SetDashboardDescription(DashboardDescriptionT&& value) { m_dashboardDescriptionHasBeenSet = true; m_dashboardDescription = std::forward<DashboardDescriptionT>(value); }
+    template<typename DashboardDescriptionT = Aws::String>
+    CreateDashboardRequest& WithDashboardDescription(DashboardDescriptionT&& value) { SetDashboardDescription(std::forward<DashboardDescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A description for the dashboard.</p>
+     * <p>The dashboard definition specified in a JSON literal.</p> <ul> <li> <p>IoT
+     * SiteWise Monitor (Classic) see <a
+     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-dashboards-using-aws-cli.html">Create
+     * dashboards (CLI)</a> </p> </li> <li> <p>IoT SiteWise Monitor (AI-aware) see <a
+     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-dashboards-ai-dashboard-cli.html">Create
+     * dashboards (CLI)</a> </p> </li> </ul> <p>in the <i>IoT SiteWise User Guide</i>
+     * </p>
      */
-    inline void SetDashboardDescription(const Aws::String& value) { m_dashboardDescriptionHasBeenSet = true; m_dashboardDescription = value; }
-
-    /**
-     * <p>A description for the dashboard.</p>
-     */
-    inline void SetDashboardDescription(Aws::String&& value) { m_dashboardDescriptionHasBeenSet = true; m_dashboardDescription = std::move(value); }
-
-    /**
-     * <p>A description for the dashboard.</p>
-     */
-    inline void SetDashboardDescription(const char* value) { m_dashboardDescriptionHasBeenSet = true; m_dashboardDescription.assign(value); }
-
-    /**
-     * <p>A description for the dashboard.</p>
-     */
-    inline CreateDashboardRequest& WithDashboardDescription(const Aws::String& value) { SetDashboardDescription(value); return *this;}
-
-    /**
-     * <p>A description for the dashboard.</p>
-     */
-    inline CreateDashboardRequest& WithDashboardDescription(Aws::String&& value) { SetDashboardDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description for the dashboard.</p>
-     */
-    inline CreateDashboardRequest& WithDashboardDescription(const char* value) { SetDashboardDescription(value); return *this;}
-
-
-    /**
-     * <p>The dashboard definition specified in a JSON literal. For detailed
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-dashboards-using-aws-cli.html">Creating
-     * dashboards (CLI)</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline const Aws::String& GetDashboardDefinition() const{ return m_dashboardDefinition; }
-
-    /**
-     * <p>The dashboard definition specified in a JSON literal. For detailed
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-dashboards-using-aws-cli.html">Creating
-     * dashboards (CLI)</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
+    inline const Aws::String& GetDashboardDefinition() const { return m_dashboardDefinition; }
     inline bool DashboardDefinitionHasBeenSet() const { return m_dashboardDefinitionHasBeenSet; }
+    template<typename DashboardDefinitionT = Aws::String>
+    void SetDashboardDefinition(DashboardDefinitionT&& value) { m_dashboardDefinitionHasBeenSet = true; m_dashboardDefinition = std::forward<DashboardDefinitionT>(value); }
+    template<typename DashboardDefinitionT = Aws::String>
+    CreateDashboardRequest& WithDashboardDefinition(DashboardDefinitionT&& value) { SetDashboardDefinition(std::forward<DashboardDefinitionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The dashboard definition specified in a JSON literal. For detailed
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-dashboards-using-aws-cli.html">Creating
-     * dashboards (CLI)</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline void SetDashboardDefinition(const Aws::String& value) { m_dashboardDefinitionHasBeenSet = true; m_dashboardDefinition = value; }
-
-    /**
-     * <p>The dashboard definition specified in a JSON literal. For detailed
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-dashboards-using-aws-cli.html">Creating
-     * dashboards (CLI)</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline void SetDashboardDefinition(Aws::String&& value) { m_dashboardDefinitionHasBeenSet = true; m_dashboardDefinition = std::move(value); }
-
-    /**
-     * <p>The dashboard definition specified in a JSON literal. For detailed
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-dashboards-using-aws-cli.html">Creating
-     * dashboards (CLI)</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline void SetDashboardDefinition(const char* value) { m_dashboardDefinitionHasBeenSet = true; m_dashboardDefinition.assign(value); }
-
-    /**
-     * <p>The dashboard definition specified in a JSON literal. For detailed
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-dashboards-using-aws-cli.html">Creating
-     * dashboards (CLI)</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline CreateDashboardRequest& WithDashboardDefinition(const Aws::String& value) { SetDashboardDefinition(value); return *this;}
-
-    /**
-     * <p>The dashboard definition specified in a JSON literal. For detailed
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-dashboards-using-aws-cli.html">Creating
-     * dashboards (CLI)</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline CreateDashboardRequest& WithDashboardDefinition(Aws::String&& value) { SetDashboardDefinition(std::move(value)); return *this;}
-
-    /**
-     * <p>The dashboard definition specified in a JSON literal. For detailed
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-dashboards-using-aws-cli.html">Creating
-     * dashboards (CLI)</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline CreateDashboardRequest& WithDashboardDefinition(const char* value) { SetDashboardDefinition(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique case-sensitive identifier that you can provide to ensure the
      * idempotency of the request. Don't reuse this client token if a new idempotent
      * request is required.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateDashboardRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline CreateDashboardRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline CreateDashboardRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline CreateDashboardRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of key-value pairs that contain metadata for the dashboard. For more
      * information, see <a
      * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html">Tagging
      * your IoT SiteWise resources</a> in the <i>IoT SiteWise User Guide</i>.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of key-value pairs that contain metadata for the dashboard. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html">Tagging
-     * your IoT SiteWise resources</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>A list of key-value pairs that contain metadata for the dashboard. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html">Tagging
-     * your IoT SiteWise resources</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of key-value pairs that contain metadata for the dashboard. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html">Tagging
-     * your IoT SiteWise resources</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of key-value pairs that contain metadata for the dashboard. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html">Tagging
-     * your IoT SiteWise resources</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline CreateDashboardRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of key-value pairs that contain metadata for the dashboard. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html">Tagging
-     * your IoT SiteWise resources</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline CreateDashboardRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of key-value pairs that contain metadata for the dashboard. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html">Tagging
-     * your IoT SiteWise resources</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline CreateDashboardRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>A list of key-value pairs that contain metadata for the dashboard. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html">Tagging
-     * your IoT SiteWise resources</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline CreateDashboardRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A list of key-value pairs that contain metadata for the dashboard. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html">Tagging
-     * your IoT SiteWise resources</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline CreateDashboardRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of key-value pairs that contain metadata for the dashboard. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html">Tagging
-     * your IoT SiteWise resources</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline CreateDashboardRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A list of key-value pairs that contain metadata for the dashboard. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html">Tagging
-     * your IoT SiteWise resources</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline CreateDashboardRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of key-value pairs that contain metadata for the dashboard. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html">Tagging
-     * your IoT SiteWise resources</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline CreateDashboardRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A list of key-value pairs that contain metadata for the dashboard. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html">Tagging
-     * your IoT SiteWise resources</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline CreateDashboardRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateDashboardRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateDashboardRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_projectId;
@@ -397,8 +134,8 @@ namespace Model
     Aws::String m_dashboardDefinition;
     bool m_dashboardDefinitionHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet = false;

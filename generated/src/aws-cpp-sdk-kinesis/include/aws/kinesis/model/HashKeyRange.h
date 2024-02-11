@@ -32,93 +32,35 @@ namespace Model
   class HashKeyRange
   {
   public:
-    AWS_KINESIS_API HashKeyRange();
+    AWS_KINESIS_API HashKeyRange() = default;
     AWS_KINESIS_API HashKeyRange(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESIS_API HashKeyRange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESIS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The starting hash key of the hash key range.</p>
      */
-    inline const Aws::String& GetStartingHashKey() const{ return m_startingHashKey; }
-
-    /**
-     * <p>The starting hash key of the hash key range.</p>
-     */
+    inline const Aws::String& GetStartingHashKey() const { return m_startingHashKey; }
     inline bool StartingHashKeyHasBeenSet() const { return m_startingHashKeyHasBeenSet; }
+    template<typename StartingHashKeyT = Aws::String>
+    void SetStartingHashKey(StartingHashKeyT&& value) { m_startingHashKeyHasBeenSet = true; m_startingHashKey = std::forward<StartingHashKeyT>(value); }
+    template<typename StartingHashKeyT = Aws::String>
+    HashKeyRange& WithStartingHashKey(StartingHashKeyT&& value) { SetStartingHashKey(std::forward<StartingHashKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The starting hash key of the hash key range.</p>
-     */
-    inline void SetStartingHashKey(const Aws::String& value) { m_startingHashKeyHasBeenSet = true; m_startingHashKey = value; }
-
-    /**
-     * <p>The starting hash key of the hash key range.</p>
-     */
-    inline void SetStartingHashKey(Aws::String&& value) { m_startingHashKeyHasBeenSet = true; m_startingHashKey = std::move(value); }
-
-    /**
-     * <p>The starting hash key of the hash key range.</p>
-     */
-    inline void SetStartingHashKey(const char* value) { m_startingHashKeyHasBeenSet = true; m_startingHashKey.assign(value); }
-
-    /**
-     * <p>The starting hash key of the hash key range.</p>
-     */
-    inline HashKeyRange& WithStartingHashKey(const Aws::String& value) { SetStartingHashKey(value); return *this;}
-
-    /**
-     * <p>The starting hash key of the hash key range.</p>
-     */
-    inline HashKeyRange& WithStartingHashKey(Aws::String&& value) { SetStartingHashKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The starting hash key of the hash key range.</p>
-     */
-    inline HashKeyRange& WithStartingHashKey(const char* value) { SetStartingHashKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ending hash key of the hash key range.</p>
      */
-    inline const Aws::String& GetEndingHashKey() const{ return m_endingHashKey; }
-
-    /**
-     * <p>The ending hash key of the hash key range.</p>
-     */
+    inline const Aws::String& GetEndingHashKey() const { return m_endingHashKey; }
     inline bool EndingHashKeyHasBeenSet() const { return m_endingHashKeyHasBeenSet; }
-
-    /**
-     * <p>The ending hash key of the hash key range.</p>
-     */
-    inline void SetEndingHashKey(const Aws::String& value) { m_endingHashKeyHasBeenSet = true; m_endingHashKey = value; }
-
-    /**
-     * <p>The ending hash key of the hash key range.</p>
-     */
-    inline void SetEndingHashKey(Aws::String&& value) { m_endingHashKeyHasBeenSet = true; m_endingHashKey = std::move(value); }
-
-    /**
-     * <p>The ending hash key of the hash key range.</p>
-     */
-    inline void SetEndingHashKey(const char* value) { m_endingHashKeyHasBeenSet = true; m_endingHashKey.assign(value); }
-
-    /**
-     * <p>The ending hash key of the hash key range.</p>
-     */
-    inline HashKeyRange& WithEndingHashKey(const Aws::String& value) { SetEndingHashKey(value); return *this;}
-
-    /**
-     * <p>The ending hash key of the hash key range.</p>
-     */
-    inline HashKeyRange& WithEndingHashKey(Aws::String&& value) { SetEndingHashKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The ending hash key of the hash key range.</p>
-     */
-    inline HashKeyRange& WithEndingHashKey(const char* value) { SetEndingHashKey(value); return *this;}
-
+    template<typename EndingHashKeyT = Aws::String>
+    void SetEndingHashKey(EndingHashKeyT&& value) { m_endingHashKeyHasBeenSet = true; m_endingHashKey = std::forward<EndingHashKeyT>(value); }
+    template<typename EndingHashKeyT = Aws::String>
+    HashKeyRange& WithEndingHashKey(EndingHashKeyT&& value) { SetEndingHashKey(std::forward<EndingHashKeyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_startingHashKey;

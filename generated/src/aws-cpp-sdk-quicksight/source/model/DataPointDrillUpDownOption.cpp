@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-DataPointDrillUpDownOption::DataPointDrillUpDownOption() : 
-    m_availabilityStatus(DashboardBehavior::NOT_SET),
-    m_availabilityStatusHasBeenSet(false)
-{
-}
-
-DataPointDrillUpDownOption::DataPointDrillUpDownOption(JsonView jsonValue) : 
-    m_availabilityStatus(DashboardBehavior::NOT_SET),
-    m_availabilityStatusHasBeenSet(false)
+DataPointDrillUpDownOption::DataPointDrillUpDownOption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ DataPointDrillUpDownOption& DataPointDrillUpDownOption::operator =(JsonView json
   if(jsonValue.ValueExists("AvailabilityStatus"))
   {
     m_availabilityStatus = DashboardBehaviorMapper::GetDashboardBehaviorForName(jsonValue.GetString("AvailabilityStatus"));
-
     m_availabilityStatusHasBeenSet = true;
   }
-
   return *this;
 }
 

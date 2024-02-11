@@ -12,21 +12,6 @@ using namespace Aws::EKS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateClusterRequest::CreateClusterRequest() : 
-    m_nameHasBeenSet(false),
-    m_versionHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_resourcesVpcConfigHasBeenSet(false),
-    m_kubernetesNetworkConfigHasBeenSet(false),
-    m_loggingHasBeenSet(false),
-    m_clientRequestToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientRequestTokenHasBeenSet(true),
-    m_tagsHasBeenSet(false),
-    m_encryptionConfigHasBeenSet(false),
-    m_outpostConfigHasBeenSet(false)
-{
-}
-
 Aws::String CreateClusterRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -98,6 +83,54 @@ Aws::String CreateClusterRequest::SerializePayload() const
   if(m_outpostConfigHasBeenSet)
   {
    payload.WithObject("outpostConfig", m_outpostConfig.Jsonize());
+
+  }
+
+  if(m_accessConfigHasBeenSet)
+  {
+   payload.WithObject("accessConfig", m_accessConfig.Jsonize());
+
+  }
+
+  if(m_bootstrapSelfManagedAddonsHasBeenSet)
+  {
+   payload.WithBool("bootstrapSelfManagedAddons", m_bootstrapSelfManagedAddons);
+
+  }
+
+  if(m_upgradePolicyHasBeenSet)
+  {
+   payload.WithObject("upgradePolicy", m_upgradePolicy.Jsonize());
+
+  }
+
+  if(m_zonalShiftConfigHasBeenSet)
+  {
+   payload.WithObject("zonalShiftConfig", m_zonalShiftConfig.Jsonize());
+
+  }
+
+  if(m_remoteNetworkConfigHasBeenSet)
+  {
+   payload.WithObject("remoteNetworkConfig", m_remoteNetworkConfig.Jsonize());
+
+  }
+
+  if(m_computeConfigHasBeenSet)
+  {
+   payload.WithObject("computeConfig", m_computeConfig.Jsonize());
+
+  }
+
+  if(m_storageConfigHasBeenSet)
+  {
+   payload.WithObject("storageConfig", m_storageConfig.Jsonize());
+
+  }
+
+  if(m_deletionProtectionHasBeenSet)
+  {
+   payload.WithBool("deletionProtection", m_deletionProtection);
 
   }
 

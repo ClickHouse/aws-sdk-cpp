@@ -28,7 +28,7 @@ namespace Model
   class UpdateStackRequest : public AppStreamRequest
   {
   public:
-    AWS_APPSTREAM_API UpdateStackRequest();
+    AWS_APPSTREAM_API UpdateStackRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,542 +41,166 @@ namespace Model
     AWS_APPSTREAM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The stack name to display.</p>
      */
-    inline const Aws::String& GetDisplayName() const{ return m_displayName; }
-
-    /**
-     * <p>The stack name to display.</p>
-     */
+    inline const Aws::String& GetDisplayName() const { return m_displayName; }
     inline bool DisplayNameHasBeenSet() const { return m_displayNameHasBeenSet; }
+    template<typename DisplayNameT = Aws::String>
+    void SetDisplayName(DisplayNameT&& value) { m_displayNameHasBeenSet = true; m_displayName = std::forward<DisplayNameT>(value); }
+    template<typename DisplayNameT = Aws::String>
+    UpdateStackRequest& WithDisplayName(DisplayNameT&& value) { SetDisplayName(std::forward<DisplayNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The stack name to display.</p>
-     */
-    inline void SetDisplayName(const Aws::String& value) { m_displayNameHasBeenSet = true; m_displayName = value; }
-
-    /**
-     * <p>The stack name to display.</p>
-     */
-    inline void SetDisplayName(Aws::String&& value) { m_displayNameHasBeenSet = true; m_displayName = std::move(value); }
-
-    /**
-     * <p>The stack name to display.</p>
-     */
-    inline void SetDisplayName(const char* value) { m_displayNameHasBeenSet = true; m_displayName.assign(value); }
-
-    /**
-     * <p>The stack name to display.</p>
-     */
-    inline UpdateStackRequest& WithDisplayName(const Aws::String& value) { SetDisplayName(value); return *this;}
-
-    /**
-     * <p>The stack name to display.</p>
-     */
-    inline UpdateStackRequest& WithDisplayName(Aws::String&& value) { SetDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The stack name to display.</p>
-     */
-    inline UpdateStackRequest& WithDisplayName(const char* value) { SetDisplayName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description to display.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description to display.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateStackRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description to display.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description to display.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description to display.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description to display.</p>
-     */
-    inline UpdateStackRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description to display.</p>
-     */
-    inline UpdateStackRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description to display.</p>
-     */
-    inline UpdateStackRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the stack.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the stack.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateStackRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the stack.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the stack.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the stack.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the stack.</p>
-     */
-    inline UpdateStackRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the stack.</p>
-     */
-    inline UpdateStackRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the stack.</p>
-     */
-    inline UpdateStackRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The storage connectors to enable.</p>
      */
-    inline const Aws::Vector<StorageConnector>& GetStorageConnectors() const{ return m_storageConnectors; }
-
-    /**
-     * <p>The storage connectors to enable.</p>
-     */
+    inline const Aws::Vector<StorageConnector>& GetStorageConnectors() const { return m_storageConnectors; }
     inline bool StorageConnectorsHasBeenSet() const { return m_storageConnectorsHasBeenSet; }
+    template<typename StorageConnectorsT = Aws::Vector<StorageConnector>>
+    void SetStorageConnectors(StorageConnectorsT&& value) { m_storageConnectorsHasBeenSet = true; m_storageConnectors = std::forward<StorageConnectorsT>(value); }
+    template<typename StorageConnectorsT = Aws::Vector<StorageConnector>>
+    UpdateStackRequest& WithStorageConnectors(StorageConnectorsT&& value) { SetStorageConnectors(std::forward<StorageConnectorsT>(value)); return *this;}
+    template<typename StorageConnectorsT = StorageConnector>
+    UpdateStackRequest& AddStorageConnectors(StorageConnectorsT&& value) { m_storageConnectorsHasBeenSet = true; m_storageConnectors.emplace_back(std::forward<StorageConnectorsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The storage connectors to enable.</p>
-     */
-    inline void SetStorageConnectors(const Aws::Vector<StorageConnector>& value) { m_storageConnectorsHasBeenSet = true; m_storageConnectors = value; }
-
-    /**
-     * <p>The storage connectors to enable.</p>
-     */
-    inline void SetStorageConnectors(Aws::Vector<StorageConnector>&& value) { m_storageConnectorsHasBeenSet = true; m_storageConnectors = std::move(value); }
-
-    /**
-     * <p>The storage connectors to enable.</p>
-     */
-    inline UpdateStackRequest& WithStorageConnectors(const Aws::Vector<StorageConnector>& value) { SetStorageConnectors(value); return *this;}
-
-    /**
-     * <p>The storage connectors to enable.</p>
-     */
-    inline UpdateStackRequest& WithStorageConnectors(Aws::Vector<StorageConnector>&& value) { SetStorageConnectors(std::move(value)); return *this;}
-
-    /**
-     * <p>The storage connectors to enable.</p>
-     */
-    inline UpdateStackRequest& AddStorageConnectors(const StorageConnector& value) { m_storageConnectorsHasBeenSet = true; m_storageConnectors.push_back(value); return *this; }
-
-    /**
-     * <p>The storage connectors to enable.</p>
-     */
-    inline UpdateStackRequest& AddStorageConnectors(StorageConnector&& value) { m_storageConnectorsHasBeenSet = true; m_storageConnectors.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The URL that users are redirected to after their streaming session ends.</p>
      */
-    inline const Aws::String& GetRedirectURL() const{ return m_redirectURL; }
-
-    /**
-     * <p>The URL that users are redirected to after their streaming session ends.</p>
-     */
+    inline const Aws::String& GetRedirectURL() const { return m_redirectURL; }
     inline bool RedirectURLHasBeenSet() const { return m_redirectURLHasBeenSet; }
+    template<typename RedirectURLT = Aws::String>
+    void SetRedirectURL(RedirectURLT&& value) { m_redirectURLHasBeenSet = true; m_redirectURL = std::forward<RedirectURLT>(value); }
+    template<typename RedirectURLT = Aws::String>
+    UpdateStackRequest& WithRedirectURL(RedirectURLT&& value) { SetRedirectURL(std::forward<RedirectURLT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URL that users are redirected to after their streaming session ends.</p>
-     */
-    inline void SetRedirectURL(const Aws::String& value) { m_redirectURLHasBeenSet = true; m_redirectURL = value; }
-
-    /**
-     * <p>The URL that users are redirected to after their streaming session ends.</p>
-     */
-    inline void SetRedirectURL(Aws::String&& value) { m_redirectURLHasBeenSet = true; m_redirectURL = std::move(value); }
-
-    /**
-     * <p>The URL that users are redirected to after their streaming session ends.</p>
-     */
-    inline void SetRedirectURL(const char* value) { m_redirectURLHasBeenSet = true; m_redirectURL.assign(value); }
-
-    /**
-     * <p>The URL that users are redirected to after their streaming session ends.</p>
-     */
-    inline UpdateStackRequest& WithRedirectURL(const Aws::String& value) { SetRedirectURL(value); return *this;}
-
-    /**
-     * <p>The URL that users are redirected to after their streaming session ends.</p>
-     */
-    inline UpdateStackRequest& WithRedirectURL(Aws::String&& value) { SetRedirectURL(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL that users are redirected to after their streaming session ends.</p>
-     */
-    inline UpdateStackRequest& WithRedirectURL(const char* value) { SetRedirectURL(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The URL that users are redirected to after they choose the Send Feedback
      * link. If no URL is specified, no Send Feedback link is displayed.</p>
      */
-    inline const Aws::String& GetFeedbackURL() const{ return m_feedbackURL; }
-
-    /**
-     * <p>The URL that users are redirected to after they choose the Send Feedback
-     * link. If no URL is specified, no Send Feedback link is displayed.</p>
-     */
+    inline const Aws::String& GetFeedbackURL() const { return m_feedbackURL; }
     inline bool FeedbackURLHasBeenSet() const { return m_feedbackURLHasBeenSet; }
+    template<typename FeedbackURLT = Aws::String>
+    void SetFeedbackURL(FeedbackURLT&& value) { m_feedbackURLHasBeenSet = true; m_feedbackURL = std::forward<FeedbackURLT>(value); }
+    template<typename FeedbackURLT = Aws::String>
+    UpdateStackRequest& WithFeedbackURL(FeedbackURLT&& value) { SetFeedbackURL(std::forward<FeedbackURLT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URL that users are redirected to after they choose the Send Feedback
-     * link. If no URL is specified, no Send Feedback link is displayed.</p>
-     */
-    inline void SetFeedbackURL(const Aws::String& value) { m_feedbackURLHasBeenSet = true; m_feedbackURL = value; }
-
-    /**
-     * <p>The URL that users are redirected to after they choose the Send Feedback
-     * link. If no URL is specified, no Send Feedback link is displayed.</p>
-     */
-    inline void SetFeedbackURL(Aws::String&& value) { m_feedbackURLHasBeenSet = true; m_feedbackURL = std::move(value); }
-
-    /**
-     * <p>The URL that users are redirected to after they choose the Send Feedback
-     * link. If no URL is specified, no Send Feedback link is displayed.</p>
-     */
-    inline void SetFeedbackURL(const char* value) { m_feedbackURLHasBeenSet = true; m_feedbackURL.assign(value); }
-
-    /**
-     * <p>The URL that users are redirected to after they choose the Send Feedback
-     * link. If no URL is specified, no Send Feedback link is displayed.</p>
-     */
-    inline UpdateStackRequest& WithFeedbackURL(const Aws::String& value) { SetFeedbackURL(value); return *this;}
-
-    /**
-     * <p>The URL that users are redirected to after they choose the Send Feedback
-     * link. If no URL is specified, no Send Feedback link is displayed.</p>
-     */
-    inline UpdateStackRequest& WithFeedbackURL(Aws::String&& value) { SetFeedbackURL(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL that users are redirected to after they choose the Send Feedback
-     * link. If no URL is specified, no Send Feedback link is displayed.</p>
-     */
-    inline UpdateStackRequest& WithFeedbackURL(const char* value) { SetFeedbackURL(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The stack attributes to delete.</p>
      */
-    inline const Aws::Vector<StackAttribute>& GetAttributesToDelete() const{ return m_attributesToDelete; }
-
-    /**
-     * <p>The stack attributes to delete.</p>
-     */
+    inline const Aws::Vector<StackAttribute>& GetAttributesToDelete() const { return m_attributesToDelete; }
     inline bool AttributesToDeleteHasBeenSet() const { return m_attributesToDeleteHasBeenSet; }
+    template<typename AttributesToDeleteT = Aws::Vector<StackAttribute>>
+    void SetAttributesToDelete(AttributesToDeleteT&& value) { m_attributesToDeleteHasBeenSet = true; m_attributesToDelete = std::forward<AttributesToDeleteT>(value); }
+    template<typename AttributesToDeleteT = Aws::Vector<StackAttribute>>
+    UpdateStackRequest& WithAttributesToDelete(AttributesToDeleteT&& value) { SetAttributesToDelete(std::forward<AttributesToDeleteT>(value)); return *this;}
+    inline UpdateStackRequest& AddAttributesToDelete(StackAttribute value) { m_attributesToDeleteHasBeenSet = true; m_attributesToDelete.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The stack attributes to delete.</p>
-     */
-    inline void SetAttributesToDelete(const Aws::Vector<StackAttribute>& value) { m_attributesToDeleteHasBeenSet = true; m_attributesToDelete = value; }
-
-    /**
-     * <p>The stack attributes to delete.</p>
-     */
-    inline void SetAttributesToDelete(Aws::Vector<StackAttribute>&& value) { m_attributesToDeleteHasBeenSet = true; m_attributesToDelete = std::move(value); }
-
-    /**
-     * <p>The stack attributes to delete.</p>
-     */
-    inline UpdateStackRequest& WithAttributesToDelete(const Aws::Vector<StackAttribute>& value) { SetAttributesToDelete(value); return *this;}
-
-    /**
-     * <p>The stack attributes to delete.</p>
-     */
-    inline UpdateStackRequest& WithAttributesToDelete(Aws::Vector<StackAttribute>&& value) { SetAttributesToDelete(std::move(value)); return *this;}
-
-    /**
-     * <p>The stack attributes to delete.</p>
-     */
-    inline UpdateStackRequest& AddAttributesToDelete(const StackAttribute& value) { m_attributesToDeleteHasBeenSet = true; m_attributesToDelete.push_back(value); return *this; }
-
-    /**
-     * <p>The stack attributes to delete.</p>
-     */
-    inline UpdateStackRequest& AddAttributesToDelete(StackAttribute&& value) { m_attributesToDeleteHasBeenSet = true; m_attributesToDelete.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The actions that are enabled or disabled for users during their streaming
      * sessions. By default, these actions are enabled.</p>
      */
-    inline const Aws::Vector<UserSetting>& GetUserSettings() const{ return m_userSettings; }
-
-    /**
-     * <p>The actions that are enabled or disabled for users during their streaming
-     * sessions. By default, these actions are enabled.</p>
-     */
+    inline const Aws::Vector<UserSetting>& GetUserSettings() const { return m_userSettings; }
     inline bool UserSettingsHasBeenSet() const { return m_userSettingsHasBeenSet; }
+    template<typename UserSettingsT = Aws::Vector<UserSetting>>
+    void SetUserSettings(UserSettingsT&& value) { m_userSettingsHasBeenSet = true; m_userSettings = std::forward<UserSettingsT>(value); }
+    template<typename UserSettingsT = Aws::Vector<UserSetting>>
+    UpdateStackRequest& WithUserSettings(UserSettingsT&& value) { SetUserSettings(std::forward<UserSettingsT>(value)); return *this;}
+    template<typename UserSettingsT = UserSetting>
+    UpdateStackRequest& AddUserSettings(UserSettingsT&& value) { m_userSettingsHasBeenSet = true; m_userSettings.emplace_back(std::forward<UserSettingsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The actions that are enabled or disabled for users during their streaming
-     * sessions. By default, these actions are enabled.</p>
-     */
-    inline void SetUserSettings(const Aws::Vector<UserSetting>& value) { m_userSettingsHasBeenSet = true; m_userSettings = value; }
-
-    /**
-     * <p>The actions that are enabled or disabled for users during their streaming
-     * sessions. By default, these actions are enabled.</p>
-     */
-    inline void SetUserSettings(Aws::Vector<UserSetting>&& value) { m_userSettingsHasBeenSet = true; m_userSettings = std::move(value); }
-
-    /**
-     * <p>The actions that are enabled or disabled for users during their streaming
-     * sessions. By default, these actions are enabled.</p>
-     */
-    inline UpdateStackRequest& WithUserSettings(const Aws::Vector<UserSetting>& value) { SetUserSettings(value); return *this;}
-
-    /**
-     * <p>The actions that are enabled or disabled for users during their streaming
-     * sessions. By default, these actions are enabled.</p>
-     */
-    inline UpdateStackRequest& WithUserSettings(Aws::Vector<UserSetting>&& value) { SetUserSettings(std::move(value)); return *this;}
-
-    /**
-     * <p>The actions that are enabled or disabled for users during their streaming
-     * sessions. By default, these actions are enabled.</p>
-     */
-    inline UpdateStackRequest& AddUserSettings(const UserSetting& value) { m_userSettingsHasBeenSet = true; m_userSettings.push_back(value); return *this; }
-
-    /**
-     * <p>The actions that are enabled or disabled for users during their streaming
-     * sessions. By default, these actions are enabled.</p>
-     */
-    inline UpdateStackRequest& AddUserSettings(UserSetting&& value) { m_userSettingsHasBeenSet = true; m_userSettings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The persistent application settings for users of a stack. When these settings
      * are enabled, changes that users make to applications and Windows settings are
      * automatically saved after each session and applied to the next session.</p>
      */
-    inline const ApplicationSettings& GetApplicationSettings() const{ return m_applicationSettings; }
-
-    /**
-     * <p>The persistent application settings for users of a stack. When these settings
-     * are enabled, changes that users make to applications and Windows settings are
-     * automatically saved after each session and applied to the next session.</p>
-     */
+    inline const ApplicationSettings& GetApplicationSettings() const { return m_applicationSettings; }
     inline bool ApplicationSettingsHasBeenSet() const { return m_applicationSettingsHasBeenSet; }
+    template<typename ApplicationSettingsT = ApplicationSettings>
+    void SetApplicationSettings(ApplicationSettingsT&& value) { m_applicationSettingsHasBeenSet = true; m_applicationSettings = std::forward<ApplicationSettingsT>(value); }
+    template<typename ApplicationSettingsT = ApplicationSettings>
+    UpdateStackRequest& WithApplicationSettings(ApplicationSettingsT&& value) { SetApplicationSettings(std::forward<ApplicationSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The persistent application settings for users of a stack. When these settings
-     * are enabled, changes that users make to applications and Windows settings are
-     * automatically saved after each session and applied to the next session.</p>
-     */
-    inline void SetApplicationSettings(const ApplicationSettings& value) { m_applicationSettingsHasBeenSet = true; m_applicationSettings = value; }
-
-    /**
-     * <p>The persistent application settings for users of a stack. When these settings
-     * are enabled, changes that users make to applications and Windows settings are
-     * automatically saved after each session and applied to the next session.</p>
-     */
-    inline void SetApplicationSettings(ApplicationSettings&& value) { m_applicationSettingsHasBeenSet = true; m_applicationSettings = std::move(value); }
-
-    /**
-     * <p>The persistent application settings for users of a stack. When these settings
-     * are enabled, changes that users make to applications and Windows settings are
-     * automatically saved after each session and applied to the next session.</p>
-     */
-    inline UpdateStackRequest& WithApplicationSettings(const ApplicationSettings& value) { SetApplicationSettings(value); return *this;}
-
-    /**
-     * <p>The persistent application settings for users of a stack. When these settings
-     * are enabled, changes that users make to applications and Windows settings are
-     * automatically saved after each session and applied to the next session.</p>
-     */
-    inline UpdateStackRequest& WithApplicationSettings(ApplicationSettings&& value) { SetApplicationSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of interface VPC endpoint (interface endpoint) objects. Users of the
      * stack can connect to AppStream 2.0 only through the specified endpoints.</p>
      */
-    inline const Aws::Vector<AccessEndpoint>& GetAccessEndpoints() const{ return m_accessEndpoints; }
-
-    /**
-     * <p>The list of interface VPC endpoint (interface endpoint) objects. Users of the
-     * stack can connect to AppStream 2.0 only through the specified endpoints.</p>
-     */
+    inline const Aws::Vector<AccessEndpoint>& GetAccessEndpoints() const { return m_accessEndpoints; }
     inline bool AccessEndpointsHasBeenSet() const { return m_accessEndpointsHasBeenSet; }
+    template<typename AccessEndpointsT = Aws::Vector<AccessEndpoint>>
+    void SetAccessEndpoints(AccessEndpointsT&& value) { m_accessEndpointsHasBeenSet = true; m_accessEndpoints = std::forward<AccessEndpointsT>(value); }
+    template<typename AccessEndpointsT = Aws::Vector<AccessEndpoint>>
+    UpdateStackRequest& WithAccessEndpoints(AccessEndpointsT&& value) { SetAccessEndpoints(std::forward<AccessEndpointsT>(value)); return *this;}
+    template<typename AccessEndpointsT = AccessEndpoint>
+    UpdateStackRequest& AddAccessEndpoints(AccessEndpointsT&& value) { m_accessEndpointsHasBeenSet = true; m_accessEndpoints.emplace_back(std::forward<AccessEndpointsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of interface VPC endpoint (interface endpoint) objects. Users of the
-     * stack can connect to AppStream 2.0 only through the specified endpoints.</p>
-     */
-    inline void SetAccessEndpoints(const Aws::Vector<AccessEndpoint>& value) { m_accessEndpointsHasBeenSet = true; m_accessEndpoints = value; }
-
-    /**
-     * <p>The list of interface VPC endpoint (interface endpoint) objects. Users of the
-     * stack can connect to AppStream 2.0 only through the specified endpoints.</p>
-     */
-    inline void SetAccessEndpoints(Aws::Vector<AccessEndpoint>&& value) { m_accessEndpointsHasBeenSet = true; m_accessEndpoints = std::move(value); }
-
-    /**
-     * <p>The list of interface VPC endpoint (interface endpoint) objects. Users of the
-     * stack can connect to AppStream 2.0 only through the specified endpoints.</p>
-     */
-    inline UpdateStackRequest& WithAccessEndpoints(const Aws::Vector<AccessEndpoint>& value) { SetAccessEndpoints(value); return *this;}
-
-    /**
-     * <p>The list of interface VPC endpoint (interface endpoint) objects. Users of the
-     * stack can connect to AppStream 2.0 only through the specified endpoints.</p>
-     */
-    inline UpdateStackRequest& WithAccessEndpoints(Aws::Vector<AccessEndpoint>&& value) { SetAccessEndpoints(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of interface VPC endpoint (interface endpoint) objects. Users of the
-     * stack can connect to AppStream 2.0 only through the specified endpoints.</p>
-     */
-    inline UpdateStackRequest& AddAccessEndpoints(const AccessEndpoint& value) { m_accessEndpointsHasBeenSet = true; m_accessEndpoints.push_back(value); return *this; }
-
-    /**
-     * <p>The list of interface VPC endpoint (interface endpoint) objects. Users of the
-     * stack can connect to AppStream 2.0 only through the specified endpoints.</p>
-     */
-    inline UpdateStackRequest& AddAccessEndpoints(AccessEndpoint&& value) { m_accessEndpointsHasBeenSet = true; m_accessEndpoints.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The domains where AppStream 2.0 streaming sessions can be embedded in an
      * iframe. You must approve the domains that you want to host embedded AppStream
      * 2.0 streaming sessions. </p>
      */
-    inline const Aws::Vector<Aws::String>& GetEmbedHostDomains() const{ return m_embedHostDomains; }
-
-    /**
-     * <p>The domains where AppStream 2.0 streaming sessions can be embedded in an
-     * iframe. You must approve the domains that you want to host embedded AppStream
-     * 2.0 streaming sessions. </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetEmbedHostDomains() const { return m_embedHostDomains; }
     inline bool EmbedHostDomainsHasBeenSet() const { return m_embedHostDomainsHasBeenSet; }
+    template<typename EmbedHostDomainsT = Aws::Vector<Aws::String>>
+    void SetEmbedHostDomains(EmbedHostDomainsT&& value) { m_embedHostDomainsHasBeenSet = true; m_embedHostDomains = std::forward<EmbedHostDomainsT>(value); }
+    template<typename EmbedHostDomainsT = Aws::Vector<Aws::String>>
+    UpdateStackRequest& WithEmbedHostDomains(EmbedHostDomainsT&& value) { SetEmbedHostDomains(std::forward<EmbedHostDomainsT>(value)); return *this;}
+    template<typename EmbedHostDomainsT = Aws::String>
+    UpdateStackRequest& AddEmbedHostDomains(EmbedHostDomainsT&& value) { m_embedHostDomainsHasBeenSet = true; m_embedHostDomains.emplace_back(std::forward<EmbedHostDomainsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The domains where AppStream 2.0 streaming sessions can be embedded in an
-     * iframe. You must approve the domains that you want to host embedded AppStream
-     * 2.0 streaming sessions. </p>
-     */
-    inline void SetEmbedHostDomains(const Aws::Vector<Aws::String>& value) { m_embedHostDomainsHasBeenSet = true; m_embedHostDomains = value; }
-
-    /**
-     * <p>The domains where AppStream 2.0 streaming sessions can be embedded in an
-     * iframe. You must approve the domains that you want to host embedded AppStream
-     * 2.0 streaming sessions. </p>
-     */
-    inline void SetEmbedHostDomains(Aws::Vector<Aws::String>&& value) { m_embedHostDomainsHasBeenSet = true; m_embedHostDomains = std::move(value); }
-
-    /**
-     * <p>The domains where AppStream 2.0 streaming sessions can be embedded in an
-     * iframe. You must approve the domains that you want to host embedded AppStream
-     * 2.0 streaming sessions. </p>
-     */
-    inline UpdateStackRequest& WithEmbedHostDomains(const Aws::Vector<Aws::String>& value) { SetEmbedHostDomains(value); return *this;}
-
-    /**
-     * <p>The domains where AppStream 2.0 streaming sessions can be embedded in an
-     * iframe. You must approve the domains that you want to host embedded AppStream
-     * 2.0 streaming sessions. </p>
-     */
-    inline UpdateStackRequest& WithEmbedHostDomains(Aws::Vector<Aws::String>&& value) { SetEmbedHostDomains(std::move(value)); return *this;}
-
-    /**
-     * <p>The domains where AppStream 2.0 streaming sessions can be embedded in an
-     * iframe. You must approve the domains that you want to host embedded AppStream
-     * 2.0 streaming sessions. </p>
-     */
-    inline UpdateStackRequest& AddEmbedHostDomains(const Aws::String& value) { m_embedHostDomainsHasBeenSet = true; m_embedHostDomains.push_back(value); return *this; }
-
-    /**
-     * <p>The domains where AppStream 2.0 streaming sessions can be embedded in an
-     * iframe. You must approve the domains that you want to host embedded AppStream
-     * 2.0 streaming sessions. </p>
-     */
-    inline UpdateStackRequest& AddEmbedHostDomains(Aws::String&& value) { m_embedHostDomainsHasBeenSet = true; m_embedHostDomains.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The domains where AppStream 2.0 streaming sessions can be embedded in an
-     * iframe. You must approve the domains that you want to host embedded AppStream
-     * 2.0 streaming sessions. </p>
-     */
-    inline UpdateStackRequest& AddEmbedHostDomains(const char* value) { m_embedHostDomainsHasBeenSet = true; m_embedHostDomains.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The streaming protocol you want your stack to prefer. This can be UDP or TCP.
      * Currently, UDP is only supported in the Windows native client.</p>
      */
-    inline const StreamingExperienceSettings& GetStreamingExperienceSettings() const{ return m_streamingExperienceSettings; }
-
-    /**
-     * <p>The streaming protocol you want your stack to prefer. This can be UDP or TCP.
-     * Currently, UDP is only supported in the Windows native client.</p>
-     */
+    inline const StreamingExperienceSettings& GetStreamingExperienceSettings() const { return m_streamingExperienceSettings; }
     inline bool StreamingExperienceSettingsHasBeenSet() const { return m_streamingExperienceSettingsHasBeenSet; }
-
-    /**
-     * <p>The streaming protocol you want your stack to prefer. This can be UDP or TCP.
-     * Currently, UDP is only supported in the Windows native client.</p>
-     */
-    inline void SetStreamingExperienceSettings(const StreamingExperienceSettings& value) { m_streamingExperienceSettingsHasBeenSet = true; m_streamingExperienceSettings = value; }
-
-    /**
-     * <p>The streaming protocol you want your stack to prefer. This can be UDP or TCP.
-     * Currently, UDP is only supported in the Windows native client.</p>
-     */
-    inline void SetStreamingExperienceSettings(StreamingExperienceSettings&& value) { m_streamingExperienceSettingsHasBeenSet = true; m_streamingExperienceSettings = std::move(value); }
-
-    /**
-     * <p>The streaming protocol you want your stack to prefer. This can be UDP or TCP.
-     * Currently, UDP is only supported in the Windows native client.</p>
-     */
-    inline UpdateStackRequest& WithStreamingExperienceSettings(const StreamingExperienceSettings& value) { SetStreamingExperienceSettings(value); return *this;}
-
-    /**
-     * <p>The streaming protocol you want your stack to prefer. This can be UDP or TCP.
-     * Currently, UDP is only supported in the Windows native client.</p>
-     */
-    inline UpdateStackRequest& WithStreamingExperienceSettings(StreamingExperienceSettings&& value) { SetStreamingExperienceSettings(std::move(value)); return *this;}
-
+    template<typename StreamingExperienceSettingsT = StreamingExperienceSettings>
+    void SetStreamingExperienceSettings(StreamingExperienceSettingsT&& value) { m_streamingExperienceSettingsHasBeenSet = true; m_streamingExperienceSettings = std::forward<StreamingExperienceSettingsT>(value); }
+    template<typename StreamingExperienceSettingsT = StreamingExperienceSettings>
+    UpdateStackRequest& WithStreamingExperienceSettings(StreamingExperienceSettingsT&& value) { SetStreamingExperienceSettings(std::forward<StreamingExperienceSettingsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_displayName;

@@ -12,15 +12,6 @@ using namespace Aws::TimestreamWrite::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateTableRequest::CreateTableRequest() : 
-    m_databaseNameHasBeenSet(false),
-    m_tableNameHasBeenSet(false),
-    m_retentionPropertiesHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_magneticStoreWritePropertiesHasBeenSet(false)
-{
-}
-
 Aws::String CreateTableRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -57,6 +48,12 @@ Aws::String CreateTableRequest::SerializePayload() const
   if(m_magneticStoreWritePropertiesHasBeenSet)
   {
    payload.WithObject("MagneticStoreWriteProperties", m_magneticStoreWriteProperties.Jsonize());
+
+  }
+
+  if(m_schemaHasBeenSet)
+  {
+   payload.WithObject("Schema", m_schema.Jsonize());
 
   }
 

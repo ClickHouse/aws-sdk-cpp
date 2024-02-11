@@ -53,22 +53,25 @@ namespace WorkDocs
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef WorkDocsClientConfiguration ClientConfigurationType;
+      typedef WorkDocsEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         WorkDocsClient(const Aws::WorkDocs::WorkDocsClientConfiguration& clientConfiguration = Aws::WorkDocs::WorkDocsClientConfiguration(),
-                       std::shared_ptr<WorkDocsEndpointProviderBase> endpointProvider = Aws::MakeShared<WorkDocsEndpointProvider>(ALLOCATION_TAG));
+                       std::shared_ptr<WorkDocsEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         WorkDocsClient(const Aws::Auth::AWSCredentials& credentials,
-                       std::shared_ptr<WorkDocsEndpointProviderBase> endpointProvider = Aws::MakeShared<WorkDocsEndpointProvider>(ALLOCATION_TAG),
+                       std::shared_ptr<WorkDocsEndpointProviderBase> endpointProvider = nullptr,
                        const Aws::WorkDocs::WorkDocsClientConfiguration& clientConfiguration = Aws::WorkDocs::WorkDocsClientConfiguration());
 
        /**
@@ -76,7 +79,7 @@ namespace WorkDocs
         * the default http client factory will be used
         */
         WorkDocsClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                       std::shared_ptr<WorkDocsEndpointProviderBase> endpointProvider = Aws::MakeShared<WorkDocsEndpointProvider>(ALLOCATION_TAG),
+                       std::shared_ptr<WorkDocsEndpointProviderBase> endpointProvider = nullptr,
                        const Aws::WorkDocs::WorkDocsClientConfiguration& clientConfiguration = Aws::WorkDocs::WorkDocsClientConfiguration());
 
 
@@ -612,13 +615,13 @@ namespace WorkDocs
          * href="http://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DescribeActivities">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeActivitiesOutcome DescribeActivities(const Model::DescribeActivitiesRequest& request) const;
+        virtual Model::DescribeActivitiesOutcome DescribeActivities(const Model::DescribeActivitiesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeActivities that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeActivitiesRequestT = Model::DescribeActivitiesRequest>
-        Model::DescribeActivitiesOutcomeCallable DescribeActivitiesCallable(const DescribeActivitiesRequestT& request) const
+        Model::DescribeActivitiesOutcomeCallable DescribeActivitiesCallable(const DescribeActivitiesRequestT& request = {}) const
         {
             return SubmitCallable(&WorkDocsClient::DescribeActivities, request);
         }
@@ -627,7 +630,7 @@ namespace WorkDocs
          * An Async wrapper for DescribeActivities that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeActivitiesRequestT = Model::DescribeActivitiesRequest>
-        void DescribeActivitiesAsync(const DescribeActivitiesRequestT& request, const DescribeActivitiesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeActivitiesAsync(const DescribeActivitiesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeActivitiesRequestT& request = {}) const
         {
             return SubmitAsync(&WorkDocsClient::DescribeActivities, request, handler, context);
         }
@@ -832,13 +835,13 @@ namespace WorkDocs
          * href="http://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DescribeUsers">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeUsersOutcome DescribeUsers(const Model::DescribeUsersRequest& request) const;
+        virtual Model::DescribeUsersOutcome DescribeUsers(const Model::DescribeUsersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeUsers that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeUsersRequestT = Model::DescribeUsersRequest>
-        Model::DescribeUsersOutcomeCallable DescribeUsersCallable(const DescribeUsersRequestT& request) const
+        Model::DescribeUsersOutcomeCallable DescribeUsersCallable(const DescribeUsersRequestT& request = {}) const
         {
             return SubmitCallable(&WorkDocsClient::DescribeUsers, request);
         }
@@ -847,7 +850,7 @@ namespace WorkDocs
          * An Async wrapper for DescribeUsers that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeUsersRequestT = Model::DescribeUsersRequest>
-        void DescribeUsersAsync(const DescribeUsersRequestT& request, const DescribeUsersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeUsersAsync(const DescribeUsersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeUsersRequestT& request = {}) const
         {
             return SubmitAsync(&WorkDocsClient::DescribeUsers, request, handler, context);
         }
@@ -1025,13 +1028,13 @@ namespace WorkDocs
          * href="http://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/GetResources">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetResourcesOutcome GetResources(const Model::GetResourcesRequest& request) const;
+        virtual Model::GetResourcesOutcome GetResources(const Model::GetResourcesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetResources that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetResourcesRequestT = Model::GetResourcesRequest>
-        Model::GetResourcesOutcomeCallable GetResourcesCallable(const GetResourcesRequestT& request) const
+        Model::GetResourcesOutcomeCallable GetResourcesCallable(const GetResourcesRequestT& request = {}) const
         {
             return SubmitCallable(&WorkDocsClient::GetResources, request);
         }
@@ -1040,7 +1043,7 @@ namespace WorkDocs
          * An Async wrapper for GetResources that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetResourcesRequestT = Model::GetResourcesRequest>
-        void GetResourcesAsync(const GetResourcesRequestT& request, const GetResourcesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetResourcesAsync(const GetResourcesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetResourcesRequestT& request = {}) const
         {
             return SubmitAsync(&WorkDocsClient::GetResources, request, handler, context);
         }
@@ -1056,13 +1059,13 @@ namespace WorkDocs
          * href="http://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/InitiateDocumentVersionUpload">AWS
          * API Reference</a></p>
          */
-        virtual Model::InitiateDocumentVersionUploadOutcome InitiateDocumentVersionUpload(const Model::InitiateDocumentVersionUploadRequest& request) const;
+        virtual Model::InitiateDocumentVersionUploadOutcome InitiateDocumentVersionUpload(const Model::InitiateDocumentVersionUploadRequest& request = {}) const;
 
         /**
          * A Callable wrapper for InitiateDocumentVersionUpload that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename InitiateDocumentVersionUploadRequestT = Model::InitiateDocumentVersionUploadRequest>
-        Model::InitiateDocumentVersionUploadOutcomeCallable InitiateDocumentVersionUploadCallable(const InitiateDocumentVersionUploadRequestT& request) const
+        Model::InitiateDocumentVersionUploadOutcomeCallable InitiateDocumentVersionUploadCallable(const InitiateDocumentVersionUploadRequestT& request = {}) const
         {
             return SubmitCallable(&WorkDocsClient::InitiateDocumentVersionUpload, request);
         }
@@ -1071,7 +1074,7 @@ namespace WorkDocs
          * An Async wrapper for InitiateDocumentVersionUpload that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename InitiateDocumentVersionUploadRequestT = Model::InitiateDocumentVersionUploadRequest>
-        void InitiateDocumentVersionUploadAsync(const InitiateDocumentVersionUploadRequestT& request, const InitiateDocumentVersionUploadResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void InitiateDocumentVersionUploadAsync(const InitiateDocumentVersionUploadResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const InitiateDocumentVersionUploadRequestT& request = {}) const
         {
             return SubmitAsync(&WorkDocsClient::InitiateDocumentVersionUpload, request, handler, context);
         }
@@ -1160,13 +1163,13 @@ namespace WorkDocs
          * href="http://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/SearchResources">AWS
          * API Reference</a></p>
          */
-        virtual Model::SearchResourcesOutcome SearchResources(const Model::SearchResourcesRequest& request) const;
+        virtual Model::SearchResourcesOutcome SearchResources(const Model::SearchResourcesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for SearchResources that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename SearchResourcesRequestT = Model::SearchResourcesRequest>
-        Model::SearchResourcesOutcomeCallable SearchResourcesCallable(const SearchResourcesRequestT& request) const
+        Model::SearchResourcesOutcomeCallable SearchResourcesCallable(const SearchResourcesRequestT& request = {}) const
         {
             return SubmitCallable(&WorkDocsClient::SearchResources, request);
         }
@@ -1175,7 +1178,7 @@ namespace WorkDocs
          * An Async wrapper for SearchResources that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename SearchResourcesRequestT = Model::SearchResourcesRequest>
-        void SearchResourcesAsync(const SearchResourcesRequestT& request, const SearchResourcesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void SearchResourcesAsync(const SearchResourcesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const SearchResourcesRequestT& request = {}) const
         {
             return SubmitAsync(&WorkDocsClient::SearchResources, request, handler, context);
         }
@@ -1297,7 +1300,6 @@ namespace WorkDocs
       void init(const WorkDocsClientConfiguration& clientConfiguration);
 
       WorkDocsClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<WorkDocsEndpointProviderBase> m_endpointProvider;
   };
 

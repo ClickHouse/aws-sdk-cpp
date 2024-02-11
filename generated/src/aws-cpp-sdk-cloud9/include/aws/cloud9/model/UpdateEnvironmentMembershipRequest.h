@@ -22,7 +22,7 @@ namespace Model
   class UpdateEnvironmentMembershipRequest : public Cloud9Request
   {
   public:
-    AWS_CLOUD9_API UpdateEnvironmentMembershipRequest();
+    AWS_CLOUD9_API UpdateEnvironmentMembershipRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,104 +35,33 @@ namespace Model
     AWS_CLOUD9_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the environment for the environment member whose settings you want
      * to change.</p>
      */
-    inline const Aws::String& GetEnvironmentId() const{ return m_environmentId; }
-
-    /**
-     * <p>The ID of the environment for the environment member whose settings you want
-     * to change.</p>
-     */
+    inline const Aws::String& GetEnvironmentId() const { return m_environmentId; }
     inline bool EnvironmentIdHasBeenSet() const { return m_environmentIdHasBeenSet; }
+    template<typename EnvironmentIdT = Aws::String>
+    void SetEnvironmentId(EnvironmentIdT&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::forward<EnvironmentIdT>(value); }
+    template<typename EnvironmentIdT = Aws::String>
+    UpdateEnvironmentMembershipRequest& WithEnvironmentId(EnvironmentIdT&& value) { SetEnvironmentId(std::forward<EnvironmentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the environment for the environment member whose settings you want
-     * to change.</p>
-     */
-    inline void SetEnvironmentId(const Aws::String& value) { m_environmentIdHasBeenSet = true; m_environmentId = value; }
-
-    /**
-     * <p>The ID of the environment for the environment member whose settings you want
-     * to change.</p>
-     */
-    inline void SetEnvironmentId(Aws::String&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::move(value); }
-
-    /**
-     * <p>The ID of the environment for the environment member whose settings you want
-     * to change.</p>
-     */
-    inline void SetEnvironmentId(const char* value) { m_environmentIdHasBeenSet = true; m_environmentId.assign(value); }
-
-    /**
-     * <p>The ID of the environment for the environment member whose settings you want
-     * to change.</p>
-     */
-    inline UpdateEnvironmentMembershipRequest& WithEnvironmentId(const Aws::String& value) { SetEnvironmentId(value); return *this;}
-
-    /**
-     * <p>The ID of the environment for the environment member whose settings you want
-     * to change.</p>
-     */
-    inline UpdateEnvironmentMembershipRequest& WithEnvironmentId(Aws::String&& value) { SetEnvironmentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the environment for the environment member whose settings you want
-     * to change.</p>
-     */
-    inline UpdateEnvironmentMembershipRequest& WithEnvironmentId(const char* value) { SetEnvironmentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the environment member whose settings you
      * want to change.</p>
      */
-    inline const Aws::String& GetUserArn() const{ return m_userArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the environment member whose settings you
-     * want to change.</p>
-     */
+    inline const Aws::String& GetUserArn() const { return m_userArn; }
     inline bool UserArnHasBeenSet() const { return m_userArnHasBeenSet; }
+    template<typename UserArnT = Aws::String>
+    void SetUserArn(UserArnT&& value) { m_userArnHasBeenSet = true; m_userArn = std::forward<UserArnT>(value); }
+    template<typename UserArnT = Aws::String>
+    UpdateEnvironmentMembershipRequest& WithUserArn(UserArnT&& value) { SetUserArn(std::forward<UserArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the environment member whose settings you
-     * want to change.</p>
-     */
-    inline void SetUserArn(const Aws::String& value) { m_userArnHasBeenSet = true; m_userArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the environment member whose settings you
-     * want to change.</p>
-     */
-    inline void SetUserArn(Aws::String&& value) { m_userArnHasBeenSet = true; m_userArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the environment member whose settings you
-     * want to change.</p>
-     */
-    inline void SetUserArn(const char* value) { m_userArnHasBeenSet = true; m_userArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the environment member whose settings you
-     * want to change.</p>
-     */
-    inline UpdateEnvironmentMembershipRequest& WithUserArn(const Aws::String& value) { SetUserArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the environment member whose settings you
-     * want to change.</p>
-     */
-    inline UpdateEnvironmentMembershipRequest& WithUserArn(Aws::String&& value) { SetUserArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the environment member whose settings you
-     * want to change.</p>
-     */
-    inline UpdateEnvironmentMembershipRequest& WithUserArn(const char* value) { SetUserArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The replacement type of environment member permissions you want to associate
      * with this environment member. Available values include:</p> <ul> <li> <p>
@@ -140,53 +69,11 @@ namespace Model
      * <p> <code>read-write</code>: Has read-write access to the environment.</p> </li>
      * </ul>
      */
-    inline const MemberPermissions& GetPermissions() const{ return m_permissions; }
-
-    /**
-     * <p>The replacement type of environment member permissions you want to associate
-     * with this environment member. Available values include:</p> <ul> <li> <p>
-     * <code>read-only</code>: Has read-only access to the environment.</p> </li> <li>
-     * <p> <code>read-write</code>: Has read-write access to the environment.</p> </li>
-     * </ul>
-     */
+    inline MemberPermissions GetPermissions() const { return m_permissions; }
     inline bool PermissionsHasBeenSet() const { return m_permissionsHasBeenSet; }
-
-    /**
-     * <p>The replacement type of environment member permissions you want to associate
-     * with this environment member. Available values include:</p> <ul> <li> <p>
-     * <code>read-only</code>: Has read-only access to the environment.</p> </li> <li>
-     * <p> <code>read-write</code>: Has read-write access to the environment.</p> </li>
-     * </ul>
-     */
-    inline void SetPermissions(const MemberPermissions& value) { m_permissionsHasBeenSet = true; m_permissions = value; }
-
-    /**
-     * <p>The replacement type of environment member permissions you want to associate
-     * with this environment member. Available values include:</p> <ul> <li> <p>
-     * <code>read-only</code>: Has read-only access to the environment.</p> </li> <li>
-     * <p> <code>read-write</code>: Has read-write access to the environment.</p> </li>
-     * </ul>
-     */
-    inline void SetPermissions(MemberPermissions&& value) { m_permissionsHasBeenSet = true; m_permissions = std::move(value); }
-
-    /**
-     * <p>The replacement type of environment member permissions you want to associate
-     * with this environment member. Available values include:</p> <ul> <li> <p>
-     * <code>read-only</code>: Has read-only access to the environment.</p> </li> <li>
-     * <p> <code>read-write</code>: Has read-write access to the environment.</p> </li>
-     * </ul>
-     */
-    inline UpdateEnvironmentMembershipRequest& WithPermissions(const MemberPermissions& value) { SetPermissions(value); return *this;}
-
-    /**
-     * <p>The replacement type of environment member permissions you want to associate
-     * with this environment member. Available values include:</p> <ul> <li> <p>
-     * <code>read-only</code>: Has read-only access to the environment.</p> </li> <li>
-     * <p> <code>read-write</code>: Has read-write access to the environment.</p> </li>
-     * </ul>
-     */
-    inline UpdateEnvironmentMembershipRequest& WithPermissions(MemberPermissions&& value) { SetPermissions(std::move(value)); return *this;}
-
+    inline void SetPermissions(MemberPermissions value) { m_permissionsHasBeenSet = true; m_permissions = value; }
+    inline UpdateEnvironmentMembershipRequest& WithPermissions(MemberPermissions value) { SetPermissions(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_environmentId;
@@ -195,7 +82,7 @@ namespace Model
     Aws::String m_userArn;
     bool m_userArnHasBeenSet = false;
 
-    MemberPermissions m_permissions;
+    MemberPermissions m_permissions{MemberPermissions::NOT_SET};
     bool m_permissionsHasBeenSet = false;
   };
 

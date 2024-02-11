@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/sso-oidc/SSOOIDC_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/sso-oidc/model/InvalidRequestExceptionReason.h>
 #include <utility>
 
 namespace Aws
@@ -33,65 +34,54 @@ namespace Model
   class InvalidRequestException
   {
   public:
-    AWS_SSOOIDC_API InvalidRequestException();
+    AWS_SSOOIDC_API InvalidRequestException() = default;
     AWS_SSOOIDC_API InvalidRequestException(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSOOIDC_API InvalidRequestException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSOOIDC_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    
-    inline const Aws::String& GetError() const{ return m_error; }
-
-    
+    ///@{
+    /**
+     * <p>Single error code. For this exception the value will be
+     * <code>invalid_request</code>.</p>
+     */
+    inline const Aws::String& GetError() const { return m_error; }
     inline bool ErrorHasBeenSet() const { return m_errorHasBeenSet; }
+    template<typename ErrorT = Aws::String>
+    void SetError(ErrorT&& value) { m_errorHasBeenSet = true; m_error = std::forward<ErrorT>(value); }
+    template<typename ErrorT = Aws::String>
+    InvalidRequestException& WithError(ErrorT&& value) { SetError(std::forward<ErrorT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetError(const Aws::String& value) { m_errorHasBeenSet = true; m_error = value; }
+    ///@{
+    /**
+     * <p>A string that uniquely identifies a reason for the error.</p>
+     */
+    inline InvalidRequestExceptionReason GetReason() const { return m_reason; }
+    inline bool ReasonHasBeenSet() const { return m_reasonHasBeenSet; }
+    inline void SetReason(InvalidRequestExceptionReason value) { m_reasonHasBeenSet = true; m_reason = value; }
+    inline InvalidRequestException& WithReason(InvalidRequestExceptionReason value) { SetReason(value); return *this;}
+    ///@}
 
-    
-    inline void SetError(Aws::String&& value) { m_errorHasBeenSet = true; m_error = std::move(value); }
-
-    
-    inline void SetError(const char* value) { m_errorHasBeenSet = true; m_error.assign(value); }
-
-    
-    inline InvalidRequestException& WithError(const Aws::String& value) { SetError(value); return *this;}
-
-    
-    inline InvalidRequestException& WithError(Aws::String&& value) { SetError(std::move(value)); return *this;}
-
-    
-    inline InvalidRequestException& WithError(const char* value) { SetError(value); return *this;}
-
-
-    
-    inline const Aws::String& GetError_description() const{ return m_error_description; }
-
-    
+    ///@{
+    /**
+     * <p>Human-readable text providing additional information, used to assist the
+     * client developer in understanding the error that occurred.</p>
+     */
+    inline const Aws::String& GetError_description() const { return m_error_description; }
     inline bool Error_descriptionHasBeenSet() const { return m_error_descriptionHasBeenSet; }
-
-    
-    inline void SetError_description(const Aws::String& value) { m_error_descriptionHasBeenSet = true; m_error_description = value; }
-
-    
-    inline void SetError_description(Aws::String&& value) { m_error_descriptionHasBeenSet = true; m_error_description = std::move(value); }
-
-    
-    inline void SetError_description(const char* value) { m_error_descriptionHasBeenSet = true; m_error_description.assign(value); }
-
-    
-    inline InvalidRequestException& WithError_description(const Aws::String& value) { SetError_description(value); return *this;}
-
-    
-    inline InvalidRequestException& WithError_description(Aws::String&& value) { SetError_description(std::move(value)); return *this;}
-
-    
-    inline InvalidRequestException& WithError_description(const char* value) { SetError_description(value); return *this;}
-
+    template<typename Error_descriptionT = Aws::String>
+    void SetError_description(Error_descriptionT&& value) { m_error_descriptionHasBeenSet = true; m_error_description = std::forward<Error_descriptionT>(value); }
+    template<typename Error_descriptionT = Aws::String>
+    InvalidRequestException& WithError_description(Error_descriptionT&& value) { SetError_description(std::forward<Error_descriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_error;
     bool m_errorHasBeenSet = false;
+
+    InvalidRequestExceptionReason m_reason{InvalidRequestExceptionReason::NOT_SET};
+    bool m_reasonHasBeenSet = false;
 
     Aws::String m_error_description;
     bool m_error_descriptionHasBeenSet = false;

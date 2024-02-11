@@ -18,31 +18,7 @@ namespace DeviceFarm
 namespace Model
 {
 
-ScheduleRunConfiguration::ScheduleRunConfiguration() : 
-    m_extraDataPackageArnHasBeenSet(false),
-    m_networkProfileArnHasBeenSet(false),
-    m_localeHasBeenSet(false),
-    m_locationHasBeenSet(false),
-    m_vpceConfigurationArnsHasBeenSet(false),
-    m_customerArtifactPathsHasBeenSet(false),
-    m_radiosHasBeenSet(false),
-    m_auxiliaryAppsHasBeenSet(false),
-    m_billingMethod(BillingMethod::NOT_SET),
-    m_billingMethodHasBeenSet(false)
-{
-}
-
-ScheduleRunConfiguration::ScheduleRunConfiguration(JsonView jsonValue) : 
-    m_extraDataPackageArnHasBeenSet(false),
-    m_networkProfileArnHasBeenSet(false),
-    m_localeHasBeenSet(false),
-    m_locationHasBeenSet(false),
-    m_vpceConfigurationArnsHasBeenSet(false),
-    m_customerArtifactPathsHasBeenSet(false),
-    m_radiosHasBeenSet(false),
-    m_auxiliaryAppsHasBeenSet(false),
-    m_billingMethod(BillingMethod::NOT_SET),
-    m_billingMethodHasBeenSet(false)
+ScheduleRunConfiguration::ScheduleRunConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -52,31 +28,23 @@ ScheduleRunConfiguration& ScheduleRunConfiguration::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("extraDataPackageArn"))
   {
     m_extraDataPackageArn = jsonValue.GetString("extraDataPackageArn");
-
     m_extraDataPackageArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("networkProfileArn"))
   {
     m_networkProfileArn = jsonValue.GetString("networkProfileArn");
-
     m_networkProfileArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("locale"))
   {
     m_locale = jsonValue.GetString("locale");
-
     m_localeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("location"))
   {
     m_location = jsonValue.GetObject("location");
-
     m_locationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("vpceConfigurationArns"))
   {
     Aws::Utils::Array<JsonView> vpceConfigurationArnsJsonList = jsonValue.GetArray("vpceConfigurationArns");
@@ -86,21 +54,21 @@ ScheduleRunConfiguration& ScheduleRunConfiguration::operator =(JsonView jsonValu
     }
     m_vpceConfigurationArnsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("deviceProxy"))
+  {
+    m_deviceProxy = jsonValue.GetObject("deviceProxy");
+    m_deviceProxyHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("customerArtifactPaths"))
   {
     m_customerArtifactPaths = jsonValue.GetObject("customerArtifactPaths");
-
     m_customerArtifactPathsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("radios"))
   {
     m_radios = jsonValue.GetObject("radios");
-
     m_radiosHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("auxiliaryApps"))
   {
     Aws::Utils::Array<JsonView> auxiliaryAppsJsonList = jsonValue.GetArray("auxiliaryApps");
@@ -110,14 +78,11 @@ ScheduleRunConfiguration& ScheduleRunConfiguration::operator =(JsonView jsonValu
     }
     m_auxiliaryAppsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("billingMethod"))
   {
     m_billingMethod = BillingMethodMapper::GetBillingMethodForName(jsonValue.GetString("billingMethod"));
-
     m_billingMethodHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -157,6 +122,12 @@ JsonValue ScheduleRunConfiguration::Jsonize() const
      vpceConfigurationArnsJsonList[vpceConfigurationArnsIndex].AsString(m_vpceConfigurationArns[vpceConfigurationArnsIndex]);
    }
    payload.WithArray("vpceConfigurationArns", std::move(vpceConfigurationArnsJsonList));
+
+  }
+
+  if(m_deviceProxyHasBeenSet)
+  {
+   payload.WithObject("deviceProxy", m_deviceProxy.Jsonize());
 
   }
 

@@ -18,25 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-DashboardVersionDefinition::DashboardVersionDefinition() : 
-    m_dataSetIdentifierDeclarationsHasBeenSet(false),
-    m_sheetsHasBeenSet(false),
-    m_calculatedFieldsHasBeenSet(false),
-    m_parameterDeclarationsHasBeenSet(false),
-    m_filterGroupsHasBeenSet(false),
-    m_columnConfigurationsHasBeenSet(false),
-    m_analysisDefaultsHasBeenSet(false)
-{
-}
-
-DashboardVersionDefinition::DashboardVersionDefinition(JsonView jsonValue) : 
-    m_dataSetIdentifierDeclarationsHasBeenSet(false),
-    m_sheetsHasBeenSet(false),
-    m_calculatedFieldsHasBeenSet(false),
-    m_parameterDeclarationsHasBeenSet(false),
-    m_filterGroupsHasBeenSet(false),
-    m_columnConfigurationsHasBeenSet(false),
-    m_analysisDefaultsHasBeenSet(false)
+DashboardVersionDefinition::DashboardVersionDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -52,7 +34,6 @@ DashboardVersionDefinition& DashboardVersionDefinition::operator =(JsonView json
     }
     m_dataSetIdentifierDeclarationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Sheets"))
   {
     Aws::Utils::Array<JsonView> sheetsJsonList = jsonValue.GetArray("Sheets");
@@ -62,7 +43,6 @@ DashboardVersionDefinition& DashboardVersionDefinition::operator =(JsonView json
     }
     m_sheetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CalculatedFields"))
   {
     Aws::Utils::Array<JsonView> calculatedFieldsJsonList = jsonValue.GetArray("CalculatedFields");
@@ -72,7 +52,6 @@ DashboardVersionDefinition& DashboardVersionDefinition::operator =(JsonView json
     }
     m_calculatedFieldsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ParameterDeclarations"))
   {
     Aws::Utils::Array<JsonView> parameterDeclarationsJsonList = jsonValue.GetArray("ParameterDeclarations");
@@ -82,7 +61,6 @@ DashboardVersionDefinition& DashboardVersionDefinition::operator =(JsonView json
     }
     m_parameterDeclarationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FilterGroups"))
   {
     Aws::Utils::Array<JsonView> filterGroupsJsonList = jsonValue.GetArray("FilterGroups");
@@ -92,7 +70,6 @@ DashboardVersionDefinition& DashboardVersionDefinition::operator =(JsonView json
     }
     m_filterGroupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ColumnConfigurations"))
   {
     Aws::Utils::Array<JsonView> columnConfigurationsJsonList = jsonValue.GetArray("ColumnConfigurations");
@@ -102,14 +79,25 @@ DashboardVersionDefinition& DashboardVersionDefinition::operator =(JsonView json
     }
     m_columnConfigurationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AnalysisDefaults"))
   {
     m_analysisDefaults = jsonValue.GetObject("AnalysisDefaults");
-
     m_analysisDefaultsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Options"))
+  {
+    m_options = jsonValue.GetObject("Options");
+    m_optionsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("StaticFiles"))
+  {
+    Aws::Utils::Array<JsonView> staticFilesJsonList = jsonValue.GetArray("StaticFiles");
+    for(unsigned staticFilesIndex = 0; staticFilesIndex < staticFilesJsonList.GetLength(); ++staticFilesIndex)
+    {
+      m_staticFiles.push_back(staticFilesJsonList[staticFilesIndex].AsObject());
+    }
+    m_staticFilesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -186,6 +174,23 @@ JsonValue DashboardVersionDefinition::Jsonize() const
   if(m_analysisDefaultsHasBeenSet)
   {
    payload.WithObject("AnalysisDefaults", m_analysisDefaults.Jsonize());
+
+  }
+
+  if(m_optionsHasBeenSet)
+  {
+   payload.WithObject("Options", m_options.Jsonize());
+
+  }
+
+  if(m_staticFilesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> staticFilesJsonList(m_staticFiles.size());
+   for(unsigned staticFilesIndex = 0; staticFilesIndex < staticFilesJsonList.GetLength(); ++staticFilesIndex)
+   {
+     staticFilesJsonList[staticFilesIndex].AsObject(m_staticFiles[staticFilesIndex].Jsonize());
+   }
+   payload.WithArray("StaticFiles", std::move(staticFilesJsonList));
 
   }
 

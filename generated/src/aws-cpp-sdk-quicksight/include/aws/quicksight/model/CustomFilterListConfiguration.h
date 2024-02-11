@@ -35,132 +35,49 @@ namespace Model
   class CustomFilterListConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API CustomFilterListConfiguration();
+    AWS_QUICKSIGHT_API CustomFilterListConfiguration() = default;
     AWS_QUICKSIGHT_API CustomFilterListConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API CustomFilterListConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The match operator that is used to determine if a filter should be
      * applied.</p>
      */
-    inline const CategoryFilterMatchOperator& GetMatchOperator() const{ return m_matchOperator; }
-
-    /**
-     * <p>The match operator that is used to determine if a filter should be
-     * applied.</p>
-     */
+    inline CategoryFilterMatchOperator GetMatchOperator() const { return m_matchOperator; }
     inline bool MatchOperatorHasBeenSet() const { return m_matchOperatorHasBeenSet; }
+    inline void SetMatchOperator(CategoryFilterMatchOperator value) { m_matchOperatorHasBeenSet = true; m_matchOperator = value; }
+    inline CustomFilterListConfiguration& WithMatchOperator(CategoryFilterMatchOperator value) { SetMatchOperator(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The match operator that is used to determine if a filter should be
-     * applied.</p>
-     */
-    inline void SetMatchOperator(const CategoryFilterMatchOperator& value) { m_matchOperatorHasBeenSet = true; m_matchOperator = value; }
-
-    /**
-     * <p>The match operator that is used to determine if a filter should be
-     * applied.</p>
-     */
-    inline void SetMatchOperator(CategoryFilterMatchOperator&& value) { m_matchOperatorHasBeenSet = true; m_matchOperator = std::move(value); }
-
-    /**
-     * <p>The match operator that is used to determine if a filter should be
-     * applied.</p>
-     */
-    inline CustomFilterListConfiguration& WithMatchOperator(const CategoryFilterMatchOperator& value) { SetMatchOperator(value); return *this;}
-
-    /**
-     * <p>The match operator that is used to determine if a filter should be
-     * applied.</p>
-     */
-    inline CustomFilterListConfiguration& WithMatchOperator(CategoryFilterMatchOperator&& value) { SetMatchOperator(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of category values for the filter.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetCategoryValues() const{ return m_categoryValues; }
-
-    /**
-     * <p>The list of category values for the filter.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetCategoryValues() const { return m_categoryValues; }
     inline bool CategoryValuesHasBeenSet() const { return m_categoryValuesHasBeenSet; }
+    template<typename CategoryValuesT = Aws::Vector<Aws::String>>
+    void SetCategoryValues(CategoryValuesT&& value) { m_categoryValuesHasBeenSet = true; m_categoryValues = std::forward<CategoryValuesT>(value); }
+    template<typename CategoryValuesT = Aws::Vector<Aws::String>>
+    CustomFilterListConfiguration& WithCategoryValues(CategoryValuesT&& value) { SetCategoryValues(std::forward<CategoryValuesT>(value)); return *this;}
+    template<typename CategoryValuesT = Aws::String>
+    CustomFilterListConfiguration& AddCategoryValues(CategoryValuesT&& value) { m_categoryValuesHasBeenSet = true; m_categoryValues.emplace_back(std::forward<CategoryValuesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of category values for the filter.</p>
-     */
-    inline void SetCategoryValues(const Aws::Vector<Aws::String>& value) { m_categoryValuesHasBeenSet = true; m_categoryValues = value; }
-
-    /**
-     * <p>The list of category values for the filter.</p>
-     */
-    inline void SetCategoryValues(Aws::Vector<Aws::String>&& value) { m_categoryValuesHasBeenSet = true; m_categoryValues = std::move(value); }
-
-    /**
-     * <p>The list of category values for the filter.</p>
-     */
-    inline CustomFilterListConfiguration& WithCategoryValues(const Aws::Vector<Aws::String>& value) { SetCategoryValues(value); return *this;}
-
-    /**
-     * <p>The list of category values for the filter.</p>
-     */
-    inline CustomFilterListConfiguration& WithCategoryValues(Aws::Vector<Aws::String>&& value) { SetCategoryValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of category values for the filter.</p>
-     */
-    inline CustomFilterListConfiguration& AddCategoryValues(const Aws::String& value) { m_categoryValuesHasBeenSet = true; m_categoryValues.push_back(value); return *this; }
-
-    /**
-     * <p>The list of category values for the filter.</p>
-     */
-    inline CustomFilterListConfiguration& AddCategoryValues(Aws::String&& value) { m_categoryValuesHasBeenSet = true; m_categoryValues.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The list of category values for the filter.</p>
-     */
-    inline CustomFilterListConfiguration& AddCategoryValues(const char* value) { m_categoryValuesHasBeenSet = true; m_categoryValues.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Select all of the values. Null is not the assigned value of select all.</p>
      * <ul> <li> <p> <code>FILTER_ALL_VALUES</code> </p> </li> </ul>
      */
-    inline const CategoryFilterSelectAllOptions& GetSelectAllOptions() const{ return m_selectAllOptions; }
-
-    /**
-     * <p>Select all of the values. Null is not the assigned value of select all.</p>
-     * <ul> <li> <p> <code>FILTER_ALL_VALUES</code> </p> </li> </ul>
-     */
+    inline CategoryFilterSelectAllOptions GetSelectAllOptions() const { return m_selectAllOptions; }
     inline bool SelectAllOptionsHasBeenSet() const { return m_selectAllOptionsHasBeenSet; }
+    inline void SetSelectAllOptions(CategoryFilterSelectAllOptions value) { m_selectAllOptionsHasBeenSet = true; m_selectAllOptions = value; }
+    inline CustomFilterListConfiguration& WithSelectAllOptions(CategoryFilterSelectAllOptions value) { SetSelectAllOptions(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Select all of the values. Null is not the assigned value of select all.</p>
-     * <ul> <li> <p> <code>FILTER_ALL_VALUES</code> </p> </li> </ul>
-     */
-    inline void SetSelectAllOptions(const CategoryFilterSelectAllOptions& value) { m_selectAllOptionsHasBeenSet = true; m_selectAllOptions = value; }
-
-    /**
-     * <p>Select all of the values. Null is not the assigned value of select all.</p>
-     * <ul> <li> <p> <code>FILTER_ALL_VALUES</code> </p> </li> </ul>
-     */
-    inline void SetSelectAllOptions(CategoryFilterSelectAllOptions&& value) { m_selectAllOptionsHasBeenSet = true; m_selectAllOptions = std::move(value); }
-
-    /**
-     * <p>Select all of the values. Null is not the assigned value of select all.</p>
-     * <ul> <li> <p> <code>FILTER_ALL_VALUES</code> </p> </li> </ul>
-     */
-    inline CustomFilterListConfiguration& WithSelectAllOptions(const CategoryFilterSelectAllOptions& value) { SetSelectAllOptions(value); return *this;}
-
-    /**
-     * <p>Select all of the values. Null is not the assigned value of select all.</p>
-     * <ul> <li> <p> <code>FILTER_ALL_VALUES</code> </p> </li> </ul>
-     */
-    inline CustomFilterListConfiguration& WithSelectAllOptions(CategoryFilterSelectAllOptions&& value) { SetSelectAllOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>This option determines how null values should be treated when filtering
      * data.</p> <ul> <li> <p> <code>ALL_VALUES</code>: Include null values in filtered
@@ -168,65 +85,23 @@ namespace Model
      * filtered results.</p> </li> <li> <p> <code>NON_NULLS_ONLY</code>: Exclude null
      * values from filtered results.</p> </li> </ul>
      */
-    inline const FilterNullOption& GetNullOption() const{ return m_nullOption; }
-
-    /**
-     * <p>This option determines how null values should be treated when filtering
-     * data.</p> <ul> <li> <p> <code>ALL_VALUES</code>: Include null values in filtered
-     * results.</p> </li> <li> <p> <code>NULLS_ONLY</code>: Only include null values in
-     * filtered results.</p> </li> <li> <p> <code>NON_NULLS_ONLY</code>: Exclude null
-     * values from filtered results.</p> </li> </ul>
-     */
+    inline FilterNullOption GetNullOption() const { return m_nullOption; }
     inline bool NullOptionHasBeenSet() const { return m_nullOptionHasBeenSet; }
-
-    /**
-     * <p>This option determines how null values should be treated when filtering
-     * data.</p> <ul> <li> <p> <code>ALL_VALUES</code>: Include null values in filtered
-     * results.</p> </li> <li> <p> <code>NULLS_ONLY</code>: Only include null values in
-     * filtered results.</p> </li> <li> <p> <code>NON_NULLS_ONLY</code>: Exclude null
-     * values from filtered results.</p> </li> </ul>
-     */
-    inline void SetNullOption(const FilterNullOption& value) { m_nullOptionHasBeenSet = true; m_nullOption = value; }
-
-    /**
-     * <p>This option determines how null values should be treated when filtering
-     * data.</p> <ul> <li> <p> <code>ALL_VALUES</code>: Include null values in filtered
-     * results.</p> </li> <li> <p> <code>NULLS_ONLY</code>: Only include null values in
-     * filtered results.</p> </li> <li> <p> <code>NON_NULLS_ONLY</code>: Exclude null
-     * values from filtered results.</p> </li> </ul>
-     */
-    inline void SetNullOption(FilterNullOption&& value) { m_nullOptionHasBeenSet = true; m_nullOption = std::move(value); }
-
-    /**
-     * <p>This option determines how null values should be treated when filtering
-     * data.</p> <ul> <li> <p> <code>ALL_VALUES</code>: Include null values in filtered
-     * results.</p> </li> <li> <p> <code>NULLS_ONLY</code>: Only include null values in
-     * filtered results.</p> </li> <li> <p> <code>NON_NULLS_ONLY</code>: Exclude null
-     * values from filtered results.</p> </li> </ul>
-     */
-    inline CustomFilterListConfiguration& WithNullOption(const FilterNullOption& value) { SetNullOption(value); return *this;}
-
-    /**
-     * <p>This option determines how null values should be treated when filtering
-     * data.</p> <ul> <li> <p> <code>ALL_VALUES</code>: Include null values in filtered
-     * results.</p> </li> <li> <p> <code>NULLS_ONLY</code>: Only include null values in
-     * filtered results.</p> </li> <li> <p> <code>NON_NULLS_ONLY</code>: Exclude null
-     * values from filtered results.</p> </li> </ul>
-     */
-    inline CustomFilterListConfiguration& WithNullOption(FilterNullOption&& value) { SetNullOption(std::move(value)); return *this;}
-
+    inline void SetNullOption(FilterNullOption value) { m_nullOptionHasBeenSet = true; m_nullOption = value; }
+    inline CustomFilterListConfiguration& WithNullOption(FilterNullOption value) { SetNullOption(value); return *this;}
+    ///@}
   private:
 
-    CategoryFilterMatchOperator m_matchOperator;
+    CategoryFilterMatchOperator m_matchOperator{CategoryFilterMatchOperator::NOT_SET};
     bool m_matchOperatorHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_categoryValues;
     bool m_categoryValuesHasBeenSet = false;
 
-    CategoryFilterSelectAllOptions m_selectAllOptions;
+    CategoryFilterSelectAllOptions m_selectAllOptions{CategoryFilterSelectAllOptions::NOT_SET};
     bool m_selectAllOptionsHasBeenSet = false;
 
-    FilterNullOption m_nullOption;
+    FilterNullOption m_nullOption{FilterNullOption::NOT_SET};
     bool m_nullOptionHasBeenSet = false;
   };
 

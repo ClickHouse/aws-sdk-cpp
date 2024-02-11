@@ -12,22 +12,6 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartChatContactRequest::StartChatContactRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_contactFlowIdHasBeenSet(false),
-    m_attributesHasBeenSet(false),
-    m_participantDetailsHasBeenSet(false),
-    m_initialMessageHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_chatDurationInMinutes(0),
-    m_chatDurationInMinutesHasBeenSet(false),
-    m_supportedMessagingContentTypesHasBeenSet(false),
-    m_persistentChatHasBeenSet(false),
-    m_relatedContactIdHasBeenSet(false)
-{
-}
-
 Aws::String StartChatContactRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -99,6 +83,23 @@ Aws::String StartChatContactRequest::SerializePayload() const
   if(m_relatedContactIdHasBeenSet)
   {
    payload.WithString("RelatedContactId", m_relatedContactId);
+
+  }
+
+  if(m_segmentAttributesHasBeenSet)
+  {
+   JsonValue segmentAttributesJsonMap;
+   for(auto& segmentAttributesItem : m_segmentAttributes)
+   {
+     segmentAttributesJsonMap.WithObject(segmentAttributesItem.first, segmentAttributesItem.second.Jsonize());
+   }
+   payload.WithObject("SegmentAttributes", std::move(segmentAttributesJsonMap));
+
+  }
+
+  if(m_customerIdHasBeenSet)
+  {
+   payload.WithString("CustomerId", m_customerId);
 
   }
 

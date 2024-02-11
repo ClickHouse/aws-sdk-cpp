@@ -10,15 +10,6 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-SignalResourceRequest::SignalResourceRequest() : 
-    m_stackNameHasBeenSet(false),
-    m_logicalResourceIdHasBeenSet(false),
-    m_uniqueIdHasBeenSet(false),
-    m_status(ResourceSignalStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
 Aws::String SignalResourceRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -40,7 +31,7 @@ Aws::String SignalResourceRequest::SerializePayload() const
 
   if(m_statusHasBeenSet)
   {
-    ss << "Status=" << ResourceSignalStatusMapper::GetNameForResourceSignalStatus(m_status) << "&";
+    ss << "Status=" << StringUtils::URLEncode(ResourceSignalStatusMapper::GetNameForResourceSignalStatus(m_status)) << "&";
   }
 
   ss << "Version=2010-05-15";

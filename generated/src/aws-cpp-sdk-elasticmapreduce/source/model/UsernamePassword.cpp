@@ -18,15 +18,7 @@ namespace EMR
 namespace Model
 {
 
-UsernamePassword::UsernamePassword() : 
-    m_usernameHasBeenSet(false),
-    m_passwordHasBeenSet(false)
-{
-}
-
-UsernamePassword::UsernamePassword(JsonView jsonValue) : 
-    m_usernameHasBeenSet(false),
-    m_passwordHasBeenSet(false)
+UsernamePassword::UsernamePassword(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ UsernamePassword& UsernamePassword::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Username"))
   {
     m_username = jsonValue.GetString("Username");
-
     m_usernameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Password"))
   {
     m_password = jsonValue.GetString("Password");
-
     m_passwordHasBeenSet = true;
   }
-
   return *this;
 }
 

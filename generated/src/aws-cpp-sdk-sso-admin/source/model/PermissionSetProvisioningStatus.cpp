@@ -18,25 +18,7 @@ namespace SSOAdmin
 namespace Model
 {
 
-PermissionSetProvisioningStatus::PermissionSetProvisioningStatus() : 
-    m_status(StatusValues::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_requestIdHasBeenSet(false),
-    m_accountIdHasBeenSet(false),
-    m_permissionSetArnHasBeenSet(false),
-    m_failureReasonHasBeenSet(false),
-    m_createdDateHasBeenSet(false)
-{
-}
-
-PermissionSetProvisioningStatus::PermissionSetProvisioningStatus(JsonView jsonValue) : 
-    m_status(StatusValues::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_requestIdHasBeenSet(false),
-    m_accountIdHasBeenSet(false),
-    m_permissionSetArnHasBeenSet(false),
-    m_failureReasonHasBeenSet(false),
-    m_createdDateHasBeenSet(false)
+PermissionSetProvisioningStatus::PermissionSetProvisioningStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,45 +28,33 @@ PermissionSetProvisioningStatus& PermissionSetProvisioningStatus::operator =(Jso
   if(jsonValue.ValueExists("Status"))
   {
     m_status = StatusValuesMapper::GetStatusValuesForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RequestId"))
   {
     m_requestId = jsonValue.GetString("RequestId");
-
     m_requestIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AccountId"))
   {
     m_accountId = jsonValue.GetString("AccountId");
-
     m_accountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PermissionSetArn"))
   {
     m_permissionSetArn = jsonValue.GetString("PermissionSetArn");
-
     m_permissionSetArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FailureReason"))
   {
     m_failureReason = jsonValue.GetString("FailureReason");
-
     m_failureReasonHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatedDate"))
   {
     m_createdDate = jsonValue.GetDouble("CreatedDate");
-
     m_createdDateHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -12,15 +12,6 @@ using namespace Aws::CleanRooms::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartProtectedQueryRequest::StartProtectedQueryRequest() : 
-    m_type(ProtectedQueryType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_membershipIdentifierHasBeenSet(false),
-    m_sqlParametersHasBeenSet(false),
-    m_resultConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String StartProtectedQueryRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,6 +30,12 @@ Aws::String StartProtectedQueryRequest::SerializePayload() const
   if(m_resultConfigurationHasBeenSet)
   {
    payload.WithObject("resultConfiguration", m_resultConfiguration.Jsonize());
+
+  }
+
+  if(m_computeConfigurationHasBeenSet)
+  {
+   payload.WithObject("computeConfiguration", m_computeConfiguration.Jsonize());
 
   }
 

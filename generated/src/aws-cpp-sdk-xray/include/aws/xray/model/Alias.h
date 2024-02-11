@@ -32,139 +32,49 @@ namespace Model
   class Alias
   {
   public:
-    AWS_XRAY_API Alias();
+    AWS_XRAY_API Alias() = default;
     AWS_XRAY_API Alias(Aws::Utils::Json::JsonView jsonValue);
     AWS_XRAY_API Alias& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_XRAY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The canonical name of the alias.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The canonical name of the alias.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Alias& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The canonical name of the alias.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The canonical name of the alias.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The canonical name of the alias.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The canonical name of the alias.</p>
-     */
-    inline Alias& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The canonical name of the alias.</p>
-     */
-    inline Alias& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The canonical name of the alias.</p>
-     */
-    inline Alias& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of names for the alias, including the canonical name.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetNames() const{ return m_names; }
-
-    /**
-     * <p>A list of names for the alias, including the canonical name.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetNames() const { return m_names; }
     inline bool NamesHasBeenSet() const { return m_namesHasBeenSet; }
+    template<typename NamesT = Aws::Vector<Aws::String>>
+    void SetNames(NamesT&& value) { m_namesHasBeenSet = true; m_names = std::forward<NamesT>(value); }
+    template<typename NamesT = Aws::Vector<Aws::String>>
+    Alias& WithNames(NamesT&& value) { SetNames(std::forward<NamesT>(value)); return *this;}
+    template<typename NamesT = Aws::String>
+    Alias& AddNames(NamesT&& value) { m_namesHasBeenSet = true; m_names.emplace_back(std::forward<NamesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of names for the alias, including the canonical name.</p>
-     */
-    inline void SetNames(const Aws::Vector<Aws::String>& value) { m_namesHasBeenSet = true; m_names = value; }
-
-    /**
-     * <p>A list of names for the alias, including the canonical name.</p>
-     */
-    inline void SetNames(Aws::Vector<Aws::String>&& value) { m_namesHasBeenSet = true; m_names = std::move(value); }
-
-    /**
-     * <p>A list of names for the alias, including the canonical name.</p>
-     */
-    inline Alias& WithNames(const Aws::Vector<Aws::String>& value) { SetNames(value); return *this;}
-
-    /**
-     * <p>A list of names for the alias, including the canonical name.</p>
-     */
-    inline Alias& WithNames(Aws::Vector<Aws::String>&& value) { SetNames(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of names for the alias, including the canonical name.</p>
-     */
-    inline Alias& AddNames(const Aws::String& value) { m_namesHasBeenSet = true; m_names.push_back(value); return *this; }
-
-    /**
-     * <p>A list of names for the alias, including the canonical name.</p>
-     */
-    inline Alias& AddNames(Aws::String&& value) { m_namesHasBeenSet = true; m_names.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of names for the alias, including the canonical name.</p>
-     */
-    inline Alias& AddNames(const char* value) { m_namesHasBeenSet = true; m_names.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The type of the alias.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of the alias.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of the alias.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of the alias.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of the alias.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of the alias.</p>
-     */
-    inline Alias& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of the alias.</p>
-     */
-    inline Alias& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of the alias.</p>
-     */
-    inline Alias& WithType(const char* value) { SetType(value); return *this;}
-
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    Alias& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

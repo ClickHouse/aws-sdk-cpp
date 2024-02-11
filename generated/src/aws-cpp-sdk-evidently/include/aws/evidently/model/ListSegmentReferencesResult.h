@@ -29,125 +29,55 @@ namespace Model
   class ListSegmentReferencesResult
   {
   public:
-    AWS_CLOUDWATCHEVIDENTLY_API ListSegmentReferencesResult();
+    AWS_CLOUDWATCHEVIDENTLY_API ListSegmentReferencesResult() = default;
     AWS_CLOUDWATCHEVIDENTLY_API ListSegmentReferencesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CLOUDWATCHEVIDENTLY_API ListSegmentReferencesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The token to use in a subsequent <code>ListSegmentReferences</code> operation
      * to return the next set of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListSegmentReferencesResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token to use in a subsequent <code>ListSegmentReferences</code> operation
-     * to return the next set of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The token to use in a subsequent <code>ListSegmentReferences</code> operation
-     * to return the next set of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token to use in a subsequent <code>ListSegmentReferences</code> operation
-     * to return the next set of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The token to use in a subsequent <code>ListSegmentReferences</code> operation
-     * to return the next set of results.</p>
-     */
-    inline ListSegmentReferencesResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token to use in a subsequent <code>ListSegmentReferences</code> operation
-     * to return the next set of results.</p>
-     */
-    inline ListSegmentReferencesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token to use in a subsequent <code>ListSegmentReferences</code> operation
-     * to return the next set of results.</p>
-     */
-    inline ListSegmentReferencesResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of structures, where each structure contains information about one
      * experiment or launch that uses this segment. </p>
      */
-    inline const Aws::Vector<RefResource>& GetReferencedBy() const{ return m_referencedBy; }
+    inline const Aws::Vector<RefResource>& GetReferencedBy() const { return m_referencedBy; }
+    template<typename ReferencedByT = Aws::Vector<RefResource>>
+    void SetReferencedBy(ReferencedByT&& value) { m_referencedByHasBeenSet = true; m_referencedBy = std::forward<ReferencedByT>(value); }
+    template<typename ReferencedByT = Aws::Vector<RefResource>>
+    ListSegmentReferencesResult& WithReferencedBy(ReferencedByT&& value) { SetReferencedBy(std::forward<ReferencedByT>(value)); return *this;}
+    template<typename ReferencedByT = RefResource>
+    ListSegmentReferencesResult& AddReferencedBy(ReferencedByT&& value) { m_referencedByHasBeenSet = true; m_referencedBy.emplace_back(std::forward<ReferencedByT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of structures, where each structure contains information about one
-     * experiment or launch that uses this segment. </p>
-     */
-    inline void SetReferencedBy(const Aws::Vector<RefResource>& value) { m_referencedBy = value; }
-
-    /**
-     * <p>An array of structures, where each structure contains information about one
-     * experiment or launch that uses this segment. </p>
-     */
-    inline void SetReferencedBy(Aws::Vector<RefResource>&& value) { m_referencedBy = std::move(value); }
-
-    /**
-     * <p>An array of structures, where each structure contains information about one
-     * experiment or launch that uses this segment. </p>
-     */
-    inline ListSegmentReferencesResult& WithReferencedBy(const Aws::Vector<RefResource>& value) { SetReferencedBy(value); return *this;}
-
-    /**
-     * <p>An array of structures, where each structure contains information about one
-     * experiment or launch that uses this segment. </p>
-     */
-    inline ListSegmentReferencesResult& WithReferencedBy(Aws::Vector<RefResource>&& value) { SetReferencedBy(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of structures, where each structure contains information about one
-     * experiment or launch that uses this segment. </p>
-     */
-    inline ListSegmentReferencesResult& AddReferencedBy(const RefResource& value) { m_referencedBy.push_back(value); return *this; }
-
-    /**
-     * <p>An array of structures, where each structure contains information about one
-     * experiment or launch that uses this segment. </p>
-     */
-    inline ListSegmentReferencesResult& AddReferencedBy(RefResource&& value) { m_referencedBy.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListSegmentReferencesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListSegmentReferencesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListSegmentReferencesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListSegmentReferencesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::Vector<RefResource> m_referencedBy;
+    bool m_referencedByHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

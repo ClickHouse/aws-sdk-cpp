@@ -34,98 +34,37 @@ namespace Model
   class CategoricalParameterRange
   {
   public:
-    AWS_FORECASTSERVICE_API CategoricalParameterRange();
+    AWS_FORECASTSERVICE_API CategoricalParameterRange() = default;
     AWS_FORECASTSERVICE_API CategoricalParameterRange(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API CategoricalParameterRange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the categorical hyperparameter to tune.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the categorical hyperparameter to tune.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CategoricalParameterRange& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the categorical hyperparameter to tune.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the categorical hyperparameter to tune.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the categorical hyperparameter to tune.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the categorical hyperparameter to tune.</p>
-     */
-    inline CategoricalParameterRange& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the categorical hyperparameter to tune.</p>
-     */
-    inline CategoricalParameterRange& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the categorical hyperparameter to tune.</p>
-     */
-    inline CategoricalParameterRange& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of the tunable categories for the hyperparameter.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>A list of the tunable categories for the hyperparameter.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
-
-    /**
-     * <p>A list of the tunable categories for the hyperparameter.</p>
-     */
-    inline void SetValues(const Aws::Vector<Aws::String>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>A list of the tunable categories for the hyperparameter.</p>
-     */
-    inline void SetValues(Aws::Vector<Aws::String>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>A list of the tunable categories for the hyperparameter.</p>
-     */
-    inline CategoricalParameterRange& WithValues(const Aws::Vector<Aws::String>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>A list of the tunable categories for the hyperparameter.</p>
-     */
-    inline CategoricalParameterRange& WithValues(Aws::Vector<Aws::String>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the tunable categories for the hyperparameter.</p>
-     */
-    inline CategoricalParameterRange& AddValues(const Aws::String& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the tunable categories for the hyperparameter.</p>
-     */
-    inline CategoricalParameterRange& AddValues(Aws::String&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of the tunable categories for the hyperparameter.</p>
-     */
-    inline CategoricalParameterRange& AddValues(const char* value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    CategoricalParameterRange& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = Aws::String>
+    CategoricalParameterRange& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_name;

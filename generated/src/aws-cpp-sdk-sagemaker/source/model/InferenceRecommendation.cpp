@@ -18,59 +18,55 @@ namespace SageMaker
 namespace Model
 {
 
-InferenceRecommendation::InferenceRecommendation() : 
-    m_metricsHasBeenSet(false),
-    m_endpointConfigurationHasBeenSet(false),
-    m_modelConfigurationHasBeenSet(false),
-    m_recommendationIdHasBeenSet(false)
-{
-}
-
-InferenceRecommendation::InferenceRecommendation(JsonView jsonValue) : 
-    m_metricsHasBeenSet(false),
-    m_endpointConfigurationHasBeenSet(false),
-    m_modelConfigurationHasBeenSet(false),
-    m_recommendationIdHasBeenSet(false)
+InferenceRecommendation::InferenceRecommendation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 InferenceRecommendation& InferenceRecommendation::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("Metrics"))
-  {
-    m_metrics = jsonValue.GetObject("Metrics");
-
-    m_metricsHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("EndpointConfiguration"))
-  {
-    m_endpointConfiguration = jsonValue.GetObject("EndpointConfiguration");
-
-    m_endpointConfigurationHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("ModelConfiguration"))
-  {
-    m_modelConfiguration = jsonValue.GetObject("ModelConfiguration");
-
-    m_modelConfigurationHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("RecommendationId"))
   {
     m_recommendationId = jsonValue.GetString("RecommendationId");
-
     m_recommendationIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Metrics"))
+  {
+    m_metrics = jsonValue.GetObject("Metrics");
+    m_metricsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("EndpointConfiguration"))
+  {
+    m_endpointConfiguration = jsonValue.GetObject("EndpointConfiguration");
+    m_endpointConfigurationHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("ModelConfiguration"))
+  {
+    m_modelConfiguration = jsonValue.GetObject("ModelConfiguration");
+    m_modelConfigurationHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("InvocationEndTime"))
+  {
+    m_invocationEndTime = jsonValue.GetDouble("InvocationEndTime");
+    m_invocationEndTimeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("InvocationStartTime"))
+  {
+    m_invocationStartTime = jsonValue.GetDouble("InvocationStartTime");
+    m_invocationStartTimeHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue InferenceRecommendation::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_recommendationIdHasBeenSet)
+  {
+   payload.WithString("RecommendationId", m_recommendationId);
+
+  }
 
   if(m_metricsHasBeenSet)
   {
@@ -90,10 +86,14 @@ JsonValue InferenceRecommendation::Jsonize() const
 
   }
 
-  if(m_recommendationIdHasBeenSet)
+  if(m_invocationEndTimeHasBeenSet)
   {
-   payload.WithString("RecommendationId", m_recommendationId);
+   payload.WithDouble("InvocationEndTime", m_invocationEndTime.SecondsWithMSPrecision());
+  }
 
+  if(m_invocationStartTimeHasBeenSet)
+  {
+   payload.WithDouble("InvocationStartTime", m_invocationStartTime.SecondsWithMSPrecision());
   }
 
   return payload;

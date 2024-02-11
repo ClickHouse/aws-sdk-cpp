@@ -12,25 +12,13 @@ using namespace Aws::Omics::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateAnnotationStoreRequest::CreateAnnotationStoreRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_referenceHasBeenSet(false),
-    m_sseConfigHasBeenSet(false),
-    m_storeFormat(StoreFormat::NOT_SET),
-    m_storeFormatHasBeenSet(false),
-    m_storeOptionsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateAnnotationStoreRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_descriptionHasBeenSet)
+  if(m_referenceHasBeenSet)
   {
-   payload.WithString("description", m_description);
+   payload.WithObject("reference", m_reference.Jsonize());
 
   }
 
@@ -40,9 +28,26 @@ Aws::String CreateAnnotationStoreRequest::SerializePayload() const
 
   }
 
-  if(m_referenceHasBeenSet)
+  if(m_descriptionHasBeenSet)
   {
-   payload.WithObject("reference", m_reference.Jsonize());
+   payload.WithString("description", m_description);
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_versionNameHasBeenSet)
+  {
+   payload.WithString("versionName", m_versionName);
 
   }
 
@@ -60,17 +65,6 @@ Aws::String CreateAnnotationStoreRequest::SerializePayload() const
   if(m_storeOptionsHasBeenSet)
   {
    payload.WithObject("storeOptions", m_storeOptions.Jsonize());
-
-  }
-
-  if(m_tagsHasBeenSet)
-  {
-   JsonValue tagsJsonMap;
-   for(auto& tagsItem : m_tags)
-   {
-     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
-   }
-   payload.WithObject("tags", std::move(tagsJsonMap));
 
   }
 

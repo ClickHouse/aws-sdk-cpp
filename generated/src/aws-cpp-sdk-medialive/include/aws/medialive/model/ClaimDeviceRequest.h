@@ -25,7 +25,7 @@ namespace Model
   class ClaimDeviceRequest : public MediaLiveRequest
   {
   public:
-    AWS_MEDIALIVE_API ClaimDeviceRequest();
+    AWS_MEDIALIVE_API ClaimDeviceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,46 +36,17 @@ namespace Model
     AWS_MEDIALIVE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * The id of the device you want to claim.
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * The id of the device you want to claim.
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
-
-    /**
-     * The id of the device you want to claim.
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * The id of the device you want to claim.
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * The id of the device you want to claim.
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * The id of the device you want to claim.
-     */
-    inline ClaimDeviceRequest& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * The id of the device you want to claim.
-     */
-    inline ClaimDeviceRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * The id of the device you want to claim.
-     */
-    inline ClaimDeviceRequest& WithId(const char* value) { SetId(value); return *this;}
-
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    ClaimDeviceRequest& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

@@ -18,21 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-DateTimeParameterDeclaration::DateTimeParameterDeclaration() : 
-    m_nameHasBeenSet(false),
-    m_defaultValuesHasBeenSet(false),
-    m_timeGranularity(TimeGranularity::NOT_SET),
-    m_timeGranularityHasBeenSet(false),
-    m_valueWhenUnsetHasBeenSet(false)
-{
-}
-
-DateTimeParameterDeclaration::DateTimeParameterDeclaration(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_defaultValuesHasBeenSet(false),
-    m_timeGranularity(TimeGranularity::NOT_SET),
-    m_timeGranularityHasBeenSet(false),
-    m_valueWhenUnsetHasBeenSet(false)
+DateTimeParameterDeclaration::DateTimeParameterDeclaration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,32 @@ DateTimeParameterDeclaration& DateTimeParameterDeclaration::operator =(JsonView 
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DefaultValues"))
   {
     m_defaultValues = jsonValue.GetObject("DefaultValues");
-
     m_defaultValuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TimeGranularity"))
   {
     m_timeGranularity = TimeGranularityMapper::GetTimeGranularityForName(jsonValue.GetString("TimeGranularity"));
-
     m_timeGranularityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ValueWhenUnset"))
   {
     m_valueWhenUnset = jsonValue.GetObject("ValueWhenUnset");
-
     m_valueWhenUnsetHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("MappedDataSetParameters"))
+  {
+    Aws::Utils::Array<JsonView> mappedDataSetParametersJsonList = jsonValue.GetArray("MappedDataSetParameters");
+    for(unsigned mappedDataSetParametersIndex = 0; mappedDataSetParametersIndex < mappedDataSetParametersJsonList.GetLength(); ++mappedDataSetParametersIndex)
+    {
+      m_mappedDataSetParameters.push_back(mappedDataSetParametersJsonList[mappedDataSetParametersIndex].AsObject());
+    }
+    m_mappedDataSetParametersHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -94,6 +81,17 @@ JsonValue DateTimeParameterDeclaration::Jsonize() const
   if(m_valueWhenUnsetHasBeenSet)
   {
    payload.WithObject("ValueWhenUnset", m_valueWhenUnset.Jsonize());
+
+  }
+
+  if(m_mappedDataSetParametersHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> mappedDataSetParametersJsonList(m_mappedDataSetParameters.size());
+   for(unsigned mappedDataSetParametersIndex = 0; mappedDataSetParametersIndex < mappedDataSetParametersJsonList.GetLength(); ++mappedDataSetParametersIndex)
+   {
+     mappedDataSetParametersJsonList[mappedDataSetParametersIndex].AsObject(m_mappedDataSetParameters[mappedDataSetParametersIndex].Jsonize());
+   }
+   payload.WithArray("MappedDataSetParameters", std::move(mappedDataSetParametersJsonList));
 
   }
 

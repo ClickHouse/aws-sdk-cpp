@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-BundleTaskError::BundleTaskError() : 
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-BundleTaskError::BundleTaskError(const XmlNode& xmlNode) : 
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+BundleTaskError::BundleTaskError(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

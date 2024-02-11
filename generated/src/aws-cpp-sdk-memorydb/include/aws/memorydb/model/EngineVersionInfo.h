@@ -24,150 +24,72 @@ namespace Model
 {
 
   /**
-   * <p>Provides details of the Redis engine version</p><p><h3>See Also:</h3>   <a
+   * <p>Provides details of the Redis OSS engine version</p><p><h3>See Also:</h3>  
+   * <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/memorydb-2021-01-01/EngineVersionInfo">AWS
    * API Reference</a></p>
    */
   class EngineVersionInfo
   {
   public:
-    AWS_MEMORYDB_API EngineVersionInfo();
+    AWS_MEMORYDB_API EngineVersionInfo() = default;
     AWS_MEMORYDB_API EngineVersionInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEMORYDB_API EngineVersionInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEMORYDB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The engine version</p>
+     * <p>The name of the engine for which version information is provided.</p>
      */
-    inline const Aws::String& GetEngineVersion() const{ return m_engineVersion; }
+    inline const Aws::String& GetEngine() const { return m_engine; }
+    inline bool EngineHasBeenSet() const { return m_engineHasBeenSet; }
+    template<typename EngineT = Aws::String>
+    void SetEngine(EngineT&& value) { m_engineHasBeenSet = true; m_engine = std::forward<EngineT>(value); }
+    template<typename EngineT = Aws::String>
+    EngineVersionInfo& WithEngine(EngineT&& value) { SetEngine(std::forward<EngineT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>The engine version</p>
      */
+    inline const Aws::String& GetEngineVersion() const { return m_engineVersion; }
     inline bool EngineVersionHasBeenSet() const { return m_engineVersionHasBeenSet; }
+    template<typename EngineVersionT = Aws::String>
+    void SetEngineVersion(EngineVersionT&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::forward<EngineVersionT>(value); }
+    template<typename EngineVersionT = Aws::String>
+    EngineVersionInfo& WithEngineVersion(EngineVersionT&& value) { SetEngineVersion(std::forward<EngineVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The engine version</p>
-     */
-    inline void SetEngineVersion(const Aws::String& value) { m_engineVersionHasBeenSet = true; m_engineVersion = value; }
-
-    /**
-     * <p>The engine version</p>
-     */
-    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::move(value); }
-
-    /**
-     * <p>The engine version</p>
-     */
-    inline void SetEngineVersion(const char* value) { m_engineVersionHasBeenSet = true; m_engineVersion.assign(value); }
-
-    /**
-     * <p>The engine version</p>
-     */
-    inline EngineVersionInfo& WithEngineVersion(const Aws::String& value) { SetEngineVersion(value); return *this;}
-
-    /**
-     * <p>The engine version</p>
-     */
-    inline EngineVersionInfo& WithEngineVersion(Aws::String&& value) { SetEngineVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The engine version</p>
-     */
-    inline EngineVersionInfo& WithEngineVersion(const char* value) { SetEngineVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The patched engine version</p>
      */
-    inline const Aws::String& GetEnginePatchVersion() const{ return m_enginePatchVersion; }
-
-    /**
-     * <p>The patched engine version</p>
-     */
+    inline const Aws::String& GetEnginePatchVersion() const { return m_enginePatchVersion; }
     inline bool EnginePatchVersionHasBeenSet() const { return m_enginePatchVersionHasBeenSet; }
+    template<typename EnginePatchVersionT = Aws::String>
+    void SetEnginePatchVersion(EnginePatchVersionT&& value) { m_enginePatchVersionHasBeenSet = true; m_enginePatchVersion = std::forward<EnginePatchVersionT>(value); }
+    template<typename EnginePatchVersionT = Aws::String>
+    EngineVersionInfo& WithEnginePatchVersion(EnginePatchVersionT&& value) { SetEnginePatchVersion(std::forward<EnginePatchVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The patched engine version</p>
-     */
-    inline void SetEnginePatchVersion(const Aws::String& value) { m_enginePatchVersionHasBeenSet = true; m_enginePatchVersion = value; }
-
-    /**
-     * <p>The patched engine version</p>
-     */
-    inline void SetEnginePatchVersion(Aws::String&& value) { m_enginePatchVersionHasBeenSet = true; m_enginePatchVersion = std::move(value); }
-
-    /**
-     * <p>The patched engine version</p>
-     */
-    inline void SetEnginePatchVersion(const char* value) { m_enginePatchVersionHasBeenSet = true; m_enginePatchVersion.assign(value); }
-
-    /**
-     * <p>The patched engine version</p>
-     */
-    inline EngineVersionInfo& WithEnginePatchVersion(const Aws::String& value) { SetEnginePatchVersion(value); return *this;}
-
-    /**
-     * <p>The patched engine version</p>
-     */
-    inline EngineVersionInfo& WithEnginePatchVersion(Aws::String&& value) { SetEnginePatchVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The patched engine version</p>
-     */
-    inline EngineVersionInfo& WithEnginePatchVersion(const char* value) { SetEnginePatchVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the name of the parameter group family to which the engine default
      * parameters apply.</p>
      */
-    inline const Aws::String& GetParameterGroupFamily() const{ return m_parameterGroupFamily; }
-
-    /**
-     * <p>Specifies the name of the parameter group family to which the engine default
-     * parameters apply.</p>
-     */
+    inline const Aws::String& GetParameterGroupFamily() const { return m_parameterGroupFamily; }
     inline bool ParameterGroupFamilyHasBeenSet() const { return m_parameterGroupFamilyHasBeenSet; }
-
-    /**
-     * <p>Specifies the name of the parameter group family to which the engine default
-     * parameters apply.</p>
-     */
-    inline void SetParameterGroupFamily(const Aws::String& value) { m_parameterGroupFamilyHasBeenSet = true; m_parameterGroupFamily = value; }
-
-    /**
-     * <p>Specifies the name of the parameter group family to which the engine default
-     * parameters apply.</p>
-     */
-    inline void SetParameterGroupFamily(Aws::String&& value) { m_parameterGroupFamilyHasBeenSet = true; m_parameterGroupFamily = std::move(value); }
-
-    /**
-     * <p>Specifies the name of the parameter group family to which the engine default
-     * parameters apply.</p>
-     */
-    inline void SetParameterGroupFamily(const char* value) { m_parameterGroupFamilyHasBeenSet = true; m_parameterGroupFamily.assign(value); }
-
-    /**
-     * <p>Specifies the name of the parameter group family to which the engine default
-     * parameters apply.</p>
-     */
-    inline EngineVersionInfo& WithParameterGroupFamily(const Aws::String& value) { SetParameterGroupFamily(value); return *this;}
-
-    /**
-     * <p>Specifies the name of the parameter group family to which the engine default
-     * parameters apply.</p>
-     */
-    inline EngineVersionInfo& WithParameterGroupFamily(Aws::String&& value) { SetParameterGroupFamily(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the name of the parameter group family to which the engine default
-     * parameters apply.</p>
-     */
-    inline EngineVersionInfo& WithParameterGroupFamily(const char* value) { SetParameterGroupFamily(value); return *this;}
-
+    template<typename ParameterGroupFamilyT = Aws::String>
+    void SetParameterGroupFamily(ParameterGroupFamilyT&& value) { m_parameterGroupFamilyHasBeenSet = true; m_parameterGroupFamily = std::forward<ParameterGroupFamilyT>(value); }
+    template<typename ParameterGroupFamilyT = Aws::String>
+    EngineVersionInfo& WithParameterGroupFamily(ParameterGroupFamilyT&& value) { SetParameterGroupFamily(std::forward<ParameterGroupFamilyT>(value)); return *this;}
+    ///@}
   private:
+
+    Aws::String m_engine;
+    bool m_engineHasBeenSet = false;
 
     Aws::String m_engineVersion;
     bool m_engineVersionHasBeenSet = false;

@@ -18,17 +18,7 @@ namespace Connect
 namespace Model
 {
 
-HoursOfOperationSummary::HoursOfOperationSummary() : 
-    m_idHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-HoursOfOperationSummary::HoursOfOperationSummary(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_nameHasBeenSet(false)
+HoursOfOperationSummary::HoursOfOperationSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,28 @@ HoursOfOperationSummary& HoursOfOperationSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetString("Id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("LastModifiedTime"))
+  {
+    m_lastModifiedTime = jsonValue.GetDouble("LastModifiedTime");
+    m_lastModifiedTimeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("LastModifiedRegion"))
+  {
+    m_lastModifiedRegion = jsonValue.GetString("LastModifiedRegion");
+    m_lastModifiedRegionHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -78,6 +72,17 @@ JsonValue HoursOfOperationSummary::Jsonize() const
   if(m_nameHasBeenSet)
   {
    payload.WithString("Name", m_name);
+
+  }
+
+  if(m_lastModifiedTimeHasBeenSet)
+  {
+   payload.WithDouble("LastModifiedTime", m_lastModifiedTime.SecondsWithMSPrecision());
+  }
+
+  if(m_lastModifiedRegionHasBeenSet)
+  {
+   payload.WithString("LastModifiedRegion", m_lastModifiedRegion);
 
   }
 

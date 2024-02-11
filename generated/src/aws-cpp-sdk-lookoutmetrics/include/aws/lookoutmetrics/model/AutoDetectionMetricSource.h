@@ -31,42 +31,23 @@ namespace Model
   class AutoDetectionMetricSource
   {
   public:
-    AWS_LOOKOUTMETRICS_API AutoDetectionMetricSource();
+    AWS_LOOKOUTMETRICS_API AutoDetectionMetricSource() = default;
     AWS_LOOKOUTMETRICS_API AutoDetectionMetricSource(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API AutoDetectionMetricSource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The source's source config.</p>
      */
-    inline const AutoDetectionS3SourceConfig& GetS3SourceConfig() const{ return m_s3SourceConfig; }
-
-    /**
-     * <p>The source's source config.</p>
-     */
+    inline const AutoDetectionS3SourceConfig& GetS3SourceConfig() const { return m_s3SourceConfig; }
     inline bool S3SourceConfigHasBeenSet() const { return m_s3SourceConfigHasBeenSet; }
-
-    /**
-     * <p>The source's source config.</p>
-     */
-    inline void SetS3SourceConfig(const AutoDetectionS3SourceConfig& value) { m_s3SourceConfigHasBeenSet = true; m_s3SourceConfig = value; }
-
-    /**
-     * <p>The source's source config.</p>
-     */
-    inline void SetS3SourceConfig(AutoDetectionS3SourceConfig&& value) { m_s3SourceConfigHasBeenSet = true; m_s3SourceConfig = std::move(value); }
-
-    /**
-     * <p>The source's source config.</p>
-     */
-    inline AutoDetectionMetricSource& WithS3SourceConfig(const AutoDetectionS3SourceConfig& value) { SetS3SourceConfig(value); return *this;}
-
-    /**
-     * <p>The source's source config.</p>
-     */
-    inline AutoDetectionMetricSource& WithS3SourceConfig(AutoDetectionS3SourceConfig&& value) { SetS3SourceConfig(std::move(value)); return *this;}
-
+    template<typename S3SourceConfigT = AutoDetectionS3SourceConfig>
+    void SetS3SourceConfig(S3SourceConfigT&& value) { m_s3SourceConfigHasBeenSet = true; m_s3SourceConfig = std::forward<S3SourceConfigT>(value); }
+    template<typename S3SourceConfigT = AutoDetectionS3SourceConfig>
+    AutoDetectionMetricSource& WithS3SourceConfig(S3SourceConfigT&& value) { SetS3SourceConfig(std::forward<S3SourceConfigT>(value)); return *this;}
+    ///@}
   private:
 
     AutoDetectionS3SourceConfig m_s3SourceConfig;

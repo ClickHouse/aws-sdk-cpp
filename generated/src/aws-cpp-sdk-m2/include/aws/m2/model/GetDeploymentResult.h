@@ -29,261 +29,117 @@ namespace Model
   class GetDeploymentResult
   {
   public:
-    AWS_MAINFRAMEMODERNIZATION_API GetDeploymentResult();
+    AWS_MAINFRAMEMODERNIZATION_API GetDeploymentResult() = default;
     AWS_MAINFRAMEMODERNIZATION_API GetDeploymentResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MAINFRAMEMODERNIZATION_API GetDeploymentResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The unique identifier of the application.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    GetDeploymentResult& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the application.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationId = value; }
-
-    /**
-     * <p>The unique identifier of the application.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the application.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the application.</p>
-     */
-    inline GetDeploymentResult& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the application.</p>
-     */
-    inline GetDeploymentResult& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the application.</p>
-     */
-    inline GetDeploymentResult& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The application version.</p>
      */
-    inline int GetApplicationVersion() const{ return m_applicationVersion; }
-
-    /**
-     * <p>The application version.</p>
-     */
-    inline void SetApplicationVersion(int value) { m_applicationVersion = value; }
-
-    /**
-     * <p>The application version.</p>
-     */
+    inline int GetApplicationVersion() const { return m_applicationVersion; }
+    inline void SetApplicationVersion(int value) { m_applicationVersionHasBeenSet = true; m_applicationVersion = value; }
     inline GetDeploymentResult& WithApplicationVersion(int value) { SetApplicationVersion(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The timestamp when the deployment was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    GetDeploymentResult& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp when the deployment was created.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTime = value; }
-
-    /**
-     * <p>The timestamp when the deployment was created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTime = std::move(value); }
-
-    /**
-     * <p>The timestamp when the deployment was created.</p>
-     */
-    inline GetDeploymentResult& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The timestamp when the deployment was created.</p>
-     */
-    inline GetDeploymentResult& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of the deployment.</p>
      */
-    inline const Aws::String& GetDeploymentId() const{ return m_deploymentId; }
+    inline const Aws::String& GetDeploymentId() const { return m_deploymentId; }
+    template<typename DeploymentIdT = Aws::String>
+    void SetDeploymentId(DeploymentIdT&& value) { m_deploymentIdHasBeenSet = true; m_deploymentId = std::forward<DeploymentIdT>(value); }
+    template<typename DeploymentIdT = Aws::String>
+    GetDeploymentResult& WithDeploymentId(DeploymentIdT&& value) { SetDeploymentId(std::forward<DeploymentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the deployment.</p>
-     */
-    inline void SetDeploymentId(const Aws::String& value) { m_deploymentId = value; }
-
-    /**
-     * <p>The unique identifier of the deployment.</p>
-     */
-    inline void SetDeploymentId(Aws::String&& value) { m_deploymentId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the deployment.</p>
-     */
-    inline void SetDeploymentId(const char* value) { m_deploymentId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the deployment.</p>
-     */
-    inline GetDeploymentResult& WithDeploymentId(const Aws::String& value) { SetDeploymentId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the deployment.</p>
-     */
-    inline GetDeploymentResult& WithDeploymentId(Aws::String&& value) { SetDeploymentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the deployment.</p>
-     */
-    inline GetDeploymentResult& WithDeploymentId(const char* value) { SetDeploymentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of the runtime environment.</p>
      */
-    inline const Aws::String& GetEnvironmentId() const{ return m_environmentId; }
+    inline const Aws::String& GetEnvironmentId() const { return m_environmentId; }
+    template<typename EnvironmentIdT = Aws::String>
+    void SetEnvironmentId(EnvironmentIdT&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::forward<EnvironmentIdT>(value); }
+    template<typename EnvironmentIdT = Aws::String>
+    GetDeploymentResult& WithEnvironmentId(EnvironmentIdT&& value) { SetEnvironmentId(std::forward<EnvironmentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the runtime environment.</p>
-     */
-    inline void SetEnvironmentId(const Aws::String& value) { m_environmentId = value; }
-
-    /**
-     * <p>The unique identifier of the runtime environment.</p>
-     */
-    inline void SetEnvironmentId(Aws::String&& value) { m_environmentId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the runtime environment.</p>
-     */
-    inline void SetEnvironmentId(const char* value) { m_environmentId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the runtime environment.</p>
-     */
-    inline GetDeploymentResult& WithEnvironmentId(const Aws::String& value) { SetEnvironmentId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the runtime environment.</p>
-     */
-    inline GetDeploymentResult& WithEnvironmentId(Aws::String&& value) { SetEnvironmentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the runtime environment.</p>
-     */
-    inline GetDeploymentResult& WithEnvironmentId(const char* value) { SetEnvironmentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the deployment.</p>
      */
-    inline const DeploymentLifecycle& GetStatus() const{ return m_status; }
+    inline DeploymentLifecycle GetStatus() const { return m_status; }
+    inline void SetStatus(DeploymentLifecycle value) { m_statusHasBeenSet = true; m_status = value; }
+    inline GetDeploymentResult& WithStatus(DeploymentLifecycle value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the deployment.</p>
-     */
-    inline void SetStatus(const DeploymentLifecycle& value) { m_status = value; }
-
-    /**
-     * <p>The status of the deployment.</p>
-     */
-    inline void SetStatus(DeploymentLifecycle&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of the deployment.</p>
-     */
-    inline GetDeploymentResult& WithStatus(const DeploymentLifecycle& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the deployment.</p>
-     */
-    inline GetDeploymentResult& WithStatus(DeploymentLifecycle&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason for the reported status.</p>
      */
-    inline const Aws::String& GetStatusReason() const{ return m_statusReason; }
+    inline const Aws::String& GetStatusReason() const { return m_statusReason; }
+    template<typename StatusReasonT = Aws::String>
+    void SetStatusReason(StatusReasonT&& value) { m_statusReasonHasBeenSet = true; m_statusReason = std::forward<StatusReasonT>(value); }
+    template<typename StatusReasonT = Aws::String>
+    GetDeploymentResult& WithStatusReason(StatusReasonT&& value) { SetStatusReason(std::forward<StatusReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reason for the reported status.</p>
-     */
-    inline void SetStatusReason(const Aws::String& value) { m_statusReason = value; }
-
-    /**
-     * <p>The reason for the reported status.</p>
-     */
-    inline void SetStatusReason(Aws::String&& value) { m_statusReason = std::move(value); }
-
-    /**
-     * <p>The reason for the reported status.</p>
-     */
-    inline void SetStatusReason(const char* value) { m_statusReason.assign(value); }
-
-    /**
-     * <p>The reason for the reported status.</p>
-     */
-    inline GetDeploymentResult& WithStatusReason(const Aws::String& value) { SetStatusReason(value); return *this;}
-
-    /**
-     * <p>The reason for the reported status.</p>
-     */
-    inline GetDeploymentResult& WithStatusReason(Aws::String&& value) { SetStatusReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason for the reported status.</p>
-     */
-    inline GetDeploymentResult& WithStatusReason(const char* value) { SetStatusReason(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetDeploymentResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetDeploymentResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetDeploymentResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetDeploymentResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;
+    bool m_applicationIdHasBeenSet = false;
 
-    int m_applicationVersion;
+    int m_applicationVersion{0};
+    bool m_applicationVersionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
+    bool m_creationTimeHasBeenSet = false;
 
     Aws::String m_deploymentId;
+    bool m_deploymentIdHasBeenSet = false;
 
     Aws::String m_environmentId;
+    bool m_environmentIdHasBeenSet = false;
 
-    DeploymentLifecycle m_status;
+    DeploymentLifecycle m_status{DeploymentLifecycle::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_statusReason;
+    bool m_statusReasonHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

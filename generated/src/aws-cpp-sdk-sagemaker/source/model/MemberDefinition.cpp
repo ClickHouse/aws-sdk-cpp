@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-MemberDefinition::MemberDefinition() : 
-    m_cognitoMemberDefinitionHasBeenSet(false),
-    m_oidcMemberDefinitionHasBeenSet(false)
-{
-}
-
-MemberDefinition::MemberDefinition(JsonView jsonValue) : 
-    m_cognitoMemberDefinitionHasBeenSet(false),
-    m_oidcMemberDefinitionHasBeenSet(false)
+MemberDefinition::MemberDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ MemberDefinition& MemberDefinition::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CognitoMemberDefinition"))
   {
     m_cognitoMemberDefinition = jsonValue.GetObject("CognitoMemberDefinition");
-
     m_cognitoMemberDefinitionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OidcMemberDefinition"))
   {
     m_oidcMemberDefinition = jsonValue.GetObject("OidcMemberDefinition");
-
     m_oidcMemberDefinitionHasBeenSet = true;
   }
-
   return *this;
 }
 

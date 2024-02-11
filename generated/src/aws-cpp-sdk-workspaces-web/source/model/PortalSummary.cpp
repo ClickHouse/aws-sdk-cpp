@@ -18,142 +18,103 @@ namespace WorkSpacesWeb
 namespace Model
 {
 
-PortalSummary::PortalSummary() : 
-    m_authenticationType(AuthenticationType::NOT_SET),
-    m_authenticationTypeHasBeenSet(false),
-    m_browserSettingsArnHasBeenSet(false),
-    m_browserType(BrowserType::NOT_SET),
-    m_browserTypeHasBeenSet(false),
-    m_creationDateHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_networkSettingsArnHasBeenSet(false),
-    m_portalArnHasBeenSet(false),
-    m_portalEndpointHasBeenSet(false),
-    m_portalStatus(PortalStatus::NOT_SET),
-    m_portalStatusHasBeenSet(false),
-    m_rendererType(RendererType::NOT_SET),
-    m_rendererTypeHasBeenSet(false),
-    m_trustStoreArnHasBeenSet(false),
-    m_userAccessLoggingSettingsArnHasBeenSet(false),
-    m_userSettingsArnHasBeenSet(false)
-{
-}
-
-PortalSummary::PortalSummary(JsonView jsonValue) : 
-    m_authenticationType(AuthenticationType::NOT_SET),
-    m_authenticationTypeHasBeenSet(false),
-    m_browserSettingsArnHasBeenSet(false),
-    m_browserType(BrowserType::NOT_SET),
-    m_browserTypeHasBeenSet(false),
-    m_creationDateHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_networkSettingsArnHasBeenSet(false),
-    m_portalArnHasBeenSet(false),
-    m_portalEndpointHasBeenSet(false),
-    m_portalStatus(PortalStatus::NOT_SET),
-    m_portalStatusHasBeenSet(false),
-    m_rendererType(RendererType::NOT_SET),
-    m_rendererTypeHasBeenSet(false),
-    m_trustStoreArnHasBeenSet(false),
-    m_userAccessLoggingSettingsArnHasBeenSet(false),
-    m_userSettingsArnHasBeenSet(false)
+PortalSummary::PortalSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 PortalSummary& PortalSummary::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("authenticationType"))
-  {
-    m_authenticationType = AuthenticationTypeMapper::GetAuthenticationTypeForName(jsonValue.GetString("authenticationType"));
-
-    m_authenticationTypeHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("browserSettingsArn"))
-  {
-    m_browserSettingsArn = jsonValue.GetString("browserSettingsArn");
-
-    m_browserSettingsArnHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("browserType"))
-  {
-    m_browserType = BrowserTypeMapper::GetBrowserTypeForName(jsonValue.GetString("browserType"));
-
-    m_browserTypeHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("creationDate"))
-  {
-    m_creationDate = jsonValue.GetDouble("creationDate");
-
-    m_creationDateHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("displayName"))
-  {
-    m_displayName = jsonValue.GetString("displayName");
-
-    m_displayNameHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("networkSettingsArn"))
-  {
-    m_networkSettingsArn = jsonValue.GetString("networkSettingsArn");
-
-    m_networkSettingsArnHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("portalArn"))
   {
     m_portalArn = jsonValue.GetString("portalArn");
-
     m_portalArnHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("portalEndpoint"))
-  {
-    m_portalEndpoint = jsonValue.GetString("portalEndpoint");
-
-    m_portalEndpointHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("portalStatus"))
-  {
-    m_portalStatus = PortalStatusMapper::GetPortalStatusForName(jsonValue.GetString("portalStatus"));
-
-    m_portalStatusHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("rendererType"))
   {
     m_rendererType = RendererTypeMapper::GetRendererTypeForName(jsonValue.GetString("rendererType"));
-
     m_rendererTypeHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("trustStoreArn"))
+  if(jsonValue.ValueExists("browserType"))
   {
-    m_trustStoreArn = jsonValue.GetString("trustStoreArn");
-
-    m_trustStoreArnHasBeenSet = true;
+    m_browserType = BrowserTypeMapper::GetBrowserTypeForName(jsonValue.GetString("browserType"));
+    m_browserTypeHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("userAccessLoggingSettingsArn"))
+  if(jsonValue.ValueExists("portalStatus"))
   {
-    m_userAccessLoggingSettingsArn = jsonValue.GetString("userAccessLoggingSettingsArn");
-
-    m_userAccessLoggingSettingsArnHasBeenSet = true;
+    m_portalStatus = PortalStatusMapper::GetPortalStatusForName(jsonValue.GetString("portalStatus"));
+    m_portalStatusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("portalEndpoint"))
+  {
+    m_portalEndpoint = jsonValue.GetString("portalEndpoint");
+    m_portalEndpointHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("displayName"))
+  {
+    m_displayName = jsonValue.GetString("displayName");
+    m_displayNameHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("creationDate"))
+  {
+    m_creationDate = jsonValue.GetDouble("creationDate");
+    m_creationDateHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("browserSettingsArn"))
+  {
+    m_browserSettingsArn = jsonValue.GetString("browserSettingsArn");
+    m_browserSettingsArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("dataProtectionSettingsArn"))
+  {
+    m_dataProtectionSettingsArn = jsonValue.GetString("dataProtectionSettingsArn");
+    m_dataProtectionSettingsArnHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("userSettingsArn"))
   {
     m_userSettingsArn = jsonValue.GetString("userSettingsArn");
-
     m_userSettingsArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("networkSettingsArn"))
+  {
+    m_networkSettingsArn = jsonValue.GetString("networkSettingsArn");
+    m_networkSettingsArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("sessionLoggerArn"))
+  {
+    m_sessionLoggerArn = jsonValue.GetString("sessionLoggerArn");
+    m_sessionLoggerArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("trustStoreArn"))
+  {
+    m_trustStoreArn = jsonValue.GetString("trustStoreArn");
+    m_trustStoreArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("userAccessLoggingSettingsArn"))
+  {
+    m_userAccessLoggingSettingsArn = jsonValue.GetString("userAccessLoggingSettingsArn");
+    m_userAccessLoggingSettingsArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("authenticationType"))
+  {
+    m_authenticationType = AuthenticationTypeMapper::GetAuthenticationTypeForName(jsonValue.GetString("authenticationType"));
+    m_authenticationTypeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("ipAccessSettingsArn"))
+  {
+    m_ipAccessSettingsArn = jsonValue.GetString("ipAccessSettingsArn");
+    m_ipAccessSettingsArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("instanceType"))
+  {
+    m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(jsonValue.GetString("instanceType"));
+    m_instanceTypeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("maxConcurrentSessions"))
+  {
+    m_maxConcurrentSessions = jsonValue.GetInteger("maxConcurrentSessions");
+    m_maxConcurrentSessionsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -161,9 +122,42 @@ JsonValue PortalSummary::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_authenticationTypeHasBeenSet)
+  if(m_portalArnHasBeenSet)
   {
-   payload.WithString("authenticationType", AuthenticationTypeMapper::GetNameForAuthenticationType(m_authenticationType));
+   payload.WithString("portalArn", m_portalArn);
+
+  }
+
+  if(m_rendererTypeHasBeenSet)
+  {
+   payload.WithString("rendererType", RendererTypeMapper::GetNameForRendererType(m_rendererType));
+  }
+
+  if(m_browserTypeHasBeenSet)
+  {
+   payload.WithString("browserType", BrowserTypeMapper::GetNameForBrowserType(m_browserType));
+  }
+
+  if(m_portalStatusHasBeenSet)
+  {
+   payload.WithString("portalStatus", PortalStatusMapper::GetNameForPortalStatus(m_portalStatus));
+  }
+
+  if(m_portalEndpointHasBeenSet)
+  {
+   payload.WithString("portalEndpoint", m_portalEndpoint);
+
+  }
+
+  if(m_displayNameHasBeenSet)
+  {
+   payload.WithString("displayName", m_displayName);
+
+  }
+
+  if(m_creationDateHasBeenSet)
+  {
+   payload.WithDouble("creationDate", m_creationDate.SecondsWithMSPrecision());
   }
 
   if(m_browserSettingsArnHasBeenSet)
@@ -172,19 +166,15 @@ JsonValue PortalSummary::Jsonize() const
 
   }
 
-  if(m_browserTypeHasBeenSet)
+  if(m_dataProtectionSettingsArnHasBeenSet)
   {
-   payload.WithString("browserType", BrowserTypeMapper::GetNameForBrowserType(m_browserType));
+   payload.WithString("dataProtectionSettingsArn", m_dataProtectionSettingsArn);
+
   }
 
-  if(m_creationDateHasBeenSet)
+  if(m_userSettingsArnHasBeenSet)
   {
-   payload.WithDouble("creationDate", m_creationDate.SecondsWithMSPrecision());
-  }
-
-  if(m_displayNameHasBeenSet)
-  {
-   payload.WithString("displayName", m_displayName);
+   payload.WithString("userSettingsArn", m_userSettingsArn);
 
   }
 
@@ -194,26 +184,10 @@ JsonValue PortalSummary::Jsonize() const
 
   }
 
-  if(m_portalArnHasBeenSet)
+  if(m_sessionLoggerArnHasBeenSet)
   {
-   payload.WithString("portalArn", m_portalArn);
+   payload.WithString("sessionLoggerArn", m_sessionLoggerArn);
 
-  }
-
-  if(m_portalEndpointHasBeenSet)
-  {
-   payload.WithString("portalEndpoint", m_portalEndpoint);
-
-  }
-
-  if(m_portalStatusHasBeenSet)
-  {
-   payload.WithString("portalStatus", PortalStatusMapper::GetNameForPortalStatus(m_portalStatus));
-  }
-
-  if(m_rendererTypeHasBeenSet)
-  {
-   payload.WithString("rendererType", RendererTypeMapper::GetNameForRendererType(m_rendererType));
   }
 
   if(m_trustStoreArnHasBeenSet)
@@ -228,9 +202,25 @@ JsonValue PortalSummary::Jsonize() const
 
   }
 
-  if(m_userSettingsArnHasBeenSet)
+  if(m_authenticationTypeHasBeenSet)
   {
-   payload.WithString("userSettingsArn", m_userSettingsArn);
+   payload.WithString("authenticationType", AuthenticationTypeMapper::GetNameForAuthenticationType(m_authenticationType));
+  }
+
+  if(m_ipAccessSettingsArnHasBeenSet)
+  {
+   payload.WithString("ipAccessSettingsArn", m_ipAccessSettingsArn);
+
+  }
+
+  if(m_instanceTypeHasBeenSet)
+  {
+   payload.WithString("instanceType", InstanceTypeMapper::GetNameForInstanceType(m_instanceType));
+  }
+
+  if(m_maxConcurrentSessionsHasBeenSet)
+  {
+   payload.WithInteger("maxConcurrentSessions", m_maxConcurrentSessions);
 
   }
 

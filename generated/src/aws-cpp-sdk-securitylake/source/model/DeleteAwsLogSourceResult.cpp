@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-DeleteAwsLogSourceResult::DeleteAwsLogSourceResult()
-{
-}
-
 DeleteAwsLogSourceResult::DeleteAwsLogSourceResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -36,23 +32,15 @@ DeleteAwsLogSourceResult& DeleteAwsLogSourceResult::operator =(const Aws::Amazon
     {
       m_failed.push_back(failedJsonList[failedIndex].AsString());
     }
+    m_failedHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("processing"))
-  {
-    Aws::Utils::Array<JsonView> processingJsonList = jsonValue.GetArray("processing");
-    for(unsigned processingIndex = 0; processingIndex < processingJsonList.GetLength(); ++processingIndex)
-    {
-      m_processing.push_back(processingJsonList[processingIndex].AsString());
-    }
-  }
-
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

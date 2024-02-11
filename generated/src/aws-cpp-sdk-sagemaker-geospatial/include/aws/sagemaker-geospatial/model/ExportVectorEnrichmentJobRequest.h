@@ -23,7 +23,7 @@ namespace Model
   class ExportVectorEnrichmentJobRequest : public SageMakerGeospatialRequest
   {
   public:
-    AWS_SAGEMAKERGEOSPATIAL_API ExportVectorEnrichmentJobRequest();
+    AWS_SAGEMAKERGEOSPATIAL_API ExportVectorEnrichmentJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,174 +34,61 @@ namespace Model
     AWS_SAGEMAKERGEOSPATIAL_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    ExportVectorEnrichmentJobRequest& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job.</p>
-     */
-    inline ExportVectorEnrichmentJobRequest& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job.</p>
-     */
-    inline ExportVectorEnrichmentJobRequest& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job.</p>
-     */
-    inline ExportVectorEnrichmentJobRequest& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique token that guarantees that the call to this API is idempotent.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>A unique token that guarantees that the call to this API is idempotent.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    ExportVectorEnrichmentJobRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique token that guarantees that the call to this API is idempotent.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>A unique token that guarantees that the call to this API is idempotent.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>A unique token that guarantees that the call to this API is idempotent.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>A unique token that guarantees that the call to this API is idempotent.</p>
-     */
-    inline ExportVectorEnrichmentJobRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>A unique token that guarantees that the call to this API is idempotent.</p>
-     */
-    inline ExportVectorEnrichmentJobRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique token that guarantees that the call to this API is idempotent.</p>
-     */
-    inline ExportVectorEnrichmentJobRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM rolewith permission to upload to
      * the location in OutputConfig.</p>
      */
-    inline const Aws::String& GetExecutionRoleArn() const{ return m_executionRoleArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM rolewith permission to upload to
-     * the location in OutputConfig.</p>
-     */
+    inline const Aws::String& GetExecutionRoleArn() const { return m_executionRoleArn; }
     inline bool ExecutionRoleArnHasBeenSet() const { return m_executionRoleArnHasBeenSet; }
+    template<typename ExecutionRoleArnT = Aws::String>
+    void SetExecutionRoleArn(ExecutionRoleArnT&& value) { m_executionRoleArnHasBeenSet = true; m_executionRoleArn = std::forward<ExecutionRoleArnT>(value); }
+    template<typename ExecutionRoleArnT = Aws::String>
+    ExportVectorEnrichmentJobRequest& WithExecutionRoleArn(ExecutionRoleArnT&& value) { SetExecutionRoleArn(std::forward<ExecutionRoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM rolewith permission to upload to
-     * the location in OutputConfig.</p>
-     */
-    inline void SetExecutionRoleArn(const Aws::String& value) { m_executionRoleArnHasBeenSet = true; m_executionRoleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM rolewith permission to upload to
-     * the location in OutputConfig.</p>
-     */
-    inline void SetExecutionRoleArn(Aws::String&& value) { m_executionRoleArnHasBeenSet = true; m_executionRoleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM rolewith permission to upload to
-     * the location in OutputConfig.</p>
-     */
-    inline void SetExecutionRoleArn(const char* value) { m_executionRoleArnHasBeenSet = true; m_executionRoleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM rolewith permission to upload to
-     * the location in OutputConfig.</p>
-     */
-    inline ExportVectorEnrichmentJobRequest& WithExecutionRoleArn(const Aws::String& value) { SetExecutionRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM rolewith permission to upload to
-     * the location in OutputConfig.</p>
-     */
-    inline ExportVectorEnrichmentJobRequest& WithExecutionRoleArn(Aws::String&& value) { SetExecutionRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM rolewith permission to upload to
-     * the location in OutputConfig.</p>
-     */
-    inline ExportVectorEnrichmentJobRequest& WithExecutionRoleArn(const char* value) { SetExecutionRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Output location information for exporting Vector Enrichment Job results. </p>
      */
-    inline const ExportVectorEnrichmentJobOutputConfig& GetOutputConfig() const{ return m_outputConfig; }
-
-    /**
-     * <p>Output location information for exporting Vector Enrichment Job results. </p>
-     */
+    inline const ExportVectorEnrichmentJobOutputConfig& GetOutputConfig() const { return m_outputConfig; }
     inline bool OutputConfigHasBeenSet() const { return m_outputConfigHasBeenSet; }
-
-    /**
-     * <p>Output location information for exporting Vector Enrichment Job results. </p>
-     */
-    inline void SetOutputConfig(const ExportVectorEnrichmentJobOutputConfig& value) { m_outputConfigHasBeenSet = true; m_outputConfig = value; }
-
-    /**
-     * <p>Output location information for exporting Vector Enrichment Job results. </p>
-     */
-    inline void SetOutputConfig(ExportVectorEnrichmentJobOutputConfig&& value) { m_outputConfigHasBeenSet = true; m_outputConfig = std::move(value); }
-
-    /**
-     * <p>Output location information for exporting Vector Enrichment Job results. </p>
-     */
-    inline ExportVectorEnrichmentJobRequest& WithOutputConfig(const ExportVectorEnrichmentJobOutputConfig& value) { SetOutputConfig(value); return *this;}
-
-    /**
-     * <p>Output location information for exporting Vector Enrichment Job results. </p>
-     */
-    inline ExportVectorEnrichmentJobRequest& WithOutputConfig(ExportVectorEnrichmentJobOutputConfig&& value) { SetOutputConfig(std::move(value)); return *this;}
-
+    template<typename OutputConfigT = ExportVectorEnrichmentJobOutputConfig>
+    void SetOutputConfig(OutputConfigT&& value) { m_outputConfigHasBeenSet = true; m_outputConfig = std::forward<OutputConfigT>(value); }
+    template<typename OutputConfigT = ExportVectorEnrichmentJobOutputConfig>
+    ExportVectorEnrichmentJobRequest& WithOutputConfig(OutputConfigT&& value) { SetOutputConfig(std::forward<OutputConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
     bool m_arnHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
     Aws::String m_executionRoleArn;
     bool m_executionRoleArnHasBeenSet = false;

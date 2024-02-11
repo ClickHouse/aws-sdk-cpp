@@ -25,7 +25,7 @@ namespace Model
   class DeleteIdentityRequest : public SESRequest
   {
   public:
-    AWS_SES_API DeleteIdentityRequest();
+    AWS_SES_API DeleteIdentityRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,54 +40,18 @@ namespace Model
 
   public:
 
+    ///@{
     /**
-     * <p>The identity to be removed from the list of identities for the AWS
-     * Account.</p>
+     * <p>The identity to be removed from the list of identities for the Amazon Web
+     * Services account.</p>
      */
-    inline const Aws::String& GetIdentity() const{ return m_identity; }
-
-    /**
-     * <p>The identity to be removed from the list of identities for the AWS
-     * Account.</p>
-     */
+    inline const Aws::String& GetIdentity() const { return m_identity; }
     inline bool IdentityHasBeenSet() const { return m_identityHasBeenSet; }
-
-    /**
-     * <p>The identity to be removed from the list of identities for the AWS
-     * Account.</p>
-     */
-    inline void SetIdentity(const Aws::String& value) { m_identityHasBeenSet = true; m_identity = value; }
-
-    /**
-     * <p>The identity to be removed from the list of identities for the AWS
-     * Account.</p>
-     */
-    inline void SetIdentity(Aws::String&& value) { m_identityHasBeenSet = true; m_identity = std::move(value); }
-
-    /**
-     * <p>The identity to be removed from the list of identities for the AWS
-     * Account.</p>
-     */
-    inline void SetIdentity(const char* value) { m_identityHasBeenSet = true; m_identity.assign(value); }
-
-    /**
-     * <p>The identity to be removed from the list of identities for the AWS
-     * Account.</p>
-     */
-    inline DeleteIdentityRequest& WithIdentity(const Aws::String& value) { SetIdentity(value); return *this;}
-
-    /**
-     * <p>The identity to be removed from the list of identities for the AWS
-     * Account.</p>
-     */
-    inline DeleteIdentityRequest& WithIdentity(Aws::String&& value) { SetIdentity(std::move(value)); return *this;}
-
-    /**
-     * <p>The identity to be removed from the list of identities for the AWS
-     * Account.</p>
-     */
-    inline DeleteIdentityRequest& WithIdentity(const char* value) { SetIdentity(value); return *this;}
-
+    template<typename IdentityT = Aws::String>
+    void SetIdentity(IdentityT&& value) { m_identityHasBeenSet = true; m_identity = std::forward<IdentityT>(value); }
+    template<typename IdentityT = Aws::String>
+    DeleteIdentityRequest& WithIdentity(IdentityT&& value) { SetIdentity(std::forward<IdentityT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_identity;

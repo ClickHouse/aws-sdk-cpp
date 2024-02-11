@@ -12,16 +12,6 @@ using namespace Aws::AppConfig::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateConfigurationProfileRequest::UpdateConfigurationProfileRequest() : 
-    m_applicationIdHasBeenSet(false),
-    m_configurationProfileIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_retrievalRoleArnHasBeenSet(false),
-    m_validatorsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateConfigurationProfileRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -52,6 +42,12 @@ Aws::String UpdateConfigurationProfileRequest::SerializePayload() const
      validatorsJsonList[validatorsIndex].AsObject(m_validators[validatorsIndex].Jsonize());
    }
    payload.WithArray("Validators", std::move(validatorsJsonList));
+
+  }
+
+  if(m_kmsKeyIdentifierHasBeenSet)
+  {
+   payload.WithString("KmsKeyIdentifier", m_kmsKeyIdentifier);
 
   }
 

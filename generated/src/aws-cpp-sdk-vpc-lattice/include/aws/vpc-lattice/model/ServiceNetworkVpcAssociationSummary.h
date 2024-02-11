@@ -34,409 +34,136 @@ namespace Model
   class ServiceNetworkVpcAssociationSummary
   {
   public:
-    AWS_VPCLATTICE_API ServiceNetworkVpcAssociationSummary();
+    AWS_VPCLATTICE_API ServiceNetworkVpcAssociationSummary() = default;
     AWS_VPCLATTICE_API ServiceNetworkVpcAssociationSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_VPCLATTICE_API ServiceNetworkVpcAssociationSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_VPCLATTICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the association.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the association.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    ServiceNetworkVpcAssociationSummary& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the association.</p>
+     * <p>The date and time that the association was created, in ISO-8601 format.</p>
      */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the association.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the association.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the association.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the association.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the association.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithArn(const char* value) { SetArn(value); return *this;}
-
-
-    /**
-     * <p>The date and time that the association was created, specified in ISO-8601
-     * format.</p>
-     */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The date and time that the association was created, specified in ISO-8601
-     * format.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    ServiceNetworkVpcAssociationSummary& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the association was created, specified in ISO-8601
-     * format.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The date and time that the association was created, specified in ISO-8601
-     * format.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The date and time that the association was created, specified in ISO-8601
-     * format.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The date and time that the association was created, specified in ISO-8601
-     * format.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The account that created the association.</p>
      */
-    inline const Aws::String& GetCreatedBy() const{ return m_createdBy; }
-
-    /**
-     * <p>The account that created the association.</p>
-     */
+    inline const Aws::String& GetCreatedBy() const { return m_createdBy; }
     inline bool CreatedByHasBeenSet() const { return m_createdByHasBeenSet; }
+    template<typename CreatedByT = Aws::String>
+    void SetCreatedBy(CreatedByT&& value) { m_createdByHasBeenSet = true; m_createdBy = std::forward<CreatedByT>(value); }
+    template<typename CreatedByT = Aws::String>
+    ServiceNetworkVpcAssociationSummary& WithCreatedBy(CreatedByT&& value) { SetCreatedBy(std::forward<CreatedByT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The account that created the association.</p>
-     */
-    inline void SetCreatedBy(const Aws::String& value) { m_createdByHasBeenSet = true; m_createdBy = value; }
-
-    /**
-     * <p>The account that created the association.</p>
-     */
-    inline void SetCreatedBy(Aws::String&& value) { m_createdByHasBeenSet = true; m_createdBy = std::move(value); }
-
-    /**
-     * <p>The account that created the association.</p>
-     */
-    inline void SetCreatedBy(const char* value) { m_createdByHasBeenSet = true; m_createdBy.assign(value); }
-
-    /**
-     * <p>The account that created the association.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithCreatedBy(const Aws::String& value) { SetCreatedBy(value); return *this;}
-
-    /**
-     * <p>The account that created the association.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithCreatedBy(Aws::String&& value) { SetCreatedBy(std::move(value)); return *this;}
-
-    /**
-     * <p>The account that created the association.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithCreatedBy(const char* value) { SetCreatedBy(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the association.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the association.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    ServiceNetworkVpcAssociationSummary& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the association.</p>
+     * <p>The date and time that the association was last updated, in ISO-8601
+     * format.</p>
      */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of the association.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the association.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the association.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the association.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the association.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithId(const char* value) { SetId(value); return *this;}
-
-
-    /**
-     * <p>The date and time that the association was last updated, specified in
-     * ISO-8601 format.</p>
-     */
-    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const{ return m_lastUpdatedAt; }
-
-    /**
-     * <p>The date and time that the association was last updated, specified in
-     * ISO-8601 format.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const { return m_lastUpdatedAt; }
     inline bool LastUpdatedAtHasBeenSet() const { return m_lastUpdatedAtHasBeenSet; }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    void SetLastUpdatedAt(LastUpdatedAtT&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::forward<LastUpdatedAtT>(value); }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    ServiceNetworkVpcAssociationSummary& WithLastUpdatedAt(LastUpdatedAtT&& value) { SetLastUpdatedAt(std::forward<LastUpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the association was last updated, specified in
-     * ISO-8601 format.</p>
-     */
-    inline void SetLastUpdatedAt(const Aws::Utils::DateTime& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = value; }
-
-    /**
-     * <p>The date and time that the association was last updated, specified in
-     * ISO-8601 format.</p>
-     */
-    inline void SetLastUpdatedAt(Aws::Utils::DateTime&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::move(value); }
-
-    /**
-     * <p>The date and time that the association was last updated, specified in
-     * ISO-8601 format.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithLastUpdatedAt(const Aws::Utils::DateTime& value) { SetLastUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The date and time that the association was last updated, specified in
-     * ISO-8601 format.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithLastUpdatedAt(Aws::Utils::DateTime&& value) { SetLastUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the service network.</p>
      */
-    inline const Aws::String& GetServiceNetworkArn() const{ return m_serviceNetworkArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service network.</p>
-     */
+    inline const Aws::String& GetServiceNetworkArn() const { return m_serviceNetworkArn; }
     inline bool ServiceNetworkArnHasBeenSet() const { return m_serviceNetworkArnHasBeenSet; }
+    template<typename ServiceNetworkArnT = Aws::String>
+    void SetServiceNetworkArn(ServiceNetworkArnT&& value) { m_serviceNetworkArnHasBeenSet = true; m_serviceNetworkArn = std::forward<ServiceNetworkArnT>(value); }
+    template<typename ServiceNetworkArnT = Aws::String>
+    ServiceNetworkVpcAssociationSummary& WithServiceNetworkArn(ServiceNetworkArnT&& value) { SetServiceNetworkArn(std::forward<ServiceNetworkArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service network.</p>
-     */
-    inline void SetServiceNetworkArn(const Aws::String& value) { m_serviceNetworkArnHasBeenSet = true; m_serviceNetworkArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service network.</p>
-     */
-    inline void SetServiceNetworkArn(Aws::String&& value) { m_serviceNetworkArnHasBeenSet = true; m_serviceNetworkArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service network.</p>
-     */
-    inline void SetServiceNetworkArn(const char* value) { m_serviceNetworkArnHasBeenSet = true; m_serviceNetworkArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service network.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithServiceNetworkArn(const Aws::String& value) { SetServiceNetworkArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service network.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithServiceNetworkArn(Aws::String&& value) { SetServiceNetworkArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service network.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithServiceNetworkArn(const char* value) { SetServiceNetworkArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the service network.</p>
      */
-    inline const Aws::String& GetServiceNetworkId() const{ return m_serviceNetworkId; }
-
-    /**
-     * <p>The ID of the service network.</p>
-     */
+    inline const Aws::String& GetServiceNetworkId() const { return m_serviceNetworkId; }
     inline bool ServiceNetworkIdHasBeenSet() const { return m_serviceNetworkIdHasBeenSet; }
+    template<typename ServiceNetworkIdT = Aws::String>
+    void SetServiceNetworkId(ServiceNetworkIdT&& value) { m_serviceNetworkIdHasBeenSet = true; m_serviceNetworkId = std::forward<ServiceNetworkIdT>(value); }
+    template<typename ServiceNetworkIdT = Aws::String>
+    ServiceNetworkVpcAssociationSummary& WithServiceNetworkId(ServiceNetworkIdT&& value) { SetServiceNetworkId(std::forward<ServiceNetworkIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the service network.</p>
-     */
-    inline void SetServiceNetworkId(const Aws::String& value) { m_serviceNetworkIdHasBeenSet = true; m_serviceNetworkId = value; }
-
-    /**
-     * <p>The ID of the service network.</p>
-     */
-    inline void SetServiceNetworkId(Aws::String&& value) { m_serviceNetworkIdHasBeenSet = true; m_serviceNetworkId = std::move(value); }
-
-    /**
-     * <p>The ID of the service network.</p>
-     */
-    inline void SetServiceNetworkId(const char* value) { m_serviceNetworkIdHasBeenSet = true; m_serviceNetworkId.assign(value); }
-
-    /**
-     * <p>The ID of the service network.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithServiceNetworkId(const Aws::String& value) { SetServiceNetworkId(value); return *this;}
-
-    /**
-     * <p>The ID of the service network.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithServiceNetworkId(Aws::String&& value) { SetServiceNetworkId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the service network.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithServiceNetworkId(const char* value) { SetServiceNetworkId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the service network.</p>
      */
-    inline const Aws::String& GetServiceNetworkName() const{ return m_serviceNetworkName; }
-
-    /**
-     * <p>The name of the service network.</p>
-     */
+    inline const Aws::String& GetServiceNetworkName() const { return m_serviceNetworkName; }
     inline bool ServiceNetworkNameHasBeenSet() const { return m_serviceNetworkNameHasBeenSet; }
+    template<typename ServiceNetworkNameT = Aws::String>
+    void SetServiceNetworkName(ServiceNetworkNameT&& value) { m_serviceNetworkNameHasBeenSet = true; m_serviceNetworkName = std::forward<ServiceNetworkNameT>(value); }
+    template<typename ServiceNetworkNameT = Aws::String>
+    ServiceNetworkVpcAssociationSummary& WithServiceNetworkName(ServiceNetworkNameT&& value) { SetServiceNetworkName(std::forward<ServiceNetworkNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the service network.</p>
-     */
-    inline void SetServiceNetworkName(const Aws::String& value) { m_serviceNetworkNameHasBeenSet = true; m_serviceNetworkName = value; }
-
-    /**
-     * <p>The name of the service network.</p>
-     */
-    inline void SetServiceNetworkName(Aws::String&& value) { m_serviceNetworkNameHasBeenSet = true; m_serviceNetworkName = std::move(value); }
-
-    /**
-     * <p>The name of the service network.</p>
-     */
-    inline void SetServiceNetworkName(const char* value) { m_serviceNetworkNameHasBeenSet = true; m_serviceNetworkName.assign(value); }
-
-    /**
-     * <p>The name of the service network.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithServiceNetworkName(const Aws::String& value) { SetServiceNetworkName(value); return *this;}
-
-    /**
-     * <p>The name of the service network.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithServiceNetworkName(Aws::String&& value) { SetServiceNetworkName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the service network.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithServiceNetworkName(const char* value) { SetServiceNetworkName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status.</p>
      */
-    inline const ServiceNetworkVpcAssociationStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status.</p>
-     */
+    inline ServiceNetworkVpcAssociationStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ServiceNetworkVpcAssociationStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ServiceNetworkVpcAssociationSummary& WithStatus(ServiceNetworkVpcAssociationStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status.</p>
-     */
-    inline void SetStatus(const ServiceNetworkVpcAssociationStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status.</p>
-     */
-    inline void SetStatus(ServiceNetworkVpcAssociationStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithStatus(const ServiceNetworkVpcAssociationStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithStatus(ServiceNetworkVpcAssociationStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the VPC.</p>
      */
-    inline const Aws::String& GetVpcId() const{ return m_vpcId; }
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
+    inline const Aws::String& GetVpcId() const { return m_vpcId; }
     inline bool VpcIdHasBeenSet() const { return m_vpcIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline void SetVpcId(const Aws::String& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline void SetVpcId(const char* value) { m_vpcIdHasBeenSet = true; m_vpcId.assign(value); }
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithVpcId(const Aws::String& value) { SetVpcId(value); return *this;}
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline ServiceNetworkVpcAssociationSummary& WithVpcId(const char* value) { SetVpcId(value); return *this;}
-
+    template<typename VpcIdT = Aws::String>
+    void SetVpcId(VpcIdT&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::forward<VpcIdT>(value); }
+    template<typename VpcIdT = Aws::String>
+    ServiceNetworkVpcAssociationSummary& WithVpcId(VpcIdT&& value) { SetVpcId(std::forward<VpcIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
     bool m_arnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
     Aws::String m_createdBy;
@@ -445,7 +172,7 @@ namespace Model
     Aws::String m_id;
     bool m_idHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedAt;
+    Aws::Utils::DateTime m_lastUpdatedAt{};
     bool m_lastUpdatedAtHasBeenSet = false;
 
     Aws::String m_serviceNetworkArn;
@@ -457,7 +184,7 @@ namespace Model
     Aws::String m_serviceNetworkName;
     bool m_serviceNetworkNameHasBeenSet = false;
 
-    ServiceNetworkVpcAssociationStatus m_status;
+    ServiceNetworkVpcAssociationStatus m_status{ServiceNetworkVpcAssociationStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_vpcId;

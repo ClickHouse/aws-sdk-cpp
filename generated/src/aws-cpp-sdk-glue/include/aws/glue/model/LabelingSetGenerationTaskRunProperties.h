@@ -32,60 +32,24 @@ namespace Model
   class LabelingSetGenerationTaskRunProperties
   {
   public:
-    AWS_GLUE_API LabelingSetGenerationTaskRunProperties();
+    AWS_GLUE_API LabelingSetGenerationTaskRunProperties() = default;
     AWS_GLUE_API LabelingSetGenerationTaskRunProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API LabelingSetGenerationTaskRunProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Simple Storage Service (Amazon S3) path where you will generate
      * the labeling set.</p>
      */
-    inline const Aws::String& GetOutputS3Path() const{ return m_outputS3Path; }
-
-    /**
-     * <p>The Amazon Simple Storage Service (Amazon S3) path where you will generate
-     * the labeling set.</p>
-     */
+    inline const Aws::String& GetOutputS3Path() const { return m_outputS3Path; }
     inline bool OutputS3PathHasBeenSet() const { return m_outputS3PathHasBeenSet; }
-
-    /**
-     * <p>The Amazon Simple Storage Service (Amazon S3) path where you will generate
-     * the labeling set.</p>
-     */
-    inline void SetOutputS3Path(const Aws::String& value) { m_outputS3PathHasBeenSet = true; m_outputS3Path = value; }
-
-    /**
-     * <p>The Amazon Simple Storage Service (Amazon S3) path where you will generate
-     * the labeling set.</p>
-     */
-    inline void SetOutputS3Path(Aws::String&& value) { m_outputS3PathHasBeenSet = true; m_outputS3Path = std::move(value); }
-
-    /**
-     * <p>The Amazon Simple Storage Service (Amazon S3) path where you will generate
-     * the labeling set.</p>
-     */
-    inline void SetOutputS3Path(const char* value) { m_outputS3PathHasBeenSet = true; m_outputS3Path.assign(value); }
-
-    /**
-     * <p>The Amazon Simple Storage Service (Amazon S3) path where you will generate
-     * the labeling set.</p>
-     */
-    inline LabelingSetGenerationTaskRunProperties& WithOutputS3Path(const Aws::String& value) { SetOutputS3Path(value); return *this;}
-
-    /**
-     * <p>The Amazon Simple Storage Service (Amazon S3) path where you will generate
-     * the labeling set.</p>
-     */
-    inline LabelingSetGenerationTaskRunProperties& WithOutputS3Path(Aws::String&& value) { SetOutputS3Path(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Simple Storage Service (Amazon S3) path where you will generate
-     * the labeling set.</p>
-     */
-    inline LabelingSetGenerationTaskRunProperties& WithOutputS3Path(const char* value) { SetOutputS3Path(value); return *this;}
-
+    template<typename OutputS3PathT = Aws::String>
+    void SetOutputS3Path(OutputS3PathT&& value) { m_outputS3PathHasBeenSet = true; m_outputS3Path = std::forward<OutputS3PathT>(value); }
+    template<typename OutputS3PathT = Aws::String>
+    LabelingSetGenerationTaskRunProperties& WithOutputS3Path(OutputS3PathT&& value) { SetOutputS3Path(std::forward<OutputS3PathT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_outputS3Path;

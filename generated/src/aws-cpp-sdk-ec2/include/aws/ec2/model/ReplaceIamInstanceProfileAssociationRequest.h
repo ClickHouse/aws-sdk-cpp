@@ -22,7 +22,7 @@ namespace Model
   class ReplaceIamInstanceProfileAssociationRequest : public EC2Request
   {
   public:
-    AWS_EC2_API ReplaceIamInstanceProfileAssociationRequest();
+    AWS_EC2_API ReplaceIamInstanceProfileAssociationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,77 +37,29 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The IAM instance profile.</p>
      */
-    inline const IamInstanceProfileSpecification& GetIamInstanceProfile() const{ return m_iamInstanceProfile; }
-
-    /**
-     * <p>The IAM instance profile.</p>
-     */
+    inline const IamInstanceProfileSpecification& GetIamInstanceProfile() const { return m_iamInstanceProfile; }
     inline bool IamInstanceProfileHasBeenSet() const { return m_iamInstanceProfileHasBeenSet; }
+    template<typename IamInstanceProfileT = IamInstanceProfileSpecification>
+    void SetIamInstanceProfile(IamInstanceProfileT&& value) { m_iamInstanceProfileHasBeenSet = true; m_iamInstanceProfile = std::forward<IamInstanceProfileT>(value); }
+    template<typename IamInstanceProfileT = IamInstanceProfileSpecification>
+    ReplaceIamInstanceProfileAssociationRequest& WithIamInstanceProfile(IamInstanceProfileT&& value) { SetIamInstanceProfile(std::forward<IamInstanceProfileT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IAM instance profile.</p>
-     */
-    inline void SetIamInstanceProfile(const IamInstanceProfileSpecification& value) { m_iamInstanceProfileHasBeenSet = true; m_iamInstanceProfile = value; }
-
-    /**
-     * <p>The IAM instance profile.</p>
-     */
-    inline void SetIamInstanceProfile(IamInstanceProfileSpecification&& value) { m_iamInstanceProfileHasBeenSet = true; m_iamInstanceProfile = std::move(value); }
-
-    /**
-     * <p>The IAM instance profile.</p>
-     */
-    inline ReplaceIamInstanceProfileAssociationRequest& WithIamInstanceProfile(const IamInstanceProfileSpecification& value) { SetIamInstanceProfile(value); return *this;}
-
-    /**
-     * <p>The IAM instance profile.</p>
-     */
-    inline ReplaceIamInstanceProfileAssociationRequest& WithIamInstanceProfile(IamInstanceProfileSpecification&& value) { SetIamInstanceProfile(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the existing IAM instance profile association.</p>
      */
-    inline const Aws::String& GetAssociationId() const{ return m_associationId; }
-
-    /**
-     * <p>The ID of the existing IAM instance profile association.</p>
-     */
+    inline const Aws::String& GetAssociationId() const { return m_associationId; }
     inline bool AssociationIdHasBeenSet() const { return m_associationIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the existing IAM instance profile association.</p>
-     */
-    inline void SetAssociationId(const Aws::String& value) { m_associationIdHasBeenSet = true; m_associationId = value; }
-
-    /**
-     * <p>The ID of the existing IAM instance profile association.</p>
-     */
-    inline void SetAssociationId(Aws::String&& value) { m_associationIdHasBeenSet = true; m_associationId = std::move(value); }
-
-    /**
-     * <p>The ID of the existing IAM instance profile association.</p>
-     */
-    inline void SetAssociationId(const char* value) { m_associationIdHasBeenSet = true; m_associationId.assign(value); }
-
-    /**
-     * <p>The ID of the existing IAM instance profile association.</p>
-     */
-    inline ReplaceIamInstanceProfileAssociationRequest& WithAssociationId(const Aws::String& value) { SetAssociationId(value); return *this;}
-
-    /**
-     * <p>The ID of the existing IAM instance profile association.</p>
-     */
-    inline ReplaceIamInstanceProfileAssociationRequest& WithAssociationId(Aws::String&& value) { SetAssociationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the existing IAM instance profile association.</p>
-     */
-    inline ReplaceIamInstanceProfileAssociationRequest& WithAssociationId(const char* value) { SetAssociationId(value); return *this;}
-
+    template<typename AssociationIdT = Aws::String>
+    void SetAssociationId(AssociationIdT&& value) { m_associationIdHasBeenSet = true; m_associationId = std::forward<AssociationIdT>(value); }
+    template<typename AssociationIdT = Aws::String>
+    ReplaceIamInstanceProfileAssociationRequest& WithAssociationId(AssociationIdT&& value) { SetAssociationId(std::forward<AssociationIdT>(value)); return *this;}
+    ///@}
   private:
 
     IamInstanceProfileSpecification m_iamInstanceProfile;

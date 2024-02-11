@@ -24,7 +24,7 @@ namespace Model
   class DeleteClusterParameterGroupRequest : public RedshiftRequest
   {
   public:
-    AWS_REDSHIFT_API DeleteClusterParameterGroupRequest();
+    AWS_REDSHIFT_API DeleteClusterParameterGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,62 +39,19 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the parameter group to be deleted.</p> <p>Constraints:</p> <ul>
      * <li> <p>Must be the name of an existing cluster parameter group.</p> </li> <li>
      * <p>Cannot delete a default cluster parameter group.</p> </li> </ul>
      */
-    inline const Aws::String& GetParameterGroupName() const{ return m_parameterGroupName; }
-
-    /**
-     * <p>The name of the parameter group to be deleted.</p> <p>Constraints:</p> <ul>
-     * <li> <p>Must be the name of an existing cluster parameter group.</p> </li> <li>
-     * <p>Cannot delete a default cluster parameter group.</p> </li> </ul>
-     */
+    inline const Aws::String& GetParameterGroupName() const { return m_parameterGroupName; }
     inline bool ParameterGroupNameHasBeenSet() const { return m_parameterGroupNameHasBeenSet; }
-
-    /**
-     * <p>The name of the parameter group to be deleted.</p> <p>Constraints:</p> <ul>
-     * <li> <p>Must be the name of an existing cluster parameter group.</p> </li> <li>
-     * <p>Cannot delete a default cluster parameter group.</p> </li> </ul>
-     */
-    inline void SetParameterGroupName(const Aws::String& value) { m_parameterGroupNameHasBeenSet = true; m_parameterGroupName = value; }
-
-    /**
-     * <p>The name of the parameter group to be deleted.</p> <p>Constraints:</p> <ul>
-     * <li> <p>Must be the name of an existing cluster parameter group.</p> </li> <li>
-     * <p>Cannot delete a default cluster parameter group.</p> </li> </ul>
-     */
-    inline void SetParameterGroupName(Aws::String&& value) { m_parameterGroupNameHasBeenSet = true; m_parameterGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the parameter group to be deleted.</p> <p>Constraints:</p> <ul>
-     * <li> <p>Must be the name of an existing cluster parameter group.</p> </li> <li>
-     * <p>Cannot delete a default cluster parameter group.</p> </li> </ul>
-     */
-    inline void SetParameterGroupName(const char* value) { m_parameterGroupNameHasBeenSet = true; m_parameterGroupName.assign(value); }
-
-    /**
-     * <p>The name of the parameter group to be deleted.</p> <p>Constraints:</p> <ul>
-     * <li> <p>Must be the name of an existing cluster parameter group.</p> </li> <li>
-     * <p>Cannot delete a default cluster parameter group.</p> </li> </ul>
-     */
-    inline DeleteClusterParameterGroupRequest& WithParameterGroupName(const Aws::String& value) { SetParameterGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the parameter group to be deleted.</p> <p>Constraints:</p> <ul>
-     * <li> <p>Must be the name of an existing cluster parameter group.</p> </li> <li>
-     * <p>Cannot delete a default cluster parameter group.</p> </li> </ul>
-     */
-    inline DeleteClusterParameterGroupRequest& WithParameterGroupName(Aws::String&& value) { SetParameterGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the parameter group to be deleted.</p> <p>Constraints:</p> <ul>
-     * <li> <p>Must be the name of an existing cluster parameter group.</p> </li> <li>
-     * <p>Cannot delete a default cluster parameter group.</p> </li> </ul>
-     */
-    inline DeleteClusterParameterGroupRequest& WithParameterGroupName(const char* value) { SetParameterGroupName(value); return *this;}
-
+    template<typename ParameterGroupNameT = Aws::String>
+    void SetParameterGroupName(ParameterGroupNameT&& value) { m_parameterGroupNameHasBeenSet = true; m_parameterGroupName = std::forward<ParameterGroupNameT>(value); }
+    template<typename ParameterGroupNameT = Aws::String>
+    DeleteClusterParameterGroupRequest& WithParameterGroupName(ParameterGroupNameT&& value) { SetParameterGroupName(std::forward<ParameterGroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_parameterGroupName;

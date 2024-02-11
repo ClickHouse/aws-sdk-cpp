@@ -18,17 +18,7 @@ namespace EventBridge
 namespace Model
 {
 
-ConnectionHttpParameters::ConnectionHttpParameters() : 
-    m_headerParametersHasBeenSet(false),
-    m_queryStringParametersHasBeenSet(false),
-    m_bodyParametersHasBeenSet(false)
-{
-}
-
-ConnectionHttpParameters::ConnectionHttpParameters(JsonView jsonValue) : 
-    m_headerParametersHasBeenSet(false),
-    m_queryStringParametersHasBeenSet(false),
-    m_bodyParametersHasBeenSet(false)
+ConnectionHttpParameters::ConnectionHttpParameters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ ConnectionHttpParameters& ConnectionHttpParameters::operator =(JsonView jsonValu
     }
     m_headerParametersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("QueryStringParameters"))
   {
     Aws::Utils::Array<JsonView> queryStringParametersJsonList = jsonValue.GetArray("QueryStringParameters");
@@ -54,7 +43,6 @@ ConnectionHttpParameters& ConnectionHttpParameters::operator =(JsonView jsonValu
     }
     m_queryStringParametersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("BodyParameters"))
   {
     Aws::Utils::Array<JsonView> bodyParametersJsonList = jsonValue.GetArray("BodyParameters");
@@ -64,7 +52,6 @@ ConnectionHttpParameters& ConnectionHttpParameters::operator =(JsonView jsonValu
     }
     m_bodyParametersHasBeenSet = true;
   }
-
   return *this;
 }
 

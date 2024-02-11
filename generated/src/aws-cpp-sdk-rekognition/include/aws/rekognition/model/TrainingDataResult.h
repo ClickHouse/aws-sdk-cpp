@@ -25,125 +25,57 @@ namespace Model
 {
 
   /**
-   * <p>Sagemaker Groundtruth format manifest files for the input, output and
-   * validation datasets that are used and created during testing.</p><p><h3>See
-   * Also:</h3>   <a
+   * <p>The data validation manifest created for the training dataset during model
+   * training.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/rekognition-2016-06-27/TrainingDataResult">AWS
    * API Reference</a></p>
    */
   class TrainingDataResult
   {
   public:
-    AWS_REKOGNITION_API TrainingDataResult();
+    AWS_REKOGNITION_API TrainingDataResult() = default;
     AWS_REKOGNITION_API TrainingDataResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API TrainingDataResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The training assets that you supplied for training.</p>
+     * <p>The training data that you supplied.</p>
      */
-    inline const TrainingData& GetInput() const{ return m_input; }
-
-    /**
-     * <p>The training assets that you supplied for training.</p>
-     */
+    inline const TrainingData& GetInput() const { return m_input; }
     inline bool InputHasBeenSet() const { return m_inputHasBeenSet; }
+    template<typename InputT = TrainingData>
+    void SetInput(InputT&& value) { m_inputHasBeenSet = true; m_input = std::forward<InputT>(value); }
+    template<typename InputT = TrainingData>
+    TrainingDataResult& WithInput(InputT&& value) { SetInput(std::forward<InputT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The training assets that you supplied for training.</p>
+     * <p>Reference to images (assets) that were actually used during training with
+     * trained model predictions.</p>
      */
-    inline void SetInput(const TrainingData& value) { m_inputHasBeenSet = true; m_input = value; }
-
-    /**
-     * <p>The training assets that you supplied for training.</p>
-     */
-    inline void SetInput(TrainingData&& value) { m_inputHasBeenSet = true; m_input = std::move(value); }
-
-    /**
-     * <p>The training assets that you supplied for training.</p>
-     */
-    inline TrainingDataResult& WithInput(const TrainingData& value) { SetInput(value); return *this;}
-
-    /**
-     * <p>The training assets that you supplied for training.</p>
-     */
-    inline TrainingDataResult& WithInput(TrainingData&& value) { SetInput(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The images (assets) that were actually trained by Amazon Rekognition Custom
-     * Labels. </p>
-     */
-    inline const TrainingData& GetOutput() const{ return m_output; }
-
-    /**
-     * <p>The images (assets) that were actually trained by Amazon Rekognition Custom
-     * Labels. </p>
-     */
+    inline const TrainingData& GetOutput() const { return m_output; }
     inline bool OutputHasBeenSet() const { return m_outputHasBeenSet; }
+    template<typename OutputT = TrainingData>
+    void SetOutput(OutputT&& value) { m_outputHasBeenSet = true; m_output = std::forward<OutputT>(value); }
+    template<typename OutputT = TrainingData>
+    TrainingDataResult& WithOutput(OutputT&& value) { SetOutput(std::forward<OutputT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The images (assets) that were actually trained by Amazon Rekognition Custom
-     * Labels. </p>
+     * <p>A manifest that you supplied for training, with validation results for each
+     * line.</p>
      */
-    inline void SetOutput(const TrainingData& value) { m_outputHasBeenSet = true; m_output = value; }
-
-    /**
-     * <p>The images (assets) that were actually trained by Amazon Rekognition Custom
-     * Labels. </p>
-     */
-    inline void SetOutput(TrainingData&& value) { m_outputHasBeenSet = true; m_output = std::move(value); }
-
-    /**
-     * <p>The images (assets) that were actually trained by Amazon Rekognition Custom
-     * Labels. </p>
-     */
-    inline TrainingDataResult& WithOutput(const TrainingData& value) { SetOutput(value); return *this;}
-
-    /**
-     * <p>The images (assets) that were actually trained by Amazon Rekognition Custom
-     * Labels. </p>
-     */
-    inline TrainingDataResult& WithOutput(TrainingData&& value) { SetOutput(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The location of the data validation manifest. The data validation manifest is
-     * created for the training dataset during model training.</p>
-     */
-    inline const ValidationData& GetValidation() const{ return m_validation; }
-
-    /**
-     * <p>The location of the data validation manifest. The data validation manifest is
-     * created for the training dataset during model training.</p>
-     */
+    inline const ValidationData& GetValidation() const { return m_validation; }
     inline bool ValidationHasBeenSet() const { return m_validationHasBeenSet; }
-
-    /**
-     * <p>The location of the data validation manifest. The data validation manifest is
-     * created for the training dataset during model training.</p>
-     */
-    inline void SetValidation(const ValidationData& value) { m_validationHasBeenSet = true; m_validation = value; }
-
-    /**
-     * <p>The location of the data validation manifest. The data validation manifest is
-     * created for the training dataset during model training.</p>
-     */
-    inline void SetValidation(ValidationData&& value) { m_validationHasBeenSet = true; m_validation = std::move(value); }
-
-    /**
-     * <p>The location of the data validation manifest. The data validation manifest is
-     * created for the training dataset during model training.</p>
-     */
-    inline TrainingDataResult& WithValidation(const ValidationData& value) { SetValidation(value); return *this;}
-
-    /**
-     * <p>The location of the data validation manifest. The data validation manifest is
-     * created for the training dataset during model training.</p>
-     */
-    inline TrainingDataResult& WithValidation(ValidationData&& value) { SetValidation(std::move(value)); return *this;}
-
+    template<typename ValidationT = ValidationData>
+    void SetValidation(ValidationT&& value) { m_validationHasBeenSet = true; m_validation = std::forward<ValidationT>(value); }
+    template<typename ValidationT = ValidationData>
+    TrainingDataResult& WithValidation(ValidationT&& value) { SetValidation(std::forward<ValidationT>(value)); return *this;}
+    ///@}
   private:
 
     TrainingData m_input;

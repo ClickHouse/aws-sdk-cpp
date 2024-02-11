@@ -12,12 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateFeatureGroupRequest::UpdateFeatureGroupRequest() : 
-    m_featureGroupNameHasBeenSet(false),
-    m_featureAdditionsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateFeatureGroupRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -36,6 +30,18 @@ Aws::String UpdateFeatureGroupRequest::SerializePayload() const
      featureAdditionsJsonList[featureAdditionsIndex].AsObject(m_featureAdditions[featureAdditionsIndex].Jsonize());
    }
    payload.WithArray("FeatureAdditions", std::move(featureAdditionsJsonList));
+
+  }
+
+  if(m_onlineStoreConfigHasBeenSet)
+  {
+   payload.WithObject("OnlineStoreConfig", m_onlineStoreConfig.Jsonize());
+
+  }
+
+  if(m_throughputConfigHasBeenSet)
+  {
+   payload.WithObject("ThroughputConfig", m_throughputConfig.Jsonize());
 
   }
 

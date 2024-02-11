@@ -35,7 +35,7 @@ namespace Model
   class TrafficMirrorFilter
   {
   public:
-    AWS_EC2_API TrafficMirrorFilter();
+    AWS_EC2_API TrafficMirrorFilter() = default;
     AWS_EC2_API TrafficMirrorFilter(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API TrafficMirrorFilter& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -43,275 +43,87 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the Traffic Mirror filter.</p>
      */
-    inline const Aws::String& GetTrafficMirrorFilterId() const{ return m_trafficMirrorFilterId; }
-
-    /**
-     * <p>The ID of the Traffic Mirror filter.</p>
-     */
+    inline const Aws::String& GetTrafficMirrorFilterId() const { return m_trafficMirrorFilterId; }
     inline bool TrafficMirrorFilterIdHasBeenSet() const { return m_trafficMirrorFilterIdHasBeenSet; }
+    template<typename TrafficMirrorFilterIdT = Aws::String>
+    void SetTrafficMirrorFilterId(TrafficMirrorFilterIdT&& value) { m_trafficMirrorFilterIdHasBeenSet = true; m_trafficMirrorFilterId = std::forward<TrafficMirrorFilterIdT>(value); }
+    template<typename TrafficMirrorFilterIdT = Aws::String>
+    TrafficMirrorFilter& WithTrafficMirrorFilterId(TrafficMirrorFilterIdT&& value) { SetTrafficMirrorFilterId(std::forward<TrafficMirrorFilterIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Traffic Mirror filter.</p>
-     */
-    inline void SetTrafficMirrorFilterId(const Aws::String& value) { m_trafficMirrorFilterIdHasBeenSet = true; m_trafficMirrorFilterId = value; }
-
-    /**
-     * <p>The ID of the Traffic Mirror filter.</p>
-     */
-    inline void SetTrafficMirrorFilterId(Aws::String&& value) { m_trafficMirrorFilterIdHasBeenSet = true; m_trafficMirrorFilterId = std::move(value); }
-
-    /**
-     * <p>The ID of the Traffic Mirror filter.</p>
-     */
-    inline void SetTrafficMirrorFilterId(const char* value) { m_trafficMirrorFilterIdHasBeenSet = true; m_trafficMirrorFilterId.assign(value); }
-
-    /**
-     * <p>The ID of the Traffic Mirror filter.</p>
-     */
-    inline TrafficMirrorFilter& WithTrafficMirrorFilterId(const Aws::String& value) { SetTrafficMirrorFilterId(value); return *this;}
-
-    /**
-     * <p>The ID of the Traffic Mirror filter.</p>
-     */
-    inline TrafficMirrorFilter& WithTrafficMirrorFilterId(Aws::String&& value) { SetTrafficMirrorFilterId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Traffic Mirror filter.</p>
-     */
-    inline TrafficMirrorFilter& WithTrafficMirrorFilterId(const char* value) { SetTrafficMirrorFilterId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the ingress rules that are associated with the Traffic
      * Mirror filter.</p>
      */
-    inline const Aws::Vector<TrafficMirrorFilterRule>& GetIngressFilterRules() const{ return m_ingressFilterRules; }
-
-    /**
-     * <p>Information about the ingress rules that are associated with the Traffic
-     * Mirror filter.</p>
-     */
+    inline const Aws::Vector<TrafficMirrorFilterRule>& GetIngressFilterRules() const { return m_ingressFilterRules; }
     inline bool IngressFilterRulesHasBeenSet() const { return m_ingressFilterRulesHasBeenSet; }
+    template<typename IngressFilterRulesT = Aws::Vector<TrafficMirrorFilterRule>>
+    void SetIngressFilterRules(IngressFilterRulesT&& value) { m_ingressFilterRulesHasBeenSet = true; m_ingressFilterRules = std::forward<IngressFilterRulesT>(value); }
+    template<typename IngressFilterRulesT = Aws::Vector<TrafficMirrorFilterRule>>
+    TrafficMirrorFilter& WithIngressFilterRules(IngressFilterRulesT&& value) { SetIngressFilterRules(std::forward<IngressFilterRulesT>(value)); return *this;}
+    template<typename IngressFilterRulesT = TrafficMirrorFilterRule>
+    TrafficMirrorFilter& AddIngressFilterRules(IngressFilterRulesT&& value) { m_ingressFilterRulesHasBeenSet = true; m_ingressFilterRules.emplace_back(std::forward<IngressFilterRulesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about the ingress rules that are associated with the Traffic
-     * Mirror filter.</p>
-     */
-    inline void SetIngressFilterRules(const Aws::Vector<TrafficMirrorFilterRule>& value) { m_ingressFilterRulesHasBeenSet = true; m_ingressFilterRules = value; }
-
-    /**
-     * <p>Information about the ingress rules that are associated with the Traffic
-     * Mirror filter.</p>
-     */
-    inline void SetIngressFilterRules(Aws::Vector<TrafficMirrorFilterRule>&& value) { m_ingressFilterRulesHasBeenSet = true; m_ingressFilterRules = std::move(value); }
-
-    /**
-     * <p>Information about the ingress rules that are associated with the Traffic
-     * Mirror filter.</p>
-     */
-    inline TrafficMirrorFilter& WithIngressFilterRules(const Aws::Vector<TrafficMirrorFilterRule>& value) { SetIngressFilterRules(value); return *this;}
-
-    /**
-     * <p>Information about the ingress rules that are associated with the Traffic
-     * Mirror filter.</p>
-     */
-    inline TrafficMirrorFilter& WithIngressFilterRules(Aws::Vector<TrafficMirrorFilterRule>&& value) { SetIngressFilterRules(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the ingress rules that are associated with the Traffic
-     * Mirror filter.</p>
-     */
-    inline TrafficMirrorFilter& AddIngressFilterRules(const TrafficMirrorFilterRule& value) { m_ingressFilterRulesHasBeenSet = true; m_ingressFilterRules.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the ingress rules that are associated with the Traffic
-     * Mirror filter.</p>
-     */
-    inline TrafficMirrorFilter& AddIngressFilterRules(TrafficMirrorFilterRule&& value) { m_ingressFilterRulesHasBeenSet = true; m_ingressFilterRules.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Information about the egress rules that are associated with the Traffic
      * Mirror filter.</p>
      */
-    inline const Aws::Vector<TrafficMirrorFilterRule>& GetEgressFilterRules() const{ return m_egressFilterRules; }
-
-    /**
-     * <p>Information about the egress rules that are associated with the Traffic
-     * Mirror filter.</p>
-     */
+    inline const Aws::Vector<TrafficMirrorFilterRule>& GetEgressFilterRules() const { return m_egressFilterRules; }
     inline bool EgressFilterRulesHasBeenSet() const { return m_egressFilterRulesHasBeenSet; }
+    template<typename EgressFilterRulesT = Aws::Vector<TrafficMirrorFilterRule>>
+    void SetEgressFilterRules(EgressFilterRulesT&& value) { m_egressFilterRulesHasBeenSet = true; m_egressFilterRules = std::forward<EgressFilterRulesT>(value); }
+    template<typename EgressFilterRulesT = Aws::Vector<TrafficMirrorFilterRule>>
+    TrafficMirrorFilter& WithEgressFilterRules(EgressFilterRulesT&& value) { SetEgressFilterRules(std::forward<EgressFilterRulesT>(value)); return *this;}
+    template<typename EgressFilterRulesT = TrafficMirrorFilterRule>
+    TrafficMirrorFilter& AddEgressFilterRules(EgressFilterRulesT&& value) { m_egressFilterRulesHasBeenSet = true; m_egressFilterRules.emplace_back(std::forward<EgressFilterRulesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about the egress rules that are associated with the Traffic
-     * Mirror filter.</p>
-     */
-    inline void SetEgressFilterRules(const Aws::Vector<TrafficMirrorFilterRule>& value) { m_egressFilterRulesHasBeenSet = true; m_egressFilterRules = value; }
-
-    /**
-     * <p>Information about the egress rules that are associated with the Traffic
-     * Mirror filter.</p>
-     */
-    inline void SetEgressFilterRules(Aws::Vector<TrafficMirrorFilterRule>&& value) { m_egressFilterRulesHasBeenSet = true; m_egressFilterRules = std::move(value); }
-
-    /**
-     * <p>Information about the egress rules that are associated with the Traffic
-     * Mirror filter.</p>
-     */
-    inline TrafficMirrorFilter& WithEgressFilterRules(const Aws::Vector<TrafficMirrorFilterRule>& value) { SetEgressFilterRules(value); return *this;}
-
-    /**
-     * <p>Information about the egress rules that are associated with the Traffic
-     * Mirror filter.</p>
-     */
-    inline TrafficMirrorFilter& WithEgressFilterRules(Aws::Vector<TrafficMirrorFilterRule>&& value) { SetEgressFilterRules(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the egress rules that are associated with the Traffic
-     * Mirror filter.</p>
-     */
-    inline TrafficMirrorFilter& AddEgressFilterRules(const TrafficMirrorFilterRule& value) { m_egressFilterRulesHasBeenSet = true; m_egressFilterRules.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the egress rules that are associated with the Traffic
-     * Mirror filter.</p>
-     */
-    inline TrafficMirrorFilter& AddEgressFilterRules(TrafficMirrorFilterRule&& value) { m_egressFilterRulesHasBeenSet = true; m_egressFilterRules.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The network service traffic that is associated with the Traffic Mirror
      * filter.</p>
      */
-    inline const Aws::Vector<TrafficMirrorNetworkService>& GetNetworkServices() const{ return m_networkServices; }
-
-    /**
-     * <p>The network service traffic that is associated with the Traffic Mirror
-     * filter.</p>
-     */
+    inline const Aws::Vector<TrafficMirrorNetworkService>& GetNetworkServices() const { return m_networkServices; }
     inline bool NetworkServicesHasBeenSet() const { return m_networkServicesHasBeenSet; }
+    template<typename NetworkServicesT = Aws::Vector<TrafficMirrorNetworkService>>
+    void SetNetworkServices(NetworkServicesT&& value) { m_networkServicesHasBeenSet = true; m_networkServices = std::forward<NetworkServicesT>(value); }
+    template<typename NetworkServicesT = Aws::Vector<TrafficMirrorNetworkService>>
+    TrafficMirrorFilter& WithNetworkServices(NetworkServicesT&& value) { SetNetworkServices(std::forward<NetworkServicesT>(value)); return *this;}
+    inline TrafficMirrorFilter& AddNetworkServices(TrafficMirrorNetworkService value) { m_networkServicesHasBeenSet = true; m_networkServices.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The network service traffic that is associated with the Traffic Mirror
-     * filter.</p>
-     */
-    inline void SetNetworkServices(const Aws::Vector<TrafficMirrorNetworkService>& value) { m_networkServicesHasBeenSet = true; m_networkServices = value; }
-
-    /**
-     * <p>The network service traffic that is associated with the Traffic Mirror
-     * filter.</p>
-     */
-    inline void SetNetworkServices(Aws::Vector<TrafficMirrorNetworkService>&& value) { m_networkServicesHasBeenSet = true; m_networkServices = std::move(value); }
-
-    /**
-     * <p>The network service traffic that is associated with the Traffic Mirror
-     * filter.</p>
-     */
-    inline TrafficMirrorFilter& WithNetworkServices(const Aws::Vector<TrafficMirrorNetworkService>& value) { SetNetworkServices(value); return *this;}
-
-    /**
-     * <p>The network service traffic that is associated with the Traffic Mirror
-     * filter.</p>
-     */
-    inline TrafficMirrorFilter& WithNetworkServices(Aws::Vector<TrafficMirrorNetworkService>&& value) { SetNetworkServices(std::move(value)); return *this;}
-
-    /**
-     * <p>The network service traffic that is associated with the Traffic Mirror
-     * filter.</p>
-     */
-    inline TrafficMirrorFilter& AddNetworkServices(const TrafficMirrorNetworkService& value) { m_networkServicesHasBeenSet = true; m_networkServices.push_back(value); return *this; }
-
-    /**
-     * <p>The network service traffic that is associated with the Traffic Mirror
-     * filter.</p>
-     */
-    inline TrafficMirrorFilter& AddNetworkServices(TrafficMirrorNetworkService&& value) { m_networkServicesHasBeenSet = true; m_networkServices.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The description of the Traffic Mirror filter.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the Traffic Mirror filter.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    TrafficMirrorFilter& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the Traffic Mirror filter.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the Traffic Mirror filter.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the Traffic Mirror filter.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the Traffic Mirror filter.</p>
-     */
-    inline TrafficMirrorFilter& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the Traffic Mirror filter.</p>
-     */
-    inline TrafficMirrorFilter& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the Traffic Mirror filter.</p>
-     */
-    inline TrafficMirrorFilter& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags assigned to the Traffic Mirror filter.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags assigned to the Traffic Mirror filter.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags assigned to the Traffic Mirror filter.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags assigned to the Traffic Mirror filter.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags assigned to the Traffic Mirror filter.</p>
-     */
-    inline TrafficMirrorFilter& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags assigned to the Traffic Mirror filter.</p>
-     */
-    inline TrafficMirrorFilter& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags assigned to the Traffic Mirror filter.</p>
-     */
-    inline TrafficMirrorFilter& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The tags assigned to the Traffic Mirror filter.</p>
-     */
-    inline TrafficMirrorFilter& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    TrafficMirrorFilter& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    TrafficMirrorFilter& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_trafficMirrorFilterId;

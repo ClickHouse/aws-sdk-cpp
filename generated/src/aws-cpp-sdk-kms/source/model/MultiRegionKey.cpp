@@ -18,15 +18,7 @@ namespace KMS
 namespace Model
 {
 
-MultiRegionKey::MultiRegionKey() : 
-    m_arnHasBeenSet(false),
-    m_regionHasBeenSet(false)
-{
-}
-
-MultiRegionKey::MultiRegionKey(JsonView jsonValue) : 
-    m_arnHasBeenSet(false),
-    m_regionHasBeenSet(false)
+MultiRegionKey::MultiRegionKey(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ MultiRegionKey& MultiRegionKey::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Region"))
   {
     m_region = jsonValue.GetString("Region");
-
     m_regionHasBeenSet = true;
   }
-
   return *this;
 }
 

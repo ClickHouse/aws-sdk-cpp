@@ -6,6 +6,7 @@
 #include <aws/s3-crt/model/GetObjectRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,34 +17,6 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-GetObjectRequest::GetObjectRequest() : 
-    m_bucketHasBeenSet(false),
-    m_ifMatchHasBeenSet(false),
-    m_ifModifiedSinceHasBeenSet(false),
-    m_ifNoneMatchHasBeenSet(false),
-    m_ifUnmodifiedSinceHasBeenSet(false),
-    m_keyHasBeenSet(false),
-    m_rangeHasBeenSet(false),
-    m_responseCacheControlHasBeenSet(false),
-    m_responseContentDispositionHasBeenSet(false),
-    m_responseContentEncodingHasBeenSet(false),
-    m_responseContentLanguageHasBeenSet(false),
-    m_responseContentTypeHasBeenSet(false),
-    m_responseExpiresHasBeenSet(false),
-    m_versionIdHasBeenSet(false),
-    m_sSECustomerAlgorithmHasBeenSet(false),
-    m_sSECustomerKeyHasBeenSet(false),
-    m_sSECustomerKeyMD5HasBeenSet(false),
-    m_requestPayer(RequestPayer::NOT_SET),
-    m_requestPayerHasBeenSet(false),
-    m_partNumber(0),
-    m_partNumberHasBeenSet(false),
-    m_expectedBucketOwnerHasBeenSet(false),
-    m_checksumMode(ChecksumMode::NOT_SET),
-    m_checksumModeHasBeenSet(false),
-    m_customizedAccessLogTagHasBeenSet(false)
-{
-}
 
 Aws::String GetObjectRequest::SerializePayload() const
 {
@@ -184,7 +157,7 @@ Aws::Http::HeaderValueCollection GetObjectRequest::GetRequestSpecificHeaders() c
     ss.str("");
   }
 
-  if(m_requestPayerHasBeenSet)
+  if(m_requestPayerHasBeenSet && m_requestPayer != RequestPayer::NOT_SET)
   {
     headers.emplace("x-amz-request-payer", RequestPayerMapper::GetNameForRequestPayer(m_requestPayer));
   }
@@ -196,7 +169,7 @@ Aws::Http::HeaderValueCollection GetObjectRequest::GetRequestSpecificHeaders() c
     ss.str("");
   }
 
-  if(m_checksumModeHasBeenSet)
+  if(m_checksumModeHasBeenSet && m_checksumMode != ChecksumMode::NOT_SET)
   {
     headers.emplace("x-amz-checksum-mode", ChecksumModeMapper::GetNameForChecksumMode(m_checksumMode));
   }
@@ -211,6 +184,9 @@ GetObjectRequest::EndpointParameters GetObjectRequest::GetEndpointContextParams(
     if (BucketHasBeenSet()) {
         parameters.emplace_back(Aws::String("Bucket"), this->GetBucket(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
     }
+    if (KeyHasBeenSet()) {
+        parameters.emplace_back(Aws::String("Key"), this->GetKey(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
     return parameters;
 }
 bool GetObjectRequest::ShouldValidateResponseChecksum() const
@@ -221,6 +197,7 @@ bool GetObjectRequest::ShouldValidateResponseChecksum() const
 Aws::Vector<Aws::String> GetObjectRequest::GetResponseChecksumAlgorithmNames() const
 {
   Aws::Vector<Aws::String> responseChecksumAlgorithmNames;
+  responseChecksumAlgorithmNames.push_back("CRC64NVME");
   responseChecksumAlgorithmNames.push_back("CRC32");
   responseChecksumAlgorithmNames.push_back("CRC32C");
   responseChecksumAlgorithmNames.push_back("SHA256");

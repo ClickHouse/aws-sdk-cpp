@@ -23,7 +23,7 @@ namespace Model
   class PutRecordBatchRequest : public FirehoseRequest
   {
   public:
-    AWS_FIREHOSE_API PutRecordBatchRequest();
+    AWS_FIREHOSE_API PutRecordBatchRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,87 +36,31 @@ namespace Model
     AWS_FIREHOSE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The name of the delivery stream.</p>
+     * <p>The name of the Firehose stream.</p>
      */
-    inline const Aws::String& GetDeliveryStreamName() const{ return m_deliveryStreamName; }
-
-    /**
-     * <p>The name of the delivery stream.</p>
-     */
+    inline const Aws::String& GetDeliveryStreamName() const { return m_deliveryStreamName; }
     inline bool DeliveryStreamNameHasBeenSet() const { return m_deliveryStreamNameHasBeenSet; }
+    template<typename DeliveryStreamNameT = Aws::String>
+    void SetDeliveryStreamName(DeliveryStreamNameT&& value) { m_deliveryStreamNameHasBeenSet = true; m_deliveryStreamName = std::forward<DeliveryStreamNameT>(value); }
+    template<typename DeliveryStreamNameT = Aws::String>
+    PutRecordBatchRequest& WithDeliveryStreamName(DeliveryStreamNameT&& value) { SetDeliveryStreamName(std::forward<DeliveryStreamNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the delivery stream.</p>
-     */
-    inline void SetDeliveryStreamName(const Aws::String& value) { m_deliveryStreamNameHasBeenSet = true; m_deliveryStreamName = value; }
-
-    /**
-     * <p>The name of the delivery stream.</p>
-     */
-    inline void SetDeliveryStreamName(Aws::String&& value) { m_deliveryStreamNameHasBeenSet = true; m_deliveryStreamName = std::move(value); }
-
-    /**
-     * <p>The name of the delivery stream.</p>
-     */
-    inline void SetDeliveryStreamName(const char* value) { m_deliveryStreamNameHasBeenSet = true; m_deliveryStreamName.assign(value); }
-
-    /**
-     * <p>The name of the delivery stream.</p>
-     */
-    inline PutRecordBatchRequest& WithDeliveryStreamName(const Aws::String& value) { SetDeliveryStreamName(value); return *this;}
-
-    /**
-     * <p>The name of the delivery stream.</p>
-     */
-    inline PutRecordBatchRequest& WithDeliveryStreamName(Aws::String&& value) { SetDeliveryStreamName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the delivery stream.</p>
-     */
-    inline PutRecordBatchRequest& WithDeliveryStreamName(const char* value) { SetDeliveryStreamName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>One or more records.</p>
      */
-    inline const Aws::Vector<Record>& GetRecords() const{ return m_records; }
-
-    /**
-     * <p>One or more records.</p>
-     */
+    inline const Aws::Vector<Record>& GetRecords() const { return m_records; }
     inline bool RecordsHasBeenSet() const { return m_recordsHasBeenSet; }
-
-    /**
-     * <p>One or more records.</p>
-     */
-    inline void SetRecords(const Aws::Vector<Record>& value) { m_recordsHasBeenSet = true; m_records = value; }
-
-    /**
-     * <p>One or more records.</p>
-     */
-    inline void SetRecords(Aws::Vector<Record>&& value) { m_recordsHasBeenSet = true; m_records = std::move(value); }
-
-    /**
-     * <p>One or more records.</p>
-     */
-    inline PutRecordBatchRequest& WithRecords(const Aws::Vector<Record>& value) { SetRecords(value); return *this;}
-
-    /**
-     * <p>One or more records.</p>
-     */
-    inline PutRecordBatchRequest& WithRecords(Aws::Vector<Record>&& value) { SetRecords(std::move(value)); return *this;}
-
-    /**
-     * <p>One or more records.</p>
-     */
-    inline PutRecordBatchRequest& AddRecords(const Record& value) { m_recordsHasBeenSet = true; m_records.push_back(value); return *this; }
-
-    /**
-     * <p>One or more records.</p>
-     */
-    inline PutRecordBatchRequest& AddRecords(Record&& value) { m_recordsHasBeenSet = true; m_records.push_back(std::move(value)); return *this; }
-
+    template<typename RecordsT = Aws::Vector<Record>>
+    void SetRecords(RecordsT&& value) { m_recordsHasBeenSet = true; m_records = std::forward<RecordsT>(value); }
+    template<typename RecordsT = Aws::Vector<Record>>
+    PutRecordBatchRequest& WithRecords(RecordsT&& value) { SetRecords(std::forward<RecordsT>(value)); return *this;}
+    template<typename RecordsT = Record>
+    PutRecordBatchRequest& AddRecords(RecordsT&& value) { m_recordsHasBeenSet = true; m_records.emplace_back(std::forward<RecordsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_deliveryStreamName;

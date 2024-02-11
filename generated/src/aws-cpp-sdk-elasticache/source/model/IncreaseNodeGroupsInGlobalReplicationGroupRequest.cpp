@@ -10,16 +10,6 @@
 using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils;
 
-IncreaseNodeGroupsInGlobalReplicationGroupRequest::IncreaseNodeGroupsInGlobalReplicationGroupRequest() : 
-    m_globalReplicationGroupIdHasBeenSet(false),
-    m_nodeGroupCount(0),
-    m_nodeGroupCountHasBeenSet(false),
-    m_regionalConfigurationsHasBeenSet(false),
-    m_applyImmediately(false),
-    m_applyImmediatelyHasBeenSet(false)
-{
-}
-
 Aws::String IncreaseNodeGroupsInGlobalReplicationGroupRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -36,11 +26,18 @@ Aws::String IncreaseNodeGroupsInGlobalReplicationGroupRequest::SerializePayload(
 
   if(m_regionalConfigurationsHasBeenSet)
   {
-    unsigned regionalConfigurationsCount = 1;
-    for(auto& item : m_regionalConfigurations)
+    if (m_regionalConfigurations.empty())
     {
-      item.OutputToStream(ss, "RegionalConfigurations.member.", regionalConfigurationsCount, "");
-      regionalConfigurationsCount++;
+      ss << "RegionalConfigurations=&";
+    }
+    else
+    {
+      unsigned regionalConfigurationsCount = 1;
+      for(auto& item : m_regionalConfigurations)
+      {
+        item.OutputToStream(ss, "RegionalConfigurations.RegionalConfiguration.", regionalConfigurationsCount, "");
+        regionalConfigurationsCount++;
+      }
     }
   }
 

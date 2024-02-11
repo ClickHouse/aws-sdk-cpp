@@ -35,124 +35,47 @@ namespace Model
   class ValidationException
   {
   public:
-    AWS_ACCOUNT_API ValidationException();
+    AWS_ACCOUNT_API ValidationException() = default;
     AWS_ACCOUNT_API ValidationException(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCOUNT_API ValidationException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCOUNT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field where the invalid entry was detected.</p>
      */
-    inline const Aws::Vector<ValidationExceptionField>& GetFieldList() const{ return m_fieldList; }
-
-    /**
-     * <p>The field where the invalid entry was detected.</p>
-     */
+    inline const Aws::Vector<ValidationExceptionField>& GetFieldList() const { return m_fieldList; }
     inline bool FieldListHasBeenSet() const { return m_fieldListHasBeenSet; }
+    template<typename FieldListT = Aws::Vector<ValidationExceptionField>>
+    void SetFieldList(FieldListT&& value) { m_fieldListHasBeenSet = true; m_fieldList = std::forward<FieldListT>(value); }
+    template<typename FieldListT = Aws::Vector<ValidationExceptionField>>
+    ValidationException& WithFieldList(FieldListT&& value) { SetFieldList(std::forward<FieldListT>(value)); return *this;}
+    template<typename FieldListT = ValidationExceptionField>
+    ValidationException& AddFieldList(FieldListT&& value) { m_fieldListHasBeenSet = true; m_fieldList.emplace_back(std::forward<FieldListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The field where the invalid entry was detected.</p>
-     */
-    inline void SetFieldList(const Aws::Vector<ValidationExceptionField>& value) { m_fieldListHasBeenSet = true; m_fieldList = value; }
-
-    /**
-     * <p>The field where the invalid entry was detected.</p>
-     */
-    inline void SetFieldList(Aws::Vector<ValidationExceptionField>&& value) { m_fieldListHasBeenSet = true; m_fieldList = std::move(value); }
-
-    /**
-     * <p>The field where the invalid entry was detected.</p>
-     */
-    inline ValidationException& WithFieldList(const Aws::Vector<ValidationExceptionField>& value) { SetFieldList(value); return *this;}
-
-    /**
-     * <p>The field where the invalid entry was detected.</p>
-     */
-    inline ValidationException& WithFieldList(Aws::Vector<ValidationExceptionField>&& value) { SetFieldList(std::move(value)); return *this;}
-
-    /**
-     * <p>The field where the invalid entry was detected.</p>
-     */
-    inline ValidationException& AddFieldList(const ValidationExceptionField& value) { m_fieldListHasBeenSet = true; m_fieldList.push_back(value); return *this; }
-
-    /**
-     * <p>The field where the invalid entry was detected.</p>
-     */
-    inline ValidationException& AddFieldList(ValidationExceptionField&& value) { m_fieldListHasBeenSet = true; m_fieldList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The message that informs you about what was invalid about the request.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The message that informs you about what was invalid about the request.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    ValidationException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The message that informs you about what was invalid about the request.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The message that informs you about what was invalid about the request.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The message that informs you about what was invalid about the request.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The message that informs you about what was invalid about the request.</p>
-     */
-    inline ValidationException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The message that informs you about what was invalid about the request.</p>
-     */
-    inline ValidationException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The message that informs you about what was invalid about the request.</p>
-     */
-    inline ValidationException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason that validation failed.</p>
      */
-    inline const ValidationExceptionReason& GetReason() const{ return m_reason; }
-
-    /**
-     * <p>The reason that validation failed.</p>
-     */
+    inline ValidationExceptionReason GetReason() const { return m_reason; }
     inline bool ReasonHasBeenSet() const { return m_reasonHasBeenSet; }
-
-    /**
-     * <p>The reason that validation failed.</p>
-     */
-    inline void SetReason(const ValidationExceptionReason& value) { m_reasonHasBeenSet = true; m_reason = value; }
-
-    /**
-     * <p>The reason that validation failed.</p>
-     */
-    inline void SetReason(ValidationExceptionReason&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
-
-    /**
-     * <p>The reason that validation failed.</p>
-     */
-    inline ValidationException& WithReason(const ValidationExceptionReason& value) { SetReason(value); return *this;}
-
-    /**
-     * <p>The reason that validation failed.</p>
-     */
-    inline ValidationException& WithReason(ValidationExceptionReason&& value) { SetReason(std::move(value)); return *this;}
-
+    inline void SetReason(ValidationExceptionReason value) { m_reasonHasBeenSet = true; m_reason = value; }
+    inline ValidationException& WithReason(ValidationExceptionReason value) { SetReason(value); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ValidationExceptionField> m_fieldList;
@@ -161,7 +84,7 @@ namespace Model
     Aws::String m_message;
     bool m_messageHasBeenSet = false;
 
-    ValidationExceptionReason m_reason;
+    ValidationExceptionReason m_reason{ValidationExceptionReason::NOT_SET};
     bool m_reasonHasBeenSet = false;
   };
 

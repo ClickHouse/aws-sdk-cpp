@@ -18,15 +18,7 @@ namespace DataExchange
 namespace Model
 {
 
-Details::Details() : 
-    m_importAssetFromSignedUrlJobErrorDetailsHasBeenSet(false),
-    m_importAssetsFromS3JobErrorDetailsHasBeenSet(false)
-{
-}
-
-Details::Details(JsonView jsonValue) : 
-    m_importAssetFromSignedUrlJobErrorDetailsHasBeenSet(false),
-    m_importAssetsFromS3JobErrorDetailsHasBeenSet(false)
+Details::Details(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ Details& Details::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ImportAssetFromSignedUrlJobErrorDetails"))
   {
     m_importAssetFromSignedUrlJobErrorDetails = jsonValue.GetObject("ImportAssetFromSignedUrlJobErrorDetails");
-
     m_importAssetFromSignedUrlJobErrorDetailsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ImportAssetsFromS3JobErrorDetails"))
   {
     Aws::Utils::Array<JsonView> importAssetsFromS3JobErrorDetailsJsonList = jsonValue.GetArray("ImportAssetsFromS3JobErrorDetails");
@@ -49,7 +39,6 @@ Details& Details::operator =(JsonView jsonValue)
     }
     m_importAssetsFromS3JobErrorDetailsHasBeenSet = true;
   }
-
   return *this;
 }
 

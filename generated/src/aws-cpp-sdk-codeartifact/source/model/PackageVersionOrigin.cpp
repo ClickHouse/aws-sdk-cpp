@@ -18,17 +18,7 @@ namespace CodeArtifact
 namespace Model
 {
 
-PackageVersionOrigin::PackageVersionOrigin() : 
-    m_domainEntryPointHasBeenSet(false),
-    m_originType(PackageVersionOriginType::NOT_SET),
-    m_originTypeHasBeenSet(false)
-{
-}
-
-PackageVersionOrigin::PackageVersionOrigin(JsonView jsonValue) : 
-    m_domainEntryPointHasBeenSet(false),
-    m_originType(PackageVersionOriginType::NOT_SET),
-    m_originTypeHasBeenSet(false)
+PackageVersionOrigin::PackageVersionOrigin(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ PackageVersionOrigin& PackageVersionOrigin::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("domainEntryPoint"))
   {
     m_domainEntryPoint = jsonValue.GetObject("domainEntryPoint");
-
     m_domainEntryPointHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("originType"))
   {
     m_originType = PackageVersionOriginTypeMapper::GetPackageVersionOriginTypeForName(jsonValue.GetString("originType"));
-
     m_originTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,31 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TrunkInterfaceAssociation::TrunkInterfaceAssociation() : 
-    m_associationIdHasBeenSet(false),
-    m_branchInterfaceIdHasBeenSet(false),
-    m_trunkInterfaceIdHasBeenSet(false),
-    m_interfaceProtocol(InterfaceProtocolType::NOT_SET),
-    m_interfaceProtocolHasBeenSet(false),
-    m_vlanId(0),
-    m_vlanIdHasBeenSet(false),
-    m_greKey(0),
-    m_greKeyHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-TrunkInterfaceAssociation::TrunkInterfaceAssociation(const XmlNode& xmlNode) : 
-    m_associationIdHasBeenSet(false),
-    m_branchInterfaceIdHasBeenSet(false),
-    m_trunkInterfaceIdHasBeenSet(false),
-    m_interfaceProtocol(InterfaceProtocolType::NOT_SET),
-    m_interfaceProtocolHasBeenSet(false),
-    m_vlanId(0),
-    m_vlanIdHasBeenSet(false),
-    m_greKey(0),
-    m_greKeyHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+TrunkInterfaceAssociation::TrunkInterfaceAssociation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -76,7 +52,7 @@ TrunkInterfaceAssociation& TrunkInterfaceAssociation::operator =(const XmlNode& 
     XmlNode interfaceProtocolNode = resultNode.FirstChild("interfaceProtocol");
     if(!interfaceProtocolNode.IsNull())
     {
-      m_interfaceProtocol = InterfaceProtocolTypeMapper::GetInterfaceProtocolTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(interfaceProtocolNode.GetText()).c_str()).c_str());
+      m_interfaceProtocol = InterfaceProtocolTypeMapper::GetInterfaceProtocolTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(interfaceProtocolNode.GetText()).c_str()));
       m_interfaceProtocolHasBeenSet = true;
     }
     XmlNode vlanIdNode = resultNode.FirstChild("vlanId");
@@ -95,6 +71,7 @@ TrunkInterfaceAssociation& TrunkInterfaceAssociation::operator =(const XmlNode& 
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -127,7 +104,7 @@ void TrunkInterfaceAssociation::OutputToStream(Aws::OStream& oStream, const char
 
   if(m_interfaceProtocolHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InterfaceProtocol=" << InterfaceProtocolTypeMapper::GetNameForInterfaceProtocolType(m_interfaceProtocol) << "&";
+      oStream << location << index << locationValue << ".InterfaceProtocol=" << StringUtils::URLEncode(InterfaceProtocolTypeMapper::GetNameForInterfaceProtocolType(m_interfaceProtocol)) << "&";
   }
 
   if(m_vlanIdHasBeenSet)
@@ -169,7 +146,7 @@ void TrunkInterfaceAssociation::OutputToStream(Aws::OStream& oStream, const char
   }
   if(m_interfaceProtocolHasBeenSet)
   {
-      oStream << location << ".InterfaceProtocol=" << InterfaceProtocolTypeMapper::GetNameForInterfaceProtocolType(m_interfaceProtocol) << "&";
+      oStream << location << ".InterfaceProtocol=" << StringUtils::URLEncode(InterfaceProtocolTypeMapper::GetNameForInterfaceProtocolType(m_interfaceProtocol)) << "&";
   }
   if(m_vlanIdHasBeenSet)
   {
@@ -185,7 +162,7 @@ void TrunkInterfaceAssociation::OutputToStream(Aws::OStream& oStream, const char
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

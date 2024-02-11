@@ -23,7 +23,7 @@ namespace Model
   class RenderUiTemplateRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API RenderUiTemplateRequest();
+    AWS_SAGEMAKER_API RenderUiTemplateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,193 +36,60 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>A <code>Template</code> object containing the worker UI template to
      * render.</p>
      */
-    inline const UiTemplate& GetUiTemplate() const{ return m_uiTemplate; }
-
-    /**
-     * <p>A <code>Template</code> object containing the worker UI template to
-     * render.</p>
-     */
+    inline const UiTemplate& GetUiTemplate() const { return m_uiTemplate; }
     inline bool UiTemplateHasBeenSet() const { return m_uiTemplateHasBeenSet; }
+    template<typename UiTemplateT = UiTemplate>
+    void SetUiTemplate(UiTemplateT&& value) { m_uiTemplateHasBeenSet = true; m_uiTemplate = std::forward<UiTemplateT>(value); }
+    template<typename UiTemplateT = UiTemplate>
+    RenderUiTemplateRequest& WithUiTemplate(UiTemplateT&& value) { SetUiTemplate(std::forward<UiTemplateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A <code>Template</code> object containing the worker UI template to
-     * render.</p>
-     */
-    inline void SetUiTemplate(const UiTemplate& value) { m_uiTemplateHasBeenSet = true; m_uiTemplate = value; }
-
-    /**
-     * <p>A <code>Template</code> object containing the worker UI template to
-     * render.</p>
-     */
-    inline void SetUiTemplate(UiTemplate&& value) { m_uiTemplateHasBeenSet = true; m_uiTemplate = std::move(value); }
-
-    /**
-     * <p>A <code>Template</code> object containing the worker UI template to
-     * render.</p>
-     */
-    inline RenderUiTemplateRequest& WithUiTemplate(const UiTemplate& value) { SetUiTemplate(value); return *this;}
-
-    /**
-     * <p>A <code>Template</code> object containing the worker UI template to
-     * render.</p>
-     */
-    inline RenderUiTemplateRequest& WithUiTemplate(UiTemplate&& value) { SetUiTemplate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A <code>RenderableTask</code> object containing a representative task to
      * render.</p>
      */
-    inline const RenderableTask& GetTask() const{ return m_task; }
-
-    /**
-     * <p>A <code>RenderableTask</code> object containing a representative task to
-     * render.</p>
-     */
+    inline const RenderableTask& GetTask() const { return m_task; }
     inline bool TaskHasBeenSet() const { return m_taskHasBeenSet; }
+    template<typename TaskT = RenderableTask>
+    void SetTask(TaskT&& value) { m_taskHasBeenSet = true; m_task = std::forward<TaskT>(value); }
+    template<typename TaskT = RenderableTask>
+    RenderUiTemplateRequest& WithTask(TaskT&& value) { SetTask(std::forward<TaskT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A <code>RenderableTask</code> object containing a representative task to
-     * render.</p>
-     */
-    inline void SetTask(const RenderableTask& value) { m_taskHasBeenSet = true; m_task = value; }
-
-    /**
-     * <p>A <code>RenderableTask</code> object containing a representative task to
-     * render.</p>
-     */
-    inline void SetTask(RenderableTask&& value) { m_taskHasBeenSet = true; m_task = std::move(value); }
-
-    /**
-     * <p>A <code>RenderableTask</code> object containing a representative task to
-     * render.</p>
-     */
-    inline RenderUiTemplateRequest& WithTask(const RenderableTask& value) { SetTask(value); return *this;}
-
-    /**
-     * <p>A <code>RenderableTask</code> object containing a representative task to
-     * render.</p>
-     */
-    inline RenderUiTemplateRequest& WithTask(RenderableTask&& value) { SetTask(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) that has access to the S3 objects that are
      * used by the template.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that has access to the S3 objects that are
-     * used by the template.</p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    RenderUiTemplateRequest& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) that has access to the S3 objects that are
-     * used by the template.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that has access to the S3 objects that are
-     * used by the template.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that has access to the S3 objects that are
-     * used by the template.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that has access to the S3 objects that are
-     * used by the template.</p>
-     */
-    inline RenderUiTemplateRequest& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that has access to the S3 objects that are
-     * used by the template.</p>
-     */
-    inline RenderUiTemplateRequest& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that has access to the S3 objects that are
-     * used by the template.</p>
-     */
-    inline RenderUiTemplateRequest& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The <code>HumanTaskUiArn</code> of the worker UI that you want to render. Do
      * not provide a <code>HumanTaskUiArn</code> if you use the <code>UiTemplate</code>
      * parameter.</p> <p>See a list of available Human Ui Amazon Resource Names (ARNs)
-     * in <a>UiConfig</a>.</p>
+     * in <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UiConfig.html">UiConfig</a>.</p>
      */
-    inline const Aws::String& GetHumanTaskUiArn() const{ return m_humanTaskUiArn; }
-
-    /**
-     * <p>The <code>HumanTaskUiArn</code> of the worker UI that you want to render. Do
-     * not provide a <code>HumanTaskUiArn</code> if you use the <code>UiTemplate</code>
-     * parameter.</p> <p>See a list of available Human Ui Amazon Resource Names (ARNs)
-     * in <a>UiConfig</a>.</p>
-     */
+    inline const Aws::String& GetHumanTaskUiArn() const { return m_humanTaskUiArn; }
     inline bool HumanTaskUiArnHasBeenSet() const { return m_humanTaskUiArnHasBeenSet; }
-
-    /**
-     * <p>The <code>HumanTaskUiArn</code> of the worker UI that you want to render. Do
-     * not provide a <code>HumanTaskUiArn</code> if you use the <code>UiTemplate</code>
-     * parameter.</p> <p>See a list of available Human Ui Amazon Resource Names (ARNs)
-     * in <a>UiConfig</a>.</p>
-     */
-    inline void SetHumanTaskUiArn(const Aws::String& value) { m_humanTaskUiArnHasBeenSet = true; m_humanTaskUiArn = value; }
-
-    /**
-     * <p>The <code>HumanTaskUiArn</code> of the worker UI that you want to render. Do
-     * not provide a <code>HumanTaskUiArn</code> if you use the <code>UiTemplate</code>
-     * parameter.</p> <p>See a list of available Human Ui Amazon Resource Names (ARNs)
-     * in <a>UiConfig</a>.</p>
-     */
-    inline void SetHumanTaskUiArn(Aws::String&& value) { m_humanTaskUiArnHasBeenSet = true; m_humanTaskUiArn = std::move(value); }
-
-    /**
-     * <p>The <code>HumanTaskUiArn</code> of the worker UI that you want to render. Do
-     * not provide a <code>HumanTaskUiArn</code> if you use the <code>UiTemplate</code>
-     * parameter.</p> <p>See a list of available Human Ui Amazon Resource Names (ARNs)
-     * in <a>UiConfig</a>.</p>
-     */
-    inline void SetHumanTaskUiArn(const char* value) { m_humanTaskUiArnHasBeenSet = true; m_humanTaskUiArn.assign(value); }
-
-    /**
-     * <p>The <code>HumanTaskUiArn</code> of the worker UI that you want to render. Do
-     * not provide a <code>HumanTaskUiArn</code> if you use the <code>UiTemplate</code>
-     * parameter.</p> <p>See a list of available Human Ui Amazon Resource Names (ARNs)
-     * in <a>UiConfig</a>.</p>
-     */
-    inline RenderUiTemplateRequest& WithHumanTaskUiArn(const Aws::String& value) { SetHumanTaskUiArn(value); return *this;}
-
-    /**
-     * <p>The <code>HumanTaskUiArn</code> of the worker UI that you want to render. Do
-     * not provide a <code>HumanTaskUiArn</code> if you use the <code>UiTemplate</code>
-     * parameter.</p> <p>See a list of available Human Ui Amazon Resource Names (ARNs)
-     * in <a>UiConfig</a>.</p>
-     */
-    inline RenderUiTemplateRequest& WithHumanTaskUiArn(Aws::String&& value) { SetHumanTaskUiArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>HumanTaskUiArn</code> of the worker UI that you want to render. Do
-     * not provide a <code>HumanTaskUiArn</code> if you use the <code>UiTemplate</code>
-     * parameter.</p> <p>See a list of available Human Ui Amazon Resource Names (ARNs)
-     * in <a>UiConfig</a>.</p>
-     */
-    inline RenderUiTemplateRequest& WithHumanTaskUiArn(const char* value) { SetHumanTaskUiArn(value); return *this;}
-
+    template<typename HumanTaskUiArnT = Aws::String>
+    void SetHumanTaskUiArn(HumanTaskUiArnT&& value) { m_humanTaskUiArnHasBeenSet = true; m_humanTaskUiArn = std::forward<HumanTaskUiArnT>(value); }
+    template<typename HumanTaskUiArnT = Aws::String>
+    RenderUiTemplateRequest& WithHumanTaskUiArn(HumanTaskUiArnT&& value) { SetHumanTaskUiArn(std::forward<HumanTaskUiArnT>(value)); return *this;}
+    ///@}
   private:
 
     UiTemplate m_uiTemplate;

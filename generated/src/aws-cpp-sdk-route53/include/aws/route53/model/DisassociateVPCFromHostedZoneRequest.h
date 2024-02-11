@@ -26,7 +26,7 @@ namespace Model
   class DisassociateVPCFromHostedZoneRequest : public Route53Request
   {
   public:
-    AWS_ROUTE53_API DisassociateVPCFromHostedZoneRequest();
+    AWS_ROUTE53_API DisassociateVPCFromHostedZoneRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,132 +37,43 @@ namespace Model
     AWS_ROUTE53_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the private hosted zone that you want to disassociate a VPC
      * from.</p>
      */
-    inline const Aws::String& GetHostedZoneId() const{ return m_hostedZoneId; }
-
-    /**
-     * <p>The ID of the private hosted zone that you want to disassociate a VPC
-     * from.</p>
-     */
+    inline const Aws::String& GetHostedZoneId() const { return m_hostedZoneId; }
     inline bool HostedZoneIdHasBeenSet() const { return m_hostedZoneIdHasBeenSet; }
+    template<typename HostedZoneIdT = Aws::String>
+    void SetHostedZoneId(HostedZoneIdT&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = std::forward<HostedZoneIdT>(value); }
+    template<typename HostedZoneIdT = Aws::String>
+    DisassociateVPCFromHostedZoneRequest& WithHostedZoneId(HostedZoneIdT&& value) { SetHostedZoneId(std::forward<HostedZoneIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the private hosted zone that you want to disassociate a VPC
-     * from.</p>
-     */
-    inline void SetHostedZoneId(const Aws::String& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = value; }
-
-    /**
-     * <p>The ID of the private hosted zone that you want to disassociate a VPC
-     * from.</p>
-     */
-    inline void SetHostedZoneId(Aws::String&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = std::move(value); }
-
-    /**
-     * <p>The ID of the private hosted zone that you want to disassociate a VPC
-     * from.</p>
-     */
-    inline void SetHostedZoneId(const char* value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId.assign(value); }
-
-    /**
-     * <p>The ID of the private hosted zone that you want to disassociate a VPC
-     * from.</p>
-     */
-    inline DisassociateVPCFromHostedZoneRequest& WithHostedZoneId(const Aws::String& value) { SetHostedZoneId(value); return *this;}
-
-    /**
-     * <p>The ID of the private hosted zone that you want to disassociate a VPC
-     * from.</p>
-     */
-    inline DisassociateVPCFromHostedZoneRequest& WithHostedZoneId(Aws::String&& value) { SetHostedZoneId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the private hosted zone that you want to disassociate a VPC
-     * from.</p>
-     */
-    inline DisassociateVPCFromHostedZoneRequest& WithHostedZoneId(const char* value) { SetHostedZoneId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A complex type that contains information about the VPC that you're
      * disassociating from the specified hosted zone.</p>
      */
-    inline const VPC& GetVPC() const{ return m_vPC; }
-
-    /**
-     * <p>A complex type that contains information about the VPC that you're
-     * disassociating from the specified hosted zone.</p>
-     */
+    inline const VPC& GetVPC() const { return m_vPC; }
     inline bool VPCHasBeenSet() const { return m_vPCHasBeenSet; }
+    template<typename VPCT = VPC>
+    void SetVPC(VPCT&& value) { m_vPCHasBeenSet = true; m_vPC = std::forward<VPCT>(value); }
+    template<typename VPCT = VPC>
+    DisassociateVPCFromHostedZoneRequest& WithVPC(VPCT&& value) { SetVPC(std::forward<VPCT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A complex type that contains information about the VPC that you're
-     * disassociating from the specified hosted zone.</p>
-     */
-    inline void SetVPC(const VPC& value) { m_vPCHasBeenSet = true; m_vPC = value; }
-
-    /**
-     * <p>A complex type that contains information about the VPC that you're
-     * disassociating from the specified hosted zone.</p>
-     */
-    inline void SetVPC(VPC&& value) { m_vPCHasBeenSet = true; m_vPC = std::move(value); }
-
-    /**
-     * <p>A complex type that contains information about the VPC that you're
-     * disassociating from the specified hosted zone.</p>
-     */
-    inline DisassociateVPCFromHostedZoneRequest& WithVPC(const VPC& value) { SetVPC(value); return *this;}
-
-    /**
-     * <p>A complex type that contains information about the VPC that you're
-     * disassociating from the specified hosted zone.</p>
-     */
-    inline DisassociateVPCFromHostedZoneRequest& WithVPC(VPC&& value) { SetVPC(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> <i>Optional:</i> A comment about the disassociation request.</p>
      */
-    inline const Aws::String& GetComment() const{ return m_comment; }
-
-    /**
-     * <p> <i>Optional:</i> A comment about the disassociation request.</p>
-     */
+    inline const Aws::String& GetComment() const { return m_comment; }
     inline bool CommentHasBeenSet() const { return m_commentHasBeenSet; }
-
-    /**
-     * <p> <i>Optional:</i> A comment about the disassociation request.</p>
-     */
-    inline void SetComment(const Aws::String& value) { m_commentHasBeenSet = true; m_comment = value; }
-
-    /**
-     * <p> <i>Optional:</i> A comment about the disassociation request.</p>
-     */
-    inline void SetComment(Aws::String&& value) { m_commentHasBeenSet = true; m_comment = std::move(value); }
-
-    /**
-     * <p> <i>Optional:</i> A comment about the disassociation request.</p>
-     */
-    inline void SetComment(const char* value) { m_commentHasBeenSet = true; m_comment.assign(value); }
-
-    /**
-     * <p> <i>Optional:</i> A comment about the disassociation request.</p>
-     */
-    inline DisassociateVPCFromHostedZoneRequest& WithComment(const Aws::String& value) { SetComment(value); return *this;}
-
-    /**
-     * <p> <i>Optional:</i> A comment about the disassociation request.</p>
-     */
-    inline DisassociateVPCFromHostedZoneRequest& WithComment(Aws::String&& value) { SetComment(std::move(value)); return *this;}
-
-    /**
-     * <p> <i>Optional:</i> A comment about the disassociation request.</p>
-     */
-    inline DisassociateVPCFromHostedZoneRequest& WithComment(const char* value) { SetComment(value); return *this;}
-
+    template<typename CommentT = Aws::String>
+    void SetComment(CommentT&& value) { m_commentHasBeenSet = true; m_comment = std::forward<CommentT>(value); }
+    template<typename CommentT = Aws::String>
+    DisassociateVPCFromHostedZoneRequest& WithComment(CommentT&& value) { SetComment(std::forward<CommentT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_hostedZoneId;

@@ -25,7 +25,7 @@ namespace Model
   class AddFacetToObjectRequest : public CloudDirectoryRequest
   {
   public:
-    AWS_CLOUDDIRECTORY_API AddFacetToObjectRequest();
+    AWS_CLOUDDIRECTORY_API AddFacetToObjectRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,163 +38,57 @@ namespace Model
     AWS_CLOUDDIRECTORY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>
      * where the object resides. For more information, see <a>arns</a>.</p>
      */
-    inline const Aws::String& GetDirectoryArn() const{ return m_directoryArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>
-     * where the object resides. For more information, see <a>arns</a>.</p>
-     */
+    inline const Aws::String& GetDirectoryArn() const { return m_directoryArn; }
     inline bool DirectoryArnHasBeenSet() const { return m_directoryArnHasBeenSet; }
+    template<typename DirectoryArnT = Aws::String>
+    void SetDirectoryArn(DirectoryArnT&& value) { m_directoryArnHasBeenSet = true; m_directoryArn = std::forward<DirectoryArnT>(value); }
+    template<typename DirectoryArnT = Aws::String>
+    AddFacetToObjectRequest& WithDirectoryArn(DirectoryArnT&& value) { SetDirectoryArn(std::forward<DirectoryArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>
-     * where the object resides. For more information, see <a>arns</a>.</p>
-     */
-    inline void SetDirectoryArn(const Aws::String& value) { m_directoryArnHasBeenSet = true; m_directoryArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>
-     * where the object resides. For more information, see <a>arns</a>.</p>
-     */
-    inline void SetDirectoryArn(Aws::String&& value) { m_directoryArnHasBeenSet = true; m_directoryArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>
-     * where the object resides. For more information, see <a>arns</a>.</p>
-     */
-    inline void SetDirectoryArn(const char* value) { m_directoryArnHasBeenSet = true; m_directoryArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>
-     * where the object resides. For more information, see <a>arns</a>.</p>
-     */
-    inline AddFacetToObjectRequest& WithDirectoryArn(const Aws::String& value) { SetDirectoryArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>
-     * where the object resides. For more information, see <a>arns</a>.</p>
-     */
-    inline AddFacetToObjectRequest& WithDirectoryArn(Aws::String&& value) { SetDirectoryArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>
-     * where the object resides. For more information, see <a>arns</a>.</p>
-     */
-    inline AddFacetToObjectRequest& WithDirectoryArn(const char* value) { SetDirectoryArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Identifiers for the facet that you are adding to the object. See
      * <a>SchemaFacet</a> for details.</p>
      */
-    inline const SchemaFacet& GetSchemaFacet() const{ return m_schemaFacet; }
-
-    /**
-     * <p>Identifiers for the facet that you are adding to the object. See
-     * <a>SchemaFacet</a> for details.</p>
-     */
+    inline const SchemaFacet& GetSchemaFacet() const { return m_schemaFacet; }
     inline bool SchemaFacetHasBeenSet() const { return m_schemaFacetHasBeenSet; }
+    template<typename SchemaFacetT = SchemaFacet>
+    void SetSchemaFacet(SchemaFacetT&& value) { m_schemaFacetHasBeenSet = true; m_schemaFacet = std::forward<SchemaFacetT>(value); }
+    template<typename SchemaFacetT = SchemaFacet>
+    AddFacetToObjectRequest& WithSchemaFacet(SchemaFacetT&& value) { SetSchemaFacet(std::forward<SchemaFacetT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Identifiers for the facet that you are adding to the object. See
-     * <a>SchemaFacet</a> for details.</p>
-     */
-    inline void SetSchemaFacet(const SchemaFacet& value) { m_schemaFacetHasBeenSet = true; m_schemaFacet = value; }
-
-    /**
-     * <p>Identifiers for the facet that you are adding to the object. See
-     * <a>SchemaFacet</a> for details.</p>
-     */
-    inline void SetSchemaFacet(SchemaFacet&& value) { m_schemaFacetHasBeenSet = true; m_schemaFacet = std::move(value); }
-
-    /**
-     * <p>Identifiers for the facet that you are adding to the object. See
-     * <a>SchemaFacet</a> for details.</p>
-     */
-    inline AddFacetToObjectRequest& WithSchemaFacet(const SchemaFacet& value) { SetSchemaFacet(value); return *this;}
-
-    /**
-     * <p>Identifiers for the facet that you are adding to the object. See
-     * <a>SchemaFacet</a> for details.</p>
-     */
-    inline AddFacetToObjectRequest& WithSchemaFacet(SchemaFacet&& value) { SetSchemaFacet(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Attributes on the facet that you are adding to the object.</p>
      */
-    inline const Aws::Vector<AttributeKeyAndValue>& GetObjectAttributeList() const{ return m_objectAttributeList; }
-
-    /**
-     * <p>Attributes on the facet that you are adding to the object.</p>
-     */
+    inline const Aws::Vector<AttributeKeyAndValue>& GetObjectAttributeList() const { return m_objectAttributeList; }
     inline bool ObjectAttributeListHasBeenSet() const { return m_objectAttributeListHasBeenSet; }
+    template<typename ObjectAttributeListT = Aws::Vector<AttributeKeyAndValue>>
+    void SetObjectAttributeList(ObjectAttributeListT&& value) { m_objectAttributeListHasBeenSet = true; m_objectAttributeList = std::forward<ObjectAttributeListT>(value); }
+    template<typename ObjectAttributeListT = Aws::Vector<AttributeKeyAndValue>>
+    AddFacetToObjectRequest& WithObjectAttributeList(ObjectAttributeListT&& value) { SetObjectAttributeList(std::forward<ObjectAttributeListT>(value)); return *this;}
+    template<typename ObjectAttributeListT = AttributeKeyAndValue>
+    AddFacetToObjectRequest& AddObjectAttributeList(ObjectAttributeListT&& value) { m_objectAttributeListHasBeenSet = true; m_objectAttributeList.emplace_back(std::forward<ObjectAttributeListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Attributes on the facet that you are adding to the object.</p>
-     */
-    inline void SetObjectAttributeList(const Aws::Vector<AttributeKeyAndValue>& value) { m_objectAttributeListHasBeenSet = true; m_objectAttributeList = value; }
-
-    /**
-     * <p>Attributes on the facet that you are adding to the object.</p>
-     */
-    inline void SetObjectAttributeList(Aws::Vector<AttributeKeyAndValue>&& value) { m_objectAttributeListHasBeenSet = true; m_objectAttributeList = std::move(value); }
-
-    /**
-     * <p>Attributes on the facet that you are adding to the object.</p>
-     */
-    inline AddFacetToObjectRequest& WithObjectAttributeList(const Aws::Vector<AttributeKeyAndValue>& value) { SetObjectAttributeList(value); return *this;}
-
-    /**
-     * <p>Attributes on the facet that you are adding to the object.</p>
-     */
-    inline AddFacetToObjectRequest& WithObjectAttributeList(Aws::Vector<AttributeKeyAndValue>&& value) { SetObjectAttributeList(std::move(value)); return *this;}
-
-    /**
-     * <p>Attributes on the facet that you are adding to the object.</p>
-     */
-    inline AddFacetToObjectRequest& AddObjectAttributeList(const AttributeKeyAndValue& value) { m_objectAttributeListHasBeenSet = true; m_objectAttributeList.push_back(value); return *this; }
-
-    /**
-     * <p>Attributes on the facet that you are adding to the object.</p>
-     */
-    inline AddFacetToObjectRequest& AddObjectAttributeList(AttributeKeyAndValue&& value) { m_objectAttributeListHasBeenSet = true; m_objectAttributeList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A reference to the object you are adding the specified facet to.</p>
      */
-    inline const ObjectReference& GetObjectReference() const{ return m_objectReference; }
-
-    /**
-     * <p>A reference to the object you are adding the specified facet to.</p>
-     */
+    inline const ObjectReference& GetObjectReference() const { return m_objectReference; }
     inline bool ObjectReferenceHasBeenSet() const { return m_objectReferenceHasBeenSet; }
-
-    /**
-     * <p>A reference to the object you are adding the specified facet to.</p>
-     */
-    inline void SetObjectReference(const ObjectReference& value) { m_objectReferenceHasBeenSet = true; m_objectReference = value; }
-
-    /**
-     * <p>A reference to the object you are adding the specified facet to.</p>
-     */
-    inline void SetObjectReference(ObjectReference&& value) { m_objectReferenceHasBeenSet = true; m_objectReference = std::move(value); }
-
-    /**
-     * <p>A reference to the object you are adding the specified facet to.</p>
-     */
-    inline AddFacetToObjectRequest& WithObjectReference(const ObjectReference& value) { SetObjectReference(value); return *this;}
-
-    /**
-     * <p>A reference to the object you are adding the specified facet to.</p>
-     */
-    inline AddFacetToObjectRequest& WithObjectReference(ObjectReference&& value) { SetObjectReference(std::move(value)); return *this;}
-
+    template<typename ObjectReferenceT = ObjectReference>
+    void SetObjectReference(ObjectReferenceT&& value) { m_objectReferenceHasBeenSet = true; m_objectReference = std::forward<ObjectReferenceT>(value); }
+    template<typename ObjectReferenceT = ObjectReference>
+    AddFacetToObjectRequest& WithObjectReference(ObjectReferenceT&& value) { SetObjectReference(std::forward<ObjectReferenceT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_directoryArn;

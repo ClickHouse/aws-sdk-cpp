@@ -22,7 +22,7 @@ namespace Model
   class StartBulkDeploymentRequest : public GreengrassRequest
   {
   public:
-    AWS_GREENGRASS_API StartBulkDeploymentRequest();
+    AWS_GREENGRASS_API StartBulkDeploymentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,112 +35,34 @@ namespace Model
     AWS_GREENGRASS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * A client token used to correlate requests and responses.
      */
-    inline const Aws::String& GetAmznClientToken() const{ return m_amznClientToken; }
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
+    inline const Aws::String& GetAmznClientToken() const { return m_amznClientToken; }
     inline bool AmznClientTokenHasBeenSet() const { return m_amznClientTokenHasBeenSet; }
+    template<typename AmznClientTokenT = Aws::String>
+    void SetAmznClientToken(AmznClientTokenT&& value) { m_amznClientTokenHasBeenSet = true; m_amznClientToken = std::forward<AmznClientTokenT>(value); }
+    template<typename AmznClientTokenT = Aws::String>
+    StartBulkDeploymentRequest& WithAmznClientToken(AmznClientTokenT&& value) { SetAmznClientToken(std::forward<AmznClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline void SetAmznClientToken(const Aws::String& value) { m_amznClientTokenHasBeenSet = true; m_amznClientToken = value; }
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline void SetAmznClientToken(Aws::String&& value) { m_amznClientTokenHasBeenSet = true; m_amznClientToken = std::move(value); }
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline void SetAmznClientToken(const char* value) { m_amznClientTokenHasBeenSet = true; m_amznClientToken.assign(value); }
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline StartBulkDeploymentRequest& WithAmznClientToken(const Aws::String& value) { SetAmznClientToken(value); return *this;}
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline StartBulkDeploymentRequest& WithAmznClientToken(Aws::String&& value) { SetAmznClientToken(std::move(value)); return *this;}
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline StartBulkDeploymentRequest& WithAmznClientToken(const char* value) { SetAmznClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * The ARN of the execution role to associate with the bulk deployment operation.
      * This IAM role must allow the ''greengrass:CreateDeployment'' action for all
      * group versions that are listed in the input file. This IAM role must have access
      * to the S3 bucket containing the input file.
      */
-    inline const Aws::String& GetExecutionRoleArn() const{ return m_executionRoleArn; }
-
-    /**
-     * The ARN of the execution role to associate with the bulk deployment operation.
-     * This IAM role must allow the ''greengrass:CreateDeployment'' action for all
-     * group versions that are listed in the input file. This IAM role must have access
-     * to the S3 bucket containing the input file.
-     */
+    inline const Aws::String& GetExecutionRoleArn() const { return m_executionRoleArn; }
     inline bool ExecutionRoleArnHasBeenSet() const { return m_executionRoleArnHasBeenSet; }
+    template<typename ExecutionRoleArnT = Aws::String>
+    void SetExecutionRoleArn(ExecutionRoleArnT&& value) { m_executionRoleArnHasBeenSet = true; m_executionRoleArn = std::forward<ExecutionRoleArnT>(value); }
+    template<typename ExecutionRoleArnT = Aws::String>
+    StartBulkDeploymentRequest& WithExecutionRoleArn(ExecutionRoleArnT&& value) { SetExecutionRoleArn(std::forward<ExecutionRoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The ARN of the execution role to associate with the bulk deployment operation.
-     * This IAM role must allow the ''greengrass:CreateDeployment'' action for all
-     * group versions that are listed in the input file. This IAM role must have access
-     * to the S3 bucket containing the input file.
-     */
-    inline void SetExecutionRoleArn(const Aws::String& value) { m_executionRoleArnHasBeenSet = true; m_executionRoleArn = value; }
-
-    /**
-     * The ARN of the execution role to associate with the bulk deployment operation.
-     * This IAM role must allow the ''greengrass:CreateDeployment'' action for all
-     * group versions that are listed in the input file. This IAM role must have access
-     * to the S3 bucket containing the input file.
-     */
-    inline void SetExecutionRoleArn(Aws::String&& value) { m_executionRoleArnHasBeenSet = true; m_executionRoleArn = std::move(value); }
-
-    /**
-     * The ARN of the execution role to associate with the bulk deployment operation.
-     * This IAM role must allow the ''greengrass:CreateDeployment'' action for all
-     * group versions that are listed in the input file. This IAM role must have access
-     * to the S3 bucket containing the input file.
-     */
-    inline void SetExecutionRoleArn(const char* value) { m_executionRoleArnHasBeenSet = true; m_executionRoleArn.assign(value); }
-
-    /**
-     * The ARN of the execution role to associate with the bulk deployment operation.
-     * This IAM role must allow the ''greengrass:CreateDeployment'' action for all
-     * group versions that are listed in the input file. This IAM role must have access
-     * to the S3 bucket containing the input file.
-     */
-    inline StartBulkDeploymentRequest& WithExecutionRoleArn(const Aws::String& value) { SetExecutionRoleArn(value); return *this;}
-
-    /**
-     * The ARN of the execution role to associate with the bulk deployment operation.
-     * This IAM role must allow the ''greengrass:CreateDeployment'' action for all
-     * group versions that are listed in the input file. This IAM role must have access
-     * to the S3 bucket containing the input file.
-     */
-    inline StartBulkDeploymentRequest& WithExecutionRoleArn(Aws::String&& value) { SetExecutionRoleArn(std::move(value)); return *this;}
-
-    /**
-     * The ARN of the execution role to associate with the bulk deployment operation.
-     * This IAM role must allow the ''greengrass:CreateDeployment'' action for all
-     * group versions that are listed in the input file. This IAM role must have access
-     * to the S3 bucket containing the input file.
-     */
-    inline StartBulkDeploymentRequest& WithExecutionRoleArn(const char* value) { SetExecutionRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * The URI of the input file contained in the S3 bucket. The execution role must
      * have ''getObject'' permissions on this bucket to access the input file. The
@@ -149,144 +71,29 @@ namespace Model
      * be less than 100 MB. Currently, AWS IoT Greengrass supports only
      * ''NewDeployment'' deployment types.
      */
-    inline const Aws::String& GetInputFileUri() const{ return m_inputFileUri; }
-
-    /**
-     * The URI of the input file contained in the S3 bucket. The execution role must
-     * have ''getObject'' permissions on this bucket to access the input file. The
-     * input file is a JSON-serialized, line delimited file with UTF-8 encoding that
-     * provides a list of group and version IDs and the deployment type. This file must
-     * be less than 100 MB. Currently, AWS IoT Greengrass supports only
-     * ''NewDeployment'' deployment types.
-     */
+    inline const Aws::String& GetInputFileUri() const { return m_inputFileUri; }
     inline bool InputFileUriHasBeenSet() const { return m_inputFileUriHasBeenSet; }
+    template<typename InputFileUriT = Aws::String>
+    void SetInputFileUri(InputFileUriT&& value) { m_inputFileUriHasBeenSet = true; m_inputFileUri = std::forward<InputFileUriT>(value); }
+    template<typename InputFileUriT = Aws::String>
+    StartBulkDeploymentRequest& WithInputFileUri(InputFileUriT&& value) { SetInputFileUri(std::forward<InputFileUriT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The URI of the input file contained in the S3 bucket. The execution role must
-     * have ''getObject'' permissions on this bucket to access the input file. The
-     * input file is a JSON-serialized, line delimited file with UTF-8 encoding that
-     * provides a list of group and version IDs and the deployment type. This file must
-     * be less than 100 MB. Currently, AWS IoT Greengrass supports only
-     * ''NewDeployment'' deployment types.
-     */
-    inline void SetInputFileUri(const Aws::String& value) { m_inputFileUriHasBeenSet = true; m_inputFileUri = value; }
-
-    /**
-     * The URI of the input file contained in the S3 bucket. The execution role must
-     * have ''getObject'' permissions on this bucket to access the input file. The
-     * input file is a JSON-serialized, line delimited file with UTF-8 encoding that
-     * provides a list of group and version IDs and the deployment type. This file must
-     * be less than 100 MB. Currently, AWS IoT Greengrass supports only
-     * ''NewDeployment'' deployment types.
-     */
-    inline void SetInputFileUri(Aws::String&& value) { m_inputFileUriHasBeenSet = true; m_inputFileUri = std::move(value); }
-
-    /**
-     * The URI of the input file contained in the S3 bucket. The execution role must
-     * have ''getObject'' permissions on this bucket to access the input file. The
-     * input file is a JSON-serialized, line delimited file with UTF-8 encoding that
-     * provides a list of group and version IDs and the deployment type. This file must
-     * be less than 100 MB. Currently, AWS IoT Greengrass supports only
-     * ''NewDeployment'' deployment types.
-     */
-    inline void SetInputFileUri(const char* value) { m_inputFileUriHasBeenSet = true; m_inputFileUri.assign(value); }
-
-    /**
-     * The URI of the input file contained in the S3 bucket. The execution role must
-     * have ''getObject'' permissions on this bucket to access the input file. The
-     * input file is a JSON-serialized, line delimited file with UTF-8 encoding that
-     * provides a list of group and version IDs and the deployment type. This file must
-     * be less than 100 MB. Currently, AWS IoT Greengrass supports only
-     * ''NewDeployment'' deployment types.
-     */
-    inline StartBulkDeploymentRequest& WithInputFileUri(const Aws::String& value) { SetInputFileUri(value); return *this;}
-
-    /**
-     * The URI of the input file contained in the S3 bucket. The execution role must
-     * have ''getObject'' permissions on this bucket to access the input file. The
-     * input file is a JSON-serialized, line delimited file with UTF-8 encoding that
-     * provides a list of group and version IDs and the deployment type. This file must
-     * be less than 100 MB. Currently, AWS IoT Greengrass supports only
-     * ''NewDeployment'' deployment types.
-     */
-    inline StartBulkDeploymentRequest& WithInputFileUri(Aws::String&& value) { SetInputFileUri(std::move(value)); return *this;}
-
-    /**
-     * The URI of the input file contained in the S3 bucket. The execution role must
-     * have ''getObject'' permissions on this bucket to access the input file. The
-     * input file is a JSON-serialized, line delimited file with UTF-8 encoding that
-     * provides a list of group and version IDs and the deployment type. This file must
-     * be less than 100 MB. Currently, AWS IoT Greengrass supports only
-     * ''NewDeployment'' deployment types.
-     */
-    inline StartBulkDeploymentRequest& WithInputFileUri(const char* value) { SetInputFileUri(value); return *this;}
-
-
+    ///@{
     /**
      * Tag(s) to add to the new resource.
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline StartBulkDeploymentRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline StartBulkDeploymentRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline StartBulkDeploymentRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline StartBulkDeploymentRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline StartBulkDeploymentRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline StartBulkDeploymentRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline StartBulkDeploymentRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline StartBulkDeploymentRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * Tag(s) to add to the new resource.
-     */
-    inline StartBulkDeploymentRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    StartBulkDeploymentRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    StartBulkDeploymentRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_amznClientToken;

@@ -35,12 +35,13 @@ namespace Model
   class LayoutConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API LayoutConfiguration();
+    AWS_QUICKSIGHT_API LayoutConfiguration() = default;
     AWS_QUICKSIGHT_API LayoutConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API LayoutConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A type of layout that can be used on a sheet. In a grid layout, visuals snap
      * to a grid with standard spacing and alignment. Dashboards are displayed as
@@ -48,127 +49,39 @@ namespace Model
      * can be configured to behave in one of two ways when the viewport is resized:
      * <code>FIXED</code> or <code>RESPONSIVE</code>.</p>
      */
-    inline const GridLayoutConfiguration& GetGridLayout() const{ return m_gridLayout; }
-
-    /**
-     * <p>A type of layout that can be used on a sheet. In a grid layout, visuals snap
-     * to a grid with standard spacing and alignment. Dashboards are displayed as
-     * designed, with options to fit to screen or view at actual size. A grid layout
-     * can be configured to behave in one of two ways when the viewport is resized:
-     * <code>FIXED</code> or <code>RESPONSIVE</code>.</p>
-     */
+    inline const GridLayoutConfiguration& GetGridLayout() const { return m_gridLayout; }
     inline bool GridLayoutHasBeenSet() const { return m_gridLayoutHasBeenSet; }
+    template<typename GridLayoutT = GridLayoutConfiguration>
+    void SetGridLayout(GridLayoutT&& value) { m_gridLayoutHasBeenSet = true; m_gridLayout = std::forward<GridLayoutT>(value); }
+    template<typename GridLayoutT = GridLayoutConfiguration>
+    LayoutConfiguration& WithGridLayout(GridLayoutT&& value) { SetGridLayout(std::forward<GridLayoutT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A type of layout that can be used on a sheet. In a grid layout, visuals snap
-     * to a grid with standard spacing and alignment. Dashboards are displayed as
-     * designed, with options to fit to screen or view at actual size. A grid layout
-     * can be configured to behave in one of two ways when the viewport is resized:
-     * <code>FIXED</code> or <code>RESPONSIVE</code>.</p>
-     */
-    inline void SetGridLayout(const GridLayoutConfiguration& value) { m_gridLayoutHasBeenSet = true; m_gridLayout = value; }
-
-    /**
-     * <p>A type of layout that can be used on a sheet. In a grid layout, visuals snap
-     * to a grid with standard spacing and alignment. Dashboards are displayed as
-     * designed, with options to fit to screen or view at actual size. A grid layout
-     * can be configured to behave in one of two ways when the viewport is resized:
-     * <code>FIXED</code> or <code>RESPONSIVE</code>.</p>
-     */
-    inline void SetGridLayout(GridLayoutConfiguration&& value) { m_gridLayoutHasBeenSet = true; m_gridLayout = std::move(value); }
-
-    /**
-     * <p>A type of layout that can be used on a sheet. In a grid layout, visuals snap
-     * to a grid with standard spacing and alignment. Dashboards are displayed as
-     * designed, with options to fit to screen or view at actual size. A grid layout
-     * can be configured to behave in one of two ways when the viewport is resized:
-     * <code>FIXED</code> or <code>RESPONSIVE</code>.</p>
-     */
-    inline LayoutConfiguration& WithGridLayout(const GridLayoutConfiguration& value) { SetGridLayout(value); return *this;}
-
-    /**
-     * <p>A type of layout that can be used on a sheet. In a grid layout, visuals snap
-     * to a grid with standard spacing and alignment. Dashboards are displayed as
-     * designed, with options to fit to screen or view at actual size. A grid layout
-     * can be configured to behave in one of two ways when the viewport is resized:
-     * <code>FIXED</code> or <code>RESPONSIVE</code>.</p>
-     */
-    inline LayoutConfiguration& WithGridLayout(GridLayoutConfiguration&& value) { SetGridLayout(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A free-form is optimized for a fixed width and has more control over the
      * exact placement of layout elements.</p>
      */
-    inline const FreeFormLayoutConfiguration& GetFreeFormLayout() const{ return m_freeFormLayout; }
-
-    /**
-     * <p>A free-form is optimized for a fixed width and has more control over the
-     * exact placement of layout elements.</p>
-     */
+    inline const FreeFormLayoutConfiguration& GetFreeFormLayout() const { return m_freeFormLayout; }
     inline bool FreeFormLayoutHasBeenSet() const { return m_freeFormLayoutHasBeenSet; }
+    template<typename FreeFormLayoutT = FreeFormLayoutConfiguration>
+    void SetFreeFormLayout(FreeFormLayoutT&& value) { m_freeFormLayoutHasBeenSet = true; m_freeFormLayout = std::forward<FreeFormLayoutT>(value); }
+    template<typename FreeFormLayoutT = FreeFormLayoutConfiguration>
+    LayoutConfiguration& WithFreeFormLayout(FreeFormLayoutT&& value) { SetFreeFormLayout(std::forward<FreeFormLayoutT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A free-form is optimized for a fixed width and has more control over the
-     * exact placement of layout elements.</p>
-     */
-    inline void SetFreeFormLayout(const FreeFormLayoutConfiguration& value) { m_freeFormLayoutHasBeenSet = true; m_freeFormLayout = value; }
-
-    /**
-     * <p>A free-form is optimized for a fixed width and has more control over the
-     * exact placement of layout elements.</p>
-     */
-    inline void SetFreeFormLayout(FreeFormLayoutConfiguration&& value) { m_freeFormLayoutHasBeenSet = true; m_freeFormLayout = std::move(value); }
-
-    /**
-     * <p>A free-form is optimized for a fixed width and has more control over the
-     * exact placement of layout elements.</p>
-     */
-    inline LayoutConfiguration& WithFreeFormLayout(const FreeFormLayoutConfiguration& value) { SetFreeFormLayout(value); return *this;}
-
-    /**
-     * <p>A free-form is optimized for a fixed width and has more control over the
-     * exact placement of layout elements.</p>
-     */
-    inline LayoutConfiguration& WithFreeFormLayout(FreeFormLayoutConfiguration&& value) { SetFreeFormLayout(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A section based layout organizes visuals into multiple sections and has
      * customized header, footer and page break.</p>
      */
-    inline const SectionBasedLayoutConfiguration& GetSectionBasedLayout() const{ return m_sectionBasedLayout; }
-
-    /**
-     * <p>A section based layout organizes visuals into multiple sections and has
-     * customized header, footer and page break.</p>
-     */
+    inline const SectionBasedLayoutConfiguration& GetSectionBasedLayout() const { return m_sectionBasedLayout; }
     inline bool SectionBasedLayoutHasBeenSet() const { return m_sectionBasedLayoutHasBeenSet; }
-
-    /**
-     * <p>A section based layout organizes visuals into multiple sections and has
-     * customized header, footer and page break.</p>
-     */
-    inline void SetSectionBasedLayout(const SectionBasedLayoutConfiguration& value) { m_sectionBasedLayoutHasBeenSet = true; m_sectionBasedLayout = value; }
-
-    /**
-     * <p>A section based layout organizes visuals into multiple sections and has
-     * customized header, footer and page break.</p>
-     */
-    inline void SetSectionBasedLayout(SectionBasedLayoutConfiguration&& value) { m_sectionBasedLayoutHasBeenSet = true; m_sectionBasedLayout = std::move(value); }
-
-    /**
-     * <p>A section based layout organizes visuals into multiple sections and has
-     * customized header, footer and page break.</p>
-     */
-    inline LayoutConfiguration& WithSectionBasedLayout(const SectionBasedLayoutConfiguration& value) { SetSectionBasedLayout(value); return *this;}
-
-    /**
-     * <p>A section based layout organizes visuals into multiple sections and has
-     * customized header, footer and page break.</p>
-     */
-    inline LayoutConfiguration& WithSectionBasedLayout(SectionBasedLayoutConfiguration&& value) { SetSectionBasedLayout(std::move(value)); return *this;}
-
+    template<typename SectionBasedLayoutT = SectionBasedLayoutConfiguration>
+    void SetSectionBasedLayout(SectionBasedLayoutT&& value) { m_sectionBasedLayoutHasBeenSet = true; m_sectionBasedLayout = std::forward<SectionBasedLayoutT>(value); }
+    template<typename SectionBasedLayoutT = SectionBasedLayoutConfiguration>
+    LayoutConfiguration& WithSectionBasedLayout(SectionBasedLayoutT&& value) { SetSectionBasedLayout(std::forward<SectionBasedLayoutT>(value)); return *this;}
+    ///@}
   private:
 
     GridLayoutConfiguration m_gridLayout;

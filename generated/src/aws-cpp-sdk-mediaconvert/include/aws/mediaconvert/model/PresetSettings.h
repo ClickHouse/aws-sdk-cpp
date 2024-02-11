@@ -35,191 +35,67 @@ namespace Model
   class PresetSettings
   {
   public:
-    AWS_MEDIACONVERT_API PresetSettings();
+    AWS_MEDIACONVERT_API PresetSettings() = default;
     AWS_MEDIACONVERT_API PresetSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API PresetSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * (AudioDescriptions) contains groups of audio encoding settings organized by
-     * audio codec. Include one instance of (AudioDescriptions) per output.
-     * (AudioDescriptions) can contain multiple groups of encoding settings.
+     * Contains groups of audio encoding settings organized by audio codec. Include one
+     * instance of per output. Can contain multiple groups of encoding settings.
      */
-    inline const Aws::Vector<AudioDescription>& GetAudioDescriptions() const{ return m_audioDescriptions; }
-
-    /**
-     * (AudioDescriptions) contains groups of audio encoding settings organized by
-     * audio codec. Include one instance of (AudioDescriptions) per output.
-     * (AudioDescriptions) can contain multiple groups of encoding settings.
-     */
+    inline const Aws::Vector<AudioDescription>& GetAudioDescriptions() const { return m_audioDescriptions; }
     inline bool AudioDescriptionsHasBeenSet() const { return m_audioDescriptionsHasBeenSet; }
+    template<typename AudioDescriptionsT = Aws::Vector<AudioDescription>>
+    void SetAudioDescriptions(AudioDescriptionsT&& value) { m_audioDescriptionsHasBeenSet = true; m_audioDescriptions = std::forward<AudioDescriptionsT>(value); }
+    template<typename AudioDescriptionsT = Aws::Vector<AudioDescription>>
+    PresetSettings& WithAudioDescriptions(AudioDescriptionsT&& value) { SetAudioDescriptions(std::forward<AudioDescriptionsT>(value)); return *this;}
+    template<typename AudioDescriptionsT = AudioDescription>
+    PresetSettings& AddAudioDescriptions(AudioDescriptionsT&& value) { m_audioDescriptionsHasBeenSet = true; m_audioDescriptions.emplace_back(std::forward<AudioDescriptionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * (AudioDescriptions) contains groups of audio encoding settings organized by
-     * audio codec. Include one instance of (AudioDescriptions) per output.
-     * (AudioDescriptions) can contain multiple groups of encoding settings.
-     */
-    inline void SetAudioDescriptions(const Aws::Vector<AudioDescription>& value) { m_audioDescriptionsHasBeenSet = true; m_audioDescriptions = value; }
-
-    /**
-     * (AudioDescriptions) contains groups of audio encoding settings organized by
-     * audio codec. Include one instance of (AudioDescriptions) per output.
-     * (AudioDescriptions) can contain multiple groups of encoding settings.
-     */
-    inline void SetAudioDescriptions(Aws::Vector<AudioDescription>&& value) { m_audioDescriptionsHasBeenSet = true; m_audioDescriptions = std::move(value); }
-
-    /**
-     * (AudioDescriptions) contains groups of audio encoding settings organized by
-     * audio codec. Include one instance of (AudioDescriptions) per output.
-     * (AudioDescriptions) can contain multiple groups of encoding settings.
-     */
-    inline PresetSettings& WithAudioDescriptions(const Aws::Vector<AudioDescription>& value) { SetAudioDescriptions(value); return *this;}
-
-    /**
-     * (AudioDescriptions) contains groups of audio encoding settings organized by
-     * audio codec. Include one instance of (AudioDescriptions) per output.
-     * (AudioDescriptions) can contain multiple groups of encoding settings.
-     */
-    inline PresetSettings& WithAudioDescriptions(Aws::Vector<AudioDescription>&& value) { SetAudioDescriptions(std::move(value)); return *this;}
-
-    /**
-     * (AudioDescriptions) contains groups of audio encoding settings organized by
-     * audio codec. Include one instance of (AudioDescriptions) per output.
-     * (AudioDescriptions) can contain multiple groups of encoding settings.
-     */
-    inline PresetSettings& AddAudioDescriptions(const AudioDescription& value) { m_audioDescriptionsHasBeenSet = true; m_audioDescriptions.push_back(value); return *this; }
-
-    /**
-     * (AudioDescriptions) contains groups of audio encoding settings organized by
-     * audio codec. Include one instance of (AudioDescriptions) per output.
-     * (AudioDescriptions) can contain multiple groups of encoding settings.
-     */
-    inline PresetSettings& AddAudioDescriptions(AudioDescription&& value) { m_audioDescriptionsHasBeenSet = true; m_audioDescriptions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * This object holds groups of settings related to captions for one output. For
      * each output that has captions, include one instance of CaptionDescriptions.
      */
-    inline const Aws::Vector<CaptionDescriptionPreset>& GetCaptionDescriptions() const{ return m_captionDescriptions; }
-
-    /**
-     * This object holds groups of settings related to captions for one output. For
-     * each output that has captions, include one instance of CaptionDescriptions.
-     */
+    inline const Aws::Vector<CaptionDescriptionPreset>& GetCaptionDescriptions() const { return m_captionDescriptions; }
     inline bool CaptionDescriptionsHasBeenSet() const { return m_captionDescriptionsHasBeenSet; }
+    template<typename CaptionDescriptionsT = Aws::Vector<CaptionDescriptionPreset>>
+    void SetCaptionDescriptions(CaptionDescriptionsT&& value) { m_captionDescriptionsHasBeenSet = true; m_captionDescriptions = std::forward<CaptionDescriptionsT>(value); }
+    template<typename CaptionDescriptionsT = Aws::Vector<CaptionDescriptionPreset>>
+    PresetSettings& WithCaptionDescriptions(CaptionDescriptionsT&& value) { SetCaptionDescriptions(std::forward<CaptionDescriptionsT>(value)); return *this;}
+    template<typename CaptionDescriptionsT = CaptionDescriptionPreset>
+    PresetSettings& AddCaptionDescriptions(CaptionDescriptionsT&& value) { m_captionDescriptionsHasBeenSet = true; m_captionDescriptions.emplace_back(std::forward<CaptionDescriptionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * This object holds groups of settings related to captions for one output. For
-     * each output that has captions, include one instance of CaptionDescriptions.
-     */
-    inline void SetCaptionDescriptions(const Aws::Vector<CaptionDescriptionPreset>& value) { m_captionDescriptionsHasBeenSet = true; m_captionDescriptions = value; }
-
-    /**
-     * This object holds groups of settings related to captions for one output. For
-     * each output that has captions, include one instance of CaptionDescriptions.
-     */
-    inline void SetCaptionDescriptions(Aws::Vector<CaptionDescriptionPreset>&& value) { m_captionDescriptionsHasBeenSet = true; m_captionDescriptions = std::move(value); }
-
-    /**
-     * This object holds groups of settings related to captions for one output. For
-     * each output that has captions, include one instance of CaptionDescriptions.
-     */
-    inline PresetSettings& WithCaptionDescriptions(const Aws::Vector<CaptionDescriptionPreset>& value) { SetCaptionDescriptions(value); return *this;}
-
-    /**
-     * This object holds groups of settings related to captions for one output. For
-     * each output that has captions, include one instance of CaptionDescriptions.
-     */
-    inline PresetSettings& WithCaptionDescriptions(Aws::Vector<CaptionDescriptionPreset>&& value) { SetCaptionDescriptions(std::move(value)); return *this;}
-
-    /**
-     * This object holds groups of settings related to captions for one output. For
-     * each output that has captions, include one instance of CaptionDescriptions.
-     */
-    inline PresetSettings& AddCaptionDescriptions(const CaptionDescriptionPreset& value) { m_captionDescriptionsHasBeenSet = true; m_captionDescriptions.push_back(value); return *this; }
-
-    /**
-     * This object holds groups of settings related to captions for one output. For
-     * each output that has captions, include one instance of CaptionDescriptions.
-     */
-    inline PresetSettings& AddCaptionDescriptions(CaptionDescriptionPreset&& value) { m_captionDescriptionsHasBeenSet = true; m_captionDescriptions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * Container specific settings.
      */
-    inline const ContainerSettings& GetContainerSettings() const{ return m_containerSettings; }
-
-    /**
-     * Container specific settings.
-     */
+    inline const ContainerSettings& GetContainerSettings() const { return m_containerSettings; }
     inline bool ContainerSettingsHasBeenSet() const { return m_containerSettingsHasBeenSet; }
+    template<typename ContainerSettingsT = ContainerSettings>
+    void SetContainerSettings(ContainerSettingsT&& value) { m_containerSettingsHasBeenSet = true; m_containerSettings = std::forward<ContainerSettingsT>(value); }
+    template<typename ContainerSettingsT = ContainerSettings>
+    PresetSettings& WithContainerSettings(ContainerSettingsT&& value) { SetContainerSettings(std::forward<ContainerSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Container specific settings.
-     */
-    inline void SetContainerSettings(const ContainerSettings& value) { m_containerSettingsHasBeenSet = true; m_containerSettings = value; }
-
-    /**
-     * Container specific settings.
-     */
-    inline void SetContainerSettings(ContainerSettings&& value) { m_containerSettingsHasBeenSet = true; m_containerSettings = std::move(value); }
-
-    /**
-     * Container specific settings.
-     */
-    inline PresetSettings& WithContainerSettings(const ContainerSettings& value) { SetContainerSettings(value); return *this;}
-
-    /**
-     * Container specific settings.
-     */
-    inline PresetSettings& WithContainerSettings(ContainerSettings&& value) { SetContainerSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * VideoDescription contains a group of video encoding settings. The specific video
      * settings depend on the video codec that you choose for the property codec.
      * Include one instance of VideoDescription per output.
      */
-    inline const VideoDescription& GetVideoDescription() const{ return m_videoDescription; }
-
-    /**
-     * VideoDescription contains a group of video encoding settings. The specific video
-     * settings depend on the video codec that you choose for the property codec.
-     * Include one instance of VideoDescription per output.
-     */
+    inline const VideoDescription& GetVideoDescription() const { return m_videoDescription; }
     inline bool VideoDescriptionHasBeenSet() const { return m_videoDescriptionHasBeenSet; }
-
-    /**
-     * VideoDescription contains a group of video encoding settings. The specific video
-     * settings depend on the video codec that you choose for the property codec.
-     * Include one instance of VideoDescription per output.
-     */
-    inline void SetVideoDescription(const VideoDescription& value) { m_videoDescriptionHasBeenSet = true; m_videoDescription = value; }
-
-    /**
-     * VideoDescription contains a group of video encoding settings. The specific video
-     * settings depend on the video codec that you choose for the property codec.
-     * Include one instance of VideoDescription per output.
-     */
-    inline void SetVideoDescription(VideoDescription&& value) { m_videoDescriptionHasBeenSet = true; m_videoDescription = std::move(value); }
-
-    /**
-     * VideoDescription contains a group of video encoding settings. The specific video
-     * settings depend on the video codec that you choose for the property codec.
-     * Include one instance of VideoDescription per output.
-     */
-    inline PresetSettings& WithVideoDescription(const VideoDescription& value) { SetVideoDescription(value); return *this;}
-
-    /**
-     * VideoDescription contains a group of video encoding settings. The specific video
-     * settings depend on the video codec that you choose for the property codec.
-     * Include one instance of VideoDescription per output.
-     */
-    inline PresetSettings& WithVideoDescription(VideoDescription&& value) { SetVideoDescription(std::move(value)); return *this;}
-
+    template<typename VideoDescriptionT = VideoDescription>
+    void SetVideoDescription(VideoDescriptionT&& value) { m_videoDescriptionHasBeenSet = true; m_videoDescription = std::forward<VideoDescriptionT>(value); }
+    template<typename VideoDescriptionT = VideoDescription>
+    PresetSettings& WithVideoDescription(VideoDescriptionT&& value) { SetVideoDescription(std::forward<VideoDescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<AudioDescription> m_audioDescriptions;

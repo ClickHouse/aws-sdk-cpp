@@ -27,6 +27,7 @@ namespace Aws
         static const int MISSING_HASH = HashingUtils::HashString("MISSING");
         static const int NOT_APPLICABLE_HASH = HashingUtils::HashString("NOT_APPLICABLE");
         static const int FAILED_HASH = HashingUtils::HashString("FAILED");
+        static const int AVAILABLE_SECURITY_UPDATE_HASH = HashingUtils::HashString("AVAILABLE_SECURITY_UPDATE");
 
 
         PatchComplianceDataState GetPatchComplianceDataStateForName(const Aws::String& name)
@@ -60,6 +61,10 @@ namespace Aws
           {
             return PatchComplianceDataState::FAILED;
           }
+          else if (hashCode == AVAILABLE_SECURITY_UPDATE_HASH)
+          {
+            return PatchComplianceDataState::AVAILABLE_SECURITY_UPDATE;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -74,6 +79,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case PatchComplianceDataState::NOT_SET:
+            return {};
           case PatchComplianceDataState::INSTALLED:
             return "INSTALLED";
           case PatchComplianceDataState::INSTALLED_OTHER:
@@ -88,6 +95,8 @@ namespace Aws
             return "NOT_APPLICABLE";
           case PatchComplianceDataState::FAILED:
             return "FAILED";
+          case PatchComplianceDataState::AVAILABLE_SECURITY_UPDATE:
+            return "AVAILABLE_SECURITY_UPDATE";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

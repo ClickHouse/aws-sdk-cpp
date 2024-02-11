@@ -18,19 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-DnsRequestAction::DnsRequestAction() : 
-    m_domainHasBeenSet(false),
-    m_protocolHasBeenSet(false),
-    m_blocked(false),
-    m_blockedHasBeenSet(false)
-{
-}
-
-DnsRequestAction::DnsRequestAction(JsonView jsonValue) : 
-    m_domainHasBeenSet(false),
-    m_protocolHasBeenSet(false),
-    m_blocked(false),
-    m_blockedHasBeenSet(false)
+DnsRequestAction::DnsRequestAction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,28 @@ DnsRequestAction& DnsRequestAction::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("domain"))
   {
     m_domain = jsonValue.GetString("domain");
-
     m_domainHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("protocol"))
   {
     m_protocol = jsonValue.GetString("protocol");
-
     m_protocolHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("blocked"))
   {
     m_blocked = jsonValue.GetBool("blocked");
-
     m_blockedHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("domainWithSuffix"))
+  {
+    m_domainWithSuffix = jsonValue.GetString("domainWithSuffix");
+    m_domainWithSuffixHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("vpcOwnerAccountId"))
+  {
+    m_vpcOwnerAccountId = jsonValue.GetString("vpcOwnerAccountId");
+    m_vpcOwnerAccountIdHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -80,6 +72,18 @@ JsonValue DnsRequestAction::Jsonize() const
   if(m_blockedHasBeenSet)
   {
    payload.WithBool("blocked", m_blocked);
+
+  }
+
+  if(m_domainWithSuffixHasBeenSet)
+  {
+   payload.WithString("domainWithSuffix", m_domainWithSuffix);
+
+  }
+
+  if(m_vpcOwnerAccountIdHasBeenSet)
+  {
+   payload.WithString("vpcOwnerAccountId", m_vpcOwnerAccountId);
 
   }
 

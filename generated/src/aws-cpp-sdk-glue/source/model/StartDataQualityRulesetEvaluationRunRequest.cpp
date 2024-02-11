@@ -12,19 +12,6 @@ using namespace Aws::Glue::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartDataQualityRulesetEvaluationRunRequest::StartDataQualityRulesetEvaluationRunRequest() : 
-    m_dataSourceHasBeenSet(false),
-    m_roleHasBeenSet(false),
-    m_numberOfWorkers(0),
-    m_numberOfWorkersHasBeenSet(false),
-    m_timeout(0),
-    m_timeoutHasBeenSet(false),
-    m_clientTokenHasBeenSet(false),
-    m_additionalRunOptionsHasBeenSet(false),
-    m_rulesetNamesHasBeenSet(false)
-{
-}
-
 Aws::String StartDataQualityRulesetEvaluationRunRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -73,6 +60,17 @@ Aws::String StartDataQualityRulesetEvaluationRunRequest::SerializePayload() cons
      rulesetNamesJsonList[rulesetNamesIndex].AsString(m_rulesetNames[rulesetNamesIndex]);
    }
    payload.WithArray("RulesetNames", std::move(rulesetNamesJsonList));
+
+  }
+
+  if(m_additionalDataSourcesHasBeenSet)
+  {
+   JsonValue additionalDataSourcesJsonMap;
+   for(auto& additionalDataSourcesItem : m_additionalDataSources)
+   {
+     additionalDataSourcesJsonMap.WithObject(additionalDataSourcesItem.first, additionalDataSourcesItem.second.Jsonize());
+   }
+   payload.WithObject("AdditionalDataSources", std::move(additionalDataSourcesJsonMap));
 
   }
 

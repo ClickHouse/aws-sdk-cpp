@@ -33,7 +33,7 @@ namespace Model
   class LaunchTemplateEbsBlockDeviceRequest
   {
   public:
-    AWS_EC2_API LaunchTemplateEbsBlockDeviceRequest();
+    AWS_EC2_API LaunchTemplateEbsBlockDeviceRequest() = default;
     AWS_EC2_API LaunchTemplateEbsBlockDeviceRequest(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API LaunchTemplateEbsBlockDeviceRequest& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,348 +41,148 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Indicates whether the EBS volume is encrypted. Encrypted volumes can only be
      * attached to instances that support Amazon EBS encryption. If you are creating a
      * volume from a snapshot, you can't specify an encryption value.</p>
      */
-    inline bool GetEncrypted() const{ return m_encrypted; }
-
-    /**
-     * <p>Indicates whether the EBS volume is encrypted. Encrypted volumes can only be
-     * attached to instances that support Amazon EBS encryption. If you are creating a
-     * volume from a snapshot, you can't specify an encryption value.</p>
-     */
+    inline bool GetEncrypted() const { return m_encrypted; }
     inline bool EncryptedHasBeenSet() const { return m_encryptedHasBeenSet; }
-
-    /**
-     * <p>Indicates whether the EBS volume is encrypted. Encrypted volumes can only be
-     * attached to instances that support Amazon EBS encryption. If you are creating a
-     * volume from a snapshot, you can't specify an encryption value.</p>
-     */
     inline void SetEncrypted(bool value) { m_encryptedHasBeenSet = true; m_encrypted = value; }
-
-    /**
-     * <p>Indicates whether the EBS volume is encrypted. Encrypted volumes can only be
-     * attached to instances that support Amazon EBS encryption. If you are creating a
-     * volume from a snapshot, you can't specify an encryption value.</p>
-     */
     inline LaunchTemplateEbsBlockDeviceRequest& WithEncrypted(bool value) { SetEncrypted(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Indicates whether the EBS volume is deleted on instance termination.</p>
      */
-    inline bool GetDeleteOnTermination() const{ return m_deleteOnTermination; }
-
-    /**
-     * <p>Indicates whether the EBS volume is deleted on instance termination.</p>
-     */
+    inline bool GetDeleteOnTermination() const { return m_deleteOnTermination; }
     inline bool DeleteOnTerminationHasBeenSet() const { return m_deleteOnTerminationHasBeenSet; }
-
-    /**
-     * <p>Indicates whether the EBS volume is deleted on instance termination.</p>
-     */
     inline void SetDeleteOnTermination(bool value) { m_deleteOnTerminationHasBeenSet = true; m_deleteOnTermination = value; }
-
-    /**
-     * <p>Indicates whether the EBS volume is deleted on instance termination.</p>
-     */
     inline LaunchTemplateEbsBlockDeviceRequest& WithDeleteOnTermination(bool value) { SetDeleteOnTermination(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of I/O operations per second (IOPS). For <code>gp3</code>,
      * <code>io1</code>, and <code>io2</code> volumes, this represents the number of
      * IOPS that are provisioned for the volume. For <code>gp2</code> volumes, this
      * represents the baseline performance of the volume and the rate at which the
      * volume accumulates I/O credits for bursting.</p> <p>The following are the
-     * supported values for each volume type:</p> <ul> <li> <p> <code>gp3</code>:
-     * 3,000-16,000 IOPS</p> </li> <li> <p> <code>io1</code>: 100-64,000 IOPS</p> </li>
-     * <li> <p> <code>io2</code>: 100-64,000 IOPS</p> </li> </ul> <p>For
-     * <code>io1</code> and <code>io2</code> volumes, we guarantee 64,000 IOPS only for
-     * <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Instances
-     * built on the Nitro System</a>. Other instance families guarantee performance up
-     * to 32,000 IOPS.</p> <p>This parameter is supported for <code>io1</code>,
-     * <code>io2</code>, and <code>gp3</code> volumes only. This parameter is not
-     * supported for <code>gp2</code>, <code>st1</code>, <code>sc1</code>, or
-     * <code>standard</code> volumes.</p>
+     * supported values for each volume type:</p> <ul> <li> <p> <code>gp3</code>: 3,000
+     * - 80,000 IOPS</p> </li> <li> <p> <code>io1</code>: 100 - 64,000 IOPS</p> </li>
+     * <li> <p> <code>io2</code>: 100 - 256,000 IOPS</p> </li> </ul> <p>For
+     * <code>io2</code> volumes, you can achieve up to 256,000 IOPS on <a
+     * href="https://docs.aws.amazon.com/ec2/latest/instancetypes/ec2-nitro-instances.html">instances
+     * built on the Nitro System</a>. On other instances, you can achieve performance
+     * up to 32,000 IOPS.</p> <p>This parameter is supported for <code>io1</code>,
+     * <code>io2</code>, and <code>gp3</code> volumes only.</p>
      */
-    inline int GetIops() const{ return m_iops; }
-
-    /**
-     * <p>The number of I/O operations per second (IOPS). For <code>gp3</code>,
-     * <code>io1</code>, and <code>io2</code> volumes, this represents the number of
-     * IOPS that are provisioned for the volume. For <code>gp2</code> volumes, this
-     * represents the baseline performance of the volume and the rate at which the
-     * volume accumulates I/O credits for bursting.</p> <p>The following are the
-     * supported values for each volume type:</p> <ul> <li> <p> <code>gp3</code>:
-     * 3,000-16,000 IOPS</p> </li> <li> <p> <code>io1</code>: 100-64,000 IOPS</p> </li>
-     * <li> <p> <code>io2</code>: 100-64,000 IOPS</p> </li> </ul> <p>For
-     * <code>io1</code> and <code>io2</code> volumes, we guarantee 64,000 IOPS only for
-     * <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Instances
-     * built on the Nitro System</a>. Other instance families guarantee performance up
-     * to 32,000 IOPS.</p> <p>This parameter is supported for <code>io1</code>,
-     * <code>io2</code>, and <code>gp3</code> volumes only. This parameter is not
-     * supported for <code>gp2</code>, <code>st1</code>, <code>sc1</code>, or
-     * <code>standard</code> volumes.</p>
-     */
+    inline int GetIops() const { return m_iops; }
     inline bool IopsHasBeenSet() const { return m_iopsHasBeenSet; }
-
-    /**
-     * <p>The number of I/O operations per second (IOPS). For <code>gp3</code>,
-     * <code>io1</code>, and <code>io2</code> volumes, this represents the number of
-     * IOPS that are provisioned for the volume. For <code>gp2</code> volumes, this
-     * represents the baseline performance of the volume and the rate at which the
-     * volume accumulates I/O credits for bursting.</p> <p>The following are the
-     * supported values for each volume type:</p> <ul> <li> <p> <code>gp3</code>:
-     * 3,000-16,000 IOPS</p> </li> <li> <p> <code>io1</code>: 100-64,000 IOPS</p> </li>
-     * <li> <p> <code>io2</code>: 100-64,000 IOPS</p> </li> </ul> <p>For
-     * <code>io1</code> and <code>io2</code> volumes, we guarantee 64,000 IOPS only for
-     * <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Instances
-     * built on the Nitro System</a>. Other instance families guarantee performance up
-     * to 32,000 IOPS.</p> <p>This parameter is supported for <code>io1</code>,
-     * <code>io2</code>, and <code>gp3</code> volumes only. This parameter is not
-     * supported for <code>gp2</code>, <code>st1</code>, <code>sc1</code>, or
-     * <code>standard</code> volumes.</p>
-     */
     inline void SetIops(int value) { m_iopsHasBeenSet = true; m_iops = value; }
-
-    /**
-     * <p>The number of I/O operations per second (IOPS). For <code>gp3</code>,
-     * <code>io1</code>, and <code>io2</code> volumes, this represents the number of
-     * IOPS that are provisioned for the volume. For <code>gp2</code> volumes, this
-     * represents the baseline performance of the volume and the rate at which the
-     * volume accumulates I/O credits for bursting.</p> <p>The following are the
-     * supported values for each volume type:</p> <ul> <li> <p> <code>gp3</code>:
-     * 3,000-16,000 IOPS</p> </li> <li> <p> <code>io1</code>: 100-64,000 IOPS</p> </li>
-     * <li> <p> <code>io2</code>: 100-64,000 IOPS</p> </li> </ul> <p>For
-     * <code>io1</code> and <code>io2</code> volumes, we guarantee 64,000 IOPS only for
-     * <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Instances
-     * built on the Nitro System</a>. Other instance families guarantee performance up
-     * to 32,000 IOPS.</p> <p>This parameter is supported for <code>io1</code>,
-     * <code>io2</code>, and <code>gp3</code> volumes only. This parameter is not
-     * supported for <code>gp2</code>, <code>st1</code>, <code>sc1</code>, or
-     * <code>standard</code> volumes.</p>
-     */
     inline LaunchTemplateEbsBlockDeviceRequest& WithIops(int value) { SetIops(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>The ARN of the symmetric Key Management Service (KMS) CMK used for
-     * encryption.</p>
+     * <p>Identifier (key ID, key alias, key ARN, or alias ARN) of the customer managed
+     * KMS key to use for EBS encryption.</p>
      */
-    inline const Aws::String& GetKmsKeyId() const{ return m_kmsKeyId; }
-
-    /**
-     * <p>The ARN of the symmetric Key Management Service (KMS) CMK used for
-     * encryption.</p>
-     */
+    inline const Aws::String& GetKmsKeyId() const { return m_kmsKeyId; }
     inline bool KmsKeyIdHasBeenSet() const { return m_kmsKeyIdHasBeenSet; }
+    template<typename KmsKeyIdT = Aws::String>
+    void SetKmsKeyId(KmsKeyIdT&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::forward<KmsKeyIdT>(value); }
+    template<typename KmsKeyIdT = Aws::String>
+    LaunchTemplateEbsBlockDeviceRequest& WithKmsKeyId(KmsKeyIdT&& value) { SetKmsKeyId(std::forward<KmsKeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the symmetric Key Management Service (KMS) CMK used for
-     * encryption.</p>
-     */
-    inline void SetKmsKeyId(const Aws::String& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = value; }
-
-    /**
-     * <p>The ARN of the symmetric Key Management Service (KMS) CMK used for
-     * encryption.</p>
-     */
-    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::move(value); }
-
-    /**
-     * <p>The ARN of the symmetric Key Management Service (KMS) CMK used for
-     * encryption.</p>
-     */
-    inline void SetKmsKeyId(const char* value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId.assign(value); }
-
-    /**
-     * <p>The ARN of the symmetric Key Management Service (KMS) CMK used for
-     * encryption.</p>
-     */
-    inline LaunchTemplateEbsBlockDeviceRequest& WithKmsKeyId(const Aws::String& value) { SetKmsKeyId(value); return *this;}
-
-    /**
-     * <p>The ARN of the symmetric Key Management Service (KMS) CMK used for
-     * encryption.</p>
-     */
-    inline LaunchTemplateEbsBlockDeviceRequest& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the symmetric Key Management Service (KMS) CMK used for
-     * encryption.</p>
-     */
-    inline LaunchTemplateEbsBlockDeviceRequest& WithKmsKeyId(const char* value) { SetKmsKeyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the snapshot.</p>
      */
-    inline const Aws::String& GetSnapshotId() const{ return m_snapshotId; }
-
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
+    inline const Aws::String& GetSnapshotId() const { return m_snapshotId; }
     inline bool SnapshotIdHasBeenSet() const { return m_snapshotIdHasBeenSet; }
+    template<typename SnapshotIdT = Aws::String>
+    void SetSnapshotId(SnapshotIdT&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = std::forward<SnapshotIdT>(value); }
+    template<typename SnapshotIdT = Aws::String>
+    LaunchTemplateEbsBlockDeviceRequest& WithSnapshotId(SnapshotIdT&& value) { SetSnapshotId(std::forward<SnapshotIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
-    inline void SetSnapshotId(const Aws::String& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = value; }
-
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
-    inline void SetSnapshotId(Aws::String&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = std::move(value); }
-
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
-    inline void SetSnapshotId(const char* value) { m_snapshotIdHasBeenSet = true; m_snapshotId.assign(value); }
-
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
-    inline LaunchTemplateEbsBlockDeviceRequest& WithSnapshotId(const Aws::String& value) { SetSnapshotId(value); return *this;}
-
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
-    inline LaunchTemplateEbsBlockDeviceRequest& WithSnapshotId(Aws::String&& value) { SetSnapshotId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
-    inline LaunchTemplateEbsBlockDeviceRequest& WithSnapshotId(const char* value) { SetSnapshotId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The size of the volume, in GiBs. You must specify either a snapshot ID or a
      * volume size. The following are the supported volumes sizes for each volume
-     * type:</p> <ul> <li> <p> <code>gp2</code> and <code>gp3</code>: 1-16,384</p>
-     * </li> <li> <p> <code>io1</code> and <code>io2</code>: 4-16,384</p> </li> <li>
-     * <p> <code>st1</code> and <code>sc1</code>: 125-16,384</p> </li> <li> <p>
-     * <code>standard</code>: 1-1,024</p> </li> </ul>
+     * type:</p> <ul> <li> <p> <code>gp2</code>: 1 - 16,384 GiB</p> </li> <li> <p>
+     * <code>gp3</code>: 1 - 65,536 GiB</p> </li> <li> <p> <code>io1</code>: 4 - 16,384
+     * GiB</p> </li> <li> <p> <code>io2</code>: 4 - 65,536 GiB</p> </li> <li> <p>
+     * <code>st1</code> and <code>sc1</code>: 125 - 16,384 GiB</p> </li> <li> <p>
+     * <code>standard</code>: 1 - 1024 GiB</p> </li> </ul>
      */
-    inline int GetVolumeSize() const{ return m_volumeSize; }
-
-    /**
-     * <p>The size of the volume, in GiBs. You must specify either a snapshot ID or a
-     * volume size. The following are the supported volumes sizes for each volume
-     * type:</p> <ul> <li> <p> <code>gp2</code> and <code>gp3</code>: 1-16,384</p>
-     * </li> <li> <p> <code>io1</code> and <code>io2</code>: 4-16,384</p> </li> <li>
-     * <p> <code>st1</code> and <code>sc1</code>: 125-16,384</p> </li> <li> <p>
-     * <code>standard</code>: 1-1,024</p> </li> </ul>
-     */
+    inline int GetVolumeSize() const { return m_volumeSize; }
     inline bool VolumeSizeHasBeenSet() const { return m_volumeSizeHasBeenSet; }
-
-    /**
-     * <p>The size of the volume, in GiBs. You must specify either a snapshot ID or a
-     * volume size. The following are the supported volumes sizes for each volume
-     * type:</p> <ul> <li> <p> <code>gp2</code> and <code>gp3</code>: 1-16,384</p>
-     * </li> <li> <p> <code>io1</code> and <code>io2</code>: 4-16,384</p> </li> <li>
-     * <p> <code>st1</code> and <code>sc1</code>: 125-16,384</p> </li> <li> <p>
-     * <code>standard</code>: 1-1,024</p> </li> </ul>
-     */
     inline void SetVolumeSize(int value) { m_volumeSizeHasBeenSet = true; m_volumeSize = value; }
-
-    /**
-     * <p>The size of the volume, in GiBs. You must specify either a snapshot ID or a
-     * volume size. The following are the supported volumes sizes for each volume
-     * type:</p> <ul> <li> <p> <code>gp2</code> and <code>gp3</code>: 1-16,384</p>
-     * </li> <li> <p> <code>io1</code> and <code>io2</code>: 4-16,384</p> </li> <li>
-     * <p> <code>st1</code> and <code>sc1</code>: 125-16,384</p> </li> <li> <p>
-     * <code>standard</code>: 1-1,024</p> </li> </ul>
-     */
     inline LaunchTemplateEbsBlockDeviceRequest& WithVolumeSize(int value) { SetVolumeSize(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The volume type. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html">Amazon
-     * EBS volume types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+     * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html">Amazon
+     * EBS volume types</a> in the <i>Amazon EBS User Guide</i>.</p>
      */
-    inline const VolumeType& GetVolumeType() const{ return m_volumeType; }
-
-    /**
-     * <p>The volume type. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html">Amazon
-     * EBS volume types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     */
+    inline VolumeType GetVolumeType() const { return m_volumeType; }
     inline bool VolumeTypeHasBeenSet() const { return m_volumeTypeHasBeenSet; }
+    inline void SetVolumeType(VolumeType value) { m_volumeTypeHasBeenSet = true; m_volumeType = value; }
+    inline LaunchTemplateEbsBlockDeviceRequest& WithVolumeType(VolumeType value) { SetVolumeType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The volume type. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html">Amazon
-     * EBS volume types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     */
-    inline void SetVolumeType(const VolumeType& value) { m_volumeTypeHasBeenSet = true; m_volumeType = value; }
-
-    /**
-     * <p>The volume type. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html">Amazon
-     * EBS volume types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     */
-    inline void SetVolumeType(VolumeType&& value) { m_volumeTypeHasBeenSet = true; m_volumeType = std::move(value); }
-
-    /**
-     * <p>The volume type. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html">Amazon
-     * EBS volume types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     */
-    inline LaunchTemplateEbsBlockDeviceRequest& WithVolumeType(const VolumeType& value) { SetVolumeType(value); return *this;}
-
-    /**
-     * <p>The volume type. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html">Amazon
-     * EBS volume types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     */
-    inline LaunchTemplateEbsBlockDeviceRequest& WithVolumeType(VolumeType&& value) { SetVolumeType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The throughput to provision for a <code>gp3</code> volume, with a maximum of
-     * 1,000 MiB/s.</p> <p>Valid Range: Minimum value of 125. Maximum value of
-     * 1000.</p>
+     * 2,000 MiB/s.</p> <p>Valid Range: Minimum value of 125. Maximum value of
+     * 2,000.</p>
      */
-    inline int GetThroughput() const{ return m_throughput; }
-
-    /**
-     * <p>The throughput to provision for a <code>gp3</code> volume, with a maximum of
-     * 1,000 MiB/s.</p> <p>Valid Range: Minimum value of 125. Maximum value of
-     * 1000.</p>
-     */
+    inline int GetThroughput() const { return m_throughput; }
     inline bool ThroughputHasBeenSet() const { return m_throughputHasBeenSet; }
-
-    /**
-     * <p>The throughput to provision for a <code>gp3</code> volume, with a maximum of
-     * 1,000 MiB/s.</p> <p>Valid Range: Minimum value of 125. Maximum value of
-     * 1000.</p>
-     */
     inline void SetThroughput(int value) { m_throughputHasBeenSet = true; m_throughput = value; }
-
-    /**
-     * <p>The throughput to provision for a <code>gp3</code> volume, with a maximum of
-     * 1,000 MiB/s.</p> <p>Valid Range: Minimum value of 125. Maximum value of
-     * 1000.</p>
-     */
     inline LaunchTemplateEbsBlockDeviceRequest& WithThroughput(int value) { SetThroughput(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>Specifies the Amazon EBS Provisioned Rate for Volume Initialization (volume
+     * initialization rate), in MiB/s, at which to download the snapshot blocks from
+     * Amazon S3 to the volume. This is also known as <i>volume initialization</i>.
+     * Specifying a volume initialization rate ensures that the volume is initialized
+     * at a predictable and consistent rate after creation.</p> <p>This parameter is
+     * supported only for volumes created from snapshots. Omit this parameter if:</p>
+     * <ul> <li> <p>You want to create the volume using fast snapshot restore. You must
+     * specify a snapshot that is enabled for fast snapshot restore. In this case, the
+     * volume is fully initialized at creation.</p>  <p>If you specify a snapshot
+     * that is enabled for fast snapshot restore and a volume initialization rate, the
+     * volume will be initialized at the specified rate instead of fast snapshot
+     * restore.</p>  </li> <li> <p>You want to create a volume that is
+     * initialized at the default rate.</p> </li> </ul> <p>For more information, see <a
+     * href="https://docs.aws.amazon.com/ebs/latest/userguide/initalize-volume.html">
+     * Initialize Amazon EBS volumes</a> in the <i>Amazon EC2 User Guide</i>.</p>
+     * <p>Valid range: 100 - 300 MiB/s</p>
+     */
+    inline int GetVolumeInitializationRate() const { return m_volumeInitializationRate; }
+    inline bool VolumeInitializationRateHasBeenSet() const { return m_volumeInitializationRateHasBeenSet; }
+    inline void SetVolumeInitializationRate(int value) { m_volumeInitializationRateHasBeenSet = true; m_volumeInitializationRate = value; }
+    inline LaunchTemplateEbsBlockDeviceRequest& WithVolumeInitializationRate(int value) { SetVolumeInitializationRate(value); return *this;}
+    ///@}
   private:
 
-    bool m_encrypted;
+    bool m_encrypted{false};
     bool m_encryptedHasBeenSet = false;
 
-    bool m_deleteOnTermination;
+    bool m_deleteOnTermination{false};
     bool m_deleteOnTerminationHasBeenSet = false;
 
-    int m_iops;
+    int m_iops{0};
     bool m_iopsHasBeenSet = false;
 
     Aws::String m_kmsKeyId;
@@ -391,14 +191,17 @@ namespace Model
     Aws::String m_snapshotId;
     bool m_snapshotIdHasBeenSet = false;
 
-    int m_volumeSize;
+    int m_volumeSize{0};
     bool m_volumeSizeHasBeenSet = false;
 
-    VolumeType m_volumeType;
+    VolumeType m_volumeType{VolumeType::NOT_SET};
     bool m_volumeTypeHasBeenSet = false;
 
-    int m_throughput;
+    int m_throughput{0};
     bool m_throughputHasBeenSet = false;
+
+    int m_volumeInitializationRate{0};
+    bool m_volumeInitializationRateHasBeenSet = false;
   };
 
 } // namespace Model

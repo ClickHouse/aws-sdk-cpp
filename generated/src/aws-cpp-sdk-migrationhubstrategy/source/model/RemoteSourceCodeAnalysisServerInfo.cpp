@@ -18,13 +18,7 @@ namespace MigrationHubStrategyRecommendations
 namespace Model
 {
 
-RemoteSourceCodeAnalysisServerInfo::RemoteSourceCodeAnalysisServerInfo() : 
-    m_remoteSourceCodeAnalysisServerConfigurationTimestampHasBeenSet(false)
-{
-}
-
-RemoteSourceCodeAnalysisServerInfo::RemoteSourceCodeAnalysisServerInfo(JsonView jsonValue) : 
-    m_remoteSourceCodeAnalysisServerConfigurationTimestampHasBeenSet(false)
+RemoteSourceCodeAnalysisServerInfo::RemoteSourceCodeAnalysisServerInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ RemoteSourceCodeAnalysisServerInfo& RemoteSourceCodeAnalysisServerInfo::operator
   if(jsonValue.ValueExists("remoteSourceCodeAnalysisServerConfigurationTimestamp"))
   {
     m_remoteSourceCodeAnalysisServerConfigurationTimestamp = jsonValue.GetString("remoteSourceCodeAnalysisServerConfigurationTimestamp");
-
     m_remoteSourceCodeAnalysisServerConfigurationTimestampHasBeenSet = true;
   }
-
   return *this;
 }
 

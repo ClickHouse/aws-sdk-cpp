@@ -22,7 +22,7 @@ namespace Model
   class DisassociateAssetsRequest : public IoTSiteWiseRequest
   {
   public:
-    AWS_IOTSITEWISE_API DisassociateAssetsRequest();
+    AWS_IOTSITEWISE_API DisassociateAssetsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,225 +33,72 @@ namespace Model
     AWS_IOTSITEWISE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The ID of the parent asset from which to disassociate the child asset.</p>
+     * <p>The ID of the parent asset from which to disassociate the child asset. This
+     * can be either the actual ID in UUID format, or else <code>externalId:</code>
+     * followed by the external ID, if it has one. For more information, see <a
+     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
+     * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
      */
-    inline const Aws::String& GetAssetId() const{ return m_assetId; }
-
-    /**
-     * <p>The ID of the parent asset from which to disassociate the child asset.</p>
-     */
+    inline const Aws::String& GetAssetId() const { return m_assetId; }
     inline bool AssetIdHasBeenSet() const { return m_assetIdHasBeenSet; }
+    template<typename AssetIdT = Aws::String>
+    void SetAssetId(AssetIdT&& value) { m_assetIdHasBeenSet = true; m_assetId = std::forward<AssetIdT>(value); }
+    template<typename AssetIdT = Aws::String>
+    DisassociateAssetsRequest& WithAssetId(AssetIdT&& value) { SetAssetId(std::forward<AssetIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the parent asset from which to disassociate the child asset.</p>
-     */
-    inline void SetAssetId(const Aws::String& value) { m_assetIdHasBeenSet = true; m_assetId = value; }
-
-    /**
-     * <p>The ID of the parent asset from which to disassociate the child asset.</p>
-     */
-    inline void SetAssetId(Aws::String&& value) { m_assetIdHasBeenSet = true; m_assetId = std::move(value); }
-
-    /**
-     * <p>The ID of the parent asset from which to disassociate the child asset.</p>
-     */
-    inline void SetAssetId(const char* value) { m_assetIdHasBeenSet = true; m_assetId.assign(value); }
-
-    /**
-     * <p>The ID of the parent asset from which to disassociate the child asset.</p>
-     */
-    inline DisassociateAssetsRequest& WithAssetId(const Aws::String& value) { SetAssetId(value); return *this;}
-
-    /**
-     * <p>The ID of the parent asset from which to disassociate the child asset.</p>
-     */
-    inline DisassociateAssetsRequest& WithAssetId(Aws::String&& value) { SetAssetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the parent asset from which to disassociate the child asset.</p>
-     */
-    inline DisassociateAssetsRequest& WithAssetId(const char* value) { SetAssetId(value); return *this;}
-
-
-    /**
-     * <p>The ID of a hierarchy in the parent asset's model. Hierarchies allow
-     * different groupings of assets to be formed that all come from the same asset
-     * model. You can use the hierarchy ID to identify the correct asset to
-     * disassociate. For more information, see <a
+     * <p>The ID of a hierarchy in the parent asset's model. (This can be either the
+     * actual ID in UUID format, or else <code>externalId:</code> followed by the
+     * external ID, if it has one. For more information, see <a
+     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
+     * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.)
+     * Hierarchies allow different groupings of assets to be formed that all come from
+     * the same asset model. You can use the hierarchy ID to identify the correct asset
+     * to disassociate. For more information, see <a
      * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html">Asset
      * hierarchies</a> in the <i>IoT SiteWise User Guide</i>.</p>
      */
-    inline const Aws::String& GetHierarchyId() const{ return m_hierarchyId; }
-
-    /**
-     * <p>The ID of a hierarchy in the parent asset's model. Hierarchies allow
-     * different groupings of assets to be formed that all come from the same asset
-     * model. You can use the hierarchy ID to identify the correct asset to
-     * disassociate. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html">Asset
-     * hierarchies</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
+    inline const Aws::String& GetHierarchyId() const { return m_hierarchyId; }
     inline bool HierarchyIdHasBeenSet() const { return m_hierarchyIdHasBeenSet; }
+    template<typename HierarchyIdT = Aws::String>
+    void SetHierarchyId(HierarchyIdT&& value) { m_hierarchyIdHasBeenSet = true; m_hierarchyId = std::forward<HierarchyIdT>(value); }
+    template<typename HierarchyIdT = Aws::String>
+    DisassociateAssetsRequest& WithHierarchyId(HierarchyIdT&& value) { SetHierarchyId(std::forward<HierarchyIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of a hierarchy in the parent asset's model. Hierarchies allow
-     * different groupings of assets to be formed that all come from the same asset
-     * model. You can use the hierarchy ID to identify the correct asset to
-     * disassociate. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html">Asset
-     * hierarchies</a> in the <i>IoT SiteWise User Guide</i>.</p>
+     * <p>The ID of the child asset to disassociate. This can be either the actual ID
+     * in UUID format, or else <code>externalId:</code> followed by the external ID, if
+     * it has one. For more information, see <a
+     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
+     * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
      */
-    inline void SetHierarchyId(const Aws::String& value) { m_hierarchyIdHasBeenSet = true; m_hierarchyId = value; }
-
-    /**
-     * <p>The ID of a hierarchy in the parent asset's model. Hierarchies allow
-     * different groupings of assets to be formed that all come from the same asset
-     * model. You can use the hierarchy ID to identify the correct asset to
-     * disassociate. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html">Asset
-     * hierarchies</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline void SetHierarchyId(Aws::String&& value) { m_hierarchyIdHasBeenSet = true; m_hierarchyId = std::move(value); }
-
-    /**
-     * <p>The ID of a hierarchy in the parent asset's model. Hierarchies allow
-     * different groupings of assets to be formed that all come from the same asset
-     * model. You can use the hierarchy ID to identify the correct asset to
-     * disassociate. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html">Asset
-     * hierarchies</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline void SetHierarchyId(const char* value) { m_hierarchyIdHasBeenSet = true; m_hierarchyId.assign(value); }
-
-    /**
-     * <p>The ID of a hierarchy in the parent asset's model. Hierarchies allow
-     * different groupings of assets to be formed that all come from the same asset
-     * model. You can use the hierarchy ID to identify the correct asset to
-     * disassociate. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html">Asset
-     * hierarchies</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline DisassociateAssetsRequest& WithHierarchyId(const Aws::String& value) { SetHierarchyId(value); return *this;}
-
-    /**
-     * <p>The ID of a hierarchy in the parent asset's model. Hierarchies allow
-     * different groupings of assets to be formed that all come from the same asset
-     * model. You can use the hierarchy ID to identify the correct asset to
-     * disassociate. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html">Asset
-     * hierarchies</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline DisassociateAssetsRequest& WithHierarchyId(Aws::String&& value) { SetHierarchyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of a hierarchy in the parent asset's model. Hierarchies allow
-     * different groupings of assets to be formed that all come from the same asset
-     * model. You can use the hierarchy ID to identify the correct asset to
-     * disassociate. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html">Asset
-     * hierarchies</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline DisassociateAssetsRequest& WithHierarchyId(const char* value) { SetHierarchyId(value); return *this;}
-
-
-    /**
-     * <p>The ID of the child asset to disassociate.</p>
-     */
-    inline const Aws::String& GetChildAssetId() const{ return m_childAssetId; }
-
-    /**
-     * <p>The ID of the child asset to disassociate.</p>
-     */
+    inline const Aws::String& GetChildAssetId() const { return m_childAssetId; }
     inline bool ChildAssetIdHasBeenSet() const { return m_childAssetIdHasBeenSet; }
+    template<typename ChildAssetIdT = Aws::String>
+    void SetChildAssetId(ChildAssetIdT&& value) { m_childAssetIdHasBeenSet = true; m_childAssetId = std::forward<ChildAssetIdT>(value); }
+    template<typename ChildAssetIdT = Aws::String>
+    DisassociateAssetsRequest& WithChildAssetId(ChildAssetIdT&& value) { SetChildAssetId(std::forward<ChildAssetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the child asset to disassociate.</p>
-     */
-    inline void SetChildAssetId(const Aws::String& value) { m_childAssetIdHasBeenSet = true; m_childAssetId = value; }
-
-    /**
-     * <p>The ID of the child asset to disassociate.</p>
-     */
-    inline void SetChildAssetId(Aws::String&& value) { m_childAssetIdHasBeenSet = true; m_childAssetId = std::move(value); }
-
-    /**
-     * <p>The ID of the child asset to disassociate.</p>
-     */
-    inline void SetChildAssetId(const char* value) { m_childAssetIdHasBeenSet = true; m_childAssetId.assign(value); }
-
-    /**
-     * <p>The ID of the child asset to disassociate.</p>
-     */
-    inline DisassociateAssetsRequest& WithChildAssetId(const Aws::String& value) { SetChildAssetId(value); return *this;}
-
-    /**
-     * <p>The ID of the child asset to disassociate.</p>
-     */
-    inline DisassociateAssetsRequest& WithChildAssetId(Aws::String&& value) { SetChildAssetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the child asset to disassociate.</p>
-     */
-    inline DisassociateAssetsRequest& WithChildAssetId(const char* value) { SetChildAssetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique case-sensitive identifier that you can provide to ensure the
      * idempotency of the request. Don't reuse this client token if a new idempotent
      * request is required.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline DisassociateAssetsRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline DisassociateAssetsRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline DisassociateAssetsRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    DisassociateAssetsRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_assetId;
@@ -263,8 +110,8 @@ namespace Model
     Aws::String m_childAssetId;
     bool m_childAssetIdHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
   };
 
 } // namespace Model

@@ -20,15 +20,7 @@ namespace S3
 namespace Model
 {
 
-PolicyStatus::PolicyStatus() : 
-    m_isPublic(false),
-    m_isPublicHasBeenSet(false)
-{
-}
-
-PolicyStatus::PolicyStatus(const XmlNode& xmlNode) : 
-    m_isPublic(false),
-    m_isPublicHasBeenSet(false)
+PolicyStatus::PolicyStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -31,52 +31,23 @@ namespace Model
   class ExportErrorData
   {
   public:
-    AWS_MGN_API ExportErrorData();
+    AWS_MGN_API ExportErrorData() = default;
     AWS_MGN_API ExportErrorData(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API ExportErrorData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Export errors data raw error.</p>
      */
-    inline const Aws::String& GetRawError() const{ return m_rawError; }
-
-    /**
-     * <p>Export errors data raw error.</p>
-     */
+    inline const Aws::String& GetRawError() const { return m_rawError; }
     inline bool RawErrorHasBeenSet() const { return m_rawErrorHasBeenSet; }
-
-    /**
-     * <p>Export errors data raw error.</p>
-     */
-    inline void SetRawError(const Aws::String& value) { m_rawErrorHasBeenSet = true; m_rawError = value; }
-
-    /**
-     * <p>Export errors data raw error.</p>
-     */
-    inline void SetRawError(Aws::String&& value) { m_rawErrorHasBeenSet = true; m_rawError = std::move(value); }
-
-    /**
-     * <p>Export errors data raw error.</p>
-     */
-    inline void SetRawError(const char* value) { m_rawErrorHasBeenSet = true; m_rawError.assign(value); }
-
-    /**
-     * <p>Export errors data raw error.</p>
-     */
-    inline ExportErrorData& WithRawError(const Aws::String& value) { SetRawError(value); return *this;}
-
-    /**
-     * <p>Export errors data raw error.</p>
-     */
-    inline ExportErrorData& WithRawError(Aws::String&& value) { SetRawError(std::move(value)); return *this;}
-
-    /**
-     * <p>Export errors data raw error.</p>
-     */
-    inline ExportErrorData& WithRawError(const char* value) { SetRawError(value); return *this;}
-
+    template<typename RawErrorT = Aws::String>
+    void SetRawError(RawErrorT&& value) { m_rawErrorHasBeenSet = true; m_rawError = std::forward<RawErrorT>(value); }
+    template<typename RawErrorT = Aws::String>
+    ExportErrorData& WithRawError(RawErrorT&& value) { SetRawError(std::forward<RawErrorT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_rawError;

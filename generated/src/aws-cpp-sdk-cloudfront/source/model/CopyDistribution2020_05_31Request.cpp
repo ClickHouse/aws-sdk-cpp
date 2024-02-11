@@ -6,6 +6,7 @@
 #include <aws/cloudfront/model/CopyDistribution2020_05_31Request.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
@@ -14,14 +15,6 @@ using namespace Aws::CloudFront::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-CopyDistribution2020_05_31Request::CopyDistribution2020_05_31Request() : 
-    m_primaryDistributionIdHasBeenSet(false),
-    m_staging(false),
-    m_stagingHasBeenSet(false),
-    m_ifMatchHasBeenSet(false),
-    m_callerReferenceHasBeenSet(false)
-{
-}
 
 Aws::String CopyDistribution2020_05_31Request::SerializePayload() const
 {
@@ -35,6 +28,14 @@ Aws::String CopyDistribution2020_05_31Request::SerializePayload() const
   {
    XmlNode callerReferenceNode = parentNode.CreateChildElement("CallerReference");
    callerReferenceNode.SetText(m_callerReference);
+  }
+
+  if(m_enabledHasBeenSet)
+  {
+   XmlNode enabledNode = parentNode.CreateChildElement("Enabled");
+   ss << std::boolalpha << m_enabled;
+   enabledNode.SetText(ss.str());
+   ss.str("");
   }
 
   return payloadDoc.ConvertToString();

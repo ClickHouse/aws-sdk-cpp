@@ -10,16 +10,6 @@
 using namespace Aws::IAM::Model;
 using namespace Aws::Utils;
 
-GetOrganizationsAccessReportRequest::GetOrganizationsAccessReportRequest() : 
-    m_jobIdHasBeenSet(false),
-    m_maxItems(0),
-    m_maxItemsHasBeenSet(false),
-    m_markerHasBeenSet(false),
-    m_sortKey(SortKeyType::NOT_SET),
-    m_sortKeyHasBeenSet(false)
-{
-}
-
 Aws::String GetOrganizationsAccessReportRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -41,7 +31,7 @@ Aws::String GetOrganizationsAccessReportRequest::SerializePayload() const
 
   if(m_sortKeyHasBeenSet)
   {
-    ss << "SortKey=" << SortKeyTypeMapper::GetNameForSortKeyType(m_sortKey) << "&";
+    ss << "SortKey=" << StringUtils::URLEncode(SortKeyTypeMapper::GetNameForSortKeyType(m_sortKey)) << "&";
   }
 
   ss << "Version=2010-05-08";

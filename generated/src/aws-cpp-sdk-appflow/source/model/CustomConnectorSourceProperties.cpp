@@ -18,15 +18,7 @@ namespace Appflow
 namespace Model
 {
 
-CustomConnectorSourceProperties::CustomConnectorSourceProperties() : 
-    m_entityNameHasBeenSet(false),
-    m_customPropertiesHasBeenSet(false)
-{
-}
-
-CustomConnectorSourceProperties::CustomConnectorSourceProperties(JsonView jsonValue) : 
-    m_entityNameHasBeenSet(false),
-    m_customPropertiesHasBeenSet(false)
+CustomConnectorSourceProperties::CustomConnectorSourceProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ CustomConnectorSourceProperties& CustomConnectorSourceProperties::operator =(Jso
   if(jsonValue.ValueExists("entityName"))
   {
     m_entityName = jsonValue.GetString("entityName");
-
     m_entityNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("customProperties"))
   {
     Aws::Map<Aws::String, JsonView> customPropertiesJsonMap = jsonValue.GetObject("customProperties").GetAllObjects();
@@ -49,7 +39,11 @@ CustomConnectorSourceProperties& CustomConnectorSourceProperties::operator =(Jso
     }
     m_customPropertiesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("dataTransferApi"))
+  {
+    m_dataTransferApi = jsonValue.GetObject("dataTransferApi");
+    m_dataTransferApiHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -71,6 +65,12 @@ JsonValue CustomConnectorSourceProperties::Jsonize() const
      customPropertiesJsonMap.WithString(customPropertiesItem.first, customPropertiesItem.second);
    }
    payload.WithObject("customProperties", std::move(customPropertiesJsonMap));
+
+  }
+
+  if(m_dataTransferApiHasBeenSet)
+  {
+   payload.WithObject("dataTransferApi", m_dataTransferApi.Jsonize());
 
   }
 

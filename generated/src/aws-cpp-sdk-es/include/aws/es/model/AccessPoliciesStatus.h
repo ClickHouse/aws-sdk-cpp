@@ -33,113 +33,39 @@ namespace Model
   class AccessPoliciesStatus
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API AccessPoliciesStatus();
+    AWS_ELASTICSEARCHSERVICE_API AccessPoliciesStatus() = default;
     AWS_ELASTICSEARCHSERVICE_API AccessPoliciesStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API AccessPoliciesStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The access policy configured for the Elasticsearch domain. Access policies
      * may be resource-based, IP-based, or IAM-based. See <a
      * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies"
      * target="_blank"> Configuring Access Policies</a>for more information.</p>
      */
-    inline const Aws::String& GetOptions() const{ return m_options; }
-
-    /**
-     * <p>The access policy configured for the Elasticsearch domain. Access policies
-     * may be resource-based, IP-based, or IAM-based. See <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies"
-     * target="_blank"> Configuring Access Policies</a>for more information.</p>
-     */
+    inline const Aws::String& GetOptions() const { return m_options; }
     inline bool OptionsHasBeenSet() const { return m_optionsHasBeenSet; }
+    template<typename OptionsT = Aws::String>
+    void SetOptions(OptionsT&& value) { m_optionsHasBeenSet = true; m_options = std::forward<OptionsT>(value); }
+    template<typename OptionsT = Aws::String>
+    AccessPoliciesStatus& WithOptions(OptionsT&& value) { SetOptions(std::forward<OptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The access policy configured for the Elasticsearch domain. Access policies
-     * may be resource-based, IP-based, or IAM-based. See <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies"
-     * target="_blank"> Configuring Access Policies</a>for more information.</p>
-     */
-    inline void SetOptions(const Aws::String& value) { m_optionsHasBeenSet = true; m_options = value; }
-
-    /**
-     * <p>The access policy configured for the Elasticsearch domain. Access policies
-     * may be resource-based, IP-based, or IAM-based. See <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies"
-     * target="_blank"> Configuring Access Policies</a>for more information.</p>
-     */
-    inline void SetOptions(Aws::String&& value) { m_optionsHasBeenSet = true; m_options = std::move(value); }
-
-    /**
-     * <p>The access policy configured for the Elasticsearch domain. Access policies
-     * may be resource-based, IP-based, or IAM-based. See <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies"
-     * target="_blank"> Configuring Access Policies</a>for more information.</p>
-     */
-    inline void SetOptions(const char* value) { m_optionsHasBeenSet = true; m_options.assign(value); }
-
-    /**
-     * <p>The access policy configured for the Elasticsearch domain. Access policies
-     * may be resource-based, IP-based, or IAM-based. See <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies"
-     * target="_blank"> Configuring Access Policies</a>for more information.</p>
-     */
-    inline AccessPoliciesStatus& WithOptions(const Aws::String& value) { SetOptions(value); return *this;}
-
-    /**
-     * <p>The access policy configured for the Elasticsearch domain. Access policies
-     * may be resource-based, IP-based, or IAM-based. See <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies"
-     * target="_blank"> Configuring Access Policies</a>for more information.</p>
-     */
-    inline AccessPoliciesStatus& WithOptions(Aws::String&& value) { SetOptions(std::move(value)); return *this;}
-
-    /**
-     * <p>The access policy configured for the Elasticsearch domain. Access policies
-     * may be resource-based, IP-based, or IAM-based. See <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies"
-     * target="_blank"> Configuring Access Policies</a>for more information.</p>
-     */
-    inline AccessPoliciesStatus& WithOptions(const char* value) { SetOptions(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the access policy for the Elasticsearch domain. See
      * <code>OptionStatus</code> for the status information that's included. </p>
      */
-    inline const OptionStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the access policy for the Elasticsearch domain. See
-     * <code>OptionStatus</code> for the status information that's included. </p>
-     */
+    inline const OptionStatus& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the access policy for the Elasticsearch domain. See
-     * <code>OptionStatus</code> for the status information that's included. </p>
-     */
-    inline void SetStatus(const OptionStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the access policy for the Elasticsearch domain. See
-     * <code>OptionStatus</code> for the status information that's included. </p>
-     */
-    inline void SetStatus(OptionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the access policy for the Elasticsearch domain. See
-     * <code>OptionStatus</code> for the status information that's included. </p>
-     */
-    inline AccessPoliciesStatus& WithStatus(const OptionStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the access policy for the Elasticsearch domain. See
-     * <code>OptionStatus</code> for the status information that's included. </p>
-     */
-    inline AccessPoliciesStatus& WithStatus(OptionStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    template<typename StatusT = OptionStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = OptionStatus>
+    AccessPoliciesStatus& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_options;

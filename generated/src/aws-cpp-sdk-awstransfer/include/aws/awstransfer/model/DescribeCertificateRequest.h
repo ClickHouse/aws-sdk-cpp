@@ -21,7 +21,7 @@ namespace Model
   class DescribeCertificateRequest : public TransferRequest
   {
   public:
-    AWS_TRANSFER_API DescribeCertificateRequest();
+    AWS_TRANSFER_API DescribeCertificateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_TRANSFER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>An array of identifiers for the imported certificates. You use this
      * identifier for working with profiles and partner profiles.</p>
      */
-    inline const Aws::String& GetCertificateId() const{ return m_certificateId; }
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
+    inline const Aws::String& GetCertificateId() const { return m_certificateId; }
     inline bool CertificateIdHasBeenSet() const { return m_certificateIdHasBeenSet; }
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
-    inline void SetCertificateId(const Aws::String& value) { m_certificateIdHasBeenSet = true; m_certificateId = value; }
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
-    inline void SetCertificateId(Aws::String&& value) { m_certificateIdHasBeenSet = true; m_certificateId = std::move(value); }
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
-    inline void SetCertificateId(const char* value) { m_certificateIdHasBeenSet = true; m_certificateId.assign(value); }
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
-    inline DescribeCertificateRequest& WithCertificateId(const Aws::String& value) { SetCertificateId(value); return *this;}
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
-    inline DescribeCertificateRequest& WithCertificateId(Aws::String&& value) { SetCertificateId(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
-    inline DescribeCertificateRequest& WithCertificateId(const char* value) { SetCertificateId(value); return *this;}
-
+    template<typename CertificateIdT = Aws::String>
+    void SetCertificateId(CertificateIdT&& value) { m_certificateIdHasBeenSet = true; m_certificateId = std::forward<CertificateIdT>(value); }
+    template<typename CertificateIdT = Aws::String>
+    DescribeCertificateRequest& WithCertificateId(CertificateIdT&& value) { SetCertificateId(std::forward<CertificateIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_certificateId;

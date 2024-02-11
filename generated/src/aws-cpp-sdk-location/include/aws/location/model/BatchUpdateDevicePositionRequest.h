@@ -23,7 +23,7 @@ namespace Model
   class BatchUpdateDevicePositionRequest : public LocationServiceRequest
   {
   public:
-    AWS_LOCATIONSERVICE_API BatchUpdateDevicePositionRequest();
+    AWS_LOCATIONSERVICE_API BatchUpdateDevicePositionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,31 @@ namespace Model
     AWS_LOCATIONSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the tracker resource to update.</p>
      */
-    inline const Aws::String& GetTrackerName() const{ return m_trackerName; }
-
-    /**
-     * <p>The name of the tracker resource to update.</p>
-     */
+    inline const Aws::String& GetTrackerName() const { return m_trackerName; }
     inline bool TrackerNameHasBeenSet() const { return m_trackerNameHasBeenSet; }
+    template<typename TrackerNameT = Aws::String>
+    void SetTrackerName(TrackerNameT&& value) { m_trackerNameHasBeenSet = true; m_trackerName = std::forward<TrackerNameT>(value); }
+    template<typename TrackerNameT = Aws::String>
+    BatchUpdateDevicePositionRequest& WithTrackerName(TrackerNameT&& value) { SetTrackerName(std::forward<TrackerNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the tracker resource to update.</p>
+     * <p>Contains the position update details for each device, up to 10 devices.</p>
      */
-    inline void SetTrackerName(const Aws::String& value) { m_trackerNameHasBeenSet = true; m_trackerName = value; }
-
-    /**
-     * <p>The name of the tracker resource to update.</p>
-     */
-    inline void SetTrackerName(Aws::String&& value) { m_trackerNameHasBeenSet = true; m_trackerName = std::move(value); }
-
-    /**
-     * <p>The name of the tracker resource to update.</p>
-     */
-    inline void SetTrackerName(const char* value) { m_trackerNameHasBeenSet = true; m_trackerName.assign(value); }
-
-    /**
-     * <p>The name of the tracker resource to update.</p>
-     */
-    inline BatchUpdateDevicePositionRequest& WithTrackerName(const Aws::String& value) { SetTrackerName(value); return *this;}
-
-    /**
-     * <p>The name of the tracker resource to update.</p>
-     */
-    inline BatchUpdateDevicePositionRequest& WithTrackerName(Aws::String&& value) { SetTrackerName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the tracker resource to update.</p>
-     */
-    inline BatchUpdateDevicePositionRequest& WithTrackerName(const char* value) { SetTrackerName(value); return *this;}
-
-
-    /**
-     * <p>Contains the position update details for each device.</p>
-     */
-    inline const Aws::Vector<DevicePositionUpdate>& GetUpdates() const{ return m_updates; }
-
-    /**
-     * <p>Contains the position update details for each device.</p>
-     */
+    inline const Aws::Vector<DevicePositionUpdate>& GetUpdates() const { return m_updates; }
     inline bool UpdatesHasBeenSet() const { return m_updatesHasBeenSet; }
-
-    /**
-     * <p>Contains the position update details for each device.</p>
-     */
-    inline void SetUpdates(const Aws::Vector<DevicePositionUpdate>& value) { m_updatesHasBeenSet = true; m_updates = value; }
-
-    /**
-     * <p>Contains the position update details for each device.</p>
-     */
-    inline void SetUpdates(Aws::Vector<DevicePositionUpdate>&& value) { m_updatesHasBeenSet = true; m_updates = std::move(value); }
-
-    /**
-     * <p>Contains the position update details for each device.</p>
-     */
-    inline BatchUpdateDevicePositionRequest& WithUpdates(const Aws::Vector<DevicePositionUpdate>& value) { SetUpdates(value); return *this;}
-
-    /**
-     * <p>Contains the position update details for each device.</p>
-     */
-    inline BatchUpdateDevicePositionRequest& WithUpdates(Aws::Vector<DevicePositionUpdate>&& value) { SetUpdates(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains the position update details for each device.</p>
-     */
-    inline BatchUpdateDevicePositionRequest& AddUpdates(const DevicePositionUpdate& value) { m_updatesHasBeenSet = true; m_updates.push_back(value); return *this; }
-
-    /**
-     * <p>Contains the position update details for each device.</p>
-     */
-    inline BatchUpdateDevicePositionRequest& AddUpdates(DevicePositionUpdate&& value) { m_updatesHasBeenSet = true; m_updates.push_back(std::move(value)); return *this; }
-
+    template<typename UpdatesT = Aws::Vector<DevicePositionUpdate>>
+    void SetUpdates(UpdatesT&& value) { m_updatesHasBeenSet = true; m_updates = std::forward<UpdatesT>(value); }
+    template<typename UpdatesT = Aws::Vector<DevicePositionUpdate>>
+    BatchUpdateDevicePositionRequest& WithUpdates(UpdatesT&& value) { SetUpdates(std::forward<UpdatesT>(value)); return *this;}
+    template<typename UpdatesT = DevicePositionUpdate>
+    BatchUpdateDevicePositionRequest& AddUpdates(UpdatesT&& value) { m_updatesHasBeenSet = true; m_updates.emplace_back(std::forward<UpdatesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_trackerName;

@@ -10,47 +10,6 @@
 using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils;
 
-ModifyReplicationGroupRequest::ModifyReplicationGroupRequest() : 
-    m_replicationGroupIdHasBeenSet(false),
-    m_replicationGroupDescriptionHasBeenSet(false),
-    m_primaryClusterIdHasBeenSet(false),
-    m_snapshottingClusterIdHasBeenSet(false),
-    m_automaticFailoverEnabled(false),
-    m_automaticFailoverEnabledHasBeenSet(false),
-    m_multiAZEnabled(false),
-    m_multiAZEnabledHasBeenSet(false),
-    m_cacheSecurityGroupNamesHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_preferredMaintenanceWindowHasBeenSet(false),
-    m_notificationTopicArnHasBeenSet(false),
-    m_cacheParameterGroupNameHasBeenSet(false),
-    m_notificationTopicStatusHasBeenSet(false),
-    m_applyImmediately(false),
-    m_applyImmediatelyHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_autoMinorVersionUpgrade(false),
-    m_autoMinorVersionUpgradeHasBeenSet(false),
-    m_snapshotRetentionLimit(0),
-    m_snapshotRetentionLimitHasBeenSet(false),
-    m_snapshotWindowHasBeenSet(false),
-    m_cacheNodeTypeHasBeenSet(false),
-    m_authTokenHasBeenSet(false),
-    m_authTokenUpdateStrategy(AuthTokenUpdateStrategyType::NOT_SET),
-    m_authTokenUpdateStrategyHasBeenSet(false),
-    m_userGroupIdsToAddHasBeenSet(false),
-    m_userGroupIdsToRemoveHasBeenSet(false),
-    m_removeUserGroups(false),
-    m_removeUserGroupsHasBeenSet(false),
-    m_logDeliveryConfigurationsHasBeenSet(false),
-    m_ipDiscovery(IpDiscovery::NOT_SET),
-    m_ipDiscoveryHasBeenSet(false),
-    m_transitEncryptionEnabled(false),
-    m_transitEncryptionEnabledHasBeenSet(false),
-    m_transitEncryptionMode(TransitEncryptionMode::NOT_SET),
-    m_transitEncryptionModeHasBeenSet(false)
-{
-}
-
 Aws::String ModifyReplicationGroupRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -87,23 +46,37 @@ Aws::String ModifyReplicationGroupRequest::SerializePayload() const
 
   if(m_cacheSecurityGroupNamesHasBeenSet)
   {
-    unsigned cacheSecurityGroupNamesCount = 1;
-    for(auto& item : m_cacheSecurityGroupNames)
+    if (m_cacheSecurityGroupNames.empty())
     {
-      ss << "CacheSecurityGroupNames.member." << cacheSecurityGroupNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      cacheSecurityGroupNamesCount++;
+      ss << "CacheSecurityGroupNames=&";
+    }
+    else
+    {
+      unsigned cacheSecurityGroupNamesCount = 1;
+      for(auto& item : m_cacheSecurityGroupNames)
+      {
+        ss << "CacheSecurityGroupNames.CacheSecurityGroupName." << cacheSecurityGroupNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        cacheSecurityGroupNamesCount++;
+      }
     }
   }
 
   if(m_securityGroupIdsHasBeenSet)
   {
-    unsigned securityGroupIdsCount = 1;
-    for(auto& item : m_securityGroupIds)
+    if (m_securityGroupIds.empty())
     {
-      ss << "SecurityGroupIds.member." << securityGroupIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      securityGroupIdsCount++;
+      ss << "SecurityGroupIds=&";
+    }
+    else
+    {
+      unsigned securityGroupIdsCount = 1;
+      for(auto& item : m_securityGroupIds)
+      {
+        ss << "SecurityGroupIds.SecurityGroupId." << securityGroupIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        securityGroupIdsCount++;
+      }
     }
   }
 
@@ -130,6 +103,11 @@ Aws::String ModifyReplicationGroupRequest::SerializePayload() const
   if(m_applyImmediatelyHasBeenSet)
   {
     ss << "ApplyImmediately=" << std::boolalpha << m_applyImmediately << "&";
+  }
+
+  if(m_engineHasBeenSet)
+  {
+    ss << "Engine=" << StringUtils::URLEncode(m_engine.c_str()) << "&";
   }
 
   if(m_engineVersionHasBeenSet)
@@ -164,28 +142,42 @@ Aws::String ModifyReplicationGroupRequest::SerializePayload() const
 
   if(m_authTokenUpdateStrategyHasBeenSet)
   {
-    ss << "AuthTokenUpdateStrategy=" << AuthTokenUpdateStrategyTypeMapper::GetNameForAuthTokenUpdateStrategyType(m_authTokenUpdateStrategy) << "&";
+    ss << "AuthTokenUpdateStrategy=" << StringUtils::URLEncode(AuthTokenUpdateStrategyTypeMapper::GetNameForAuthTokenUpdateStrategyType(m_authTokenUpdateStrategy)) << "&";
   }
 
   if(m_userGroupIdsToAddHasBeenSet)
   {
-    unsigned userGroupIdsToAddCount = 1;
-    for(auto& item : m_userGroupIdsToAdd)
+    if (m_userGroupIdsToAdd.empty())
     {
-      ss << "UserGroupIdsToAdd.member." << userGroupIdsToAddCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      userGroupIdsToAddCount++;
+      ss << "UserGroupIdsToAdd=&";
+    }
+    else
+    {
+      unsigned userGroupIdsToAddCount = 1;
+      for(auto& item : m_userGroupIdsToAdd)
+      {
+        ss << "UserGroupIdsToAdd.member." << userGroupIdsToAddCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        userGroupIdsToAddCount++;
+      }
     }
   }
 
   if(m_userGroupIdsToRemoveHasBeenSet)
   {
-    unsigned userGroupIdsToRemoveCount = 1;
-    for(auto& item : m_userGroupIdsToRemove)
+    if (m_userGroupIdsToRemove.empty())
     {
-      ss << "UserGroupIdsToRemove.member." << userGroupIdsToRemoveCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      userGroupIdsToRemoveCount++;
+      ss << "UserGroupIdsToRemove=&";
+    }
+    else
+    {
+      unsigned userGroupIdsToRemoveCount = 1;
+      for(auto& item : m_userGroupIdsToRemove)
+      {
+        ss << "UserGroupIdsToRemove.member." << userGroupIdsToRemoveCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        userGroupIdsToRemoveCount++;
+      }
     }
   }
 
@@ -196,17 +188,24 @@ Aws::String ModifyReplicationGroupRequest::SerializePayload() const
 
   if(m_logDeliveryConfigurationsHasBeenSet)
   {
-    unsigned logDeliveryConfigurationsCount = 1;
-    for(auto& item : m_logDeliveryConfigurations)
+    if (m_logDeliveryConfigurations.empty())
     {
-      item.OutputToStream(ss, "LogDeliveryConfigurations.member.", logDeliveryConfigurationsCount, "");
-      logDeliveryConfigurationsCount++;
+      ss << "LogDeliveryConfigurations=&";
+    }
+    else
+    {
+      unsigned logDeliveryConfigurationsCount = 1;
+      for(auto& item : m_logDeliveryConfigurations)
+      {
+        item.OutputToStream(ss, "LogDeliveryConfigurations.LogDeliveryConfigurationRequest.", logDeliveryConfigurationsCount, "");
+        logDeliveryConfigurationsCount++;
+      }
     }
   }
 
   if(m_ipDiscoveryHasBeenSet)
   {
-    ss << "IpDiscovery=" << IpDiscoveryMapper::GetNameForIpDiscovery(m_ipDiscovery) << "&";
+    ss << "IpDiscovery=" << StringUtils::URLEncode(IpDiscoveryMapper::GetNameForIpDiscovery(m_ipDiscovery)) << "&";
   }
 
   if(m_transitEncryptionEnabledHasBeenSet)
@@ -216,7 +215,12 @@ Aws::String ModifyReplicationGroupRequest::SerializePayload() const
 
   if(m_transitEncryptionModeHasBeenSet)
   {
-    ss << "TransitEncryptionMode=" << TransitEncryptionModeMapper::GetNameForTransitEncryptionMode(m_transitEncryptionMode) << "&";
+    ss << "TransitEncryptionMode=" << StringUtils::URLEncode(TransitEncryptionModeMapper::GetNameForTransitEncryptionMode(m_transitEncryptionMode)) << "&";
+  }
+
+  if(m_clusterModeHasBeenSet)
+  {
+    ss << "ClusterMode=" << StringUtils::URLEncode(ClusterModeMapper::GetNameForClusterMode(m_clusterMode)) << "&";
   }
 
   ss << "Version=2015-02-02";

@@ -31,52 +31,23 @@ namespace Model
   class StartSessionRequest
   {
   public:
-    AWS_QLDBSESSION_API StartSessionRequest();
+    AWS_QLDBSESSION_API StartSessionRequest() = default;
     AWS_QLDBSESSION_API StartSessionRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_QLDBSESSION_API StartSessionRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QLDBSESSION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the ledger to start a new session against.</p>
      */
-    inline const Aws::String& GetLedgerName() const{ return m_ledgerName; }
-
-    /**
-     * <p>The name of the ledger to start a new session against.</p>
-     */
+    inline const Aws::String& GetLedgerName() const { return m_ledgerName; }
     inline bool LedgerNameHasBeenSet() const { return m_ledgerNameHasBeenSet; }
-
-    /**
-     * <p>The name of the ledger to start a new session against.</p>
-     */
-    inline void SetLedgerName(const Aws::String& value) { m_ledgerNameHasBeenSet = true; m_ledgerName = value; }
-
-    /**
-     * <p>The name of the ledger to start a new session against.</p>
-     */
-    inline void SetLedgerName(Aws::String&& value) { m_ledgerNameHasBeenSet = true; m_ledgerName = std::move(value); }
-
-    /**
-     * <p>The name of the ledger to start a new session against.</p>
-     */
-    inline void SetLedgerName(const char* value) { m_ledgerNameHasBeenSet = true; m_ledgerName.assign(value); }
-
-    /**
-     * <p>The name of the ledger to start a new session against.</p>
-     */
-    inline StartSessionRequest& WithLedgerName(const Aws::String& value) { SetLedgerName(value); return *this;}
-
-    /**
-     * <p>The name of the ledger to start a new session against.</p>
-     */
-    inline StartSessionRequest& WithLedgerName(Aws::String&& value) { SetLedgerName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the ledger to start a new session against.</p>
-     */
-    inline StartSessionRequest& WithLedgerName(const char* value) { SetLedgerName(value); return *this;}
-
+    template<typename LedgerNameT = Aws::String>
+    void SetLedgerName(LedgerNameT&& value) { m_ledgerNameHasBeenSet = true; m_ledgerName = std::forward<LedgerNameT>(value); }
+    template<typename LedgerNameT = Aws::String>
+    StartSessionRequest& WithLedgerName(LedgerNameT&& value) { SetLedgerName(std::forward<LedgerNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ledgerName;

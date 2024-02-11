@@ -32,22 +32,25 @@ namespace LexRuntimeService
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef LexRuntimeServiceClientConfiguration ClientConfigurationType;
+      typedef LexRuntimeServiceEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         LexRuntimeServiceClient(const Aws::LexRuntimeService::LexRuntimeServiceClientConfiguration& clientConfiguration = Aws::LexRuntimeService::LexRuntimeServiceClientConfiguration(),
-                                std::shared_ptr<LexRuntimeServiceEndpointProviderBase> endpointProvider = Aws::MakeShared<LexRuntimeServiceEndpointProvider>(ALLOCATION_TAG));
+                                std::shared_ptr<LexRuntimeServiceEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         LexRuntimeServiceClient(const Aws::Auth::AWSCredentials& credentials,
-                                std::shared_ptr<LexRuntimeServiceEndpointProviderBase> endpointProvider = Aws::MakeShared<LexRuntimeServiceEndpointProvider>(ALLOCATION_TAG),
+                                std::shared_ptr<LexRuntimeServiceEndpointProviderBase> endpointProvider = nullptr,
                                 const Aws::LexRuntimeService::LexRuntimeServiceClientConfiguration& clientConfiguration = Aws::LexRuntimeService::LexRuntimeServiceClientConfiguration());
 
        /**
@@ -55,7 +58,7 @@ namespace LexRuntimeService
         * the default http client factory will be used
         */
         LexRuntimeServiceClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                                std::shared_ptr<LexRuntimeServiceEndpointProviderBase> endpointProvider = Aws::MakeShared<LexRuntimeServiceEndpointProvider>(ALLOCATION_TAG),
+                                std::shared_ptr<LexRuntimeServiceEndpointProviderBase> endpointProvider = nullptr,
                                 const Aws::LexRuntimeService::LexRuntimeServiceClientConfiguration& clientConfiguration = Aws::LexRuntimeService::LexRuntimeServiceClientConfiguration());
 
 
@@ -295,7 +298,6 @@ namespace LexRuntimeService
       void init(const LexRuntimeServiceClientConfiguration& clientConfiguration);
 
       LexRuntimeServiceClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<LexRuntimeServiceEndpointProviderBase> m_endpointProvider;
   };
 

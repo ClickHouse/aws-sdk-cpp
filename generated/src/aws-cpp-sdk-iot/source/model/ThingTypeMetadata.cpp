@@ -18,19 +18,7 @@ namespace IoT
 namespace Model
 {
 
-ThingTypeMetadata::ThingTypeMetadata() : 
-    m_deprecated(false),
-    m_deprecatedHasBeenSet(false),
-    m_deprecationDateHasBeenSet(false),
-    m_creationDateHasBeenSet(false)
-{
-}
-
-ThingTypeMetadata::ThingTypeMetadata(JsonView jsonValue) : 
-    m_deprecated(false),
-    m_deprecatedHasBeenSet(false),
-    m_deprecationDateHasBeenSet(false),
-    m_creationDateHasBeenSet(false)
+ThingTypeMetadata::ThingTypeMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ ThingTypeMetadata& ThingTypeMetadata::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("deprecated"))
   {
     m_deprecated = jsonValue.GetBool("deprecated");
-
     m_deprecatedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("deprecationDate"))
   {
     m_deprecationDate = jsonValue.GetDouble("deprecationDate");
-
     m_deprecationDateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("creationDate"))
   {
     m_creationDate = jsonValue.GetDouble("creationDate");
-
     m_creationDateHasBeenSet = true;
   }
-
   return *this;
 }
 

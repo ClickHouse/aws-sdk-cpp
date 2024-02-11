@@ -18,57 +18,33 @@ namespace Omics
 namespace Model
 {
 
-SequenceInformation::SequenceInformation() : 
-    m_alignmentHasBeenSet(false),
-    m_generatedFromHasBeenSet(false),
-    m_totalBaseCount(0),
-    m_totalBaseCountHasBeenSet(false),
-    m_totalReadCount(0),
-    m_totalReadCountHasBeenSet(false)
-{
-}
-
-SequenceInformation::SequenceInformation(JsonView jsonValue) : 
-    m_alignmentHasBeenSet(false),
-    m_generatedFromHasBeenSet(false),
-    m_totalBaseCount(0),
-    m_totalBaseCountHasBeenSet(false),
-    m_totalReadCount(0),
-    m_totalReadCountHasBeenSet(false)
+SequenceInformation::SequenceInformation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 SequenceInformation& SequenceInformation::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("alignment"))
-  {
-    m_alignment = jsonValue.GetString("alignment");
-
-    m_alignmentHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("generatedFrom"))
-  {
-    m_generatedFrom = jsonValue.GetString("generatedFrom");
-
-    m_generatedFromHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("totalBaseCount"))
-  {
-    m_totalBaseCount = jsonValue.GetInt64("totalBaseCount");
-
-    m_totalBaseCountHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("totalReadCount"))
   {
     m_totalReadCount = jsonValue.GetInt64("totalReadCount");
-
     m_totalReadCountHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("totalBaseCount"))
+  {
+    m_totalBaseCount = jsonValue.GetInt64("totalBaseCount");
+    m_totalBaseCountHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("generatedFrom"))
+  {
+    m_generatedFrom = jsonValue.GetString("generatedFrom");
+    m_generatedFromHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("alignment"))
+  {
+    m_alignment = jsonValue.GetString("alignment");
+    m_alignmentHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -76,15 +52,9 @@ JsonValue SequenceInformation::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_alignmentHasBeenSet)
+  if(m_totalReadCountHasBeenSet)
   {
-   payload.WithString("alignment", m_alignment);
-
-  }
-
-  if(m_generatedFromHasBeenSet)
-  {
-   payload.WithString("generatedFrom", m_generatedFrom);
+   payload.WithInt64("totalReadCount", m_totalReadCount);
 
   }
 
@@ -94,9 +64,15 @@ JsonValue SequenceInformation::Jsonize() const
 
   }
 
-  if(m_totalReadCountHasBeenSet)
+  if(m_generatedFromHasBeenSet)
   {
-   payload.WithInt64("totalReadCount", m_totalReadCount);
+   payload.WithString("generatedFrom", m_generatedFrom);
+
+  }
+
+  if(m_alignmentHasBeenSet)
+  {
+   payload.WithString("alignment", m_alignment);
 
   }
 

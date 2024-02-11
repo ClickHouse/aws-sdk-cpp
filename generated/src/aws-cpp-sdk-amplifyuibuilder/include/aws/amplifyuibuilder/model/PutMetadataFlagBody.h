@@ -32,52 +32,23 @@ namespace Model
   class PutMetadataFlagBody
   {
   public:
-    AWS_AMPLIFYUIBUILDER_API PutMetadataFlagBody();
+    AWS_AMPLIFYUIBUILDER_API PutMetadataFlagBody() = default;
     AWS_AMPLIFYUIBUILDER_API PutMetadataFlagBody(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYUIBUILDER_API PutMetadataFlagBody& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYUIBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The new information to store.</p>
      */
-    inline const Aws::String& GetNewValue() const{ return m_newValue; }
-
-    /**
-     * <p>The new information to store.</p>
-     */
+    inline const Aws::String& GetNewValue() const { return m_newValue; }
     inline bool NewValueHasBeenSet() const { return m_newValueHasBeenSet; }
-
-    /**
-     * <p>The new information to store.</p>
-     */
-    inline void SetNewValue(const Aws::String& value) { m_newValueHasBeenSet = true; m_newValue = value; }
-
-    /**
-     * <p>The new information to store.</p>
-     */
-    inline void SetNewValue(Aws::String&& value) { m_newValueHasBeenSet = true; m_newValue = std::move(value); }
-
-    /**
-     * <p>The new information to store.</p>
-     */
-    inline void SetNewValue(const char* value) { m_newValueHasBeenSet = true; m_newValue.assign(value); }
-
-    /**
-     * <p>The new information to store.</p>
-     */
-    inline PutMetadataFlagBody& WithNewValue(const Aws::String& value) { SetNewValue(value); return *this;}
-
-    /**
-     * <p>The new information to store.</p>
-     */
-    inline PutMetadataFlagBody& WithNewValue(Aws::String&& value) { SetNewValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The new information to store.</p>
-     */
-    inline PutMetadataFlagBody& WithNewValue(const char* value) { SetNewValue(value); return *this;}
-
+    template<typename NewValueT = Aws::String>
+    void SetNewValue(NewValueT&& value) { m_newValueHasBeenSet = true; m_newValue = std::forward<NewValueT>(value); }
+    template<typename NewValueT = Aws::String>
+    PutMetadataFlagBody& WithNewValue(NewValueT&& value) { SetNewValue(std::forward<NewValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_newValue;

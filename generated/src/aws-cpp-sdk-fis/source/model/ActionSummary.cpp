@@ -18,19 +18,7 @@ namespace FIS
 namespace Model
 {
 
-ActionSummary::ActionSummary() : 
-    m_idHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_targetsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-ActionSummary::ActionSummary(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_targetsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+ActionSummary::ActionSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,18 @@ ActionSummary& ActionSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("arn"))
+  {
+    m_arn = jsonValue.GetString("arn");
+    m_arnHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("targets"))
   {
     Aws::Map<Aws::String, JsonView> targetsJsonMap = jsonValue.GetObject("targets").GetAllObjects();
@@ -60,7 +49,6 @@ ActionSummary& ActionSummary::operator =(JsonView jsonValue)
     }
     m_targetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
@@ -70,7 +58,6 @@ ActionSummary& ActionSummary::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -81,6 +68,12 @@ JsonValue ActionSummary::Jsonize() const
   if(m_idHasBeenSet)
   {
    payload.WithString("id", m_id);
+
+  }
+
+  if(m_arnHasBeenSet)
+  {
+   payload.WithString("arn", m_arn);
 
   }
 

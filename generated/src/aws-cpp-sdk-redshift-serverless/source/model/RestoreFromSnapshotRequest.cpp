@@ -12,18 +12,21 @@ using namespace Aws::RedshiftServerless::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-RestoreFromSnapshotRequest::RestoreFromSnapshotRequest() : 
-    m_namespaceNameHasBeenSet(false),
-    m_ownerAccountHasBeenSet(false),
-    m_snapshotArnHasBeenSet(false),
-    m_snapshotNameHasBeenSet(false),
-    m_workgroupNameHasBeenSet(false)
-{
-}
-
 Aws::String RestoreFromSnapshotRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_adminPasswordSecretKmsKeyIdHasBeenSet)
+  {
+   payload.WithString("adminPasswordSecretKmsKeyId", m_adminPasswordSecretKmsKeyId);
+
+  }
+
+  if(m_manageAdminPasswordHasBeenSet)
+  {
+   payload.WithBool("manageAdminPassword", m_manageAdminPassword);
+
+  }
 
   if(m_namespaceNameHasBeenSet)
   {

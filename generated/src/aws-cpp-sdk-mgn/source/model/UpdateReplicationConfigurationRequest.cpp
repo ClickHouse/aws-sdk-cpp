@@ -12,35 +12,15 @@ using namespace Aws::mgn::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateReplicationConfigurationRequest::UpdateReplicationConfigurationRequest() : 
-    m_associateDefaultSecurityGroup(false),
-    m_associateDefaultSecurityGroupHasBeenSet(false),
-    m_bandwidthThrottling(0),
-    m_bandwidthThrottlingHasBeenSet(false),
-    m_createPublicIP(false),
-    m_createPublicIPHasBeenSet(false),
-    m_dataPlaneRouting(ReplicationConfigurationDataPlaneRouting::NOT_SET),
-    m_dataPlaneRoutingHasBeenSet(false),
-    m_defaultLargeStagingDiskType(ReplicationConfigurationDefaultLargeStagingDiskType::NOT_SET),
-    m_defaultLargeStagingDiskTypeHasBeenSet(false),
-    m_ebsEncryption(ReplicationConfigurationEbsEncryption::NOT_SET),
-    m_ebsEncryptionHasBeenSet(false),
-    m_ebsEncryptionKeyArnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_replicatedDisksHasBeenSet(false),
-    m_replicationServerInstanceTypeHasBeenSet(false),
-    m_replicationServersSecurityGroupsIDsHasBeenSet(false),
-    m_sourceServerIDHasBeenSet(false),
-    m_stagingAreaSubnetIdHasBeenSet(false),
-    m_stagingAreaTagsHasBeenSet(false),
-    m_useDedicatedReplicationServer(false),
-    m_useDedicatedReplicationServerHasBeenSet(false)
-{
-}
-
 Aws::String UpdateReplicationConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_accountIDHasBeenSet)
+  {
+   payload.WithString("accountID", m_accountID);
+
+  }
 
   if(m_associateDefaultSecurityGroupHasBeenSet)
   {
@@ -141,6 +121,12 @@ Aws::String UpdateReplicationConfigurationRequest::SerializePayload() const
   if(m_useDedicatedReplicationServerHasBeenSet)
   {
    payload.WithBool("useDedicatedReplicationServer", m_useDedicatedReplicationServer);
+
+  }
+
+  if(m_useFipsEndpointHasBeenSet)
+  {
+   payload.WithBool("useFipsEndpoint", m_useFipsEndpoint);
 
   }
 

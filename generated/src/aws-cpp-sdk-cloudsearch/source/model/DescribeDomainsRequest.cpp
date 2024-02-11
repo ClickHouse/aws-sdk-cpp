@@ -10,23 +10,25 @@
 using namespace Aws::CloudSearch::Model;
 using namespace Aws::Utils;
 
-DescribeDomainsRequest::DescribeDomainsRequest() : 
-    m_domainNamesHasBeenSet(false)
-{
-}
-
 Aws::String DescribeDomainsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeDomains&";
   if(m_domainNamesHasBeenSet)
   {
-    unsigned domainNamesCount = 1;
-    for(auto& item : m_domainNames)
+    if (m_domainNames.empty())
     {
-      ss << "DomainNames.member." << domainNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      domainNamesCount++;
+      ss << "DomainNames=&";
+    }
+    else
+    {
+      unsigned domainNamesCount = 1;
+      for(auto& item : m_domainNames)
+      {
+        ss << "DomainNames.member." << domainNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        domainNamesCount++;
+      }
     }
   }
 

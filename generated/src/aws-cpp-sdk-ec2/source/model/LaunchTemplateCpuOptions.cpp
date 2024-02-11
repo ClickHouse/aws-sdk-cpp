@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LaunchTemplateCpuOptions::LaunchTemplateCpuOptions() : 
-    m_coreCount(0),
-    m_coreCountHasBeenSet(false),
-    m_threadsPerCore(0),
-    m_threadsPerCoreHasBeenSet(false)
-{
-}
-
-LaunchTemplateCpuOptions::LaunchTemplateCpuOptions(const XmlNode& xmlNode) : 
-    m_coreCount(0),
-    m_coreCountHasBeenSet(false),
-    m_threadsPerCore(0),
-    m_threadsPerCoreHasBeenSet(false)
+LaunchTemplateCpuOptions::LaunchTemplateCpuOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -55,6 +43,12 @@ LaunchTemplateCpuOptions& LaunchTemplateCpuOptions::operator =(const XmlNode& xm
       m_threadsPerCore = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(threadsPerCoreNode.GetText()).c_str()).c_str());
       m_threadsPerCoreHasBeenSet = true;
     }
+    XmlNode amdSevSnpNode = resultNode.FirstChild("amdSevSnp");
+    if(!amdSevSnpNode.IsNull())
+    {
+      m_amdSevSnp = AmdSevSnpSpecificationMapper::GetAmdSevSnpSpecificationForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(amdSevSnpNode.GetText()).c_str()));
+      m_amdSevSnpHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -72,6 +66,11 @@ void LaunchTemplateCpuOptions::OutputToStream(Aws::OStream& oStream, const char*
       oStream << location << index << locationValue << ".ThreadsPerCore=" << m_threadsPerCore << "&";
   }
 
+  if(m_amdSevSnpHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".AmdSevSnp=" << StringUtils::URLEncode(AmdSevSnpSpecificationMapper::GetNameForAmdSevSnpSpecification(m_amdSevSnp)) << "&";
+  }
+
 }
 
 void LaunchTemplateCpuOptions::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -83,6 +82,10 @@ void LaunchTemplateCpuOptions::OutputToStream(Aws::OStream& oStream, const char*
   if(m_threadsPerCoreHasBeenSet)
   {
       oStream << location << ".ThreadsPerCore=" << m_threadsPerCore << "&";
+  }
+  if(m_amdSevSnpHasBeenSet)
+  {
+      oStream << location << ".AmdSevSnp=" << StringUtils::URLEncode(AmdSevSnpSpecificationMapper::GetNameForAmdSevSnpSpecification(m_amdSevSnp)) << "&";
   }
 }
 

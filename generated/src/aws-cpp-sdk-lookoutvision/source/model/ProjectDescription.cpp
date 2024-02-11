@@ -18,19 +18,7 @@ namespace LookoutforVision
 namespace Model
 {
 
-ProjectDescription::ProjectDescription() : 
-    m_projectArnHasBeenSet(false),
-    m_projectNameHasBeenSet(false),
-    m_creationTimestampHasBeenSet(false),
-    m_datasetsHasBeenSet(false)
-{
-}
-
-ProjectDescription::ProjectDescription(JsonView jsonValue) : 
-    m_projectArnHasBeenSet(false),
-    m_projectNameHasBeenSet(false),
-    m_creationTimestampHasBeenSet(false),
-    m_datasetsHasBeenSet(false)
+ProjectDescription::ProjectDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ ProjectDescription& ProjectDescription::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ProjectArn"))
   {
     m_projectArn = jsonValue.GetString("ProjectArn");
-
     m_projectArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProjectName"))
   {
     m_projectName = jsonValue.GetString("ProjectName");
-
     m_projectNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreationTimestamp"))
   {
     m_creationTimestamp = jsonValue.GetDouble("CreationTimestamp");
-
     m_creationTimestampHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Datasets"))
   {
     Aws::Utils::Array<JsonView> datasetsJsonList = jsonValue.GetArray("Datasets");
@@ -67,7 +49,6 @@ ProjectDescription& ProjectDescription::operator =(JsonView jsonValue)
     }
     m_datasetsHasBeenSet = true;
   }
-
   return *this;
 }
 

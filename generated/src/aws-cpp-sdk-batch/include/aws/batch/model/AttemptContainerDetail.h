@@ -34,297 +34,91 @@ namespace Model
   class AttemptContainerDetail
   {
   public:
-    AWS_BATCH_API AttemptContainerDetail();
+    AWS_BATCH_API AttemptContainerDetail() = default;
     AWS_BATCH_API AttemptContainerDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_BATCH_API AttemptContainerDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BATCH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon ECS container instance that
      * hosts the job attempt.</p>
      */
-    inline const Aws::String& GetContainerInstanceArn() const{ return m_containerInstanceArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon ECS container instance that
-     * hosts the job attempt.</p>
-     */
+    inline const Aws::String& GetContainerInstanceArn() const { return m_containerInstanceArn; }
     inline bool ContainerInstanceArnHasBeenSet() const { return m_containerInstanceArnHasBeenSet; }
+    template<typename ContainerInstanceArnT = Aws::String>
+    void SetContainerInstanceArn(ContainerInstanceArnT&& value) { m_containerInstanceArnHasBeenSet = true; m_containerInstanceArn = std::forward<ContainerInstanceArnT>(value); }
+    template<typename ContainerInstanceArnT = Aws::String>
+    AttemptContainerDetail& WithContainerInstanceArn(ContainerInstanceArnT&& value) { SetContainerInstanceArn(std::forward<ContainerInstanceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon ECS container instance that
-     * hosts the job attempt.</p>
-     */
-    inline void SetContainerInstanceArn(const Aws::String& value) { m_containerInstanceArnHasBeenSet = true; m_containerInstanceArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon ECS container instance that
-     * hosts the job attempt.</p>
-     */
-    inline void SetContainerInstanceArn(Aws::String&& value) { m_containerInstanceArnHasBeenSet = true; m_containerInstanceArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon ECS container instance that
-     * hosts the job attempt.</p>
-     */
-    inline void SetContainerInstanceArn(const char* value) { m_containerInstanceArnHasBeenSet = true; m_containerInstanceArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon ECS container instance that
-     * hosts the job attempt.</p>
-     */
-    inline AttemptContainerDetail& WithContainerInstanceArn(const Aws::String& value) { SetContainerInstanceArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon ECS container instance that
-     * hosts the job attempt.</p>
-     */
-    inline AttemptContainerDetail& WithContainerInstanceArn(Aws::String&& value) { SetContainerInstanceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon ECS container instance that
-     * hosts the job attempt.</p>
-     */
-    inline AttemptContainerDetail& WithContainerInstanceArn(const char* value) { SetContainerInstanceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon ECS task that's associated with
      * the job attempt. Each container attempt receives a task ARN when they reach the
      * <code>STARTING</code> status.</p>
      */
-    inline const Aws::String& GetTaskArn() const{ return m_taskArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon ECS task that's associated with
-     * the job attempt. Each container attempt receives a task ARN when they reach the
-     * <code>STARTING</code> status.</p>
-     */
+    inline const Aws::String& GetTaskArn() const { return m_taskArn; }
     inline bool TaskArnHasBeenSet() const { return m_taskArnHasBeenSet; }
+    template<typename TaskArnT = Aws::String>
+    void SetTaskArn(TaskArnT&& value) { m_taskArnHasBeenSet = true; m_taskArn = std::forward<TaskArnT>(value); }
+    template<typename TaskArnT = Aws::String>
+    AttemptContainerDetail& WithTaskArn(TaskArnT&& value) { SetTaskArn(std::forward<TaskArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon ECS task that's associated with
-     * the job attempt. Each container attempt receives a task ARN when they reach the
-     * <code>STARTING</code> status.</p>
-     */
-    inline void SetTaskArn(const Aws::String& value) { m_taskArnHasBeenSet = true; m_taskArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon ECS task that's associated with
-     * the job attempt. Each container attempt receives a task ARN when they reach the
-     * <code>STARTING</code> status.</p>
-     */
-    inline void SetTaskArn(Aws::String&& value) { m_taskArnHasBeenSet = true; m_taskArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon ECS task that's associated with
-     * the job attempt. Each container attempt receives a task ARN when they reach the
-     * <code>STARTING</code> status.</p>
-     */
-    inline void SetTaskArn(const char* value) { m_taskArnHasBeenSet = true; m_taskArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon ECS task that's associated with
-     * the job attempt. Each container attempt receives a task ARN when they reach the
-     * <code>STARTING</code> status.</p>
-     */
-    inline AttemptContainerDetail& WithTaskArn(const Aws::String& value) { SetTaskArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon ECS task that's associated with
-     * the job attempt. Each container attempt receives a task ARN when they reach the
-     * <code>STARTING</code> status.</p>
-     */
-    inline AttemptContainerDetail& WithTaskArn(Aws::String&& value) { SetTaskArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon ECS task that's associated with
-     * the job attempt. Each container attempt receives a task ARN when they reach the
-     * <code>STARTING</code> status.</p>
-     */
-    inline AttemptContainerDetail& WithTaskArn(const char* value) { SetTaskArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The exit code for the job attempt. A non-zero exit code is considered
      * failed.</p>
      */
-    inline int GetExitCode() const{ return m_exitCode; }
-
-    /**
-     * <p>The exit code for the job attempt. A non-zero exit code is considered
-     * failed.</p>
-     */
+    inline int GetExitCode() const { return m_exitCode; }
     inline bool ExitCodeHasBeenSet() const { return m_exitCodeHasBeenSet; }
-
-    /**
-     * <p>The exit code for the job attempt. A non-zero exit code is considered
-     * failed.</p>
-     */
     inline void SetExitCode(int value) { m_exitCodeHasBeenSet = true; m_exitCode = value; }
-
-    /**
-     * <p>The exit code for the job attempt. A non-zero exit code is considered
-     * failed.</p>
-     */
     inline AttemptContainerDetail& WithExitCode(int value) { SetExitCode(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A short (255 max characters) human-readable string to provide additional
      * details for a running or stopped container.</p>
      */
-    inline const Aws::String& GetReason() const{ return m_reason; }
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details for a running or stopped container.</p>
-     */
+    inline const Aws::String& GetReason() const { return m_reason; }
     inline bool ReasonHasBeenSet() const { return m_reasonHasBeenSet; }
+    template<typename ReasonT = Aws::String>
+    void SetReason(ReasonT&& value) { m_reasonHasBeenSet = true; m_reason = std::forward<ReasonT>(value); }
+    template<typename ReasonT = Aws::String>
+    AttemptContainerDetail& WithReason(ReasonT&& value) { SetReason(std::forward<ReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details for a running or stopped container.</p>
-     */
-    inline void SetReason(const Aws::String& value) { m_reasonHasBeenSet = true; m_reason = value; }
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details for a running or stopped container.</p>
-     */
-    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details for a running or stopped container.</p>
-     */
-    inline void SetReason(const char* value) { m_reasonHasBeenSet = true; m_reason.assign(value); }
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details for a running or stopped container.</p>
-     */
-    inline AttemptContainerDetail& WithReason(const Aws::String& value) { SetReason(value); return *this;}
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details for a running or stopped container.</p>
-     */
-    inline AttemptContainerDetail& WithReason(Aws::String&& value) { SetReason(std::move(value)); return *this;}
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details for a running or stopped container.</p>
-     */
-    inline AttemptContainerDetail& WithReason(const char* value) { SetReason(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the CloudWatch Logs log stream that's associated with the
      * container. The log group for Batch jobs is <code>/aws/batch/job</code>. Each
      * container attempt receives a log stream name when they reach the
      * <code>RUNNING</code> status.</p>
      */
-    inline const Aws::String& GetLogStreamName() const{ return m_logStreamName; }
-
-    /**
-     * <p>The name of the CloudWatch Logs log stream that's associated with the
-     * container. The log group for Batch jobs is <code>/aws/batch/job</code>. Each
-     * container attempt receives a log stream name when they reach the
-     * <code>RUNNING</code> status.</p>
-     */
+    inline const Aws::String& GetLogStreamName() const { return m_logStreamName; }
     inline bool LogStreamNameHasBeenSet() const { return m_logStreamNameHasBeenSet; }
+    template<typename LogStreamNameT = Aws::String>
+    void SetLogStreamName(LogStreamNameT&& value) { m_logStreamNameHasBeenSet = true; m_logStreamName = std::forward<LogStreamNameT>(value); }
+    template<typename LogStreamNameT = Aws::String>
+    AttemptContainerDetail& WithLogStreamName(LogStreamNameT&& value) { SetLogStreamName(std::forward<LogStreamNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the CloudWatch Logs log stream that's associated with the
-     * container. The log group for Batch jobs is <code>/aws/batch/job</code>. Each
-     * container attempt receives a log stream name when they reach the
-     * <code>RUNNING</code> status.</p>
-     */
-    inline void SetLogStreamName(const Aws::String& value) { m_logStreamNameHasBeenSet = true; m_logStreamName = value; }
-
-    /**
-     * <p>The name of the CloudWatch Logs log stream that's associated with the
-     * container. The log group for Batch jobs is <code>/aws/batch/job</code>. Each
-     * container attempt receives a log stream name when they reach the
-     * <code>RUNNING</code> status.</p>
-     */
-    inline void SetLogStreamName(Aws::String&& value) { m_logStreamNameHasBeenSet = true; m_logStreamName = std::move(value); }
-
-    /**
-     * <p>The name of the CloudWatch Logs log stream that's associated with the
-     * container. The log group for Batch jobs is <code>/aws/batch/job</code>. Each
-     * container attempt receives a log stream name when they reach the
-     * <code>RUNNING</code> status.</p>
-     */
-    inline void SetLogStreamName(const char* value) { m_logStreamNameHasBeenSet = true; m_logStreamName.assign(value); }
-
-    /**
-     * <p>The name of the CloudWatch Logs log stream that's associated with the
-     * container. The log group for Batch jobs is <code>/aws/batch/job</code>. Each
-     * container attempt receives a log stream name when they reach the
-     * <code>RUNNING</code> status.</p>
-     */
-    inline AttemptContainerDetail& WithLogStreamName(const Aws::String& value) { SetLogStreamName(value); return *this;}
-
-    /**
-     * <p>The name of the CloudWatch Logs log stream that's associated with the
-     * container. The log group for Batch jobs is <code>/aws/batch/job</code>. Each
-     * container attempt receives a log stream name when they reach the
-     * <code>RUNNING</code> status.</p>
-     */
-    inline AttemptContainerDetail& WithLogStreamName(Aws::String&& value) { SetLogStreamName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the CloudWatch Logs log stream that's associated with the
-     * container. The log group for Batch jobs is <code>/aws/batch/job</code>. Each
-     * container attempt receives a log stream name when they reach the
-     * <code>RUNNING</code> status.</p>
-     */
-    inline AttemptContainerDetail& WithLogStreamName(const char* value) { SetLogStreamName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The network interfaces that are associated with the job attempt.</p>
      */
-    inline const Aws::Vector<NetworkInterface>& GetNetworkInterfaces() const{ return m_networkInterfaces; }
-
-    /**
-     * <p>The network interfaces that are associated with the job attempt.</p>
-     */
+    inline const Aws::Vector<NetworkInterface>& GetNetworkInterfaces() const { return m_networkInterfaces; }
     inline bool NetworkInterfacesHasBeenSet() const { return m_networkInterfacesHasBeenSet; }
-
-    /**
-     * <p>The network interfaces that are associated with the job attempt.</p>
-     */
-    inline void SetNetworkInterfaces(const Aws::Vector<NetworkInterface>& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces = value; }
-
-    /**
-     * <p>The network interfaces that are associated with the job attempt.</p>
-     */
-    inline void SetNetworkInterfaces(Aws::Vector<NetworkInterface>&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces = std::move(value); }
-
-    /**
-     * <p>The network interfaces that are associated with the job attempt.</p>
-     */
-    inline AttemptContainerDetail& WithNetworkInterfaces(const Aws::Vector<NetworkInterface>& value) { SetNetworkInterfaces(value); return *this;}
-
-    /**
-     * <p>The network interfaces that are associated with the job attempt.</p>
-     */
-    inline AttemptContainerDetail& WithNetworkInterfaces(Aws::Vector<NetworkInterface>&& value) { SetNetworkInterfaces(std::move(value)); return *this;}
-
-    /**
-     * <p>The network interfaces that are associated with the job attempt.</p>
-     */
-    inline AttemptContainerDetail& AddNetworkInterfaces(const NetworkInterface& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces.push_back(value); return *this; }
-
-    /**
-     * <p>The network interfaces that are associated with the job attempt.</p>
-     */
-    inline AttemptContainerDetail& AddNetworkInterfaces(NetworkInterface&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces.push_back(std::move(value)); return *this; }
-
+    template<typename NetworkInterfacesT = Aws::Vector<NetworkInterface>>
+    void SetNetworkInterfaces(NetworkInterfacesT&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces = std::forward<NetworkInterfacesT>(value); }
+    template<typename NetworkInterfacesT = Aws::Vector<NetworkInterface>>
+    AttemptContainerDetail& WithNetworkInterfaces(NetworkInterfacesT&& value) { SetNetworkInterfaces(std::forward<NetworkInterfacesT>(value)); return *this;}
+    template<typename NetworkInterfacesT = NetworkInterface>
+    AttemptContainerDetail& AddNetworkInterfaces(NetworkInterfacesT&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces.emplace_back(std::forward<NetworkInterfacesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_containerInstanceArn;
@@ -333,7 +127,7 @@ namespace Model
     Aws::String m_taskArn;
     bool m_taskArnHasBeenSet = false;
 
-    int m_exitCode;
+    int m_exitCode{0};
     bool m_exitCodeHasBeenSet = false;
 
     Aws::String m_reason;

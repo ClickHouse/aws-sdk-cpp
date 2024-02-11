@@ -12,13 +12,6 @@ using namespace Aws::SSOAdmin::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutInlinePolicyToPermissionSetRequest::PutInlinePolicyToPermissionSetRequest() : 
-    m_instanceArnHasBeenSet(false),
-    m_permissionSetArnHasBeenSet(false),
-    m_inlinePolicyHasBeenSet(false)
-{
-}
-
 Aws::String PutInlinePolicyToPermissionSetRequest::SerializePayload() const
 {
   JsonValue payload;

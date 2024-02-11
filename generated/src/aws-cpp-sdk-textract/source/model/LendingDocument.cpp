@@ -18,15 +18,7 @@ namespace Textract
 namespace Model
 {
 
-LendingDocument::LendingDocument() : 
-    m_lendingFieldsHasBeenSet(false),
-    m_signatureDetectionsHasBeenSet(false)
-{
-}
-
-LendingDocument::LendingDocument(JsonView jsonValue) : 
-    m_lendingFieldsHasBeenSet(false),
-    m_signatureDetectionsHasBeenSet(false)
+LendingDocument::LendingDocument(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ LendingDocument& LendingDocument::operator =(JsonView jsonValue)
     }
     m_lendingFieldsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SignatureDetections"))
   {
     Aws::Utils::Array<JsonView> signatureDetectionsJsonList = jsonValue.GetArray("SignatureDetections");
@@ -52,7 +43,6 @@ LendingDocument& LendingDocument::operator =(JsonView jsonValue)
     }
     m_signatureDetectionsHasBeenSet = true;
   }
-
   return *this;
 }
 

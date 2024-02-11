@@ -32,7 +32,7 @@ namespace Model
   class RevisionTarget
   {
   public:
-    AWS_REDSHIFT_API RevisionTarget();
+    AWS_REDSHIFT_API RevisionTarget() = default;
     AWS_REDSHIFT_API RevisionTarget(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_REDSHIFT_API RevisionTarget& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,134 +40,43 @@ namespace Model
     AWS_REDSHIFT_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>A unique string that identifies the version to update the cluster to. You can
      * use this value in <a>ModifyClusterDbRevision</a>.</p>
      */
-    inline const Aws::String& GetDatabaseRevision() const{ return m_databaseRevision; }
-
-    /**
-     * <p>A unique string that identifies the version to update the cluster to. You can
-     * use this value in <a>ModifyClusterDbRevision</a>.</p>
-     */
+    inline const Aws::String& GetDatabaseRevision() const { return m_databaseRevision; }
     inline bool DatabaseRevisionHasBeenSet() const { return m_databaseRevisionHasBeenSet; }
+    template<typename DatabaseRevisionT = Aws::String>
+    void SetDatabaseRevision(DatabaseRevisionT&& value) { m_databaseRevisionHasBeenSet = true; m_databaseRevision = std::forward<DatabaseRevisionT>(value); }
+    template<typename DatabaseRevisionT = Aws::String>
+    RevisionTarget& WithDatabaseRevision(DatabaseRevisionT&& value) { SetDatabaseRevision(std::forward<DatabaseRevisionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique string that identifies the version to update the cluster to. You can
-     * use this value in <a>ModifyClusterDbRevision</a>.</p>
-     */
-    inline void SetDatabaseRevision(const Aws::String& value) { m_databaseRevisionHasBeenSet = true; m_databaseRevision = value; }
-
-    /**
-     * <p>A unique string that identifies the version to update the cluster to. You can
-     * use this value in <a>ModifyClusterDbRevision</a>.</p>
-     */
-    inline void SetDatabaseRevision(Aws::String&& value) { m_databaseRevisionHasBeenSet = true; m_databaseRevision = std::move(value); }
-
-    /**
-     * <p>A unique string that identifies the version to update the cluster to. You can
-     * use this value in <a>ModifyClusterDbRevision</a>.</p>
-     */
-    inline void SetDatabaseRevision(const char* value) { m_databaseRevisionHasBeenSet = true; m_databaseRevision.assign(value); }
-
-    /**
-     * <p>A unique string that identifies the version to update the cluster to. You can
-     * use this value in <a>ModifyClusterDbRevision</a>.</p>
-     */
-    inline RevisionTarget& WithDatabaseRevision(const Aws::String& value) { SetDatabaseRevision(value); return *this;}
-
-    /**
-     * <p>A unique string that identifies the version to update the cluster to. You can
-     * use this value in <a>ModifyClusterDbRevision</a>.</p>
-     */
-    inline RevisionTarget& WithDatabaseRevision(Aws::String&& value) { SetDatabaseRevision(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique string that identifies the version to update the cluster to. You can
-     * use this value in <a>ModifyClusterDbRevision</a>.</p>
-     */
-    inline RevisionTarget& WithDatabaseRevision(const char* value) { SetDatabaseRevision(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A string that describes the changes and features that will be applied to the
      * cluster when it is updated to the corresponding <a>ClusterDbRevision</a>.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A string that describes the changes and features that will be applied to the
-     * cluster when it is updated to the corresponding <a>ClusterDbRevision</a>.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    RevisionTarget& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A string that describes the changes and features that will be applied to the
-     * cluster when it is updated to the corresponding <a>ClusterDbRevision</a>.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A string that describes the changes and features that will be applied to the
-     * cluster when it is updated to the corresponding <a>ClusterDbRevision</a>.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A string that describes the changes and features that will be applied to the
-     * cluster when it is updated to the corresponding <a>ClusterDbRevision</a>.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A string that describes the changes and features that will be applied to the
-     * cluster when it is updated to the corresponding <a>ClusterDbRevision</a>.</p>
-     */
-    inline RevisionTarget& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A string that describes the changes and features that will be applied to the
-     * cluster when it is updated to the corresponding <a>ClusterDbRevision</a>.</p>
-     */
-    inline RevisionTarget& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A string that describes the changes and features that will be applied to the
-     * cluster when it is updated to the corresponding <a>ClusterDbRevision</a>.</p>
-     */
-    inline RevisionTarget& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date on which the database revision was released.</p>
      */
-    inline const Aws::Utils::DateTime& GetDatabaseRevisionReleaseDate() const{ return m_databaseRevisionReleaseDate; }
-
-    /**
-     * <p>The date on which the database revision was released.</p>
-     */
+    inline const Aws::Utils::DateTime& GetDatabaseRevisionReleaseDate() const { return m_databaseRevisionReleaseDate; }
     inline bool DatabaseRevisionReleaseDateHasBeenSet() const { return m_databaseRevisionReleaseDateHasBeenSet; }
-
-    /**
-     * <p>The date on which the database revision was released.</p>
-     */
-    inline void SetDatabaseRevisionReleaseDate(const Aws::Utils::DateTime& value) { m_databaseRevisionReleaseDateHasBeenSet = true; m_databaseRevisionReleaseDate = value; }
-
-    /**
-     * <p>The date on which the database revision was released.</p>
-     */
-    inline void SetDatabaseRevisionReleaseDate(Aws::Utils::DateTime&& value) { m_databaseRevisionReleaseDateHasBeenSet = true; m_databaseRevisionReleaseDate = std::move(value); }
-
-    /**
-     * <p>The date on which the database revision was released.</p>
-     */
-    inline RevisionTarget& WithDatabaseRevisionReleaseDate(const Aws::Utils::DateTime& value) { SetDatabaseRevisionReleaseDate(value); return *this;}
-
-    /**
-     * <p>The date on which the database revision was released.</p>
-     */
-    inline RevisionTarget& WithDatabaseRevisionReleaseDate(Aws::Utils::DateTime&& value) { SetDatabaseRevisionReleaseDate(std::move(value)); return *this;}
-
+    template<typename DatabaseRevisionReleaseDateT = Aws::Utils::DateTime>
+    void SetDatabaseRevisionReleaseDate(DatabaseRevisionReleaseDateT&& value) { m_databaseRevisionReleaseDateHasBeenSet = true; m_databaseRevisionReleaseDate = std::forward<DatabaseRevisionReleaseDateT>(value); }
+    template<typename DatabaseRevisionReleaseDateT = Aws::Utils::DateTime>
+    RevisionTarget& WithDatabaseRevisionReleaseDate(DatabaseRevisionReleaseDateT&& value) { SetDatabaseRevisionReleaseDate(std::forward<DatabaseRevisionReleaseDateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_databaseRevision;
@@ -176,7 +85,7 @@ namespace Model
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_databaseRevisionReleaseDate;
+    Aws::Utils::DateTime m_databaseRevisionReleaseDate{};
     bool m_databaseRevisionReleaseDateHasBeenSet = false;
   };
 

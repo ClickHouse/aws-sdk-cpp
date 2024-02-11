@@ -18,15 +18,7 @@ namespace ElasticsearchService
 namespace Model
 {
 
-VPCOptions::VPCOptions() : 
-    m_subnetIdsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false)
-{
-}
-
-VPCOptions::VPCOptions(JsonView jsonValue) : 
-    m_subnetIdsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false)
+VPCOptions::VPCOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ VPCOptions& VPCOptions::operator =(JsonView jsonValue)
     }
     m_subnetIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SecurityGroupIds"))
   {
     Aws::Utils::Array<JsonView> securityGroupIdsJsonList = jsonValue.GetArray("SecurityGroupIds");
@@ -52,7 +43,6 @@ VPCOptions& VPCOptions::operator =(JsonView jsonValue)
     }
     m_securityGroupIdsHasBeenSet = true;
   }
-
   return *this;
 }
 

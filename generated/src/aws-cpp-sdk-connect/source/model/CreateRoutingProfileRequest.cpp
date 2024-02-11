@@ -12,17 +12,6 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateRoutingProfileRequest::CreateRoutingProfileRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_defaultOutboundQueueIdHasBeenSet(false),
-    m_queueConfigsHasBeenSet(false),
-    m_mediaConcurrenciesHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateRoutingProfileRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -56,6 +45,17 @@ Aws::String CreateRoutingProfileRequest::SerializePayload() const
 
   }
 
+  if(m_manualAssignmentQueueConfigsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> manualAssignmentQueueConfigsJsonList(m_manualAssignmentQueueConfigs.size());
+   for(unsigned manualAssignmentQueueConfigsIndex = 0; manualAssignmentQueueConfigsIndex < manualAssignmentQueueConfigsJsonList.GetLength(); ++manualAssignmentQueueConfigsIndex)
+   {
+     manualAssignmentQueueConfigsJsonList[manualAssignmentQueueConfigsIndex].AsObject(m_manualAssignmentQueueConfigs[manualAssignmentQueueConfigsIndex].Jsonize());
+   }
+   payload.WithArray("ManualAssignmentQueueConfigs", std::move(manualAssignmentQueueConfigsJsonList));
+
+  }
+
   if(m_mediaConcurrenciesHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> mediaConcurrenciesJsonList(m_mediaConcurrencies.size());
@@ -76,6 +76,11 @@ Aws::String CreateRoutingProfileRequest::SerializePayload() const
    }
    payload.WithObject("Tags", std::move(tagsJsonMap));
 
+  }
+
+  if(m_agentAvailabilityTimerHasBeenSet)
+  {
+   payload.WithString("AgentAvailabilityTimer", AgentAvailabilityTimerMapper::GetNameForAgentAvailabilityTimer(m_agentAvailabilityTimer));
   }
 
   return payload.View().WriteReadable();

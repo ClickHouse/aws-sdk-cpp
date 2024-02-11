@@ -10,12 +10,6 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-DetachLoadBalancersRequest::DetachLoadBalancersRequest() : 
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_loadBalancerNamesHasBeenSet(false)
-{
-}
-
 Aws::String DetachLoadBalancersRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,12 +21,19 @@ Aws::String DetachLoadBalancersRequest::SerializePayload() const
 
   if(m_loadBalancerNamesHasBeenSet)
   {
-    unsigned loadBalancerNamesCount = 1;
-    for(auto& item : m_loadBalancerNames)
+    if (m_loadBalancerNames.empty())
     {
-      ss << "LoadBalancerNames.member." << loadBalancerNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      loadBalancerNamesCount++;
+      ss << "LoadBalancerNames=&";
+    }
+    else
+    {
+      unsigned loadBalancerNamesCount = 1;
+      for(auto& item : m_loadBalancerNames)
+      {
+        ss << "LoadBalancerNames.member." << loadBalancerNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        loadBalancerNamesCount++;
+      }
     }
   }
 

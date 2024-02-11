@@ -18,50 +18,40 @@ namespace Omics
 namespace Model
 {
 
-ReferenceStoreFilter::ReferenceStoreFilter() : 
-    m_createdAfterHasBeenSet(false),
-    m_createdBeforeHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-ReferenceStoreFilter::ReferenceStoreFilter(JsonView jsonValue) : 
-    m_createdAfterHasBeenSet(false),
-    m_createdBeforeHasBeenSet(false),
-    m_nameHasBeenSet(false)
+ReferenceStoreFilter::ReferenceStoreFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 ReferenceStoreFilter& ReferenceStoreFilter::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("createdAfter"))
-  {
-    m_createdAfter = jsonValue.GetString("createdAfter");
-
-    m_createdAfterHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("createdBefore"))
-  {
-    m_createdBefore = jsonValue.GetString("createdBefore");
-
-    m_createdBeforeHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("createdAfter"))
+  {
+    m_createdAfter = jsonValue.GetString("createdAfter");
+    m_createdAfterHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("createdBefore"))
+  {
+    m_createdBefore = jsonValue.GetString("createdBefore");
+    m_createdBeforeHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue ReferenceStoreFilter::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_nameHasBeenSet)
+  {
+   payload.WithString("name", m_name);
+
+  }
 
   if(m_createdAfterHasBeenSet)
   {
@@ -71,12 +61,6 @@ JsonValue ReferenceStoreFilter::Jsonize() const
   if(m_createdBeforeHasBeenSet)
   {
    payload.WithString("createdBefore", m_createdBefore.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
-  }
-
-  if(m_nameHasBeenSet)
-  {
-   payload.WithString("name", m_name);
-
   }
 
   return payload;

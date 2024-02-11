@@ -12,16 +12,6 @@ using namespace Aws::BillingConductor::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateBillingGroupRequest::UpdateBillingGroupRequest() : 
-    m_arnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_status(BillingGroupStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_computationPreferenceHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
-{
-}
-
 Aws::String UpdateBillingGroupRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -52,6 +42,12 @@ Aws::String UpdateBillingGroupRequest::SerializePayload() const
   if(m_descriptionHasBeenSet)
   {
    payload.WithString("Description", m_description);
+
+  }
+
+  if(m_accountGroupingHasBeenSet)
+  {
+   payload.WithObject("AccountGrouping", m_accountGrouping.Jsonize());
 
   }
 

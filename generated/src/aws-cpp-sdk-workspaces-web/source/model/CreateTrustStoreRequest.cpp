@@ -13,14 +13,6 @@ using namespace Aws::WorkSpacesWeb::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateTrustStoreRequest::CreateTrustStoreRequest() : 
-    m_certificateListHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateTrustStoreRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -36,12 +28,6 @@ Aws::String CreateTrustStoreRequest::SerializePayload() const
 
   }
 
-  if(m_clientTokenHasBeenSet)
-  {
-   payload.WithString("clientToken", m_clientToken);
-
-  }
-
   if(m_tagsHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> tagsJsonList(m_tags.size());
@@ -50,6 +36,12 @@ Aws::String CreateTrustStoreRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("clientToken", m_clientToken);
 
   }
 

@@ -18,15 +18,7 @@ namespace Inspector2
 namespace Model
 {
 
-Step::Step() : 
-    m_componentIdHasBeenSet(false),
-    m_componentTypeHasBeenSet(false)
-{
-}
-
-Step::Step(JsonView jsonValue) : 
-    m_componentIdHasBeenSet(false),
-    m_componentTypeHasBeenSet(false)
+Step::Step(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ Step& Step::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("componentId"))
   {
     m_componentId = jsonValue.GetString("componentId");
-
     m_componentIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("componentType"))
   {
     m_componentType = jsonValue.GetString("componentType");
-
     m_componentTypeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("componentArn"))
+  {
+    m_componentArn = jsonValue.GetString("componentArn");
+    m_componentArnHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +56,12 @@ JsonValue Step::Jsonize() const
   if(m_componentTypeHasBeenSet)
   {
    payload.WithString("componentType", m_componentType);
+
+  }
+
+  if(m_componentArnHasBeenSet)
+  {
+   payload.WithString("componentArn", m_componentArn);
 
   }
 

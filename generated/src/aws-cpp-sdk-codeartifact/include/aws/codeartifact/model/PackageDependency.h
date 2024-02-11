@@ -31,134 +31,44 @@ namespace Model
   class PackageDependency
   {
   public:
-    AWS_CODEARTIFACT_API PackageDependency();
+    AWS_CODEARTIFACT_API PackageDependency() = default;
     AWS_CODEARTIFACT_API PackageDependency(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEARTIFACT_API PackageDependency& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEARTIFACT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The namespace of the package that this package depends on. The package
      * component that specifies its namespace depends on its type. For example:</p>
-     * <ul> <li> <p> The namespace of a Maven package is its <code>groupId</code>. </p>
-     * </li> <li> <p> The namespace of an npm package is its <code>scope</code>. </p>
-     * </li> <li> <p> Python and NuGet packages do not contain a corresponding
-     * component, packages of those formats do not have a namespace. </p> </li> </ul>
+     * <ul> <li> <p> The namespace of a Maven package version is its
+     * <code>groupId</code>. </p> </li> <li> <p> The namespace of an npm or Swift
+     * package version is its <code>scope</code>. </p> </li> <li> <p>The namespace of a
+     * generic package is its <code>namespace</code>.</p> </li> <li> <p> Python, NuGet,
+     * Ruby, and Cargo package versions do not contain a corresponding component,
+     * package versions of those formats do not have a namespace. </p> </li> </ul>
      */
-    inline const Aws::String& GetNamespace() const{ return m_namespace; }
-
-    /**
-     * <p>The namespace of the package that this package depends on. The package
-     * component that specifies its namespace depends on its type. For example:</p>
-     * <ul> <li> <p> The namespace of a Maven package is its <code>groupId</code>. </p>
-     * </li> <li> <p> The namespace of an npm package is its <code>scope</code>. </p>
-     * </li> <li> <p> Python and NuGet packages do not contain a corresponding
-     * component, packages of those formats do not have a namespace. </p> </li> </ul>
-     */
+    inline const Aws::String& GetNamespace() const { return m_namespace; }
     inline bool NamespaceHasBeenSet() const { return m_namespaceHasBeenSet; }
+    template<typename NamespaceT = Aws::String>
+    void SetNamespace(NamespaceT&& value) { m_namespaceHasBeenSet = true; m_namespace = std::forward<NamespaceT>(value); }
+    template<typename NamespaceT = Aws::String>
+    PackageDependency& WithNamespace(NamespaceT&& value) { SetNamespace(std::forward<NamespaceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The namespace of the package that this package depends on. The package
-     * component that specifies its namespace depends on its type. For example:</p>
-     * <ul> <li> <p> The namespace of a Maven package is its <code>groupId</code>. </p>
-     * </li> <li> <p> The namespace of an npm package is its <code>scope</code>. </p>
-     * </li> <li> <p> Python and NuGet packages do not contain a corresponding
-     * component, packages of those formats do not have a namespace. </p> </li> </ul>
-     */
-    inline void SetNamespace(const Aws::String& value) { m_namespaceHasBeenSet = true; m_namespace = value; }
-
-    /**
-     * <p>The namespace of the package that this package depends on. The package
-     * component that specifies its namespace depends on its type. For example:</p>
-     * <ul> <li> <p> The namespace of a Maven package is its <code>groupId</code>. </p>
-     * </li> <li> <p> The namespace of an npm package is its <code>scope</code>. </p>
-     * </li> <li> <p> Python and NuGet packages do not contain a corresponding
-     * component, packages of those formats do not have a namespace. </p> </li> </ul>
-     */
-    inline void SetNamespace(Aws::String&& value) { m_namespaceHasBeenSet = true; m_namespace = std::move(value); }
-
-    /**
-     * <p>The namespace of the package that this package depends on. The package
-     * component that specifies its namespace depends on its type. For example:</p>
-     * <ul> <li> <p> The namespace of a Maven package is its <code>groupId</code>. </p>
-     * </li> <li> <p> The namespace of an npm package is its <code>scope</code>. </p>
-     * </li> <li> <p> Python and NuGet packages do not contain a corresponding
-     * component, packages of those formats do not have a namespace. </p> </li> </ul>
-     */
-    inline void SetNamespace(const char* value) { m_namespaceHasBeenSet = true; m_namespace.assign(value); }
-
-    /**
-     * <p>The namespace of the package that this package depends on. The package
-     * component that specifies its namespace depends on its type. For example:</p>
-     * <ul> <li> <p> The namespace of a Maven package is its <code>groupId</code>. </p>
-     * </li> <li> <p> The namespace of an npm package is its <code>scope</code>. </p>
-     * </li> <li> <p> Python and NuGet packages do not contain a corresponding
-     * component, packages of those formats do not have a namespace. </p> </li> </ul>
-     */
-    inline PackageDependency& WithNamespace(const Aws::String& value) { SetNamespace(value); return *this;}
-
-    /**
-     * <p>The namespace of the package that this package depends on. The package
-     * component that specifies its namespace depends on its type. For example:</p>
-     * <ul> <li> <p> The namespace of a Maven package is its <code>groupId</code>. </p>
-     * </li> <li> <p> The namespace of an npm package is its <code>scope</code>. </p>
-     * </li> <li> <p> Python and NuGet packages do not contain a corresponding
-     * component, packages of those formats do not have a namespace. </p> </li> </ul>
-     */
-    inline PackageDependency& WithNamespace(Aws::String&& value) { SetNamespace(std::move(value)); return *this;}
-
-    /**
-     * <p>The namespace of the package that this package depends on. The package
-     * component that specifies its namespace depends on its type. For example:</p>
-     * <ul> <li> <p> The namespace of a Maven package is its <code>groupId</code>. </p>
-     * </li> <li> <p> The namespace of an npm package is its <code>scope</code>. </p>
-     * </li> <li> <p> Python and NuGet packages do not contain a corresponding
-     * component, packages of those formats do not have a namespace. </p> </li> </ul>
-     */
-    inline PackageDependency& WithNamespace(const char* value) { SetNamespace(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The name of the package that this package depends on. </p>
      */
-    inline const Aws::String& GetPackage() const{ return m_package; }
-
-    /**
-     * <p> The name of the package that this package depends on. </p>
-     */
+    inline const Aws::String& GetPackage() const { return m_package; }
     inline bool PackageHasBeenSet() const { return m_packageHasBeenSet; }
+    template<typename PackageT = Aws::String>
+    void SetPackage(PackageT&& value) { m_packageHasBeenSet = true; m_package = std::forward<PackageT>(value); }
+    template<typename PackageT = Aws::String>
+    PackageDependency& WithPackage(PackageT&& value) { SetPackage(std::forward<PackageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The name of the package that this package depends on. </p>
-     */
-    inline void SetPackage(const Aws::String& value) { m_packageHasBeenSet = true; m_package = value; }
-
-    /**
-     * <p> The name of the package that this package depends on. </p>
-     */
-    inline void SetPackage(Aws::String&& value) { m_packageHasBeenSet = true; m_package = std::move(value); }
-
-    /**
-     * <p> The name of the package that this package depends on. </p>
-     */
-    inline void SetPackage(const char* value) { m_packageHasBeenSet = true; m_package.assign(value); }
-
-    /**
-     * <p> The name of the package that this package depends on. </p>
-     */
-    inline PackageDependency& WithPackage(const Aws::String& value) { SetPackage(value); return *this;}
-
-    /**
-     * <p> The name of the package that this package depends on. </p>
-     */
-    inline PackageDependency& WithPackage(Aws::String&& value) { SetPackage(std::move(value)); return *this;}
-
-    /**
-     * <p> The name of the package that this package depends on. </p>
-     */
-    inline PackageDependency& WithPackage(const char* value) { SetPackage(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The type of a package dependency. The possible values depend on the package
      * type.</p> <ul> <li> <p>npm: <code>regular</code>, <code>dev</code>,
@@ -172,178 +82,28 @@ namespace Model
      * is never set for NuGet packages.</p> </li> <li> <p>pypi:
      * <code>Requires-Dist</code> </p> </li> </ul>
      */
-    inline const Aws::String& GetDependencyType() const{ return m_dependencyType; }
-
-    /**
-     * <p> The type of a package dependency. The possible values depend on the package
-     * type.</p> <ul> <li> <p>npm: <code>regular</code>, <code>dev</code>,
-     * <code>peer</code>, <code>optional</code> </p> </li> <li> <p>maven:
-     * <code>optional</code>, <code>parent</code>, <code>compile</code>,
-     * <code>runtime</code>, <code>test</code>, <code>system</code>,
-     * <code>provided</code>.</p>  <p>Note that <code>parent</code> is not a
-     * regular Maven dependency type; instead this is extracted from the
-     * <code>&lt;parent&gt;</code> element if one is defined in the package version's
-     * POM file.</p>  </li> <li> <p>nuget: The <code>dependencyType</code> field
-     * is never set for NuGet packages.</p> </li> <li> <p>pypi:
-     * <code>Requires-Dist</code> </p> </li> </ul>
-     */
+    inline const Aws::String& GetDependencyType() const { return m_dependencyType; }
     inline bool DependencyTypeHasBeenSet() const { return m_dependencyTypeHasBeenSet; }
+    template<typename DependencyTypeT = Aws::String>
+    void SetDependencyType(DependencyTypeT&& value) { m_dependencyTypeHasBeenSet = true; m_dependencyType = std::forward<DependencyTypeT>(value); }
+    template<typename DependencyTypeT = Aws::String>
+    PackageDependency& WithDependencyType(DependencyTypeT&& value) { SetDependencyType(std::forward<DependencyTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The type of a package dependency. The possible values depend on the package
-     * type.</p> <ul> <li> <p>npm: <code>regular</code>, <code>dev</code>,
-     * <code>peer</code>, <code>optional</code> </p> </li> <li> <p>maven:
-     * <code>optional</code>, <code>parent</code>, <code>compile</code>,
-     * <code>runtime</code>, <code>test</code>, <code>system</code>,
-     * <code>provided</code>.</p>  <p>Note that <code>parent</code> is not a
-     * regular Maven dependency type; instead this is extracted from the
-     * <code>&lt;parent&gt;</code> element if one is defined in the package version's
-     * POM file.</p>  </li> <li> <p>nuget: The <code>dependencyType</code> field
-     * is never set for NuGet packages.</p> </li> <li> <p>pypi:
-     * <code>Requires-Dist</code> </p> </li> </ul>
-     */
-    inline void SetDependencyType(const Aws::String& value) { m_dependencyTypeHasBeenSet = true; m_dependencyType = value; }
-
-    /**
-     * <p> The type of a package dependency. The possible values depend on the package
-     * type.</p> <ul> <li> <p>npm: <code>regular</code>, <code>dev</code>,
-     * <code>peer</code>, <code>optional</code> </p> </li> <li> <p>maven:
-     * <code>optional</code>, <code>parent</code>, <code>compile</code>,
-     * <code>runtime</code>, <code>test</code>, <code>system</code>,
-     * <code>provided</code>.</p>  <p>Note that <code>parent</code> is not a
-     * regular Maven dependency type; instead this is extracted from the
-     * <code>&lt;parent&gt;</code> element if one is defined in the package version's
-     * POM file.</p>  </li> <li> <p>nuget: The <code>dependencyType</code> field
-     * is never set for NuGet packages.</p> </li> <li> <p>pypi:
-     * <code>Requires-Dist</code> </p> </li> </ul>
-     */
-    inline void SetDependencyType(Aws::String&& value) { m_dependencyTypeHasBeenSet = true; m_dependencyType = std::move(value); }
-
-    /**
-     * <p> The type of a package dependency. The possible values depend on the package
-     * type.</p> <ul> <li> <p>npm: <code>regular</code>, <code>dev</code>,
-     * <code>peer</code>, <code>optional</code> </p> </li> <li> <p>maven:
-     * <code>optional</code>, <code>parent</code>, <code>compile</code>,
-     * <code>runtime</code>, <code>test</code>, <code>system</code>,
-     * <code>provided</code>.</p>  <p>Note that <code>parent</code> is not a
-     * regular Maven dependency type; instead this is extracted from the
-     * <code>&lt;parent&gt;</code> element if one is defined in the package version's
-     * POM file.</p>  </li> <li> <p>nuget: The <code>dependencyType</code> field
-     * is never set for NuGet packages.</p> </li> <li> <p>pypi:
-     * <code>Requires-Dist</code> </p> </li> </ul>
-     */
-    inline void SetDependencyType(const char* value) { m_dependencyTypeHasBeenSet = true; m_dependencyType.assign(value); }
-
-    /**
-     * <p> The type of a package dependency. The possible values depend on the package
-     * type.</p> <ul> <li> <p>npm: <code>regular</code>, <code>dev</code>,
-     * <code>peer</code>, <code>optional</code> </p> </li> <li> <p>maven:
-     * <code>optional</code>, <code>parent</code>, <code>compile</code>,
-     * <code>runtime</code>, <code>test</code>, <code>system</code>,
-     * <code>provided</code>.</p>  <p>Note that <code>parent</code> is not a
-     * regular Maven dependency type; instead this is extracted from the
-     * <code>&lt;parent&gt;</code> element if one is defined in the package version's
-     * POM file.</p>  </li> <li> <p>nuget: The <code>dependencyType</code> field
-     * is never set for NuGet packages.</p> </li> <li> <p>pypi:
-     * <code>Requires-Dist</code> </p> </li> </ul>
-     */
-    inline PackageDependency& WithDependencyType(const Aws::String& value) { SetDependencyType(value); return *this;}
-
-    /**
-     * <p> The type of a package dependency. The possible values depend on the package
-     * type.</p> <ul> <li> <p>npm: <code>regular</code>, <code>dev</code>,
-     * <code>peer</code>, <code>optional</code> </p> </li> <li> <p>maven:
-     * <code>optional</code>, <code>parent</code>, <code>compile</code>,
-     * <code>runtime</code>, <code>test</code>, <code>system</code>,
-     * <code>provided</code>.</p>  <p>Note that <code>parent</code> is not a
-     * regular Maven dependency type; instead this is extracted from the
-     * <code>&lt;parent&gt;</code> element if one is defined in the package version's
-     * POM file.</p>  </li> <li> <p>nuget: The <code>dependencyType</code> field
-     * is never set for NuGet packages.</p> </li> <li> <p>pypi:
-     * <code>Requires-Dist</code> </p> </li> </ul>
-     */
-    inline PackageDependency& WithDependencyType(Aws::String&& value) { SetDependencyType(std::move(value)); return *this;}
-
-    /**
-     * <p> The type of a package dependency. The possible values depend on the package
-     * type.</p> <ul> <li> <p>npm: <code>regular</code>, <code>dev</code>,
-     * <code>peer</code>, <code>optional</code> </p> </li> <li> <p>maven:
-     * <code>optional</code>, <code>parent</code>, <code>compile</code>,
-     * <code>runtime</code>, <code>test</code>, <code>system</code>,
-     * <code>provided</code>.</p>  <p>Note that <code>parent</code> is not a
-     * regular Maven dependency type; instead this is extracted from the
-     * <code>&lt;parent&gt;</code> element if one is defined in the package version's
-     * POM file.</p>  </li> <li> <p>nuget: The <code>dependencyType</code> field
-     * is never set for NuGet packages.</p> </li> <li> <p>pypi:
-     * <code>Requires-Dist</code> </p> </li> </ul>
-     */
-    inline PackageDependency& WithDependencyType(const char* value) { SetDependencyType(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The required version, or version range, of the package that this package
      * depends on. The version format is specific to the package type. For example, the
      * following are possible valid required versions: <code>1.2.3</code>,
      * <code>^2.3.4</code>, or <code>4.x</code>. </p>
      */
-    inline const Aws::String& GetVersionRequirement() const{ return m_versionRequirement; }
-
-    /**
-     * <p> The required version, or version range, of the package that this package
-     * depends on. The version format is specific to the package type. For example, the
-     * following are possible valid required versions: <code>1.2.3</code>,
-     * <code>^2.3.4</code>, or <code>4.x</code>. </p>
-     */
+    inline const Aws::String& GetVersionRequirement() const { return m_versionRequirement; }
     inline bool VersionRequirementHasBeenSet() const { return m_versionRequirementHasBeenSet; }
-
-    /**
-     * <p> The required version, or version range, of the package that this package
-     * depends on. The version format is specific to the package type. For example, the
-     * following are possible valid required versions: <code>1.2.3</code>,
-     * <code>^2.3.4</code>, or <code>4.x</code>. </p>
-     */
-    inline void SetVersionRequirement(const Aws::String& value) { m_versionRequirementHasBeenSet = true; m_versionRequirement = value; }
-
-    /**
-     * <p> The required version, or version range, of the package that this package
-     * depends on. The version format is specific to the package type. For example, the
-     * following are possible valid required versions: <code>1.2.3</code>,
-     * <code>^2.3.4</code>, or <code>4.x</code>. </p>
-     */
-    inline void SetVersionRequirement(Aws::String&& value) { m_versionRequirementHasBeenSet = true; m_versionRequirement = std::move(value); }
-
-    /**
-     * <p> The required version, or version range, of the package that this package
-     * depends on. The version format is specific to the package type. For example, the
-     * following are possible valid required versions: <code>1.2.3</code>,
-     * <code>^2.3.4</code>, or <code>4.x</code>. </p>
-     */
-    inline void SetVersionRequirement(const char* value) { m_versionRequirementHasBeenSet = true; m_versionRequirement.assign(value); }
-
-    /**
-     * <p> The required version, or version range, of the package that this package
-     * depends on. The version format is specific to the package type. For example, the
-     * following are possible valid required versions: <code>1.2.3</code>,
-     * <code>^2.3.4</code>, or <code>4.x</code>. </p>
-     */
-    inline PackageDependency& WithVersionRequirement(const Aws::String& value) { SetVersionRequirement(value); return *this;}
-
-    /**
-     * <p> The required version, or version range, of the package that this package
-     * depends on. The version format is specific to the package type. For example, the
-     * following are possible valid required versions: <code>1.2.3</code>,
-     * <code>^2.3.4</code>, or <code>4.x</code>. </p>
-     */
-    inline PackageDependency& WithVersionRequirement(Aws::String&& value) { SetVersionRequirement(std::move(value)); return *this;}
-
-    /**
-     * <p> The required version, or version range, of the package that this package
-     * depends on. The version format is specific to the package type. For example, the
-     * following are possible valid required versions: <code>1.2.3</code>,
-     * <code>^2.3.4</code>, or <code>4.x</code>. </p>
-     */
-    inline PackageDependency& WithVersionRequirement(const char* value) { SetVersionRequirement(value); return *this;}
-
+    template<typename VersionRequirementT = Aws::String>
+    void SetVersionRequirement(VersionRequirementT&& value) { m_versionRequirementHasBeenSet = true; m_versionRequirement = std::forward<VersionRequirementT>(value); }
+    template<typename VersionRequirementT = Aws::String>
+    PackageDependency& WithVersionRequirement(VersionRequirementT&& value) { SetVersionRequirement(std::forward<VersionRequirementT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_namespace;

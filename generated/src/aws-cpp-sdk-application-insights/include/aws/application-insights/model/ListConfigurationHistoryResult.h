@@ -29,47 +29,25 @@ namespace Model
   class ListConfigurationHistoryResult
   {
   public:
-    AWS_APPLICATIONINSIGHTS_API ListConfigurationHistoryResult();
+    AWS_APPLICATIONINSIGHTS_API ListConfigurationHistoryResult() = default;
     AWS_APPLICATIONINSIGHTS_API ListConfigurationHistoryResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_APPLICATIONINSIGHTS_API ListConfigurationHistoryResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p> The list of configuration events and their corresponding details. </p>
      */
-    inline const Aws::Vector<ConfigurationEvent>& GetEventList() const{ return m_eventList; }
+    inline const Aws::Vector<ConfigurationEvent>& GetEventList() const { return m_eventList; }
+    template<typename EventListT = Aws::Vector<ConfigurationEvent>>
+    void SetEventList(EventListT&& value) { m_eventListHasBeenSet = true; m_eventList = std::forward<EventListT>(value); }
+    template<typename EventListT = Aws::Vector<ConfigurationEvent>>
+    ListConfigurationHistoryResult& WithEventList(EventListT&& value) { SetEventList(std::forward<EventListT>(value)); return *this;}
+    template<typename EventListT = ConfigurationEvent>
+    ListConfigurationHistoryResult& AddEventList(EventListT&& value) { m_eventListHasBeenSet = true; m_eventList.emplace_back(std::forward<EventListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> The list of configuration events and their corresponding details. </p>
-     */
-    inline void SetEventList(const Aws::Vector<ConfigurationEvent>& value) { m_eventList = value; }
-
-    /**
-     * <p> The list of configuration events and their corresponding details. </p>
-     */
-    inline void SetEventList(Aws::Vector<ConfigurationEvent>&& value) { m_eventList = std::move(value); }
-
-    /**
-     * <p> The list of configuration events and their corresponding details. </p>
-     */
-    inline ListConfigurationHistoryResult& WithEventList(const Aws::Vector<ConfigurationEvent>& value) { SetEventList(value); return *this;}
-
-    /**
-     * <p> The list of configuration events and their corresponding details. </p>
-     */
-    inline ListConfigurationHistoryResult& WithEventList(Aws::Vector<ConfigurationEvent>&& value) { SetEventList(std::move(value)); return *this;}
-
-    /**
-     * <p> The list of configuration events and their corresponding details. </p>
-     */
-    inline ListConfigurationHistoryResult& AddEventList(const ConfigurationEvent& value) { m_eventList.push_back(value); return *this; }
-
-    /**
-     * <p> The list of configuration events and their corresponding details. </p>
-     */
-    inline ListConfigurationHistoryResult& AddEventList(ConfigurationEvent&& value) { m_eventList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The <code>NextToken</code> value to include in a future
      * <code>ListConfigurationHistory</code> request. When the results of a
@@ -77,91 +55,31 @@ namespace Model
      * this value can be used to retrieve the next page of results. This value is
      * <code>null</code> when there are no more results to return.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListConfigurationHistoryResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>NextToken</code> value to include in a future
-     * <code>ListConfigurationHistory</code> request. When the results of a
-     * <code>ListConfigurationHistory</code> request exceed <code>MaxResults</code>,
-     * this value can be used to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The <code>NextToken</code> value to include in a future
-     * <code>ListConfigurationHistory</code> request. When the results of a
-     * <code>ListConfigurationHistory</code> request exceed <code>MaxResults</code>,
-     * this value can be used to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The <code>NextToken</code> value to include in a future
-     * <code>ListConfigurationHistory</code> request. When the results of a
-     * <code>ListConfigurationHistory</code> request exceed <code>MaxResults</code>,
-     * this value can be used to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The <code>NextToken</code> value to include in a future
-     * <code>ListConfigurationHistory</code> request. When the results of a
-     * <code>ListConfigurationHistory</code> request exceed <code>MaxResults</code>,
-     * this value can be used to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline ListConfigurationHistoryResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The <code>NextToken</code> value to include in a future
-     * <code>ListConfigurationHistory</code> request. When the results of a
-     * <code>ListConfigurationHistory</code> request exceed <code>MaxResults</code>,
-     * this value can be used to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline ListConfigurationHistoryResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>NextToken</code> value to include in a future
-     * <code>ListConfigurationHistory</code> request. When the results of a
-     * <code>ListConfigurationHistory</code> request exceed <code>MaxResults</code>,
-     * this value can be used to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline ListConfigurationHistoryResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListConfigurationHistoryResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListConfigurationHistoryResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListConfigurationHistoryResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListConfigurationHistoryResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ConfigurationEvent> m_eventList;
+    bool m_eventListHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

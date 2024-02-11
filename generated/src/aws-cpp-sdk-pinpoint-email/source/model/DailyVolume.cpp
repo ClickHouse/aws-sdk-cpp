@@ -18,17 +18,7 @@ namespace PinpointEmail
 namespace Model
 {
 
-DailyVolume::DailyVolume() : 
-    m_startDateHasBeenSet(false),
-    m_volumeStatisticsHasBeenSet(false),
-    m_domainIspPlacementsHasBeenSet(false)
-{
-}
-
-DailyVolume::DailyVolume(JsonView jsonValue) : 
-    m_startDateHasBeenSet(false),
-    m_volumeStatisticsHasBeenSet(false),
-    m_domainIspPlacementsHasBeenSet(false)
+DailyVolume::DailyVolume(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ DailyVolume& DailyVolume::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("StartDate"))
   {
     m_startDate = jsonValue.GetDouble("StartDate");
-
     m_startDateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VolumeStatistics"))
   {
     m_volumeStatistics = jsonValue.GetObject("VolumeStatistics");
-
     m_volumeStatisticsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DomainIspPlacements"))
   {
     Aws::Utils::Array<JsonView> domainIspPlacementsJsonList = jsonValue.GetArray("DomainIspPlacements");
@@ -58,7 +44,6 @@ DailyVolume& DailyVolume::operator =(JsonView jsonValue)
     }
     m_domainIspPlacementsHasBeenSet = true;
   }
-
   return *this;
 }
 

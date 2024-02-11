@@ -29,111 +29,53 @@ namespace Model
   class GetClassifiersResult
   {
   public:
-    AWS_GLUE_API GetClassifiersResult();
+    AWS_GLUE_API GetClassifiersResult() = default;
     AWS_GLUE_API GetClassifiersResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GLUE_API GetClassifiersResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The requested list of classifier objects.</p>
      */
-    inline const Aws::Vector<Classifier>& GetClassifiers() const{ return m_classifiers; }
+    inline const Aws::Vector<Classifier>& GetClassifiers() const { return m_classifiers; }
+    template<typename ClassifiersT = Aws::Vector<Classifier>>
+    void SetClassifiers(ClassifiersT&& value) { m_classifiersHasBeenSet = true; m_classifiers = std::forward<ClassifiersT>(value); }
+    template<typename ClassifiersT = Aws::Vector<Classifier>>
+    GetClassifiersResult& WithClassifiers(ClassifiersT&& value) { SetClassifiers(std::forward<ClassifiersT>(value)); return *this;}
+    template<typename ClassifiersT = Classifier>
+    GetClassifiersResult& AddClassifiers(ClassifiersT&& value) { m_classifiersHasBeenSet = true; m_classifiers.emplace_back(std::forward<ClassifiersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The requested list of classifier objects.</p>
-     */
-    inline void SetClassifiers(const Aws::Vector<Classifier>& value) { m_classifiers = value; }
-
-    /**
-     * <p>The requested list of classifier objects.</p>
-     */
-    inline void SetClassifiers(Aws::Vector<Classifier>&& value) { m_classifiers = std::move(value); }
-
-    /**
-     * <p>The requested list of classifier objects.</p>
-     */
-    inline GetClassifiersResult& WithClassifiers(const Aws::Vector<Classifier>& value) { SetClassifiers(value); return *this;}
-
-    /**
-     * <p>The requested list of classifier objects.</p>
-     */
-    inline GetClassifiersResult& WithClassifiers(Aws::Vector<Classifier>&& value) { SetClassifiers(std::move(value)); return *this;}
-
-    /**
-     * <p>The requested list of classifier objects.</p>
-     */
-    inline GetClassifiersResult& AddClassifiers(const Classifier& value) { m_classifiers.push_back(value); return *this; }
-
-    /**
-     * <p>The requested list of classifier objects.</p>
-     */
-    inline GetClassifiersResult& AddClassifiers(Classifier&& value) { m_classifiers.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A continuation token.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    GetClassifiersResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A continuation token.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>A continuation token.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>A continuation token.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>A continuation token.</p>
-     */
-    inline GetClassifiersResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A continuation token.</p>
-     */
-    inline GetClassifiersResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A continuation token.</p>
-     */
-    inline GetClassifiersResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetClassifiersResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetClassifiersResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetClassifiersResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetClassifiersResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Classifier> m_classifiers;
+    bool m_classifiersHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

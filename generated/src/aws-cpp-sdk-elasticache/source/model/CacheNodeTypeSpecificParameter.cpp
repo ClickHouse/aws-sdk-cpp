@@ -20,33 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-CacheNodeTypeSpecificParameter::CacheNodeTypeSpecificParameter() : 
-    m_parameterNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_dataTypeHasBeenSet(false),
-    m_allowedValuesHasBeenSet(false),
-    m_isModifiable(false),
-    m_isModifiableHasBeenSet(false),
-    m_minimumEngineVersionHasBeenSet(false),
-    m_cacheNodeTypeSpecificValuesHasBeenSet(false),
-    m_changeType(ChangeType::NOT_SET),
-    m_changeTypeHasBeenSet(false)
-{
-}
-
-CacheNodeTypeSpecificParameter::CacheNodeTypeSpecificParameter(const XmlNode& xmlNode) : 
-    m_parameterNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_dataTypeHasBeenSet(false),
-    m_allowedValuesHasBeenSet(false),
-    m_isModifiable(false),
-    m_isModifiableHasBeenSet(false),
-    m_minimumEngineVersionHasBeenSet(false),
-    m_cacheNodeTypeSpecificValuesHasBeenSet(false),
-    m_changeType(ChangeType::NOT_SET),
-    m_changeTypeHasBeenSet(false)
+CacheNodeTypeSpecificParameter::CacheNodeTypeSpecificParameter(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -103,6 +77,7 @@ CacheNodeTypeSpecificParameter& CacheNodeTypeSpecificParameter::operator =(const
     if(!cacheNodeTypeSpecificValuesNode.IsNull())
     {
       XmlNode cacheNodeTypeSpecificValuesMember = cacheNodeTypeSpecificValuesNode.FirstChild("CacheNodeTypeSpecificValue");
+      m_cacheNodeTypeSpecificValuesHasBeenSet = !cacheNodeTypeSpecificValuesMember.IsNull();
       while(!cacheNodeTypeSpecificValuesMember.IsNull())
       {
         m_cacheNodeTypeSpecificValues.push_back(cacheNodeTypeSpecificValuesMember);
@@ -114,7 +89,7 @@ CacheNodeTypeSpecificParameter& CacheNodeTypeSpecificParameter::operator =(const
     XmlNode changeTypeNode = resultNode.FirstChild("ChangeType");
     if(!changeTypeNode.IsNull())
     {
-      m_changeType = ChangeTypeMapper::GetChangeTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(changeTypeNode.GetText()).c_str()).c_str());
+      m_changeType = ChangeTypeMapper::GetChangeTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(changeTypeNode.GetText()).c_str()));
       m_changeTypeHasBeenSet = true;
     }
   }
@@ -165,14 +140,14 @@ void CacheNodeTypeSpecificParameter::OutputToStream(Aws::OStream& oStream, const
       for(auto& item : m_cacheNodeTypeSpecificValues)
       {
         Aws::StringStream cacheNodeTypeSpecificValuesSs;
-        cacheNodeTypeSpecificValuesSs << location << index << locationValue << ".CacheNodeTypeSpecificValue." << cacheNodeTypeSpecificValuesIdx++;
+        cacheNodeTypeSpecificValuesSs << location << index << locationValue << ".CacheNodeTypeSpecificValues.CacheNodeTypeSpecificValue." << cacheNodeTypeSpecificValuesIdx++;
         item.OutputToStream(oStream, cacheNodeTypeSpecificValuesSs.str().c_str());
       }
   }
 
   if(m_changeTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ChangeType=" << ChangeTypeMapper::GetNameForChangeType(m_changeType) << "&";
+      oStream << location << index << locationValue << ".ChangeType=" << StringUtils::URLEncode(ChangeTypeMapper::GetNameForChangeType(m_changeType)) << "&";
   }
 
 }
@@ -213,13 +188,13 @@ void CacheNodeTypeSpecificParameter::OutputToStream(Aws::OStream& oStream, const
       for(auto& item : m_cacheNodeTypeSpecificValues)
       {
         Aws::StringStream cacheNodeTypeSpecificValuesSs;
-        cacheNodeTypeSpecificValuesSs << location <<  ".CacheNodeTypeSpecificValue." << cacheNodeTypeSpecificValuesIdx++;
+        cacheNodeTypeSpecificValuesSs << location << ".CacheNodeTypeSpecificValues.CacheNodeTypeSpecificValue." << cacheNodeTypeSpecificValuesIdx++;
         item.OutputToStream(oStream, cacheNodeTypeSpecificValuesSs.str().c_str());
       }
   }
   if(m_changeTypeHasBeenSet)
   {
-      oStream << location << ".ChangeType=" << ChangeTypeMapper::GetNameForChangeType(m_changeType) << "&";
+      oStream << location << ".ChangeType=" << StringUtils::URLEncode(ChangeTypeMapper::GetNameForChangeType(m_changeType)) << "&";
   }
 }
 

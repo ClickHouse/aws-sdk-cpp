@@ -12,16 +12,15 @@ using namespace Aws::mgn::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateWaveRequest::UpdateWaveRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_waveIDHasBeenSet(false)
-{
-}
-
 Aws::String UpdateWaveRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_accountIDHasBeenSet)
+  {
+   payload.WithString("accountID", m_accountID);
+
+  }
 
   if(m_descriptionHasBeenSet)
   {

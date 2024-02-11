@@ -40,94 +40,39 @@ namespace Model
   class FragmentSelector
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API FragmentSelector();
+    AWS_CHIMESDKMEDIAPIPELINES_API FragmentSelector() = default;
     AWS_CHIMESDKMEDIAPIPELINES_API FragmentSelector(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API FragmentSelector& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The origin of the timestamps to use, <code>Server</code> or
      * <code>Producer</code>. For more information, see <a
-     * href="kinesisvideostreams/latest/dg/API_dataplane_StartSelector.html#KinesisVideo-Type-dataplane_StartSelector-StartSelectorType">StartSelectorType</a>
+     * href="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_dataplane_StartSelector.html">StartSelectorType</a>
      * in the <i>Amazon Kinesis Video Streams Developer Guide</i>.</p>
      */
-    inline const FragmentSelectorType& GetFragmentSelectorType() const{ return m_fragmentSelectorType; }
-
-    /**
-     * <p>The origin of the timestamps to use, <code>Server</code> or
-     * <code>Producer</code>. For more information, see <a
-     * href="kinesisvideostreams/latest/dg/API_dataplane_StartSelector.html#KinesisVideo-Type-dataplane_StartSelector-StartSelectorType">StartSelectorType</a>
-     * in the <i>Amazon Kinesis Video Streams Developer Guide</i>.</p>
-     */
+    inline FragmentSelectorType GetFragmentSelectorType() const { return m_fragmentSelectorType; }
     inline bool FragmentSelectorTypeHasBeenSet() const { return m_fragmentSelectorTypeHasBeenSet; }
+    inline void SetFragmentSelectorType(FragmentSelectorType value) { m_fragmentSelectorTypeHasBeenSet = true; m_fragmentSelectorType = value; }
+    inline FragmentSelector& WithFragmentSelectorType(FragmentSelectorType value) { SetFragmentSelectorType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The origin of the timestamps to use, <code>Server</code> or
-     * <code>Producer</code>. For more information, see <a
-     * href="kinesisvideostreams/latest/dg/API_dataplane_StartSelector.html#KinesisVideo-Type-dataplane_StartSelector-StartSelectorType">StartSelectorType</a>
-     * in the <i>Amazon Kinesis Video Streams Developer Guide</i>.</p>
-     */
-    inline void SetFragmentSelectorType(const FragmentSelectorType& value) { m_fragmentSelectorTypeHasBeenSet = true; m_fragmentSelectorType = value; }
-
-    /**
-     * <p>The origin of the timestamps to use, <code>Server</code> or
-     * <code>Producer</code>. For more information, see <a
-     * href="kinesisvideostreams/latest/dg/API_dataplane_StartSelector.html#KinesisVideo-Type-dataplane_StartSelector-StartSelectorType">StartSelectorType</a>
-     * in the <i>Amazon Kinesis Video Streams Developer Guide</i>.</p>
-     */
-    inline void SetFragmentSelectorType(FragmentSelectorType&& value) { m_fragmentSelectorTypeHasBeenSet = true; m_fragmentSelectorType = std::move(value); }
-
-    /**
-     * <p>The origin of the timestamps to use, <code>Server</code> or
-     * <code>Producer</code>. For more information, see <a
-     * href="kinesisvideostreams/latest/dg/API_dataplane_StartSelector.html#KinesisVideo-Type-dataplane_StartSelector-StartSelectorType">StartSelectorType</a>
-     * in the <i>Amazon Kinesis Video Streams Developer Guide</i>.</p>
-     */
-    inline FragmentSelector& WithFragmentSelectorType(const FragmentSelectorType& value) { SetFragmentSelectorType(value); return *this;}
-
-    /**
-     * <p>The origin of the timestamps to use, <code>Server</code> or
-     * <code>Producer</code>. For more information, see <a
-     * href="kinesisvideostreams/latest/dg/API_dataplane_StartSelector.html#KinesisVideo-Type-dataplane_StartSelector-StartSelectorType">StartSelectorType</a>
-     * in the <i>Amazon Kinesis Video Streams Developer Guide</i>.</p>
-     */
-    inline FragmentSelector& WithFragmentSelectorType(FragmentSelectorType&& value) { SetFragmentSelectorType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The range of timestamps to return.</p>
      */
-    inline const TimestampRange& GetTimestampRange() const{ return m_timestampRange; }
-
-    /**
-     * <p>The range of timestamps to return.</p>
-     */
+    inline const TimestampRange& GetTimestampRange() const { return m_timestampRange; }
     inline bool TimestampRangeHasBeenSet() const { return m_timestampRangeHasBeenSet; }
-
-    /**
-     * <p>The range of timestamps to return.</p>
-     */
-    inline void SetTimestampRange(const TimestampRange& value) { m_timestampRangeHasBeenSet = true; m_timestampRange = value; }
-
-    /**
-     * <p>The range of timestamps to return.</p>
-     */
-    inline void SetTimestampRange(TimestampRange&& value) { m_timestampRangeHasBeenSet = true; m_timestampRange = std::move(value); }
-
-    /**
-     * <p>The range of timestamps to return.</p>
-     */
-    inline FragmentSelector& WithTimestampRange(const TimestampRange& value) { SetTimestampRange(value); return *this;}
-
-    /**
-     * <p>The range of timestamps to return.</p>
-     */
-    inline FragmentSelector& WithTimestampRange(TimestampRange&& value) { SetTimestampRange(std::move(value)); return *this;}
-
+    template<typename TimestampRangeT = TimestampRange>
+    void SetTimestampRange(TimestampRangeT&& value) { m_timestampRangeHasBeenSet = true; m_timestampRange = std::forward<TimestampRangeT>(value); }
+    template<typename TimestampRangeT = TimestampRange>
+    FragmentSelector& WithTimestampRange(TimestampRangeT&& value) { SetTimestampRange(std::forward<TimestampRangeT>(value)); return *this;}
+    ///@}
   private:
 
-    FragmentSelectorType m_fragmentSelectorType;
+    FragmentSelectorType m_fragmentSelectorType{FragmentSelectorType::NOT_SET};
     bool m_fragmentSelectorTypeHasBeenSet = false;
 
     TimestampRange m_timestampRange;

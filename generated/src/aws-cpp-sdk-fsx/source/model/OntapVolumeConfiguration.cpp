@@ -18,49 +18,7 @@ namespace FSx
 namespace Model
 {
 
-OntapVolumeConfiguration::OntapVolumeConfiguration() : 
-    m_flexCacheEndpointType(FlexCacheEndpointType::NOT_SET),
-    m_flexCacheEndpointTypeHasBeenSet(false),
-    m_junctionPathHasBeenSet(false),
-    m_securityStyle(SecurityStyle::NOT_SET),
-    m_securityStyleHasBeenSet(false),
-    m_sizeInMegabytes(0),
-    m_sizeInMegabytesHasBeenSet(false),
-    m_storageEfficiencyEnabled(false),
-    m_storageEfficiencyEnabledHasBeenSet(false),
-    m_storageVirtualMachineIdHasBeenSet(false),
-    m_storageVirtualMachineRoot(false),
-    m_storageVirtualMachineRootHasBeenSet(false),
-    m_tieringPolicyHasBeenSet(false),
-    m_uUIDHasBeenSet(false),
-    m_ontapVolumeType(OntapVolumeType::NOT_SET),
-    m_ontapVolumeTypeHasBeenSet(false),
-    m_snapshotPolicyHasBeenSet(false),
-    m_copyTagsToBackups(false),
-    m_copyTagsToBackupsHasBeenSet(false)
-{
-}
-
-OntapVolumeConfiguration::OntapVolumeConfiguration(JsonView jsonValue) : 
-    m_flexCacheEndpointType(FlexCacheEndpointType::NOT_SET),
-    m_flexCacheEndpointTypeHasBeenSet(false),
-    m_junctionPathHasBeenSet(false),
-    m_securityStyle(SecurityStyle::NOT_SET),
-    m_securityStyleHasBeenSet(false),
-    m_sizeInMegabytes(0),
-    m_sizeInMegabytesHasBeenSet(false),
-    m_storageEfficiencyEnabled(false),
-    m_storageEfficiencyEnabledHasBeenSet(false),
-    m_storageVirtualMachineIdHasBeenSet(false),
-    m_storageVirtualMachineRoot(false),
-    m_storageVirtualMachineRootHasBeenSet(false),
-    m_tieringPolicyHasBeenSet(false),
-    m_uUIDHasBeenSet(false),
-    m_ontapVolumeType(OntapVolumeType::NOT_SET),
-    m_ontapVolumeTypeHasBeenSet(false),
-    m_snapshotPolicyHasBeenSet(false),
-    m_copyTagsToBackups(false),
-    m_copyTagsToBackupsHasBeenSet(false)
+OntapVolumeConfiguration::OntapVolumeConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -70,87 +28,83 @@ OntapVolumeConfiguration& OntapVolumeConfiguration::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("FlexCacheEndpointType"))
   {
     m_flexCacheEndpointType = FlexCacheEndpointTypeMapper::GetFlexCacheEndpointTypeForName(jsonValue.GetString("FlexCacheEndpointType"));
-
     m_flexCacheEndpointTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("JunctionPath"))
   {
     m_junctionPath = jsonValue.GetString("JunctionPath");
-
     m_junctionPathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SecurityStyle"))
   {
     m_securityStyle = SecurityStyleMapper::GetSecurityStyleForName(jsonValue.GetString("SecurityStyle"));
-
     m_securityStyleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SizeInMegabytes"))
   {
     m_sizeInMegabytes = jsonValue.GetInteger("SizeInMegabytes");
-
     m_sizeInMegabytesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StorageEfficiencyEnabled"))
   {
     m_storageEfficiencyEnabled = jsonValue.GetBool("StorageEfficiencyEnabled");
-
     m_storageEfficiencyEnabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StorageVirtualMachineId"))
   {
     m_storageVirtualMachineId = jsonValue.GetString("StorageVirtualMachineId");
-
     m_storageVirtualMachineIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StorageVirtualMachineRoot"))
   {
     m_storageVirtualMachineRoot = jsonValue.GetBool("StorageVirtualMachineRoot");
-
     m_storageVirtualMachineRootHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TieringPolicy"))
   {
     m_tieringPolicy = jsonValue.GetObject("TieringPolicy");
-
     m_tieringPolicyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UUID"))
   {
     m_uUID = jsonValue.GetString("UUID");
-
     m_uUIDHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OntapVolumeType"))
   {
     m_ontapVolumeType = OntapVolumeTypeMapper::GetOntapVolumeTypeForName(jsonValue.GetString("OntapVolumeType"));
-
     m_ontapVolumeTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SnapshotPolicy"))
   {
     m_snapshotPolicy = jsonValue.GetString("SnapshotPolicy");
-
     m_snapshotPolicyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CopyTagsToBackups"))
   {
     m_copyTagsToBackups = jsonValue.GetBool("CopyTagsToBackups");
-
     m_copyTagsToBackupsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("SnaplockConfiguration"))
+  {
+    m_snaplockConfiguration = jsonValue.GetObject("SnaplockConfiguration");
+    m_snaplockConfigurationHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("VolumeStyle"))
+  {
+    m_volumeStyle = VolumeStyleMapper::GetVolumeStyleForName(jsonValue.GetString("VolumeStyle"));
+    m_volumeStyleHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("AggregateConfiguration"))
+  {
+    m_aggregateConfiguration = jsonValue.GetObject("AggregateConfiguration");
+    m_aggregateConfigurationHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("SizeInBytes"))
+  {
+    m_sizeInBytes = jsonValue.GetInt64("SizeInBytes");
+    m_sizeInBytesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -224,6 +178,29 @@ JsonValue OntapVolumeConfiguration::Jsonize() const
   if(m_copyTagsToBackupsHasBeenSet)
   {
    payload.WithBool("CopyTagsToBackups", m_copyTagsToBackups);
+
+  }
+
+  if(m_snaplockConfigurationHasBeenSet)
+  {
+   payload.WithObject("SnaplockConfiguration", m_snaplockConfiguration.Jsonize());
+
+  }
+
+  if(m_volumeStyleHasBeenSet)
+  {
+   payload.WithString("VolumeStyle", VolumeStyleMapper::GetNameForVolumeStyle(m_volumeStyle));
+  }
+
+  if(m_aggregateConfigurationHasBeenSet)
+  {
+   payload.WithObject("AggregateConfiguration", m_aggregateConfiguration.Jsonize());
+
+  }
+
+  if(m_sizeInBytesHasBeenSet)
+  {
+   payload.WithInt64("SizeInBytes", m_sizeInBytes);
 
   }
 

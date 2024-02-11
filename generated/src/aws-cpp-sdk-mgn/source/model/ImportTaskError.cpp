@@ -18,19 +18,7 @@ namespace mgn
 namespace Model
 {
 
-ImportTaskError::ImportTaskError() : 
-    m_errorDataHasBeenSet(false),
-    m_errorDateTimeHasBeenSet(false),
-    m_errorType(ImportErrorType::NOT_SET),
-    m_errorTypeHasBeenSet(false)
-{
-}
-
-ImportTaskError::ImportTaskError(JsonView jsonValue) : 
-    m_errorDataHasBeenSet(false),
-    m_errorDateTimeHasBeenSet(false),
-    m_errorType(ImportErrorType::NOT_SET),
-    m_errorTypeHasBeenSet(false)
+ImportTaskError::ImportTaskError(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ ImportTaskError& ImportTaskError::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("errorData"))
   {
     m_errorData = jsonValue.GetObject("errorData");
-
     m_errorDataHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("errorDateTime"))
   {
     m_errorDateTime = jsonValue.GetString("errorDateTime");
-
     m_errorDateTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("errorType"))
   {
     m_errorType = ImportErrorTypeMapper::GetImportErrorTypeForName(jsonValue.GetString("errorType"));
-
     m_errorTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

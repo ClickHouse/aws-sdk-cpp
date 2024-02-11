@@ -62,71 +62,33 @@ namespace Model
   class DynamoDBv2Action
   {
   public:
-    AWS_IOTEVENTS_API DynamoDBv2Action();
+    AWS_IOTEVENTS_API DynamoDBv2Action() = default;
     AWS_IOTEVENTS_API DynamoDBv2Action(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API DynamoDBv2Action& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the DynamoDB table.</p>
      */
-    inline const Aws::String& GetTableName() const{ return m_tableName; }
-
-    /**
-     * <p>The name of the DynamoDB table.</p>
-     */
+    inline const Aws::String& GetTableName() const { return m_tableName; }
     inline bool TableNameHasBeenSet() const { return m_tableNameHasBeenSet; }
+    template<typename TableNameT = Aws::String>
+    void SetTableName(TableNameT&& value) { m_tableNameHasBeenSet = true; m_tableName = std::forward<TableNameT>(value); }
+    template<typename TableNameT = Aws::String>
+    DynamoDBv2Action& WithTableName(TableNameT&& value) { SetTableName(std::forward<TableNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the DynamoDB table.</p>
-     */
-    inline void SetTableName(const Aws::String& value) { m_tableNameHasBeenSet = true; m_tableName = value; }
-
-    /**
-     * <p>The name of the DynamoDB table.</p>
-     */
-    inline void SetTableName(Aws::String&& value) { m_tableNameHasBeenSet = true; m_tableName = std::move(value); }
-
-    /**
-     * <p>The name of the DynamoDB table.</p>
-     */
-    inline void SetTableName(const char* value) { m_tableNameHasBeenSet = true; m_tableName.assign(value); }
-
-    /**
-     * <p>The name of the DynamoDB table.</p>
-     */
-    inline DynamoDBv2Action& WithTableName(const Aws::String& value) { SetTableName(value); return *this;}
-
-    /**
-     * <p>The name of the DynamoDB table.</p>
-     */
-    inline DynamoDBv2Action& WithTableName(Aws::String&& value) { SetTableName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the DynamoDB table.</p>
-     */
-    inline DynamoDBv2Action& WithTableName(const char* value) { SetTableName(value); return *this;}
-
-
+    ///@{
     
-    inline const Payload& GetPayload() const{ return m_payload; }
-
-    
+    inline const Payload& GetPayload() const { return m_payload; }
     inline bool PayloadHasBeenSet() const { return m_payloadHasBeenSet; }
-
-    
-    inline void SetPayload(const Payload& value) { m_payloadHasBeenSet = true; m_payload = value; }
-
-    
-    inline void SetPayload(Payload&& value) { m_payloadHasBeenSet = true; m_payload = std::move(value); }
-
-    
-    inline DynamoDBv2Action& WithPayload(const Payload& value) { SetPayload(value); return *this;}
-
-    
-    inline DynamoDBv2Action& WithPayload(Payload&& value) { SetPayload(std::move(value)); return *this;}
-
+    template<typename PayloadT = Payload>
+    void SetPayload(PayloadT&& value) { m_payloadHasBeenSet = true; m_payload = std::forward<PayloadT>(value); }
+    template<typename PayloadT = Payload>
+    DynamoDBv2Action& WithPayload(PayloadT&& value) { SetPayload(std::forward<PayloadT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_tableName;

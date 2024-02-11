@@ -29,102 +29,52 @@ namespace Model
   class CreateVpcEndpointConnectionNotificationResponse
   {
   public:
-    AWS_EC2_API CreateVpcEndpointConnectionNotificationResponse();
+    AWS_EC2_API CreateVpcEndpointConnectionNotificationResponse() = default;
     AWS_EC2_API CreateVpcEndpointConnectionNotificationResponse(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_EC2_API CreateVpcEndpointConnectionNotificationResponse& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>Information about the notification.</p>
      */
-    inline const ConnectionNotification& GetConnectionNotification() const{ return m_connectionNotification; }
+    inline const ConnectionNotification& GetConnectionNotification() const { return m_connectionNotification; }
+    template<typename ConnectionNotificationT = ConnectionNotification>
+    void SetConnectionNotification(ConnectionNotificationT&& value) { m_connectionNotificationHasBeenSet = true; m_connectionNotification = std::forward<ConnectionNotificationT>(value); }
+    template<typename ConnectionNotificationT = ConnectionNotification>
+    CreateVpcEndpointConnectionNotificationResponse& WithConnectionNotification(ConnectionNotificationT&& value) { SetConnectionNotification(std::forward<ConnectionNotificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the notification.</p>
-     */
-    inline void SetConnectionNotification(const ConnectionNotification& value) { m_connectionNotification = value; }
-
-    /**
-     * <p>Information about the notification.</p>
-     */
-    inline void SetConnectionNotification(ConnectionNotification&& value) { m_connectionNotification = std::move(value); }
-
-    /**
-     * <p>Information about the notification.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationResponse& WithConnectionNotification(const ConnectionNotification& value) { SetConnectionNotification(value); return *this;}
-
-    /**
-     * <p>Information about the notification.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationResponse& WithConnectionNotification(ConnectionNotification&& value) { SetConnectionNotification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
      * of the request.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateVpcEndpointConnectionNotificationResponse& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientToken = value; }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientToken = std::move(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientToken.assign(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationResponse& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationResponse& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationResponse& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline CreateVpcEndpointConnectionNotificationResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline CreateVpcEndpointConnectionNotificationResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    CreateVpcEndpointConnectionNotificationResponse& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     ConnectionNotification m_connectionNotification;
+    bool m_connectionNotificationHasBeenSet = false;
 
     Aws::String m_clientToken;
+    bool m_clientTokenHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

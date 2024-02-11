@@ -18,19 +18,7 @@ namespace DataExchange
 namespace Model
 {
 
-ExportAssetsToS3ResponseDetails::ExportAssetsToS3ResponseDetails() : 
-    m_assetDestinationsHasBeenSet(false),
-    m_dataSetIdHasBeenSet(false),
-    m_encryptionHasBeenSet(false),
-    m_revisionIdHasBeenSet(false)
-{
-}
-
-ExportAssetsToS3ResponseDetails::ExportAssetsToS3ResponseDetails(JsonView jsonValue) : 
-    m_assetDestinationsHasBeenSet(false),
-    m_dataSetIdHasBeenSet(false),
-    m_encryptionHasBeenSet(false),
-    m_revisionIdHasBeenSet(false)
+ExportAssetsToS3ResponseDetails::ExportAssetsToS3ResponseDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,28 +34,21 @@ ExportAssetsToS3ResponseDetails& ExportAssetsToS3ResponseDetails::operator =(Jso
     }
     m_assetDestinationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataSetId"))
   {
     m_dataSetId = jsonValue.GetString("DataSetId");
-
     m_dataSetIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Encryption"))
   {
     m_encryption = jsonValue.GetObject("Encryption");
-
     m_encryptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RevisionId"))
   {
     m_revisionId = jsonValue.GetString("RevisionId");
-
     m_revisionIdHasBeenSet = true;
   }
-
   return *this;
 }
 

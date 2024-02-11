@@ -15,13 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-DescribeAssetModelRequest::DescribeAssetModelRequest() : 
-    m_assetModelIdHasBeenSet(false),
-    m_excludeProperties(false),
-    m_excludePropertiesHasBeenSet(false)
-{
-}
-
 Aws::String DescribeAssetModelRequest::SerializePayload() const
 {
   return {};
@@ -34,6 +27,13 @@ void DescribeAssetModelRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << m_excludeProperties;
       uri.AddQueryStringParameter("excludeProperties", ss.str());
+      ss.str("");
+    }
+
+    if(m_assetModelVersionHasBeenSet)
+    {
+      ss << m_assetModelVersion;
+      uri.AddQueryStringParameter("assetModelVersion", ss.str());
       ss.str("");
     }
 

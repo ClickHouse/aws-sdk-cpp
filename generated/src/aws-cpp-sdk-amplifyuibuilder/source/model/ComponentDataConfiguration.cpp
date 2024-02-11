@@ -18,19 +18,7 @@ namespace AmplifyUIBuilder
 namespace Model
 {
 
-ComponentDataConfiguration::ComponentDataConfiguration() : 
-    m_modelHasBeenSet(false),
-    m_sortHasBeenSet(false),
-    m_predicateHasBeenSet(false),
-    m_identifiersHasBeenSet(false)
-{
-}
-
-ComponentDataConfiguration::ComponentDataConfiguration(JsonView jsonValue) : 
-    m_modelHasBeenSet(false),
-    m_sortHasBeenSet(false),
-    m_predicateHasBeenSet(false),
-    m_identifiersHasBeenSet(false)
+ComponentDataConfiguration::ComponentDataConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ ComponentDataConfiguration& ComponentDataConfiguration::operator =(JsonView json
   if(jsonValue.ValueExists("model"))
   {
     m_model = jsonValue.GetString("model");
-
     m_modelHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sort"))
   {
     Aws::Utils::Array<JsonView> sortJsonList = jsonValue.GetArray("sort");
@@ -53,14 +39,11 @@ ComponentDataConfiguration& ComponentDataConfiguration::operator =(JsonView json
     }
     m_sortHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("predicate"))
   {
     m_predicate = jsonValue.GetObject("predicate");
-
     m_predicateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("identifiers"))
   {
     Aws::Utils::Array<JsonView> identifiersJsonList = jsonValue.GetArray("identifiers");
@@ -70,7 +53,6 @@ ComponentDataConfiguration& ComponentDataConfiguration::operator =(JsonView json
     }
     m_identifiersHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,21 +20,7 @@ namespace EC2
 namespace Model
 {
 
-AddedPrincipal::AddedPrincipal() : 
-    m_principalType(PrincipalType::NOT_SET),
-    m_principalTypeHasBeenSet(false),
-    m_principalHasBeenSet(false),
-    m_servicePermissionIdHasBeenSet(false),
-    m_serviceIdHasBeenSet(false)
-{
-}
-
-AddedPrincipal::AddedPrincipal(const XmlNode& xmlNode) : 
-    m_principalType(PrincipalType::NOT_SET),
-    m_principalTypeHasBeenSet(false),
-    m_principalHasBeenSet(false),
-    m_servicePermissionIdHasBeenSet(false),
-    m_serviceIdHasBeenSet(false)
+AddedPrincipal::AddedPrincipal(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -48,7 +34,7 @@ AddedPrincipal& AddedPrincipal::operator =(const XmlNode& xmlNode)
     XmlNode principalTypeNode = resultNode.FirstChild("principalType");
     if(!principalTypeNode.IsNull())
     {
-      m_principalType = PrincipalTypeMapper::GetPrincipalTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(principalTypeNode.GetText()).c_str()).c_str());
+      m_principalType = PrincipalTypeMapper::GetPrincipalTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(principalTypeNode.GetText()).c_str()));
       m_principalTypeHasBeenSet = true;
     }
     XmlNode principalNode = resultNode.FirstChild("principal");
@@ -78,7 +64,7 @@ void AddedPrincipal::OutputToStream(Aws::OStream& oStream, const char* location,
 {
   if(m_principalTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".PrincipalType=" << PrincipalTypeMapper::GetNameForPrincipalType(m_principalType) << "&";
+      oStream << location << index << locationValue << ".PrincipalType=" << StringUtils::URLEncode(PrincipalTypeMapper::GetNameForPrincipalType(m_principalType)) << "&";
   }
 
   if(m_principalHasBeenSet)
@@ -102,7 +88,7 @@ void AddedPrincipal::OutputToStream(Aws::OStream& oStream, const char* location)
 {
   if(m_principalTypeHasBeenSet)
   {
-      oStream << location << ".PrincipalType=" << PrincipalTypeMapper::GetNameForPrincipalType(m_principalType) << "&";
+      oStream << location << ".PrincipalType=" << StringUtils::URLEncode(PrincipalTypeMapper::GetNameForPrincipalType(m_principalType)) << "&";
   }
   if(m_principalHasBeenSet)
   {

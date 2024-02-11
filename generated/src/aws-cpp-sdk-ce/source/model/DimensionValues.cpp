@@ -18,19 +18,7 @@ namespace CostExplorer
 namespace Model
 {
 
-DimensionValues::DimensionValues() : 
-    m_key(Dimension::NOT_SET),
-    m_keyHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_matchOptionsHasBeenSet(false)
-{
-}
-
-DimensionValues::DimensionValues(JsonView jsonValue) : 
-    m_key(Dimension::NOT_SET),
-    m_keyHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_matchOptionsHasBeenSet(false)
+DimensionValues::DimensionValues(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ DimensionValues& DimensionValues::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Key"))
   {
     m_key = DimensionMapper::GetDimensionForName(jsonValue.GetString("Key"));
-
     m_keyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("Values");
@@ -53,7 +39,6 @@ DimensionValues& DimensionValues::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MatchOptions"))
   {
     Aws::Utils::Array<JsonView> matchOptionsJsonList = jsonValue.GetArray("MatchOptions");
@@ -63,7 +48,6 @@ DimensionValues& DimensionValues::operator =(JsonView jsonValue)
     }
     m_matchOptionsHasBeenSet = true;
   }
-
   return *this;
 }
 

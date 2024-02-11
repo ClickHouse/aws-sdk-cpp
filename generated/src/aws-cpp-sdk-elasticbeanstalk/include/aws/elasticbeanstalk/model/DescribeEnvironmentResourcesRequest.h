@@ -25,7 +25,7 @@ namespace Model
   class DescribeEnvironmentResourcesRequest : public ElasticBeanstalkRequest
   {
   public:
-    AWS_ELASTICBEANSTALK_API DescribeEnvironmentResourcesRequest();
+    AWS_ELASTICBEANSTALK_API DescribeEnvironmentResourcesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,135 +40,35 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The ID of the environment to retrieve AWS resource usage data.</p> <p>
      * Condition: You must specify either this or an EnvironmentName, or both. If you
      * do not specify either, AWS Elastic Beanstalk returns
      * <code>MissingRequiredParameter</code> error. </p>
      */
-    inline const Aws::String& GetEnvironmentId() const{ return m_environmentId; }
-
-    /**
-     * <p>The ID of the environment to retrieve AWS resource usage data.</p> <p>
-     * Condition: You must specify either this or an EnvironmentName, or both. If you
-     * do not specify either, AWS Elastic Beanstalk returns
-     * <code>MissingRequiredParameter</code> error. </p>
-     */
+    inline const Aws::String& GetEnvironmentId() const { return m_environmentId; }
     inline bool EnvironmentIdHasBeenSet() const { return m_environmentIdHasBeenSet; }
+    template<typename EnvironmentIdT = Aws::String>
+    void SetEnvironmentId(EnvironmentIdT&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::forward<EnvironmentIdT>(value); }
+    template<typename EnvironmentIdT = Aws::String>
+    DescribeEnvironmentResourcesRequest& WithEnvironmentId(EnvironmentIdT&& value) { SetEnvironmentId(std::forward<EnvironmentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the environment to retrieve AWS resource usage data.</p> <p>
-     * Condition: You must specify either this or an EnvironmentName, or both. If you
-     * do not specify either, AWS Elastic Beanstalk returns
-     * <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline void SetEnvironmentId(const Aws::String& value) { m_environmentIdHasBeenSet = true; m_environmentId = value; }
-
-    /**
-     * <p>The ID of the environment to retrieve AWS resource usage data.</p> <p>
-     * Condition: You must specify either this or an EnvironmentName, or both. If you
-     * do not specify either, AWS Elastic Beanstalk returns
-     * <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline void SetEnvironmentId(Aws::String&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::move(value); }
-
-    /**
-     * <p>The ID of the environment to retrieve AWS resource usage data.</p> <p>
-     * Condition: You must specify either this or an EnvironmentName, or both. If you
-     * do not specify either, AWS Elastic Beanstalk returns
-     * <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline void SetEnvironmentId(const char* value) { m_environmentIdHasBeenSet = true; m_environmentId.assign(value); }
-
-    /**
-     * <p>The ID of the environment to retrieve AWS resource usage data.</p> <p>
-     * Condition: You must specify either this or an EnvironmentName, or both. If you
-     * do not specify either, AWS Elastic Beanstalk returns
-     * <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline DescribeEnvironmentResourcesRequest& WithEnvironmentId(const Aws::String& value) { SetEnvironmentId(value); return *this;}
-
-    /**
-     * <p>The ID of the environment to retrieve AWS resource usage data.</p> <p>
-     * Condition: You must specify either this or an EnvironmentName, or both. If you
-     * do not specify either, AWS Elastic Beanstalk returns
-     * <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline DescribeEnvironmentResourcesRequest& WithEnvironmentId(Aws::String&& value) { SetEnvironmentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the environment to retrieve AWS resource usage data.</p> <p>
-     * Condition: You must specify either this or an EnvironmentName, or both. If you
-     * do not specify either, AWS Elastic Beanstalk returns
-     * <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline DescribeEnvironmentResourcesRequest& WithEnvironmentId(const char* value) { SetEnvironmentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the environment to retrieve AWS resource usage data.</p> <p>
      * Condition: You must specify either this or an EnvironmentId, or both. If you do
      * not specify either, AWS Elastic Beanstalk returns
      * <code>MissingRequiredParameter</code> error. </p>
      */
-    inline const Aws::String& GetEnvironmentName() const{ return m_environmentName; }
-
-    /**
-     * <p>The name of the environment to retrieve AWS resource usage data.</p> <p>
-     * Condition: You must specify either this or an EnvironmentId, or both. If you do
-     * not specify either, AWS Elastic Beanstalk returns
-     * <code>MissingRequiredParameter</code> error. </p>
-     */
+    inline const Aws::String& GetEnvironmentName() const { return m_environmentName; }
     inline bool EnvironmentNameHasBeenSet() const { return m_environmentNameHasBeenSet; }
-
-    /**
-     * <p>The name of the environment to retrieve AWS resource usage data.</p> <p>
-     * Condition: You must specify either this or an EnvironmentId, or both. If you do
-     * not specify either, AWS Elastic Beanstalk returns
-     * <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline void SetEnvironmentName(const Aws::String& value) { m_environmentNameHasBeenSet = true; m_environmentName = value; }
-
-    /**
-     * <p>The name of the environment to retrieve AWS resource usage data.</p> <p>
-     * Condition: You must specify either this or an EnvironmentId, or both. If you do
-     * not specify either, AWS Elastic Beanstalk returns
-     * <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline void SetEnvironmentName(Aws::String&& value) { m_environmentNameHasBeenSet = true; m_environmentName = std::move(value); }
-
-    /**
-     * <p>The name of the environment to retrieve AWS resource usage data.</p> <p>
-     * Condition: You must specify either this or an EnvironmentId, or both. If you do
-     * not specify either, AWS Elastic Beanstalk returns
-     * <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline void SetEnvironmentName(const char* value) { m_environmentNameHasBeenSet = true; m_environmentName.assign(value); }
-
-    /**
-     * <p>The name of the environment to retrieve AWS resource usage data.</p> <p>
-     * Condition: You must specify either this or an EnvironmentId, or both. If you do
-     * not specify either, AWS Elastic Beanstalk returns
-     * <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline DescribeEnvironmentResourcesRequest& WithEnvironmentName(const Aws::String& value) { SetEnvironmentName(value); return *this;}
-
-    /**
-     * <p>The name of the environment to retrieve AWS resource usage data.</p> <p>
-     * Condition: You must specify either this or an EnvironmentId, or both. If you do
-     * not specify either, AWS Elastic Beanstalk returns
-     * <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline DescribeEnvironmentResourcesRequest& WithEnvironmentName(Aws::String&& value) { SetEnvironmentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the environment to retrieve AWS resource usage data.</p> <p>
-     * Condition: You must specify either this or an EnvironmentId, or both. If you do
-     * not specify either, AWS Elastic Beanstalk returns
-     * <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline DescribeEnvironmentResourcesRequest& WithEnvironmentName(const char* value) { SetEnvironmentName(value); return *this;}
-
+    template<typename EnvironmentNameT = Aws::String>
+    void SetEnvironmentName(EnvironmentNameT&& value) { m_environmentNameHasBeenSet = true; m_environmentName = std::forward<EnvironmentNameT>(value); }
+    template<typename EnvironmentNameT = Aws::String>
+    DescribeEnvironmentResourcesRequest& WithEnvironmentName(EnvironmentNameT&& value) { SetEnvironmentName(std::forward<EnvironmentNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_environmentId;

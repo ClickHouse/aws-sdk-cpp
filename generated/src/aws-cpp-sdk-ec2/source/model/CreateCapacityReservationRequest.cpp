@@ -10,34 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateCapacityReservationRequest::CreateCapacityReservationRequest() : 
-    m_clientTokenHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_instancePlatform(CapacityReservationInstancePlatform::NOT_SET),
-    m_instancePlatformHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_availabilityZoneIdHasBeenSet(false),
-    m_tenancy(CapacityReservationTenancy::NOT_SET),
-    m_tenancyHasBeenSet(false),
-    m_instanceCount(0),
-    m_instanceCountHasBeenSet(false),
-    m_ebsOptimized(false),
-    m_ebsOptimizedHasBeenSet(false),
-    m_ephemeralStorage(false),
-    m_ephemeralStorageHasBeenSet(false),
-    m_endDateHasBeenSet(false),
-    m_endDateType(EndDateType::NOT_SET),
-    m_endDateTypeHasBeenSet(false),
-    m_instanceMatchCriteria(InstanceMatchCriteria::NOT_SET),
-    m_instanceMatchCriteriaHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_outpostArnHasBeenSet(false),
-    m_placementGroupArnHasBeenSet(false)
-{
-}
-
 Aws::String CreateCapacityReservationRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -54,7 +26,7 @@ Aws::String CreateCapacityReservationRequest::SerializePayload() const
 
   if(m_instancePlatformHasBeenSet)
   {
-    ss << "InstancePlatform=" << CapacityReservationInstancePlatformMapper::GetNameForCapacityReservationInstancePlatform(m_instancePlatform) << "&";
+    ss << "InstancePlatform=" << StringUtils::URLEncode(CapacityReservationInstancePlatformMapper::GetNameForCapacityReservationInstancePlatform(m_instancePlatform)) << "&";
   }
 
   if(m_availabilityZoneHasBeenSet)
@@ -69,7 +41,7 @@ Aws::String CreateCapacityReservationRequest::SerializePayload() const
 
   if(m_tenancyHasBeenSet)
   {
-    ss << "Tenancy=" << CapacityReservationTenancyMapper::GetNameForCapacityReservationTenancy(m_tenancy) << "&";
+    ss << "Tenancy=" << StringUtils::URLEncode(CapacityReservationTenancyMapper::GetNameForCapacityReservationTenancy(m_tenancy)) << "&";
   }
 
   if(m_instanceCountHasBeenSet)
@@ -94,12 +66,12 @@ Aws::String CreateCapacityReservationRequest::SerializePayload() const
 
   if(m_endDateTypeHasBeenSet)
   {
-    ss << "EndDateType=" << EndDateTypeMapper::GetNameForEndDateType(m_endDateType) << "&";
+    ss << "EndDateType=" << StringUtils::URLEncode(EndDateTypeMapper::GetNameForEndDateType(m_endDateType)) << "&";
   }
 
   if(m_instanceMatchCriteriaHasBeenSet)
   {
-    ss << "InstanceMatchCriteria=" << InstanceMatchCriteriaMapper::GetNameForInstanceMatchCriteria(m_instanceMatchCriteria) << "&";
+    ss << "InstanceMatchCriteria=" << StringUtils::URLEncode(InstanceMatchCriteriaMapper::GetNameForInstanceMatchCriteria(m_instanceMatchCriteria)) << "&";
   }
 
   if(m_tagSpecificationsHasBeenSet)
@@ -125,6 +97,21 @@ Aws::String CreateCapacityReservationRequest::SerializePayload() const
   if(m_placementGroupArnHasBeenSet)
   {
     ss << "PlacementGroupArn=" << StringUtils::URLEncode(m_placementGroupArn.c_str()) << "&";
+  }
+
+  if(m_startDateHasBeenSet)
+  {
+    ss << "StartDate=" << StringUtils::URLEncode(m_startDate.ToGmtString(Aws::Utils::DateFormat::ISO_8601).c_str()) << "&";
+  }
+
+  if(m_commitmentDurationHasBeenSet)
+  {
+    ss << "CommitmentDuration=" << m_commitmentDuration << "&";
+  }
+
+  if(m_deliveryPreferenceHasBeenSet)
+  {
+    ss << "DeliveryPreference=" << StringUtils::URLEncode(CapacityReservationDeliveryPreferenceMapper::GetNameForCapacityReservationDeliveryPreference(m_deliveryPreference)) << "&";
   }
 
   ss << "Version=2016-11-15";

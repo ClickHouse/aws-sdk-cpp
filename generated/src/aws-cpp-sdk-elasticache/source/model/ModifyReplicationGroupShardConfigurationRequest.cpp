@@ -10,18 +10,6 @@
 using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils;
 
-ModifyReplicationGroupShardConfigurationRequest::ModifyReplicationGroupShardConfigurationRequest() : 
-    m_replicationGroupIdHasBeenSet(false),
-    m_nodeGroupCount(0),
-    m_nodeGroupCountHasBeenSet(false),
-    m_applyImmediately(false),
-    m_applyImmediatelyHasBeenSet(false),
-    m_reshardingConfigurationHasBeenSet(false),
-    m_nodeGroupsToRemoveHasBeenSet(false),
-    m_nodeGroupsToRetainHasBeenSet(false)
-{
-}
-
 Aws::String ModifyReplicationGroupShardConfigurationRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -43,33 +31,54 @@ Aws::String ModifyReplicationGroupShardConfigurationRequest::SerializePayload() 
 
   if(m_reshardingConfigurationHasBeenSet)
   {
-    unsigned reshardingConfigurationCount = 1;
-    for(auto& item : m_reshardingConfiguration)
+    if (m_reshardingConfiguration.empty())
     {
-      item.OutputToStream(ss, "ReshardingConfiguration.member.", reshardingConfigurationCount, "");
-      reshardingConfigurationCount++;
+      ss << "ReshardingConfiguration=&";
+    }
+    else
+    {
+      unsigned reshardingConfigurationCount = 1;
+      for(auto& item : m_reshardingConfiguration)
+      {
+        item.OutputToStream(ss, "ReshardingConfiguration.ReshardingConfiguration.", reshardingConfigurationCount, "");
+        reshardingConfigurationCount++;
+      }
     }
   }
 
   if(m_nodeGroupsToRemoveHasBeenSet)
   {
-    unsigned nodeGroupsToRemoveCount = 1;
-    for(auto& item : m_nodeGroupsToRemove)
+    if (m_nodeGroupsToRemove.empty())
     {
-      ss << "NodeGroupsToRemove.member." << nodeGroupsToRemoveCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      nodeGroupsToRemoveCount++;
+      ss << "NodeGroupsToRemove=&";
+    }
+    else
+    {
+      unsigned nodeGroupsToRemoveCount = 1;
+      for(auto& item : m_nodeGroupsToRemove)
+      {
+        ss << "NodeGroupsToRemove.NodeGroupToRemove." << nodeGroupsToRemoveCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        nodeGroupsToRemoveCount++;
+      }
     }
   }
 
   if(m_nodeGroupsToRetainHasBeenSet)
   {
-    unsigned nodeGroupsToRetainCount = 1;
-    for(auto& item : m_nodeGroupsToRetain)
+    if (m_nodeGroupsToRetain.empty())
     {
-      ss << "NodeGroupsToRetain.member." << nodeGroupsToRetainCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      nodeGroupsToRetainCount++;
+      ss << "NodeGroupsToRetain=&";
+    }
+    else
+    {
+      unsigned nodeGroupsToRetainCount = 1;
+      for(auto& item : m_nodeGroupsToRetain)
+      {
+        ss << "NodeGroupsToRetain.NodeGroupToRetain." << nodeGroupsToRetainCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        nodeGroupsToRetainCount++;
+      }
     }
   }
 

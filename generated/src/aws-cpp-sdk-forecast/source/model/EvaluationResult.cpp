@@ -18,15 +18,7 @@ namespace ForecastService
 namespace Model
 {
 
-EvaluationResult::EvaluationResult() : 
-    m_algorithmArnHasBeenSet(false),
-    m_testWindowsHasBeenSet(false)
-{
-}
-
-EvaluationResult::EvaluationResult(JsonView jsonValue) : 
-    m_algorithmArnHasBeenSet(false),
-    m_testWindowsHasBeenSet(false)
+EvaluationResult::EvaluationResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ EvaluationResult& EvaluationResult::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AlgorithmArn"))
   {
     m_algorithmArn = jsonValue.GetString("AlgorithmArn");
-
     m_algorithmArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TestWindows"))
   {
     Aws::Utils::Array<JsonView> testWindowsJsonList = jsonValue.GetArray("TestWindows");
@@ -49,7 +39,6 @@ EvaluationResult& EvaluationResult::operator =(JsonView jsonValue)
     }
     m_testWindowsHasBeenSet = true;
   }
-
   return *this;
 }
 

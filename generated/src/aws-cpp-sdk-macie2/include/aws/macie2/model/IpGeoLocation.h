@@ -30,59 +30,37 @@ namespace Model
   class IpGeoLocation
   {
   public:
-    AWS_MACIE2_API IpGeoLocation();
+    AWS_MACIE2_API IpGeoLocation() = default;
     AWS_MACIE2_API IpGeoLocation(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API IpGeoLocation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The latitude coordinate of the location, rounded to four decimal places.</p>
      */
-    inline double GetLat() const{ return m_lat; }
-
-    /**
-     * <p>The latitude coordinate of the location, rounded to four decimal places.</p>
-     */
+    inline double GetLat() const { return m_lat; }
     inline bool LatHasBeenSet() const { return m_latHasBeenSet; }
-
-    /**
-     * <p>The latitude coordinate of the location, rounded to four decimal places.</p>
-     */
     inline void SetLat(double value) { m_latHasBeenSet = true; m_lat = value; }
-
-    /**
-     * <p>The latitude coordinate of the location, rounded to four decimal places.</p>
-     */
     inline IpGeoLocation& WithLat(double value) { SetLat(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The longitude coordinate of the location, rounded to four decimal places.</p>
      */
-    inline double GetLon() const{ return m_lon; }
-
-    /**
-     * <p>The longitude coordinate of the location, rounded to four decimal places.</p>
-     */
+    inline double GetLon() const { return m_lon; }
     inline bool LonHasBeenSet() const { return m_lonHasBeenSet; }
-
-    /**
-     * <p>The longitude coordinate of the location, rounded to four decimal places.</p>
-     */
     inline void SetLon(double value) { m_lonHasBeenSet = true; m_lon = value; }
-
-    /**
-     * <p>The longitude coordinate of the location, rounded to four decimal places.</p>
-     */
     inline IpGeoLocation& WithLon(double value) { SetLon(value); return *this;}
-
+    ///@}
   private:
 
-    double m_lat;
+    double m_lat{0.0};
     bool m_latHasBeenSet = false;
 
-    double m_lon;
+    double m_lon{0.0};
     bool m_lonHasBeenSet = false;
   };
 

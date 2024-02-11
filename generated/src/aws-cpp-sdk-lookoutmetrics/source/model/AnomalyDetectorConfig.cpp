@@ -18,15 +18,7 @@ namespace LookoutMetrics
 namespace Model
 {
 
-AnomalyDetectorConfig::AnomalyDetectorConfig() : 
-    m_anomalyDetectorFrequency(Frequency::NOT_SET),
-    m_anomalyDetectorFrequencyHasBeenSet(false)
-{
-}
-
-AnomalyDetectorConfig::AnomalyDetectorConfig(JsonView jsonValue) : 
-    m_anomalyDetectorFrequency(Frequency::NOT_SET),
-    m_anomalyDetectorFrequencyHasBeenSet(false)
+AnomalyDetectorConfig::AnomalyDetectorConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AnomalyDetectorConfig& AnomalyDetectorConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AnomalyDetectorFrequency"))
   {
     m_anomalyDetectorFrequency = FrequencyMapper::GetFrequencyForName(jsonValue.GetString("AnomalyDetectorFrequency"));
-
     m_anomalyDetectorFrequencyHasBeenSet = true;
   }
-
   return *this;
 }
 

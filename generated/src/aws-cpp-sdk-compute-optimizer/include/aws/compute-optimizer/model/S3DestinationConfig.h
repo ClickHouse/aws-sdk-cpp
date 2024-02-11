@@ -41,101 +41,36 @@ namespace Model
   class S3DestinationConfig
   {
   public:
-    AWS_COMPUTEOPTIMIZER_API S3DestinationConfig();
+    AWS_COMPUTEOPTIMIZER_API S3DestinationConfig() = default;
     AWS_COMPUTEOPTIMIZER_API S3DestinationConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPUTEOPTIMIZER_API S3DestinationConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPUTEOPTIMIZER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the Amazon S3 bucket to use as the destination for an export
      * job.</p>
      */
-    inline const Aws::String& GetBucket() const{ return m_bucket; }
-
-    /**
-     * <p>The name of the Amazon S3 bucket to use as the destination for an export
-     * job.</p>
-     */
+    inline const Aws::String& GetBucket() const { return m_bucket; }
     inline bool BucketHasBeenSet() const { return m_bucketHasBeenSet; }
+    template<typename BucketT = Aws::String>
+    void SetBucket(BucketT&& value) { m_bucketHasBeenSet = true; m_bucket = std::forward<BucketT>(value); }
+    template<typename BucketT = Aws::String>
+    S3DestinationConfig& WithBucket(BucketT&& value) { SetBucket(std::forward<BucketT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Amazon S3 bucket to use as the destination for an export
-     * job.</p>
-     */
-    inline void SetBucket(const Aws::String& value) { m_bucketHasBeenSet = true; m_bucket = value; }
-
-    /**
-     * <p>The name of the Amazon S3 bucket to use as the destination for an export
-     * job.</p>
-     */
-    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon S3 bucket to use as the destination for an export
-     * job.</p>
-     */
-    inline void SetBucket(const char* value) { m_bucketHasBeenSet = true; m_bucket.assign(value); }
-
-    /**
-     * <p>The name of the Amazon S3 bucket to use as the destination for an export
-     * job.</p>
-     */
-    inline S3DestinationConfig& WithBucket(const Aws::String& value) { SetBucket(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon S3 bucket to use as the destination for an export
-     * job.</p>
-     */
-    inline S3DestinationConfig& WithBucket(Aws::String&& value) { SetBucket(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon S3 bucket to use as the destination for an export
-     * job.</p>
-     */
-    inline S3DestinationConfig& WithBucket(const char* value) { SetBucket(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon S3 bucket prefix for an export job.</p>
      */
-    inline const Aws::String& GetKeyPrefix() const{ return m_keyPrefix; }
-
-    /**
-     * <p>The Amazon S3 bucket prefix for an export job.</p>
-     */
+    inline const Aws::String& GetKeyPrefix() const { return m_keyPrefix; }
     inline bool KeyPrefixHasBeenSet() const { return m_keyPrefixHasBeenSet; }
-
-    /**
-     * <p>The Amazon S3 bucket prefix for an export job.</p>
-     */
-    inline void SetKeyPrefix(const Aws::String& value) { m_keyPrefixHasBeenSet = true; m_keyPrefix = value; }
-
-    /**
-     * <p>The Amazon S3 bucket prefix for an export job.</p>
-     */
-    inline void SetKeyPrefix(Aws::String&& value) { m_keyPrefixHasBeenSet = true; m_keyPrefix = std::move(value); }
-
-    /**
-     * <p>The Amazon S3 bucket prefix for an export job.</p>
-     */
-    inline void SetKeyPrefix(const char* value) { m_keyPrefixHasBeenSet = true; m_keyPrefix.assign(value); }
-
-    /**
-     * <p>The Amazon S3 bucket prefix for an export job.</p>
-     */
-    inline S3DestinationConfig& WithKeyPrefix(const Aws::String& value) { SetKeyPrefix(value); return *this;}
-
-    /**
-     * <p>The Amazon S3 bucket prefix for an export job.</p>
-     */
-    inline S3DestinationConfig& WithKeyPrefix(Aws::String&& value) { SetKeyPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon S3 bucket prefix for an export job.</p>
-     */
-    inline S3DestinationConfig& WithKeyPrefix(const char* value) { SetKeyPrefix(value); return *this;}
-
+    template<typename KeyPrefixT = Aws::String>
+    void SetKeyPrefix(KeyPrefixT&& value) { m_keyPrefixHasBeenSet = true; m_keyPrefix = std::forward<KeyPrefixT>(value); }
+    template<typename KeyPrefixT = Aws::String>
+    S3DestinationConfig& WithKeyPrefix(KeyPrefixT&& value) { SetKeyPrefix(std::forward<KeyPrefixT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucket;

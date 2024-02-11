@@ -18,19 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-MetricData::MetricData() : 
-    m_metricNameHasBeenSet(false),
-    m_value(0.0),
-    m_valueHasBeenSet(false),
-    m_timestampHasBeenSet(false)
-{
-}
-
-MetricData::MetricData(JsonView jsonValue) : 
-    m_metricNameHasBeenSet(false),
-    m_value(0.0),
-    m_valueHasBeenSet(false),
-    m_timestampHasBeenSet(false)
+MetricData::MetricData(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ MetricData& MetricData::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MetricName"))
   {
     m_metricName = jsonValue.GetString("MetricName");
-
     m_metricNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetDouble("Value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Timestamp"))
   {
     m_timestamp = jsonValue.GetDouble("Timestamp");
-
     m_timestampHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -12,13 +12,6 @@ using namespace Aws::DirectConnect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDirectConnectGatewayRequest::CreateDirectConnectGatewayRequest() : 
-    m_directConnectGatewayNameHasBeenSet(false),
-    m_amazonSideAsn(0),
-    m_amazonSideAsnHasBeenSet(false)
-{
-}
-
 Aws::String CreateDirectConnectGatewayRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -26,6 +19,17 @@ Aws::String CreateDirectConnectGatewayRequest::SerializePayload() const
   if(m_directConnectGatewayNameHasBeenSet)
   {
    payload.WithString("directConnectGatewayName", m_directConnectGatewayName);
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> tagsJsonList(m_tags.size());
+   for(unsigned tagsIndex = 0; tagsIndex < tagsJsonList.GetLength(); ++tagsIndex)
+   {
+     tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
+   }
+   payload.WithArray("tags", std::move(tagsJsonList));
 
   }
 

@@ -18,21 +18,7 @@ namespace EKS
 namespace Model
 {
 
-InvalidParameterException::InvalidParameterException() : 
-    m_clusterNameHasBeenSet(false),
-    m_nodegroupNameHasBeenSet(false),
-    m_fargateProfileNameHasBeenSet(false),
-    m_addonNameHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-InvalidParameterException::InvalidParameterException(JsonView jsonValue) : 
-    m_clusterNameHasBeenSet(false),
-    m_nodegroupNameHasBeenSet(false),
-    m_fargateProfileNameHasBeenSet(false),
-    m_addonNameHasBeenSet(false),
-    m_messageHasBeenSet(false)
+InvalidParameterException::InvalidParameterException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,38 +28,33 @@ InvalidParameterException& InvalidParameterException::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("clusterName"))
   {
     m_clusterName = jsonValue.GetString("clusterName");
-
     m_clusterNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("nodegroupName"))
   {
     m_nodegroupName = jsonValue.GetString("nodegroupName");
-
     m_nodegroupNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("fargateProfileName"))
   {
     m_fargateProfileName = jsonValue.GetString("fargateProfileName");
-
     m_fargateProfileNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("addonName"))
   {
     m_addonName = jsonValue.GetString("addonName");
-
     m_addonNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("subscriptionId"))
+  {
+    m_subscriptionId = jsonValue.GetString("subscriptionId");
+    m_subscriptionIdHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -102,6 +83,12 @@ JsonValue InvalidParameterException::Jsonize() const
   if(m_addonNameHasBeenSet)
   {
    payload.WithString("addonName", m_addonName);
+
+  }
+
+  if(m_subscriptionIdHasBeenSet)
+  {
+   payload.WithString("subscriptionId", m_subscriptionId);
 
   }
 

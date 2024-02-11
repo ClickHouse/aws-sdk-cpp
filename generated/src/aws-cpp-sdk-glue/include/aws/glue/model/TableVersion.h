@@ -32,91 +32,36 @@ namespace Model
   class TableVersion
   {
   public:
-    AWS_GLUE_API TableVersion();
+    AWS_GLUE_API TableVersion() = default;
     AWS_GLUE_API TableVersion(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API TableVersion& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The table in question.</p>
      */
-    inline const Table& GetTable() const{ return m_table; }
-
-    /**
-     * <p>The table in question.</p>
-     */
+    inline const Table& GetTable() const { return m_table; }
     inline bool TableHasBeenSet() const { return m_tableHasBeenSet; }
+    template<typename TableT = Table>
+    void SetTable(TableT&& value) { m_tableHasBeenSet = true; m_table = std::forward<TableT>(value); }
+    template<typename TableT = Table>
+    TableVersion& WithTable(TableT&& value) { SetTable(std::forward<TableT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The table in question.</p>
-     */
-    inline void SetTable(const Table& value) { m_tableHasBeenSet = true; m_table = value; }
-
-    /**
-     * <p>The table in question.</p>
-     */
-    inline void SetTable(Table&& value) { m_tableHasBeenSet = true; m_table = std::move(value); }
-
-    /**
-     * <p>The table in question.</p>
-     */
-    inline TableVersion& WithTable(const Table& value) { SetTable(value); return *this;}
-
-    /**
-     * <p>The table in question.</p>
-     */
-    inline TableVersion& WithTable(Table&& value) { SetTable(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID value that identifies this table version. A <code>VersionId</code> is
      * a string representation of an integer. Each version is incremented by 1.</p>
      */
-    inline const Aws::String& GetVersionId() const{ return m_versionId; }
-
-    /**
-     * <p>The ID value that identifies this table version. A <code>VersionId</code> is
-     * a string representation of an integer. Each version is incremented by 1.</p>
-     */
+    inline const Aws::String& GetVersionId() const { return m_versionId; }
     inline bool VersionIdHasBeenSet() const { return m_versionIdHasBeenSet; }
-
-    /**
-     * <p>The ID value that identifies this table version. A <code>VersionId</code> is
-     * a string representation of an integer. Each version is incremented by 1.</p>
-     */
-    inline void SetVersionId(const Aws::String& value) { m_versionIdHasBeenSet = true; m_versionId = value; }
-
-    /**
-     * <p>The ID value that identifies this table version. A <code>VersionId</code> is
-     * a string representation of an integer. Each version is incremented by 1.</p>
-     */
-    inline void SetVersionId(Aws::String&& value) { m_versionIdHasBeenSet = true; m_versionId = std::move(value); }
-
-    /**
-     * <p>The ID value that identifies this table version. A <code>VersionId</code> is
-     * a string representation of an integer. Each version is incremented by 1.</p>
-     */
-    inline void SetVersionId(const char* value) { m_versionIdHasBeenSet = true; m_versionId.assign(value); }
-
-    /**
-     * <p>The ID value that identifies this table version. A <code>VersionId</code> is
-     * a string representation of an integer. Each version is incremented by 1.</p>
-     */
-    inline TableVersion& WithVersionId(const Aws::String& value) { SetVersionId(value); return *this;}
-
-    /**
-     * <p>The ID value that identifies this table version. A <code>VersionId</code> is
-     * a string representation of an integer. Each version is incremented by 1.</p>
-     */
-    inline TableVersion& WithVersionId(Aws::String&& value) { SetVersionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID value that identifies this table version. A <code>VersionId</code> is
-     * a string representation of an integer. Each version is incremented by 1.</p>
-     */
-    inline TableVersion& WithVersionId(const char* value) { SetVersionId(value); return *this;}
-
+    template<typename VersionIdT = Aws::String>
+    void SetVersionId(VersionIdT&& value) { m_versionIdHasBeenSet = true; m_versionId = std::forward<VersionIdT>(value); }
+    template<typename VersionIdT = Aws::String>
+    TableVersion& WithVersionId(VersionIdT&& value) { SetVersionId(std::forward<VersionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Table m_table;

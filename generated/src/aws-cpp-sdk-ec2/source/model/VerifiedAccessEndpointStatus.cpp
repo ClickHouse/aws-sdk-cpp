@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-VerifiedAccessEndpointStatus::VerifiedAccessEndpointStatus() : 
-    m_code(VerifiedAccessEndpointStatusCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-VerifiedAccessEndpointStatus::VerifiedAccessEndpointStatus(const XmlNode& xmlNode) : 
-    m_code(VerifiedAccessEndpointStatusCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+VerifiedAccessEndpointStatus::VerifiedAccessEndpointStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ VerifiedAccessEndpointStatus& VerifiedAccessEndpointStatus::operator =(const Xml
     XmlNode codeNode = resultNode.FirstChild("code");
     if(!codeNode.IsNull())
     {
-      m_code = VerifiedAccessEndpointStatusCodeMapper::GetVerifiedAccessEndpointStatusCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()).c_str());
+      m_code = VerifiedAccessEndpointStatusCodeMapper::GetVerifiedAccessEndpointStatusCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()));
       m_codeHasBeenSet = true;
     }
     XmlNode messageNode = resultNode.FirstChild("message");
@@ -62,7 +52,7 @@ void VerifiedAccessEndpointStatus::OutputToStream(Aws::OStream& oStream, const c
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Code=" << VerifiedAccessEndpointStatusCodeMapper::GetNameForVerifiedAccessEndpointStatusCode(m_code) << "&";
+      oStream << location << index << locationValue << ".Code=" << StringUtils::URLEncode(VerifiedAccessEndpointStatusCodeMapper::GetNameForVerifiedAccessEndpointStatusCode(m_code)) << "&";
   }
 
   if(m_messageHasBeenSet)
@@ -76,7 +66,7 @@ void VerifiedAccessEndpointStatus::OutputToStream(Aws::OStream& oStream, const c
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << ".Code=" << VerifiedAccessEndpointStatusCodeMapper::GetNameForVerifiedAccessEndpointStatusCode(m_code) << "&";
+      oStream << location << ".Code=" << StringUtils::URLEncode(VerifiedAccessEndpointStatusCodeMapper::GetNameForVerifiedAccessEndpointStatusCode(m_code)) << "&";
   }
   if(m_messageHasBeenSet)
   {

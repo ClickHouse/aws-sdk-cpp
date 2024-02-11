@@ -16,36 +16,44 @@ namespace Aws
 namespace ConnectContactLens
 {
   /**
-   * <p>Contact Lens for Amazon Connect enables you to analyze conversations between
-   * customer and agents, by using speech transcription, natural language processing,
-   * and intelligent search capabilities. It performs sentiment analysis, detects
-   * issues, and enables you to automatically categorize contacts.</p> <p>Contact
-   * Lens for Amazon Connect provides both real-time and post-call analytics of
-   * customer-agent conversations. For more information, see <a
+   * <ul> <li> <p> <a
+   * href="https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Contact_Lens.html">Contact
+   * Lens actions</a> </p> </li> <li> <p> <a
+   * href="https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Contact_Lens.html">Contact
+   * Lens data types</a> </p> </li> </ul> <p>Amazon Connect Contact Lens enables you
+   * to analyze conversations between customer and agents, by using speech
+   * transcription, natural language processing, and intelligent search capabilities.
+   * It performs sentiment analysis, detects issues, and enables you to automatically
+   * categorize contacts.</p> <p>Amazon Connect Contact Lens provides both real-time
+   * and post-call analytics of customer-agent conversations. For more information,
+   * see <a
    * href="https://docs.aws.amazon.com/connect/latest/adminguide/analyze-conversations.html">Analyze
-   * conversations using Contact Lens</a> in the <i>Amazon Connect Administrator
+   * conversations using speech analytics</a> in the <i>Amazon Connect Administrator
    * Guide</i>. </p>
    */
   class AWS_CONNECTCONTACTLENS_API ConnectContactLensClient : public Aws::Client::AWSJsonClient, public Aws::Client::ClientWithAsyncTemplateMethods<ConnectContactLensClient>
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef ConnectContactLensClientConfiguration ClientConfigurationType;
+      typedef ConnectContactLensEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         ConnectContactLensClient(const Aws::ConnectContactLens::ConnectContactLensClientConfiguration& clientConfiguration = Aws::ConnectContactLens::ConnectContactLensClientConfiguration(),
-                                 std::shared_ptr<ConnectContactLensEndpointProviderBase> endpointProvider = Aws::MakeShared<ConnectContactLensEndpointProvider>(ALLOCATION_TAG));
+                                 std::shared_ptr<ConnectContactLensEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         ConnectContactLensClient(const Aws::Auth::AWSCredentials& credentials,
-                                 std::shared_ptr<ConnectContactLensEndpointProviderBase> endpointProvider = Aws::MakeShared<ConnectContactLensEndpointProvider>(ALLOCATION_TAG),
+                                 std::shared_ptr<ConnectContactLensEndpointProviderBase> endpointProvider = nullptr,
                                  const Aws::ConnectContactLens::ConnectContactLensClientConfiguration& clientConfiguration = Aws::ConnectContactLens::ConnectContactLensClientConfiguration());
 
        /**
@@ -53,7 +61,7 @@ namespace ConnectContactLens
         * the default http client factory will be used
         */
         ConnectContactLensClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                                 std::shared_ptr<ConnectContactLensEndpointProviderBase> endpointProvider = Aws::MakeShared<ConnectContactLensEndpointProvider>(ALLOCATION_TAG),
+                                 std::shared_ptr<ConnectContactLensEndpointProviderBase> endpointProvider = nullptr,
                                  const Aws::ConnectContactLens::ConnectContactLensClientConfiguration& clientConfiguration = Aws::ConnectContactLens::ConnectContactLensClientConfiguration());
 
 
@@ -115,7 +123,6 @@ namespace ConnectContactLens
       void init(const ConnectContactLensClientConfiguration& clientConfiguration);
 
       ConnectContactLensClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<ConnectContactLensEndpointProviderBase> m_endpointProvider;
   };
 

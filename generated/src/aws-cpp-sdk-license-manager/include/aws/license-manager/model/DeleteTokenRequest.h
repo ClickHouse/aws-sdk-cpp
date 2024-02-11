@@ -21,7 +21,7 @@ namespace Model
   class DeleteTokenRequest : public LicenseManagerRequest
   {
   public:
-    AWS_LICENSEMANAGER_API DeleteTokenRequest();
+    AWS_LICENSEMANAGER_API DeleteTokenRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_LICENSEMANAGER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Token ID.</p>
      */
-    inline const Aws::String& GetTokenId() const{ return m_tokenId; }
-
-    /**
-     * <p>Token ID.</p>
-     */
+    inline const Aws::String& GetTokenId() const { return m_tokenId; }
     inline bool TokenIdHasBeenSet() const { return m_tokenIdHasBeenSet; }
-
-    /**
-     * <p>Token ID.</p>
-     */
-    inline void SetTokenId(const Aws::String& value) { m_tokenIdHasBeenSet = true; m_tokenId = value; }
-
-    /**
-     * <p>Token ID.</p>
-     */
-    inline void SetTokenId(Aws::String&& value) { m_tokenIdHasBeenSet = true; m_tokenId = std::move(value); }
-
-    /**
-     * <p>Token ID.</p>
-     */
-    inline void SetTokenId(const char* value) { m_tokenIdHasBeenSet = true; m_tokenId.assign(value); }
-
-    /**
-     * <p>Token ID.</p>
-     */
-    inline DeleteTokenRequest& WithTokenId(const Aws::String& value) { SetTokenId(value); return *this;}
-
-    /**
-     * <p>Token ID.</p>
-     */
-    inline DeleteTokenRequest& WithTokenId(Aws::String&& value) { SetTokenId(std::move(value)); return *this;}
-
-    /**
-     * <p>Token ID.</p>
-     */
-    inline DeleteTokenRequest& WithTokenId(const char* value) { SetTokenId(value); return *this;}
-
+    template<typename TokenIdT = Aws::String>
+    void SetTokenId(TokenIdT&& value) { m_tokenIdHasBeenSet = true; m_tokenId = std::forward<TokenIdT>(value); }
+    template<typename TokenIdT = Aws::String>
+    DeleteTokenRequest& WithTokenId(TokenIdT&& value) { SetTokenId(std::forward<TokenIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_tokenId;

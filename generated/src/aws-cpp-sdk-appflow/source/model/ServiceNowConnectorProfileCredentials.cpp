@@ -18,15 +18,7 @@ namespace Appflow
 namespace Model
 {
 
-ServiceNowConnectorProfileCredentials::ServiceNowConnectorProfileCredentials() : 
-    m_usernameHasBeenSet(false),
-    m_passwordHasBeenSet(false)
-{
-}
-
-ServiceNowConnectorProfileCredentials::ServiceNowConnectorProfileCredentials(JsonView jsonValue) : 
-    m_usernameHasBeenSet(false),
-    m_passwordHasBeenSet(false)
+ServiceNowConnectorProfileCredentials::ServiceNowConnectorProfileCredentials(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ ServiceNowConnectorProfileCredentials& ServiceNowConnectorProfileCredentials::op
   if(jsonValue.ValueExists("username"))
   {
     m_username = jsonValue.GetString("username");
-
     m_usernameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("password"))
   {
     m_password = jsonValue.GetString("password");
-
     m_passwordHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("oAuth2Credentials"))
+  {
+    m_oAuth2Credentials = jsonValue.GetObject("oAuth2Credentials");
+    m_oAuth2CredentialsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +56,12 @@ JsonValue ServiceNowConnectorProfileCredentials::Jsonize() const
   if(m_passwordHasBeenSet)
   {
    payload.WithString("password", m_password);
+
+  }
+
+  if(m_oAuth2CredentialsHasBeenSet)
+  {
+   payload.WithObject("oAuth2Credentials", m_oAuth2Credentials.Jsonize());
 
   }
 

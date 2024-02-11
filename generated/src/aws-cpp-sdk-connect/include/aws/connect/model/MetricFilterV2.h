@@ -36,178 +36,73 @@ namespace Model
   class MetricFilterV2
   {
   public:
-    AWS_CONNECT_API MetricFilterV2();
+    AWS_CONNECT_API MetricFilterV2() = default;
     AWS_CONNECT_API MetricFilterV2(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API MetricFilterV2& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The key to use for filtering data. </p> <p>Valid metric filter keys:
-     * <code>INITIATION_METHOD</code>, <code>DISCONNECT_REASON</code> </p>
+     * <p>The key to use for filtering data. </p> <p>Valid metric filter keys: </p>
+     * <ul> <li> <p>ANSWERING_MACHINE_DETECTION_STATUS</p> </li> <li>
+     * <p>CASE_STATUS</p> </li> <li> <p>DISCONNECT_REASON</p> </li> <li>
+     * <p>FLOWS_ACTION_IDENTIFIER</p> </li> <li> <p>FLOWS_NEXT_ACTION_IDENTIFIER</p>
+     * </li> <li> <p>FLOWS_OUTCOME_TYPE</p> </li> <li> <p>FLOWS_RESOURCE_TYPE</p> </li>
+     * <li> <p>INITIATION_METHOD</p> </li> </ul>
      */
-    inline const Aws::String& GetMetricFilterKey() const{ return m_metricFilterKey; }
-
-    /**
-     * <p>The key to use for filtering data. </p> <p>Valid metric filter keys:
-     * <code>INITIATION_METHOD</code>, <code>DISCONNECT_REASON</code> </p>
-     */
+    inline const Aws::String& GetMetricFilterKey() const { return m_metricFilterKey; }
     inline bool MetricFilterKeyHasBeenSet() const { return m_metricFilterKeyHasBeenSet; }
+    template<typename MetricFilterKeyT = Aws::String>
+    void SetMetricFilterKey(MetricFilterKeyT&& value) { m_metricFilterKeyHasBeenSet = true; m_metricFilterKey = std::forward<MetricFilterKeyT>(value); }
+    template<typename MetricFilterKeyT = Aws::String>
+    MetricFilterV2& WithMetricFilterKey(MetricFilterKeyT&& value) { SetMetricFilterKey(std::forward<MetricFilterKeyT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The key to use for filtering data. </p> <p>Valid metric filter keys:
-     * <code>INITIATION_METHOD</code>, <code>DISCONNECT_REASON</code> </p>
+     * <p>The values to use for filtering data. Values for metric-level filters can be
+     * either a fixed set of values or a customized list, depending on the use
+     * case.</p> <p>For valid values of metric-level filters
+     * <code>INITIATION_METHOD</code>, <code>DISCONNECT_REASON</code>, and
+     * <code>ANSWERING_MACHINE_DETECTION_STATUS</code>, see <a
+     * href="https://docs.aws.amazon.com/connect/latest/adminguide/ctr-data-model.html#ctr-ContactTraceRecord">ContactTraceRecord</a>
+     * in the <i>Amazon Connect Administrator Guide</i>. </p> <p>For valid values of
+     * the metric-level filter <code>FLOWS_OUTCOME_TYPE</code>, see the description for
+     * the <a
+     * href="https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#flows-outcome">Flow
+     * outcome</a> metric in the <i>Amazon Connect Administrator Guide</i>.</p> <p>For
+     * valid values of the metric-level filter
+     * <code>BOT_CONVERSATION_OUTCOME_TYPE</code>, see the description for the <a
+     * href="https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#bot-conversations-completed-metric">Bot
+     * conversations completed</a> in the <i>Amazon Connect Administrator
+     * Guide</i>.</p> <p>For valid values of the metric-level filter
+     * <code>BOT_INTENT_OUTCOME_TYPE</code>, see the description for the <a
+     * href="https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#bot-intents-completed-metric">Bot
+     * intents completed</a> metric in the <i>Amazon Connect Administrator
+     * Guide</i>.</p>
      */
-    inline void SetMetricFilterKey(const Aws::String& value) { m_metricFilterKeyHasBeenSet = true; m_metricFilterKey = value; }
-
-    /**
-     * <p>The key to use for filtering data. </p> <p>Valid metric filter keys:
-     * <code>INITIATION_METHOD</code>, <code>DISCONNECT_REASON</code> </p>
-     */
-    inline void SetMetricFilterKey(Aws::String&& value) { m_metricFilterKeyHasBeenSet = true; m_metricFilterKey = std::move(value); }
-
-    /**
-     * <p>The key to use for filtering data. </p> <p>Valid metric filter keys:
-     * <code>INITIATION_METHOD</code>, <code>DISCONNECT_REASON</code> </p>
-     */
-    inline void SetMetricFilterKey(const char* value) { m_metricFilterKeyHasBeenSet = true; m_metricFilterKey.assign(value); }
-
-    /**
-     * <p>The key to use for filtering data. </p> <p>Valid metric filter keys:
-     * <code>INITIATION_METHOD</code>, <code>DISCONNECT_REASON</code> </p>
-     */
-    inline MetricFilterV2& WithMetricFilterKey(const Aws::String& value) { SetMetricFilterKey(value); return *this;}
-
-    /**
-     * <p>The key to use for filtering data. </p> <p>Valid metric filter keys:
-     * <code>INITIATION_METHOD</code>, <code>DISCONNECT_REASON</code> </p>
-     */
-    inline MetricFilterV2& WithMetricFilterKey(Aws::String&& value) { SetMetricFilterKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The key to use for filtering data. </p> <p>Valid metric filter keys:
-     * <code>INITIATION_METHOD</code>, <code>DISCONNECT_REASON</code> </p>
-     */
-    inline MetricFilterV2& WithMetricFilterKey(const char* value) { SetMetricFilterKey(value); return *this;}
-
-
-    /**
-     * <p>The values to use for filtering data. </p> <p>Valid metric filter values for
-     * <code>INITIATION_METHOD</code>: <code>INBOUND</code> | <code>OUTBOUND</code> |
-     * <code>TRANSFER</code> | <code>QUEUE_TRANSFER</code> | <code>CALLBACK</code> |
-     * <code>API</code> </p> <p>Valid metric filter values for
-     * <code>DISCONNECT_REASON</code>: <code>CUSTOMER_DISCONNECT</code> |
-     * <code>AGENT_DISCONNECT</code> | <code>THIRD_PARTY_DISCONNECT</code> |
-     * <code>TELECOM_PROBLEM</code> | <code>BARGED</code> |
-     * <code>CONTACT_FLOW_DISCONNECT</code> | <code>OTHER</code> | <code>EXPIRED</code>
-     * | <code>API</code> </p>
-     */
-    inline const Aws::Vector<Aws::String>& GetMetricFilterValues() const{ return m_metricFilterValues; }
-
-    /**
-     * <p>The values to use for filtering data. </p> <p>Valid metric filter values for
-     * <code>INITIATION_METHOD</code>: <code>INBOUND</code> | <code>OUTBOUND</code> |
-     * <code>TRANSFER</code> | <code>QUEUE_TRANSFER</code> | <code>CALLBACK</code> |
-     * <code>API</code> </p> <p>Valid metric filter values for
-     * <code>DISCONNECT_REASON</code>: <code>CUSTOMER_DISCONNECT</code> |
-     * <code>AGENT_DISCONNECT</code> | <code>THIRD_PARTY_DISCONNECT</code> |
-     * <code>TELECOM_PROBLEM</code> | <code>BARGED</code> |
-     * <code>CONTACT_FLOW_DISCONNECT</code> | <code>OTHER</code> | <code>EXPIRED</code>
-     * | <code>API</code> </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetMetricFilterValues() const { return m_metricFilterValues; }
     inline bool MetricFilterValuesHasBeenSet() const { return m_metricFilterValuesHasBeenSet; }
+    template<typename MetricFilterValuesT = Aws::Vector<Aws::String>>
+    void SetMetricFilterValues(MetricFilterValuesT&& value) { m_metricFilterValuesHasBeenSet = true; m_metricFilterValues = std::forward<MetricFilterValuesT>(value); }
+    template<typename MetricFilterValuesT = Aws::Vector<Aws::String>>
+    MetricFilterV2& WithMetricFilterValues(MetricFilterValuesT&& value) { SetMetricFilterValues(std::forward<MetricFilterValuesT>(value)); return *this;}
+    template<typename MetricFilterValuesT = Aws::String>
+    MetricFilterV2& AddMetricFilterValues(MetricFilterValuesT&& value) { m_metricFilterValuesHasBeenSet = true; m_metricFilterValues.emplace_back(std::forward<MetricFilterValuesT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The values to use for filtering data. </p> <p>Valid metric filter values for
-     * <code>INITIATION_METHOD</code>: <code>INBOUND</code> | <code>OUTBOUND</code> |
-     * <code>TRANSFER</code> | <code>QUEUE_TRANSFER</code> | <code>CALLBACK</code> |
-     * <code>API</code> </p> <p>Valid metric filter values for
-     * <code>DISCONNECT_REASON</code>: <code>CUSTOMER_DISCONNECT</code> |
-     * <code>AGENT_DISCONNECT</code> | <code>THIRD_PARTY_DISCONNECT</code> |
-     * <code>TELECOM_PROBLEM</code> | <code>BARGED</code> |
-     * <code>CONTACT_FLOW_DISCONNECT</code> | <code>OTHER</code> | <code>EXPIRED</code>
-     * | <code>API</code> </p>
+     * <p>If set to <code>true</code>, the API response contains results that filter
+     * out the results matched by the metric-level filters condition. By default,
+     * <code>Negate</code> is set to <code>false</code>. </p>
      */
-    inline void SetMetricFilterValues(const Aws::Vector<Aws::String>& value) { m_metricFilterValuesHasBeenSet = true; m_metricFilterValues = value; }
-
-    /**
-     * <p>The values to use for filtering data. </p> <p>Valid metric filter values for
-     * <code>INITIATION_METHOD</code>: <code>INBOUND</code> | <code>OUTBOUND</code> |
-     * <code>TRANSFER</code> | <code>QUEUE_TRANSFER</code> | <code>CALLBACK</code> |
-     * <code>API</code> </p> <p>Valid metric filter values for
-     * <code>DISCONNECT_REASON</code>: <code>CUSTOMER_DISCONNECT</code> |
-     * <code>AGENT_DISCONNECT</code> | <code>THIRD_PARTY_DISCONNECT</code> |
-     * <code>TELECOM_PROBLEM</code> | <code>BARGED</code> |
-     * <code>CONTACT_FLOW_DISCONNECT</code> | <code>OTHER</code> | <code>EXPIRED</code>
-     * | <code>API</code> </p>
-     */
-    inline void SetMetricFilterValues(Aws::Vector<Aws::String>&& value) { m_metricFilterValuesHasBeenSet = true; m_metricFilterValues = std::move(value); }
-
-    /**
-     * <p>The values to use for filtering data. </p> <p>Valid metric filter values for
-     * <code>INITIATION_METHOD</code>: <code>INBOUND</code> | <code>OUTBOUND</code> |
-     * <code>TRANSFER</code> | <code>QUEUE_TRANSFER</code> | <code>CALLBACK</code> |
-     * <code>API</code> </p> <p>Valid metric filter values for
-     * <code>DISCONNECT_REASON</code>: <code>CUSTOMER_DISCONNECT</code> |
-     * <code>AGENT_DISCONNECT</code> | <code>THIRD_PARTY_DISCONNECT</code> |
-     * <code>TELECOM_PROBLEM</code> | <code>BARGED</code> |
-     * <code>CONTACT_FLOW_DISCONNECT</code> | <code>OTHER</code> | <code>EXPIRED</code>
-     * | <code>API</code> </p>
-     */
-    inline MetricFilterV2& WithMetricFilterValues(const Aws::Vector<Aws::String>& value) { SetMetricFilterValues(value); return *this;}
-
-    /**
-     * <p>The values to use for filtering data. </p> <p>Valid metric filter values for
-     * <code>INITIATION_METHOD</code>: <code>INBOUND</code> | <code>OUTBOUND</code> |
-     * <code>TRANSFER</code> | <code>QUEUE_TRANSFER</code> | <code>CALLBACK</code> |
-     * <code>API</code> </p> <p>Valid metric filter values for
-     * <code>DISCONNECT_REASON</code>: <code>CUSTOMER_DISCONNECT</code> |
-     * <code>AGENT_DISCONNECT</code> | <code>THIRD_PARTY_DISCONNECT</code> |
-     * <code>TELECOM_PROBLEM</code> | <code>BARGED</code> |
-     * <code>CONTACT_FLOW_DISCONNECT</code> | <code>OTHER</code> | <code>EXPIRED</code>
-     * | <code>API</code> </p>
-     */
-    inline MetricFilterV2& WithMetricFilterValues(Aws::Vector<Aws::String>&& value) { SetMetricFilterValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The values to use for filtering data. </p> <p>Valid metric filter values for
-     * <code>INITIATION_METHOD</code>: <code>INBOUND</code> | <code>OUTBOUND</code> |
-     * <code>TRANSFER</code> | <code>QUEUE_TRANSFER</code> | <code>CALLBACK</code> |
-     * <code>API</code> </p> <p>Valid metric filter values for
-     * <code>DISCONNECT_REASON</code>: <code>CUSTOMER_DISCONNECT</code> |
-     * <code>AGENT_DISCONNECT</code> | <code>THIRD_PARTY_DISCONNECT</code> |
-     * <code>TELECOM_PROBLEM</code> | <code>BARGED</code> |
-     * <code>CONTACT_FLOW_DISCONNECT</code> | <code>OTHER</code> | <code>EXPIRED</code>
-     * | <code>API</code> </p>
-     */
-    inline MetricFilterV2& AddMetricFilterValues(const Aws::String& value) { m_metricFilterValuesHasBeenSet = true; m_metricFilterValues.push_back(value); return *this; }
-
-    /**
-     * <p>The values to use for filtering data. </p> <p>Valid metric filter values for
-     * <code>INITIATION_METHOD</code>: <code>INBOUND</code> | <code>OUTBOUND</code> |
-     * <code>TRANSFER</code> | <code>QUEUE_TRANSFER</code> | <code>CALLBACK</code> |
-     * <code>API</code> </p> <p>Valid metric filter values for
-     * <code>DISCONNECT_REASON</code>: <code>CUSTOMER_DISCONNECT</code> |
-     * <code>AGENT_DISCONNECT</code> | <code>THIRD_PARTY_DISCONNECT</code> |
-     * <code>TELECOM_PROBLEM</code> | <code>BARGED</code> |
-     * <code>CONTACT_FLOW_DISCONNECT</code> | <code>OTHER</code> | <code>EXPIRED</code>
-     * | <code>API</code> </p>
-     */
-    inline MetricFilterV2& AddMetricFilterValues(Aws::String&& value) { m_metricFilterValuesHasBeenSet = true; m_metricFilterValues.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The values to use for filtering data. </p> <p>Valid metric filter values for
-     * <code>INITIATION_METHOD</code>: <code>INBOUND</code> | <code>OUTBOUND</code> |
-     * <code>TRANSFER</code> | <code>QUEUE_TRANSFER</code> | <code>CALLBACK</code> |
-     * <code>API</code> </p> <p>Valid metric filter values for
-     * <code>DISCONNECT_REASON</code>: <code>CUSTOMER_DISCONNECT</code> |
-     * <code>AGENT_DISCONNECT</code> | <code>THIRD_PARTY_DISCONNECT</code> |
-     * <code>TELECOM_PROBLEM</code> | <code>BARGED</code> |
-     * <code>CONTACT_FLOW_DISCONNECT</code> | <code>OTHER</code> | <code>EXPIRED</code>
-     * | <code>API</code> </p>
-     */
-    inline MetricFilterV2& AddMetricFilterValues(const char* value) { m_metricFilterValuesHasBeenSet = true; m_metricFilterValues.push_back(value); return *this; }
-
+    inline bool GetNegate() const { return m_negate; }
+    inline bool NegateHasBeenSet() const { return m_negateHasBeenSet; }
+    inline void SetNegate(bool value) { m_negateHasBeenSet = true; m_negate = value; }
+    inline MetricFilterV2& WithNegate(bool value) { SetNegate(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_metricFilterKey;
@@ -215,6 +110,9 @@ namespace Model
 
     Aws::Vector<Aws::String> m_metricFilterValues;
     bool m_metricFilterValuesHasBeenSet = false;
+
+    bool m_negate{false};
+    bool m_negateHasBeenSet = false;
   };
 
 } // namespace Model

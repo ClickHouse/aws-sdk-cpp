@@ -15,15 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListKeywordsForDataSourceRequest::ListKeywordsForDataSourceRequest() : 
-    m_source(SourceType::NOT_SET),
-    m_sourceHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String ListKeywordsForDataSourceRequest::SerializePayload() const
 {
   return {};
@@ -34,7 +25,7 @@ void ListKeywordsForDataSourceRequest::AddQueryStringParameters(URI& uri) const
     Aws::StringStream ss;
     if(m_sourceHasBeenSet)
     {
-      ss << SourceTypeMapper::GetNameForSourceType(m_source);
+      ss << DataSourceTypeMapper::GetNameForDataSourceType(m_source);
       uri.AddQueryStringParameter("source", ss.str());
       ss.str("");
     }

@@ -20,39 +20,7 @@ namespace EC2
 namespace Model
 {
 
-SnapshotInfo::SnapshotInfo() : 
-    m_descriptionHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_encrypted(false),
-    m_encryptedHasBeenSet(false),
-    m_volumeIdHasBeenSet(false),
-    m_state(SnapshotState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_volumeSize(0),
-    m_volumeSizeHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_progressHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_snapshotIdHasBeenSet(false),
-    m_outpostArnHasBeenSet(false)
-{
-}
-
-SnapshotInfo::SnapshotInfo(const XmlNode& xmlNode) : 
-    m_descriptionHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_encrypted(false),
-    m_encryptedHasBeenSet(false),
-    m_volumeIdHasBeenSet(false),
-    m_state(SnapshotState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_volumeSize(0),
-    m_volumeSizeHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_progressHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_snapshotIdHasBeenSet(false),
-    m_outpostArnHasBeenSet(false)
+SnapshotInfo::SnapshotInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -73,6 +41,7 @@ SnapshotInfo& SnapshotInfo::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -96,7 +65,7 @@ SnapshotInfo& SnapshotInfo::operator =(const XmlNode& xmlNode)
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = SnapshotStateMapper::GetSnapshotStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = SnapshotStateMapper::GetSnapshotStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode volumeSizeNode = resultNode.FirstChild("volumeSize");
@@ -135,6 +104,18 @@ SnapshotInfo& SnapshotInfo::operator =(const XmlNode& xmlNode)
       m_outpostArn = Aws::Utils::Xml::DecodeEscapedXmlText(outpostArnNode.GetText());
       m_outpostArnHasBeenSet = true;
     }
+    XmlNode sseTypeNode = resultNode.FirstChild("sseType");
+    if(!sseTypeNode.IsNull())
+    {
+      m_sseType = SSETypeMapper::GetSSETypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(sseTypeNode.GetText()).c_str()));
+      m_sseTypeHasBeenSet = true;
+    }
+    XmlNode availabilityZoneNode = resultNode.FirstChild("availabilityZone");
+    if(!availabilityZoneNode.IsNull())
+    {
+      m_availabilityZone = Aws::Utils::Xml::DecodeEscapedXmlText(availabilityZoneNode.GetText());
+      m_availabilityZoneHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -170,7 +151,7 @@ void SnapshotInfo::OutputToStream(Aws::OStream& oStream, const char* location, u
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << SnapshotStateMapper::GetNameForSnapshotState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(SnapshotStateMapper::GetNameForSnapshotState(m_state)) << "&";
   }
 
   if(m_volumeSizeHasBeenSet)
@@ -203,6 +184,16 @@ void SnapshotInfo::OutputToStream(Aws::OStream& oStream, const char* location, u
       oStream << location << index << locationValue << ".OutpostArn=" << StringUtils::URLEncode(m_outpostArn.c_str()) << "&";
   }
 
+  if(m_sseTypeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".SseType=" << StringUtils::URLEncode(SSETypeMapper::GetNameForSSEType(m_sseType)) << "&";
+  }
+
+  if(m_availabilityZoneHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
+  }
+
 }
 
 void SnapshotInfo::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -217,7 +208,7 @@ void SnapshotInfo::OutputToStream(Aws::OStream& oStream, const char* location) c
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -231,7 +222,7 @@ void SnapshotInfo::OutputToStream(Aws::OStream& oStream, const char* location) c
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << SnapshotStateMapper::GetNameForSnapshotState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(SnapshotStateMapper::GetNameForSnapshotState(m_state)) << "&";
   }
   if(m_volumeSizeHasBeenSet)
   {
@@ -256,6 +247,14 @@ void SnapshotInfo::OutputToStream(Aws::OStream& oStream, const char* location) c
   if(m_outpostArnHasBeenSet)
   {
       oStream << location << ".OutpostArn=" << StringUtils::URLEncode(m_outpostArn.c_str()) << "&";
+  }
+  if(m_sseTypeHasBeenSet)
+  {
+      oStream << location << ".SseType=" << StringUtils::URLEncode(SSETypeMapper::GetNameForSSEType(m_sseType)) << "&";
+  }
+  if(m_availabilityZoneHasBeenSet)
+  {
+      oStream << location << ".AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
   }
 }
 

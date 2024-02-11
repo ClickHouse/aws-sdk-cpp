@@ -29,125 +29,55 @@ namespace Model
   class ListResourceDelegatesResult
   {
   public:
-    AWS_WORKMAIL_API ListResourceDelegatesResult();
+    AWS_WORKMAIL_API ListResourceDelegatesResult() = default;
     AWS_WORKMAIL_API ListResourceDelegatesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_WORKMAIL_API ListResourceDelegatesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>One page of the resource's delegates.</p>
      */
-    inline const Aws::Vector<Delegate>& GetDelegates() const{ return m_delegates; }
+    inline const Aws::Vector<Delegate>& GetDelegates() const { return m_delegates; }
+    template<typename DelegatesT = Aws::Vector<Delegate>>
+    void SetDelegates(DelegatesT&& value) { m_delegatesHasBeenSet = true; m_delegates = std::forward<DelegatesT>(value); }
+    template<typename DelegatesT = Aws::Vector<Delegate>>
+    ListResourceDelegatesResult& WithDelegates(DelegatesT&& value) { SetDelegates(std::forward<DelegatesT>(value)); return *this;}
+    template<typename DelegatesT = Delegate>
+    ListResourceDelegatesResult& AddDelegates(DelegatesT&& value) { m_delegatesHasBeenSet = true; m_delegates.emplace_back(std::forward<DelegatesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>One page of the resource's delegates.</p>
-     */
-    inline void SetDelegates(const Aws::Vector<Delegate>& value) { m_delegates = value; }
-
-    /**
-     * <p>One page of the resource's delegates.</p>
-     */
-    inline void SetDelegates(Aws::Vector<Delegate>&& value) { m_delegates = std::move(value); }
-
-    /**
-     * <p>One page of the resource's delegates.</p>
-     */
-    inline ListResourceDelegatesResult& WithDelegates(const Aws::Vector<Delegate>& value) { SetDelegates(value); return *this;}
-
-    /**
-     * <p>One page of the resource's delegates.</p>
-     */
-    inline ListResourceDelegatesResult& WithDelegates(Aws::Vector<Delegate>&& value) { SetDelegates(std::move(value)); return *this;}
-
-    /**
-     * <p>One page of the resource's delegates.</p>
-     */
-    inline ListResourceDelegatesResult& AddDelegates(const Delegate& value) { m_delegates.push_back(value); return *this; }
-
-    /**
-     * <p>One page of the resource's delegates.</p>
-     */
-    inline ListResourceDelegatesResult& AddDelegates(Delegate&& value) { m_delegates.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The token used to paginate through the delegates associated with a resource.
      * While results are still available, it has an associated value. When the last
      * page is reached, the token is empty.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListResourceDelegatesResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token used to paginate through the delegates associated with a resource.
-     * While results are still available, it has an associated value. When the last
-     * page is reached, the token is empty.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The token used to paginate through the delegates associated with a resource.
-     * While results are still available, it has an associated value. When the last
-     * page is reached, the token is empty.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token used to paginate through the delegates associated with a resource.
-     * While results are still available, it has an associated value. When the last
-     * page is reached, the token is empty.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The token used to paginate through the delegates associated with a resource.
-     * While results are still available, it has an associated value. When the last
-     * page is reached, the token is empty.</p>
-     */
-    inline ListResourceDelegatesResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token used to paginate through the delegates associated with a resource.
-     * While results are still available, it has an associated value. When the last
-     * page is reached, the token is empty.</p>
-     */
-    inline ListResourceDelegatesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token used to paginate through the delegates associated with a resource.
-     * While results are still available, it has an associated value. When the last
-     * page is reached, the token is empty.</p>
-     */
-    inline ListResourceDelegatesResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListResourceDelegatesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListResourceDelegatesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListResourceDelegatesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListResourceDelegatesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Delegate> m_delegates;
+    bool m_delegatesHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -32,7 +32,7 @@ namespace Model
   class PublishBatchResultEntry
   {
   public:
-    AWS_SNS_API PublishBatchResultEntry();
+    AWS_SNS_API PublishBatchResultEntry() = default;
     AWS_SNS_API PublishBatchResultEntry(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_SNS_API PublishBatchResultEntry& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,88 +40,31 @@ namespace Model
     AWS_SNS_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The <code>Id</code> of an entry in a batch request.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The <code>Id</code> of an entry in a batch request.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    PublishBatchResultEntry& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>Id</code> of an entry in a batch request.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The <code>Id</code> of an entry in a batch request.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The <code>Id</code> of an entry in a batch request.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The <code>Id</code> of an entry in a batch request.</p>
-     */
-    inline PublishBatchResultEntry& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The <code>Id</code> of an entry in a batch request.</p>
-     */
-    inline PublishBatchResultEntry& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>Id</code> of an entry in a batch request.</p>
-     */
-    inline PublishBatchResultEntry& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An identifier for the message.</p>
      */
-    inline const Aws::String& GetMessageId() const{ return m_messageId; }
-
-    /**
-     * <p>An identifier for the message.</p>
-     */
+    inline const Aws::String& GetMessageId() const { return m_messageId; }
     inline bool MessageIdHasBeenSet() const { return m_messageIdHasBeenSet; }
+    template<typename MessageIdT = Aws::String>
+    void SetMessageId(MessageIdT&& value) { m_messageIdHasBeenSet = true; m_messageId = std::forward<MessageIdT>(value); }
+    template<typename MessageIdT = Aws::String>
+    PublishBatchResultEntry& WithMessageId(MessageIdT&& value) { SetMessageId(std::forward<MessageIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An identifier for the message.</p>
-     */
-    inline void SetMessageId(const Aws::String& value) { m_messageIdHasBeenSet = true; m_messageId = value; }
-
-    /**
-     * <p>An identifier for the message.</p>
-     */
-    inline void SetMessageId(Aws::String&& value) { m_messageIdHasBeenSet = true; m_messageId = std::move(value); }
-
-    /**
-     * <p>An identifier for the message.</p>
-     */
-    inline void SetMessageId(const char* value) { m_messageIdHasBeenSet = true; m_messageId.assign(value); }
-
-    /**
-     * <p>An identifier for the message.</p>
-     */
-    inline PublishBatchResultEntry& WithMessageId(const Aws::String& value) { SetMessageId(value); return *this;}
-
-    /**
-     * <p>An identifier for the message.</p>
-     */
-    inline PublishBatchResultEntry& WithMessageId(Aws::String&& value) { SetMessageId(std::move(value)); return *this;}
-
-    /**
-     * <p>An identifier for the message.</p>
-     */
-    inline PublishBatchResultEntry& WithMessageId(const char* value) { SetMessageId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>This parameter applies only to FIFO (first-in-first-out) topics.</p> <p>The
      * large, non-consecutive number that Amazon SNS assigns to each message.</p>
@@ -129,71 +72,13 @@ namespace Model
      * <code>SequenceNumber</code> continues to increase for a particular
      * <code>MessageGroupId</code>.</p>
      */
-    inline const Aws::String& GetSequenceNumber() const{ return m_sequenceNumber; }
-
-    /**
-     * <p>This parameter applies only to FIFO (first-in-first-out) topics.</p> <p>The
-     * large, non-consecutive number that Amazon SNS assigns to each message.</p>
-     * <p>The length of <code>SequenceNumber</code> is 128 bits.
-     * <code>SequenceNumber</code> continues to increase for a particular
-     * <code>MessageGroupId</code>.</p>
-     */
+    inline const Aws::String& GetSequenceNumber() const { return m_sequenceNumber; }
     inline bool SequenceNumberHasBeenSet() const { return m_sequenceNumberHasBeenSet; }
-
-    /**
-     * <p>This parameter applies only to FIFO (first-in-first-out) topics.</p> <p>The
-     * large, non-consecutive number that Amazon SNS assigns to each message.</p>
-     * <p>The length of <code>SequenceNumber</code> is 128 bits.
-     * <code>SequenceNumber</code> continues to increase for a particular
-     * <code>MessageGroupId</code>.</p>
-     */
-    inline void SetSequenceNumber(const Aws::String& value) { m_sequenceNumberHasBeenSet = true; m_sequenceNumber = value; }
-
-    /**
-     * <p>This parameter applies only to FIFO (first-in-first-out) topics.</p> <p>The
-     * large, non-consecutive number that Amazon SNS assigns to each message.</p>
-     * <p>The length of <code>SequenceNumber</code> is 128 bits.
-     * <code>SequenceNumber</code> continues to increase for a particular
-     * <code>MessageGroupId</code>.</p>
-     */
-    inline void SetSequenceNumber(Aws::String&& value) { m_sequenceNumberHasBeenSet = true; m_sequenceNumber = std::move(value); }
-
-    /**
-     * <p>This parameter applies only to FIFO (first-in-first-out) topics.</p> <p>The
-     * large, non-consecutive number that Amazon SNS assigns to each message.</p>
-     * <p>The length of <code>SequenceNumber</code> is 128 bits.
-     * <code>SequenceNumber</code> continues to increase for a particular
-     * <code>MessageGroupId</code>.</p>
-     */
-    inline void SetSequenceNumber(const char* value) { m_sequenceNumberHasBeenSet = true; m_sequenceNumber.assign(value); }
-
-    /**
-     * <p>This parameter applies only to FIFO (first-in-first-out) topics.</p> <p>The
-     * large, non-consecutive number that Amazon SNS assigns to each message.</p>
-     * <p>The length of <code>SequenceNumber</code> is 128 bits.
-     * <code>SequenceNumber</code> continues to increase for a particular
-     * <code>MessageGroupId</code>.</p>
-     */
-    inline PublishBatchResultEntry& WithSequenceNumber(const Aws::String& value) { SetSequenceNumber(value); return *this;}
-
-    /**
-     * <p>This parameter applies only to FIFO (first-in-first-out) topics.</p> <p>The
-     * large, non-consecutive number that Amazon SNS assigns to each message.</p>
-     * <p>The length of <code>SequenceNumber</code> is 128 bits.
-     * <code>SequenceNumber</code> continues to increase for a particular
-     * <code>MessageGroupId</code>.</p>
-     */
-    inline PublishBatchResultEntry& WithSequenceNumber(Aws::String&& value) { SetSequenceNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>This parameter applies only to FIFO (first-in-first-out) topics.</p> <p>The
-     * large, non-consecutive number that Amazon SNS assigns to each message.</p>
-     * <p>The length of <code>SequenceNumber</code> is 128 bits.
-     * <code>SequenceNumber</code> continues to increase for a particular
-     * <code>MessageGroupId</code>.</p>
-     */
-    inline PublishBatchResultEntry& WithSequenceNumber(const char* value) { SetSequenceNumber(value); return *this;}
-
+    template<typename SequenceNumberT = Aws::String>
+    void SetSequenceNumber(SequenceNumberT&& value) { m_sequenceNumberHasBeenSet = true; m_sequenceNumber = std::forward<SequenceNumberT>(value); }
+    template<typename SequenceNumberT = Aws::String>
+    PublishBatchResultEntry& WithSequenceNumber(SequenceNumberT&& value) { SetSequenceNumber(std::forward<SequenceNumberT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

@@ -34,12 +34,13 @@ namespace Model
   class LustreLogConfiguration
   {
   public:
-    AWS_FSX_API LustreLogConfiguration();
+    AWS_FSX_API LustreLogConfiguration() = default;
     AWS_FSX_API LustreLogConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API LustreLogConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The data repository events that are logged by Amazon FSx.</p> <ul> <li> <p>
      * <code>WARN_ONLY</code> - only warning events are logged.</p> </li> <li> <p>
@@ -49,131 +50,29 @@ namespace Model
      * turned off.</p> </li> </ul> <p>Note that Amazon File Cache uses a default
      * setting of <code>WARN_ERROR</code>, which can't be changed.</p>
      */
-    inline const LustreAccessAuditLogLevel& GetLevel() const{ return m_level; }
-
-    /**
-     * <p>The data repository events that are logged by Amazon FSx.</p> <ul> <li> <p>
-     * <code>WARN_ONLY</code> - only warning events are logged.</p> </li> <li> <p>
-     * <code>ERROR_ONLY</code> - only error events are logged.</p> </li> <li> <p>
-     * <code>WARN_ERROR</code> - both warning events and error events are logged.</p>
-     * </li> <li> <p> <code>DISABLED</code> - logging of data repository events is
-     * turned off.</p> </li> </ul> <p>Note that Amazon File Cache uses a default
-     * setting of <code>WARN_ERROR</code>, which can't be changed.</p>
-     */
+    inline LustreAccessAuditLogLevel GetLevel() const { return m_level; }
     inline bool LevelHasBeenSet() const { return m_levelHasBeenSet; }
+    inline void SetLevel(LustreAccessAuditLogLevel value) { m_levelHasBeenSet = true; m_level = value; }
+    inline LustreLogConfiguration& WithLevel(LustreAccessAuditLogLevel value) { SetLevel(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The data repository events that are logged by Amazon FSx.</p> <ul> <li> <p>
-     * <code>WARN_ONLY</code> - only warning events are logged.</p> </li> <li> <p>
-     * <code>ERROR_ONLY</code> - only error events are logged.</p> </li> <li> <p>
-     * <code>WARN_ERROR</code> - both warning events and error events are logged.</p>
-     * </li> <li> <p> <code>DISABLED</code> - logging of data repository events is
-     * turned off.</p> </li> </ul> <p>Note that Amazon File Cache uses a default
-     * setting of <code>WARN_ERROR</code>, which can't be changed.</p>
-     */
-    inline void SetLevel(const LustreAccessAuditLogLevel& value) { m_levelHasBeenSet = true; m_level = value; }
-
-    /**
-     * <p>The data repository events that are logged by Amazon FSx.</p> <ul> <li> <p>
-     * <code>WARN_ONLY</code> - only warning events are logged.</p> </li> <li> <p>
-     * <code>ERROR_ONLY</code> - only error events are logged.</p> </li> <li> <p>
-     * <code>WARN_ERROR</code> - both warning events and error events are logged.</p>
-     * </li> <li> <p> <code>DISABLED</code> - logging of data repository events is
-     * turned off.</p> </li> </ul> <p>Note that Amazon File Cache uses a default
-     * setting of <code>WARN_ERROR</code>, which can't be changed.</p>
-     */
-    inline void SetLevel(LustreAccessAuditLogLevel&& value) { m_levelHasBeenSet = true; m_level = std::move(value); }
-
-    /**
-     * <p>The data repository events that are logged by Amazon FSx.</p> <ul> <li> <p>
-     * <code>WARN_ONLY</code> - only warning events are logged.</p> </li> <li> <p>
-     * <code>ERROR_ONLY</code> - only error events are logged.</p> </li> <li> <p>
-     * <code>WARN_ERROR</code> - both warning events and error events are logged.</p>
-     * </li> <li> <p> <code>DISABLED</code> - logging of data repository events is
-     * turned off.</p> </li> </ul> <p>Note that Amazon File Cache uses a default
-     * setting of <code>WARN_ERROR</code>, which can't be changed.</p>
-     */
-    inline LustreLogConfiguration& WithLevel(const LustreAccessAuditLogLevel& value) { SetLevel(value); return *this;}
-
-    /**
-     * <p>The data repository events that are logged by Amazon FSx.</p> <ul> <li> <p>
-     * <code>WARN_ONLY</code> - only warning events are logged.</p> </li> <li> <p>
-     * <code>ERROR_ONLY</code> - only error events are logged.</p> </li> <li> <p>
-     * <code>WARN_ERROR</code> - both warning events and error events are logged.</p>
-     * </li> <li> <p> <code>DISABLED</code> - logging of data repository events is
-     * turned off.</p> </li> </ul> <p>Note that Amazon File Cache uses a default
-     * setting of <code>WARN_ERROR</code>, which can't be changed.</p>
-     */
-    inline LustreLogConfiguration& WithLevel(LustreAccessAuditLogLevel&& value) { SetLevel(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) that specifies the destination of the logs.
      * The destination can be any Amazon CloudWatch Logs log group ARN. The destination
      * ARN must be in the same Amazon Web Services partition, Amazon Web Services
      * Region, and Amazon Web Services account as your Amazon FSx file system.</p>
      */
-    inline const Aws::String& GetDestination() const{ return m_destination; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that specifies the destination of the logs.
-     * The destination can be any Amazon CloudWatch Logs log group ARN. The destination
-     * ARN must be in the same Amazon Web Services partition, Amazon Web Services
-     * Region, and Amazon Web Services account as your Amazon FSx file system.</p>
-     */
+    inline const Aws::String& GetDestination() const { return m_destination; }
     inline bool DestinationHasBeenSet() const { return m_destinationHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that specifies the destination of the logs.
-     * The destination can be any Amazon CloudWatch Logs log group ARN. The destination
-     * ARN must be in the same Amazon Web Services partition, Amazon Web Services
-     * Region, and Amazon Web Services account as your Amazon FSx file system.</p>
-     */
-    inline void SetDestination(const Aws::String& value) { m_destinationHasBeenSet = true; m_destination = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that specifies the destination of the logs.
-     * The destination can be any Amazon CloudWatch Logs log group ARN. The destination
-     * ARN must be in the same Amazon Web Services partition, Amazon Web Services
-     * Region, and Amazon Web Services account as your Amazon FSx file system.</p>
-     */
-    inline void SetDestination(Aws::String&& value) { m_destinationHasBeenSet = true; m_destination = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that specifies the destination of the logs.
-     * The destination can be any Amazon CloudWatch Logs log group ARN. The destination
-     * ARN must be in the same Amazon Web Services partition, Amazon Web Services
-     * Region, and Amazon Web Services account as your Amazon FSx file system.</p>
-     */
-    inline void SetDestination(const char* value) { m_destinationHasBeenSet = true; m_destination.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that specifies the destination of the logs.
-     * The destination can be any Amazon CloudWatch Logs log group ARN. The destination
-     * ARN must be in the same Amazon Web Services partition, Amazon Web Services
-     * Region, and Amazon Web Services account as your Amazon FSx file system.</p>
-     */
-    inline LustreLogConfiguration& WithDestination(const Aws::String& value) { SetDestination(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that specifies the destination of the logs.
-     * The destination can be any Amazon CloudWatch Logs log group ARN. The destination
-     * ARN must be in the same Amazon Web Services partition, Amazon Web Services
-     * Region, and Amazon Web Services account as your Amazon FSx file system.</p>
-     */
-    inline LustreLogConfiguration& WithDestination(Aws::String&& value) { SetDestination(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that specifies the destination of the logs.
-     * The destination can be any Amazon CloudWatch Logs log group ARN. The destination
-     * ARN must be in the same Amazon Web Services partition, Amazon Web Services
-     * Region, and Amazon Web Services account as your Amazon FSx file system.</p>
-     */
-    inline LustreLogConfiguration& WithDestination(const char* value) { SetDestination(value); return *this;}
-
+    template<typename DestinationT = Aws::String>
+    void SetDestination(DestinationT&& value) { m_destinationHasBeenSet = true; m_destination = std::forward<DestinationT>(value); }
+    template<typename DestinationT = Aws::String>
+    LustreLogConfiguration& WithDestination(DestinationT&& value) { SetDestination(std::forward<DestinationT>(value)); return *this;}
+    ///@}
   private:
 
-    LustreAccessAuditLogLevel m_level;
+    LustreAccessAuditLogLevel m_level{LustreAccessAuditLogLevel::NOT_SET};
     bool m_levelHasBeenSet = false;
 
     Aws::String m_destination;

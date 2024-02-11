@@ -35,105 +35,40 @@ namespace Model
   class ColumnStatisticsConfiguration
   {
   public:
-    AWS_GLUEDATABREW_API ColumnStatisticsConfiguration();
+    AWS_GLUEDATABREW_API ColumnStatisticsConfiguration() = default;
     AWS_GLUEDATABREW_API ColumnStatisticsConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUEDATABREW_API ColumnStatisticsConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUEDATABREW_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>List of column selectors. Selectors can be used to select columns from the
      * dataset. When selectors are undefined, configuration will be applied to all
      * supported columns. </p>
      */
-    inline const Aws::Vector<ColumnSelector>& GetSelectors() const{ return m_selectors; }
-
-    /**
-     * <p>List of column selectors. Selectors can be used to select columns from the
-     * dataset. When selectors are undefined, configuration will be applied to all
-     * supported columns. </p>
-     */
+    inline const Aws::Vector<ColumnSelector>& GetSelectors() const { return m_selectors; }
     inline bool SelectorsHasBeenSet() const { return m_selectorsHasBeenSet; }
+    template<typename SelectorsT = Aws::Vector<ColumnSelector>>
+    void SetSelectors(SelectorsT&& value) { m_selectorsHasBeenSet = true; m_selectors = std::forward<SelectorsT>(value); }
+    template<typename SelectorsT = Aws::Vector<ColumnSelector>>
+    ColumnStatisticsConfiguration& WithSelectors(SelectorsT&& value) { SetSelectors(std::forward<SelectorsT>(value)); return *this;}
+    template<typename SelectorsT = ColumnSelector>
+    ColumnStatisticsConfiguration& AddSelectors(SelectorsT&& value) { m_selectorsHasBeenSet = true; m_selectors.emplace_back(std::forward<SelectorsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of column selectors. Selectors can be used to select columns from the
-     * dataset. When selectors are undefined, configuration will be applied to all
-     * supported columns. </p>
-     */
-    inline void SetSelectors(const Aws::Vector<ColumnSelector>& value) { m_selectorsHasBeenSet = true; m_selectors = value; }
-
-    /**
-     * <p>List of column selectors. Selectors can be used to select columns from the
-     * dataset. When selectors are undefined, configuration will be applied to all
-     * supported columns. </p>
-     */
-    inline void SetSelectors(Aws::Vector<ColumnSelector>&& value) { m_selectorsHasBeenSet = true; m_selectors = std::move(value); }
-
-    /**
-     * <p>List of column selectors. Selectors can be used to select columns from the
-     * dataset. When selectors are undefined, configuration will be applied to all
-     * supported columns. </p>
-     */
-    inline ColumnStatisticsConfiguration& WithSelectors(const Aws::Vector<ColumnSelector>& value) { SetSelectors(value); return *this;}
-
-    /**
-     * <p>List of column selectors. Selectors can be used to select columns from the
-     * dataset. When selectors are undefined, configuration will be applied to all
-     * supported columns. </p>
-     */
-    inline ColumnStatisticsConfiguration& WithSelectors(Aws::Vector<ColumnSelector>&& value) { SetSelectors(std::move(value)); return *this;}
-
-    /**
-     * <p>List of column selectors. Selectors can be used to select columns from the
-     * dataset. When selectors are undefined, configuration will be applied to all
-     * supported columns. </p>
-     */
-    inline ColumnStatisticsConfiguration& AddSelectors(const ColumnSelector& value) { m_selectorsHasBeenSet = true; m_selectors.push_back(value); return *this; }
-
-    /**
-     * <p>List of column selectors. Selectors can be used to select columns from the
-     * dataset. When selectors are undefined, configuration will be applied to all
-     * supported columns. </p>
-     */
-    inline ColumnStatisticsConfiguration& AddSelectors(ColumnSelector&& value) { m_selectorsHasBeenSet = true; m_selectors.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Configuration for evaluations. Statistics can be used to select evaluations
      * and override parameters of evaluations. </p>
      */
-    inline const StatisticsConfiguration& GetStatistics() const{ return m_statistics; }
-
-    /**
-     * <p>Configuration for evaluations. Statistics can be used to select evaluations
-     * and override parameters of evaluations. </p>
-     */
+    inline const StatisticsConfiguration& GetStatistics() const { return m_statistics; }
     inline bool StatisticsHasBeenSet() const { return m_statisticsHasBeenSet; }
-
-    /**
-     * <p>Configuration for evaluations. Statistics can be used to select evaluations
-     * and override parameters of evaluations. </p>
-     */
-    inline void SetStatistics(const StatisticsConfiguration& value) { m_statisticsHasBeenSet = true; m_statistics = value; }
-
-    /**
-     * <p>Configuration for evaluations. Statistics can be used to select evaluations
-     * and override parameters of evaluations. </p>
-     */
-    inline void SetStatistics(StatisticsConfiguration&& value) { m_statisticsHasBeenSet = true; m_statistics = std::move(value); }
-
-    /**
-     * <p>Configuration for evaluations. Statistics can be used to select evaluations
-     * and override parameters of evaluations. </p>
-     */
-    inline ColumnStatisticsConfiguration& WithStatistics(const StatisticsConfiguration& value) { SetStatistics(value); return *this;}
-
-    /**
-     * <p>Configuration for evaluations. Statistics can be used to select evaluations
-     * and override parameters of evaluations. </p>
-     */
-    inline ColumnStatisticsConfiguration& WithStatistics(StatisticsConfiguration&& value) { SetStatistics(std::move(value)); return *this;}
-
+    template<typename StatisticsT = StatisticsConfiguration>
+    void SetStatistics(StatisticsT&& value) { m_statisticsHasBeenSet = true; m_statistics = std::forward<StatisticsT>(value); }
+    template<typename StatisticsT = StatisticsConfiguration>
+    ColumnStatisticsConfiguration& WithStatistics(StatisticsT&& value) { SetStatistics(std::forward<StatisticsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ColumnSelector> m_selectors;

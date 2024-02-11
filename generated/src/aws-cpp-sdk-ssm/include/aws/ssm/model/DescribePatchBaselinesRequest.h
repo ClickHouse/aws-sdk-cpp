@@ -23,7 +23,7 @@ namespace Model
   class DescribePatchBaselinesRequest : public SSMRequest
   {
   public:
-    AWS_SSM_API DescribePatchBaselinesRequest();
+    AWS_SSM_API DescribePatchBaselinesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,6 +36,7 @@ namespace Model
     AWS_SSM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Each element in the array is a structure containing a key-value pair.</p>
      * <p>Supported keys for <code>DescribePatchBaselines</code> include the
@@ -46,168 +47,44 @@ namespace Model
      * </p> <p>Sample values: <code>AMAZON_LINUX</code> | <code>SUSE</code> |
      * <code>WINDOWS</code> </p> </li> </ul>
      */
-    inline const Aws::Vector<PatchOrchestratorFilter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>Each element in the array is a structure containing a key-value pair.</p>
-     * <p>Supported keys for <code>DescribePatchBaselines</code> include the
-     * following:</p> <ul> <li> <p> <b> <code>NAME_PREFIX</code> </b> </p> <p>Sample
-     * values: <code>AWS-</code> | <code>My-</code> </p> </li> <li> <p> <b>
-     * <code>OWNER</code> </b> </p> <p>Sample values: <code>AWS</code> |
-     * <code>Self</code> </p> </li> <li> <p> <b> <code>OPERATING_SYSTEM</code> </b>
-     * </p> <p>Sample values: <code>AMAZON_LINUX</code> | <code>SUSE</code> |
-     * <code>WINDOWS</code> </p> </li> </ul>
-     */
+    inline const Aws::Vector<PatchOrchestratorFilter>& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = Aws::Vector<PatchOrchestratorFilter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<PatchOrchestratorFilter>>
+    DescribePatchBaselinesRequest& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = PatchOrchestratorFilter>
+    DescribePatchBaselinesRequest& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Each element in the array is a structure containing a key-value pair.</p>
-     * <p>Supported keys for <code>DescribePatchBaselines</code> include the
-     * following:</p> <ul> <li> <p> <b> <code>NAME_PREFIX</code> </b> </p> <p>Sample
-     * values: <code>AWS-</code> | <code>My-</code> </p> </li> <li> <p> <b>
-     * <code>OWNER</code> </b> </p> <p>Sample values: <code>AWS</code> |
-     * <code>Self</code> </p> </li> <li> <p> <b> <code>OPERATING_SYSTEM</code> </b>
-     * </p> <p>Sample values: <code>AMAZON_LINUX</code> | <code>SUSE</code> |
-     * <code>WINDOWS</code> </p> </li> </ul>
-     */
-    inline void SetFilters(const Aws::Vector<PatchOrchestratorFilter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>Each element in the array is a structure containing a key-value pair.</p>
-     * <p>Supported keys for <code>DescribePatchBaselines</code> include the
-     * following:</p> <ul> <li> <p> <b> <code>NAME_PREFIX</code> </b> </p> <p>Sample
-     * values: <code>AWS-</code> | <code>My-</code> </p> </li> <li> <p> <b>
-     * <code>OWNER</code> </b> </p> <p>Sample values: <code>AWS</code> |
-     * <code>Self</code> </p> </li> <li> <p> <b> <code>OPERATING_SYSTEM</code> </b>
-     * </p> <p>Sample values: <code>AMAZON_LINUX</code> | <code>SUSE</code> |
-     * <code>WINDOWS</code> </p> </li> </ul>
-     */
-    inline void SetFilters(Aws::Vector<PatchOrchestratorFilter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>Each element in the array is a structure containing a key-value pair.</p>
-     * <p>Supported keys for <code>DescribePatchBaselines</code> include the
-     * following:</p> <ul> <li> <p> <b> <code>NAME_PREFIX</code> </b> </p> <p>Sample
-     * values: <code>AWS-</code> | <code>My-</code> </p> </li> <li> <p> <b>
-     * <code>OWNER</code> </b> </p> <p>Sample values: <code>AWS</code> |
-     * <code>Self</code> </p> </li> <li> <p> <b> <code>OPERATING_SYSTEM</code> </b>
-     * </p> <p>Sample values: <code>AMAZON_LINUX</code> | <code>SUSE</code> |
-     * <code>WINDOWS</code> </p> </li> </ul>
-     */
-    inline DescribePatchBaselinesRequest& WithFilters(const Aws::Vector<PatchOrchestratorFilter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>Each element in the array is a structure containing a key-value pair.</p>
-     * <p>Supported keys for <code>DescribePatchBaselines</code> include the
-     * following:</p> <ul> <li> <p> <b> <code>NAME_PREFIX</code> </b> </p> <p>Sample
-     * values: <code>AWS-</code> | <code>My-</code> </p> </li> <li> <p> <b>
-     * <code>OWNER</code> </b> </p> <p>Sample values: <code>AWS</code> |
-     * <code>Self</code> </p> </li> <li> <p> <b> <code>OPERATING_SYSTEM</code> </b>
-     * </p> <p>Sample values: <code>AMAZON_LINUX</code> | <code>SUSE</code> |
-     * <code>WINDOWS</code> </p> </li> </ul>
-     */
-    inline DescribePatchBaselinesRequest& WithFilters(Aws::Vector<PatchOrchestratorFilter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>Each element in the array is a structure containing a key-value pair.</p>
-     * <p>Supported keys for <code>DescribePatchBaselines</code> include the
-     * following:</p> <ul> <li> <p> <b> <code>NAME_PREFIX</code> </b> </p> <p>Sample
-     * values: <code>AWS-</code> | <code>My-</code> </p> </li> <li> <p> <b>
-     * <code>OWNER</code> </b> </p> <p>Sample values: <code>AWS</code> |
-     * <code>Self</code> </p> </li> <li> <p> <b> <code>OPERATING_SYSTEM</code> </b>
-     * </p> <p>Sample values: <code>AMAZON_LINUX</code> | <code>SUSE</code> |
-     * <code>WINDOWS</code> </p> </li> </ul>
-     */
-    inline DescribePatchBaselinesRequest& AddFilters(const PatchOrchestratorFilter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>Each element in the array is a structure containing a key-value pair.</p>
-     * <p>Supported keys for <code>DescribePatchBaselines</code> include the
-     * following:</p> <ul> <li> <p> <b> <code>NAME_PREFIX</code> </b> </p> <p>Sample
-     * values: <code>AWS-</code> | <code>My-</code> </p> </li> <li> <p> <b>
-     * <code>OWNER</code> </b> </p> <p>Sample values: <code>AWS</code> |
-     * <code>Self</code> </p> </li> <li> <p> <b> <code>OPERATING_SYSTEM</code> </b>
-     * </p> <p>Sample values: <code>AMAZON_LINUX</code> | <code>SUSE</code> |
-     * <code>WINDOWS</code> </p> </li> </ul>
-     */
-    inline DescribePatchBaselinesRequest& AddFilters(PatchOrchestratorFilter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The maximum number of patch baselines to return (per page).</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of patch baselines to return (per page).</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of patch baselines to return (per page).</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of patch baselines to return (per page).</p>
-     */
     inline DescribePatchBaselinesRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The token for the next set of items to return. (You received this token from
      * a previous call.)</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline DescribePatchBaselinesRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline DescribePatchBaselinesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline DescribePatchBaselinesRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribePatchBaselinesRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<PatchOrchestratorFilter> m_filters;
     bool m_filtersHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

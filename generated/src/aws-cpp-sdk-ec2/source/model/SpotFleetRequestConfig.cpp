@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-SpotFleetRequestConfig::SpotFleetRequestConfig() : 
-    m_activityStatus(ActivityStatus::NOT_SET),
-    m_activityStatusHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_spotFleetRequestConfigHasBeenSet(false),
-    m_spotFleetRequestIdHasBeenSet(false),
-    m_spotFleetRequestState(BatchState::NOT_SET),
-    m_spotFleetRequestStateHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-SpotFleetRequestConfig::SpotFleetRequestConfig(const XmlNode& xmlNode) : 
-    m_activityStatus(ActivityStatus::NOT_SET),
-    m_activityStatusHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_spotFleetRequestConfigHasBeenSet(false),
-    m_spotFleetRequestIdHasBeenSet(false),
-    m_spotFleetRequestState(BatchState::NOT_SET),
-    m_spotFleetRequestStateHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+SpotFleetRequestConfig::SpotFleetRequestConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -54,7 +34,7 @@ SpotFleetRequestConfig& SpotFleetRequestConfig::operator =(const XmlNode& xmlNod
     XmlNode activityStatusNode = resultNode.FirstChild("activityStatus");
     if(!activityStatusNode.IsNull())
     {
-      m_activityStatus = ActivityStatusMapper::GetActivityStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(activityStatusNode.GetText()).c_str()).c_str());
+      m_activityStatus = ActivityStatusMapper::GetActivityStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(activityStatusNode.GetText()).c_str()));
       m_activityStatusHasBeenSet = true;
     }
     XmlNode createTimeNode = resultNode.FirstChild("createTime");
@@ -78,13 +58,14 @@ SpotFleetRequestConfig& SpotFleetRequestConfig::operator =(const XmlNode& xmlNod
     XmlNode spotFleetRequestStateNode = resultNode.FirstChild("spotFleetRequestState");
     if(!spotFleetRequestStateNode.IsNull())
     {
-      m_spotFleetRequestState = BatchStateMapper::GetBatchStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(spotFleetRequestStateNode.GetText()).c_str()).c_str());
+      m_spotFleetRequestState = BatchStateMapper::GetBatchStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(spotFleetRequestStateNode.GetText()).c_str()));
       m_spotFleetRequestStateHasBeenSet = true;
     }
     XmlNode tagsNode = resultNode.FirstChild("tagSet");
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -102,7 +83,7 @@ void SpotFleetRequestConfig::OutputToStream(Aws::OStream& oStream, const char* l
 {
   if(m_activityStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ActivityStatus=" << ActivityStatusMapper::GetNameForActivityStatus(m_activityStatus) << "&";
+      oStream << location << index << locationValue << ".ActivityStatus=" << StringUtils::URLEncode(ActivityStatusMapper::GetNameForActivityStatus(m_activityStatus)) << "&";
   }
 
   if(m_createTimeHasBeenSet)
@@ -124,7 +105,7 @@ void SpotFleetRequestConfig::OutputToStream(Aws::OStream& oStream, const char* l
 
   if(m_spotFleetRequestStateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".SpotFleetRequestState=" << BatchStateMapper::GetNameForBatchState(m_spotFleetRequestState) << "&";
+      oStream << location << index << locationValue << ".SpotFleetRequestState=" << StringUtils::URLEncode(BatchStateMapper::GetNameForBatchState(m_spotFleetRequestState)) << "&";
   }
 
   if(m_tagsHasBeenSet)
@@ -144,7 +125,7 @@ void SpotFleetRequestConfig::OutputToStream(Aws::OStream& oStream, const char* l
 {
   if(m_activityStatusHasBeenSet)
   {
-      oStream << location << ".ActivityStatus=" << ActivityStatusMapper::GetNameForActivityStatus(m_activityStatus) << "&";
+      oStream << location << ".ActivityStatus=" << StringUtils::URLEncode(ActivityStatusMapper::GetNameForActivityStatus(m_activityStatus)) << "&";
   }
   if(m_createTimeHasBeenSet)
   {
@@ -162,7 +143,7 @@ void SpotFleetRequestConfig::OutputToStream(Aws::OStream& oStream, const char* l
   }
   if(m_spotFleetRequestStateHasBeenSet)
   {
-      oStream << location << ".SpotFleetRequestState=" << BatchStateMapper::GetNameForBatchState(m_spotFleetRequestState) << "&";
+      oStream << location << ".SpotFleetRequestState=" << StringUtils::URLEncode(BatchStateMapper::GetNameForBatchState(m_spotFleetRequestState)) << "&";
   }
   if(m_tagsHasBeenSet)
   {
@@ -170,7 +151,7 @@ void SpotFleetRequestConfig::OutputToStream(Aws::OStream& oStream, const char* l
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

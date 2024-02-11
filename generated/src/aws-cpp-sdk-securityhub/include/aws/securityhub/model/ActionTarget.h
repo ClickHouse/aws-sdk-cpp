@@ -31,134 +31,47 @@ namespace Model
   class ActionTarget
   {
   public:
-    AWS_SECURITYHUB_API ActionTarget();
+    AWS_SECURITYHUB_API ActionTarget() = default;
     AWS_SECURITYHUB_API ActionTarget(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API ActionTarget& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN for the target action.</p>
      */
-    inline const Aws::String& GetActionTargetArn() const{ return m_actionTargetArn; }
-
-    /**
-     * <p>The ARN for the target action.</p>
-     */
+    inline const Aws::String& GetActionTargetArn() const { return m_actionTargetArn; }
     inline bool ActionTargetArnHasBeenSet() const { return m_actionTargetArnHasBeenSet; }
+    template<typename ActionTargetArnT = Aws::String>
+    void SetActionTargetArn(ActionTargetArnT&& value) { m_actionTargetArnHasBeenSet = true; m_actionTargetArn = std::forward<ActionTargetArnT>(value); }
+    template<typename ActionTargetArnT = Aws::String>
+    ActionTarget& WithActionTargetArn(ActionTargetArnT&& value) { SetActionTargetArn(std::forward<ActionTargetArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN for the target action.</p>
-     */
-    inline void SetActionTargetArn(const Aws::String& value) { m_actionTargetArnHasBeenSet = true; m_actionTargetArn = value; }
-
-    /**
-     * <p>The ARN for the target action.</p>
-     */
-    inline void SetActionTargetArn(Aws::String&& value) { m_actionTargetArnHasBeenSet = true; m_actionTargetArn = std::move(value); }
-
-    /**
-     * <p>The ARN for the target action.</p>
-     */
-    inline void SetActionTargetArn(const char* value) { m_actionTargetArnHasBeenSet = true; m_actionTargetArn.assign(value); }
-
-    /**
-     * <p>The ARN for the target action.</p>
-     */
-    inline ActionTarget& WithActionTargetArn(const Aws::String& value) { SetActionTargetArn(value); return *this;}
-
-    /**
-     * <p>The ARN for the target action.</p>
-     */
-    inline ActionTarget& WithActionTargetArn(Aws::String&& value) { SetActionTargetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN for the target action.</p>
-     */
-    inline ActionTarget& WithActionTargetArn(const char* value) { SetActionTargetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the action target.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the action target.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ActionTarget& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the action target.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the action target.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the action target.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the action target.</p>
-     */
-    inline ActionTarget& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the action target.</p>
-     */
-    inline ActionTarget& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the action target.</p>
-     */
-    inline ActionTarget& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the target action.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the target action.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>The description of the target action.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the target action.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the target action.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the target action.</p>
-     */
-    inline ActionTarget& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the target action.</p>
-     */
-    inline ActionTarget& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the target action.</p>
-     */
-    inline ActionTarget& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ActionTarget& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_actionTargetArn;

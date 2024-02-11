@@ -32,42 +32,23 @@ namespace Model
   class PackageImportJobOutputConfig
   {
   public:
-    AWS_PANORAMA_API PackageImportJobOutputConfig();
+    AWS_PANORAMA_API PackageImportJobOutputConfig() = default;
     AWS_PANORAMA_API PackageImportJobOutputConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_PANORAMA_API PackageImportJobOutputConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PANORAMA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The package version's output configuration.</p>
      */
-    inline const PackageVersionOutputConfig& GetPackageVersionOutputConfig() const{ return m_packageVersionOutputConfig; }
-
-    /**
-     * <p>The package version's output configuration.</p>
-     */
+    inline const PackageVersionOutputConfig& GetPackageVersionOutputConfig() const { return m_packageVersionOutputConfig; }
     inline bool PackageVersionOutputConfigHasBeenSet() const { return m_packageVersionOutputConfigHasBeenSet; }
-
-    /**
-     * <p>The package version's output configuration.</p>
-     */
-    inline void SetPackageVersionOutputConfig(const PackageVersionOutputConfig& value) { m_packageVersionOutputConfigHasBeenSet = true; m_packageVersionOutputConfig = value; }
-
-    /**
-     * <p>The package version's output configuration.</p>
-     */
-    inline void SetPackageVersionOutputConfig(PackageVersionOutputConfig&& value) { m_packageVersionOutputConfigHasBeenSet = true; m_packageVersionOutputConfig = std::move(value); }
-
-    /**
-     * <p>The package version's output configuration.</p>
-     */
-    inline PackageImportJobOutputConfig& WithPackageVersionOutputConfig(const PackageVersionOutputConfig& value) { SetPackageVersionOutputConfig(value); return *this;}
-
-    /**
-     * <p>The package version's output configuration.</p>
-     */
-    inline PackageImportJobOutputConfig& WithPackageVersionOutputConfig(PackageVersionOutputConfig&& value) { SetPackageVersionOutputConfig(std::move(value)); return *this;}
-
+    template<typename PackageVersionOutputConfigT = PackageVersionOutputConfig>
+    void SetPackageVersionOutputConfig(PackageVersionOutputConfigT&& value) { m_packageVersionOutputConfigHasBeenSet = true; m_packageVersionOutputConfig = std::forward<PackageVersionOutputConfigT>(value); }
+    template<typename PackageVersionOutputConfigT = PackageVersionOutputConfig>
+    PackageImportJobOutputConfig& WithPackageVersionOutputConfig(PackageVersionOutputConfigT&& value) { SetPackageVersionOutputConfig(std::forward<PackageVersionOutputConfigT>(value)); return *this;}
+    ///@}
   private:
 
     PackageVersionOutputConfig m_packageVersionOutputConfig;

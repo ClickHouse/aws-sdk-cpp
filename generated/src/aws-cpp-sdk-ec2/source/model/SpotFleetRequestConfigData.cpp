@@ -20,89 +20,7 @@ namespace EC2
 namespace Model
 {
 
-SpotFleetRequestConfigData::SpotFleetRequestConfigData() : 
-    m_allocationStrategy(AllocationStrategy::NOT_SET),
-    m_allocationStrategyHasBeenSet(false),
-    m_onDemandAllocationStrategy(OnDemandAllocationStrategy::NOT_SET),
-    m_onDemandAllocationStrategyHasBeenSet(false),
-    m_spotMaintenanceStrategiesHasBeenSet(false),
-    m_clientTokenHasBeenSet(false),
-    m_excessCapacityTerminationPolicy(ExcessCapacityTerminationPolicy::NOT_SET),
-    m_excessCapacityTerminationPolicyHasBeenSet(false),
-    m_fulfilledCapacity(0.0),
-    m_fulfilledCapacityHasBeenSet(false),
-    m_onDemandFulfilledCapacity(0.0),
-    m_onDemandFulfilledCapacityHasBeenSet(false),
-    m_iamFleetRoleHasBeenSet(false),
-    m_launchSpecificationsHasBeenSet(false),
-    m_launchTemplateConfigsHasBeenSet(false),
-    m_spotPriceHasBeenSet(false),
-    m_targetCapacity(0),
-    m_targetCapacityHasBeenSet(false),
-    m_onDemandTargetCapacity(0),
-    m_onDemandTargetCapacityHasBeenSet(false),
-    m_onDemandMaxTotalPriceHasBeenSet(false),
-    m_spotMaxTotalPriceHasBeenSet(false),
-    m_terminateInstancesWithExpiration(false),
-    m_terminateInstancesWithExpirationHasBeenSet(false),
-    m_type(FleetType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_validFromHasBeenSet(false),
-    m_validUntilHasBeenSet(false),
-    m_replaceUnhealthyInstances(false),
-    m_replaceUnhealthyInstancesHasBeenSet(false),
-    m_instanceInterruptionBehavior(InstanceInterruptionBehavior::NOT_SET),
-    m_instanceInterruptionBehaviorHasBeenSet(false),
-    m_loadBalancersConfigHasBeenSet(false),
-    m_instancePoolsToUseCount(0),
-    m_instancePoolsToUseCountHasBeenSet(false),
-    m_contextHasBeenSet(false),
-    m_targetCapacityUnitType(TargetCapacityUnitType::NOT_SET),
-    m_targetCapacityUnitTypeHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false)
-{
-}
-
-SpotFleetRequestConfigData::SpotFleetRequestConfigData(const XmlNode& xmlNode) : 
-    m_allocationStrategy(AllocationStrategy::NOT_SET),
-    m_allocationStrategyHasBeenSet(false),
-    m_onDemandAllocationStrategy(OnDemandAllocationStrategy::NOT_SET),
-    m_onDemandAllocationStrategyHasBeenSet(false),
-    m_spotMaintenanceStrategiesHasBeenSet(false),
-    m_clientTokenHasBeenSet(false),
-    m_excessCapacityTerminationPolicy(ExcessCapacityTerminationPolicy::NOT_SET),
-    m_excessCapacityTerminationPolicyHasBeenSet(false),
-    m_fulfilledCapacity(0.0),
-    m_fulfilledCapacityHasBeenSet(false),
-    m_onDemandFulfilledCapacity(0.0),
-    m_onDemandFulfilledCapacityHasBeenSet(false),
-    m_iamFleetRoleHasBeenSet(false),
-    m_launchSpecificationsHasBeenSet(false),
-    m_launchTemplateConfigsHasBeenSet(false),
-    m_spotPriceHasBeenSet(false),
-    m_targetCapacity(0),
-    m_targetCapacityHasBeenSet(false),
-    m_onDemandTargetCapacity(0),
-    m_onDemandTargetCapacityHasBeenSet(false),
-    m_onDemandMaxTotalPriceHasBeenSet(false),
-    m_spotMaxTotalPriceHasBeenSet(false),
-    m_terminateInstancesWithExpiration(false),
-    m_terminateInstancesWithExpirationHasBeenSet(false),
-    m_type(FleetType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_validFromHasBeenSet(false),
-    m_validUntilHasBeenSet(false),
-    m_replaceUnhealthyInstances(false),
-    m_replaceUnhealthyInstancesHasBeenSet(false),
-    m_instanceInterruptionBehavior(InstanceInterruptionBehavior::NOT_SET),
-    m_instanceInterruptionBehaviorHasBeenSet(false),
-    m_loadBalancersConfigHasBeenSet(false),
-    m_instancePoolsToUseCount(0),
-    m_instancePoolsToUseCountHasBeenSet(false),
-    m_contextHasBeenSet(false),
-    m_targetCapacityUnitType(TargetCapacityUnitType::NOT_SET),
-    m_targetCapacityUnitTypeHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false)
+SpotFleetRequestConfigData::SpotFleetRequestConfigData(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -116,13 +34,13 @@ SpotFleetRequestConfigData& SpotFleetRequestConfigData::operator =(const XmlNode
     XmlNode allocationStrategyNode = resultNode.FirstChild("allocationStrategy");
     if(!allocationStrategyNode.IsNull())
     {
-      m_allocationStrategy = AllocationStrategyMapper::GetAllocationStrategyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(allocationStrategyNode.GetText()).c_str()).c_str());
+      m_allocationStrategy = AllocationStrategyMapper::GetAllocationStrategyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(allocationStrategyNode.GetText()).c_str()));
       m_allocationStrategyHasBeenSet = true;
     }
     XmlNode onDemandAllocationStrategyNode = resultNode.FirstChild("onDemandAllocationStrategy");
     if(!onDemandAllocationStrategyNode.IsNull())
     {
-      m_onDemandAllocationStrategy = OnDemandAllocationStrategyMapper::GetOnDemandAllocationStrategyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(onDemandAllocationStrategyNode.GetText()).c_str()).c_str());
+      m_onDemandAllocationStrategy = OnDemandAllocationStrategyMapper::GetOnDemandAllocationStrategyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(onDemandAllocationStrategyNode.GetText()).c_str()));
       m_onDemandAllocationStrategyHasBeenSet = true;
     }
     XmlNode spotMaintenanceStrategiesNode = resultNode.FirstChild("spotMaintenanceStrategies");
@@ -140,7 +58,7 @@ SpotFleetRequestConfigData& SpotFleetRequestConfigData::operator =(const XmlNode
     XmlNode excessCapacityTerminationPolicyNode = resultNode.FirstChild("excessCapacityTerminationPolicy");
     if(!excessCapacityTerminationPolicyNode.IsNull())
     {
-      m_excessCapacityTerminationPolicy = ExcessCapacityTerminationPolicyMapper::GetExcessCapacityTerminationPolicyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(excessCapacityTerminationPolicyNode.GetText()).c_str()).c_str());
+      m_excessCapacityTerminationPolicy = ExcessCapacityTerminationPolicyMapper::GetExcessCapacityTerminationPolicyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(excessCapacityTerminationPolicyNode.GetText()).c_str()));
       m_excessCapacityTerminationPolicyHasBeenSet = true;
     }
     XmlNode fulfilledCapacityNode = resultNode.FirstChild("fulfilledCapacity");
@@ -165,6 +83,7 @@ SpotFleetRequestConfigData& SpotFleetRequestConfigData::operator =(const XmlNode
     if(!launchSpecificationsNode.IsNull())
     {
       XmlNode launchSpecificationsMember = launchSpecificationsNode.FirstChild("item");
+      m_launchSpecificationsHasBeenSet = !launchSpecificationsMember.IsNull();
       while(!launchSpecificationsMember.IsNull())
       {
         m_launchSpecifications.push_back(launchSpecificationsMember);
@@ -177,6 +96,7 @@ SpotFleetRequestConfigData& SpotFleetRequestConfigData::operator =(const XmlNode
     if(!launchTemplateConfigsNode.IsNull())
     {
       XmlNode launchTemplateConfigsMember = launchTemplateConfigsNode.FirstChild("item");
+      m_launchTemplateConfigsHasBeenSet = !launchTemplateConfigsMember.IsNull();
       while(!launchTemplateConfigsMember.IsNull())
       {
         m_launchTemplateConfigs.push_back(launchTemplateConfigsMember);
@@ -224,7 +144,7 @@ SpotFleetRequestConfigData& SpotFleetRequestConfigData::operator =(const XmlNode
     XmlNode typeNode = resultNode.FirstChild("type");
     if(!typeNode.IsNull())
     {
-      m_type = FleetTypeMapper::GetFleetTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()).c_str());
+      m_type = FleetTypeMapper::GetFleetTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()));
       m_typeHasBeenSet = true;
     }
     XmlNode validFromNode = resultNode.FirstChild("validFrom");
@@ -248,7 +168,7 @@ SpotFleetRequestConfigData& SpotFleetRequestConfigData::operator =(const XmlNode
     XmlNode instanceInterruptionBehaviorNode = resultNode.FirstChild("instanceInterruptionBehavior");
     if(!instanceInterruptionBehaviorNode.IsNull())
     {
-      m_instanceInterruptionBehavior = InstanceInterruptionBehaviorMapper::GetInstanceInterruptionBehaviorForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceInterruptionBehaviorNode.GetText()).c_str()).c_str());
+      m_instanceInterruptionBehavior = InstanceInterruptionBehaviorMapper::GetInstanceInterruptionBehaviorForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceInterruptionBehaviorNode.GetText()).c_str()));
       m_instanceInterruptionBehaviorHasBeenSet = true;
     }
     XmlNode loadBalancersConfigNode = resultNode.FirstChild("loadBalancersConfig");
@@ -272,13 +192,14 @@ SpotFleetRequestConfigData& SpotFleetRequestConfigData::operator =(const XmlNode
     XmlNode targetCapacityUnitTypeNode = resultNode.FirstChild("targetCapacityUnitType");
     if(!targetCapacityUnitTypeNode.IsNull())
     {
-      m_targetCapacityUnitType = TargetCapacityUnitTypeMapper::GetTargetCapacityUnitTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(targetCapacityUnitTypeNode.GetText()).c_str()).c_str());
+      m_targetCapacityUnitType = TargetCapacityUnitTypeMapper::GetTargetCapacityUnitTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(targetCapacityUnitTypeNode.GetText()).c_str()));
       m_targetCapacityUnitTypeHasBeenSet = true;
     }
     XmlNode tagSpecificationsNode = resultNode.FirstChild("TagSpecification");
     if(!tagSpecificationsNode.IsNull())
     {
       XmlNode tagSpecificationsMember = tagSpecificationsNode.FirstChild("item");
+      m_tagSpecificationsHasBeenSet = !tagSpecificationsMember.IsNull();
       while(!tagSpecificationsMember.IsNull())
       {
         m_tagSpecifications.push_back(tagSpecificationsMember);
@@ -296,12 +217,12 @@ void SpotFleetRequestConfigData::OutputToStream(Aws::OStream& oStream, const cha
 {
   if(m_allocationStrategyHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AllocationStrategy=" << AllocationStrategyMapper::GetNameForAllocationStrategy(m_allocationStrategy) << "&";
+      oStream << location << index << locationValue << ".AllocationStrategy=" << StringUtils::URLEncode(AllocationStrategyMapper::GetNameForAllocationStrategy(m_allocationStrategy)) << "&";
   }
 
   if(m_onDemandAllocationStrategyHasBeenSet)
   {
-      oStream << location << index << locationValue << ".OnDemandAllocationStrategy=" << OnDemandAllocationStrategyMapper::GetNameForOnDemandAllocationStrategy(m_onDemandAllocationStrategy) << "&";
+      oStream << location << index << locationValue << ".OnDemandAllocationStrategy=" << StringUtils::URLEncode(OnDemandAllocationStrategyMapper::GetNameForOnDemandAllocationStrategy(m_onDemandAllocationStrategy)) << "&";
   }
 
   if(m_spotMaintenanceStrategiesHasBeenSet)
@@ -318,7 +239,7 @@ void SpotFleetRequestConfigData::OutputToStream(Aws::OStream& oStream, const cha
 
   if(m_excessCapacityTerminationPolicyHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ExcessCapacityTerminationPolicy=" << ExcessCapacityTerminationPolicyMapper::GetNameForExcessCapacityTerminationPolicy(m_excessCapacityTerminationPolicy) << "&";
+      oStream << location << index << locationValue << ".ExcessCapacityTerminationPolicy=" << StringUtils::URLEncode(ExcessCapacityTerminationPolicyMapper::GetNameForExcessCapacityTerminationPolicy(m_excessCapacityTerminationPolicy)) << "&";
   }
 
   if(m_fulfilledCapacityHasBeenSet)
@@ -390,7 +311,7 @@ void SpotFleetRequestConfigData::OutputToStream(Aws::OStream& oStream, const cha
 
   if(m_typeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Type=" << FleetTypeMapper::GetNameForFleetType(m_type) << "&";
+      oStream << location << index << locationValue << ".Type=" << StringUtils::URLEncode(FleetTypeMapper::GetNameForFleetType(m_type)) << "&";
   }
 
   if(m_validFromHasBeenSet)
@@ -410,7 +331,7 @@ void SpotFleetRequestConfigData::OutputToStream(Aws::OStream& oStream, const cha
 
   if(m_instanceInterruptionBehaviorHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InstanceInterruptionBehavior=" << InstanceInterruptionBehaviorMapper::GetNameForInstanceInterruptionBehavior(m_instanceInterruptionBehavior) << "&";
+      oStream << location << index << locationValue << ".InstanceInterruptionBehavior=" << StringUtils::URLEncode(InstanceInterruptionBehaviorMapper::GetNameForInstanceInterruptionBehavior(m_instanceInterruptionBehavior)) << "&";
   }
 
   if(m_loadBalancersConfigHasBeenSet)
@@ -432,7 +353,7 @@ void SpotFleetRequestConfigData::OutputToStream(Aws::OStream& oStream, const cha
 
   if(m_targetCapacityUnitTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".TargetCapacityUnitType=" << TargetCapacityUnitTypeMapper::GetNameForTargetCapacityUnitType(m_targetCapacityUnitType) << "&";
+      oStream << location << index << locationValue << ".TargetCapacityUnitType=" << StringUtils::URLEncode(TargetCapacityUnitTypeMapper::GetNameForTargetCapacityUnitType(m_targetCapacityUnitType)) << "&";
   }
 
   if(m_tagSpecificationsHasBeenSet)
@@ -452,11 +373,11 @@ void SpotFleetRequestConfigData::OutputToStream(Aws::OStream& oStream, const cha
 {
   if(m_allocationStrategyHasBeenSet)
   {
-      oStream << location << ".AllocationStrategy=" << AllocationStrategyMapper::GetNameForAllocationStrategy(m_allocationStrategy) << "&";
+      oStream << location << ".AllocationStrategy=" << StringUtils::URLEncode(AllocationStrategyMapper::GetNameForAllocationStrategy(m_allocationStrategy)) << "&";
   }
   if(m_onDemandAllocationStrategyHasBeenSet)
   {
-      oStream << location << ".OnDemandAllocationStrategy=" << OnDemandAllocationStrategyMapper::GetNameForOnDemandAllocationStrategy(m_onDemandAllocationStrategy) << "&";
+      oStream << location << ".OnDemandAllocationStrategy=" << StringUtils::URLEncode(OnDemandAllocationStrategyMapper::GetNameForOnDemandAllocationStrategy(m_onDemandAllocationStrategy)) << "&";
   }
   if(m_spotMaintenanceStrategiesHasBeenSet)
   {
@@ -470,15 +391,15 @@ void SpotFleetRequestConfigData::OutputToStream(Aws::OStream& oStream, const cha
   }
   if(m_excessCapacityTerminationPolicyHasBeenSet)
   {
-      oStream << location << ".ExcessCapacityTerminationPolicy=" << ExcessCapacityTerminationPolicyMapper::GetNameForExcessCapacityTerminationPolicy(m_excessCapacityTerminationPolicy) << "&";
+      oStream << location << ".ExcessCapacityTerminationPolicy=" << StringUtils::URLEncode(ExcessCapacityTerminationPolicyMapper::GetNameForExcessCapacityTerminationPolicy(m_excessCapacityTerminationPolicy)) << "&";
   }
   if(m_fulfilledCapacityHasBeenSet)
   {
-        oStream << location << ".FulfilledCapacity=" << StringUtils::URLEncode(m_fulfilledCapacity) << "&";
+      oStream << location << ".FulfilledCapacity=" << StringUtils::URLEncode(m_fulfilledCapacity) << "&";
   }
   if(m_onDemandFulfilledCapacityHasBeenSet)
   {
-        oStream << location << ".OnDemandFulfilledCapacity=" << StringUtils::URLEncode(m_onDemandFulfilledCapacity) << "&";
+      oStream << location << ".OnDemandFulfilledCapacity=" << StringUtils::URLEncode(m_onDemandFulfilledCapacity) << "&";
   }
   if(m_iamFleetRoleHasBeenSet)
   {
@@ -490,7 +411,7 @@ void SpotFleetRequestConfigData::OutputToStream(Aws::OStream& oStream, const cha
       for(auto& item : m_launchSpecifications)
       {
         Aws::StringStream launchSpecificationsSs;
-        launchSpecificationsSs << location <<  ".LaunchSpecifications." << launchSpecificationsIdx++;
+        launchSpecificationsSs << location << ".LaunchSpecifications." << launchSpecificationsIdx++;
         item.OutputToStream(oStream, launchSpecificationsSs.str().c_str());
       }
   }
@@ -500,7 +421,7 @@ void SpotFleetRequestConfigData::OutputToStream(Aws::OStream& oStream, const cha
       for(auto& item : m_launchTemplateConfigs)
       {
         Aws::StringStream launchTemplateConfigsSs;
-        launchTemplateConfigsSs << location <<  ".LaunchTemplateConfigs." << launchTemplateConfigsIdx++;
+        launchTemplateConfigsSs << location << ".LaunchTemplateConfigs." << launchTemplateConfigsIdx++;
         item.OutputToStream(oStream, launchTemplateConfigsSs.str().c_str());
       }
   }
@@ -530,7 +451,7 @@ void SpotFleetRequestConfigData::OutputToStream(Aws::OStream& oStream, const cha
   }
   if(m_typeHasBeenSet)
   {
-      oStream << location << ".Type=" << FleetTypeMapper::GetNameForFleetType(m_type) << "&";
+      oStream << location << ".Type=" << StringUtils::URLEncode(FleetTypeMapper::GetNameForFleetType(m_type)) << "&";
   }
   if(m_validFromHasBeenSet)
   {
@@ -546,7 +467,7 @@ void SpotFleetRequestConfigData::OutputToStream(Aws::OStream& oStream, const cha
   }
   if(m_instanceInterruptionBehaviorHasBeenSet)
   {
-      oStream << location << ".InstanceInterruptionBehavior=" << InstanceInterruptionBehaviorMapper::GetNameForInstanceInterruptionBehavior(m_instanceInterruptionBehavior) << "&";
+      oStream << location << ".InstanceInterruptionBehavior=" << StringUtils::URLEncode(InstanceInterruptionBehaviorMapper::GetNameForInstanceInterruptionBehavior(m_instanceInterruptionBehavior)) << "&";
   }
   if(m_loadBalancersConfigHasBeenSet)
   {
@@ -564,7 +485,7 @@ void SpotFleetRequestConfigData::OutputToStream(Aws::OStream& oStream, const cha
   }
   if(m_targetCapacityUnitTypeHasBeenSet)
   {
-      oStream << location << ".TargetCapacityUnitType=" << TargetCapacityUnitTypeMapper::GetNameForTargetCapacityUnitType(m_targetCapacityUnitType) << "&";
+      oStream << location << ".TargetCapacityUnitType=" << StringUtils::URLEncode(TargetCapacityUnitTypeMapper::GetNameForTargetCapacityUnitType(m_targetCapacityUnitType)) << "&";
   }
   if(m_tagSpecificationsHasBeenSet)
   {
@@ -572,7 +493,7 @@ void SpotFleetRequestConfigData::OutputToStream(Aws::OStream& oStream, const cha
       for(auto& item : m_tagSpecifications)
       {
         Aws::StringStream tagSpecificationsSs;
-        tagSpecificationsSs << location <<  ".TagSpecification." << tagSpecificationsIdx++;
+        tagSpecificationsSs << location << ".TagSpecification." << tagSpecificationsIdx++;
         item.OutputToStream(oStream, tagSpecificationsSs.str().c_str());
       }
   }

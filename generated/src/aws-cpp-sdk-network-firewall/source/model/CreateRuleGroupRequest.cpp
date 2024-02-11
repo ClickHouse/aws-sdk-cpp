@@ -12,23 +12,6 @@ using namespace Aws::NetworkFirewall::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateRuleGroupRequest::CreateRuleGroupRequest() : 
-    m_ruleGroupNameHasBeenSet(false),
-    m_ruleGroupHasBeenSet(false),
-    m_rulesHasBeenSet(false),
-    m_type(RuleGroupType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_capacity(0),
-    m_capacityHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_encryptionConfigurationHasBeenSet(false),
-    m_sourceMetadataHasBeenSet(false)
-{
-}
-
 Aws::String CreateRuleGroupRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -94,6 +77,18 @@ Aws::String CreateRuleGroupRequest::SerializePayload() const
   if(m_sourceMetadataHasBeenSet)
   {
    payload.WithObject("SourceMetadata", m_sourceMetadata.Jsonize());
+
+  }
+
+  if(m_analyzeRuleGroupHasBeenSet)
+  {
+   payload.WithBool("AnalyzeRuleGroup", m_analyzeRuleGroup);
+
+  }
+
+  if(m_summaryConfigurationHasBeenSet)
+  {
+   payload.WithObject("SummaryConfiguration", m_summaryConfiguration.Jsonize());
 
   }
 

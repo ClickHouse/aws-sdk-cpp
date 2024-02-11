@@ -33,22 +33,25 @@ namespace IoTDataPlane
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef IoTDataPlaneClientConfiguration ClientConfigurationType;
+      typedef IoTDataPlaneEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         IoTDataPlaneClient(const Aws::IoTDataPlane::IoTDataPlaneClientConfiguration& clientConfiguration = Aws::IoTDataPlane::IoTDataPlaneClientConfiguration(),
-                           std::shared_ptr<IoTDataPlaneEndpointProviderBase> endpointProvider = Aws::MakeShared<IoTDataPlaneEndpointProvider>(ALLOCATION_TAG));
+                           std::shared_ptr<IoTDataPlaneEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         IoTDataPlaneClient(const Aws::Auth::AWSCredentials& credentials,
-                           std::shared_ptr<IoTDataPlaneEndpointProviderBase> endpointProvider = Aws::MakeShared<IoTDataPlaneEndpointProvider>(ALLOCATION_TAG),
+                           std::shared_ptr<IoTDataPlaneEndpointProviderBase> endpointProvider = nullptr,
                            const Aws::IoTDataPlane::IoTDataPlaneClientConfiguration& clientConfiguration = Aws::IoTDataPlane::IoTDataPlaneClientConfiguration());
 
        /**
@@ -56,7 +59,7 @@ namespace IoTDataPlane
         * the default http client factory will be used
         */
         IoTDataPlaneClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                           std::shared_ptr<IoTDataPlaneEndpointProviderBase> endpointProvider = Aws::MakeShared<IoTDataPlaneEndpointProvider>(ALLOCATION_TAG),
+                           std::shared_ptr<IoTDataPlaneEndpointProviderBase> endpointProvider = nullptr,
                            const Aws::IoTDataPlane::IoTDataPlaneClientConfiguration& clientConfiguration = Aws::IoTDataPlane::IoTDataPlaneClientConfiguration());
 
 
@@ -83,6 +86,34 @@ namespace IoTDataPlane
 
         /* End of legacy constructors due deprecation */
         virtual ~IoTDataPlaneClient();
+
+        /**
+         * <p>Disconnects a connected MQTT client from Amazon Web Services IoT Core. When
+         * you disconnect a client, Amazon Web Services IoT Core closes the client's
+         * network connection and optionally cleans the session state.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-data-2015-05-28/DeleteConnection">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteConnectionOutcome DeleteConnection(const Model::DeleteConnectionRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteConnection that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteConnectionRequestT = Model::DeleteConnectionRequest>
+        Model::DeleteConnectionOutcomeCallable DeleteConnectionCallable(const DeleteConnectionRequestT& request) const
+        {
+            return SubmitCallable(&IoTDataPlaneClient::DeleteConnection, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteConnection that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteConnectionRequestT = Model::DeleteConnectionRequest>
+        void DeleteConnectionAsync(const DeleteConnectionRequestT& request, const DeleteConnectionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&IoTDataPlaneClient::DeleteConnection, request, handler, context);
+        }
 
         /**
          * <p>Deletes the shadow for the specified thing.</p> <p>Requires permission to
@@ -121,7 +152,7 @@ namespace IoTDataPlane
          * call <a
          * href="https://docs.aws.amazon.com/iot/latest/apireference/API_iotdata_ListRetainedMessages.html">ListRetainedMessages</a>.</p>
          * <p>Requires permission to access the <a
-         * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiotfleethubfordevicemanagement.html#awsiotfleethubfordevicemanagement-actions-as-permissions">GetRetainedMessage</a>
+         * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html">GetRetainedMessage</a>
          * action.</p> <p>For more information about messaging costs, see <a
          * href="http://aws.amazon.com/iot-core/pricing/#Messaging">Amazon Web Services IoT
          * Core pricing - Messaging</a>.</p><p><h3>See Also:</h3>   <a
@@ -215,20 +246,20 @@ namespace IoTDataPlane
          * href="https://docs.aws.amazon.com/iot/latest/apireference/API_iotdata_GetRetainedMessage.html">GetRetainedMessage</a>
          * with the topic name of the retained message.</p> <p>Requires permission to
          * access the <a
-         * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiotfleethubfordevicemanagement.html#awsiotfleethubfordevicemanagement-actions-as-permissions">ListRetainedMessages</a>
+         * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html">ListRetainedMessages</a>
          * action.</p> <p>For more information about messaging costs, see <a
          * href="http://aws.amazon.com/iot-core/pricing/#Messaging">Amazon Web Services IoT
          * Core pricing - Messaging</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iot-data-2015-05-28/ListRetainedMessages">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListRetainedMessagesOutcome ListRetainedMessages(const Model::ListRetainedMessagesRequest& request) const;
+        virtual Model::ListRetainedMessagesOutcome ListRetainedMessages(const Model::ListRetainedMessagesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListRetainedMessages that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListRetainedMessagesRequestT = Model::ListRetainedMessagesRequest>
-        Model::ListRetainedMessagesOutcomeCallable ListRetainedMessagesCallable(const ListRetainedMessagesRequestT& request) const
+        Model::ListRetainedMessagesOutcomeCallable ListRetainedMessagesCallable(const ListRetainedMessagesRequestT& request = {}) const
         {
             return SubmitCallable(&IoTDataPlaneClient::ListRetainedMessages, request);
         }
@@ -237,7 +268,7 @@ namespace IoTDataPlane
          * An Async wrapper for ListRetainedMessages that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListRetainedMessagesRequestT = Model::ListRetainedMessagesRequest>
-        void ListRetainedMessagesAsync(const ListRetainedMessagesRequestT& request, const ListRetainedMessagesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListRetainedMessagesAsync(const ListRetainedMessagesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListRetainedMessagesRequestT& request = {}) const
         {
             return SubmitAsync(&IoTDataPlaneClient::ListRetainedMessages, request, handler, context);
         }
@@ -312,7 +343,6 @@ namespace IoTDataPlane
       void init(const IoTDataPlaneClientConfiguration& clientConfiguration);
 
       IoTDataPlaneClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<IoTDataPlaneEndpointProviderBase> m_endpointProvider;
   };
 

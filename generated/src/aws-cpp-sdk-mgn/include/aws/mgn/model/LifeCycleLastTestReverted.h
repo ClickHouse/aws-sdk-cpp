@@ -31,52 +31,23 @@ namespace Model
   class LifeCycleLastTestReverted
   {
   public:
-    AWS_MGN_API LifeCycleLastTestReverted();
+    AWS_MGN_API LifeCycleLastTestReverted() = default;
     AWS_MGN_API LifeCycleLastTestReverted(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API LifeCycleLastTestReverted& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Lifecycle last Test reverted API call date and time.</p>
      */
-    inline const Aws::String& GetApiCallDateTime() const{ return m_apiCallDateTime; }
-
-    /**
-     * <p>Lifecycle last Test reverted API call date and time.</p>
-     */
+    inline const Aws::String& GetApiCallDateTime() const { return m_apiCallDateTime; }
     inline bool ApiCallDateTimeHasBeenSet() const { return m_apiCallDateTimeHasBeenSet; }
-
-    /**
-     * <p>Lifecycle last Test reverted API call date and time.</p>
-     */
-    inline void SetApiCallDateTime(const Aws::String& value) { m_apiCallDateTimeHasBeenSet = true; m_apiCallDateTime = value; }
-
-    /**
-     * <p>Lifecycle last Test reverted API call date and time.</p>
-     */
-    inline void SetApiCallDateTime(Aws::String&& value) { m_apiCallDateTimeHasBeenSet = true; m_apiCallDateTime = std::move(value); }
-
-    /**
-     * <p>Lifecycle last Test reverted API call date and time.</p>
-     */
-    inline void SetApiCallDateTime(const char* value) { m_apiCallDateTimeHasBeenSet = true; m_apiCallDateTime.assign(value); }
-
-    /**
-     * <p>Lifecycle last Test reverted API call date and time.</p>
-     */
-    inline LifeCycleLastTestReverted& WithApiCallDateTime(const Aws::String& value) { SetApiCallDateTime(value); return *this;}
-
-    /**
-     * <p>Lifecycle last Test reverted API call date and time.</p>
-     */
-    inline LifeCycleLastTestReverted& WithApiCallDateTime(Aws::String&& value) { SetApiCallDateTime(std::move(value)); return *this;}
-
-    /**
-     * <p>Lifecycle last Test reverted API call date and time.</p>
-     */
-    inline LifeCycleLastTestReverted& WithApiCallDateTime(const char* value) { SetApiCallDateTime(value); return *this;}
-
+    template<typename ApiCallDateTimeT = Aws::String>
+    void SetApiCallDateTime(ApiCallDateTimeT&& value) { m_apiCallDateTimeHasBeenSet = true; m_apiCallDateTime = std::forward<ApiCallDateTimeT>(value); }
+    template<typename ApiCallDateTimeT = Aws::String>
+    LifeCycleLastTestReverted& WithApiCallDateTime(ApiCallDateTimeT&& value) { SetApiCallDateTime(std::forward<ApiCallDateTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_apiCallDateTime;

@@ -16,42 +16,46 @@ namespace Aws
 namespace RolesAnywhere
 {
   /**
-   * <p>AWS Identity and Access Management Roles Anywhere provides a secure way for
-   * your workloads such as servers, containers, and applications running outside of
-   * AWS to obtain Temporary AWS credentials. Your workloads can use the same IAM
-   * policies and roles that you have configured with native AWS applications to
-   * access AWS resources. Using IAM Roles Anywhere will eliminate the need to manage
-   * long term credentials for workloads running outside of AWS.</p> <p>To use IAM
-   * Roles Anywhere customer workloads will need to use X.509 certificates issued by
-   * their Certificate Authority (CA) . The Certificate Authority (CA) needs to be
-   * registered with IAM Roles Anywhere as a trust anchor to establish trust between
-   * customer PKI and IAM Roles Anywhere. Customers who do not manage their own PKI
-   * system can use AWS Certificate Manager Private Certificate Authority (ACM PCA)
-   * to create a Certificate Authority and use that to establish trust with IAM Roles
-   * Anywhere</p> <p>This guide describes the IAM rolesanywhere operations that you
-   * can call programmatically. For general information about IAM Roles Anywhere see
-   * <a href="https://docs.aws.amazon.com/">https://docs.aws.amazon.com/</a> </p>
+   * <p>Identity and Access Management Roles Anywhere provides a secure way for your
+   * workloads such as servers, containers, and applications that run outside of
+   * Amazon Web Services to obtain temporary Amazon Web Services credentials. Your
+   * workloads can use the same IAM policies and roles you have for native Amazon Web
+   * Services applications to access Amazon Web Services resources. Using IAM Roles
+   * Anywhere eliminates the need to manage long-term credentials for workloads
+   * running outside of Amazon Web Services.</p> <p> To use IAM Roles Anywhere, your
+   * workloads must use X.509 certificates issued by their certificate authority
+   * (CA). You register the CA with IAM Roles Anywhere as a trust anchor to establish
+   * trust between your public key infrastructure (PKI) and IAM Roles Anywhere. If
+   * you don't manage your own PKI system, you can use Private Certificate Authority
+   * to create a CA and then use that to establish trust with IAM Roles Anywhere.
+   * </p> <p>This guide describes the IAM Roles Anywhere operations that you can call
+   * programmatically. For more information about IAM Roles Anywhere, see the <a
+   * href="https://docs.aws.amazon.com/rolesanywhere/latest/userguide/introduction.html">IAM
+   * Roles Anywhere User Guide</a>.</p>
    */
   class AWS_ROLESANYWHERE_API RolesAnywhereClient : public Aws::Client::AWSJsonClient, public Aws::Client::ClientWithAsyncTemplateMethods<RolesAnywhereClient>
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef RolesAnywhereClientConfiguration ClientConfigurationType;
+      typedef RolesAnywhereEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         RolesAnywhereClient(const Aws::RolesAnywhere::RolesAnywhereClientConfiguration& clientConfiguration = Aws::RolesAnywhere::RolesAnywhereClientConfiguration(),
-                            std::shared_ptr<RolesAnywhereEndpointProviderBase> endpointProvider = Aws::MakeShared<RolesAnywhereEndpointProvider>(ALLOCATION_TAG));
+                            std::shared_ptr<RolesAnywhereEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         RolesAnywhereClient(const Aws::Auth::AWSCredentials& credentials,
-                            std::shared_ptr<RolesAnywhereEndpointProviderBase> endpointProvider = Aws::MakeShared<RolesAnywhereEndpointProvider>(ALLOCATION_TAG),
+                            std::shared_ptr<RolesAnywhereEndpointProviderBase> endpointProvider = nullptr,
                             const Aws::RolesAnywhere::RolesAnywhereClientConfiguration& clientConfiguration = Aws::RolesAnywhere::RolesAnywhereClientConfiguration());
 
        /**
@@ -59,7 +63,7 @@ namespace RolesAnywhere
         * the default http client factory will be used
         */
         RolesAnywhereClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                            std::shared_ptr<RolesAnywhereEndpointProviderBase> endpointProvider = Aws::MakeShared<RolesAnywhereEndpointProvider>(ALLOCATION_TAG),
+                            std::shared_ptr<RolesAnywhereEndpointProviderBase> endpointProvider = nullptr,
                             const Aws::RolesAnywhere::RolesAnywhereClientConfiguration& clientConfiguration = Aws::RolesAnywhere::RolesAnywhereClientConfiguration());
 
 
@@ -88,11 +92,10 @@ namespace RolesAnywhere
         virtual ~RolesAnywhereClient();
 
         /**
-         * <p>Creates a profile. A profile is configuration resource to list the roles that
-         * RolesAnywhere service is trusted to assume. In addition, by applying a profile
-         * you can intersect permissions with IAM managed policies.</p> <p> <b>Required
-         * permissions: </b> <code>rolesanywhere:CreateProfile</code>. </p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Creates a <i>profile</i>, a list of the roles that Roles Anywhere service is
+         * trusted to assume. You use profiles to intersect permissions with IAM managed
+         * policies.</p> <p> <b>Required permissions: </b>
+         * <code>rolesanywhere:CreateProfile</code>. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rolesanywhere-2018-05-10/CreateProfile">AWS
          * API Reference</a></p>
          */
@@ -117,12 +120,11 @@ namespace RolesAnywhere
         }
 
         /**
-         * <p>Creates a trust anchor. You establish trust between IAM Roles Anywhere and
-         * your certificate authority (CA) by configuring a trust anchor. A Trust Anchor is
-         * defined either as a reference to a AWS Certificate Manager Private Certificate
-         * Authority (ACM PCA), or by uploading a Certificate Authority (CA) certificate.
-         * Your AWS workloads can authenticate with the trust anchor using certificates
-         * issued by the trusted Certificate Authority (CA) in exchange for temporary AWS
+         * <p>Creates a trust anchor to establish trust between IAM Roles Anywhere and your
+         * certificate authority (CA). You can define a trust anchor as a reference to an
+         * Private Certificate Authority (Private CA) or by uploading a CA certificate.
+         * Your Amazon Web Services workloads can authenticate with the trust anchor using
+         * certificates issued by the CA in exchange for temporary Amazon Web Services
          * credentials.</p> <p> <b>Required permissions: </b>
          * <code>rolesanywhere:CreateTrustAnchor</code>. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rolesanywhere-2018-05-10/CreateTrustAnchor">AWS
@@ -146,6 +148,32 @@ namespace RolesAnywhere
         void CreateTrustAnchorAsync(const CreateTrustAnchorRequestT& request, const CreateTrustAnchorResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&RolesAnywhereClient::CreateTrustAnchor, request, handler, context);
+        }
+
+        /**
+         * <p>Delete an entry from the attribute mapping rules enforced by a given
+         * profile.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/rolesanywhere-2018-05-10/DeleteAttributeMapping">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteAttributeMappingOutcome DeleteAttributeMapping(const Model::DeleteAttributeMappingRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteAttributeMapping that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteAttributeMappingRequestT = Model::DeleteAttributeMappingRequest>
+        Model::DeleteAttributeMappingOutcomeCallable DeleteAttributeMappingCallable(const DeleteAttributeMappingRequestT& request) const
+        {
+            return SubmitCallable(&RolesAnywhereClient::DeleteAttributeMapping, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteAttributeMapping that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteAttributeMappingRequestT = Model::DeleteAttributeMappingRequest>
+        void DeleteAttributeMappingAsync(const DeleteAttributeMappingRequestT& request, const DeleteAttributeMappingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&RolesAnywhereClient::DeleteAttributeMapping, request, handler, context);
         }
 
         /**
@@ -254,9 +282,8 @@ namespace RolesAnywhere
         }
 
         /**
-         * <p>Disables a profile. When disabled, <a
-         * href="https://docs.aws.amazon.com/rolesanywhere/latest/APIReference/API_CreateSession.html">CreateSession</a>
-         * requests with this profile fail.</p> <p> <b>Required permissions: </b>
+         * <p>Disables a profile. When disabled, temporary credential requests with this
+         * profile fail.</p> <p> <b>Required permissions: </b>
          * <code>rolesanywhere:DisableProfile</code>. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rolesanywhere-2018-05-10/DisableProfile">AWS
          * API Reference</a></p>
@@ -282,11 +309,10 @@ namespace RolesAnywhere
         }
 
         /**
-         * <p>Disables a trust anchor. When disabled, <a
-         * href="https://docs.aws.amazon.com/rolesanywhere/latest/APIReference/API_CreateSession.html">CreateSession</a>
-         * requests specifying this trust anchor are unauthorized.</p> <p> <b>Required
-         * permissions: </b> <code>rolesanywhere:DisableTrustAnchor</code>. </p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Disables a trust anchor. When disabled, temporary credential requests
+         * specifying this trust anchor are unauthorized.</p> <p> <b>Required permissions:
+         * </b> <code>rolesanywhere:DisableTrustAnchor</code>. </p><p><h3>See Also:</h3>  
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rolesanywhere-2018-05-10/DisableTrustAnchor">AWS
          * API Reference</a></p>
          */
@@ -339,10 +365,9 @@ namespace RolesAnywhere
         }
 
         /**
-         * <p>Enables the roles in a profile to receive session credentials in <a
-         * href="https://docs.aws.amazon.com/rolesanywhere/latest/APIReference/API_CreateSession.html">CreateSession</a>.
-         * </p> <p> <b>Required permissions: </b> <code>rolesanywhere:EnableProfile</code>.
-         * </p><p><h3>See Also:</h3>   <a
+         * <p>Enables temporary credential requests for a profile. </p> <p> <b>Required
+         * permissions: </b> <code>rolesanywhere:EnableProfile</code>. </p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rolesanywhere-2018-05-10/EnableProfile">AWS
          * API Reference</a></p>
          */
@@ -446,12 +471,12 @@ namespace RolesAnywhere
         }
 
         /**
-         * <p>Gets a Subject. A Subject associates a certificate identity with
-         * authentication attempts by CreateSession. The Subject resources stores audit
-         * information such as status of the last authentication attempt, the certificate
-         * data used in the attempt, and the last time the associated identity attempted
-         * authentication. </p> <p> <b>Required permissions: </b>
-         * <code>rolesanywhere:GetSubject</code>. </p><p><h3>See Also:</h3>   <a
+         * <p>Gets a <i>subject</i>, which associates a certificate identity with
+         * authentication attempts. The subject stores auditing information such as the
+         * status of the last authentication attempt, the certificate data used in the
+         * attempt, and the last time the associated identity attempted authentication.
+         * </p> <p> <b>Required permissions: </b> <code>rolesanywhere:GetSubject</code>.
+         * </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rolesanywhere-2018-05-10/GetSubject">AWS
          * API Reference</a></p>
          */
@@ -502,11 +527,12 @@ namespace RolesAnywhere
         }
 
         /**
-         * <p>Imports the certificate revocation list (CRL). CRl is a list of certificates
-         * that have been revoked by the issuing certificate Authority (CA). IAM Roles
-         * Anywhere validates against the crl list before issuing credentials. </p> <p>
-         * <b>Required permissions: </b> <code>rolesanywhere:ImportCrl</code>.
-         * </p><p><h3>See Also:</h3>   <a
+         * <p>Imports the certificate revocation list (CRL). A CRL is a list of
+         * certificates that have been revoked by the issuing certificate Authority (CA).In
+         * order to be properly imported, a CRL must be in PEM format. IAM Roles Anywhere
+         * validates against the CRL before issuing credentials. </p> <p> <b>Required
+         * permissions: </b> <code>rolesanywhere:ImportCrl</code>. </p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rolesanywhere-2018-05-10/ImportCrl">AWS
          * API Reference</a></p>
          */
@@ -531,19 +557,19 @@ namespace RolesAnywhere
         }
 
         /**
-         * <p>Lists all Crls in the authenticated account and Amazon Web Services
-         * Region.</p> <p> <b>Required permissions: </b>
+         * <p>Lists all certificate revocation lists (CRL) in the authenticated account and
+         * Amazon Web Services Region.</p> <p> <b>Required permissions: </b>
          * <code>rolesanywhere:ListCrls</code>. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rolesanywhere-2018-05-10/ListCrls">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListCrlsOutcome ListCrls(const Model::ListCrlsRequest& request) const;
+        virtual Model::ListCrlsOutcome ListCrls(const Model::ListCrlsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListCrls that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListCrlsRequestT = Model::ListCrlsRequest>
-        Model::ListCrlsOutcomeCallable ListCrlsCallable(const ListCrlsRequestT& request) const
+        Model::ListCrlsOutcomeCallable ListCrlsCallable(const ListCrlsRequestT& request = {}) const
         {
             return SubmitCallable(&RolesAnywhereClient::ListCrls, request);
         }
@@ -552,7 +578,7 @@ namespace RolesAnywhere
          * An Async wrapper for ListCrls that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListCrlsRequestT = Model::ListCrlsRequest>
-        void ListCrlsAsync(const ListCrlsRequestT& request, const ListCrlsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListCrlsAsync(const ListCrlsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListCrlsRequestT& request = {}) const
         {
             return SubmitAsync(&RolesAnywhereClient::ListCrls, request, handler, context);
         }
@@ -564,13 +590,13 @@ namespace RolesAnywhere
          * href="http://docs.aws.amazon.com/goto/WebAPI/rolesanywhere-2018-05-10/ListProfiles">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListProfilesOutcome ListProfiles(const Model::ListProfilesRequest& request) const;
+        virtual Model::ListProfilesOutcome ListProfiles(const Model::ListProfilesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListProfiles that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListProfilesRequestT = Model::ListProfilesRequest>
-        Model::ListProfilesOutcomeCallable ListProfilesCallable(const ListProfilesRequestT& request) const
+        Model::ListProfilesOutcomeCallable ListProfilesCallable(const ListProfilesRequestT& request = {}) const
         {
             return SubmitCallable(&RolesAnywhereClient::ListProfiles, request);
         }
@@ -579,7 +605,7 @@ namespace RolesAnywhere
          * An Async wrapper for ListProfiles that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListProfilesRequestT = Model::ListProfilesRequest>
-        void ListProfilesAsync(const ListProfilesRequestT& request, const ListProfilesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListProfilesAsync(const ListProfilesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListProfilesRequestT& request = {}) const
         {
             return SubmitAsync(&RolesAnywhereClient::ListProfiles, request, handler, context);
         }
@@ -591,13 +617,13 @@ namespace RolesAnywhere
          * href="http://docs.aws.amazon.com/goto/WebAPI/rolesanywhere-2018-05-10/ListSubjects">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListSubjectsOutcome ListSubjects(const Model::ListSubjectsRequest& request) const;
+        virtual Model::ListSubjectsOutcome ListSubjects(const Model::ListSubjectsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListSubjects that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListSubjectsRequestT = Model::ListSubjectsRequest>
-        Model::ListSubjectsOutcomeCallable ListSubjectsCallable(const ListSubjectsRequestT& request) const
+        Model::ListSubjectsOutcomeCallable ListSubjectsCallable(const ListSubjectsRequestT& request = {}) const
         {
             return SubmitCallable(&RolesAnywhereClient::ListSubjects, request);
         }
@@ -606,7 +632,7 @@ namespace RolesAnywhere
          * An Async wrapper for ListSubjects that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListSubjectsRequestT = Model::ListSubjectsRequest>
-        void ListSubjectsAsync(const ListSubjectsRequestT& request, const ListSubjectsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListSubjectsAsync(const ListSubjectsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListSubjectsRequestT& request = {}) const
         {
             return SubmitAsync(&RolesAnywhereClient::ListSubjects, request, handler, context);
         }
@@ -645,13 +671,13 @@ namespace RolesAnywhere
          * href="http://docs.aws.amazon.com/goto/WebAPI/rolesanywhere-2018-05-10/ListTrustAnchors">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListTrustAnchorsOutcome ListTrustAnchors(const Model::ListTrustAnchorsRequest& request) const;
+        virtual Model::ListTrustAnchorsOutcome ListTrustAnchors(const Model::ListTrustAnchorsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListTrustAnchors that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListTrustAnchorsRequestT = Model::ListTrustAnchorsRequest>
-        Model::ListTrustAnchorsOutcomeCallable ListTrustAnchorsCallable(const ListTrustAnchorsRequestT& request) const
+        Model::ListTrustAnchorsOutcomeCallable ListTrustAnchorsCallable(const ListTrustAnchorsRequestT& request = {}) const
         {
             return SubmitCallable(&RolesAnywhereClient::ListTrustAnchors, request);
         }
@@ -660,9 +686,93 @@ namespace RolesAnywhere
          * An Async wrapper for ListTrustAnchors that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListTrustAnchorsRequestT = Model::ListTrustAnchorsRequest>
-        void ListTrustAnchorsAsync(const ListTrustAnchorsRequestT& request, const ListTrustAnchorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListTrustAnchorsAsync(const ListTrustAnchorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListTrustAnchorsRequestT& request = {}) const
         {
             return SubmitAsync(&RolesAnywhereClient::ListTrustAnchors, request, handler, context);
+        }
+
+        /**
+         * <p>Put an entry in the attribute mapping rules that will be enforced by a given
+         * profile. A mapping specifies a certificate field and one or more specifiers that
+         * have contextual meanings.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/rolesanywhere-2018-05-10/PutAttributeMapping">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::PutAttributeMappingOutcome PutAttributeMapping(const Model::PutAttributeMappingRequest& request) const;
+
+        /**
+         * A Callable wrapper for PutAttributeMapping that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename PutAttributeMappingRequestT = Model::PutAttributeMappingRequest>
+        Model::PutAttributeMappingOutcomeCallable PutAttributeMappingCallable(const PutAttributeMappingRequestT& request) const
+        {
+            return SubmitCallable(&RolesAnywhereClient::PutAttributeMapping, request);
+        }
+
+        /**
+         * An Async wrapper for PutAttributeMapping that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename PutAttributeMappingRequestT = Model::PutAttributeMappingRequest>
+        void PutAttributeMappingAsync(const PutAttributeMappingRequestT& request, const PutAttributeMappingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&RolesAnywhereClient::PutAttributeMapping, request, handler, context);
+        }
+
+        /**
+         * <p>Attaches a list of <i>notification settings</i> to a trust anchor.</p> <p>A
+         * notification setting includes information such as event name, threshold, status
+         * of the notification setting, and the channel to notify.</p> <p> <b>Required
+         * permissions: </b> <code>rolesanywhere:PutNotificationSettings</code>.
+         * </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/rolesanywhere-2018-05-10/PutNotificationSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::PutNotificationSettingsOutcome PutNotificationSettings(const Model::PutNotificationSettingsRequest& request) const;
+
+        /**
+         * A Callable wrapper for PutNotificationSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename PutNotificationSettingsRequestT = Model::PutNotificationSettingsRequest>
+        Model::PutNotificationSettingsOutcomeCallable PutNotificationSettingsCallable(const PutNotificationSettingsRequestT& request) const
+        {
+            return SubmitCallable(&RolesAnywhereClient::PutNotificationSettings, request);
+        }
+
+        /**
+         * An Async wrapper for PutNotificationSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename PutNotificationSettingsRequestT = Model::PutNotificationSettingsRequest>
+        void PutNotificationSettingsAsync(const PutNotificationSettingsRequestT& request, const PutNotificationSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&RolesAnywhereClient::PutNotificationSettings, request, handler, context);
+        }
+
+        /**
+         * <p>Resets the <i>custom notification setting</i> to IAM Roles Anywhere default
+         * setting. </p> <p> <b>Required permissions: </b>
+         * <code>rolesanywhere:ResetNotificationSettings</code>. </p><p><h3>See Also:</h3> 
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/rolesanywhere-2018-05-10/ResetNotificationSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ResetNotificationSettingsOutcome ResetNotificationSettings(const Model::ResetNotificationSettingsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ResetNotificationSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ResetNotificationSettingsRequestT = Model::ResetNotificationSettingsRequest>
+        Model::ResetNotificationSettingsOutcomeCallable ResetNotificationSettingsCallable(const ResetNotificationSettingsRequestT& request) const
+        {
+            return SubmitCallable(&RolesAnywhereClient::ResetNotificationSettings, request);
+        }
+
+        /**
+         * An Async wrapper for ResetNotificationSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ResetNotificationSettingsRequestT = Model::ResetNotificationSettingsRequest>
+        void ResetNotificationSettingsAsync(const ResetNotificationSettingsRequestT& request, const ResetNotificationSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&RolesAnywhereClient::ResetNotificationSettings, request, handler, context);
         }
 
         /**
@@ -718,9 +828,9 @@ namespace RolesAnywhere
         }
 
         /**
-         * <p>Updates the certificate revocation list (CRL). CRl is a list of certificates
-         * that have been revoked by the issuing certificate Authority (CA). IAM Roles
-         * Anywhere validates against the crl list before issuing credentials.</p> <p>
+         * <p>Updates the certificate revocation list (CRL). A CRL is a list of
+         * certificates that have been revoked by the issuing certificate authority (CA).
+         * IAM Roles Anywhere validates against the CRL before issuing credentials.</p> <p>
          * <b>Required permissions: </b> <code>rolesanywhere:UpdateCrl</code>.
          * </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rolesanywhere-2018-05-10/UpdateCrl">AWS
@@ -747,11 +857,10 @@ namespace RolesAnywhere
         }
 
         /**
-         * <p>Updates the profile. A profile is configuration resource to list the roles
-         * that RolesAnywhere service is trusted to assume. In addition, by applying a
-         * profile you can scope-down permissions with IAM managed policies.</p> <p>
-         * <b>Required permissions: </b> <code>rolesanywhere:UpdateProfile</code>.
-         * </p><p><h3>See Also:</h3>   <a
+         * <p>Updates a <i>profile</i>, a list of the roles that IAM Roles Anywhere service
+         * is trusted to assume. You use profiles to intersect permissions with IAM managed
+         * policies.</p> <p> <b>Required permissions: </b>
+         * <code>rolesanywhere:UpdateProfile</code>. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rolesanywhere-2018-05-10/UpdateProfile">AWS
          * API Reference</a></p>
          */
@@ -776,14 +885,14 @@ namespace RolesAnywhere
         }
 
         /**
-         * <p>Updates the trust anchor.You establish trust between IAM Roles Anywhere and
-         * your certificate authority (CA) by configuring a trust anchor. A Trust Anchor is
-         * defined either as a reference to a AWS Certificate Manager Private Certificate
-         * Authority (ACM PCA), or by uploading a Certificate Authority (CA) certificate.
-         * Your AWS workloads can authenticate with the trust anchor using certificates
-         * issued by the trusted Certificate Authority (CA) in exchange for temporary AWS
-         * credentials.</p> <p> <b>Required permissions: </b>
-         * <code>rolesanywhere:UpdateTrustAnchor</code>. </p><p><h3>See Also:</h3>   <a
+         * <p>Updates a trust anchor. You establish trust between IAM Roles Anywhere and
+         * your certificate authority (CA) by configuring a trust anchor. You can define a
+         * trust anchor as a reference to an Private Certificate Authority (Private CA) or
+         * by uploading a CA certificate. Your Amazon Web Services workloads can
+         * authenticate with the trust anchor using certificates issued by the CA in
+         * exchange for temporary Amazon Web Services credentials.</p> <p> <b>Required
+         * permissions: </b> <code>rolesanywhere:UpdateTrustAnchor</code>. </p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rolesanywhere-2018-05-10/UpdateTrustAnchor">AWS
          * API Reference</a></p>
          */
@@ -815,7 +924,6 @@ namespace RolesAnywhere
       void init(const RolesAnywhereClientConfiguration& clientConfiguration);
 
       RolesAnywhereClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<RolesAnywhereEndpointProviderBase> m_endpointProvider;
   };
 

@@ -18,17 +18,7 @@ namespace LookoutforVision
 namespace Model
 {
 
-ProjectMetadata::ProjectMetadata() : 
-    m_projectArnHasBeenSet(false),
-    m_projectNameHasBeenSet(false),
-    m_creationTimestampHasBeenSet(false)
-{
-}
-
-ProjectMetadata::ProjectMetadata(JsonView jsonValue) : 
-    m_projectArnHasBeenSet(false),
-    m_projectNameHasBeenSet(false),
-    m_creationTimestampHasBeenSet(false)
+ProjectMetadata::ProjectMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ ProjectMetadata& ProjectMetadata::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ProjectArn"))
   {
     m_projectArn = jsonValue.GetString("ProjectArn");
-
     m_projectArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProjectName"))
   {
     m_projectName = jsonValue.GetString("ProjectName");
-
     m_projectNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreationTimestamp"))
   {
     m_creationTimestamp = jsonValue.GetDouble("CreationTimestamp");
-
     m_creationTimestampHasBeenSet = true;
   }
-
   return *this;
 }
 

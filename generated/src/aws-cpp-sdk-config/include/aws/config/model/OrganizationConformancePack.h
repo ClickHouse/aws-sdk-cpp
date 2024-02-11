@@ -35,318 +35,102 @@ namespace Model
   class OrganizationConformancePack
   {
   public:
-    AWS_CONFIGSERVICE_API OrganizationConformancePack();
+    AWS_CONFIGSERVICE_API OrganizationConformancePack() = default;
     AWS_CONFIGSERVICE_API OrganizationConformancePack(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API OrganizationConformancePack& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name you assign to an organization conformance pack.</p>
      */
-    inline const Aws::String& GetOrganizationConformancePackName() const{ return m_organizationConformancePackName; }
-
-    /**
-     * <p>The name you assign to an organization conformance pack.</p>
-     */
+    inline const Aws::String& GetOrganizationConformancePackName() const { return m_organizationConformancePackName; }
     inline bool OrganizationConformancePackNameHasBeenSet() const { return m_organizationConformancePackNameHasBeenSet; }
+    template<typename OrganizationConformancePackNameT = Aws::String>
+    void SetOrganizationConformancePackName(OrganizationConformancePackNameT&& value) { m_organizationConformancePackNameHasBeenSet = true; m_organizationConformancePackName = std::forward<OrganizationConformancePackNameT>(value); }
+    template<typename OrganizationConformancePackNameT = Aws::String>
+    OrganizationConformancePack& WithOrganizationConformancePackName(OrganizationConformancePackNameT&& value) { SetOrganizationConformancePackName(std::forward<OrganizationConformancePackNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name you assign to an organization conformance pack.</p>
-     */
-    inline void SetOrganizationConformancePackName(const Aws::String& value) { m_organizationConformancePackNameHasBeenSet = true; m_organizationConformancePackName = value; }
-
-    /**
-     * <p>The name you assign to an organization conformance pack.</p>
-     */
-    inline void SetOrganizationConformancePackName(Aws::String&& value) { m_organizationConformancePackNameHasBeenSet = true; m_organizationConformancePackName = std::move(value); }
-
-    /**
-     * <p>The name you assign to an organization conformance pack.</p>
-     */
-    inline void SetOrganizationConformancePackName(const char* value) { m_organizationConformancePackNameHasBeenSet = true; m_organizationConformancePackName.assign(value); }
-
-    /**
-     * <p>The name you assign to an organization conformance pack.</p>
-     */
-    inline OrganizationConformancePack& WithOrganizationConformancePackName(const Aws::String& value) { SetOrganizationConformancePackName(value); return *this;}
-
-    /**
-     * <p>The name you assign to an organization conformance pack.</p>
-     */
-    inline OrganizationConformancePack& WithOrganizationConformancePackName(Aws::String&& value) { SetOrganizationConformancePackName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name you assign to an organization conformance pack.</p>
-     */
-    inline OrganizationConformancePack& WithOrganizationConformancePackName(const char* value) { SetOrganizationConformancePackName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Amazon Resource Name (ARN) of organization conformance pack.</p>
      */
-    inline const Aws::String& GetOrganizationConformancePackArn() const{ return m_organizationConformancePackArn; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of organization conformance pack.</p>
-     */
+    inline const Aws::String& GetOrganizationConformancePackArn() const { return m_organizationConformancePackArn; }
     inline bool OrganizationConformancePackArnHasBeenSet() const { return m_organizationConformancePackArnHasBeenSet; }
+    template<typename OrganizationConformancePackArnT = Aws::String>
+    void SetOrganizationConformancePackArn(OrganizationConformancePackArnT&& value) { m_organizationConformancePackArnHasBeenSet = true; m_organizationConformancePackArn = std::forward<OrganizationConformancePackArnT>(value); }
+    template<typename OrganizationConformancePackArnT = Aws::String>
+    OrganizationConformancePack& WithOrganizationConformancePackArn(OrganizationConformancePackArnT&& value) { SetOrganizationConformancePackArn(std::forward<OrganizationConformancePackArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Amazon Resource Name (ARN) of organization conformance pack.</p>
-     */
-    inline void SetOrganizationConformancePackArn(const Aws::String& value) { m_organizationConformancePackArnHasBeenSet = true; m_organizationConformancePackArn = value; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of organization conformance pack.</p>
-     */
-    inline void SetOrganizationConformancePackArn(Aws::String&& value) { m_organizationConformancePackArnHasBeenSet = true; m_organizationConformancePackArn = std::move(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of organization conformance pack.</p>
-     */
-    inline void SetOrganizationConformancePackArn(const char* value) { m_organizationConformancePackArnHasBeenSet = true; m_organizationConformancePackArn.assign(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of organization conformance pack.</p>
-     */
-    inline OrganizationConformancePack& WithOrganizationConformancePackArn(const Aws::String& value) { SetOrganizationConformancePackArn(value); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) of organization conformance pack.</p>
-     */
-    inline OrganizationConformancePack& WithOrganizationConformancePackArn(Aws::String&& value) { SetOrganizationConformancePackArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) of organization conformance pack.</p>
-     */
-    inline OrganizationConformancePack& WithOrganizationConformancePackArn(const char* value) { SetOrganizationConformancePackArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the Amazon S3 bucket where Config stores conformance pack
      * templates. </p>  <p>This field is optional.</p> 
      */
-    inline const Aws::String& GetDeliveryS3Bucket() const{ return m_deliveryS3Bucket; }
-
-    /**
-     * <p>The name of the Amazon S3 bucket where Config stores conformance pack
-     * templates. </p>  <p>This field is optional.</p> 
-     */
+    inline const Aws::String& GetDeliveryS3Bucket() const { return m_deliveryS3Bucket; }
     inline bool DeliveryS3BucketHasBeenSet() const { return m_deliveryS3BucketHasBeenSet; }
+    template<typename DeliveryS3BucketT = Aws::String>
+    void SetDeliveryS3Bucket(DeliveryS3BucketT&& value) { m_deliveryS3BucketHasBeenSet = true; m_deliveryS3Bucket = std::forward<DeliveryS3BucketT>(value); }
+    template<typename DeliveryS3BucketT = Aws::String>
+    OrganizationConformancePack& WithDeliveryS3Bucket(DeliveryS3BucketT&& value) { SetDeliveryS3Bucket(std::forward<DeliveryS3BucketT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Amazon S3 bucket where Config stores conformance pack
-     * templates. </p>  <p>This field is optional.</p> 
-     */
-    inline void SetDeliveryS3Bucket(const Aws::String& value) { m_deliveryS3BucketHasBeenSet = true; m_deliveryS3Bucket = value; }
-
-    /**
-     * <p>The name of the Amazon S3 bucket where Config stores conformance pack
-     * templates. </p>  <p>This field is optional.</p> 
-     */
-    inline void SetDeliveryS3Bucket(Aws::String&& value) { m_deliveryS3BucketHasBeenSet = true; m_deliveryS3Bucket = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon S3 bucket where Config stores conformance pack
-     * templates. </p>  <p>This field is optional.</p> 
-     */
-    inline void SetDeliveryS3Bucket(const char* value) { m_deliveryS3BucketHasBeenSet = true; m_deliveryS3Bucket.assign(value); }
-
-    /**
-     * <p>The name of the Amazon S3 bucket where Config stores conformance pack
-     * templates. </p>  <p>This field is optional.</p> 
-     */
-    inline OrganizationConformancePack& WithDeliveryS3Bucket(const Aws::String& value) { SetDeliveryS3Bucket(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon S3 bucket where Config stores conformance pack
-     * templates. </p>  <p>This field is optional.</p> 
-     */
-    inline OrganizationConformancePack& WithDeliveryS3Bucket(Aws::String&& value) { SetDeliveryS3Bucket(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon S3 bucket where Config stores conformance pack
-     * templates. </p>  <p>This field is optional.</p> 
-     */
-    inline OrganizationConformancePack& WithDeliveryS3Bucket(const char* value) { SetDeliveryS3Bucket(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Any folder structure you want to add to an Amazon S3 bucket.</p> 
      * <p>This field is optional.</p> 
      */
-    inline const Aws::String& GetDeliveryS3KeyPrefix() const{ return m_deliveryS3KeyPrefix; }
-
-    /**
-     * <p>Any folder structure you want to add to an Amazon S3 bucket.</p> 
-     * <p>This field is optional.</p> 
-     */
+    inline const Aws::String& GetDeliveryS3KeyPrefix() const { return m_deliveryS3KeyPrefix; }
     inline bool DeliveryS3KeyPrefixHasBeenSet() const { return m_deliveryS3KeyPrefixHasBeenSet; }
+    template<typename DeliveryS3KeyPrefixT = Aws::String>
+    void SetDeliveryS3KeyPrefix(DeliveryS3KeyPrefixT&& value) { m_deliveryS3KeyPrefixHasBeenSet = true; m_deliveryS3KeyPrefix = std::forward<DeliveryS3KeyPrefixT>(value); }
+    template<typename DeliveryS3KeyPrefixT = Aws::String>
+    OrganizationConformancePack& WithDeliveryS3KeyPrefix(DeliveryS3KeyPrefixT&& value) { SetDeliveryS3KeyPrefix(std::forward<DeliveryS3KeyPrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Any folder structure you want to add to an Amazon S3 bucket.</p> 
-     * <p>This field is optional.</p> 
-     */
-    inline void SetDeliveryS3KeyPrefix(const Aws::String& value) { m_deliveryS3KeyPrefixHasBeenSet = true; m_deliveryS3KeyPrefix = value; }
-
-    /**
-     * <p>Any folder structure you want to add to an Amazon S3 bucket.</p> 
-     * <p>This field is optional.</p> 
-     */
-    inline void SetDeliveryS3KeyPrefix(Aws::String&& value) { m_deliveryS3KeyPrefixHasBeenSet = true; m_deliveryS3KeyPrefix = std::move(value); }
-
-    /**
-     * <p>Any folder structure you want to add to an Amazon S3 bucket.</p> 
-     * <p>This field is optional.</p> 
-     */
-    inline void SetDeliveryS3KeyPrefix(const char* value) { m_deliveryS3KeyPrefixHasBeenSet = true; m_deliveryS3KeyPrefix.assign(value); }
-
-    /**
-     * <p>Any folder structure you want to add to an Amazon S3 bucket.</p> 
-     * <p>This field is optional.</p> 
-     */
-    inline OrganizationConformancePack& WithDeliveryS3KeyPrefix(const Aws::String& value) { SetDeliveryS3KeyPrefix(value); return *this;}
-
-    /**
-     * <p>Any folder structure you want to add to an Amazon S3 bucket.</p> 
-     * <p>This field is optional.</p> 
-     */
-    inline OrganizationConformancePack& WithDeliveryS3KeyPrefix(Aws::String&& value) { SetDeliveryS3KeyPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>Any folder structure you want to add to an Amazon S3 bucket.</p> 
-     * <p>This field is optional.</p> 
-     */
-    inline OrganizationConformancePack& WithDeliveryS3KeyPrefix(const char* value) { SetDeliveryS3KeyPrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of <code>ConformancePackInputParameter</code> objects.</p>
      */
-    inline const Aws::Vector<ConformancePackInputParameter>& GetConformancePackInputParameters() const{ return m_conformancePackInputParameters; }
-
-    /**
-     * <p>A list of <code>ConformancePackInputParameter</code> objects.</p>
-     */
+    inline const Aws::Vector<ConformancePackInputParameter>& GetConformancePackInputParameters() const { return m_conformancePackInputParameters; }
     inline bool ConformancePackInputParametersHasBeenSet() const { return m_conformancePackInputParametersHasBeenSet; }
+    template<typename ConformancePackInputParametersT = Aws::Vector<ConformancePackInputParameter>>
+    void SetConformancePackInputParameters(ConformancePackInputParametersT&& value) { m_conformancePackInputParametersHasBeenSet = true; m_conformancePackInputParameters = std::forward<ConformancePackInputParametersT>(value); }
+    template<typename ConformancePackInputParametersT = Aws::Vector<ConformancePackInputParameter>>
+    OrganizationConformancePack& WithConformancePackInputParameters(ConformancePackInputParametersT&& value) { SetConformancePackInputParameters(std::forward<ConformancePackInputParametersT>(value)); return *this;}
+    template<typename ConformancePackInputParametersT = ConformancePackInputParameter>
+    OrganizationConformancePack& AddConformancePackInputParameters(ConformancePackInputParametersT&& value) { m_conformancePackInputParametersHasBeenSet = true; m_conformancePackInputParameters.emplace_back(std::forward<ConformancePackInputParametersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of <code>ConformancePackInputParameter</code> objects.</p>
-     */
-    inline void SetConformancePackInputParameters(const Aws::Vector<ConformancePackInputParameter>& value) { m_conformancePackInputParametersHasBeenSet = true; m_conformancePackInputParameters = value; }
-
-    /**
-     * <p>A list of <code>ConformancePackInputParameter</code> objects.</p>
-     */
-    inline void SetConformancePackInputParameters(Aws::Vector<ConformancePackInputParameter>&& value) { m_conformancePackInputParametersHasBeenSet = true; m_conformancePackInputParameters = std::move(value); }
-
-    /**
-     * <p>A list of <code>ConformancePackInputParameter</code> objects.</p>
-     */
-    inline OrganizationConformancePack& WithConformancePackInputParameters(const Aws::Vector<ConformancePackInputParameter>& value) { SetConformancePackInputParameters(value); return *this;}
-
-    /**
-     * <p>A list of <code>ConformancePackInputParameter</code> objects.</p>
-     */
-    inline OrganizationConformancePack& WithConformancePackInputParameters(Aws::Vector<ConformancePackInputParameter>&& value) { SetConformancePackInputParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <code>ConformancePackInputParameter</code> objects.</p>
-     */
-    inline OrganizationConformancePack& AddConformancePackInputParameters(const ConformancePackInputParameter& value) { m_conformancePackInputParametersHasBeenSet = true; m_conformancePackInputParameters.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <code>ConformancePackInputParameter</code> objects.</p>
-     */
-    inline OrganizationConformancePack& AddConformancePackInputParameters(ConformancePackInputParameter&& value) { m_conformancePackInputParametersHasBeenSet = true; m_conformancePackInputParameters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A comma-separated list of accounts excluded from organization conformance
      * pack.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetExcludedAccounts() const{ return m_excludedAccounts; }
-
-    /**
-     * <p>A comma-separated list of accounts excluded from organization conformance
-     * pack.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetExcludedAccounts() const { return m_excludedAccounts; }
     inline bool ExcludedAccountsHasBeenSet() const { return m_excludedAccountsHasBeenSet; }
+    template<typename ExcludedAccountsT = Aws::Vector<Aws::String>>
+    void SetExcludedAccounts(ExcludedAccountsT&& value) { m_excludedAccountsHasBeenSet = true; m_excludedAccounts = std::forward<ExcludedAccountsT>(value); }
+    template<typename ExcludedAccountsT = Aws::Vector<Aws::String>>
+    OrganizationConformancePack& WithExcludedAccounts(ExcludedAccountsT&& value) { SetExcludedAccounts(std::forward<ExcludedAccountsT>(value)); return *this;}
+    template<typename ExcludedAccountsT = Aws::String>
+    OrganizationConformancePack& AddExcludedAccounts(ExcludedAccountsT&& value) { m_excludedAccountsHasBeenSet = true; m_excludedAccounts.emplace_back(std::forward<ExcludedAccountsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A comma-separated list of accounts excluded from organization conformance
-     * pack.</p>
-     */
-    inline void SetExcludedAccounts(const Aws::Vector<Aws::String>& value) { m_excludedAccountsHasBeenSet = true; m_excludedAccounts = value; }
-
-    /**
-     * <p>A comma-separated list of accounts excluded from organization conformance
-     * pack.</p>
-     */
-    inline void SetExcludedAccounts(Aws::Vector<Aws::String>&& value) { m_excludedAccountsHasBeenSet = true; m_excludedAccounts = std::move(value); }
-
-    /**
-     * <p>A comma-separated list of accounts excluded from organization conformance
-     * pack.</p>
-     */
-    inline OrganizationConformancePack& WithExcludedAccounts(const Aws::Vector<Aws::String>& value) { SetExcludedAccounts(value); return *this;}
-
-    /**
-     * <p>A comma-separated list of accounts excluded from organization conformance
-     * pack.</p>
-     */
-    inline OrganizationConformancePack& WithExcludedAccounts(Aws::Vector<Aws::String>&& value) { SetExcludedAccounts(std::move(value)); return *this;}
-
-    /**
-     * <p>A comma-separated list of accounts excluded from organization conformance
-     * pack.</p>
-     */
-    inline OrganizationConformancePack& AddExcludedAccounts(const Aws::String& value) { m_excludedAccountsHasBeenSet = true; m_excludedAccounts.push_back(value); return *this; }
-
-    /**
-     * <p>A comma-separated list of accounts excluded from organization conformance
-     * pack.</p>
-     */
-    inline OrganizationConformancePack& AddExcludedAccounts(Aws::String&& value) { m_excludedAccountsHasBeenSet = true; m_excludedAccounts.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A comma-separated list of accounts excluded from organization conformance
-     * pack.</p>
-     */
-    inline OrganizationConformancePack& AddExcludedAccounts(const char* value) { m_excludedAccountsHasBeenSet = true; m_excludedAccounts.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Last time when organization conformation pack was updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdateTime() const{ return m_lastUpdateTime; }
-
-    /**
-     * <p>Last time when organization conformation pack was updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdateTime() const { return m_lastUpdateTime; }
     inline bool LastUpdateTimeHasBeenSet() const { return m_lastUpdateTimeHasBeenSet; }
-
-    /**
-     * <p>Last time when organization conformation pack was updated.</p>
-     */
-    inline void SetLastUpdateTime(const Aws::Utils::DateTime& value) { m_lastUpdateTimeHasBeenSet = true; m_lastUpdateTime = value; }
-
-    /**
-     * <p>Last time when organization conformation pack was updated.</p>
-     */
-    inline void SetLastUpdateTime(Aws::Utils::DateTime&& value) { m_lastUpdateTimeHasBeenSet = true; m_lastUpdateTime = std::move(value); }
-
-    /**
-     * <p>Last time when organization conformation pack was updated.</p>
-     */
-    inline OrganizationConformancePack& WithLastUpdateTime(const Aws::Utils::DateTime& value) { SetLastUpdateTime(value); return *this;}
-
-    /**
-     * <p>Last time when organization conformation pack was updated.</p>
-     */
-    inline OrganizationConformancePack& WithLastUpdateTime(Aws::Utils::DateTime&& value) { SetLastUpdateTime(std::move(value)); return *this;}
-
+    template<typename LastUpdateTimeT = Aws::Utils::DateTime>
+    void SetLastUpdateTime(LastUpdateTimeT&& value) { m_lastUpdateTimeHasBeenSet = true; m_lastUpdateTime = std::forward<LastUpdateTimeT>(value); }
+    template<typename LastUpdateTimeT = Aws::Utils::DateTime>
+    OrganizationConformancePack& WithLastUpdateTime(LastUpdateTimeT&& value) { SetLastUpdateTime(std::forward<LastUpdateTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_organizationConformancePackName;
@@ -367,7 +151,7 @@ namespace Model
     Aws::Vector<Aws::String> m_excludedAccounts;
     bool m_excludedAccountsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdateTime;
+    Aws::Utils::DateTime m_lastUpdateTime{};
     bool m_lastUpdateTimeHasBeenSet = false;
   };
 

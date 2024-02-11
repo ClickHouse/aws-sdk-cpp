@@ -32,73 +32,35 @@ namespace Model
   class RelatedItemsUpdate
   {
   public:
-    AWS_SSMINCIDENTS_API RelatedItemsUpdate();
+    AWS_SSMINCIDENTS_API RelatedItemsUpdate() = default;
     AWS_SSMINCIDENTS_API RelatedItemsUpdate(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API RelatedItemsUpdate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Details about the related item you're adding.</p>
      */
-    inline const RelatedItem& GetItemToAdd() const{ return m_itemToAdd; }
-
-    /**
-     * <p>Details about the related item you're adding.</p>
-     */
+    inline const RelatedItem& GetItemToAdd() const { return m_itemToAdd; }
     inline bool ItemToAddHasBeenSet() const { return m_itemToAddHasBeenSet; }
+    template<typename ItemToAddT = RelatedItem>
+    void SetItemToAdd(ItemToAddT&& value) { m_itemToAddHasBeenSet = true; m_itemToAdd = std::forward<ItemToAddT>(value); }
+    template<typename ItemToAddT = RelatedItem>
+    RelatedItemsUpdate& WithItemToAdd(ItemToAddT&& value) { SetItemToAdd(std::forward<ItemToAddT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about the related item you're adding.</p>
-     */
-    inline void SetItemToAdd(const RelatedItem& value) { m_itemToAddHasBeenSet = true; m_itemToAdd = value; }
-
-    /**
-     * <p>Details about the related item you're adding.</p>
-     */
-    inline void SetItemToAdd(RelatedItem&& value) { m_itemToAddHasBeenSet = true; m_itemToAdd = std::move(value); }
-
-    /**
-     * <p>Details about the related item you're adding.</p>
-     */
-    inline RelatedItemsUpdate& WithItemToAdd(const RelatedItem& value) { SetItemToAdd(value); return *this;}
-
-    /**
-     * <p>Details about the related item you're adding.</p>
-     */
-    inline RelatedItemsUpdate& WithItemToAdd(RelatedItem&& value) { SetItemToAdd(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about the related item you're deleting.</p>
      */
-    inline const ItemIdentifier& GetItemToRemove() const{ return m_itemToRemove; }
-
-    /**
-     * <p>Details about the related item you're deleting.</p>
-     */
+    inline const ItemIdentifier& GetItemToRemove() const { return m_itemToRemove; }
     inline bool ItemToRemoveHasBeenSet() const { return m_itemToRemoveHasBeenSet; }
-
-    /**
-     * <p>Details about the related item you're deleting.</p>
-     */
-    inline void SetItemToRemove(const ItemIdentifier& value) { m_itemToRemoveHasBeenSet = true; m_itemToRemove = value; }
-
-    /**
-     * <p>Details about the related item you're deleting.</p>
-     */
-    inline void SetItemToRemove(ItemIdentifier&& value) { m_itemToRemoveHasBeenSet = true; m_itemToRemove = std::move(value); }
-
-    /**
-     * <p>Details about the related item you're deleting.</p>
-     */
-    inline RelatedItemsUpdate& WithItemToRemove(const ItemIdentifier& value) { SetItemToRemove(value); return *this;}
-
-    /**
-     * <p>Details about the related item you're deleting.</p>
-     */
-    inline RelatedItemsUpdate& WithItemToRemove(ItemIdentifier&& value) { SetItemToRemove(std::move(value)); return *this;}
-
+    template<typename ItemToRemoveT = ItemIdentifier>
+    void SetItemToRemove(ItemToRemoveT&& value) { m_itemToRemoveHasBeenSet = true; m_itemToRemove = std::forward<ItemToRemoveT>(value); }
+    template<typename ItemToRemoveT = ItemIdentifier>
+    RelatedItemsUpdate& WithItemToRemove(ItemToRemoveT&& value) { SetItemToRemove(std::forward<ItemToRemoveT>(value)); return *this;}
+    ///@}
   private:
 
     RelatedItem m_itemToAdd;

@@ -10,21 +10,6 @@
 using namespace Aws::ElasticBeanstalk::Model;
 using namespace Aws::Utils;
 
-CreateApplicationVersionRequest::CreateApplicationVersionRequest() : 
-    m_applicationNameHasBeenSet(false),
-    m_versionLabelHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_sourceBuildInformationHasBeenSet(false),
-    m_sourceBundleHasBeenSet(false),
-    m_buildConfigurationHasBeenSet(false),
-    m_autoCreateApplication(false),
-    m_autoCreateApplicationHasBeenSet(false),
-    m_process(false),
-    m_processHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateApplicationVersionRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -71,11 +56,18 @@ Aws::String CreateApplicationVersionRequest::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.member.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 

@@ -18,17 +18,7 @@ namespace Personalize
 namespace Model
 {
 
-HyperParameterRanges::HyperParameterRanges() : 
-    m_integerHyperParameterRangesHasBeenSet(false),
-    m_continuousHyperParameterRangesHasBeenSet(false),
-    m_categoricalHyperParameterRangesHasBeenSet(false)
-{
-}
-
-HyperParameterRanges::HyperParameterRanges(JsonView jsonValue) : 
-    m_integerHyperParameterRangesHasBeenSet(false),
-    m_continuousHyperParameterRangesHasBeenSet(false),
-    m_categoricalHyperParameterRangesHasBeenSet(false)
+HyperParameterRanges::HyperParameterRanges(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ HyperParameterRanges& HyperParameterRanges::operator =(JsonView jsonValue)
     }
     m_integerHyperParameterRangesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("continuousHyperParameterRanges"))
   {
     Aws::Utils::Array<JsonView> continuousHyperParameterRangesJsonList = jsonValue.GetArray("continuousHyperParameterRanges");
@@ -54,7 +43,6 @@ HyperParameterRanges& HyperParameterRanges::operator =(JsonView jsonValue)
     }
     m_continuousHyperParameterRangesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("categoricalHyperParameterRanges"))
   {
     Aws::Utils::Array<JsonView> categoricalHyperParameterRangesJsonList = jsonValue.GetArray("categoricalHyperParameterRanges");
@@ -64,7 +52,6 @@ HyperParameterRanges& HyperParameterRanges::operator =(JsonView jsonValue)
     }
     m_categoricalHyperParameterRangesHasBeenSet = true;
   }
-
   return *this;
 }
 

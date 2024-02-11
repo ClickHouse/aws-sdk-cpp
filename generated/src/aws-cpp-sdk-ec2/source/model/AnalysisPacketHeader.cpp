@@ -20,21 +20,7 @@ namespace EC2
 namespace Model
 {
 
-AnalysisPacketHeader::AnalysisPacketHeader() : 
-    m_destinationAddressesHasBeenSet(false),
-    m_destinationPortRangesHasBeenSet(false),
-    m_protocolHasBeenSet(false),
-    m_sourceAddressesHasBeenSet(false),
-    m_sourcePortRangesHasBeenSet(false)
-{
-}
-
-AnalysisPacketHeader::AnalysisPacketHeader(const XmlNode& xmlNode) : 
-    m_destinationAddressesHasBeenSet(false),
-    m_destinationPortRangesHasBeenSet(false),
-    m_protocolHasBeenSet(false),
-    m_sourceAddressesHasBeenSet(false),
-    m_sourcePortRangesHasBeenSet(false)
+AnalysisPacketHeader::AnalysisPacketHeader(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +35,7 @@ AnalysisPacketHeader& AnalysisPacketHeader::operator =(const XmlNode& xmlNode)
     if(!destinationAddressesNode.IsNull())
     {
       XmlNode destinationAddressesMember = destinationAddressesNode.FirstChild("item");
+      m_destinationAddressesHasBeenSet = !destinationAddressesMember.IsNull();
       while(!destinationAddressesMember.IsNull())
       {
         m_destinationAddresses.push_back(destinationAddressesMember.GetText());
@@ -61,6 +48,7 @@ AnalysisPacketHeader& AnalysisPacketHeader::operator =(const XmlNode& xmlNode)
     if(!destinationPortRangesNode.IsNull())
     {
       XmlNode destinationPortRangesMember = destinationPortRangesNode.FirstChild("item");
+      m_destinationPortRangesHasBeenSet = !destinationPortRangesMember.IsNull();
       while(!destinationPortRangesMember.IsNull())
       {
         m_destinationPortRanges.push_back(destinationPortRangesMember);
@@ -79,6 +67,7 @@ AnalysisPacketHeader& AnalysisPacketHeader::operator =(const XmlNode& xmlNode)
     if(!sourceAddressesNode.IsNull())
     {
       XmlNode sourceAddressesMember = sourceAddressesNode.FirstChild("item");
+      m_sourceAddressesHasBeenSet = !sourceAddressesMember.IsNull();
       while(!sourceAddressesMember.IsNull())
       {
         m_sourceAddresses.push_back(sourceAddressesMember.GetText());
@@ -91,6 +80,7 @@ AnalysisPacketHeader& AnalysisPacketHeader::operator =(const XmlNode& xmlNode)
     if(!sourcePortRangesNode.IsNull())
     {
       XmlNode sourcePortRangesMember = sourcePortRangesNode.FirstChild("item");
+      m_sourcePortRangesHasBeenSet = !sourcePortRangesMember.IsNull();
       while(!sourcePortRangesMember.IsNull())
       {
         m_sourcePortRanges.push_back(sourcePortRangesMember);
@@ -169,7 +159,7 @@ void AnalysisPacketHeader::OutputToStream(Aws::OStream& oStream, const char* loc
       for(auto& item : m_destinationPortRanges)
       {
         Aws::StringStream destinationPortRangesSs;
-        destinationPortRangesSs << location <<  ".DestinationPortRangeSet." << destinationPortRangesIdx++;
+        destinationPortRangesSs << location << ".DestinationPortRangeSet." << destinationPortRangesIdx++;
         item.OutputToStream(oStream, destinationPortRangesSs.str().c_str());
       }
   }
@@ -191,7 +181,7 @@ void AnalysisPacketHeader::OutputToStream(Aws::OStream& oStream, const char* loc
       for(auto& item : m_sourcePortRanges)
       {
         Aws::StringStream sourcePortRangesSs;
-        sourcePortRangesSs << location <<  ".SourcePortRangeSet." << sourcePortRangesIdx++;
+        sourcePortRangesSs << location << ".SourcePortRangeSet." << sourcePortRangesIdx++;
         item.OutputToStream(oStream, sourcePortRangesSs.str().c_str());
       }
   }

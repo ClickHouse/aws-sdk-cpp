@@ -36,146 +36,54 @@ namespace Model
   class ClientAuthentication
   {
   public:
-    AWS_KAFKA_API ClientAuthentication();
+    AWS_KAFKA_API ClientAuthentication() = default;
     AWS_KAFKA_API ClientAuthentication(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API ClientAuthentication& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * 
             <p>Details for ClientAuthentication using SASL.</p>
          
      */
-    inline const Sasl& GetSasl() const{ return m_sasl; }
-
-    /**
-     * 
-            <p>Details for ClientAuthentication using SASL.</p>
-         
-     */
+    inline const Sasl& GetSasl() const { return m_sasl; }
     inline bool SaslHasBeenSet() const { return m_saslHasBeenSet; }
+    template<typename SaslT = Sasl>
+    void SetSasl(SaslT&& value) { m_saslHasBeenSet = true; m_sasl = std::forward<SaslT>(value); }
+    template<typename SaslT = Sasl>
+    ClientAuthentication& WithSasl(SaslT&& value) { SetSasl(std::forward<SaslT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>Details for ClientAuthentication using SASL.</p>
-         
-     */
-    inline void SetSasl(const Sasl& value) { m_saslHasBeenSet = true; m_sasl = value; }
-
-    /**
-     * 
-            <p>Details for ClientAuthentication using SASL.</p>
-         
-     */
-    inline void SetSasl(Sasl&& value) { m_saslHasBeenSet = true; m_sasl = std::move(value); }
-
-    /**
-     * 
-            <p>Details for ClientAuthentication using SASL.</p>
-         
-     */
-    inline ClientAuthentication& WithSasl(const Sasl& value) { SetSasl(value); return *this;}
-
-    /**
-     * 
-            <p>Details for ClientAuthentication using SASL.</p>
-         
-     */
-    inline ClientAuthentication& WithSasl(Sasl&& value) { SetSasl(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>Details for ClientAuthentication using TLS.</p>
          
      */
-    inline const Tls& GetTls() const{ return m_tls; }
-
-    /**
-     * 
-            <p>Details for ClientAuthentication using TLS.</p>
-         
-     */
+    inline const Tls& GetTls() const { return m_tls; }
     inline bool TlsHasBeenSet() const { return m_tlsHasBeenSet; }
+    template<typename TlsT = Tls>
+    void SetTls(TlsT&& value) { m_tlsHasBeenSet = true; m_tls = std::forward<TlsT>(value); }
+    template<typename TlsT = Tls>
+    ClientAuthentication& WithTls(TlsT&& value) { SetTls(std::forward<TlsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>Details for ClientAuthentication using TLS.</p>
-         
-     */
-    inline void SetTls(const Tls& value) { m_tlsHasBeenSet = true; m_tls = value; }
-
-    /**
-     * 
-            <p>Details for ClientAuthentication using TLS.</p>
-         
-     */
-    inline void SetTls(Tls&& value) { m_tlsHasBeenSet = true; m_tls = std::move(value); }
-
-    /**
-     * 
-            <p>Details for ClientAuthentication using TLS.</p>
-         
-     */
-    inline ClientAuthentication& WithTls(const Tls& value) { SetTls(value); return *this;}
-
-    /**
-     * 
-            <p>Details for ClientAuthentication using TLS.</p>
-         
-     */
-    inline ClientAuthentication& WithTls(Tls&& value) { SetTls(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>Contains information about unauthenticated traffic to the
      * cluster.</p>
          
      */
-    inline const Unauthenticated& GetUnauthenticated() const{ return m_unauthenticated; }
-
-    /**
-     * 
-            <p>Contains information about unauthenticated traffic to the
-     * cluster.</p>
-         
-     */
+    inline const Unauthenticated& GetUnauthenticated() const { return m_unauthenticated; }
     inline bool UnauthenticatedHasBeenSet() const { return m_unauthenticatedHasBeenSet; }
-
-    /**
-     * 
-            <p>Contains information about unauthenticated traffic to the
-     * cluster.</p>
-         
-     */
-    inline void SetUnauthenticated(const Unauthenticated& value) { m_unauthenticatedHasBeenSet = true; m_unauthenticated = value; }
-
-    /**
-     * 
-            <p>Contains information about unauthenticated traffic to the
-     * cluster.</p>
-         
-     */
-    inline void SetUnauthenticated(Unauthenticated&& value) { m_unauthenticatedHasBeenSet = true; m_unauthenticated = std::move(value); }
-
-    /**
-     * 
-            <p>Contains information about unauthenticated traffic to the
-     * cluster.</p>
-         
-     */
-    inline ClientAuthentication& WithUnauthenticated(const Unauthenticated& value) { SetUnauthenticated(value); return *this;}
-
-    /**
-     * 
-            <p>Contains information about unauthenticated traffic to the
-     * cluster.</p>
-         
-     */
-    inline ClientAuthentication& WithUnauthenticated(Unauthenticated&& value) { SetUnauthenticated(std::move(value)); return *this;}
-
+    template<typename UnauthenticatedT = Unauthenticated>
+    void SetUnauthenticated(UnauthenticatedT&& value) { m_unauthenticatedHasBeenSet = true; m_unauthenticated = std::forward<UnauthenticatedT>(value); }
+    template<typename UnauthenticatedT = Unauthenticated>
+    ClientAuthentication& WithUnauthenticated(UnauthenticatedT&& value) { SetUnauthenticated(std::forward<UnauthenticatedT>(value)); return *this;}
+    ///@}
   private:
 
     Sasl m_sasl;

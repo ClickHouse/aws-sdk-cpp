@@ -18,17 +18,7 @@ namespace GroundStation
 namespace Model
 {
 
-UplinkSpectrumConfig::UplinkSpectrumConfig() : 
-    m_centerFrequencyHasBeenSet(false),
-    m_polarization(Polarization::NOT_SET),
-    m_polarizationHasBeenSet(false)
-{
-}
-
-UplinkSpectrumConfig::UplinkSpectrumConfig(JsonView jsonValue) : 
-    m_centerFrequencyHasBeenSet(false),
-    m_polarization(Polarization::NOT_SET),
-    m_polarizationHasBeenSet(false)
+UplinkSpectrumConfig::UplinkSpectrumConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ UplinkSpectrumConfig& UplinkSpectrumConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("centerFrequency"))
   {
     m_centerFrequency = jsonValue.GetObject("centerFrequency");
-
     m_centerFrequencyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("polarization"))
   {
     m_polarization = PolarizationMapper::GetPolarizationForName(jsonValue.GetString("polarization"));
-
     m_polarizationHasBeenSet = true;
   }
-
   return *this;
 }
 

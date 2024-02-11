@@ -33,179 +33,59 @@ namespace Model
   class SymbolicLink
   {
   public:
-    AWS_CODECOMMIT_API SymbolicLink();
+    AWS_CODECOMMIT_API SymbolicLink() = default;
     AWS_CODECOMMIT_API SymbolicLink(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API SymbolicLink& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The blob ID that contains the information about the symbolic link.</p>
      */
-    inline const Aws::String& GetBlobId() const{ return m_blobId; }
-
-    /**
-     * <p>The blob ID that contains the information about the symbolic link.</p>
-     */
+    inline const Aws::String& GetBlobId() const { return m_blobId; }
     inline bool BlobIdHasBeenSet() const { return m_blobIdHasBeenSet; }
+    template<typename BlobIdT = Aws::String>
+    void SetBlobId(BlobIdT&& value) { m_blobIdHasBeenSet = true; m_blobId = std::forward<BlobIdT>(value); }
+    template<typename BlobIdT = Aws::String>
+    SymbolicLink& WithBlobId(BlobIdT&& value) { SetBlobId(std::forward<BlobIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The blob ID that contains the information about the symbolic link.</p>
-     */
-    inline void SetBlobId(const Aws::String& value) { m_blobIdHasBeenSet = true; m_blobId = value; }
-
-    /**
-     * <p>The blob ID that contains the information about the symbolic link.</p>
-     */
-    inline void SetBlobId(Aws::String&& value) { m_blobIdHasBeenSet = true; m_blobId = std::move(value); }
-
-    /**
-     * <p>The blob ID that contains the information about the symbolic link.</p>
-     */
-    inline void SetBlobId(const char* value) { m_blobIdHasBeenSet = true; m_blobId.assign(value); }
-
-    /**
-     * <p>The blob ID that contains the information about the symbolic link.</p>
-     */
-    inline SymbolicLink& WithBlobId(const Aws::String& value) { SetBlobId(value); return *this;}
-
-    /**
-     * <p>The blob ID that contains the information about the symbolic link.</p>
-     */
-    inline SymbolicLink& WithBlobId(Aws::String&& value) { SetBlobId(std::move(value)); return *this;}
-
-    /**
-     * <p>The blob ID that contains the information about the symbolic link.</p>
-     */
-    inline SymbolicLink& WithBlobId(const char* value) { SetBlobId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The fully qualified path to the folder that contains the symbolic link.</p>
      */
-    inline const Aws::String& GetAbsolutePath() const{ return m_absolutePath; }
-
-    /**
-     * <p>The fully qualified path to the folder that contains the symbolic link.</p>
-     */
+    inline const Aws::String& GetAbsolutePath() const { return m_absolutePath; }
     inline bool AbsolutePathHasBeenSet() const { return m_absolutePathHasBeenSet; }
+    template<typename AbsolutePathT = Aws::String>
+    void SetAbsolutePath(AbsolutePathT&& value) { m_absolutePathHasBeenSet = true; m_absolutePath = std::forward<AbsolutePathT>(value); }
+    template<typename AbsolutePathT = Aws::String>
+    SymbolicLink& WithAbsolutePath(AbsolutePathT&& value) { SetAbsolutePath(std::forward<AbsolutePathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The fully qualified path to the folder that contains the symbolic link.</p>
-     */
-    inline void SetAbsolutePath(const Aws::String& value) { m_absolutePathHasBeenSet = true; m_absolutePath = value; }
-
-    /**
-     * <p>The fully qualified path to the folder that contains the symbolic link.</p>
-     */
-    inline void SetAbsolutePath(Aws::String&& value) { m_absolutePathHasBeenSet = true; m_absolutePath = std::move(value); }
-
-    /**
-     * <p>The fully qualified path to the folder that contains the symbolic link.</p>
-     */
-    inline void SetAbsolutePath(const char* value) { m_absolutePathHasBeenSet = true; m_absolutePath.assign(value); }
-
-    /**
-     * <p>The fully qualified path to the folder that contains the symbolic link.</p>
-     */
-    inline SymbolicLink& WithAbsolutePath(const Aws::String& value) { SetAbsolutePath(value); return *this;}
-
-    /**
-     * <p>The fully qualified path to the folder that contains the symbolic link.</p>
-     */
-    inline SymbolicLink& WithAbsolutePath(Aws::String&& value) { SetAbsolutePath(std::move(value)); return *this;}
-
-    /**
-     * <p>The fully qualified path to the folder that contains the symbolic link.</p>
-     */
-    inline SymbolicLink& WithAbsolutePath(const char* value) { SetAbsolutePath(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The relative path of the symbolic link from the folder where the query
      * originated.</p>
      */
-    inline const Aws::String& GetRelativePath() const{ return m_relativePath; }
-
-    /**
-     * <p>The relative path of the symbolic link from the folder where the query
-     * originated.</p>
-     */
+    inline const Aws::String& GetRelativePath() const { return m_relativePath; }
     inline bool RelativePathHasBeenSet() const { return m_relativePathHasBeenSet; }
+    template<typename RelativePathT = Aws::String>
+    void SetRelativePath(RelativePathT&& value) { m_relativePathHasBeenSet = true; m_relativePath = std::forward<RelativePathT>(value); }
+    template<typename RelativePathT = Aws::String>
+    SymbolicLink& WithRelativePath(RelativePathT&& value) { SetRelativePath(std::forward<RelativePathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The relative path of the symbolic link from the folder where the query
-     * originated.</p>
-     */
-    inline void SetRelativePath(const Aws::String& value) { m_relativePathHasBeenSet = true; m_relativePath = value; }
-
-    /**
-     * <p>The relative path of the symbolic link from the folder where the query
-     * originated.</p>
-     */
-    inline void SetRelativePath(Aws::String&& value) { m_relativePathHasBeenSet = true; m_relativePath = std::move(value); }
-
-    /**
-     * <p>The relative path of the symbolic link from the folder where the query
-     * originated.</p>
-     */
-    inline void SetRelativePath(const char* value) { m_relativePathHasBeenSet = true; m_relativePath.assign(value); }
-
-    /**
-     * <p>The relative path of the symbolic link from the folder where the query
-     * originated.</p>
-     */
-    inline SymbolicLink& WithRelativePath(const Aws::String& value) { SetRelativePath(value); return *this;}
-
-    /**
-     * <p>The relative path of the symbolic link from the folder where the query
-     * originated.</p>
-     */
-    inline SymbolicLink& WithRelativePath(Aws::String&& value) { SetRelativePath(std::move(value)); return *this;}
-
-    /**
-     * <p>The relative path of the symbolic link from the folder where the query
-     * originated.</p>
-     */
-    inline SymbolicLink& WithRelativePath(const char* value) { SetRelativePath(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The file mode permissions of the blob that cotains information about the
      * symbolic link.</p>
      */
-    inline const FileModeTypeEnum& GetFileMode() const{ return m_fileMode; }
-
-    /**
-     * <p>The file mode permissions of the blob that cotains information about the
-     * symbolic link.</p>
-     */
+    inline FileModeTypeEnum GetFileMode() const { return m_fileMode; }
     inline bool FileModeHasBeenSet() const { return m_fileModeHasBeenSet; }
-
-    /**
-     * <p>The file mode permissions of the blob that cotains information about the
-     * symbolic link.</p>
-     */
-    inline void SetFileMode(const FileModeTypeEnum& value) { m_fileModeHasBeenSet = true; m_fileMode = value; }
-
-    /**
-     * <p>The file mode permissions of the blob that cotains information about the
-     * symbolic link.</p>
-     */
-    inline void SetFileMode(FileModeTypeEnum&& value) { m_fileModeHasBeenSet = true; m_fileMode = std::move(value); }
-
-    /**
-     * <p>The file mode permissions of the blob that cotains information about the
-     * symbolic link.</p>
-     */
-    inline SymbolicLink& WithFileMode(const FileModeTypeEnum& value) { SetFileMode(value); return *this;}
-
-    /**
-     * <p>The file mode permissions of the blob that cotains information about the
-     * symbolic link.</p>
-     */
-    inline SymbolicLink& WithFileMode(FileModeTypeEnum&& value) { SetFileMode(std::move(value)); return *this;}
-
+    inline void SetFileMode(FileModeTypeEnum value) { m_fileModeHasBeenSet = true; m_fileMode = value; }
+    inline SymbolicLink& WithFileMode(FileModeTypeEnum value) { SetFileMode(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_blobId;
@@ -217,7 +97,7 @@ namespace Model
     Aws::String m_relativePath;
     bool m_relativePathHasBeenSet = false;
 
-    FileModeTypeEnum m_fileMode;
+    FileModeTypeEnum m_fileMode{FileModeTypeEnum::NOT_SET};
     bool m_fileModeHasBeenSet = false;
   };
 

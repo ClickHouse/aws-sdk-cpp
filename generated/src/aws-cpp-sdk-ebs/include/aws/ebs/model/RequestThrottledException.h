@@ -25,81 +25,47 @@ namespace Model
 {
 
   /**
-   * <p>The number of API requests has exceed the maximum allowed API request
-   * throttling limit.</p><p><h3>See Also:</h3>   <a
+   * <p>The number of API requests has exceeded the maximum allowed API request
+   * throttling limit for the snapshot. For more information see <a
+   * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html">Error
+   * retries</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/ebs-2019-11-02/RequestThrottledException">AWS
    * API Reference</a></p>
    */
   class RequestThrottledException
   {
   public:
-    AWS_EBS_API RequestThrottledException();
+    AWS_EBS_API RequestThrottledException() = default;
     AWS_EBS_API RequestThrottledException(Aws::Utils::Json::JsonView jsonValue);
     AWS_EBS_API RequestThrottledException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EBS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    RequestThrottledException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    
-    inline RequestThrottledException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    
-    inline RequestThrottledException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    
-    inline RequestThrottledException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason for the exception.</p>
      */
-    inline const RequestThrottledExceptionReason& GetReason() const{ return m_reason; }
-
-    /**
-     * <p>The reason for the exception.</p>
-     */
+    inline RequestThrottledExceptionReason GetReason() const { return m_reason; }
     inline bool ReasonHasBeenSet() const { return m_reasonHasBeenSet; }
-
-    /**
-     * <p>The reason for the exception.</p>
-     */
-    inline void SetReason(const RequestThrottledExceptionReason& value) { m_reasonHasBeenSet = true; m_reason = value; }
-
-    /**
-     * <p>The reason for the exception.</p>
-     */
-    inline void SetReason(RequestThrottledExceptionReason&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
-
-    /**
-     * <p>The reason for the exception.</p>
-     */
-    inline RequestThrottledException& WithReason(const RequestThrottledExceptionReason& value) { SetReason(value); return *this;}
-
-    /**
-     * <p>The reason for the exception.</p>
-     */
-    inline RequestThrottledException& WithReason(RequestThrottledExceptionReason&& value) { SetReason(std::move(value)); return *this;}
-
+    inline void SetReason(RequestThrottledExceptionReason value) { m_reasonHasBeenSet = true; m_reason = value; }
+    inline RequestThrottledException& WithReason(RequestThrottledExceptionReason value) { SetReason(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_message;
     bool m_messageHasBeenSet = false;
 
-    RequestThrottledExceptionReason m_reason;
+    RequestThrottledExceptionReason m_reason{RequestThrottledExceptionReason::NOT_SET};
     bool m_reasonHasBeenSet = false;
   };
 

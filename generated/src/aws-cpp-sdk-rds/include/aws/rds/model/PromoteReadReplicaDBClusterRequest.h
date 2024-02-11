@@ -24,7 +24,7 @@ namespace Model
   class PromoteReadReplicaDBClusterRequest : public RDSRequest
   {
   public:
-    AWS_RDS_API PromoteReadReplicaDBClusterRequest();
+    AWS_RDS_API PromoteReadReplicaDBClusterRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,70 +39,20 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The identifier of the DB cluster read replica to promote. This parameter
      * isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match the
      * identifier of an existing DB cluster read replica.</p> </li> </ul> <p>Example:
      * <code>my-cluster-replica1</code> </p>
      */
-    inline const Aws::String& GetDBClusterIdentifier() const{ return m_dBClusterIdentifier; }
-
-    /**
-     * <p>The identifier of the DB cluster read replica to promote. This parameter
-     * isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match the
-     * identifier of an existing DB cluster read replica.</p> </li> </ul> <p>Example:
-     * <code>my-cluster-replica1</code> </p>
-     */
+    inline const Aws::String& GetDBClusterIdentifier() const { return m_dBClusterIdentifier; }
     inline bool DBClusterIdentifierHasBeenSet() const { return m_dBClusterIdentifierHasBeenSet; }
-
-    /**
-     * <p>The identifier of the DB cluster read replica to promote. This parameter
-     * isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match the
-     * identifier of an existing DB cluster read replica.</p> </li> </ul> <p>Example:
-     * <code>my-cluster-replica1</code> </p>
-     */
-    inline void SetDBClusterIdentifier(const Aws::String& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = value; }
-
-    /**
-     * <p>The identifier of the DB cluster read replica to promote. This parameter
-     * isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match the
-     * identifier of an existing DB cluster read replica.</p> </li> </ul> <p>Example:
-     * <code>my-cluster-replica1</code> </p>
-     */
-    inline void SetDBClusterIdentifier(Aws::String&& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = std::move(value); }
-
-    /**
-     * <p>The identifier of the DB cluster read replica to promote. This parameter
-     * isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match the
-     * identifier of an existing DB cluster read replica.</p> </li> </ul> <p>Example:
-     * <code>my-cluster-replica1</code> </p>
-     */
-    inline void SetDBClusterIdentifier(const char* value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier.assign(value); }
-
-    /**
-     * <p>The identifier of the DB cluster read replica to promote. This parameter
-     * isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match the
-     * identifier of an existing DB cluster read replica.</p> </li> </ul> <p>Example:
-     * <code>my-cluster-replica1</code> </p>
-     */
-    inline PromoteReadReplicaDBClusterRequest& WithDBClusterIdentifier(const Aws::String& value) { SetDBClusterIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier of the DB cluster read replica to promote. This parameter
-     * isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match the
-     * identifier of an existing DB cluster read replica.</p> </li> </ul> <p>Example:
-     * <code>my-cluster-replica1</code> </p>
-     */
-    inline PromoteReadReplicaDBClusterRequest& WithDBClusterIdentifier(Aws::String&& value) { SetDBClusterIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the DB cluster read replica to promote. This parameter
-     * isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match the
-     * identifier of an existing DB cluster read replica.</p> </li> </ul> <p>Example:
-     * <code>my-cluster-replica1</code> </p>
-     */
-    inline PromoteReadReplicaDBClusterRequest& WithDBClusterIdentifier(const char* value) { SetDBClusterIdentifier(value); return *this;}
-
+    template<typename DBClusterIdentifierT = Aws::String>
+    void SetDBClusterIdentifier(DBClusterIdentifierT&& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = std::forward<DBClusterIdentifierT>(value); }
+    template<typename DBClusterIdentifierT = Aws::String>
+    PromoteReadReplicaDBClusterRequest& WithDBClusterIdentifier(DBClusterIdentifierT&& value) { SetDBClusterIdentifier(std::forward<DBClusterIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dBClusterIdentifier;

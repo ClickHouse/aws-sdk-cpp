@@ -20,23 +20,7 @@ namespace EC2
 namespace Model
 {
 
-SpotDatafeedSubscription::SpotDatafeedSubscription() : 
-    m_bucketHasBeenSet(false),
-    m_faultHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_prefixHasBeenSet(false),
-    m_state(DatafeedSubscriptionState::NOT_SET),
-    m_stateHasBeenSet(false)
-{
-}
-
-SpotDatafeedSubscription::SpotDatafeedSubscription(const XmlNode& xmlNode) : 
-    m_bucketHasBeenSet(false),
-    m_faultHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_prefixHasBeenSet(false),
-    m_state(DatafeedSubscriptionState::NOT_SET),
-    m_stateHasBeenSet(false)
+SpotDatafeedSubscription::SpotDatafeedSubscription(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -74,7 +58,7 @@ SpotDatafeedSubscription& SpotDatafeedSubscription::operator =(const XmlNode& xm
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = DatafeedSubscriptionStateMapper::GetDatafeedSubscriptionStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = DatafeedSubscriptionStateMapper::GetDatafeedSubscriptionStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
   }
@@ -108,7 +92,7 @@ void SpotDatafeedSubscription::OutputToStream(Aws::OStream& oStream, const char*
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << DatafeedSubscriptionStateMapper::GetNameForDatafeedSubscriptionState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(DatafeedSubscriptionStateMapper::GetNameForDatafeedSubscriptionState(m_state)) << "&";
   }
 
 }
@@ -135,7 +119,7 @@ void SpotDatafeedSubscription::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << DatafeedSubscriptionStateMapper::GetNameForDatafeedSubscriptionState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(DatafeedSubscriptionStateMapper::GetNameForDatafeedSubscriptionState(m_state)) << "&";
   }
 }
 

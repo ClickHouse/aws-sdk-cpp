@@ -32,83 +32,38 @@ namespace Model
   class StorageClassAnalysisDataExport
   {
   public:
-    AWS_S3_API StorageClassAnalysisDataExport();
+    AWS_S3_API StorageClassAnalysisDataExport() = default;
     AWS_S3_API StorageClassAnalysisDataExport(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3_API StorageClassAnalysisDataExport& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The version of the output schema to use when exporting data. Must be
      * <code>V_1</code>.</p>
      */
-    inline const StorageClassAnalysisSchemaVersion& GetOutputSchemaVersion() const{ return m_outputSchemaVersion; }
-
-    /**
-     * <p>The version of the output schema to use when exporting data. Must be
-     * <code>V_1</code>.</p>
-     */
+    inline StorageClassAnalysisSchemaVersion GetOutputSchemaVersion() const { return m_outputSchemaVersion; }
     inline bool OutputSchemaVersionHasBeenSet() const { return m_outputSchemaVersionHasBeenSet; }
+    inline void SetOutputSchemaVersion(StorageClassAnalysisSchemaVersion value) { m_outputSchemaVersionHasBeenSet = true; m_outputSchemaVersion = value; }
+    inline StorageClassAnalysisDataExport& WithOutputSchemaVersion(StorageClassAnalysisSchemaVersion value) { SetOutputSchemaVersion(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the output schema to use when exporting data. Must be
-     * <code>V_1</code>.</p>
-     */
-    inline void SetOutputSchemaVersion(const StorageClassAnalysisSchemaVersion& value) { m_outputSchemaVersionHasBeenSet = true; m_outputSchemaVersion = value; }
-
-    /**
-     * <p>The version of the output schema to use when exporting data. Must be
-     * <code>V_1</code>.</p>
-     */
-    inline void SetOutputSchemaVersion(StorageClassAnalysisSchemaVersion&& value) { m_outputSchemaVersionHasBeenSet = true; m_outputSchemaVersion = std::move(value); }
-
-    /**
-     * <p>The version of the output schema to use when exporting data. Must be
-     * <code>V_1</code>.</p>
-     */
-    inline StorageClassAnalysisDataExport& WithOutputSchemaVersion(const StorageClassAnalysisSchemaVersion& value) { SetOutputSchemaVersion(value); return *this;}
-
-    /**
-     * <p>The version of the output schema to use when exporting data. Must be
-     * <code>V_1</code>.</p>
-     */
-    inline StorageClassAnalysisDataExport& WithOutputSchemaVersion(StorageClassAnalysisSchemaVersion&& value) { SetOutputSchemaVersion(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The place to store the data for an analysis.</p>
      */
-    inline const AnalyticsExportDestination& GetDestination() const{ return m_destination; }
-
-    /**
-     * <p>The place to store the data for an analysis.</p>
-     */
+    inline const AnalyticsExportDestination& GetDestination() const { return m_destination; }
     inline bool DestinationHasBeenSet() const { return m_destinationHasBeenSet; }
-
-    /**
-     * <p>The place to store the data for an analysis.</p>
-     */
-    inline void SetDestination(const AnalyticsExportDestination& value) { m_destinationHasBeenSet = true; m_destination = value; }
-
-    /**
-     * <p>The place to store the data for an analysis.</p>
-     */
-    inline void SetDestination(AnalyticsExportDestination&& value) { m_destinationHasBeenSet = true; m_destination = std::move(value); }
-
-    /**
-     * <p>The place to store the data for an analysis.</p>
-     */
-    inline StorageClassAnalysisDataExport& WithDestination(const AnalyticsExportDestination& value) { SetDestination(value); return *this;}
-
-    /**
-     * <p>The place to store the data for an analysis.</p>
-     */
-    inline StorageClassAnalysisDataExport& WithDestination(AnalyticsExportDestination&& value) { SetDestination(std::move(value)); return *this;}
-
+    template<typename DestinationT = AnalyticsExportDestination>
+    void SetDestination(DestinationT&& value) { m_destinationHasBeenSet = true; m_destination = std::forward<DestinationT>(value); }
+    template<typename DestinationT = AnalyticsExportDestination>
+    StorageClassAnalysisDataExport& WithDestination(DestinationT&& value) { SetDestination(std::forward<DestinationT>(value)); return *this;}
+    ///@}
   private:
 
-    StorageClassAnalysisSchemaVersion m_outputSchemaVersion;
+    StorageClassAnalysisSchemaVersion m_outputSchemaVersion{StorageClassAnalysisSchemaVersion::NOT_SET};
     bool m_outputSchemaVersionHasBeenSet = false;
 
     AnalyticsExportDestination m_destination;

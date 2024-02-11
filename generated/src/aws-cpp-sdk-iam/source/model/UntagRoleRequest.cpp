@@ -10,12 +10,6 @@
 using namespace Aws::IAM::Model;
 using namespace Aws::Utils;
 
-UntagRoleRequest::UntagRoleRequest() : 
-    m_roleNameHasBeenSet(false),
-    m_tagKeysHasBeenSet(false)
-{
-}
-
 Aws::String UntagRoleRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,12 +21,19 @@ Aws::String UntagRoleRequest::SerializePayload() const
 
   if(m_tagKeysHasBeenSet)
   {
-    unsigned tagKeysCount = 1;
-    for(auto& item : m_tagKeys)
+    if (m_tagKeys.empty())
     {
-      ss << "TagKeys.member." << tagKeysCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      tagKeysCount++;
+      ss << "TagKeys=&";
+    }
+    else
+    {
+      unsigned tagKeysCount = 1;
+      for(auto& item : m_tagKeys)
+      {
+        ss << "TagKeys.member." << tagKeysCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        tagKeysCount++;
+      }
     }
   }
 

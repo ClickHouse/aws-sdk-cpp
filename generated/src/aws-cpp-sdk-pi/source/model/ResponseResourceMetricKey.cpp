@@ -18,15 +18,7 @@ namespace PI
 namespace Model
 {
 
-ResponseResourceMetricKey::ResponseResourceMetricKey() : 
-    m_metricHasBeenSet(false),
-    m_dimensionsHasBeenSet(false)
-{
-}
-
-ResponseResourceMetricKey::ResponseResourceMetricKey(JsonView jsonValue) : 
-    m_metricHasBeenSet(false),
-    m_dimensionsHasBeenSet(false)
+ResponseResourceMetricKey::ResponseResourceMetricKey(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ResponseResourceMetricKey& ResponseResourceMetricKey::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("Metric"))
   {
     m_metric = jsonValue.GetString("Metric");
-
     m_metricHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Dimensions"))
   {
     Aws::Map<Aws::String, JsonView> dimensionsJsonMap = jsonValue.GetObject("Dimensions").GetAllObjects();
@@ -49,7 +39,6 @@ ResponseResourceMetricKey& ResponseResourceMetricKey::operator =(JsonView jsonVa
     }
     m_dimensionsHasBeenSet = true;
   }
-
   return *this;
 }
 

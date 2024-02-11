@@ -32,154 +32,49 @@ namespace Model
   class ObjectTypeField
   {
   public:
-    AWS_CUSTOMERPROFILES_API ObjectTypeField();
+    AWS_CUSTOMERPROFILES_API ObjectTypeField() = default;
     AWS_CUSTOMERPROFILES_API ObjectTypeField(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API ObjectTypeField& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A field of a ProfileObject. For example: _source.FirstName, where “_source”
      * is a ProfileObjectType of a Zendesk user and “FirstName” is a field in that
      * ObjectType.</p>
      */
-    inline const Aws::String& GetSource() const{ return m_source; }
-
-    /**
-     * <p>A field of a ProfileObject. For example: _source.FirstName, where “_source”
-     * is a ProfileObjectType of a Zendesk user and “FirstName” is a field in that
-     * ObjectType.</p>
-     */
+    inline const Aws::String& GetSource() const { return m_source; }
     inline bool SourceHasBeenSet() const { return m_sourceHasBeenSet; }
+    template<typename SourceT = Aws::String>
+    void SetSource(SourceT&& value) { m_sourceHasBeenSet = true; m_source = std::forward<SourceT>(value); }
+    template<typename SourceT = Aws::String>
+    ObjectTypeField& WithSource(SourceT&& value) { SetSource(std::forward<SourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A field of a ProfileObject. For example: _source.FirstName, where “_source”
-     * is a ProfileObjectType of a Zendesk user and “FirstName” is a field in that
-     * ObjectType.</p>
-     */
-    inline void SetSource(const Aws::String& value) { m_sourceHasBeenSet = true; m_source = value; }
-
-    /**
-     * <p>A field of a ProfileObject. For example: _source.FirstName, where “_source”
-     * is a ProfileObjectType of a Zendesk user and “FirstName” is a field in that
-     * ObjectType.</p>
-     */
-    inline void SetSource(Aws::String&& value) { m_sourceHasBeenSet = true; m_source = std::move(value); }
-
-    /**
-     * <p>A field of a ProfileObject. For example: _source.FirstName, where “_source”
-     * is a ProfileObjectType of a Zendesk user and “FirstName” is a field in that
-     * ObjectType.</p>
-     */
-    inline void SetSource(const char* value) { m_sourceHasBeenSet = true; m_source.assign(value); }
-
-    /**
-     * <p>A field of a ProfileObject. For example: _source.FirstName, where “_source”
-     * is a ProfileObjectType of a Zendesk user and “FirstName” is a field in that
-     * ObjectType.</p>
-     */
-    inline ObjectTypeField& WithSource(const Aws::String& value) { SetSource(value); return *this;}
-
-    /**
-     * <p>A field of a ProfileObject. For example: _source.FirstName, where “_source”
-     * is a ProfileObjectType of a Zendesk user and “FirstName” is a field in that
-     * ObjectType.</p>
-     */
-    inline ObjectTypeField& WithSource(Aws::String&& value) { SetSource(std::move(value)); return *this;}
-
-    /**
-     * <p>A field of a ProfileObject. For example: _source.FirstName, where “_source”
-     * is a ProfileObjectType of a Zendesk user and “FirstName” is a field in that
-     * ObjectType.</p>
-     */
-    inline ObjectTypeField& WithSource(const char* value) { SetSource(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The location of the data in the standard ProfileObject model. For example:
      * _profile.Address.PostalCode.</p>
      */
-    inline const Aws::String& GetTarget() const{ return m_target; }
-
-    /**
-     * <p>The location of the data in the standard ProfileObject model. For example:
-     * _profile.Address.PostalCode.</p>
-     */
+    inline const Aws::String& GetTarget() const { return m_target; }
     inline bool TargetHasBeenSet() const { return m_targetHasBeenSet; }
+    template<typename TargetT = Aws::String>
+    void SetTarget(TargetT&& value) { m_targetHasBeenSet = true; m_target = std::forward<TargetT>(value); }
+    template<typename TargetT = Aws::String>
+    ObjectTypeField& WithTarget(TargetT&& value) { SetTarget(std::forward<TargetT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The location of the data in the standard ProfileObject model. For example:
-     * _profile.Address.PostalCode.</p>
-     */
-    inline void SetTarget(const Aws::String& value) { m_targetHasBeenSet = true; m_target = value; }
-
-    /**
-     * <p>The location of the data in the standard ProfileObject model. For example:
-     * _profile.Address.PostalCode.</p>
-     */
-    inline void SetTarget(Aws::String&& value) { m_targetHasBeenSet = true; m_target = std::move(value); }
-
-    /**
-     * <p>The location of the data in the standard ProfileObject model. For example:
-     * _profile.Address.PostalCode.</p>
-     */
-    inline void SetTarget(const char* value) { m_targetHasBeenSet = true; m_target.assign(value); }
-
-    /**
-     * <p>The location of the data in the standard ProfileObject model. For example:
-     * _profile.Address.PostalCode.</p>
-     */
-    inline ObjectTypeField& WithTarget(const Aws::String& value) { SetTarget(value); return *this;}
-
-    /**
-     * <p>The location of the data in the standard ProfileObject model. For example:
-     * _profile.Address.PostalCode.</p>
-     */
-    inline ObjectTypeField& WithTarget(Aws::String&& value) { SetTarget(std::move(value)); return *this;}
-
-    /**
-     * <p>The location of the data in the standard ProfileObject model. For example:
-     * _profile.Address.PostalCode.</p>
-     */
-    inline ObjectTypeField& WithTarget(const char* value) { SetTarget(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The content type of the field. Used for determining equality when
      * searching.</p>
      */
-    inline const FieldContentType& GetContentType() const{ return m_contentType; }
-
-    /**
-     * <p>The content type of the field. Used for determining equality when
-     * searching.</p>
-     */
+    inline FieldContentType GetContentType() const { return m_contentType; }
     inline bool ContentTypeHasBeenSet() const { return m_contentTypeHasBeenSet; }
-
-    /**
-     * <p>The content type of the field. Used for determining equality when
-     * searching.</p>
-     */
-    inline void SetContentType(const FieldContentType& value) { m_contentTypeHasBeenSet = true; m_contentType = value; }
-
-    /**
-     * <p>The content type of the field. Used for determining equality when
-     * searching.</p>
-     */
-    inline void SetContentType(FieldContentType&& value) { m_contentTypeHasBeenSet = true; m_contentType = std::move(value); }
-
-    /**
-     * <p>The content type of the field. Used for determining equality when
-     * searching.</p>
-     */
-    inline ObjectTypeField& WithContentType(const FieldContentType& value) { SetContentType(value); return *this;}
-
-    /**
-     * <p>The content type of the field. Used for determining equality when
-     * searching.</p>
-     */
-    inline ObjectTypeField& WithContentType(FieldContentType&& value) { SetContentType(std::move(value)); return *this;}
-
+    inline void SetContentType(FieldContentType value) { m_contentTypeHasBeenSet = true; m_contentType = value; }
+    inline ObjectTypeField& WithContentType(FieldContentType value) { SetContentType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_source;
@@ -188,7 +83,7 @@ namespace Model
     Aws::String m_target;
     bool m_targetHasBeenSet = false;
 
-    FieldContentType m_contentType;
+    FieldContentType m_contentType{FieldContentType::NOT_SET};
     bool m_contentTypeHasBeenSet = false;
   };
 

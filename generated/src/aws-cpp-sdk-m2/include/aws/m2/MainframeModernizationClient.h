@@ -27,22 +27,25 @@ namespace MainframeModernization
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef MainframeModernizationClientConfiguration ClientConfigurationType;
+      typedef MainframeModernizationEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         MainframeModernizationClient(const Aws::MainframeModernization::MainframeModernizationClientConfiguration& clientConfiguration = Aws::MainframeModernization::MainframeModernizationClientConfiguration(),
-                                     std::shared_ptr<MainframeModernizationEndpointProviderBase> endpointProvider = Aws::MakeShared<MainframeModernizationEndpointProvider>(ALLOCATION_TAG));
+                                     std::shared_ptr<MainframeModernizationEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         MainframeModernizationClient(const Aws::Auth::AWSCredentials& credentials,
-                                     std::shared_ptr<MainframeModernizationEndpointProviderBase> endpointProvider = Aws::MakeShared<MainframeModernizationEndpointProvider>(ALLOCATION_TAG),
+                                     std::shared_ptr<MainframeModernizationEndpointProviderBase> endpointProvider = nullptr,
                                      const Aws::MainframeModernization::MainframeModernizationClientConfiguration& clientConfiguration = Aws::MainframeModernization::MainframeModernizationClientConfiguration());
 
        /**
@@ -50,7 +53,7 @@ namespace MainframeModernization
         * the default http client factory will be used
         */
         MainframeModernizationClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                                     std::shared_ptr<MainframeModernizationEndpointProviderBase> endpointProvider = Aws::MakeShared<MainframeModernizationEndpointProvider>(ALLOCATION_TAG),
+                                     std::shared_ptr<MainframeModernizationEndpointProviderBase> endpointProvider = nullptr,
                                      const Aws::MainframeModernization::MainframeModernizationClientConfiguration& clientConfiguration = Aws::MainframeModernization::MainframeModernizationClientConfiguration());
 
 
@@ -128,6 +131,32 @@ namespace MainframeModernization
         void CreateApplicationAsync(const CreateApplicationRequestT& request, const CreateApplicationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&MainframeModernizationClient::CreateApplication, request, handler, context);
+        }
+
+        /**
+         * <p>Starts a data set export task for a specific application.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/m2-2021-04-28/CreateDataSetExportTask">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateDataSetExportTaskOutcome CreateDataSetExportTask(const Model::CreateDataSetExportTaskRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateDataSetExportTask that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateDataSetExportTaskRequestT = Model::CreateDataSetExportTaskRequest>
+        Model::CreateDataSetExportTaskOutcomeCallable CreateDataSetExportTaskCallable(const CreateDataSetExportTaskRequestT& request) const
+        {
+            return SubmitCallable(&MainframeModernizationClient::CreateDataSetExportTask, request);
+        }
+
+        /**
+         * An Async wrapper for CreateDataSetExportTask that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateDataSetExportTaskRequestT = Model::CreateDataSetExportTaskRequest>
+        void CreateDataSetExportTaskAsync(const CreateDataSetExportTaskRequestT& request, const CreateDataSetExportTaskResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&MainframeModernizationClient::CreateDataSetExportTask, request, handler, context);
         }
 
         /**
@@ -395,6 +424,32 @@ namespace MainframeModernization
 
         /**
          * <p>Gets the status of a data set import task initiated with the
+         * <a>CreateDataSetExportTask</a> operation.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/m2-2021-04-28/GetDataSetExportTask">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetDataSetExportTaskOutcome GetDataSetExportTask(const Model::GetDataSetExportTaskRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetDataSetExportTask that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetDataSetExportTaskRequestT = Model::GetDataSetExportTaskRequest>
+        Model::GetDataSetExportTaskOutcomeCallable GetDataSetExportTaskCallable(const GetDataSetExportTaskRequestT& request) const
+        {
+            return SubmitCallable(&MainframeModernizationClient::GetDataSetExportTask, request);
+        }
+
+        /**
+         * An Async wrapper for GetDataSetExportTask that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetDataSetExportTaskRequestT = Model::GetDataSetExportTaskRequest>
+        void GetDataSetExportTaskAsync(const GetDataSetExportTaskRequestT& request, const GetDataSetExportTaskResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&MainframeModernizationClient::GetDataSetExportTask, request, handler, context);
+        }
+
+        /**
+         * <p>Gets the status of a data set import task initiated with the
          * <a>CreateDataSetImportTask</a> operation.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/m2-2021-04-28/GetDataSetImportTask">AWS
          * API Reference</a></p>
@@ -471,6 +526,32 @@ namespace MainframeModernization
         }
 
         /**
+         * <p>Gets a single sign-on URL that can be used to connect to AWS Blu
+         * Insights.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/m2-2021-04-28/GetSignedBluinsightsUrl">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetSignedBluinsightsUrlOutcome GetSignedBluinsightsUrl(const Model::GetSignedBluinsightsUrlRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for GetSignedBluinsightsUrl that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetSignedBluinsightsUrlRequestT = Model::GetSignedBluinsightsUrlRequest>
+        Model::GetSignedBluinsightsUrlOutcomeCallable GetSignedBluinsightsUrlCallable(const GetSignedBluinsightsUrlRequestT& request = {}) const
+        {
+            return SubmitCallable(&MainframeModernizationClient::GetSignedBluinsightsUrl, request);
+        }
+
+        /**
+         * An Async wrapper for GetSignedBluinsightsUrl that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetSignedBluinsightsUrlRequestT = Model::GetSignedBluinsightsUrlRequest>
+        void GetSignedBluinsightsUrlAsync(const GetSignedBluinsightsUrlResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetSignedBluinsightsUrlRequestT& request = {}) const
+        {
+            return SubmitAsync(&MainframeModernizationClient::GetSignedBluinsightsUrl, request, handler, context);
+        }
+
+        /**
          * <p>Returns a list of the application versions for a specific
          * application.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/m2-2021-04-28/ListApplicationVersions">AWS
@@ -504,13 +585,13 @@ namespace MainframeModernization
          * href="http://docs.aws.amazon.com/goto/WebAPI/m2-2021-04-28/ListApplications">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListApplicationsOutcome ListApplications(const Model::ListApplicationsRequest& request) const;
+        virtual Model::ListApplicationsOutcome ListApplications(const Model::ListApplicationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListApplications that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListApplicationsRequestT = Model::ListApplicationsRequest>
-        Model::ListApplicationsOutcomeCallable ListApplicationsCallable(const ListApplicationsRequestT& request) const
+        Model::ListApplicationsOutcomeCallable ListApplicationsCallable(const ListApplicationsRequestT& request = {}) const
         {
             return SubmitCallable(&MainframeModernizationClient::ListApplications, request);
         }
@@ -519,7 +600,7 @@ namespace MainframeModernization
          * An Async wrapper for ListApplications that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListApplicationsRequestT = Model::ListApplicationsRequest>
-        void ListApplicationsAsync(const ListApplicationsRequestT& request, const ListApplicationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListApplicationsAsync(const ListApplicationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListApplicationsRequestT& request = {}) const
         {
             return SubmitAsync(&MainframeModernizationClient::ListApplications, request, handler, context);
         }
@@ -575,6 +656,59 @@ namespace MainframeModernization
         void ListBatchJobExecutionsAsync(const ListBatchJobExecutionsRequestT& request, const ListBatchJobExecutionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&MainframeModernizationClient::ListBatchJobExecutions, request, handler, context);
+        }
+
+        /**
+         * <p>Lists all the job steps for a JCL file to restart a batch job. This is only
+         * applicable for Micro Focus engine with versions 8.0.6 and above.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/m2-2021-04-28/ListBatchJobRestartPoints">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListBatchJobRestartPointsOutcome ListBatchJobRestartPoints(const Model::ListBatchJobRestartPointsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListBatchJobRestartPoints that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListBatchJobRestartPointsRequestT = Model::ListBatchJobRestartPointsRequest>
+        Model::ListBatchJobRestartPointsOutcomeCallable ListBatchJobRestartPointsCallable(const ListBatchJobRestartPointsRequestT& request) const
+        {
+            return SubmitCallable(&MainframeModernizationClient::ListBatchJobRestartPoints, request);
+        }
+
+        /**
+         * An Async wrapper for ListBatchJobRestartPoints that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListBatchJobRestartPointsRequestT = Model::ListBatchJobRestartPointsRequest>
+        void ListBatchJobRestartPointsAsync(const ListBatchJobRestartPointsRequestT& request, const ListBatchJobRestartPointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&MainframeModernizationClient::ListBatchJobRestartPoints, request, handler, context);
+        }
+
+        /**
+         * <p>Lists the data set exports for the specified application.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/m2-2021-04-28/ListDataSetExportHistory">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListDataSetExportHistoryOutcome ListDataSetExportHistory(const Model::ListDataSetExportHistoryRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListDataSetExportHistory that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListDataSetExportHistoryRequestT = Model::ListDataSetExportHistoryRequest>
+        Model::ListDataSetExportHistoryOutcomeCallable ListDataSetExportHistoryCallable(const ListDataSetExportHistoryRequestT& request) const
+        {
+            return SubmitCallable(&MainframeModernizationClient::ListDataSetExportHistory, request);
+        }
+
+        /**
+         * An Async wrapper for ListDataSetExportHistory that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListDataSetExportHistoryRequestT = Model::ListDataSetExportHistoryRequest>
+        void ListDataSetExportHistoryAsync(const ListDataSetExportHistoryRequestT& request, const ListDataSetExportHistoryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&MainframeModernizationClient::ListDataSetExportHistory, request, handler, context);
         }
 
         /**
@@ -667,13 +801,13 @@ namespace MainframeModernization
          * href="http://docs.aws.amazon.com/goto/WebAPI/m2-2021-04-28/ListEngineVersions">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListEngineVersionsOutcome ListEngineVersions(const Model::ListEngineVersionsRequest& request) const;
+        virtual Model::ListEngineVersionsOutcome ListEngineVersions(const Model::ListEngineVersionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListEngineVersions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListEngineVersionsRequestT = Model::ListEngineVersionsRequest>
-        Model::ListEngineVersionsOutcomeCallable ListEngineVersionsCallable(const ListEngineVersionsRequestT& request) const
+        Model::ListEngineVersionsOutcomeCallable ListEngineVersionsCallable(const ListEngineVersionsRequestT& request = {}) const
         {
             return SubmitCallable(&MainframeModernizationClient::ListEngineVersions, request);
         }
@@ -682,7 +816,7 @@ namespace MainframeModernization
          * An Async wrapper for ListEngineVersions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListEngineVersionsRequestT = Model::ListEngineVersionsRequest>
-        void ListEngineVersionsAsync(const ListEngineVersionsRequestT& request, const ListEngineVersionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListEngineVersionsAsync(const ListEngineVersionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListEngineVersionsRequestT& request = {}) const
         {
             return SubmitAsync(&MainframeModernizationClient::ListEngineVersions, request, handler, context);
         }
@@ -692,13 +826,13 @@ namespace MainframeModernization
          * href="http://docs.aws.amazon.com/goto/WebAPI/m2-2021-04-28/ListEnvironments">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListEnvironmentsOutcome ListEnvironments(const Model::ListEnvironmentsRequest& request) const;
+        virtual Model::ListEnvironmentsOutcome ListEnvironments(const Model::ListEnvironmentsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListEnvironments that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListEnvironmentsRequestT = Model::ListEnvironmentsRequest>
-        Model::ListEnvironmentsOutcomeCallable ListEnvironmentsCallable(const ListEnvironmentsRequestT& request) const
+        Model::ListEnvironmentsOutcomeCallable ListEnvironmentsCallable(const ListEnvironmentsRequestT& request = {}) const
         {
             return SubmitCallable(&MainframeModernizationClient::ListEnvironments, request);
         }
@@ -707,7 +841,7 @@ namespace MainframeModernization
          * An Async wrapper for ListEnvironments that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListEnvironmentsRequestT = Model::ListEnvironmentsRequest>
-        void ListEnvironmentsAsync(const ListEnvironmentsRequestT& request, const ListEnvironmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListEnvironmentsAsync(const ListEnvironmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListEnvironmentsRequestT& request = {}) const
         {
             return SubmitAsync(&MainframeModernizationClient::ListEnvironments, request, handler, context);
         }
@@ -926,7 +1060,6 @@ namespace MainframeModernization
       void init(const MainframeModernizationClientConfiguration& clientConfiguration);
 
       MainframeModernizationClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<MainframeModernizationEndpointProviderBase> m_endpointProvider;
   };
 

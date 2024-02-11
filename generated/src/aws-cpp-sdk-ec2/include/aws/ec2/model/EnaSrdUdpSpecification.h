@@ -23,7 +23,7 @@ namespace Model
 
   /**
    * <p>ENA Express is compatible with both TCP and UDP transport protocols. When
-   * it’s enabled, TCP traffic automatically uses it. However, some UDP-based
+   * it's enabled, TCP traffic automatically uses it. However, some UDP-based
    * applications are designed to handle network packets that are out of order,
    * without a need for retransmission, such as live video broadcasting or other
    * near-real-time applications. For UDP traffic, you can specify whether to use ENA
@@ -35,7 +35,7 @@ namespace Model
   class EnaSrdUdpSpecification
   {
   public:
-    AWS_EC2_API EnaSrdUdpSpecification();
+    AWS_EC2_API EnaSrdUdpSpecification() = default;
     AWS_EC2_API EnaSrdUdpSpecification(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API EnaSrdUdpSpecification& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -43,33 +43,19 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
-     * <p>Indicates whether UDP traffic uses ENA Express. To specify this setting, you
-     * must first enable ENA Express.</p>
+     * <p>Indicates whether UDP traffic to and from the instance uses ENA Express. To
+     * specify this setting, you must first enable ENA Express.</p>
      */
-    inline bool GetEnaSrdUdpEnabled() const{ return m_enaSrdUdpEnabled; }
-
-    /**
-     * <p>Indicates whether UDP traffic uses ENA Express. To specify this setting, you
-     * must first enable ENA Express.</p>
-     */
+    inline bool GetEnaSrdUdpEnabled() const { return m_enaSrdUdpEnabled; }
     inline bool EnaSrdUdpEnabledHasBeenSet() const { return m_enaSrdUdpEnabledHasBeenSet; }
-
-    /**
-     * <p>Indicates whether UDP traffic uses ENA Express. To specify this setting, you
-     * must first enable ENA Express.</p>
-     */
     inline void SetEnaSrdUdpEnabled(bool value) { m_enaSrdUdpEnabledHasBeenSet = true; m_enaSrdUdpEnabled = value; }
-
-    /**
-     * <p>Indicates whether UDP traffic uses ENA Express. To specify this setting, you
-     * must first enable ENA Express.</p>
-     */
     inline EnaSrdUdpSpecification& WithEnaSrdUdpEnabled(bool value) { SetEnaSrdUdpEnabled(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_enaSrdUdpEnabled;
+    bool m_enaSrdUdpEnabled{false};
     bool m_enaSrdUdpEnabledHasBeenSet = false;
   };
 

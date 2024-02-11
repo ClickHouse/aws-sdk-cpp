@@ -18,15 +18,7 @@ namespace ChimeSDKMediaPipelines
 namespace Model
 {
 
-AudioArtifactsConfiguration::AudioArtifactsConfiguration() : 
-    m_muxType(AudioMuxType::NOT_SET),
-    m_muxTypeHasBeenSet(false)
-{
-}
-
-AudioArtifactsConfiguration::AudioArtifactsConfiguration(JsonView jsonValue) : 
-    m_muxType(AudioMuxType::NOT_SET),
-    m_muxTypeHasBeenSet(false)
+AudioArtifactsConfiguration::AudioArtifactsConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AudioArtifactsConfiguration& AudioArtifactsConfiguration::operator =(JsonView js
   if(jsonValue.ValueExists("MuxType"))
   {
     m_muxType = AudioMuxTypeMapper::GetAudioMuxTypeForName(jsonValue.GetString("MuxType"));
-
     m_muxTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

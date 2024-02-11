@@ -18,15 +18,7 @@ namespace FMS
 namespace Model
 {
 
-PossibleRemediationActions::PossibleRemediationActions() : 
-    m_descriptionHasBeenSet(false),
-    m_actionsHasBeenSet(false)
-{
-}
-
-PossibleRemediationActions::PossibleRemediationActions(JsonView jsonValue) : 
-    m_descriptionHasBeenSet(false),
-    m_actionsHasBeenSet(false)
+PossibleRemediationActions::PossibleRemediationActions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ PossibleRemediationActions& PossibleRemediationActions::operator =(JsonView json
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Actions"))
   {
     Aws::Utils::Array<JsonView> actionsJsonList = jsonValue.GetArray("Actions");
@@ -49,7 +39,6 @@ PossibleRemediationActions& PossibleRemediationActions::operator =(JsonView json
     }
     m_actionsHasBeenSet = true;
   }
-
   return *this;
 }
 

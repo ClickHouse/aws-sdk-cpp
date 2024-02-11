@@ -33,135 +33,49 @@ namespace Model
   class CreateDelegationRequest
   {
   public:
-    AWS_AUDITMANAGER_API CreateDelegationRequest();
+    AWS_AUDITMANAGER_API CreateDelegationRequest() = default;
     AWS_AUDITMANAGER_API CreateDelegationRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_AUDITMANAGER_API CreateDelegationRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AUDITMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> A comment that's related to the delegation request. </p>
      */
-    inline const Aws::String& GetComment() const{ return m_comment; }
-
-    /**
-     * <p> A comment that's related to the delegation request. </p>
-     */
+    inline const Aws::String& GetComment() const { return m_comment; }
     inline bool CommentHasBeenSet() const { return m_commentHasBeenSet; }
+    template<typename CommentT = Aws::String>
+    void SetComment(CommentT&& value) { m_commentHasBeenSet = true; m_comment = std::forward<CommentT>(value); }
+    template<typename CommentT = Aws::String>
+    CreateDelegationRequest& WithComment(CommentT&& value) { SetComment(std::forward<CommentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> A comment that's related to the delegation request. </p>
-     */
-    inline void SetComment(const Aws::String& value) { m_commentHasBeenSet = true; m_comment = value; }
-
-    /**
-     * <p> A comment that's related to the delegation request. </p>
-     */
-    inline void SetComment(Aws::String&& value) { m_commentHasBeenSet = true; m_comment = std::move(value); }
-
-    /**
-     * <p> A comment that's related to the delegation request. </p>
-     */
-    inline void SetComment(const char* value) { m_commentHasBeenSet = true; m_comment.assign(value); }
-
-    /**
-     * <p> A comment that's related to the delegation request. </p>
-     */
-    inline CreateDelegationRequest& WithComment(const Aws::String& value) { SetComment(value); return *this;}
-
-    /**
-     * <p> A comment that's related to the delegation request. </p>
-     */
-    inline CreateDelegationRequest& WithComment(Aws::String&& value) { SetComment(std::move(value)); return *this;}
-
-    /**
-     * <p> A comment that's related to the delegation request. </p>
-     */
-    inline CreateDelegationRequest& WithComment(const char* value) { SetComment(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The unique identifier for the control set. </p>
      */
-    inline const Aws::String& GetControlSetId() const{ return m_controlSetId; }
-
-    /**
-     * <p> The unique identifier for the control set. </p>
-     */
+    inline const Aws::String& GetControlSetId() const { return m_controlSetId; }
     inline bool ControlSetIdHasBeenSet() const { return m_controlSetIdHasBeenSet; }
+    template<typename ControlSetIdT = Aws::String>
+    void SetControlSetId(ControlSetIdT&& value) { m_controlSetIdHasBeenSet = true; m_controlSetId = std::forward<ControlSetIdT>(value); }
+    template<typename ControlSetIdT = Aws::String>
+    CreateDelegationRequest& WithControlSetId(ControlSetIdT&& value) { SetControlSetId(std::forward<ControlSetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The unique identifier for the control set. </p>
-     */
-    inline void SetControlSetId(const Aws::String& value) { m_controlSetIdHasBeenSet = true; m_controlSetId = value; }
-
-    /**
-     * <p> The unique identifier for the control set. </p>
-     */
-    inline void SetControlSetId(Aws::String&& value) { m_controlSetIdHasBeenSet = true; m_controlSetId = std::move(value); }
-
-    /**
-     * <p> The unique identifier for the control set. </p>
-     */
-    inline void SetControlSetId(const char* value) { m_controlSetIdHasBeenSet = true; m_controlSetId.assign(value); }
-
-    /**
-     * <p> The unique identifier for the control set. </p>
-     */
-    inline CreateDelegationRequest& WithControlSetId(const Aws::String& value) { SetControlSetId(value); return *this;}
-
-    /**
-     * <p> The unique identifier for the control set. </p>
-     */
-    inline CreateDelegationRequest& WithControlSetId(Aws::String&& value) { SetControlSetId(std::move(value)); return *this;}
-
-    /**
-     * <p> The unique identifier for the control set. </p>
-     */
-    inline CreateDelegationRequest& WithControlSetId(const char* value) { SetControlSetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The Amazon Resource Name (ARN) of the IAM role. </p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role. </p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    CreateDelegationRequest& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role. </p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role. </p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role. </p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role. </p>
-     */
-    inline CreateDelegationRequest& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role. </p>
-     */
-    inline CreateDelegationRequest& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role. </p>
-     */
-    inline CreateDelegationRequest& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The type of customer persona. </p>  <p>In
      * <code>CreateAssessment</code>, <code>roleType</code> can only be
@@ -170,58 +84,11 @@ namespace Model
      * <code>BatchCreateDelegationByAssessment</code>, <code>roleType</code> can only
      * be <code>RESOURCE_OWNER</code>.</p> 
      */
-    inline const RoleType& GetRoleType() const{ return m_roleType; }
-
-    /**
-     * <p> The type of customer persona. </p>  <p>In
-     * <code>CreateAssessment</code>, <code>roleType</code> can only be
-     * <code>PROCESS_OWNER</code>. </p> <p>In <code>UpdateSettings</code>,
-     * <code>roleType</code> can only be <code>PROCESS_OWNER</code>.</p> <p>In
-     * <code>BatchCreateDelegationByAssessment</code>, <code>roleType</code> can only
-     * be <code>RESOURCE_OWNER</code>.</p> 
-     */
+    inline RoleType GetRoleType() const { return m_roleType; }
     inline bool RoleTypeHasBeenSet() const { return m_roleTypeHasBeenSet; }
-
-    /**
-     * <p> The type of customer persona. </p>  <p>In
-     * <code>CreateAssessment</code>, <code>roleType</code> can only be
-     * <code>PROCESS_OWNER</code>. </p> <p>In <code>UpdateSettings</code>,
-     * <code>roleType</code> can only be <code>PROCESS_OWNER</code>.</p> <p>In
-     * <code>BatchCreateDelegationByAssessment</code>, <code>roleType</code> can only
-     * be <code>RESOURCE_OWNER</code>.</p> 
-     */
-    inline void SetRoleType(const RoleType& value) { m_roleTypeHasBeenSet = true; m_roleType = value; }
-
-    /**
-     * <p> The type of customer persona. </p>  <p>In
-     * <code>CreateAssessment</code>, <code>roleType</code> can only be
-     * <code>PROCESS_OWNER</code>. </p> <p>In <code>UpdateSettings</code>,
-     * <code>roleType</code> can only be <code>PROCESS_OWNER</code>.</p> <p>In
-     * <code>BatchCreateDelegationByAssessment</code>, <code>roleType</code> can only
-     * be <code>RESOURCE_OWNER</code>.</p> 
-     */
-    inline void SetRoleType(RoleType&& value) { m_roleTypeHasBeenSet = true; m_roleType = std::move(value); }
-
-    /**
-     * <p> The type of customer persona. </p>  <p>In
-     * <code>CreateAssessment</code>, <code>roleType</code> can only be
-     * <code>PROCESS_OWNER</code>. </p> <p>In <code>UpdateSettings</code>,
-     * <code>roleType</code> can only be <code>PROCESS_OWNER</code>.</p> <p>In
-     * <code>BatchCreateDelegationByAssessment</code>, <code>roleType</code> can only
-     * be <code>RESOURCE_OWNER</code>.</p> 
-     */
-    inline CreateDelegationRequest& WithRoleType(const RoleType& value) { SetRoleType(value); return *this;}
-
-    /**
-     * <p> The type of customer persona. </p>  <p>In
-     * <code>CreateAssessment</code>, <code>roleType</code> can only be
-     * <code>PROCESS_OWNER</code>. </p> <p>In <code>UpdateSettings</code>,
-     * <code>roleType</code> can only be <code>PROCESS_OWNER</code>.</p> <p>In
-     * <code>BatchCreateDelegationByAssessment</code>, <code>roleType</code> can only
-     * be <code>RESOURCE_OWNER</code>.</p> 
-     */
-    inline CreateDelegationRequest& WithRoleType(RoleType&& value) { SetRoleType(std::move(value)); return *this;}
-
+    inline void SetRoleType(RoleType value) { m_roleTypeHasBeenSet = true; m_roleType = value; }
+    inline CreateDelegationRequest& WithRoleType(RoleType value) { SetRoleType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_comment;
@@ -233,7 +100,7 @@ namespace Model
     Aws::String m_roleArn;
     bool m_roleArnHasBeenSet = false;
 
-    RoleType m_roleType;
+    RoleType m_roleType{RoleType::NOT_SET};
     bool m_roleTypeHasBeenSet = false;
   };
 

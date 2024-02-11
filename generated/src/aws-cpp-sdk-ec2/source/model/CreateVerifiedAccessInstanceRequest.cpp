@@ -10,16 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateVerifiedAccessInstanceRequest::CreateVerifiedAccessInstanceRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String CreateVerifiedAccessInstanceRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -47,6 +37,16 @@ Aws::String CreateVerifiedAccessInstanceRequest::SerializePayload() const
   if(m_dryRunHasBeenSet)
   {
     ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
+  }
+
+  if(m_fIPSEnabledHasBeenSet)
+  {
+    ss << "FIPSEnabled=" << std::boolalpha << m_fIPSEnabled << "&";
+  }
+
+  if(m_cidrEndpointsCustomSubDomainHasBeenSet)
+  {
+    ss << "CidrEndpointsCustomSubDomain=" << StringUtils::URLEncode(m_cidrEndpointsCustomSubDomain.c_str()) << "&";
   }
 
   ss << "Version=2016-11-15";

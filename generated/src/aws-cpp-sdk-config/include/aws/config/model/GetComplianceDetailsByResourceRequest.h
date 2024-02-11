@@ -26,7 +26,7 @@ namespace Model
   class GetComplianceDetailsByResourceRequest : public ConfigServiceRequest
   {
   public:
-    AWS_CONFIGSERVICE_API GetComplianceDetailsByResourceRequest();
+    AWS_CONFIGSERVICE_API GetComplianceDetailsByResourceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,282 +39,75 @@ namespace Model
     AWS_CONFIGSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The type of the Amazon Web Services resource for which you want compliance
      * information.</p>
      */
-    inline const Aws::String& GetResourceType() const{ return m_resourceType; }
-
-    /**
-     * <p>The type of the Amazon Web Services resource for which you want compliance
-     * information.</p>
-     */
+    inline const Aws::String& GetResourceType() const { return m_resourceType; }
     inline bool ResourceTypeHasBeenSet() const { return m_resourceTypeHasBeenSet; }
+    template<typename ResourceTypeT = Aws::String>
+    void SetResourceType(ResourceTypeT&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::forward<ResourceTypeT>(value); }
+    template<typename ResourceTypeT = Aws::String>
+    GetComplianceDetailsByResourceRequest& WithResourceType(ResourceTypeT&& value) { SetResourceType(std::forward<ResourceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the Amazon Web Services resource for which you want compliance
-     * information.</p>
-     */
-    inline void SetResourceType(const Aws::String& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
-
-    /**
-     * <p>The type of the Amazon Web Services resource for which you want compliance
-     * information.</p>
-     */
-    inline void SetResourceType(Aws::String&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
-
-    /**
-     * <p>The type of the Amazon Web Services resource for which you want compliance
-     * information.</p>
-     */
-    inline void SetResourceType(const char* value) { m_resourceTypeHasBeenSet = true; m_resourceType.assign(value); }
-
-    /**
-     * <p>The type of the Amazon Web Services resource for which you want compliance
-     * information.</p>
-     */
-    inline GetComplianceDetailsByResourceRequest& WithResourceType(const Aws::String& value) { SetResourceType(value); return *this;}
-
-    /**
-     * <p>The type of the Amazon Web Services resource for which you want compliance
-     * information.</p>
-     */
-    inline GetComplianceDetailsByResourceRequest& WithResourceType(Aws::String&& value) { SetResourceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of the Amazon Web Services resource for which you want compliance
-     * information.</p>
-     */
-    inline GetComplianceDetailsByResourceRequest& WithResourceType(const char* value) { SetResourceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services resource for which you want compliance
      * information.</p>
      */
-    inline const Aws::String& GetResourceId() const{ return m_resourceId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services resource for which you want compliance
-     * information.</p>
-     */
+    inline const Aws::String& GetResourceId() const { return m_resourceId; }
     inline bool ResourceIdHasBeenSet() const { return m_resourceIdHasBeenSet; }
+    template<typename ResourceIdT = Aws::String>
+    void SetResourceId(ResourceIdT&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::forward<ResourceIdT>(value); }
+    template<typename ResourceIdT = Aws::String>
+    GetComplianceDetailsByResourceRequest& WithResourceId(ResourceIdT&& value) { SetResourceId(std::forward<ResourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services resource for which you want compliance
-     * information.</p>
-     */
-    inline void SetResourceId(const Aws::String& value) { m_resourceIdHasBeenSet = true; m_resourceId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services resource for which you want compliance
-     * information.</p>
-     */
-    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services resource for which you want compliance
-     * information.</p>
-     */
-    inline void SetResourceId(const char* value) { m_resourceIdHasBeenSet = true; m_resourceId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services resource for which you want compliance
-     * information.</p>
-     */
-    inline GetComplianceDetailsByResourceRequest& WithResourceId(const Aws::String& value) { SetResourceId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services resource for which you want compliance
-     * information.</p>
-     */
-    inline GetComplianceDetailsByResourceRequest& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services resource for which you want compliance
-     * information.</p>
-     */
-    inline GetComplianceDetailsByResourceRequest& WithResourceId(const char* value) { SetResourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Filters the results by compliance.</p> <p> <code>INSUFFICIENT_DATA</code> is
      * a valid <code>ComplianceType</code> that is returned when an Config rule cannot
      * be evaluated. However, <code>INSUFFICIENT_DATA</code> cannot be used as a
      * <code>ComplianceType</code> for filtering results.</p>
      */
-    inline const Aws::Vector<ComplianceType>& GetComplianceTypes() const{ return m_complianceTypes; }
-
-    /**
-     * <p>Filters the results by compliance.</p> <p> <code>INSUFFICIENT_DATA</code> is
-     * a valid <code>ComplianceType</code> that is returned when an Config rule cannot
-     * be evaluated. However, <code>INSUFFICIENT_DATA</code> cannot be used as a
-     * <code>ComplianceType</code> for filtering results.</p>
-     */
+    inline const Aws::Vector<ComplianceType>& GetComplianceTypes() const { return m_complianceTypes; }
     inline bool ComplianceTypesHasBeenSet() const { return m_complianceTypesHasBeenSet; }
+    template<typename ComplianceTypesT = Aws::Vector<ComplianceType>>
+    void SetComplianceTypes(ComplianceTypesT&& value) { m_complianceTypesHasBeenSet = true; m_complianceTypes = std::forward<ComplianceTypesT>(value); }
+    template<typename ComplianceTypesT = Aws::Vector<ComplianceType>>
+    GetComplianceDetailsByResourceRequest& WithComplianceTypes(ComplianceTypesT&& value) { SetComplianceTypes(std::forward<ComplianceTypesT>(value)); return *this;}
+    inline GetComplianceDetailsByResourceRequest& AddComplianceTypes(ComplianceType value) { m_complianceTypesHasBeenSet = true; m_complianceTypes.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>Filters the results by compliance.</p> <p> <code>INSUFFICIENT_DATA</code> is
-     * a valid <code>ComplianceType</code> that is returned when an Config rule cannot
-     * be evaluated. However, <code>INSUFFICIENT_DATA</code> cannot be used as a
-     * <code>ComplianceType</code> for filtering results.</p>
-     */
-    inline void SetComplianceTypes(const Aws::Vector<ComplianceType>& value) { m_complianceTypesHasBeenSet = true; m_complianceTypes = value; }
-
-    /**
-     * <p>Filters the results by compliance.</p> <p> <code>INSUFFICIENT_DATA</code> is
-     * a valid <code>ComplianceType</code> that is returned when an Config rule cannot
-     * be evaluated. However, <code>INSUFFICIENT_DATA</code> cannot be used as a
-     * <code>ComplianceType</code> for filtering results.</p>
-     */
-    inline void SetComplianceTypes(Aws::Vector<ComplianceType>&& value) { m_complianceTypesHasBeenSet = true; m_complianceTypes = std::move(value); }
-
-    /**
-     * <p>Filters the results by compliance.</p> <p> <code>INSUFFICIENT_DATA</code> is
-     * a valid <code>ComplianceType</code> that is returned when an Config rule cannot
-     * be evaluated. However, <code>INSUFFICIENT_DATA</code> cannot be used as a
-     * <code>ComplianceType</code> for filtering results.</p>
-     */
-    inline GetComplianceDetailsByResourceRequest& WithComplianceTypes(const Aws::Vector<ComplianceType>& value) { SetComplianceTypes(value); return *this;}
-
-    /**
-     * <p>Filters the results by compliance.</p> <p> <code>INSUFFICIENT_DATA</code> is
-     * a valid <code>ComplianceType</code> that is returned when an Config rule cannot
-     * be evaluated. However, <code>INSUFFICIENT_DATA</code> cannot be used as a
-     * <code>ComplianceType</code> for filtering results.</p>
-     */
-    inline GetComplianceDetailsByResourceRequest& WithComplianceTypes(Aws::Vector<ComplianceType>&& value) { SetComplianceTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>Filters the results by compliance.</p> <p> <code>INSUFFICIENT_DATA</code> is
-     * a valid <code>ComplianceType</code> that is returned when an Config rule cannot
-     * be evaluated. However, <code>INSUFFICIENT_DATA</code> cannot be used as a
-     * <code>ComplianceType</code> for filtering results.</p>
-     */
-    inline GetComplianceDetailsByResourceRequest& AddComplianceTypes(const ComplianceType& value) { m_complianceTypesHasBeenSet = true; m_complianceTypes.push_back(value); return *this; }
-
-    /**
-     * <p>Filters the results by compliance.</p> <p> <code>INSUFFICIENT_DATA</code> is
-     * a valid <code>ComplianceType</code> that is returned when an Config rule cannot
-     * be evaluated. However, <code>INSUFFICIENT_DATA</code> cannot be used as a
-     * <code>ComplianceType</code> for filtering results.</p>
-     */
-    inline GetComplianceDetailsByResourceRequest& AddComplianceTypes(ComplianceType&& value) { m_complianceTypesHasBeenSet = true; m_complianceTypes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The <code>nextToken</code> string returned on a previous page that you use to
      * get the next page of results in a paginated response.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
-     * get the next page of results in a paginated response.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    GetComplianceDetailsByResourceRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
-     * get the next page of results in a paginated response.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
-     * get the next page of results in a paginated response.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
-     * get the next page of results in a paginated response.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
-     * get the next page of results in a paginated response.</p>
-     */
-    inline GetComplianceDetailsByResourceRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
-     * get the next page of results in a paginated response.</p>
-     */
-    inline GetComplianceDetailsByResourceRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
-     * get the next page of results in a paginated response.</p>
-     */
-    inline GetComplianceDetailsByResourceRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique ID of Amazon Web Services resource execution for which you want to
      * retrieve evaluation results. </p>  <p>You need to only provide either a
      * <code>ResourceEvaluationID</code> or a <code>ResourceID </code>and
      * <code>ResourceType</code>.</p> 
      */
-    inline const Aws::String& GetResourceEvaluationId() const{ return m_resourceEvaluationId; }
-
-    /**
-     * <p>The unique ID of Amazon Web Services resource execution for which you want to
-     * retrieve evaluation results. </p>  <p>You need to only provide either a
-     * <code>ResourceEvaluationID</code> or a <code>ResourceID </code>and
-     * <code>ResourceType</code>.</p> 
-     */
+    inline const Aws::String& GetResourceEvaluationId() const { return m_resourceEvaluationId; }
     inline bool ResourceEvaluationIdHasBeenSet() const { return m_resourceEvaluationIdHasBeenSet; }
-
-    /**
-     * <p>The unique ID of Amazon Web Services resource execution for which you want to
-     * retrieve evaluation results. </p>  <p>You need to only provide either a
-     * <code>ResourceEvaluationID</code> or a <code>ResourceID </code>and
-     * <code>ResourceType</code>.</p> 
-     */
-    inline void SetResourceEvaluationId(const Aws::String& value) { m_resourceEvaluationIdHasBeenSet = true; m_resourceEvaluationId = value; }
-
-    /**
-     * <p>The unique ID of Amazon Web Services resource execution for which you want to
-     * retrieve evaluation results. </p>  <p>You need to only provide either a
-     * <code>ResourceEvaluationID</code> or a <code>ResourceID </code>and
-     * <code>ResourceType</code>.</p> 
-     */
-    inline void SetResourceEvaluationId(Aws::String&& value) { m_resourceEvaluationIdHasBeenSet = true; m_resourceEvaluationId = std::move(value); }
-
-    /**
-     * <p>The unique ID of Amazon Web Services resource execution for which you want to
-     * retrieve evaluation results. </p>  <p>You need to only provide either a
-     * <code>ResourceEvaluationID</code> or a <code>ResourceID </code>and
-     * <code>ResourceType</code>.</p> 
-     */
-    inline void SetResourceEvaluationId(const char* value) { m_resourceEvaluationIdHasBeenSet = true; m_resourceEvaluationId.assign(value); }
-
-    /**
-     * <p>The unique ID of Amazon Web Services resource execution for which you want to
-     * retrieve evaluation results. </p>  <p>You need to only provide either a
-     * <code>ResourceEvaluationID</code> or a <code>ResourceID </code>and
-     * <code>ResourceType</code>.</p> 
-     */
-    inline GetComplianceDetailsByResourceRequest& WithResourceEvaluationId(const Aws::String& value) { SetResourceEvaluationId(value); return *this;}
-
-    /**
-     * <p>The unique ID of Amazon Web Services resource execution for which you want to
-     * retrieve evaluation results. </p>  <p>You need to only provide either a
-     * <code>ResourceEvaluationID</code> or a <code>ResourceID </code>and
-     * <code>ResourceType</code>.</p> 
-     */
-    inline GetComplianceDetailsByResourceRequest& WithResourceEvaluationId(Aws::String&& value) { SetResourceEvaluationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of Amazon Web Services resource execution for which you want to
-     * retrieve evaluation results. </p>  <p>You need to only provide either a
-     * <code>ResourceEvaluationID</code> or a <code>ResourceID </code>and
-     * <code>ResourceType</code>.</p> 
-     */
-    inline GetComplianceDetailsByResourceRequest& WithResourceEvaluationId(const char* value) { SetResourceEvaluationId(value); return *this;}
-
+    template<typename ResourceEvaluationIdT = Aws::String>
+    void SetResourceEvaluationId(ResourceEvaluationIdT&& value) { m_resourceEvaluationIdHasBeenSet = true; m_resourceEvaluationId = std::forward<ResourceEvaluationIdT>(value); }
+    template<typename ResourceEvaluationIdT = Aws::String>
+    GetComplianceDetailsByResourceRequest& WithResourceEvaluationId(ResourceEvaluationIdT&& value) { SetResourceEvaluationId(std::forward<ResourceEvaluationIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceType;

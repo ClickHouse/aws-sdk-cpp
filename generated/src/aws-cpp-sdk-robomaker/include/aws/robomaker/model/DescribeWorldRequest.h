@@ -21,7 +21,7 @@ namespace Model
   class DescribeWorldRequest : public RoboMakerRequest
   {
   public:
-    AWS_ROBOMAKER_API DescribeWorldRequest();
+    AWS_ROBOMAKER_API DescribeWorldRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_ROBOMAKER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (arn) of the world you want to describe.</p>
      */
-    inline const Aws::String& GetWorld() const{ return m_world; }
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world you want to describe.</p>
-     */
+    inline const Aws::String& GetWorld() const { return m_world; }
     inline bool WorldHasBeenSet() const { return m_worldHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world you want to describe.</p>
-     */
-    inline void SetWorld(const Aws::String& value) { m_worldHasBeenSet = true; m_world = value; }
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world you want to describe.</p>
-     */
-    inline void SetWorld(Aws::String&& value) { m_worldHasBeenSet = true; m_world = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world you want to describe.</p>
-     */
-    inline void SetWorld(const char* value) { m_worldHasBeenSet = true; m_world.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world you want to describe.</p>
-     */
-    inline DescribeWorldRequest& WithWorld(const Aws::String& value) { SetWorld(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world you want to describe.</p>
-     */
-    inline DescribeWorldRequest& WithWorld(Aws::String&& value) { SetWorld(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world you want to describe.</p>
-     */
-    inline DescribeWorldRequest& WithWorld(const char* value) { SetWorld(value); return *this;}
-
+    template<typename WorldT = Aws::String>
+    void SetWorld(WorldT&& value) { m_worldHasBeenSet = true; m_world = std::forward<WorldT>(value); }
+    template<typename WorldT = Aws::String>
+    DescribeWorldRequest& WithWorld(WorldT&& value) { SetWorld(std::forward<WorldT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_world;

@@ -21,7 +21,7 @@ namespace Model
   class DeleteLoginProfileRequest : public IAMRequest
   {
   public:
-    AWS_IAM_API DeleteLoginProfileRequest();
+    AWS_IAM_API DeleteLoginProfileRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,78 +36,25 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the user whose password you want to delete.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
+     * is optional. If no user name is included, it defaults to the principal making
+     * the request. When you make this request with root user credentials, you must use
+     * an <a
+     * href="https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoot.html">AssumeRoot</a>
+     * session to omit the user name.</p> <p>This parameter allows (through its <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
+     * consisting of upper and lowercase alphanumeric characters with no spaces. You
+     * can also include any of the following characters: _+=,.@-</p>
      */
-    inline const Aws::String& GetUserName() const{ return m_userName; }
-
-    /**
-     * <p>The name of the user whose password you want to delete.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
+    inline const Aws::String& GetUserName() const { return m_userName; }
     inline bool UserNameHasBeenSet() const { return m_userNameHasBeenSet; }
-
-    /**
-     * <p>The name of the user whose password you want to delete.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
-    inline void SetUserName(const Aws::String& value) { m_userNameHasBeenSet = true; m_userName = value; }
-
-    /**
-     * <p>The name of the user whose password you want to delete.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
-    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = std::move(value); }
-
-    /**
-     * <p>The name of the user whose password you want to delete.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
-    inline void SetUserName(const char* value) { m_userNameHasBeenSet = true; m_userName.assign(value); }
-
-    /**
-     * <p>The name of the user whose password you want to delete.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
-    inline DeleteLoginProfileRequest& WithUserName(const Aws::String& value) { SetUserName(value); return *this;}
-
-    /**
-     * <p>The name of the user whose password you want to delete.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
-    inline DeleteLoginProfileRequest& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the user whose password you want to delete.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
-    inline DeleteLoginProfileRequest& WithUserName(const char* value) { SetUserName(value); return *this;}
-
+    template<typename UserNameT = Aws::String>
+    void SetUserName(UserNameT&& value) { m_userNameHasBeenSet = true; m_userName = std::forward<UserNameT>(value); }
+    template<typename UserNameT = Aws::String>
+    DeleteLoginProfileRequest& WithUserName(UserNameT&& value) { SetUserName(std::forward<UserNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userName;

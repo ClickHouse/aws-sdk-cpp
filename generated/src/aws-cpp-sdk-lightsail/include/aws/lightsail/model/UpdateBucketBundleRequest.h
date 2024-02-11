@@ -21,7 +21,7 @@ namespace Model
   class UpdateBucketBundleRequest : public LightsailRequest
   {
   public:
-    AWS_LIGHTSAIL_API UpdateBucketBundleRequest();
+    AWS_LIGHTSAIL_API UpdateBucketBundleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,103 +34,31 @@ namespace Model
     AWS_LIGHTSAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the bucket for which to update the bundle.</p>
      */
-    inline const Aws::String& GetBucketName() const{ return m_bucketName; }
-
-    /**
-     * <p>The name of the bucket for which to update the bundle.</p>
-     */
+    inline const Aws::String& GetBucketName() const { return m_bucketName; }
     inline bool BucketNameHasBeenSet() const { return m_bucketNameHasBeenSet; }
+    template<typename BucketNameT = Aws::String>
+    void SetBucketName(BucketNameT&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::forward<BucketNameT>(value); }
+    template<typename BucketNameT = Aws::String>
+    UpdateBucketBundleRequest& WithBucketName(BucketNameT&& value) { SetBucketName(std::forward<BucketNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the bucket for which to update the bundle.</p>
-     */
-    inline void SetBucketName(const Aws::String& value) { m_bucketNameHasBeenSet = true; m_bucketName = value; }
-
-    /**
-     * <p>The name of the bucket for which to update the bundle.</p>
-     */
-    inline void SetBucketName(Aws::String&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::move(value); }
-
-    /**
-     * <p>The name of the bucket for which to update the bundle.</p>
-     */
-    inline void SetBucketName(const char* value) { m_bucketNameHasBeenSet = true; m_bucketName.assign(value); }
-
-    /**
-     * <p>The name of the bucket for which to update the bundle.</p>
-     */
-    inline UpdateBucketBundleRequest& WithBucketName(const Aws::String& value) { SetBucketName(value); return *this;}
-
-    /**
-     * <p>The name of the bucket for which to update the bundle.</p>
-     */
-    inline UpdateBucketBundleRequest& WithBucketName(Aws::String&& value) { SetBucketName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the bucket for which to update the bundle.</p>
-     */
-    inline UpdateBucketBundleRequest& WithBucketName(const char* value) { SetBucketName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the new bundle to apply to the bucket.</p> <p>Use the <a
      * href="https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetBucketBundles.html">GetBucketBundles</a>
      * action to get a list of bundle IDs that you can specify.</p>
      */
-    inline const Aws::String& GetBundleId() const{ return m_bundleId; }
-
-    /**
-     * <p>The ID of the new bundle to apply to the bucket.</p> <p>Use the <a
-     * href="https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetBucketBundles.html">GetBucketBundles</a>
-     * action to get a list of bundle IDs that you can specify.</p>
-     */
+    inline const Aws::String& GetBundleId() const { return m_bundleId; }
     inline bool BundleIdHasBeenSet() const { return m_bundleIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the new bundle to apply to the bucket.</p> <p>Use the <a
-     * href="https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetBucketBundles.html">GetBucketBundles</a>
-     * action to get a list of bundle IDs that you can specify.</p>
-     */
-    inline void SetBundleId(const Aws::String& value) { m_bundleIdHasBeenSet = true; m_bundleId = value; }
-
-    /**
-     * <p>The ID of the new bundle to apply to the bucket.</p> <p>Use the <a
-     * href="https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetBucketBundles.html">GetBucketBundles</a>
-     * action to get a list of bundle IDs that you can specify.</p>
-     */
-    inline void SetBundleId(Aws::String&& value) { m_bundleIdHasBeenSet = true; m_bundleId = std::move(value); }
-
-    /**
-     * <p>The ID of the new bundle to apply to the bucket.</p> <p>Use the <a
-     * href="https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetBucketBundles.html">GetBucketBundles</a>
-     * action to get a list of bundle IDs that you can specify.</p>
-     */
-    inline void SetBundleId(const char* value) { m_bundleIdHasBeenSet = true; m_bundleId.assign(value); }
-
-    /**
-     * <p>The ID of the new bundle to apply to the bucket.</p> <p>Use the <a
-     * href="https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetBucketBundles.html">GetBucketBundles</a>
-     * action to get a list of bundle IDs that you can specify.</p>
-     */
-    inline UpdateBucketBundleRequest& WithBundleId(const Aws::String& value) { SetBundleId(value); return *this;}
-
-    /**
-     * <p>The ID of the new bundle to apply to the bucket.</p> <p>Use the <a
-     * href="https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetBucketBundles.html">GetBucketBundles</a>
-     * action to get a list of bundle IDs that you can specify.</p>
-     */
-    inline UpdateBucketBundleRequest& WithBundleId(Aws::String&& value) { SetBundleId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the new bundle to apply to the bucket.</p> <p>Use the <a
-     * href="https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetBucketBundles.html">GetBucketBundles</a>
-     * action to get a list of bundle IDs that you can specify.</p>
-     */
-    inline UpdateBucketBundleRequest& WithBundleId(const char* value) { SetBundleId(value); return *this;}
-
+    template<typename BundleIdT = Aws::String>
+    void SetBundleId(BundleIdT&& value) { m_bundleIdHasBeenSet = true; m_bundleId = std::forward<BundleIdT>(value); }
+    template<typename BundleIdT = Aws::String>
+    UpdateBucketBundleRequest& WithBundleId(BundleIdT&& value) { SetBundleId(std::forward<BundleIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucketName;

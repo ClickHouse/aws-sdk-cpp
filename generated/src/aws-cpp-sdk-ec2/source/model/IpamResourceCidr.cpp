@@ -20,51 +20,7 @@ namespace EC2
 namespace Model
 {
 
-IpamResourceCidr::IpamResourceCidr() : 
-    m_ipamIdHasBeenSet(false),
-    m_ipamScopeIdHasBeenSet(false),
-    m_ipamPoolIdHasBeenSet(false),
-    m_resourceRegionHasBeenSet(false),
-    m_resourceOwnerIdHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceNameHasBeenSet(false),
-    m_resourceCidrHasBeenSet(false),
-    m_resourceType(IpamResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceTagsHasBeenSet(false),
-    m_ipUsage(0.0),
-    m_ipUsageHasBeenSet(false),
-    m_complianceStatus(IpamComplianceStatus::NOT_SET),
-    m_complianceStatusHasBeenSet(false),
-    m_managementState(IpamManagementState::NOT_SET),
-    m_managementStateHasBeenSet(false),
-    m_overlapStatus(IpamOverlapStatus::NOT_SET),
-    m_overlapStatusHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
-{
-}
-
-IpamResourceCidr::IpamResourceCidr(const XmlNode& xmlNode) : 
-    m_ipamIdHasBeenSet(false),
-    m_ipamScopeIdHasBeenSet(false),
-    m_ipamPoolIdHasBeenSet(false),
-    m_resourceRegionHasBeenSet(false),
-    m_resourceOwnerIdHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceNameHasBeenSet(false),
-    m_resourceCidrHasBeenSet(false),
-    m_resourceType(IpamResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceTagsHasBeenSet(false),
-    m_ipUsage(0.0),
-    m_ipUsageHasBeenSet(false),
-    m_complianceStatus(IpamComplianceStatus::NOT_SET),
-    m_complianceStatusHasBeenSet(false),
-    m_managementState(IpamManagementState::NOT_SET),
-    m_managementStateHasBeenSet(false),
-    m_overlapStatus(IpamOverlapStatus::NOT_SET),
-    m_overlapStatusHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
+IpamResourceCidr::IpamResourceCidr(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -126,13 +82,14 @@ IpamResourceCidr& IpamResourceCidr::operator =(const XmlNode& xmlNode)
     XmlNode resourceTypeNode = resultNode.FirstChild("resourceType");
     if(!resourceTypeNode.IsNull())
     {
-      m_resourceType = IpamResourceTypeMapper::GetIpamResourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceTypeNode.GetText()).c_str()).c_str());
+      m_resourceType = IpamResourceTypeMapper::GetIpamResourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceTypeNode.GetText()).c_str()));
       m_resourceTypeHasBeenSet = true;
     }
     XmlNode resourceTagsNode = resultNode.FirstChild("resourceTagSet");
     if(!resourceTagsNode.IsNull())
     {
       XmlNode resourceTagsMember = resourceTagsNode.FirstChild("item");
+      m_resourceTagsHasBeenSet = !resourceTagsMember.IsNull();
       while(!resourceTagsMember.IsNull())
       {
         m_resourceTags.push_back(resourceTagsMember);
@@ -150,19 +107,19 @@ IpamResourceCidr& IpamResourceCidr::operator =(const XmlNode& xmlNode)
     XmlNode complianceStatusNode = resultNode.FirstChild("complianceStatus");
     if(!complianceStatusNode.IsNull())
     {
-      m_complianceStatus = IpamComplianceStatusMapper::GetIpamComplianceStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(complianceStatusNode.GetText()).c_str()).c_str());
+      m_complianceStatus = IpamComplianceStatusMapper::GetIpamComplianceStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(complianceStatusNode.GetText()).c_str()));
       m_complianceStatusHasBeenSet = true;
     }
     XmlNode managementStateNode = resultNode.FirstChild("managementState");
     if(!managementStateNode.IsNull())
     {
-      m_managementState = IpamManagementStateMapper::GetIpamManagementStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(managementStateNode.GetText()).c_str()).c_str());
+      m_managementState = IpamManagementStateMapper::GetIpamManagementStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(managementStateNode.GetText()).c_str()));
       m_managementStateHasBeenSet = true;
     }
     XmlNode overlapStatusNode = resultNode.FirstChild("overlapStatus");
     if(!overlapStatusNode.IsNull())
     {
-      m_overlapStatus = IpamOverlapStatusMapper::GetIpamOverlapStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(overlapStatusNode.GetText()).c_str()).c_str());
+      m_overlapStatus = IpamOverlapStatusMapper::GetIpamOverlapStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(overlapStatusNode.GetText()).c_str()));
       m_overlapStatusHasBeenSet = true;
     }
     XmlNode vpcIdNode = resultNode.FirstChild("vpcId");
@@ -170,6 +127,12 @@ IpamResourceCidr& IpamResourceCidr::operator =(const XmlNode& xmlNode)
     {
       m_vpcId = Aws::Utils::Xml::DecodeEscapedXmlText(vpcIdNode.GetText());
       m_vpcIdHasBeenSet = true;
+    }
+    XmlNode availabilityZoneIdNode = resultNode.FirstChild("availabilityZoneId");
+    if(!availabilityZoneIdNode.IsNull())
+    {
+      m_availabilityZoneId = Aws::Utils::Xml::DecodeEscapedXmlText(availabilityZoneIdNode.GetText());
+      m_availabilityZoneIdHasBeenSet = true;
     }
   }
 
@@ -220,7 +183,7 @@ void IpamResourceCidr::OutputToStream(Aws::OStream& oStream, const char* locatio
 
   if(m_resourceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ResourceType=" << IpamResourceTypeMapper::GetNameForIpamResourceType(m_resourceType) << "&";
+      oStream << location << index << locationValue << ".ResourceType=" << StringUtils::URLEncode(IpamResourceTypeMapper::GetNameForIpamResourceType(m_resourceType)) << "&";
   }
 
   if(m_resourceTagsHasBeenSet)
@@ -241,22 +204,27 @@ void IpamResourceCidr::OutputToStream(Aws::OStream& oStream, const char* locatio
 
   if(m_complianceStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ComplianceStatus=" << IpamComplianceStatusMapper::GetNameForIpamComplianceStatus(m_complianceStatus) << "&";
+      oStream << location << index << locationValue << ".ComplianceStatus=" << StringUtils::URLEncode(IpamComplianceStatusMapper::GetNameForIpamComplianceStatus(m_complianceStatus)) << "&";
   }
 
   if(m_managementStateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ManagementState=" << IpamManagementStateMapper::GetNameForIpamManagementState(m_managementState) << "&";
+      oStream << location << index << locationValue << ".ManagementState=" << StringUtils::URLEncode(IpamManagementStateMapper::GetNameForIpamManagementState(m_managementState)) << "&";
   }
 
   if(m_overlapStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".OverlapStatus=" << IpamOverlapStatusMapper::GetNameForIpamOverlapStatus(m_overlapStatus) << "&";
+      oStream << location << index << locationValue << ".OverlapStatus=" << StringUtils::URLEncode(IpamOverlapStatusMapper::GetNameForIpamOverlapStatus(m_overlapStatus)) << "&";
   }
 
   if(m_vpcIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
+  }
+
+  if(m_availabilityZoneIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".AvailabilityZoneId=" << StringUtils::URLEncode(m_availabilityZoneId.c_str()) << "&";
   }
 
 }
@@ -297,7 +265,7 @@ void IpamResourceCidr::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_resourceTypeHasBeenSet)
   {
-      oStream << location << ".ResourceType=" << IpamResourceTypeMapper::GetNameForIpamResourceType(m_resourceType) << "&";
+      oStream << location << ".ResourceType=" << StringUtils::URLEncode(IpamResourceTypeMapper::GetNameForIpamResourceType(m_resourceType)) << "&";
   }
   if(m_resourceTagsHasBeenSet)
   {
@@ -305,29 +273,33 @@ void IpamResourceCidr::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_resourceTags)
       {
         Aws::StringStream resourceTagsSs;
-        resourceTagsSs << location <<  ".ResourceTagSet." << resourceTagsIdx++;
+        resourceTagsSs << location << ".ResourceTagSet." << resourceTagsIdx++;
         item.OutputToStream(oStream, resourceTagsSs.str().c_str());
       }
   }
   if(m_ipUsageHasBeenSet)
   {
-        oStream << location << ".IpUsage=" << StringUtils::URLEncode(m_ipUsage) << "&";
+      oStream << location << ".IpUsage=" << StringUtils::URLEncode(m_ipUsage) << "&";
   }
   if(m_complianceStatusHasBeenSet)
   {
-      oStream << location << ".ComplianceStatus=" << IpamComplianceStatusMapper::GetNameForIpamComplianceStatus(m_complianceStatus) << "&";
+      oStream << location << ".ComplianceStatus=" << StringUtils::URLEncode(IpamComplianceStatusMapper::GetNameForIpamComplianceStatus(m_complianceStatus)) << "&";
   }
   if(m_managementStateHasBeenSet)
   {
-      oStream << location << ".ManagementState=" << IpamManagementStateMapper::GetNameForIpamManagementState(m_managementState) << "&";
+      oStream << location << ".ManagementState=" << StringUtils::URLEncode(IpamManagementStateMapper::GetNameForIpamManagementState(m_managementState)) << "&";
   }
   if(m_overlapStatusHasBeenSet)
   {
-      oStream << location << ".OverlapStatus=" << IpamOverlapStatusMapper::GetNameForIpamOverlapStatus(m_overlapStatus) << "&";
+      oStream << location << ".OverlapStatus=" << StringUtils::URLEncode(IpamOverlapStatusMapper::GetNameForIpamOverlapStatus(m_overlapStatus)) << "&";
   }
   if(m_vpcIdHasBeenSet)
   {
       oStream << location << ".VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
+  }
+  if(m_availabilityZoneIdHasBeenSet)
+  {
+      oStream << location << ".AvailabilityZoneId=" << StringUtils::URLEncode(m_availabilityZoneId.c_str()) << "&";
   }
 }
 

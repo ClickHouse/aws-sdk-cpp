@@ -34,101 +34,36 @@ namespace Model
   class PlacedPlayerSession
   {
   public:
-    AWS_GAMELIFT_API PlacedPlayerSession();
+    AWS_GAMELIFT_API PlacedPlayerSession() = default;
     AWS_GAMELIFT_API PlacedPlayerSession(Aws::Utils::Json::JsonView jsonValue);
     AWS_GAMELIFT_API PlacedPlayerSession& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GAMELIFT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A unique identifier for a player that is associated with this player
      * session.</p>
      */
-    inline const Aws::String& GetPlayerId() const{ return m_playerId; }
-
-    /**
-     * <p>A unique identifier for a player that is associated with this player
-     * session.</p>
-     */
+    inline const Aws::String& GetPlayerId() const { return m_playerId; }
     inline bool PlayerIdHasBeenSet() const { return m_playerIdHasBeenSet; }
+    template<typename PlayerIdT = Aws::String>
+    void SetPlayerId(PlayerIdT&& value) { m_playerIdHasBeenSet = true; m_playerId = std::forward<PlayerIdT>(value); }
+    template<typename PlayerIdT = Aws::String>
+    PlacedPlayerSession& WithPlayerId(PlayerIdT&& value) { SetPlayerId(std::forward<PlayerIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for a player that is associated with this player
-     * session.</p>
-     */
-    inline void SetPlayerId(const Aws::String& value) { m_playerIdHasBeenSet = true; m_playerId = value; }
-
-    /**
-     * <p>A unique identifier for a player that is associated with this player
-     * session.</p>
-     */
-    inline void SetPlayerId(Aws::String&& value) { m_playerIdHasBeenSet = true; m_playerId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for a player that is associated with this player
-     * session.</p>
-     */
-    inline void SetPlayerId(const char* value) { m_playerIdHasBeenSet = true; m_playerId.assign(value); }
-
-    /**
-     * <p>A unique identifier for a player that is associated with this player
-     * session.</p>
-     */
-    inline PlacedPlayerSession& WithPlayerId(const Aws::String& value) { SetPlayerId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for a player that is associated with this player
-     * session.</p>
-     */
-    inline PlacedPlayerSession& WithPlayerId(Aws::String&& value) { SetPlayerId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for a player that is associated with this player
-     * session.</p>
-     */
-    inline PlacedPlayerSession& WithPlayerId(const char* value) { SetPlayerId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for a player session.</p>
      */
-    inline const Aws::String& GetPlayerSessionId() const{ return m_playerSessionId; }
-
-    /**
-     * <p>A unique identifier for a player session.</p>
-     */
+    inline const Aws::String& GetPlayerSessionId() const { return m_playerSessionId; }
     inline bool PlayerSessionIdHasBeenSet() const { return m_playerSessionIdHasBeenSet; }
-
-    /**
-     * <p>A unique identifier for a player session.</p>
-     */
-    inline void SetPlayerSessionId(const Aws::String& value) { m_playerSessionIdHasBeenSet = true; m_playerSessionId = value; }
-
-    /**
-     * <p>A unique identifier for a player session.</p>
-     */
-    inline void SetPlayerSessionId(Aws::String&& value) { m_playerSessionIdHasBeenSet = true; m_playerSessionId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for a player session.</p>
-     */
-    inline void SetPlayerSessionId(const char* value) { m_playerSessionIdHasBeenSet = true; m_playerSessionId.assign(value); }
-
-    /**
-     * <p>A unique identifier for a player session.</p>
-     */
-    inline PlacedPlayerSession& WithPlayerSessionId(const Aws::String& value) { SetPlayerSessionId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for a player session.</p>
-     */
-    inline PlacedPlayerSession& WithPlayerSessionId(Aws::String&& value) { SetPlayerSessionId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for a player session.</p>
-     */
-    inline PlacedPlayerSession& WithPlayerSessionId(const char* value) { SetPlayerSessionId(value); return *this;}
-
+    template<typename PlayerSessionIdT = Aws::String>
+    void SetPlayerSessionId(PlayerSessionIdT&& value) { m_playerSessionIdHasBeenSet = true; m_playerSessionId = std::forward<PlayerSessionIdT>(value); }
+    template<typename PlayerSessionIdT = Aws::String>
+    PlacedPlayerSession& WithPlayerSessionId(PlayerSessionIdT&& value) { SetPlayerSessionId(std::forward<PlayerSessionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_playerId;

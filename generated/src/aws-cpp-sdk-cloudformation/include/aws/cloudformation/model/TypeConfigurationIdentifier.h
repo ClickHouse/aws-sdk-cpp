@@ -33,7 +33,7 @@ namespace Model
   class TypeConfigurationIdentifier
   {
   public:
-    AWS_CLOUDFORMATION_API TypeConfigurationIdentifier();
+    AWS_CLOUDFORMATION_API TypeConfigurationIdentifier() = default;
     AWS_CLOUDFORMATION_API TypeConfigurationIdentifier(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFORMATION_API TypeConfigurationIdentifier& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,264 +41,70 @@ namespace Model
     AWS_CLOUDFORMATION_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) for the extension, in this account and
-     * region.</p> <p>For public extensions, this will be the ARN assigned when you <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ActivateType.html">activate
-     * the type</a> in this account and region. For private extensions, this will be
-     * the ARN assigned when you <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html">register
-     * the type</a> in this account and region.</p>
+     * <p>The ARN for the extension, in this account and Region.</p> <p>For public
+     * extensions, this will be the ARN assigned when you call the <a
+     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ActivateType.html">ActivateType</a>
+     * API operation in this account and Region. For private extensions, this will be
+     * the ARN assigned when you call the <a
+     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html">RegisterType</a>
+     * API operation in this account and Region.</p>
      */
-    inline const Aws::String& GetTypeArn() const{ return m_typeArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the extension, in this account and
-     * region.</p> <p>For public extensions, this will be the ARN assigned when you <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ActivateType.html">activate
-     * the type</a> in this account and region. For private extensions, this will be
-     * the ARN assigned when you <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html">register
-     * the type</a> in this account and region.</p>
-     */
+    inline const Aws::String& GetTypeArn() const { return m_typeArn; }
     inline bool TypeArnHasBeenSet() const { return m_typeArnHasBeenSet; }
+    template<typename TypeArnT = Aws::String>
+    void SetTypeArn(TypeArnT&& value) { m_typeArnHasBeenSet = true; m_typeArn = std::forward<TypeArnT>(value); }
+    template<typename TypeArnT = Aws::String>
+    TypeConfigurationIdentifier& WithTypeArn(TypeArnT&& value) { SetTypeArn(std::forward<TypeArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) for the extension, in this account and
-     * region.</p> <p>For public extensions, this will be the ARN assigned when you <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ActivateType.html">activate
-     * the type</a> in this account and region. For private extensions, this will be
-     * the ARN assigned when you <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html">register
-     * the type</a> in this account and region.</p>
-     */
-    inline void SetTypeArn(const Aws::String& value) { m_typeArnHasBeenSet = true; m_typeArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the extension, in this account and
-     * region.</p> <p>For public extensions, this will be the ARN assigned when you <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ActivateType.html">activate
-     * the type</a> in this account and region. For private extensions, this will be
-     * the ARN assigned when you <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html">register
-     * the type</a> in this account and region.</p>
-     */
-    inline void SetTypeArn(Aws::String&& value) { m_typeArnHasBeenSet = true; m_typeArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the extension, in this account and
-     * region.</p> <p>For public extensions, this will be the ARN assigned when you <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ActivateType.html">activate
-     * the type</a> in this account and region. For private extensions, this will be
-     * the ARN assigned when you <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html">register
-     * the type</a> in this account and region.</p>
-     */
-    inline void SetTypeArn(const char* value) { m_typeArnHasBeenSet = true; m_typeArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the extension, in this account and
-     * region.</p> <p>For public extensions, this will be the ARN assigned when you <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ActivateType.html">activate
-     * the type</a> in this account and region. For private extensions, this will be
-     * the ARN assigned when you <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html">register
-     * the type</a> in this account and region.</p>
-     */
-    inline TypeConfigurationIdentifier& WithTypeArn(const Aws::String& value) { SetTypeArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the extension, in this account and
-     * region.</p> <p>For public extensions, this will be the ARN assigned when you <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ActivateType.html">activate
-     * the type</a> in this account and region. For private extensions, this will be
-     * the ARN assigned when you <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html">register
-     * the type</a> in this account and region.</p>
-     */
-    inline TypeConfigurationIdentifier& WithTypeArn(Aws::String&& value) { SetTypeArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the extension, in this account and
-     * region.</p> <p>For public extensions, this will be the ARN assigned when you <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ActivateType.html">activate
-     * the type</a> in this account and region. For private extensions, this will be
-     * the ARN assigned when you <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html">register
-     * the type</a> in this account and region.</p>
-     */
-    inline TypeConfigurationIdentifier& WithTypeArn(const char* value) { SetTypeArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The alias specified for this configuration, if one was specified when the
      * configuration was set.</p>
      */
-    inline const Aws::String& GetTypeConfigurationAlias() const{ return m_typeConfigurationAlias; }
-
-    /**
-     * <p>The alias specified for this configuration, if one was specified when the
-     * configuration was set.</p>
-     */
+    inline const Aws::String& GetTypeConfigurationAlias() const { return m_typeConfigurationAlias; }
     inline bool TypeConfigurationAliasHasBeenSet() const { return m_typeConfigurationAliasHasBeenSet; }
+    template<typename TypeConfigurationAliasT = Aws::String>
+    void SetTypeConfigurationAlias(TypeConfigurationAliasT&& value) { m_typeConfigurationAliasHasBeenSet = true; m_typeConfigurationAlias = std::forward<TypeConfigurationAliasT>(value); }
+    template<typename TypeConfigurationAliasT = Aws::String>
+    TypeConfigurationIdentifier& WithTypeConfigurationAlias(TypeConfigurationAliasT&& value) { SetTypeConfigurationAlias(std::forward<TypeConfigurationAliasT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The alias specified for this configuration, if one was specified when the
-     * configuration was set.</p>
+     * <p>The ARN for the configuration, in this account and Region.</p>
      */
-    inline void SetTypeConfigurationAlias(const Aws::String& value) { m_typeConfigurationAliasHasBeenSet = true; m_typeConfigurationAlias = value; }
-
-    /**
-     * <p>The alias specified for this configuration, if one was specified when the
-     * configuration was set.</p>
-     */
-    inline void SetTypeConfigurationAlias(Aws::String&& value) { m_typeConfigurationAliasHasBeenSet = true; m_typeConfigurationAlias = std::move(value); }
-
-    /**
-     * <p>The alias specified for this configuration, if one was specified when the
-     * configuration was set.</p>
-     */
-    inline void SetTypeConfigurationAlias(const char* value) { m_typeConfigurationAliasHasBeenSet = true; m_typeConfigurationAlias.assign(value); }
-
-    /**
-     * <p>The alias specified for this configuration, if one was specified when the
-     * configuration was set.</p>
-     */
-    inline TypeConfigurationIdentifier& WithTypeConfigurationAlias(const Aws::String& value) { SetTypeConfigurationAlias(value); return *this;}
-
-    /**
-     * <p>The alias specified for this configuration, if one was specified when the
-     * configuration was set.</p>
-     */
-    inline TypeConfigurationIdentifier& WithTypeConfigurationAlias(Aws::String&& value) { SetTypeConfigurationAlias(std::move(value)); return *this;}
-
-    /**
-     * <p>The alias specified for this configuration, if one was specified when the
-     * configuration was set.</p>
-     */
-    inline TypeConfigurationIdentifier& WithTypeConfigurationAlias(const char* value) { SetTypeConfigurationAlias(value); return *this;}
-
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the configuration, in this account and
-     * region.</p>
-     */
-    inline const Aws::String& GetTypeConfigurationArn() const{ return m_typeConfigurationArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the configuration, in this account and
-     * region.</p>
-     */
+    inline const Aws::String& GetTypeConfigurationArn() const { return m_typeConfigurationArn; }
     inline bool TypeConfigurationArnHasBeenSet() const { return m_typeConfigurationArnHasBeenSet; }
+    template<typename TypeConfigurationArnT = Aws::String>
+    void SetTypeConfigurationArn(TypeConfigurationArnT&& value) { m_typeConfigurationArnHasBeenSet = true; m_typeConfigurationArn = std::forward<TypeConfigurationArnT>(value); }
+    template<typename TypeConfigurationArnT = Aws::String>
+    TypeConfigurationIdentifier& WithTypeConfigurationArn(TypeConfigurationArnT&& value) { SetTypeConfigurationArn(std::forward<TypeConfigurationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) for the configuration, in this account and
-     * region.</p>
-     */
-    inline void SetTypeConfigurationArn(const Aws::String& value) { m_typeConfigurationArnHasBeenSet = true; m_typeConfigurationArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the configuration, in this account and
-     * region.</p>
-     */
-    inline void SetTypeConfigurationArn(Aws::String&& value) { m_typeConfigurationArnHasBeenSet = true; m_typeConfigurationArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the configuration, in this account and
-     * region.</p>
-     */
-    inline void SetTypeConfigurationArn(const char* value) { m_typeConfigurationArnHasBeenSet = true; m_typeConfigurationArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the configuration, in this account and
-     * region.</p>
-     */
-    inline TypeConfigurationIdentifier& WithTypeConfigurationArn(const Aws::String& value) { SetTypeConfigurationArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the configuration, in this account and
-     * region.</p>
-     */
-    inline TypeConfigurationIdentifier& WithTypeConfigurationArn(Aws::String&& value) { SetTypeConfigurationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the configuration, in this account and
-     * region.</p>
-     */
-    inline TypeConfigurationIdentifier& WithTypeConfigurationArn(const char* value) { SetTypeConfigurationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of extension.</p>
      */
-    inline const ThirdPartyType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of extension.</p>
-     */
+    inline ThirdPartyType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(ThirdPartyType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline TypeConfigurationIdentifier& WithType(ThirdPartyType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of extension.</p>
-     */
-    inline void SetType(const ThirdPartyType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of extension.</p>
-     */
-    inline void SetType(ThirdPartyType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of extension.</p>
-     */
-    inline TypeConfigurationIdentifier& WithType(const ThirdPartyType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of extension.</p>
-     */
-    inline TypeConfigurationIdentifier& WithType(ThirdPartyType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the extension type to which this configuration applies.</p>
      */
-    inline const Aws::String& GetTypeName() const{ return m_typeName; }
-
-    /**
-     * <p>The name of the extension type to which this configuration applies.</p>
-     */
+    inline const Aws::String& GetTypeName() const { return m_typeName; }
     inline bool TypeNameHasBeenSet() const { return m_typeNameHasBeenSet; }
-
-    /**
-     * <p>The name of the extension type to which this configuration applies.</p>
-     */
-    inline void SetTypeName(const Aws::String& value) { m_typeNameHasBeenSet = true; m_typeName = value; }
-
-    /**
-     * <p>The name of the extension type to which this configuration applies.</p>
-     */
-    inline void SetTypeName(Aws::String&& value) { m_typeNameHasBeenSet = true; m_typeName = std::move(value); }
-
-    /**
-     * <p>The name of the extension type to which this configuration applies.</p>
-     */
-    inline void SetTypeName(const char* value) { m_typeNameHasBeenSet = true; m_typeName.assign(value); }
-
-    /**
-     * <p>The name of the extension type to which this configuration applies.</p>
-     */
-    inline TypeConfigurationIdentifier& WithTypeName(const Aws::String& value) { SetTypeName(value); return *this;}
-
-    /**
-     * <p>The name of the extension type to which this configuration applies.</p>
-     */
-    inline TypeConfigurationIdentifier& WithTypeName(Aws::String&& value) { SetTypeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the extension type to which this configuration applies.</p>
-     */
-    inline TypeConfigurationIdentifier& WithTypeName(const char* value) { SetTypeName(value); return *this;}
-
+    template<typename TypeNameT = Aws::String>
+    void SetTypeName(TypeNameT&& value) { m_typeNameHasBeenSet = true; m_typeName = std::forward<TypeNameT>(value); }
+    template<typename TypeNameT = Aws::String>
+    TypeConfigurationIdentifier& WithTypeName(TypeNameT&& value) { SetTypeName(std::forward<TypeNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_typeArn;
@@ -310,7 +116,7 @@ namespace Model
     Aws::String m_typeConfigurationArn;
     bool m_typeConfigurationArnHasBeenSet = false;
 
-    ThirdPartyType m_type;
+    ThirdPartyType m_type{ThirdPartyType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_typeName;

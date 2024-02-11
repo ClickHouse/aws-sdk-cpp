@@ -12,11 +12,6 @@ using namespace Aws::ApplicationInsights::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeProblemObservationsRequest::DescribeProblemObservationsRequest() : 
-    m_problemIdHasBeenSet(false)
-{
-}
-
 Aws::String DescribeProblemObservationsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -24,6 +19,12 @@ Aws::String DescribeProblemObservationsRequest::SerializePayload() const
   if(m_problemIdHasBeenSet)
   {
    payload.WithString("ProblemId", m_problemId);
+
+  }
+
+  if(m_accountIdHasBeenSet)
+  {
+   payload.WithString("AccountId", m_accountId);
 
   }
 

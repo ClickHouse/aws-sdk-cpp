@@ -33,85 +33,37 @@ namespace Model
   class InsufficientSensorData
   {
   public:
-    AWS_LOOKOUTEQUIPMENT_API InsufficientSensorData();
+    AWS_LOOKOUTEQUIPMENT_API InsufficientSensorData() = default;
     AWS_LOOKOUTEQUIPMENT_API InsufficientSensorData(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTEQUIPMENT_API InsufficientSensorData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTEQUIPMENT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Parameter that describes the total number of sensors that have data
      * completely missing for it. </p>
      */
-    inline const MissingCompleteSensorData& GetMissingCompleteSensorData() const{ return m_missingCompleteSensorData; }
-
-    /**
-     * <p> Parameter that describes the total number of sensors that have data
-     * completely missing for it. </p>
-     */
+    inline const MissingCompleteSensorData& GetMissingCompleteSensorData() const { return m_missingCompleteSensorData; }
     inline bool MissingCompleteSensorDataHasBeenSet() const { return m_missingCompleteSensorDataHasBeenSet; }
+    template<typename MissingCompleteSensorDataT = MissingCompleteSensorData>
+    void SetMissingCompleteSensorData(MissingCompleteSensorDataT&& value) { m_missingCompleteSensorDataHasBeenSet = true; m_missingCompleteSensorData = std::forward<MissingCompleteSensorDataT>(value); }
+    template<typename MissingCompleteSensorDataT = MissingCompleteSensorData>
+    InsufficientSensorData& WithMissingCompleteSensorData(MissingCompleteSensorDataT&& value) { SetMissingCompleteSensorData(std::forward<MissingCompleteSensorDataT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Parameter that describes the total number of sensors that have data
-     * completely missing for it. </p>
-     */
-    inline void SetMissingCompleteSensorData(const MissingCompleteSensorData& value) { m_missingCompleteSensorDataHasBeenSet = true; m_missingCompleteSensorData = value; }
-
-    /**
-     * <p> Parameter that describes the total number of sensors that have data
-     * completely missing for it. </p>
-     */
-    inline void SetMissingCompleteSensorData(MissingCompleteSensorData&& value) { m_missingCompleteSensorDataHasBeenSet = true; m_missingCompleteSensorData = std::move(value); }
-
-    /**
-     * <p> Parameter that describes the total number of sensors that have data
-     * completely missing for it. </p>
-     */
-    inline InsufficientSensorData& WithMissingCompleteSensorData(const MissingCompleteSensorData& value) { SetMissingCompleteSensorData(value); return *this;}
-
-    /**
-     * <p> Parameter that describes the total number of sensors that have data
-     * completely missing for it. </p>
-     */
-    inline InsufficientSensorData& WithMissingCompleteSensorData(MissingCompleteSensorData&& value) { SetMissingCompleteSensorData(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> Parameter that describes the total number of sensors that have a short date
-     * range of less than 90 days of data overall. </p>
+     * range of less than 14 days of data overall. </p>
      */
-    inline const SensorsWithShortDateRange& GetSensorsWithShortDateRange() const{ return m_sensorsWithShortDateRange; }
-
-    /**
-     * <p> Parameter that describes the total number of sensors that have a short date
-     * range of less than 90 days of data overall. </p>
-     */
+    inline const SensorsWithShortDateRange& GetSensorsWithShortDateRange() const { return m_sensorsWithShortDateRange; }
     inline bool SensorsWithShortDateRangeHasBeenSet() const { return m_sensorsWithShortDateRangeHasBeenSet; }
-
-    /**
-     * <p> Parameter that describes the total number of sensors that have a short date
-     * range of less than 90 days of data overall. </p>
-     */
-    inline void SetSensorsWithShortDateRange(const SensorsWithShortDateRange& value) { m_sensorsWithShortDateRangeHasBeenSet = true; m_sensorsWithShortDateRange = value; }
-
-    /**
-     * <p> Parameter that describes the total number of sensors that have a short date
-     * range of less than 90 days of data overall. </p>
-     */
-    inline void SetSensorsWithShortDateRange(SensorsWithShortDateRange&& value) { m_sensorsWithShortDateRangeHasBeenSet = true; m_sensorsWithShortDateRange = std::move(value); }
-
-    /**
-     * <p> Parameter that describes the total number of sensors that have a short date
-     * range of less than 90 days of data overall. </p>
-     */
-    inline InsufficientSensorData& WithSensorsWithShortDateRange(const SensorsWithShortDateRange& value) { SetSensorsWithShortDateRange(value); return *this;}
-
-    /**
-     * <p> Parameter that describes the total number of sensors that have a short date
-     * range of less than 90 days of data overall. </p>
-     */
-    inline InsufficientSensorData& WithSensorsWithShortDateRange(SensorsWithShortDateRange&& value) { SetSensorsWithShortDateRange(std::move(value)); return *this;}
-
+    template<typename SensorsWithShortDateRangeT = SensorsWithShortDateRange>
+    void SetSensorsWithShortDateRange(SensorsWithShortDateRangeT&& value) { m_sensorsWithShortDateRangeHasBeenSet = true; m_sensorsWithShortDateRange = std::forward<SensorsWithShortDateRangeT>(value); }
+    template<typename SensorsWithShortDateRangeT = SensorsWithShortDateRange>
+    InsufficientSensorData& WithSensorsWithShortDateRange(SensorsWithShortDateRangeT&& value) { SetSensorsWithShortDateRange(std::forward<SensorsWithShortDateRangeT>(value)); return *this;}
+    ///@}
   private:
 
     MissingCompleteSensorData m_missingCompleteSensorData;

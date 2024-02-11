@@ -18,17 +18,7 @@ namespace kendra
 namespace Model
 {
 
-SalesforceKnowledgeArticleConfiguration::SalesforceKnowledgeArticleConfiguration() : 
-    m_includedStatesHasBeenSet(false),
-    m_standardKnowledgeArticleTypeConfigurationHasBeenSet(false),
-    m_customKnowledgeArticleTypeConfigurationsHasBeenSet(false)
-{
-}
-
-SalesforceKnowledgeArticleConfiguration::SalesforceKnowledgeArticleConfiguration(JsonView jsonValue) : 
-    m_includedStatesHasBeenSet(false),
-    m_standardKnowledgeArticleTypeConfigurationHasBeenSet(false),
-    m_customKnowledgeArticleTypeConfigurationsHasBeenSet(false)
+SalesforceKnowledgeArticleConfiguration::SalesforceKnowledgeArticleConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,14 +34,11 @@ SalesforceKnowledgeArticleConfiguration& SalesforceKnowledgeArticleConfiguration
     }
     m_includedStatesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StandardKnowledgeArticleTypeConfiguration"))
   {
     m_standardKnowledgeArticleTypeConfiguration = jsonValue.GetObject("StandardKnowledgeArticleTypeConfiguration");
-
     m_standardKnowledgeArticleTypeConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CustomKnowledgeArticleTypeConfigurations"))
   {
     Aws::Utils::Array<JsonView> customKnowledgeArticleTypeConfigurationsJsonList = jsonValue.GetArray("CustomKnowledgeArticleTypeConfigurations");
@@ -61,7 +48,6 @@ SalesforceKnowledgeArticleConfiguration& SalesforceKnowledgeArticleConfiguration
     }
     m_customKnowledgeArticleTypeConfigurationsHasBeenSet = true;
   }
-
   return *this;
 }
 

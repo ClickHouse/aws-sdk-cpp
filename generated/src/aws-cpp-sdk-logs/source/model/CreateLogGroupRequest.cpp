@@ -12,13 +12,6 @@ using namespace Aws::CloudWatchLogs::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateLogGroupRequest::CreateLogGroupRequest() : 
-    m_logGroupNameHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateLogGroupRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -44,6 +37,11 @@ Aws::String CreateLogGroupRequest::SerializePayload() const
    }
    payload.WithObject("tags", std::move(tagsJsonMap));
 
+  }
+
+  if(m_logGroupClassHasBeenSet)
+  {
+   payload.WithString("logGroupClass", LogGroupClassMapper::GetNameForLogGroupClass(m_logGroupClass));
   }
 
   return payload.View().WriteReadable();

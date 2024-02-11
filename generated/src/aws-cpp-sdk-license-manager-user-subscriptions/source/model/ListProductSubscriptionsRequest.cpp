@@ -12,28 +12,13 @@ using namespace Aws::LicenseManagerUserSubscriptions::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListProductSubscriptionsRequest::ListProductSubscriptionsRequest() : 
-    m_filtersHasBeenSet(false),
-    m_identityProviderHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_productHasBeenSet(false)
-{
-}
-
 Aws::String ListProductSubscriptionsRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_filtersHasBeenSet)
+  if(m_productHasBeenSet)
   {
-   Aws::Utils::Array<JsonValue> filtersJsonList(m_filters.size());
-   for(unsigned filtersIndex = 0; filtersIndex < filtersJsonList.GetLength(); ++filtersIndex)
-   {
-     filtersJsonList[filtersIndex].AsObject(m_filters[filtersIndex].Jsonize());
-   }
-   payload.WithArray("Filters", std::move(filtersJsonList));
+   payload.WithString("Product", m_product);
 
   }
 
@@ -49,15 +34,20 @@ Aws::String ListProductSubscriptionsRequest::SerializePayload() const
 
   }
 
-  if(m_nextTokenHasBeenSet)
+  if(m_filtersHasBeenSet)
   {
-   payload.WithString("NextToken", m_nextToken);
+   Aws::Utils::Array<JsonValue> filtersJsonList(m_filters.size());
+   for(unsigned filtersIndex = 0; filtersIndex < filtersJsonList.GetLength(); ++filtersIndex)
+   {
+     filtersJsonList[filtersIndex].AsObject(m_filters[filtersIndex].Jsonize());
+   }
+   payload.WithArray("Filters", std::move(filtersJsonList));
 
   }
 
-  if(m_productHasBeenSet)
+  if(m_nextTokenHasBeenSet)
   {
-   payload.WithString("Product", m_product);
+   payload.WithString("NextToken", m_nextToken);
 
   }
 

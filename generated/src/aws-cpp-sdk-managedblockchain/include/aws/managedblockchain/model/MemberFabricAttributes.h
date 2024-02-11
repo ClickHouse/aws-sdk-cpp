@@ -32,93 +32,35 @@ namespace Model
   class MemberFabricAttributes
   {
   public:
-    AWS_MANAGEDBLOCKCHAIN_API MemberFabricAttributes();
+    AWS_MANAGEDBLOCKCHAIN_API MemberFabricAttributes() = default;
     AWS_MANAGEDBLOCKCHAIN_API MemberFabricAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDBLOCKCHAIN_API MemberFabricAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDBLOCKCHAIN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The user name for the initial administrator user for the member.</p>
      */
-    inline const Aws::String& GetAdminUsername() const{ return m_adminUsername; }
-
-    /**
-     * <p>The user name for the initial administrator user for the member.</p>
-     */
+    inline const Aws::String& GetAdminUsername() const { return m_adminUsername; }
     inline bool AdminUsernameHasBeenSet() const { return m_adminUsernameHasBeenSet; }
+    template<typename AdminUsernameT = Aws::String>
+    void SetAdminUsername(AdminUsernameT&& value) { m_adminUsernameHasBeenSet = true; m_adminUsername = std::forward<AdminUsernameT>(value); }
+    template<typename AdminUsernameT = Aws::String>
+    MemberFabricAttributes& WithAdminUsername(AdminUsernameT&& value) { SetAdminUsername(std::forward<AdminUsernameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The user name for the initial administrator user for the member.</p>
-     */
-    inline void SetAdminUsername(const Aws::String& value) { m_adminUsernameHasBeenSet = true; m_adminUsername = value; }
-
-    /**
-     * <p>The user name for the initial administrator user for the member.</p>
-     */
-    inline void SetAdminUsername(Aws::String&& value) { m_adminUsernameHasBeenSet = true; m_adminUsername = std::move(value); }
-
-    /**
-     * <p>The user name for the initial administrator user for the member.</p>
-     */
-    inline void SetAdminUsername(const char* value) { m_adminUsernameHasBeenSet = true; m_adminUsername.assign(value); }
-
-    /**
-     * <p>The user name for the initial administrator user for the member.</p>
-     */
-    inline MemberFabricAttributes& WithAdminUsername(const Aws::String& value) { SetAdminUsername(value); return *this;}
-
-    /**
-     * <p>The user name for the initial administrator user for the member.</p>
-     */
-    inline MemberFabricAttributes& WithAdminUsername(Aws::String&& value) { SetAdminUsername(std::move(value)); return *this;}
-
-    /**
-     * <p>The user name for the initial administrator user for the member.</p>
-     */
-    inline MemberFabricAttributes& WithAdminUsername(const char* value) { SetAdminUsername(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The endpoint used to access the member's certificate authority.</p>
      */
-    inline const Aws::String& GetCaEndpoint() const{ return m_caEndpoint; }
-
-    /**
-     * <p>The endpoint used to access the member's certificate authority.</p>
-     */
+    inline const Aws::String& GetCaEndpoint() const { return m_caEndpoint; }
     inline bool CaEndpointHasBeenSet() const { return m_caEndpointHasBeenSet; }
-
-    /**
-     * <p>The endpoint used to access the member's certificate authority.</p>
-     */
-    inline void SetCaEndpoint(const Aws::String& value) { m_caEndpointHasBeenSet = true; m_caEndpoint = value; }
-
-    /**
-     * <p>The endpoint used to access the member's certificate authority.</p>
-     */
-    inline void SetCaEndpoint(Aws::String&& value) { m_caEndpointHasBeenSet = true; m_caEndpoint = std::move(value); }
-
-    /**
-     * <p>The endpoint used to access the member's certificate authority.</p>
-     */
-    inline void SetCaEndpoint(const char* value) { m_caEndpointHasBeenSet = true; m_caEndpoint.assign(value); }
-
-    /**
-     * <p>The endpoint used to access the member's certificate authority.</p>
-     */
-    inline MemberFabricAttributes& WithCaEndpoint(const Aws::String& value) { SetCaEndpoint(value); return *this;}
-
-    /**
-     * <p>The endpoint used to access the member's certificate authority.</p>
-     */
-    inline MemberFabricAttributes& WithCaEndpoint(Aws::String&& value) { SetCaEndpoint(std::move(value)); return *this;}
-
-    /**
-     * <p>The endpoint used to access the member's certificate authority.</p>
-     */
-    inline MemberFabricAttributes& WithCaEndpoint(const char* value) { SetCaEndpoint(value); return *this;}
-
+    template<typename CaEndpointT = Aws::String>
+    void SetCaEndpoint(CaEndpointT&& value) { m_caEndpointHasBeenSet = true; m_caEndpoint = std::forward<CaEndpointT>(value); }
+    template<typename CaEndpointT = Aws::String>
+    MemberFabricAttributes& WithCaEndpoint(CaEndpointT&& value) { SetCaEndpoint(std::forward<CaEndpointT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_adminUsername;

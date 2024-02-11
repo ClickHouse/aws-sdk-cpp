@@ -20,43 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGatewayMulticastGroup::TransitGatewayMulticastGroup() : 
-    m_groupIpAddressHasBeenSet(false),
-    m_transitGatewayAttachmentIdHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceType(TransitGatewayAttachmentResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceOwnerIdHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false),
-    m_groupMember(false),
-    m_groupMemberHasBeenSet(false),
-    m_groupSource(false),
-    m_groupSourceHasBeenSet(false),
-    m_memberType(MembershipType::NOT_SET),
-    m_memberTypeHasBeenSet(false),
-    m_sourceType(MembershipType::NOT_SET),
-    m_sourceTypeHasBeenSet(false)
-{
-}
-
-TransitGatewayMulticastGroup::TransitGatewayMulticastGroup(const XmlNode& xmlNode) : 
-    m_groupIpAddressHasBeenSet(false),
-    m_transitGatewayAttachmentIdHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceType(TransitGatewayAttachmentResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceOwnerIdHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false),
-    m_groupMember(false),
-    m_groupMemberHasBeenSet(false),
-    m_groupSource(false),
-    m_groupSourceHasBeenSet(false),
-    m_memberType(MembershipType::NOT_SET),
-    m_memberTypeHasBeenSet(false),
-    m_sourceType(MembershipType::NOT_SET),
-    m_sourceTypeHasBeenSet(false)
+TransitGatewayMulticastGroup::TransitGatewayMulticastGroup(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -94,7 +58,7 @@ TransitGatewayMulticastGroup& TransitGatewayMulticastGroup::operator =(const Xml
     XmlNode resourceTypeNode = resultNode.FirstChild("resourceType");
     if(!resourceTypeNode.IsNull())
     {
-      m_resourceType = TransitGatewayAttachmentResourceTypeMapper::GetTransitGatewayAttachmentResourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceTypeNode.GetText()).c_str()).c_str());
+      m_resourceType = TransitGatewayAttachmentResourceTypeMapper::GetTransitGatewayAttachmentResourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceTypeNode.GetText()).c_str()));
       m_resourceTypeHasBeenSet = true;
     }
     XmlNode resourceOwnerIdNode = resultNode.FirstChild("resourceOwnerId");
@@ -124,13 +88,13 @@ TransitGatewayMulticastGroup& TransitGatewayMulticastGroup::operator =(const Xml
     XmlNode memberTypeNode = resultNode.FirstChild("memberType");
     if(!memberTypeNode.IsNull())
     {
-      m_memberType = MembershipTypeMapper::GetMembershipTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(memberTypeNode.GetText()).c_str()).c_str());
+      m_memberType = MembershipTypeMapper::GetMembershipTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(memberTypeNode.GetText()).c_str()));
       m_memberTypeHasBeenSet = true;
     }
     XmlNode sourceTypeNode = resultNode.FirstChild("sourceType");
     if(!sourceTypeNode.IsNull())
     {
-      m_sourceType = MembershipTypeMapper::GetMembershipTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(sourceTypeNode.GetText()).c_str()).c_str());
+      m_sourceType = MembershipTypeMapper::GetMembershipTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(sourceTypeNode.GetText()).c_str()));
       m_sourceTypeHasBeenSet = true;
     }
   }
@@ -162,7 +126,7 @@ void TransitGatewayMulticastGroup::OutputToStream(Aws::OStream& oStream, const c
 
   if(m_resourceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ResourceType=" << TransitGatewayAttachmentResourceTypeMapper::GetNameForTransitGatewayAttachmentResourceType(m_resourceType) << "&";
+      oStream << location << index << locationValue << ".ResourceType=" << StringUtils::URLEncode(TransitGatewayAttachmentResourceTypeMapper::GetNameForTransitGatewayAttachmentResourceType(m_resourceType)) << "&";
   }
 
   if(m_resourceOwnerIdHasBeenSet)
@@ -187,12 +151,12 @@ void TransitGatewayMulticastGroup::OutputToStream(Aws::OStream& oStream, const c
 
   if(m_memberTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".MemberType=" << MembershipTypeMapper::GetNameForMembershipType(m_memberType) << "&";
+      oStream << location << index << locationValue << ".MemberType=" << StringUtils::URLEncode(MembershipTypeMapper::GetNameForMembershipType(m_memberType)) << "&";
   }
 
   if(m_sourceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".SourceType=" << MembershipTypeMapper::GetNameForMembershipType(m_sourceType) << "&";
+      oStream << location << index << locationValue << ".SourceType=" << StringUtils::URLEncode(MembershipTypeMapper::GetNameForMembershipType(m_sourceType)) << "&";
   }
 
 }
@@ -217,7 +181,7 @@ void TransitGatewayMulticastGroup::OutputToStream(Aws::OStream& oStream, const c
   }
   if(m_resourceTypeHasBeenSet)
   {
-      oStream << location << ".ResourceType=" << TransitGatewayAttachmentResourceTypeMapper::GetNameForTransitGatewayAttachmentResourceType(m_resourceType) << "&";
+      oStream << location << ".ResourceType=" << StringUtils::URLEncode(TransitGatewayAttachmentResourceTypeMapper::GetNameForTransitGatewayAttachmentResourceType(m_resourceType)) << "&";
   }
   if(m_resourceOwnerIdHasBeenSet)
   {
@@ -237,11 +201,11 @@ void TransitGatewayMulticastGroup::OutputToStream(Aws::OStream& oStream, const c
   }
   if(m_memberTypeHasBeenSet)
   {
-      oStream << location << ".MemberType=" << MembershipTypeMapper::GetNameForMembershipType(m_memberType) << "&";
+      oStream << location << ".MemberType=" << StringUtils::URLEncode(MembershipTypeMapper::GetNameForMembershipType(m_memberType)) << "&";
   }
   if(m_sourceTypeHasBeenSet)
   {
-      oStream << location << ".SourceType=" << MembershipTypeMapper::GetNameForMembershipType(m_sourceType) << "&";
+      oStream << location << ".SourceType=" << StringUtils::URLEncode(MembershipTypeMapper::GetNameForMembershipType(m_sourceType)) << "&";
   }
 }
 

@@ -36,382 +36,134 @@ namespace Model
   class WirelessDeviceStatistics
   {
   public:
-    AWS_IOTWIRELESS_API WirelessDeviceStatistics();
+    AWS_IOTWIRELESS_API WirelessDeviceStatistics() = default;
     AWS_IOTWIRELESS_API WirelessDeviceStatistics(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API WirelessDeviceStatistics& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name of the resource.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    WirelessDeviceStatistics& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
-    inline WirelessDeviceStatistics& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
-    inline WirelessDeviceStatistics& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
-    inline WirelessDeviceStatistics& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the wireless device reporting the data.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the wireless device reporting the data.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    WirelessDeviceStatistics& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the wireless device reporting the data.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of the wireless device reporting the data.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the wireless device reporting the data.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the wireless device reporting the data.</p>
-     */
-    inline WirelessDeviceStatistics& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the wireless device reporting the data.</p>
-     */
-    inline WirelessDeviceStatistics& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the wireless device reporting the data.</p>
-     */
-    inline WirelessDeviceStatistics& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The wireless device type.</p>
      */
-    inline const WirelessDeviceType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The wireless device type.</p>
-     */
+    inline WirelessDeviceType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(WirelessDeviceType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline WirelessDeviceStatistics& WithType(WirelessDeviceType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The wireless device type.</p>
-     */
-    inline void SetType(const WirelessDeviceType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The wireless device type.</p>
-     */
-    inline void SetType(WirelessDeviceType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The wireless device type.</p>
-     */
-    inline WirelessDeviceStatistics& WithType(const WirelessDeviceType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The wireless device type.</p>
-     */
-    inline WirelessDeviceStatistics& WithType(WirelessDeviceType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the resource.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    WirelessDeviceStatistics& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline WirelessDeviceStatistics& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline WirelessDeviceStatistics& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline WirelessDeviceStatistics& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the destination to which the device is assigned.</p>
      */
-    inline const Aws::String& GetDestinationName() const{ return m_destinationName; }
-
-    /**
-     * <p>The name of the destination to which the device is assigned.</p>
-     */
+    inline const Aws::String& GetDestinationName() const { return m_destinationName; }
     inline bool DestinationNameHasBeenSet() const { return m_destinationNameHasBeenSet; }
+    template<typename DestinationNameT = Aws::String>
+    void SetDestinationName(DestinationNameT&& value) { m_destinationNameHasBeenSet = true; m_destinationName = std::forward<DestinationNameT>(value); }
+    template<typename DestinationNameT = Aws::String>
+    WirelessDeviceStatistics& WithDestinationName(DestinationNameT&& value) { SetDestinationName(std::forward<DestinationNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the destination to which the device is assigned.</p>
+     * <p>The date and time when the most recent uplink was received.</p> 
+     * <p>Theis value is only valid for 3 months.</p> 
      */
-    inline void SetDestinationName(const Aws::String& value) { m_destinationNameHasBeenSet = true; m_destinationName = value; }
-
-    /**
-     * <p>The name of the destination to which the device is assigned.</p>
-     */
-    inline void SetDestinationName(Aws::String&& value) { m_destinationNameHasBeenSet = true; m_destinationName = std::move(value); }
-
-    /**
-     * <p>The name of the destination to which the device is assigned.</p>
-     */
-    inline void SetDestinationName(const char* value) { m_destinationNameHasBeenSet = true; m_destinationName.assign(value); }
-
-    /**
-     * <p>The name of the destination to which the device is assigned.</p>
-     */
-    inline WirelessDeviceStatistics& WithDestinationName(const Aws::String& value) { SetDestinationName(value); return *this;}
-
-    /**
-     * <p>The name of the destination to which the device is assigned.</p>
-     */
-    inline WirelessDeviceStatistics& WithDestinationName(Aws::String&& value) { SetDestinationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the destination to which the device is assigned.</p>
-     */
-    inline WirelessDeviceStatistics& WithDestinationName(const char* value) { SetDestinationName(value); return *this;}
-
-
-    /**
-     * <p>The date and time when the most recent uplink was received.</p>
-     */
-    inline const Aws::String& GetLastUplinkReceivedAt() const{ return m_lastUplinkReceivedAt; }
-
-    /**
-     * <p>The date and time when the most recent uplink was received.</p>
-     */
+    inline const Aws::String& GetLastUplinkReceivedAt() const { return m_lastUplinkReceivedAt; }
     inline bool LastUplinkReceivedAtHasBeenSet() const { return m_lastUplinkReceivedAtHasBeenSet; }
+    template<typename LastUplinkReceivedAtT = Aws::String>
+    void SetLastUplinkReceivedAt(LastUplinkReceivedAtT&& value) { m_lastUplinkReceivedAtHasBeenSet = true; m_lastUplinkReceivedAt = std::forward<LastUplinkReceivedAtT>(value); }
+    template<typename LastUplinkReceivedAtT = Aws::String>
+    WirelessDeviceStatistics& WithLastUplinkReceivedAt(LastUplinkReceivedAtT&& value) { SetLastUplinkReceivedAt(std::forward<LastUplinkReceivedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time when the most recent uplink was received.</p>
-     */
-    inline void SetLastUplinkReceivedAt(const Aws::String& value) { m_lastUplinkReceivedAtHasBeenSet = true; m_lastUplinkReceivedAt = value; }
-
-    /**
-     * <p>The date and time when the most recent uplink was received.</p>
-     */
-    inline void SetLastUplinkReceivedAt(Aws::String&& value) { m_lastUplinkReceivedAtHasBeenSet = true; m_lastUplinkReceivedAt = std::move(value); }
-
-    /**
-     * <p>The date and time when the most recent uplink was received.</p>
-     */
-    inline void SetLastUplinkReceivedAt(const char* value) { m_lastUplinkReceivedAtHasBeenSet = true; m_lastUplinkReceivedAt.assign(value); }
-
-    /**
-     * <p>The date and time when the most recent uplink was received.</p>
-     */
-    inline WirelessDeviceStatistics& WithLastUplinkReceivedAt(const Aws::String& value) { SetLastUplinkReceivedAt(value); return *this;}
-
-    /**
-     * <p>The date and time when the most recent uplink was received.</p>
-     */
-    inline WirelessDeviceStatistics& WithLastUplinkReceivedAt(Aws::String&& value) { SetLastUplinkReceivedAt(std::move(value)); return *this;}
-
-    /**
-     * <p>The date and time when the most recent uplink was received.</p>
-     */
-    inline WirelessDeviceStatistics& WithLastUplinkReceivedAt(const char* value) { SetLastUplinkReceivedAt(value); return *this;}
-
-
+    ///@{
     /**
      * <p>LoRaWAN device info.</p>
      */
-    inline const LoRaWANListDevice& GetLoRaWAN() const{ return m_loRaWAN; }
-
-    /**
-     * <p>LoRaWAN device info.</p>
-     */
+    inline const LoRaWANListDevice& GetLoRaWAN() const { return m_loRaWAN; }
     inline bool LoRaWANHasBeenSet() const { return m_loRaWANHasBeenSet; }
+    template<typename LoRaWANT = LoRaWANListDevice>
+    void SetLoRaWAN(LoRaWANT&& value) { m_loRaWANHasBeenSet = true; m_loRaWAN = std::forward<LoRaWANT>(value); }
+    template<typename LoRaWANT = LoRaWANListDevice>
+    WirelessDeviceStatistics& WithLoRaWAN(LoRaWANT&& value) { SetLoRaWAN(std::forward<LoRaWANT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>LoRaWAN device info.</p>
-     */
-    inline void SetLoRaWAN(const LoRaWANListDevice& value) { m_loRaWANHasBeenSet = true; m_loRaWAN = value; }
-
-    /**
-     * <p>LoRaWAN device info.</p>
-     */
-    inline void SetLoRaWAN(LoRaWANListDevice&& value) { m_loRaWANHasBeenSet = true; m_loRaWAN = std::move(value); }
-
-    /**
-     * <p>LoRaWAN device info.</p>
-     */
-    inline WirelessDeviceStatistics& WithLoRaWAN(const LoRaWANListDevice& value) { SetLoRaWAN(value); return *this;}
-
-    /**
-     * <p>LoRaWAN device info.</p>
-     */
-    inline WirelessDeviceStatistics& WithLoRaWAN(LoRaWANListDevice&& value) { SetLoRaWAN(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Sidewalk account credentials.</p>
      */
-    inline const SidewalkListDevice& GetSidewalk() const{ return m_sidewalk; }
-
-    /**
-     * <p>The Sidewalk account credentials.</p>
-     */
+    inline const SidewalkListDevice& GetSidewalk() const { return m_sidewalk; }
     inline bool SidewalkHasBeenSet() const { return m_sidewalkHasBeenSet; }
+    template<typename SidewalkT = SidewalkListDevice>
+    void SetSidewalk(SidewalkT&& value) { m_sidewalkHasBeenSet = true; m_sidewalk = std::forward<SidewalkT>(value); }
+    template<typename SidewalkT = SidewalkListDevice>
+    WirelessDeviceStatistics& WithSidewalk(SidewalkT&& value) { SetSidewalk(std::forward<SidewalkT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Sidewalk account credentials.</p>
-     */
-    inline void SetSidewalk(const SidewalkListDevice& value) { m_sidewalkHasBeenSet = true; m_sidewalk = value; }
-
-    /**
-     * <p>The Sidewalk account credentials.</p>
-     */
-    inline void SetSidewalk(SidewalkListDevice&& value) { m_sidewalkHasBeenSet = true; m_sidewalk = std::move(value); }
-
-    /**
-     * <p>The Sidewalk account credentials.</p>
-     */
-    inline WirelessDeviceStatistics& WithSidewalk(const SidewalkListDevice& value) { SetSidewalk(value); return *this;}
-
-    /**
-     * <p>The Sidewalk account credentials.</p>
-     */
-    inline WirelessDeviceStatistics& WithSidewalk(SidewalkListDevice&& value) { SetSidewalk(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const FuotaDeviceStatus& GetFuotaDeviceStatus() const{ return m_fuotaDeviceStatus; }
-
-    
+    inline FuotaDeviceStatus GetFuotaDeviceStatus() const { return m_fuotaDeviceStatus; }
     inline bool FuotaDeviceStatusHasBeenSet() const { return m_fuotaDeviceStatusHasBeenSet; }
+    inline void SetFuotaDeviceStatus(FuotaDeviceStatus value) { m_fuotaDeviceStatusHasBeenSet = true; m_fuotaDeviceStatus = value; }
+    inline WirelessDeviceStatistics& WithFuotaDeviceStatus(FuotaDeviceStatus value) { SetFuotaDeviceStatus(value); return *this;}
+    ///@}
 
-    
-    inline void SetFuotaDeviceStatus(const FuotaDeviceStatus& value) { m_fuotaDeviceStatusHasBeenSet = true; m_fuotaDeviceStatus = value; }
-
-    
-    inline void SetFuotaDeviceStatus(FuotaDeviceStatus&& value) { m_fuotaDeviceStatusHasBeenSet = true; m_fuotaDeviceStatus = std::move(value); }
-
-    
-    inline WirelessDeviceStatistics& WithFuotaDeviceStatus(const FuotaDeviceStatus& value) { SetFuotaDeviceStatus(value); return *this;}
-
-    
-    inline WirelessDeviceStatistics& WithFuotaDeviceStatus(FuotaDeviceStatus&& value) { SetFuotaDeviceStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the wireless device in the multicast group.</p>
      */
-    inline const Aws::String& GetMulticastDeviceStatus() const{ return m_multicastDeviceStatus; }
-
-    /**
-     * <p>The status of the wireless device in the multicast group.</p>
-     */
+    inline const Aws::String& GetMulticastDeviceStatus() const { return m_multicastDeviceStatus; }
     inline bool MulticastDeviceStatusHasBeenSet() const { return m_multicastDeviceStatusHasBeenSet; }
+    template<typename MulticastDeviceStatusT = Aws::String>
+    void SetMulticastDeviceStatus(MulticastDeviceStatusT&& value) { m_multicastDeviceStatusHasBeenSet = true; m_multicastDeviceStatus = std::forward<MulticastDeviceStatusT>(value); }
+    template<typename MulticastDeviceStatusT = Aws::String>
+    WirelessDeviceStatistics& WithMulticastDeviceStatus(MulticastDeviceStatusT&& value) { SetMulticastDeviceStatus(std::forward<MulticastDeviceStatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the wireless device in the multicast group.</p>
-     */
-    inline void SetMulticastDeviceStatus(const Aws::String& value) { m_multicastDeviceStatusHasBeenSet = true; m_multicastDeviceStatus = value; }
-
-    /**
-     * <p>The status of the wireless device in the multicast group.</p>
-     */
-    inline void SetMulticastDeviceStatus(Aws::String&& value) { m_multicastDeviceStatusHasBeenSet = true; m_multicastDeviceStatus = std::move(value); }
-
-    /**
-     * <p>The status of the wireless device in the multicast group.</p>
-     */
-    inline void SetMulticastDeviceStatus(const char* value) { m_multicastDeviceStatusHasBeenSet = true; m_multicastDeviceStatus.assign(value); }
-
-    /**
-     * <p>The status of the wireless device in the multicast group.</p>
-     */
-    inline WirelessDeviceStatistics& WithMulticastDeviceStatus(const Aws::String& value) { SetMulticastDeviceStatus(value); return *this;}
-
-    /**
-     * <p>The status of the wireless device in the multicast group.</p>
-     */
-    inline WirelessDeviceStatistics& WithMulticastDeviceStatus(Aws::String&& value) { SetMulticastDeviceStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the wireless device in the multicast group.</p>
-     */
-    inline WirelessDeviceStatistics& WithMulticastDeviceStatus(const char* value) { SetMulticastDeviceStatus(value); return *this;}
-
-
+    ///@{
     
-    inline int GetMcGroupId() const{ return m_mcGroupId; }
-
-    
+    inline int GetMcGroupId() const { return m_mcGroupId; }
     inline bool McGroupIdHasBeenSet() const { return m_mcGroupIdHasBeenSet; }
-
-    
     inline void SetMcGroupId(int value) { m_mcGroupIdHasBeenSet = true; m_mcGroupId = value; }
-
-    
     inline WirelessDeviceStatistics& WithMcGroupId(int value) { SetMcGroupId(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_arn;
@@ -420,7 +172,7 @@ namespace Model
     Aws::String m_id;
     bool m_idHasBeenSet = false;
 
-    WirelessDeviceType m_type;
+    WirelessDeviceType m_type{WirelessDeviceType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_name;
@@ -438,13 +190,13 @@ namespace Model
     SidewalkListDevice m_sidewalk;
     bool m_sidewalkHasBeenSet = false;
 
-    FuotaDeviceStatus m_fuotaDeviceStatus;
+    FuotaDeviceStatus m_fuotaDeviceStatus{FuotaDeviceStatus::NOT_SET};
     bool m_fuotaDeviceStatusHasBeenSet = false;
 
     Aws::String m_multicastDeviceStatus;
     bool m_multicastDeviceStatusHasBeenSet = false;
 
-    int m_mcGroupId;
+    int m_mcGroupId{0};
     bool m_mcGroupIdHasBeenSet = false;
   };
 

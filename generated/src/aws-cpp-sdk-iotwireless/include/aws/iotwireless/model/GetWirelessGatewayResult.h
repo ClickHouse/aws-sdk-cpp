@@ -28,298 +28,122 @@ namespace Model
   class GetWirelessGatewayResult
   {
   public:
-    AWS_IOTWIRELESS_API GetWirelessGatewayResult();
+    AWS_IOTWIRELESS_API GetWirelessGatewayResult() = default;
     AWS_IOTWIRELESS_API GetWirelessGatewayResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_IOTWIRELESS_API GetWirelessGatewayResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The name of the resource.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetWirelessGatewayResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline GetWirelessGatewayResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline GetWirelessGatewayResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline GetWirelessGatewayResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the wireless gateway.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    GetWirelessGatewayResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the wireless gateway.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_id = value; }
-
-    /**
-     * <p>The ID of the wireless gateway.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the wireless gateway.</p>
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * <p>The ID of the wireless gateway.</p>
-     */
-    inline GetWirelessGatewayResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the wireless gateway.</p>
-     */
-    inline GetWirelessGatewayResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the wireless gateway.</p>
-     */
-    inline GetWirelessGatewayResult& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the resource.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    GetWirelessGatewayResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the resource.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>The description of the resource.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>The description of the resource.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>The description of the resource.</p>
-     */
-    inline GetWirelessGatewayResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the resource.</p>
-     */
-    inline GetWirelessGatewayResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the resource.</p>
-     */
-    inline GetWirelessGatewayResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the wireless gateway.</p>
      */
-    inline const LoRaWANGateway& GetLoRaWAN() const{ return m_loRaWAN; }
+    inline const LoRaWANGateway& GetLoRaWAN() const { return m_loRaWAN; }
+    template<typename LoRaWANT = LoRaWANGateway>
+    void SetLoRaWAN(LoRaWANT&& value) { m_loRaWANHasBeenSet = true; m_loRaWAN = std::forward<LoRaWANT>(value); }
+    template<typename LoRaWANT = LoRaWANGateway>
+    GetWirelessGatewayResult& WithLoRaWAN(LoRaWANT&& value) { SetLoRaWAN(std::forward<LoRaWANT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the wireless gateway.</p>
-     */
-    inline void SetLoRaWAN(const LoRaWANGateway& value) { m_loRaWAN = value; }
-
-    /**
-     * <p>Information about the wireless gateway.</p>
-     */
-    inline void SetLoRaWAN(LoRaWANGateway&& value) { m_loRaWAN = std::move(value); }
-
-    /**
-     * <p>Information about the wireless gateway.</p>
-     */
-    inline GetWirelessGatewayResult& WithLoRaWAN(const LoRaWANGateway& value) { SetLoRaWAN(value); return *this;}
-
-    /**
-     * <p>Information about the wireless gateway.</p>
-     */
-    inline GetWirelessGatewayResult& WithLoRaWAN(LoRaWANGateway&& value) { SetLoRaWAN(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name of the resource.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    GetWirelessGatewayResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
-    inline GetWirelessGatewayResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
-    inline GetWirelessGatewayResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
-    inline GetWirelessGatewayResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the thing associated with the wireless gateway. The value is
      * empty if a thing isn't associated with the gateway.</p>
      */
-    inline const Aws::String& GetThingName() const{ return m_thingName; }
+    inline const Aws::String& GetThingName() const { return m_thingName; }
+    template<typename ThingNameT = Aws::String>
+    void SetThingName(ThingNameT&& value) { m_thingNameHasBeenSet = true; m_thingName = std::forward<ThingNameT>(value); }
+    template<typename ThingNameT = Aws::String>
+    GetWirelessGatewayResult& WithThingName(ThingNameT&& value) { SetThingName(std::forward<ThingNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the thing associated with the wireless gateway. The value is
-     * empty if a thing isn't associated with the gateway.</p>
-     */
-    inline void SetThingName(const Aws::String& value) { m_thingName = value; }
-
-    /**
-     * <p>The name of the thing associated with the wireless gateway. The value is
-     * empty if a thing isn't associated with the gateway.</p>
-     */
-    inline void SetThingName(Aws::String&& value) { m_thingName = std::move(value); }
-
-    /**
-     * <p>The name of the thing associated with the wireless gateway. The value is
-     * empty if a thing isn't associated with the gateway.</p>
-     */
-    inline void SetThingName(const char* value) { m_thingName.assign(value); }
-
-    /**
-     * <p>The name of the thing associated with the wireless gateway. The value is
-     * empty if a thing isn't associated with the gateway.</p>
-     */
-    inline GetWirelessGatewayResult& WithThingName(const Aws::String& value) { SetThingName(value); return *this;}
-
-    /**
-     * <p>The name of the thing associated with the wireless gateway. The value is
-     * empty if a thing isn't associated with the gateway.</p>
-     */
-    inline GetWirelessGatewayResult& WithThingName(Aws::String&& value) { SetThingName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the thing associated with the wireless gateway. The value is
-     * empty if a thing isn't associated with the gateway.</p>
-     */
-    inline GetWirelessGatewayResult& WithThingName(const char* value) { SetThingName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the thing associated with the wireless gateway.</p>
      */
-    inline const Aws::String& GetThingArn() const{ return m_thingArn; }
+    inline const Aws::String& GetThingArn() const { return m_thingArn; }
+    template<typename ThingArnT = Aws::String>
+    void SetThingArn(ThingArnT&& value) { m_thingArnHasBeenSet = true; m_thingArn = std::forward<ThingArnT>(value); }
+    template<typename ThingArnT = Aws::String>
+    GetWirelessGatewayResult& WithThingArn(ThingArnT&& value) { SetThingArn(std::forward<ThingArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the thing associated with the wireless gateway.</p>
-     */
-    inline void SetThingArn(const Aws::String& value) { m_thingArn = value; }
-
-    /**
-     * <p>The ARN of the thing associated with the wireless gateway.</p>
-     */
-    inline void SetThingArn(Aws::String&& value) { m_thingArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the thing associated with the wireless gateway.</p>
-     */
-    inline void SetThingArn(const char* value) { m_thingArn.assign(value); }
-
-    /**
-     * <p>The ARN of the thing associated with the wireless gateway.</p>
-     */
-    inline GetWirelessGatewayResult& WithThingArn(const Aws::String& value) { SetThingArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the thing associated with the wireless gateway.</p>
-     */
-    inline GetWirelessGatewayResult& WithThingArn(Aws::String&& value) { SetThingArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the thing associated with the wireless gateway.</p>
-     */
-    inline GetWirelessGatewayResult& WithThingArn(const char* value) { SetThingArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetWirelessGatewayResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetWirelessGatewayResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetWirelessGatewayResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetWirelessGatewayResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
     LoRaWANGateway m_loRaWAN;
+    bool m_loRaWANHasBeenSet = false;
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_thingName;
+    bool m_thingNameHasBeenSet = false;
 
     Aws::String m_thingArn;
+    bool m_thingArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

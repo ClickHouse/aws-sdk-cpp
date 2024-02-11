@@ -12,12 +12,6 @@ using namespace Aws::ManagedGrafana::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateWorkspaceConfigurationRequest::UpdateWorkspaceConfigurationRequest() : 
-    m_configurationHasBeenSet(false),
-    m_workspaceIdHasBeenSet(false)
-{
-}
-
 Aws::String UpdateWorkspaceConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -25,6 +19,12 @@ Aws::String UpdateWorkspaceConfigurationRequest::SerializePayload() const
   if(m_configurationHasBeenSet)
   {
    payload.WithString("configuration", m_configuration);
+
+  }
+
+  if(m_grafanaVersionHasBeenSet)
+  {
+   payload.WithString("grafanaVersion", m_grafanaVersion);
 
   }
 

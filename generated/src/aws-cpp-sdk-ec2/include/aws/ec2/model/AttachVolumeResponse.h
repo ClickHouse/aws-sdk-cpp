@@ -5,9 +5,9 @@
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
-#include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/VolumeAttachmentState.h>
+#include <aws/core/utils/DateTime.h>
 #include <aws/ec2/model/ResponseMetadata.h>
 #include <utility>
 
@@ -35,217 +35,137 @@ namespace Model
   class AttachVolumeResponse
   {
   public:
-    AWS_EC2_API AttachVolumeResponse();
+    AWS_EC2_API AttachVolumeResponse() = default;
     AWS_EC2_API AttachVolumeResponse(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_EC2_API AttachVolumeResponse& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
-    /**
-     * <p>The time stamp when the attachment initiated.</p>
-     */
-    inline const Aws::Utils::DateTime& GetAttachTime() const{ return m_attachTime; }
-
-    /**
-     * <p>The time stamp when the attachment initiated.</p>
-     */
-    inline void SetAttachTime(const Aws::Utils::DateTime& value) { m_attachTime = value; }
-
-    /**
-     * <p>The time stamp when the attachment initiated.</p>
-     */
-    inline void SetAttachTime(Aws::Utils::DateTime&& value) { m_attachTime = std::move(value); }
-
-    /**
-     * <p>The time stamp when the attachment initiated.</p>
-     */
-    inline AttachVolumeResponse& WithAttachTime(const Aws::Utils::DateTime& value) { SetAttachTime(value); return *this;}
-
-    /**
-     * <p>The time stamp when the attachment initiated.</p>
-     */
-    inline AttachVolumeResponse& WithAttachTime(Aws::Utils::DateTime&& value) { SetAttachTime(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The device name.</p>
-     */
-    inline const Aws::String& GetDevice() const{ return m_device; }
-
-    /**
-     * <p>The device name.</p>
-     */
-    inline void SetDevice(const Aws::String& value) { m_device = value; }
-
-    /**
-     * <p>The device name.</p>
-     */
-    inline void SetDevice(Aws::String&& value) { m_device = std::move(value); }
-
-    /**
-     * <p>The device name.</p>
-     */
-    inline void SetDevice(const char* value) { m_device.assign(value); }
-
-    /**
-     * <p>The device name.</p>
-     */
-    inline AttachVolumeResponse& WithDevice(const Aws::String& value) { SetDevice(value); return *this;}
-
-    /**
-     * <p>The device name.</p>
-     */
-    inline AttachVolumeResponse& WithDevice(Aws::String&& value) { SetDevice(std::move(value)); return *this;}
-
-    /**
-     * <p>The device name.</p>
-     */
-    inline AttachVolumeResponse& WithDevice(const char* value) { SetDevice(value); return *this;}
-
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceId = value; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceId = std::move(value); }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceId.assign(value); }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline AttachVolumeResponse& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline AttachVolumeResponse& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline AttachVolumeResponse& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
-    /**
-     * <p>The attachment state of the volume.</p>
-     */
-    inline const VolumeAttachmentState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The attachment state of the volume.</p>
-     */
-    inline void SetState(const VolumeAttachmentState& value) { m_state = value; }
-
-    /**
-     * <p>The attachment state of the volume.</p>
-     */
-    inline void SetState(VolumeAttachmentState&& value) { m_state = std::move(value); }
-
-    /**
-     * <p>The attachment state of the volume.</p>
-     */
-    inline AttachVolumeResponse& WithState(const VolumeAttachmentState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The attachment state of the volume.</p>
-     */
-    inline AttachVolumeResponse& WithState(VolumeAttachmentState&& value) { SetState(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The ID of the volume.</p>
-     */
-    inline const Aws::String& GetVolumeId() const{ return m_volumeId; }
-
-    /**
-     * <p>The ID of the volume.</p>
-     */
-    inline void SetVolumeId(const Aws::String& value) { m_volumeId = value; }
-
-    /**
-     * <p>The ID of the volume.</p>
-     */
-    inline void SetVolumeId(Aws::String&& value) { m_volumeId = std::move(value); }
-
-    /**
-     * <p>The ID of the volume.</p>
-     */
-    inline void SetVolumeId(const char* value) { m_volumeId.assign(value); }
-
-    /**
-     * <p>The ID of the volume.</p>
-     */
-    inline AttachVolumeResponse& WithVolumeId(const Aws::String& value) { SetVolumeId(value); return *this;}
-
-    /**
-     * <p>The ID of the volume.</p>
-     */
-    inline AttachVolumeResponse& WithVolumeId(Aws::String&& value) { SetVolumeId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the volume.</p>
-     */
-    inline AttachVolumeResponse& WithVolumeId(const char* value) { SetVolumeId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether the EBS volume is deleted on instance termination.</p>
      */
-    inline bool GetDeleteOnTermination() const{ return m_deleteOnTermination; }
-
-    /**
-     * <p>Indicates whether the EBS volume is deleted on instance termination.</p>
-     */
-    inline void SetDeleteOnTermination(bool value) { m_deleteOnTermination = value; }
-
-    /**
-     * <p>Indicates whether the EBS volume is deleted on instance termination.</p>
-     */
+    inline bool GetDeleteOnTermination() const { return m_deleteOnTermination; }
+    inline void SetDeleteOnTermination(bool value) { m_deleteOnTerminationHasBeenSet = true; m_deleteOnTermination = value; }
     inline AttachVolumeResponse& WithDeleteOnTermination(bool value) { SetDeleteOnTermination(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>The ARN of the Amazon Web Services-managed resource to which the volume is
+     * attached.</p>
+     */
+    inline const Aws::String& GetAssociatedResource() const { return m_associatedResource; }
+    template<typename AssociatedResourceT = Aws::String>
+    void SetAssociatedResource(AssociatedResourceT&& value) { m_associatedResourceHasBeenSet = true; m_associatedResource = std::forward<AssociatedResourceT>(value); }
+    template<typename AssociatedResourceT = Aws::String>
+    AttachVolumeResponse& WithAssociatedResource(AssociatedResourceT&& value) { SetAssociatedResource(std::forward<AssociatedResourceT>(value)); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>The service principal of the Amazon Web Services service that owns the
+     * underlying resource to which the volume is attached.</p> <p>This parameter is
+     * returned only for volumes that are attached to Amazon Web Services-managed
+     * resources.</p>
+     */
+    inline const Aws::String& GetInstanceOwningService() const { return m_instanceOwningService; }
+    template<typename InstanceOwningServiceT = Aws::String>
+    void SetInstanceOwningService(InstanceOwningServiceT&& value) { m_instanceOwningServiceHasBeenSet = true; m_instanceOwningService = std::forward<InstanceOwningServiceT>(value); }
+    template<typename InstanceOwningServiceT = Aws::String>
+    AttachVolumeResponse& WithInstanceOwningService(InstanceOwningServiceT&& value) { SetInstanceOwningService(std::forward<InstanceOwningServiceT>(value)); return *this;}
+    ///@}
+
+    ///@{
+    /**
+     * <p>The ID of the volume.</p>
+     */
+    inline const Aws::String& GetVolumeId() const { return m_volumeId; }
+    template<typename VolumeIdT = Aws::String>
+    void SetVolumeId(VolumeIdT&& value) { m_volumeIdHasBeenSet = true; m_volumeId = std::forward<VolumeIdT>(value); }
+    template<typename VolumeIdT = Aws::String>
+    AttachVolumeResponse& WithVolumeId(VolumeIdT&& value) { SetVolumeId(std::forward<VolumeIdT>(value)); return *this;}
+    ///@}
+
+    ///@{
+    /**
+     * <p>The ID of the instance.</p> <p>If the volume is attached to an Amazon Web
+     * Services-managed resource, this parameter returns <code>null</code>.</p>
+     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    AttachVolumeResponse& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
+
+    ///@{
+    /**
+     * <p>The device name.</p> <p>If the volume is attached to an Amazon Web
+     * Services-managed resource, this parameter returns <code>null</code>.</p>
+     */
+    inline const Aws::String& GetDevice() const { return m_device; }
+    template<typename DeviceT = Aws::String>
+    void SetDevice(DeviceT&& value) { m_deviceHasBeenSet = true; m_device = std::forward<DeviceT>(value); }
+    template<typename DeviceT = Aws::String>
+    AttachVolumeResponse& WithDevice(DeviceT&& value) { SetDevice(std::forward<DeviceT>(value)); return *this;}
+    ///@}
+
+    ///@{
+    /**
+     * <p>The attachment state of the volume.</p>
+     */
+    inline VolumeAttachmentState GetState() const { return m_state; }
+    inline void SetState(VolumeAttachmentState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline AttachVolumeResponse& WithState(VolumeAttachmentState value) { SetState(value); return *this;}
+    ///@}
+
+    ///@{
+    /**
+     * <p>The time stamp when the attachment initiated.</p>
+     */
+    inline const Aws::Utils::DateTime& GetAttachTime() const { return m_attachTime; }
+    template<typename AttachTimeT = Aws::Utils::DateTime>
+    void SetAttachTime(AttachTimeT&& value) { m_attachTimeHasBeenSet = true; m_attachTime = std::forward<AttachTimeT>(value); }
+    template<typename AttachTimeT = Aws::Utils::DateTime>
+    AttachVolumeResponse& WithAttachTime(AttachTimeT&& value) { SetAttachTime(std::forward<AttachTimeT>(value)); return *this;}
+    ///@}
+
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline AttachVolumeResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline AttachVolumeResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    AttachVolumeResponse& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_attachTime;
+    bool m_deleteOnTermination{false};
+    bool m_deleteOnTerminationHasBeenSet = false;
 
-    Aws::String m_device;
+    Aws::String m_associatedResource;
+    bool m_associatedResourceHasBeenSet = false;
 
-    Aws::String m_instanceId;
-
-    VolumeAttachmentState m_state;
+    Aws::String m_instanceOwningService;
+    bool m_instanceOwningServiceHasBeenSet = false;
 
     Aws::String m_volumeId;
+    bool m_volumeIdHasBeenSet = false;
 
-    bool m_deleteOnTermination;
+    Aws::String m_instanceId;
+    bool m_instanceIdHasBeenSet = false;
+
+    Aws::String m_device;
+    bool m_deviceHasBeenSet = false;
+
+    VolumeAttachmentState m_state{VolumeAttachmentState::NOT_SET};
+    bool m_stateHasBeenSet = false;
+
+    Aws::Utils::DateTime m_attachTime{};
+    bool m_attachTimeHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

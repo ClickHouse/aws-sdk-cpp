@@ -18,15 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-InputVpcRequest::InputVpcRequest() : 
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false)
-{
-}
-
-InputVpcRequest::InputVpcRequest(JsonView jsonValue) : 
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false)
+InputVpcRequest::InputVpcRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ InputVpcRequest& InputVpcRequest::operator =(JsonView jsonValue)
     }
     m_securityGroupIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("subnetIds"))
   {
     Aws::Utils::Array<JsonView> subnetIdsJsonList = jsonValue.GetArray("subnetIds");
@@ -52,7 +43,6 @@ InputVpcRequest& InputVpcRequest::operator =(JsonView jsonValue)
     }
     m_subnetIdsHasBeenSet = true;
   }
-
   return *this;
 }
 

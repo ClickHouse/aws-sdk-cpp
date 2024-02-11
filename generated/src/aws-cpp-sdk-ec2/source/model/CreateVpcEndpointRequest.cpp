@@ -10,27 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateVpcEndpointRequest::CreateVpcEndpointRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_vpcEndpointType(VpcEndpointType::NOT_SET),
-    m_vpcEndpointTypeHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_serviceNameHasBeenSet(false),
-    m_policyDocumentHasBeenSet(false),
-    m_routeTableIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_ipAddressType(IpAddressType::NOT_SET),
-    m_ipAddressTypeHasBeenSet(false),
-    m_dnsOptionsHasBeenSet(false),
-    m_clientTokenHasBeenSet(false),
-    m_privateDnsEnabled(false),
-    m_privateDnsEnabledHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false)
-{
-}
-
 Aws::String CreateVpcEndpointRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -42,7 +21,7 @@ Aws::String CreateVpcEndpointRequest::SerializePayload() const
 
   if(m_vpcEndpointTypeHasBeenSet)
   {
-    ss << "VpcEndpointType=" << VpcEndpointTypeMapper::GetNameForVpcEndpointType(m_vpcEndpointType) << "&";
+    ss << "VpcEndpointType=" << StringUtils::URLEncode(VpcEndpointTypeMapper::GetNameForVpcEndpointType(m_vpcEndpointType)) << "&";
   }
 
   if(m_vpcIdHasBeenSet)
@@ -95,7 +74,7 @@ Aws::String CreateVpcEndpointRequest::SerializePayload() const
 
   if(m_ipAddressTypeHasBeenSet)
   {
-    ss << "IpAddressType=" << IpAddressTypeMapper::GetNameForIpAddressType(m_ipAddressType) << "&";
+    ss << "IpAddressType=" << StringUtils::URLEncode(IpAddressTypeMapper::GetNameForIpAddressType(m_ipAddressType)) << "&";
   }
 
   if(m_dnsOptionsHasBeenSet)
@@ -121,6 +100,31 @@ Aws::String CreateVpcEndpointRequest::SerializePayload() const
       item.OutputToStream(ss, "TagSpecification.", tagSpecificationsCount, "");
       tagSpecificationsCount++;
     }
+  }
+
+  if(m_subnetConfigurationsHasBeenSet)
+  {
+    unsigned subnetConfigurationsCount = 1;
+    for(auto& item : m_subnetConfigurations)
+    {
+      item.OutputToStream(ss, "SubnetConfiguration.", subnetConfigurationsCount, "");
+      subnetConfigurationsCount++;
+    }
+  }
+
+  if(m_serviceNetworkArnHasBeenSet)
+  {
+    ss << "ServiceNetworkArn=" << StringUtils::URLEncode(m_serviceNetworkArn.c_str()) << "&";
+  }
+
+  if(m_resourceConfigurationArnHasBeenSet)
+  {
+    ss << "ResourceConfigurationArn=" << StringUtils::URLEncode(m_resourceConfigurationArn.c_str()) << "&";
+  }
+
+  if(m_serviceRegionHasBeenSet)
+  {
+    ss << "ServiceRegion=" << StringUtils::URLEncode(m_serviceRegion.c_str()) << "&";
   }
 
   ss << "Version=2016-11-15";

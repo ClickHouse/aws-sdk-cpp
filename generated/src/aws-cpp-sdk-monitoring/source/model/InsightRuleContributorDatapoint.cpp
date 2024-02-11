@@ -20,17 +20,7 @@ namespace CloudWatch
 namespace Model
 {
 
-InsightRuleContributorDatapoint::InsightRuleContributorDatapoint() : 
-    m_timestampHasBeenSet(false),
-    m_approximateValue(0.0),
-    m_approximateValueHasBeenSet(false)
-{
-}
-
-InsightRuleContributorDatapoint::InsightRuleContributorDatapoint(const XmlNode& xmlNode) : 
-    m_timestampHasBeenSet(false),
-    m_approximateValue(0.0),
-    m_approximateValueHasBeenSet(false)
+InsightRuleContributorDatapoint::InsightRuleContributorDatapoint(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -80,7 +70,7 @@ void InsightRuleContributorDatapoint::OutputToStream(Aws::OStream& oStream, cons
   }
   if(m_approximateValueHasBeenSet)
   {
-        oStream << location << ".ApproximateValue=" << StringUtils::URLEncode(m_approximateValue) << "&";
+      oStream << location << ".ApproximateValue=" << StringUtils::URLEncode(m_approximateValue) << "&";
   }
 }
 

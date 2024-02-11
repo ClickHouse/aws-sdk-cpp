@@ -23,7 +23,7 @@ namespace Model
   class CreateLocationFsxWindowsRequest : public DataSyncRequest
   {
   public:
-    AWS_DATASYNC_API CreateLocationFsxWindowsRequest();
+    AWS_DATASYNC_API CreateLocationFsxWindowsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,422 +36,118 @@ namespace Model
     AWS_DATASYNC_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Specifies a mount path for your file system using forward slashes. This is
      * where DataSync reads or writes data (depending on if this is a source or
      * destination location).</p>
      */
-    inline const Aws::String& GetSubdirectory() const{ return m_subdirectory; }
-
-    /**
-     * <p>Specifies a mount path for your file system using forward slashes. This is
-     * where DataSync reads or writes data (depending on if this is a source or
-     * destination location).</p>
-     */
+    inline const Aws::String& GetSubdirectory() const { return m_subdirectory; }
     inline bool SubdirectoryHasBeenSet() const { return m_subdirectoryHasBeenSet; }
+    template<typename SubdirectoryT = Aws::String>
+    void SetSubdirectory(SubdirectoryT&& value) { m_subdirectoryHasBeenSet = true; m_subdirectory = std::forward<SubdirectoryT>(value); }
+    template<typename SubdirectoryT = Aws::String>
+    CreateLocationFsxWindowsRequest& WithSubdirectory(SubdirectoryT&& value) { SetSubdirectory(std::forward<SubdirectoryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies a mount path for your file system using forward slashes. This is
-     * where DataSync reads or writes data (depending on if this is a source or
-     * destination location).</p>
-     */
-    inline void SetSubdirectory(const Aws::String& value) { m_subdirectoryHasBeenSet = true; m_subdirectory = value; }
-
-    /**
-     * <p>Specifies a mount path for your file system using forward slashes. This is
-     * where DataSync reads or writes data (depending on if this is a source or
-     * destination location).</p>
-     */
-    inline void SetSubdirectory(Aws::String&& value) { m_subdirectoryHasBeenSet = true; m_subdirectory = std::move(value); }
-
-    /**
-     * <p>Specifies a mount path for your file system using forward slashes. This is
-     * where DataSync reads or writes data (depending on if this is a source or
-     * destination location).</p>
-     */
-    inline void SetSubdirectory(const char* value) { m_subdirectoryHasBeenSet = true; m_subdirectory.assign(value); }
-
-    /**
-     * <p>Specifies a mount path for your file system using forward slashes. This is
-     * where DataSync reads or writes data (depending on if this is a source or
-     * destination location).</p>
-     */
-    inline CreateLocationFsxWindowsRequest& WithSubdirectory(const Aws::String& value) { SetSubdirectory(value); return *this;}
-
-    /**
-     * <p>Specifies a mount path for your file system using forward slashes. This is
-     * where DataSync reads or writes data (depending on if this is a source or
-     * destination location).</p>
-     */
-    inline CreateLocationFsxWindowsRequest& WithSubdirectory(Aws::String&& value) { SetSubdirectory(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies a mount path for your file system using forward slashes. This is
-     * where DataSync reads or writes data (depending on if this is a source or
-     * destination location).</p>
-     */
-    inline CreateLocationFsxWindowsRequest& WithSubdirectory(const char* value) { SetSubdirectory(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the Amazon Resource Name (ARN) for the FSx for Windows File Server
      * file system.</p>
      */
-    inline const Aws::String& GetFsxFilesystemArn() const{ return m_fsxFilesystemArn; }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) for the FSx for Windows File Server
-     * file system.</p>
-     */
+    inline const Aws::String& GetFsxFilesystemArn() const { return m_fsxFilesystemArn; }
     inline bool FsxFilesystemArnHasBeenSet() const { return m_fsxFilesystemArnHasBeenSet; }
+    template<typename FsxFilesystemArnT = Aws::String>
+    void SetFsxFilesystemArn(FsxFilesystemArnT&& value) { m_fsxFilesystemArnHasBeenSet = true; m_fsxFilesystemArn = std::forward<FsxFilesystemArnT>(value); }
+    template<typename FsxFilesystemArnT = Aws::String>
+    CreateLocationFsxWindowsRequest& WithFsxFilesystemArn(FsxFilesystemArnT&& value) { SetFsxFilesystemArn(std::forward<FsxFilesystemArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies the Amazon Resource Name (ARN) for the FSx for Windows File Server
-     * file system.</p>
+     * <p>Specifies the ARNs of the Amazon EC2 security groups that provide access to
+     * your file system's preferred subnet.</p> <p>The security groups that you specify
+     * must be able to communicate with your file system's security groups. For
+     * information about configuring security groups for file system access, see the <a
+     * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/limit-access-security-groups.html">
+     * <i>Amazon FSx for Windows File Server User Guide</i> </a>.</p>  <p>If you
+     * choose a security group that doesn't allow connections from within itself, do
+     * one of the following:</p> <ul> <li> <p>Configure the security group to allow it
+     * to communicate within itself.</p> </li> <li> <p>Choose a different security
+     * group that can communicate with the mount target's security group.</p> </li>
+     * </ul> 
      */
-    inline void SetFsxFilesystemArn(const Aws::String& value) { m_fsxFilesystemArnHasBeenSet = true; m_fsxFilesystemArn = value; }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) for the FSx for Windows File Server
-     * file system.</p>
-     */
-    inline void SetFsxFilesystemArn(Aws::String&& value) { m_fsxFilesystemArnHasBeenSet = true; m_fsxFilesystemArn = std::move(value); }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) for the FSx for Windows File Server
-     * file system.</p>
-     */
-    inline void SetFsxFilesystemArn(const char* value) { m_fsxFilesystemArnHasBeenSet = true; m_fsxFilesystemArn.assign(value); }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) for the FSx for Windows File Server
-     * file system.</p>
-     */
-    inline CreateLocationFsxWindowsRequest& WithFsxFilesystemArn(const Aws::String& value) { SetFsxFilesystemArn(value); return *this;}
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) for the FSx for Windows File Server
-     * file system.</p>
-     */
-    inline CreateLocationFsxWindowsRequest& WithFsxFilesystemArn(Aws::String&& value) { SetFsxFilesystemArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) for the FSx for Windows File Server
-     * file system.</p>
-     */
-    inline CreateLocationFsxWindowsRequest& WithFsxFilesystemArn(const char* value) { SetFsxFilesystemArn(value); return *this;}
-
-
-    /**
-     * <p>Specifies the ARNs of the security groups that provide access to your file
-     * system's preferred subnet.</p>  <p>If you choose a security group that
-     * doesn't allow connections from within itself, do one of the following:</p> <ul>
-     * <li> <p>Configure the security group to allow it to communicate within
-     * itself.</p> </li> <li> <p>Choose a different security group that can communicate
-     * with the mount target's security group.</p> </li> </ul> 
-     */
-    inline const Aws::Vector<Aws::String>& GetSecurityGroupArns() const{ return m_securityGroupArns; }
-
-    /**
-     * <p>Specifies the ARNs of the security groups that provide access to your file
-     * system's preferred subnet.</p>  <p>If you choose a security group that
-     * doesn't allow connections from within itself, do one of the following:</p> <ul>
-     * <li> <p>Configure the security group to allow it to communicate within
-     * itself.</p> </li> <li> <p>Choose a different security group that can communicate
-     * with the mount target's security group.</p> </li> </ul> 
-     */
+    inline const Aws::Vector<Aws::String>& GetSecurityGroupArns() const { return m_securityGroupArns; }
     inline bool SecurityGroupArnsHasBeenSet() const { return m_securityGroupArnsHasBeenSet; }
+    template<typename SecurityGroupArnsT = Aws::Vector<Aws::String>>
+    void SetSecurityGroupArns(SecurityGroupArnsT&& value) { m_securityGroupArnsHasBeenSet = true; m_securityGroupArns = std::forward<SecurityGroupArnsT>(value); }
+    template<typename SecurityGroupArnsT = Aws::Vector<Aws::String>>
+    CreateLocationFsxWindowsRequest& WithSecurityGroupArns(SecurityGroupArnsT&& value) { SetSecurityGroupArns(std::forward<SecurityGroupArnsT>(value)); return *this;}
+    template<typename SecurityGroupArnsT = Aws::String>
+    CreateLocationFsxWindowsRequest& AddSecurityGroupArns(SecurityGroupArnsT&& value) { m_securityGroupArnsHasBeenSet = true; m_securityGroupArns.emplace_back(std::forward<SecurityGroupArnsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Specifies the ARNs of the security groups that provide access to your file
-     * system's preferred subnet.</p>  <p>If you choose a security group that
-     * doesn't allow connections from within itself, do one of the following:</p> <ul>
-     * <li> <p>Configure the security group to allow it to communicate within
-     * itself.</p> </li> <li> <p>Choose a different security group that can communicate
-     * with the mount target's security group.</p> </li> </ul> 
-     */
-    inline void SetSecurityGroupArns(const Aws::Vector<Aws::String>& value) { m_securityGroupArnsHasBeenSet = true; m_securityGroupArns = value; }
-
-    /**
-     * <p>Specifies the ARNs of the security groups that provide access to your file
-     * system's preferred subnet.</p>  <p>If you choose a security group that
-     * doesn't allow connections from within itself, do one of the following:</p> <ul>
-     * <li> <p>Configure the security group to allow it to communicate within
-     * itself.</p> </li> <li> <p>Choose a different security group that can communicate
-     * with the mount target's security group.</p> </li> </ul> 
-     */
-    inline void SetSecurityGroupArns(Aws::Vector<Aws::String>&& value) { m_securityGroupArnsHasBeenSet = true; m_securityGroupArns = std::move(value); }
-
-    /**
-     * <p>Specifies the ARNs of the security groups that provide access to your file
-     * system's preferred subnet.</p>  <p>If you choose a security group that
-     * doesn't allow connections from within itself, do one of the following:</p> <ul>
-     * <li> <p>Configure the security group to allow it to communicate within
-     * itself.</p> </li> <li> <p>Choose a different security group that can communicate
-     * with the mount target's security group.</p> </li> </ul> 
-     */
-    inline CreateLocationFsxWindowsRequest& WithSecurityGroupArns(const Aws::Vector<Aws::String>& value) { SetSecurityGroupArns(value); return *this;}
-
-    /**
-     * <p>Specifies the ARNs of the security groups that provide access to your file
-     * system's preferred subnet.</p>  <p>If you choose a security group that
-     * doesn't allow connections from within itself, do one of the following:</p> <ul>
-     * <li> <p>Configure the security group to allow it to communicate within
-     * itself.</p> </li> <li> <p>Choose a different security group that can communicate
-     * with the mount target's security group.</p> </li> </ul> 
-     */
-    inline CreateLocationFsxWindowsRequest& WithSecurityGroupArns(Aws::Vector<Aws::String>&& value) { SetSecurityGroupArns(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the ARNs of the security groups that provide access to your file
-     * system's preferred subnet.</p>  <p>If you choose a security group that
-     * doesn't allow connections from within itself, do one of the following:</p> <ul>
-     * <li> <p>Configure the security group to allow it to communicate within
-     * itself.</p> </li> <li> <p>Choose a different security group that can communicate
-     * with the mount target's security group.</p> </li> </ul> 
-     */
-    inline CreateLocationFsxWindowsRequest& AddSecurityGroupArns(const Aws::String& value) { m_securityGroupArnsHasBeenSet = true; m_securityGroupArns.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies the ARNs of the security groups that provide access to your file
-     * system's preferred subnet.</p>  <p>If you choose a security group that
-     * doesn't allow connections from within itself, do one of the following:</p> <ul>
-     * <li> <p>Configure the security group to allow it to communicate within
-     * itself.</p> </li> <li> <p>Choose a different security group that can communicate
-     * with the mount target's security group.</p> </li> </ul> 
-     */
-    inline CreateLocationFsxWindowsRequest& AddSecurityGroupArns(Aws::String&& value) { m_securityGroupArnsHasBeenSet = true; m_securityGroupArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Specifies the ARNs of the security groups that provide access to your file
-     * system's preferred subnet.</p>  <p>If you choose a security group that
-     * doesn't allow connections from within itself, do one of the following:</p> <ul>
-     * <li> <p>Configure the security group to allow it to communicate within
-     * itself.</p> </li> <li> <p>Choose a different security group that can communicate
-     * with the mount target's security group.</p> </li> </ul> 
-     */
-    inline CreateLocationFsxWindowsRequest& AddSecurityGroupArns(const char* value) { m_securityGroupArnsHasBeenSet = true; m_securityGroupArns.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies labels that help you categorize, filter, and search for your Amazon
      * Web Services resources. We recommend creating at least a name tag for your
      * location.</p>
      */
-    inline const Aws::Vector<TagListEntry>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Specifies labels that help you categorize, filter, and search for your Amazon
-     * Web Services resources. We recommend creating at least a name tag for your
-     * location.</p>
-     */
+    inline const Aws::Vector<TagListEntry>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<TagListEntry>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<TagListEntry>>
+    CreateLocationFsxWindowsRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = TagListEntry>
+    CreateLocationFsxWindowsRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies labels that help you categorize, filter, and search for your Amazon
-     * Web Services resources. We recommend creating at least a name tag for your
-     * location.</p>
+     * <p>Specifies the user with the permissions to mount and access the files,
+     * folders, and file metadata in your FSx for Windows File Server file system.</p>
+     * <p>For information about choosing a user with the right level of access for your
+     * transfer, see <a
+     * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-fsx-location.html#create-fsx-windows-location-permissions">required
+     * permissions</a> for FSx for Windows File Server locations.</p>
      */
-    inline void SetTags(const Aws::Vector<TagListEntry>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Specifies labels that help you categorize, filter, and search for your Amazon
-     * Web Services resources. We recommend creating at least a name tag for your
-     * location.</p>
-     */
-    inline void SetTags(Aws::Vector<TagListEntry>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Specifies labels that help you categorize, filter, and search for your Amazon
-     * Web Services resources. We recommend creating at least a name tag for your
-     * location.</p>
-     */
-    inline CreateLocationFsxWindowsRequest& WithTags(const Aws::Vector<TagListEntry>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Specifies labels that help you categorize, filter, and search for your Amazon
-     * Web Services resources. We recommend creating at least a name tag for your
-     * location.</p>
-     */
-    inline CreateLocationFsxWindowsRequest& WithTags(Aws::Vector<TagListEntry>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies labels that help you categorize, filter, and search for your Amazon
-     * Web Services resources. We recommend creating at least a name tag for your
-     * location.</p>
-     */
-    inline CreateLocationFsxWindowsRequest& AddTags(const TagListEntry& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies labels that help you categorize, filter, and search for your Amazon
-     * Web Services resources. We recommend creating at least a name tag for your
-     * location.</p>
-     */
-    inline CreateLocationFsxWindowsRequest& AddTags(TagListEntry&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>Specifies the user who has the permissions to access files and folders in the
-     * file system.</p> <p>For information about choosing a user name that ensures
-     * sufficient permissions to files, folders, and metadata, see <a
-     * href="create-fsx-location.html#FSxWuser">user</a>.</p>
-     */
-    inline const Aws::String& GetUser() const{ return m_user; }
-
-    /**
-     * <p>Specifies the user who has the permissions to access files and folders in the
-     * file system.</p> <p>For information about choosing a user name that ensures
-     * sufficient permissions to files, folders, and metadata, see <a
-     * href="create-fsx-location.html#FSxWuser">user</a>.</p>
-     */
+    inline const Aws::String& GetUser() const { return m_user; }
     inline bool UserHasBeenSet() const { return m_userHasBeenSet; }
+    template<typename UserT = Aws::String>
+    void SetUser(UserT&& value) { m_userHasBeenSet = true; m_user = std::forward<UserT>(value); }
+    template<typename UserT = Aws::String>
+    CreateLocationFsxWindowsRequest& WithUser(UserT&& value) { SetUser(std::forward<UserT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the user who has the permissions to access files and folders in the
-     * file system.</p> <p>For information about choosing a user name that ensures
-     * sufficient permissions to files, folders, and metadata, see <a
-     * href="create-fsx-location.html#FSxWuser">user</a>.</p>
-     */
-    inline void SetUser(const Aws::String& value) { m_userHasBeenSet = true; m_user = value; }
-
-    /**
-     * <p>Specifies the user who has the permissions to access files and folders in the
-     * file system.</p> <p>For information about choosing a user name that ensures
-     * sufficient permissions to files, folders, and metadata, see <a
-     * href="create-fsx-location.html#FSxWuser">user</a>.</p>
-     */
-    inline void SetUser(Aws::String&& value) { m_userHasBeenSet = true; m_user = std::move(value); }
-
-    /**
-     * <p>Specifies the user who has the permissions to access files and folders in the
-     * file system.</p> <p>For information about choosing a user name that ensures
-     * sufficient permissions to files, folders, and metadata, see <a
-     * href="create-fsx-location.html#FSxWuser">user</a>.</p>
-     */
-    inline void SetUser(const char* value) { m_userHasBeenSet = true; m_user.assign(value); }
-
-    /**
-     * <p>Specifies the user who has the permissions to access files and folders in the
-     * file system.</p> <p>For information about choosing a user name that ensures
-     * sufficient permissions to files, folders, and metadata, see <a
-     * href="create-fsx-location.html#FSxWuser">user</a>.</p>
-     */
-    inline CreateLocationFsxWindowsRequest& WithUser(const Aws::String& value) { SetUser(value); return *this;}
-
-    /**
-     * <p>Specifies the user who has the permissions to access files and folders in the
-     * file system.</p> <p>For information about choosing a user name that ensures
-     * sufficient permissions to files, folders, and metadata, see <a
-     * href="create-fsx-location.html#FSxWuser">user</a>.</p>
-     */
-    inline CreateLocationFsxWindowsRequest& WithUser(Aws::String&& value) { SetUser(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the user who has the permissions to access files and folders in the
-     * file system.</p> <p>For information about choosing a user name that ensures
-     * sufficient permissions to files, folders, and metadata, see <a
-     * href="create-fsx-location.html#FSxWuser">user</a>.</p>
-     */
-    inline CreateLocationFsxWindowsRequest& WithUser(const char* value) { SetUser(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the name of the Windows domain that the FSx for Windows File Server
-     * belongs to.</p>
+     * file system belongs to.</p> <p>If you have multiple Active Directory domains in
+     * your environment, configuring this parameter makes sure that DataSync connects
+     * to the right file system.</p>
      */
-    inline const Aws::String& GetDomain() const{ return m_domain; }
-
-    /**
-     * <p>Specifies the name of the Windows domain that the FSx for Windows File Server
-     * belongs to.</p>
-     */
+    inline const Aws::String& GetDomain() const { return m_domain; }
     inline bool DomainHasBeenSet() const { return m_domainHasBeenSet; }
+    template<typename DomainT = Aws::String>
+    void SetDomain(DomainT&& value) { m_domainHasBeenSet = true; m_domain = std::forward<DomainT>(value); }
+    template<typename DomainT = Aws::String>
+    CreateLocationFsxWindowsRequest& WithDomain(DomainT&& value) { SetDomain(std::forward<DomainT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies the name of the Windows domain that the FSx for Windows File Server
-     * belongs to.</p>
+     * <p>Specifies the password of the user with the permissions to mount and access
+     * the files, folders, and file metadata in your FSx for Windows File Server file
+     * system.</p>
      */
-    inline void SetDomain(const Aws::String& value) { m_domainHasBeenSet = true; m_domain = value; }
-
-    /**
-     * <p>Specifies the name of the Windows domain that the FSx for Windows File Server
-     * belongs to.</p>
-     */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
-
-    /**
-     * <p>Specifies the name of the Windows domain that the FSx for Windows File Server
-     * belongs to.</p>
-     */
-    inline void SetDomain(const char* value) { m_domainHasBeenSet = true; m_domain.assign(value); }
-
-    /**
-     * <p>Specifies the name of the Windows domain that the FSx for Windows File Server
-     * belongs to.</p>
-     */
-    inline CreateLocationFsxWindowsRequest& WithDomain(const Aws::String& value) { SetDomain(value); return *this;}
-
-    /**
-     * <p>Specifies the name of the Windows domain that the FSx for Windows File Server
-     * belongs to.</p>
-     */
-    inline CreateLocationFsxWindowsRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the name of the Windows domain that the FSx for Windows File Server
-     * belongs to.</p>
-     */
-    inline CreateLocationFsxWindowsRequest& WithDomain(const char* value) { SetDomain(value); return *this;}
-
-
-    /**
-     * <p>Specifies the password of the user who has the permissions to access files
-     * and folders in the file system.</p>
-     */
-    inline const Aws::String& GetPassword() const{ return m_password; }
-
-    /**
-     * <p>Specifies the password of the user who has the permissions to access files
-     * and folders in the file system.</p>
-     */
+    inline const Aws::String& GetPassword() const { return m_password; }
     inline bool PasswordHasBeenSet() const { return m_passwordHasBeenSet; }
-
-    /**
-     * <p>Specifies the password of the user who has the permissions to access files
-     * and folders in the file system.</p>
-     */
-    inline void SetPassword(const Aws::String& value) { m_passwordHasBeenSet = true; m_password = value; }
-
-    /**
-     * <p>Specifies the password of the user who has the permissions to access files
-     * and folders in the file system.</p>
-     */
-    inline void SetPassword(Aws::String&& value) { m_passwordHasBeenSet = true; m_password = std::move(value); }
-
-    /**
-     * <p>Specifies the password of the user who has the permissions to access files
-     * and folders in the file system.</p>
-     */
-    inline void SetPassword(const char* value) { m_passwordHasBeenSet = true; m_password.assign(value); }
-
-    /**
-     * <p>Specifies the password of the user who has the permissions to access files
-     * and folders in the file system.</p>
-     */
-    inline CreateLocationFsxWindowsRequest& WithPassword(const Aws::String& value) { SetPassword(value); return *this;}
-
-    /**
-     * <p>Specifies the password of the user who has the permissions to access files
-     * and folders in the file system.</p>
-     */
-    inline CreateLocationFsxWindowsRequest& WithPassword(Aws::String&& value) { SetPassword(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the password of the user who has the permissions to access files
-     * and folders in the file system.</p>
-     */
-    inline CreateLocationFsxWindowsRequest& WithPassword(const char* value) { SetPassword(value); return *this;}
-
+    template<typename PasswordT = Aws::String>
+    void SetPassword(PasswordT&& value) { m_passwordHasBeenSet = true; m_password = std::forward<PasswordT>(value); }
+    template<typename PasswordT = Aws::String>
+    CreateLocationFsxWindowsRequest& WithPassword(PasswordT&& value) { SetPassword(std::forward<PasswordT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_subdirectory;

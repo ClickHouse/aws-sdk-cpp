@@ -21,7 +21,7 @@ namespace Model
   class InferSNOMEDCTRequest : public ComprehendMedicalRequest
   {
   public:
-    AWS_COMPREHENDMEDICAL_API InferSNOMEDCTRequest();
+    AWS_COMPREHENDMEDICAL_API InferSNOMEDCTRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,17 @@ namespace Model
     AWS_COMPREHENDMEDICAL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p> The input text to be analyzed using InferSNOMEDCT. The text should be a
-     * string with 1 to 10000 characters. </p>
+     * <p>The input text to be analyzed using InferSNOMEDCT.</p>
      */
-    inline const Aws::String& GetText() const{ return m_text; }
-
-    /**
-     * <p> The input text to be analyzed using InferSNOMEDCT. The text should be a
-     * string with 1 to 10000 characters. </p>
-     */
+    inline const Aws::String& GetText() const { return m_text; }
     inline bool TextHasBeenSet() const { return m_textHasBeenSet; }
-
-    /**
-     * <p> The input text to be analyzed using InferSNOMEDCT. The text should be a
-     * string with 1 to 10000 characters. </p>
-     */
-    inline void SetText(const Aws::String& value) { m_textHasBeenSet = true; m_text = value; }
-
-    /**
-     * <p> The input text to be analyzed using InferSNOMEDCT. The text should be a
-     * string with 1 to 10000 characters. </p>
-     */
-    inline void SetText(Aws::String&& value) { m_textHasBeenSet = true; m_text = std::move(value); }
-
-    /**
-     * <p> The input text to be analyzed using InferSNOMEDCT. The text should be a
-     * string with 1 to 10000 characters. </p>
-     */
-    inline void SetText(const char* value) { m_textHasBeenSet = true; m_text.assign(value); }
-
-    /**
-     * <p> The input text to be analyzed using InferSNOMEDCT. The text should be a
-     * string with 1 to 10000 characters. </p>
-     */
-    inline InferSNOMEDCTRequest& WithText(const Aws::String& value) { SetText(value); return *this;}
-
-    /**
-     * <p> The input text to be analyzed using InferSNOMEDCT. The text should be a
-     * string with 1 to 10000 characters. </p>
-     */
-    inline InferSNOMEDCTRequest& WithText(Aws::String&& value) { SetText(std::move(value)); return *this;}
-
-    /**
-     * <p> The input text to be analyzed using InferSNOMEDCT. The text should be a
-     * string with 1 to 10000 characters. </p>
-     */
-    inline InferSNOMEDCTRequest& WithText(const char* value) { SetText(value); return *this;}
-
+    template<typename TextT = Aws::String>
+    void SetText(TextT&& value) { m_textHasBeenSet = true; m_text = std::forward<TextT>(value); }
+    template<typename TextT = Aws::String>
+    InferSNOMEDCTRequest& WithText(TextT&& value) { SetText(std::forward<TextT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_text;

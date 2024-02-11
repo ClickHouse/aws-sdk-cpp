@@ -40,86 +40,36 @@ namespace Model
   class ResourceAttribute
   {
   public:
-    AWS_MIGRATIONHUB_API ResourceAttribute();
+    AWS_MIGRATIONHUB_API ResourceAttribute() = default;
     AWS_MIGRATIONHUB_API ResourceAttribute(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUB_API ResourceAttribute& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Type of resource.</p>
      */
-    inline const ResourceAttributeType& GetType() const{ return m_type; }
-
-    /**
-     * <p>Type of resource.</p>
-     */
+    inline ResourceAttributeType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(ResourceAttributeType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline ResourceAttribute& WithType(ResourceAttributeType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Type of resource.</p>
-     */
-    inline void SetType(const ResourceAttributeType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>Type of resource.</p>
-     */
-    inline void SetType(ResourceAttributeType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>Type of resource.</p>
-     */
-    inline ResourceAttribute& WithType(const ResourceAttributeType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>Type of resource.</p>
-     */
-    inline ResourceAttribute& WithType(ResourceAttributeType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Value of the resource type.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>Value of the resource type.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>Value of the resource type.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>Value of the resource type.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>Value of the resource type.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>Value of the resource type.</p>
-     */
-    inline ResourceAttribute& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>Value of the resource type.</p>
-     */
-    inline ResourceAttribute& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Value of the resource type.</p>
-     */
-    inline ResourceAttribute& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    ResourceAttribute& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
-    ResourceAttributeType m_type;
+    ResourceAttributeType m_type{ResourceAttributeType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_value;

@@ -13,24 +13,9 @@ using namespace Aws::ChimeSDKMessaging::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateChannelReadMarkerRequest::UpdateChannelReadMarkerRequest() : 
-    m_channelArnHasBeenSet(false),
-    m_chimeBearerHasBeenSet(false),
-    m_subChannelIdHasBeenSet(false)
-{
-}
-
 Aws::String UpdateChannelReadMarkerRequest::SerializePayload() const
 {
-  JsonValue payload;
-
-  if(m_subChannelIdHasBeenSet)
-  {
-   payload.WithString("SubChannelId", m_subChannelId);
-
-  }
-
-  return payload.View().WriteReadable();
+  return {};
 }
 
 Aws::Http::HeaderValueCollection UpdateChannelReadMarkerRequest::GetRequestSpecificHeaders() const

@@ -10,16 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ModifyIpamRequest::ModifyIpamRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_ipamIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_addOperatingRegionsHasBeenSet(false),
-    m_removeOperatingRegionsHasBeenSet(false)
-{
-}
-
 Aws::String ModifyIpamRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -57,6 +47,21 @@ Aws::String ModifyIpamRequest::SerializePayload() const
       item.OutputToStream(ss, "RemoveOperatingRegion.", removeOperatingRegionsCount, "");
       removeOperatingRegionsCount++;
     }
+  }
+
+  if(m_tierHasBeenSet)
+  {
+    ss << "Tier=" << StringUtils::URLEncode(IpamTierMapper::GetNameForIpamTier(m_tier)) << "&";
+  }
+
+  if(m_enablePrivateGuaHasBeenSet)
+  {
+    ss << "EnablePrivateGua=" << std::boolalpha << m_enablePrivateGua << "&";
+  }
+
+  if(m_meteredAccountHasBeenSet)
+  {
+    ss << "MeteredAccount=" << StringUtils::URLEncode(IpamMeteredAccountMapper::GetNameForIpamMeteredAccount(m_meteredAccount)) << "&";
   }
 
   ss << "Version=2016-11-15";

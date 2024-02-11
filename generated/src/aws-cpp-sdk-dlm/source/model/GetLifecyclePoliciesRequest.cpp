@@ -15,16 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-GetLifecyclePoliciesRequest::GetLifecyclePoliciesRequest() : 
-    m_policyIdsHasBeenSet(false),
-    m_state(GettablePolicyStateValues::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_resourceTypesHasBeenSet(false),
-    m_targetTagsHasBeenSet(false),
-    m_tagsToAddHasBeenSet(false)
-{
-}
-
 Aws::String GetLifecyclePoliciesRequest::SerializePayload() const
 {
   return {};
@@ -78,6 +68,13 @@ void GetLifecyclePoliciesRequest::AddQueryStringParameters(URI& uri) const
         uri.AddQueryStringParameter("tagsToAdd", ss.str());
         ss.str("");
       }
+    }
+
+    if(m_defaultPolicyTypeHasBeenSet)
+    {
+      ss << DefaultPoliciesTypeValuesMapper::GetNameForDefaultPoliciesTypeValues(m_defaultPolicyType);
+      uri.AddQueryStringParameter("defaultPolicyType", ss.str());
+      ss.str("");
     }
 
 }

@@ -24,7 +24,10 @@ namespace Model
     GLACIER,
     DEEP_ARCHIVE,
     OUTPOSTS,
-    GLACIER_IR
+    GLACIER_IR,
+    SNOW,
+    EXPRESS_ONEZONE,
+    FSX_OPENZFS
   };
 
 namespace StorageClassMapper

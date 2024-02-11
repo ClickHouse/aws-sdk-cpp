@@ -18,19 +18,7 @@ namespace Inspector2
 namespace Model
 {
 
-MapFilter::MapFilter() : 
-    m_comparison(MapComparison::NOT_SET),
-    m_comparisonHasBeenSet(false),
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-MapFilter::MapFilter(JsonView jsonValue) : 
-    m_comparison(MapComparison::NOT_SET),
-    m_comparisonHasBeenSet(false),
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
+MapFilter::MapFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ MapFilter& MapFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("comparison"))
   {
     m_comparison = MapComparisonMapper::GetMapComparisonForName(jsonValue.GetString("comparison"));
-
     m_comparisonHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("key"))
   {
     m_key = jsonValue.GetString("key");
-
     m_keyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetString("value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

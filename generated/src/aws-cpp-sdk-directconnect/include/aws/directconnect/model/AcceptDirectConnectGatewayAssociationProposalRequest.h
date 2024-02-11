@@ -23,7 +23,7 @@ namespace Model
   class AcceptDirectConnectGatewayAssociationProposalRequest : public DirectConnectRequest
   {
   public:
-    AWS_DIRECTCONNECT_API AcceptDirectConnectGatewayAssociationProposalRequest();
+    AWS_DIRECTCONNECT_API AcceptDirectConnectGatewayAssociationProposalRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,201 +36,59 @@ namespace Model
     AWS_DIRECTCONNECT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Direct Connect gateway.</p>
      */
-    inline const Aws::String& GetDirectConnectGatewayId() const{ return m_directConnectGatewayId; }
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
+    inline const Aws::String& GetDirectConnectGatewayId() const { return m_directConnectGatewayId; }
     inline bool DirectConnectGatewayIdHasBeenSet() const { return m_directConnectGatewayIdHasBeenSet; }
+    template<typename DirectConnectGatewayIdT = Aws::String>
+    void SetDirectConnectGatewayId(DirectConnectGatewayIdT&& value) { m_directConnectGatewayIdHasBeenSet = true; m_directConnectGatewayId = std::forward<DirectConnectGatewayIdT>(value); }
+    template<typename DirectConnectGatewayIdT = Aws::String>
+    AcceptDirectConnectGatewayAssociationProposalRequest& WithDirectConnectGatewayId(DirectConnectGatewayIdT&& value) { SetDirectConnectGatewayId(std::forward<DirectConnectGatewayIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
-    inline void SetDirectConnectGatewayId(const Aws::String& value) { m_directConnectGatewayIdHasBeenSet = true; m_directConnectGatewayId = value; }
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
-    inline void SetDirectConnectGatewayId(Aws::String&& value) { m_directConnectGatewayIdHasBeenSet = true; m_directConnectGatewayId = std::move(value); }
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
-    inline void SetDirectConnectGatewayId(const char* value) { m_directConnectGatewayIdHasBeenSet = true; m_directConnectGatewayId.assign(value); }
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
-    inline AcceptDirectConnectGatewayAssociationProposalRequest& WithDirectConnectGatewayId(const Aws::String& value) { SetDirectConnectGatewayId(value); return *this;}
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
-    inline AcceptDirectConnectGatewayAssociationProposalRequest& WithDirectConnectGatewayId(Aws::String&& value) { SetDirectConnectGatewayId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
-    inline AcceptDirectConnectGatewayAssociationProposalRequest& WithDirectConnectGatewayId(const char* value) { SetDirectConnectGatewayId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the request proposal.</p>
      */
-    inline const Aws::String& GetProposalId() const{ return m_proposalId; }
-
-    /**
-     * <p>The ID of the request proposal.</p>
-     */
+    inline const Aws::String& GetProposalId() const { return m_proposalId; }
     inline bool ProposalIdHasBeenSet() const { return m_proposalIdHasBeenSet; }
+    template<typename ProposalIdT = Aws::String>
+    void SetProposalId(ProposalIdT&& value) { m_proposalIdHasBeenSet = true; m_proposalId = std::forward<ProposalIdT>(value); }
+    template<typename ProposalIdT = Aws::String>
+    AcceptDirectConnectGatewayAssociationProposalRequest& WithProposalId(ProposalIdT&& value) { SetProposalId(std::forward<ProposalIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the request proposal.</p>
-     */
-    inline void SetProposalId(const Aws::String& value) { m_proposalIdHasBeenSet = true; m_proposalId = value; }
-
-    /**
-     * <p>The ID of the request proposal.</p>
-     */
-    inline void SetProposalId(Aws::String&& value) { m_proposalIdHasBeenSet = true; m_proposalId = std::move(value); }
-
-    /**
-     * <p>The ID of the request proposal.</p>
-     */
-    inline void SetProposalId(const char* value) { m_proposalIdHasBeenSet = true; m_proposalId.assign(value); }
-
-    /**
-     * <p>The ID of the request proposal.</p>
-     */
-    inline AcceptDirectConnectGatewayAssociationProposalRequest& WithProposalId(const Aws::String& value) { SetProposalId(value); return *this;}
-
-    /**
-     * <p>The ID of the request proposal.</p>
-     */
-    inline AcceptDirectConnectGatewayAssociationProposalRequest& WithProposalId(Aws::String&& value) { SetProposalId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the request proposal.</p>
-     */
-    inline AcceptDirectConnectGatewayAssociationProposalRequest& WithProposalId(const char* value) { SetProposalId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services account that owns the virtual private
      * gateway or transit gateway.</p>
      */
-    inline const Aws::String& GetAssociatedGatewayOwnerAccount() const{ return m_associatedGatewayOwnerAccount; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the virtual private
-     * gateway or transit gateway.</p>
-     */
+    inline const Aws::String& GetAssociatedGatewayOwnerAccount() const { return m_associatedGatewayOwnerAccount; }
     inline bool AssociatedGatewayOwnerAccountHasBeenSet() const { return m_associatedGatewayOwnerAccountHasBeenSet; }
+    template<typename AssociatedGatewayOwnerAccountT = Aws::String>
+    void SetAssociatedGatewayOwnerAccount(AssociatedGatewayOwnerAccountT&& value) { m_associatedGatewayOwnerAccountHasBeenSet = true; m_associatedGatewayOwnerAccount = std::forward<AssociatedGatewayOwnerAccountT>(value); }
+    template<typename AssociatedGatewayOwnerAccountT = Aws::String>
+    AcceptDirectConnectGatewayAssociationProposalRequest& WithAssociatedGatewayOwnerAccount(AssociatedGatewayOwnerAccountT&& value) { SetAssociatedGatewayOwnerAccount(std::forward<AssociatedGatewayOwnerAccountT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the virtual private
-     * gateway or transit gateway.</p>
-     */
-    inline void SetAssociatedGatewayOwnerAccount(const Aws::String& value) { m_associatedGatewayOwnerAccountHasBeenSet = true; m_associatedGatewayOwnerAccount = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the virtual private
-     * gateway or transit gateway.</p>
-     */
-    inline void SetAssociatedGatewayOwnerAccount(Aws::String&& value) { m_associatedGatewayOwnerAccountHasBeenSet = true; m_associatedGatewayOwnerAccount = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the virtual private
-     * gateway or transit gateway.</p>
-     */
-    inline void SetAssociatedGatewayOwnerAccount(const char* value) { m_associatedGatewayOwnerAccountHasBeenSet = true; m_associatedGatewayOwnerAccount.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the virtual private
-     * gateway or transit gateway.</p>
-     */
-    inline AcceptDirectConnectGatewayAssociationProposalRequest& WithAssociatedGatewayOwnerAccount(const Aws::String& value) { SetAssociatedGatewayOwnerAccount(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the virtual private
-     * gateway or transit gateway.</p>
-     */
-    inline AcceptDirectConnectGatewayAssociationProposalRequest& WithAssociatedGatewayOwnerAccount(Aws::String&& value) { SetAssociatedGatewayOwnerAccount(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the virtual private
-     * gateway or transit gateway.</p>
-     */
-    inline AcceptDirectConnectGatewayAssociationProposalRequest& WithAssociatedGatewayOwnerAccount(const char* value) { SetAssociatedGatewayOwnerAccount(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Overrides the Amazon VPC prefixes advertised to the Direct Connect
      * gateway.</p> <p>For information about how to set the prefixes, see <a
      * href="https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes">Allowed
      * Prefixes</a> in the <i>Direct Connect User Guide</i>.</p>
      */
-    inline const Aws::Vector<RouteFilterPrefix>& GetOverrideAllowedPrefixesToDirectConnectGateway() const{ return m_overrideAllowedPrefixesToDirectConnectGateway; }
-
-    /**
-     * <p>Overrides the Amazon VPC prefixes advertised to the Direct Connect
-     * gateway.</p> <p>For information about how to set the prefixes, see <a
-     * href="https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes">Allowed
-     * Prefixes</a> in the <i>Direct Connect User Guide</i>.</p>
-     */
+    inline const Aws::Vector<RouteFilterPrefix>& GetOverrideAllowedPrefixesToDirectConnectGateway() const { return m_overrideAllowedPrefixesToDirectConnectGateway; }
     inline bool OverrideAllowedPrefixesToDirectConnectGatewayHasBeenSet() const { return m_overrideAllowedPrefixesToDirectConnectGatewayHasBeenSet; }
-
-    /**
-     * <p>Overrides the Amazon VPC prefixes advertised to the Direct Connect
-     * gateway.</p> <p>For information about how to set the prefixes, see <a
-     * href="https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes">Allowed
-     * Prefixes</a> in the <i>Direct Connect User Guide</i>.</p>
-     */
-    inline void SetOverrideAllowedPrefixesToDirectConnectGateway(const Aws::Vector<RouteFilterPrefix>& value) { m_overrideAllowedPrefixesToDirectConnectGatewayHasBeenSet = true; m_overrideAllowedPrefixesToDirectConnectGateway = value; }
-
-    /**
-     * <p>Overrides the Amazon VPC prefixes advertised to the Direct Connect
-     * gateway.</p> <p>For information about how to set the prefixes, see <a
-     * href="https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes">Allowed
-     * Prefixes</a> in the <i>Direct Connect User Guide</i>.</p>
-     */
-    inline void SetOverrideAllowedPrefixesToDirectConnectGateway(Aws::Vector<RouteFilterPrefix>&& value) { m_overrideAllowedPrefixesToDirectConnectGatewayHasBeenSet = true; m_overrideAllowedPrefixesToDirectConnectGateway = std::move(value); }
-
-    /**
-     * <p>Overrides the Amazon VPC prefixes advertised to the Direct Connect
-     * gateway.</p> <p>For information about how to set the prefixes, see <a
-     * href="https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes">Allowed
-     * Prefixes</a> in the <i>Direct Connect User Guide</i>.</p>
-     */
-    inline AcceptDirectConnectGatewayAssociationProposalRequest& WithOverrideAllowedPrefixesToDirectConnectGateway(const Aws::Vector<RouteFilterPrefix>& value) { SetOverrideAllowedPrefixesToDirectConnectGateway(value); return *this;}
-
-    /**
-     * <p>Overrides the Amazon VPC prefixes advertised to the Direct Connect
-     * gateway.</p> <p>For information about how to set the prefixes, see <a
-     * href="https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes">Allowed
-     * Prefixes</a> in the <i>Direct Connect User Guide</i>.</p>
-     */
-    inline AcceptDirectConnectGatewayAssociationProposalRequest& WithOverrideAllowedPrefixesToDirectConnectGateway(Aws::Vector<RouteFilterPrefix>&& value) { SetOverrideAllowedPrefixesToDirectConnectGateway(std::move(value)); return *this;}
-
-    /**
-     * <p>Overrides the Amazon VPC prefixes advertised to the Direct Connect
-     * gateway.</p> <p>For information about how to set the prefixes, see <a
-     * href="https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes">Allowed
-     * Prefixes</a> in the <i>Direct Connect User Guide</i>.</p>
-     */
-    inline AcceptDirectConnectGatewayAssociationProposalRequest& AddOverrideAllowedPrefixesToDirectConnectGateway(const RouteFilterPrefix& value) { m_overrideAllowedPrefixesToDirectConnectGatewayHasBeenSet = true; m_overrideAllowedPrefixesToDirectConnectGateway.push_back(value); return *this; }
-
-    /**
-     * <p>Overrides the Amazon VPC prefixes advertised to the Direct Connect
-     * gateway.</p> <p>For information about how to set the prefixes, see <a
-     * href="https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes">Allowed
-     * Prefixes</a> in the <i>Direct Connect User Guide</i>.</p>
-     */
-    inline AcceptDirectConnectGatewayAssociationProposalRequest& AddOverrideAllowedPrefixesToDirectConnectGateway(RouteFilterPrefix&& value) { m_overrideAllowedPrefixesToDirectConnectGatewayHasBeenSet = true; m_overrideAllowedPrefixesToDirectConnectGateway.push_back(std::move(value)); return *this; }
-
+    template<typename OverrideAllowedPrefixesToDirectConnectGatewayT = Aws::Vector<RouteFilterPrefix>>
+    void SetOverrideAllowedPrefixesToDirectConnectGateway(OverrideAllowedPrefixesToDirectConnectGatewayT&& value) { m_overrideAllowedPrefixesToDirectConnectGatewayHasBeenSet = true; m_overrideAllowedPrefixesToDirectConnectGateway = std::forward<OverrideAllowedPrefixesToDirectConnectGatewayT>(value); }
+    template<typename OverrideAllowedPrefixesToDirectConnectGatewayT = Aws::Vector<RouteFilterPrefix>>
+    AcceptDirectConnectGatewayAssociationProposalRequest& WithOverrideAllowedPrefixesToDirectConnectGateway(OverrideAllowedPrefixesToDirectConnectGatewayT&& value) { SetOverrideAllowedPrefixesToDirectConnectGateway(std::forward<OverrideAllowedPrefixesToDirectConnectGatewayT>(value)); return *this;}
+    template<typename OverrideAllowedPrefixesToDirectConnectGatewayT = RouteFilterPrefix>
+    AcceptDirectConnectGatewayAssociationProposalRequest& AddOverrideAllowedPrefixesToDirectConnectGateway(OverrideAllowedPrefixesToDirectConnectGatewayT&& value) { m_overrideAllowedPrefixesToDirectConnectGatewayHasBeenSet = true; m_overrideAllowedPrefixesToDirectConnectGateway.emplace_back(std::forward<OverrideAllowedPrefixesToDirectConnectGatewayT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_directConnectGatewayId;

@@ -18,31 +18,7 @@ namespace FSx
 namespace Model
 {
 
-UpdateFileSystemLustreConfiguration::UpdateFileSystemLustreConfiguration() : 
-    m_weeklyMaintenanceStartTimeHasBeenSet(false),
-    m_dailyAutomaticBackupStartTimeHasBeenSet(false),
-    m_automaticBackupRetentionDays(0),
-    m_automaticBackupRetentionDaysHasBeenSet(false),
-    m_autoImportPolicy(AutoImportPolicyType::NOT_SET),
-    m_autoImportPolicyHasBeenSet(false),
-    m_dataCompressionType(DataCompressionType::NOT_SET),
-    m_dataCompressionTypeHasBeenSet(false),
-    m_logConfigurationHasBeenSet(false),
-    m_rootSquashConfigurationHasBeenSet(false)
-{
-}
-
-UpdateFileSystemLustreConfiguration::UpdateFileSystemLustreConfiguration(JsonView jsonValue) : 
-    m_weeklyMaintenanceStartTimeHasBeenSet(false),
-    m_dailyAutomaticBackupStartTimeHasBeenSet(false),
-    m_automaticBackupRetentionDays(0),
-    m_automaticBackupRetentionDaysHasBeenSet(false),
-    m_autoImportPolicy(AutoImportPolicyType::NOT_SET),
-    m_autoImportPolicyHasBeenSet(false),
-    m_dataCompressionType(DataCompressionType::NOT_SET),
-    m_dataCompressionTypeHasBeenSet(false),
-    m_logConfigurationHasBeenSet(false),
-    m_rootSquashConfigurationHasBeenSet(false)
+UpdateFileSystemLustreConfiguration::UpdateFileSystemLustreConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -52,52 +28,58 @@ UpdateFileSystemLustreConfiguration& UpdateFileSystemLustreConfiguration::operat
   if(jsonValue.ValueExists("WeeklyMaintenanceStartTime"))
   {
     m_weeklyMaintenanceStartTime = jsonValue.GetString("WeeklyMaintenanceStartTime");
-
     m_weeklyMaintenanceStartTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DailyAutomaticBackupStartTime"))
   {
     m_dailyAutomaticBackupStartTime = jsonValue.GetString("DailyAutomaticBackupStartTime");
-
     m_dailyAutomaticBackupStartTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AutomaticBackupRetentionDays"))
   {
     m_automaticBackupRetentionDays = jsonValue.GetInteger("AutomaticBackupRetentionDays");
-
     m_automaticBackupRetentionDaysHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AutoImportPolicy"))
   {
     m_autoImportPolicy = AutoImportPolicyTypeMapper::GetAutoImportPolicyTypeForName(jsonValue.GetString("AutoImportPolicy"));
-
     m_autoImportPolicyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataCompressionType"))
   {
     m_dataCompressionType = DataCompressionTypeMapper::GetDataCompressionTypeForName(jsonValue.GetString("DataCompressionType"));
-
     m_dataCompressionTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LogConfiguration"))
   {
     m_logConfiguration = jsonValue.GetObject("LogConfiguration");
-
     m_logConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RootSquashConfiguration"))
   {
     m_rootSquashConfiguration = jsonValue.GetObject("RootSquashConfiguration");
-
     m_rootSquashConfigurationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("PerUnitStorageThroughput"))
+  {
+    m_perUnitStorageThroughput = jsonValue.GetInteger("PerUnitStorageThroughput");
+    m_perUnitStorageThroughputHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("MetadataConfiguration"))
+  {
+    m_metadataConfiguration = jsonValue.GetObject("MetadataConfiguration");
+    m_metadataConfigurationHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("ThroughputCapacity"))
+  {
+    m_throughputCapacity = jsonValue.GetInteger("ThroughputCapacity");
+    m_throughputCapacityHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("DataReadCacheConfiguration"))
+  {
+    m_dataReadCacheConfiguration = jsonValue.GetObject("DataReadCacheConfiguration");
+    m_dataReadCacheConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -142,6 +124,30 @@ JsonValue UpdateFileSystemLustreConfiguration::Jsonize() const
   if(m_rootSquashConfigurationHasBeenSet)
   {
    payload.WithObject("RootSquashConfiguration", m_rootSquashConfiguration.Jsonize());
+
+  }
+
+  if(m_perUnitStorageThroughputHasBeenSet)
+  {
+   payload.WithInteger("PerUnitStorageThroughput", m_perUnitStorageThroughput);
+
+  }
+
+  if(m_metadataConfigurationHasBeenSet)
+  {
+   payload.WithObject("MetadataConfiguration", m_metadataConfiguration.Jsonize());
+
+  }
+
+  if(m_throughputCapacityHasBeenSet)
+  {
+   payload.WithInteger("ThroughputCapacity", m_throughputCapacity);
+
+  }
+
+  if(m_dataReadCacheConfigurationHasBeenSet)
+  {
+   payload.WithObject("DataReadCacheConfiguration", m_dataReadCacheConfiguration.Jsonize());
 
   }
 

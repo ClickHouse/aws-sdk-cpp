@@ -31,93 +31,35 @@ namespace Model
   class IngestedEventsTimeWindow
   {
   public:
-    AWS_FRAUDDETECTOR_API IngestedEventsTimeWindow();
+    AWS_FRAUDDETECTOR_API IngestedEventsTimeWindow() = default;
     AWS_FRAUDDETECTOR_API IngestedEventsTimeWindow(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API IngestedEventsTimeWindow& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Timestamp of the first ingensted event.</p>
      */
-    inline const Aws::String& GetStartTime() const{ return m_startTime; }
-
-    /**
-     * <p>Timestamp of the first ingensted event.</p>
-     */
+    inline const Aws::String& GetStartTime() const { return m_startTime; }
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
+    template<typename StartTimeT = Aws::String>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::String>
+    IngestedEventsTimeWindow& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Timestamp of the first ingensted event.</p>
-     */
-    inline void SetStartTime(const Aws::String& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    /**
-     * <p>Timestamp of the first ingensted event.</p>
-     */
-    inline void SetStartTime(Aws::String&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    /**
-     * <p>Timestamp of the first ingensted event.</p>
-     */
-    inline void SetStartTime(const char* value) { m_startTimeHasBeenSet = true; m_startTime.assign(value); }
-
-    /**
-     * <p>Timestamp of the first ingensted event.</p>
-     */
-    inline IngestedEventsTimeWindow& WithStartTime(const Aws::String& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>Timestamp of the first ingensted event.</p>
-     */
-    inline IngestedEventsTimeWindow& WithStartTime(Aws::String&& value) { SetStartTime(std::move(value)); return *this;}
-
-    /**
-     * <p>Timestamp of the first ingensted event.</p>
-     */
-    inline IngestedEventsTimeWindow& WithStartTime(const char* value) { SetStartTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Timestamp of the final ingested event.</p>
      */
-    inline const Aws::String& GetEndTime() const{ return m_endTime; }
-
-    /**
-     * <p>Timestamp of the final ingested event.</p>
-     */
+    inline const Aws::String& GetEndTime() const { return m_endTime; }
     inline bool EndTimeHasBeenSet() const { return m_endTimeHasBeenSet; }
-
-    /**
-     * <p>Timestamp of the final ingested event.</p>
-     */
-    inline void SetEndTime(const Aws::String& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
-
-    /**
-     * <p>Timestamp of the final ingested event.</p>
-     */
-    inline void SetEndTime(Aws::String&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
-
-    /**
-     * <p>Timestamp of the final ingested event.</p>
-     */
-    inline void SetEndTime(const char* value) { m_endTimeHasBeenSet = true; m_endTime.assign(value); }
-
-    /**
-     * <p>Timestamp of the final ingested event.</p>
-     */
-    inline IngestedEventsTimeWindow& WithEndTime(const Aws::String& value) { SetEndTime(value); return *this;}
-
-    /**
-     * <p>Timestamp of the final ingested event.</p>
-     */
-    inline IngestedEventsTimeWindow& WithEndTime(Aws::String&& value) { SetEndTime(std::move(value)); return *this;}
-
-    /**
-     * <p>Timestamp of the final ingested event.</p>
-     */
-    inline IngestedEventsTimeWindow& WithEndTime(const char* value) { SetEndTime(value); return *this;}
-
+    template<typename EndTimeT = Aws::String>
+    void SetEndTime(EndTimeT&& value) { m_endTimeHasBeenSet = true; m_endTime = std::forward<EndTimeT>(value); }
+    template<typename EndTimeT = Aws::String>
+    IngestedEventsTimeWindow& WithEndTime(EndTimeT&& value) { SetEndTime(std::forward<EndTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_startTime;

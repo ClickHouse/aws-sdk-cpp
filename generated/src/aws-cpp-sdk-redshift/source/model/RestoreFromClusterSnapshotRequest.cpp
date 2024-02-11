@@ -10,53 +10,6 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-RestoreFromClusterSnapshotRequest::RestoreFromClusterSnapshotRequest() : 
-    m_clusterIdentifierHasBeenSet(false),
-    m_snapshotIdentifierHasBeenSet(false),
-    m_snapshotArnHasBeenSet(false),
-    m_snapshotClusterIdentifierHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_allowVersionUpgrade(false),
-    m_allowVersionUpgradeHasBeenSet(false),
-    m_clusterSubnetGroupNameHasBeenSet(false),
-    m_publiclyAccessible(false),
-    m_publiclyAccessibleHasBeenSet(false),
-    m_ownerAccountHasBeenSet(false),
-    m_hsmClientCertificateIdentifierHasBeenSet(false),
-    m_hsmConfigurationIdentifierHasBeenSet(false),
-    m_elasticIpHasBeenSet(false),
-    m_clusterParameterGroupNameHasBeenSet(false),
-    m_clusterSecurityGroupsHasBeenSet(false),
-    m_vpcSecurityGroupIdsHasBeenSet(false),
-    m_preferredMaintenanceWindowHasBeenSet(false),
-    m_automatedSnapshotRetentionPeriod(0),
-    m_automatedSnapshotRetentionPeriodHasBeenSet(false),
-    m_manualSnapshotRetentionPeriod(0),
-    m_manualSnapshotRetentionPeriodHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_nodeTypeHasBeenSet(false),
-    m_enhancedVpcRouting(false),
-    m_enhancedVpcRoutingHasBeenSet(false),
-    m_additionalInfoHasBeenSet(false),
-    m_iamRolesHasBeenSet(false),
-    m_maintenanceTrackNameHasBeenSet(false),
-    m_snapshotScheduleIdentifierHasBeenSet(false),
-    m_numberOfNodes(0),
-    m_numberOfNodesHasBeenSet(false),
-    m_availabilityZoneRelocation(false),
-    m_availabilityZoneRelocationHasBeenSet(false),
-    m_aquaConfigurationStatus(AquaConfigurationStatus::NOT_SET),
-    m_aquaConfigurationStatusHasBeenSet(false),
-    m_defaultIamRoleArnHasBeenSet(false),
-    m_reservedNodeIdHasBeenSet(false),
-    m_targetReservedNodeOfferingIdHasBeenSet(false),
-    m_encrypted(false),
-    m_encryptedHasBeenSet(false)
-{
-}
-
 Aws::String RestoreFromClusterSnapshotRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -133,23 +86,37 @@ Aws::String RestoreFromClusterSnapshotRequest::SerializePayload() const
 
   if(m_clusterSecurityGroupsHasBeenSet)
   {
-    unsigned clusterSecurityGroupsCount = 1;
-    for(auto& item : m_clusterSecurityGroups)
+    if (m_clusterSecurityGroups.empty())
     {
-      ss << "ClusterSecurityGroups.member." << clusterSecurityGroupsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      clusterSecurityGroupsCount++;
+      ss << "ClusterSecurityGroups=&";
+    }
+    else
+    {
+      unsigned clusterSecurityGroupsCount = 1;
+      for(auto& item : m_clusterSecurityGroups)
+      {
+        ss << "ClusterSecurityGroups.ClusterSecurityGroupName." << clusterSecurityGroupsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        clusterSecurityGroupsCount++;
+      }
     }
   }
 
   if(m_vpcSecurityGroupIdsHasBeenSet)
   {
-    unsigned vpcSecurityGroupIdsCount = 1;
-    for(auto& item : m_vpcSecurityGroupIds)
+    if (m_vpcSecurityGroupIds.empty())
     {
-      ss << "VpcSecurityGroupIds.member." << vpcSecurityGroupIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      vpcSecurityGroupIdsCount++;
+      ss << "VpcSecurityGroupIds=&";
+    }
+    else
+    {
+      unsigned vpcSecurityGroupIdsCount = 1;
+      for(auto& item : m_vpcSecurityGroupIds)
+      {
+        ss << "VpcSecurityGroupIds.VpcSecurityGroupId." << vpcSecurityGroupIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        vpcSecurityGroupIdsCount++;
+      }
     }
   }
 
@@ -190,12 +157,19 @@ Aws::String RestoreFromClusterSnapshotRequest::SerializePayload() const
 
   if(m_iamRolesHasBeenSet)
   {
-    unsigned iamRolesCount = 1;
-    for(auto& item : m_iamRoles)
+    if (m_iamRoles.empty())
     {
-      ss << "IamRoles.member." << iamRolesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      iamRolesCount++;
+      ss << "IamRoles=&";
+    }
+    else
+    {
+      unsigned iamRolesCount = 1;
+      for(auto& item : m_iamRoles)
+      {
+        ss << "IamRoles.IamRoleArn." << iamRolesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        iamRolesCount++;
+      }
     }
   }
 
@@ -221,7 +195,7 @@ Aws::String RestoreFromClusterSnapshotRequest::SerializePayload() const
 
   if(m_aquaConfigurationStatusHasBeenSet)
   {
-    ss << "AquaConfigurationStatus=" << AquaConfigurationStatusMapper::GetNameForAquaConfigurationStatus(m_aquaConfigurationStatus) << "&";
+    ss << "AquaConfigurationStatus=" << StringUtils::URLEncode(AquaConfigurationStatusMapper::GetNameForAquaConfigurationStatus(m_aquaConfigurationStatus)) << "&";
   }
 
   if(m_defaultIamRoleArnHasBeenSet)
@@ -242,6 +216,26 @@ Aws::String RestoreFromClusterSnapshotRequest::SerializePayload() const
   if(m_encryptedHasBeenSet)
   {
     ss << "Encrypted=" << std::boolalpha << m_encrypted << "&";
+  }
+
+  if(m_manageMasterPasswordHasBeenSet)
+  {
+    ss << "ManageMasterPassword=" << std::boolalpha << m_manageMasterPassword << "&";
+  }
+
+  if(m_masterPasswordSecretKmsKeyIdHasBeenSet)
+  {
+    ss << "MasterPasswordSecretKmsKeyId=" << StringUtils::URLEncode(m_masterPasswordSecretKmsKeyId.c_str()) << "&";
+  }
+
+  if(m_ipAddressTypeHasBeenSet)
+  {
+    ss << "IpAddressType=" << StringUtils::URLEncode(m_ipAddressType.c_str()) << "&";
+  }
+
+  if(m_multiAZHasBeenSet)
+  {
+    ss << "MultiAZ=" << std::boolalpha << m_multiAZ << "&";
   }
 
   ss << "Version=2012-12-01";

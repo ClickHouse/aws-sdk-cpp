@@ -18,15 +18,7 @@ namespace CloudDirectory
 namespace Model
 {
 
-SchemaFacet::SchemaFacet() : 
-    m_schemaArnHasBeenSet(false),
-    m_facetNameHasBeenSet(false)
-{
-}
-
-SchemaFacet::SchemaFacet(JsonView jsonValue) : 
-    m_schemaArnHasBeenSet(false),
-    m_facetNameHasBeenSet(false)
+SchemaFacet::SchemaFacet(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SchemaFacet& SchemaFacet::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SchemaArn"))
   {
     m_schemaArn = jsonValue.GetString("SchemaArn");
-
     m_schemaArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FacetName"))
   {
     m_facetName = jsonValue.GetString("FacetName");
-
     m_facetNameHasBeenSet = true;
   }
-
   return *this;
 }
 

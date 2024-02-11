@@ -18,46 +18,28 @@ namespace Omics
 namespace Model
 {
 
-StartReferenceImportJobSourceItem::StartReferenceImportJobSourceItem() : 
-    m_descriptionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_sourceFileHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-StartReferenceImportJobSourceItem::StartReferenceImportJobSourceItem(JsonView jsonValue) : 
-    m_descriptionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_sourceFileHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+StartReferenceImportJobSourceItem::StartReferenceImportJobSourceItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 StartReferenceImportJobSourceItem& StartReferenceImportJobSourceItem::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("description"))
-  {
-    m_description = jsonValue.GetString("description");
-
-    m_descriptionHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("name"))
-  {
-    m_name = jsonValue.GetString("name");
-
-    m_nameHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("sourceFile"))
   {
     m_sourceFile = jsonValue.GetString("sourceFile");
-
     m_sourceFileHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("name"))
+  {
+    m_name = jsonValue.GetString("name");
+    m_nameHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("description"))
+  {
+    m_description = jsonValue.GetString("description");
+    m_descriptionHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
@@ -67,7 +49,6 @@ StartReferenceImportJobSourceItem& StartReferenceImportJobSourceItem::operator =
     }
     m_tagsHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -75,9 +56,9 @@ JsonValue StartReferenceImportJobSourceItem::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_descriptionHasBeenSet)
+  if(m_sourceFileHasBeenSet)
   {
-   payload.WithString("description", m_description);
+   payload.WithString("sourceFile", m_sourceFile);
 
   }
 
@@ -87,9 +68,9 @@ JsonValue StartReferenceImportJobSourceItem::Jsonize() const
 
   }
 
-  if(m_sourceFileHasBeenSet)
+  if(m_descriptionHasBeenSet)
   {
-   payload.WithString("sourceFile", m_sourceFile);
+   payload.WithString("description", m_description);
 
   }
 

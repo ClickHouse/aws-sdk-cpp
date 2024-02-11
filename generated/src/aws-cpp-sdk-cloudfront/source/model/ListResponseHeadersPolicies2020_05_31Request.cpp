@@ -6,6 +6,7 @@
 #include <aws/cloudfront/model/ListResponseHeadersPolicies2020_05_31Request.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,13 +17,6 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListResponseHeadersPolicies2020_05_31Request::ListResponseHeadersPolicies2020_05_31Request() : 
-    m_type(ResponseHeadersPolicyType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_markerHasBeenSet(false),
-    m_maxItemsHasBeenSet(false)
-{
-}
 
 Aws::String ListResponseHeadersPolicies2020_05_31Request::SerializePayload() const
 {

@@ -18,17 +18,7 @@ namespace Glue
 namespace Model
 {
 
-SkewedInfo::SkewedInfo() : 
-    m_skewedColumnNamesHasBeenSet(false),
-    m_skewedColumnValuesHasBeenSet(false),
-    m_skewedColumnValueLocationMapsHasBeenSet(false)
-{
-}
-
-SkewedInfo::SkewedInfo(JsonView jsonValue) : 
-    m_skewedColumnNamesHasBeenSet(false),
-    m_skewedColumnValuesHasBeenSet(false),
-    m_skewedColumnValueLocationMapsHasBeenSet(false)
+SkewedInfo::SkewedInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ SkewedInfo& SkewedInfo::operator =(JsonView jsonValue)
     }
     m_skewedColumnNamesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SkewedColumnValues"))
   {
     Aws::Utils::Array<JsonView> skewedColumnValuesJsonList = jsonValue.GetArray("SkewedColumnValues");
@@ -54,7 +43,6 @@ SkewedInfo& SkewedInfo::operator =(JsonView jsonValue)
     }
     m_skewedColumnValuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SkewedColumnValueLocationMaps"))
   {
     Aws::Map<Aws::String, JsonView> skewedColumnValueLocationMapsJsonMap = jsonValue.GetObject("SkewedColumnValueLocationMaps").GetAllObjects();
@@ -64,7 +52,6 @@ SkewedInfo& SkewedInfo::operator =(JsonView jsonValue)
     }
     m_skewedColumnValueLocationMapsHasBeenSet = true;
   }
-
   return *this;
 }
 

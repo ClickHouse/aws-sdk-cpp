@@ -27,73 +27,37 @@ namespace Model
   class DisassociateFileSystemResult
   {
   public:
-    AWS_STORAGEGATEWAY_API DisassociateFileSystemResult();
+    AWS_STORAGEGATEWAY_API DisassociateFileSystemResult() = default;
     AWS_STORAGEGATEWAY_API DisassociateFileSystemResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_STORAGEGATEWAY_API DisassociateFileSystemResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the deleted file system association.</p>
      */
-    inline const Aws::String& GetFileSystemAssociationARN() const{ return m_fileSystemAssociationARN; }
+    inline const Aws::String& GetFileSystemAssociationARN() const { return m_fileSystemAssociationARN; }
+    template<typename FileSystemAssociationARNT = Aws::String>
+    void SetFileSystemAssociationARN(FileSystemAssociationARNT&& value) { m_fileSystemAssociationARNHasBeenSet = true; m_fileSystemAssociationARN = std::forward<FileSystemAssociationARNT>(value); }
+    template<typename FileSystemAssociationARNT = Aws::String>
+    DisassociateFileSystemResult& WithFileSystemAssociationARN(FileSystemAssociationARNT&& value) { SetFileSystemAssociationARN(std::forward<FileSystemAssociationARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the deleted file system association.</p>
-     */
-    inline void SetFileSystemAssociationARN(const Aws::String& value) { m_fileSystemAssociationARN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the deleted file system association.</p>
-     */
-    inline void SetFileSystemAssociationARN(Aws::String&& value) { m_fileSystemAssociationARN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the deleted file system association.</p>
-     */
-    inline void SetFileSystemAssociationARN(const char* value) { m_fileSystemAssociationARN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the deleted file system association.</p>
-     */
-    inline DisassociateFileSystemResult& WithFileSystemAssociationARN(const Aws::String& value) { SetFileSystemAssociationARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the deleted file system association.</p>
-     */
-    inline DisassociateFileSystemResult& WithFileSystemAssociationARN(Aws::String&& value) { SetFileSystemAssociationARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the deleted file system association.</p>
-     */
-    inline DisassociateFileSystemResult& WithFileSystemAssociationARN(const char* value) { SetFileSystemAssociationARN(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DisassociateFileSystemResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DisassociateFileSystemResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DisassociateFileSystemResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DisassociateFileSystemResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_fileSystemAssociationARN;
+    bool m_fileSystemAssociationARNHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -21,7 +21,7 @@ namespace Model
   class GetJobRequest : public DataExchangeRequest
   {
   public:
-    AWS_DATAEXCHANGE_API GetJobRequest();
+    AWS_DATAEXCHANGE_API GetJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_DATAEXCHANGE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier for a job.</p>
      */
-    inline const Aws::String& GetJobId() const{ return m_jobId; }
-
-    /**
-     * <p>The unique identifier for a job.</p>
-     */
+    inline const Aws::String& GetJobId() const { return m_jobId; }
     inline bool JobIdHasBeenSet() const { return m_jobIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier for a job.</p>
-     */
-    inline void SetJobId(const Aws::String& value) { m_jobIdHasBeenSet = true; m_jobId = value; }
-
-    /**
-     * <p>The unique identifier for a job.</p>
-     */
-    inline void SetJobId(Aws::String&& value) { m_jobIdHasBeenSet = true; m_jobId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for a job.</p>
-     */
-    inline void SetJobId(const char* value) { m_jobIdHasBeenSet = true; m_jobId.assign(value); }
-
-    /**
-     * <p>The unique identifier for a job.</p>
-     */
-    inline GetJobRequest& WithJobId(const Aws::String& value) { SetJobId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for a job.</p>
-     */
-    inline GetJobRequest& WithJobId(Aws::String&& value) { SetJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for a job.</p>
-     */
-    inline GetJobRequest& WithJobId(const char* value) { SetJobId(value); return *this;}
-
+    template<typename JobIdT = Aws::String>
+    void SetJobId(JobIdT&& value) { m_jobIdHasBeenSet = true; m_jobId = std::forward<JobIdT>(value); }
+    template<typename JobIdT = Aws::String>
+    GetJobRequest& WithJobId(JobIdT&& value) { SetJobId(std::forward<JobIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_jobId;

@@ -10,12 +10,6 @@
 using namespace Aws::ElasticLoadBalancingv2::Model;
 using namespace Aws::Utils;
 
-AddListenerCertificatesRequest::AddListenerCertificatesRequest() : 
-    m_listenerArnHasBeenSet(false),
-    m_certificatesHasBeenSet(false)
-{
-}
-
 Aws::String AddListenerCertificatesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,11 +21,18 @@ Aws::String AddListenerCertificatesRequest::SerializePayload() const
 
   if(m_certificatesHasBeenSet)
   {
-    unsigned certificatesCount = 1;
-    for(auto& item : m_certificates)
+    if (m_certificates.empty())
     {
-      item.OutputToStream(ss, "Certificates.member.", certificatesCount, "");
-      certificatesCount++;
+      ss << "Certificates=&";
+    }
+    else
+    {
+      unsigned certificatesCount = 1;
+      for(auto& item : m_certificates)
+      {
+        item.OutputToStream(ss, "Certificates.member.", certificatesCount, "");
+        certificatesCount++;
+      }
     }
   }
 

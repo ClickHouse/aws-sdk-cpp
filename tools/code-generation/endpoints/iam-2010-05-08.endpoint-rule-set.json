@@ -1,12 +1,6 @@
 {
     "version": "1.0",
     "parameters": {
-        "Region": {
-            "builtIn": "AWS::Region",
-            "required": false,
-            "documentation": "The AWS region used to dispatch the request.",
-            "type": "String"
-        },
         "UseDualStack": {
             "builtIn": "AWS::UseDualStack",
             "required": true,
@@ -26,6 +20,12 @@
             "required": false,
             "documentation": "Override the endpoint used to send this request",
             "type": "String"
+        },
+        "Region": {
+            "builtIn": "AWS::Region",
+            "required": false,
+            "documentation": "The AWS region used to dispatch the request.",
+            "type": "String"
         }
     },
     "rules": [
@@ -40,7 +40,6 @@
                     ]
                 }
             ],
-            "type": "tree",
             "rules": [
                 {
                     "conditions": [
@@ -59,7 +58,6 @@
                 },
                 {
                     "conditions": [],
-                    "type": "tree",
                     "rules": [
                         {
                             "conditions": [
@@ -87,13 +85,14 @@
                             },
                             "type": "endpoint"
                         }
-                    ]
+                    ],
+                    "type": "tree"
                 }
-            ]
+            ],
+            "type": "tree"
         },
         {
             "conditions": [],
-            "type": "tree",
             "rules": [
                 {
                     "conditions": [
@@ -106,7 +105,6 @@
                             ]
                         }
                     ],
-                    "type": "tree",
                     "rules": [
                         {
                             "conditions": [
@@ -120,7 +118,6 @@
                                     "assign": "PartitionResult"
                                 }
                             ],
-                            "type": "tree",
                             "rules": [
                                 {
                                     "conditions": [
@@ -138,216 +135,89 @@
                                                 },
                                                 "aws"
                                             ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseFIPS"
+                                                },
+                                                false
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
+                                                },
+                                                true
+                                            ]
                                         }
                                     ],
-                                    "type": "tree",
-                                    "rules": [
-                                        {
-                                            "conditions": [
+                                    "endpoint": {
+                                        "url": "https://iam.global.api.aws",
+                                        "properties": {
+                                            "authSchemes": [
                                                 {
-                                                    "fn": "booleanEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "UseFIPS"
-                                                        },
-                                                        true
-                                                    ]
-                                                },
-                                                {
-                                                    "fn": "booleanEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "UseDualStack"
-                                                        },
-                                                        true
-                                                    ]
-                                                }
-                                            ],
-                                            "type": "tree",
-                                            "rules": [
-                                                {
-                                                    "conditions": [
-                                                        {
-                                                            "fn": "booleanEquals",
-                                                            "argv": [
-                                                                true,
-                                                                {
-                                                                    "fn": "getAttr",
-                                                                    "argv": [
-                                                                        {
-                                                                            "ref": "PartitionResult"
-                                                                        },
-                                                                        "supportsFIPS"
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "fn": "booleanEquals",
-                                                            "argv": [
-                                                                true,
-                                                                {
-                                                                    "fn": "getAttr",
-                                                                    "argv": [
-                                                                        {
-                                                                            "ref": "PartitionResult"
-                                                                        },
-                                                                        "supportsDualStack"
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        }
-                                                    ],
-                                                    "type": "tree",
-                                                    "rules": [
-                                                        {
-                                                            "conditions": [],
-                                                            "endpoint": {
-                                                                "url": "https://iam-fips.{Region}.api.aws",
-                                                                "properties": {},
-                                                                "headers": {}
-                                                            },
-                                                            "type": "endpoint"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "conditions": [],
-                                                    "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
-                                                    "type": "error"
+                                                    "name": "sigv4",
+                                                    "signingRegion": "us-east-1"
                                                 }
                                             ]
                                         },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
+                                },
+                                {
+                                    "conditions": [
                                         {
-                                            "conditions": [
+                                            "fn": "stringEquals",
+                                            "argv": [
                                                 {
-                                                    "fn": "booleanEquals",
+                                                    "fn": "getAttr",
                                                     "argv": [
                                                         {
-                                                            "ref": "UseFIPS"
+                                                            "ref": "PartitionResult"
                                                         },
-                                                        true
-                                                    ]
-                                                }
-                                            ],
-                                            "type": "tree",
-                                            "rules": [
-                                                {
-                                                    "conditions": [
-                                                        {
-                                                            "fn": "booleanEquals",
-                                                            "argv": [
-                                                                true,
-                                                                {
-                                                                    "fn": "getAttr",
-                                                                    "argv": [
-                                                                        {
-                                                                            "ref": "PartitionResult"
-                                                                        },
-                                                                        "supportsFIPS"
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        }
-                                                    ],
-                                                    "type": "tree",
-                                                    "rules": [
-                                                        {
-                                                            "conditions": [],
-                                                            "endpoint": {
-                                                                "url": "https://iam-fips.amazonaws.com",
-                                                                "properties": {
-                                                                    "authSchemes": [
-                                                                        {
-                                                                            "name": "sigv4",
-                                                                            "signingName": "iam",
-                                                                            "signingRegion": "us-east-1"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                "headers": {}
-                                                            },
-                                                            "type": "endpoint"
-                                                        }
+                                                        "name"
                                                     ]
                                                 },
-                                                {
-                                                    "conditions": [],
-                                                    "error": "FIPS is enabled but this partition does not support FIPS",
-                                                    "type": "error"
-                                                }
+                                                "aws"
                                             ]
                                         },
                                         {
-                                            "conditions": [
+                                            "fn": "booleanEquals",
+                                            "argv": [
                                                 {
-                                                    "fn": "booleanEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "UseDualStack"
-                                                        },
-                                                        true
-                                                    ]
-                                                }
-                                            ],
-                                            "type": "tree",
-                                            "rules": [
-                                                {
-                                                    "conditions": [
-                                                        {
-                                                            "fn": "booleanEquals",
-                                                            "argv": [
-                                                                true,
-                                                                {
-                                                                    "fn": "getAttr",
-                                                                    "argv": [
-                                                                        {
-                                                                            "ref": "PartitionResult"
-                                                                        },
-                                                                        "supportsDualStack"
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        }
-                                                    ],
-                                                    "type": "tree",
-                                                    "rules": [
-                                                        {
-                                                            "conditions": [],
-                                                            "endpoint": {
-                                                                "url": "https://iam.{Region}.api.aws",
-                                                                "properties": {},
-                                                                "headers": {}
-                                                            },
-                                                            "type": "endpoint"
-                                                        }
-                                                    ]
+                                                    "ref": "UseFIPS"
                                                 },
-                                                {
-                                                    "conditions": [],
-                                                    "error": "DualStack is enabled but this partition does not support DualStack",
-                                                    "type": "error"
-                                                }
+                                                true
                                             ]
                                         },
                                         {
-                                            "conditions": [],
-                                            "endpoint": {
-                                                "url": "https://iam.amazonaws.com",
-                                                "properties": {
-                                                    "authSchemes": [
-                                                        {
-                                                            "name": "sigv4",
-                                                            "signingName": "iam",
-                                                            "signingRegion": "us-east-1"
-                                                        }
-                                                    ]
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
                                                 },
-                                                "headers": {}
-                                            },
-                                            "type": "endpoint"
+                                                true
+                                            ]
                                         }
-                                    ]
+                                    ],
+                                    "endpoint": {
+                                        "url": "https://iam-fips.global.api.aws",
+                                        "properties": {
+                                            "authSchemes": [
+                                                {
+                                                    "name": "sigv4",
+                                                    "signingRegion": "us-east-1"
+                                                }
+                                            ]
+                                        },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
                                 },
                                 {
                                     "conditions": [
@@ -365,208 +235,89 @@
                                                 },
                                                 "aws-cn"
                                             ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseFIPS"
+                                                },
+                                                false
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
+                                                },
+                                                true
+                                            ]
                                         }
                                     ],
-                                    "type": "tree",
-                                    "rules": [
-                                        {
-                                            "conditions": [
+                                    "endpoint": {
+                                        "url": "https://iam.global.api.amazonwebservices.com.cn",
+                                        "properties": {
+                                            "authSchemes": [
                                                 {
-                                                    "fn": "booleanEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "UseFIPS"
-                                                        },
-                                                        true
-                                                    ]
-                                                },
-                                                {
-                                                    "fn": "booleanEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "UseDualStack"
-                                                        },
-                                                        true
-                                                    ]
-                                                }
-                                            ],
-                                            "type": "tree",
-                                            "rules": [
-                                                {
-                                                    "conditions": [
-                                                        {
-                                                            "fn": "booleanEquals",
-                                                            "argv": [
-                                                                true,
-                                                                {
-                                                                    "fn": "getAttr",
-                                                                    "argv": [
-                                                                        {
-                                                                            "ref": "PartitionResult"
-                                                                        },
-                                                                        "supportsFIPS"
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "fn": "booleanEquals",
-                                                            "argv": [
-                                                                true,
-                                                                {
-                                                                    "fn": "getAttr",
-                                                                    "argv": [
-                                                                        {
-                                                                            "ref": "PartitionResult"
-                                                                        },
-                                                                        "supportsDualStack"
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        }
-                                                    ],
-                                                    "type": "tree",
-                                                    "rules": [
-                                                        {
-                                                            "conditions": [],
-                                                            "endpoint": {
-                                                                "url": "https://iam-fips.{Region}.api.amazonwebservices.com.cn",
-                                                                "properties": {},
-                                                                "headers": {}
-                                                            },
-                                                            "type": "endpoint"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "conditions": [],
-                                                    "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
-                                                    "type": "error"
+                                                    "name": "sigv4",
+                                                    "signingRegion": "cn-north-1"
                                                 }
                                             ]
                                         },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
+                                },
+                                {
+                                    "conditions": [
                                         {
-                                            "conditions": [
+                                            "fn": "stringEquals",
+                                            "argv": [
                                                 {
-                                                    "fn": "booleanEquals",
+                                                    "fn": "getAttr",
                                                     "argv": [
                                                         {
-                                                            "ref": "UseFIPS"
+                                                            "ref": "PartitionResult"
                                                         },
-                                                        true
-                                                    ]
-                                                }
-                                            ],
-                                            "type": "tree",
-                                            "rules": [
-                                                {
-                                                    "conditions": [
-                                                        {
-                                                            "fn": "booleanEquals",
-                                                            "argv": [
-                                                                true,
-                                                                {
-                                                                    "fn": "getAttr",
-                                                                    "argv": [
-                                                                        {
-                                                                            "ref": "PartitionResult"
-                                                                        },
-                                                                        "supportsFIPS"
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        }
-                                                    ],
-                                                    "type": "tree",
-                                                    "rules": [
-                                                        {
-                                                            "conditions": [],
-                                                            "endpoint": {
-                                                                "url": "https://iam-fips.{Region}.amazonaws.com.cn",
-                                                                "properties": {},
-                                                                "headers": {}
-                                                            },
-                                                            "type": "endpoint"
-                                                        }
+                                                        "name"
                                                     ]
                                                 },
-                                                {
-                                                    "conditions": [],
-                                                    "error": "FIPS is enabled but this partition does not support FIPS",
-                                                    "type": "error"
-                                                }
+                                                "aws-cn"
                                             ]
                                         },
                                         {
-                                            "conditions": [
+                                            "fn": "booleanEquals",
+                                            "argv": [
                                                 {
-                                                    "fn": "booleanEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "UseDualStack"
-                                                        },
-                                                        true
-                                                    ]
-                                                }
-                                            ],
-                                            "type": "tree",
-                                            "rules": [
-                                                {
-                                                    "conditions": [
-                                                        {
-                                                            "fn": "booleanEquals",
-                                                            "argv": [
-                                                                true,
-                                                                {
-                                                                    "fn": "getAttr",
-                                                                    "argv": [
-                                                                        {
-                                                                            "ref": "PartitionResult"
-                                                                        },
-                                                                        "supportsDualStack"
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        }
-                                                    ],
-                                                    "type": "tree",
-                                                    "rules": [
-                                                        {
-                                                            "conditions": [],
-                                                            "endpoint": {
-                                                                "url": "https://iam.{Region}.api.amazonwebservices.com.cn",
-                                                                "properties": {},
-                                                                "headers": {}
-                                                            },
-                                                            "type": "endpoint"
-                                                        }
-                                                    ]
+                                                    "ref": "UseFIPS"
                                                 },
-                                                {
-                                                    "conditions": [],
-                                                    "error": "DualStack is enabled but this partition does not support DualStack",
-                                                    "type": "error"
-                                                }
+                                                false
                                             ]
                                         },
                                         {
-                                            "conditions": [],
-                                            "endpoint": {
-                                                "url": "https://iam.cn-north-1.amazonaws.com.cn",
-                                                "properties": {
-                                                    "authSchemes": [
-                                                        {
-                                                            "name": "sigv4",
-                                                            "signingName": "iam",
-                                                            "signingRegion": "cn-north-1"
-                                                        }
-                                                    ]
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
                                                 },
-                                                "headers": {}
-                                            },
-                                            "type": "endpoint"
+                                                false
+                                            ]
                                         }
-                                    ]
+                                    ],
+                                    "endpoint": {
+                                        "url": "https://iam.cn-north-1.amazonaws.com.cn",
+                                        "properties": {
+                                            "authSchemes": [
+                                                {
+                                                    "name": "sigv4",
+                                                    "signingRegion": "cn-north-1"
+                                                }
+                                            ]
+                                        },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
                                 },
                                 {
                                     "conditions": [
@@ -584,216 +335,189 @@
                                                 },
                                                 "aws-us-gov"
                                             ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseFIPS"
+                                                },
+                                                false
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
+                                                },
+                                                true
+                                            ]
                                         }
                                     ],
-                                    "type": "tree",
-                                    "rules": [
-                                        {
-                                            "conditions": [
+                                    "endpoint": {
+                                        "url": "https://iam.us-gov.api.aws",
+                                        "properties": {
+                                            "authSchemes": [
                                                 {
-                                                    "fn": "booleanEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "UseFIPS"
-                                                        },
-                                                        true
-                                                    ]
-                                                },
-                                                {
-                                                    "fn": "booleanEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "UseDualStack"
-                                                        },
-                                                        true
-                                                    ]
-                                                }
-                                            ],
-                                            "type": "tree",
-                                            "rules": [
-                                                {
-                                                    "conditions": [
-                                                        {
-                                                            "fn": "booleanEquals",
-                                                            "argv": [
-                                                                true,
-                                                                {
-                                                                    "fn": "getAttr",
-                                                                    "argv": [
-                                                                        {
-                                                                            "ref": "PartitionResult"
-                                                                        },
-                                                                        "supportsFIPS"
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "fn": "booleanEquals",
-                                                            "argv": [
-                                                                true,
-                                                                {
-                                                                    "fn": "getAttr",
-                                                                    "argv": [
-                                                                        {
-                                                                            "ref": "PartitionResult"
-                                                                        },
-                                                                        "supportsDualStack"
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        }
-                                                    ],
-                                                    "type": "tree",
-                                                    "rules": [
-                                                        {
-                                                            "conditions": [],
-                                                            "endpoint": {
-                                                                "url": "https://iam-fips.{Region}.api.aws",
-                                                                "properties": {},
-                                                                "headers": {}
-                                                            },
-                                                            "type": "endpoint"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "conditions": [],
-                                                    "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
-                                                    "type": "error"
+                                                    "name": "sigv4",
+                                                    "signingRegion": "us-gov-west-1"
                                                 }
                                             ]
                                         },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
+                                },
+                                {
+                                    "conditions": [
                                         {
-                                            "conditions": [
+                                            "fn": "stringEquals",
+                                            "argv": [
                                                 {
-                                                    "fn": "booleanEquals",
+                                                    "fn": "getAttr",
                                                     "argv": [
                                                         {
-                                                            "ref": "UseFIPS"
+                                                            "ref": "PartitionResult"
                                                         },
-                                                        true
-                                                    ]
-                                                }
-                                            ],
-                                            "type": "tree",
-                                            "rules": [
-                                                {
-                                                    "conditions": [
-                                                        {
-                                                            "fn": "booleanEquals",
-                                                            "argv": [
-                                                                true,
-                                                                {
-                                                                    "fn": "getAttr",
-                                                                    "argv": [
-                                                                        {
-                                                                            "ref": "PartitionResult"
-                                                                        },
-                                                                        "supportsFIPS"
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        }
-                                                    ],
-                                                    "type": "tree",
-                                                    "rules": [
-                                                        {
-                                                            "conditions": [],
-                                                            "endpoint": {
-                                                                "url": "https://iam.us-gov.amazonaws.com",
-                                                                "properties": {
-                                                                    "authSchemes": [
-                                                                        {
-                                                                            "name": "sigv4",
-                                                                            "signingName": "iam",
-                                                                            "signingRegion": "us-gov-west-1"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                "headers": {}
-                                                            },
-                                                            "type": "endpoint"
-                                                        }
+                                                        "name"
                                                     ]
                                                 },
-                                                {
-                                                    "conditions": [],
-                                                    "error": "FIPS is enabled but this partition does not support FIPS",
-                                                    "type": "error"
-                                                }
+                                                "aws-us-gov"
                                             ]
                                         },
                                         {
-                                            "conditions": [
+                                            "fn": "booleanEquals",
+                                            "argv": [
                                                 {
-                                                    "fn": "booleanEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "UseDualStack"
-                                                        },
-                                                        true
-                                                    ]
-                                                }
-                                            ],
-                                            "type": "tree",
-                                            "rules": [
-                                                {
-                                                    "conditions": [
-                                                        {
-                                                            "fn": "booleanEquals",
-                                                            "argv": [
-                                                                true,
-                                                                {
-                                                                    "fn": "getAttr",
-                                                                    "argv": [
-                                                                        {
-                                                                            "ref": "PartitionResult"
-                                                                        },
-                                                                        "supportsDualStack"
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        }
-                                                    ],
-                                                    "type": "tree",
-                                                    "rules": [
-                                                        {
-                                                            "conditions": [],
-                                                            "endpoint": {
-                                                                "url": "https://iam.{Region}.api.aws",
-                                                                "properties": {},
-                                                                "headers": {}
-                                                            },
-                                                            "type": "endpoint"
-                                                        }
-                                                    ]
+                                                    "ref": "UseFIPS"
                                                 },
-                                                {
-                                                    "conditions": [],
-                                                    "error": "DualStack is enabled but this partition does not support DualStack",
-                                                    "type": "error"
-                                                }
+                                                true
                                             ]
                                         },
                                         {
-                                            "conditions": [],
-                                            "endpoint": {
-                                                "url": "https://iam.us-gov.amazonaws.com",
-                                                "properties": {
-                                                    "authSchemes": [
-                                                        {
-                                                            "name": "sigv4",
-                                                            "signingName": "iam",
-                                                            "signingRegion": "us-gov-west-1"
-                                                        }
-                                                    ]
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
                                                 },
-                                                "headers": {}
-                                            },
-                                            "type": "endpoint"
+                                                true
+                                            ]
                                         }
-                                    ]
+                                    ],
+                                    "endpoint": {
+                                        "url": "https://iam.us-gov.api.aws",
+                                        "properties": {
+                                            "authSchemes": [
+                                                {
+                                                    "name": "sigv4",
+                                                    "signingRegion": "us-gov-west-1"
+                                                }
+                                            ]
+                                        },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "stringEquals",
+                                            "argv": [
+                                                {
+                                                    "fn": "getAttr",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "PartitionResult"
+                                                        },
+                                                        "name"
+                                                    ]
+                                                },
+                                                "aws-us-gov"
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseFIPS"
+                                                },
+                                                false
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
+                                                },
+                                                false
+                                            ]
+                                        }
+                                    ],
+                                    "endpoint": {
+                                        "url": "https://iam.us-gov.amazonaws.com",
+                                        "properties": {
+                                            "authSchemes": [
+                                                {
+                                                    "name": "sigv4",
+                                                    "signingRegion": "us-gov-west-1"
+                                                }
+                                            ]
+                                        },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "stringEquals",
+                                            "argv": [
+                                                {
+                                                    "fn": "getAttr",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "PartitionResult"
+                                                        },
+                                                        "name"
+                                                    ]
+                                                },
+                                                "aws-us-gov"
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseFIPS"
+                                                },
+                                                true
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
+                                                },
+                                                false
+                                            ]
+                                        }
+                                    ],
+                                    "endpoint": {
+                                        "url": "https://iam.us-gov.amazonaws.com",
+                                        "properties": {
+                                            "authSchemes": [
+                                                {
+                                                    "name": "sigv4",
+                                                    "signingRegion": "us-gov-west-1"
+                                                }
+                                            ]
+                                        },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
                                 },
                                 {
                                     "conditions": [
@@ -811,80 +535,89 @@
                                                 },
                                                 "aws-iso"
                                             ]
-                                        }
-                                    ],
-                                    "type": "tree",
-                                    "rules": [
+                                        },
                                         {
-                                            "conditions": [
+                                            "fn": "booleanEquals",
+                                            "argv": [
                                                 {
-                                                    "fn": "booleanEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "UseFIPS"
-                                                        },
-                                                        true
-                                                    ]
-                                                }
-                                            ],
-                                            "type": "tree",
-                                            "rules": [
-                                                {
-                                                    "conditions": [
-                                                        {
-                                                            "fn": "booleanEquals",
-                                                            "argv": [
-                                                                true,
-                                                                {
-                                                                    "fn": "getAttr",
-                                                                    "argv": [
-                                                                        {
-                                                                            "ref": "PartitionResult"
-                                                                        },
-                                                                        "supportsFIPS"
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        }
-                                                    ],
-                                                    "type": "tree",
-                                                    "rules": [
-                                                        {
-                                                            "conditions": [],
-                                                            "endpoint": {
-                                                                "url": "https://iam-fips.{Region}.c2s.ic.gov",
-                                                                "properties": {},
-                                                                "headers": {}
-                                                            },
-                                                            "type": "endpoint"
-                                                        }
-                                                    ]
+                                                    "ref": "UseFIPS"
                                                 },
-                                                {
-                                                    "conditions": [],
-                                                    "error": "FIPS is enabled but this partition does not support FIPS",
-                                                    "type": "error"
-                                                }
+                                                false
                                             ]
                                         },
                                         {
-                                            "conditions": [],
-                                            "endpoint": {
-                                                "url": "https://iam.us-iso-east-1.c2s.ic.gov",
-                                                "properties": {
-                                                    "authSchemes": [
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
+                                                },
+                                                false
+                                            ]
+                                        }
+                                    ],
+                                    "endpoint": {
+                                        "url": "https://iam.us-iso-east-1.c2s.ic.gov",
+                                        "properties": {
+                                            "authSchemes": [
+                                                {
+                                                    "name": "sigv4",
+                                                    "signingRegion": "us-iso-east-1"
+                                                }
+                                            ]
+                                        },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "stringEquals",
+                                            "argv": [
+                                                {
+                                                    "fn": "getAttr",
+                                                    "argv": [
                                                         {
-                                                            "name": "sigv4",
-                                                            "signingName": "iam",
-                                                            "signingRegion": "us-iso-east-1"
-                                                        }
+                                                            "ref": "PartitionResult"
+                                                        },
+                                                        "name"
                                                     ]
                                                 },
-                                                "headers": {}
-                                            },
-                                            "type": "endpoint"
+                                                "aws-iso"
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseFIPS"
+                                                },
+                                                true
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
+                                                },
+                                                false
+                                            ]
                                         }
-                                    ]
+                                    ],
+                                    "endpoint": {
+                                        "url": "https://iam-fips.us-iso-east-1.c2s.ic.gov",
+                                        "properties": {
+                                            "authSchemes": [
+                                                {
+                                                    "name": "sigv4",
+                                                    "signingRegion": "us-iso-east-1"
+                                                }
+                                            ]
+                                        },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
                                 },
                                 {
                                     "conditions": [
@@ -902,80 +635,239 @@
                                                 },
                                                 "aws-iso-b"
                                             ]
-                                        }
-                                    ],
-                                    "type": "tree",
-                                    "rules": [
+                                        },
                                         {
-                                            "conditions": [
+                                            "fn": "booleanEquals",
+                                            "argv": [
                                                 {
-                                                    "fn": "booleanEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "UseFIPS"
-                                                        },
-                                                        true
-                                                    ]
-                                                }
-                                            ],
-                                            "type": "tree",
-                                            "rules": [
-                                                {
-                                                    "conditions": [
-                                                        {
-                                                            "fn": "booleanEquals",
-                                                            "argv": [
-                                                                true,
-                                                                {
-                                                                    "fn": "getAttr",
-                                                                    "argv": [
-                                                                        {
-                                                                            "ref": "PartitionResult"
-                                                                        },
-                                                                        "supportsFIPS"
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        }
-                                                    ],
-                                                    "type": "tree",
-                                                    "rules": [
-                                                        {
-                                                            "conditions": [],
-                                                            "endpoint": {
-                                                                "url": "https://iam-fips.{Region}.sc2s.sgov.gov",
-                                                                "properties": {},
-                                                                "headers": {}
-                                                            },
-                                                            "type": "endpoint"
-                                                        }
-                                                    ]
+                                                    "ref": "UseFIPS"
                                                 },
-                                                {
-                                                    "conditions": [],
-                                                    "error": "FIPS is enabled but this partition does not support FIPS",
-                                                    "type": "error"
-                                                }
+                                                false
                                             ]
                                         },
                                         {
-                                            "conditions": [],
-                                            "endpoint": {
-                                                "url": "https://iam.us-isob-east-1.sc2s.sgov.gov",
-                                                "properties": {
-                                                    "authSchemes": [
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
+                                                },
+                                                false
+                                            ]
+                                        }
+                                    ],
+                                    "endpoint": {
+                                        "url": "https://iam.us-isob-east-1.sc2s.sgov.gov",
+                                        "properties": {
+                                            "authSchemes": [
+                                                {
+                                                    "name": "sigv4",
+                                                    "signingRegion": "us-isob-east-1"
+                                                }
+                                            ]
+                                        },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "stringEquals",
+                                            "argv": [
+                                                {
+                                                    "fn": "getAttr",
+                                                    "argv": [
                                                         {
-                                                            "name": "sigv4",
-                                                            "signingName": "iam",
-                                                            "signingRegion": "us-isob-east-1"
-                                                        }
+                                                            "ref": "PartitionResult"
+                                                        },
+                                                        "name"
                                                     ]
                                                 },
-                                                "headers": {}
-                                            },
-                                            "type": "endpoint"
+                                                "aws-iso-b"
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseFIPS"
+                                                },
+                                                true
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
+                                                },
+                                                false
+                                            ]
                                         }
-                                    ]
+                                    ],
+                                    "endpoint": {
+                                        "url": "https://iam-fips.us-isob-east-1.sc2s.sgov.gov",
+                                        "properties": {
+                                            "authSchemes": [
+                                                {
+                                                    "name": "sigv4",
+                                                    "signingRegion": "us-isob-east-1"
+                                                }
+                                            ]
+                                        },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "stringEquals",
+                                            "argv": [
+                                                {
+                                                    "fn": "getAttr",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "PartitionResult"
+                                                        },
+                                                        "name"
+                                                    ]
+                                                },
+                                                "aws-iso-e"
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseFIPS"
+                                                },
+                                                false
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
+                                                },
+                                                false
+                                            ]
+                                        }
+                                    ],
+                                    "endpoint": {
+                                        "url": "https://iam.eu-isoe-west-1.cloud.adc-e.uk",
+                                        "properties": {
+                                            "authSchemes": [
+                                                {
+                                                    "name": "sigv4",
+                                                    "signingRegion": "eu-isoe-west-1"
+                                                }
+                                            ]
+                                        },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "stringEquals",
+                                            "argv": [
+                                                {
+                                                    "fn": "getAttr",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "PartitionResult"
+                                                        },
+                                                        "name"
+                                                    ]
+                                                },
+                                                "aws-iso-f"
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseFIPS"
+                                                },
+                                                false
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
+                                                },
+                                                false
+                                            ]
+                                        }
+                                    ],
+                                    "endpoint": {
+                                        "url": "https://iam.us-isof-south-1.csp.hci.ic.gov",
+                                        "properties": {
+                                            "authSchemes": [
+                                                {
+                                                    "name": "sigv4",
+                                                    "signingRegion": "us-isof-south-1"
+                                                }
+                                            ]
+                                        },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "stringEquals",
+                                            "argv": [
+                                                {
+                                                    "fn": "getAttr",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "PartitionResult"
+                                                        },
+                                                        "name"
+                                                    ]
+                                                },
+                                                "aws-eusc"
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseFIPS"
+                                                },
+                                                false
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
+                                                },
+                                                false
+                                            ]
+                                        }
+                                    ],
+                                    "endpoint": {
+                                        "url": "https://iam.eusc-de-east-1.amazonaws.eu",
+                                        "properties": {
+                                            "authSchemes": [
+                                                {
+                                                    "name": "sigv4",
+                                                    "signingRegion": "eusc-de-east-1"
+                                                }
+                                            ]
+                                        },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
                                 },
                                 {
                                     "conditions": [
@@ -998,7 +890,6 @@
                                             ]
                                         }
                                     ],
-                                    "type": "tree",
                                     "rules": [
                                         {
                                             "conditions": [
@@ -1033,31 +924,33 @@
                                                     ]
                                                 }
                                             ],
-                                            "type": "tree",
                                             "rules": [
                                                 {
                                                     "conditions": [],
-                                                    "type": "tree",
-                                                    "rules": [
-                                                        {
-                                                            "conditions": [],
-                                                            "endpoint": {
-                                                                "url": "https://iam-fips.{Region}.{PartitionResult#dualStackDnsSuffix}",
-                                                                "properties": {},
-                                                                "headers": {}
-                                                            },
-                                                            "type": "endpoint"
-                                                        }
-                                                    ]
+                                                    "endpoint": {
+                                                        "url": "https://iam-fips.{PartitionResult#dualStackDnsSuffix}",
+                                                        "properties": {
+                                                            "authSchemes": [
+                                                                {
+                                                                    "name": "sigv4",
+                                                                    "signingRegion": "{PartitionResult#implicitGlobalRegion}"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "headers": {}
+                                                    },
+                                                    "type": "endpoint"
                                                 }
-                                            ]
+                                            ],
+                                            "type": "tree"
                                         },
                                         {
                                             "conditions": [],
                                             "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
                                             "type": "error"
                                         }
-                                    ]
+                                    ],
+                                    "type": "tree"
                                 },
                                 {
                                     "conditions": [
@@ -1069,16 +962,23 @@
                                                 },
                                                 true
                                             ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
+                                                },
+                                                false
+                                            ]
                                         }
                                     ],
-                                    "type": "tree",
                                     "rules": [
                                         {
                                             "conditions": [
                                                 {
                                                     "fn": "booleanEquals",
                                                     "argv": [
-                                                        true,
                                                         {
                                                             "fn": "getAttr",
                                                             "argv": [
@@ -1087,92 +987,50 @@
                                                                 },
                                                                 "supportsFIPS"
                                                             ]
-                                                        }
+                                                        },
+                                                        true
                                                     ]
                                                 }
                                             ],
-                                            "type": "tree",
                                             "rules": [
                                                 {
                                                     "conditions": [],
-                                                    "type": "tree",
-                                                    "rules": [
-                                                        {
-                                                            "conditions": [
+                                                    "endpoint": {
+                                                        "url": "https://iam-fips.{PartitionResult#dnsSuffix}",
+                                                        "properties": {
+                                                            "authSchemes": [
                                                                 {
-                                                                    "fn": "stringEquals",
-                                                                    "argv": [
-                                                                        {
-                                                                            "ref": "Region"
-                                                                        },
-                                                                        "aws-global"
-                                                                    ]
+                                                                    "name": "sigv4",
+                                                                    "signingRegion": "{PartitionResult#implicitGlobalRegion}"
                                                                 }
-                                                            ],
-                                                            "endpoint": {
-                                                                "url": "https://iam-fips.amazonaws.com",
-                                                                "properties": {
-                                                                    "authSchemes": [
-                                                                        {
-                                                                            "name": "sigv4",
-                                                                            "signingName": "iam",
-                                                                            "signingRegion": "us-east-1"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                "headers": {}
-                                                            },
-                                                            "type": "endpoint"
+                                                            ]
                                                         },
-                                                        {
-                                                            "conditions": [
-                                                                {
-                                                                    "fn": "stringEquals",
-                                                                    "argv": [
-                                                                        {
-                                                                            "ref": "Region"
-                                                                        },
-                                                                        "aws-us-gov-global"
-                                                                    ]
-                                                                }
-                                                            ],
-                                                            "endpoint": {
-                                                                "url": "https://iam.us-gov.amazonaws.com",
-                                                                "properties": {
-                                                                    "authSchemes": [
-                                                                        {
-                                                                            "name": "sigv4",
-                                                                            "signingName": "iam",
-                                                                            "signingRegion": "us-gov-west-1"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                "headers": {}
-                                                            },
-                                                            "type": "endpoint"
-                                                        },
-                                                        {
-                                                            "conditions": [],
-                                                            "endpoint": {
-                                                                "url": "https://iam-fips.{Region}.{PartitionResult#dnsSuffix}",
-                                                                "properties": {},
-                                                                "headers": {}
-                                                            },
-                                                            "type": "endpoint"
-                                                        }
-                                                    ]
+                                                        "headers": {}
+                                                    },
+                                                    "type": "endpoint"
                                                 }
-                                            ]
+                                            ],
+                                            "type": "tree"
                                         },
                                         {
                                             "conditions": [],
                                             "error": "FIPS is enabled but this partition does not support FIPS",
                                             "type": "error"
                                         }
-                                    ]
+                                    ],
+                                    "type": "tree"
                                 },
                                 {
                                     "conditions": [
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseFIPS"
+                                                },
+                                                false
+                                            ]
+                                        },
                                         {
                                             "fn": "booleanEquals",
                                             "argv": [
@@ -1183,7 +1041,6 @@
                                             ]
                                         }
                                     ],
-                                    "type": "tree",
                                     "rules": [
                                         {
                                             "conditions": [
@@ -1203,192 +1060,63 @@
                                                     ]
                                                 }
                                             ],
-                                            "type": "tree",
                                             "rules": [
                                                 {
                                                     "conditions": [],
-                                                    "type": "tree",
-                                                    "rules": [
-                                                        {
-                                                            "conditions": [],
-                                                            "endpoint": {
-                                                                "url": "https://iam.{Region}.{PartitionResult#dualStackDnsSuffix}",
-                                                                "properties": {},
-                                                                "headers": {}
-                                                            },
-                                                            "type": "endpoint"
-                                                        }
-                                                    ]
+                                                    "endpoint": {
+                                                        "url": "https://iam.{PartitionResult#dualStackDnsSuffix}",
+                                                        "properties": {
+                                                            "authSchemes": [
+                                                                {
+                                                                    "name": "sigv4",
+                                                                    "signingRegion": "{PartitionResult#implicitGlobalRegion}"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "headers": {}
+                                                    },
+                                                    "type": "endpoint"
                                                 }
-                                            ]
+                                            ],
+                                            "type": "tree"
                                         },
                                         {
                                             "conditions": [],
                                             "error": "DualStack is enabled but this partition does not support DualStack",
                                             "type": "error"
                                         }
-                                    ]
+                                    ],
+                                    "type": "tree"
                                 },
                                 {
                                     "conditions": [],
-                                    "type": "tree",
-                                    "rules": [
-                                        {
-                                            "conditions": [
+                                    "endpoint": {
+                                        "url": "https://iam.{PartitionResult#dnsSuffix}",
+                                        "properties": {
+                                            "authSchemes": [
                                                 {
-                                                    "fn": "stringEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "Region"
-                                                        },
-                                                        "aws-global"
-                                                    ]
+                                                    "name": "sigv4",
+                                                    "signingRegion": "{PartitionResult#implicitGlobalRegion}"
                                                 }
-                                            ],
-                                            "endpoint": {
-                                                "url": "https://iam.amazonaws.com",
-                                                "properties": {
-                                                    "authSchemes": [
-                                                        {
-                                                            "name": "sigv4",
-                                                            "signingName": "iam",
-                                                            "signingRegion": "us-east-1"
-                                                        }
-                                                    ]
-                                                },
-                                                "headers": {}
-                                            },
-                                            "type": "endpoint"
+                                            ]
                                         },
-                                        {
-                                            "conditions": [
-                                                {
-                                                    "fn": "stringEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "Region"
-                                                        },
-                                                        "aws-cn-global"
-                                                    ]
-                                                }
-                                            ],
-                                            "endpoint": {
-                                                "url": "https://iam.cn-north-1.amazonaws.com.cn",
-                                                "properties": {
-                                                    "authSchemes": [
-                                                        {
-                                                            "name": "sigv4",
-                                                            "signingName": "iam",
-                                                            "signingRegion": "cn-north-1"
-                                                        }
-                                                    ]
-                                                },
-                                                "headers": {}
-                                            },
-                                            "type": "endpoint"
-                                        },
-                                        {
-                                            "conditions": [
-                                                {
-                                                    "fn": "stringEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "Region"
-                                                        },
-                                                        "aws-us-gov-global"
-                                                    ]
-                                                }
-                                            ],
-                                            "endpoint": {
-                                                "url": "https://iam.us-gov.amazonaws.com",
-                                                "properties": {
-                                                    "authSchemes": [
-                                                        {
-                                                            "name": "sigv4",
-                                                            "signingName": "iam",
-                                                            "signingRegion": "us-gov-west-1"
-                                                        }
-                                                    ]
-                                                },
-                                                "headers": {}
-                                            },
-                                            "type": "endpoint"
-                                        },
-                                        {
-                                            "conditions": [
-                                                {
-                                                    "fn": "stringEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "Region"
-                                                        },
-                                                        "aws-iso-global"
-                                                    ]
-                                                }
-                                            ],
-                                            "endpoint": {
-                                                "url": "https://iam.us-iso-east-1.c2s.ic.gov",
-                                                "properties": {
-                                                    "authSchemes": [
-                                                        {
-                                                            "name": "sigv4",
-                                                            "signingName": "iam",
-                                                            "signingRegion": "us-iso-east-1"
-                                                        }
-                                                    ]
-                                                },
-                                                "headers": {}
-                                            },
-                                            "type": "endpoint"
-                                        },
-                                        {
-                                            "conditions": [
-                                                {
-                                                    "fn": "stringEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "Region"
-                                                        },
-                                                        "aws-iso-b-global"
-                                                    ]
-                                                }
-                                            ],
-                                            "endpoint": {
-                                                "url": "https://iam.us-isob-east-1.sc2s.sgov.gov",
-                                                "properties": {
-                                                    "authSchemes": [
-                                                        {
-                                                            "name": "sigv4",
-                                                            "signingName": "iam",
-                                                            "signingRegion": "us-isob-east-1"
-                                                        }
-                                                    ]
-                                                },
-                                                "headers": {}
-                                            },
-                                            "type": "endpoint"
-                                        },
-                                        {
-                                            "conditions": [],
-                                            "endpoint": {
-                                                "url": "https://iam.{Region}.{PartitionResult#dnsSuffix}",
-                                                "properties": {},
-                                                "headers": {}
-                                            },
-                                            "type": "endpoint"
-                                        }
-                                    ]
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
                                 }
-                            ]
+                            ],
+                            "type": "tree"
                         }
-                    ]
+                    ],
+                    "type": "tree"
                 },
                 {
                     "conditions": [],
                     "error": "Invalid Configuration: Missing Region",
                     "type": "error"
                 }
-            ]
+            ],
+            "type": "tree"
         }
     ]
 }

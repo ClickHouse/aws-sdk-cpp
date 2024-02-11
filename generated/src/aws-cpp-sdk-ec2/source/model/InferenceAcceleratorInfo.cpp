@@ -20,13 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InferenceAcceleratorInfo::InferenceAcceleratorInfo() : 
-    m_acceleratorsHasBeenSet(false)
-{
-}
-
-InferenceAcceleratorInfo::InferenceAcceleratorInfo(const XmlNode& xmlNode) : 
-    m_acceleratorsHasBeenSet(false)
+InferenceAcceleratorInfo::InferenceAcceleratorInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -41,6 +35,7 @@ InferenceAcceleratorInfo& InferenceAcceleratorInfo::operator =(const XmlNode& xm
     if(!acceleratorsNode.IsNull())
     {
       XmlNode acceleratorsMember = acceleratorsNode.FirstChild("member");
+      m_acceleratorsHasBeenSet = !acceleratorsMember.IsNull();
       while(!acceleratorsMember.IsNull())
       {
         m_accelerators.push_back(acceleratorsMember);
@@ -48,6 +43,12 @@ InferenceAcceleratorInfo& InferenceAcceleratorInfo::operator =(const XmlNode& xm
       }
 
       m_acceleratorsHasBeenSet = true;
+    }
+    XmlNode totalInferenceMemoryInMiBNode = resultNode.FirstChild("totalInferenceMemoryInMiB");
+    if(!totalInferenceMemoryInMiBNode.IsNull())
+    {
+      m_totalInferenceMemoryInMiB = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(totalInferenceMemoryInMiBNode.GetText()).c_str()).c_str());
+      m_totalInferenceMemoryInMiBHasBeenSet = true;
     }
   }
 
@@ -67,6 +68,11 @@ void InferenceAcceleratorInfo::OutputToStream(Aws::OStream& oStream, const char*
       }
   }
 
+  if(m_totalInferenceMemoryInMiBHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".TotalInferenceMemoryInMiB=" << m_totalInferenceMemoryInMiB << "&";
+  }
+
 }
 
 void InferenceAcceleratorInfo::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -77,9 +83,13 @@ void InferenceAcceleratorInfo::OutputToStream(Aws::OStream& oStream, const char*
       for(auto& item : m_accelerators)
       {
         Aws::StringStream acceleratorsSs;
-        acceleratorsSs << location <<  ".Accelerators." << acceleratorsIdx++;
+        acceleratorsSs << location << ".Accelerators." << acceleratorsIdx++;
         item.OutputToStream(oStream, acceleratorsSs.str().c_str());
       }
+  }
+  if(m_totalInferenceMemoryInMiBHasBeenSet)
+  {
+      oStream << location << ".TotalInferenceMemoryInMiB=" << m_totalInferenceMemoryInMiB << "&";
   }
 }
 

@@ -20,31 +20,7 @@ namespace ElasticLoadBalancingv2
 namespace Model
 {
 
-Listener::Listener() : 
-    m_listenerArnHasBeenSet(false),
-    m_loadBalancerArnHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_protocol(ProtocolEnum::NOT_SET),
-    m_protocolHasBeenSet(false),
-    m_certificatesHasBeenSet(false),
-    m_sslPolicyHasBeenSet(false),
-    m_defaultActionsHasBeenSet(false),
-    m_alpnPolicyHasBeenSet(false)
-{
-}
-
-Listener::Listener(const XmlNode& xmlNode) : 
-    m_listenerArnHasBeenSet(false),
-    m_loadBalancerArnHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_protocol(ProtocolEnum::NOT_SET),
-    m_protocolHasBeenSet(false),
-    m_certificatesHasBeenSet(false),
-    m_sslPolicyHasBeenSet(false),
-    m_defaultActionsHasBeenSet(false),
-    m_alpnPolicyHasBeenSet(false)
+Listener::Listener(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -76,13 +52,14 @@ Listener& Listener::operator =(const XmlNode& xmlNode)
     XmlNode protocolNode = resultNode.FirstChild("Protocol");
     if(!protocolNode.IsNull())
     {
-      m_protocol = ProtocolEnumMapper::GetProtocolEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(protocolNode.GetText()).c_str()).c_str());
+      m_protocol = ProtocolEnumMapper::GetProtocolEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(protocolNode.GetText()).c_str()));
       m_protocolHasBeenSet = true;
     }
     XmlNode certificatesNode = resultNode.FirstChild("Certificates");
     if(!certificatesNode.IsNull())
     {
       XmlNode certificatesMember = certificatesNode.FirstChild("member");
+      m_certificatesHasBeenSet = !certificatesMember.IsNull();
       while(!certificatesMember.IsNull())
       {
         m_certificates.push_back(certificatesMember);
@@ -101,6 +78,7 @@ Listener& Listener::operator =(const XmlNode& xmlNode)
     if(!defaultActionsNode.IsNull())
     {
       XmlNode defaultActionsMember = defaultActionsNode.FirstChild("member");
+      m_defaultActionsHasBeenSet = !defaultActionsMember.IsNull();
       while(!defaultActionsMember.IsNull())
       {
         m_defaultActions.push_back(defaultActionsMember);
@@ -113,6 +91,7 @@ Listener& Listener::operator =(const XmlNode& xmlNode)
     if(!alpnPolicyNode.IsNull())
     {
       XmlNode alpnPolicyMember = alpnPolicyNode.FirstChild("member");
+      m_alpnPolicyHasBeenSet = !alpnPolicyMember.IsNull();
       while(!alpnPolicyMember.IsNull())
       {
         m_alpnPolicy.push_back(alpnPolicyMember.GetText());
@@ -120,6 +99,12 @@ Listener& Listener::operator =(const XmlNode& xmlNode)
       }
 
       m_alpnPolicyHasBeenSet = true;
+    }
+    XmlNode mutualAuthenticationNode = resultNode.FirstChild("MutualAuthentication");
+    if(!mutualAuthenticationNode.IsNull())
+    {
+      m_mutualAuthentication = mutualAuthenticationNode;
+      m_mutualAuthenticationHasBeenSet = true;
     }
   }
 
@@ -145,7 +130,7 @@ void Listener::OutputToStream(Aws::OStream& oStream, const char* location, unsig
 
   if(m_protocolHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Protocol=" << ProtocolEnumMapper::GetNameForProtocolEnum(m_protocol) << "&";
+      oStream << location << index << locationValue << ".Protocol=" << StringUtils::URLEncode(ProtocolEnumMapper::GetNameForProtocolEnum(m_protocol)) << "&";
   }
 
   if(m_certificatesHasBeenSet)
@@ -184,6 +169,13 @@ void Listener::OutputToStream(Aws::OStream& oStream, const char* location, unsig
       }
   }
 
+  if(m_mutualAuthenticationHasBeenSet)
+  {
+      Aws::StringStream mutualAuthenticationLocationAndMemberSs;
+      mutualAuthenticationLocationAndMemberSs << location << index << locationValue << ".MutualAuthentication";
+      m_mutualAuthentication.OutputToStream(oStream, mutualAuthenticationLocationAndMemberSs.str().c_str());
+  }
+
 }
 
 void Listener::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -202,7 +194,7 @@ void Listener::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_protocolHasBeenSet)
   {
-      oStream << location << ".Protocol=" << ProtocolEnumMapper::GetNameForProtocolEnum(m_protocol) << "&";
+      oStream << location << ".Protocol=" << StringUtils::URLEncode(ProtocolEnumMapper::GetNameForProtocolEnum(m_protocol)) << "&";
   }
   if(m_certificatesHasBeenSet)
   {
@@ -210,7 +202,7 @@ void Listener::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_certificates)
       {
         Aws::StringStream certificatesSs;
-        certificatesSs << location <<  ".Certificates.member." << certificatesIdx++;
+        certificatesSs << location << ".Certificates.member." << certificatesIdx++;
         item.OutputToStream(oStream, certificatesSs.str().c_str());
       }
   }
@@ -224,7 +216,7 @@ void Listener::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_defaultActions)
       {
         Aws::StringStream defaultActionsSs;
-        defaultActionsSs << location <<  ".DefaultActions.member." << defaultActionsIdx++;
+        defaultActionsSs << location << ".DefaultActions.member." << defaultActionsIdx++;
         item.OutputToStream(oStream, defaultActionsSs.str().c_str());
       }
   }
@@ -235,6 +227,12 @@ void Listener::OutputToStream(Aws::OStream& oStream, const char* location) const
       {
         oStream << location << ".AlpnPolicy.member." << alpnPolicyIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
+  }
+  if(m_mutualAuthenticationHasBeenSet)
+  {
+      Aws::String mutualAuthenticationLocationAndMember(location);
+      mutualAuthenticationLocationAndMember += ".MutualAuthentication";
+      m_mutualAuthentication.OutputToStream(oStream, mutualAuthenticationLocationAndMember.c_str());
   }
 }
 

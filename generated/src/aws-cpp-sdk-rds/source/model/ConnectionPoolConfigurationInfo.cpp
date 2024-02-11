@@ -20,27 +20,7 @@ namespace RDS
 namespace Model
 {
 
-ConnectionPoolConfigurationInfo::ConnectionPoolConfigurationInfo() : 
-    m_maxConnectionsPercent(0),
-    m_maxConnectionsPercentHasBeenSet(false),
-    m_maxIdleConnectionsPercent(0),
-    m_maxIdleConnectionsPercentHasBeenSet(false),
-    m_connectionBorrowTimeout(0),
-    m_connectionBorrowTimeoutHasBeenSet(false),
-    m_sessionPinningFiltersHasBeenSet(false),
-    m_initQueryHasBeenSet(false)
-{
-}
-
-ConnectionPoolConfigurationInfo::ConnectionPoolConfigurationInfo(const XmlNode& xmlNode) : 
-    m_maxConnectionsPercent(0),
-    m_maxConnectionsPercentHasBeenSet(false),
-    m_maxIdleConnectionsPercent(0),
-    m_maxIdleConnectionsPercentHasBeenSet(false),
-    m_connectionBorrowTimeout(0),
-    m_connectionBorrowTimeoutHasBeenSet(false),
-    m_sessionPinningFiltersHasBeenSet(false),
-    m_initQueryHasBeenSet(false)
+ConnectionPoolConfigurationInfo::ConnectionPoolConfigurationInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -73,6 +53,7 @@ ConnectionPoolConfigurationInfo& ConnectionPoolConfigurationInfo::operator =(con
     if(!sessionPinningFiltersNode.IsNull())
     {
       XmlNode sessionPinningFiltersMember = sessionPinningFiltersNode.FirstChild("member");
+      m_sessionPinningFiltersHasBeenSet = !sessionPinningFiltersMember.IsNull();
       while(!sessionPinningFiltersMember.IsNull())
       {
         m_sessionPinningFilters.push_back(sessionPinningFiltersMember.GetText());

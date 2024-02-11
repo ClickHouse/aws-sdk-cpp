@@ -6,6 +6,7 @@
 #include <aws/s3-crt/model/CopyObjectRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,79 +17,23 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-CopyObjectRequest::CopyObjectRequest() : 
-    m_aCL(ObjectCannedACL::NOT_SET),
-    m_aCLHasBeenSet(false),
-    m_bucketHasBeenSet(false),
-    m_cacheControlHasBeenSet(false),
-    m_checksumAlgorithm(ChecksumAlgorithm::NOT_SET),
-    m_checksumAlgorithmHasBeenSet(false),
-    m_contentDispositionHasBeenSet(false),
-    m_contentEncodingHasBeenSet(false),
-    m_contentLanguageHasBeenSet(false),
-    m_contentTypeHasBeenSet(false),
-    m_copySourceHasBeenSet(false),
-    m_copySourceIfMatchHasBeenSet(false),
-    m_copySourceIfModifiedSinceHasBeenSet(false),
-    m_copySourceIfNoneMatchHasBeenSet(false),
-    m_copySourceIfUnmodifiedSinceHasBeenSet(false),
-    m_expiresHasBeenSet(false),
-    m_grantFullControlHasBeenSet(false),
-    m_grantReadHasBeenSet(false),
-    m_grantReadACPHasBeenSet(false),
-    m_grantWriteACPHasBeenSet(false),
-    m_keyHasBeenSet(false),
-    m_metadataHasBeenSet(false),
-    m_metadataDirective(MetadataDirective::NOT_SET),
-    m_metadataDirectiveHasBeenSet(false),
-    m_taggingDirective(TaggingDirective::NOT_SET),
-    m_taggingDirectiveHasBeenSet(false),
-    m_serverSideEncryption(ServerSideEncryption::NOT_SET),
-    m_serverSideEncryptionHasBeenSet(false),
-    m_storageClass(StorageClass::NOT_SET),
-    m_storageClassHasBeenSet(false),
-    m_websiteRedirectLocationHasBeenSet(false),
-    m_sSECustomerAlgorithmHasBeenSet(false),
-    m_sSECustomerKeyHasBeenSet(false),
-    m_sSECustomerKeyMD5HasBeenSet(false),
-    m_sSEKMSKeyIdHasBeenSet(false),
-    m_sSEKMSEncryptionContextHasBeenSet(false),
-    m_bucketKeyEnabled(false),
-    m_bucketKeyEnabledHasBeenSet(false),
-    m_copySourceSSECustomerAlgorithmHasBeenSet(false),
-    m_copySourceSSECustomerKeyHasBeenSet(false),
-    m_copySourceSSECustomerKeyMD5HasBeenSet(false),
-    m_requestPayer(RequestPayer::NOT_SET),
-    m_requestPayerHasBeenSet(false),
-    m_taggingHasBeenSet(false),
-    m_objectLockMode(ObjectLockMode::NOT_SET),
-    m_objectLockModeHasBeenSet(false),
-    m_objectLockRetainUntilDateHasBeenSet(false),
-    m_objectLockLegalHoldStatus(ObjectLockLegalHoldStatus::NOT_SET),
-    m_objectLockLegalHoldStatusHasBeenSet(false),
-    m_expectedBucketOwnerHasBeenSet(false),
-    m_expectedSourceBucketOwnerHasBeenSet(false),
-    m_customizedAccessLogTagHasBeenSet(false)
-{
-}
 
 bool CopyObjectRequest::HasEmbeddedError(Aws::IOStream &body,
   const Aws::Http::HeaderValueCollection &header) const
 {
   // Header is unused
-  (void) header;
+  AWS_UNREFERENCED_PARAM(header);
 
 #ifndef NDEBUG
   auto streamState = body.exceptions();
   auto readPointer = body.tellg();
-  XmlDocument doc = XmlDocument::CreateFromXmlStream(body);
-
+  Utils::Xml::XmlDocument doc = XmlDocument::CreateFromXmlStream(body);
+  body.seekg(readPointer);
   if (!doc.WasParseSuccessful()) {
-    body.seekg(readPointer);
     return false;
   }
 
-  if (doc.GetRootElement().GetName() == "Error") {
+  if (!doc.GetRootElement().IsNull() && doc.GetRootElement().GetName() == Aws::String("Error")) {
     /// Must not be here because earlier we already checked for an embedded error in PocoHTTPClient (see checkRequestCanReturn2xxAndErrorInBody).
     AWS_FATAL_ASSERT(false);
   }
@@ -130,7 +75,7 @@ Aws::Http::HeaderValueCollection CopyObjectRequest::GetRequestSpecificHeaders() 
 {
   Aws::Http::HeaderValueCollection headers;
   Aws::StringStream ss;
-  if(m_aCLHasBeenSet)
+  if(m_aCLHasBeenSet && m_aCL != ObjectCannedACL::NOT_SET)
   {
     headers.emplace("x-amz-acl", ObjectCannedACLMapper::GetNameForObjectCannedACL(m_aCL));
   }
@@ -142,7 +87,7 @@ Aws::Http::HeaderValueCollection CopyObjectRequest::GetRequestSpecificHeaders() 
     ss.str("");
   }
 
-  if(m_checksumAlgorithmHasBeenSet)
+  if(m_checksumAlgorithmHasBeenSet && m_checksumAlgorithm != ChecksumAlgorithm::NOT_SET)
   {
     headers.emplace("x-amz-checksum-algorithm", ChecksumAlgorithmMapper::GetNameForChecksumAlgorithm(m_checksumAlgorithm));
   }
@@ -249,22 +194,22 @@ Aws::Http::HeaderValueCollection CopyObjectRequest::GetRequestSpecificHeaders() 
     }
   }
 
-  if(m_metadataDirectiveHasBeenSet)
+  if(m_metadataDirectiveHasBeenSet && m_metadataDirective != MetadataDirective::NOT_SET)
   {
     headers.emplace("x-amz-metadata-directive", MetadataDirectiveMapper::GetNameForMetadataDirective(m_metadataDirective));
   }
 
-  if(m_taggingDirectiveHasBeenSet)
+  if(m_taggingDirectiveHasBeenSet && m_taggingDirective != TaggingDirective::NOT_SET)
   {
     headers.emplace("x-amz-tagging-directive", TaggingDirectiveMapper::GetNameForTaggingDirective(m_taggingDirective));
   }
 
-  if(m_serverSideEncryptionHasBeenSet)
+  if(m_serverSideEncryptionHasBeenSet && m_serverSideEncryption != ServerSideEncryption::NOT_SET)
   {
     headers.emplace("x-amz-server-side-encryption", ServerSideEncryptionMapper::GetNameForServerSideEncryption(m_serverSideEncryption));
   }
 
-  if(m_storageClassHasBeenSet)
+  if(m_storageClassHasBeenSet && m_storageClass != StorageClass::NOT_SET)
   {
     headers.emplace("x-amz-storage-class", StorageClassMapper::GetNameForStorageClass(m_storageClass));
   }
@@ -339,7 +284,7 @@ Aws::Http::HeaderValueCollection CopyObjectRequest::GetRequestSpecificHeaders() 
     ss.str("");
   }
 
-  if(m_requestPayerHasBeenSet)
+  if(m_requestPayerHasBeenSet && m_requestPayer != RequestPayer::NOT_SET)
   {
     headers.emplace("x-amz-request-payer", RequestPayerMapper::GetNameForRequestPayer(m_requestPayer));
   }
@@ -351,7 +296,7 @@ Aws::Http::HeaderValueCollection CopyObjectRequest::GetRequestSpecificHeaders() 
     ss.str("");
   }
 
-  if(m_objectLockModeHasBeenSet)
+  if(m_objectLockModeHasBeenSet && m_objectLockMode != ObjectLockMode::NOT_SET)
   {
     headers.emplace("x-amz-object-lock-mode", ObjectLockModeMapper::GetNameForObjectLockMode(m_objectLockMode));
   }
@@ -361,7 +306,7 @@ Aws::Http::HeaderValueCollection CopyObjectRequest::GetRequestSpecificHeaders() 
     headers.emplace("x-amz-object-lock-retain-until-date", m_objectLockRetainUntilDate.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
   }
 
-  if(m_objectLockLegalHoldStatusHasBeenSet)
+  if(m_objectLockLegalHoldStatusHasBeenSet && m_objectLockLegalHoldStatus != ObjectLockLegalHoldStatus::NOT_SET)
   {
     headers.emplace("x-amz-object-lock-legal-hold", ObjectLockLegalHoldStatusMapper::GetNameForObjectLockLegalHoldStatus(m_objectLockLegalHoldStatus));
   }
@@ -386,9 +331,17 @@ Aws::Http::HeaderValueCollection CopyObjectRequest::GetRequestSpecificHeaders() 
 CopyObjectRequest::EndpointParameters CopyObjectRequest::GetEndpointContextParams() const
 {
     EndpointParameters parameters;
+    // Static context parameters
+    parameters.emplace_back(Aws::String("DisableS3ExpressSessionAuth"), true, Aws::Endpoint::EndpointParameter::ParameterOrigin::STATIC_CONTEXT);
     // Operation context parameters
     if (BucketHasBeenSet()) {
         parameters.emplace_back(Aws::String("Bucket"), this->GetBucket(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    if (CopySourceHasBeenSet()) {
+        parameters.emplace_back(Aws::String("CopySource"), this->GetCopySource(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    if (KeyHasBeenSet()) {
+        parameters.emplace_back(Aws::String("Key"), this->GetKey(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
     }
     return parameters;
 }

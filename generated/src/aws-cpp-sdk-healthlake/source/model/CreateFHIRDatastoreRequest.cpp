@@ -12,18 +12,6 @@ using namespace Aws::HealthLake::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateFHIRDatastoreRequest::CreateFHIRDatastoreRequest() : 
-    m_datastoreNameHasBeenSet(false),
-    m_datastoreTypeVersion(FHIRVersion::NOT_SET),
-    m_datastoreTypeVersionHasBeenSet(false),
-    m_sseConfigurationHasBeenSet(false),
-    m_preloadDataConfigHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateFHIRDatastoreRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -65,6 +53,12 @@ Aws::String CreateFHIRDatastoreRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("Tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_identityProviderConfigurationHasBeenSet)
+  {
+   payload.WithObject("IdentityProviderConfiguration", m_identityProviderConfiguration.Jsonize());
 
   }
 

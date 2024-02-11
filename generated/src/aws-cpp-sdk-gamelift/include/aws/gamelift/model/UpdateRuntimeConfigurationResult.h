@@ -28,68 +28,38 @@ namespace Model
   class UpdateRuntimeConfigurationResult
   {
   public:
-    AWS_GAMELIFT_API UpdateRuntimeConfigurationResult();
+    AWS_GAMELIFT_API UpdateRuntimeConfigurationResult() = default;
     AWS_GAMELIFT_API UpdateRuntimeConfigurationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GAMELIFT_API UpdateRuntimeConfigurationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p>The runtime configuration currently in use by all instances in the fleet. If
-     * the update was successful, all property changes are shown. </p>
+     * <p>The runtime configuration currently in use by computes in the fleet. If the
+     * update is successful, all property changes are shown. </p>
      */
-    inline const RuntimeConfiguration& GetRuntimeConfiguration() const{ return m_runtimeConfiguration; }
+    inline const RuntimeConfiguration& GetRuntimeConfiguration() const { return m_runtimeConfiguration; }
+    template<typename RuntimeConfigurationT = RuntimeConfiguration>
+    void SetRuntimeConfiguration(RuntimeConfigurationT&& value) { m_runtimeConfigurationHasBeenSet = true; m_runtimeConfiguration = std::forward<RuntimeConfigurationT>(value); }
+    template<typename RuntimeConfigurationT = RuntimeConfiguration>
+    UpdateRuntimeConfigurationResult& WithRuntimeConfiguration(RuntimeConfigurationT&& value) { SetRuntimeConfiguration(std::forward<RuntimeConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The runtime configuration currently in use by all instances in the fleet. If
-     * the update was successful, all property changes are shown. </p>
-     */
-    inline void SetRuntimeConfiguration(const RuntimeConfiguration& value) { m_runtimeConfiguration = value; }
-
-    /**
-     * <p>The runtime configuration currently in use by all instances in the fleet. If
-     * the update was successful, all property changes are shown. </p>
-     */
-    inline void SetRuntimeConfiguration(RuntimeConfiguration&& value) { m_runtimeConfiguration = std::move(value); }
-
-    /**
-     * <p>The runtime configuration currently in use by all instances in the fleet. If
-     * the update was successful, all property changes are shown. </p>
-     */
-    inline UpdateRuntimeConfigurationResult& WithRuntimeConfiguration(const RuntimeConfiguration& value) { SetRuntimeConfiguration(value); return *this;}
-
-    /**
-     * <p>The runtime configuration currently in use by all instances in the fleet. If
-     * the update was successful, all property changes are shown. </p>
-     */
-    inline UpdateRuntimeConfigurationResult& WithRuntimeConfiguration(RuntimeConfiguration&& value) { SetRuntimeConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateRuntimeConfigurationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateRuntimeConfigurationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateRuntimeConfigurationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateRuntimeConfigurationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     RuntimeConfiguration m_runtimeConfiguration;
+    bool m_runtimeConfigurationHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

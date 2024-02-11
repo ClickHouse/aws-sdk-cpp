@@ -12,16 +12,6 @@ using namespace Aws::LakeFormation::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetTemporaryGlueTableCredentialsRequest::GetTemporaryGlueTableCredentialsRequest() : 
-    m_tableArnHasBeenSet(false),
-    m_permissionsHasBeenSet(false),
-    m_durationSeconds(0),
-    m_durationSecondsHasBeenSet(false),
-    m_auditContextHasBeenSet(false),
-    m_supportedPermissionTypesHasBeenSet(false)
-{
-}
-
 Aws::String GetTemporaryGlueTableCredentialsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -63,6 +53,18 @@ Aws::String GetTemporaryGlueTableCredentialsRequest::SerializePayload() const
      supportedPermissionTypesJsonList[supportedPermissionTypesIndex].AsString(PermissionTypeMapper::GetNameForPermissionType(m_supportedPermissionTypes[supportedPermissionTypesIndex]));
    }
    payload.WithArray("SupportedPermissionTypes", std::move(supportedPermissionTypesJsonList));
+
+  }
+
+  if(m_s3PathHasBeenSet)
+  {
+   payload.WithString("S3Path", m_s3Path);
+
+  }
+
+  if(m_querySessionContextHasBeenSet)
+  {
+   payload.WithObject("QuerySessionContext", m_querySessionContext.Jsonize());
 
   }
 

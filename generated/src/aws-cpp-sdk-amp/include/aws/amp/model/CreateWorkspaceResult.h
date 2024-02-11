@@ -27,210 +27,107 @@ namespace PrometheusService
 namespace Model
 {
   /**
-   * <p>Represents the output of a CreateWorkspace operation.</p><p><h3>See
-   * Also:</h3>   <a
+   * <p>Represents the output of a <code>CreateWorkspace</code>
+   * operation.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/amp-2020-08-01/CreateWorkspaceResponse">AWS
    * API Reference</a></p>
    */
   class CreateWorkspaceResult
   {
   public:
-    AWS_PROMETHEUSSERVICE_API CreateWorkspaceResult();
+    AWS_PROMETHEUSSERVICE_API CreateWorkspaceResult() = default;
     AWS_PROMETHEUSSERVICE_API CreateWorkspaceResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_PROMETHEUSSERVICE_API CreateWorkspaceResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p>The ARN of the workspace that was just created.</p>
+     * <p>The unique ID for the new workspace.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetWorkspaceId() const { return m_workspaceId; }
+    template<typename WorkspaceIdT = Aws::String>
+    void SetWorkspaceId(WorkspaceIdT&& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = std::forward<WorkspaceIdT>(value); }
+    template<typename WorkspaceIdT = Aws::String>
+    CreateWorkspaceResult& WithWorkspaceId(WorkspaceIdT&& value) { SetWorkspaceId(std::forward<WorkspaceIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of the workspace that was just created.</p>
+     * <p>The ARN for the new workspace.</p>
      */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    CreateWorkspaceResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of the workspace that was just created.</p>
+     * <p>The current status of the new workspace. Immediately after you create the
+     * workspace, the status is usually <code>CREATING</code>.</p>
      */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
+    inline const WorkspaceStatus& GetStatus() const { return m_status; }
+    template<typename StatusT = WorkspaceStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = WorkspaceStatus>
+    CreateWorkspaceResult& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of the workspace that was just created.</p>
+     * <p>The list of tag keys and values that are associated with the workspace.</p>
      */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateWorkspaceResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateWorkspaceResult& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of the workspace that was just created.</p>
+     * <p>(optional) If the workspace was created with a customer managed KMS key, the
+     * ARN for the key used.</p>
      */
-    inline CreateWorkspaceResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
+    inline const Aws::String& GetKmsKeyArn() const { return m_kmsKeyArn; }
+    template<typename KmsKeyArnT = Aws::String>
+    void SetKmsKeyArn(KmsKeyArnT&& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = std::forward<KmsKeyArnT>(value); }
+    template<typename KmsKeyArnT = Aws::String>
+    CreateWorkspaceResult& WithKmsKeyArn(KmsKeyArnT&& value) { SetKmsKeyArn(std::forward<KmsKeyArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the workspace that was just created.</p>
-     */
-    inline CreateWorkspaceResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the workspace that was just created.</p>
-     */
-    inline CreateWorkspaceResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
-    /**
-     * <p>The status of the workspace that was just created (usually CREATING).</p>
-     */
-    inline const WorkspaceStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the workspace that was just created (usually CREATING).</p>
-     */
-    inline void SetStatus(const WorkspaceStatus& value) { m_status = value; }
-
-    /**
-     * <p>The status of the workspace that was just created (usually CREATING).</p>
-     */
-    inline void SetStatus(WorkspaceStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of the workspace that was just created (usually CREATING).</p>
-     */
-    inline CreateWorkspaceResult& WithStatus(const WorkspaceStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the workspace that was just created (usually CREATING).</p>
-     */
-    inline CreateWorkspaceResult& WithStatus(WorkspaceStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The tags of this workspace.</p>
-     */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags of this workspace.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tags = value; }
-
-    /**
-     * <p>The tags of this workspace.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tags = std::move(value); }
-
-    /**
-     * <p>The tags of this workspace.</p>
-     */
-    inline CreateWorkspaceResult& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags of this workspace.</p>
-     */
-    inline CreateWorkspaceResult& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags of this workspace.</p>
-     */
-    inline CreateWorkspaceResult& AddTags(const Aws::String& key, const Aws::String& value) { m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags of this workspace.</p>
-     */
-    inline CreateWorkspaceResult& AddTags(Aws::String&& key, const Aws::String& value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags of this workspace.</p>
-     */
-    inline CreateWorkspaceResult& AddTags(const Aws::String& key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags of this workspace.</p>
-     */
-    inline CreateWorkspaceResult& AddTags(Aws::String&& key, Aws::String&& value) { m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags of this workspace.</p>
-     */
-    inline CreateWorkspaceResult& AddTags(const char* key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags of this workspace.</p>
-     */
-    inline CreateWorkspaceResult& AddTags(Aws::String&& key, const char* value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags of this workspace.</p>
-     */
-    inline CreateWorkspaceResult& AddTags(const char* key, const char* value) { m_tags.emplace(key, value); return *this; }
-
-
-    /**
-     * <p>The generated ID of the workspace that was just created.</p>
-     */
-    inline const Aws::String& GetWorkspaceId() const{ return m_workspaceId; }
-
-    /**
-     * <p>The generated ID of the workspace that was just created.</p>
-     */
-    inline void SetWorkspaceId(const Aws::String& value) { m_workspaceId = value; }
-
-    /**
-     * <p>The generated ID of the workspace that was just created.</p>
-     */
-    inline void SetWorkspaceId(Aws::String&& value) { m_workspaceId = std::move(value); }
-
-    /**
-     * <p>The generated ID of the workspace that was just created.</p>
-     */
-    inline void SetWorkspaceId(const char* value) { m_workspaceId.assign(value); }
-
-    /**
-     * <p>The generated ID of the workspace that was just created.</p>
-     */
-    inline CreateWorkspaceResult& WithWorkspaceId(const Aws::String& value) { SetWorkspaceId(value); return *this;}
-
-    /**
-     * <p>The generated ID of the workspace that was just created.</p>
-     */
-    inline CreateWorkspaceResult& WithWorkspaceId(Aws::String&& value) { SetWorkspaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The generated ID of the workspace that was just created.</p>
-     */
-    inline CreateWorkspaceResult& WithWorkspaceId(const char* value) { SetWorkspaceId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateWorkspaceResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateWorkspaceResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateWorkspaceResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateWorkspaceResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
+    Aws::String m_workspaceId;
+    bool m_workspaceIdHasBeenSet = false;
+
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     WorkspaceStatus m_status;
+    bool m_statusHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
 
-    Aws::String m_workspaceId;
+    Aws::String m_kmsKeyArn;
+    bool m_kmsKeyArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

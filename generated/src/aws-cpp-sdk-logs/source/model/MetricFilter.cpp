@@ -18,23 +18,7 @@ namespace CloudWatchLogs
 namespace Model
 {
 
-MetricFilter::MetricFilter() : 
-    m_filterNameHasBeenSet(false),
-    m_filterPatternHasBeenSet(false),
-    m_metricTransformationsHasBeenSet(false),
-    m_creationTime(0),
-    m_creationTimeHasBeenSet(false),
-    m_logGroupNameHasBeenSet(false)
-{
-}
-
-MetricFilter::MetricFilter(JsonView jsonValue) : 
-    m_filterNameHasBeenSet(false),
-    m_filterPatternHasBeenSet(false),
-    m_metricTransformationsHasBeenSet(false),
-    m_creationTime(0),
-    m_creationTimeHasBeenSet(false),
-    m_logGroupNameHasBeenSet(false)
+MetricFilter::MetricFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,17 +28,13 @@ MetricFilter& MetricFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("filterName"))
   {
     m_filterName = jsonValue.GetString("filterName");
-
     m_filterNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("filterPattern"))
   {
     m_filterPattern = jsonValue.GetString("filterPattern");
-
     m_filterPatternHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("metricTransformations"))
   {
     Aws::Utils::Array<JsonView> metricTransformationsJsonList = jsonValue.GetArray("metricTransformations");
@@ -64,21 +44,35 @@ MetricFilter& MetricFilter::operator =(JsonView jsonValue)
     }
     m_metricTransformationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("creationTime"))
   {
     m_creationTime = jsonValue.GetInt64("creationTime");
-
     m_creationTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("logGroupName"))
   {
     m_logGroupName = jsonValue.GetString("logGroupName");
-
     m_logGroupNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("applyOnTransformedLogs"))
+  {
+    m_applyOnTransformedLogs = jsonValue.GetBool("applyOnTransformedLogs");
+    m_applyOnTransformedLogsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("fieldSelectionCriteria"))
+  {
+    m_fieldSelectionCriteria = jsonValue.GetString("fieldSelectionCriteria");
+    m_fieldSelectionCriteriaHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("emitSystemFieldDimensions"))
+  {
+    Aws::Utils::Array<JsonView> emitSystemFieldDimensionsJsonList = jsonValue.GetArray("emitSystemFieldDimensions");
+    for(unsigned emitSystemFieldDimensionsIndex = 0; emitSystemFieldDimensionsIndex < emitSystemFieldDimensionsJsonList.GetLength(); ++emitSystemFieldDimensionsIndex)
+    {
+      m_emitSystemFieldDimensions.push_back(emitSystemFieldDimensionsJsonList[emitSystemFieldDimensionsIndex].AsString());
+    }
+    m_emitSystemFieldDimensionsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -118,6 +112,29 @@ JsonValue MetricFilter::Jsonize() const
   if(m_logGroupNameHasBeenSet)
   {
    payload.WithString("logGroupName", m_logGroupName);
+
+  }
+
+  if(m_applyOnTransformedLogsHasBeenSet)
+  {
+   payload.WithBool("applyOnTransformedLogs", m_applyOnTransformedLogs);
+
+  }
+
+  if(m_fieldSelectionCriteriaHasBeenSet)
+  {
+   payload.WithString("fieldSelectionCriteria", m_fieldSelectionCriteria);
+
+  }
+
+  if(m_emitSystemFieldDimensionsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> emitSystemFieldDimensionsJsonList(m_emitSystemFieldDimensions.size());
+   for(unsigned emitSystemFieldDimensionsIndex = 0; emitSystemFieldDimensionsIndex < emitSystemFieldDimensionsJsonList.GetLength(); ++emitSystemFieldDimensionsIndex)
+   {
+     emitSystemFieldDimensionsJsonList[emitSystemFieldDimensionsIndex].AsString(m_emitSystemFieldDimensions[emitSystemFieldDimensionsIndex]);
+   }
+   payload.WithArray("emitSystemFieldDimensions", std::move(emitSystemFieldDimensionsJsonList));
 
   }
 

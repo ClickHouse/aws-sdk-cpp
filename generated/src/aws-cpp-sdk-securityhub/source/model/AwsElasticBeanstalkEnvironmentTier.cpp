@@ -18,17 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsElasticBeanstalkEnvironmentTier::AwsElasticBeanstalkEnvironmentTier() : 
-    m_nameHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_versionHasBeenSet(false)
-{
-}
-
-AwsElasticBeanstalkEnvironmentTier::AwsElasticBeanstalkEnvironmentTier(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_versionHasBeenSet(false)
+AwsElasticBeanstalkEnvironmentTier::AwsElasticBeanstalkEnvironmentTier(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ AwsElasticBeanstalkEnvironmentTier& AwsElasticBeanstalkEnvironmentTier::operator
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Type"))
   {
     m_type = jsonValue.GetString("Type");
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Version"))
   {
     m_version = jsonValue.GetString("Version");
-
     m_versionHasBeenSet = true;
   }
-
   return *this;
 }
 

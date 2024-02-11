@@ -29,153 +29,59 @@ namespace Model
   class ListAppsResult
   {
   public:
-    AWS_SIMSPACEWEAVER_API ListAppsResult();
+    AWS_SIMSPACEWEAVER_API ListAppsResult() = default;
     AWS_SIMSPACEWEAVER_API ListAppsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SIMSPACEWEAVER_API ListAppsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The list of apps for the given simulation and domain.</p>
      */
-    inline const Aws::Vector<SimulationAppMetadata>& GetApps() const{ return m_apps; }
+    inline const Aws::Vector<SimulationAppMetadata>& GetApps() const { return m_apps; }
+    template<typename AppsT = Aws::Vector<SimulationAppMetadata>>
+    void SetApps(AppsT&& value) { m_appsHasBeenSet = true; m_apps = std::forward<AppsT>(value); }
+    template<typename AppsT = Aws::Vector<SimulationAppMetadata>>
+    ListAppsResult& WithApps(AppsT&& value) { SetApps(std::forward<AppsT>(value)); return *this;}
+    template<typename AppsT = SimulationAppMetadata>
+    ListAppsResult& AddApps(AppsT&& value) { m_appsHasBeenSet = true; m_apps.emplace_back(std::forward<AppsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The list of apps for the given simulation and domain.</p>
+     * <p>If SimSpace Weaver returns <code>nextToken</code>, then there are more
+     * results available. The value of <code>nextToken</code> is a unique pagination
+     * token for each page. To retrieve the next page, call the operation again using
+     * the returned token. Keep all other arguments unchanged. If no results remain,
+     * then <code>nextToken</code> is set to <code>null</code>. Each pagination token
+     * expires after 24 hours. If you provide a token that isn't valid, then you
+     * receive an <i>HTTP 400 ValidationException</i> error.</p>
      */
-    inline void SetApps(const Aws::Vector<SimulationAppMetadata>& value) { m_apps = value; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListAppsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The list of apps for the given simulation and domain.</p>
-     */
-    inline void SetApps(Aws::Vector<SimulationAppMetadata>&& value) { m_apps = std::move(value); }
-
-    /**
-     * <p>The list of apps for the given simulation and domain.</p>
-     */
-    inline ListAppsResult& WithApps(const Aws::Vector<SimulationAppMetadata>& value) { SetApps(value); return *this;}
-
-    /**
-     * <p>The list of apps for the given simulation and domain.</p>
-     */
-    inline ListAppsResult& WithApps(Aws::Vector<SimulationAppMetadata>&& value) { SetApps(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of apps for the given simulation and domain.</p>
-     */
-    inline ListAppsResult& AddApps(const SimulationAppMetadata& value) { m_apps.push_back(value); return *this; }
-
-    /**
-     * <p>The list of apps for the given simulation and domain.</p>
-     */
-    inline ListAppsResult& AddApps(SimulationAppMetadata&& value) { m_apps.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>If SimSpace Weaver returns <code>nextToken</code>, there are more results
-     * available. The value of <code>nextToken</code> is a unique pagination token for
-     * each page. To retrieve the next page, call the operation again using the
-     * returned token. Keep all other arguments unchanged. If no results remain,
-     * <code>nextToken</code> is set to <code>null</code>. Each pagination token
-     * expires after 24 hours. If you provide a token that isn't valid, you receive an
-     * <i>HTTP 400 ValidationException</i> error.</p>
-     */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>If SimSpace Weaver returns <code>nextToken</code>, there are more results
-     * available. The value of <code>nextToken</code> is a unique pagination token for
-     * each page. To retrieve the next page, call the operation again using the
-     * returned token. Keep all other arguments unchanged. If no results remain,
-     * <code>nextToken</code> is set to <code>null</code>. Each pagination token
-     * expires after 24 hours. If you provide a token that isn't valid, you receive an
-     * <i>HTTP 400 ValidationException</i> error.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>If SimSpace Weaver returns <code>nextToken</code>, there are more results
-     * available. The value of <code>nextToken</code> is a unique pagination token for
-     * each page. To retrieve the next page, call the operation again using the
-     * returned token. Keep all other arguments unchanged. If no results remain,
-     * <code>nextToken</code> is set to <code>null</code>. Each pagination token
-     * expires after 24 hours. If you provide a token that isn't valid, you receive an
-     * <i>HTTP 400 ValidationException</i> error.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>If SimSpace Weaver returns <code>nextToken</code>, there are more results
-     * available. The value of <code>nextToken</code> is a unique pagination token for
-     * each page. To retrieve the next page, call the operation again using the
-     * returned token. Keep all other arguments unchanged. If no results remain,
-     * <code>nextToken</code> is set to <code>null</code>. Each pagination token
-     * expires after 24 hours. If you provide a token that isn't valid, you receive an
-     * <i>HTTP 400 ValidationException</i> error.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>If SimSpace Weaver returns <code>nextToken</code>, there are more results
-     * available. The value of <code>nextToken</code> is a unique pagination token for
-     * each page. To retrieve the next page, call the operation again using the
-     * returned token. Keep all other arguments unchanged. If no results remain,
-     * <code>nextToken</code> is set to <code>null</code>. Each pagination token
-     * expires after 24 hours. If you provide a token that isn't valid, you receive an
-     * <i>HTTP 400 ValidationException</i> error.</p>
-     */
-    inline ListAppsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If SimSpace Weaver returns <code>nextToken</code>, there are more results
-     * available. The value of <code>nextToken</code> is a unique pagination token for
-     * each page. To retrieve the next page, call the operation again using the
-     * returned token. Keep all other arguments unchanged. If no results remain,
-     * <code>nextToken</code> is set to <code>null</code>. Each pagination token
-     * expires after 24 hours. If you provide a token that isn't valid, you receive an
-     * <i>HTTP 400 ValidationException</i> error.</p>
-     */
-    inline ListAppsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If SimSpace Weaver returns <code>nextToken</code>, there are more results
-     * available. The value of <code>nextToken</code> is a unique pagination token for
-     * each page. To retrieve the next page, call the operation again using the
-     * returned token. Keep all other arguments unchanged. If no results remain,
-     * <code>nextToken</code> is set to <code>null</code>. Each pagination token
-     * expires after 24 hours. If you provide a token that isn't valid, you receive an
-     * <i>HTTP 400 ValidationException</i> error.</p>
-     */
-    inline ListAppsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListAppsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListAppsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListAppsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListAppsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<SimulationAppMetadata> m_apps;
+    bool m_appsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

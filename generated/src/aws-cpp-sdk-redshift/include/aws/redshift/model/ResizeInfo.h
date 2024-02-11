@@ -31,7 +31,7 @@ namespace Model
   class ResizeInfo
   {
   public:
-    AWS_REDSHIFT_API ResizeInfo();
+    AWS_REDSHIFT_API ResizeInfo() = default;
     AWS_REDSHIFT_API ResizeInfo(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_REDSHIFT_API ResizeInfo& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -39,73 +39,33 @@ namespace Model
     AWS_REDSHIFT_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Returns the value <code>ClassicResize</code>.</p>
      */
-    inline const Aws::String& GetResizeType() const{ return m_resizeType; }
-
-    /**
-     * <p>Returns the value <code>ClassicResize</code>.</p>
-     */
+    inline const Aws::String& GetResizeType() const { return m_resizeType; }
     inline bool ResizeTypeHasBeenSet() const { return m_resizeTypeHasBeenSet; }
+    template<typename ResizeTypeT = Aws::String>
+    void SetResizeType(ResizeTypeT&& value) { m_resizeTypeHasBeenSet = true; m_resizeType = std::forward<ResizeTypeT>(value); }
+    template<typename ResizeTypeT = Aws::String>
+    ResizeInfo& WithResizeType(ResizeTypeT&& value) { SetResizeType(std::forward<ResizeTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Returns the value <code>ClassicResize</code>.</p>
-     */
-    inline void SetResizeType(const Aws::String& value) { m_resizeTypeHasBeenSet = true; m_resizeType = value; }
-
-    /**
-     * <p>Returns the value <code>ClassicResize</code>.</p>
-     */
-    inline void SetResizeType(Aws::String&& value) { m_resizeTypeHasBeenSet = true; m_resizeType = std::move(value); }
-
-    /**
-     * <p>Returns the value <code>ClassicResize</code>.</p>
-     */
-    inline void SetResizeType(const char* value) { m_resizeTypeHasBeenSet = true; m_resizeType.assign(value); }
-
-    /**
-     * <p>Returns the value <code>ClassicResize</code>.</p>
-     */
-    inline ResizeInfo& WithResizeType(const Aws::String& value) { SetResizeType(value); return *this;}
-
-    /**
-     * <p>Returns the value <code>ClassicResize</code>.</p>
-     */
-    inline ResizeInfo& WithResizeType(Aws::String&& value) { SetResizeType(std::move(value)); return *this;}
-
-    /**
-     * <p>Returns the value <code>ClassicResize</code>.</p>
-     */
-    inline ResizeInfo& WithResizeType(const char* value) { SetResizeType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A boolean value indicating if the resize operation can be cancelled.</p>
      */
-    inline bool GetAllowCancelResize() const{ return m_allowCancelResize; }
-
-    /**
-     * <p>A boolean value indicating if the resize operation can be cancelled.</p>
-     */
+    inline bool GetAllowCancelResize() const { return m_allowCancelResize; }
     inline bool AllowCancelResizeHasBeenSet() const { return m_allowCancelResizeHasBeenSet; }
-
-    /**
-     * <p>A boolean value indicating if the resize operation can be cancelled.</p>
-     */
     inline void SetAllowCancelResize(bool value) { m_allowCancelResizeHasBeenSet = true; m_allowCancelResize = value; }
-
-    /**
-     * <p>A boolean value indicating if the resize operation can be cancelled.</p>
-     */
     inline ResizeInfo& WithAllowCancelResize(bool value) { SetAllowCancelResize(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_resizeType;
     bool m_resizeTypeHasBeenSet = false;
 
-    bool m_allowCancelResize;
+    bool m_allowCancelResize{false};
     bool m_allowCancelResizeHasBeenSet = false;
   };
 

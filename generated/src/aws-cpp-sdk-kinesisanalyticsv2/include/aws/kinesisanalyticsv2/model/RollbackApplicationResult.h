@@ -28,53 +28,49 @@ namespace Model
   class RollbackApplicationResult
   {
   public:
-    AWS_KINESISANALYTICSV2_API RollbackApplicationResult();
+    AWS_KINESISANALYTICSV2_API RollbackApplicationResult() = default;
     AWS_KINESISANALYTICSV2_API RollbackApplicationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_KINESISANALYTICSV2_API RollbackApplicationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     
-    inline const ApplicationDetail& GetApplicationDetail() const{ return m_applicationDetail; }
+    inline const ApplicationDetail& GetApplicationDetail() const { return m_applicationDetail; }
+    template<typename ApplicationDetailT = ApplicationDetail>
+    void SetApplicationDetail(ApplicationDetailT&& value) { m_applicationDetailHasBeenSet = true; m_applicationDetail = std::forward<ApplicationDetailT>(value); }
+    template<typename ApplicationDetailT = ApplicationDetail>
+    RollbackApplicationResult& WithApplicationDetail(ApplicationDetailT&& value) { SetApplicationDetail(std::forward<ApplicationDetailT>(value)); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>The operation ID that can be used to track the request.</p>
+     */
+    inline const Aws::String& GetOperationId() const { return m_operationId; }
+    template<typename OperationIdT = Aws::String>
+    void SetOperationId(OperationIdT&& value) { m_operationIdHasBeenSet = true; m_operationId = std::forward<OperationIdT>(value); }
+    template<typename OperationIdT = Aws::String>
+    RollbackApplicationResult& WithOperationId(OperationIdT&& value) { SetOperationId(std::forward<OperationIdT>(value)); return *this;}
+    ///@}
+
+    ///@{
     
-    inline void SetApplicationDetail(const ApplicationDetail& value) { m_applicationDetail = value; }
-
-    
-    inline void SetApplicationDetail(ApplicationDetail&& value) { m_applicationDetail = std::move(value); }
-
-    
-    inline RollbackApplicationResult& WithApplicationDetail(const ApplicationDetail& value) { SetApplicationDetail(value); return *this;}
-
-    
-    inline RollbackApplicationResult& WithApplicationDetail(ApplicationDetail&& value) { SetApplicationDetail(std::move(value)); return *this;}
-
-
-    
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline RollbackApplicationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline RollbackApplicationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline RollbackApplicationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    RollbackApplicationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     ApplicationDetail m_applicationDetail;
+    bool m_applicationDetailHasBeenSet = false;
+
+    Aws::String m_operationId;
+    bool m_operationIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

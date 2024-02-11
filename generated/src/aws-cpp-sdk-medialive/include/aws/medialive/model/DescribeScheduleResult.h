@@ -34,111 +34,53 @@ namespace Model
   class DescribeScheduleResult
   {
   public:
-    AWS_MEDIALIVE_API DescribeScheduleResult();
+    AWS_MEDIALIVE_API DescribeScheduleResult() = default;
     AWS_MEDIALIVE_API DescribeScheduleResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MEDIALIVE_API DescribeScheduleResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * The next token; for use in pagination.
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeScheduleResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The next token; for use in pagination.
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * The next token; for use in pagination.
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * The next token; for use in pagination.
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * The next token; for use in pagination.
-     */
-    inline DescribeScheduleResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * The next token; for use in pagination.
-     */
-    inline DescribeScheduleResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * The next token; for use in pagination.
-     */
-    inline DescribeScheduleResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * The list of actions in the schedule.
      */
-    inline const Aws::Vector<ScheduleAction>& GetScheduleActions() const{ return m_scheduleActions; }
+    inline const Aws::Vector<ScheduleAction>& GetScheduleActions() const { return m_scheduleActions; }
+    template<typename ScheduleActionsT = Aws::Vector<ScheduleAction>>
+    void SetScheduleActions(ScheduleActionsT&& value) { m_scheduleActionsHasBeenSet = true; m_scheduleActions = std::forward<ScheduleActionsT>(value); }
+    template<typename ScheduleActionsT = Aws::Vector<ScheduleAction>>
+    DescribeScheduleResult& WithScheduleActions(ScheduleActionsT&& value) { SetScheduleActions(std::forward<ScheduleActionsT>(value)); return *this;}
+    template<typename ScheduleActionsT = ScheduleAction>
+    DescribeScheduleResult& AddScheduleActions(ScheduleActionsT&& value) { m_scheduleActionsHasBeenSet = true; m_scheduleActions.emplace_back(std::forward<ScheduleActionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * The list of actions in the schedule.
-     */
-    inline void SetScheduleActions(const Aws::Vector<ScheduleAction>& value) { m_scheduleActions = value; }
-
-    /**
-     * The list of actions in the schedule.
-     */
-    inline void SetScheduleActions(Aws::Vector<ScheduleAction>&& value) { m_scheduleActions = std::move(value); }
-
-    /**
-     * The list of actions in the schedule.
-     */
-    inline DescribeScheduleResult& WithScheduleActions(const Aws::Vector<ScheduleAction>& value) { SetScheduleActions(value); return *this;}
-
-    /**
-     * The list of actions in the schedule.
-     */
-    inline DescribeScheduleResult& WithScheduleActions(Aws::Vector<ScheduleAction>&& value) { SetScheduleActions(std::move(value)); return *this;}
-
-    /**
-     * The list of actions in the schedule.
-     */
-    inline DescribeScheduleResult& AddScheduleActions(const ScheduleAction& value) { m_scheduleActions.push_back(value); return *this; }
-
-    /**
-     * The list of actions in the schedule.
-     */
-    inline DescribeScheduleResult& AddScheduleActions(ScheduleAction&& value) { m_scheduleActions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeScheduleResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeScheduleResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeScheduleResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeScheduleResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::Vector<ScheduleAction> m_scheduleActions;
+    bool m_scheduleActionsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

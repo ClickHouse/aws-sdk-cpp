@@ -20,17 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-IPRange::IPRange() : 
-    m_statusHasBeenSet(false),
-    m_cIDRIPHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-IPRange::IPRange(const XmlNode& xmlNode) : 
-    m_statusHasBeenSet(false),
-    m_cIDRIPHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+IPRange::IPRange(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +47,7 @@ IPRange& IPRange::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("Tag");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -88,7 +79,7 @@ void IPRange::OutputToStream(Aws::OStream& oStream, const char* location, unsign
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location << index << locationValue << ".Tag." << tagsIdx++;
+        tagsSs << location << index << locationValue << ".Tags.Tag." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -111,7 +102,7 @@ void IPRange::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".Tag." << tagsIdx++;
+        tagsSs << location << ".Tags.Tag." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

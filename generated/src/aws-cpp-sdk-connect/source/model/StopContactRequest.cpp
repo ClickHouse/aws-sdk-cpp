@@ -12,12 +12,6 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StopContactRequest::StopContactRequest() : 
-    m_contactIdHasBeenSet(false),
-    m_instanceIdHasBeenSet(false)
-{
-}
-
 Aws::String StopContactRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,12 @@ Aws::String StopContactRequest::SerializePayload() const
   if(m_instanceIdHasBeenSet)
   {
    payload.WithString("InstanceId", m_instanceId);
+
+  }
+
+  if(m_disconnectReasonHasBeenSet)
+  {
+   payload.WithObject("DisconnectReason", m_disconnectReason.Jsonize());
 
   }
 

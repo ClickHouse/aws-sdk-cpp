@@ -32,247 +32,68 @@ namespace Model
   class ActionTypeSettings
   {
   public:
-    AWS_CODEPIPELINE_API ActionTypeSettings();
+    AWS_CODEPIPELINE_API ActionTypeSettings() = default;
     AWS_CODEPIPELINE_API ActionTypeSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API ActionTypeSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The URL of a sign-up page where users can sign up for an external service and
      * perform initial configuration of the action provided by that service.</p>
      */
-    inline const Aws::String& GetThirdPartyConfigurationUrl() const{ return m_thirdPartyConfigurationUrl; }
-
-    /**
-     * <p>The URL of a sign-up page where users can sign up for an external service and
-     * perform initial configuration of the action provided by that service.</p>
-     */
+    inline const Aws::String& GetThirdPartyConfigurationUrl() const { return m_thirdPartyConfigurationUrl; }
     inline bool ThirdPartyConfigurationUrlHasBeenSet() const { return m_thirdPartyConfigurationUrlHasBeenSet; }
+    template<typename ThirdPartyConfigurationUrlT = Aws::String>
+    void SetThirdPartyConfigurationUrl(ThirdPartyConfigurationUrlT&& value) { m_thirdPartyConfigurationUrlHasBeenSet = true; m_thirdPartyConfigurationUrl = std::forward<ThirdPartyConfigurationUrlT>(value); }
+    template<typename ThirdPartyConfigurationUrlT = Aws::String>
+    ActionTypeSettings& WithThirdPartyConfigurationUrl(ThirdPartyConfigurationUrlT&& value) { SetThirdPartyConfigurationUrl(std::forward<ThirdPartyConfigurationUrlT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The URL of a sign-up page where users can sign up for an external service and
-     * perform initial configuration of the action provided by that service.</p>
-     */
-    inline void SetThirdPartyConfigurationUrl(const Aws::String& value) { m_thirdPartyConfigurationUrlHasBeenSet = true; m_thirdPartyConfigurationUrl = value; }
-
-    /**
-     * <p>The URL of a sign-up page where users can sign up for an external service and
-     * perform initial configuration of the action provided by that service.</p>
-     */
-    inline void SetThirdPartyConfigurationUrl(Aws::String&& value) { m_thirdPartyConfigurationUrlHasBeenSet = true; m_thirdPartyConfigurationUrl = std::move(value); }
-
-    /**
-     * <p>The URL of a sign-up page where users can sign up for an external service and
-     * perform initial configuration of the action provided by that service.</p>
-     */
-    inline void SetThirdPartyConfigurationUrl(const char* value) { m_thirdPartyConfigurationUrlHasBeenSet = true; m_thirdPartyConfigurationUrl.assign(value); }
-
-    /**
-     * <p>The URL of a sign-up page where users can sign up for an external service and
-     * perform initial configuration of the action provided by that service.</p>
-     */
-    inline ActionTypeSettings& WithThirdPartyConfigurationUrl(const Aws::String& value) { SetThirdPartyConfigurationUrl(value); return *this;}
-
-    /**
-     * <p>The URL of a sign-up page where users can sign up for an external service and
-     * perform initial configuration of the action provided by that service.</p>
-     */
-    inline ActionTypeSettings& WithThirdPartyConfigurationUrl(Aws::String&& value) { SetThirdPartyConfigurationUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL of a sign-up page where users can sign up for an external service and
-     * perform initial configuration of the action provided by that service.</p>
-     */
-    inline ActionTypeSettings& WithThirdPartyConfigurationUrl(const char* value) { SetThirdPartyConfigurationUrl(value); return *this;}
-
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that provides a deep link to
-     * the resources of the external system, such as the configuration page for an AWS
+     * <p>The URL returned to the CodePipeline console that provides a deep link to the
+     * resources of the external system, such as the configuration page for a
      * CodeDeploy deployment group. This link is provided as part of the action display
      * in the pipeline.</p>
      */
-    inline const Aws::String& GetEntityUrlTemplate() const{ return m_entityUrlTemplate; }
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that provides a deep link to
-     * the resources of the external system, such as the configuration page for an AWS
-     * CodeDeploy deployment group. This link is provided as part of the action display
-     * in the pipeline.</p>
-     */
+    inline const Aws::String& GetEntityUrlTemplate() const { return m_entityUrlTemplate; }
     inline bool EntityUrlTemplateHasBeenSet() const { return m_entityUrlTemplateHasBeenSet; }
+    template<typename EntityUrlTemplateT = Aws::String>
+    void SetEntityUrlTemplate(EntityUrlTemplateT&& value) { m_entityUrlTemplateHasBeenSet = true; m_entityUrlTemplate = std::forward<EntityUrlTemplateT>(value); }
+    template<typename EntityUrlTemplateT = Aws::String>
+    ActionTypeSettings& WithEntityUrlTemplate(EntityUrlTemplateT&& value) { SetEntityUrlTemplate(std::forward<EntityUrlTemplateT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The URL returned to the AWS CodePipeline console that provides a deep link to
-     * the resources of the external system, such as the configuration page for an AWS
-     * CodeDeploy deployment group. This link is provided as part of the action display
-     * in the pipeline.</p>
-     */
-    inline void SetEntityUrlTemplate(const Aws::String& value) { m_entityUrlTemplateHasBeenSet = true; m_entityUrlTemplate = value; }
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that provides a deep link to
-     * the resources of the external system, such as the configuration page for an AWS
-     * CodeDeploy deployment group. This link is provided as part of the action display
-     * in the pipeline.</p>
-     */
-    inline void SetEntityUrlTemplate(Aws::String&& value) { m_entityUrlTemplateHasBeenSet = true; m_entityUrlTemplate = std::move(value); }
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that provides a deep link to
-     * the resources of the external system, such as the configuration page for an AWS
-     * CodeDeploy deployment group. This link is provided as part of the action display
-     * in the pipeline.</p>
-     */
-    inline void SetEntityUrlTemplate(const char* value) { m_entityUrlTemplateHasBeenSet = true; m_entityUrlTemplate.assign(value); }
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that provides a deep link to
-     * the resources of the external system, such as the configuration page for an AWS
-     * CodeDeploy deployment group. This link is provided as part of the action display
-     * in the pipeline.</p>
-     */
-    inline ActionTypeSettings& WithEntityUrlTemplate(const Aws::String& value) { SetEntityUrlTemplate(value); return *this;}
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that provides a deep link to
-     * the resources of the external system, such as the configuration page for an AWS
-     * CodeDeploy deployment group. This link is provided as part of the action display
-     * in the pipeline.</p>
-     */
-    inline ActionTypeSettings& WithEntityUrlTemplate(Aws::String&& value) { SetEntityUrlTemplate(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that provides a deep link to
-     * the resources of the external system, such as the configuration page for an AWS
-     * CodeDeploy deployment group. This link is provided as part of the action display
-     * in the pipeline.</p>
-     */
-    inline ActionTypeSettings& WithEntityUrlTemplate(const char* value) { SetEntityUrlTemplate(value); return *this;}
-
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that contains a link to the
-     * top-level landing page for the external system, such as the console page for AWS
-     * CodeDeploy. This link is shown on the pipeline view page in the AWS CodePipeline
+     * <p>The URL returned to the CodePipeline console that contains a link to the
+     * top-level landing page for the external system, such as the console page for
+     * CodeDeploy. This link is shown on the pipeline view page in the CodePipeline
      * console and provides a link to the execution entity of the external action.</p>
      */
-    inline const Aws::String& GetExecutionUrlTemplate() const{ return m_executionUrlTemplate; }
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that contains a link to the
-     * top-level landing page for the external system, such as the console page for AWS
-     * CodeDeploy. This link is shown on the pipeline view page in the AWS CodePipeline
-     * console and provides a link to the execution entity of the external action.</p>
-     */
+    inline const Aws::String& GetExecutionUrlTemplate() const { return m_executionUrlTemplate; }
     inline bool ExecutionUrlTemplateHasBeenSet() const { return m_executionUrlTemplateHasBeenSet; }
+    template<typename ExecutionUrlTemplateT = Aws::String>
+    void SetExecutionUrlTemplate(ExecutionUrlTemplateT&& value) { m_executionUrlTemplateHasBeenSet = true; m_executionUrlTemplate = std::forward<ExecutionUrlTemplateT>(value); }
+    template<typename ExecutionUrlTemplateT = Aws::String>
+    ActionTypeSettings& WithExecutionUrlTemplate(ExecutionUrlTemplateT&& value) { SetExecutionUrlTemplate(std::forward<ExecutionUrlTemplateT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The URL returned to the AWS CodePipeline console that contains a link to the
-     * top-level landing page for the external system, such as the console page for AWS
-     * CodeDeploy. This link is shown on the pipeline view page in the AWS CodePipeline
-     * console and provides a link to the execution entity of the external action.</p>
-     */
-    inline void SetExecutionUrlTemplate(const Aws::String& value) { m_executionUrlTemplateHasBeenSet = true; m_executionUrlTemplate = value; }
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that contains a link to the
-     * top-level landing page for the external system, such as the console page for AWS
-     * CodeDeploy. This link is shown on the pipeline view page in the AWS CodePipeline
-     * console and provides a link to the execution entity of the external action.</p>
-     */
-    inline void SetExecutionUrlTemplate(Aws::String&& value) { m_executionUrlTemplateHasBeenSet = true; m_executionUrlTemplate = std::move(value); }
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that contains a link to the
-     * top-level landing page for the external system, such as the console page for AWS
-     * CodeDeploy. This link is shown on the pipeline view page in the AWS CodePipeline
-     * console and provides a link to the execution entity of the external action.</p>
-     */
-    inline void SetExecutionUrlTemplate(const char* value) { m_executionUrlTemplateHasBeenSet = true; m_executionUrlTemplate.assign(value); }
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that contains a link to the
-     * top-level landing page for the external system, such as the console page for AWS
-     * CodeDeploy. This link is shown on the pipeline view page in the AWS CodePipeline
-     * console and provides a link to the execution entity of the external action.</p>
-     */
-    inline ActionTypeSettings& WithExecutionUrlTemplate(const Aws::String& value) { SetExecutionUrlTemplate(value); return *this;}
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that contains a link to the
-     * top-level landing page for the external system, such as the console page for AWS
-     * CodeDeploy. This link is shown on the pipeline view page in the AWS CodePipeline
-     * console and provides a link to the execution entity of the external action.</p>
-     */
-    inline ActionTypeSettings& WithExecutionUrlTemplate(Aws::String&& value) { SetExecutionUrlTemplate(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that contains a link to the
-     * top-level landing page for the external system, such as the console page for AWS
-     * CodeDeploy. This link is shown on the pipeline view page in the AWS CodePipeline
-     * console and provides a link to the execution entity of the external action.</p>
-     */
-    inline ActionTypeSettings& WithExecutionUrlTemplate(const char* value) { SetExecutionUrlTemplate(value); return *this;}
-
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that contains a link to the
-     * page where customers can update or change the configuration of the external
+     * <p>The URL returned to the CodePipeline console that contains a link to the page
+     * where customers can update or change the configuration of the external
      * action.</p>
      */
-    inline const Aws::String& GetRevisionUrlTemplate() const{ return m_revisionUrlTemplate; }
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that contains a link to the
-     * page where customers can update or change the configuration of the external
-     * action.</p>
-     */
+    inline const Aws::String& GetRevisionUrlTemplate() const { return m_revisionUrlTemplate; }
     inline bool RevisionUrlTemplateHasBeenSet() const { return m_revisionUrlTemplateHasBeenSet; }
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that contains a link to the
-     * page where customers can update or change the configuration of the external
-     * action.</p>
-     */
-    inline void SetRevisionUrlTemplate(const Aws::String& value) { m_revisionUrlTemplateHasBeenSet = true; m_revisionUrlTemplate = value; }
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that contains a link to the
-     * page where customers can update or change the configuration of the external
-     * action.</p>
-     */
-    inline void SetRevisionUrlTemplate(Aws::String&& value) { m_revisionUrlTemplateHasBeenSet = true; m_revisionUrlTemplate = std::move(value); }
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that contains a link to the
-     * page where customers can update or change the configuration of the external
-     * action.</p>
-     */
-    inline void SetRevisionUrlTemplate(const char* value) { m_revisionUrlTemplateHasBeenSet = true; m_revisionUrlTemplate.assign(value); }
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that contains a link to the
-     * page where customers can update or change the configuration of the external
-     * action.</p>
-     */
-    inline ActionTypeSettings& WithRevisionUrlTemplate(const Aws::String& value) { SetRevisionUrlTemplate(value); return *this;}
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that contains a link to the
-     * page where customers can update or change the configuration of the external
-     * action.</p>
-     */
-    inline ActionTypeSettings& WithRevisionUrlTemplate(Aws::String&& value) { SetRevisionUrlTemplate(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL returned to the AWS CodePipeline console that contains a link to the
-     * page where customers can update or change the configuration of the external
-     * action.</p>
-     */
-    inline ActionTypeSettings& WithRevisionUrlTemplate(const char* value) { SetRevisionUrlTemplate(value); return *this;}
-
+    template<typename RevisionUrlTemplateT = Aws::String>
+    void SetRevisionUrlTemplate(RevisionUrlTemplateT&& value) { m_revisionUrlTemplateHasBeenSet = true; m_revisionUrlTemplate = std::forward<RevisionUrlTemplateT>(value); }
+    template<typename RevisionUrlTemplateT = Aws::String>
+    ActionTypeSettings& WithRevisionUrlTemplate(RevisionUrlTemplateT&& value) { SetRevisionUrlTemplate(std::forward<RevisionUrlTemplateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_thirdPartyConfigurationUrl;

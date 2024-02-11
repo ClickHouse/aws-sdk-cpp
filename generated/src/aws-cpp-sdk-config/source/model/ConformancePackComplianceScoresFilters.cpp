@@ -18,13 +18,7 @@ namespace ConfigService
 namespace Model
 {
 
-ConformancePackComplianceScoresFilters::ConformancePackComplianceScoresFilters() : 
-    m_conformancePackNamesHasBeenSet(false)
-{
-}
-
-ConformancePackComplianceScoresFilters::ConformancePackComplianceScoresFilters(JsonView jsonValue) : 
-    m_conformancePackNamesHasBeenSet(false)
+ConformancePackComplianceScoresFilters::ConformancePackComplianceScoresFilters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ ConformancePackComplianceScoresFilters& ConformancePackComplianceScoresFilters::
     }
     m_conformancePackNamesHasBeenSet = true;
   }
-
   return *this;
 }
 

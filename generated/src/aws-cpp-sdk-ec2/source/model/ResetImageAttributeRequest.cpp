@@ -10,22 +10,13 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ResetImageAttributeRequest::ResetImageAttributeRequest() : 
-    m_attribute(ResetImageAttributeName::NOT_SET),
-    m_attributeHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String ResetImageAttributeRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=ResetImageAttribute&";
   if(m_attributeHasBeenSet)
   {
-    ss << "Attribute=" << ResetImageAttributeNameMapper::GetNameForResetImageAttributeName(m_attribute) << "&";
+    ss << "Attribute=" << StringUtils::URLEncode(ResetImageAttributeNameMapper::GetNameForResetImageAttributeName(m_attribute)) << "&";
   }
 
   if(m_imageIdHasBeenSet)

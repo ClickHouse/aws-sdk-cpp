@@ -12,49 +12,9 @@ using namespace Aws::WorkSpacesWeb::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreatePortalRequest::CreatePortalRequest() : 
-    m_additionalEncryptionContextHasBeenSet(false),
-    m_authenticationType(AuthenticationType::NOT_SET),
-    m_authenticationTypeHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_customerManagedKeyHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreatePortalRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_additionalEncryptionContextHasBeenSet)
-  {
-   JsonValue additionalEncryptionContextJsonMap;
-   for(auto& additionalEncryptionContextItem : m_additionalEncryptionContext)
-   {
-     additionalEncryptionContextJsonMap.WithString(additionalEncryptionContextItem.first, additionalEncryptionContextItem.second);
-   }
-   payload.WithObject("additionalEncryptionContext", std::move(additionalEncryptionContextJsonMap));
-
-  }
-
-  if(m_authenticationTypeHasBeenSet)
-  {
-   payload.WithString("authenticationType", AuthenticationTypeMapper::GetNameForAuthenticationType(m_authenticationType));
-  }
-
-  if(m_clientTokenHasBeenSet)
-  {
-   payload.WithString("clientToken", m_clientToken);
-
-  }
-
-  if(m_customerManagedKeyHasBeenSet)
-  {
-   payload.WithString("customerManagedKey", m_customerManagedKey);
-
-  }
 
   if(m_displayNameHasBeenSet)
   {
@@ -70,6 +30,45 @@ Aws::String CreatePortalRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_customerManagedKeyHasBeenSet)
+  {
+   payload.WithString("customerManagedKey", m_customerManagedKey);
+
+  }
+
+  if(m_additionalEncryptionContextHasBeenSet)
+  {
+   JsonValue additionalEncryptionContextJsonMap;
+   for(auto& additionalEncryptionContextItem : m_additionalEncryptionContext)
+   {
+     additionalEncryptionContextJsonMap.WithString(additionalEncryptionContextItem.first, additionalEncryptionContextItem.second);
+   }
+   payload.WithObject("additionalEncryptionContext", std::move(additionalEncryptionContextJsonMap));
+
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("clientToken", m_clientToken);
+
+  }
+
+  if(m_authenticationTypeHasBeenSet)
+  {
+   payload.WithString("authenticationType", AuthenticationTypeMapper::GetNameForAuthenticationType(m_authenticationType));
+  }
+
+  if(m_instanceTypeHasBeenSet)
+  {
+   payload.WithString("instanceType", InstanceTypeMapper::GetNameForInstanceType(m_instanceType));
+  }
+
+  if(m_maxConcurrentSessionsHasBeenSet)
+  {
+   payload.WithInteger("maxConcurrentSessions", m_maxConcurrentSessions);
 
   }
 

@@ -18,6 +18,7 @@
 /* End of generic header includes */
 
 /* Service model headers required in AppflowClient header */
+#include <aws/appflow/model/CancelFlowExecutionsResult.h>
 #include <aws/appflow/model/CreateConnectorProfileResult.h>
 #include <aws/appflow/model/CreateFlowResult.h>
 #include <aws/appflow/model/DeleteConnectorProfileResult.h>
@@ -33,6 +34,7 @@
 #include <aws/appflow/model/ListFlowsResult.h>
 #include <aws/appflow/model/ListTagsForResourceResult.h>
 #include <aws/appflow/model/RegisterConnectorResult.h>
+#include <aws/appflow/model/ResetConnectorMetadataCacheResult.h>
 #include <aws/appflow/model/StartFlowResult.h>
 #include <aws/appflow/model/StopFlowResult.h>
 #include <aws/appflow/model/TagResourceResult.h>
@@ -41,6 +43,13 @@
 #include <aws/appflow/model/UpdateConnectorProfileResult.h>
 #include <aws/appflow/model/UpdateConnectorRegistrationResult.h>
 #include <aws/appflow/model/UpdateFlowResult.h>
+#include <aws/appflow/model/RegisterConnectorRequest.h>
+#include <aws/appflow/model/ResetConnectorMetadataCacheRequest.h>
+#include <aws/appflow/model/DescribeConnectorsRequest.h>
+#include <aws/appflow/model/ListConnectorEntitiesRequest.h>
+#include <aws/appflow/model/ListConnectorsRequest.h>
+#include <aws/appflow/model/DescribeConnectorProfilesRequest.h>
+#include <aws/appflow/model/ListFlowsRequest.h>
 /* End of service model headers required in AppflowClient header */
 
 namespace Aws
@@ -74,13 +83,14 @@ namespace Aws
 
   namespace Appflow
   {
-    using AppflowClientConfiguration = Aws::Client::GenericClientConfiguration<false>;
+    using AppflowClientConfiguration = Aws::Client::GenericClientConfiguration;
     using AppflowEndpointProviderBase = Aws::Appflow::Endpoint::AppflowEndpointProviderBase;
     using AppflowEndpointProvider = Aws::Appflow::Endpoint::AppflowEndpointProvider;
 
     namespace Model
     {
       /* Service model forward declarations required in AppflowClient header */
+      class CancelFlowExecutionsRequest;
       class CreateConnectorProfileRequest;
       class CreateFlowRequest;
       class DeleteConnectorProfileRequest;
@@ -96,6 +106,7 @@ namespace Aws
       class ListFlowsRequest;
       class ListTagsForResourceRequest;
       class RegisterConnectorRequest;
+      class ResetConnectorMetadataCacheRequest;
       class StartFlowRequest;
       class StopFlowRequest;
       class TagResourceRequest;
@@ -107,6 +118,7 @@ namespace Aws
       /* End of service model forward declarations required in AppflowClient header */
 
       /* Service model Outcome class definitions */
+      typedef Aws::Utils::Outcome<CancelFlowExecutionsResult, AppflowError> CancelFlowExecutionsOutcome;
       typedef Aws::Utils::Outcome<CreateConnectorProfileResult, AppflowError> CreateConnectorProfileOutcome;
       typedef Aws::Utils::Outcome<CreateFlowResult, AppflowError> CreateFlowOutcome;
       typedef Aws::Utils::Outcome<DeleteConnectorProfileResult, AppflowError> DeleteConnectorProfileOutcome;
@@ -122,6 +134,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<ListFlowsResult, AppflowError> ListFlowsOutcome;
       typedef Aws::Utils::Outcome<ListTagsForResourceResult, AppflowError> ListTagsForResourceOutcome;
       typedef Aws::Utils::Outcome<RegisterConnectorResult, AppflowError> RegisterConnectorOutcome;
+      typedef Aws::Utils::Outcome<ResetConnectorMetadataCacheResult, AppflowError> ResetConnectorMetadataCacheOutcome;
       typedef Aws::Utils::Outcome<StartFlowResult, AppflowError> StartFlowOutcome;
       typedef Aws::Utils::Outcome<StopFlowResult, AppflowError> StopFlowOutcome;
       typedef Aws::Utils::Outcome<TagResourceResult, AppflowError> TagResourceOutcome;
@@ -133,6 +146,7 @@ namespace Aws
       /* End of service model Outcome class definitions */
 
       /* Service model Outcome callable definitions */
+      typedef std::future<CancelFlowExecutionsOutcome> CancelFlowExecutionsOutcomeCallable;
       typedef std::future<CreateConnectorProfileOutcome> CreateConnectorProfileOutcomeCallable;
       typedef std::future<CreateFlowOutcome> CreateFlowOutcomeCallable;
       typedef std::future<DeleteConnectorProfileOutcome> DeleteConnectorProfileOutcomeCallable;
@@ -148,6 +162,7 @@ namespace Aws
       typedef std::future<ListFlowsOutcome> ListFlowsOutcomeCallable;
       typedef std::future<ListTagsForResourceOutcome> ListTagsForResourceOutcomeCallable;
       typedef std::future<RegisterConnectorOutcome> RegisterConnectorOutcomeCallable;
+      typedef std::future<ResetConnectorMetadataCacheOutcome> ResetConnectorMetadataCacheOutcomeCallable;
       typedef std::future<StartFlowOutcome> StartFlowOutcomeCallable;
       typedef std::future<StopFlowOutcome> StopFlowOutcomeCallable;
       typedef std::future<TagResourceOutcome> TagResourceOutcomeCallable;
@@ -162,6 +177,7 @@ namespace Aws
     class AppflowClient;
 
     /* Service model async handlers definitions */
+    typedef std::function<void(const AppflowClient*, const Model::CancelFlowExecutionsRequest&, const Model::CancelFlowExecutionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CancelFlowExecutionsResponseReceivedHandler;
     typedef std::function<void(const AppflowClient*, const Model::CreateConnectorProfileRequest&, const Model::CreateConnectorProfileOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateConnectorProfileResponseReceivedHandler;
     typedef std::function<void(const AppflowClient*, const Model::CreateFlowRequest&, const Model::CreateFlowOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateFlowResponseReceivedHandler;
     typedef std::function<void(const AppflowClient*, const Model::DeleteConnectorProfileRequest&, const Model::DeleteConnectorProfileOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteConnectorProfileResponseReceivedHandler;
@@ -177,6 +193,7 @@ namespace Aws
     typedef std::function<void(const AppflowClient*, const Model::ListFlowsRequest&, const Model::ListFlowsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListFlowsResponseReceivedHandler;
     typedef std::function<void(const AppflowClient*, const Model::ListTagsForResourceRequest&, const Model::ListTagsForResourceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListTagsForResourceResponseReceivedHandler;
     typedef std::function<void(const AppflowClient*, const Model::RegisterConnectorRequest&, const Model::RegisterConnectorOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RegisterConnectorResponseReceivedHandler;
+    typedef std::function<void(const AppflowClient*, const Model::ResetConnectorMetadataCacheRequest&, const Model::ResetConnectorMetadataCacheOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ResetConnectorMetadataCacheResponseReceivedHandler;
     typedef std::function<void(const AppflowClient*, const Model::StartFlowRequest&, const Model::StartFlowOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StartFlowResponseReceivedHandler;
     typedef std::function<void(const AppflowClient*, const Model::StopFlowRequest&, const Model::StopFlowOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StopFlowResponseReceivedHandler;
     typedef std::function<void(const AppflowClient*, const Model::TagResourceRequest&, const Model::TagResourceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > TagResourceResponseReceivedHandler;

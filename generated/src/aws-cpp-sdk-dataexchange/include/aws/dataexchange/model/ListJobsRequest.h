@@ -25,7 +25,7 @@ namespace Model
   class ListJobsRequest : public DataExchangeRequest
   {
   public:
-    AWS_DATAEXCHANGE_API ListJobsRequest();
+    AWS_DATAEXCHANGE_API ListJobsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,163 +38,58 @@ namespace Model
     AWS_DATAEXCHANGE_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier for a data set.</p>
      */
-    inline const Aws::String& GetDataSetId() const{ return m_dataSetId; }
-
-    /**
-     * <p>The unique identifier for a data set.</p>
-     */
+    inline const Aws::String& GetDataSetId() const { return m_dataSetId; }
     inline bool DataSetIdHasBeenSet() const { return m_dataSetIdHasBeenSet; }
+    template<typename DataSetIdT = Aws::String>
+    void SetDataSetId(DataSetIdT&& value) { m_dataSetIdHasBeenSet = true; m_dataSetId = std::forward<DataSetIdT>(value); }
+    template<typename DataSetIdT = Aws::String>
+    ListJobsRequest& WithDataSetId(DataSetIdT&& value) { SetDataSetId(std::forward<DataSetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for a data set.</p>
-     */
-    inline void SetDataSetId(const Aws::String& value) { m_dataSetIdHasBeenSet = true; m_dataSetId = value; }
-
-    /**
-     * <p>The unique identifier for a data set.</p>
-     */
-    inline void SetDataSetId(Aws::String&& value) { m_dataSetIdHasBeenSet = true; m_dataSetId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for a data set.</p>
-     */
-    inline void SetDataSetId(const char* value) { m_dataSetIdHasBeenSet = true; m_dataSetId.assign(value); }
-
-    /**
-     * <p>The unique identifier for a data set.</p>
-     */
-    inline ListJobsRequest& WithDataSetId(const Aws::String& value) { SetDataSetId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for a data set.</p>
-     */
-    inline ListJobsRequest& WithDataSetId(Aws::String&& value) { SetDataSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for a data set.</p>
-     */
-    inline ListJobsRequest& WithDataSetId(const char* value) { SetDataSetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results returned by a single call.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results returned by a single call.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results returned by a single call.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results returned by a single call.</p>
-     */
     inline ListJobsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The token value retrieved from a previous call to access the next page of
      * results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token value retrieved from a previous call to access the next page of
-     * results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListJobsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token value retrieved from a previous call to access the next page of
-     * results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token value retrieved from a previous call to access the next page of
-     * results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token value retrieved from a previous call to access the next page of
-     * results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token value retrieved from a previous call to access the next page of
-     * results.</p>
-     */
-    inline ListJobsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token value retrieved from a previous call to access the next page of
-     * results.</p>
-     */
-    inline ListJobsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token value retrieved from a previous call to access the next page of
-     * results.</p>
-     */
-    inline ListJobsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for a revision.</p>
      */
-    inline const Aws::String& GetRevisionId() const{ return m_revisionId; }
-
-    /**
-     * <p>The unique identifier for a revision.</p>
-     */
+    inline const Aws::String& GetRevisionId() const { return m_revisionId; }
     inline bool RevisionIdHasBeenSet() const { return m_revisionIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier for a revision.</p>
-     */
-    inline void SetRevisionId(const Aws::String& value) { m_revisionIdHasBeenSet = true; m_revisionId = value; }
-
-    /**
-     * <p>The unique identifier for a revision.</p>
-     */
-    inline void SetRevisionId(Aws::String&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for a revision.</p>
-     */
-    inline void SetRevisionId(const char* value) { m_revisionIdHasBeenSet = true; m_revisionId.assign(value); }
-
-    /**
-     * <p>The unique identifier for a revision.</p>
-     */
-    inline ListJobsRequest& WithRevisionId(const Aws::String& value) { SetRevisionId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for a revision.</p>
-     */
-    inline ListJobsRequest& WithRevisionId(Aws::String&& value) { SetRevisionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for a revision.</p>
-     */
-    inline ListJobsRequest& WithRevisionId(const char* value) { SetRevisionId(value); return *this;}
-
+    template<typename RevisionIdT = Aws::String>
+    void SetRevisionId(RevisionIdT&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::forward<RevisionIdT>(value); }
+    template<typename RevisionIdT = Aws::String>
+    ListJobsRequest& WithRevisionId(RevisionIdT&& value) { SetRevisionId(std::forward<RevisionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dataSetId;
     bool m_dataSetIdHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

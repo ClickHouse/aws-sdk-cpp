@@ -24,6 +24,7 @@ namespace Aws
         static const int AWS_ECR_CONTAINER_IMAGE_HASH = HashingUtils::HashString("AWS_ECR_CONTAINER_IMAGE");
         static const int AWS_ECR_REPOSITORY_HASH = HashingUtils::HashString("AWS_ECR_REPOSITORY");
         static const int AWS_LAMBDA_FUNCTION_HASH = HashingUtils::HashString("AWS_LAMBDA_FUNCTION");
+        static const int CODE_REPOSITORY_HASH = HashingUtils::HashString("CODE_REPOSITORY");
 
 
         ResourceType GetResourceTypeForName(const Aws::String& name)
@@ -45,6 +46,10 @@ namespace Aws
           {
             return ResourceType::AWS_LAMBDA_FUNCTION;
           }
+          else if (hashCode == CODE_REPOSITORY_HASH)
+          {
+            return ResourceType::CODE_REPOSITORY;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -59,6 +64,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case ResourceType::NOT_SET:
+            return {};
           case ResourceType::AWS_EC2_INSTANCE:
             return "AWS_EC2_INSTANCE";
           case ResourceType::AWS_ECR_CONTAINER_IMAGE:
@@ -67,6 +74,8 @@ namespace Aws
             return "AWS_ECR_REPOSITORY";
           case ResourceType::AWS_LAMBDA_FUNCTION:
             return "AWS_LAMBDA_FUNCTION";
+          case ResourceType::CODE_REPOSITORY:
+            return "CODE_REPOSITORY";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

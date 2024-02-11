@@ -32,93 +32,35 @@ namespace Model
   class RelationshipValue
   {
   public:
-    AWS_IOTTWINMAKER_API RelationshipValue();
+    AWS_IOTTWINMAKER_API RelationshipValue() = default;
     AWS_IOTTWINMAKER_API RelationshipValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API RelationshipValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the target entity associated with this relationship value.</p>
      */
-    inline const Aws::String& GetTargetEntityId() const{ return m_targetEntityId; }
-
-    /**
-     * <p>The ID of the target entity associated with this relationship value.</p>
-     */
+    inline const Aws::String& GetTargetEntityId() const { return m_targetEntityId; }
     inline bool TargetEntityIdHasBeenSet() const { return m_targetEntityIdHasBeenSet; }
+    template<typename TargetEntityIdT = Aws::String>
+    void SetTargetEntityId(TargetEntityIdT&& value) { m_targetEntityIdHasBeenSet = true; m_targetEntityId = std::forward<TargetEntityIdT>(value); }
+    template<typename TargetEntityIdT = Aws::String>
+    RelationshipValue& WithTargetEntityId(TargetEntityIdT&& value) { SetTargetEntityId(std::forward<TargetEntityIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the target entity associated with this relationship value.</p>
-     */
-    inline void SetTargetEntityId(const Aws::String& value) { m_targetEntityIdHasBeenSet = true; m_targetEntityId = value; }
-
-    /**
-     * <p>The ID of the target entity associated with this relationship value.</p>
-     */
-    inline void SetTargetEntityId(Aws::String&& value) { m_targetEntityIdHasBeenSet = true; m_targetEntityId = std::move(value); }
-
-    /**
-     * <p>The ID of the target entity associated with this relationship value.</p>
-     */
-    inline void SetTargetEntityId(const char* value) { m_targetEntityIdHasBeenSet = true; m_targetEntityId.assign(value); }
-
-    /**
-     * <p>The ID of the target entity associated with this relationship value.</p>
-     */
-    inline RelationshipValue& WithTargetEntityId(const Aws::String& value) { SetTargetEntityId(value); return *this;}
-
-    /**
-     * <p>The ID of the target entity associated with this relationship value.</p>
-     */
-    inline RelationshipValue& WithTargetEntityId(Aws::String&& value) { SetTargetEntityId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the target entity associated with this relationship value.</p>
-     */
-    inline RelationshipValue& WithTargetEntityId(const char* value) { SetTargetEntityId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the target component associated with the relationship value.</p>
      */
-    inline const Aws::String& GetTargetComponentName() const{ return m_targetComponentName; }
-
-    /**
-     * <p>The name of the target component associated with the relationship value.</p>
-     */
+    inline const Aws::String& GetTargetComponentName() const { return m_targetComponentName; }
     inline bool TargetComponentNameHasBeenSet() const { return m_targetComponentNameHasBeenSet; }
-
-    /**
-     * <p>The name of the target component associated with the relationship value.</p>
-     */
-    inline void SetTargetComponentName(const Aws::String& value) { m_targetComponentNameHasBeenSet = true; m_targetComponentName = value; }
-
-    /**
-     * <p>The name of the target component associated with the relationship value.</p>
-     */
-    inline void SetTargetComponentName(Aws::String&& value) { m_targetComponentNameHasBeenSet = true; m_targetComponentName = std::move(value); }
-
-    /**
-     * <p>The name of the target component associated with the relationship value.</p>
-     */
-    inline void SetTargetComponentName(const char* value) { m_targetComponentNameHasBeenSet = true; m_targetComponentName.assign(value); }
-
-    /**
-     * <p>The name of the target component associated with the relationship value.</p>
-     */
-    inline RelationshipValue& WithTargetComponentName(const Aws::String& value) { SetTargetComponentName(value); return *this;}
-
-    /**
-     * <p>The name of the target component associated with the relationship value.</p>
-     */
-    inline RelationshipValue& WithTargetComponentName(Aws::String&& value) { SetTargetComponentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the target component associated with the relationship value.</p>
-     */
-    inline RelationshipValue& WithTargetComponentName(const char* value) { SetTargetComponentName(value); return *this;}
-
+    template<typename TargetComponentNameT = Aws::String>
+    void SetTargetComponentName(TargetComponentNameT&& value) { m_targetComponentNameHasBeenSet = true; m_targetComponentName = std::forward<TargetComponentNameT>(value); }
+    template<typename TargetComponentNameT = Aws::String>
+    RelationshipValue& WithTargetComponentName(TargetComponentNameT&& value) { SetTargetComponentName(std::forward<TargetComponentNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_targetEntityId;

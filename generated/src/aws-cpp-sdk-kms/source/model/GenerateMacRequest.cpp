@@ -13,15 +13,6 @@ using namespace Aws::KMS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GenerateMacRequest::GenerateMacRequest() : 
-    m_messageHasBeenSet(false),
-    m_keyIdHasBeenSet(false),
-    m_macAlgorithm(MacAlgorithmSpec::NOT_SET),
-    m_macAlgorithmHasBeenSet(false),
-    m_grantTokensHasBeenSet(false)
-{
-}
-
 Aws::String GenerateMacRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -50,6 +41,12 @@ Aws::String GenerateMacRequest::SerializePayload() const
      grantTokensJsonList[grantTokensIndex].AsString(m_grantTokens[grantTokensIndex]);
    }
    payload.WithArray("GrantTokens", std::move(grantTokensJsonList));
+
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+   payload.WithBool("DryRun", m_dryRun);
 
   }
 

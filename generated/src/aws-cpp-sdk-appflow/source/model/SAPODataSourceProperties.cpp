@@ -18,13 +18,7 @@ namespace Appflow
 namespace Model
 {
 
-SAPODataSourceProperties::SAPODataSourceProperties() : 
-    m_objectPathHasBeenSet(false)
-{
-}
-
-SAPODataSourceProperties::SAPODataSourceProperties(JsonView jsonValue) : 
-    m_objectPathHasBeenSet(false)
+SAPODataSourceProperties::SAPODataSourceProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,18 @@ SAPODataSourceProperties& SAPODataSourceProperties::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("objectPath"))
   {
     m_objectPath = jsonValue.GetString("objectPath");
-
     m_objectPathHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("parallelismConfig"))
+  {
+    m_parallelismConfig = jsonValue.GetObject("parallelismConfig");
+    m_parallelismConfigHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("paginationConfig"))
+  {
+    m_paginationConfig = jsonValue.GetObject("paginationConfig");
+    m_paginationConfigHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +50,18 @@ JsonValue SAPODataSourceProperties::Jsonize() const
   if(m_objectPathHasBeenSet)
   {
    payload.WithString("objectPath", m_objectPath);
+
+  }
+
+  if(m_parallelismConfigHasBeenSet)
+  {
+   payload.WithObject("parallelismConfig", m_parallelismConfig.Jsonize());
+
+  }
+
+  if(m_paginationConfigHasBeenSet)
+  {
+   payload.WithObject("paginationConfig", m_paginationConfig.Jsonize());
 
   }
 

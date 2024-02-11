@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-AxisLabelOptions::AxisLabelOptions() : 
-    m_fontConfigurationHasBeenSet(false),
-    m_customLabelHasBeenSet(false),
-    m_applyToHasBeenSet(false)
-{
-}
-
-AxisLabelOptions::AxisLabelOptions(JsonView jsonValue) : 
-    m_fontConfigurationHasBeenSet(false),
-    m_customLabelHasBeenSet(false),
-    m_applyToHasBeenSet(false)
+AxisLabelOptions::AxisLabelOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ AxisLabelOptions& AxisLabelOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FontConfiguration"))
   {
     m_fontConfiguration = jsonValue.GetObject("FontConfiguration");
-
     m_fontConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CustomLabel"))
   {
     m_customLabel = jsonValue.GetString("CustomLabel");
-
     m_customLabelHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ApplyTo"))
   {
     m_applyTo = jsonValue.GetObject("ApplyTo");
-
     m_applyToHasBeenSet = true;
   }
-
   return *this;
 }
 

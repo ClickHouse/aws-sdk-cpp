@@ -12,25 +12,6 @@ using namespace Aws::EMRServerless::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateApplicationRequest::CreateApplicationRequest() : 
-    m_nameHasBeenSet(false),
-    m_releaseLabelHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_initialCapacityHasBeenSet(false),
-    m_maximumCapacityHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_autoStartConfigurationHasBeenSet(false),
-    m_autoStopConfigurationHasBeenSet(false),
-    m_networkConfigurationHasBeenSet(false),
-    m_architecture(Architecture::NOT_SET),
-    m_architectureHasBeenSet(false),
-    m_imageConfigurationHasBeenSet(false),
-    m_workerTypeSpecificationsHasBeenSet(false)
-{
-}
-
 Aws::String CreateApplicationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -124,6 +105,41 @@ Aws::String CreateApplicationRequest::SerializePayload() const
      workerTypeSpecificationsJsonMap.WithObject(workerTypeSpecificationsItem.first, workerTypeSpecificationsItem.second.Jsonize());
    }
    payload.WithObject("workerTypeSpecifications", std::move(workerTypeSpecificationsJsonMap));
+
+  }
+
+  if(m_runtimeConfigurationHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> runtimeConfigurationJsonList(m_runtimeConfiguration.size());
+   for(unsigned runtimeConfigurationIndex = 0; runtimeConfigurationIndex < runtimeConfigurationJsonList.GetLength(); ++runtimeConfigurationIndex)
+   {
+     runtimeConfigurationJsonList[runtimeConfigurationIndex].AsObject(m_runtimeConfiguration[runtimeConfigurationIndex].Jsonize());
+   }
+   payload.WithArray("runtimeConfiguration", std::move(runtimeConfigurationJsonList));
+
+  }
+
+  if(m_monitoringConfigurationHasBeenSet)
+  {
+   payload.WithObject("monitoringConfiguration", m_monitoringConfiguration.Jsonize());
+
+  }
+
+  if(m_interactiveConfigurationHasBeenSet)
+  {
+   payload.WithObject("interactiveConfiguration", m_interactiveConfiguration.Jsonize());
+
+  }
+
+  if(m_schedulerConfigurationHasBeenSet)
+  {
+   payload.WithObject("schedulerConfiguration", m_schedulerConfiguration.Jsonize());
+
+  }
+
+  if(m_identityCenterConfigurationHasBeenSet)
+  {
+   payload.WithObject("identityCenterConfiguration", m_identityCenterConfiguration.Jsonize());
 
   }
 

@@ -12,12 +12,6 @@ using namespace Aws::CloudTrail::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartQueryRequest::StartQueryRequest() : 
-    m_queryStatementHasBeenSet(false),
-    m_deliveryS3UriHasBeenSet(false)
-{
-}
-
 Aws::String StartQueryRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,29 @@ Aws::String StartQueryRequest::SerializePayload() const
   if(m_deliveryS3UriHasBeenSet)
   {
    payload.WithString("DeliveryS3Uri", m_deliveryS3Uri);
+
+  }
+
+  if(m_queryAliasHasBeenSet)
+  {
+   payload.WithString("QueryAlias", m_queryAlias);
+
+  }
+
+  if(m_queryParametersHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> queryParametersJsonList(m_queryParameters.size());
+   for(unsigned queryParametersIndex = 0; queryParametersIndex < queryParametersJsonList.GetLength(); ++queryParametersIndex)
+   {
+     queryParametersJsonList[queryParametersIndex].AsString(m_queryParameters[queryParametersIndex]);
+   }
+   payload.WithArray("QueryParameters", std::move(queryParametersJsonList));
+
+  }
+
+  if(m_eventDataStoreOwnerAccountIdHasBeenSet)
+  {
+   payload.WithString("EventDataStoreOwnerAccountId", m_eventDataStoreOwnerAccountId);
 
   }
 

@@ -18,17 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-CallbackStepMetadata::CallbackStepMetadata() : 
-    m_callbackTokenHasBeenSet(false),
-    m_sqsQueueUrlHasBeenSet(false),
-    m_outputParametersHasBeenSet(false)
-{
-}
-
-CallbackStepMetadata::CallbackStepMetadata(JsonView jsonValue) : 
-    m_callbackTokenHasBeenSet(false),
-    m_sqsQueueUrlHasBeenSet(false),
-    m_outputParametersHasBeenSet(false)
+CallbackStepMetadata::CallbackStepMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ CallbackStepMetadata& CallbackStepMetadata::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CallbackToken"))
   {
     m_callbackToken = jsonValue.GetString("CallbackToken");
-
     m_callbackTokenHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SqsQueueUrl"))
   {
     m_sqsQueueUrl = jsonValue.GetString("SqsQueueUrl");
-
     m_sqsQueueUrlHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OutputParameters"))
   {
     Aws::Utils::Array<JsonView> outputParametersJsonList = jsonValue.GetArray("OutputParameters");
@@ -58,7 +44,6 @@ CallbackStepMetadata& CallbackStepMetadata::operator =(JsonView jsonValue)
     }
     m_outputParametersHasBeenSet = true;
   }
-
   return *this;
 }
 

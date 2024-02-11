@@ -31,7 +31,9 @@ namespace Model
     PIP,
     PYTHONPKG,
     NODEPKG,
-    POM
+    POM,
+    GEMSPEC,
+    DOTNET_CORE
   };
 
 namespace PackageManagerMapper

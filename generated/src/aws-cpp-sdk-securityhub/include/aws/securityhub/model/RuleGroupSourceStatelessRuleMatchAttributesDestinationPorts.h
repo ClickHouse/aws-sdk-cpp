@@ -30,59 +30,37 @@ namespace Model
   class RuleGroupSourceStatelessRuleMatchAttributesDestinationPorts
   {
   public:
-    AWS_SECURITYHUB_API RuleGroupSourceStatelessRuleMatchAttributesDestinationPorts();
+    AWS_SECURITYHUB_API RuleGroupSourceStatelessRuleMatchAttributesDestinationPorts() = default;
     AWS_SECURITYHUB_API RuleGroupSourceStatelessRuleMatchAttributesDestinationPorts(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API RuleGroupSourceStatelessRuleMatchAttributesDestinationPorts& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The starting port value for the port range.</p>
      */
-    inline int GetFromPort() const{ return m_fromPort; }
-
-    /**
-     * <p>The starting port value for the port range.</p>
-     */
+    inline int GetFromPort() const { return m_fromPort; }
     inline bool FromPortHasBeenSet() const { return m_fromPortHasBeenSet; }
-
-    /**
-     * <p>The starting port value for the port range.</p>
-     */
     inline void SetFromPort(int value) { m_fromPortHasBeenSet = true; m_fromPort = value; }
-
-    /**
-     * <p>The starting port value for the port range.</p>
-     */
     inline RuleGroupSourceStatelessRuleMatchAttributesDestinationPorts& WithFromPort(int value) { SetFromPort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ending port value for the port range.</p>
      */
-    inline int GetToPort() const{ return m_toPort; }
-
-    /**
-     * <p>The ending port value for the port range.</p>
-     */
+    inline int GetToPort() const { return m_toPort; }
     inline bool ToPortHasBeenSet() const { return m_toPortHasBeenSet; }
-
-    /**
-     * <p>The ending port value for the port range.</p>
-     */
     inline void SetToPort(int value) { m_toPortHasBeenSet = true; m_toPort = value; }
-
-    /**
-     * <p>The ending port value for the port range.</p>
-     */
     inline RuleGroupSourceStatelessRuleMatchAttributesDestinationPorts& WithToPort(int value) { SetToPort(value); return *this;}
-
+    ///@}
   private:
 
-    int m_fromPort;
+    int m_fromPort{0};
     bool m_fromPortHasBeenSet = false;
 
-    int m_toPort;
+    int m_toPort{0};
     bool m_toPortHasBeenSet = false;
   };
 

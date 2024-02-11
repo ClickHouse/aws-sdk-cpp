@@ -10,17 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateIpamRequest::CreateIpamRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_operatingRegionsHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true)
-{
-}
-
 Aws::String CreateIpamRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -58,6 +47,21 @@ Aws::String CreateIpamRequest::SerializePayload() const
   if(m_clientTokenHasBeenSet)
   {
     ss << "ClientToken=" << StringUtils::URLEncode(m_clientToken.c_str()) << "&";
+  }
+
+  if(m_tierHasBeenSet)
+  {
+    ss << "Tier=" << StringUtils::URLEncode(IpamTierMapper::GetNameForIpamTier(m_tier)) << "&";
+  }
+
+  if(m_enablePrivateGuaHasBeenSet)
+  {
+    ss << "EnablePrivateGua=" << std::boolalpha << m_enablePrivateGua << "&";
+  }
+
+  if(m_meteredAccountHasBeenSet)
+  {
+    ss << "MeteredAccount=" << StringUtils::URLEncode(IpamMeteredAccountMapper::GetNameForIpamMeteredAccount(m_meteredAccount)) << "&";
   }
 
   ss << "Version=2016-11-15";

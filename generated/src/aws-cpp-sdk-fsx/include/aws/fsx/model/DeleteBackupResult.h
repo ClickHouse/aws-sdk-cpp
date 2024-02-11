@@ -34,106 +34,50 @@ namespace Model
   class DeleteBackupResult
   {
   public:
-    AWS_FSX_API DeleteBackupResult();
+    AWS_FSX_API DeleteBackupResult() = default;
     AWS_FSX_API DeleteBackupResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_FSX_API DeleteBackupResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ID of the backup that was deleted.</p>
      */
-    inline const Aws::String& GetBackupId() const{ return m_backupId; }
+    inline const Aws::String& GetBackupId() const { return m_backupId; }
+    template<typename BackupIdT = Aws::String>
+    void SetBackupId(BackupIdT&& value) { m_backupIdHasBeenSet = true; m_backupId = std::forward<BackupIdT>(value); }
+    template<typename BackupIdT = Aws::String>
+    DeleteBackupResult& WithBackupId(BackupIdT&& value) { SetBackupId(std::forward<BackupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the backup that was deleted.</p>
-     */
-    inline void SetBackupId(const Aws::String& value) { m_backupId = value; }
-
-    /**
-     * <p>The ID of the backup that was deleted.</p>
-     */
-    inline void SetBackupId(Aws::String&& value) { m_backupId = std::move(value); }
-
-    /**
-     * <p>The ID of the backup that was deleted.</p>
-     */
-    inline void SetBackupId(const char* value) { m_backupId.assign(value); }
-
-    /**
-     * <p>The ID of the backup that was deleted.</p>
-     */
-    inline DeleteBackupResult& WithBackupId(const Aws::String& value) { SetBackupId(value); return *this;}
-
-    /**
-     * <p>The ID of the backup that was deleted.</p>
-     */
-    inline DeleteBackupResult& WithBackupId(Aws::String&& value) { SetBackupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the backup that was deleted.</p>
-     */
-    inline DeleteBackupResult& WithBackupId(const char* value) { SetBackupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The lifecycle status of the backup. If the <code>DeleteBackup</code>
      * operation is successful, the status is <code>DELETED</code>.</p>
      */
-    inline const BackupLifecycle& GetLifecycle() const{ return m_lifecycle; }
+    inline BackupLifecycle GetLifecycle() const { return m_lifecycle; }
+    inline void SetLifecycle(BackupLifecycle value) { m_lifecycleHasBeenSet = true; m_lifecycle = value; }
+    inline DeleteBackupResult& WithLifecycle(BackupLifecycle value) { SetLifecycle(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The lifecycle status of the backup. If the <code>DeleteBackup</code>
-     * operation is successful, the status is <code>DELETED</code>.</p>
-     */
-    inline void SetLifecycle(const BackupLifecycle& value) { m_lifecycle = value; }
-
-    /**
-     * <p>The lifecycle status of the backup. If the <code>DeleteBackup</code>
-     * operation is successful, the status is <code>DELETED</code>.</p>
-     */
-    inline void SetLifecycle(BackupLifecycle&& value) { m_lifecycle = std::move(value); }
-
-    /**
-     * <p>The lifecycle status of the backup. If the <code>DeleteBackup</code>
-     * operation is successful, the status is <code>DELETED</code>.</p>
-     */
-    inline DeleteBackupResult& WithLifecycle(const BackupLifecycle& value) { SetLifecycle(value); return *this;}
-
-    /**
-     * <p>The lifecycle status of the backup. If the <code>DeleteBackup</code>
-     * operation is successful, the status is <code>DELETED</code>.</p>
-     */
-    inline DeleteBackupResult& WithLifecycle(BackupLifecycle&& value) { SetLifecycle(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteBackupResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteBackupResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteBackupResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteBackupResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_backupId;
+    bool m_backupIdHasBeenSet = false;
 
-    BackupLifecycle m_lifecycle;
+    BackupLifecycle m_lifecycle{BackupLifecycle::NOT_SET};
+    bool m_lifecycleHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

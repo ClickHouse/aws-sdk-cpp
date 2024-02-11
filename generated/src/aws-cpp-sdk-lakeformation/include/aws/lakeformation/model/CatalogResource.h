@@ -5,6 +5,8 @@
 
 #pragma once
 #include <aws/lakeformation/LakeFormation_EXPORTS.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,11 +31,27 @@ namespace Model
   class CatalogResource
   {
   public:
-    AWS_LAKEFORMATION_API CatalogResource();
+    AWS_LAKEFORMATION_API CatalogResource() = default;
     AWS_LAKEFORMATION_API CatalogResource(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAKEFORMATION_API CatalogResource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAKEFORMATION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
+
+    ///@{
+    /**
+     * <p>An identifier for the catalog resource.</p>
+     */
+    inline const Aws::String& GetId() const { return m_id; }
+    inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    CatalogResource& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
+  private:
+
+    Aws::String m_id;
+    bool m_idHasBeenSet = false;
   };
 
 } // namespace Model

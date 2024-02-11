@@ -22,7 +22,7 @@ namespace Model
   class DisableLDAPSRequest : public DirectoryServiceRequest
   {
   public:
-    AWS_DIRECTORYSERVICE_API DisableLDAPSRequest();
+    AWS_DIRECTORYSERVICE_API DisableLDAPSRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,89 +35,34 @@ namespace Model
     AWS_DIRECTORYSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the directory.</p>
      */
-    inline const Aws::String& GetDirectoryId() const{ return m_directoryId; }
-
-    /**
-     * <p>The identifier of the directory.</p>
-     */
+    inline const Aws::String& GetDirectoryId() const { return m_directoryId; }
     inline bool DirectoryIdHasBeenSet() const { return m_directoryIdHasBeenSet; }
+    template<typename DirectoryIdT = Aws::String>
+    void SetDirectoryId(DirectoryIdT&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::forward<DirectoryIdT>(value); }
+    template<typename DirectoryIdT = Aws::String>
+    DisableLDAPSRequest& WithDirectoryId(DirectoryIdT&& value) { SetDirectoryId(std::forward<DirectoryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the directory.</p>
-     */
-    inline void SetDirectoryId(const Aws::String& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
-
-    /**
-     * <p>The identifier of the directory.</p>
-     */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
-
-    /**
-     * <p>The identifier of the directory.</p>
-     */
-    inline void SetDirectoryId(const char* value) { m_directoryIdHasBeenSet = true; m_directoryId.assign(value); }
-
-    /**
-     * <p>The identifier of the directory.</p>
-     */
-    inline DisableLDAPSRequest& WithDirectoryId(const Aws::String& value) { SetDirectoryId(value); return *this;}
-
-    /**
-     * <p>The identifier of the directory.</p>
-     */
-    inline DisableLDAPSRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the directory.</p>
-     */
-    inline DisableLDAPSRequest& WithDirectoryId(const char* value) { SetDirectoryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of LDAP security to enable. Currently only the value
      * <code>Client</code> is supported.</p>
      */
-    inline const LDAPSType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of LDAP security to enable. Currently only the value
-     * <code>Client</code> is supported.</p>
-     */
+    inline LDAPSType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of LDAP security to enable. Currently only the value
-     * <code>Client</code> is supported.</p>
-     */
-    inline void SetType(const LDAPSType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of LDAP security to enable. Currently only the value
-     * <code>Client</code> is supported.</p>
-     */
-    inline void SetType(LDAPSType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of LDAP security to enable. Currently only the value
-     * <code>Client</code> is supported.</p>
-     */
-    inline DisableLDAPSRequest& WithType(const LDAPSType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of LDAP security to enable. Currently only the value
-     * <code>Client</code> is supported.</p>
-     */
-    inline DisableLDAPSRequest& WithType(LDAPSType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(LDAPSType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline DisableLDAPSRequest& WithType(LDAPSType value) { SetType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_directoryId;
     bool m_directoryIdHasBeenSet = false;
 
-    LDAPSType m_type;
+    LDAPSType m_type{LDAPSType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

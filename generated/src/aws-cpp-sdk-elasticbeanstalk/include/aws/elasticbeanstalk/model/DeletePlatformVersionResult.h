@@ -28,57 +28,37 @@ namespace Model
   class DeletePlatformVersionResult
   {
   public:
-    AWS_ELASTICBEANSTALK_API DeletePlatformVersionResult();
+    AWS_ELASTICBEANSTALK_API DeletePlatformVersionResult() = default;
     AWS_ELASTICBEANSTALK_API DeletePlatformVersionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_ELASTICBEANSTALK_API DeletePlatformVersionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>Detailed information about the version of the custom platform.</p>
      */
-    inline const PlatformSummary& GetPlatformSummary() const{ return m_platformSummary; }
+    inline const PlatformSummary& GetPlatformSummary() const { return m_platformSummary; }
+    template<typename PlatformSummaryT = PlatformSummary>
+    void SetPlatformSummary(PlatformSummaryT&& value) { m_platformSummaryHasBeenSet = true; m_platformSummary = std::forward<PlatformSummaryT>(value); }
+    template<typename PlatformSummaryT = PlatformSummary>
+    DeletePlatformVersionResult& WithPlatformSummary(PlatformSummaryT&& value) { SetPlatformSummary(std::forward<PlatformSummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Detailed information about the version of the custom platform.</p>
-     */
-    inline void SetPlatformSummary(const PlatformSummary& value) { m_platformSummary = value; }
-
-    /**
-     * <p>Detailed information about the version of the custom platform.</p>
-     */
-    inline void SetPlatformSummary(PlatformSummary&& value) { m_platformSummary = std::move(value); }
-
-    /**
-     * <p>Detailed information about the version of the custom platform.</p>
-     */
-    inline DeletePlatformVersionResult& WithPlatformSummary(const PlatformSummary& value) { SetPlatformSummary(value); return *this;}
-
-    /**
-     * <p>Detailed information about the version of the custom platform.</p>
-     */
-    inline DeletePlatformVersionResult& WithPlatformSummary(PlatformSummary&& value) { SetPlatformSummary(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline DeletePlatformVersionResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline DeletePlatformVersionResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    DeletePlatformVersionResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     PlatformSummary m_platformSummary;
+    bool m_platformSummaryHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

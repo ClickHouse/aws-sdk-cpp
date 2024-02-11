@@ -18,17 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsCloudFrontDistributionOriginSslProtocols::AwsCloudFrontDistributionOriginSslProtocols() : 
-    m_itemsHasBeenSet(false),
-    m_quantity(0),
-    m_quantityHasBeenSet(false)
-{
-}
-
-AwsCloudFrontDistributionOriginSslProtocols::AwsCloudFrontDistributionOriginSslProtocols(JsonView jsonValue) : 
-    m_itemsHasBeenSet(false),
-    m_quantity(0),
-    m_quantityHasBeenSet(false)
+AwsCloudFrontDistributionOriginSslProtocols::AwsCloudFrontDistributionOriginSslProtocols(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,14 +34,11 @@ AwsCloudFrontDistributionOriginSslProtocols& AwsCloudFrontDistributionOriginSslP
     }
     m_itemsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Quantity"))
   {
     m_quantity = jsonValue.GetInteger("Quantity");
-
     m_quantityHasBeenSet = true;
   }
-
   return *this;
 }
 

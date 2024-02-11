@@ -33,126 +33,41 @@ namespace Model
   class EntityRecognizerDocuments
   {
   public:
-    AWS_COMPREHEND_API EntityRecognizerDocuments();
+    AWS_COMPREHEND_API EntityRecognizerDocuments() = default;
     AWS_COMPREHEND_API EntityRecognizerDocuments(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API EntityRecognizerDocuments& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Specifies the Amazon S3 location where the training documents for an entity
      * recognizer are located. The URI must be in the same Region as the API endpoint
      * that you are calling.</p>
      */
-    inline const Aws::String& GetS3Uri() const{ return m_s3Uri; }
-
-    /**
-     * <p> Specifies the Amazon S3 location where the training documents for an entity
-     * recognizer are located. The URI must be in the same Region as the API endpoint
-     * that you are calling.</p>
-     */
+    inline const Aws::String& GetS3Uri() const { return m_s3Uri; }
     inline bool S3UriHasBeenSet() const { return m_s3UriHasBeenSet; }
+    template<typename S3UriT = Aws::String>
+    void SetS3Uri(S3UriT&& value) { m_s3UriHasBeenSet = true; m_s3Uri = std::forward<S3UriT>(value); }
+    template<typename S3UriT = Aws::String>
+    EntityRecognizerDocuments& WithS3Uri(S3UriT&& value) { SetS3Uri(std::forward<S3UriT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Specifies the Amazon S3 location where the training documents for an entity
-     * recognizer are located. The URI must be in the same Region as the API endpoint
-     * that you are calling.</p>
-     */
-    inline void SetS3Uri(const Aws::String& value) { m_s3UriHasBeenSet = true; m_s3Uri = value; }
-
-    /**
-     * <p> Specifies the Amazon S3 location where the training documents for an entity
-     * recognizer are located. The URI must be in the same Region as the API endpoint
-     * that you are calling.</p>
-     */
-    inline void SetS3Uri(Aws::String&& value) { m_s3UriHasBeenSet = true; m_s3Uri = std::move(value); }
-
-    /**
-     * <p> Specifies the Amazon S3 location where the training documents for an entity
-     * recognizer are located. The URI must be in the same Region as the API endpoint
-     * that you are calling.</p>
-     */
-    inline void SetS3Uri(const char* value) { m_s3UriHasBeenSet = true; m_s3Uri.assign(value); }
-
-    /**
-     * <p> Specifies the Amazon S3 location where the training documents for an entity
-     * recognizer are located. The URI must be in the same Region as the API endpoint
-     * that you are calling.</p>
-     */
-    inline EntityRecognizerDocuments& WithS3Uri(const Aws::String& value) { SetS3Uri(value); return *this;}
-
-    /**
-     * <p> Specifies the Amazon S3 location where the training documents for an entity
-     * recognizer are located. The URI must be in the same Region as the API endpoint
-     * that you are calling.</p>
-     */
-    inline EntityRecognizerDocuments& WithS3Uri(Aws::String&& value) { SetS3Uri(std::move(value)); return *this;}
-
-    /**
-     * <p> Specifies the Amazon S3 location where the training documents for an entity
-     * recognizer are located. The URI must be in the same Region as the API endpoint
-     * that you are calling.</p>
-     */
-    inline EntityRecognizerDocuments& WithS3Uri(const char* value) { SetS3Uri(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Specifies the Amazon S3 location where the test documents for an entity
      * recognizer are located. The URI must be in the same Amazon Web Services Region
      * as the API endpoint that you are calling.</p>
      */
-    inline const Aws::String& GetTestS3Uri() const{ return m_testS3Uri; }
-
-    /**
-     * <p> Specifies the Amazon S3 location where the test documents for an entity
-     * recognizer are located. The URI must be in the same Amazon Web Services Region
-     * as the API endpoint that you are calling.</p>
-     */
+    inline const Aws::String& GetTestS3Uri() const { return m_testS3Uri; }
     inline bool TestS3UriHasBeenSet() const { return m_testS3UriHasBeenSet; }
+    template<typename TestS3UriT = Aws::String>
+    void SetTestS3Uri(TestS3UriT&& value) { m_testS3UriHasBeenSet = true; m_testS3Uri = std::forward<TestS3UriT>(value); }
+    template<typename TestS3UriT = Aws::String>
+    EntityRecognizerDocuments& WithTestS3Uri(TestS3UriT&& value) { SetTestS3Uri(std::forward<TestS3UriT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Specifies the Amazon S3 location where the test documents for an entity
-     * recognizer are located. The URI must be in the same Amazon Web Services Region
-     * as the API endpoint that you are calling.</p>
-     */
-    inline void SetTestS3Uri(const Aws::String& value) { m_testS3UriHasBeenSet = true; m_testS3Uri = value; }
-
-    /**
-     * <p> Specifies the Amazon S3 location where the test documents for an entity
-     * recognizer are located. The URI must be in the same Amazon Web Services Region
-     * as the API endpoint that you are calling.</p>
-     */
-    inline void SetTestS3Uri(Aws::String&& value) { m_testS3UriHasBeenSet = true; m_testS3Uri = std::move(value); }
-
-    /**
-     * <p> Specifies the Amazon S3 location where the test documents for an entity
-     * recognizer are located. The URI must be in the same Amazon Web Services Region
-     * as the API endpoint that you are calling.</p>
-     */
-    inline void SetTestS3Uri(const char* value) { m_testS3UriHasBeenSet = true; m_testS3Uri.assign(value); }
-
-    /**
-     * <p> Specifies the Amazon S3 location where the test documents for an entity
-     * recognizer are located. The URI must be in the same Amazon Web Services Region
-     * as the API endpoint that you are calling.</p>
-     */
-    inline EntityRecognizerDocuments& WithTestS3Uri(const Aws::String& value) { SetTestS3Uri(value); return *this;}
-
-    /**
-     * <p> Specifies the Amazon S3 location where the test documents for an entity
-     * recognizer are located. The URI must be in the same Amazon Web Services Region
-     * as the API endpoint that you are calling.</p>
-     */
-    inline EntityRecognizerDocuments& WithTestS3Uri(Aws::String&& value) { SetTestS3Uri(std::move(value)); return *this;}
-
-    /**
-     * <p> Specifies the Amazon S3 location where the test documents for an entity
-     * recognizer are located. The URI must be in the same Amazon Web Services Region
-     * as the API endpoint that you are calling.</p>
-     */
-    inline EntityRecognizerDocuments& WithTestS3Uri(const char* value) { SetTestS3Uri(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Specifies how the text in an input file should be processed. This is
      * optional, and the default is ONE_DOC_PER_LINE. ONE_DOC_PER_FILE - Each file is
@@ -161,58 +76,11 @@ namespace Model
      * Each line in a file is considered a separate document. Use this option when you
      * are processing many short documents, such as text messages.</p>
      */
-    inline const InputFormat& GetInputFormat() const{ return m_inputFormat; }
-
-    /**
-     * <p> Specifies how the text in an input file should be processed. This is
-     * optional, and the default is ONE_DOC_PER_LINE. ONE_DOC_PER_FILE - Each file is
-     * considered a separate document. Use this option when you are processing large
-     * documents, such as newspaper articles or scientific papers. ONE_DOC_PER_LINE -
-     * Each line in a file is considered a separate document. Use this option when you
-     * are processing many short documents, such as text messages.</p>
-     */
+    inline InputFormat GetInputFormat() const { return m_inputFormat; }
     inline bool InputFormatHasBeenSet() const { return m_inputFormatHasBeenSet; }
-
-    /**
-     * <p> Specifies how the text in an input file should be processed. This is
-     * optional, and the default is ONE_DOC_PER_LINE. ONE_DOC_PER_FILE - Each file is
-     * considered a separate document. Use this option when you are processing large
-     * documents, such as newspaper articles or scientific papers. ONE_DOC_PER_LINE -
-     * Each line in a file is considered a separate document. Use this option when you
-     * are processing many short documents, such as text messages.</p>
-     */
-    inline void SetInputFormat(const InputFormat& value) { m_inputFormatHasBeenSet = true; m_inputFormat = value; }
-
-    /**
-     * <p> Specifies how the text in an input file should be processed. This is
-     * optional, and the default is ONE_DOC_PER_LINE. ONE_DOC_PER_FILE - Each file is
-     * considered a separate document. Use this option when you are processing large
-     * documents, such as newspaper articles or scientific papers. ONE_DOC_PER_LINE -
-     * Each line in a file is considered a separate document. Use this option when you
-     * are processing many short documents, such as text messages.</p>
-     */
-    inline void SetInputFormat(InputFormat&& value) { m_inputFormatHasBeenSet = true; m_inputFormat = std::move(value); }
-
-    /**
-     * <p> Specifies how the text in an input file should be processed. This is
-     * optional, and the default is ONE_DOC_PER_LINE. ONE_DOC_PER_FILE - Each file is
-     * considered a separate document. Use this option when you are processing large
-     * documents, such as newspaper articles or scientific papers. ONE_DOC_PER_LINE -
-     * Each line in a file is considered a separate document. Use this option when you
-     * are processing many short documents, such as text messages.</p>
-     */
-    inline EntityRecognizerDocuments& WithInputFormat(const InputFormat& value) { SetInputFormat(value); return *this;}
-
-    /**
-     * <p> Specifies how the text in an input file should be processed. This is
-     * optional, and the default is ONE_DOC_PER_LINE. ONE_DOC_PER_FILE - Each file is
-     * considered a separate document. Use this option when you are processing large
-     * documents, such as newspaper articles or scientific papers. ONE_DOC_PER_LINE -
-     * Each line in a file is considered a separate document. Use this option when you
-     * are processing many short documents, such as text messages.</p>
-     */
-    inline EntityRecognizerDocuments& WithInputFormat(InputFormat&& value) { SetInputFormat(std::move(value)); return *this;}
-
+    inline void SetInputFormat(InputFormat value) { m_inputFormatHasBeenSet = true; m_inputFormat = value; }
+    inline EntityRecognizerDocuments& WithInputFormat(InputFormat value) { SetInputFormat(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_s3Uri;
@@ -221,7 +89,7 @@ namespace Model
     Aws::String m_testS3Uri;
     bool m_testS3UriHasBeenSet = false;
 
-    InputFormat m_inputFormat;
+    InputFormat m_inputFormat{InputFormat::NOT_SET};
     bool m_inputFormatHasBeenSet = false;
   };
 

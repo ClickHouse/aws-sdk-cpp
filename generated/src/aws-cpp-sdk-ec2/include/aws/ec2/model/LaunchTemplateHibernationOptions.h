@@ -30,7 +30,7 @@ namespace Model
   class LaunchTemplateHibernationOptions
   {
   public:
-    AWS_EC2_API LaunchTemplateHibernationOptions();
+    AWS_EC2_API LaunchTemplateHibernationOptions() = default;
     AWS_EC2_API LaunchTemplateHibernationOptions(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API LaunchTemplateHibernationOptions& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -38,33 +38,19 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>If this parameter is set to <code>true</code>, the instance is enabled for
      * hibernation; otherwise, it is not enabled for hibernation.</p>
      */
-    inline bool GetConfigured() const{ return m_configured; }
-
-    /**
-     * <p>If this parameter is set to <code>true</code>, the instance is enabled for
-     * hibernation; otherwise, it is not enabled for hibernation.</p>
-     */
+    inline bool GetConfigured() const { return m_configured; }
     inline bool ConfiguredHasBeenSet() const { return m_configuredHasBeenSet; }
-
-    /**
-     * <p>If this parameter is set to <code>true</code>, the instance is enabled for
-     * hibernation; otherwise, it is not enabled for hibernation.</p>
-     */
     inline void SetConfigured(bool value) { m_configuredHasBeenSet = true; m_configured = value; }
-
-    /**
-     * <p>If this parameter is set to <code>true</code>, the instance is enabled for
-     * hibernation; otherwise, it is not enabled for hibernation.</p>
-     */
     inline LaunchTemplateHibernationOptions& WithConfigured(bool value) { SetConfigured(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_configured;
+    bool m_configured{false};
     bool m_configuredHasBeenSet = false;
   };
 

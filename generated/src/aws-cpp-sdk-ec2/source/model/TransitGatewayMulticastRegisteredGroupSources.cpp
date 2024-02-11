@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGatewayMulticastRegisteredGroupSources::TransitGatewayMulticastRegisteredGroupSources() : 
-    m_transitGatewayMulticastDomainIdHasBeenSet(false),
-    m_registeredNetworkInterfaceIdsHasBeenSet(false),
-    m_groupIpAddressHasBeenSet(false)
-{
-}
-
-TransitGatewayMulticastRegisteredGroupSources::TransitGatewayMulticastRegisteredGroupSources(const XmlNode& xmlNode) : 
-    m_transitGatewayMulticastDomainIdHasBeenSet(false),
-    m_registeredNetworkInterfaceIdsHasBeenSet(false),
-    m_groupIpAddressHasBeenSet(false)
+TransitGatewayMulticastRegisteredGroupSources::TransitGatewayMulticastRegisteredGroupSources(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -51,6 +41,7 @@ TransitGatewayMulticastRegisteredGroupSources& TransitGatewayMulticastRegistered
     if(!registeredNetworkInterfaceIdsNode.IsNull())
     {
       XmlNode registeredNetworkInterfaceIdsMember = registeredNetworkInterfaceIdsNode.FirstChild("item");
+      m_registeredNetworkInterfaceIdsHasBeenSet = !registeredNetworkInterfaceIdsMember.IsNull();
       while(!registeredNetworkInterfaceIdsMember.IsNull())
       {
         m_registeredNetworkInterfaceIds.push_back(registeredNetworkInterfaceIdsMember.GetText());

@@ -12,21 +12,6 @@ using namespace Aws::PinpointSMSVoiceV2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdatePoolRequest::UpdatePoolRequest() : 
-    m_poolIdHasBeenSet(false),
-    m_twoWayEnabled(false),
-    m_twoWayEnabledHasBeenSet(false),
-    m_twoWayChannelArnHasBeenSet(false),
-    m_selfManagedOptOutsEnabled(false),
-    m_selfManagedOptOutsEnabledHasBeenSet(false),
-    m_optOutListNameHasBeenSet(false),
-    m_sharedRoutesEnabled(false),
-    m_sharedRoutesEnabledHasBeenSet(false),
-    m_deletionProtectionEnabled(false),
-    m_deletionProtectionEnabledHasBeenSet(false)
-{
-}
-
 Aws::String UpdatePoolRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -46,6 +31,12 @@ Aws::String UpdatePoolRequest::SerializePayload() const
   if(m_twoWayChannelArnHasBeenSet)
   {
    payload.WithString("TwoWayChannelArn", m_twoWayChannelArn);
+
+  }
+
+  if(m_twoWayChannelRoleHasBeenSet)
+  {
+   payload.WithString("TwoWayChannelRole", m_twoWayChannelRole);
 
   }
 

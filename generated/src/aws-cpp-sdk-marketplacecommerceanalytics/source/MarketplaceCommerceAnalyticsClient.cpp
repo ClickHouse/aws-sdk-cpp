@@ -22,7 +22,9 @@
 #include <aws/marketplacecommerceanalytics/MarketplaceCommerceAnalyticsErrorMarshaller.h>
 #include <aws/marketplacecommerceanalytics/MarketplaceCommerceAnalyticsEndpointProvider.h>
 #include <aws/marketplacecommerceanalytics/model/GenerateDataSetRequest.h>
-#include <aws/marketplacecommerceanalytics/model/StartSupportDataExportRequest.h>
+
+#include <smithy/tracing/TracingUtils.h>
+
 
 using namespace Aws;
 using namespace Aws::Auth;
@@ -31,22 +33,30 @@ using namespace Aws::MarketplaceCommerceAnalytics;
 using namespace Aws::MarketplaceCommerceAnalytics::Model;
 using namespace Aws::Http;
 using namespace Aws::Utils::Json;
+using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* MarketplaceCommerceAnalyticsClient::SERVICE_NAME = "marketplacecommerceanalytics";
-const char* MarketplaceCommerceAnalyticsClient::ALLOCATION_TAG = "MarketplaceCommerceAnalyticsClient";
+namespace Aws
+{
+  namespace MarketplaceCommerceAnalytics
+  {
+    const char SERVICE_NAME[] = "marketplacecommerceanalytics";
+    const char ALLOCATION_TAG[] = "MarketplaceCommerceAnalyticsClient";
+  }
+}
+const char* MarketplaceCommerceAnalyticsClient::GetServiceName() {return SERVICE_NAME;}
+const char* MarketplaceCommerceAnalyticsClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 MarketplaceCommerceAnalyticsClient::MarketplaceCommerceAnalyticsClient(const MarketplaceCommerceAnalytics::MarketplaceCommerceAnalyticsClientConfiguration& clientConfiguration,
                                                                        std::shared_ptr<MarketplaceCommerceAnalyticsEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MarketplaceCommerceAnalyticsErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<MarketplaceCommerceAnalyticsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -61,8 +71,7 @@ MarketplaceCommerceAnalyticsClient::MarketplaceCommerceAnalyticsClient(const AWS
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MarketplaceCommerceAnalyticsErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<MarketplaceCommerceAnalyticsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -77,8 +86,7 @@ MarketplaceCommerceAnalyticsClient::MarketplaceCommerceAnalyticsClient(const std
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MarketplaceCommerceAnalyticsErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<MarketplaceCommerceAnalyticsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -87,12 +95,11 @@ MarketplaceCommerceAnalyticsClient::MarketplaceCommerceAnalyticsClient(const std
   MarketplaceCommerceAnalyticsClient::MarketplaceCommerceAnalyticsClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MarketplaceCommerceAnalyticsErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<MarketplaceCommerceAnalyticsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -107,7 +114,6 @@ MarketplaceCommerceAnalyticsClient::MarketplaceCommerceAnalyticsClient(const AWS
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MarketplaceCommerceAnalyticsErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<MarketplaceCommerceAnalyticsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -122,7 +128,6 @@ MarketplaceCommerceAnalyticsClient::MarketplaceCommerceAnalyticsClient(const std
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MarketplaceCommerceAnalyticsErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<MarketplaceCommerceAnalyticsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -131,6 +136,7 @@ MarketplaceCommerceAnalyticsClient::MarketplaceCommerceAnalyticsClient(const std
     /* End of legacy constructors due deprecation */
 MarketplaceCommerceAnalyticsClient::~MarketplaceCommerceAnalyticsClient()
 {
+  ShutdownSdkClient(this, -1);
 }
 
 std::shared_ptr<MarketplaceCommerceAnalyticsEndpointProviderBase>& MarketplaceCommerceAnalyticsClient::accessEndpointProvider()
@@ -141,6 +147,14 @@ std::shared_ptr<MarketplaceCommerceAnalyticsEndpointProviderBase>& MarketplaceCo
 void MarketplaceCommerceAnalyticsClient::init(const MarketplaceCommerceAnalytics::MarketplaceCommerceAnalyticsClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("Marketplace Commerce Analytics");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }
@@ -153,17 +167,27 @@ void MarketplaceCommerceAnalyticsClient::OverrideEndpoint(const Aws::String& end
 
 GenerateDataSetOutcome MarketplaceCommerceAnalyticsClient::GenerateDataSet(const GenerateDataSetRequest& request) const
 {
+  AWS_OPERATION_GUARD(GenerateDataSet);
   AWS_OPERATION_CHECK_PTR(m_endpointProvider, GenerateDataSet, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
-  ResolveEndpointOutcome endpointResolutionOutcome = m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams());
-  AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, GenerateDataSet, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
-  return GenerateDataSetOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
-}
-
-StartSupportDataExportOutcome MarketplaceCommerceAnalyticsClient::StartSupportDataExport(const StartSupportDataExportRequest& request) const
-{
-  AWS_OPERATION_CHECK_PTR(m_endpointProvider, StartSupportDataExport, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
-  ResolveEndpointOutcome endpointResolutionOutcome = m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams());
-  AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, StartSupportDataExport, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
-  return StartSupportDataExportOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, GenerateDataSet, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, GenerateDataSet, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".GenerateDataSet",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<GenerateDataSetOutcome>(
+    [&]()-> GenerateDataSetOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, GenerateDataSet, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      return GenerateDataSetOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
 }
 

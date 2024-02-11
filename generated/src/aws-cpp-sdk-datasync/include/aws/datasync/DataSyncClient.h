@@ -16,12 +16,11 @@ namespace Aws
 namespace DataSync
 {
   /**
-   * <fullname>DataSync</fullname> <p>DataSync is a managed data transfer service
-   * that makes it simpler for you to automate moving data between on-premises
-   * storage and Amazon Web Services storage services. You also can use DataSync to
-   * transfer data between other cloud providers and Amazon Web Services storage
-   * services.</p> <p>This API interface reference includes documentation for using
-   * DataSync programmatically. For complete information, see the <i> <a
+   * <fullname>DataSync</fullname> <p>DataSync is an online data movement service
+   * that simplifies data migration and helps you quickly, easily, and securely
+   * transfer your file or object data to, from, and between Amazon Web Services
+   * storage services.</p> <p>This API interface reference includes documentation for
+   * using DataSync programmatically. For complete information, see the <i> <a
    * href="https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html">DataSync
    * User Guide</a> </i>.</p>
    */
@@ -29,22 +28,25 @@ namespace DataSync
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef DataSyncClientConfiguration ClientConfigurationType;
+      typedef DataSyncEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         DataSyncClient(const Aws::DataSync::DataSyncClientConfiguration& clientConfiguration = Aws::DataSync::DataSyncClientConfiguration(),
-                       std::shared_ptr<DataSyncEndpointProviderBase> endpointProvider = Aws::MakeShared<DataSyncEndpointProvider>(ALLOCATION_TAG));
+                       std::shared_ptr<DataSyncEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         DataSyncClient(const Aws::Auth::AWSCredentials& credentials,
-                       std::shared_ptr<DataSyncEndpointProviderBase> endpointProvider = Aws::MakeShared<DataSyncEndpointProvider>(ALLOCATION_TAG),
+                       std::shared_ptr<DataSyncEndpointProviderBase> endpointProvider = nullptr,
                        const Aws::DataSync::DataSyncClientConfiguration& clientConfiguration = Aws::DataSync::DataSyncClientConfiguration());
 
        /**
@@ -52,7 +54,7 @@ namespace DataSync
         * the default http client factory will be used
         */
         DataSyncClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                       std::shared_ptr<DataSyncEndpointProviderBase> endpointProvider = Aws::MakeShared<DataSyncEndpointProvider>(ALLOCATION_TAG),
+                       std::shared_ptr<DataSyncEndpointProviderBase> endpointProvider = nullptr,
                        const Aws::DataSync::DataSyncClientConfiguration& clientConfiguration = Aws::DataSync::DataSyncClientConfiguration());
 
 
@@ -113,21 +115,11 @@ namespace DataSync
         }
 
         /**
-         * <p>Activates an DataSync agent that you have deployed in your storage
-         * environment. The activation process associates your agent with your account. In
-         * the activation process, you specify information such as the Amazon Web Services
-         * Region that you want to activate the agent in. You activate the agent in the
-         * Amazon Web Services Region where your target locations (in Amazon S3 or Amazon
-         * EFS) reside. Your tasks are created in this Amazon Web Services Region.</p>
-         * <p>You can activate the agent in a VPC (virtual private cloud) or provide the
-         * agent access to a VPC endpoint so you can run tasks without going over the
-         * public internet.</p> <p>You can use an agent for more than one location. If a
-         * task uses multiple agents, all of them need to have status AVAILABLE for the
-         * task to run. If you use multiple agents for a source location, the status of all
-         * the agents must be AVAILABLE for the task to run. </p> <p>Agents are
-         * automatically updated by Amazon Web Services on a regular basis, using a
-         * mechanism that ensures minimal interruption to your tasks.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Activates an DataSync agent that you deploy in your storage environment. The
+         * activation process associates the agent with your Amazon Web Services
+         * account.</p> <p>If you haven't deployed an agent yet, see <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/do-i-need-datasync-agent.html">Do
+         * I need a DataSync agent?</a> </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/CreateAgent">AWS
          * API Reference</a></p>
          */
@@ -152,10 +144,47 @@ namespace DataSync
         }
 
         /**
-         * <p>Creates an endpoint for an Amazon EFS file system that DataSync can access
-         * for a transfer. For more information, see <a
-         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-efs-location.html">Creating
-         * a location for Amazon EFS</a>.</p><p><h3>See Also:</h3>   <a
+         * <p>Creates a transfer <i>location</i> for a Microsoft Azure Blob Storage
+         * container. DataSync can use this location as a transfer source or destination.
+         * You can make transfers with or without a <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/creating-azure-blob-location.html#azure-blob-creating-agent">DataSync
+         * agent</a> that connects to your container.</p> <p>Before you begin, make sure
+         * you know <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/creating-azure-blob-location.html#azure-blob-access">how
+         * DataSync accesses Azure Blob Storage</a> and works with <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/creating-azure-blob-location.html#azure-blob-access-tiers">access
+         * tiers</a> and <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/creating-azure-blob-location.html#blob-types">blob
+         * types</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/CreateLocationAzureBlob">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateLocationAzureBlobOutcome CreateLocationAzureBlob(const Model::CreateLocationAzureBlobRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateLocationAzureBlob that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateLocationAzureBlobRequestT = Model::CreateLocationAzureBlobRequest>
+        Model::CreateLocationAzureBlobOutcomeCallable CreateLocationAzureBlobCallable(const CreateLocationAzureBlobRequestT& request) const
+        {
+            return SubmitCallable(&DataSyncClient::CreateLocationAzureBlob, request);
+        }
+
+        /**
+         * An Async wrapper for CreateLocationAzureBlob that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateLocationAzureBlobRequestT = Model::CreateLocationAzureBlobRequest>
+        void CreateLocationAzureBlobAsync(const CreateLocationAzureBlobRequestT& request, const CreateLocationAzureBlobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&DataSyncClient::CreateLocationAzureBlob, request, handler, context);
+        }
+
+        /**
+         * <p>Creates a transfer <i>location</i> for an Amazon EFS file system. DataSync
+         * can use this location as a source or destination for transferring data.</p>
+         * <p>Before you begin, make sure that you understand how DataSync <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-efs-location.html#create-efs-location-access">accesses
+         * Amazon EFS file systems</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/CreateLocationEfs">AWS
          * API Reference</a></p>
          */
@@ -180,8 +209,11 @@ namespace DataSync
         }
 
         /**
-         * <p>Creates an endpoint for an Amazon FSx for Lustre file system.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Creates a transfer <i>location</i> for an Amazon FSx for Lustre file system.
+         * DataSync can use this location as a source or destination for transferring
+         * data.</p> <p>Before you begin, make sure that you understand how DataSync <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-lustre-location.html#create-lustre-location-access">accesses
+         * FSx for Lustre file systems</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/CreateLocationFsxLustre">AWS
          * API Reference</a></p>
          */
@@ -206,10 +238,12 @@ namespace DataSync
         }
 
         /**
-         * <p>Creates an endpoint for an Amazon FSx for NetApp ONTAP file system that
-         * DataSync can access for a transfer. For more information, see <a
-         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-ontap-location.html">Creating
-         * a location for FSx for ONTAP</a>.</p><p><h3>See Also:</h3>   <a
+         * <p>Creates a transfer <i>location</i> for an Amazon FSx for NetApp ONTAP file
+         * system. DataSync can use this location as a source or destination for
+         * transferring data.</p> <p>Before you begin, make sure that you understand how
+         * DataSync <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-ontap-location.html#create-ontap-location-access">accesses
+         * FSx for ONTAP file systems</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/CreateLocationFsxOntap">AWS
          * API Reference</a></p>
          */
@@ -234,10 +268,11 @@ namespace DataSync
         }
 
         /**
-         * <p>Creates an endpoint for an Amazon FSx for OpenZFS file system that DataSync
-         * can access for a transfer. For more information, see <a
-         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-openzfs-location.html">Creating
-         * a location for FSx for OpenZFS</a>.</p>  <p>Request parameters related to
+         * <p>Creates a transfer <i>location</i> for an Amazon FSx for OpenZFS file system.
+         * DataSync can use this location as a source or destination for transferring
+         * data.</p> <p>Before you begin, make sure that you understand how DataSync <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-openzfs-location.html#create-openzfs-access">accesses
+         * FSx for OpenZFS file systems</a>.</p>  <p>Request parameters related to
          * <code>SMB</code> aren't supported with the <code>CreateLocationFsxOpenZfs</code>
          * operation.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/CreateLocationFsxOpenZfs">AWS
@@ -264,8 +299,12 @@ namespace DataSync
         }
 
         /**
-         * <p>Creates an endpoint for an Amazon FSx for Windows File Server file
-         * system.</p><p><h3>See Also:</h3>   <a
+         * <p>Creates a transfer <i>location</i> for an Amazon FSx for Windows File Server
+         * file system. DataSync can use this location as a source or destination for
+         * transferring data.</p> <p>Before you begin, make sure that you understand how
+         * DataSync <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-fsx-location.html#create-fsx-location-access">accesses
+         * FSx for Windows File Server file systems</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/CreateLocationFsxWindows">AWS
          * API Reference</a></p>
          */
@@ -290,8 +329,12 @@ namespace DataSync
         }
 
         /**
-         * <p>Creates an endpoint for a Hadoop Distributed File System (HDFS).
-         * </p><p><h3>See Also:</h3>   <a
+         * <p>Creates a transfer <i>location</i> for a Hadoop Distributed File System
+         * (HDFS). DataSync can use this location as a source or destination for
+         * transferring data.</p> <p>Before you begin, make sure that you understand how
+         * DataSync <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-hdfs-location.html#accessing-hdfs">accesses
+         * HDFS clusters</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/CreateLocationHdfs">AWS
          * API Reference</a></p>
          */
@@ -316,8 +359,12 @@ namespace DataSync
         }
 
         /**
-         * <p>Defines a file system on a Network File System (NFS) server that can be read
-         * from or written to.</p><p><h3>See Also:</h3>   <a
+         * <p>Creates a transfer <i>location</i> for a Network File System (NFS) file
+         * server. DataSync can use this location as a source or destination for
+         * transferring data.</p> <p>Before you begin, make sure that you understand how
+         * DataSync <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-nfs-location.html#accessing-nfs">accesses
+         * NFS file servers</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/CreateLocationNfs">AWS
          * API Reference</a></p>
          */
@@ -342,10 +389,13 @@ namespace DataSync
         }
 
         /**
-         * <p>Creates an endpoint for an object storage system that DataSync can access for
-         * a transfer. For more information, see <a
-         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-object-location.html">Creating
-         * a location for object storage</a>.</p><p><h3>See Also:</h3>   <a
+         * <p>Creates a transfer <i>location</i> for an object storage system. DataSync can
+         * use this location as a source or destination for transferring data. You can make
+         * transfers with or without a <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/do-i-need-datasync-agent.html#when-agent-required">DataSync
+         * agent</a>.</p> <p>Before you begin, make sure that you understand the <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-object-location.html#create-object-location-prerequisites">prerequisites</a>
+         * for DataSync to work with object storage systems.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/CreateLocationObjectStorage">AWS
          * API Reference</a></p>
          */
@@ -370,10 +420,17 @@ namespace DataSync
         }
 
         /**
-         * <p>Creates an endpoint for an Amazon S3 bucket that DataSync can access for a
-         * transfer. For more information, see <a
-         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-locations-cli.html#create-location-s3-cli">Create
-         * an Amazon S3 location</a>.</p><p><h3>See Also:</h3>   <a
+         * <p>Creates a transfer <i>location</i> for an Amazon S3 bucket. DataSync can use
+         * this location as a source or destination for transferring data.</p> 
+         * <p>Before you begin, make sure that you read the following topics:</p> <ul> <li>
+         * <p> <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html#using-storage-classes">Storage
+         * class considerations with Amazon S3 locations</a> </p> </li> <li> <p> <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html#create-s3-location-s3-requests">Evaluating
+         * S3 request costs when using DataSync</a> </p> </li> </ul>  <p> For
+         * more information, see <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html">Configuring
+         * transfers with Amazon S3</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/CreateLocationS3">AWS
          * API Reference</a></p>
          */
@@ -398,10 +455,12 @@ namespace DataSync
         }
 
         /**
-         * <p>Creates an endpoint for a Server Message Block (SMB) file server that
-         * DataSync can access for a transfer. For more information, see <a
-         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-smb-location.html">Creating
-         * an SMB location</a>.</p><p><h3>See Also:</h3>   <a
+         * <p>Creates a transfer <i>location</i> for a Server Message Block (SMB) file
+         * server. DataSync can use this location as a source or destination for
+         * transferring data.</p> <p>Before you begin, make sure that you understand how
+         * DataSync accesses SMB file servers. For more information, see <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-smb-location.html#configuring-smb-permissions">Providing
+         * DataSync access to SMB file servers</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/CreateLocationSmb">AWS
          * API Reference</a></p>
          */
@@ -426,10 +485,15 @@ namespace DataSync
         }
 
         /**
-         * <p>Configures a task, which defines where and how DataSync transfers your
-         * data.</p> <p>A task includes a source location, a destination location, and the
-         * preferences for how and when you want to transfer your data (such as bandwidth
-         * limits, scheduling, among other options).</p><p><h3>See Also:</h3>   <a
+         * <p>Configures a <i>task</i>, which defines where and how DataSync transfers your
+         * data.</p> <p>A task includes a source location, destination location, and
+         * transfer options (such as bandwidth limits, scheduling, and more).</p>
+         *  <p>If you're planning to transfer data to or from an Amazon S3
+         * location, review <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html#create-s3-location-s3-requests">how
+         * DataSync can affect your S3 request charges</a> and the <a
+         * href="http://aws.amazon.com/datasync/pricing/">DataSync pricing page</a> before
+         * you begin.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/CreateTask">AWS
          * API Reference</a></p>
          */
@@ -454,11 +518,13 @@ namespace DataSync
         }
 
         /**
-         * <p>Deletes an agent. To specify which agent to delete, use the Amazon Resource
-         * Name (ARN) of the agent in your request. The operation disassociates the agent
-         * from your Amazon Web Services account. However, it doesn't delete the agent
-         * virtual machine (VM) from your on-premises environment.</p><p><h3>See Also:</h3>
-         * <a
+         * <p>Removes an DataSync agent resource from your Amazon Web Services account.</p>
+         * <p>Keep in mind that this operation (which can't be undone) doesn't remove the
+         * agent's virtual machine (VM) or Amazon EC2 instance from your storage
+         * environment. For next steps, you can delete the VM or instance from your storage
+         * environment or reuse it to <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/activate-agent.html">activate
+         * a new agent</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DeleteAgent">AWS
          * API Reference</a></p>
          */
@@ -483,8 +549,8 @@ namespace DataSync
         }
 
         /**
-         * <p>Deletes the configuration of a location used by DataSync. </p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Deletes a transfer location resource from DataSync. </p><p><h3>See Also:</h3>
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DeleteLocation">AWS
          * API Reference</a></p>
          */
@@ -509,7 +575,7 @@ namespace DataSync
         }
 
         /**
-         * <p>Deletes an DataSync task.</p><p><h3>See Also:</h3>   <a
+         * <p>Deletes a transfer task resource from DataSync.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DeleteTask">AWS
          * API Reference</a></p>
          */
@@ -534,8 +600,8 @@ namespace DataSync
         }
 
         /**
-         * <p>Returns metadata about an DataSync agent, such as its name, endpoint type,
-         * and status.</p><p><h3>See Also:</h3>   <a
+         * <p>Returns information about an DataSync agent, such as its name, service
+         * endpoint type, and status.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DescribeAgent">AWS
          * API Reference</a></p>
          */
@@ -560,8 +626,34 @@ namespace DataSync
         }
 
         /**
-         * <p>Returns metadata about your DataSync location for an Amazon EFS file
-         * system.</p><p><h3>See Also:</h3>   <a
+         * <p>Provides details about how an DataSync transfer location for Microsoft Azure
+         * Blob Storage is configured.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DescribeLocationAzureBlob">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeLocationAzureBlobOutcome DescribeLocationAzureBlob(const Model::DescribeLocationAzureBlobRequest& request) const;
+
+        /**
+         * A Callable wrapper for DescribeLocationAzureBlob that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeLocationAzureBlobRequestT = Model::DescribeLocationAzureBlobRequest>
+        Model::DescribeLocationAzureBlobOutcomeCallable DescribeLocationAzureBlobCallable(const DescribeLocationAzureBlobRequestT& request) const
+        {
+            return SubmitCallable(&DataSyncClient::DescribeLocationAzureBlob, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeLocationAzureBlob that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeLocationAzureBlobRequestT = Model::DescribeLocationAzureBlobRequest>
+        void DescribeLocationAzureBlobAsync(const DescribeLocationAzureBlobRequestT& request, const DescribeLocationAzureBlobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&DataSyncClient::DescribeLocationAzureBlob, request, handler, context);
+        }
+
+        /**
+         * <p>Provides details about how an DataSync transfer location for an Amazon EFS
+         * file system is configured.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DescribeLocationEfs">AWS
          * API Reference</a></p>
          */
@@ -586,8 +678,8 @@ namespace DataSync
         }
 
         /**
-         * <p>Provides details about how an DataSync location for an Amazon FSx for Lustre
-         * file system is configured.</p><p><h3>See Also:</h3>   <a
+         * <p>Provides details about how an DataSync transfer location for an Amazon FSx
+         * for Lustre file system is configured.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DescribeLocationFsxLustre">AWS
          * API Reference</a></p>
          */
@@ -612,10 +704,10 @@ namespace DataSync
         }
 
         /**
-         * <p>Provides details about how an DataSync location for an Amazon FSx for NetApp
-         * ONTAP file system is configured.</p>  <p>If your location uses SMB, the
-         * <code>DescribeLocationFsxOntap</code> operation doesn't actually return a
-         * <code>Password</code>.</p> <p><h3>See Also:</h3>   <a
+         * <p>Provides details about how an DataSync transfer location for an Amazon FSx
+         * for NetApp ONTAP file system is configured.</p>  <p>If your location uses
+         * SMB, the <code>DescribeLocationFsxOntap</code> operation doesn't actually return
+         * a <code>Password</code>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DescribeLocationFsxOntap">AWS
          * API Reference</a></p>
          */
@@ -640,9 +732,9 @@ namespace DataSync
         }
 
         /**
-         * <p>Provides details about how an DataSync location for an Amazon FSx for OpenZFS
-         * file system is configured.</p>  <p>Response elements related to
-         * <code>SMB</code> aren't supported with the
+         * <p>Provides details about how an DataSync transfer location for an Amazon FSx
+         * for OpenZFS file system is configured.</p>  <p>Response elements related
+         * to <code>SMB</code> aren't supported with the
          * <code>DescribeLocationFsxOpenZfs</code> operation.</p> <p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DescribeLocationFsxOpenZfs">AWS
@@ -669,8 +761,8 @@ namespace DataSync
         }
 
         /**
-         * <p>Returns metadata about an Amazon FSx for Windows File Server location, such
-         * as information about its path.</p><p><h3>See Also:</h3>   <a
+         * <p>Provides details about how an DataSync transfer location for an Amazon FSx
+         * for Windows File Server file system is configured.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DescribeLocationFsxWindows">AWS
          * API Reference</a></p>
          */
@@ -695,8 +787,8 @@ namespace DataSync
         }
 
         /**
-         * <p>Returns metadata, such as the authentication information about the Hadoop
-         * Distributed File System (HDFS) location. </p><p><h3>See Also:</h3>   <a
+         * <p>Provides details about how an DataSync transfer location for a Hadoop
+         * Distributed File System (HDFS) is configured.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DescribeLocationHdfs">AWS
          * API Reference</a></p>
          */
@@ -721,8 +813,8 @@ namespace DataSync
         }
 
         /**
-         * <p>Returns metadata, such as the path information, about an NFS
-         * location.</p><p><h3>See Also:</h3>   <a
+         * <p>Provides details about how an DataSync transfer location for a Network File
+         * System (NFS) file server is configured.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DescribeLocationNfs">AWS
          * API Reference</a></p>
          */
@@ -747,8 +839,8 @@ namespace DataSync
         }
 
         /**
-         * <p>Returns metadata about your DataSync location for an object storage
-         * system.</p><p><h3>See Also:</h3>   <a
+         * <p>Provides details about how an DataSync transfer location for an object
+         * storage system is configured.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DescribeLocationObjectStorage">AWS
          * API Reference</a></p>
          */
@@ -773,8 +865,8 @@ namespace DataSync
         }
 
         /**
-         * <p>Returns metadata, such as bucket name, about an Amazon S3 bucket
-         * location.</p><p><h3>See Also:</h3>   <a
+         * <p>Provides details about how an DataSync transfer location for an S3 bucket is
+         * configured.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DescribeLocationS3">AWS
          * API Reference</a></p>
          */
@@ -799,8 +891,8 @@ namespace DataSync
         }
 
         /**
-         * <p>Returns metadata, such as the path and user information about an SMB
-         * location.</p><p><h3>See Also:</h3>   <a
+         * <p>Provides details about how an DataSync transfer location for a Server Message
+         * Block (SMB) file server is configured.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DescribeLocationSmb">AWS
          * API Reference</a></p>
          */
@@ -825,7 +917,8 @@ namespace DataSync
         }
 
         /**
-         * <p>Returns metadata about a task.</p><p><h3>See Also:</h3>   <a
+         * <p>Provides information about a <i>task</i>, which defines where and how
+         * DataSync transfers your data.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DescribeTask">AWS
          * API Reference</a></p>
          */
@@ -850,8 +943,15 @@ namespace DataSync
         }
 
         /**
-         * <p>Returns detailed metadata about a task that is being executed.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Provides information about an execution of your DataSync task. You can use
+         * this operation to help monitor the progress of an ongoing data transfer or check
+         * the results of the transfer.</p>  <p>Some
+         * <code>DescribeTaskExecution</code> response elements are only relevant to a
+         * specific task mode. For information, see <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/choosing-task-mode.html#task-mode-differences">Understanding
+         * task mode differences</a> and <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/transfer-performance-counters.html">Understanding
+         * data transfer performance counters</a>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DescribeTaskExecution">AWS
          * API Reference</a></p>
          */
@@ -893,13 +993,13 @@ namespace DataSync
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/ListAgents">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListAgentsOutcome ListAgents(const Model::ListAgentsRequest& request) const;
+        virtual Model::ListAgentsOutcome ListAgents(const Model::ListAgentsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListAgents that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListAgentsRequestT = Model::ListAgentsRequest>
-        Model::ListAgentsOutcomeCallable ListAgentsCallable(const ListAgentsRequestT& request) const
+        Model::ListAgentsOutcomeCallable ListAgentsCallable(const ListAgentsRequestT& request = {}) const
         {
             return SubmitCallable(&DataSyncClient::ListAgents, request);
         }
@@ -908,7 +1008,7 @@ namespace DataSync
          * An Async wrapper for ListAgents that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListAgentsRequestT = Model::ListAgentsRequest>
-        void ListAgentsAsync(const ListAgentsRequestT& request, const ListAgentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListAgentsAsync(const ListAgentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListAgentsRequestT& request = {}) const
         {
             return SubmitAsync(&DataSyncClient::ListAgents, request, handler, context);
         }
@@ -922,13 +1022,13 @@ namespace DataSync
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/ListLocations">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListLocationsOutcome ListLocations(const Model::ListLocationsRequest& request) const;
+        virtual Model::ListLocationsOutcome ListLocations(const Model::ListLocationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListLocations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListLocationsRequestT = Model::ListLocationsRequest>
-        Model::ListLocationsOutcomeCallable ListLocationsCallable(const ListLocationsRequestT& request) const
+        Model::ListLocationsOutcomeCallable ListLocationsCallable(const ListLocationsRequestT& request = {}) const
         {
             return SubmitCallable(&DataSyncClient::ListLocations, request);
         }
@@ -937,7 +1037,7 @@ namespace DataSync
          * An Async wrapper for ListLocations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListLocationsRequestT = Model::ListLocationsRequest>
-        void ListLocationsAsync(const ListLocationsRequestT& request, const ListLocationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListLocationsAsync(const ListLocationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListLocationsRequestT& request = {}) const
         {
             return SubmitAsync(&DataSyncClient::ListLocations, request, handler, context);
         }
@@ -969,17 +1069,18 @@ namespace DataSync
         }
 
         /**
-         * <p>Returns a list of executed tasks.</p><p><h3>See Also:</h3>   <a
+         * <p>Returns a list of executions for an DataSync transfer task.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/ListTaskExecutions">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListTaskExecutionsOutcome ListTaskExecutions(const Model::ListTaskExecutionsRequest& request) const;
+        virtual Model::ListTaskExecutionsOutcome ListTaskExecutions(const Model::ListTaskExecutionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListTaskExecutions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListTaskExecutionsRequestT = Model::ListTaskExecutionsRequest>
-        Model::ListTaskExecutionsOutcomeCallable ListTaskExecutionsCallable(const ListTaskExecutionsRequestT& request) const
+        Model::ListTaskExecutionsOutcomeCallable ListTaskExecutionsCallable(const ListTaskExecutionsRequestT& request = {}) const
         {
             return SubmitCallable(&DataSyncClient::ListTaskExecutions, request);
         }
@@ -988,7 +1089,7 @@ namespace DataSync
          * An Async wrapper for ListTaskExecutions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListTaskExecutionsRequestT = Model::ListTaskExecutionsRequest>
-        void ListTaskExecutionsAsync(const ListTaskExecutionsRequestT& request, const ListTaskExecutionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListTaskExecutionsAsync(const ListTaskExecutionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListTaskExecutionsRequestT& request = {}) const
         {
             return SubmitAsync(&DataSyncClient::ListTaskExecutions, request, handler, context);
         }
@@ -999,13 +1100,13 @@ namespace DataSync
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/ListTasks">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListTasksOutcome ListTasks(const Model::ListTasksRequest& request) const;
+        virtual Model::ListTasksOutcome ListTasks(const Model::ListTasksRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListTasks that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListTasksRequestT = Model::ListTasksRequest>
-        Model::ListTasksOutcomeCallable ListTasksCallable(const ListTasksRequestT& request) const
+        Model::ListTasksOutcomeCallable ListTasksCallable(const ListTasksRequestT& request = {}) const
         {
             return SubmitCallable(&DataSyncClient::ListTasks, request);
         }
@@ -1014,17 +1115,22 @@ namespace DataSync
          * An Async wrapper for ListTasks that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListTasksRequestT = Model::ListTasksRequest>
-        void ListTasksAsync(const ListTasksRequestT& request, const ListTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListTasksAsync(const ListTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListTasksRequestT& request = {}) const
         {
             return SubmitAsync(&DataSyncClient::ListTasks, request, handler, context);
         }
 
         /**
-         * <p>Starts an DataSync task. For each task, you can only run one task execution
-         * at a time.</p> <p>There are several phases to a task execution. For more
-         * information, see <a
+         * <p>Starts an DataSync transfer task. For each task, you can only run one task
+         * execution at a time.</p> <p>There are several steps to a task execution. For
+         * more information, see <a
          * href="https://docs.aws.amazon.com/datasync/latest/userguide/working-with-task-executions.html#understand-task-execution-statuses">Task
-         * execution statuses</a>.</p><p><h3>See Also:</h3>   <a
+         * execution statuses</a>.</p>  <p>If you're planning to transfer data
+         * to or from an Amazon S3 location, review <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html#create-s3-location-s3-requests">how
+         * DataSync can affect your S3 request charges</a> and the <a
+         * href="http://aws.amazon.com/datasync/pricing/">DataSync pricing page</a> before
+         * you begin.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/StartTaskExecution">AWS
          * API Reference</a></p>
          */
@@ -1103,7 +1209,7 @@ namespace DataSync
         }
 
         /**
-         * <p>Updates the name of an agent.</p><p><h3>See Also:</h3>   <a
+         * <p>Updates the name of an DataSync agent.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/UpdateAgent">AWS
          * API Reference</a></p>
          */
@@ -1128,8 +1234,188 @@ namespace DataSync
         }
 
         /**
-         * <p>Updates some parameters of a previously created location for a Hadoop
-         * Distributed File System cluster.</p><p><h3>See Also:</h3>   <a
+         * <p>Modifies the following configurations of the Microsoft Azure Blob Storage
+         * transfer location that you're using with DataSync.</p> <p>For more information,
+         * see <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/creating-azure-blob-location.html">Configuring
+         * DataSync transfers with Azure Blob Storage</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/UpdateLocationAzureBlob">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateLocationAzureBlobOutcome UpdateLocationAzureBlob(const Model::UpdateLocationAzureBlobRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateLocationAzureBlob that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateLocationAzureBlobRequestT = Model::UpdateLocationAzureBlobRequest>
+        Model::UpdateLocationAzureBlobOutcomeCallable UpdateLocationAzureBlobCallable(const UpdateLocationAzureBlobRequestT& request) const
+        {
+            return SubmitCallable(&DataSyncClient::UpdateLocationAzureBlob, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateLocationAzureBlob that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateLocationAzureBlobRequestT = Model::UpdateLocationAzureBlobRequest>
+        void UpdateLocationAzureBlobAsync(const UpdateLocationAzureBlobRequestT& request, const UpdateLocationAzureBlobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&DataSyncClient::UpdateLocationAzureBlob, request, handler, context);
+        }
+
+        /**
+         * <p>Modifies the following configuration parameters of the Amazon EFS transfer
+         * location that you're using with DataSync.</p> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-efs-location.html">Configuring
+         * DataSync transfers with Amazon EFS</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/UpdateLocationEfs">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateLocationEfsOutcome UpdateLocationEfs(const Model::UpdateLocationEfsRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateLocationEfs that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateLocationEfsRequestT = Model::UpdateLocationEfsRequest>
+        Model::UpdateLocationEfsOutcomeCallable UpdateLocationEfsCallable(const UpdateLocationEfsRequestT& request) const
+        {
+            return SubmitCallable(&DataSyncClient::UpdateLocationEfs, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateLocationEfs that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateLocationEfsRequestT = Model::UpdateLocationEfsRequest>
+        void UpdateLocationEfsAsync(const UpdateLocationEfsRequestT& request, const UpdateLocationEfsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&DataSyncClient::UpdateLocationEfs, request, handler, context);
+        }
+
+        /**
+         * <p>Modifies the following configuration parameters of the Amazon FSx for Lustre
+         * transfer location that you're using with DataSync.</p> <p>For more information,
+         * see <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-lustre-location.html">Configuring
+         * DataSync transfers with FSx for Lustre</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/UpdateLocationFsxLustre">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateLocationFsxLustreOutcome UpdateLocationFsxLustre(const Model::UpdateLocationFsxLustreRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateLocationFsxLustre that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateLocationFsxLustreRequestT = Model::UpdateLocationFsxLustreRequest>
+        Model::UpdateLocationFsxLustreOutcomeCallable UpdateLocationFsxLustreCallable(const UpdateLocationFsxLustreRequestT& request) const
+        {
+            return SubmitCallable(&DataSyncClient::UpdateLocationFsxLustre, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateLocationFsxLustre that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateLocationFsxLustreRequestT = Model::UpdateLocationFsxLustreRequest>
+        void UpdateLocationFsxLustreAsync(const UpdateLocationFsxLustreRequestT& request, const UpdateLocationFsxLustreResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&DataSyncClient::UpdateLocationFsxLustre, request, handler, context);
+        }
+
+        /**
+         * <p>Modifies the following configuration parameters of the Amazon FSx for NetApp
+         * ONTAP transfer location that you're using with DataSync.</p> <p>For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-ontap-location.html">Configuring
+         * DataSync transfers with FSx for ONTAP</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/UpdateLocationFsxOntap">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateLocationFsxOntapOutcome UpdateLocationFsxOntap(const Model::UpdateLocationFsxOntapRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateLocationFsxOntap that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateLocationFsxOntapRequestT = Model::UpdateLocationFsxOntapRequest>
+        Model::UpdateLocationFsxOntapOutcomeCallable UpdateLocationFsxOntapCallable(const UpdateLocationFsxOntapRequestT& request) const
+        {
+            return SubmitCallable(&DataSyncClient::UpdateLocationFsxOntap, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateLocationFsxOntap that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateLocationFsxOntapRequestT = Model::UpdateLocationFsxOntapRequest>
+        void UpdateLocationFsxOntapAsync(const UpdateLocationFsxOntapRequestT& request, const UpdateLocationFsxOntapResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&DataSyncClient::UpdateLocationFsxOntap, request, handler, context);
+        }
+
+        /**
+         * <p>Modifies the following configuration parameters of the Amazon FSx for OpenZFS
+         * transfer location that you're using with DataSync.</p> <p>For more information,
+         * see <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-openzfs-location.html">Configuring
+         * DataSync transfers with FSx for OpenZFS</a>.</p>  <p>Request parameters
+         * related to <code>SMB</code> aren't supported with the
+         * <code>UpdateLocationFsxOpenZfs</code> operation.</p> <p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/UpdateLocationFsxOpenZfs">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateLocationFsxOpenZfsOutcome UpdateLocationFsxOpenZfs(const Model::UpdateLocationFsxOpenZfsRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateLocationFsxOpenZfs that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateLocationFsxOpenZfsRequestT = Model::UpdateLocationFsxOpenZfsRequest>
+        Model::UpdateLocationFsxOpenZfsOutcomeCallable UpdateLocationFsxOpenZfsCallable(const UpdateLocationFsxOpenZfsRequestT& request) const
+        {
+            return SubmitCallable(&DataSyncClient::UpdateLocationFsxOpenZfs, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateLocationFsxOpenZfs that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateLocationFsxOpenZfsRequestT = Model::UpdateLocationFsxOpenZfsRequest>
+        void UpdateLocationFsxOpenZfsAsync(const UpdateLocationFsxOpenZfsRequestT& request, const UpdateLocationFsxOpenZfsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&DataSyncClient::UpdateLocationFsxOpenZfs, request, handler, context);
+        }
+
+        /**
+         * <p>Modifies the following configuration parameters of the Amazon FSx for Windows
+         * File Server transfer location that you're using with DataSync.</p> <p>For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-fsx-location.html">Configuring
+         * DataSync transfers with FSx for Windows File Server</a>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/UpdateLocationFsxWindows">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateLocationFsxWindowsOutcome UpdateLocationFsxWindows(const Model::UpdateLocationFsxWindowsRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateLocationFsxWindows that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateLocationFsxWindowsRequestT = Model::UpdateLocationFsxWindowsRequest>
+        Model::UpdateLocationFsxWindowsOutcomeCallable UpdateLocationFsxWindowsCallable(const UpdateLocationFsxWindowsRequestT& request) const
+        {
+            return SubmitCallable(&DataSyncClient::UpdateLocationFsxWindows, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateLocationFsxWindows that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateLocationFsxWindowsRequestT = Model::UpdateLocationFsxWindowsRequest>
+        void UpdateLocationFsxWindowsAsync(const UpdateLocationFsxWindowsRequestT& request, const UpdateLocationFsxWindowsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&DataSyncClient::UpdateLocationFsxWindows, request, handler, context);
+        }
+
+        /**
+         * <p>Modifies the following configuration parameters of the Hadoop Distributed
+         * File System (HDFS) transfer location that you're using with DataSync.</p> <p>For
+         * more information, see <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-hdfs-location.html">Configuring
+         * DataSync transfers with an HDFS cluster</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/UpdateLocationHdfs">AWS
          * API Reference</a></p>
          */
@@ -1154,10 +1440,11 @@ namespace DataSync
         }
 
         /**
-         * <p>Updates some of the parameters of a previously created location for Network
-         * File System (NFS) access. For information about creating an NFS location, see <a
-         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-nfs-location.html">Creating
-         * a location for NFS</a>.</p><p><h3>See Also:</h3>   <a
+         * <p>Modifies the following configuration parameters of the Network File System
+         * (NFS) transfer location that you're using with DataSync.</p> <p>For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-nfs-location.html">Configuring
+         * transfers with an NFS file server</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/UpdateLocationNfs">AWS
          * API Reference</a></p>
          */
@@ -1182,11 +1469,12 @@ namespace DataSync
         }
 
         /**
-         * <p>Updates some parameters of an existing object storage location that DataSync
-         * accesses for a transfer. For information about creating a self-managed object
-         * storage location, see <a
-         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-object-location.html">Creating
-         * a location for object storage</a>.</p><p><h3>See Also:</h3>   <a
+         * <p>Modifies the following configuration parameters of the object storage
+         * transfer location that you're using with DataSync.</p> <p>For more information,
+         * see <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-object-location.html">Configuring
+         * DataSync transfers with an object storage system</a>.</p><p><h3>See Also:</h3>  
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/UpdateLocationObjectStorage">AWS
          * API Reference</a></p>
          */
@@ -1211,11 +1499,43 @@ namespace DataSync
         }
 
         /**
-         * <p>Updates some of the parameters of a previously created location for Server
-         * Message Block (SMB) file system access. For information about creating an SMB
-         * location, see <a
-         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-smb-location.html">Creating
-         * a location for SMB</a>.</p><p><h3>See Also:</h3>   <a
+         * <p>Modifies the following configuration parameters of the Amazon S3 transfer
+         * location that you're using with DataSync.</p>  <p>Before you begin,
+         * make sure that you read the following topics:</p> <ul> <li> <p> <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html#using-storage-classes">Storage
+         * class considerations with Amazon S3 locations</a> </p> </li> <li> <p> <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html#create-s3-location-s3-requests">Evaluating
+         * S3 request costs when using DataSync</a> </p> </li> </ul> <p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/UpdateLocationS3">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateLocationS3Outcome UpdateLocationS3(const Model::UpdateLocationS3Request& request) const;
+
+        /**
+         * A Callable wrapper for UpdateLocationS3 that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateLocationS3RequestT = Model::UpdateLocationS3Request>
+        Model::UpdateLocationS3OutcomeCallable UpdateLocationS3Callable(const UpdateLocationS3RequestT& request) const
+        {
+            return SubmitCallable(&DataSyncClient::UpdateLocationS3, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateLocationS3 that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateLocationS3RequestT = Model::UpdateLocationS3Request>
+        void UpdateLocationS3Async(const UpdateLocationS3RequestT& request, const UpdateLocationS3ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&DataSyncClient::UpdateLocationS3, request, handler, context);
+        }
+
+        /**
+         * <p>Modifies the following configuration parameters of the Server Message Block
+         * (SMB) transfer location that you're using with DataSync.</p> <p>For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/datasync/latest/userguide/create-smb-location.html">Configuring
+         * DataSync transfers with an SMB file server</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/UpdateLocationSmb">AWS
          * API Reference</a></p>
          */
@@ -1240,7 +1560,8 @@ namespace DataSync
         }
 
         /**
-         * <p>Updates the metadata associated with a task.</p><p><h3>See Also:</h3>   <a
+         * <p>Updates the configuration of a <i>task</i>, which defines where and how
+         * DataSync transfers your data.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/UpdateTask">AWS
          * API Reference</a></p>
          */
@@ -1265,14 +1586,12 @@ namespace DataSync
         }
 
         /**
-         * <p>Updates execution of a task.</p> <p>You can modify bandwidth throttling for a
-         * task execution that is running or queued. For more information, see <a
-         * href="https://docs.aws.amazon.com/datasync/latest/userguide/working-with-task-executions.html#adjust-bandwidth-throttling">Adjusting
-         * Bandwidth Throttling for a Task Execution</a>.</p>  <p>The only
-         * <code>Option</code> that can be modified by <code>UpdateTaskExecution</code> is
-         * <code> <a
+         * <p>Updates the configuration of a running DataSync task execution.</p> 
+         * <p>Currently, the only <code>Option</code> that you can modify with
+         * <code>UpdateTaskExecution</code> is <code> <a
          * href="https://docs.aws.amazon.com/datasync/latest/userguide/API_Options.html#DataSync-Type-Options-BytesPerSecond">BytesPerSecond</a>
-         * </code>.</p> <p><h3>See Also:</h3>   <a
+         * </code>, which throttles bandwidth for a running or queued task execution.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/UpdateTaskExecution">AWS
          * API Reference</a></p>
          */
@@ -1304,7 +1623,6 @@ namespace DataSync
       void init(const DataSyncClientConfiguration& clientConfiguration);
 
       DataSyncClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<DataSyncEndpointProviderBase> m_endpointProvider;
   };
 

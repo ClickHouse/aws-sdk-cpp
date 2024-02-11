@@ -9,8 +9,12 @@
 #include <aws/resiliencehub/model/AppAssessmentScheduleType.h>
 #include <aws/resiliencehub/model/AppComplianceStatusType.h>
 #include <aws/core/utils/DateTime.h>
+#include <aws/resiliencehub/model/AppDriftStatusType.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/resiliencehub/model/PermissionModel.h>
 #include <aws/resiliencehub/model/AppStatusType.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <aws/resiliencehub/model/EventSubscription.h>
 #include <utility>
 
 namespace Aws
@@ -36,574 +40,307 @@ namespace Model
   class App
   {
   public:
-    AWS_RESILIENCEHUB_API App();
+    AWS_RESILIENCEHUB_API App() = default;
     AWS_RESILIENCEHUB_API App(Aws::Utils::Json::JsonView jsonValue);
     AWS_RESILIENCEHUB_API App& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_RESILIENCEHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the Resilience Hub application. The format
-     * for this ARN is:
+     * <p>Amazon Resource Name (ARN) of the Resilience Hub application. The format for
+     * this ARN is:
      * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:app/<code>app-id</code>.
      * For more information about ARNs, see <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
+     * Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General
+     * Reference</i> guide.</p>
      */
-    inline const Aws::String& GetAppArn() const{ return m_appArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Resilience Hub application. The format
-     * for this ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:app/<code>app-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
+    inline const Aws::String& GetAppArn() const { return m_appArn; }
     inline bool AppArnHasBeenSet() const { return m_appArnHasBeenSet; }
+    template<typename AppArnT = Aws::String>
+    void SetAppArn(AppArnT&& value) { m_appArnHasBeenSet = true; m_appArn = std::forward<AppArnT>(value); }
+    template<typename AppArnT = Aws::String>
+    App& WithAppArn(AppArnT&& value) { SetAppArn(std::forward<AppArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the Resilience Hub application. The format
-     * for this ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:app/<code>app-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
+     * <p>Assessment execution schedule with 'Daily' or 'Disabled' values. </p>
      */
-    inline void SetAppArn(const Aws::String& value) { m_appArnHasBeenSet = true; m_appArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Resilience Hub application. The format
-     * for this ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:app/<code>app-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
-    inline void SetAppArn(Aws::String&& value) { m_appArnHasBeenSet = true; m_appArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Resilience Hub application. The format
-     * for this ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:app/<code>app-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
-    inline void SetAppArn(const char* value) { m_appArnHasBeenSet = true; m_appArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Resilience Hub application. The format
-     * for this ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:app/<code>app-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
-    inline App& WithAppArn(const Aws::String& value) { SetAppArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Resilience Hub application. The format
-     * for this ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:app/<code>app-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
-    inline App& WithAppArn(Aws::String&& value) { SetAppArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Resilience Hub application. The format
-     * for this ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:app/<code>app-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
-    inline App& WithAppArn(const char* value) { SetAppArn(value); return *this;}
-
-
-    /**
-     * <p> Assessment execution schedule with 'Daily' or 'Disabled' values. </p>
-     */
-    inline const AppAssessmentScheduleType& GetAssessmentSchedule() const{ return m_assessmentSchedule; }
-
-    /**
-     * <p> Assessment execution schedule with 'Daily' or 'Disabled' values. </p>
-     */
+    inline AppAssessmentScheduleType GetAssessmentSchedule() const { return m_assessmentSchedule; }
     inline bool AssessmentScheduleHasBeenSet() const { return m_assessmentScheduleHasBeenSet; }
+    inline void SetAssessmentSchedule(AppAssessmentScheduleType value) { m_assessmentScheduleHasBeenSet = true; m_assessmentSchedule = value; }
+    inline App& WithAssessmentSchedule(AppAssessmentScheduleType value) { SetAssessmentSchedule(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> Assessment execution schedule with 'Daily' or 'Disabled' values. </p>
+     * <p>Amazon Resource Name (ARN) of Resource Groups group that is integrated with
+     * an AppRegistry application. For more information about ARNs, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
+     * Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General
+     * Reference</i> guide.</p>
      */
-    inline void SetAssessmentSchedule(const AppAssessmentScheduleType& value) { m_assessmentScheduleHasBeenSet = true; m_assessmentSchedule = value; }
+    inline const Aws::String& GetAwsApplicationArn() const { return m_awsApplicationArn; }
+    inline bool AwsApplicationArnHasBeenSet() const { return m_awsApplicationArnHasBeenSet; }
+    template<typename AwsApplicationArnT = Aws::String>
+    void SetAwsApplicationArn(AwsApplicationArnT&& value) { m_awsApplicationArnHasBeenSet = true; m_awsApplicationArn = std::forward<AwsApplicationArnT>(value); }
+    template<typename AwsApplicationArnT = Aws::String>
+    App& WithAwsApplicationArn(AwsApplicationArnT&& value) { SetAwsApplicationArn(std::forward<AwsApplicationArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> Assessment execution schedule with 'Daily' or 'Disabled' values. </p>
+     * <p>Current status of compliance for the resiliency policy.</p>
      */
-    inline void SetAssessmentSchedule(AppAssessmentScheduleType&& value) { m_assessmentScheduleHasBeenSet = true; m_assessmentSchedule = std::move(value); }
-
-    /**
-     * <p> Assessment execution schedule with 'Daily' or 'Disabled' values. </p>
-     */
-    inline App& WithAssessmentSchedule(const AppAssessmentScheduleType& value) { SetAssessmentSchedule(value); return *this;}
-
-    /**
-     * <p> Assessment execution schedule with 'Daily' or 'Disabled' values. </p>
-     */
-    inline App& WithAssessmentSchedule(AppAssessmentScheduleType&& value) { SetAssessmentSchedule(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The current status of compliance for the resiliency policy.</p>
-     */
-    inline const AppComplianceStatusType& GetComplianceStatus() const{ return m_complianceStatus; }
-
-    /**
-     * <p>The current status of compliance for the resiliency policy.</p>
-     */
+    inline AppComplianceStatusType GetComplianceStatus() const { return m_complianceStatus; }
     inline bool ComplianceStatusHasBeenSet() const { return m_complianceStatusHasBeenSet; }
+    inline void SetComplianceStatus(AppComplianceStatusType value) { m_complianceStatusHasBeenSet = true; m_complianceStatus = value; }
+    inline App& WithComplianceStatus(AppComplianceStatusType value) { SetComplianceStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The current status of compliance for the resiliency policy.</p>
+     * <p>Date and time when the application was created.</p>
      */
-    inline void SetComplianceStatus(const AppComplianceStatusType& value) { m_complianceStatusHasBeenSet = true; m_complianceStatus = value; }
-
-    /**
-     * <p>The current status of compliance for the resiliency policy.</p>
-     */
-    inline void SetComplianceStatus(AppComplianceStatusType&& value) { m_complianceStatusHasBeenSet = true; m_complianceStatus = std::move(value); }
-
-    /**
-     * <p>The current status of compliance for the resiliency policy.</p>
-     */
-    inline App& WithComplianceStatus(const AppComplianceStatusType& value) { SetComplianceStatus(value); return *this;}
-
-    /**
-     * <p>The current status of compliance for the resiliency policy.</p>
-     */
-    inline App& WithComplianceStatus(AppComplianceStatusType&& value) { SetComplianceStatus(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The timestamp for when the app was created.</p>
-     */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>The timestamp for when the app was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
     inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    App& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The timestamp for when the app was created.</p>
+     * <p>Optional description for an application.</p>
      */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
-
-    /**
-     * <p>The timestamp for when the app was created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
-
-    /**
-     * <p>The timestamp for when the app was created.</p>
-     */
-    inline App& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The timestamp for when the app was created.</p>
-     */
-    inline App& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The optional description for an app.</p>
-     */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The optional description for an app.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    App& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The optional description for an app.</p>
+     * <p>Indicates if compliance drifts (deviations) were detected while running an
+     * assessment for your application.</p>
      */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline AppDriftStatusType GetDriftStatus() const { return m_driftStatus; }
+    inline bool DriftStatusHasBeenSet() const { return m_driftStatusHasBeenSet; }
+    inline void SetDriftStatus(AppDriftStatusType value) { m_driftStatusHasBeenSet = true; m_driftStatus = value; }
+    inline App& WithDriftStatus(AppDriftStatusType value) { SetDriftStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The optional description for an app.</p>
+     * <p>The list of events you would like to subscribe and get notification for.
+     * Currently, Resilience Hub supports notifications only for <b>Drift detected</b>
+     * and <b>Scheduled assessment failure</b> events.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
+    inline const Aws::Vector<EventSubscription>& GetEventSubscriptions() const { return m_eventSubscriptions; }
+    inline bool EventSubscriptionsHasBeenSet() const { return m_eventSubscriptionsHasBeenSet; }
+    template<typename EventSubscriptionsT = Aws::Vector<EventSubscription>>
+    void SetEventSubscriptions(EventSubscriptionsT&& value) { m_eventSubscriptionsHasBeenSet = true; m_eventSubscriptions = std::forward<EventSubscriptionsT>(value); }
+    template<typename EventSubscriptionsT = Aws::Vector<EventSubscription>>
+    App& WithEventSubscriptions(EventSubscriptionsT&& value) { SetEventSubscriptions(std::forward<EventSubscriptionsT>(value)); return *this;}
+    template<typename EventSubscriptionsT = EventSubscription>
+    App& AddEventSubscriptions(EventSubscriptionsT&& value) { m_eventSubscriptionsHasBeenSet = true; m_eventSubscriptions.emplace_back(std::forward<EventSubscriptionsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The optional description for an app.</p>
+     * <p>Date and time the most recent compliance evaluation.</p>
      */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The optional description for an app.</p>
-     */
-    inline App& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The optional description for an app.</p>
-     */
-    inline App& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The optional description for an app.</p>
-     */
-    inline App& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
-    /**
-     * <p>The timestamp for the most recent compliance evaluation.</p>
-     */
-    inline const Aws::Utils::DateTime& GetLastAppComplianceEvaluationTime() const{ return m_lastAppComplianceEvaluationTime; }
-
-    /**
-     * <p>The timestamp for the most recent compliance evaluation.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastAppComplianceEvaluationTime() const { return m_lastAppComplianceEvaluationTime; }
     inline bool LastAppComplianceEvaluationTimeHasBeenSet() const { return m_lastAppComplianceEvaluationTimeHasBeenSet; }
+    template<typename LastAppComplianceEvaluationTimeT = Aws::Utils::DateTime>
+    void SetLastAppComplianceEvaluationTime(LastAppComplianceEvaluationTimeT&& value) { m_lastAppComplianceEvaluationTimeHasBeenSet = true; m_lastAppComplianceEvaluationTime = std::forward<LastAppComplianceEvaluationTimeT>(value); }
+    template<typename LastAppComplianceEvaluationTimeT = Aws::Utils::DateTime>
+    App& WithLastAppComplianceEvaluationTime(LastAppComplianceEvaluationTimeT&& value) { SetLastAppComplianceEvaluationTime(std::forward<LastAppComplianceEvaluationTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The timestamp for the most recent compliance evaluation.</p>
+     * <p>Indicates the last time that a drift was evaluated.</p>
      */
-    inline void SetLastAppComplianceEvaluationTime(const Aws::Utils::DateTime& value) { m_lastAppComplianceEvaluationTimeHasBeenSet = true; m_lastAppComplianceEvaluationTime = value; }
+    inline const Aws::Utils::DateTime& GetLastDriftEvaluationTime() const { return m_lastDriftEvaluationTime; }
+    inline bool LastDriftEvaluationTimeHasBeenSet() const { return m_lastDriftEvaluationTimeHasBeenSet; }
+    template<typename LastDriftEvaluationTimeT = Aws::Utils::DateTime>
+    void SetLastDriftEvaluationTime(LastDriftEvaluationTimeT&& value) { m_lastDriftEvaluationTimeHasBeenSet = true; m_lastDriftEvaluationTime = std::forward<LastDriftEvaluationTimeT>(value); }
+    template<typename LastDriftEvaluationTimeT = Aws::Utils::DateTime>
+    App& WithLastDriftEvaluationTime(LastDriftEvaluationTimeT&& value) { SetLastDriftEvaluationTime(std::forward<LastDriftEvaluationTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The timestamp for the most recent compliance evaluation.</p>
+     * <p>Date and time the most recent resiliency score evaluation.</p>
      */
-    inline void SetLastAppComplianceEvaluationTime(Aws::Utils::DateTime&& value) { m_lastAppComplianceEvaluationTimeHasBeenSet = true; m_lastAppComplianceEvaluationTime = std::move(value); }
-
-    /**
-     * <p>The timestamp for the most recent compliance evaluation.</p>
-     */
-    inline App& WithLastAppComplianceEvaluationTime(const Aws::Utils::DateTime& value) { SetLastAppComplianceEvaluationTime(value); return *this;}
-
-    /**
-     * <p>The timestamp for the most recent compliance evaluation.</p>
-     */
-    inline App& WithLastAppComplianceEvaluationTime(Aws::Utils::DateTime&& value) { SetLastAppComplianceEvaluationTime(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The timestamp for the most recent resiliency score evaluation.</p>
-     */
-    inline const Aws::Utils::DateTime& GetLastResiliencyScoreEvaluationTime() const{ return m_lastResiliencyScoreEvaluationTime; }
-
-    /**
-     * <p>The timestamp for the most recent resiliency score evaluation.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastResiliencyScoreEvaluationTime() const { return m_lastResiliencyScoreEvaluationTime; }
     inline bool LastResiliencyScoreEvaluationTimeHasBeenSet() const { return m_lastResiliencyScoreEvaluationTimeHasBeenSet; }
+    template<typename LastResiliencyScoreEvaluationTimeT = Aws::Utils::DateTime>
+    void SetLastResiliencyScoreEvaluationTime(LastResiliencyScoreEvaluationTimeT&& value) { m_lastResiliencyScoreEvaluationTimeHasBeenSet = true; m_lastResiliencyScoreEvaluationTime = std::forward<LastResiliencyScoreEvaluationTimeT>(value); }
+    template<typename LastResiliencyScoreEvaluationTimeT = Aws::Utils::DateTime>
+    App& WithLastResiliencyScoreEvaluationTime(LastResiliencyScoreEvaluationTimeT&& value) { SetLastResiliencyScoreEvaluationTime(std::forward<LastResiliencyScoreEvaluationTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The timestamp for the most recent resiliency score evaluation.</p>
+     * <p>Name for the application.</p>
      */
-    inline void SetLastResiliencyScoreEvaluationTime(const Aws::Utils::DateTime& value) { m_lastResiliencyScoreEvaluationTimeHasBeenSet = true; m_lastResiliencyScoreEvaluationTime = value; }
-
-    /**
-     * <p>The timestamp for the most recent resiliency score evaluation.</p>
-     */
-    inline void SetLastResiliencyScoreEvaluationTime(Aws::Utils::DateTime&& value) { m_lastResiliencyScoreEvaluationTimeHasBeenSet = true; m_lastResiliencyScoreEvaluationTime = std::move(value); }
-
-    /**
-     * <p>The timestamp for the most recent resiliency score evaluation.</p>
-     */
-    inline App& WithLastResiliencyScoreEvaluationTime(const Aws::Utils::DateTime& value) { SetLastResiliencyScoreEvaluationTime(value); return *this;}
-
-    /**
-     * <p>The timestamp for the most recent resiliency score evaluation.</p>
-     */
-    inline App& WithLastResiliencyScoreEvaluationTime(Aws::Utils::DateTime&& value) { SetLastResiliencyScoreEvaluationTime(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The name for the application.</p>
-     */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name for the application.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    App& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name for the application.</p>
+     * <p>Defines the roles and credentials that Resilience Hub would use while
+     * creating the application, importing its resources, and running an
+     * assessment.</p>
      */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline const PermissionModel& GetPermissionModel() const { return m_permissionModel; }
+    inline bool PermissionModelHasBeenSet() const { return m_permissionModelHasBeenSet; }
+    template<typename PermissionModelT = PermissionModel>
+    void SetPermissionModel(PermissionModelT&& value) { m_permissionModelHasBeenSet = true; m_permissionModel = std::forward<PermissionModelT>(value); }
+    template<typename PermissionModelT = PermissionModel>
+    App& WithPermissionModel(PermissionModelT&& value) { SetPermissionModel(std::forward<PermissionModelT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name for the application.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name for the application.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name for the application.</p>
-     */
-    inline App& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name for the application.</p>
-     */
-    inline App& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name for the application.</p>
-     */
-    inline App& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resiliency policy. The format for this
-     * ARN is:
+     * <p>Amazon Resource Name (ARN) of the resiliency policy. The format for this ARN
+     * is:
      * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:resiliency-policy/<code>policy-id</code>.
      * For more information about ARNs, see <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
+     * Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General
+     * Reference</i> guide.</p>
      */
-    inline const Aws::String& GetPolicyArn() const{ return m_policyArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resiliency policy. The format for this
-     * ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:resiliency-policy/<code>policy-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
+    inline const Aws::String& GetPolicyArn() const { return m_policyArn; }
     inline bool PolicyArnHasBeenSet() const { return m_policyArnHasBeenSet; }
+    template<typename PolicyArnT = Aws::String>
+    void SetPolicyArn(PolicyArnT&& value) { m_policyArnHasBeenSet = true; m_policyArn = std::forward<PolicyArnT>(value); }
+    template<typename PolicyArnT = Aws::String>
+    App& WithPolicyArn(PolicyArnT&& value) { SetPolicyArn(std::forward<PolicyArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the resiliency policy. The format for this
-     * ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:resiliency-policy/<code>policy-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
+     * <p>Current resiliency score for the application.</p>
      */
-    inline void SetPolicyArn(const Aws::String& value) { m_policyArnHasBeenSet = true; m_policyArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resiliency policy. The format for this
-     * ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:resiliency-policy/<code>policy-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
-    inline void SetPolicyArn(Aws::String&& value) { m_policyArnHasBeenSet = true; m_policyArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resiliency policy. The format for this
-     * ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:resiliency-policy/<code>policy-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
-    inline void SetPolicyArn(const char* value) { m_policyArnHasBeenSet = true; m_policyArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resiliency policy. The format for this
-     * ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:resiliency-policy/<code>policy-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
-    inline App& WithPolicyArn(const Aws::String& value) { SetPolicyArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resiliency policy. The format for this
-     * ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:resiliency-policy/<code>policy-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
-    inline App& WithPolicyArn(Aws::String&& value) { SetPolicyArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resiliency policy. The format for this
-     * ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:resiliency-policy/<code>policy-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
-    inline App& WithPolicyArn(const char* value) { SetPolicyArn(value); return *this;}
-
-
-    /**
-     * <p>The current resiliency score for the application.</p>
-     */
-    inline double GetResiliencyScore() const{ return m_resiliencyScore; }
-
-    /**
-     * <p>The current resiliency score for the application.</p>
-     */
+    inline double GetResiliencyScore() const { return m_resiliencyScore; }
     inline bool ResiliencyScoreHasBeenSet() const { return m_resiliencyScoreHasBeenSet; }
-
-    /**
-     * <p>The current resiliency score for the application.</p>
-     */
     inline void SetResiliencyScore(double value) { m_resiliencyScoreHasBeenSet = true; m_resiliencyScore = value; }
-
-    /**
-     * <p>The current resiliency score for the application.</p>
-     */
     inline App& WithResiliencyScore(double value) { SetResiliencyScore(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>The status of the application.</p>
+     * <p>Recovery Point Objective (RPO) in seconds.</p>
      */
-    inline const AppStatusType& GetStatus() const{ return m_status; }
+    inline int GetRpoInSecs() const { return m_rpoInSecs; }
+    inline bool RpoInSecsHasBeenSet() const { return m_rpoInSecsHasBeenSet; }
+    inline void SetRpoInSecs(int value) { m_rpoInSecsHasBeenSet = true; m_rpoInSecs = value; }
+    inline App& WithRpoInSecs(int value) { SetRpoInSecs(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The status of the application.</p>
+     * <p>Recovery Time Objective (RTO) in seconds.</p>
      */
+    inline int GetRtoInSecs() const { return m_rtoInSecs; }
+    inline bool RtoInSecsHasBeenSet() const { return m_rtoInSecsHasBeenSet; }
+    inline void SetRtoInSecs(int value) { m_rtoInSecsHasBeenSet = true; m_rtoInSecs = value; }
+    inline App& WithRtoInSecs(int value) { SetRtoInSecs(value); return *this;}
+    ///@}
+
+    ///@{
+    /**
+     * <p>Status of the application.</p>
+     */
+    inline AppStatusType GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(AppStatusType value) { m_statusHasBeenSet = true; m_status = value; }
+    inline App& WithStatus(AppStatusType value) { SetStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The status of the application.</p>
+     * <p>Tags assigned to the resource. A tag is a label that you assign to an Amazon
+     * Web Services resource. Each tag consists of a key/value pair.</p>
      */
-    inline void SetStatus(const AppStatusType& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the application.</p>
-     */
-    inline void SetStatus(AppStatusType&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the application.</p>
-     */
-    inline App& WithStatus(const AppStatusType& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the application.</p>
-     */
-    inline App& WithStatus(AppStatusType&& value) { SetStatus(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The tags assigned to the resource. A tag is a label that you assign to an
-     * Amazon Web Services resource. Each tag consists of a key/value pair.</p>
-     */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags assigned to the resource. A tag is a label that you assign to an
-     * Amazon Web Services resource. Each tag consists of a key/value pair.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags assigned to the resource. A tag is a label that you assign to an
-     * Amazon Web Services resource. Each tag consists of a key/value pair.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags assigned to the resource. A tag is a label that you assign to an
-     * Amazon Web Services resource. Each tag consists of a key/value pair.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags assigned to the resource. A tag is a label that you assign to an
-     * Amazon Web Services resource. Each tag consists of a key/value pair.</p>
-     */
-    inline App& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags assigned to the resource. A tag is a label that you assign to an
-     * Amazon Web Services resource. Each tag consists of a key/value pair.</p>
-     */
-    inline App& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags assigned to the resource. A tag is a label that you assign to an
-     * Amazon Web Services resource. Each tag consists of a key/value pair.</p>
-     */
-    inline App& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags assigned to the resource. A tag is a label that you assign to an
-     * Amazon Web Services resource. Each tag consists of a key/value pair.</p>
-     */
-    inline App& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags assigned to the resource. A tag is a label that you assign to an
-     * Amazon Web Services resource. Each tag consists of a key/value pair.</p>
-     */
-    inline App& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags assigned to the resource. A tag is a label that you assign to an
-     * Amazon Web Services resource. Each tag consists of a key/value pair.</p>
-     */
-    inline App& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags assigned to the resource. A tag is a label that you assign to an
-     * Amazon Web Services resource. Each tag consists of a key/value pair.</p>
-     */
-    inline App& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags assigned to the resource. A tag is a label that you assign to an
-     * Amazon Web Services resource. Each tag consists of a key/value pair.</p>
-     */
-    inline App& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags assigned to the resource. A tag is a label that you assign to an
-     * Amazon Web Services resource. Each tag consists of a key/value pair.</p>
-     */
-    inline App& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    App& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    App& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_appArn;
     bool m_appArnHasBeenSet = false;
 
-    AppAssessmentScheduleType m_assessmentSchedule;
+    AppAssessmentScheduleType m_assessmentSchedule{AppAssessmentScheduleType::NOT_SET};
     bool m_assessmentScheduleHasBeenSet = false;
 
-    AppComplianceStatusType m_complianceStatus;
+    Aws::String m_awsApplicationArn;
+    bool m_awsApplicationArnHasBeenSet = false;
+
+    AppComplianceStatusType m_complianceStatus{AppComplianceStatusType::NOT_SET};
     bool m_complianceStatusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
     bool m_creationTimeHasBeenSet = false;
 
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastAppComplianceEvaluationTime;
+    AppDriftStatusType m_driftStatus{AppDriftStatusType::NOT_SET};
+    bool m_driftStatusHasBeenSet = false;
+
+    Aws::Vector<EventSubscription> m_eventSubscriptions;
+    bool m_eventSubscriptionsHasBeenSet = false;
+
+    Aws::Utils::DateTime m_lastAppComplianceEvaluationTime{};
     bool m_lastAppComplianceEvaluationTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastResiliencyScoreEvaluationTime;
+    Aws::Utils::DateTime m_lastDriftEvaluationTime{};
+    bool m_lastDriftEvaluationTimeHasBeenSet = false;
+
+    Aws::Utils::DateTime m_lastResiliencyScoreEvaluationTime{};
     bool m_lastResiliencyScoreEvaluationTimeHasBeenSet = false;
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
+    PermissionModel m_permissionModel;
+    bool m_permissionModelHasBeenSet = false;
+
     Aws::String m_policyArn;
     bool m_policyArnHasBeenSet = false;
 
-    double m_resiliencyScore;
+    double m_resiliencyScore{0.0};
     bool m_resiliencyScoreHasBeenSet = false;
 
-    AppStatusType m_status;
+    int m_rpoInSecs{0};
+    bool m_rpoInSecsHasBeenSet = false;
+
+    int m_rtoInSecs{0};
+    bool m_rtoInSecsHasBeenSet = false;
+
+    AppStatusType m_status{AppStatusType::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;

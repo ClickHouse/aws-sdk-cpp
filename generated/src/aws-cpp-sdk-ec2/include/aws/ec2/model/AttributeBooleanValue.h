@@ -30,7 +30,7 @@ namespace Model
   class AttributeBooleanValue
   {
   public:
-    AWS_EC2_API AttributeBooleanValue();
+    AWS_EC2_API AttributeBooleanValue() = default;
     AWS_EC2_API AttributeBooleanValue(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API AttributeBooleanValue& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -38,33 +38,19 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The attribute value. The valid values are <code>true</code> or
      * <code>false</code>.</p>
      */
-    inline bool GetValue() const{ return m_value; }
-
-    /**
-     * <p>The attribute value. The valid values are <code>true</code> or
-     * <code>false</code>.</p>
-     */
+    inline bool GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The attribute value. The valid values are <code>true</code> or
-     * <code>false</code>.</p>
-     */
     inline void SetValue(bool value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The attribute value. The valid values are <code>true</code> or
-     * <code>false</code>.</p>
-     */
     inline AttributeBooleanValue& WithValue(bool value) { SetValue(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_value;
+    bool m_value{false};
     bool m_valueHasBeenSet = false;
   };
 

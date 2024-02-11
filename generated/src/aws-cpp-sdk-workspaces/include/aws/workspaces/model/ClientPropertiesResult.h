@@ -32,83 +32,35 @@ namespace Model
   class ClientPropertiesResult
   {
   public:
-    AWS_WORKSPACES_API ClientPropertiesResult();
+    AWS_WORKSPACES_API ClientPropertiesResult() = default;
     AWS_WORKSPACES_API ClientPropertiesResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API ClientPropertiesResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The resource identifier, in the form of a directory ID.</p>
      */
-    inline const Aws::String& GetResourceId() const{ return m_resourceId; }
-
-    /**
-     * <p>The resource identifier, in the form of a directory ID.</p>
-     */
+    inline const Aws::String& GetResourceId() const { return m_resourceId; }
     inline bool ResourceIdHasBeenSet() const { return m_resourceIdHasBeenSet; }
+    template<typename ResourceIdT = Aws::String>
+    void SetResourceId(ResourceIdT&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::forward<ResourceIdT>(value); }
+    template<typename ResourceIdT = Aws::String>
+    ClientPropertiesResult& WithResourceId(ResourceIdT&& value) { SetResourceId(std::forward<ResourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The resource identifier, in the form of a directory ID.</p>
-     */
-    inline void SetResourceId(const Aws::String& value) { m_resourceIdHasBeenSet = true; m_resourceId = value; }
-
-    /**
-     * <p>The resource identifier, in the form of a directory ID.</p>
-     */
-    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::move(value); }
-
-    /**
-     * <p>The resource identifier, in the form of a directory ID.</p>
-     */
-    inline void SetResourceId(const char* value) { m_resourceIdHasBeenSet = true; m_resourceId.assign(value); }
-
-    /**
-     * <p>The resource identifier, in the form of a directory ID.</p>
-     */
-    inline ClientPropertiesResult& WithResourceId(const Aws::String& value) { SetResourceId(value); return *this;}
-
-    /**
-     * <p>The resource identifier, in the form of a directory ID.</p>
-     */
-    inline ClientPropertiesResult& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The resource identifier, in the form of a directory ID.</p>
-     */
-    inline ClientPropertiesResult& WithResourceId(const char* value) { SetResourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the Amazon WorkSpaces client.</p>
      */
-    inline const ClientProperties& GetClientProperties() const{ return m_clientProperties; }
-
-    /**
-     * <p>Information about the Amazon WorkSpaces client.</p>
-     */
+    inline const ClientProperties& GetClientProperties() const { return m_clientProperties; }
     inline bool ClientPropertiesHasBeenSet() const { return m_clientPropertiesHasBeenSet; }
-
-    /**
-     * <p>Information about the Amazon WorkSpaces client.</p>
-     */
-    inline void SetClientProperties(const ClientProperties& value) { m_clientPropertiesHasBeenSet = true; m_clientProperties = value; }
-
-    /**
-     * <p>Information about the Amazon WorkSpaces client.</p>
-     */
-    inline void SetClientProperties(ClientProperties&& value) { m_clientPropertiesHasBeenSet = true; m_clientProperties = std::move(value); }
-
-    /**
-     * <p>Information about the Amazon WorkSpaces client.</p>
-     */
-    inline ClientPropertiesResult& WithClientProperties(const ClientProperties& value) { SetClientProperties(value); return *this;}
-
-    /**
-     * <p>Information about the Amazon WorkSpaces client.</p>
-     */
-    inline ClientPropertiesResult& WithClientProperties(ClientProperties&& value) { SetClientProperties(std::move(value)); return *this;}
-
+    template<typename ClientPropertiesT = ClientProperties>
+    void SetClientProperties(ClientPropertiesT&& value) { m_clientPropertiesHasBeenSet = true; m_clientProperties = std::forward<ClientPropertiesT>(value); }
+    template<typename ClientPropertiesT = ClientProperties>
+    ClientPropertiesResult& WithClientProperties(ClientPropertiesT&& value) { SetClientProperties(std::forward<ClientPropertiesT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceId;

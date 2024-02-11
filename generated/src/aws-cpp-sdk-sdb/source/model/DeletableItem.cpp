@@ -20,15 +20,7 @@ namespace SimpleDB
 namespace Model
 {
 
-DeletableItem::DeletableItem() : 
-    m_nameHasBeenSet(false),
-    m_attributesHasBeenSet(false)
-{
-}
-
-DeletableItem::DeletableItem(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_attributesHasBeenSet(false)
+DeletableItem::DeletableItem(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ DeletableItem& DeletableItem::operator =(const XmlNode& xmlNode)
     if(!attributesNode.IsNull())
     {
       XmlNode attributeMember = attributesNode;
+      m_attributesHasBeenSet = !attributeMember.IsNull();
       while(!attributeMember.IsNull())
       {
         m_attributes.push_back(attributeMember);
@@ -75,7 +68,7 @@ void DeletableItem::OutputToStream(Aws::OStream& oStream, const char* location, 
       for(auto& item : m_attributes)
       {
         Aws::StringStream attributesSs;
-        attributesSs << location << index << locationValue << ".Attribute." << attributesIdx++;
+        attributesSs << location << index << locationValue << ".Attributes.Attribute." << attributesIdx++;
         item.OutputToStream(oStream, attributesSs.str().c_str());
       }
   }
@@ -94,7 +87,7 @@ void DeletableItem::OutputToStream(Aws::OStream& oStream, const char* location) 
       for(auto& item : m_attributes)
       {
         Aws::StringStream attributesSs;
-        attributesSs << location <<  ".Attribute." << attributesIdx++;
+        attributesSs << location << ".Attributes.Attribute." << attributesIdx++;
         item.OutputToStream(oStream, attributesSs.str().c_str());
       }
   }

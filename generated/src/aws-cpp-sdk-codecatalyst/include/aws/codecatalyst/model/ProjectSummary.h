@@ -31,142 +31,48 @@ namespace Model
   class ProjectSummary
   {
   public:
-    AWS_CODECATALYST_API ProjectSummary();
+    AWS_CODECATALYST_API ProjectSummary() = default;
     AWS_CODECATALYST_API ProjectSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECATALYST_API ProjectSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECATALYST_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the project in the space.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the project in the space.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ProjectSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the project in the space.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the project in the space.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the project in the space.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the project in the space.</p>
-     */
-    inline ProjectSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the project in the space.</p>
-     */
-    inline ProjectSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the project in the space.</p>
-     */
-    inline ProjectSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The friendly name displayed to users of the project in Amazon
      * CodeCatalyst.</p>
      */
-    inline const Aws::String& GetDisplayName() const{ return m_displayName; }
-
-    /**
-     * <p>The friendly name displayed to users of the project in Amazon
-     * CodeCatalyst.</p>
-     */
+    inline const Aws::String& GetDisplayName() const { return m_displayName; }
     inline bool DisplayNameHasBeenSet() const { return m_displayNameHasBeenSet; }
+    template<typename DisplayNameT = Aws::String>
+    void SetDisplayName(DisplayNameT&& value) { m_displayNameHasBeenSet = true; m_displayName = std::forward<DisplayNameT>(value); }
+    template<typename DisplayNameT = Aws::String>
+    ProjectSummary& WithDisplayName(DisplayNameT&& value) { SetDisplayName(std::forward<DisplayNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The friendly name displayed to users of the project in Amazon
-     * CodeCatalyst.</p>
-     */
-    inline void SetDisplayName(const Aws::String& value) { m_displayNameHasBeenSet = true; m_displayName = value; }
-
-    /**
-     * <p>The friendly name displayed to users of the project in Amazon
-     * CodeCatalyst.</p>
-     */
-    inline void SetDisplayName(Aws::String&& value) { m_displayNameHasBeenSet = true; m_displayName = std::move(value); }
-
-    /**
-     * <p>The friendly name displayed to users of the project in Amazon
-     * CodeCatalyst.</p>
-     */
-    inline void SetDisplayName(const char* value) { m_displayNameHasBeenSet = true; m_displayName.assign(value); }
-
-    /**
-     * <p>The friendly name displayed to users of the project in Amazon
-     * CodeCatalyst.</p>
-     */
-    inline ProjectSummary& WithDisplayName(const Aws::String& value) { SetDisplayName(value); return *this;}
-
-    /**
-     * <p>The friendly name displayed to users of the project in Amazon
-     * CodeCatalyst.</p>
-     */
-    inline ProjectSummary& WithDisplayName(Aws::String&& value) { SetDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The friendly name displayed to users of the project in Amazon
-     * CodeCatalyst.</p>
-     */
-    inline ProjectSummary& WithDisplayName(const char* value) { SetDisplayName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the project.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the project.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>The description of the project.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the project.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the project.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the project.</p>
-     */
-    inline ProjectSummary& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the project.</p>
-     */
-    inline ProjectSummary& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the project.</p>
-     */
-    inline ProjectSummary& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ProjectSummary& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

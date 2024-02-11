@@ -12,13 +12,6 @@ using namespace Aws::ChimeSDKVoice::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreatePhoneNumberOrderRequest::CreatePhoneNumberOrderRequest() : 
-    m_productType(PhoneNumberProductType::NOT_SET),
-    m_productTypeHasBeenSet(false),
-    m_e164PhoneNumbersHasBeenSet(false)
-{
-}
-
 Aws::String CreatePhoneNumberOrderRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -36,6 +29,12 @@ Aws::String CreatePhoneNumberOrderRequest::SerializePayload() const
      e164PhoneNumbersJsonList[e164PhoneNumbersIndex].AsString(m_e164PhoneNumbers[e164PhoneNumbersIndex]);
    }
    payload.WithArray("E164PhoneNumbers", std::move(e164PhoneNumbersJsonList));
+
+  }
+
+  if(m_nameHasBeenSet)
+  {
+   payload.WithString("Name", m_name);
 
   }
 

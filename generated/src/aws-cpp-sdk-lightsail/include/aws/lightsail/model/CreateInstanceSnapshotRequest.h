@@ -23,7 +23,7 @@ namespace Model
   class CreateInstanceSnapshotRequest : public LightsailRequest
   {
   public:
-    AWS_LIGHTSAIL_API CreateInstanceSnapshotRequest();
+    AWS_LIGHTSAIL_API CreateInstanceSnapshotRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,144 +36,45 @@ namespace Model
     AWS_LIGHTSAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name for your new snapshot.</p>
      */
-    inline const Aws::String& GetInstanceSnapshotName() const{ return m_instanceSnapshotName; }
-
-    /**
-     * <p>The name for your new snapshot.</p>
-     */
+    inline const Aws::String& GetInstanceSnapshotName() const { return m_instanceSnapshotName; }
     inline bool InstanceSnapshotNameHasBeenSet() const { return m_instanceSnapshotNameHasBeenSet; }
+    template<typename InstanceSnapshotNameT = Aws::String>
+    void SetInstanceSnapshotName(InstanceSnapshotNameT&& value) { m_instanceSnapshotNameHasBeenSet = true; m_instanceSnapshotName = std::forward<InstanceSnapshotNameT>(value); }
+    template<typename InstanceSnapshotNameT = Aws::String>
+    CreateInstanceSnapshotRequest& WithInstanceSnapshotName(InstanceSnapshotNameT&& value) { SetInstanceSnapshotName(std::forward<InstanceSnapshotNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name for your new snapshot.</p>
-     */
-    inline void SetInstanceSnapshotName(const Aws::String& value) { m_instanceSnapshotNameHasBeenSet = true; m_instanceSnapshotName = value; }
-
-    /**
-     * <p>The name for your new snapshot.</p>
-     */
-    inline void SetInstanceSnapshotName(Aws::String&& value) { m_instanceSnapshotNameHasBeenSet = true; m_instanceSnapshotName = std::move(value); }
-
-    /**
-     * <p>The name for your new snapshot.</p>
-     */
-    inline void SetInstanceSnapshotName(const char* value) { m_instanceSnapshotNameHasBeenSet = true; m_instanceSnapshotName.assign(value); }
-
-    /**
-     * <p>The name for your new snapshot.</p>
-     */
-    inline CreateInstanceSnapshotRequest& WithInstanceSnapshotName(const Aws::String& value) { SetInstanceSnapshotName(value); return *this;}
-
-    /**
-     * <p>The name for your new snapshot.</p>
-     */
-    inline CreateInstanceSnapshotRequest& WithInstanceSnapshotName(Aws::String&& value) { SetInstanceSnapshotName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name for your new snapshot.</p>
-     */
-    inline CreateInstanceSnapshotRequest& WithInstanceSnapshotName(const char* value) { SetInstanceSnapshotName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Lightsail instance on which to base your snapshot.</p>
      */
-    inline const Aws::String& GetInstanceName() const{ return m_instanceName; }
-
-    /**
-     * <p>The Lightsail instance on which to base your snapshot.</p>
-     */
+    inline const Aws::String& GetInstanceName() const { return m_instanceName; }
     inline bool InstanceNameHasBeenSet() const { return m_instanceNameHasBeenSet; }
+    template<typename InstanceNameT = Aws::String>
+    void SetInstanceName(InstanceNameT&& value) { m_instanceNameHasBeenSet = true; m_instanceName = std::forward<InstanceNameT>(value); }
+    template<typename InstanceNameT = Aws::String>
+    CreateInstanceSnapshotRequest& WithInstanceName(InstanceNameT&& value) { SetInstanceName(std::forward<InstanceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Lightsail instance on which to base your snapshot.</p>
-     */
-    inline void SetInstanceName(const Aws::String& value) { m_instanceNameHasBeenSet = true; m_instanceName = value; }
-
-    /**
-     * <p>The Lightsail instance on which to base your snapshot.</p>
-     */
-    inline void SetInstanceName(Aws::String&& value) { m_instanceNameHasBeenSet = true; m_instanceName = std::move(value); }
-
-    /**
-     * <p>The Lightsail instance on which to base your snapshot.</p>
-     */
-    inline void SetInstanceName(const char* value) { m_instanceNameHasBeenSet = true; m_instanceName.assign(value); }
-
-    /**
-     * <p>The Lightsail instance on which to base your snapshot.</p>
-     */
-    inline CreateInstanceSnapshotRequest& WithInstanceName(const Aws::String& value) { SetInstanceName(value); return *this;}
-
-    /**
-     * <p>The Lightsail instance on which to base your snapshot.</p>
-     */
-    inline CreateInstanceSnapshotRequest& WithInstanceName(Aws::String&& value) { SetInstanceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The Lightsail instance on which to base your snapshot.</p>
-     */
-    inline CreateInstanceSnapshotRequest& WithInstanceName(const char* value) { SetInstanceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tag keys and optional values to add to the resource during create.</p>
      * <p>Use the <code>TagResource</code> action to tag a resource after it's
      * created.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tag keys and optional values to add to the resource during create.</p>
-     * <p>Use the <code>TagResource</code> action to tag a resource after it's
-     * created.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tag keys and optional values to add to the resource during create.</p>
-     * <p>Use the <code>TagResource</code> action to tag a resource after it's
-     * created.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tag keys and optional values to add to the resource during create.</p>
-     * <p>Use the <code>TagResource</code> action to tag a resource after it's
-     * created.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tag keys and optional values to add to the resource during create.</p>
-     * <p>Use the <code>TagResource</code> action to tag a resource after it's
-     * created.</p>
-     */
-    inline CreateInstanceSnapshotRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tag keys and optional values to add to the resource during create.</p>
-     * <p>Use the <code>TagResource</code> action to tag a resource after it's
-     * created.</p>
-     */
-    inline CreateInstanceSnapshotRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tag keys and optional values to add to the resource during create.</p>
-     * <p>Use the <code>TagResource</code> action to tag a resource after it's
-     * created.</p>
-     */
-    inline CreateInstanceSnapshotRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The tag keys and optional values to add to the resource during create.</p>
-     * <p>Use the <code>TagResource</code> action to tag a resource after it's
-     * created.</p>
-     */
-    inline CreateInstanceSnapshotRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateInstanceSnapshotRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateInstanceSnapshotRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_instanceSnapshotName;

@@ -36,172 +36,71 @@ namespace Model
   class CmafPackageCreateOrUpdateParameters
   {
   public:
-    AWS_MEDIAPACKAGE_API CmafPackageCreateOrUpdateParameters();
+    AWS_MEDIAPACKAGE_API CmafPackageCreateOrUpdateParameters() = default;
     AWS_MEDIAPACKAGE_API CmafPackageCreateOrUpdateParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIAPACKAGE_API CmafPackageCreateOrUpdateParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIAPACKAGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const CmafEncryption& GetEncryption() const{ return m_encryption; }
-
-    
+    inline const CmafEncryption& GetEncryption() const { return m_encryption; }
     inline bool EncryptionHasBeenSet() const { return m_encryptionHasBeenSet; }
+    template<typename EncryptionT = CmafEncryption>
+    void SetEncryption(EncryptionT&& value) { m_encryptionHasBeenSet = true; m_encryption = std::forward<EncryptionT>(value); }
+    template<typename EncryptionT = CmafEncryption>
+    CmafPackageCreateOrUpdateParameters& WithEncryption(EncryptionT&& value) { SetEncryption(std::forward<EncryptionT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetEncryption(const CmafEncryption& value) { m_encryptionHasBeenSet = true; m_encryption = value; }
-
-    
-    inline void SetEncryption(CmafEncryption&& value) { m_encryptionHasBeenSet = true; m_encryption = std::move(value); }
-
-    
-    inline CmafPackageCreateOrUpdateParameters& WithEncryption(const CmafEncryption& value) { SetEncryption(value); return *this;}
-
-    
-    inline CmafPackageCreateOrUpdateParameters& WithEncryption(CmafEncryption&& value) { SetEncryption(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * A list of HLS manifest configurations
      */
-    inline const Aws::Vector<HlsManifestCreateOrUpdateParameters>& GetHlsManifests() const{ return m_hlsManifests; }
-
-    /**
-     * A list of HLS manifest configurations
-     */
+    inline const Aws::Vector<HlsManifestCreateOrUpdateParameters>& GetHlsManifests() const { return m_hlsManifests; }
     inline bool HlsManifestsHasBeenSet() const { return m_hlsManifestsHasBeenSet; }
+    template<typename HlsManifestsT = Aws::Vector<HlsManifestCreateOrUpdateParameters>>
+    void SetHlsManifests(HlsManifestsT&& value) { m_hlsManifestsHasBeenSet = true; m_hlsManifests = std::forward<HlsManifestsT>(value); }
+    template<typename HlsManifestsT = Aws::Vector<HlsManifestCreateOrUpdateParameters>>
+    CmafPackageCreateOrUpdateParameters& WithHlsManifests(HlsManifestsT&& value) { SetHlsManifests(std::forward<HlsManifestsT>(value)); return *this;}
+    template<typename HlsManifestsT = HlsManifestCreateOrUpdateParameters>
+    CmafPackageCreateOrUpdateParameters& AddHlsManifests(HlsManifestsT&& value) { m_hlsManifestsHasBeenSet = true; m_hlsManifests.emplace_back(std::forward<HlsManifestsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * A list of HLS manifest configurations
-     */
-    inline void SetHlsManifests(const Aws::Vector<HlsManifestCreateOrUpdateParameters>& value) { m_hlsManifestsHasBeenSet = true; m_hlsManifests = value; }
-
-    /**
-     * A list of HLS manifest configurations
-     */
-    inline void SetHlsManifests(Aws::Vector<HlsManifestCreateOrUpdateParameters>&& value) { m_hlsManifestsHasBeenSet = true; m_hlsManifests = std::move(value); }
-
-    /**
-     * A list of HLS manifest configurations
-     */
-    inline CmafPackageCreateOrUpdateParameters& WithHlsManifests(const Aws::Vector<HlsManifestCreateOrUpdateParameters>& value) { SetHlsManifests(value); return *this;}
-
-    /**
-     * A list of HLS manifest configurations
-     */
-    inline CmafPackageCreateOrUpdateParameters& WithHlsManifests(Aws::Vector<HlsManifestCreateOrUpdateParameters>&& value) { SetHlsManifests(std::move(value)); return *this;}
-
-    /**
-     * A list of HLS manifest configurations
-     */
-    inline CmafPackageCreateOrUpdateParameters& AddHlsManifests(const HlsManifestCreateOrUpdateParameters& value) { m_hlsManifestsHasBeenSet = true; m_hlsManifests.push_back(value); return *this; }
-
-    /**
-     * A list of HLS manifest configurations
-     */
-    inline CmafPackageCreateOrUpdateParameters& AddHlsManifests(HlsManifestCreateOrUpdateParameters&& value) { m_hlsManifestsHasBeenSet = true; m_hlsManifests.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * Duration (in seconds) of each segment. Actual segments will be
 rounded to the
      * nearest multiple of the source segment duration.
 
      */
-    inline int GetSegmentDurationSeconds() const{ return m_segmentDurationSeconds; }
-
-    /**
-     * Duration (in seconds) of each segment. Actual segments will be
-rounded to the
-     * nearest multiple of the source segment duration.
-
-     */
+    inline int GetSegmentDurationSeconds() const { return m_segmentDurationSeconds; }
     inline bool SegmentDurationSecondsHasBeenSet() const { return m_segmentDurationSecondsHasBeenSet; }
-
-    /**
-     * Duration (in seconds) of each segment. Actual segments will be
-rounded to the
-     * nearest multiple of the source segment duration.
-
-     */
     inline void SetSegmentDurationSeconds(int value) { m_segmentDurationSecondsHasBeenSet = true; m_segmentDurationSeconds = value; }
-
-    /**
-     * Duration (in seconds) of each segment. Actual segments will be
-rounded to the
-     * nearest multiple of the source segment duration.
-
-     */
     inline CmafPackageCreateOrUpdateParameters& WithSegmentDurationSeconds(int value) { SetSegmentDurationSeconds(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * An optional custom string that is prepended to the name of each segment. If not
      * specified, it defaults to the ChannelId.
      */
-    inline const Aws::String& GetSegmentPrefix() const{ return m_segmentPrefix; }
-
-    /**
-     * An optional custom string that is prepended to the name of each segment. If not
-     * specified, it defaults to the ChannelId.
-     */
+    inline const Aws::String& GetSegmentPrefix() const { return m_segmentPrefix; }
     inline bool SegmentPrefixHasBeenSet() const { return m_segmentPrefixHasBeenSet; }
+    template<typename SegmentPrefixT = Aws::String>
+    void SetSegmentPrefix(SegmentPrefixT&& value) { m_segmentPrefixHasBeenSet = true; m_segmentPrefix = std::forward<SegmentPrefixT>(value); }
+    template<typename SegmentPrefixT = Aws::String>
+    CmafPackageCreateOrUpdateParameters& WithSegmentPrefix(SegmentPrefixT&& value) { SetSegmentPrefix(std::forward<SegmentPrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * An optional custom string that is prepended to the name of each segment. If not
-     * specified, it defaults to the ChannelId.
-     */
-    inline void SetSegmentPrefix(const Aws::String& value) { m_segmentPrefixHasBeenSet = true; m_segmentPrefix = value; }
-
-    /**
-     * An optional custom string that is prepended to the name of each segment. If not
-     * specified, it defaults to the ChannelId.
-     */
-    inline void SetSegmentPrefix(Aws::String&& value) { m_segmentPrefixHasBeenSet = true; m_segmentPrefix = std::move(value); }
-
-    /**
-     * An optional custom string that is prepended to the name of each segment. If not
-     * specified, it defaults to the ChannelId.
-     */
-    inline void SetSegmentPrefix(const char* value) { m_segmentPrefixHasBeenSet = true; m_segmentPrefix.assign(value); }
-
-    /**
-     * An optional custom string that is prepended to the name of each segment. If not
-     * specified, it defaults to the ChannelId.
-     */
-    inline CmafPackageCreateOrUpdateParameters& WithSegmentPrefix(const Aws::String& value) { SetSegmentPrefix(value); return *this;}
-
-    /**
-     * An optional custom string that is prepended to the name of each segment. If not
-     * specified, it defaults to the ChannelId.
-     */
-    inline CmafPackageCreateOrUpdateParameters& WithSegmentPrefix(Aws::String&& value) { SetSegmentPrefix(std::move(value)); return *this;}
-
-    /**
-     * An optional custom string that is prepended to the name of each segment. If not
-     * specified, it defaults to the ChannelId.
-     */
-    inline CmafPackageCreateOrUpdateParameters& WithSegmentPrefix(const char* value) { SetSegmentPrefix(value); return *this;}
-
-
+    ///@{
     
-    inline const StreamSelection& GetStreamSelection() const{ return m_streamSelection; }
-
-    
+    inline const StreamSelection& GetStreamSelection() const { return m_streamSelection; }
     inline bool StreamSelectionHasBeenSet() const { return m_streamSelectionHasBeenSet; }
-
-    
-    inline void SetStreamSelection(const StreamSelection& value) { m_streamSelectionHasBeenSet = true; m_streamSelection = value; }
-
-    
-    inline void SetStreamSelection(StreamSelection&& value) { m_streamSelectionHasBeenSet = true; m_streamSelection = std::move(value); }
-
-    
-    inline CmafPackageCreateOrUpdateParameters& WithStreamSelection(const StreamSelection& value) { SetStreamSelection(value); return *this;}
-
-    
-    inline CmafPackageCreateOrUpdateParameters& WithStreamSelection(StreamSelection&& value) { SetStreamSelection(std::move(value)); return *this;}
-
+    template<typename StreamSelectionT = StreamSelection>
+    void SetStreamSelection(StreamSelectionT&& value) { m_streamSelectionHasBeenSet = true; m_streamSelection = std::forward<StreamSelectionT>(value); }
+    template<typename StreamSelectionT = StreamSelection>
+    CmafPackageCreateOrUpdateParameters& WithStreamSelection(StreamSelectionT&& value) { SetStreamSelection(std::forward<StreamSelectionT>(value)); return *this;}
+    ///@}
   private:
 
     CmafEncryption m_encryption;
@@ -210,7 +109,7 @@ rounded to the
     Aws::Vector<HlsManifestCreateOrUpdateParameters> m_hlsManifests;
     bool m_hlsManifestsHasBeenSet = false;
 
-    int m_segmentDurationSeconds;
+    int m_segmentDurationSeconds{0};
     bool m_segmentDurationSecondsHasBeenSet = false;
 
     Aws::String m_segmentPrefix;

@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ResourceStatementRequest::ResourceStatementRequest() : 
-    m_resourcesHasBeenSet(false),
-    m_resourceTypesHasBeenSet(false)
-{
-}
-
-ResourceStatementRequest::ResourceStatementRequest(const XmlNode& xmlNode) : 
-    m_resourcesHasBeenSet(false),
-    m_resourceTypesHasBeenSet(false)
+ResourceStatementRequest::ResourceStatementRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -43,6 +35,7 @@ ResourceStatementRequest& ResourceStatementRequest::operator =(const XmlNode& xm
     if(!resourcesNode.IsNull())
     {
       XmlNode resourcesMember = resourcesNode.FirstChild("item");
+      m_resourcesHasBeenSet = !resourcesMember.IsNull();
       while(!resourcesMember.IsNull())
       {
         m_resources.push_back(resourcesMember.GetText());
@@ -55,6 +48,7 @@ ResourceStatementRequest& ResourceStatementRequest::operator =(const XmlNode& xm
     if(!resourceTypesNode.IsNull())
     {
       XmlNode resourceTypesMember = resourceTypesNode.FirstChild("item");
+      m_resourceTypesHasBeenSet = !resourceTypesMember.IsNull();
       while(!resourceTypesMember.IsNull())
       {
         m_resourceTypes.push_back(resourceTypesMember.GetText());

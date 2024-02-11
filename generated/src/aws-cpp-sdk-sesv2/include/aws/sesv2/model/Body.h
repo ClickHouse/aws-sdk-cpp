@@ -31,97 +31,39 @@ namespace Model
   class Body
   {
   public:
-    AWS_SESV2_API Body();
+    AWS_SESV2_API Body() = default;
     AWS_SESV2_API Body(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API Body& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An object that represents the version of the message that is displayed in
      * email clients that don't support HTML, or clients where the recipient has
      * disabled HTML rendering.</p>
      */
-    inline const Content& GetText() const{ return m_text; }
-
-    /**
-     * <p>An object that represents the version of the message that is displayed in
-     * email clients that don't support HTML, or clients where the recipient has
-     * disabled HTML rendering.</p>
-     */
+    inline const Content& GetText() const { return m_text; }
     inline bool TextHasBeenSet() const { return m_textHasBeenSet; }
+    template<typename TextT = Content>
+    void SetText(TextT&& value) { m_textHasBeenSet = true; m_text = std::forward<TextT>(value); }
+    template<typename TextT = Content>
+    Body& WithText(TextT&& value) { SetText(std::forward<TextT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that represents the version of the message that is displayed in
-     * email clients that don't support HTML, or clients where the recipient has
-     * disabled HTML rendering.</p>
-     */
-    inline void SetText(const Content& value) { m_textHasBeenSet = true; m_text = value; }
-
-    /**
-     * <p>An object that represents the version of the message that is displayed in
-     * email clients that don't support HTML, or clients where the recipient has
-     * disabled HTML rendering.</p>
-     */
-    inline void SetText(Content&& value) { m_textHasBeenSet = true; m_text = std::move(value); }
-
-    /**
-     * <p>An object that represents the version of the message that is displayed in
-     * email clients that don't support HTML, or clients where the recipient has
-     * disabled HTML rendering.</p>
-     */
-    inline Body& WithText(const Content& value) { SetText(value); return *this;}
-
-    /**
-     * <p>An object that represents the version of the message that is displayed in
-     * email clients that don't support HTML, or clients where the recipient has
-     * disabled HTML rendering.</p>
-     */
-    inline Body& WithText(Content&& value) { SetText(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that represents the version of the message that is displayed in
      * email clients that support HTML. HTML messages can include formatted text,
      * hyperlinks, images, and more. </p>
      */
-    inline const Content& GetHtml() const{ return m_html; }
-
-    /**
-     * <p>An object that represents the version of the message that is displayed in
-     * email clients that support HTML. HTML messages can include formatted text,
-     * hyperlinks, images, and more. </p>
-     */
+    inline const Content& GetHtml() const { return m_html; }
     inline bool HtmlHasBeenSet() const { return m_htmlHasBeenSet; }
-
-    /**
-     * <p>An object that represents the version of the message that is displayed in
-     * email clients that support HTML. HTML messages can include formatted text,
-     * hyperlinks, images, and more. </p>
-     */
-    inline void SetHtml(const Content& value) { m_htmlHasBeenSet = true; m_html = value; }
-
-    /**
-     * <p>An object that represents the version of the message that is displayed in
-     * email clients that support HTML. HTML messages can include formatted text,
-     * hyperlinks, images, and more. </p>
-     */
-    inline void SetHtml(Content&& value) { m_htmlHasBeenSet = true; m_html = std::move(value); }
-
-    /**
-     * <p>An object that represents the version of the message that is displayed in
-     * email clients that support HTML. HTML messages can include formatted text,
-     * hyperlinks, images, and more. </p>
-     */
-    inline Body& WithHtml(const Content& value) { SetHtml(value); return *this;}
-
-    /**
-     * <p>An object that represents the version of the message that is displayed in
-     * email clients that support HTML. HTML messages can include formatted text,
-     * hyperlinks, images, and more. </p>
-     */
-    inline Body& WithHtml(Content&& value) { SetHtml(std::move(value)); return *this;}
-
+    template<typename HtmlT = Content>
+    void SetHtml(HtmlT&& value) { m_htmlHasBeenSet = true; m_html = std::forward<HtmlT>(value); }
+    template<typename HtmlT = Content>
+    Body& WithHtml(HtmlT&& value) { SetHtml(std::forward<HtmlT>(value)); return *this;}
+    ///@}
   private:
 
     Content m_text;

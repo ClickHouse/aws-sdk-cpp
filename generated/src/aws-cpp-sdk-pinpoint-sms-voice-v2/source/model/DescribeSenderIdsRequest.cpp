@@ -12,15 +12,6 @@ using namespace Aws::PinpointSMSVoiceV2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeSenderIdsRequest::DescribeSenderIdsRequest() : 
-    m_senderIdsHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String DescribeSenderIdsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -57,6 +48,11 @@ Aws::String DescribeSenderIdsRequest::SerializePayload() const
   {
    payload.WithInteger("MaxResults", m_maxResults);
 
+  }
+
+  if(m_ownerHasBeenSet)
+  {
+   payload.WithString("Owner", OwnerMapper::GetNameForOwner(m_owner));
   }
 
   return payload.View().WriteReadable();

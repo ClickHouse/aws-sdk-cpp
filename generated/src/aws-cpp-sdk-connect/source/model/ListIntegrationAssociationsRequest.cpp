@@ -15,16 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListIntegrationAssociationsRequest::ListIntegrationAssociationsRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_integrationType(IntegrationType::NOT_SET),
-    m_integrationTypeHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String ListIntegrationAssociationsRequest::SerializePayload() const
 {
   return {};
@@ -51,6 +41,13 @@ void ListIntegrationAssociationsRequest::AddQueryStringParameters(URI& uri) cons
     {
       ss << m_maxResults;
       uri.AddQueryStringParameter("maxResults", ss.str());
+      ss.str("");
+    }
+
+    if(m_integrationArnHasBeenSet)
+    {
+      ss << m_integrationArn;
+      uri.AddQueryStringParameter("integrationArn", ss.str());
       ss.str("");
     }
 

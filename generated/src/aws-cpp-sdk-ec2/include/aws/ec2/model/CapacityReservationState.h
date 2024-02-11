@@ -20,7 +20,14 @@ namespace Model
     expired,
     cancelled,
     pending,
-    failed
+    failed,
+    scheduled,
+    payment_pending,
+    payment_failed,
+    assessing,
+    delayed,
+    unsupported,
+    unavailable
   };
 
 namespace CapacityReservationStateMapper

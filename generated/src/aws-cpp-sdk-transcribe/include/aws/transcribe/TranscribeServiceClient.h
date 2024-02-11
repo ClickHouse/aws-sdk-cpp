@@ -31,22 +31,25 @@ namespace TranscribeService
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef TranscribeServiceClientConfiguration ClientConfigurationType;
+      typedef TranscribeServiceEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         TranscribeServiceClient(const Aws::TranscribeService::TranscribeServiceClientConfiguration& clientConfiguration = Aws::TranscribeService::TranscribeServiceClientConfiguration(),
-                                std::shared_ptr<TranscribeServiceEndpointProviderBase> endpointProvider = Aws::MakeShared<TranscribeServiceEndpointProvider>(ALLOCATION_TAG));
+                                std::shared_ptr<TranscribeServiceEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         TranscribeServiceClient(const Aws::Auth::AWSCredentials& credentials,
-                                std::shared_ptr<TranscribeServiceEndpointProviderBase> endpointProvider = Aws::MakeShared<TranscribeServiceEndpointProvider>(ALLOCATION_TAG),
+                                std::shared_ptr<TranscribeServiceEndpointProviderBase> endpointProvider = nullptr,
                                 const Aws::TranscribeService::TranscribeServiceClientConfiguration& clientConfiguration = Aws::TranscribeService::TranscribeServiceClientConfiguration());
 
        /**
@@ -54,7 +57,7 @@ namespace TranscribeService
         * the default http client factory will be used
         */
         TranscribeServiceClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                                std::shared_ptr<TranscribeServiceEndpointProviderBase> endpointProvider = Aws::MakeShared<TranscribeServiceEndpointProvider>(ALLOCATION_TAG),
+                                std::shared_ptr<TranscribeServiceEndpointProviderBase> endpointProvider = nullptr,
                                 const Aws::TranscribeService::TranscribeServiceClientConfiguration& clientConfiguration = Aws::TranscribeService::TranscribeServiceClientConfiguration());
 
 
@@ -347,6 +350,33 @@ namespace TranscribeService
         }
 
         /**
+         * <p>Deletes a Medical Scribe job. To use this operation, specify the name of the
+         * job you want to delete using <code>MedicalScribeJobName</code>. Job names are
+         * case sensitive.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/DeleteMedicalScribeJob">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteMedicalScribeJobOutcome DeleteMedicalScribeJob(const Model::DeleteMedicalScribeJobRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteMedicalScribeJob that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteMedicalScribeJobRequestT = Model::DeleteMedicalScribeJobRequest>
+        Model::DeleteMedicalScribeJobOutcomeCallable DeleteMedicalScribeJobCallable(const DeleteMedicalScribeJobRequestT& request) const
+        {
+            return SubmitCallable(&TranscribeServiceClient::DeleteMedicalScribeJob, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteMedicalScribeJob that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteMedicalScribeJobRequestT = Model::DeleteMedicalScribeJobRequest>
+        void DeleteMedicalScribeJobAsync(const DeleteMedicalScribeJobRequestT& request, const DeleteMedicalScribeJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&TranscribeServiceClient::DeleteMedicalScribeJob, request, handler, context);
+        }
+
+        /**
          * <p>Deletes a medical transcription job. To use this operation, specify the name
          * of the job you want to delete using <code>MedicalTranscriptionJobName</code>.
          * Job names are case sensitive.</p><p><h3>See Also:</h3>   <a
@@ -577,6 +607,38 @@ namespace TranscribeService
         }
 
         /**
+         * <p>Provides information about the specified Medical Scribe job.</p> <p>To view
+         * the status of the specified medical transcription job, check the
+         * <code>MedicalScribeJobStatus</code> field. If the status is
+         * <code>COMPLETED</code>, the job is finished. You can find the results at the
+         * location specified in <code>MedicalScribeOutput</code>. If the status is
+         * <code>FAILED</code>, <code>FailureReason</code> provides details on why your
+         * Medical Scribe job failed.</p> <p>To get a list of your Medical Scribe jobs, use
+         * the operation.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/GetMedicalScribeJob">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetMedicalScribeJobOutcome GetMedicalScribeJob(const Model::GetMedicalScribeJobRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetMedicalScribeJob that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetMedicalScribeJobRequestT = Model::GetMedicalScribeJobRequest>
+        Model::GetMedicalScribeJobOutcomeCallable GetMedicalScribeJobCallable(const GetMedicalScribeJobRequestT& request) const
+        {
+            return SubmitCallable(&TranscribeServiceClient::GetMedicalScribeJob, request);
+        }
+
+        /**
+         * An Async wrapper for GetMedicalScribeJob that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetMedicalScribeJobRequestT = Model::GetMedicalScribeJobRequest>
+        void GetMedicalScribeJobAsync(const GetMedicalScribeJobRequestT& request, const GetMedicalScribeJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&TranscribeServiceClient::GetMedicalScribeJob, request, handler, context);
+        }
+
+        /**
          * <p>Provides information about the specified medical transcription job.</p> <p>To
          * view the status of the specified medical transcription job, check the
          * <code>TranscriptionJobStatus</code> field. If the status is
@@ -738,13 +800,13 @@ namespace TranscribeService
          * href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/ListCallAnalyticsCategories">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListCallAnalyticsCategoriesOutcome ListCallAnalyticsCategories(const Model::ListCallAnalyticsCategoriesRequest& request) const;
+        virtual Model::ListCallAnalyticsCategoriesOutcome ListCallAnalyticsCategories(const Model::ListCallAnalyticsCategoriesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListCallAnalyticsCategories that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListCallAnalyticsCategoriesRequestT = Model::ListCallAnalyticsCategoriesRequest>
-        Model::ListCallAnalyticsCategoriesOutcomeCallable ListCallAnalyticsCategoriesCallable(const ListCallAnalyticsCategoriesRequestT& request) const
+        Model::ListCallAnalyticsCategoriesOutcomeCallable ListCallAnalyticsCategoriesCallable(const ListCallAnalyticsCategoriesRequestT& request = {}) const
         {
             return SubmitCallable(&TranscribeServiceClient::ListCallAnalyticsCategories, request);
         }
@@ -753,7 +815,7 @@ namespace TranscribeService
          * An Async wrapper for ListCallAnalyticsCategories that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListCallAnalyticsCategoriesRequestT = Model::ListCallAnalyticsCategoriesRequest>
-        void ListCallAnalyticsCategoriesAsync(const ListCallAnalyticsCategoriesRequestT& request, const ListCallAnalyticsCategoriesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListCallAnalyticsCategoriesAsync(const ListCallAnalyticsCategoriesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListCallAnalyticsCategoriesRequestT& request = {}) const
         {
             return SubmitAsync(&TranscribeServiceClient::ListCallAnalyticsCategories, request, handler, context);
         }
@@ -766,13 +828,13 @@ namespace TranscribeService
          * href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/ListCallAnalyticsJobs">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListCallAnalyticsJobsOutcome ListCallAnalyticsJobs(const Model::ListCallAnalyticsJobsRequest& request) const;
+        virtual Model::ListCallAnalyticsJobsOutcome ListCallAnalyticsJobs(const Model::ListCallAnalyticsJobsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListCallAnalyticsJobs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListCallAnalyticsJobsRequestT = Model::ListCallAnalyticsJobsRequest>
-        Model::ListCallAnalyticsJobsOutcomeCallable ListCallAnalyticsJobsCallable(const ListCallAnalyticsJobsRequestT& request) const
+        Model::ListCallAnalyticsJobsOutcomeCallable ListCallAnalyticsJobsCallable(const ListCallAnalyticsJobsRequestT& request = {}) const
         {
             return SubmitCallable(&TranscribeServiceClient::ListCallAnalyticsJobs, request);
         }
@@ -781,7 +843,7 @@ namespace TranscribeService
          * An Async wrapper for ListCallAnalyticsJobs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListCallAnalyticsJobsRequestT = Model::ListCallAnalyticsJobsRequest>
-        void ListCallAnalyticsJobsAsync(const ListCallAnalyticsJobsRequestT& request, const ListCallAnalyticsJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListCallAnalyticsJobsAsync(const ListCallAnalyticsJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListCallAnalyticsJobsRequestT& request = {}) const
         {
             return SubmitAsync(&TranscribeServiceClient::ListCallAnalyticsJobs, request, handler, context);
         }
@@ -794,13 +856,13 @@ namespace TranscribeService
          * href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/ListLanguageModels">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListLanguageModelsOutcome ListLanguageModels(const Model::ListLanguageModelsRequest& request) const;
+        virtual Model::ListLanguageModelsOutcome ListLanguageModels(const Model::ListLanguageModelsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListLanguageModels that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListLanguageModelsRequestT = Model::ListLanguageModelsRequest>
-        Model::ListLanguageModelsOutcomeCallable ListLanguageModelsCallable(const ListLanguageModelsRequestT& request) const
+        Model::ListLanguageModelsOutcomeCallable ListLanguageModelsCallable(const ListLanguageModelsRequestT& request = {}) const
         {
             return SubmitCallable(&TranscribeServiceClient::ListLanguageModels, request);
         }
@@ -809,9 +871,37 @@ namespace TranscribeService
          * An Async wrapper for ListLanguageModels that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListLanguageModelsRequestT = Model::ListLanguageModelsRequest>
-        void ListLanguageModelsAsync(const ListLanguageModelsRequestT& request, const ListLanguageModelsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListLanguageModelsAsync(const ListLanguageModelsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListLanguageModelsRequestT& request = {}) const
         {
             return SubmitAsync(&TranscribeServiceClient::ListLanguageModels, request, handler, context);
+        }
+
+        /**
+         * <p>Provides a list of Medical Scribe jobs that match the specified criteria. If
+         * no criteria are specified, all Medical Scribe jobs are returned.</p> <p>To get
+         * detailed information about a specific Medical Scribe job, use the
+         * operation.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/ListMedicalScribeJobs">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListMedicalScribeJobsOutcome ListMedicalScribeJobs(const Model::ListMedicalScribeJobsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ListMedicalScribeJobs that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListMedicalScribeJobsRequestT = Model::ListMedicalScribeJobsRequest>
+        Model::ListMedicalScribeJobsOutcomeCallable ListMedicalScribeJobsCallable(const ListMedicalScribeJobsRequestT& request = {}) const
+        {
+            return SubmitCallable(&TranscribeServiceClient::ListMedicalScribeJobs, request);
+        }
+
+        /**
+         * An Async wrapper for ListMedicalScribeJobs that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListMedicalScribeJobsRequestT = Model::ListMedicalScribeJobsRequest>
+        void ListMedicalScribeJobsAsync(const ListMedicalScribeJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListMedicalScribeJobsRequestT& request = {}) const
+        {
+            return SubmitAsync(&TranscribeServiceClient::ListMedicalScribeJobs, request, handler, context);
         }
 
         /**
@@ -822,13 +912,13 @@ namespace TranscribeService
          * href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/ListMedicalTranscriptionJobs">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListMedicalTranscriptionJobsOutcome ListMedicalTranscriptionJobs(const Model::ListMedicalTranscriptionJobsRequest& request) const;
+        virtual Model::ListMedicalTranscriptionJobsOutcome ListMedicalTranscriptionJobs(const Model::ListMedicalTranscriptionJobsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListMedicalTranscriptionJobs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListMedicalTranscriptionJobsRequestT = Model::ListMedicalTranscriptionJobsRequest>
-        Model::ListMedicalTranscriptionJobsOutcomeCallable ListMedicalTranscriptionJobsCallable(const ListMedicalTranscriptionJobsRequestT& request) const
+        Model::ListMedicalTranscriptionJobsOutcomeCallable ListMedicalTranscriptionJobsCallable(const ListMedicalTranscriptionJobsRequestT& request = {}) const
         {
             return SubmitCallable(&TranscribeServiceClient::ListMedicalTranscriptionJobs, request);
         }
@@ -837,7 +927,7 @@ namespace TranscribeService
          * An Async wrapper for ListMedicalTranscriptionJobs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListMedicalTranscriptionJobsRequestT = Model::ListMedicalTranscriptionJobsRequest>
-        void ListMedicalTranscriptionJobsAsync(const ListMedicalTranscriptionJobsRequestT& request, const ListMedicalTranscriptionJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListMedicalTranscriptionJobsAsync(const ListMedicalTranscriptionJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListMedicalTranscriptionJobsRequestT& request = {}) const
         {
             return SubmitAsync(&TranscribeServiceClient::ListMedicalTranscriptionJobs, request, handler, context);
         }
@@ -850,13 +940,13 @@ namespace TranscribeService
          * href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/ListMedicalVocabularies">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListMedicalVocabulariesOutcome ListMedicalVocabularies(const Model::ListMedicalVocabulariesRequest& request) const;
+        virtual Model::ListMedicalVocabulariesOutcome ListMedicalVocabularies(const Model::ListMedicalVocabulariesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListMedicalVocabularies that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListMedicalVocabulariesRequestT = Model::ListMedicalVocabulariesRequest>
-        Model::ListMedicalVocabulariesOutcomeCallable ListMedicalVocabulariesCallable(const ListMedicalVocabulariesRequestT& request) const
+        Model::ListMedicalVocabulariesOutcomeCallable ListMedicalVocabulariesCallable(const ListMedicalVocabulariesRequestT& request = {}) const
         {
             return SubmitCallable(&TranscribeServiceClient::ListMedicalVocabularies, request);
         }
@@ -865,7 +955,7 @@ namespace TranscribeService
          * An Async wrapper for ListMedicalVocabularies that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListMedicalVocabulariesRequestT = Model::ListMedicalVocabulariesRequest>
-        void ListMedicalVocabulariesAsync(const ListMedicalVocabulariesRequestT& request, const ListMedicalVocabulariesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListMedicalVocabulariesAsync(const ListMedicalVocabulariesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListMedicalVocabulariesRequestT& request = {}) const
         {
             return SubmitAsync(&TranscribeServiceClient::ListMedicalVocabularies, request, handler, context);
         }
@@ -907,13 +997,13 @@ namespace TranscribeService
          * href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/ListTranscriptionJobs">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListTranscriptionJobsOutcome ListTranscriptionJobs(const Model::ListTranscriptionJobsRequest& request) const;
+        virtual Model::ListTranscriptionJobsOutcome ListTranscriptionJobs(const Model::ListTranscriptionJobsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListTranscriptionJobs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListTranscriptionJobsRequestT = Model::ListTranscriptionJobsRequest>
-        Model::ListTranscriptionJobsOutcomeCallable ListTranscriptionJobsCallable(const ListTranscriptionJobsRequestT& request) const
+        Model::ListTranscriptionJobsOutcomeCallable ListTranscriptionJobsCallable(const ListTranscriptionJobsRequestT& request = {}) const
         {
             return SubmitCallable(&TranscribeServiceClient::ListTranscriptionJobs, request);
         }
@@ -922,7 +1012,7 @@ namespace TranscribeService
          * An Async wrapper for ListTranscriptionJobs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListTranscriptionJobsRequestT = Model::ListTranscriptionJobsRequest>
-        void ListTranscriptionJobsAsync(const ListTranscriptionJobsRequestT& request, const ListTranscriptionJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListTranscriptionJobsAsync(const ListTranscriptionJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListTranscriptionJobsRequestT& request = {}) const
         {
             return SubmitAsync(&TranscribeServiceClient::ListTranscriptionJobs, request, handler, context);
         }
@@ -935,13 +1025,13 @@ namespace TranscribeService
          * href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/ListVocabularies">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListVocabulariesOutcome ListVocabularies(const Model::ListVocabulariesRequest& request) const;
+        virtual Model::ListVocabulariesOutcome ListVocabularies(const Model::ListVocabulariesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListVocabularies that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListVocabulariesRequestT = Model::ListVocabulariesRequest>
-        Model::ListVocabulariesOutcomeCallable ListVocabulariesCallable(const ListVocabulariesRequestT& request) const
+        Model::ListVocabulariesOutcomeCallable ListVocabulariesCallable(const ListVocabulariesRequestT& request = {}) const
         {
             return SubmitCallable(&TranscribeServiceClient::ListVocabularies, request);
         }
@@ -950,7 +1040,7 @@ namespace TranscribeService
          * An Async wrapper for ListVocabularies that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListVocabulariesRequestT = Model::ListVocabulariesRequest>
-        void ListVocabulariesAsync(const ListVocabulariesRequestT& request, const ListVocabulariesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListVocabulariesAsync(const ListVocabulariesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListVocabulariesRequestT& request = {}) const
         {
             return SubmitAsync(&TranscribeServiceClient::ListVocabularies, request, handler, context);
         }
@@ -963,13 +1053,13 @@ namespace TranscribeService
          * href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/ListVocabularyFilters">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListVocabularyFiltersOutcome ListVocabularyFilters(const Model::ListVocabularyFiltersRequest& request) const;
+        virtual Model::ListVocabularyFiltersOutcome ListVocabularyFilters(const Model::ListVocabularyFiltersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListVocabularyFilters that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListVocabularyFiltersRequestT = Model::ListVocabularyFiltersRequest>
-        Model::ListVocabularyFiltersOutcomeCallable ListVocabularyFiltersCallable(const ListVocabularyFiltersRequestT& request) const
+        Model::ListVocabularyFiltersOutcomeCallable ListVocabularyFiltersCallable(const ListVocabularyFiltersRequestT& request = {}) const
         {
             return SubmitCallable(&TranscribeServiceClient::ListVocabularyFilters, request);
         }
@@ -978,7 +1068,7 @@ namespace TranscribeService
          * An Async wrapper for ListVocabularyFilters that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListVocabularyFiltersRequestT = Model::ListVocabularyFiltersRequest>
-        void ListVocabularyFiltersAsync(const ListVocabularyFiltersRequestT& request, const ListVocabularyFiltersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListVocabularyFiltersAsync(const ListVocabularyFiltersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListVocabularyFiltersRequestT& request = {}) const
         {
             return SubmitAsync(&TranscribeServiceClient::ListVocabularyFilters, request, handler, context);
         }
@@ -1003,27 +1093,27 @@ namespace TranscribeService
          * categories for real-time transcriptions</a>.</p> <p>To make a
          * <code>StartCallAnalyticsJob</code> request, you must first upload your media
          * file into an Amazon S3 bucket; you can then specify the Amazon S3 location of
-         * the file using the <code>Media</code> parameter.</p> <p>Note that job queuing is
-         * enabled by default for Call Analytics jobs.</p> <p>You must include the
-         * following parameters in your <code>StartCallAnalyticsJob</code> request:</p>
-         * <ul> <li> <p> <code>region</code>: The Amazon Web Services Region where you are
-         * making your request. For a list of Amazon Web Services Regions supported with
-         * Amazon Transcribe, refer to <a
+         * the file using the <code>Media</code> parameter.</p> <p>Job queuing is available
+         * for Call Analytics jobs. If you pass a <code>DataAccessRoleArn</code> in your
+         * request and you exceed your Concurrent Job Limit, your job will automatically be
+         * added to a queue to be processed once your concurrent job count is below the
+         * limit.</p> <p>You must include the following parameters in your
+         * <code>StartCallAnalyticsJob</code> request:</p> <ul> <li> <p>
+         * <code>region</code>: The Amazon Web Services Region where you are making your
+         * request. For a list of Amazon Web Services Regions supported with Amazon
+         * Transcribe, refer to <a
          * href="https://docs.aws.amazon.com/general/latest/gr/transcribe.html">Amazon
          * Transcribe endpoints and quotas</a>.</p> </li> <li> <p>
          * <code>CallAnalyticsJobName</code>: A custom name that you create for your
          * transcription job that's unique within your Amazon Web Services account.</p>
-         * </li> <li> <p> <code>DataAccessRoleArn</code>: The Amazon Resource Name (ARN) of
-         * an IAM role that has permissions to access the Amazon S3 bucket that contains
-         * your input files.</p> </li> <li> <p> <code>Media</code>
-         * (<code>MediaFileUri</code> or <code>RedactedMediaFileUri</code>): The Amazon S3
-         * location of your media file.</p> </li> </ul>  <p>With Call Analytics, you
-         * can redact the audio contained in your media file by including
-         * <code>RedactedMediaFileUri</code>, instead of <code>MediaFileUri</code>, to
-         * specify the location of your input audio. If you choose to redact your audio,
-         * you can find your redacted media at the location specified in the
-         * <code>RedactedMediaFileUri</code> field of your response.</p> <p><h3>See
-         * Also:</h3>   <a
+         * </li> <li> <p> <code>Media</code> (<code>MediaFileUri</code> or
+         * <code>RedactedMediaFileUri</code>): The Amazon S3 location of your media
+         * file.</p> </li> </ul>  <p>With Call Analytics, you can redact the audio
+         * contained in your media file by including <code>RedactedMediaFileUri</code>,
+         * instead of <code>MediaFileUri</code>, to specify the location of your input
+         * audio. If you choose to redact your audio, you can find your redacted media at
+         * the location specified in the <code>RedactedMediaFileUri</code> field of your
+         * response.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/StartCallAnalyticsJob">AWS
          * API Reference</a></p>
          */
@@ -1048,6 +1138,60 @@ namespace TranscribeService
         }
 
         /**
+         * <p>Transcribes patient-clinician conversations and generates clinical notes.
+         * </p> <p>Amazon Web Services HealthScribe automatically provides rich
+         * conversation transcripts, identifies speaker roles, classifies dialogues,
+         * extracts medical terms, and generates preliminary clinical notes. To learn more
+         * about these features, refer to <a
+         * href="https://docs.aws.amazon.com/transcribe/latest/dg/health-scribe.html">Amazon
+         * Web Services HealthScribe</a>.</p> <p>To make a
+         * <code>StartMedicalScribeJob</code> request, you must first upload your media
+         * file into an Amazon S3 bucket; you can then specify the Amazon S3 location of
+         * the file using the <code>Media</code> parameter.</p> <p>You must include the
+         * following parameters in your <code>StartMedicalTranscriptionJob</code>
+         * request:</p> <ul> <li> <p> <code>DataAccessRoleArn</code>: The ARN of an IAM
+         * role with the these minimum permissions: read permission on input file Amazon S3
+         * bucket specified in <code>Media</code>, write permission on the Amazon S3 bucket
+         * specified in <code>OutputBucketName</code>, and full permissions on the KMS key
+         * specified in <code>OutputEncryptionKMSKeyId</code> (if set). The role should
+         * also allow <code>transcribe.amazonaws.com</code> to assume it. </p> </li> <li>
+         * <p> <code>Media</code> (<code>MediaFileUri</code>): The Amazon S3 location of
+         * your media file.</p> </li> <li> <p> <code>MedicalScribeJobName</code>: A custom
+         * name you create for your MedicalScribe job that is unique within your Amazon Web
+         * Services account.</p> </li> <li> <p> <code>OutputBucketName</code>: The Amazon
+         * S3 bucket where you want your output files stored.</p> </li> <li> <p>
+         * <code>Settings</code>: A <code>MedicalScribeSettings</code> object that must set
+         * exactly one of <code>ShowSpeakerLabels</code> or
+         * <code>ChannelIdentification</code> to true. If <code>ShowSpeakerLabels</code> is
+         * true, <code>MaxSpeakerLabels</code> must also be set. </p> </li> <li> <p>
+         * <code>ChannelDefinitions</code>: A <code>MedicalScribeChannelDefinitions</code>
+         * array should be set if and only if the <code>ChannelIdentification</code> value
+         * of <code>Settings</code> is set to true. </p> </li> </ul><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/StartMedicalScribeJob">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::StartMedicalScribeJobOutcome StartMedicalScribeJob(const Model::StartMedicalScribeJobRequest& request) const;
+
+        /**
+         * A Callable wrapper for StartMedicalScribeJob that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename StartMedicalScribeJobRequestT = Model::StartMedicalScribeJobRequest>
+        Model::StartMedicalScribeJobOutcomeCallable StartMedicalScribeJobCallable(const StartMedicalScribeJobRequestT& request) const
+        {
+            return SubmitCallable(&TranscribeServiceClient::StartMedicalScribeJob, request);
+        }
+
+        /**
+         * An Async wrapper for StartMedicalScribeJob that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename StartMedicalScribeJobRequestT = Model::StartMedicalScribeJobRequest>
+        void StartMedicalScribeJobAsync(const StartMedicalScribeJobRequestT& request, const StartMedicalScribeJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&TranscribeServiceClient::StartMedicalScribeJob, request, handler, context);
+        }
+
+        /**
          * <p>Transcribes the audio from a medical dictation or conversation and applies
          * any additional Request Parameters you choose to include in your request.</p>
          * <p>In addition to many standard transcription features, Amazon Transcribe
@@ -1057,8 +1201,8 @@ namespace TranscribeService
          * href="https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works-med.html">How
          * Amazon Transcribe Medical works</a>.</p> <p>To make a
          * <code>StartMedicalTranscriptionJob</code> request, you must first upload your
-         * media file into an Amazon S3 bucket; you can then specify the S3 location of the
-         * file using the <code>Media</code> parameter.</p> <p>You must include the
+         * media file into an Amazon S3 bucket; you can then specify the Amazon S3 location
+         * of the file using the <code>Media</code> parameter.</p> <p>You must include the
          * following parameters in your <code>StartMedicalTranscriptionJob</code>
          * request:</p> <ul> <li> <p> <code>region</code>: The Amazon Web Services Region
          * where you are making your request. For a list of Amazon Web Services Regions
@@ -1120,7 +1264,7 @@ namespace TranscribeService
          * <code>LanguageCode</code> parameter; you can find all valid language codes in
          * the <a
          * href="https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html">Supported
-         * languages</a> table. If you don't know the languages spoken in your media, use
+         * languages</a> table. If you do not know the languages spoken in your media, use
          * either <code>IdentifyLanguage</code> or <code>IdentifyMultipleLanguages</code>
          * and let Amazon Transcribe identify the languages for you.</p> </li>
          * </ul><p><h3>See Also:</h3>   <a
@@ -1322,7 +1466,6 @@ namespace TranscribeService
       void init(const TranscribeServiceClientConfiguration& clientConfiguration);
 
       TranscribeServiceClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<TranscribeServiceEndpointProviderBase> m_endpointProvider;
   };
 

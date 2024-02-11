@@ -21,7 +21,7 @@ namespace Model
   class ListIdentityProvidersRequest : public CognitoIdentityProviderRequest
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API ListIdentityProvidersRequest();
+    AWS_COGNITOIDENTITYPROVIDER_API ListIdentityProvidersRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,114 +34,51 @@ namespace Model
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The user pool ID.</p>
+     * <p>The ID of the user pool where you want to list IdPs.</p>
      */
-    inline const Aws::String& GetUserPoolId() const{ return m_userPoolId; }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
+    inline const Aws::String& GetUserPoolId() const { return m_userPoolId; }
     inline bool UserPoolIdHasBeenSet() const { return m_userPoolIdHasBeenSet; }
+    template<typename UserPoolIdT = Aws::String>
+    void SetUserPoolId(UserPoolIdT&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::forward<UserPoolIdT>(value); }
+    template<typename UserPoolIdT = Aws::String>
+    ListIdentityProvidersRequest& WithUserPoolId(UserPoolIdT&& value) { SetUserPoolId(std::forward<UserPoolIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The user pool ID.</p>
+     * <p>The maximum number of IdPs that you want Amazon Cognito to return in the
+     * response.</p>
      */
-    inline void SetUserPoolId(const Aws::String& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = value; }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::move(value); }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline void SetUserPoolId(const char* value) { m_userPoolIdHasBeenSet = true; m_userPoolId.assign(value); }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline ListIdentityProvidersRequest& WithUserPoolId(const Aws::String& value) { SetUserPoolId(value); return *this;}
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline ListIdentityProvidersRequest& WithUserPoolId(Aws::String&& value) { SetUserPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline ListIdentityProvidersRequest& WithUserPoolId(const char* value) { SetUserPoolId(value); return *this;}
-
-
-    /**
-     * <p>The maximum number of IdPs to return.</p>
-     */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of IdPs to return.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of IdPs to return.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of IdPs to return.</p>
-     */
     inline ListIdentityProvidersRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>A pagination token.</p>
+     * <p>This API operation returns a limited number of results. The pagination token
+     * is an identifier that you can present in an additional API request with the same
+     * parameters. When you include the pagination token, Amazon Cognito returns the
+     * next set of items after the current list. Subsequent requests return a new
+     * pagination token. By use of this token, you can paginate through the full list
+     * of items.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>A pagination token.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>A pagination token.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>A pagination token.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>A pagination token.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>A pagination token.</p>
-     */
-    inline ListIdentityProvidersRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A pagination token.</p>
-     */
-    inline ListIdentityProvidersRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A pagination token.</p>
-     */
-    inline ListIdentityProvidersRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListIdentityProvidersRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userPoolId;
     bool m_userPoolIdHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

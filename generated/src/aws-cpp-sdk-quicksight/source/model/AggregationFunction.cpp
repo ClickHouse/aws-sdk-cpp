@@ -18,21 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-AggregationFunction::AggregationFunction() : 
-    m_numericalAggregationFunctionHasBeenSet(false),
-    m_categoricalAggregationFunction(CategoricalAggregationFunction::NOT_SET),
-    m_categoricalAggregationFunctionHasBeenSet(false),
-    m_dateAggregationFunction(DateAggregationFunction::NOT_SET),
-    m_dateAggregationFunctionHasBeenSet(false)
-{
-}
-
-AggregationFunction::AggregationFunction(JsonView jsonValue) : 
-    m_numericalAggregationFunctionHasBeenSet(false),
-    m_categoricalAggregationFunction(CategoricalAggregationFunction::NOT_SET),
-    m_categoricalAggregationFunctionHasBeenSet(false),
-    m_dateAggregationFunction(DateAggregationFunction::NOT_SET),
-    m_dateAggregationFunctionHasBeenSet(false)
+AggregationFunction::AggregationFunction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,23 @@ AggregationFunction& AggregationFunction::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("NumericalAggregationFunction"))
   {
     m_numericalAggregationFunction = jsonValue.GetObject("NumericalAggregationFunction");
-
     m_numericalAggregationFunctionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CategoricalAggregationFunction"))
   {
     m_categoricalAggregationFunction = CategoricalAggregationFunctionMapper::GetCategoricalAggregationFunctionForName(jsonValue.GetString("CategoricalAggregationFunction"));
-
     m_categoricalAggregationFunctionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DateAggregationFunction"))
   {
     m_dateAggregationFunction = DateAggregationFunctionMapper::GetDateAggregationFunctionForName(jsonValue.GetString("DateAggregationFunction"));
-
     m_dateAggregationFunctionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("AttributeAggregationFunction"))
+  {
+    m_attributeAggregationFunction = jsonValue.GetObject("AttributeAggregationFunction");
+    m_attributeAggregationFunctionHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -81,6 +66,12 @@ JsonValue AggregationFunction::Jsonize() const
   if(m_dateAggregationFunctionHasBeenSet)
   {
    payload.WithString("DateAggregationFunction", DateAggregationFunctionMapper::GetNameForDateAggregationFunction(m_dateAggregationFunction));
+  }
+
+  if(m_attributeAggregationFunctionHasBeenSet)
+  {
+   payload.WithObject("AttributeAggregationFunction", m_attributeAggregationFunction.Jsonize());
+
   }
 
   return payload;

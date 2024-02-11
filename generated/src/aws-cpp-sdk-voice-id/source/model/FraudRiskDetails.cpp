@@ -18,15 +18,7 @@ namespace VoiceID
 namespace Model
 {
 
-FraudRiskDetails::FraudRiskDetails() : 
-    m_knownFraudsterRiskHasBeenSet(false),
-    m_voiceSpoofingRiskHasBeenSet(false)
-{
-}
-
-FraudRiskDetails::FraudRiskDetails(JsonView jsonValue) : 
-    m_knownFraudsterRiskHasBeenSet(false),
-    m_voiceSpoofingRiskHasBeenSet(false)
+FraudRiskDetails::FraudRiskDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ FraudRiskDetails& FraudRiskDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("KnownFraudsterRisk"))
   {
     m_knownFraudsterRisk = jsonValue.GetObject("KnownFraudsterRisk");
-
     m_knownFraudsterRiskHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VoiceSpoofingRisk"))
   {
     m_voiceSpoofingRisk = jsonValue.GetObject("VoiceSpoofingRisk");
-
     m_voiceSpoofingRiskHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace EMRContainers
 namespace Model
 {
 
-ParametricConfigurationOverrides::ParametricConfigurationOverrides() : 
-    m_applicationConfigurationHasBeenSet(false),
-    m_monitoringConfigurationHasBeenSet(false)
-{
-}
-
-ParametricConfigurationOverrides::ParametricConfigurationOverrides(JsonView jsonValue) : 
-    m_applicationConfigurationHasBeenSet(false),
-    m_monitoringConfigurationHasBeenSet(false)
+ParametricConfigurationOverrides::ParametricConfigurationOverrides(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ ParametricConfigurationOverrides& ParametricConfigurationOverrides::operator =(J
     }
     m_applicationConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("monitoringConfiguration"))
   {
     m_monitoringConfiguration = jsonValue.GetObject("monitoringConfiguration");
-
     m_monitoringConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

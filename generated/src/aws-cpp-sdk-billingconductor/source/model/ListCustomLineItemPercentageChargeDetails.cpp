@@ -18,15 +18,7 @@ namespace BillingConductor
 namespace Model
 {
 
-ListCustomLineItemPercentageChargeDetails::ListCustomLineItemPercentageChargeDetails() : 
-    m_percentageValue(0.0),
-    m_percentageValueHasBeenSet(false)
-{
-}
-
-ListCustomLineItemPercentageChargeDetails::ListCustomLineItemPercentageChargeDetails(JsonView jsonValue) : 
-    m_percentageValue(0.0),
-    m_percentageValueHasBeenSet(false)
+ListCustomLineItemPercentageChargeDetails::ListCustomLineItemPercentageChargeDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ListCustomLineItemPercentageChargeDetails& ListCustomLineItemPercentageChargeDet
   if(jsonValue.ValueExists("PercentageValue"))
   {
     m_percentageValue = jsonValue.GetDouble("PercentageValue");
-
     m_percentageValueHasBeenSet = true;
   }
-
   return *this;
 }
 

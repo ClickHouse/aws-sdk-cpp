@@ -6,6 +6,7 @@
 #include <aws/cloudfront/model/GetFunction2020_05_31Request.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,12 +17,6 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-GetFunction2020_05_31Request::GetFunction2020_05_31Request() : 
-    m_nameHasBeenSet(false),
-    m_stage(FunctionStage::NOT_SET),
-    m_stageHasBeenSet(false)
-{
-}
 
 Aws::String GetFunction2020_05_31Request::SerializePayload() const
 {

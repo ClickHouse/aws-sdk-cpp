@@ -35,379 +35,189 @@ namespace Model
   class UnlockRuleResult
   {
   public:
-    AWS_RECYCLEBIN_API UnlockRuleResult();
+    AWS_RECYCLEBIN_API UnlockRuleResult() = default;
     AWS_RECYCLEBIN_API UnlockRuleResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_RECYCLEBIN_API UnlockRuleResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The unique ID of the retention rule.</p>
      */
-    inline const Aws::String& GetIdentifier() const{ return m_identifier; }
+    inline const Aws::String& GetIdentifier() const { return m_identifier; }
+    template<typename IdentifierT = Aws::String>
+    void SetIdentifier(IdentifierT&& value) { m_identifierHasBeenSet = true; m_identifier = std::forward<IdentifierT>(value); }
+    template<typename IdentifierT = Aws::String>
+    UnlockRuleResult& WithIdentifier(IdentifierT&& value) { SetIdentifier(std::forward<IdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID of the retention rule.</p>
-     */
-    inline void SetIdentifier(const Aws::String& value) { m_identifier = value; }
-
-    /**
-     * <p>The unique ID of the retention rule.</p>
-     */
-    inline void SetIdentifier(Aws::String&& value) { m_identifier = std::move(value); }
-
-    /**
-     * <p>The unique ID of the retention rule.</p>
-     */
-    inline void SetIdentifier(const char* value) { m_identifier.assign(value); }
-
-    /**
-     * <p>The unique ID of the retention rule.</p>
-     */
-    inline UnlockRuleResult& WithIdentifier(const Aws::String& value) { SetIdentifier(value); return *this;}
-
-    /**
-     * <p>The unique ID of the retention rule.</p>
-     */
-    inline UnlockRuleResult& WithIdentifier(Aws::String&& value) { SetIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of the retention rule.</p>
-     */
-    inline UnlockRuleResult& WithIdentifier(const char* value) { SetIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The retention rule description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UnlockRuleResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The retention rule description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>The retention rule description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>The retention rule description.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>The retention rule description.</p>
-     */
-    inline UnlockRuleResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The retention rule description.</p>
-     */
-    inline UnlockRuleResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The retention rule description.</p>
-     */
-    inline UnlockRuleResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The resource type retained by the retention rule.</p>
      */
-    inline const ResourceType& GetResourceType() const{ return m_resourceType; }
+    inline ResourceType GetResourceType() const { return m_resourceType; }
+    inline void SetResourceType(ResourceType value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
+    inline UnlockRuleResult& WithResourceType(ResourceType value) { SetResourceType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The resource type retained by the retention rule.</p>
-     */
-    inline void SetResourceType(const ResourceType& value) { m_resourceType = value; }
-
-    /**
-     * <p>The resource type retained by the retention rule.</p>
-     */
-    inline void SetResourceType(ResourceType&& value) { m_resourceType = std::move(value); }
-
-    /**
-     * <p>The resource type retained by the retention rule.</p>
-     */
-    inline UnlockRuleResult& WithResourceType(const ResourceType& value) { SetResourceType(value); return *this;}
-
-    /**
-     * <p>The resource type retained by the retention rule.</p>
-     */
-    inline UnlockRuleResult& WithResourceType(ResourceType&& value) { SetResourceType(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const RetentionPeriod& GetRetentionPeriod() const{ return m_retentionPeriod; }
+    inline const RetentionPeriod& GetRetentionPeriod() const { return m_retentionPeriod; }
+    template<typename RetentionPeriodT = RetentionPeriod>
+    void SetRetentionPeriod(RetentionPeriodT&& value) { m_retentionPeriodHasBeenSet = true; m_retentionPeriod = std::forward<RetentionPeriodT>(value); }
+    template<typename RetentionPeriodT = RetentionPeriod>
+    UnlockRuleResult& WithRetentionPeriod(RetentionPeriodT&& value) { SetRetentionPeriod(std::forward<RetentionPeriodT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetRetentionPeriod(const RetentionPeriod& value) { m_retentionPeriod = value; }
-
-    
-    inline void SetRetentionPeriod(RetentionPeriod&& value) { m_retentionPeriod = std::move(value); }
-
-    
-    inline UnlockRuleResult& WithRetentionPeriod(const RetentionPeriod& value) { SetRetentionPeriod(value); return *this;}
-
-    
-    inline UnlockRuleResult& WithRetentionPeriod(RetentionPeriod&& value) { SetRetentionPeriod(std::move(value)); return *this;}
-
-
+    ///@{
     /**
-     * <p>Information about the resource tags used to identify resources that are
-     * retained by the retention rule.</p>
+     * <p>[Tag-level retention rules only] Information about the resource tags used to
+     * identify resources that are retained by the retention rule.</p>
      */
-    inline const Aws::Vector<ResourceTag>& GetResourceTags() const{ return m_resourceTags; }
+    inline const Aws::Vector<ResourceTag>& GetResourceTags() const { return m_resourceTags; }
+    template<typename ResourceTagsT = Aws::Vector<ResourceTag>>
+    void SetResourceTags(ResourceTagsT&& value) { m_resourceTagsHasBeenSet = true; m_resourceTags = std::forward<ResourceTagsT>(value); }
+    template<typename ResourceTagsT = Aws::Vector<ResourceTag>>
+    UnlockRuleResult& WithResourceTags(ResourceTagsT&& value) { SetResourceTags(std::forward<ResourceTagsT>(value)); return *this;}
+    template<typename ResourceTagsT = ResourceTag>
+    UnlockRuleResult& AddResourceTags(ResourceTagsT&& value) { m_resourceTagsHasBeenSet = true; m_resourceTags.emplace_back(std::forward<ResourceTagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about the resource tags used to identify resources that are
-     * retained by the retention rule.</p>
-     */
-    inline void SetResourceTags(const Aws::Vector<ResourceTag>& value) { m_resourceTags = value; }
-
-    /**
-     * <p>Information about the resource tags used to identify resources that are
-     * retained by the retention rule.</p>
-     */
-    inline void SetResourceTags(Aws::Vector<ResourceTag>&& value) { m_resourceTags = std::move(value); }
-
-    /**
-     * <p>Information about the resource tags used to identify resources that are
-     * retained by the retention rule.</p>
-     */
-    inline UnlockRuleResult& WithResourceTags(const Aws::Vector<ResourceTag>& value) { SetResourceTags(value); return *this;}
-
-    /**
-     * <p>Information about the resource tags used to identify resources that are
-     * retained by the retention rule.</p>
-     */
-    inline UnlockRuleResult& WithResourceTags(Aws::Vector<ResourceTag>&& value) { SetResourceTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the resource tags used to identify resources that are
-     * retained by the retention rule.</p>
-     */
-    inline UnlockRuleResult& AddResourceTags(const ResourceTag& value) { m_resourceTags.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the resource tags used to identify resources that are
-     * retained by the retention rule.</p>
-     */
-    inline UnlockRuleResult& AddResourceTags(ResourceTag&& value) { m_resourceTags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The state of the retention rule. Only retention rules that are in the
      * <code>available</code> state retain resources.</p>
      */
-    inline const RuleStatus& GetStatus() const{ return m_status; }
+    inline RuleStatus GetStatus() const { return m_status; }
+    inline void SetStatus(RuleStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline UnlockRuleResult& WithStatus(RuleStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the retention rule. Only retention rules that are in the
-     * <code>available</code> state retain resources.</p>
-     */
-    inline void SetStatus(const RuleStatus& value) { m_status = value; }
-
-    /**
-     * <p>The state of the retention rule. Only retention rules that are in the
-     * <code>available</code> state retain resources.</p>
-     */
-    inline void SetStatus(RuleStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The state of the retention rule. Only retention rules that are in the
-     * <code>available</code> state retain resources.</p>
-     */
-    inline UnlockRuleResult& WithStatus(const RuleStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The state of the retention rule. Only retention rules that are in the
-     * <code>available</code> state retain resources.</p>
-     */
-    inline UnlockRuleResult& WithStatus(RuleStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the retention rule lock configuration.</p>
      */
-    inline const LockConfiguration& GetLockConfiguration() const{ return m_lockConfiguration; }
+    inline const LockConfiguration& GetLockConfiguration() const { return m_lockConfiguration; }
+    template<typename LockConfigurationT = LockConfiguration>
+    void SetLockConfiguration(LockConfigurationT&& value) { m_lockConfigurationHasBeenSet = true; m_lockConfiguration = std::forward<LockConfigurationT>(value); }
+    template<typename LockConfigurationT = LockConfiguration>
+    UnlockRuleResult& WithLockConfiguration(LockConfigurationT&& value) { SetLockConfiguration(std::forward<LockConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Information about the retention rule lock configuration.</p>
+     * <p>[Region-level retention rules only] The lock state for the retention
+     * rule.</p> <ul> <li> <p> <code>locked</code> - The retention rule is locked and
+     * can't be modified or deleted.</p> </li> <li> <p> <code>pending_unlock</code> -
+     * The retention rule has been unlocked but it is still within the unlock delay
+     * period. The retention rule can be modified or deleted only after the unlock
+     * delay period has expired.</p> </li> <li> <p> <code>unlocked</code> - The
+     * retention rule is unlocked and it can be modified or deleted by any user with
+     * the required permissions.</p> </li> <li> <p> <code>null</code> - The retention
+     * rule has never been locked. Once a retention rule has been locked, it can
+     * transition between the <code>locked</code> and <code>unlocked</code> states
+     * only; it can never transition back to <code>null</code>.</p> </li> </ul>
      */
-    inline void SetLockConfiguration(const LockConfiguration& value) { m_lockConfiguration = value; }
+    inline LockState GetLockState() const { return m_lockState; }
+    inline void SetLockState(LockState value) { m_lockStateHasBeenSet = true; m_lockState = value; }
+    inline UnlockRuleResult& WithLockState(LockState value) { SetLockState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the retention rule lock configuration.</p>
-     */
-    inline void SetLockConfiguration(LockConfiguration&& value) { m_lockConfiguration = std::move(value); }
-
-    /**
-     * <p>Information about the retention rule lock configuration.</p>
-     */
-    inline UnlockRuleResult& WithLockConfiguration(const LockConfiguration& value) { SetLockConfiguration(value); return *this;}
-
-    /**
-     * <p>Information about the retention rule lock configuration.</p>
-     */
-    inline UnlockRuleResult& WithLockConfiguration(LockConfiguration&& value) { SetLockConfiguration(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The lock state for the retention rule.</p> <ul> <li> <p> <code>locked</code>
-     * - The retention rule is locked and can't be modified or deleted.</p> </li> <li>
-     * <p> <code>pending_unlock</code> - The retention rule has been unlocked but it is
-     * still within the unlock delay period. The retention rule can be modified or
-     * deleted only after the unlock delay period has expired.</p> </li> <li> <p>
-     * <code>unlocked</code> - The retention rule is unlocked and it can be modified or
-     * deleted by any user with the required permissions.</p> </li> <li> <p>
-     * <code>null</code> - The retention rule has never been locked. Once a retention
-     * rule has been locked, it can transition between the <code>locked</code> and
-     * <code>unlocked</code> states only; it can never transition back to
-     * <code>null</code>.</p> </li> </ul>
-     */
-    inline const LockState& GetLockState() const{ return m_lockState; }
-
-    /**
-     * <p>The lock state for the retention rule.</p> <ul> <li> <p> <code>locked</code>
-     * - The retention rule is locked and can't be modified or deleted.</p> </li> <li>
-     * <p> <code>pending_unlock</code> - The retention rule has been unlocked but it is
-     * still within the unlock delay period. The retention rule can be modified or
-     * deleted only after the unlock delay period has expired.</p> </li> <li> <p>
-     * <code>unlocked</code> - The retention rule is unlocked and it can be modified or
-     * deleted by any user with the required permissions.</p> </li> <li> <p>
-     * <code>null</code> - The retention rule has never been locked. Once a retention
-     * rule has been locked, it can transition between the <code>locked</code> and
-     * <code>unlocked</code> states only; it can never transition back to
-     * <code>null</code>.</p> </li> </ul>
-     */
-    inline void SetLockState(const LockState& value) { m_lockState = value; }
-
-    /**
-     * <p>The lock state for the retention rule.</p> <ul> <li> <p> <code>locked</code>
-     * - The retention rule is locked and can't be modified or deleted.</p> </li> <li>
-     * <p> <code>pending_unlock</code> - The retention rule has been unlocked but it is
-     * still within the unlock delay period. The retention rule can be modified or
-     * deleted only after the unlock delay period has expired.</p> </li> <li> <p>
-     * <code>unlocked</code> - The retention rule is unlocked and it can be modified or
-     * deleted by any user with the required permissions.</p> </li> <li> <p>
-     * <code>null</code> - The retention rule has never been locked. Once a retention
-     * rule has been locked, it can transition between the <code>locked</code> and
-     * <code>unlocked</code> states only; it can never transition back to
-     * <code>null</code>.</p> </li> </ul>
-     */
-    inline void SetLockState(LockState&& value) { m_lockState = std::move(value); }
-
-    /**
-     * <p>The lock state for the retention rule.</p> <ul> <li> <p> <code>locked</code>
-     * - The retention rule is locked and can't be modified or deleted.</p> </li> <li>
-     * <p> <code>pending_unlock</code> - The retention rule has been unlocked but it is
-     * still within the unlock delay period. The retention rule can be modified or
-     * deleted only after the unlock delay period has expired.</p> </li> <li> <p>
-     * <code>unlocked</code> - The retention rule is unlocked and it can be modified or
-     * deleted by any user with the required permissions.</p> </li> <li> <p>
-     * <code>null</code> - The retention rule has never been locked. Once a retention
-     * rule has been locked, it can transition between the <code>locked</code> and
-     * <code>unlocked</code> states only; it can never transition back to
-     * <code>null</code>.</p> </li> </ul>
-     */
-    inline UnlockRuleResult& WithLockState(const LockState& value) { SetLockState(value); return *this;}
-
-    /**
-     * <p>The lock state for the retention rule.</p> <ul> <li> <p> <code>locked</code>
-     * - The retention rule is locked and can't be modified or deleted.</p> </li> <li>
-     * <p> <code>pending_unlock</code> - The retention rule has been unlocked but it is
-     * still within the unlock delay period. The retention rule can be modified or
-     * deleted only after the unlock delay period has expired.</p> </li> <li> <p>
-     * <code>unlocked</code> - The retention rule is unlocked and it can be modified or
-     * deleted by any user with the required permissions.</p> </li> <li> <p>
-     * <code>null</code> - The retention rule has never been locked. Once a retention
-     * rule has been locked, it can transition between the <code>locked</code> and
-     * <code>unlocked</code> states only; it can never transition back to
-     * <code>null</code>.</p> </li> </ul>
-     */
-    inline UnlockRuleResult& WithLockState(LockState&& value) { SetLockState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time at which the unlock delay is set to expire. Only returned
      * for retention rules that have been unlocked and that are still within the unlock
      * delay period.</p>
      */
-    inline const Aws::Utils::DateTime& GetLockEndTime() const{ return m_lockEndTime; }
+    inline const Aws::Utils::DateTime& GetLockEndTime() const { return m_lockEndTime; }
+    template<typename LockEndTimeT = Aws::Utils::DateTime>
+    void SetLockEndTime(LockEndTimeT&& value) { m_lockEndTimeHasBeenSet = true; m_lockEndTime = std::forward<LockEndTimeT>(value); }
+    template<typename LockEndTimeT = Aws::Utils::DateTime>
+    UnlockRuleResult& WithLockEndTime(LockEndTimeT&& value) { SetLockEndTime(std::forward<LockEndTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The date and time at which the unlock delay is set to expire. Only returned
-     * for retention rules that have been unlocked and that are still within the unlock
-     * delay period.</p>
+     * <p>The Amazon Resource Name (ARN) of the retention rule.</p>
      */
-    inline void SetLockEndTime(const Aws::Utils::DateTime& value) { m_lockEndTime = value; }
+    inline const Aws::String& GetRuleArn() const { return m_ruleArn; }
+    template<typename RuleArnT = Aws::String>
+    void SetRuleArn(RuleArnT&& value) { m_ruleArnHasBeenSet = true; m_ruleArn = std::forward<RuleArnT>(value); }
+    template<typename RuleArnT = Aws::String>
+    UnlockRuleResult& WithRuleArn(RuleArnT&& value) { SetRuleArn(std::forward<RuleArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The date and time at which the unlock delay is set to expire. Only returned
-     * for retention rules that have been unlocked and that are still within the unlock
-     * delay period.</p>
+     * <p>[Region-level retention rules only] Information about the exclusion tags used
+     * to identify resources that are to be excluded, or ignored, by the retention
+     * rule.</p>
      */
-    inline void SetLockEndTime(Aws::Utils::DateTime&& value) { m_lockEndTime = std::move(value); }
+    inline const Aws::Vector<ResourceTag>& GetExcludeResourceTags() const { return m_excludeResourceTags; }
+    template<typename ExcludeResourceTagsT = Aws::Vector<ResourceTag>>
+    void SetExcludeResourceTags(ExcludeResourceTagsT&& value) { m_excludeResourceTagsHasBeenSet = true; m_excludeResourceTags = std::forward<ExcludeResourceTagsT>(value); }
+    template<typename ExcludeResourceTagsT = Aws::Vector<ResourceTag>>
+    UnlockRuleResult& WithExcludeResourceTags(ExcludeResourceTagsT&& value) { SetExcludeResourceTags(std::forward<ExcludeResourceTagsT>(value)); return *this;}
+    template<typename ExcludeResourceTagsT = ResourceTag>
+    UnlockRuleResult& AddExcludeResourceTags(ExcludeResourceTagsT&& value) { m_excludeResourceTagsHasBeenSet = true; m_excludeResourceTags.emplace_back(std::forward<ExcludeResourceTagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The date and time at which the unlock delay is set to expire. Only returned
-     * for retention rules that have been unlocked and that are still within the unlock
-     * delay period.</p>
-     */
-    inline UnlockRuleResult& WithLockEndTime(const Aws::Utils::DateTime& value) { SetLockEndTime(value); return *this;}
-
-    /**
-     * <p>The date and time at which the unlock delay is set to expire. Only returned
-     * for retention rules that have been unlocked and that are still within the unlock
-     * delay period.</p>
-     */
-    inline UnlockRuleResult& WithLockEndTime(Aws::Utils::DateTime&& value) { SetLockEndTime(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UnlockRuleResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UnlockRuleResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UnlockRuleResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UnlockRuleResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_identifier;
+    bool m_identifierHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
-    ResourceType m_resourceType;
+    ResourceType m_resourceType{ResourceType::NOT_SET};
+    bool m_resourceTypeHasBeenSet = false;
 
     RetentionPeriod m_retentionPeriod;
+    bool m_retentionPeriodHasBeenSet = false;
 
     Aws::Vector<ResourceTag> m_resourceTags;
+    bool m_resourceTagsHasBeenSet = false;
 
-    RuleStatus m_status;
+    RuleStatus m_status{RuleStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     LockConfiguration m_lockConfiguration;
+    bool m_lockConfigurationHasBeenSet = false;
 
-    LockState m_lockState;
+    LockState m_lockState{LockState::NOT_SET};
+    bool m_lockStateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lockEndTime;
+    Aws::Utils::DateTime m_lockEndTime{};
+    bool m_lockEndTimeHasBeenSet = false;
+
+    Aws::String m_ruleArn;
+    bool m_ruleArnHasBeenSet = false;
+
+    Aws::Vector<ResourceTag> m_excludeResourceTags;
+    bool m_excludeResourceTagsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -24,22 +24,25 @@ namespace VoiceID
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef VoiceIDClientConfiguration ClientConfigurationType;
+      typedef VoiceIDEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         VoiceIDClient(const Aws::VoiceID::VoiceIDClientConfiguration& clientConfiguration = Aws::VoiceID::VoiceIDClientConfiguration(),
-                      std::shared_ptr<VoiceIDEndpointProviderBase> endpointProvider = Aws::MakeShared<VoiceIDEndpointProvider>(ALLOCATION_TAG));
+                      std::shared_ptr<VoiceIDEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         VoiceIDClient(const Aws::Auth::AWSCredentials& credentials,
-                      std::shared_ptr<VoiceIDEndpointProviderBase> endpointProvider = Aws::MakeShared<VoiceIDEndpointProvider>(ALLOCATION_TAG),
+                      std::shared_ptr<VoiceIDEndpointProviderBase> endpointProvider = nullptr,
                       const Aws::VoiceID::VoiceIDClientConfiguration& clientConfiguration = Aws::VoiceID::VoiceIDClientConfiguration());
 
        /**
@@ -47,7 +50,7 @@ namespace VoiceID
         * the default http client factory will be used
         */
         VoiceIDClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                      std::shared_ptr<VoiceIDEndpointProviderBase> endpointProvider = Aws::MakeShared<VoiceIDEndpointProvider>(ALLOCATION_TAG),
+                      std::shared_ptr<VoiceIDEndpointProviderBase> endpointProvider = nullptr,
                       const Aws::VoiceID::VoiceIDClientConfiguration& clientConfiguration = Aws::VoiceID::VoiceIDClientConfiguration());
 
 
@@ -470,13 +473,13 @@ namespace VoiceID
          * href="http://docs.aws.amazon.com/goto/WebAPI/voice-id-2021-09-27/ListDomains">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListDomainsOutcome ListDomains(const Model::ListDomainsRequest& request) const;
+        virtual Model::ListDomainsOutcome ListDomains(const Model::ListDomainsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListDomains that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListDomainsRequestT = Model::ListDomainsRequest>
-        Model::ListDomainsOutcomeCallable ListDomainsCallable(const ListDomainsRequestT& request) const
+        Model::ListDomainsOutcomeCallable ListDomainsCallable(const ListDomainsRequestT& request = {}) const
         {
             return SubmitCallable(&VoiceIDClient::ListDomains, request);
         }
@@ -485,7 +488,7 @@ namespace VoiceID
          * An Async wrapper for ListDomains that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListDomainsRequestT = Model::ListDomainsRequest>
-        void ListDomainsAsync(const ListDomainsRequestT& request, const ListDomainsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListDomainsAsync(const ListDomainsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListDomainsRequestT& request = {}) const
         {
             return SubmitAsync(&VoiceIDClient::ListDomains, request, handler, context);
         }
@@ -844,7 +847,6 @@ namespace VoiceID
       void init(const VoiceIDClientConfiguration& clientConfiguration);
 
       VoiceIDClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<VoiceIDEndpointProviderBase> m_endpointProvider;
   };
 

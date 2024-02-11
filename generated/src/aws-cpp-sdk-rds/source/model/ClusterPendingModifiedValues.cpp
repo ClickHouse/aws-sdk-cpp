@@ -20,35 +20,7 @@ namespace RDS
 namespace Model
 {
 
-ClusterPendingModifiedValues::ClusterPendingModifiedValues() : 
-    m_pendingCloudwatchLogsExportsHasBeenSet(false),
-    m_dBClusterIdentifierHasBeenSet(false),
-    m_masterUserPasswordHasBeenSet(false),
-    m_iAMDatabaseAuthenticationEnabled(false),
-    m_iAMDatabaseAuthenticationEnabledHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_backupRetentionPeriod(0),
-    m_backupRetentionPeriodHasBeenSet(false),
-    m_allocatedStorage(0),
-    m_allocatedStorageHasBeenSet(false),
-    m_iops(0),
-    m_iopsHasBeenSet(false)
-{
-}
-
-ClusterPendingModifiedValues::ClusterPendingModifiedValues(const XmlNode& xmlNode) : 
-    m_pendingCloudwatchLogsExportsHasBeenSet(false),
-    m_dBClusterIdentifierHasBeenSet(false),
-    m_masterUserPasswordHasBeenSet(false),
-    m_iAMDatabaseAuthenticationEnabled(false),
-    m_iAMDatabaseAuthenticationEnabledHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_backupRetentionPeriod(0),
-    m_backupRetentionPeriodHasBeenSet(false),
-    m_allocatedStorage(0),
-    m_allocatedStorageHasBeenSet(false),
-    m_iops(0),
-    m_iopsHasBeenSet(false)
+ClusterPendingModifiedValues::ClusterPendingModifiedValues(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -101,11 +73,29 @@ ClusterPendingModifiedValues& ClusterPendingModifiedValues::operator =(const Xml
       m_allocatedStorage = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(allocatedStorageNode.GetText()).c_str()).c_str());
       m_allocatedStorageHasBeenSet = true;
     }
+    XmlNode rdsCustomClusterConfigurationNode = resultNode.FirstChild("RdsCustomClusterConfiguration");
+    if(!rdsCustomClusterConfigurationNode.IsNull())
+    {
+      m_rdsCustomClusterConfiguration = rdsCustomClusterConfigurationNode;
+      m_rdsCustomClusterConfigurationHasBeenSet = true;
+    }
     XmlNode iopsNode = resultNode.FirstChild("Iops");
     if(!iopsNode.IsNull())
     {
       m_iops = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(iopsNode.GetText()).c_str()).c_str());
       m_iopsHasBeenSet = true;
+    }
+    XmlNode storageTypeNode = resultNode.FirstChild("StorageType");
+    if(!storageTypeNode.IsNull())
+    {
+      m_storageType = Aws::Utils::Xml::DecodeEscapedXmlText(storageTypeNode.GetText());
+      m_storageTypeHasBeenSet = true;
+    }
+    XmlNode certificateDetailsNode = resultNode.FirstChild("CertificateDetails");
+    if(!certificateDetailsNode.IsNull())
+    {
+      m_certificateDetails = certificateDetailsNode;
+      m_certificateDetailsHasBeenSet = true;
     }
   }
 
@@ -151,9 +141,28 @@ void ClusterPendingModifiedValues::OutputToStream(Aws::OStream& oStream, const c
       oStream << location << index << locationValue << ".AllocatedStorage=" << m_allocatedStorage << "&";
   }
 
+  if(m_rdsCustomClusterConfigurationHasBeenSet)
+  {
+      Aws::StringStream rdsCustomClusterConfigurationLocationAndMemberSs;
+      rdsCustomClusterConfigurationLocationAndMemberSs << location << index << locationValue << ".RdsCustomClusterConfiguration";
+      m_rdsCustomClusterConfiguration.OutputToStream(oStream, rdsCustomClusterConfigurationLocationAndMemberSs.str().c_str());
+  }
+
   if(m_iopsHasBeenSet)
   {
       oStream << location << index << locationValue << ".Iops=" << m_iops << "&";
+  }
+
+  if(m_storageTypeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".StorageType=" << StringUtils::URLEncode(m_storageType.c_str()) << "&";
+  }
+
+  if(m_certificateDetailsHasBeenSet)
+  {
+      Aws::StringStream certificateDetailsLocationAndMemberSs;
+      certificateDetailsLocationAndMemberSs << location << index << locationValue << ".CertificateDetails";
+      m_certificateDetails.OutputToStream(oStream, certificateDetailsLocationAndMemberSs.str().c_str());
   }
 
 }
@@ -190,9 +199,25 @@ void ClusterPendingModifiedValues::OutputToStream(Aws::OStream& oStream, const c
   {
       oStream << location << ".AllocatedStorage=" << m_allocatedStorage << "&";
   }
+  if(m_rdsCustomClusterConfigurationHasBeenSet)
+  {
+      Aws::String rdsCustomClusterConfigurationLocationAndMember(location);
+      rdsCustomClusterConfigurationLocationAndMember += ".RdsCustomClusterConfiguration";
+      m_rdsCustomClusterConfiguration.OutputToStream(oStream, rdsCustomClusterConfigurationLocationAndMember.c_str());
+  }
   if(m_iopsHasBeenSet)
   {
       oStream << location << ".Iops=" << m_iops << "&";
+  }
+  if(m_storageTypeHasBeenSet)
+  {
+      oStream << location << ".StorageType=" << StringUtils::URLEncode(m_storageType.c_str()) << "&";
+  }
+  if(m_certificateDetailsHasBeenSet)
+  {
+      Aws::String certificateDetailsLocationAndMember(location);
+      certificateDetailsLocationAndMember += ".CertificateDetails";
+      m_certificateDetails.OutputToStream(oStream, certificateDetailsLocationAndMember.c_str());
   }
 }
 

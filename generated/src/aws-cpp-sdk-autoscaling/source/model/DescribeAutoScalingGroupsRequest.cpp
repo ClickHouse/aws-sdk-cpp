@@ -10,28 +10,31 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-DescribeAutoScalingGroupsRequest::DescribeAutoScalingGroupsRequest() : 
-    m_autoScalingGroupNamesHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false),
-    m_filtersHasBeenSet(false)
-{
-}
-
 Aws::String DescribeAutoScalingGroupsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeAutoScalingGroups&";
   if(m_autoScalingGroupNamesHasBeenSet)
   {
-    unsigned autoScalingGroupNamesCount = 1;
-    for(auto& item : m_autoScalingGroupNames)
+    if (m_autoScalingGroupNames.empty())
     {
-      ss << "AutoScalingGroupNames.member." << autoScalingGroupNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      autoScalingGroupNamesCount++;
+      ss << "AutoScalingGroupNames=&";
     }
+    else
+    {
+      unsigned autoScalingGroupNamesCount = 1;
+      for(auto& item : m_autoScalingGroupNames)
+      {
+        ss << "AutoScalingGroupNames.member." << autoScalingGroupNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        autoScalingGroupNamesCount++;
+      }
+    }
+  }
+
+  if(m_includeInstancesHasBeenSet)
+  {
+    ss << "IncludeInstances=" << std::boolalpha << m_includeInstances << "&";
   }
 
   if(m_nextTokenHasBeenSet)
@@ -46,11 +49,18 @@ Aws::String DescribeAutoScalingGroupsRequest::SerializePayload() const
 
   if(m_filtersHasBeenSet)
   {
-    unsigned filtersCount = 1;
-    for(auto& item : m_filters)
+    if (m_filters.empty())
     {
-      item.OutputToStream(ss, "Filters.member.", filtersCount, "");
-      filtersCount++;
+      ss << "Filters=&";
+    }
+    else
+    {
+      unsigned filtersCount = 1;
+      for(auto& item : m_filters)
+      {
+        item.OutputToStream(ss, "Filters.member.", filtersCount, "");
+        filtersCount++;
+      }
     }
   }
 

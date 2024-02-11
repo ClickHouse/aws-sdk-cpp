@@ -35,338 +35,116 @@ namespace Model
   class MailboxExportJob
   {
   public:
-    AWS_WORKMAIL_API MailboxExportJob();
+    AWS_WORKMAIL_API MailboxExportJob() = default;
     AWS_WORKMAIL_API MailboxExportJob(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKMAIL_API MailboxExportJob& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKMAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the mailbox export job.</p>
      */
-    inline const Aws::String& GetJobId() const{ return m_jobId; }
-
-    /**
-     * <p>The identifier of the mailbox export job.</p>
-     */
+    inline const Aws::String& GetJobId() const { return m_jobId; }
     inline bool JobIdHasBeenSet() const { return m_jobIdHasBeenSet; }
+    template<typename JobIdT = Aws::String>
+    void SetJobId(JobIdT&& value) { m_jobIdHasBeenSet = true; m_jobId = std::forward<JobIdT>(value); }
+    template<typename JobIdT = Aws::String>
+    MailboxExportJob& WithJobId(JobIdT&& value) { SetJobId(std::forward<JobIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the mailbox export job.</p>
-     */
-    inline void SetJobId(const Aws::String& value) { m_jobIdHasBeenSet = true; m_jobId = value; }
-
-    /**
-     * <p>The identifier of the mailbox export job.</p>
-     */
-    inline void SetJobId(Aws::String&& value) { m_jobIdHasBeenSet = true; m_jobId = std::move(value); }
-
-    /**
-     * <p>The identifier of the mailbox export job.</p>
-     */
-    inline void SetJobId(const char* value) { m_jobIdHasBeenSet = true; m_jobId.assign(value); }
-
-    /**
-     * <p>The identifier of the mailbox export job.</p>
-     */
-    inline MailboxExportJob& WithJobId(const Aws::String& value) { SetJobId(value); return *this;}
-
-    /**
-     * <p>The identifier of the mailbox export job.</p>
-     */
-    inline MailboxExportJob& WithJobId(Aws::String&& value) { SetJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the mailbox export job.</p>
-     */
-    inline MailboxExportJob& WithJobId(const char* value) { SetJobId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the user or resource associated with the mailbox.</p>
      */
-    inline const Aws::String& GetEntityId() const{ return m_entityId; }
-
-    /**
-     * <p>The identifier of the user or resource associated with the mailbox.</p>
-     */
+    inline const Aws::String& GetEntityId() const { return m_entityId; }
     inline bool EntityIdHasBeenSet() const { return m_entityIdHasBeenSet; }
+    template<typename EntityIdT = Aws::String>
+    void SetEntityId(EntityIdT&& value) { m_entityIdHasBeenSet = true; m_entityId = std::forward<EntityIdT>(value); }
+    template<typename EntityIdT = Aws::String>
+    MailboxExportJob& WithEntityId(EntityIdT&& value) { SetEntityId(std::forward<EntityIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the user or resource associated with the mailbox.</p>
-     */
-    inline void SetEntityId(const Aws::String& value) { m_entityIdHasBeenSet = true; m_entityId = value; }
-
-    /**
-     * <p>The identifier of the user or resource associated with the mailbox.</p>
-     */
-    inline void SetEntityId(Aws::String&& value) { m_entityIdHasBeenSet = true; m_entityId = std::move(value); }
-
-    /**
-     * <p>The identifier of the user or resource associated with the mailbox.</p>
-     */
-    inline void SetEntityId(const char* value) { m_entityIdHasBeenSet = true; m_entityId.assign(value); }
-
-    /**
-     * <p>The identifier of the user or resource associated with the mailbox.</p>
-     */
-    inline MailboxExportJob& WithEntityId(const Aws::String& value) { SetEntityId(value); return *this;}
-
-    /**
-     * <p>The identifier of the user or resource associated with the mailbox.</p>
-     */
-    inline MailboxExportJob& WithEntityId(Aws::String&& value) { SetEntityId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the user or resource associated with the mailbox.</p>
-     */
-    inline MailboxExportJob& WithEntityId(const char* value) { SetEntityId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The mailbox export job description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The mailbox export job description.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    MailboxExportJob& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The mailbox export job description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The mailbox export job description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The mailbox export job description.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The mailbox export job description.</p>
-     */
-    inline MailboxExportJob& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The mailbox export job description.</p>
-     */
-    inline MailboxExportJob& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The mailbox export job description.</p>
-     */
-    inline MailboxExportJob& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the S3 bucket.</p>
      */
-    inline const Aws::String& GetS3BucketName() const{ return m_s3BucketName; }
-
-    /**
-     * <p>The name of the S3 bucket.</p>
-     */
+    inline const Aws::String& GetS3BucketName() const { return m_s3BucketName; }
     inline bool S3BucketNameHasBeenSet() const { return m_s3BucketNameHasBeenSet; }
+    template<typename S3BucketNameT = Aws::String>
+    void SetS3BucketName(S3BucketNameT&& value) { m_s3BucketNameHasBeenSet = true; m_s3BucketName = std::forward<S3BucketNameT>(value); }
+    template<typename S3BucketNameT = Aws::String>
+    MailboxExportJob& WithS3BucketName(S3BucketNameT&& value) { SetS3BucketName(std::forward<S3BucketNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the S3 bucket.</p>
-     */
-    inline void SetS3BucketName(const Aws::String& value) { m_s3BucketNameHasBeenSet = true; m_s3BucketName = value; }
-
-    /**
-     * <p>The name of the S3 bucket.</p>
-     */
-    inline void SetS3BucketName(Aws::String&& value) { m_s3BucketNameHasBeenSet = true; m_s3BucketName = std::move(value); }
-
-    /**
-     * <p>The name of the S3 bucket.</p>
-     */
-    inline void SetS3BucketName(const char* value) { m_s3BucketNameHasBeenSet = true; m_s3BucketName.assign(value); }
-
-    /**
-     * <p>The name of the S3 bucket.</p>
-     */
-    inline MailboxExportJob& WithS3BucketName(const Aws::String& value) { SetS3BucketName(value); return *this;}
-
-    /**
-     * <p>The name of the S3 bucket.</p>
-     */
-    inline MailboxExportJob& WithS3BucketName(Aws::String&& value) { SetS3BucketName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the S3 bucket.</p>
-     */
-    inline MailboxExportJob& WithS3BucketName(const char* value) { SetS3BucketName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The path to the S3 bucket and file that the mailbox export job exports
      * to.</p>
      */
-    inline const Aws::String& GetS3Path() const{ return m_s3Path; }
-
-    /**
-     * <p>The path to the S3 bucket and file that the mailbox export job exports
-     * to.</p>
-     */
+    inline const Aws::String& GetS3Path() const { return m_s3Path; }
     inline bool S3PathHasBeenSet() const { return m_s3PathHasBeenSet; }
+    template<typename S3PathT = Aws::String>
+    void SetS3Path(S3PathT&& value) { m_s3PathHasBeenSet = true; m_s3Path = std::forward<S3PathT>(value); }
+    template<typename S3PathT = Aws::String>
+    MailboxExportJob& WithS3Path(S3PathT&& value) { SetS3Path(std::forward<S3PathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The path to the S3 bucket and file that the mailbox export job exports
-     * to.</p>
-     */
-    inline void SetS3Path(const Aws::String& value) { m_s3PathHasBeenSet = true; m_s3Path = value; }
-
-    /**
-     * <p>The path to the S3 bucket and file that the mailbox export job exports
-     * to.</p>
-     */
-    inline void SetS3Path(Aws::String&& value) { m_s3PathHasBeenSet = true; m_s3Path = std::move(value); }
-
-    /**
-     * <p>The path to the S3 bucket and file that the mailbox export job exports
-     * to.</p>
-     */
-    inline void SetS3Path(const char* value) { m_s3PathHasBeenSet = true; m_s3Path.assign(value); }
-
-    /**
-     * <p>The path to the S3 bucket and file that the mailbox export job exports
-     * to.</p>
-     */
-    inline MailboxExportJob& WithS3Path(const Aws::String& value) { SetS3Path(value); return *this;}
-
-    /**
-     * <p>The path to the S3 bucket and file that the mailbox export job exports
-     * to.</p>
-     */
-    inline MailboxExportJob& WithS3Path(Aws::String&& value) { SetS3Path(std::move(value)); return *this;}
-
-    /**
-     * <p>The path to the S3 bucket and file that the mailbox export job exports
-     * to.</p>
-     */
-    inline MailboxExportJob& WithS3Path(const char* value) { SetS3Path(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The estimated progress of the mailbox export job, in percentage points.</p>
      */
-    inline int GetEstimatedProgress() const{ return m_estimatedProgress; }
-
-    /**
-     * <p>The estimated progress of the mailbox export job, in percentage points.</p>
-     */
+    inline int GetEstimatedProgress() const { return m_estimatedProgress; }
     inline bool EstimatedProgressHasBeenSet() const { return m_estimatedProgressHasBeenSet; }
-
-    /**
-     * <p>The estimated progress of the mailbox export job, in percentage points.</p>
-     */
     inline void SetEstimatedProgress(int value) { m_estimatedProgressHasBeenSet = true; m_estimatedProgress = value; }
-
-    /**
-     * <p>The estimated progress of the mailbox export job, in percentage points.</p>
-     */
     inline MailboxExportJob& WithEstimatedProgress(int value) { SetEstimatedProgress(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The state of the mailbox export job.</p>
      */
-    inline const MailboxExportJobState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state of the mailbox export job.</p>
-     */
+    inline MailboxExportJobState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(MailboxExportJobState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline MailboxExportJob& WithState(MailboxExportJobState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the mailbox export job.</p>
-     */
-    inline void SetState(const MailboxExportJobState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state of the mailbox export job.</p>
-     */
-    inline void SetState(MailboxExportJobState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state of the mailbox export job.</p>
-     */
-    inline MailboxExportJob& WithState(const MailboxExportJobState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the mailbox export job.</p>
-     */
-    inline MailboxExportJob& WithState(MailboxExportJobState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The mailbox export job start timestamp.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
-
-    /**
-     * <p>The mailbox export job start timestamp.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartTime() const { return m_startTime; }
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    MailboxExportJob& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The mailbox export job start timestamp.</p>
-     */
-    inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    /**
-     * <p>The mailbox export job start timestamp.</p>
-     */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    /**
-     * <p>The mailbox export job start timestamp.</p>
-     */
-    inline MailboxExportJob& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>The mailbox export job start timestamp.</p>
-     */
-    inline MailboxExportJob& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The mailbox export job end timestamp.</p>
      */
-    inline const Aws::Utils::DateTime& GetEndTime() const{ return m_endTime; }
-
-    /**
-     * <p>The mailbox export job end timestamp.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEndTime() const { return m_endTime; }
     inline bool EndTimeHasBeenSet() const { return m_endTimeHasBeenSet; }
-
-    /**
-     * <p>The mailbox export job end timestamp.</p>
-     */
-    inline void SetEndTime(const Aws::Utils::DateTime& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
-
-    /**
-     * <p>The mailbox export job end timestamp.</p>
-     */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
-
-    /**
-     * <p>The mailbox export job end timestamp.</p>
-     */
-    inline MailboxExportJob& WithEndTime(const Aws::Utils::DateTime& value) { SetEndTime(value); return *this;}
-
-    /**
-     * <p>The mailbox export job end timestamp.</p>
-     */
-    inline MailboxExportJob& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
-
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    void SetEndTime(EndTimeT&& value) { m_endTimeHasBeenSet = true; m_endTime = std::forward<EndTimeT>(value); }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    MailboxExportJob& WithEndTime(EndTimeT&& value) { SetEndTime(std::forward<EndTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_jobId;
@@ -384,16 +162,16 @@ namespace Model
     Aws::String m_s3Path;
     bool m_s3PathHasBeenSet = false;
 
-    int m_estimatedProgress;
+    int m_estimatedProgress{0};
     bool m_estimatedProgressHasBeenSet = false;
 
-    MailboxExportJobState m_state;
+    MailboxExportJobState m_state{MailboxExportJobState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startTime;
+    Aws::Utils::DateTime m_startTime{};
     bool m_startTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_endTime;
+    Aws::Utils::DateTime m_endTime{};
     bool m_endTimeHasBeenSet = false;
   };
 

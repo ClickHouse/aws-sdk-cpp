@@ -23,6 +23,7 @@ namespace Aws
         static const int LC_HASH = HashingUtils::HashString("LC");
         static const int HEV1_HASH = HashingUtils::HashString("HEV1");
         static const int HEV2_HASH = HashingUtils::HashString("HEV2");
+        static const int XHE_HASH = HashingUtils::HashString("XHE");
 
 
         AacCodecProfile GetAacCodecProfileForName(const Aws::String& name)
@@ -40,6 +41,10 @@ namespace Aws
           {
             return AacCodecProfile::HEV2;
           }
+          else if (hashCode == XHE_HASH)
+          {
+            return AacCodecProfile::XHE;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -54,12 +59,16 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case AacCodecProfile::NOT_SET:
+            return {};
           case AacCodecProfile::LC:
             return "LC";
           case AacCodecProfile::HEV1:
             return "HEV1";
           case AacCodecProfile::HEV2:
             return "HEV2";
+          case AacCodecProfile::XHE:
+            return "XHE";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

@@ -20,23 +20,7 @@ namespace EC2
 namespace Model
 {
 
-CarrierGateway::CarrierGateway() : 
-    m_carrierGatewayIdHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_state(CarrierGatewayState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-CarrierGateway::CarrierGateway(const XmlNode& xmlNode) : 
-    m_carrierGatewayIdHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_state(CarrierGatewayState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+CarrierGateway::CarrierGateway(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -62,7 +46,7 @@ CarrierGateway& CarrierGateway::operator =(const XmlNode& xmlNode)
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = CarrierGatewayStateMapper::GetCarrierGatewayStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = CarrierGatewayStateMapper::GetCarrierGatewayStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode ownerIdNode = resultNode.FirstChild("ownerId");
@@ -75,6 +59,7 @@ CarrierGateway& CarrierGateway::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -102,7 +87,7 @@ void CarrierGateway::OutputToStream(Aws::OStream& oStream, const char* location,
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << CarrierGatewayStateMapper::GetNameForCarrierGatewayState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(CarrierGatewayStateMapper::GetNameForCarrierGatewayState(m_state)) << "&";
   }
 
   if(m_ownerIdHasBeenSet)
@@ -135,7 +120,7 @@ void CarrierGateway::OutputToStream(Aws::OStream& oStream, const char* location)
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << CarrierGatewayStateMapper::GetNameForCarrierGatewayState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(CarrierGatewayStateMapper::GetNameForCarrierGatewayState(m_state)) << "&";
   }
   if(m_ownerIdHasBeenSet)
   {
@@ -147,7 +132,7 @@ void CarrierGateway::OutputToStream(Aws::OStream& oStream, const char* location)
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

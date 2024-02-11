@@ -18,35 +18,23 @@ namespace Omics
 namespace Model
 {
 
-ReferenceFiles::ReferenceFiles() : 
-    m_indexHasBeenSet(false),
-    m_sourceHasBeenSet(false)
-{
-}
-
-ReferenceFiles::ReferenceFiles(JsonView jsonValue) : 
-    m_indexHasBeenSet(false),
-    m_sourceHasBeenSet(false)
+ReferenceFiles::ReferenceFiles(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 ReferenceFiles& ReferenceFiles::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("index"))
-  {
-    m_index = jsonValue.GetObject("index");
-
-    m_indexHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("source"))
   {
     m_source = jsonValue.GetObject("source");
-
     m_sourceHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("index"))
+  {
+    m_index = jsonValue.GetObject("index");
+    m_indexHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -54,15 +42,15 @@ JsonValue ReferenceFiles::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_indexHasBeenSet)
-  {
-   payload.WithObject("index", m_index.Jsonize());
-
-  }
-
   if(m_sourceHasBeenSet)
   {
    payload.WithObject("source", m_source.Jsonize());
+
+  }
+
+  if(m_indexHasBeenSet)
+  {
+   payload.WithObject("index", m_index.Jsonize());
 
   }
 

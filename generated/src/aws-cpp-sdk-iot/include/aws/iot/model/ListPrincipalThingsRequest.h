@@ -29,7 +29,7 @@ namespace Model
   class ListPrincipalThingsRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API ListPrincipalThingsRequest();
+    AWS_IOT_API ListPrincipalThingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -44,130 +44,47 @@ namespace Model
     AWS_IOT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
      * previous response; otherwise <b>null</b> to receive the first set of
      * results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListPrincipalThingsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
-    inline ListPrincipalThingsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
-    inline ListPrincipalThingsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
-    inline ListPrincipalThingsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to return in this operation.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return in this operation.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return in this operation.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return in this operation.</p>
-     */
     inline ListPrincipalThingsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The principal.</p>
      */
-    inline const Aws::String& GetPrincipal() const{ return m_principal; }
-
-    /**
-     * <p>The principal.</p>
-     */
+    inline const Aws::String& GetPrincipal() const { return m_principal; }
     inline bool PrincipalHasBeenSet() const { return m_principalHasBeenSet; }
-
-    /**
-     * <p>The principal.</p>
-     */
-    inline void SetPrincipal(const Aws::String& value) { m_principalHasBeenSet = true; m_principal = value; }
-
-    /**
-     * <p>The principal.</p>
-     */
-    inline void SetPrincipal(Aws::String&& value) { m_principalHasBeenSet = true; m_principal = std::move(value); }
-
-    /**
-     * <p>The principal.</p>
-     */
-    inline void SetPrincipal(const char* value) { m_principalHasBeenSet = true; m_principal.assign(value); }
-
-    /**
-     * <p>The principal.</p>
-     */
-    inline ListPrincipalThingsRequest& WithPrincipal(const Aws::String& value) { SetPrincipal(value); return *this;}
-
-    /**
-     * <p>The principal.</p>
-     */
-    inline ListPrincipalThingsRequest& WithPrincipal(Aws::String&& value) { SetPrincipal(std::move(value)); return *this;}
-
-    /**
-     * <p>The principal.</p>
-     */
-    inline ListPrincipalThingsRequest& WithPrincipal(const char* value) { SetPrincipal(value); return *this;}
-
+    template<typename PrincipalT = Aws::String>
+    void SetPrincipal(PrincipalT&& value) { m_principalHasBeenSet = true; m_principal = std::forward<PrincipalT>(value); }
+    template<typename PrincipalT = Aws::String>
+    ListPrincipalThingsRequest& WithPrincipal(PrincipalT&& value) { SetPrincipal(std::forward<PrincipalT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_principal;

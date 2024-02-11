@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-UpdateChannelReadMarkerResult::UpdateChannelReadMarkerResult()
-{
-}
-
 UpdateChannelReadMarkerResult::UpdateChannelReadMarkerResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -32,21 +28,15 @@ UpdateChannelReadMarkerResult& UpdateChannelReadMarkerResult::operator =(const A
   if(jsonValue.ValueExists("ChannelArn"))
   {
     m_channelArn = jsonValue.GetString("ChannelArn");
-
+    m_channelArnHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("SubChannelId"))
-  {
-    m_subChannelId = jsonValue.GetString("SubChannelId");
-
-  }
-
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

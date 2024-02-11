@@ -30,11 +30,12 @@ namespace Model
   class DescribeScheduledActionsResult
   {
   public:
-    AWS_REDSHIFT_API DescribeScheduledActionsResult();
+    AWS_REDSHIFT_API DescribeScheduledActionsResult() = default;
     AWS_REDSHIFT_API DescribeScheduledActionsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_REDSHIFT_API DescribeScheduledActionsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>An optional parameter that specifies the starting point to return a set of
      * response records. When the results of a <a>DescribeScheduledActions</a> request
@@ -43,127 +44,44 @@ namespace Model
      * retrieve the next set of response records by providing the returned marker value
      * in the <code>Marker</code> parameter and retrying the request. </p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
+    inline const Aws::String& GetMarker() const { return m_marker; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeScheduledActionsResult& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeScheduledActions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_marker = value; }
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeScheduledActions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeScheduledActions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline void SetMarker(const char* value) { m_marker.assign(value); }
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeScheduledActions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline DescribeScheduledActionsResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeScheduledActions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline DescribeScheduledActionsResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeScheduledActions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline DescribeScheduledActionsResult& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>List of retrieved scheduled actions. </p>
      */
-    inline const Aws::Vector<ScheduledAction>& GetScheduledActions() const{ return m_scheduledActions; }
+    inline const Aws::Vector<ScheduledAction>& GetScheduledActions() const { return m_scheduledActions; }
+    template<typename ScheduledActionsT = Aws::Vector<ScheduledAction>>
+    void SetScheduledActions(ScheduledActionsT&& value) { m_scheduledActionsHasBeenSet = true; m_scheduledActions = std::forward<ScheduledActionsT>(value); }
+    template<typename ScheduledActionsT = Aws::Vector<ScheduledAction>>
+    DescribeScheduledActionsResult& WithScheduledActions(ScheduledActionsT&& value) { SetScheduledActions(std::forward<ScheduledActionsT>(value)); return *this;}
+    template<typename ScheduledActionsT = ScheduledAction>
+    DescribeScheduledActionsResult& AddScheduledActions(ScheduledActionsT&& value) { m_scheduledActionsHasBeenSet = true; m_scheduledActions.emplace_back(std::forward<ScheduledActionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of retrieved scheduled actions. </p>
-     */
-    inline void SetScheduledActions(const Aws::Vector<ScheduledAction>& value) { m_scheduledActions = value; }
-
-    /**
-     * <p>List of retrieved scheduled actions. </p>
-     */
-    inline void SetScheduledActions(Aws::Vector<ScheduledAction>&& value) { m_scheduledActions = std::move(value); }
-
-    /**
-     * <p>List of retrieved scheduled actions. </p>
-     */
-    inline DescribeScheduledActionsResult& WithScheduledActions(const Aws::Vector<ScheduledAction>& value) { SetScheduledActions(value); return *this;}
-
-    /**
-     * <p>List of retrieved scheduled actions. </p>
-     */
-    inline DescribeScheduledActionsResult& WithScheduledActions(Aws::Vector<ScheduledAction>&& value) { SetScheduledActions(std::move(value)); return *this;}
-
-    /**
-     * <p>List of retrieved scheduled actions. </p>
-     */
-    inline DescribeScheduledActionsResult& AddScheduledActions(const ScheduledAction& value) { m_scheduledActions.push_back(value); return *this; }
-
-    /**
-     * <p>List of retrieved scheduled actions. </p>
-     */
-    inline DescribeScheduledActionsResult& AddScheduledActions(ScheduledAction&& value) { m_scheduledActions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline DescribeScheduledActionsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline DescribeScheduledActionsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    DescribeScheduledActionsResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_marker;
+    bool m_markerHasBeenSet = false;
 
     Aws::Vector<ScheduledAction> m_scheduledActions;
+    bool m_scheduledActionsHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

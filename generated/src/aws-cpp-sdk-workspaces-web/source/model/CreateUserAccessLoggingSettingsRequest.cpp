@@ -12,23 +12,9 @@ using namespace Aws::WorkSpacesWeb::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateUserAccessLoggingSettingsRequest::CreateUserAccessLoggingSettingsRequest() : 
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_kinesisStreamArnHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateUserAccessLoggingSettingsRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_clientTokenHasBeenSet)
-  {
-   payload.WithString("clientToken", m_clientToken);
-
-  }
 
   if(m_kinesisStreamArnHasBeenSet)
   {
@@ -44,6 +30,12 @@ Aws::String CreateUserAccessLoggingSettingsRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("clientToken", m_clientToken);
 
   }
 

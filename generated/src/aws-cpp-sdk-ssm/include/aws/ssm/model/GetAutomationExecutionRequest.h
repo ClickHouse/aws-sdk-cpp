@@ -21,7 +21,7 @@ namespace Model
   class GetAutomationExecutionRequest : public SSMRequest
   {
   public:
-    AWS_SSM_API GetAutomationExecutionRequest();
+    AWS_SSM_API GetAutomationExecutionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,62 +34,19 @@ namespace Model
     AWS_SSM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier for an existing automation execution to examine. The
      * execution ID is returned by StartAutomationExecution when the execution of an
      * Automation runbook is initiated.</p>
      */
-    inline const Aws::String& GetAutomationExecutionId() const{ return m_automationExecutionId; }
-
-    /**
-     * <p>The unique identifier for an existing automation execution to examine. The
-     * execution ID is returned by StartAutomationExecution when the execution of an
-     * Automation runbook is initiated.</p>
-     */
+    inline const Aws::String& GetAutomationExecutionId() const { return m_automationExecutionId; }
     inline bool AutomationExecutionIdHasBeenSet() const { return m_automationExecutionIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier for an existing automation execution to examine. The
-     * execution ID is returned by StartAutomationExecution when the execution of an
-     * Automation runbook is initiated.</p>
-     */
-    inline void SetAutomationExecutionId(const Aws::String& value) { m_automationExecutionIdHasBeenSet = true; m_automationExecutionId = value; }
-
-    /**
-     * <p>The unique identifier for an existing automation execution to examine. The
-     * execution ID is returned by StartAutomationExecution when the execution of an
-     * Automation runbook is initiated.</p>
-     */
-    inline void SetAutomationExecutionId(Aws::String&& value) { m_automationExecutionIdHasBeenSet = true; m_automationExecutionId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for an existing automation execution to examine. The
-     * execution ID is returned by StartAutomationExecution when the execution of an
-     * Automation runbook is initiated.</p>
-     */
-    inline void SetAutomationExecutionId(const char* value) { m_automationExecutionIdHasBeenSet = true; m_automationExecutionId.assign(value); }
-
-    /**
-     * <p>The unique identifier for an existing automation execution to examine. The
-     * execution ID is returned by StartAutomationExecution when the execution of an
-     * Automation runbook is initiated.</p>
-     */
-    inline GetAutomationExecutionRequest& WithAutomationExecutionId(const Aws::String& value) { SetAutomationExecutionId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for an existing automation execution to examine. The
-     * execution ID is returned by StartAutomationExecution when the execution of an
-     * Automation runbook is initiated.</p>
-     */
-    inline GetAutomationExecutionRequest& WithAutomationExecutionId(Aws::String&& value) { SetAutomationExecutionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for an existing automation execution to examine. The
-     * execution ID is returned by StartAutomationExecution when the execution of an
-     * Automation runbook is initiated.</p>
-     */
-    inline GetAutomationExecutionRequest& WithAutomationExecutionId(const char* value) { SetAutomationExecutionId(value); return *this;}
-
+    template<typename AutomationExecutionIdT = Aws::String>
+    void SetAutomationExecutionId(AutomationExecutionIdT&& value) { m_automationExecutionIdHasBeenSet = true; m_automationExecutionId = std::forward<AutomationExecutionIdT>(value); }
+    template<typename AutomationExecutionIdT = Aws::String>
+    GetAutomationExecutionRequest& WithAutomationExecutionId(AutomationExecutionIdT&& value) { SetAutomationExecutionId(std::forward<AutomationExecutionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_automationExecutionId;

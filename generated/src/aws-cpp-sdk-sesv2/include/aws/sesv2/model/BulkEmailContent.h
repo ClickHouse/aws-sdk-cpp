@@ -32,42 +32,23 @@ namespace Model
   class BulkEmailContent
   {
   public:
-    AWS_SESV2_API BulkEmailContent();
+    AWS_SESV2_API BulkEmailContent() = default;
     AWS_SESV2_API BulkEmailContent(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API BulkEmailContent& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The template to use for the bulk email message.</p>
      */
-    inline const Template& GetTemplate() const{ return m_template; }
-
-    /**
-     * <p>The template to use for the bulk email message.</p>
-     */
+    inline const Template& GetTemplate() const { return m_template; }
     inline bool TemplateHasBeenSet() const { return m_templateHasBeenSet; }
-
-    /**
-     * <p>The template to use for the bulk email message.</p>
-     */
-    inline void SetTemplate(const Template& value) { m_templateHasBeenSet = true; m_template = value; }
-
-    /**
-     * <p>The template to use for the bulk email message.</p>
-     */
-    inline void SetTemplate(Template&& value) { m_templateHasBeenSet = true; m_template = std::move(value); }
-
-    /**
-     * <p>The template to use for the bulk email message.</p>
-     */
-    inline BulkEmailContent& WithTemplate(const Template& value) { SetTemplate(value); return *this;}
-
-    /**
-     * <p>The template to use for the bulk email message.</p>
-     */
-    inline BulkEmailContent& WithTemplate(Template&& value) { SetTemplate(std::move(value)); return *this;}
-
+    template<typename TemplateT = Template>
+    void SetTemplate(TemplateT&& value) { m_templateHasBeenSet = true; m_template = std::forward<TemplateT>(value); }
+    template<typename TemplateT = Template>
+    BulkEmailContent& WithTemplate(TemplateT&& value) { SetTemplate(std::forward<TemplateT>(value)); return *this;}
+    ///@}
   private:
 
     Template m_template;

@@ -12,19 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ImportTableRequest::ImportTableRequest() : 
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_s3BucketSourceHasBeenSet(false),
-    m_inputFormat(InputFormat::NOT_SET),
-    m_inputFormatHasBeenSet(false),
-    m_inputFormatOptionsHasBeenSet(false),
-    m_inputCompressionType(InputCompressionType::NOT_SET),
-    m_inputCompressionTypeHasBeenSet(false),
-    m_tableCreationParametersHasBeenSet(false)
-{
-}
-
 Aws::String ImportTableRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -75,5 +62,20 @@ Aws::Http::HeaderValueCollection ImportTableRequest::GetRequestSpecificHeaders()
 }
 
 
+
+ImportTableRequest::EndpointParameters ImportTableRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    //operation context params go here
+    parameters.emplace_back(Aws::String{"ResourceArn"}, this->GetOperationContextParams(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    return parameters;
+}
+//Accessor for dynamic context endpoint params
+Aws::Vector<Aws::String> ImportTableRequest::GetOperationContextParams() const{
+  Aws::Vector<Aws::String> result;
+  auto& TableCreationParametersElems = (*this).GetTableCreationParameters().GetTableName();
+  result.emplace_back(TableCreationParametersElems);
+  return result;
+}
 
 

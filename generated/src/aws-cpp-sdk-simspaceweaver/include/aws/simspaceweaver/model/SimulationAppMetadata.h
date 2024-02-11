@@ -26,219 +26,76 @@ namespace Model
 {
 
   /**
-   * <p>A collection of metadata about an app.</p><p><h3>See Also:</h3>   <a
+   * <p>A collection of metadata about the app.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/simspaceweaver-2022-10-28/SimulationAppMetadata">AWS
    * API Reference</a></p>
    */
   class SimulationAppMetadata
   {
   public:
-    AWS_SIMSPACEWEAVER_API SimulationAppMetadata();
+    AWS_SIMSPACEWEAVER_API SimulationAppMetadata() = default;
     AWS_SIMSPACEWEAVER_API SimulationAppMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_SIMSPACEWEAVER_API SimulationAppMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SIMSPACEWEAVER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The domain of the app. For more information about domains, see <a
-     * href="https://docs.aws.amazon.com/simspaceweaver/latest/userguide/what-is_key-concepts.html">Key
-     * concepts</a> in the <i>Amazon Web Services SimSpace Weaver User Guide</i>.</p>
+     * href="https://docs.aws.amazon.com/simspaceweaver/latest/userguide/what-is_key-concepts.html#what-is_key-concepts_domains">Key
+     * concepts: Domains</a> in the <i>SimSpace Weaver User Guide</i>.</p>
      */
-    inline const Aws::String& GetDomain() const{ return m_domain; }
-
-    /**
-     * <p>The domain of the app. For more information about domains, see <a
-     * href="https://docs.aws.amazon.com/simspaceweaver/latest/userguide/what-is_key-concepts.html">Key
-     * concepts</a> in the <i>Amazon Web Services SimSpace Weaver User Guide</i>.</p>
-     */
+    inline const Aws::String& GetDomain() const { return m_domain; }
     inline bool DomainHasBeenSet() const { return m_domainHasBeenSet; }
+    template<typename DomainT = Aws::String>
+    void SetDomain(DomainT&& value) { m_domainHasBeenSet = true; m_domain = std::forward<DomainT>(value); }
+    template<typename DomainT = Aws::String>
+    SimulationAppMetadata& WithDomain(DomainT&& value) { SetDomain(std::forward<DomainT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The domain of the app. For more information about domains, see <a
-     * href="https://docs.aws.amazon.com/simspaceweaver/latest/userguide/what-is_key-concepts.html">Key
-     * concepts</a> in the <i>Amazon Web Services SimSpace Weaver User Guide</i>.</p>
-     */
-    inline void SetDomain(const Aws::String& value) { m_domainHasBeenSet = true; m_domain = value; }
-
-    /**
-     * <p>The domain of the app. For more information about domains, see <a
-     * href="https://docs.aws.amazon.com/simspaceweaver/latest/userguide/what-is_key-concepts.html">Key
-     * concepts</a> in the <i>Amazon Web Services SimSpace Weaver User Guide</i>.</p>
-     */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
-
-    /**
-     * <p>The domain of the app. For more information about domains, see <a
-     * href="https://docs.aws.amazon.com/simspaceweaver/latest/userguide/what-is_key-concepts.html">Key
-     * concepts</a> in the <i>Amazon Web Services SimSpace Weaver User Guide</i>.</p>
-     */
-    inline void SetDomain(const char* value) { m_domainHasBeenSet = true; m_domain.assign(value); }
-
-    /**
-     * <p>The domain of the app. For more information about domains, see <a
-     * href="https://docs.aws.amazon.com/simspaceweaver/latest/userguide/what-is_key-concepts.html">Key
-     * concepts</a> in the <i>Amazon Web Services SimSpace Weaver User Guide</i>.</p>
-     */
-    inline SimulationAppMetadata& WithDomain(const Aws::String& value) { SetDomain(value); return *this;}
-
-    /**
-     * <p>The domain of the app. For more information about domains, see <a
-     * href="https://docs.aws.amazon.com/simspaceweaver/latest/userguide/what-is_key-concepts.html">Key
-     * concepts</a> in the <i>Amazon Web Services SimSpace Weaver User Guide</i>.</p>
-     */
-    inline SimulationAppMetadata& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
-
-    /**
-     * <p>The domain of the app. For more information about domains, see <a
-     * href="https://docs.aws.amazon.com/simspaceweaver/latest/userguide/what-is_key-concepts.html">Key
-     * concepts</a> in the <i>Amazon Web Services SimSpace Weaver User Guide</i>.</p>
-     */
-    inline SimulationAppMetadata& WithDomain(const char* value) { SetDomain(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the app.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the app.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    SimulationAppMetadata& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the app.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the app.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the app.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the app.</p>
-     */
-    inline SimulationAppMetadata& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the app.</p>
-     */
-    inline SimulationAppMetadata& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the app.</p>
-     */
-    inline SimulationAppMetadata& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the simulation of the app.</p>
      */
-    inline const Aws::String& GetSimulation() const{ return m_simulation; }
-
-    /**
-     * <p>The name of the simulation of the app.</p>
-     */
+    inline const Aws::String& GetSimulation() const { return m_simulation; }
     inline bool SimulationHasBeenSet() const { return m_simulationHasBeenSet; }
+    template<typename SimulationT = Aws::String>
+    void SetSimulation(SimulationT&& value) { m_simulationHasBeenSet = true; m_simulation = std::forward<SimulationT>(value); }
+    template<typename SimulationT = Aws::String>
+    SimulationAppMetadata& WithSimulation(SimulationT&& value) { SetSimulation(std::forward<SimulationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the simulation of the app.</p>
-     */
-    inline void SetSimulation(const Aws::String& value) { m_simulationHasBeenSet = true; m_simulation = value; }
-
-    /**
-     * <p>The name of the simulation of the app.</p>
-     */
-    inline void SetSimulation(Aws::String&& value) { m_simulationHasBeenSet = true; m_simulation = std::move(value); }
-
-    /**
-     * <p>The name of the simulation of the app.</p>
-     */
-    inline void SetSimulation(const char* value) { m_simulationHasBeenSet = true; m_simulation.assign(value); }
-
-    /**
-     * <p>The name of the simulation of the app.</p>
-     */
-    inline SimulationAppMetadata& WithSimulation(const Aws::String& value) { SetSimulation(value); return *this;}
-
-    /**
-     * <p>The name of the simulation of the app.</p>
-     */
-    inline SimulationAppMetadata& WithSimulation(Aws::String&& value) { SetSimulation(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the simulation of the app.</p>
-     */
-    inline SimulationAppMetadata& WithSimulation(const char* value) { SetSimulation(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the app.</p>
      */
-    inline const SimulationAppStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The current status of the app.</p>
-     */
+    inline SimulationAppStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(SimulationAppStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline SimulationAppMetadata& WithStatus(SimulationAppStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the app.</p>
-     */
-    inline void SetStatus(const SimulationAppStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The current status of the app.</p>
-     */
-    inline void SetStatus(SimulationAppStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The current status of the app.</p>
-     */
-    inline SimulationAppMetadata& WithStatus(const SimulationAppStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the app.</p>
-     */
-    inline SimulationAppMetadata& WithStatus(SimulationAppStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The desired status of the app.</p>
      */
-    inline const SimulationAppTargetStatus& GetTargetStatus() const{ return m_targetStatus; }
-
-    /**
-     * <p>The desired status of the app.</p>
-     */
+    inline SimulationAppTargetStatus GetTargetStatus() const { return m_targetStatus; }
     inline bool TargetStatusHasBeenSet() const { return m_targetStatusHasBeenSet; }
-
-    /**
-     * <p>The desired status of the app.</p>
-     */
-    inline void SetTargetStatus(const SimulationAppTargetStatus& value) { m_targetStatusHasBeenSet = true; m_targetStatus = value; }
-
-    /**
-     * <p>The desired status of the app.</p>
-     */
-    inline void SetTargetStatus(SimulationAppTargetStatus&& value) { m_targetStatusHasBeenSet = true; m_targetStatus = std::move(value); }
-
-    /**
-     * <p>The desired status of the app.</p>
-     */
-    inline SimulationAppMetadata& WithTargetStatus(const SimulationAppTargetStatus& value) { SetTargetStatus(value); return *this;}
-
-    /**
-     * <p>The desired status of the app.</p>
-     */
-    inline SimulationAppMetadata& WithTargetStatus(SimulationAppTargetStatus&& value) { SetTargetStatus(std::move(value)); return *this;}
-
+    inline void SetTargetStatus(SimulationAppTargetStatus value) { m_targetStatusHasBeenSet = true; m_targetStatus = value; }
+    inline SimulationAppMetadata& WithTargetStatus(SimulationAppTargetStatus value) { SetTargetStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_domain;
@@ -250,10 +107,10 @@ namespace Model
     Aws::String m_simulation;
     bool m_simulationHasBeenSet = false;
 
-    SimulationAppStatus m_status;
+    SimulationAppStatus m_status{SimulationAppStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
-    SimulationAppTargetStatus m_targetStatus;
+    SimulationAppTargetStatus m_targetStatus{SimulationAppTargetStatus::NOT_SET};
     bool m_targetStatusHasBeenSet = false;
   };
 

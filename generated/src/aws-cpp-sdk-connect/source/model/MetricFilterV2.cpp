@@ -18,15 +18,7 @@ namespace Connect
 namespace Model
 {
 
-MetricFilterV2::MetricFilterV2() : 
-    m_metricFilterKeyHasBeenSet(false),
-    m_metricFilterValuesHasBeenSet(false)
-{
-}
-
-MetricFilterV2::MetricFilterV2(JsonView jsonValue) : 
-    m_metricFilterKeyHasBeenSet(false),
-    m_metricFilterValuesHasBeenSet(false)
+MetricFilterV2::MetricFilterV2(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ MetricFilterV2& MetricFilterV2::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MetricFilterKey"))
   {
     m_metricFilterKey = jsonValue.GetString("MetricFilterKey");
-
     m_metricFilterKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MetricFilterValues"))
   {
     Aws::Utils::Array<JsonView> metricFilterValuesJsonList = jsonValue.GetArray("MetricFilterValues");
@@ -49,7 +39,11 @@ MetricFilterV2& MetricFilterV2::operator =(JsonView jsonValue)
     }
     m_metricFilterValuesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Negate"))
+  {
+    m_negate = jsonValue.GetBool("Negate");
+    m_negateHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -71,6 +65,12 @@ JsonValue MetricFilterV2::Jsonize() const
      metricFilterValuesJsonList[metricFilterValuesIndex].AsString(m_metricFilterValues[metricFilterValuesIndex]);
    }
    payload.WithArray("MetricFilterValues", std::move(metricFilterValuesJsonList));
+
+  }
+
+  if(m_negateHasBeenSet)
+  {
+   payload.WithBool("Negate", m_negate);
 
   }
 

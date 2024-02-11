@@ -32,134 +32,48 @@ namespace Model
   class TextInputEvent
   {
   public:
-    AWS_LEXRUNTIMEV2_API TextInputEvent();
+    AWS_LEXRUNTIMEV2_API TextInputEvent() = default;
     AWS_LEXRUNTIMEV2_API TextInputEvent(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXRUNTIMEV2_API TextInputEvent& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXRUNTIMEV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The text from the user. Amazon Lex V2 processes this as a complete
      * statement.</p>
      */
-    inline const Aws::String& GetText() const{ return m_text; }
-
-    /**
-     * <p>The text from the user. Amazon Lex V2 processes this as a complete
-     * statement.</p>
-     */
+    inline const Aws::String& GetText() const { return m_text; }
     inline bool TextHasBeenSet() const { return m_textHasBeenSet; }
+    template<typename TextT = Aws::String>
+    void SetText(TextT&& value) { m_textHasBeenSet = true; m_text = std::forward<TextT>(value); }
+    template<typename TextT = Aws::String>
+    TextInputEvent& WithText(TextT&& value) { SetText(std::forward<TextT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The text from the user. Amazon Lex V2 processes this as a complete
-     * statement.</p>
-     */
-    inline void SetText(const Aws::String& value) { m_textHasBeenSet = true; m_text = value; }
-
-    /**
-     * <p>The text from the user. Amazon Lex V2 processes this as a complete
-     * statement.</p>
-     */
-    inline void SetText(Aws::String&& value) { m_textHasBeenSet = true; m_text = std::move(value); }
-
-    /**
-     * <p>The text from the user. Amazon Lex V2 processes this as a complete
-     * statement.</p>
-     */
-    inline void SetText(const char* value) { m_textHasBeenSet = true; m_text.assign(value); }
-
-    /**
-     * <p>The text from the user. Amazon Lex V2 processes this as a complete
-     * statement.</p>
-     */
-    inline TextInputEvent& WithText(const Aws::String& value) { SetText(value); return *this;}
-
-    /**
-     * <p>The text from the user. Amazon Lex V2 processes this as a complete
-     * statement.</p>
-     */
-    inline TextInputEvent& WithText(Aws::String&& value) { SetText(std::move(value)); return *this;}
-
-    /**
-     * <p>The text from the user. Amazon Lex V2 processes this as a complete
-     * statement.</p>
-     */
-    inline TextInputEvent& WithText(const char* value) { SetText(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier that your application assigns to the event. You can use
      * this to identify events in logs.</p>
      */
-    inline const Aws::String& GetEventId() const{ return m_eventId; }
-
-    /**
-     * <p>A unique identifier that your application assigns to the event. You can use
-     * this to identify events in logs.</p>
-     */
+    inline const Aws::String& GetEventId() const { return m_eventId; }
     inline bool EventIdHasBeenSet() const { return m_eventIdHasBeenSet; }
+    template<typename EventIdT = Aws::String>
+    void SetEventId(EventIdT&& value) { m_eventIdHasBeenSet = true; m_eventId = std::forward<EventIdT>(value); }
+    template<typename EventIdT = Aws::String>
+    TextInputEvent& WithEventId(EventIdT&& value) { SetEventId(std::forward<EventIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier that your application assigns to the event. You can use
-     * this to identify events in logs.</p>
-     */
-    inline void SetEventId(const Aws::String& value) { m_eventIdHasBeenSet = true; m_eventId = value; }
-
-    /**
-     * <p>A unique identifier that your application assigns to the event. You can use
-     * this to identify events in logs.</p>
-     */
-    inline void SetEventId(Aws::String&& value) { m_eventIdHasBeenSet = true; m_eventId = std::move(value); }
-
-    /**
-     * <p>A unique identifier that your application assigns to the event. You can use
-     * this to identify events in logs.</p>
-     */
-    inline void SetEventId(const char* value) { m_eventIdHasBeenSet = true; m_eventId.assign(value); }
-
-    /**
-     * <p>A unique identifier that your application assigns to the event. You can use
-     * this to identify events in logs.</p>
-     */
-    inline TextInputEvent& WithEventId(const Aws::String& value) { SetEventId(value); return *this;}
-
-    /**
-     * <p>A unique identifier that your application assigns to the event. You can use
-     * this to identify events in logs.</p>
-     */
-    inline TextInputEvent& WithEventId(Aws::String&& value) { SetEventId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier that your application assigns to the event. You can use
-     * this to identify events in logs.</p>
-     */
-    inline TextInputEvent& WithEventId(const char* value) { SetEventId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A timestamp set by the client of the date and time that the event was sent to
      * Amazon Lex V2.</p>
      */
-    inline long long GetClientTimestampMillis() const{ return m_clientTimestampMillis; }
-
-    /**
-     * <p>A timestamp set by the client of the date and time that the event was sent to
-     * Amazon Lex V2.</p>
-     */
+    inline long long GetClientTimestampMillis() const { return m_clientTimestampMillis; }
     inline bool ClientTimestampMillisHasBeenSet() const { return m_clientTimestampMillisHasBeenSet; }
-
-    /**
-     * <p>A timestamp set by the client of the date and time that the event was sent to
-     * Amazon Lex V2.</p>
-     */
     inline void SetClientTimestampMillis(long long value) { m_clientTimestampMillisHasBeenSet = true; m_clientTimestampMillis = value; }
-
-    /**
-     * <p>A timestamp set by the client of the date and time that the event was sent to
-     * Amazon Lex V2.</p>
-     */
     inline TextInputEvent& WithClientTimestampMillis(long long value) { SetClientTimestampMillis(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_text;
@@ -168,7 +82,7 @@ namespace Model
     Aws::String m_eventId;
     bool m_eventIdHasBeenSet = false;
 
-    long long m_clientTimestampMillis;
+    long long m_clientTimestampMillis{0};
     bool m_clientTimestampMillisHasBeenSet = false;
   };
 

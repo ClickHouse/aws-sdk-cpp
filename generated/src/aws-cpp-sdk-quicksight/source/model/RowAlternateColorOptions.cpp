@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-RowAlternateColorOptions::RowAlternateColorOptions() : 
-    m_status(WidgetStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_rowAlternateColorsHasBeenSet(false)
-{
-}
-
-RowAlternateColorOptions::RowAlternateColorOptions(JsonView jsonValue) : 
-    m_status(WidgetStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_rowAlternateColorsHasBeenSet(false)
+RowAlternateColorOptions::RowAlternateColorOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ RowAlternateColorOptions& RowAlternateColorOptions::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("Status"))
   {
     m_status = WidgetStatusMapper::GetWidgetStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RowAlternateColors"))
   {
     Aws::Utils::Array<JsonView> rowAlternateColorsJsonList = jsonValue.GetArray("RowAlternateColors");
@@ -51,7 +39,11 @@ RowAlternateColorOptions& RowAlternateColorOptions::operator =(JsonView jsonValu
     }
     m_rowAlternateColorsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("UsePrimaryBackgroundColor"))
+  {
+    m_usePrimaryBackgroundColor = WidgetStatusMapper::GetWidgetStatusForName(jsonValue.GetString("UsePrimaryBackgroundColor"));
+    m_usePrimaryBackgroundColorHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -73,6 +65,11 @@ JsonValue RowAlternateColorOptions::Jsonize() const
    }
    payload.WithArray("RowAlternateColors", std::move(rowAlternateColorsJsonList));
 
+  }
+
+  if(m_usePrimaryBackgroundColorHasBeenSet)
+  {
+   payload.WithString("UsePrimaryBackgroundColor", WidgetStatusMapper::GetNameForWidgetStatus(m_usePrimaryBackgroundColor));
   }
 
   return payload;

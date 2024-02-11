@@ -28,63 +28,37 @@ namespace Model
   class GetDevEndpointResult
   {
   public:
-    AWS_GLUE_API GetDevEndpointResult();
+    AWS_GLUE_API GetDevEndpointResult() = default;
     AWS_GLUE_API GetDevEndpointResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GLUE_API GetDevEndpointResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A <code>DevEndpoint</code> definition.</p>
      */
-    inline const DevEndpoint& GetDevEndpoint() const{ return m_devEndpoint; }
+    inline const DevEndpoint& GetDevEndpoint() const { return m_devEndpoint; }
+    template<typename DevEndpointT = DevEndpoint>
+    void SetDevEndpoint(DevEndpointT&& value) { m_devEndpointHasBeenSet = true; m_devEndpoint = std::forward<DevEndpointT>(value); }
+    template<typename DevEndpointT = DevEndpoint>
+    GetDevEndpointResult& WithDevEndpoint(DevEndpointT&& value) { SetDevEndpoint(std::forward<DevEndpointT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A <code>DevEndpoint</code> definition.</p>
-     */
-    inline void SetDevEndpoint(const DevEndpoint& value) { m_devEndpoint = value; }
-
-    /**
-     * <p>A <code>DevEndpoint</code> definition.</p>
-     */
-    inline void SetDevEndpoint(DevEndpoint&& value) { m_devEndpoint = std::move(value); }
-
-    /**
-     * <p>A <code>DevEndpoint</code> definition.</p>
-     */
-    inline GetDevEndpointResult& WithDevEndpoint(const DevEndpoint& value) { SetDevEndpoint(value); return *this;}
-
-    /**
-     * <p>A <code>DevEndpoint</code> definition.</p>
-     */
-    inline GetDevEndpointResult& WithDevEndpoint(DevEndpoint&& value) { SetDevEndpoint(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetDevEndpointResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetDevEndpointResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetDevEndpointResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetDevEndpointResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     DevEndpoint m_devEndpoint;
+    bool m_devEndpointHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

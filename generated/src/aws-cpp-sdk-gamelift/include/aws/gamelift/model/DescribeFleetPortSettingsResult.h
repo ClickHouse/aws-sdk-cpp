@@ -30,260 +30,100 @@ namespace Model
   class DescribeFleetPortSettingsResult
   {
   public:
-    AWS_GAMELIFT_API DescribeFleetPortSettingsResult();
+    AWS_GAMELIFT_API DescribeFleetPortSettingsResult() = default;
     AWS_GAMELIFT_API DescribeFleetPortSettingsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GAMELIFT_API DescribeFleetPortSettingsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A unique identifier for the fleet that was requested. </p>
      */
-    inline const Aws::String& GetFleetId() const{ return m_fleetId; }
+    inline const Aws::String& GetFleetId() const { return m_fleetId; }
+    template<typename FleetIdT = Aws::String>
+    void SetFleetId(FleetIdT&& value) { m_fleetIdHasBeenSet = true; m_fleetId = std::forward<FleetIdT>(value); }
+    template<typename FleetIdT = Aws::String>
+    DescribeFleetPortSettingsResult& WithFleetId(FleetIdT&& value) { SetFleetId(std::forward<FleetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the fleet that was requested. </p>
-     */
-    inline void SetFleetId(const Aws::String& value) { m_fleetId = value; }
-
-    /**
-     * <p>A unique identifier for the fleet that was requested. </p>
-     */
-    inline void SetFleetId(Aws::String&& value) { m_fleetId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the fleet that was requested. </p>
-     */
-    inline void SetFleetId(const char* value) { m_fleetId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the fleet that was requested. </p>
-     */
-    inline DescribeFleetPortSettingsResult& WithFleetId(const Aws::String& value) { SetFleetId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the fleet that was requested. </p>
-     */
-    inline DescribeFleetPortSettingsResult& WithFleetId(Aws::String&& value) { SetFleetId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the fleet that was requested. </p>
-     */
-    inline DescribeFleetPortSettingsResult& WithFleetId(const char* value) { SetFleetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (<a
      * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
-     * that is assigned to a GameLift fleet resource and uniquely identifies it. ARNs
-     * are unique across all Regions. Format is
+     * that is assigned to a Amazon GameLift Servers fleet resource and uniquely
+     * identifies it. ARNs are unique across all Regions. Format is
      * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
      */
-    inline const Aws::String& GetFleetArn() const{ return m_fleetArn; }
+    inline const Aws::String& GetFleetArn() const { return m_fleetArn; }
+    template<typename FleetArnT = Aws::String>
+    void SetFleetArn(FleetArnT&& value) { m_fleetArnHasBeenSet = true; m_fleetArn = std::forward<FleetArnT>(value); }
+    template<typename FleetArnT = Aws::String>
+    DescribeFleetPortSettingsResult& WithFleetArn(FleetArnT&& value) { SetFleetArn(std::forward<FleetArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
-     * that is assigned to a GameLift fleet resource and uniquely identifies it. ARNs
-     * are unique across all Regions. Format is
-     * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
-     */
-    inline void SetFleetArn(const Aws::String& value) { m_fleetArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
-     * that is assigned to a GameLift fleet resource and uniquely identifies it. ARNs
-     * are unique across all Regions. Format is
-     * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
-     */
-    inline void SetFleetArn(Aws::String&& value) { m_fleetArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
-     * that is assigned to a GameLift fleet resource and uniquely identifies it. ARNs
-     * are unique across all Regions. Format is
-     * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
-     */
-    inline void SetFleetArn(const char* value) { m_fleetArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
-     * that is assigned to a GameLift fleet resource and uniquely identifies it. ARNs
-     * are unique across all Regions. Format is
-     * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
-     */
-    inline DescribeFleetPortSettingsResult& WithFleetArn(const Aws::String& value) { SetFleetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
-     * that is assigned to a GameLift fleet resource and uniquely identifies it. ARNs
-     * are unique across all Regions. Format is
-     * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
-     */
-    inline DescribeFleetPortSettingsResult& WithFleetArn(Aws::String&& value) { SetFleetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
-     * that is assigned to a GameLift fleet resource and uniquely identifies it. ARNs
-     * are unique across all Regions. Format is
-     * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
-     */
-    inline DescribeFleetPortSettingsResult& WithFleetArn(const char* value) { SetFleetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The port settings for the requested fleet ID.</p>
      */
-    inline const Aws::Vector<IpPermission>& GetInboundPermissions() const{ return m_inboundPermissions; }
+    inline const Aws::Vector<IpPermission>& GetInboundPermissions() const { return m_inboundPermissions; }
+    template<typename InboundPermissionsT = Aws::Vector<IpPermission>>
+    void SetInboundPermissions(InboundPermissionsT&& value) { m_inboundPermissionsHasBeenSet = true; m_inboundPermissions = std::forward<InboundPermissionsT>(value); }
+    template<typename InboundPermissionsT = Aws::Vector<IpPermission>>
+    DescribeFleetPortSettingsResult& WithInboundPermissions(InboundPermissionsT&& value) { SetInboundPermissions(std::forward<InboundPermissionsT>(value)); return *this;}
+    template<typename InboundPermissionsT = IpPermission>
+    DescribeFleetPortSettingsResult& AddInboundPermissions(InboundPermissionsT&& value) { m_inboundPermissionsHasBeenSet = true; m_inboundPermissions.emplace_back(std::forward<InboundPermissionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The port settings for the requested fleet ID.</p>
-     */
-    inline void SetInboundPermissions(const Aws::Vector<IpPermission>& value) { m_inboundPermissions = value; }
-
-    /**
-     * <p>The port settings for the requested fleet ID.</p>
-     */
-    inline void SetInboundPermissions(Aws::Vector<IpPermission>&& value) { m_inboundPermissions = std::move(value); }
-
-    /**
-     * <p>The port settings for the requested fleet ID.</p>
-     */
-    inline DescribeFleetPortSettingsResult& WithInboundPermissions(const Aws::Vector<IpPermission>& value) { SetInboundPermissions(value); return *this;}
-
-    /**
-     * <p>The port settings for the requested fleet ID.</p>
-     */
-    inline DescribeFleetPortSettingsResult& WithInboundPermissions(Aws::Vector<IpPermission>&& value) { SetInboundPermissions(std::move(value)); return *this;}
-
-    /**
-     * <p>The port settings for the requested fleet ID.</p>
-     */
-    inline DescribeFleetPortSettingsResult& AddInboundPermissions(const IpPermission& value) { m_inboundPermissions.push_back(value); return *this; }
-
-    /**
-     * <p>The port settings for the requested fleet ID.</p>
-     */
-    inline DescribeFleetPortSettingsResult& AddInboundPermissions(IpPermission&& value) { m_inboundPermissions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The current status of updates to the fleet's port settings in the requested
      * fleet location. A status of <code>PENDING_UPDATE</code> indicates that an update
      * was requested for the fleet but has not yet been completed for the location.</p>
      */
-    inline const LocationUpdateStatus& GetUpdateStatus() const{ return m_updateStatus; }
+    inline LocationUpdateStatus GetUpdateStatus() const { return m_updateStatus; }
+    inline void SetUpdateStatus(LocationUpdateStatus value) { m_updateStatusHasBeenSet = true; m_updateStatus = value; }
+    inline DescribeFleetPortSettingsResult& WithUpdateStatus(LocationUpdateStatus value) { SetUpdateStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of updates to the fleet's port settings in the requested
-     * fleet location. A status of <code>PENDING_UPDATE</code> indicates that an update
-     * was requested for the fleet but has not yet been completed for the location.</p>
-     */
-    inline void SetUpdateStatus(const LocationUpdateStatus& value) { m_updateStatus = value; }
-
-    /**
-     * <p>The current status of updates to the fleet's port settings in the requested
-     * fleet location. A status of <code>PENDING_UPDATE</code> indicates that an update
-     * was requested for the fleet but has not yet been completed for the location.</p>
-     */
-    inline void SetUpdateStatus(LocationUpdateStatus&& value) { m_updateStatus = std::move(value); }
-
-    /**
-     * <p>The current status of updates to the fleet's port settings in the requested
-     * fleet location. A status of <code>PENDING_UPDATE</code> indicates that an update
-     * was requested for the fleet but has not yet been completed for the location.</p>
-     */
-    inline DescribeFleetPortSettingsResult& WithUpdateStatus(const LocationUpdateStatus& value) { SetUpdateStatus(value); return *this;}
-
-    /**
-     * <p>The current status of updates to the fleet's port settings in the requested
-     * fleet location. A status of <code>PENDING_UPDATE</code> indicates that an update
-     * was requested for the fleet but has not yet been completed for the location.</p>
-     */
-    inline DescribeFleetPortSettingsResult& WithUpdateStatus(LocationUpdateStatus&& value) { SetUpdateStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The requested fleet location, expressed as an Amazon Web Services Region
      * code, such as <code>us-west-2</code>. </p>
      */
-    inline const Aws::String& GetLocation() const{ return m_location; }
+    inline const Aws::String& GetLocation() const { return m_location; }
+    template<typename LocationT = Aws::String>
+    void SetLocation(LocationT&& value) { m_locationHasBeenSet = true; m_location = std::forward<LocationT>(value); }
+    template<typename LocationT = Aws::String>
+    DescribeFleetPortSettingsResult& WithLocation(LocationT&& value) { SetLocation(std::forward<LocationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The requested fleet location, expressed as an Amazon Web Services Region
-     * code, such as <code>us-west-2</code>. </p>
-     */
-    inline void SetLocation(const Aws::String& value) { m_location = value; }
-
-    /**
-     * <p>The requested fleet location, expressed as an Amazon Web Services Region
-     * code, such as <code>us-west-2</code>. </p>
-     */
-    inline void SetLocation(Aws::String&& value) { m_location = std::move(value); }
-
-    /**
-     * <p>The requested fleet location, expressed as an Amazon Web Services Region
-     * code, such as <code>us-west-2</code>. </p>
-     */
-    inline void SetLocation(const char* value) { m_location.assign(value); }
-
-    /**
-     * <p>The requested fleet location, expressed as an Amazon Web Services Region
-     * code, such as <code>us-west-2</code>. </p>
-     */
-    inline DescribeFleetPortSettingsResult& WithLocation(const Aws::String& value) { SetLocation(value); return *this;}
-
-    /**
-     * <p>The requested fleet location, expressed as an Amazon Web Services Region
-     * code, such as <code>us-west-2</code>. </p>
-     */
-    inline DescribeFleetPortSettingsResult& WithLocation(Aws::String&& value) { SetLocation(std::move(value)); return *this;}
-
-    /**
-     * <p>The requested fleet location, expressed as an Amazon Web Services Region
-     * code, such as <code>us-west-2</code>. </p>
-     */
-    inline DescribeFleetPortSettingsResult& WithLocation(const char* value) { SetLocation(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeFleetPortSettingsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeFleetPortSettingsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeFleetPortSettingsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeFleetPortSettingsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_fleetId;
+    bool m_fleetIdHasBeenSet = false;
 
     Aws::String m_fleetArn;
+    bool m_fleetArnHasBeenSet = false;
 
     Aws::Vector<IpPermission> m_inboundPermissions;
+    bool m_inboundPermissionsHasBeenSet = false;
 
-    LocationUpdateStatus m_updateStatus;
+    LocationUpdateStatus m_updateStatus{LocationUpdateStatus::NOT_SET};
+    bool m_updateStatusHasBeenSet = false;
 
     Aws::String m_location;
+    bool m_locationHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

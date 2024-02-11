@@ -18,56 +18,29 @@ namespace SageMakerGeospatial
 namespace Model
 {
 
-InputConfigInput::InputConfigInput() : 
-    m_dataSourceConfigHasBeenSet(false),
-    m_previousEarthObservationJobArnHasBeenSet(false),
-    m_rasterDataCollectionQueryHasBeenSet(false)
-{
-}
-
-InputConfigInput::InputConfigInput(JsonView jsonValue) : 
-    m_dataSourceConfigHasBeenSet(false),
-    m_previousEarthObservationJobArnHasBeenSet(false),
-    m_rasterDataCollectionQueryHasBeenSet(false)
+InputConfigInput::InputConfigInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 InputConfigInput& InputConfigInput::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("DataSourceConfig"))
-  {
-    m_dataSourceConfig = jsonValue.GetObject("DataSourceConfig");
-
-    m_dataSourceConfigHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("PreviousEarthObservationJobArn"))
   {
     m_previousEarthObservationJobArn = jsonValue.GetString("PreviousEarthObservationJobArn");
-
     m_previousEarthObservationJobArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RasterDataCollectionQuery"))
   {
     m_rasterDataCollectionQuery = jsonValue.GetObject("RasterDataCollectionQuery");
-
     m_rasterDataCollectionQueryHasBeenSet = true;
   }
-
   return *this;
 }
 
 JsonValue InputConfigInput::Jsonize() const
 {
   JsonValue payload;
-
-  if(m_dataSourceConfigHasBeenSet)
-  {
-   payload.WithObject("DataSourceConfig", m_dataSourceConfig.Jsonize());
-
-  }
 
   if(m_previousEarthObservationJobArnHasBeenSet)
   {

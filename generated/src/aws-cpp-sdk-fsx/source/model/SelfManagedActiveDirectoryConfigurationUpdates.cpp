@@ -18,17 +18,7 @@ namespace FSx
 namespace Model
 {
 
-SelfManagedActiveDirectoryConfigurationUpdates::SelfManagedActiveDirectoryConfigurationUpdates() : 
-    m_userNameHasBeenSet(false),
-    m_passwordHasBeenSet(false),
-    m_dnsIpsHasBeenSet(false)
-{
-}
-
-SelfManagedActiveDirectoryConfigurationUpdates::SelfManagedActiveDirectoryConfigurationUpdates(JsonView jsonValue) : 
-    m_userNameHasBeenSet(false),
-    m_passwordHasBeenSet(false),
-    m_dnsIpsHasBeenSet(false)
+SelfManagedActiveDirectoryConfigurationUpdates::SelfManagedActiveDirectoryConfigurationUpdates(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ SelfManagedActiveDirectoryConfigurationUpdates& SelfManagedActiveDirectoryConfig
   if(jsonValue.ValueExists("UserName"))
   {
     m_userName = jsonValue.GetString("UserName");
-
     m_userNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Password"))
   {
     m_password = jsonValue.GetString("Password");
-
     m_passwordHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DnsIps"))
   {
     Aws::Utils::Array<JsonView> dnsIpsJsonList = jsonValue.GetArray("DnsIps");
@@ -58,7 +44,21 @@ SelfManagedActiveDirectoryConfigurationUpdates& SelfManagedActiveDirectoryConfig
     }
     m_dnsIpsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("DomainName"))
+  {
+    m_domainName = jsonValue.GetString("DomainName");
+    m_domainNameHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("OrganizationalUnitDistinguishedName"))
+  {
+    m_organizationalUnitDistinguishedName = jsonValue.GetString("OrganizationalUnitDistinguishedName");
+    m_organizationalUnitDistinguishedNameHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("FileSystemAdministratorsGroup"))
+  {
+    m_fileSystemAdministratorsGroup = jsonValue.GetString("FileSystemAdministratorsGroup");
+    m_fileSystemAdministratorsGroupHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -86,6 +86,24 @@ JsonValue SelfManagedActiveDirectoryConfigurationUpdates::Jsonize() const
      dnsIpsJsonList[dnsIpsIndex].AsString(m_dnsIps[dnsIpsIndex]);
    }
    payload.WithArray("DnsIps", std::move(dnsIpsJsonList));
+
+  }
+
+  if(m_domainNameHasBeenSet)
+  {
+   payload.WithString("DomainName", m_domainName);
+
+  }
+
+  if(m_organizationalUnitDistinguishedNameHasBeenSet)
+  {
+   payload.WithString("OrganizationalUnitDistinguishedName", m_organizationalUnitDistinguishedName);
+
+  }
+
+  if(m_fileSystemAdministratorsGroupHasBeenSet)
+  {
+   payload.WithString("FileSystemAdministratorsGroup", m_fileSystemAdministratorsGroup);
 
   }
 

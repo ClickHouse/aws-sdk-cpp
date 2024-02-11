@@ -6,10 +6,11 @@
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
-#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/TagSpecification.h>
 #include <utility>
+#include <aws/core/utils/UUID.h>
 
 namespace Aws
 {
@@ -23,7 +24,7 @@ namespace Model
   class CreateRouteTableRequest : public EC2Request
   {
   public:
-    AWS_EC2_API CreateRouteTableRequest();
+    AWS_EC2_API CreateRouteTableRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,130 +39,72 @@ namespace Model
 
   public:
 
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
-    inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
-    inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
-    inline CreateRouteTableRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
-
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline const Aws::String& GetVpcId() const{ return m_vpcId; }
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline bool VpcIdHasBeenSet() const { return m_vpcIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline void SetVpcId(const Aws::String& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline void SetVpcId(const char* value) { m_vpcIdHasBeenSet = true; m_vpcId.assign(value); }
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline CreateRouteTableRequest& WithVpcId(const Aws::String& value) { SetVpcId(value); return *this;}
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline CreateRouteTableRequest& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline CreateRouteTableRequest& WithVpcId(const char* value) { SetVpcId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags to assign to the route table.</p>
      */
-    inline const Aws::Vector<TagSpecification>& GetTagSpecifications() const{ return m_tagSpecifications; }
-
-    /**
-     * <p>The tags to assign to the route table.</p>
-     */
+    inline const Aws::Vector<TagSpecification>& GetTagSpecifications() const { return m_tagSpecifications; }
     inline bool TagSpecificationsHasBeenSet() const { return m_tagSpecificationsHasBeenSet; }
+    template<typename TagSpecificationsT = Aws::Vector<TagSpecification>>
+    void SetTagSpecifications(TagSpecificationsT&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = std::forward<TagSpecificationsT>(value); }
+    template<typename TagSpecificationsT = Aws::Vector<TagSpecification>>
+    CreateRouteTableRequest& WithTagSpecifications(TagSpecificationsT&& value) { SetTagSpecifications(std::forward<TagSpecificationsT>(value)); return *this;}
+    template<typename TagSpecificationsT = TagSpecification>
+    CreateRouteTableRequest& AddTagSpecifications(TagSpecificationsT&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.emplace_back(std::forward<TagSpecificationsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The tags to assign to the route table.</p>
+     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
+     * of the request. For more information, see <a
+     * href="https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html">Ensuring
+     * idempotency</a>.</p>
      */
-    inline void SetTagSpecifications(const Aws::Vector<TagSpecification>& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = value; }
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
+    inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateRouteTableRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The tags to assign to the route table.</p>
+     * <p>Checks whether you have the required permissions for the action, without
+     * actually making the request, and provides an error response. If you have the
+     * required permissions, the error response is <code>DryRunOperation</code>.
+     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline void SetTagSpecifications(Aws::Vector<TagSpecification>&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = std::move(value); }
+    inline bool GetDryRun() const { return m_dryRun; }
+    inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
+    inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
+    inline CreateRouteTableRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The tags to assign to the route table.</p>
+     * <p>The ID of the VPC.</p>
      */
-    inline CreateRouteTableRequest& WithTagSpecifications(const Aws::Vector<TagSpecification>& value) { SetTagSpecifications(value); return *this;}
-
-    /**
-     * <p>The tags to assign to the route table.</p>
-     */
-    inline CreateRouteTableRequest& WithTagSpecifications(Aws::Vector<TagSpecification>&& value) { SetTagSpecifications(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags to assign to the route table.</p>
-     */
-    inline CreateRouteTableRequest& AddTagSpecifications(const TagSpecification& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.push_back(value); return *this; }
-
-    /**
-     * <p>The tags to assign to the route table.</p>
-     */
-    inline CreateRouteTableRequest& AddTagSpecifications(TagSpecification&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.push_back(std::move(value)); return *this; }
-
+    inline const Aws::String& GetVpcId() const { return m_vpcId; }
+    inline bool VpcIdHasBeenSet() const { return m_vpcIdHasBeenSet; }
+    template<typename VpcIdT = Aws::String>
+    void SetVpcId(VpcIdT&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::forward<VpcIdT>(value); }
+    template<typename VpcIdT = Aws::String>
+    CreateRouteTableRequest& WithVpcId(VpcIdT&& value) { SetVpcId(std::forward<VpcIdT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_dryRun;
+    Aws::Vector<TagSpecification> m_tagSpecifications;
+    bool m_tagSpecificationsHasBeenSet = false;
+
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
+
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     Aws::String m_vpcId;
     bool m_vpcIdHasBeenSet = false;
-
-    Aws::Vector<TagSpecification> m_tagSpecifications;
-    bool m_tagSpecificationsHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,13 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-NotificationConfiguration::NotificationConfiguration() : 
-    m_notificationTopicArnHasBeenSet(false)
-{
-}
-
-NotificationConfiguration::NotificationConfiguration(JsonView jsonValue) : 
-    m_notificationTopicArnHasBeenSet(false)
+NotificationConfiguration::NotificationConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ NotificationConfiguration& NotificationConfiguration::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("NotificationTopicArn"))
   {
     m_notificationTopicArn = jsonValue.GetString("NotificationTopicArn");
-
     m_notificationTopicArnHasBeenSet = true;
   }
-
   return *this;
 }
 

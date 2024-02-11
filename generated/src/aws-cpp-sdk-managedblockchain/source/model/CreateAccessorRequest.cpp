@@ -12,15 +12,6 @@ using namespace Aws::ManagedBlockchain::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateAccessorRequest::CreateAccessorRequest() : 
-    m_clientRequestToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientRequestTokenHasBeenSet(true),
-    m_accessorType(AccessorType::NOT_SET),
-    m_accessorTypeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateAccessorRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -45,6 +36,11 @@ Aws::String CreateAccessorRequest::SerializePayload() const
    }
    payload.WithObject("Tags", std::move(tagsJsonMap));
 
+  }
+
+  if(m_networkTypeHasBeenSet)
+  {
+   payload.WithString("NetworkType", AccessorNetworkTypeMapper::GetNameForAccessorNetworkType(m_networkType));
   }
 
   return payload.View().WriteReadable();

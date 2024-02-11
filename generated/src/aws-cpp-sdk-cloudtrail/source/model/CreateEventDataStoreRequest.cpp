@@ -12,22 +12,6 @@ using namespace Aws::CloudTrail::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateEventDataStoreRequest::CreateEventDataStoreRequest() : 
-    m_nameHasBeenSet(false),
-    m_advancedEventSelectorsHasBeenSet(false),
-    m_multiRegionEnabled(false),
-    m_multiRegionEnabledHasBeenSet(false),
-    m_organizationEnabled(false),
-    m_organizationEnabledHasBeenSet(false),
-    m_retentionPeriod(0),
-    m_retentionPeriodHasBeenSet(false),
-    m_terminationProtectionEnabled(false),
-    m_terminationProtectionEnabledHasBeenSet(false),
-    m_tagsListHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false)
-{
-}
-
 Aws::String CreateEventDataStoreRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -88,6 +72,17 @@ Aws::String CreateEventDataStoreRequest::SerializePayload() const
   {
    payload.WithString("KmsKeyId", m_kmsKeyId);
 
+  }
+
+  if(m_startIngestionHasBeenSet)
+  {
+   payload.WithBool("StartIngestion", m_startIngestion);
+
+  }
+
+  if(m_billingModeHasBeenSet)
+  {
+   payload.WithString("BillingMode", BillingModeMapper::GetNameForBillingMode(m_billingMode));
   }
 
   return payload.View().WriteReadable();

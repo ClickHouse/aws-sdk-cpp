@@ -34,155 +34,59 @@ namespace Model
   class UnsupportedResource
   {
   public:
-    AWS_RESILIENCEHUB_API UnsupportedResource();
+    AWS_RESILIENCEHUB_API UnsupportedResource() = default;
     AWS_RESILIENCEHUB_API UnsupportedResource(Aws::Utils::Json::JsonView jsonValue);
     AWS_RESILIENCEHUB_API UnsupportedResource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_RESILIENCEHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The logical resource identifier for the unsupported resource.</p>
+     * <p>Logical resource identifier for the unsupported resource.</p>
      */
-    inline const LogicalResourceId& GetLogicalResourceId() const{ return m_logicalResourceId; }
-
-    /**
-     * <p>The logical resource identifier for the unsupported resource.</p>
-     */
+    inline const LogicalResourceId& GetLogicalResourceId() const { return m_logicalResourceId; }
     inline bool LogicalResourceIdHasBeenSet() const { return m_logicalResourceIdHasBeenSet; }
+    template<typename LogicalResourceIdT = LogicalResourceId>
+    void SetLogicalResourceId(LogicalResourceIdT&& value) { m_logicalResourceIdHasBeenSet = true; m_logicalResourceId = std::forward<LogicalResourceIdT>(value); }
+    template<typename LogicalResourceIdT = LogicalResourceId>
+    UnsupportedResource& WithLogicalResourceId(LogicalResourceIdT&& value) { SetLogicalResourceId(std::forward<LogicalResourceIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The logical resource identifier for the unsupported resource.</p>
+     * <p>Physical resource identifier for the unsupported resource.</p>
      */
-    inline void SetLogicalResourceId(const LogicalResourceId& value) { m_logicalResourceIdHasBeenSet = true; m_logicalResourceId = value; }
-
-    /**
-     * <p>The logical resource identifier for the unsupported resource.</p>
-     */
-    inline void SetLogicalResourceId(LogicalResourceId&& value) { m_logicalResourceIdHasBeenSet = true; m_logicalResourceId = std::move(value); }
-
-    /**
-     * <p>The logical resource identifier for the unsupported resource.</p>
-     */
-    inline UnsupportedResource& WithLogicalResourceId(const LogicalResourceId& value) { SetLogicalResourceId(value); return *this;}
-
-    /**
-     * <p>The logical resource identifier for the unsupported resource.</p>
-     */
-    inline UnsupportedResource& WithLogicalResourceId(LogicalResourceId&& value) { SetLogicalResourceId(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The physical resource identifier for the unsupported resource.</p>
-     */
-    inline const PhysicalResourceId& GetPhysicalResourceId() const{ return m_physicalResourceId; }
-
-    /**
-     * <p>The physical resource identifier for the unsupported resource.</p>
-     */
+    inline const PhysicalResourceId& GetPhysicalResourceId() const { return m_physicalResourceId; }
     inline bool PhysicalResourceIdHasBeenSet() const { return m_physicalResourceIdHasBeenSet; }
+    template<typename PhysicalResourceIdT = PhysicalResourceId>
+    void SetPhysicalResourceId(PhysicalResourceIdT&& value) { m_physicalResourceIdHasBeenSet = true; m_physicalResourceId = std::forward<PhysicalResourceIdT>(value); }
+    template<typename PhysicalResourceIdT = PhysicalResourceId>
+    UnsupportedResource& WithPhysicalResourceId(PhysicalResourceIdT&& value) { SetPhysicalResourceId(std::forward<PhysicalResourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The physical resource identifier for the unsupported resource.</p>
-     */
-    inline void SetPhysicalResourceId(const PhysicalResourceId& value) { m_physicalResourceIdHasBeenSet = true; m_physicalResourceId = value; }
-
-    /**
-     * <p>The physical resource identifier for the unsupported resource.</p>
-     */
-    inline void SetPhysicalResourceId(PhysicalResourceId&& value) { m_physicalResourceIdHasBeenSet = true; m_physicalResourceId = std::move(value); }
-
-    /**
-     * <p>The physical resource identifier for the unsupported resource.</p>
-     */
-    inline UnsupportedResource& WithPhysicalResourceId(const PhysicalResourceId& value) { SetPhysicalResourceId(value); return *this;}
-
-    /**
-     * <p>The physical resource identifier for the unsupported resource.</p>
-     */
-    inline UnsupportedResource& WithPhysicalResourceId(PhysicalResourceId&& value) { SetPhysicalResourceId(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of resource.</p>
      */
-    inline const Aws::String& GetResourceType() const{ return m_resourceType; }
-
-    /**
-     * <p>The type of resource.</p>
-     */
+    inline const Aws::String& GetResourceType() const { return m_resourceType; }
     inline bool ResourceTypeHasBeenSet() const { return m_resourceTypeHasBeenSet; }
+    template<typename ResourceTypeT = Aws::String>
+    void SetResourceType(ResourceTypeT&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::forward<ResourceTypeT>(value); }
+    template<typename ResourceTypeT = Aws::String>
+    UnsupportedResource& WithResourceType(ResourceTypeT&& value) { SetResourceType(std::forward<ResourceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of resource.</p>
-     */
-    inline void SetResourceType(const Aws::String& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
-
-    /**
-     * <p>The type of resource.</p>
-     */
-    inline void SetResourceType(Aws::String&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
-
-    /**
-     * <p>The type of resource.</p>
-     */
-    inline void SetResourceType(const char* value) { m_resourceTypeHasBeenSet = true; m_resourceType.assign(value); }
-
-    /**
-     * <p>The type of resource.</p>
-     */
-    inline UnsupportedResource& WithResourceType(const Aws::String& value) { SetResourceType(value); return *this;}
-
-    /**
-     * <p>The type of resource.</p>
-     */
-    inline UnsupportedResource& WithResourceType(Aws::String&& value) { SetResourceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of resource.</p>
-     */
-    inline UnsupportedResource& WithResourceType(const char* value) { SetResourceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the unsupported resource.</p>
      */
-    inline const Aws::String& GetUnsupportedResourceStatus() const{ return m_unsupportedResourceStatus; }
-
-    /**
-     * <p>The status of the unsupported resource.</p>
-     */
+    inline const Aws::String& GetUnsupportedResourceStatus() const { return m_unsupportedResourceStatus; }
     inline bool UnsupportedResourceStatusHasBeenSet() const { return m_unsupportedResourceStatusHasBeenSet; }
-
-    /**
-     * <p>The status of the unsupported resource.</p>
-     */
-    inline void SetUnsupportedResourceStatus(const Aws::String& value) { m_unsupportedResourceStatusHasBeenSet = true; m_unsupportedResourceStatus = value; }
-
-    /**
-     * <p>The status of the unsupported resource.</p>
-     */
-    inline void SetUnsupportedResourceStatus(Aws::String&& value) { m_unsupportedResourceStatusHasBeenSet = true; m_unsupportedResourceStatus = std::move(value); }
-
-    /**
-     * <p>The status of the unsupported resource.</p>
-     */
-    inline void SetUnsupportedResourceStatus(const char* value) { m_unsupportedResourceStatusHasBeenSet = true; m_unsupportedResourceStatus.assign(value); }
-
-    /**
-     * <p>The status of the unsupported resource.</p>
-     */
-    inline UnsupportedResource& WithUnsupportedResourceStatus(const Aws::String& value) { SetUnsupportedResourceStatus(value); return *this;}
-
-    /**
-     * <p>The status of the unsupported resource.</p>
-     */
-    inline UnsupportedResource& WithUnsupportedResourceStatus(Aws::String&& value) { SetUnsupportedResourceStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the unsupported resource.</p>
-     */
-    inline UnsupportedResource& WithUnsupportedResourceStatus(const char* value) { SetUnsupportedResourceStatus(value); return *this;}
-
+    template<typename UnsupportedResourceStatusT = Aws::String>
+    void SetUnsupportedResourceStatus(UnsupportedResourceStatusT&& value) { m_unsupportedResourceStatusHasBeenSet = true; m_unsupportedResourceStatus = std::forward<UnsupportedResourceStatusT>(value); }
+    template<typename UnsupportedResourceStatusT = Aws::String>
+    UnsupportedResource& WithUnsupportedResourceStatus(UnsupportedResourceStatusT&& value) { SetUnsupportedResourceStatus(std::forward<UnsupportedResourceStatusT>(value)); return *this;}
+    ///@}
   private:
 
     LogicalResourceId m_logicalResourceId;

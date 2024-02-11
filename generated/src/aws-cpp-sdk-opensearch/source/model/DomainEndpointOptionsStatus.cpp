@@ -18,15 +18,7 @@ namespace OpenSearchService
 namespace Model
 {
 
-DomainEndpointOptionsStatus::DomainEndpointOptionsStatus() : 
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-DomainEndpointOptionsStatus::DomainEndpointOptionsStatus(JsonView jsonValue) : 
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false)
+DomainEndpointOptionsStatus::DomainEndpointOptionsStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DomainEndpointOptionsStatus& DomainEndpointOptionsStatus::operator =(JsonView js
   if(jsonValue.ValueExists("Options"))
   {
     m_options = jsonValue.GetObject("Options");
-
     m_optionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = jsonValue.GetObject("Status");
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

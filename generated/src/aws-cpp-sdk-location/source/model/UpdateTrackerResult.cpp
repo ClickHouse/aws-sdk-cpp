@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-UpdateTrackerResult::UpdateTrackerResult()
-{
-}
-
 UpdateTrackerResult::UpdateTrackerResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,30 +25,28 @@ UpdateTrackerResult::UpdateTrackerResult(const Aws::AmazonWebServiceResult<JsonV
 UpdateTrackerResult& UpdateTrackerResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("TrackerArn"))
-  {
-    m_trackerArn = jsonValue.GetString("TrackerArn");
-
-  }
-
   if(jsonValue.ValueExists("TrackerName"))
   {
     m_trackerName = jsonValue.GetString("TrackerName");
-
+    m_trackerNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("TrackerArn"))
+  {
+    m_trackerArn = jsonValue.GetString("TrackerArn");
+    m_trackerArnHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("UpdateTime"))
   {
     m_updateTime = jsonValue.GetString("UpdateTime");
-
+    m_updateTimeHasBeenSet = true;
   }
-
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

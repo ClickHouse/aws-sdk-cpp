@@ -33,52 +33,25 @@ namespace Model
   class OutputGroupDetail
   {
   public:
-    AWS_MEDIACONVERT_API OutputGroupDetail();
+    AWS_MEDIACONVERT_API OutputGroupDetail() = default;
     AWS_MEDIACONVERT_API OutputGroupDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API OutputGroupDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Details about the output
      */
-    inline const Aws::Vector<OutputDetail>& GetOutputDetails() const{ return m_outputDetails; }
-
-    /**
-     * Details about the output
-     */
+    inline const Aws::Vector<OutputDetail>& GetOutputDetails() const { return m_outputDetails; }
     inline bool OutputDetailsHasBeenSet() const { return m_outputDetailsHasBeenSet; }
-
-    /**
-     * Details about the output
-     */
-    inline void SetOutputDetails(const Aws::Vector<OutputDetail>& value) { m_outputDetailsHasBeenSet = true; m_outputDetails = value; }
-
-    /**
-     * Details about the output
-     */
-    inline void SetOutputDetails(Aws::Vector<OutputDetail>&& value) { m_outputDetailsHasBeenSet = true; m_outputDetails = std::move(value); }
-
-    /**
-     * Details about the output
-     */
-    inline OutputGroupDetail& WithOutputDetails(const Aws::Vector<OutputDetail>& value) { SetOutputDetails(value); return *this;}
-
-    /**
-     * Details about the output
-     */
-    inline OutputGroupDetail& WithOutputDetails(Aws::Vector<OutputDetail>&& value) { SetOutputDetails(std::move(value)); return *this;}
-
-    /**
-     * Details about the output
-     */
-    inline OutputGroupDetail& AddOutputDetails(const OutputDetail& value) { m_outputDetailsHasBeenSet = true; m_outputDetails.push_back(value); return *this; }
-
-    /**
-     * Details about the output
-     */
-    inline OutputGroupDetail& AddOutputDetails(OutputDetail&& value) { m_outputDetailsHasBeenSet = true; m_outputDetails.push_back(std::move(value)); return *this; }
-
+    template<typename OutputDetailsT = Aws::Vector<OutputDetail>>
+    void SetOutputDetails(OutputDetailsT&& value) { m_outputDetailsHasBeenSet = true; m_outputDetails = std::forward<OutputDetailsT>(value); }
+    template<typename OutputDetailsT = Aws::Vector<OutputDetail>>
+    OutputGroupDetail& WithOutputDetails(OutputDetailsT&& value) { SetOutputDetails(std::forward<OutputDetailsT>(value)); return *this;}
+    template<typename OutputDetailsT = OutputDetail>
+    OutputGroupDetail& AddOutputDetails(OutputDetailsT&& value) { m_outputDetailsHasBeenSet = true; m_outputDetails.emplace_back(std::forward<OutputDetailsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<OutputDetail> m_outputDetails;

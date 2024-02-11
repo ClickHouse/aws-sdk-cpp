@@ -20,17 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-ContentTypeProfileConfig::ContentTypeProfileConfig() : 
-    m_forwardWhenContentTypeIsUnknown(false),
-    m_forwardWhenContentTypeIsUnknownHasBeenSet(false),
-    m_contentTypeProfilesHasBeenSet(false)
-{
-}
-
-ContentTypeProfileConfig::ContentTypeProfileConfig(const XmlNode& xmlNode) : 
-    m_forwardWhenContentTypeIsUnknown(false),
-    m_forwardWhenContentTypeIsUnknownHasBeenSet(false),
-    m_contentTypeProfilesHasBeenSet(false)
+ContentTypeProfileConfig::ContentTypeProfileConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

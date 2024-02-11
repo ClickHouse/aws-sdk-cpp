@@ -21,7 +21,7 @@ namespace Model
   class DescribeDatasetRequest : public ComprehendRequest
   {
   public:
-    AWS_COMPREHEND_API DescribeDatasetRequest();
+    AWS_COMPREHEND_API DescribeDatasetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_COMPREHEND_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the dataset.</p>
      */
-    inline const Aws::String& GetDatasetArn() const{ return m_datasetArn; }
-
-    /**
-     * <p>The ARN of the dataset.</p>
-     */
+    inline const Aws::String& GetDatasetArn() const { return m_datasetArn; }
     inline bool DatasetArnHasBeenSet() const { return m_datasetArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the dataset.</p>
-     */
-    inline void SetDatasetArn(const Aws::String& value) { m_datasetArnHasBeenSet = true; m_datasetArn = value; }
-
-    /**
-     * <p>The ARN of the dataset.</p>
-     */
-    inline void SetDatasetArn(Aws::String&& value) { m_datasetArnHasBeenSet = true; m_datasetArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the dataset.</p>
-     */
-    inline void SetDatasetArn(const char* value) { m_datasetArnHasBeenSet = true; m_datasetArn.assign(value); }
-
-    /**
-     * <p>The ARN of the dataset.</p>
-     */
-    inline DescribeDatasetRequest& WithDatasetArn(const Aws::String& value) { SetDatasetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the dataset.</p>
-     */
-    inline DescribeDatasetRequest& WithDatasetArn(Aws::String&& value) { SetDatasetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the dataset.</p>
-     */
-    inline DescribeDatasetRequest& WithDatasetArn(const char* value) { SetDatasetArn(value); return *this;}
-
+    template<typename DatasetArnT = Aws::String>
+    void SetDatasetArn(DatasetArnT&& value) { m_datasetArnHasBeenSet = true; m_datasetArn = std::forward<DatasetArnT>(value); }
+    template<typename DatasetArnT = Aws::String>
+    DescribeDatasetRequest& WithDatasetArn(DatasetArnT&& value) { SetDatasetArn(std::forward<DatasetArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_datasetArn;

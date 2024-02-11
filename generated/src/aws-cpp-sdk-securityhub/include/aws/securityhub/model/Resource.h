@@ -35,407 +35,147 @@ namespace Model
   class Resource
   {
   public:
-    AWS_SECURITYHUB_API Resource();
+    AWS_SECURITYHUB_API Resource() = default;
     AWS_SECURITYHUB_API Resource(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Resource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of the resource that details are provided for. If possible, set
      * <code>Type</code> to one of the supported resource types. For example, if the
      * resource is an EC2 instance, then set <code>Type</code> to
      * <code>AwsEc2Instance</code>.</p> <p>If the resource does not match any of the
-     * provided types, then set <code>Type</code> to <code>Other</code>. </p>
+     * provided types, then set <code>Type</code> to <code>Other</code>. </p> <p>Length
+     * Constraints: Minimum length of 1. Maximum length of 256.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of the resource that details are provided for. If possible, set
-     * <code>Type</code> to one of the supported resource types. For example, if the
-     * resource is an EC2 instance, then set <code>Type</code> to
-     * <code>AwsEc2Instance</code>.</p> <p>If the resource does not match any of the
-     * provided types, then set <code>Type</code> to <code>Other</code>. </p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    Resource& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the resource that details are provided for. If possible, set
-     * <code>Type</code> to one of the supported resource types. For example, if the
-     * resource is an EC2 instance, then set <code>Type</code> to
-     * <code>AwsEc2Instance</code>.</p> <p>If the resource does not match any of the
-     * provided types, then set <code>Type</code> to <code>Other</code>. </p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of the resource that details are provided for. If possible, set
-     * <code>Type</code> to one of the supported resource types. For example, if the
-     * resource is an EC2 instance, then set <code>Type</code> to
-     * <code>AwsEc2Instance</code>.</p> <p>If the resource does not match any of the
-     * provided types, then set <code>Type</code> to <code>Other</code>. </p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of the resource that details are provided for. If possible, set
-     * <code>Type</code> to one of the supported resource types. For example, if the
-     * resource is an EC2 instance, then set <code>Type</code> to
-     * <code>AwsEc2Instance</code>.</p> <p>If the resource does not match any of the
-     * provided types, then set <code>Type</code> to <code>Other</code>. </p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of the resource that details are provided for. If possible, set
-     * <code>Type</code> to one of the supported resource types. For example, if the
-     * resource is an EC2 instance, then set <code>Type</code> to
-     * <code>AwsEc2Instance</code>.</p> <p>If the resource does not match any of the
-     * provided types, then set <code>Type</code> to <code>Other</code>. </p>
-     */
-    inline Resource& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of the resource that details are provided for. If possible, set
-     * <code>Type</code> to one of the supported resource types. For example, if the
-     * resource is an EC2 instance, then set <code>Type</code> to
-     * <code>AwsEc2Instance</code>.</p> <p>If the resource does not match any of the
-     * provided types, then set <code>Type</code> to <code>Other</code>. </p>
-     */
-    inline Resource& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of the resource that details are provided for. If possible, set
-     * <code>Type</code> to one of the supported resource types. For example, if the
-     * resource is an EC2 instance, then set <code>Type</code> to
-     * <code>AwsEc2Instance</code>.</p> <p>If the resource does not match any of the
-     * provided types, then set <code>Type</code> to <code>Other</code>. </p>
-     */
-    inline Resource& WithType(const char* value) { SetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The canonical identifier for the given resource type.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The canonical identifier for the given resource type.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    Resource& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The canonical identifier for the given resource type.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The canonical identifier for the given resource type.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The canonical identifier for the given resource type.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The canonical identifier for the given resource type.</p>
-     */
-    inline Resource& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The canonical identifier for the given resource type.</p>
-     */
-    inline Resource& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The canonical identifier for the given resource type.</p>
-     */
-    inline Resource& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The canonical Amazon Web Services partition name that the Region is assigned
      * to.</p>
      */
-    inline const Partition& GetPartition() const{ return m_partition; }
-
-    /**
-     * <p>The canonical Amazon Web Services partition name that the Region is assigned
-     * to.</p>
-     */
+    inline Partition GetPartition() const { return m_partition; }
     inline bool PartitionHasBeenSet() const { return m_partitionHasBeenSet; }
+    inline void SetPartition(Partition value) { m_partitionHasBeenSet = true; m_partition = value; }
+    inline Resource& WithPartition(Partition value) { SetPartition(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The canonical Amazon Web Services partition name that the Region is assigned
-     * to.</p>
-     */
-    inline void SetPartition(const Partition& value) { m_partitionHasBeenSet = true; m_partition = value; }
-
-    /**
-     * <p>The canonical Amazon Web Services partition name that the Region is assigned
-     * to.</p>
-     */
-    inline void SetPartition(Partition&& value) { m_partitionHasBeenSet = true; m_partition = std::move(value); }
-
-    /**
-     * <p>The canonical Amazon Web Services partition name that the Region is assigned
-     * to.</p>
-     */
-    inline Resource& WithPartition(const Partition& value) { SetPartition(value); return *this;}
-
-    /**
-     * <p>The canonical Amazon Web Services partition name that the Region is assigned
-     * to.</p>
-     */
-    inline Resource& WithPartition(Partition&& value) { SetPartition(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The canonical Amazon Web Services external Region name where this resource is
-     * located.</p>
+     * located.</p> <p>Length Constraints: Minimum length of 1. Maximum length of
+     * 16.</p>
      */
-    inline const Aws::String& GetRegion() const{ return m_region; }
-
-    /**
-     * <p>The canonical Amazon Web Services external Region name where this resource is
-     * located.</p>
-     */
+    inline const Aws::String& GetRegion() const { return m_region; }
     inline bool RegionHasBeenSet() const { return m_regionHasBeenSet; }
+    template<typename RegionT = Aws::String>
+    void SetRegion(RegionT&& value) { m_regionHasBeenSet = true; m_region = std::forward<RegionT>(value); }
+    template<typename RegionT = Aws::String>
+    Resource& WithRegion(RegionT&& value) { SetRegion(std::forward<RegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The canonical Amazon Web Services external Region name where this resource is
-     * located.</p>
-     */
-    inline void SetRegion(const Aws::String& value) { m_regionHasBeenSet = true; m_region = value; }
-
-    /**
-     * <p>The canonical Amazon Web Services external Region name where this resource is
-     * located.</p>
-     */
-    inline void SetRegion(Aws::String&& value) { m_regionHasBeenSet = true; m_region = std::move(value); }
-
-    /**
-     * <p>The canonical Amazon Web Services external Region name where this resource is
-     * located.</p>
-     */
-    inline void SetRegion(const char* value) { m_regionHasBeenSet = true; m_region.assign(value); }
-
-    /**
-     * <p>The canonical Amazon Web Services external Region name where this resource is
-     * located.</p>
-     */
-    inline Resource& WithRegion(const Aws::String& value) { SetRegion(value); return *this;}
-
-    /**
-     * <p>The canonical Amazon Web Services external Region name where this resource is
-     * located.</p>
-     */
-    inline Resource& WithRegion(Aws::String&& value) { SetRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The canonical Amazon Web Services external Region name where this resource is
-     * located.</p>
-     */
-    inline Resource& WithRegion(const char* value) { SetRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Identifies the role of the resource in the finding. A resource is either the
      * actor or target of the finding activity,</p>
      */
-    inline const Aws::String& GetResourceRole() const{ return m_resourceRole; }
-
-    /**
-     * <p>Identifies the role of the resource in the finding. A resource is either the
-     * actor or target of the finding activity,</p>
-     */
+    inline const Aws::String& GetResourceRole() const { return m_resourceRole; }
     inline bool ResourceRoleHasBeenSet() const { return m_resourceRoleHasBeenSet; }
+    template<typename ResourceRoleT = Aws::String>
+    void SetResourceRole(ResourceRoleT&& value) { m_resourceRoleHasBeenSet = true; m_resourceRole = std::forward<ResourceRoleT>(value); }
+    template<typename ResourceRoleT = Aws::String>
+    Resource& WithResourceRole(ResourceRoleT&& value) { SetResourceRole(std::forward<ResourceRoleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Identifies the role of the resource in the finding. A resource is either the
-     * actor or target of the finding activity,</p>
-     */
-    inline void SetResourceRole(const Aws::String& value) { m_resourceRoleHasBeenSet = true; m_resourceRole = value; }
-
-    /**
-     * <p>Identifies the role of the resource in the finding. A resource is either the
-     * actor or target of the finding activity,</p>
-     */
-    inline void SetResourceRole(Aws::String&& value) { m_resourceRoleHasBeenSet = true; m_resourceRole = std::move(value); }
-
-    /**
-     * <p>Identifies the role of the resource in the finding. A resource is either the
-     * actor or target of the finding activity,</p>
-     */
-    inline void SetResourceRole(const char* value) { m_resourceRoleHasBeenSet = true; m_resourceRole.assign(value); }
-
-    /**
-     * <p>Identifies the role of the resource in the finding. A resource is either the
-     * actor or target of the finding activity,</p>
-     */
-    inline Resource& WithResourceRole(const Aws::String& value) { SetResourceRole(value); return *this;}
-
-    /**
-     * <p>Identifies the role of the resource in the finding. A resource is either the
-     * actor or target of the finding activity,</p>
-     */
-    inline Resource& WithResourceRole(Aws::String&& value) { SetResourceRole(std::move(value)); return *this;}
-
-    /**
-     * <p>Identifies the role of the resource in the finding. A resource is either the
-     * actor or target of the finding activity,</p>
-     */
-    inline Resource& WithResourceRole(const char* value) { SetResourceRole(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of Amazon Web Services tags associated with a resource at the time the
-     * finding was processed.</p>
+     * finding was processed. Tags must follow <a
+     * href="https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html#tag-conventions">Amazon
+     * Web Services tag naming limits and requirements</a>.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of Amazon Web Services tags associated with a resource at the time the
-     * finding was processed.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    Resource& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    Resource& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A list of Amazon Web Services tags associated with a resource at the time the
-     * finding was processed.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of Amazon Web Services tags associated with a resource at the time the
-     * finding was processed.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of Amazon Web Services tags associated with a resource at the time the
-     * finding was processed.</p>
-     */
-    inline Resource& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of Amazon Web Services tags associated with a resource at the time the
-     * finding was processed.</p>
-     */
-    inline Resource& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of Amazon Web Services tags associated with a resource at the time the
-     * finding was processed.</p>
-     */
-    inline Resource& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>A list of Amazon Web Services tags associated with a resource at the time the
-     * finding was processed.</p>
-     */
-    inline Resource& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A list of Amazon Web Services tags associated with a resource at the time the
-     * finding was processed.</p>
-     */
-    inline Resource& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of Amazon Web Services tags associated with a resource at the time the
-     * finding was processed.</p>
-     */
-    inline Resource& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A list of Amazon Web Services tags associated with a resource at the time the
-     * finding was processed.</p>
-     */
-    inline Resource& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of Amazon Web Services tags associated with a resource at the time the
-     * finding was processed.</p>
-     */
-    inline Resource& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A list of Amazon Web Services tags associated with a resource at the time the
-     * finding was processed.</p>
-     */
-    inline Resource& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>Contains information about sensitive data that was detected on the
      * resource.</p>
      */
-    inline const DataClassificationDetails& GetDataClassification() const{ return m_dataClassification; }
-
-    /**
-     * <p>Contains information about sensitive data that was detected on the
-     * resource.</p>
-     */
+    inline const DataClassificationDetails& GetDataClassification() const { return m_dataClassification; }
     inline bool DataClassificationHasBeenSet() const { return m_dataClassificationHasBeenSet; }
+    template<typename DataClassificationT = DataClassificationDetails>
+    void SetDataClassification(DataClassificationT&& value) { m_dataClassificationHasBeenSet = true; m_dataClassification = std::forward<DataClassificationT>(value); }
+    template<typename DataClassificationT = DataClassificationDetails>
+    Resource& WithDataClassification(DataClassificationT&& value) { SetDataClassification(std::forward<DataClassificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains information about sensitive data that was detected on the
-     * resource.</p>
-     */
-    inline void SetDataClassification(const DataClassificationDetails& value) { m_dataClassificationHasBeenSet = true; m_dataClassification = value; }
-
-    /**
-     * <p>Contains information about sensitive data that was detected on the
-     * resource.</p>
-     */
-    inline void SetDataClassification(DataClassificationDetails&& value) { m_dataClassificationHasBeenSet = true; m_dataClassification = std::move(value); }
-
-    /**
-     * <p>Contains information about sensitive data that was detected on the
-     * resource.</p>
-     */
-    inline Resource& WithDataClassification(const DataClassificationDetails& value) { SetDataClassification(value); return *this;}
-
-    /**
-     * <p>Contains information about sensitive data that was detected on the
-     * resource.</p>
-     */
-    inline Resource& WithDataClassification(DataClassificationDetails&& value) { SetDataClassification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Additional details about the resource related to a finding.</p>
      */
-    inline const ResourceDetails& GetDetails() const{ return m_details; }
-
-    /**
-     * <p>Additional details about the resource related to a finding.</p>
-     */
+    inline const ResourceDetails& GetDetails() const { return m_details; }
     inline bool DetailsHasBeenSet() const { return m_detailsHasBeenSet; }
+    template<typename DetailsT = ResourceDetails>
+    void SetDetails(DetailsT&& value) { m_detailsHasBeenSet = true; m_details = std::forward<DetailsT>(value); }
+    template<typename DetailsT = ResourceDetails>
+    Resource& WithDetails(DetailsT&& value) { SetDetails(std::forward<DetailsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Additional details about the resource related to a finding.</p>
+     * <p> The name of the application that is related to a finding. </p>
      */
-    inline void SetDetails(const ResourceDetails& value) { m_detailsHasBeenSet = true; m_details = value; }
+    inline const Aws::String& GetApplicationName() const { return m_applicationName; }
+    inline bool ApplicationNameHasBeenSet() const { return m_applicationNameHasBeenSet; }
+    template<typename ApplicationNameT = Aws::String>
+    void SetApplicationName(ApplicationNameT&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::forward<ApplicationNameT>(value); }
+    template<typename ApplicationNameT = Aws::String>
+    Resource& WithApplicationName(ApplicationNameT&& value) { SetApplicationName(std::forward<ApplicationNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Additional details about the resource related to a finding.</p>
+     * <p> The Amazon Resource Name (ARN) of the application that is related to a
+     * finding. </p>
      */
-    inline void SetDetails(ResourceDetails&& value) { m_detailsHasBeenSet = true; m_details = std::move(value); }
-
-    /**
-     * <p>Additional details about the resource related to a finding.</p>
-     */
-    inline Resource& WithDetails(const ResourceDetails& value) { SetDetails(value); return *this;}
-
-    /**
-     * <p>Additional details about the resource related to a finding.</p>
-     */
-    inline Resource& WithDetails(ResourceDetails&& value) { SetDetails(std::move(value)); return *this;}
-
+    inline const Aws::String& GetApplicationArn() const { return m_applicationArn; }
+    inline bool ApplicationArnHasBeenSet() const { return m_applicationArnHasBeenSet; }
+    template<typename ApplicationArnT = Aws::String>
+    void SetApplicationArn(ApplicationArnT&& value) { m_applicationArnHasBeenSet = true; m_applicationArn = std::forward<ApplicationArnT>(value); }
+    template<typename ApplicationArnT = Aws::String>
+    Resource& WithApplicationArn(ApplicationArnT&& value) { SetApplicationArn(std::forward<ApplicationArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_type;
@@ -444,7 +184,7 @@ namespace Model
     Aws::String m_id;
     bool m_idHasBeenSet = false;
 
-    Partition m_partition;
+    Partition m_partition{Partition::NOT_SET};
     bool m_partitionHasBeenSet = false;
 
     Aws::String m_region;
@@ -461,6 +201,12 @@ namespace Model
 
     ResourceDetails m_details;
     bool m_detailsHasBeenSet = false;
+
+    Aws::String m_applicationName;
+    bool m_applicationNameHasBeenSet = false;
+
+    Aws::String m_applicationArn;
+    bool m_applicationArnHasBeenSet = false;
   };
 
 } // namespace Model

@@ -32,92 +32,28 @@ namespace Model
   class AnonymousUserQSearchBarEmbeddingConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API AnonymousUserQSearchBarEmbeddingConfiguration();
+    AWS_QUICKSIGHT_API AnonymousUserQSearchBarEmbeddingConfiguration() = default;
     AWS_QUICKSIGHT_API AnonymousUserQSearchBarEmbeddingConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API AnonymousUserQSearchBarEmbeddingConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The QuickSight Q topic ID of the topic that you want the anonymous user to
-     * see first. This ID is included in the output URL. When the URL in response is
-     * accessed, Amazon QuickSight renders the Q search bar with this topic
-     * pre-selected.</p> <p>The Amazon Resource Name (ARN) of this Q topic must be
-     * included in the <code>AuthorizedResourceArns</code> parameter. Otherwise, the
-     * request will fail with <code>InvalidParameterValueException</code>.</p>
+     * <p>The QuickSight Q topic ID of the legacy topic that you want the anonymous
+     * user to see first. This ID is included in the output URL. When the URL in
+     * response is accessed, QuickSight renders the Q search bar with this legacy topic
+     * pre-selected.</p> <p>The Amazon Resource Name (ARN) of this Q legacy topic must
+     * be included in the <code>AuthorizedResourceArns</code> parameter. Otherwise, the
+     * request fails with an <code>InvalidParameterValueException</code> error.</p>
      */
-    inline const Aws::String& GetInitialTopicId() const{ return m_initialTopicId; }
-
-    /**
-     * <p>The QuickSight Q topic ID of the topic that you want the anonymous user to
-     * see first. This ID is included in the output URL. When the URL in response is
-     * accessed, Amazon QuickSight renders the Q search bar with this topic
-     * pre-selected.</p> <p>The Amazon Resource Name (ARN) of this Q topic must be
-     * included in the <code>AuthorizedResourceArns</code> parameter. Otherwise, the
-     * request will fail with <code>InvalidParameterValueException</code>.</p>
-     */
+    inline const Aws::String& GetInitialTopicId() const { return m_initialTopicId; }
     inline bool InitialTopicIdHasBeenSet() const { return m_initialTopicIdHasBeenSet; }
-
-    /**
-     * <p>The QuickSight Q topic ID of the topic that you want the anonymous user to
-     * see first. This ID is included in the output URL. When the URL in response is
-     * accessed, Amazon QuickSight renders the Q search bar with this topic
-     * pre-selected.</p> <p>The Amazon Resource Name (ARN) of this Q topic must be
-     * included in the <code>AuthorizedResourceArns</code> parameter. Otherwise, the
-     * request will fail with <code>InvalidParameterValueException</code>.</p>
-     */
-    inline void SetInitialTopicId(const Aws::String& value) { m_initialTopicIdHasBeenSet = true; m_initialTopicId = value; }
-
-    /**
-     * <p>The QuickSight Q topic ID of the topic that you want the anonymous user to
-     * see first. This ID is included in the output URL. When the URL in response is
-     * accessed, Amazon QuickSight renders the Q search bar with this topic
-     * pre-selected.</p> <p>The Amazon Resource Name (ARN) of this Q topic must be
-     * included in the <code>AuthorizedResourceArns</code> parameter. Otherwise, the
-     * request will fail with <code>InvalidParameterValueException</code>.</p>
-     */
-    inline void SetInitialTopicId(Aws::String&& value) { m_initialTopicIdHasBeenSet = true; m_initialTopicId = std::move(value); }
-
-    /**
-     * <p>The QuickSight Q topic ID of the topic that you want the anonymous user to
-     * see first. This ID is included in the output URL. When the URL in response is
-     * accessed, Amazon QuickSight renders the Q search bar with this topic
-     * pre-selected.</p> <p>The Amazon Resource Name (ARN) of this Q topic must be
-     * included in the <code>AuthorizedResourceArns</code> parameter. Otherwise, the
-     * request will fail with <code>InvalidParameterValueException</code>.</p>
-     */
-    inline void SetInitialTopicId(const char* value) { m_initialTopicIdHasBeenSet = true; m_initialTopicId.assign(value); }
-
-    /**
-     * <p>The QuickSight Q topic ID of the topic that you want the anonymous user to
-     * see first. This ID is included in the output URL. When the URL in response is
-     * accessed, Amazon QuickSight renders the Q search bar with this topic
-     * pre-selected.</p> <p>The Amazon Resource Name (ARN) of this Q topic must be
-     * included in the <code>AuthorizedResourceArns</code> parameter. Otherwise, the
-     * request will fail with <code>InvalidParameterValueException</code>.</p>
-     */
-    inline AnonymousUserQSearchBarEmbeddingConfiguration& WithInitialTopicId(const Aws::String& value) { SetInitialTopicId(value); return *this;}
-
-    /**
-     * <p>The QuickSight Q topic ID of the topic that you want the anonymous user to
-     * see first. This ID is included in the output URL. When the URL in response is
-     * accessed, Amazon QuickSight renders the Q search bar with this topic
-     * pre-selected.</p> <p>The Amazon Resource Name (ARN) of this Q topic must be
-     * included in the <code>AuthorizedResourceArns</code> parameter. Otherwise, the
-     * request will fail with <code>InvalidParameterValueException</code>.</p>
-     */
-    inline AnonymousUserQSearchBarEmbeddingConfiguration& WithInitialTopicId(Aws::String&& value) { SetInitialTopicId(std::move(value)); return *this;}
-
-    /**
-     * <p>The QuickSight Q topic ID of the topic that you want the anonymous user to
-     * see first. This ID is included in the output URL. When the URL in response is
-     * accessed, Amazon QuickSight renders the Q search bar with this topic
-     * pre-selected.</p> <p>The Amazon Resource Name (ARN) of this Q topic must be
-     * included in the <code>AuthorizedResourceArns</code> parameter. Otherwise, the
-     * request will fail with <code>InvalidParameterValueException</code>.</p>
-     */
-    inline AnonymousUserQSearchBarEmbeddingConfiguration& WithInitialTopicId(const char* value) { SetInitialTopicId(value); return *this;}
-
+    template<typename InitialTopicIdT = Aws::String>
+    void SetInitialTopicId(InitialTopicIdT&& value) { m_initialTopicIdHasBeenSet = true; m_initialTopicId = std::forward<InitialTopicIdT>(value); }
+    template<typename InitialTopicIdT = Aws::String>
+    AnonymousUserQSearchBarEmbeddingConfiguration& WithInitialTopicId(InitialTopicIdT&& value) { SetInitialTopicId(std::forward<InitialTopicIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_initialTopicId;

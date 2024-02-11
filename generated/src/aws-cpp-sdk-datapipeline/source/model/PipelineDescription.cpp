@@ -18,21 +18,7 @@ namespace DataPipeline
 namespace Model
 {
 
-PipelineDescription::PipelineDescription() : 
-    m_pipelineIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_fieldsHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-PipelineDescription::PipelineDescription(JsonView jsonValue) : 
-    m_pipelineIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_fieldsHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+PipelineDescription::PipelineDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ PipelineDescription& PipelineDescription::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("pipelineId"))
   {
     m_pipelineId = jsonValue.GetString("pipelineId");
-
     m_pipelineIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("fields"))
   {
     Aws::Utils::Array<JsonView> fieldsJsonList = jsonValue.GetArray("fields");
@@ -62,14 +44,11 @@ PipelineDescription& PipelineDescription::operator =(JsonView jsonValue)
     }
     m_fieldsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Utils::Array<JsonView> tagsJsonList = jsonValue.GetArray("tags");
@@ -79,7 +58,6 @@ PipelineDescription& PipelineDescription::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace Kafka
 namespace Model
 {
 
-ServiceUnavailableException::ServiceUnavailableException() : 
-    m_invalidParameterHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-ServiceUnavailableException::ServiceUnavailableException(JsonView jsonValue) : 
-    m_invalidParameterHasBeenSet(false),
-    m_messageHasBeenSet(false)
+ServiceUnavailableException::ServiceUnavailableException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ServiceUnavailableException& ServiceUnavailableException::operator =(JsonView js
   if(jsonValue.ValueExists("invalidParameter"))
   {
     m_invalidParameter = jsonValue.GetString("invalidParameter");
-
     m_invalidParameterHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

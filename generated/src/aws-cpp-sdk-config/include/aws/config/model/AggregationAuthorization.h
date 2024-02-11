@@ -33,165 +33,59 @@ namespace Model
   class AggregationAuthorization
   {
   public:
-    AWS_CONFIGSERVICE_API AggregationAuthorization();
+    AWS_CONFIGSERVICE_API AggregationAuthorization() = default;
     AWS_CONFIGSERVICE_API AggregationAuthorization(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API AggregationAuthorization& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the aggregation object.</p>
      */
-    inline const Aws::String& GetAggregationAuthorizationArn() const{ return m_aggregationAuthorizationArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the aggregation object.</p>
-     */
+    inline const Aws::String& GetAggregationAuthorizationArn() const { return m_aggregationAuthorizationArn; }
     inline bool AggregationAuthorizationArnHasBeenSet() const { return m_aggregationAuthorizationArnHasBeenSet; }
+    template<typename AggregationAuthorizationArnT = Aws::String>
+    void SetAggregationAuthorizationArn(AggregationAuthorizationArnT&& value) { m_aggregationAuthorizationArnHasBeenSet = true; m_aggregationAuthorizationArn = std::forward<AggregationAuthorizationArnT>(value); }
+    template<typename AggregationAuthorizationArnT = Aws::String>
+    AggregationAuthorization& WithAggregationAuthorizationArn(AggregationAuthorizationArnT&& value) { SetAggregationAuthorizationArn(std::forward<AggregationAuthorizationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the aggregation object.</p>
-     */
-    inline void SetAggregationAuthorizationArn(const Aws::String& value) { m_aggregationAuthorizationArnHasBeenSet = true; m_aggregationAuthorizationArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the aggregation object.</p>
-     */
-    inline void SetAggregationAuthorizationArn(Aws::String&& value) { m_aggregationAuthorizationArnHasBeenSet = true; m_aggregationAuthorizationArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the aggregation object.</p>
-     */
-    inline void SetAggregationAuthorizationArn(const char* value) { m_aggregationAuthorizationArnHasBeenSet = true; m_aggregationAuthorizationArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the aggregation object.</p>
-     */
-    inline AggregationAuthorization& WithAggregationAuthorizationArn(const Aws::String& value) { SetAggregationAuthorizationArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the aggregation object.</p>
-     */
-    inline AggregationAuthorization& WithAggregationAuthorizationArn(Aws::String&& value) { SetAggregationAuthorizationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the aggregation object.</p>
-     */
-    inline AggregationAuthorization& WithAggregationAuthorizationArn(const char* value) { SetAggregationAuthorizationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
      */
-    inline const Aws::String& GetAuthorizedAccountId() const{ return m_authorizedAccountId; }
-
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
+    inline const Aws::String& GetAuthorizedAccountId() const { return m_authorizedAccountId; }
     inline bool AuthorizedAccountIdHasBeenSet() const { return m_authorizedAccountIdHasBeenSet; }
+    template<typename AuthorizedAccountIdT = Aws::String>
+    void SetAuthorizedAccountId(AuthorizedAccountIdT&& value) { m_authorizedAccountIdHasBeenSet = true; m_authorizedAccountId = std::forward<AuthorizedAccountIdT>(value); }
+    template<typename AuthorizedAccountIdT = Aws::String>
+    AggregationAuthorization& WithAuthorizedAccountId(AuthorizedAccountIdT&& value) { SetAuthorizedAccountId(std::forward<AuthorizedAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
-    inline void SetAuthorizedAccountId(const Aws::String& value) { m_authorizedAccountIdHasBeenSet = true; m_authorizedAccountId = value; }
-
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
-    inline void SetAuthorizedAccountId(Aws::String&& value) { m_authorizedAccountIdHasBeenSet = true; m_authorizedAccountId = std::move(value); }
-
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
-    inline void SetAuthorizedAccountId(const char* value) { m_authorizedAccountIdHasBeenSet = true; m_authorizedAccountId.assign(value); }
-
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
-    inline AggregationAuthorization& WithAuthorizedAccountId(const Aws::String& value) { SetAuthorizedAccountId(value); return *this;}
-
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
-    inline AggregationAuthorization& WithAuthorizedAccountId(Aws::String&& value) { SetAuthorizedAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
-    inline AggregationAuthorization& WithAuthorizedAccountId(const char* value) { SetAuthorizedAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The region authorized to collect aggregated data.</p>
      */
-    inline const Aws::String& GetAuthorizedAwsRegion() const{ return m_authorizedAwsRegion; }
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
+    inline const Aws::String& GetAuthorizedAwsRegion() const { return m_authorizedAwsRegion; }
     inline bool AuthorizedAwsRegionHasBeenSet() const { return m_authorizedAwsRegionHasBeenSet; }
+    template<typename AuthorizedAwsRegionT = Aws::String>
+    void SetAuthorizedAwsRegion(AuthorizedAwsRegionT&& value) { m_authorizedAwsRegionHasBeenSet = true; m_authorizedAwsRegion = std::forward<AuthorizedAwsRegionT>(value); }
+    template<typename AuthorizedAwsRegionT = Aws::String>
+    AggregationAuthorization& WithAuthorizedAwsRegion(AuthorizedAwsRegionT&& value) { SetAuthorizedAwsRegion(std::forward<AuthorizedAwsRegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
-    inline void SetAuthorizedAwsRegion(const Aws::String& value) { m_authorizedAwsRegionHasBeenSet = true; m_authorizedAwsRegion = value; }
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
-    inline void SetAuthorizedAwsRegion(Aws::String&& value) { m_authorizedAwsRegionHasBeenSet = true; m_authorizedAwsRegion = std::move(value); }
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
-    inline void SetAuthorizedAwsRegion(const char* value) { m_authorizedAwsRegionHasBeenSet = true; m_authorizedAwsRegion.assign(value); }
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
-    inline AggregationAuthorization& WithAuthorizedAwsRegion(const Aws::String& value) { SetAuthorizedAwsRegion(value); return *this;}
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
-    inline AggregationAuthorization& WithAuthorizedAwsRegion(Aws::String&& value) { SetAuthorizedAwsRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
-    inline AggregationAuthorization& WithAuthorizedAwsRegion(const char* value) { SetAuthorizedAwsRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time stamp when the aggregation authorization was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>The time stamp when the aggregation authorization was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
     inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
-
-    /**
-     * <p>The time stamp when the aggregation authorization was created.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
-
-    /**
-     * <p>The time stamp when the aggregation authorization was created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
-
-    /**
-     * <p>The time stamp when the aggregation authorization was created.</p>
-     */
-    inline AggregationAuthorization& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The time stamp when the aggregation authorization was created.</p>
-     */
-    inline AggregationAuthorization& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    AggregationAuthorization& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_aggregationAuthorizationArn;
@@ -203,7 +97,7 @@ namespace Model
     Aws::String m_authorizedAwsRegion;
     bool m_authorizedAwsRegionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
     bool m_creationTimeHasBeenSet = false;
   };
 

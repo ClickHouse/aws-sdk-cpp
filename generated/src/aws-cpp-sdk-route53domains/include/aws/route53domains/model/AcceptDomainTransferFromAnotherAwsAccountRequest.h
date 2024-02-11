@@ -25,7 +25,7 @@ namespace Model
   class AcceptDomainTransferFromAnotherAwsAccountRequest : public Route53DomainsRequest
   {
   public:
-    AWS_ROUTE53DOMAINS_API AcceptDomainTransferFromAnotherAwsAccountRequest();
+    AWS_ROUTE53DOMAINS_API AcceptDomainTransferFromAnotherAwsAccountRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,127 +38,34 @@ namespace Model
     AWS_ROUTE53DOMAINS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the domain that was specified when another Amazon Web Services
      * account submitted a <a
      * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html">TransferDomainToAnotherAwsAccount</a>
      * request. </p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
-
-    /**
-     * <p>The name of the domain that was specified when another Amazon Web Services
-     * account submitted a <a
-     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html">TransferDomainToAnotherAwsAccount</a>
-     * request. </p>
-     */
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
     inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    AcceptDomainTransferFromAnotherAwsAccountRequest& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the domain that was specified when another Amazon Web Services
-     * account submitted a <a
-     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html">TransferDomainToAnotherAwsAccount</a>
-     * request. </p>
-     */
-    inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
-
-    /**
-     * <p>The name of the domain that was specified when another Amazon Web Services
-     * account submitted a <a
-     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html">TransferDomainToAnotherAwsAccount</a>
-     * request. </p>
-     */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
-
-    /**
-     * <p>The name of the domain that was specified when another Amazon Web Services
-     * account submitted a <a
-     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html">TransferDomainToAnotherAwsAccount</a>
-     * request. </p>
-     */
-    inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
-
-    /**
-     * <p>The name of the domain that was specified when another Amazon Web Services
-     * account submitted a <a
-     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html">TransferDomainToAnotherAwsAccount</a>
-     * request. </p>
-     */
-    inline AcceptDomainTransferFromAnotherAwsAccountRequest& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p>The name of the domain that was specified when another Amazon Web Services
-     * account submitted a <a
-     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html">TransferDomainToAnotherAwsAccount</a>
-     * request. </p>
-     */
-    inline AcceptDomainTransferFromAnotherAwsAccountRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the domain that was specified when another Amazon Web Services
-     * account submitted a <a
-     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html">TransferDomainToAnotherAwsAccount</a>
-     * request. </p>
-     */
-    inline AcceptDomainTransferFromAnotherAwsAccountRequest& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The password that was returned by the <a
      * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html">TransferDomainToAnotherAwsAccount</a>
      * request. </p>
      */
-    inline const Aws::String& GetPassword() const{ return m_password; }
-
-    /**
-     * <p>The password that was returned by the <a
-     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html">TransferDomainToAnotherAwsAccount</a>
-     * request. </p>
-     */
+    inline const Aws::String& GetPassword() const { return m_password; }
     inline bool PasswordHasBeenSet() const { return m_passwordHasBeenSet; }
-
-    /**
-     * <p>The password that was returned by the <a
-     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html">TransferDomainToAnotherAwsAccount</a>
-     * request. </p>
-     */
-    inline void SetPassword(const Aws::String& value) { m_passwordHasBeenSet = true; m_password = value; }
-
-    /**
-     * <p>The password that was returned by the <a
-     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html">TransferDomainToAnotherAwsAccount</a>
-     * request. </p>
-     */
-    inline void SetPassword(Aws::String&& value) { m_passwordHasBeenSet = true; m_password = std::move(value); }
-
-    /**
-     * <p>The password that was returned by the <a
-     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html">TransferDomainToAnotherAwsAccount</a>
-     * request. </p>
-     */
-    inline void SetPassword(const char* value) { m_passwordHasBeenSet = true; m_password.assign(value); }
-
-    /**
-     * <p>The password that was returned by the <a
-     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html">TransferDomainToAnotherAwsAccount</a>
-     * request. </p>
-     */
-    inline AcceptDomainTransferFromAnotherAwsAccountRequest& WithPassword(const Aws::String& value) { SetPassword(value); return *this;}
-
-    /**
-     * <p>The password that was returned by the <a
-     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html">TransferDomainToAnotherAwsAccount</a>
-     * request. </p>
-     */
-    inline AcceptDomainTransferFromAnotherAwsAccountRequest& WithPassword(Aws::String&& value) { SetPassword(std::move(value)); return *this;}
-
-    /**
-     * <p>The password that was returned by the <a
-     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html">TransferDomainToAnotherAwsAccount</a>
-     * request. </p>
-     */
-    inline AcceptDomainTransferFromAnotherAwsAccountRequest& WithPassword(const char* value) { SetPassword(value); return *this;}
-
+    template<typename PasswordT = Aws::String>
+    void SetPassword(PasswordT&& value) { m_passwordHasBeenSet = true; m_password = std::forward<PasswordT>(value); }
+    template<typename PasswordT = Aws::String>
+    AcceptDomainTransferFromAnotherAwsAccountRequest& WithPassword(PasswordT&& value) { SetPassword(std::forward<PasswordT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainName;

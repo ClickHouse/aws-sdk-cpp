@@ -20,7 +20,9 @@ namespace Model
     API_GATEWAY,
     APPSYNC,
     COGNITO_USER_POOL,
-    APP_RUNNER_SERVICE
+    APP_RUNNER_SERVICE,
+    VERIFIED_ACCESS_INSTANCE,
+    AMPLIFY
   };
 
 namespace ResourceTypeMapper

@@ -31,7 +31,7 @@ namespace Model
   class RecurringCharge
   {
   public:
-    AWS_EC2_API RecurringCharge();
+    AWS_EC2_API RecurringCharge() = default;
     AWS_EC2_API RecurringCharge(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API RecurringCharge& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -39,63 +39,31 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The amount of the recurring charge.</p>
      */
-    inline double GetAmount() const{ return m_amount; }
-
-    /**
-     * <p>The amount of the recurring charge.</p>
-     */
+    inline double GetAmount() const { return m_amount; }
     inline bool AmountHasBeenSet() const { return m_amountHasBeenSet; }
-
-    /**
-     * <p>The amount of the recurring charge.</p>
-     */
     inline void SetAmount(double value) { m_amountHasBeenSet = true; m_amount = value; }
-
-    /**
-     * <p>The amount of the recurring charge.</p>
-     */
     inline RecurringCharge& WithAmount(double value) { SetAmount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The frequency of the recurring charge.</p>
      */
-    inline const RecurringChargeFrequency& GetFrequency() const{ return m_frequency; }
-
-    /**
-     * <p>The frequency of the recurring charge.</p>
-     */
+    inline RecurringChargeFrequency GetFrequency() const { return m_frequency; }
     inline bool FrequencyHasBeenSet() const { return m_frequencyHasBeenSet; }
-
-    /**
-     * <p>The frequency of the recurring charge.</p>
-     */
-    inline void SetFrequency(const RecurringChargeFrequency& value) { m_frequencyHasBeenSet = true; m_frequency = value; }
-
-    /**
-     * <p>The frequency of the recurring charge.</p>
-     */
-    inline void SetFrequency(RecurringChargeFrequency&& value) { m_frequencyHasBeenSet = true; m_frequency = std::move(value); }
-
-    /**
-     * <p>The frequency of the recurring charge.</p>
-     */
-    inline RecurringCharge& WithFrequency(const RecurringChargeFrequency& value) { SetFrequency(value); return *this;}
-
-    /**
-     * <p>The frequency of the recurring charge.</p>
-     */
-    inline RecurringCharge& WithFrequency(RecurringChargeFrequency&& value) { SetFrequency(std::move(value)); return *this;}
-
+    inline void SetFrequency(RecurringChargeFrequency value) { m_frequencyHasBeenSet = true; m_frequency = value; }
+    inline RecurringCharge& WithFrequency(RecurringChargeFrequency value) { SetFrequency(value); return *this;}
+    ///@}
   private:
 
-    double m_amount;
+    double m_amount{0.0};
     bool m_amountHasBeenSet = false;
 
-    RecurringChargeFrequency m_frequency;
+    RecurringChargeFrequency m_frequency{RecurringChargeFrequency::NOT_SET};
     bool m_frequencyHasBeenSet = false;
   };
 

@@ -26,6 +26,10 @@ namespace Aws
         static const int awsvpcTrunking_HASH = HashingUtils::HashString("awsvpcTrunking");
         static const int containerInsights_HASH = HashingUtils::HashString("containerInsights");
         static const int fargateFIPSMode_HASH = HashingUtils::HashString("fargateFIPSMode");
+        static const int tagResourceAuthorization_HASH = HashingUtils::HashString("tagResourceAuthorization");
+        static const int fargateTaskRetirementWaitPeriod_HASH = HashingUtils::HashString("fargateTaskRetirementWaitPeriod");
+        static const int guardDutyActivate_HASH = HashingUtils::HashString("guardDutyActivate");
+        static const int defaultLogDriverMode_HASH = HashingUtils::HashString("defaultLogDriverMode");
 
 
         SettingName GetSettingNameForName(const Aws::String& name)
@@ -55,6 +59,22 @@ namespace Aws
           {
             return SettingName::fargateFIPSMode;
           }
+          else if (hashCode == tagResourceAuthorization_HASH)
+          {
+            return SettingName::tagResourceAuthorization;
+          }
+          else if (hashCode == fargateTaskRetirementWaitPeriod_HASH)
+          {
+            return SettingName::fargateTaskRetirementWaitPeriod;
+          }
+          else if (hashCode == guardDutyActivate_HASH)
+          {
+            return SettingName::guardDutyActivate;
+          }
+          else if (hashCode == defaultLogDriverMode_HASH)
+          {
+            return SettingName::defaultLogDriverMode;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -69,6 +89,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case SettingName::NOT_SET:
+            return {};
           case SettingName::serviceLongArnFormat:
             return "serviceLongArnFormat";
           case SettingName::taskLongArnFormat:
@@ -81,6 +103,14 @@ namespace Aws
             return "containerInsights";
           case SettingName::fargateFIPSMode:
             return "fargateFIPSMode";
+          case SettingName::tagResourceAuthorization:
+            return "tagResourceAuthorization";
+          case SettingName::fargateTaskRetirementWaitPeriod:
+            return "fargateTaskRetirementWaitPeriod";
+          case SettingName::guardDutyActivate:
+            return "guardDutyActivate";
+          case SettingName::defaultLogDriverMode:
+            return "defaultLogDriverMode";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

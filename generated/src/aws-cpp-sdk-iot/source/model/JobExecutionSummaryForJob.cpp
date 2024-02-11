@@ -18,15 +18,7 @@ namespace IoT
 namespace Model
 {
 
-JobExecutionSummaryForJob::JobExecutionSummaryForJob() : 
-    m_thingArnHasBeenSet(false),
-    m_jobExecutionSummaryHasBeenSet(false)
-{
-}
-
-JobExecutionSummaryForJob::JobExecutionSummaryForJob(JsonView jsonValue) : 
-    m_thingArnHasBeenSet(false),
-    m_jobExecutionSummaryHasBeenSet(false)
+JobExecutionSummaryForJob::JobExecutionSummaryForJob(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ JobExecutionSummaryForJob& JobExecutionSummaryForJob::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("thingArn"))
   {
     m_thingArn = jsonValue.GetString("thingArn");
-
     m_thingArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("jobExecutionSummary"))
   {
     m_jobExecutionSummary = jsonValue.GetObject("jobExecutionSummary");
-
     m_jobExecutionSummaryHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace LookoutMetrics
 namespace Model
 {
 
-AppFlowConfig::AppFlowConfig() : 
-    m_roleArnHasBeenSet(false),
-    m_flowNameHasBeenSet(false)
-{
-}
-
-AppFlowConfig::AppFlowConfig(JsonView jsonValue) : 
-    m_roleArnHasBeenSet(false),
-    m_flowNameHasBeenSet(false)
+AppFlowConfig::AppFlowConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AppFlowConfig& AppFlowConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("RoleArn"))
   {
     m_roleArn = jsonValue.GetString("RoleArn");
-
     m_roleArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FlowName"))
   {
     m_flowName = jsonValue.GetString("FlowName");
-
     m_flowNameHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -10,30 +10,24 @@
 using namespace Aws::CloudWatch::Model;
 using namespace Aws::Utils;
 
-GetMetricDataRequest::GetMetricDataRequest() : 
-    m_metricDataQueriesHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_scanBy(ScanBy::NOT_SET),
-    m_scanByHasBeenSet(false),
-    m_maxDatapoints(0),
-    m_maxDatapointsHasBeenSet(false),
-    m_labelOptionsHasBeenSet(false)
-{
-}
-
 Aws::String GetMetricDataRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=GetMetricData&";
   if(m_metricDataQueriesHasBeenSet)
   {
-    unsigned metricDataQueriesCount = 1;
-    for(auto& item : m_metricDataQueries)
+    if (m_metricDataQueries.empty())
     {
-      item.OutputToStream(ss, "MetricDataQueries.member.", metricDataQueriesCount, "");
-      metricDataQueriesCount++;
+      ss << "MetricDataQueries=&";
+    }
+    else
+    {
+      unsigned metricDataQueriesCount = 1;
+      for(auto& item : m_metricDataQueries)
+      {
+        item.OutputToStream(ss, "MetricDataQueries.member.", metricDataQueriesCount, "");
+        metricDataQueriesCount++;
+      }
     }
   }
 
@@ -54,7 +48,7 @@ Aws::String GetMetricDataRequest::SerializePayload() const
 
   if(m_scanByHasBeenSet)
   {
-    ss << "ScanBy=" << ScanByMapper::GetNameForScanBy(m_scanBy) << "&";
+    ss << "ScanBy=" << StringUtils::URLEncode(ScanByMapper::GetNameForScanBy(m_scanBy)) << "&";
   }
 
   if(m_maxDatapointsHasBeenSet)

@@ -21,7 +21,7 @@ namespace Model
   class GetAssessmentFrameworkRequest : public AuditManagerRequest
   {
   public:
-    AWS_AUDITMANAGER_API GetAssessmentFrameworkRequest();
+    AWS_AUDITMANAGER_API GetAssessmentFrameworkRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_AUDITMANAGER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p> The identifier for the framework. </p>
      */
-    inline const Aws::String& GetFrameworkId() const{ return m_frameworkId; }
-
-    /**
-     * <p> The identifier for the framework. </p>
-     */
+    inline const Aws::String& GetFrameworkId() const { return m_frameworkId; }
     inline bool FrameworkIdHasBeenSet() const { return m_frameworkIdHasBeenSet; }
-
-    /**
-     * <p> The identifier for the framework. </p>
-     */
-    inline void SetFrameworkId(const Aws::String& value) { m_frameworkIdHasBeenSet = true; m_frameworkId = value; }
-
-    /**
-     * <p> The identifier for the framework. </p>
-     */
-    inline void SetFrameworkId(Aws::String&& value) { m_frameworkIdHasBeenSet = true; m_frameworkId = std::move(value); }
-
-    /**
-     * <p> The identifier for the framework. </p>
-     */
-    inline void SetFrameworkId(const char* value) { m_frameworkIdHasBeenSet = true; m_frameworkId.assign(value); }
-
-    /**
-     * <p> The identifier for the framework. </p>
-     */
-    inline GetAssessmentFrameworkRequest& WithFrameworkId(const Aws::String& value) { SetFrameworkId(value); return *this;}
-
-    /**
-     * <p> The identifier for the framework. </p>
-     */
-    inline GetAssessmentFrameworkRequest& WithFrameworkId(Aws::String&& value) { SetFrameworkId(std::move(value)); return *this;}
-
-    /**
-     * <p> The identifier for the framework. </p>
-     */
-    inline GetAssessmentFrameworkRequest& WithFrameworkId(const char* value) { SetFrameworkId(value); return *this;}
-
+    template<typename FrameworkIdT = Aws::String>
+    void SetFrameworkId(FrameworkIdT&& value) { m_frameworkIdHasBeenSet = true; m_frameworkId = std::forward<FrameworkIdT>(value); }
+    template<typename FrameworkIdT = Aws::String>
+    GetAssessmentFrameworkRequest& WithFrameworkId(FrameworkIdT&& value) { SetFrameworkId(std::forward<FrameworkIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_frameworkId;

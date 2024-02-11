@@ -32,135 +32,59 @@ namespace Model
   class PivotTableTotalOptions
   {
   public:
-    AWS_QUICKSIGHT_API PivotTableTotalOptions();
+    AWS_QUICKSIGHT_API PivotTableTotalOptions() = default;
     AWS_QUICKSIGHT_API PivotTableTotalOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API PivotTableTotalOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The row subtotal options.</p>
      */
-    inline const SubtotalOptions& GetRowSubtotalOptions() const{ return m_rowSubtotalOptions; }
-
-    /**
-     * <p>The row subtotal options.</p>
-     */
+    inline const SubtotalOptions& GetRowSubtotalOptions() const { return m_rowSubtotalOptions; }
     inline bool RowSubtotalOptionsHasBeenSet() const { return m_rowSubtotalOptionsHasBeenSet; }
+    template<typename RowSubtotalOptionsT = SubtotalOptions>
+    void SetRowSubtotalOptions(RowSubtotalOptionsT&& value) { m_rowSubtotalOptionsHasBeenSet = true; m_rowSubtotalOptions = std::forward<RowSubtotalOptionsT>(value); }
+    template<typename RowSubtotalOptionsT = SubtotalOptions>
+    PivotTableTotalOptions& WithRowSubtotalOptions(RowSubtotalOptionsT&& value) { SetRowSubtotalOptions(std::forward<RowSubtotalOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The row subtotal options.</p>
-     */
-    inline void SetRowSubtotalOptions(const SubtotalOptions& value) { m_rowSubtotalOptionsHasBeenSet = true; m_rowSubtotalOptions = value; }
-
-    /**
-     * <p>The row subtotal options.</p>
-     */
-    inline void SetRowSubtotalOptions(SubtotalOptions&& value) { m_rowSubtotalOptionsHasBeenSet = true; m_rowSubtotalOptions = std::move(value); }
-
-    /**
-     * <p>The row subtotal options.</p>
-     */
-    inline PivotTableTotalOptions& WithRowSubtotalOptions(const SubtotalOptions& value) { SetRowSubtotalOptions(value); return *this;}
-
-    /**
-     * <p>The row subtotal options.</p>
-     */
-    inline PivotTableTotalOptions& WithRowSubtotalOptions(SubtotalOptions&& value) { SetRowSubtotalOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The column subtotal options.</p>
      */
-    inline const SubtotalOptions& GetColumnSubtotalOptions() const{ return m_columnSubtotalOptions; }
-
-    /**
-     * <p>The column subtotal options.</p>
-     */
+    inline const SubtotalOptions& GetColumnSubtotalOptions() const { return m_columnSubtotalOptions; }
     inline bool ColumnSubtotalOptionsHasBeenSet() const { return m_columnSubtotalOptionsHasBeenSet; }
+    template<typename ColumnSubtotalOptionsT = SubtotalOptions>
+    void SetColumnSubtotalOptions(ColumnSubtotalOptionsT&& value) { m_columnSubtotalOptionsHasBeenSet = true; m_columnSubtotalOptions = std::forward<ColumnSubtotalOptionsT>(value); }
+    template<typename ColumnSubtotalOptionsT = SubtotalOptions>
+    PivotTableTotalOptions& WithColumnSubtotalOptions(ColumnSubtotalOptionsT&& value) { SetColumnSubtotalOptions(std::forward<ColumnSubtotalOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The column subtotal options.</p>
-     */
-    inline void SetColumnSubtotalOptions(const SubtotalOptions& value) { m_columnSubtotalOptionsHasBeenSet = true; m_columnSubtotalOptions = value; }
-
-    /**
-     * <p>The column subtotal options.</p>
-     */
-    inline void SetColumnSubtotalOptions(SubtotalOptions&& value) { m_columnSubtotalOptionsHasBeenSet = true; m_columnSubtotalOptions = std::move(value); }
-
-    /**
-     * <p>The column subtotal options.</p>
-     */
-    inline PivotTableTotalOptions& WithColumnSubtotalOptions(const SubtotalOptions& value) { SetColumnSubtotalOptions(value); return *this;}
-
-    /**
-     * <p>The column subtotal options.</p>
-     */
-    inline PivotTableTotalOptions& WithColumnSubtotalOptions(SubtotalOptions&& value) { SetColumnSubtotalOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The row total options.</p>
      */
-    inline const PivotTotalOptions& GetRowTotalOptions() const{ return m_rowTotalOptions; }
-
-    /**
-     * <p>The row total options.</p>
-     */
+    inline const PivotTotalOptions& GetRowTotalOptions() const { return m_rowTotalOptions; }
     inline bool RowTotalOptionsHasBeenSet() const { return m_rowTotalOptionsHasBeenSet; }
+    template<typename RowTotalOptionsT = PivotTotalOptions>
+    void SetRowTotalOptions(RowTotalOptionsT&& value) { m_rowTotalOptionsHasBeenSet = true; m_rowTotalOptions = std::forward<RowTotalOptionsT>(value); }
+    template<typename RowTotalOptionsT = PivotTotalOptions>
+    PivotTableTotalOptions& WithRowTotalOptions(RowTotalOptionsT&& value) { SetRowTotalOptions(std::forward<RowTotalOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The row total options.</p>
-     */
-    inline void SetRowTotalOptions(const PivotTotalOptions& value) { m_rowTotalOptionsHasBeenSet = true; m_rowTotalOptions = value; }
-
-    /**
-     * <p>The row total options.</p>
-     */
-    inline void SetRowTotalOptions(PivotTotalOptions&& value) { m_rowTotalOptionsHasBeenSet = true; m_rowTotalOptions = std::move(value); }
-
-    /**
-     * <p>The row total options.</p>
-     */
-    inline PivotTableTotalOptions& WithRowTotalOptions(const PivotTotalOptions& value) { SetRowTotalOptions(value); return *this;}
-
-    /**
-     * <p>The row total options.</p>
-     */
-    inline PivotTableTotalOptions& WithRowTotalOptions(PivotTotalOptions&& value) { SetRowTotalOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The column total options.</p>
      */
-    inline const PivotTotalOptions& GetColumnTotalOptions() const{ return m_columnTotalOptions; }
-
-    /**
-     * <p>The column total options.</p>
-     */
+    inline const PivotTotalOptions& GetColumnTotalOptions() const { return m_columnTotalOptions; }
     inline bool ColumnTotalOptionsHasBeenSet() const { return m_columnTotalOptionsHasBeenSet; }
-
-    /**
-     * <p>The column total options.</p>
-     */
-    inline void SetColumnTotalOptions(const PivotTotalOptions& value) { m_columnTotalOptionsHasBeenSet = true; m_columnTotalOptions = value; }
-
-    /**
-     * <p>The column total options.</p>
-     */
-    inline void SetColumnTotalOptions(PivotTotalOptions&& value) { m_columnTotalOptionsHasBeenSet = true; m_columnTotalOptions = std::move(value); }
-
-    /**
-     * <p>The column total options.</p>
-     */
-    inline PivotTableTotalOptions& WithColumnTotalOptions(const PivotTotalOptions& value) { SetColumnTotalOptions(value); return *this;}
-
-    /**
-     * <p>The column total options.</p>
-     */
-    inline PivotTableTotalOptions& WithColumnTotalOptions(PivotTotalOptions&& value) { SetColumnTotalOptions(std::move(value)); return *this;}
-
+    template<typename ColumnTotalOptionsT = PivotTotalOptions>
+    void SetColumnTotalOptions(ColumnTotalOptionsT&& value) { m_columnTotalOptionsHasBeenSet = true; m_columnTotalOptions = std::forward<ColumnTotalOptionsT>(value); }
+    template<typename ColumnTotalOptionsT = PivotTotalOptions>
+    PivotTableTotalOptions& WithColumnTotalOptions(ColumnTotalOptionsT&& value) { SetColumnTotalOptions(std::forward<ColumnTotalOptionsT>(value)); return *this;}
+    ///@}
   private:
 
     SubtotalOptions m_rowSubtotalOptions;

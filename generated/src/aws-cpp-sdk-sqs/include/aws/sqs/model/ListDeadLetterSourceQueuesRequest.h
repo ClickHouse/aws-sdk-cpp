@@ -24,7 +24,7 @@ namespace Model
   class ListDeadLetterSourceQueuesRequest : public SQSRequest
   {
   public:
-    AWS_SQS_API ListDeadLetterSourceQueuesRequest();
+    AWS_SQS_API ListDeadLetterSourceQueuesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,129 +34,45 @@ namespace Model
 
     AWS_SQS_API Aws::String SerializePayload() const override;
 
-  protected:
-    AWS_SQS_API void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+    AWS_SQS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
-  public:
 
+    ///@{
     /**
      * <p>The URL of a dead-letter queue.</p> <p>Queue URLs and names are
      * case-sensitive.</p>
      */
-    inline const Aws::String& GetQueueUrl() const{ return m_queueUrl; }
-
-    /**
-     * <p>The URL of a dead-letter queue.</p> <p>Queue URLs and names are
-     * case-sensitive.</p>
-     */
+    inline const Aws::String& GetQueueUrl() const { return m_queueUrl; }
     inline bool QueueUrlHasBeenSet() const { return m_queueUrlHasBeenSet; }
+    template<typename QueueUrlT = Aws::String>
+    void SetQueueUrl(QueueUrlT&& value) { m_queueUrlHasBeenSet = true; m_queueUrl = std::forward<QueueUrlT>(value); }
+    template<typename QueueUrlT = Aws::String>
+    ListDeadLetterSourceQueuesRequest& WithQueueUrl(QueueUrlT&& value) { SetQueueUrl(std::forward<QueueUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URL of a dead-letter queue.</p> <p>Queue URLs and names are
-     * case-sensitive.</p>
-     */
-    inline void SetQueueUrl(const Aws::String& value) { m_queueUrlHasBeenSet = true; m_queueUrl = value; }
-
-    /**
-     * <p>The URL of a dead-letter queue.</p> <p>Queue URLs and names are
-     * case-sensitive.</p>
-     */
-    inline void SetQueueUrl(Aws::String&& value) { m_queueUrlHasBeenSet = true; m_queueUrl = std::move(value); }
-
-    /**
-     * <p>The URL of a dead-letter queue.</p> <p>Queue URLs and names are
-     * case-sensitive.</p>
-     */
-    inline void SetQueueUrl(const char* value) { m_queueUrlHasBeenSet = true; m_queueUrl.assign(value); }
-
-    /**
-     * <p>The URL of a dead-letter queue.</p> <p>Queue URLs and names are
-     * case-sensitive.</p>
-     */
-    inline ListDeadLetterSourceQueuesRequest& WithQueueUrl(const Aws::String& value) { SetQueueUrl(value); return *this;}
-
-    /**
-     * <p>The URL of a dead-letter queue.</p> <p>Queue URLs and names are
-     * case-sensitive.</p>
-     */
-    inline ListDeadLetterSourceQueuesRequest& WithQueueUrl(Aws::String&& value) { SetQueueUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL of a dead-letter queue.</p> <p>Queue URLs and names are
-     * case-sensitive.</p>
-     */
-    inline ListDeadLetterSourceQueuesRequest& WithQueueUrl(const char* value) { SetQueueUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Pagination token to request the next set of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>Pagination token to request the next set of results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListDeadLetterSourceQueuesRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Pagination token to request the next set of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>Pagination token to request the next set of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>Pagination token to request the next set of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>Pagination token to request the next set of results.</p>
-     */
-    inline ListDeadLetterSourceQueuesRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>Pagination token to request the next set of results.</p>
-     */
-    inline ListDeadLetterSourceQueuesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Pagination token to request the next set of results.</p>
-     */
-    inline ListDeadLetterSourceQueuesRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Maximum number of results to include in the response. Value range is 1 to
      * 1000. You must set <code>MaxResults</code> to receive a value for
      * <code>NextToken</code> in the response.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>Maximum number of results to include in the response. Value range is 1 to
-     * 1000. You must set <code>MaxResults</code> to receive a value for
-     * <code>NextToken</code> in the response.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>Maximum number of results to include in the response. Value range is 1 to
-     * 1000. You must set <code>MaxResults</code> to receive a value for
-     * <code>NextToken</code> in the response.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>Maximum number of results to include in the response. Value range is 1 to
-     * 1000. You must set <code>MaxResults</code> to receive a value for
-     * <code>NextToken</code> in the response.</p>
-     */
     inline ListDeadLetterSourceQueuesRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_queueUrl;
@@ -165,7 +81,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

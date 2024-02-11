@@ -34,167 +34,66 @@ namespace Model
   class CustomDetection
   {
   public:
-    AWS_MACIE2_API CustomDetection();
+    AWS_MACIE2_API CustomDetection() = default;
     AWS_MACIE2_API CustomDetection(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API CustomDetection& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the custom data identifier.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The unique identifier for the custom data identifier.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    CustomDetection& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the custom data identifier.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The unique identifier for the custom data identifier.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the custom data identifier.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The unique identifier for the custom data identifier.</p>
-     */
-    inline CustomDetection& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the custom data identifier.</p>
-     */
-    inline CustomDetection& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the custom data identifier.</p>
-     */
-    inline CustomDetection& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The total number of occurrences of the sensitive data that the custom data
      * identifier detected.</p>
      */
-    inline long long GetCount() const{ return m_count; }
-
-    /**
-     * <p>The total number of occurrences of the sensitive data that the custom data
-     * identifier detected.</p>
-     */
+    inline long long GetCount() const { return m_count; }
     inline bool CountHasBeenSet() const { return m_countHasBeenSet; }
-
-    /**
-     * <p>The total number of occurrences of the sensitive data that the custom data
-     * identifier detected.</p>
-     */
     inline void SetCount(long long value) { m_countHasBeenSet = true; m_count = value; }
-
-    /**
-     * <p>The total number of occurrences of the sensitive data that the custom data
-     * identifier detected.</p>
-     */
     inline CustomDetection& WithCount(long long value) { SetCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The name of the custom data identifier.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the custom data identifier.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CustomDetection& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the custom data identifier.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the custom data identifier.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the custom data identifier.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the custom data identifier.</p>
-     */
-    inline CustomDetection& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the custom data identifier.</p>
-     */
-    inline CustomDetection& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the custom data identifier.</p>
-     */
-    inline CustomDetection& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The location of 1-15 occurrences of the sensitive data that the custom data
      * identifier detected. A finding includes location data for a maximum of 15
      * occurrences of sensitive data.</p>
      */
-    inline const Occurrences& GetOccurrences() const{ return m_occurrences; }
-
-    /**
-     * <p>The location of 1-15 occurrences of the sensitive data that the custom data
-     * identifier detected. A finding includes location data for a maximum of 15
-     * occurrences of sensitive data.</p>
-     */
+    inline const Occurrences& GetOccurrences() const { return m_occurrences; }
     inline bool OccurrencesHasBeenSet() const { return m_occurrencesHasBeenSet; }
-
-    /**
-     * <p>The location of 1-15 occurrences of the sensitive data that the custom data
-     * identifier detected. A finding includes location data for a maximum of 15
-     * occurrences of sensitive data.</p>
-     */
-    inline void SetOccurrences(const Occurrences& value) { m_occurrencesHasBeenSet = true; m_occurrences = value; }
-
-    /**
-     * <p>The location of 1-15 occurrences of the sensitive data that the custom data
-     * identifier detected. A finding includes location data for a maximum of 15
-     * occurrences of sensitive data.</p>
-     */
-    inline void SetOccurrences(Occurrences&& value) { m_occurrencesHasBeenSet = true; m_occurrences = std::move(value); }
-
-    /**
-     * <p>The location of 1-15 occurrences of the sensitive data that the custom data
-     * identifier detected. A finding includes location data for a maximum of 15
-     * occurrences of sensitive data.</p>
-     */
-    inline CustomDetection& WithOccurrences(const Occurrences& value) { SetOccurrences(value); return *this;}
-
-    /**
-     * <p>The location of 1-15 occurrences of the sensitive data that the custom data
-     * identifier detected. A finding includes location data for a maximum of 15
-     * occurrences of sensitive data.</p>
-     */
-    inline CustomDetection& WithOccurrences(Occurrences&& value) { SetOccurrences(std::move(value)); return *this;}
-
+    template<typename OccurrencesT = Occurrences>
+    void SetOccurrences(OccurrencesT&& value) { m_occurrencesHasBeenSet = true; m_occurrences = std::forward<OccurrencesT>(value); }
+    template<typename OccurrencesT = Occurrences>
+    CustomDetection& WithOccurrences(OccurrencesT&& value) { SetOccurrences(std::forward<OccurrencesT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
     bool m_arnHasBeenSet = false;
 
-    long long m_count;
+    long long m_count{0};
     bool m_countHasBeenSet = false;
 
     Aws::String m_name;

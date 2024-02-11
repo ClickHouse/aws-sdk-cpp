@@ -20,29 +20,7 @@ namespace DocDB
 namespace Model
 {
 
-DBEngineVersion::DBEngineVersion() : 
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_dBParameterGroupFamilyHasBeenSet(false),
-    m_dBEngineDescriptionHasBeenSet(false),
-    m_dBEngineVersionDescriptionHasBeenSet(false),
-    m_validUpgradeTargetHasBeenSet(false),
-    m_exportableLogTypesHasBeenSet(false),
-    m_supportsLogExportsToCloudwatchLogs(false),
-    m_supportsLogExportsToCloudwatchLogsHasBeenSet(false)
-{
-}
-
-DBEngineVersion::DBEngineVersion(const XmlNode& xmlNode) : 
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_dBParameterGroupFamilyHasBeenSet(false),
-    m_dBEngineDescriptionHasBeenSet(false),
-    m_dBEngineVersionDescriptionHasBeenSet(false),
-    m_validUpgradeTargetHasBeenSet(false),
-    m_exportableLogTypesHasBeenSet(false),
-    m_supportsLogExportsToCloudwatchLogs(false),
-    m_supportsLogExportsToCloudwatchLogsHasBeenSet(false)
+DBEngineVersion::DBEngineVersion(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -87,6 +65,7 @@ DBEngineVersion& DBEngineVersion::operator =(const XmlNode& xmlNode)
     if(!validUpgradeTargetNode.IsNull())
     {
       XmlNode validUpgradeTargetMember = validUpgradeTargetNode.FirstChild("UpgradeTarget");
+      m_validUpgradeTargetHasBeenSet = !validUpgradeTargetMember.IsNull();
       while(!validUpgradeTargetMember.IsNull())
       {
         m_validUpgradeTarget.push_back(validUpgradeTargetMember);
@@ -99,6 +78,7 @@ DBEngineVersion& DBEngineVersion::operator =(const XmlNode& xmlNode)
     if(!exportableLogTypesNode.IsNull())
     {
       XmlNode exportableLogTypesMember = exportableLogTypesNode.FirstChild("member");
+      m_exportableLogTypesHasBeenSet = !exportableLogTypesMember.IsNull();
       while(!exportableLogTypesMember.IsNull())
       {
         m_exportableLogTypes.push_back(exportableLogTypesMember.GetText());
@@ -112,6 +92,31 @@ DBEngineVersion& DBEngineVersion::operator =(const XmlNode& xmlNode)
     {
       m_supportsLogExportsToCloudwatchLogs = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(supportsLogExportsToCloudwatchLogsNode.GetText()).c_str()).c_str());
       m_supportsLogExportsToCloudwatchLogsHasBeenSet = true;
+    }
+    XmlNode supportedCACertificateIdentifiersNode = resultNode.FirstChild("SupportedCACertificateIdentifiers");
+    if(!supportedCACertificateIdentifiersNode.IsNull())
+    {
+      XmlNode supportedCACertificateIdentifiersMember = supportedCACertificateIdentifiersNode.FirstChild("member");
+      m_supportedCACertificateIdentifiersHasBeenSet = !supportedCACertificateIdentifiersMember.IsNull();
+      while(!supportedCACertificateIdentifiersMember.IsNull())
+      {
+        m_supportedCACertificateIdentifiers.push_back(supportedCACertificateIdentifiersMember.GetText());
+        supportedCACertificateIdentifiersMember = supportedCACertificateIdentifiersMember.NextNode("member");
+      }
+
+      m_supportedCACertificateIdentifiersHasBeenSet = true;
+    }
+    XmlNode supportsCertificateRotationWithoutRestartNode = resultNode.FirstChild("SupportsCertificateRotationWithoutRestart");
+    if(!supportsCertificateRotationWithoutRestartNode.IsNull())
+    {
+      m_supportsCertificateRotationWithoutRestart = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(supportsCertificateRotationWithoutRestartNode.GetText()).c_str()).c_str());
+      m_supportsCertificateRotationWithoutRestartHasBeenSet = true;
+    }
+    XmlNode serverlessV2FeaturesSupportNode = resultNode.FirstChild("ServerlessV2FeaturesSupport");
+    if(!serverlessV2FeaturesSupportNode.IsNull())
+    {
+      m_serverlessV2FeaturesSupport = serverlessV2FeaturesSupportNode;
+      m_serverlessV2FeaturesSupportHasBeenSet = true;
     }
   }
 
@@ -151,7 +156,7 @@ void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location
       for(auto& item : m_validUpgradeTarget)
       {
         Aws::StringStream validUpgradeTargetSs;
-        validUpgradeTargetSs << location << index << locationValue << ".UpgradeTarget." << validUpgradeTargetIdx++;
+        validUpgradeTargetSs << location << index << locationValue << ".ValidUpgradeTarget.UpgradeTarget." << validUpgradeTargetIdx++;
         item.OutputToStream(oStream, validUpgradeTargetSs.str().c_str());
       }
   }
@@ -168,6 +173,27 @@ void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location
   if(m_supportsLogExportsToCloudwatchLogsHasBeenSet)
   {
       oStream << location << index << locationValue << ".SupportsLogExportsToCloudwatchLogs=" << std::boolalpha << m_supportsLogExportsToCloudwatchLogs << "&";
+  }
+
+  if(m_supportedCACertificateIdentifiersHasBeenSet)
+  {
+      unsigned supportedCACertificateIdentifiersIdx = 1;
+      for(auto& item : m_supportedCACertificateIdentifiers)
+      {
+        oStream << location << index << locationValue << ".SupportedCACertificateIdentifiers.member." << supportedCACertificateIdentifiersIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
+
+  if(m_supportsCertificateRotationWithoutRestartHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".SupportsCertificateRotationWithoutRestart=" << std::boolalpha << m_supportsCertificateRotationWithoutRestart << "&";
+  }
+
+  if(m_serverlessV2FeaturesSupportHasBeenSet)
+  {
+      Aws::StringStream serverlessV2FeaturesSupportLocationAndMemberSs;
+      serverlessV2FeaturesSupportLocationAndMemberSs << location << index << locationValue << ".ServerlessV2FeaturesSupport";
+      m_serverlessV2FeaturesSupport.OutputToStream(oStream, serverlessV2FeaturesSupportLocationAndMemberSs.str().c_str());
   }
 
 }
@@ -200,7 +226,7 @@ void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location
       for(auto& item : m_validUpgradeTarget)
       {
         Aws::StringStream validUpgradeTargetSs;
-        validUpgradeTargetSs << location <<  ".UpgradeTarget." << validUpgradeTargetIdx++;
+        validUpgradeTargetSs << location << ".ValidUpgradeTarget.UpgradeTarget." << validUpgradeTargetIdx++;
         item.OutputToStream(oStream, validUpgradeTargetSs.str().c_str());
       }
   }
@@ -215,6 +241,24 @@ void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location
   if(m_supportsLogExportsToCloudwatchLogsHasBeenSet)
   {
       oStream << location << ".SupportsLogExportsToCloudwatchLogs=" << std::boolalpha << m_supportsLogExportsToCloudwatchLogs << "&";
+  }
+  if(m_supportedCACertificateIdentifiersHasBeenSet)
+  {
+      unsigned supportedCACertificateIdentifiersIdx = 1;
+      for(auto& item : m_supportedCACertificateIdentifiers)
+      {
+        oStream << location << ".SupportedCACertificateIdentifiers.member." << supportedCACertificateIdentifiersIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
+  if(m_supportsCertificateRotationWithoutRestartHasBeenSet)
+  {
+      oStream << location << ".SupportsCertificateRotationWithoutRestart=" << std::boolalpha << m_supportsCertificateRotationWithoutRestart << "&";
+  }
+  if(m_serverlessV2FeaturesSupportHasBeenSet)
+  {
+      Aws::String serverlessV2FeaturesSupportLocationAndMember(location);
+      serverlessV2FeaturesSupportLocationAndMember += ".ServerlessV2FeaturesSupport";
+      m_serverlessV2FeaturesSupport.OutputToStream(oStream, serverlessV2FeaturesSupportLocationAndMember.c_str());
   }
 }
 

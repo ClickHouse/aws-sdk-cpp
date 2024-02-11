@@ -40,12 +40,13 @@ namespace Model
   class InstancePatchStateFilter
   {
   public:
-    AWS_SSM_API InstancePatchStateFilter();
+    AWS_SSM_API InstancePatchStateFilter() = default;
     AWS_SSM_API InstancePatchStateFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API InstancePatchStateFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The key for the filter. Supported values include the following:</p> <ul> <li>
      * <p> <code>InstalledCount</code> </p> </li> <li> <p>
@@ -56,169 +57,37 @@ namespace Model
      * </li> <li> <p> <code>UnreportedNotApplicableCount</code> </p> </li> <li> <p>
      * <code>NotApplicableCount</code> </p> </li> </ul>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The key for the filter. Supported values include the following:</p> <ul> <li>
-     * <p> <code>InstalledCount</code> </p> </li> <li> <p>
-     * <code>InstalledOtherCount</code> </p> </li> <li> <p>
-     * <code>InstalledPendingRebootCount</code> </p> </li> <li> <p>
-     * <code>InstalledRejectedCount</code> </p> </li> <li> <p>
-     * <code>MissingCount</code> </p> </li> <li> <p> <code>FailedCount</code> </p>
-     * </li> <li> <p> <code>UnreportedNotApplicableCount</code> </p> </li> <li> <p>
-     * <code>NotApplicableCount</code> </p> </li> </ul>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    InstancePatchStateFilter& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The key for the filter. Supported values include the following:</p> <ul> <li>
-     * <p> <code>InstalledCount</code> </p> </li> <li> <p>
-     * <code>InstalledOtherCount</code> </p> </li> <li> <p>
-     * <code>InstalledPendingRebootCount</code> </p> </li> <li> <p>
-     * <code>InstalledRejectedCount</code> </p> </li> <li> <p>
-     * <code>MissingCount</code> </p> </li> <li> <p> <code>FailedCount</code> </p>
-     * </li> <li> <p> <code>UnreportedNotApplicableCount</code> </p> </li> <li> <p>
-     * <code>NotApplicableCount</code> </p> </li> </ul>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The key for the filter. Supported values include the following:</p> <ul> <li>
-     * <p> <code>InstalledCount</code> </p> </li> <li> <p>
-     * <code>InstalledOtherCount</code> </p> </li> <li> <p>
-     * <code>InstalledPendingRebootCount</code> </p> </li> <li> <p>
-     * <code>InstalledRejectedCount</code> </p> </li> <li> <p>
-     * <code>MissingCount</code> </p> </li> <li> <p> <code>FailedCount</code> </p>
-     * </li> <li> <p> <code>UnreportedNotApplicableCount</code> </p> </li> <li> <p>
-     * <code>NotApplicableCount</code> </p> </li> </ul>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The key for the filter. Supported values include the following:</p> <ul> <li>
-     * <p> <code>InstalledCount</code> </p> </li> <li> <p>
-     * <code>InstalledOtherCount</code> </p> </li> <li> <p>
-     * <code>InstalledPendingRebootCount</code> </p> </li> <li> <p>
-     * <code>InstalledRejectedCount</code> </p> </li> <li> <p>
-     * <code>MissingCount</code> </p> </li> <li> <p> <code>FailedCount</code> </p>
-     * </li> <li> <p> <code>UnreportedNotApplicableCount</code> </p> </li> <li> <p>
-     * <code>NotApplicableCount</code> </p> </li> </ul>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>The key for the filter. Supported values include the following:</p> <ul> <li>
-     * <p> <code>InstalledCount</code> </p> </li> <li> <p>
-     * <code>InstalledOtherCount</code> </p> </li> <li> <p>
-     * <code>InstalledPendingRebootCount</code> </p> </li> <li> <p>
-     * <code>InstalledRejectedCount</code> </p> </li> <li> <p>
-     * <code>MissingCount</code> </p> </li> <li> <p> <code>FailedCount</code> </p>
-     * </li> <li> <p> <code>UnreportedNotApplicableCount</code> </p> </li> <li> <p>
-     * <code>NotApplicableCount</code> </p> </li> </ul>
-     */
-    inline InstancePatchStateFilter& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The key for the filter. Supported values include the following:</p> <ul> <li>
-     * <p> <code>InstalledCount</code> </p> </li> <li> <p>
-     * <code>InstalledOtherCount</code> </p> </li> <li> <p>
-     * <code>InstalledPendingRebootCount</code> </p> </li> <li> <p>
-     * <code>InstalledRejectedCount</code> </p> </li> <li> <p>
-     * <code>MissingCount</code> </p> </li> <li> <p> <code>FailedCount</code> </p>
-     * </li> <li> <p> <code>UnreportedNotApplicableCount</code> </p> </li> <li> <p>
-     * <code>NotApplicableCount</code> </p> </li> </ul>
-     */
-    inline InstancePatchStateFilter& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The key for the filter. Supported values include the following:</p> <ul> <li>
-     * <p> <code>InstalledCount</code> </p> </li> <li> <p>
-     * <code>InstalledOtherCount</code> </p> </li> <li> <p>
-     * <code>InstalledPendingRebootCount</code> </p> </li> <li> <p>
-     * <code>InstalledRejectedCount</code> </p> </li> <li> <p>
-     * <code>MissingCount</code> </p> </li> <li> <p> <code>FailedCount</code> </p>
-     * </li> <li> <p> <code>UnreportedNotApplicableCount</code> </p> </li> <li> <p>
-     * <code>NotApplicableCount</code> </p> </li> </ul>
-     */
-    inline InstancePatchStateFilter& WithKey(const char* value) { SetKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value for the filter. Must be an integer greater than or equal to 0.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>The value for the filter. Must be an integer greater than or equal to 0.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    InstancePatchStateFilter& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = Aws::String>
+    InstancePatchStateFilter& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The value for the filter. Must be an integer greater than or equal to 0.</p>
-     */
-    inline void SetValues(const Aws::Vector<Aws::String>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>The value for the filter. Must be an integer greater than or equal to 0.</p>
-     */
-    inline void SetValues(Aws::Vector<Aws::String>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>The value for the filter. Must be an integer greater than or equal to 0.</p>
-     */
-    inline InstancePatchStateFilter& WithValues(const Aws::Vector<Aws::String>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>The value for the filter. Must be an integer greater than or equal to 0.</p>
-     */
-    inline InstancePatchStateFilter& WithValues(Aws::Vector<Aws::String>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The value for the filter. Must be an integer greater than or equal to 0.</p>
-     */
-    inline InstancePatchStateFilter& AddValues(const Aws::String& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>The value for the filter. Must be an integer greater than or equal to 0.</p>
-     */
-    inline InstancePatchStateFilter& AddValues(Aws::String&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The value for the filter. Must be an integer greater than or equal to 0.</p>
-     */
-    inline InstancePatchStateFilter& AddValues(const char* value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The type of comparison that should be performed for the value.</p>
      */
-    inline const InstancePatchStateOperatorType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of comparison that should be performed for the value.</p>
-     */
+    inline InstancePatchStateOperatorType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of comparison that should be performed for the value.</p>
-     */
-    inline void SetType(const InstancePatchStateOperatorType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of comparison that should be performed for the value.</p>
-     */
-    inline void SetType(InstancePatchStateOperatorType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of comparison that should be performed for the value.</p>
-     */
-    inline InstancePatchStateFilter& WithType(const InstancePatchStateOperatorType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of comparison that should be performed for the value.</p>
-     */
-    inline InstancePatchStateFilter& WithType(InstancePatchStateOperatorType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(InstancePatchStateOperatorType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline InstancePatchStateFilter& WithType(InstancePatchStateOperatorType value) { SetType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_key;
@@ -227,7 +96,7 @@ namespace Model
     Aws::Vector<Aws::String> m_values;
     bool m_valuesHasBeenSet = false;
 
-    InstancePatchStateOperatorType m_type;
+    InstancePatchStateOperatorType m_type{InstancePatchStateOperatorType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

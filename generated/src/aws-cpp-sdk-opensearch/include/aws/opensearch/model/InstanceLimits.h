@@ -32,48 +32,24 @@ namespace Model
   class InstanceLimits
   {
   public:
-    AWS_OPENSEARCHSERVICE_API InstanceLimits();
+    AWS_OPENSEARCHSERVICE_API InstanceLimits() = default;
     AWS_OPENSEARCHSERVICE_API InstanceLimits(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API InstanceLimits& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Limits on the number of instances that can be created for a given instance
      * type.</p>
      */
-    inline const InstanceCountLimits& GetInstanceCountLimits() const{ return m_instanceCountLimits; }
-
-    /**
-     * <p>Limits on the number of instances that can be created for a given instance
-     * type.</p>
-     */
+    inline const InstanceCountLimits& GetInstanceCountLimits() const { return m_instanceCountLimits; }
     inline bool InstanceCountLimitsHasBeenSet() const { return m_instanceCountLimitsHasBeenSet; }
-
-    /**
-     * <p>Limits on the number of instances that can be created for a given instance
-     * type.</p>
-     */
-    inline void SetInstanceCountLimits(const InstanceCountLimits& value) { m_instanceCountLimitsHasBeenSet = true; m_instanceCountLimits = value; }
-
-    /**
-     * <p>Limits on the number of instances that can be created for a given instance
-     * type.</p>
-     */
-    inline void SetInstanceCountLimits(InstanceCountLimits&& value) { m_instanceCountLimitsHasBeenSet = true; m_instanceCountLimits = std::move(value); }
-
-    /**
-     * <p>Limits on the number of instances that can be created for a given instance
-     * type.</p>
-     */
-    inline InstanceLimits& WithInstanceCountLimits(const InstanceCountLimits& value) { SetInstanceCountLimits(value); return *this;}
-
-    /**
-     * <p>Limits on the number of instances that can be created for a given instance
-     * type.</p>
-     */
-    inline InstanceLimits& WithInstanceCountLimits(InstanceCountLimits&& value) { SetInstanceCountLimits(std::move(value)); return *this;}
-
+    template<typename InstanceCountLimitsT = InstanceCountLimits>
+    void SetInstanceCountLimits(InstanceCountLimitsT&& value) { m_instanceCountLimitsHasBeenSet = true; m_instanceCountLimits = std::forward<InstanceCountLimitsT>(value); }
+    template<typename InstanceCountLimitsT = InstanceCountLimits>
+    InstanceLimits& WithInstanceCountLimits(InstanceCountLimitsT&& value) { SetInstanceCountLimits(std::forward<InstanceCountLimitsT>(value)); return *this;}
+    ///@}
   private:
 
     InstanceCountLimits m_instanceCountLimits;

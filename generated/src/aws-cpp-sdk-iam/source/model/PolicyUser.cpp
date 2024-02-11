@@ -20,15 +20,7 @@ namespace IAM
 namespace Model
 {
 
-PolicyUser::PolicyUser() : 
-    m_userNameHasBeenSet(false),
-    m_userIdHasBeenSet(false)
-{
-}
-
-PolicyUser::PolicyUser(const XmlNode& xmlNode) : 
-    m_userNameHasBeenSet(false),
-    m_userIdHasBeenSet(false)
+PolicyUser::PolicyUser(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -32,12 +32,13 @@ namespace Model
   class PiiOutputDataConfig
   {
   public:
-    AWS_COMPREHEND_API PiiOutputDataConfig();
+    AWS_COMPREHEND_API PiiOutputDataConfig() = default;
     AWS_COMPREHEND_API PiiOutputDataConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API PiiOutputDataConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>When you use the <code>PiiOutputDataConfig</code> object with asynchronous
      * operations, you specify the Amazon S3 location where you want to write the
@@ -45,120 +46,26 @@ namespace Model
      * text, not a compressed archive. The output file name is the same as the input
      * file, with <code>.out</code> appended at the end. </p>
      */
-    inline const Aws::String& GetS3Uri() const{ return m_s3Uri; }
-
-    /**
-     * <p>When you use the <code>PiiOutputDataConfig</code> object with asynchronous
-     * operations, you specify the Amazon S3 location where you want to write the
-     * output data. </p> <p> For a PII entity detection job, the output file is plain
-     * text, not a compressed archive. The output file name is the same as the input
-     * file, with <code>.out</code> appended at the end. </p>
-     */
+    inline const Aws::String& GetS3Uri() const { return m_s3Uri; }
     inline bool S3UriHasBeenSet() const { return m_s3UriHasBeenSet; }
+    template<typename S3UriT = Aws::String>
+    void SetS3Uri(S3UriT&& value) { m_s3UriHasBeenSet = true; m_s3Uri = std::forward<S3UriT>(value); }
+    template<typename S3UriT = Aws::String>
+    PiiOutputDataConfig& WithS3Uri(S3UriT&& value) { SetS3Uri(std::forward<S3UriT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When you use the <code>PiiOutputDataConfig</code> object with asynchronous
-     * operations, you specify the Amazon S3 location where you want to write the
-     * output data. </p> <p> For a PII entity detection job, the output file is plain
-     * text, not a compressed archive. The output file name is the same as the input
-     * file, with <code>.out</code> appended at the end. </p>
-     */
-    inline void SetS3Uri(const Aws::String& value) { m_s3UriHasBeenSet = true; m_s3Uri = value; }
-
-    /**
-     * <p>When you use the <code>PiiOutputDataConfig</code> object with asynchronous
-     * operations, you specify the Amazon S3 location where you want to write the
-     * output data. </p> <p> For a PII entity detection job, the output file is plain
-     * text, not a compressed archive. The output file name is the same as the input
-     * file, with <code>.out</code> appended at the end. </p>
-     */
-    inline void SetS3Uri(Aws::String&& value) { m_s3UriHasBeenSet = true; m_s3Uri = std::move(value); }
-
-    /**
-     * <p>When you use the <code>PiiOutputDataConfig</code> object with asynchronous
-     * operations, you specify the Amazon S3 location where you want to write the
-     * output data. </p> <p> For a PII entity detection job, the output file is plain
-     * text, not a compressed archive. The output file name is the same as the input
-     * file, with <code>.out</code> appended at the end. </p>
-     */
-    inline void SetS3Uri(const char* value) { m_s3UriHasBeenSet = true; m_s3Uri.assign(value); }
-
-    /**
-     * <p>When you use the <code>PiiOutputDataConfig</code> object with asynchronous
-     * operations, you specify the Amazon S3 location where you want to write the
-     * output data. </p> <p> For a PII entity detection job, the output file is plain
-     * text, not a compressed archive. The output file name is the same as the input
-     * file, with <code>.out</code> appended at the end. </p>
-     */
-    inline PiiOutputDataConfig& WithS3Uri(const Aws::String& value) { SetS3Uri(value); return *this;}
-
-    /**
-     * <p>When you use the <code>PiiOutputDataConfig</code> object with asynchronous
-     * operations, you specify the Amazon S3 location where you want to write the
-     * output data. </p> <p> For a PII entity detection job, the output file is plain
-     * text, not a compressed archive. The output file name is the same as the input
-     * file, with <code>.out</code> appended at the end. </p>
-     */
-    inline PiiOutputDataConfig& WithS3Uri(Aws::String&& value) { SetS3Uri(std::move(value)); return *this;}
-
-    /**
-     * <p>When you use the <code>PiiOutputDataConfig</code> object with asynchronous
-     * operations, you specify the Amazon S3 location where you want to write the
-     * output data. </p> <p> For a PII entity detection job, the output file is plain
-     * text, not a compressed archive. The output file name is the same as the input
-     * file, with <code>.out</code> appended at the end. </p>
-     */
-    inline PiiOutputDataConfig& WithS3Uri(const char* value) { SetS3Uri(value); return *this;}
-
-
+    ///@{
     /**
      * <p>ID for the Amazon Web Services Key Management Service (KMS) key that Amazon
      * Comprehend uses to encrypt the output results from an analysis job.</p>
      */
-    inline const Aws::String& GetKmsKeyId() const{ return m_kmsKeyId; }
-
-    /**
-     * <p>ID for the Amazon Web Services Key Management Service (KMS) key that Amazon
-     * Comprehend uses to encrypt the output results from an analysis job.</p>
-     */
+    inline const Aws::String& GetKmsKeyId() const { return m_kmsKeyId; }
     inline bool KmsKeyIdHasBeenSet() const { return m_kmsKeyIdHasBeenSet; }
-
-    /**
-     * <p>ID for the Amazon Web Services Key Management Service (KMS) key that Amazon
-     * Comprehend uses to encrypt the output results from an analysis job.</p>
-     */
-    inline void SetKmsKeyId(const Aws::String& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = value; }
-
-    /**
-     * <p>ID for the Amazon Web Services Key Management Service (KMS) key that Amazon
-     * Comprehend uses to encrypt the output results from an analysis job.</p>
-     */
-    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::move(value); }
-
-    /**
-     * <p>ID for the Amazon Web Services Key Management Service (KMS) key that Amazon
-     * Comprehend uses to encrypt the output results from an analysis job.</p>
-     */
-    inline void SetKmsKeyId(const char* value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId.assign(value); }
-
-    /**
-     * <p>ID for the Amazon Web Services Key Management Service (KMS) key that Amazon
-     * Comprehend uses to encrypt the output results from an analysis job.</p>
-     */
-    inline PiiOutputDataConfig& WithKmsKeyId(const Aws::String& value) { SetKmsKeyId(value); return *this;}
-
-    /**
-     * <p>ID for the Amazon Web Services Key Management Service (KMS) key that Amazon
-     * Comprehend uses to encrypt the output results from an analysis job.</p>
-     */
-    inline PiiOutputDataConfig& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>ID for the Amazon Web Services Key Management Service (KMS) key that Amazon
-     * Comprehend uses to encrypt the output results from an analysis job.</p>
-     */
-    inline PiiOutputDataConfig& WithKmsKeyId(const char* value) { SetKmsKeyId(value); return *this;}
-
+    template<typename KmsKeyIdT = Aws::String>
+    void SetKmsKeyId(KmsKeyIdT&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::forward<KmsKeyIdT>(value); }
+    template<typename KmsKeyIdT = Aws::String>
+    PiiOutputDataConfig& WithKmsKeyId(KmsKeyIdT&& value) { SetKmsKeyId(std::forward<KmsKeyIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_s3Uri;

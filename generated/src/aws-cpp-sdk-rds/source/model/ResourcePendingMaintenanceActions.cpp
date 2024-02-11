@@ -20,15 +20,7 @@ namespace RDS
 namespace Model
 {
 
-ResourcePendingMaintenanceActions::ResourcePendingMaintenanceActions() : 
-    m_resourceIdentifierHasBeenSet(false),
-    m_pendingMaintenanceActionDetailsHasBeenSet(false)
-{
-}
-
-ResourcePendingMaintenanceActions::ResourcePendingMaintenanceActions(const XmlNode& xmlNode) : 
-    m_resourceIdentifierHasBeenSet(false),
-    m_pendingMaintenanceActionDetailsHasBeenSet(false)
+ResourcePendingMaintenanceActions::ResourcePendingMaintenanceActions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ ResourcePendingMaintenanceActions& ResourcePendingMaintenanceActions::operator =
     if(!pendingMaintenanceActionDetailsNode.IsNull())
     {
       XmlNode pendingMaintenanceActionDetailsMember = pendingMaintenanceActionDetailsNode.FirstChild("PendingMaintenanceAction");
+      m_pendingMaintenanceActionDetailsHasBeenSet = !pendingMaintenanceActionDetailsMember.IsNull();
       while(!pendingMaintenanceActionDetailsMember.IsNull())
       {
         m_pendingMaintenanceActionDetails.push_back(pendingMaintenanceActionDetailsMember);
@@ -75,7 +68,7 @@ void ResourcePendingMaintenanceActions::OutputToStream(Aws::OStream& oStream, co
       for(auto& item : m_pendingMaintenanceActionDetails)
       {
         Aws::StringStream pendingMaintenanceActionDetailsSs;
-        pendingMaintenanceActionDetailsSs << location << index << locationValue << ".PendingMaintenanceAction." << pendingMaintenanceActionDetailsIdx++;
+        pendingMaintenanceActionDetailsSs << location << index << locationValue << ".PendingMaintenanceActionDetails.PendingMaintenanceAction." << pendingMaintenanceActionDetailsIdx++;
         item.OutputToStream(oStream, pendingMaintenanceActionDetailsSs.str().c_str());
       }
   }
@@ -94,7 +87,7 @@ void ResourcePendingMaintenanceActions::OutputToStream(Aws::OStream& oStream, co
       for(auto& item : m_pendingMaintenanceActionDetails)
       {
         Aws::StringStream pendingMaintenanceActionDetailsSs;
-        pendingMaintenanceActionDetailsSs << location <<  ".PendingMaintenanceAction." << pendingMaintenanceActionDetailsIdx++;
+        pendingMaintenanceActionDetailsSs << location << ".PendingMaintenanceActionDetails.PendingMaintenanceAction." << pendingMaintenanceActionDetailsIdx++;
         item.OutputToStream(oStream, pendingMaintenanceActionDetailsSs.str().c_str());
       }
   }

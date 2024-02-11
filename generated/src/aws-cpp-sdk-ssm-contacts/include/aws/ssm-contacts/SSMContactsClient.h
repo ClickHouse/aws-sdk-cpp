@@ -30,22 +30,25 @@ namespace SSMContacts
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef SSMContactsClientConfiguration ClientConfigurationType;
+      typedef SSMContactsEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         SSMContactsClient(const Aws::SSMContacts::SSMContactsClientConfiguration& clientConfiguration = Aws::SSMContacts::SSMContactsClientConfiguration(),
-                          std::shared_ptr<SSMContactsEndpointProviderBase> endpointProvider = Aws::MakeShared<SSMContactsEndpointProvider>(ALLOCATION_TAG));
+                          std::shared_ptr<SSMContactsEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         SSMContactsClient(const Aws::Auth::AWSCredentials& credentials,
-                          std::shared_ptr<SSMContactsEndpointProviderBase> endpointProvider = Aws::MakeShared<SSMContactsEndpointProvider>(ALLOCATION_TAG),
+                          std::shared_ptr<SSMContactsEndpointProviderBase> endpointProvider = nullptr,
                           const Aws::SSMContacts::SSMContactsClientConfiguration& clientConfiguration = Aws::SSMContacts::SSMContactsClientConfiguration());
 
        /**
@@ -53,7 +56,7 @@ namespace SSMContacts
         * the default http client factory will be used
         */
         SSMContactsClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                          std::shared_ptr<SSMContactsEndpointProviderBase> endpointProvider = Aws::MakeShared<SSMContactsEndpointProvider>(ALLOCATION_TAG),
+                          std::shared_ptr<SSMContactsEndpointProviderBase> endpointProvider = nullptr,
                           const Aws::SSMContacts::SSMContactsClientConfiguration& clientConfiguration = Aws::SSMContacts::SSMContactsClientConfiguration());
 
 
@@ -266,10 +269,11 @@ namespace SSMContacts
 
         /**
          * <p>To remove a contact from Incident Manager, you can delete the contact.
-         * Deleting a contact removes them from all escalation plans and related response
-         * plans. Deleting an escalation plan removes it from all related response plans.
-         * You will have to recreate the contact and its contact channels before you can
-         * use it again.</p><p><h3>See Also:</h3>   <a
+         * However, deleting a contact does not remove it from escalation plans and related
+         * response plans. Deleting an escalation plan also does not remove it from all
+         * related response plans. To modify an escalation plan, we recommend using the
+         * <a>UpdateContact</a> action to specify a different existing
+         * contact.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ssm-contacts-2021-05-03/DeleteContact">AWS
          * API Reference</a></p>
          */
@@ -294,11 +298,11 @@ namespace SSMContacts
         }
 
         /**
-         * <p>To no longer receive engagements on a contact channel, you can delete the
-         * channel from a contact. Deleting the contact channel removes it from the
-         * contact's engagement plan. If you delete the only contact channel for a contact,
-         * you won't be able to engage that contact during an incident.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>To stop receiving engagements on a contact channel, you can delete the
+         * channel from a contact. Deleting the contact channel does not remove it from the
+         * contact's engagement plan, but the stage that includes the channel will be
+         * ignored. If you delete the only contact channel for a contact, you'll no longer
+         * be able to engage that contact during an incident.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ssm-contacts-2021-05-03/DeleteContactChannel">AWS
          * API Reference</a></p>
          */
@@ -589,13 +593,13 @@ namespace SSMContacts
          * href="http://docs.aws.amazon.com/goto/WebAPI/ssm-contacts-2021-05-03/ListContacts">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListContactsOutcome ListContacts(const Model::ListContactsRequest& request) const;
+        virtual Model::ListContactsOutcome ListContacts(const Model::ListContactsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListContacts that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListContactsRequestT = Model::ListContactsRequest>
-        Model::ListContactsOutcomeCallable ListContactsCallable(const ListContactsRequestT& request) const
+        Model::ListContactsOutcomeCallable ListContactsCallable(const ListContactsRequestT& request = {}) const
         {
             return SubmitCallable(&SSMContactsClient::ListContacts, request);
         }
@@ -604,7 +608,7 @@ namespace SSMContacts
          * An Async wrapper for ListContacts that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListContactsRequestT = Model::ListContactsRequest>
-        void ListContactsAsync(const ListContactsRequestT& request, const ListContactsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListContactsAsync(const ListContactsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListContactsRequestT& request = {}) const
         {
             return SubmitAsync(&SSMContactsClient::ListContacts, request, handler, context);
         }
@@ -615,13 +619,13 @@ namespace SSMContacts
          * href="http://docs.aws.amazon.com/goto/WebAPI/ssm-contacts-2021-05-03/ListEngagements">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListEngagementsOutcome ListEngagements(const Model::ListEngagementsRequest& request) const;
+        virtual Model::ListEngagementsOutcome ListEngagements(const Model::ListEngagementsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListEngagements that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListEngagementsRequestT = Model::ListEngagementsRequest>
-        Model::ListEngagementsOutcomeCallable ListEngagementsCallable(const ListEngagementsRequestT& request) const
+        Model::ListEngagementsOutcomeCallable ListEngagementsCallable(const ListEngagementsRequestT& request = {}) const
         {
             return SubmitCallable(&SSMContactsClient::ListEngagements, request);
         }
@@ -630,7 +634,7 @@ namespace SSMContacts
          * An Async wrapper for ListEngagements that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListEngagementsRequestT = Model::ListEngagementsRequest>
-        void ListEngagementsAsync(const ListEngagementsRequestT& request, const ListEngagementsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListEngagementsAsync(const ListEngagementsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListEngagementsRequestT& request = {}) const
         {
             return SubmitAsync(&SSMContactsClient::ListEngagements, request, handler, context);
         }
@@ -827,13 +831,13 @@ namespace SSMContacts
          * href="http://docs.aws.amazon.com/goto/WebAPI/ssm-contacts-2021-05-03/ListRotations">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListRotationsOutcome ListRotations(const Model::ListRotationsRequest& request) const;
+        virtual Model::ListRotationsOutcome ListRotations(const Model::ListRotationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListRotations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListRotationsRequestT = Model::ListRotationsRequest>
-        Model::ListRotationsOutcomeCallable ListRotationsCallable(const ListRotationsRequestT& request) const
+        Model::ListRotationsOutcomeCallable ListRotationsCallable(const ListRotationsRequestT& request = {}) const
         {
             return SubmitCallable(&SSMContactsClient::ListRotations, request);
         }
@@ -842,14 +846,14 @@ namespace SSMContacts
          * An Async wrapper for ListRotations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListRotationsRequestT = Model::ListRotationsRequest>
-        void ListRotationsAsync(const ListRotationsRequestT& request, const ListRotationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListRotationsAsync(const ListRotationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListRotationsRequestT& request = {}) const
         {
             return SubmitAsync(&SSMContactsClient::ListRotations, request, handler, context);
         }
 
         /**
-         * <p>Lists the tags of an escalation plan or contact.</p><p><h3>See Also:</h3>  
-         * <a
+         * <p>Lists the tags of a contact, escalation plan, rotation, or on-call
+         * schedule.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ssm-contacts-2021-05-03/ListTagsForResource">AWS
          * API Reference</a></p>
          */
@@ -1119,7 +1123,6 @@ namespace SSMContacts
       void init(const SSMContactsClientConfiguration& clientConfiguration);
 
       SSMContactsClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<SSMContactsEndpointProviderBase> m_endpointProvider;
   };
 

@@ -24,7 +24,7 @@ namespace Model
   class CreateContainerServiceDeploymentRequest : public LightsailRequest
   {
   public:
-    AWS_LIGHTSAIL_API CreateContainerServiceDeploymentRequest();
+    AWS_LIGHTSAIL_API CreateContainerServiceDeploymentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,156 +37,47 @@ namespace Model
     AWS_LIGHTSAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the container service for which to create the deployment.</p>
      */
-    inline const Aws::String& GetServiceName() const{ return m_serviceName; }
-
-    /**
-     * <p>The name of the container service for which to create the deployment.</p>
-     */
+    inline const Aws::String& GetServiceName() const { return m_serviceName; }
     inline bool ServiceNameHasBeenSet() const { return m_serviceNameHasBeenSet; }
+    template<typename ServiceNameT = Aws::String>
+    void SetServiceName(ServiceNameT&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::forward<ServiceNameT>(value); }
+    template<typename ServiceNameT = Aws::String>
+    CreateContainerServiceDeploymentRequest& WithServiceName(ServiceNameT&& value) { SetServiceName(std::forward<ServiceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the container service for which to create the deployment.</p>
-     */
-    inline void SetServiceName(const Aws::String& value) { m_serviceNameHasBeenSet = true; m_serviceName = value; }
-
-    /**
-     * <p>The name of the container service for which to create the deployment.</p>
-     */
-    inline void SetServiceName(Aws::String&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::move(value); }
-
-    /**
-     * <p>The name of the container service for which to create the deployment.</p>
-     */
-    inline void SetServiceName(const char* value) { m_serviceNameHasBeenSet = true; m_serviceName.assign(value); }
-
-    /**
-     * <p>The name of the container service for which to create the deployment.</p>
-     */
-    inline CreateContainerServiceDeploymentRequest& WithServiceName(const Aws::String& value) { SetServiceName(value); return *this;}
-
-    /**
-     * <p>The name of the container service for which to create the deployment.</p>
-     */
-    inline CreateContainerServiceDeploymentRequest& WithServiceName(Aws::String&& value) { SetServiceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the container service for which to create the deployment.</p>
-     */
-    inline CreateContainerServiceDeploymentRequest& WithServiceName(const char* value) { SetServiceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that describes the settings of the containers that will be launched
      * on the container service.</p>
      */
-    inline const Aws::Map<Aws::String, Container>& GetContainers() const{ return m_containers; }
-
-    /**
-     * <p>An object that describes the settings of the containers that will be launched
-     * on the container service.</p>
-     */
+    inline const Aws::Map<Aws::String, Container>& GetContainers() const { return m_containers; }
     inline bool ContainersHasBeenSet() const { return m_containersHasBeenSet; }
+    template<typename ContainersT = Aws::Map<Aws::String, Container>>
+    void SetContainers(ContainersT&& value) { m_containersHasBeenSet = true; m_containers = std::forward<ContainersT>(value); }
+    template<typename ContainersT = Aws::Map<Aws::String, Container>>
+    CreateContainerServiceDeploymentRequest& WithContainers(ContainersT&& value) { SetContainers(std::forward<ContainersT>(value)); return *this;}
+    template<typename ContainersKeyT = Aws::String, typename ContainersValueT = Container>
+    CreateContainerServiceDeploymentRequest& AddContainers(ContainersKeyT&& key, ContainersValueT&& value) {
+      m_containersHasBeenSet = true; m_containers.emplace(std::forward<ContainersKeyT>(key), std::forward<ContainersValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>An object that describes the settings of the containers that will be launched
-     * on the container service.</p>
-     */
-    inline void SetContainers(const Aws::Map<Aws::String, Container>& value) { m_containersHasBeenSet = true; m_containers = value; }
-
-    /**
-     * <p>An object that describes the settings of the containers that will be launched
-     * on the container service.</p>
-     */
-    inline void SetContainers(Aws::Map<Aws::String, Container>&& value) { m_containersHasBeenSet = true; m_containers = std::move(value); }
-
-    /**
-     * <p>An object that describes the settings of the containers that will be launched
-     * on the container service.</p>
-     */
-    inline CreateContainerServiceDeploymentRequest& WithContainers(const Aws::Map<Aws::String, Container>& value) { SetContainers(value); return *this;}
-
-    /**
-     * <p>An object that describes the settings of the containers that will be launched
-     * on the container service.</p>
-     */
-    inline CreateContainerServiceDeploymentRequest& WithContainers(Aws::Map<Aws::String, Container>&& value) { SetContainers(std::move(value)); return *this;}
-
-    /**
-     * <p>An object that describes the settings of the containers that will be launched
-     * on the container service.</p>
-     */
-    inline CreateContainerServiceDeploymentRequest& AddContainers(const Aws::String& key, const Container& value) { m_containersHasBeenSet = true; m_containers.emplace(key, value); return *this; }
-
-    /**
-     * <p>An object that describes the settings of the containers that will be launched
-     * on the container service.</p>
-     */
-    inline CreateContainerServiceDeploymentRequest& AddContainers(Aws::String&& key, const Container& value) { m_containersHasBeenSet = true; m_containers.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>An object that describes the settings of the containers that will be launched
-     * on the container service.</p>
-     */
-    inline CreateContainerServiceDeploymentRequest& AddContainers(const Aws::String& key, Container&& value) { m_containersHasBeenSet = true; m_containers.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>An object that describes the settings of the containers that will be launched
-     * on the container service.</p>
-     */
-    inline CreateContainerServiceDeploymentRequest& AddContainers(Aws::String&& key, Container&& value) { m_containersHasBeenSet = true; m_containers.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>An object that describes the settings of the containers that will be launched
-     * on the container service.</p>
-     */
-    inline CreateContainerServiceDeploymentRequest& AddContainers(const char* key, Container&& value) { m_containersHasBeenSet = true; m_containers.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>An object that describes the settings of the containers that will be launched
-     * on the container service.</p>
-     */
-    inline CreateContainerServiceDeploymentRequest& AddContainers(const char* key, const Container& value) { m_containersHasBeenSet = true; m_containers.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>An object that describes the settings of the public endpoint for the
      * container service.</p>
      */
-    inline const EndpointRequest& GetPublicEndpoint() const{ return m_publicEndpoint; }
-
-    /**
-     * <p>An object that describes the settings of the public endpoint for the
-     * container service.</p>
-     */
+    inline const EndpointRequest& GetPublicEndpoint() const { return m_publicEndpoint; }
     inline bool PublicEndpointHasBeenSet() const { return m_publicEndpointHasBeenSet; }
-
-    /**
-     * <p>An object that describes the settings of the public endpoint for the
-     * container service.</p>
-     */
-    inline void SetPublicEndpoint(const EndpointRequest& value) { m_publicEndpointHasBeenSet = true; m_publicEndpoint = value; }
-
-    /**
-     * <p>An object that describes the settings of the public endpoint for the
-     * container service.</p>
-     */
-    inline void SetPublicEndpoint(EndpointRequest&& value) { m_publicEndpointHasBeenSet = true; m_publicEndpoint = std::move(value); }
-
-    /**
-     * <p>An object that describes the settings of the public endpoint for the
-     * container service.</p>
-     */
-    inline CreateContainerServiceDeploymentRequest& WithPublicEndpoint(const EndpointRequest& value) { SetPublicEndpoint(value); return *this;}
-
-    /**
-     * <p>An object that describes the settings of the public endpoint for the
-     * container service.</p>
-     */
-    inline CreateContainerServiceDeploymentRequest& WithPublicEndpoint(EndpointRequest&& value) { SetPublicEndpoint(std::move(value)); return *this;}
-
+    template<typename PublicEndpointT = EndpointRequest>
+    void SetPublicEndpoint(PublicEndpointT&& value) { m_publicEndpointHasBeenSet = true; m_publicEndpoint = std::forward<PublicEndpointT>(value); }
+    template<typename PublicEndpointT = EndpointRequest>
+    CreateContainerServiceDeploymentRequest& WithPublicEndpoint(PublicEndpointT&& value) { SetPublicEndpoint(std::forward<PublicEndpointT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_serviceName;

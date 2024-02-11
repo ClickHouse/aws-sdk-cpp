@@ -28,491 +28,158 @@ namespace Model
 {
 
   /**
-   * <p>Contains information about the ACM certificates and code signing
-   * configuration parameters that can be used by a given code signing
-   * user.</p><p><h3>See Also:</h3>   <a
+   * <p>Contains information about the ACM certificates and signing configuration
+   * parameters that can be used by a given code signing user.</p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/signer-2017-08-25/SigningProfile">AWS
    * API Reference</a></p>
    */
   class SigningProfile
   {
   public:
-    AWS_SIGNER_API SigningProfile();
+    AWS_SIGNER_API SigningProfile() = default;
     AWS_SIGNER_API SigningProfile(Aws::Utils::Json::JsonView jsonValue);
     AWS_SIGNER_API SigningProfile& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SIGNER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the signing profile.</p>
      */
-    inline const Aws::String& GetProfileName() const{ return m_profileName; }
-
-    /**
-     * <p>The name of the signing profile.</p>
-     */
+    inline const Aws::String& GetProfileName() const { return m_profileName; }
     inline bool ProfileNameHasBeenSet() const { return m_profileNameHasBeenSet; }
+    template<typename ProfileNameT = Aws::String>
+    void SetProfileName(ProfileNameT&& value) { m_profileNameHasBeenSet = true; m_profileName = std::forward<ProfileNameT>(value); }
+    template<typename ProfileNameT = Aws::String>
+    SigningProfile& WithProfileName(ProfileNameT&& value) { SetProfileName(std::forward<ProfileNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the signing profile.</p>
-     */
-    inline void SetProfileName(const Aws::String& value) { m_profileNameHasBeenSet = true; m_profileName = value; }
-
-    /**
-     * <p>The name of the signing profile.</p>
-     */
-    inline void SetProfileName(Aws::String&& value) { m_profileNameHasBeenSet = true; m_profileName = std::move(value); }
-
-    /**
-     * <p>The name of the signing profile.</p>
-     */
-    inline void SetProfileName(const char* value) { m_profileNameHasBeenSet = true; m_profileName.assign(value); }
-
-    /**
-     * <p>The name of the signing profile.</p>
-     */
-    inline SigningProfile& WithProfileName(const Aws::String& value) { SetProfileName(value); return *this;}
-
-    /**
-     * <p>The name of the signing profile.</p>
-     */
-    inline SigningProfile& WithProfileName(Aws::String&& value) { SetProfileName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the signing profile.</p>
-     */
-    inline SigningProfile& WithProfileName(const char* value) { SetProfileName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of a signing profile.</p>
      */
-    inline const Aws::String& GetProfileVersion() const{ return m_profileVersion; }
-
-    /**
-     * <p>The version of a signing profile.</p>
-     */
+    inline const Aws::String& GetProfileVersion() const { return m_profileVersion; }
     inline bool ProfileVersionHasBeenSet() const { return m_profileVersionHasBeenSet; }
+    template<typename ProfileVersionT = Aws::String>
+    void SetProfileVersion(ProfileVersionT&& value) { m_profileVersionHasBeenSet = true; m_profileVersion = std::forward<ProfileVersionT>(value); }
+    template<typename ProfileVersionT = Aws::String>
+    SigningProfile& WithProfileVersion(ProfileVersionT&& value) { SetProfileVersion(std::forward<ProfileVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of a signing profile.</p>
-     */
-    inline void SetProfileVersion(const Aws::String& value) { m_profileVersionHasBeenSet = true; m_profileVersion = value; }
-
-    /**
-     * <p>The version of a signing profile.</p>
-     */
-    inline void SetProfileVersion(Aws::String&& value) { m_profileVersionHasBeenSet = true; m_profileVersion = std::move(value); }
-
-    /**
-     * <p>The version of a signing profile.</p>
-     */
-    inline void SetProfileVersion(const char* value) { m_profileVersionHasBeenSet = true; m_profileVersion.assign(value); }
-
-    /**
-     * <p>The version of a signing profile.</p>
-     */
-    inline SigningProfile& WithProfileVersion(const Aws::String& value) { SetProfileVersion(value); return *this;}
-
-    /**
-     * <p>The version of a signing profile.</p>
-     */
-    inline SigningProfile& WithProfileVersion(Aws::String&& value) { SetProfileVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of a signing profile.</p>
-     */
-    inline SigningProfile& WithProfileVersion(const char* value) { SetProfileVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of a signing profile, including the profile version.</p>
      */
-    inline const Aws::String& GetProfileVersionArn() const{ return m_profileVersionArn; }
-
-    /**
-     * <p>The ARN of a signing profile, including the profile version.</p>
-     */
+    inline const Aws::String& GetProfileVersionArn() const { return m_profileVersionArn; }
     inline bool ProfileVersionArnHasBeenSet() const { return m_profileVersionArnHasBeenSet; }
+    template<typename ProfileVersionArnT = Aws::String>
+    void SetProfileVersionArn(ProfileVersionArnT&& value) { m_profileVersionArnHasBeenSet = true; m_profileVersionArn = std::forward<ProfileVersionArnT>(value); }
+    template<typename ProfileVersionArnT = Aws::String>
+    SigningProfile& WithProfileVersionArn(ProfileVersionArnT&& value) { SetProfileVersionArn(std::forward<ProfileVersionArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of a signing profile, including the profile version.</p>
-     */
-    inline void SetProfileVersionArn(const Aws::String& value) { m_profileVersionArnHasBeenSet = true; m_profileVersionArn = value; }
-
-    /**
-     * <p>The ARN of a signing profile, including the profile version.</p>
-     */
-    inline void SetProfileVersionArn(Aws::String&& value) { m_profileVersionArnHasBeenSet = true; m_profileVersionArn = std::move(value); }
-
-    /**
-     * <p>The ARN of a signing profile, including the profile version.</p>
-     */
-    inline void SetProfileVersionArn(const char* value) { m_profileVersionArnHasBeenSet = true; m_profileVersionArn.assign(value); }
-
-    /**
-     * <p>The ARN of a signing profile, including the profile version.</p>
-     */
-    inline SigningProfile& WithProfileVersionArn(const Aws::String& value) { SetProfileVersionArn(value); return *this;}
-
-    /**
-     * <p>The ARN of a signing profile, including the profile version.</p>
-     */
-    inline SigningProfile& WithProfileVersionArn(Aws::String&& value) { SetProfileVersionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of a signing profile, including the profile version.</p>
-     */
-    inline SigningProfile& WithProfileVersionArn(const char* value) { SetProfileVersionArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ACM certificate that is available for use by a signing profile.</p>
      */
-    inline const SigningMaterial& GetSigningMaterial() const{ return m_signingMaterial; }
-
-    /**
-     * <p>The ACM certificate that is available for use by a signing profile.</p>
-     */
+    inline const SigningMaterial& GetSigningMaterial() const { return m_signingMaterial; }
     inline bool SigningMaterialHasBeenSet() const { return m_signingMaterialHasBeenSet; }
+    template<typename SigningMaterialT = SigningMaterial>
+    void SetSigningMaterial(SigningMaterialT&& value) { m_signingMaterialHasBeenSet = true; m_signingMaterial = std::forward<SigningMaterialT>(value); }
+    template<typename SigningMaterialT = SigningMaterial>
+    SigningProfile& WithSigningMaterial(SigningMaterialT&& value) { SetSigningMaterial(std::forward<SigningMaterialT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ACM certificate that is available for use by a signing profile.</p>
-     */
-    inline void SetSigningMaterial(const SigningMaterial& value) { m_signingMaterialHasBeenSet = true; m_signingMaterial = value; }
-
-    /**
-     * <p>The ACM certificate that is available for use by a signing profile.</p>
-     */
-    inline void SetSigningMaterial(SigningMaterial&& value) { m_signingMaterialHasBeenSet = true; m_signingMaterial = std::move(value); }
-
-    /**
-     * <p>The ACM certificate that is available for use by a signing profile.</p>
-     */
-    inline SigningProfile& WithSigningMaterial(const SigningMaterial& value) { SetSigningMaterial(value); return *this;}
-
-    /**
-     * <p>The ACM certificate that is available for use by a signing profile.</p>
-     */
-    inline SigningProfile& WithSigningMaterial(SigningMaterial&& value) { SetSigningMaterial(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The validity period for a signing job created using this signing profile.</p>
      */
-    inline const SignatureValidityPeriod& GetSignatureValidityPeriod() const{ return m_signatureValidityPeriod; }
-
-    /**
-     * <p>The validity period for a signing job created using this signing profile.</p>
-     */
+    inline const SignatureValidityPeriod& GetSignatureValidityPeriod() const { return m_signatureValidityPeriod; }
     inline bool SignatureValidityPeriodHasBeenSet() const { return m_signatureValidityPeriodHasBeenSet; }
+    template<typename SignatureValidityPeriodT = SignatureValidityPeriod>
+    void SetSignatureValidityPeriod(SignatureValidityPeriodT&& value) { m_signatureValidityPeriodHasBeenSet = true; m_signatureValidityPeriod = std::forward<SignatureValidityPeriodT>(value); }
+    template<typename SignatureValidityPeriodT = SignatureValidityPeriod>
+    SigningProfile& WithSignatureValidityPeriod(SignatureValidityPeriodT&& value) { SetSignatureValidityPeriod(std::forward<SignatureValidityPeriodT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The validity period for a signing job created using this signing profile.</p>
-     */
-    inline void SetSignatureValidityPeriod(const SignatureValidityPeriod& value) { m_signatureValidityPeriodHasBeenSet = true; m_signatureValidityPeriod = value; }
-
-    /**
-     * <p>The validity period for a signing job created using this signing profile.</p>
-     */
-    inline void SetSignatureValidityPeriod(SignatureValidityPeriod&& value) { m_signatureValidityPeriodHasBeenSet = true; m_signatureValidityPeriod = std::move(value); }
-
-    /**
-     * <p>The validity period for a signing job created using this signing profile.</p>
-     */
-    inline SigningProfile& WithSignatureValidityPeriod(const SignatureValidityPeriod& value) { SetSignatureValidityPeriod(value); return *this;}
-
-    /**
-     * <p>The validity period for a signing job created using this signing profile.</p>
-     */
-    inline SigningProfile& WithSignatureValidityPeriod(SignatureValidityPeriod&& value) { SetSignatureValidityPeriod(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of a platform that is available for use by a signing profile.</p>
      */
-    inline const Aws::String& GetPlatformId() const{ return m_platformId; }
-
-    /**
-     * <p>The ID of a platform that is available for use by a signing profile.</p>
-     */
+    inline const Aws::String& GetPlatformId() const { return m_platformId; }
     inline bool PlatformIdHasBeenSet() const { return m_platformIdHasBeenSet; }
+    template<typename PlatformIdT = Aws::String>
+    void SetPlatformId(PlatformIdT&& value) { m_platformIdHasBeenSet = true; m_platformId = std::forward<PlatformIdT>(value); }
+    template<typename PlatformIdT = Aws::String>
+    SigningProfile& WithPlatformId(PlatformIdT&& value) { SetPlatformId(std::forward<PlatformIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of a platform that is available for use by a signing profile.</p>
-     */
-    inline void SetPlatformId(const Aws::String& value) { m_platformIdHasBeenSet = true; m_platformId = value; }
-
-    /**
-     * <p>The ID of a platform that is available for use by a signing profile.</p>
-     */
-    inline void SetPlatformId(Aws::String&& value) { m_platformIdHasBeenSet = true; m_platformId = std::move(value); }
-
-    /**
-     * <p>The ID of a platform that is available for use by a signing profile.</p>
-     */
-    inline void SetPlatformId(const char* value) { m_platformIdHasBeenSet = true; m_platformId.assign(value); }
-
-    /**
-     * <p>The ID of a platform that is available for use by a signing profile.</p>
-     */
-    inline SigningProfile& WithPlatformId(const Aws::String& value) { SetPlatformId(value); return *this;}
-
-    /**
-     * <p>The ID of a platform that is available for use by a signing profile.</p>
-     */
-    inline SigningProfile& WithPlatformId(Aws::String&& value) { SetPlatformId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of a platform that is available for use by a signing profile.</p>
-     */
-    inline SigningProfile& WithPlatformId(const char* value) { SetPlatformId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the signing platform.</p>
      */
-    inline const Aws::String& GetPlatformDisplayName() const{ return m_platformDisplayName; }
-
-    /**
-     * <p>The name of the signing platform.</p>
-     */
+    inline const Aws::String& GetPlatformDisplayName() const { return m_platformDisplayName; }
     inline bool PlatformDisplayNameHasBeenSet() const { return m_platformDisplayNameHasBeenSet; }
+    template<typename PlatformDisplayNameT = Aws::String>
+    void SetPlatformDisplayName(PlatformDisplayNameT&& value) { m_platformDisplayNameHasBeenSet = true; m_platformDisplayName = std::forward<PlatformDisplayNameT>(value); }
+    template<typename PlatformDisplayNameT = Aws::String>
+    SigningProfile& WithPlatformDisplayName(PlatformDisplayNameT&& value) { SetPlatformDisplayName(std::forward<PlatformDisplayNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the signing platform.</p>
+     * <p>The parameters that are available for use by a Signer user.</p>
      */
-    inline void SetPlatformDisplayName(const Aws::String& value) { m_platformDisplayNameHasBeenSet = true; m_platformDisplayName = value; }
-
-    /**
-     * <p>The name of the signing platform.</p>
-     */
-    inline void SetPlatformDisplayName(Aws::String&& value) { m_platformDisplayNameHasBeenSet = true; m_platformDisplayName = std::move(value); }
-
-    /**
-     * <p>The name of the signing platform.</p>
-     */
-    inline void SetPlatformDisplayName(const char* value) { m_platformDisplayNameHasBeenSet = true; m_platformDisplayName.assign(value); }
-
-    /**
-     * <p>The name of the signing platform.</p>
-     */
-    inline SigningProfile& WithPlatformDisplayName(const Aws::String& value) { SetPlatformDisplayName(value); return *this;}
-
-    /**
-     * <p>The name of the signing platform.</p>
-     */
-    inline SigningProfile& WithPlatformDisplayName(Aws::String&& value) { SetPlatformDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the signing platform.</p>
-     */
-    inline SigningProfile& WithPlatformDisplayName(const char* value) { SetPlatformDisplayName(value); return *this;}
-
-
-    /**
-     * <p>The parameters that are available for use by a code signing user.</p>
-     */
-    inline const Aws::Map<Aws::String, Aws::String>& GetSigningParameters() const{ return m_signingParameters; }
-
-    /**
-     * <p>The parameters that are available for use by a code signing user.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetSigningParameters() const { return m_signingParameters; }
     inline bool SigningParametersHasBeenSet() const { return m_signingParametersHasBeenSet; }
+    template<typename SigningParametersT = Aws::Map<Aws::String, Aws::String>>
+    void SetSigningParameters(SigningParametersT&& value) { m_signingParametersHasBeenSet = true; m_signingParameters = std::forward<SigningParametersT>(value); }
+    template<typename SigningParametersT = Aws::Map<Aws::String, Aws::String>>
+    SigningProfile& WithSigningParameters(SigningParametersT&& value) { SetSigningParameters(std::forward<SigningParametersT>(value)); return *this;}
+    template<typename SigningParametersKeyT = Aws::String, typename SigningParametersValueT = Aws::String>
+    SigningProfile& AddSigningParameters(SigningParametersKeyT&& key, SigningParametersValueT&& value) {
+      m_signingParametersHasBeenSet = true; m_signingParameters.emplace(std::forward<SigningParametersKeyT>(key), std::forward<SigningParametersValueT>(value)); return *this;
+    }
+    ///@}
 
+    ///@{
     /**
-     * <p>The parameters that are available for use by a code signing user.</p>
+     * <p>The status of a signing profile.</p>
      */
-    inline void SetSigningParameters(const Aws::Map<Aws::String, Aws::String>& value) { m_signingParametersHasBeenSet = true; m_signingParameters = value; }
-
-    /**
-     * <p>The parameters that are available for use by a code signing user.</p>
-     */
-    inline void SetSigningParameters(Aws::Map<Aws::String, Aws::String>&& value) { m_signingParametersHasBeenSet = true; m_signingParameters = std::move(value); }
-
-    /**
-     * <p>The parameters that are available for use by a code signing user.</p>
-     */
-    inline SigningProfile& WithSigningParameters(const Aws::Map<Aws::String, Aws::String>& value) { SetSigningParameters(value); return *this;}
-
-    /**
-     * <p>The parameters that are available for use by a code signing user.</p>
-     */
-    inline SigningProfile& WithSigningParameters(Aws::Map<Aws::String, Aws::String>&& value) { SetSigningParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>The parameters that are available for use by a code signing user.</p>
-     */
-    inline SigningProfile& AddSigningParameters(const Aws::String& key, const Aws::String& value) { m_signingParametersHasBeenSet = true; m_signingParameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>The parameters that are available for use by a code signing user.</p>
-     */
-    inline SigningProfile& AddSigningParameters(Aws::String&& key, const Aws::String& value) { m_signingParametersHasBeenSet = true; m_signingParameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The parameters that are available for use by a code signing user.</p>
-     */
-    inline SigningProfile& AddSigningParameters(const Aws::String& key, Aws::String&& value) { m_signingParametersHasBeenSet = true; m_signingParameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The parameters that are available for use by a code signing user.</p>
-     */
-    inline SigningProfile& AddSigningParameters(Aws::String&& key, Aws::String&& value) { m_signingParametersHasBeenSet = true; m_signingParameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The parameters that are available for use by a code signing user.</p>
-     */
-    inline SigningProfile& AddSigningParameters(const char* key, Aws::String&& value) { m_signingParametersHasBeenSet = true; m_signingParameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The parameters that are available for use by a code signing user.</p>
-     */
-    inline SigningProfile& AddSigningParameters(Aws::String&& key, const char* value) { m_signingParametersHasBeenSet = true; m_signingParameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The parameters that are available for use by a code signing user.</p>
-     */
-    inline SigningProfile& AddSigningParameters(const char* key, const char* value) { m_signingParametersHasBeenSet = true; m_signingParameters.emplace(key, value); return *this; }
-
-
-    /**
-     * <p>The status of a code signing profile.</p>
-     */
-    inline const SigningProfileStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of a code signing profile.</p>
-     */
+    inline SigningProfileStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(SigningProfileStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline SigningProfile& WithStatus(SigningProfileStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of a code signing profile.</p>
-     */
-    inline void SetStatus(const SigningProfileStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of a code signing profile.</p>
-     */
-    inline void SetStatus(SigningProfileStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of a code signing profile.</p>
-     */
-    inline SigningProfile& WithStatus(const SigningProfileStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of a code signing profile.</p>
-     */
-    inline SigningProfile& WithStatus(SigningProfileStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) for the signing profile.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the signing profile.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    SigningProfile& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) for the signing profile.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the signing profile.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the signing profile.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the signing profile.</p>
-     */
-    inline SigningProfile& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the signing profile.</p>
-     */
-    inline SigningProfile& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the signing profile.</p>
-     */
-    inline SigningProfile& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of tags associated with the signing profile.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of tags associated with the signing profile.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>A list of tags associated with the signing profile.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of tags associated with the signing profile.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of tags associated with the signing profile.</p>
-     */
-    inline SigningProfile& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of tags associated with the signing profile.</p>
-     */
-    inline SigningProfile& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of tags associated with the signing profile.</p>
-     */
-    inline SigningProfile& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>A list of tags associated with the signing profile.</p>
-     */
-    inline SigningProfile& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A list of tags associated with the signing profile.</p>
-     */
-    inline SigningProfile& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of tags associated with the signing profile.</p>
-     */
-    inline SigningProfile& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A list of tags associated with the signing profile.</p>
-     */
-    inline SigningProfile& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of tags associated with the signing profile.</p>
-     */
-    inline SigningProfile& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A list of tags associated with the signing profile.</p>
-     */
-    inline SigningProfile& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    SigningProfile& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    SigningProfile& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_profileName;
@@ -539,7 +206,7 @@ namespace Model
     Aws::Map<Aws::String, Aws::String> m_signingParameters;
     bool m_signingParametersHasBeenSet = false;
 
-    SigningProfileStatus m_status;
+    SigningProfileStatus m_status{SigningProfileStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_arn;

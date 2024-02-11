@@ -11,10 +11,6 @@
 
 namespace Aws
 {
-namespace Http
-{
-    class URI;
-} //namespace Http
 namespace SecurityLake
 {
 namespace Model
@@ -25,7 +21,7 @@ namespace Model
   class DeleteSubscriberRequest : public SecurityLakeRequest
   {
   public:
-    AWS_SECURITYLAKE_API DeleteSubscriberRequest();
+    AWS_SECURITYLAKE_API DeleteSubscriberRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,61 +31,23 @@ namespace Model
 
     AWS_SECURITYLAKE_API Aws::String SerializePayload() const override;
 
-    AWS_SECURITYLAKE_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
-
+    ///@{
     /**
      * <p>A value created by Security Lake that uniquely identifies your
-     * <code>DeleteSubscriber</code> API request. </p>
+     * <code>DeleteSubscriber</code> API request.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>A value created by Security Lake that uniquely identifies your
-     * <code>DeleteSubscriber</code> API request. </p>
-     */
-    inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
-
-    /**
-     * <p>A value created by Security Lake that uniquely identifies your
-     * <code>DeleteSubscriber</code> API request. </p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>A value created by Security Lake that uniquely identifies your
-     * <code>DeleteSubscriber</code> API request. </p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>A value created by Security Lake that uniquely identifies your
-     * <code>DeleteSubscriber</code> API request. </p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>A value created by Security Lake that uniquely identifies your
-     * <code>DeleteSubscriber</code> API request. </p>
-     */
-    inline DeleteSubscriberRequest& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>A value created by Security Lake that uniquely identifies your
-     * <code>DeleteSubscriber</code> API request. </p>
-     */
-    inline DeleteSubscriberRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>A value created by Security Lake that uniquely identifies your
-     * <code>DeleteSubscriber</code> API request. </p>
-     */
-    inline DeleteSubscriberRequest& WithId(const char* value) { SetId(value); return *this;}
-
+    inline const Aws::String& GetSubscriberId() const { return m_subscriberId; }
+    inline bool SubscriberIdHasBeenSet() const { return m_subscriberIdHasBeenSet; }
+    template<typename SubscriberIdT = Aws::String>
+    void SetSubscriberId(SubscriberIdT&& value) { m_subscriberIdHasBeenSet = true; m_subscriberId = std::forward<SubscriberIdT>(value); }
+    template<typename SubscriberIdT = Aws::String>
+    DeleteSubscriberRequest& WithSubscriberId(SubscriberIdT&& value) { SetSubscriberId(std::forward<SubscriberIdT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_id;
-    bool m_idHasBeenSet = false;
+    Aws::String m_subscriberId;
+    bool m_subscriberIdHasBeenSet = false;
   };
 
 } // namespace Model

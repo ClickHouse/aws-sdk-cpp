@@ -12,19 +12,6 @@ using namespace Aws::EKS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateAddonRequest::UpdateAddonRequest() : 
-    m_clusterNameHasBeenSet(false),
-    m_addonNameHasBeenSet(false),
-    m_addonVersionHasBeenSet(false),
-    m_serviceAccountRoleArnHasBeenSet(false),
-    m_resolveConflicts(ResolveConflicts::NOT_SET),
-    m_resolveConflictsHasBeenSet(false),
-    m_clientRequestToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientRequestTokenHasBeenSet(true),
-    m_configurationValuesHasBeenSet(false)
-{
-}
-
 Aws::String UpdateAddonRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -55,6 +42,17 @@ Aws::String UpdateAddonRequest::SerializePayload() const
   if(m_configurationValuesHasBeenSet)
   {
    payload.WithString("configurationValues", m_configurationValues);
+
+  }
+
+  if(m_podIdentityAssociationsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> podIdentityAssociationsJsonList(m_podIdentityAssociations.size());
+   for(unsigned podIdentityAssociationsIndex = 0; podIdentityAssociationsIndex < podIdentityAssociationsJsonList.GetLength(); ++podIdentityAssociationsIndex)
+   {
+     podIdentityAssociationsJsonList[podIdentityAssociationsIndex].AsObject(m_podIdentityAssociations[podIdentityAssociationsIndex].Jsonize());
+   }
+   payload.WithArray("podIdentityAssociations", std::move(podIdentityAssociationsJsonList));
 
   }
 

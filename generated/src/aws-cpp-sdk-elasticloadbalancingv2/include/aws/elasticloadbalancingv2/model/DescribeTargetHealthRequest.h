@@ -9,6 +9,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/elasticloadbalancingv2/model/TargetDescription.h>
+#include <aws/elasticloadbalancingv2/model/DescribeTargetHealthInputIncludeEnum.h>
 #include <utility>
 
 namespace Aws
@@ -23,7 +24,7 @@ namespace Model
   class DescribeTargetHealthRequest : public ElasticLoadBalancingv2Request
   {
   public:
-    AWS_ELASTICLOADBALANCINGV2_API DescribeTargetHealthRequest();
+    AWS_ELASTICLOADBALANCINGV2_API DescribeTargetHealthRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,87 +39,44 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the target group.</p>
      */
-    inline const Aws::String& GetTargetGroupArn() const{ return m_targetGroupArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the target group.</p>
-     */
+    inline const Aws::String& GetTargetGroupArn() const { return m_targetGroupArn; }
     inline bool TargetGroupArnHasBeenSet() const { return m_targetGroupArnHasBeenSet; }
+    template<typename TargetGroupArnT = Aws::String>
+    void SetTargetGroupArn(TargetGroupArnT&& value) { m_targetGroupArnHasBeenSet = true; m_targetGroupArn = std::forward<TargetGroupArnT>(value); }
+    template<typename TargetGroupArnT = Aws::String>
+    DescribeTargetHealthRequest& WithTargetGroupArn(TargetGroupArnT&& value) { SetTargetGroupArn(std::forward<TargetGroupArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the target group.</p>
-     */
-    inline void SetTargetGroupArn(const Aws::String& value) { m_targetGroupArnHasBeenSet = true; m_targetGroupArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the target group.</p>
-     */
-    inline void SetTargetGroupArn(Aws::String&& value) { m_targetGroupArnHasBeenSet = true; m_targetGroupArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the target group.</p>
-     */
-    inline void SetTargetGroupArn(const char* value) { m_targetGroupArnHasBeenSet = true; m_targetGroupArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the target group.</p>
-     */
-    inline DescribeTargetHealthRequest& WithTargetGroupArn(const Aws::String& value) { SetTargetGroupArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the target group.</p>
-     */
-    inline DescribeTargetHealthRequest& WithTargetGroupArn(Aws::String&& value) { SetTargetGroupArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the target group.</p>
-     */
-    inline DescribeTargetHealthRequest& WithTargetGroupArn(const char* value) { SetTargetGroupArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The targets.</p>
      */
-    inline const Aws::Vector<TargetDescription>& GetTargets() const{ return m_targets; }
-
-    /**
-     * <p>The targets.</p>
-     */
+    inline const Aws::Vector<TargetDescription>& GetTargets() const { return m_targets; }
     inline bool TargetsHasBeenSet() const { return m_targetsHasBeenSet; }
+    template<typename TargetsT = Aws::Vector<TargetDescription>>
+    void SetTargets(TargetsT&& value) { m_targetsHasBeenSet = true; m_targets = std::forward<TargetsT>(value); }
+    template<typename TargetsT = Aws::Vector<TargetDescription>>
+    DescribeTargetHealthRequest& WithTargets(TargetsT&& value) { SetTargets(std::forward<TargetsT>(value)); return *this;}
+    template<typename TargetsT = TargetDescription>
+    DescribeTargetHealthRequest& AddTargets(TargetsT&& value) { m_targetsHasBeenSet = true; m_targets.emplace_back(std::forward<TargetsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The targets.</p>
+     * <p>Used to include anomaly detection information.</p>
      */
-    inline void SetTargets(const Aws::Vector<TargetDescription>& value) { m_targetsHasBeenSet = true; m_targets = value; }
-
-    /**
-     * <p>The targets.</p>
-     */
-    inline void SetTargets(Aws::Vector<TargetDescription>&& value) { m_targetsHasBeenSet = true; m_targets = std::move(value); }
-
-    /**
-     * <p>The targets.</p>
-     */
-    inline DescribeTargetHealthRequest& WithTargets(const Aws::Vector<TargetDescription>& value) { SetTargets(value); return *this;}
-
-    /**
-     * <p>The targets.</p>
-     */
-    inline DescribeTargetHealthRequest& WithTargets(Aws::Vector<TargetDescription>&& value) { SetTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>The targets.</p>
-     */
-    inline DescribeTargetHealthRequest& AddTargets(const TargetDescription& value) { m_targetsHasBeenSet = true; m_targets.push_back(value); return *this; }
-
-    /**
-     * <p>The targets.</p>
-     */
-    inline DescribeTargetHealthRequest& AddTargets(TargetDescription&& value) { m_targetsHasBeenSet = true; m_targets.push_back(std::move(value)); return *this; }
-
+    inline const Aws::Vector<DescribeTargetHealthInputIncludeEnum>& GetInclude() const { return m_include; }
+    inline bool IncludeHasBeenSet() const { return m_includeHasBeenSet; }
+    template<typename IncludeT = Aws::Vector<DescribeTargetHealthInputIncludeEnum>>
+    void SetInclude(IncludeT&& value) { m_includeHasBeenSet = true; m_include = std::forward<IncludeT>(value); }
+    template<typename IncludeT = Aws::Vector<DescribeTargetHealthInputIncludeEnum>>
+    DescribeTargetHealthRequest& WithInclude(IncludeT&& value) { SetInclude(std::forward<IncludeT>(value)); return *this;}
+    inline DescribeTargetHealthRequest& AddInclude(DescribeTargetHealthInputIncludeEnum value) { m_includeHasBeenSet = true; m_include.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::String m_targetGroupArn;
@@ -126,6 +84,9 @@ namespace Model
 
     Aws::Vector<TargetDescription> m_targets;
     bool m_targetsHasBeenSet = false;
+
+    Aws::Vector<DescribeTargetHealthInputIncludeEnum> m_include;
+    bool m_includeHasBeenSet = false;
   };
 
 } // namespace Model

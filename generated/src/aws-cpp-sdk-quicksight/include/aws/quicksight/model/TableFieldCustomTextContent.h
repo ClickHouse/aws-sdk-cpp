@@ -33,97 +33,37 @@ namespace Model
   class TableFieldCustomTextContent
   {
   public:
-    AWS_QUICKSIGHT_API TableFieldCustomTextContent();
+    AWS_QUICKSIGHT_API TableFieldCustomTextContent() = default;
     AWS_QUICKSIGHT_API TableFieldCustomTextContent(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API TableFieldCustomTextContent& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The string value of the custom text content for the table URL link
      * content.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The string value of the custom text content for the table URL link
-     * content.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    TableFieldCustomTextContent& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The string value of the custom text content for the table URL link
-     * content.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The string value of the custom text content for the table URL link
-     * content.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The string value of the custom text content for the table URL link
-     * content.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The string value of the custom text content for the table URL link
-     * content.</p>
-     */
-    inline TableFieldCustomTextContent& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The string value of the custom text content for the table URL link
-     * content.</p>
-     */
-    inline TableFieldCustomTextContent& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The string value of the custom text content for the table URL link
-     * content.</p>
-     */
-    inline TableFieldCustomTextContent& WithValue(const char* value) { SetValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The font configuration of the custom text content for the table URL link
      * content.</p>
      */
-    inline const FontConfiguration& GetFontConfiguration() const{ return m_fontConfiguration; }
-
-    /**
-     * <p>The font configuration of the custom text content for the table URL link
-     * content.</p>
-     */
+    inline const FontConfiguration& GetFontConfiguration() const { return m_fontConfiguration; }
     inline bool FontConfigurationHasBeenSet() const { return m_fontConfigurationHasBeenSet; }
-
-    /**
-     * <p>The font configuration of the custom text content for the table URL link
-     * content.</p>
-     */
-    inline void SetFontConfiguration(const FontConfiguration& value) { m_fontConfigurationHasBeenSet = true; m_fontConfiguration = value; }
-
-    /**
-     * <p>The font configuration of the custom text content for the table URL link
-     * content.</p>
-     */
-    inline void SetFontConfiguration(FontConfiguration&& value) { m_fontConfigurationHasBeenSet = true; m_fontConfiguration = std::move(value); }
-
-    /**
-     * <p>The font configuration of the custom text content for the table URL link
-     * content.</p>
-     */
-    inline TableFieldCustomTextContent& WithFontConfiguration(const FontConfiguration& value) { SetFontConfiguration(value); return *this;}
-
-    /**
-     * <p>The font configuration of the custom text content for the table URL link
-     * content.</p>
-     */
-    inline TableFieldCustomTextContent& WithFontConfiguration(FontConfiguration&& value) { SetFontConfiguration(std::move(value)); return *this;}
-
+    template<typename FontConfigurationT = FontConfiguration>
+    void SetFontConfiguration(FontConfigurationT&& value) { m_fontConfigurationHasBeenSet = true; m_fontConfiguration = std::forward<FontConfigurationT>(value); }
+    template<typename FontConfigurationT = FontConfiguration>
+    TableFieldCustomTextContent& WithFontConfiguration(FontConfigurationT&& value) { SetFontConfiguration(std::forward<FontConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_value;

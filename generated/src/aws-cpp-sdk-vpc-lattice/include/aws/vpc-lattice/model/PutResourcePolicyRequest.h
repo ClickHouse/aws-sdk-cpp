@@ -21,7 +21,7 @@ namespace Model
   class PutResourcePolicyRequest : public VPCLatticeRequest
   {
   public:
-    AWS_VPCLATTICE_API PutResourcePolicyRequest();
+    AWS_VPCLATTICE_API PutResourcePolicyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,103 +32,31 @@ namespace Model
     AWS_VPCLATTICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>An IAM policy. The policy string in JSON must not contain newlines or blank
      * lines.</p>
      */
-    inline const Aws::String& GetPolicy() const{ return m_policy; }
-
-    /**
-     * <p>An IAM policy. The policy string in JSON must not contain newlines or blank
-     * lines.</p>
-     */
+    inline const Aws::String& GetPolicy() const { return m_policy; }
     inline bool PolicyHasBeenSet() const { return m_policyHasBeenSet; }
+    template<typename PolicyT = Aws::String>
+    void SetPolicy(PolicyT&& value) { m_policyHasBeenSet = true; m_policy = std::forward<PolicyT>(value); }
+    template<typename PolicyT = Aws::String>
+    PutResourcePolicyRequest& WithPolicy(PolicyT&& value) { SetPolicy(std::forward<PolicyT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>An IAM policy. The policy string in JSON must not contain newlines or blank
-     * lines.</p>
+     * <p>The ID or ARN of the service network or service for which the policy is
+     * created.</p>
      */
-    inline void SetPolicy(const Aws::String& value) { m_policyHasBeenSet = true; m_policy = value; }
-
-    /**
-     * <p>An IAM policy. The policy string in JSON must not contain newlines or blank
-     * lines.</p>
-     */
-    inline void SetPolicy(Aws::String&& value) { m_policyHasBeenSet = true; m_policy = std::move(value); }
-
-    /**
-     * <p>An IAM policy. The policy string in JSON must not contain newlines or blank
-     * lines.</p>
-     */
-    inline void SetPolicy(const char* value) { m_policyHasBeenSet = true; m_policy.assign(value); }
-
-    /**
-     * <p>An IAM policy. The policy string in JSON must not contain newlines or blank
-     * lines.</p>
-     */
-    inline PutResourcePolicyRequest& WithPolicy(const Aws::String& value) { SetPolicy(value); return *this;}
-
-    /**
-     * <p>An IAM policy. The policy string in JSON must not contain newlines or blank
-     * lines.</p>
-     */
-    inline PutResourcePolicyRequest& WithPolicy(Aws::String&& value) { SetPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>An IAM policy. The policy string in JSON must not contain newlines or blank
-     * lines.</p>
-     */
-    inline PutResourcePolicyRequest& WithPolicy(const char* value) { SetPolicy(value); return *this;}
-
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the service network or service for
-     * which the policy is created.</p>
-     */
-    inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the service network or service for
-     * which the policy is created.</p>
-     */
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
     inline bool ResourceArnHasBeenSet() const { return m_resourceArnHasBeenSet; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the service network or service for
-     * which the policy is created.</p>
-     */
-    inline void SetResourceArn(const Aws::String& value) { m_resourceArnHasBeenSet = true; m_resourceArn = value; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the service network or service for
-     * which the policy is created.</p>
-     */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::move(value); }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the service network or service for
-     * which the policy is created.</p>
-     */
-    inline void SetResourceArn(const char* value) { m_resourceArnHasBeenSet = true; m_resourceArn.assign(value); }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the service network or service for
-     * which the policy is created.</p>
-     */
-    inline PutResourcePolicyRequest& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the service network or service for
-     * which the policy is created.</p>
-     */
-    inline PutResourcePolicyRequest& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the service network or service for
-     * which the policy is created.</p>
-     */
-    inline PutResourcePolicyRequest& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
-
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    PutResourcePolicyRequest& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_policy;

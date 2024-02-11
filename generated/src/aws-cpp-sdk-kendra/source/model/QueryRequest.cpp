@@ -12,26 +12,6 @@ using namespace Aws::kendra::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-QueryRequest::QueryRequest() : 
-    m_indexIdHasBeenSet(false),
-    m_queryTextHasBeenSet(false),
-    m_attributeFilterHasBeenSet(false),
-    m_facetsHasBeenSet(false),
-    m_requestedDocumentAttributesHasBeenSet(false),
-    m_queryResultTypeFilter(QueryResultType::NOT_SET),
-    m_queryResultTypeFilterHasBeenSet(false),
-    m_documentRelevanceOverrideConfigurationsHasBeenSet(false),
-    m_pageNumber(0),
-    m_pageNumberHasBeenSet(false),
-    m_pageSize(0),
-    m_pageSizeHasBeenSet(false),
-    m_sortingConfigurationHasBeenSet(false),
-    m_userContextHasBeenSet(false),
-    m_visitorIdHasBeenSet(false),
-    m_spellCorrectionConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String QueryRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -110,6 +90,17 @@ Aws::String QueryRequest::SerializePayload() const
 
   }
 
+  if(m_sortingConfigurationsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> sortingConfigurationsJsonList(m_sortingConfigurations.size());
+   for(unsigned sortingConfigurationsIndex = 0; sortingConfigurationsIndex < sortingConfigurationsJsonList.GetLength(); ++sortingConfigurationsIndex)
+   {
+     sortingConfigurationsJsonList[sortingConfigurationsIndex].AsObject(m_sortingConfigurations[sortingConfigurationsIndex].Jsonize());
+   }
+   payload.WithArray("SortingConfigurations", std::move(sortingConfigurationsJsonList));
+
+  }
+
   if(m_userContextHasBeenSet)
   {
    payload.WithObject("UserContext", m_userContext.Jsonize());
@@ -125,6 +116,12 @@ Aws::String QueryRequest::SerializePayload() const
   if(m_spellCorrectionConfigurationHasBeenSet)
   {
    payload.WithObject("SpellCorrectionConfiguration", m_spellCorrectionConfiguration.Jsonize());
+
+  }
+
+  if(m_collapseConfigurationHasBeenSet)
+  {
+   payload.WithObject("CollapseConfiguration", m_collapseConfiguration.Jsonize());
 
   }
 

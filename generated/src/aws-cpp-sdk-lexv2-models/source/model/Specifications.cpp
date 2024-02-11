@@ -18,15 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-Specifications::Specifications() : 
-    m_slotTypeIdHasBeenSet(false),
-    m_valueElicitationSettingHasBeenSet(false)
-{
-}
-
-Specifications::Specifications(JsonView jsonValue) : 
-    m_slotTypeIdHasBeenSet(false),
-    m_valueElicitationSettingHasBeenSet(false)
+Specifications::Specifications(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Specifications& Specifications::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("slotTypeId"))
   {
     m_slotTypeId = jsonValue.GetString("slotTypeId");
-
     m_slotTypeIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("valueElicitationSetting"))
   {
     m_valueElicitationSetting = jsonValue.GetObject("valueElicitationSetting");
-
     m_valueElicitationSettingHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -10,15 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-PurchaseReservedDBInstancesOfferingRequest::PurchaseReservedDBInstancesOfferingRequest() : 
-    m_reservedDBInstancesOfferingIdHasBeenSet(false),
-    m_reservedDBInstanceIdHasBeenSet(false),
-    m_dBInstanceCount(0),
-    m_dBInstanceCountHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String PurchaseReservedDBInstancesOfferingRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -40,11 +31,18 @@ Aws::String PurchaseReservedDBInstancesOfferingRequest::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 

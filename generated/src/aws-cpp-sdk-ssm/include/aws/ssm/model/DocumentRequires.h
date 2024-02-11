@@ -32,199 +32,62 @@ namespace Model
   class DocumentRequires
   {
   public:
-    AWS_SSM_API DocumentRequires();
+    AWS_SSM_API DocumentRequires() = default;
     AWS_SSM_API DocumentRequires(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API DocumentRequires& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the required SSM document. The name can be an Amazon Resource
      * Name (ARN).</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the required SSM document. The name can be an Amazon Resource
-     * Name (ARN).</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DocumentRequires& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the required SSM document. The name can be an Amazon Resource
-     * Name (ARN).</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the required SSM document. The name can be an Amazon Resource
-     * Name (ARN).</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the required SSM document. The name can be an Amazon Resource
-     * Name (ARN).</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the required SSM document. The name can be an Amazon Resource
-     * Name (ARN).</p>
-     */
-    inline DocumentRequires& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the required SSM document. The name can be an Amazon Resource
-     * Name (ARN).</p>
-     */
-    inline DocumentRequires& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the required SSM document. The name can be an Amazon Resource
-     * Name (ARN).</p>
-     */
-    inline DocumentRequires& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The document version required by the current document.</p>
      */
-    inline const Aws::String& GetVersion() const{ return m_version; }
-
-    /**
-     * <p>The document version required by the current document.</p>
-     */
+    inline const Aws::String& GetVersion() const { return m_version; }
     inline bool VersionHasBeenSet() const { return m_versionHasBeenSet; }
+    template<typename VersionT = Aws::String>
+    void SetVersion(VersionT&& value) { m_versionHasBeenSet = true; m_version = std::forward<VersionT>(value); }
+    template<typename VersionT = Aws::String>
+    DocumentRequires& WithVersion(VersionT&& value) { SetVersion(std::forward<VersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The document version required by the current document.</p>
-     */
-    inline void SetVersion(const Aws::String& value) { m_versionHasBeenSet = true; m_version = value; }
-
-    /**
-     * <p>The document version required by the current document.</p>
-     */
-    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
-
-    /**
-     * <p>The document version required by the current document.</p>
-     */
-    inline void SetVersion(const char* value) { m_versionHasBeenSet = true; m_version.assign(value); }
-
-    /**
-     * <p>The document version required by the current document.</p>
-     */
-    inline DocumentRequires& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
-
-    /**
-     * <p>The document version required by the current document.</p>
-     */
-    inline DocumentRequires& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The document version required by the current document.</p>
-     */
-    inline DocumentRequires& WithVersion(const char* value) { SetVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The document type of the required SSM document.</p>
      */
-    inline const Aws::String& GetRequireType() const{ return m_requireType; }
-
-    /**
-     * <p>The document type of the required SSM document.</p>
-     */
+    inline const Aws::String& GetRequireType() const { return m_requireType; }
     inline bool RequireTypeHasBeenSet() const { return m_requireTypeHasBeenSet; }
+    template<typename RequireTypeT = Aws::String>
+    void SetRequireType(RequireTypeT&& value) { m_requireTypeHasBeenSet = true; m_requireType = std::forward<RequireTypeT>(value); }
+    template<typename RequireTypeT = Aws::String>
+    DocumentRequires& WithRequireType(RequireTypeT&& value) { SetRequireType(std::forward<RequireTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The document type of the required SSM document.</p>
-     */
-    inline void SetRequireType(const Aws::String& value) { m_requireTypeHasBeenSet = true; m_requireType = value; }
-
-    /**
-     * <p>The document type of the required SSM document.</p>
-     */
-    inline void SetRequireType(Aws::String&& value) { m_requireTypeHasBeenSet = true; m_requireType = std::move(value); }
-
-    /**
-     * <p>The document type of the required SSM document.</p>
-     */
-    inline void SetRequireType(const char* value) { m_requireTypeHasBeenSet = true; m_requireType.assign(value); }
-
-    /**
-     * <p>The document type of the required SSM document.</p>
-     */
-    inline DocumentRequires& WithRequireType(const Aws::String& value) { SetRequireType(value); return *this;}
-
-    /**
-     * <p>The document type of the required SSM document.</p>
-     */
-    inline DocumentRequires& WithRequireType(Aws::String&& value) { SetRequireType(std::move(value)); return *this;}
-
-    /**
-     * <p>The document type of the required SSM document.</p>
-     */
-    inline DocumentRequires& WithRequireType(const char* value) { SetRequireType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An optional field specifying the version of the artifact associated with the
-     * document. For example, "Release 12, Update 6". This value is unique across all
-     * versions of a document, and can't be changed.</p>
+     * document. For example, 12.6. This value is unique across all versions of a
+     * document, and can't be changed.</p>
      */
-    inline const Aws::String& GetVersionName() const{ return m_versionName; }
-
-    /**
-     * <p>An optional field specifying the version of the artifact associated with the
-     * document. For example, "Release 12, Update 6". This value is unique across all
-     * versions of a document, and can't be changed.</p>
-     */
+    inline const Aws::String& GetVersionName() const { return m_versionName; }
     inline bool VersionNameHasBeenSet() const { return m_versionNameHasBeenSet; }
-
-    /**
-     * <p>An optional field specifying the version of the artifact associated with the
-     * document. For example, "Release 12, Update 6". This value is unique across all
-     * versions of a document, and can't be changed.</p>
-     */
-    inline void SetVersionName(const Aws::String& value) { m_versionNameHasBeenSet = true; m_versionName = value; }
-
-    /**
-     * <p>An optional field specifying the version of the artifact associated with the
-     * document. For example, "Release 12, Update 6". This value is unique across all
-     * versions of a document, and can't be changed.</p>
-     */
-    inline void SetVersionName(Aws::String&& value) { m_versionNameHasBeenSet = true; m_versionName = std::move(value); }
-
-    /**
-     * <p>An optional field specifying the version of the artifact associated with the
-     * document. For example, "Release 12, Update 6". This value is unique across all
-     * versions of a document, and can't be changed.</p>
-     */
-    inline void SetVersionName(const char* value) { m_versionNameHasBeenSet = true; m_versionName.assign(value); }
-
-    /**
-     * <p>An optional field specifying the version of the artifact associated with the
-     * document. For example, "Release 12, Update 6". This value is unique across all
-     * versions of a document, and can't be changed.</p>
-     */
-    inline DocumentRequires& WithVersionName(const Aws::String& value) { SetVersionName(value); return *this;}
-
-    /**
-     * <p>An optional field specifying the version of the artifact associated with the
-     * document. For example, "Release 12, Update 6". This value is unique across all
-     * versions of a document, and can't be changed.</p>
-     */
-    inline DocumentRequires& WithVersionName(Aws::String&& value) { SetVersionName(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional field specifying the version of the artifact associated with the
-     * document. For example, "Release 12, Update 6". This value is unique across all
-     * versions of a document, and can't be changed.</p>
-     */
-    inline DocumentRequires& WithVersionName(const char* value) { SetVersionName(value); return *this;}
-
+    template<typename VersionNameT = Aws::String>
+    void SetVersionName(VersionNameT&& value) { m_versionNameHasBeenSet = true; m_versionName = std::forward<VersionNameT>(value); }
+    template<typename VersionNameT = Aws::String>
+    DocumentRequires& WithVersionName(VersionNameT&& value) { SetVersionName(std::forward<VersionNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

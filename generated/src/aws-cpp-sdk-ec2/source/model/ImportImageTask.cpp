@@ -20,49 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ImportImageTask::ImportImageTask() : 
-    m_architectureHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_encrypted(false),
-    m_encryptedHasBeenSet(false),
-    m_hypervisorHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_importTaskIdHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_licenseTypeHasBeenSet(false),
-    m_platformHasBeenSet(false),
-    m_progressHasBeenSet(false),
-    m_snapshotDetailsHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_licenseSpecificationsHasBeenSet(false),
-    m_usageOperationHasBeenSet(false),
-    m_bootMode(BootModeValues::NOT_SET),
-    m_bootModeHasBeenSet(false)
-{
-}
-
-ImportImageTask::ImportImageTask(const XmlNode& xmlNode) : 
-    m_architectureHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_encrypted(false),
-    m_encryptedHasBeenSet(false),
-    m_hypervisorHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_importTaskIdHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_licenseTypeHasBeenSet(false),
-    m_platformHasBeenSet(false),
-    m_progressHasBeenSet(false),
-    m_snapshotDetailsHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_licenseSpecificationsHasBeenSet(false),
-    m_usageOperationHasBeenSet(false),
-    m_bootMode(BootModeValues::NOT_SET),
-    m_bootModeHasBeenSet(false)
+ImportImageTask::ImportImageTask(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -137,6 +95,7 @@ ImportImageTask& ImportImageTask::operator =(const XmlNode& xmlNode)
     if(!snapshotDetailsNode.IsNull())
     {
       XmlNode snapshotDetailsMember = snapshotDetailsNode.FirstChild("item");
+      m_snapshotDetailsHasBeenSet = !snapshotDetailsMember.IsNull();
       while(!snapshotDetailsMember.IsNull())
       {
         m_snapshotDetails.push_back(snapshotDetailsMember);
@@ -161,6 +120,7 @@ ImportImageTask& ImportImageTask::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -173,6 +133,7 @@ ImportImageTask& ImportImageTask::operator =(const XmlNode& xmlNode)
     if(!licenseSpecificationsNode.IsNull())
     {
       XmlNode licenseSpecificationsMember = licenseSpecificationsNode.FirstChild("item");
+      m_licenseSpecificationsHasBeenSet = !licenseSpecificationsMember.IsNull();
       while(!licenseSpecificationsMember.IsNull())
       {
         m_licenseSpecifications.push_back(licenseSpecificationsMember);
@@ -190,7 +151,7 @@ ImportImageTask& ImportImageTask::operator =(const XmlNode& xmlNode)
     XmlNode bootModeNode = resultNode.FirstChild("bootMode");
     if(!bootModeNode.IsNull())
     {
-      m_bootMode = BootModeValuesMapper::GetBootModeValuesForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(bootModeNode.GetText()).c_str()).c_str());
+      m_bootMode = BootModeValuesMapper::GetBootModeValuesForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(bootModeNode.GetText()).c_str()));
       m_bootModeHasBeenSet = true;
     }
   }
@@ -300,7 +261,7 @@ void ImportImageTask::OutputToStream(Aws::OStream& oStream, const char* location
 
   if(m_bootModeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".BootMode=" << BootModeValuesMapper::GetNameForBootModeValues(m_bootMode) << "&";
+      oStream << location << index << locationValue << ".BootMode=" << StringUtils::URLEncode(BootModeValuesMapper::GetNameForBootModeValues(m_bootMode)) << "&";
   }
 
 }
@@ -353,7 +314,7 @@ void ImportImageTask::OutputToStream(Aws::OStream& oStream, const char* location
       for(auto& item : m_snapshotDetails)
       {
         Aws::StringStream snapshotDetailsSs;
-        snapshotDetailsSs << location <<  ".SnapshotDetailSet." << snapshotDetailsIdx++;
+        snapshotDetailsSs << location << ".SnapshotDetailSet." << snapshotDetailsIdx++;
         item.OutputToStream(oStream, snapshotDetailsSs.str().c_str());
       }
   }
@@ -371,7 +332,7 @@ void ImportImageTask::OutputToStream(Aws::OStream& oStream, const char* location
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -381,7 +342,7 @@ void ImportImageTask::OutputToStream(Aws::OStream& oStream, const char* location
       for(auto& item : m_licenseSpecifications)
       {
         Aws::StringStream licenseSpecificationsSs;
-        licenseSpecificationsSs << location <<  ".LicenseSpecifications." << licenseSpecificationsIdx++;
+        licenseSpecificationsSs << location << ".LicenseSpecifications." << licenseSpecificationsIdx++;
         item.OutputToStream(oStream, licenseSpecificationsSs.str().c_str());
       }
   }
@@ -391,7 +352,7 @@ void ImportImageTask::OutputToStream(Aws::OStream& oStream, const char* location
   }
   if(m_bootModeHasBeenSet)
   {
-      oStream << location << ".BootMode=" << BootModeValuesMapper::GetNameForBootModeValues(m_bootMode) << "&";
+      oStream << location << ".BootMode=" << StringUtils::URLEncode(BootModeValuesMapper::GetNameForBootModeValues(m_bootMode)) << "&";
   }
 }
 

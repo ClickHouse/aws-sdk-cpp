@@ -26,22 +26,25 @@ namespace MQ
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef MQClientConfiguration ClientConfigurationType;
+      typedef MQEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         MQClient(const Aws::MQ::MQClientConfiguration& clientConfiguration = Aws::MQ::MQClientConfiguration(),
-                 std::shared_ptr<MQEndpointProviderBase> endpointProvider = Aws::MakeShared<MQEndpointProvider>(ALLOCATION_TAG));
+                 std::shared_ptr<MQEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         MQClient(const Aws::Auth::AWSCredentials& credentials,
-                 std::shared_ptr<MQEndpointProviderBase> endpointProvider = Aws::MakeShared<MQEndpointProvider>(ALLOCATION_TAG),
+                 std::shared_ptr<MQEndpointProviderBase> endpointProvider = nullptr,
                  const Aws::MQ::MQClientConfiguration& clientConfiguration = Aws::MQ::MQClientConfiguration());
 
        /**
@@ -49,7 +52,7 @@ namespace MQ
         * the default http client factory will be used
         */
         MQClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                 std::shared_ptr<MQEndpointProviderBase> endpointProvider = Aws::MakeShared<MQEndpointProvider>(ALLOCATION_TAG),
+                 std::shared_ptr<MQEndpointProviderBase> endpointProvider = nullptr,
                  const Aws::MQ::MQClientConfiguration& clientConfiguration = Aws::MQ::MQClientConfiguration());
 
 
@@ -95,8 +98,8 @@ namespace MQ
          * <li><p>ec2:DescribeSecurityGroups</p></li> <li><p>ec2:DescribeSubnets</p></li>
          * <li><p>ec2:DescribeVpcs</p></li></ul> <p>For more information, see <a
          * href="https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/amazon-mq-setting-up.html#create-iam-user">Create
-         * an IAM User and Get Your AWS Credentials</a> and <a
-         * href="https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/connecting-to-amazon-mq.html#never-modify-delete-elastic-network-interface">Never
+         * an IAM User and Get Your Amazon Web Services Credentials</a> and <a
+         * href="https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/connecting-to-amazon-mq.html#never-modify-delete-elastic-network-interface">Never
          * Modify or Delete the Amazon MQ Elastic Network Interface</a> in the <i>Amazon MQ
          * Developer Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/mq-2017-11-27/CreateBroker">AWS API
@@ -175,7 +178,11 @@ namespace MQ
         }
 
         /**
-         * <p>Creates an ActiveMQ user.</p><p><h3>See Also:</h3>   <a
+         * <p>Creates an ActiveMQ user.</p> <p>Do not add personally
+         * identifiable information (PII) or other confidential or sensitive information in
+         * broker usernames. Broker usernames are accessible to other Amazon Web Services
+         * services, including CloudWatch Logs. Broker usernames are not intended to be
+         * used for private or sensitive data.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/mq-2017-11-27/CreateUser">AWS API
          * Reference</a></p>
          */
@@ -222,6 +229,31 @@ namespace MQ
         void DeleteBrokerAsync(const DeleteBrokerRequestT& request, const DeleteBrokerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&MQClient::DeleteBroker, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes the specified configuration.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/mq-2017-11-27/DeleteConfiguration">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteConfigurationOutcome DeleteConfiguration(const Model::DeleteConfigurationRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteConfiguration that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteConfigurationRequestT = Model::DeleteConfigurationRequest>
+        Model::DeleteConfigurationOutcomeCallable DeleteConfigurationCallable(const DeleteConfigurationRequestT& request) const
+        {
+            return SubmitCallable(&MQClient::DeleteConfiguration, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteConfiguration that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteConfigurationRequestT = Model::DeleteConfigurationRequest>
+        void DeleteConfigurationAsync(const DeleteConfigurationRequestT& request, const DeleteConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&MQClient::DeleteConfiguration, request, handler, context);
         }
 
         /**
@@ -304,13 +336,13 @@ namespace MQ
          * href="http://docs.aws.amazon.com/goto/WebAPI/mq-2017-11-27/DescribeBrokerEngineTypes">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeBrokerEngineTypesOutcome DescribeBrokerEngineTypes(const Model::DescribeBrokerEngineTypesRequest& request) const;
+        virtual Model::DescribeBrokerEngineTypesOutcome DescribeBrokerEngineTypes(const Model::DescribeBrokerEngineTypesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeBrokerEngineTypes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeBrokerEngineTypesRequestT = Model::DescribeBrokerEngineTypesRequest>
-        Model::DescribeBrokerEngineTypesOutcomeCallable DescribeBrokerEngineTypesCallable(const DescribeBrokerEngineTypesRequestT& request) const
+        Model::DescribeBrokerEngineTypesOutcomeCallable DescribeBrokerEngineTypesCallable(const DescribeBrokerEngineTypesRequestT& request = {}) const
         {
             return SubmitCallable(&MQClient::DescribeBrokerEngineTypes, request);
         }
@@ -319,7 +351,7 @@ namespace MQ
          * An Async wrapper for DescribeBrokerEngineTypes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeBrokerEngineTypesRequestT = Model::DescribeBrokerEngineTypesRequest>
-        void DescribeBrokerEngineTypesAsync(const DescribeBrokerEngineTypesRequestT& request, const DescribeBrokerEngineTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeBrokerEngineTypesAsync(const DescribeBrokerEngineTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeBrokerEngineTypesRequestT& request = {}) const
         {
             return SubmitAsync(&MQClient::DescribeBrokerEngineTypes, request, handler, context);
         }
@@ -329,13 +361,13 @@ namespace MQ
          * href="http://docs.aws.amazon.com/goto/WebAPI/mq-2017-11-27/DescribeBrokerInstanceOptions">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeBrokerInstanceOptionsOutcome DescribeBrokerInstanceOptions(const Model::DescribeBrokerInstanceOptionsRequest& request) const;
+        virtual Model::DescribeBrokerInstanceOptionsOutcome DescribeBrokerInstanceOptions(const Model::DescribeBrokerInstanceOptionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeBrokerInstanceOptions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeBrokerInstanceOptionsRequestT = Model::DescribeBrokerInstanceOptionsRequest>
-        Model::DescribeBrokerInstanceOptionsOutcomeCallable DescribeBrokerInstanceOptionsCallable(const DescribeBrokerInstanceOptionsRequestT& request) const
+        Model::DescribeBrokerInstanceOptionsOutcomeCallable DescribeBrokerInstanceOptionsCallable(const DescribeBrokerInstanceOptionsRequestT& request = {}) const
         {
             return SubmitCallable(&MQClient::DescribeBrokerInstanceOptions, request);
         }
@@ -344,7 +376,7 @@ namespace MQ
          * An Async wrapper for DescribeBrokerInstanceOptions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeBrokerInstanceOptionsRequestT = Model::DescribeBrokerInstanceOptionsRequest>
-        void DescribeBrokerInstanceOptionsAsync(const DescribeBrokerInstanceOptionsRequestT& request, const DescribeBrokerInstanceOptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeBrokerInstanceOptionsAsync(const DescribeBrokerInstanceOptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeBrokerInstanceOptionsRequestT& request = {}) const
         {
             return SubmitAsync(&MQClient::DescribeBrokerInstanceOptions, request, handler, context);
         }
@@ -431,13 +463,13 @@ namespace MQ
          * href="http://docs.aws.amazon.com/goto/WebAPI/mq-2017-11-27/ListBrokers">AWS API
          * Reference</a></p>
          */
-        virtual Model::ListBrokersOutcome ListBrokers(const Model::ListBrokersRequest& request) const;
+        virtual Model::ListBrokersOutcome ListBrokers(const Model::ListBrokersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListBrokers that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListBrokersRequestT = Model::ListBrokersRequest>
-        Model::ListBrokersOutcomeCallable ListBrokersCallable(const ListBrokersRequestT& request) const
+        Model::ListBrokersOutcomeCallable ListBrokersCallable(const ListBrokersRequestT& request = {}) const
         {
             return SubmitCallable(&MQClient::ListBrokers, request);
         }
@@ -446,7 +478,7 @@ namespace MQ
          * An Async wrapper for ListBrokers that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListBrokersRequestT = Model::ListBrokersRequest>
-        void ListBrokersAsync(const ListBrokersRequestT& request, const ListBrokersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListBrokersAsync(const ListBrokersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListBrokersRequestT& request = {}) const
         {
             return SubmitAsync(&MQClient::ListBrokers, request, handler, context);
         }
@@ -482,13 +514,13 @@ namespace MQ
          * href="http://docs.aws.amazon.com/goto/WebAPI/mq-2017-11-27/ListConfigurations">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListConfigurationsOutcome ListConfigurations(const Model::ListConfigurationsRequest& request) const;
+        virtual Model::ListConfigurationsOutcome ListConfigurations(const Model::ListConfigurationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListConfigurations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListConfigurationsRequestT = Model::ListConfigurationsRequest>
-        Model::ListConfigurationsOutcomeCallable ListConfigurationsCallable(const ListConfigurationsRequestT& request) const
+        Model::ListConfigurationsOutcomeCallable ListConfigurationsCallable(const ListConfigurationsRequestT& request = {}) const
         {
             return SubmitCallable(&MQClient::ListConfigurations, request);
         }
@@ -497,7 +529,7 @@ namespace MQ
          * An Async wrapper for ListConfigurations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListConfigurationsRequestT = Model::ListConfigurationsRequest>
-        void ListConfigurationsAsync(const ListConfigurationsRequestT& request, const ListConfigurationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListConfigurationsAsync(const ListConfigurationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListConfigurationsRequestT& request = {}) const
         {
             return SubmitAsync(&MQClient::ListConfigurations, request, handler, context);
         }
@@ -550,6 +582,32 @@ namespace MQ
         void ListUsersAsync(const ListUsersRequestT& request, const ListUsersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&MQClient::ListUsers, request, handler, context);
+        }
+
+        /**
+         * <p>Promotes a data replication replica broker to the primary broker
+         * role.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/mq-2017-11-27/Promote">AWS API
+         * Reference</a></p>
+         */
+        virtual Model::PromoteOutcome Promote(const Model::PromoteRequest& request) const;
+
+        /**
+         * A Callable wrapper for Promote that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename PromoteRequestT = Model::PromoteRequest>
+        Model::PromoteOutcomeCallable PromoteCallable(const PromoteRequestT& request) const
+        {
+            return SubmitCallable(&MQClient::Promote, request);
+        }
+
+        /**
+         * An Async wrapper for Promote that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename PromoteRequestT = Model::PromoteRequest>
+        void PromoteAsync(const PromoteRequestT& request, const PromoteResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&MQClient::Promote, request, handler, context);
         }
 
         /**
@@ -660,7 +718,6 @@ namespace MQ
       void init(const MQClientConfiguration& clientConfiguration);
 
       MQClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<MQEndpointProviderBase> m_endpointProvider;
   };
 

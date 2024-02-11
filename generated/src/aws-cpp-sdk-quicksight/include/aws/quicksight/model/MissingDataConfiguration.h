@@ -32,12 +32,13 @@ namespace Model
   class MissingDataConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API MissingDataConfiguration();
+    AWS_QUICKSIGHT_API MissingDataConfiguration() = default;
     AWS_QUICKSIGHT_API MissingDataConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API MissingDataConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The treatment option that determines how missing data should be rendered.
      * Choose from the following options:</p> <ul> <li> <p> <code>INTERPOLATE</code>:
@@ -46,61 +47,14 @@ namespace Model
      * <code>0</code>.</p> </li> <li> <p> <code>SHOW_AS_BLANK</code>: Display a blank
      * space when rendering missing data.</p> </li> </ul>
      */
-    inline const MissingDataTreatmentOption& GetTreatmentOption() const{ return m_treatmentOption; }
-
-    /**
-     * <p>The treatment option that determines how missing data should be rendered.
-     * Choose from the following options:</p> <ul> <li> <p> <code>INTERPOLATE</code>:
-     * Interpolate missing values between the prior and the next known value.</p> </li>
-     * <li> <p> <code>SHOW_AS_ZERO</code>: Show missing values as the value
-     * <code>0</code>.</p> </li> <li> <p> <code>SHOW_AS_BLANK</code>: Display a blank
-     * space when rendering missing data.</p> </li> </ul>
-     */
+    inline MissingDataTreatmentOption GetTreatmentOption() const { return m_treatmentOption; }
     inline bool TreatmentOptionHasBeenSet() const { return m_treatmentOptionHasBeenSet; }
-
-    /**
-     * <p>The treatment option that determines how missing data should be rendered.
-     * Choose from the following options:</p> <ul> <li> <p> <code>INTERPOLATE</code>:
-     * Interpolate missing values between the prior and the next known value.</p> </li>
-     * <li> <p> <code>SHOW_AS_ZERO</code>: Show missing values as the value
-     * <code>0</code>.</p> </li> <li> <p> <code>SHOW_AS_BLANK</code>: Display a blank
-     * space when rendering missing data.</p> </li> </ul>
-     */
-    inline void SetTreatmentOption(const MissingDataTreatmentOption& value) { m_treatmentOptionHasBeenSet = true; m_treatmentOption = value; }
-
-    /**
-     * <p>The treatment option that determines how missing data should be rendered.
-     * Choose from the following options:</p> <ul> <li> <p> <code>INTERPOLATE</code>:
-     * Interpolate missing values between the prior and the next known value.</p> </li>
-     * <li> <p> <code>SHOW_AS_ZERO</code>: Show missing values as the value
-     * <code>0</code>.</p> </li> <li> <p> <code>SHOW_AS_BLANK</code>: Display a blank
-     * space when rendering missing data.</p> </li> </ul>
-     */
-    inline void SetTreatmentOption(MissingDataTreatmentOption&& value) { m_treatmentOptionHasBeenSet = true; m_treatmentOption = std::move(value); }
-
-    /**
-     * <p>The treatment option that determines how missing data should be rendered.
-     * Choose from the following options:</p> <ul> <li> <p> <code>INTERPOLATE</code>:
-     * Interpolate missing values between the prior and the next known value.</p> </li>
-     * <li> <p> <code>SHOW_AS_ZERO</code>: Show missing values as the value
-     * <code>0</code>.</p> </li> <li> <p> <code>SHOW_AS_BLANK</code>: Display a blank
-     * space when rendering missing data.</p> </li> </ul>
-     */
-    inline MissingDataConfiguration& WithTreatmentOption(const MissingDataTreatmentOption& value) { SetTreatmentOption(value); return *this;}
-
-    /**
-     * <p>The treatment option that determines how missing data should be rendered.
-     * Choose from the following options:</p> <ul> <li> <p> <code>INTERPOLATE</code>:
-     * Interpolate missing values between the prior and the next known value.</p> </li>
-     * <li> <p> <code>SHOW_AS_ZERO</code>: Show missing values as the value
-     * <code>0</code>.</p> </li> <li> <p> <code>SHOW_AS_BLANK</code>: Display a blank
-     * space when rendering missing data.</p> </li> </ul>
-     */
-    inline MissingDataConfiguration& WithTreatmentOption(MissingDataTreatmentOption&& value) { SetTreatmentOption(std::move(value)); return *this;}
-
+    inline void SetTreatmentOption(MissingDataTreatmentOption value) { m_treatmentOptionHasBeenSet = true; m_treatmentOption = value; }
+    inline MissingDataConfiguration& WithTreatmentOption(MissingDataTreatmentOption value) { SetTreatmentOption(value); return *this;}
+    ///@}
   private:
 
-    MissingDataTreatmentOption m_treatmentOption;
+    MissingDataTreatmentOption m_treatmentOption{MissingDataTreatmentOption::NOT_SET};
     bool m_treatmentOptionHasBeenSet = false;
   };
 

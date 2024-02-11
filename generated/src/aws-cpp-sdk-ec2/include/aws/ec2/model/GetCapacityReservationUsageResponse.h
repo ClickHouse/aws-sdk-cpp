@@ -31,325 +31,149 @@ namespace Model
   class GetCapacityReservationUsageResponse
   {
   public:
-    AWS_EC2_API GetCapacityReservationUsageResponse();
+    AWS_EC2_API GetCapacityReservationUsageResponse() = default;
     AWS_EC2_API GetCapacityReservationUsageResponse(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_EC2_API GetCapacityReservationUsageResponse& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The token to use to retrieve the next page of results. This value is
      * <code>null</code> when there are no more results to return.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    GetCapacityReservationUsageResponse& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline GetCapacityReservationUsageResponse& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline GetCapacityReservationUsageResponse& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline GetCapacityReservationUsageResponse& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Capacity Reservation.</p>
      */
-    inline const Aws::String& GetCapacityReservationId() const{ return m_capacityReservationId; }
+    inline const Aws::String& GetCapacityReservationId() const { return m_capacityReservationId; }
+    template<typename CapacityReservationIdT = Aws::String>
+    void SetCapacityReservationId(CapacityReservationIdT&& value) { m_capacityReservationIdHasBeenSet = true; m_capacityReservationId = std::forward<CapacityReservationIdT>(value); }
+    template<typename CapacityReservationIdT = Aws::String>
+    GetCapacityReservationUsageResponse& WithCapacityReservationId(CapacityReservationIdT&& value) { SetCapacityReservationId(std::forward<CapacityReservationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Capacity Reservation.</p>
-     */
-    inline void SetCapacityReservationId(const Aws::String& value) { m_capacityReservationId = value; }
-
-    /**
-     * <p>The ID of the Capacity Reservation.</p>
-     */
-    inline void SetCapacityReservationId(Aws::String&& value) { m_capacityReservationId = std::move(value); }
-
-    /**
-     * <p>The ID of the Capacity Reservation.</p>
-     */
-    inline void SetCapacityReservationId(const char* value) { m_capacityReservationId.assign(value); }
-
-    /**
-     * <p>The ID of the Capacity Reservation.</p>
-     */
-    inline GetCapacityReservationUsageResponse& WithCapacityReservationId(const Aws::String& value) { SetCapacityReservationId(value); return *this;}
-
-    /**
-     * <p>The ID of the Capacity Reservation.</p>
-     */
-    inline GetCapacityReservationUsageResponse& WithCapacityReservationId(Aws::String&& value) { SetCapacityReservationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Capacity Reservation.</p>
-     */
-    inline GetCapacityReservationUsageResponse& WithCapacityReservationId(const char* value) { SetCapacityReservationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of instance for which the Capacity Reservation reserves
      * capacity.</p>
      */
-    inline const Aws::String& GetInstanceType() const{ return m_instanceType; }
+    inline const Aws::String& GetInstanceType() const { return m_instanceType; }
+    template<typename InstanceTypeT = Aws::String>
+    void SetInstanceType(InstanceTypeT&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::forward<InstanceTypeT>(value); }
+    template<typename InstanceTypeT = Aws::String>
+    GetCapacityReservationUsageResponse& WithInstanceType(InstanceTypeT&& value) { SetInstanceType(std::forward<InstanceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of instance for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
-    inline void SetInstanceType(const Aws::String& value) { m_instanceType = value; }
-
-    /**
-     * <p>The type of instance for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
-    inline void SetInstanceType(Aws::String&& value) { m_instanceType = std::move(value); }
-
-    /**
-     * <p>The type of instance for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
-    inline void SetInstanceType(const char* value) { m_instanceType.assign(value); }
-
-    /**
-     * <p>The type of instance for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
-    inline GetCapacityReservationUsageResponse& WithInstanceType(const Aws::String& value) { SetInstanceType(value); return *this;}
-
-    /**
-     * <p>The type of instance for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
-    inline GetCapacityReservationUsageResponse& WithInstanceType(Aws::String&& value) { SetInstanceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of instance for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
-    inline GetCapacityReservationUsageResponse& WithInstanceType(const char* value) { SetInstanceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of instances for which the Capacity Reservation reserves
      * capacity.</p>
      */
-    inline int GetTotalInstanceCount() const{ return m_totalInstanceCount; }
-
-    /**
-     * <p>The number of instances for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
-    inline void SetTotalInstanceCount(int value) { m_totalInstanceCount = value; }
-
-    /**
-     * <p>The number of instances for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
+    inline int GetTotalInstanceCount() const { return m_totalInstanceCount; }
+    inline void SetTotalInstanceCount(int value) { m_totalInstanceCountHasBeenSet = true; m_totalInstanceCount = value; }
     inline GetCapacityReservationUsageResponse& WithTotalInstanceCount(int value) { SetTotalInstanceCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The remaining capacity. Indicates the number of instances that can be
      * launched in the Capacity Reservation.</p>
      */
-    inline int GetAvailableInstanceCount() const{ return m_availableInstanceCount; }
-
-    /**
-     * <p>The remaining capacity. Indicates the number of instances that can be
-     * launched in the Capacity Reservation.</p>
-     */
-    inline void SetAvailableInstanceCount(int value) { m_availableInstanceCount = value; }
-
-    /**
-     * <p>The remaining capacity. Indicates the number of instances that can be
-     * launched in the Capacity Reservation.</p>
-     */
+    inline int GetAvailableInstanceCount() const { return m_availableInstanceCount; }
+    inline void SetAvailableInstanceCount(int value) { m_availableInstanceCountHasBeenSet = true; m_availableInstanceCount = value; }
     inline GetCapacityReservationUsageResponse& WithAvailableInstanceCount(int value) { SetAvailableInstanceCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The current state of the Capacity Reservation. A Capacity Reservation can be
      * in one of the following states:</p> <ul> <li> <p> <code>active</code> - The
-     * Capacity Reservation is active and the capacity is available for your use.</p>
-     * </li> <li> <p> <code>expired</code> - The Capacity Reservation expired
-     * automatically at the date and time specified in your request. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>cancelled</code> - The Capacity Reservation was cancelled. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>pending</code> - The Capacity Reservation request was successful but the
-     * capacity provisioning is still pending.</p> </li> <li> <p> <code>failed</code> -
-     * The Capacity Reservation request has failed. A request might fail due to invalid
-     * request parameters, capacity constraints, or instance limit constraints. Failed
-     * requests are retained for 60 minutes.</p> </li> </ul>
+     * capacity is available for use.</p> </li> <li> <p> <code>expired</code> - The
+     * Capacity Reservation expired automatically at the date and time specified in
+     * your reservation request. The reserved capacity is no longer available for your
+     * use.</p> </li> <li> <p> <code>cancelled</code> - The Capacity Reservation was
+     * canceled. The reserved capacity is no longer available for your use.</p> </li>
+     * <li> <p> <code>pending</code> - The Capacity Reservation request was successful
+     * but the capacity provisioning is still pending.</p> </li> <li> <p>
+     * <code>failed</code> - The Capacity Reservation request has failed. A request can
+     * fail due to request parameters that are not valid, capacity constraints, or
+     * instance limit constraints. You can view a failed request for 60 minutes.</p>
+     * </li> <li> <p> <code>scheduled</code> - (<i>Future-dated Capacity
+     * Reservations</i>) The future-dated Capacity Reservation request was approved and
+     * the Capacity Reservation is scheduled for delivery on the requested start
+     * date.</p> </li> <li> <p> <code>payment-pending</code> - (<i>Capacity Blocks</i>)
+     * The upfront payment has not been processed yet.</p> </li> <li> <p>
+     * <code>payment-failed</code> - (<i>Capacity Blocks</i>) The upfront payment was
+     * not processed in the 12-hour time frame. Your Capacity Block was released.</p>
+     * </li> <li> <p> <code>assessing</code> - (<i>Future-dated Capacity
+     * Reservations</i>) Amazon EC2 is assessing your request for a future-dated
+     * Capacity Reservation.</p> </li> <li> <p> <code>delayed</code> - (<i>Future-dated
+     * Capacity Reservations</i>) Amazon EC2 encountered a delay in provisioning the
+     * requested future-dated Capacity Reservation. Amazon EC2 is unable to deliver the
+     * requested capacity by the requested start date and time.</p> </li> <li> <p>
+     * <code>unsupported</code> - (<i>Future-dated Capacity Reservations</i>) Amazon
+     * EC2 can't support the future-dated Capacity Reservation request due to capacity
+     * constraints. You can view unsupported requests for 30 days. The Capacity
+     * Reservation will not be delivered.</p> </li> </ul>
      */
-    inline const CapacityReservationState& GetState() const{ return m_state; }
+    inline CapacityReservationState GetState() const { return m_state; }
+    inline void SetState(CapacityReservationState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline GetCapacityReservationUsageResponse& WithState(CapacityReservationState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current state of the Capacity Reservation. A Capacity Reservation can be
-     * in one of the following states:</p> <ul> <li> <p> <code>active</code> - The
-     * Capacity Reservation is active and the capacity is available for your use.</p>
-     * </li> <li> <p> <code>expired</code> - The Capacity Reservation expired
-     * automatically at the date and time specified in your request. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>cancelled</code> - The Capacity Reservation was cancelled. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>pending</code> - The Capacity Reservation request was successful but the
-     * capacity provisioning is still pending.</p> </li> <li> <p> <code>failed</code> -
-     * The Capacity Reservation request has failed. A request might fail due to invalid
-     * request parameters, capacity constraints, or instance limit constraints. Failed
-     * requests are retained for 60 minutes.</p> </li> </ul>
-     */
-    inline void SetState(const CapacityReservationState& value) { m_state = value; }
-
-    /**
-     * <p>The current state of the Capacity Reservation. A Capacity Reservation can be
-     * in one of the following states:</p> <ul> <li> <p> <code>active</code> - The
-     * Capacity Reservation is active and the capacity is available for your use.</p>
-     * </li> <li> <p> <code>expired</code> - The Capacity Reservation expired
-     * automatically at the date and time specified in your request. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>cancelled</code> - The Capacity Reservation was cancelled. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>pending</code> - The Capacity Reservation request was successful but the
-     * capacity provisioning is still pending.</p> </li> <li> <p> <code>failed</code> -
-     * The Capacity Reservation request has failed. A request might fail due to invalid
-     * request parameters, capacity constraints, or instance limit constraints. Failed
-     * requests are retained for 60 minutes.</p> </li> </ul>
-     */
-    inline void SetState(CapacityReservationState&& value) { m_state = std::move(value); }
-
-    /**
-     * <p>The current state of the Capacity Reservation. A Capacity Reservation can be
-     * in one of the following states:</p> <ul> <li> <p> <code>active</code> - The
-     * Capacity Reservation is active and the capacity is available for your use.</p>
-     * </li> <li> <p> <code>expired</code> - The Capacity Reservation expired
-     * automatically at the date and time specified in your request. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>cancelled</code> - The Capacity Reservation was cancelled. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>pending</code> - The Capacity Reservation request was successful but the
-     * capacity provisioning is still pending.</p> </li> <li> <p> <code>failed</code> -
-     * The Capacity Reservation request has failed. A request might fail due to invalid
-     * request parameters, capacity constraints, or instance limit constraints. Failed
-     * requests are retained for 60 minutes.</p> </li> </ul>
-     */
-    inline GetCapacityReservationUsageResponse& WithState(const CapacityReservationState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The current state of the Capacity Reservation. A Capacity Reservation can be
-     * in one of the following states:</p> <ul> <li> <p> <code>active</code> - The
-     * Capacity Reservation is active and the capacity is available for your use.</p>
-     * </li> <li> <p> <code>expired</code> - The Capacity Reservation expired
-     * automatically at the date and time specified in your request. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>cancelled</code> - The Capacity Reservation was cancelled. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>pending</code> - The Capacity Reservation request was successful but the
-     * capacity provisioning is still pending.</p> </li> <li> <p> <code>failed</code> -
-     * The Capacity Reservation request has failed. A request might fail due to invalid
-     * request parameters, capacity constraints, or instance limit constraints. Failed
-     * requests are retained for 60 minutes.</p> </li> </ul>
-     */
-    inline GetCapacityReservationUsageResponse& WithState(CapacityReservationState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the Capacity Reservation usage.</p>
      */
-    inline const Aws::Vector<InstanceUsage>& GetInstanceUsages() const{ return m_instanceUsages; }
+    inline const Aws::Vector<InstanceUsage>& GetInstanceUsages() const { return m_instanceUsages; }
+    template<typename InstanceUsagesT = Aws::Vector<InstanceUsage>>
+    void SetInstanceUsages(InstanceUsagesT&& value) { m_instanceUsagesHasBeenSet = true; m_instanceUsages = std::forward<InstanceUsagesT>(value); }
+    template<typename InstanceUsagesT = Aws::Vector<InstanceUsage>>
+    GetCapacityReservationUsageResponse& WithInstanceUsages(InstanceUsagesT&& value) { SetInstanceUsages(std::forward<InstanceUsagesT>(value)); return *this;}
+    template<typename InstanceUsagesT = InstanceUsage>
+    GetCapacityReservationUsageResponse& AddInstanceUsages(InstanceUsagesT&& value) { m_instanceUsagesHasBeenSet = true; m_instanceUsages.emplace_back(std::forward<InstanceUsagesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about the Capacity Reservation usage.</p>
-     */
-    inline void SetInstanceUsages(const Aws::Vector<InstanceUsage>& value) { m_instanceUsages = value; }
-
-    /**
-     * <p>Information about the Capacity Reservation usage.</p>
-     */
-    inline void SetInstanceUsages(Aws::Vector<InstanceUsage>&& value) { m_instanceUsages = std::move(value); }
-
-    /**
-     * <p>Information about the Capacity Reservation usage.</p>
-     */
-    inline GetCapacityReservationUsageResponse& WithInstanceUsages(const Aws::Vector<InstanceUsage>& value) { SetInstanceUsages(value); return *this;}
-
-    /**
-     * <p>Information about the Capacity Reservation usage.</p>
-     */
-    inline GetCapacityReservationUsageResponse& WithInstanceUsages(Aws::Vector<InstanceUsage>&& value) { SetInstanceUsages(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the Capacity Reservation usage.</p>
-     */
-    inline GetCapacityReservationUsageResponse& AddInstanceUsages(const InstanceUsage& value) { m_instanceUsages.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the Capacity Reservation usage.</p>
-     */
-    inline GetCapacityReservationUsageResponse& AddInstanceUsages(InstanceUsage&& value) { m_instanceUsages.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline GetCapacityReservationUsageResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline GetCapacityReservationUsageResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    GetCapacityReservationUsageResponse& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_capacityReservationId;
+    bool m_capacityReservationIdHasBeenSet = false;
 
     Aws::String m_instanceType;
+    bool m_instanceTypeHasBeenSet = false;
 
-    int m_totalInstanceCount;
+    int m_totalInstanceCount{0};
+    bool m_totalInstanceCountHasBeenSet = false;
 
-    int m_availableInstanceCount;
+    int m_availableInstanceCount{0};
+    bool m_availableInstanceCountHasBeenSet = false;
 
-    CapacityReservationState m_state;
+    CapacityReservationState m_state{CapacityReservationState::NOT_SET};
+    bool m_stateHasBeenSet = false;
 
     Aws::Vector<InstanceUsage> m_instanceUsages;
+    bool m_instanceUsagesHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

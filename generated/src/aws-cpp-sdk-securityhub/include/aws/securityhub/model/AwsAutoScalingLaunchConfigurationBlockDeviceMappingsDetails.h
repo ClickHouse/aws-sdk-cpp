@@ -32,183 +32,63 @@ namespace Model
   class AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails();
+    AWS_SECURITYHUB_API AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails() = default;
     AWS_SECURITYHUB_API AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The device name that is exposed to the EC2 instance. For example,
      * <code>/dev/sdh</code> or <code>xvdh</code>.</p>
      */
-    inline const Aws::String& GetDeviceName() const{ return m_deviceName; }
-
-    /**
-     * <p>The device name that is exposed to the EC2 instance. For example,
-     * <code>/dev/sdh</code> or <code>xvdh</code>.</p>
-     */
+    inline const Aws::String& GetDeviceName() const { return m_deviceName; }
     inline bool DeviceNameHasBeenSet() const { return m_deviceNameHasBeenSet; }
+    template<typename DeviceNameT = Aws::String>
+    void SetDeviceName(DeviceNameT&& value) { m_deviceNameHasBeenSet = true; m_deviceName = std::forward<DeviceNameT>(value); }
+    template<typename DeviceNameT = Aws::String>
+    AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails& WithDeviceName(DeviceNameT&& value) { SetDeviceName(std::forward<DeviceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The device name that is exposed to the EC2 instance. For example,
-     * <code>/dev/sdh</code> or <code>xvdh</code>.</p>
-     */
-    inline void SetDeviceName(const Aws::String& value) { m_deviceNameHasBeenSet = true; m_deviceName = value; }
-
-    /**
-     * <p>The device name that is exposed to the EC2 instance. For example,
-     * <code>/dev/sdh</code> or <code>xvdh</code>.</p>
-     */
-    inline void SetDeviceName(Aws::String&& value) { m_deviceNameHasBeenSet = true; m_deviceName = std::move(value); }
-
-    /**
-     * <p>The device name that is exposed to the EC2 instance. For example,
-     * <code>/dev/sdh</code> or <code>xvdh</code>.</p>
-     */
-    inline void SetDeviceName(const char* value) { m_deviceNameHasBeenSet = true; m_deviceName.assign(value); }
-
-    /**
-     * <p>The device name that is exposed to the EC2 instance. For example,
-     * <code>/dev/sdh</code> or <code>xvdh</code>.</p>
-     */
-    inline AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails& WithDeviceName(const Aws::String& value) { SetDeviceName(value); return *this;}
-
-    /**
-     * <p>The device name that is exposed to the EC2 instance. For example,
-     * <code>/dev/sdh</code> or <code>xvdh</code>.</p>
-     */
-    inline AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails& WithDeviceName(Aws::String&& value) { SetDeviceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The device name that is exposed to the EC2 instance. For example,
-     * <code>/dev/sdh</code> or <code>xvdh</code>.</p>
-     */
-    inline AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails& WithDeviceName(const char* value) { SetDeviceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Parameters that are used to automatically set up Amazon EBS volumes when an
      * instance is launched.</p>
      */
-    inline const AwsAutoScalingLaunchConfigurationBlockDeviceMappingsEbsDetails& GetEbs() const{ return m_ebs; }
-
-    /**
-     * <p>Parameters that are used to automatically set up Amazon EBS volumes when an
-     * instance is launched.</p>
-     */
+    inline const AwsAutoScalingLaunchConfigurationBlockDeviceMappingsEbsDetails& GetEbs() const { return m_ebs; }
     inline bool EbsHasBeenSet() const { return m_ebsHasBeenSet; }
+    template<typename EbsT = AwsAutoScalingLaunchConfigurationBlockDeviceMappingsEbsDetails>
+    void SetEbs(EbsT&& value) { m_ebsHasBeenSet = true; m_ebs = std::forward<EbsT>(value); }
+    template<typename EbsT = AwsAutoScalingLaunchConfigurationBlockDeviceMappingsEbsDetails>
+    AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails& WithEbs(EbsT&& value) { SetEbs(std::forward<EbsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Parameters that are used to automatically set up Amazon EBS volumes when an
-     * instance is launched.</p>
-     */
-    inline void SetEbs(const AwsAutoScalingLaunchConfigurationBlockDeviceMappingsEbsDetails& value) { m_ebsHasBeenSet = true; m_ebs = value; }
-
-    /**
-     * <p>Parameters that are used to automatically set up Amazon EBS volumes when an
-     * instance is launched.</p>
-     */
-    inline void SetEbs(AwsAutoScalingLaunchConfigurationBlockDeviceMappingsEbsDetails&& value) { m_ebsHasBeenSet = true; m_ebs = std::move(value); }
-
-    /**
-     * <p>Parameters that are used to automatically set up Amazon EBS volumes when an
-     * instance is launched.</p>
-     */
-    inline AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails& WithEbs(const AwsAutoScalingLaunchConfigurationBlockDeviceMappingsEbsDetails& value) { SetEbs(value); return *this;}
-
-    /**
-     * <p>Parameters that are used to automatically set up Amazon EBS volumes when an
-     * instance is launched.</p>
-     */
-    inline AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails& WithEbs(AwsAutoScalingLaunchConfigurationBlockDeviceMappingsEbsDetails&& value) { SetEbs(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Whether to suppress the device that is included in the block device mapping
      * of the Amazon Machine Image (AMI).</p> <p>If <code>NoDevice</code> is
      * <code>true</code>, then you cannot specify <code>Ebs</code>.&gt;</p>
      */
-    inline bool GetNoDevice() const{ return m_noDevice; }
-
-    /**
-     * <p>Whether to suppress the device that is included in the block device mapping
-     * of the Amazon Machine Image (AMI).</p> <p>If <code>NoDevice</code> is
-     * <code>true</code>, then you cannot specify <code>Ebs</code>.&gt;</p>
-     */
+    inline bool GetNoDevice() const { return m_noDevice; }
     inline bool NoDeviceHasBeenSet() const { return m_noDeviceHasBeenSet; }
-
-    /**
-     * <p>Whether to suppress the device that is included in the block device mapping
-     * of the Amazon Machine Image (AMI).</p> <p>If <code>NoDevice</code> is
-     * <code>true</code>, then you cannot specify <code>Ebs</code>.&gt;</p>
-     */
     inline void SetNoDevice(bool value) { m_noDeviceHasBeenSet = true; m_noDevice = value; }
-
-    /**
-     * <p>Whether to suppress the device that is included in the block device mapping
-     * of the Amazon Machine Image (AMI).</p> <p>If <code>NoDevice</code> is
-     * <code>true</code>, then you cannot specify <code>Ebs</code>.&gt;</p>
-     */
     inline AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails& WithNoDevice(bool value) { SetNoDevice(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The name of the virtual device (for example, <code>ephemeral0</code>).</p>
      * <p>You can provide either <code>VirtualName</code> or <code>Ebs</code>, but not
      * both.</p>
      */
-    inline const Aws::String& GetVirtualName() const{ return m_virtualName; }
-
-    /**
-     * <p>The name of the virtual device (for example, <code>ephemeral0</code>).</p>
-     * <p>You can provide either <code>VirtualName</code> or <code>Ebs</code>, but not
-     * both.</p>
-     */
+    inline const Aws::String& GetVirtualName() const { return m_virtualName; }
     inline bool VirtualNameHasBeenSet() const { return m_virtualNameHasBeenSet; }
-
-    /**
-     * <p>The name of the virtual device (for example, <code>ephemeral0</code>).</p>
-     * <p>You can provide either <code>VirtualName</code> or <code>Ebs</code>, but not
-     * both.</p>
-     */
-    inline void SetVirtualName(const Aws::String& value) { m_virtualNameHasBeenSet = true; m_virtualName = value; }
-
-    /**
-     * <p>The name of the virtual device (for example, <code>ephemeral0</code>).</p>
-     * <p>You can provide either <code>VirtualName</code> or <code>Ebs</code>, but not
-     * both.</p>
-     */
-    inline void SetVirtualName(Aws::String&& value) { m_virtualNameHasBeenSet = true; m_virtualName = std::move(value); }
-
-    /**
-     * <p>The name of the virtual device (for example, <code>ephemeral0</code>).</p>
-     * <p>You can provide either <code>VirtualName</code> or <code>Ebs</code>, but not
-     * both.</p>
-     */
-    inline void SetVirtualName(const char* value) { m_virtualNameHasBeenSet = true; m_virtualName.assign(value); }
-
-    /**
-     * <p>The name of the virtual device (for example, <code>ephemeral0</code>).</p>
-     * <p>You can provide either <code>VirtualName</code> or <code>Ebs</code>, but not
-     * both.</p>
-     */
-    inline AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails& WithVirtualName(const Aws::String& value) { SetVirtualName(value); return *this;}
-
-    /**
-     * <p>The name of the virtual device (for example, <code>ephemeral0</code>).</p>
-     * <p>You can provide either <code>VirtualName</code> or <code>Ebs</code>, but not
-     * both.</p>
-     */
-    inline AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails& WithVirtualName(Aws::String&& value) { SetVirtualName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the virtual device (for example, <code>ephemeral0</code>).</p>
-     * <p>You can provide either <code>VirtualName</code> or <code>Ebs</code>, but not
-     * both.</p>
-     */
-    inline AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails& WithVirtualName(const char* value) { SetVirtualName(value); return *this;}
-
+    template<typename VirtualNameT = Aws::String>
+    void SetVirtualName(VirtualNameT&& value) { m_virtualNameHasBeenSet = true; m_virtualName = std::forward<VirtualNameT>(value); }
+    template<typename VirtualNameT = Aws::String>
+    AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails& WithVirtualName(VirtualNameT&& value) { SetVirtualName(std::forward<VirtualNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_deviceName;
@@ -217,7 +97,7 @@ namespace Model
     AwsAutoScalingLaunchConfigurationBlockDeviceMappingsEbsDetails m_ebs;
     bool m_ebsHasBeenSet = false;
 
-    bool m_noDevice;
+    bool m_noDevice{false};
     bool m_noDeviceHasBeenSet = false;
 
     Aws::String m_virtualName;

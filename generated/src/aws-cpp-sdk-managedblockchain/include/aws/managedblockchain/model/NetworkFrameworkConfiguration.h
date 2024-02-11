@@ -32,48 +32,24 @@ namespace Model
   class NetworkFrameworkConfiguration
   {
   public:
-    AWS_MANAGEDBLOCKCHAIN_API NetworkFrameworkConfiguration();
+    AWS_MANAGEDBLOCKCHAIN_API NetworkFrameworkConfiguration() = default;
     AWS_MANAGEDBLOCKCHAIN_API NetworkFrameworkConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDBLOCKCHAIN_API NetworkFrameworkConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDBLOCKCHAIN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Hyperledger Fabric configuration properties for a Managed Blockchain network
      * that uses Hyperledger Fabric. </p>
      */
-    inline const NetworkFabricConfiguration& GetFabric() const{ return m_fabric; }
-
-    /**
-     * <p> Hyperledger Fabric configuration properties for a Managed Blockchain network
-     * that uses Hyperledger Fabric. </p>
-     */
+    inline const NetworkFabricConfiguration& GetFabric() const { return m_fabric; }
     inline bool FabricHasBeenSet() const { return m_fabricHasBeenSet; }
-
-    /**
-     * <p> Hyperledger Fabric configuration properties for a Managed Blockchain network
-     * that uses Hyperledger Fabric. </p>
-     */
-    inline void SetFabric(const NetworkFabricConfiguration& value) { m_fabricHasBeenSet = true; m_fabric = value; }
-
-    /**
-     * <p> Hyperledger Fabric configuration properties for a Managed Blockchain network
-     * that uses Hyperledger Fabric. </p>
-     */
-    inline void SetFabric(NetworkFabricConfiguration&& value) { m_fabricHasBeenSet = true; m_fabric = std::move(value); }
-
-    /**
-     * <p> Hyperledger Fabric configuration properties for a Managed Blockchain network
-     * that uses Hyperledger Fabric. </p>
-     */
-    inline NetworkFrameworkConfiguration& WithFabric(const NetworkFabricConfiguration& value) { SetFabric(value); return *this;}
-
-    /**
-     * <p> Hyperledger Fabric configuration properties for a Managed Blockchain network
-     * that uses Hyperledger Fabric. </p>
-     */
-    inline NetworkFrameworkConfiguration& WithFabric(NetworkFabricConfiguration&& value) { SetFabric(std::move(value)); return *this;}
-
+    template<typename FabricT = NetworkFabricConfiguration>
+    void SetFabric(FabricT&& value) { m_fabricHasBeenSet = true; m_fabric = std::forward<FabricT>(value); }
+    template<typename FabricT = NetworkFabricConfiguration>
+    NetworkFrameworkConfiguration& WithFabric(FabricT&& value) { SetFabric(std::forward<FabricT>(value)); return *this;}
+    ///@}
   private:
 
     NetworkFabricConfiguration m_fabric;

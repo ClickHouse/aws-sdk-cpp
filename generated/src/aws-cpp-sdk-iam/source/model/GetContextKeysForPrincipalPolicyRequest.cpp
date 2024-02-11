@@ -10,12 +10,6 @@
 using namespace Aws::IAM::Model;
 using namespace Aws::Utils;
 
-GetContextKeysForPrincipalPolicyRequest::GetContextKeysForPrincipalPolicyRequest() : 
-    m_policySourceArnHasBeenSet(false),
-    m_policyInputListHasBeenSet(false)
-{
-}
-
 Aws::String GetContextKeysForPrincipalPolicyRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,12 +21,19 @@ Aws::String GetContextKeysForPrincipalPolicyRequest::SerializePayload() const
 
   if(m_policyInputListHasBeenSet)
   {
-    unsigned policyInputListCount = 1;
-    for(auto& item : m_policyInputList)
+    if (m_policyInputList.empty())
     {
-      ss << "PolicyInputList.member." << policyInputListCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      policyInputListCount++;
+      ss << "PolicyInputList=&";
+    }
+    else
+    {
+      unsigned policyInputListCount = 1;
+      for(auto& item : m_policyInputList)
+      {
+        ss << "PolicyInputList.member." << policyInputListCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        policyInputListCount++;
+      }
     }
   }
 

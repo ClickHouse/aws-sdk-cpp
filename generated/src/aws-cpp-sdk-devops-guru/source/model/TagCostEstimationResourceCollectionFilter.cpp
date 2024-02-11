@@ -18,15 +18,7 @@ namespace DevOpsGuru
 namespace Model
 {
 
-TagCostEstimationResourceCollectionFilter::TagCostEstimationResourceCollectionFilter() : 
-    m_appBoundaryKeyHasBeenSet(false),
-    m_tagValuesHasBeenSet(false)
-{
-}
-
-TagCostEstimationResourceCollectionFilter::TagCostEstimationResourceCollectionFilter(JsonView jsonValue) : 
-    m_appBoundaryKeyHasBeenSet(false),
-    m_tagValuesHasBeenSet(false)
+TagCostEstimationResourceCollectionFilter::TagCostEstimationResourceCollectionFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ TagCostEstimationResourceCollectionFilter& TagCostEstimationResourceCollectionFi
   if(jsonValue.ValueExists("AppBoundaryKey"))
   {
     m_appBoundaryKey = jsonValue.GetString("AppBoundaryKey");
-
     m_appBoundaryKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TagValues"))
   {
     Aws::Utils::Array<JsonView> tagValuesJsonList = jsonValue.GetArray("TagValues");
@@ -49,7 +39,6 @@ TagCostEstimationResourceCollectionFilter& TagCostEstimationResourceCollectionFi
     }
     m_tagValuesHasBeenSet = true;
   }
-
   return *this;
 }
 

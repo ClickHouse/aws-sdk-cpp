@@ -22,7 +22,7 @@ namespace Model
   class DescribeEffectivePolicyRequest : public OrganizationsRequest
   {
   public:
-    AWS_ORGANIZATIONS_API DescribeEffectivePolicyRequest();
+    AWS_ORGANIZATIONS_API DescribeEffectivePolicyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,138 +35,45 @@ namespace Model
     AWS_ORGANIZATIONS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The type of policy that you want information about. You can specify one of
      * the following values:</p> <ul> <li> <p> <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html">DECLARATIVE_POLICY_EC2</a>
      * </p> </li> <li> <p> <a
      * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html">BACKUP_POLICY</a>
      * </p> </li> <li> <p> <a
      * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">TAG_POLICY</a>
-     * </p> </li> </ul>
-     */
-    inline const EffectivePolicyType& GetPolicyType() const{ return m_policyType; }
-
-    /**
-     * <p>The type of policy that you want information about. You can specify one of
-     * the following values:</p> <ul> <li> <p> <a
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html">CHATBOT_POLICY</a>
+     * </p> </li> <li> <p> <a
      * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
      * </p> </li> <li> <p> <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html">BACKUP_POLICY</a>
-     * </p> </li> <li> <p> <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">TAG_POLICY</a>
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_security_hub.html">SECURITYHUB_POLICY</a>
      * </p> </li> </ul>
      */
+    inline EffectivePolicyType GetPolicyType() const { return m_policyType; }
     inline bool PolicyTypeHasBeenSet() const { return m_policyTypeHasBeenSet; }
+    inline void SetPolicyType(EffectivePolicyType value) { m_policyTypeHasBeenSet = true; m_policyType = value; }
+    inline DescribeEffectivePolicyRequest& WithPolicyType(EffectivePolicyType value) { SetPolicyType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of policy that you want information about. You can specify one of
-     * the following values:</p> <ul> <li> <p> <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
-     * </p> </li> <li> <p> <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html">BACKUP_POLICY</a>
-     * </p> </li> <li> <p> <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">TAG_POLICY</a>
-     * </p> </li> </ul>
-     */
-    inline void SetPolicyType(const EffectivePolicyType& value) { m_policyTypeHasBeenSet = true; m_policyType = value; }
-
-    /**
-     * <p>The type of policy that you want information about. You can specify one of
-     * the following values:</p> <ul> <li> <p> <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
-     * </p> </li> <li> <p> <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html">BACKUP_POLICY</a>
-     * </p> </li> <li> <p> <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">TAG_POLICY</a>
-     * </p> </li> </ul>
-     */
-    inline void SetPolicyType(EffectivePolicyType&& value) { m_policyTypeHasBeenSet = true; m_policyType = std::move(value); }
-
-    /**
-     * <p>The type of policy that you want information about. You can specify one of
-     * the following values:</p> <ul> <li> <p> <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
-     * </p> </li> <li> <p> <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html">BACKUP_POLICY</a>
-     * </p> </li> <li> <p> <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">TAG_POLICY</a>
-     * </p> </li> </ul>
-     */
-    inline DescribeEffectivePolicyRequest& WithPolicyType(const EffectivePolicyType& value) { SetPolicyType(value); return *this;}
-
-    /**
-     * <p>The type of policy that you want information about. You can specify one of
-     * the following values:</p> <ul> <li> <p> <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
-     * </p> </li> <li> <p> <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html">BACKUP_POLICY</a>
-     * </p> </li> <li> <p> <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">TAG_POLICY</a>
-     * </p> </li> </ul>
-     */
-    inline DescribeEffectivePolicyRequest& WithPolicyType(EffectivePolicyType&& value) { SetPolicyType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>When you're signed in as the management account, specify the ID of the
      * account that you want details about. Specifying an organization root or
      * organizational unit (OU) as the target is not supported.</p>
      */
-    inline const Aws::String& GetTargetId() const{ return m_targetId; }
-
-    /**
-     * <p>When you're signed in as the management account, specify the ID of the
-     * account that you want details about. Specifying an organization root or
-     * organizational unit (OU) as the target is not supported.</p>
-     */
+    inline const Aws::String& GetTargetId() const { return m_targetId; }
     inline bool TargetIdHasBeenSet() const { return m_targetIdHasBeenSet; }
-
-    /**
-     * <p>When you're signed in as the management account, specify the ID of the
-     * account that you want details about. Specifying an organization root or
-     * organizational unit (OU) as the target is not supported.</p>
-     */
-    inline void SetTargetId(const Aws::String& value) { m_targetIdHasBeenSet = true; m_targetId = value; }
-
-    /**
-     * <p>When you're signed in as the management account, specify the ID of the
-     * account that you want details about. Specifying an organization root or
-     * organizational unit (OU) as the target is not supported.</p>
-     */
-    inline void SetTargetId(Aws::String&& value) { m_targetIdHasBeenSet = true; m_targetId = std::move(value); }
-
-    /**
-     * <p>When you're signed in as the management account, specify the ID of the
-     * account that you want details about. Specifying an organization root or
-     * organizational unit (OU) as the target is not supported.</p>
-     */
-    inline void SetTargetId(const char* value) { m_targetIdHasBeenSet = true; m_targetId.assign(value); }
-
-    /**
-     * <p>When you're signed in as the management account, specify the ID of the
-     * account that you want details about. Specifying an organization root or
-     * organizational unit (OU) as the target is not supported.</p>
-     */
-    inline DescribeEffectivePolicyRequest& WithTargetId(const Aws::String& value) { SetTargetId(value); return *this;}
-
-    /**
-     * <p>When you're signed in as the management account, specify the ID of the
-     * account that you want details about. Specifying an organization root or
-     * organizational unit (OU) as the target is not supported.</p>
-     */
-    inline DescribeEffectivePolicyRequest& WithTargetId(Aws::String&& value) { SetTargetId(std::move(value)); return *this;}
-
-    /**
-     * <p>When you're signed in as the management account, specify the ID of the
-     * account that you want details about. Specifying an organization root or
-     * organizational unit (OU) as the target is not supported.</p>
-     */
-    inline DescribeEffectivePolicyRequest& WithTargetId(const char* value) { SetTargetId(value); return *this;}
-
+    template<typename TargetIdT = Aws::String>
+    void SetTargetId(TargetIdT&& value) { m_targetIdHasBeenSet = true; m_targetId = std::forward<TargetIdT>(value); }
+    template<typename TargetIdT = Aws::String>
+    DescribeEffectivePolicyRequest& WithTargetId(TargetIdT&& value) { SetTargetId(std::forward<TargetIdT>(value)); return *this;}
+    ///@}
   private:
 
-    EffectivePolicyType m_policyType;
+    EffectivePolicyType m_policyType{EffectivePolicyType::NOT_SET};
     bool m_policyTypeHasBeenSet = false;
 
     Aws::String m_targetId;

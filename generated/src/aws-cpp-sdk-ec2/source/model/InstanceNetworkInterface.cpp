@@ -20,51 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InstanceNetworkInterface::InstanceNetworkInterface() : 
-    m_associationHasBeenSet(false),
-    m_attachmentHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_groupsHasBeenSet(false),
-    m_ipv6AddressesHasBeenSet(false),
-    m_macAddressHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_privateDnsNameHasBeenSet(false),
-    m_privateIpAddressHasBeenSet(false),
-    m_privateIpAddressesHasBeenSet(false),
-    m_sourceDestCheck(false),
-    m_sourceDestCheckHasBeenSet(false),
-    m_status(NetworkInterfaceStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_interfaceTypeHasBeenSet(false),
-    m_ipv4PrefixesHasBeenSet(false),
-    m_ipv6PrefixesHasBeenSet(false)
-{
-}
-
-InstanceNetworkInterface::InstanceNetworkInterface(const XmlNode& xmlNode) : 
-    m_associationHasBeenSet(false),
-    m_attachmentHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_groupsHasBeenSet(false),
-    m_ipv6AddressesHasBeenSet(false),
-    m_macAddressHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_privateDnsNameHasBeenSet(false),
-    m_privateIpAddressHasBeenSet(false),
-    m_privateIpAddressesHasBeenSet(false),
-    m_sourceDestCheck(false),
-    m_sourceDestCheckHasBeenSet(false),
-    m_status(NetworkInterfaceStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_interfaceTypeHasBeenSet(false),
-    m_ipv4PrefixesHasBeenSet(false),
-    m_ipv6PrefixesHasBeenSet(false)
+InstanceNetworkInterface::InstanceNetworkInterface(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -97,6 +53,7 @@ InstanceNetworkInterface& InstanceNetworkInterface::operator =(const XmlNode& xm
     if(!groupsNode.IsNull())
     {
       XmlNode groupsMember = groupsNode.FirstChild("item");
+      m_groupsHasBeenSet = !groupsMember.IsNull();
       while(!groupsMember.IsNull())
       {
         m_groups.push_back(groupsMember);
@@ -109,6 +66,7 @@ InstanceNetworkInterface& InstanceNetworkInterface::operator =(const XmlNode& xm
     if(!ipv6AddressesNode.IsNull())
     {
       XmlNode ipv6AddressesMember = ipv6AddressesNode.FirstChild("item");
+      m_ipv6AddressesHasBeenSet = !ipv6AddressesMember.IsNull();
       while(!ipv6AddressesMember.IsNull())
       {
         m_ipv6Addresses.push_back(ipv6AddressesMember);
@@ -151,6 +109,7 @@ InstanceNetworkInterface& InstanceNetworkInterface::operator =(const XmlNode& xm
     if(!privateIpAddressesNode.IsNull())
     {
       XmlNode privateIpAddressesMember = privateIpAddressesNode.FirstChild("item");
+      m_privateIpAddressesHasBeenSet = !privateIpAddressesMember.IsNull();
       while(!privateIpAddressesMember.IsNull())
       {
         m_privateIpAddresses.push_back(privateIpAddressesMember);
@@ -168,7 +127,7 @@ InstanceNetworkInterface& InstanceNetworkInterface::operator =(const XmlNode& xm
     XmlNode statusNode = resultNode.FirstChild("status");
     if(!statusNode.IsNull())
     {
-      m_status = NetworkInterfaceStatusMapper::GetNetworkInterfaceStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = NetworkInterfaceStatusMapper::GetNetworkInterfaceStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode subnetIdNode = resultNode.FirstChild("subnetId");
@@ -193,6 +152,7 @@ InstanceNetworkInterface& InstanceNetworkInterface::operator =(const XmlNode& xm
     if(!ipv4PrefixesNode.IsNull())
     {
       XmlNode ipv4PrefixesMember = ipv4PrefixesNode.FirstChild("item");
+      m_ipv4PrefixesHasBeenSet = !ipv4PrefixesMember.IsNull();
       while(!ipv4PrefixesMember.IsNull())
       {
         m_ipv4Prefixes.push_back(ipv4PrefixesMember);
@@ -205,6 +165,7 @@ InstanceNetworkInterface& InstanceNetworkInterface::operator =(const XmlNode& xm
     if(!ipv6PrefixesNode.IsNull())
     {
       XmlNode ipv6PrefixesMember = ipv6PrefixesNode.FirstChild("item");
+      m_ipv6PrefixesHasBeenSet = !ipv6PrefixesMember.IsNull();
       while(!ipv6PrefixesMember.IsNull())
       {
         m_ipv6Prefixes.push_back(ipv6PrefixesMember);
@@ -212,6 +173,18 @@ InstanceNetworkInterface& InstanceNetworkInterface::operator =(const XmlNode& xm
       }
 
       m_ipv6PrefixesHasBeenSet = true;
+    }
+    XmlNode connectionTrackingConfigurationNode = resultNode.FirstChild("connectionTrackingConfiguration");
+    if(!connectionTrackingConfigurationNode.IsNull())
+    {
+      m_connectionTrackingConfiguration = connectionTrackingConfigurationNode;
+      m_connectionTrackingConfigurationHasBeenSet = true;
+    }
+    XmlNode operatorNode = resultNode.FirstChild("operator");
+    if(!operatorNode.IsNull())
+    {
+      m_operator = operatorNode;
+      m_operatorHasBeenSet = true;
     }
   }
 
@@ -304,7 +277,7 @@ void InstanceNetworkInterface::OutputToStream(Aws::OStream& oStream, const char*
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << NetworkInterfaceStatusMapper::GetNameForNetworkInterfaceStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(NetworkInterfaceStatusMapper::GetNameForNetworkInterfaceStatus(m_status)) << "&";
   }
 
   if(m_subnetIdHasBeenSet)
@@ -344,6 +317,20 @@ void InstanceNetworkInterface::OutputToStream(Aws::OStream& oStream, const char*
       }
   }
 
+  if(m_connectionTrackingConfigurationHasBeenSet)
+  {
+      Aws::StringStream connectionTrackingConfigurationLocationAndMemberSs;
+      connectionTrackingConfigurationLocationAndMemberSs << location << index << locationValue << ".ConnectionTrackingConfiguration";
+      m_connectionTrackingConfiguration.OutputToStream(oStream, connectionTrackingConfigurationLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_operatorHasBeenSet)
+  {
+      Aws::StringStream operatorLocationAndMemberSs;
+      operatorLocationAndMemberSs << location << index << locationValue << ".Operator";
+      m_operator.OutputToStream(oStream, operatorLocationAndMemberSs.str().c_str());
+  }
+
 }
 
 void InstanceNetworkInterface::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -370,7 +357,7 @@ void InstanceNetworkInterface::OutputToStream(Aws::OStream& oStream, const char*
       for(auto& item : m_groups)
       {
         Aws::StringStream groupsSs;
-        groupsSs << location <<  ".GroupSet." << groupsIdx++;
+        groupsSs << location << ".GroupSet." << groupsIdx++;
         item.OutputToStream(oStream, groupsSs.str().c_str());
       }
   }
@@ -380,7 +367,7 @@ void InstanceNetworkInterface::OutputToStream(Aws::OStream& oStream, const char*
       for(auto& item : m_ipv6Addresses)
       {
         Aws::StringStream ipv6AddressesSs;
-        ipv6AddressesSs << location <<  ".Ipv6AddressesSet." << ipv6AddressesIdx++;
+        ipv6AddressesSs << location << ".Ipv6AddressesSet." << ipv6AddressesIdx++;
         item.OutputToStream(oStream, ipv6AddressesSs.str().c_str());
       }
   }
@@ -410,7 +397,7 @@ void InstanceNetworkInterface::OutputToStream(Aws::OStream& oStream, const char*
       for(auto& item : m_privateIpAddresses)
       {
         Aws::StringStream privateIpAddressesSs;
-        privateIpAddressesSs << location <<  ".PrivateIpAddressesSet." << privateIpAddressesIdx++;
+        privateIpAddressesSs << location << ".PrivateIpAddressesSet." << privateIpAddressesIdx++;
         item.OutputToStream(oStream, privateIpAddressesSs.str().c_str());
       }
   }
@@ -420,7 +407,7 @@ void InstanceNetworkInterface::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << NetworkInterfaceStatusMapper::GetNameForNetworkInterfaceStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(NetworkInterfaceStatusMapper::GetNameForNetworkInterfaceStatus(m_status)) << "&";
   }
   if(m_subnetIdHasBeenSet)
   {
@@ -440,7 +427,7 @@ void InstanceNetworkInterface::OutputToStream(Aws::OStream& oStream, const char*
       for(auto& item : m_ipv4Prefixes)
       {
         Aws::StringStream ipv4PrefixesSs;
-        ipv4PrefixesSs << location <<  ".Ipv4PrefixSet." << ipv4PrefixesIdx++;
+        ipv4PrefixesSs << location << ".Ipv4PrefixSet." << ipv4PrefixesIdx++;
         item.OutputToStream(oStream, ipv4PrefixesSs.str().c_str());
       }
   }
@@ -450,9 +437,21 @@ void InstanceNetworkInterface::OutputToStream(Aws::OStream& oStream, const char*
       for(auto& item : m_ipv6Prefixes)
       {
         Aws::StringStream ipv6PrefixesSs;
-        ipv6PrefixesSs << location <<  ".Ipv6PrefixSet." << ipv6PrefixesIdx++;
+        ipv6PrefixesSs << location << ".Ipv6PrefixSet." << ipv6PrefixesIdx++;
         item.OutputToStream(oStream, ipv6PrefixesSs.str().c_str());
       }
+  }
+  if(m_connectionTrackingConfigurationHasBeenSet)
+  {
+      Aws::String connectionTrackingConfigurationLocationAndMember(location);
+      connectionTrackingConfigurationLocationAndMember += ".ConnectionTrackingConfiguration";
+      m_connectionTrackingConfiguration.OutputToStream(oStream, connectionTrackingConfigurationLocationAndMember.c_str());
+  }
+  if(m_operatorHasBeenSet)
+  {
+      Aws::String operatorLocationAndMember(location);
+      operatorLocationAndMember += ".Operator";
+      m_operator.OutputToStream(oStream, operatorLocationAndMember.c_str());
   }
 }
 

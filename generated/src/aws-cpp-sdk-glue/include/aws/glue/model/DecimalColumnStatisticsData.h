@@ -32,115 +32,55 @@ namespace Model
   class DecimalColumnStatisticsData
   {
   public:
-    AWS_GLUE_API DecimalColumnStatisticsData();
+    AWS_GLUE_API DecimalColumnStatisticsData() = default;
     AWS_GLUE_API DecimalColumnStatisticsData(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API DecimalColumnStatisticsData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The lowest value in the column.</p>
      */
-    inline const DecimalNumber& GetMinimumValue() const{ return m_minimumValue; }
-
-    /**
-     * <p>The lowest value in the column.</p>
-     */
+    inline const DecimalNumber& GetMinimumValue() const { return m_minimumValue; }
     inline bool MinimumValueHasBeenSet() const { return m_minimumValueHasBeenSet; }
+    template<typename MinimumValueT = DecimalNumber>
+    void SetMinimumValue(MinimumValueT&& value) { m_minimumValueHasBeenSet = true; m_minimumValue = std::forward<MinimumValueT>(value); }
+    template<typename MinimumValueT = DecimalNumber>
+    DecimalColumnStatisticsData& WithMinimumValue(MinimumValueT&& value) { SetMinimumValue(std::forward<MinimumValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The lowest value in the column.</p>
-     */
-    inline void SetMinimumValue(const DecimalNumber& value) { m_minimumValueHasBeenSet = true; m_minimumValue = value; }
-
-    /**
-     * <p>The lowest value in the column.</p>
-     */
-    inline void SetMinimumValue(DecimalNumber&& value) { m_minimumValueHasBeenSet = true; m_minimumValue = std::move(value); }
-
-    /**
-     * <p>The lowest value in the column.</p>
-     */
-    inline DecimalColumnStatisticsData& WithMinimumValue(const DecimalNumber& value) { SetMinimumValue(value); return *this;}
-
-    /**
-     * <p>The lowest value in the column.</p>
-     */
-    inline DecimalColumnStatisticsData& WithMinimumValue(DecimalNumber&& value) { SetMinimumValue(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The highest value in the column.</p>
      */
-    inline const DecimalNumber& GetMaximumValue() const{ return m_maximumValue; }
-
-    /**
-     * <p>The highest value in the column.</p>
-     */
+    inline const DecimalNumber& GetMaximumValue() const { return m_maximumValue; }
     inline bool MaximumValueHasBeenSet() const { return m_maximumValueHasBeenSet; }
+    template<typename MaximumValueT = DecimalNumber>
+    void SetMaximumValue(MaximumValueT&& value) { m_maximumValueHasBeenSet = true; m_maximumValue = std::forward<MaximumValueT>(value); }
+    template<typename MaximumValueT = DecimalNumber>
+    DecimalColumnStatisticsData& WithMaximumValue(MaximumValueT&& value) { SetMaximumValue(std::forward<MaximumValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The highest value in the column.</p>
-     */
-    inline void SetMaximumValue(const DecimalNumber& value) { m_maximumValueHasBeenSet = true; m_maximumValue = value; }
-
-    /**
-     * <p>The highest value in the column.</p>
-     */
-    inline void SetMaximumValue(DecimalNumber&& value) { m_maximumValueHasBeenSet = true; m_maximumValue = std::move(value); }
-
-    /**
-     * <p>The highest value in the column.</p>
-     */
-    inline DecimalColumnStatisticsData& WithMaximumValue(const DecimalNumber& value) { SetMaximumValue(value); return *this;}
-
-    /**
-     * <p>The highest value in the column.</p>
-     */
-    inline DecimalColumnStatisticsData& WithMaximumValue(DecimalNumber&& value) { SetMaximumValue(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of null values in the column.</p>
      */
-    inline long long GetNumberOfNulls() const{ return m_numberOfNulls; }
-
-    /**
-     * <p>The number of null values in the column.</p>
-     */
+    inline long long GetNumberOfNulls() const { return m_numberOfNulls; }
     inline bool NumberOfNullsHasBeenSet() const { return m_numberOfNullsHasBeenSet; }
-
-    /**
-     * <p>The number of null values in the column.</p>
-     */
     inline void SetNumberOfNulls(long long value) { m_numberOfNullsHasBeenSet = true; m_numberOfNulls = value; }
-
-    /**
-     * <p>The number of null values in the column.</p>
-     */
     inline DecimalColumnStatisticsData& WithNumberOfNulls(long long value) { SetNumberOfNulls(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of distinct values in a column.</p>
      */
-    inline long long GetNumberOfDistinctValues() const{ return m_numberOfDistinctValues; }
-
-    /**
-     * <p>The number of distinct values in a column.</p>
-     */
+    inline long long GetNumberOfDistinctValues() const { return m_numberOfDistinctValues; }
     inline bool NumberOfDistinctValuesHasBeenSet() const { return m_numberOfDistinctValuesHasBeenSet; }
-
-    /**
-     * <p>The number of distinct values in a column.</p>
-     */
     inline void SetNumberOfDistinctValues(long long value) { m_numberOfDistinctValuesHasBeenSet = true; m_numberOfDistinctValues = value; }
-
-    /**
-     * <p>The number of distinct values in a column.</p>
-     */
     inline DecimalColumnStatisticsData& WithNumberOfDistinctValues(long long value) { SetNumberOfDistinctValues(value); return *this;}
-
+    ///@}
   private:
 
     DecimalNumber m_minimumValue;
@@ -149,10 +89,10 @@ namespace Model
     DecimalNumber m_maximumValue;
     bool m_maximumValueHasBeenSet = false;
 
-    long long m_numberOfNulls;
+    long long m_numberOfNulls{0};
     bool m_numberOfNullsHasBeenSet = false;
 
-    long long m_numberOfDistinctValues;
+    long long m_numberOfDistinctValues{0};
     bool m_numberOfDistinctValuesHasBeenSet = false;
   };
 

@@ -35,167 +35,55 @@ namespace Model
   class CanDbcDefinition
   {
   public:
-    AWS_IOTFLEETWISE_API CanDbcDefinition();
+    AWS_IOTFLEETWISE_API CanDbcDefinition() = default;
     AWS_IOTFLEETWISE_API CanDbcDefinition(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTFLEETWISE_API CanDbcDefinition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTFLEETWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Contains information about a network interface.</p>
      */
-    inline const Aws::String& GetNetworkInterface() const{ return m_networkInterface; }
-
-    /**
-     * <p>Contains information about a network interface.</p>
-     */
+    inline const Aws::String& GetNetworkInterface() const { return m_networkInterface; }
     inline bool NetworkInterfaceHasBeenSet() const { return m_networkInterfaceHasBeenSet; }
+    template<typename NetworkInterfaceT = Aws::String>
+    void SetNetworkInterface(NetworkInterfaceT&& value) { m_networkInterfaceHasBeenSet = true; m_networkInterface = std::forward<NetworkInterfaceT>(value); }
+    template<typename NetworkInterfaceT = Aws::String>
+    CanDbcDefinition& WithNetworkInterface(NetworkInterfaceT&& value) { SetNetworkInterface(std::forward<NetworkInterfaceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains information about a network interface.</p>
-     */
-    inline void SetNetworkInterface(const Aws::String& value) { m_networkInterfaceHasBeenSet = true; m_networkInterface = value; }
-
-    /**
-     * <p>Contains information about a network interface.</p>
-     */
-    inline void SetNetworkInterface(Aws::String&& value) { m_networkInterfaceHasBeenSet = true; m_networkInterface = std::move(value); }
-
-    /**
-     * <p>Contains information about a network interface.</p>
-     */
-    inline void SetNetworkInterface(const char* value) { m_networkInterfaceHasBeenSet = true; m_networkInterface.assign(value); }
-
-    /**
-     * <p>Contains information about a network interface.</p>
-     */
-    inline CanDbcDefinition& WithNetworkInterface(const Aws::String& value) { SetNetworkInterface(value); return *this;}
-
-    /**
-     * <p>Contains information about a network interface.</p>
-     */
-    inline CanDbcDefinition& WithNetworkInterface(Aws::String&& value) { SetNetworkInterface(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains information about a network interface.</p>
-     */
-    inline CanDbcDefinition& WithNetworkInterface(const char* value) { SetNetworkInterface(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of DBC files. You can upload only one DBC file for each network
-     * interface and specify up to five (inclusive) files in the list.</p>
+     * interface and specify up to five (inclusive) files in the list. The DBC file can
+     * be a maximum size of 200 MB.</p>
      */
-    inline const Aws::Vector<Aws::Utils::ByteBuffer>& GetCanDbcFiles() const{ return m_canDbcFiles; }
-
-    /**
-     * <p>A list of DBC files. You can upload only one DBC file for each network
-     * interface and specify up to five (inclusive) files in the list.</p>
-     */
+    inline const Aws::Vector<Aws::Utils::ByteBuffer>& GetCanDbcFiles() const { return m_canDbcFiles; }
     inline bool CanDbcFilesHasBeenSet() const { return m_canDbcFilesHasBeenSet; }
+    template<typename CanDbcFilesT = Aws::Vector<Aws::Utils::ByteBuffer>>
+    void SetCanDbcFiles(CanDbcFilesT&& value) { m_canDbcFilesHasBeenSet = true; m_canDbcFiles = std::forward<CanDbcFilesT>(value); }
+    template<typename CanDbcFilesT = Aws::Vector<Aws::Utils::ByteBuffer>>
+    CanDbcDefinition& WithCanDbcFiles(CanDbcFilesT&& value) { SetCanDbcFiles(std::forward<CanDbcFilesT>(value)); return *this;}
+    template<typename CanDbcFilesT = Aws::Utils::ByteBuffer>
+    CanDbcDefinition& AddCanDbcFiles(CanDbcFilesT&& value) { m_canDbcFilesHasBeenSet = true; m_canDbcFiles.emplace_back(std::forward<CanDbcFilesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of DBC files. You can upload only one DBC file for each network
-     * interface and specify up to five (inclusive) files in the list.</p>
-     */
-    inline void SetCanDbcFiles(const Aws::Vector<Aws::Utils::ByteBuffer>& value) { m_canDbcFilesHasBeenSet = true; m_canDbcFiles = value; }
-
-    /**
-     * <p>A list of DBC files. You can upload only one DBC file for each network
-     * interface and specify up to five (inclusive) files in the list.</p>
-     */
-    inline void SetCanDbcFiles(Aws::Vector<Aws::Utils::ByteBuffer>&& value) { m_canDbcFilesHasBeenSet = true; m_canDbcFiles = std::move(value); }
-
-    /**
-     * <p>A list of DBC files. You can upload only one DBC file for each network
-     * interface and specify up to five (inclusive) files in the list.</p>
-     */
-    inline CanDbcDefinition& WithCanDbcFiles(const Aws::Vector<Aws::Utils::ByteBuffer>& value) { SetCanDbcFiles(value); return *this;}
-
-    /**
-     * <p>A list of DBC files. You can upload only one DBC file for each network
-     * interface and specify up to five (inclusive) files in the list.</p>
-     */
-    inline CanDbcDefinition& WithCanDbcFiles(Aws::Vector<Aws::Utils::ByteBuffer>&& value) { SetCanDbcFiles(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of DBC files. You can upload only one DBC file for each network
-     * interface and specify up to five (inclusive) files in the list.</p>
-     */
-    inline CanDbcDefinition& AddCanDbcFiles(const Aws::Utils::ByteBuffer& value) { m_canDbcFilesHasBeenSet = true; m_canDbcFiles.push_back(value); return *this; }
-
-    /**
-     * <p>A list of DBC files. You can upload only one DBC file for each network
-     * interface and specify up to five (inclusive) files in the list.</p>
-     */
-    inline CanDbcDefinition& AddCanDbcFiles(Aws::Utils::ByteBuffer&& value) { m_canDbcFilesHasBeenSet = true; m_canDbcFiles.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Pairs every signal specified in your vehicle model with a signal decoder.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetSignalsMap() const{ return m_signalsMap; }
-
-    /**
-     * <p>Pairs every signal specified in your vehicle model with a signal decoder.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetSignalsMap() const { return m_signalsMap; }
     inline bool SignalsMapHasBeenSet() const { return m_signalsMapHasBeenSet; }
-
-    /**
-     * <p>Pairs every signal specified in your vehicle model with a signal decoder.</p>
-     */
-    inline void SetSignalsMap(const Aws::Map<Aws::String, Aws::String>& value) { m_signalsMapHasBeenSet = true; m_signalsMap = value; }
-
-    /**
-     * <p>Pairs every signal specified in your vehicle model with a signal decoder.</p>
-     */
-    inline void SetSignalsMap(Aws::Map<Aws::String, Aws::String>&& value) { m_signalsMapHasBeenSet = true; m_signalsMap = std::move(value); }
-
-    /**
-     * <p>Pairs every signal specified in your vehicle model with a signal decoder.</p>
-     */
-    inline CanDbcDefinition& WithSignalsMap(const Aws::Map<Aws::String, Aws::String>& value) { SetSignalsMap(value); return *this;}
-
-    /**
-     * <p>Pairs every signal specified in your vehicle model with a signal decoder.</p>
-     */
-    inline CanDbcDefinition& WithSignalsMap(Aws::Map<Aws::String, Aws::String>&& value) { SetSignalsMap(std::move(value)); return *this;}
-
-    /**
-     * <p>Pairs every signal specified in your vehicle model with a signal decoder.</p>
-     */
-    inline CanDbcDefinition& AddSignalsMap(const Aws::String& key, const Aws::String& value) { m_signalsMapHasBeenSet = true; m_signalsMap.emplace(key, value); return *this; }
-
-    /**
-     * <p>Pairs every signal specified in your vehicle model with a signal decoder.</p>
-     */
-    inline CanDbcDefinition& AddSignalsMap(Aws::String&& key, const Aws::String& value) { m_signalsMapHasBeenSet = true; m_signalsMap.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Pairs every signal specified in your vehicle model with a signal decoder.</p>
-     */
-    inline CanDbcDefinition& AddSignalsMap(const Aws::String& key, Aws::String&& value) { m_signalsMapHasBeenSet = true; m_signalsMap.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Pairs every signal specified in your vehicle model with a signal decoder.</p>
-     */
-    inline CanDbcDefinition& AddSignalsMap(Aws::String&& key, Aws::String&& value) { m_signalsMapHasBeenSet = true; m_signalsMap.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Pairs every signal specified in your vehicle model with a signal decoder.</p>
-     */
-    inline CanDbcDefinition& AddSignalsMap(const char* key, Aws::String&& value) { m_signalsMapHasBeenSet = true; m_signalsMap.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Pairs every signal specified in your vehicle model with a signal decoder.</p>
-     */
-    inline CanDbcDefinition& AddSignalsMap(Aws::String&& key, const char* value) { m_signalsMapHasBeenSet = true; m_signalsMap.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Pairs every signal specified in your vehicle model with a signal decoder.</p>
-     */
-    inline CanDbcDefinition& AddSignalsMap(const char* key, const char* value) { m_signalsMapHasBeenSet = true; m_signalsMap.emplace(key, value); return *this; }
-
+    template<typename SignalsMapT = Aws::Map<Aws::String, Aws::String>>
+    void SetSignalsMap(SignalsMapT&& value) { m_signalsMapHasBeenSet = true; m_signalsMap = std::forward<SignalsMapT>(value); }
+    template<typename SignalsMapT = Aws::Map<Aws::String, Aws::String>>
+    CanDbcDefinition& WithSignalsMap(SignalsMapT&& value) { SetSignalsMap(std::forward<SignalsMapT>(value)); return *this;}
+    template<typename SignalsMapKeyT = Aws::String, typename SignalsMapValueT = Aws::String>
+    CanDbcDefinition& AddSignalsMap(SignalsMapKeyT&& key, SignalsMapValueT&& value) {
+      m_signalsMapHasBeenSet = true; m_signalsMap.emplace(std::forward<SignalsMapKeyT>(key), std::forward<SignalsMapValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_networkInterface;

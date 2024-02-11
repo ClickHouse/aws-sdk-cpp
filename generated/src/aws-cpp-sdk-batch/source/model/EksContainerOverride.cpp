@@ -18,34 +18,23 @@ namespace Batch
 namespace Model
 {
 
-EksContainerOverride::EksContainerOverride() : 
-    m_imageHasBeenSet(false),
-    m_commandHasBeenSet(false),
-    m_argsHasBeenSet(false),
-    m_envHasBeenSet(false),
-    m_resourcesHasBeenSet(false)
-{
-}
-
-EksContainerOverride::EksContainerOverride(JsonView jsonValue) : 
-    m_imageHasBeenSet(false),
-    m_commandHasBeenSet(false),
-    m_argsHasBeenSet(false),
-    m_envHasBeenSet(false),
-    m_resourcesHasBeenSet(false)
+EksContainerOverride::EksContainerOverride(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 EksContainerOverride& EksContainerOverride::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("name"))
+  {
+    m_name = jsonValue.GetString("name");
+    m_nameHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("image"))
   {
     m_image = jsonValue.GetString("image");
-
     m_imageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("command"))
   {
     Aws::Utils::Array<JsonView> commandJsonList = jsonValue.GetArray("command");
@@ -55,7 +44,6 @@ EksContainerOverride& EksContainerOverride::operator =(JsonView jsonValue)
     }
     m_commandHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("args"))
   {
     Aws::Utils::Array<JsonView> argsJsonList = jsonValue.GetArray("args");
@@ -65,7 +53,6 @@ EksContainerOverride& EksContainerOverride::operator =(JsonView jsonValue)
     }
     m_argsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("env"))
   {
     Aws::Utils::Array<JsonView> envJsonList = jsonValue.GetArray("env");
@@ -75,20 +62,23 @@ EksContainerOverride& EksContainerOverride::operator =(JsonView jsonValue)
     }
     m_envHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("resources"))
   {
     m_resources = jsonValue.GetObject("resources");
-
     m_resourcesHasBeenSet = true;
   }
-
   return *this;
 }
 
 JsonValue EksContainerOverride::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_nameHasBeenSet)
+  {
+   payload.WithString("name", m_name);
+
+  }
 
   if(m_imageHasBeenSet)
   {

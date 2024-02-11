@@ -12,14 +12,6 @@ using namespace Aws::ApplicationDiscoveryService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartExportTaskRequest::StartExportTaskRequest() : 
-    m_exportDataFormatHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false)
-{
-}
-
 Aws::String StartExportTaskRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -54,6 +46,12 @@ Aws::String StartExportTaskRequest::SerializePayload() const
   if(m_endTimeHasBeenSet)
   {
    payload.WithDouble("endTime", m_endTime.SecondsWithMSPrecision());
+  }
+
+  if(m_preferencesHasBeenSet)
+  {
+   payload.WithObject("preferences", m_preferences.Jsonize());
+
   }
 
   return payload.View().WriteReadable();

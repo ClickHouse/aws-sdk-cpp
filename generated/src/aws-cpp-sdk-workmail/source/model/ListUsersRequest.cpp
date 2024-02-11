@@ -12,14 +12,6 @@ using namespace Aws::WorkMail::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListUsersRequest::ListUsersRequest() : 
-    m_organizationIdHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String ListUsersRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,6 +31,12 @@ Aws::String ListUsersRequest::SerializePayload() const
   if(m_maxResultsHasBeenSet)
   {
    payload.WithInteger("MaxResults", m_maxResults);
+
+  }
+
+  if(m_filtersHasBeenSet)
+  {
+   payload.WithObject("Filters", m_filters.Jsonize());
 
   }
 

@@ -12,12 +12,6 @@ using namespace Aws::WorkSpaces::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ModifyWorkspacePropertiesRequest::ModifyWorkspacePropertiesRequest() : 
-    m_workspaceIdHasBeenSet(false),
-    m_workspacePropertiesHasBeenSet(false)
-{
-}
-
 Aws::String ModifyWorkspacePropertiesRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -32,6 +26,11 @@ Aws::String ModifyWorkspacePropertiesRequest::SerializePayload() const
   {
    payload.WithObject("WorkspaceProperties", m_workspaceProperties.Jsonize());
 
+  }
+
+  if(m_dataReplicationHasBeenSet)
+  {
+   payload.WithString("DataReplication", DataReplicationMapper::GetNameForDataReplication(m_dataReplication));
   }
 
   return payload.View().WriteReadable();

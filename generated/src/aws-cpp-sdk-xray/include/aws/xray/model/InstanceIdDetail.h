@@ -32,52 +32,23 @@ namespace Model
   class InstanceIdDetail
   {
   public:
-    AWS_XRAY_API InstanceIdDetail();
+    AWS_XRAY_API InstanceIdDetail() = default;
     AWS_XRAY_API InstanceIdDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_XRAY_API InstanceIdDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_XRAY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of a corresponding EC2 instance.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of a corresponding EC2 instance.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
-
-    /**
-     * <p>The ID of a corresponding EC2 instance.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of a corresponding EC2 instance.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of a corresponding EC2 instance.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of a corresponding EC2 instance.</p>
-     */
-    inline InstanceIdDetail& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of a corresponding EC2 instance.</p>
-     */
-    inline InstanceIdDetail& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of a corresponding EC2 instance.</p>
-     */
-    inline InstanceIdDetail& WithId(const char* value) { SetId(value); return *this;}
-
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    InstanceIdDetail& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

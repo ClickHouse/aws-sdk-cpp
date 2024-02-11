@@ -33,48 +33,24 @@ namespace Model
   class InputProcessingConfigurationUpdate
   {
   public:
-    AWS_KINESISANALYTICS_API InputProcessingConfigurationUpdate();
+    AWS_KINESISANALYTICS_API InputProcessingConfigurationUpdate() = default;
     AWS_KINESISANALYTICS_API InputProcessingConfigurationUpdate(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICS_API InputProcessingConfigurationUpdate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Provides update information for an <a
      * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessor.html">InputLambdaProcessor</a>.</p>
      */
-    inline const InputLambdaProcessorUpdate& GetInputLambdaProcessorUpdate() const{ return m_inputLambdaProcessorUpdate; }
-
-    /**
-     * <p>Provides update information for an <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessor.html">InputLambdaProcessor</a>.</p>
-     */
+    inline const InputLambdaProcessorUpdate& GetInputLambdaProcessorUpdate() const { return m_inputLambdaProcessorUpdate; }
     inline bool InputLambdaProcessorUpdateHasBeenSet() const { return m_inputLambdaProcessorUpdateHasBeenSet; }
-
-    /**
-     * <p>Provides update information for an <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessor.html">InputLambdaProcessor</a>.</p>
-     */
-    inline void SetInputLambdaProcessorUpdate(const InputLambdaProcessorUpdate& value) { m_inputLambdaProcessorUpdateHasBeenSet = true; m_inputLambdaProcessorUpdate = value; }
-
-    /**
-     * <p>Provides update information for an <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessor.html">InputLambdaProcessor</a>.</p>
-     */
-    inline void SetInputLambdaProcessorUpdate(InputLambdaProcessorUpdate&& value) { m_inputLambdaProcessorUpdateHasBeenSet = true; m_inputLambdaProcessorUpdate = std::move(value); }
-
-    /**
-     * <p>Provides update information for an <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessor.html">InputLambdaProcessor</a>.</p>
-     */
-    inline InputProcessingConfigurationUpdate& WithInputLambdaProcessorUpdate(const InputLambdaProcessorUpdate& value) { SetInputLambdaProcessorUpdate(value); return *this;}
-
-    /**
-     * <p>Provides update information for an <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessor.html">InputLambdaProcessor</a>.</p>
-     */
-    inline InputProcessingConfigurationUpdate& WithInputLambdaProcessorUpdate(InputLambdaProcessorUpdate&& value) { SetInputLambdaProcessorUpdate(std::move(value)); return *this;}
-
+    template<typename InputLambdaProcessorUpdateT = InputLambdaProcessorUpdate>
+    void SetInputLambdaProcessorUpdate(InputLambdaProcessorUpdateT&& value) { m_inputLambdaProcessorUpdateHasBeenSet = true; m_inputLambdaProcessorUpdate = std::forward<InputLambdaProcessorUpdateT>(value); }
+    template<typename InputLambdaProcessorUpdateT = InputLambdaProcessorUpdate>
+    InputProcessingConfigurationUpdate& WithInputLambdaProcessorUpdate(InputLambdaProcessorUpdateT&& value) { SetInputLambdaProcessorUpdate(std::forward<InputLambdaProcessorUpdateT>(value)); return *this;}
+    ///@}
   private:
 
     InputLambdaProcessorUpdate m_inputLambdaProcessorUpdate;

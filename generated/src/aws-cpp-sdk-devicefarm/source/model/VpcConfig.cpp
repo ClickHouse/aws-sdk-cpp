@@ -18,17 +18,7 @@ namespace DeviceFarm
 namespace Model
 {
 
-VpcConfig::VpcConfig() : 
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
-{
-}
-
-VpcConfig::VpcConfig(JsonView jsonValue) : 
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
+VpcConfig::VpcConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ VpcConfig& VpcConfig::operator =(JsonView jsonValue)
     }
     m_securityGroupIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("subnetIds"))
   {
     Aws::Utils::Array<JsonView> subnetIdsJsonList = jsonValue.GetArray("subnetIds");
@@ -54,14 +43,11 @@ VpcConfig& VpcConfig::operator =(JsonView jsonValue)
     }
     m_subnetIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("vpcId"))
   {
     m_vpcId = jsonValue.GetString("vpcId");
-
     m_vpcIdHasBeenSet = true;
   }
-
   return *this;
 }
 

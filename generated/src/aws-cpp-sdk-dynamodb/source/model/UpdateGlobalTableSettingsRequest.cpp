@@ -12,18 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateGlobalTableSettingsRequest::UpdateGlobalTableSettingsRequest() : 
-    m_globalTableNameHasBeenSet(false),
-    m_globalTableBillingMode(BillingMode::NOT_SET),
-    m_globalTableBillingModeHasBeenSet(false),
-    m_globalTableProvisionedWriteCapacityUnits(0),
-    m_globalTableProvisionedWriteCapacityUnitsHasBeenSet(false),
-    m_globalTableProvisionedWriteCapacityAutoScalingSettingsUpdateHasBeenSet(false),
-    m_globalTableGlobalSecondaryIndexSettingsUpdateHasBeenSet(false),
-    m_replicaSettingsUpdateHasBeenSet(false)
-{
-}
-
 Aws::String UpdateGlobalTableSettingsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -85,5 +73,15 @@ Aws::Http::HeaderValueCollection UpdateGlobalTableSettingsRequest::GetRequestSpe
 }
 
 
+
+UpdateGlobalTableSettingsRequest::EndpointParameters UpdateGlobalTableSettingsRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (GlobalTableNameHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetGlobalTableName(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

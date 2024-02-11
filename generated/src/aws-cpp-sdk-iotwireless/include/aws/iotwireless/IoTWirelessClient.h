@@ -17,39 +17,52 @@ namespace IoTWireless
 {
   /**
    * <p>AWS IoT Wireless provides bi-directional communication between
-   * internet-connected wireless devices and the AWS Cloud. To onboard both LoRaWAN
-   * and Sidewalk devices to AWS IoT, use the IoT Wireless API. These wireless
-   * devices use the Low Power Wide Area Networking (LPWAN) communication protocol to
-   * communicate with AWS IoT.</p> <p>Using the API, you can perform create, read,
-   * update, and delete operations for your wireless devices, gateways, destinations,
-   * and profiles. After onboarding your devices, you can use the API operations to
-   * set log levels and monitor your devices with CloudWatch.</p> <p>You can also use
-   * the API operations to create multicast groups and schedule a multicast session
-   * for sending a downlink message to devices in the group. By using Firmware
-   * Updates Over-The-Air (FUOTA) API operations, you can create a FUOTA task and
-   * schedule a session to update the firmware of individual devices or an entire
-   * group of devices in a multicast group.</p>
+   * internet-connected wireless devices and the AWS Cloud. To onboard both <a
+   * href="https://docs.aws.amazon.com/iot-wireless/latest/developerguide/iot-lorawan.html">LoRaWAN</a>
+   * and <a
+   * href="https://docs.aws.amazon.com/iot-wireless/latest/developerguide/iot-sidewalk.html">Sidewalk</a>
+   * devices to AWS IoT, use the IoT Wireless API. These wireless devices use the Low
+   * Power Wide Area Networking (LPWAN) communication protocol to communicate with
+   * AWS IoT. </p> <p>Using the API, you can perform create, read, update, and delete
+   * operations for your wireless devices, gateways, destinations, and profiles.
+   * After onboarding your devices, you can use the API operations to set log levels
+   * and monitor your devices with CloudWatch.</p> <p>You can also use the API
+   * operations to create multicast groups and schedule a multicast session for
+   * sending a downlink message to devices in the group. By using Firmware Updates
+   * Over-The-Air (FUOTA) API operations, you can create a FUOTA task and schedule a
+   * session to update the firmware of individual devices or an entire group of
+   * devices in a multicast group.</p> <p>To connect to the AWS IoT Wireless Service,
+   * use the Service endpoints as described in <a
+   * href="https://docs.aws.amazon.com/general/latest/gr/iot-lorawan.html#iot-wireless_region">IoT
+   * Wireless Service endpoints</a>. You can use both IPv4 and IPv6 protocols to
+   * connect to the endpoints and send requests to the AWS IoT Wireless service. For
+   * more information, see <a
+   * href="https://docs.aws.amazon.com/iot-wireless/latest/developerguide/wireless-ipv6-access.html">Using
+   * IPv6 with AWS IoT Wireless</a>.</p>
    */
   class AWS_IOTWIRELESS_API IoTWirelessClient : public Aws::Client::AWSJsonClient, public Aws::Client::ClientWithAsyncTemplateMethods<IoTWirelessClient>
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef IoTWirelessClientConfiguration ClientConfigurationType;
+      typedef IoTWirelessEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         IoTWirelessClient(const Aws::IoTWireless::IoTWirelessClientConfiguration& clientConfiguration = Aws::IoTWireless::IoTWirelessClientConfiguration(),
-                          std::shared_ptr<IoTWirelessEndpointProviderBase> endpointProvider = Aws::MakeShared<IoTWirelessEndpointProvider>(ALLOCATION_TAG));
+                          std::shared_ptr<IoTWirelessEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         IoTWirelessClient(const Aws::Auth::AWSCredentials& credentials,
-                          std::shared_ptr<IoTWirelessEndpointProviderBase> endpointProvider = Aws::MakeShared<IoTWirelessEndpointProvider>(ALLOCATION_TAG),
+                          std::shared_ptr<IoTWirelessEndpointProviderBase> endpointProvider = nullptr,
                           const Aws::IoTWireless::IoTWirelessClientConfiguration& clientConfiguration = Aws::IoTWireless::IoTWirelessClientConfiguration());
 
        /**
@@ -57,7 +70,7 @@ namespace IoTWireless
         * the default http client factory will be used
         */
         IoTWirelessClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                          std::shared_ptr<IoTWirelessEndpointProviderBase> endpointProvider = Aws::MakeShared<IoTWirelessEndpointProvider>(ALLOCATION_TAG),
+                          std::shared_ptr<IoTWirelessEndpointProviderBase> endpointProvider = nullptr,
                           const Aws::IoTWireless::IoTWirelessClientConfiguration& clientConfiguration = Aws::IoTWireless::IoTWirelessClientConfiguration());
 
 
@@ -319,13 +332,13 @@ namespace IoTWireless
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/CreateDeviceProfile">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateDeviceProfileOutcome CreateDeviceProfile(const Model::CreateDeviceProfileRequest& request) const;
+        virtual Model::CreateDeviceProfileOutcome CreateDeviceProfile(const Model::CreateDeviceProfileRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateDeviceProfile that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateDeviceProfileRequestT = Model::CreateDeviceProfileRequest>
-        Model::CreateDeviceProfileOutcomeCallable CreateDeviceProfileCallable(const CreateDeviceProfileRequestT& request) const
+        Model::CreateDeviceProfileOutcomeCallable CreateDeviceProfileCallable(const CreateDeviceProfileRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::CreateDeviceProfile, request);
         }
@@ -334,7 +347,7 @@ namespace IoTWireless
          * An Async wrapper for CreateDeviceProfile that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateDeviceProfileRequestT = Model::CreateDeviceProfileRequest>
-        void CreateDeviceProfileAsync(const CreateDeviceProfileRequestT& request, const CreateDeviceProfileResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateDeviceProfileAsync(const CreateDeviceProfileResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateDeviceProfileRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::CreateDeviceProfile, request, handler, context);
         }
@@ -419,13 +432,13 @@ namespace IoTWireless
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/CreateServiceProfile">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateServiceProfileOutcome CreateServiceProfile(const Model::CreateServiceProfileRequest& request) const;
+        virtual Model::CreateServiceProfileOutcome CreateServiceProfile(const Model::CreateServiceProfileRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateServiceProfile that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateServiceProfileRequestT = Model::CreateServiceProfileRequest>
-        Model::CreateServiceProfileOutcomeCallable CreateServiceProfileCallable(const CreateServiceProfileRequestT& request) const
+        Model::CreateServiceProfileOutcomeCallable CreateServiceProfileCallable(const CreateServiceProfileRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::CreateServiceProfile, request);
         }
@@ -434,7 +447,7 @@ namespace IoTWireless
          * An Async wrapper for CreateServiceProfile that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateServiceProfileRequestT = Model::CreateServiceProfileRequest>
-        void CreateServiceProfileAsync(const CreateServiceProfileRequestT& request, const CreateServiceProfileResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateServiceProfileAsync(const CreateServiceProfileResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateServiceProfileRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::CreateServiceProfile, request, handler, context);
         }
@@ -465,7 +478,13 @@ namespace IoTWireless
         }
 
         /**
-         * <p>Provisions a wireless gateway.</p><p><h3>See Also:</h3>   <a
+         * <p>Provisions a wireless gateway.</p>  <p>When provisioning a wireless
+         * gateway, you might run into duplication errors for the following reasons.</p>
+         * <ul> <li> <p>If you specify a <code>GatewayEui</code> value that already
+         * exists.</p> </li> <li> <p>If you used a <code>ClientRequestToken</code> with the
+         * same parameters within the last 10 minutes.</p> </li> </ul> <p>To avoid this
+         * error, make sure that you use unique identifiers and parameters for each request
+         * within the specified time period.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/CreateWirelessGateway">AWS
          * API Reference</a></p>
          */
@@ -615,7 +634,7 @@ namespace IoTWireless
         }
 
         /**
-         * <p>Deletes a multicast group if it is not in use by a fuota task.</p><p><h3>See
+         * <p>Deletes a multicast group if it is not in use by a FUOTA task.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/DeleteMulticastGroup">AWS
          * API Reference</a></p>
@@ -766,7 +785,13 @@ namespace IoTWireless
         }
 
         /**
-         * <p>Deletes a wireless gateway.</p><p><h3>See Also:</h3>   <a
+         * <p>Deletes a wireless gateway.</p>  <p>When deleting a wireless gateway,
+         * you might run into duplication errors for the following reasons.</p> <ul> <li>
+         * <p>If you specify a <code>GatewayEui</code> value that already exists.</p> </li>
+         * <li> <p>If you used a <code>ClientRequestToken</code> with the same parameters
+         * within the last 10 minutes.</p> </li> </ul> <p>To avoid this error, make sure
+         * that you use unique identifiers and parameters for each request within the
+         * specified time period.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/DeleteWirelessGateway">AWS
          * API Reference</a></p>
          */
@@ -897,7 +922,7 @@ namespace IoTWireless
         }
 
         /**
-         * <p>Disassociates a multicast group from a fuota task.</p><p><h3>See Also:</h3>  
+         * <p>Disassociates a multicast group from a FUOTA task.</p><p><h3>See Also:</h3>  
          * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/DisassociateMulticastGroupFromFuotaTask">AWS
          * API Reference</a></p>
@@ -1108,13 +1133,13 @@ namespace IoTWireless
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/GetEventConfigurationByResourceTypes">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetEventConfigurationByResourceTypesOutcome GetEventConfigurationByResourceTypes(const Model::GetEventConfigurationByResourceTypesRequest& request) const;
+        virtual Model::GetEventConfigurationByResourceTypesOutcome GetEventConfigurationByResourceTypes(const Model::GetEventConfigurationByResourceTypesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetEventConfigurationByResourceTypes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetEventConfigurationByResourceTypesRequestT = Model::GetEventConfigurationByResourceTypesRequest>
-        Model::GetEventConfigurationByResourceTypesOutcomeCallable GetEventConfigurationByResourceTypesCallable(const GetEventConfigurationByResourceTypesRequestT& request) const
+        Model::GetEventConfigurationByResourceTypesOutcomeCallable GetEventConfigurationByResourceTypesCallable(const GetEventConfigurationByResourceTypesRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::GetEventConfigurationByResourceTypes, request);
         }
@@ -1123,7 +1148,7 @@ namespace IoTWireless
          * An Async wrapper for GetEventConfigurationByResourceTypes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetEventConfigurationByResourceTypesRequestT = Model::GetEventConfigurationByResourceTypesRequest>
-        void GetEventConfigurationByResourceTypesAsync(const GetEventConfigurationByResourceTypesRequestT& request, const GetEventConfigurationByResourceTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetEventConfigurationByResourceTypesAsync(const GetEventConfigurationByResourceTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetEventConfigurationByResourceTypesRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::GetEventConfigurationByResourceTypes, request, handler, context);
         }
@@ -1155,18 +1180,18 @@ namespace IoTWireless
 
         /**
          * <p>Returns current default log levels or log levels by resource types. Based on
-         * resource types, log levels can be for wireless device log options or wireless
-         * gateway log options.</p><p><h3>See Also:</h3>   <a
+         * the resource type, log levels can be returned for wireless device, wireless
+         * gateway, or FUOTA task log options.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/GetLogLevelsByResourceTypes">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetLogLevelsByResourceTypesOutcome GetLogLevelsByResourceTypes(const Model::GetLogLevelsByResourceTypesRequest& request) const;
+        virtual Model::GetLogLevelsByResourceTypesOutcome GetLogLevelsByResourceTypes(const Model::GetLogLevelsByResourceTypesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetLogLevelsByResourceTypes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetLogLevelsByResourceTypesRequestT = Model::GetLogLevelsByResourceTypesRequest>
-        Model::GetLogLevelsByResourceTypesOutcomeCallable GetLogLevelsByResourceTypesCallable(const GetLogLevelsByResourceTypesRequestT& request) const
+        Model::GetLogLevelsByResourceTypesOutcomeCallable GetLogLevelsByResourceTypesCallable(const GetLogLevelsByResourceTypesRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::GetLogLevelsByResourceTypes, request);
         }
@@ -1175,9 +1200,60 @@ namespace IoTWireless
          * An Async wrapper for GetLogLevelsByResourceTypes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetLogLevelsByResourceTypesRequestT = Model::GetLogLevelsByResourceTypesRequest>
-        void GetLogLevelsByResourceTypesAsync(const GetLogLevelsByResourceTypesRequestT& request, const GetLogLevelsByResourceTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetLogLevelsByResourceTypesAsync(const GetLogLevelsByResourceTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetLogLevelsByResourceTypesRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::GetLogLevelsByResourceTypes, request, handler, context);
+        }
+
+        /**
+         * <p>Get the metric configuration status for this AWS account.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/GetMetricConfiguration">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetMetricConfigurationOutcome GetMetricConfiguration(const Model::GetMetricConfigurationRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for GetMetricConfiguration that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetMetricConfigurationRequestT = Model::GetMetricConfigurationRequest>
+        Model::GetMetricConfigurationOutcomeCallable GetMetricConfigurationCallable(const GetMetricConfigurationRequestT& request = {}) const
+        {
+            return SubmitCallable(&IoTWirelessClient::GetMetricConfiguration, request);
+        }
+
+        /**
+         * An Async wrapper for GetMetricConfiguration that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetMetricConfigurationRequestT = Model::GetMetricConfigurationRequest>
+        void GetMetricConfigurationAsync(const GetMetricConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetMetricConfigurationRequestT& request = {}) const
+        {
+            return SubmitAsync(&IoTWirelessClient::GetMetricConfiguration, request, handler, context);
+        }
+
+        /**
+         * <p>Get the summary metrics for this AWS account.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/GetMetrics">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetMetricsOutcome GetMetrics(const Model::GetMetricsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for GetMetrics that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetMetricsRequestT = Model::GetMetricsRequest>
+        Model::GetMetricsOutcomeCallable GetMetricsCallable(const GetMetricsRequestT& request = {}) const
+        {
+            return SubmitCallable(&IoTWirelessClient::GetMetrics, request);
+        }
+
+        /**
+         * An Async wrapper for GetMetrics that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetMetricsRequestT = Model::GetMetricsRequest>
+        void GetMetricsAsync(const GetMetricsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetMetricsRequestT& request = {}) const
+        {
+            return SubmitAsync(&IoTWirelessClient::GetMetrics, request, handler, context);
         }
 
         /**
@@ -1290,13 +1366,13 @@ namespace IoTWireless
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/GetPositionEstimate">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetPositionEstimateOutcome GetPositionEstimate(const Model::GetPositionEstimateRequest& request) const;
+        virtual Model::GetPositionEstimateOutcome GetPositionEstimate(const Model::GetPositionEstimateRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetPositionEstimate that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetPositionEstimateRequestT = Model::GetPositionEstimateRequest>
-        Model::GetPositionEstimateOutcomeCallable GetPositionEstimateCallable(const GetPositionEstimateRequestT& request) const
+        Model::GetPositionEstimateOutcomeCallable GetPositionEstimateCallable(const GetPositionEstimateRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::GetPositionEstimate, request);
         }
@@ -1305,7 +1381,7 @@ namespace IoTWireless
          * An Async wrapper for GetPositionEstimate that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetPositionEstimateRequestT = Model::GetPositionEstimateRequest>
-        void GetPositionEstimateAsync(const GetPositionEstimateRequestT& request, const GetPositionEstimateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetPositionEstimateAsync(const GetPositionEstimateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetPositionEstimateRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::GetPositionEstimate, request, handler, context);
         }
@@ -1337,9 +1413,8 @@ namespace IoTWireless
         }
 
         /**
-         * <p>Fetches the log-level override, if any, for a given resource-ID and
-         * resource-type. It can be used for a wireless device or a wireless
-         * gateway.</p><p><h3>See Also:</h3>   <a
+         * <p>Fetches the log-level override, if any, for a given resource ID and resource
+         * type..</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/GetResourceLogLevel">AWS
          * API Reference</a></p>
          */
@@ -1398,13 +1473,13 @@ namespace IoTWireless
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/GetServiceEndpoint">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetServiceEndpointOutcome GetServiceEndpoint(const Model::GetServiceEndpointRequest& request) const;
+        virtual Model::GetServiceEndpointOutcome GetServiceEndpoint(const Model::GetServiceEndpointRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetServiceEndpoint that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetServiceEndpointRequestT = Model::GetServiceEndpointRequest>
-        Model::GetServiceEndpointOutcomeCallable GetServiceEndpointCallable(const GetServiceEndpointRequestT& request) const
+        Model::GetServiceEndpointOutcomeCallable GetServiceEndpointCallable(const GetServiceEndpointRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::GetServiceEndpoint, request);
         }
@@ -1413,7 +1488,7 @@ namespace IoTWireless
          * An Async wrapper for GetServiceEndpoint that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetServiceEndpointRequestT = Model::GetServiceEndpointRequest>
-        void GetServiceEndpointAsync(const GetServiceEndpointRequestT& request, const GetServiceEndpointResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetServiceEndpointAsync(const GetServiceEndpointResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetServiceEndpointRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::GetServiceEndpoint, request, handler, context);
         }
@@ -1680,13 +1755,13 @@ namespace IoTWireless
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/ListDestinations">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListDestinationsOutcome ListDestinations(const Model::ListDestinationsRequest& request) const;
+        virtual Model::ListDestinationsOutcome ListDestinations(const Model::ListDestinationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListDestinations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListDestinationsRequestT = Model::ListDestinationsRequest>
-        Model::ListDestinationsOutcomeCallable ListDestinationsCallable(const ListDestinationsRequestT& request) const
+        Model::ListDestinationsOutcomeCallable ListDestinationsCallable(const ListDestinationsRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::ListDestinations, request);
         }
@@ -1695,7 +1770,7 @@ namespace IoTWireless
          * An Async wrapper for ListDestinations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListDestinationsRequestT = Model::ListDestinationsRequest>
-        void ListDestinationsAsync(const ListDestinationsRequestT& request, const ListDestinationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListDestinationsAsync(const ListDestinationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListDestinationsRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::ListDestinations, request, handler, context);
         }
@@ -1706,13 +1781,13 @@ namespace IoTWireless
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/ListDeviceProfiles">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListDeviceProfilesOutcome ListDeviceProfiles(const Model::ListDeviceProfilesRequest& request) const;
+        virtual Model::ListDeviceProfilesOutcome ListDeviceProfiles(const Model::ListDeviceProfilesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListDeviceProfiles that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListDeviceProfilesRequestT = Model::ListDeviceProfilesRequest>
-        Model::ListDeviceProfilesOutcomeCallable ListDeviceProfilesCallable(const ListDeviceProfilesRequestT& request) const
+        Model::ListDeviceProfilesOutcomeCallable ListDeviceProfilesCallable(const ListDeviceProfilesRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::ListDeviceProfiles, request);
         }
@@ -1721,7 +1796,7 @@ namespace IoTWireless
          * An Async wrapper for ListDeviceProfiles that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListDeviceProfilesRequestT = Model::ListDeviceProfilesRequest>
-        void ListDeviceProfilesAsync(const ListDeviceProfilesRequestT& request, const ListDeviceProfilesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListDeviceProfilesAsync(const ListDeviceProfilesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListDeviceProfilesRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::ListDeviceProfiles, request, handler, context);
         }
@@ -1784,13 +1859,13 @@ namespace IoTWireless
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/ListFuotaTasks">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListFuotaTasksOutcome ListFuotaTasks(const Model::ListFuotaTasksRequest& request) const;
+        virtual Model::ListFuotaTasksOutcome ListFuotaTasks(const Model::ListFuotaTasksRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListFuotaTasks that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListFuotaTasksRequestT = Model::ListFuotaTasksRequest>
-        Model::ListFuotaTasksOutcomeCallable ListFuotaTasksCallable(const ListFuotaTasksRequestT& request) const
+        Model::ListFuotaTasksOutcomeCallable ListFuotaTasksCallable(const ListFuotaTasksRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::ListFuotaTasks, request);
         }
@@ -1799,7 +1874,7 @@ namespace IoTWireless
          * An Async wrapper for ListFuotaTasks that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListFuotaTasksRequestT = Model::ListFuotaTasksRequest>
-        void ListFuotaTasksAsync(const ListFuotaTasksRequestT& request, const ListFuotaTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListFuotaTasksAsync(const ListFuotaTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListFuotaTasksRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::ListFuotaTasks, request, handler, context);
         }
@@ -1810,13 +1885,13 @@ namespace IoTWireless
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/ListMulticastGroups">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListMulticastGroupsOutcome ListMulticastGroups(const Model::ListMulticastGroupsRequest& request) const;
+        virtual Model::ListMulticastGroupsOutcome ListMulticastGroups(const Model::ListMulticastGroupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListMulticastGroups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListMulticastGroupsRequestT = Model::ListMulticastGroupsRequest>
-        Model::ListMulticastGroupsOutcomeCallable ListMulticastGroupsCallable(const ListMulticastGroupsRequestT& request) const
+        Model::ListMulticastGroupsOutcomeCallable ListMulticastGroupsCallable(const ListMulticastGroupsRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::ListMulticastGroups, request);
         }
@@ -1825,13 +1900,13 @@ namespace IoTWireless
          * An Async wrapper for ListMulticastGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListMulticastGroupsRequestT = Model::ListMulticastGroupsRequest>
-        void ListMulticastGroupsAsync(const ListMulticastGroupsRequestT& request, const ListMulticastGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListMulticastGroupsAsync(const ListMulticastGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListMulticastGroupsRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::ListMulticastGroups, request, handler, context);
         }
 
         /**
-         * <p>List all multicast groups associated with a fuota task.</p><p><h3>See
+         * <p>List all multicast groups associated with a FUOTA task.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/ListMulticastGroupsByFuotaTask">AWS
          * API Reference</a></p>
@@ -1861,13 +1936,13 @@ namespace IoTWireless
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/ListNetworkAnalyzerConfigurations">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListNetworkAnalyzerConfigurationsOutcome ListNetworkAnalyzerConfigurations(const Model::ListNetworkAnalyzerConfigurationsRequest& request) const;
+        virtual Model::ListNetworkAnalyzerConfigurationsOutcome ListNetworkAnalyzerConfigurations(const Model::ListNetworkAnalyzerConfigurationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListNetworkAnalyzerConfigurations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListNetworkAnalyzerConfigurationsRequestT = Model::ListNetworkAnalyzerConfigurationsRequest>
-        Model::ListNetworkAnalyzerConfigurationsOutcomeCallable ListNetworkAnalyzerConfigurationsCallable(const ListNetworkAnalyzerConfigurationsRequestT& request) const
+        Model::ListNetworkAnalyzerConfigurationsOutcomeCallable ListNetworkAnalyzerConfigurationsCallable(const ListNetworkAnalyzerConfigurationsRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::ListNetworkAnalyzerConfigurations, request);
         }
@@ -1876,7 +1951,7 @@ namespace IoTWireless
          * An Async wrapper for ListNetworkAnalyzerConfigurations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListNetworkAnalyzerConfigurationsRequestT = Model::ListNetworkAnalyzerConfigurationsRequest>
-        void ListNetworkAnalyzerConfigurationsAsync(const ListNetworkAnalyzerConfigurationsRequestT& request, const ListNetworkAnalyzerConfigurationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListNetworkAnalyzerConfigurationsAsync(const ListNetworkAnalyzerConfigurationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListNetworkAnalyzerConfigurationsRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::ListNetworkAnalyzerConfigurations, request, handler, context);
         }
@@ -1887,13 +1962,13 @@ namespace IoTWireless
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/ListPartnerAccounts">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListPartnerAccountsOutcome ListPartnerAccounts(const Model::ListPartnerAccountsRequest& request) const;
+        virtual Model::ListPartnerAccountsOutcome ListPartnerAccounts(const Model::ListPartnerAccountsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListPartnerAccounts that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListPartnerAccountsRequestT = Model::ListPartnerAccountsRequest>
-        Model::ListPartnerAccountsOutcomeCallable ListPartnerAccountsCallable(const ListPartnerAccountsRequestT& request) const
+        Model::ListPartnerAccountsOutcomeCallable ListPartnerAccountsCallable(const ListPartnerAccountsRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::ListPartnerAccounts, request);
         }
@@ -1902,7 +1977,7 @@ namespace IoTWireless
          * An Async wrapper for ListPartnerAccounts that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListPartnerAccountsRequestT = Model::ListPartnerAccountsRequest>
-        void ListPartnerAccountsAsync(const ListPartnerAccountsRequestT& request, const ListPartnerAccountsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListPartnerAccountsAsync(const ListPartnerAccountsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListPartnerAccountsRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::ListPartnerAccounts, request, handler, context);
         }
@@ -1938,13 +2013,13 @@ namespace IoTWireless
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/ListServiceProfiles">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListServiceProfilesOutcome ListServiceProfiles(const Model::ListServiceProfilesRequest& request) const;
+        virtual Model::ListServiceProfilesOutcome ListServiceProfiles(const Model::ListServiceProfilesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListServiceProfiles that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListServiceProfilesRequestT = Model::ListServiceProfilesRequest>
-        Model::ListServiceProfilesOutcomeCallable ListServiceProfilesCallable(const ListServiceProfilesRequestT& request) const
+        Model::ListServiceProfilesOutcomeCallable ListServiceProfilesCallable(const ListServiceProfilesRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::ListServiceProfiles, request);
         }
@@ -1953,7 +2028,7 @@ namespace IoTWireless
          * An Async wrapper for ListServiceProfiles that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListServiceProfilesRequestT = Model::ListServiceProfilesRequest>
-        void ListServiceProfilesAsync(const ListServiceProfilesRequestT& request, const ListServiceProfilesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListServiceProfilesAsync(const ListServiceProfilesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListServiceProfilesRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::ListServiceProfiles, request, handler, context);
         }
@@ -1990,13 +2065,13 @@ namespace IoTWireless
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/ListWirelessDeviceImportTasks">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListWirelessDeviceImportTasksOutcome ListWirelessDeviceImportTasks(const Model::ListWirelessDeviceImportTasksRequest& request) const;
+        virtual Model::ListWirelessDeviceImportTasksOutcome ListWirelessDeviceImportTasks(const Model::ListWirelessDeviceImportTasksRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListWirelessDeviceImportTasks that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListWirelessDeviceImportTasksRequestT = Model::ListWirelessDeviceImportTasksRequest>
-        Model::ListWirelessDeviceImportTasksOutcomeCallable ListWirelessDeviceImportTasksCallable(const ListWirelessDeviceImportTasksRequestT& request) const
+        Model::ListWirelessDeviceImportTasksOutcomeCallable ListWirelessDeviceImportTasksCallable(const ListWirelessDeviceImportTasksRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::ListWirelessDeviceImportTasks, request);
         }
@@ -2005,7 +2080,7 @@ namespace IoTWireless
          * An Async wrapper for ListWirelessDeviceImportTasks that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListWirelessDeviceImportTasksRequestT = Model::ListWirelessDeviceImportTasksRequest>
-        void ListWirelessDeviceImportTasksAsync(const ListWirelessDeviceImportTasksRequestT& request, const ListWirelessDeviceImportTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListWirelessDeviceImportTasksAsync(const ListWirelessDeviceImportTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListWirelessDeviceImportTasksRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::ListWirelessDeviceImportTasks, request, handler, context);
         }
@@ -2016,13 +2091,13 @@ namespace IoTWireless
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/ListWirelessDevices">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListWirelessDevicesOutcome ListWirelessDevices(const Model::ListWirelessDevicesRequest& request) const;
+        virtual Model::ListWirelessDevicesOutcome ListWirelessDevices(const Model::ListWirelessDevicesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListWirelessDevices that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListWirelessDevicesRequestT = Model::ListWirelessDevicesRequest>
-        Model::ListWirelessDevicesOutcomeCallable ListWirelessDevicesCallable(const ListWirelessDevicesRequestT& request) const
+        Model::ListWirelessDevicesOutcomeCallable ListWirelessDevicesCallable(const ListWirelessDevicesRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::ListWirelessDevices, request);
         }
@@ -2031,7 +2106,7 @@ namespace IoTWireless
          * An Async wrapper for ListWirelessDevices that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListWirelessDevicesRequestT = Model::ListWirelessDevicesRequest>
-        void ListWirelessDevicesAsync(const ListWirelessDevicesRequestT& request, const ListWirelessDevicesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListWirelessDevicesAsync(const ListWirelessDevicesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListWirelessDevicesRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::ListWirelessDevices, request, handler, context);
         }
@@ -2042,13 +2117,13 @@ namespace IoTWireless
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/ListWirelessGatewayTaskDefinitions">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListWirelessGatewayTaskDefinitionsOutcome ListWirelessGatewayTaskDefinitions(const Model::ListWirelessGatewayTaskDefinitionsRequest& request) const;
+        virtual Model::ListWirelessGatewayTaskDefinitionsOutcome ListWirelessGatewayTaskDefinitions(const Model::ListWirelessGatewayTaskDefinitionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListWirelessGatewayTaskDefinitions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListWirelessGatewayTaskDefinitionsRequestT = Model::ListWirelessGatewayTaskDefinitionsRequest>
-        Model::ListWirelessGatewayTaskDefinitionsOutcomeCallable ListWirelessGatewayTaskDefinitionsCallable(const ListWirelessGatewayTaskDefinitionsRequestT& request) const
+        Model::ListWirelessGatewayTaskDefinitionsOutcomeCallable ListWirelessGatewayTaskDefinitionsCallable(const ListWirelessGatewayTaskDefinitionsRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::ListWirelessGatewayTaskDefinitions, request);
         }
@@ -2057,7 +2132,7 @@ namespace IoTWireless
          * An Async wrapper for ListWirelessGatewayTaskDefinitions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListWirelessGatewayTaskDefinitionsRequestT = Model::ListWirelessGatewayTaskDefinitionsRequest>
-        void ListWirelessGatewayTaskDefinitionsAsync(const ListWirelessGatewayTaskDefinitionsRequestT& request, const ListWirelessGatewayTaskDefinitionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListWirelessGatewayTaskDefinitionsAsync(const ListWirelessGatewayTaskDefinitionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListWirelessGatewayTaskDefinitionsRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::ListWirelessGatewayTaskDefinitions, request, handler, context);
         }
@@ -2068,13 +2143,13 @@ namespace IoTWireless
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/ListWirelessGateways">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListWirelessGatewaysOutcome ListWirelessGateways(const Model::ListWirelessGatewaysRequest& request) const;
+        virtual Model::ListWirelessGatewaysOutcome ListWirelessGateways(const Model::ListWirelessGatewaysRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListWirelessGateways that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListWirelessGatewaysRequestT = Model::ListWirelessGatewaysRequest>
-        Model::ListWirelessGatewaysOutcomeCallable ListWirelessGatewaysCallable(const ListWirelessGatewaysRequestT& request) const
+        Model::ListWirelessGatewaysOutcomeCallable ListWirelessGatewaysCallable(const ListWirelessGatewaysRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::ListWirelessGateways, request);
         }
@@ -2083,15 +2158,14 @@ namespace IoTWireless
          * An Async wrapper for ListWirelessGateways that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListWirelessGatewaysRequestT = Model::ListWirelessGatewaysRequest>
-        void ListWirelessGatewaysAsync(const ListWirelessGatewaysRequestT& request, const ListWirelessGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListWirelessGatewaysAsync(const ListWirelessGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListWirelessGatewaysRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::ListWirelessGateways, request, handler, context);
         }
 
         /**
-         * <p>Sets the log-level override for a resource-ID and resource-type. This option
-         * can be specified for a wireless gateway or a wireless device. A limit of 200 log
-         * level override can be set per account.</p><p><h3>See Also:</h3>   <a
+         * <p>Sets the log-level override for a resource ID and resource type. A limit of
+         * 200 log level override can be set per account.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/PutResourceLogLevel">AWS
          * API Reference</a></p>
          */
@@ -2116,18 +2190,18 @@ namespace IoTWireless
         }
 
         /**
-         * <p>Removes the log-level overrides for all resources; both wireless devices and
-         * wireless gateways.</p><p><h3>See Also:</h3>   <a
+         * <p>Removes the log-level overrides for all resources; wireless devices, wireless
+         * gateways, and FUOTA tasks.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/ResetAllResourceLogLevels">AWS
          * API Reference</a></p>
          */
-        virtual Model::ResetAllResourceLogLevelsOutcome ResetAllResourceLogLevels(const Model::ResetAllResourceLogLevelsRequest& request) const;
+        virtual Model::ResetAllResourceLogLevelsOutcome ResetAllResourceLogLevels(const Model::ResetAllResourceLogLevelsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ResetAllResourceLogLevels that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ResetAllResourceLogLevelsRequestT = Model::ResetAllResourceLogLevelsRequest>
-        Model::ResetAllResourceLogLevelsOutcomeCallable ResetAllResourceLogLevelsCallable(const ResetAllResourceLogLevelsRequestT& request) const
+        Model::ResetAllResourceLogLevelsOutcomeCallable ResetAllResourceLogLevelsCallable(const ResetAllResourceLogLevelsRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::ResetAllResourceLogLevels, request);
         }
@@ -2136,15 +2210,15 @@ namespace IoTWireless
          * An Async wrapper for ResetAllResourceLogLevels that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ResetAllResourceLogLevelsRequestT = Model::ResetAllResourceLogLevelsRequest>
-        void ResetAllResourceLogLevelsAsync(const ResetAllResourceLogLevelsRequestT& request, const ResetAllResourceLogLevelsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ResetAllResourceLogLevelsAsync(const ResetAllResourceLogLevelsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ResetAllResourceLogLevelsRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::ResetAllResourceLogLevels, request, handler, context);
         }
 
         /**
-         * <p>Removes the log-level override, if any, for a specific resource-ID and
-         * resource-type. It can be used for a wireless device or a wireless
-         * gateway.</p><p><h3>See Also:</h3>   <a
+         * <p>Removes the log-level override, if any, for a specific resource ID and
+         * resource type. It can be used for a wireless device, a wireless gateway, or a
+         * FUOTA task.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/ResetResourceLogLevel">AWS
          * API Reference</a></p>
          */
@@ -2479,13 +2553,13 @@ namespace IoTWireless
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/UpdateEventConfigurationByResourceTypes">AWS
          * API Reference</a></p>
          */
-        virtual Model::UpdateEventConfigurationByResourceTypesOutcome UpdateEventConfigurationByResourceTypes(const Model::UpdateEventConfigurationByResourceTypesRequest& request) const;
+        virtual Model::UpdateEventConfigurationByResourceTypesOutcome UpdateEventConfigurationByResourceTypes(const Model::UpdateEventConfigurationByResourceTypesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for UpdateEventConfigurationByResourceTypes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename UpdateEventConfigurationByResourceTypesRequestT = Model::UpdateEventConfigurationByResourceTypesRequest>
-        Model::UpdateEventConfigurationByResourceTypesOutcomeCallable UpdateEventConfigurationByResourceTypesCallable(const UpdateEventConfigurationByResourceTypesRequestT& request) const
+        Model::UpdateEventConfigurationByResourceTypesOutcomeCallable UpdateEventConfigurationByResourceTypesCallable(const UpdateEventConfigurationByResourceTypesRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::UpdateEventConfigurationByResourceTypes, request);
         }
@@ -2494,7 +2568,7 @@ namespace IoTWireless
          * An Async wrapper for UpdateEventConfigurationByResourceTypes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename UpdateEventConfigurationByResourceTypesRequestT = Model::UpdateEventConfigurationByResourceTypesRequest>
-        void UpdateEventConfigurationByResourceTypesAsync(const UpdateEventConfigurationByResourceTypesRequestT& request, const UpdateEventConfigurationByResourceTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void UpdateEventConfigurationByResourceTypesAsync(const UpdateEventConfigurationByResourceTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const UpdateEventConfigurationByResourceTypesRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::UpdateEventConfigurationByResourceTypes, request, handler, context);
         }
@@ -2526,19 +2600,19 @@ namespace IoTWireless
 
         /**
          * <p>Set default log level, or log levels by resource types. This can be for
-         * wireless device log options or wireless gateways log options and is used to
+         * wireless device, wireless gateway, or FUOTA task log options, and is used to
          * control the log messages that'll be displayed in CloudWatch.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/UpdateLogLevelsByResourceTypes">AWS
          * API Reference</a></p>
          */
-        virtual Model::UpdateLogLevelsByResourceTypesOutcome UpdateLogLevelsByResourceTypes(const Model::UpdateLogLevelsByResourceTypesRequest& request) const;
+        virtual Model::UpdateLogLevelsByResourceTypesOutcome UpdateLogLevelsByResourceTypes(const Model::UpdateLogLevelsByResourceTypesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for UpdateLogLevelsByResourceTypes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename UpdateLogLevelsByResourceTypesRequestT = Model::UpdateLogLevelsByResourceTypesRequest>
-        Model::UpdateLogLevelsByResourceTypesOutcomeCallable UpdateLogLevelsByResourceTypesCallable(const UpdateLogLevelsByResourceTypesRequestT& request) const
+        Model::UpdateLogLevelsByResourceTypesOutcomeCallable UpdateLogLevelsByResourceTypesCallable(const UpdateLogLevelsByResourceTypesRequestT& request = {}) const
         {
             return SubmitCallable(&IoTWirelessClient::UpdateLogLevelsByResourceTypes, request);
         }
@@ -2547,9 +2621,34 @@ namespace IoTWireless
          * An Async wrapper for UpdateLogLevelsByResourceTypes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename UpdateLogLevelsByResourceTypesRequestT = Model::UpdateLogLevelsByResourceTypesRequest>
-        void UpdateLogLevelsByResourceTypesAsync(const UpdateLogLevelsByResourceTypesRequestT& request, const UpdateLogLevelsByResourceTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void UpdateLogLevelsByResourceTypesAsync(const UpdateLogLevelsByResourceTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const UpdateLogLevelsByResourceTypesRequestT& request = {}) const
         {
             return SubmitAsync(&IoTWirelessClient::UpdateLogLevelsByResourceTypes, request, handler, context);
+        }
+
+        /**
+         * <p>Update the summary metric configuration.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iotwireless-2020-11-22/UpdateMetricConfiguration">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateMetricConfigurationOutcome UpdateMetricConfiguration(const Model::UpdateMetricConfigurationRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for UpdateMetricConfiguration that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateMetricConfigurationRequestT = Model::UpdateMetricConfigurationRequest>
+        Model::UpdateMetricConfigurationOutcomeCallable UpdateMetricConfigurationCallable(const UpdateMetricConfigurationRequestT& request = {}) const
+        {
+            return SubmitCallable(&IoTWirelessClient::UpdateMetricConfiguration, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateMetricConfiguration that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateMetricConfigurationRequestT = Model::UpdateMetricConfigurationRequest>
+        void UpdateMetricConfigurationAsync(const UpdateMetricConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const UpdateMetricConfigurationRequestT& request = {}) const
+        {
+            return SubmitAsync(&IoTWirelessClient::UpdateMetricConfiguration, request, handler, context);
         }
 
         /**
@@ -2766,7 +2865,6 @@ namespace IoTWireless
       void init(const IoTWirelessClientConfiguration& clientConfiguration);
 
       IoTWirelessClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<IoTWirelessEndpointProviderBase> m_endpointProvider;
   };
 

@@ -25,7 +25,7 @@ namespace Model
   class DescribeDomainRequest : public OpenSearchServiceRequest
   {
   public:
-    AWS_OPENSEARCHSERVICE_API DescribeDomainRequest();
+    AWS_OPENSEARCHSERVICE_API DescribeDomainRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,46 +36,17 @@ namespace Model
     AWS_OPENSEARCHSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the domain that you want information about.</p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
-
-    /**
-     * <p>The name of the domain that you want information about.</p>
-     */
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
     inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
-
-    /**
-     * <p>The name of the domain that you want information about.</p>
-     */
-    inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
-
-    /**
-     * <p>The name of the domain that you want information about.</p>
-     */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
-
-    /**
-     * <p>The name of the domain that you want information about.</p>
-     */
-    inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
-
-    /**
-     * <p>The name of the domain that you want information about.</p>
-     */
-    inline DescribeDomainRequest& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p>The name of the domain that you want information about.</p>
-     */
-    inline DescribeDomainRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the domain that you want information about.</p>
-     */
-    inline DescribeDomainRequest& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    DescribeDomainRequest& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainName;

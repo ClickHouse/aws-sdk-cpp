@@ -12,16 +12,15 @@ using namespace Aws::mgn::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateSourceServerReplicationTypeRequest::UpdateSourceServerReplicationTypeRequest() : 
-    m_replicationType(ReplicationType::NOT_SET),
-    m_replicationTypeHasBeenSet(false),
-    m_sourceServerIDHasBeenSet(false)
-{
-}
-
 Aws::String UpdateSourceServerReplicationTypeRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_accountIDHasBeenSet)
+  {
+   payload.WithString("accountID", m_accountID);
+
+  }
 
   if(m_replicationTypeHasBeenSet)
   {

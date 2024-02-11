@@ -20,10 +20,12 @@
 /* Service model headers required in WAFV2Client header */
 #include <aws/wafv2/model/AssociateWebACLResult.h>
 #include <aws/wafv2/model/CheckCapacityResult.h>
+#include <aws/wafv2/model/CreateAPIKeyResult.h>
 #include <aws/wafv2/model/CreateIPSetResult.h>
 #include <aws/wafv2/model/CreateRegexPatternSetResult.h>
 #include <aws/wafv2/model/CreateRuleGroupResult.h>
 #include <aws/wafv2/model/CreateWebACLResult.h>
+#include <aws/wafv2/model/DeleteAPIKeyResult.h>
 #include <aws/wafv2/model/DeleteFirewallManagerRuleGroupsResult.h>
 #include <aws/wafv2/model/DeleteIPSetResult.h>
 #include <aws/wafv2/model/DeleteLoggingConfigurationResult.h>
@@ -31,9 +33,12 @@
 #include <aws/wafv2/model/DeleteRegexPatternSetResult.h>
 #include <aws/wafv2/model/DeleteRuleGroupResult.h>
 #include <aws/wafv2/model/DeleteWebACLResult.h>
+#include <aws/wafv2/model/DescribeAllManagedProductsResult.h>
+#include <aws/wafv2/model/DescribeManagedProductsByVendorResult.h>
 #include <aws/wafv2/model/DescribeManagedRuleGroupResult.h>
 #include <aws/wafv2/model/DisassociateWebACLResult.h>
 #include <aws/wafv2/model/GenerateMobileSdkReleaseUrlResult.h>
+#include <aws/wafv2/model/GetDecryptedAPIKeyResult.h>
 #include <aws/wafv2/model/GetIPSetResult.h>
 #include <aws/wafv2/model/GetLoggingConfigurationResult.h>
 #include <aws/wafv2/model/GetManagedRuleSetResult.h>
@@ -45,6 +50,7 @@
 #include <aws/wafv2/model/GetSampledRequestsResult.h>
 #include <aws/wafv2/model/GetWebACLResult.h>
 #include <aws/wafv2/model/GetWebACLForResourceResult.h>
+#include <aws/wafv2/model/ListAPIKeysResult.h>
 #include <aws/wafv2/model/ListAvailableManagedRuleGroupVersionsResult.h>
 #include <aws/wafv2/model/ListAvailableManagedRuleGroupsResult.h>
 #include <aws/wafv2/model/ListIPSetsResult.h>
@@ -66,6 +72,8 @@
 #include <aws/wafv2/model/UpdateRegexPatternSetResult.h>
 #include <aws/wafv2/model/UpdateRuleGroupResult.h>
 #include <aws/wafv2/model/UpdateWebACLResult.h>
+#include <aws/wafv2/model/GetRuleGroupRequest.h>
+#include <aws/wafv2/model/GetWebACLRequest.h>
 /* End of service model headers required in WAFV2Client header */
 
 namespace Aws
@@ -99,7 +107,7 @@ namespace Aws
 
   namespace WAFV2
   {
-    using WAFV2ClientConfiguration = Aws::Client::GenericClientConfiguration<false>;
+    using WAFV2ClientConfiguration = Aws::Client::GenericClientConfiguration;
     using WAFV2EndpointProviderBase = Aws::WAFV2::Endpoint::WAFV2EndpointProviderBase;
     using WAFV2EndpointProvider = Aws::WAFV2::Endpoint::WAFV2EndpointProvider;
 
@@ -108,10 +116,12 @@ namespace Aws
       /* Service model forward declarations required in WAFV2Client header */
       class AssociateWebACLRequest;
       class CheckCapacityRequest;
+      class CreateAPIKeyRequest;
       class CreateIPSetRequest;
       class CreateRegexPatternSetRequest;
       class CreateRuleGroupRequest;
       class CreateWebACLRequest;
+      class DeleteAPIKeyRequest;
       class DeleteFirewallManagerRuleGroupsRequest;
       class DeleteIPSetRequest;
       class DeleteLoggingConfigurationRequest;
@@ -119,9 +129,12 @@ namespace Aws
       class DeleteRegexPatternSetRequest;
       class DeleteRuleGroupRequest;
       class DeleteWebACLRequest;
+      class DescribeAllManagedProductsRequest;
+      class DescribeManagedProductsByVendorRequest;
       class DescribeManagedRuleGroupRequest;
       class DisassociateWebACLRequest;
       class GenerateMobileSdkReleaseUrlRequest;
+      class GetDecryptedAPIKeyRequest;
       class GetIPSetRequest;
       class GetLoggingConfigurationRequest;
       class GetManagedRuleSetRequest;
@@ -133,6 +146,7 @@ namespace Aws
       class GetSampledRequestsRequest;
       class GetWebACLRequest;
       class GetWebACLForResourceRequest;
+      class ListAPIKeysRequest;
       class ListAvailableManagedRuleGroupVersionsRequest;
       class ListAvailableManagedRuleGroupsRequest;
       class ListIPSetsRequest;
@@ -159,10 +173,12 @@ namespace Aws
       /* Service model Outcome class definitions */
       typedef Aws::Utils::Outcome<AssociateWebACLResult, WAFV2Error> AssociateWebACLOutcome;
       typedef Aws::Utils::Outcome<CheckCapacityResult, WAFV2Error> CheckCapacityOutcome;
+      typedef Aws::Utils::Outcome<CreateAPIKeyResult, WAFV2Error> CreateAPIKeyOutcome;
       typedef Aws::Utils::Outcome<CreateIPSetResult, WAFV2Error> CreateIPSetOutcome;
       typedef Aws::Utils::Outcome<CreateRegexPatternSetResult, WAFV2Error> CreateRegexPatternSetOutcome;
       typedef Aws::Utils::Outcome<CreateRuleGroupResult, WAFV2Error> CreateRuleGroupOutcome;
       typedef Aws::Utils::Outcome<CreateWebACLResult, WAFV2Error> CreateWebACLOutcome;
+      typedef Aws::Utils::Outcome<DeleteAPIKeyResult, WAFV2Error> DeleteAPIKeyOutcome;
       typedef Aws::Utils::Outcome<DeleteFirewallManagerRuleGroupsResult, WAFV2Error> DeleteFirewallManagerRuleGroupsOutcome;
       typedef Aws::Utils::Outcome<DeleteIPSetResult, WAFV2Error> DeleteIPSetOutcome;
       typedef Aws::Utils::Outcome<DeleteLoggingConfigurationResult, WAFV2Error> DeleteLoggingConfigurationOutcome;
@@ -170,9 +186,12 @@ namespace Aws
       typedef Aws::Utils::Outcome<DeleteRegexPatternSetResult, WAFV2Error> DeleteRegexPatternSetOutcome;
       typedef Aws::Utils::Outcome<DeleteRuleGroupResult, WAFV2Error> DeleteRuleGroupOutcome;
       typedef Aws::Utils::Outcome<DeleteWebACLResult, WAFV2Error> DeleteWebACLOutcome;
+      typedef Aws::Utils::Outcome<DescribeAllManagedProductsResult, WAFV2Error> DescribeAllManagedProductsOutcome;
+      typedef Aws::Utils::Outcome<DescribeManagedProductsByVendorResult, WAFV2Error> DescribeManagedProductsByVendorOutcome;
       typedef Aws::Utils::Outcome<DescribeManagedRuleGroupResult, WAFV2Error> DescribeManagedRuleGroupOutcome;
       typedef Aws::Utils::Outcome<DisassociateWebACLResult, WAFV2Error> DisassociateWebACLOutcome;
       typedef Aws::Utils::Outcome<GenerateMobileSdkReleaseUrlResult, WAFV2Error> GenerateMobileSdkReleaseUrlOutcome;
+      typedef Aws::Utils::Outcome<GetDecryptedAPIKeyResult, WAFV2Error> GetDecryptedAPIKeyOutcome;
       typedef Aws::Utils::Outcome<GetIPSetResult, WAFV2Error> GetIPSetOutcome;
       typedef Aws::Utils::Outcome<GetLoggingConfigurationResult, WAFV2Error> GetLoggingConfigurationOutcome;
       typedef Aws::Utils::Outcome<GetManagedRuleSetResult, WAFV2Error> GetManagedRuleSetOutcome;
@@ -184,6 +203,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<GetSampledRequestsResult, WAFV2Error> GetSampledRequestsOutcome;
       typedef Aws::Utils::Outcome<GetWebACLResult, WAFV2Error> GetWebACLOutcome;
       typedef Aws::Utils::Outcome<GetWebACLForResourceResult, WAFV2Error> GetWebACLForResourceOutcome;
+      typedef Aws::Utils::Outcome<ListAPIKeysResult, WAFV2Error> ListAPIKeysOutcome;
       typedef Aws::Utils::Outcome<ListAvailableManagedRuleGroupVersionsResult, WAFV2Error> ListAvailableManagedRuleGroupVersionsOutcome;
       typedef Aws::Utils::Outcome<ListAvailableManagedRuleGroupsResult, WAFV2Error> ListAvailableManagedRuleGroupsOutcome;
       typedef Aws::Utils::Outcome<ListIPSetsResult, WAFV2Error> ListIPSetsOutcome;
@@ -210,10 +230,12 @@ namespace Aws
       /* Service model Outcome callable definitions */
       typedef std::future<AssociateWebACLOutcome> AssociateWebACLOutcomeCallable;
       typedef std::future<CheckCapacityOutcome> CheckCapacityOutcomeCallable;
+      typedef std::future<CreateAPIKeyOutcome> CreateAPIKeyOutcomeCallable;
       typedef std::future<CreateIPSetOutcome> CreateIPSetOutcomeCallable;
       typedef std::future<CreateRegexPatternSetOutcome> CreateRegexPatternSetOutcomeCallable;
       typedef std::future<CreateRuleGroupOutcome> CreateRuleGroupOutcomeCallable;
       typedef std::future<CreateWebACLOutcome> CreateWebACLOutcomeCallable;
+      typedef std::future<DeleteAPIKeyOutcome> DeleteAPIKeyOutcomeCallable;
       typedef std::future<DeleteFirewallManagerRuleGroupsOutcome> DeleteFirewallManagerRuleGroupsOutcomeCallable;
       typedef std::future<DeleteIPSetOutcome> DeleteIPSetOutcomeCallable;
       typedef std::future<DeleteLoggingConfigurationOutcome> DeleteLoggingConfigurationOutcomeCallable;
@@ -221,9 +243,12 @@ namespace Aws
       typedef std::future<DeleteRegexPatternSetOutcome> DeleteRegexPatternSetOutcomeCallable;
       typedef std::future<DeleteRuleGroupOutcome> DeleteRuleGroupOutcomeCallable;
       typedef std::future<DeleteWebACLOutcome> DeleteWebACLOutcomeCallable;
+      typedef std::future<DescribeAllManagedProductsOutcome> DescribeAllManagedProductsOutcomeCallable;
+      typedef std::future<DescribeManagedProductsByVendorOutcome> DescribeManagedProductsByVendorOutcomeCallable;
       typedef std::future<DescribeManagedRuleGroupOutcome> DescribeManagedRuleGroupOutcomeCallable;
       typedef std::future<DisassociateWebACLOutcome> DisassociateWebACLOutcomeCallable;
       typedef std::future<GenerateMobileSdkReleaseUrlOutcome> GenerateMobileSdkReleaseUrlOutcomeCallable;
+      typedef std::future<GetDecryptedAPIKeyOutcome> GetDecryptedAPIKeyOutcomeCallable;
       typedef std::future<GetIPSetOutcome> GetIPSetOutcomeCallable;
       typedef std::future<GetLoggingConfigurationOutcome> GetLoggingConfigurationOutcomeCallable;
       typedef std::future<GetManagedRuleSetOutcome> GetManagedRuleSetOutcomeCallable;
@@ -235,6 +260,7 @@ namespace Aws
       typedef std::future<GetSampledRequestsOutcome> GetSampledRequestsOutcomeCallable;
       typedef std::future<GetWebACLOutcome> GetWebACLOutcomeCallable;
       typedef std::future<GetWebACLForResourceOutcome> GetWebACLForResourceOutcomeCallable;
+      typedef std::future<ListAPIKeysOutcome> ListAPIKeysOutcomeCallable;
       typedef std::future<ListAvailableManagedRuleGroupVersionsOutcome> ListAvailableManagedRuleGroupVersionsOutcomeCallable;
       typedef std::future<ListAvailableManagedRuleGroupsOutcome> ListAvailableManagedRuleGroupsOutcomeCallable;
       typedef std::future<ListIPSetsOutcome> ListIPSetsOutcomeCallable;
@@ -264,10 +290,12 @@ namespace Aws
     /* Service model async handlers definitions */
     typedef std::function<void(const WAFV2Client*, const Model::AssociateWebACLRequest&, const Model::AssociateWebACLOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssociateWebACLResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::CheckCapacityRequest&, const Model::CheckCapacityOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CheckCapacityResponseReceivedHandler;
+    typedef std::function<void(const WAFV2Client*, const Model::CreateAPIKeyRequest&, const Model::CreateAPIKeyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateAPIKeyResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::CreateIPSetRequest&, const Model::CreateIPSetOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateIPSetResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::CreateRegexPatternSetRequest&, const Model::CreateRegexPatternSetOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateRegexPatternSetResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::CreateRuleGroupRequest&, const Model::CreateRuleGroupOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateRuleGroupResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::CreateWebACLRequest&, const Model::CreateWebACLOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateWebACLResponseReceivedHandler;
+    typedef std::function<void(const WAFV2Client*, const Model::DeleteAPIKeyRequest&, const Model::DeleteAPIKeyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteAPIKeyResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::DeleteFirewallManagerRuleGroupsRequest&, const Model::DeleteFirewallManagerRuleGroupsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteFirewallManagerRuleGroupsResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::DeleteIPSetRequest&, const Model::DeleteIPSetOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteIPSetResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::DeleteLoggingConfigurationRequest&, const Model::DeleteLoggingConfigurationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteLoggingConfigurationResponseReceivedHandler;
@@ -275,9 +303,12 @@ namespace Aws
     typedef std::function<void(const WAFV2Client*, const Model::DeleteRegexPatternSetRequest&, const Model::DeleteRegexPatternSetOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteRegexPatternSetResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::DeleteRuleGroupRequest&, const Model::DeleteRuleGroupOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteRuleGroupResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::DeleteWebACLRequest&, const Model::DeleteWebACLOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteWebACLResponseReceivedHandler;
+    typedef std::function<void(const WAFV2Client*, const Model::DescribeAllManagedProductsRequest&, const Model::DescribeAllManagedProductsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeAllManagedProductsResponseReceivedHandler;
+    typedef std::function<void(const WAFV2Client*, const Model::DescribeManagedProductsByVendorRequest&, const Model::DescribeManagedProductsByVendorOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeManagedProductsByVendorResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::DescribeManagedRuleGroupRequest&, const Model::DescribeManagedRuleGroupOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeManagedRuleGroupResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::DisassociateWebACLRequest&, const Model::DisassociateWebACLOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateWebACLResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::GenerateMobileSdkReleaseUrlRequest&, const Model::GenerateMobileSdkReleaseUrlOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GenerateMobileSdkReleaseUrlResponseReceivedHandler;
+    typedef std::function<void(const WAFV2Client*, const Model::GetDecryptedAPIKeyRequest&, const Model::GetDecryptedAPIKeyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetDecryptedAPIKeyResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::GetIPSetRequest&, const Model::GetIPSetOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetIPSetResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::GetLoggingConfigurationRequest&, const Model::GetLoggingConfigurationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetLoggingConfigurationResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::GetManagedRuleSetRequest&, const Model::GetManagedRuleSetOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetManagedRuleSetResponseReceivedHandler;
@@ -289,6 +320,7 @@ namespace Aws
     typedef std::function<void(const WAFV2Client*, const Model::GetSampledRequestsRequest&, const Model::GetSampledRequestsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetSampledRequestsResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::GetWebACLRequest&, const Model::GetWebACLOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetWebACLResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::GetWebACLForResourceRequest&, const Model::GetWebACLForResourceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetWebACLForResourceResponseReceivedHandler;
+    typedef std::function<void(const WAFV2Client*, const Model::ListAPIKeysRequest&, const Model::ListAPIKeysOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListAPIKeysResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::ListAvailableManagedRuleGroupVersionsRequest&, const Model::ListAvailableManagedRuleGroupVersionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListAvailableManagedRuleGroupVersionsResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::ListAvailableManagedRuleGroupsRequest&, const Model::ListAvailableManagedRuleGroupsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListAvailableManagedRuleGroupsResponseReceivedHandler;
     typedef std::function<void(const WAFV2Client*, const Model::ListIPSetsRequest&, const Model::ListIPSetsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListIPSetsResponseReceivedHandler;

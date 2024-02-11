@@ -12,23 +12,13 @@ using namespace Aws::LocationService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateTrackerRequest::CreateTrackerRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_positionFiltering(PositionFiltering::NOT_SET),
-    m_positionFilteringHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_trackerNameHasBeenSet(false)
-{
-}
-
 Aws::String CreateTrackerRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_descriptionHasBeenSet)
+  if(m_trackerNameHasBeenSet)
   {
-   payload.WithString("Description", m_description);
+   payload.WithString("TrackerName", m_trackerName);
 
   }
 
@@ -38,9 +28,10 @@ Aws::String CreateTrackerRequest::SerializePayload() const
 
   }
 
-  if(m_positionFilteringHasBeenSet)
+  if(m_descriptionHasBeenSet)
   {
-   payload.WithString("PositionFiltering", PositionFilteringMapper::GetNameForPositionFiltering(m_positionFiltering));
+   payload.WithString("Description", m_description);
+
   }
 
   if(m_tagsHasBeenSet)
@@ -54,9 +45,20 @@ Aws::String CreateTrackerRequest::SerializePayload() const
 
   }
 
-  if(m_trackerNameHasBeenSet)
+  if(m_positionFilteringHasBeenSet)
   {
-   payload.WithString("TrackerName", m_trackerName);
+   payload.WithString("PositionFiltering", PositionFilteringMapper::GetNameForPositionFiltering(m_positionFiltering));
+  }
+
+  if(m_eventBridgeEnabledHasBeenSet)
+  {
+   payload.WithBool("EventBridgeEnabled", m_eventBridgeEnabled);
+
+  }
+
+  if(m_kmsKeyEnableGeospatialQueriesHasBeenSet)
+  {
+   payload.WithBool("KmsKeyEnableGeospatialQueries", m_kmsKeyEnableGeospatialQueries);
 
   }
 

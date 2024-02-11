@@ -12,24 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutItemRequest::PutItemRequest() : 
-    m_tableNameHasBeenSet(false),
-    m_itemHasBeenSet(false),
-    m_expectedHasBeenSet(false),
-    m_returnValues(ReturnValue::NOT_SET),
-    m_returnValuesHasBeenSet(false),
-    m_returnConsumedCapacity(ReturnConsumedCapacity::NOT_SET),
-    m_returnConsumedCapacityHasBeenSet(false),
-    m_returnItemCollectionMetrics(ReturnItemCollectionMetrics::NOT_SET),
-    m_returnItemCollectionMetricsHasBeenSet(false),
-    m_conditionalOperator(ConditionalOperator::NOT_SET),
-    m_conditionalOperatorHasBeenSet(false),
-    m_conditionExpressionHasBeenSet(false),
-    m_expressionAttributeNamesHasBeenSet(false),
-    m_expressionAttributeValuesHasBeenSet(false)
-{
-}
-
 Aws::String PutItemRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -110,6 +92,11 @@ Aws::String PutItemRequest::SerializePayload() const
 
   }
 
+  if(m_returnValuesOnConditionCheckFailureHasBeenSet)
+  {
+   payload.WithString("ReturnValuesOnConditionCheckFailure", ReturnValuesOnConditionCheckFailureMapper::GetNameForReturnValuesOnConditionCheckFailure(m_returnValuesOnConditionCheckFailure));
+  }
+
   return payload.View().WriteReadable();
 }
 
@@ -122,5 +109,15 @@ Aws::Http::HeaderValueCollection PutItemRequest::GetRequestSpecificHeaders() con
 }
 
 
+
+PutItemRequest::EndpointParameters PutItemRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (TableNameHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetTableName(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

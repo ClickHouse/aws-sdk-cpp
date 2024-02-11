@@ -12,21 +12,6 @@ using namespace Aws::RedshiftDataAPIService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-BatchExecuteStatementRequest::BatchExecuteStatementRequest() : 
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_clusterIdentifierHasBeenSet(false),
-    m_databaseHasBeenSet(false),
-    m_dbUserHasBeenSet(false),
-    m_secretArnHasBeenSet(false),
-    m_sqlsHasBeenSet(false),
-    m_statementNameHasBeenSet(false),
-    m_withEvent(false),
-    m_withEventHasBeenSet(false),
-    m_workgroupNameHasBeenSet(false)
-{
-}
-
 Aws::String BatchExecuteStatementRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -55,9 +40,26 @@ Aws::String BatchExecuteStatementRequest::SerializePayload() const
 
   }
 
+  if(m_resultFormatHasBeenSet)
+  {
+   payload.WithString("ResultFormat", ResultFormatStringMapper::GetNameForResultFormatString(m_resultFormat));
+  }
+
   if(m_secretArnHasBeenSet)
   {
    payload.WithString("SecretArn", m_secretArn);
+
+  }
+
+  if(m_sessionIdHasBeenSet)
+  {
+   payload.WithString("SessionId", m_sessionId);
+
+  }
+
+  if(m_sessionKeepAliveSecondsHasBeenSet)
+  {
+   payload.WithInteger("SessionKeepAliveSeconds", m_sessionKeepAliveSeconds);
 
   }
 

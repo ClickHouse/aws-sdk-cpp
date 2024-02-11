@@ -18,15 +18,7 @@ namespace NetworkManager
 namespace Model
 {
 
-RouteTableIdentifier::RouteTableIdentifier() : 
-    m_transitGatewayRouteTableArnHasBeenSet(false),
-    m_coreNetworkSegmentEdgeHasBeenSet(false)
-{
-}
-
-RouteTableIdentifier::RouteTableIdentifier(JsonView jsonValue) : 
-    m_transitGatewayRouteTableArnHasBeenSet(false),
-    m_coreNetworkSegmentEdgeHasBeenSet(false)
+RouteTableIdentifier::RouteTableIdentifier(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ RouteTableIdentifier& RouteTableIdentifier::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TransitGatewayRouteTableArn"))
   {
     m_transitGatewayRouteTableArn = jsonValue.GetString("TransitGatewayRouteTableArn");
-
     m_transitGatewayRouteTableArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CoreNetworkSegmentEdge"))
   {
     m_coreNetworkSegmentEdge = jsonValue.GetObject("CoreNetworkSegmentEdge");
-
     m_coreNetworkSegmentEdgeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("CoreNetworkNetworkFunctionGroup"))
+  {
+    m_coreNetworkNetworkFunctionGroup = jsonValue.GetObject("CoreNetworkNetworkFunctionGroup");
+    m_coreNetworkNetworkFunctionGroupHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +56,12 @@ JsonValue RouteTableIdentifier::Jsonize() const
   if(m_coreNetworkSegmentEdgeHasBeenSet)
   {
    payload.WithObject("CoreNetworkSegmentEdge", m_coreNetworkSegmentEdge.Jsonize());
+
+  }
+
+  if(m_coreNetworkNetworkFunctionGroupHasBeenSet)
+  {
+   payload.WithObject("CoreNetworkNetworkFunctionGroup", m_coreNetworkNetworkFunctionGroup.Jsonize());
 
   }
 

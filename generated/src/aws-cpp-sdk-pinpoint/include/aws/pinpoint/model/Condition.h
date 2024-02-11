@@ -34,101 +34,43 @@ namespace Model
   class Condition
   {
   public:
-    AWS_PINPOINT_API Condition();
+    AWS_PINPOINT_API Condition() = default;
     AWS_PINPOINT_API Condition(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Condition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The conditions to evaluate for the activity.</p>
      */
-    inline const Aws::Vector<SimpleCondition>& GetConditions() const{ return m_conditions; }
-
-    /**
-     * <p>The conditions to evaluate for the activity.</p>
-     */
+    inline const Aws::Vector<SimpleCondition>& GetConditions() const { return m_conditions; }
     inline bool ConditionsHasBeenSet() const { return m_conditionsHasBeenSet; }
+    template<typename ConditionsT = Aws::Vector<SimpleCondition>>
+    void SetConditions(ConditionsT&& value) { m_conditionsHasBeenSet = true; m_conditions = std::forward<ConditionsT>(value); }
+    template<typename ConditionsT = Aws::Vector<SimpleCondition>>
+    Condition& WithConditions(ConditionsT&& value) { SetConditions(std::forward<ConditionsT>(value)); return *this;}
+    template<typename ConditionsT = SimpleCondition>
+    Condition& AddConditions(ConditionsT&& value) { m_conditionsHasBeenSet = true; m_conditions.emplace_back(std::forward<ConditionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The conditions to evaluate for the activity.</p>
-     */
-    inline void SetConditions(const Aws::Vector<SimpleCondition>& value) { m_conditionsHasBeenSet = true; m_conditions = value; }
-
-    /**
-     * <p>The conditions to evaluate for the activity.</p>
-     */
-    inline void SetConditions(Aws::Vector<SimpleCondition>&& value) { m_conditionsHasBeenSet = true; m_conditions = std::move(value); }
-
-    /**
-     * <p>The conditions to evaluate for the activity.</p>
-     */
-    inline Condition& WithConditions(const Aws::Vector<SimpleCondition>& value) { SetConditions(value); return *this;}
-
-    /**
-     * <p>The conditions to evaluate for the activity.</p>
-     */
-    inline Condition& WithConditions(Aws::Vector<SimpleCondition>&& value) { SetConditions(std::move(value)); return *this;}
-
-    /**
-     * <p>The conditions to evaluate for the activity.</p>
-     */
-    inline Condition& AddConditions(const SimpleCondition& value) { m_conditionsHasBeenSet = true; m_conditions.push_back(value); return *this; }
-
-    /**
-     * <p>The conditions to evaluate for the activity.</p>
-     */
-    inline Condition& AddConditions(SimpleCondition&& value) { m_conditionsHasBeenSet = true; m_conditions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies how to handle multiple conditions for the activity. For example, if
      * you specify two conditions for an activity, whether both or only one of the
      * conditions must be met for the activity to be performed.</p>
      */
-    inline const Operator& GetOperator() const{ return m_operator; }
-
-    /**
-     * <p>Specifies how to handle multiple conditions for the activity. For example, if
-     * you specify two conditions for an activity, whether both or only one of the
-     * conditions must be met for the activity to be performed.</p>
-     */
+    inline Operator GetOperator() const { return m_operator; }
     inline bool OperatorHasBeenSet() const { return m_operatorHasBeenSet; }
-
-    /**
-     * <p>Specifies how to handle multiple conditions for the activity. For example, if
-     * you specify two conditions for an activity, whether both or only one of the
-     * conditions must be met for the activity to be performed.</p>
-     */
-    inline void SetOperator(const Operator& value) { m_operatorHasBeenSet = true; m_operator = value; }
-
-    /**
-     * <p>Specifies how to handle multiple conditions for the activity. For example, if
-     * you specify two conditions for an activity, whether both or only one of the
-     * conditions must be met for the activity to be performed.</p>
-     */
-    inline void SetOperator(Operator&& value) { m_operatorHasBeenSet = true; m_operator = std::move(value); }
-
-    /**
-     * <p>Specifies how to handle multiple conditions for the activity. For example, if
-     * you specify two conditions for an activity, whether both or only one of the
-     * conditions must be met for the activity to be performed.</p>
-     */
-    inline Condition& WithOperator(const Operator& value) { SetOperator(value); return *this;}
-
-    /**
-     * <p>Specifies how to handle multiple conditions for the activity. For example, if
-     * you specify two conditions for an activity, whether both or only one of the
-     * conditions must be met for the activity to be performed.</p>
-     */
-    inline Condition& WithOperator(Operator&& value) { SetOperator(std::move(value)); return *this;}
-
+    inline void SetOperator(Operator value) { m_operatorHasBeenSet = true; m_operator = value; }
+    inline Condition& WithOperator(Operator value) { SetOperator(value); return *this;}
+    ///@}
   private:
 
     Aws::Vector<SimpleCondition> m_conditions;
     bool m_conditionsHasBeenSet = false;
 
-    Operator m_operator;
+    Operator m_operator{Operator::NOT_SET};
     bool m_operatorHasBeenSet = false;
   };
 

@@ -12,27 +12,6 @@ using namespace Aws::IoT::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateJobRequest::CreateJobRequest() : 
-    m_jobIdHasBeenSet(false),
-    m_targetsHasBeenSet(false),
-    m_documentSourceHasBeenSet(false),
-    m_documentHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_presignedUrlConfigHasBeenSet(false),
-    m_targetSelection(TargetSelection::NOT_SET),
-    m_targetSelectionHasBeenSet(false),
-    m_jobExecutionsRolloutConfigHasBeenSet(false),
-    m_abortConfigHasBeenSet(false),
-    m_timeoutConfigHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_namespaceIdHasBeenSet(false),
-    m_jobTemplateArnHasBeenSet(false),
-    m_jobExecutionsRetryConfigHasBeenSet(false),
-    m_documentParametersHasBeenSet(false),
-    m_schedulingConfigHasBeenSet(false)
-{
-}
-
 Aws::String CreateJobRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -138,6 +117,17 @@ Aws::String CreateJobRequest::SerializePayload() const
   if(m_schedulingConfigHasBeenSet)
   {
    payload.WithObject("schedulingConfig", m_schedulingConfig.Jsonize());
+
+  }
+
+  if(m_destinationPackageVersionsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> destinationPackageVersionsJsonList(m_destinationPackageVersions.size());
+   for(unsigned destinationPackageVersionsIndex = 0; destinationPackageVersionsIndex < destinationPackageVersionsJsonList.GetLength(); ++destinationPackageVersionsIndex)
+   {
+     destinationPackageVersionsJsonList[destinationPackageVersionsIndex].AsString(m_destinationPackageVersions[destinationPackageVersionsIndex]);
+   }
+   payload.WithArray("destinationPackageVersions", std::move(destinationPackageVersionsJsonList));
 
   }
 

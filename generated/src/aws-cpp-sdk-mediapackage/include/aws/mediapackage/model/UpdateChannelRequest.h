@@ -24,7 +24,7 @@ namespace Model
   class UpdateChannelRequest : public MediaPackageRequest
   {
   public:
-    AWS_MEDIAPACKAGE_API UpdateChannelRequest();
+    AWS_MEDIAPACKAGE_API UpdateChannelRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,87 +35,29 @@ namespace Model
     AWS_MEDIAPACKAGE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * A short text description of the Channel.
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * A short text description of the Channel.
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateChannelRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * A short text description of the Channel.
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * A short text description of the Channel.
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * A short text description of the Channel.
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * A short text description of the Channel.
-     */
-    inline UpdateChannelRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * A short text description of the Channel.
-     */
-    inline UpdateChannelRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * A short text description of the Channel.
-     */
-    inline UpdateChannelRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * The ID of the Channel to update.
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * The ID of the Channel to update.
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
-
-    /**
-     * The ID of the Channel to update.
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * The ID of the Channel to update.
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * The ID of the Channel to update.
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * The ID of the Channel to update.
-     */
-    inline UpdateChannelRequest& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * The ID of the Channel to update.
-     */
-    inline UpdateChannelRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * The ID of the Channel to update.
-     */
-    inline UpdateChannelRequest& WithId(const char* value) { SetId(value); return *this;}
-
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    UpdateChannelRequest& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_description;

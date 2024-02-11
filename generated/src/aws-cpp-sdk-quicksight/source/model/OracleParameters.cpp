@@ -18,19 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-OracleParameters::OracleParameters() : 
-    m_hostHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_databaseHasBeenSet(false)
-{
-}
-
-OracleParameters::OracleParameters(JsonView jsonValue) : 
-    m_hostHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_databaseHasBeenSet(false)
+OracleParameters::OracleParameters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,23 @@ OracleParameters& OracleParameters::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Host"))
   {
     m_host = jsonValue.GetString("Host");
-
     m_hostHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Port"))
   {
     m_port = jsonValue.GetInteger("Port");
-
     m_portHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Database"))
   {
     m_database = jsonValue.GetString("Database");
-
     m_databaseHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("UseServiceName"))
+  {
+    m_useServiceName = jsonValue.GetBool("UseServiceName");
+    m_useServiceNameHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -80,6 +67,12 @@ JsonValue OracleParameters::Jsonize() const
   if(m_databaseHasBeenSet)
   {
    payload.WithString("Database", m_database);
+
+  }
+
+  if(m_useServiceNameHasBeenSet)
+  {
+   payload.WithBool("UseServiceName", m_useServiceName);
 
   }
 

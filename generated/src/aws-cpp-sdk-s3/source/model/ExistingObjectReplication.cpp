@@ -20,15 +20,7 @@ namespace S3
 namespace Model
 {
 
-ExistingObjectReplication::ExistingObjectReplication() : 
-    m_status(ExistingObjectReplicationStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-ExistingObjectReplication::ExistingObjectReplication(const XmlNode& xmlNode) : 
-    m_status(ExistingObjectReplicationStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+ExistingObjectReplication::ExistingObjectReplication(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -42,7 +34,7 @@ ExistingObjectReplication& ExistingObjectReplication::operator =(const XmlNode& 
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = ExistingObjectReplicationStatusMapper::GetExistingObjectReplicationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = ExistingObjectReplicationStatusMapper::GetExistingObjectReplicationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
   }

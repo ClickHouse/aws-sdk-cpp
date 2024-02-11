@@ -18,15 +18,7 @@ namespace LocationService
 namespace Model
 {
 
-BatchPutGeofenceRequestEntry::BatchPutGeofenceRequestEntry() : 
-    m_geofenceIdHasBeenSet(false),
-    m_geometryHasBeenSet(false)
-{
-}
-
-BatchPutGeofenceRequestEntry::BatchPutGeofenceRequestEntry(JsonView jsonValue) : 
-    m_geofenceIdHasBeenSet(false),
-    m_geometryHasBeenSet(false)
+BatchPutGeofenceRequestEntry::BatchPutGeofenceRequestEntry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,22 @@ BatchPutGeofenceRequestEntry& BatchPutGeofenceRequestEntry::operator =(JsonView 
   if(jsonValue.ValueExists("GeofenceId"))
   {
     m_geofenceId = jsonValue.GetString("GeofenceId");
-
     m_geofenceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Geometry"))
   {
     m_geometry = jsonValue.GetObject("Geometry");
-
     m_geometryHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("GeofenceProperties"))
+  {
+    Aws::Map<Aws::String, JsonView> geofencePropertiesJsonMap = jsonValue.GetObject("GeofenceProperties").GetAllObjects();
+    for(auto& geofencePropertiesItem : geofencePropertiesJsonMap)
+    {
+      m_geofenceProperties[geofencePropertiesItem.first] = geofencePropertiesItem.second.AsString();
+    }
+    m_geofencePropertiesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +60,17 @@ JsonValue BatchPutGeofenceRequestEntry::Jsonize() const
   if(m_geometryHasBeenSet)
   {
    payload.WithObject("Geometry", m_geometry.Jsonize());
+
+  }
+
+  if(m_geofencePropertiesHasBeenSet)
+  {
+   JsonValue geofencePropertiesJsonMap;
+   for(auto& geofencePropertiesItem : m_geofenceProperties)
+   {
+     geofencePropertiesJsonMap.WithString(geofencePropertiesItem.first, geofencePropertiesItem.second);
+   }
+   payload.WithObject("GeofenceProperties", std::move(geofencePropertiesJsonMap));
 
   }
 

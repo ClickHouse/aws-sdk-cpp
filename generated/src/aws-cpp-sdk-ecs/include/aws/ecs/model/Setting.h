@@ -7,6 +7,7 @@
 #include <aws/ecs/ECS_EXPORTS.h>
 #include <aws/ecs/model/SettingName.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/ecs/model/SettingType.h>
 #include <utility>
 
 namespace Aws
@@ -32,143 +33,64 @@ namespace Model
   class Setting
   {
   public:
-    AWS_ECS_API Setting();
+    AWS_ECS_API Setting() = default;
     AWS_ECS_API Setting(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECS_API Setting& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon ECS resource name.</p>
      */
-    inline const SettingName& GetName() const{ return m_name; }
-
-    /**
-     * <p>The Amazon ECS resource name.</p>
-     */
+    inline SettingName GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    inline void SetName(SettingName value) { m_nameHasBeenSet = true; m_name = value; }
+    inline Setting& WithName(SettingName value) { SetName(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon ECS resource name.</p>
-     */
-    inline void SetName(const SettingName& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The Amazon ECS resource name.</p>
-     */
-    inline void SetName(SettingName&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The Amazon ECS resource name.</p>
-     */
-    inline Setting& WithName(const SettingName& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The Amazon ECS resource name.</p>
-     */
-    inline Setting& WithName(SettingName&& value) { SetName(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Determines whether the account setting is on or off for the specified
      * resource.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>Determines whether the account setting is on or off for the specified
-     * resource.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    Setting& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Determines whether the account setting is on or off for the specified
-     * resource.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>Determines whether the account setting is on or off for the specified
-     * resource.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>Determines whether the account setting is on or off for the specified
-     * resource.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>Determines whether the account setting is on or off for the specified
-     * resource.</p>
-     */
-    inline Setting& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>Determines whether the account setting is on or off for the specified
-     * resource.</p>
-     */
-    inline Setting& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Determines whether the account setting is on or off for the specified
-     * resource.</p>
-     */
-    inline Setting& WithValue(const char* value) { SetValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the principal. It can be a user, role, or the root user. If this
      * field is omitted, the authenticated user is assumed.</p>
      */
-    inline const Aws::String& GetPrincipalArn() const{ return m_principalArn; }
-
-    /**
-     * <p>The ARN of the principal. It can be a user, role, or the root user. If this
-     * field is omitted, the authenticated user is assumed.</p>
-     */
+    inline const Aws::String& GetPrincipalArn() const { return m_principalArn; }
     inline bool PrincipalArnHasBeenSet() const { return m_principalArnHasBeenSet; }
+    template<typename PrincipalArnT = Aws::String>
+    void SetPrincipalArn(PrincipalArnT&& value) { m_principalArnHasBeenSet = true; m_principalArn = std::forward<PrincipalArnT>(value); }
+    template<typename PrincipalArnT = Aws::String>
+    Setting& WithPrincipalArn(PrincipalArnT&& value) { SetPrincipalArn(std::forward<PrincipalArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of the principal. It can be a user, role, or the root user. If this
-     * field is omitted, the authenticated user is assumed.</p>
+     * <p>Indicates whether Amazon Web Services manages the account setting, or if the
+     * user manages it.</p> <p> <code>aws_managed</code> account settings are
+     * read-only, as Amazon Web Services manages such on the customer's behalf.
+     * Currently, the <code>guardDutyActivate</code> account setting is the only one
+     * Amazon Web Services manages.</p>
      */
-    inline void SetPrincipalArn(const Aws::String& value) { m_principalArnHasBeenSet = true; m_principalArn = value; }
-
-    /**
-     * <p>The ARN of the principal. It can be a user, role, or the root user. If this
-     * field is omitted, the authenticated user is assumed.</p>
-     */
-    inline void SetPrincipalArn(Aws::String&& value) { m_principalArnHasBeenSet = true; m_principalArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the principal. It can be a user, role, or the root user. If this
-     * field is omitted, the authenticated user is assumed.</p>
-     */
-    inline void SetPrincipalArn(const char* value) { m_principalArnHasBeenSet = true; m_principalArn.assign(value); }
-
-    /**
-     * <p>The ARN of the principal. It can be a user, role, or the root user. If this
-     * field is omitted, the authenticated user is assumed.</p>
-     */
-    inline Setting& WithPrincipalArn(const Aws::String& value) { SetPrincipalArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the principal. It can be a user, role, or the root user. If this
-     * field is omitted, the authenticated user is assumed.</p>
-     */
-    inline Setting& WithPrincipalArn(Aws::String&& value) { SetPrincipalArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the principal. It can be a user, role, or the root user. If this
-     * field is omitted, the authenticated user is assumed.</p>
-     */
-    inline Setting& WithPrincipalArn(const char* value) { SetPrincipalArn(value); return *this;}
-
+    inline SettingType GetType() const { return m_type; }
+    inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(SettingType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline Setting& WithType(SettingType value) { SetType(value); return *this;}
+    ///@}
   private:
 
-    SettingName m_name;
+    SettingName m_name{SettingName::NOT_SET};
     bool m_nameHasBeenSet = false;
 
     Aws::String m_value;
@@ -176,6 +98,9 @@ namespace Model
 
     Aws::String m_principalArn;
     bool m_principalArnHasBeenSet = false;
+
+    SettingType m_type{SettingType::NOT_SET};
+    bool m_typeHasBeenSet = false;
   };
 
 } // namespace Model

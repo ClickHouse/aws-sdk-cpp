@@ -18,15 +18,7 @@ namespace AppRunner
 namespace Model
 {
 
-NetworkConfiguration::NetworkConfiguration() : 
-    m_egressConfigurationHasBeenSet(false),
-    m_ingressConfigurationHasBeenSet(false)
-{
-}
-
-NetworkConfiguration::NetworkConfiguration(JsonView jsonValue) : 
-    m_egressConfigurationHasBeenSet(false),
-    m_ingressConfigurationHasBeenSet(false)
+NetworkConfiguration::NetworkConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ NetworkConfiguration& NetworkConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("EgressConfiguration"))
   {
     m_egressConfiguration = jsonValue.GetObject("EgressConfiguration");
-
     m_egressConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IngressConfiguration"))
   {
     m_ingressConfiguration = jsonValue.GetObject("IngressConfiguration");
-
     m_ingressConfigurationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("IpAddressType"))
+  {
+    m_ipAddressType = IpAddressTypeMapper::GetIpAddressTypeForName(jsonValue.GetString("IpAddressType"));
+    m_ipAddressTypeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -64,6 +57,11 @@ JsonValue NetworkConfiguration::Jsonize() const
   {
    payload.WithObject("IngressConfiguration", m_ingressConfiguration.Jsonize());
 
+  }
+
+  if(m_ipAddressTypeHasBeenSet)
+  {
+   payload.WithString("IpAddressType", IpAddressTypeMapper::GetNameForIpAddressType(m_ipAddressType));
   }
 
   return payload;

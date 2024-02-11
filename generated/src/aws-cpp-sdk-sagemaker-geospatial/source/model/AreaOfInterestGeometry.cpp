@@ -18,15 +18,7 @@ namespace SageMakerGeospatial
 namespace Model
 {
 
-AreaOfInterestGeometry::AreaOfInterestGeometry() : 
-    m_multiPolygonGeometryHasBeenSet(false),
-    m_polygonGeometryHasBeenSet(false)
-{
-}
-
-AreaOfInterestGeometry::AreaOfInterestGeometry(JsonView jsonValue) : 
-    m_multiPolygonGeometryHasBeenSet(false),
-    m_polygonGeometryHasBeenSet(false)
+AreaOfInterestGeometry::AreaOfInterestGeometry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AreaOfInterestGeometry& AreaOfInterestGeometry::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MultiPolygonGeometry"))
   {
     m_multiPolygonGeometry = jsonValue.GetObject("MultiPolygonGeometry");
-
     m_multiPolygonGeometryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PolygonGeometry"))
   {
     m_polygonGeometry = jsonValue.GetObject("PolygonGeometry");
-
     m_polygonGeometryHasBeenSet = true;
   }
-
   return *this;
 }
 

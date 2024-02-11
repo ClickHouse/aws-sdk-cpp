@@ -25,7 +25,7 @@ namespace Model
   class UpdateLaunchRequest : public CloudWatchEvidentlyRequest
   {
   public:
-    AWS_CLOUDWATCHEVIDENTLY_API UpdateLaunchRequest();
+    AWS_CLOUDWATCHEVIDENTLY_API UpdateLaunchRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,235 +36,74 @@ namespace Model
     AWS_CLOUDWATCHEVIDENTLY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>An optional description for the launch.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>An optional description for the launch.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateLaunchRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An optional description for the launch.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>An optional description for the launch.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>An optional description for the launch.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>An optional description for the launch.</p>
-     */
-    inline UpdateLaunchRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>An optional description for the launch.</p>
-     */
-    inline UpdateLaunchRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional description for the launch.</p>
-     */
-    inline UpdateLaunchRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of structures that contains the feature and variations that are to
      * be used for the launch.</p>
      */
-    inline const Aws::Vector<LaunchGroupConfig>& GetGroups() const{ return m_groups; }
-
-    /**
-     * <p>An array of structures that contains the feature and variations that are to
-     * be used for the launch.</p>
-     */
+    inline const Aws::Vector<LaunchGroupConfig>& GetGroups() const { return m_groups; }
     inline bool GroupsHasBeenSet() const { return m_groupsHasBeenSet; }
+    template<typename GroupsT = Aws::Vector<LaunchGroupConfig>>
+    void SetGroups(GroupsT&& value) { m_groupsHasBeenSet = true; m_groups = std::forward<GroupsT>(value); }
+    template<typename GroupsT = Aws::Vector<LaunchGroupConfig>>
+    UpdateLaunchRequest& WithGroups(GroupsT&& value) { SetGroups(std::forward<GroupsT>(value)); return *this;}
+    template<typename GroupsT = LaunchGroupConfig>
+    UpdateLaunchRequest& AddGroups(GroupsT&& value) { m_groupsHasBeenSet = true; m_groups.emplace_back(std::forward<GroupsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of structures that contains the feature and variations that are to
-     * be used for the launch.</p>
-     */
-    inline void SetGroups(const Aws::Vector<LaunchGroupConfig>& value) { m_groupsHasBeenSet = true; m_groups = value; }
-
-    /**
-     * <p>An array of structures that contains the feature and variations that are to
-     * be used for the launch.</p>
-     */
-    inline void SetGroups(Aws::Vector<LaunchGroupConfig>&& value) { m_groupsHasBeenSet = true; m_groups = std::move(value); }
-
-    /**
-     * <p>An array of structures that contains the feature and variations that are to
-     * be used for the launch.</p>
-     */
-    inline UpdateLaunchRequest& WithGroups(const Aws::Vector<LaunchGroupConfig>& value) { SetGroups(value); return *this;}
-
-    /**
-     * <p>An array of structures that contains the feature and variations that are to
-     * be used for the launch.</p>
-     */
-    inline UpdateLaunchRequest& WithGroups(Aws::Vector<LaunchGroupConfig>&& value) { SetGroups(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of structures that contains the feature and variations that are to
-     * be used for the launch.</p>
-     */
-    inline UpdateLaunchRequest& AddGroups(const LaunchGroupConfig& value) { m_groupsHasBeenSet = true; m_groups.push_back(value); return *this; }
-
-    /**
-     * <p>An array of structures that contains the feature and variations that are to
-     * be used for the launch.</p>
-     */
-    inline UpdateLaunchRequest& AddGroups(LaunchGroupConfig&& value) { m_groupsHasBeenSet = true; m_groups.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The name of the launch that is to be updated.</p>
      */
-    inline const Aws::String& GetLaunch() const{ return m_launch; }
-
-    /**
-     * <p>The name of the launch that is to be updated.</p>
-     */
+    inline const Aws::String& GetLaunch() const { return m_launch; }
     inline bool LaunchHasBeenSet() const { return m_launchHasBeenSet; }
+    template<typename LaunchT = Aws::String>
+    void SetLaunch(LaunchT&& value) { m_launchHasBeenSet = true; m_launch = std::forward<LaunchT>(value); }
+    template<typename LaunchT = Aws::String>
+    UpdateLaunchRequest& WithLaunch(LaunchT&& value) { SetLaunch(std::forward<LaunchT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the launch that is to be updated.</p>
-     */
-    inline void SetLaunch(const Aws::String& value) { m_launchHasBeenSet = true; m_launch = value; }
-
-    /**
-     * <p>The name of the launch that is to be updated.</p>
-     */
-    inline void SetLaunch(Aws::String&& value) { m_launchHasBeenSet = true; m_launch = std::move(value); }
-
-    /**
-     * <p>The name of the launch that is to be updated.</p>
-     */
-    inline void SetLaunch(const char* value) { m_launchHasBeenSet = true; m_launch.assign(value); }
-
-    /**
-     * <p>The name of the launch that is to be updated.</p>
-     */
-    inline UpdateLaunchRequest& WithLaunch(const Aws::String& value) { SetLaunch(value); return *this;}
-
-    /**
-     * <p>The name of the launch that is to be updated.</p>
-     */
-    inline UpdateLaunchRequest& WithLaunch(Aws::String&& value) { SetLaunch(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the launch that is to be updated.</p>
-     */
-    inline UpdateLaunchRequest& WithLaunch(const char* value) { SetLaunch(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of structures that define the metrics that will be used to monitor
      * the launch performance.</p>
      */
-    inline const Aws::Vector<MetricMonitorConfig>& GetMetricMonitors() const{ return m_metricMonitors; }
-
-    /**
-     * <p>An array of structures that define the metrics that will be used to monitor
-     * the launch performance.</p>
-     */
+    inline const Aws::Vector<MetricMonitorConfig>& GetMetricMonitors() const { return m_metricMonitors; }
     inline bool MetricMonitorsHasBeenSet() const { return m_metricMonitorsHasBeenSet; }
+    template<typename MetricMonitorsT = Aws::Vector<MetricMonitorConfig>>
+    void SetMetricMonitors(MetricMonitorsT&& value) { m_metricMonitorsHasBeenSet = true; m_metricMonitors = std::forward<MetricMonitorsT>(value); }
+    template<typename MetricMonitorsT = Aws::Vector<MetricMonitorConfig>>
+    UpdateLaunchRequest& WithMetricMonitors(MetricMonitorsT&& value) { SetMetricMonitors(std::forward<MetricMonitorsT>(value)); return *this;}
+    template<typename MetricMonitorsT = MetricMonitorConfig>
+    UpdateLaunchRequest& AddMetricMonitors(MetricMonitorsT&& value) { m_metricMonitorsHasBeenSet = true; m_metricMonitors.emplace_back(std::forward<MetricMonitorsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of structures that define the metrics that will be used to monitor
-     * the launch performance.</p>
-     */
-    inline void SetMetricMonitors(const Aws::Vector<MetricMonitorConfig>& value) { m_metricMonitorsHasBeenSet = true; m_metricMonitors = value; }
-
-    /**
-     * <p>An array of structures that define the metrics that will be used to monitor
-     * the launch performance.</p>
-     */
-    inline void SetMetricMonitors(Aws::Vector<MetricMonitorConfig>&& value) { m_metricMonitorsHasBeenSet = true; m_metricMonitors = std::move(value); }
-
-    /**
-     * <p>An array of structures that define the metrics that will be used to monitor
-     * the launch performance.</p>
-     */
-    inline UpdateLaunchRequest& WithMetricMonitors(const Aws::Vector<MetricMonitorConfig>& value) { SetMetricMonitors(value); return *this;}
-
-    /**
-     * <p>An array of structures that define the metrics that will be used to monitor
-     * the launch performance.</p>
-     */
-    inline UpdateLaunchRequest& WithMetricMonitors(Aws::Vector<MetricMonitorConfig>&& value) { SetMetricMonitors(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of structures that define the metrics that will be used to monitor
-     * the launch performance.</p>
-     */
-    inline UpdateLaunchRequest& AddMetricMonitors(const MetricMonitorConfig& value) { m_metricMonitorsHasBeenSet = true; m_metricMonitors.push_back(value); return *this; }
-
-    /**
-     * <p>An array of structures that define the metrics that will be used to monitor
-     * the launch performance.</p>
-     */
-    inline UpdateLaunchRequest& AddMetricMonitors(MetricMonitorConfig&& value) { m_metricMonitorsHasBeenSet = true; m_metricMonitors.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The name or ARN of the project that contains the launch that you want to
      * update.</p>
      */
-    inline const Aws::String& GetProject() const{ return m_project; }
-
-    /**
-     * <p>The name or ARN of the project that contains the launch that you want to
-     * update.</p>
-     */
+    inline const Aws::String& GetProject() const { return m_project; }
     inline bool ProjectHasBeenSet() const { return m_projectHasBeenSet; }
+    template<typename ProjectT = Aws::String>
+    void SetProject(ProjectT&& value) { m_projectHasBeenSet = true; m_project = std::forward<ProjectT>(value); }
+    template<typename ProjectT = Aws::String>
+    UpdateLaunchRequest& WithProject(ProjectT&& value) { SetProject(std::forward<ProjectT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name or ARN of the project that contains the launch that you want to
-     * update.</p>
-     */
-    inline void SetProject(const Aws::String& value) { m_projectHasBeenSet = true; m_project = value; }
-
-    /**
-     * <p>The name or ARN of the project that contains the launch that you want to
-     * update.</p>
-     */
-    inline void SetProject(Aws::String&& value) { m_projectHasBeenSet = true; m_project = std::move(value); }
-
-    /**
-     * <p>The name or ARN of the project that contains the launch that you want to
-     * update.</p>
-     */
-    inline void SetProject(const char* value) { m_projectHasBeenSet = true; m_project.assign(value); }
-
-    /**
-     * <p>The name or ARN of the project that contains the launch that you want to
-     * update.</p>
-     */
-    inline UpdateLaunchRequest& WithProject(const Aws::String& value) { SetProject(value); return *this;}
-
-    /**
-     * <p>The name or ARN of the project that contains the launch that you want to
-     * update.</p>
-     */
-    inline UpdateLaunchRequest& WithProject(Aws::String&& value) { SetProject(std::move(value)); return *this;}
-
-    /**
-     * <p>The name or ARN of the project that contains the launch that you want to
-     * update.</p>
-     */
-    inline UpdateLaunchRequest& WithProject(const char* value) { SetProject(value); return *this;}
-
-
+    ///@{
     /**
      * <p>When Evidently assigns a particular user session to a launch, it must use a
      * randomization ID to determine which variation the user session is served. This
@@ -272,108 +111,26 @@ namespace Model
      * <code>randomizationSalt</code>. If you omit <code>randomizationSalt</code>,
      * Evidently uses the launch name as the <code>randomizationSalt</code>.</p>
      */
-    inline const Aws::String& GetRandomizationSalt() const{ return m_randomizationSalt; }
-
-    /**
-     * <p>When Evidently assigns a particular user session to a launch, it must use a
-     * randomization ID to determine which variation the user session is served. This
-     * randomization ID is a combination of the entity ID and
-     * <code>randomizationSalt</code>. If you omit <code>randomizationSalt</code>,
-     * Evidently uses the launch name as the <code>randomizationSalt</code>.</p>
-     */
+    inline const Aws::String& GetRandomizationSalt() const { return m_randomizationSalt; }
     inline bool RandomizationSaltHasBeenSet() const { return m_randomizationSaltHasBeenSet; }
+    template<typename RandomizationSaltT = Aws::String>
+    void SetRandomizationSalt(RandomizationSaltT&& value) { m_randomizationSaltHasBeenSet = true; m_randomizationSalt = std::forward<RandomizationSaltT>(value); }
+    template<typename RandomizationSaltT = Aws::String>
+    UpdateLaunchRequest& WithRandomizationSalt(RandomizationSaltT&& value) { SetRandomizationSalt(std::forward<RandomizationSaltT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When Evidently assigns a particular user session to a launch, it must use a
-     * randomization ID to determine which variation the user session is served. This
-     * randomization ID is a combination of the entity ID and
-     * <code>randomizationSalt</code>. If you omit <code>randomizationSalt</code>,
-     * Evidently uses the launch name as the <code>randomizationSalt</code>.</p>
-     */
-    inline void SetRandomizationSalt(const Aws::String& value) { m_randomizationSaltHasBeenSet = true; m_randomizationSalt = value; }
-
-    /**
-     * <p>When Evidently assigns a particular user session to a launch, it must use a
-     * randomization ID to determine which variation the user session is served. This
-     * randomization ID is a combination of the entity ID and
-     * <code>randomizationSalt</code>. If you omit <code>randomizationSalt</code>,
-     * Evidently uses the launch name as the <code>randomizationSalt</code>.</p>
-     */
-    inline void SetRandomizationSalt(Aws::String&& value) { m_randomizationSaltHasBeenSet = true; m_randomizationSalt = std::move(value); }
-
-    /**
-     * <p>When Evidently assigns a particular user session to a launch, it must use a
-     * randomization ID to determine which variation the user session is served. This
-     * randomization ID is a combination of the entity ID and
-     * <code>randomizationSalt</code>. If you omit <code>randomizationSalt</code>,
-     * Evidently uses the launch name as the <code>randomizationSalt</code>.</p>
-     */
-    inline void SetRandomizationSalt(const char* value) { m_randomizationSaltHasBeenSet = true; m_randomizationSalt.assign(value); }
-
-    /**
-     * <p>When Evidently assigns a particular user session to a launch, it must use a
-     * randomization ID to determine which variation the user session is served. This
-     * randomization ID is a combination of the entity ID and
-     * <code>randomizationSalt</code>. If you omit <code>randomizationSalt</code>,
-     * Evidently uses the launch name as the <code>randomizationSalt</code>.</p>
-     */
-    inline UpdateLaunchRequest& WithRandomizationSalt(const Aws::String& value) { SetRandomizationSalt(value); return *this;}
-
-    /**
-     * <p>When Evidently assigns a particular user session to a launch, it must use a
-     * randomization ID to determine which variation the user session is served. This
-     * randomization ID is a combination of the entity ID and
-     * <code>randomizationSalt</code>. If you omit <code>randomizationSalt</code>,
-     * Evidently uses the launch name as the <code>randomizationSalt</code>.</p>
-     */
-    inline UpdateLaunchRequest& WithRandomizationSalt(Aws::String&& value) { SetRandomizationSalt(std::move(value)); return *this;}
-
-    /**
-     * <p>When Evidently assigns a particular user session to a launch, it must use a
-     * randomization ID to determine which variation the user session is served. This
-     * randomization ID is a combination of the entity ID and
-     * <code>randomizationSalt</code>. If you omit <code>randomizationSalt</code>,
-     * Evidently uses the launch name as the <code>randomizationSalt</code>.</p>
-     */
-    inline UpdateLaunchRequest& WithRandomizationSalt(const char* value) { SetRandomizationSalt(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of structures that define the traffic allocation percentages among
      * the feature variations during each step of the launch.</p>
      */
-    inline const ScheduledSplitsLaunchConfig& GetScheduledSplitsConfig() const{ return m_scheduledSplitsConfig; }
-
-    /**
-     * <p>An array of structures that define the traffic allocation percentages among
-     * the feature variations during each step of the launch.</p>
-     */
+    inline const ScheduledSplitsLaunchConfig& GetScheduledSplitsConfig() const { return m_scheduledSplitsConfig; }
     inline bool ScheduledSplitsConfigHasBeenSet() const { return m_scheduledSplitsConfigHasBeenSet; }
-
-    /**
-     * <p>An array of structures that define the traffic allocation percentages among
-     * the feature variations during each step of the launch.</p>
-     */
-    inline void SetScheduledSplitsConfig(const ScheduledSplitsLaunchConfig& value) { m_scheduledSplitsConfigHasBeenSet = true; m_scheduledSplitsConfig = value; }
-
-    /**
-     * <p>An array of structures that define the traffic allocation percentages among
-     * the feature variations during each step of the launch.</p>
-     */
-    inline void SetScheduledSplitsConfig(ScheduledSplitsLaunchConfig&& value) { m_scheduledSplitsConfigHasBeenSet = true; m_scheduledSplitsConfig = std::move(value); }
-
-    /**
-     * <p>An array of structures that define the traffic allocation percentages among
-     * the feature variations during each step of the launch.</p>
-     */
-    inline UpdateLaunchRequest& WithScheduledSplitsConfig(const ScheduledSplitsLaunchConfig& value) { SetScheduledSplitsConfig(value); return *this;}
-
-    /**
-     * <p>An array of structures that define the traffic allocation percentages among
-     * the feature variations during each step of the launch.</p>
-     */
-    inline UpdateLaunchRequest& WithScheduledSplitsConfig(ScheduledSplitsLaunchConfig&& value) { SetScheduledSplitsConfig(std::move(value)); return *this;}
-
+    template<typename ScheduledSplitsConfigT = ScheduledSplitsLaunchConfig>
+    void SetScheduledSplitsConfig(ScheduledSplitsConfigT&& value) { m_scheduledSplitsConfigHasBeenSet = true; m_scheduledSplitsConfig = std::forward<ScheduledSplitsConfigT>(value); }
+    template<typename ScheduledSplitsConfigT = ScheduledSplitsLaunchConfig>
+    UpdateLaunchRequest& WithScheduledSplitsConfig(ScheduledSplitsConfigT&& value) { SetScheduledSplitsConfig(std::forward<ScheduledSplitsConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_description;

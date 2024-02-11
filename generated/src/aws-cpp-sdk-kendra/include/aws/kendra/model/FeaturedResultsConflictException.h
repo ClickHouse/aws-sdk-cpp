@@ -36,101 +36,38 @@ namespace Model
   class FeaturedResultsConflictException
   {
   public:
-    AWS_KENDRA_API FeaturedResultsConflictException();
+    AWS_KENDRA_API FeaturedResultsConflictException() = default;
     AWS_KENDRA_API FeaturedResultsConflictException(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API FeaturedResultsConflictException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An explanation for the conflicting queries.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>An explanation for the conflicting queries.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    FeaturedResultsConflictException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An explanation for the conflicting queries.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>An explanation for the conflicting queries.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>An explanation for the conflicting queries.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>An explanation for the conflicting queries.</p>
-     */
-    inline FeaturedResultsConflictException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>An explanation for the conflicting queries.</p>
-     */
-    inline FeaturedResultsConflictException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>An explanation for the conflicting queries.</p>
-     */
-    inline FeaturedResultsConflictException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of the conflicting queries, including the query text, the name for the
      * featured results set, and the identifier of the featured results set.</p>
      */
-    inline const Aws::Vector<ConflictingItem>& GetConflictingItems() const{ return m_conflictingItems; }
-
-    /**
-     * <p>A list of the conflicting queries, including the query text, the name for the
-     * featured results set, and the identifier of the featured results set.</p>
-     */
+    inline const Aws::Vector<ConflictingItem>& GetConflictingItems() const { return m_conflictingItems; }
     inline bool ConflictingItemsHasBeenSet() const { return m_conflictingItemsHasBeenSet; }
-
-    /**
-     * <p>A list of the conflicting queries, including the query text, the name for the
-     * featured results set, and the identifier of the featured results set.</p>
-     */
-    inline void SetConflictingItems(const Aws::Vector<ConflictingItem>& value) { m_conflictingItemsHasBeenSet = true; m_conflictingItems = value; }
-
-    /**
-     * <p>A list of the conflicting queries, including the query text, the name for the
-     * featured results set, and the identifier of the featured results set.</p>
-     */
-    inline void SetConflictingItems(Aws::Vector<ConflictingItem>&& value) { m_conflictingItemsHasBeenSet = true; m_conflictingItems = std::move(value); }
-
-    /**
-     * <p>A list of the conflicting queries, including the query text, the name for the
-     * featured results set, and the identifier of the featured results set.</p>
-     */
-    inline FeaturedResultsConflictException& WithConflictingItems(const Aws::Vector<ConflictingItem>& value) { SetConflictingItems(value); return *this;}
-
-    /**
-     * <p>A list of the conflicting queries, including the query text, the name for the
-     * featured results set, and the identifier of the featured results set.</p>
-     */
-    inline FeaturedResultsConflictException& WithConflictingItems(Aws::Vector<ConflictingItem>&& value) { SetConflictingItems(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the conflicting queries, including the query text, the name for the
-     * featured results set, and the identifier of the featured results set.</p>
-     */
-    inline FeaturedResultsConflictException& AddConflictingItems(const ConflictingItem& value) { m_conflictingItemsHasBeenSet = true; m_conflictingItems.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the conflicting queries, including the query text, the name for the
-     * featured results set, and the identifier of the featured results set.</p>
-     */
-    inline FeaturedResultsConflictException& AddConflictingItems(ConflictingItem&& value) { m_conflictingItemsHasBeenSet = true; m_conflictingItems.push_back(std::move(value)); return *this; }
-
+    template<typename ConflictingItemsT = Aws::Vector<ConflictingItem>>
+    void SetConflictingItems(ConflictingItemsT&& value) { m_conflictingItemsHasBeenSet = true; m_conflictingItems = std::forward<ConflictingItemsT>(value); }
+    template<typename ConflictingItemsT = Aws::Vector<ConflictingItem>>
+    FeaturedResultsConflictException& WithConflictingItems(ConflictingItemsT&& value) { SetConflictingItems(std::forward<ConflictingItemsT>(value)); return *this;}
+    template<typename ConflictingItemsT = ConflictingItem>
+    FeaturedResultsConflictException& AddConflictingItems(ConflictingItemsT&& value) { m_conflictingItemsHasBeenSet = true; m_conflictingItems.emplace_back(std::forward<ConflictingItemsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_message;

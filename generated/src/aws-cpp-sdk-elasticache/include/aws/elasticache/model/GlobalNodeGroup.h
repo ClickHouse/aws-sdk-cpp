@@ -32,7 +32,7 @@ namespace Model
   class GlobalNodeGroup
   {
   public:
-    AWS_ELASTICACHE_API GlobalNodeGroup();
+    AWS_ELASTICACHE_API GlobalNodeGroup() = default;
     AWS_ELASTICACHE_API GlobalNodeGroup(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ELASTICACHE_API GlobalNodeGroup& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,87 +40,29 @@ namespace Model
     AWS_ELASTICACHE_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The name of the global node group</p>
      */
-    inline const Aws::String& GetGlobalNodeGroupId() const{ return m_globalNodeGroupId; }
-
-    /**
-     * <p>The name of the global node group</p>
-     */
+    inline const Aws::String& GetGlobalNodeGroupId() const { return m_globalNodeGroupId; }
     inline bool GlobalNodeGroupIdHasBeenSet() const { return m_globalNodeGroupIdHasBeenSet; }
+    template<typename GlobalNodeGroupIdT = Aws::String>
+    void SetGlobalNodeGroupId(GlobalNodeGroupIdT&& value) { m_globalNodeGroupIdHasBeenSet = true; m_globalNodeGroupId = std::forward<GlobalNodeGroupIdT>(value); }
+    template<typename GlobalNodeGroupIdT = Aws::String>
+    GlobalNodeGroup& WithGlobalNodeGroupId(GlobalNodeGroupIdT&& value) { SetGlobalNodeGroupId(std::forward<GlobalNodeGroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the global node group</p>
-     */
-    inline void SetGlobalNodeGroupId(const Aws::String& value) { m_globalNodeGroupIdHasBeenSet = true; m_globalNodeGroupId = value; }
-
-    /**
-     * <p>The name of the global node group</p>
-     */
-    inline void SetGlobalNodeGroupId(Aws::String&& value) { m_globalNodeGroupIdHasBeenSet = true; m_globalNodeGroupId = std::move(value); }
-
-    /**
-     * <p>The name of the global node group</p>
-     */
-    inline void SetGlobalNodeGroupId(const char* value) { m_globalNodeGroupIdHasBeenSet = true; m_globalNodeGroupId.assign(value); }
-
-    /**
-     * <p>The name of the global node group</p>
-     */
-    inline GlobalNodeGroup& WithGlobalNodeGroupId(const Aws::String& value) { SetGlobalNodeGroupId(value); return *this;}
-
-    /**
-     * <p>The name of the global node group</p>
-     */
-    inline GlobalNodeGroup& WithGlobalNodeGroupId(Aws::String&& value) { SetGlobalNodeGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the global node group</p>
-     */
-    inline GlobalNodeGroup& WithGlobalNodeGroupId(const char* value) { SetGlobalNodeGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The keyspace for this node group</p>
      */
-    inline const Aws::String& GetSlots() const{ return m_slots; }
-
-    /**
-     * <p>The keyspace for this node group</p>
-     */
+    inline const Aws::String& GetSlots() const { return m_slots; }
     inline bool SlotsHasBeenSet() const { return m_slotsHasBeenSet; }
-
-    /**
-     * <p>The keyspace for this node group</p>
-     */
-    inline void SetSlots(const Aws::String& value) { m_slotsHasBeenSet = true; m_slots = value; }
-
-    /**
-     * <p>The keyspace for this node group</p>
-     */
-    inline void SetSlots(Aws::String&& value) { m_slotsHasBeenSet = true; m_slots = std::move(value); }
-
-    /**
-     * <p>The keyspace for this node group</p>
-     */
-    inline void SetSlots(const char* value) { m_slotsHasBeenSet = true; m_slots.assign(value); }
-
-    /**
-     * <p>The keyspace for this node group</p>
-     */
-    inline GlobalNodeGroup& WithSlots(const Aws::String& value) { SetSlots(value); return *this;}
-
-    /**
-     * <p>The keyspace for this node group</p>
-     */
-    inline GlobalNodeGroup& WithSlots(Aws::String&& value) { SetSlots(std::move(value)); return *this;}
-
-    /**
-     * <p>The keyspace for this node group</p>
-     */
-    inline GlobalNodeGroup& WithSlots(const char* value) { SetSlots(value); return *this;}
-
+    template<typename SlotsT = Aws::String>
+    void SetSlots(SlotsT&& value) { m_slotsHasBeenSet = true; m_slots = std::forward<SlotsT>(value); }
+    template<typename SlotsT = Aws::String>
+    GlobalNodeGroup& WithSlots(SlotsT&& value) { SetSlots(std::forward<SlotsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_globalNodeGroupId;

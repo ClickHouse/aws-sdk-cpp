@@ -44,159 +44,63 @@ namespace Model
   class Rule
   {
   public:
-    AWS_TRANSCRIBESERVICE_API Rule();
+    AWS_TRANSCRIBESERVICE_API Rule() = default;
     AWS_TRANSCRIBESERVICE_API Rule(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESERVICE_API Rule& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Flag the presence or absence of periods of silence in your Call Analytics
      * transcription output. Refer to for more detail.</p>
      */
-    inline const NonTalkTimeFilter& GetNonTalkTimeFilter() const{ return m_nonTalkTimeFilter; }
-
-    /**
-     * <p>Flag the presence or absence of periods of silence in your Call Analytics
-     * transcription output. Refer to for more detail.</p>
-     */
+    inline const NonTalkTimeFilter& GetNonTalkTimeFilter() const { return m_nonTalkTimeFilter; }
     inline bool NonTalkTimeFilterHasBeenSet() const { return m_nonTalkTimeFilterHasBeenSet; }
+    template<typename NonTalkTimeFilterT = NonTalkTimeFilter>
+    void SetNonTalkTimeFilter(NonTalkTimeFilterT&& value) { m_nonTalkTimeFilterHasBeenSet = true; m_nonTalkTimeFilter = std::forward<NonTalkTimeFilterT>(value); }
+    template<typename NonTalkTimeFilterT = NonTalkTimeFilter>
+    Rule& WithNonTalkTimeFilter(NonTalkTimeFilterT&& value) { SetNonTalkTimeFilter(std::forward<NonTalkTimeFilterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Flag the presence or absence of periods of silence in your Call Analytics
-     * transcription output. Refer to for more detail.</p>
-     */
-    inline void SetNonTalkTimeFilter(const NonTalkTimeFilter& value) { m_nonTalkTimeFilterHasBeenSet = true; m_nonTalkTimeFilter = value; }
-
-    /**
-     * <p>Flag the presence or absence of periods of silence in your Call Analytics
-     * transcription output. Refer to for more detail.</p>
-     */
-    inline void SetNonTalkTimeFilter(NonTalkTimeFilter&& value) { m_nonTalkTimeFilterHasBeenSet = true; m_nonTalkTimeFilter = std::move(value); }
-
-    /**
-     * <p>Flag the presence or absence of periods of silence in your Call Analytics
-     * transcription output. Refer to for more detail.</p>
-     */
-    inline Rule& WithNonTalkTimeFilter(const NonTalkTimeFilter& value) { SetNonTalkTimeFilter(value); return *this;}
-
-    /**
-     * <p>Flag the presence or absence of periods of silence in your Call Analytics
-     * transcription output. Refer to for more detail.</p>
-     */
-    inline Rule& WithNonTalkTimeFilter(NonTalkTimeFilter&& value) { SetNonTalkTimeFilter(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Flag the presence or absence of interruptions in your Call Analytics
      * transcription output. Refer to for more detail.</p>
      */
-    inline const InterruptionFilter& GetInterruptionFilter() const{ return m_interruptionFilter; }
-
-    /**
-     * <p>Flag the presence or absence of interruptions in your Call Analytics
-     * transcription output. Refer to for more detail.</p>
-     */
+    inline const InterruptionFilter& GetInterruptionFilter() const { return m_interruptionFilter; }
     inline bool InterruptionFilterHasBeenSet() const { return m_interruptionFilterHasBeenSet; }
+    template<typename InterruptionFilterT = InterruptionFilter>
+    void SetInterruptionFilter(InterruptionFilterT&& value) { m_interruptionFilterHasBeenSet = true; m_interruptionFilter = std::forward<InterruptionFilterT>(value); }
+    template<typename InterruptionFilterT = InterruptionFilter>
+    Rule& WithInterruptionFilter(InterruptionFilterT&& value) { SetInterruptionFilter(std::forward<InterruptionFilterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Flag the presence or absence of interruptions in your Call Analytics
-     * transcription output. Refer to for more detail.</p>
-     */
-    inline void SetInterruptionFilter(const InterruptionFilter& value) { m_interruptionFilterHasBeenSet = true; m_interruptionFilter = value; }
-
-    /**
-     * <p>Flag the presence or absence of interruptions in your Call Analytics
-     * transcription output. Refer to for more detail.</p>
-     */
-    inline void SetInterruptionFilter(InterruptionFilter&& value) { m_interruptionFilterHasBeenSet = true; m_interruptionFilter = std::move(value); }
-
-    /**
-     * <p>Flag the presence or absence of interruptions in your Call Analytics
-     * transcription output. Refer to for more detail.</p>
-     */
-    inline Rule& WithInterruptionFilter(const InterruptionFilter& value) { SetInterruptionFilter(value); return *this;}
-
-    /**
-     * <p>Flag the presence or absence of interruptions in your Call Analytics
-     * transcription output. Refer to for more detail.</p>
-     */
-    inline Rule& WithInterruptionFilter(InterruptionFilter&& value) { SetInterruptionFilter(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Flag the presence or absence of specific words or phrases in your Call
      * Analytics transcription output. Refer to for more detail.</p>
      */
-    inline const TranscriptFilter& GetTranscriptFilter() const{ return m_transcriptFilter; }
-
-    /**
-     * <p>Flag the presence or absence of specific words or phrases in your Call
-     * Analytics transcription output. Refer to for more detail.</p>
-     */
+    inline const TranscriptFilter& GetTranscriptFilter() const { return m_transcriptFilter; }
     inline bool TranscriptFilterHasBeenSet() const { return m_transcriptFilterHasBeenSet; }
+    template<typename TranscriptFilterT = TranscriptFilter>
+    void SetTranscriptFilter(TranscriptFilterT&& value) { m_transcriptFilterHasBeenSet = true; m_transcriptFilter = std::forward<TranscriptFilterT>(value); }
+    template<typename TranscriptFilterT = TranscriptFilter>
+    Rule& WithTranscriptFilter(TranscriptFilterT&& value) { SetTranscriptFilter(std::forward<TranscriptFilterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Flag the presence or absence of specific words or phrases in your Call
-     * Analytics transcription output. Refer to for more detail.</p>
-     */
-    inline void SetTranscriptFilter(const TranscriptFilter& value) { m_transcriptFilterHasBeenSet = true; m_transcriptFilter = value; }
-
-    /**
-     * <p>Flag the presence or absence of specific words or phrases in your Call
-     * Analytics transcription output. Refer to for more detail.</p>
-     */
-    inline void SetTranscriptFilter(TranscriptFilter&& value) { m_transcriptFilterHasBeenSet = true; m_transcriptFilter = std::move(value); }
-
-    /**
-     * <p>Flag the presence or absence of specific words or phrases in your Call
-     * Analytics transcription output. Refer to for more detail.</p>
-     */
-    inline Rule& WithTranscriptFilter(const TranscriptFilter& value) { SetTranscriptFilter(value); return *this;}
-
-    /**
-     * <p>Flag the presence or absence of specific words or phrases in your Call
-     * Analytics transcription output. Refer to for more detail.</p>
-     */
-    inline Rule& WithTranscriptFilter(TranscriptFilter&& value) { SetTranscriptFilter(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Flag the presence or absence of specific sentiments in your Call Analytics
      * transcription output. Refer to for more detail.</p>
      */
-    inline const SentimentFilter& GetSentimentFilter() const{ return m_sentimentFilter; }
-
-    /**
-     * <p>Flag the presence or absence of specific sentiments in your Call Analytics
-     * transcription output. Refer to for more detail.</p>
-     */
+    inline const SentimentFilter& GetSentimentFilter() const { return m_sentimentFilter; }
     inline bool SentimentFilterHasBeenSet() const { return m_sentimentFilterHasBeenSet; }
-
-    /**
-     * <p>Flag the presence or absence of specific sentiments in your Call Analytics
-     * transcription output. Refer to for more detail.</p>
-     */
-    inline void SetSentimentFilter(const SentimentFilter& value) { m_sentimentFilterHasBeenSet = true; m_sentimentFilter = value; }
-
-    /**
-     * <p>Flag the presence or absence of specific sentiments in your Call Analytics
-     * transcription output. Refer to for more detail.</p>
-     */
-    inline void SetSentimentFilter(SentimentFilter&& value) { m_sentimentFilterHasBeenSet = true; m_sentimentFilter = std::move(value); }
-
-    /**
-     * <p>Flag the presence or absence of specific sentiments in your Call Analytics
-     * transcription output. Refer to for more detail.</p>
-     */
-    inline Rule& WithSentimentFilter(const SentimentFilter& value) { SetSentimentFilter(value); return *this;}
-
-    /**
-     * <p>Flag the presence or absence of specific sentiments in your Call Analytics
-     * transcription output. Refer to for more detail.</p>
-     */
-    inline Rule& WithSentimentFilter(SentimentFilter&& value) { SetSentimentFilter(std::move(value)); return *this;}
-
+    template<typename SentimentFilterT = SentimentFilter>
+    void SetSentimentFilter(SentimentFilterT&& value) { m_sentimentFilterHasBeenSet = true; m_sentimentFilter = std::forward<SentimentFilterT>(value); }
+    template<typename SentimentFilterT = SentimentFilter>
+    Rule& WithSentimentFilter(SentimentFilterT&& value) { SetSentimentFilter(std::forward<SentimentFilterT>(value)); return *this;}
+    ///@}
   private:
 
     NonTalkTimeFilter m_nonTalkTimeFilter;

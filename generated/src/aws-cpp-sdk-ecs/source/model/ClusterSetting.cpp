@@ -18,17 +18,7 @@ namespace ECS
 namespace Model
 {
 
-ClusterSetting::ClusterSetting() : 
-    m_name(ClusterSettingName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-ClusterSetting::ClusterSetting(JsonView jsonValue) : 
-    m_name(ClusterSettingName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
+ClusterSetting::ClusterSetting(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ClusterSetting& ClusterSetting::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = ClusterSettingNameMapper::GetClusterSettingNameForName(jsonValue.GetString("name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetString("value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,33 +18,7 @@ namespace FraudDetector
 namespace Model
 {
 
-EventType::EventType() : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_eventVariablesHasBeenSet(false),
-    m_labelsHasBeenSet(false),
-    m_entityTypesHasBeenSet(false),
-    m_eventIngestion(EventIngestion::NOT_SET),
-    m_eventIngestionHasBeenSet(false),
-    m_ingestedEventStatisticsHasBeenSet(false),
-    m_lastUpdatedTimeHasBeenSet(false),
-    m_createdTimeHasBeenSet(false),
-    m_arnHasBeenSet(false)
-{
-}
-
-EventType::EventType(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_eventVariablesHasBeenSet(false),
-    m_labelsHasBeenSet(false),
-    m_entityTypesHasBeenSet(false),
-    m_eventIngestion(EventIngestion::NOT_SET),
-    m_eventIngestionHasBeenSet(false),
-    m_ingestedEventStatisticsHasBeenSet(false),
-    m_lastUpdatedTimeHasBeenSet(false),
-    m_createdTimeHasBeenSet(false),
-    m_arnHasBeenSet(false)
+EventType::EventType(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -54,17 +28,13 @@ EventType& EventType::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("eventVariables"))
   {
     Aws::Utils::Array<JsonView> eventVariablesJsonList = jsonValue.GetArray("eventVariables");
@@ -74,7 +44,6 @@ EventType& EventType::operator =(JsonView jsonValue)
     }
     m_eventVariablesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("labels"))
   {
     Aws::Utils::Array<JsonView> labelsJsonList = jsonValue.GetArray("labels");
@@ -84,7 +53,6 @@ EventType& EventType::operator =(JsonView jsonValue)
     }
     m_labelsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("entityTypes"))
   {
     Aws::Utils::Array<JsonView> entityTypesJsonList = jsonValue.GetArray("entityTypes");
@@ -94,42 +62,36 @@ EventType& EventType::operator =(JsonView jsonValue)
     }
     m_entityTypesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("eventIngestion"))
   {
     m_eventIngestion = EventIngestionMapper::GetEventIngestionForName(jsonValue.GetString("eventIngestion"));
-
     m_eventIngestionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ingestedEventStatistics"))
   {
     m_ingestedEventStatistics = jsonValue.GetObject("ingestedEventStatistics");
-
     m_ingestedEventStatisticsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastUpdatedTime"))
   {
     m_lastUpdatedTime = jsonValue.GetString("lastUpdatedTime");
-
     m_lastUpdatedTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("createdTime"))
   {
     m_createdTime = jsonValue.GetString("createdTime");
-
     m_createdTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("arn"))
   {
     m_arn = jsonValue.GetString("arn");
-
     m_arnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("eventOrchestration"))
+  {
+    m_eventOrchestration = jsonValue.GetObject("eventOrchestration");
+    m_eventOrchestrationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -208,6 +170,12 @@ JsonValue EventType::Jsonize() const
   if(m_arnHasBeenSet)
   {
    payload.WithString("arn", m_arn);
+
+  }
+
+  if(m_eventOrchestrationHasBeenSet)
+  {
+   payload.WithObject("eventOrchestration", m_eventOrchestration.Jsonize());
 
   }
 

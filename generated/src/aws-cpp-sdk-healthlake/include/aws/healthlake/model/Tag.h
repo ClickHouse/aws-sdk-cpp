@@ -24,101 +24,43 @@ namespace Model
 {
 
   /**
-   * <p> A tag is a label consisting of a user-defined key and value. The form for
-   * tags is {"Key", "Value"} </p><p><h3>See Also:</h3>   <a
+   * <p>A label consisting of a user-defined key and value. The form for tags is
+   * {"Key", "Value"}</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/healthlake-2017-07-01/Tag">AWS API
    * Reference</a></p>
    */
   class Tag
   {
   public:
-    AWS_HEALTHLAKE_API Tag();
+    AWS_HEALTHLAKE_API Tag() = default;
     AWS_HEALTHLAKE_API Tag(Aws::Utils::Json::JsonView jsonValue);
     AWS_HEALTHLAKE_API Tag& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_HEALTHLAKE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p> The key portion of a tag. Tag keys are case sensitive. </p>
+     * <p>The key portion of a tag. Tag keys are case sensitive. </p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p> The key portion of a tag. Tag keys are case sensitive. </p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    Tag& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The key portion of a tag. Tag keys are case sensitive. </p>
+     * <p> The value portion of a tag. Tag values are case-sensitive.</p>
      */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p> The key portion of a tag. Tag keys are case sensitive. </p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p> The key portion of a tag. Tag keys are case sensitive. </p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p> The key portion of a tag. Tag keys are case sensitive. </p>
-     */
-    inline Tag& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p> The key portion of a tag. Tag keys are case sensitive. </p>
-     */
-    inline Tag& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p> The key portion of a tag. Tag keys are case sensitive. </p>
-     */
-    inline Tag& WithKey(const char* value) { SetKey(value); return *this;}
-
-
-    /**
-     * <p> The value portion of tag. Tag values are case sensitive. </p>
-     */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p> The value portion of tag. Tag values are case sensitive. </p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p> The value portion of tag. Tag values are case sensitive. </p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p> The value portion of tag. Tag values are case sensitive. </p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p> The value portion of tag. Tag values are case sensitive. </p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p> The value portion of tag. Tag values are case sensitive. </p>
-     */
-    inline Tag& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p> The value portion of tag. Tag values are case sensitive. </p>
-     */
-    inline Tag& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p> The value portion of tag. Tag values are case sensitive. </p>
-     */
-    inline Tag& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    Tag& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_key;

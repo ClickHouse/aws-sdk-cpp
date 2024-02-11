@@ -32,80 +32,40 @@ namespace Model
   class JobManifest
   {
   public:
-    AWS_S3CONTROL_API JobManifest();
+    AWS_S3CONTROL_API JobManifest() = default;
     AWS_S3CONTROL_API JobManifest(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API JobManifest& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Describes the format of the specified job's manifest. If the manifest is in
      * CSV format, also describes the columns contained within the manifest.</p>
      */
-    inline const JobManifestSpec& GetSpec() const{ return m_spec; }
-
-    /**
-     * <p>Describes the format of the specified job's manifest. If the manifest is in
-     * CSV format, also describes the columns contained within the manifest.</p>
-     */
+    inline const JobManifestSpec& GetSpec() const { return m_spec; }
     inline bool SpecHasBeenSet() const { return m_specHasBeenSet; }
+    template<typename SpecT = JobManifestSpec>
+    void SetSpec(SpecT&& value) { m_specHasBeenSet = true; m_spec = std::forward<SpecT>(value); }
+    template<typename SpecT = JobManifestSpec>
+    JobManifest& WithSpec(SpecT&& value) { SetSpec(std::forward<SpecT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Describes the format of the specified job's manifest. If the manifest is in
-     * CSV format, also describes the columns contained within the manifest.</p>
+     * <p>Contains the information required to locate the specified job's manifest.
+     * Manifests can't be imported from directory buckets. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-buckets-overview.html">Directory
+     * buckets</a>.</p>
      */
-    inline void SetSpec(const JobManifestSpec& value) { m_specHasBeenSet = true; m_spec = value; }
-
-    /**
-     * <p>Describes the format of the specified job's manifest. If the manifest is in
-     * CSV format, also describes the columns contained within the manifest.</p>
-     */
-    inline void SetSpec(JobManifestSpec&& value) { m_specHasBeenSet = true; m_spec = std::move(value); }
-
-    /**
-     * <p>Describes the format of the specified job's manifest. If the manifest is in
-     * CSV format, also describes the columns contained within the manifest.</p>
-     */
-    inline JobManifest& WithSpec(const JobManifestSpec& value) { SetSpec(value); return *this;}
-
-    /**
-     * <p>Describes the format of the specified job's manifest. If the manifest is in
-     * CSV format, also describes the columns contained within the manifest.</p>
-     */
-    inline JobManifest& WithSpec(JobManifestSpec&& value) { SetSpec(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Contains the information required to locate the specified job's manifest.</p>
-     */
-    inline const JobManifestLocation& GetLocation() const{ return m_location; }
-
-    /**
-     * <p>Contains the information required to locate the specified job's manifest.</p>
-     */
+    inline const JobManifestLocation& GetLocation() const { return m_location; }
     inline bool LocationHasBeenSet() const { return m_locationHasBeenSet; }
-
-    /**
-     * <p>Contains the information required to locate the specified job's manifest.</p>
-     */
-    inline void SetLocation(const JobManifestLocation& value) { m_locationHasBeenSet = true; m_location = value; }
-
-    /**
-     * <p>Contains the information required to locate the specified job's manifest.</p>
-     */
-    inline void SetLocation(JobManifestLocation&& value) { m_locationHasBeenSet = true; m_location = std::move(value); }
-
-    /**
-     * <p>Contains the information required to locate the specified job's manifest.</p>
-     */
-    inline JobManifest& WithLocation(const JobManifestLocation& value) { SetLocation(value); return *this;}
-
-    /**
-     * <p>Contains the information required to locate the specified job's manifest.</p>
-     */
-    inline JobManifest& WithLocation(JobManifestLocation&& value) { SetLocation(std::move(value)); return *this;}
-
+    template<typename LocationT = JobManifestLocation>
+    void SetLocation(LocationT&& value) { m_locationHasBeenSet = true; m_location = std::forward<LocationT>(value); }
+    template<typename LocationT = JobManifestLocation>
+    JobManifest& WithLocation(LocationT&& value) { SetLocation(std::forward<LocationT>(value)); return *this;}
+    ///@}
   private:
 
     JobManifestSpec m_spec;

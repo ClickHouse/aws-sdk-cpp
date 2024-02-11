@@ -18,15 +18,7 @@ namespace FSx
 namespace Model
 {
 
-DeleteVolumeOntapResponse::DeleteVolumeOntapResponse() : 
-    m_finalBackupIdHasBeenSet(false),
-    m_finalBackupTagsHasBeenSet(false)
-{
-}
-
-DeleteVolumeOntapResponse::DeleteVolumeOntapResponse(JsonView jsonValue) : 
-    m_finalBackupIdHasBeenSet(false),
-    m_finalBackupTagsHasBeenSet(false)
+DeleteVolumeOntapResponse::DeleteVolumeOntapResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ DeleteVolumeOntapResponse& DeleteVolumeOntapResponse::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("FinalBackupId"))
   {
     m_finalBackupId = jsonValue.GetString("FinalBackupId");
-
     m_finalBackupIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FinalBackupTags"))
   {
     Aws::Utils::Array<JsonView> finalBackupTagsJsonList = jsonValue.GetArray("FinalBackupTags");
@@ -49,7 +39,6 @@ DeleteVolumeOntapResponse& DeleteVolumeOntapResponse::operator =(JsonView jsonVa
     }
     m_finalBackupTagsHasBeenSet = true;
   }
-
   return *this;
 }
 

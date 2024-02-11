@@ -21,7 +21,7 @@ namespace Model
   class DeregisterPatchBaselineForPatchGroupRequest : public SSMRequest
   {
   public:
-    AWS_SSM_API DeregisterPatchBaselineForPatchGroupRequest();
+    AWS_SSM_API DeregisterPatchBaselineForPatchGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,95 +34,30 @@ namespace Model
     AWS_SSM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the patch baseline to deregister the patch group from.</p>
      */
-    inline const Aws::String& GetBaselineId() const{ return m_baselineId; }
-
-    /**
-     * <p>The ID of the patch baseline to deregister the patch group from.</p>
-     */
+    inline const Aws::String& GetBaselineId() const { return m_baselineId; }
     inline bool BaselineIdHasBeenSet() const { return m_baselineIdHasBeenSet; }
+    template<typename BaselineIdT = Aws::String>
+    void SetBaselineId(BaselineIdT&& value) { m_baselineIdHasBeenSet = true; m_baselineId = std::forward<BaselineIdT>(value); }
+    template<typename BaselineIdT = Aws::String>
+    DeregisterPatchBaselineForPatchGroupRequest& WithBaselineId(BaselineIdT&& value) { SetBaselineId(std::forward<BaselineIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the patch baseline to deregister the patch group from.</p>
-     */
-    inline void SetBaselineId(const Aws::String& value) { m_baselineIdHasBeenSet = true; m_baselineId = value; }
-
-    /**
-     * <p>The ID of the patch baseline to deregister the patch group from.</p>
-     */
-    inline void SetBaselineId(Aws::String&& value) { m_baselineIdHasBeenSet = true; m_baselineId = std::move(value); }
-
-    /**
-     * <p>The ID of the patch baseline to deregister the patch group from.</p>
-     */
-    inline void SetBaselineId(const char* value) { m_baselineIdHasBeenSet = true; m_baselineId.assign(value); }
-
-    /**
-     * <p>The ID of the patch baseline to deregister the patch group from.</p>
-     */
-    inline DeregisterPatchBaselineForPatchGroupRequest& WithBaselineId(const Aws::String& value) { SetBaselineId(value); return *this;}
-
-    /**
-     * <p>The ID of the patch baseline to deregister the patch group from.</p>
-     */
-    inline DeregisterPatchBaselineForPatchGroupRequest& WithBaselineId(Aws::String&& value) { SetBaselineId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the patch baseline to deregister the patch group from.</p>
-     */
-    inline DeregisterPatchBaselineForPatchGroupRequest& WithBaselineId(const char* value) { SetBaselineId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the patch group that should be deregistered from the patch
      * baseline.</p>
      */
-    inline const Aws::String& GetPatchGroup() const{ return m_patchGroup; }
-
-    /**
-     * <p>The name of the patch group that should be deregistered from the patch
-     * baseline.</p>
-     */
+    inline const Aws::String& GetPatchGroup() const { return m_patchGroup; }
     inline bool PatchGroupHasBeenSet() const { return m_patchGroupHasBeenSet; }
-
-    /**
-     * <p>The name of the patch group that should be deregistered from the patch
-     * baseline.</p>
-     */
-    inline void SetPatchGroup(const Aws::String& value) { m_patchGroupHasBeenSet = true; m_patchGroup = value; }
-
-    /**
-     * <p>The name of the patch group that should be deregistered from the patch
-     * baseline.</p>
-     */
-    inline void SetPatchGroup(Aws::String&& value) { m_patchGroupHasBeenSet = true; m_patchGroup = std::move(value); }
-
-    /**
-     * <p>The name of the patch group that should be deregistered from the patch
-     * baseline.</p>
-     */
-    inline void SetPatchGroup(const char* value) { m_patchGroupHasBeenSet = true; m_patchGroup.assign(value); }
-
-    /**
-     * <p>The name of the patch group that should be deregistered from the patch
-     * baseline.</p>
-     */
-    inline DeregisterPatchBaselineForPatchGroupRequest& WithPatchGroup(const Aws::String& value) { SetPatchGroup(value); return *this;}
-
-    /**
-     * <p>The name of the patch group that should be deregistered from the patch
-     * baseline.</p>
-     */
-    inline DeregisterPatchBaselineForPatchGroupRequest& WithPatchGroup(Aws::String&& value) { SetPatchGroup(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the patch group that should be deregistered from the patch
-     * baseline.</p>
-     */
-    inline DeregisterPatchBaselineForPatchGroupRequest& WithPatchGroup(const char* value) { SetPatchGroup(value); return *this;}
-
+    template<typename PatchGroupT = Aws::String>
+    void SetPatchGroup(PatchGroupT&& value) { m_patchGroupHasBeenSet = true; m_patchGroup = std::forward<PatchGroupT>(value); }
+    template<typename PatchGroupT = Aws::String>
+    DeregisterPatchBaselineForPatchGroupRequest& WithPatchGroup(PatchGroupT&& value) { SetPatchGroup(std::forward<PatchGroupT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_baselineId;

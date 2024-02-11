@@ -18,19 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-CastColumnTypeOperation::CastColumnTypeOperation() : 
-    m_columnNameHasBeenSet(false),
-    m_newColumnType(ColumnDataType::NOT_SET),
-    m_newColumnTypeHasBeenSet(false),
-    m_formatHasBeenSet(false)
-{
-}
-
-CastColumnTypeOperation::CastColumnTypeOperation(JsonView jsonValue) : 
-    m_columnNameHasBeenSet(false),
-    m_newColumnType(ColumnDataType::NOT_SET),
-    m_newColumnTypeHasBeenSet(false),
-    m_formatHasBeenSet(false)
+CastColumnTypeOperation::CastColumnTypeOperation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,23 @@ CastColumnTypeOperation& CastColumnTypeOperation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ColumnName"))
   {
     m_columnName = jsonValue.GetString("ColumnName");
-
     m_columnNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NewColumnType"))
   {
     m_newColumnType = ColumnDataTypeMapper::GetColumnDataTypeForName(jsonValue.GetString("NewColumnType"));
-
     m_newColumnTypeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("SubType"))
+  {
+    m_subType = ColumnDataSubTypeMapper::GetColumnDataSubTypeForName(jsonValue.GetString("SubType"));
+    m_subTypeHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("Format"))
   {
     m_format = jsonValue.GetString("Format");
-
     m_formatHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -74,6 +61,11 @@ JsonValue CastColumnTypeOperation::Jsonize() const
   if(m_newColumnTypeHasBeenSet)
   {
    payload.WithString("NewColumnType", ColumnDataTypeMapper::GetNameForColumnDataType(m_newColumnType));
+  }
+
+  if(m_subTypeHasBeenSet)
+  {
+   payload.WithString("SubType", ColumnDataSubTypeMapper::GetNameForColumnDataSubType(m_subType));
   }
 
   if(m_formatHasBeenSet)

@@ -21,6 +21,7 @@ namespace Model
     customer_gateway,
     carrier_gateway,
     coip_pool,
+    declarative_policies_report,
     dedicated_host,
     dhcp_options,
     egress_only_internet_gateway,
@@ -32,6 +33,7 @@ namespace Model
     fpga_image,
     host_reservation,
     image,
+    image_usage_report,
     import_image_task,
     import_snapshot_task,
     instance,
@@ -57,6 +59,7 @@ namespace Model
     network_insights_path,
     network_insights_access_scope,
     network_insights_access_scope_analysis,
+    outpost_lag,
     placement_group,
     prefix_list,
     replace_root_volume_task,
@@ -64,6 +67,7 @@ namespace Model
     route_table,
     security_group,
     security_group_rule,
+    service_link_virtual_interface,
     snapshot,
     spot_fleet_request,
     spot_instances_request,
@@ -99,8 +103,16 @@ namespace Model
     verified_access_trust_provider,
     vpn_connection_device_type,
     vpc_block_public_access_exclusion,
+    route_server,
+    route_server_endpoint,
+    route_server_peer,
     ipam_resource_discovery,
-    ipam_resource_discovery_association
+    ipam_resource_discovery_association,
+    instance_connect_endpoint,
+    verified_access_endpoint_target,
+    ipam_external_resource_verification_token,
+    capacity_block,
+    mac_modification_task
   };
 
 namespace ResourceTypeMapper

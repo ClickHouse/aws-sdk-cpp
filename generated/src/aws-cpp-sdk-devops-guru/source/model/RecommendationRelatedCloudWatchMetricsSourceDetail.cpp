@@ -18,15 +18,7 @@ namespace DevOpsGuru
 namespace Model
 {
 
-RecommendationRelatedCloudWatchMetricsSourceDetail::RecommendationRelatedCloudWatchMetricsSourceDetail() : 
-    m_metricNameHasBeenSet(false),
-    m_namespaceHasBeenSet(false)
-{
-}
-
-RecommendationRelatedCloudWatchMetricsSourceDetail::RecommendationRelatedCloudWatchMetricsSourceDetail(JsonView jsonValue) : 
-    m_metricNameHasBeenSet(false),
-    m_namespaceHasBeenSet(false)
+RecommendationRelatedCloudWatchMetricsSourceDetail::RecommendationRelatedCloudWatchMetricsSourceDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ RecommendationRelatedCloudWatchMetricsSourceDetail& RecommendationRelatedCloudWa
   if(jsonValue.ValueExists("MetricName"))
   {
     m_metricName = jsonValue.GetString("MetricName");
-
     m_metricNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Namespace"))
   {
     m_namespace = jsonValue.GetString("Namespace");
-
     m_namespaceHasBeenSet = true;
   }
-
   return *this;
 }
 

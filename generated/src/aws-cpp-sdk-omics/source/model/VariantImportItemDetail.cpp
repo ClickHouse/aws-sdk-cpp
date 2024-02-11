@@ -18,46 +18,28 @@ namespace Omics
 namespace Model
 {
 
-VariantImportItemDetail::VariantImportItemDetail() : 
-    m_jobStatus(JobStatus::NOT_SET),
-    m_jobStatusHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_statusMessageHasBeenSet(false)
-{
-}
-
-VariantImportItemDetail::VariantImportItemDetail(JsonView jsonValue) : 
-    m_jobStatus(JobStatus::NOT_SET),
-    m_jobStatusHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_statusMessageHasBeenSet(false)
+VariantImportItemDetail::VariantImportItemDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 VariantImportItemDetail& VariantImportItemDetail::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("jobStatus"))
-  {
-    m_jobStatus = JobStatusMapper::GetJobStatusForName(jsonValue.GetString("jobStatus"));
-
-    m_jobStatusHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("source"))
   {
     m_source = jsonValue.GetString("source");
-
     m_sourceHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("jobStatus"))
+  {
+    m_jobStatus = JobStatusMapper::GetJobStatusForName(jsonValue.GetString("jobStatus"));
+    m_jobStatusHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("statusMessage"))
   {
     m_statusMessage = jsonValue.GetString("statusMessage");
-
     m_statusMessageHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -65,15 +47,15 @@ JsonValue VariantImportItemDetail::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_jobStatusHasBeenSet)
-  {
-   payload.WithString("jobStatus", JobStatusMapper::GetNameForJobStatus(m_jobStatus));
-  }
-
   if(m_sourceHasBeenSet)
   {
    payload.WithString("source", m_source);
 
+  }
+
+  if(m_jobStatusHasBeenSet)
+  {
+   payload.WithString("jobStatus", JobStatusMapper::GetNameForJobStatus(m_jobStatus));
   }
 
   if(m_statusMessageHasBeenSet)

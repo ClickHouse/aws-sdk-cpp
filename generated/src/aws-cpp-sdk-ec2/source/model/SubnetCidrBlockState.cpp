@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-SubnetCidrBlockState::SubnetCidrBlockState() : 
-    m_state(SubnetCidrBlockStateCode::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_statusMessageHasBeenSet(false)
-{
-}
-
-SubnetCidrBlockState::SubnetCidrBlockState(const XmlNode& xmlNode) : 
-    m_state(SubnetCidrBlockStateCode::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_statusMessageHasBeenSet(false)
+SubnetCidrBlockState::SubnetCidrBlockState(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ SubnetCidrBlockState& SubnetCidrBlockState::operator =(const XmlNode& xmlNode)
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = SubnetCidrBlockStateCodeMapper::GetSubnetCidrBlockStateCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = SubnetCidrBlockStateCodeMapper::GetSubnetCidrBlockStateCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode statusMessageNode = resultNode.FirstChild("statusMessage");
@@ -62,7 +52,7 @@ void SubnetCidrBlockState::OutputToStream(Aws::OStream& oStream, const char* loc
 {
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << SubnetCidrBlockStateCodeMapper::GetNameForSubnetCidrBlockStateCode(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(SubnetCidrBlockStateCodeMapper::GetNameForSubnetCidrBlockStateCode(m_state)) << "&";
   }
 
   if(m_statusMessageHasBeenSet)
@@ -76,7 +66,7 @@ void SubnetCidrBlockState::OutputToStream(Aws::OStream& oStream, const char* loc
 {
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << SubnetCidrBlockStateCodeMapper::GetNameForSubnetCidrBlockStateCode(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(SubnetCidrBlockStateCodeMapper::GetNameForSubnetCidrBlockStateCode(m_state)) << "&";
   }
   if(m_statusMessageHasBeenSet)
   {

@@ -35,100 +35,39 @@ namespace Model
   class AutomationExecutionFilter
   {
   public:
-    AWS_SSM_API AutomationExecutionFilter();
+    AWS_SSM_API AutomationExecutionFilter() = default;
     AWS_SSM_API AutomationExecutionFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API AutomationExecutionFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>One or more keys to limit the results.</p>
      */
-    inline const AutomationExecutionFilterKey& GetKey() const{ return m_key; }
-
-    /**
-     * <p>One or more keys to limit the results.</p>
-     */
+    inline AutomationExecutionFilterKey GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    inline void SetKey(AutomationExecutionFilterKey value) { m_keyHasBeenSet = true; m_key = value; }
+    inline AutomationExecutionFilter& WithKey(AutomationExecutionFilterKey value) { SetKey(value); return *this;}
+    ///@}
 
-    /**
-     * <p>One or more keys to limit the results.</p>
-     */
-    inline void SetKey(const AutomationExecutionFilterKey& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>One or more keys to limit the results.</p>
-     */
-    inline void SetKey(AutomationExecutionFilterKey&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>One or more keys to limit the results.</p>
-     */
-    inline AutomationExecutionFilter& WithKey(const AutomationExecutionFilterKey& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>One or more keys to limit the results.</p>
-     */
-    inline AutomationExecutionFilter& WithKey(AutomationExecutionFilterKey&& value) { SetKey(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The values used to limit the execution information associated with the
      * filter's key.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>The values used to limit the execution information associated with the
-     * filter's key.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
-
-    /**
-     * <p>The values used to limit the execution information associated with the
-     * filter's key.</p>
-     */
-    inline void SetValues(const Aws::Vector<Aws::String>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>The values used to limit the execution information associated with the
-     * filter's key.</p>
-     */
-    inline void SetValues(Aws::Vector<Aws::String>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>The values used to limit the execution information associated with the
-     * filter's key.</p>
-     */
-    inline AutomationExecutionFilter& WithValues(const Aws::Vector<Aws::String>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>The values used to limit the execution information associated with the
-     * filter's key.</p>
-     */
-    inline AutomationExecutionFilter& WithValues(Aws::Vector<Aws::String>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The values used to limit the execution information associated with the
-     * filter's key.</p>
-     */
-    inline AutomationExecutionFilter& AddValues(const Aws::String& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>The values used to limit the execution information associated with the
-     * filter's key.</p>
-     */
-    inline AutomationExecutionFilter& AddValues(Aws::String&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The values used to limit the execution information associated with the
-     * filter's key.</p>
-     */
-    inline AutomationExecutionFilter& AddValues(const char* value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    AutomationExecutionFilter& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = Aws::String>
+    AutomationExecutionFilter& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
   private:
 
-    AutomationExecutionFilterKey m_key;
+    AutomationExecutionFilterKey m_key{AutomationExecutionFilterKey::NOT_SET};
     bool m_keyHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_values;

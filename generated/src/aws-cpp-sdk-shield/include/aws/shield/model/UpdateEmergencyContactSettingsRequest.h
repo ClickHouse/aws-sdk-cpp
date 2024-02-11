@@ -22,7 +22,7 @@ namespace Model
   class UpdateEmergencyContactSettingsRequest : public ShieldRequest
   {
   public:
-    AWS_SHIELD_API UpdateEmergencyContactSettingsRequest();
+    AWS_SHIELD_API UpdateEmergencyContactSettingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,6 +35,7 @@ namespace Model
     AWS_SHIELD_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>A list of email addresses and phone numbers that the Shield Response Team
      * (SRT) can use to contact you if you have proactive engagement enabled, for
@@ -42,71 +43,15 @@ namespace Model
      * have proactive engagement enabled, the contact list must include at least one
      * phone number.</p>
      */
-    inline const Aws::Vector<EmergencyContact>& GetEmergencyContactList() const{ return m_emergencyContactList; }
-
-    /**
-     * <p>A list of email addresses and phone numbers that the Shield Response Team
-     * (SRT) can use to contact you if you have proactive engagement enabled, for
-     * escalations to the SRT and to initiate proactive customer support.</p> <p>If you
-     * have proactive engagement enabled, the contact list must include at least one
-     * phone number.</p>
-     */
+    inline const Aws::Vector<EmergencyContact>& GetEmergencyContactList() const { return m_emergencyContactList; }
     inline bool EmergencyContactListHasBeenSet() const { return m_emergencyContactListHasBeenSet; }
-
-    /**
-     * <p>A list of email addresses and phone numbers that the Shield Response Team
-     * (SRT) can use to contact you if you have proactive engagement enabled, for
-     * escalations to the SRT and to initiate proactive customer support.</p> <p>If you
-     * have proactive engagement enabled, the contact list must include at least one
-     * phone number.</p>
-     */
-    inline void SetEmergencyContactList(const Aws::Vector<EmergencyContact>& value) { m_emergencyContactListHasBeenSet = true; m_emergencyContactList = value; }
-
-    /**
-     * <p>A list of email addresses and phone numbers that the Shield Response Team
-     * (SRT) can use to contact you if you have proactive engagement enabled, for
-     * escalations to the SRT and to initiate proactive customer support.</p> <p>If you
-     * have proactive engagement enabled, the contact list must include at least one
-     * phone number.</p>
-     */
-    inline void SetEmergencyContactList(Aws::Vector<EmergencyContact>&& value) { m_emergencyContactListHasBeenSet = true; m_emergencyContactList = std::move(value); }
-
-    /**
-     * <p>A list of email addresses and phone numbers that the Shield Response Team
-     * (SRT) can use to contact you if you have proactive engagement enabled, for
-     * escalations to the SRT and to initiate proactive customer support.</p> <p>If you
-     * have proactive engagement enabled, the contact list must include at least one
-     * phone number.</p>
-     */
-    inline UpdateEmergencyContactSettingsRequest& WithEmergencyContactList(const Aws::Vector<EmergencyContact>& value) { SetEmergencyContactList(value); return *this;}
-
-    /**
-     * <p>A list of email addresses and phone numbers that the Shield Response Team
-     * (SRT) can use to contact you if you have proactive engagement enabled, for
-     * escalations to the SRT and to initiate proactive customer support.</p> <p>If you
-     * have proactive engagement enabled, the contact list must include at least one
-     * phone number.</p>
-     */
-    inline UpdateEmergencyContactSettingsRequest& WithEmergencyContactList(Aws::Vector<EmergencyContact>&& value) { SetEmergencyContactList(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of email addresses and phone numbers that the Shield Response Team
-     * (SRT) can use to contact you if you have proactive engagement enabled, for
-     * escalations to the SRT and to initiate proactive customer support.</p> <p>If you
-     * have proactive engagement enabled, the contact list must include at least one
-     * phone number.</p>
-     */
-    inline UpdateEmergencyContactSettingsRequest& AddEmergencyContactList(const EmergencyContact& value) { m_emergencyContactListHasBeenSet = true; m_emergencyContactList.push_back(value); return *this; }
-
-    /**
-     * <p>A list of email addresses and phone numbers that the Shield Response Team
-     * (SRT) can use to contact you if you have proactive engagement enabled, for
-     * escalations to the SRT and to initiate proactive customer support.</p> <p>If you
-     * have proactive engagement enabled, the contact list must include at least one
-     * phone number.</p>
-     */
-    inline UpdateEmergencyContactSettingsRequest& AddEmergencyContactList(EmergencyContact&& value) { m_emergencyContactListHasBeenSet = true; m_emergencyContactList.push_back(std::move(value)); return *this; }
-
+    template<typename EmergencyContactListT = Aws::Vector<EmergencyContact>>
+    void SetEmergencyContactList(EmergencyContactListT&& value) { m_emergencyContactListHasBeenSet = true; m_emergencyContactList = std::forward<EmergencyContactListT>(value); }
+    template<typename EmergencyContactListT = Aws::Vector<EmergencyContact>>
+    UpdateEmergencyContactSettingsRequest& WithEmergencyContactList(EmergencyContactListT&& value) { SetEmergencyContactList(std::forward<EmergencyContactListT>(value)); return *this;}
+    template<typename EmergencyContactListT = EmergencyContact>
+    UpdateEmergencyContactSettingsRequest& AddEmergencyContactList(EmergencyContactListT&& value) { m_emergencyContactListHasBeenSet = true; m_emergencyContactList.emplace_back(std::forward<EmergencyContactListT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<EmergencyContact> m_emergencyContactList;

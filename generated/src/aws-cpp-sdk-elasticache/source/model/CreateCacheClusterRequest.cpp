@@ -10,49 +10,6 @@
 using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils;
 
-CreateCacheClusterRequest::CreateCacheClusterRequest() : 
-    m_cacheClusterIdHasBeenSet(false),
-    m_replicationGroupIdHasBeenSet(false),
-    m_aZMode(AZMode::NOT_SET),
-    m_aZModeHasBeenSet(false),
-    m_preferredAvailabilityZoneHasBeenSet(false),
-    m_preferredAvailabilityZonesHasBeenSet(false),
-    m_numCacheNodes(0),
-    m_numCacheNodesHasBeenSet(false),
-    m_cacheNodeTypeHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_cacheParameterGroupNameHasBeenSet(false),
-    m_cacheSubnetGroupNameHasBeenSet(false),
-    m_cacheSecurityGroupNamesHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_snapshotArnsHasBeenSet(false),
-    m_snapshotNameHasBeenSet(false),
-    m_preferredMaintenanceWindowHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_notificationTopicArnHasBeenSet(false),
-    m_autoMinorVersionUpgrade(false),
-    m_autoMinorVersionUpgradeHasBeenSet(false),
-    m_snapshotRetentionLimit(0),
-    m_snapshotRetentionLimitHasBeenSet(false),
-    m_snapshotWindowHasBeenSet(false),
-    m_authTokenHasBeenSet(false),
-    m_outpostMode(OutpostMode::NOT_SET),
-    m_outpostModeHasBeenSet(false),
-    m_preferredOutpostArnHasBeenSet(false),
-    m_preferredOutpostArnsHasBeenSet(false),
-    m_logDeliveryConfigurationsHasBeenSet(false),
-    m_transitEncryptionEnabled(false),
-    m_transitEncryptionEnabledHasBeenSet(false),
-    m_networkType(NetworkType::NOT_SET),
-    m_networkTypeHasBeenSet(false),
-    m_ipDiscovery(IpDiscovery::NOT_SET),
-    m_ipDiscoveryHasBeenSet(false)
-{
-}
-
 Aws::String CreateCacheClusterRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -69,7 +26,7 @@ Aws::String CreateCacheClusterRequest::SerializePayload() const
 
   if(m_aZModeHasBeenSet)
   {
-    ss << "AZMode=" << AZModeMapper::GetNameForAZMode(m_aZMode) << "&";
+    ss << "AZMode=" << StringUtils::URLEncode(AZModeMapper::GetNameForAZMode(m_aZMode)) << "&";
   }
 
   if(m_preferredAvailabilityZoneHasBeenSet)
@@ -79,12 +36,19 @@ Aws::String CreateCacheClusterRequest::SerializePayload() const
 
   if(m_preferredAvailabilityZonesHasBeenSet)
   {
-    unsigned preferredAvailabilityZonesCount = 1;
-    for(auto& item : m_preferredAvailabilityZones)
+    if (m_preferredAvailabilityZones.empty())
     {
-      ss << "PreferredAvailabilityZones.member." << preferredAvailabilityZonesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      preferredAvailabilityZonesCount++;
+      ss << "PreferredAvailabilityZones=&";
+    }
+    else
+    {
+      unsigned preferredAvailabilityZonesCount = 1;
+      for(auto& item : m_preferredAvailabilityZones)
+      {
+        ss << "PreferredAvailabilityZones.PreferredAvailabilityZone." << preferredAvailabilityZonesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        preferredAvailabilityZonesCount++;
+      }
     }
   }
 
@@ -120,44 +84,72 @@ Aws::String CreateCacheClusterRequest::SerializePayload() const
 
   if(m_cacheSecurityGroupNamesHasBeenSet)
   {
-    unsigned cacheSecurityGroupNamesCount = 1;
-    for(auto& item : m_cacheSecurityGroupNames)
+    if (m_cacheSecurityGroupNames.empty())
     {
-      ss << "CacheSecurityGroupNames.member." << cacheSecurityGroupNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      cacheSecurityGroupNamesCount++;
+      ss << "CacheSecurityGroupNames=&";
+    }
+    else
+    {
+      unsigned cacheSecurityGroupNamesCount = 1;
+      for(auto& item : m_cacheSecurityGroupNames)
+      {
+        ss << "CacheSecurityGroupNames.CacheSecurityGroupName." << cacheSecurityGroupNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        cacheSecurityGroupNamesCount++;
+      }
     }
   }
 
   if(m_securityGroupIdsHasBeenSet)
   {
-    unsigned securityGroupIdsCount = 1;
-    for(auto& item : m_securityGroupIds)
+    if (m_securityGroupIds.empty())
     {
-      ss << "SecurityGroupIds.member." << securityGroupIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      securityGroupIdsCount++;
+      ss << "SecurityGroupIds=&";
+    }
+    else
+    {
+      unsigned securityGroupIdsCount = 1;
+      for(auto& item : m_securityGroupIds)
+      {
+        ss << "SecurityGroupIds.SecurityGroupId." << securityGroupIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        securityGroupIdsCount++;
+      }
     }
   }
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 
   if(m_snapshotArnsHasBeenSet)
   {
-    unsigned snapshotArnsCount = 1;
-    for(auto& item : m_snapshotArns)
+    if (m_snapshotArns.empty())
     {
-      ss << "SnapshotArns.member." << snapshotArnsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      snapshotArnsCount++;
+      ss << "SnapshotArns=&";
+    }
+    else
+    {
+      unsigned snapshotArnsCount = 1;
+      for(auto& item : m_snapshotArns)
+      {
+        ss << "SnapshotArns.SnapshotArn." << snapshotArnsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        snapshotArnsCount++;
+      }
     }
   }
 
@@ -203,7 +195,7 @@ Aws::String CreateCacheClusterRequest::SerializePayload() const
 
   if(m_outpostModeHasBeenSet)
   {
-    ss << "OutpostMode=" << OutpostModeMapper::GetNameForOutpostMode(m_outpostMode) << "&";
+    ss << "OutpostMode=" << StringUtils::URLEncode(OutpostModeMapper::GetNameForOutpostMode(m_outpostMode)) << "&";
   }
 
   if(m_preferredOutpostArnHasBeenSet)
@@ -213,22 +205,36 @@ Aws::String CreateCacheClusterRequest::SerializePayload() const
 
   if(m_preferredOutpostArnsHasBeenSet)
   {
-    unsigned preferredOutpostArnsCount = 1;
-    for(auto& item : m_preferredOutpostArns)
+    if (m_preferredOutpostArns.empty())
     {
-      ss << "PreferredOutpostArns.member." << preferredOutpostArnsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      preferredOutpostArnsCount++;
+      ss << "PreferredOutpostArns=&";
+    }
+    else
+    {
+      unsigned preferredOutpostArnsCount = 1;
+      for(auto& item : m_preferredOutpostArns)
+      {
+        ss << "PreferredOutpostArns.PreferredOutpostArn." << preferredOutpostArnsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        preferredOutpostArnsCount++;
+      }
     }
   }
 
   if(m_logDeliveryConfigurationsHasBeenSet)
   {
-    unsigned logDeliveryConfigurationsCount = 1;
-    for(auto& item : m_logDeliveryConfigurations)
+    if (m_logDeliveryConfigurations.empty())
     {
-      item.OutputToStream(ss, "LogDeliveryConfigurations.member.", logDeliveryConfigurationsCount, "");
-      logDeliveryConfigurationsCount++;
+      ss << "LogDeliveryConfigurations=&";
+    }
+    else
+    {
+      unsigned logDeliveryConfigurationsCount = 1;
+      for(auto& item : m_logDeliveryConfigurations)
+      {
+        item.OutputToStream(ss, "LogDeliveryConfigurations.LogDeliveryConfigurationRequest.", logDeliveryConfigurationsCount, "");
+        logDeliveryConfigurationsCount++;
+      }
     }
   }
 
@@ -239,12 +245,12 @@ Aws::String CreateCacheClusterRequest::SerializePayload() const
 
   if(m_networkTypeHasBeenSet)
   {
-    ss << "NetworkType=" << NetworkTypeMapper::GetNameForNetworkType(m_networkType) << "&";
+    ss << "NetworkType=" << StringUtils::URLEncode(NetworkTypeMapper::GetNameForNetworkType(m_networkType)) << "&";
   }
 
   if(m_ipDiscoveryHasBeenSet)
   {
-    ss << "IpDiscovery=" << IpDiscoveryMapper::GetNameForIpDiscovery(m_ipDiscovery) << "&";
+    ss << "IpDiscovery=" << StringUtils::URLEncode(IpDiscoveryMapper::GetNameForIpDiscovery(m_ipDiscovery)) << "&";
   }
 
   ss << "Version=2015-02-02";

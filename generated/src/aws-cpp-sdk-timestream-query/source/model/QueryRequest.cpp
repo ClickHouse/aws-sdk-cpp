@@ -12,16 +12,6 @@ using namespace Aws::TimestreamQuery::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-QueryRequest::QueryRequest() : 
-    m_queryStringHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_nextTokenHasBeenSet(false),
-    m_maxRows(0),
-    m_maxRowsHasBeenSet(false)
-{
-}
-
 Aws::String QueryRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -47,6 +37,12 @@ Aws::String QueryRequest::SerializePayload() const
   if(m_maxRowsHasBeenSet)
   {
    payload.WithInteger("MaxRows", m_maxRows);
+
+  }
+
+  if(m_queryInsightsHasBeenSet)
+  {
+   payload.WithObject("QueryInsights", m_queryInsights.Jsonize());
 
   }
 

@@ -20,29 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LaunchTemplate::LaunchTemplate() : 
-    m_launchTemplateIdHasBeenSet(false),
-    m_launchTemplateNameHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_createdByHasBeenSet(false),
-    m_defaultVersionNumber(0),
-    m_defaultVersionNumberHasBeenSet(false),
-    m_latestVersionNumber(0),
-    m_latestVersionNumberHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-LaunchTemplate::LaunchTemplate(const XmlNode& xmlNode) : 
-    m_launchTemplateIdHasBeenSet(false),
-    m_launchTemplateNameHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_createdByHasBeenSet(false),
-    m_defaultVersionNumber(0),
-    m_defaultVersionNumberHasBeenSet(false),
-    m_latestVersionNumber(0),
-    m_latestVersionNumberHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+LaunchTemplate::LaunchTemplate(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -93,6 +71,7 @@ LaunchTemplate& LaunchTemplate::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -100,6 +79,12 @@ LaunchTemplate& LaunchTemplate::operator =(const XmlNode& xmlNode)
       }
 
       m_tagsHasBeenSet = true;
+    }
+    XmlNode operatorNode = resultNode.FirstChild("operator");
+    if(!operatorNode.IsNull())
+    {
+      m_operator = operatorNode;
+      m_operatorHasBeenSet = true;
     }
   }
 
@@ -149,6 +134,13 @@ void LaunchTemplate::OutputToStream(Aws::OStream& oStream, const char* location,
       }
   }
 
+  if(m_operatorHasBeenSet)
+  {
+      Aws::StringStream operatorLocationAndMemberSs;
+      operatorLocationAndMemberSs << location << index << locationValue << ".Operator";
+      m_operator.OutputToStream(oStream, operatorLocationAndMemberSs.str().c_str());
+  }
+
 }
 
 void LaunchTemplate::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -183,9 +175,15 @@ void LaunchTemplate::OutputToStream(Aws::OStream& oStream, const char* location)
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
+  }
+  if(m_operatorHasBeenSet)
+  {
+      Aws::String operatorLocationAndMember(location);
+      operatorLocationAndMember += ".Operator";
+      m_operator.OutputToStream(oStream, operatorLocationAndMember.c_str());
   }
 }
 

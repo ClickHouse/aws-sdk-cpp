@@ -32,51 +32,25 @@ namespace Model
   class TableFieldCustomIconContent
   {
   public:
-    AWS_QUICKSIGHT_API TableFieldCustomIconContent();
+    AWS_QUICKSIGHT_API TableFieldCustomIconContent() = default;
     AWS_QUICKSIGHT_API TableFieldCustomIconContent(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API TableFieldCustomIconContent& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The icon set type (link) of the custom icon content for table URL link
      * content.</p>
      */
-    inline const TableFieldIconSetType& GetIcon() const{ return m_icon; }
-
-    /**
-     * <p>The icon set type (link) of the custom icon content for table URL link
-     * content.</p>
-     */
+    inline TableFieldIconSetType GetIcon() const { return m_icon; }
     inline bool IconHasBeenSet() const { return m_iconHasBeenSet; }
-
-    /**
-     * <p>The icon set type (link) of the custom icon content for table URL link
-     * content.</p>
-     */
-    inline void SetIcon(const TableFieldIconSetType& value) { m_iconHasBeenSet = true; m_icon = value; }
-
-    /**
-     * <p>The icon set type (link) of the custom icon content for table URL link
-     * content.</p>
-     */
-    inline void SetIcon(TableFieldIconSetType&& value) { m_iconHasBeenSet = true; m_icon = std::move(value); }
-
-    /**
-     * <p>The icon set type (link) of the custom icon content for table URL link
-     * content.</p>
-     */
-    inline TableFieldCustomIconContent& WithIcon(const TableFieldIconSetType& value) { SetIcon(value); return *this;}
-
-    /**
-     * <p>The icon set type (link) of the custom icon content for table URL link
-     * content.</p>
-     */
-    inline TableFieldCustomIconContent& WithIcon(TableFieldIconSetType&& value) { SetIcon(std::move(value)); return *this;}
-
+    inline void SetIcon(TableFieldIconSetType value) { m_iconHasBeenSet = true; m_icon = value; }
+    inline TableFieldCustomIconContent& WithIcon(TableFieldIconSetType value) { SetIcon(value); return *this;}
+    ///@}
   private:
 
-    TableFieldIconSetType m_icon;
+    TableFieldIconSetType m_icon{TableFieldIconSetType::NOT_SET};
     bool m_iconHasBeenSet = false;
   };
 

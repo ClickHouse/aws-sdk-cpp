@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-ListOrganizationAdminAccountsResult::ListOrganizationAdminAccountsResult()
-{
-}
-
 ListOrganizationAdminAccountsResult::ListOrganizationAdminAccountsResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -36,20 +32,25 @@ ListOrganizationAdminAccountsResult& ListOrganizationAdminAccountsResult::operat
     {
       m_adminAccounts.push_back(adminAccountsJsonList[adminAccountsIndex].AsObject());
     }
+    m_adminAccountsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NextToken"))
   {
     m_nextToken = jsonValue.GetString("NextToken");
-
+    m_nextTokenHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Feature"))
+  {
+    m_feature = SecurityHubFeatureMapper::GetSecurityHubFeatureForName(jsonValue.GetString("Feature"));
+    m_featureHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

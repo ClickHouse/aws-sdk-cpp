@@ -12,23 +12,9 @@ using namespace Aws::ConnectCampaigns::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListCampaignsRequest::ListCampaignsRequest() : 
-    m_filtersHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListCampaignsRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_filtersHasBeenSet)
-  {
-   payload.WithObject("filters", m_filters.Jsonize());
-
-  }
 
   if(m_maxResultsHasBeenSet)
   {
@@ -39,6 +25,12 @@ Aws::String ListCampaignsRequest::SerializePayload() const
   if(m_nextTokenHasBeenSet)
   {
    payload.WithString("nextToken", m_nextToken);
+
+  }
+
+  if(m_filtersHasBeenSet)
+  {
+   payload.WithObject("filters", m_filters.Jsonize());
 
   }
 

@@ -25,6 +25,7 @@ namespace Aws
         static const int customer_gateway_HASH = HashingUtils::HashString("customer-gateway");
         static const int carrier_gateway_HASH = HashingUtils::HashString("carrier-gateway");
         static const int coip_pool_HASH = HashingUtils::HashString("coip-pool");
+        static const int declarative_policies_report_HASH = HashingUtils::HashString("declarative-policies-report");
         static const int dedicated_host_HASH = HashingUtils::HashString("dedicated-host");
         static const int dhcp_options_HASH = HashingUtils::HashString("dhcp-options");
         static const int egress_only_internet_gateway_HASH = HashingUtils::HashString("egress-only-internet-gateway");
@@ -36,6 +37,7 @@ namespace Aws
         static const int fpga_image_HASH = HashingUtils::HashString("fpga-image");
         static const int host_reservation_HASH = HashingUtils::HashString("host-reservation");
         static const int image_HASH = HashingUtils::HashString("image");
+        static const int image_usage_report_HASH = HashingUtils::HashString("image-usage-report");
         static const int import_image_task_HASH = HashingUtils::HashString("import-image-task");
         static const int import_snapshot_task_HASH = HashingUtils::HashString("import-snapshot-task");
         static const int instance_HASH = HashingUtils::HashString("instance");
@@ -61,6 +63,7 @@ namespace Aws
         static const int network_insights_path_HASH = HashingUtils::HashString("network-insights-path");
         static const int network_insights_access_scope_HASH = HashingUtils::HashString("network-insights-access-scope");
         static const int network_insights_access_scope_analysis_HASH = HashingUtils::HashString("network-insights-access-scope-analysis");
+        static const int outpost_lag_HASH = HashingUtils::HashString("outpost-lag");
         static const int placement_group_HASH = HashingUtils::HashString("placement-group");
         static const int prefix_list_HASH = HashingUtils::HashString("prefix-list");
         static const int replace_root_volume_task_HASH = HashingUtils::HashString("replace-root-volume-task");
@@ -68,6 +71,7 @@ namespace Aws
         static const int route_table_HASH = HashingUtils::HashString("route-table");
         static const int security_group_HASH = HashingUtils::HashString("security-group");
         static const int security_group_rule_HASH = HashingUtils::HashString("security-group-rule");
+        static const int service_link_virtual_interface_HASH = HashingUtils::HashString("service-link-virtual-interface");
         static const int snapshot_HASH = HashingUtils::HashString("snapshot");
         static const int spot_fleet_request_HASH = HashingUtils::HashString("spot-fleet-request");
         static const int spot_instances_request_HASH = HashingUtils::HashString("spot-instances-request");
@@ -103,8 +107,16 @@ namespace Aws
         static const int verified_access_trust_provider_HASH = HashingUtils::HashString("verified-access-trust-provider");
         static const int vpn_connection_device_type_HASH = HashingUtils::HashString("vpn-connection-device-type");
         static const int vpc_block_public_access_exclusion_HASH = HashingUtils::HashString("vpc-block-public-access-exclusion");
+        static const int route_server_HASH = HashingUtils::HashString("route-server");
+        static const int route_server_endpoint_HASH = HashingUtils::HashString("route-server-endpoint");
+        static const int route_server_peer_HASH = HashingUtils::HashString("route-server-peer");
         static const int ipam_resource_discovery_HASH = HashingUtils::HashString("ipam-resource-discovery");
         static const int ipam_resource_discovery_association_HASH = HashingUtils::HashString("ipam-resource-discovery-association");
+        static const int instance_connect_endpoint_HASH = HashingUtils::HashString("instance-connect-endpoint");
+        static const int verified_access_endpoint_target_HASH = HashingUtils::HashString("verified-access-endpoint-target");
+        static const int ipam_external_resource_verification_token_HASH = HashingUtils::HashString("ipam-external-resource-verification-token");
+        static const int capacity_block_HASH = HashingUtils::HashString("capacity-block");
+        static const int mac_modification_task_HASH = HashingUtils::HashString("mac-modification-task");
 
 
         ResourceType GetResourceTypeForName(const Aws::String& name)
@@ -129,6 +141,10 @@ namespace Aws
           else if (hashCode == coip_pool_HASH)
           {
             return ResourceType::coip_pool;
+          }
+          else if (hashCode == declarative_policies_report_HASH)
+          {
+            return ResourceType::declarative_policies_report;
           }
           else if (hashCode == dedicated_host_HASH)
           {
@@ -173,6 +189,10 @@ namespace Aws
           else if (hashCode == image_HASH)
           {
             return ResourceType::image;
+          }
+          else if (hashCode == image_usage_report_HASH)
+          {
+            return ResourceType::image_usage_report;
           }
           else if (hashCode == import_image_task_HASH)
           {
@@ -274,6 +294,10 @@ namespace Aws
           {
             return ResourceType::network_insights_access_scope_analysis;
           }
+          else if (hashCode == outpost_lag_HASH)
+          {
+            return ResourceType::outpost_lag;
+          }
           else if (hashCode == placement_group_HASH)
           {
             return ResourceType::placement_group;
@@ -301,6 +325,10 @@ namespace Aws
           else if (hashCode == security_group_rule_HASH)
           {
             return ResourceType::security_group_rule;
+          }
+          else if (hashCode == service_link_virtual_interface_HASH)
+          {
+            return ResourceType::service_link_virtual_interface;
           }
           else if (hashCode == snapshot_HASH)
           {
@@ -442,6 +470,18 @@ namespace Aws
           {
             return ResourceType::vpc_block_public_access_exclusion;
           }
+          else if (hashCode == route_server_HASH)
+          {
+            return ResourceType::route_server;
+          }
+          else if (hashCode == route_server_endpoint_HASH)
+          {
+            return ResourceType::route_server_endpoint;
+          }
+          else if (hashCode == route_server_peer_HASH)
+          {
+            return ResourceType::route_server_peer;
+          }
           else if (hashCode == ipam_resource_discovery_HASH)
           {
             return ResourceType::ipam_resource_discovery;
@@ -449,6 +489,26 @@ namespace Aws
           else if (hashCode == ipam_resource_discovery_association_HASH)
           {
             return ResourceType::ipam_resource_discovery_association;
+          }
+          else if (hashCode == instance_connect_endpoint_HASH)
+          {
+            return ResourceType::instance_connect_endpoint;
+          }
+          else if (hashCode == verified_access_endpoint_target_HASH)
+          {
+            return ResourceType::verified_access_endpoint_target;
+          }
+          else if (hashCode == ipam_external_resource_verification_token_HASH)
+          {
+            return ResourceType::ipam_external_resource_verification_token;
+          }
+          else if (hashCode == capacity_block_HASH)
+          {
+            return ResourceType::capacity_block;
+          }
+          else if (hashCode == mac_modification_task_HASH)
+          {
+            return ResourceType::mac_modification_task;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -464,6 +524,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case ResourceType::NOT_SET:
+            return {};
           case ResourceType::capacity_reservation:
             return "capacity-reservation";
           case ResourceType::client_vpn_endpoint:
@@ -474,6 +536,8 @@ namespace Aws
             return "carrier-gateway";
           case ResourceType::coip_pool:
             return "coip-pool";
+          case ResourceType::declarative_policies_report:
+            return "declarative-policies-report";
           case ResourceType::dedicated_host:
             return "dedicated-host";
           case ResourceType::dhcp_options:
@@ -496,6 +560,8 @@ namespace Aws
             return "host-reservation";
           case ResourceType::image:
             return "image";
+          case ResourceType::image_usage_report:
+            return "image-usage-report";
           case ResourceType::import_image_task:
             return "import-image-task";
           case ResourceType::import_snapshot_task:
@@ -546,6 +612,8 @@ namespace Aws
             return "network-insights-access-scope";
           case ResourceType::network_insights_access_scope_analysis:
             return "network-insights-access-scope-analysis";
+          case ResourceType::outpost_lag:
+            return "outpost-lag";
           case ResourceType::placement_group:
             return "placement-group";
           case ResourceType::prefix_list:
@@ -560,6 +628,8 @@ namespace Aws
             return "security-group";
           case ResourceType::security_group_rule:
             return "security-group-rule";
+          case ResourceType::service_link_virtual_interface:
+            return "service-link-virtual-interface";
           case ResourceType::snapshot:
             return "snapshot";
           case ResourceType::spot_fleet_request:
@@ -630,10 +700,26 @@ namespace Aws
             return "vpn-connection-device-type";
           case ResourceType::vpc_block_public_access_exclusion:
             return "vpc-block-public-access-exclusion";
+          case ResourceType::route_server:
+            return "route-server";
+          case ResourceType::route_server_endpoint:
+            return "route-server-endpoint";
+          case ResourceType::route_server_peer:
+            return "route-server-peer";
           case ResourceType::ipam_resource_discovery:
             return "ipam-resource-discovery";
           case ResourceType::ipam_resource_discovery_association:
             return "ipam-resource-discovery-association";
+          case ResourceType::instance_connect_endpoint:
+            return "instance-connect-endpoint";
+          case ResourceType::verified_access_endpoint_target:
+            return "verified-access-endpoint-target";
+          case ResourceType::ipam_external_resource_verification_token:
+            return "ipam-external-resource-verification-token";
+          case ResourceType::capacity_block:
+            return "capacity-block";
+          case ResourceType::mac_modification_task:
+            return "mac-modification-task";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

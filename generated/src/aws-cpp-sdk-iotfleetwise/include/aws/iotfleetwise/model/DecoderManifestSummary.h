@@ -35,308 +35,113 @@ namespace Model
   class DecoderManifestSummary
   {
   public:
-    AWS_IOTFLEETWISE_API DecoderManifestSummary();
+    AWS_IOTFLEETWISE_API DecoderManifestSummary() = default;
     AWS_IOTFLEETWISE_API DecoderManifestSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTFLEETWISE_API DecoderManifestSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTFLEETWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the decoder manifest.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the decoder manifest.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DecoderManifestSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the decoder manifest.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the decoder manifest.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the decoder manifest.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the decoder manifest.</p>
-     */
-    inline DecoderManifestSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the decoder manifest.</p>
-     */
-    inline DecoderManifestSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the decoder manifest.</p>
-     */
-    inline DecoderManifestSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of a vehicle model (model manifest) associated with the decoder
      * manifest. </p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The ARN of a vehicle model (model manifest) associated with the decoder
-     * manifest. </p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    DecoderManifestSummary& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of a vehicle model (model manifest) associated with the decoder
-     * manifest. </p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The ARN of a vehicle model (model manifest) associated with the decoder
-     * manifest. </p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of a vehicle model (model manifest) associated with the decoder
-     * manifest. </p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of a vehicle model (model manifest) associated with the decoder
-     * manifest. </p>
-     */
-    inline DecoderManifestSummary& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of a vehicle model (model manifest) associated with the decoder
-     * manifest. </p>
-     */
-    inline DecoderManifestSummary& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of a vehicle model (model manifest) associated with the decoder
-     * manifest. </p>
-     */
-    inline DecoderManifestSummary& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of a vehicle model (model manifest) associated with the decoder
      * manifest.</p>
      */
-    inline const Aws::String& GetModelManifestArn() const{ return m_modelManifestArn; }
-
-    /**
-     * <p>The ARN of a vehicle model (model manifest) associated with the decoder
-     * manifest.</p>
-     */
+    inline const Aws::String& GetModelManifestArn() const { return m_modelManifestArn; }
     inline bool ModelManifestArnHasBeenSet() const { return m_modelManifestArnHasBeenSet; }
+    template<typename ModelManifestArnT = Aws::String>
+    void SetModelManifestArn(ModelManifestArnT&& value) { m_modelManifestArnHasBeenSet = true; m_modelManifestArn = std::forward<ModelManifestArnT>(value); }
+    template<typename ModelManifestArnT = Aws::String>
+    DecoderManifestSummary& WithModelManifestArn(ModelManifestArnT&& value) { SetModelManifestArn(std::forward<ModelManifestArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of a vehicle model (model manifest) associated with the decoder
-     * manifest.</p>
-     */
-    inline void SetModelManifestArn(const Aws::String& value) { m_modelManifestArnHasBeenSet = true; m_modelManifestArn = value; }
-
-    /**
-     * <p>The ARN of a vehicle model (model manifest) associated with the decoder
-     * manifest.</p>
-     */
-    inline void SetModelManifestArn(Aws::String&& value) { m_modelManifestArnHasBeenSet = true; m_modelManifestArn = std::move(value); }
-
-    /**
-     * <p>The ARN of a vehicle model (model manifest) associated with the decoder
-     * manifest.</p>
-     */
-    inline void SetModelManifestArn(const char* value) { m_modelManifestArnHasBeenSet = true; m_modelManifestArn.assign(value); }
-
-    /**
-     * <p>The ARN of a vehicle model (model manifest) associated with the decoder
-     * manifest.</p>
-     */
-    inline DecoderManifestSummary& WithModelManifestArn(const Aws::String& value) { SetModelManifestArn(value); return *this;}
-
-    /**
-     * <p>The ARN of a vehicle model (model manifest) associated with the decoder
-     * manifest.</p>
-     */
-    inline DecoderManifestSummary& WithModelManifestArn(Aws::String&& value) { SetModelManifestArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of a vehicle model (model manifest) associated with the decoder
-     * manifest.</p>
-     */
-    inline DecoderManifestSummary& WithModelManifestArn(const char* value) { SetModelManifestArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A brief description of the decoder manifest.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A brief description of the decoder manifest.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    DecoderManifestSummary& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A brief description of the decoder manifest.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A brief description of the decoder manifest.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A brief description of the decoder manifest.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A brief description of the decoder manifest.</p>
-     */
-    inline DecoderManifestSummary& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A brief description of the decoder manifest.</p>
-     */
-    inline DecoderManifestSummary& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A brief description of the decoder manifest.</p>
-     */
-    inline DecoderManifestSummary& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the decoder manifest. If the status is <code>ACTIVE</code>, the
      * decoder manifest can't be edited. If the status is marked <code>DRAFT</code>,
      * you can edit the decoder manifest.</p>
      */
-    inline const ManifestStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The state of the decoder manifest. If the status is <code>ACTIVE</code>, the
-     * decoder manifest can't be edited. If the status is marked <code>DRAFT</code>,
-     * you can edit the decoder manifest.</p>
-     */
+    inline ManifestStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ManifestStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline DecoderManifestSummary& WithStatus(ManifestStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the decoder manifest. If the status is <code>ACTIVE</code>, the
-     * decoder manifest can't be edited. If the status is marked <code>DRAFT</code>,
-     * you can edit the decoder manifest.</p>
-     */
-    inline void SetStatus(const ManifestStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The state of the decoder manifest. If the status is <code>ACTIVE</code>, the
-     * decoder manifest can't be edited. If the status is marked <code>DRAFT</code>,
-     * you can edit the decoder manifest.</p>
-     */
-    inline void SetStatus(ManifestStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The state of the decoder manifest. If the status is <code>ACTIVE</code>, the
-     * decoder manifest can't be edited. If the status is marked <code>DRAFT</code>,
-     * you can edit the decoder manifest.</p>
-     */
-    inline DecoderManifestSummary& WithStatus(const ManifestStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The state of the decoder manifest. If the status is <code>ACTIVE</code>, the
-     * decoder manifest can't be edited. If the status is marked <code>DRAFT</code>,
-     * you can edit the decoder manifest.</p>
-     */
-    inline DecoderManifestSummary& WithStatus(ManifestStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time the decoder manifest was created in seconds since epoch (January 1,
      * 1970 at midnight UTC time).</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>The time the decoder manifest was created in seconds since epoch (January 1,
-     * 1970 at midnight UTC time).</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
     inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    DecoderManifestSummary& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time the decoder manifest was created in seconds since epoch (January 1,
-     * 1970 at midnight UTC time).</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
-
-    /**
-     * <p>The time the decoder manifest was created in seconds since epoch (January 1,
-     * 1970 at midnight UTC time).</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
-
-    /**
-     * <p>The time the decoder manifest was created in seconds since epoch (January 1,
-     * 1970 at midnight UTC time).</p>
-     */
-    inline DecoderManifestSummary& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The time the decoder manifest was created in seconds since epoch (January 1,
-     * 1970 at midnight UTC time).</p>
-     */
-    inline DecoderManifestSummary& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time the decoder manifest was last updated in seconds since epoch
      * (January 1, 1970 at midnight UTC time).</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModificationTime() const{ return m_lastModificationTime; }
-
-    /**
-     * <p>The time the decoder manifest was last updated in seconds since epoch
-     * (January 1, 1970 at midnight UTC time).</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastModificationTime() const { return m_lastModificationTime; }
     inline bool LastModificationTimeHasBeenSet() const { return m_lastModificationTimeHasBeenSet; }
+    template<typename LastModificationTimeT = Aws::Utils::DateTime>
+    void SetLastModificationTime(LastModificationTimeT&& value) { m_lastModificationTimeHasBeenSet = true; m_lastModificationTime = std::forward<LastModificationTimeT>(value); }
+    template<typename LastModificationTimeT = Aws::Utils::DateTime>
+    DecoderManifestSummary& WithLastModificationTime(LastModificationTimeT&& value) { SetLastModificationTime(std::forward<LastModificationTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The time the decoder manifest was last updated in seconds since epoch
-     * (January 1, 1970 at midnight UTC time).</p>
+     * <p>The detailed message for the decoder manifest. When a decoder manifest is in
+     * an <code>INVALID</code> status, the message contains detailed reason and help
+     * information.</p>
      */
-    inline void SetLastModificationTime(const Aws::Utils::DateTime& value) { m_lastModificationTimeHasBeenSet = true; m_lastModificationTime = value; }
-
-    /**
-     * <p>The time the decoder manifest was last updated in seconds since epoch
-     * (January 1, 1970 at midnight UTC time).</p>
-     */
-    inline void SetLastModificationTime(Aws::Utils::DateTime&& value) { m_lastModificationTimeHasBeenSet = true; m_lastModificationTime = std::move(value); }
-
-    /**
-     * <p>The time the decoder manifest was last updated in seconds since epoch
-     * (January 1, 1970 at midnight UTC time).</p>
-     */
-    inline DecoderManifestSummary& WithLastModificationTime(const Aws::Utils::DateTime& value) { SetLastModificationTime(value); return *this;}
-
-    /**
-     * <p>The time the decoder manifest was last updated in seconds since epoch
-     * (January 1, 1970 at midnight UTC time).</p>
-     */
-    inline DecoderManifestSummary& WithLastModificationTime(Aws::Utils::DateTime&& value) { SetLastModificationTime(std::move(value)); return *this;}
-
+    inline const Aws::String& GetMessage() const { return m_message; }
+    inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    DecoderManifestSummary& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -351,14 +156,17 @@ namespace Model
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    ManifestStatus m_status;
+    ManifestStatus m_status{ManifestStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
     bool m_creationTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModificationTime;
+    Aws::Utils::DateTime m_lastModificationTime{};
     bool m_lastModificationTimeHasBeenSet = false;
+
+    Aws::String m_message;
+    bool m_messageHasBeenSet = false;
   };
 
 } // namespace Model

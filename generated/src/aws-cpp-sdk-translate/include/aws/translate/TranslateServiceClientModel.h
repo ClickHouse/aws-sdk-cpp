@@ -32,9 +32,14 @@
 #include <aws/translate/model/StartTextTranslationJobResult.h>
 #include <aws/translate/model/StopTextTranslationJobResult.h>
 #include <aws/translate/model/TagResourceResult.h>
+#include <aws/translate/model/TranslateDocumentResult.h>
 #include <aws/translate/model/TranslateTextResult.h>
 #include <aws/translate/model/UntagResourceResult.h>
 #include <aws/translate/model/UpdateParallelDataResult.h>
+#include <aws/translate/model/ListTerminologiesRequest.h>
+#include <aws/translate/model/ListLanguagesRequest.h>
+#include <aws/translate/model/ListParallelDataRequest.h>
+#include <aws/translate/model/ListTextTranslationJobsRequest.h>
 #include <aws/core/NoResult.h>
 /* End of service model headers required in TranslateClient header */
 
@@ -69,7 +74,7 @@ namespace Aws
 
   namespace Translate
   {
-    using TranslateClientConfiguration = Aws::Client::GenericClientConfiguration<false>;
+    using TranslateClientConfiguration = Aws::Client::GenericClientConfiguration;
     using TranslateEndpointProviderBase = Aws::Translate::Endpoint::TranslateEndpointProviderBase;
     using TranslateEndpointProvider = Aws::Translate::Endpoint::TranslateEndpointProvider;
 
@@ -91,6 +96,7 @@ namespace Aws
       class StartTextTranslationJobRequest;
       class StopTextTranslationJobRequest;
       class TagResourceRequest;
+      class TranslateDocumentRequest;
       class TranslateTextRequest;
       class UntagResourceRequest;
       class UpdateParallelDataRequest;
@@ -112,6 +118,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<StartTextTranslationJobResult, TranslateError> StartTextTranslationJobOutcome;
       typedef Aws::Utils::Outcome<StopTextTranslationJobResult, TranslateError> StopTextTranslationJobOutcome;
       typedef Aws::Utils::Outcome<TagResourceResult, TranslateError> TagResourceOutcome;
+      typedef Aws::Utils::Outcome<TranslateDocumentResult, TranslateError> TranslateDocumentOutcome;
       typedef Aws::Utils::Outcome<TranslateTextResult, TranslateError> TranslateTextOutcome;
       typedef Aws::Utils::Outcome<UntagResourceResult, TranslateError> UntagResourceOutcome;
       typedef Aws::Utils::Outcome<UpdateParallelDataResult, TranslateError> UpdateParallelDataOutcome;
@@ -133,6 +140,7 @@ namespace Aws
       typedef std::future<StartTextTranslationJobOutcome> StartTextTranslationJobOutcomeCallable;
       typedef std::future<StopTextTranslationJobOutcome> StopTextTranslationJobOutcomeCallable;
       typedef std::future<TagResourceOutcome> TagResourceOutcomeCallable;
+      typedef std::future<TranslateDocumentOutcome> TranslateDocumentOutcomeCallable;
       typedef std::future<TranslateTextOutcome> TranslateTextOutcomeCallable;
       typedef std::future<UntagResourceOutcome> UntagResourceOutcomeCallable;
       typedef std::future<UpdateParallelDataOutcome> UpdateParallelDataOutcomeCallable;
@@ -157,6 +165,7 @@ namespace Aws
     typedef std::function<void(const TranslateClient*, const Model::StartTextTranslationJobRequest&, const Model::StartTextTranslationJobOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StartTextTranslationJobResponseReceivedHandler;
     typedef std::function<void(const TranslateClient*, const Model::StopTextTranslationJobRequest&, const Model::StopTextTranslationJobOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StopTextTranslationJobResponseReceivedHandler;
     typedef std::function<void(const TranslateClient*, const Model::TagResourceRequest&, const Model::TagResourceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > TagResourceResponseReceivedHandler;
+    typedef std::function<void(const TranslateClient*, const Model::TranslateDocumentRequest&, const Model::TranslateDocumentOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > TranslateDocumentResponseReceivedHandler;
     typedef std::function<void(const TranslateClient*, const Model::TranslateTextRequest&, const Model::TranslateTextOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > TranslateTextResponseReceivedHandler;
     typedef std::function<void(const TranslateClient*, const Model::UntagResourceRequest&, const Model::UntagResourceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UntagResourceResponseReceivedHandler;
     typedef std::function<void(const TranslateClient*, const Model::UpdateParallelDataRequest&, const Model::UpdateParallelDataOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateParallelDataResponseReceivedHandler;

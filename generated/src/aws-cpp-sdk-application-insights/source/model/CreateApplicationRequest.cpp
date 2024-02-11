@@ -12,23 +12,6 @@ using namespace Aws::ApplicationInsights::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateApplicationRequest::CreateApplicationRequest() : 
-    m_resourceGroupNameHasBeenSet(false),
-    m_opsCenterEnabled(false),
-    m_opsCenterEnabledHasBeenSet(false),
-    m_cWEMonitorEnabled(false),
-    m_cWEMonitorEnabledHasBeenSet(false),
-    m_opsItemSNSTopicArnHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_autoConfigEnabled(false),
-    m_autoConfigEnabledHasBeenSet(false),
-    m_autoCreate(false),
-    m_autoCreateHasBeenSet(false),
-    m_groupingType(GroupingType::NOT_SET),
-    m_groupingTypeHasBeenSet(false)
-{
-}
-
 Aws::String CreateApplicationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -54,6 +37,12 @@ Aws::String CreateApplicationRequest::SerializePayload() const
   if(m_opsItemSNSTopicArnHasBeenSet)
   {
    payload.WithString("OpsItemSNSTopicArn", m_opsItemSNSTopicArn);
+
+  }
+
+  if(m_sNSNotificationArnHasBeenSet)
+  {
+   payload.WithString("SNSNotificationArn", m_sNSNotificationArn);
 
   }
 
@@ -83,6 +72,12 @@ Aws::String CreateApplicationRequest::SerializePayload() const
   if(m_groupingTypeHasBeenSet)
   {
    payload.WithString("GroupingType", GroupingTypeMapper::GetNameForGroupingType(m_groupingType));
+  }
+
+  if(m_attachMissingPermissionHasBeenSet)
+  {
+   payload.WithBool("AttachMissingPermission", m_attachMissingPermission);
+
   }
 
   return payload.View().WriteReadable();

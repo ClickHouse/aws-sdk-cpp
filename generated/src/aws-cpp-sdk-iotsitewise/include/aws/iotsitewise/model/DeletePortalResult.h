@@ -28,68 +28,38 @@ namespace Model
   class DeletePortalResult
   {
   public:
-    AWS_IOTSITEWISE_API DeletePortalResult();
+    AWS_IOTSITEWISE_API DeletePortalResult() = default;
     AWS_IOTSITEWISE_API DeletePortalResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_IOTSITEWISE_API DeletePortalResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The status of the portal, which contains a state (<code>DELETING</code> after
      * successfully calling this operation) and any error message.</p>
      */
-    inline const PortalStatus& GetPortalStatus() const{ return m_portalStatus; }
+    inline const PortalStatus& GetPortalStatus() const { return m_portalStatus; }
+    template<typename PortalStatusT = PortalStatus>
+    void SetPortalStatus(PortalStatusT&& value) { m_portalStatusHasBeenSet = true; m_portalStatus = std::forward<PortalStatusT>(value); }
+    template<typename PortalStatusT = PortalStatus>
+    DeletePortalResult& WithPortalStatus(PortalStatusT&& value) { SetPortalStatus(std::forward<PortalStatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the portal, which contains a state (<code>DELETING</code> after
-     * successfully calling this operation) and any error message.</p>
-     */
-    inline void SetPortalStatus(const PortalStatus& value) { m_portalStatus = value; }
-
-    /**
-     * <p>The status of the portal, which contains a state (<code>DELETING</code> after
-     * successfully calling this operation) and any error message.</p>
-     */
-    inline void SetPortalStatus(PortalStatus&& value) { m_portalStatus = std::move(value); }
-
-    /**
-     * <p>The status of the portal, which contains a state (<code>DELETING</code> after
-     * successfully calling this operation) and any error message.</p>
-     */
-    inline DeletePortalResult& WithPortalStatus(const PortalStatus& value) { SetPortalStatus(value); return *this;}
-
-    /**
-     * <p>The status of the portal, which contains a state (<code>DELETING</code> after
-     * successfully calling this operation) and any error message.</p>
-     */
-    inline DeletePortalResult& WithPortalStatus(PortalStatus&& value) { SetPortalStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeletePortalResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeletePortalResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeletePortalResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeletePortalResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     PortalStatus m_portalStatus;
+    bool m_portalStatusHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

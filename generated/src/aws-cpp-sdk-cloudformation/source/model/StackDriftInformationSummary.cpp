@@ -20,17 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-StackDriftInformationSummary::StackDriftInformationSummary() : 
-    m_stackDriftStatus(StackDriftStatus::NOT_SET),
-    m_stackDriftStatusHasBeenSet(false),
-    m_lastCheckTimestampHasBeenSet(false)
-{
-}
-
-StackDriftInformationSummary::StackDriftInformationSummary(const XmlNode& xmlNode) : 
-    m_stackDriftStatus(StackDriftStatus::NOT_SET),
-    m_stackDriftStatusHasBeenSet(false),
-    m_lastCheckTimestampHasBeenSet(false)
+StackDriftInformationSummary::StackDriftInformationSummary(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ StackDriftInformationSummary& StackDriftInformationSummary::operator =(const Xml
     XmlNode stackDriftStatusNode = resultNode.FirstChild("StackDriftStatus");
     if(!stackDriftStatusNode.IsNull())
     {
-      m_stackDriftStatus = StackDriftStatusMapper::GetStackDriftStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stackDriftStatusNode.GetText()).c_str()).c_str());
+      m_stackDriftStatus = StackDriftStatusMapper::GetStackDriftStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stackDriftStatusNode.GetText()).c_str()));
       m_stackDriftStatusHasBeenSet = true;
     }
     XmlNode lastCheckTimestampNode = resultNode.FirstChild("LastCheckTimestamp");
@@ -62,7 +52,7 @@ void StackDriftInformationSummary::OutputToStream(Aws::OStream& oStream, const c
 {
   if(m_stackDriftStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".StackDriftStatus=" << StackDriftStatusMapper::GetNameForStackDriftStatus(m_stackDriftStatus) << "&";
+      oStream << location << index << locationValue << ".StackDriftStatus=" << StringUtils::URLEncode(StackDriftStatusMapper::GetNameForStackDriftStatus(m_stackDriftStatus)) << "&";
   }
 
   if(m_lastCheckTimestampHasBeenSet)
@@ -76,7 +66,7 @@ void StackDriftInformationSummary::OutputToStream(Aws::OStream& oStream, const c
 {
   if(m_stackDriftStatusHasBeenSet)
   {
-      oStream << location << ".StackDriftStatus=" << StackDriftStatusMapper::GetNameForStackDriftStatus(m_stackDriftStatus) << "&";
+      oStream << location << ".StackDriftStatus=" << StringUtils::URLEncode(StackDriftStatusMapper::GetNameForStackDriftStatus(m_stackDriftStatus)) << "&";
   }
   if(m_lastCheckTimestampHasBeenSet)
   {

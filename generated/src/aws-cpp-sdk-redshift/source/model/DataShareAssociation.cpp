@@ -20,23 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-DataShareAssociation::DataShareAssociation() : 
-    m_consumerIdentifierHasBeenSet(false),
-    m_status(DataShareStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_consumerRegionHasBeenSet(false),
-    m_createdDateHasBeenSet(false),
-    m_statusChangeDateHasBeenSet(false)
-{
-}
-
-DataShareAssociation::DataShareAssociation(const XmlNode& xmlNode) : 
-    m_consumerIdentifierHasBeenSet(false),
-    m_status(DataShareStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_consumerRegionHasBeenSet(false),
-    m_createdDateHasBeenSet(false),
-    m_statusChangeDateHasBeenSet(false)
+DataShareAssociation::DataShareAssociation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -56,7 +40,7 @@ DataShareAssociation& DataShareAssociation::operator =(const XmlNode& xmlNode)
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = DataShareStatusMapper::GetDataShareStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = DataShareStatusMapper::GetDataShareStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode consumerRegionNode = resultNode.FirstChild("ConsumerRegion");
@@ -77,6 +61,18 @@ DataShareAssociation& DataShareAssociation::operator =(const XmlNode& xmlNode)
       m_statusChangeDate = DateTime(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusChangeDateNode.GetText()).c_str()).c_str(), Aws::Utils::DateFormat::ISO_8601);
       m_statusChangeDateHasBeenSet = true;
     }
+    XmlNode producerAllowedWritesNode = resultNode.FirstChild("ProducerAllowedWrites");
+    if(!producerAllowedWritesNode.IsNull())
+    {
+      m_producerAllowedWrites = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(producerAllowedWritesNode.GetText()).c_str()).c_str());
+      m_producerAllowedWritesHasBeenSet = true;
+    }
+    XmlNode consumerAcceptedWritesNode = resultNode.FirstChild("ConsumerAcceptedWrites");
+    if(!consumerAcceptedWritesNode.IsNull())
+    {
+      m_consumerAcceptedWrites = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(consumerAcceptedWritesNode.GetText()).c_str()).c_str());
+      m_consumerAcceptedWritesHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -91,7 +87,7 @@ void DataShareAssociation::OutputToStream(Aws::OStream& oStream, const char* loc
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << DataShareStatusMapper::GetNameForDataShareStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(DataShareStatusMapper::GetNameForDataShareStatus(m_status)) << "&";
   }
 
   if(m_consumerRegionHasBeenSet)
@@ -109,6 +105,16 @@ void DataShareAssociation::OutputToStream(Aws::OStream& oStream, const char* loc
       oStream << location << index << locationValue << ".StatusChangeDate=" << StringUtils::URLEncode(m_statusChangeDate.ToGmtString(Aws::Utils::DateFormat::ISO_8601).c_str()) << "&";
   }
 
+  if(m_producerAllowedWritesHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".ProducerAllowedWrites=" << std::boolalpha << m_producerAllowedWrites << "&";
+  }
+
+  if(m_consumerAcceptedWritesHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".ConsumerAcceptedWrites=" << std::boolalpha << m_consumerAcceptedWrites << "&";
+  }
+
 }
 
 void DataShareAssociation::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -119,7 +125,7 @@ void DataShareAssociation::OutputToStream(Aws::OStream& oStream, const char* loc
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << DataShareStatusMapper::GetNameForDataShareStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(DataShareStatusMapper::GetNameForDataShareStatus(m_status)) << "&";
   }
   if(m_consumerRegionHasBeenSet)
   {
@@ -132,6 +138,14 @@ void DataShareAssociation::OutputToStream(Aws::OStream& oStream, const char* loc
   if(m_statusChangeDateHasBeenSet)
   {
       oStream << location << ".StatusChangeDate=" << StringUtils::URLEncode(m_statusChangeDate.ToGmtString(Aws::Utils::DateFormat::ISO_8601).c_str()) << "&";
+  }
+  if(m_producerAllowedWritesHasBeenSet)
+  {
+      oStream << location << ".ProducerAllowedWrites=" << std::boolalpha << m_producerAllowedWrites << "&";
+  }
+  if(m_consumerAcceptedWritesHasBeenSet)
+  {
+      oStream << location << ".ConsumerAcceptedWrites=" << std::boolalpha << m_consumerAcceptedWrites << "&";
   }
 }
 

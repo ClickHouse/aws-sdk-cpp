@@ -29,6 +29,9 @@ namespace Aws
         static const int DEEP_ARCHIVE_HASH = HashingUtils::HashString("DEEP_ARCHIVE");
         static const int OUTPOSTS_HASH = HashingUtils::HashString("OUTPOSTS");
         static const int GLACIER_IR_HASH = HashingUtils::HashString("GLACIER_IR");
+        static const int SNOW_HASH = HashingUtils::HashString("SNOW");
+        static const int EXPRESS_ONEZONE_HASH = HashingUtils::HashString("EXPRESS_ONEZONE");
+        static const int FSX_OPENZFS_HASH = HashingUtils::HashString("FSX_OPENZFS");
 
 
         ObjectStorageClass GetObjectStorageClassForName(const Aws::String& name)
@@ -70,6 +73,18 @@ namespace Aws
           {
             return ObjectStorageClass::GLACIER_IR;
           }
+          else if (hashCode == SNOW_HASH)
+          {
+            return ObjectStorageClass::SNOW;
+          }
+          else if (hashCode == EXPRESS_ONEZONE_HASH)
+          {
+            return ObjectStorageClass::EXPRESS_ONEZONE;
+          }
+          else if (hashCode == FSX_OPENZFS_HASH)
+          {
+            return ObjectStorageClass::FSX_OPENZFS;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -84,6 +99,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case ObjectStorageClass::NOT_SET:
+            return {};
           case ObjectStorageClass::STANDARD:
             return "STANDARD";
           case ObjectStorageClass::REDUCED_REDUNDANCY:
@@ -102,6 +119,12 @@ namespace Aws
             return "OUTPOSTS";
           case ObjectStorageClass::GLACIER_IR:
             return "GLACIER_IR";
+          case ObjectStorageClass::SNOW:
+            return "SNOW";
+          case ObjectStorageClass::EXPRESS_ONEZONE:
+            return "EXPRESS_ONEZONE";
+          case ObjectStorageClass::FSX_OPENZFS:
+            return "FSX_OPENZFS";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

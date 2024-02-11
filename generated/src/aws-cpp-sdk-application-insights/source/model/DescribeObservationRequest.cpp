@@ -12,11 +12,6 @@ using namespace Aws::ApplicationInsights::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeObservationRequest::DescribeObservationRequest() : 
-    m_observationIdHasBeenSet(false)
-{
-}
-
 Aws::String DescribeObservationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -24,6 +19,12 @@ Aws::String DescribeObservationRequest::SerializePayload() const
   if(m_observationIdHasBeenSet)
   {
    payload.WithString("ObservationId", m_observationId);
+
+  }
+
+  if(m_accountIdHasBeenSet)
+  {
+   payload.WithString("AccountId", m_accountId);
 
   }
 

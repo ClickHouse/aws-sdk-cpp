@@ -8,6 +8,7 @@
 #include <aws/ssm-sap/SsmSapRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/ssm-sap/model/BackintConfig.h>
 #include <aws/ssm-sap/model/ApplicationCredential.h>
 #include <utility>
 
@@ -23,7 +24,7 @@ namespace Model
   class UpdateApplicationSettingsRequest : public SsmSapRequest
   {
   public:
-    AWS_SSMSAP_API UpdateApplicationSettingsRequest();
+    AWS_SSMSAP_API UpdateApplicationSettingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,128 +35,70 @@ namespace Model
     AWS_SSMSAP_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the application.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The ID of the application.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    UpdateApplicationSettingsRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the application.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The ID of the application.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The ID of the application.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The ID of the application.</p>
-     */
-    inline UpdateApplicationSettingsRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The ID of the application.</p>
-     */
-    inline UpdateApplicationSettingsRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the application.</p>
-     */
-    inline UpdateApplicationSettingsRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The credentials to be added or updated.</p>
      */
-    inline const Aws::Vector<ApplicationCredential>& GetCredentialsToAddOrUpdate() const{ return m_credentialsToAddOrUpdate; }
-
-    /**
-     * <p>The credentials to be added or updated.</p>
-     */
+    inline const Aws::Vector<ApplicationCredential>& GetCredentialsToAddOrUpdate() const { return m_credentialsToAddOrUpdate; }
     inline bool CredentialsToAddOrUpdateHasBeenSet() const { return m_credentialsToAddOrUpdateHasBeenSet; }
+    template<typename CredentialsToAddOrUpdateT = Aws::Vector<ApplicationCredential>>
+    void SetCredentialsToAddOrUpdate(CredentialsToAddOrUpdateT&& value) { m_credentialsToAddOrUpdateHasBeenSet = true; m_credentialsToAddOrUpdate = std::forward<CredentialsToAddOrUpdateT>(value); }
+    template<typename CredentialsToAddOrUpdateT = Aws::Vector<ApplicationCredential>>
+    UpdateApplicationSettingsRequest& WithCredentialsToAddOrUpdate(CredentialsToAddOrUpdateT&& value) { SetCredentialsToAddOrUpdate(std::forward<CredentialsToAddOrUpdateT>(value)); return *this;}
+    template<typename CredentialsToAddOrUpdateT = ApplicationCredential>
+    UpdateApplicationSettingsRequest& AddCredentialsToAddOrUpdate(CredentialsToAddOrUpdateT&& value) { m_credentialsToAddOrUpdateHasBeenSet = true; m_credentialsToAddOrUpdate.emplace_back(std::forward<CredentialsToAddOrUpdateT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The credentials to be added or updated.</p>
-     */
-    inline void SetCredentialsToAddOrUpdate(const Aws::Vector<ApplicationCredential>& value) { m_credentialsToAddOrUpdateHasBeenSet = true; m_credentialsToAddOrUpdate = value; }
-
-    /**
-     * <p>The credentials to be added or updated.</p>
-     */
-    inline void SetCredentialsToAddOrUpdate(Aws::Vector<ApplicationCredential>&& value) { m_credentialsToAddOrUpdateHasBeenSet = true; m_credentialsToAddOrUpdate = std::move(value); }
-
-    /**
-     * <p>The credentials to be added or updated.</p>
-     */
-    inline UpdateApplicationSettingsRequest& WithCredentialsToAddOrUpdate(const Aws::Vector<ApplicationCredential>& value) { SetCredentialsToAddOrUpdate(value); return *this;}
-
-    /**
-     * <p>The credentials to be added or updated.</p>
-     */
-    inline UpdateApplicationSettingsRequest& WithCredentialsToAddOrUpdate(Aws::Vector<ApplicationCredential>&& value) { SetCredentialsToAddOrUpdate(std::move(value)); return *this;}
-
-    /**
-     * <p>The credentials to be added or updated.</p>
-     */
-    inline UpdateApplicationSettingsRequest& AddCredentialsToAddOrUpdate(const ApplicationCredential& value) { m_credentialsToAddOrUpdateHasBeenSet = true; m_credentialsToAddOrUpdate.push_back(value); return *this; }
-
-    /**
-     * <p>The credentials to be added or updated.</p>
-     */
-    inline UpdateApplicationSettingsRequest& AddCredentialsToAddOrUpdate(ApplicationCredential&& value) { m_credentialsToAddOrUpdateHasBeenSet = true; m_credentialsToAddOrUpdate.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The credentials to be removed.</p>
      */
-    inline const Aws::Vector<ApplicationCredential>& GetCredentialsToRemove() const{ return m_credentialsToRemove; }
-
-    /**
-     * <p>The credentials to be removed.</p>
-     */
+    inline const Aws::Vector<ApplicationCredential>& GetCredentialsToRemove() const { return m_credentialsToRemove; }
     inline bool CredentialsToRemoveHasBeenSet() const { return m_credentialsToRemoveHasBeenSet; }
+    template<typename CredentialsToRemoveT = Aws::Vector<ApplicationCredential>>
+    void SetCredentialsToRemove(CredentialsToRemoveT&& value) { m_credentialsToRemoveHasBeenSet = true; m_credentialsToRemove = std::forward<CredentialsToRemoveT>(value); }
+    template<typename CredentialsToRemoveT = Aws::Vector<ApplicationCredential>>
+    UpdateApplicationSettingsRequest& WithCredentialsToRemove(CredentialsToRemoveT&& value) { SetCredentialsToRemove(std::forward<CredentialsToRemoveT>(value)); return *this;}
+    template<typename CredentialsToRemoveT = ApplicationCredential>
+    UpdateApplicationSettingsRequest& AddCredentialsToRemove(CredentialsToRemoveT&& value) { m_credentialsToRemoveHasBeenSet = true; m_credentialsToRemove.emplace_back(std::forward<CredentialsToRemoveT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The credentials to be removed.</p>
+     * <p>Installation of AWS Backint Agent for SAP HANA.</p>
      */
-    inline void SetCredentialsToRemove(const Aws::Vector<ApplicationCredential>& value) { m_credentialsToRemoveHasBeenSet = true; m_credentialsToRemove = value; }
+    inline const BackintConfig& GetBackint() const { return m_backint; }
+    inline bool BackintHasBeenSet() const { return m_backintHasBeenSet; }
+    template<typename BackintT = BackintConfig>
+    void SetBackint(BackintT&& value) { m_backintHasBeenSet = true; m_backint = std::forward<BackintT>(value); }
+    template<typename BackintT = BackintConfig>
+    UpdateApplicationSettingsRequest& WithBackint(BackintT&& value) { SetBackint(std::forward<BackintT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The credentials to be removed.</p>
+     * <p>The Amazon Resource Name of the SAP HANA database that replaces the current
+     * SAP HANA connection with the SAP_ABAP application.</p>
      */
-    inline void SetCredentialsToRemove(Aws::Vector<ApplicationCredential>&& value) { m_credentialsToRemoveHasBeenSet = true; m_credentialsToRemove = std::move(value); }
-
-    /**
-     * <p>The credentials to be removed.</p>
-     */
-    inline UpdateApplicationSettingsRequest& WithCredentialsToRemove(const Aws::Vector<ApplicationCredential>& value) { SetCredentialsToRemove(value); return *this;}
-
-    /**
-     * <p>The credentials to be removed.</p>
-     */
-    inline UpdateApplicationSettingsRequest& WithCredentialsToRemove(Aws::Vector<ApplicationCredential>&& value) { SetCredentialsToRemove(std::move(value)); return *this;}
-
-    /**
-     * <p>The credentials to be removed.</p>
-     */
-    inline UpdateApplicationSettingsRequest& AddCredentialsToRemove(const ApplicationCredential& value) { m_credentialsToRemoveHasBeenSet = true; m_credentialsToRemove.push_back(value); return *this; }
-
-    /**
-     * <p>The credentials to be removed.</p>
-     */
-    inline UpdateApplicationSettingsRequest& AddCredentialsToRemove(ApplicationCredential&& value) { m_credentialsToRemoveHasBeenSet = true; m_credentialsToRemove.push_back(std::move(value)); return *this; }
-
+    inline const Aws::String& GetDatabaseArn() const { return m_databaseArn; }
+    inline bool DatabaseArnHasBeenSet() const { return m_databaseArnHasBeenSet; }
+    template<typename DatabaseArnT = Aws::String>
+    void SetDatabaseArn(DatabaseArnT&& value) { m_databaseArnHasBeenSet = true; m_databaseArn = std::forward<DatabaseArnT>(value); }
+    template<typename DatabaseArnT = Aws::String>
+    UpdateApplicationSettingsRequest& WithDatabaseArn(DatabaseArnT&& value) { SetDatabaseArn(std::forward<DatabaseArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;
@@ -166,6 +109,12 @@ namespace Model
 
     Aws::Vector<ApplicationCredential> m_credentialsToRemove;
     bool m_credentialsToRemoveHasBeenSet = false;
+
+    BackintConfig m_backint;
+    bool m_backintHasBeenSet = false;
+
+    Aws::String m_databaseArn;
+    bool m_databaseArnHasBeenSet = false;
   };
 
 } // namespace Model

@@ -20,35 +20,7 @@ namespace CloudWatch
 namespace Model
 {
 
-MetricDatum::MetricDatum() : 
-    m_metricNameHasBeenSet(false),
-    m_dimensionsHasBeenSet(false),
-    m_timestampHasBeenSet(false),
-    m_value(0.0),
-    m_valueHasBeenSet(false),
-    m_statisticValuesHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_countsHasBeenSet(false),
-    m_unit(StandardUnit::NOT_SET),
-    m_unitHasBeenSet(false),
-    m_storageResolution(0),
-    m_storageResolutionHasBeenSet(false)
-{
-}
-
-MetricDatum::MetricDatum(const XmlNode& xmlNode) : 
-    m_metricNameHasBeenSet(false),
-    m_dimensionsHasBeenSet(false),
-    m_timestampHasBeenSet(false),
-    m_value(0.0),
-    m_valueHasBeenSet(false),
-    m_statisticValuesHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_countsHasBeenSet(false),
-    m_unit(StandardUnit::NOT_SET),
-    m_unitHasBeenSet(false),
-    m_storageResolution(0),
-    m_storageResolutionHasBeenSet(false)
+MetricDatum::MetricDatum(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -69,6 +41,7 @@ MetricDatum& MetricDatum::operator =(const XmlNode& xmlNode)
     if(!dimensionsNode.IsNull())
     {
       XmlNode dimensionsMember = dimensionsNode.FirstChild("member");
+      m_dimensionsHasBeenSet = !dimensionsMember.IsNull();
       while(!dimensionsMember.IsNull())
       {
         m_dimensions.push_back(dimensionsMember);
@@ -99,9 +72,10 @@ MetricDatum& MetricDatum::operator =(const XmlNode& xmlNode)
     if(!valuesNode.IsNull())
     {
       XmlNode valuesMember = valuesNode.FirstChild("member");
+      m_valuesHasBeenSet = !valuesMember.IsNull();
       while(!valuesMember.IsNull())
       {
-         m_values.push_back(StringUtils::ConvertToDouble(StringUtils::Trim(valuesMember.GetText().c_str()).c_str()));
+        m_values.push_back(StringUtils::ConvertToDouble(StringUtils::Trim(valuesMember.GetText().c_str()).c_str()));
         valuesMember = valuesMember.NextNode("member");
       }
 
@@ -111,9 +85,10 @@ MetricDatum& MetricDatum::operator =(const XmlNode& xmlNode)
     if(!countsNode.IsNull())
     {
       XmlNode countsMember = countsNode.FirstChild("member");
+      m_countsHasBeenSet = !countsMember.IsNull();
       while(!countsMember.IsNull())
       {
-         m_counts.push_back(StringUtils::ConvertToDouble(StringUtils::Trim(countsMember.GetText().c_str()).c_str()));
+        m_counts.push_back(StringUtils::ConvertToDouble(StringUtils::Trim(countsMember.GetText().c_str()).c_str()));
         countsMember = countsMember.NextNode("member");
       }
 
@@ -122,7 +97,7 @@ MetricDatum& MetricDatum::operator =(const XmlNode& xmlNode)
     XmlNode unitNode = resultNode.FirstChild("Unit");
     if(!unitNode.IsNull())
     {
-      m_unit = StandardUnitMapper::GetStandardUnitForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(unitNode.GetText()).c_str()).c_str());
+      m_unit = StandardUnitMapper::GetStandardUnitForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(unitNode.GetText()).c_str()));
       m_unitHasBeenSet = true;
     }
     XmlNode storageResolutionNode = resultNode.FirstChild("StorageResolution");
@@ -191,7 +166,7 @@ void MetricDatum::OutputToStream(Aws::OStream& oStream, const char* location, un
 
   if(m_unitHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Unit=" << StandardUnitMapper::GetNameForStandardUnit(m_unit) << "&";
+      oStream << location << index << locationValue << ".Unit=" << StringUtils::URLEncode(StandardUnitMapper::GetNameForStandardUnit(m_unit)) << "&";
   }
 
   if(m_storageResolutionHasBeenSet)
@@ -213,7 +188,7 @@ void MetricDatum::OutputToStream(Aws::OStream& oStream, const char* location) co
       for(auto& item : m_dimensions)
       {
         Aws::StringStream dimensionsSs;
-        dimensionsSs << location <<  ".Dimensions.member." << dimensionsIdx++;
+        dimensionsSs << location << ".Dimensions.member." << dimensionsIdx++;
         item.OutputToStream(oStream, dimensionsSs.str().c_str());
       }
   }
@@ -223,7 +198,7 @@ void MetricDatum::OutputToStream(Aws::OStream& oStream, const char* location) co
   }
   if(m_valueHasBeenSet)
   {
-        oStream << location << ".Value=" << StringUtils::URLEncode(m_value) << "&";
+      oStream << location << ".Value=" << StringUtils::URLEncode(m_value) << "&";
   }
   if(m_statisticValuesHasBeenSet)
   {
@@ -236,7 +211,7 @@ void MetricDatum::OutputToStream(Aws::OStream& oStream, const char* location) co
       unsigned valuesIdx = 1;
       for(auto& item : m_values)
       {
-          oStream << location << ".Values.member." << valuesIdx++ << "=" << StringUtils::URLEncode(item) << "&";
+        oStream << location << ".Values.member." << valuesIdx++ << "=" << StringUtils::URLEncode(item) << "&";
       }
   }
   if(m_countsHasBeenSet)
@@ -244,12 +219,12 @@ void MetricDatum::OutputToStream(Aws::OStream& oStream, const char* location) co
       unsigned countsIdx = 1;
       for(auto& item : m_counts)
       {
-          oStream << location << ".Counts.member." << countsIdx++ << "=" << StringUtils::URLEncode(item) << "&";
+        oStream << location << ".Counts.member." << countsIdx++ << "=" << StringUtils::URLEncode(item) << "&";
       }
   }
   if(m_unitHasBeenSet)
   {
-      oStream << location << ".Unit=" << StandardUnitMapper::GetNameForStandardUnit(m_unit) << "&";
+      oStream << location << ".Unit=" << StringUtils::URLEncode(StandardUnitMapper::GetNameForStandardUnit(m_unit)) << "&";
   }
   if(m_storageResolutionHasBeenSet)
   {

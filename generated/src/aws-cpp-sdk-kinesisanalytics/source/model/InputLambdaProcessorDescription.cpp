@@ -18,15 +18,7 @@ namespace KinesisAnalytics
 namespace Model
 {
 
-InputLambdaProcessorDescription::InputLambdaProcessorDescription() : 
-    m_resourceARNHasBeenSet(false),
-    m_roleARNHasBeenSet(false)
-{
-}
-
-InputLambdaProcessorDescription::InputLambdaProcessorDescription(JsonView jsonValue) : 
-    m_resourceARNHasBeenSet(false),
-    m_roleARNHasBeenSet(false)
+InputLambdaProcessorDescription::InputLambdaProcessorDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ InputLambdaProcessorDescription& InputLambdaProcessorDescription::operator =(Jso
   if(jsonValue.ValueExists("ResourceARN"))
   {
     m_resourceARN = jsonValue.GetString("ResourceARN");
-
     m_resourceARNHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RoleARN"))
   {
     m_roleARN = jsonValue.GetString("RoleARN");
-
     m_roleARNHasBeenSet = true;
   }
-
   return *this;
 }
 

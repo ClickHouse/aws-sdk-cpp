@@ -21,7 +21,7 @@ namespace Model
   class UpdateServicePrimaryTaskSetRequest : public ECSRequest
   {
   public:
-    AWS_ECS_API UpdateServicePrimaryTaskSetRequest();
+    AWS_ECS_API UpdateServicePrimaryTaskSetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,152 +34,44 @@ namespace Model
     AWS_ECS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts
      * the service that the task set exists in.</p>
      */
-    inline const Aws::String& GetCluster() const{ return m_cluster; }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts
-     * the service that the task set exists in.</p>
-     */
+    inline const Aws::String& GetCluster() const { return m_cluster; }
     inline bool ClusterHasBeenSet() const { return m_clusterHasBeenSet; }
+    template<typename ClusterT = Aws::String>
+    void SetCluster(ClusterT&& value) { m_clusterHasBeenSet = true; m_cluster = std::forward<ClusterT>(value); }
+    template<typename ClusterT = Aws::String>
+    UpdateServicePrimaryTaskSetRequest& WithCluster(ClusterT&& value) { SetCluster(std::forward<ClusterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts
-     * the service that the task set exists in.</p>
-     */
-    inline void SetCluster(const Aws::String& value) { m_clusterHasBeenSet = true; m_cluster = value; }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts
-     * the service that the task set exists in.</p>
-     */
-    inline void SetCluster(Aws::String&& value) { m_clusterHasBeenSet = true; m_cluster = std::move(value); }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts
-     * the service that the task set exists in.</p>
-     */
-    inline void SetCluster(const char* value) { m_clusterHasBeenSet = true; m_cluster.assign(value); }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts
-     * the service that the task set exists in.</p>
-     */
-    inline UpdateServicePrimaryTaskSetRequest& WithCluster(const Aws::String& value) { SetCluster(value); return *this;}
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts
-     * the service that the task set exists in.</p>
-     */
-    inline UpdateServicePrimaryTaskSetRequest& WithCluster(Aws::String&& value) { SetCluster(std::move(value)); return *this;}
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts
-     * the service that the task set exists in.</p>
-     */
-    inline UpdateServicePrimaryTaskSetRequest& WithCluster(const char* value) { SetCluster(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The short name or full Amazon Resource Name (ARN) of the service that the
      * task set exists in.</p>
      */
-    inline const Aws::String& GetService() const{ return m_service; }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the service that the
-     * task set exists in.</p>
-     */
+    inline const Aws::String& GetService() const { return m_service; }
     inline bool ServiceHasBeenSet() const { return m_serviceHasBeenSet; }
+    template<typename ServiceT = Aws::String>
+    void SetService(ServiceT&& value) { m_serviceHasBeenSet = true; m_service = std::forward<ServiceT>(value); }
+    template<typename ServiceT = Aws::String>
+    UpdateServicePrimaryTaskSetRequest& WithService(ServiceT&& value) { SetService(std::forward<ServiceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the service that the
-     * task set exists in.</p>
-     */
-    inline void SetService(const Aws::String& value) { m_serviceHasBeenSet = true; m_service = value; }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the service that the
-     * task set exists in.</p>
-     */
-    inline void SetService(Aws::String&& value) { m_serviceHasBeenSet = true; m_service = std::move(value); }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the service that the
-     * task set exists in.</p>
-     */
-    inline void SetService(const char* value) { m_serviceHasBeenSet = true; m_service.assign(value); }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the service that the
-     * task set exists in.</p>
-     */
-    inline UpdateServicePrimaryTaskSetRequest& WithService(const Aws::String& value) { SetService(value); return *this;}
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the service that the
-     * task set exists in.</p>
-     */
-    inline UpdateServicePrimaryTaskSetRequest& WithService(Aws::String&& value) { SetService(std::move(value)); return *this;}
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the service that the
-     * task set exists in.</p>
-     */
-    inline UpdateServicePrimaryTaskSetRequest& WithService(const char* value) { SetService(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The short name or full Amazon Resource Name (ARN) of the task set to set as
      * the primary task set in the deployment.</p>
      */
-    inline const Aws::String& GetPrimaryTaskSet() const{ return m_primaryTaskSet; }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the task set to set as
-     * the primary task set in the deployment.</p>
-     */
+    inline const Aws::String& GetPrimaryTaskSet() const { return m_primaryTaskSet; }
     inline bool PrimaryTaskSetHasBeenSet() const { return m_primaryTaskSetHasBeenSet; }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the task set to set as
-     * the primary task set in the deployment.</p>
-     */
-    inline void SetPrimaryTaskSet(const Aws::String& value) { m_primaryTaskSetHasBeenSet = true; m_primaryTaskSet = value; }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the task set to set as
-     * the primary task set in the deployment.</p>
-     */
-    inline void SetPrimaryTaskSet(Aws::String&& value) { m_primaryTaskSetHasBeenSet = true; m_primaryTaskSet = std::move(value); }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the task set to set as
-     * the primary task set in the deployment.</p>
-     */
-    inline void SetPrimaryTaskSet(const char* value) { m_primaryTaskSetHasBeenSet = true; m_primaryTaskSet.assign(value); }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the task set to set as
-     * the primary task set in the deployment.</p>
-     */
-    inline UpdateServicePrimaryTaskSetRequest& WithPrimaryTaskSet(const Aws::String& value) { SetPrimaryTaskSet(value); return *this;}
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the task set to set as
-     * the primary task set in the deployment.</p>
-     */
-    inline UpdateServicePrimaryTaskSetRequest& WithPrimaryTaskSet(Aws::String&& value) { SetPrimaryTaskSet(std::move(value)); return *this;}
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the task set to set as
-     * the primary task set in the deployment.</p>
-     */
-    inline UpdateServicePrimaryTaskSetRequest& WithPrimaryTaskSet(const char* value) { SetPrimaryTaskSet(value); return *this;}
-
+    template<typename PrimaryTaskSetT = Aws::String>
+    void SetPrimaryTaskSet(PrimaryTaskSetT&& value) { m_primaryTaskSetHasBeenSet = true; m_primaryTaskSet = std::forward<PrimaryTaskSetT>(value); }
+    template<typename PrimaryTaskSetT = Aws::String>
+    UpdateServicePrimaryTaskSetRequest& WithPrimaryTaskSet(PrimaryTaskSetT&& value) { SetPrimaryTaskSet(std::forward<PrimaryTaskSetT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_cluster;

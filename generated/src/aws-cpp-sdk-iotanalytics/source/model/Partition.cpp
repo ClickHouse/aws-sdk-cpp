@@ -18,13 +18,7 @@ namespace IoTAnalytics
 namespace Model
 {
 
-Partition::Partition() : 
-    m_attributeNameHasBeenSet(false)
-{
-}
-
-Partition::Partition(JsonView jsonValue) : 
-    m_attributeNameHasBeenSet(false)
+Partition::Partition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ Partition& Partition::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("attributeName"))
   {
     m_attributeName = jsonValue.GetString("attributeName");
-
     m_attributeNameHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -7,8 +7,9 @@
 #include <aws/rolesanywhere/RolesAnywhere_EXPORTS.h>
 #include <aws/rolesanywhere/RolesAnywhereRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
-#include <aws/rolesanywhere/model/Source.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/rolesanywhere/model/Source.h>
+#include <aws/rolesanywhere/model/NotificationSetting.h>
 #include <aws/rolesanywhere/model/Tag.h>
 #include <utility>
 
@@ -24,7 +25,7 @@ namespace Model
   class CreateTrustAnchorRequest : public RolesAnywhereRequest
   {
   public:
-    AWS_ROLESANYWHERE_API CreateTrustAnchorRequest();
+    AWS_ROLESANYWHERE_API CreateTrustAnchorRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,146 +36,77 @@ namespace Model
     AWS_ROLESANYWHERE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Specifies whether the trust anchor is enabled.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Specifies whether the trust anchor is enabled.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the trust anchor is enabled.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Specifies whether the trust anchor is enabled.</p>
-     */
     inline CreateTrustAnchorRequest& WithEnabled(bool value) { SetEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The name of the trust anchor.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the trust anchor.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateTrustAnchorRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the trust anchor.</p>
+     * <p>A list of notification settings to be associated to the trust anchor.</p>
      */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline const Aws::Vector<NotificationSetting>& GetNotificationSettings() const { return m_notificationSettings; }
+    inline bool NotificationSettingsHasBeenSet() const { return m_notificationSettingsHasBeenSet; }
+    template<typename NotificationSettingsT = Aws::Vector<NotificationSetting>>
+    void SetNotificationSettings(NotificationSettingsT&& value) { m_notificationSettingsHasBeenSet = true; m_notificationSettings = std::forward<NotificationSettingsT>(value); }
+    template<typename NotificationSettingsT = Aws::Vector<NotificationSetting>>
+    CreateTrustAnchorRequest& WithNotificationSettings(NotificationSettingsT&& value) { SetNotificationSettings(std::forward<NotificationSettingsT>(value)); return *this;}
+    template<typename NotificationSettingsT = NotificationSetting>
+    CreateTrustAnchorRequest& AddNotificationSettings(NotificationSettingsT&& value) { m_notificationSettingsHasBeenSet = true; m_notificationSettings.emplace_back(std::forward<NotificationSettingsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The name of the trust anchor.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the trust anchor.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the trust anchor.</p>
-     */
-    inline CreateTrustAnchorRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the trust anchor.</p>
-     */
-    inline CreateTrustAnchorRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the trust anchor.</p>
-     */
-    inline CreateTrustAnchorRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The trust anchor type and its related certificate data.</p>
      */
-    inline const Source& GetSource() const{ return m_source; }
-
-    /**
-     * <p>The trust anchor type and its related certificate data.</p>
-     */
+    inline const Source& GetSource() const { return m_source; }
     inline bool SourceHasBeenSet() const { return m_sourceHasBeenSet; }
+    template<typename SourceT = Source>
+    void SetSource(SourceT&& value) { m_sourceHasBeenSet = true; m_source = std::forward<SourceT>(value); }
+    template<typename SourceT = Source>
+    CreateTrustAnchorRequest& WithSource(SourceT&& value) { SetSource(std::forward<SourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The trust anchor type and its related certificate data.</p>
-     */
-    inline void SetSource(const Source& value) { m_sourceHasBeenSet = true; m_source = value; }
-
-    /**
-     * <p>The trust anchor type and its related certificate data.</p>
-     */
-    inline void SetSource(Source&& value) { m_sourceHasBeenSet = true; m_source = std::move(value); }
-
-    /**
-     * <p>The trust anchor type and its related certificate data.</p>
-     */
-    inline CreateTrustAnchorRequest& WithSource(const Source& value) { SetSource(value); return *this;}
-
-    /**
-     * <p>The trust anchor type and its related certificate data.</p>
-     */
-    inline CreateTrustAnchorRequest& WithSource(Source&& value) { SetSource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags to attach to the trust anchor.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags to attach to the trust anchor.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags to attach to the trust anchor.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags to attach to the trust anchor.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags to attach to the trust anchor.</p>
-     */
-    inline CreateTrustAnchorRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags to attach to the trust anchor.</p>
-     */
-    inline CreateTrustAnchorRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags to attach to the trust anchor.</p>
-     */
-    inline CreateTrustAnchorRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The tags to attach to the trust anchor.</p>
-     */
-    inline CreateTrustAnchorRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateTrustAnchorRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateTrustAnchorRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
+
+    Aws::Vector<NotificationSetting> m_notificationSettings;
+    bool m_notificationSettingsHasBeenSet = false;
 
     Source m_source;
     bool m_sourceHasBeenSet = false;

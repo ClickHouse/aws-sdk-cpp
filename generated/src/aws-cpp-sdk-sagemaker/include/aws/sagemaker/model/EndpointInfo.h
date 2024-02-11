@@ -32,52 +32,23 @@ namespace Model
   class EndpointInfo
   {
   public:
-    AWS_SAGEMAKER_API EndpointInfo();
+    AWS_SAGEMAKER_API EndpointInfo() = default;
     AWS_SAGEMAKER_API EndpointInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API EndpointInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of a customer's endpoint.</p>
      */
-    inline const Aws::String& GetEndpointName() const{ return m_endpointName; }
-
-    /**
-     * <p>The name of a customer's endpoint.</p>
-     */
+    inline const Aws::String& GetEndpointName() const { return m_endpointName; }
     inline bool EndpointNameHasBeenSet() const { return m_endpointNameHasBeenSet; }
-
-    /**
-     * <p>The name of a customer's endpoint.</p>
-     */
-    inline void SetEndpointName(const Aws::String& value) { m_endpointNameHasBeenSet = true; m_endpointName = value; }
-
-    /**
-     * <p>The name of a customer's endpoint.</p>
-     */
-    inline void SetEndpointName(Aws::String&& value) { m_endpointNameHasBeenSet = true; m_endpointName = std::move(value); }
-
-    /**
-     * <p>The name of a customer's endpoint.</p>
-     */
-    inline void SetEndpointName(const char* value) { m_endpointNameHasBeenSet = true; m_endpointName.assign(value); }
-
-    /**
-     * <p>The name of a customer's endpoint.</p>
-     */
-    inline EndpointInfo& WithEndpointName(const Aws::String& value) { SetEndpointName(value); return *this;}
-
-    /**
-     * <p>The name of a customer's endpoint.</p>
-     */
-    inline EndpointInfo& WithEndpointName(Aws::String&& value) { SetEndpointName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a customer's endpoint.</p>
-     */
-    inline EndpointInfo& WithEndpointName(const char* value) { SetEndpointName(value); return *this;}
-
+    template<typename EndpointNameT = Aws::String>
+    void SetEndpointName(EndpointNameT&& value) { m_endpointNameHasBeenSet = true; m_endpointName = std::forward<EndpointNameT>(value); }
+    template<typename EndpointNameT = Aws::String>
+    EndpointInfo& WithEndpointName(EndpointNameT&& value) { SetEndpointName(std::forward<EndpointNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_endpointName;

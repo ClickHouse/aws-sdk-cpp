@@ -18,15 +18,7 @@ namespace Rekognition
 namespace Model
 {
 
-S3Destination::S3Destination() : 
-    m_bucketHasBeenSet(false),
-    m_keyPrefixHasBeenSet(false)
-{
-}
-
-S3Destination::S3Destination(JsonView jsonValue) : 
-    m_bucketHasBeenSet(false),
-    m_keyPrefixHasBeenSet(false)
+S3Destination::S3Destination(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ S3Destination& S3Destination::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Bucket"))
   {
     m_bucket = jsonValue.GetString("Bucket");
-
     m_bucketHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("KeyPrefix"))
   {
     m_keyPrefix = jsonValue.GetString("KeyPrefix");
-
     m_keyPrefixHasBeenSet = true;
   }
-
   return *this;
 }
 

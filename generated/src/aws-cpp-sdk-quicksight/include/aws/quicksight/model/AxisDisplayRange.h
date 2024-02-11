@@ -34,73 +34,35 @@ namespace Model
   class AxisDisplayRange
   {
   public:
-    AWS_QUICKSIGHT_API AxisDisplayRange();
+    AWS_QUICKSIGHT_API AxisDisplayRange() = default;
     AWS_QUICKSIGHT_API AxisDisplayRange(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API AxisDisplayRange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The minimum and maximum setup of an axis display range.</p>
      */
-    inline const AxisDisplayMinMaxRange& GetMinMax() const{ return m_minMax; }
-
-    /**
-     * <p>The minimum and maximum setup of an axis display range.</p>
-     */
+    inline const AxisDisplayMinMaxRange& GetMinMax() const { return m_minMax; }
     inline bool MinMaxHasBeenSet() const { return m_minMaxHasBeenSet; }
+    template<typename MinMaxT = AxisDisplayMinMaxRange>
+    void SetMinMax(MinMaxT&& value) { m_minMaxHasBeenSet = true; m_minMax = std::forward<MinMaxT>(value); }
+    template<typename MinMaxT = AxisDisplayMinMaxRange>
+    AxisDisplayRange& WithMinMax(MinMaxT&& value) { SetMinMax(std::forward<MinMaxT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The minimum and maximum setup of an axis display range.</p>
-     */
-    inline void SetMinMax(const AxisDisplayMinMaxRange& value) { m_minMaxHasBeenSet = true; m_minMax = value; }
-
-    /**
-     * <p>The minimum and maximum setup of an axis display range.</p>
-     */
-    inline void SetMinMax(AxisDisplayMinMaxRange&& value) { m_minMaxHasBeenSet = true; m_minMax = std::move(value); }
-
-    /**
-     * <p>The minimum and maximum setup of an axis display range.</p>
-     */
-    inline AxisDisplayRange& WithMinMax(const AxisDisplayMinMaxRange& value) { SetMinMax(value); return *this;}
-
-    /**
-     * <p>The minimum and maximum setup of an axis display range.</p>
-     */
-    inline AxisDisplayRange& WithMinMax(AxisDisplayMinMaxRange&& value) { SetMinMax(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The data-driven setup of an axis display range.</p>
      */
-    inline const AxisDisplayDataDrivenRange& GetDataDriven() const{ return m_dataDriven; }
-
-    /**
-     * <p>The data-driven setup of an axis display range.</p>
-     */
+    inline const AxisDisplayDataDrivenRange& GetDataDriven() const { return m_dataDriven; }
     inline bool DataDrivenHasBeenSet() const { return m_dataDrivenHasBeenSet; }
-
-    /**
-     * <p>The data-driven setup of an axis display range.</p>
-     */
-    inline void SetDataDriven(const AxisDisplayDataDrivenRange& value) { m_dataDrivenHasBeenSet = true; m_dataDriven = value; }
-
-    /**
-     * <p>The data-driven setup of an axis display range.</p>
-     */
-    inline void SetDataDriven(AxisDisplayDataDrivenRange&& value) { m_dataDrivenHasBeenSet = true; m_dataDriven = std::move(value); }
-
-    /**
-     * <p>The data-driven setup of an axis display range.</p>
-     */
-    inline AxisDisplayRange& WithDataDriven(const AxisDisplayDataDrivenRange& value) { SetDataDriven(value); return *this;}
-
-    /**
-     * <p>The data-driven setup of an axis display range.</p>
-     */
-    inline AxisDisplayRange& WithDataDriven(AxisDisplayDataDrivenRange&& value) { SetDataDriven(std::move(value)); return *this;}
-
+    template<typename DataDrivenT = AxisDisplayDataDrivenRange>
+    void SetDataDriven(DataDrivenT&& value) { m_dataDrivenHasBeenSet = true; m_dataDriven = std::forward<DataDrivenT>(value); }
+    template<typename DataDrivenT = AxisDisplayDataDrivenRange>
+    AxisDisplayRange& WithDataDriven(DataDrivenT&& value) { SetDataDriven(std::forward<DataDrivenT>(value)); return *this;}
+    ///@}
   private:
 
     AxisDisplayMinMaxRange m_minMax;

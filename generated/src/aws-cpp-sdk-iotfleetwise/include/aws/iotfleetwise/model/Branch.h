@@ -32,101 +32,61 @@ namespace Model
   class Branch
   {
   public:
-    AWS_IOTFLEETWISE_API Branch();
+    AWS_IOTFLEETWISE_API Branch() = default;
     AWS_IOTFLEETWISE_API Branch(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTFLEETWISE_API Branch& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTFLEETWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The fully qualified name of the branch. For example, the fully qualified name
      * of a branch might be <code>Vehicle.Body.Engine</code>.</p>
      */
-    inline const Aws::String& GetFullyQualifiedName() const{ return m_fullyQualifiedName; }
-
-    /**
-     * <p>The fully qualified name of the branch. For example, the fully qualified name
-     * of a branch might be <code>Vehicle.Body.Engine</code>.</p>
-     */
+    inline const Aws::String& GetFullyQualifiedName() const { return m_fullyQualifiedName; }
     inline bool FullyQualifiedNameHasBeenSet() const { return m_fullyQualifiedNameHasBeenSet; }
+    template<typename FullyQualifiedNameT = Aws::String>
+    void SetFullyQualifiedName(FullyQualifiedNameT&& value) { m_fullyQualifiedNameHasBeenSet = true; m_fullyQualifiedName = std::forward<FullyQualifiedNameT>(value); }
+    template<typename FullyQualifiedNameT = Aws::String>
+    Branch& WithFullyQualifiedName(FullyQualifiedNameT&& value) { SetFullyQualifiedName(std::forward<FullyQualifiedNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The fully qualified name of the branch. For example, the fully qualified name
-     * of a branch might be <code>Vehicle.Body.Engine</code>.</p>
-     */
-    inline void SetFullyQualifiedName(const Aws::String& value) { m_fullyQualifiedNameHasBeenSet = true; m_fullyQualifiedName = value; }
-
-    /**
-     * <p>The fully qualified name of the branch. For example, the fully qualified name
-     * of a branch might be <code>Vehicle.Body.Engine</code>.</p>
-     */
-    inline void SetFullyQualifiedName(Aws::String&& value) { m_fullyQualifiedNameHasBeenSet = true; m_fullyQualifiedName = std::move(value); }
-
-    /**
-     * <p>The fully qualified name of the branch. For example, the fully qualified name
-     * of a branch might be <code>Vehicle.Body.Engine</code>.</p>
-     */
-    inline void SetFullyQualifiedName(const char* value) { m_fullyQualifiedNameHasBeenSet = true; m_fullyQualifiedName.assign(value); }
-
-    /**
-     * <p>The fully qualified name of the branch. For example, the fully qualified name
-     * of a branch might be <code>Vehicle.Body.Engine</code>.</p>
-     */
-    inline Branch& WithFullyQualifiedName(const Aws::String& value) { SetFullyQualifiedName(value); return *this;}
-
-    /**
-     * <p>The fully qualified name of the branch. For example, the fully qualified name
-     * of a branch might be <code>Vehicle.Body.Engine</code>.</p>
-     */
-    inline Branch& WithFullyQualifiedName(Aws::String&& value) { SetFullyQualifiedName(std::move(value)); return *this;}
-
-    /**
-     * <p>The fully qualified name of the branch. For example, the fully qualified name
-     * of a branch might be <code>Vehicle.Body.Engine</code>.</p>
-     */
-    inline Branch& WithFullyQualifiedName(const char* value) { SetFullyQualifiedName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A brief description of the branch.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A brief description of the branch.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    Branch& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A brief description of the branch.</p>
+     * <p>The deprecation message for the node or the branch that was moved or
+     * deleted.</p>
      */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline const Aws::String& GetDeprecationMessage() const { return m_deprecationMessage; }
+    inline bool DeprecationMessageHasBeenSet() const { return m_deprecationMessageHasBeenSet; }
+    template<typename DeprecationMessageT = Aws::String>
+    void SetDeprecationMessage(DeprecationMessageT&& value) { m_deprecationMessageHasBeenSet = true; m_deprecationMessage = std::forward<DeprecationMessageT>(value); }
+    template<typename DeprecationMessageT = Aws::String>
+    Branch& WithDeprecationMessage(DeprecationMessageT&& value) { SetDeprecationMessage(std::forward<DeprecationMessageT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A brief description of the branch.</p>
+     * <p>A comment in addition to the description.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A brief description of the branch.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A brief description of the branch.</p>
-     */
-    inline Branch& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A brief description of the branch.</p>
-     */
-    inline Branch& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A brief description of the branch.</p>
-     */
-    inline Branch& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    inline const Aws::String& GetComment() const { return m_comment; }
+    inline bool CommentHasBeenSet() const { return m_commentHasBeenSet; }
+    template<typename CommentT = Aws::String>
+    void SetComment(CommentT&& value) { m_commentHasBeenSet = true; m_comment = std::forward<CommentT>(value); }
+    template<typename CommentT = Aws::String>
+    Branch& WithComment(CommentT&& value) { SetComment(std::forward<CommentT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_fullyQualifiedName;
@@ -134,6 +94,12 @@ namespace Model
 
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
+
+    Aws::String m_deprecationMessage;
+    bool m_deprecationMessageHasBeenSet = false;
+
+    Aws::String m_comment;
+    bool m_commentHasBeenSet = false;
   };
 
 } // namespace Model

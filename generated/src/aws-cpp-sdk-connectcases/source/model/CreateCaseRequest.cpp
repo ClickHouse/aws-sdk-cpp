@@ -12,15 +12,6 @@ using namespace Aws::ConnectCases::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateCaseRequest::CreateCaseRequest() : 
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_domainIdHasBeenSet(false),
-    m_fieldsHasBeenSet(false),
-    m_templateIdHasBeenSet(false)
-{
-}
-
 Aws::String CreateCaseRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,6 +30,12 @@ Aws::String CreateCaseRequest::SerializePayload() const
      fieldsJsonList[fieldsIndex].AsObject(m_fields[fieldsIndex].Jsonize());
    }
    payload.WithArray("fields", std::move(fieldsJsonList));
+
+  }
+
+  if(m_performedByHasBeenSet)
+  {
+   payload.WithObject("performedBy", m_performedBy.Jsonize());
 
   }
 

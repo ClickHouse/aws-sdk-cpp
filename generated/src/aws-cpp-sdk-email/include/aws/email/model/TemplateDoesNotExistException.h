@@ -32,7 +32,7 @@ namespace Model
   class TemplateDoesNotExistException
   {
   public:
-    AWS_SES_API TemplateDoesNotExistException();
+    AWS_SES_API TemplateDoesNotExistException() = default;
     AWS_SES_API TemplateDoesNotExistException(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_SES_API TemplateDoesNotExistException& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,30 +40,15 @@ namespace Model
     AWS_SES_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     
-    inline const Aws::String& GetTemplateName() const{ return m_templateName; }
-
-    
+    inline const Aws::String& GetTemplateName() const { return m_templateName; }
     inline bool TemplateNameHasBeenSet() const { return m_templateNameHasBeenSet; }
-
-    
-    inline void SetTemplateName(const Aws::String& value) { m_templateNameHasBeenSet = true; m_templateName = value; }
-
-    
-    inline void SetTemplateName(Aws::String&& value) { m_templateNameHasBeenSet = true; m_templateName = std::move(value); }
-
-    
-    inline void SetTemplateName(const char* value) { m_templateNameHasBeenSet = true; m_templateName.assign(value); }
-
-    
-    inline TemplateDoesNotExistException& WithTemplateName(const Aws::String& value) { SetTemplateName(value); return *this;}
-
-    
-    inline TemplateDoesNotExistException& WithTemplateName(Aws::String&& value) { SetTemplateName(std::move(value)); return *this;}
-
-    
-    inline TemplateDoesNotExistException& WithTemplateName(const char* value) { SetTemplateName(value); return *this;}
-
+    template<typename TemplateNameT = Aws::String>
+    void SetTemplateName(TemplateNameT&& value) { m_templateNameHasBeenSet = true; m_templateName = std::forward<TemplateNameT>(value); }
+    template<typename TemplateNameT = Aws::String>
+    TemplateDoesNotExistException& WithTemplateName(TemplateNameT&& value) { SetTemplateName(std::forward<TemplateNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_templateName;

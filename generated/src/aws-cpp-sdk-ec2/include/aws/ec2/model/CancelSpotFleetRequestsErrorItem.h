@@ -33,7 +33,7 @@ namespace Model
   class CancelSpotFleetRequestsErrorItem
   {
   public:
-    AWS_EC2_API CancelSpotFleetRequestsErrorItem();
+    AWS_EC2_API CancelSpotFleetRequestsErrorItem() = default;
     AWS_EC2_API CancelSpotFleetRequestsErrorItem(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API CancelSpotFleetRequestsErrorItem& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,77 +41,29 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The error.</p>
      */
-    inline const CancelSpotFleetRequestsError& GetError() const{ return m_error; }
-
-    /**
-     * <p>The error.</p>
-     */
+    inline const CancelSpotFleetRequestsError& GetError() const { return m_error; }
     inline bool ErrorHasBeenSet() const { return m_errorHasBeenSet; }
+    template<typename ErrorT = CancelSpotFleetRequestsError>
+    void SetError(ErrorT&& value) { m_errorHasBeenSet = true; m_error = std::forward<ErrorT>(value); }
+    template<typename ErrorT = CancelSpotFleetRequestsError>
+    CancelSpotFleetRequestsErrorItem& WithError(ErrorT&& value) { SetError(std::forward<ErrorT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The error.</p>
-     */
-    inline void SetError(const CancelSpotFleetRequestsError& value) { m_errorHasBeenSet = true; m_error = value; }
-
-    /**
-     * <p>The error.</p>
-     */
-    inline void SetError(CancelSpotFleetRequestsError&& value) { m_errorHasBeenSet = true; m_error = std::move(value); }
-
-    /**
-     * <p>The error.</p>
-     */
-    inline CancelSpotFleetRequestsErrorItem& WithError(const CancelSpotFleetRequestsError& value) { SetError(value); return *this;}
-
-    /**
-     * <p>The error.</p>
-     */
-    inline CancelSpotFleetRequestsErrorItem& WithError(CancelSpotFleetRequestsError&& value) { SetError(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Spot Fleet request.</p>
      */
-    inline const Aws::String& GetSpotFleetRequestId() const{ return m_spotFleetRequestId; }
-
-    /**
-     * <p>The ID of the Spot Fleet request.</p>
-     */
+    inline const Aws::String& GetSpotFleetRequestId() const { return m_spotFleetRequestId; }
     inline bool SpotFleetRequestIdHasBeenSet() const { return m_spotFleetRequestIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the Spot Fleet request.</p>
-     */
-    inline void SetSpotFleetRequestId(const Aws::String& value) { m_spotFleetRequestIdHasBeenSet = true; m_spotFleetRequestId = value; }
-
-    /**
-     * <p>The ID of the Spot Fleet request.</p>
-     */
-    inline void SetSpotFleetRequestId(Aws::String&& value) { m_spotFleetRequestIdHasBeenSet = true; m_spotFleetRequestId = std::move(value); }
-
-    /**
-     * <p>The ID of the Spot Fleet request.</p>
-     */
-    inline void SetSpotFleetRequestId(const char* value) { m_spotFleetRequestIdHasBeenSet = true; m_spotFleetRequestId.assign(value); }
-
-    /**
-     * <p>The ID of the Spot Fleet request.</p>
-     */
-    inline CancelSpotFleetRequestsErrorItem& WithSpotFleetRequestId(const Aws::String& value) { SetSpotFleetRequestId(value); return *this;}
-
-    /**
-     * <p>The ID of the Spot Fleet request.</p>
-     */
-    inline CancelSpotFleetRequestsErrorItem& WithSpotFleetRequestId(Aws::String&& value) { SetSpotFleetRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Spot Fleet request.</p>
-     */
-    inline CancelSpotFleetRequestsErrorItem& WithSpotFleetRequestId(const char* value) { SetSpotFleetRequestId(value); return *this;}
-
+    template<typename SpotFleetRequestIdT = Aws::String>
+    void SetSpotFleetRequestId(SpotFleetRequestIdT&& value) { m_spotFleetRequestIdHasBeenSet = true; m_spotFleetRequestId = std::forward<SpotFleetRequestIdT>(value); }
+    template<typename SpotFleetRequestIdT = Aws::String>
+    CancelSpotFleetRequestsErrorItem& WithSpotFleetRequestId(SpotFleetRequestIdT&& value) { SetSpotFleetRequestId(std::forward<SpotFleetRequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     CancelSpotFleetRequestsError m_error;

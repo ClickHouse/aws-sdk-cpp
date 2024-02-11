@@ -29,35 +29,24 @@ namespace Model
   class OrganizationConfiguration
   {
   public:
-    AWS_LICENSEMANAGER_API OrganizationConfiguration();
+    AWS_LICENSEMANAGER_API OrganizationConfiguration() = default;
     AWS_LICENSEMANAGER_API OrganizationConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGER_API OrganizationConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Enables Organizations integration.</p>
      */
-    inline bool GetEnableIntegration() const{ return m_enableIntegration; }
-
-    /**
-     * <p>Enables Organizations integration.</p>
-     */
+    inline bool GetEnableIntegration() const { return m_enableIntegration; }
     inline bool EnableIntegrationHasBeenSet() const { return m_enableIntegrationHasBeenSet; }
-
-    /**
-     * <p>Enables Organizations integration.</p>
-     */
     inline void SetEnableIntegration(bool value) { m_enableIntegrationHasBeenSet = true; m_enableIntegration = value; }
-
-    /**
-     * <p>Enables Organizations integration.</p>
-     */
     inline OrganizationConfiguration& WithEnableIntegration(bool value) { SetEnableIntegration(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_enableIntegration;
+    bool m_enableIntegration{false};
     bool m_enableIntegrationHasBeenSet = false;
   };
 

@@ -34,93 +34,37 @@ namespace Model
   class ResourceTag
   {
   public:
-    AWS_DIRECTCONNECT_API ResourceTag();
+    AWS_DIRECTCONNECT_API ResourceTag() = default;
     AWS_DIRECTCONNECT_API ResourceTag(Aws::Utils::Json::JsonView jsonValue);
     AWS_DIRECTCONNECT_API ResourceTag& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DIRECTCONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the resource.</p>
      */
-    inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
     inline bool ResourceArnHasBeenSet() const { return m_resourceArnHasBeenSet; }
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    ResourceTag& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline void SetResourceArn(const Aws::String& value) { m_resourceArnHasBeenSet = true; m_resourceArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline void SetResourceArn(const char* value) { m_resourceArnHasBeenSet = true; m_resourceArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline ResourceTag& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline ResourceTag& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline ResourceTag& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags.</p>
-     */
-    inline ResourceTag& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags.</p>
-     */
-    inline ResourceTag& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags.</p>
-     */
-    inline ResourceTag& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The tags.</p>
-     */
-    inline ResourceTag& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    ResourceTag& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    ResourceTag& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_resourceArn;

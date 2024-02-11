@@ -18,21 +18,7 @@ namespace IoTThingsGraph
 namespace Model
 {
 
-FlowExecutionMessage::FlowExecutionMessage() : 
-    m_messageIdHasBeenSet(false),
-    m_eventType(FlowExecutionEventType::NOT_SET),
-    m_eventTypeHasBeenSet(false),
-    m_timestampHasBeenSet(false),
-    m_payloadHasBeenSet(false)
-{
-}
-
-FlowExecutionMessage::FlowExecutionMessage(JsonView jsonValue) : 
-    m_messageIdHasBeenSet(false),
-    m_eventType(FlowExecutionEventType::NOT_SET),
-    m_eventTypeHasBeenSet(false),
-    m_timestampHasBeenSet(false),
-    m_payloadHasBeenSet(false)
+FlowExecutionMessage::FlowExecutionMessage(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ FlowExecutionMessage& FlowExecutionMessage::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("messageId"))
   {
     m_messageId = jsonValue.GetString("messageId");
-
     m_messageIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("eventType"))
   {
     m_eventType = FlowExecutionEventTypeMapper::GetFlowExecutionEventTypeForName(jsonValue.GetString("eventType"));
-
     m_eventTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("timestamp"))
   {
     m_timestamp = jsonValue.GetDouble("timestamp");
-
     m_timestampHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("payload"))
   {
     m_payload = jsonValue.GetString("payload");
-
     m_payloadHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -39,61 +39,26 @@ namespace Model
   class IPSetReferenceStatement
   {
   public:
-    AWS_WAFV2_API IPSetReferenceStatement();
+    AWS_WAFV2_API IPSetReferenceStatement() = default;
     AWS_WAFV2_API IPSetReferenceStatement(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API IPSetReferenceStatement& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the <a>IPSet</a> that this statement
      * references.</p>
      */
-    inline const Aws::String& GetARN() const{ return m_aRN; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the <a>IPSet</a> that this statement
-     * references.</p>
-     */
+    inline const Aws::String& GetARN() const { return m_aRN; }
     inline bool ARNHasBeenSet() const { return m_aRNHasBeenSet; }
+    template<typename ARNT = Aws::String>
+    void SetARN(ARNT&& value) { m_aRNHasBeenSet = true; m_aRN = std::forward<ARNT>(value); }
+    template<typename ARNT = Aws::String>
+    IPSetReferenceStatement& WithARN(ARNT&& value) { SetARN(std::forward<ARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the <a>IPSet</a> that this statement
-     * references.</p>
-     */
-    inline void SetARN(const Aws::String& value) { m_aRNHasBeenSet = true; m_aRN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the <a>IPSet</a> that this statement
-     * references.</p>
-     */
-    inline void SetARN(Aws::String&& value) { m_aRNHasBeenSet = true; m_aRN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the <a>IPSet</a> that this statement
-     * references.</p>
-     */
-    inline void SetARN(const char* value) { m_aRNHasBeenSet = true; m_aRN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the <a>IPSet</a> that this statement
-     * references.</p>
-     */
-    inline IPSetReferenceStatement& WithARN(const Aws::String& value) { SetARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the <a>IPSet</a> that this statement
-     * references.</p>
-     */
-    inline IPSetReferenceStatement& WithARN(Aws::String&& value) { SetARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the <a>IPSet</a> that this statement
-     * references.</p>
-     */
-    inline IPSetReferenceStatement& WithARN(const char* value) { SetARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration for inspecting IP addresses in an HTTP header that you
      * specify, instead of using the IP address that's reported by the web request
@@ -101,53 +66,13 @@ namespace Model
      * any header name. </p>  <p>If the specified header isn't present in the
      * request, WAF doesn't apply the rule to the web request at all.</p> 
      */
-    inline const IPSetForwardedIPConfig& GetIPSetForwardedIPConfig() const{ return m_iPSetForwardedIPConfig; }
-
-    /**
-     * <p>The configuration for inspecting IP addresses in an HTTP header that you
-     * specify, instead of using the IP address that's reported by the web request
-     * origin. Commonly, this is the X-Forwarded-For (XFF) header, but you can specify
-     * any header name. </p>  <p>If the specified header isn't present in the
-     * request, WAF doesn't apply the rule to the web request at all.</p> 
-     */
+    inline const IPSetForwardedIPConfig& GetIPSetForwardedIPConfig() const { return m_iPSetForwardedIPConfig; }
     inline bool IPSetForwardedIPConfigHasBeenSet() const { return m_iPSetForwardedIPConfigHasBeenSet; }
-
-    /**
-     * <p>The configuration for inspecting IP addresses in an HTTP header that you
-     * specify, instead of using the IP address that's reported by the web request
-     * origin. Commonly, this is the X-Forwarded-For (XFF) header, but you can specify
-     * any header name. </p>  <p>If the specified header isn't present in the
-     * request, WAF doesn't apply the rule to the web request at all.</p> 
-     */
-    inline void SetIPSetForwardedIPConfig(const IPSetForwardedIPConfig& value) { m_iPSetForwardedIPConfigHasBeenSet = true; m_iPSetForwardedIPConfig = value; }
-
-    /**
-     * <p>The configuration for inspecting IP addresses in an HTTP header that you
-     * specify, instead of using the IP address that's reported by the web request
-     * origin. Commonly, this is the X-Forwarded-For (XFF) header, but you can specify
-     * any header name. </p>  <p>If the specified header isn't present in the
-     * request, WAF doesn't apply the rule to the web request at all.</p> 
-     */
-    inline void SetIPSetForwardedIPConfig(IPSetForwardedIPConfig&& value) { m_iPSetForwardedIPConfigHasBeenSet = true; m_iPSetForwardedIPConfig = std::move(value); }
-
-    /**
-     * <p>The configuration for inspecting IP addresses in an HTTP header that you
-     * specify, instead of using the IP address that's reported by the web request
-     * origin. Commonly, this is the X-Forwarded-For (XFF) header, but you can specify
-     * any header name. </p>  <p>If the specified header isn't present in the
-     * request, WAF doesn't apply the rule to the web request at all.</p> 
-     */
-    inline IPSetReferenceStatement& WithIPSetForwardedIPConfig(const IPSetForwardedIPConfig& value) { SetIPSetForwardedIPConfig(value); return *this;}
-
-    /**
-     * <p>The configuration for inspecting IP addresses in an HTTP header that you
-     * specify, instead of using the IP address that's reported by the web request
-     * origin. Commonly, this is the X-Forwarded-For (XFF) header, but you can specify
-     * any header name. </p>  <p>If the specified header isn't present in the
-     * request, WAF doesn't apply the rule to the web request at all.</p> 
-     */
-    inline IPSetReferenceStatement& WithIPSetForwardedIPConfig(IPSetForwardedIPConfig&& value) { SetIPSetForwardedIPConfig(std::move(value)); return *this;}
-
+    template<typename IPSetForwardedIPConfigT = IPSetForwardedIPConfig>
+    void SetIPSetForwardedIPConfig(IPSetForwardedIPConfigT&& value) { m_iPSetForwardedIPConfigHasBeenSet = true; m_iPSetForwardedIPConfig = std::forward<IPSetForwardedIPConfigT>(value); }
+    template<typename IPSetForwardedIPConfigT = IPSetForwardedIPConfig>
+    IPSetReferenceStatement& WithIPSetForwardedIPConfig(IPSetForwardedIPConfigT&& value) { SetIPSetForwardedIPConfig(std::forward<IPSetForwardedIPConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_aRN;

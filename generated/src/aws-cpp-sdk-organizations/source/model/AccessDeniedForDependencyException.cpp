@@ -18,17 +18,7 @@ namespace Organizations
 namespace Model
 {
 
-AccessDeniedForDependencyException::AccessDeniedForDependencyException() : 
-    m_messageHasBeenSet(false),
-    m_reason(AccessDeniedForDependencyExceptionReason::NOT_SET),
-    m_reasonHasBeenSet(false)
-{
-}
-
-AccessDeniedForDependencyException::AccessDeniedForDependencyException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_reason(AccessDeniedForDependencyExceptionReason::NOT_SET),
-    m_reasonHasBeenSet(false)
+AccessDeniedForDependencyException::AccessDeniedForDependencyException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ AccessDeniedForDependencyException& AccessDeniedForDependencyException::operator
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Reason"))
   {
     m_reason = AccessDeniedForDependencyExceptionReasonMapper::GetAccessDeniedForDependencyExceptionReasonForName(jsonValue.GetString("Reason"));
-
     m_reasonHasBeenSet = true;
   }
-
   return *this;
 }
 

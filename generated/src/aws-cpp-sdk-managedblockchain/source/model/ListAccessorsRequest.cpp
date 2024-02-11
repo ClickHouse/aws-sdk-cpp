@@ -15,13 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListAccessorsRequest::ListAccessorsRequest() : 
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListAccessorsRequest::SerializePayload() const
 {
   return {};
@@ -41,6 +34,13 @@ void ListAccessorsRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << m_nextToken;
       uri.AddQueryStringParameter("nextToken", ss.str());
+      ss.str("");
+    }
+
+    if(m_networkTypeHasBeenSet)
+    {
+      ss << AccessorNetworkTypeMapper::GetNameForAccessorNetworkType(m_networkType);
+      uri.AddQueryStringParameter("networkType", ss.str());
       ss.str("");
     }
 

@@ -18,19 +18,7 @@ namespace Snowball
 namespace Model
 {
 
-Notification::Notification() : 
-    m_snsTopicARNHasBeenSet(false),
-    m_jobStatesToNotifyHasBeenSet(false),
-    m_notifyAll(false),
-    m_notifyAllHasBeenSet(false)
-{
-}
-
-Notification::Notification(JsonView jsonValue) : 
-    m_snsTopicARNHasBeenSet(false),
-    m_jobStatesToNotifyHasBeenSet(false),
-    m_notifyAll(false),
-    m_notifyAllHasBeenSet(false)
+Notification::Notification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ Notification& Notification::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SnsTopicARN"))
   {
     m_snsTopicARN = jsonValue.GetString("SnsTopicARN");
-
     m_snsTopicARNHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("JobStatesToNotify"))
   {
     Aws::Utils::Array<JsonView> jobStatesToNotifyJsonList = jsonValue.GetArray("JobStatesToNotify");
@@ -53,14 +39,16 @@ Notification& Notification::operator =(JsonView jsonValue)
     }
     m_jobStatesToNotifyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NotifyAll"))
   {
     m_notifyAll = jsonValue.GetBool("NotifyAll");
-
     m_notifyAllHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("DevicePickupSnsTopicARN"))
+  {
+    m_devicePickupSnsTopicARN = jsonValue.GetString("DevicePickupSnsTopicARN");
+    m_devicePickupSnsTopicARNHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -88,6 +76,12 @@ JsonValue Notification::Jsonize() const
   if(m_notifyAllHasBeenSet)
   {
    payload.WithBool("NotifyAll", m_notifyAll);
+
+  }
+
+  if(m_devicePickupSnsTopicARNHasBeenSet)
+  {
+   payload.WithString("DevicePickupSnsTopicARN", m_devicePickupSnsTopicARN);
 
   }
 

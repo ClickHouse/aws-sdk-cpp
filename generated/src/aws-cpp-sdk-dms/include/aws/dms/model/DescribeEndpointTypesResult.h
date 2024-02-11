@@ -34,125 +34,55 @@ namespace Model
   class DescribeEndpointTypesResult
   {
   public:
-    AWS_DATABASEMIGRATIONSERVICE_API DescribeEndpointTypesResult();
+    AWS_DATABASEMIGRATIONSERVICE_API DescribeEndpointTypesResult() = default;
     AWS_DATABASEMIGRATIONSERVICE_API DescribeEndpointTypesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DATABASEMIGRATIONSERVICE_API DescribeEndpointTypesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p> An optional pagination token provided by a previous request. If this
      * parameter is specified, the response includes only records beyond the marker, up
      * to the value specified by <code>MaxRecords</code>. </p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
+    inline const Aws::String& GetMarker() const { return m_marker; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeEndpointTypesResult& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>. </p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_marker = value; }
-
-    /**
-     * <p> An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>. </p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
-
-    /**
-     * <p> An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>. </p>
-     */
-    inline void SetMarker(const char* value) { m_marker.assign(value); }
-
-    /**
-     * <p> An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>. </p>
-     */
-    inline DescribeEndpointTypesResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p> An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>. </p>
-     */
-    inline DescribeEndpointTypesResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p> An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>. </p>
-     */
-    inline DescribeEndpointTypesResult& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The types of endpoints that are supported.</p>
      */
-    inline const Aws::Vector<SupportedEndpointType>& GetSupportedEndpointTypes() const{ return m_supportedEndpointTypes; }
+    inline const Aws::Vector<SupportedEndpointType>& GetSupportedEndpointTypes() const { return m_supportedEndpointTypes; }
+    template<typename SupportedEndpointTypesT = Aws::Vector<SupportedEndpointType>>
+    void SetSupportedEndpointTypes(SupportedEndpointTypesT&& value) { m_supportedEndpointTypesHasBeenSet = true; m_supportedEndpointTypes = std::forward<SupportedEndpointTypesT>(value); }
+    template<typename SupportedEndpointTypesT = Aws::Vector<SupportedEndpointType>>
+    DescribeEndpointTypesResult& WithSupportedEndpointTypes(SupportedEndpointTypesT&& value) { SetSupportedEndpointTypes(std::forward<SupportedEndpointTypesT>(value)); return *this;}
+    template<typename SupportedEndpointTypesT = SupportedEndpointType>
+    DescribeEndpointTypesResult& AddSupportedEndpointTypes(SupportedEndpointTypesT&& value) { m_supportedEndpointTypesHasBeenSet = true; m_supportedEndpointTypes.emplace_back(std::forward<SupportedEndpointTypesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The types of endpoints that are supported.</p>
-     */
-    inline void SetSupportedEndpointTypes(const Aws::Vector<SupportedEndpointType>& value) { m_supportedEndpointTypes = value; }
-
-    /**
-     * <p>The types of endpoints that are supported.</p>
-     */
-    inline void SetSupportedEndpointTypes(Aws::Vector<SupportedEndpointType>&& value) { m_supportedEndpointTypes = std::move(value); }
-
-    /**
-     * <p>The types of endpoints that are supported.</p>
-     */
-    inline DescribeEndpointTypesResult& WithSupportedEndpointTypes(const Aws::Vector<SupportedEndpointType>& value) { SetSupportedEndpointTypes(value); return *this;}
-
-    /**
-     * <p>The types of endpoints that are supported.</p>
-     */
-    inline DescribeEndpointTypesResult& WithSupportedEndpointTypes(Aws::Vector<SupportedEndpointType>&& value) { SetSupportedEndpointTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>The types of endpoints that are supported.</p>
-     */
-    inline DescribeEndpointTypesResult& AddSupportedEndpointTypes(const SupportedEndpointType& value) { m_supportedEndpointTypes.push_back(value); return *this; }
-
-    /**
-     * <p>The types of endpoints that are supported.</p>
-     */
-    inline DescribeEndpointTypesResult& AddSupportedEndpointTypes(SupportedEndpointType&& value) { m_supportedEndpointTypes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeEndpointTypesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeEndpointTypesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeEndpointTypesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeEndpointTypesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_marker;
+    bool m_markerHasBeenSet = false;
 
     Aws::Vector<SupportedEndpointType> m_supportedEndpointTypes;
+    bool m_supportedEndpointTypesHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

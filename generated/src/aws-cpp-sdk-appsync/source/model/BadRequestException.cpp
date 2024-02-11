@@ -18,19 +18,7 @@ namespace AppSync
 namespace Model
 {
 
-BadRequestException::BadRequestException() : 
-    m_messageHasBeenSet(false),
-    m_reason(BadRequestReason::NOT_SET),
-    m_reasonHasBeenSet(false),
-    m_detailHasBeenSet(false)
-{
-}
-
-BadRequestException::BadRequestException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_reason(BadRequestReason::NOT_SET),
-    m_reasonHasBeenSet(false),
-    m_detailHasBeenSet(false)
+BadRequestException::BadRequestException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ BadRequestException& BadRequestException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("reason"))
   {
     m_reason = BadRequestReasonMapper::GetBadRequestReasonForName(jsonValue.GetString("reason"));
-
     m_reasonHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("detail"))
   {
     m_detail = jsonValue.GetObject("detail");
-
     m_detailHasBeenSet = true;
   }
-
   return *this;
 }
 

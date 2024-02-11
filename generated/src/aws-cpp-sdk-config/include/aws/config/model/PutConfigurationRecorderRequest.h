@@ -7,6 +7,8 @@
 #include <aws/config/ConfigService_EXPORTS.h>
 #include <aws/config/ConfigServiceRequest.h>
 #include <aws/config/model/ConfigurationRecorder.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/config/model/Tag.h>
 #include <utility>
 
 namespace Aws
@@ -25,7 +27,7 @@ namespace Model
   class PutConfigurationRecorderRequest : public ConfigServiceRequest
   {
   public:
-    AWS_CONFIGSERVICE_API PutConfigurationRecorderRequest();
+    AWS_CONFIGSERVICE_API PutConfigurationRecorderRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,46 +40,40 @@ namespace Model
     AWS_CONFIGSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The configuration recorder object that records each configuration change made
-     * to the resources.</p>
+     * <p>An object for the configuration recorder. A configuration recorder records
+     * configuration changes for the resource types in scope.</p>
      */
-    inline const ConfigurationRecorder& GetConfigurationRecorder() const{ return m_configurationRecorder; }
-
-    /**
-     * <p>The configuration recorder object that records each configuration change made
-     * to the resources.</p>
-     */
+    inline const ConfigurationRecorder& GetConfigurationRecorder() const { return m_configurationRecorder; }
     inline bool ConfigurationRecorderHasBeenSet() const { return m_configurationRecorderHasBeenSet; }
+    template<typename ConfigurationRecorderT = ConfigurationRecorder>
+    void SetConfigurationRecorder(ConfigurationRecorderT&& value) { m_configurationRecorderHasBeenSet = true; m_configurationRecorder = std::forward<ConfigurationRecorderT>(value); }
+    template<typename ConfigurationRecorderT = ConfigurationRecorder>
+    PutConfigurationRecorderRequest& WithConfigurationRecorder(ConfigurationRecorderT&& value) { SetConfigurationRecorder(std::forward<ConfigurationRecorderT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The configuration recorder object that records each configuration change made
-     * to the resources.</p>
+     * <p>The tags for the customer managed configuration recorder. Each tag consists
+     * of a key and an optional value, both of which you define.</p>
      */
-    inline void SetConfigurationRecorder(const ConfigurationRecorder& value) { m_configurationRecorderHasBeenSet = true; m_configurationRecorder = value; }
-
-    /**
-     * <p>The configuration recorder object that records each configuration change made
-     * to the resources.</p>
-     */
-    inline void SetConfigurationRecorder(ConfigurationRecorder&& value) { m_configurationRecorderHasBeenSet = true; m_configurationRecorder = std::move(value); }
-
-    /**
-     * <p>The configuration recorder object that records each configuration change made
-     * to the resources.</p>
-     */
-    inline PutConfigurationRecorderRequest& WithConfigurationRecorder(const ConfigurationRecorder& value) { SetConfigurationRecorder(value); return *this;}
-
-    /**
-     * <p>The configuration recorder object that records each configuration change made
-     * to the resources.</p>
-     */
-    inline PutConfigurationRecorderRequest& WithConfigurationRecorder(ConfigurationRecorder&& value) { SetConfigurationRecorder(std::move(value)); return *this;}
-
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
+    inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    PutConfigurationRecorderRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    PutConfigurationRecorderRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     ConfigurationRecorder m_configurationRecorder;
     bool m_configurationRecorderHasBeenSet = false;
+
+    Aws::Vector<Tag> m_tags;
+    bool m_tagsHasBeenSet = false;
   };
 
 } // namespace Model

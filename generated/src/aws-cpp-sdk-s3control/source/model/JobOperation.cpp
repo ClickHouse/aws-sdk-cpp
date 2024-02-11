@@ -20,29 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-JobOperation::JobOperation() : 
-    m_lambdaInvokeHasBeenSet(false),
-    m_s3PutObjectCopyHasBeenSet(false),
-    m_s3PutObjectAclHasBeenSet(false),
-    m_s3PutObjectTaggingHasBeenSet(false),
-    m_s3DeleteObjectTaggingHasBeenSet(false),
-    m_s3InitiateRestoreObjectHasBeenSet(false),
-    m_s3PutObjectLegalHoldHasBeenSet(false),
-    m_s3PutObjectRetentionHasBeenSet(false),
-    m_s3ReplicateObjectHasBeenSet(false)
-{
-}
-
-JobOperation::JobOperation(const XmlNode& xmlNode) : 
-    m_lambdaInvokeHasBeenSet(false),
-    m_s3PutObjectCopyHasBeenSet(false),
-    m_s3PutObjectAclHasBeenSet(false),
-    m_s3PutObjectTaggingHasBeenSet(false),
-    m_s3DeleteObjectTaggingHasBeenSet(false),
-    m_s3InitiateRestoreObjectHasBeenSet(false),
-    m_s3PutObjectLegalHoldHasBeenSet(false),
-    m_s3PutObjectRetentionHasBeenSet(false),
-    m_s3ReplicateObjectHasBeenSet(false)
+JobOperation::JobOperation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -107,6 +85,12 @@ JobOperation& JobOperation::operator =(const XmlNode& xmlNode)
       m_s3ReplicateObject = s3ReplicateObjectNode;
       m_s3ReplicateObjectHasBeenSet = true;
     }
+    XmlNode s3ComputeObjectChecksumNode = resultNode.FirstChild("S3ComputeObjectChecksum");
+    if(!s3ComputeObjectChecksumNode.IsNull())
+    {
+      m_s3ComputeObjectChecksum = s3ComputeObjectChecksumNode;
+      m_s3ComputeObjectChecksumHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -167,6 +151,12 @@ void JobOperation::AddToNode(XmlNode& parentNode) const
   {
    XmlNode s3ReplicateObjectNode = parentNode.CreateChildElement("S3ReplicateObject");
    m_s3ReplicateObject.AddToNode(s3ReplicateObjectNode);
+  }
+
+  if(m_s3ComputeObjectChecksumHasBeenSet)
+  {
+   XmlNode s3ComputeObjectChecksumNode = parentNode.CreateChildElement("S3ComputeObjectChecksum");
+   m_s3ComputeObjectChecksum.AddToNode(s3ComputeObjectChecksumNode);
   }
 
 }

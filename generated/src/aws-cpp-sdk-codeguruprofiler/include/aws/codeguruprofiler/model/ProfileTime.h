@@ -31,57 +31,28 @@ namespace Model
   class ProfileTime
   {
   public:
-    AWS_CODEGURUPROFILER_API ProfileTime();
+    AWS_CODEGURUPROFILER_API ProfileTime() = default;
     AWS_CODEGURUPROFILER_API ProfileTime(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUPROFILER_API ProfileTime& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUPROFILER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The start time of a profile. It is specified using the ISO 8601 format. For
      * example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020
      * 1:15:02 PM UTC.</p>
      */
-    inline const Aws::Utils::DateTime& GetStart() const{ return m_start; }
-
-    /**
-     * <p>The start time of a profile. It is specified using the ISO 8601 format. For
-     * example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020
-     * 1:15:02 PM UTC.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStart() const { return m_start; }
     inline bool StartHasBeenSet() const { return m_startHasBeenSet; }
-
-    /**
-     * <p>The start time of a profile. It is specified using the ISO 8601 format. For
-     * example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020
-     * 1:15:02 PM UTC.</p>
-     */
-    inline void SetStart(const Aws::Utils::DateTime& value) { m_startHasBeenSet = true; m_start = value; }
-
-    /**
-     * <p>The start time of a profile. It is specified using the ISO 8601 format. For
-     * example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020
-     * 1:15:02 PM UTC.</p>
-     */
-    inline void SetStart(Aws::Utils::DateTime&& value) { m_startHasBeenSet = true; m_start = std::move(value); }
-
-    /**
-     * <p>The start time of a profile. It is specified using the ISO 8601 format. For
-     * example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020
-     * 1:15:02 PM UTC.</p>
-     */
-    inline ProfileTime& WithStart(const Aws::Utils::DateTime& value) { SetStart(value); return *this;}
-
-    /**
-     * <p>The start time of a profile. It is specified using the ISO 8601 format. For
-     * example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020
-     * 1:15:02 PM UTC.</p>
-     */
-    inline ProfileTime& WithStart(Aws::Utils::DateTime&& value) { SetStart(std::move(value)); return *this;}
-
+    template<typename StartT = Aws::Utils::DateTime>
+    void SetStart(StartT&& value) { m_startHasBeenSet = true; m_start = std::forward<StartT>(value); }
+    template<typename StartT = Aws::Utils::DateTime>
+    ProfileTime& WithStart(StartT&& value) { SetStart(std::forward<StartT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_start;
+    Aws::Utils::DateTime m_start{};
     bool m_startHasBeenSet = false;
   };
 

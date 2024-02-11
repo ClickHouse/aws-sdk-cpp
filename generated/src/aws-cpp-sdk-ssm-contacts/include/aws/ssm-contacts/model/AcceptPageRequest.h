@@ -23,7 +23,7 @@ namespace Model
   class AcceptPageRequest : public SSMContactsRequest
   {
   public:
-    AWS_SSMCONTACTS_API AcceptPageRequest();
+    AWS_SSMCONTACTS_API AcceptPageRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,207 +36,66 @@ namespace Model
     AWS_SSMCONTACTS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the engagement to a contact channel.</p>
      */
-    inline const Aws::String& GetPageId() const{ return m_pageId; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the engagement to a contact channel.</p>
-     */
+    inline const Aws::String& GetPageId() const { return m_pageId; }
     inline bool PageIdHasBeenSet() const { return m_pageIdHasBeenSet; }
+    template<typename PageIdT = Aws::String>
+    void SetPageId(PageIdT&& value) { m_pageIdHasBeenSet = true; m_pageId = std::forward<PageIdT>(value); }
+    template<typename PageIdT = Aws::String>
+    AcceptPageRequest& WithPageId(PageIdT&& value) { SetPageId(std::forward<PageIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the engagement to a contact channel.</p>
-     */
-    inline void SetPageId(const Aws::String& value) { m_pageIdHasBeenSet = true; m_pageId = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the engagement to a contact channel.</p>
-     */
-    inline void SetPageId(Aws::String&& value) { m_pageIdHasBeenSet = true; m_pageId = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the engagement to a contact channel.</p>
-     */
-    inline void SetPageId(const char* value) { m_pageIdHasBeenSet = true; m_pageId.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the engagement to a contact channel.</p>
-     */
-    inline AcceptPageRequest& WithPageId(const Aws::String& value) { SetPageId(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the engagement to a contact channel.</p>
-     */
-    inline AcceptPageRequest& WithPageId(Aws::String&& value) { SetPageId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the engagement to a contact channel.</p>
-     */
-    inline AcceptPageRequest& WithPageId(const char* value) { SetPageId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the contact channel.</p>
      */
-    inline const Aws::String& GetContactChannelId() const{ return m_contactChannelId; }
-
-    /**
-     * <p>The ARN of the contact channel.</p>
-     */
+    inline const Aws::String& GetContactChannelId() const { return m_contactChannelId; }
     inline bool ContactChannelIdHasBeenSet() const { return m_contactChannelIdHasBeenSet; }
+    template<typename ContactChannelIdT = Aws::String>
+    void SetContactChannelId(ContactChannelIdT&& value) { m_contactChannelIdHasBeenSet = true; m_contactChannelId = std::forward<ContactChannelIdT>(value); }
+    template<typename ContactChannelIdT = Aws::String>
+    AcceptPageRequest& WithContactChannelId(ContactChannelIdT&& value) { SetContactChannelId(std::forward<ContactChannelIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the contact channel.</p>
-     */
-    inline void SetContactChannelId(const Aws::String& value) { m_contactChannelIdHasBeenSet = true; m_contactChannelId = value; }
-
-    /**
-     * <p>The ARN of the contact channel.</p>
-     */
-    inline void SetContactChannelId(Aws::String&& value) { m_contactChannelIdHasBeenSet = true; m_contactChannelId = std::move(value); }
-
-    /**
-     * <p>The ARN of the contact channel.</p>
-     */
-    inline void SetContactChannelId(const char* value) { m_contactChannelIdHasBeenSet = true; m_contactChannelId.assign(value); }
-
-    /**
-     * <p>The ARN of the contact channel.</p>
-     */
-    inline AcceptPageRequest& WithContactChannelId(const Aws::String& value) { SetContactChannelId(value); return *this;}
-
-    /**
-     * <p>The ARN of the contact channel.</p>
-     */
-    inline AcceptPageRequest& WithContactChannelId(Aws::String&& value) { SetContactChannelId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the contact channel.</p>
-     */
-    inline AcceptPageRequest& WithContactChannelId(const char* value) { SetContactChannelId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type indicates if the page was <code>DELIVERED</code> or
      * <code>READ</code>.</p>
      */
-    inline const AcceptType& GetAcceptType() const{ return m_acceptType; }
-
-    /**
-     * <p>The type indicates if the page was <code>DELIVERED</code> or
-     * <code>READ</code>.</p>
-     */
+    inline AcceptType GetAcceptType() const { return m_acceptType; }
     inline bool AcceptTypeHasBeenSet() const { return m_acceptTypeHasBeenSet; }
+    inline void SetAcceptType(AcceptType value) { m_acceptTypeHasBeenSet = true; m_acceptType = value; }
+    inline AcceptPageRequest& WithAcceptType(AcceptType value) { SetAcceptType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type indicates if the page was <code>DELIVERED</code> or
-     * <code>READ</code>.</p>
-     */
-    inline void SetAcceptType(const AcceptType& value) { m_acceptTypeHasBeenSet = true; m_acceptType = value; }
-
-    /**
-     * <p>The type indicates if the page was <code>DELIVERED</code> or
-     * <code>READ</code>.</p>
-     */
-    inline void SetAcceptType(AcceptType&& value) { m_acceptTypeHasBeenSet = true; m_acceptType = std::move(value); }
-
-    /**
-     * <p>The type indicates if the page was <code>DELIVERED</code> or
-     * <code>READ</code>.</p>
-     */
-    inline AcceptPageRequest& WithAcceptType(const AcceptType& value) { SetAcceptType(value); return *this;}
-
-    /**
-     * <p>The type indicates if the page was <code>DELIVERED</code> or
-     * <code>READ</code>.</p>
-     */
-    inline AcceptPageRequest& WithAcceptType(AcceptType&& value) { SetAcceptType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information provided by the user when the user acknowledges the page.</p>
      */
-    inline const Aws::String& GetNote() const{ return m_note; }
-
-    /**
-     * <p>Information provided by the user when the user acknowledges the page.</p>
-     */
+    inline const Aws::String& GetNote() const { return m_note; }
     inline bool NoteHasBeenSet() const { return m_noteHasBeenSet; }
+    template<typename NoteT = Aws::String>
+    void SetNote(NoteT&& value) { m_noteHasBeenSet = true; m_note = std::forward<NoteT>(value); }
+    template<typename NoteT = Aws::String>
+    AcceptPageRequest& WithNote(NoteT&& value) { SetNote(std::forward<NoteT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information provided by the user when the user acknowledges the page.</p>
-     */
-    inline void SetNote(const Aws::String& value) { m_noteHasBeenSet = true; m_note = value; }
-
-    /**
-     * <p>Information provided by the user when the user acknowledges the page.</p>
-     */
-    inline void SetNote(Aws::String&& value) { m_noteHasBeenSet = true; m_note = std::move(value); }
-
-    /**
-     * <p>Information provided by the user when the user acknowledges the page.</p>
-     */
-    inline void SetNote(const char* value) { m_noteHasBeenSet = true; m_note.assign(value); }
-
-    /**
-     * <p>Information provided by the user when the user acknowledges the page.</p>
-     */
-    inline AcceptPageRequest& WithNote(const Aws::String& value) { SetNote(value); return *this;}
-
-    /**
-     * <p>Information provided by the user when the user acknowledges the page.</p>
-     */
-    inline AcceptPageRequest& WithNote(Aws::String&& value) { SetNote(std::move(value)); return *this;}
-
-    /**
-     * <p>Information provided by the user when the user acknowledges the page.</p>
-     */
-    inline AcceptPageRequest& WithNote(const char* value) { SetNote(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A 6-digit code used to acknowledge the page.</p>
      */
-    inline const Aws::String& GetAcceptCode() const{ return m_acceptCode; }
-
-    /**
-     * <p>A 6-digit code used to acknowledge the page.</p>
-     */
+    inline const Aws::String& GetAcceptCode() const { return m_acceptCode; }
     inline bool AcceptCodeHasBeenSet() const { return m_acceptCodeHasBeenSet; }
+    template<typename AcceptCodeT = Aws::String>
+    void SetAcceptCode(AcceptCodeT&& value) { m_acceptCodeHasBeenSet = true; m_acceptCode = std::forward<AcceptCodeT>(value); }
+    template<typename AcceptCodeT = Aws::String>
+    AcceptPageRequest& WithAcceptCode(AcceptCodeT&& value) { SetAcceptCode(std::forward<AcceptCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A 6-digit code used to acknowledge the page.</p>
-     */
-    inline void SetAcceptCode(const Aws::String& value) { m_acceptCodeHasBeenSet = true; m_acceptCode = value; }
-
-    /**
-     * <p>A 6-digit code used to acknowledge the page.</p>
-     */
-    inline void SetAcceptCode(Aws::String&& value) { m_acceptCodeHasBeenSet = true; m_acceptCode = std::move(value); }
-
-    /**
-     * <p>A 6-digit code used to acknowledge the page.</p>
-     */
-    inline void SetAcceptCode(const char* value) { m_acceptCodeHasBeenSet = true; m_acceptCode.assign(value); }
-
-    /**
-     * <p>A 6-digit code used to acknowledge the page.</p>
-     */
-    inline AcceptPageRequest& WithAcceptCode(const Aws::String& value) { SetAcceptCode(value); return *this;}
-
-    /**
-     * <p>A 6-digit code used to acknowledge the page.</p>
-     */
-    inline AcceptPageRequest& WithAcceptCode(Aws::String&& value) { SetAcceptCode(std::move(value)); return *this;}
-
-    /**
-     * <p>A 6-digit code used to acknowledge the page.</p>
-     */
-    inline AcceptPageRequest& WithAcceptCode(const char* value) { SetAcceptCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An optional field that Incident Manager uses to <code>ENFORCE</code>
      * <code>AcceptCode</code> validation when acknowledging an page. Acknowledgement
@@ -247,68 +106,11 @@ namespace Model
      * validation. Ignoring <code>AcceptCode</code> validation causes Incident Manager
      * to accept any value entered for the <code>AcceptCode</code>.</p>
      */
-    inline const AcceptCodeValidation& GetAcceptCodeValidation() const{ return m_acceptCodeValidation; }
-
-    /**
-     * <p>An optional field that Incident Manager uses to <code>ENFORCE</code>
-     * <code>AcceptCode</code> validation when acknowledging an page. Acknowledgement
-     * can occur by replying to a page, or when entering the AcceptCode in the console.
-     * Enforcing AcceptCode validation causes Incident Manager to verify that the code
-     * entered by the user matches the code sent by Incident Manager with the page.</p>
-     * <p>Incident Manager can also <code>IGNORE</code> <code>AcceptCode</code>
-     * validation. Ignoring <code>AcceptCode</code> validation causes Incident Manager
-     * to accept any value entered for the <code>AcceptCode</code>.</p>
-     */
+    inline AcceptCodeValidation GetAcceptCodeValidation() const { return m_acceptCodeValidation; }
     inline bool AcceptCodeValidationHasBeenSet() const { return m_acceptCodeValidationHasBeenSet; }
-
-    /**
-     * <p>An optional field that Incident Manager uses to <code>ENFORCE</code>
-     * <code>AcceptCode</code> validation when acknowledging an page. Acknowledgement
-     * can occur by replying to a page, or when entering the AcceptCode in the console.
-     * Enforcing AcceptCode validation causes Incident Manager to verify that the code
-     * entered by the user matches the code sent by Incident Manager with the page.</p>
-     * <p>Incident Manager can also <code>IGNORE</code> <code>AcceptCode</code>
-     * validation. Ignoring <code>AcceptCode</code> validation causes Incident Manager
-     * to accept any value entered for the <code>AcceptCode</code>.</p>
-     */
-    inline void SetAcceptCodeValidation(const AcceptCodeValidation& value) { m_acceptCodeValidationHasBeenSet = true; m_acceptCodeValidation = value; }
-
-    /**
-     * <p>An optional field that Incident Manager uses to <code>ENFORCE</code>
-     * <code>AcceptCode</code> validation when acknowledging an page. Acknowledgement
-     * can occur by replying to a page, or when entering the AcceptCode in the console.
-     * Enforcing AcceptCode validation causes Incident Manager to verify that the code
-     * entered by the user matches the code sent by Incident Manager with the page.</p>
-     * <p>Incident Manager can also <code>IGNORE</code> <code>AcceptCode</code>
-     * validation. Ignoring <code>AcceptCode</code> validation causes Incident Manager
-     * to accept any value entered for the <code>AcceptCode</code>.</p>
-     */
-    inline void SetAcceptCodeValidation(AcceptCodeValidation&& value) { m_acceptCodeValidationHasBeenSet = true; m_acceptCodeValidation = std::move(value); }
-
-    /**
-     * <p>An optional field that Incident Manager uses to <code>ENFORCE</code>
-     * <code>AcceptCode</code> validation when acknowledging an page. Acknowledgement
-     * can occur by replying to a page, or when entering the AcceptCode in the console.
-     * Enforcing AcceptCode validation causes Incident Manager to verify that the code
-     * entered by the user matches the code sent by Incident Manager with the page.</p>
-     * <p>Incident Manager can also <code>IGNORE</code> <code>AcceptCode</code>
-     * validation. Ignoring <code>AcceptCode</code> validation causes Incident Manager
-     * to accept any value entered for the <code>AcceptCode</code>.</p>
-     */
-    inline AcceptPageRequest& WithAcceptCodeValidation(const AcceptCodeValidation& value) { SetAcceptCodeValidation(value); return *this;}
-
-    /**
-     * <p>An optional field that Incident Manager uses to <code>ENFORCE</code>
-     * <code>AcceptCode</code> validation when acknowledging an page. Acknowledgement
-     * can occur by replying to a page, or when entering the AcceptCode in the console.
-     * Enforcing AcceptCode validation causes Incident Manager to verify that the code
-     * entered by the user matches the code sent by Incident Manager with the page.</p>
-     * <p>Incident Manager can also <code>IGNORE</code> <code>AcceptCode</code>
-     * validation. Ignoring <code>AcceptCode</code> validation causes Incident Manager
-     * to accept any value entered for the <code>AcceptCode</code>.</p>
-     */
-    inline AcceptPageRequest& WithAcceptCodeValidation(AcceptCodeValidation&& value) { SetAcceptCodeValidation(std::move(value)); return *this;}
-
+    inline void SetAcceptCodeValidation(AcceptCodeValidation value) { m_acceptCodeValidationHasBeenSet = true; m_acceptCodeValidation = value; }
+    inline AcceptPageRequest& WithAcceptCodeValidation(AcceptCodeValidation value) { SetAcceptCodeValidation(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_pageId;
@@ -317,7 +119,7 @@ namespace Model
     Aws::String m_contactChannelId;
     bool m_contactChannelIdHasBeenSet = false;
 
-    AcceptType m_acceptType;
+    AcceptType m_acceptType{AcceptType::NOT_SET};
     bool m_acceptTypeHasBeenSet = false;
 
     Aws::String m_note;
@@ -326,7 +128,7 @@ namespace Model
     Aws::String m_acceptCode;
     bool m_acceptCodeHasBeenSet = false;
 
-    AcceptCodeValidation m_acceptCodeValidation;
+    AcceptCodeValidation m_acceptCodeValidation{AcceptCodeValidation::NOT_SET};
     bool m_acceptCodeValidationHasBeenSet = false;
   };
 

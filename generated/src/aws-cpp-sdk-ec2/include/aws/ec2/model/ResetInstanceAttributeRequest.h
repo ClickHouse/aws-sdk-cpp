@@ -6,8 +6,8 @@
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
-#include <aws/ec2/model/InstanceAttributeName.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/ec2/model/InstanceAttributeName.h>
 #include <utility>
 
 namespace Aws
@@ -22,7 +22,7 @@ namespace Model
   class ResetInstanceAttributeRequest : public EC2Request
   {
   public:
-    AWS_EC2_API ResetInstanceAttributeRequest();
+    AWS_EC2_API ResetInstanceAttributeRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,132 +37,52 @@ namespace Model
 
   public:
 
+    ///@{
     /**
-     * <p>The attribute to reset.</p>  <p>You can only reset the following
-     * attributes: <code>kernel</code> | <code>ramdisk</code> |
-     * <code>sourceDestCheck</code>.</p> 
-     */
-    inline const InstanceAttributeName& GetAttribute() const{ return m_attribute; }
-
-    /**
-     * <p>The attribute to reset.</p>  <p>You can only reset the following
-     * attributes: <code>kernel</code> | <code>ramdisk</code> |
-     * <code>sourceDestCheck</code>.</p> 
-     */
-    inline bool AttributeHasBeenSet() const { return m_attributeHasBeenSet; }
-
-    /**
-     * <p>The attribute to reset.</p>  <p>You can only reset the following
-     * attributes: <code>kernel</code> | <code>ramdisk</code> |
-     * <code>sourceDestCheck</code>.</p> 
-     */
-    inline void SetAttribute(const InstanceAttributeName& value) { m_attributeHasBeenSet = true; m_attribute = value; }
-
-    /**
-     * <p>The attribute to reset.</p>  <p>You can only reset the following
-     * attributes: <code>kernel</code> | <code>ramdisk</code> |
-     * <code>sourceDestCheck</code>.</p> 
-     */
-    inline void SetAttribute(InstanceAttributeName&& value) { m_attributeHasBeenSet = true; m_attribute = std::move(value); }
-
-    /**
-     * <p>The attribute to reset.</p>  <p>You can only reset the following
-     * attributes: <code>kernel</code> | <code>ramdisk</code> |
-     * <code>sourceDestCheck</code>.</p> 
-     */
-    inline ResetInstanceAttributeRequest& WithAttribute(const InstanceAttributeName& value) { SetAttribute(value); return *this;}
-
-    /**
-     * <p>The attribute to reset.</p>  <p>You can only reset the following
-     * attributes: <code>kernel</code> | <code>ramdisk</code> |
-     * <code>sourceDestCheck</code>.</p> 
-     */
-    inline ResetInstanceAttributeRequest& WithAttribute(InstanceAttributeName&& value) { SetAttribute(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
+     * <p>Checks whether you have the required permissions for the operation, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline ResetInstanceAttributeRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the instance.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    ResetInstanceAttributeRequest& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the instance.</p>
+     * <p>The attribute to reset.</p>  <p>You can only reset the following
+     * attributes: <code>kernel</code> | <code>ramdisk</code> |
+     * <code>sourceDestCheck</code>.</p> 
      */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline ResetInstanceAttributeRequest& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline ResetInstanceAttributeRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline ResetInstanceAttributeRequest& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
+    inline InstanceAttributeName GetAttribute() const { return m_attribute; }
+    inline bool AttributeHasBeenSet() const { return m_attributeHasBeenSet; }
+    inline void SetAttribute(InstanceAttributeName value) { m_attributeHasBeenSet = true; m_attribute = value; }
+    inline ResetInstanceAttributeRequest& WithAttribute(InstanceAttributeName value) { SetAttribute(value); return *this;}
+    ///@}
   private:
 
-    InstanceAttributeName m_attribute;
-    bool m_attributeHasBeenSet = false;
-
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     Aws::String m_instanceId;
     bool m_instanceIdHasBeenSet = false;
+
+    InstanceAttributeName m_attribute{InstanceAttributeName::NOT_SET};
+    bool m_attributeHasBeenSet = false;
   };
 
 } // namespace Model

@@ -21,7 +21,7 @@ namespace Model
   class DeleteSMSSandboxPhoneNumberRequest : public SNSRequest
   {
   public:
-    AWS_SNS_API DeleteSMSSandboxPhoneNumberRequest();
+    AWS_SNS_API DeleteSMSSandboxPhoneNumberRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,46 +36,17 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The destination phone number to delete.</p>
      */
-    inline const Aws::String& GetPhoneNumber() const{ return m_phoneNumber; }
-
-    /**
-     * <p>The destination phone number to delete.</p>
-     */
+    inline const Aws::String& GetPhoneNumber() const { return m_phoneNumber; }
     inline bool PhoneNumberHasBeenSet() const { return m_phoneNumberHasBeenSet; }
-
-    /**
-     * <p>The destination phone number to delete.</p>
-     */
-    inline void SetPhoneNumber(const Aws::String& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = value; }
-
-    /**
-     * <p>The destination phone number to delete.</p>
-     */
-    inline void SetPhoneNumber(Aws::String&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::move(value); }
-
-    /**
-     * <p>The destination phone number to delete.</p>
-     */
-    inline void SetPhoneNumber(const char* value) { m_phoneNumberHasBeenSet = true; m_phoneNumber.assign(value); }
-
-    /**
-     * <p>The destination phone number to delete.</p>
-     */
-    inline DeleteSMSSandboxPhoneNumberRequest& WithPhoneNumber(const Aws::String& value) { SetPhoneNumber(value); return *this;}
-
-    /**
-     * <p>The destination phone number to delete.</p>
-     */
-    inline DeleteSMSSandboxPhoneNumberRequest& WithPhoneNumber(Aws::String&& value) { SetPhoneNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The destination phone number to delete.</p>
-     */
-    inline DeleteSMSSandboxPhoneNumberRequest& WithPhoneNumber(const char* value) { SetPhoneNumber(value); return *this;}
-
+    template<typename PhoneNumberT = Aws::String>
+    void SetPhoneNumber(PhoneNumberT&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::forward<PhoneNumberT>(value); }
+    template<typename PhoneNumberT = Aws::String>
+    DeleteSMSSandboxPhoneNumberRequest& WithPhoneNumber(PhoneNumberT&& value) { SetPhoneNumber(std::forward<PhoneNumberT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_phoneNumber;

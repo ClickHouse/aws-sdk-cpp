@@ -26,61 +26,31 @@ namespace Model
   class ErrorDetails
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API ErrorDetails();
+    AWS_ELASTICSEARCHSERVICE_API ErrorDetails() = default;
     AWS_ELASTICSEARCHSERVICE_API ErrorDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API ErrorDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Aws::String& GetErrorType() const{ return m_errorType; }
-
-    
+    inline const Aws::String& GetErrorType() const { return m_errorType; }
     inline bool ErrorTypeHasBeenSet() const { return m_errorTypeHasBeenSet; }
+    template<typename ErrorTypeT = Aws::String>
+    void SetErrorType(ErrorTypeT&& value) { m_errorTypeHasBeenSet = true; m_errorType = std::forward<ErrorTypeT>(value); }
+    template<typename ErrorTypeT = Aws::String>
+    ErrorDetails& WithErrorType(ErrorTypeT&& value) { SetErrorType(std::forward<ErrorTypeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetErrorType(const Aws::String& value) { m_errorTypeHasBeenSet = true; m_errorType = value; }
-
-    
-    inline void SetErrorType(Aws::String&& value) { m_errorTypeHasBeenSet = true; m_errorType = std::move(value); }
-
-    
-    inline void SetErrorType(const char* value) { m_errorTypeHasBeenSet = true; m_errorType.assign(value); }
-
-    
-    inline ErrorDetails& WithErrorType(const Aws::String& value) { SetErrorType(value); return *this;}
-
-    
-    inline ErrorDetails& WithErrorType(Aws::String&& value) { SetErrorType(std::move(value)); return *this;}
-
-    
-    inline ErrorDetails& WithErrorType(const char* value) { SetErrorType(value); return *this;}
-
-
-    
-    inline const Aws::String& GetErrorMessage() const{ return m_errorMessage; }
-
-    
+    inline const Aws::String& GetErrorMessage() const { return m_errorMessage; }
     inline bool ErrorMessageHasBeenSet() const { return m_errorMessageHasBeenSet; }
-
-    
-    inline void SetErrorMessage(const Aws::String& value) { m_errorMessageHasBeenSet = true; m_errorMessage = value; }
-
-    
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::move(value); }
-
-    
-    inline void SetErrorMessage(const char* value) { m_errorMessageHasBeenSet = true; m_errorMessage.assign(value); }
-
-    
-    inline ErrorDetails& WithErrorMessage(const Aws::String& value) { SetErrorMessage(value); return *this;}
-
-    
-    inline ErrorDetails& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
-
-    
-    inline ErrorDetails& WithErrorMessage(const char* value) { SetErrorMessage(value); return *this;}
-
+    template<typename ErrorMessageT = Aws::String>
+    void SetErrorMessage(ErrorMessageT&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::forward<ErrorMessageT>(value); }
+    template<typename ErrorMessageT = Aws::String>
+    ErrorDetails& WithErrorMessage(ErrorMessageT&& value) { SetErrorMessage(std::forward<ErrorMessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_errorType;

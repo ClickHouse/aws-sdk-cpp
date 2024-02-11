@@ -12,27 +12,19 @@ using namespace Aws::PrometheusService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateLoggingConfigurationRequest::CreateLoggingConfigurationRequest() : 
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_logGroupArnHasBeenSet(false),
-    m_workspaceIdHasBeenSet(false)
-{
-}
-
 Aws::String CreateLoggingConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_clientTokenHasBeenSet)
-  {
-   payload.WithString("clientToken", m_clientToken);
-
-  }
-
   if(m_logGroupArnHasBeenSet)
   {
    payload.WithString("logGroupArn", m_logGroupArn);
+
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("clientToken", m_clientToken);
 
   }
 

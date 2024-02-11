@@ -18,27 +18,7 @@ namespace NetworkFirewall
 namespace Model
 {
 
-FirewallPolicy::FirewallPolicy() : 
-    m_statelessRuleGroupReferencesHasBeenSet(false),
-    m_statelessDefaultActionsHasBeenSet(false),
-    m_statelessFragmentDefaultActionsHasBeenSet(false),
-    m_statelessCustomActionsHasBeenSet(false),
-    m_statefulRuleGroupReferencesHasBeenSet(false),
-    m_statefulDefaultActionsHasBeenSet(false),
-    m_statefulEngineOptionsHasBeenSet(false),
-    m_tLSInspectionConfigurationArnHasBeenSet(false)
-{
-}
-
-FirewallPolicy::FirewallPolicy(JsonView jsonValue) : 
-    m_statelessRuleGroupReferencesHasBeenSet(false),
-    m_statelessDefaultActionsHasBeenSet(false),
-    m_statelessFragmentDefaultActionsHasBeenSet(false),
-    m_statelessCustomActionsHasBeenSet(false),
-    m_statefulRuleGroupReferencesHasBeenSet(false),
-    m_statefulDefaultActionsHasBeenSet(false),
-    m_statefulEngineOptionsHasBeenSet(false),
-    m_tLSInspectionConfigurationArnHasBeenSet(false)
+FirewallPolicy::FirewallPolicy(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -54,7 +34,6 @@ FirewallPolicy& FirewallPolicy::operator =(JsonView jsonValue)
     }
     m_statelessRuleGroupReferencesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatelessDefaultActions"))
   {
     Aws::Utils::Array<JsonView> statelessDefaultActionsJsonList = jsonValue.GetArray("StatelessDefaultActions");
@@ -64,7 +43,6 @@ FirewallPolicy& FirewallPolicy::operator =(JsonView jsonValue)
     }
     m_statelessDefaultActionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatelessFragmentDefaultActions"))
   {
     Aws::Utils::Array<JsonView> statelessFragmentDefaultActionsJsonList = jsonValue.GetArray("StatelessFragmentDefaultActions");
@@ -74,7 +52,6 @@ FirewallPolicy& FirewallPolicy::operator =(JsonView jsonValue)
     }
     m_statelessFragmentDefaultActionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatelessCustomActions"))
   {
     Aws::Utils::Array<JsonView> statelessCustomActionsJsonList = jsonValue.GetArray("StatelessCustomActions");
@@ -84,7 +61,6 @@ FirewallPolicy& FirewallPolicy::operator =(JsonView jsonValue)
     }
     m_statelessCustomActionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatefulRuleGroupReferences"))
   {
     Aws::Utils::Array<JsonView> statefulRuleGroupReferencesJsonList = jsonValue.GetArray("StatefulRuleGroupReferences");
@@ -94,7 +70,6 @@ FirewallPolicy& FirewallPolicy::operator =(JsonView jsonValue)
     }
     m_statefulRuleGroupReferencesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatefulDefaultActions"))
   {
     Aws::Utils::Array<JsonView> statefulDefaultActionsJsonList = jsonValue.GetArray("StatefulDefaultActions");
@@ -104,21 +79,26 @@ FirewallPolicy& FirewallPolicy::operator =(JsonView jsonValue)
     }
     m_statefulDefaultActionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatefulEngineOptions"))
   {
     m_statefulEngineOptions = jsonValue.GetObject("StatefulEngineOptions");
-
     m_statefulEngineOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TLSInspectionConfigurationArn"))
   {
     m_tLSInspectionConfigurationArn = jsonValue.GetString("TLSInspectionConfigurationArn");
-
     m_tLSInspectionConfigurationArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("PolicyVariables"))
+  {
+    m_policyVariables = jsonValue.GetObject("PolicyVariables");
+    m_policyVariablesHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("EnableTLSSessionHolding"))
+  {
+    m_enableTLSSessionHolding = jsonValue.GetBool("EnableTLSSessionHolding");
+    m_enableTLSSessionHoldingHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -201,6 +181,18 @@ JsonValue FirewallPolicy::Jsonize() const
   if(m_tLSInspectionConfigurationArnHasBeenSet)
   {
    payload.WithString("TLSInspectionConfigurationArn", m_tLSInspectionConfigurationArn);
+
+  }
+
+  if(m_policyVariablesHasBeenSet)
+  {
+   payload.WithObject("PolicyVariables", m_policyVariables.Jsonize());
+
+  }
+
+  if(m_enableTLSSessionHoldingHasBeenSet)
+  {
+   payload.WithBool("EnableTLSSessionHolding", m_enableTLSSessionHolding);
 
   }
 

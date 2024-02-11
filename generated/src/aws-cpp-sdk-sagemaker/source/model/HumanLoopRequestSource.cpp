@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-HumanLoopRequestSource::HumanLoopRequestSource() : 
-    m_awsManagedHumanLoopRequestSource(AwsManagedHumanLoopRequestSource::NOT_SET),
-    m_awsManagedHumanLoopRequestSourceHasBeenSet(false)
-{
-}
-
-HumanLoopRequestSource::HumanLoopRequestSource(JsonView jsonValue) : 
-    m_awsManagedHumanLoopRequestSource(AwsManagedHumanLoopRequestSource::NOT_SET),
-    m_awsManagedHumanLoopRequestSourceHasBeenSet(false)
+HumanLoopRequestSource::HumanLoopRequestSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ HumanLoopRequestSource& HumanLoopRequestSource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AwsManagedHumanLoopRequestSource"))
   {
     m_awsManagedHumanLoopRequestSource = AwsManagedHumanLoopRequestSourceMapper::GetAwsManagedHumanLoopRequestSourceForName(jsonValue.GetString("AwsManagedHumanLoopRequestSource"));
-
     m_awsManagedHumanLoopRequestSourceHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,17 +20,7 @@ namespace Route53
 namespace Model
 {
 
-GeoLocation::GeoLocation() : 
-    m_continentCodeHasBeenSet(false),
-    m_countryCodeHasBeenSet(false),
-    m_subdivisionCodeHasBeenSet(false)
-{
-}
-
-GeoLocation::GeoLocation(const XmlNode& xmlNode) : 
-    m_continentCodeHasBeenSet(false),
-    m_countryCodeHasBeenSet(false),
-    m_subdivisionCodeHasBeenSet(false)
+GeoLocation::GeoLocation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

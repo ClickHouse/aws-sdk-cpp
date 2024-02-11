@@ -34,130 +34,49 @@ namespace Model
   class SensitiveDataResult
   {
   public:
-    AWS_SECURITYHUB_API SensitiveDataResult();
+    AWS_SECURITYHUB_API SensitiveDataResult() = default;
     AWS_SECURITYHUB_API SensitiveDataResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API SensitiveDataResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The category of sensitive data that was detected. For example, the category
      * can indicate that the sensitive data involved credentials, financial
      * information, or personal information.</p>
      */
-    inline const Aws::String& GetCategory() const{ return m_category; }
-
-    /**
-     * <p>The category of sensitive data that was detected. For example, the category
-     * can indicate that the sensitive data involved credentials, financial
-     * information, or personal information.</p>
-     */
+    inline const Aws::String& GetCategory() const { return m_category; }
     inline bool CategoryHasBeenSet() const { return m_categoryHasBeenSet; }
+    template<typename CategoryT = Aws::String>
+    void SetCategory(CategoryT&& value) { m_categoryHasBeenSet = true; m_category = std::forward<CategoryT>(value); }
+    template<typename CategoryT = Aws::String>
+    SensitiveDataResult& WithCategory(CategoryT&& value) { SetCategory(std::forward<CategoryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The category of sensitive data that was detected. For example, the category
-     * can indicate that the sensitive data involved credentials, financial
-     * information, or personal information.</p>
-     */
-    inline void SetCategory(const Aws::String& value) { m_categoryHasBeenSet = true; m_category = value; }
-
-    /**
-     * <p>The category of sensitive data that was detected. For example, the category
-     * can indicate that the sensitive data involved credentials, financial
-     * information, or personal information.</p>
-     */
-    inline void SetCategory(Aws::String&& value) { m_categoryHasBeenSet = true; m_category = std::move(value); }
-
-    /**
-     * <p>The category of sensitive data that was detected. For example, the category
-     * can indicate that the sensitive data involved credentials, financial
-     * information, or personal information.</p>
-     */
-    inline void SetCategory(const char* value) { m_categoryHasBeenSet = true; m_category.assign(value); }
-
-    /**
-     * <p>The category of sensitive data that was detected. For example, the category
-     * can indicate that the sensitive data involved credentials, financial
-     * information, or personal information.</p>
-     */
-    inline SensitiveDataResult& WithCategory(const Aws::String& value) { SetCategory(value); return *this;}
-
-    /**
-     * <p>The category of sensitive data that was detected. For example, the category
-     * can indicate that the sensitive data involved credentials, financial
-     * information, or personal information.</p>
-     */
-    inline SensitiveDataResult& WithCategory(Aws::String&& value) { SetCategory(std::move(value)); return *this;}
-
-    /**
-     * <p>The category of sensitive data that was detected. For example, the category
-     * can indicate that the sensitive data involved credentials, financial
-     * information, or personal information.</p>
-     */
-    inline SensitiveDataResult& WithCategory(const char* value) { SetCategory(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of detected instances of sensitive data.</p>
      */
-    inline const Aws::Vector<SensitiveDataDetections>& GetDetections() const{ return m_detections; }
-
-    /**
-     * <p>The list of detected instances of sensitive data.</p>
-     */
+    inline const Aws::Vector<SensitiveDataDetections>& GetDetections() const { return m_detections; }
     inline bool DetectionsHasBeenSet() const { return m_detectionsHasBeenSet; }
+    template<typename DetectionsT = Aws::Vector<SensitiveDataDetections>>
+    void SetDetections(DetectionsT&& value) { m_detectionsHasBeenSet = true; m_detections = std::forward<DetectionsT>(value); }
+    template<typename DetectionsT = Aws::Vector<SensitiveDataDetections>>
+    SensitiveDataResult& WithDetections(DetectionsT&& value) { SetDetections(std::forward<DetectionsT>(value)); return *this;}
+    template<typename DetectionsT = SensitiveDataDetections>
+    SensitiveDataResult& AddDetections(DetectionsT&& value) { m_detectionsHasBeenSet = true; m_detections.emplace_back(std::forward<DetectionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of detected instances of sensitive data.</p>
-     */
-    inline void SetDetections(const Aws::Vector<SensitiveDataDetections>& value) { m_detectionsHasBeenSet = true; m_detections = value; }
-
-    /**
-     * <p>The list of detected instances of sensitive data.</p>
-     */
-    inline void SetDetections(Aws::Vector<SensitiveDataDetections>&& value) { m_detectionsHasBeenSet = true; m_detections = std::move(value); }
-
-    /**
-     * <p>The list of detected instances of sensitive data.</p>
-     */
-    inline SensitiveDataResult& WithDetections(const Aws::Vector<SensitiveDataDetections>& value) { SetDetections(value); return *this;}
-
-    /**
-     * <p>The list of detected instances of sensitive data.</p>
-     */
-    inline SensitiveDataResult& WithDetections(Aws::Vector<SensitiveDataDetections>&& value) { SetDetections(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of detected instances of sensitive data.</p>
-     */
-    inline SensitiveDataResult& AddDetections(const SensitiveDataDetections& value) { m_detectionsHasBeenSet = true; m_detections.push_back(value); return *this; }
-
-    /**
-     * <p>The list of detected instances of sensitive data.</p>
-     */
-    inline SensitiveDataResult& AddDetections(SensitiveDataDetections&& value) { m_detectionsHasBeenSet = true; m_detections.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The total number of occurrences of sensitive data.</p>
      */
-    inline long long GetTotalCount() const{ return m_totalCount; }
-
-    /**
-     * <p>The total number of occurrences of sensitive data.</p>
-     */
+    inline long long GetTotalCount() const { return m_totalCount; }
     inline bool TotalCountHasBeenSet() const { return m_totalCountHasBeenSet; }
-
-    /**
-     * <p>The total number of occurrences of sensitive data.</p>
-     */
     inline void SetTotalCount(long long value) { m_totalCountHasBeenSet = true; m_totalCount = value; }
-
-    /**
-     * <p>The total number of occurrences of sensitive data.</p>
-     */
     inline SensitiveDataResult& WithTotalCount(long long value) { SetTotalCount(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_category;
@@ -166,7 +85,7 @@ namespace Model
     Aws::Vector<SensitiveDataDetections> m_detections;
     bool m_detectionsHasBeenSet = false;
 
-    long long m_totalCount;
+    long long m_totalCount{0};
     bool m_totalCountHasBeenSet = false;
   };
 

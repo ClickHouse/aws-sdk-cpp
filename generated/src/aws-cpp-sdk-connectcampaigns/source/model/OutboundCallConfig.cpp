@@ -18,53 +18,33 @@ namespace ConnectCampaigns
 namespace Model
 {
 
-OutboundCallConfig::OutboundCallConfig() : 
-    m_answerMachineDetectionConfigHasBeenSet(false),
-    m_connectContactFlowIdHasBeenSet(false),
-    m_connectQueueIdHasBeenSet(false),
-    m_connectSourcePhoneNumberHasBeenSet(false)
-{
-}
-
-OutboundCallConfig::OutboundCallConfig(JsonView jsonValue) : 
-    m_answerMachineDetectionConfigHasBeenSet(false),
-    m_connectContactFlowIdHasBeenSet(false),
-    m_connectQueueIdHasBeenSet(false),
-    m_connectSourcePhoneNumberHasBeenSet(false)
+OutboundCallConfig::OutboundCallConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 OutboundCallConfig& OutboundCallConfig::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("answerMachineDetectionConfig"))
-  {
-    m_answerMachineDetectionConfig = jsonValue.GetObject("answerMachineDetectionConfig");
-
-    m_answerMachineDetectionConfigHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("connectContactFlowId"))
   {
     m_connectContactFlowId = jsonValue.GetString("connectContactFlowId");
-
     m_connectContactFlowIdHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("connectQueueId"))
-  {
-    m_connectQueueId = jsonValue.GetString("connectQueueId");
-
-    m_connectQueueIdHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("connectSourcePhoneNumber"))
   {
     m_connectSourcePhoneNumber = jsonValue.GetString("connectSourcePhoneNumber");
-
     m_connectSourcePhoneNumberHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("connectQueueId"))
+  {
+    m_connectQueueId = jsonValue.GetString("connectQueueId");
+    m_connectQueueIdHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("answerMachineDetectionConfig"))
+  {
+    m_answerMachineDetectionConfig = jsonValue.GetObject("answerMachineDetectionConfig");
+    m_answerMachineDetectionConfigHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -72,15 +52,15 @@ JsonValue OutboundCallConfig::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_answerMachineDetectionConfigHasBeenSet)
-  {
-   payload.WithObject("answerMachineDetectionConfig", m_answerMachineDetectionConfig.Jsonize());
-
-  }
-
   if(m_connectContactFlowIdHasBeenSet)
   {
    payload.WithString("connectContactFlowId", m_connectContactFlowId);
+
+  }
+
+  if(m_connectSourcePhoneNumberHasBeenSet)
+  {
+   payload.WithString("connectSourcePhoneNumber", m_connectSourcePhoneNumber);
 
   }
 
@@ -90,9 +70,9 @@ JsonValue OutboundCallConfig::Jsonize() const
 
   }
 
-  if(m_connectSourcePhoneNumberHasBeenSet)
+  if(m_answerMachineDetectionConfigHasBeenSet)
   {
-   payload.WithString("connectSourcePhoneNumber", m_connectSourcePhoneNumber);
+   payload.WithObject("answerMachineDetectionConfig", m_answerMachineDetectionConfig.Jsonize());
 
   }
 

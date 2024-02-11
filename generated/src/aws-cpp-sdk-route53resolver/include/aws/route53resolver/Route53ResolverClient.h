@@ -50,22 +50,25 @@ namespace Route53Resolver
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef Route53ResolverClientConfiguration ClientConfigurationType;
+      typedef Route53ResolverEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         Route53ResolverClient(const Aws::Route53Resolver::Route53ResolverClientConfiguration& clientConfiguration = Aws::Route53Resolver::Route53ResolverClientConfiguration(),
-                              std::shared_ptr<Route53ResolverEndpointProviderBase> endpointProvider = Aws::MakeShared<Route53ResolverEndpointProvider>(ALLOCATION_TAG));
+                              std::shared_ptr<Route53ResolverEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         Route53ResolverClient(const Aws::Auth::AWSCredentials& credentials,
-                              std::shared_ptr<Route53ResolverEndpointProviderBase> endpointProvider = Aws::MakeShared<Route53ResolverEndpointProvider>(ALLOCATION_TAG),
+                              std::shared_ptr<Route53ResolverEndpointProviderBase> endpointProvider = nullptr,
                               const Aws::Route53Resolver::Route53ResolverClientConfiguration& clientConfiguration = Aws::Route53Resolver::Route53ResolverClientConfiguration());
 
        /**
@@ -73,7 +76,7 @@ namespace Route53Resolver
         * the default http client factory will be used
         */
         Route53ResolverClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                              std::shared_ptr<Route53ResolverEndpointProviderBase> endpointProvider = Aws::MakeShared<Route53ResolverEndpointProvider>(ALLOCATION_TAG),
+                              std::shared_ptr<Route53ResolverEndpointProviderBase> endpointProvider = nullptr,
                               const Aws::Route53Resolver::Route53ResolverClientConfiguration& clientConfiguration = Aws::Route53Resolver::Route53ResolverClientConfiguration());
 
 
@@ -304,6 +307,31 @@ namespace Route53Resolver
         }
 
         /**
+         * <p>Creates a Route 53 Resolver on an Outpost.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/CreateOutpostResolver">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateOutpostResolverOutcome CreateOutpostResolver(const Model::CreateOutpostResolverRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateOutpostResolver that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateOutpostResolverRequestT = Model::CreateOutpostResolverRequest>
+        Model::CreateOutpostResolverOutcomeCallable CreateOutpostResolverCallable(const CreateOutpostResolverRequestT& request) const
+        {
+            return SubmitCallable(&Route53ResolverClient::CreateOutpostResolver, request);
+        }
+
+        /**
+         * An Async wrapper for CreateOutpostResolver that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateOutpostResolverRequestT = Model::CreateOutpostResolverRequest>
+        void CreateOutpostResolverAsync(const CreateOutpostResolverRequestT& request, const CreateOutpostResolverResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&Route53ResolverClient::CreateOutpostResolver, request, handler, context);
+        }
+
+        /**
          * <p>Creates a Resolver endpoint. There are two types of Resolver endpoints,
          * inbound and outbound:</p> <ul> <li> <p>An <i>inbound Resolver endpoint</i>
          * forwards DNS queries to the DNS service for a VPC from your network.</p> </li>
@@ -469,6 +497,31 @@ namespace Route53Resolver
         void DeleteFirewallRuleGroupAsync(const DeleteFirewallRuleGroupRequestT& request, const DeleteFirewallRuleGroupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&Route53ResolverClient::DeleteFirewallRuleGroup, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes a Resolver on the Outpost.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/DeleteOutpostResolver">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteOutpostResolverOutcome DeleteOutpostResolver(const Model::DeleteOutpostResolverRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteOutpostResolver that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteOutpostResolverRequestT = Model::DeleteOutpostResolverRequest>
+        Model::DeleteOutpostResolverOutcomeCallable DeleteOutpostResolverCallable(const DeleteOutpostResolverRequestT& request) const
+        {
+            return SubmitCallable(&Route53ResolverClient::DeleteOutpostResolver, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteOutpostResolver that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteOutpostResolverRequestT = Model::DeleteOutpostResolverRequest>
+        void DeleteOutpostResolverAsync(const DeleteOutpostResolverRequestT& request, const DeleteOutpostResolverResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&Route53ResolverClient::DeleteOutpostResolver, request, handler, context);
         }
 
         /**
@@ -818,6 +871,33 @@ namespace Route53Resolver
         }
 
         /**
+         * <p>Gets information about a specified Resolver on the Outpost, such as its
+         * instance count and type, name, and the current status of the
+         * Resolver.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/GetOutpostResolver">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetOutpostResolverOutcome GetOutpostResolver(const Model::GetOutpostResolverRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetOutpostResolver that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetOutpostResolverRequestT = Model::GetOutpostResolverRequest>
+        Model::GetOutpostResolverOutcomeCallable GetOutpostResolverCallable(const GetOutpostResolverRequestT& request) const
+        {
+            return SubmitCallable(&Route53ResolverClient::GetOutpostResolver, request);
+        }
+
+        /**
+         * An Async wrapper for GetOutpostResolver that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetOutpostResolverRequestT = Model::GetOutpostResolverRequest>
+        void GetOutpostResolverAsync(const GetOutpostResolverRequestT& request, const GetOutpostResolverResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&Route53ResolverClient::GetOutpostResolver, request, handler, context);
+        }
+
+        /**
          * <p>Retrieves the behavior configuration of Route 53 Resolver behavior for a
          * single VPC from Amazon Virtual Private Cloud.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/GetResolverConfig">AWS
@@ -1103,13 +1183,13 @@ namespace Route53Resolver
          * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/ListFirewallConfigs">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListFirewallConfigsOutcome ListFirewallConfigs(const Model::ListFirewallConfigsRequest& request) const;
+        virtual Model::ListFirewallConfigsOutcome ListFirewallConfigs(const Model::ListFirewallConfigsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListFirewallConfigs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListFirewallConfigsRequestT = Model::ListFirewallConfigsRequest>
-        Model::ListFirewallConfigsOutcomeCallable ListFirewallConfigsCallable(const ListFirewallConfigsRequestT& request) const
+        Model::ListFirewallConfigsOutcomeCallable ListFirewallConfigsCallable(const ListFirewallConfigsRequestT& request = {}) const
         {
             return SubmitCallable(&Route53ResolverClient::ListFirewallConfigs, request);
         }
@@ -1118,7 +1198,7 @@ namespace Route53Resolver
          * An Async wrapper for ListFirewallConfigs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListFirewallConfigsRequestT = Model::ListFirewallConfigsRequest>
-        void ListFirewallConfigsAsync(const ListFirewallConfigsRequestT& request, const ListFirewallConfigsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListFirewallConfigsAsync(const ListFirewallConfigsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListFirewallConfigsRequestT& request = {}) const
         {
             return SubmitAsync(&Route53ResolverClient::ListFirewallConfigs, request, handler, context);
         }
@@ -1132,13 +1212,13 @@ namespace Route53Resolver
          * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/ListFirewallDomainLists">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListFirewallDomainListsOutcome ListFirewallDomainLists(const Model::ListFirewallDomainListsRequest& request) const;
+        virtual Model::ListFirewallDomainListsOutcome ListFirewallDomainLists(const Model::ListFirewallDomainListsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListFirewallDomainLists that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListFirewallDomainListsRequestT = Model::ListFirewallDomainListsRequest>
-        Model::ListFirewallDomainListsOutcomeCallable ListFirewallDomainListsCallable(const ListFirewallDomainListsRequestT& request) const
+        Model::ListFirewallDomainListsOutcomeCallable ListFirewallDomainListsCallable(const ListFirewallDomainListsRequestT& request = {}) const
         {
             return SubmitCallable(&Route53ResolverClient::ListFirewallDomainLists, request);
         }
@@ -1147,7 +1227,7 @@ namespace Route53Resolver
          * An Async wrapper for ListFirewallDomainLists that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListFirewallDomainListsRequestT = Model::ListFirewallDomainListsRequest>
-        void ListFirewallDomainListsAsync(const ListFirewallDomainListsRequestT& request, const ListFirewallDomainListsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListFirewallDomainListsAsync(const ListFirewallDomainListsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListFirewallDomainListsRequestT& request = {}) const
         {
             return SubmitAsync(&Route53ResolverClient::ListFirewallDomainLists, request, handler, context);
         }
@@ -1187,13 +1267,13 @@ namespace Route53Resolver
          * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/ListFirewallRuleGroupAssociations">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListFirewallRuleGroupAssociationsOutcome ListFirewallRuleGroupAssociations(const Model::ListFirewallRuleGroupAssociationsRequest& request) const;
+        virtual Model::ListFirewallRuleGroupAssociationsOutcome ListFirewallRuleGroupAssociations(const Model::ListFirewallRuleGroupAssociationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListFirewallRuleGroupAssociations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListFirewallRuleGroupAssociationsRequestT = Model::ListFirewallRuleGroupAssociationsRequest>
-        Model::ListFirewallRuleGroupAssociationsOutcomeCallable ListFirewallRuleGroupAssociationsCallable(const ListFirewallRuleGroupAssociationsRequestT& request) const
+        Model::ListFirewallRuleGroupAssociationsOutcomeCallable ListFirewallRuleGroupAssociationsCallable(const ListFirewallRuleGroupAssociationsRequestT& request = {}) const
         {
             return SubmitCallable(&Route53ResolverClient::ListFirewallRuleGroupAssociations, request);
         }
@@ -1202,7 +1282,7 @@ namespace Route53Resolver
          * An Async wrapper for ListFirewallRuleGroupAssociations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListFirewallRuleGroupAssociationsRequestT = Model::ListFirewallRuleGroupAssociationsRequest>
-        void ListFirewallRuleGroupAssociationsAsync(const ListFirewallRuleGroupAssociationsRequestT& request, const ListFirewallRuleGroupAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListFirewallRuleGroupAssociationsAsync(const ListFirewallRuleGroupAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListFirewallRuleGroupAssociationsRequestT& request = {}) const
         {
             return SubmitAsync(&Route53ResolverClient::ListFirewallRuleGroupAssociations, request, handler, context);
         }
@@ -1215,13 +1295,13 @@ namespace Route53Resolver
          * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/ListFirewallRuleGroups">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListFirewallRuleGroupsOutcome ListFirewallRuleGroups(const Model::ListFirewallRuleGroupsRequest& request) const;
+        virtual Model::ListFirewallRuleGroupsOutcome ListFirewallRuleGroups(const Model::ListFirewallRuleGroupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListFirewallRuleGroups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListFirewallRuleGroupsRequestT = Model::ListFirewallRuleGroupsRequest>
-        Model::ListFirewallRuleGroupsOutcomeCallable ListFirewallRuleGroupsCallable(const ListFirewallRuleGroupsRequestT& request) const
+        Model::ListFirewallRuleGroupsOutcomeCallable ListFirewallRuleGroupsCallable(const ListFirewallRuleGroupsRequestT& request = {}) const
         {
             return SubmitCallable(&Route53ResolverClient::ListFirewallRuleGroups, request);
         }
@@ -1230,7 +1310,7 @@ namespace Route53Resolver
          * An Async wrapper for ListFirewallRuleGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListFirewallRuleGroupsRequestT = Model::ListFirewallRuleGroupsRequest>
-        void ListFirewallRuleGroupsAsync(const ListFirewallRuleGroupsRequestT& request, const ListFirewallRuleGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListFirewallRuleGroupsAsync(const ListFirewallRuleGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListFirewallRuleGroupsRequestT& request = {}) const
         {
             return SubmitAsync(&Route53ResolverClient::ListFirewallRuleGroups, request, handler, context);
         }
@@ -1265,19 +1345,45 @@ namespace Route53Resolver
         }
 
         /**
+         * <p>Lists all the Resolvers on Outposts that were created using the current
+         * Amazon Web Services account.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/ListOutpostResolvers">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListOutpostResolversOutcome ListOutpostResolvers(const Model::ListOutpostResolversRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ListOutpostResolvers that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListOutpostResolversRequestT = Model::ListOutpostResolversRequest>
+        Model::ListOutpostResolversOutcomeCallable ListOutpostResolversCallable(const ListOutpostResolversRequestT& request = {}) const
+        {
+            return SubmitCallable(&Route53ResolverClient::ListOutpostResolvers, request);
+        }
+
+        /**
+         * An Async wrapper for ListOutpostResolvers that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListOutpostResolversRequestT = Model::ListOutpostResolversRequest>
+        void ListOutpostResolversAsync(const ListOutpostResolversResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListOutpostResolversRequestT& request = {}) const
+        {
+            return SubmitAsync(&Route53ResolverClient::ListOutpostResolvers, request, handler, context);
+        }
+
+        /**
          * <p>Retrieves the Resolver configurations that you have defined. Route 53
          * Resolver uses the configurations to manage DNS resolution behavior for your
          * VPCs.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/ListResolverConfigs">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListResolverConfigsOutcome ListResolverConfigs(const Model::ListResolverConfigsRequest& request) const;
+        virtual Model::ListResolverConfigsOutcome ListResolverConfigs(const Model::ListResolverConfigsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListResolverConfigs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListResolverConfigsRequestT = Model::ListResolverConfigsRequest>
-        Model::ListResolverConfigsOutcomeCallable ListResolverConfigsCallable(const ListResolverConfigsRequestT& request) const
+        Model::ListResolverConfigsOutcomeCallable ListResolverConfigsCallable(const ListResolverConfigsRequestT& request = {}) const
         {
             return SubmitCallable(&Route53ResolverClient::ListResolverConfigs, request);
         }
@@ -1286,7 +1392,7 @@ namespace Route53Resolver
          * An Async wrapper for ListResolverConfigs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListResolverConfigsRequestT = Model::ListResolverConfigsRequest>
-        void ListResolverConfigsAsync(const ListResolverConfigsRequestT& request, const ListResolverConfigsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListResolverConfigsAsync(const ListResolverConfigsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListResolverConfigsRequestT& request = {}) const
         {
             return SubmitAsync(&Route53ResolverClient::ListResolverConfigs, request, handler, context);
         }
@@ -1297,13 +1403,13 @@ namespace Route53Resolver
          * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/ListResolverDnssecConfigs">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListResolverDnssecConfigsOutcome ListResolverDnssecConfigs(const Model::ListResolverDnssecConfigsRequest& request) const;
+        virtual Model::ListResolverDnssecConfigsOutcome ListResolverDnssecConfigs(const Model::ListResolverDnssecConfigsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListResolverDnssecConfigs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListResolverDnssecConfigsRequestT = Model::ListResolverDnssecConfigsRequest>
-        Model::ListResolverDnssecConfigsOutcomeCallable ListResolverDnssecConfigsCallable(const ListResolverDnssecConfigsRequestT& request) const
+        Model::ListResolverDnssecConfigsOutcomeCallable ListResolverDnssecConfigsCallable(const ListResolverDnssecConfigsRequestT& request = {}) const
         {
             return SubmitCallable(&Route53ResolverClient::ListResolverDnssecConfigs, request);
         }
@@ -1312,7 +1418,7 @@ namespace Route53Resolver
          * An Async wrapper for ListResolverDnssecConfigs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListResolverDnssecConfigsRequestT = Model::ListResolverDnssecConfigsRequest>
-        void ListResolverDnssecConfigsAsync(const ListResolverDnssecConfigsRequestT& request, const ListResolverDnssecConfigsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListResolverDnssecConfigsAsync(const ListResolverDnssecConfigsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListResolverDnssecConfigsRequestT& request = {}) const
         {
             return SubmitAsync(&Route53ResolverClient::ListResolverDnssecConfigs, request, handler, context);
         }
@@ -1349,13 +1455,13 @@ namespace Route53Resolver
          * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/ListResolverEndpoints">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListResolverEndpointsOutcome ListResolverEndpoints(const Model::ListResolverEndpointsRequest& request) const;
+        virtual Model::ListResolverEndpointsOutcome ListResolverEndpoints(const Model::ListResolverEndpointsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListResolverEndpoints that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListResolverEndpointsRequestT = Model::ListResolverEndpointsRequest>
-        Model::ListResolverEndpointsOutcomeCallable ListResolverEndpointsCallable(const ListResolverEndpointsRequestT& request) const
+        Model::ListResolverEndpointsOutcomeCallable ListResolverEndpointsCallable(const ListResolverEndpointsRequestT& request = {}) const
         {
             return SubmitCallable(&Route53ResolverClient::ListResolverEndpoints, request);
         }
@@ -1364,7 +1470,7 @@ namespace Route53Resolver
          * An Async wrapper for ListResolverEndpoints that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListResolverEndpointsRequestT = Model::ListResolverEndpointsRequest>
-        void ListResolverEndpointsAsync(const ListResolverEndpointsRequestT& request, const ListResolverEndpointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListResolverEndpointsAsync(const ListResolverEndpointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListResolverEndpointsRequestT& request = {}) const
         {
             return SubmitAsync(&Route53ResolverClient::ListResolverEndpoints, request, handler, context);
         }
@@ -1375,13 +1481,13 @@ namespace Route53Resolver
          * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/ListResolverQueryLogConfigAssociations">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListResolverQueryLogConfigAssociationsOutcome ListResolverQueryLogConfigAssociations(const Model::ListResolverQueryLogConfigAssociationsRequest& request) const;
+        virtual Model::ListResolverQueryLogConfigAssociationsOutcome ListResolverQueryLogConfigAssociations(const Model::ListResolverQueryLogConfigAssociationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListResolverQueryLogConfigAssociations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListResolverQueryLogConfigAssociationsRequestT = Model::ListResolverQueryLogConfigAssociationsRequest>
-        Model::ListResolverQueryLogConfigAssociationsOutcomeCallable ListResolverQueryLogConfigAssociationsCallable(const ListResolverQueryLogConfigAssociationsRequestT& request) const
+        Model::ListResolverQueryLogConfigAssociationsOutcomeCallable ListResolverQueryLogConfigAssociationsCallable(const ListResolverQueryLogConfigAssociationsRequestT& request = {}) const
         {
             return SubmitCallable(&Route53ResolverClient::ListResolverQueryLogConfigAssociations, request);
         }
@@ -1390,7 +1496,7 @@ namespace Route53Resolver
          * An Async wrapper for ListResolverQueryLogConfigAssociations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListResolverQueryLogConfigAssociationsRequestT = Model::ListResolverQueryLogConfigAssociationsRequest>
-        void ListResolverQueryLogConfigAssociationsAsync(const ListResolverQueryLogConfigAssociationsRequestT& request, const ListResolverQueryLogConfigAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListResolverQueryLogConfigAssociationsAsync(const ListResolverQueryLogConfigAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListResolverQueryLogConfigAssociationsRequestT& request = {}) const
         {
             return SubmitAsync(&Route53ResolverClient::ListResolverQueryLogConfigAssociations, request, handler, context);
         }
@@ -1403,13 +1509,13 @@ namespace Route53Resolver
          * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/ListResolverQueryLogConfigs">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListResolverQueryLogConfigsOutcome ListResolverQueryLogConfigs(const Model::ListResolverQueryLogConfigsRequest& request) const;
+        virtual Model::ListResolverQueryLogConfigsOutcome ListResolverQueryLogConfigs(const Model::ListResolverQueryLogConfigsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListResolverQueryLogConfigs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListResolverQueryLogConfigsRequestT = Model::ListResolverQueryLogConfigsRequest>
-        Model::ListResolverQueryLogConfigsOutcomeCallable ListResolverQueryLogConfigsCallable(const ListResolverQueryLogConfigsRequestT& request) const
+        Model::ListResolverQueryLogConfigsOutcomeCallable ListResolverQueryLogConfigsCallable(const ListResolverQueryLogConfigsRequestT& request = {}) const
         {
             return SubmitCallable(&Route53ResolverClient::ListResolverQueryLogConfigs, request);
         }
@@ -1418,7 +1524,7 @@ namespace Route53Resolver
          * An Async wrapper for ListResolverQueryLogConfigs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListResolverQueryLogConfigsRequestT = Model::ListResolverQueryLogConfigsRequest>
-        void ListResolverQueryLogConfigsAsync(const ListResolverQueryLogConfigsRequestT& request, const ListResolverQueryLogConfigsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListResolverQueryLogConfigsAsync(const ListResolverQueryLogConfigsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListResolverQueryLogConfigsRequestT& request = {}) const
         {
             return SubmitAsync(&Route53ResolverClient::ListResolverQueryLogConfigs, request, handler, context);
         }
@@ -1429,13 +1535,13 @@ namespace Route53Resolver
          * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/ListResolverRuleAssociations">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListResolverRuleAssociationsOutcome ListResolverRuleAssociations(const Model::ListResolverRuleAssociationsRequest& request) const;
+        virtual Model::ListResolverRuleAssociationsOutcome ListResolverRuleAssociations(const Model::ListResolverRuleAssociationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListResolverRuleAssociations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListResolverRuleAssociationsRequestT = Model::ListResolverRuleAssociationsRequest>
-        Model::ListResolverRuleAssociationsOutcomeCallable ListResolverRuleAssociationsCallable(const ListResolverRuleAssociationsRequestT& request) const
+        Model::ListResolverRuleAssociationsOutcomeCallable ListResolverRuleAssociationsCallable(const ListResolverRuleAssociationsRequestT& request = {}) const
         {
             return SubmitCallable(&Route53ResolverClient::ListResolverRuleAssociations, request);
         }
@@ -1444,7 +1550,7 @@ namespace Route53Resolver
          * An Async wrapper for ListResolverRuleAssociations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListResolverRuleAssociationsRequestT = Model::ListResolverRuleAssociationsRequest>
-        void ListResolverRuleAssociationsAsync(const ListResolverRuleAssociationsRequestT& request, const ListResolverRuleAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListResolverRuleAssociationsAsync(const ListResolverRuleAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListResolverRuleAssociationsRequestT& request = {}) const
         {
             return SubmitAsync(&Route53ResolverClient::ListResolverRuleAssociations, request, handler, context);
         }
@@ -1455,13 +1561,13 @@ namespace Route53Resolver
          * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/ListResolverRules">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListResolverRulesOutcome ListResolverRules(const Model::ListResolverRulesRequest& request) const;
+        virtual Model::ListResolverRulesOutcome ListResolverRules(const Model::ListResolverRulesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListResolverRules that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListResolverRulesRequestT = Model::ListResolverRulesRequest>
-        Model::ListResolverRulesOutcomeCallable ListResolverRulesCallable(const ListResolverRulesRequestT& request) const
+        Model::ListResolverRulesOutcomeCallable ListResolverRulesCallable(const ListResolverRulesRequestT& request = {}) const
         {
             return SubmitCallable(&Route53ResolverClient::ListResolverRules, request);
         }
@@ -1470,7 +1576,7 @@ namespace Route53Resolver
          * An Async wrapper for ListResolverRules that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListResolverRulesRequestT = Model::ListResolverRulesRequest>
-        void ListResolverRulesAsync(const ListResolverRulesRequestT& request, const ListResolverRulesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListResolverRulesAsync(const ListResolverRulesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListResolverRulesRequestT& request = {}) const
         {
             return SubmitAsync(&Route53ResolverClient::ListResolverRules, request, handler, context);
         }
@@ -1740,6 +1846,32 @@ namespace Route53Resolver
         }
 
         /**
+         * <p>You can use <code>UpdateOutpostResolver</code> to update the instance count,
+         * type, or name of a Resolver on an Outpost.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/UpdateOutpostResolver">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateOutpostResolverOutcome UpdateOutpostResolver(const Model::UpdateOutpostResolverRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateOutpostResolver that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateOutpostResolverRequestT = Model::UpdateOutpostResolverRequest>
+        Model::UpdateOutpostResolverOutcomeCallable UpdateOutpostResolverCallable(const UpdateOutpostResolverRequestT& request) const
+        {
+            return SubmitCallable(&Route53ResolverClient::UpdateOutpostResolver, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateOutpostResolver that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateOutpostResolverRequestT = Model::UpdateOutpostResolverRequest>
+        void UpdateOutpostResolverAsync(const UpdateOutpostResolverRequestT& request, const UpdateOutpostResolverResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&Route53ResolverClient::UpdateOutpostResolver, request, handler, context);
+        }
+
+        /**
          * <p>Updates the behavior configuration of Route 53 Resolver behavior for a single
          * VPC from Amazon Virtual Private Cloud.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/UpdateResolverConfig">AWS
@@ -1792,7 +1924,7 @@ namespace Route53Resolver
         }
 
         /**
-         * <p>Updates the name, or enpoint type for an inbound or an outbound Resolver
+         * <p>Updates the name, or endpoint type for an inbound or an outbound Resolver
          * endpoint. You can only update between IPV4 and DUALSTACK, IPV6 endpoint type
          * can't be updated to other type. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/route53resolver-2018-04-01/UpdateResolverEndpoint">AWS
@@ -1853,7 +1985,6 @@ namespace Route53Resolver
       void init(const Route53ResolverClientConfiguration& clientConfiguration);
 
       Route53ResolverClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<Route53ResolverEndpointProviderBase> m_endpointProvider;
   };
 

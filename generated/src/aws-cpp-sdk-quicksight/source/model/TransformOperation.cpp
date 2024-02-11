@@ -18,25 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-TransformOperation::TransformOperation() : 
-    m_projectOperationHasBeenSet(false),
-    m_filterOperationHasBeenSet(false),
-    m_createColumnsOperationHasBeenSet(false),
-    m_renameColumnOperationHasBeenSet(false),
-    m_castColumnTypeOperationHasBeenSet(false),
-    m_tagColumnOperationHasBeenSet(false),
-    m_untagColumnOperationHasBeenSet(false)
-{
-}
-
-TransformOperation::TransformOperation(JsonView jsonValue) : 
-    m_projectOperationHasBeenSet(false),
-    m_filterOperationHasBeenSet(false),
-    m_createColumnsOperationHasBeenSet(false),
-    m_renameColumnOperationHasBeenSet(false),
-    m_castColumnTypeOperationHasBeenSet(false),
-    m_tagColumnOperationHasBeenSet(false),
-    m_untagColumnOperationHasBeenSet(false)
+TransformOperation::TransformOperation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,52 +28,43 @@ TransformOperation& TransformOperation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ProjectOperation"))
   {
     m_projectOperation = jsonValue.GetObject("ProjectOperation");
-
     m_projectOperationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FilterOperation"))
   {
     m_filterOperation = jsonValue.GetObject("FilterOperation");
-
     m_filterOperationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreateColumnsOperation"))
   {
     m_createColumnsOperation = jsonValue.GetObject("CreateColumnsOperation");
-
     m_createColumnsOperationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RenameColumnOperation"))
   {
     m_renameColumnOperation = jsonValue.GetObject("RenameColumnOperation");
-
     m_renameColumnOperationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CastColumnTypeOperation"))
   {
     m_castColumnTypeOperation = jsonValue.GetObject("CastColumnTypeOperation");
-
     m_castColumnTypeOperationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TagColumnOperation"))
   {
     m_tagColumnOperation = jsonValue.GetObject("TagColumnOperation");
-
     m_tagColumnOperationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UntagColumnOperation"))
   {
     m_untagColumnOperation = jsonValue.GetObject("UntagColumnOperation");
-
     m_untagColumnOperationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("OverrideDatasetParameterOperation"))
+  {
+    m_overrideDatasetParameterOperation = jsonValue.GetObject("OverrideDatasetParameterOperation");
+    m_overrideDatasetParameterOperationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -138,6 +111,12 @@ JsonValue TransformOperation::Jsonize() const
   if(m_untagColumnOperationHasBeenSet)
   {
    payload.WithObject("UntagColumnOperation", m_untagColumnOperation.Jsonize());
+
+  }
+
+  if(m_overrideDatasetParameterOperationHasBeenSet)
+  {
+   payload.WithObject("OverrideDatasetParameterOperation", m_overrideDatasetParameterOperation.Jsonize());
 
   }
 

@@ -34,265 +34,85 @@ namespace Model
   class LoadBalancerTlsCertificateDomainValidationRecord
   {
   public:
-    AWS_LIGHTSAIL_API LoadBalancerTlsCertificateDomainValidationRecord();
+    AWS_LIGHTSAIL_API LoadBalancerTlsCertificateDomainValidationRecord() = default;
     AWS_LIGHTSAIL_API LoadBalancerTlsCertificateDomainValidationRecord(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API LoadBalancerTlsCertificateDomainValidationRecord& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A fully qualified domain name in the certificate. For example,
      * <code>example.com</code>.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A fully qualified domain name in the certificate. For example,
-     * <code>example.com</code>.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    LoadBalancerTlsCertificateDomainValidationRecord& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A fully qualified domain name in the certificate. For example,
-     * <code>example.com</code>.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A fully qualified domain name in the certificate. For example,
-     * <code>example.com</code>.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A fully qualified domain name in the certificate. For example,
-     * <code>example.com</code>.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A fully qualified domain name in the certificate. For example,
-     * <code>example.com</code>.</p>
-     */
-    inline LoadBalancerTlsCertificateDomainValidationRecord& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A fully qualified domain name in the certificate. For example,
-     * <code>example.com</code>.</p>
-     */
-    inline LoadBalancerTlsCertificateDomainValidationRecord& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A fully qualified domain name in the certificate. For example,
-     * <code>example.com</code>.</p>
-     */
-    inline LoadBalancerTlsCertificateDomainValidationRecord& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of validation record. For example, <code>CNAME</code> for domain
      * validation.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of validation record. For example, <code>CNAME</code> for domain
-     * validation.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    LoadBalancerTlsCertificateDomainValidationRecord& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of validation record. For example, <code>CNAME</code> for domain
-     * validation.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of validation record. For example, <code>CNAME</code> for domain
-     * validation.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of validation record. For example, <code>CNAME</code> for domain
-     * validation.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of validation record. For example, <code>CNAME</code> for domain
-     * validation.</p>
-     */
-    inline LoadBalancerTlsCertificateDomainValidationRecord& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of validation record. For example, <code>CNAME</code> for domain
-     * validation.</p>
-     */
-    inline LoadBalancerTlsCertificateDomainValidationRecord& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of validation record. For example, <code>CNAME</code> for domain
-     * validation.</p>
-     */
-    inline LoadBalancerTlsCertificateDomainValidationRecord& WithType(const char* value) { SetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value for that type.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value for that type.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    LoadBalancerTlsCertificateDomainValidationRecord& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The value for that type.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value for that type.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value for that type.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The value for that type.</p>
-     */
-    inline LoadBalancerTlsCertificateDomainValidationRecord& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value for that type.</p>
-     */
-    inline LoadBalancerTlsCertificateDomainValidationRecord& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value for that type.</p>
-     */
-    inline LoadBalancerTlsCertificateDomainValidationRecord& WithValue(const char* value) { SetValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The validation status. Valid values are listed below.</p>
      */
-    inline const LoadBalancerTlsCertificateDomainStatus& GetValidationStatus() const{ return m_validationStatus; }
-
-    /**
-     * <p>The validation status. Valid values are listed below.</p>
-     */
+    inline LoadBalancerTlsCertificateDomainStatus GetValidationStatus() const { return m_validationStatus; }
     inline bool ValidationStatusHasBeenSet() const { return m_validationStatusHasBeenSet; }
+    inline void SetValidationStatus(LoadBalancerTlsCertificateDomainStatus value) { m_validationStatusHasBeenSet = true; m_validationStatus = value; }
+    inline LoadBalancerTlsCertificateDomainValidationRecord& WithValidationStatus(LoadBalancerTlsCertificateDomainStatus value) { SetValidationStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The validation status. Valid values are listed below.</p>
-     */
-    inline void SetValidationStatus(const LoadBalancerTlsCertificateDomainStatus& value) { m_validationStatusHasBeenSet = true; m_validationStatus = value; }
-
-    /**
-     * <p>The validation status. Valid values are listed below.</p>
-     */
-    inline void SetValidationStatus(LoadBalancerTlsCertificateDomainStatus&& value) { m_validationStatusHasBeenSet = true; m_validationStatus = std::move(value); }
-
-    /**
-     * <p>The validation status. Valid values are listed below.</p>
-     */
-    inline LoadBalancerTlsCertificateDomainValidationRecord& WithValidationStatus(const LoadBalancerTlsCertificateDomainStatus& value) { SetValidationStatus(value); return *this;}
-
-    /**
-     * <p>The validation status. Valid values are listed below.</p>
-     */
-    inline LoadBalancerTlsCertificateDomainValidationRecord& WithValidationStatus(LoadBalancerTlsCertificateDomainStatus&& value) { SetValidationStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The domain name against which your SSL/TLS certificate was validated.</p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
-
-    /**
-     * <p>The domain name against which your SSL/TLS certificate was validated.</p>
-     */
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
     inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    LoadBalancerTlsCertificateDomainValidationRecord& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The domain name against which your SSL/TLS certificate was validated.</p>
-     */
-    inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
-
-    /**
-     * <p>The domain name against which your SSL/TLS certificate was validated.</p>
-     */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
-
-    /**
-     * <p>The domain name against which your SSL/TLS certificate was validated.</p>
-     */
-    inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
-
-    /**
-     * <p>The domain name against which your SSL/TLS certificate was validated.</p>
-     */
-    inline LoadBalancerTlsCertificateDomainValidationRecord& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p>The domain name against which your SSL/TLS certificate was validated.</p>
-     */
-    inline LoadBalancerTlsCertificateDomainValidationRecord& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The domain name against which your SSL/TLS certificate was validated.</p>
-     */
-    inline LoadBalancerTlsCertificateDomainValidationRecord& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that describes the state of the canonical name (CNAME) records that
      * are automatically added by Lightsail to the DNS of a domain to validate domain
      * ownership.</p>
      */
-    inline const LoadBalancerTlsCertificateDnsRecordCreationState& GetDnsRecordCreationState() const{ return m_dnsRecordCreationState; }
-
-    /**
-     * <p>An object that describes the state of the canonical name (CNAME) records that
-     * are automatically added by Lightsail to the DNS of a domain to validate domain
-     * ownership.</p>
-     */
+    inline const LoadBalancerTlsCertificateDnsRecordCreationState& GetDnsRecordCreationState() const { return m_dnsRecordCreationState; }
     inline bool DnsRecordCreationStateHasBeenSet() const { return m_dnsRecordCreationStateHasBeenSet; }
-
-    /**
-     * <p>An object that describes the state of the canonical name (CNAME) records that
-     * are automatically added by Lightsail to the DNS of a domain to validate domain
-     * ownership.</p>
-     */
-    inline void SetDnsRecordCreationState(const LoadBalancerTlsCertificateDnsRecordCreationState& value) { m_dnsRecordCreationStateHasBeenSet = true; m_dnsRecordCreationState = value; }
-
-    /**
-     * <p>An object that describes the state of the canonical name (CNAME) records that
-     * are automatically added by Lightsail to the DNS of a domain to validate domain
-     * ownership.</p>
-     */
-    inline void SetDnsRecordCreationState(LoadBalancerTlsCertificateDnsRecordCreationState&& value) { m_dnsRecordCreationStateHasBeenSet = true; m_dnsRecordCreationState = std::move(value); }
-
-    /**
-     * <p>An object that describes the state of the canonical name (CNAME) records that
-     * are automatically added by Lightsail to the DNS of a domain to validate domain
-     * ownership.</p>
-     */
-    inline LoadBalancerTlsCertificateDomainValidationRecord& WithDnsRecordCreationState(const LoadBalancerTlsCertificateDnsRecordCreationState& value) { SetDnsRecordCreationState(value); return *this;}
-
-    /**
-     * <p>An object that describes the state of the canonical name (CNAME) records that
-     * are automatically added by Lightsail to the DNS of a domain to validate domain
-     * ownership.</p>
-     */
-    inline LoadBalancerTlsCertificateDomainValidationRecord& WithDnsRecordCreationState(LoadBalancerTlsCertificateDnsRecordCreationState&& value) { SetDnsRecordCreationState(std::move(value)); return *this;}
-
+    template<typename DnsRecordCreationStateT = LoadBalancerTlsCertificateDnsRecordCreationState>
+    void SetDnsRecordCreationState(DnsRecordCreationStateT&& value) { m_dnsRecordCreationStateHasBeenSet = true; m_dnsRecordCreationState = std::forward<DnsRecordCreationStateT>(value); }
+    template<typename DnsRecordCreationStateT = LoadBalancerTlsCertificateDnsRecordCreationState>
+    LoadBalancerTlsCertificateDomainValidationRecord& WithDnsRecordCreationState(DnsRecordCreationStateT&& value) { SetDnsRecordCreationState(std::forward<DnsRecordCreationStateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -304,7 +124,7 @@ namespace Model
     Aws::String m_value;
     bool m_valueHasBeenSet = false;
 
-    LoadBalancerTlsCertificateDomainStatus m_validationStatus;
+    LoadBalancerTlsCertificateDomainStatus m_validationStatus{LoadBalancerTlsCertificateDomainStatus::NOT_SET};
     bool m_validationStatusHasBeenSet = false;
 
     Aws::String m_domainName;

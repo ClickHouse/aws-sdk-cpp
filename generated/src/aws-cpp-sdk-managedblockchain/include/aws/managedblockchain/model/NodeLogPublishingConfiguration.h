@@ -32,54 +32,25 @@ namespace Model
   class NodeLogPublishingConfiguration
   {
   public:
-    AWS_MANAGEDBLOCKCHAIN_API NodeLogPublishingConfiguration();
+    AWS_MANAGEDBLOCKCHAIN_API NodeLogPublishingConfiguration() = default;
     AWS_MANAGEDBLOCKCHAIN_API NodeLogPublishingConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDBLOCKCHAIN_API NodeLogPublishingConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDBLOCKCHAIN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Configuration properties for logging events associated with a node that is
      * owned by a member of a Managed Blockchain network using the Hyperledger Fabric
      * framework.</p>
      */
-    inline const NodeFabricLogPublishingConfiguration& GetFabric() const{ return m_fabric; }
-
-    /**
-     * <p>Configuration properties for logging events associated with a node that is
-     * owned by a member of a Managed Blockchain network using the Hyperledger Fabric
-     * framework.</p>
-     */
+    inline const NodeFabricLogPublishingConfiguration& GetFabric() const { return m_fabric; }
     inline bool FabricHasBeenSet() const { return m_fabricHasBeenSet; }
-
-    /**
-     * <p>Configuration properties for logging events associated with a node that is
-     * owned by a member of a Managed Blockchain network using the Hyperledger Fabric
-     * framework.</p>
-     */
-    inline void SetFabric(const NodeFabricLogPublishingConfiguration& value) { m_fabricHasBeenSet = true; m_fabric = value; }
-
-    /**
-     * <p>Configuration properties for logging events associated with a node that is
-     * owned by a member of a Managed Blockchain network using the Hyperledger Fabric
-     * framework.</p>
-     */
-    inline void SetFabric(NodeFabricLogPublishingConfiguration&& value) { m_fabricHasBeenSet = true; m_fabric = std::move(value); }
-
-    /**
-     * <p>Configuration properties for logging events associated with a node that is
-     * owned by a member of a Managed Blockchain network using the Hyperledger Fabric
-     * framework.</p>
-     */
-    inline NodeLogPublishingConfiguration& WithFabric(const NodeFabricLogPublishingConfiguration& value) { SetFabric(value); return *this;}
-
-    /**
-     * <p>Configuration properties for logging events associated with a node that is
-     * owned by a member of a Managed Blockchain network using the Hyperledger Fabric
-     * framework.</p>
-     */
-    inline NodeLogPublishingConfiguration& WithFabric(NodeFabricLogPublishingConfiguration&& value) { SetFabric(std::move(value)); return *this;}
-
+    template<typename FabricT = NodeFabricLogPublishingConfiguration>
+    void SetFabric(FabricT&& value) { m_fabricHasBeenSet = true; m_fabric = std::forward<FabricT>(value); }
+    template<typename FabricT = NodeFabricLogPublishingConfiguration>
+    NodeLogPublishingConfiguration& WithFabric(FabricT&& value) { SetFabric(std::forward<FabricT>(value)); return *this;}
+    ///@}
   private:
 
     NodeFabricLogPublishingConfiguration m_fabric;

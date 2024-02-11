@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateDetails::AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateDetails() : 
-    m_launchTemplateSpecificationHasBeenSet(false),
-    m_overridesHasBeenSet(false)
-{
-}
-
-AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateDetails::AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateDetails(JsonView jsonValue) : 
-    m_launchTemplateSpecificationHasBeenSet(false),
-    m_overridesHasBeenSet(false)
+AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateDetails::AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateDetails& AwsAuto
   if(jsonValue.ValueExists("LaunchTemplateSpecification"))
   {
     m_launchTemplateSpecification = jsonValue.GetObject("LaunchTemplateSpecification");
-
     m_launchTemplateSpecificationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Overrides"))
   {
     Aws::Utils::Array<JsonView> overridesJsonList = jsonValue.GetArray("Overrides");
@@ -49,7 +39,6 @@ AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateDetails& AwsAuto
     }
     m_overridesHasBeenSet = true;
   }
-
   return *this;
 }
 

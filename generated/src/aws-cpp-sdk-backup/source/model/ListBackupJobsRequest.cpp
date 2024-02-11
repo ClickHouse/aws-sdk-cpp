@@ -15,24 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListBackupJobsRequest::ListBackupJobsRequest() : 
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_byResourceArnHasBeenSet(false),
-    m_byState(BackupJobState::NOT_SET),
-    m_byStateHasBeenSet(false),
-    m_byBackupVaultNameHasBeenSet(false),
-    m_byCreatedBeforeHasBeenSet(false),
-    m_byCreatedAfterHasBeenSet(false),
-    m_byResourceTypeHasBeenSet(false),
-    m_byAccountIdHasBeenSet(false),
-    m_byCompleteAfterHasBeenSet(false),
-    m_byCompleteBeforeHasBeenSet(false),
-    m_byParentJobIdHasBeenSet(false)
-{
-}
-
 Aws::String ListBackupJobsRequest::SerializePayload() const
 {
   return {};
@@ -122,6 +104,13 @@ void ListBackupJobsRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << m_byParentJobId;
       uri.AddQueryStringParameter("parentJobId", ss.str());
+      ss.str("");
+    }
+
+    if(m_byMessageCategoryHasBeenSet)
+    {
+      ss << m_byMessageCategory;
+      uri.AddQueryStringParameter("messageCategory", ss.str());
       ss.str("");
     }
 

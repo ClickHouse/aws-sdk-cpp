@@ -18,17 +18,7 @@ namespace SSMIncidents
 namespace Model
 {
 
-Condition::Condition() : 
-    m_afterHasBeenSet(false),
-    m_beforeHasBeenSet(false),
-    m_equalsHasBeenSet(false)
-{
-}
-
-Condition::Condition(JsonView jsonValue) : 
-    m_afterHasBeenSet(false),
-    m_beforeHasBeenSet(false),
-    m_equalsHasBeenSet(false)
+Condition::Condition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ Condition& Condition::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("after"))
   {
     m_after = jsonValue.GetDouble("after");
-
     m_afterHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("before"))
   {
     m_before = jsonValue.GetDouble("before");
-
     m_beforeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("equals"))
   {
     m_equals = jsonValue.GetObject("equals");
-
     m_equalsHasBeenSet = true;
   }
-
   return *this;
 }
 

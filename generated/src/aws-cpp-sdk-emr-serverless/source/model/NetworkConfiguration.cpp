@@ -18,15 +18,7 @@ namespace EMRServerless
 namespace Model
 {
 
-NetworkConfiguration::NetworkConfiguration() : 
-    m_subnetIdsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false)
-{
-}
-
-NetworkConfiguration::NetworkConfiguration(JsonView jsonValue) : 
-    m_subnetIdsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false)
+NetworkConfiguration::NetworkConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ NetworkConfiguration& NetworkConfiguration::operator =(JsonView jsonValue)
     }
     m_subnetIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("securityGroupIds"))
   {
     Aws::Utils::Array<JsonView> securityGroupIdsJsonList = jsonValue.GetArray("securityGroupIds");
@@ -52,7 +43,6 @@ NetworkConfiguration& NetworkConfiguration::operator =(JsonView jsonValue)
     }
     m_securityGroupIdsHasBeenSet = true;
   }
-
   return *this;
 }
 

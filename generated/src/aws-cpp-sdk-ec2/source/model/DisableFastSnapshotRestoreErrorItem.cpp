@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-DisableFastSnapshotRestoreErrorItem::DisableFastSnapshotRestoreErrorItem() : 
-    m_snapshotIdHasBeenSet(false),
-    m_fastSnapshotRestoreStateErrorsHasBeenSet(false)
-{
-}
-
-DisableFastSnapshotRestoreErrorItem::DisableFastSnapshotRestoreErrorItem(const XmlNode& xmlNode) : 
-    m_snapshotIdHasBeenSet(false),
-    m_fastSnapshotRestoreStateErrorsHasBeenSet(false)
+DisableFastSnapshotRestoreErrorItem::DisableFastSnapshotRestoreErrorItem(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ DisableFastSnapshotRestoreErrorItem& DisableFastSnapshotRestoreErrorItem::operat
     if(!fastSnapshotRestoreStateErrorsNode.IsNull())
     {
       XmlNode fastSnapshotRestoreStateErrorsMember = fastSnapshotRestoreStateErrorsNode.FirstChild("item");
+      m_fastSnapshotRestoreStateErrorsHasBeenSet = !fastSnapshotRestoreStateErrorsMember.IsNull();
       while(!fastSnapshotRestoreStateErrorsMember.IsNull())
       {
         m_fastSnapshotRestoreStateErrors.push_back(fastSnapshotRestoreStateErrorsMember);
@@ -94,7 +87,7 @@ void DisableFastSnapshotRestoreErrorItem::OutputToStream(Aws::OStream& oStream, 
       for(auto& item : m_fastSnapshotRestoreStateErrors)
       {
         Aws::StringStream fastSnapshotRestoreStateErrorsSs;
-        fastSnapshotRestoreStateErrorsSs << location <<  ".FastSnapshotRestoreStateErrorSet." << fastSnapshotRestoreStateErrorsIdx++;
+        fastSnapshotRestoreStateErrorsSs << location << ".FastSnapshotRestoreStateErrorSet." << fastSnapshotRestoreStateErrorsIdx++;
         item.OutputToStream(oStream, fastSnapshotRestoreStateErrorsSs.str().c_str());
       }
   }

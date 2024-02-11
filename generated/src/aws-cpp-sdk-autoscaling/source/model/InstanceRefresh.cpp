@@ -20,41 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-InstanceRefresh::InstanceRefresh() : 
-    m_instanceRefreshIdHasBeenSet(false),
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_status(InstanceRefreshStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusReasonHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_percentageComplete(0),
-    m_percentageCompleteHasBeenSet(false),
-    m_instancesToUpdate(0),
-    m_instancesToUpdateHasBeenSet(false),
-    m_progressDetailsHasBeenSet(false),
-    m_preferencesHasBeenSet(false),
-    m_desiredConfigurationHasBeenSet(false),
-    m_rollbackDetailsHasBeenSet(false)
-{
-}
-
-InstanceRefresh::InstanceRefresh(const XmlNode& xmlNode) : 
-    m_instanceRefreshIdHasBeenSet(false),
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_status(InstanceRefreshStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusReasonHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_percentageComplete(0),
-    m_percentageCompleteHasBeenSet(false),
-    m_instancesToUpdate(0),
-    m_instancesToUpdateHasBeenSet(false),
-    m_progressDetailsHasBeenSet(false),
-    m_preferencesHasBeenSet(false),
-    m_desiredConfigurationHasBeenSet(false),
-    m_rollbackDetailsHasBeenSet(false)
+InstanceRefresh::InstanceRefresh(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -80,7 +46,7 @@ InstanceRefresh& InstanceRefresh::operator =(const XmlNode& xmlNode)
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = InstanceRefreshStatusMapper::GetInstanceRefreshStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = InstanceRefreshStatusMapper::GetInstanceRefreshStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode statusReasonNode = resultNode.FirstChild("StatusReason");
@@ -156,7 +122,7 @@ void InstanceRefresh::OutputToStream(Aws::OStream& oStream, const char* location
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << InstanceRefreshStatusMapper::GetNameForInstanceRefreshStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(InstanceRefreshStatusMapper::GetNameForInstanceRefreshStatus(m_status)) << "&";
   }
 
   if(m_statusReasonHasBeenSet)
@@ -226,7 +192,7 @@ void InstanceRefresh::OutputToStream(Aws::OStream& oStream, const char* location
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << InstanceRefreshStatusMapper::GetNameForInstanceRefreshStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(InstanceRefreshStatusMapper::GetNameForInstanceRefreshStatus(m_status)) << "&";
   }
   if(m_statusReasonHasBeenSet)
   {

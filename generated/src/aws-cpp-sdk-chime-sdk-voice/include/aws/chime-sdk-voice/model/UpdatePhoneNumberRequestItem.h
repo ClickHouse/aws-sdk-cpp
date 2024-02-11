@@ -34,134 +34,70 @@ namespace Model
   class UpdatePhoneNumberRequestItem
   {
   public:
-    AWS_CHIMESDKVOICE_API UpdatePhoneNumberRequestItem();
+    AWS_CHIMESDKVOICE_API UpdatePhoneNumberRequestItem() = default;
     AWS_CHIMESDKVOICE_API UpdatePhoneNumberRequestItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKVOICE_API UpdatePhoneNumberRequestItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKVOICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The phone number ID to update.</p>
      */
-    inline const Aws::String& GetPhoneNumberId() const{ return m_phoneNumberId; }
-
-    /**
-     * <p>The phone number ID to update.</p>
-     */
+    inline const Aws::String& GetPhoneNumberId() const { return m_phoneNumberId; }
     inline bool PhoneNumberIdHasBeenSet() const { return m_phoneNumberIdHasBeenSet; }
+    template<typename PhoneNumberIdT = Aws::String>
+    void SetPhoneNumberId(PhoneNumberIdT&& value) { m_phoneNumberIdHasBeenSet = true; m_phoneNumberId = std::forward<PhoneNumberIdT>(value); }
+    template<typename PhoneNumberIdT = Aws::String>
+    UpdatePhoneNumberRequestItem& WithPhoneNumberId(PhoneNumberIdT&& value) { SetPhoneNumberId(std::forward<PhoneNumberIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The phone number ID to update.</p>
-     */
-    inline void SetPhoneNumberId(const Aws::String& value) { m_phoneNumberIdHasBeenSet = true; m_phoneNumberId = value; }
-
-    /**
-     * <p>The phone number ID to update.</p>
-     */
-    inline void SetPhoneNumberId(Aws::String&& value) { m_phoneNumberIdHasBeenSet = true; m_phoneNumberId = std::move(value); }
-
-    /**
-     * <p>The phone number ID to update.</p>
-     */
-    inline void SetPhoneNumberId(const char* value) { m_phoneNumberIdHasBeenSet = true; m_phoneNumberId.assign(value); }
-
-    /**
-     * <p>The phone number ID to update.</p>
-     */
-    inline UpdatePhoneNumberRequestItem& WithPhoneNumberId(const Aws::String& value) { SetPhoneNumberId(value); return *this;}
-
-    /**
-     * <p>The phone number ID to update.</p>
-     */
-    inline UpdatePhoneNumberRequestItem& WithPhoneNumberId(Aws::String&& value) { SetPhoneNumberId(std::move(value)); return *this;}
-
-    /**
-     * <p>The phone number ID to update.</p>
-     */
-    inline UpdatePhoneNumberRequestItem& WithPhoneNumberId(const char* value) { SetPhoneNumberId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The product type to update.</p>
      */
-    inline const PhoneNumberProductType& GetProductType() const{ return m_productType; }
-
-    /**
-     * <p>The product type to update.</p>
-     */
+    inline PhoneNumberProductType GetProductType() const { return m_productType; }
     inline bool ProductTypeHasBeenSet() const { return m_productTypeHasBeenSet; }
+    inline void SetProductType(PhoneNumberProductType value) { m_productTypeHasBeenSet = true; m_productType = value; }
+    inline UpdatePhoneNumberRequestItem& WithProductType(PhoneNumberProductType value) { SetProductType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The product type to update.</p>
-     */
-    inline void SetProductType(const PhoneNumberProductType& value) { m_productTypeHasBeenSet = true; m_productType = value; }
-
-    /**
-     * <p>The product type to update.</p>
-     */
-    inline void SetProductType(PhoneNumberProductType&& value) { m_productTypeHasBeenSet = true; m_productType = std::move(value); }
-
-    /**
-     * <p>The product type to update.</p>
-     */
-    inline UpdatePhoneNumberRequestItem& WithProductType(const PhoneNumberProductType& value) { SetProductType(value); return *this;}
-
-    /**
-     * <p>The product type to update.</p>
-     */
-    inline UpdatePhoneNumberRequestItem& WithProductType(PhoneNumberProductType&& value) { SetProductType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The outbound calling name to update.</p>
      */
-    inline const Aws::String& GetCallingName() const{ return m_callingName; }
-
-    /**
-     * <p>The outbound calling name to update.</p>
-     */
+    inline const Aws::String& GetCallingName() const { return m_callingName; }
     inline bool CallingNameHasBeenSet() const { return m_callingNameHasBeenSet; }
+    template<typename CallingNameT = Aws::String>
+    void SetCallingName(CallingNameT&& value) { m_callingNameHasBeenSet = true; m_callingName = std::forward<CallingNameT>(value); }
+    template<typename CallingNameT = Aws::String>
+    UpdatePhoneNumberRequestItem& WithCallingName(CallingNameT&& value) { SetCallingName(std::forward<CallingNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The outbound calling name to update.</p>
+     * <p>The name of the phone number.</p>
      */
-    inline void SetCallingName(const Aws::String& value) { m_callingNameHasBeenSet = true; m_callingName = value; }
-
-    /**
-     * <p>The outbound calling name to update.</p>
-     */
-    inline void SetCallingName(Aws::String&& value) { m_callingNameHasBeenSet = true; m_callingName = std::move(value); }
-
-    /**
-     * <p>The outbound calling name to update.</p>
-     */
-    inline void SetCallingName(const char* value) { m_callingNameHasBeenSet = true; m_callingName.assign(value); }
-
-    /**
-     * <p>The outbound calling name to update.</p>
-     */
-    inline UpdatePhoneNumberRequestItem& WithCallingName(const Aws::String& value) { SetCallingName(value); return *this;}
-
-    /**
-     * <p>The outbound calling name to update.</p>
-     */
-    inline UpdatePhoneNumberRequestItem& WithCallingName(Aws::String&& value) { SetCallingName(std::move(value)); return *this;}
-
-    /**
-     * <p>The outbound calling name to update.</p>
-     */
-    inline UpdatePhoneNumberRequestItem& WithCallingName(const char* value) { SetCallingName(value); return *this;}
-
+    inline const Aws::String& GetName() const { return m_name; }
+    inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdatePhoneNumberRequestItem& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_phoneNumberId;
     bool m_phoneNumberIdHasBeenSet = false;
 
-    PhoneNumberProductType m_productType;
+    PhoneNumberProductType m_productType{PhoneNumberProductType::NOT_SET};
     bool m_productTypeHasBeenSet = false;
 
     Aws::String m_callingName;
     bool m_callingNameHasBeenSet = false;
+
+    Aws::String m_name;
+    bool m_nameHasBeenSet = false;
   };
 
 } // namespace Model

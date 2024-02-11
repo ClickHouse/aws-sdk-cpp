@@ -18,17 +18,7 @@ namespace ResourceGroupsTaggingAPI
 namespace Model
 {
 
-ResourceTagMapping::ResourceTagMapping() : 
-    m_resourceARNHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_complianceDetailsHasBeenSet(false)
-{
-}
-
-ResourceTagMapping::ResourceTagMapping(JsonView jsonValue) : 
-    m_resourceARNHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_complianceDetailsHasBeenSet(false)
+ResourceTagMapping::ResourceTagMapping(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ ResourceTagMapping& ResourceTagMapping::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ResourceARN"))
   {
     m_resourceARN = jsonValue.GetString("ResourceARN");
-
     m_resourceARNHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Tags"))
   {
     Aws::Utils::Array<JsonView> tagsJsonList = jsonValue.GetArray("Tags");
@@ -51,14 +39,11 @@ ResourceTagMapping& ResourceTagMapping::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComplianceDetails"))
   {
     m_complianceDetails = jsonValue.GetObject("ComplianceDetails");
-
     m_complianceDetailsHasBeenSet = true;
   }
-
   return *this;
 }
 

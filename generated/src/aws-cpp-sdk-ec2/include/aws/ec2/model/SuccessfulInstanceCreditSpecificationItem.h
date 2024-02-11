@@ -32,7 +32,7 @@ namespace Model
   class SuccessfulInstanceCreditSpecificationItem
   {
   public:
-    AWS_EC2_API SuccessfulInstanceCreditSpecificationItem();
+    AWS_EC2_API SuccessfulInstanceCreditSpecificationItem() = default;
     AWS_EC2_API SuccessfulInstanceCreditSpecificationItem(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API SuccessfulInstanceCreditSpecificationItem& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,46 +40,17 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the instance.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline SuccessfulInstanceCreditSpecificationItem& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline SuccessfulInstanceCreditSpecificationItem& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline SuccessfulInstanceCreditSpecificationItem& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    SuccessfulInstanceCreditSpecificationItem& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_instanceId;

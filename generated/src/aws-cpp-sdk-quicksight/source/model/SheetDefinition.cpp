@@ -18,35 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-SheetDefinition::SheetDefinition() : 
-    m_sheetIdHasBeenSet(false),
-    m_titleHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_parameterControlsHasBeenSet(false),
-    m_filterControlsHasBeenSet(false),
-    m_visualsHasBeenSet(false),
-    m_textBoxesHasBeenSet(false),
-    m_layoutsHasBeenSet(false),
-    m_sheetControlLayoutsHasBeenSet(false),
-    m_contentType(SheetContentType::NOT_SET),
-    m_contentTypeHasBeenSet(false)
-{
-}
-
-SheetDefinition::SheetDefinition(JsonView jsonValue) : 
-    m_sheetIdHasBeenSet(false),
-    m_titleHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_parameterControlsHasBeenSet(false),
-    m_filterControlsHasBeenSet(false),
-    m_visualsHasBeenSet(false),
-    m_textBoxesHasBeenSet(false),
-    m_layoutsHasBeenSet(false),
-    m_sheetControlLayoutsHasBeenSet(false),
-    m_contentType(SheetContentType::NOT_SET),
-    m_contentTypeHasBeenSet(false)
+SheetDefinition::SheetDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -56,31 +28,23 @@ SheetDefinition& SheetDefinition::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SheetId"))
   {
     m_sheetId = jsonValue.GetString("SheetId");
-
     m_sheetIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Title"))
   {
     m_title = jsonValue.GetString("Title");
-
     m_titleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ParameterControls"))
   {
     Aws::Utils::Array<JsonView> parameterControlsJsonList = jsonValue.GetArray("ParameterControls");
@@ -90,7 +54,6 @@ SheetDefinition& SheetDefinition::operator =(JsonView jsonValue)
     }
     m_parameterControlsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FilterControls"))
   {
     Aws::Utils::Array<JsonView> filterControlsJsonList = jsonValue.GetArray("FilterControls");
@@ -100,7 +63,6 @@ SheetDefinition& SheetDefinition::operator =(JsonView jsonValue)
     }
     m_filterControlsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Visuals"))
   {
     Aws::Utils::Array<JsonView> visualsJsonList = jsonValue.GetArray("Visuals");
@@ -110,7 +72,6 @@ SheetDefinition& SheetDefinition::operator =(JsonView jsonValue)
     }
     m_visualsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TextBoxes"))
   {
     Aws::Utils::Array<JsonView> textBoxesJsonList = jsonValue.GetArray("TextBoxes");
@@ -120,7 +81,15 @@ SheetDefinition& SheetDefinition::operator =(JsonView jsonValue)
     }
     m_textBoxesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Images"))
+  {
+    Aws::Utils::Array<JsonView> imagesJsonList = jsonValue.GetArray("Images");
+    for(unsigned imagesIndex = 0; imagesIndex < imagesJsonList.GetLength(); ++imagesIndex)
+    {
+      m_images.push_back(imagesJsonList[imagesIndex].AsObject());
+    }
+    m_imagesHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("Layouts"))
   {
     Aws::Utils::Array<JsonView> layoutsJsonList = jsonValue.GetArray("Layouts");
@@ -130,7 +99,6 @@ SheetDefinition& SheetDefinition::operator =(JsonView jsonValue)
     }
     m_layoutsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SheetControlLayouts"))
   {
     Aws::Utils::Array<JsonView> sheetControlLayoutsJsonList = jsonValue.GetArray("SheetControlLayouts");
@@ -140,14 +108,16 @@ SheetDefinition& SheetDefinition::operator =(JsonView jsonValue)
     }
     m_sheetControlLayoutsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ContentType"))
   {
     m_contentType = SheetContentTypeMapper::GetSheetContentTypeForName(jsonValue.GetString("ContentType"));
-
     m_contentTypeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("CustomActionDefaults"))
+  {
+    m_customActionDefaults = jsonValue.GetObject("CustomActionDefaults");
+    m_customActionDefaultsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -223,6 +193,17 @@ JsonValue SheetDefinition::Jsonize() const
 
   }
 
+  if(m_imagesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> imagesJsonList(m_images.size());
+   for(unsigned imagesIndex = 0; imagesIndex < imagesJsonList.GetLength(); ++imagesIndex)
+   {
+     imagesJsonList[imagesIndex].AsObject(m_images[imagesIndex].Jsonize());
+   }
+   payload.WithArray("Images", std::move(imagesJsonList));
+
+  }
+
   if(m_layoutsHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> layoutsJsonList(m_layouts.size());
@@ -248,6 +229,12 @@ JsonValue SheetDefinition::Jsonize() const
   if(m_contentTypeHasBeenSet)
   {
    payload.WithString("ContentType", SheetContentTypeMapper::GetNameForSheetContentType(m_contentType));
+  }
+
+  if(m_customActionDefaultsHasBeenSet)
+  {
+   payload.WithObject("CustomActionDefaults", m_customActionDefaults.Jsonize());
+
   }
 
   return payload;

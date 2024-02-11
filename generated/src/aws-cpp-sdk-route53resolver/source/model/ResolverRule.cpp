@@ -18,45 +18,7 @@ namespace Route53Resolver
 namespace Model
 {
 
-ResolverRule::ResolverRule() : 
-    m_idHasBeenSet(false),
-    m_creatorRequestIdHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_domainNameHasBeenSet(false),
-    m_status(ResolverRuleStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_ruleType(RuleTypeOption::NOT_SET),
-    m_ruleTypeHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_targetIpsHasBeenSet(false),
-    m_resolverEndpointIdHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_shareStatus(ShareStatus::NOT_SET),
-    m_shareStatusHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_modificationTimeHasBeenSet(false)
-{
-}
-
-ResolverRule::ResolverRule(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_creatorRequestIdHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_domainNameHasBeenSet(false),
-    m_status(ResolverRuleStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_ruleType(RuleTypeOption::NOT_SET),
-    m_ruleTypeHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_targetIpsHasBeenSet(false),
-    m_resolverEndpointIdHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_shareStatus(ShareStatus::NOT_SET),
-    m_shareStatusHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_modificationTimeHasBeenSet(false)
+ResolverRule::ResolverRule(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -66,59 +28,43 @@ ResolverRule& ResolverRule::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetString("Id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatorRequestId"))
   {
     m_creatorRequestId = jsonValue.GetString("CreatorRequestId");
-
     m_creatorRequestIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DomainName"))
   {
     m_domainName = jsonValue.GetString("DomainName");
-
     m_domainNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = ResolverRuleStatusMapper::GetResolverRuleStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatusMessage"))
   {
     m_statusMessage = jsonValue.GetString("StatusMessage");
-
     m_statusMessageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RuleType"))
   {
     m_ruleType = RuleTypeOptionMapper::GetRuleTypeOptionForName(jsonValue.GetString("RuleType"));
-
     m_ruleTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TargetIps"))
   {
     Aws::Utils::Array<JsonView> targetIpsJsonList = jsonValue.GetArray("TargetIps");
@@ -128,42 +74,36 @@ ResolverRule& ResolverRule::operator =(JsonView jsonValue)
     }
     m_targetIpsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResolverEndpointId"))
   {
     m_resolverEndpointId = jsonValue.GetString("ResolverEndpointId");
-
     m_resolverEndpointIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OwnerId"))
   {
     m_ownerId = jsonValue.GetString("OwnerId");
-
     m_ownerIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ShareStatus"))
   {
     m_shareStatus = ShareStatusMapper::GetShareStatusForName(jsonValue.GetString("ShareStatus"));
-
     m_shareStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreationTime"))
   {
     m_creationTime = jsonValue.GetString("CreationTime");
-
     m_creationTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ModificationTime"))
   {
     m_modificationTime = jsonValue.GetString("ModificationTime");
-
     m_modificationTimeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("DelegationRecord"))
+  {
+    m_delegationRecord = jsonValue.GetString("DelegationRecord");
+    m_delegationRecordHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -254,6 +194,12 @@ JsonValue ResolverRule::Jsonize() const
   if(m_modificationTimeHasBeenSet)
   {
    payload.WithString("ModificationTime", m_modificationTime);
+
+  }
+
+  if(m_delegationRecordHasBeenSet)
+  {
+   payload.WithString("DelegationRecord", m_delegationRecord);
 
   }
 

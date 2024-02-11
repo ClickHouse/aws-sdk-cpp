@@ -25,6 +25,7 @@ namespace Model
 {
 
   /**
+   *  <p>Amazon Elastic Inference is no longer available.</p> 
    * <p>Describes the Inference accelerators for the instance type.</p><p><h3>See
    * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/InferenceAcceleratorInfo">AWS
@@ -33,7 +34,7 @@ namespace Model
   class InferenceAcceleratorInfo
   {
   public:
-    AWS_EC2_API InferenceAcceleratorInfo();
+    AWS_EC2_API InferenceAcceleratorInfo() = default;
     AWS_EC2_API InferenceAcceleratorInfo(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API InferenceAcceleratorInfo& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,50 +42,37 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Describes the Inference accelerators for the instance type.</p>
      */
-    inline const Aws::Vector<InferenceDeviceInfo>& GetAccelerators() const{ return m_accelerators; }
-
-    /**
-     * <p>Describes the Inference accelerators for the instance type.</p>
-     */
+    inline const Aws::Vector<InferenceDeviceInfo>& GetAccelerators() const { return m_accelerators; }
     inline bool AcceleratorsHasBeenSet() const { return m_acceleratorsHasBeenSet; }
+    template<typename AcceleratorsT = Aws::Vector<InferenceDeviceInfo>>
+    void SetAccelerators(AcceleratorsT&& value) { m_acceleratorsHasBeenSet = true; m_accelerators = std::forward<AcceleratorsT>(value); }
+    template<typename AcceleratorsT = Aws::Vector<InferenceDeviceInfo>>
+    InferenceAcceleratorInfo& WithAccelerators(AcceleratorsT&& value) { SetAccelerators(std::forward<AcceleratorsT>(value)); return *this;}
+    template<typename AcceleratorsT = InferenceDeviceInfo>
+    InferenceAcceleratorInfo& AddAccelerators(AcceleratorsT&& value) { m_acceleratorsHasBeenSet = true; m_accelerators.emplace_back(std::forward<AcceleratorsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>Describes the Inference accelerators for the instance type.</p>
+     * <p>The total size of the memory for the inference accelerators for the instance
+     * type, in MiB.</p>
      */
-    inline void SetAccelerators(const Aws::Vector<InferenceDeviceInfo>& value) { m_acceleratorsHasBeenSet = true; m_accelerators = value; }
-
-    /**
-     * <p>Describes the Inference accelerators for the instance type.</p>
-     */
-    inline void SetAccelerators(Aws::Vector<InferenceDeviceInfo>&& value) { m_acceleratorsHasBeenSet = true; m_accelerators = std::move(value); }
-
-    /**
-     * <p>Describes the Inference accelerators for the instance type.</p>
-     */
-    inline InferenceAcceleratorInfo& WithAccelerators(const Aws::Vector<InferenceDeviceInfo>& value) { SetAccelerators(value); return *this;}
-
-    /**
-     * <p>Describes the Inference accelerators for the instance type.</p>
-     */
-    inline InferenceAcceleratorInfo& WithAccelerators(Aws::Vector<InferenceDeviceInfo>&& value) { SetAccelerators(std::move(value)); return *this;}
-
-    /**
-     * <p>Describes the Inference accelerators for the instance type.</p>
-     */
-    inline InferenceAcceleratorInfo& AddAccelerators(const InferenceDeviceInfo& value) { m_acceleratorsHasBeenSet = true; m_accelerators.push_back(value); return *this; }
-
-    /**
-     * <p>Describes the Inference accelerators for the instance type.</p>
-     */
-    inline InferenceAcceleratorInfo& AddAccelerators(InferenceDeviceInfo&& value) { m_acceleratorsHasBeenSet = true; m_accelerators.push_back(std::move(value)); return *this; }
-
+    inline int GetTotalInferenceMemoryInMiB() const { return m_totalInferenceMemoryInMiB; }
+    inline bool TotalInferenceMemoryInMiBHasBeenSet() const { return m_totalInferenceMemoryInMiBHasBeenSet; }
+    inline void SetTotalInferenceMemoryInMiB(int value) { m_totalInferenceMemoryInMiBHasBeenSet = true; m_totalInferenceMemoryInMiB = value; }
+    inline InferenceAcceleratorInfo& WithTotalInferenceMemoryInMiB(int value) { SetTotalInferenceMemoryInMiB(value); return *this;}
+    ///@}
   private:
 
     Aws::Vector<InferenceDeviceInfo> m_accelerators;
     bool m_acceleratorsHasBeenSet = false;
+
+    int m_totalInferenceMemoryInMiB{0};
+    bool m_totalInferenceMemoryInMiBHasBeenSet = false;
   };
 
 } // namespace Model

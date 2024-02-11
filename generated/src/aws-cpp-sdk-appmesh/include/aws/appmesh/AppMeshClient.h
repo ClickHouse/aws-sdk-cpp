@@ -37,22 +37,25 @@ namespace AppMesh
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef AppMeshClientConfiguration ClientConfigurationType;
+      typedef AppMeshEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         AppMeshClient(const Aws::AppMesh::AppMeshClientConfiguration& clientConfiguration = Aws::AppMesh::AppMeshClientConfiguration(),
-                      std::shared_ptr<AppMeshEndpointProviderBase> endpointProvider = Aws::MakeShared<AppMeshEndpointProvider>(ALLOCATION_TAG));
+                      std::shared_ptr<AppMeshEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         AppMeshClient(const Aws::Auth::AWSCredentials& credentials,
-                      std::shared_ptr<AppMeshEndpointProviderBase> endpointProvider = Aws::MakeShared<AppMeshEndpointProvider>(ALLOCATION_TAG),
+                      std::shared_ptr<AppMeshEndpointProviderBase> endpointProvider = nullptr,
                       const Aws::AppMesh::AppMeshClientConfiguration& clientConfiguration = Aws::AppMesh::AppMeshClientConfiguration());
 
        /**
@@ -60,7 +63,7 @@ namespace AppMesh
         * the default http client factory will be used
         */
         AppMeshClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                      std::shared_ptr<AppMeshEndpointProviderBase> endpointProvider = Aws::MakeShared<AppMeshEndpointProvider>(ALLOCATION_TAG),
+                      std::shared_ptr<AppMeshEndpointProviderBase> endpointProvider = nullptr,
                       const Aws::AppMesh::AppMeshClientConfiguration& clientConfiguration = Aws::AppMesh::AppMeshClientConfiguration());
 
 
@@ -715,13 +718,13 @@ namespace AppMesh
          * href="http://docs.aws.amazon.com/goto/WebAPI/appmesh-2019-01-25/ListMeshes">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListMeshesOutcome ListMeshes(const Model::ListMeshesRequest& request) const;
+        virtual Model::ListMeshesOutcome ListMeshes(const Model::ListMeshesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListMeshes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListMeshesRequestT = Model::ListMeshesRequest>
-        Model::ListMeshesOutcomeCallable ListMeshesCallable(const ListMeshesRequestT& request) const
+        Model::ListMeshesOutcomeCallable ListMeshesCallable(const ListMeshesRequestT& request = {}) const
         {
             return SubmitCallable(&AppMeshClient::ListMeshes, request);
         }
@@ -730,7 +733,7 @@ namespace AppMesh
          * An Async wrapper for ListMeshes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListMeshesRequestT = Model::ListMeshesRequest>
-        void ListMeshesAsync(const ListMeshesRequestT& request, const ListMeshesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListMeshesAsync(const ListMeshesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListMeshesRequestT& request = {}) const
         {
             return SubmitAsync(&AppMeshClient::ListMeshes, request, handler, context);
         }
@@ -1131,7 +1134,6 @@ namespace AppMesh
       void init(const AppMeshClientConfiguration& clientConfiguration);
 
       AppMeshClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<AppMeshEndpointProviderBase> m_endpointProvider;
   };
 

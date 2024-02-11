@@ -23,22 +23,25 @@ namespace FSx
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef FSxClientConfiguration ClientConfigurationType;
+      typedef FSxEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         FSxClient(const Aws::FSx::FSxClientConfiguration& clientConfiguration = Aws::FSx::FSxClientConfiguration(),
-                  std::shared_ptr<FSxEndpointProviderBase> endpointProvider = Aws::MakeShared<FSxEndpointProvider>(ALLOCATION_TAG));
+                  std::shared_ptr<FSxEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         FSxClient(const Aws::Auth::AWSCredentials& credentials,
-                  std::shared_ptr<FSxEndpointProviderBase> endpointProvider = Aws::MakeShared<FSxEndpointProvider>(ALLOCATION_TAG),
+                  std::shared_ptr<FSxEndpointProviderBase> endpointProvider = nullptr,
                   const Aws::FSx::FSxClientConfiguration& clientConfiguration = Aws::FSx::FSxClientConfiguration());
 
        /**
@@ -46,7 +49,7 @@ namespace FSx
         * the default http client factory will be used
         */
         FSxClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                  std::shared_ptr<FSxEndpointProviderBase> endpointProvider = Aws::MakeShared<FSxEndpointProvider>(ALLOCATION_TAG),
+                  std::shared_ptr<FSxEndpointProviderBase> endpointProvider = nullptr,
                   const Aws::FSx::FSxClientConfiguration& clientConfiguration = Aws::FSx::FSxClientConfiguration());
 
 
@@ -115,11 +118,13 @@ namespace FSx
         /**
          * <p>Cancels an existing Amazon FSx for Lustre data repository task if that task
          * is in either the <code>PENDING</code> or <code>EXECUTING</code> state. When you
-         * cancel a task, Amazon FSx does the following.</p> <ul> <li> <p>Any files that
-         * FSx has already exported are not reverted.</p> </li> <li> <p>FSx continues to
-         * export any files that are "in-flight" when the cancel operation is received.</p>
-         * </li> <li> <p>FSx does not export any files that have not yet been exported.</p>
-         * </li> </ul><p><h3>See Also:</h3>   <a
+         * cancel an export task, Amazon FSx does the following.</p> <ul> <li> <p>Any files
+         * that FSx has already exported are not reverted.</p> </li> <li> <p>FSx continues
+         * to export any files that are in-flight when the cancel operation is
+         * received.</p> </li> <li> <p>FSx does not export any files that have not yet been
+         * exported.</p> </li> </ul> <p>For a release task, Amazon FSx will stop releasing
+         * files upon cancellation. Any files that have already been released will remain
+         * in the released state.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/CancelDataRepositoryTask">AWS
          * API Reference</a></p>
          */
@@ -196,6 +201,73 @@ namespace FSx
         }
 
         /**
+         * <p>Updates an existing volume by using a snapshot from another Amazon FSx for
+         * OpenZFS file system. For more information, see <a
+         * href="https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/on-demand-replication.html">on-demand
+         * data replication</a> in the Amazon FSx for OpenZFS User Guide.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/CopySnapshotAndUpdateVolume">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CopySnapshotAndUpdateVolumeOutcome CopySnapshotAndUpdateVolume(const Model::CopySnapshotAndUpdateVolumeRequest& request) const;
+
+        /**
+         * A Callable wrapper for CopySnapshotAndUpdateVolume that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CopySnapshotAndUpdateVolumeRequestT = Model::CopySnapshotAndUpdateVolumeRequest>
+        Model::CopySnapshotAndUpdateVolumeOutcomeCallable CopySnapshotAndUpdateVolumeCallable(const CopySnapshotAndUpdateVolumeRequestT& request) const
+        {
+            return SubmitCallable(&FSxClient::CopySnapshotAndUpdateVolume, request);
+        }
+
+        /**
+         * An Async wrapper for CopySnapshotAndUpdateVolume that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CopySnapshotAndUpdateVolumeRequestT = Model::CopySnapshotAndUpdateVolumeRequest>
+        void CopySnapshotAndUpdateVolumeAsync(const CopySnapshotAndUpdateVolumeRequestT& request, const CopySnapshotAndUpdateVolumeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&FSxClient::CopySnapshotAndUpdateVolume, request, handler, context);
+        }
+
+        /**
+         * <p>Creates an S3 access point and attaches it to an Amazon FSx volume. For FSx
+         * for OpenZFS file systems, the volume must be hosted on a high-availability file
+         * system, either Single-AZ or Multi-AZ. For more information, see <a
+         * href="https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/s3accesspoints-for-FSx.html">Accessing
+         * your data using Amazon S3 access points</a>. in the Amazon FSx for OpenZFS User
+         * Guide. </p> <p>The requester requires the following permissions to perform these
+         * actions:</p> <ul> <li> <p> <code>fsx:CreateAndAttachS3AccessPoint</code> </p>
+         * </li> <li> <p> <code>s3:CreateAccessPoint</code> </p> </li> <li> <p>
+         * <code>s3:GetAccessPoint</code> </p> </li> <li> <p>
+         * <code>s3:PutAccessPointPolicy</code> </p> </li> <li> <p>
+         * <code>s3:DeleteAccessPoint</code> </p> </li> </ul> <p>The following actions are
+         * related to <code>CreateAndAttachS3AccessPoint</code>:</p> <ul> <li> <p>
+         * <a>DescribeS3AccessPointAttachments</a> </p> </li> <li> <p>
+         * <a>DetachAndDeleteS3AccessPoint</a> </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/CreateAndAttachS3AccessPoint">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateAndAttachS3AccessPointOutcome CreateAndAttachS3AccessPoint(const Model::CreateAndAttachS3AccessPointRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateAndAttachS3AccessPoint that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateAndAttachS3AccessPointRequestT = Model::CreateAndAttachS3AccessPointRequest>
+        Model::CreateAndAttachS3AccessPointOutcomeCallable CreateAndAttachS3AccessPointCallable(const CreateAndAttachS3AccessPointRequestT& request) const
+        {
+            return SubmitCallable(&FSxClient::CreateAndAttachS3AccessPoint, request);
+        }
+
+        /**
+         * An Async wrapper for CreateAndAttachS3AccessPoint that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateAndAttachS3AccessPointRequestT = Model::CreateAndAttachS3AccessPointRequest>
+        void CreateAndAttachS3AccessPointAsync(const CreateAndAttachS3AccessPointRequestT& request, const CreateAndAttachS3AccessPointResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&FSxClient::CreateAndAttachS3AccessPoint, request, handler, context);
+        }
+
+        /**
          * <p>Creates a backup of an existing Amazon FSx for Windows File Server file
          * system, Amazon FSx for Lustre file system, Amazon FSx for NetApp ONTAP volume,
          * or Amazon FSx for OpenZFS file system. We recommend creating regular backups so
@@ -239,13 +311,13 @@ namespace FSx
          * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/CreateBackup">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateBackupOutcome CreateBackup(const Model::CreateBackupRequest& request) const;
+        virtual Model::CreateBackupOutcome CreateBackup(const Model::CreateBackupRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateBackup that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateBackupRequestT = Model::CreateBackupRequest>
-        Model::CreateBackupOutcomeCallable CreateBackupCallable(const CreateBackupRequestT& request) const
+        Model::CreateBackupOutcomeCallable CreateBackupCallable(const CreateBackupRequestT& request = {}) const
         {
             return SubmitCallable(&FSxClient::CreateBackup, request);
         }
@@ -254,7 +326,7 @@ namespace FSx
          * An Async wrapper for CreateBackup that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateBackupRequestT = Model::CreateBackupRequest>
-        void CreateBackupAsync(const CreateBackupRequestT& request, const CreateBackupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateBackupAsync(const CreateBackupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateBackupRequestT& request = {}) const
         {
             return SubmitAsync(&FSxClient::CreateBackup, request, handler, context);
         }
@@ -263,13 +335,13 @@ namespace FSx
          * <p>Creates an Amazon FSx for Lustre data repository association (DRA). A data
          * repository association is a link between a directory on the file system and an
          * Amazon S3 bucket or prefix. You can have a maximum of 8 data repository
-         * associations on a file system. Data repository associations are supported for
-         * all file systems except for <code>Scratch_1</code> deployment type.</p> <p>Each
-         * data repository association must have a unique Amazon FSx file system directory
-         * and a unique S3 bucket or prefix associated with it. You can configure a data
-         * repository association for automatic import only, for automatic export only, or
-         * for both. To learn more about linking a data repository to your file system, see
-         * <a
+         * associations on a file system. Data repository associations are supported on all
+         * FSx for Lustre 2.12 and 2.15 file systems, excluding <code>scratch_1</code>
+         * deployment type.</p> <p>Each data repository association must have a unique
+         * Amazon FSx file system directory and a unique S3 bucket or prefix associated
+         * with it. You can configure a data repository association for automatic import
+         * only, for automatic export only, or for both. To learn more about linking a data
+         * repository to your file system, see <a
          * href="https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-dra-linked-data-repo.html">Linking
          * your file system to an S3 bucket</a>.</p>  <p>
          * <code>CreateDataRepositoryAssociation</code> isn't supported on Amazon File
@@ -299,13 +371,18 @@ namespace FSx
         }
 
         /**
-         * <p>Creates an Amazon FSx for Lustre data repository task. You use data
-         * repository tasks to perform bulk operations between your Amazon FSx file system
-         * and its linked data repositories. An example of a data repository task is
+         * <p>Creates an Amazon FSx for Lustre data repository task. A
+         * <code>CreateDataRepositoryTask</code> operation will fail if a data repository
+         * is not linked to the FSx file system.</p> <p>You use import and export data
+         * repository tasks to perform bulk operations between your FSx for Lustre file
+         * system and its linked data repositories. An example of a data repository task is
          * exporting any data and metadata changes, including POSIX metadata, to files,
          * directories, and symbolic links (symlinks) from your FSx file system to a linked
-         * data repository. A <code>CreateDataRepositoryTask</code> operation will fail if
-         * a data repository is not linked to the FSx file system. To learn more about data
+         * data repository.</p> <p>You use release data repository tasks to release data
+         * from your file system for files that are exported to S3. The metadata of
+         * released files remains on the file system so users or applications can still
+         * access released files by reading the files again, which will restore data from
+         * Amazon S3 to the FSx for Lustre file system.</p> <p>To learn more about data
          * repository tasks, see <a
          * href="https://docs.aws.amazon.com/fsx/latest/LustreGuide/data-repository-tasks.html">Data
          * Repository Tasks</a>. To learn more about linking a data repository to your file
@@ -344,12 +421,12 @@ namespace FSx
          * and the parameters don't match, this call returns
          * <code>IncompatibleParameterError</code>. If a file cache with the specified
          * client request token doesn't exist, <code>CreateFileCache</code> does the
-         * following: </p> <ul> <li> <p>Creates a new, empty Amazon File Cache resourcewith
-         * an assigned ID, and an initial lifecycle state of <code>CREATING</code>.</p>
-         * </li> <li> <p>Returns the description of the cache in JSON format.</p> </li>
-         * </ul>  <p>The <code>CreateFileCache</code> call returns while the cache's
-         * lifecycle state is still <code>CREATING</code>. You can check the cache creation
-         * status by calling the <a
+         * following: </p> <ul> <li> <p>Creates a new, empty Amazon File Cache resource
+         * with an assigned ID, and an initial lifecycle state of
+         * <code>CREATING</code>.</p> </li> <li> <p>Returns the description of the cache in
+         * JSON format.</p> </li> </ul>  <p>The <code>CreateFileCache</code> call
+         * returns while the cache's lifecycle state is still <code>CREATING</code>. You
+         * can check the cache creation status by calling the <a
          * href="https://docs.aws.amazon.com/fsx/latest/APIReference/API_DescribeFileCaches.html">DescribeFileCaches</a>
          * operation, which returns the cache state along with other information.</p>
          * <p><h3>See Also:</h3>   <a
@@ -397,7 +474,7 @@ namespace FSx
          * parameters don't match, this call returns
          * <code>IncompatibleParameterError</code>. If a file system with the specified
          * client request token doesn't exist, <code>CreateFileSystem</code> does the
-         * following: </p> <ul> <li> <p>Creates a new, empty Amazon FSx file system with an
+         * following:</p> <ul> <li> <p>Creates a new, empty Amazon FSx file system with an
          * assigned ID, and an initial lifecycle state of <code>CREATING</code>.</p> </li>
          * <li> <p>Returns the description of the file system in JSON format.</p> </li>
          * </ul>  <p>The <code>CreateFileSystem</code> call returns while the file
@@ -637,9 +714,9 @@ namespace FSx
          * system. Deleting the data repository association unlinks the file system from
          * the Amazon S3 bucket. When deleting a data repository association, you have the
          * option of deleting the data in the file system that corresponds to the data
-         * repository association. Data repository associations are supported for all file
-         * systems except for <code>Scratch_1</code> deployment type.</p><p><h3>See
-         * Also:</h3>   <a
+         * repository association. Data repository associations are supported on all FSx
+         * for Lustre 2.12 and 2.15 file systems, excluding <code>scratch_1</code>
+         * deployment type.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/DeleteDataRepositoryAssociation">AWS
          * API Reference</a></p>
          */
@@ -703,12 +780,37 @@ namespace FSx
          * deleted.</p> <p>To delete an Amazon FSx for NetApp ONTAP file system, first
          * delete all the volumes and storage virtual machines (SVMs) on the file system.
          * Then provide a <code>FileSystemId</code> value to the
-         * <code>DeleFileSystem</code> operation.</p> <p>By default, when you delete an
-         * Amazon FSx for Windows File Server file system, a final backup is created upon
+         * <code>DeleteFileSystem</code> operation.</p> <p>Before deleting an Amazon FSx
+         * for OpenZFS file system, make sure that there aren't any Amazon S3 access points
+         * attached to any volume. For more information on how to list S3 access points
+         * that are attached to volumes, see <a
+         * href="https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/access-points-list.html">Listing
+         * S3 access point attachments</a>. For more information on how to delete S3 access
+         * points, see <a
+         * href="https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/delete-access-point.html">Deleting
+         * an S3 access point attachment</a>.</p> <p>By default, when you delete an Amazon
+         * FSx for Windows File Server file system, a final backup is created upon
          * deletion. This final backup isn't subject to the file system's retention policy,
-         * and must be manually deleted.</p> <p>The <code>DeleteFileSystem</code> operation
-         * returns while the file system has the <code>DELETING</code> status. You can
-         * check the file system deletion status by calling the <a
+         * and must be manually deleted.</p> <p>To delete an Amazon FSx for Lustre file
+         * system, first <a
+         * href="https://docs.aws.amazon.com/fsx/latest/LustreGuide/unmounting-fs.html">unmount</a>
+         * it from every connected Amazon EC2 instance, then provide a
+         * <code>FileSystemId</code> value to the <code>DeleteFileSystem</code> operation.
+         * By default, Amazon FSx will not take a final backup when the
+         * <code>DeleteFileSystem</code> operation is invoked. On file systems not linked
+         * to an Amazon S3 bucket, set <code>SkipFinalBackup</code> to <code>false</code>
+         * to take a final backup of the file system you are deleting. Backups cannot be
+         * enabled on S3-linked file systems. To ensure all of your data is written back to
+         * S3 before deleting your file system, you can either monitor for the <a
+         * href="https://docs.aws.amazon.com/fsx/latest/LustreGuide/monitoring-cloudwatch.html#auto-import-export-metrics">AgeOfOldestQueuedMessage</a>
+         * metric to be zero (if using automatic export) or you can run an <a
+         * href="https://docs.aws.amazon.com/fsx/latest/LustreGuide/export-data-repo-task-dra.html">export
+         * data repository task</a>. If you have automatic export enabled and want to use
+         * an export data repository task, you have to disable automatic export before
+         * executing the export data repository task.</p> <p>The
+         * <code>DeleteFileSystem</code> operation returns while the file system has the
+         * <code>DELETING</code> status. You can check the file system deletion status by
+         * calling the <a
          * href="https://docs.aws.amazon.com/fsx/latest/APIReference/API_DescribeFileSystems.html">DescribeFileSystems</a>
          * operation, which returns a list of file systems in your account. If you pass the
          * file system ID for a deleted file system, the <code>DescribeFileSystems</code>
@@ -848,13 +950,13 @@ namespace FSx
          * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/DescribeBackups">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeBackupsOutcome DescribeBackups(const Model::DescribeBackupsRequest& request) const;
+        virtual Model::DescribeBackupsOutcome DescribeBackups(const Model::DescribeBackupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeBackups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeBackupsRequestT = Model::DescribeBackupsRequest>
-        Model::DescribeBackupsOutcomeCallable DescribeBackupsCallable(const DescribeBackupsRequestT& request) const
+        Model::DescribeBackupsOutcomeCallable DescribeBackupsCallable(const DescribeBackupsRequestT& request = {}) const
         {
             return SubmitCallable(&FSxClient::DescribeBackups, request);
         }
@@ -863,7 +965,7 @@ namespace FSx
          * An Async wrapper for DescribeBackups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeBackupsRequestT = Model::DescribeBackupsRequest>
-        void DescribeBackupsAsync(const DescribeBackupsRequestT& request, const DescribeBackupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeBackupsAsync(const DescribeBackupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeBackupsRequestT& request = {}) const
         {
             return SubmitAsync(&FSxClient::DescribeBackups, request, handler, context);
         }
@@ -872,10 +974,10 @@ namespace FSx
          * <p>Returns the description of specific Amazon FSx for Lustre or Amazon File
          * Cache data repository associations, if one or more <code>AssociationIds</code>
          * values are provided in the request, or if filters are used in the request. Data
-         * repository associations are supported on Amazon File Cache resources and all
-         * Amazon FSx for Lustre file systems excluding <code>Scratch_1</code> deployment
-         * types.</p> <p>You can use filters to narrow the response to include just data
-         * repository associations for specific file systems (use the
+         * repository associations are supported on Amazon File Cache resources and all FSx
+         * for Lustre 2.12 and 2,15 file systems, excluding <code>scratch_1</code>
+         * deployment type.</p> <p>You can use filters to narrow the response to include
+         * just data repository associations for specific file systems (use the
          * <code>file-system-id</code> filter with the ID of the file system) or caches
          * (use the <code>file-cache-id</code> filter with the ID of the cache), or data
          * repository associations for a specific repository type (use the
@@ -893,13 +995,13 @@ namespace FSx
          * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/DescribeDataRepositoryAssociations">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDataRepositoryAssociationsOutcome DescribeDataRepositoryAssociations(const Model::DescribeDataRepositoryAssociationsRequest& request) const;
+        virtual Model::DescribeDataRepositoryAssociationsOutcome DescribeDataRepositoryAssociations(const Model::DescribeDataRepositoryAssociationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDataRepositoryAssociations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDataRepositoryAssociationsRequestT = Model::DescribeDataRepositoryAssociationsRequest>
-        Model::DescribeDataRepositoryAssociationsOutcomeCallable DescribeDataRepositoryAssociationsCallable(const DescribeDataRepositoryAssociationsRequestT& request) const
+        Model::DescribeDataRepositoryAssociationsOutcomeCallable DescribeDataRepositoryAssociationsCallable(const DescribeDataRepositoryAssociationsRequestT& request = {}) const
         {
             return SubmitCallable(&FSxClient::DescribeDataRepositoryAssociations, request);
         }
@@ -908,7 +1010,7 @@ namespace FSx
          * An Async wrapper for DescribeDataRepositoryAssociations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDataRepositoryAssociationsRequestT = Model::DescribeDataRepositoryAssociationsRequest>
-        void DescribeDataRepositoryAssociationsAsync(const DescribeDataRepositoryAssociationsRequestT& request, const DescribeDataRepositoryAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDataRepositoryAssociationsAsync(const DescribeDataRepositoryAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDataRepositoryAssociationsRequestT& request = {}) const
         {
             return SubmitAsync(&FSxClient::DescribeDataRepositoryAssociations, request, handler, context);
         }
@@ -930,13 +1032,13 @@ namespace FSx
          * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/DescribeDataRepositoryTasks">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDataRepositoryTasksOutcome DescribeDataRepositoryTasks(const Model::DescribeDataRepositoryTasksRequest& request) const;
+        virtual Model::DescribeDataRepositoryTasksOutcome DescribeDataRepositoryTasks(const Model::DescribeDataRepositoryTasksRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDataRepositoryTasks that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDataRepositoryTasksRequestT = Model::DescribeDataRepositoryTasksRequest>
-        Model::DescribeDataRepositoryTasksOutcomeCallable DescribeDataRepositoryTasksCallable(const DescribeDataRepositoryTasksRequestT& request) const
+        Model::DescribeDataRepositoryTasksOutcomeCallable DescribeDataRepositoryTasksCallable(const DescribeDataRepositoryTasksRequestT& request = {}) const
         {
             return SubmitCallable(&FSxClient::DescribeDataRepositoryTasks, request);
         }
@@ -945,7 +1047,7 @@ namespace FSx
          * An Async wrapper for DescribeDataRepositoryTasks that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDataRepositoryTasksRequestT = Model::DescribeDataRepositoryTasksRequest>
-        void DescribeDataRepositoryTasksAsync(const DescribeDataRepositoryTasksRequestT& request, const DescribeDataRepositoryTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDataRepositoryTasksAsync(const DescribeDataRepositoryTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDataRepositoryTasksRequestT& request = {}) const
         {
             return SubmitAsync(&FSxClient::DescribeDataRepositoryTasks, request, handler, context);
         }
@@ -976,13 +1078,13 @@ namespace FSx
          * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/DescribeFileCaches">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeFileCachesOutcome DescribeFileCaches(const Model::DescribeFileCachesRequest& request) const;
+        virtual Model::DescribeFileCachesOutcome DescribeFileCaches(const Model::DescribeFileCachesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeFileCaches that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeFileCachesRequestT = Model::DescribeFileCachesRequest>
-        Model::DescribeFileCachesOutcomeCallable DescribeFileCachesCallable(const DescribeFileCachesRequestT& request) const
+        Model::DescribeFileCachesOutcomeCallable DescribeFileCachesCallable(const DescribeFileCachesRequestT& request = {}) const
         {
             return SubmitCallable(&FSxClient::DescribeFileCaches, request);
         }
@@ -991,7 +1093,7 @@ namespace FSx
          * An Async wrapper for DescribeFileCaches that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeFileCachesRequestT = Model::DescribeFileCachesRequest>
-        void DescribeFileCachesAsync(const DescribeFileCachesRequestT& request, const DescribeFileCachesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeFileCachesAsync(const DescribeFileCachesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeFileCachesRequestT& request = {}) const
         {
             return SubmitAsync(&FSxClient::DescribeFileCaches, request, handler, context);
         }
@@ -1051,13 +1153,13 @@ namespace FSx
          * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/DescribeFileSystems">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeFileSystemsOutcome DescribeFileSystems(const Model::DescribeFileSystemsRequest& request) const;
+        virtual Model::DescribeFileSystemsOutcome DescribeFileSystems(const Model::DescribeFileSystemsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeFileSystems that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeFileSystemsRequestT = Model::DescribeFileSystemsRequest>
-        Model::DescribeFileSystemsOutcomeCallable DescribeFileSystemsCallable(const DescribeFileSystemsRequestT& request) const
+        Model::DescribeFileSystemsOutcomeCallable DescribeFileSystemsCallable(const DescribeFileSystemsRequestT& request = {}) const
         {
             return SubmitCallable(&FSxClient::DescribeFileSystems, request);
         }
@@ -1066,9 +1168,66 @@ namespace FSx
          * An Async wrapper for DescribeFileSystems that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeFileSystemsRequestT = Model::DescribeFileSystemsRequest>
-        void DescribeFileSystemsAsync(const DescribeFileSystemsRequestT& request, const DescribeFileSystemsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeFileSystemsAsync(const DescribeFileSystemsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeFileSystemsRequestT& request = {}) const
         {
             return SubmitAsync(&FSxClient::DescribeFileSystems, request, handler, context);
+        }
+
+        /**
+         * <p>Describes one or more S3 access points attached to Amazon FSx volumes.</p>
+         * <p>The requester requires the following permission to perform this action:</p>
+         * <ul> <li> <p> <code>fsx:DescribeS3AccessPointAttachments</code> </p> </li>
+         * </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/DescribeS3AccessPointAttachments">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeS3AccessPointAttachmentsOutcome DescribeS3AccessPointAttachments(const Model::DescribeS3AccessPointAttachmentsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeS3AccessPointAttachments that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeS3AccessPointAttachmentsRequestT = Model::DescribeS3AccessPointAttachmentsRequest>
+        Model::DescribeS3AccessPointAttachmentsOutcomeCallable DescribeS3AccessPointAttachmentsCallable(const DescribeS3AccessPointAttachmentsRequestT& request = {}) const
+        {
+            return SubmitCallable(&FSxClient::DescribeS3AccessPointAttachments, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeS3AccessPointAttachments that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeS3AccessPointAttachmentsRequestT = Model::DescribeS3AccessPointAttachmentsRequest>
+        void DescribeS3AccessPointAttachmentsAsync(const DescribeS3AccessPointAttachmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeS3AccessPointAttachmentsRequestT& request = {}) const
+        {
+            return SubmitAsync(&FSxClient::DescribeS3AccessPointAttachments, request, handler, context);
+        }
+
+        /**
+         * <p>Indicates whether participant accounts in your organization can create Amazon
+         * FSx for NetApp ONTAP Multi-AZ file systems in subnets that are shared by a
+         * virtual private cloud (VPC) owner. For more information, see <a
+         * href="https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/creating-file-systems.html#fsxn-vpc-shared-subnets">Creating
+         * FSx for ONTAP file systems in shared subnets</a>. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/DescribeSharedVpcConfiguration">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeSharedVpcConfigurationOutcome DescribeSharedVpcConfiguration(const Model::DescribeSharedVpcConfigurationRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeSharedVpcConfiguration that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeSharedVpcConfigurationRequestT = Model::DescribeSharedVpcConfigurationRequest>
+        Model::DescribeSharedVpcConfigurationOutcomeCallable DescribeSharedVpcConfigurationCallable(const DescribeSharedVpcConfigurationRequestT& request = {}) const
+        {
+            return SubmitCallable(&FSxClient::DescribeSharedVpcConfiguration, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeSharedVpcConfiguration that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeSharedVpcConfigurationRequestT = Model::DescribeSharedVpcConfigurationRequest>
+        void DescribeSharedVpcConfigurationAsync(const DescribeSharedVpcConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeSharedVpcConfigurationRequestT& request = {}) const
+        {
+            return SubmitAsync(&FSxClient::DescribeSharedVpcConfiguration, request, handler, context);
         }
 
         /**
@@ -1095,13 +1254,13 @@ namespace FSx
          * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/DescribeSnapshots">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeSnapshotsOutcome DescribeSnapshots(const Model::DescribeSnapshotsRequest& request) const;
+        virtual Model::DescribeSnapshotsOutcome DescribeSnapshots(const Model::DescribeSnapshotsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeSnapshots that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeSnapshotsRequestT = Model::DescribeSnapshotsRequest>
-        Model::DescribeSnapshotsOutcomeCallable DescribeSnapshotsCallable(const DescribeSnapshotsRequestT& request) const
+        Model::DescribeSnapshotsOutcomeCallable DescribeSnapshotsCallable(const DescribeSnapshotsRequestT& request = {}) const
         {
             return SubmitCallable(&FSxClient::DescribeSnapshots, request);
         }
@@ -1110,7 +1269,7 @@ namespace FSx
          * An Async wrapper for DescribeSnapshots that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeSnapshotsRequestT = Model::DescribeSnapshotsRequest>
-        void DescribeSnapshotsAsync(const DescribeSnapshotsRequestT& request, const DescribeSnapshotsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeSnapshotsAsync(const DescribeSnapshotsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeSnapshotsRequestT& request = {}) const
         {
             return SubmitAsync(&FSxClient::DescribeSnapshots, request, handler, context);
         }
@@ -1121,13 +1280,13 @@ namespace FSx
          * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/DescribeStorageVirtualMachines">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeStorageVirtualMachinesOutcome DescribeStorageVirtualMachines(const Model::DescribeStorageVirtualMachinesRequest& request) const;
+        virtual Model::DescribeStorageVirtualMachinesOutcome DescribeStorageVirtualMachines(const Model::DescribeStorageVirtualMachinesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeStorageVirtualMachines that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeStorageVirtualMachinesRequestT = Model::DescribeStorageVirtualMachinesRequest>
-        Model::DescribeStorageVirtualMachinesOutcomeCallable DescribeStorageVirtualMachinesCallable(const DescribeStorageVirtualMachinesRequestT& request) const
+        Model::DescribeStorageVirtualMachinesOutcomeCallable DescribeStorageVirtualMachinesCallable(const DescribeStorageVirtualMachinesRequestT& request = {}) const
         {
             return SubmitCallable(&FSxClient::DescribeStorageVirtualMachines, request);
         }
@@ -1136,7 +1295,7 @@ namespace FSx
          * An Async wrapper for DescribeStorageVirtualMachines that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeStorageVirtualMachinesRequestT = Model::DescribeStorageVirtualMachinesRequest>
-        void DescribeStorageVirtualMachinesAsync(const DescribeStorageVirtualMachinesRequestT& request, const DescribeStorageVirtualMachinesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeStorageVirtualMachinesAsync(const DescribeStorageVirtualMachinesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeStorageVirtualMachinesRequestT& request = {}) const
         {
             return SubmitAsync(&FSxClient::DescribeStorageVirtualMachines, request, handler, context);
         }
@@ -1147,13 +1306,13 @@ namespace FSx
          * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/DescribeVolumes">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVolumesOutcome DescribeVolumes(const Model::DescribeVolumesRequest& request) const;
+        virtual Model::DescribeVolumesOutcome DescribeVolumes(const Model::DescribeVolumesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVolumes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVolumesRequestT = Model::DescribeVolumesRequest>
-        Model::DescribeVolumesOutcomeCallable DescribeVolumesCallable(const DescribeVolumesRequestT& request) const
+        Model::DescribeVolumesOutcomeCallable DescribeVolumesCallable(const DescribeVolumesRequestT& request = {}) const
         {
             return SubmitCallable(&FSxClient::DescribeVolumes, request);
         }
@@ -1162,16 +1321,46 @@ namespace FSx
          * An Async wrapper for DescribeVolumes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVolumesRequestT = Model::DescribeVolumesRequest>
-        void DescribeVolumesAsync(const DescribeVolumesRequestT& request, const DescribeVolumesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVolumesAsync(const DescribeVolumesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVolumesRequestT& request = {}) const
         {
             return SubmitAsync(&FSxClient::DescribeVolumes, request, handler, context);
+        }
+
+        /**
+         * <p>Detaches an S3 access point from an Amazon FSx volume and deletes the S3
+         * access point.</p> <p>The requester requires the following permission to perform
+         * this action:</p> <ul> <li> <p> <code>fsx:DetachAndDeleteS3AccessPoint</code>
+         * </p> </li> <li> <p> <code>s3:DeleteAccessPoint</code> </p> </li> </ul><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/DetachAndDeleteS3AccessPoint">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DetachAndDeleteS3AccessPointOutcome DetachAndDeleteS3AccessPoint(const Model::DetachAndDeleteS3AccessPointRequest& request) const;
+
+        /**
+         * A Callable wrapper for DetachAndDeleteS3AccessPoint that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DetachAndDeleteS3AccessPointRequestT = Model::DetachAndDeleteS3AccessPointRequest>
+        Model::DetachAndDeleteS3AccessPointOutcomeCallable DetachAndDeleteS3AccessPointCallable(const DetachAndDeleteS3AccessPointRequestT& request) const
+        {
+            return SubmitCallable(&FSxClient::DetachAndDeleteS3AccessPoint, request);
+        }
+
+        /**
+         * An Async wrapper for DetachAndDeleteS3AccessPoint that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DetachAndDeleteS3AccessPointRequestT = Model::DetachAndDeleteS3AccessPointRequest>
+        void DetachAndDeleteS3AccessPointAsync(const DetachAndDeleteS3AccessPointRequestT& request, const DetachAndDeleteS3AccessPointResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&FSxClient::DetachAndDeleteS3AccessPoint, request, handler, context);
         }
 
         /**
          * <p>Use this action to disassociate, or remove, one or more Domain Name Service
          * (DNS) aliases from an Amazon FSx for Windows File Server file system. If you
          * attempt to disassociate a DNS alias that is not associated with the file system,
-         * Amazon FSx responds with a 400 Bad Request. For more information, see <a
+         * Amazon FSx responds with an HTTP status code 400 (Bad Request). For more
+         * information, see <a
          * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html">Working
          * with DNS Aliases</a>.</p> <p>The system generated response showing the DNS
          * aliases that Amazon FSx is attempting to disassociate from the file system. Use
@@ -1295,6 +1484,34 @@ namespace FSx
         }
 
         /**
+         * <p>After performing steps to repair the Active Directory configuration of an FSx
+         * for Windows File Server file system, use this action to initiate the process of
+         * Amazon FSx attempting to reconnect to the file system.</p><p><h3>See Also:</h3> 
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/StartMisconfiguredStateRecovery">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::StartMisconfiguredStateRecoveryOutcome StartMisconfiguredStateRecovery(const Model::StartMisconfiguredStateRecoveryRequest& request) const;
+
+        /**
+         * A Callable wrapper for StartMisconfiguredStateRecovery that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename StartMisconfiguredStateRecoveryRequestT = Model::StartMisconfiguredStateRecoveryRequest>
+        Model::StartMisconfiguredStateRecoveryOutcomeCallable StartMisconfiguredStateRecoveryCallable(const StartMisconfiguredStateRecoveryRequestT& request) const
+        {
+            return SubmitCallable(&FSxClient::StartMisconfiguredStateRecovery, request);
+        }
+
+        /**
+         * An Async wrapper for StartMisconfiguredStateRecovery that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename StartMisconfiguredStateRecoveryRequestT = Model::StartMisconfiguredStateRecoveryRequest>
+        void StartMisconfiguredStateRecoveryAsync(const StartMisconfiguredStateRecoveryRequestT& request, const StartMisconfiguredStateRecoveryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&FSxClient::StartMisconfiguredStateRecovery, request, handler, context);
+        }
+
+        /**
          * <p>Tags an Amazon FSx resource.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/TagResource">AWS API
          * Reference</a></p>
@@ -1347,9 +1564,9 @@ namespace FSx
 
         /**
          * <p>Updates the configuration of an existing data repository association on an
-         * Amazon FSx for Lustre file system. Data repository associations are supported
-         * for all file systems except for <code>Scratch_1</code> deployment
-         * type.</p><p><h3>See Also:</h3>   <a
+         * Amazon FSx for Lustre file system. Data repository associations are supported on
+         * all FSx for Lustre 2.12 and 2.15 file systems, excluding <code>scratch_1</code>
+         * deployment type.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/UpdateDataRepositoryAssociation">AWS
          * API Reference</a></p>
          */
@@ -1406,32 +1623,44 @@ namespace FSx
          * properties:</p> <ul> <li> <p> <code>AuditLogConfiguration</code> </p> </li> <li>
          * <p> <code>AutomaticBackupRetentionDays</code> </p> </li> <li> <p>
          * <code>DailyAutomaticBackupStartTime</code> </p> </li> <li> <p>
+         * <code>DiskIopsConfiguration</code> </p> </li> <li> <p>
          * <code>SelfManagedActiveDirectoryConfiguration</code> </p> </li> <li> <p>
-         * <code>StorageCapacity</code> </p> </li> <li> <p> <code>ThroughputCapacity</code>
-         * </p> </li> <li> <p> <code>WeeklyMaintenanceStartTime</code> </p> </li> </ul>
-         * <p>For FSx for Lustre file systems, you can update the following properties:</p>
-         * <ul> <li> <p> <code>AutoImportPolicy</code> </p> </li> <li> <p>
+         * <code>StorageCapacity</code> </p> </li> <li> <p> <code>StorageType</code> </p>
+         * </li> <li> <p> <code>ThroughputCapacity</code> </p> </li> <li> <p>
+         * <code>WeeklyMaintenanceStartTime</code> </p> </li> </ul> <p>For FSx for Lustre
+         * file systems, you can update the following properties:</p> <ul> <li> <p>
+         * <code>AutoImportPolicy</code> </p> </li> <li> <p>
          * <code>AutomaticBackupRetentionDays</code> </p> </li> <li> <p>
          * <code>DailyAutomaticBackupStartTime</code> </p> </li> <li> <p>
          * <code>DataCompressionType</code> </p> </li> <li> <p>
+         * <code>FileSystemTypeVersion</code> </p> </li> <li> <p>
+         * <code>LogConfiguration</code> </p> </li> <li> <p>
+         * <code>LustreReadCacheConfiguration</code> </p> </li> <li> <p>
          * <code>LustreRootSquashConfiguration</code> </p> </li> <li> <p>
-         * <code>StorageCapacity</code> </p> </li> <li> <p>
-         * <code>WeeklyMaintenanceStartTime</code> </p> </li> </ul> <p>For FSx for ONTAP
-         * file systems, you can update the following properties:</p> <ul> <li> <p>
-         * <code>AddRouteTableIds</code> </p> </li> <li> <p>
+         * <code>MetadataConfiguration</code> </p> </li> <li> <p>
+         * <code>PerUnitStorageThroughput</code> </p> </li> <li> <p>
+         * <code>StorageCapacity</code> </p> </li> <li> <p> <code>ThroughputCapacity</code>
+         * </p> </li> <li> <p> <code>WeeklyMaintenanceStartTime</code> </p> </li> </ul>
+         * <p>For FSx for ONTAP file systems, you can update the following properties:</p>
+         * <ul> <li> <p> <code>AddRouteTableIds</code> </p> </li> <li> <p>
          * <code>AutomaticBackupRetentionDays</code> </p> </li> <li> <p>
          * <code>DailyAutomaticBackupStartTime</code> </p> </li> <li> <p>
          * <code>DiskIopsConfiguration</code> </p> </li> <li> <p>
-         * <code>FsxAdminPassword</code> </p> </li> <li> <p>
-         * <code>RemoveRouteTableIds</code> </p> </li> <li> <p>
+         * <code>FsxAdminPassword</code> </p> </li> <li> <p> <code>HAPairs</code> </p>
+         * </li> <li> <p> <code>RemoveRouteTableIds</code> </p> </li> <li> <p>
          * <code>StorageCapacity</code> </p> </li> <li> <p> <code>ThroughputCapacity</code>
-         * </p> </li> <li> <p> <code>WeeklyMaintenanceStartTime</code> </p> </li> </ul>
-         * <p>For FSx for OpenZFS file systems, you can update the following
-         * properties:</p> <ul> <li> <p> <code>AutomaticBackupRetentionDays</code> </p>
-         * </li> <li> <p> <code>CopyTagsToBackups</code> </p> </li> <li> <p>
+         * </p> </li> <li> <p> <code>ThroughputCapacityPerHAPair</code> </p> </li> <li> <p>
+         * <code>WeeklyMaintenanceStartTime</code> </p> </li> </ul> <p>For FSx for OpenZFS
+         * file systems, you can update the following properties:</p> <ul> <li> <p>
+         * <code>AddRouteTableIds</code> </p> </li> <li> <p>
+         * <code>AutomaticBackupRetentionDays</code> </p> </li> <li> <p>
+         * <code>CopyTagsToBackups</code> </p> </li> <li> <p>
          * <code>CopyTagsToVolumes</code> </p> </li> <li> <p>
          * <code>DailyAutomaticBackupStartTime</code> </p> </li> <li> <p>
          * <code>DiskIopsConfiguration</code> </p> </li> <li> <p>
+         * <code>EndpointIpv6AddressRange</code> </p> </li> <li> <p>
+         * <code>ReadCacheConfiguration</code> </p> </li> <li> <p>
+         * <code>RemoveRouteTableIds</code> </p> </li> <li> <p>
          * <code>StorageCapacity</code> </p> </li> <li> <p> <code>ThroughputCapacity</code>
          * </p> </li> <li> <p> <code>WeeklyMaintenanceStartTime</code> </p> </li>
          * </ul><p><h3>See Also:</h3>   <a
@@ -1456,6 +1685,42 @@ namespace FSx
         void UpdateFileSystemAsync(const UpdateFileSystemRequestT& request, const UpdateFileSystemResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&FSxClient::UpdateFileSystem, request, handler, context);
+        }
+
+        /**
+         * <p>Configures whether participant accounts in your organization can create
+         * Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that are shared by
+         * a virtual private cloud (VPC) owner. For more information, see the <a
+         * href="https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/maz-shared-vpc.html">Amazon
+         * FSx for NetApp ONTAP User Guide</a>.</p>  <p>We strongly recommend that
+         * participant-created Multi-AZ file systems in the shared VPC are deleted before
+         * you disable this feature. Once the feature is disabled, these file systems will
+         * enter a <code>MISCONFIGURED</code> state and behave like Single-AZ file systems.
+         * For more information, see <a
+         * href="https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/maz-shared-vpc.html#disabling-maz-vpc-sharing">Important
+         * considerations before disabling shared VPC support for Multi-AZ file
+         * systems</a>.</p> <p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/UpdateSharedVpcConfiguration">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateSharedVpcConfigurationOutcome UpdateSharedVpcConfiguration(const Model::UpdateSharedVpcConfigurationRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for UpdateSharedVpcConfiguration that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateSharedVpcConfigurationRequestT = Model::UpdateSharedVpcConfigurationRequest>
+        Model::UpdateSharedVpcConfigurationOutcomeCallable UpdateSharedVpcConfigurationCallable(const UpdateSharedVpcConfigurationRequestT& request = {}) const
+        {
+            return SubmitCallable(&FSxClient::UpdateSharedVpcConfiguration, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateSharedVpcConfiguration that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateSharedVpcConfigurationRequestT = Model::UpdateSharedVpcConfigurationRequest>
+        void UpdateSharedVpcConfigurationAsync(const UpdateSharedVpcConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const UpdateSharedVpcConfigurationRequestT& request = {}) const
+        {
+            return SubmitAsync(&FSxClient::UpdateSharedVpcConfiguration, request, handler, context);
         }
 
         /**
@@ -1485,7 +1750,7 @@ namespace FSx
         }
 
         /**
-         * <p>Updates an Amazon FSx for ONTAP storage virtual machine (SVM).</p><p><h3>See
+         * <p>Updates an FSx for ONTAP storage virtual machine (SVM).</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/fsx-2018-03-01/UpdateStorageVirtualMachine">AWS
          * API Reference</a></p>
@@ -1544,7 +1809,6 @@ namespace FSx
       void init(const FSxClientConfiguration& clientConfiguration);
 
       FSxClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<FSxEndpointProviderBase> m_endpointProvider;
   };
 

@@ -20,25 +20,7 @@ namespace EC2
 namespace Model
 {
 
-IpamPoolCidr::IpamPoolCidr() : 
-    m_cidrHasBeenSet(false),
-    m_state(IpamPoolCidrState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_failureReasonHasBeenSet(false),
-    m_ipamPoolCidrIdHasBeenSet(false),
-    m_netmaskLength(0),
-    m_netmaskLengthHasBeenSet(false)
-{
-}
-
-IpamPoolCidr::IpamPoolCidr(const XmlNode& xmlNode) : 
-    m_cidrHasBeenSet(false),
-    m_state(IpamPoolCidrState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_failureReasonHasBeenSet(false),
-    m_ipamPoolCidrIdHasBeenSet(false),
-    m_netmaskLength(0),
-    m_netmaskLengthHasBeenSet(false)
+IpamPoolCidr::IpamPoolCidr(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -58,7 +40,7 @@ IpamPoolCidr& IpamPoolCidr::operator =(const XmlNode& xmlNode)
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = IpamPoolCidrStateMapper::GetIpamPoolCidrStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = IpamPoolCidrStateMapper::GetIpamPoolCidrStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode failureReasonNode = resultNode.FirstChild("failureReason");
@@ -93,7 +75,7 @@ void IpamPoolCidr::OutputToStream(Aws::OStream& oStream, const char* location, u
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << IpamPoolCidrStateMapper::GetNameForIpamPoolCidrState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(IpamPoolCidrStateMapper::GetNameForIpamPoolCidrState(m_state)) << "&";
   }
 
   if(m_failureReasonHasBeenSet)
@@ -123,7 +105,7 @@ void IpamPoolCidr::OutputToStream(Aws::OStream& oStream, const char* location) c
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << IpamPoolCidrStateMapper::GetNameForIpamPoolCidrState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(IpamPoolCidrStateMapper::GetNameForIpamPoolCidrState(m_state)) << "&";
   }
   if(m_failureReasonHasBeenSet)
   {

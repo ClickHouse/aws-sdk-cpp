@@ -20,15 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-DetailedStatusCodesMetrics::DetailedStatusCodesMetrics() : 
-    m_isEnabled(false),
-    m_isEnabledHasBeenSet(false)
-{
-}
-
-DetailedStatusCodesMetrics::DetailedStatusCodesMetrics(const XmlNode& xmlNode) : 
-    m_isEnabled(false),
-    m_isEnabledHasBeenSet(false)
+DetailedStatusCodesMetrics::DetailedStatusCodesMetrics(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

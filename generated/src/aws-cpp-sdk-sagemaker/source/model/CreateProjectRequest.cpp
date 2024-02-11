@@ -12,14 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateProjectRequest::CreateProjectRequest() : 
-    m_projectNameHasBeenSet(false),
-    m_projectDescriptionHasBeenSet(false),
-    m_serviceCatalogProvisioningDetailsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateProjectRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -50,6 +42,17 @@ Aws::String CreateProjectRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("Tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_templateProvidersHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> templateProvidersJsonList(m_templateProviders.size());
+   for(unsigned templateProvidersIndex = 0; templateProvidersIndex < templateProvidersJsonList.GetLength(); ++templateProvidersIndex)
+   {
+     templateProvidersJsonList[templateProvidersIndex].AsObject(m_templateProviders[templateProvidersIndex].Jsonize());
+   }
+   payload.WithArray("TemplateProviders", std::move(templateProvidersJsonList));
 
   }
 

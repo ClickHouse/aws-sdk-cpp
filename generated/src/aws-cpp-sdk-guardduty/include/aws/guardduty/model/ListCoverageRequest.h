@@ -23,7 +23,7 @@ namespace Model
   class ListCoverageRequest : public GuardDutyRequest
   {
   public:
-    AWS_GUARDDUTY_API ListCoverageRequest();
+    AWS_GUARDDUTY_API ListCoverageRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,202 +34,70 @@ namespace Model
     AWS_GUARDDUTY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique ID of the detector whose coverage details you want to
-     * retrieve.</p>
+     * retrieve.</p> <p>To find the <code>detectorId</code> in the current Region, see
+     * the Settings page in the GuardDuty console, or run the <a
+     * href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListDetectors.html">ListDetectors</a>
+     * API.</p>
      */
-    inline const Aws::String& GetDetectorId() const{ return m_detectorId; }
-
-    /**
-     * <p>The unique ID of the detector whose coverage details you want to
-     * retrieve.</p>
-     */
+    inline const Aws::String& GetDetectorId() const { return m_detectorId; }
     inline bool DetectorIdHasBeenSet() const { return m_detectorIdHasBeenSet; }
+    template<typename DetectorIdT = Aws::String>
+    void SetDetectorId(DetectorIdT&& value) { m_detectorIdHasBeenSet = true; m_detectorId = std::forward<DetectorIdT>(value); }
+    template<typename DetectorIdT = Aws::String>
+    ListCoverageRequest& WithDetectorId(DetectorIdT&& value) { SetDetectorId(std::forward<DetectorIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID of the detector whose coverage details you want to
-     * retrieve.</p>
-     */
-    inline void SetDetectorId(const Aws::String& value) { m_detectorIdHasBeenSet = true; m_detectorId = value; }
-
-    /**
-     * <p>The unique ID of the detector whose coverage details you want to
-     * retrieve.</p>
-     */
-    inline void SetDetectorId(Aws::String&& value) { m_detectorIdHasBeenSet = true; m_detectorId = std::move(value); }
-
-    /**
-     * <p>The unique ID of the detector whose coverage details you want to
-     * retrieve.</p>
-     */
-    inline void SetDetectorId(const char* value) { m_detectorIdHasBeenSet = true; m_detectorId.assign(value); }
-
-    /**
-     * <p>The unique ID of the detector whose coverage details you want to
-     * retrieve.</p>
-     */
-    inline ListCoverageRequest& WithDetectorId(const Aws::String& value) { SetDetectorId(value); return *this;}
-
-    /**
-     * <p>The unique ID of the detector whose coverage details you want to
-     * retrieve.</p>
-     */
-    inline ListCoverageRequest& WithDetectorId(Aws::String&& value) { SetDetectorId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of the detector whose coverage details you want to
-     * retrieve.</p>
-     */
-    inline ListCoverageRequest& WithDetectorId(const char* value) { SetDetectorId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A token to use for paginating results that are returned in the response. Set
      * the value of this parameter to null for the first request to a list action. For
      * subsequent calls, use the NextToken value returned from the previous request to
      * continue listing results after the first page.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. For
-     * subsequent calls, use the NextToken value returned from the previous request to
-     * continue listing results after the first page.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListCoverageRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. For
-     * subsequent calls, use the NextToken value returned from the previous request to
-     * continue listing results after the first page.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. For
-     * subsequent calls, use the NextToken value returned from the previous request to
-     * continue listing results after the first page.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. For
-     * subsequent calls, use the NextToken value returned from the previous request to
-     * continue listing results after the first page.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. For
-     * subsequent calls, use the NextToken value returned from the previous request to
-     * continue listing results after the first page.</p>
-     */
-    inline ListCoverageRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. For
-     * subsequent calls, use the NextToken value returned from the previous request to
-     * continue listing results after the first page.</p>
-     */
-    inline ListCoverageRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. For
-     * subsequent calls, use the NextToken value returned from the previous request to
-     * continue listing results after the first page.</p>
-     */
-    inline ListCoverageRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to return in the response.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return in the response.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return in the response.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return in the response.</p>
-     */
     inline ListCoverageRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Represents the criteria used to filter the coverage details.</p>
      */
-    inline const CoverageFilterCriteria& GetFilterCriteria() const{ return m_filterCriteria; }
-
-    /**
-     * <p>Represents the criteria used to filter the coverage details.</p>
-     */
+    inline const CoverageFilterCriteria& GetFilterCriteria() const { return m_filterCriteria; }
     inline bool FilterCriteriaHasBeenSet() const { return m_filterCriteriaHasBeenSet; }
+    template<typename FilterCriteriaT = CoverageFilterCriteria>
+    void SetFilterCriteria(FilterCriteriaT&& value) { m_filterCriteriaHasBeenSet = true; m_filterCriteria = std::forward<FilterCriteriaT>(value); }
+    template<typename FilterCriteriaT = CoverageFilterCriteria>
+    ListCoverageRequest& WithFilterCriteria(FilterCriteriaT&& value) { SetFilterCriteria(std::forward<FilterCriteriaT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Represents the criteria used to filter the coverage details.</p>
-     */
-    inline void SetFilterCriteria(const CoverageFilterCriteria& value) { m_filterCriteriaHasBeenSet = true; m_filterCriteria = value; }
-
-    /**
-     * <p>Represents the criteria used to filter the coverage details.</p>
-     */
-    inline void SetFilterCriteria(CoverageFilterCriteria&& value) { m_filterCriteriaHasBeenSet = true; m_filterCriteria = std::move(value); }
-
-    /**
-     * <p>Represents the criteria used to filter the coverage details.</p>
-     */
-    inline ListCoverageRequest& WithFilterCriteria(const CoverageFilterCriteria& value) { SetFilterCriteria(value); return *this;}
-
-    /**
-     * <p>Represents the criteria used to filter the coverage details.</p>
-     */
-    inline ListCoverageRequest& WithFilterCriteria(CoverageFilterCriteria&& value) { SetFilterCriteria(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Represents the criteria used to sort the coverage details.</p>
      */
-    inline const CoverageSortCriteria& GetSortCriteria() const{ return m_sortCriteria; }
-
-    /**
-     * <p>Represents the criteria used to sort the coverage details.</p>
-     */
+    inline const CoverageSortCriteria& GetSortCriteria() const { return m_sortCriteria; }
     inline bool SortCriteriaHasBeenSet() const { return m_sortCriteriaHasBeenSet; }
-
-    /**
-     * <p>Represents the criteria used to sort the coverage details.</p>
-     */
-    inline void SetSortCriteria(const CoverageSortCriteria& value) { m_sortCriteriaHasBeenSet = true; m_sortCriteria = value; }
-
-    /**
-     * <p>Represents the criteria used to sort the coverage details.</p>
-     */
-    inline void SetSortCriteria(CoverageSortCriteria&& value) { m_sortCriteriaHasBeenSet = true; m_sortCriteria = std::move(value); }
-
-    /**
-     * <p>Represents the criteria used to sort the coverage details.</p>
-     */
-    inline ListCoverageRequest& WithSortCriteria(const CoverageSortCriteria& value) { SetSortCriteria(value); return *this;}
-
-    /**
-     * <p>Represents the criteria used to sort the coverage details.</p>
-     */
-    inline ListCoverageRequest& WithSortCriteria(CoverageSortCriteria&& value) { SetSortCriteria(std::move(value)); return *this;}
-
+    template<typename SortCriteriaT = CoverageSortCriteria>
+    void SetSortCriteria(SortCriteriaT&& value) { m_sortCriteriaHasBeenSet = true; m_sortCriteria = std::forward<SortCriteriaT>(value); }
+    template<typename SortCriteriaT = CoverageSortCriteria>
+    ListCoverageRequest& WithSortCriteria(SortCriteriaT&& value) { SetSortCriteria(std::forward<SortCriteriaT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_detectorId;
@@ -238,7 +106,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     CoverageFilterCriteria m_filterCriteria;

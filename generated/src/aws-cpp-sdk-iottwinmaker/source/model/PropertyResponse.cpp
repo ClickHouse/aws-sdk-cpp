@@ -18,15 +18,7 @@ namespace IoTTwinMaker
 namespace Model
 {
 
-PropertyResponse::PropertyResponse() : 
-    m_definitionHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-PropertyResponse::PropertyResponse(JsonView jsonValue) : 
-    m_definitionHasBeenSet(false),
-    m_valueHasBeenSet(false)
+PropertyResponse::PropertyResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ PropertyResponse& PropertyResponse::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("definition"))
   {
     m_definition = jsonValue.GetObject("definition");
-
     m_definitionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetObject("value");
-
     m_valueHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("areAllPropertyValuesReturned"))
+  {
+    m_areAllPropertyValuesReturned = jsonValue.GetBool("areAllPropertyValuesReturned");
+    m_areAllPropertyValuesReturnedHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +56,12 @@ JsonValue PropertyResponse::Jsonize() const
   if(m_valueHasBeenSet)
   {
    payload.WithObject("value", m_value.Jsonize());
+
+  }
+
+  if(m_areAllPropertyValuesReturnedHasBeenSet)
+  {
+   payload.WithBool("areAllPropertyValuesReturned", m_areAllPropertyValuesReturned);
 
   }
 

@@ -18,10 +18,6 @@ namespace MediaLive
 namespace Model
 {
 
-MediaPackageOutputSettings::MediaPackageOutputSettings()
-{
-}
-
 MediaPackageOutputSettings::MediaPackageOutputSettings(JsonView jsonValue)
 {
   *this = jsonValue;
@@ -29,13 +25,23 @@ MediaPackageOutputSettings::MediaPackageOutputSettings(JsonView jsonValue)
 
 MediaPackageOutputSettings& MediaPackageOutputSettings::operator =(JsonView jsonValue)
 {
-  AWS_UNREFERENCED_PARAM(jsonValue);
+  if(jsonValue.ValueExists("mediaPackageV2DestinationSettings"))
+  {
+    m_mediaPackageV2DestinationSettings = jsonValue.GetObject("mediaPackageV2DestinationSettings");
+    m_mediaPackageV2DestinationSettingsHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue MediaPackageOutputSettings::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_mediaPackageV2DestinationSettingsHasBeenSet)
+  {
+   payload.WithObject("mediaPackageV2DestinationSettings", m_mediaPackageV2DestinationSettings.Jsonize());
+
+  }
 
   return payload;
 }

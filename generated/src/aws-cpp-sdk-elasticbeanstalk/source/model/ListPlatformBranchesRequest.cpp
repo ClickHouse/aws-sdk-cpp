@@ -10,25 +10,24 @@
 using namespace Aws::ElasticBeanstalk::Model;
 using namespace Aws::Utils;
 
-ListPlatformBranchesRequest::ListPlatformBranchesRequest() : 
-    m_filtersHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListPlatformBranchesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=ListPlatformBranches&";
   if(m_filtersHasBeenSet)
   {
-    unsigned filtersCount = 1;
-    for(auto& item : m_filters)
+    if (m_filters.empty())
     {
-      item.OutputToStream(ss, "Filters.member.", filtersCount, "");
-      filtersCount++;
+      ss << "Filters=&";
+    }
+    else
+    {
+      unsigned filtersCount = 1;
+      for(auto& item : m_filters)
+      {
+        item.OutputToStream(ss, "Filters.member.", filtersCount, "");
+        filtersCount++;
+      }
     }
   }
 

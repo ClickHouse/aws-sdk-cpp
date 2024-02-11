@@ -18,15 +18,7 @@ namespace Personalize
 namespace Model
 {
 
-HPOResourceConfig::HPOResourceConfig() : 
-    m_maxNumberOfTrainingJobsHasBeenSet(false),
-    m_maxParallelTrainingJobsHasBeenSet(false)
-{
-}
-
-HPOResourceConfig::HPOResourceConfig(JsonView jsonValue) : 
-    m_maxNumberOfTrainingJobsHasBeenSet(false),
-    m_maxParallelTrainingJobsHasBeenSet(false)
+HPOResourceConfig::HPOResourceConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ HPOResourceConfig& HPOResourceConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("maxNumberOfTrainingJobs"))
   {
     m_maxNumberOfTrainingJobs = jsonValue.GetString("maxNumberOfTrainingJobs");
-
     m_maxNumberOfTrainingJobsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("maxParallelTrainingJobs"))
   {
     m_maxParallelTrainingJobs = jsonValue.GetString("maxParallelTrainingJobs");
-
     m_maxParallelTrainingJobsHasBeenSet = true;
   }
-
   return *this;
 }
 

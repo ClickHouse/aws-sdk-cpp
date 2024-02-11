@@ -32,101 +32,52 @@ namespace Model
   class ChallengeResponse
   {
   public:
-    AWS_WAFV2_API ChallengeResponse();
+    AWS_WAFV2_API ChallengeResponse() = default;
     AWS_WAFV2_API ChallengeResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API ChallengeResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The HTTP response code indicating the status of the challenge token in the
      * web request. If the token is missing, invalid, or expired, this code is
      * <code>202 Request Accepted</code>.</p>
      */
-    inline int GetResponseCode() const{ return m_responseCode; }
-
-    /**
-     * <p>The HTTP response code indicating the status of the challenge token in the
-     * web request. If the token is missing, invalid, or expired, this code is
-     * <code>202 Request Accepted</code>.</p>
-     */
+    inline int GetResponseCode() const { return m_responseCode; }
     inline bool ResponseCodeHasBeenSet() const { return m_responseCodeHasBeenSet; }
-
-    /**
-     * <p>The HTTP response code indicating the status of the challenge token in the
-     * web request. If the token is missing, invalid, or expired, this code is
-     * <code>202 Request Accepted</code>.</p>
-     */
     inline void SetResponseCode(int value) { m_responseCodeHasBeenSet = true; m_responseCode = value; }
-
-    /**
-     * <p>The HTTP response code indicating the status of the challenge token in the
-     * web request. If the token is missing, invalid, or expired, this code is
-     * <code>202 Request Accepted</code>.</p>
-     */
     inline ChallengeResponse& WithResponseCode(int value) { SetResponseCode(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The time that the challenge was last solved for the supplied token. </p>
      */
-    inline long long GetSolveTimestamp() const{ return m_solveTimestamp; }
-
-    /**
-     * <p>The time that the challenge was last solved for the supplied token. </p>
-     */
+    inline long long GetSolveTimestamp() const { return m_solveTimestamp; }
     inline bool SolveTimestampHasBeenSet() const { return m_solveTimestampHasBeenSet; }
-
-    /**
-     * <p>The time that the challenge was last solved for the supplied token. </p>
-     */
     inline void SetSolveTimestamp(long long value) { m_solveTimestampHasBeenSet = true; m_solveTimestamp = value; }
-
-    /**
-     * <p>The time that the challenge was last solved for the supplied token. </p>
-     */
     inline ChallengeResponse& WithSolveTimestamp(long long value) { SetSolveTimestamp(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The reason for failure, populated when the evaluation of the token fails.</p>
      */
-    inline const FailureReason& GetFailureReason() const{ return m_failureReason; }
-
-    /**
-     * <p>The reason for failure, populated when the evaluation of the token fails.</p>
-     */
+    inline FailureReason GetFailureReason() const { return m_failureReason; }
     inline bool FailureReasonHasBeenSet() const { return m_failureReasonHasBeenSet; }
-
-    /**
-     * <p>The reason for failure, populated when the evaluation of the token fails.</p>
-     */
-    inline void SetFailureReason(const FailureReason& value) { m_failureReasonHasBeenSet = true; m_failureReason = value; }
-
-    /**
-     * <p>The reason for failure, populated when the evaluation of the token fails.</p>
-     */
-    inline void SetFailureReason(FailureReason&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::move(value); }
-
-    /**
-     * <p>The reason for failure, populated when the evaluation of the token fails.</p>
-     */
-    inline ChallengeResponse& WithFailureReason(const FailureReason& value) { SetFailureReason(value); return *this;}
-
-    /**
-     * <p>The reason for failure, populated when the evaluation of the token fails.</p>
-     */
-    inline ChallengeResponse& WithFailureReason(FailureReason&& value) { SetFailureReason(std::move(value)); return *this;}
-
+    inline void SetFailureReason(FailureReason value) { m_failureReasonHasBeenSet = true; m_failureReason = value; }
+    inline ChallengeResponse& WithFailureReason(FailureReason value) { SetFailureReason(value); return *this;}
+    ///@}
   private:
 
-    int m_responseCode;
+    int m_responseCode{0};
     bool m_responseCodeHasBeenSet = false;
 
-    long long m_solveTimestamp;
+    long long m_solveTimestamp{0};
     bool m_solveTimestampHasBeenSet = false;
 
-    FailureReason m_failureReason;
+    FailureReason m_failureReason{FailureReason::NOT_SET};
     bool m_failureReasonHasBeenSet = false;
   };
 

@@ -33,201 +33,73 @@ namespace Model
   class Spigot
   {
   public:
-    AWS_GLUE_API Spigot();
+    AWS_GLUE_API Spigot() = default;
     AWS_GLUE_API Spigot(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Spigot& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the transform node.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the transform node.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Spigot& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the transform node.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the transform node.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the transform node.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the transform node.</p>
-     */
-    inline Spigot& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the transform node.</p>
-     */
-    inline Spigot& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the transform node.</p>
-     */
-    inline Spigot& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The data inputs identified by their node names.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetInputs() const{ return m_inputs; }
-
-    /**
-     * <p>The data inputs identified by their node names.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetInputs() const { return m_inputs; }
     inline bool InputsHasBeenSet() const { return m_inputsHasBeenSet; }
+    template<typename InputsT = Aws::Vector<Aws::String>>
+    void SetInputs(InputsT&& value) { m_inputsHasBeenSet = true; m_inputs = std::forward<InputsT>(value); }
+    template<typename InputsT = Aws::Vector<Aws::String>>
+    Spigot& WithInputs(InputsT&& value) { SetInputs(std::forward<InputsT>(value)); return *this;}
+    template<typename InputsT = Aws::String>
+    Spigot& AddInputs(InputsT&& value) { m_inputsHasBeenSet = true; m_inputs.emplace_back(std::forward<InputsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The data inputs identified by their node names.</p>
-     */
-    inline void SetInputs(const Aws::Vector<Aws::String>& value) { m_inputsHasBeenSet = true; m_inputs = value; }
-
-    /**
-     * <p>The data inputs identified by their node names.</p>
-     */
-    inline void SetInputs(Aws::Vector<Aws::String>&& value) { m_inputsHasBeenSet = true; m_inputs = std::move(value); }
-
-    /**
-     * <p>The data inputs identified by their node names.</p>
-     */
-    inline Spigot& WithInputs(const Aws::Vector<Aws::String>& value) { SetInputs(value); return *this;}
-
-    /**
-     * <p>The data inputs identified by their node names.</p>
-     */
-    inline Spigot& WithInputs(Aws::Vector<Aws::String>&& value) { SetInputs(std::move(value)); return *this;}
-
-    /**
-     * <p>The data inputs identified by their node names.</p>
-     */
-    inline Spigot& AddInputs(const Aws::String& value) { m_inputsHasBeenSet = true; m_inputs.push_back(value); return *this; }
-
-    /**
-     * <p>The data inputs identified by their node names.</p>
-     */
-    inline Spigot& AddInputs(Aws::String&& value) { m_inputsHasBeenSet = true; m_inputs.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The data inputs identified by their node names.</p>
-     */
-    inline Spigot& AddInputs(const char* value) { m_inputsHasBeenSet = true; m_inputs.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A path in Amazon S3 where the transform will write a subset of records from
      * the dataset to a JSON file in an Amazon S3 bucket.</p>
      */
-    inline const Aws::String& GetPath() const{ return m_path; }
-
-    /**
-     * <p>A path in Amazon S3 where the transform will write a subset of records from
-     * the dataset to a JSON file in an Amazon S3 bucket.</p>
-     */
+    inline const Aws::String& GetPath() const { return m_path; }
     inline bool PathHasBeenSet() const { return m_pathHasBeenSet; }
+    template<typename PathT = Aws::String>
+    void SetPath(PathT&& value) { m_pathHasBeenSet = true; m_path = std::forward<PathT>(value); }
+    template<typename PathT = Aws::String>
+    Spigot& WithPath(PathT&& value) { SetPath(std::forward<PathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A path in Amazon S3 where the transform will write a subset of records from
-     * the dataset to a JSON file in an Amazon S3 bucket.</p>
-     */
-    inline void SetPath(const Aws::String& value) { m_pathHasBeenSet = true; m_path = value; }
-
-    /**
-     * <p>A path in Amazon S3 where the transform will write a subset of records from
-     * the dataset to a JSON file in an Amazon S3 bucket.</p>
-     */
-    inline void SetPath(Aws::String&& value) { m_pathHasBeenSet = true; m_path = std::move(value); }
-
-    /**
-     * <p>A path in Amazon S3 where the transform will write a subset of records from
-     * the dataset to a JSON file in an Amazon S3 bucket.</p>
-     */
-    inline void SetPath(const char* value) { m_pathHasBeenSet = true; m_path.assign(value); }
-
-    /**
-     * <p>A path in Amazon S3 where the transform will write a subset of records from
-     * the dataset to a JSON file in an Amazon S3 bucket.</p>
-     */
-    inline Spigot& WithPath(const Aws::String& value) { SetPath(value); return *this;}
-
-    /**
-     * <p>A path in Amazon S3 where the transform will write a subset of records from
-     * the dataset to a JSON file in an Amazon S3 bucket.</p>
-     */
-    inline Spigot& WithPath(Aws::String&& value) { SetPath(std::move(value)); return *this;}
-
-    /**
-     * <p>A path in Amazon S3 where the transform will write a subset of records from
-     * the dataset to a JSON file in an Amazon S3 bucket.</p>
-     */
-    inline Spigot& WithPath(const char* value) { SetPath(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies a number of records to write starting from the beginning of the
      * dataset.</p>
      */
-    inline int GetTopk() const{ return m_topk; }
-
-    /**
-     * <p>Specifies a number of records to write starting from the beginning of the
-     * dataset.</p>
-     */
+    inline int GetTopk() const { return m_topk; }
     inline bool TopkHasBeenSet() const { return m_topkHasBeenSet; }
-
-    /**
-     * <p>Specifies a number of records to write starting from the beginning of the
-     * dataset.</p>
-     */
     inline void SetTopk(int value) { m_topkHasBeenSet = true; m_topk = value; }
-
-    /**
-     * <p>Specifies a number of records to write starting from the beginning of the
-     * dataset.</p>
-     */
     inline Spigot& WithTopk(int value) { SetTopk(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The probability (a decimal value with a maximum value of 1) of picking any
      * given record. A value of 1 indicates that each row read from the dataset should
      * be included in the sample output.</p>
      */
-    inline double GetProb() const{ return m_prob; }
-
-    /**
-     * <p>The probability (a decimal value with a maximum value of 1) of picking any
-     * given record. A value of 1 indicates that each row read from the dataset should
-     * be included in the sample output.</p>
-     */
+    inline double GetProb() const { return m_prob; }
     inline bool ProbHasBeenSet() const { return m_probHasBeenSet; }
-
-    /**
-     * <p>The probability (a decimal value with a maximum value of 1) of picking any
-     * given record. A value of 1 indicates that each row read from the dataset should
-     * be included in the sample output.</p>
-     */
     inline void SetProb(double value) { m_probHasBeenSet = true; m_prob = value; }
-
-    /**
-     * <p>The probability (a decimal value with a maximum value of 1) of picking any
-     * given record. A value of 1 indicates that each row read from the dataset should
-     * be included in the sample output.</p>
-     */
     inline Spigot& WithProb(double value) { SetProb(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_name;
@@ -239,10 +111,10 @@ namespace Model
     Aws::String m_path;
     bool m_pathHasBeenSet = false;
 
-    int m_topk;
+    int m_topk{0};
     bool m_topkHasBeenSet = false;
 
-    double m_prob;
+    double m_prob{0.0};
     bool m_probHasBeenSet = false;
   };
 

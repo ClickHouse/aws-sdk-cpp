@@ -18,19 +18,7 @@ namespace MainframeModernization
 namespace Model
 {
 
-DataSetImportTask::DataSetImportTask() : 
-    m_status(DataSetTaskLifecycle::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_summaryHasBeenSet(false),
-    m_taskIdHasBeenSet(false)
-{
-}
-
-DataSetImportTask::DataSetImportTask(JsonView jsonValue) : 
-    m_status(DataSetTaskLifecycle::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_summaryHasBeenSet(false),
-    m_taskIdHasBeenSet(false)
+DataSetImportTask::DataSetImportTask(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,23 @@ DataSetImportTask& DataSetImportTask::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("status"))
   {
     m_status = DataSetTaskLifecycleMapper::GetDataSetTaskLifecycleForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("statusReason"))
+  {
+    m_statusReason = jsonValue.GetString("statusReason");
+    m_statusReasonHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("summary"))
   {
     m_summary = jsonValue.GetObject("summary");
-
     m_summaryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("taskId"))
   {
     m_taskId = jsonValue.GetString("taskId");
-
     m_taskIdHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -68,6 +55,12 @@ JsonValue DataSetImportTask::Jsonize() const
   if(m_statusHasBeenSet)
   {
    payload.WithString("status", DataSetTaskLifecycleMapper::GetNameForDataSetTaskLifecycle(m_status));
+  }
+
+  if(m_statusReasonHasBeenSet)
+  {
+   payload.WithString("statusReason", m_statusReason);
+
   }
 
   if(m_summaryHasBeenSet)

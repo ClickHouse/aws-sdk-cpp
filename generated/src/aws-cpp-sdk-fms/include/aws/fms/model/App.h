@@ -31,53 +31,25 @@ namespace Model
   class App
   {
   public:
-    AWS_FMS_API App();
+    AWS_FMS_API App() = default;
     AWS_FMS_API App(Aws::Utils::Json::JsonView jsonValue);
     AWS_FMS_API App& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The application's name.</p>
      */
-    inline const Aws::String& GetAppName() const{ return m_appName; }
-
-    /**
-     * <p>The application's name.</p>
-     */
+    inline const Aws::String& GetAppName() const { return m_appName; }
     inline bool AppNameHasBeenSet() const { return m_appNameHasBeenSet; }
+    template<typename AppNameT = Aws::String>
+    void SetAppName(AppNameT&& value) { m_appNameHasBeenSet = true; m_appName = std::forward<AppNameT>(value); }
+    template<typename AppNameT = Aws::String>
+    App& WithAppName(AppNameT&& value) { SetAppName(std::forward<AppNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The application's name.</p>
-     */
-    inline void SetAppName(const Aws::String& value) { m_appNameHasBeenSet = true; m_appName = value; }
-
-    /**
-     * <p>The application's name.</p>
-     */
-    inline void SetAppName(Aws::String&& value) { m_appNameHasBeenSet = true; m_appName = std::move(value); }
-
-    /**
-     * <p>The application's name.</p>
-     */
-    inline void SetAppName(const char* value) { m_appNameHasBeenSet = true; m_appName.assign(value); }
-
-    /**
-     * <p>The application's name.</p>
-     */
-    inline App& WithAppName(const Aws::String& value) { SetAppName(value); return *this;}
-
-    /**
-     * <p>The application's name.</p>
-     */
-    inline App& WithAppName(Aws::String&& value) { SetAppName(std::move(value)); return *this;}
-
-    /**
-     * <p>The application's name.</p>
-     */
-    inline App& WithAppName(const char* value) { SetAppName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IP protocol name or number. The name can be one of <code>tcp</code>,
      * <code>udp</code>, or <code>icmp</code>. For information on possible numbers, see
@@ -85,92 +57,23 @@ namespace Model
      * href="https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
      * Numbers</a>.</p>
      */
-    inline const Aws::String& GetProtocol() const{ return m_protocol; }
-
-    /**
-     * <p>The IP protocol name or number. The name can be one of <code>tcp</code>,
-     * <code>udp</code>, or <code>icmp</code>. For information on possible numbers, see
-     * <a
-     * href="https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>.</p>
-     */
+    inline const Aws::String& GetProtocol() const { return m_protocol; }
     inline bool ProtocolHasBeenSet() const { return m_protocolHasBeenSet; }
+    template<typename ProtocolT = Aws::String>
+    void SetProtocol(ProtocolT&& value) { m_protocolHasBeenSet = true; m_protocol = std::forward<ProtocolT>(value); }
+    template<typename ProtocolT = Aws::String>
+    App& WithProtocol(ProtocolT&& value) { SetProtocol(std::forward<ProtocolT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IP protocol name or number. The name can be one of <code>tcp</code>,
-     * <code>udp</code>, or <code>icmp</code>. For information on possible numbers, see
-     * <a
-     * href="https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>.</p>
-     */
-    inline void SetProtocol(const Aws::String& value) { m_protocolHasBeenSet = true; m_protocol = value; }
-
-    /**
-     * <p>The IP protocol name or number. The name can be one of <code>tcp</code>,
-     * <code>udp</code>, or <code>icmp</code>. For information on possible numbers, see
-     * <a
-     * href="https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>.</p>
-     */
-    inline void SetProtocol(Aws::String&& value) { m_protocolHasBeenSet = true; m_protocol = std::move(value); }
-
-    /**
-     * <p>The IP protocol name or number. The name can be one of <code>tcp</code>,
-     * <code>udp</code>, or <code>icmp</code>. For information on possible numbers, see
-     * <a
-     * href="https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>.</p>
-     */
-    inline void SetProtocol(const char* value) { m_protocolHasBeenSet = true; m_protocol.assign(value); }
-
-    /**
-     * <p>The IP protocol name or number. The name can be one of <code>tcp</code>,
-     * <code>udp</code>, or <code>icmp</code>. For information on possible numbers, see
-     * <a
-     * href="https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>.</p>
-     */
-    inline App& WithProtocol(const Aws::String& value) { SetProtocol(value); return *this;}
-
-    /**
-     * <p>The IP protocol name or number. The name can be one of <code>tcp</code>,
-     * <code>udp</code>, or <code>icmp</code>. For information on possible numbers, see
-     * <a
-     * href="https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>.</p>
-     */
-    inline App& WithProtocol(Aws::String&& value) { SetProtocol(std::move(value)); return *this;}
-
-    /**
-     * <p>The IP protocol name or number. The name can be one of <code>tcp</code>,
-     * <code>udp</code>, or <code>icmp</code>. For information on possible numbers, see
-     * <a
-     * href="https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>.</p>
-     */
-    inline App& WithProtocol(const char* value) { SetProtocol(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The application's port number, for example <code>80</code>.</p>
      */
-    inline long long GetPort() const{ return m_port; }
-
-    /**
-     * <p>The application's port number, for example <code>80</code>.</p>
-     */
+    inline long long GetPort() const { return m_port; }
     inline bool PortHasBeenSet() const { return m_portHasBeenSet; }
-
-    /**
-     * <p>The application's port number, for example <code>80</code>.</p>
-     */
     inline void SetPort(long long value) { m_portHasBeenSet = true; m_port = value; }
-
-    /**
-     * <p>The application's port number, for example <code>80</code>.</p>
-     */
     inline App& WithPort(long long value) { SetPort(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_appName;
@@ -179,7 +82,7 @@ namespace Model
     Aws::String m_protocol;
     bool m_protocolHasBeenSet = false;
 
-    long long m_port;
+    long long m_port{0};
     bool m_portHasBeenSet = false;
   };
 

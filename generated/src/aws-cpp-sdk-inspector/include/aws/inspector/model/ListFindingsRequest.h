@@ -23,7 +23,7 @@ namespace Model
   class ListFindingsRequest : public InspectorRequest
   {
   public:
-    AWS_INSPECTOR_API ListFindingsRequest();
+    AWS_INSPECTOR_API ListFindingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,110 +36,37 @@ namespace Model
     AWS_INSPECTOR_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ARNs of the assessment runs that generate the findings that you want to
      * list.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAssessmentRunArns() const{ return m_assessmentRunArns; }
-
-    /**
-     * <p>The ARNs of the assessment runs that generate the findings that you want to
-     * list.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAssessmentRunArns() const { return m_assessmentRunArns; }
     inline bool AssessmentRunArnsHasBeenSet() const { return m_assessmentRunArnsHasBeenSet; }
+    template<typename AssessmentRunArnsT = Aws::Vector<Aws::String>>
+    void SetAssessmentRunArns(AssessmentRunArnsT&& value) { m_assessmentRunArnsHasBeenSet = true; m_assessmentRunArns = std::forward<AssessmentRunArnsT>(value); }
+    template<typename AssessmentRunArnsT = Aws::Vector<Aws::String>>
+    ListFindingsRequest& WithAssessmentRunArns(AssessmentRunArnsT&& value) { SetAssessmentRunArns(std::forward<AssessmentRunArnsT>(value)); return *this;}
+    template<typename AssessmentRunArnsT = Aws::String>
+    ListFindingsRequest& AddAssessmentRunArns(AssessmentRunArnsT&& value) { m_assessmentRunArnsHasBeenSet = true; m_assessmentRunArns.emplace_back(std::forward<AssessmentRunArnsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The ARNs of the assessment runs that generate the findings that you want to
-     * list.</p>
-     */
-    inline void SetAssessmentRunArns(const Aws::Vector<Aws::String>& value) { m_assessmentRunArnsHasBeenSet = true; m_assessmentRunArns = value; }
-
-    /**
-     * <p>The ARNs of the assessment runs that generate the findings that you want to
-     * list.</p>
-     */
-    inline void SetAssessmentRunArns(Aws::Vector<Aws::String>&& value) { m_assessmentRunArnsHasBeenSet = true; m_assessmentRunArns = std::move(value); }
-
-    /**
-     * <p>The ARNs of the assessment runs that generate the findings that you want to
-     * list.</p>
-     */
-    inline ListFindingsRequest& WithAssessmentRunArns(const Aws::Vector<Aws::String>& value) { SetAssessmentRunArns(value); return *this;}
-
-    /**
-     * <p>The ARNs of the assessment runs that generate the findings that you want to
-     * list.</p>
-     */
-    inline ListFindingsRequest& WithAssessmentRunArns(Aws::Vector<Aws::String>&& value) { SetAssessmentRunArns(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARNs of the assessment runs that generate the findings that you want to
-     * list.</p>
-     */
-    inline ListFindingsRequest& AddAssessmentRunArns(const Aws::String& value) { m_assessmentRunArnsHasBeenSet = true; m_assessmentRunArns.push_back(value); return *this; }
-
-    /**
-     * <p>The ARNs of the assessment runs that generate the findings that you want to
-     * list.</p>
-     */
-    inline ListFindingsRequest& AddAssessmentRunArns(Aws::String&& value) { m_assessmentRunArnsHasBeenSet = true; m_assessmentRunArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The ARNs of the assessment runs that generate the findings that you want to
-     * list.</p>
-     */
-    inline ListFindingsRequest& AddAssessmentRunArns(const char* value) { m_assessmentRunArnsHasBeenSet = true; m_assessmentRunArns.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>You can use this parameter to specify a subset of data to be included in the
      * action's response.</p> <p>For a record to match a filter, all specified filter
      * attributes must match. When multiple values are specified for a filter
      * attribute, any of the values can match.</p>
      */
-    inline const FindingFilter& GetFilter() const{ return m_filter; }
-
-    /**
-     * <p>You can use this parameter to specify a subset of data to be included in the
-     * action's response.</p> <p>For a record to match a filter, all specified filter
-     * attributes must match. When multiple values are specified for a filter
-     * attribute, any of the values can match.</p>
-     */
+    inline const FindingFilter& GetFilter() const { return m_filter; }
     inline bool FilterHasBeenSet() const { return m_filterHasBeenSet; }
+    template<typename FilterT = FindingFilter>
+    void SetFilter(FilterT&& value) { m_filterHasBeenSet = true; m_filter = std::forward<FilterT>(value); }
+    template<typename FilterT = FindingFilter>
+    ListFindingsRequest& WithFilter(FilterT&& value) { SetFilter(std::forward<FilterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>You can use this parameter to specify a subset of data to be included in the
-     * action's response.</p> <p>For a record to match a filter, all specified filter
-     * attributes must match. When multiple values are specified for a filter
-     * attribute, any of the values can match.</p>
-     */
-    inline void SetFilter(const FindingFilter& value) { m_filterHasBeenSet = true; m_filter = value; }
-
-    /**
-     * <p>You can use this parameter to specify a subset of data to be included in the
-     * action's response.</p> <p>For a record to match a filter, all specified filter
-     * attributes must match. When multiple values are specified for a filter
-     * attribute, any of the values can match.</p>
-     */
-    inline void SetFilter(FindingFilter&& value) { m_filterHasBeenSet = true; m_filter = std::move(value); }
-
-    /**
-     * <p>You can use this parameter to specify a subset of data to be included in the
-     * action's response.</p> <p>For a record to match a filter, all specified filter
-     * attributes must match. When multiple values are specified for a filter
-     * attribute, any of the values can match.</p>
-     */
-    inline ListFindingsRequest& WithFilter(const FindingFilter& value) { SetFilter(value); return *this;}
-
-    /**
-     * <p>You can use this parameter to specify a subset of data to be included in the
-     * action's response.</p> <p>For a record to match a filter, all specified filter
-     * attributes must match. When multiple values are specified for a filter
-     * attribute, any of the values can match.</p>
-     */
-    inline ListFindingsRequest& WithFilter(FindingFilter&& value) { SetFilter(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>You can use this parameter when paginating results. Set the value of this
      * parameter to null on your first call to the <b>ListFindings</b> action.
@@ -147,96 +74,24 @@ namespace Model
      * value of <b>NextToken</b> from the previous response to continue listing
      * data.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>You can use this parameter when paginating results. Set the value of this
-     * parameter to null on your first call to the <b>ListFindings</b> action.
-     * Subsequent calls to the action fill <b>nextToken</b> in the request with the
-     * value of <b>NextToken</b> from the previous response to continue listing
-     * data.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListFindingsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>You can use this parameter when paginating results. Set the value of this
-     * parameter to null on your first call to the <b>ListFindings</b> action.
-     * Subsequent calls to the action fill <b>nextToken</b> in the request with the
-     * value of <b>NextToken</b> from the previous response to continue listing
-     * data.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>You can use this parameter when paginating results. Set the value of this
-     * parameter to null on your first call to the <b>ListFindings</b> action.
-     * Subsequent calls to the action fill <b>nextToken</b> in the request with the
-     * value of <b>NextToken</b> from the previous response to continue listing
-     * data.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>You can use this parameter when paginating results. Set the value of this
-     * parameter to null on your first call to the <b>ListFindings</b> action.
-     * Subsequent calls to the action fill <b>nextToken</b> in the request with the
-     * value of <b>NextToken</b> from the previous response to continue listing
-     * data.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>You can use this parameter when paginating results. Set the value of this
-     * parameter to null on your first call to the <b>ListFindings</b> action.
-     * Subsequent calls to the action fill <b>nextToken</b> in the request with the
-     * value of <b>NextToken</b> from the previous response to continue listing
-     * data.</p>
-     */
-    inline ListFindingsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>You can use this parameter when paginating results. Set the value of this
-     * parameter to null on your first call to the <b>ListFindings</b> action.
-     * Subsequent calls to the action fill <b>nextToken</b> in the request with the
-     * value of <b>NextToken</b> from the previous response to continue listing
-     * data.</p>
-     */
-    inline ListFindingsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>You can use this parameter when paginating results. Set the value of this
-     * parameter to null on your first call to the <b>ListFindings</b> action.
-     * Subsequent calls to the action fill <b>nextToken</b> in the request with the
-     * value of <b>NextToken</b> from the previous response to continue listing
-     * data.</p>
-     */
-    inline ListFindingsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>You can use this parameter to indicate the maximum number of items you want
      * in the response. The default value is 10. The maximum value is 500.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>You can use this parameter to indicate the maximum number of items you want
-     * in the response. The default value is 10. The maximum value is 500.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>You can use this parameter to indicate the maximum number of items you want
-     * in the response. The default value is 10. The maximum value is 500.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>You can use this parameter to indicate the maximum number of items you want
-     * in the response. The default value is 10. The maximum value is 500.</p>
-     */
     inline ListFindingsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_assessmentRunArns;
@@ -248,7 +103,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

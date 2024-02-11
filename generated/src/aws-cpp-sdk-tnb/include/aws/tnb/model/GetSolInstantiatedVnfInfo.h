@@ -34,45 +34,24 @@ namespace Model
   class GetSolInstantiatedVnfInfo
   {
   public:
-    AWS_TNB_API GetSolInstantiatedVnfInfo();
+    AWS_TNB_API GetSolInstantiatedVnfInfo() = default;
     AWS_TNB_API GetSolInstantiatedVnfInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_TNB_API GetSolInstantiatedVnfInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TNB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>State of the network function.</p>
      */
-    inline const VnfOperationalState& GetVnfState() const{ return m_vnfState; }
-
-    /**
-     * <p>State of the network function.</p>
-     */
+    inline VnfOperationalState GetVnfState() const { return m_vnfState; }
     inline bool VnfStateHasBeenSet() const { return m_vnfStateHasBeenSet; }
-
-    /**
-     * <p>State of the network function.</p>
-     */
-    inline void SetVnfState(const VnfOperationalState& value) { m_vnfStateHasBeenSet = true; m_vnfState = value; }
-
-    /**
-     * <p>State of the network function.</p>
-     */
-    inline void SetVnfState(VnfOperationalState&& value) { m_vnfStateHasBeenSet = true; m_vnfState = std::move(value); }
-
-    /**
-     * <p>State of the network function.</p>
-     */
-    inline GetSolInstantiatedVnfInfo& WithVnfState(const VnfOperationalState& value) { SetVnfState(value); return *this;}
-
-    /**
-     * <p>State of the network function.</p>
-     */
-    inline GetSolInstantiatedVnfInfo& WithVnfState(VnfOperationalState&& value) { SetVnfState(std::move(value)); return *this;}
-
+    inline void SetVnfState(VnfOperationalState value) { m_vnfStateHasBeenSet = true; m_vnfState = value; }
+    inline GetSolInstantiatedVnfInfo& WithVnfState(VnfOperationalState value) { SetVnfState(value); return *this;}
+    ///@}
   private:
 
-    VnfOperationalState m_vnfState;
+    VnfOperationalState m_vnfState{VnfOperationalState::NOT_SET};
     bool m_vnfStateHasBeenSet = false;
   };
 

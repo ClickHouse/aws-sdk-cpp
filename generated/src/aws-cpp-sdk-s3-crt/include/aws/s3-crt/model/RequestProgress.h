@@ -29,40 +29,26 @@ namespace Model
   class RequestProgress
   {
   public:
-    AWS_S3CRT_API RequestProgress();
+    AWS_S3CRT_API RequestProgress() = default;
     AWS_S3CRT_API RequestProgress(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API RequestProgress& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Specifies whether periodic QueryProgress frames should be sent. Valid values:
      * TRUE, FALSE. Default value: FALSE.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Specifies whether periodic QueryProgress frames should be sent. Valid values:
-     * TRUE, FALSE. Default value: FALSE.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Specifies whether periodic QueryProgress frames should be sent. Valid values:
-     * TRUE, FALSE. Default value: FALSE.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Specifies whether periodic QueryProgress frames should be sent. Valid values:
-     * TRUE, FALSE. Default value: FALSE.</p>
-     */
     inline RequestProgress& WithEnabled(bool value) { SetEnabled(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
   };
 

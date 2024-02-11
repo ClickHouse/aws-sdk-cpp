@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ClientVpnEndpointStatus::ClientVpnEndpointStatus() : 
-    m_code(ClientVpnEndpointStatusCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-ClientVpnEndpointStatus::ClientVpnEndpointStatus(const XmlNode& xmlNode) : 
-    m_code(ClientVpnEndpointStatusCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+ClientVpnEndpointStatus::ClientVpnEndpointStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ ClientVpnEndpointStatus& ClientVpnEndpointStatus::operator =(const XmlNode& xmlN
     XmlNode codeNode = resultNode.FirstChild("code");
     if(!codeNode.IsNull())
     {
-      m_code = ClientVpnEndpointStatusCodeMapper::GetClientVpnEndpointStatusCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()).c_str());
+      m_code = ClientVpnEndpointStatusCodeMapper::GetClientVpnEndpointStatusCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()));
       m_codeHasBeenSet = true;
     }
     XmlNode messageNode = resultNode.FirstChild("message");
@@ -62,7 +52,7 @@ void ClientVpnEndpointStatus::OutputToStream(Aws::OStream& oStream, const char* 
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Code=" << ClientVpnEndpointStatusCodeMapper::GetNameForClientVpnEndpointStatusCode(m_code) << "&";
+      oStream << location << index << locationValue << ".Code=" << StringUtils::URLEncode(ClientVpnEndpointStatusCodeMapper::GetNameForClientVpnEndpointStatusCode(m_code)) << "&";
   }
 
   if(m_messageHasBeenSet)
@@ -76,7 +66,7 @@ void ClientVpnEndpointStatus::OutputToStream(Aws::OStream& oStream, const char* 
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << ".Code=" << ClientVpnEndpointStatusCodeMapper::GetNameForClientVpnEndpointStatusCode(m_code) << "&";
+      oStream << location << ".Code=" << StringUtils::URLEncode(ClientVpnEndpointStatusCodeMapper::GetNameForClientVpnEndpointStatusCode(m_code)) << "&";
   }
   if(m_messageHasBeenSet)
   {

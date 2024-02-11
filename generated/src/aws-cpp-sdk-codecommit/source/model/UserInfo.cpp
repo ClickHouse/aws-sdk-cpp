@@ -18,17 +18,7 @@ namespace CodeCommit
 namespace Model
 {
 
-UserInfo::UserInfo() : 
-    m_nameHasBeenSet(false),
-    m_emailHasBeenSet(false),
-    m_dateHasBeenSet(false)
-{
-}
-
-UserInfo::UserInfo(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_emailHasBeenSet(false),
-    m_dateHasBeenSet(false)
+UserInfo::UserInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ UserInfo& UserInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("email"))
   {
     m_email = jsonValue.GetString("email");
-
     m_emailHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("date"))
   {
     m_date = jsonValue.GetString("date");
-
     m_dateHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,27 +18,7 @@ namespace RolesAnywhere
 namespace Model
 {
 
-TrustAnchorDetail::TrustAnchorDetail() : 
-    m_createdAtHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_trustAnchorArnHasBeenSet(false),
-    m_trustAnchorIdHasBeenSet(false),
-    m_updatedAtHasBeenSet(false)
-{
-}
-
-TrustAnchorDetail::TrustAnchorDetail(JsonView jsonValue) : 
-    m_createdAtHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_trustAnchorArnHasBeenSet(false),
-    m_trustAnchorIdHasBeenSet(false),
-    m_updatedAtHasBeenSet(false)
+TrustAnchorDetail::TrustAnchorDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,52 +28,47 @@ TrustAnchorDetail& TrustAnchorDetail::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("createdAt"))
   {
     m_createdAt = jsonValue.GetString("createdAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("enabled"))
   {
     m_enabled = jsonValue.GetBool("enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("notificationSettings"))
+  {
+    Aws::Utils::Array<JsonView> notificationSettingsJsonList = jsonValue.GetArray("notificationSettings");
+    for(unsigned notificationSettingsIndex = 0; notificationSettingsIndex < notificationSettingsJsonList.GetLength(); ++notificationSettingsIndex)
+    {
+      m_notificationSettings.push_back(notificationSettingsJsonList[notificationSettingsIndex].AsObject());
+    }
+    m_notificationSettingsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("source"))
   {
     m_source = jsonValue.GetObject("source");
-
     m_sourceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("trustAnchorArn"))
   {
     m_trustAnchorArn = jsonValue.GetString("trustAnchorArn");
-
     m_trustAnchorArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("trustAnchorId"))
   {
     m_trustAnchorId = jsonValue.GetString("trustAnchorId");
-
     m_trustAnchorIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("updatedAt"))
   {
     m_updatedAt = jsonValue.GetString("updatedAt");
-
     m_updatedAtHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -115,6 +90,17 @@ JsonValue TrustAnchorDetail::Jsonize() const
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
+
+  }
+
+  if(m_notificationSettingsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> notificationSettingsJsonList(m_notificationSettings.size());
+   for(unsigned notificationSettingsIndex = 0; notificationSettingsIndex < notificationSettingsJsonList.GetLength(); ++notificationSettingsIndex)
+   {
+     notificationSettingsJsonList[notificationSettingsIndex].AsObject(m_notificationSettings[notificationSettingsIndex].Jsonize());
+   }
+   payload.WithArray("notificationSettings", std::move(notificationSettingsJsonList));
 
   }
 

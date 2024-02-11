@@ -23,7 +23,7 @@ namespace Model
   class TagRoleRequest : public IAMRequest
   {
   public:
-    AWS_IAM_API TagRoleRequest();
+    AWS_IAM_API TagRoleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,6 +38,7 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the IAM role to which you want to add tags.</p> <p>This parameter
      * accepts (through its <a href="http://wikipedia.org/wiki/regex">regex
@@ -45,120 +46,28 @@ namespace Model
      * alphanumeric characters with no spaces. You can also include any of the
      * following characters: _+=,.@-</p>
      */
-    inline const Aws::String& GetRoleName() const{ return m_roleName; }
-
-    /**
-     * <p>The name of the IAM role to which you want to add tags.</p> <p>This parameter
-     * accepts (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters that consist of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
+    inline const Aws::String& GetRoleName() const { return m_roleName; }
     inline bool RoleNameHasBeenSet() const { return m_roleNameHasBeenSet; }
+    template<typename RoleNameT = Aws::String>
+    void SetRoleName(RoleNameT&& value) { m_roleNameHasBeenSet = true; m_roleName = std::forward<RoleNameT>(value); }
+    template<typename RoleNameT = Aws::String>
+    TagRoleRequest& WithRoleName(RoleNameT&& value) { SetRoleName(std::forward<RoleNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the IAM role to which you want to add tags.</p> <p>This parameter
-     * accepts (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters that consist of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline void SetRoleName(const Aws::String& value) { m_roleNameHasBeenSet = true; m_roleName = value; }
-
-    /**
-     * <p>The name of the IAM role to which you want to add tags.</p> <p>This parameter
-     * accepts (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters that consist of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline void SetRoleName(Aws::String&& value) { m_roleNameHasBeenSet = true; m_roleName = std::move(value); }
-
-    /**
-     * <p>The name of the IAM role to which you want to add tags.</p> <p>This parameter
-     * accepts (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters that consist of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline void SetRoleName(const char* value) { m_roleNameHasBeenSet = true; m_roleName.assign(value); }
-
-    /**
-     * <p>The name of the IAM role to which you want to add tags.</p> <p>This parameter
-     * accepts (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters that consist of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline TagRoleRequest& WithRoleName(const Aws::String& value) { SetRoleName(value); return *this;}
-
-    /**
-     * <p>The name of the IAM role to which you want to add tags.</p> <p>This parameter
-     * accepts (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters that consist of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline TagRoleRequest& WithRoleName(Aws::String&& value) { SetRoleName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the IAM role to which you want to add tags.</p> <p>This parameter
-     * accepts (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters that consist of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline TagRoleRequest& WithRoleName(const char* value) { SetRoleName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of tags that you want to attach to the IAM role. Each tag consists
      * of a key name and an associated value.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM role. Each tag consists
-     * of a key name and an associated value.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM role. Each tag consists
-     * of a key name and an associated value.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM role. Each tag consists
-     * of a key name and an associated value.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM role. Each tag consists
-     * of a key name and an associated value.</p>
-     */
-    inline TagRoleRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM role. Each tag consists
-     * of a key name and an associated value.</p>
-     */
-    inline TagRoleRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM role. Each tag consists
-     * of a key name and an associated value.</p>
-     */
-    inline TagRoleRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM role. Each tag consists
-     * of a key name and an associated value.</p>
-     */
-    inline TagRoleRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    TagRoleRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    TagRoleRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_roleName;

@@ -21,7 +21,7 @@ namespace Model
   class GetDataSetDetailsRequest : public MainframeModernizationRequest
   {
   public:
-    AWS_MAINFRAMEMODERNIZATION_API GetDataSetDetailsRequest();
+    AWS_MAINFRAMEMODERNIZATION_API GetDataSetDetailsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,95 +32,30 @@ namespace Model
     AWS_MAINFRAMEMODERNIZATION_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the application that this data set is associated
      * with.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The unique identifier of the application that this data set is associated
-     * with.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    GetDataSetDetailsRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the application that this data set is associated
-     * with.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The unique identifier of the application that this data set is associated
-     * with.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the application that this data set is associated
-     * with.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the application that this data set is associated
-     * with.</p>
-     */
-    inline GetDataSetDetailsRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the application that this data set is associated
-     * with.</p>
-     */
-    inline GetDataSetDetailsRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the application that this data set is associated
-     * with.</p>
-     */
-    inline GetDataSetDetailsRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the data set.</p>
      */
-    inline const Aws::String& GetDataSetName() const{ return m_dataSetName; }
-
-    /**
-     * <p>The name of the data set.</p>
-     */
+    inline const Aws::String& GetDataSetName() const { return m_dataSetName; }
     inline bool DataSetNameHasBeenSet() const { return m_dataSetNameHasBeenSet; }
-
-    /**
-     * <p>The name of the data set.</p>
-     */
-    inline void SetDataSetName(const Aws::String& value) { m_dataSetNameHasBeenSet = true; m_dataSetName = value; }
-
-    /**
-     * <p>The name of the data set.</p>
-     */
-    inline void SetDataSetName(Aws::String&& value) { m_dataSetNameHasBeenSet = true; m_dataSetName = std::move(value); }
-
-    /**
-     * <p>The name of the data set.</p>
-     */
-    inline void SetDataSetName(const char* value) { m_dataSetNameHasBeenSet = true; m_dataSetName.assign(value); }
-
-    /**
-     * <p>The name of the data set.</p>
-     */
-    inline GetDataSetDetailsRequest& WithDataSetName(const Aws::String& value) { SetDataSetName(value); return *this;}
-
-    /**
-     * <p>The name of the data set.</p>
-     */
-    inline GetDataSetDetailsRequest& WithDataSetName(Aws::String&& value) { SetDataSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the data set.</p>
-     */
-    inline GetDataSetDetailsRequest& WithDataSetName(const char* value) { SetDataSetName(value); return *this;}
-
+    template<typename DataSetNameT = Aws::String>
+    void SetDataSetName(DataSetNameT&& value) { m_dataSetNameHasBeenSet = true; m_dataSetName = std::forward<DataSetNameT>(value); }
+    template<typename DataSetNameT = Aws::String>
+    GetDataSetDetailsRequest& WithDataSetName(DataSetNameT&& value) { SetDataSetName(std::forward<DataSetNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;

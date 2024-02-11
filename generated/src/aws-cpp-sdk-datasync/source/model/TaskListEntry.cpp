@@ -18,19 +18,7 @@ namespace DataSync
 namespace Model
 {
 
-TaskListEntry::TaskListEntry() : 
-    m_taskArnHasBeenSet(false),
-    m_status(TaskStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-TaskListEntry::TaskListEntry(JsonView jsonValue) : 
-    m_taskArnHasBeenSet(false),
-    m_status(TaskStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_nameHasBeenSet(false)
+TaskListEntry::TaskListEntry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,23 @@ TaskListEntry& TaskListEntry::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TaskArn"))
   {
     m_taskArn = jsonValue.GetString("TaskArn");
-
     m_taskArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = TaskStatusMapper::GetTaskStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("TaskMode"))
+  {
+    m_taskMode = TaskModeMapper::GetTaskModeForName(jsonValue.GetString("TaskMode"));
+    m_taskModeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -80,6 +67,11 @@ JsonValue TaskListEntry::Jsonize() const
   {
    payload.WithString("Name", m_name);
 
+  }
+
+  if(m_taskModeHasBeenSet)
+  {
+   payload.WithString("TaskMode", TaskModeMapper::GetNameForTaskMode(m_taskMode));
   }
 
   return payload;

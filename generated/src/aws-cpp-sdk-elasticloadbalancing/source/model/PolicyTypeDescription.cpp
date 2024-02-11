@@ -20,17 +20,7 @@ namespace ElasticLoadBalancing
 namespace Model
 {
 
-PolicyTypeDescription::PolicyTypeDescription() : 
-    m_policyTypeNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_policyAttributeTypeDescriptionsHasBeenSet(false)
-{
-}
-
-PolicyTypeDescription::PolicyTypeDescription(const XmlNode& xmlNode) : 
-    m_policyTypeNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_policyAttributeTypeDescriptionsHasBeenSet(false)
+PolicyTypeDescription::PolicyTypeDescription(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +47,7 @@ PolicyTypeDescription& PolicyTypeDescription::operator =(const XmlNode& xmlNode)
     if(!policyAttributeTypeDescriptionsNode.IsNull())
     {
       XmlNode policyAttributeTypeDescriptionsMember = policyAttributeTypeDescriptionsNode.FirstChild("member");
+      m_policyAttributeTypeDescriptionsHasBeenSet = !policyAttributeTypeDescriptionsMember.IsNull();
       while(!policyAttributeTypeDescriptionsMember.IsNull())
       {
         m_policyAttributeTypeDescriptions.push_back(policyAttributeTypeDescriptionsMember);
@@ -111,7 +102,7 @@ void PolicyTypeDescription::OutputToStream(Aws::OStream& oStream, const char* lo
       for(auto& item : m_policyAttributeTypeDescriptions)
       {
         Aws::StringStream policyAttributeTypeDescriptionsSs;
-        policyAttributeTypeDescriptionsSs << location <<  ".PolicyAttributeTypeDescriptions.member." << policyAttributeTypeDescriptionsIdx++;
+        policyAttributeTypeDescriptionsSs << location << ".PolicyAttributeTypeDescriptions.member." << policyAttributeTypeDescriptionsIdx++;
         item.OutputToStream(oStream, policyAttributeTypeDescriptionsSs.str().c_str());
       }
   }

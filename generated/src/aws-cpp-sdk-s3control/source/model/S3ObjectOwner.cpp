@@ -20,15 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-S3ObjectOwner::S3ObjectOwner() : 
-    m_iDHasBeenSet(false),
-    m_displayNameHasBeenSet(false)
-{
-}
-
-S3ObjectOwner::S3ObjectOwner(const XmlNode& xmlNode) : 
-    m_iDHasBeenSet(false),
-    m_displayNameHasBeenSet(false)
+S3ObjectOwner::S3ObjectOwner(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

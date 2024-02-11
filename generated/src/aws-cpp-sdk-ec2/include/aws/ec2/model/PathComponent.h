@@ -42,7 +42,7 @@ namespace Model
   class PathComponent
   {
   public:
-    AWS_EC2_API PathComponent();
+    AWS_EC2_API PathComponent() = default;
     AWS_EC2_API PathComponent(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API PathComponent& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -50,648 +50,250 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The sequence number.</p>
      */
-    inline int GetSequenceNumber() const{ return m_sequenceNumber; }
-
-    /**
-     * <p>The sequence number.</p>
-     */
+    inline int GetSequenceNumber() const { return m_sequenceNumber; }
     inline bool SequenceNumberHasBeenSet() const { return m_sequenceNumberHasBeenSet; }
-
-    /**
-     * <p>The sequence number.</p>
-     */
     inline void SetSequenceNumber(int value) { m_sequenceNumberHasBeenSet = true; m_sequenceNumber = value; }
-
-    /**
-     * <p>The sequence number.</p>
-     */
     inline PathComponent& WithSequenceNumber(int value) { SetSequenceNumber(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The network ACL rule.</p>
      */
-    inline const AnalysisAclRule& GetAclRule() const{ return m_aclRule; }
-
-    /**
-     * <p>The network ACL rule.</p>
-     */
+    inline const AnalysisAclRule& GetAclRule() const { return m_aclRule; }
     inline bool AclRuleHasBeenSet() const { return m_aclRuleHasBeenSet; }
+    template<typename AclRuleT = AnalysisAclRule>
+    void SetAclRule(AclRuleT&& value) { m_aclRuleHasBeenSet = true; m_aclRule = std::forward<AclRuleT>(value); }
+    template<typename AclRuleT = AnalysisAclRule>
+    PathComponent& WithAclRule(AclRuleT&& value) { SetAclRule(std::forward<AclRuleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The network ACL rule.</p>
-     */
-    inline void SetAclRule(const AnalysisAclRule& value) { m_aclRuleHasBeenSet = true; m_aclRule = value; }
-
-    /**
-     * <p>The network ACL rule.</p>
-     */
-    inline void SetAclRule(AnalysisAclRule&& value) { m_aclRuleHasBeenSet = true; m_aclRule = std::move(value); }
-
-    /**
-     * <p>The network ACL rule.</p>
-     */
-    inline PathComponent& WithAclRule(const AnalysisAclRule& value) { SetAclRule(value); return *this;}
-
-    /**
-     * <p>The network ACL rule.</p>
-     */
-    inline PathComponent& WithAclRule(AnalysisAclRule&& value) { SetAclRule(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The resource to which the path component is attached.</p>
      */
-    inline const AnalysisComponent& GetAttachedTo() const{ return m_attachedTo; }
-
-    /**
-     * <p>The resource to which the path component is attached.</p>
-     */
+    inline const AnalysisComponent& GetAttachedTo() const { return m_attachedTo; }
     inline bool AttachedToHasBeenSet() const { return m_attachedToHasBeenSet; }
+    template<typename AttachedToT = AnalysisComponent>
+    void SetAttachedTo(AttachedToT&& value) { m_attachedToHasBeenSet = true; m_attachedTo = std::forward<AttachedToT>(value); }
+    template<typename AttachedToT = AnalysisComponent>
+    PathComponent& WithAttachedTo(AttachedToT&& value) { SetAttachedTo(std::forward<AttachedToT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The resource to which the path component is attached.</p>
-     */
-    inline void SetAttachedTo(const AnalysisComponent& value) { m_attachedToHasBeenSet = true; m_attachedTo = value; }
-
-    /**
-     * <p>The resource to which the path component is attached.</p>
-     */
-    inline void SetAttachedTo(AnalysisComponent&& value) { m_attachedToHasBeenSet = true; m_attachedTo = std::move(value); }
-
-    /**
-     * <p>The resource to which the path component is attached.</p>
-     */
-    inline PathComponent& WithAttachedTo(const AnalysisComponent& value) { SetAttachedTo(value); return *this;}
-
-    /**
-     * <p>The resource to which the path component is attached.</p>
-     */
-    inline PathComponent& WithAttachedTo(AnalysisComponent&& value) { SetAttachedTo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The component.</p>
      */
-    inline const AnalysisComponent& GetComponent() const{ return m_component; }
-
-    /**
-     * <p>The component.</p>
-     */
+    inline const AnalysisComponent& GetComponent() const { return m_component; }
     inline bool ComponentHasBeenSet() const { return m_componentHasBeenSet; }
+    template<typename ComponentT = AnalysisComponent>
+    void SetComponent(ComponentT&& value) { m_componentHasBeenSet = true; m_component = std::forward<ComponentT>(value); }
+    template<typename ComponentT = AnalysisComponent>
+    PathComponent& WithComponent(ComponentT&& value) { SetComponent(std::forward<ComponentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The component.</p>
-     */
-    inline void SetComponent(const AnalysisComponent& value) { m_componentHasBeenSet = true; m_component = value; }
-
-    /**
-     * <p>The component.</p>
-     */
-    inline void SetComponent(AnalysisComponent&& value) { m_componentHasBeenSet = true; m_component = std::move(value); }
-
-    /**
-     * <p>The component.</p>
-     */
-    inline PathComponent& WithComponent(const AnalysisComponent& value) { SetComponent(value); return *this;}
-
-    /**
-     * <p>The component.</p>
-     */
-    inline PathComponent& WithComponent(AnalysisComponent&& value) { SetComponent(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The destination VPC.</p>
      */
-    inline const AnalysisComponent& GetDestinationVpc() const{ return m_destinationVpc; }
-
-    /**
-     * <p>The destination VPC.</p>
-     */
+    inline const AnalysisComponent& GetDestinationVpc() const { return m_destinationVpc; }
     inline bool DestinationVpcHasBeenSet() const { return m_destinationVpcHasBeenSet; }
+    template<typename DestinationVpcT = AnalysisComponent>
+    void SetDestinationVpc(DestinationVpcT&& value) { m_destinationVpcHasBeenSet = true; m_destinationVpc = std::forward<DestinationVpcT>(value); }
+    template<typename DestinationVpcT = AnalysisComponent>
+    PathComponent& WithDestinationVpc(DestinationVpcT&& value) { SetDestinationVpc(std::forward<DestinationVpcT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The destination VPC.</p>
-     */
-    inline void SetDestinationVpc(const AnalysisComponent& value) { m_destinationVpcHasBeenSet = true; m_destinationVpc = value; }
-
-    /**
-     * <p>The destination VPC.</p>
-     */
-    inline void SetDestinationVpc(AnalysisComponent&& value) { m_destinationVpcHasBeenSet = true; m_destinationVpc = std::move(value); }
-
-    /**
-     * <p>The destination VPC.</p>
-     */
-    inline PathComponent& WithDestinationVpc(const AnalysisComponent& value) { SetDestinationVpc(value); return *this;}
-
-    /**
-     * <p>The destination VPC.</p>
-     */
-    inline PathComponent& WithDestinationVpc(AnalysisComponent&& value) { SetDestinationVpc(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The outbound header.</p>
      */
-    inline const AnalysisPacketHeader& GetOutboundHeader() const{ return m_outboundHeader; }
-
-    /**
-     * <p>The outbound header.</p>
-     */
+    inline const AnalysisPacketHeader& GetOutboundHeader() const { return m_outboundHeader; }
     inline bool OutboundHeaderHasBeenSet() const { return m_outboundHeaderHasBeenSet; }
+    template<typename OutboundHeaderT = AnalysisPacketHeader>
+    void SetOutboundHeader(OutboundHeaderT&& value) { m_outboundHeaderHasBeenSet = true; m_outboundHeader = std::forward<OutboundHeaderT>(value); }
+    template<typename OutboundHeaderT = AnalysisPacketHeader>
+    PathComponent& WithOutboundHeader(OutboundHeaderT&& value) { SetOutboundHeader(std::forward<OutboundHeaderT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The outbound header.</p>
-     */
-    inline void SetOutboundHeader(const AnalysisPacketHeader& value) { m_outboundHeaderHasBeenSet = true; m_outboundHeader = value; }
-
-    /**
-     * <p>The outbound header.</p>
-     */
-    inline void SetOutboundHeader(AnalysisPacketHeader&& value) { m_outboundHeaderHasBeenSet = true; m_outboundHeader = std::move(value); }
-
-    /**
-     * <p>The outbound header.</p>
-     */
-    inline PathComponent& WithOutboundHeader(const AnalysisPacketHeader& value) { SetOutboundHeader(value); return *this;}
-
-    /**
-     * <p>The outbound header.</p>
-     */
-    inline PathComponent& WithOutboundHeader(AnalysisPacketHeader&& value) { SetOutboundHeader(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The inbound header.</p>
      */
-    inline const AnalysisPacketHeader& GetInboundHeader() const{ return m_inboundHeader; }
-
-    /**
-     * <p>The inbound header.</p>
-     */
+    inline const AnalysisPacketHeader& GetInboundHeader() const { return m_inboundHeader; }
     inline bool InboundHeaderHasBeenSet() const { return m_inboundHeaderHasBeenSet; }
+    template<typename InboundHeaderT = AnalysisPacketHeader>
+    void SetInboundHeader(InboundHeaderT&& value) { m_inboundHeaderHasBeenSet = true; m_inboundHeader = std::forward<InboundHeaderT>(value); }
+    template<typename InboundHeaderT = AnalysisPacketHeader>
+    PathComponent& WithInboundHeader(InboundHeaderT&& value) { SetInboundHeader(std::forward<InboundHeaderT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The inbound header.</p>
-     */
-    inline void SetInboundHeader(const AnalysisPacketHeader& value) { m_inboundHeaderHasBeenSet = true; m_inboundHeader = value; }
-
-    /**
-     * <p>The inbound header.</p>
-     */
-    inline void SetInboundHeader(AnalysisPacketHeader&& value) { m_inboundHeaderHasBeenSet = true; m_inboundHeader = std::move(value); }
-
-    /**
-     * <p>The inbound header.</p>
-     */
-    inline PathComponent& WithInboundHeader(const AnalysisPacketHeader& value) { SetInboundHeader(value); return *this;}
-
-    /**
-     * <p>The inbound header.</p>
-     */
-    inline PathComponent& WithInboundHeader(AnalysisPacketHeader&& value) { SetInboundHeader(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The route table route.</p>
      */
-    inline const AnalysisRouteTableRoute& GetRouteTableRoute() const{ return m_routeTableRoute; }
-
-    /**
-     * <p>The route table route.</p>
-     */
+    inline const AnalysisRouteTableRoute& GetRouteTableRoute() const { return m_routeTableRoute; }
     inline bool RouteTableRouteHasBeenSet() const { return m_routeTableRouteHasBeenSet; }
+    template<typename RouteTableRouteT = AnalysisRouteTableRoute>
+    void SetRouteTableRoute(RouteTableRouteT&& value) { m_routeTableRouteHasBeenSet = true; m_routeTableRoute = std::forward<RouteTableRouteT>(value); }
+    template<typename RouteTableRouteT = AnalysisRouteTableRoute>
+    PathComponent& WithRouteTableRoute(RouteTableRouteT&& value) { SetRouteTableRoute(std::forward<RouteTableRouteT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The route table route.</p>
-     */
-    inline void SetRouteTableRoute(const AnalysisRouteTableRoute& value) { m_routeTableRouteHasBeenSet = true; m_routeTableRoute = value; }
-
-    /**
-     * <p>The route table route.</p>
-     */
-    inline void SetRouteTableRoute(AnalysisRouteTableRoute&& value) { m_routeTableRouteHasBeenSet = true; m_routeTableRoute = std::move(value); }
-
-    /**
-     * <p>The route table route.</p>
-     */
-    inline PathComponent& WithRouteTableRoute(const AnalysisRouteTableRoute& value) { SetRouteTableRoute(value); return *this;}
-
-    /**
-     * <p>The route table route.</p>
-     */
-    inline PathComponent& WithRouteTableRoute(AnalysisRouteTableRoute&& value) { SetRouteTableRoute(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The security group rule.</p>
      */
-    inline const AnalysisSecurityGroupRule& GetSecurityGroupRule() const{ return m_securityGroupRule; }
-
-    /**
-     * <p>The security group rule.</p>
-     */
+    inline const AnalysisSecurityGroupRule& GetSecurityGroupRule() const { return m_securityGroupRule; }
     inline bool SecurityGroupRuleHasBeenSet() const { return m_securityGroupRuleHasBeenSet; }
+    template<typename SecurityGroupRuleT = AnalysisSecurityGroupRule>
+    void SetSecurityGroupRule(SecurityGroupRuleT&& value) { m_securityGroupRuleHasBeenSet = true; m_securityGroupRule = std::forward<SecurityGroupRuleT>(value); }
+    template<typename SecurityGroupRuleT = AnalysisSecurityGroupRule>
+    PathComponent& WithSecurityGroupRule(SecurityGroupRuleT&& value) { SetSecurityGroupRule(std::forward<SecurityGroupRuleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The security group rule.</p>
-     */
-    inline void SetSecurityGroupRule(const AnalysisSecurityGroupRule& value) { m_securityGroupRuleHasBeenSet = true; m_securityGroupRule = value; }
-
-    /**
-     * <p>The security group rule.</p>
-     */
-    inline void SetSecurityGroupRule(AnalysisSecurityGroupRule&& value) { m_securityGroupRuleHasBeenSet = true; m_securityGroupRule = std::move(value); }
-
-    /**
-     * <p>The security group rule.</p>
-     */
-    inline PathComponent& WithSecurityGroupRule(const AnalysisSecurityGroupRule& value) { SetSecurityGroupRule(value); return *this;}
-
-    /**
-     * <p>The security group rule.</p>
-     */
-    inline PathComponent& WithSecurityGroupRule(AnalysisSecurityGroupRule&& value) { SetSecurityGroupRule(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The source VPC.</p>
      */
-    inline const AnalysisComponent& GetSourceVpc() const{ return m_sourceVpc; }
-
-    /**
-     * <p>The source VPC.</p>
-     */
+    inline const AnalysisComponent& GetSourceVpc() const { return m_sourceVpc; }
     inline bool SourceVpcHasBeenSet() const { return m_sourceVpcHasBeenSet; }
+    template<typename SourceVpcT = AnalysisComponent>
+    void SetSourceVpc(SourceVpcT&& value) { m_sourceVpcHasBeenSet = true; m_sourceVpc = std::forward<SourceVpcT>(value); }
+    template<typename SourceVpcT = AnalysisComponent>
+    PathComponent& WithSourceVpc(SourceVpcT&& value) { SetSourceVpc(std::forward<SourceVpcT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The source VPC.</p>
-     */
-    inline void SetSourceVpc(const AnalysisComponent& value) { m_sourceVpcHasBeenSet = true; m_sourceVpc = value; }
-
-    /**
-     * <p>The source VPC.</p>
-     */
-    inline void SetSourceVpc(AnalysisComponent&& value) { m_sourceVpcHasBeenSet = true; m_sourceVpc = std::move(value); }
-
-    /**
-     * <p>The source VPC.</p>
-     */
-    inline PathComponent& WithSourceVpc(const AnalysisComponent& value) { SetSourceVpc(value); return *this;}
-
-    /**
-     * <p>The source VPC.</p>
-     */
-    inline PathComponent& WithSourceVpc(AnalysisComponent&& value) { SetSourceVpc(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The subnet.</p>
      */
-    inline const AnalysisComponent& GetSubnet() const{ return m_subnet; }
-
-    /**
-     * <p>The subnet.</p>
-     */
+    inline const AnalysisComponent& GetSubnet() const { return m_subnet; }
     inline bool SubnetHasBeenSet() const { return m_subnetHasBeenSet; }
+    template<typename SubnetT = AnalysisComponent>
+    void SetSubnet(SubnetT&& value) { m_subnetHasBeenSet = true; m_subnet = std::forward<SubnetT>(value); }
+    template<typename SubnetT = AnalysisComponent>
+    PathComponent& WithSubnet(SubnetT&& value) { SetSubnet(std::forward<SubnetT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The subnet.</p>
-     */
-    inline void SetSubnet(const AnalysisComponent& value) { m_subnetHasBeenSet = true; m_subnet = value; }
-
-    /**
-     * <p>The subnet.</p>
-     */
-    inline void SetSubnet(AnalysisComponent&& value) { m_subnetHasBeenSet = true; m_subnet = std::move(value); }
-
-    /**
-     * <p>The subnet.</p>
-     */
-    inline PathComponent& WithSubnet(const AnalysisComponent& value) { SetSubnet(value); return *this;}
-
-    /**
-     * <p>The subnet.</p>
-     */
-    inline PathComponent& WithSubnet(AnalysisComponent&& value) { SetSubnet(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The component VPC.</p>
      */
-    inline const AnalysisComponent& GetVpc() const{ return m_vpc; }
-
-    /**
-     * <p>The component VPC.</p>
-     */
+    inline const AnalysisComponent& GetVpc() const { return m_vpc; }
     inline bool VpcHasBeenSet() const { return m_vpcHasBeenSet; }
+    template<typename VpcT = AnalysisComponent>
+    void SetVpc(VpcT&& value) { m_vpcHasBeenSet = true; m_vpc = std::forward<VpcT>(value); }
+    template<typename VpcT = AnalysisComponent>
+    PathComponent& WithVpc(VpcT&& value) { SetVpc(std::forward<VpcT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The component VPC.</p>
-     */
-    inline void SetVpc(const AnalysisComponent& value) { m_vpcHasBeenSet = true; m_vpc = value; }
-
-    /**
-     * <p>The component VPC.</p>
-     */
-    inline void SetVpc(AnalysisComponent&& value) { m_vpcHasBeenSet = true; m_vpc = std::move(value); }
-
-    /**
-     * <p>The component VPC.</p>
-     */
-    inline PathComponent& WithVpc(const AnalysisComponent& value) { SetVpc(value); return *this;}
-
-    /**
-     * <p>The component VPC.</p>
-     */
-    inline PathComponent& WithVpc(AnalysisComponent&& value) { SetVpc(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The additional details.</p>
      */
-    inline const Aws::Vector<AdditionalDetail>& GetAdditionalDetails() const{ return m_additionalDetails; }
-
-    /**
-     * <p>The additional details.</p>
-     */
+    inline const Aws::Vector<AdditionalDetail>& GetAdditionalDetails() const { return m_additionalDetails; }
     inline bool AdditionalDetailsHasBeenSet() const { return m_additionalDetailsHasBeenSet; }
+    template<typename AdditionalDetailsT = Aws::Vector<AdditionalDetail>>
+    void SetAdditionalDetails(AdditionalDetailsT&& value) { m_additionalDetailsHasBeenSet = true; m_additionalDetails = std::forward<AdditionalDetailsT>(value); }
+    template<typename AdditionalDetailsT = Aws::Vector<AdditionalDetail>>
+    PathComponent& WithAdditionalDetails(AdditionalDetailsT&& value) { SetAdditionalDetails(std::forward<AdditionalDetailsT>(value)); return *this;}
+    template<typename AdditionalDetailsT = AdditionalDetail>
+    PathComponent& AddAdditionalDetails(AdditionalDetailsT&& value) { m_additionalDetailsHasBeenSet = true; m_additionalDetails.emplace_back(std::forward<AdditionalDetailsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The additional details.</p>
-     */
-    inline void SetAdditionalDetails(const Aws::Vector<AdditionalDetail>& value) { m_additionalDetailsHasBeenSet = true; m_additionalDetails = value; }
-
-    /**
-     * <p>The additional details.</p>
-     */
-    inline void SetAdditionalDetails(Aws::Vector<AdditionalDetail>&& value) { m_additionalDetailsHasBeenSet = true; m_additionalDetails = std::move(value); }
-
-    /**
-     * <p>The additional details.</p>
-     */
-    inline PathComponent& WithAdditionalDetails(const Aws::Vector<AdditionalDetail>& value) { SetAdditionalDetails(value); return *this;}
-
-    /**
-     * <p>The additional details.</p>
-     */
-    inline PathComponent& WithAdditionalDetails(Aws::Vector<AdditionalDetail>&& value) { SetAdditionalDetails(std::move(value)); return *this;}
-
-    /**
-     * <p>The additional details.</p>
-     */
-    inline PathComponent& AddAdditionalDetails(const AdditionalDetail& value) { m_additionalDetailsHasBeenSet = true; m_additionalDetails.push_back(value); return *this; }
-
-    /**
-     * <p>The additional details.</p>
-     */
-    inline PathComponent& AddAdditionalDetails(AdditionalDetail&& value) { m_additionalDetailsHasBeenSet = true; m_additionalDetails.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The transit gateway.</p>
      */
-    inline const AnalysisComponent& GetTransitGateway() const{ return m_transitGateway; }
-
-    /**
-     * <p>The transit gateway.</p>
-     */
+    inline const AnalysisComponent& GetTransitGateway() const { return m_transitGateway; }
     inline bool TransitGatewayHasBeenSet() const { return m_transitGatewayHasBeenSet; }
+    template<typename TransitGatewayT = AnalysisComponent>
+    void SetTransitGateway(TransitGatewayT&& value) { m_transitGatewayHasBeenSet = true; m_transitGateway = std::forward<TransitGatewayT>(value); }
+    template<typename TransitGatewayT = AnalysisComponent>
+    PathComponent& WithTransitGateway(TransitGatewayT&& value) { SetTransitGateway(std::forward<TransitGatewayT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The transit gateway.</p>
-     */
-    inline void SetTransitGateway(const AnalysisComponent& value) { m_transitGatewayHasBeenSet = true; m_transitGateway = value; }
-
-    /**
-     * <p>The transit gateway.</p>
-     */
-    inline void SetTransitGateway(AnalysisComponent&& value) { m_transitGatewayHasBeenSet = true; m_transitGateway = std::move(value); }
-
-    /**
-     * <p>The transit gateway.</p>
-     */
-    inline PathComponent& WithTransitGateway(const AnalysisComponent& value) { SetTransitGateway(value); return *this;}
-
-    /**
-     * <p>The transit gateway.</p>
-     */
-    inline PathComponent& WithTransitGateway(AnalysisComponent&& value) { SetTransitGateway(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The route in a transit gateway route table.</p>
      */
-    inline const TransitGatewayRouteTableRoute& GetTransitGatewayRouteTableRoute() const{ return m_transitGatewayRouteTableRoute; }
-
-    /**
-     * <p>The route in a transit gateway route table.</p>
-     */
+    inline const TransitGatewayRouteTableRoute& GetTransitGatewayRouteTableRoute() const { return m_transitGatewayRouteTableRoute; }
     inline bool TransitGatewayRouteTableRouteHasBeenSet() const { return m_transitGatewayRouteTableRouteHasBeenSet; }
+    template<typename TransitGatewayRouteTableRouteT = TransitGatewayRouteTableRoute>
+    void SetTransitGatewayRouteTableRoute(TransitGatewayRouteTableRouteT&& value) { m_transitGatewayRouteTableRouteHasBeenSet = true; m_transitGatewayRouteTableRoute = std::forward<TransitGatewayRouteTableRouteT>(value); }
+    template<typename TransitGatewayRouteTableRouteT = TransitGatewayRouteTableRoute>
+    PathComponent& WithTransitGatewayRouteTableRoute(TransitGatewayRouteTableRouteT&& value) { SetTransitGatewayRouteTableRoute(std::forward<TransitGatewayRouteTableRouteT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The route in a transit gateway route table.</p>
-     */
-    inline void SetTransitGatewayRouteTableRoute(const TransitGatewayRouteTableRoute& value) { m_transitGatewayRouteTableRouteHasBeenSet = true; m_transitGatewayRouteTableRoute = value; }
-
-    /**
-     * <p>The route in a transit gateway route table.</p>
-     */
-    inline void SetTransitGatewayRouteTableRoute(TransitGatewayRouteTableRoute&& value) { m_transitGatewayRouteTableRouteHasBeenSet = true; m_transitGatewayRouteTableRoute = std::move(value); }
-
-    /**
-     * <p>The route in a transit gateway route table.</p>
-     */
-    inline PathComponent& WithTransitGatewayRouteTableRoute(const TransitGatewayRouteTableRoute& value) { SetTransitGatewayRouteTableRoute(value); return *this;}
-
-    /**
-     * <p>The route in a transit gateway route table.</p>
-     */
-    inline PathComponent& WithTransitGatewayRouteTableRoute(TransitGatewayRouteTableRoute&& value) { SetTransitGatewayRouteTableRoute(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The explanation codes.</p>
      */
-    inline const Aws::Vector<Explanation>& GetExplanations() const{ return m_explanations; }
-
-    /**
-     * <p>The explanation codes.</p>
-     */
+    inline const Aws::Vector<Explanation>& GetExplanations() const { return m_explanations; }
     inline bool ExplanationsHasBeenSet() const { return m_explanationsHasBeenSet; }
+    template<typename ExplanationsT = Aws::Vector<Explanation>>
+    void SetExplanations(ExplanationsT&& value) { m_explanationsHasBeenSet = true; m_explanations = std::forward<ExplanationsT>(value); }
+    template<typename ExplanationsT = Aws::Vector<Explanation>>
+    PathComponent& WithExplanations(ExplanationsT&& value) { SetExplanations(std::forward<ExplanationsT>(value)); return *this;}
+    template<typename ExplanationsT = Explanation>
+    PathComponent& AddExplanations(ExplanationsT&& value) { m_explanationsHasBeenSet = true; m_explanations.emplace_back(std::forward<ExplanationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The explanation codes.</p>
-     */
-    inline void SetExplanations(const Aws::Vector<Explanation>& value) { m_explanationsHasBeenSet = true; m_explanations = value; }
-
-    /**
-     * <p>The explanation codes.</p>
-     */
-    inline void SetExplanations(Aws::Vector<Explanation>&& value) { m_explanationsHasBeenSet = true; m_explanations = std::move(value); }
-
-    /**
-     * <p>The explanation codes.</p>
-     */
-    inline PathComponent& WithExplanations(const Aws::Vector<Explanation>& value) { SetExplanations(value); return *this;}
-
-    /**
-     * <p>The explanation codes.</p>
-     */
-    inline PathComponent& WithExplanations(Aws::Vector<Explanation>&& value) { SetExplanations(std::move(value)); return *this;}
-
-    /**
-     * <p>The explanation codes.</p>
-     */
-    inline PathComponent& AddExplanations(const Explanation& value) { m_explanationsHasBeenSet = true; m_explanations.push_back(value); return *this; }
-
-    /**
-     * <p>The explanation codes.</p>
-     */
-    inline PathComponent& AddExplanations(Explanation&& value) { m_explanationsHasBeenSet = true; m_explanations.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The load balancer listener.</p>
      */
-    inline const AnalysisComponent& GetElasticLoadBalancerListener() const{ return m_elasticLoadBalancerListener; }
-
-    /**
-     * <p>The load balancer listener.</p>
-     */
+    inline const AnalysisComponent& GetElasticLoadBalancerListener() const { return m_elasticLoadBalancerListener; }
     inline bool ElasticLoadBalancerListenerHasBeenSet() const { return m_elasticLoadBalancerListenerHasBeenSet; }
+    template<typename ElasticLoadBalancerListenerT = AnalysisComponent>
+    void SetElasticLoadBalancerListener(ElasticLoadBalancerListenerT&& value) { m_elasticLoadBalancerListenerHasBeenSet = true; m_elasticLoadBalancerListener = std::forward<ElasticLoadBalancerListenerT>(value); }
+    template<typename ElasticLoadBalancerListenerT = AnalysisComponent>
+    PathComponent& WithElasticLoadBalancerListener(ElasticLoadBalancerListenerT&& value) { SetElasticLoadBalancerListener(std::forward<ElasticLoadBalancerListenerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The load balancer listener.</p>
-     */
-    inline void SetElasticLoadBalancerListener(const AnalysisComponent& value) { m_elasticLoadBalancerListenerHasBeenSet = true; m_elasticLoadBalancerListener = value; }
-
-    /**
-     * <p>The load balancer listener.</p>
-     */
-    inline void SetElasticLoadBalancerListener(AnalysisComponent&& value) { m_elasticLoadBalancerListenerHasBeenSet = true; m_elasticLoadBalancerListener = std::move(value); }
-
-    /**
-     * <p>The load balancer listener.</p>
-     */
-    inline PathComponent& WithElasticLoadBalancerListener(const AnalysisComponent& value) { SetElasticLoadBalancerListener(value); return *this;}
-
-    /**
-     * <p>The load balancer listener.</p>
-     */
-    inline PathComponent& WithElasticLoadBalancerListener(AnalysisComponent&& value) { SetElasticLoadBalancerListener(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Network Firewall stateless rule.</p>
      */
-    inline const FirewallStatelessRule& GetFirewallStatelessRule() const{ return m_firewallStatelessRule; }
-
-    /**
-     * <p>The Network Firewall stateless rule.</p>
-     */
+    inline const FirewallStatelessRule& GetFirewallStatelessRule() const { return m_firewallStatelessRule; }
     inline bool FirewallStatelessRuleHasBeenSet() const { return m_firewallStatelessRuleHasBeenSet; }
+    template<typename FirewallStatelessRuleT = FirewallStatelessRule>
+    void SetFirewallStatelessRule(FirewallStatelessRuleT&& value) { m_firewallStatelessRuleHasBeenSet = true; m_firewallStatelessRule = std::forward<FirewallStatelessRuleT>(value); }
+    template<typename FirewallStatelessRuleT = FirewallStatelessRule>
+    PathComponent& WithFirewallStatelessRule(FirewallStatelessRuleT&& value) { SetFirewallStatelessRule(std::forward<FirewallStatelessRuleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Network Firewall stateless rule.</p>
-     */
-    inline void SetFirewallStatelessRule(const FirewallStatelessRule& value) { m_firewallStatelessRuleHasBeenSet = true; m_firewallStatelessRule = value; }
-
-    /**
-     * <p>The Network Firewall stateless rule.</p>
-     */
-    inline void SetFirewallStatelessRule(FirewallStatelessRule&& value) { m_firewallStatelessRuleHasBeenSet = true; m_firewallStatelessRule = std::move(value); }
-
-    /**
-     * <p>The Network Firewall stateless rule.</p>
-     */
-    inline PathComponent& WithFirewallStatelessRule(const FirewallStatelessRule& value) { SetFirewallStatelessRule(value); return *this;}
-
-    /**
-     * <p>The Network Firewall stateless rule.</p>
-     */
-    inline PathComponent& WithFirewallStatelessRule(FirewallStatelessRule&& value) { SetFirewallStatelessRule(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Network Firewall stateful rule.</p>
      */
-    inline const FirewallStatefulRule& GetFirewallStatefulRule() const{ return m_firewallStatefulRule; }
-
-    /**
-     * <p>The Network Firewall stateful rule.</p>
-     */
+    inline const FirewallStatefulRule& GetFirewallStatefulRule() const { return m_firewallStatefulRule; }
     inline bool FirewallStatefulRuleHasBeenSet() const { return m_firewallStatefulRuleHasBeenSet; }
+    template<typename FirewallStatefulRuleT = FirewallStatefulRule>
+    void SetFirewallStatefulRule(FirewallStatefulRuleT&& value) { m_firewallStatefulRuleHasBeenSet = true; m_firewallStatefulRule = std::forward<FirewallStatefulRuleT>(value); }
+    template<typename FirewallStatefulRuleT = FirewallStatefulRule>
+    PathComponent& WithFirewallStatefulRule(FirewallStatefulRuleT&& value) { SetFirewallStatefulRule(std::forward<FirewallStatefulRuleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Network Firewall stateful rule.</p>
-     */
-    inline void SetFirewallStatefulRule(const FirewallStatefulRule& value) { m_firewallStatefulRuleHasBeenSet = true; m_firewallStatefulRule = value; }
-
-    /**
-     * <p>The Network Firewall stateful rule.</p>
-     */
-    inline void SetFirewallStatefulRule(FirewallStatefulRule&& value) { m_firewallStatefulRuleHasBeenSet = true; m_firewallStatefulRule = std::move(value); }
-
-    /**
-     * <p>The Network Firewall stateful rule.</p>
-     */
-    inline PathComponent& WithFirewallStatefulRule(const FirewallStatefulRule& value) { SetFirewallStatefulRule(value); return *this;}
-
-    /**
-     * <p>The Network Firewall stateful rule.</p>
-     */
-    inline PathComponent& WithFirewallStatefulRule(FirewallStatefulRule&& value) { SetFirewallStatefulRule(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the VPC endpoint service.</p>
      */
-    inline const Aws::String& GetServiceName() const{ return m_serviceName; }
-
-    /**
-     * <p>The name of the VPC endpoint service.</p>
-     */
+    inline const Aws::String& GetServiceName() const { return m_serviceName; }
     inline bool ServiceNameHasBeenSet() const { return m_serviceNameHasBeenSet; }
-
-    /**
-     * <p>The name of the VPC endpoint service.</p>
-     */
-    inline void SetServiceName(const Aws::String& value) { m_serviceNameHasBeenSet = true; m_serviceName = value; }
-
-    /**
-     * <p>The name of the VPC endpoint service.</p>
-     */
-    inline void SetServiceName(Aws::String&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::move(value); }
-
-    /**
-     * <p>The name of the VPC endpoint service.</p>
-     */
-    inline void SetServiceName(const char* value) { m_serviceNameHasBeenSet = true; m_serviceName.assign(value); }
-
-    /**
-     * <p>The name of the VPC endpoint service.</p>
-     */
-    inline PathComponent& WithServiceName(const Aws::String& value) { SetServiceName(value); return *this;}
-
-    /**
-     * <p>The name of the VPC endpoint service.</p>
-     */
-    inline PathComponent& WithServiceName(Aws::String&& value) { SetServiceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the VPC endpoint service.</p>
-     */
-    inline PathComponent& WithServiceName(const char* value) { SetServiceName(value); return *this;}
-
+    template<typename ServiceNameT = Aws::String>
+    void SetServiceName(ServiceNameT&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::forward<ServiceNameT>(value); }
+    template<typename ServiceNameT = Aws::String>
+    PathComponent& WithServiceName(ServiceNameT&& value) { SetServiceName(std::forward<ServiceNameT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_sequenceNumber;
+    int m_sequenceNumber{0};
     bool m_sequenceNumberHasBeenSet = false;
 
     AnalysisAclRule m_aclRule;

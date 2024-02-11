@@ -39,102 +39,38 @@ namespace Model
   class SubscribedRuleGroupSummary
   {
   public:
-    AWS_WAFREGIONAL_API SubscribedRuleGroupSummary();
+    AWS_WAFREGIONAL_API SubscribedRuleGroupSummary() = default;
     AWS_WAFREGIONAL_API SubscribedRuleGroupSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFREGIONAL_API SubscribedRuleGroupSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFREGIONAL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A unique identifier for a <code>RuleGroup</code>.</p>
      */
-    inline const Aws::String& GetRuleGroupId() const{ return m_ruleGroupId; }
-
-    /**
-     * <p>A unique identifier for a <code>RuleGroup</code>.</p>
-     */
+    inline const Aws::String& GetRuleGroupId() const { return m_ruleGroupId; }
     inline bool RuleGroupIdHasBeenSet() const { return m_ruleGroupIdHasBeenSet; }
+    template<typename RuleGroupIdT = Aws::String>
+    void SetRuleGroupId(RuleGroupIdT&& value) { m_ruleGroupIdHasBeenSet = true; m_ruleGroupId = std::forward<RuleGroupIdT>(value); }
+    template<typename RuleGroupIdT = Aws::String>
+    SubscribedRuleGroupSummary& WithRuleGroupId(RuleGroupIdT&& value) { SetRuleGroupId(std::forward<RuleGroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for a <code>RuleGroup</code>.</p>
-     */
-    inline void SetRuleGroupId(const Aws::String& value) { m_ruleGroupIdHasBeenSet = true; m_ruleGroupId = value; }
-
-    /**
-     * <p>A unique identifier for a <code>RuleGroup</code>.</p>
-     */
-    inline void SetRuleGroupId(Aws::String&& value) { m_ruleGroupIdHasBeenSet = true; m_ruleGroupId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for a <code>RuleGroup</code>.</p>
-     */
-    inline void SetRuleGroupId(const char* value) { m_ruleGroupIdHasBeenSet = true; m_ruleGroupId.assign(value); }
-
-    /**
-     * <p>A unique identifier for a <code>RuleGroup</code>.</p>
-     */
-    inline SubscribedRuleGroupSummary& WithRuleGroupId(const Aws::String& value) { SetRuleGroupId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for a <code>RuleGroup</code>.</p>
-     */
-    inline SubscribedRuleGroupSummary& WithRuleGroupId(Aws::String&& value) { SetRuleGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for a <code>RuleGroup</code>.</p>
-     */
-    inline SubscribedRuleGroupSummary& WithRuleGroupId(const char* value) { SetRuleGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A friendly name or description of the <code>RuleGroup</code>. You can't
      * change the name of a <code>RuleGroup</code> after you create it.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A friendly name or description of the <code>RuleGroup</code>. You can't
-     * change the name of a <code>RuleGroup</code> after you create it.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    SubscribedRuleGroupSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A friendly name or description of the <code>RuleGroup</code>. You can't
-     * change the name of a <code>RuleGroup</code> after you create it.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A friendly name or description of the <code>RuleGroup</code>. You can't
-     * change the name of a <code>RuleGroup</code> after you create it.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A friendly name or description of the <code>RuleGroup</code>. You can't
-     * change the name of a <code>RuleGroup</code> after you create it.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A friendly name or description of the <code>RuleGroup</code>. You can't
-     * change the name of a <code>RuleGroup</code> after you create it.</p>
-     */
-    inline SubscribedRuleGroupSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A friendly name or description of the <code>RuleGroup</code>. You can't
-     * change the name of a <code>RuleGroup</code> after you create it.</p>
-     */
-    inline SubscribedRuleGroupSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A friendly name or description of the <code>RuleGroup</code>. You can't
-     * change the name of a <code>RuleGroup</code> after you create it.</p>
-     */
-    inline SubscribedRuleGroupSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A friendly name or description for the metrics for this
      * <code>RuleGroup</code>. The name can contain only alphanumeric characters (A-Z,
@@ -143,78 +79,13 @@ namespace Model
      * "Default_Action." You can't change the name of the metric after you create the
      * <code>RuleGroup</code>.</p>
      */
-    inline const Aws::String& GetMetricName() const{ return m_metricName; }
-
-    /**
-     * <p>A friendly name or description for the metrics for this
-     * <code>RuleGroup</code>. The name can contain only alphanumeric characters (A-Z,
-     * a-z, 0-9), with maximum length 128 and minimum length one. It can't contain
-     * whitespace or metric names reserved for AWS WAF, including "All" and
-     * "Default_Action." You can't change the name of the metric after you create the
-     * <code>RuleGroup</code>.</p>
-     */
+    inline const Aws::String& GetMetricName() const { return m_metricName; }
     inline bool MetricNameHasBeenSet() const { return m_metricNameHasBeenSet; }
-
-    /**
-     * <p>A friendly name or description for the metrics for this
-     * <code>RuleGroup</code>. The name can contain only alphanumeric characters (A-Z,
-     * a-z, 0-9), with maximum length 128 and minimum length one. It can't contain
-     * whitespace or metric names reserved for AWS WAF, including "All" and
-     * "Default_Action." You can't change the name of the metric after you create the
-     * <code>RuleGroup</code>.</p>
-     */
-    inline void SetMetricName(const Aws::String& value) { m_metricNameHasBeenSet = true; m_metricName = value; }
-
-    /**
-     * <p>A friendly name or description for the metrics for this
-     * <code>RuleGroup</code>. The name can contain only alphanumeric characters (A-Z,
-     * a-z, 0-9), with maximum length 128 and minimum length one. It can't contain
-     * whitespace or metric names reserved for AWS WAF, including "All" and
-     * "Default_Action." You can't change the name of the metric after you create the
-     * <code>RuleGroup</code>.</p>
-     */
-    inline void SetMetricName(Aws::String&& value) { m_metricNameHasBeenSet = true; m_metricName = std::move(value); }
-
-    /**
-     * <p>A friendly name or description for the metrics for this
-     * <code>RuleGroup</code>. The name can contain only alphanumeric characters (A-Z,
-     * a-z, 0-9), with maximum length 128 and minimum length one. It can't contain
-     * whitespace or metric names reserved for AWS WAF, including "All" and
-     * "Default_Action." You can't change the name of the metric after you create the
-     * <code>RuleGroup</code>.</p>
-     */
-    inline void SetMetricName(const char* value) { m_metricNameHasBeenSet = true; m_metricName.assign(value); }
-
-    /**
-     * <p>A friendly name or description for the metrics for this
-     * <code>RuleGroup</code>. The name can contain only alphanumeric characters (A-Z,
-     * a-z, 0-9), with maximum length 128 and minimum length one. It can't contain
-     * whitespace or metric names reserved for AWS WAF, including "All" and
-     * "Default_Action." You can't change the name of the metric after you create the
-     * <code>RuleGroup</code>.</p>
-     */
-    inline SubscribedRuleGroupSummary& WithMetricName(const Aws::String& value) { SetMetricName(value); return *this;}
-
-    /**
-     * <p>A friendly name or description for the metrics for this
-     * <code>RuleGroup</code>. The name can contain only alphanumeric characters (A-Z,
-     * a-z, 0-9), with maximum length 128 and minimum length one. It can't contain
-     * whitespace or metric names reserved for AWS WAF, including "All" and
-     * "Default_Action." You can't change the name of the metric after you create the
-     * <code>RuleGroup</code>.</p>
-     */
-    inline SubscribedRuleGroupSummary& WithMetricName(Aws::String&& value) { SetMetricName(std::move(value)); return *this;}
-
-    /**
-     * <p>A friendly name or description for the metrics for this
-     * <code>RuleGroup</code>. The name can contain only alphanumeric characters (A-Z,
-     * a-z, 0-9), with maximum length 128 and minimum length one. It can't contain
-     * whitespace or metric names reserved for AWS WAF, including "All" and
-     * "Default_Action." You can't change the name of the metric after you create the
-     * <code>RuleGroup</code>.</p>
-     */
-    inline SubscribedRuleGroupSummary& WithMetricName(const char* value) { SetMetricName(value); return *this;}
-
+    template<typename MetricNameT = Aws::String>
+    void SetMetricName(MetricNameT&& value) { m_metricNameHasBeenSet = true; m_metricName = std::forward<MetricNameT>(value); }
+    template<typename MetricNameT = Aws::String>
+    SubscribedRuleGroupSummary& WithMetricName(MetricNameT&& value) { SetMetricName(std::forward<MetricNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ruleGroupId;

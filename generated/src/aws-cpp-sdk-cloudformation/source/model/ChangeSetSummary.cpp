@@ -20,41 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-ChangeSetSummary::ChangeSetSummary() : 
-    m_stackIdHasBeenSet(false),
-    m_stackNameHasBeenSet(false),
-    m_changeSetIdHasBeenSet(false),
-    m_changeSetNameHasBeenSet(false),
-    m_executionStatus(ExecutionStatus::NOT_SET),
-    m_executionStatusHasBeenSet(false),
-    m_status(ChangeSetStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusReasonHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_includeNestedStacks(false),
-    m_includeNestedStacksHasBeenSet(false),
-    m_parentChangeSetIdHasBeenSet(false),
-    m_rootChangeSetIdHasBeenSet(false)
-{
-}
-
-ChangeSetSummary::ChangeSetSummary(const XmlNode& xmlNode) : 
-    m_stackIdHasBeenSet(false),
-    m_stackNameHasBeenSet(false),
-    m_changeSetIdHasBeenSet(false),
-    m_changeSetNameHasBeenSet(false),
-    m_executionStatus(ExecutionStatus::NOT_SET),
-    m_executionStatusHasBeenSet(false),
-    m_status(ChangeSetStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusReasonHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_includeNestedStacks(false),
-    m_includeNestedStacksHasBeenSet(false),
-    m_parentChangeSetIdHasBeenSet(false),
-    m_rootChangeSetIdHasBeenSet(false)
+ChangeSetSummary::ChangeSetSummary(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -92,13 +58,13 @@ ChangeSetSummary& ChangeSetSummary::operator =(const XmlNode& xmlNode)
     XmlNode executionStatusNode = resultNode.FirstChild("ExecutionStatus");
     if(!executionStatusNode.IsNull())
     {
-      m_executionStatus = ExecutionStatusMapper::GetExecutionStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(executionStatusNode.GetText()).c_str()).c_str());
+      m_executionStatus = ExecutionStatusMapper::GetExecutionStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(executionStatusNode.GetText()).c_str()));
       m_executionStatusHasBeenSet = true;
     }
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = ChangeSetStatusMapper::GetChangeSetStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = ChangeSetStatusMapper::GetChangeSetStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode statusReasonNode = resultNode.FirstChild("StatusReason");
@@ -137,6 +103,12 @@ ChangeSetSummary& ChangeSetSummary::operator =(const XmlNode& xmlNode)
       m_rootChangeSetId = Aws::Utils::Xml::DecodeEscapedXmlText(rootChangeSetIdNode.GetText());
       m_rootChangeSetIdHasBeenSet = true;
     }
+    XmlNode importExistingResourcesNode = resultNode.FirstChild("ImportExistingResources");
+    if(!importExistingResourcesNode.IsNull())
+    {
+      m_importExistingResources = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(importExistingResourcesNode.GetText()).c_str()).c_str());
+      m_importExistingResourcesHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -166,12 +138,12 @@ void ChangeSetSummary::OutputToStream(Aws::OStream& oStream, const char* locatio
 
   if(m_executionStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ExecutionStatus=" << ExecutionStatusMapper::GetNameForExecutionStatus(m_executionStatus) << "&";
+      oStream << location << index << locationValue << ".ExecutionStatus=" << StringUtils::URLEncode(ExecutionStatusMapper::GetNameForExecutionStatus(m_executionStatus)) << "&";
   }
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << ChangeSetStatusMapper::GetNameForChangeSetStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(ChangeSetStatusMapper::GetNameForChangeSetStatus(m_status)) << "&";
   }
 
   if(m_statusReasonHasBeenSet)
@@ -204,6 +176,11 @@ void ChangeSetSummary::OutputToStream(Aws::OStream& oStream, const char* locatio
       oStream << location << index << locationValue << ".RootChangeSetId=" << StringUtils::URLEncode(m_rootChangeSetId.c_str()) << "&";
   }
 
+  if(m_importExistingResourcesHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".ImportExistingResources=" << std::boolalpha << m_importExistingResources << "&";
+  }
+
 }
 
 void ChangeSetSummary::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -226,11 +203,11 @@ void ChangeSetSummary::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_executionStatusHasBeenSet)
   {
-      oStream << location << ".ExecutionStatus=" << ExecutionStatusMapper::GetNameForExecutionStatus(m_executionStatus) << "&";
+      oStream << location << ".ExecutionStatus=" << StringUtils::URLEncode(ExecutionStatusMapper::GetNameForExecutionStatus(m_executionStatus)) << "&";
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << ChangeSetStatusMapper::GetNameForChangeSetStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(ChangeSetStatusMapper::GetNameForChangeSetStatus(m_status)) << "&";
   }
   if(m_statusReasonHasBeenSet)
   {
@@ -255,6 +232,10 @@ void ChangeSetSummary::OutputToStream(Aws::OStream& oStream, const char* locatio
   if(m_rootChangeSetIdHasBeenSet)
   {
       oStream << location << ".RootChangeSetId=" << StringUtils::URLEncode(m_rootChangeSetId.c_str()) << "&";
+  }
+  if(m_importExistingResourcesHasBeenSet)
+  {
+      oStream << location << ".ImportExistingResources=" << std::boolalpha << m_importExistingResources << "&";
   }
 }
 

@@ -23,6 +23,15 @@ namespace Model
 {
 
   /**
+   *  <p>End of support notice: Beginning October 1, 2025, Amazon S3 will
+   * stop returning <code>DisplayName</code>. Update your applications to use
+   * canonical IDs (unique identifier for Amazon Web Services accounts), Amazon Web
+   * Services account ID (12 digit identifier) or IAM ARNs (full resource naming) as
+   * a direct replacement of <code>DisplayName</code>. </p> <p>This change affects
+   * the following Amazon Web Services Regions: US East (N. Virginia) Region, US West
+   * (N. California) Region, US West (Oregon) Region, Asia Pacific (Singapore)
+   * Region, Asia Pacific (Sydney) Region, Asia Pacific (Tokyo) Region, Europe
+   * (Ireland) Region, and South America (São Paulo) Region.</p> 
    * <p>Container for the owner's display name and ID.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/Owner">AWS API
    * Reference</a></p>
@@ -30,134 +39,42 @@ namespace Model
   class Owner
   {
   public:
-    AWS_S3_API Owner();
+    AWS_S3_API Owner() = default;
     AWS_S3_API Owner(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3_API Owner& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Container for the display name of the owner. This value is only supported in
      * the following Amazon Web Services Regions:</p> <ul> <li> <p>US East (N.
      * Virginia)</p> </li> <li> <p>US West (N. California)</p> </li> <li> <p>US West
      * (Oregon)</p> </li> <li> <p>Asia Pacific (Singapore)</p> </li> <li> <p>Asia
      * Pacific (Sydney)</p> </li> <li> <p>Asia Pacific (Tokyo)</p> </li> <li> <p>Europe
-     * (Ireland)</p> </li> <li> <p>South America (São Paulo)</p> </li> </ul>
+     * (Ireland)</p> </li> <li> <p>South America (São Paulo)</p> </li> </ul> 
+     * <p>This functionality is not supported for directory buckets.</p> 
      */
-    inline const Aws::String& GetDisplayName() const{ return m_displayName; }
-
-    /**
-     * <p>Container for the display name of the owner. This value is only supported in
-     * the following Amazon Web Services Regions:</p> <ul> <li> <p>US East (N.
-     * Virginia)</p> </li> <li> <p>US West (N. California)</p> </li> <li> <p>US West
-     * (Oregon)</p> </li> <li> <p>Asia Pacific (Singapore)</p> </li> <li> <p>Asia
-     * Pacific (Sydney)</p> </li> <li> <p>Asia Pacific (Tokyo)</p> </li> <li> <p>Europe
-     * (Ireland)</p> </li> <li> <p>South America (São Paulo)</p> </li> </ul>
-     */
+    inline const Aws::String& GetDisplayName() const { return m_displayName; }
     inline bool DisplayNameHasBeenSet() const { return m_displayNameHasBeenSet; }
+    template<typename DisplayNameT = Aws::String>
+    void SetDisplayName(DisplayNameT&& value) { m_displayNameHasBeenSet = true; m_displayName = std::forward<DisplayNameT>(value); }
+    template<typename DisplayNameT = Aws::String>
+    Owner& WithDisplayName(DisplayNameT&& value) { SetDisplayName(std::forward<DisplayNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Container for the display name of the owner. This value is only supported in
-     * the following Amazon Web Services Regions:</p> <ul> <li> <p>US East (N.
-     * Virginia)</p> </li> <li> <p>US West (N. California)</p> </li> <li> <p>US West
-     * (Oregon)</p> </li> <li> <p>Asia Pacific (Singapore)</p> </li> <li> <p>Asia
-     * Pacific (Sydney)</p> </li> <li> <p>Asia Pacific (Tokyo)</p> </li> <li> <p>Europe
-     * (Ireland)</p> </li> <li> <p>South America (São Paulo)</p> </li> </ul>
-     */
-    inline void SetDisplayName(const Aws::String& value) { m_displayNameHasBeenSet = true; m_displayName = value; }
-
-    /**
-     * <p>Container for the display name of the owner. This value is only supported in
-     * the following Amazon Web Services Regions:</p> <ul> <li> <p>US East (N.
-     * Virginia)</p> </li> <li> <p>US West (N. California)</p> </li> <li> <p>US West
-     * (Oregon)</p> </li> <li> <p>Asia Pacific (Singapore)</p> </li> <li> <p>Asia
-     * Pacific (Sydney)</p> </li> <li> <p>Asia Pacific (Tokyo)</p> </li> <li> <p>Europe
-     * (Ireland)</p> </li> <li> <p>South America (São Paulo)</p> </li> </ul>
-     */
-    inline void SetDisplayName(Aws::String&& value) { m_displayNameHasBeenSet = true; m_displayName = std::move(value); }
-
-    /**
-     * <p>Container for the display name of the owner. This value is only supported in
-     * the following Amazon Web Services Regions:</p> <ul> <li> <p>US East (N.
-     * Virginia)</p> </li> <li> <p>US West (N. California)</p> </li> <li> <p>US West
-     * (Oregon)</p> </li> <li> <p>Asia Pacific (Singapore)</p> </li> <li> <p>Asia
-     * Pacific (Sydney)</p> </li> <li> <p>Asia Pacific (Tokyo)</p> </li> <li> <p>Europe
-     * (Ireland)</p> </li> <li> <p>South America (São Paulo)</p> </li> </ul>
-     */
-    inline void SetDisplayName(const char* value) { m_displayNameHasBeenSet = true; m_displayName.assign(value); }
-
-    /**
-     * <p>Container for the display name of the owner. This value is only supported in
-     * the following Amazon Web Services Regions:</p> <ul> <li> <p>US East (N.
-     * Virginia)</p> </li> <li> <p>US West (N. California)</p> </li> <li> <p>US West
-     * (Oregon)</p> </li> <li> <p>Asia Pacific (Singapore)</p> </li> <li> <p>Asia
-     * Pacific (Sydney)</p> </li> <li> <p>Asia Pacific (Tokyo)</p> </li> <li> <p>Europe
-     * (Ireland)</p> </li> <li> <p>South America (São Paulo)</p> </li> </ul>
-     */
-    inline Owner& WithDisplayName(const Aws::String& value) { SetDisplayName(value); return *this;}
-
-    /**
-     * <p>Container for the display name of the owner. This value is only supported in
-     * the following Amazon Web Services Regions:</p> <ul> <li> <p>US East (N.
-     * Virginia)</p> </li> <li> <p>US West (N. California)</p> </li> <li> <p>US West
-     * (Oregon)</p> </li> <li> <p>Asia Pacific (Singapore)</p> </li> <li> <p>Asia
-     * Pacific (Sydney)</p> </li> <li> <p>Asia Pacific (Tokyo)</p> </li> <li> <p>Europe
-     * (Ireland)</p> </li> <li> <p>South America (São Paulo)</p> </li> </ul>
-     */
-    inline Owner& WithDisplayName(Aws::String&& value) { SetDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>Container for the display name of the owner. This value is only supported in
-     * the following Amazon Web Services Regions:</p> <ul> <li> <p>US East (N.
-     * Virginia)</p> </li> <li> <p>US West (N. California)</p> </li> <li> <p>US West
-     * (Oregon)</p> </li> <li> <p>Asia Pacific (Singapore)</p> </li> <li> <p>Asia
-     * Pacific (Sydney)</p> </li> <li> <p>Asia Pacific (Tokyo)</p> </li> <li> <p>Europe
-     * (Ireland)</p> </li> <li> <p>South America (São Paulo)</p> </li> </ul>
-     */
-    inline Owner& WithDisplayName(const char* value) { SetDisplayName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Container for the ID of the owner.</p>
      */
-    inline const Aws::String& GetID() const{ return m_iD; }
-
-    /**
-     * <p>Container for the ID of the owner.</p>
-     */
+    inline const Aws::String& GetID() const { return m_iD; }
     inline bool IDHasBeenSet() const { return m_iDHasBeenSet; }
-
-    /**
-     * <p>Container for the ID of the owner.</p>
-     */
-    inline void SetID(const Aws::String& value) { m_iDHasBeenSet = true; m_iD = value; }
-
-    /**
-     * <p>Container for the ID of the owner.</p>
-     */
-    inline void SetID(Aws::String&& value) { m_iDHasBeenSet = true; m_iD = std::move(value); }
-
-    /**
-     * <p>Container for the ID of the owner.</p>
-     */
-    inline void SetID(const char* value) { m_iDHasBeenSet = true; m_iD.assign(value); }
-
-    /**
-     * <p>Container for the ID of the owner.</p>
-     */
-    inline Owner& WithID(const Aws::String& value) { SetID(value); return *this;}
-
-    /**
-     * <p>Container for the ID of the owner.</p>
-     */
-    inline Owner& WithID(Aws::String&& value) { SetID(std::move(value)); return *this;}
-
-    /**
-     * <p>Container for the ID of the owner.</p>
-     */
-    inline Owner& WithID(const char* value) { SetID(value); return *this;}
-
+    template<typename IDT = Aws::String>
+    void SetID(IDT&& value) { m_iDHasBeenSet = true; m_iD = std::forward<IDT>(value); }
+    template<typename IDT = Aws::String>
+    Owner& WithID(IDT&& value) { SetID(std::forward<IDT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_displayName;

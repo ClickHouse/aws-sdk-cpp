@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ShadowModeConfig::ShadowModeConfig() : 
-    m_sourceModelVariantNameHasBeenSet(false),
-    m_shadowModelVariantsHasBeenSet(false)
-{
-}
-
-ShadowModeConfig::ShadowModeConfig(JsonView jsonValue) : 
-    m_sourceModelVariantNameHasBeenSet(false),
-    m_shadowModelVariantsHasBeenSet(false)
+ShadowModeConfig::ShadowModeConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ShadowModeConfig& ShadowModeConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SourceModelVariantName"))
   {
     m_sourceModelVariantName = jsonValue.GetString("SourceModelVariantName");
-
     m_sourceModelVariantNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ShadowModelVariants"))
   {
     Aws::Utils::Array<JsonView> shadowModelVariantsJsonList = jsonValue.GetArray("ShadowModelVariants");
@@ -49,7 +39,6 @@ ShadowModeConfig& ShadowModeConfig::operator =(JsonView jsonValue)
     }
     m_shadowModelVariantsHasBeenSet = true;
   }
-
   return *this;
 }
 

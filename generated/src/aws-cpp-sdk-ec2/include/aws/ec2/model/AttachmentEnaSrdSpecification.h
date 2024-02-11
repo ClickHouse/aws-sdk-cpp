@@ -24,15 +24,24 @@ namespace Model
 {
 
   /**
-   * <p>Describes the ENA Express configuration for the network interface that's
-   * attached to the instance.</p><p><h3>See Also:</h3>   <a
+   * <p>ENA Express uses Amazon Web Services Scalable Reliable Datagram (SRD)
+   * technology to increase the maximum bandwidth used per stream and minimize tail
+   * latency of network traffic between EC2 instances. With ENA Express, you can
+   * communicate between two EC2 instances in the same subnet within the same
+   * account, or in different accounts. Both sending and receiving instances must
+   * have ENA Express enabled.</p> <p>To improve the reliability of network packet
+   * delivery, ENA Express reorders network packets on the receiving end by default.
+   * However, some UDP-based applications are designed to handle network packets that
+   * are out of order to reduce the overhead for packet delivery at the network
+   * layer. When ENA Express is enabled, you can specify whether UDP network traffic
+   * uses it.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachmentEnaSrdSpecification">AWS
    * API Reference</a></p>
    */
   class AttachmentEnaSrdSpecification
   {
   public:
-    AWS_EC2_API AttachmentEnaSrdSpecification();
+    AWS_EC2_API AttachmentEnaSrdSpecification() = default;
     AWS_EC2_API AttachmentEnaSrdSpecification(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API AttachmentEnaSrdSpecification& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,64 +49,30 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
-     * <p>Indicates whether ENA Express is enabled for the network interface that's
-     * attached to the instance.</p>
+     * <p>Indicates whether ENA Express is enabled for the network interface.</p>
      */
-    inline bool GetEnaSrdEnabled() const{ return m_enaSrdEnabled; }
-
-    /**
-     * <p>Indicates whether ENA Express is enabled for the network interface that's
-     * attached to the instance.</p>
-     */
+    inline bool GetEnaSrdEnabled() const { return m_enaSrdEnabled; }
     inline bool EnaSrdEnabledHasBeenSet() const { return m_enaSrdEnabledHasBeenSet; }
-
-    /**
-     * <p>Indicates whether ENA Express is enabled for the network interface that's
-     * attached to the instance.</p>
-     */
     inline void SetEnaSrdEnabled(bool value) { m_enaSrdEnabledHasBeenSet = true; m_enaSrdEnabled = value; }
-
-    /**
-     * <p>Indicates whether ENA Express is enabled for the network interface that's
-     * attached to the instance.</p>
-     */
     inline AttachmentEnaSrdSpecification& WithEnaSrdEnabled(bool value) { SetEnaSrdEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>ENA Express configuration for UDP network traffic.</p>
+     * <p>Configures ENA Express for UDP network traffic.</p>
      */
-    inline const AttachmentEnaSrdUdpSpecification& GetEnaSrdUdpSpecification() const{ return m_enaSrdUdpSpecification; }
-
-    /**
-     * <p>ENA Express configuration for UDP network traffic.</p>
-     */
+    inline const AttachmentEnaSrdUdpSpecification& GetEnaSrdUdpSpecification() const { return m_enaSrdUdpSpecification; }
     inline bool EnaSrdUdpSpecificationHasBeenSet() const { return m_enaSrdUdpSpecificationHasBeenSet; }
-
-    /**
-     * <p>ENA Express configuration for UDP network traffic.</p>
-     */
-    inline void SetEnaSrdUdpSpecification(const AttachmentEnaSrdUdpSpecification& value) { m_enaSrdUdpSpecificationHasBeenSet = true; m_enaSrdUdpSpecification = value; }
-
-    /**
-     * <p>ENA Express configuration for UDP network traffic.</p>
-     */
-    inline void SetEnaSrdUdpSpecification(AttachmentEnaSrdUdpSpecification&& value) { m_enaSrdUdpSpecificationHasBeenSet = true; m_enaSrdUdpSpecification = std::move(value); }
-
-    /**
-     * <p>ENA Express configuration for UDP network traffic.</p>
-     */
-    inline AttachmentEnaSrdSpecification& WithEnaSrdUdpSpecification(const AttachmentEnaSrdUdpSpecification& value) { SetEnaSrdUdpSpecification(value); return *this;}
-
-    /**
-     * <p>ENA Express configuration for UDP network traffic.</p>
-     */
-    inline AttachmentEnaSrdSpecification& WithEnaSrdUdpSpecification(AttachmentEnaSrdUdpSpecification&& value) { SetEnaSrdUdpSpecification(std::move(value)); return *this;}
-
+    template<typename EnaSrdUdpSpecificationT = AttachmentEnaSrdUdpSpecification>
+    void SetEnaSrdUdpSpecification(EnaSrdUdpSpecificationT&& value) { m_enaSrdUdpSpecificationHasBeenSet = true; m_enaSrdUdpSpecification = std::forward<EnaSrdUdpSpecificationT>(value); }
+    template<typename EnaSrdUdpSpecificationT = AttachmentEnaSrdUdpSpecification>
+    AttachmentEnaSrdSpecification& WithEnaSrdUdpSpecification(EnaSrdUdpSpecificationT&& value) { SetEnaSrdUdpSpecification(std::forward<EnaSrdUdpSpecificationT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_enaSrdEnabled;
+    bool m_enaSrdEnabled{false};
     bool m_enaSrdEnabledHasBeenSet = false;
 
     AttachmentEnaSrdUdpSpecification m_enaSrdUdpSpecification;

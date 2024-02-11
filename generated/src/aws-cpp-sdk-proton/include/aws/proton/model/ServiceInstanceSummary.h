@@ -34,472 +34,186 @@ namespace Model
   class ServiceInstanceSummary
   {
   public:
-    AWS_PROTON_API ServiceInstanceSummary();
+    AWS_PROTON_API ServiceInstanceSummary() = default;
     AWS_PROTON_API ServiceInstanceSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_PROTON_API ServiceInstanceSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PROTON_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the service instance.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service instance.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    ServiceInstanceSummary& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service instance.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service instance.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service instance.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service instance.</p>
-     */
-    inline ServiceInstanceSummary& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service instance.</p>
-     */
-    inline ServiceInstanceSummary& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service instance.</p>
-     */
-    inline ServiceInstanceSummary& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the service instance was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The time when the service instance was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    ServiceInstanceSummary& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time when the service instance was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The time when the service instance was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The time when the service instance was created.</p>
-     */
-    inline ServiceInstanceSummary& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The time when the service instance was created.</p>
-     */
-    inline ServiceInstanceSummary& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The service instance deployment status.</p>
      */
-    inline const DeploymentStatus& GetDeploymentStatus() const{ return m_deploymentStatus; }
-
-    /**
-     * <p>The service instance deployment status.</p>
-     */
+    inline DeploymentStatus GetDeploymentStatus() const { return m_deploymentStatus; }
     inline bool DeploymentStatusHasBeenSet() const { return m_deploymentStatusHasBeenSet; }
+    inline void SetDeploymentStatus(DeploymentStatus value) { m_deploymentStatusHasBeenSet = true; m_deploymentStatus = value; }
+    inline ServiceInstanceSummary& WithDeploymentStatus(DeploymentStatus value) { SetDeploymentStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The service instance deployment status.</p>
-     */
-    inline void SetDeploymentStatus(const DeploymentStatus& value) { m_deploymentStatusHasBeenSet = true; m_deploymentStatus = value; }
-
-    /**
-     * <p>The service instance deployment status.</p>
-     */
-    inline void SetDeploymentStatus(DeploymentStatus&& value) { m_deploymentStatusHasBeenSet = true; m_deploymentStatus = std::move(value); }
-
-    /**
-     * <p>The service instance deployment status.</p>
-     */
-    inline ServiceInstanceSummary& WithDeploymentStatus(const DeploymentStatus& value) { SetDeploymentStatus(value); return *this;}
-
-    /**
-     * <p>The service instance deployment status.</p>
-     */
-    inline ServiceInstanceSummary& WithDeploymentStatus(DeploymentStatus&& value) { SetDeploymentStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A service instance deployment status message.</p>
      */
-    inline const Aws::String& GetDeploymentStatusMessage() const{ return m_deploymentStatusMessage; }
-
-    /**
-     * <p>A service instance deployment status message.</p>
-     */
+    inline const Aws::String& GetDeploymentStatusMessage() const { return m_deploymentStatusMessage; }
     inline bool DeploymentStatusMessageHasBeenSet() const { return m_deploymentStatusMessageHasBeenSet; }
+    template<typename DeploymentStatusMessageT = Aws::String>
+    void SetDeploymentStatusMessage(DeploymentStatusMessageT&& value) { m_deploymentStatusMessageHasBeenSet = true; m_deploymentStatusMessage = std::forward<DeploymentStatusMessageT>(value); }
+    template<typename DeploymentStatusMessageT = Aws::String>
+    ServiceInstanceSummary& WithDeploymentStatusMessage(DeploymentStatusMessageT&& value) { SetDeploymentStatusMessage(std::forward<DeploymentStatusMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A service instance deployment status message.</p>
-     */
-    inline void SetDeploymentStatusMessage(const Aws::String& value) { m_deploymentStatusMessageHasBeenSet = true; m_deploymentStatusMessage = value; }
-
-    /**
-     * <p>A service instance deployment status message.</p>
-     */
-    inline void SetDeploymentStatusMessage(Aws::String&& value) { m_deploymentStatusMessageHasBeenSet = true; m_deploymentStatusMessage = std::move(value); }
-
-    /**
-     * <p>A service instance deployment status message.</p>
-     */
-    inline void SetDeploymentStatusMessage(const char* value) { m_deploymentStatusMessageHasBeenSet = true; m_deploymentStatusMessage.assign(value); }
-
-    /**
-     * <p>A service instance deployment status message.</p>
-     */
-    inline ServiceInstanceSummary& WithDeploymentStatusMessage(const Aws::String& value) { SetDeploymentStatusMessage(value); return *this;}
-
-    /**
-     * <p>A service instance deployment status message.</p>
-     */
-    inline ServiceInstanceSummary& WithDeploymentStatusMessage(Aws::String&& value) { SetDeploymentStatusMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>A service instance deployment status message.</p>
-     */
-    inline ServiceInstanceSummary& WithDeploymentStatusMessage(const char* value) { SetDeploymentStatusMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the environment that the service instance was deployed into.</p>
      */
-    inline const Aws::String& GetEnvironmentName() const{ return m_environmentName; }
-
-    /**
-     * <p>The name of the environment that the service instance was deployed into.</p>
-     */
+    inline const Aws::String& GetEnvironmentName() const { return m_environmentName; }
     inline bool EnvironmentNameHasBeenSet() const { return m_environmentNameHasBeenSet; }
+    template<typename EnvironmentNameT = Aws::String>
+    void SetEnvironmentName(EnvironmentNameT&& value) { m_environmentNameHasBeenSet = true; m_environmentName = std::forward<EnvironmentNameT>(value); }
+    template<typename EnvironmentNameT = Aws::String>
+    ServiceInstanceSummary& WithEnvironmentName(EnvironmentNameT&& value) { SetEnvironmentName(std::forward<EnvironmentNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the environment that the service instance was deployed into.</p>
+     * <p>The ID of the last attempted deployment of this service instance.</p>
      */
-    inline void SetEnvironmentName(const Aws::String& value) { m_environmentNameHasBeenSet = true; m_environmentName = value; }
+    inline const Aws::String& GetLastAttemptedDeploymentId() const { return m_lastAttemptedDeploymentId; }
+    inline bool LastAttemptedDeploymentIdHasBeenSet() const { return m_lastAttemptedDeploymentIdHasBeenSet; }
+    template<typename LastAttemptedDeploymentIdT = Aws::String>
+    void SetLastAttemptedDeploymentId(LastAttemptedDeploymentIdT&& value) { m_lastAttemptedDeploymentIdHasBeenSet = true; m_lastAttemptedDeploymentId = std::forward<LastAttemptedDeploymentIdT>(value); }
+    template<typename LastAttemptedDeploymentIdT = Aws::String>
+    ServiceInstanceSummary& WithLastAttemptedDeploymentId(LastAttemptedDeploymentIdT&& value) { SetLastAttemptedDeploymentId(std::forward<LastAttemptedDeploymentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the environment that the service instance was deployed into.</p>
-     */
-    inline void SetEnvironmentName(Aws::String&& value) { m_environmentNameHasBeenSet = true; m_environmentName = std::move(value); }
-
-    /**
-     * <p>The name of the environment that the service instance was deployed into.</p>
-     */
-    inline void SetEnvironmentName(const char* value) { m_environmentNameHasBeenSet = true; m_environmentName.assign(value); }
-
-    /**
-     * <p>The name of the environment that the service instance was deployed into.</p>
-     */
-    inline ServiceInstanceSummary& WithEnvironmentName(const Aws::String& value) { SetEnvironmentName(value); return *this;}
-
-    /**
-     * <p>The name of the environment that the service instance was deployed into.</p>
-     */
-    inline ServiceInstanceSummary& WithEnvironmentName(Aws::String&& value) { SetEnvironmentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the environment that the service instance was deployed into.</p>
-     */
-    inline ServiceInstanceSummary& WithEnvironmentName(const char* value) { SetEnvironmentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when a deployment of the service was last attempted.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastDeploymentAttemptedAt() const{ return m_lastDeploymentAttemptedAt; }
-
-    /**
-     * <p>The time when a deployment of the service was last attempted.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastDeploymentAttemptedAt() const { return m_lastDeploymentAttemptedAt; }
     inline bool LastDeploymentAttemptedAtHasBeenSet() const { return m_lastDeploymentAttemptedAtHasBeenSet; }
+    template<typename LastDeploymentAttemptedAtT = Aws::Utils::DateTime>
+    void SetLastDeploymentAttemptedAt(LastDeploymentAttemptedAtT&& value) { m_lastDeploymentAttemptedAtHasBeenSet = true; m_lastDeploymentAttemptedAt = std::forward<LastDeploymentAttemptedAtT>(value); }
+    template<typename LastDeploymentAttemptedAtT = Aws::Utils::DateTime>
+    ServiceInstanceSummary& WithLastDeploymentAttemptedAt(LastDeploymentAttemptedAtT&& value) { SetLastDeploymentAttemptedAt(std::forward<LastDeploymentAttemptedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time when a deployment of the service was last attempted.</p>
-     */
-    inline void SetLastDeploymentAttemptedAt(const Aws::Utils::DateTime& value) { m_lastDeploymentAttemptedAtHasBeenSet = true; m_lastDeploymentAttemptedAt = value; }
-
-    /**
-     * <p>The time when a deployment of the service was last attempted.</p>
-     */
-    inline void SetLastDeploymentAttemptedAt(Aws::Utils::DateTime&& value) { m_lastDeploymentAttemptedAtHasBeenSet = true; m_lastDeploymentAttemptedAt = std::move(value); }
-
-    /**
-     * <p>The time when a deployment of the service was last attempted.</p>
-     */
-    inline ServiceInstanceSummary& WithLastDeploymentAttemptedAt(const Aws::Utils::DateTime& value) { SetLastDeploymentAttemptedAt(value); return *this;}
-
-    /**
-     * <p>The time when a deployment of the service was last attempted.</p>
-     */
-    inline ServiceInstanceSummary& WithLastDeploymentAttemptedAt(Aws::Utils::DateTime&& value) { SetLastDeploymentAttemptedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the service was last deployed successfully.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastDeploymentSucceededAt() const{ return m_lastDeploymentSucceededAt; }
-
-    /**
-     * <p>The time when the service was last deployed successfully.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastDeploymentSucceededAt() const { return m_lastDeploymentSucceededAt; }
     inline bool LastDeploymentSucceededAtHasBeenSet() const { return m_lastDeploymentSucceededAtHasBeenSet; }
+    template<typename LastDeploymentSucceededAtT = Aws::Utils::DateTime>
+    void SetLastDeploymentSucceededAt(LastDeploymentSucceededAtT&& value) { m_lastDeploymentSucceededAtHasBeenSet = true; m_lastDeploymentSucceededAt = std::forward<LastDeploymentSucceededAtT>(value); }
+    template<typename LastDeploymentSucceededAtT = Aws::Utils::DateTime>
+    ServiceInstanceSummary& WithLastDeploymentSucceededAt(LastDeploymentSucceededAtT&& value) { SetLastDeploymentSucceededAt(std::forward<LastDeploymentSucceededAtT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The time when the service was last deployed successfully.</p>
+     * <p>The ID of the last successful deployment of this service instance.</p>
      */
-    inline void SetLastDeploymentSucceededAt(const Aws::Utils::DateTime& value) { m_lastDeploymentSucceededAtHasBeenSet = true; m_lastDeploymentSucceededAt = value; }
+    inline const Aws::String& GetLastSucceededDeploymentId() const { return m_lastSucceededDeploymentId; }
+    inline bool LastSucceededDeploymentIdHasBeenSet() const { return m_lastSucceededDeploymentIdHasBeenSet; }
+    template<typename LastSucceededDeploymentIdT = Aws::String>
+    void SetLastSucceededDeploymentId(LastSucceededDeploymentIdT&& value) { m_lastSucceededDeploymentIdHasBeenSet = true; m_lastSucceededDeploymentId = std::forward<LastSucceededDeploymentIdT>(value); }
+    template<typename LastSucceededDeploymentIdT = Aws::String>
+    ServiceInstanceSummary& WithLastSucceededDeploymentId(LastSucceededDeploymentIdT&& value) { SetLastSucceededDeploymentId(std::forward<LastSucceededDeploymentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time when the service was last deployed successfully.</p>
-     */
-    inline void SetLastDeploymentSucceededAt(Aws::Utils::DateTime&& value) { m_lastDeploymentSucceededAtHasBeenSet = true; m_lastDeploymentSucceededAt = std::move(value); }
-
-    /**
-     * <p>The time when the service was last deployed successfully.</p>
-     */
-    inline ServiceInstanceSummary& WithLastDeploymentSucceededAt(const Aws::Utils::DateTime& value) { SetLastDeploymentSucceededAt(value); return *this;}
-
-    /**
-     * <p>The time when the service was last deployed successfully.</p>
-     */
-    inline ServiceInstanceSummary& WithLastDeploymentSucceededAt(Aws::Utils::DateTime&& value) { SetLastDeploymentSucceededAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the service instance.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the service instance.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ServiceInstanceSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the service instance.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the service instance.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the service instance.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the service instance.</p>
-     */
-    inline ServiceInstanceSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the service instance.</p>
-     */
-    inline ServiceInstanceSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the service instance.</p>
-     */
-    inline ServiceInstanceSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the service that the service instance belongs to.</p>
      */
-    inline const Aws::String& GetServiceName() const{ return m_serviceName; }
-
-    /**
-     * <p>The name of the service that the service instance belongs to.</p>
-     */
+    inline const Aws::String& GetServiceName() const { return m_serviceName; }
     inline bool ServiceNameHasBeenSet() const { return m_serviceNameHasBeenSet; }
+    template<typename ServiceNameT = Aws::String>
+    void SetServiceName(ServiceNameT&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::forward<ServiceNameT>(value); }
+    template<typename ServiceNameT = Aws::String>
+    ServiceInstanceSummary& WithServiceName(ServiceNameT&& value) { SetServiceName(std::forward<ServiceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the service that the service instance belongs to.</p>
-     */
-    inline void SetServiceName(const Aws::String& value) { m_serviceNameHasBeenSet = true; m_serviceName = value; }
-
-    /**
-     * <p>The name of the service that the service instance belongs to.</p>
-     */
-    inline void SetServiceName(Aws::String&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::move(value); }
-
-    /**
-     * <p>The name of the service that the service instance belongs to.</p>
-     */
-    inline void SetServiceName(const char* value) { m_serviceNameHasBeenSet = true; m_serviceName.assign(value); }
-
-    /**
-     * <p>The name of the service that the service instance belongs to.</p>
-     */
-    inline ServiceInstanceSummary& WithServiceName(const Aws::String& value) { SetServiceName(value); return *this;}
-
-    /**
-     * <p>The name of the service that the service instance belongs to.</p>
-     */
-    inline ServiceInstanceSummary& WithServiceName(Aws::String&& value) { SetServiceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the service that the service instance belongs to.</p>
-     */
-    inline ServiceInstanceSummary& WithServiceName(const char* value) { SetServiceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The service instance template major version.</p>
      */
-    inline const Aws::String& GetTemplateMajorVersion() const{ return m_templateMajorVersion; }
-
-    /**
-     * <p>The service instance template major version.</p>
-     */
+    inline const Aws::String& GetTemplateMajorVersion() const { return m_templateMajorVersion; }
     inline bool TemplateMajorVersionHasBeenSet() const { return m_templateMajorVersionHasBeenSet; }
+    template<typename TemplateMajorVersionT = Aws::String>
+    void SetTemplateMajorVersion(TemplateMajorVersionT&& value) { m_templateMajorVersionHasBeenSet = true; m_templateMajorVersion = std::forward<TemplateMajorVersionT>(value); }
+    template<typename TemplateMajorVersionT = Aws::String>
+    ServiceInstanceSummary& WithTemplateMajorVersion(TemplateMajorVersionT&& value) { SetTemplateMajorVersion(std::forward<TemplateMajorVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The service instance template major version.</p>
-     */
-    inline void SetTemplateMajorVersion(const Aws::String& value) { m_templateMajorVersionHasBeenSet = true; m_templateMajorVersion = value; }
-
-    /**
-     * <p>The service instance template major version.</p>
-     */
-    inline void SetTemplateMajorVersion(Aws::String&& value) { m_templateMajorVersionHasBeenSet = true; m_templateMajorVersion = std::move(value); }
-
-    /**
-     * <p>The service instance template major version.</p>
-     */
-    inline void SetTemplateMajorVersion(const char* value) { m_templateMajorVersionHasBeenSet = true; m_templateMajorVersion.assign(value); }
-
-    /**
-     * <p>The service instance template major version.</p>
-     */
-    inline ServiceInstanceSummary& WithTemplateMajorVersion(const Aws::String& value) { SetTemplateMajorVersion(value); return *this;}
-
-    /**
-     * <p>The service instance template major version.</p>
-     */
-    inline ServiceInstanceSummary& WithTemplateMajorVersion(Aws::String&& value) { SetTemplateMajorVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The service instance template major version.</p>
-     */
-    inline ServiceInstanceSummary& WithTemplateMajorVersion(const char* value) { SetTemplateMajorVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The service instance template minor version.</p>
      */
-    inline const Aws::String& GetTemplateMinorVersion() const{ return m_templateMinorVersion; }
-
-    /**
-     * <p>The service instance template minor version.</p>
-     */
+    inline const Aws::String& GetTemplateMinorVersion() const { return m_templateMinorVersion; }
     inline bool TemplateMinorVersionHasBeenSet() const { return m_templateMinorVersionHasBeenSet; }
+    template<typename TemplateMinorVersionT = Aws::String>
+    void SetTemplateMinorVersion(TemplateMinorVersionT&& value) { m_templateMinorVersionHasBeenSet = true; m_templateMinorVersion = std::forward<TemplateMinorVersionT>(value); }
+    template<typename TemplateMinorVersionT = Aws::String>
+    ServiceInstanceSummary& WithTemplateMinorVersion(TemplateMinorVersionT&& value) { SetTemplateMinorVersion(std::forward<TemplateMinorVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The service instance template minor version.</p>
-     */
-    inline void SetTemplateMinorVersion(const Aws::String& value) { m_templateMinorVersionHasBeenSet = true; m_templateMinorVersion = value; }
-
-    /**
-     * <p>The service instance template minor version.</p>
-     */
-    inline void SetTemplateMinorVersion(Aws::String&& value) { m_templateMinorVersionHasBeenSet = true; m_templateMinorVersion = std::move(value); }
-
-    /**
-     * <p>The service instance template minor version.</p>
-     */
-    inline void SetTemplateMinorVersion(const char* value) { m_templateMinorVersionHasBeenSet = true; m_templateMinorVersion.assign(value); }
-
-    /**
-     * <p>The service instance template minor version.</p>
-     */
-    inline ServiceInstanceSummary& WithTemplateMinorVersion(const Aws::String& value) { SetTemplateMinorVersion(value); return *this;}
-
-    /**
-     * <p>The service instance template minor version.</p>
-     */
-    inline ServiceInstanceSummary& WithTemplateMinorVersion(Aws::String&& value) { SetTemplateMinorVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The service instance template minor version.</p>
-     */
-    inline ServiceInstanceSummary& WithTemplateMinorVersion(const char* value) { SetTemplateMinorVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the service template.</p>
      */
-    inline const Aws::String& GetTemplateName() const{ return m_templateName; }
-
-    /**
-     * <p>The name of the service template.</p>
-     */
+    inline const Aws::String& GetTemplateName() const { return m_templateName; }
     inline bool TemplateNameHasBeenSet() const { return m_templateNameHasBeenSet; }
-
-    /**
-     * <p>The name of the service template.</p>
-     */
-    inline void SetTemplateName(const Aws::String& value) { m_templateNameHasBeenSet = true; m_templateName = value; }
-
-    /**
-     * <p>The name of the service template.</p>
-     */
-    inline void SetTemplateName(Aws::String&& value) { m_templateNameHasBeenSet = true; m_templateName = std::move(value); }
-
-    /**
-     * <p>The name of the service template.</p>
-     */
-    inline void SetTemplateName(const char* value) { m_templateNameHasBeenSet = true; m_templateName.assign(value); }
-
-    /**
-     * <p>The name of the service template.</p>
-     */
-    inline ServiceInstanceSummary& WithTemplateName(const Aws::String& value) { SetTemplateName(value); return *this;}
-
-    /**
-     * <p>The name of the service template.</p>
-     */
-    inline ServiceInstanceSummary& WithTemplateName(Aws::String&& value) { SetTemplateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the service template.</p>
-     */
-    inline ServiceInstanceSummary& WithTemplateName(const char* value) { SetTemplateName(value); return *this;}
-
+    template<typename TemplateNameT = Aws::String>
+    void SetTemplateName(TemplateNameT&& value) { m_templateNameHasBeenSet = true; m_templateName = std::forward<TemplateNameT>(value); }
+    template<typename TemplateNameT = Aws::String>
+    ServiceInstanceSummary& WithTemplateName(TemplateNameT&& value) { SetTemplateName(std::forward<TemplateNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
     bool m_arnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    DeploymentStatus m_deploymentStatus;
+    DeploymentStatus m_deploymentStatus{DeploymentStatus::NOT_SET};
     bool m_deploymentStatusHasBeenSet = false;
 
     Aws::String m_deploymentStatusMessage;
@@ -508,11 +222,17 @@ namespace Model
     Aws::String m_environmentName;
     bool m_environmentNameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastDeploymentAttemptedAt;
+    Aws::String m_lastAttemptedDeploymentId;
+    bool m_lastAttemptedDeploymentIdHasBeenSet = false;
+
+    Aws::Utils::DateTime m_lastDeploymentAttemptedAt{};
     bool m_lastDeploymentAttemptedAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastDeploymentSucceededAt;
+    Aws::Utils::DateTime m_lastDeploymentSucceededAt{};
     bool m_lastDeploymentSucceededAtHasBeenSet = false;
+
+    Aws::String m_lastSucceededDeploymentId;
+    bool m_lastSucceededDeploymentIdHasBeenSet = false;
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;

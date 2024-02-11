@@ -33,73 +33,37 @@ namespace Model
   class MergeDeveloperIdentitiesResult
   {
   public:
-    AWS_COGNITOIDENTITY_API MergeDeveloperIdentitiesResult();
+    AWS_COGNITOIDENTITY_API MergeDeveloperIdentitiesResult() = default;
     AWS_COGNITOIDENTITY_API MergeDeveloperIdentitiesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_COGNITOIDENTITY_API MergeDeveloperIdentitiesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A unique identifier in the format REGION:GUID.</p>
      */
-    inline const Aws::String& GetIdentityId() const{ return m_identityId; }
+    inline const Aws::String& GetIdentityId() const { return m_identityId; }
+    template<typename IdentityIdT = Aws::String>
+    void SetIdentityId(IdentityIdT&& value) { m_identityIdHasBeenSet = true; m_identityId = std::forward<IdentityIdT>(value); }
+    template<typename IdentityIdT = Aws::String>
+    MergeDeveloperIdentitiesResult& WithIdentityId(IdentityIdT&& value) { SetIdentityId(std::forward<IdentityIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier in the format REGION:GUID.</p>
-     */
-    inline void SetIdentityId(const Aws::String& value) { m_identityId = value; }
-
-    /**
-     * <p>A unique identifier in the format REGION:GUID.</p>
-     */
-    inline void SetIdentityId(Aws::String&& value) { m_identityId = std::move(value); }
-
-    /**
-     * <p>A unique identifier in the format REGION:GUID.</p>
-     */
-    inline void SetIdentityId(const char* value) { m_identityId.assign(value); }
-
-    /**
-     * <p>A unique identifier in the format REGION:GUID.</p>
-     */
-    inline MergeDeveloperIdentitiesResult& WithIdentityId(const Aws::String& value) { SetIdentityId(value); return *this;}
-
-    /**
-     * <p>A unique identifier in the format REGION:GUID.</p>
-     */
-    inline MergeDeveloperIdentitiesResult& WithIdentityId(Aws::String&& value) { SetIdentityId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier in the format REGION:GUID.</p>
-     */
-    inline MergeDeveloperIdentitiesResult& WithIdentityId(const char* value) { SetIdentityId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline MergeDeveloperIdentitiesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline MergeDeveloperIdentitiesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline MergeDeveloperIdentitiesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    MergeDeveloperIdentitiesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_identityId;
+    bool m_identityIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

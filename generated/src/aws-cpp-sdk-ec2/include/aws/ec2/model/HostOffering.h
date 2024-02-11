@@ -34,7 +34,7 @@ namespace Model
   class HostOffering
   {
   public:
-    AWS_EC2_API HostOffering();
+    AWS_EC2_API HostOffering() = default;
     AWS_EC2_API HostOffering(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API HostOffering& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,266 +42,90 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The currency of the offering.</p>
      */
-    inline const CurrencyCodeValues& GetCurrencyCode() const{ return m_currencyCode; }
-
-    /**
-     * <p>The currency of the offering.</p>
-     */
+    inline CurrencyCodeValues GetCurrencyCode() const { return m_currencyCode; }
     inline bool CurrencyCodeHasBeenSet() const { return m_currencyCodeHasBeenSet; }
+    inline void SetCurrencyCode(CurrencyCodeValues value) { m_currencyCodeHasBeenSet = true; m_currencyCode = value; }
+    inline HostOffering& WithCurrencyCode(CurrencyCodeValues value) { SetCurrencyCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The currency of the offering.</p>
-     */
-    inline void SetCurrencyCode(const CurrencyCodeValues& value) { m_currencyCodeHasBeenSet = true; m_currencyCode = value; }
-
-    /**
-     * <p>The currency of the offering.</p>
-     */
-    inline void SetCurrencyCode(CurrencyCodeValues&& value) { m_currencyCodeHasBeenSet = true; m_currencyCode = std::move(value); }
-
-    /**
-     * <p>The currency of the offering.</p>
-     */
-    inline HostOffering& WithCurrencyCode(const CurrencyCodeValues& value) { SetCurrencyCode(value); return *this;}
-
-    /**
-     * <p>The currency of the offering.</p>
-     */
-    inline HostOffering& WithCurrencyCode(CurrencyCodeValues&& value) { SetCurrencyCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The duration of the offering (in seconds).</p>
      */
-    inline int GetDuration() const{ return m_duration; }
-
-    /**
-     * <p>The duration of the offering (in seconds).</p>
-     */
+    inline int GetDuration() const { return m_duration; }
     inline bool DurationHasBeenSet() const { return m_durationHasBeenSet; }
-
-    /**
-     * <p>The duration of the offering (in seconds).</p>
-     */
     inline void SetDuration(int value) { m_durationHasBeenSet = true; m_duration = value; }
-
-    /**
-     * <p>The duration of the offering (in seconds).</p>
-     */
     inline HostOffering& WithDuration(int value) { SetDuration(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The hourly price of the offering.</p>
      */
-    inline const Aws::String& GetHourlyPrice() const{ return m_hourlyPrice; }
-
-    /**
-     * <p>The hourly price of the offering.</p>
-     */
+    inline const Aws::String& GetHourlyPrice() const { return m_hourlyPrice; }
     inline bool HourlyPriceHasBeenSet() const { return m_hourlyPriceHasBeenSet; }
+    template<typename HourlyPriceT = Aws::String>
+    void SetHourlyPrice(HourlyPriceT&& value) { m_hourlyPriceHasBeenSet = true; m_hourlyPrice = std::forward<HourlyPriceT>(value); }
+    template<typename HourlyPriceT = Aws::String>
+    HostOffering& WithHourlyPrice(HourlyPriceT&& value) { SetHourlyPrice(std::forward<HourlyPriceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The hourly price of the offering.</p>
-     */
-    inline void SetHourlyPrice(const Aws::String& value) { m_hourlyPriceHasBeenSet = true; m_hourlyPrice = value; }
-
-    /**
-     * <p>The hourly price of the offering.</p>
-     */
-    inline void SetHourlyPrice(Aws::String&& value) { m_hourlyPriceHasBeenSet = true; m_hourlyPrice = std::move(value); }
-
-    /**
-     * <p>The hourly price of the offering.</p>
-     */
-    inline void SetHourlyPrice(const char* value) { m_hourlyPriceHasBeenSet = true; m_hourlyPrice.assign(value); }
-
-    /**
-     * <p>The hourly price of the offering.</p>
-     */
-    inline HostOffering& WithHourlyPrice(const Aws::String& value) { SetHourlyPrice(value); return *this;}
-
-    /**
-     * <p>The hourly price of the offering.</p>
-     */
-    inline HostOffering& WithHourlyPrice(Aws::String&& value) { SetHourlyPrice(std::move(value)); return *this;}
-
-    /**
-     * <p>The hourly price of the offering.</p>
-     */
-    inline HostOffering& WithHourlyPrice(const char* value) { SetHourlyPrice(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The instance family of the offering.</p>
      */
-    inline const Aws::String& GetInstanceFamily() const{ return m_instanceFamily; }
-
-    /**
-     * <p>The instance family of the offering.</p>
-     */
+    inline const Aws::String& GetInstanceFamily() const { return m_instanceFamily; }
     inline bool InstanceFamilyHasBeenSet() const { return m_instanceFamilyHasBeenSet; }
+    template<typename InstanceFamilyT = Aws::String>
+    void SetInstanceFamily(InstanceFamilyT&& value) { m_instanceFamilyHasBeenSet = true; m_instanceFamily = std::forward<InstanceFamilyT>(value); }
+    template<typename InstanceFamilyT = Aws::String>
+    HostOffering& WithInstanceFamily(InstanceFamilyT&& value) { SetInstanceFamily(std::forward<InstanceFamilyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The instance family of the offering.</p>
-     */
-    inline void SetInstanceFamily(const Aws::String& value) { m_instanceFamilyHasBeenSet = true; m_instanceFamily = value; }
-
-    /**
-     * <p>The instance family of the offering.</p>
-     */
-    inline void SetInstanceFamily(Aws::String&& value) { m_instanceFamilyHasBeenSet = true; m_instanceFamily = std::move(value); }
-
-    /**
-     * <p>The instance family of the offering.</p>
-     */
-    inline void SetInstanceFamily(const char* value) { m_instanceFamilyHasBeenSet = true; m_instanceFamily.assign(value); }
-
-    /**
-     * <p>The instance family of the offering.</p>
-     */
-    inline HostOffering& WithInstanceFamily(const Aws::String& value) { SetInstanceFamily(value); return *this;}
-
-    /**
-     * <p>The instance family of the offering.</p>
-     */
-    inline HostOffering& WithInstanceFamily(Aws::String&& value) { SetInstanceFamily(std::move(value)); return *this;}
-
-    /**
-     * <p>The instance family of the offering.</p>
-     */
-    inline HostOffering& WithInstanceFamily(const char* value) { SetInstanceFamily(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the offering.</p>
      */
-    inline const Aws::String& GetOfferingId() const{ return m_offeringId; }
-
-    /**
-     * <p>The ID of the offering.</p>
-     */
+    inline const Aws::String& GetOfferingId() const { return m_offeringId; }
     inline bool OfferingIdHasBeenSet() const { return m_offeringIdHasBeenSet; }
+    template<typename OfferingIdT = Aws::String>
+    void SetOfferingId(OfferingIdT&& value) { m_offeringIdHasBeenSet = true; m_offeringId = std::forward<OfferingIdT>(value); }
+    template<typename OfferingIdT = Aws::String>
+    HostOffering& WithOfferingId(OfferingIdT&& value) { SetOfferingId(std::forward<OfferingIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the offering.</p>
-     */
-    inline void SetOfferingId(const Aws::String& value) { m_offeringIdHasBeenSet = true; m_offeringId = value; }
-
-    /**
-     * <p>The ID of the offering.</p>
-     */
-    inline void SetOfferingId(Aws::String&& value) { m_offeringIdHasBeenSet = true; m_offeringId = std::move(value); }
-
-    /**
-     * <p>The ID of the offering.</p>
-     */
-    inline void SetOfferingId(const char* value) { m_offeringIdHasBeenSet = true; m_offeringId.assign(value); }
-
-    /**
-     * <p>The ID of the offering.</p>
-     */
-    inline HostOffering& WithOfferingId(const Aws::String& value) { SetOfferingId(value); return *this;}
-
-    /**
-     * <p>The ID of the offering.</p>
-     */
-    inline HostOffering& WithOfferingId(Aws::String&& value) { SetOfferingId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the offering.</p>
-     */
-    inline HostOffering& WithOfferingId(const char* value) { SetOfferingId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The available payment option.</p>
      */
-    inline const PaymentOption& GetPaymentOption() const{ return m_paymentOption; }
-
-    /**
-     * <p>The available payment option.</p>
-     */
+    inline PaymentOption GetPaymentOption() const { return m_paymentOption; }
     inline bool PaymentOptionHasBeenSet() const { return m_paymentOptionHasBeenSet; }
+    inline void SetPaymentOption(PaymentOption value) { m_paymentOptionHasBeenSet = true; m_paymentOption = value; }
+    inline HostOffering& WithPaymentOption(PaymentOption value) { SetPaymentOption(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The available payment option.</p>
-     */
-    inline void SetPaymentOption(const PaymentOption& value) { m_paymentOptionHasBeenSet = true; m_paymentOption = value; }
-
-    /**
-     * <p>The available payment option.</p>
-     */
-    inline void SetPaymentOption(PaymentOption&& value) { m_paymentOptionHasBeenSet = true; m_paymentOption = std::move(value); }
-
-    /**
-     * <p>The available payment option.</p>
-     */
-    inline HostOffering& WithPaymentOption(const PaymentOption& value) { SetPaymentOption(value); return *this;}
-
-    /**
-     * <p>The available payment option.</p>
-     */
-    inline HostOffering& WithPaymentOption(PaymentOption&& value) { SetPaymentOption(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The upfront price of the offering. Does not apply to No Upfront
      * offerings.</p>
      */
-    inline const Aws::String& GetUpfrontPrice() const{ return m_upfrontPrice; }
-
-    /**
-     * <p>The upfront price of the offering. Does not apply to No Upfront
-     * offerings.</p>
-     */
+    inline const Aws::String& GetUpfrontPrice() const { return m_upfrontPrice; }
     inline bool UpfrontPriceHasBeenSet() const { return m_upfrontPriceHasBeenSet; }
-
-    /**
-     * <p>The upfront price of the offering. Does not apply to No Upfront
-     * offerings.</p>
-     */
-    inline void SetUpfrontPrice(const Aws::String& value) { m_upfrontPriceHasBeenSet = true; m_upfrontPrice = value; }
-
-    /**
-     * <p>The upfront price of the offering. Does not apply to No Upfront
-     * offerings.</p>
-     */
-    inline void SetUpfrontPrice(Aws::String&& value) { m_upfrontPriceHasBeenSet = true; m_upfrontPrice = std::move(value); }
-
-    /**
-     * <p>The upfront price of the offering. Does not apply to No Upfront
-     * offerings.</p>
-     */
-    inline void SetUpfrontPrice(const char* value) { m_upfrontPriceHasBeenSet = true; m_upfrontPrice.assign(value); }
-
-    /**
-     * <p>The upfront price of the offering. Does not apply to No Upfront
-     * offerings.</p>
-     */
-    inline HostOffering& WithUpfrontPrice(const Aws::String& value) { SetUpfrontPrice(value); return *this;}
-
-    /**
-     * <p>The upfront price of the offering. Does not apply to No Upfront
-     * offerings.</p>
-     */
-    inline HostOffering& WithUpfrontPrice(Aws::String&& value) { SetUpfrontPrice(std::move(value)); return *this;}
-
-    /**
-     * <p>The upfront price of the offering. Does not apply to No Upfront
-     * offerings.</p>
-     */
-    inline HostOffering& WithUpfrontPrice(const char* value) { SetUpfrontPrice(value); return *this;}
-
+    template<typename UpfrontPriceT = Aws::String>
+    void SetUpfrontPrice(UpfrontPriceT&& value) { m_upfrontPriceHasBeenSet = true; m_upfrontPrice = std::forward<UpfrontPriceT>(value); }
+    template<typename UpfrontPriceT = Aws::String>
+    HostOffering& WithUpfrontPrice(UpfrontPriceT&& value) { SetUpfrontPrice(std::forward<UpfrontPriceT>(value)); return *this;}
+    ///@}
   private:
 
-    CurrencyCodeValues m_currencyCode;
+    CurrencyCodeValues m_currencyCode{CurrencyCodeValues::NOT_SET};
     bool m_currencyCodeHasBeenSet = false;
 
-    int m_duration;
+    int m_duration{0};
     bool m_durationHasBeenSet = false;
 
     Aws::String m_hourlyPrice;
@@ -313,7 +137,7 @@ namespace Model
     Aws::String m_offeringId;
     bool m_offeringIdHasBeenSet = false;
 
-    PaymentOption m_paymentOption;
+    PaymentOption m_paymentOption{PaymentOption::NOT_SET};
     bool m_paymentOptionHasBeenSet = false;
 
     Aws::String m_upfrontPrice;

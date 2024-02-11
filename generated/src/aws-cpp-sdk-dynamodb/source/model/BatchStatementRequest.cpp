@@ -18,19 +18,7 @@ namespace DynamoDB
 namespace Model
 {
 
-BatchStatementRequest::BatchStatementRequest() : 
-    m_statementHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_consistentRead(false),
-    m_consistentReadHasBeenSet(false)
-{
-}
-
-BatchStatementRequest::BatchStatementRequest(JsonView jsonValue) : 
-    m_statementHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_consistentRead(false),
-    m_consistentReadHasBeenSet(false)
+BatchStatementRequest::BatchStatementRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ BatchStatementRequest& BatchStatementRequest::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Statement"))
   {
     m_statement = jsonValue.GetString("Statement");
-
     m_statementHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Parameters"))
   {
     Aws::Utils::Array<JsonView> parametersJsonList = jsonValue.GetArray("Parameters");
@@ -53,14 +39,16 @@ BatchStatementRequest& BatchStatementRequest::operator =(JsonView jsonValue)
     }
     m_parametersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ConsistentRead"))
   {
     m_consistentRead = jsonValue.GetBool("ConsistentRead");
-
     m_consistentReadHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ReturnValuesOnConditionCheckFailure"))
+  {
+    m_returnValuesOnConditionCheckFailure = ReturnValuesOnConditionCheckFailureMapper::GetReturnValuesOnConditionCheckFailureForName(jsonValue.GetString("ReturnValuesOnConditionCheckFailure"));
+    m_returnValuesOnConditionCheckFailureHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -89,6 +77,11 @@ JsonValue BatchStatementRequest::Jsonize() const
   {
    payload.WithBool("ConsistentRead", m_consistentRead);
 
+  }
+
+  if(m_returnValuesOnConditionCheckFailureHasBeenSet)
+  {
+   payload.WithString("ReturnValuesOnConditionCheckFailure", ReturnValuesOnConditionCheckFailureMapper::GetNameForReturnValuesOnConditionCheckFailure(m_returnValuesOnConditionCheckFailure));
   }
 
   return payload;

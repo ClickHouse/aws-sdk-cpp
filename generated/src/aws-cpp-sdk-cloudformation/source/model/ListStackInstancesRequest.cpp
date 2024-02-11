@@ -10,19 +10,6 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-ListStackInstancesRequest::ListStackInstancesRequest() : 
-    m_stackSetNameHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_stackInstanceAccountHasBeenSet(false),
-    m_stackInstanceRegionHasBeenSet(false),
-    m_callAs(CallAs::NOT_SET),
-    m_callAsHasBeenSet(false)
-{
-}
-
 Aws::String ListStackInstancesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -44,11 +31,18 @@ Aws::String ListStackInstancesRequest::SerializePayload() const
 
   if(m_filtersHasBeenSet)
   {
-    unsigned filtersCount = 1;
-    for(auto& item : m_filters)
+    if (m_filters.empty())
     {
-      item.OutputToStream(ss, "Filters.member.", filtersCount, "");
-      filtersCount++;
+      ss << "Filters=&";
+    }
+    else
+    {
+      unsigned filtersCount = 1;
+      for(auto& item : m_filters)
+      {
+        item.OutputToStream(ss, "Filters.member.", filtersCount, "");
+        filtersCount++;
+      }
     }
   }
 
@@ -64,7 +58,7 @@ Aws::String ListStackInstancesRequest::SerializePayload() const
 
   if(m_callAsHasBeenSet)
   {
-    ss << "CallAs=" << CallAsMapper::GetNameForCallAs(m_callAs) << "&";
+    ss << "CallAs=" << StringUtils::URLEncode(CallAsMapper::GetNameForCallAs(m_callAs)) << "&";
   }
 
   ss << "Version=2010-05-15";

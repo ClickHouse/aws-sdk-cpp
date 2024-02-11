@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-PivotTableFieldOptions::PivotTableFieldOptions() : 
-    m_selectedFieldOptionsHasBeenSet(false),
-    m_dataPathOptionsHasBeenSet(false)
-{
-}
-
-PivotTableFieldOptions::PivotTableFieldOptions(JsonView jsonValue) : 
-    m_selectedFieldOptionsHasBeenSet(false),
-    m_dataPathOptionsHasBeenSet(false)
+PivotTableFieldOptions::PivotTableFieldOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ PivotTableFieldOptions& PivotTableFieldOptions::operator =(JsonView jsonValue)
     }
     m_selectedFieldOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataPathOptions"))
   {
     Aws::Utils::Array<JsonView> dataPathOptionsJsonList = jsonValue.GetArray("DataPathOptions");
@@ -52,7 +43,15 @@ PivotTableFieldOptions& PivotTableFieldOptions::operator =(JsonView jsonValue)
     }
     m_dataPathOptionsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("CollapseStateOptions"))
+  {
+    Aws::Utils::Array<JsonView> collapseStateOptionsJsonList = jsonValue.GetArray("CollapseStateOptions");
+    for(unsigned collapseStateOptionsIndex = 0; collapseStateOptionsIndex < collapseStateOptionsJsonList.GetLength(); ++collapseStateOptionsIndex)
+    {
+      m_collapseStateOptions.push_back(collapseStateOptionsJsonList[collapseStateOptionsIndex].AsObject());
+    }
+    m_collapseStateOptionsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -79,6 +78,17 @@ JsonValue PivotTableFieldOptions::Jsonize() const
      dataPathOptionsJsonList[dataPathOptionsIndex].AsObject(m_dataPathOptions[dataPathOptionsIndex].Jsonize());
    }
    payload.WithArray("DataPathOptions", std::move(dataPathOptionsJsonList));
+
+  }
+
+  if(m_collapseStateOptionsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> collapseStateOptionsJsonList(m_collapseStateOptions.size());
+   for(unsigned collapseStateOptionsIndex = 0; collapseStateOptionsIndex < collapseStateOptionsJsonList.GetLength(); ++collapseStateOptionsIndex)
+   {
+     collapseStateOptionsJsonList[collapseStateOptionsIndex].AsObject(m_collapseStateOptions[collapseStateOptionsIndex].Jsonize());
+   }
+   payload.WithArray("CollapseStateOptions", std::move(collapseStateOptionsJsonList));
 
   }
 

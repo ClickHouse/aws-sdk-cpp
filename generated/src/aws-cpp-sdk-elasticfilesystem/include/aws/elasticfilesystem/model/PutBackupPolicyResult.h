@@ -28,68 +28,38 @@ namespace Model
   class PutBackupPolicyResult
   {
   public:
-    AWS_EFS_API PutBackupPolicyResult();
+    AWS_EFS_API PutBackupPolicyResult() = default;
     AWS_EFS_API PutBackupPolicyResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_EFS_API PutBackupPolicyResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Describes the file system's backup policy, indicating whether automatic
      * backups are turned on or off.</p>
      */
-    inline const BackupPolicy& GetBackupPolicy() const{ return m_backupPolicy; }
+    inline const BackupPolicy& GetBackupPolicy() const { return m_backupPolicy; }
+    template<typename BackupPolicyT = BackupPolicy>
+    void SetBackupPolicy(BackupPolicyT&& value) { m_backupPolicyHasBeenSet = true; m_backupPolicy = std::forward<BackupPolicyT>(value); }
+    template<typename BackupPolicyT = BackupPolicy>
+    PutBackupPolicyResult& WithBackupPolicy(BackupPolicyT&& value) { SetBackupPolicy(std::forward<BackupPolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes the file system's backup policy, indicating whether automatic
-     * backups are turned on or off.</p>
-     */
-    inline void SetBackupPolicy(const BackupPolicy& value) { m_backupPolicy = value; }
-
-    /**
-     * <p>Describes the file system's backup policy, indicating whether automatic
-     * backups are turned on or off.</p>
-     */
-    inline void SetBackupPolicy(BackupPolicy&& value) { m_backupPolicy = std::move(value); }
-
-    /**
-     * <p>Describes the file system's backup policy, indicating whether automatic
-     * backups are turned on or off.</p>
-     */
-    inline PutBackupPolicyResult& WithBackupPolicy(const BackupPolicy& value) { SetBackupPolicy(value); return *this;}
-
-    /**
-     * <p>Describes the file system's backup policy, indicating whether automatic
-     * backups are turned on or off.</p>
-     */
-    inline PutBackupPolicyResult& WithBackupPolicy(BackupPolicy&& value) { SetBackupPolicy(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline PutBackupPolicyResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline PutBackupPolicyResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline PutBackupPolicyResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    PutBackupPolicyResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     BackupPolicy m_backupPolicy;
+    bool m_backupPolicyHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

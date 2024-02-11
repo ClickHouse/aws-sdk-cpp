@@ -20,27 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-AccessPoint::AccessPoint() : 
-    m_nameHasBeenSet(false),
-    m_networkOrigin(NetworkOrigin::NOT_SET),
-    m_networkOriginHasBeenSet(false),
-    m_vpcConfigurationHasBeenSet(false),
-    m_bucketHasBeenSet(false),
-    m_accessPointArnHasBeenSet(false),
-    m_aliasHasBeenSet(false),
-    m_bucketAccountIdHasBeenSet(false)
-{
-}
-
-AccessPoint::AccessPoint(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_networkOrigin(NetworkOrigin::NOT_SET),
-    m_networkOriginHasBeenSet(false),
-    m_vpcConfigurationHasBeenSet(false),
-    m_bucketHasBeenSet(false),
-    m_accessPointArnHasBeenSet(false),
-    m_aliasHasBeenSet(false),
-    m_bucketAccountIdHasBeenSet(false)
+AccessPoint::AccessPoint(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -60,7 +40,7 @@ AccessPoint& AccessPoint::operator =(const XmlNode& xmlNode)
     XmlNode networkOriginNode = resultNode.FirstChild("NetworkOrigin");
     if(!networkOriginNode.IsNull())
     {
-      m_networkOrigin = NetworkOriginMapper::GetNetworkOriginForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(networkOriginNode.GetText()).c_str()).c_str());
+      m_networkOrigin = NetworkOriginMapper::GetNetworkOriginForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(networkOriginNode.GetText()).c_str()));
       m_networkOriginHasBeenSet = true;
     }
     XmlNode vpcConfigurationNode = resultNode.FirstChild("VpcConfiguration");
@@ -92,6 +72,18 @@ AccessPoint& AccessPoint::operator =(const XmlNode& xmlNode)
     {
       m_bucketAccountId = Aws::Utils::Xml::DecodeEscapedXmlText(bucketAccountIdNode.GetText());
       m_bucketAccountIdHasBeenSet = true;
+    }
+    XmlNode dataSourceIdNode = resultNode.FirstChild("DataSourceId");
+    if(!dataSourceIdNode.IsNull())
+    {
+      m_dataSourceId = Aws::Utils::Xml::DecodeEscapedXmlText(dataSourceIdNode.GetText());
+      m_dataSourceIdHasBeenSet = true;
+    }
+    XmlNode dataSourceTypeNode = resultNode.FirstChild("DataSourceType");
+    if(!dataSourceTypeNode.IsNull())
+    {
+      m_dataSourceType = Aws::Utils::Xml::DecodeEscapedXmlText(dataSourceTypeNode.GetText());
+      m_dataSourceTypeHasBeenSet = true;
     }
   }
 
@@ -141,6 +133,18 @@ void AccessPoint::AddToNode(XmlNode& parentNode) const
   {
    XmlNode bucketAccountIdNode = parentNode.CreateChildElement("BucketAccountId");
    bucketAccountIdNode.SetText(m_bucketAccountId);
+  }
+
+  if(m_dataSourceIdHasBeenSet)
+  {
+   XmlNode dataSourceIdNode = parentNode.CreateChildElement("DataSourceId");
+   dataSourceIdNode.SetText(m_dataSourceId);
+  }
+
+  if(m_dataSourceTypeHasBeenSet)
+  {
+   XmlNode dataSourceTypeNode = parentNode.CreateChildElement("DataSourceType");
+   dataSourceTypeNode.SetText(m_dataSourceType);
   }
 
 }

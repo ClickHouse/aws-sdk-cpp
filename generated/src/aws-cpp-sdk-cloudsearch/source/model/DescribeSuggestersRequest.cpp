@@ -10,14 +10,6 @@
 using namespace Aws::CloudSearch::Model;
 using namespace Aws::Utils;
 
-DescribeSuggestersRequest::DescribeSuggestersRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_suggesterNamesHasBeenSet(false),
-    m_deployed(false),
-    m_deployedHasBeenSet(false)
-{
-}
-
 Aws::String DescribeSuggestersRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -29,12 +21,19 @@ Aws::String DescribeSuggestersRequest::SerializePayload() const
 
   if(m_suggesterNamesHasBeenSet)
   {
-    unsigned suggesterNamesCount = 1;
-    for(auto& item : m_suggesterNames)
+    if (m_suggesterNames.empty())
     {
-      ss << "SuggesterNames.member." << suggesterNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      suggesterNamesCount++;
+      ss << "SuggesterNames=&";
+    }
+    else
+    {
+      unsigned suggesterNamesCount = 1;
+      for(auto& item : m_suggesterNames)
+      {
+        ss << "SuggesterNames.member." << suggesterNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        suggesterNamesCount++;
+      }
     }
   }
 

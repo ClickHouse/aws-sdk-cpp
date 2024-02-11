@@ -12,18 +12,6 @@ using namespace Aws::NetworkManager::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateConnectPeerRequest::CreateConnectPeerRequest() : 
-    m_connectAttachmentIdHasBeenSet(false),
-    m_coreNetworkAddressHasBeenSet(false),
-    m_peerAddressHasBeenSet(false),
-    m_bgpOptionsHasBeenSet(false),
-    m_insideCidrBlocksHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true)
-{
-}
-
 Aws::String CreateConnectPeerRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -77,6 +65,12 @@ Aws::String CreateConnectPeerRequest::SerializePayload() const
   if(m_clientTokenHasBeenSet)
   {
    payload.WithString("ClientToken", m_clientToken);
+
+  }
+
+  if(m_subnetArnHasBeenSet)
+  {
+   payload.WithString("SubnetArn", m_subnetArn);
 
   }
 

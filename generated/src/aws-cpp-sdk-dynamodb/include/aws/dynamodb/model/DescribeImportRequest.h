@@ -21,7 +21,7 @@ namespace Model
   class DescribeImportRequest : public DynamoDBRequest
   {
   public:
-    AWS_DYNAMODB_API DescribeImportRequest();
+    AWS_DYNAMODB_API DescribeImportRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,55 +33,23 @@ namespace Model
 
     AWS_DYNAMODB_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+    /**
+     * Helper function to collect parameters (configurable and static hardcoded) required for endpoint computation.
+     */
+    AWS_DYNAMODB_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p> The Amazon Resource Name (ARN) associated with the table you're importing
      * to. </p>
      */
-    inline const Aws::String& GetImportArn() const{ return m_importArn; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) associated with the table you're importing
-     * to. </p>
-     */
+    inline const Aws::String& GetImportArn() const { return m_importArn; }
     inline bool ImportArnHasBeenSet() const { return m_importArnHasBeenSet; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) associated with the table you're importing
-     * to. </p>
-     */
-    inline void SetImportArn(const Aws::String& value) { m_importArnHasBeenSet = true; m_importArn = value; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) associated with the table you're importing
-     * to. </p>
-     */
-    inline void SetImportArn(Aws::String&& value) { m_importArnHasBeenSet = true; m_importArn = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) associated with the table you're importing
-     * to. </p>
-     */
-    inline void SetImportArn(const char* value) { m_importArnHasBeenSet = true; m_importArn.assign(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) associated with the table you're importing
-     * to. </p>
-     */
-    inline DescribeImportRequest& WithImportArn(const Aws::String& value) { SetImportArn(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) associated with the table you're importing
-     * to. </p>
-     */
-    inline DescribeImportRequest& WithImportArn(Aws::String&& value) { SetImportArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) associated with the table you're importing
-     * to. </p>
-     */
-    inline DescribeImportRequest& WithImportArn(const char* value) { SetImportArn(value); return *this;}
-
+    template<typename ImportArnT = Aws::String>
+    void SetImportArn(ImportArnT&& value) { m_importArnHasBeenSet = true; m_importArn = std::forward<ImportArnT>(value); }
+    template<typename ImportArnT = Aws::String>
+    DescribeImportRequest& WithImportArn(ImportArnT&& value) { SetImportArn(std::forward<ImportArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_importArn;

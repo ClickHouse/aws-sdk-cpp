@@ -26,7 +26,7 @@ namespace Model
   class DeleteOutboundCrossClusterSearchConnectionRequest : public ElasticsearchServiceRequest
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API DeleteOutboundCrossClusterSearchConnectionRequest();
+    AWS_ELASTICSEARCHSERVICE_API DeleteOutboundCrossClusterSearchConnectionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,46 +37,17 @@ namespace Model
     AWS_ELASTICSEARCHSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The id of the outbound connection that you want to permanently delete.</p>
      */
-    inline const Aws::String& GetCrossClusterSearchConnectionId() const{ return m_crossClusterSearchConnectionId; }
-
-    /**
-     * <p>The id of the outbound connection that you want to permanently delete.</p>
-     */
+    inline const Aws::String& GetCrossClusterSearchConnectionId() const { return m_crossClusterSearchConnectionId; }
     inline bool CrossClusterSearchConnectionIdHasBeenSet() const { return m_crossClusterSearchConnectionIdHasBeenSet; }
-
-    /**
-     * <p>The id of the outbound connection that you want to permanently delete.</p>
-     */
-    inline void SetCrossClusterSearchConnectionId(const Aws::String& value) { m_crossClusterSearchConnectionIdHasBeenSet = true; m_crossClusterSearchConnectionId = value; }
-
-    /**
-     * <p>The id of the outbound connection that you want to permanently delete.</p>
-     */
-    inline void SetCrossClusterSearchConnectionId(Aws::String&& value) { m_crossClusterSearchConnectionIdHasBeenSet = true; m_crossClusterSearchConnectionId = std::move(value); }
-
-    /**
-     * <p>The id of the outbound connection that you want to permanently delete.</p>
-     */
-    inline void SetCrossClusterSearchConnectionId(const char* value) { m_crossClusterSearchConnectionIdHasBeenSet = true; m_crossClusterSearchConnectionId.assign(value); }
-
-    /**
-     * <p>The id of the outbound connection that you want to permanently delete.</p>
-     */
-    inline DeleteOutboundCrossClusterSearchConnectionRequest& WithCrossClusterSearchConnectionId(const Aws::String& value) { SetCrossClusterSearchConnectionId(value); return *this;}
-
-    /**
-     * <p>The id of the outbound connection that you want to permanently delete.</p>
-     */
-    inline DeleteOutboundCrossClusterSearchConnectionRequest& WithCrossClusterSearchConnectionId(Aws::String&& value) { SetCrossClusterSearchConnectionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The id of the outbound connection that you want to permanently delete.</p>
-     */
-    inline DeleteOutboundCrossClusterSearchConnectionRequest& WithCrossClusterSearchConnectionId(const char* value) { SetCrossClusterSearchConnectionId(value); return *this;}
-
+    template<typename CrossClusterSearchConnectionIdT = Aws::String>
+    void SetCrossClusterSearchConnectionId(CrossClusterSearchConnectionIdT&& value) { m_crossClusterSearchConnectionIdHasBeenSet = true; m_crossClusterSearchConnectionId = std::forward<CrossClusterSearchConnectionIdT>(value); }
+    template<typename CrossClusterSearchConnectionIdT = Aws::String>
+    DeleteOutboundCrossClusterSearchConnectionRequest& WithCrossClusterSearchConnectionId(CrossClusterSearchConnectionIdT&& value) { SetCrossClusterSearchConnectionId(std::forward<CrossClusterSearchConnectionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_crossClusterSearchConnectionId;

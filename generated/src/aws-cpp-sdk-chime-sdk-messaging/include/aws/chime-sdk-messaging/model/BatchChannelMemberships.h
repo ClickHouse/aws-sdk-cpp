@@ -35,202 +35,77 @@ namespace Model
   class BatchChannelMemberships
   {
   public:
-    AWS_CHIMESDKMESSAGING_API BatchChannelMemberships();
+    AWS_CHIMESDKMESSAGING_API BatchChannelMemberships() = default;
     AWS_CHIMESDKMESSAGING_API BatchChannelMemberships(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMESSAGING_API BatchChannelMemberships& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMESSAGING_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the member who invited another member.</p>
      */
-    inline const Identity& GetInvitedBy() const{ return m_invitedBy; }
-
-    /**
-     * <p>The identifier of the member who invited another member.</p>
-     */
+    inline const Identity& GetInvitedBy() const { return m_invitedBy; }
     inline bool InvitedByHasBeenSet() const { return m_invitedByHasBeenSet; }
+    template<typename InvitedByT = Identity>
+    void SetInvitedBy(InvitedByT&& value) { m_invitedByHasBeenSet = true; m_invitedBy = std::forward<InvitedByT>(value); }
+    template<typename InvitedByT = Identity>
+    BatchChannelMemberships& WithInvitedBy(InvitedByT&& value) { SetInvitedBy(std::forward<InvitedByT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the member who invited another member.</p>
-     */
-    inline void SetInvitedBy(const Identity& value) { m_invitedByHasBeenSet = true; m_invitedBy = value; }
-
-    /**
-     * <p>The identifier of the member who invited another member.</p>
-     */
-    inline void SetInvitedBy(Identity&& value) { m_invitedByHasBeenSet = true; m_invitedBy = std::move(value); }
-
-    /**
-     * <p>The identifier of the member who invited another member.</p>
-     */
-    inline BatchChannelMemberships& WithInvitedBy(const Identity& value) { SetInvitedBy(value); return *this;}
-
-    /**
-     * <p>The identifier of the member who invited another member.</p>
-     */
-    inline BatchChannelMemberships& WithInvitedBy(Identity&& value) { SetInvitedBy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The membership types set for the channel members.</p>
      */
-    inline const ChannelMembershipType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The membership types set for the channel members.</p>
-     */
+    inline ChannelMembershipType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(ChannelMembershipType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline BatchChannelMemberships& WithType(ChannelMembershipType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The membership types set for the channel members.</p>
-     */
-    inline void SetType(const ChannelMembershipType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The membership types set for the channel members.</p>
-     */
-    inline void SetType(ChannelMembershipType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The membership types set for the channel members.</p>
-     */
-    inline BatchChannelMemberships& WithType(const ChannelMembershipType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The membership types set for the channel members.</p>
-     */
-    inline BatchChannelMemberships& WithType(ChannelMembershipType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The users successfully added to the request.</p>
      */
-    inline const Aws::Vector<Identity>& GetMembers() const{ return m_members; }
-
-    /**
-     * <p>The users successfully added to the request.</p>
-     */
+    inline const Aws::Vector<Identity>& GetMembers() const { return m_members; }
     inline bool MembersHasBeenSet() const { return m_membersHasBeenSet; }
+    template<typename MembersT = Aws::Vector<Identity>>
+    void SetMembers(MembersT&& value) { m_membersHasBeenSet = true; m_members = std::forward<MembersT>(value); }
+    template<typename MembersT = Aws::Vector<Identity>>
+    BatchChannelMemberships& WithMembers(MembersT&& value) { SetMembers(std::forward<MembersT>(value)); return *this;}
+    template<typename MembersT = Identity>
+    BatchChannelMemberships& AddMembers(MembersT&& value) { m_membersHasBeenSet = true; m_members.emplace_back(std::forward<MembersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The users successfully added to the request.</p>
-     */
-    inline void SetMembers(const Aws::Vector<Identity>& value) { m_membersHasBeenSet = true; m_members = value; }
-
-    /**
-     * <p>The users successfully added to the request.</p>
-     */
-    inline void SetMembers(Aws::Vector<Identity>&& value) { m_membersHasBeenSet = true; m_members = std::move(value); }
-
-    /**
-     * <p>The users successfully added to the request.</p>
-     */
-    inline BatchChannelMemberships& WithMembers(const Aws::Vector<Identity>& value) { SetMembers(value); return *this;}
-
-    /**
-     * <p>The users successfully added to the request.</p>
-     */
-    inline BatchChannelMemberships& WithMembers(Aws::Vector<Identity>&& value) { SetMembers(std::move(value)); return *this;}
-
-    /**
-     * <p>The users successfully added to the request.</p>
-     */
-    inline BatchChannelMemberships& AddMembers(const Identity& value) { m_membersHasBeenSet = true; m_members.push_back(value); return *this; }
-
-    /**
-     * <p>The users successfully added to the request.</p>
-     */
-    inline BatchChannelMemberships& AddMembers(Identity&& value) { m_membersHasBeenSet = true; m_members.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The ARN of the channel to which you're adding members.</p>
      */
-    inline const Aws::String& GetChannelArn() const{ return m_channelArn; }
-
-    /**
-     * <p>The ARN of the channel to which you're adding members.</p>
-     */
+    inline const Aws::String& GetChannelArn() const { return m_channelArn; }
     inline bool ChannelArnHasBeenSet() const { return m_channelArnHasBeenSet; }
+    template<typename ChannelArnT = Aws::String>
+    void SetChannelArn(ChannelArnT&& value) { m_channelArnHasBeenSet = true; m_channelArn = std::forward<ChannelArnT>(value); }
+    template<typename ChannelArnT = Aws::String>
+    BatchChannelMemberships& WithChannelArn(ChannelArnT&& value) { SetChannelArn(std::forward<ChannelArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the channel to which you're adding members.</p>
-     */
-    inline void SetChannelArn(const Aws::String& value) { m_channelArnHasBeenSet = true; m_channelArn = value; }
-
-    /**
-     * <p>The ARN of the channel to which you're adding members.</p>
-     */
-    inline void SetChannelArn(Aws::String&& value) { m_channelArnHasBeenSet = true; m_channelArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the channel to which you're adding members.</p>
-     */
-    inline void SetChannelArn(const char* value) { m_channelArnHasBeenSet = true; m_channelArn.assign(value); }
-
-    /**
-     * <p>The ARN of the channel to which you're adding members.</p>
-     */
-    inline BatchChannelMemberships& WithChannelArn(const Aws::String& value) { SetChannelArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the channel to which you're adding members.</p>
-     */
-    inline BatchChannelMemberships& WithChannelArn(Aws::String&& value) { SetChannelArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the channel to which you're adding members.</p>
-     */
-    inline BatchChannelMemberships& WithChannelArn(const char* value) { SetChannelArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the SubChannel.</p>
      */
-    inline const Aws::String& GetSubChannelId() const{ return m_subChannelId; }
-
-    /**
-     * <p>The ID of the SubChannel.</p>
-     */
+    inline const Aws::String& GetSubChannelId() const { return m_subChannelId; }
     inline bool SubChannelIdHasBeenSet() const { return m_subChannelIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the SubChannel.</p>
-     */
-    inline void SetSubChannelId(const Aws::String& value) { m_subChannelIdHasBeenSet = true; m_subChannelId = value; }
-
-    /**
-     * <p>The ID of the SubChannel.</p>
-     */
-    inline void SetSubChannelId(Aws::String&& value) { m_subChannelIdHasBeenSet = true; m_subChannelId = std::move(value); }
-
-    /**
-     * <p>The ID of the SubChannel.</p>
-     */
-    inline void SetSubChannelId(const char* value) { m_subChannelIdHasBeenSet = true; m_subChannelId.assign(value); }
-
-    /**
-     * <p>The ID of the SubChannel.</p>
-     */
-    inline BatchChannelMemberships& WithSubChannelId(const Aws::String& value) { SetSubChannelId(value); return *this;}
-
-    /**
-     * <p>The ID of the SubChannel.</p>
-     */
-    inline BatchChannelMemberships& WithSubChannelId(Aws::String&& value) { SetSubChannelId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the SubChannel.</p>
-     */
-    inline BatchChannelMemberships& WithSubChannelId(const char* value) { SetSubChannelId(value); return *this;}
-
+    template<typename SubChannelIdT = Aws::String>
+    void SetSubChannelId(SubChannelIdT&& value) { m_subChannelIdHasBeenSet = true; m_subChannelId = std::forward<SubChannelIdT>(value); }
+    template<typename SubChannelIdT = Aws::String>
+    BatchChannelMemberships& WithSubChannelId(SubChannelIdT&& value) { SetSubChannelId(std::forward<SubChannelIdT>(value)); return *this;}
+    ///@}
   private:
 
     Identity m_invitedBy;
     bool m_invitedByHasBeenSet = false;
 
-    ChannelMembershipType m_type;
+    ChannelMembershipType m_type{ChannelMembershipType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::Vector<Identity> m_members;

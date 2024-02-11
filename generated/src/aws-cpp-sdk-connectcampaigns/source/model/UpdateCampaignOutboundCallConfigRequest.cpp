@@ -12,23 +12,9 @@ using namespace Aws::ConnectCampaigns::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateCampaignOutboundCallConfigRequest::UpdateCampaignOutboundCallConfigRequest() : 
-    m_answerMachineDetectionConfigHasBeenSet(false),
-    m_connectContactFlowIdHasBeenSet(false),
-    m_connectSourcePhoneNumberHasBeenSet(false),
-    m_idHasBeenSet(false)
-{
-}
-
 Aws::String UpdateCampaignOutboundCallConfigRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_answerMachineDetectionConfigHasBeenSet)
-  {
-   payload.WithObject("answerMachineDetectionConfig", m_answerMachineDetectionConfig.Jsonize());
-
-  }
 
   if(m_connectContactFlowIdHasBeenSet)
   {
@@ -39,6 +25,12 @@ Aws::String UpdateCampaignOutboundCallConfigRequest::SerializePayload() const
   if(m_connectSourcePhoneNumberHasBeenSet)
   {
    payload.WithString("connectSourcePhoneNumber", m_connectSourcePhoneNumber);
+
+  }
+
+  if(m_answerMachineDetectionConfigHasBeenSet)
+  {
+   payload.WithObject("answerMachineDetectionConfig", m_answerMachineDetectionConfig.Jsonize());
 
   }
 

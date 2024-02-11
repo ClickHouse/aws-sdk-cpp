@@ -33,108 +33,43 @@ namespace Model
   class ThrottlingException
   {
   public:
-    AWS_SSMINCIDENTS_API ThrottlingException();
+    AWS_SSMINCIDENTS_API ThrottlingException() = default;
     AWS_SSMINCIDENTS_API ThrottlingException(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API ThrottlingException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    ThrottlingException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    
-    inline ThrottlingException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    
-    inline ThrottlingException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    
-    inline ThrottlingException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Originating quota code</p>
      */
-    inline const Aws::String& GetQuotaCode() const{ return m_quotaCode; }
-
-    /**
-     * <p>Originating quota code</p>
-     */
+    inline const Aws::String& GetQuotaCode() const { return m_quotaCode; }
     inline bool QuotaCodeHasBeenSet() const { return m_quotaCodeHasBeenSet; }
+    template<typename QuotaCodeT = Aws::String>
+    void SetQuotaCode(QuotaCodeT&& value) { m_quotaCodeHasBeenSet = true; m_quotaCode = std::forward<QuotaCodeT>(value); }
+    template<typename QuotaCodeT = Aws::String>
+    ThrottlingException& WithQuotaCode(QuotaCodeT&& value) { SetQuotaCode(std::forward<QuotaCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Originating quota code</p>
-     */
-    inline void SetQuotaCode(const Aws::String& value) { m_quotaCodeHasBeenSet = true; m_quotaCode = value; }
-
-    /**
-     * <p>Originating quota code</p>
-     */
-    inline void SetQuotaCode(Aws::String&& value) { m_quotaCodeHasBeenSet = true; m_quotaCode = std::move(value); }
-
-    /**
-     * <p>Originating quota code</p>
-     */
-    inline void SetQuotaCode(const char* value) { m_quotaCodeHasBeenSet = true; m_quotaCode.assign(value); }
-
-    /**
-     * <p>Originating quota code</p>
-     */
-    inline ThrottlingException& WithQuotaCode(const Aws::String& value) { SetQuotaCode(value); return *this;}
-
-    /**
-     * <p>Originating quota code</p>
-     */
-    inline ThrottlingException& WithQuotaCode(Aws::String&& value) { SetQuotaCode(std::move(value)); return *this;}
-
-    /**
-     * <p>Originating quota code</p>
-     */
-    inline ThrottlingException& WithQuotaCode(const char* value) { SetQuotaCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Originating service code</p>
      */
-    inline const ServiceCode& GetServiceCode() const{ return m_serviceCode; }
-
-    /**
-     * <p>Originating service code</p>
-     */
+    inline ServiceCode GetServiceCode() const { return m_serviceCode; }
     inline bool ServiceCodeHasBeenSet() const { return m_serviceCodeHasBeenSet; }
-
-    /**
-     * <p>Originating service code</p>
-     */
-    inline void SetServiceCode(const ServiceCode& value) { m_serviceCodeHasBeenSet = true; m_serviceCode = value; }
-
-    /**
-     * <p>Originating service code</p>
-     */
-    inline void SetServiceCode(ServiceCode&& value) { m_serviceCodeHasBeenSet = true; m_serviceCode = std::move(value); }
-
-    /**
-     * <p>Originating service code</p>
-     */
-    inline ThrottlingException& WithServiceCode(const ServiceCode& value) { SetServiceCode(value); return *this;}
-
-    /**
-     * <p>Originating service code</p>
-     */
-    inline ThrottlingException& WithServiceCode(ServiceCode&& value) { SetServiceCode(std::move(value)); return *this;}
-
+    inline void SetServiceCode(ServiceCode value) { m_serviceCodeHasBeenSet = true; m_serviceCode = value; }
+    inline ThrottlingException& WithServiceCode(ServiceCode value) { SetServiceCode(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_message;
@@ -143,7 +78,7 @@ namespace Model
     Aws::String m_quotaCode;
     bool m_quotaCodeHasBeenSet = false;
 
-    ServiceCode m_serviceCode;
+    ServiceCode m_serviceCode{ServiceCode::NOT_SET};
     bool m_serviceCodeHasBeenSet = false;
   };
 

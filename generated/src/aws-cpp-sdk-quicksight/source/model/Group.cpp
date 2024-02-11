@@ -18,19 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-Group::Group() : 
-    m_arnHasBeenSet(false),
-    m_groupNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_principalIdHasBeenSet(false)
-{
-}
-
-Group::Group(JsonView jsonValue) : 
-    m_arnHasBeenSet(false),
-    m_groupNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_principalIdHasBeenSet(false)
+Group::Group(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ Group& Group::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("GroupName"))
   {
     m_groupName = jsonValue.GetString("GroupName");
-
     m_groupNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PrincipalId"))
   {
     m_principalId = jsonValue.GetString("PrincipalId");
-
     m_principalIdHasBeenSet = true;
   }
-
   return *this;
 }
 

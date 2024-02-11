@@ -20,15 +20,7 @@ namespace ElasticLoadBalancingv2
 namespace Model
 {
 
-HttpHeaderConditionConfig::HttpHeaderConditionConfig() : 
-    m_httpHeaderNameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-HttpHeaderConditionConfig::HttpHeaderConditionConfig(const XmlNode& xmlNode) : 
-    m_httpHeaderNameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+HttpHeaderConditionConfig::HttpHeaderConditionConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ HttpHeaderConditionConfig& HttpHeaderConditionConfig::operator =(const XmlNode& 
     if(!valuesNode.IsNull())
     {
       XmlNode valuesMember = valuesNode.FirstChild("member");
+      m_valuesHasBeenSet = !valuesMember.IsNull();
       while(!valuesMember.IsNull())
       {
         m_values.push_back(valuesMember.GetText());

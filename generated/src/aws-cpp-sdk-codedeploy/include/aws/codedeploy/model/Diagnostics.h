@@ -33,12 +33,13 @@ namespace Model
   class Diagnostics
   {
   public:
-    AWS_CODEDEPLOY_API Diagnostics();
+    AWS_CODEDEPLOY_API Diagnostics() = default;
     AWS_CODEDEPLOY_API Diagnostics(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API Diagnostics& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The associated error code:</p> <ul> <li> <p>Success: The specified script
      * ran.</p> </li> <li> <p>ScriptMissing: The specified script was not found in the
@@ -49,202 +50,51 @@ namespace Model
      * <li> <p>UnknownError: The specified script did not run for an unknown
      * reason.</p> </li> </ul>
      */
-    inline const LifecycleErrorCode& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p>The associated error code:</p> <ul> <li> <p>Success: The specified script
-     * ran.</p> </li> <li> <p>ScriptMissing: The specified script was not found in the
-     * specified location.</p> </li> <li> <p>ScriptNotExecutable: The specified script
-     * is not a recognized executable file type.</p> </li> <li> <p>ScriptTimedOut: The
-     * specified script did not finish running in the specified time period.</p> </li>
-     * <li> <p>ScriptFailed: The specified script failed to run as expected.</p> </li>
-     * <li> <p>UnknownError: The specified script did not run for an unknown
-     * reason.</p> </li> </ul>
-     */
+    inline LifecycleErrorCode GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
+    inline void SetErrorCode(LifecycleErrorCode value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
+    inline Diagnostics& WithErrorCode(LifecycleErrorCode value) { SetErrorCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The associated error code:</p> <ul> <li> <p>Success: The specified script
-     * ran.</p> </li> <li> <p>ScriptMissing: The specified script was not found in the
-     * specified location.</p> </li> <li> <p>ScriptNotExecutable: The specified script
-     * is not a recognized executable file type.</p> </li> <li> <p>ScriptTimedOut: The
-     * specified script did not finish running in the specified time period.</p> </li>
-     * <li> <p>ScriptFailed: The specified script failed to run as expected.</p> </li>
-     * <li> <p>UnknownError: The specified script did not run for an unknown
-     * reason.</p> </li> </ul>
-     */
-    inline void SetErrorCode(const LifecycleErrorCode& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p>The associated error code:</p> <ul> <li> <p>Success: The specified script
-     * ran.</p> </li> <li> <p>ScriptMissing: The specified script was not found in the
-     * specified location.</p> </li> <li> <p>ScriptNotExecutable: The specified script
-     * is not a recognized executable file type.</p> </li> <li> <p>ScriptTimedOut: The
-     * specified script did not finish running in the specified time period.</p> </li>
-     * <li> <p>ScriptFailed: The specified script failed to run as expected.</p> </li>
-     * <li> <p>UnknownError: The specified script did not run for an unknown
-     * reason.</p> </li> </ul>
-     */
-    inline void SetErrorCode(LifecycleErrorCode&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * <p>The associated error code:</p> <ul> <li> <p>Success: The specified script
-     * ran.</p> </li> <li> <p>ScriptMissing: The specified script was not found in the
-     * specified location.</p> </li> <li> <p>ScriptNotExecutable: The specified script
-     * is not a recognized executable file type.</p> </li> <li> <p>ScriptTimedOut: The
-     * specified script did not finish running in the specified time period.</p> </li>
-     * <li> <p>ScriptFailed: The specified script failed to run as expected.</p> </li>
-     * <li> <p>UnknownError: The specified script did not run for an unknown
-     * reason.</p> </li> </ul>
-     */
-    inline Diagnostics& WithErrorCode(const LifecycleErrorCode& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p>The associated error code:</p> <ul> <li> <p>Success: The specified script
-     * ran.</p> </li> <li> <p>ScriptMissing: The specified script was not found in the
-     * specified location.</p> </li> <li> <p>ScriptNotExecutable: The specified script
-     * is not a recognized executable file type.</p> </li> <li> <p>ScriptTimedOut: The
-     * specified script did not finish running in the specified time period.</p> </li>
-     * <li> <p>ScriptFailed: The specified script failed to run as expected.</p> </li>
-     * <li> <p>UnknownError: The specified script did not run for an unknown
-     * reason.</p> </li> </ul>
-     */
-    inline Diagnostics& WithErrorCode(LifecycleErrorCode&& value) { SetErrorCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the script.</p>
      */
-    inline const Aws::String& GetScriptName() const{ return m_scriptName; }
-
-    /**
-     * <p>The name of the script.</p>
-     */
+    inline const Aws::String& GetScriptName() const { return m_scriptName; }
     inline bool ScriptNameHasBeenSet() const { return m_scriptNameHasBeenSet; }
+    template<typename ScriptNameT = Aws::String>
+    void SetScriptName(ScriptNameT&& value) { m_scriptNameHasBeenSet = true; m_scriptName = std::forward<ScriptNameT>(value); }
+    template<typename ScriptNameT = Aws::String>
+    Diagnostics& WithScriptName(ScriptNameT&& value) { SetScriptName(std::forward<ScriptNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the script.</p>
-     */
-    inline void SetScriptName(const Aws::String& value) { m_scriptNameHasBeenSet = true; m_scriptName = value; }
-
-    /**
-     * <p>The name of the script.</p>
-     */
-    inline void SetScriptName(Aws::String&& value) { m_scriptNameHasBeenSet = true; m_scriptName = std::move(value); }
-
-    /**
-     * <p>The name of the script.</p>
-     */
-    inline void SetScriptName(const char* value) { m_scriptNameHasBeenSet = true; m_scriptName.assign(value); }
-
-    /**
-     * <p>The name of the script.</p>
-     */
-    inline Diagnostics& WithScriptName(const Aws::String& value) { SetScriptName(value); return *this;}
-
-    /**
-     * <p>The name of the script.</p>
-     */
-    inline Diagnostics& WithScriptName(Aws::String&& value) { SetScriptName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the script.</p>
-     */
-    inline Diagnostics& WithScriptName(const char* value) { SetScriptName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The message associated with the error.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The message associated with the error.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    Diagnostics& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The message associated with the error.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The message associated with the error.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The message associated with the error.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The message associated with the error.</p>
-     */
-    inline Diagnostics& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The message associated with the error.</p>
-     */
-    inline Diagnostics& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The message associated with the error.</p>
-     */
-    inline Diagnostics& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The last portion of the diagnostic log.</p> <p>If available, CodeDeploy
      * returns up to the last 4 KB of the diagnostic log.</p>
      */
-    inline const Aws::String& GetLogTail() const{ return m_logTail; }
-
-    /**
-     * <p>The last portion of the diagnostic log.</p> <p>If available, CodeDeploy
-     * returns up to the last 4 KB of the diagnostic log.</p>
-     */
+    inline const Aws::String& GetLogTail() const { return m_logTail; }
     inline bool LogTailHasBeenSet() const { return m_logTailHasBeenSet; }
-
-    /**
-     * <p>The last portion of the diagnostic log.</p> <p>If available, CodeDeploy
-     * returns up to the last 4 KB of the diagnostic log.</p>
-     */
-    inline void SetLogTail(const Aws::String& value) { m_logTailHasBeenSet = true; m_logTail = value; }
-
-    /**
-     * <p>The last portion of the diagnostic log.</p> <p>If available, CodeDeploy
-     * returns up to the last 4 KB of the diagnostic log.</p>
-     */
-    inline void SetLogTail(Aws::String&& value) { m_logTailHasBeenSet = true; m_logTail = std::move(value); }
-
-    /**
-     * <p>The last portion of the diagnostic log.</p> <p>If available, CodeDeploy
-     * returns up to the last 4 KB of the diagnostic log.</p>
-     */
-    inline void SetLogTail(const char* value) { m_logTailHasBeenSet = true; m_logTail.assign(value); }
-
-    /**
-     * <p>The last portion of the diagnostic log.</p> <p>If available, CodeDeploy
-     * returns up to the last 4 KB of the diagnostic log.</p>
-     */
-    inline Diagnostics& WithLogTail(const Aws::String& value) { SetLogTail(value); return *this;}
-
-    /**
-     * <p>The last portion of the diagnostic log.</p> <p>If available, CodeDeploy
-     * returns up to the last 4 KB of the diagnostic log.</p>
-     */
-    inline Diagnostics& WithLogTail(Aws::String&& value) { SetLogTail(std::move(value)); return *this;}
-
-    /**
-     * <p>The last portion of the diagnostic log.</p> <p>If available, CodeDeploy
-     * returns up to the last 4 KB of the diagnostic log.</p>
-     */
-    inline Diagnostics& WithLogTail(const char* value) { SetLogTail(value); return *this;}
-
+    template<typename LogTailT = Aws::String>
+    void SetLogTail(LogTailT&& value) { m_logTailHasBeenSet = true; m_logTail = std::forward<LogTailT>(value); }
+    template<typename LogTailT = Aws::String>
+    Diagnostics& WithLogTail(LogTailT&& value) { SetLogTail(std::forward<LogTailT>(value)); return *this;}
+    ///@}
   private:
 
-    LifecycleErrorCode m_errorCode;
+    LifecycleErrorCode m_errorCode{LifecycleErrorCode::NOT_SET};
     bool m_errorCodeHasBeenSet = false;
 
     Aws::String m_scriptName;

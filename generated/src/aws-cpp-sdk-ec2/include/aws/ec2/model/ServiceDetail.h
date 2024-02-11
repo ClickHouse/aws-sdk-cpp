@@ -38,7 +38,7 @@ namespace Model
   class ServiceDetail
   {
   public:
-    AWS_EC2_API ServiceDetail();
+    AWS_EC2_API ServiceDetail() = default;
     AWS_EC2_API ServiceDetail(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API ServiceDetail& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -46,570 +46,220 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The name of the service.</p>
      */
-    inline const Aws::String& GetServiceName() const{ return m_serviceName; }
-
-    /**
-     * <p>The name of the service.</p>
-     */
+    inline const Aws::String& GetServiceName() const { return m_serviceName; }
     inline bool ServiceNameHasBeenSet() const { return m_serviceNameHasBeenSet; }
+    template<typename ServiceNameT = Aws::String>
+    void SetServiceName(ServiceNameT&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::forward<ServiceNameT>(value); }
+    template<typename ServiceNameT = Aws::String>
+    ServiceDetail& WithServiceName(ServiceNameT&& value) { SetServiceName(std::forward<ServiceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the service.</p>
-     */
-    inline void SetServiceName(const Aws::String& value) { m_serviceNameHasBeenSet = true; m_serviceName = value; }
-
-    /**
-     * <p>The name of the service.</p>
-     */
-    inline void SetServiceName(Aws::String&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::move(value); }
-
-    /**
-     * <p>The name of the service.</p>
-     */
-    inline void SetServiceName(const char* value) { m_serviceNameHasBeenSet = true; m_serviceName.assign(value); }
-
-    /**
-     * <p>The name of the service.</p>
-     */
-    inline ServiceDetail& WithServiceName(const Aws::String& value) { SetServiceName(value); return *this;}
-
-    /**
-     * <p>The name of the service.</p>
-     */
-    inline ServiceDetail& WithServiceName(Aws::String&& value) { SetServiceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the service.</p>
-     */
-    inline ServiceDetail& WithServiceName(const char* value) { SetServiceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the endpoint service.</p>
      */
-    inline const Aws::String& GetServiceId() const{ return m_serviceId; }
-
-    /**
-     * <p>The ID of the endpoint service.</p>
-     */
+    inline const Aws::String& GetServiceId() const { return m_serviceId; }
     inline bool ServiceIdHasBeenSet() const { return m_serviceIdHasBeenSet; }
+    template<typename ServiceIdT = Aws::String>
+    void SetServiceId(ServiceIdT&& value) { m_serviceIdHasBeenSet = true; m_serviceId = std::forward<ServiceIdT>(value); }
+    template<typename ServiceIdT = Aws::String>
+    ServiceDetail& WithServiceId(ServiceIdT&& value) { SetServiceId(std::forward<ServiceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the endpoint service.</p>
-     */
-    inline void SetServiceId(const Aws::String& value) { m_serviceIdHasBeenSet = true; m_serviceId = value; }
-
-    /**
-     * <p>The ID of the endpoint service.</p>
-     */
-    inline void SetServiceId(Aws::String&& value) { m_serviceIdHasBeenSet = true; m_serviceId = std::move(value); }
-
-    /**
-     * <p>The ID of the endpoint service.</p>
-     */
-    inline void SetServiceId(const char* value) { m_serviceIdHasBeenSet = true; m_serviceId.assign(value); }
-
-    /**
-     * <p>The ID of the endpoint service.</p>
-     */
-    inline ServiceDetail& WithServiceId(const Aws::String& value) { SetServiceId(value); return *this;}
-
-    /**
-     * <p>The ID of the endpoint service.</p>
-     */
-    inline ServiceDetail& WithServiceId(Aws::String&& value) { SetServiceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the endpoint service.</p>
-     */
-    inline ServiceDetail& WithServiceId(const char* value) { SetServiceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of service.</p>
      */
-    inline const Aws::Vector<ServiceTypeDetail>& GetServiceType() const{ return m_serviceType; }
-
-    /**
-     * <p>The type of service.</p>
-     */
+    inline const Aws::Vector<ServiceTypeDetail>& GetServiceType() const { return m_serviceType; }
     inline bool ServiceTypeHasBeenSet() const { return m_serviceTypeHasBeenSet; }
+    template<typename ServiceTypeT = Aws::Vector<ServiceTypeDetail>>
+    void SetServiceType(ServiceTypeT&& value) { m_serviceTypeHasBeenSet = true; m_serviceType = std::forward<ServiceTypeT>(value); }
+    template<typename ServiceTypeT = Aws::Vector<ServiceTypeDetail>>
+    ServiceDetail& WithServiceType(ServiceTypeT&& value) { SetServiceType(std::forward<ServiceTypeT>(value)); return *this;}
+    template<typename ServiceTypeT = ServiceTypeDetail>
+    ServiceDetail& AddServiceType(ServiceTypeT&& value) { m_serviceTypeHasBeenSet = true; m_serviceType.emplace_back(std::forward<ServiceTypeT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The type of service.</p>
+     * <p>The Region where the service is hosted.</p>
      */
-    inline void SetServiceType(const Aws::Vector<ServiceTypeDetail>& value) { m_serviceTypeHasBeenSet = true; m_serviceType = value; }
+    inline const Aws::String& GetServiceRegion() const { return m_serviceRegion; }
+    inline bool ServiceRegionHasBeenSet() const { return m_serviceRegionHasBeenSet; }
+    template<typename ServiceRegionT = Aws::String>
+    void SetServiceRegion(ServiceRegionT&& value) { m_serviceRegionHasBeenSet = true; m_serviceRegion = std::forward<ServiceRegionT>(value); }
+    template<typename ServiceRegionT = Aws::String>
+    ServiceDetail& WithServiceRegion(ServiceRegionT&& value) { SetServiceRegion(std::forward<ServiceRegionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The type of service.</p>
+     * <p>The IDs of the Availability Zones in which the service is available.</p>
+     * <p>Either <code>AvailabilityZone</code> or <code>AvailabilityZoneId</code> can
+     * be specified, but not both</p>
      */
-    inline void SetServiceType(Aws::Vector<ServiceTypeDetail>&& value) { m_serviceTypeHasBeenSet = true; m_serviceType = std::move(value); }
+    inline const Aws::Vector<Aws::String>& GetAvailabilityZoneIds() const { return m_availabilityZoneIds; }
+    inline bool AvailabilityZoneIdsHasBeenSet() const { return m_availabilityZoneIdsHasBeenSet; }
+    template<typename AvailabilityZoneIdsT = Aws::Vector<Aws::String>>
+    void SetAvailabilityZoneIds(AvailabilityZoneIdsT&& value) { m_availabilityZoneIdsHasBeenSet = true; m_availabilityZoneIds = std::forward<AvailabilityZoneIdsT>(value); }
+    template<typename AvailabilityZoneIdsT = Aws::Vector<Aws::String>>
+    ServiceDetail& WithAvailabilityZoneIds(AvailabilityZoneIdsT&& value) { SetAvailabilityZoneIds(std::forward<AvailabilityZoneIdsT>(value)); return *this;}
+    template<typename AvailabilityZoneIdsT = Aws::String>
+    ServiceDetail& AddAvailabilityZoneIds(AvailabilityZoneIdsT&& value) { m_availabilityZoneIdsHasBeenSet = true; m_availabilityZoneIds.emplace_back(std::forward<AvailabilityZoneIdsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The type of service.</p>
+     * <p>The Availability Zones in which the service is available.</p> <p>Either
+     * <code>AvailabilityZone</code> or <code>AvailabilityZoneId</code> can be
+     * specified, but not both</p>
      */
-    inline ServiceDetail& WithServiceType(const Aws::Vector<ServiceTypeDetail>& value) { SetServiceType(value); return *this;}
-
-    /**
-     * <p>The type of service.</p>
-     */
-    inline ServiceDetail& WithServiceType(Aws::Vector<ServiceTypeDetail>&& value) { SetServiceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of service.</p>
-     */
-    inline ServiceDetail& AddServiceType(const ServiceTypeDetail& value) { m_serviceTypeHasBeenSet = true; m_serviceType.push_back(value); return *this; }
-
-    /**
-     * <p>The type of service.</p>
-     */
-    inline ServiceDetail& AddServiceType(ServiceTypeDetail&& value) { m_serviceTypeHasBeenSet = true; m_serviceType.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>The Availability Zones in which the service is available.</p>
-     */
-    inline const Aws::Vector<Aws::String>& GetAvailabilityZones() const{ return m_availabilityZones; }
-
-    /**
-     * <p>The Availability Zones in which the service is available.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAvailabilityZones() const { return m_availabilityZones; }
     inline bool AvailabilityZonesHasBeenSet() const { return m_availabilityZonesHasBeenSet; }
+    template<typename AvailabilityZonesT = Aws::Vector<Aws::String>>
+    void SetAvailabilityZones(AvailabilityZonesT&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = std::forward<AvailabilityZonesT>(value); }
+    template<typename AvailabilityZonesT = Aws::Vector<Aws::String>>
+    ServiceDetail& WithAvailabilityZones(AvailabilityZonesT&& value) { SetAvailabilityZones(std::forward<AvailabilityZonesT>(value)); return *this;}
+    template<typename AvailabilityZonesT = Aws::String>
+    ServiceDetail& AddAvailabilityZones(AvailabilityZonesT&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.emplace_back(std::forward<AvailabilityZonesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The Availability Zones in which the service is available.</p>
-     */
-    inline void SetAvailabilityZones(const Aws::Vector<Aws::String>& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = value; }
-
-    /**
-     * <p>The Availability Zones in which the service is available.</p>
-     */
-    inline void SetAvailabilityZones(Aws::Vector<Aws::String>&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = std::move(value); }
-
-    /**
-     * <p>The Availability Zones in which the service is available.</p>
-     */
-    inline ServiceDetail& WithAvailabilityZones(const Aws::Vector<Aws::String>& value) { SetAvailabilityZones(value); return *this;}
-
-    /**
-     * <p>The Availability Zones in which the service is available.</p>
-     */
-    inline ServiceDetail& WithAvailabilityZones(Aws::Vector<Aws::String>&& value) { SetAvailabilityZones(std::move(value)); return *this;}
-
-    /**
-     * <p>The Availability Zones in which the service is available.</p>
-     */
-    inline ServiceDetail& AddAvailabilityZones(const Aws::String& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(value); return *this; }
-
-    /**
-     * <p>The Availability Zones in which the service is available.</p>
-     */
-    inline ServiceDetail& AddAvailabilityZones(Aws::String&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The Availability Zones in which the service is available.</p>
-     */
-    inline ServiceDetail& AddAvailabilityZones(const char* value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services account ID of the service owner.</p>
      */
-    inline const Aws::String& GetOwner() const{ return m_owner; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the service owner.</p>
-     */
+    inline const Aws::String& GetOwner() const { return m_owner; }
     inline bool OwnerHasBeenSet() const { return m_ownerHasBeenSet; }
+    template<typename OwnerT = Aws::String>
+    void SetOwner(OwnerT&& value) { m_ownerHasBeenSet = true; m_owner = std::forward<OwnerT>(value); }
+    template<typename OwnerT = Aws::String>
+    ServiceDetail& WithOwner(OwnerT&& value) { SetOwner(std::forward<OwnerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID of the service owner.</p>
-     */
-    inline void SetOwner(const Aws::String& value) { m_ownerHasBeenSet = true; m_owner = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the service owner.</p>
-     */
-    inline void SetOwner(Aws::String&& value) { m_ownerHasBeenSet = true; m_owner = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the service owner.</p>
-     */
-    inline void SetOwner(const char* value) { m_ownerHasBeenSet = true; m_owner.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the service owner.</p>
-     */
-    inline ServiceDetail& WithOwner(const Aws::String& value) { SetOwner(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the service owner.</p>
-     */
-    inline ServiceDetail& WithOwner(Aws::String&& value) { SetOwner(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the service owner.</p>
-     */
-    inline ServiceDetail& WithOwner(const char* value) { SetOwner(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The DNS names for the service.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetBaseEndpointDnsNames() const{ return m_baseEndpointDnsNames; }
-
-    /**
-     * <p>The DNS names for the service.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetBaseEndpointDnsNames() const { return m_baseEndpointDnsNames; }
     inline bool BaseEndpointDnsNamesHasBeenSet() const { return m_baseEndpointDnsNamesHasBeenSet; }
+    template<typename BaseEndpointDnsNamesT = Aws::Vector<Aws::String>>
+    void SetBaseEndpointDnsNames(BaseEndpointDnsNamesT&& value) { m_baseEndpointDnsNamesHasBeenSet = true; m_baseEndpointDnsNames = std::forward<BaseEndpointDnsNamesT>(value); }
+    template<typename BaseEndpointDnsNamesT = Aws::Vector<Aws::String>>
+    ServiceDetail& WithBaseEndpointDnsNames(BaseEndpointDnsNamesT&& value) { SetBaseEndpointDnsNames(std::forward<BaseEndpointDnsNamesT>(value)); return *this;}
+    template<typename BaseEndpointDnsNamesT = Aws::String>
+    ServiceDetail& AddBaseEndpointDnsNames(BaseEndpointDnsNamesT&& value) { m_baseEndpointDnsNamesHasBeenSet = true; m_baseEndpointDnsNames.emplace_back(std::forward<BaseEndpointDnsNamesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The DNS names for the service.</p>
-     */
-    inline void SetBaseEndpointDnsNames(const Aws::Vector<Aws::String>& value) { m_baseEndpointDnsNamesHasBeenSet = true; m_baseEndpointDnsNames = value; }
-
-    /**
-     * <p>The DNS names for the service.</p>
-     */
-    inline void SetBaseEndpointDnsNames(Aws::Vector<Aws::String>&& value) { m_baseEndpointDnsNamesHasBeenSet = true; m_baseEndpointDnsNames = std::move(value); }
-
-    /**
-     * <p>The DNS names for the service.</p>
-     */
-    inline ServiceDetail& WithBaseEndpointDnsNames(const Aws::Vector<Aws::String>& value) { SetBaseEndpointDnsNames(value); return *this;}
-
-    /**
-     * <p>The DNS names for the service.</p>
-     */
-    inline ServiceDetail& WithBaseEndpointDnsNames(Aws::Vector<Aws::String>&& value) { SetBaseEndpointDnsNames(std::move(value)); return *this;}
-
-    /**
-     * <p>The DNS names for the service.</p>
-     */
-    inline ServiceDetail& AddBaseEndpointDnsNames(const Aws::String& value) { m_baseEndpointDnsNamesHasBeenSet = true; m_baseEndpointDnsNames.push_back(value); return *this; }
-
-    /**
-     * <p>The DNS names for the service.</p>
-     */
-    inline ServiceDetail& AddBaseEndpointDnsNames(Aws::String&& value) { m_baseEndpointDnsNamesHasBeenSet = true; m_baseEndpointDnsNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The DNS names for the service.</p>
-     */
-    inline ServiceDetail& AddBaseEndpointDnsNames(const char* value) { m_baseEndpointDnsNamesHasBeenSet = true; m_baseEndpointDnsNames.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The private DNS name for the service.</p>
      */
-    inline const Aws::String& GetPrivateDnsName() const{ return m_privateDnsName; }
-
-    /**
-     * <p>The private DNS name for the service.</p>
-     */
+    inline const Aws::String& GetPrivateDnsName() const { return m_privateDnsName; }
     inline bool PrivateDnsNameHasBeenSet() const { return m_privateDnsNameHasBeenSet; }
+    template<typename PrivateDnsNameT = Aws::String>
+    void SetPrivateDnsName(PrivateDnsNameT&& value) { m_privateDnsNameHasBeenSet = true; m_privateDnsName = std::forward<PrivateDnsNameT>(value); }
+    template<typename PrivateDnsNameT = Aws::String>
+    ServiceDetail& WithPrivateDnsName(PrivateDnsNameT&& value) { SetPrivateDnsName(std::forward<PrivateDnsNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The private DNS name for the service.</p>
-     */
-    inline void SetPrivateDnsName(const Aws::String& value) { m_privateDnsNameHasBeenSet = true; m_privateDnsName = value; }
-
-    /**
-     * <p>The private DNS name for the service.</p>
-     */
-    inline void SetPrivateDnsName(Aws::String&& value) { m_privateDnsNameHasBeenSet = true; m_privateDnsName = std::move(value); }
-
-    /**
-     * <p>The private DNS name for the service.</p>
-     */
-    inline void SetPrivateDnsName(const char* value) { m_privateDnsNameHasBeenSet = true; m_privateDnsName.assign(value); }
-
-    /**
-     * <p>The private DNS name for the service.</p>
-     */
-    inline ServiceDetail& WithPrivateDnsName(const Aws::String& value) { SetPrivateDnsName(value); return *this;}
-
-    /**
-     * <p>The private DNS name for the service.</p>
-     */
-    inline ServiceDetail& WithPrivateDnsName(Aws::String&& value) { SetPrivateDnsName(std::move(value)); return *this;}
-
-    /**
-     * <p>The private DNS name for the service.</p>
-     */
-    inline ServiceDetail& WithPrivateDnsName(const char* value) { SetPrivateDnsName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The private DNS names assigned to the VPC endpoint service.</p>
      */
-    inline const Aws::Vector<PrivateDnsDetails>& GetPrivateDnsNames() const{ return m_privateDnsNames; }
-
-    /**
-     * <p>The private DNS names assigned to the VPC endpoint service.</p>
-     */
+    inline const Aws::Vector<PrivateDnsDetails>& GetPrivateDnsNames() const { return m_privateDnsNames; }
     inline bool PrivateDnsNamesHasBeenSet() const { return m_privateDnsNamesHasBeenSet; }
+    template<typename PrivateDnsNamesT = Aws::Vector<PrivateDnsDetails>>
+    void SetPrivateDnsNames(PrivateDnsNamesT&& value) { m_privateDnsNamesHasBeenSet = true; m_privateDnsNames = std::forward<PrivateDnsNamesT>(value); }
+    template<typename PrivateDnsNamesT = Aws::Vector<PrivateDnsDetails>>
+    ServiceDetail& WithPrivateDnsNames(PrivateDnsNamesT&& value) { SetPrivateDnsNames(std::forward<PrivateDnsNamesT>(value)); return *this;}
+    template<typename PrivateDnsNamesT = PrivateDnsDetails>
+    ServiceDetail& AddPrivateDnsNames(PrivateDnsNamesT&& value) { m_privateDnsNamesHasBeenSet = true; m_privateDnsNames.emplace_back(std::forward<PrivateDnsNamesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The private DNS names assigned to the VPC endpoint service.</p>
-     */
-    inline void SetPrivateDnsNames(const Aws::Vector<PrivateDnsDetails>& value) { m_privateDnsNamesHasBeenSet = true; m_privateDnsNames = value; }
-
-    /**
-     * <p>The private DNS names assigned to the VPC endpoint service.</p>
-     */
-    inline void SetPrivateDnsNames(Aws::Vector<PrivateDnsDetails>&& value) { m_privateDnsNamesHasBeenSet = true; m_privateDnsNames = std::move(value); }
-
-    /**
-     * <p>The private DNS names assigned to the VPC endpoint service.</p>
-     */
-    inline ServiceDetail& WithPrivateDnsNames(const Aws::Vector<PrivateDnsDetails>& value) { SetPrivateDnsNames(value); return *this;}
-
-    /**
-     * <p>The private DNS names assigned to the VPC endpoint service.</p>
-     */
-    inline ServiceDetail& WithPrivateDnsNames(Aws::Vector<PrivateDnsDetails>&& value) { SetPrivateDnsNames(std::move(value)); return *this;}
-
-    /**
-     * <p>The private DNS names assigned to the VPC endpoint service.</p>
-     */
-    inline ServiceDetail& AddPrivateDnsNames(const PrivateDnsDetails& value) { m_privateDnsNamesHasBeenSet = true; m_privateDnsNames.push_back(value); return *this; }
-
-    /**
-     * <p>The private DNS names assigned to the VPC endpoint service.</p>
-     */
-    inline ServiceDetail& AddPrivateDnsNames(PrivateDnsDetails&& value) { m_privateDnsNamesHasBeenSet = true; m_privateDnsNames.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Indicates whether the service supports endpoint policies.</p>
      */
-    inline bool GetVpcEndpointPolicySupported() const{ return m_vpcEndpointPolicySupported; }
-
-    /**
-     * <p>Indicates whether the service supports endpoint policies.</p>
-     */
+    inline bool GetVpcEndpointPolicySupported() const { return m_vpcEndpointPolicySupported; }
     inline bool VpcEndpointPolicySupportedHasBeenSet() const { return m_vpcEndpointPolicySupportedHasBeenSet; }
-
-    /**
-     * <p>Indicates whether the service supports endpoint policies.</p>
-     */
     inline void SetVpcEndpointPolicySupported(bool value) { m_vpcEndpointPolicySupportedHasBeenSet = true; m_vpcEndpointPolicySupported = value; }
-
-    /**
-     * <p>Indicates whether the service supports endpoint policies.</p>
-     */
     inline ServiceDetail& WithVpcEndpointPolicySupported(bool value) { SetVpcEndpointPolicySupported(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Indicates whether VPC endpoint connection requests to the service must be
      * accepted by the service owner.</p>
      */
-    inline bool GetAcceptanceRequired() const{ return m_acceptanceRequired; }
-
-    /**
-     * <p>Indicates whether VPC endpoint connection requests to the service must be
-     * accepted by the service owner.</p>
-     */
+    inline bool GetAcceptanceRequired() const { return m_acceptanceRequired; }
     inline bool AcceptanceRequiredHasBeenSet() const { return m_acceptanceRequiredHasBeenSet; }
-
-    /**
-     * <p>Indicates whether VPC endpoint connection requests to the service must be
-     * accepted by the service owner.</p>
-     */
     inline void SetAcceptanceRequired(bool value) { m_acceptanceRequiredHasBeenSet = true; m_acceptanceRequired = value; }
-
-    /**
-     * <p>Indicates whether VPC endpoint connection requests to the service must be
-     * accepted by the service owner.</p>
-     */
     inline ServiceDetail& WithAcceptanceRequired(bool value) { SetAcceptanceRequired(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Indicates whether the service manages its VPC endpoints. Management of the
      * service VPC endpoints using the VPC endpoint API is restricted.</p>
      */
-    inline bool GetManagesVpcEndpoints() const{ return m_managesVpcEndpoints; }
-
-    /**
-     * <p>Indicates whether the service manages its VPC endpoints. Management of the
-     * service VPC endpoints using the VPC endpoint API is restricted.</p>
-     */
+    inline bool GetManagesVpcEndpoints() const { return m_managesVpcEndpoints; }
     inline bool ManagesVpcEndpointsHasBeenSet() const { return m_managesVpcEndpointsHasBeenSet; }
-
-    /**
-     * <p>Indicates whether the service manages its VPC endpoints. Management of the
-     * service VPC endpoints using the VPC endpoint API is restricted.</p>
-     */
     inline void SetManagesVpcEndpoints(bool value) { m_managesVpcEndpointsHasBeenSet = true; m_managesVpcEndpoints = value; }
-
-    /**
-     * <p>Indicates whether the service manages its VPC endpoints. Management of the
-     * service VPC endpoints using the VPC endpoint API is restricted.</p>
-     */
     inline ServiceDetail& WithManagesVpcEndpoints(bool value) { SetManagesVpcEndpoints(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The payer responsibility.</p>
      */
-    inline const PayerResponsibility& GetPayerResponsibility() const{ return m_payerResponsibility; }
-
-    /**
-     * <p>The payer responsibility.</p>
-     */
+    inline PayerResponsibility GetPayerResponsibility() const { return m_payerResponsibility; }
     inline bool PayerResponsibilityHasBeenSet() const { return m_payerResponsibilityHasBeenSet; }
+    inline void SetPayerResponsibility(PayerResponsibility value) { m_payerResponsibilityHasBeenSet = true; m_payerResponsibility = value; }
+    inline ServiceDetail& WithPayerResponsibility(PayerResponsibility value) { SetPayerResponsibility(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The payer responsibility.</p>
-     */
-    inline void SetPayerResponsibility(const PayerResponsibility& value) { m_payerResponsibilityHasBeenSet = true; m_payerResponsibility = value; }
-
-    /**
-     * <p>The payer responsibility.</p>
-     */
-    inline void SetPayerResponsibility(PayerResponsibility&& value) { m_payerResponsibilityHasBeenSet = true; m_payerResponsibility = std::move(value); }
-
-    /**
-     * <p>The payer responsibility.</p>
-     */
-    inline ServiceDetail& WithPayerResponsibility(const PayerResponsibility& value) { SetPayerResponsibility(value); return *this;}
-
-    /**
-     * <p>The payer responsibility.</p>
-     */
-    inline ServiceDetail& WithPayerResponsibility(PayerResponsibility&& value) { SetPayerResponsibility(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags assigned to the service.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags assigned to the service.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    ServiceDetail& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    ServiceDetail& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The tags assigned to the service.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags assigned to the service.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags assigned to the service.</p>
-     */
-    inline ServiceDetail& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags assigned to the service.</p>
-     */
-    inline ServiceDetail& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags assigned to the service.</p>
-     */
-    inline ServiceDetail& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The tags assigned to the service.</p>
-     */
-    inline ServiceDetail& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The verification state of the VPC endpoint service.</p> <p>Consumers of the
      * endpoint service cannot use the private name when the state is not
      * <code>verified</code>.</p>
      */
-    inline const DnsNameState& GetPrivateDnsNameVerificationState() const{ return m_privateDnsNameVerificationState; }
-
-    /**
-     * <p>The verification state of the VPC endpoint service.</p> <p>Consumers of the
-     * endpoint service cannot use the private name when the state is not
-     * <code>verified</code>.</p>
-     */
+    inline DnsNameState GetPrivateDnsNameVerificationState() const { return m_privateDnsNameVerificationState; }
     inline bool PrivateDnsNameVerificationStateHasBeenSet() const { return m_privateDnsNameVerificationStateHasBeenSet; }
+    inline void SetPrivateDnsNameVerificationState(DnsNameState value) { m_privateDnsNameVerificationStateHasBeenSet = true; m_privateDnsNameVerificationState = value; }
+    inline ServiceDetail& WithPrivateDnsNameVerificationState(DnsNameState value) { SetPrivateDnsNameVerificationState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The verification state of the VPC endpoint service.</p> <p>Consumers of the
-     * endpoint service cannot use the private name when the state is not
-     * <code>verified</code>.</p>
-     */
-    inline void SetPrivateDnsNameVerificationState(const DnsNameState& value) { m_privateDnsNameVerificationStateHasBeenSet = true; m_privateDnsNameVerificationState = value; }
-
-    /**
-     * <p>The verification state of the VPC endpoint service.</p> <p>Consumers of the
-     * endpoint service cannot use the private name when the state is not
-     * <code>verified</code>.</p>
-     */
-    inline void SetPrivateDnsNameVerificationState(DnsNameState&& value) { m_privateDnsNameVerificationStateHasBeenSet = true; m_privateDnsNameVerificationState = std::move(value); }
-
-    /**
-     * <p>The verification state of the VPC endpoint service.</p> <p>Consumers of the
-     * endpoint service cannot use the private name when the state is not
-     * <code>verified</code>.</p>
-     */
-    inline ServiceDetail& WithPrivateDnsNameVerificationState(const DnsNameState& value) { SetPrivateDnsNameVerificationState(value); return *this;}
-
-    /**
-     * <p>The verification state of the VPC endpoint service.</p> <p>Consumers of the
-     * endpoint service cannot use the private name when the state is not
-     * <code>verified</code>.</p>
-     */
-    inline ServiceDetail& WithPrivateDnsNameVerificationState(DnsNameState&& value) { SetPrivateDnsNameVerificationState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The supported IP address types.</p>
      */
-    inline const Aws::Vector<ServiceConnectivityType>& GetSupportedIpAddressTypes() const{ return m_supportedIpAddressTypes; }
-
-    /**
-     * <p>The supported IP address types.</p>
-     */
+    inline const Aws::Vector<ServiceConnectivityType>& GetSupportedIpAddressTypes() const { return m_supportedIpAddressTypes; }
     inline bool SupportedIpAddressTypesHasBeenSet() const { return m_supportedIpAddressTypesHasBeenSet; }
-
-    /**
-     * <p>The supported IP address types.</p>
-     */
-    inline void SetSupportedIpAddressTypes(const Aws::Vector<ServiceConnectivityType>& value) { m_supportedIpAddressTypesHasBeenSet = true; m_supportedIpAddressTypes = value; }
-
-    /**
-     * <p>The supported IP address types.</p>
-     */
-    inline void SetSupportedIpAddressTypes(Aws::Vector<ServiceConnectivityType>&& value) { m_supportedIpAddressTypesHasBeenSet = true; m_supportedIpAddressTypes = std::move(value); }
-
-    /**
-     * <p>The supported IP address types.</p>
-     */
-    inline ServiceDetail& WithSupportedIpAddressTypes(const Aws::Vector<ServiceConnectivityType>& value) { SetSupportedIpAddressTypes(value); return *this;}
-
-    /**
-     * <p>The supported IP address types.</p>
-     */
-    inline ServiceDetail& WithSupportedIpAddressTypes(Aws::Vector<ServiceConnectivityType>&& value) { SetSupportedIpAddressTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>The supported IP address types.</p>
-     */
-    inline ServiceDetail& AddSupportedIpAddressTypes(const ServiceConnectivityType& value) { m_supportedIpAddressTypesHasBeenSet = true; m_supportedIpAddressTypes.push_back(value); return *this; }
-
-    /**
-     * <p>The supported IP address types.</p>
-     */
-    inline ServiceDetail& AddSupportedIpAddressTypes(ServiceConnectivityType&& value) { m_supportedIpAddressTypesHasBeenSet = true; m_supportedIpAddressTypes.push_back(std::move(value)); return *this; }
-
+    template<typename SupportedIpAddressTypesT = Aws::Vector<ServiceConnectivityType>>
+    void SetSupportedIpAddressTypes(SupportedIpAddressTypesT&& value) { m_supportedIpAddressTypesHasBeenSet = true; m_supportedIpAddressTypes = std::forward<SupportedIpAddressTypesT>(value); }
+    template<typename SupportedIpAddressTypesT = Aws::Vector<ServiceConnectivityType>>
+    ServiceDetail& WithSupportedIpAddressTypes(SupportedIpAddressTypesT&& value) { SetSupportedIpAddressTypes(std::forward<SupportedIpAddressTypesT>(value)); return *this;}
+    inline ServiceDetail& AddSupportedIpAddressTypes(ServiceConnectivityType value) { m_supportedIpAddressTypesHasBeenSet = true; m_supportedIpAddressTypes.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::String m_serviceName;
@@ -620,6 +270,12 @@ namespace Model
 
     Aws::Vector<ServiceTypeDetail> m_serviceType;
     bool m_serviceTypeHasBeenSet = false;
+
+    Aws::String m_serviceRegion;
+    bool m_serviceRegionHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_availabilityZoneIds;
+    bool m_availabilityZoneIdsHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_availabilityZones;
     bool m_availabilityZonesHasBeenSet = false;
@@ -636,22 +292,22 @@ namespace Model
     Aws::Vector<PrivateDnsDetails> m_privateDnsNames;
     bool m_privateDnsNamesHasBeenSet = false;
 
-    bool m_vpcEndpointPolicySupported;
+    bool m_vpcEndpointPolicySupported{false};
     bool m_vpcEndpointPolicySupportedHasBeenSet = false;
 
-    bool m_acceptanceRequired;
+    bool m_acceptanceRequired{false};
     bool m_acceptanceRequiredHasBeenSet = false;
 
-    bool m_managesVpcEndpoints;
+    bool m_managesVpcEndpoints{false};
     bool m_managesVpcEndpointsHasBeenSet = false;
 
-    PayerResponsibility m_payerResponsibility;
+    PayerResponsibility m_payerResponsibility{PayerResponsibility::NOT_SET};
     bool m_payerResponsibilityHasBeenSet = false;
 
     Aws::Vector<Tag> m_tags;
     bool m_tagsHasBeenSet = false;
 
-    DnsNameState m_privateDnsNameVerificationState;
+    DnsNameState m_privateDnsNameVerificationState{DnsNameState::NOT_SET};
     bool m_privateDnsNameVerificationStateHasBeenSet = false;
 
     Aws::Vector<ServiceConnectivityType> m_supportedIpAddressTypes;

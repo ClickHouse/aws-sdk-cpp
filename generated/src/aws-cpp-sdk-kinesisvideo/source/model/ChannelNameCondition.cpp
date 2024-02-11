@@ -18,17 +18,7 @@ namespace KinesisVideo
 namespace Model
 {
 
-ChannelNameCondition::ChannelNameCondition() : 
-    m_comparisonOperator(ComparisonOperator::NOT_SET),
-    m_comparisonOperatorHasBeenSet(false),
-    m_comparisonValueHasBeenSet(false)
-{
-}
-
-ChannelNameCondition::ChannelNameCondition(JsonView jsonValue) : 
-    m_comparisonOperator(ComparisonOperator::NOT_SET),
-    m_comparisonOperatorHasBeenSet(false),
-    m_comparisonValueHasBeenSet(false)
+ChannelNameCondition::ChannelNameCondition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ChannelNameCondition& ChannelNameCondition::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ComparisonOperator"))
   {
     m_comparisonOperator = ComparisonOperatorMapper::GetComparisonOperatorForName(jsonValue.GetString("ComparisonOperator"));
-
     m_comparisonOperatorHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComparisonValue"))
   {
     m_comparisonValue = jsonValue.GetString("ComparisonValue");
-
     m_comparisonValueHasBeenSet = true;
   }
-
   return *this;
 }
 

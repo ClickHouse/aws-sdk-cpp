@@ -18,21 +18,7 @@ namespace ConfigService
 namespace Model
 {
 
-Source::Source() : 
-    m_owner(Owner::NOT_SET),
-    m_ownerHasBeenSet(false),
-    m_sourceIdentifierHasBeenSet(false),
-    m_sourceDetailsHasBeenSet(false),
-    m_customPolicyDetailsHasBeenSet(false)
-{
-}
-
-Source::Source(JsonView jsonValue) : 
-    m_owner(Owner::NOT_SET),
-    m_ownerHasBeenSet(false),
-    m_sourceIdentifierHasBeenSet(false),
-    m_sourceDetailsHasBeenSet(false),
-    m_customPolicyDetailsHasBeenSet(false)
+Source::Source(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ Source& Source::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Owner"))
   {
     m_owner = OwnerMapper::GetOwnerForName(jsonValue.GetString("Owner"));
-
     m_ownerHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourceIdentifier"))
   {
     m_sourceIdentifier = jsonValue.GetString("SourceIdentifier");
-
     m_sourceIdentifierHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourceDetails"))
   {
     Aws::Utils::Array<JsonView> sourceDetailsJsonList = jsonValue.GetArray("SourceDetails");
@@ -62,14 +44,11 @@ Source& Source::operator =(JsonView jsonValue)
     }
     m_sourceDetailsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CustomPolicyDetails"))
   {
     m_customPolicyDetails = jsonValue.GetObject("CustomPolicyDetails");
-
     m_customPolicyDetailsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -28,71 +28,42 @@ namespace Model
    * <p>Contains the sentiment and sentiment score for one mention of an entity.</p>
    * <p>For more information about targeted sentiment, see <a
    * href="https://docs.aws.amazon.com/comprehend/latest/dg/how-targeted-sentiment.html">Targeted
-   * sentiment</a>.</p><p><h3>See Also:</h3>   <a
+   * sentiment</a> in the <i>Amazon Comprehend Developer Guide</i>.</p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/MentionSentiment">AWS
    * API Reference</a></p>
    */
   class MentionSentiment
   {
   public:
-    AWS_COMPREHEND_API MentionSentiment();
+    AWS_COMPREHEND_API MentionSentiment() = default;
     AWS_COMPREHEND_API MentionSentiment(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API MentionSentiment& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The sentiment of the mention. </p>
      */
-    inline const SentimentType& GetSentiment() const{ return m_sentiment; }
-
-    /**
-     * <p>The sentiment of the mention. </p>
-     */
+    inline SentimentType GetSentiment() const { return m_sentiment; }
     inline bool SentimentHasBeenSet() const { return m_sentimentHasBeenSet; }
+    inline void SetSentiment(SentimentType value) { m_sentimentHasBeenSet = true; m_sentiment = value; }
+    inline MentionSentiment& WithSentiment(SentimentType value) { SetSentiment(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The sentiment of the mention. </p>
-     */
-    inline void SetSentiment(const SentimentType& value) { m_sentimentHasBeenSet = true; m_sentiment = value; }
-
-    /**
-     * <p>The sentiment of the mention. </p>
-     */
-    inline void SetSentiment(SentimentType&& value) { m_sentimentHasBeenSet = true; m_sentiment = std::move(value); }
-
-    /**
-     * <p>The sentiment of the mention. </p>
-     */
-    inline MentionSentiment& WithSentiment(const SentimentType& value) { SetSentiment(value); return *this;}
-
-    /**
-     * <p>The sentiment of the mention. </p>
-     */
-    inline MentionSentiment& WithSentiment(SentimentType&& value) { SetSentiment(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const SentimentScore& GetSentimentScore() const{ return m_sentimentScore; }
-
-    
+    inline const SentimentScore& GetSentimentScore() const { return m_sentimentScore; }
     inline bool SentimentScoreHasBeenSet() const { return m_sentimentScoreHasBeenSet; }
-
-    
-    inline void SetSentimentScore(const SentimentScore& value) { m_sentimentScoreHasBeenSet = true; m_sentimentScore = value; }
-
-    
-    inline void SetSentimentScore(SentimentScore&& value) { m_sentimentScoreHasBeenSet = true; m_sentimentScore = std::move(value); }
-
-    
-    inline MentionSentiment& WithSentimentScore(const SentimentScore& value) { SetSentimentScore(value); return *this;}
-
-    
-    inline MentionSentiment& WithSentimentScore(SentimentScore&& value) { SetSentimentScore(std::move(value)); return *this;}
-
+    template<typename SentimentScoreT = SentimentScore>
+    void SetSentimentScore(SentimentScoreT&& value) { m_sentimentScoreHasBeenSet = true; m_sentimentScore = std::forward<SentimentScoreT>(value); }
+    template<typename SentimentScoreT = SentimentScore>
+    MentionSentiment& WithSentimentScore(SentimentScoreT&& value) { SetSentimentScore(std::forward<SentimentScoreT>(value)); return *this;}
+    ///@}
   private:
 
-    SentimentType m_sentiment;
+    SentimentType m_sentiment{SentimentType::NOT_SET};
     bool m_sentimentHasBeenSet = false;
 
     SentimentScore m_sentimentScore;

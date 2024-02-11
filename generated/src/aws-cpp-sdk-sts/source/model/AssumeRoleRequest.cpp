@@ -10,22 +10,6 @@
 using namespace Aws::STS::Model;
 using namespace Aws::Utils;
 
-AssumeRoleRequest::AssumeRoleRequest() : 
-    m_roleArnHasBeenSet(false),
-    m_roleSessionNameHasBeenSet(false),
-    m_policyArnsHasBeenSet(false),
-    m_policyHasBeenSet(false),
-    m_durationSeconds(0),
-    m_durationSecondsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_transitiveTagKeysHasBeenSet(false),
-    m_externalIdHasBeenSet(false),
-    m_serialNumberHasBeenSet(false),
-    m_tokenCodeHasBeenSet(false),
-    m_sourceIdentityHasBeenSet(false)
-{
-}
-
 Aws::String AssumeRoleRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -42,11 +26,18 @@ Aws::String AssumeRoleRequest::SerializePayload() const
 
   if(m_policyArnsHasBeenSet)
   {
-    unsigned policyArnsCount = 1;
-    for(auto& item : m_policyArns)
+    if (m_policyArns.empty())
     {
-      item.OutputToStream(ss, "PolicyArns.member.", policyArnsCount, "");
-      policyArnsCount++;
+      ss << "PolicyArns=&";
+    }
+    else
+    {
+      unsigned policyArnsCount = 1;
+      for(auto& item : m_policyArns)
+      {
+        item.OutputToStream(ss, "PolicyArns.member.", policyArnsCount, "");
+        policyArnsCount++;
+      }
     }
   }
 
@@ -62,22 +53,36 @@ Aws::String AssumeRoleRequest::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.member.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 
   if(m_transitiveTagKeysHasBeenSet)
   {
-    unsigned transitiveTagKeysCount = 1;
-    for(auto& item : m_transitiveTagKeys)
+    if (m_transitiveTagKeys.empty())
     {
-      ss << "TransitiveTagKeys.member." << transitiveTagKeysCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      transitiveTagKeysCount++;
+      ss << "TransitiveTagKeys=&";
+    }
+    else
+    {
+      unsigned transitiveTagKeysCount = 1;
+      for(auto& item : m_transitiveTagKeys)
+      {
+        ss << "TransitiveTagKeys.member." << transitiveTagKeysCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        transitiveTagKeysCount++;
+      }
     }
   }
 
@@ -99,6 +104,23 @@ Aws::String AssumeRoleRequest::SerializePayload() const
   if(m_sourceIdentityHasBeenSet)
   {
     ss << "SourceIdentity=" << StringUtils::URLEncode(m_sourceIdentity.c_str()) << "&";
+  }
+
+  if(m_providedContextsHasBeenSet)
+  {
+    if (m_providedContexts.empty())
+    {
+      ss << "ProvidedContexts=&";
+    }
+    else
+    {
+      unsigned providedContextsCount = 1;
+      for(auto& item : m_providedContexts)
+      {
+        item.OutputToStream(ss, "ProvidedContexts.member.", providedContextsCount, "");
+        providedContextsCount++;
+      }
+    }
   }
 
   ss << "Version=2011-06-15";

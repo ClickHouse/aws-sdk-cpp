@@ -18,17 +18,7 @@ namespace CustomerProfiles
 namespace Model
 {
 
-ConflictResolution::ConflictResolution() : 
-    m_conflictResolvingModel(ConflictResolvingModel::NOT_SET),
-    m_conflictResolvingModelHasBeenSet(false),
-    m_sourceNameHasBeenSet(false)
-{
-}
-
-ConflictResolution::ConflictResolution(JsonView jsonValue) : 
-    m_conflictResolvingModel(ConflictResolvingModel::NOT_SET),
-    m_conflictResolvingModelHasBeenSet(false),
-    m_sourceNameHasBeenSet(false)
+ConflictResolution::ConflictResolution(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ConflictResolution& ConflictResolution::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ConflictResolvingModel"))
   {
     m_conflictResolvingModel = ConflictResolvingModelMapper::GetConflictResolvingModelForName(jsonValue.GetString("ConflictResolvingModel"));
-
     m_conflictResolvingModelHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourceName"))
   {
     m_sourceName = jsonValue.GetString("SourceName");
-
     m_sourceNameHasBeenSet = true;
   }
-
   return *this;
 }
 

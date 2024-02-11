@@ -25,7 +25,7 @@ namespace Model
   class PollForThirdPartyJobsRequest : public CodePipelineRequest
   {
   public:
-    AWS_CODEPIPELINE_API PollForThirdPartyJobsRequest();
+    AWS_CODEPIPELINE_API PollForThirdPartyJobsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,63 +38,33 @@ namespace Model
     AWS_CODEPIPELINE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Represents information about an action type.</p>
      */
-    inline const ActionTypeId& GetActionTypeId() const{ return m_actionTypeId; }
-
-    /**
-     * <p>Represents information about an action type.</p>
-     */
+    inline const ActionTypeId& GetActionTypeId() const { return m_actionTypeId; }
     inline bool ActionTypeIdHasBeenSet() const { return m_actionTypeIdHasBeenSet; }
+    template<typename ActionTypeIdT = ActionTypeId>
+    void SetActionTypeId(ActionTypeIdT&& value) { m_actionTypeIdHasBeenSet = true; m_actionTypeId = std::forward<ActionTypeIdT>(value); }
+    template<typename ActionTypeIdT = ActionTypeId>
+    PollForThirdPartyJobsRequest& WithActionTypeId(ActionTypeIdT&& value) { SetActionTypeId(std::forward<ActionTypeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Represents information about an action type.</p>
-     */
-    inline void SetActionTypeId(const ActionTypeId& value) { m_actionTypeIdHasBeenSet = true; m_actionTypeId = value; }
-
-    /**
-     * <p>Represents information about an action type.</p>
-     */
-    inline void SetActionTypeId(ActionTypeId&& value) { m_actionTypeIdHasBeenSet = true; m_actionTypeId = std::move(value); }
-
-    /**
-     * <p>Represents information about an action type.</p>
-     */
-    inline PollForThirdPartyJobsRequest& WithActionTypeId(const ActionTypeId& value) { SetActionTypeId(value); return *this;}
-
-    /**
-     * <p>Represents information about an action type.</p>
-     */
-    inline PollForThirdPartyJobsRequest& WithActionTypeId(ActionTypeId&& value) { SetActionTypeId(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of jobs to return in a poll for jobs call.</p>
      */
-    inline int GetMaxBatchSize() const{ return m_maxBatchSize; }
-
-    /**
-     * <p>The maximum number of jobs to return in a poll for jobs call.</p>
-     */
+    inline int GetMaxBatchSize() const { return m_maxBatchSize; }
     inline bool MaxBatchSizeHasBeenSet() const { return m_maxBatchSizeHasBeenSet; }
-
-    /**
-     * <p>The maximum number of jobs to return in a poll for jobs call.</p>
-     */
     inline void SetMaxBatchSize(int value) { m_maxBatchSizeHasBeenSet = true; m_maxBatchSize = value; }
-
-    /**
-     * <p>The maximum number of jobs to return in a poll for jobs call.</p>
-     */
     inline PollForThirdPartyJobsRequest& WithMaxBatchSize(int value) { SetMaxBatchSize(value); return *this;}
-
+    ///@}
   private:
 
     ActionTypeId m_actionTypeId;
     bool m_actionTypeIdHasBeenSet = false;
 
-    int m_maxBatchSize;
+    int m_maxBatchSize{0};
     bool m_maxBatchSizeHasBeenSet = false;
   };
 

@@ -28,91 +28,51 @@ namespace Model
   class UpdateBridgeSourceResult
   {
   public:
-    AWS_MEDIACONNECT_API UpdateBridgeSourceResult();
+    AWS_MEDIACONNECT_API UpdateBridgeSourceResult() = default;
     AWS_MEDIACONNECT_API UpdateBridgeSourceResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MEDIACONNECT_API UpdateBridgeSourceResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * The Amazon Resource Number (ARN) of the bridge.
+     * <p> The ARN of the updated bridge source. </p>
      */
-    inline const Aws::String& GetBridgeArn() const{ return m_bridgeArn; }
+    inline const Aws::String& GetBridgeArn() const { return m_bridgeArn; }
+    template<typename BridgeArnT = Aws::String>
+    void SetBridgeArn(BridgeArnT&& value) { m_bridgeArnHasBeenSet = true; m_bridgeArn = std::forward<BridgeArnT>(value); }
+    template<typename BridgeArnT = Aws::String>
+    UpdateBridgeSourceResult& WithBridgeArn(BridgeArnT&& value) { SetBridgeArn(std::forward<BridgeArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The Amazon Resource Number (ARN) of the bridge.
+     * <p> The updated bridge source. </p>
      */
-    inline void SetBridgeArn(const Aws::String& value) { m_bridgeArn = value; }
+    inline const BridgeSource& GetSource() const { return m_source; }
+    template<typename SourceT = BridgeSource>
+    void SetSource(SourceT&& value) { m_sourceHasBeenSet = true; m_source = std::forward<SourceT>(value); }
+    template<typename SourceT = BridgeSource>
+    UpdateBridgeSourceResult& WithSource(SourceT&& value) { SetSource(std::forward<SourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The Amazon Resource Number (ARN) of the bridge.
-     */
-    inline void SetBridgeArn(Aws::String&& value) { m_bridgeArn = std::move(value); }
-
-    /**
-     * The Amazon Resource Number (ARN) of the bridge.
-     */
-    inline void SetBridgeArn(const char* value) { m_bridgeArn.assign(value); }
-
-    /**
-     * The Amazon Resource Number (ARN) of the bridge.
-     */
-    inline UpdateBridgeSourceResult& WithBridgeArn(const Aws::String& value) { SetBridgeArn(value); return *this;}
-
-    /**
-     * The Amazon Resource Number (ARN) of the bridge.
-     */
-    inline UpdateBridgeSourceResult& WithBridgeArn(Aws::String&& value) { SetBridgeArn(std::move(value)); return *this;}
-
-    /**
-     * The Amazon Resource Number (ARN) of the bridge.
-     */
-    inline UpdateBridgeSourceResult& WithBridgeArn(const char* value) { SetBridgeArn(value); return *this;}
-
-
+    ///@{
     
-    inline const BridgeSource& GetSource() const{ return m_source; }
-
-    
-    inline void SetSource(const BridgeSource& value) { m_source = value; }
-
-    
-    inline void SetSource(BridgeSource&& value) { m_source = std::move(value); }
-
-    
-    inline UpdateBridgeSourceResult& WithSource(const BridgeSource& value) { SetSource(value); return *this;}
-
-    
-    inline UpdateBridgeSourceResult& WithSource(BridgeSource&& value) { SetSource(std::move(value)); return *this;}
-
-
-    
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateBridgeSourceResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateBridgeSourceResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateBridgeSourceResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateBridgeSourceResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bridgeArn;
+    bool m_bridgeArnHasBeenSet = false;
 
     BridgeSource m_source;
+    bool m_sourceHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

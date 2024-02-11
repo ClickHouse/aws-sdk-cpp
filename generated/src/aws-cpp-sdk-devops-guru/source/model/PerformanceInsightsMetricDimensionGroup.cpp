@@ -18,19 +18,7 @@ namespace DevOpsGuru
 namespace Model
 {
 
-PerformanceInsightsMetricDimensionGroup::PerformanceInsightsMetricDimensionGroup() : 
-    m_groupHasBeenSet(false),
-    m_dimensionsHasBeenSet(false),
-    m_limit(0),
-    m_limitHasBeenSet(false)
-{
-}
-
-PerformanceInsightsMetricDimensionGroup::PerformanceInsightsMetricDimensionGroup(JsonView jsonValue) : 
-    m_groupHasBeenSet(false),
-    m_dimensionsHasBeenSet(false),
-    m_limit(0),
-    m_limitHasBeenSet(false)
+PerformanceInsightsMetricDimensionGroup::PerformanceInsightsMetricDimensionGroup(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ PerformanceInsightsMetricDimensionGroup& PerformanceInsightsMetricDimensionGroup
   if(jsonValue.ValueExists("Group"))
   {
     m_group = jsonValue.GetString("Group");
-
     m_groupHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Dimensions"))
   {
     Aws::Utils::Array<JsonView> dimensionsJsonList = jsonValue.GetArray("Dimensions");
@@ -53,14 +39,11 @@ PerformanceInsightsMetricDimensionGroup& PerformanceInsightsMetricDimensionGroup
     }
     m_dimensionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Limit"))
   {
     m_limit = jsonValue.GetInteger("Limit");
-
     m_limitHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -21,7 +21,7 @@ namespace Model
   class AssociateVirtualInterfaceRequest : public DirectConnectRequest
   {
   public:
-    AWS_DIRECTCONNECT_API AssociateVirtualInterfaceRequest();
+    AWS_DIRECTCONNECT_API AssociateVirtualInterfaceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,29 @@ namespace Model
     AWS_DIRECTCONNECT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the virtual interface.</p>
      */
-    inline const Aws::String& GetVirtualInterfaceId() const{ return m_virtualInterfaceId; }
-
-    /**
-     * <p>The ID of the virtual interface.</p>
-     */
+    inline const Aws::String& GetVirtualInterfaceId() const { return m_virtualInterfaceId; }
     inline bool VirtualInterfaceIdHasBeenSet() const { return m_virtualInterfaceIdHasBeenSet; }
+    template<typename VirtualInterfaceIdT = Aws::String>
+    void SetVirtualInterfaceId(VirtualInterfaceIdT&& value) { m_virtualInterfaceIdHasBeenSet = true; m_virtualInterfaceId = std::forward<VirtualInterfaceIdT>(value); }
+    template<typename VirtualInterfaceIdT = Aws::String>
+    AssociateVirtualInterfaceRequest& WithVirtualInterfaceId(VirtualInterfaceIdT&& value) { SetVirtualInterfaceId(std::forward<VirtualInterfaceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the virtual interface.</p>
-     */
-    inline void SetVirtualInterfaceId(const Aws::String& value) { m_virtualInterfaceIdHasBeenSet = true; m_virtualInterfaceId = value; }
-
-    /**
-     * <p>The ID of the virtual interface.</p>
-     */
-    inline void SetVirtualInterfaceId(Aws::String&& value) { m_virtualInterfaceIdHasBeenSet = true; m_virtualInterfaceId = std::move(value); }
-
-    /**
-     * <p>The ID of the virtual interface.</p>
-     */
-    inline void SetVirtualInterfaceId(const char* value) { m_virtualInterfaceIdHasBeenSet = true; m_virtualInterfaceId.assign(value); }
-
-    /**
-     * <p>The ID of the virtual interface.</p>
-     */
-    inline AssociateVirtualInterfaceRequest& WithVirtualInterfaceId(const Aws::String& value) { SetVirtualInterfaceId(value); return *this;}
-
-    /**
-     * <p>The ID of the virtual interface.</p>
-     */
-    inline AssociateVirtualInterfaceRequest& WithVirtualInterfaceId(Aws::String&& value) { SetVirtualInterfaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the virtual interface.</p>
-     */
-    inline AssociateVirtualInterfaceRequest& WithVirtualInterfaceId(const char* value) { SetVirtualInterfaceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the LAG or connection.</p>
      */
-    inline const Aws::String& GetConnectionId() const{ return m_connectionId; }
-
-    /**
-     * <p>The ID of the LAG or connection.</p>
-     */
+    inline const Aws::String& GetConnectionId() const { return m_connectionId; }
     inline bool ConnectionIdHasBeenSet() const { return m_connectionIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the LAG or connection.</p>
-     */
-    inline void SetConnectionId(const Aws::String& value) { m_connectionIdHasBeenSet = true; m_connectionId = value; }
-
-    /**
-     * <p>The ID of the LAG or connection.</p>
-     */
-    inline void SetConnectionId(Aws::String&& value) { m_connectionIdHasBeenSet = true; m_connectionId = std::move(value); }
-
-    /**
-     * <p>The ID of the LAG or connection.</p>
-     */
-    inline void SetConnectionId(const char* value) { m_connectionIdHasBeenSet = true; m_connectionId.assign(value); }
-
-    /**
-     * <p>The ID of the LAG or connection.</p>
-     */
-    inline AssociateVirtualInterfaceRequest& WithConnectionId(const Aws::String& value) { SetConnectionId(value); return *this;}
-
-    /**
-     * <p>The ID of the LAG or connection.</p>
-     */
-    inline AssociateVirtualInterfaceRequest& WithConnectionId(Aws::String&& value) { SetConnectionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the LAG or connection.</p>
-     */
-    inline AssociateVirtualInterfaceRequest& WithConnectionId(const char* value) { SetConnectionId(value); return *this;}
-
+    template<typename ConnectionIdT = Aws::String>
+    void SetConnectionId(ConnectionIdT&& value) { m_connectionIdHasBeenSet = true; m_connectionId = std::forward<ConnectionIdT>(value); }
+    template<typename ConnectionIdT = Aws::String>
+    AssociateVirtualInterfaceRequest& WithConnectionId(ConnectionIdT&& value) { SetConnectionId(std::forward<ConnectionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_virtualInterfaceId;

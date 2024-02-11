@@ -18,15 +18,7 @@ namespace OpenSearchService
 namespace Model
 {
 
-VersionStatus::VersionStatus() : 
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-VersionStatus::VersionStatus(JsonView jsonValue) : 
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false)
+VersionStatus::VersionStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ VersionStatus& VersionStatus::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Options"))
   {
     m_options = jsonValue.GetString("Options");
-
     m_optionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = jsonValue.GetObject("Status");
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

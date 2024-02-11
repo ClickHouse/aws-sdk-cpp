@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-TreeMapSortConfiguration::TreeMapSortConfiguration() : 
-    m_treeMapSortHasBeenSet(false),
-    m_treeMapGroupItemsLimitConfigurationHasBeenSet(false)
-{
-}
-
-TreeMapSortConfiguration::TreeMapSortConfiguration(JsonView jsonValue) : 
-    m_treeMapSortHasBeenSet(false),
-    m_treeMapGroupItemsLimitConfigurationHasBeenSet(false)
+TreeMapSortConfiguration::TreeMapSortConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ TreeMapSortConfiguration& TreeMapSortConfiguration::operator =(JsonView jsonValu
     }
     m_treeMapSortHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TreeMapGroupItemsLimitConfiguration"))
   {
     m_treeMapGroupItemsLimitConfiguration = jsonValue.GetObject("TreeMapGroupItemsLimitConfiguration");
-
     m_treeMapGroupItemsLimitConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

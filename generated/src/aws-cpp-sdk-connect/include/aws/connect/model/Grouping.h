@@ -18,7 +18,9 @@ namespace Model
     NOT_SET,
     QUEUE,
     CHANNEL,
-    ROUTING_PROFILE
+    ROUTING_PROFILE,
+    ROUTING_STEP_EXPRESSION,
+    AGENT_STATUS
   };
 
 namespace GroupingMapper

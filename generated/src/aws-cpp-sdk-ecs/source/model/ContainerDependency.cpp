@@ -18,17 +18,7 @@ namespace ECS
 namespace Model
 {
 
-ContainerDependency::ContainerDependency() : 
-    m_containerNameHasBeenSet(false),
-    m_condition(ContainerCondition::NOT_SET),
-    m_conditionHasBeenSet(false)
-{
-}
-
-ContainerDependency::ContainerDependency(JsonView jsonValue) : 
-    m_containerNameHasBeenSet(false),
-    m_condition(ContainerCondition::NOT_SET),
-    m_conditionHasBeenSet(false)
+ContainerDependency::ContainerDependency(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ContainerDependency& ContainerDependency::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("containerName"))
   {
     m_containerName = jsonValue.GetString("containerName");
-
     m_containerNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("condition"))
   {
     m_condition = ContainerConditionMapper::GetContainerConditionForName(jsonValue.GetString("condition"));
-
     m_conditionHasBeenSet = true;
   }
-
   return *this;
 }
 

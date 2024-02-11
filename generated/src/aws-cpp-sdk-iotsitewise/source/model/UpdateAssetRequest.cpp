@@ -12,18 +12,15 @@ using namespace Aws::IoTSiteWise::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateAssetRequest::UpdateAssetRequest() : 
-    m_assetIdHasBeenSet(false),
-    m_assetNameHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_assetDescriptionHasBeenSet(false)
-{
-}
-
 Aws::String UpdateAssetRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_assetExternalIdHasBeenSet)
+  {
+   payload.WithString("assetExternalId", m_assetExternalId);
+
+  }
 
   if(m_assetNameHasBeenSet)
   {

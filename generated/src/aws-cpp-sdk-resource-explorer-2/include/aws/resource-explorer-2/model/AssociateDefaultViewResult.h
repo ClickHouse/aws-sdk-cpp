@@ -27,11 +27,12 @@ namespace Model
   class AssociateDefaultViewResult
   {
   public:
-    AWS_RESOURCEEXPLORER2_API AssociateDefaultViewResult();
+    AWS_RESOURCEEXPLORER2_API AssociateDefaultViewResult() = default;
     AWS_RESOURCEEXPLORER2_API AssociateDefaultViewResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_RESOURCEEXPLORER2_API AssociateDefaultViewResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
@@ -39,89 +40,28 @@ namespace Model
      * queries made in the Amazon Web Services Region and Amazon Web Services account
      * in which you called this operation.</p>
      */
-    inline const Aws::String& GetViewArn() const{ return m_viewArn; }
+    inline const Aws::String& GetViewArn() const { return m_viewArn; }
+    template<typename ViewArnT = Aws::String>
+    void SetViewArn(ViewArnT&& value) { m_viewArnHasBeenSet = true; m_viewArn = std::forward<ViewArnT>(value); }
+    template<typename ViewArnT = Aws::String>
+    AssociateDefaultViewResult& WithViewArn(ViewArnT&& value) { SetViewArn(std::forward<ViewArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the view that the operation set as the default for
-     * queries made in the Amazon Web Services Region and Amazon Web Services account
-     * in which you called this operation.</p>
-     */
-    inline void SetViewArn(const Aws::String& value) { m_viewArn = value; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the view that the operation set as the default for
-     * queries made in the Amazon Web Services Region and Amazon Web Services account
-     * in which you called this operation.</p>
-     */
-    inline void SetViewArn(Aws::String&& value) { m_viewArn = std::move(value); }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the view that the operation set as the default for
-     * queries made in the Amazon Web Services Region and Amazon Web Services account
-     * in which you called this operation.</p>
-     */
-    inline void SetViewArn(const char* value) { m_viewArn.assign(value); }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the view that the operation set as the default for
-     * queries made in the Amazon Web Services Region and Amazon Web Services account
-     * in which you called this operation.</p>
-     */
-    inline AssociateDefaultViewResult& WithViewArn(const Aws::String& value) { SetViewArn(value); return *this;}
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the view that the operation set as the default for
-     * queries made in the Amazon Web Services Region and Amazon Web Services account
-     * in which you called this operation.</p>
-     */
-    inline AssociateDefaultViewResult& WithViewArn(Aws::String&& value) { SetViewArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the view that the operation set as the default for
-     * queries made in the Amazon Web Services Region and Amazon Web Services account
-     * in which you called this operation.</p>
-     */
-    inline AssociateDefaultViewResult& WithViewArn(const char* value) { SetViewArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline AssociateDefaultViewResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline AssociateDefaultViewResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline AssociateDefaultViewResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    AssociateDefaultViewResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_viewArn;
+    bool m_viewArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

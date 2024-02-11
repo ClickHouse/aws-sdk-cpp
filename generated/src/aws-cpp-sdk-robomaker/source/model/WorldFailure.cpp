@@ -18,21 +18,7 @@ namespace RoboMaker
 namespace Model
 {
 
-WorldFailure::WorldFailure() : 
-    m_failureCode(WorldGenerationJobErrorCode::NOT_SET),
-    m_failureCodeHasBeenSet(false),
-    m_sampleFailureReasonHasBeenSet(false),
-    m_failureCount(0),
-    m_failureCountHasBeenSet(false)
-{
-}
-
-WorldFailure::WorldFailure(JsonView jsonValue) : 
-    m_failureCode(WorldGenerationJobErrorCode::NOT_SET),
-    m_failureCodeHasBeenSet(false),
-    m_sampleFailureReasonHasBeenSet(false),
-    m_failureCount(0),
-    m_failureCountHasBeenSet(false)
+WorldFailure::WorldFailure(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ WorldFailure& WorldFailure::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("failureCode"))
   {
     m_failureCode = WorldGenerationJobErrorCodeMapper::GetWorldGenerationJobErrorCodeForName(jsonValue.GetString("failureCode"));
-
     m_failureCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sampleFailureReason"))
   {
     m_sampleFailureReason = jsonValue.GetString("sampleFailureReason");
-
     m_sampleFailureReasonHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("failureCount"))
   {
     m_failureCount = jsonValue.GetInteger("failureCount");
-
     m_failureCountHasBeenSet = true;
   }
-
   return *this;
 }
 

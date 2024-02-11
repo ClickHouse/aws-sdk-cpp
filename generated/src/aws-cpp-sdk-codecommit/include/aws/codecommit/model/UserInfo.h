@@ -32,142 +32,48 @@ namespace Model
   class UserInfo
   {
   public:
-    AWS_CODECOMMIT_API UserInfo();
+    AWS_CODECOMMIT_API UserInfo() = default;
     AWS_CODECOMMIT_API UserInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API UserInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the user who made the specified commit.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the user who made the specified commit.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UserInfo& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the user who made the specified commit.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the user who made the specified commit.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the user who made the specified commit.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the user who made the specified commit.</p>
-     */
-    inline UserInfo& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the user who made the specified commit.</p>
-     */
-    inline UserInfo& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the user who made the specified commit.</p>
-     */
-    inline UserInfo& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The email address associated with the user who made the commit, if any.</p>
      */
-    inline const Aws::String& GetEmail() const{ return m_email; }
-
-    /**
-     * <p>The email address associated with the user who made the commit, if any.</p>
-     */
+    inline const Aws::String& GetEmail() const { return m_email; }
     inline bool EmailHasBeenSet() const { return m_emailHasBeenSet; }
+    template<typename EmailT = Aws::String>
+    void SetEmail(EmailT&& value) { m_emailHasBeenSet = true; m_email = std::forward<EmailT>(value); }
+    template<typename EmailT = Aws::String>
+    UserInfo& WithEmail(EmailT&& value) { SetEmail(std::forward<EmailT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The email address associated with the user who made the commit, if any.</p>
-     */
-    inline void SetEmail(const Aws::String& value) { m_emailHasBeenSet = true; m_email = value; }
-
-    /**
-     * <p>The email address associated with the user who made the commit, if any.</p>
-     */
-    inline void SetEmail(Aws::String&& value) { m_emailHasBeenSet = true; m_email = std::move(value); }
-
-    /**
-     * <p>The email address associated with the user who made the commit, if any.</p>
-     */
-    inline void SetEmail(const char* value) { m_emailHasBeenSet = true; m_email.assign(value); }
-
-    /**
-     * <p>The email address associated with the user who made the commit, if any.</p>
-     */
-    inline UserInfo& WithEmail(const Aws::String& value) { SetEmail(value); return *this;}
-
-    /**
-     * <p>The email address associated with the user who made the commit, if any.</p>
-     */
-    inline UserInfo& WithEmail(Aws::String&& value) { SetEmail(std::move(value)); return *this;}
-
-    /**
-     * <p>The email address associated with the user who made the commit, if any.</p>
-     */
-    inline UserInfo& WithEmail(const char* value) { SetEmail(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date when the specified commit was commited, in timestamp format with GMT
      * offset.</p>
      */
-    inline const Aws::String& GetDate() const{ return m_date; }
-
-    /**
-     * <p>The date when the specified commit was commited, in timestamp format with GMT
-     * offset.</p>
-     */
+    inline const Aws::String& GetDate() const { return m_date; }
     inline bool DateHasBeenSet() const { return m_dateHasBeenSet; }
-
-    /**
-     * <p>The date when the specified commit was commited, in timestamp format with GMT
-     * offset.</p>
-     */
-    inline void SetDate(const Aws::String& value) { m_dateHasBeenSet = true; m_date = value; }
-
-    /**
-     * <p>The date when the specified commit was commited, in timestamp format with GMT
-     * offset.</p>
-     */
-    inline void SetDate(Aws::String&& value) { m_dateHasBeenSet = true; m_date = std::move(value); }
-
-    /**
-     * <p>The date when the specified commit was commited, in timestamp format with GMT
-     * offset.</p>
-     */
-    inline void SetDate(const char* value) { m_dateHasBeenSet = true; m_date.assign(value); }
-
-    /**
-     * <p>The date when the specified commit was commited, in timestamp format with GMT
-     * offset.</p>
-     */
-    inline UserInfo& WithDate(const Aws::String& value) { SetDate(value); return *this;}
-
-    /**
-     * <p>The date when the specified commit was commited, in timestamp format with GMT
-     * offset.</p>
-     */
-    inline UserInfo& WithDate(Aws::String&& value) { SetDate(std::move(value)); return *this;}
-
-    /**
-     * <p>The date when the specified commit was commited, in timestamp format with GMT
-     * offset.</p>
-     */
-    inline UserInfo& WithDate(const char* value) { SetDate(value); return *this;}
-
+    template<typename DateT = Aws::String>
+    void SetDate(DateT&& value) { m_dateHasBeenSet = true; m_date = std::forward<DateT>(value); }
+    template<typename DateT = Aws::String>
+    UserInfo& WithDate(DateT&& value) { SetDate(std::forward<DateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

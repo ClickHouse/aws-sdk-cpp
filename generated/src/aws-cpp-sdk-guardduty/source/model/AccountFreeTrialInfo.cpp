@@ -18,15 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-AccountFreeTrialInfo::AccountFreeTrialInfo() : 
-    m_accountIdHasBeenSet(false),
-    m_featuresHasBeenSet(false)
-{
-}
-
-AccountFreeTrialInfo::AccountFreeTrialInfo(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_featuresHasBeenSet(false)
+AccountFreeTrialInfo::AccountFreeTrialInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AccountFreeTrialInfo& AccountFreeTrialInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("accountId"))
   {
     m_accountId = jsonValue.GetString("accountId");
-
     m_accountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("features"))
   {
     Aws::Utils::Array<JsonView> featuresJsonList = jsonValue.GetArray("features");
@@ -49,7 +39,6 @@ AccountFreeTrialInfo& AccountFreeTrialInfo::operator =(JsonView jsonValue)
     }
     m_featuresHasBeenSet = true;
   }
-
   return *this;
 }
 

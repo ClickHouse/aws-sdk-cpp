@@ -20,19 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-TypeFilters::TypeFilters() : 
-    m_category(Category::NOT_SET),
-    m_categoryHasBeenSet(false),
-    m_publisherIdHasBeenSet(false),
-    m_typeNamePrefixHasBeenSet(false)
-{
-}
-
-TypeFilters::TypeFilters(const XmlNode& xmlNode) : 
-    m_category(Category::NOT_SET),
-    m_categoryHasBeenSet(false),
-    m_publisherIdHasBeenSet(false),
-    m_typeNamePrefixHasBeenSet(false)
+TypeFilters::TypeFilters(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -46,7 +34,7 @@ TypeFilters& TypeFilters::operator =(const XmlNode& xmlNode)
     XmlNode categoryNode = resultNode.FirstChild("Category");
     if(!categoryNode.IsNull())
     {
-      m_category = CategoryMapper::GetCategoryForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(categoryNode.GetText()).c_str()).c_str());
+      m_category = CategoryMapper::GetCategoryForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(categoryNode.GetText()).c_str()));
       m_categoryHasBeenSet = true;
     }
     XmlNode publisherIdNode = resultNode.FirstChild("PublisherId");
@@ -70,7 +58,7 @@ void TypeFilters::OutputToStream(Aws::OStream& oStream, const char* location, un
 {
   if(m_categoryHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Category=" << CategoryMapper::GetNameForCategory(m_category) << "&";
+      oStream << location << index << locationValue << ".Category=" << StringUtils::URLEncode(CategoryMapper::GetNameForCategory(m_category)) << "&";
   }
 
   if(m_publisherIdHasBeenSet)
@@ -89,7 +77,7 @@ void TypeFilters::OutputToStream(Aws::OStream& oStream, const char* location) co
 {
   if(m_categoryHasBeenSet)
   {
-      oStream << location << ".Category=" << CategoryMapper::GetNameForCategory(m_category) << "&";
+      oStream << location << ".Category=" << StringUtils::URLEncode(CategoryMapper::GetNameForCategory(m_category)) << "&";
   }
   if(m_publisherIdHasBeenSet)
   {

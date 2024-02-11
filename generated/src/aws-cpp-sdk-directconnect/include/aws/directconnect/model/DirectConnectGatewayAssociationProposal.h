@@ -36,143 +36,50 @@ namespace Model
   class DirectConnectGatewayAssociationProposal
   {
   public:
-    AWS_DIRECTCONNECT_API DirectConnectGatewayAssociationProposal();
+    AWS_DIRECTCONNECT_API DirectConnectGatewayAssociationProposal() = default;
     AWS_DIRECTCONNECT_API DirectConnectGatewayAssociationProposal(Aws::Utils::Json::JsonView jsonValue);
     AWS_DIRECTCONNECT_API DirectConnectGatewayAssociationProposal& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DIRECTCONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the association proposal.</p>
      */
-    inline const Aws::String& GetProposalId() const{ return m_proposalId; }
-
-    /**
-     * <p>The ID of the association proposal.</p>
-     */
+    inline const Aws::String& GetProposalId() const { return m_proposalId; }
     inline bool ProposalIdHasBeenSet() const { return m_proposalIdHasBeenSet; }
+    template<typename ProposalIdT = Aws::String>
+    void SetProposalId(ProposalIdT&& value) { m_proposalIdHasBeenSet = true; m_proposalId = std::forward<ProposalIdT>(value); }
+    template<typename ProposalIdT = Aws::String>
+    DirectConnectGatewayAssociationProposal& WithProposalId(ProposalIdT&& value) { SetProposalId(std::forward<ProposalIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the association proposal.</p>
-     */
-    inline void SetProposalId(const Aws::String& value) { m_proposalIdHasBeenSet = true; m_proposalId = value; }
-
-    /**
-     * <p>The ID of the association proposal.</p>
-     */
-    inline void SetProposalId(Aws::String&& value) { m_proposalIdHasBeenSet = true; m_proposalId = std::move(value); }
-
-    /**
-     * <p>The ID of the association proposal.</p>
-     */
-    inline void SetProposalId(const char* value) { m_proposalIdHasBeenSet = true; m_proposalId.assign(value); }
-
-    /**
-     * <p>The ID of the association proposal.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& WithProposalId(const Aws::String& value) { SetProposalId(value); return *this;}
-
-    /**
-     * <p>The ID of the association proposal.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& WithProposalId(Aws::String&& value) { SetProposalId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the association proposal.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& WithProposalId(const char* value) { SetProposalId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Direct Connect gateway.</p>
      */
-    inline const Aws::String& GetDirectConnectGatewayId() const{ return m_directConnectGatewayId; }
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
+    inline const Aws::String& GetDirectConnectGatewayId() const { return m_directConnectGatewayId; }
     inline bool DirectConnectGatewayIdHasBeenSet() const { return m_directConnectGatewayIdHasBeenSet; }
+    template<typename DirectConnectGatewayIdT = Aws::String>
+    void SetDirectConnectGatewayId(DirectConnectGatewayIdT&& value) { m_directConnectGatewayIdHasBeenSet = true; m_directConnectGatewayId = std::forward<DirectConnectGatewayIdT>(value); }
+    template<typename DirectConnectGatewayIdT = Aws::String>
+    DirectConnectGatewayAssociationProposal& WithDirectConnectGatewayId(DirectConnectGatewayIdT&& value) { SetDirectConnectGatewayId(std::forward<DirectConnectGatewayIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
-    inline void SetDirectConnectGatewayId(const Aws::String& value) { m_directConnectGatewayIdHasBeenSet = true; m_directConnectGatewayId = value; }
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
-    inline void SetDirectConnectGatewayId(Aws::String&& value) { m_directConnectGatewayIdHasBeenSet = true; m_directConnectGatewayId = std::move(value); }
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
-    inline void SetDirectConnectGatewayId(const char* value) { m_directConnectGatewayIdHasBeenSet = true; m_directConnectGatewayId.assign(value); }
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& WithDirectConnectGatewayId(const Aws::String& value) { SetDirectConnectGatewayId(value); return *this;}
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& WithDirectConnectGatewayId(Aws::String&& value) { SetDirectConnectGatewayId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Direct Connect gateway.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& WithDirectConnectGatewayId(const char* value) { SetDirectConnectGatewayId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services account that owns the Direct Connect
      * gateway.</p>
      */
-    inline const Aws::String& GetDirectConnectGatewayOwnerAccount() const{ return m_directConnectGatewayOwnerAccount; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the Direct Connect
-     * gateway.</p>
-     */
+    inline const Aws::String& GetDirectConnectGatewayOwnerAccount() const { return m_directConnectGatewayOwnerAccount; }
     inline bool DirectConnectGatewayOwnerAccountHasBeenSet() const { return m_directConnectGatewayOwnerAccountHasBeenSet; }
+    template<typename DirectConnectGatewayOwnerAccountT = Aws::String>
+    void SetDirectConnectGatewayOwnerAccount(DirectConnectGatewayOwnerAccountT&& value) { m_directConnectGatewayOwnerAccountHasBeenSet = true; m_directConnectGatewayOwnerAccount = std::forward<DirectConnectGatewayOwnerAccountT>(value); }
+    template<typename DirectConnectGatewayOwnerAccountT = Aws::String>
+    DirectConnectGatewayAssociationProposal& WithDirectConnectGatewayOwnerAccount(DirectConnectGatewayOwnerAccountT&& value) { SetDirectConnectGatewayOwnerAccount(std::forward<DirectConnectGatewayOwnerAccountT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the Direct Connect
-     * gateway.</p>
-     */
-    inline void SetDirectConnectGatewayOwnerAccount(const Aws::String& value) { m_directConnectGatewayOwnerAccountHasBeenSet = true; m_directConnectGatewayOwnerAccount = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the Direct Connect
-     * gateway.</p>
-     */
-    inline void SetDirectConnectGatewayOwnerAccount(Aws::String&& value) { m_directConnectGatewayOwnerAccountHasBeenSet = true; m_directConnectGatewayOwnerAccount = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the Direct Connect
-     * gateway.</p>
-     */
-    inline void SetDirectConnectGatewayOwnerAccount(const char* value) { m_directConnectGatewayOwnerAccountHasBeenSet = true; m_directConnectGatewayOwnerAccount.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the Direct Connect
-     * gateway.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& WithDirectConnectGatewayOwnerAccount(const Aws::String& value) { SetDirectConnectGatewayOwnerAccount(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the Direct Connect
-     * gateway.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& WithDirectConnectGatewayOwnerAccount(Aws::String&& value) { SetDirectConnectGatewayOwnerAccount(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the Direct Connect
-     * gateway.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& WithDirectConnectGatewayOwnerAccount(const char* value) { SetDirectConnectGatewayOwnerAccount(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the proposal. The following are possible values:</p> <ul> <li>
      * <p> <code>accepted</code>: The proposal has been accepted. The Direct Connect
@@ -183,189 +90,52 @@ namespace Model
      * requested. The Direct Connect gateway association cannot be used in this
      * state.</p> </li> </ul>
      */
-    inline const DirectConnectGatewayAssociationProposalState& GetProposalState() const{ return m_proposalState; }
-
-    /**
-     * <p>The state of the proposal. The following are possible values:</p> <ul> <li>
-     * <p> <code>accepted</code>: The proposal has been accepted. The Direct Connect
-     * gateway association is available to use in this state.</p> </li> <li> <p>
-     * <code>deleted</code>: The proposal has been deleted by the owner that made the
-     * proposal. The Direct Connect gateway association cannot be used in this
-     * state.</p> </li> <li> <p> <code>requested</code>: The proposal has been
-     * requested. The Direct Connect gateway association cannot be used in this
-     * state.</p> </li> </ul>
-     */
+    inline DirectConnectGatewayAssociationProposalState GetProposalState() const { return m_proposalState; }
     inline bool ProposalStateHasBeenSet() const { return m_proposalStateHasBeenSet; }
+    inline void SetProposalState(DirectConnectGatewayAssociationProposalState value) { m_proposalStateHasBeenSet = true; m_proposalState = value; }
+    inline DirectConnectGatewayAssociationProposal& WithProposalState(DirectConnectGatewayAssociationProposalState value) { SetProposalState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the proposal. The following are possible values:</p> <ul> <li>
-     * <p> <code>accepted</code>: The proposal has been accepted. The Direct Connect
-     * gateway association is available to use in this state.</p> </li> <li> <p>
-     * <code>deleted</code>: The proposal has been deleted by the owner that made the
-     * proposal. The Direct Connect gateway association cannot be used in this
-     * state.</p> </li> <li> <p> <code>requested</code>: The proposal has been
-     * requested. The Direct Connect gateway association cannot be used in this
-     * state.</p> </li> </ul>
-     */
-    inline void SetProposalState(const DirectConnectGatewayAssociationProposalState& value) { m_proposalStateHasBeenSet = true; m_proposalState = value; }
-
-    /**
-     * <p>The state of the proposal. The following are possible values:</p> <ul> <li>
-     * <p> <code>accepted</code>: The proposal has been accepted. The Direct Connect
-     * gateway association is available to use in this state.</p> </li> <li> <p>
-     * <code>deleted</code>: The proposal has been deleted by the owner that made the
-     * proposal. The Direct Connect gateway association cannot be used in this
-     * state.</p> </li> <li> <p> <code>requested</code>: The proposal has been
-     * requested. The Direct Connect gateway association cannot be used in this
-     * state.</p> </li> </ul>
-     */
-    inline void SetProposalState(DirectConnectGatewayAssociationProposalState&& value) { m_proposalStateHasBeenSet = true; m_proposalState = std::move(value); }
-
-    /**
-     * <p>The state of the proposal. The following are possible values:</p> <ul> <li>
-     * <p> <code>accepted</code>: The proposal has been accepted. The Direct Connect
-     * gateway association is available to use in this state.</p> </li> <li> <p>
-     * <code>deleted</code>: The proposal has been deleted by the owner that made the
-     * proposal. The Direct Connect gateway association cannot be used in this
-     * state.</p> </li> <li> <p> <code>requested</code>: The proposal has been
-     * requested. The Direct Connect gateway association cannot be used in this
-     * state.</p> </li> </ul>
-     */
-    inline DirectConnectGatewayAssociationProposal& WithProposalState(const DirectConnectGatewayAssociationProposalState& value) { SetProposalState(value); return *this;}
-
-    /**
-     * <p>The state of the proposal. The following are possible values:</p> <ul> <li>
-     * <p> <code>accepted</code>: The proposal has been accepted. The Direct Connect
-     * gateway association is available to use in this state.</p> </li> <li> <p>
-     * <code>deleted</code>: The proposal has been deleted by the owner that made the
-     * proposal. The Direct Connect gateway association cannot be used in this
-     * state.</p> </li> <li> <p> <code>requested</code>: The proposal has been
-     * requested. The Direct Connect gateway association cannot be used in this
-     * state.</p> </li> </ul>
-     */
-    inline DirectConnectGatewayAssociationProposal& WithProposalState(DirectConnectGatewayAssociationProposalState&& value) { SetProposalState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the associated gateway.</p>
      */
-    inline const AssociatedGateway& GetAssociatedGateway() const{ return m_associatedGateway; }
-
-    /**
-     * <p>Information about the associated gateway.</p>
-     */
+    inline const AssociatedGateway& GetAssociatedGateway() const { return m_associatedGateway; }
     inline bool AssociatedGatewayHasBeenSet() const { return m_associatedGatewayHasBeenSet; }
+    template<typename AssociatedGatewayT = AssociatedGateway>
+    void SetAssociatedGateway(AssociatedGatewayT&& value) { m_associatedGatewayHasBeenSet = true; m_associatedGateway = std::forward<AssociatedGatewayT>(value); }
+    template<typename AssociatedGatewayT = AssociatedGateway>
+    DirectConnectGatewayAssociationProposal& WithAssociatedGateway(AssociatedGatewayT&& value) { SetAssociatedGateway(std::forward<AssociatedGatewayT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the associated gateway.</p>
-     */
-    inline void SetAssociatedGateway(const AssociatedGateway& value) { m_associatedGatewayHasBeenSet = true; m_associatedGateway = value; }
-
-    /**
-     * <p>Information about the associated gateway.</p>
-     */
-    inline void SetAssociatedGateway(AssociatedGateway&& value) { m_associatedGatewayHasBeenSet = true; m_associatedGateway = std::move(value); }
-
-    /**
-     * <p>Information about the associated gateway.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& WithAssociatedGateway(const AssociatedGateway& value) { SetAssociatedGateway(value); return *this;}
-
-    /**
-     * <p>Information about the associated gateway.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& WithAssociatedGateway(AssociatedGateway&& value) { SetAssociatedGateway(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The existing Amazon VPC prefixes advertised to the Direct Connect
      * gateway.</p>
      */
-    inline const Aws::Vector<RouteFilterPrefix>& GetExistingAllowedPrefixesToDirectConnectGateway() const{ return m_existingAllowedPrefixesToDirectConnectGateway; }
-
-    /**
-     * <p>The existing Amazon VPC prefixes advertised to the Direct Connect
-     * gateway.</p>
-     */
+    inline const Aws::Vector<RouteFilterPrefix>& GetExistingAllowedPrefixesToDirectConnectGateway() const { return m_existingAllowedPrefixesToDirectConnectGateway; }
     inline bool ExistingAllowedPrefixesToDirectConnectGatewayHasBeenSet() const { return m_existingAllowedPrefixesToDirectConnectGatewayHasBeenSet; }
+    template<typename ExistingAllowedPrefixesToDirectConnectGatewayT = Aws::Vector<RouteFilterPrefix>>
+    void SetExistingAllowedPrefixesToDirectConnectGateway(ExistingAllowedPrefixesToDirectConnectGatewayT&& value) { m_existingAllowedPrefixesToDirectConnectGatewayHasBeenSet = true; m_existingAllowedPrefixesToDirectConnectGateway = std::forward<ExistingAllowedPrefixesToDirectConnectGatewayT>(value); }
+    template<typename ExistingAllowedPrefixesToDirectConnectGatewayT = Aws::Vector<RouteFilterPrefix>>
+    DirectConnectGatewayAssociationProposal& WithExistingAllowedPrefixesToDirectConnectGateway(ExistingAllowedPrefixesToDirectConnectGatewayT&& value) { SetExistingAllowedPrefixesToDirectConnectGateway(std::forward<ExistingAllowedPrefixesToDirectConnectGatewayT>(value)); return *this;}
+    template<typename ExistingAllowedPrefixesToDirectConnectGatewayT = RouteFilterPrefix>
+    DirectConnectGatewayAssociationProposal& AddExistingAllowedPrefixesToDirectConnectGateway(ExistingAllowedPrefixesToDirectConnectGatewayT&& value) { m_existingAllowedPrefixesToDirectConnectGatewayHasBeenSet = true; m_existingAllowedPrefixesToDirectConnectGateway.emplace_back(std::forward<ExistingAllowedPrefixesToDirectConnectGatewayT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The existing Amazon VPC prefixes advertised to the Direct Connect
-     * gateway.</p>
-     */
-    inline void SetExistingAllowedPrefixesToDirectConnectGateway(const Aws::Vector<RouteFilterPrefix>& value) { m_existingAllowedPrefixesToDirectConnectGatewayHasBeenSet = true; m_existingAllowedPrefixesToDirectConnectGateway = value; }
-
-    /**
-     * <p>The existing Amazon VPC prefixes advertised to the Direct Connect
-     * gateway.</p>
-     */
-    inline void SetExistingAllowedPrefixesToDirectConnectGateway(Aws::Vector<RouteFilterPrefix>&& value) { m_existingAllowedPrefixesToDirectConnectGatewayHasBeenSet = true; m_existingAllowedPrefixesToDirectConnectGateway = std::move(value); }
-
-    /**
-     * <p>The existing Amazon VPC prefixes advertised to the Direct Connect
-     * gateway.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& WithExistingAllowedPrefixesToDirectConnectGateway(const Aws::Vector<RouteFilterPrefix>& value) { SetExistingAllowedPrefixesToDirectConnectGateway(value); return *this;}
-
-    /**
-     * <p>The existing Amazon VPC prefixes advertised to the Direct Connect
-     * gateway.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& WithExistingAllowedPrefixesToDirectConnectGateway(Aws::Vector<RouteFilterPrefix>&& value) { SetExistingAllowedPrefixesToDirectConnectGateway(std::move(value)); return *this;}
-
-    /**
-     * <p>The existing Amazon VPC prefixes advertised to the Direct Connect
-     * gateway.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& AddExistingAllowedPrefixesToDirectConnectGateway(const RouteFilterPrefix& value) { m_existingAllowedPrefixesToDirectConnectGatewayHasBeenSet = true; m_existingAllowedPrefixesToDirectConnectGateway.push_back(value); return *this; }
-
-    /**
-     * <p>The existing Amazon VPC prefixes advertised to the Direct Connect
-     * gateway.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& AddExistingAllowedPrefixesToDirectConnectGateway(RouteFilterPrefix&& value) { m_existingAllowedPrefixesToDirectConnectGatewayHasBeenSet = true; m_existingAllowedPrefixesToDirectConnectGateway.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The Amazon VPC prefixes to advertise to the Direct Connect gateway.</p>
      */
-    inline const Aws::Vector<RouteFilterPrefix>& GetRequestedAllowedPrefixesToDirectConnectGateway() const{ return m_requestedAllowedPrefixesToDirectConnectGateway; }
-
-    /**
-     * <p>The Amazon VPC prefixes to advertise to the Direct Connect gateway.</p>
-     */
+    inline const Aws::Vector<RouteFilterPrefix>& GetRequestedAllowedPrefixesToDirectConnectGateway() const { return m_requestedAllowedPrefixesToDirectConnectGateway; }
     inline bool RequestedAllowedPrefixesToDirectConnectGatewayHasBeenSet() const { return m_requestedAllowedPrefixesToDirectConnectGatewayHasBeenSet; }
-
-    /**
-     * <p>The Amazon VPC prefixes to advertise to the Direct Connect gateway.</p>
-     */
-    inline void SetRequestedAllowedPrefixesToDirectConnectGateway(const Aws::Vector<RouteFilterPrefix>& value) { m_requestedAllowedPrefixesToDirectConnectGatewayHasBeenSet = true; m_requestedAllowedPrefixesToDirectConnectGateway = value; }
-
-    /**
-     * <p>The Amazon VPC prefixes to advertise to the Direct Connect gateway.</p>
-     */
-    inline void SetRequestedAllowedPrefixesToDirectConnectGateway(Aws::Vector<RouteFilterPrefix>&& value) { m_requestedAllowedPrefixesToDirectConnectGatewayHasBeenSet = true; m_requestedAllowedPrefixesToDirectConnectGateway = std::move(value); }
-
-    /**
-     * <p>The Amazon VPC prefixes to advertise to the Direct Connect gateway.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& WithRequestedAllowedPrefixesToDirectConnectGateway(const Aws::Vector<RouteFilterPrefix>& value) { SetRequestedAllowedPrefixesToDirectConnectGateway(value); return *this;}
-
-    /**
-     * <p>The Amazon VPC prefixes to advertise to the Direct Connect gateway.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& WithRequestedAllowedPrefixesToDirectConnectGateway(Aws::Vector<RouteFilterPrefix>&& value) { SetRequestedAllowedPrefixesToDirectConnectGateway(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon VPC prefixes to advertise to the Direct Connect gateway.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& AddRequestedAllowedPrefixesToDirectConnectGateway(const RouteFilterPrefix& value) { m_requestedAllowedPrefixesToDirectConnectGatewayHasBeenSet = true; m_requestedAllowedPrefixesToDirectConnectGateway.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon VPC prefixes to advertise to the Direct Connect gateway.</p>
-     */
-    inline DirectConnectGatewayAssociationProposal& AddRequestedAllowedPrefixesToDirectConnectGateway(RouteFilterPrefix&& value) { m_requestedAllowedPrefixesToDirectConnectGatewayHasBeenSet = true; m_requestedAllowedPrefixesToDirectConnectGateway.push_back(std::move(value)); return *this; }
-
+    template<typename RequestedAllowedPrefixesToDirectConnectGatewayT = Aws::Vector<RouteFilterPrefix>>
+    void SetRequestedAllowedPrefixesToDirectConnectGateway(RequestedAllowedPrefixesToDirectConnectGatewayT&& value) { m_requestedAllowedPrefixesToDirectConnectGatewayHasBeenSet = true; m_requestedAllowedPrefixesToDirectConnectGateway = std::forward<RequestedAllowedPrefixesToDirectConnectGatewayT>(value); }
+    template<typename RequestedAllowedPrefixesToDirectConnectGatewayT = Aws::Vector<RouteFilterPrefix>>
+    DirectConnectGatewayAssociationProposal& WithRequestedAllowedPrefixesToDirectConnectGateway(RequestedAllowedPrefixesToDirectConnectGatewayT&& value) { SetRequestedAllowedPrefixesToDirectConnectGateway(std::forward<RequestedAllowedPrefixesToDirectConnectGatewayT>(value)); return *this;}
+    template<typename RequestedAllowedPrefixesToDirectConnectGatewayT = RouteFilterPrefix>
+    DirectConnectGatewayAssociationProposal& AddRequestedAllowedPrefixesToDirectConnectGateway(RequestedAllowedPrefixesToDirectConnectGatewayT&& value) { m_requestedAllowedPrefixesToDirectConnectGatewayHasBeenSet = true; m_requestedAllowedPrefixesToDirectConnectGateway.emplace_back(std::forward<RequestedAllowedPrefixesToDirectConnectGatewayT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_proposalId;
@@ -377,7 +147,7 @@ namespace Model
     Aws::String m_directConnectGatewayOwnerAccount;
     bool m_directConnectGatewayOwnerAccountHasBeenSet = false;
 
-    DirectConnectGatewayAssociationProposalState m_proposalState;
+    DirectConnectGatewayAssociationProposalState m_proposalState{DirectConnectGatewayAssociationProposalState::NOT_SET};
     bool m_proposalStateHasBeenSet = false;
 
     AssociatedGateway m_associatedGateway;

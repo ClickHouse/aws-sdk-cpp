@@ -31,43 +31,26 @@ namespace Model
   class ConfidenceScore
   {
   public:
-    AWS_LEXRUNTIMEV2_API ConfidenceScore();
+    AWS_LEXRUNTIMEV2_API ConfidenceScore() = default;
     AWS_LEXRUNTIMEV2_API ConfidenceScore(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXRUNTIMEV2_API ConfidenceScore& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXRUNTIMEV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A score that indicates how confident Amazon Lex V2 is that an intent
      * satisfies the user's intent. Ranges between 0.00 and 1.00. Higher scores
      * indicate higher confidence.</p>
      */
-    inline double GetScore() const{ return m_score; }
-
-    /**
-     * <p>A score that indicates how confident Amazon Lex V2 is that an intent
-     * satisfies the user's intent. Ranges between 0.00 and 1.00. Higher scores
-     * indicate higher confidence.</p>
-     */
+    inline double GetScore() const { return m_score; }
     inline bool ScoreHasBeenSet() const { return m_scoreHasBeenSet; }
-
-    /**
-     * <p>A score that indicates how confident Amazon Lex V2 is that an intent
-     * satisfies the user's intent. Ranges between 0.00 and 1.00. Higher scores
-     * indicate higher confidence.</p>
-     */
     inline void SetScore(double value) { m_scoreHasBeenSet = true; m_score = value; }
-
-    /**
-     * <p>A score that indicates how confident Amazon Lex V2 is that an intent
-     * satisfies the user's intent. Ranges between 0.00 and 1.00. Higher scores
-     * indicate higher confidence.</p>
-     */
     inline ConfidenceScore& WithScore(double value) { SetScore(value); return *this;}
-
+    ///@}
   private:
 
-    double m_score;
+    double m_score{0.0};
     bool m_scoreHasBeenSet = false;
   };
 

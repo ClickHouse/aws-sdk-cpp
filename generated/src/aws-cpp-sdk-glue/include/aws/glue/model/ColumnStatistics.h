@@ -34,161 +34,60 @@ namespace Model
   class ColumnStatistics
   {
   public:
-    AWS_GLUE_API ColumnStatistics();
+    AWS_GLUE_API ColumnStatistics() = default;
     AWS_GLUE_API ColumnStatistics(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API ColumnStatistics& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Name of column which statistics belong to.</p>
      */
-    inline const Aws::String& GetColumnName() const{ return m_columnName; }
-
-    /**
-     * <p>Name of column which statistics belong to.</p>
-     */
+    inline const Aws::String& GetColumnName() const { return m_columnName; }
     inline bool ColumnNameHasBeenSet() const { return m_columnNameHasBeenSet; }
+    template<typename ColumnNameT = Aws::String>
+    void SetColumnName(ColumnNameT&& value) { m_columnNameHasBeenSet = true; m_columnName = std::forward<ColumnNameT>(value); }
+    template<typename ColumnNameT = Aws::String>
+    ColumnStatistics& WithColumnName(ColumnNameT&& value) { SetColumnName(std::forward<ColumnNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Name of column which statistics belong to.</p>
-     */
-    inline void SetColumnName(const Aws::String& value) { m_columnNameHasBeenSet = true; m_columnName = value; }
-
-    /**
-     * <p>Name of column which statistics belong to.</p>
-     */
-    inline void SetColumnName(Aws::String&& value) { m_columnNameHasBeenSet = true; m_columnName = std::move(value); }
-
-    /**
-     * <p>Name of column which statistics belong to.</p>
-     */
-    inline void SetColumnName(const char* value) { m_columnNameHasBeenSet = true; m_columnName.assign(value); }
-
-    /**
-     * <p>Name of column which statistics belong to.</p>
-     */
-    inline ColumnStatistics& WithColumnName(const Aws::String& value) { SetColumnName(value); return *this;}
-
-    /**
-     * <p>Name of column which statistics belong to.</p>
-     */
-    inline ColumnStatistics& WithColumnName(Aws::String&& value) { SetColumnName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of column which statistics belong to.</p>
-     */
-    inline ColumnStatistics& WithColumnName(const char* value) { SetColumnName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The data type of the column.</p>
      */
-    inline const Aws::String& GetColumnType() const{ return m_columnType; }
-
-    /**
-     * <p>The data type of the column.</p>
-     */
+    inline const Aws::String& GetColumnType() const { return m_columnType; }
     inline bool ColumnTypeHasBeenSet() const { return m_columnTypeHasBeenSet; }
+    template<typename ColumnTypeT = Aws::String>
+    void SetColumnType(ColumnTypeT&& value) { m_columnTypeHasBeenSet = true; m_columnType = std::forward<ColumnTypeT>(value); }
+    template<typename ColumnTypeT = Aws::String>
+    ColumnStatistics& WithColumnType(ColumnTypeT&& value) { SetColumnType(std::forward<ColumnTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The data type of the column.</p>
-     */
-    inline void SetColumnType(const Aws::String& value) { m_columnTypeHasBeenSet = true; m_columnType = value; }
-
-    /**
-     * <p>The data type of the column.</p>
-     */
-    inline void SetColumnType(Aws::String&& value) { m_columnTypeHasBeenSet = true; m_columnType = std::move(value); }
-
-    /**
-     * <p>The data type of the column.</p>
-     */
-    inline void SetColumnType(const char* value) { m_columnTypeHasBeenSet = true; m_columnType.assign(value); }
-
-    /**
-     * <p>The data type of the column.</p>
-     */
-    inline ColumnStatistics& WithColumnType(const Aws::String& value) { SetColumnType(value); return *this;}
-
-    /**
-     * <p>The data type of the column.</p>
-     */
-    inline ColumnStatistics& WithColumnType(Aws::String&& value) { SetColumnType(std::move(value)); return *this;}
-
-    /**
-     * <p>The data type of the column.</p>
-     */
-    inline ColumnStatistics& WithColumnType(const char* value) { SetColumnType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of when column statistics were generated.</p>
      */
-    inline const Aws::Utils::DateTime& GetAnalyzedTime() const{ return m_analyzedTime; }
-
-    /**
-     * <p>The timestamp of when column statistics were generated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetAnalyzedTime() const { return m_analyzedTime; }
     inline bool AnalyzedTimeHasBeenSet() const { return m_analyzedTimeHasBeenSet; }
+    template<typename AnalyzedTimeT = Aws::Utils::DateTime>
+    void SetAnalyzedTime(AnalyzedTimeT&& value) { m_analyzedTimeHasBeenSet = true; m_analyzedTime = std::forward<AnalyzedTimeT>(value); }
+    template<typename AnalyzedTimeT = Aws::Utils::DateTime>
+    ColumnStatistics& WithAnalyzedTime(AnalyzedTimeT&& value) { SetAnalyzedTime(std::forward<AnalyzedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of when column statistics were generated.</p>
-     */
-    inline void SetAnalyzedTime(const Aws::Utils::DateTime& value) { m_analyzedTimeHasBeenSet = true; m_analyzedTime = value; }
-
-    /**
-     * <p>The timestamp of when column statistics were generated.</p>
-     */
-    inline void SetAnalyzedTime(Aws::Utils::DateTime&& value) { m_analyzedTimeHasBeenSet = true; m_analyzedTime = std::move(value); }
-
-    /**
-     * <p>The timestamp of when column statistics were generated.</p>
-     */
-    inline ColumnStatistics& WithAnalyzedTime(const Aws::Utils::DateTime& value) { SetAnalyzedTime(value); return *this;}
-
-    /**
-     * <p>The timestamp of when column statistics were generated.</p>
-     */
-    inline ColumnStatistics& WithAnalyzedTime(Aws::Utils::DateTime&& value) { SetAnalyzedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A <code>ColumnStatisticData</code> object that contains the statistics data
      * values.</p>
      */
-    inline const ColumnStatisticsData& GetStatisticsData() const{ return m_statisticsData; }
-
-    /**
-     * <p>A <code>ColumnStatisticData</code> object that contains the statistics data
-     * values.</p>
-     */
+    inline const ColumnStatisticsData& GetStatisticsData() const { return m_statisticsData; }
     inline bool StatisticsDataHasBeenSet() const { return m_statisticsDataHasBeenSet; }
-
-    /**
-     * <p>A <code>ColumnStatisticData</code> object that contains the statistics data
-     * values.</p>
-     */
-    inline void SetStatisticsData(const ColumnStatisticsData& value) { m_statisticsDataHasBeenSet = true; m_statisticsData = value; }
-
-    /**
-     * <p>A <code>ColumnStatisticData</code> object that contains the statistics data
-     * values.</p>
-     */
-    inline void SetStatisticsData(ColumnStatisticsData&& value) { m_statisticsDataHasBeenSet = true; m_statisticsData = std::move(value); }
-
-    /**
-     * <p>A <code>ColumnStatisticData</code> object that contains the statistics data
-     * values.</p>
-     */
-    inline ColumnStatistics& WithStatisticsData(const ColumnStatisticsData& value) { SetStatisticsData(value); return *this;}
-
-    /**
-     * <p>A <code>ColumnStatisticData</code> object that contains the statistics data
-     * values.</p>
-     */
-    inline ColumnStatistics& WithStatisticsData(ColumnStatisticsData&& value) { SetStatisticsData(std::move(value)); return *this;}
-
+    template<typename StatisticsDataT = ColumnStatisticsData>
+    void SetStatisticsData(StatisticsDataT&& value) { m_statisticsDataHasBeenSet = true; m_statisticsData = std::forward<StatisticsDataT>(value); }
+    template<typename StatisticsDataT = ColumnStatisticsData>
+    ColumnStatistics& WithStatisticsData(StatisticsDataT&& value) { SetStatisticsData(std::forward<StatisticsDataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_columnName;
@@ -197,7 +96,7 @@ namespace Model
     Aws::String m_columnType;
     bool m_columnTypeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_analyzedTime;
+    Aws::Utils::DateTime m_analyzedTime{};
     bool m_analyzedTimeHasBeenSet = false;
 
     ColumnStatisticsData m_statisticsData;

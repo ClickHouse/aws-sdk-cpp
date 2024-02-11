@@ -18,15 +18,7 @@ namespace GroundStation
 namespace Model
 {
 
-DependencyException::DependencyException() : 
-    m_messageHasBeenSet(false),
-    m_parameterNameHasBeenSet(false)
-{
-}
-
-DependencyException::DependencyException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_parameterNameHasBeenSet(false)
+DependencyException::DependencyException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DependencyException& DependencyException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("parameterName"))
   {
     m_parameterName = jsonValue.GetString("parameterName");
-
     m_parameterNameHasBeenSet = true;
   }
-
   return *this;
 }
 

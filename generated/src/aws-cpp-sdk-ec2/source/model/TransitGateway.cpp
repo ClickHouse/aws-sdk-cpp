@@ -20,29 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGateway::TransitGateway() : 
-    m_transitGatewayIdHasBeenSet(false),
-    m_transitGatewayArnHasBeenSet(false),
-    m_state(TransitGatewayState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_optionsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-TransitGateway::TransitGateway(const XmlNode& xmlNode) : 
-    m_transitGatewayIdHasBeenSet(false),
-    m_transitGatewayArnHasBeenSet(false),
-    m_state(TransitGatewayState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_optionsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+TransitGateway::TransitGateway(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -68,7 +46,7 @@ TransitGateway& TransitGateway::operator =(const XmlNode& xmlNode)
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = TransitGatewayStateMapper::GetTransitGatewayStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = TransitGatewayStateMapper::GetTransitGatewayStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode ownerIdNode = resultNode.FirstChild("ownerId");
@@ -99,6 +77,7 @@ TransitGateway& TransitGateway::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -126,7 +105,7 @@ void TransitGateway::OutputToStream(Aws::OStream& oStream, const char* location,
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << TransitGatewayStateMapper::GetNameForTransitGatewayState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(TransitGatewayStateMapper::GetNameForTransitGatewayState(m_state)) << "&";
   }
 
   if(m_ownerIdHasBeenSet)
@@ -176,7 +155,7 @@ void TransitGateway::OutputToStream(Aws::OStream& oStream, const char* location)
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << TransitGatewayStateMapper::GetNameForTransitGatewayState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(TransitGatewayStateMapper::GetNameForTransitGatewayState(m_state)) << "&";
   }
   if(m_ownerIdHasBeenSet)
   {
@@ -202,7 +181,7 @@ void TransitGateway::OutputToStream(Aws::OStream& oStream, const char* location)
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

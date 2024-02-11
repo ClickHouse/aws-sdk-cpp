@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ReservedInstanceLimitPrice::ReservedInstanceLimitPrice() : 
-    m_amount(0.0),
-    m_amountHasBeenSet(false),
-    m_currencyCode(CurrencyCodeValues::NOT_SET),
-    m_currencyCodeHasBeenSet(false)
-{
-}
-
-ReservedInstanceLimitPrice::ReservedInstanceLimitPrice(const XmlNode& xmlNode) : 
-    m_amount(0.0),
-    m_amountHasBeenSet(false),
-    m_currencyCode(CurrencyCodeValues::NOT_SET),
-    m_currencyCodeHasBeenSet(false)
+ReservedInstanceLimitPrice::ReservedInstanceLimitPrice(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -52,7 +40,7 @@ ReservedInstanceLimitPrice& ReservedInstanceLimitPrice::operator =(const XmlNode
     XmlNode currencyCodeNode = resultNode.FirstChild("currencyCode");
     if(!currencyCodeNode.IsNull())
     {
-      m_currencyCode = CurrencyCodeValuesMapper::GetCurrencyCodeValuesForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(currencyCodeNode.GetText()).c_str()).c_str());
+      m_currencyCode = CurrencyCodeValuesMapper::GetCurrencyCodeValuesForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(currencyCodeNode.GetText()).c_str()));
       m_currencyCodeHasBeenSet = true;
     }
   }
@@ -69,7 +57,7 @@ void ReservedInstanceLimitPrice::OutputToStream(Aws::OStream& oStream, const cha
 
   if(m_currencyCodeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CurrencyCode=" << CurrencyCodeValuesMapper::GetNameForCurrencyCodeValues(m_currencyCode) << "&";
+      oStream << location << index << locationValue << ".CurrencyCode=" << StringUtils::URLEncode(CurrencyCodeValuesMapper::GetNameForCurrencyCodeValues(m_currencyCode)) << "&";
   }
 
 }
@@ -78,11 +66,11 @@ void ReservedInstanceLimitPrice::OutputToStream(Aws::OStream& oStream, const cha
 {
   if(m_amountHasBeenSet)
   {
-        oStream << location << ".Amount=" << StringUtils::URLEncode(m_amount) << "&";
+      oStream << location << ".Amount=" << StringUtils::URLEncode(m_amount) << "&";
   }
   if(m_currencyCodeHasBeenSet)
   {
-      oStream << location << ".CurrencyCode=" << CurrencyCodeValuesMapper::GetNameForCurrencyCodeValues(m_currencyCode) << "&";
+      oStream << location << ".CurrencyCode=" << StringUtils::URLEncode(CurrencyCodeValuesMapper::GetNameForCurrencyCodeValues(m_currencyCode)) << "&";
   }
 }
 

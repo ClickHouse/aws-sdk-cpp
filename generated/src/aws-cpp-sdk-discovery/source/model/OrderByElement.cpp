@@ -18,17 +18,7 @@ namespace ApplicationDiscoveryService
 namespace Model
 {
 
-OrderByElement::OrderByElement() : 
-    m_fieldNameHasBeenSet(false),
-    m_sortOrder(OrderString::NOT_SET),
-    m_sortOrderHasBeenSet(false)
-{
-}
-
-OrderByElement::OrderByElement(JsonView jsonValue) : 
-    m_fieldNameHasBeenSet(false),
-    m_sortOrder(OrderString::NOT_SET),
-    m_sortOrderHasBeenSet(false)
+OrderByElement::OrderByElement(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ OrderByElement& OrderByElement::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("fieldName"))
   {
     m_fieldName = jsonValue.GetString("fieldName");
-
     m_fieldNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sortOrder"))
   {
     m_sortOrder = OrderStringMapper::GetOrderStringForName(jsonValue.GetString("sortOrder"));
-
     m_sortOrderHasBeenSet = true;
   }
-
   return *this;
 }
 

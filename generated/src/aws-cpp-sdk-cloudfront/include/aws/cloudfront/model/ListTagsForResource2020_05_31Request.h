@@ -29,7 +29,7 @@ namespace Model
   class ListTagsForResource2020_05_31Request : public CloudFrontRequest
   {
   public:
-    AWS_CLOUDFRONT_API ListTagsForResource2020_05_31Request();
+    AWS_CLOUDFRONT_API ListTagsForResource2020_05_31Request() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,46 +42,17 @@ namespace Model
     AWS_CLOUDFRONT_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>An ARN of a CloudFront resource.</p>
      */
-    inline const Aws::String& GetResource() const{ return m_resource; }
-
-    /**
-     * <p>An ARN of a CloudFront resource.</p>
-     */
+    inline const Aws::String& GetResource() const { return m_resource; }
     inline bool ResourceHasBeenSet() const { return m_resourceHasBeenSet; }
-
-    /**
-     * <p>An ARN of a CloudFront resource.</p>
-     */
-    inline void SetResource(const Aws::String& value) { m_resourceHasBeenSet = true; m_resource = value; }
-
-    /**
-     * <p>An ARN of a CloudFront resource.</p>
-     */
-    inline void SetResource(Aws::String&& value) { m_resourceHasBeenSet = true; m_resource = std::move(value); }
-
-    /**
-     * <p>An ARN of a CloudFront resource.</p>
-     */
-    inline void SetResource(const char* value) { m_resourceHasBeenSet = true; m_resource.assign(value); }
-
-    /**
-     * <p>An ARN of a CloudFront resource.</p>
-     */
-    inline ListTagsForResource2020_05_31Request& WithResource(const Aws::String& value) { SetResource(value); return *this;}
-
-    /**
-     * <p>An ARN of a CloudFront resource.</p>
-     */
-    inline ListTagsForResource2020_05_31Request& WithResource(Aws::String&& value) { SetResource(std::move(value)); return *this;}
-
-    /**
-     * <p>An ARN of a CloudFront resource.</p>
-     */
-    inline ListTagsForResource2020_05_31Request& WithResource(const char* value) { SetResource(value); return *this;}
-
+    template<typename ResourceT = Aws::String>
+    void SetResource(ResourceT&& value) { m_resourceHasBeenSet = true; m_resource = std::forward<ResourceT>(value); }
+    template<typename ResourceT = Aws::String>
+    ListTagsForResource2020_05_31Request& WithResource(ResourceT&& value) { SetResource(std::forward<ResourceT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resource;

@@ -18,25 +18,7 @@ namespace Glue
 namespace Model
 {
 
-DynamicTransform::DynamicTransform() : 
-    m_nameHasBeenSet(false),
-    m_transformNameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_functionNameHasBeenSet(false),
-    m_pathHasBeenSet(false),
-    m_versionHasBeenSet(false)
-{
-}
-
-DynamicTransform::DynamicTransform(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_transformNameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_functionNameHasBeenSet(false),
-    m_pathHasBeenSet(false),
-    m_versionHasBeenSet(false)
+DynamicTransform::DynamicTransform(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,17 +28,13 @@ DynamicTransform& DynamicTransform::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TransformName"))
   {
     m_transformName = jsonValue.GetString("TransformName");
-
     m_transformNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Inputs"))
   {
     Aws::Utils::Array<JsonView> inputsJsonList = jsonValue.GetArray("Inputs");
@@ -66,7 +44,6 @@ DynamicTransform& DynamicTransform::operator =(JsonView jsonValue)
     }
     m_inputsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Parameters"))
   {
     Aws::Utils::Array<JsonView> parametersJsonList = jsonValue.GetArray("Parameters");
@@ -76,28 +53,30 @@ DynamicTransform& DynamicTransform::operator =(JsonView jsonValue)
     }
     m_parametersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FunctionName"))
   {
     m_functionName = jsonValue.GetString("FunctionName");
-
     m_functionNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Path"))
   {
     m_path = jsonValue.GetString("Path");
-
     m_pathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Version"))
   {
     m_version = jsonValue.GetString("Version");
-
     m_versionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("OutputSchemas"))
+  {
+    Aws::Utils::Array<JsonView> outputSchemasJsonList = jsonValue.GetArray("OutputSchemas");
+    for(unsigned outputSchemasIndex = 0; outputSchemasIndex < outputSchemasJsonList.GetLength(); ++outputSchemasIndex)
+    {
+      m_outputSchemas.push_back(outputSchemasJsonList[outputSchemasIndex].AsObject());
+    }
+    m_outputSchemasHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -154,6 +133,17 @@ JsonValue DynamicTransform::Jsonize() const
   if(m_versionHasBeenSet)
   {
    payload.WithString("Version", m_version);
+
+  }
+
+  if(m_outputSchemasHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> outputSchemasJsonList(m_outputSchemas.size());
+   for(unsigned outputSchemasIndex = 0; outputSchemasIndex < outputSchemasJsonList.GetLength(); ++outputSchemasIndex)
+   {
+     outputSchemasJsonList[outputSchemasIndex].AsObject(m_outputSchemas[outputSchemasIndex].Jsonize());
+   }
+   payload.WithArray("OutputSchemas", std::move(outputSchemasJsonList));
 
   }
 

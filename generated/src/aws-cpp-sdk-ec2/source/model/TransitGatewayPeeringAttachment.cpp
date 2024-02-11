@@ -20,31 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGatewayPeeringAttachment::TransitGatewayPeeringAttachment() : 
-    m_transitGatewayAttachmentIdHasBeenSet(false),
-    m_accepterTransitGatewayAttachmentIdHasBeenSet(false),
-    m_requesterTgwInfoHasBeenSet(false),
-    m_accepterTgwInfoHasBeenSet(false),
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_state(TransitGatewayAttachmentState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-TransitGatewayPeeringAttachment::TransitGatewayPeeringAttachment(const XmlNode& xmlNode) : 
-    m_transitGatewayAttachmentIdHasBeenSet(false),
-    m_accepterTransitGatewayAttachmentIdHasBeenSet(false),
-    m_requesterTgwInfoHasBeenSet(false),
-    m_accepterTgwInfoHasBeenSet(false),
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_state(TransitGatewayAttachmentState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+TransitGatewayPeeringAttachment::TransitGatewayPeeringAttachment(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -94,7 +70,7 @@ TransitGatewayPeeringAttachment& TransitGatewayPeeringAttachment::operator =(con
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = TransitGatewayAttachmentStateMapper::GetTransitGatewayAttachmentStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = TransitGatewayAttachmentStateMapper::GetTransitGatewayAttachmentStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode creationTimeNode = resultNode.FirstChild("creationTime");
@@ -107,6 +83,7 @@ TransitGatewayPeeringAttachment& TransitGatewayPeeringAttachment::operator =(con
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -162,7 +139,7 @@ void TransitGatewayPeeringAttachment::OutputToStream(Aws::OStream& oStream, cons
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << TransitGatewayAttachmentStateMapper::GetNameForTransitGatewayAttachmentState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(TransitGatewayAttachmentStateMapper::GetNameForTransitGatewayAttachmentState(m_state)) << "&";
   }
 
   if(m_creationTimeHasBeenSet)
@@ -219,7 +196,7 @@ void TransitGatewayPeeringAttachment::OutputToStream(Aws::OStream& oStream, cons
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << TransitGatewayAttachmentStateMapper::GetNameForTransitGatewayAttachmentState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(TransitGatewayAttachmentStateMapper::GetNameForTransitGatewayAttachmentState(m_state)) << "&";
   }
   if(m_creationTimeHasBeenSet)
   {
@@ -231,7 +208,7 @@ void TransitGatewayPeeringAttachment::OutputToStream(Aws::OStream& oStream, cons
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

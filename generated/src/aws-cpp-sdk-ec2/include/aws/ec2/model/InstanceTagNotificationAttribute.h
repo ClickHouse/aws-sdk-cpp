@@ -33,7 +33,7 @@ namespace Model
   class InstanceTagNotificationAttribute
   {
   public:
-    AWS_EC2_API InstanceTagNotificationAttribute();
+    AWS_EC2_API InstanceTagNotificationAttribute() = default;
     AWS_EC2_API InstanceTagNotificationAttribute(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API InstanceTagNotificationAttribute& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,86 +41,37 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The registered tag keys.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetInstanceTagKeys() const{ return m_instanceTagKeys; }
-
-    /**
-     * <p>The registered tag keys.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetInstanceTagKeys() const { return m_instanceTagKeys; }
     inline bool InstanceTagKeysHasBeenSet() const { return m_instanceTagKeysHasBeenSet; }
+    template<typename InstanceTagKeysT = Aws::Vector<Aws::String>>
+    void SetInstanceTagKeys(InstanceTagKeysT&& value) { m_instanceTagKeysHasBeenSet = true; m_instanceTagKeys = std::forward<InstanceTagKeysT>(value); }
+    template<typename InstanceTagKeysT = Aws::Vector<Aws::String>>
+    InstanceTagNotificationAttribute& WithInstanceTagKeys(InstanceTagKeysT&& value) { SetInstanceTagKeys(std::forward<InstanceTagKeysT>(value)); return *this;}
+    template<typename InstanceTagKeysT = Aws::String>
+    InstanceTagNotificationAttribute& AddInstanceTagKeys(InstanceTagKeysT&& value) { m_instanceTagKeysHasBeenSet = true; m_instanceTagKeys.emplace_back(std::forward<InstanceTagKeysT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The registered tag keys.</p>
-     */
-    inline void SetInstanceTagKeys(const Aws::Vector<Aws::String>& value) { m_instanceTagKeysHasBeenSet = true; m_instanceTagKeys = value; }
-
-    /**
-     * <p>The registered tag keys.</p>
-     */
-    inline void SetInstanceTagKeys(Aws::Vector<Aws::String>&& value) { m_instanceTagKeysHasBeenSet = true; m_instanceTagKeys = std::move(value); }
-
-    /**
-     * <p>The registered tag keys.</p>
-     */
-    inline InstanceTagNotificationAttribute& WithInstanceTagKeys(const Aws::Vector<Aws::String>& value) { SetInstanceTagKeys(value); return *this;}
-
-    /**
-     * <p>The registered tag keys.</p>
-     */
-    inline InstanceTagNotificationAttribute& WithInstanceTagKeys(Aws::Vector<Aws::String>&& value) { SetInstanceTagKeys(std::move(value)); return *this;}
-
-    /**
-     * <p>The registered tag keys.</p>
-     */
-    inline InstanceTagNotificationAttribute& AddInstanceTagKeys(const Aws::String& value) { m_instanceTagKeysHasBeenSet = true; m_instanceTagKeys.push_back(value); return *this; }
-
-    /**
-     * <p>The registered tag keys.</p>
-     */
-    inline InstanceTagNotificationAttribute& AddInstanceTagKeys(Aws::String&& value) { m_instanceTagKeysHasBeenSet = true; m_instanceTagKeys.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The registered tag keys.</p>
-     */
-    inline InstanceTagNotificationAttribute& AddInstanceTagKeys(const char* value) { m_instanceTagKeysHasBeenSet = true; m_instanceTagKeys.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Indicates wheter all tag keys in the current Region are registered to appear
      * in scheduled event notifications. <code>true</code> indicates that all tag keys
      * in the current Region are registered.</p>
      */
-    inline bool GetIncludeAllTagsOfInstance() const{ return m_includeAllTagsOfInstance; }
-
-    /**
-     * <p>Indicates wheter all tag keys in the current Region are registered to appear
-     * in scheduled event notifications. <code>true</code> indicates that all tag keys
-     * in the current Region are registered.</p>
-     */
+    inline bool GetIncludeAllTagsOfInstance() const { return m_includeAllTagsOfInstance; }
     inline bool IncludeAllTagsOfInstanceHasBeenSet() const { return m_includeAllTagsOfInstanceHasBeenSet; }
-
-    /**
-     * <p>Indicates wheter all tag keys in the current Region are registered to appear
-     * in scheduled event notifications. <code>true</code> indicates that all tag keys
-     * in the current Region are registered.</p>
-     */
     inline void SetIncludeAllTagsOfInstance(bool value) { m_includeAllTagsOfInstanceHasBeenSet = true; m_includeAllTagsOfInstance = value; }
-
-    /**
-     * <p>Indicates wheter all tag keys in the current Region are registered to appear
-     * in scheduled event notifications. <code>true</code> indicates that all tag keys
-     * in the current Region are registered.</p>
-     */
     inline InstanceTagNotificationAttribute& WithIncludeAllTagsOfInstance(bool value) { SetIncludeAllTagsOfInstance(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_instanceTagKeys;
     bool m_instanceTagKeysHasBeenSet = false;
 
-    bool m_includeAllTagsOfInstance;
+    bool m_includeAllTagsOfInstance{false};
     bool m_includeAllTagsOfInstanceHasBeenSet = false;
   };
 

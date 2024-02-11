@@ -12,24 +12,6 @@ using namespace Aws::Synthetics::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateCanaryRequest::CreateCanaryRequest() : 
-    m_nameHasBeenSet(false),
-    m_codeHasBeenSet(false),
-    m_artifactS3LocationHasBeenSet(false),
-    m_executionRoleArnHasBeenSet(false),
-    m_scheduleHasBeenSet(false),
-    m_runConfigHasBeenSet(false),
-    m_successRetentionPeriodInDays(0),
-    m_successRetentionPeriodInDaysHasBeenSet(false),
-    m_failureRetentionPeriodInDays(0),
-    m_failureRetentionPeriodInDaysHasBeenSet(false),
-    m_runtimeVersionHasBeenSet(false),
-    m_vpcConfigHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_artifactConfigHasBeenSet(false)
-{
-}
-
 Aws::String CreateCanaryRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -91,6 +73,33 @@ Aws::String CreateCanaryRequest::SerializePayload() const
   if(m_vpcConfigHasBeenSet)
   {
    payload.WithObject("VpcConfig", m_vpcConfig.Jsonize());
+
+  }
+
+  if(m_resourcesToReplicateTagsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> resourcesToReplicateTagsJsonList(m_resourcesToReplicateTags.size());
+   for(unsigned resourcesToReplicateTagsIndex = 0; resourcesToReplicateTagsIndex < resourcesToReplicateTagsJsonList.GetLength(); ++resourcesToReplicateTagsIndex)
+   {
+     resourcesToReplicateTagsJsonList[resourcesToReplicateTagsIndex].AsString(ResourceToTagMapper::GetNameForResourceToTag(m_resourcesToReplicateTags[resourcesToReplicateTagsIndex]));
+   }
+   payload.WithArray("ResourcesToReplicateTags", std::move(resourcesToReplicateTagsJsonList));
+
+  }
+
+  if(m_provisionedResourceCleanupHasBeenSet)
+  {
+   payload.WithString("ProvisionedResourceCleanup", ProvisionedResourceCleanupSettingMapper::GetNameForProvisionedResourceCleanupSetting(m_provisionedResourceCleanup));
+  }
+
+  if(m_browserConfigsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> browserConfigsJsonList(m_browserConfigs.size());
+   for(unsigned browserConfigsIndex = 0; browserConfigsIndex < browserConfigsJsonList.GetLength(); ++browserConfigsIndex)
+   {
+     browserConfigsJsonList[browserConfigsIndex].AsObject(m_browserConfigs[browserConfigsIndex].Jsonize());
+   }
+   payload.WithArray("BrowserConfigs", std::move(browserConfigsJsonList));
 
   }
 

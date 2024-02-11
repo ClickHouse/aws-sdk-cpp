@@ -18,19 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsWafv2CustomResponseDetails::AwsWafv2CustomResponseDetails() : 
-    m_customResponseBodyKeyHasBeenSet(false),
-    m_responseCode(0),
-    m_responseCodeHasBeenSet(false),
-    m_responseHeadersHasBeenSet(false)
-{
-}
-
-AwsWafv2CustomResponseDetails::AwsWafv2CustomResponseDetails(JsonView jsonValue) : 
-    m_customResponseBodyKeyHasBeenSet(false),
-    m_responseCode(0),
-    m_responseCodeHasBeenSet(false),
-    m_responseHeadersHasBeenSet(false)
+AwsWafv2CustomResponseDetails::AwsWafv2CustomResponseDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ AwsWafv2CustomResponseDetails& AwsWafv2CustomResponseDetails::operator =(JsonVie
   if(jsonValue.ValueExists("CustomResponseBodyKey"))
   {
     m_customResponseBodyKey = jsonValue.GetString("CustomResponseBodyKey");
-
     m_customResponseBodyKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResponseCode"))
   {
     m_responseCode = jsonValue.GetInteger("ResponseCode");
-
     m_responseCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResponseHeaders"))
   {
     Aws::Utils::Array<JsonView> responseHeadersJsonList = jsonValue.GetArray("ResponseHeaders");
@@ -60,7 +44,6 @@ AwsWafv2CustomResponseDetails& AwsWafv2CustomResponseDetails::operator =(JsonVie
     }
     m_responseHeadersHasBeenSet = true;
   }
-
   return *this;
 }
 

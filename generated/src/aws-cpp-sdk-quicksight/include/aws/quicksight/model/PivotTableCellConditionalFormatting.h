@@ -8,6 +8,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/quicksight/model/TextConditionalFormat.h>
 #include <aws/quicksight/model/PivotTableConditionalFormattingScope.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <utility>
 
 namespace Aws
@@ -34,114 +35,61 @@ namespace Model
   class PivotTableCellConditionalFormatting
   {
   public:
-    AWS_QUICKSIGHT_API PivotTableCellConditionalFormatting();
+    AWS_QUICKSIGHT_API PivotTableCellConditionalFormatting() = default;
     AWS_QUICKSIGHT_API PivotTableCellConditionalFormatting(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API PivotTableCellConditionalFormatting& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field ID of the cell for conditional formatting.</p>
      */
-    inline const Aws::String& GetFieldId() const{ return m_fieldId; }
-
-    /**
-     * <p>The field ID of the cell for conditional formatting.</p>
-     */
+    inline const Aws::String& GetFieldId() const { return m_fieldId; }
     inline bool FieldIdHasBeenSet() const { return m_fieldIdHasBeenSet; }
+    template<typename FieldIdT = Aws::String>
+    void SetFieldId(FieldIdT&& value) { m_fieldIdHasBeenSet = true; m_fieldId = std::forward<FieldIdT>(value); }
+    template<typename FieldIdT = Aws::String>
+    PivotTableCellConditionalFormatting& WithFieldId(FieldIdT&& value) { SetFieldId(std::forward<FieldIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The field ID of the cell for conditional formatting.</p>
-     */
-    inline void SetFieldId(const Aws::String& value) { m_fieldIdHasBeenSet = true; m_fieldId = value; }
-
-    /**
-     * <p>The field ID of the cell for conditional formatting.</p>
-     */
-    inline void SetFieldId(Aws::String&& value) { m_fieldIdHasBeenSet = true; m_fieldId = std::move(value); }
-
-    /**
-     * <p>The field ID of the cell for conditional formatting.</p>
-     */
-    inline void SetFieldId(const char* value) { m_fieldIdHasBeenSet = true; m_fieldId.assign(value); }
-
-    /**
-     * <p>The field ID of the cell for conditional formatting.</p>
-     */
-    inline PivotTableCellConditionalFormatting& WithFieldId(const Aws::String& value) { SetFieldId(value); return *this;}
-
-    /**
-     * <p>The field ID of the cell for conditional formatting.</p>
-     */
-    inline PivotTableCellConditionalFormatting& WithFieldId(Aws::String&& value) { SetFieldId(std::move(value)); return *this;}
-
-    /**
-     * <p>The field ID of the cell for conditional formatting.</p>
-     */
-    inline PivotTableCellConditionalFormatting& WithFieldId(const char* value) { SetFieldId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The text format of the cell for conditional formatting.</p>
      */
-    inline const TextConditionalFormat& GetTextFormat() const{ return m_textFormat; }
-
-    /**
-     * <p>The text format of the cell for conditional formatting.</p>
-     */
+    inline const TextConditionalFormat& GetTextFormat() const { return m_textFormat; }
     inline bool TextFormatHasBeenSet() const { return m_textFormatHasBeenSet; }
+    template<typename TextFormatT = TextConditionalFormat>
+    void SetTextFormat(TextFormatT&& value) { m_textFormatHasBeenSet = true; m_textFormat = std::forward<TextFormatT>(value); }
+    template<typename TextFormatT = TextConditionalFormat>
+    PivotTableCellConditionalFormatting& WithTextFormat(TextFormatT&& value) { SetTextFormat(std::forward<TextFormatT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The text format of the cell for conditional formatting.</p>
-     */
-    inline void SetTextFormat(const TextConditionalFormat& value) { m_textFormatHasBeenSet = true; m_textFormat = value; }
-
-    /**
-     * <p>The text format of the cell for conditional formatting.</p>
-     */
-    inline void SetTextFormat(TextConditionalFormat&& value) { m_textFormatHasBeenSet = true; m_textFormat = std::move(value); }
-
-    /**
-     * <p>The text format of the cell for conditional formatting.</p>
-     */
-    inline PivotTableCellConditionalFormatting& WithTextFormat(const TextConditionalFormat& value) { SetTextFormat(value); return *this;}
-
-    /**
-     * <p>The text format of the cell for conditional formatting.</p>
-     */
-    inline PivotTableCellConditionalFormatting& WithTextFormat(TextConditionalFormat&& value) { SetTextFormat(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The scope of the cell for conditional formatting.</p>
      */
-    inline const PivotTableConditionalFormattingScope& GetScope() const{ return m_scope; }
-
-    /**
-     * <p>The scope of the cell for conditional formatting.</p>
-     */
+    inline const PivotTableConditionalFormattingScope& GetScope() const { return m_scope; }
     inline bool ScopeHasBeenSet() const { return m_scopeHasBeenSet; }
+    template<typename ScopeT = PivotTableConditionalFormattingScope>
+    void SetScope(ScopeT&& value) { m_scopeHasBeenSet = true; m_scope = std::forward<ScopeT>(value); }
+    template<typename ScopeT = PivotTableConditionalFormattingScope>
+    PivotTableCellConditionalFormatting& WithScope(ScopeT&& value) { SetScope(std::forward<ScopeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The scope of the cell for conditional formatting.</p>
+     * <p>A list of cell scopes for conditional formatting.</p>
      */
-    inline void SetScope(const PivotTableConditionalFormattingScope& value) { m_scopeHasBeenSet = true; m_scope = value; }
-
-    /**
-     * <p>The scope of the cell for conditional formatting.</p>
-     */
-    inline void SetScope(PivotTableConditionalFormattingScope&& value) { m_scopeHasBeenSet = true; m_scope = std::move(value); }
-
-    /**
-     * <p>The scope of the cell for conditional formatting.</p>
-     */
-    inline PivotTableCellConditionalFormatting& WithScope(const PivotTableConditionalFormattingScope& value) { SetScope(value); return *this;}
-
-    /**
-     * <p>The scope of the cell for conditional formatting.</p>
-     */
-    inline PivotTableCellConditionalFormatting& WithScope(PivotTableConditionalFormattingScope&& value) { SetScope(std::move(value)); return *this;}
-
+    inline const Aws::Vector<PivotTableConditionalFormattingScope>& GetScopes() const { return m_scopes; }
+    inline bool ScopesHasBeenSet() const { return m_scopesHasBeenSet; }
+    template<typename ScopesT = Aws::Vector<PivotTableConditionalFormattingScope>>
+    void SetScopes(ScopesT&& value) { m_scopesHasBeenSet = true; m_scopes = std::forward<ScopesT>(value); }
+    template<typename ScopesT = Aws::Vector<PivotTableConditionalFormattingScope>>
+    PivotTableCellConditionalFormatting& WithScopes(ScopesT&& value) { SetScopes(std::forward<ScopesT>(value)); return *this;}
+    template<typename ScopesT = PivotTableConditionalFormattingScope>
+    PivotTableCellConditionalFormatting& AddScopes(ScopesT&& value) { m_scopesHasBeenSet = true; m_scopes.emplace_back(std::forward<ScopesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_fieldId;
@@ -152,6 +100,9 @@ namespace Model
 
     PivotTableConditionalFormattingScope m_scope;
     bool m_scopeHasBeenSet = false;
+
+    Aws::Vector<PivotTableConditionalFormattingScope> m_scopes;
+    bool m_scopesHasBeenSet = false;
   };
 
 } // namespace Model

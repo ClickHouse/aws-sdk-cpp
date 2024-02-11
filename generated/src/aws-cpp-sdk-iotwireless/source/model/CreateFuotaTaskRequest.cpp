@@ -12,24 +12,6 @@ using namespace Aws::IoTWireless::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateFuotaTaskRequest::CreateFuotaTaskRequest() : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_clientRequestToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientRequestTokenHasBeenSet(true),
-    m_loRaWANHasBeenSet(false),
-    m_firmwareUpdateImageHasBeenSet(false),
-    m_firmwareUpdateRoleHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_redundancyPercent(0),
-    m_redundancyPercentHasBeenSet(false),
-    m_fragmentSizeBytes(0),
-    m_fragmentSizeBytesHasBeenSet(false),
-    m_fragmentIntervalMS(0),
-    m_fragmentIntervalMSHasBeenSet(false)
-{
-}
-
 Aws::String CreateFuotaTaskRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -96,6 +78,12 @@ Aws::String CreateFuotaTaskRequest::SerializePayload() const
   if(m_fragmentIntervalMSHasBeenSet)
   {
    payload.WithInteger("FragmentIntervalMS", m_fragmentIntervalMS);
+
+  }
+
+  if(m_descriptorHasBeenSet)
+  {
+   payload.WithString("Descriptor", m_descriptor);
 
   }
 

@@ -18,15 +18,7 @@ namespace ECS
 namespace Model
 {
 
-KernelCapabilities::KernelCapabilities() : 
-    m_addHasBeenSet(false),
-    m_dropHasBeenSet(false)
-{
-}
-
-KernelCapabilities::KernelCapabilities(JsonView jsonValue) : 
-    m_addHasBeenSet(false),
-    m_dropHasBeenSet(false)
+KernelCapabilities::KernelCapabilities(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ KernelCapabilities& KernelCapabilities::operator =(JsonView jsonValue)
     }
     m_addHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("drop"))
   {
     Aws::Utils::Array<JsonView> dropJsonList = jsonValue.GetArray("drop");
@@ -52,7 +43,6 @@ KernelCapabilities& KernelCapabilities::operator =(JsonView jsonValue)
     }
     m_dropHasBeenSet = true;
   }
-
   return *this;
 }
 

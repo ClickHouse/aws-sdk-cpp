@@ -12,26 +12,19 @@ using namespace Aws::OpenSearchServerless::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DeleteCollectionRequest::DeleteCollectionRequest() : 
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_idHasBeenSet(false)
-{
-}
-
 Aws::String DeleteCollectionRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_clientTokenHasBeenSet)
-  {
-   payload.WithString("clientToken", m_clientToken);
-
-  }
-
   if(m_idHasBeenSet)
   {
    payload.WithString("id", m_id);
+
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("clientToken", m_clientToken);
 
   }
 

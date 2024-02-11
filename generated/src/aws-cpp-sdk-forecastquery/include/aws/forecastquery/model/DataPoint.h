@@ -32,79 +32,39 @@ namespace Model
   class DataPoint
   {
   public:
-    AWS_FORECASTQUERYSERVICE_API DataPoint();
+    AWS_FORECASTQUERYSERVICE_API DataPoint() = default;
     AWS_FORECASTQUERYSERVICE_API DataPoint(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTQUERYSERVICE_API DataPoint& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTQUERYSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The timestamp of the specific forecast.</p>
      */
-    inline const Aws::String& GetTimestamp() const{ return m_timestamp; }
-
-    /**
-     * <p>The timestamp of the specific forecast.</p>
-     */
+    inline const Aws::String& GetTimestamp() const { return m_timestamp; }
     inline bool TimestampHasBeenSet() const { return m_timestampHasBeenSet; }
+    template<typename TimestampT = Aws::String>
+    void SetTimestamp(TimestampT&& value) { m_timestampHasBeenSet = true; m_timestamp = std::forward<TimestampT>(value); }
+    template<typename TimestampT = Aws::String>
+    DataPoint& WithTimestamp(TimestampT&& value) { SetTimestamp(std::forward<TimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of the specific forecast.</p>
-     */
-    inline void SetTimestamp(const Aws::String& value) { m_timestampHasBeenSet = true; m_timestamp = value; }
-
-    /**
-     * <p>The timestamp of the specific forecast.</p>
-     */
-    inline void SetTimestamp(Aws::String&& value) { m_timestampHasBeenSet = true; m_timestamp = std::move(value); }
-
-    /**
-     * <p>The timestamp of the specific forecast.</p>
-     */
-    inline void SetTimestamp(const char* value) { m_timestampHasBeenSet = true; m_timestamp.assign(value); }
-
-    /**
-     * <p>The timestamp of the specific forecast.</p>
-     */
-    inline DataPoint& WithTimestamp(const Aws::String& value) { SetTimestamp(value); return *this;}
-
-    /**
-     * <p>The timestamp of the specific forecast.</p>
-     */
-    inline DataPoint& WithTimestamp(Aws::String&& value) { SetTimestamp(std::move(value)); return *this;}
-
-    /**
-     * <p>The timestamp of the specific forecast.</p>
-     */
-    inline DataPoint& WithTimestamp(const char* value) { SetTimestamp(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The forecast value.</p>
      */
-    inline double GetValue() const{ return m_value; }
-
-    /**
-     * <p>The forecast value.</p>
-     */
+    inline double GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The forecast value.</p>
-     */
     inline void SetValue(double value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The forecast value.</p>
-     */
     inline DataPoint& WithValue(double value) { SetValue(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_timestamp;
     bool m_timestampHasBeenSet = false;
 
-    double m_value;
+    double m_value{0.0};
     bool m_valueHasBeenSet = false;
   };
 

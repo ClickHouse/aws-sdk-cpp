@@ -33,121 +33,54 @@ namespace Model
   class Message
   {
   public:
-    AWS_LEXMODELBUILDINGSERVICE_API Message();
+    AWS_LEXMODELBUILDINGSERVICE_API Message() = default;
     AWS_LEXMODELBUILDINGSERVICE_API Message(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELBUILDINGSERVICE_API Message& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELBUILDINGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The content type of the message string.</p>
      */
-    inline const ContentType& GetContentType() const{ return m_contentType; }
-
-    /**
-     * <p>The content type of the message string.</p>
-     */
+    inline ContentType GetContentType() const { return m_contentType; }
     inline bool ContentTypeHasBeenSet() const { return m_contentTypeHasBeenSet; }
+    inline void SetContentType(ContentType value) { m_contentTypeHasBeenSet = true; m_contentType = value; }
+    inline Message& WithContentType(ContentType value) { SetContentType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The content type of the message string.</p>
-     */
-    inline void SetContentType(const ContentType& value) { m_contentTypeHasBeenSet = true; m_contentType = value; }
-
-    /**
-     * <p>The content type of the message string.</p>
-     */
-    inline void SetContentType(ContentType&& value) { m_contentTypeHasBeenSet = true; m_contentType = std::move(value); }
-
-    /**
-     * <p>The content type of the message string.</p>
-     */
-    inline Message& WithContentType(const ContentType& value) { SetContentType(value); return *this;}
-
-    /**
-     * <p>The content type of the message string.</p>
-     */
-    inline Message& WithContentType(ContentType&& value) { SetContentType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The text of the message.</p>
      */
-    inline const Aws::String& GetContent() const{ return m_content; }
-
-    /**
-     * <p>The text of the message.</p>
-     */
+    inline const Aws::String& GetContent() const { return m_content; }
     inline bool ContentHasBeenSet() const { return m_contentHasBeenSet; }
+    template<typename ContentT = Aws::String>
+    void SetContent(ContentT&& value) { m_contentHasBeenSet = true; m_content = std::forward<ContentT>(value); }
+    template<typename ContentT = Aws::String>
+    Message& WithContent(ContentT&& value) { SetContent(std::forward<ContentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The text of the message.</p>
-     */
-    inline void SetContent(const Aws::String& value) { m_contentHasBeenSet = true; m_content = value; }
-
-    /**
-     * <p>The text of the message.</p>
-     */
-    inline void SetContent(Aws::String&& value) { m_contentHasBeenSet = true; m_content = std::move(value); }
-
-    /**
-     * <p>The text of the message.</p>
-     */
-    inline void SetContent(const char* value) { m_contentHasBeenSet = true; m_content.assign(value); }
-
-    /**
-     * <p>The text of the message.</p>
-     */
-    inline Message& WithContent(const Aws::String& value) { SetContent(value); return *this;}
-
-    /**
-     * <p>The text of the message.</p>
-     */
-    inline Message& WithContent(Aws::String&& value) { SetContent(std::move(value)); return *this;}
-
-    /**
-     * <p>The text of the message.</p>
-     */
-    inline Message& WithContent(const char* value) { SetContent(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Identifies the message group that the message belongs to. When a group is
      * assigned to a message, Amazon Lex returns one message from each group in the
      * response.</p>
      */
-    inline int GetGroupNumber() const{ return m_groupNumber; }
-
-    /**
-     * <p>Identifies the message group that the message belongs to. When a group is
-     * assigned to a message, Amazon Lex returns one message from each group in the
-     * response.</p>
-     */
+    inline int GetGroupNumber() const { return m_groupNumber; }
     inline bool GroupNumberHasBeenSet() const { return m_groupNumberHasBeenSet; }
-
-    /**
-     * <p>Identifies the message group that the message belongs to. When a group is
-     * assigned to a message, Amazon Lex returns one message from each group in the
-     * response.</p>
-     */
     inline void SetGroupNumber(int value) { m_groupNumberHasBeenSet = true; m_groupNumber = value; }
-
-    /**
-     * <p>Identifies the message group that the message belongs to. When a group is
-     * assigned to a message, Amazon Lex returns one message from each group in the
-     * response.</p>
-     */
     inline Message& WithGroupNumber(int value) { SetGroupNumber(value); return *this;}
-
+    ///@}
   private:
 
-    ContentType m_contentType;
+    ContentType m_contentType{ContentType::NOT_SET};
     bool m_contentTypeHasBeenSet = false;
 
     Aws::String m_content;
     bool m_contentHasBeenSet = false;
 
-    int m_groupNumber;
+    int m_groupNumber{0};
     bool m_groupNumberHasBeenSet = false;
   };
 

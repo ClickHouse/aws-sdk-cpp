@@ -33,235 +33,97 @@ namespace Model
   class Item
   {
   public:
-    AWS_MEDIASTOREDATA_API Item();
+    AWS_MEDIASTOREDATA_API Item() = default;
     AWS_MEDIASTOREDATA_API Item(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIASTOREDATA_API Item& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIASTOREDATA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the item.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the item.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Item& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the item.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the item.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the item.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the item.</p>
-     */
-    inline Item& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the item.</p>
-     */
-    inline Item& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the item.</p>
-     */
-    inline Item& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The item type (folder or object).</p>
      */
-    inline const ItemType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The item type (folder or object).</p>
-     */
+    inline ItemType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(ItemType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline Item& WithType(ItemType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The item type (folder or object).</p>
-     */
-    inline void SetType(const ItemType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The item type (folder or object).</p>
-     */
-    inline void SetType(ItemType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The item type (folder or object).</p>
-     */
-    inline Item& WithType(const ItemType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The item type (folder or object).</p>
-     */
-    inline Item& WithType(ItemType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ETag that represents a unique instance of the item.</p>
      */
-    inline const Aws::String& GetETag() const{ return m_eTag; }
-
-    /**
-     * <p>The ETag that represents a unique instance of the item.</p>
-     */
+    inline const Aws::String& GetETag() const { return m_eTag; }
     inline bool ETagHasBeenSet() const { return m_eTagHasBeenSet; }
+    template<typename ETagT = Aws::String>
+    void SetETag(ETagT&& value) { m_eTagHasBeenSet = true; m_eTag = std::forward<ETagT>(value); }
+    template<typename ETagT = Aws::String>
+    Item& WithETag(ETagT&& value) { SetETag(std::forward<ETagT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ETag that represents a unique instance of the item.</p>
-     */
-    inline void SetETag(const Aws::String& value) { m_eTagHasBeenSet = true; m_eTag = value; }
-
-    /**
-     * <p>The ETag that represents a unique instance of the item.</p>
-     */
-    inline void SetETag(Aws::String&& value) { m_eTagHasBeenSet = true; m_eTag = std::move(value); }
-
-    /**
-     * <p>The ETag that represents a unique instance of the item.</p>
-     */
-    inline void SetETag(const char* value) { m_eTagHasBeenSet = true; m_eTag.assign(value); }
-
-    /**
-     * <p>The ETag that represents a unique instance of the item.</p>
-     */
-    inline Item& WithETag(const Aws::String& value) { SetETag(value); return *this;}
-
-    /**
-     * <p>The ETag that represents a unique instance of the item.</p>
-     */
-    inline Item& WithETag(Aws::String&& value) { SetETag(std::move(value)); return *this;}
-
-    /**
-     * <p>The ETag that represents a unique instance of the item.</p>
-     */
-    inline Item& WithETag(const char* value) { SetETag(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the item was last modified.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModified() const{ return m_lastModified; }
-
-    /**
-     * <p>The date and time that the item was last modified.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastModified() const { return m_lastModified; }
     inline bool LastModifiedHasBeenSet() const { return m_lastModifiedHasBeenSet; }
+    template<typename LastModifiedT = Aws::Utils::DateTime>
+    void SetLastModified(LastModifiedT&& value) { m_lastModifiedHasBeenSet = true; m_lastModified = std::forward<LastModifiedT>(value); }
+    template<typename LastModifiedT = Aws::Utils::DateTime>
+    Item& WithLastModified(LastModifiedT&& value) { SetLastModified(std::forward<LastModifiedT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the item was last modified.</p>
-     */
-    inline void SetLastModified(const Aws::Utils::DateTime& value) { m_lastModifiedHasBeenSet = true; m_lastModified = value; }
-
-    /**
-     * <p>The date and time that the item was last modified.</p>
-     */
-    inline void SetLastModified(Aws::Utils::DateTime&& value) { m_lastModifiedHasBeenSet = true; m_lastModified = std::move(value); }
-
-    /**
-     * <p>The date and time that the item was last modified.</p>
-     */
-    inline Item& WithLastModified(const Aws::Utils::DateTime& value) { SetLastModified(value); return *this;}
-
-    /**
-     * <p>The date and time that the item was last modified.</p>
-     */
-    inline Item& WithLastModified(Aws::Utils::DateTime&& value) { SetLastModified(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The content type of the item.</p>
      */
-    inline const Aws::String& GetContentType() const{ return m_contentType; }
-
-    /**
-     * <p>The content type of the item.</p>
-     */
+    inline const Aws::String& GetContentType() const { return m_contentType; }
     inline bool ContentTypeHasBeenSet() const { return m_contentTypeHasBeenSet; }
+    template<typename ContentTypeT = Aws::String>
+    void SetContentType(ContentTypeT&& value) { m_contentTypeHasBeenSet = true; m_contentType = std::forward<ContentTypeT>(value); }
+    template<typename ContentTypeT = Aws::String>
+    Item& WithContentType(ContentTypeT&& value) { SetContentType(std::forward<ContentTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The content type of the item.</p>
-     */
-    inline void SetContentType(const Aws::String& value) { m_contentTypeHasBeenSet = true; m_contentType = value; }
-
-    /**
-     * <p>The content type of the item.</p>
-     */
-    inline void SetContentType(Aws::String&& value) { m_contentTypeHasBeenSet = true; m_contentType = std::move(value); }
-
-    /**
-     * <p>The content type of the item.</p>
-     */
-    inline void SetContentType(const char* value) { m_contentTypeHasBeenSet = true; m_contentType.assign(value); }
-
-    /**
-     * <p>The content type of the item.</p>
-     */
-    inline Item& WithContentType(const Aws::String& value) { SetContentType(value); return *this;}
-
-    /**
-     * <p>The content type of the item.</p>
-     */
-    inline Item& WithContentType(Aws::String&& value) { SetContentType(std::move(value)); return *this;}
-
-    /**
-     * <p>The content type of the item.</p>
-     */
-    inline Item& WithContentType(const char* value) { SetContentType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The length of the item in bytes.</p>
      */
-    inline long long GetContentLength() const{ return m_contentLength; }
-
-    /**
-     * <p>The length of the item in bytes.</p>
-     */
+    inline long long GetContentLength() const { return m_contentLength; }
     inline bool ContentLengthHasBeenSet() const { return m_contentLengthHasBeenSet; }
-
-    /**
-     * <p>The length of the item in bytes.</p>
-     */
     inline void SetContentLength(long long value) { m_contentLengthHasBeenSet = true; m_contentLength = value; }
-
-    /**
-     * <p>The length of the item in bytes.</p>
-     */
     inline Item& WithContentLength(long long value) { SetContentLength(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    ItemType m_type;
+    ItemType m_type{ItemType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_eTag;
     bool m_eTagHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModified;
+    Aws::Utils::DateTime m_lastModified{};
     bool m_lastModifiedHasBeenSet = false;
 
     Aws::String m_contentType;
     bool m_contentTypeHasBeenSet = false;
 
-    long long m_contentLength;
+    long long m_contentLength{0};
     bool m_contentLengthHasBeenSet = false;
   };
 

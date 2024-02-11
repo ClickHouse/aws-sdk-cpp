@@ -18,81 +18,71 @@ namespace ApplicationInsights
 namespace Model
 {
 
-ConfigurationEvent::ConfigurationEvent() : 
-    m_monitoredResourceARNHasBeenSet(false),
-    m_eventStatus(ConfigurationEventStatus::NOT_SET),
-    m_eventStatusHasBeenSet(false),
-    m_eventResourceType(ConfigurationEventResourceType::NOT_SET),
-    m_eventResourceTypeHasBeenSet(false),
-    m_eventTimeHasBeenSet(false),
-    m_eventDetailHasBeenSet(false),
-    m_eventResourceNameHasBeenSet(false)
-{
-}
-
-ConfigurationEvent::ConfigurationEvent(JsonView jsonValue) : 
-    m_monitoredResourceARNHasBeenSet(false),
-    m_eventStatus(ConfigurationEventStatus::NOT_SET),
-    m_eventStatusHasBeenSet(false),
-    m_eventResourceType(ConfigurationEventResourceType::NOT_SET),
-    m_eventResourceTypeHasBeenSet(false),
-    m_eventTimeHasBeenSet(false),
-    m_eventDetailHasBeenSet(false),
-    m_eventResourceNameHasBeenSet(false)
+ConfigurationEvent::ConfigurationEvent(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 ConfigurationEvent& ConfigurationEvent::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("ResourceGroupName"))
+  {
+    m_resourceGroupName = jsonValue.GetString("ResourceGroupName");
+    m_resourceGroupNameHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("AccountId"))
+  {
+    m_accountId = jsonValue.GetString("AccountId");
+    m_accountIdHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("MonitoredResourceARN"))
   {
     m_monitoredResourceARN = jsonValue.GetString("MonitoredResourceARN");
-
     m_monitoredResourceARNHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EventStatus"))
   {
     m_eventStatus = ConfigurationEventStatusMapper::GetConfigurationEventStatusForName(jsonValue.GetString("EventStatus"));
-
     m_eventStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EventResourceType"))
   {
     m_eventResourceType = ConfigurationEventResourceTypeMapper::GetConfigurationEventResourceTypeForName(jsonValue.GetString("EventResourceType"));
-
     m_eventResourceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EventTime"))
   {
     m_eventTime = jsonValue.GetDouble("EventTime");
-
     m_eventTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EventDetail"))
   {
     m_eventDetail = jsonValue.GetString("EventDetail");
-
     m_eventDetailHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EventResourceName"))
   {
     m_eventResourceName = jsonValue.GetString("EventResourceName");
-
     m_eventResourceNameHasBeenSet = true;
   }
-
   return *this;
 }
 
 JsonValue ConfigurationEvent::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_resourceGroupNameHasBeenSet)
+  {
+   payload.WithString("ResourceGroupName", m_resourceGroupName);
+
+  }
+
+  if(m_accountIdHasBeenSet)
+  {
+   payload.WithString("AccountId", m_accountId);
+
+  }
 
   if(m_monitoredResourceARNHasBeenSet)
   {

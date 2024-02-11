@@ -29,118 +29,54 @@ namespace Model
   class ListOrganizationPortfolioAccessResult
   {
   public:
-    AWS_SERVICECATALOG_API ListOrganizationPortfolioAccessResult();
+    AWS_SERVICECATALOG_API ListOrganizationPortfolioAccessResult() = default;
     AWS_SERVICECATALOG_API ListOrganizationPortfolioAccessResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SERVICECATALOG_API ListOrganizationPortfolioAccessResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Displays information about the organization nodes.</p>
      */
-    inline const Aws::Vector<OrganizationNode>& GetOrganizationNodes() const{ return m_organizationNodes; }
+    inline const Aws::Vector<OrganizationNode>& GetOrganizationNodes() const { return m_organizationNodes; }
+    template<typename OrganizationNodesT = Aws::Vector<OrganizationNode>>
+    void SetOrganizationNodes(OrganizationNodesT&& value) { m_organizationNodesHasBeenSet = true; m_organizationNodes = std::forward<OrganizationNodesT>(value); }
+    template<typename OrganizationNodesT = Aws::Vector<OrganizationNode>>
+    ListOrganizationPortfolioAccessResult& WithOrganizationNodes(OrganizationNodesT&& value) { SetOrganizationNodes(std::forward<OrganizationNodesT>(value)); return *this;}
+    template<typename OrganizationNodesT = OrganizationNode>
+    ListOrganizationPortfolioAccessResult& AddOrganizationNodes(OrganizationNodesT&& value) { m_organizationNodesHasBeenSet = true; m_organizationNodes.emplace_back(std::forward<OrganizationNodesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Displays information about the organization nodes.</p>
-     */
-    inline void SetOrganizationNodes(const Aws::Vector<OrganizationNode>& value) { m_organizationNodes = value; }
-
-    /**
-     * <p>Displays information about the organization nodes.</p>
-     */
-    inline void SetOrganizationNodes(Aws::Vector<OrganizationNode>&& value) { m_organizationNodes = std::move(value); }
-
-    /**
-     * <p>Displays information about the organization nodes.</p>
-     */
-    inline ListOrganizationPortfolioAccessResult& WithOrganizationNodes(const Aws::Vector<OrganizationNode>& value) { SetOrganizationNodes(value); return *this;}
-
-    /**
-     * <p>Displays information about the organization nodes.</p>
-     */
-    inline ListOrganizationPortfolioAccessResult& WithOrganizationNodes(Aws::Vector<OrganizationNode>&& value) { SetOrganizationNodes(std::move(value)); return *this;}
-
-    /**
-     * <p>Displays information about the organization nodes.</p>
-     */
-    inline ListOrganizationPortfolioAccessResult& AddOrganizationNodes(const OrganizationNode& value) { m_organizationNodes.push_back(value); return *this; }
-
-    /**
-     * <p>Displays information about the organization nodes.</p>
-     */
-    inline ListOrganizationPortfolioAccessResult& AddOrganizationNodes(OrganizationNode&& value) { m_organizationNodes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The page token to use to retrieve the next set of results. If there are no
      * additional results, this value is null.</p>
      */
-    inline const Aws::String& GetNextPageToken() const{ return m_nextPageToken; }
+    inline const Aws::String& GetNextPageToken() const { return m_nextPageToken; }
+    template<typename NextPageTokenT = Aws::String>
+    void SetNextPageToken(NextPageTokenT&& value) { m_nextPageTokenHasBeenSet = true; m_nextPageToken = std::forward<NextPageTokenT>(value); }
+    template<typename NextPageTokenT = Aws::String>
+    ListOrganizationPortfolioAccessResult& WithNextPageToken(NextPageTokenT&& value) { SetNextPageToken(std::forward<NextPageTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The page token to use to retrieve the next set of results. If there are no
-     * additional results, this value is null.</p>
-     */
-    inline void SetNextPageToken(const Aws::String& value) { m_nextPageToken = value; }
-
-    /**
-     * <p>The page token to use to retrieve the next set of results. If there are no
-     * additional results, this value is null.</p>
-     */
-    inline void SetNextPageToken(Aws::String&& value) { m_nextPageToken = std::move(value); }
-
-    /**
-     * <p>The page token to use to retrieve the next set of results. If there are no
-     * additional results, this value is null.</p>
-     */
-    inline void SetNextPageToken(const char* value) { m_nextPageToken.assign(value); }
-
-    /**
-     * <p>The page token to use to retrieve the next set of results. If there are no
-     * additional results, this value is null.</p>
-     */
-    inline ListOrganizationPortfolioAccessResult& WithNextPageToken(const Aws::String& value) { SetNextPageToken(value); return *this;}
-
-    /**
-     * <p>The page token to use to retrieve the next set of results. If there are no
-     * additional results, this value is null.</p>
-     */
-    inline ListOrganizationPortfolioAccessResult& WithNextPageToken(Aws::String&& value) { SetNextPageToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The page token to use to retrieve the next set of results. If there are no
-     * additional results, this value is null.</p>
-     */
-    inline ListOrganizationPortfolioAccessResult& WithNextPageToken(const char* value) { SetNextPageToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListOrganizationPortfolioAccessResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListOrganizationPortfolioAccessResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListOrganizationPortfolioAccessResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListOrganizationPortfolioAccessResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<OrganizationNode> m_organizationNodes;
+    bool m_organizationNodesHasBeenSet = false;
 
     Aws::String m_nextPageToken;
+    bool m_nextPageTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

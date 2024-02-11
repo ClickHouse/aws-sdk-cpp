@@ -32,42 +32,23 @@ namespace Model
   class IncrementalRefresh
   {
   public:
-    AWS_QUICKSIGHT_API IncrementalRefresh();
+    AWS_QUICKSIGHT_API IncrementalRefresh() = default;
     AWS_QUICKSIGHT_API IncrementalRefresh(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API IncrementalRefresh& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The lookback window setup for an incremental refresh configuration.</p>
      */
-    inline const LookbackWindow& GetLookbackWindow() const{ return m_lookbackWindow; }
-
-    /**
-     * <p>The lookback window setup for an incremental refresh configuration.</p>
-     */
+    inline const LookbackWindow& GetLookbackWindow() const { return m_lookbackWindow; }
     inline bool LookbackWindowHasBeenSet() const { return m_lookbackWindowHasBeenSet; }
-
-    /**
-     * <p>The lookback window setup for an incremental refresh configuration.</p>
-     */
-    inline void SetLookbackWindow(const LookbackWindow& value) { m_lookbackWindowHasBeenSet = true; m_lookbackWindow = value; }
-
-    /**
-     * <p>The lookback window setup for an incremental refresh configuration.</p>
-     */
-    inline void SetLookbackWindow(LookbackWindow&& value) { m_lookbackWindowHasBeenSet = true; m_lookbackWindow = std::move(value); }
-
-    /**
-     * <p>The lookback window setup for an incremental refresh configuration.</p>
-     */
-    inline IncrementalRefresh& WithLookbackWindow(const LookbackWindow& value) { SetLookbackWindow(value); return *this;}
-
-    /**
-     * <p>The lookback window setup for an incremental refresh configuration.</p>
-     */
-    inline IncrementalRefresh& WithLookbackWindow(LookbackWindow&& value) { SetLookbackWindow(std::move(value)); return *this;}
-
+    template<typename LookbackWindowT = LookbackWindow>
+    void SetLookbackWindow(LookbackWindowT&& value) { m_lookbackWindowHasBeenSet = true; m_lookbackWindow = std::forward<LookbackWindowT>(value); }
+    template<typename LookbackWindowT = LookbackWindow>
+    IncrementalRefresh& WithLookbackWindow(LookbackWindowT&& value) { SetLookbackWindow(std::forward<LookbackWindowT>(value)); return *this;}
+    ///@}
   private:
 
     LookbackWindow m_lookbackWindow;

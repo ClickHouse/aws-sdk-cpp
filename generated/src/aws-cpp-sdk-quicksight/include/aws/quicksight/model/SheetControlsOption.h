@@ -31,45 +31,24 @@ namespace Model
   class SheetControlsOption
   {
   public:
-    AWS_QUICKSIGHT_API SheetControlsOption();
+    AWS_QUICKSIGHT_API SheetControlsOption() = default;
     AWS_QUICKSIGHT_API SheetControlsOption(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API SheetControlsOption& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Visibility state.</p>
      */
-    inline const DashboardUIState& GetVisibilityState() const{ return m_visibilityState; }
-
-    /**
-     * <p>Visibility state.</p>
-     */
+    inline DashboardUIState GetVisibilityState() const { return m_visibilityState; }
     inline bool VisibilityStateHasBeenSet() const { return m_visibilityStateHasBeenSet; }
-
-    /**
-     * <p>Visibility state.</p>
-     */
-    inline void SetVisibilityState(const DashboardUIState& value) { m_visibilityStateHasBeenSet = true; m_visibilityState = value; }
-
-    /**
-     * <p>Visibility state.</p>
-     */
-    inline void SetVisibilityState(DashboardUIState&& value) { m_visibilityStateHasBeenSet = true; m_visibilityState = std::move(value); }
-
-    /**
-     * <p>Visibility state.</p>
-     */
-    inline SheetControlsOption& WithVisibilityState(const DashboardUIState& value) { SetVisibilityState(value); return *this;}
-
-    /**
-     * <p>Visibility state.</p>
-     */
-    inline SheetControlsOption& WithVisibilityState(DashboardUIState&& value) { SetVisibilityState(std::move(value)); return *this;}
-
+    inline void SetVisibilityState(DashboardUIState value) { m_visibilityStateHasBeenSet = true; m_visibilityState = value; }
+    inline SheetControlsOption& WithVisibilityState(DashboardUIState value) { SetVisibilityState(value); return *this;}
+    ///@}
   private:
 
-    DashboardUIState m_visibilityState;
+    DashboardUIState m_visibilityState{DashboardUIState::NOT_SET};
     bool m_visibilityStateHasBeenSet = false;
   };
 

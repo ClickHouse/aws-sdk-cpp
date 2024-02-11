@@ -18,17 +18,7 @@ namespace Proton
 namespace Model
 {
 
-AccountSettings::AccountSettings() : 
-    m_pipelineCodebuildRoleArnHasBeenSet(false),
-    m_pipelineProvisioningRepositoryHasBeenSet(false),
-    m_pipelineServiceRoleArnHasBeenSet(false)
-{
-}
-
-AccountSettings::AccountSettings(JsonView jsonValue) : 
-    m_pipelineCodebuildRoleArnHasBeenSet(false),
-    m_pipelineProvisioningRepositoryHasBeenSet(false),
-    m_pipelineServiceRoleArnHasBeenSet(false)
+AccountSettings::AccountSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ AccountSettings& AccountSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("pipelineCodebuildRoleArn"))
   {
     m_pipelineCodebuildRoleArn = jsonValue.GetString("pipelineCodebuildRoleArn");
-
     m_pipelineCodebuildRoleArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("pipelineProvisioningRepository"))
   {
     m_pipelineProvisioningRepository = jsonValue.GetObject("pipelineProvisioningRepository");
-
     m_pipelineProvisioningRepositoryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("pipelineServiceRoleArn"))
   {
     m_pipelineServiceRoleArn = jsonValue.GetString("pipelineServiceRoleArn");
-
     m_pipelineServiceRoleArnHasBeenSet = true;
   }
-
   return *this;
 }
 

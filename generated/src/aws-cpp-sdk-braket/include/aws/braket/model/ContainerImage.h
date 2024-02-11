@@ -24,7 +24,7 @@ namespace Model
 {
 
   /**
-   * <p>The container image used to create an Amazon Braket job.</p><p><h3>See
+   * <p>The container image used to create an Amazon Braket hybrid job.</p><p><h3>See
    * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/braket-2019-09-01/ContainerImage">AWS
    * API Reference</a></p>
@@ -32,52 +32,23 @@ namespace Model
   class ContainerImage
   {
   public:
-    AWS_BRAKET_API ContainerImage();
+    AWS_BRAKET_API ContainerImage() = default;
     AWS_BRAKET_API ContainerImage(Aws::Utils::Json::JsonView jsonValue);
     AWS_BRAKET_API ContainerImage& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BRAKET_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The URI locating the container image.</p>
      */
-    inline const Aws::String& GetUri() const{ return m_uri; }
-
-    /**
-     * <p>The URI locating the container image.</p>
-     */
+    inline const Aws::String& GetUri() const { return m_uri; }
     inline bool UriHasBeenSet() const { return m_uriHasBeenSet; }
-
-    /**
-     * <p>The URI locating the container image.</p>
-     */
-    inline void SetUri(const Aws::String& value) { m_uriHasBeenSet = true; m_uri = value; }
-
-    /**
-     * <p>The URI locating the container image.</p>
-     */
-    inline void SetUri(Aws::String&& value) { m_uriHasBeenSet = true; m_uri = std::move(value); }
-
-    /**
-     * <p>The URI locating the container image.</p>
-     */
-    inline void SetUri(const char* value) { m_uriHasBeenSet = true; m_uri.assign(value); }
-
-    /**
-     * <p>The URI locating the container image.</p>
-     */
-    inline ContainerImage& WithUri(const Aws::String& value) { SetUri(value); return *this;}
-
-    /**
-     * <p>The URI locating the container image.</p>
-     */
-    inline ContainerImage& WithUri(Aws::String&& value) { SetUri(std::move(value)); return *this;}
-
-    /**
-     * <p>The URI locating the container image.</p>
-     */
-    inline ContainerImage& WithUri(const char* value) { SetUri(value); return *this;}
-
+    template<typename UriT = Aws::String>
+    void SetUri(UriT&& value) { m_uriHasBeenSet = true; m_uri = std::forward<UriT>(value); }
+    template<typename UriT = Aws::String>
+    ContainerImage& WithUri(UriT&& value) { SetUri(std::forward<UriT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_uri;

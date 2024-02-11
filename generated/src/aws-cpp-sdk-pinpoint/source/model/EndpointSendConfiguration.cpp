@@ -18,21 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-EndpointSendConfiguration::EndpointSendConfiguration() : 
-    m_bodyOverrideHasBeenSet(false),
-    m_contextHasBeenSet(false),
-    m_rawContentHasBeenSet(false),
-    m_substitutionsHasBeenSet(false),
-    m_titleOverrideHasBeenSet(false)
-{
-}
-
-EndpointSendConfiguration::EndpointSendConfiguration(JsonView jsonValue) : 
-    m_bodyOverrideHasBeenSet(false),
-    m_contextHasBeenSet(false),
-    m_rawContentHasBeenSet(false),
-    m_substitutionsHasBeenSet(false),
-    m_titleOverrideHasBeenSet(false)
+EndpointSendConfiguration::EndpointSendConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,10 +28,8 @@ EndpointSendConfiguration& EndpointSendConfiguration::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("BodyOverride"))
   {
     m_bodyOverride = jsonValue.GetString("BodyOverride");
-
     m_bodyOverrideHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Context"))
   {
     Aws::Map<Aws::String, JsonView> contextJsonMap = jsonValue.GetObject("Context").GetAllObjects();
@@ -55,14 +39,11 @@ EndpointSendConfiguration& EndpointSendConfiguration::operator =(JsonView jsonVa
     }
     m_contextHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RawContent"))
   {
     m_rawContent = jsonValue.GetString("RawContent");
-
     m_rawContentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Substitutions"))
   {
     Aws::Map<Aws::String, JsonView> substitutionsJsonMap = jsonValue.GetObject("Substitutions").GetAllObjects();
@@ -79,14 +60,11 @@ EndpointSendConfiguration& EndpointSendConfiguration::operator =(JsonView jsonVa
     }
     m_substitutionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TitleOverride"))
   {
     m_titleOverride = jsonValue.GetString("TitleOverride");
-
     m_titleOverrideHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -23,7 +23,7 @@ namespace Model
   class BatchEvaluateGeofencesRequest : public LocationServiceRequest
   {
   public:
-    AWS_LOCATIONSERVICE_API BatchEvaluateGeofencesRequest();
+    AWS_LOCATIONSERVICE_API BatchEvaluateGeofencesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,103 +34,33 @@ namespace Model
     AWS_LOCATIONSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The geofence collection used in evaluating the position of devices against
      * its geofences.</p>
      */
-    inline const Aws::String& GetCollectionName() const{ return m_collectionName; }
-
-    /**
-     * <p>The geofence collection used in evaluating the position of devices against
-     * its geofences.</p>
-     */
+    inline const Aws::String& GetCollectionName() const { return m_collectionName; }
     inline bool CollectionNameHasBeenSet() const { return m_collectionNameHasBeenSet; }
+    template<typename CollectionNameT = Aws::String>
+    void SetCollectionName(CollectionNameT&& value) { m_collectionNameHasBeenSet = true; m_collectionName = std::forward<CollectionNameT>(value); }
+    template<typename CollectionNameT = Aws::String>
+    BatchEvaluateGeofencesRequest& WithCollectionName(CollectionNameT&& value) { SetCollectionName(std::forward<CollectionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The geofence collection used in evaluating the position of devices against
-     * its geofences.</p>
-     */
-    inline void SetCollectionName(const Aws::String& value) { m_collectionNameHasBeenSet = true; m_collectionName = value; }
-
-    /**
-     * <p>The geofence collection used in evaluating the position of devices against
-     * its geofences.</p>
-     */
-    inline void SetCollectionName(Aws::String&& value) { m_collectionNameHasBeenSet = true; m_collectionName = std::move(value); }
-
-    /**
-     * <p>The geofence collection used in evaluating the position of devices against
-     * its geofences.</p>
-     */
-    inline void SetCollectionName(const char* value) { m_collectionNameHasBeenSet = true; m_collectionName.assign(value); }
-
-    /**
-     * <p>The geofence collection used in evaluating the position of devices against
-     * its geofences.</p>
-     */
-    inline BatchEvaluateGeofencesRequest& WithCollectionName(const Aws::String& value) { SetCollectionName(value); return *this;}
-
-    /**
-     * <p>The geofence collection used in evaluating the position of devices against
-     * its geofences.</p>
-     */
-    inline BatchEvaluateGeofencesRequest& WithCollectionName(Aws::String&& value) { SetCollectionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The geofence collection used in evaluating the position of devices against
-     * its geofences.</p>
-     */
-    inline BatchEvaluateGeofencesRequest& WithCollectionName(const char* value) { SetCollectionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains device details for each device to be evaluated against the given
      * geofence collection.</p>
      */
-    inline const Aws::Vector<DevicePositionUpdate>& GetDevicePositionUpdates() const{ return m_devicePositionUpdates; }
-
-    /**
-     * <p>Contains device details for each device to be evaluated against the given
-     * geofence collection.</p>
-     */
+    inline const Aws::Vector<DevicePositionUpdate>& GetDevicePositionUpdates() const { return m_devicePositionUpdates; }
     inline bool DevicePositionUpdatesHasBeenSet() const { return m_devicePositionUpdatesHasBeenSet; }
-
-    /**
-     * <p>Contains device details for each device to be evaluated against the given
-     * geofence collection.</p>
-     */
-    inline void SetDevicePositionUpdates(const Aws::Vector<DevicePositionUpdate>& value) { m_devicePositionUpdatesHasBeenSet = true; m_devicePositionUpdates = value; }
-
-    /**
-     * <p>Contains device details for each device to be evaluated against the given
-     * geofence collection.</p>
-     */
-    inline void SetDevicePositionUpdates(Aws::Vector<DevicePositionUpdate>&& value) { m_devicePositionUpdatesHasBeenSet = true; m_devicePositionUpdates = std::move(value); }
-
-    /**
-     * <p>Contains device details for each device to be evaluated against the given
-     * geofence collection.</p>
-     */
-    inline BatchEvaluateGeofencesRequest& WithDevicePositionUpdates(const Aws::Vector<DevicePositionUpdate>& value) { SetDevicePositionUpdates(value); return *this;}
-
-    /**
-     * <p>Contains device details for each device to be evaluated against the given
-     * geofence collection.</p>
-     */
-    inline BatchEvaluateGeofencesRequest& WithDevicePositionUpdates(Aws::Vector<DevicePositionUpdate>&& value) { SetDevicePositionUpdates(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains device details for each device to be evaluated against the given
-     * geofence collection.</p>
-     */
-    inline BatchEvaluateGeofencesRequest& AddDevicePositionUpdates(const DevicePositionUpdate& value) { m_devicePositionUpdatesHasBeenSet = true; m_devicePositionUpdates.push_back(value); return *this; }
-
-    /**
-     * <p>Contains device details for each device to be evaluated against the given
-     * geofence collection.</p>
-     */
-    inline BatchEvaluateGeofencesRequest& AddDevicePositionUpdates(DevicePositionUpdate&& value) { m_devicePositionUpdatesHasBeenSet = true; m_devicePositionUpdates.push_back(std::move(value)); return *this; }
-
+    template<typename DevicePositionUpdatesT = Aws::Vector<DevicePositionUpdate>>
+    void SetDevicePositionUpdates(DevicePositionUpdatesT&& value) { m_devicePositionUpdatesHasBeenSet = true; m_devicePositionUpdates = std::forward<DevicePositionUpdatesT>(value); }
+    template<typename DevicePositionUpdatesT = Aws::Vector<DevicePositionUpdate>>
+    BatchEvaluateGeofencesRequest& WithDevicePositionUpdates(DevicePositionUpdatesT&& value) { SetDevicePositionUpdates(std::forward<DevicePositionUpdatesT>(value)); return *this;}
+    template<typename DevicePositionUpdatesT = DevicePositionUpdate>
+    BatchEvaluateGeofencesRequest& AddDevicePositionUpdates(DevicePositionUpdatesT&& value) { m_devicePositionUpdatesHasBeenSet = true; m_devicePositionUpdates.emplace_back(std::forward<DevicePositionUpdatesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_collectionName;

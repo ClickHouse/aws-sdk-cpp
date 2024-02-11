@@ -10,27 +10,13 @@
 using namespace Aws::IAM::Model;
 using namespace Aws::Utils;
 
-ListPoliciesRequest::ListPoliciesRequest() : 
-    m_scope(PolicyScopeType::NOT_SET),
-    m_scopeHasBeenSet(false),
-    m_onlyAttached(false),
-    m_onlyAttachedHasBeenSet(false),
-    m_pathPrefixHasBeenSet(false),
-    m_policyUsageFilter(PolicyUsageType::NOT_SET),
-    m_policyUsageFilterHasBeenSet(false),
-    m_markerHasBeenSet(false),
-    m_maxItems(0),
-    m_maxItemsHasBeenSet(false)
-{
-}
-
 Aws::String ListPoliciesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=ListPolicies&";
   if(m_scopeHasBeenSet)
   {
-    ss << "Scope=" << PolicyScopeTypeMapper::GetNameForPolicyScopeType(m_scope) << "&";
+    ss << "Scope=" << StringUtils::URLEncode(PolicyScopeTypeMapper::GetNameForPolicyScopeType(m_scope)) << "&";
   }
 
   if(m_onlyAttachedHasBeenSet)
@@ -45,7 +31,7 @@ Aws::String ListPoliciesRequest::SerializePayload() const
 
   if(m_policyUsageFilterHasBeenSet)
   {
-    ss << "PolicyUsageFilter=" << PolicyUsageTypeMapper::GetNameForPolicyUsageType(m_policyUsageFilter) << "&";
+    ss << "PolicyUsageFilter=" << StringUtils::URLEncode(PolicyUsageTypeMapper::GetNameForPolicyUsageType(m_policyUsageFilter)) << "&";
   }
 
   if(m_markerHasBeenSet)

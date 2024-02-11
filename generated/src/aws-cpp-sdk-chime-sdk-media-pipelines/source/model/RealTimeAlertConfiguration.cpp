@@ -18,17 +18,7 @@ namespace ChimeSDKMediaPipelines
 namespace Model
 {
 
-RealTimeAlertConfiguration::RealTimeAlertConfiguration() : 
-    m_disabled(false),
-    m_disabledHasBeenSet(false),
-    m_rulesHasBeenSet(false)
-{
-}
-
-RealTimeAlertConfiguration::RealTimeAlertConfiguration(JsonView jsonValue) : 
-    m_disabled(false),
-    m_disabledHasBeenSet(false),
-    m_rulesHasBeenSet(false)
+RealTimeAlertConfiguration::RealTimeAlertConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ RealTimeAlertConfiguration& RealTimeAlertConfiguration::operator =(JsonView json
   if(jsonValue.ValueExists("Disabled"))
   {
     m_disabled = jsonValue.GetBool("Disabled");
-
     m_disabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Rules"))
   {
     Aws::Utils::Array<JsonView> rulesJsonList = jsonValue.GetArray("Rules");
@@ -51,7 +39,6 @@ RealTimeAlertConfiguration& RealTimeAlertConfiguration::operator =(JsonView json
     }
     m_rulesHasBeenSet = true;
   }
-
   return *this;
 }
 

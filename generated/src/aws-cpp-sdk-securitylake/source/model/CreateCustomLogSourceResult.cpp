@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-CreateCustomLogSourceResult::CreateCustomLogSourceResult()
-{
-}
-
 CreateCustomLogSourceResult::CreateCustomLogSourceResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,42 +25,18 @@ CreateCustomLogSourceResult::CreateCustomLogSourceResult(const Aws::AmazonWebSer
 CreateCustomLogSourceResult& CreateCustomLogSourceResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("customDataLocation"))
+  if(jsonValue.ValueExists("source"))
   {
-    m_customDataLocation = jsonValue.GetString("customDataLocation");
-
+    m_source = jsonValue.GetObject("source");
+    m_sourceHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("glueCrawlerName"))
-  {
-    m_glueCrawlerName = jsonValue.GetString("glueCrawlerName");
-
-  }
-
-  if(jsonValue.ValueExists("glueDatabaseName"))
-  {
-    m_glueDatabaseName = jsonValue.GetString("glueDatabaseName");
-
-  }
-
-  if(jsonValue.ValueExists("glueTableName"))
-  {
-    m_glueTableName = jsonValue.GetString("glueTableName");
-
-  }
-
-  if(jsonValue.ValueExists("logProviderAccessRoleArn"))
-  {
-    m_logProviderAccessRoleArn = jsonValue.GetString("logProviderAccessRoleArn");
-
-  }
-
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

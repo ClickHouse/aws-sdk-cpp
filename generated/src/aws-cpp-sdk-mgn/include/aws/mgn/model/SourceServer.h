@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/mgn/Mgn_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/mgn/model/SourceServerConnectorAction.h>
 #include <aws/mgn/model/DataReplicationInfo.h>
 #include <aws/mgn/model/LaunchedInstance.h>
 #include <aws/mgn/model/LifeCycle.h>
@@ -32,524 +33,189 @@ namespace Model
   class SourceServer
   {
   public:
-    AWS_MGN_API SourceServer();
+    AWS_MGN_API SourceServer() = default;
     AWS_MGN_API SourceServer(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API SourceServer& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Source server application ID.</p>
      */
-    inline const Aws::String& GetApplicationID() const{ return m_applicationID; }
-
-    /**
-     * <p>Source server application ID.</p>
-     */
+    inline const Aws::String& GetApplicationID() const { return m_applicationID; }
     inline bool ApplicationIDHasBeenSet() const { return m_applicationIDHasBeenSet; }
+    template<typename ApplicationIDT = Aws::String>
+    void SetApplicationID(ApplicationIDT&& value) { m_applicationIDHasBeenSet = true; m_applicationID = std::forward<ApplicationIDT>(value); }
+    template<typename ApplicationIDT = Aws::String>
+    SourceServer& WithApplicationID(ApplicationIDT&& value) { SetApplicationID(std::forward<ApplicationIDT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Source server application ID.</p>
-     */
-    inline void SetApplicationID(const Aws::String& value) { m_applicationIDHasBeenSet = true; m_applicationID = value; }
-
-    /**
-     * <p>Source server application ID.</p>
-     */
-    inline void SetApplicationID(Aws::String&& value) { m_applicationIDHasBeenSet = true; m_applicationID = std::move(value); }
-
-    /**
-     * <p>Source server application ID.</p>
-     */
-    inline void SetApplicationID(const char* value) { m_applicationIDHasBeenSet = true; m_applicationID.assign(value); }
-
-    /**
-     * <p>Source server application ID.</p>
-     */
-    inline SourceServer& WithApplicationID(const Aws::String& value) { SetApplicationID(value); return *this;}
-
-    /**
-     * <p>Source server application ID.</p>
-     */
-    inline SourceServer& WithApplicationID(Aws::String&& value) { SetApplicationID(std::move(value)); return *this;}
-
-    /**
-     * <p>Source server application ID.</p>
-     */
-    inline SourceServer& WithApplicationID(const char* value) { SetApplicationID(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Source server ARN.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>Source server ARN.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    SourceServer& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Source server ARN.</p>
+     * <p>Source Server connector action.</p>
      */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
+    inline const SourceServerConnectorAction& GetConnectorAction() const { return m_connectorAction; }
+    inline bool ConnectorActionHasBeenSet() const { return m_connectorActionHasBeenSet; }
+    template<typename ConnectorActionT = SourceServerConnectorAction>
+    void SetConnectorAction(ConnectorActionT&& value) { m_connectorActionHasBeenSet = true; m_connectorAction = std::forward<ConnectorActionT>(value); }
+    template<typename ConnectorActionT = SourceServerConnectorAction>
+    SourceServer& WithConnectorAction(ConnectorActionT&& value) { SetConnectorAction(std::forward<ConnectorActionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Source server ARN.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>Source server ARN.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>Source server ARN.</p>
-     */
-    inline SourceServer& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>Source server ARN.</p>
-     */
-    inline SourceServer& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Source server ARN.</p>
-     */
-    inline SourceServer& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Source server data replication info.</p>
      */
-    inline const DataReplicationInfo& GetDataReplicationInfo() const{ return m_dataReplicationInfo; }
-
-    /**
-     * <p>Source server data replication info.</p>
-     */
+    inline const DataReplicationInfo& GetDataReplicationInfo() const { return m_dataReplicationInfo; }
     inline bool DataReplicationInfoHasBeenSet() const { return m_dataReplicationInfoHasBeenSet; }
+    template<typename DataReplicationInfoT = DataReplicationInfo>
+    void SetDataReplicationInfo(DataReplicationInfoT&& value) { m_dataReplicationInfoHasBeenSet = true; m_dataReplicationInfo = std::forward<DataReplicationInfoT>(value); }
+    template<typename DataReplicationInfoT = DataReplicationInfo>
+    SourceServer& WithDataReplicationInfo(DataReplicationInfoT&& value) { SetDataReplicationInfo(std::forward<DataReplicationInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Source server data replication info.</p>
-     */
-    inline void SetDataReplicationInfo(const DataReplicationInfo& value) { m_dataReplicationInfoHasBeenSet = true; m_dataReplicationInfo = value; }
-
-    /**
-     * <p>Source server data replication info.</p>
-     */
-    inline void SetDataReplicationInfo(DataReplicationInfo&& value) { m_dataReplicationInfoHasBeenSet = true; m_dataReplicationInfo = std::move(value); }
-
-    /**
-     * <p>Source server data replication info.</p>
-     */
-    inline SourceServer& WithDataReplicationInfo(const DataReplicationInfo& value) { SetDataReplicationInfo(value); return *this;}
-
-    /**
-     * <p>Source server data replication info.</p>
-     */
-    inline SourceServer& WithDataReplicationInfo(DataReplicationInfo&& value) { SetDataReplicationInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Source server fqdn for action framework.</p>
      */
-    inline const Aws::String& GetFqdnForActionFramework() const{ return m_fqdnForActionFramework; }
-
-    /**
-     * <p>Source server fqdn for action framework.</p>
-     */
+    inline const Aws::String& GetFqdnForActionFramework() const { return m_fqdnForActionFramework; }
     inline bool FqdnForActionFrameworkHasBeenSet() const { return m_fqdnForActionFrameworkHasBeenSet; }
+    template<typename FqdnForActionFrameworkT = Aws::String>
+    void SetFqdnForActionFramework(FqdnForActionFrameworkT&& value) { m_fqdnForActionFrameworkHasBeenSet = true; m_fqdnForActionFramework = std::forward<FqdnForActionFrameworkT>(value); }
+    template<typename FqdnForActionFrameworkT = Aws::String>
+    SourceServer& WithFqdnForActionFramework(FqdnForActionFrameworkT&& value) { SetFqdnForActionFramework(std::forward<FqdnForActionFrameworkT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Source server fqdn for action framework.</p>
-     */
-    inline void SetFqdnForActionFramework(const Aws::String& value) { m_fqdnForActionFrameworkHasBeenSet = true; m_fqdnForActionFramework = value; }
-
-    /**
-     * <p>Source server fqdn for action framework.</p>
-     */
-    inline void SetFqdnForActionFramework(Aws::String&& value) { m_fqdnForActionFrameworkHasBeenSet = true; m_fqdnForActionFramework = std::move(value); }
-
-    /**
-     * <p>Source server fqdn for action framework.</p>
-     */
-    inline void SetFqdnForActionFramework(const char* value) { m_fqdnForActionFrameworkHasBeenSet = true; m_fqdnForActionFramework.assign(value); }
-
-    /**
-     * <p>Source server fqdn for action framework.</p>
-     */
-    inline SourceServer& WithFqdnForActionFramework(const Aws::String& value) { SetFqdnForActionFramework(value); return *this;}
-
-    /**
-     * <p>Source server fqdn for action framework.</p>
-     */
-    inline SourceServer& WithFqdnForActionFramework(Aws::String&& value) { SetFqdnForActionFramework(std::move(value)); return *this;}
-
-    /**
-     * <p>Source server fqdn for action framework.</p>
-     */
-    inline SourceServer& WithFqdnForActionFramework(const char* value) { SetFqdnForActionFramework(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Source server archived status.</p>
      */
-    inline bool GetIsArchived() const{ return m_isArchived; }
-
-    /**
-     * <p>Source server archived status.</p>
-     */
+    inline bool GetIsArchived() const { return m_isArchived; }
     inline bool IsArchivedHasBeenSet() const { return m_isArchivedHasBeenSet; }
-
-    /**
-     * <p>Source server archived status.</p>
-     */
     inline void SetIsArchived(bool value) { m_isArchivedHasBeenSet = true; m_isArchived = value; }
-
-    /**
-     * <p>Source server archived status.</p>
-     */
     inline SourceServer& WithIsArchived(bool value) { SetIsArchived(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Source server launched instance.</p>
      */
-    inline const LaunchedInstance& GetLaunchedInstance() const{ return m_launchedInstance; }
-
-    /**
-     * <p>Source server launched instance.</p>
-     */
+    inline const LaunchedInstance& GetLaunchedInstance() const { return m_launchedInstance; }
     inline bool LaunchedInstanceHasBeenSet() const { return m_launchedInstanceHasBeenSet; }
+    template<typename LaunchedInstanceT = LaunchedInstance>
+    void SetLaunchedInstance(LaunchedInstanceT&& value) { m_launchedInstanceHasBeenSet = true; m_launchedInstance = std::forward<LaunchedInstanceT>(value); }
+    template<typename LaunchedInstanceT = LaunchedInstance>
+    SourceServer& WithLaunchedInstance(LaunchedInstanceT&& value) { SetLaunchedInstance(std::forward<LaunchedInstanceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Source server launched instance.</p>
-     */
-    inline void SetLaunchedInstance(const LaunchedInstance& value) { m_launchedInstanceHasBeenSet = true; m_launchedInstance = value; }
-
-    /**
-     * <p>Source server launched instance.</p>
-     */
-    inline void SetLaunchedInstance(LaunchedInstance&& value) { m_launchedInstanceHasBeenSet = true; m_launchedInstance = std::move(value); }
-
-    /**
-     * <p>Source server launched instance.</p>
-     */
-    inline SourceServer& WithLaunchedInstance(const LaunchedInstance& value) { SetLaunchedInstance(value); return *this;}
-
-    /**
-     * <p>Source server launched instance.</p>
-     */
-    inline SourceServer& WithLaunchedInstance(LaunchedInstance&& value) { SetLaunchedInstance(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Source server lifecycle state.</p>
      */
-    inline const LifeCycle& GetLifeCycle() const{ return m_lifeCycle; }
-
-    /**
-     * <p>Source server lifecycle state.</p>
-     */
+    inline const LifeCycle& GetLifeCycle() const { return m_lifeCycle; }
     inline bool LifeCycleHasBeenSet() const { return m_lifeCycleHasBeenSet; }
+    template<typename LifeCycleT = LifeCycle>
+    void SetLifeCycle(LifeCycleT&& value) { m_lifeCycleHasBeenSet = true; m_lifeCycle = std::forward<LifeCycleT>(value); }
+    template<typename LifeCycleT = LifeCycle>
+    SourceServer& WithLifeCycle(LifeCycleT&& value) { SetLifeCycle(std::forward<LifeCycleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Source server lifecycle state.</p>
-     */
-    inline void SetLifeCycle(const LifeCycle& value) { m_lifeCycleHasBeenSet = true; m_lifeCycle = value; }
-
-    /**
-     * <p>Source server lifecycle state.</p>
-     */
-    inline void SetLifeCycle(LifeCycle&& value) { m_lifeCycleHasBeenSet = true; m_lifeCycle = std::move(value); }
-
-    /**
-     * <p>Source server lifecycle state.</p>
-     */
-    inline SourceServer& WithLifeCycle(const LifeCycle& value) { SetLifeCycle(value); return *this;}
-
-    /**
-     * <p>Source server lifecycle state.</p>
-     */
-    inline SourceServer& WithLifeCycle(LifeCycle&& value) { SetLifeCycle(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Source server replication type.</p>
      */
-    inline const ReplicationType& GetReplicationType() const{ return m_replicationType; }
-
-    /**
-     * <p>Source server replication type.</p>
-     */
+    inline ReplicationType GetReplicationType() const { return m_replicationType; }
     inline bool ReplicationTypeHasBeenSet() const { return m_replicationTypeHasBeenSet; }
+    inline void SetReplicationType(ReplicationType value) { m_replicationTypeHasBeenSet = true; m_replicationType = value; }
+    inline SourceServer& WithReplicationType(ReplicationType value) { SetReplicationType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Source server replication type.</p>
-     */
-    inline void SetReplicationType(const ReplicationType& value) { m_replicationTypeHasBeenSet = true; m_replicationType = value; }
-
-    /**
-     * <p>Source server replication type.</p>
-     */
-    inline void SetReplicationType(ReplicationType&& value) { m_replicationTypeHasBeenSet = true; m_replicationType = std::move(value); }
-
-    /**
-     * <p>Source server replication type.</p>
-     */
-    inline SourceServer& WithReplicationType(const ReplicationType& value) { SetReplicationType(value); return *this;}
-
-    /**
-     * <p>Source server replication type.</p>
-     */
-    inline SourceServer& WithReplicationType(ReplicationType&& value) { SetReplicationType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Source server properties.</p>
      */
-    inline const SourceProperties& GetSourceProperties() const{ return m_sourceProperties; }
-
-    /**
-     * <p>Source server properties.</p>
-     */
+    inline const SourceProperties& GetSourceProperties() const { return m_sourceProperties; }
     inline bool SourcePropertiesHasBeenSet() const { return m_sourcePropertiesHasBeenSet; }
+    template<typename SourcePropertiesT = SourceProperties>
+    void SetSourceProperties(SourcePropertiesT&& value) { m_sourcePropertiesHasBeenSet = true; m_sourceProperties = std::forward<SourcePropertiesT>(value); }
+    template<typename SourcePropertiesT = SourceProperties>
+    SourceServer& WithSourceProperties(SourcePropertiesT&& value) { SetSourceProperties(std::forward<SourcePropertiesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Source server properties.</p>
-     */
-    inline void SetSourceProperties(const SourceProperties& value) { m_sourcePropertiesHasBeenSet = true; m_sourceProperties = value; }
-
-    /**
-     * <p>Source server properties.</p>
-     */
-    inline void SetSourceProperties(SourceProperties&& value) { m_sourcePropertiesHasBeenSet = true; m_sourceProperties = std::move(value); }
-
-    /**
-     * <p>Source server properties.</p>
-     */
-    inline SourceServer& WithSourceProperties(const SourceProperties& value) { SetSourceProperties(value); return *this;}
-
-    /**
-     * <p>Source server properties.</p>
-     */
-    inline SourceServer& WithSourceProperties(SourceProperties&& value) { SetSourceProperties(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Source server ID.</p>
      */
-    inline const Aws::String& GetSourceServerID() const{ return m_sourceServerID; }
-
-    /**
-     * <p>Source server ID.</p>
-     */
+    inline const Aws::String& GetSourceServerID() const { return m_sourceServerID; }
     inline bool SourceServerIDHasBeenSet() const { return m_sourceServerIDHasBeenSet; }
+    template<typename SourceServerIDT = Aws::String>
+    void SetSourceServerID(SourceServerIDT&& value) { m_sourceServerIDHasBeenSet = true; m_sourceServerID = std::forward<SourceServerIDT>(value); }
+    template<typename SourceServerIDT = Aws::String>
+    SourceServer& WithSourceServerID(SourceServerIDT&& value) { SetSourceServerID(std::forward<SourceServerIDT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Source server ID.</p>
-     */
-    inline void SetSourceServerID(const Aws::String& value) { m_sourceServerIDHasBeenSet = true; m_sourceServerID = value; }
-
-    /**
-     * <p>Source server ID.</p>
-     */
-    inline void SetSourceServerID(Aws::String&& value) { m_sourceServerIDHasBeenSet = true; m_sourceServerID = std::move(value); }
-
-    /**
-     * <p>Source server ID.</p>
-     */
-    inline void SetSourceServerID(const char* value) { m_sourceServerIDHasBeenSet = true; m_sourceServerID.assign(value); }
-
-    /**
-     * <p>Source server ID.</p>
-     */
-    inline SourceServer& WithSourceServerID(const Aws::String& value) { SetSourceServerID(value); return *this;}
-
-    /**
-     * <p>Source server ID.</p>
-     */
-    inline SourceServer& WithSourceServerID(Aws::String&& value) { SetSourceServerID(std::move(value)); return *this;}
-
-    /**
-     * <p>Source server ID.</p>
-     */
-    inline SourceServer& WithSourceServerID(const char* value) { SetSourceServerID(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Source server Tags.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Source server Tags.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    SourceServer& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    SourceServer& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>Source server Tags.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Source server Tags.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Source server Tags.</p>
-     */
-    inline SourceServer& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Source server Tags.</p>
-     */
-    inline SourceServer& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Source server Tags.</p>
-     */
-    inline SourceServer& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>Source server Tags.</p>
-     */
-    inline SourceServer& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Source server Tags.</p>
-     */
-    inline SourceServer& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Source server Tags.</p>
-     */
-    inline SourceServer& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Source server Tags.</p>
-     */
-    inline SourceServer& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Source server Tags.</p>
-     */
-    inline SourceServer& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Source server Tags.</p>
-     */
-    inline SourceServer& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>Source server user provided ID.</p>
      */
-    inline const Aws::String& GetUserProvidedID() const{ return m_userProvidedID; }
-
-    /**
-     * <p>Source server user provided ID.</p>
-     */
+    inline const Aws::String& GetUserProvidedID() const { return m_userProvidedID; }
     inline bool UserProvidedIDHasBeenSet() const { return m_userProvidedIDHasBeenSet; }
+    template<typename UserProvidedIDT = Aws::String>
+    void SetUserProvidedID(UserProvidedIDT&& value) { m_userProvidedIDHasBeenSet = true; m_userProvidedID = std::forward<UserProvidedIDT>(value); }
+    template<typename UserProvidedIDT = Aws::String>
+    SourceServer& WithUserProvidedID(UserProvidedIDT&& value) { SetUserProvidedID(std::forward<UserProvidedIDT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Source server user provided ID.</p>
-     */
-    inline void SetUserProvidedID(const Aws::String& value) { m_userProvidedIDHasBeenSet = true; m_userProvidedID = value; }
-
-    /**
-     * <p>Source server user provided ID.</p>
-     */
-    inline void SetUserProvidedID(Aws::String&& value) { m_userProvidedIDHasBeenSet = true; m_userProvidedID = std::move(value); }
-
-    /**
-     * <p>Source server user provided ID.</p>
-     */
-    inline void SetUserProvidedID(const char* value) { m_userProvidedIDHasBeenSet = true; m_userProvidedID.assign(value); }
-
-    /**
-     * <p>Source server user provided ID.</p>
-     */
-    inline SourceServer& WithUserProvidedID(const Aws::String& value) { SetUserProvidedID(value); return *this;}
-
-    /**
-     * <p>Source server user provided ID.</p>
-     */
-    inline SourceServer& WithUserProvidedID(Aws::String&& value) { SetUserProvidedID(std::move(value)); return *this;}
-
-    /**
-     * <p>Source server user provided ID.</p>
-     */
-    inline SourceServer& WithUserProvidedID(const char* value) { SetUserProvidedID(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Source server vCenter client id.</p>
      */
-    inline const Aws::String& GetVcenterClientID() const{ return m_vcenterClientID; }
-
-    /**
-     * <p>Source server vCenter client id.</p>
-     */
+    inline const Aws::String& GetVcenterClientID() const { return m_vcenterClientID; }
     inline bool VcenterClientIDHasBeenSet() const { return m_vcenterClientIDHasBeenSet; }
+    template<typename VcenterClientIDT = Aws::String>
+    void SetVcenterClientID(VcenterClientIDT&& value) { m_vcenterClientIDHasBeenSet = true; m_vcenterClientID = std::forward<VcenterClientIDT>(value); }
+    template<typename VcenterClientIDT = Aws::String>
+    SourceServer& WithVcenterClientID(VcenterClientIDT&& value) { SetVcenterClientID(std::forward<VcenterClientIDT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Source server vCenter client id.</p>
-     */
-    inline void SetVcenterClientID(const Aws::String& value) { m_vcenterClientIDHasBeenSet = true; m_vcenterClientID = value; }
-
-    /**
-     * <p>Source server vCenter client id.</p>
-     */
-    inline void SetVcenterClientID(Aws::String&& value) { m_vcenterClientIDHasBeenSet = true; m_vcenterClientID = std::move(value); }
-
-    /**
-     * <p>Source server vCenter client id.</p>
-     */
-    inline void SetVcenterClientID(const char* value) { m_vcenterClientIDHasBeenSet = true; m_vcenterClientID.assign(value); }
-
-    /**
-     * <p>Source server vCenter client id.</p>
-     */
-    inline SourceServer& WithVcenterClientID(const Aws::String& value) { SetVcenterClientID(value); return *this;}
-
-    /**
-     * <p>Source server vCenter client id.</p>
-     */
-    inline SourceServer& WithVcenterClientID(Aws::String&& value) { SetVcenterClientID(std::move(value)); return *this;}
-
-    /**
-     * <p>Source server vCenter client id.</p>
-     */
-    inline SourceServer& WithVcenterClientID(const char* value) { SetVcenterClientID(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
     inline bool RequestIdHasBeenSet() const { return m_requestIdHasBeenSet; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestIdHasBeenSet = true; m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestIdHasBeenSet = true; m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestIdHasBeenSet = true; m_requestId.assign(value); }
-
-    
-    inline SourceServer& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline SourceServer& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline SourceServer& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    SourceServer& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationID;
@@ -558,13 +224,16 @@ namespace Model
     Aws::String m_arn;
     bool m_arnHasBeenSet = false;
 
+    SourceServerConnectorAction m_connectorAction;
+    bool m_connectorActionHasBeenSet = false;
+
     DataReplicationInfo m_dataReplicationInfo;
     bool m_dataReplicationInfoHasBeenSet = false;
 
     Aws::String m_fqdnForActionFramework;
     bool m_fqdnForActionFrameworkHasBeenSet = false;
 
-    bool m_isArchived;
+    bool m_isArchived{false};
     bool m_isArchivedHasBeenSet = false;
 
     LaunchedInstance m_launchedInstance;
@@ -573,7 +242,7 @@ namespace Model
     LifeCycle m_lifeCycle;
     bool m_lifeCycleHasBeenSet = false;
 
-    ReplicationType m_replicationType;
+    ReplicationType m_replicationType{ReplicationType::NOT_SET};
     bool m_replicationTypeHasBeenSet = false;
 
     SourceProperties m_sourceProperties;

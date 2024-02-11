@@ -20,15 +20,7 @@ namespace RDS
 namespace Model
 {
 
-DBClusterOptionGroupStatus::DBClusterOptionGroupStatus() : 
-    m_dBClusterOptionGroupNameHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-DBClusterOptionGroupStatus::DBClusterOptionGroupStatus(const XmlNode& xmlNode) : 
-    m_dBClusterOptionGroupNameHasBeenSet(false),
-    m_statusHasBeenSet(false)
+DBClusterOptionGroupStatus::DBClusterOptionGroupStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

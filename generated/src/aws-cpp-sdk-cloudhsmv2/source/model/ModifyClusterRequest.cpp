@@ -12,15 +12,15 @@ using namespace Aws::CloudHSMV2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ModifyClusterRequest::ModifyClusterRequest() : 
-    m_backupRetentionPolicyHasBeenSet(false),
-    m_clusterIdHasBeenSet(false)
-{
-}
-
 Aws::String ModifyClusterRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_hsmTypeHasBeenSet)
+  {
+   payload.WithString("HsmType", m_hsmType);
+
+  }
 
   if(m_backupRetentionPolicyHasBeenSet)
   {

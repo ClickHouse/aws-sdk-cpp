@@ -20,29 +20,7 @@ namespace EC2
 namespace Model
 {
 
-VerifiedAccessGroup::VerifiedAccessGroup() : 
-    m_verifiedAccessGroupIdHasBeenSet(false),
-    m_verifiedAccessInstanceIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_ownerHasBeenSet(false),
-    m_verifiedAccessGroupArnHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_lastUpdatedTimeHasBeenSet(false),
-    m_deletionTimeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-VerifiedAccessGroup::VerifiedAccessGroup(const XmlNode& xmlNode) : 
-    m_verifiedAccessGroupIdHasBeenSet(false),
-    m_verifiedAccessInstanceIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_ownerHasBeenSet(false),
-    m_verifiedAccessGroupArnHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_lastUpdatedTimeHasBeenSet(false),
-    m_deletionTimeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+VerifiedAccessGroup::VerifiedAccessGroup(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -105,6 +83,7 @@ VerifiedAccessGroup& VerifiedAccessGroup::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -112,6 +91,12 @@ VerifiedAccessGroup& VerifiedAccessGroup::operator =(const XmlNode& xmlNode)
       }
 
       m_tagsHasBeenSet = true;
+    }
+    XmlNode sseSpecificationNode = resultNode.FirstChild("sseSpecification");
+    if(!sseSpecificationNode.IsNull())
+    {
+      m_sseSpecification = sseSpecificationNode;
+      m_sseSpecificationHasBeenSet = true;
     }
   }
 
@@ -171,6 +156,13 @@ void VerifiedAccessGroup::OutputToStream(Aws::OStream& oStream, const char* loca
       }
   }
 
+  if(m_sseSpecificationHasBeenSet)
+  {
+      Aws::StringStream sseSpecificationLocationAndMemberSs;
+      sseSpecificationLocationAndMemberSs << location << index << locationValue << ".SseSpecification";
+      m_sseSpecification.OutputToStream(oStream, sseSpecificationLocationAndMemberSs.str().c_str());
+  }
+
 }
 
 void VerifiedAccessGroup::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -213,9 +205,15 @@ void VerifiedAccessGroup::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
+  }
+  if(m_sseSpecificationHasBeenSet)
+  {
+      Aws::String sseSpecificationLocationAndMember(location);
+      sseSpecificationLocationAndMember += ".SseSpecification";
+      m_sseSpecification.OutputToStream(oStream, sseSpecificationLocationAndMember.c_str());
   }
 }
 

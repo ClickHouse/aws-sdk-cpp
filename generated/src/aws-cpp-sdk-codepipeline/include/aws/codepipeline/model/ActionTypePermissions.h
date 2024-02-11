@@ -33,66 +33,26 @@ namespace Model
   class ActionTypePermissions
   {
   public:
-    AWS_CODEPIPELINE_API ActionTypePermissions();
+    AWS_CODEPIPELINE_API ActionTypePermissions() = default;
     AWS_CODEPIPELINE_API ActionTypePermissions(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API ActionTypePermissions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>A list of AWS account IDs with access to use the action type in their
-     * pipelines.</p>
+     * <p>A list of Amazon Web Services account IDs with access to use the action type
+     * in their pipelines.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAllowedAccounts() const{ return m_allowedAccounts; }
-
-    /**
-     * <p>A list of AWS account IDs with access to use the action type in their
-     * pipelines.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAllowedAccounts() const { return m_allowedAccounts; }
     inline bool AllowedAccountsHasBeenSet() const { return m_allowedAccountsHasBeenSet; }
-
-    /**
-     * <p>A list of AWS account IDs with access to use the action type in their
-     * pipelines.</p>
-     */
-    inline void SetAllowedAccounts(const Aws::Vector<Aws::String>& value) { m_allowedAccountsHasBeenSet = true; m_allowedAccounts = value; }
-
-    /**
-     * <p>A list of AWS account IDs with access to use the action type in their
-     * pipelines.</p>
-     */
-    inline void SetAllowedAccounts(Aws::Vector<Aws::String>&& value) { m_allowedAccountsHasBeenSet = true; m_allowedAccounts = std::move(value); }
-
-    /**
-     * <p>A list of AWS account IDs with access to use the action type in their
-     * pipelines.</p>
-     */
-    inline ActionTypePermissions& WithAllowedAccounts(const Aws::Vector<Aws::String>& value) { SetAllowedAccounts(value); return *this;}
-
-    /**
-     * <p>A list of AWS account IDs with access to use the action type in their
-     * pipelines.</p>
-     */
-    inline ActionTypePermissions& WithAllowedAccounts(Aws::Vector<Aws::String>&& value) { SetAllowedAccounts(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of AWS account IDs with access to use the action type in their
-     * pipelines.</p>
-     */
-    inline ActionTypePermissions& AddAllowedAccounts(const Aws::String& value) { m_allowedAccountsHasBeenSet = true; m_allowedAccounts.push_back(value); return *this; }
-
-    /**
-     * <p>A list of AWS account IDs with access to use the action type in their
-     * pipelines.</p>
-     */
-    inline ActionTypePermissions& AddAllowedAccounts(Aws::String&& value) { m_allowedAccountsHasBeenSet = true; m_allowedAccounts.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of AWS account IDs with access to use the action type in their
-     * pipelines.</p>
-     */
-    inline ActionTypePermissions& AddAllowedAccounts(const char* value) { m_allowedAccountsHasBeenSet = true; m_allowedAccounts.push_back(value); return *this; }
-
+    template<typename AllowedAccountsT = Aws::Vector<Aws::String>>
+    void SetAllowedAccounts(AllowedAccountsT&& value) { m_allowedAccountsHasBeenSet = true; m_allowedAccounts = std::forward<AllowedAccountsT>(value); }
+    template<typename AllowedAccountsT = Aws::Vector<Aws::String>>
+    ActionTypePermissions& WithAllowedAccounts(AllowedAccountsT&& value) { SetAllowedAccounts(std::forward<AllowedAccountsT>(value)); return *this;}
+    template<typename AllowedAccountsT = Aws::String>
+    ActionTypePermissions& AddAllowedAccounts(AllowedAccountsT&& value) { m_allowedAccountsHasBeenSet = true; m_allowedAccounts.emplace_back(std::forward<AllowedAccountsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_allowedAccounts;

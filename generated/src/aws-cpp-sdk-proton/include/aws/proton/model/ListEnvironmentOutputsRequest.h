@@ -21,7 +21,7 @@ namespace Model
   class ListEnvironmentOutputsRequest : public ProtonRequest
   {
   public:
-    AWS_PROTON_API ListEnvironmentOutputsRequest();
+    AWS_PROTON_API ListEnvironmentOutputsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,104 +34,47 @@ namespace Model
     AWS_PROTON_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The environment name.</p>
+     * <p>The ID of the deployment whose outputs you want.</p>
      */
-    inline const Aws::String& GetEnvironmentName() const{ return m_environmentName; }
+    inline const Aws::String& GetDeploymentId() const { return m_deploymentId; }
+    inline bool DeploymentIdHasBeenSet() const { return m_deploymentIdHasBeenSet; }
+    template<typename DeploymentIdT = Aws::String>
+    void SetDeploymentId(DeploymentIdT&& value) { m_deploymentIdHasBeenSet = true; m_deploymentId = std::forward<DeploymentIdT>(value); }
+    template<typename DeploymentIdT = Aws::String>
+    ListEnvironmentOutputsRequest& WithDeploymentId(DeploymentIdT&& value) { SetDeploymentId(std::forward<DeploymentIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>The environment name.</p>
      */
+    inline const Aws::String& GetEnvironmentName() const { return m_environmentName; }
     inline bool EnvironmentNameHasBeenSet() const { return m_environmentNameHasBeenSet; }
+    template<typename EnvironmentNameT = Aws::String>
+    void SetEnvironmentName(EnvironmentNameT&& value) { m_environmentNameHasBeenSet = true; m_environmentName = std::forward<EnvironmentNameT>(value); }
+    template<typename EnvironmentNameT = Aws::String>
+    ListEnvironmentOutputsRequest& WithEnvironmentName(EnvironmentNameT&& value) { SetEnvironmentName(std::forward<EnvironmentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The environment name.</p>
-     */
-    inline void SetEnvironmentName(const Aws::String& value) { m_environmentNameHasBeenSet = true; m_environmentName = value; }
-
-    /**
-     * <p>The environment name.</p>
-     */
-    inline void SetEnvironmentName(Aws::String&& value) { m_environmentNameHasBeenSet = true; m_environmentName = std::move(value); }
-
-    /**
-     * <p>The environment name.</p>
-     */
-    inline void SetEnvironmentName(const char* value) { m_environmentNameHasBeenSet = true; m_environmentName.assign(value); }
-
-    /**
-     * <p>The environment name.</p>
-     */
-    inline ListEnvironmentOutputsRequest& WithEnvironmentName(const Aws::String& value) { SetEnvironmentName(value); return *this;}
-
-    /**
-     * <p>The environment name.</p>
-     */
-    inline ListEnvironmentOutputsRequest& WithEnvironmentName(Aws::String&& value) { SetEnvironmentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The environment name.</p>
-     */
-    inline ListEnvironmentOutputsRequest& WithEnvironmentName(const char* value) { SetEnvironmentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A token that indicates the location of the next environment output in the
      * array of environment outputs, after the list of environment outputs that was
      * previously requested.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>A token that indicates the location of the next environment output in the
-     * array of environment outputs, after the list of environment outputs that was
-     * previously requested.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>A token that indicates the location of the next environment output in the
-     * array of environment outputs, after the list of environment outputs that was
-     * previously requested.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>A token that indicates the location of the next environment output in the
-     * array of environment outputs, after the list of environment outputs that was
-     * previously requested.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>A token that indicates the location of the next environment output in the
-     * array of environment outputs, after the list of environment outputs that was
-     * previously requested.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>A token that indicates the location of the next environment output in the
-     * array of environment outputs, after the list of environment outputs that was
-     * previously requested.</p>
-     */
-    inline ListEnvironmentOutputsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A token that indicates the location of the next environment output in the
-     * array of environment outputs, after the list of environment outputs that was
-     * previously requested.</p>
-     */
-    inline ListEnvironmentOutputsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token that indicates the location of the next environment output in the
-     * array of environment outputs, after the list of environment outputs that was
-     * previously requested.</p>
-     */
-    inline ListEnvironmentOutputsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListEnvironmentOutputsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
+
+    Aws::String m_deploymentId;
+    bool m_deploymentIdHasBeenSet = false;
 
     Aws::String m_environmentName;
     bool m_environmentNameHasBeenSet = false;

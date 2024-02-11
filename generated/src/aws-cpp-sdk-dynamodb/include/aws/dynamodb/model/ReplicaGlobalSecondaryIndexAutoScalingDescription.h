@@ -34,53 +34,25 @@ namespace Model
   class ReplicaGlobalSecondaryIndexAutoScalingDescription
   {
   public:
-    AWS_DYNAMODB_API ReplicaGlobalSecondaryIndexAutoScalingDescription();
+    AWS_DYNAMODB_API ReplicaGlobalSecondaryIndexAutoScalingDescription() = default;
     AWS_DYNAMODB_API ReplicaGlobalSecondaryIndexAutoScalingDescription(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API ReplicaGlobalSecondaryIndexAutoScalingDescription& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the global secondary index.</p>
      */
-    inline const Aws::String& GetIndexName() const{ return m_indexName; }
-
-    /**
-     * <p>The name of the global secondary index.</p>
-     */
+    inline const Aws::String& GetIndexName() const { return m_indexName; }
     inline bool IndexNameHasBeenSet() const { return m_indexNameHasBeenSet; }
+    template<typename IndexNameT = Aws::String>
+    void SetIndexName(IndexNameT&& value) { m_indexNameHasBeenSet = true; m_indexName = std::forward<IndexNameT>(value); }
+    template<typename IndexNameT = Aws::String>
+    ReplicaGlobalSecondaryIndexAutoScalingDescription& WithIndexName(IndexNameT&& value) { SetIndexName(std::forward<IndexNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the global secondary index.</p>
-     */
-    inline void SetIndexName(const Aws::String& value) { m_indexNameHasBeenSet = true; m_indexName = value; }
-
-    /**
-     * <p>The name of the global secondary index.</p>
-     */
-    inline void SetIndexName(Aws::String&& value) { m_indexNameHasBeenSet = true; m_indexName = std::move(value); }
-
-    /**
-     * <p>The name of the global secondary index.</p>
-     */
-    inline void SetIndexName(const char* value) { m_indexNameHasBeenSet = true; m_indexName.assign(value); }
-
-    /**
-     * <p>The name of the global secondary index.</p>
-     */
-    inline ReplicaGlobalSecondaryIndexAutoScalingDescription& WithIndexName(const Aws::String& value) { SetIndexName(value); return *this;}
-
-    /**
-     * <p>The name of the global secondary index.</p>
-     */
-    inline ReplicaGlobalSecondaryIndexAutoScalingDescription& WithIndexName(Aws::String&& value) { SetIndexName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the global secondary index.</p>
-     */
-    inline ReplicaGlobalSecondaryIndexAutoScalingDescription& WithIndexName(const char* value) { SetIndexName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current state of the replica global secondary index:</p> <ul> <li> <p>
      * <code>CREATING</code> - The index is being created.</p> </li> <li> <p>
@@ -89,102 +61,37 @@ namespace Model
      * </p> </li> <li> <p> <code>DELETING</code> - The index is being deleted.</p>
      * </li> <li> <p> <code>ACTIVE</code> - The index is ready for use.</p> </li> </ul>
      */
-    inline const IndexStatus& GetIndexStatus() const{ return m_indexStatus; }
-
-    /**
-     * <p>The current state of the replica global secondary index:</p> <ul> <li> <p>
-     * <code>CREATING</code> - The index is being created.</p> </li> <li> <p>
-     * <code>UPDATING</code> - The table/index configuration is being updated. The
-     * table/index remains available for data operations when <code>UPDATING</code>
-     * </p> </li> <li> <p> <code>DELETING</code> - The index is being deleted.</p>
-     * </li> <li> <p> <code>ACTIVE</code> - The index is ready for use.</p> </li> </ul>
-     */
+    inline IndexStatus GetIndexStatus() const { return m_indexStatus; }
     inline bool IndexStatusHasBeenSet() const { return m_indexStatusHasBeenSet; }
+    inline void SetIndexStatus(IndexStatus value) { m_indexStatusHasBeenSet = true; m_indexStatus = value; }
+    inline ReplicaGlobalSecondaryIndexAutoScalingDescription& WithIndexStatus(IndexStatus value) { SetIndexStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current state of the replica global secondary index:</p> <ul> <li> <p>
-     * <code>CREATING</code> - The index is being created.</p> </li> <li> <p>
-     * <code>UPDATING</code> - The table/index configuration is being updated. The
-     * table/index remains available for data operations when <code>UPDATING</code>
-     * </p> </li> <li> <p> <code>DELETING</code> - The index is being deleted.</p>
-     * </li> <li> <p> <code>ACTIVE</code> - The index is ready for use.</p> </li> </ul>
-     */
-    inline void SetIndexStatus(const IndexStatus& value) { m_indexStatusHasBeenSet = true; m_indexStatus = value; }
-
-    /**
-     * <p>The current state of the replica global secondary index:</p> <ul> <li> <p>
-     * <code>CREATING</code> - The index is being created.</p> </li> <li> <p>
-     * <code>UPDATING</code> - The table/index configuration is being updated. The
-     * table/index remains available for data operations when <code>UPDATING</code>
-     * </p> </li> <li> <p> <code>DELETING</code> - The index is being deleted.</p>
-     * </li> <li> <p> <code>ACTIVE</code> - The index is ready for use.</p> </li> </ul>
-     */
-    inline void SetIndexStatus(IndexStatus&& value) { m_indexStatusHasBeenSet = true; m_indexStatus = std::move(value); }
-
-    /**
-     * <p>The current state of the replica global secondary index:</p> <ul> <li> <p>
-     * <code>CREATING</code> - The index is being created.</p> </li> <li> <p>
-     * <code>UPDATING</code> - The table/index configuration is being updated. The
-     * table/index remains available for data operations when <code>UPDATING</code>
-     * </p> </li> <li> <p> <code>DELETING</code> - The index is being deleted.</p>
-     * </li> <li> <p> <code>ACTIVE</code> - The index is ready for use.</p> </li> </ul>
-     */
-    inline ReplicaGlobalSecondaryIndexAutoScalingDescription& WithIndexStatus(const IndexStatus& value) { SetIndexStatus(value); return *this;}
-
-    /**
-     * <p>The current state of the replica global secondary index:</p> <ul> <li> <p>
-     * <code>CREATING</code> - The index is being created.</p> </li> <li> <p>
-     * <code>UPDATING</code> - The table/index configuration is being updated. The
-     * table/index remains available for data operations when <code>UPDATING</code>
-     * </p> </li> <li> <p> <code>DELETING</code> - The index is being deleted.</p>
-     * </li> <li> <p> <code>ACTIVE</code> - The index is ready for use.</p> </li> </ul>
-     */
-    inline ReplicaGlobalSecondaryIndexAutoScalingDescription& WithIndexStatus(IndexStatus&& value) { SetIndexStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const AutoScalingSettingsDescription& GetProvisionedReadCapacityAutoScalingSettings() const{ return m_provisionedReadCapacityAutoScalingSettings; }
-
-    
+    inline const AutoScalingSettingsDescription& GetProvisionedReadCapacityAutoScalingSettings() const { return m_provisionedReadCapacityAutoScalingSettings; }
     inline bool ProvisionedReadCapacityAutoScalingSettingsHasBeenSet() const { return m_provisionedReadCapacityAutoScalingSettingsHasBeenSet; }
+    template<typename ProvisionedReadCapacityAutoScalingSettingsT = AutoScalingSettingsDescription>
+    void SetProvisionedReadCapacityAutoScalingSettings(ProvisionedReadCapacityAutoScalingSettingsT&& value) { m_provisionedReadCapacityAutoScalingSettingsHasBeenSet = true; m_provisionedReadCapacityAutoScalingSettings = std::forward<ProvisionedReadCapacityAutoScalingSettingsT>(value); }
+    template<typename ProvisionedReadCapacityAutoScalingSettingsT = AutoScalingSettingsDescription>
+    ReplicaGlobalSecondaryIndexAutoScalingDescription& WithProvisionedReadCapacityAutoScalingSettings(ProvisionedReadCapacityAutoScalingSettingsT&& value) { SetProvisionedReadCapacityAutoScalingSettings(std::forward<ProvisionedReadCapacityAutoScalingSettingsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetProvisionedReadCapacityAutoScalingSettings(const AutoScalingSettingsDescription& value) { m_provisionedReadCapacityAutoScalingSettingsHasBeenSet = true; m_provisionedReadCapacityAutoScalingSettings = value; }
-
-    
-    inline void SetProvisionedReadCapacityAutoScalingSettings(AutoScalingSettingsDescription&& value) { m_provisionedReadCapacityAutoScalingSettingsHasBeenSet = true; m_provisionedReadCapacityAutoScalingSettings = std::move(value); }
-
-    
-    inline ReplicaGlobalSecondaryIndexAutoScalingDescription& WithProvisionedReadCapacityAutoScalingSettings(const AutoScalingSettingsDescription& value) { SetProvisionedReadCapacityAutoScalingSettings(value); return *this;}
-
-    
-    inline ReplicaGlobalSecondaryIndexAutoScalingDescription& WithProvisionedReadCapacityAutoScalingSettings(AutoScalingSettingsDescription&& value) { SetProvisionedReadCapacityAutoScalingSettings(std::move(value)); return *this;}
-
-
-    
-    inline const AutoScalingSettingsDescription& GetProvisionedWriteCapacityAutoScalingSettings() const{ return m_provisionedWriteCapacityAutoScalingSettings; }
-
-    
+    inline const AutoScalingSettingsDescription& GetProvisionedWriteCapacityAutoScalingSettings() const { return m_provisionedWriteCapacityAutoScalingSettings; }
     inline bool ProvisionedWriteCapacityAutoScalingSettingsHasBeenSet() const { return m_provisionedWriteCapacityAutoScalingSettingsHasBeenSet; }
-
-    
-    inline void SetProvisionedWriteCapacityAutoScalingSettings(const AutoScalingSettingsDescription& value) { m_provisionedWriteCapacityAutoScalingSettingsHasBeenSet = true; m_provisionedWriteCapacityAutoScalingSettings = value; }
-
-    
-    inline void SetProvisionedWriteCapacityAutoScalingSettings(AutoScalingSettingsDescription&& value) { m_provisionedWriteCapacityAutoScalingSettingsHasBeenSet = true; m_provisionedWriteCapacityAutoScalingSettings = std::move(value); }
-
-    
-    inline ReplicaGlobalSecondaryIndexAutoScalingDescription& WithProvisionedWriteCapacityAutoScalingSettings(const AutoScalingSettingsDescription& value) { SetProvisionedWriteCapacityAutoScalingSettings(value); return *this;}
-
-    
-    inline ReplicaGlobalSecondaryIndexAutoScalingDescription& WithProvisionedWriteCapacityAutoScalingSettings(AutoScalingSettingsDescription&& value) { SetProvisionedWriteCapacityAutoScalingSettings(std::move(value)); return *this;}
-
+    template<typename ProvisionedWriteCapacityAutoScalingSettingsT = AutoScalingSettingsDescription>
+    void SetProvisionedWriteCapacityAutoScalingSettings(ProvisionedWriteCapacityAutoScalingSettingsT&& value) { m_provisionedWriteCapacityAutoScalingSettingsHasBeenSet = true; m_provisionedWriteCapacityAutoScalingSettings = std::forward<ProvisionedWriteCapacityAutoScalingSettingsT>(value); }
+    template<typename ProvisionedWriteCapacityAutoScalingSettingsT = AutoScalingSettingsDescription>
+    ReplicaGlobalSecondaryIndexAutoScalingDescription& WithProvisionedWriteCapacityAutoScalingSettings(ProvisionedWriteCapacityAutoScalingSettingsT&& value) { SetProvisionedWriteCapacityAutoScalingSettings(std::forward<ProvisionedWriteCapacityAutoScalingSettingsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_indexName;
     bool m_indexNameHasBeenSet = false;
 
-    IndexStatus m_indexStatus;
+    IndexStatus m_indexStatus{IndexStatus::NOT_SET};
     bool m_indexStatusHasBeenSet = false;
 
     AutoScalingSettingsDescription m_provisionedReadCapacityAutoScalingSettings;

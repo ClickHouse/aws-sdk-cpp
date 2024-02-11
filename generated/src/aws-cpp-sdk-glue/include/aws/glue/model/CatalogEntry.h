@@ -32,93 +32,35 @@ namespace Model
   class CatalogEntry
   {
   public:
-    AWS_GLUE_API CatalogEntry();
+    AWS_GLUE_API CatalogEntry() = default;
     AWS_GLUE_API CatalogEntry(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API CatalogEntry& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The database in which the table metadata resides.</p>
      */
-    inline const Aws::String& GetDatabaseName() const{ return m_databaseName; }
-
-    /**
-     * <p>The database in which the table metadata resides.</p>
-     */
+    inline const Aws::String& GetDatabaseName() const { return m_databaseName; }
     inline bool DatabaseNameHasBeenSet() const { return m_databaseNameHasBeenSet; }
+    template<typename DatabaseNameT = Aws::String>
+    void SetDatabaseName(DatabaseNameT&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::forward<DatabaseNameT>(value); }
+    template<typename DatabaseNameT = Aws::String>
+    CatalogEntry& WithDatabaseName(DatabaseNameT&& value) { SetDatabaseName(std::forward<DatabaseNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The database in which the table metadata resides.</p>
-     */
-    inline void SetDatabaseName(const Aws::String& value) { m_databaseNameHasBeenSet = true; m_databaseName = value; }
-
-    /**
-     * <p>The database in which the table metadata resides.</p>
-     */
-    inline void SetDatabaseName(Aws::String&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::move(value); }
-
-    /**
-     * <p>The database in which the table metadata resides.</p>
-     */
-    inline void SetDatabaseName(const char* value) { m_databaseNameHasBeenSet = true; m_databaseName.assign(value); }
-
-    /**
-     * <p>The database in which the table metadata resides.</p>
-     */
-    inline CatalogEntry& WithDatabaseName(const Aws::String& value) { SetDatabaseName(value); return *this;}
-
-    /**
-     * <p>The database in which the table metadata resides.</p>
-     */
-    inline CatalogEntry& WithDatabaseName(Aws::String&& value) { SetDatabaseName(std::move(value)); return *this;}
-
-    /**
-     * <p>The database in which the table metadata resides.</p>
-     */
-    inline CatalogEntry& WithDatabaseName(const char* value) { SetDatabaseName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the table in question.</p>
      */
-    inline const Aws::String& GetTableName() const{ return m_tableName; }
-
-    /**
-     * <p>The name of the table in question.</p>
-     */
+    inline const Aws::String& GetTableName() const { return m_tableName; }
     inline bool TableNameHasBeenSet() const { return m_tableNameHasBeenSet; }
-
-    /**
-     * <p>The name of the table in question.</p>
-     */
-    inline void SetTableName(const Aws::String& value) { m_tableNameHasBeenSet = true; m_tableName = value; }
-
-    /**
-     * <p>The name of the table in question.</p>
-     */
-    inline void SetTableName(Aws::String&& value) { m_tableNameHasBeenSet = true; m_tableName = std::move(value); }
-
-    /**
-     * <p>The name of the table in question.</p>
-     */
-    inline void SetTableName(const char* value) { m_tableNameHasBeenSet = true; m_tableName.assign(value); }
-
-    /**
-     * <p>The name of the table in question.</p>
-     */
-    inline CatalogEntry& WithTableName(const Aws::String& value) { SetTableName(value); return *this;}
-
-    /**
-     * <p>The name of the table in question.</p>
-     */
-    inline CatalogEntry& WithTableName(Aws::String&& value) { SetTableName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the table in question.</p>
-     */
-    inline CatalogEntry& WithTableName(const char* value) { SetTableName(value); return *this;}
-
+    template<typename TableNameT = Aws::String>
+    void SetTableName(TableNameT&& value) { m_tableNameHasBeenSet = true; m_tableName = std::forward<TableNameT>(value); }
+    template<typename TableNameT = Aws::String>
+    CatalogEntry& WithTableName(TableNameT&& value) { SetTableName(std::forward<TableNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_databaseName;

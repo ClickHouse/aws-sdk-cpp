@@ -21,6 +21,8 @@
 #include <aws/fsx/model/AssociateFileSystemAliasesResult.h>
 #include <aws/fsx/model/CancelDataRepositoryTaskResult.h>
 #include <aws/fsx/model/CopyBackupResult.h>
+#include <aws/fsx/model/CopySnapshotAndUpdateVolumeResult.h>
+#include <aws/fsx/model/CreateAndAttachS3AccessPointResult.h>
 #include <aws/fsx/model/CreateBackupResult.h>
 #include <aws/fsx/model/CreateDataRepositoryAssociationResult.h>
 #include <aws/fsx/model/CreateDataRepositoryTaskResult.h>
@@ -44,21 +46,38 @@
 #include <aws/fsx/model/DescribeFileCachesResult.h>
 #include <aws/fsx/model/DescribeFileSystemAliasesResult.h>
 #include <aws/fsx/model/DescribeFileSystemsResult.h>
+#include <aws/fsx/model/DescribeS3AccessPointAttachmentsResult.h>
+#include <aws/fsx/model/DescribeSharedVpcConfigurationResult.h>
 #include <aws/fsx/model/DescribeSnapshotsResult.h>
 #include <aws/fsx/model/DescribeStorageVirtualMachinesResult.h>
 #include <aws/fsx/model/DescribeVolumesResult.h>
+#include <aws/fsx/model/DetachAndDeleteS3AccessPointResult.h>
 #include <aws/fsx/model/DisassociateFileSystemAliasesResult.h>
 #include <aws/fsx/model/ListTagsForResourceResult.h>
 #include <aws/fsx/model/ReleaseFileSystemNfsV3LocksResult.h>
 #include <aws/fsx/model/RestoreVolumeFromSnapshotResult.h>
+#include <aws/fsx/model/StartMisconfiguredStateRecoveryResult.h>
 #include <aws/fsx/model/TagResourceResult.h>
 #include <aws/fsx/model/UntagResourceResult.h>
 #include <aws/fsx/model/UpdateDataRepositoryAssociationResult.h>
 #include <aws/fsx/model/UpdateFileCacheResult.h>
 #include <aws/fsx/model/UpdateFileSystemResult.h>
+#include <aws/fsx/model/UpdateSharedVpcConfigurationResult.h>
 #include <aws/fsx/model/UpdateSnapshotResult.h>
 #include <aws/fsx/model/UpdateStorageVirtualMachineResult.h>
 #include <aws/fsx/model/UpdateVolumeResult.h>
+#include <aws/fsx/model/DescribeStorageVirtualMachinesRequest.h>
+#include <aws/fsx/model/DescribeFileSystemsRequest.h>
+#include <aws/fsx/model/DescribeBackupsRequest.h>
+#include <aws/fsx/model/DescribeSnapshotsRequest.h>
+#include <aws/fsx/model/DescribeVolumesRequest.h>
+#include <aws/fsx/model/UpdateSharedVpcConfigurationRequest.h>
+#include <aws/fsx/model/DescribeDataRepositoryAssociationsRequest.h>
+#include <aws/fsx/model/CreateBackupRequest.h>
+#include <aws/fsx/model/DescribeDataRepositoryTasksRequest.h>
+#include <aws/fsx/model/DescribeS3AccessPointAttachmentsRequest.h>
+#include <aws/fsx/model/DescribeSharedVpcConfigurationRequest.h>
+#include <aws/fsx/model/DescribeFileCachesRequest.h>
 /* End of service model headers required in FSxClient header */
 
 namespace Aws
@@ -92,7 +111,7 @@ namespace Aws
 
   namespace FSx
   {
-    using FSxClientConfiguration = Aws::Client::GenericClientConfiguration<false>;
+    using FSxClientConfiguration = Aws::Client::GenericClientConfiguration;
     using FSxEndpointProviderBase = Aws::FSx::Endpoint::FSxEndpointProviderBase;
     using FSxEndpointProvider = Aws::FSx::Endpoint::FSxEndpointProvider;
 
@@ -102,6 +121,8 @@ namespace Aws
       class AssociateFileSystemAliasesRequest;
       class CancelDataRepositoryTaskRequest;
       class CopyBackupRequest;
+      class CopySnapshotAndUpdateVolumeRequest;
+      class CreateAndAttachS3AccessPointRequest;
       class CreateBackupRequest;
       class CreateDataRepositoryAssociationRequest;
       class CreateDataRepositoryTaskRequest;
@@ -125,18 +146,23 @@ namespace Aws
       class DescribeFileCachesRequest;
       class DescribeFileSystemAliasesRequest;
       class DescribeFileSystemsRequest;
+      class DescribeS3AccessPointAttachmentsRequest;
+      class DescribeSharedVpcConfigurationRequest;
       class DescribeSnapshotsRequest;
       class DescribeStorageVirtualMachinesRequest;
       class DescribeVolumesRequest;
+      class DetachAndDeleteS3AccessPointRequest;
       class DisassociateFileSystemAliasesRequest;
       class ListTagsForResourceRequest;
       class ReleaseFileSystemNfsV3LocksRequest;
       class RestoreVolumeFromSnapshotRequest;
+      class StartMisconfiguredStateRecoveryRequest;
       class TagResourceRequest;
       class UntagResourceRequest;
       class UpdateDataRepositoryAssociationRequest;
       class UpdateFileCacheRequest;
       class UpdateFileSystemRequest;
+      class UpdateSharedVpcConfigurationRequest;
       class UpdateSnapshotRequest;
       class UpdateStorageVirtualMachineRequest;
       class UpdateVolumeRequest;
@@ -146,6 +172,8 @@ namespace Aws
       typedef Aws::Utils::Outcome<AssociateFileSystemAliasesResult, FSxError> AssociateFileSystemAliasesOutcome;
       typedef Aws::Utils::Outcome<CancelDataRepositoryTaskResult, FSxError> CancelDataRepositoryTaskOutcome;
       typedef Aws::Utils::Outcome<CopyBackupResult, FSxError> CopyBackupOutcome;
+      typedef Aws::Utils::Outcome<CopySnapshotAndUpdateVolumeResult, FSxError> CopySnapshotAndUpdateVolumeOutcome;
+      typedef Aws::Utils::Outcome<CreateAndAttachS3AccessPointResult, FSxError> CreateAndAttachS3AccessPointOutcome;
       typedef Aws::Utils::Outcome<CreateBackupResult, FSxError> CreateBackupOutcome;
       typedef Aws::Utils::Outcome<CreateDataRepositoryAssociationResult, FSxError> CreateDataRepositoryAssociationOutcome;
       typedef Aws::Utils::Outcome<CreateDataRepositoryTaskResult, FSxError> CreateDataRepositoryTaskOutcome;
@@ -169,18 +197,23 @@ namespace Aws
       typedef Aws::Utils::Outcome<DescribeFileCachesResult, FSxError> DescribeFileCachesOutcome;
       typedef Aws::Utils::Outcome<DescribeFileSystemAliasesResult, FSxError> DescribeFileSystemAliasesOutcome;
       typedef Aws::Utils::Outcome<DescribeFileSystemsResult, FSxError> DescribeFileSystemsOutcome;
+      typedef Aws::Utils::Outcome<DescribeS3AccessPointAttachmentsResult, FSxError> DescribeS3AccessPointAttachmentsOutcome;
+      typedef Aws::Utils::Outcome<DescribeSharedVpcConfigurationResult, FSxError> DescribeSharedVpcConfigurationOutcome;
       typedef Aws::Utils::Outcome<DescribeSnapshotsResult, FSxError> DescribeSnapshotsOutcome;
       typedef Aws::Utils::Outcome<DescribeStorageVirtualMachinesResult, FSxError> DescribeStorageVirtualMachinesOutcome;
       typedef Aws::Utils::Outcome<DescribeVolumesResult, FSxError> DescribeVolumesOutcome;
+      typedef Aws::Utils::Outcome<DetachAndDeleteS3AccessPointResult, FSxError> DetachAndDeleteS3AccessPointOutcome;
       typedef Aws::Utils::Outcome<DisassociateFileSystemAliasesResult, FSxError> DisassociateFileSystemAliasesOutcome;
       typedef Aws::Utils::Outcome<ListTagsForResourceResult, FSxError> ListTagsForResourceOutcome;
       typedef Aws::Utils::Outcome<ReleaseFileSystemNfsV3LocksResult, FSxError> ReleaseFileSystemNfsV3LocksOutcome;
       typedef Aws::Utils::Outcome<RestoreVolumeFromSnapshotResult, FSxError> RestoreVolumeFromSnapshotOutcome;
+      typedef Aws::Utils::Outcome<StartMisconfiguredStateRecoveryResult, FSxError> StartMisconfiguredStateRecoveryOutcome;
       typedef Aws::Utils::Outcome<TagResourceResult, FSxError> TagResourceOutcome;
       typedef Aws::Utils::Outcome<UntagResourceResult, FSxError> UntagResourceOutcome;
       typedef Aws::Utils::Outcome<UpdateDataRepositoryAssociationResult, FSxError> UpdateDataRepositoryAssociationOutcome;
       typedef Aws::Utils::Outcome<UpdateFileCacheResult, FSxError> UpdateFileCacheOutcome;
       typedef Aws::Utils::Outcome<UpdateFileSystemResult, FSxError> UpdateFileSystemOutcome;
+      typedef Aws::Utils::Outcome<UpdateSharedVpcConfigurationResult, FSxError> UpdateSharedVpcConfigurationOutcome;
       typedef Aws::Utils::Outcome<UpdateSnapshotResult, FSxError> UpdateSnapshotOutcome;
       typedef Aws::Utils::Outcome<UpdateStorageVirtualMachineResult, FSxError> UpdateStorageVirtualMachineOutcome;
       typedef Aws::Utils::Outcome<UpdateVolumeResult, FSxError> UpdateVolumeOutcome;
@@ -190,6 +223,8 @@ namespace Aws
       typedef std::future<AssociateFileSystemAliasesOutcome> AssociateFileSystemAliasesOutcomeCallable;
       typedef std::future<CancelDataRepositoryTaskOutcome> CancelDataRepositoryTaskOutcomeCallable;
       typedef std::future<CopyBackupOutcome> CopyBackupOutcomeCallable;
+      typedef std::future<CopySnapshotAndUpdateVolumeOutcome> CopySnapshotAndUpdateVolumeOutcomeCallable;
+      typedef std::future<CreateAndAttachS3AccessPointOutcome> CreateAndAttachS3AccessPointOutcomeCallable;
       typedef std::future<CreateBackupOutcome> CreateBackupOutcomeCallable;
       typedef std::future<CreateDataRepositoryAssociationOutcome> CreateDataRepositoryAssociationOutcomeCallable;
       typedef std::future<CreateDataRepositoryTaskOutcome> CreateDataRepositoryTaskOutcomeCallable;
@@ -213,18 +248,23 @@ namespace Aws
       typedef std::future<DescribeFileCachesOutcome> DescribeFileCachesOutcomeCallable;
       typedef std::future<DescribeFileSystemAliasesOutcome> DescribeFileSystemAliasesOutcomeCallable;
       typedef std::future<DescribeFileSystemsOutcome> DescribeFileSystemsOutcomeCallable;
+      typedef std::future<DescribeS3AccessPointAttachmentsOutcome> DescribeS3AccessPointAttachmentsOutcomeCallable;
+      typedef std::future<DescribeSharedVpcConfigurationOutcome> DescribeSharedVpcConfigurationOutcomeCallable;
       typedef std::future<DescribeSnapshotsOutcome> DescribeSnapshotsOutcomeCallable;
       typedef std::future<DescribeStorageVirtualMachinesOutcome> DescribeStorageVirtualMachinesOutcomeCallable;
       typedef std::future<DescribeVolumesOutcome> DescribeVolumesOutcomeCallable;
+      typedef std::future<DetachAndDeleteS3AccessPointOutcome> DetachAndDeleteS3AccessPointOutcomeCallable;
       typedef std::future<DisassociateFileSystemAliasesOutcome> DisassociateFileSystemAliasesOutcomeCallable;
       typedef std::future<ListTagsForResourceOutcome> ListTagsForResourceOutcomeCallable;
       typedef std::future<ReleaseFileSystemNfsV3LocksOutcome> ReleaseFileSystemNfsV3LocksOutcomeCallable;
       typedef std::future<RestoreVolumeFromSnapshotOutcome> RestoreVolumeFromSnapshotOutcomeCallable;
+      typedef std::future<StartMisconfiguredStateRecoveryOutcome> StartMisconfiguredStateRecoveryOutcomeCallable;
       typedef std::future<TagResourceOutcome> TagResourceOutcomeCallable;
       typedef std::future<UntagResourceOutcome> UntagResourceOutcomeCallable;
       typedef std::future<UpdateDataRepositoryAssociationOutcome> UpdateDataRepositoryAssociationOutcomeCallable;
       typedef std::future<UpdateFileCacheOutcome> UpdateFileCacheOutcomeCallable;
       typedef std::future<UpdateFileSystemOutcome> UpdateFileSystemOutcomeCallable;
+      typedef std::future<UpdateSharedVpcConfigurationOutcome> UpdateSharedVpcConfigurationOutcomeCallable;
       typedef std::future<UpdateSnapshotOutcome> UpdateSnapshotOutcomeCallable;
       typedef std::future<UpdateStorageVirtualMachineOutcome> UpdateStorageVirtualMachineOutcomeCallable;
       typedef std::future<UpdateVolumeOutcome> UpdateVolumeOutcomeCallable;
@@ -237,6 +277,8 @@ namespace Aws
     typedef std::function<void(const FSxClient*, const Model::AssociateFileSystemAliasesRequest&, const Model::AssociateFileSystemAliasesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > AssociateFileSystemAliasesResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::CancelDataRepositoryTaskRequest&, const Model::CancelDataRepositoryTaskOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CancelDataRepositoryTaskResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::CopyBackupRequest&, const Model::CopyBackupOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CopyBackupResponseReceivedHandler;
+    typedef std::function<void(const FSxClient*, const Model::CopySnapshotAndUpdateVolumeRequest&, const Model::CopySnapshotAndUpdateVolumeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CopySnapshotAndUpdateVolumeResponseReceivedHandler;
+    typedef std::function<void(const FSxClient*, const Model::CreateAndAttachS3AccessPointRequest&, const Model::CreateAndAttachS3AccessPointOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateAndAttachS3AccessPointResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::CreateBackupRequest&, const Model::CreateBackupOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateBackupResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::CreateDataRepositoryAssociationRequest&, const Model::CreateDataRepositoryAssociationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateDataRepositoryAssociationResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::CreateDataRepositoryTaskRequest&, const Model::CreateDataRepositoryTaskOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateDataRepositoryTaskResponseReceivedHandler;
@@ -260,18 +302,23 @@ namespace Aws
     typedef std::function<void(const FSxClient*, const Model::DescribeFileCachesRequest&, const Model::DescribeFileCachesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeFileCachesResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::DescribeFileSystemAliasesRequest&, const Model::DescribeFileSystemAliasesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeFileSystemAliasesResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::DescribeFileSystemsRequest&, const Model::DescribeFileSystemsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeFileSystemsResponseReceivedHandler;
+    typedef std::function<void(const FSxClient*, const Model::DescribeS3AccessPointAttachmentsRequest&, const Model::DescribeS3AccessPointAttachmentsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeS3AccessPointAttachmentsResponseReceivedHandler;
+    typedef std::function<void(const FSxClient*, const Model::DescribeSharedVpcConfigurationRequest&, const Model::DescribeSharedVpcConfigurationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSharedVpcConfigurationResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::DescribeSnapshotsRequest&, const Model::DescribeSnapshotsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSnapshotsResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::DescribeStorageVirtualMachinesRequest&, const Model::DescribeStorageVirtualMachinesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeStorageVirtualMachinesResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::DescribeVolumesRequest&, const Model::DescribeVolumesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeVolumesResponseReceivedHandler;
+    typedef std::function<void(const FSxClient*, const Model::DetachAndDeleteS3AccessPointRequest&, const Model::DetachAndDeleteS3AccessPointOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DetachAndDeleteS3AccessPointResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::DisassociateFileSystemAliasesRequest&, const Model::DisassociateFileSystemAliasesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateFileSystemAliasesResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::ListTagsForResourceRequest&, const Model::ListTagsForResourceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListTagsForResourceResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::ReleaseFileSystemNfsV3LocksRequest&, const Model::ReleaseFileSystemNfsV3LocksOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ReleaseFileSystemNfsV3LocksResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::RestoreVolumeFromSnapshotRequest&, const Model::RestoreVolumeFromSnapshotOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RestoreVolumeFromSnapshotResponseReceivedHandler;
+    typedef std::function<void(const FSxClient*, const Model::StartMisconfiguredStateRecoveryRequest&, const Model::StartMisconfiguredStateRecoveryOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StartMisconfiguredStateRecoveryResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::TagResourceRequest&, const Model::TagResourceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > TagResourceResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::UntagResourceRequest&, const Model::UntagResourceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UntagResourceResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::UpdateDataRepositoryAssociationRequest&, const Model::UpdateDataRepositoryAssociationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateDataRepositoryAssociationResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::UpdateFileCacheRequest&, const Model::UpdateFileCacheOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateFileCacheResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::UpdateFileSystemRequest&, const Model::UpdateFileSystemOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateFileSystemResponseReceivedHandler;
+    typedef std::function<void(const FSxClient*, const Model::UpdateSharedVpcConfigurationRequest&, const Model::UpdateSharedVpcConfigurationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateSharedVpcConfigurationResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::UpdateSnapshotRequest&, const Model::UpdateSnapshotOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateSnapshotResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::UpdateStorageVirtualMachineRequest&, const Model::UpdateStorageVirtualMachineOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateStorageVirtualMachineResponseReceivedHandler;
     typedef std::function<void(const FSxClient*, const Model::UpdateVolumeRequest&, const Model::UpdateVolumeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateVolumeResponseReceivedHandler;

@@ -18,15 +18,7 @@ namespace CognitoIdentityProvider
 namespace Model
 {
 
-RiskExceptionConfigurationType::RiskExceptionConfigurationType() : 
-    m_blockedIPRangeListHasBeenSet(false),
-    m_skippedIPRangeListHasBeenSet(false)
-{
-}
-
-RiskExceptionConfigurationType::RiskExceptionConfigurationType(JsonView jsonValue) : 
-    m_blockedIPRangeListHasBeenSet(false),
-    m_skippedIPRangeListHasBeenSet(false)
+RiskExceptionConfigurationType::RiskExceptionConfigurationType(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ RiskExceptionConfigurationType& RiskExceptionConfigurationType::operator =(JsonV
     }
     m_blockedIPRangeListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SkippedIPRangeList"))
   {
     Aws::Utils::Array<JsonView> skippedIPRangeListJsonList = jsonValue.GetArray("SkippedIPRangeList");
@@ -52,7 +43,6 @@ RiskExceptionConfigurationType& RiskExceptionConfigurationType::operator =(JsonV
     }
     m_skippedIPRangeListHasBeenSet = true;
   }
-
   return *this;
 }
 

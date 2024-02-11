@@ -12,12 +12,6 @@ using namespace Aws::ServiceQuotas::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetServiceQuotaRequest::GetServiceQuotaRequest() : 
-    m_serviceCodeHasBeenSet(false),
-    m_quotaCodeHasBeenSet(false)
-{
-}
-
 Aws::String GetServiceQuotaRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,12 @@ Aws::String GetServiceQuotaRequest::SerializePayload() const
   if(m_quotaCodeHasBeenSet)
   {
    payload.WithString("QuotaCode", m_quotaCode);
+
+  }
+
+  if(m_contextIdHasBeenSet)
+  {
+   payload.WithString("ContextId", m_contextId);
 
   }
 

@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsBackupBackupVaultNotificationsDetails::AwsBackupBackupVaultNotificationsDetails() : 
-    m_backupVaultEventsHasBeenSet(false),
-    m_snsTopicArnHasBeenSet(false)
-{
-}
-
-AwsBackupBackupVaultNotificationsDetails::AwsBackupBackupVaultNotificationsDetails(JsonView jsonValue) : 
-    m_backupVaultEventsHasBeenSet(false),
-    m_snsTopicArnHasBeenSet(false)
+AwsBackupBackupVaultNotificationsDetails::AwsBackupBackupVaultNotificationsDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ AwsBackupBackupVaultNotificationsDetails& AwsBackupBackupVaultNotificationsDetai
     }
     m_backupVaultEventsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SnsTopicArn"))
   {
     m_snsTopicArn = jsonValue.GetString("SnsTopicArn");
-
     m_snsTopicArnHasBeenSet = true;
   }
-
   return *this;
 }
 

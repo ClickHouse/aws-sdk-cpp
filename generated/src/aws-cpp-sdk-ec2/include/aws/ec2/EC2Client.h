@@ -17,48 +17,35 @@ namespace Aws
 namespace EC2
 {
   /**
-   * <fullname>Amazon Elastic Compute Cloud</fullname> <p>Amazon Elastic Compute
-   * Cloud (Amazon EC2) provides secure and resizable computing capacity in the
-   * Amazon Web Services Cloud. Using Amazon EC2 eliminates the need to invest in
-   * hardware up front, so you can develop and deploy applications faster. Amazon
-   * Virtual Private Cloud (Amazon VPC) enables you to provision a logically isolated
-   * section of the Amazon Web Services Cloud where you can launch Amazon Web
-   * Services resources in a virtual network that you've defined. Amazon Elastic
-   * Block Store (Amazon EBS) provides block level storage volumes for use with EC2
-   * instances. EBS volumes are highly available and reliable storage volumes that
-   * can be attached to any running instance and used like a hard drive.</p> <p>To
-   * learn more, see the following resources:</p> <ul> <li> <p>Amazon EC2: <a
-   * href="http://aws.amazon.com/ec2">Amazon EC2 product page</a>, <a
-   * href="https://docs.aws.amazon.com/ec2/index.html">Amazon EC2 documentation</a>
-   * </p> </li> <li> <p>Amazon EBS: <a href="http://aws.amazon.com/ebs">Amazon EBS
-   * product page</a>, <a href="https://docs.aws.amazon.com/ebs/index.html">Amazon
-   * EBS documentation</a> </p> </li> <li> <p>Amazon VPC: <a
-   * href="http://aws.amazon.com/vpc">Amazon VPC product page</a>, <a
-   * href="https://docs.aws.amazon.com/vpc/index.html">Amazon VPC documentation</a>
-   * </p> </li> <li> <p>VPN: <a href="http://aws.amazon.com/vpn">VPN product
-   * page</a>, <a href="https://docs.aws.amazon.com/vpn/index.html">VPN
-   * documentation</a> </p> </li> </ul>
+   * <fullname>Amazon Elastic Compute Cloud</fullname> <p>You can access the features
+   * of Amazon Elastic Compute Cloud (Amazon EC2) programmatically. For more
+   * information, see the <a
+   * href="https://docs.aws.amazon.com/ec2/latest/devguide">Amazon EC2 Developer
+   * Guide</a>.</p>
    */
   class AWS_EC2_API EC2Client : public Aws::Client::AWSXMLClient, public Aws::Client::ClientWithAsyncTemplateMethods<EC2Client>
   {
     public:
       typedef Aws::Client::AWSXMLClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef EC2ClientConfiguration ClientConfigurationType;
+      typedef EC2EndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         EC2Client(const Aws::EC2::EC2ClientConfiguration& clientConfiguration = Aws::EC2::EC2ClientConfiguration(),
-                  std::shared_ptr<EC2EndpointProviderBase> endpointProvider = Aws::MakeShared<EC2EndpointProvider>(ALLOCATION_TAG));
+                  std::shared_ptr<EC2EndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         EC2Client(const Aws::Auth::AWSCredentials& credentials,
-                  std::shared_ptr<EC2EndpointProviderBase> endpointProvider = Aws::MakeShared<EC2EndpointProvider>(ALLOCATION_TAG),
+                  std::shared_ptr<EC2EndpointProviderBase> endpointProvider = nullptr,
                   const Aws::EC2::EC2ClientConfiguration& clientConfiguration = Aws::EC2::EC2ClientConfiguration());
 
        /**
@@ -66,7 +53,7 @@ namespace EC2
         * the default http client factory will be used
         */
         EC2Client(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                  std::shared_ptr<EC2EndpointProviderBase> endpointProvider = Aws::MakeShared<EC2EndpointProvider>(ALLOCATION_TAG),
+                  std::shared_ptr<EC2EndpointProviderBase> endpointProvider = nullptr,
                   const Aws::EC2::EC2ClientConfiguration& clientConfiguration = Aws::EC2::EC2ClientConfiguration());
 
 
@@ -98,7 +85,7 @@ namespace EC2
         /**
          * <p>Accepts an Elastic IP address transfer. For more information, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#using-instance-addressing-eips-transfer-accept">Accept
-         * a transferred Elastic IP address</a> in the <i>Amazon Virtual Private Cloud User
+         * a transferred Elastic IP address</a> in the <i>Amazon VPC User
          * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AcceptAddressTransfer">AWS
          * API Reference</a></p>
@@ -121,6 +108,35 @@ namespace EC2
         void AcceptAddressTransferAsync(const AcceptAddressTransferRequestT& request, const AcceptAddressTransferResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::AcceptAddressTransfer, request, handler, context);
+        }
+
+        /**
+         * <p>Accepts a request to assign billing of the available capacity of a shared
+         * Capacity Reservation to your account. For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/assign-billing.html">
+         * Billing assignment for shared Amazon EC2 Capacity
+         * Reservations</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AcceptCapacityReservationBillingOwnership">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::AcceptCapacityReservationBillingOwnershipOutcome AcceptCapacityReservationBillingOwnership(const Model::AcceptCapacityReservationBillingOwnershipRequest& request) const;
+
+        /**
+         * A Callable wrapper for AcceptCapacityReservationBillingOwnership that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename AcceptCapacityReservationBillingOwnershipRequestT = Model::AcceptCapacityReservationBillingOwnershipRequest>
+        Model::AcceptCapacityReservationBillingOwnershipOutcomeCallable AcceptCapacityReservationBillingOwnershipCallable(const AcceptCapacityReservationBillingOwnershipRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::AcceptCapacityReservationBillingOwnership, request);
+        }
+
+        /**
+         * An Async wrapper for AcceptCapacityReservationBillingOwnership that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename AcceptCapacityReservationBillingOwnershipRequestT = Model::AcceptCapacityReservationBillingOwnershipRequest>
+        void AcceptCapacityReservationBillingOwnershipAsync(const AcceptCapacityReservationBillingOwnershipRequestT& request, const AcceptCapacityReservationBillingOwnershipResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::AcceptCapacityReservationBillingOwnership, request, handler, context);
         }
 
         /**
@@ -155,13 +171,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AcceptTransitGatewayMulticastDomainAssociations">AWS
          * API Reference</a></p>
          */
-        virtual Model::AcceptTransitGatewayMulticastDomainAssociationsOutcome AcceptTransitGatewayMulticastDomainAssociations(const Model::AcceptTransitGatewayMulticastDomainAssociationsRequest& request) const;
+        virtual Model::AcceptTransitGatewayMulticastDomainAssociationsOutcome AcceptTransitGatewayMulticastDomainAssociations(const Model::AcceptTransitGatewayMulticastDomainAssociationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for AcceptTransitGatewayMulticastDomainAssociations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename AcceptTransitGatewayMulticastDomainAssociationsRequestT = Model::AcceptTransitGatewayMulticastDomainAssociationsRequest>
-        Model::AcceptTransitGatewayMulticastDomainAssociationsOutcomeCallable AcceptTransitGatewayMulticastDomainAssociationsCallable(const AcceptTransitGatewayMulticastDomainAssociationsRequestT& request) const
+        Model::AcceptTransitGatewayMulticastDomainAssociationsOutcomeCallable AcceptTransitGatewayMulticastDomainAssociationsCallable(const AcceptTransitGatewayMulticastDomainAssociationsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::AcceptTransitGatewayMulticastDomainAssociations, request);
         }
@@ -170,7 +186,7 @@ namespace EC2
          * An Async wrapper for AcceptTransitGatewayMulticastDomainAssociations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename AcceptTransitGatewayMulticastDomainAssociationsRequestT = Model::AcceptTransitGatewayMulticastDomainAssociationsRequest>
-        void AcceptTransitGatewayMulticastDomainAssociationsAsync(const AcceptTransitGatewayMulticastDomainAssociationsRequestT& request, const AcceptTransitGatewayMulticastDomainAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void AcceptTransitGatewayMulticastDomainAssociationsAsync(const AcceptTransitGatewayMulticastDomainAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const AcceptTransitGatewayMulticastDomainAssociationsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::AcceptTransitGatewayMulticastDomainAssociations, request, handler, context);
         }
@@ -298,9 +314,8 @@ namespace EC2
          * advertised, and then simultaneously stop advertising it from the current
          * location and start advertising it through Amazon Web Services.</p> <p>It can
          * take a few minutes before traffic to the specified addresses starts routing to
-         * Amazon Web Services because of BGP propagation delays.</p> <p>To stop
-         * advertising the BYOIP CIDR, use <a>WithdrawByoipCidr</a>.</p><p><h3>See
-         * Also:</h3>   <a
+         * Amazon Web Services because of BGP propagation delays.</p><p><h3>See Also:</h3> 
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AdvertiseByoipCidr">AWS
          * API Reference</a></p>
          */
@@ -335,35 +350,26 @@ namespace EC2
          * Amazon Web Services resources using bring your own IP addresses (BYOIP). For
          * more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html">Bring
-         * Your Own IP Addresses (BYOIP)</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p>[EC2-VPC] If you release an Elastic IP address, you might be
-         * able to recover it. You cannot recover an Elastic IP address that you released
-         * after it is allocated to another Amazon Web Services account. You cannot recover
-         * an Elastic IP address for EC2-Classic. To attempt to recover an Elastic IP
-         * address that you released, specify it in this operation.</p> <p>An Elastic IP
-         * address is for use either in the EC2-Classic platform or in a VPC. By default,
-         * you can allocate 5 Elastic IP addresses for EC2-Classic per Region and 5 Elastic
-         * IP addresses for EC2-VPC per Region.</p> <p>For more information, see <a
+         * Your Own IP Addresses (BYOIP)</a> in the <i>Amazon EC2 User Guide</i>.</p> <p>If
+         * you release an Elastic IP address, you might be able to recover it. You cannot
+         * recover an Elastic IP address that you released after it is allocated to another
+         * Amazon Web Services account. To attempt to recover an Elastic IP address that
+         * you released, specify it in this operation.</p> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic
-         * IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-         * <p>You can allocate a carrier IP address which is a public IP address from a
-         * telecommunication carrier, to a network interface which resides in a subnet in a
-         * Wavelength Zone (for example an EC2 instance). </p>  <p>We are retiring
-         * EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC. For more
-         * information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * IP Addresses</a> in the <i>Amazon EC2 User Guide</i>.</p> <p>You can allocate a
+         * carrier IP address which is a public IP address from a telecommunication
+         * carrier, to a network interface which resides in a subnet in a Wavelength Zone
+         * (for example an EC2 instance).</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AllocateAddress">AWS
          * API Reference</a></p>
          */
-        virtual Model::AllocateAddressOutcome AllocateAddress(const Model::AllocateAddressRequest& request) const;
+        virtual Model::AllocateAddressOutcome AllocateAddress(const Model::AllocateAddressRequest& request = {}) const;
 
         /**
          * A Callable wrapper for AllocateAddress that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename AllocateAddressRequestT = Model::AllocateAddressRequest>
-        Model::AllocateAddressOutcomeCallable AllocateAddressCallable(const AllocateAddressRequestT& request) const
+        Model::AllocateAddressOutcomeCallable AllocateAddressCallable(const AllocateAddressRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::AllocateAddress, request);
         }
@@ -372,7 +378,7 @@ namespace EC2
          * An Async wrapper for AllocateAddress that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename AllocateAddressRequestT = Model::AllocateAddressRequest>
-        void AllocateAddressAsync(const AllocateAddressRequestT& request, const AllocateAddressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void AllocateAddressAsync(const AllocateAddressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const AllocateAddressRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::AllocateAddress, request, handler, context);
         }
@@ -385,13 +391,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AllocateHosts">AWS
          * API Reference</a></p>
          */
-        virtual Model::AllocateHostsOutcome AllocateHosts(const Model::AllocateHostsRequest& request) const;
+        virtual Model::AllocateHostsOutcome AllocateHosts(const Model::AllocateHostsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for AllocateHosts that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename AllocateHostsRequestT = Model::AllocateHostsRequest>
-        Model::AllocateHostsOutcomeCallable AllocateHostsCallable(const AllocateHostsRequestT& request) const
+        Model::AllocateHostsOutcomeCallable AllocateHostsCallable(const AllocateHostsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::AllocateHosts, request);
         }
@@ -400,15 +406,17 @@ namespace EC2
          * An Async wrapper for AllocateHosts that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename AllocateHostsRequestT = Model::AllocateHostsRequest>
-        void AllocateHostsAsync(const AllocateHostsRequestT& request, const AllocateHostsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void AllocateHostsAsync(const AllocateHostsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const AllocateHostsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::AllocateHosts, request, handler, context);
         }
 
         /**
-         * <p>Allocate a CIDR from an IPAM pool. In IPAM, an allocation is a CIDR
-         * assignment from an IPAM pool to another IPAM pool or to a resource. For more
-         * information, see <a
+         * <p>Allocate a CIDR from an IPAM pool. The Region you use should be the IPAM pool
+         * locale. The locale is the Amazon Web Services Region where this IPAM pool is
+         * available for allocations.</p> <p>In IPAM, an allocation is a CIDR assignment
+         * from an IPAM pool to another IPAM pool or to a resource. For more information,
+         * see <a
          * href="https://docs.aws.amazon.com/vpc/latest/ipam/allocate-cidrs-ipam.html">Allocate
          * CIDRs</a> in the <i>Amazon VPC IPAM User Guide</i>.</p>  <p>This action
          * creates an allocation with strong consistency. The returned CIDR will not
@@ -465,22 +473,18 @@ namespace EC2
         }
 
         /**
-         * <p>Assigns one or more IPv6 addresses to the specified network interface. You
-         * can specify one or more specific IPv6 addresses, or you can specify the number
-         * of IPv6 addresses to be automatically assigned from within the subnet's IPv6
-         * CIDR block range. You can assign as many IPv6 addresses to a network interface
-         * as you can assign private IPv4 addresses, and the limit varies per instance
-         * type. For information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP
-         * Addresses Per Network Interface Per Instance Type</a> in the <i>Amazon Elastic
-         * Compute Cloud User Guide</i>.</p> <p>You must specify either the IPv6 addresses
-         * or the IPv6 address count in the request. </p> <p>You can optionally use Prefix
-         * Delegation on the network interface. You must specify either the IPV6 Prefix
-         * Delegation prefixes, or the IPv6 Prefix Delegation count. For information, see
-         * <a
+         * <p>Assigns the specified IPv6 addresses to the specified network interface. You
+         * can specify specific IPv6 addresses, or you can specify the number of IPv6
+         * addresses to be automatically assigned from the subnet's IPv6 CIDR block range.
+         * You can assign as many IPv6 addresses to a network interface as you can assign
+         * private IPv4 addresses, and the limit varies by instance type.</p> <p>You must
+         * specify either the IPv6 addresses or the IPv6 address count in the request. </p>
+         * <p>You can optionally use Prefix Delegation on the network interface. You must
+         * specify either the IPV6 Prefix Delegation prefixes, or the IPv6 Prefix
+         * Delegation count. For information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html">
-         * Assigning prefixes to Amazon EC2 network interfaces</a> in the <i>Amazon Elastic
-         * Compute Cloud User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * Assigning prefixes to network interfaces</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssignIpv6Addresses">AWS
          * API Reference</a></p>
          */
@@ -505,21 +509,18 @@ namespace EC2
         }
 
         /**
-         * <p>Assigns one or more secondary private IP addresses to the specified network
-         * interface.</p> <p>You can specify one or more specific secondary IP addresses,
-         * or you can specify the number of secondary IP addresses to be automatically
-         * assigned within the subnet's CIDR block range. The number of secondary IP
-         * addresses that you can assign to an instance varies by instance type. For
-         * information about instance types, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance
-         * Types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. For more
-         * information about Elastic IP addresses, see <a
+         * <p>Assigns the specified secondary private IP addresses to the specified network
+         * interface.</p> <p>You can specify specific secondary IP addresses, or you can
+         * specify the number of secondary IP addresses to be automatically assigned from
+         * the subnet's CIDR block range. The number of secondary IP addresses that you can
+         * assign to an instance varies by instance type. For more information about
+         * Elastic IP addresses, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic
-         * IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-         * <p>When you move a secondary private IP address to another network interface,
-         * any Elastic IP address that is associated with the IP address is also moved.</p>
-         * <p>Remapping an IP address is an asynchronous operation. When you move an IP
-         * address from one network interface to another, check
+         * IP Addresses</a> in the <i>Amazon EC2 User Guide</i>.</p> <p>When you move a
+         * secondary private IP address to another network interface, any Elastic IP
+         * address that is associated with the IP address is also moved.</p> <p>Remapping
+         * an IP address is an asynchronous operation. When you move an IP address from one
+         * network interface to another, check
          * <code>network/interfaces/macs/mac/local-ipv4s</code> in the instance metadata to
          * confirm that the remapping is complete.</p> <p>You must specify either the IP
          * addresses or the IP address count in the request.</p> <p>You can optionally use
@@ -527,8 +528,8 @@ namespace EC2
          * Prefix Delegation prefixes, or the IPv4 Prefix Delegation count. For
          * information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html">
-         * Assigning prefixes to Amazon EC2 network interfaces</a> in the <i>Amazon Elastic
-         * Compute Cloud User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * Assigning prefixes to network interfaces</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssignPrivateIpAddresses">AWS
          * API Reference</a></p>
          */
@@ -553,11 +554,11 @@ namespace EC2
         }
 
         /**
-         * <p>Assigns one or more private IPv4 addresses to a private NAT gateway. For more
+         * <p>Assigns private IPv4 addresses to a private NAT gateway. For more
          * information, see <a
-         * href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with">Work
-         * with NAT gateways</a> in the <i>Amazon Virtual Private Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-working-with.html">Work
+         * with NAT gateways</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssignPrivateNatGatewayAddress">AWS
          * API Reference</a></p>
          */
@@ -585,21 +586,11 @@ namespace EC2
          * <p>Associates an Elastic IP address, or carrier IP address (for instances that
          * are in subnets in Wavelength Zones) with an instance or a network interface.
          * Before you can use an Elastic IP address, you must allocate it to your
-         * account.</p> <p>An Elastic IP address is for use in either the EC2-Classic
-         * platform or in a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic
-         * IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-         * <p>[EC2-Classic, VPC in an EC2-VPC-only account] If the Elastic IP address is
-         * already associated with a different instance, it is disassociated from that
-         * instance and associated with the specified instance. If you associate an Elastic
-         * IP address with an instance that has an existing Elastic IP address, the
-         * existing address is disassociated from the instance, but remains allocated to
-         * your account.</p> <p>[VPC in an EC2-Classic account] If you don't specify a
-         * private IP address, the Elastic IP address is associated with the primary IP
-         * address. If the Elastic IP address is already associated with a different
-         * instance or a network interface, you get an error unless you allow
-         * reassociation. You cannot associate an Elastic IP address with an instance or
-         * network interface that has an existing Elastic IP address.</p> <p>[Subnets in
+         * account.</p> <p>If the Elastic IP address is already associated with a different
+         * instance, it is disassociated from that instance and associated with the
+         * specified instance. If you associate an Elastic IP address with an instance that
+         * has an existing Elastic IP address, the existing address is disassociated from
+         * the instance, but remains allocated to your account.</p> <p>[Subnets in
          * Wavelength Zones] You can associate an IP address from the telecommunication
          * carrier to the instance or network interface. </p> <p>You cannot associate an
          * Elastic IP address with an interface in a different network border group.</p>
@@ -608,21 +599,17 @@ namespace EC2
          * each time the Elastic IP address is remapped to the same instance. For more
          * information, see the <i>Elastic IP Addresses</i> section of <a
          * href="http://aws.amazon.com/ec2/pricing/">Amazon EC2 Pricing</a>.</p>
-         *   <p>We are retiring EC2-Classic. We recommend that you
-         * migrate from EC2-Classic to a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateAddress">AWS
          * API Reference</a></p>
          */
-        virtual Model::AssociateAddressOutcome AssociateAddress(const Model::AssociateAddressRequest& request) const;
+        virtual Model::AssociateAddressOutcome AssociateAddress(const Model::AssociateAddressRequest& request = {}) const;
 
         /**
          * A Callable wrapper for AssociateAddress that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename AssociateAddressRequestT = Model::AssociateAddressRequest>
-        Model::AssociateAddressOutcomeCallable AssociateAddressCallable(const AssociateAddressRequestT& request) const
+        Model::AssociateAddressOutcomeCallable AssociateAddressCallable(const AssociateAddressRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::AssociateAddress, request);
         }
@@ -631,9 +618,39 @@ namespace EC2
          * An Async wrapper for AssociateAddress that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename AssociateAddressRequestT = Model::AssociateAddressRequest>
-        void AssociateAddressAsync(const AssociateAddressRequestT& request, const AssociateAddressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void AssociateAddressAsync(const AssociateAddressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const AssociateAddressRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::AssociateAddress, request, handler, context);
+        }
+
+        /**
+         * <p>Initiates a request to assign billing of the unused capacity of a shared
+         * Capacity Reservation to a consumer account that is consolidated under the same
+         * Amazon Web Services organizations payer account. For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/assign-billing.html">Billing
+         * assignment for shared Amazon EC2 Capacity Reservations</a>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateCapacityReservationBillingOwner">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::AssociateCapacityReservationBillingOwnerOutcome AssociateCapacityReservationBillingOwner(const Model::AssociateCapacityReservationBillingOwnerRequest& request) const;
+
+        /**
+         * A Callable wrapper for AssociateCapacityReservationBillingOwner that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename AssociateCapacityReservationBillingOwnerRequestT = Model::AssociateCapacityReservationBillingOwnerRequest>
+        Model::AssociateCapacityReservationBillingOwnerOutcomeCallable AssociateCapacityReservationBillingOwnerCallable(const AssociateCapacityReservationBillingOwnerRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::AssociateCapacityReservationBillingOwner, request);
+        }
+
+        /**
+         * An Async wrapper for AssociateCapacityReservationBillingOwner that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename AssociateCapacityReservationBillingOwnerRequestT = Model::AssociateCapacityReservationBillingOwnerRequest>
+        void AssociateCapacityReservationBillingOwnerAsync(const AssociateCapacityReservationBillingOwnerRequestT& request, const AssociateCapacityReservationBillingOwnerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::AssociateCapacityReservationBillingOwner, request, handler, context);
         }
 
         /**
@@ -679,8 +696,8 @@ namespace EC2
          * explicitly renew the lease using the operating system on the instance.</p>
          * <p>For more information, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html">DHCP
-         * options sets</a> in the <i>Amazon Virtual Private Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * option sets</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>  
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateDhcpOptions">AWS
          * API Reference</a></p>
          */
@@ -805,6 +822,40 @@ namespace EC2
         }
 
         /**
+         * <p>Associates your Autonomous System Number (ASN) with a BYOIP CIDR that you own
+         * in the same Amazon Web Services Region. For more information, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/ipam/tutorials-byoasn.html">Tutorial:
+         * Bring your ASN to IPAM</a> in the <i>Amazon VPC IPAM guide</i>.</p> <p>After the
+         * association succeeds, the ASN is eligible for advertisement. You can view the
+         * association with <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeByoipCidrs.html">DescribeByoipCidrs</a>.
+         * You can advertise the CIDR with <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AdvertiseByoipCidr.html">AdvertiseByoipCidr</a>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateIpamByoasn">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::AssociateIpamByoasnOutcome AssociateIpamByoasn(const Model::AssociateIpamByoasnRequest& request) const;
+
+        /**
+         * A Callable wrapper for AssociateIpamByoasn that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename AssociateIpamByoasnRequestT = Model::AssociateIpamByoasnRequest>
+        Model::AssociateIpamByoasnOutcomeCallable AssociateIpamByoasnCallable(const AssociateIpamByoasnRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::AssociateIpamByoasn, request);
+        }
+
+        /**
+         * An Async wrapper for AssociateIpamByoasn that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename AssociateIpamByoasnRequestT = Model::AssociateIpamByoasnRequest>
+        void AssociateIpamByoasnAsync(const AssociateIpamByoasnRequestT& request, const AssociateIpamByoasnResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::AssociateIpamByoasn, request, handler, context);
+        }
+
+        /**
          * <p>Associates an IPAM resource discovery with an Amazon VPC IPAM. A resource
          * discovery is an IPAM component that enables IPAM to manage and monitor resources
          * that belong to the owning account.</p><p><h3>See Also:</h3>   <a
@@ -834,14 +885,23 @@ namespace EC2
         /**
          * <p>Associates Elastic IP addresses (EIPs) and private IPv4 addresses with a
          * public NAT gateway. For more information, see <a
-         * href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with">Work
-         * with NAT gateways</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
-         * <p>By default, you can associate up to 2 Elastic IP addresses per public NAT
-         * gateway. You can increase the limit by requesting a quota adjustment. For more
-         * information, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-working-with.html">Work
+         * with NAT gateways</a> in the <i>Amazon VPC User Guide</i>.</p> <p>By default,
+         * you can associate up to 2 Elastic IP addresses per public NAT gateway. You can
+         * increase the limit by requesting a quota adjustment. For more information, see
+         * <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html#vpc-limits-eips">Elastic
-         * IP address quotas</a> in the <i>Amazon Virtual Private Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * IP address quotas</a> in the <i>Amazon VPC User Guide</i>.</p> 
+         * <p>When you associate an EIP or secondary EIPs with a public NAT gateway, the
+         * network border group of the EIPs must match the network border group of the
+         * Availability Zone (AZ) that the public NAT gateway is in. If it's not the same,
+         * the EIP will fail to associate. You can see the network border group for the
+         * subnet's AZ by viewing the details of the subnet. Similarly, you can view the
+         * network border group of an EIP by viewing the details of the EIP address. For
+         * more information about network border groups and EIPs, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/WorkWithEIPs.html">Allocate
+         * an Elastic IP address</a> in the <i>Amazon VPC User Guide</i>. </p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateNatGatewayAddress">AWS
          * API Reference</a></p>
          */
@@ -866,6 +926,36 @@ namespace EC2
         }
 
         /**
+         * <p>Associates a route server with a VPC to enable dynamic route updates.</p>
+         * <p>A route server association is the connection established between a route
+         * server and a VPC.</p> <p>For more information see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html">Dynamic
+         * routing in your VPC with VPC Route Server</a> in the <i>Amazon VPC User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateRouteServer">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::AssociateRouteServerOutcome AssociateRouteServer(const Model::AssociateRouteServerRequest& request) const;
+
+        /**
+         * A Callable wrapper for AssociateRouteServer that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename AssociateRouteServerRequestT = Model::AssociateRouteServerRequest>
+        Model::AssociateRouteServerOutcomeCallable AssociateRouteServerCallable(const AssociateRouteServerRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::AssociateRouteServer, request);
+        }
+
+        /**
+         * An Async wrapper for AssociateRouteServer that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename AssociateRouteServerRequestT = Model::AssociateRouteServerRequest>
+        void AssociateRouteServerAsync(const AssociateRouteServerRequestT& request, const AssociateRouteServerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::AssociateRouteServer, request, handler, context);
+        }
+
+        /**
          * <p>Associates a subnet in your VPC or an internet gateway or virtual private
          * gateway attached to your VPC with a route table in your VPC. This association
          * causes traffic from the subnet or gateway to be routed according to the routes
@@ -873,8 +963,7 @@ namespace EC2
          * order to disassociate the route table later. A route table can be associated
          * with multiple subnets.</p> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html">Route
-         * tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * tables</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateRouteTable">AWS
          * API Reference</a></p>
          */
@@ -899,9 +988,41 @@ namespace EC2
         }
 
         /**
+         * <p>Associates a security group with another VPC in the same Region. This enables
+         * you to use the same security group with network interfaces and instances in the
+         * specified VPC.</p>  <ul> <li> <p>The VPC you want to associate the
+         * security group with must be in the same Region.</p> </li> <li> <p>You can
+         * associate the security group with another VPC if your account owns the VPC or if
+         * the VPC was shared with you.</p> </li> <li> <p>You must own the security
+         * group.</p> </li> <li> <p>You cannot use this feature with default security
+         * groups.</p> </li> <li> <p>You cannot use this feature with the default VPC.</p>
+         * </li> </ul> <p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateSecurityGroupVpc">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::AssociateSecurityGroupVpcOutcome AssociateSecurityGroupVpc(const Model::AssociateSecurityGroupVpcRequest& request) const;
+
+        /**
+         * A Callable wrapper for AssociateSecurityGroupVpc that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename AssociateSecurityGroupVpcRequestT = Model::AssociateSecurityGroupVpcRequest>
+        Model::AssociateSecurityGroupVpcOutcomeCallable AssociateSecurityGroupVpcCallable(const AssociateSecurityGroupVpcRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::AssociateSecurityGroupVpc, request);
+        }
+
+        /**
+         * An Async wrapper for AssociateSecurityGroupVpc that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename AssociateSecurityGroupVpcRequestT = Model::AssociateSecurityGroupVpcRequest>
+        void AssociateSecurityGroupVpcAsync(const AssociateSecurityGroupVpcRequestT& request, const AssociateSecurityGroupVpcResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::AssociateSecurityGroupVpc, request, handler, context);
+        }
+
+        /**
          * <p>Associates a CIDR block with your subnet. You can only associate a single
-         * IPv6 CIDR block with your subnet. An IPv6 CIDR block must have a prefix length
-         * of /64.</p><p><h3>See Also:</h3>   <a
+         * IPv6 CIDR block with your subnet.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateSubnetCidrBlock">AWS
          * API Reference</a></p>
          */
@@ -1008,14 +1129,12 @@ namespace EC2
         }
 
         /**
-         *  <p>This API action is currently in <b>limited preview only</b>. If you
-         * are interested in using this feature, contact your account manager.</p> 
          * <p>Associates a branch network interface with a trunk network interface.</p>
-         * <p>Before you create the association, run the <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkInterface.html">create-network-interface</a>
-         * command and set <code>--interface-type</code> to <code>trunk</code>. You must
-         * also create a network interface for each branch network interface that you want
-         * to associate with the trunk network interface.</p><p><h3>See Also:</h3>   <a
+         * <p>Before you create the association, use <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkInterface.html">CreateNetworkInterface</a>
+         * command and set the interface type to <code>trunk</code>. You must also create a
+         * network interface for each branch network interface that you want to associate
+         * with the trunk network interface.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateTrunkInterface">AWS
          * API Reference</a></p>
          */
@@ -1043,13 +1162,12 @@ namespace EC2
          * <p>Associates a CIDR block with your VPC. You can associate a secondary IPv4
          * CIDR block, an Amazon-provided IPv6 CIDR block, or an IPv6 CIDR block from an
          * IPv6 address pool that you provisioned through bring your own IP addresses (<a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html">BYOIP</a>).
-         * The IPv6 CIDR block size is fixed at /56.</p> <p>You must specify one of the
-         * following in the request: an IPv4 CIDR block, an IPv6 pool, or an
-         * Amazon-provided IPv6 CIDR block.</p> <p>For more information about associating
-         * CIDR blocks with your VPC and applicable restrictions, see <a
-         * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#VPC_Sizing">VPC
-         * and subnet sizing</a> in the <i>Amazon Virtual Private Cloud User
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html">BYOIP</a>).</p>
+         * <p>You must specify one of the following in the request: an IPv4 CIDR block, an
+         * IPv6 pool, or an Amazon-provided IPv6 CIDR block.</p> <p>For more information
+         * about associating CIDR blocks with your VPC and applicable restrictions, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html">IP
+         * addressing for your VPCs and subnets</a> in the <i>Amazon VPC User
          * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateVpcCidrBlock">AWS
          * API Reference</a></p>
@@ -1075,20 +1193,16 @@ namespace EC2
         }
 
         /**
-         *  <p>We are retiring EC2-Classic. We recommend that you migrate from
-         * EC2-Classic to a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p>  <p>Links an EC2-Classic instance to a ClassicLink-enabled
-         * VPC through one or more of the VPC's security groups. You cannot link an
-         * EC2-Classic instance to more than one VPC at a time. You can only link an
-         * instance that's in the <code>running</code> state. An instance is automatically
-         * unlinked from a VPC when it's stopped - you can link it to the VPC again when
-         * you restart it.</p> <p>After you've linked an instance, you cannot change the
-         * VPC security groups that are associated with it. To change the security groups,
-         * you must first unlink the instance, and then link it again.</p> <p>Linking your
-         * instance to a VPC is sometimes referred to as <i>attaching</i> your
-         * instance.</p><p><h3>See Also:</h3>   <a
+         *  <p>This action is deprecated.</p>  <p>Links an EC2-Classic
+         * instance to a ClassicLink-enabled VPC through one or more of the VPC security
+         * groups. You cannot link an EC2-Classic instance to more than one VPC at a time.
+         * You can only link an instance that's in the <code>running</code> state. An
+         * instance is automatically unlinked from a VPC when it's stopped - you can link
+         * it to the VPC again when you restart it.</p> <p>After you've linked an instance,
+         * you cannot change the VPC security groups that are associated with it. To change
+         * the security groups, you must first unlink the instance, and then link it
+         * again.</p> <p>Linking your instance to a VPC is sometimes referred to as
+         * <i>attaching</i> your instance.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachClassicLinkVpc">AWS
          * API Reference</a></p>
          */
@@ -1114,10 +1228,9 @@ namespace EC2
 
         /**
          * <p>Attaches an internet gateway or a virtual private gateway to a VPC, enabling
-         * connectivity between the internet and the VPC. For more information about your
-         * VPC and internet gateway, see the <a
-         * href="https://docs.aws.amazon.com/vpc/latest/userguide/">Amazon Virtual Private
-         * Cloud User Guide</a>.</p><p><h3>See Also:</h3>   <a
+         * connectivity between the internet and the VPC. For more information, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html">Internet
+         * gateways</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachInternetGateway">AWS
          * API Reference</a></p>
          */
@@ -1167,9 +1280,8 @@ namespace EC2
         }
 
         /**
-         * <p>A trust provider is a third-party entity that creates, maintains, and manages
-         * identity information for users and devices. One or more trust providers can be
-         * attached to an Amazon Web Services Verified Access instance.</p><p><h3>See
+         * <p>Attaches the specified Amazon Web Services Verified Access trust provider to
+         * the specified Amazon Web Services Verified Access instance.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachVerifiedAccessTrustProvider">AWS
          * API Reference</a></p>
@@ -1195,15 +1307,16 @@ namespace EC2
         }
 
         /**
-         * <p>Attaches an EBS volume to a running or stopped instance and exposes it to the
-         * instance with the specified device name.</p> <p>Encrypted EBS volumes must be
-         * attached to instances that support Amazon EBS encryption. For more information,
-         * see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon
-         * EBS encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-         * <p>After you attach an EBS volume, you must make it available. For more
-         * information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html">Make
+         * <p>Attaches an Amazon EBS volume to a <code>running</code> or
+         * <code>stopped</code> instance, and exposes it to the instance with the specified
+         * device name.</p>  <p>The maximum number of Amazon EBS volumes that you can
+         * attach to an instance depends on the instance type. If you exceed the volume
+         * attachment limit for an instance type, the attachment request fails with the
+         * <code>AttachmentLimitExceeded</code> error. For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/volume_limits.html">Instance
+         * volume limits</a>.</p>  <p>After you attach an EBS volume, you must make
+         * it available for use. For more information, see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-using-volumes.html">Make
          * an EBS volume available for use</a>.</p> <p>If a volume has an Amazon Web
          * Services Marketplace product code:</p> <ul> <li> <p>The volume can be attached
          * only to a stopped instance.</p> </li> <li> <p>Amazon Web Services Marketplace
@@ -1212,9 +1325,9 @@ namespace EC2
          * operating system of the instance must support the product. For example, you
          * can't detach a volume from a Windows instance and attach it to a Linux
          * instance.</p> </li> </ul> <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html">Attach
-         * an Amazon EBS volume to an instance</a> in the <i>Amazon Elastic Compute Cloud
-         * User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-attaching-volume.html">Attach
+         * an Amazon EBS volume to an instance</a> in the <i>Amazon EBS User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachVolume">AWS
          * API Reference</a></p>
          */
@@ -1239,9 +1352,9 @@ namespace EC2
         }
 
         /**
-         * <p>Attaches a virtual private gateway to a VPC. You can attach one virtual
-         * private gateway to one VPC at a time.</p> <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html">Amazon Web
+         * <p>Attaches an available virtual private gateway to a VPC. You can attach one
+         * virtual private gateway to one VPC at a time.</p> <p>For more information, see
+         * <a href="https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html">Amazon Web
          * Services Site-to-Site VPN</a> in the <i>Amazon Web Services Site-to-Site VPN
          * User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachVpnGateway">AWS
@@ -1296,20 +1409,26 @@ namespace EC2
         }
 
         /**
-         * <p>[VPC only] Adds the specified outbound (egress) rules to a security group for
-         * use with a VPC.</p> <p>An outbound rule permits instances to send traffic to the
-         * specified IPv4 or IPv6 CIDR address ranges, or to the instances that are
-         * associated with the specified source security groups. When specifying an
-         * outbound rule for your security group in a VPC, the <code>IpPermissions</code>
-         * must include a destination for the traffic.</p> <p>You specify a protocol for
-         * each rule (for example, TCP). For the TCP and UDP protocols, you must also
-         * specify the destination port or port range. For the ICMP protocol, you must also
-         * specify the ICMP type and code. You can use -1 for the type or code to mean all
-         * types or all codes.</p> <p>Rule changes are propagated to affected instances as
-         * quickly as possible. However, a small delay might occur.</p> <p>For information
-         * about VPC security group quotas, see <a
+         * <p>Adds the specified outbound (egress) rules to a security group.</p> <p>An
+         * outbound rule permits instances to send traffic to the specified IPv4 or IPv6
+         * address ranges, the IP address ranges specified by a prefix list, or the
+         * instances that are associated with a source security group. For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/security-group-rules.html">Security
+         * group rules</a>.</p> <p>You must specify exactly one of the following
+         * destinations: an IPv4 or IPv6 address range, a prefix list, or a security group.
+         * You must specify a protocol for each rule (for example, TCP). If the protocol is
+         * TCP or UDP, you must also specify a port or port range. If the protocol is ICMP
+         * or ICMPv6, you must also specify the ICMP type and code.</p> <p>Rule changes are
+         * propagated to instances associated with the security group as quickly as
+         * possible. However, a small delay might occur.</p> <p>For examples of rules that
+         * you can add to security groups for specific access scenarios, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html">Security
+         * group rules for different use cases</a> in the <i>Amazon EC2 User Guide</i>.</p>
+         * <p>For information about security group quotas, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html">Amazon
-         * VPC quotas</a>.</p><p><h3>See Also:</h3>   <a
+         * VPC quotas</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>  
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AuthorizeSecurityGroupEgress">AWS
          * API Reference</a></p>
          */
@@ -1336,31 +1455,34 @@ namespace EC2
         /**
          * <p>Adds the specified inbound (ingress) rules to a security group.</p> <p>An
          * inbound rule permits instances to receive traffic from the specified IPv4 or
-         * IPv6 CIDR address range, or from the instances that are associated with the
-         * specified destination security groups. When specifying an inbound rule for your
-         * security group in a VPC, the <code>IpPermissions</code> must include a source
-         * for the traffic.</p> <p>You specify a protocol for each rule (for example, TCP).
-         * For TCP and UDP, you must also specify the destination port or port range. For
-         * ICMP/ICMPv6, you must also specify the ICMP/ICMPv6 type and code. You can use -1
-         * to mean all types or all codes.</p> <p>Rule changes are propagated to instances
-         * within the security group as quickly as possible. However, a small delay might
-         * occur.</p> <p>For more information about VPC security group quotas, see <a
+         * IPv6 address range, the IP address ranges that are specified by a prefix list,
+         * or the instances that are associated with a destination security group. For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/security-group-rules.html">Security
+         * group rules</a>.</p> <p>You must specify exactly one of the following sources:
+         * an IPv4 or IPv6 address range, a prefix list, or a security group. You must
+         * specify a protocol for each rule (for example, TCP). If the protocol is TCP or
+         * UDP, you must also specify a port or port range. If the protocol is ICMP or
+         * ICMPv6, you must also specify the ICMP/ICMPv6 type and code.</p> <p>Rule changes
+         * are propagated to instances associated with the security group as quickly as
+         * possible. However, a small delay might occur.</p> <p>For examples of rules that
+         * you can add to security groups for specific access scenarios, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html">Security
+         * group rules for different use cases</a> in the <i>Amazon EC2 User Guide</i>.</p>
+         * <p>For more information about security group quotas, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html">Amazon
-         * VPC quotas</a>.</p>  <p>We are retiring EC2-Classic. We recommend that you
-         * migrate from EC2-Classic to a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * VPC quotas</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>  
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AuthorizeSecurityGroupIngress">AWS
          * API Reference</a></p>
          */
-        virtual Model::AuthorizeSecurityGroupIngressOutcome AuthorizeSecurityGroupIngress(const Model::AuthorizeSecurityGroupIngressRequest& request) const;
+        virtual Model::AuthorizeSecurityGroupIngressOutcome AuthorizeSecurityGroupIngress(const Model::AuthorizeSecurityGroupIngressRequest& request = {}) const;
 
         /**
          * A Callable wrapper for AuthorizeSecurityGroupIngress that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename AuthorizeSecurityGroupIngressRequestT = Model::AuthorizeSecurityGroupIngressRequest>
-        Model::AuthorizeSecurityGroupIngressOutcomeCallable AuthorizeSecurityGroupIngressCallable(const AuthorizeSecurityGroupIngressRequestT& request) const
+        Model::AuthorizeSecurityGroupIngressOutcomeCallable AuthorizeSecurityGroupIngressCallable(const AuthorizeSecurityGroupIngressRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::AuthorizeSecurityGroupIngress, request);
         }
@@ -1369,7 +1491,7 @@ namespace EC2
          * An Async wrapper for AuthorizeSecurityGroupIngress that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename AuthorizeSecurityGroupIngressRequestT = Model::AuthorizeSecurityGroupIngressRequest>
-        void AuthorizeSecurityGroupIngressAsync(const AuthorizeSecurityGroupIngressRequestT& request, const AuthorizeSecurityGroupIngressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void AuthorizeSecurityGroupIngressAsync(const AuthorizeSecurityGroupIngressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const AuthorizeSecurityGroupIngressRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::AuthorizeSecurityGroupIngress, request, handler, context);
         }
@@ -1432,12 +1554,21 @@ namespace EC2
         /**
          * <p>Cancels the specified Capacity Reservation, releases the reserved capacity,
          * and changes the Capacity Reservation's state to <code>cancelled</code>.</p>
-         * <p>Instances running in the reserved capacity continue running until you stop
-         * them. Stopped instances that target the Capacity Reservation can no longer
-         * launch. Modify these instances to either target a different Capacity
-         * Reservation, launch On-Demand Instance capacity, or run in any open Capacity
-         * Reservation that has matching attributes and sufficient capacity.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>You can cancel a Capacity Reservation that is in the following states:</p>
+         * <ul> <li> <p> <code>assessing</code> </p> </li> <li> <p> <code>active</code> and
+         * there is no commitment duration or the commitment duration has elapsed. You
+         * can't cancel a future-dated Capacity Reservation during the commitment
+         * duration.</p> </li> </ul>  <p>You can't modify or cancel a Capacity Block.
+         * For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-blocks.html">Capacity
+         * Blocks for ML</a>.</p>  <p>If a future-dated Capacity Reservation enters
+         * the <code>delayed</code> state, the commitment duration is waived, and you can
+         * cancel it as soon as it enters the <code>active</code> state.</p> <p>Instances
+         * running in the reserved capacity continue running until you stop them. Stopped
+         * instances that target the Capacity Reservation can no longer launch. Modify
+         * these instances to either target a different Capacity Reservation, launch
+         * On-Demand Instance capacity, or run in any open Capacity Reservation that has
+         * matching attributes and sufficient capacity.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelCapacityReservation">AWS
          * API Reference</a></p>
          */
@@ -1497,9 +1628,7 @@ namespace EC2
          * or volume. The action removes all artifacts of the conversion, including a
          * partially uploaded volume or instance. If the conversion is complete or is in
          * the process of transferring the final disk image, the command fails and returns
-         * an exception.</p> <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html">Importing
-         * a Virtual Machine Using the Amazon EC2 CLI</a>.</p><p><h3>See Also:</h3>   <a
+         * an exception.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelConversionTask">AWS
          * API Reference</a></p>
          */
@@ -1521,6 +1650,37 @@ namespace EC2
         void CancelConversionTaskAsync(const CancelConversionTaskRequestT& request, const CancelConversionTaskResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::CancelConversionTask, request, handler, context);
+        }
+
+        /**
+         * <p>Cancels the generation of an account status report.</p> <p>You can only
+         * cancel a report while it has the <code>running</code> status. Reports with other
+         * statuses (<code>complete</code>, <code>cancelled</code>, or <code>error</code>)
+         * can't be canceled.</p> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_status-report.html">Generating
+         * the account status report for declarative policies</a> in the <i>Amazon Web
+         * Services Organizations User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelDeclarativePoliciesReport">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CancelDeclarativePoliciesReportOutcome CancelDeclarativePoliciesReport(const Model::CancelDeclarativePoliciesReportRequest& request) const;
+
+        /**
+         * A Callable wrapper for CancelDeclarativePoliciesReport that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CancelDeclarativePoliciesReportRequestT = Model::CancelDeclarativePoliciesReportRequest>
+        Model::CancelDeclarativePoliciesReportOutcomeCallable CancelDeclarativePoliciesReportCallable(const CancelDeclarativePoliciesReportRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::CancelDeclarativePoliciesReport, request);
+        }
+
+        /**
+         * An Async wrapper for CancelDeclarativePoliciesReport that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CancelDeclarativePoliciesReportRequestT = Model::CancelDeclarativePoliciesReportRequest>
+        void CancelDeclarativePoliciesReportAsync(const CancelDeclarativePoliciesReportRequestT& request, const CancelDeclarativePoliciesReportResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::CancelDeclarativePoliciesReport, request, handler, context);
         }
 
         /**
@@ -1554,9 +1714,9 @@ namespace EC2
         /**
          * <p>Removes your Amazon Web Services account from the launch permissions for the
          * specified AMI. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cancel-sharing-an-AMI.html">
-         * Cancel having an AMI shared with your Amazon Web Services account</a> in the
-         * <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cancel-sharing-an-AMI.html">Cancel
+         * having an AMI shared with your Amazon Web Services account</a> in the <i>Amazon
+         * EC2 User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelImageLaunchPermission">AWS
          * API Reference</a></p>
          */
@@ -1586,13 +1746,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelImportTask">AWS
          * API Reference</a></p>
          */
-        virtual Model::CancelImportTaskOutcome CancelImportTask(const Model::CancelImportTaskRequest& request) const;
+        virtual Model::CancelImportTaskOutcome CancelImportTask(const Model::CancelImportTaskRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CancelImportTask that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CancelImportTaskRequestT = Model::CancelImportTaskRequest>
-        Model::CancelImportTaskOutcomeCallable CancelImportTaskCallable(const CancelImportTaskRequestT& request) const
+        Model::CancelImportTaskOutcomeCallable CancelImportTaskCallable(const CancelImportTaskRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::CancelImportTask, request);
         }
@@ -1601,7 +1761,7 @@ namespace EC2
          * An Async wrapper for CancelImportTask that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CancelImportTaskRequestT = Model::CancelImportTaskRequest>
-        void CancelImportTaskAsync(const CancelImportTaskRequestT& request, const CancelImportTaskResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CancelImportTaskAsync(const CancelImportTaskResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CancelImportTaskRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::CancelImportTask, request, handler, context);
         }
@@ -1609,9 +1769,9 @@ namespace EC2
         /**
          * <p>Cancels the specified Reserved Instance listing in the Reserved Instance
          * Marketplace.</p> <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Reserved
-         * Instance Marketplace</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Sell
+         * in the Reserved Instance Marketplace</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelReservedInstancesListing">AWS
          * API Reference</a></p>
          */
@@ -1642,8 +1802,10 @@ namespace EC2
          * you choose to terminate the instances, the Spot Fleet request enters the
          * <code>cancelled_terminating</code> state. Otherwise, the Spot Fleet request
          * enters the <code>cancelled_running</code> state and the instances continue to
-         * run until they are interrupted or you terminate them manually.</p><p><h3>See
-         * Also:</h3>   <a
+         * run until they are interrupted or you terminate them manually.</p> <p
+         * class="title"> <b>Restrictions</b> </p> <ul> <li> <p>You can delete up to 100
+         * fleets in a single request. If you exceed the specified number, no fleets are
+         * deleted.</p> </li> </ul><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelSpotFleetRequests">AWS
          * API Reference</a></p>
          */
@@ -1749,29 +1911,42 @@ namespace EC2
         }
 
         /**
-         * <p>Initiates the copy of an AMI. You can copy an AMI from one Region to another,
-         * or from a Region to an Outpost. You can't copy an AMI from an Outpost to a
-         * Region, from one Outpost to another, or within the same Outpost. To copy an AMI
-         * to another partition, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateStoreImageTask.html">CreateStoreImageTask</a>.</p>
-         * <p>To copy an AMI from one Region to another, specify the source Region using
-         * the <b>SourceRegion</b> parameter, and specify the destination Region using its
-         * endpoint. Copies of encrypted backing snapshots for the AMI are encrypted.
-         * Copies of unencrypted backing snapshots remain unencrypted, unless you set
-         * <code>Encrypted</code> during the copy operation. You cannot create an
-         * unencrypted copy of an encrypted backing snapshot.</p> <p>To copy an AMI from a
-         * Region to an Outpost, specify the source Region using the <b>SourceRegion</b>
-         * parameter, and specify the ARN of the destination Outpost using
-         * <b>DestinationOutpostArn</b>. Backing snapshots copied to an Outpost are
-         * encrypted by default using the default encryption key for the Region, or a
-         * different key that you specify in the request using <b>KmsKeyId</b>. Outposts do
-         * not support unencrypted snapshots. For more information, <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#ami">
-         * Amazon EBS local snapshots on Outposts</a> in the <i>Amazon EC2 User
-         * Guide</i>.</p> <p>For more information about the prerequisites and limits when
-         * copying an AMI, see <a
+         * <p>Initiates an AMI copy operation. You must specify the source AMI ID and both
+         * the source and destination locations. The copy operation must be initiated in
+         * the destination Region.</p> <p class="title"> <b>CopyImage supports the
+         * following source to destination copies:</b> </p> <ul> <li> <p>Region to
+         * Region</p> </li> <li> <p>Region to Outpost</p> </li> <li> <p>Parent Region to
+         * Local Zone</p> </li> <li> <p>Local Zone to parent Region</p> </li> <li>
+         * <p>Between Local Zones with the same parent Region (only supported for certain
+         * Local Zones)</p> </li> </ul> <p class="title"> <b>CopyImage does not support the
+         * following source to destination copies:</b> </p> <ul> <li> <p>Local Zone to
+         * non-parent Regions</p> </li> <li> <p>Between Local Zones with different parent
+         * Regions</p> </li> <li> <p>Local Zone to Outpost</p> </li> <li> <p>Outpost to
+         * Local Zone</p> </li> <li> <p>Outpost to Region</p> </li> <li> <p>Between
+         * Outposts</p> </li> <li> <p>Within same Outpost</p> </li> <li> <p>Cross-partition
+         * copies (use <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateStoreImageTask.html">CreateStoreImageTask</a>
+         * instead)</p> </li> </ul> <p class="title"> <b>Destination specification</b> </p>
+         * <ul> <li> <p>Region to Region: The destination Region is the Region in which you
+         * initiate the copy operation.</p> </li> <li> <p>Region to Outpost: Specify the
+         * destination using the <code>DestinationOutpostArn</code> parameter (the ARN of
+         * the Outpost)</p> </li> <li> <p>Region to Local Zone, and Local Zone to Local
+         * Zone copies: Specify the destination using the
+         * <code>DestinationAvailabilityZone</code> parameter (the name of the destination
+         * Local Zone) or <code>DestinationAvailabilityZoneId</code> parameter (the ID of
+         * the destination Local Zone).</p> </li> </ul> <p class="title"> <b>Snapshot
+         * encryption</b> </p> <ul> <li> <p>Region to Outpost: Backing snapshots copied to
+         * an Outpost are encrypted by default using the default encryption key for the
+         * Region or the key that you specify. Outposts do not support unencrypted
+         * snapshots.</p> </li> <li> <p>Region to Local Zone, and Local Zone to Local Zone:
+         * Not all Local Zones require encrypted snapshots. In Local Zones that require
+         * encrypted snapshots, backing snapshots are automatically encrypted during copy.
+         * In Local Zones where encryption is not required, snapshots retain their original
+         * encryption state (encrypted or unencrypted) by default.</p> </li> </ul> <p>For
+         * more information, including the required permissions for copying an AMI, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html">Copy
-         * an AMI</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * an Amazon EC2 AMI</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CopyImage">AWS API
          * Reference</a></p>
          */
@@ -1796,29 +1971,30 @@ namespace EC2
         }
 
         /**
-         * <p>Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3.
-         * You can copy a snapshot within the same Region, from one Region to another, or
-         * from a Region to an Outpost. You can't copy a snapshot from an Outpost to a
-         * Region, from one Outpost to another, or within the same Outpost.</p> <p>You can
-         * use the snapshot to create EBS volumes or Amazon Machine Images (AMIs).</p>
-         * <p>When copying snapshots to a Region, copies of encrypted EBS snapshots remain
-         * encrypted. Copies of unencrypted snapshots remain unencrypted, unless you enable
-         * encryption for the snapshot copy operation. By default, encrypted snapshot
-         * copies use the default Key Management Service (KMS) KMS key; however, you can
-         * specify a different KMS key. To copy an encrypted snapshot that has been shared
-         * from another account, you must have permissions for the KMS key used to encrypt
-         * the snapshot.</p> <p>Snapshots copied to an Outpost are encrypted by default
-         * using the default encryption key for the Region, or a different key that you
-         * specify in the request using <b>KmsKeyId</b>. Outposts do not support
-         * unencrypted snapshots. For more information, <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#ami">
-         * Amazon EBS local snapshots on Outposts</a> in the <i>Amazon Elastic Compute
-         * Cloud User Guide</i>.</p> <p>Snapshots created by copying another snapshot have
-         * an arbitrary volume ID that should not be used for any purpose.</p> <p>For more
-         * information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html">Copy
-         * an Amazon EBS snapshot</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * <p>Creates an exact copy of an Amazon EBS snapshot.</p> <p>The location of the
+         * source snapshot determines whether you can copy it or not, and the allowed
+         * destinations for the snapshot copy.</p> <ul> <li> <p>If the source snapshot is
+         * in a Region, you can copy it within that Region, to another Region, to an
+         * Outpost associated with that Region, or to a Local Zone in that Region.</p>
+         * </li> <li> <p>If the source snapshot is in a Local Zone, you can copy it within
+         * that Local Zone, to another Local Zone in the same zone group, or to the parent
+         * Region of the Local Zone.</p> </li> <li> <p>If the source snapshot is on an
+         * Outpost, you can't copy it.</p> </li> </ul> <p>When copying snapshots to a
+         * Region, the encryption outcome for the snapshot copy depends on the Amazon EBS
+         * encryption by default setting for the destination Region, the encryption status
+         * of the source snapshot, and the encryption parameters you specify in the
+         * request. For more information, see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-copy-snapshot.html#creating-encrypted-snapshots">
+         * Encryption and snapshot copying</a>.</p> <p>Snapshots copied to an Outpost must
+         * be encrypted. Unencrypted snapshots are not supported on Outposts. For more
+         * information, <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#considerations">
+         * Amazon EBS local snapshots on Outposts</a>.</p>  <p>Snapshots copies have
+         * an arbitrary source volume ID. Do not use this volume ID for any purpose.</p>
+         *  <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-copy-snapshot.html">Copy
+         * an Amazon EBS snapshot</a> in the <i>Amazon EBS User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CopySnapshot">AWS
          * API Reference</a></p>
          */
@@ -1843,28 +2019,25 @@ namespace EC2
         }
 
         /**
-         * <p>Creates a new Capacity Reservation with the specified attributes.</p>
-         * <p>Capacity Reservations enable you to reserve capacity for your Amazon EC2
-         * instances in a specific Availability Zone for any duration. This gives you the
-         * flexibility to selectively add capacity reservations and still get the Regional
-         * RI discounts for that usage. By creating Capacity Reservations, you ensure that
-         * you always have access to Amazon EC2 capacity when you need it, for as long as
-         * you need it. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html">Capacity
-         * Reservations</a> in the <i>Amazon EC2 User Guide</i>.</p> <p>Your request to
-         * create a Capacity Reservation could fail if Amazon EC2 does not have sufficient
-         * capacity to fulfill the request. If your request fails due to Amazon EC2
-         * capacity constraints, either try again at a later time, try in a different
-         * Availability Zone, or request a smaller capacity reservation. If your
-         * application is flexible across instance types and sizes, try to create a
-         * Capacity Reservation with different instance attributes.</p> <p>Your request
-         * could also fail if the requested quantity exceeds your On-Demand Instance limit
-         * for the selected instance type. If your request fails due to limit constraints,
-         * increase your On-Demand Instance limit for the required instance type and try
-         * again. For more information about increasing your instance limits, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html">Amazon
-         * EC2 Service Quotas</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Creates a new Capacity Reservation with the specified attributes. Capacity
+         * Reservations enable you to reserve capacity for your Amazon EC2 instances in a
+         * specific Availability Zone for any duration.</p> <p>You can create a Capacity
+         * Reservation at any time, and you can choose when it starts. You can create a
+         * Capacity Reservation for immediate use or you can request a Capacity Reservation
+         * for a future date.</p> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html">
+         * Reserve compute capacity with On-Demand Capacity Reservations</a> in the
+         * <i>Amazon EC2 User Guide</i>.</p> <p>Your request to create a Capacity
+         * Reservation could fail if:</p> <ul> <li> <p>Amazon EC2 does not have sufficient
+         * capacity. In this case, try again at a later time, try in a different
+         * Availability Zone, or request a smaller Capacity Reservation. If your workload
+         * is flexible across instance types and sizes, try with different instance
+         * attributes.</p> </li> <li> <p>The requested quantity exceeds your On-Demand
+         * Instance quota. In this case, increase your On-Demand Instance quota for the
+         * requested instance type and try again. For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html">
+         * Amazon EC2 Service Quotas</a> in the <i>Amazon EC2 User Guide</i>.</p> </li>
+         * </ul><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateCapacityReservation">AWS
          * API Reference</a></p>
          */
@@ -1889,10 +2062,39 @@ namespace EC2
         }
 
         /**
+         * <p> Create a new Capacity Reservation by splitting the capacity of the source
+         * Capacity Reservation. The new Capacity Reservation will have the same attributes
+         * as the source Capacity Reservation except for tags. The source Capacity
+         * Reservation must be <code>active</code> and owned by your Amazon Web Services
+         * account. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateCapacityReservationBySplitting">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateCapacityReservationBySplittingOutcome CreateCapacityReservationBySplitting(const Model::CreateCapacityReservationBySplittingRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateCapacityReservationBySplitting that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateCapacityReservationBySplittingRequestT = Model::CreateCapacityReservationBySplittingRequest>
+        Model::CreateCapacityReservationBySplittingOutcomeCallable CreateCapacityReservationBySplittingCallable(const CreateCapacityReservationBySplittingRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::CreateCapacityReservationBySplitting, request);
+        }
+
+        /**
+         * An Async wrapper for CreateCapacityReservationBySplitting that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateCapacityReservationBySplittingRequestT = Model::CreateCapacityReservationBySplittingRequest>
+        void CreateCapacityReservationBySplittingAsync(const CreateCapacityReservationBySplittingRequestT& request, const CreateCapacityReservationBySplittingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::CreateCapacityReservationBySplitting, request, handler, context);
+        }
+
+        /**
          * <p>Creates a Capacity Reservation Fleet. For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-cr-fleets.html#create-crfleet">Create
-         * a Capacity Reservation Fleet</a> in the Amazon EC2 User Guide.</p><p><h3>See
-         * Also:</h3>   <a
+         * a Capacity Reservation Fleet</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateCapacityReservationFleet">AWS
          * API Reference</a></p>
          */
@@ -2096,19 +2298,19 @@ namespace EC2
          * <p>Creates a default subnet with a size <code>/20</code> IPv4 CIDR block in the
          * specified Availability Zone in your default VPC. You can have only one default
          * subnet per Availability Zone. For more information, see <a
-         * href="https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-subnet">Creating
-         * a default subnet</a> in the <i>Amazon Virtual Private Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/work-with-default-vpc.html#create-default-subnet">Create
+         * a default subnet</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateDefaultSubnet">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateDefaultSubnetOutcome CreateDefaultSubnet(const Model::CreateDefaultSubnetRequest& request) const;
+        virtual Model::CreateDefaultSubnetOutcome CreateDefaultSubnet(const Model::CreateDefaultSubnetRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateDefaultSubnet that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateDefaultSubnetRequestT = Model::CreateDefaultSubnetRequest>
-        Model::CreateDefaultSubnetOutcomeCallable CreateDefaultSubnetCallable(const CreateDefaultSubnetRequestT& request) const
+        Model::CreateDefaultSubnetOutcomeCallable CreateDefaultSubnetCallable(const CreateDefaultSubnetRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::CreateDefaultSubnet, request);
         }
@@ -2117,7 +2319,7 @@ namespace EC2
          * An Async wrapper for CreateDefaultSubnet that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateDefaultSubnetRequestT = Model::CreateDefaultSubnetRequest>
-        void CreateDefaultSubnetAsync(const CreateDefaultSubnetRequestT& request, const CreateDefaultSubnetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateDefaultSubnetAsync(const CreateDefaultSubnetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateDefaultSubnetRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::CreateDefaultSubnet, request, handler, context);
         }
@@ -2127,30 +2329,20 @@ namespace EC2
          * default subnet in each Availability Zone. For more information about the
          * components of a default VPC, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html">Default
-         * VPC and default subnets</a> in the <i>Amazon Virtual Private Cloud User
-         * Guide</i>. You cannot specify the components of the default VPC yourself.</p>
-         * <p>If you deleted your previous default VPC, you can create a default VPC. You
-         * cannot have more than one default VPC per Region.</p> <p>If your account
-         * supports EC2-Classic, you cannot use this action to create a default VPC in a
-         * Region that supports EC2-Classic. If you want a default VPC in a Region that
-         * supports EC2-Classic, see "I really want a default VPC for my existing EC2
-         * account. Is that possible?" in the <a
-         * href="http://aws.amazon.com/vpc/faqs/#Default_VPCs">Default VPCs FAQ</a>.</p>
-         *  <p>We are retiring EC2-Classic. We recommend that you migrate from
-         * EC2-Classic to a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * VPCs</a> in the <i>Amazon VPC User Guide</i>. You cannot specify the components
+         * of the default VPC yourself.</p> <p>If you deleted your previous default VPC,
+         * you can create a default VPC. You cannot have more than one default VPC per
+         * Region.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateDefaultVpc">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateDefaultVpcOutcome CreateDefaultVpc(const Model::CreateDefaultVpcRequest& request) const;
+        virtual Model::CreateDefaultVpcOutcome CreateDefaultVpc(const Model::CreateDefaultVpcRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateDefaultVpc that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateDefaultVpcRequestT = Model::CreateDefaultVpcRequest>
-        Model::CreateDefaultVpcOutcomeCallable CreateDefaultVpcCallable(const CreateDefaultVpcRequestT& request) const
+        Model::CreateDefaultVpcOutcomeCallable CreateDefaultVpcCallable(const CreateDefaultVpcRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::CreateDefaultVpc, request);
         }
@@ -2159,49 +2351,75 @@ namespace EC2
          * An Async wrapper for CreateDefaultVpc that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateDefaultVpcRequestT = Model::CreateDefaultVpcRequest>
-        void CreateDefaultVpcAsync(const CreateDefaultVpcRequestT& request, const CreateDefaultVpcResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateDefaultVpcAsync(const CreateDefaultVpcResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateDefaultVpcRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::CreateDefaultVpc, request, handler, context);
         }
 
         /**
-         * <p>Creates a set of DHCP options for your VPC. After creating the set, you must
-         * associate it with the VPC, causing all existing and new instances that you
-         * launch in the VPC to use this set of DHCP options. The following are the
-         * individual DHCP options you can specify. For more information about the options,
-         * see <a href="http://www.ietf.org/rfc/rfc2132.txt">RFC 2132</a>.</p> <ul> <li>
-         * <p> <code>domain-name-servers</code> - The IP addresses of up to four domain
-         * name servers, or AmazonProvidedDNS. The default DHCP option set specifies
-         * AmazonProvidedDNS. If specifying more than one domain name server, specify the
-         * IP addresses in a single parameter, separated by commas. To have your instance
-         * receive a custom DNS hostname as specified in <code>domain-name</code>, you must
-         * set <code>domain-name-servers</code> to a custom DNS server.</p> </li> <li> <p>
+         * <p>Delegates ownership of the Amazon EBS root volume for an Apple silicon Mac
+         * instance to an administrative user.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateDelegateMacVolumeOwnershipTask">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateDelegateMacVolumeOwnershipTaskOutcome CreateDelegateMacVolumeOwnershipTask(const Model::CreateDelegateMacVolumeOwnershipTaskRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateDelegateMacVolumeOwnershipTask that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateDelegateMacVolumeOwnershipTaskRequestT = Model::CreateDelegateMacVolumeOwnershipTaskRequest>
+        Model::CreateDelegateMacVolumeOwnershipTaskOutcomeCallable CreateDelegateMacVolumeOwnershipTaskCallable(const CreateDelegateMacVolumeOwnershipTaskRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::CreateDelegateMacVolumeOwnershipTask, request);
+        }
+
+        /**
+         * An Async wrapper for CreateDelegateMacVolumeOwnershipTask that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateDelegateMacVolumeOwnershipTaskRequestT = Model::CreateDelegateMacVolumeOwnershipTaskRequest>
+        void CreateDelegateMacVolumeOwnershipTaskAsync(const CreateDelegateMacVolumeOwnershipTaskRequestT& request, const CreateDelegateMacVolumeOwnershipTaskResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::CreateDelegateMacVolumeOwnershipTask, request, handler, context);
+        }
+
+        /**
+         * <p>Creates a custom set of DHCP options. After you create a DHCP option set, you
+         * associate it with a VPC. After you associate a DHCP option set with a VPC, all
+         * existing and newly launched instances in the VPC use this set of DHCP
+         * options.</p> <p>The following are the individual DHCP options you can specify.
+         * For more information, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html">DHCP
+         * option sets</a> in the <i>Amazon VPC User Guide</i>.</p> <ul> <li> <p>
          * <code>domain-name</code> - If you're using AmazonProvidedDNS in
          * <code>us-east-1</code>, specify <code>ec2.internal</code>. If you're using
-         * AmazonProvidedDNS in another Region, specify
-         * <code>region.compute.internal</code> (for example,
-         * <code>ap-northeast-1.compute.internal</code>). Otherwise, specify a domain name
-         * (for example, <code>ExampleCompany.com</code>). This value is used to complete
-         * unqualified DNS hostnames. <b>Important</b>: Some Linux operating systems accept
-         * multiple domain names separated by spaces. However, Windows and other Linux
-         * operating systems treat the value as a single domain, which results in
-         * unexpected behavior. If your DHCP options set is associated with a VPC that has
-         * instances with multiple operating systems, specify only one domain name.</p>
-         * </li> <li> <p> <code>ntp-servers</code> - The IP addresses of up to four Network
-         * Time Protocol (NTP) servers.</p> </li> <li> <p>
+         * AmazonProvidedDNS in any other Region, specify
+         * <code>region.compute.internal</code>. Otherwise, specify a custom domain name.
+         * This value is used to complete unqualified DNS hostnames.</p> <p>Some Linux
+         * operating systems accept multiple domain names separated by spaces. However,
+         * Windows and other Linux operating systems treat the value as a single domain,
+         * which results in unexpected behavior. If your DHCP option set is associated with
+         * a VPC that has instances running operating systems that treat the value as a
+         * single domain, specify only one domain name.</p> </li> <li> <p>
+         * <code>domain-name-servers</code> - The IP addresses of up to four DNS servers,
+         * or AmazonProvidedDNS. To specify multiple domain name servers in a single
+         * parameter, separate the IP addresses using commas. To have your instances
+         * receive custom DNS hostnames as specified in <code>domain-name</code>, you must
+         * specify a custom DNS server.</p> </li> <li> <p> <code>ntp-servers</code> - The
+         * IP addresses of up to eight Network Time Protocol (NTP) servers (four IPv4
+         * addresses and four IPv6 addresses).</p> </li> <li> <p>
          * <code>netbios-name-servers</code> - The IP addresses of up to four NetBIOS name
          * servers.</p> </li> <li> <p> <code>netbios-node-type</code> - The NetBIOS node
-         * type (1, 2, 4, or 8). We recommend that you specify 2 (broadcast and multicast
-         * are not currently supported). For more information about these node types, see
-         * <a href="http://www.ietf.org/rfc/rfc2132.txt">RFC 2132</a>.</p> </li> </ul>
-         * <p>Your VPC automatically starts out with a set of DHCP options that includes
-         * only a DNS server that we provide (AmazonProvidedDNS). If you create a set of
-         * options, and if your VPC has an internet gateway, make sure to set the
-         * <code>domain-name-servers</code> option either to <code>AmazonProvidedDNS</code>
-         * or to a domain name server of your choice. For more information, see <a
-         * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html">DHCP
-         * options sets</a> in the <i>Amazon Virtual Private Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * type (1, 2, 4, or 8). We recommend that you specify 2. Broadcast and multicast
+         * are not supported. For more information about NetBIOS node types, see <a
+         * href="https://www.ietf.org/rfc/rfc2132.txt">RFC 2132</a>.</p> </li> <li> <p>
+         * <code>ipv6-address-preferred-lease-time</code> - A value (in seconds, minutes,
+         * hours, or years) for how frequently a running instance with an IPv6 assigned to
+         * it goes through DHCPv6 lease renewal. Acceptable values are between 140 and
+         * 2147483647 seconds (approximately 68 years). If no value is entered, the default
+         * lease time is 140 seconds. If you use long-term addressing for EC2 instances,
+         * you can increase the lease time and avoid frequent lease renewal requests. Lease
+         * renewal typically occurs when half of the lease time has elapsed.</p> </li>
+         * </ul><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateDhcpOptions">AWS
          * API Reference</a></p>
          */
@@ -2255,9 +2473,11 @@ namespace EC2
         }
 
         /**
-         * <p>Launches an EC2 Fleet.</p> <p>You can create a single EC2 Fleet that includes
-         * multiple launch specifications that vary by instance type, AMI, Availability
-         * Zone, or subnet.</p> <p>For more information, see <a
+         * <p>Creates an EC2 Fleet that contains the configuration information for
+         * On-Demand Instances and Spot Instances. Instances are launched immediately if
+         * there is available capacity.</p> <p>A single EC2 Fleet can include multiple
+         * launch specifications that vary by instance type, AMI, Availability Zone, or
+         * subnet.</p> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html">EC2
          * Fleet</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateFleet">AWS API
@@ -2289,16 +2509,15 @@ namespace EC2
          * monitored network interface is recorded as flow log records, which are log
          * events consisting of fields that describe the traffic flow. For more
          * information, see <a
-         * href="https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records">Flow
-         * log records</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
-         * <p>When publishing to CloudWatch Logs, flow log records are published to a log
-         * group, and each network interface has a unique log stream in the log group. When
-         * publishing to Amazon S3, flow log records for all of the monitored network
-         * interfaces are published to a single log file object that is stored in the
-         * specified bucket.</p> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/flow-log-records.html">Flow
+         * log records</a> in the <i>Amazon VPC User Guide</i>.</p> <p>When publishing to
+         * CloudWatch Logs, flow log records are published to a log group, and each network
+         * interface has a unique log stream in the log group. When publishing to Amazon
+         * S3, flow log records for all of the monitored network interfaces are published
+         * to a single log file object that is stored in the specified bucket.</p> <p>For
+         * more information, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html">VPC Flow
-         * Logs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * Logs</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateFlowLogs">AWS
          * API Reference</a></p>
          */
@@ -2324,12 +2543,12 @@ namespace EC2
 
         /**
          * <p>Creates an Amazon FPGA Image (AFI) from the specified design checkpoint
-         * (DCP).</p> <p>The create operation is asynchronous. To verify that the AFI is
-         * ready for use, check the output logs.</p> <p>An AFI contains the FPGA bitstream
-         * that is ready to download to an FPGA. You can securely deploy an AFI on multiple
-         * FPGA-accelerated instances. For more information, see the <a
-         * href="https://github.com/aws/aws-fpga/">Amazon Web Services FPGA Hardware
-         * Development Kit</a>.</p><p><h3>See Also:</h3>   <a
+         * (DCP).</p> <p>The create operation is asynchronous. To verify that the AFI was
+         * successfully created and is ready for use, check the output logs.</p> <p>An AFI
+         * contains the FPGA bitstream that is ready to download to an FPGA. You can
+         * securely deploy an AFI on multiple FPGA-accelerated instances. For more
+         * information, see the <a href="https://github.com/aws/aws-fpga/">Amazon Web
+         * Services FPGA Hardware Development Kit</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateFpgaImage">AWS
          * API Reference</a></p>
          */
@@ -2355,23 +2574,18 @@ namespace EC2
 
         /**
          * <p>Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is
-         * either running or stopped.</p> <p>By default, when Amazon EC2 creates the new
-         * AMI, it reboots the instance so that it can take snapshots of the attached
-         * volumes while data is at rest, in order to ensure a consistent state. You can
-         * set the <code>NoReboot</code> parameter to <code>true</code> in the API request,
-         * or use the <code>--no-reboot</code> option in the CLI to prevent Amazon EC2 from
-         * shutting down and rebooting the instance.</p>  <p>If you choose to
-         * bypass the shutdown and reboot process by setting the <code>NoReboot</code>
-         * parameter to <code>true</code> in the API request, or by using the
-         * <code>--no-reboot</code> option in the CLI, we can't guarantee the file system
-         * integrity of the created image.</p>  <p>If you customized your
-         * instance with instance store volumes or Amazon EBS volumes in addition to the
-         * root device volume, the new AMI contains block device mapping information for
-         * those volumes. When you launch an instance from this new AMI, the instance
-         * automatically launches with those additional volumes.</p> <p>For more
-         * information, see <a
+         * either running or stopped.</p> <p>If you customized your instance with instance
+         * store volumes or Amazon EBS volumes in addition to the root device volume, the
+         * new AMI contains block device mapping information for those volumes. When you
+         * launch an instance from this new AMI, the instance automatically launches with
+         * those additional volumes.</p> <p>The location of the source instance determines
+         * where you can create the snapshots of the AMI:</p> <ul> <li> <p>If the source
+         * instance is in a Region, you must create the snapshots in the same Region as the
+         * instance.</p> </li> <li> <p>If the source instance is in a Local Zone, you can
+         * create the snapshots in the same Local Zone or in its parent Region.</p> </li>
+         * </ul> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html">Create
-         * an Amazon EBS-backed Linux AMI</a> in the <i>Amazon Elastic Compute Cloud User
+         * an Amazon EBS-backed AMI</a> in the <i>Amazon Elastic Compute Cloud User
          * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateImage">AWS API
          * Reference</a></p>
@@ -2397,6 +2611,67 @@ namespace EC2
         }
 
         /**
+         * <p>Creates a report that shows how your image is used across other Amazon Web
+         * Services accounts. The report provides visibility into which accounts are using
+         * the specified image, and how many resources (EC2 instances or launch templates)
+         * are referencing it.</p> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/your-ec2-ami-usage.html">View
+         * your AMI usage</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateImageUsageReport">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateImageUsageReportOutcome CreateImageUsageReport(const Model::CreateImageUsageReportRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateImageUsageReport that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateImageUsageReportRequestT = Model::CreateImageUsageReportRequest>
+        Model::CreateImageUsageReportOutcomeCallable CreateImageUsageReportCallable(const CreateImageUsageReportRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::CreateImageUsageReport, request);
+        }
+
+        /**
+         * An Async wrapper for CreateImageUsageReport that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateImageUsageReportRequestT = Model::CreateImageUsageReportRequest>
+        void CreateImageUsageReportAsync(const CreateImageUsageReportRequestT& request, const CreateImageUsageReportResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::CreateImageUsageReport, request, handler, context);
+        }
+
+        /**
+         * <p>Creates an EC2 Instance Connect Endpoint.</p> <p>An EC2 Instance Connect
+         * Endpoint allows you to connect to an instance, without requiring the instance to
+         * have a public IPv4 or public IPv6 address. For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect-Endpoint.html">Connect
+         * to your instances using EC2 Instance Connect Endpoint</a> in the <i>Amazon EC2
+         * User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateInstanceConnectEndpoint">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateInstanceConnectEndpointOutcome CreateInstanceConnectEndpoint(const Model::CreateInstanceConnectEndpointRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateInstanceConnectEndpoint that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateInstanceConnectEndpointRequestT = Model::CreateInstanceConnectEndpointRequest>
+        Model::CreateInstanceConnectEndpointOutcomeCallable CreateInstanceConnectEndpointCallable(const CreateInstanceConnectEndpointRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::CreateInstanceConnectEndpoint, request);
+        }
+
+        /**
+         * An Async wrapper for CreateInstanceConnectEndpoint that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateInstanceConnectEndpointRequestT = Model::CreateInstanceConnectEndpointRequest>
+        void CreateInstanceConnectEndpointAsync(const CreateInstanceConnectEndpointRequestT& request, const CreateInstanceConnectEndpointResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::CreateInstanceConnectEndpoint, request, handler, context);
+        }
+
+        /**
          * <p>Creates an event window in which scheduled events for the associated Amazon
          * EC2 instances can run.</p> <p>You can define either a set of time ranges or a
          * cron expression when creating the event window, but not both. All event window
@@ -2416,13 +2691,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateInstanceEventWindow">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateInstanceEventWindowOutcome CreateInstanceEventWindow(const Model::CreateInstanceEventWindowRequest& request) const;
+        virtual Model::CreateInstanceEventWindowOutcome CreateInstanceEventWindow(const Model::CreateInstanceEventWindowRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateInstanceEventWindow that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateInstanceEventWindowRequestT = Model::CreateInstanceEventWindowRequest>
-        Model::CreateInstanceEventWindowOutcomeCallable CreateInstanceEventWindowCallable(const CreateInstanceEventWindowRequestT& request) const
+        Model::CreateInstanceEventWindowOutcomeCallable CreateInstanceEventWindowCallable(const CreateInstanceEventWindowRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::CreateInstanceEventWindow, request);
         }
@@ -2431,15 +2706,16 @@ namespace EC2
          * An Async wrapper for CreateInstanceEventWindow that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateInstanceEventWindowRequestT = Model::CreateInstanceEventWindowRequest>
-        void CreateInstanceEventWindowAsync(const CreateInstanceEventWindowRequestT& request, const CreateInstanceEventWindowResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateInstanceEventWindowAsync(const CreateInstanceEventWindowResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateInstanceEventWindowRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::CreateInstanceEventWindow, request, handler, context);
         }
 
         /**
          * <p>Exports a running or stopped instance to an Amazon S3 bucket.</p> <p>For
-         * information about the supported operating systems, image formats, and known
-         * limitations for the types of instances you can export, see <a
+         * information about the prerequisites for your Amazon S3 bucket, supported
+         * operating systems, image formats, and known limitations for the types of
+         * instances you can export, see <a
          * href="https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html">Exporting
          * an instance as a VM Using VM Import/Export</a> in the <i>VM Import/Export User
          * Guide</i>.</p><p><h3>See Also:</h3>   <a
@@ -2469,19 +2745,19 @@ namespace EC2
         /**
          * <p>Creates an internet gateway for use with a VPC. After creating the internet
          * gateway, you attach it to a VPC using <a>AttachInternetGateway</a>.</p> <p>For
-         * more information about your VPC and internet gateway, see the <a
-         * href="https://docs.aws.amazon.com/vpc/latest/userguide/">Amazon Virtual Private
-         * Cloud User Guide</a>.</p><p><h3>See Also:</h3>   <a
+         * more information, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html">Internet
+         * gateways</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateInternetGateway">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateInternetGatewayOutcome CreateInternetGateway(const Model::CreateInternetGatewayRequest& request) const;
+        virtual Model::CreateInternetGatewayOutcome CreateInternetGateway(const Model::CreateInternetGatewayRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateInternetGateway that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateInternetGatewayRequestT = Model::CreateInternetGatewayRequest>
-        Model::CreateInternetGatewayOutcomeCallable CreateInternetGatewayCallable(const CreateInternetGatewayRequestT& request) const
+        Model::CreateInternetGatewayOutcomeCallable CreateInternetGatewayCallable(const CreateInternetGatewayRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::CreateInternetGateway, request);
         }
@@ -2490,7 +2766,7 @@ namespace EC2
          * An Async wrapper for CreateInternetGateway that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateInternetGatewayRequestT = Model::CreateInternetGatewayRequest>
-        void CreateInternetGatewayAsync(const CreateInternetGatewayRequestT& request, const CreateInternetGatewayResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateInternetGatewayAsync(const CreateInternetGatewayResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateInternetGatewayRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::CreateInternetGateway, request, handler, context);
         }
@@ -2506,13 +2782,13 @@ namespace EC2
          * <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateIpam">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateIpamOutcome CreateIpam(const Model::CreateIpamRequest& request) const;
+        virtual Model::CreateIpamOutcome CreateIpam(const Model::CreateIpamRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateIpam that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateIpamRequestT = Model::CreateIpamRequest>
-        Model::CreateIpamOutcomeCallable CreateIpamCallable(const CreateIpamRequestT& request) const
+        Model::CreateIpamOutcomeCallable CreateIpamCallable(const CreateIpamRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::CreateIpam, request);
         }
@@ -2521,9 +2797,38 @@ namespace EC2
          * An Async wrapper for CreateIpam that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateIpamRequestT = Model::CreateIpamRequest>
-        void CreateIpamAsync(const CreateIpamRequestT& request, const CreateIpamResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateIpamAsync(const CreateIpamResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateIpamRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::CreateIpam, request, handler, context);
+        }
+
+        /**
+         * <p>Create a verification token. A verification token is an Amazon Web
+         * Services-generated random value that you can use to prove ownership of an
+         * external resource. For example, you can use a verification token to validate
+         * that you control a public IP address range when you bring an IP address range to
+         * Amazon Web Services (BYOIP). </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateIpamExternalResourceVerificationToken">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateIpamExternalResourceVerificationTokenOutcome CreateIpamExternalResourceVerificationToken(const Model::CreateIpamExternalResourceVerificationTokenRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateIpamExternalResourceVerificationToken that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateIpamExternalResourceVerificationTokenRequestT = Model::CreateIpamExternalResourceVerificationTokenRequest>
+        Model::CreateIpamExternalResourceVerificationTokenOutcomeCallable CreateIpamExternalResourceVerificationTokenCallable(const CreateIpamExternalResourceVerificationTokenRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::CreateIpamExternalResourceVerificationToken, request);
+        }
+
+        /**
+         * An Async wrapper for CreateIpamExternalResourceVerificationToken that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateIpamExternalResourceVerificationTokenRequestT = Model::CreateIpamExternalResourceVerificationTokenRequest>
+        void CreateIpamExternalResourceVerificationTokenAsync(const CreateIpamExternalResourceVerificationTokenRequestT& request, const CreateIpamExternalResourceVerificationTokenResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::CreateIpamExternalResourceVerificationToken, request, handler, context);
         }
 
         /**
@@ -2566,13 +2871,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateIpamResourceDiscovery">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateIpamResourceDiscoveryOutcome CreateIpamResourceDiscovery(const Model::CreateIpamResourceDiscoveryRequest& request) const;
+        virtual Model::CreateIpamResourceDiscoveryOutcome CreateIpamResourceDiscovery(const Model::CreateIpamResourceDiscoveryRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateIpamResourceDiscovery that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateIpamResourceDiscoveryRequestT = Model::CreateIpamResourceDiscoveryRequest>
-        Model::CreateIpamResourceDiscoveryOutcomeCallable CreateIpamResourceDiscoveryCallable(const CreateIpamResourceDiscoveryRequestT& request) const
+        Model::CreateIpamResourceDiscoveryOutcomeCallable CreateIpamResourceDiscoveryCallable(const CreateIpamResourceDiscoveryRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::CreateIpamResourceDiscovery, request);
         }
@@ -2581,7 +2886,7 @@ namespace EC2
          * An Async wrapper for CreateIpamResourceDiscovery that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateIpamResourceDiscoveryRequestT = Model::CreateIpamResourceDiscoveryRequest>
-        void CreateIpamResourceDiscoveryAsync(const CreateIpamResourceDiscoveryRequestT& request, const CreateIpamResourceDiscoveryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateIpamResourceDiscoveryAsync(const CreateIpamResourceDiscoveryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateIpamResourceDiscoveryRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::CreateIpamResourceDiscovery, request, handler, context);
         }
@@ -2621,18 +2926,18 @@ namespace EC2
 
         /**
          * <p>Creates an ED25519 or 2048-bit RSA key pair with the specified name and in
-         * the specified PEM or PPK format. Amazon EC2 stores the public key and displays
-         * the private key for you to save to a file. The private key is returned as an
-         * unencrypted PEM encoded PKCS#1 private key or an unencrypted PPK formatted
-         * private key for use with PuTTY. If a key with the specified name already exists,
-         * Amazon EC2 returns an error.</p> <p>The key pair returned to you is available
-         * only in the Amazon Web Services Region in which you create it. If you prefer,
-         * you can create your own key pair using a third-party tool and upload it to any
-         * Region using <a>ImportKeyPair</a>.</p> <p>You can have up to 5,000 key pairs per
-         * Amazon Web Services Region.</p> <p>For more information, see <a
+         * the specified format. Amazon EC2 stores the public key and displays the private
+         * key for you to save to a file. The private key is returned as an unencrypted PEM
+         * encoded PKCS#1 private key or an unencrypted PPK formatted private key for use
+         * with PuTTY. If a key with the specified name already exists, Amazon EC2 returns
+         * an error.</p> <p>The key pair returned to you is available only in the Amazon
+         * Web Services Region in which you create it. If you prefer, you can create your
+         * own key pair using a third-party tool and upload it to any Region using
+         * <a>ImportKeyPair</a>.</p> <p>You can have up to 5,000 key pairs per Amazon Web
+         * Services Region.</p> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Amazon
-         * EC2 key pairs</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * EC2 key pairs</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3> 
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateKeyPair">AWS
          * API Reference</a></p>
          */
@@ -2661,15 +2966,14 @@ namespace EC2
          * to launch an instance. When you launch an instance using <a>RunInstances</a>,
          * you can specify a launch template instead of providing the launch parameters in
          * the request. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html">Launch
-         * an instance from a launch template</a> in the <i>Amazon Elastic Compute Cloud
-         * User Guide</i>.</p> <p>If you want to clone an existing launch template as the
-         * basis for creating a new launch template, you can use the Amazon EC2 console.
-         * The API, SDKs, and CLI do not support cloning a template. For more information,
-         * see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template-from-existing-launch-template">Create
-         * a launch template from an existing launch template</a> in the <i>Amazon Elastic
-         * Compute Cloud User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html">Store
+         * instance launch parameters in Amazon EC2 launch templates</a> in the <i>Amazon
+         * EC2 User Guide</i>.</p> <p>To clone an existing launch template as the basis for
+         * a new launch template, use the Amazon EC2 console. The API, SDKs, and CLI do not
+         * support cloning a template. For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-launch-template.html#create-launch-template-from-existing-launch-template">Create
+         * a launch template from an existing launch template</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateLaunchTemplate">AWS
          * API Reference</a></p>
          */
@@ -2694,17 +2998,18 @@ namespace EC2
         }
 
         /**
-         * <p>Creates a new version of a launch template. You can specify an existing
-         * version of launch template from which to base the new version.</p> <p>Launch
-         * template versions are numbered in the order in which they are created. You
-         * cannot specify, change, or replace the numbering of launch template
-         * versions.</p> <p>Launch templates are immutable; after you create a launch
-         * template, you can't modify it. Instead, you can create a new version of the
-         * launch template that includes any changes you require.</p> <p>For more
+         * <p>Creates a new version of a launch template. You must specify an existing
+         * launch template, either by name or ID. You can determine whether the new version
+         * inherits parameters from a source version, and add or overwrite parameters as
+         * needed.</p> <p>Launch template versions are numbered in the order in which they
+         * are created. You can't specify, change, or replace the numbering of launch
+         * template versions.</p> <p>Launch templates are immutable; after you create a
+         * launch template, you can't modify it. Instead, you can create a new version of
+         * the launch template that includes the changes that you require.</p> <p>For more
          * information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#manage-launch-template-versions">Modify
-         * a launch template (manage launch template versions)</a> in the <i>Amazon Elastic
-         * Compute Cloud User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-launch-template-versions.html">Modify
+         * a launch template (manage launch template versions)</a> in the <i>Amazon EC2
+         * User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateLaunchTemplateVersion">AWS
          * API Reference</a></p>
          */
@@ -2834,9 +3139,114 @@ namespace EC2
         }
 
         /**
-         * <p>Creates a managed prefix list. You can specify one or more entries for the
-         * prefix list. Each entry consists of a CIDR block and an optional
-         * description.</p><p><h3>See Also:</h3>   <a
+         * <p>Create a virtual interface for a local gateway. </p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateLocalGatewayVirtualInterface">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateLocalGatewayVirtualInterfaceOutcome CreateLocalGatewayVirtualInterface(const Model::CreateLocalGatewayVirtualInterfaceRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateLocalGatewayVirtualInterface that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateLocalGatewayVirtualInterfaceRequestT = Model::CreateLocalGatewayVirtualInterfaceRequest>
+        Model::CreateLocalGatewayVirtualInterfaceOutcomeCallable CreateLocalGatewayVirtualInterfaceCallable(const CreateLocalGatewayVirtualInterfaceRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::CreateLocalGatewayVirtualInterface, request);
+        }
+
+        /**
+         * An Async wrapper for CreateLocalGatewayVirtualInterface that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateLocalGatewayVirtualInterfaceRequestT = Model::CreateLocalGatewayVirtualInterfaceRequest>
+        void CreateLocalGatewayVirtualInterfaceAsync(const CreateLocalGatewayVirtualInterfaceRequestT& request, const CreateLocalGatewayVirtualInterfaceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::CreateLocalGatewayVirtualInterface, request, handler, context);
+        }
+
+        /**
+         * <p>Create a local gateway virtual interface group.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateLocalGatewayVirtualInterfaceGroup">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateLocalGatewayVirtualInterfaceGroupOutcome CreateLocalGatewayVirtualInterfaceGroup(const Model::CreateLocalGatewayVirtualInterfaceGroupRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateLocalGatewayVirtualInterfaceGroup that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateLocalGatewayVirtualInterfaceGroupRequestT = Model::CreateLocalGatewayVirtualInterfaceGroupRequest>
+        Model::CreateLocalGatewayVirtualInterfaceGroupOutcomeCallable CreateLocalGatewayVirtualInterfaceGroupCallable(const CreateLocalGatewayVirtualInterfaceGroupRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::CreateLocalGatewayVirtualInterfaceGroup, request);
+        }
+
+        /**
+         * An Async wrapper for CreateLocalGatewayVirtualInterfaceGroup that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateLocalGatewayVirtualInterfaceGroupRequestT = Model::CreateLocalGatewayVirtualInterfaceGroupRequest>
+        void CreateLocalGatewayVirtualInterfaceGroupAsync(const CreateLocalGatewayVirtualInterfaceGroupRequestT& request, const CreateLocalGatewayVirtualInterfaceGroupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::CreateLocalGatewayVirtualInterfaceGroup, request, handler, context);
+        }
+
+        /**
+         * <p>Creates a System Integrity Protection (SIP) modification task to configure
+         * the SIP settings for an x86 Mac instance or Apple silicon Mac instance. For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mac-sip-settings.html#mac-sip-configure">
+         * Configure SIP for Amazon EC2 instances</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p> <p>When you configure the SIP settings for your instance, you can
+         * either enable or disable all SIP settings, or you can specify a custom SIP
+         * configuration that selectively enables or disables specific SIP settings.</p>
+         *  <p>If you implement a custom configuration, <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mac-sip-settings.html#mac-sip-check-settings">
+         * connect to the instance and verify the settings</a> to ensure that your
+         * requirements are properly implemented and functioning as intended.</p> <p>SIP
+         * configurations might change with macOS updates. We recommend that you review
+         * custom SIP settings after any macOS version upgrade to ensure continued
+         * compatibility and proper functionality of your security configurations.</p>
+         *  <p>To enable or disable all SIP settings, use the
+         * <b>MacSystemIntegrityProtectionStatus</b> parameter only. For example, to enable
+         * all SIP settings, specify the following:</p> <ul> <li> <p>
+         * <code>MacSystemIntegrityProtectionStatus=enabled</code> </p> </li> </ul> <p>To
+         * specify a custom configuration that selectively enables or disables specific SIP
+         * settings, use the <b>MacSystemIntegrityProtectionStatus</b> parameter to enable
+         * or disable all SIP settings, and then use the
+         * <b>MacSystemIntegrityProtectionConfiguration</b> parameter to specify
+         * exceptions. In this case, the exceptions you specify for
+         * <b>MacSystemIntegrityProtectionConfiguration</b> override the value you specify
+         * for <b>MacSystemIntegrityProtectionStatus</b>. For example, to enable all SIP
+         * settings, except <code>NvramProtections</code>, specify the following:</p> <ul>
+         * <li> <p> <code>MacSystemIntegrityProtectionStatus=enabled</code> </p> </li> <li>
+         * <p> <code>MacSystemIntegrityProtectionConfigurationRequest
+         * "NvramProtections=disabled"</code> </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateMacSystemIntegrityProtectionModificationTask">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateMacSystemIntegrityProtectionModificationTaskOutcome CreateMacSystemIntegrityProtectionModificationTask(const Model::CreateMacSystemIntegrityProtectionModificationTaskRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateMacSystemIntegrityProtectionModificationTask that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateMacSystemIntegrityProtectionModificationTaskRequestT = Model::CreateMacSystemIntegrityProtectionModificationTaskRequest>
+        Model::CreateMacSystemIntegrityProtectionModificationTaskOutcomeCallable CreateMacSystemIntegrityProtectionModificationTaskCallable(const CreateMacSystemIntegrityProtectionModificationTaskRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::CreateMacSystemIntegrityProtectionModificationTask, request);
+        }
+
+        /**
+         * An Async wrapper for CreateMacSystemIntegrityProtectionModificationTask that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateMacSystemIntegrityProtectionModificationTaskRequestT = Model::CreateMacSystemIntegrityProtectionModificationTaskRequest>
+        void CreateMacSystemIntegrityProtectionModificationTaskAsync(const CreateMacSystemIntegrityProtectionModificationTaskRequestT& request, const CreateMacSystemIntegrityProtectionModificationTaskResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::CreateMacSystemIntegrityProtectionModificationTask, request, handler, context);
+        }
+
+        /**
+         * <p>Creates a managed prefix list. You can specify entries for the prefix list.
+         * Each entry consists of a CIDR block and an optional description.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateManagedPrefixList">AWS
          * API Reference</a></p>
          */
@@ -2873,8 +3283,17 @@ namespace EC2
          * IPv4 addresses, and communicating between overlapping networks.</p> <p>For more
          * information, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html">NAT
-         * gateways</a> in the <i>Amazon Virtual Private Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * gateways</a> in the <i>Amazon VPC User Guide</i>.</p>  <p>When you
+         * create a public NAT gateway and assign it an EIP or secondary EIPs, the network
+         * border group of the EIPs must match the network border group of the Availability
+         * Zone (AZ) that the public NAT gateway is in. If it's not the same, the NAT
+         * gateway will fail to launch. You can see the network border group for the
+         * subnet's AZ by viewing the details of the subnet. Similarly, you can view the
+         * network border group of an EIP by viewing the details of the EIP address. For
+         * more information about network border groups and EIPs, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/WorkWithEIPs.html">Allocate
+         * an Elastic IP address</a> in the <i>Amazon VPC User Guide</i>. </p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNatGateway">AWS
          * API Reference</a></p>
          */
@@ -2902,9 +3321,8 @@ namespace EC2
          * <p>Creates a network ACL in a VPC. Network ACLs provide an optional layer of
          * security (in addition to security groups) for the instances in your VPC.</p>
          * <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html">Network
-         * ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html">Network
+         * ACLs</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNetworkAcl">AWS
          * API Reference</a></p>
          */
@@ -2941,9 +3359,8 @@ namespace EC2
          * the rules.</p> <p>After you add an entry, you can't modify it; you must either
          * replace it, or create an entry and delete the old one.</p> <p>For more
          * information about network ACLs, see <a
-         * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html">Network
-         * ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html">Network
+         * ACLs</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNetworkAclEntry">AWS
          * API Reference</a></p>
          */
@@ -3028,14 +3445,11 @@ namespace EC2
 
         /**
          * <p>Creates a network interface in the specified subnet.</p> <p>The number of IP
-         * addresses you can assign to a network interface varies by instance type. For
-         * more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP
-         * Addresses Per ENI Per Instance Type</a> in the <i>Amazon Virtual Private Cloud
-         * User Guide</i>.</p> <p>For more information about network interfaces, see <a
+         * addresses you can assign to a network interface varies by instance type.</p>
+         * <p>For more information about network interfaces, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html">Elastic
-         * network interfaces</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * network interfaces</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNetworkInterface">AWS
          * API Reference</a></p>
          */
@@ -3102,13 +3516,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreatePlacementGroup">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreatePlacementGroupOutcome CreatePlacementGroup(const Model::CreatePlacementGroupRequest& request) const;
+        virtual Model::CreatePlacementGroupOutcome CreatePlacementGroup(const Model::CreatePlacementGroupRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreatePlacementGroup that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreatePlacementGroupRequestT = Model::CreatePlacementGroupRequest>
-        Model::CreatePlacementGroupOutcomeCallable CreatePlacementGroupCallable(const CreatePlacementGroupRequestT& request) const
+        Model::CreatePlacementGroupOutcomeCallable CreatePlacementGroupCallable(const CreatePlacementGroupRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::CreatePlacementGroup, request);
         }
@@ -3117,7 +3531,7 @@ namespace EC2
          * An Async wrapper for CreatePlacementGroup that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreatePlacementGroupRequestT = Model::CreatePlacementGroupRequest>
-        void CreatePlacementGroupAsync(const CreatePlacementGroupRequestT& request, const CreatePlacementGroupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreatePlacementGroupAsync(const CreatePlacementGroupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreatePlacementGroupRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::CreatePlacementGroup, request, handler, context);
         }
@@ -3132,13 +3546,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreatePublicIpv4Pool">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreatePublicIpv4PoolOutcome CreatePublicIpv4Pool(const Model::CreatePublicIpv4PoolRequest& request) const;
+        virtual Model::CreatePublicIpv4PoolOutcome CreatePublicIpv4Pool(const Model::CreatePublicIpv4PoolRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreatePublicIpv4Pool that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreatePublicIpv4PoolRequestT = Model::CreatePublicIpv4PoolRequest>
-        Model::CreatePublicIpv4PoolOutcomeCallable CreatePublicIpv4PoolCallable(const CreatePublicIpv4PoolRequestT& request) const
+        Model::CreatePublicIpv4PoolOutcomeCallable CreatePublicIpv4PoolCallable(const CreatePublicIpv4PoolRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::CreatePublicIpv4Pool, request);
         }
@@ -3147,7 +3561,7 @@ namespace EC2
          * An Async wrapper for CreatePublicIpv4Pool that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreatePublicIpv4PoolRequestT = Model::CreatePublicIpv4PoolRequest>
-        void CreatePublicIpv4PoolAsync(const CreatePublicIpv4PoolRequestT& request, const CreatePublicIpv4PoolResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreatePublicIpv4PoolAsync(const CreatePublicIpv4PoolResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreatePublicIpv4PoolRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::CreatePublicIpv4Pool, request, handler, context);
         }
@@ -3159,8 +3573,8 @@ namespace EC2
          * is restored from an AMI that has the same key characteristics as that of the
          * instance.</p> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/replace-root.html">Replace
-         * a root volume</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * a root volume</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3> 
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateReplaceRootVolumeTask">AWS
          * API Reference</a></p>
          */
@@ -3203,9 +3617,9 @@ namespace EC2
          * details of your Standard Reserved Instance listing, you can use the
          * <a>DescribeReservedInstancesListings</a> operation.</p> <p>For more information,
          * see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Reserved
-         * Instance Marketplace</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Sell
+         * in the Reserved Instance Marketplace</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateReservedInstancesListing">AWS
          * API Reference</a></p>
          */
@@ -3235,11 +3649,11 @@ namespace EC2
          * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateStoreImageTask.html">CreateStoreImageTask</a>.</p>
          * <p>To use this API, you must have the required permissions. For more
          * information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html#ami-s3-permissions">Permissions
-         * for storing and restoring AMIs using Amazon S3</a> in the <i>Amazon EC2 User
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-ami-store-restore.html#ami-s3-permissions">Permissions
+         * for storing and restoring AMIs using S3</a> in the <i>Amazon EC2 User
          * Guide</i>.</p> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html">Store
-         * and restore an AMI using Amazon S3</a> in the <i>Amazon EC2 User
+         * and restore an AMI using S3</a> in the <i>Amazon EC2 User
          * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateRestoreImageTask">AWS
          * API Reference</a></p>
@@ -3278,8 +3692,7 @@ namespace EC2
          * specific, so we use that route to determine where to target the traffic.</p>
          * <p>For more information about route tables, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html">Route
-         * tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * tables</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateRoute">AWS API
          * Reference</a></p>
          */
@@ -3304,12 +3717,119 @@ namespace EC2
         }
 
         /**
+         * <p>Creates a new route server to manage dynamic routing in a VPC.</p> <p>Amazon
+         * VPC Route Server simplifies routing for traffic between workloads that are
+         * deployed within a VPC and its internet gateways. With this feature, VPC Route
+         * Server dynamically updates VPC and internet gateway route tables with your
+         * preferred IPv4 or IPv6 routes to achieve routing fault tolerance for those
+         * workloads. This enables you to automatically reroute traffic within a VPC, which
+         * increases the manageability of VPC routing and interoperability with third-party
+         * workloads.</p> <p>Route server supports the follow route table types:</p> <ul>
+         * <li> <p>VPC route tables not associated with subnets</p> </li> <li> <p>Subnet
+         * route tables</p> </li> <li> <p>Internet gateway route tables</p> </li> </ul>
+         * <p>Route server does not support route tables associated with virtual private
+         * gateways. To propagate routes into a transit gateway route table, use <a
+         * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html">Transit
+         * Gateway Connect</a>.</p> <p>For more information see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html">Dynamic
+         * routing in your VPC with VPC Route Server</a> in the <i>Amazon VPC User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateRouteServer">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateRouteServerOutcome CreateRouteServer(const Model::CreateRouteServerRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateRouteServer that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateRouteServerRequestT = Model::CreateRouteServerRequest>
+        Model::CreateRouteServerOutcomeCallable CreateRouteServerCallable(const CreateRouteServerRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::CreateRouteServer, request);
+        }
+
+        /**
+         * An Async wrapper for CreateRouteServer that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateRouteServerRequestT = Model::CreateRouteServerRequest>
+        void CreateRouteServerAsync(const CreateRouteServerRequestT& request, const CreateRouteServerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::CreateRouteServer, request, handler, context);
+        }
+
+        /**
+         * <p>Creates a new endpoint for a route server in a specified subnet.</p> <p>A
+         * route server endpoint is an Amazon Web Services-managed component inside a
+         * subnet that facilitates <a
+         * href="https://en.wikipedia.org/wiki/Border_Gateway_Protocol">BGP (Border Gateway
+         * Protocol)</a> connections between your route server and your BGP peers.</p>
+         * <p>For more information see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html">Dynamic
+         * routing in your VPC with VPC Route Server</a> in the <i>Amazon VPC User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateRouteServerEndpoint">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateRouteServerEndpointOutcome CreateRouteServerEndpoint(const Model::CreateRouteServerEndpointRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateRouteServerEndpoint that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateRouteServerEndpointRequestT = Model::CreateRouteServerEndpointRequest>
+        Model::CreateRouteServerEndpointOutcomeCallable CreateRouteServerEndpointCallable(const CreateRouteServerEndpointRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::CreateRouteServerEndpoint, request);
+        }
+
+        /**
+         * An Async wrapper for CreateRouteServerEndpoint that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateRouteServerEndpointRequestT = Model::CreateRouteServerEndpointRequest>
+        void CreateRouteServerEndpointAsync(const CreateRouteServerEndpointRequestT& request, const CreateRouteServerEndpointResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::CreateRouteServerEndpoint, request, handler, context);
+        }
+
+        /**
+         * <p>Creates a new BGP peer for a specified route server endpoint.</p> <p>A route
+         * server peer is a session between a route server endpoint and the device deployed
+         * in Amazon Web Services (such as a firewall appliance or other network security
+         * function running on an EC2 instance). The device must meet these
+         * requirements:</p> <ul> <li> <p>Have an elastic network interface in the VPC</p>
+         * </li> <li> <p>Support BGP (Border Gateway Protocol)</p> </li> <li> <p>Can
+         * initiate BGP sessions</p> </li> </ul> <p>For more information see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html">Dynamic
+         * routing in your VPC with VPC Route Server</a> in the <i>Amazon VPC User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateRouteServerPeer">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateRouteServerPeerOutcome CreateRouteServerPeer(const Model::CreateRouteServerPeerRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateRouteServerPeer that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateRouteServerPeerRequestT = Model::CreateRouteServerPeerRequest>
+        Model::CreateRouteServerPeerOutcomeCallable CreateRouteServerPeerCallable(const CreateRouteServerPeerRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::CreateRouteServerPeer, request);
+        }
+
+        /**
+         * An Async wrapper for CreateRouteServerPeer that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateRouteServerPeerRequestT = Model::CreateRouteServerPeerRequest>
+        void CreateRouteServerPeerAsync(const CreateRouteServerPeerRequestT& request, const CreateRouteServerPeerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::CreateRouteServerPeer, request, handler, context);
+        }
+
+        /**
          * <p>Creates a route table for the specified VPC. After you create a route table,
          * you can add routes and associate the table with a subnet.</p> <p>For more
          * information, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html">Route
-         * tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * tables</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateRouteTable">AWS
          * API Reference</a></p>
          */
@@ -3338,29 +3858,21 @@ namespace EC2
          * for your instance to control inbound and outbound traffic. For more information,
          * see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Amazon
-         * EC2 security groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>
-         * and <a
+         * EC2 security groups</a> in the <i>Amazon EC2 User Guide</i> and <a
          * href="https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html">Security
-         * groups for your VPC</a> in the <i>Amazon Virtual Private Cloud User
-         * Guide</i>.</p> <p>When you create a security group, you specify a friendly name
-         * of your choice. You can have a security group for use in EC2-Classic with the
-         * same name as a security group for use in a VPC. However, you can't have two
-         * security groups for use in EC2-Classic with the same name or two security groups
-         * for use in a VPC with the same name.</p> <p>You have a default security group
-         * for use in EC2-Classic and a default security group for use in your VPC. If you
-         * don't specify a security group when you launch an instance, the instance is
-         * launched into the appropriate default security group. A default security group
-         * includes a default rule that grants instances unrestricted network access to
-         * each other.</p> <p>You can add or remove rules from your security groups using
+         * groups for your VPC</a> in the <i>Amazon VPC User Guide</i>.</p> <p>When you
+         * create a security group, you specify a friendly name of your choice. You can't
+         * have two security groups for the same VPC with the same name.</p> <p>You have a
+         * default security group for use in your VPC. If you don't specify a security
+         * group when you launch an instance, the instance is launched into the appropriate
+         * default security group. A default security group includes a default rule that
+         * grants instances unrestricted network access to each other.</p> <p>You can add
+         * or remove rules from your security groups using
          * <a>AuthorizeSecurityGroupIngress</a>, <a>AuthorizeSecurityGroupEgress</a>,
          * <a>RevokeSecurityGroupIngress</a>, and <a>RevokeSecurityGroupEgress</a>.</p>
          * <p>For more information about VPC security group limits, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html">Amazon
-         * VPC Limits</a>.</p>  <p>We are retiring EC2-Classic. We recommend that you
-         * migrate from EC2-Classic to a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * VPC Limits</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSecurityGroup">AWS
          * API Reference</a></p>
          */
@@ -3387,37 +3899,33 @@ namespace EC2
         /**
          * <p>Creates a snapshot of an EBS volume and stores it in Amazon S3. You can use
          * snapshots for backups, to make copies of EBS volumes, and to save data before
-         * shutting down an instance.</p> <p>You can create snapshots of volumes in a
-         * Region and volumes on an Outpost. If you create a snapshot of a volume in a
-         * Region, the snapshot must be stored in the same Region as the volume. If you
-         * create a snapshot of a volume on an Outpost, the snapshot can be stored on the
-         * same Outpost as the volume, or in the Region for that Outpost.</p> <p>When a
-         * snapshot is created, any Amazon Web Services Marketplace product codes that are
-         * associated with the source volume are propagated to the snapshot.</p> <p>You can
-         * take a snapshot of an attached volume that is in use. However, snapshots only
-         * capture data that has been written to your Amazon EBS volume at the time the
-         * snapshot command is issued; this might exclude any data that has been cached by
-         * any applications or the operating system. If you can pause any file systems on
-         * the volume long enough to take a snapshot, your snapshot should be complete.
-         * However, if you cannot pause all file writes to the volume, you should unmount
-         * the volume from within the instance, issue the snapshot command, and then
-         * remount the volume to ensure a consistent and complete snapshot. You may remount
-         * and use your volume while the snapshot status is <code>pending</code>.</p>
-         * <p>When you create a snapshot for an EBS volume that serves as a root device, we
-         * recommend that you stop the instance before taking the snapshot.</p>
-         * <p>Snapshots that are taken from encrypted volumes are automatically encrypted.
-         * Volumes that are created from encrypted snapshots are also automatically
-         * encrypted. Your encrypted volumes and any associated snapshots always remain
-         * protected.</p> <p>You can tag your snapshots during creation. For more
-         * information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tag
-         * your Amazon EC2 resources</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html">Amazon
-         * Elastic Block Store</a> and <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon
-         * EBS encryption</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * shutting down an instance.</p> <p>The location of the source EBS volume
+         * determines where you can create the snapshot.</p> <ul> <li> <p>If the source
+         * volume is in a Region, you must create the snapshot in the same Region as the
+         * volume.</p> </li> <li> <p>If the source volume is in a Local Zone, you can
+         * create the snapshot in the same Local Zone or in its parent Amazon Web Services
+         * Region.</p> </li> <li> <p>If the source volume is on an Outpost, you can create
+         * the snapshot on the same Outpost or in its parent Amazon Web Services
+         * Region.</p> </li> </ul> <p>When a snapshot is created, any Amazon Web Services
+         * Marketplace product codes that are associated with the source volume are
+         * propagated to the snapshot.</p> <p>You can take a snapshot of an attached volume
+         * that is in use. However, snapshots only capture data that has been written to
+         * your Amazon EBS volume at the time the snapshot command is issued; this might
+         * exclude any data that has been cached by any applications or the operating
+         * system. If you can pause any file systems on the volume long enough to take a
+         * snapshot, your snapshot should be complete. However, if you cannot pause all
+         * file writes to the volume, you should unmount the volume from within the
+         * instance, issue the snapshot command, and then remount the volume to ensure a
+         * consistent and complete snapshot. You may remount and use your volume while the
+         * snapshot status is <code>pending</code>.</p> <p>When you create a snapshot for
+         * an EBS volume that serves as a root device, we recommend that you stop the
+         * instance before taking the snapshot.</p> <p>Snapshots that are taken from
+         * encrypted volumes are automatically encrypted. Volumes that are created from
+         * encrypted snapshots are also automatically encrypted. Your encrypted volumes and
+         * any associated snapshots always remain protected. For more information, see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html">Amazon
+         * EBS encryption</a> in the <i>Amazon EBS User Guide</i>.</p><p><h3>See Also:</h3>
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSnapshot">AWS
          * API Reference</a></p>
          */
@@ -3442,17 +3950,20 @@ namespace EC2
         }
 
         /**
-         * <p>Creates crash-consistent snapshots of multiple EBS volumes and stores the
-         * data in S3. Volumes are chosen by specifying an instance. Any attached volumes
-         * will produce one snapshot each that is crash-consistent across the instance.</p>
-         * <p>You can include all of the volumes currently attached to the instance, or you
-         * can exclude the root volume or specific data (non-root) volumes from the
-         * multi-volume snapshot set.</p> <p>You can create multi-volume snapshots of
-         * instances in a Region and instances on an Outpost. If you create snapshots from
-         * an instance in a Region, the snapshots must be stored in the same Region as the
-         * instance. If you create snapshots from an instance on an Outpost, the snapshots
-         * can be stored on the same Outpost as the instance, or in the Region for that
-         * Outpost.</p><p><h3>See Also:</h3>   <a
+         * <p>Creates crash-consistent snapshots of multiple EBS volumes attached to an
+         * Amazon EC2 instance. Volumes are chosen by specifying an instance. Each volume
+         * attached to the specified instance will produce one snapshot that is
+         * crash-consistent across the instance. You can include all of the volumes
+         * currently attached to the instance, or you can exclude the root volume or
+         * specific data (non-root) volumes from the multi-volume snapshot set.</p> <p>The
+         * location of the source instance determines where you can create the
+         * snapshots.</p> <ul> <li> <p>If the source instance is in a Region, you must
+         * create the snapshots in the same Region as the instance.</p> </li> <li> <p>If
+         * the source instance is in a Local Zone, you can create the snapshots in the same
+         * Local Zone or in its parent Amazon Web Services Region.</p> </li> <li> <p>If the
+         * source instance is on an Outpost, you can create the snapshots on the same
+         * Outpost or in its parent Amazon Web Services Region.</p> </li> </ul><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSnapshots">AWS
          * API Reference</a></p>
          */
@@ -3481,8 +3992,8 @@ namespace EC2
          * usage logs. You can create one data feed per Amazon Web Services account. For
          * more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html">Spot
-         * Instance data feed</a> in the <i>Amazon EC2 User Guide for Linux
-         * Instances</i>.</p><p><h3>See Also:</h3>   <a
+         * Instance data feed</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSpotDatafeedSubscription">AWS
          * API Reference</a></p>
          */
@@ -3509,11 +4020,11 @@ namespace EC2
         /**
          * <p>Stores an AMI as a single object in an Amazon S3 bucket.</p> <p>To use this
          * API, you must have the required permissions. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html#ami-s3-permissions">Permissions
-         * for storing and restoring AMIs using Amazon S3</a> in the <i>Amazon EC2 User
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-ami-store-restore.html#ami-s3-permissions">Permissions
+         * for storing and restoring AMIs using S3</a> in the <i>Amazon EC2 User
          * Guide</i>.</p> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html">Store
-         * and restore an AMI using Amazon S3</a> in the <i>Amazon EC2 User
+         * and restore an AMI using S3</a> in the <i>Amazon EC2 User
          * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateStoreImageTask">AWS
          * API Reference</a></p>
@@ -3550,15 +4061,15 @@ namespace EC2
          * reserves both the first four and the last IPv4 address in each subnet's CIDR
          * block. They're not available for your use.</p> <p>If you've associated an IPv6
          * CIDR block with your VPC, you can associate an IPv6 CIDR block with a subnet
-         * when you create it. The allowed block size for an IPv6 subnet is a /64
-         * netmask.</p> <p>If you add more than one subnet to a VPC, they're set up in a
-         * star topology with a logical router in the middle.</p> <p>When you stop an
-         * instance in a subnet, it retains its private IPv4 address. It's therefore
-         * possible to have a subnet with no running instances (they're all stopped), but
-         * no remaining IP addresses available.</p> <p>For more information, see <a
+         * when you create it. </p> <p>If you add more than one subnet to a VPC, they're
+         * set up in a star topology with a logical router in the middle.</p> <p>When you
+         * stop an instance in a subnet, it retains its private IPv4 address. It's
+         * therefore possible to have a subnet with no running instances (they're all
+         * stopped), but no remaining IP addresses available.</p> <p>For more information,
+         * see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html">Subnets</a>
-         * in the <i>Amazon Virtual Private Cloud User Guide</i>.</p><p><h3>See Also:</h3> 
-         * <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSubnet">AWS
+         * in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSubnet">AWS
          * API Reference</a></p>
          */
         virtual Model::CreateSubnetOutcome CreateSubnet(const Model::CreateSubnetRequest& request) const;
@@ -3582,10 +4093,11 @@ namespace EC2
         }
 
         /**
-         * <p>Creates a subnet CIDR reservation. For information about subnet CIDR
-         * reservations, see <a
+         * <p>Creates a subnet CIDR reservation. For more information, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/subnet-cidr-reservation.html">Subnet
-         * CIDR reservations</a> in the <i>Amazon Virtual Private Cloud User
+         * CIDR reservations</a> in the <i>Amazon VPC User Guide</i> and <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html">Manage
+         * prefixes for your network interfaces</a> in the <i>Amazon EC2 User
          * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSubnetCidrReservation">AWS
          * API Reference</a></p>
@@ -3658,13 +4170,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateTrafficMirrorFilter">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateTrafficMirrorFilterOutcome CreateTrafficMirrorFilter(const Model::CreateTrafficMirrorFilterRequest& request) const;
+        virtual Model::CreateTrafficMirrorFilterOutcome CreateTrafficMirrorFilter(const Model::CreateTrafficMirrorFilterRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateTrafficMirrorFilter that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateTrafficMirrorFilterRequestT = Model::CreateTrafficMirrorFilterRequest>
-        Model::CreateTrafficMirrorFilterOutcomeCallable CreateTrafficMirrorFilterCallable(const CreateTrafficMirrorFilterRequestT& request) const
+        Model::CreateTrafficMirrorFilterOutcomeCallable CreateTrafficMirrorFilterCallable(const CreateTrafficMirrorFilterRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::CreateTrafficMirrorFilter, request);
         }
@@ -3673,7 +4185,7 @@ namespace EC2
          * An Async wrapper for CreateTrafficMirrorFilter that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateTrafficMirrorFilterRequestT = Model::CreateTrafficMirrorFilterRequest>
-        void CreateTrafficMirrorFilterAsync(const CreateTrafficMirrorFilterRequestT& request, const CreateTrafficMirrorFilterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateTrafficMirrorFilterAsync(const CreateTrafficMirrorFilterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateTrafficMirrorFilterRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::CreateTrafficMirrorFilter, request, handler, context);
         }
@@ -3713,7 +4225,7 @@ namespace EC2
          * Traffic Mirror target (monitoring appliances) can be in the same VPC, or in a
          * different VPC connected via VPC peering or a transit gateway. </p> <p>By
          * default, no traffic is mirrored. Use <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorFilter.htm">CreateTrafficMirrorFilter</a>
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorFilter.html">CreateTrafficMirrorFilter</a>
          * to create filter rules that specify the traffic to mirror.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateTrafficMirrorSession">AWS
@@ -3752,13 +4264,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateTrafficMirrorTarget">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateTrafficMirrorTargetOutcome CreateTrafficMirrorTarget(const Model::CreateTrafficMirrorTargetRequest& request) const;
+        virtual Model::CreateTrafficMirrorTargetOutcome CreateTrafficMirrorTarget(const Model::CreateTrafficMirrorTargetRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateTrafficMirrorTarget that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateTrafficMirrorTargetRequestT = Model::CreateTrafficMirrorTargetRequest>
-        Model::CreateTrafficMirrorTargetOutcomeCallable CreateTrafficMirrorTargetCallable(const CreateTrafficMirrorTargetRequestT& request) const
+        Model::CreateTrafficMirrorTargetOutcomeCallable CreateTrafficMirrorTargetCallable(const CreateTrafficMirrorTargetRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::CreateTrafficMirrorTarget, request);
         }
@@ -3767,7 +4279,7 @@ namespace EC2
          * An Async wrapper for CreateTrafficMirrorTarget that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateTrafficMirrorTargetRequestT = Model::CreateTrafficMirrorTargetRequest>
-        void CreateTrafficMirrorTargetAsync(const CreateTrafficMirrorTargetRequestT& request, const CreateTrafficMirrorTargetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateTrafficMirrorTargetAsync(const CreateTrafficMirrorTargetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateTrafficMirrorTargetRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::CreateTrafficMirrorTarget, request, handler, context);
         }
@@ -3794,13 +4306,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateTransitGateway">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateTransitGatewayOutcome CreateTransitGateway(const Model::CreateTransitGatewayRequest& request) const;
+        virtual Model::CreateTransitGatewayOutcome CreateTransitGateway(const Model::CreateTransitGatewayRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateTransitGateway that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateTransitGatewayRequestT = Model::CreateTransitGatewayRequest>
-        Model::CreateTransitGatewayOutcomeCallable CreateTransitGatewayCallable(const CreateTransitGatewayRequestT& request) const
+        Model::CreateTransitGatewayOutcomeCallable CreateTransitGatewayCallable(const CreateTransitGatewayRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::CreateTransitGateway, request);
         }
@@ -3809,7 +4321,7 @@ namespace EC2
          * An Async wrapper for CreateTransitGateway that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateTransitGatewayRequestT = Model::CreateTransitGatewayRequest>
-        void CreateTransitGatewayAsync(const CreateTransitGatewayRequestT& request, const CreateTransitGatewayResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateTransitGatewayAsync(const CreateTransitGatewayResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateTransitGatewayRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::CreateTransitGateway, request, handler, context);
         }
@@ -3849,7 +4361,8 @@ namespace EC2
          * gateway address must be the same IP address family (IPv4 or IPv6).</p> <p>For
          * more information, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html#tgw-connect-peer">Connect
-         * peers</a> in the <i>Transit Gateways Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * peers</a> in the <i>Amazon Web Services Transit Gateways
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateTransitGatewayConnectPeer">AWS
          * API Reference</a></p>
          */
@@ -4119,11 +4632,10 @@ namespace EC2
         /**
          * <p>An Amazon Web Services Verified Access group is a collection of Amazon Web
          * Services Verified Access endpoints who's associated applications have similar
-         * security requirements. Each instance within an Amazon Web Services Verified
-         * Access group shares an Amazon Web Services Verified Access policy. For example,
-         * you can group all Amazon Web Services Verified Access instances associated with
-         * “sales” applications together and use one common Amazon Web Services Verified
-         * Access policy.</p><p><h3>See Also:</h3>   <a
+         * security requirements. Each instance within a Verified Access group shares an
+         * Verified Access policy. For example, you can group all Verified Access instances
+         * associated with "sales" applications together and use one common Verified Access
+         * policy.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVerifiedAccessGroup">AWS
          * API Reference</a></p>
          */
@@ -4154,13 +4666,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVerifiedAccessInstance">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateVerifiedAccessInstanceOutcome CreateVerifiedAccessInstance(const Model::CreateVerifiedAccessInstanceRequest& request) const;
+        virtual Model::CreateVerifiedAccessInstanceOutcome CreateVerifiedAccessInstance(const Model::CreateVerifiedAccessInstanceRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateVerifiedAccessInstance that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateVerifiedAccessInstanceRequestT = Model::CreateVerifiedAccessInstanceRequest>
-        Model::CreateVerifiedAccessInstanceOutcomeCallable CreateVerifiedAccessInstanceCallable(const CreateVerifiedAccessInstanceRequestT& request) const
+        Model::CreateVerifiedAccessInstanceOutcomeCallable CreateVerifiedAccessInstanceCallable(const CreateVerifiedAccessInstanceRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::CreateVerifiedAccessInstance, request);
         }
@@ -4169,7 +4681,7 @@ namespace EC2
          * An Async wrapper for CreateVerifiedAccessInstance that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateVerifiedAccessInstanceRequestT = Model::CreateVerifiedAccessInstanceRequest>
-        void CreateVerifiedAccessInstanceAsync(const CreateVerifiedAccessInstanceRequestT& request, const CreateVerifiedAccessInstanceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateVerifiedAccessInstanceAsync(const CreateVerifiedAccessInstanceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateVerifiedAccessInstanceRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::CreateVerifiedAccessInstance, request, handler, context);
         }
@@ -4177,9 +4689,9 @@ namespace EC2
         /**
          * <p>A trust provider is a third-party entity that creates, maintains, and manages
          * identity information for users and devices. When an application request is made,
-         * the identity information sent by the trust provider will be evaluated by Amazon
-         * Web Services Verified Access, before allowing or denying the application
-         * request.</p><p><h3>See Also:</h3>   <a
+         * the identity information sent by the trust provider is evaluated by Verified
+         * Access before allowing or denying the application request.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVerifiedAccessTrustProvider">AWS
          * API Reference</a></p>
          */
@@ -4211,25 +4723,25 @@ namespace EC2
          * Encrypted volumes must be attached to instances that support Amazon EBS
          * encryption. Volumes that are created from encrypted snapshots are also
          * automatically encrypted. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon
-         * EBS encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-         * <p>You can tag your volumes during creation. For more information, see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html">Amazon
+         * EBS encryption</a> in the <i>Amazon EBS User Guide</i>.</p> <p>You can tag your
+         * volumes during creation. For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tag
-         * your Amazon EC2 resources</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html">Create
-         * an Amazon EBS volume</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * your Amazon EC2 resources</a> in the <i>Amazon EC2 User Guide</i>.</p> <p>For
+         * more information, see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-creating-volume.html">Create
+         * an Amazon EBS volume</a> in the <i>Amazon EBS User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVolume">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateVolumeOutcome CreateVolume(const Model::CreateVolumeRequest& request) const;
+        virtual Model::CreateVolumeOutcome CreateVolume(const Model::CreateVolumeRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateVolume that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateVolumeRequestT = Model::CreateVolumeRequest>
-        Model::CreateVolumeOutcomeCallable CreateVolumeCallable(const CreateVolumeRequestT& request) const
+        Model::CreateVolumeOutcomeCallable CreateVolumeCallable(const CreateVolumeRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::CreateVolume, request);
         }
@@ -4238,41 +4750,39 @@ namespace EC2
          * An Async wrapper for CreateVolume that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateVolumeRequestT = Model::CreateVolumeRequest>
-        void CreateVolumeAsync(const CreateVolumeRequestT& request, const CreateVolumeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateVolumeAsync(const CreateVolumeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateVolumeRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::CreateVolume, request, handler, context);
         }
 
         /**
          * <p>Creates a VPC with the specified CIDR blocks. For more information, see <a
-         * href="https://docs.aws.amazon.com/vpc/latest/userguide/configure-your-vpc.html#vpc-cidr-blocks">VPC
-         * CIDR blocks</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
-         * <p>You can optionally request an IPv6 CIDR block for the VPC. You can request an
-         * Amazon-provided IPv6 CIDR block from Amazon's pool of IPv6 addresses, or an IPv6
-         * CIDR block from an IPv6 address pool that you provisioned through bring your own
-         * IP addresses (<a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html">IP
+         * addressing for your VPCs and subnets</a> in the <i>Amazon VPC User
+         * Guide</i>.</p> <p>You can optionally request an IPv6 CIDR block for the VPC. You
+         * can request an Amazon-provided IPv6 CIDR block from Amazon's pool of IPv6
+         * addresses or an IPv6 CIDR block from an IPv6 address pool that you provisioned
+         * through bring your own IP addresses (<a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html">BYOIP</a>).</p>
          * <p>By default, each instance that you launch in the VPC has the default DHCP
          * options, which include only a default DNS server that we provide
          * (AmazonProvidedDNS). For more information, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html">DHCP
-         * option sets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
-         * <p>You can specify the instance tenancy value for the VPC when you create it.
-         * You can't change this value for the VPC after you create it. For more
-         * information, see <a
+         * option sets</a> in the <i>Amazon VPC User Guide</i>.</p> <p>You can specify the
+         * instance tenancy value for the VPC when you create it. You can't change this
+         * value for the VPC after you create it. For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html">Dedicated
-         * Instances</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * Instances</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpc">AWS API
          * Reference</a></p>
          */
-        virtual Model::CreateVpcOutcome CreateVpc(const Model::CreateVpcRequest& request) const;
+        virtual Model::CreateVpcOutcome CreateVpc(const Model::CreateVpcRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateVpc that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateVpcRequestT = Model::CreateVpcRequest>
-        Model::CreateVpcOutcomeCallable CreateVpcCallable(const CreateVpcRequestT& request) const
+        Model::CreateVpcOutcomeCallable CreateVpcCallable(const CreateVpcRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::CreateVpc, request);
         }
@@ -4281,18 +4791,51 @@ namespace EC2
          * An Async wrapper for CreateVpc that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateVpcRequestT = Model::CreateVpcRequest>
-        void CreateVpcAsync(const CreateVpcRequestT& request, const CreateVpcResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateVpcAsync(const CreateVpcResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateVpcRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::CreateVpc, request, handler, context);
         }
 
         /**
-         * <p>Creates a VPC endpoint for a specified service. An endpoint enables you to
-         * create a private connection between your VPC and the service. The service may be
-         * provided by Amazon Web Services, an Amazon Web Services Marketplace Partner, or
-         * another Amazon Web Services account. For more information, see the <a
-         * href="https://docs.aws.amazon.com/vpc/latest/privatelink/">Amazon Web Services
-         * PrivateLink Guide</a>.</p><p><h3>See Also:</h3>   <a
+         * <p>Create a VPC Block Public Access (BPA) exclusion. A VPC BPA exclusion is a
+         * mode that can be applied to a single VPC or subnet that exempts it from the
+         * account’s BPA mode and will allow bidirectional or egress-only access. You can
+         * create BPA exclusions for VPCs and subnets even when BPA is not enabled on the
+         * account to ensure that there is no traffic disruption to the exclusions when VPC
+         * BPA is turned on. To learn more about VPC BPA, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/security-vpc-bpa.html">Block
+         * public access to VPCs and subnets</a> in the <i>Amazon VPC User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpcBlockPublicAccessExclusion">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateVpcBlockPublicAccessExclusionOutcome CreateVpcBlockPublicAccessExclusion(const Model::CreateVpcBlockPublicAccessExclusionRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateVpcBlockPublicAccessExclusion that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateVpcBlockPublicAccessExclusionRequestT = Model::CreateVpcBlockPublicAccessExclusionRequest>
+        Model::CreateVpcBlockPublicAccessExclusionOutcomeCallable CreateVpcBlockPublicAccessExclusionCallable(const CreateVpcBlockPublicAccessExclusionRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::CreateVpcBlockPublicAccessExclusion, request);
+        }
+
+        /**
+         * An Async wrapper for CreateVpcBlockPublicAccessExclusion that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateVpcBlockPublicAccessExclusionRequestT = Model::CreateVpcBlockPublicAccessExclusionRequest>
+        void CreateVpcBlockPublicAccessExclusionAsync(const CreateVpcBlockPublicAccessExclusionRequestT& request, const CreateVpcBlockPublicAccessExclusionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::CreateVpcBlockPublicAccessExclusion, request, handler, context);
+        }
+
+        /**
+         * <p>Creates a VPC endpoint. A VPC endpoint provides a private connection between
+         * the specified VPC and the specified endpoint service. You can use an endpoint
+         * service provided by Amazon Web Services, an Amazon Web Services Marketplace
+         * Partner, or another Amazon Web Services account. For more information, see the
+         * <a href="https://docs.aws.amazon.com/vpc/latest/privatelink/">Amazon Web
+         * Services PrivateLink User Guide</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpcEndpoint">AWS
          * API Reference</a></p>
          */
@@ -4321,10 +4864,10 @@ namespace EC2
          * endpoint service. A connection notification notifies you of specific endpoint
          * events. You must create an SNS topic to receive notifications. For more
          * information, see <a
-         * href="https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Create a
-         * Topic</a> in the <i>Amazon Simple Notification Service Developer Guide</i>.</p>
-         * <p>You can create a connection notification for interface endpoints
-         * only.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Creating an
+         * Amazon SNS topic</a> in the <i>Amazon SNS Developer Guide</i>.</p> <p>You can
+         * create a connection notification for interface endpoints only.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpcEndpointConnectionNotification">AWS
          * API Reference</a></p>
          */
@@ -4366,13 +4909,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpcEndpointServiceConfiguration">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateVpcEndpointServiceConfigurationOutcome CreateVpcEndpointServiceConfiguration(const Model::CreateVpcEndpointServiceConfigurationRequest& request) const;
+        virtual Model::CreateVpcEndpointServiceConfigurationOutcome CreateVpcEndpointServiceConfiguration(const Model::CreateVpcEndpointServiceConfigurationRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateVpcEndpointServiceConfiguration that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateVpcEndpointServiceConfigurationRequestT = Model::CreateVpcEndpointServiceConfigurationRequest>
-        Model::CreateVpcEndpointServiceConfigurationOutcomeCallable CreateVpcEndpointServiceConfigurationCallable(const CreateVpcEndpointServiceConfigurationRequestT& request) const
+        Model::CreateVpcEndpointServiceConfigurationOutcomeCallable CreateVpcEndpointServiceConfigurationCallable(const CreateVpcEndpointServiceConfigurationRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::CreateVpcEndpointServiceConfiguration, request);
         }
@@ -4381,7 +4924,7 @@ namespace EC2
          * An Async wrapper for CreateVpcEndpointServiceConfiguration that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateVpcEndpointServiceConfigurationRequestT = Model::CreateVpcEndpointServiceConfigurationRequest>
-        void CreateVpcEndpointServiceConfigurationAsync(const CreateVpcEndpointServiceConfigurationRequestT& request, const CreateVpcEndpointServiceConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateVpcEndpointServiceConfigurationAsync(const CreateVpcEndpointServiceConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateVpcEndpointServiceConfigurationRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::CreateVpcEndpointServiceConfiguration, request, handler, context);
         }
@@ -4393,13 +4936,14 @@ namespace EC2
          * Region to the requester VPC. The requester VPC and accepter VPC cannot have
          * overlapping CIDR blocks.</p>  <p>Limitations and rules apply to a VPC
          * peering connection. For more information, see the <a
-         * href="https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-basics.html#vpc-peering-limitations">limitations</a>
-         * section in the <i>VPC Peering Guide</i>.</p>  <p>The owner of the
-         * accepter VPC must accept the peering request to activate the peering connection.
-         * The VPC peering connection request expires after 7 days, after which it cannot
-         * be accepted or rejected.</p> <p>If you create a VPC peering connection request
-         * between VPCs with overlapping CIDR blocks, the VPC peering connection has a
-         * status of <code>failed</code>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-basics.html#vpc-peering-limitations">VPC
+         * peering limitations</a> in the <i>VPC Peering Guide</i>.</p>  <p>The
+         * owner of the accepter VPC must accept the peering request to activate the
+         * peering connection. The VPC peering connection request expires after 7 days,
+         * after which it cannot be accepted or rejected.</p> <p>If you create a VPC
+         * peering connection request between VPCs with overlapping CIDR blocks, the VPC
+         * peering connection has a status of <code>failed</code>.</p><p><h3>See Also:</h3>
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpcPeeringConnection">AWS
          * API Reference</a></p>
          */
@@ -4740,25 +5284,30 @@ namespace EC2
         }
 
         /**
-         * <p>Deletes the specified EC2 Fleets.</p> <p>After you delete an EC2 Fleet, it
-         * launches no new instances.</p> <p>You must also specify whether a deleted EC2
-         * Fleet should terminate its instances. If you choose to terminate the instances,
-         * the EC2 Fleet enters the <code>deleted_terminating</code> state. Otherwise, the
-         * EC2 Fleet enters the <code>deleted_running</code> state, and the instances
-         * continue to run until they are interrupted or you terminate them manually.</p>
-         * <p>For <code>instant</code> fleets, EC2 Fleet must terminate the instances when
-         * the fleet is deleted. A deleted <code>instant</code> fleet with running
-         * instances is not supported.</p> <p class="title"> <b>Restrictions</b> </p> <ul>
-         * <li> <p>You can delete up to 25 <code>instant</code> fleets in a single request.
-         * If you exceed this number, no <code>instant</code> fleets are deleted and an
-         * error is returned. There is no restriction on the number of fleets of type
-         * <code>maintain</code> or <code>request</code> that can be deleted in a single
-         * request.</p> </li> <li> <p>Up to 1000 instances can be terminated in a single
-         * request to delete <code>instant</code> fleets.</p> </li> </ul> <p>For more
-         * information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#delete-fleet">Delete
-         * an EC2 Fleet</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>  
-         * <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteFleets">AWS
+         * <p>Deletes the specified EC2 Fleet request.</p> <p>After you delete an EC2 Fleet
+         * request, it launches no new instances.</p> <p>You must also specify whether a
+         * deleted EC2 Fleet request should terminate its instances. If you choose to
+         * terminate the instances, the EC2 Fleet request enters the
+         * <code>deleted_terminating</code> state. Otherwise, it enters the
+         * <code>deleted_running</code> state, and the instances continue to run until they
+         * are interrupted or you terminate them manually.</p> <p>A deleted
+         * <code>instant</code> fleet with running instances is not supported. When you
+         * delete an <code>instant</code> fleet, Amazon EC2 automatically terminates all
+         * its instances. For fleets with more than 1000 instances, the deletion request
+         * might fail. If your fleet has more than 1000 instances, first terminate most of
+         * the instances manually, leaving 1000 or fewer. Then delete the fleet, and the
+         * remaining instances will be terminated automatically.</p> <p class="title">
+         * <b>Restrictions</b> </p> <ul> <li> <p>You can delete up to 25 fleets of type
+         * <code>instant</code> in a single request.</p> </li> <li> <p>You can delete up to
+         * 100 fleets of type <code>maintain</code> or <code>request</code> in a single
+         * request.</p> </li> <li> <p>You can delete up to 125 fleets in a single request,
+         * provided you do not exceed the quota for each fleet type, as specified
+         * above.</p> </li> <li> <p>If you exceed the specified number of fleets to delete,
+         * no fleets are deleted.</p> </li> </ul> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/delete-fleet.html">Delete
+         * an EC2 Fleet request and the instances in the fleet</a> in the <i>Amazon EC2
+         * User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteFleets">AWS
          * API Reference</a></p>
          */
         virtual Model::DeleteFleetsOutcome DeleteFleets(const Model::DeleteFleetsRequest& request) const;
@@ -4829,6 +5378,60 @@ namespace EC2
         void DeleteFpgaImageAsync(const DeleteFpgaImageRequestT& request, const DeleteFpgaImageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::DeleteFpgaImage, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes the specified image usage report.</p> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/your-ec2-ami-usage.html">View
+         * your AMI usage</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteImageUsageReport">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteImageUsageReportOutcome DeleteImageUsageReport(const Model::DeleteImageUsageReportRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteImageUsageReport that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteImageUsageReportRequestT = Model::DeleteImageUsageReportRequest>
+        Model::DeleteImageUsageReportOutcomeCallable DeleteImageUsageReportCallable(const DeleteImageUsageReportRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DeleteImageUsageReport, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteImageUsageReport that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteImageUsageReportRequestT = Model::DeleteImageUsageReportRequest>
+        void DeleteImageUsageReportAsync(const DeleteImageUsageReportRequestT& request, const DeleteImageUsageReportResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DeleteImageUsageReport, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes the specified EC2 Instance Connect Endpoint.</p><p><h3>See Also:</h3>
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteInstanceConnectEndpoint">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteInstanceConnectEndpointOutcome DeleteInstanceConnectEndpoint(const Model::DeleteInstanceConnectEndpointRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteInstanceConnectEndpoint that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteInstanceConnectEndpointRequestT = Model::DeleteInstanceConnectEndpointRequest>
+        Model::DeleteInstanceConnectEndpointOutcomeCallable DeleteInstanceConnectEndpointCallable(const DeleteInstanceConnectEndpointRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DeleteInstanceConnectEndpoint, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteInstanceConnectEndpoint that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteInstanceConnectEndpointRequestT = Model::DeleteInstanceConnectEndpointRequest>
+        void DeleteInstanceConnectEndpointAsync(const DeleteInstanceConnectEndpointRequestT& request, const DeleteInstanceConnectEndpointResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DeleteInstanceConnectEndpoint, request, handler, context);
         }
 
         /**
@@ -4912,6 +5515,35 @@ namespace EC2
         void DeleteIpamAsync(const DeleteIpamRequestT& request, const DeleteIpamResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::DeleteIpam, request, handler, context);
+        }
+
+        /**
+         * <p>Delete a verification token. A verification token is an Amazon Web
+         * Services-generated random value that you can use to prove ownership of an
+         * external resource. For example, you can use a verification token to validate
+         * that you control a public IP address range when you bring an IP address range to
+         * Amazon Web Services (BYOIP). </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteIpamExternalResourceVerificationToken">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteIpamExternalResourceVerificationTokenOutcome DeleteIpamExternalResourceVerificationToken(const Model::DeleteIpamExternalResourceVerificationTokenRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteIpamExternalResourceVerificationToken that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteIpamExternalResourceVerificationTokenRequestT = Model::DeleteIpamExternalResourceVerificationTokenRequest>
+        Model::DeleteIpamExternalResourceVerificationTokenOutcomeCallable DeleteIpamExternalResourceVerificationTokenCallable(const DeleteIpamExternalResourceVerificationTokenRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DeleteIpamExternalResourceVerificationToken, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteIpamExternalResourceVerificationToken that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteIpamExternalResourceVerificationTokenRequestT = Model::DeleteIpamExternalResourceVerificationTokenRequest>
+        void DeleteIpamExternalResourceVerificationTokenAsync(const DeleteIpamExternalResourceVerificationTokenRequestT& request, const DeleteIpamExternalResourceVerificationTokenResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DeleteIpamExternalResourceVerificationToken, request, handler, context);
         }
 
         /**
@@ -5009,13 +5641,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteKeyPair">AWS
          * API Reference</a></p>
          */
-        virtual Model::DeleteKeyPairOutcome DeleteKeyPair(const Model::DeleteKeyPairRequest& request) const;
+        virtual Model::DeleteKeyPairOutcome DeleteKeyPair(const Model::DeleteKeyPairRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DeleteKeyPair that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DeleteKeyPairRequestT = Model::DeleteKeyPairRequest>
-        Model::DeleteKeyPairOutcomeCallable DeleteKeyPairCallable(const DeleteKeyPairRequestT& request) const
+        Model::DeleteKeyPairOutcomeCallable DeleteKeyPairCallable(const DeleteKeyPairRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DeleteKeyPair, request);
         }
@@ -5024,7 +5656,7 @@ namespace EC2
          * An Async wrapper for DeleteKeyPair that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DeleteKeyPairRequestT = Model::DeleteKeyPairRequest>
-        void DeleteKeyPairAsync(const DeleteKeyPairRequestT& request, const DeleteKeyPairResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DeleteKeyPairAsync(const DeleteKeyPairResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DeleteKeyPairRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DeleteKeyPair, request, handler, context);
         }
@@ -5035,13 +5667,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteLaunchTemplate">AWS
          * API Reference</a></p>
          */
-        virtual Model::DeleteLaunchTemplateOutcome DeleteLaunchTemplate(const Model::DeleteLaunchTemplateRequest& request) const;
+        virtual Model::DeleteLaunchTemplateOutcome DeleteLaunchTemplate(const Model::DeleteLaunchTemplateRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DeleteLaunchTemplate that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DeleteLaunchTemplateRequestT = Model::DeleteLaunchTemplateRequest>
-        Model::DeleteLaunchTemplateOutcomeCallable DeleteLaunchTemplateCallable(const DeleteLaunchTemplateRequestT& request) const
+        Model::DeleteLaunchTemplateOutcomeCallable DeleteLaunchTemplateCallable(const DeleteLaunchTemplateRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DeleteLaunchTemplate, request);
         }
@@ -5050,17 +5682,23 @@ namespace EC2
          * An Async wrapper for DeleteLaunchTemplate that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DeleteLaunchTemplateRequestT = Model::DeleteLaunchTemplateRequest>
-        void DeleteLaunchTemplateAsync(const DeleteLaunchTemplateRequestT& request, const DeleteLaunchTemplateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DeleteLaunchTemplateAsync(const DeleteLaunchTemplateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DeleteLaunchTemplateRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DeleteLaunchTemplate, request, handler, context);
         }
 
         /**
-         * <p>Deletes one or more versions of a launch template. You cannot delete the
-         * default version of a launch template; you must first assign a different version
-         * as the default. If the default version is the only version for the launch
-         * template, you must delete the entire launch template using
-         * <a>DeleteLaunchTemplate</a>.</p><p><h3>See Also:</h3>   <a
+         * <p>Deletes one or more versions of a launch template.</p> <p>You can't delete
+         * the default version of a launch template; you must first assign a different
+         * version as the default. If the default version is the only version for the
+         * launch template, you must delete the entire launch template using
+         * <a>DeleteLaunchTemplate</a>.</p> <p>You can delete up to 200 launch template
+         * versions in a single request. To delete more than 200 versions in a single
+         * request, use <a>DeleteLaunchTemplate</a>, which deletes the launch template and
+         * all of its versions.</p> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/delete-launch-template.html#delete-launch-template-version">Delete
+         * a launch template version</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteLaunchTemplateVersions">AWS
          * API Reference</a></p>
          */
@@ -5185,6 +5823,58 @@ namespace EC2
         void DeleteLocalGatewayRouteTableVpcAssociationAsync(const DeleteLocalGatewayRouteTableVpcAssociationRequestT& request, const DeleteLocalGatewayRouteTableVpcAssociationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::DeleteLocalGatewayRouteTableVpcAssociation, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes the specified local gateway virtual interface.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteLocalGatewayVirtualInterface">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteLocalGatewayVirtualInterfaceOutcome DeleteLocalGatewayVirtualInterface(const Model::DeleteLocalGatewayVirtualInterfaceRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteLocalGatewayVirtualInterface that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteLocalGatewayVirtualInterfaceRequestT = Model::DeleteLocalGatewayVirtualInterfaceRequest>
+        Model::DeleteLocalGatewayVirtualInterfaceOutcomeCallable DeleteLocalGatewayVirtualInterfaceCallable(const DeleteLocalGatewayVirtualInterfaceRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DeleteLocalGatewayVirtualInterface, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteLocalGatewayVirtualInterface that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteLocalGatewayVirtualInterfaceRequestT = Model::DeleteLocalGatewayVirtualInterfaceRequest>
+        void DeleteLocalGatewayVirtualInterfaceAsync(const DeleteLocalGatewayVirtualInterfaceRequestT& request, const DeleteLocalGatewayVirtualInterfaceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DeleteLocalGatewayVirtualInterface, request, handler, context);
+        }
+
+        /**
+         * <p>Delete the specified local gateway interface group.</p><p><h3>See Also:</h3> 
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteLocalGatewayVirtualInterfaceGroup">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteLocalGatewayVirtualInterfaceGroupOutcome DeleteLocalGatewayVirtualInterfaceGroup(const Model::DeleteLocalGatewayVirtualInterfaceGroupRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteLocalGatewayVirtualInterfaceGroup that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteLocalGatewayVirtualInterfaceGroupRequestT = Model::DeleteLocalGatewayVirtualInterfaceGroupRequest>
+        Model::DeleteLocalGatewayVirtualInterfaceGroupOutcomeCallable DeleteLocalGatewayVirtualInterfaceGroupCallable(const DeleteLocalGatewayVirtualInterfaceGroupRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DeleteLocalGatewayVirtualInterfaceGroup, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteLocalGatewayVirtualInterfaceGroup that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteLocalGatewayVirtualInterfaceGroupRequestT = Model::DeleteLocalGatewayVirtualInterfaceGroupRequest>
+        void DeleteLocalGatewayVirtualInterfaceGroupAsync(const DeleteLocalGatewayVirtualInterfaceGroupRequestT& request, const DeleteLocalGatewayVirtualInterfaceGroupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DeleteLocalGatewayVirtualInterfaceGroup, request, handler, context);
         }
 
         /**
@@ -5560,6 +6250,107 @@ namespace EC2
         }
 
         /**
+         * <p>Deletes the specified route server.</p> <p>Amazon VPC Route Server simplifies
+         * routing for traffic between workloads that are deployed within a VPC and its
+         * internet gateways. With this feature, VPC Route Server dynamically updates VPC
+         * and internet gateway route tables with your preferred IPv4 or IPv6 routes to
+         * achieve routing fault tolerance for those workloads. This enables you to
+         * automatically reroute traffic within a VPC, which increases the manageability of
+         * VPC routing and interoperability with third-party workloads.</p> <p>Route server
+         * supports the follow route table types:</p> <ul> <li> <p>VPC route tables not
+         * associated with subnets</p> </li> <li> <p>Subnet route tables</p> </li> <li>
+         * <p>Internet gateway route tables</p> </li> </ul> <p>Route server does not
+         * support route tables associated with virtual private gateways. To propagate
+         * routes into a transit gateway route table, use <a
+         * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html">Transit
+         * Gateway Connect</a>.</p> <p>For more information see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html">Dynamic
+         * routing in your VPC with VPC Route Server</a> in the <i>Amazon VPC User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteRouteServer">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteRouteServerOutcome DeleteRouteServer(const Model::DeleteRouteServerRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteRouteServer that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteRouteServerRequestT = Model::DeleteRouteServerRequest>
+        Model::DeleteRouteServerOutcomeCallable DeleteRouteServerCallable(const DeleteRouteServerRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DeleteRouteServer, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteRouteServer that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteRouteServerRequestT = Model::DeleteRouteServerRequest>
+        void DeleteRouteServerAsync(const DeleteRouteServerRequestT& request, const DeleteRouteServerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DeleteRouteServer, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes the specified route server endpoint.</p> <p>A route server endpoint
+         * is an Amazon Web Services-managed component inside a subnet that facilitates <a
+         * href="https://en.wikipedia.org/wiki/Border_Gateway_Protocol">BGP (Border Gateway
+         * Protocol)</a> connections between your route server and your BGP
+         * peers.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteRouteServerEndpoint">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteRouteServerEndpointOutcome DeleteRouteServerEndpoint(const Model::DeleteRouteServerEndpointRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteRouteServerEndpoint that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteRouteServerEndpointRequestT = Model::DeleteRouteServerEndpointRequest>
+        Model::DeleteRouteServerEndpointOutcomeCallable DeleteRouteServerEndpointCallable(const DeleteRouteServerEndpointRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DeleteRouteServerEndpoint, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteRouteServerEndpoint that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteRouteServerEndpointRequestT = Model::DeleteRouteServerEndpointRequest>
+        void DeleteRouteServerEndpointAsync(const DeleteRouteServerEndpointRequestT& request, const DeleteRouteServerEndpointResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DeleteRouteServerEndpoint, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes the specified BGP peer from a route server.</p> <p>A route server
+         * peer is a session between a route server endpoint and the device deployed in
+         * Amazon Web Services (such as a firewall appliance or other network security
+         * function running on an EC2 instance). The device must meet these
+         * requirements:</p> <ul> <li> <p>Have an elastic network interface in the VPC</p>
+         * </li> <li> <p>Support BGP (Border Gateway Protocol)</p> </li> <li> <p>Can
+         * initiate BGP sessions</p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteRouteServerPeer">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteRouteServerPeerOutcome DeleteRouteServerPeer(const Model::DeleteRouteServerPeerRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteRouteServerPeer that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteRouteServerPeerRequestT = Model::DeleteRouteServerPeerRequest>
+        Model::DeleteRouteServerPeerOutcomeCallable DeleteRouteServerPeerCallable(const DeleteRouteServerPeerRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DeleteRouteServerPeer, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteRouteServerPeer that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteRouteServerPeerRequestT = Model::DeleteRouteServerPeerRequest>
+        void DeleteRouteServerPeerAsync(const DeleteRouteServerPeerRequestT& request, const DeleteRouteServerPeerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DeleteRouteServerPeer, request, handler, context);
+        }
+
+        /**
          * <p>Deletes the specified route table. You must disassociate the route table from
          * any subnets before you can delete it. You can't delete the main route
          * table.</p><p><h3>See Also:</h3>   <a
@@ -5588,24 +6379,19 @@ namespace EC2
 
         /**
          * <p>Deletes a security group.</p> <p>If you attempt to delete a security group
-         * that is associated with an instance, or is referenced by another security group,
-         * the operation fails with <code>InvalidGroup.InUse</code> in EC2-Classic or
-         * <code>DependencyViolation</code> in EC2-VPC.</p>  <p>We are retiring
-         * EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC. For more
-         * information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * that is associated with an instance or network interface, is referenced by
+         * another security group in the same VPC, or has a VPC association, the operation
+         * fails with <code>DependencyViolation</code>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSecurityGroup">AWS
          * API Reference</a></p>
          */
-        virtual Model::DeleteSecurityGroupOutcome DeleteSecurityGroup(const Model::DeleteSecurityGroupRequest& request) const;
+        virtual Model::DeleteSecurityGroupOutcome DeleteSecurityGroup(const Model::DeleteSecurityGroupRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DeleteSecurityGroup that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DeleteSecurityGroupRequestT = Model::DeleteSecurityGroupRequest>
-        Model::DeleteSecurityGroupOutcomeCallable DeleteSecurityGroupCallable(const DeleteSecurityGroupRequestT& request) const
+        Model::DeleteSecurityGroupOutcomeCallable DeleteSecurityGroupCallable(const DeleteSecurityGroupRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DeleteSecurityGroup, request);
         }
@@ -5614,7 +6400,7 @@ namespace EC2
          * An Async wrapper for DeleteSecurityGroup that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DeleteSecurityGroupRequestT = Model::DeleteSecurityGroupRequest>
-        void DeleteSecurityGroupAsync(const DeleteSecurityGroupRequestT& request, const DeleteSecurityGroupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DeleteSecurityGroupAsync(const DeleteSecurityGroupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DeleteSecurityGroupRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DeleteSecurityGroup, request, handler, context);
         }
@@ -5627,11 +6413,11 @@ namespace EC2
          * So regardless of which prior snapshots have been deleted, all active snapshots
          * will have access to all the information needed to restore the volume.</p> <p>You
          * cannot delete a snapshot of the root device of an EBS volume used by a
-         * registered AMI. You must first de-register the AMI before you can delete the
+         * registered AMI. You must first deregister the AMI before you can delete the
          * snapshot.</p> <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html">Delete
-         * an Amazon EBS snapshot</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-deleting-snapshot.html">Delete
+         * an Amazon EBS snapshot</a> in the <i>Amazon EBS User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSnapshot">AWS
          * API Reference</a></p>
          */
@@ -5660,13 +6446,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSpotDatafeedSubscription">AWS
          * API Reference</a></p>
          */
-        virtual Model::DeleteSpotDatafeedSubscriptionOutcome DeleteSpotDatafeedSubscription(const Model::DeleteSpotDatafeedSubscriptionRequest& request) const;
+        virtual Model::DeleteSpotDatafeedSubscriptionOutcome DeleteSpotDatafeedSubscription(const Model::DeleteSpotDatafeedSubscriptionRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DeleteSpotDatafeedSubscription that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DeleteSpotDatafeedSubscriptionRequestT = Model::DeleteSpotDatafeedSubscriptionRequest>
-        Model::DeleteSpotDatafeedSubscriptionOutcomeCallable DeleteSpotDatafeedSubscriptionCallable(const DeleteSpotDatafeedSubscriptionRequestT& request) const
+        Model::DeleteSpotDatafeedSubscriptionOutcomeCallable DeleteSpotDatafeedSubscriptionCallable(const DeleteSpotDatafeedSubscriptionRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DeleteSpotDatafeedSubscription, request);
         }
@@ -5675,7 +6461,7 @@ namespace EC2
          * An Async wrapper for DeleteSpotDatafeedSubscription that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DeleteSpotDatafeedSubscriptionRequestT = Model::DeleteSpotDatafeedSubscriptionRequest>
-        void DeleteSpotDatafeedSubscriptionAsync(const DeleteSpotDatafeedSubscriptionRequestT& request, const DeleteSpotDatafeedSubscriptionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DeleteSpotDatafeedSubscriptionAsync(const DeleteSpotDatafeedSubscriptionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DeleteSpotDatafeedSubscriptionRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DeleteSpotDatafeedSubscription, request, handler, context);
         }
@@ -6071,9 +6857,11 @@ namespace EC2
         }
 
         /**
-         * <p>Deletes the specified transit gateway route table. You must disassociate the
-         * route table from any transit gateway route tables before you can delete
-         * it.</p><p><h3>See Also:</h3>   <a
+         * <p>Deletes the specified transit gateway route table. If there are any route
+         * tables associated with the transit gateway route table, you must first run
+         * <a>DisassociateRouteTable</a> before you can delete the transit gateway route
+         * table. This removes any route tables associated with the transit gateway route
+         * table.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteTransitGatewayRouteTable">AWS
          * API Reference</a></p>
          */
@@ -6257,9 +7045,9 @@ namespace EC2
          * <code>available</code> state (not attached to an instance).</p> <p>The volume
          * can remain in the <code>deleting</code> state for several minutes.</p> <p>For
          * more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html">Delete
-         * an Amazon EBS volume</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-deleting-volume.html">Delete
+         * an Amazon EBS volume</a> in the <i>Amazon EBS User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVolume">AWS
          * API Reference</a></p>
          */
@@ -6288,8 +7076,11 @@ namespace EC2
          * resources that are associated with the VPC before you can delete it. For
          * example, you must terminate all instances running in the VPC, delete all
          * security groups associated with the VPC (except the default one), delete all
-         * route tables associated with the VPC (except the default one), and so
-         * on.</p><p><h3>See Also:</h3>   <a
+         * route tables associated with the VPC (except the default one), and so on. When
+         * you delete the VPC, it deletes the default security group, network ACL, and
+         * route table for the VPC.</p> <p>If you created a flow log for the VPC that you
+         * are deleting, note that flow logs for deleted VPCs are eventually automatically
+         * removed.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpc">AWS API
          * Reference</a></p>
          */
@@ -6311,6 +7102,39 @@ namespace EC2
         void DeleteVpcAsync(const DeleteVpcRequestT& request, const DeleteVpcResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::DeleteVpc, request, handler, context);
+        }
+
+        /**
+         * <p>Delete a VPC Block Public Access (BPA) exclusion. A VPC BPA exclusion is a
+         * mode that can be applied to a single VPC or subnet that exempts it from the
+         * account’s BPA mode and will allow bidirectional or egress-only access. You can
+         * create BPA exclusions for VPCs and subnets even when BPA is not enabled on the
+         * account to ensure that there is no traffic disruption to the exclusions when VPC
+         * BPA is turned on. To learn more about VPC BPA, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/security-vpc-bpa.html">Block
+         * public access to VPCs and subnets</a> in the <i>Amazon VPC User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpcBlockPublicAccessExclusion">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteVpcBlockPublicAccessExclusionOutcome DeleteVpcBlockPublicAccessExclusion(const Model::DeleteVpcBlockPublicAccessExclusionRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteVpcBlockPublicAccessExclusion that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteVpcBlockPublicAccessExclusionRequestT = Model::DeleteVpcBlockPublicAccessExclusionRequest>
+        Model::DeleteVpcBlockPublicAccessExclusionOutcomeCallable DeleteVpcBlockPublicAccessExclusionCallable(const DeleteVpcBlockPublicAccessExclusionRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DeleteVpcBlockPublicAccessExclusion, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteVpcBlockPublicAccessExclusion that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteVpcBlockPublicAccessExclusionRequestT = Model::DeleteVpcBlockPublicAccessExclusionRequest>
+        void DeleteVpcBlockPublicAccessExclusionAsync(const DeleteVpcBlockPublicAccessExclusionRequestT& request, const DeleteVpcBlockPublicAccessExclusionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DeleteVpcBlockPublicAccessExclusion, request, handler, context);
         }
 
         /**
@@ -6403,8 +7227,8 @@ namespace EC2
          * the owner of the accepter VPC can delete the VPC peering connection if it's in
          * the <code>active</code> state. The owner of the requester VPC can delete a VPC
          * peering connection in the <code>pending-acceptance</code> state. You cannot
-         * delete a VPC peering connection that's in the <code>failed</code>
-         * state.</p><p><h3>See Also:</h3>   <a
+         * delete a VPC peering connection that's in the <code>failed</code> or
+         * <code>rejected</code> state.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpcPeeringConnection">AWS
          * API Reference</a></p>
          */
@@ -6524,9 +7348,8 @@ namespace EC2
          * <p>Releases the specified address range that you provisioned for use with your
          * Amazon Web Services resources through bring your own IP addresses (BYOIP) and
          * deletes the corresponding address pool.</p> <p>Before you can release an address
-         * range, you must stop advertising it using <a>WithdrawByoipCidr</a> and you must
-         * not have any IP addresses allocated from its address range.</p><p><h3>See
-         * Also:</h3>   <a
+         * range, you must stop advertising it and you must not have any IP addresses
+         * allocated from its address range.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeprovisionByoipCidr">AWS
          * API Reference</a></p>
          */
@@ -6548,6 +7371,38 @@ namespace EC2
         void DeprovisionByoipCidrAsync(const DeprovisionByoipCidrRequestT& request, const DeprovisionByoipCidrResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::DeprovisionByoipCidr, request, handler, context);
+        }
+
+        /**
+         * <p>Deprovisions your Autonomous System Number (ASN) from your Amazon Web
+         * Services account. This action can only be called after any BYOIP CIDR
+         * associations are removed from your Amazon Web Services account with <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateIpamByoasn.html">DisassociateIpamByoasn</a>.
+         * For more information, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/ipam/tutorials-byoasn.html">Tutorial:
+         * Bring your ASN to IPAM</a> in the <i>Amazon VPC IPAM guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeprovisionIpamByoasn">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeprovisionIpamByoasnOutcome DeprovisionIpamByoasn(const Model::DeprovisionIpamByoasnRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeprovisionIpamByoasn that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeprovisionIpamByoasnRequestT = Model::DeprovisionIpamByoasnRequest>
+        Model::DeprovisionIpamByoasnOutcomeCallable DeprovisionIpamByoasnCallable(const DeprovisionIpamByoasnRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DeprovisionIpamByoasn, request);
+        }
+
+        /**
+         * An Async wrapper for DeprovisionIpamByoasn that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeprovisionIpamByoasnRequestT = Model::DeprovisionIpamByoasnRequest>
+        void DeprovisionIpamByoasnAsync(const DeprovisionIpamByoasnRequestT& request, const DeprovisionIpamByoasnResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DeprovisionIpamByoasn, request, handler, context);
         }
 
         /**
@@ -6606,19 +7461,28 @@ namespace EC2
         }
 
         /**
-         * <p>Deregisters the specified AMI. After you deregister an AMI, it can't be used
-         * to launch new instances.</p> <p>If you deregister an AMI that matches a Recycle
-         * Bin retention rule, the AMI is retained in the Recycle Bin for the specified
-         * retention period. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html">Recycle
-         * Bin</a> in the <i>Amazon EC2 User Guide</i>.</p> <p>When you deregister an AMI,
-         * it doesn't affect any instances that you've already launched from the AMI.
-         * You'll continue to incur usage costs for those instances until you terminate
-         * them.</p> <p>When you deregister an Amazon EBS-backed AMI, it doesn't affect the
-         * snapshot that was created for the root volume of the instance during the AMI
-         * creation process. When you deregister an instance store-backed AMI, it doesn't
-         * affect the files that you uploaded to Amazon S3 when you created the
-         * AMI.</p><p><h3>See Also:</h3>   <a
+         * <p>Deregisters the specified AMI. A deregistered AMI can't be used to launch new
+         * instances.</p> <p>If a deregistered EBS-backed AMI matches a Recycle Bin
+         * retention rule, it moves to the Recycle Bin for the specified retention period.
+         * It can be restored before its retention period expires, after which it is
+         * permanently deleted. If the deregistered AMI doesn't match a retention rule, it
+         * is permanently deleted immediately. For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html">Recover
+         * deleted Amazon EBS snapshots and EBS-backed AMIs with Recycle Bin</a> in the
+         * <i>Amazon EBS User Guide</i>.</p> <p>When deregistering an EBS-backed AMI, you
+         * can optionally delete its associated snapshots at the same time. However, if a
+         * snapshot is associated with multiple AMIs, it won't be deleted even if specified
+         * for deletion, although the AMI will still be deregistered.</p> <p>Deregistering
+         * an AMI does not delete the following:</p> <ul> <li> <p>Instances already
+         * launched from the AMI. You'll continue to incur usage costs for the instances
+         * until you terminate them.</p> </li> <li> <p>For EBS-backed AMIs: Snapshots that
+         * are associated with multiple AMIs. You'll continue to incur snapshot storage
+         * costs.</p> </li> <li> <p>For instance store-backed AMIs: The files uploaded to
+         * Amazon S3 during AMI creation. You'll continue to incur S3 storage costs.</p>
+         * </li> </ul> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/deregister-ami.html">Deregister
+         * an Amazon EC2 AMI</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeregisterImage">AWS
          * API Reference</a></p>
          */
@@ -6675,13 +7539,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeregisterTransitGatewayMulticastGroupMembers">AWS
          * API Reference</a></p>
          */
-        virtual Model::DeregisterTransitGatewayMulticastGroupMembersOutcome DeregisterTransitGatewayMulticastGroupMembers(const Model::DeregisterTransitGatewayMulticastGroupMembersRequest& request) const;
+        virtual Model::DeregisterTransitGatewayMulticastGroupMembersOutcome DeregisterTransitGatewayMulticastGroupMembers(const Model::DeregisterTransitGatewayMulticastGroupMembersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DeregisterTransitGatewayMulticastGroupMembers that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DeregisterTransitGatewayMulticastGroupMembersRequestT = Model::DeregisterTransitGatewayMulticastGroupMembersRequest>
-        Model::DeregisterTransitGatewayMulticastGroupMembersOutcomeCallable DeregisterTransitGatewayMulticastGroupMembersCallable(const DeregisterTransitGatewayMulticastGroupMembersRequestT& request) const
+        Model::DeregisterTransitGatewayMulticastGroupMembersOutcomeCallable DeregisterTransitGatewayMulticastGroupMembersCallable(const DeregisterTransitGatewayMulticastGroupMembersRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DeregisterTransitGatewayMulticastGroupMembers, request);
         }
@@ -6690,7 +7554,7 @@ namespace EC2
          * An Async wrapper for DeregisterTransitGatewayMulticastGroupMembers that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DeregisterTransitGatewayMulticastGroupMembersRequestT = Model::DeregisterTransitGatewayMulticastGroupMembersRequest>
-        void DeregisterTransitGatewayMulticastGroupMembersAsync(const DeregisterTransitGatewayMulticastGroupMembersRequestT& request, const DeregisterTransitGatewayMulticastGroupMembersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DeregisterTransitGatewayMulticastGroupMembersAsync(const DeregisterTransitGatewayMulticastGroupMembersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DeregisterTransitGatewayMulticastGroupMembersRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DeregisterTransitGatewayMulticastGroupMembers, request, handler, context);
         }
@@ -6701,13 +7565,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeregisterTransitGatewayMulticastGroupSources">AWS
          * API Reference</a></p>
          */
-        virtual Model::DeregisterTransitGatewayMulticastGroupSourcesOutcome DeregisterTransitGatewayMulticastGroupSources(const Model::DeregisterTransitGatewayMulticastGroupSourcesRequest& request) const;
+        virtual Model::DeregisterTransitGatewayMulticastGroupSourcesOutcome DeregisterTransitGatewayMulticastGroupSources(const Model::DeregisterTransitGatewayMulticastGroupSourcesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DeregisterTransitGatewayMulticastGroupSources that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DeregisterTransitGatewayMulticastGroupSourcesRequestT = Model::DeregisterTransitGatewayMulticastGroupSourcesRequest>
-        Model::DeregisterTransitGatewayMulticastGroupSourcesOutcomeCallable DeregisterTransitGatewayMulticastGroupSourcesCallable(const DeregisterTransitGatewayMulticastGroupSourcesRequestT& request) const
+        Model::DeregisterTransitGatewayMulticastGroupSourcesOutcomeCallable DeregisterTransitGatewayMulticastGroupSourcesCallable(const DeregisterTransitGatewayMulticastGroupSourcesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DeregisterTransitGatewayMulticastGroupSources, request);
         }
@@ -6716,43 +7580,40 @@ namespace EC2
          * An Async wrapper for DeregisterTransitGatewayMulticastGroupSources that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DeregisterTransitGatewayMulticastGroupSourcesRequestT = Model::DeregisterTransitGatewayMulticastGroupSourcesRequest>
-        void DeregisterTransitGatewayMulticastGroupSourcesAsync(const DeregisterTransitGatewayMulticastGroupSourcesRequestT& request, const DeregisterTransitGatewayMulticastGroupSourcesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DeregisterTransitGatewayMulticastGroupSourcesAsync(const DeregisterTransitGatewayMulticastGroupSourcesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DeregisterTransitGatewayMulticastGroupSourcesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DeregisterTransitGatewayMulticastGroupSources, request, handler, context);
         }
 
         /**
          * <p>Describes attributes of your Amazon Web Services account. The following are
-         * the supported account attributes:</p> <ul> <li> <p>
-         * <code>supported-platforms</code>: Indicates whether your account can launch
-         * instances into EC2-Classic and EC2-VPC, or only into EC2-VPC.</p> </li> <li> <p>
-         * <code>default-vpc</code>: The ID of the default VPC for your account, or
-         * <code>none</code>.</p> </li> <li> <p> <code>max-instances</code>: This attribute
-         * is no longer supported. The returned value does not reflect your actual vCPU
-         * limit for running On-Demand Instances. For more information, see <a
+         * the supported account attributes:</p> <ul> <li> <p> <code>default-vpc</code>:
+         * The ID of the default VPC for your account, or <code>none</code>.</p> </li> <li>
+         * <p> <code>max-instances</code>: This attribute is no longer supported. The
+         * returned value does not reflect your actual vCPU limit for running On-Demand
+         * Instances. For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html#ec2-on-demand-instances-limits">On-Demand
          * Instance Limits</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-         * </li> <li> <p> <code>vpc-max-security-groups-per-interface</code>: The maximum
-         * number of security groups that you can assign to a network interface.</p> </li>
-         * <li> <p> <code>max-elastic-ips</code>: The maximum number of Elastic IP
-         * addresses that you can allocate for use with EC2-Classic. </p> </li> <li> <p>
-         * <code>vpc-max-elastic-ips</code>: The maximum number of Elastic IP addresses
-         * that you can allocate for use with EC2-VPC.</p> </li> </ul>  <p>We are
-         * retiring EC2-Classic on August 15, 2022. We recommend that you migrate from
-         * EC2-Classic to a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon EC2 User Guide</i>.</p>
-         * <p><h3>See Also:</h3>   <a
+         * </li> <li> <p> <code>max-elastic-ips</code>: The maximum number of Elastic IP
+         * addresses that you can allocate.</p> </li> <li> <p>
+         * <code>supported-platforms</code>: This attribute is deprecated.</p> </li> <li>
+         * <p> <code>vpc-max-elastic-ips</code>: The maximum number of Elastic IP addresses
+         * that you can allocate.</p> </li> <li> <p>
+         * <code>vpc-max-security-groups-per-interface</code>: The maximum number of
+         * security groups that you can assign to a network interface.</p> </li> </ul>
+         *  <p>The order of the elements in the response, including those within
+         * nested structures, might vary. Applications should not assume the elements
+         * appear in a particular order.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAccountAttributes">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeAccountAttributesOutcome DescribeAccountAttributes(const Model::DescribeAccountAttributesRequest& request) const;
+        virtual Model::DescribeAccountAttributesOutcome DescribeAccountAttributes(const Model::DescribeAccountAttributesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeAccountAttributes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeAccountAttributesRequestT = Model::DescribeAccountAttributesRequest>
-        Model::DescribeAccountAttributesOutcomeCallable DescribeAccountAttributesCallable(const DescribeAccountAttributesRequestT& request) const
+        Model::DescribeAccountAttributesOutcomeCallable DescribeAccountAttributesCallable(const DescribeAccountAttributesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeAccountAttributes, request);
         }
@@ -6761,7 +7622,7 @@ namespace EC2
          * An Async wrapper for DescribeAccountAttributes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeAccountAttributesRequestT = Model::DescribeAccountAttributesRequest>
-        void DescribeAccountAttributesAsync(const DescribeAccountAttributesRequestT& request, const DescribeAccountAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeAccountAttributesAsync(const DescribeAccountAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeAccountAttributesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeAccountAttributes, request, handler, context);
         }
@@ -6769,18 +7630,25 @@ namespace EC2
         /**
          * <p>Describes an Elastic IP address transfer. For more information, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#transfer-EIPs-intro">Transfer
-         * Elastic IP addresses</a> in the <i>Amazon Virtual Private Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * Elastic IP addresses</a> in the <i>Amazon VPC User Guide</i>.</p> <p>When you
+         * transfer an Elastic IP address, there is a two-step handshake between the source
+         * and transfer Amazon Web Services accounts. When the source account starts the
+         * transfer, the transfer account has seven days to accept the Elastic IP address
+         * transfer. During those seven days, the source account can view the pending
+         * transfer by using this action. After seven days, the transfer expires and
+         * ownership of the Elastic IP address returns to the source account. Accepted
+         * transfers are visible to the source account for 14 days after the transfers have
+         * been accepted.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAddressTransfers">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeAddressTransfersOutcome DescribeAddressTransfers(const Model::DescribeAddressTransfersRequest& request) const;
+        virtual Model::DescribeAddressTransfersOutcome DescribeAddressTransfers(const Model::DescribeAddressTransfersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeAddressTransfers that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeAddressTransfersRequestT = Model::DescribeAddressTransfersRequest>
-        Model::DescribeAddressTransfersOutcomeCallable DescribeAddressTransfersCallable(const DescribeAddressTransfersRequestT& request) const
+        Model::DescribeAddressTransfersOutcomeCallable DescribeAddressTransfersCallable(const DescribeAddressTransfersRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeAddressTransfers, request);
         }
@@ -6789,32 +7657,24 @@ namespace EC2
          * An Async wrapper for DescribeAddressTransfers that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeAddressTransfersRequestT = Model::DescribeAddressTransfersRequest>
-        void DescribeAddressTransfersAsync(const DescribeAddressTransfersRequestT& request, const DescribeAddressTransfersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeAddressTransfersAsync(const DescribeAddressTransfersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeAddressTransfersRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeAddressTransfers, request, handler, context);
         }
 
         /**
          * <p>Describes the specified Elastic IP addresses or all of your Elastic IP
-         * addresses.</p> <p>An Elastic IP address is for use in either the EC2-Classic
-         * platform or in a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic
-         * IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-         *  <p>We are retiring EC2-Classic. We recommend that you migrate from
-         * EC2-Classic to a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * addresses.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAddresses">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeAddressesOutcome DescribeAddresses(const Model::DescribeAddressesRequest& request) const;
+        virtual Model::DescribeAddressesOutcome DescribeAddresses(const Model::DescribeAddressesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeAddresses that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeAddressesRequestT = Model::DescribeAddressesRequest>
-        Model::DescribeAddressesOutcomeCallable DescribeAddressesCallable(const DescribeAddressesRequestT& request) const
+        Model::DescribeAddressesOutcomeCallable DescribeAddressesCallable(const DescribeAddressesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeAddresses, request);
         }
@@ -6823,7 +7683,7 @@ namespace EC2
          * An Async wrapper for DescribeAddresses that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeAddressesRequestT = Model::DescribeAddressesRequest>
-        void DescribeAddressesAsync(const DescribeAddressesRequestT& request, const DescribeAddressesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeAddressesAsync(const DescribeAddressesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeAddressesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeAddresses, request, handler, context);
         }
@@ -6836,13 +7696,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAddressesAttribute">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeAddressesAttributeOutcome DescribeAddressesAttribute(const Model::DescribeAddressesAttributeRequest& request) const;
+        virtual Model::DescribeAddressesAttributeOutcome DescribeAddressesAttribute(const Model::DescribeAddressesAttributeRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeAddressesAttribute that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeAddressesAttributeRequestT = Model::DescribeAddressesAttributeRequest>
-        Model::DescribeAddressesAttributeOutcomeCallable DescribeAddressesAttributeCallable(const DescribeAddressesAttributeRequestT& request) const
+        Model::DescribeAddressesAttributeOutcomeCallable DescribeAddressesAttributeCallable(const DescribeAddressesAttributeRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeAddressesAttribute, request);
         }
@@ -6851,7 +7711,7 @@ namespace EC2
          * An Async wrapper for DescribeAddressesAttribute that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeAddressesAttributeRequestT = Model::DescribeAddressesAttributeRequest>
-        void DescribeAddressesAttributeAsync(const DescribeAddressesAttributeRequestT& request, const DescribeAddressesAttributeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeAddressesAttributeAsync(const DescribeAddressesAttributeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeAddressesAttributeRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeAddressesAttribute, request, handler, context);
         }
@@ -6880,13 +7740,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAggregateIdFormat">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeAggregateIdFormatOutcome DescribeAggregateIdFormat(const Model::DescribeAggregateIdFormatRequest& request) const;
+        virtual Model::DescribeAggregateIdFormatOutcome DescribeAggregateIdFormat(const Model::DescribeAggregateIdFormatRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeAggregateIdFormat that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeAggregateIdFormatRequestT = Model::DescribeAggregateIdFormatRequest>
-        Model::DescribeAggregateIdFormatOutcomeCallable DescribeAggregateIdFormatCallable(const DescribeAggregateIdFormatRequestT& request) const
+        Model::DescribeAggregateIdFormatOutcomeCallable DescribeAggregateIdFormatCallable(const DescribeAggregateIdFormatRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeAggregateIdFormat, request);
         }
@@ -6895,30 +7755,30 @@ namespace EC2
          * An Async wrapper for DescribeAggregateIdFormat that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeAggregateIdFormatRequestT = Model::DescribeAggregateIdFormatRequest>
-        void DescribeAggregateIdFormatAsync(const DescribeAggregateIdFormatRequestT& request, const DescribeAggregateIdFormatResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeAggregateIdFormatAsync(const DescribeAggregateIdFormatResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeAggregateIdFormatRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeAggregateIdFormat, request, handler, context);
         }
 
         /**
          * <p>Describes the Availability Zones, Local Zones, and Wavelength Zones that are
-         * available to you. If there is an event impacting a zone, you can use this
-         * request to view the state and any provided messages for that zone.</p> <p>For
-         * more information about Availability Zones, Local Zones, and Wavelength Zones,
-         * see <a
+         * available to you.</p> <p>For more information about Availability Zones, Local
+         * Zones, and Wavelength Zones, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html">Regions
-         * and zones</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * and zones</a> in the <i>Amazon EC2 User Guide</i>.</p>  <p>The order of
+         * the elements in the response, including those within nested structures, might
+         * vary. Applications should not assume the elements appear in a particular
+         * order.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAvailabilityZones">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeAvailabilityZonesOutcome DescribeAvailabilityZones(const Model::DescribeAvailabilityZonesRequest& request) const;
+        virtual Model::DescribeAvailabilityZonesOutcome DescribeAvailabilityZones(const Model::DescribeAvailabilityZonesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeAvailabilityZones that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeAvailabilityZonesRequestT = Model::DescribeAvailabilityZonesRequest>
-        Model::DescribeAvailabilityZonesOutcomeCallable DescribeAvailabilityZonesCallable(const DescribeAvailabilityZonesRequestT& request) const
+        Model::DescribeAvailabilityZonesOutcomeCallable DescribeAvailabilityZonesCallable(const DescribeAvailabilityZonesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeAvailabilityZones, request);
         }
@@ -6927,7 +7787,7 @@ namespace EC2
          * An Async wrapper for DescribeAvailabilityZones that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeAvailabilityZonesRequestT = Model::DescribeAvailabilityZonesRequest>
-        void DescribeAvailabilityZonesAsync(const DescribeAvailabilityZonesRequestT& request, const DescribeAvailabilityZonesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeAvailabilityZonesAsync(const DescribeAvailabilityZonesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeAvailabilityZonesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeAvailabilityZones, request, handler, context);
         }
@@ -6938,13 +7798,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAwsNetworkPerformanceMetricSubscriptions">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeAwsNetworkPerformanceMetricSubscriptionsOutcome DescribeAwsNetworkPerformanceMetricSubscriptions(const Model::DescribeAwsNetworkPerformanceMetricSubscriptionsRequest& request) const;
+        virtual Model::DescribeAwsNetworkPerformanceMetricSubscriptionsOutcome DescribeAwsNetworkPerformanceMetricSubscriptions(const Model::DescribeAwsNetworkPerformanceMetricSubscriptionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeAwsNetworkPerformanceMetricSubscriptions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeAwsNetworkPerformanceMetricSubscriptionsRequestT = Model::DescribeAwsNetworkPerformanceMetricSubscriptionsRequest>
-        Model::DescribeAwsNetworkPerformanceMetricSubscriptionsOutcomeCallable DescribeAwsNetworkPerformanceMetricSubscriptionsCallable(const DescribeAwsNetworkPerformanceMetricSubscriptionsRequestT& request) const
+        Model::DescribeAwsNetworkPerformanceMetricSubscriptionsOutcomeCallable DescribeAwsNetworkPerformanceMetricSubscriptionsCallable(const DescribeAwsNetworkPerformanceMetricSubscriptionsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeAwsNetworkPerformanceMetricSubscriptions, request);
         }
@@ -6953,7 +7813,7 @@ namespace EC2
          * An Async wrapper for DescribeAwsNetworkPerformanceMetricSubscriptions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeAwsNetworkPerformanceMetricSubscriptionsRequestT = Model::DescribeAwsNetworkPerformanceMetricSubscriptionsRequest>
-        void DescribeAwsNetworkPerformanceMetricSubscriptionsAsync(const DescribeAwsNetworkPerformanceMetricSubscriptionsRequestT& request, const DescribeAwsNetworkPerformanceMetricSubscriptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeAwsNetworkPerformanceMetricSubscriptionsAsync(const DescribeAwsNetworkPerformanceMetricSubscriptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeAwsNetworkPerformanceMetricSubscriptionsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeAwsNetworkPerformanceMetricSubscriptions, request, handler, context);
         }
@@ -6963,17 +7823,20 @@ namespace EC2
          * <p>Completed bundle tasks are listed for only a limited time. If your bundle
          * task is no longer in the list, you can still register an AMI from it. Just use
          * <code>RegisterImage</code> with the Amazon S3 bucket name and image manifest
-         * name you provided to the bundle task.</p> <p><h3>See Also:</h3>   <a
+         * name you provided to the bundle task.</p>   <p>The order of the
+         * elements in the response, including those within nested structures, might vary.
+         * Applications should not assume the elements appear in a particular order.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeBundleTasks">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeBundleTasksOutcome DescribeBundleTasks(const Model::DescribeBundleTasksRequest& request) const;
+        virtual Model::DescribeBundleTasksOutcome DescribeBundleTasks(const Model::DescribeBundleTasksRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeBundleTasks that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeBundleTasksRequestT = Model::DescribeBundleTasksRequest>
-        Model::DescribeBundleTasksOutcomeCallable DescribeBundleTasksCallable(const DescribeBundleTasksRequestT& request) const
+        Model::DescribeBundleTasksOutcomeCallable DescribeBundleTasksCallable(const DescribeBundleTasksRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeBundleTasks, request);
         }
@@ -6982,17 +7845,15 @@ namespace EC2
          * An Async wrapper for DescribeBundleTasks that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeBundleTasksRequestT = Model::DescribeBundleTasksRequest>
-        void DescribeBundleTasksAsync(const DescribeBundleTasksRequestT& request, const DescribeBundleTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeBundleTasksAsync(const DescribeBundleTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeBundleTasksRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeBundleTasks, request, handler, context);
         }
 
         /**
-         * <p>Describes the IP address ranges that were specified in calls to
-         * <a>ProvisionByoipCidr</a>.</p> <p>To describe the address pools that were
-         * created when you provisioned the address ranges, use
-         * <a>DescribePublicIpv4Pools</a> or <a>DescribeIpv6Pools</a>.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Describes the IP address ranges that were provisioned for use with Amazon Web
+         * Services resources through through bring your own IP addresses
+         * (BYOIP).</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeByoipCidrs">AWS
          * API Reference</a></p>
          */
@@ -7017,18 +7878,181 @@ namespace EC2
         }
 
         /**
+         * <p>Describes the events for the specified Capacity Block extension during the
+         * specified time.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeCapacityBlockExtensionHistory">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeCapacityBlockExtensionHistoryOutcome DescribeCapacityBlockExtensionHistory(const Model::DescribeCapacityBlockExtensionHistoryRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeCapacityBlockExtensionHistory that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeCapacityBlockExtensionHistoryRequestT = Model::DescribeCapacityBlockExtensionHistoryRequest>
+        Model::DescribeCapacityBlockExtensionHistoryOutcomeCallable DescribeCapacityBlockExtensionHistoryCallable(const DescribeCapacityBlockExtensionHistoryRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeCapacityBlockExtensionHistory, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeCapacityBlockExtensionHistory that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeCapacityBlockExtensionHistoryRequestT = Model::DescribeCapacityBlockExtensionHistoryRequest>
+        void DescribeCapacityBlockExtensionHistoryAsync(const DescribeCapacityBlockExtensionHistoryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeCapacityBlockExtensionHistoryRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeCapacityBlockExtensionHistory, request, handler, context);
+        }
+
+        /**
+         * <p>Describes Capacity Block extension offerings available for purchase in the
+         * Amazon Web Services Region that you're currently using.</p><p><h3>See Also:</h3>
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeCapacityBlockExtensionOfferings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeCapacityBlockExtensionOfferingsOutcome DescribeCapacityBlockExtensionOfferings(const Model::DescribeCapacityBlockExtensionOfferingsRequest& request) const;
+
+        /**
+         * A Callable wrapper for DescribeCapacityBlockExtensionOfferings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeCapacityBlockExtensionOfferingsRequestT = Model::DescribeCapacityBlockExtensionOfferingsRequest>
+        Model::DescribeCapacityBlockExtensionOfferingsOutcomeCallable DescribeCapacityBlockExtensionOfferingsCallable(const DescribeCapacityBlockExtensionOfferingsRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DescribeCapacityBlockExtensionOfferings, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeCapacityBlockExtensionOfferings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeCapacityBlockExtensionOfferingsRequestT = Model::DescribeCapacityBlockExtensionOfferingsRequest>
+        void DescribeCapacityBlockExtensionOfferingsAsync(const DescribeCapacityBlockExtensionOfferingsRequestT& request, const DescribeCapacityBlockExtensionOfferingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DescribeCapacityBlockExtensionOfferings, request, handler, context);
+        }
+
+        /**
+         * <p>Describes Capacity Block offerings available for purchase in the Amazon Web
+         * Services Region that you're currently using. With Capacity Blocks, you can
+         * purchase a specific GPU instance type or EC2 UltraServer for a period of
+         * time.</p> <p>To search for an available Capacity Block offering, you specify a
+         * reservation duration and instance count.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeCapacityBlockOfferings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeCapacityBlockOfferingsOutcome DescribeCapacityBlockOfferings(const Model::DescribeCapacityBlockOfferingsRequest& request) const;
+
+        /**
+         * A Callable wrapper for DescribeCapacityBlockOfferings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeCapacityBlockOfferingsRequestT = Model::DescribeCapacityBlockOfferingsRequest>
+        Model::DescribeCapacityBlockOfferingsOutcomeCallable DescribeCapacityBlockOfferingsCallable(const DescribeCapacityBlockOfferingsRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DescribeCapacityBlockOfferings, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeCapacityBlockOfferings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeCapacityBlockOfferingsRequestT = Model::DescribeCapacityBlockOfferingsRequest>
+        void DescribeCapacityBlockOfferingsAsync(const DescribeCapacityBlockOfferingsRequestT& request, const DescribeCapacityBlockOfferingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DescribeCapacityBlockOfferings, request, handler, context);
+        }
+
+        /**
+         * <p>Describes the availability of capacity for the specified Capacity blocks, or
+         * all of your Capacity Blocks.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeCapacityBlockStatus">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeCapacityBlockStatusOutcome DescribeCapacityBlockStatus(const Model::DescribeCapacityBlockStatusRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeCapacityBlockStatus that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeCapacityBlockStatusRequestT = Model::DescribeCapacityBlockStatusRequest>
+        Model::DescribeCapacityBlockStatusOutcomeCallable DescribeCapacityBlockStatusCallable(const DescribeCapacityBlockStatusRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeCapacityBlockStatus, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeCapacityBlockStatus that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeCapacityBlockStatusRequestT = Model::DescribeCapacityBlockStatusRequest>
+        void DescribeCapacityBlockStatusAsync(const DescribeCapacityBlockStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeCapacityBlockStatusRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeCapacityBlockStatus, request, handler, context);
+        }
+
+        /**
+         * <p>Describes details about Capacity Blocks in the Amazon Web Services Region
+         * that you're currently using.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeCapacityBlocks">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeCapacityBlocksOutcome DescribeCapacityBlocks(const Model::DescribeCapacityBlocksRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeCapacityBlocks that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeCapacityBlocksRequestT = Model::DescribeCapacityBlocksRequest>
+        Model::DescribeCapacityBlocksOutcomeCallable DescribeCapacityBlocksCallable(const DescribeCapacityBlocksRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeCapacityBlocks, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeCapacityBlocks that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeCapacityBlocksRequestT = Model::DescribeCapacityBlocksRequest>
+        void DescribeCapacityBlocksAsync(const DescribeCapacityBlocksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeCapacityBlocksRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeCapacityBlocks, request, handler, context);
+        }
+
+        /**
+         * <p>Describes a request to assign the billing of the unused capacity of a
+         * Capacity Reservation. For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/transfer-billing.html">
+         * Billing assignment for shared Amazon EC2 Capacity
+         * Reservations</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeCapacityReservationBillingRequests">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeCapacityReservationBillingRequestsOutcome DescribeCapacityReservationBillingRequests(const Model::DescribeCapacityReservationBillingRequestsRequest& request) const;
+
+        /**
+         * A Callable wrapper for DescribeCapacityReservationBillingRequests that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeCapacityReservationBillingRequestsRequestT = Model::DescribeCapacityReservationBillingRequestsRequest>
+        Model::DescribeCapacityReservationBillingRequestsOutcomeCallable DescribeCapacityReservationBillingRequestsCallable(const DescribeCapacityReservationBillingRequestsRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DescribeCapacityReservationBillingRequests, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeCapacityReservationBillingRequests that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeCapacityReservationBillingRequestsRequestT = Model::DescribeCapacityReservationBillingRequestsRequest>
+        void DescribeCapacityReservationBillingRequestsAsync(const DescribeCapacityReservationBillingRequestsRequestT& request, const DescribeCapacityReservationBillingRequestsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DescribeCapacityReservationBillingRequests, request, handler, context);
+        }
+
+        /**
          * <p>Describes one or more Capacity Reservation Fleets.</p><p><h3>See Also:</h3>  
          * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeCapacityReservationFleets">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeCapacityReservationFleetsOutcome DescribeCapacityReservationFleets(const Model::DescribeCapacityReservationFleetsRequest& request) const;
+        virtual Model::DescribeCapacityReservationFleetsOutcome DescribeCapacityReservationFleets(const Model::DescribeCapacityReservationFleetsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeCapacityReservationFleets that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeCapacityReservationFleetsRequestT = Model::DescribeCapacityReservationFleetsRequest>
-        Model::DescribeCapacityReservationFleetsOutcomeCallable DescribeCapacityReservationFleetsCallable(const DescribeCapacityReservationFleetsRequestT& request) const
+        Model::DescribeCapacityReservationFleetsOutcomeCallable DescribeCapacityReservationFleetsCallable(const DescribeCapacityReservationFleetsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeCapacityReservationFleets, request);
         }
@@ -7037,7 +8061,7 @@ namespace EC2
          * An Async wrapper for DescribeCapacityReservationFleets that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeCapacityReservationFleetsRequestT = Model::DescribeCapacityReservationFleetsRequest>
-        void DescribeCapacityReservationFleetsAsync(const DescribeCapacityReservationFleetsRequestT& request, const DescribeCapacityReservationFleetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeCapacityReservationFleetsAsync(const DescribeCapacityReservationFleetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeCapacityReservationFleetsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeCapacityReservationFleets, request, handler, context);
         }
@@ -7049,13 +8073,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeCapacityReservations">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeCapacityReservationsOutcome DescribeCapacityReservations(const Model::DescribeCapacityReservationsRequest& request) const;
+        virtual Model::DescribeCapacityReservationsOutcome DescribeCapacityReservations(const Model::DescribeCapacityReservationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeCapacityReservations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeCapacityReservationsRequestT = Model::DescribeCapacityReservationsRequest>
-        Model::DescribeCapacityReservationsOutcomeCallable DescribeCapacityReservationsCallable(const DescribeCapacityReservationsRequestT& request) const
+        Model::DescribeCapacityReservationsOutcomeCallable DescribeCapacityReservationsCallable(const DescribeCapacityReservationsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeCapacityReservations, request);
         }
@@ -7064,7 +8088,7 @@ namespace EC2
          * An Async wrapper for DescribeCapacityReservations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeCapacityReservationsRequestT = Model::DescribeCapacityReservationsRequest>
-        void DescribeCapacityReservationsAsync(const DescribeCapacityReservationsRequestT& request, const DescribeCapacityReservationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeCapacityReservationsAsync(const DescribeCapacityReservationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeCapacityReservationsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeCapacityReservations, request, handler, context);
         }
@@ -7074,13 +8098,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeCarrierGateways">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeCarrierGatewaysOutcome DescribeCarrierGateways(const Model::DescribeCarrierGatewaysRequest& request) const;
+        virtual Model::DescribeCarrierGatewaysOutcome DescribeCarrierGateways(const Model::DescribeCarrierGatewaysRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeCarrierGateways that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeCarrierGatewaysRequestT = Model::DescribeCarrierGatewaysRequest>
-        Model::DescribeCarrierGatewaysOutcomeCallable DescribeCarrierGatewaysCallable(const DescribeCarrierGatewaysRequestT& request) const
+        Model::DescribeCarrierGatewaysOutcomeCallable DescribeCarrierGatewaysCallable(const DescribeCarrierGatewaysRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeCarrierGateways, request);
         }
@@ -7089,30 +8113,26 @@ namespace EC2
          * An Async wrapper for DescribeCarrierGateways that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeCarrierGatewaysRequestT = Model::DescribeCarrierGatewaysRequest>
-        void DescribeCarrierGatewaysAsync(const DescribeCarrierGatewaysRequestT& request, const DescribeCarrierGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeCarrierGatewaysAsync(const DescribeCarrierGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeCarrierGatewaysRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeCarrierGateways, request, handler, context);
         }
 
         /**
-         * <p>Describes one or more of your linked EC2-Classic instances. This request only
-         * returns information about EC2-Classic instances linked to a VPC through
-         * ClassicLink. You cannot use this request to return information about other
-         * instances.</p>  <p>We are retiring EC2-Classic. We recommend that you
-         * migrate from EC2-Classic to a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         *  <p>This action is deprecated.</p>  <p>Describes your linked
+         * EC2-Classic instances. This request only returns information about EC2-Classic
+         * instances linked to a VPC through ClassicLink. You cannot use this request to
+         * return information about other instances.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeClassicLinkInstances">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeClassicLinkInstancesOutcome DescribeClassicLinkInstances(const Model::DescribeClassicLinkInstancesRequest& request) const;
+        virtual Model::DescribeClassicLinkInstancesOutcome DescribeClassicLinkInstances(const Model::DescribeClassicLinkInstancesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeClassicLinkInstances that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeClassicLinkInstancesRequestT = Model::DescribeClassicLinkInstancesRequest>
-        Model::DescribeClassicLinkInstancesOutcomeCallable DescribeClassicLinkInstancesCallable(const DescribeClassicLinkInstancesRequestT& request) const
+        Model::DescribeClassicLinkInstancesOutcomeCallable DescribeClassicLinkInstancesCallable(const DescribeClassicLinkInstancesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeClassicLinkInstances, request);
         }
@@ -7121,7 +8141,7 @@ namespace EC2
          * An Async wrapper for DescribeClassicLinkInstances that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeClassicLinkInstancesRequestT = Model::DescribeClassicLinkInstancesRequest>
-        void DescribeClassicLinkInstancesAsync(const DescribeClassicLinkInstancesRequestT& request, const DescribeClassicLinkInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeClassicLinkInstancesAsync(const DescribeClassicLinkInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeClassicLinkInstancesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeClassicLinkInstances, request, handler, context);
         }
@@ -7185,13 +8205,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeClientVpnEndpoints">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeClientVpnEndpointsOutcome DescribeClientVpnEndpoints(const Model::DescribeClientVpnEndpointsRequest& request) const;
+        virtual Model::DescribeClientVpnEndpointsOutcome DescribeClientVpnEndpoints(const Model::DescribeClientVpnEndpointsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeClientVpnEndpoints that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeClientVpnEndpointsRequestT = Model::DescribeClientVpnEndpointsRequest>
-        Model::DescribeClientVpnEndpointsOutcomeCallable DescribeClientVpnEndpointsCallable(const DescribeClientVpnEndpointsRequestT& request) const
+        Model::DescribeClientVpnEndpointsOutcomeCallable DescribeClientVpnEndpointsCallable(const DescribeClientVpnEndpointsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeClientVpnEndpoints, request);
         }
@@ -7200,7 +8220,7 @@ namespace EC2
          * An Async wrapper for DescribeClientVpnEndpoints that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeClientVpnEndpointsRequestT = Model::DescribeClientVpnEndpointsRequest>
-        void DescribeClientVpnEndpointsAsync(const DescribeClientVpnEndpointsRequestT& request, const DescribeClientVpnEndpointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeClientVpnEndpointsAsync(const DescribeClientVpnEndpointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeClientVpnEndpointsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeClientVpnEndpoints, request, handler, context);
         }
@@ -7263,13 +8283,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeCoipPools">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeCoipPoolsOutcome DescribeCoipPools(const Model::DescribeCoipPoolsRequest& request) const;
+        virtual Model::DescribeCoipPoolsOutcome DescribeCoipPools(const Model::DescribeCoipPoolsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeCoipPools that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeCoipPoolsRequestT = Model::DescribeCoipPoolsRequest>
-        Model::DescribeCoipPoolsOutcomeCallable DescribeCoipPoolsCallable(const DescribeCoipPoolsRequestT& request) const
+        Model::DescribeCoipPoolsOutcomeCallable DescribeCoipPoolsCallable(const DescribeCoipPoolsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeCoipPools, request);
         }
@@ -7278,7 +8298,7 @@ namespace EC2
          * An Async wrapper for DescribeCoipPools that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeCoipPoolsRequestT = Model::DescribeCoipPoolsRequest>
-        void DescribeCoipPoolsAsync(const DescribeCoipPoolsRequestT& request, const DescribeCoipPoolsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeCoipPoolsAsync(const DescribeCoipPoolsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeCoipPoolsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeCoipPools, request, handler, context);
         }
@@ -7294,13 +8314,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeConversionTasks">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeConversionTasksOutcome DescribeConversionTasks(const Model::DescribeConversionTasksRequest& request) const;
+        virtual Model::DescribeConversionTasksOutcome DescribeConversionTasks(const Model::DescribeConversionTasksRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeConversionTasks that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeConversionTasksRequestT = Model::DescribeConversionTasksRequest>
-        Model::DescribeConversionTasksOutcomeCallable DescribeConversionTasksCallable(const DescribeConversionTasksRequestT& request) const
+        Model::DescribeConversionTasksOutcomeCallable DescribeConversionTasksCallable(const DescribeConversionTasksRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeConversionTasks, request);
         }
@@ -7309,7 +8329,7 @@ namespace EC2
          * An Async wrapper for DescribeConversionTasks that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeConversionTasksRequestT = Model::DescribeConversionTasksRequest>
-        void DescribeConversionTasksAsync(const DescribeConversionTasksRequestT& request, const DescribeConversionTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeConversionTasksAsync(const DescribeConversionTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeConversionTasksRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeConversionTasks, request, handler, context);
         }
@@ -7323,13 +8343,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeCustomerGateways">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeCustomerGatewaysOutcome DescribeCustomerGateways(const Model::DescribeCustomerGatewaysRequest& request) const;
+        virtual Model::DescribeCustomerGatewaysOutcome DescribeCustomerGateways(const Model::DescribeCustomerGatewaysRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeCustomerGateways that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeCustomerGatewaysRequestT = Model::DescribeCustomerGatewaysRequest>
-        Model::DescribeCustomerGatewaysOutcomeCallable DescribeCustomerGatewaysCallable(const DescribeCustomerGatewaysRequestT& request) const
+        Model::DescribeCustomerGatewaysOutcomeCallable DescribeCustomerGatewaysCallable(const DescribeCustomerGatewaysRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeCustomerGateways, request);
         }
@@ -7338,27 +8358,65 @@ namespace EC2
          * An Async wrapper for DescribeCustomerGateways that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeCustomerGatewaysRequestT = Model::DescribeCustomerGatewaysRequest>
-        void DescribeCustomerGatewaysAsync(const DescribeCustomerGatewaysRequestT& request, const DescribeCustomerGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeCustomerGatewaysAsync(const DescribeCustomerGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeCustomerGatewaysRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeCustomerGateways, request, handler, context);
         }
 
         /**
-         * <p>Describes one or more of your DHCP options sets.</p> <p>For more information,
-         * see <a
+         * <p>Describes the metadata of an account status report, including the status of
+         * the report.</p> <p>To view the full report, download it from the Amazon S3
+         * bucket where it was saved. Reports are accessible only when they have the
+         * <code>complete</code> status. Reports with other statuses (<code>running</code>,
+         * <code>cancelled</code>, or <code>error</code>) are not available in the S3
+         * bucket. For more information about downloading objects from an S3 bucket, see <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/download-objects.html">Downloading
+         * objects</a> in the <i>Amazon Simple Storage Service User Guide</i>.</p> <p>For
+         * more information, see <a
+         * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_status-report.html">Generating
+         * the account status report for declarative policies</a> in the <i>Amazon Web
+         * Services Organizations User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeDeclarativePoliciesReports">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeDeclarativePoliciesReportsOutcome DescribeDeclarativePoliciesReports(const Model::DescribeDeclarativePoliciesReportsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeDeclarativePoliciesReports that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeDeclarativePoliciesReportsRequestT = Model::DescribeDeclarativePoliciesReportsRequest>
+        Model::DescribeDeclarativePoliciesReportsOutcomeCallable DescribeDeclarativePoliciesReportsCallable(const DescribeDeclarativePoliciesReportsRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeDeclarativePoliciesReports, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeDeclarativePoliciesReports that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeDeclarativePoliciesReportsRequestT = Model::DescribeDeclarativePoliciesReportsRequest>
+        void DescribeDeclarativePoliciesReportsAsync(const DescribeDeclarativePoliciesReportsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDeclarativePoliciesReportsRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeDeclarativePoliciesReports, request, handler, context);
+        }
+
+        /**
+         * <p>Describes your DHCP option sets. The default is to describe all your DHCP
+         * option sets. Alternatively, you can specify specific DHCP option set IDs or
+         * filter the results to include only the DHCP option sets that match specific
+         * criteria.</p> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html">DHCP
-         * options sets</a> in the <i>Amazon Virtual Private Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * option sets</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>  
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeDhcpOptions">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDhcpOptionsOutcome DescribeDhcpOptions(const Model::DescribeDhcpOptionsRequest& request) const;
+        virtual Model::DescribeDhcpOptionsOutcome DescribeDhcpOptions(const Model::DescribeDhcpOptionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDhcpOptions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDhcpOptionsRequestT = Model::DescribeDhcpOptionsRequest>
-        Model::DescribeDhcpOptionsOutcomeCallable DescribeDhcpOptionsCallable(const DescribeDhcpOptionsRequestT& request) const
+        Model::DescribeDhcpOptionsOutcomeCallable DescribeDhcpOptionsCallable(const DescribeDhcpOptionsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeDhcpOptions, request);
         }
@@ -7367,24 +8425,27 @@ namespace EC2
          * An Async wrapper for DescribeDhcpOptions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDhcpOptionsRequestT = Model::DescribeDhcpOptionsRequest>
-        void DescribeDhcpOptionsAsync(const DescribeDhcpOptionsRequestT& request, const DescribeDhcpOptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDhcpOptionsAsync(const DescribeDhcpOptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDhcpOptionsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeDhcpOptions, request, handler, context);
         }
 
         /**
-         * <p>Describes one or more of your egress-only internet gateways.</p><p><h3>See
+         * <p>Describes your egress-only internet gateways. The default is to describe all
+         * your egress-only internet gateways. Alternatively, you can specify specific
+         * egress-only internet gateway IDs or filter the results to include only the
+         * egress-only internet gateways that match specific criteria.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeEgressOnlyInternetGateways">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeEgressOnlyInternetGatewaysOutcome DescribeEgressOnlyInternetGateways(const Model::DescribeEgressOnlyInternetGatewaysRequest& request) const;
+        virtual Model::DescribeEgressOnlyInternetGatewaysOutcome DescribeEgressOnlyInternetGateways(const Model::DescribeEgressOnlyInternetGatewaysRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeEgressOnlyInternetGateways that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeEgressOnlyInternetGatewaysRequestT = Model::DescribeEgressOnlyInternetGatewaysRequest>
-        Model::DescribeEgressOnlyInternetGatewaysOutcomeCallable DescribeEgressOnlyInternetGatewaysCallable(const DescribeEgressOnlyInternetGatewaysRequestT& request) const
+        Model::DescribeEgressOnlyInternetGatewaysOutcomeCallable DescribeEgressOnlyInternetGatewaysCallable(const DescribeEgressOnlyInternetGatewaysRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeEgressOnlyInternetGateways, request);
         }
@@ -7393,26 +8454,25 @@ namespace EC2
          * An Async wrapper for DescribeEgressOnlyInternetGateways that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeEgressOnlyInternetGatewaysRequestT = Model::DescribeEgressOnlyInternetGatewaysRequest>
-        void DescribeEgressOnlyInternetGatewaysAsync(const DescribeEgressOnlyInternetGatewaysRequestT& request, const DescribeEgressOnlyInternetGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeEgressOnlyInternetGatewaysAsync(const DescribeEgressOnlyInternetGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeEgressOnlyInternetGatewaysRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeEgressOnlyInternetGateways, request, handler, context);
         }
 
         /**
-         * <p>Describes the Elastic Graphics accelerator associated with your instances.
-         * For more information about Elastic Graphics, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html">Amazon
-         * Elastic Graphics</a>.</p><p><h3>See Also:</h3>   <a
+         *  <p>Amazon Elastic Graphics reached end of life on January 8, 2024.</p>
+         *  <p>Describes the Elastic Graphics accelerator associated with your
+         * instances.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeElasticGpus">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeElasticGpusOutcome DescribeElasticGpus(const Model::DescribeElasticGpusRequest& request) const;
+        virtual Model::DescribeElasticGpusOutcome DescribeElasticGpus(const Model::DescribeElasticGpusRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeElasticGpus that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeElasticGpusRequestT = Model::DescribeElasticGpusRequest>
-        Model::DescribeElasticGpusOutcomeCallable DescribeElasticGpusCallable(const DescribeElasticGpusRequestT& request) const
+        Model::DescribeElasticGpusOutcomeCallable DescribeElasticGpusCallable(const DescribeElasticGpusRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeElasticGpus, request);
         }
@@ -7421,7 +8481,7 @@ namespace EC2
          * An Async wrapper for DescribeElasticGpus that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeElasticGpusRequestT = Model::DescribeElasticGpusRequest>
-        void DescribeElasticGpusAsync(const DescribeElasticGpusRequestT& request, const DescribeElasticGpusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeElasticGpusAsync(const DescribeElasticGpusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeElasticGpusRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeElasticGpus, request, handler, context);
         }
@@ -7432,13 +8492,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeExportImageTasks">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeExportImageTasksOutcome DescribeExportImageTasks(const Model::DescribeExportImageTasksRequest& request) const;
+        virtual Model::DescribeExportImageTasksOutcome DescribeExportImageTasks(const Model::DescribeExportImageTasksRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeExportImageTasks that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeExportImageTasksRequestT = Model::DescribeExportImageTasksRequest>
-        Model::DescribeExportImageTasksOutcomeCallable DescribeExportImageTasksCallable(const DescribeExportImageTasksRequestT& request) const
+        Model::DescribeExportImageTasksOutcomeCallable DescribeExportImageTasksCallable(const DescribeExportImageTasksRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeExportImageTasks, request);
         }
@@ -7447,7 +8507,7 @@ namespace EC2
          * An Async wrapper for DescribeExportImageTasks that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeExportImageTasksRequestT = Model::DescribeExportImageTasksRequest>
-        void DescribeExportImageTasksAsync(const DescribeExportImageTasksRequestT& request, const DescribeExportImageTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeExportImageTasksAsync(const DescribeExportImageTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeExportImageTasksRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeExportImageTasks, request, handler, context);
         }
@@ -7458,13 +8518,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeExportTasks">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeExportTasksOutcome DescribeExportTasks(const Model::DescribeExportTasksRequest& request) const;
+        virtual Model::DescribeExportTasksOutcome DescribeExportTasks(const Model::DescribeExportTasksRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeExportTasks that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeExportTasksRequestT = Model::DescribeExportTasksRequest>
-        Model::DescribeExportTasksOutcomeCallable DescribeExportTasksCallable(const DescribeExportTasksRequestT& request) const
+        Model::DescribeExportTasksOutcomeCallable DescribeExportTasksCallable(const DescribeExportTasksRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeExportTasks, request);
         }
@@ -7473,24 +8533,24 @@ namespace EC2
          * An Async wrapper for DescribeExportTasks that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeExportTasksRequestT = Model::DescribeExportTasksRequest>
-        void DescribeExportTasksAsync(const DescribeExportTasksRequestT& request, const DescribeExportTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeExportTasksAsync(const DescribeExportTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeExportTasksRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeExportTasks, request, handler, context);
         }
 
         /**
-         * <p>Describe details for Windows AMIs that are configured for faster
-         * launching.</p><p><h3>See Also:</h3>   <a
+         * <p>Describe details for Windows AMIs that are configured for Windows fast
+         * launch.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFastLaunchImages">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeFastLaunchImagesOutcome DescribeFastLaunchImages(const Model::DescribeFastLaunchImagesRequest& request) const;
+        virtual Model::DescribeFastLaunchImagesOutcome DescribeFastLaunchImages(const Model::DescribeFastLaunchImagesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeFastLaunchImages that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeFastLaunchImagesRequestT = Model::DescribeFastLaunchImagesRequest>
-        Model::DescribeFastLaunchImagesOutcomeCallable DescribeFastLaunchImagesCallable(const DescribeFastLaunchImagesRequestT& request) const
+        Model::DescribeFastLaunchImagesOutcomeCallable DescribeFastLaunchImagesCallable(const DescribeFastLaunchImagesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeFastLaunchImages, request);
         }
@@ -7499,7 +8559,7 @@ namespace EC2
          * An Async wrapper for DescribeFastLaunchImages that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeFastLaunchImagesRequestT = Model::DescribeFastLaunchImagesRequest>
-        void DescribeFastLaunchImagesAsync(const DescribeFastLaunchImagesRequestT& request, const DescribeFastLaunchImagesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeFastLaunchImagesAsync(const DescribeFastLaunchImagesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeFastLaunchImagesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeFastLaunchImages, request, handler, context);
         }
@@ -7510,13 +8570,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFastSnapshotRestores">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeFastSnapshotRestoresOutcome DescribeFastSnapshotRestores(const Model::DescribeFastSnapshotRestoresRequest& request) const;
+        virtual Model::DescribeFastSnapshotRestoresOutcome DescribeFastSnapshotRestores(const Model::DescribeFastSnapshotRestoresRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeFastSnapshotRestores that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeFastSnapshotRestoresRequestT = Model::DescribeFastSnapshotRestoresRequest>
-        Model::DescribeFastSnapshotRestoresOutcomeCallable DescribeFastSnapshotRestoresCallable(const DescribeFastSnapshotRestoresRequestT& request) const
+        Model::DescribeFastSnapshotRestoresOutcomeCallable DescribeFastSnapshotRestoresCallable(const DescribeFastSnapshotRestoresRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeFastSnapshotRestores, request);
         }
@@ -7525,7 +8585,7 @@ namespace EC2
          * An Async wrapper for DescribeFastSnapshotRestores that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeFastSnapshotRestoresRequestT = Model::DescribeFastSnapshotRestoresRequest>
-        void DescribeFastSnapshotRestoresAsync(const DescribeFastSnapshotRestoresRequestT& request, const DescribeFastSnapshotRestoresResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeFastSnapshotRestoresAsync(const DescribeFastSnapshotRestoresResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeFastSnapshotRestoresRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeFastSnapshotRestores, request, handler, context);
         }
@@ -7563,9 +8623,12 @@ namespace EC2
         }
 
         /**
-         * <p>Describes the running instances for the specified EC2 Fleet.</p> <p>For more
+         * <p>Describes the running instances for the specified EC2 Fleet.</p> 
+         * <p>Currently, <code>DescribeFleetInstances</code> does not support fleets of
+         * type <code>instant</code>. Instead, use <code>DescribeFleets</code>, specifying
+         * the <code>instant</code> fleet ID in the request.</p>  <p>For more
          * information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#monitor-ec2-fleet">Monitor
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#monitor-ec2-fleet">Describe
          * your EC2 Fleet</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>
          * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFleetInstances">AWS
@@ -7592,21 +8655,23 @@ namespace EC2
         }
 
         /**
-         * <p>Describes the specified EC2 Fleets or all of your EC2 Fleets.</p> <p>For more
-         * information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#monitor-ec2-fleet">Monitor
+         * <p>Describes the specified EC2 Fleet or all of your EC2 Fleets.</p> 
+         * <p>If a fleet is of type <code>instant</code>, you must specify the fleet ID in
+         * the request, otherwise the fleet does not appear in the response.</p>
+         *  <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#monitor-ec2-fleet">Describe
          * your EC2 Fleet</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>
          * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFleets">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeFleetsOutcome DescribeFleets(const Model::DescribeFleetsRequest& request) const;
+        virtual Model::DescribeFleetsOutcome DescribeFleets(const Model::DescribeFleetsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeFleets that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeFleetsRequestT = Model::DescribeFleetsRequest>
-        Model::DescribeFleetsOutcomeCallable DescribeFleetsCallable(const DescribeFleetsRequestT& request) const
+        Model::DescribeFleetsOutcomeCallable DescribeFleetsCallable(const DescribeFleetsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeFleets, request);
         }
@@ -7615,7 +8680,7 @@ namespace EC2
          * An Async wrapper for DescribeFleets that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeFleetsRequestT = Model::DescribeFleetsRequest>
-        void DescribeFleetsAsync(const DescribeFleetsRequestT& request, const DescribeFleetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeFleetsAsync(const DescribeFleetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeFleetsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeFleets, request, handler, context);
         }
@@ -7628,13 +8693,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFlowLogs">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeFlowLogsOutcome DescribeFlowLogs(const Model::DescribeFlowLogsRequest& request) const;
+        virtual Model::DescribeFlowLogsOutcome DescribeFlowLogs(const Model::DescribeFlowLogsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeFlowLogs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeFlowLogsRequestT = Model::DescribeFlowLogsRequest>
-        Model::DescribeFlowLogsOutcomeCallable DescribeFlowLogsCallable(const DescribeFlowLogsRequestT& request) const
+        Model::DescribeFlowLogsOutcomeCallable DescribeFlowLogsCallable(const DescribeFlowLogsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeFlowLogs, request);
         }
@@ -7643,7 +8708,7 @@ namespace EC2
          * An Async wrapper for DescribeFlowLogs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeFlowLogsRequestT = Model::DescribeFlowLogsRequest>
-        void DescribeFlowLogsAsync(const DescribeFlowLogsRequestT& request, const DescribeFlowLogsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeFlowLogsAsync(const DescribeFlowLogsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeFlowLogsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeFlowLogs, request, handler, context);
         }
@@ -7682,13 +8747,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFpgaImages">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeFpgaImagesOutcome DescribeFpgaImages(const Model::DescribeFpgaImagesRequest& request) const;
+        virtual Model::DescribeFpgaImagesOutcome DescribeFpgaImages(const Model::DescribeFpgaImagesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeFpgaImages that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeFpgaImagesRequestT = Model::DescribeFpgaImagesRequest>
-        Model::DescribeFpgaImagesOutcomeCallable DescribeFpgaImagesCallable(const DescribeFpgaImagesRequestT& request) const
+        Model::DescribeFpgaImagesOutcomeCallable DescribeFpgaImagesCallable(const DescribeFpgaImagesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeFpgaImages, request);
         }
@@ -7697,7 +8762,7 @@ namespace EC2
          * An Async wrapper for DescribeFpgaImages that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeFpgaImagesRequestT = Model::DescribeFpgaImagesRequest>
-        void DescribeFpgaImagesAsync(const DescribeFpgaImagesRequestT& request, const DescribeFpgaImagesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeFpgaImagesAsync(const DescribeFpgaImagesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeFpgaImagesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeFpgaImages, request, handler, context);
         }
@@ -7714,13 +8779,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeHostReservationOfferings">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeHostReservationOfferingsOutcome DescribeHostReservationOfferings(const Model::DescribeHostReservationOfferingsRequest& request) const;
+        virtual Model::DescribeHostReservationOfferingsOutcome DescribeHostReservationOfferings(const Model::DescribeHostReservationOfferingsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeHostReservationOfferings that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeHostReservationOfferingsRequestT = Model::DescribeHostReservationOfferingsRequest>
-        Model::DescribeHostReservationOfferingsOutcomeCallable DescribeHostReservationOfferingsCallable(const DescribeHostReservationOfferingsRequestT& request) const
+        Model::DescribeHostReservationOfferingsOutcomeCallable DescribeHostReservationOfferingsCallable(const DescribeHostReservationOfferingsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeHostReservationOfferings, request);
         }
@@ -7729,7 +8794,7 @@ namespace EC2
          * An Async wrapper for DescribeHostReservationOfferings that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeHostReservationOfferingsRequestT = Model::DescribeHostReservationOfferingsRequest>
-        void DescribeHostReservationOfferingsAsync(const DescribeHostReservationOfferingsRequestT& request, const DescribeHostReservationOfferingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeHostReservationOfferingsAsync(const DescribeHostReservationOfferingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeHostReservationOfferingsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeHostReservationOfferings, request, handler, context);
         }
@@ -7740,13 +8805,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeHostReservations">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeHostReservationsOutcome DescribeHostReservations(const Model::DescribeHostReservationsRequest& request) const;
+        virtual Model::DescribeHostReservationsOutcome DescribeHostReservations(const Model::DescribeHostReservationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeHostReservations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeHostReservationsRequestT = Model::DescribeHostReservationsRequest>
-        Model::DescribeHostReservationsOutcomeCallable DescribeHostReservationsCallable(const DescribeHostReservationsRequestT& request) const
+        Model::DescribeHostReservationsOutcomeCallable DescribeHostReservationsCallable(const DescribeHostReservationsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeHostReservations, request);
         }
@@ -7755,7 +8820,7 @@ namespace EC2
          * An Async wrapper for DescribeHostReservations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeHostReservationsRequestT = Model::DescribeHostReservationsRequest>
-        void DescribeHostReservationsAsync(const DescribeHostReservationsRequestT& request, const DescribeHostReservationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeHostReservationsAsync(const DescribeHostReservationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeHostReservationsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeHostReservations, request, handler, context);
         }
@@ -7769,13 +8834,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeHosts">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeHostsOutcome DescribeHosts(const Model::DescribeHostsRequest& request) const;
+        virtual Model::DescribeHostsOutcome DescribeHosts(const Model::DescribeHostsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeHosts that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeHostsRequestT = Model::DescribeHostsRequest>
-        Model::DescribeHostsOutcomeCallable DescribeHostsCallable(const DescribeHostsRequestT& request) const
+        Model::DescribeHostsOutcomeCallable DescribeHostsCallable(const DescribeHostsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeHosts, request);
         }
@@ -7784,7 +8849,7 @@ namespace EC2
          * An Async wrapper for DescribeHosts that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeHostsRequestT = Model::DescribeHostsRequest>
-        void DescribeHostsAsync(const DescribeHostsRequestT& request, const DescribeHostsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeHostsAsync(const DescribeHostsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeHostsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeHosts, request, handler, context);
         }
@@ -7795,13 +8860,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIamInstanceProfileAssociations">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeIamInstanceProfileAssociationsOutcome DescribeIamInstanceProfileAssociations(const Model::DescribeIamInstanceProfileAssociationsRequest& request) const;
+        virtual Model::DescribeIamInstanceProfileAssociationsOutcome DescribeIamInstanceProfileAssociations(const Model::DescribeIamInstanceProfileAssociationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeIamInstanceProfileAssociations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeIamInstanceProfileAssociationsRequestT = Model::DescribeIamInstanceProfileAssociationsRequest>
-        Model::DescribeIamInstanceProfileAssociationsOutcomeCallable DescribeIamInstanceProfileAssociationsCallable(const DescribeIamInstanceProfileAssociationsRequestT& request) const
+        Model::DescribeIamInstanceProfileAssociationsOutcomeCallable DescribeIamInstanceProfileAssociationsCallable(const DescribeIamInstanceProfileAssociationsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeIamInstanceProfileAssociations, request);
         }
@@ -7810,7 +8875,7 @@ namespace EC2
          * An Async wrapper for DescribeIamInstanceProfileAssociations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeIamInstanceProfileAssociationsRequestT = Model::DescribeIamInstanceProfileAssociationsRequest>
-        void DescribeIamInstanceProfileAssociationsAsync(const DescribeIamInstanceProfileAssociationsRequestT& request, const DescribeIamInstanceProfileAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeIamInstanceProfileAssociationsAsync(const DescribeIamInstanceProfileAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeIamInstanceProfileAssociationsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeIamInstanceProfileAssociations, request, handler, context);
         }
@@ -7845,13 +8910,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIdFormat">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeIdFormatOutcome DescribeIdFormat(const Model::DescribeIdFormatRequest& request) const;
+        virtual Model::DescribeIdFormatOutcome DescribeIdFormat(const Model::DescribeIdFormatRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeIdFormat that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeIdFormatRequestT = Model::DescribeIdFormatRequest>
-        Model::DescribeIdFormatOutcomeCallable DescribeIdFormatCallable(const DescribeIdFormatRequestT& request) const
+        Model::DescribeIdFormatOutcomeCallable DescribeIdFormatCallable(const DescribeIdFormatRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeIdFormat, request);
         }
@@ -7860,7 +8925,7 @@ namespace EC2
          * An Async wrapper for DescribeIdFormat that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeIdFormatRequestT = Model::DescribeIdFormatRequest>
-        void DescribeIdFormatAsync(const DescribeIdFormatRequestT& request, const DescribeIdFormatResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeIdFormatAsync(const DescribeIdFormatResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeIdFormatRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeIdFormat, request, handler, context);
         }
@@ -7915,7 +8980,10 @@ namespace EC2
 
         /**
          * <p>Describes the specified attribute of the specified AMI. You can specify only
-         * one attribute at a time.</p><p><h3>See Also:</h3>   <a
+         * one attribute at a time.</p>  <p>The order of the elements in the
+         * response, including those within nested structures, might vary. Applications
+         * should not assume the elements appear in a particular order.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImageAttribute">AWS
          * API Reference</a></p>
          */
@@ -7940,6 +9008,94 @@ namespace EC2
         }
 
         /**
+         * <p>Describes your Amazon Web Services resources that are referencing the
+         * specified images.</p> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-ami-references.html">Identify
+         * your resources referencing specified AMIs</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImageReferences">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeImageReferencesOutcome DescribeImageReferences(const Model::DescribeImageReferencesRequest& request) const;
+
+        /**
+         * A Callable wrapper for DescribeImageReferences that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeImageReferencesRequestT = Model::DescribeImageReferencesRequest>
+        Model::DescribeImageReferencesOutcomeCallable DescribeImageReferencesCallable(const DescribeImageReferencesRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DescribeImageReferences, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeImageReferences that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeImageReferencesRequestT = Model::DescribeImageReferencesRequest>
+        void DescribeImageReferencesAsync(const DescribeImageReferencesRequestT& request, const DescribeImageReferencesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DescribeImageReferences, request, handler, context);
+        }
+
+        /**
+         * <p>Describes the entries in image usage reports, showing how your images are
+         * used across other Amazon Web Services accounts.</p> <p>For more information, see
+         * <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/your-ec2-ami-usage.html">View
+         * your AMI usage</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImageUsageReportEntries">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeImageUsageReportEntriesOutcome DescribeImageUsageReportEntries(const Model::DescribeImageUsageReportEntriesRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeImageUsageReportEntries that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeImageUsageReportEntriesRequestT = Model::DescribeImageUsageReportEntriesRequest>
+        Model::DescribeImageUsageReportEntriesOutcomeCallable DescribeImageUsageReportEntriesCallable(const DescribeImageUsageReportEntriesRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeImageUsageReportEntries, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeImageUsageReportEntries that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeImageUsageReportEntriesRequestT = Model::DescribeImageUsageReportEntriesRequest>
+        void DescribeImageUsageReportEntriesAsync(const DescribeImageUsageReportEntriesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeImageUsageReportEntriesRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeImageUsageReportEntries, request, handler, context);
+        }
+
+        /**
+         * <p>Describes the configuration and status of image usage reports, filtered by
+         * report IDs or image IDs.</p> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/your-ec2-ami-usage.html">View
+         * your AMI usage</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImageUsageReports">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeImageUsageReportsOutcome DescribeImageUsageReports(const Model::DescribeImageUsageReportsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeImageUsageReports that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeImageUsageReportsRequestT = Model::DescribeImageUsageReportsRequest>
+        Model::DescribeImageUsageReportsOutcomeCallable DescribeImageUsageReportsCallable(const DescribeImageUsageReportsRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeImageUsageReports, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeImageUsageReports that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeImageUsageReportsRequestT = Model::DescribeImageUsageReportsRequest>
+        void DescribeImageUsageReportsAsync(const DescribeImageUsageReportsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeImageUsageReportsRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeImageUsageReports, request, handler, context);
+        }
+
+        /**
          * <p>Describes the specified images (AMIs, AKIs, and ARIs) available to you or all
          * of the images available to you.</p> <p>The images available to you include
          * public images, private images that you own, and private images owned by other
@@ -7947,18 +9103,35 @@ namespace EC2
          * <p>Recently deregistered images appear in the returned results for a short
          * interval and then return empty results. After all instances that reference a
          * deregistered AMI are terminated, specifying the ID of the image will eventually
-         * return an error indicating that the AMI ID cannot be found.</p><p><h3>See
-         * Also:</h3>   <a
+         * return an error indicating that the AMI ID cannot be found.</p> <p>When Allowed
+         * AMIs is set to <code>enabled</code>, only allowed images are returned in the
+         * results, with the <code>imageAllowed</code> field set to <code>true</code> for
+         * each image. In <code>audit-mode</code>, the <code>imageAllowed</code> field is
+         * set to <code>true</code> for images that meet the account's Allowed AMIs
+         * criteria, and <code>false</code> for images that don't meet the criteria. For
+         * more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-allowed-amis.html">Allowed
+         * AMIs</a>.</p> <p>The Amazon EC2 API follows an eventual consistency model. This
+         * means that the result of an API command you run that creates or modifies
+         * resources might not be immediately available to all subsequent commands you run.
+         * For guidance on how to manage eventual consistency, see <a
+         * href="https://docs.aws.amazon.com/ec2/latest/devguide/eventual-consistency.html">Eventual
+         * consistency in the Amazon EC2 API</a> in the <i>Amazon EC2 Developer
+         * Guide</i>.</p>  <p>We strongly recommend using only paginated
+         * requests. Unpaginated requests are susceptible to throttling and timeouts.</p>
+         *   <p>The order of the elements in the response, including
+         * those within nested structures, might vary. Applications should not assume the
+         * elements appear in a particular order.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImages">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeImagesOutcome DescribeImages(const Model::DescribeImagesRequest& request) const;
+        virtual Model::DescribeImagesOutcome DescribeImages(const Model::DescribeImagesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeImages that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeImagesRequestT = Model::DescribeImagesRequest>
-        Model::DescribeImagesOutcomeCallable DescribeImagesCallable(const DescribeImagesRequestT& request) const
+        Model::DescribeImagesOutcomeCallable DescribeImagesCallable(const DescribeImagesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeImages, request);
         }
@@ -7967,7 +9140,7 @@ namespace EC2
          * An Async wrapper for DescribeImages that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeImagesRequestT = Model::DescribeImagesRequest>
-        void DescribeImagesAsync(const DescribeImagesRequestT& request, const DescribeImagesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeImagesAsync(const DescribeImagesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeImagesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeImages, request, handler, context);
         }
@@ -7978,13 +9151,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImportImageTasks">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeImportImageTasksOutcome DescribeImportImageTasks(const Model::DescribeImportImageTasksRequest& request) const;
+        virtual Model::DescribeImportImageTasksOutcome DescribeImportImageTasks(const Model::DescribeImportImageTasksRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeImportImageTasks that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeImportImageTasksRequestT = Model::DescribeImportImageTasksRequest>
-        Model::DescribeImportImageTasksOutcomeCallable DescribeImportImageTasksCallable(const DescribeImportImageTasksRequestT& request) const
+        Model::DescribeImportImageTasksOutcomeCallable DescribeImportImageTasksCallable(const DescribeImportImageTasksRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeImportImageTasks, request);
         }
@@ -7993,7 +9166,7 @@ namespace EC2
          * An Async wrapper for DescribeImportImageTasks that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeImportImageTasksRequestT = Model::DescribeImportImageTasksRequest>
-        void DescribeImportImageTasksAsync(const DescribeImportImageTasksRequestT& request, const DescribeImportImageTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeImportImageTasksAsync(const DescribeImportImageTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeImportImageTasksRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeImportImageTasks, request, handler, context);
         }
@@ -8003,13 +9176,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImportSnapshotTasks">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeImportSnapshotTasksOutcome DescribeImportSnapshotTasks(const Model::DescribeImportSnapshotTasksRequest& request) const;
+        virtual Model::DescribeImportSnapshotTasksOutcome DescribeImportSnapshotTasks(const Model::DescribeImportSnapshotTasksRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeImportSnapshotTasks that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeImportSnapshotTasksRequestT = Model::DescribeImportSnapshotTasksRequest>
-        Model::DescribeImportSnapshotTasksOutcomeCallable DescribeImportSnapshotTasksCallable(const DescribeImportSnapshotTasksRequestT& request) const
+        Model::DescribeImportSnapshotTasksOutcomeCallable DescribeImportSnapshotTasksCallable(const DescribeImportSnapshotTasksRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeImportSnapshotTasks, request);
         }
@@ -8018,20 +9191,14 @@ namespace EC2
          * An Async wrapper for DescribeImportSnapshotTasks that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeImportSnapshotTasksRequestT = Model::DescribeImportSnapshotTasksRequest>
-        void DescribeImportSnapshotTasksAsync(const DescribeImportSnapshotTasksRequestT& request, const DescribeImportSnapshotTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeImportSnapshotTasksAsync(const DescribeImportSnapshotTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeImportSnapshotTasksRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeImportSnapshotTasks, request, handler, context);
         }
 
         /**
          * <p>Describes the specified attribute of the specified instance. You can specify
-         * only one attribute at a time. Valid attribute values are:
-         * <code>instanceType</code> | <code>kernel</code> | <code>ramdisk</code> |
-         * <code>userData</code> | <code>disableApiTermination</code> |
-         * <code>instanceInitiatedShutdownBehavior</code> | <code>rootDeviceName</code> |
-         * <code>blockDeviceMapping</code> | <code>productCodes</code> |
-         * <code>sourceDestCheck</code> | <code>groupSet</code> | <code>ebsOptimized</code>
-         * | <code>sriovNetSupport</code> </p><p><h3>See Also:</h3>   <a
+         * only one attribute at a time. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceAttribute">AWS
          * API Reference</a></p>
          */
@@ -8053,6 +9220,32 @@ namespace EC2
         void DescribeInstanceAttributeAsync(const DescribeInstanceAttributeRequestT& request, const DescribeInstanceAttributeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::DescribeInstanceAttribute, request, handler, context);
+        }
+
+        /**
+         * <p>Describes the specified EC2 Instance Connect Endpoints or all EC2 Instance
+         * Connect Endpoints.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceConnectEndpoints">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeInstanceConnectEndpointsOutcome DescribeInstanceConnectEndpoints(const Model::DescribeInstanceConnectEndpointsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeInstanceConnectEndpoints that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeInstanceConnectEndpointsRequestT = Model::DescribeInstanceConnectEndpointsRequest>
+        Model::DescribeInstanceConnectEndpointsOutcomeCallable DescribeInstanceConnectEndpointsCallable(const DescribeInstanceConnectEndpointsRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeInstanceConnectEndpoints, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeInstanceConnectEndpoints that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeInstanceConnectEndpointsRequestT = Model::DescribeInstanceConnectEndpointsRequest>
+        void DescribeInstanceConnectEndpointsAsync(const DescribeInstanceConnectEndpointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeInstanceConnectEndpointsRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeInstanceConnectEndpoints, request, handler, context);
         }
 
         /**
@@ -8079,13 +9272,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceCreditSpecifications">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeInstanceCreditSpecificationsOutcome DescribeInstanceCreditSpecifications(const Model::DescribeInstanceCreditSpecificationsRequest& request) const;
+        virtual Model::DescribeInstanceCreditSpecificationsOutcome DescribeInstanceCreditSpecifications(const Model::DescribeInstanceCreditSpecificationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeInstanceCreditSpecifications that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeInstanceCreditSpecificationsRequestT = Model::DescribeInstanceCreditSpecificationsRequest>
-        Model::DescribeInstanceCreditSpecificationsOutcomeCallable DescribeInstanceCreditSpecificationsCallable(const DescribeInstanceCreditSpecificationsRequestT& request) const
+        Model::DescribeInstanceCreditSpecificationsOutcomeCallable DescribeInstanceCreditSpecificationsCallable(const DescribeInstanceCreditSpecificationsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeInstanceCreditSpecifications, request);
         }
@@ -8094,7 +9287,7 @@ namespace EC2
          * An Async wrapper for DescribeInstanceCreditSpecifications that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeInstanceCreditSpecificationsRequestT = Model::DescribeInstanceCreditSpecificationsRequest>
-        void DescribeInstanceCreditSpecificationsAsync(const DescribeInstanceCreditSpecificationsRequestT& request, const DescribeInstanceCreditSpecificationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeInstanceCreditSpecificationsAsync(const DescribeInstanceCreditSpecificationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeInstanceCreditSpecificationsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeInstanceCreditSpecifications, request, handler, context);
         }
@@ -8105,13 +9298,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceEventNotificationAttributes">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeInstanceEventNotificationAttributesOutcome DescribeInstanceEventNotificationAttributes(const Model::DescribeInstanceEventNotificationAttributesRequest& request) const;
+        virtual Model::DescribeInstanceEventNotificationAttributesOutcome DescribeInstanceEventNotificationAttributes(const Model::DescribeInstanceEventNotificationAttributesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeInstanceEventNotificationAttributes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeInstanceEventNotificationAttributesRequestT = Model::DescribeInstanceEventNotificationAttributesRequest>
-        Model::DescribeInstanceEventNotificationAttributesOutcomeCallable DescribeInstanceEventNotificationAttributesCallable(const DescribeInstanceEventNotificationAttributesRequestT& request) const
+        Model::DescribeInstanceEventNotificationAttributesOutcomeCallable DescribeInstanceEventNotificationAttributesCallable(const DescribeInstanceEventNotificationAttributesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeInstanceEventNotificationAttributes, request);
         }
@@ -8120,7 +9313,7 @@ namespace EC2
          * An Async wrapper for DescribeInstanceEventNotificationAttributes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeInstanceEventNotificationAttributesRequestT = Model::DescribeInstanceEventNotificationAttributesRequest>
-        void DescribeInstanceEventNotificationAttributesAsync(const DescribeInstanceEventNotificationAttributesRequestT& request, const DescribeInstanceEventNotificationAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeInstanceEventNotificationAttributesAsync(const DescribeInstanceEventNotificationAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeInstanceEventNotificationAttributesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeInstanceEventNotificationAttributes, request, handler, context);
         }
@@ -8140,13 +9333,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceEventWindows">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeInstanceEventWindowsOutcome DescribeInstanceEventWindows(const Model::DescribeInstanceEventWindowsRequest& request) const;
+        virtual Model::DescribeInstanceEventWindowsOutcome DescribeInstanceEventWindows(const Model::DescribeInstanceEventWindowsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeInstanceEventWindows that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeInstanceEventWindowsRequestT = Model::DescribeInstanceEventWindowsRequest>
-        Model::DescribeInstanceEventWindowsOutcomeCallable DescribeInstanceEventWindowsCallable(const DescribeInstanceEventWindowsRequestT& request) const
+        Model::DescribeInstanceEventWindowsOutcomeCallable DescribeInstanceEventWindowsCallable(const DescribeInstanceEventWindowsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeInstanceEventWindows, request);
         }
@@ -8155,9 +9348,51 @@ namespace EC2
          * An Async wrapper for DescribeInstanceEventWindows that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeInstanceEventWindowsRequestT = Model::DescribeInstanceEventWindowsRequest>
-        void DescribeInstanceEventWindowsAsync(const DescribeInstanceEventWindowsRequestT& request, const DescribeInstanceEventWindowsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeInstanceEventWindowsAsync(const DescribeInstanceEventWindowsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeInstanceEventWindowsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeInstanceEventWindows, request, handler, context);
+        }
+
+        /**
+         * <p>Describes the AMI that was used to launch an instance, even if the AMI is
+         * deprecated, deregistered, made private (no longer public or shared with your
+         * account), or not allowed.</p> <p>If you specify instance IDs, the output
+         * includes information for only the specified instances. If you specify filters,
+         * the output includes information for only those instances that meet the filter
+         * criteria. If you do not specify instance IDs or filters, the output includes
+         * information for all instances, which can affect performance.</p> <p>If you
+         * specify an instance ID that is not valid, an instance that doesn't exist, or an
+         * instance that you do not own, an error (<code>InvalidInstanceID.NotFound</code>)
+         * is returned.</p> <p>Recently terminated instances might appear in the returned
+         * results. This interval is usually less than one hour.</p> <p>In the rare case
+         * where an Availability Zone is experiencing a service disruption and you specify
+         * instance IDs that are in the affected Availability Zone, or do not specify any
+         * instance IDs at all, the call fails. If you specify only instance IDs that are
+         * in an unaffected Availability Zone, the call works normally.</p>  <p>The
+         * order of the elements in the response, including those within nested structures,
+         * might vary. Applications should not assume the elements appear in a particular
+         * order.</p> <p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceImageMetadata">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeInstanceImageMetadataOutcome DescribeInstanceImageMetadata(const Model::DescribeInstanceImageMetadataRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeInstanceImageMetadata that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeInstanceImageMetadataRequestT = Model::DescribeInstanceImageMetadataRequest>
+        Model::DescribeInstanceImageMetadataOutcomeCallable DescribeInstanceImageMetadataCallable(const DescribeInstanceImageMetadataRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeInstanceImageMetadata, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeInstanceImageMetadata that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeInstanceImageMetadataRequestT = Model::DescribeInstanceImageMetadataRequest>
+        void DescribeInstanceImageMetadataAsync(const DescribeInstanceImageMetadataResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeInstanceImageMetadataRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeInstanceImageMetadata, request, handler, context);
         }
 
         /**
@@ -8179,18 +9414,26 @@ namespace EC2
          * <li> <p> <b>Instance state</b> - You can manage your instances from the moment
          * you launch them through their termination. For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html">Instance
-         * lifecycle</a> in the <i>Amazon EC2 User Guide</i>.</p> </li> </ul><p><h3>See
-         * Also:</h3>   <a
+         * lifecycle</a> in the <i>Amazon EC2 User Guide</i>.</p> </li> </ul> <p>The Amazon
+         * EC2 API follows an eventual consistency model. This means that the result of an
+         * API command you run that creates or modifies resources might not be immediately
+         * available to all subsequent commands you run. For guidance on how to manage
+         * eventual consistency, see <a
+         * href="https://docs.aws.amazon.com/ec2/latest/devguide/eventual-consistency.html">Eventual
+         * consistency in the Amazon EC2 API</a> in the <i>Amazon EC2 Developer
+         * Guide</i>.</p>  <p>The order of the elements in the response, including
+         * those within nested structures, might vary. Applications should not assume the
+         * elements appear in a particular order.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceStatus">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeInstanceStatusOutcome DescribeInstanceStatus(const Model::DescribeInstanceStatusRequest& request) const;
+        virtual Model::DescribeInstanceStatusOutcome DescribeInstanceStatus(const Model::DescribeInstanceStatusRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeInstanceStatus that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeInstanceStatusRequestT = Model::DescribeInstanceStatusRequest>
-        Model::DescribeInstanceStatusOutcomeCallable DescribeInstanceStatusCallable(const DescribeInstanceStatusRequestT& request) const
+        Model::DescribeInstanceStatusOutcomeCallable DescribeInstanceStatusCallable(const DescribeInstanceStatusRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeInstanceStatus, request);
         }
@@ -8199,26 +9442,69 @@ namespace EC2
          * An Async wrapper for DescribeInstanceStatus that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeInstanceStatusRequestT = Model::DescribeInstanceStatusRequest>
-        void DescribeInstanceStatusAsync(const DescribeInstanceStatusRequestT& request, const DescribeInstanceStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeInstanceStatusAsync(const DescribeInstanceStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeInstanceStatusRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeInstanceStatus, request, handler, context);
         }
 
         /**
-         * <p>Returns a list of all instance types offered. The results can be filtered by
-         * location (Region or Availability Zone). If no location is specified, the
-         * instance types offered in the current Region are returned.</p><p><h3>See
+         * <p>Describes a tree-based hierarchy that represents the physical host placement
+         * of your EC2 instances within an Availability Zone or Local Zone. You can use
+         * this information to determine the relative proximity of your EC2 instances
+         * within the Amazon Web Services network to support your tightly coupled
+         * workloads.</p> <p>Instance topology is supported for specific instance types
+         * only. For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-topology-prerequisites.html">
+         * Prerequisites for Amazon EC2 instance topology</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p>  <p>The Amazon EC2 API follows an eventual consistency
+         * model due to the distributed nature of the system supporting it. As a result,
+         * when you call the DescribeInstanceTopology API command immediately after
+         * launching instances, the response might return a <code>null</code> value for
+         * <code>capacityBlockId</code> because the data might not have fully propagated
+         * across all subsystems. For more information, see <a
+         * href="https://docs.aws.amazon.com/ec2/latest/devguide/eventual-consistency.html">Eventual
+         * consistency in the Amazon EC2 API</a> in the <i>Amazon EC2 Developer
+         * Guide</i>.</p>  <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-topology.html">Amazon
+         * EC2 instance topology</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
          * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceTopology">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeInstanceTopologyOutcome DescribeInstanceTopology(const Model::DescribeInstanceTopologyRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeInstanceTopology that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeInstanceTopologyRequestT = Model::DescribeInstanceTopologyRequest>
+        Model::DescribeInstanceTopologyOutcomeCallable DescribeInstanceTopologyCallable(const DescribeInstanceTopologyRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeInstanceTopology, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeInstanceTopology that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeInstanceTopologyRequestT = Model::DescribeInstanceTopologyRequest>
+        void DescribeInstanceTopologyAsync(const DescribeInstanceTopologyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeInstanceTopologyRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeInstanceTopology, request, handler, context);
+        }
+
+        /**
+         * <p>Lists the instance types that are offered for the specified location. If no
+         * location is specified, the default is to list the instance types that are
+         * offered in the current Region.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceTypeOfferings">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeInstanceTypeOfferingsOutcome DescribeInstanceTypeOfferings(const Model::DescribeInstanceTypeOfferingsRequest& request) const;
+        virtual Model::DescribeInstanceTypeOfferingsOutcome DescribeInstanceTypeOfferings(const Model::DescribeInstanceTypeOfferingsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeInstanceTypeOfferings that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeInstanceTypeOfferingsRequestT = Model::DescribeInstanceTypeOfferingsRequest>
-        Model::DescribeInstanceTypeOfferingsOutcomeCallable DescribeInstanceTypeOfferingsCallable(const DescribeInstanceTypeOfferingsRequestT& request) const
+        Model::DescribeInstanceTypeOfferingsOutcomeCallable DescribeInstanceTypeOfferingsCallable(const DescribeInstanceTypeOfferingsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeInstanceTypeOfferings, request);
         }
@@ -8227,25 +9513,25 @@ namespace EC2
          * An Async wrapper for DescribeInstanceTypeOfferings that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeInstanceTypeOfferingsRequestT = Model::DescribeInstanceTypeOfferingsRequest>
-        void DescribeInstanceTypeOfferingsAsync(const DescribeInstanceTypeOfferingsRequestT& request, const DescribeInstanceTypeOfferingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeInstanceTypeOfferingsAsync(const DescribeInstanceTypeOfferingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeInstanceTypeOfferingsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeInstanceTypeOfferings, request, handler, context);
         }
 
         /**
-         * <p>Describes the details of the instance types that are offered in a location.
-         * The results can be filtered by the attributes of the instance
-         * types.</p><p><h3>See Also:</h3>   <a
+         * <p>Describes the specified instance types. By default, all instance types for
+         * the current Region are described. Alternatively, you can filter the
+         * results.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceTypes">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeInstanceTypesOutcome DescribeInstanceTypes(const Model::DescribeInstanceTypesRequest& request) const;
+        virtual Model::DescribeInstanceTypesOutcome DescribeInstanceTypes(const Model::DescribeInstanceTypesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeInstanceTypes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeInstanceTypesRequestT = Model::DescribeInstanceTypesRequest>
-        Model::DescribeInstanceTypesOutcomeCallable DescribeInstanceTypesCallable(const DescribeInstanceTypesRequestT& request) const
+        Model::DescribeInstanceTypesOutcomeCallable DescribeInstanceTypesCallable(const DescribeInstanceTypesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeInstanceTypes, request);
         }
@@ -8254,7 +9540,7 @@ namespace EC2
          * An Async wrapper for DescribeInstanceTypes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeInstanceTypesRequestT = Model::DescribeInstanceTypesRequest>
-        void DescribeInstanceTypesAsync(const DescribeInstanceTypesRequestT& request, const DescribeInstanceTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeInstanceTypesAsync(const DescribeInstanceTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeInstanceTypesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeInstanceTypes, request, handler, context);
         }
@@ -8274,17 +9560,28 @@ namespace EC2
          * experiencing a service disruption and you specify instance IDs that are in the
          * affected zone, or do not specify any instance IDs at all, the call fails. If you
          * describe instances and specify only instance IDs that are in an unaffected zone,
-         * the call works normally.</p><p><h3>See Also:</h3>   <a
+         * the call works normally.</p> <p>The Amazon EC2 API follows an eventual
+         * consistency model. This means that the result of an API command you run that
+         * creates or modifies resources might not be immediately available to all
+         * subsequent commands you run. For guidance on how to manage eventual consistency,
+         * see <a
+         * href="https://docs.aws.amazon.com/ec2/latest/devguide/eventual-consistency.html">Eventual
+         * consistency in the Amazon EC2 API</a> in the <i>Amazon EC2 Developer
+         * Guide</i>.</p>  <p>We strongly recommend using only paginated
+         * requests. Unpaginated requests are susceptible to throttling and timeouts.</p>
+         *   <p>The order of the elements in the response, including
+         * those within nested structures, might vary. Applications should not assume the
+         * elements appear in a particular order.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstances">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeInstancesOutcome DescribeInstances(const Model::DescribeInstancesRequest& request) const;
+        virtual Model::DescribeInstancesOutcome DescribeInstances(const Model::DescribeInstancesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeInstances that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeInstancesRequestT = Model::DescribeInstancesRequest>
-        Model::DescribeInstancesOutcomeCallable DescribeInstancesCallable(const DescribeInstancesRequestT& request) const
+        Model::DescribeInstancesOutcomeCallable DescribeInstancesCallable(const DescribeInstancesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeInstances, request);
         }
@@ -8293,24 +9590,26 @@ namespace EC2
          * An Async wrapper for DescribeInstances that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeInstancesRequestT = Model::DescribeInstancesRequest>
-        void DescribeInstancesAsync(const DescribeInstancesRequestT& request, const DescribeInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeInstancesAsync(const DescribeInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeInstancesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeInstances, request, handler, context);
         }
 
         /**
-         * <p>Describes one or more of your internet gateways.</p><p><h3>See Also:</h3>  
-         * <a
+         * <p>Describes your internet gateways. The default is to describe all your
+         * internet gateways. Alternatively, you can specify specific internet gateway IDs
+         * or filter the results to include only the internet gateways that match specific
+         * criteria.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInternetGateways">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeInternetGatewaysOutcome DescribeInternetGateways(const Model::DescribeInternetGatewaysRequest& request) const;
+        virtual Model::DescribeInternetGatewaysOutcome DescribeInternetGateways(const Model::DescribeInternetGatewaysRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeInternetGateways that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeInternetGatewaysRequestT = Model::DescribeInternetGatewaysRequest>
-        Model::DescribeInternetGatewaysOutcomeCallable DescribeInternetGatewaysCallable(const DescribeInternetGatewaysRequestT& request) const
+        Model::DescribeInternetGatewaysOutcomeCallable DescribeInternetGatewaysCallable(const DescribeInternetGatewaysRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeInternetGateways, request);
         }
@@ -8319,9 +9618,67 @@ namespace EC2
          * An Async wrapper for DescribeInternetGateways that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeInternetGatewaysRequestT = Model::DescribeInternetGatewaysRequest>
-        void DescribeInternetGatewaysAsync(const DescribeInternetGatewaysRequestT& request, const DescribeInternetGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeInternetGatewaysAsync(const DescribeInternetGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeInternetGatewaysRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeInternetGateways, request, handler, context);
+        }
+
+        /**
+         * <p>Describes your Autonomous System Numbers (ASNs), their provisioning statuses,
+         * and the BYOIP CIDRs with which they are associated. For more information, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/ipam/tutorials-byoasn.html">Tutorial:
+         * Bring your ASN to IPAM</a> in the <i>Amazon VPC IPAM guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIpamByoasn">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeIpamByoasnOutcome DescribeIpamByoasn(const Model::DescribeIpamByoasnRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeIpamByoasn that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeIpamByoasnRequestT = Model::DescribeIpamByoasnRequest>
+        Model::DescribeIpamByoasnOutcomeCallable DescribeIpamByoasnCallable(const DescribeIpamByoasnRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeIpamByoasn, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeIpamByoasn that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeIpamByoasnRequestT = Model::DescribeIpamByoasnRequest>
+        void DescribeIpamByoasnAsync(const DescribeIpamByoasnResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeIpamByoasnRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeIpamByoasn, request, handler, context);
+        }
+
+        /**
+         * <p>Describe verification tokens. A verification token is an Amazon Web
+         * Services-generated random value that you can use to prove ownership of an
+         * external resource. For example, you can use a verification token to validate
+         * that you control a public IP address range when you bring an IP address range to
+         * Amazon Web Services (BYOIP). </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIpamExternalResourceVerificationTokens">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeIpamExternalResourceVerificationTokensOutcome DescribeIpamExternalResourceVerificationTokens(const Model::DescribeIpamExternalResourceVerificationTokensRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeIpamExternalResourceVerificationTokens that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeIpamExternalResourceVerificationTokensRequestT = Model::DescribeIpamExternalResourceVerificationTokensRequest>
+        Model::DescribeIpamExternalResourceVerificationTokensOutcomeCallable DescribeIpamExternalResourceVerificationTokensCallable(const DescribeIpamExternalResourceVerificationTokensRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeIpamExternalResourceVerificationTokens, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeIpamExternalResourceVerificationTokens that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeIpamExternalResourceVerificationTokensRequestT = Model::DescribeIpamExternalResourceVerificationTokensRequest>
+        void DescribeIpamExternalResourceVerificationTokensAsync(const DescribeIpamExternalResourceVerificationTokensResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeIpamExternalResourceVerificationTokensRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeIpamExternalResourceVerificationTokens, request, handler, context);
         }
 
         /**
@@ -8329,13 +9686,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIpamPools">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeIpamPoolsOutcome DescribeIpamPools(const Model::DescribeIpamPoolsRequest& request) const;
+        virtual Model::DescribeIpamPoolsOutcome DescribeIpamPools(const Model::DescribeIpamPoolsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeIpamPools that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeIpamPoolsRequestT = Model::DescribeIpamPoolsRequest>
-        Model::DescribeIpamPoolsOutcomeCallable DescribeIpamPoolsCallable(const DescribeIpamPoolsRequestT& request) const
+        Model::DescribeIpamPoolsOutcomeCallable DescribeIpamPoolsCallable(const DescribeIpamPoolsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeIpamPools, request);
         }
@@ -8344,7 +9701,7 @@ namespace EC2
          * An Async wrapper for DescribeIpamPools that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeIpamPoolsRequestT = Model::DescribeIpamPoolsRequest>
-        void DescribeIpamPoolsAsync(const DescribeIpamPoolsRequestT& request, const DescribeIpamPoolsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeIpamPoolsAsync(const DescribeIpamPoolsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeIpamPoolsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeIpamPools, request, handler, context);
         }
@@ -8356,13 +9713,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIpamResourceDiscoveries">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeIpamResourceDiscoveriesOutcome DescribeIpamResourceDiscoveries(const Model::DescribeIpamResourceDiscoveriesRequest& request) const;
+        virtual Model::DescribeIpamResourceDiscoveriesOutcome DescribeIpamResourceDiscoveries(const Model::DescribeIpamResourceDiscoveriesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeIpamResourceDiscoveries that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeIpamResourceDiscoveriesRequestT = Model::DescribeIpamResourceDiscoveriesRequest>
-        Model::DescribeIpamResourceDiscoveriesOutcomeCallable DescribeIpamResourceDiscoveriesCallable(const DescribeIpamResourceDiscoveriesRequestT& request) const
+        Model::DescribeIpamResourceDiscoveriesOutcomeCallable DescribeIpamResourceDiscoveriesCallable(const DescribeIpamResourceDiscoveriesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeIpamResourceDiscoveries, request);
         }
@@ -8371,7 +9728,7 @@ namespace EC2
          * An Async wrapper for DescribeIpamResourceDiscoveries that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeIpamResourceDiscoveriesRequestT = Model::DescribeIpamResourceDiscoveriesRequest>
-        void DescribeIpamResourceDiscoveriesAsync(const DescribeIpamResourceDiscoveriesRequestT& request, const DescribeIpamResourceDiscoveriesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeIpamResourceDiscoveriesAsync(const DescribeIpamResourceDiscoveriesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeIpamResourceDiscoveriesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeIpamResourceDiscoveries, request, handler, context);
         }
@@ -8383,13 +9740,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIpamResourceDiscoveryAssociations">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeIpamResourceDiscoveryAssociationsOutcome DescribeIpamResourceDiscoveryAssociations(const Model::DescribeIpamResourceDiscoveryAssociationsRequest& request) const;
+        virtual Model::DescribeIpamResourceDiscoveryAssociationsOutcome DescribeIpamResourceDiscoveryAssociations(const Model::DescribeIpamResourceDiscoveryAssociationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeIpamResourceDiscoveryAssociations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeIpamResourceDiscoveryAssociationsRequestT = Model::DescribeIpamResourceDiscoveryAssociationsRequest>
-        Model::DescribeIpamResourceDiscoveryAssociationsOutcomeCallable DescribeIpamResourceDiscoveryAssociationsCallable(const DescribeIpamResourceDiscoveryAssociationsRequestT& request) const
+        Model::DescribeIpamResourceDiscoveryAssociationsOutcomeCallable DescribeIpamResourceDiscoveryAssociationsCallable(const DescribeIpamResourceDiscoveryAssociationsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeIpamResourceDiscoveryAssociations, request);
         }
@@ -8398,7 +9755,7 @@ namespace EC2
          * An Async wrapper for DescribeIpamResourceDiscoveryAssociations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeIpamResourceDiscoveryAssociationsRequestT = Model::DescribeIpamResourceDiscoveryAssociationsRequest>
-        void DescribeIpamResourceDiscoveryAssociationsAsync(const DescribeIpamResourceDiscoveryAssociationsRequestT& request, const DescribeIpamResourceDiscoveryAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeIpamResourceDiscoveryAssociationsAsync(const DescribeIpamResourceDiscoveryAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeIpamResourceDiscoveryAssociationsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeIpamResourceDiscoveryAssociations, request, handler, context);
         }
@@ -8408,13 +9765,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIpamScopes">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeIpamScopesOutcome DescribeIpamScopes(const Model::DescribeIpamScopesRequest& request) const;
+        virtual Model::DescribeIpamScopesOutcome DescribeIpamScopes(const Model::DescribeIpamScopesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeIpamScopes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeIpamScopesRequestT = Model::DescribeIpamScopesRequest>
-        Model::DescribeIpamScopesOutcomeCallable DescribeIpamScopesCallable(const DescribeIpamScopesRequestT& request) const
+        Model::DescribeIpamScopesOutcomeCallable DescribeIpamScopesCallable(const DescribeIpamScopesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeIpamScopes, request);
         }
@@ -8423,7 +9780,7 @@ namespace EC2
          * An Async wrapper for DescribeIpamScopes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeIpamScopesRequestT = Model::DescribeIpamScopesRequest>
-        void DescribeIpamScopesAsync(const DescribeIpamScopesRequestT& request, const DescribeIpamScopesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeIpamScopesAsync(const DescribeIpamScopesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeIpamScopesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeIpamScopes, request, handler, context);
         }
@@ -8436,13 +9793,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIpams">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeIpamsOutcome DescribeIpams(const Model::DescribeIpamsRequest& request) const;
+        virtual Model::DescribeIpamsOutcome DescribeIpams(const Model::DescribeIpamsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeIpams that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeIpamsRequestT = Model::DescribeIpamsRequest>
-        Model::DescribeIpamsOutcomeCallable DescribeIpamsCallable(const DescribeIpamsRequestT& request) const
+        Model::DescribeIpamsOutcomeCallable DescribeIpamsCallable(const DescribeIpamsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeIpams, request);
         }
@@ -8451,7 +9808,7 @@ namespace EC2
          * An Async wrapper for DescribeIpams that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeIpamsRequestT = Model::DescribeIpamsRequest>
-        void DescribeIpamsAsync(const DescribeIpamsRequestT& request, const DescribeIpamsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeIpamsAsync(const DescribeIpamsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeIpamsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeIpams, request, handler, context);
         }
@@ -8461,13 +9818,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIpv6Pools">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeIpv6PoolsOutcome DescribeIpv6Pools(const Model::DescribeIpv6PoolsRequest& request) const;
+        virtual Model::DescribeIpv6PoolsOutcome DescribeIpv6Pools(const Model::DescribeIpv6PoolsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeIpv6Pools that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeIpv6PoolsRequestT = Model::DescribeIpv6PoolsRequest>
-        Model::DescribeIpv6PoolsOutcomeCallable DescribeIpv6PoolsCallable(const DescribeIpv6PoolsRequestT& request) const
+        Model::DescribeIpv6PoolsOutcomeCallable DescribeIpv6PoolsCallable(const DescribeIpv6PoolsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeIpv6Pools, request);
         }
@@ -8476,7 +9833,7 @@ namespace EC2
          * An Async wrapper for DescribeIpv6Pools that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeIpv6PoolsRequestT = Model::DescribeIpv6PoolsRequest>
-        void DescribeIpv6PoolsAsync(const DescribeIpv6PoolsRequestT& request, const DescribeIpv6PoolsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeIpv6PoolsAsync(const DescribeIpv6PoolsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeIpv6PoolsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeIpv6Pools, request, handler, context);
         }
@@ -8485,18 +9842,18 @@ namespace EC2
          * <p>Describes the specified key pairs or all of your key pairs.</p> <p>For more
          * information about key pairs, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Amazon
-         * EC2 key pairs</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * EC2 key pairs</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3> 
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeKeyPairs">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeKeyPairsOutcome DescribeKeyPairs(const Model::DescribeKeyPairsRequest& request) const;
+        virtual Model::DescribeKeyPairsOutcome DescribeKeyPairs(const Model::DescribeKeyPairsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeKeyPairs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeKeyPairsRequestT = Model::DescribeKeyPairsRequest>
-        Model::DescribeKeyPairsOutcomeCallable DescribeKeyPairsCallable(const DescribeKeyPairsRequestT& request) const
+        Model::DescribeKeyPairsOutcomeCallable DescribeKeyPairsCallable(const DescribeKeyPairsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeKeyPairs, request);
         }
@@ -8505,7 +9862,7 @@ namespace EC2
          * An Async wrapper for DescribeKeyPairs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeKeyPairsRequestT = Model::DescribeKeyPairsRequest>
-        void DescribeKeyPairsAsync(const DescribeKeyPairsRequestT& request, const DescribeKeyPairsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeKeyPairsAsync(const DescribeKeyPairsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeKeyPairsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeKeyPairs, request, handler, context);
         }
@@ -8518,13 +9875,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeLaunchTemplateVersions">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeLaunchTemplateVersionsOutcome DescribeLaunchTemplateVersions(const Model::DescribeLaunchTemplateVersionsRequest& request) const;
+        virtual Model::DescribeLaunchTemplateVersionsOutcome DescribeLaunchTemplateVersions(const Model::DescribeLaunchTemplateVersionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeLaunchTemplateVersions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeLaunchTemplateVersionsRequestT = Model::DescribeLaunchTemplateVersionsRequest>
-        Model::DescribeLaunchTemplateVersionsOutcomeCallable DescribeLaunchTemplateVersionsCallable(const DescribeLaunchTemplateVersionsRequestT& request) const
+        Model::DescribeLaunchTemplateVersionsOutcomeCallable DescribeLaunchTemplateVersionsCallable(const DescribeLaunchTemplateVersionsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeLaunchTemplateVersions, request);
         }
@@ -8533,7 +9890,7 @@ namespace EC2
          * An Async wrapper for DescribeLaunchTemplateVersions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeLaunchTemplateVersionsRequestT = Model::DescribeLaunchTemplateVersionsRequest>
-        void DescribeLaunchTemplateVersionsAsync(const DescribeLaunchTemplateVersionsRequestT& request, const DescribeLaunchTemplateVersionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeLaunchTemplateVersionsAsync(const DescribeLaunchTemplateVersionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeLaunchTemplateVersionsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeLaunchTemplateVersions, request, handler, context);
         }
@@ -8543,13 +9900,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeLaunchTemplates">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeLaunchTemplatesOutcome DescribeLaunchTemplates(const Model::DescribeLaunchTemplatesRequest& request) const;
+        virtual Model::DescribeLaunchTemplatesOutcome DescribeLaunchTemplates(const Model::DescribeLaunchTemplatesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeLaunchTemplates that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeLaunchTemplatesRequestT = Model::DescribeLaunchTemplatesRequest>
-        Model::DescribeLaunchTemplatesOutcomeCallable DescribeLaunchTemplatesCallable(const DescribeLaunchTemplatesRequestT& request) const
+        Model::DescribeLaunchTemplatesOutcomeCallable DescribeLaunchTemplatesCallable(const DescribeLaunchTemplatesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeLaunchTemplates, request);
         }
@@ -8558,7 +9915,7 @@ namespace EC2
          * An Async wrapper for DescribeLaunchTemplates that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeLaunchTemplatesRequestT = Model::DescribeLaunchTemplatesRequest>
-        void DescribeLaunchTemplatesAsync(const DescribeLaunchTemplatesRequestT& request, const DescribeLaunchTemplatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeLaunchTemplatesAsync(const DescribeLaunchTemplatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeLaunchTemplatesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeLaunchTemplates, request, handler, context);
         }
@@ -8569,13 +9926,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOutcome DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations(const Model::DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest& request) const;
+        virtual Model::DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOutcome DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations(const Model::DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequestT = Model::DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest>
-        Model::DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOutcomeCallable DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsCallable(const DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequestT& request) const
+        Model::DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOutcomeCallable DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsCallable(const DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations, request);
         }
@@ -8584,7 +9941,7 @@ namespace EC2
          * An Async wrapper for DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequestT = Model::DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest>
-        void DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsAsync(const DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequestT& request, const DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsAsync(const DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations, request, handler, context);
         }
@@ -8595,13 +9952,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeLocalGatewayRouteTableVpcAssociations">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeLocalGatewayRouteTableVpcAssociationsOutcome DescribeLocalGatewayRouteTableVpcAssociations(const Model::DescribeLocalGatewayRouteTableVpcAssociationsRequest& request) const;
+        virtual Model::DescribeLocalGatewayRouteTableVpcAssociationsOutcome DescribeLocalGatewayRouteTableVpcAssociations(const Model::DescribeLocalGatewayRouteTableVpcAssociationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeLocalGatewayRouteTableVpcAssociations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeLocalGatewayRouteTableVpcAssociationsRequestT = Model::DescribeLocalGatewayRouteTableVpcAssociationsRequest>
-        Model::DescribeLocalGatewayRouteTableVpcAssociationsOutcomeCallable DescribeLocalGatewayRouteTableVpcAssociationsCallable(const DescribeLocalGatewayRouteTableVpcAssociationsRequestT& request) const
+        Model::DescribeLocalGatewayRouteTableVpcAssociationsOutcomeCallable DescribeLocalGatewayRouteTableVpcAssociationsCallable(const DescribeLocalGatewayRouteTableVpcAssociationsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeLocalGatewayRouteTableVpcAssociations, request);
         }
@@ -8610,7 +9967,7 @@ namespace EC2
          * An Async wrapper for DescribeLocalGatewayRouteTableVpcAssociations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeLocalGatewayRouteTableVpcAssociationsRequestT = Model::DescribeLocalGatewayRouteTableVpcAssociationsRequest>
-        void DescribeLocalGatewayRouteTableVpcAssociationsAsync(const DescribeLocalGatewayRouteTableVpcAssociationsRequestT& request, const DescribeLocalGatewayRouteTableVpcAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeLocalGatewayRouteTableVpcAssociationsAsync(const DescribeLocalGatewayRouteTableVpcAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeLocalGatewayRouteTableVpcAssociationsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeLocalGatewayRouteTableVpcAssociations, request, handler, context);
         }
@@ -8622,13 +9979,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeLocalGatewayRouteTables">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeLocalGatewayRouteTablesOutcome DescribeLocalGatewayRouteTables(const Model::DescribeLocalGatewayRouteTablesRequest& request) const;
+        virtual Model::DescribeLocalGatewayRouteTablesOutcome DescribeLocalGatewayRouteTables(const Model::DescribeLocalGatewayRouteTablesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeLocalGatewayRouteTables that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeLocalGatewayRouteTablesRequestT = Model::DescribeLocalGatewayRouteTablesRequest>
-        Model::DescribeLocalGatewayRouteTablesOutcomeCallable DescribeLocalGatewayRouteTablesCallable(const DescribeLocalGatewayRouteTablesRequestT& request) const
+        Model::DescribeLocalGatewayRouteTablesOutcomeCallable DescribeLocalGatewayRouteTablesCallable(const DescribeLocalGatewayRouteTablesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeLocalGatewayRouteTables, request);
         }
@@ -8637,7 +9994,7 @@ namespace EC2
          * An Async wrapper for DescribeLocalGatewayRouteTables that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeLocalGatewayRouteTablesRequestT = Model::DescribeLocalGatewayRouteTablesRequest>
-        void DescribeLocalGatewayRouteTablesAsync(const DescribeLocalGatewayRouteTablesRequestT& request, const DescribeLocalGatewayRouteTablesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeLocalGatewayRouteTablesAsync(const DescribeLocalGatewayRouteTablesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeLocalGatewayRouteTablesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeLocalGatewayRouteTables, request, handler, context);
         }
@@ -8648,13 +10005,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeLocalGatewayVirtualInterfaceGroups">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeLocalGatewayVirtualInterfaceGroupsOutcome DescribeLocalGatewayVirtualInterfaceGroups(const Model::DescribeLocalGatewayVirtualInterfaceGroupsRequest& request) const;
+        virtual Model::DescribeLocalGatewayVirtualInterfaceGroupsOutcome DescribeLocalGatewayVirtualInterfaceGroups(const Model::DescribeLocalGatewayVirtualInterfaceGroupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeLocalGatewayVirtualInterfaceGroups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeLocalGatewayVirtualInterfaceGroupsRequestT = Model::DescribeLocalGatewayVirtualInterfaceGroupsRequest>
-        Model::DescribeLocalGatewayVirtualInterfaceGroupsOutcomeCallable DescribeLocalGatewayVirtualInterfaceGroupsCallable(const DescribeLocalGatewayVirtualInterfaceGroupsRequestT& request) const
+        Model::DescribeLocalGatewayVirtualInterfaceGroupsOutcomeCallable DescribeLocalGatewayVirtualInterfaceGroupsCallable(const DescribeLocalGatewayVirtualInterfaceGroupsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeLocalGatewayVirtualInterfaceGroups, request);
         }
@@ -8663,7 +10020,7 @@ namespace EC2
          * An Async wrapper for DescribeLocalGatewayVirtualInterfaceGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeLocalGatewayVirtualInterfaceGroupsRequestT = Model::DescribeLocalGatewayVirtualInterfaceGroupsRequest>
-        void DescribeLocalGatewayVirtualInterfaceGroupsAsync(const DescribeLocalGatewayVirtualInterfaceGroupsRequestT& request, const DescribeLocalGatewayVirtualInterfaceGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeLocalGatewayVirtualInterfaceGroupsAsync(const DescribeLocalGatewayVirtualInterfaceGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeLocalGatewayVirtualInterfaceGroupsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeLocalGatewayVirtualInterfaceGroups, request, handler, context);
         }
@@ -8674,13 +10031,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeLocalGatewayVirtualInterfaces">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeLocalGatewayVirtualInterfacesOutcome DescribeLocalGatewayVirtualInterfaces(const Model::DescribeLocalGatewayVirtualInterfacesRequest& request) const;
+        virtual Model::DescribeLocalGatewayVirtualInterfacesOutcome DescribeLocalGatewayVirtualInterfaces(const Model::DescribeLocalGatewayVirtualInterfacesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeLocalGatewayVirtualInterfaces that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeLocalGatewayVirtualInterfacesRequestT = Model::DescribeLocalGatewayVirtualInterfacesRequest>
-        Model::DescribeLocalGatewayVirtualInterfacesOutcomeCallable DescribeLocalGatewayVirtualInterfacesCallable(const DescribeLocalGatewayVirtualInterfacesRequestT& request) const
+        Model::DescribeLocalGatewayVirtualInterfacesOutcomeCallable DescribeLocalGatewayVirtualInterfacesCallable(const DescribeLocalGatewayVirtualInterfacesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeLocalGatewayVirtualInterfaces, request);
         }
@@ -8689,7 +10046,7 @@ namespace EC2
          * An Async wrapper for DescribeLocalGatewayVirtualInterfaces that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeLocalGatewayVirtualInterfacesRequestT = Model::DescribeLocalGatewayVirtualInterfacesRequest>
-        void DescribeLocalGatewayVirtualInterfacesAsync(const DescribeLocalGatewayVirtualInterfacesRequestT& request, const DescribeLocalGatewayVirtualInterfacesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeLocalGatewayVirtualInterfacesAsync(const DescribeLocalGatewayVirtualInterfacesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeLocalGatewayVirtualInterfacesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeLocalGatewayVirtualInterfaces, request, handler, context);
         }
@@ -8701,13 +10058,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeLocalGateways">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeLocalGatewaysOutcome DescribeLocalGateways(const Model::DescribeLocalGatewaysRequest& request) const;
+        virtual Model::DescribeLocalGatewaysOutcome DescribeLocalGateways(const Model::DescribeLocalGatewaysRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeLocalGateways that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeLocalGatewaysRequestT = Model::DescribeLocalGatewaysRequest>
-        Model::DescribeLocalGatewaysOutcomeCallable DescribeLocalGatewaysCallable(const DescribeLocalGatewaysRequestT& request) const
+        Model::DescribeLocalGatewaysOutcomeCallable DescribeLocalGatewaysCallable(const DescribeLocalGatewaysRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeLocalGateways, request);
         }
@@ -8716,25 +10073,105 @@ namespace EC2
          * An Async wrapper for DescribeLocalGateways that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeLocalGatewaysRequestT = Model::DescribeLocalGatewaysRequest>
-        void DescribeLocalGatewaysAsync(const DescribeLocalGatewaysRequestT& request, const DescribeLocalGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeLocalGatewaysAsync(const DescribeLocalGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeLocalGatewaysRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeLocalGateways, request, handler, context);
         }
 
         /**
+         * <p>Describes the lock status for a snapshot.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeLockedSnapshots">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeLockedSnapshotsOutcome DescribeLockedSnapshots(const Model::DescribeLockedSnapshotsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeLockedSnapshots that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeLockedSnapshotsRequestT = Model::DescribeLockedSnapshotsRequest>
+        Model::DescribeLockedSnapshotsOutcomeCallable DescribeLockedSnapshotsCallable(const DescribeLockedSnapshotsRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeLockedSnapshots, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeLockedSnapshots that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeLockedSnapshotsRequestT = Model::DescribeLockedSnapshotsRequest>
+        void DescribeLockedSnapshotsAsync(const DescribeLockedSnapshotsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeLockedSnapshotsRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeLockedSnapshots, request, handler, context);
+        }
+
+        /**
+         * <p>Describes the specified EC2 Mac Dedicated Host or all of your EC2 Mac
+         * Dedicated Hosts.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeMacHosts">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeMacHostsOutcome DescribeMacHosts(const Model::DescribeMacHostsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeMacHosts that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeMacHostsRequestT = Model::DescribeMacHostsRequest>
+        Model::DescribeMacHostsOutcomeCallable DescribeMacHostsCallable(const DescribeMacHostsRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeMacHosts, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeMacHosts that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeMacHostsRequestT = Model::DescribeMacHostsRequest>
+        void DescribeMacHostsAsync(const DescribeMacHostsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeMacHostsRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeMacHosts, request, handler, context);
+        }
+
+        /**
+         * <p>Describes a System Integrity Protection (SIP) modification task or volume
+         * ownership delegation task for an Amazon EC2 Mac instance. For more information,
+         * see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mac-sip-settings.html#mac-sip-configure">Configure
+         * SIP for Amazon EC2 instances</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeMacModificationTasks">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeMacModificationTasksOutcome DescribeMacModificationTasks(const Model::DescribeMacModificationTasksRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeMacModificationTasks that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeMacModificationTasksRequestT = Model::DescribeMacModificationTasksRequest>
+        Model::DescribeMacModificationTasksOutcomeCallable DescribeMacModificationTasksCallable(const DescribeMacModificationTasksRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeMacModificationTasks, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeMacModificationTasks that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeMacModificationTasksRequestT = Model::DescribeMacModificationTasksRequest>
+        void DescribeMacModificationTasksAsync(const DescribeMacModificationTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeMacModificationTasksRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeMacModificationTasks, request, handler, context);
+        }
+
+        /**
          * <p>Describes your managed prefix lists and any Amazon Web Services-managed
-         * prefix lists.</p> <p>To view the entries for your prefix list, use
-         * <a>GetManagedPrefixListEntries</a>.</p><p><h3>See Also:</h3>   <a
+         * prefix lists.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeManagedPrefixLists">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeManagedPrefixListsOutcome DescribeManagedPrefixLists(const Model::DescribeManagedPrefixListsRequest& request) const;
+        virtual Model::DescribeManagedPrefixListsOutcome DescribeManagedPrefixLists(const Model::DescribeManagedPrefixListsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeManagedPrefixLists that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeManagedPrefixListsRequestT = Model::DescribeManagedPrefixListsRequest>
-        Model::DescribeManagedPrefixListsOutcomeCallable DescribeManagedPrefixListsCallable(const DescribeManagedPrefixListsRequestT& request) const
+        Model::DescribeManagedPrefixListsOutcomeCallable DescribeManagedPrefixListsCallable(const DescribeManagedPrefixListsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeManagedPrefixLists, request);
         }
@@ -8743,26 +10180,26 @@ namespace EC2
          * An Async wrapper for DescribeManagedPrefixLists that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeManagedPrefixListsRequestT = Model::DescribeManagedPrefixListsRequest>
-        void DescribeManagedPrefixListsAsync(const DescribeManagedPrefixListsRequestT& request, const DescribeManagedPrefixListsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeManagedPrefixListsAsync(const DescribeManagedPrefixListsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeManagedPrefixListsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeManagedPrefixLists, request, handler, context);
         }
 
         /**
-         * <p>Describes your Elastic IP addresses that are being moved to the EC2-VPC
-         * platform, or that are being restored to the EC2-Classic platform. This request
-         * does not return information about any other Elastic IP addresses in your
-         * account.</p><p><h3>See Also:</h3>   <a
+         *  <p>This action is deprecated.</p>  <p>Describes your Elastic IP
+         * addresses that are being moved from or being restored to the EC2-Classic
+         * platform. This request does not return information about any other Elastic IP
+         * addresses in your account.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeMovingAddresses">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeMovingAddressesOutcome DescribeMovingAddresses(const Model::DescribeMovingAddressesRequest& request) const;
+        virtual Model::DescribeMovingAddressesOutcome DescribeMovingAddresses(const Model::DescribeMovingAddressesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeMovingAddresses that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeMovingAddressesRequestT = Model::DescribeMovingAddressesRequest>
-        Model::DescribeMovingAddressesOutcomeCallable DescribeMovingAddressesCallable(const DescribeMovingAddressesRequestT& request) const
+        Model::DescribeMovingAddressesOutcomeCallable DescribeMovingAddressesCallable(const DescribeMovingAddressesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeMovingAddresses, request);
         }
@@ -8771,23 +10208,26 @@ namespace EC2
          * An Async wrapper for DescribeMovingAddresses that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeMovingAddressesRequestT = Model::DescribeMovingAddressesRequest>
-        void DescribeMovingAddressesAsync(const DescribeMovingAddressesRequestT& request, const DescribeMovingAddressesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeMovingAddressesAsync(const DescribeMovingAddressesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeMovingAddressesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeMovingAddresses, request, handler, context);
         }
 
         /**
-         * <p>Describes one or more of your NAT gateways.</p><p><h3>See Also:</h3>   <a
+         * <p>Describes your NAT gateways. The default is to describe all your NAT
+         * gateways. Alternatively, you can specify specific NAT gateway IDs or filter the
+         * results to include only the NAT gateways that match specific
+         * criteria.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNatGateways">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeNatGatewaysOutcome DescribeNatGateways(const Model::DescribeNatGatewaysRequest& request) const;
+        virtual Model::DescribeNatGatewaysOutcome DescribeNatGateways(const Model::DescribeNatGatewaysRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeNatGateways that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeNatGatewaysRequestT = Model::DescribeNatGatewaysRequest>
-        Model::DescribeNatGatewaysOutcomeCallable DescribeNatGatewaysCallable(const DescribeNatGatewaysRequestT& request) const
+        Model::DescribeNatGatewaysOutcomeCallable DescribeNatGatewaysCallable(const DescribeNatGatewaysRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeNatGateways, request);
         }
@@ -8796,26 +10236,28 @@ namespace EC2
          * An Async wrapper for DescribeNatGateways that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeNatGatewaysRequestT = Model::DescribeNatGatewaysRequest>
-        void DescribeNatGatewaysAsync(const DescribeNatGatewaysRequestT& request, const DescribeNatGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeNatGatewaysAsync(const DescribeNatGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeNatGatewaysRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeNatGateways, request, handler, context);
         }
 
         /**
-         * <p>Describes one or more of your network ACLs.</p> <p>For more information, see
-         * <a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html">Network
-         * ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Describes your network ACLs. The default is to describe all your network
+         * ACLs. Alternatively, you can specify specific network ACL IDs or filter the
+         * results to include only the network ACLs that match specific criteria.</p>
+         * <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html">Network
+         * ACLs</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkAcls">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeNetworkAclsOutcome DescribeNetworkAcls(const Model::DescribeNetworkAclsRequest& request) const;
+        virtual Model::DescribeNetworkAclsOutcome DescribeNetworkAcls(const Model::DescribeNetworkAclsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeNetworkAcls that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeNetworkAclsRequestT = Model::DescribeNetworkAclsRequest>
-        Model::DescribeNetworkAclsOutcomeCallable DescribeNetworkAclsCallable(const DescribeNetworkAclsRequestT& request) const
+        Model::DescribeNetworkAclsOutcomeCallable DescribeNetworkAclsCallable(const DescribeNetworkAclsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeNetworkAcls, request);
         }
@@ -8824,7 +10266,7 @@ namespace EC2
          * An Async wrapper for DescribeNetworkAcls that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeNetworkAclsRequestT = Model::DescribeNetworkAclsRequest>
-        void DescribeNetworkAclsAsync(const DescribeNetworkAclsRequestT& request, const DescribeNetworkAclsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeNetworkAclsAsync(const DescribeNetworkAclsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeNetworkAclsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeNetworkAcls, request, handler, context);
         }
@@ -8835,13 +10277,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInsightsAccessScopeAnalyses">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeNetworkInsightsAccessScopeAnalysesOutcome DescribeNetworkInsightsAccessScopeAnalyses(const Model::DescribeNetworkInsightsAccessScopeAnalysesRequest& request) const;
+        virtual Model::DescribeNetworkInsightsAccessScopeAnalysesOutcome DescribeNetworkInsightsAccessScopeAnalyses(const Model::DescribeNetworkInsightsAccessScopeAnalysesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeNetworkInsightsAccessScopeAnalyses that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeNetworkInsightsAccessScopeAnalysesRequestT = Model::DescribeNetworkInsightsAccessScopeAnalysesRequest>
-        Model::DescribeNetworkInsightsAccessScopeAnalysesOutcomeCallable DescribeNetworkInsightsAccessScopeAnalysesCallable(const DescribeNetworkInsightsAccessScopeAnalysesRequestT& request) const
+        Model::DescribeNetworkInsightsAccessScopeAnalysesOutcomeCallable DescribeNetworkInsightsAccessScopeAnalysesCallable(const DescribeNetworkInsightsAccessScopeAnalysesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeNetworkInsightsAccessScopeAnalyses, request);
         }
@@ -8850,7 +10292,7 @@ namespace EC2
          * An Async wrapper for DescribeNetworkInsightsAccessScopeAnalyses that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeNetworkInsightsAccessScopeAnalysesRequestT = Model::DescribeNetworkInsightsAccessScopeAnalysesRequest>
-        void DescribeNetworkInsightsAccessScopeAnalysesAsync(const DescribeNetworkInsightsAccessScopeAnalysesRequestT& request, const DescribeNetworkInsightsAccessScopeAnalysesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeNetworkInsightsAccessScopeAnalysesAsync(const DescribeNetworkInsightsAccessScopeAnalysesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeNetworkInsightsAccessScopeAnalysesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeNetworkInsightsAccessScopeAnalyses, request, handler, context);
         }
@@ -8860,13 +10302,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInsightsAccessScopes">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeNetworkInsightsAccessScopesOutcome DescribeNetworkInsightsAccessScopes(const Model::DescribeNetworkInsightsAccessScopesRequest& request) const;
+        virtual Model::DescribeNetworkInsightsAccessScopesOutcome DescribeNetworkInsightsAccessScopes(const Model::DescribeNetworkInsightsAccessScopesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeNetworkInsightsAccessScopes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeNetworkInsightsAccessScopesRequestT = Model::DescribeNetworkInsightsAccessScopesRequest>
-        Model::DescribeNetworkInsightsAccessScopesOutcomeCallable DescribeNetworkInsightsAccessScopesCallable(const DescribeNetworkInsightsAccessScopesRequestT& request) const
+        Model::DescribeNetworkInsightsAccessScopesOutcomeCallable DescribeNetworkInsightsAccessScopesCallable(const DescribeNetworkInsightsAccessScopesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeNetworkInsightsAccessScopes, request);
         }
@@ -8875,7 +10317,7 @@ namespace EC2
          * An Async wrapper for DescribeNetworkInsightsAccessScopes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeNetworkInsightsAccessScopesRequestT = Model::DescribeNetworkInsightsAccessScopesRequest>
-        void DescribeNetworkInsightsAccessScopesAsync(const DescribeNetworkInsightsAccessScopesRequestT& request, const DescribeNetworkInsightsAccessScopesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeNetworkInsightsAccessScopesAsync(const DescribeNetworkInsightsAccessScopesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeNetworkInsightsAccessScopesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeNetworkInsightsAccessScopes, request, handler, context);
         }
@@ -8886,13 +10328,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInsightsAnalyses">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeNetworkInsightsAnalysesOutcome DescribeNetworkInsightsAnalyses(const Model::DescribeNetworkInsightsAnalysesRequest& request) const;
+        virtual Model::DescribeNetworkInsightsAnalysesOutcome DescribeNetworkInsightsAnalyses(const Model::DescribeNetworkInsightsAnalysesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeNetworkInsightsAnalyses that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeNetworkInsightsAnalysesRequestT = Model::DescribeNetworkInsightsAnalysesRequest>
-        Model::DescribeNetworkInsightsAnalysesOutcomeCallable DescribeNetworkInsightsAnalysesCallable(const DescribeNetworkInsightsAnalysesRequestT& request) const
+        Model::DescribeNetworkInsightsAnalysesOutcomeCallable DescribeNetworkInsightsAnalysesCallable(const DescribeNetworkInsightsAnalysesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeNetworkInsightsAnalyses, request);
         }
@@ -8901,7 +10343,7 @@ namespace EC2
          * An Async wrapper for DescribeNetworkInsightsAnalyses that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeNetworkInsightsAnalysesRequestT = Model::DescribeNetworkInsightsAnalysesRequest>
-        void DescribeNetworkInsightsAnalysesAsync(const DescribeNetworkInsightsAnalysesRequestT& request, const DescribeNetworkInsightsAnalysesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeNetworkInsightsAnalysesAsync(const DescribeNetworkInsightsAnalysesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeNetworkInsightsAnalysesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeNetworkInsightsAnalyses, request, handler, context);
         }
@@ -8911,13 +10353,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInsightsPaths">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeNetworkInsightsPathsOutcome DescribeNetworkInsightsPaths(const Model::DescribeNetworkInsightsPathsRequest& request) const;
+        virtual Model::DescribeNetworkInsightsPathsOutcome DescribeNetworkInsightsPaths(const Model::DescribeNetworkInsightsPathsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeNetworkInsightsPaths that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeNetworkInsightsPathsRequestT = Model::DescribeNetworkInsightsPathsRequest>
-        Model::DescribeNetworkInsightsPathsOutcomeCallable DescribeNetworkInsightsPathsCallable(const DescribeNetworkInsightsPathsRequestT& request) const
+        Model::DescribeNetworkInsightsPathsOutcomeCallable DescribeNetworkInsightsPathsCallable(const DescribeNetworkInsightsPathsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeNetworkInsightsPaths, request);
         }
@@ -8926,7 +10368,7 @@ namespace EC2
          * An Async wrapper for DescribeNetworkInsightsPaths that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeNetworkInsightsPathsRequestT = Model::DescribeNetworkInsightsPathsRequest>
-        void DescribeNetworkInsightsPathsAsync(const DescribeNetworkInsightsPathsRequestT& request, const DescribeNetworkInsightsPathsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeNetworkInsightsPathsAsync(const DescribeNetworkInsightsPathsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeNetworkInsightsPathsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeNetworkInsightsPaths, request, handler, context);
         }
@@ -8963,13 +10405,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfacePermissions">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeNetworkInterfacePermissionsOutcome DescribeNetworkInterfacePermissions(const Model::DescribeNetworkInterfacePermissionsRequest& request) const;
+        virtual Model::DescribeNetworkInterfacePermissionsOutcome DescribeNetworkInterfacePermissions(const Model::DescribeNetworkInterfacePermissionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeNetworkInterfacePermissions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeNetworkInterfacePermissionsRequestT = Model::DescribeNetworkInterfacePermissionsRequest>
-        Model::DescribeNetworkInterfacePermissionsOutcomeCallable DescribeNetworkInterfacePermissionsCallable(const DescribeNetworkInterfacePermissionsRequestT& request) const
+        Model::DescribeNetworkInterfacePermissionsOutcomeCallable DescribeNetworkInterfacePermissionsCallable(const DescribeNetworkInterfacePermissionsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeNetworkInterfacePermissions, request);
         }
@@ -8978,24 +10420,30 @@ namespace EC2
          * An Async wrapper for DescribeNetworkInterfacePermissions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeNetworkInterfacePermissionsRequestT = Model::DescribeNetworkInterfacePermissionsRequest>
-        void DescribeNetworkInterfacePermissionsAsync(const DescribeNetworkInterfacePermissionsRequestT& request, const DescribeNetworkInterfacePermissionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeNetworkInterfacePermissionsAsync(const DescribeNetworkInterfacePermissionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeNetworkInterfacePermissionsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeNetworkInterfacePermissions, request, handler, context);
         }
 
         /**
-         * <p>Describes one or more of your network interfaces.</p><p><h3>See Also:</h3>  
-         * <a
+         * <p>Describes the specified network interfaces or all your network
+         * interfaces.</p> <p>If you have a large number of network interfaces, the
+         * operation fails unless you use pagination or one of the following filters:
+         * <code>group-id</code>, <code>mac-address</code>, <code>private-dns-name</code>,
+         * <code>private-ip-address</code>, <code>subnet-id</code>, or
+         * <code>vpc-id</code>.</p>  <p>We strongly recommend using only
+         * paginated requests. Unpaginated requests are susceptible to throttling and
+         * timeouts.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfaces">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeNetworkInterfacesOutcome DescribeNetworkInterfaces(const Model::DescribeNetworkInterfacesRequest& request) const;
+        virtual Model::DescribeNetworkInterfacesOutcome DescribeNetworkInterfaces(const Model::DescribeNetworkInterfacesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeNetworkInterfaces that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeNetworkInterfacesRequestT = Model::DescribeNetworkInterfacesRequest>
-        Model::DescribeNetworkInterfacesOutcomeCallable DescribeNetworkInterfacesCallable(const DescribeNetworkInterfacesRequestT& request) const
+        Model::DescribeNetworkInterfacesOutcomeCallable DescribeNetworkInterfacesCallable(const DescribeNetworkInterfacesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeNetworkInterfaces, request);
         }
@@ -9004,26 +10452,57 @@ namespace EC2
          * An Async wrapper for DescribeNetworkInterfaces that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeNetworkInterfacesRequestT = Model::DescribeNetworkInterfacesRequest>
-        void DescribeNetworkInterfacesAsync(const DescribeNetworkInterfacesRequestT& request, const DescribeNetworkInterfacesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeNetworkInterfacesAsync(const DescribeNetworkInterfacesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeNetworkInterfacesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeNetworkInterfaces, request, handler, context);
         }
 
         /**
-         * <p>Describes the specified placement groups or all of your placement groups. For
-         * more information, see <a
+         * <p>Describes the Outposts link aggregation groups (LAGs).</p>  <p>LAGs are
+         * only available for second-generation Outposts racks at this time.</p>
+         * <p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeOutpostLags">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeOutpostLagsOutcome DescribeOutpostLags(const Model::DescribeOutpostLagsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeOutpostLags that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeOutpostLagsRequestT = Model::DescribeOutpostLagsRequest>
+        Model::DescribeOutpostLagsOutcomeCallable DescribeOutpostLagsCallable(const DescribeOutpostLagsRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeOutpostLags, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeOutpostLags that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeOutpostLagsRequestT = Model::DescribeOutpostLagsRequest>
+        void DescribeOutpostLagsAsync(const DescribeOutpostLagsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeOutpostLagsRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeOutpostLags, request, handler, context);
+        }
+
+        /**
+         * <p>Describes the specified placement groups or all of your placement groups.</p>
+         *  <p>To describe a specific placement group that is <i>shared</i> with your
+         * account, you must specify the ID of the placement group using the
+         * <code>GroupId</code> parameter. Specifying the name of a <i>shared</i> placement
+         * group using the <code>GroupNames</code> parameter will result in an error.</p>
+         *  <p>For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement
          * groups</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribePlacementGroups">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribePlacementGroupsOutcome DescribePlacementGroups(const Model::DescribePlacementGroupsRequest& request) const;
+        virtual Model::DescribePlacementGroupsOutcome DescribePlacementGroups(const Model::DescribePlacementGroupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribePlacementGroups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribePlacementGroupsRequestT = Model::DescribePlacementGroupsRequest>
-        Model::DescribePlacementGroupsOutcomeCallable DescribePlacementGroupsCallable(const DescribePlacementGroupsRequestT& request) const
+        Model::DescribePlacementGroupsOutcomeCallable DescribePlacementGroupsCallable(const DescribePlacementGroupsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribePlacementGroups, request);
         }
@@ -9032,7 +10511,7 @@ namespace EC2
          * An Async wrapper for DescribePlacementGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribePlacementGroupsRequestT = Model::DescribePlacementGroupsRequest>
-        void DescribePlacementGroupsAsync(const DescribePlacementGroupsRequestT& request, const DescribePlacementGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribePlacementGroupsAsync(const DescribePlacementGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribePlacementGroupsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribePlacementGroups, request, handler, context);
         }
@@ -9040,18 +10519,17 @@ namespace EC2
         /**
          * <p>Describes available Amazon Web Services services in a prefix list format,
          * which includes the prefix list name and prefix list ID of the service and the IP
-         * address range for the service.</p> <p>We recommend that you use
-         * <a>DescribeManagedPrefixLists</a> instead.</p><p><h3>See Also:</h3>   <a
+         * address range for the service.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribePrefixLists">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribePrefixListsOutcome DescribePrefixLists(const Model::DescribePrefixListsRequest& request) const;
+        virtual Model::DescribePrefixListsOutcome DescribePrefixLists(const Model::DescribePrefixListsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribePrefixLists that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribePrefixListsRequestT = Model::DescribePrefixListsRequest>
-        Model::DescribePrefixListsOutcomeCallable DescribePrefixListsCallable(const DescribePrefixListsRequestT& request) const
+        Model::DescribePrefixListsOutcomeCallable DescribePrefixListsCallable(const DescribePrefixListsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribePrefixLists, request);
         }
@@ -9060,7 +10538,7 @@ namespace EC2
          * An Async wrapper for DescribePrefixLists that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribePrefixListsRequestT = Model::DescribePrefixListsRequest>
-        void DescribePrefixListsAsync(const DescribePrefixListsRequestT& request, const DescribePrefixListsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribePrefixListsAsync(const DescribePrefixListsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribePrefixListsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribePrefixLists, request, handler, context);
         }
@@ -9090,13 +10568,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribePrincipalIdFormat">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribePrincipalIdFormatOutcome DescribePrincipalIdFormat(const Model::DescribePrincipalIdFormatRequest& request) const;
+        virtual Model::DescribePrincipalIdFormatOutcome DescribePrincipalIdFormat(const Model::DescribePrincipalIdFormatRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribePrincipalIdFormat that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribePrincipalIdFormatRequestT = Model::DescribePrincipalIdFormatRequest>
-        Model::DescribePrincipalIdFormatOutcomeCallable DescribePrincipalIdFormatCallable(const DescribePrincipalIdFormatRequestT& request) const
+        Model::DescribePrincipalIdFormatOutcomeCallable DescribePrincipalIdFormatCallable(const DescribePrincipalIdFormatRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribePrincipalIdFormat, request);
         }
@@ -9105,7 +10583,7 @@ namespace EC2
          * An Async wrapper for DescribePrincipalIdFormat that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribePrincipalIdFormatRequestT = Model::DescribePrincipalIdFormatRequest>
-        void DescribePrincipalIdFormatAsync(const DescribePrincipalIdFormatRequestT& request, const DescribePrincipalIdFormatResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribePrincipalIdFormatAsync(const DescribePrincipalIdFormatResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribePrincipalIdFormatRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribePrincipalIdFormat, request, handler, context);
         }
@@ -9115,13 +10593,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribePublicIpv4Pools">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribePublicIpv4PoolsOutcome DescribePublicIpv4Pools(const Model::DescribePublicIpv4PoolsRequest& request) const;
+        virtual Model::DescribePublicIpv4PoolsOutcome DescribePublicIpv4Pools(const Model::DescribePublicIpv4PoolsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribePublicIpv4Pools that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribePublicIpv4PoolsRequestT = Model::DescribePublicIpv4PoolsRequest>
-        Model::DescribePublicIpv4PoolsOutcomeCallable DescribePublicIpv4PoolsCallable(const DescribePublicIpv4PoolsRequestT& request) const
+        Model::DescribePublicIpv4PoolsOutcomeCallable DescribePublicIpv4PoolsCallable(const DescribePublicIpv4PoolsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribePublicIpv4Pools, request);
         }
@@ -9130,7 +10608,7 @@ namespace EC2
          * An Async wrapper for DescribePublicIpv4Pools that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribePublicIpv4PoolsRequestT = Model::DescribePublicIpv4PoolsRequest>
-        void DescribePublicIpv4PoolsAsync(const DescribePublicIpv4PoolsRequestT& request, const DescribePublicIpv4PoolsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribePublicIpv4PoolsAsync(const DescribePublicIpv4PoolsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribePublicIpv4PoolsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribePublicIpv4Pools, request, handler, context);
         }
@@ -9138,22 +10616,25 @@ namespace EC2
         /**
          * <p>Describes the Regions that are enabled for your account, or all Regions.</p>
          * <p>For a list of the Regions supported by Amazon EC2, see <a
-         * href="https://docs.aws.amazon.com/general/latest/gr/ec2-service.html"> Amazon
-         * Elastic Compute Cloud endpoints and quotas</a>.</p> <p>For information about
-         * enabling and disabling Regions for your account, see <a
-         * href="https://docs.aws.amazon.com/general/latest/gr/rande-manage.html">Managing
-         * Amazon Web Services Regions</a> in the <i>Amazon Web Services General
-         * Reference</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/ec2/latest/devguide/ec2-endpoints.html">Amazon
+         * EC2 service endpoints</a>.</p> <p>For information about enabling and disabling
+         * Regions for your account, see <a
+         * href="https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html">Specify
+         * which Amazon Web Services Regions your account can use</a> in the <i>Amazon Web
+         * Services Account Management Reference Guide</i>.</p>  <p>The order of the
+         * elements in the response, including those within nested structures, might vary.
+         * Applications should not assume the elements appear in a particular order.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeRegions">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeRegionsOutcome DescribeRegions(const Model::DescribeRegionsRequest& request) const;
+        virtual Model::DescribeRegionsOutcome DescribeRegions(const Model::DescribeRegionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeRegions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeRegionsRequestT = Model::DescribeRegionsRequest>
-        Model::DescribeRegionsOutcomeCallable DescribeRegionsCallable(const DescribeRegionsRequestT& request) const
+        Model::DescribeRegionsOutcomeCallable DescribeRegionsCallable(const DescribeRegionsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeRegions, request);
         }
@@ -9162,7 +10643,7 @@ namespace EC2
          * An Async wrapper for DescribeRegions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeRegionsRequestT = Model::DescribeRegionsRequest>
-        void DescribeRegionsAsync(const DescribeRegionsRequestT& request, const DescribeRegionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeRegionsAsync(const DescribeRegionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeRegionsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeRegions, request, handler, context);
         }
@@ -9170,18 +10651,18 @@ namespace EC2
         /**
          * <p>Describes a root volume replacement task. For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/replace-root.html">Replace
-         * a root volume</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * a root volume</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3> 
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReplaceRootVolumeTasks">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeReplaceRootVolumeTasksOutcome DescribeReplaceRootVolumeTasks(const Model::DescribeReplaceRootVolumeTasksRequest& request) const;
+        virtual Model::DescribeReplaceRootVolumeTasksOutcome DescribeReplaceRootVolumeTasks(const Model::DescribeReplaceRootVolumeTasksRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeReplaceRootVolumeTasks that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeReplaceRootVolumeTasksRequestT = Model::DescribeReplaceRootVolumeTasksRequest>
-        Model::DescribeReplaceRootVolumeTasksOutcomeCallable DescribeReplaceRootVolumeTasksCallable(const DescribeReplaceRootVolumeTasksRequestT& request) const
+        Model::DescribeReplaceRootVolumeTasksOutcomeCallable DescribeReplaceRootVolumeTasksCallable(const DescribeReplaceRootVolumeTasksRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeReplaceRootVolumeTasks, request);
         }
@@ -9190,7 +10671,7 @@ namespace EC2
          * An Async wrapper for DescribeReplaceRootVolumeTasks that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeReplaceRootVolumeTasksRequestT = Model::DescribeReplaceRootVolumeTasksRequest>
-        void DescribeReplaceRootVolumeTasksAsync(const DescribeReplaceRootVolumeTasksRequestT& request, const DescribeReplaceRootVolumeTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeReplaceRootVolumeTasksAsync(const DescribeReplaceRootVolumeTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeReplaceRootVolumeTasksRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeReplaceRootVolumeTasks, request, handler, context);
         }
@@ -9199,17 +10680,20 @@ namespace EC2
          * <p>Describes one or more of the Reserved Instances that you purchased.</p>
          * <p>For more information about Reserved Instances, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html">Reserved
-         * Instances</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * Instances</a> in the <i>Amazon EC2 User Guide</i>.</p>  <p>The order of
+         * the elements in the response, including those within nested structures, might
+         * vary. Applications should not assume the elements appear in a particular
+         * order.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstances">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeReservedInstancesOutcome DescribeReservedInstances(const Model::DescribeReservedInstancesRequest& request) const;
+        virtual Model::DescribeReservedInstancesOutcome DescribeReservedInstances(const Model::DescribeReservedInstancesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeReservedInstances that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeReservedInstancesRequestT = Model::DescribeReservedInstancesRequest>
-        Model::DescribeReservedInstancesOutcomeCallable DescribeReservedInstancesCallable(const DescribeReservedInstancesRequestT& request) const
+        Model::DescribeReservedInstancesOutcomeCallable DescribeReservedInstancesCallable(const DescribeReservedInstancesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeReservedInstances, request);
         }
@@ -9218,7 +10702,7 @@ namespace EC2
          * An Async wrapper for DescribeReservedInstances that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeReservedInstancesRequestT = Model::DescribeReservedInstancesRequest>
-        void DescribeReservedInstancesAsync(const DescribeReservedInstancesRequestT& request, const DescribeReservedInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeReservedInstancesAsync(const DescribeReservedInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeReservedInstancesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeReservedInstances, request, handler, context);
         }
@@ -9238,19 +10722,21 @@ namespace EC2
          * Instances to you, and continues to sell available Reserved Instance listings to
          * you until your demand is met. You are charged based on the total price of all of
          * the listings that you purchase.</p> <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Reserved
-         * Instance Marketplace</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Sell
+         * in the Reserved Instance Marketplace</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p>  <p>The order of the elements in the response, including
+         * those within nested structures, might vary. Applications should not assume the
+         * elements appear in a particular order.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstancesListings">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeReservedInstancesListingsOutcome DescribeReservedInstancesListings(const Model::DescribeReservedInstancesListingsRequest& request) const;
+        virtual Model::DescribeReservedInstancesListingsOutcome DescribeReservedInstancesListings(const Model::DescribeReservedInstancesListingsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeReservedInstancesListings that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeReservedInstancesListingsRequestT = Model::DescribeReservedInstancesListingsRequest>
-        Model::DescribeReservedInstancesListingsOutcomeCallable DescribeReservedInstancesListingsCallable(const DescribeReservedInstancesListingsRequestT& request) const
+        Model::DescribeReservedInstancesListingsOutcomeCallable DescribeReservedInstancesListingsCallable(const DescribeReservedInstancesListingsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeReservedInstancesListings, request);
         }
@@ -9259,7 +10745,7 @@ namespace EC2
          * An Async wrapper for DescribeReservedInstancesListings that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeReservedInstancesListingsRequestT = Model::DescribeReservedInstancesListingsRequest>
-        void DescribeReservedInstancesListingsAsync(const DescribeReservedInstancesListingsRequestT& request, const DescribeReservedInstancesListingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeReservedInstancesListingsAsync(const DescribeReservedInstancesListingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeReservedInstancesListingsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeReservedInstancesListings, request, handler, context);
         }
@@ -9269,19 +10755,21 @@ namespace EC2
          * is specified, information about all your Reserved Instances modification
          * requests is returned. If a modification ID is specified, only information about
          * the specific modification is returned.</p> <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html">Modifying
-         * Reserved Instances</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html">Modify
+         * Reserved Instances</a> in the <i>Amazon EC2 User Guide</i>.</p>  <p>The
+         * order of the elements in the response, including those within nested structures,
+         * might vary. Applications should not assume the elements appear in a particular
+         * order.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstancesModifications">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeReservedInstancesModificationsOutcome DescribeReservedInstancesModifications(const Model::DescribeReservedInstancesModificationsRequest& request) const;
+        virtual Model::DescribeReservedInstancesModificationsOutcome DescribeReservedInstancesModifications(const Model::DescribeReservedInstancesModificationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeReservedInstancesModifications that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeReservedInstancesModificationsRequestT = Model::DescribeReservedInstancesModificationsRequest>
-        Model::DescribeReservedInstancesModificationsOutcomeCallable DescribeReservedInstancesModificationsCallable(const DescribeReservedInstancesModificationsRequestT& request) const
+        Model::DescribeReservedInstancesModificationsOutcomeCallable DescribeReservedInstancesModificationsCallable(const DescribeReservedInstancesModificationsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeReservedInstancesModifications, request);
         }
@@ -9290,7 +10778,7 @@ namespace EC2
          * An Async wrapper for DescribeReservedInstancesModifications that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeReservedInstancesModificationsRequestT = Model::DescribeReservedInstancesModificationsRequest>
-        void DescribeReservedInstancesModificationsAsync(const DescribeReservedInstancesModificationsRequestT& request, const DescribeReservedInstancesModificationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeReservedInstancesModificationsAsync(const DescribeReservedInstancesModificationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeReservedInstancesModificationsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeReservedInstancesModifications, request, handler, context);
         }
@@ -9304,19 +10792,21 @@ namespace EC2
          * sale in the Reserved Instance Marketplace, they will be excluded from these
          * results. This is to ensure that you do not purchase your own Reserved
          * Instances.</p> <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Reserved
-         * Instance Marketplace</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Sell
+         * in the Reserved Instance Marketplace</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p>  <p>The order of the elements in the response, including
+         * those within nested structures, might vary. Applications should not assume the
+         * elements appear in a particular order.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstancesOfferings">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeReservedInstancesOfferingsOutcome DescribeReservedInstancesOfferings(const Model::DescribeReservedInstancesOfferingsRequest& request) const;
+        virtual Model::DescribeReservedInstancesOfferingsOutcome DescribeReservedInstancesOfferings(const Model::DescribeReservedInstancesOfferingsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeReservedInstancesOfferings that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeReservedInstancesOfferingsRequestT = Model::DescribeReservedInstancesOfferingsRequest>
-        Model::DescribeReservedInstancesOfferingsOutcomeCallable DescribeReservedInstancesOfferingsCallable(const DescribeReservedInstancesOfferingsRequestT& request) const
+        Model::DescribeReservedInstancesOfferingsOutcomeCallable DescribeReservedInstancesOfferingsCallable(const DescribeReservedInstancesOfferingsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeReservedInstancesOfferings, request);
         }
@@ -9325,30 +10815,138 @@ namespace EC2
          * An Async wrapper for DescribeReservedInstancesOfferings that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeReservedInstancesOfferingsRequestT = Model::DescribeReservedInstancesOfferingsRequest>
-        void DescribeReservedInstancesOfferingsAsync(const DescribeReservedInstancesOfferingsRequestT& request, const DescribeReservedInstancesOfferingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeReservedInstancesOfferingsAsync(const DescribeReservedInstancesOfferingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeReservedInstancesOfferingsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeReservedInstancesOfferings, request, handler, context);
         }
 
         /**
-         * <p>Describes one or more of your route tables.</p> <p>Each subnet in your VPC
-         * must be associated with a route table. If a subnet is not explicitly associated
-         * with any route table, it is implicitly associated with the main route table.
-         * This command does not return the subnet ID for implicit associations.</p> <p>For
-         * more information, see <a
+         * <p>Describes one or more route server endpoints.</p> <p>A route server endpoint
+         * is an Amazon Web Services-managed component inside a subnet that facilitates <a
+         * href="https://en.wikipedia.org/wiki/Border_Gateway_Protocol">BGP (Border Gateway
+         * Protocol)</a> connections between your route server and your BGP peers.</p>
+         * <p>For more information see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html">Dynamic
+         * routing in your VPC with VPC Route Server</a> in the <i>Amazon VPC User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeRouteServerEndpoints">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeRouteServerEndpointsOutcome DescribeRouteServerEndpoints(const Model::DescribeRouteServerEndpointsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeRouteServerEndpoints that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeRouteServerEndpointsRequestT = Model::DescribeRouteServerEndpointsRequest>
+        Model::DescribeRouteServerEndpointsOutcomeCallable DescribeRouteServerEndpointsCallable(const DescribeRouteServerEndpointsRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeRouteServerEndpoints, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeRouteServerEndpoints that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeRouteServerEndpointsRequestT = Model::DescribeRouteServerEndpointsRequest>
+        void DescribeRouteServerEndpointsAsync(const DescribeRouteServerEndpointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeRouteServerEndpointsRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeRouteServerEndpoints, request, handler, context);
+        }
+
+        /**
+         * <p>Describes one or more route server peers.</p> <p>A route server peer is a
+         * session between a route server endpoint and the device deployed in Amazon Web
+         * Services (such as a firewall appliance or other network security function
+         * running on an EC2 instance). The device must meet these requirements:</p> <ul>
+         * <li> <p>Have an elastic network interface in the VPC</p> </li> <li> <p>Support
+         * BGP (Border Gateway Protocol)</p> </li> <li> <p>Can initiate BGP sessions</p>
+         * </li> </ul> <p>For more information see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html">Dynamic
+         * routing in your VPC with VPC Route Server</a> in the <i>Amazon VPC User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeRouteServerPeers">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeRouteServerPeersOutcome DescribeRouteServerPeers(const Model::DescribeRouteServerPeersRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeRouteServerPeers that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeRouteServerPeersRequestT = Model::DescribeRouteServerPeersRequest>
+        Model::DescribeRouteServerPeersOutcomeCallable DescribeRouteServerPeersCallable(const DescribeRouteServerPeersRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeRouteServerPeers, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeRouteServerPeers that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeRouteServerPeersRequestT = Model::DescribeRouteServerPeersRequest>
+        void DescribeRouteServerPeersAsync(const DescribeRouteServerPeersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeRouteServerPeersRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeRouteServerPeers, request, handler, context);
+        }
+
+        /**
+         * <p>Describes one or more route servers.</p> <p>Amazon VPC Route Server
+         * simplifies routing for traffic between workloads that are deployed within a VPC
+         * and its internet gateways. With this feature, VPC Route Server dynamically
+         * updates VPC and internet gateway route tables with your preferred IPv4 or IPv6
+         * routes to achieve routing fault tolerance for those workloads. This enables you
+         * to automatically reroute traffic within a VPC, which increases the manageability
+         * of VPC routing and interoperability with third-party workloads.</p> <p>Route
+         * server supports the follow route table types:</p> <ul> <li> <p>VPC route tables
+         * not associated with subnets</p> </li> <li> <p>Subnet route tables</p> </li> <li>
+         * <p>Internet gateway route tables</p> </li> </ul> <p>Route server does not
+         * support route tables associated with virtual private gateways. To propagate
+         * routes into a transit gateway route table, use <a
+         * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html">Transit
+         * Gateway Connect</a>.</p> <p>For more information see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html">Dynamic
+         * routing in your VPC with VPC Route Server</a> in the <i>Amazon VPC User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeRouteServers">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeRouteServersOutcome DescribeRouteServers(const Model::DescribeRouteServersRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeRouteServers that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeRouteServersRequestT = Model::DescribeRouteServersRequest>
+        Model::DescribeRouteServersOutcomeCallable DescribeRouteServersCallable(const DescribeRouteServersRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeRouteServers, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeRouteServers that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeRouteServersRequestT = Model::DescribeRouteServersRequest>
+        void DescribeRouteServersAsync(const DescribeRouteServersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeRouteServersRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeRouteServers, request, handler, context);
+        }
+
+        /**
+         * <p>Describes your route tables. The default is to describe all your route
+         * tables. Alternatively, you can specify specific route table IDs or filter the
+         * results to include only the route tables that match specific criteria.</p>
+         * <p>Each subnet in your VPC must be associated with a route table. If a subnet is
+         * not explicitly associated with any route table, it is implicitly associated with
+         * the main route table. This command does not return the subnet ID for implicit
+         * associations.</p> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html">Route
-         * tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * tables</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeRouteTables">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeRouteTablesOutcome DescribeRouteTables(const Model::DescribeRouteTablesRequest& request) const;
+        virtual Model::DescribeRouteTablesOutcome DescribeRouteTables(const Model::DescribeRouteTablesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeRouteTables that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeRouteTablesRequestT = Model::DescribeRouteTablesRequest>
-        Model::DescribeRouteTablesOutcomeCallable DescribeRouteTablesCallable(const DescribeRouteTablesRequestT& request) const
+        Model::DescribeRouteTablesOutcomeCallable DescribeRouteTablesCallable(const DescribeRouteTablesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeRouteTables, request);
         }
@@ -9357,7 +10955,7 @@ namespace EC2
          * An Async wrapper for DescribeRouteTables that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeRouteTablesRequestT = Model::DescribeRouteTablesRequest>
-        void DescribeRouteTablesAsync(const DescribeRouteTablesRequestT& request, const DescribeRouteTablesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeRouteTablesAsync(const DescribeRouteTablesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeRouteTablesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeRouteTables, request, handler, context);
         }
@@ -9399,13 +10997,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeScheduledInstances">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeScheduledInstancesOutcome DescribeScheduledInstances(const Model::DescribeScheduledInstancesRequest& request) const;
+        virtual Model::DescribeScheduledInstancesOutcome DescribeScheduledInstances(const Model::DescribeScheduledInstancesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeScheduledInstances that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeScheduledInstancesRequestT = Model::DescribeScheduledInstancesRequest>
-        Model::DescribeScheduledInstancesOutcomeCallable DescribeScheduledInstancesCallable(const DescribeScheduledInstancesRequestT& request) const
+        Model::DescribeScheduledInstancesOutcomeCallable DescribeScheduledInstancesCallable(const DescribeScheduledInstancesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeScheduledInstances, request);
         }
@@ -9414,14 +11012,14 @@ namespace EC2
          * An Async wrapper for DescribeScheduledInstances that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeScheduledInstancesRequestT = Model::DescribeScheduledInstancesRequest>
-        void DescribeScheduledInstancesAsync(const DescribeScheduledInstancesRequestT& request, const DescribeScheduledInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeScheduledInstancesAsync(const DescribeScheduledInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeScheduledInstancesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeScheduledInstances, request, handler, context);
         }
 
         /**
-         * <p>[VPC only] Describes the VPCs on the other side of a VPC peering connection
-         * that are referencing the security groups you've specified in this
+         * <p>Describes the VPCs on the other side of a VPC peering or Transit Gateway
+         * connection that are referencing the security groups you've specified in this
          * request.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSecurityGroupReferences">AWS
          * API Reference</a></p>
@@ -9452,13 +11050,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSecurityGroupRules">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeSecurityGroupRulesOutcome DescribeSecurityGroupRules(const Model::DescribeSecurityGroupRulesRequest& request) const;
+        virtual Model::DescribeSecurityGroupRulesOutcome DescribeSecurityGroupRules(const Model::DescribeSecurityGroupRulesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeSecurityGroupRules that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeSecurityGroupRulesRequestT = Model::DescribeSecurityGroupRulesRequest>
-        Model::DescribeSecurityGroupRulesOutcomeCallable DescribeSecurityGroupRulesCallable(const DescribeSecurityGroupRulesRequestT& request) const
+        Model::DescribeSecurityGroupRulesOutcomeCallable DescribeSecurityGroupRulesCallable(const DescribeSecurityGroupRulesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeSecurityGroupRules, request);
         }
@@ -9467,35 +11065,51 @@ namespace EC2
          * An Async wrapper for DescribeSecurityGroupRules that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeSecurityGroupRulesRequestT = Model::DescribeSecurityGroupRulesRequest>
-        void DescribeSecurityGroupRulesAsync(const DescribeSecurityGroupRulesRequestT& request, const DescribeSecurityGroupRulesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeSecurityGroupRulesAsync(const DescribeSecurityGroupRulesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeSecurityGroupRulesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeSecurityGroupRules, request, handler, context);
         }
 
         /**
-         * <p>Describes the specified security groups or all of your security groups.</p>
-         * <p>A security group is for use with instances either in the EC2-Classic platform
-         * or in a specific VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Amazon
-         * EC2 security groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>
-         * and <a
-         * href="https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html">Security
-         * groups for your VPC</a> in the <i>Amazon Virtual Private Cloud User
-         * Guide</i>.</p>  <p>We are retiring EC2-Classic. We recommend that you
-         * migrate from EC2-Classic to a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * <p>Describes security group VPC associations made with <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateSecurityGroupVpc.html">AssociateSecurityGroupVpc</a>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSecurityGroupVpcAssociations">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeSecurityGroupVpcAssociationsOutcome DescribeSecurityGroupVpcAssociations(const Model::DescribeSecurityGroupVpcAssociationsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeSecurityGroupVpcAssociations that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeSecurityGroupVpcAssociationsRequestT = Model::DescribeSecurityGroupVpcAssociationsRequest>
+        Model::DescribeSecurityGroupVpcAssociationsOutcomeCallable DescribeSecurityGroupVpcAssociationsCallable(const DescribeSecurityGroupVpcAssociationsRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeSecurityGroupVpcAssociations, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeSecurityGroupVpcAssociations that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeSecurityGroupVpcAssociationsRequestT = Model::DescribeSecurityGroupVpcAssociationsRequest>
+        void DescribeSecurityGroupVpcAssociationsAsync(const DescribeSecurityGroupVpcAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeSecurityGroupVpcAssociationsRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeSecurityGroupVpcAssociations, request, handler, context);
+        }
+
+        /**
+         * <p>Describes the specified security groups or all of your security
+         * groups.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSecurityGroups">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeSecurityGroupsOutcome DescribeSecurityGroups(const Model::DescribeSecurityGroupsRequest& request) const;
+        virtual Model::DescribeSecurityGroupsOutcome DescribeSecurityGroups(const Model::DescribeSecurityGroupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeSecurityGroups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeSecurityGroupsRequestT = Model::DescribeSecurityGroupsRequest>
-        Model::DescribeSecurityGroupsOutcomeCallable DescribeSecurityGroupsCallable(const DescribeSecurityGroupsRequestT& request) const
+        Model::DescribeSecurityGroupsOutcomeCallable DescribeSecurityGroupsCallable(const DescribeSecurityGroupsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeSecurityGroups, request);
         }
@@ -9504,18 +11118,44 @@ namespace EC2
          * An Async wrapper for DescribeSecurityGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeSecurityGroupsRequestT = Model::DescribeSecurityGroupsRequest>
-        void DescribeSecurityGroupsAsync(const DescribeSecurityGroupsRequestT& request, const DescribeSecurityGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeSecurityGroupsAsync(const DescribeSecurityGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeSecurityGroupsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeSecurityGroups, request, handler, context);
+        }
+
+        /**
+         * <p>Describes the Outpost service link virtual interfaces.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeServiceLinkVirtualInterfaces">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeServiceLinkVirtualInterfacesOutcome DescribeServiceLinkVirtualInterfaces(const Model::DescribeServiceLinkVirtualInterfacesRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeServiceLinkVirtualInterfaces that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeServiceLinkVirtualInterfacesRequestT = Model::DescribeServiceLinkVirtualInterfacesRequest>
+        Model::DescribeServiceLinkVirtualInterfacesOutcomeCallable DescribeServiceLinkVirtualInterfacesCallable(const DescribeServiceLinkVirtualInterfacesRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeServiceLinkVirtualInterfaces, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeServiceLinkVirtualInterfaces that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeServiceLinkVirtualInterfacesRequestT = Model::DescribeServiceLinkVirtualInterfacesRequest>
+        void DescribeServiceLinkVirtualInterfacesAsync(const DescribeServiceLinkVirtualInterfacesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeServiceLinkVirtualInterfacesRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeServiceLinkVirtualInterfaces, request, handler, context);
         }
 
         /**
          * <p>Describes the specified attribute of the specified snapshot. You can specify
          * only one attribute at a time.</p> <p>For more information about EBS snapshots,
          * see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html">Amazon
-         * EBS snapshots</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html">Amazon
+         * EBS snapshots</a> in the <i>Amazon EBS User Guide</i>.</p><p><h3>See Also:</h3> 
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSnapshotAttribute">AWS
          * API Reference</a></p>
          */
@@ -9545,13 +11185,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSnapshotTierStatus">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeSnapshotTierStatusOutcome DescribeSnapshotTierStatus(const Model::DescribeSnapshotTierStatusRequest& request) const;
+        virtual Model::DescribeSnapshotTierStatusOutcome DescribeSnapshotTierStatus(const Model::DescribeSnapshotTierStatusRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeSnapshotTierStatus that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeSnapshotTierStatusRequestT = Model::DescribeSnapshotTierStatusRequest>
-        Model::DescribeSnapshotTierStatusOutcomeCallable DescribeSnapshotTierStatusCallable(const DescribeSnapshotTierStatusRequestT& request) const
+        Model::DescribeSnapshotTierStatusOutcomeCallable DescribeSnapshotTierStatusCallable(const DescribeSnapshotTierStatusRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeSnapshotTierStatus, request);
         }
@@ -9560,7 +11200,7 @@ namespace EC2
          * An Async wrapper for DescribeSnapshotTierStatus that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeSnapshotTierStatusRequestT = Model::DescribeSnapshotTierStatusRequest>
-        void DescribeSnapshotTierStatusAsync(const DescribeSnapshotTierStatusRequestT& request, const DescribeSnapshotTierStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeSnapshotTierStatusAsync(const DescribeSnapshotTierStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeSnapshotTierStatusRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeSnapshotTierStatus, request, handler, context);
         }
@@ -9597,22 +11237,22 @@ namespace EC2
          * list of snapshots, we recommend that you paginate the output to make the list
          * more manageable. For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination">Pagination</a>.</p>
-         * <p>To get the state of fast snapshot restores for a snapshot, use
-         * <a>DescribeFastSnapshotRestores</a>.</p> <p>For more information about EBS
-         * snapshots, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html">Amazon
-         * EBS snapshots</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * <p>For more information about EBS snapshots, see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html">Amazon
+         * EBS snapshots</a> in the <i>Amazon EBS User Guide</i>.</p>  <p>We
+         * strongly recommend using only paginated requests. Unpaginated requests are
+         * susceptible to throttling and timeouts.</p> <p><h3>See Also:</h3>  
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSnapshots">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeSnapshotsOutcome DescribeSnapshots(const Model::DescribeSnapshotsRequest& request) const;
+        virtual Model::DescribeSnapshotsOutcome DescribeSnapshots(const Model::DescribeSnapshotsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeSnapshots that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeSnapshotsRequestT = Model::DescribeSnapshotsRequest>
-        Model::DescribeSnapshotsOutcomeCallable DescribeSnapshotsCallable(const DescribeSnapshotsRequestT& request) const
+        Model::DescribeSnapshotsOutcomeCallable DescribeSnapshotsCallable(const DescribeSnapshotsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeSnapshots, request);
         }
@@ -9621,7 +11261,7 @@ namespace EC2
          * An Async wrapper for DescribeSnapshots that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeSnapshotsRequestT = Model::DescribeSnapshotsRequest>
-        void DescribeSnapshotsAsync(const DescribeSnapshotsRequestT& request, const DescribeSnapshotsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeSnapshotsAsync(const DescribeSnapshotsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeSnapshotsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeSnapshots, request, handler, context);
         }
@@ -9629,18 +11269,18 @@ namespace EC2
         /**
          * <p>Describes the data feed for Spot Instances. For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html">Spot
-         * Instance data feed</a> in the <i>Amazon EC2 User Guide for Linux
-         * Instances</i>.</p><p><h3>See Also:</h3>   <a
+         * Instance data feed</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotDatafeedSubscription">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeSpotDatafeedSubscriptionOutcome DescribeSpotDatafeedSubscription(const Model::DescribeSpotDatafeedSubscriptionRequest& request) const;
+        virtual Model::DescribeSpotDatafeedSubscriptionOutcome DescribeSpotDatafeedSubscription(const Model::DescribeSpotDatafeedSubscriptionRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeSpotDatafeedSubscription that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeSpotDatafeedSubscriptionRequestT = Model::DescribeSpotDatafeedSubscriptionRequest>
-        Model::DescribeSpotDatafeedSubscriptionOutcomeCallable DescribeSpotDatafeedSubscriptionCallable(const DescribeSpotDatafeedSubscriptionRequestT& request) const
+        Model::DescribeSpotDatafeedSubscriptionOutcomeCallable DescribeSpotDatafeedSubscriptionCallable(const DescribeSpotDatafeedSubscriptionRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeSpotDatafeedSubscription, request);
         }
@@ -9649,7 +11289,7 @@ namespace EC2
          * An Async wrapper for DescribeSpotDatafeedSubscription that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeSpotDatafeedSubscriptionRequestT = Model::DescribeSpotDatafeedSubscriptionRequest>
-        void DescribeSpotDatafeedSubscriptionAsync(const DescribeSpotDatafeedSubscriptionRequestT& request, const DescribeSpotDatafeedSubscriptionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeSpotDatafeedSubscriptionAsync(const DescribeSpotDatafeedSubscriptionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeSpotDatafeedSubscriptionRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeSpotDatafeedSubscription, request, handler, context);
         }
@@ -9719,13 +11359,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotFleetRequests">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeSpotFleetRequestsOutcome DescribeSpotFleetRequests(const Model::DescribeSpotFleetRequestsRequest& request) const;
+        virtual Model::DescribeSpotFleetRequestsOutcome DescribeSpotFleetRequests(const Model::DescribeSpotFleetRequestsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeSpotFleetRequests that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeSpotFleetRequestsRequestT = Model::DescribeSpotFleetRequestsRequest>
-        Model::DescribeSpotFleetRequestsOutcomeCallable DescribeSpotFleetRequestsCallable(const DescribeSpotFleetRequestsRequestT& request) const
+        Model::DescribeSpotFleetRequestsOutcomeCallable DescribeSpotFleetRequestsCallable(const DescribeSpotFleetRequestsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeSpotFleetRequests, request);
         }
@@ -9734,7 +11374,7 @@ namespace EC2
          * An Async wrapper for DescribeSpotFleetRequests that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeSpotFleetRequestsRequestT = Model::DescribeSpotFleetRequestsRequest>
-        void DescribeSpotFleetRequestsAsync(const DescribeSpotFleetRequestsRequestT& request, const DescribeSpotFleetRequestsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeSpotFleetRequestsAsync(const DescribeSpotFleetRequestsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeSpotFleetRequestsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeSpotFleetRequests, request, handler, context);
         }
@@ -9759,13 +11399,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotInstanceRequests">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeSpotInstanceRequestsOutcome DescribeSpotInstanceRequests(const Model::DescribeSpotInstanceRequestsRequest& request) const;
+        virtual Model::DescribeSpotInstanceRequestsOutcome DescribeSpotInstanceRequests(const Model::DescribeSpotInstanceRequestsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeSpotInstanceRequests that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeSpotInstanceRequestsRequestT = Model::DescribeSpotInstanceRequestsRequest>
-        Model::DescribeSpotInstanceRequestsOutcomeCallable DescribeSpotInstanceRequestsCallable(const DescribeSpotInstanceRequestsRequestT& request) const
+        Model::DescribeSpotInstanceRequestsOutcomeCallable DescribeSpotInstanceRequestsCallable(const DescribeSpotInstanceRequestsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeSpotInstanceRequests, request);
         }
@@ -9774,7 +11414,7 @@ namespace EC2
          * An Async wrapper for DescribeSpotInstanceRequests that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeSpotInstanceRequestsRequestT = Model::DescribeSpotInstanceRequestsRequest>
-        void DescribeSpotInstanceRequestsAsync(const DescribeSpotInstanceRequestsRequestT& request, const DescribeSpotInstanceRequestsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeSpotInstanceRequestsAsync(const DescribeSpotInstanceRequestsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeSpotInstanceRequestsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeSpotInstanceRequests, request, handler, context);
         }
@@ -9782,21 +11422,21 @@ namespace EC2
         /**
          * <p>Describes the Spot price history. For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html">Spot
-         * Instance pricing history</a> in the <i>Amazon EC2 User Guide for Linux
-         * Instances</i>.</p> <p>When you specify a start and end time, the operation
-         * returns the prices of the instance types within that time range. It also returns
-         * the last price change before the start time, which is the effective price as of
-         * the start time.</p><p><h3>See Also:</h3>   <a
+         * Instance pricing history</a> in the <i>Amazon EC2 User Guide</i>.</p> <p>When
+         * you specify a start and end time, the operation returns the prices of the
+         * instance types within that time range. It also returns the last price change
+         * before the start time, which is the effective price as of the start
+         * time.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotPriceHistory">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeSpotPriceHistoryOutcome DescribeSpotPriceHistory(const Model::DescribeSpotPriceHistoryRequest& request) const;
+        virtual Model::DescribeSpotPriceHistoryOutcome DescribeSpotPriceHistory(const Model::DescribeSpotPriceHistoryRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeSpotPriceHistory that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeSpotPriceHistoryRequestT = Model::DescribeSpotPriceHistoryRequest>
-        Model::DescribeSpotPriceHistoryOutcomeCallable DescribeSpotPriceHistoryCallable(const DescribeSpotPriceHistoryRequestT& request) const
+        Model::DescribeSpotPriceHistoryOutcomeCallable DescribeSpotPriceHistoryCallable(const DescribeSpotPriceHistoryRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeSpotPriceHistory, request);
         }
@@ -9805,16 +11445,21 @@ namespace EC2
          * An Async wrapper for DescribeSpotPriceHistory that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeSpotPriceHistoryRequestT = Model::DescribeSpotPriceHistoryRequest>
-        void DescribeSpotPriceHistoryAsync(const DescribeSpotPriceHistoryRequestT& request, const DescribeSpotPriceHistoryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeSpotPriceHistoryAsync(const DescribeSpotPriceHistoryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeSpotPriceHistoryRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeSpotPriceHistory, request, handler, context);
         }
 
         /**
-         * <p>[VPC only] Describes the stale security group rules for security groups in a
-         * specified VPC. Rules are stale when they reference a deleted security group in
-         * the same VPC or in a peer VPC, or if they reference a security group in a peer
-         * VPC for which the VPC peering connection has been deleted.</p><p><h3>See
+         * <p>Describes the stale security group rules for security groups referenced
+         * across a VPC peering connection, transit gateway connection, or with a security
+         * group VPC association. Rules are stale when they reference a deleted security
+         * group. Rules can also be stale if they reference a security group in a peer VPC
+         * for which the VPC peering connection has been deleted, across a transit gateway
+         * where the transit gateway has been deleted (or <a
+         * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-vpc-attachments.html#vpc-attachment-security">the
+         * transit gateway security group referencing feature</a> has been disabled), or if
+         * a security group VPC association has been disassociated.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeStaleSecurityGroups">AWS
          * API Reference</a></p>
@@ -9849,22 +11494,22 @@ namespace EC2
          * percentage.</p> <p>Tasks are listed in reverse chronological order. Currently,
          * only tasks from the past 31 days can be viewed.</p> <p>To use this API, you must
          * have the required permissions. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html#ami-s3-permissions">Permissions
-         * for storing and restoring AMIs using Amazon S3</a> in the <i>Amazon EC2 User
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-ami-store-restore.html#ami-s3-permissions">Permissions
+         * for storing and restoring AMIs using S3</a> in the <i>Amazon EC2 User
          * Guide</i>.</p> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html">Store
-         * and restore an AMI using Amazon S3</a> in the <i>Amazon EC2 User
+         * and restore an AMI using S3</a> in the <i>Amazon EC2 User
          * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeStoreImageTasks">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeStoreImageTasksOutcome DescribeStoreImageTasks(const Model::DescribeStoreImageTasksRequest& request) const;
+        virtual Model::DescribeStoreImageTasksOutcome DescribeStoreImageTasks(const Model::DescribeStoreImageTasksRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeStoreImageTasks that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeStoreImageTasksRequestT = Model::DescribeStoreImageTasksRequest>
-        Model::DescribeStoreImageTasksOutcomeCallable DescribeStoreImageTasksCallable(const DescribeStoreImageTasksRequestT& request) const
+        Model::DescribeStoreImageTasksOutcomeCallable DescribeStoreImageTasksCallable(const DescribeStoreImageTasksRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeStoreImageTasks, request);
         }
@@ -9873,26 +11518,28 @@ namespace EC2
          * An Async wrapper for DescribeStoreImageTasks that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeStoreImageTasksRequestT = Model::DescribeStoreImageTasksRequest>
-        void DescribeStoreImageTasksAsync(const DescribeStoreImageTasksRequestT& request, const DescribeStoreImageTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeStoreImageTasksAsync(const DescribeStoreImageTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeStoreImageTasksRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeStoreImageTasks, request, handler, context);
         }
 
         /**
-         * <p>Describes one or more of your subnets.</p> <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html">Your
-         * VPC and subnets</a> in the <i>Amazon Virtual Private Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * <p>Describes your subnets. The default is to describe all your subnets.
+         * Alternatively, you can specify specific subnet IDs or filter the results to
+         * include only the subnets that match specific criteria.</p> <p>For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html">Subnets</a>
+         * in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSubnets">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeSubnetsOutcome DescribeSubnets(const Model::DescribeSubnetsRequest& request) const;
+        virtual Model::DescribeSubnetsOutcome DescribeSubnets(const Model::DescribeSubnetsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeSubnets that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeSubnetsRequestT = Model::DescribeSubnetsRequest>
-        Model::DescribeSubnetsOutcomeCallable DescribeSubnetsCallable(const DescribeSubnetsRequestT& request) const
+        Model::DescribeSubnetsOutcomeCallable DescribeSubnetsCallable(const DescribeSubnetsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeSubnets, request);
         }
@@ -9901,7 +11548,7 @@ namespace EC2
          * An Async wrapper for DescribeSubnets that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeSubnetsRequestT = Model::DescribeSubnetsRequest>
-        void DescribeSubnetsAsync(const DescribeSubnetsRequestT& request, const DescribeSubnetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeSubnetsAsync(const DescribeSubnetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeSubnetsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeSubnets, request, handler, context);
         }
@@ -9911,17 +11558,21 @@ namespace EC2
          * information about tags, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tag
          * your Amazon EC2 resources</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * Guide</i>.</p>  <p>We strongly recommend using only paginated
+         * requests. Unpaginated requests are susceptible to throttling and timeouts.</p>
+         *   <p>The order of the elements in the response, including
+         * those within nested structures, might vary. Applications should not assume the
+         * elements appear in a particular order.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTags">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeTagsOutcome DescribeTags(const Model::DescribeTagsRequest& request) const;
+        virtual Model::DescribeTagsOutcome DescribeTags(const Model::DescribeTagsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeTags that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeTagsRequestT = Model::DescribeTagsRequest>
-        Model::DescribeTagsOutcomeCallable DescribeTagsCallable(const DescribeTagsRequestT& request) const
+        Model::DescribeTagsOutcomeCallable DescribeTagsCallable(const DescribeTagsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeTags, request);
         }
@@ -9930,9 +11581,35 @@ namespace EC2
          * An Async wrapper for DescribeTags that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeTagsRequestT = Model::DescribeTagsRequest>
-        void DescribeTagsAsync(const DescribeTagsRequestT& request, const DescribeTagsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeTagsAsync(const DescribeTagsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeTagsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeTags, request, handler, context);
+        }
+
+        /**
+         * <p>Describe traffic mirror filters that determine the traffic that is
+         * mirrored.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTrafficMirrorFilterRules">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeTrafficMirrorFilterRulesOutcome DescribeTrafficMirrorFilterRules(const Model::DescribeTrafficMirrorFilterRulesRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeTrafficMirrorFilterRules that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeTrafficMirrorFilterRulesRequestT = Model::DescribeTrafficMirrorFilterRulesRequest>
+        Model::DescribeTrafficMirrorFilterRulesOutcomeCallable DescribeTrafficMirrorFilterRulesCallable(const DescribeTrafficMirrorFilterRulesRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeTrafficMirrorFilterRules, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeTrafficMirrorFilterRules that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeTrafficMirrorFilterRulesRequestT = Model::DescribeTrafficMirrorFilterRulesRequest>
+        void DescribeTrafficMirrorFilterRulesAsync(const DescribeTrafficMirrorFilterRulesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeTrafficMirrorFilterRulesRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeTrafficMirrorFilterRules, request, handler, context);
         }
 
         /**
@@ -9940,13 +11617,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTrafficMirrorFilters">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeTrafficMirrorFiltersOutcome DescribeTrafficMirrorFilters(const Model::DescribeTrafficMirrorFiltersRequest& request) const;
+        virtual Model::DescribeTrafficMirrorFiltersOutcome DescribeTrafficMirrorFilters(const Model::DescribeTrafficMirrorFiltersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeTrafficMirrorFilters that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeTrafficMirrorFiltersRequestT = Model::DescribeTrafficMirrorFiltersRequest>
-        Model::DescribeTrafficMirrorFiltersOutcomeCallable DescribeTrafficMirrorFiltersCallable(const DescribeTrafficMirrorFiltersRequestT& request) const
+        Model::DescribeTrafficMirrorFiltersOutcomeCallable DescribeTrafficMirrorFiltersCallable(const DescribeTrafficMirrorFiltersRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeTrafficMirrorFilters, request);
         }
@@ -9955,7 +11632,7 @@ namespace EC2
          * An Async wrapper for DescribeTrafficMirrorFilters that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeTrafficMirrorFiltersRequestT = Model::DescribeTrafficMirrorFiltersRequest>
-        void DescribeTrafficMirrorFiltersAsync(const DescribeTrafficMirrorFiltersRequestT& request, const DescribeTrafficMirrorFiltersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeTrafficMirrorFiltersAsync(const DescribeTrafficMirrorFiltersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeTrafficMirrorFiltersRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeTrafficMirrorFilters, request, handler, context);
         }
@@ -9967,13 +11644,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTrafficMirrorSessions">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeTrafficMirrorSessionsOutcome DescribeTrafficMirrorSessions(const Model::DescribeTrafficMirrorSessionsRequest& request) const;
+        virtual Model::DescribeTrafficMirrorSessionsOutcome DescribeTrafficMirrorSessions(const Model::DescribeTrafficMirrorSessionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeTrafficMirrorSessions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeTrafficMirrorSessionsRequestT = Model::DescribeTrafficMirrorSessionsRequest>
-        Model::DescribeTrafficMirrorSessionsOutcomeCallable DescribeTrafficMirrorSessionsCallable(const DescribeTrafficMirrorSessionsRequestT& request) const
+        Model::DescribeTrafficMirrorSessionsOutcomeCallable DescribeTrafficMirrorSessionsCallable(const DescribeTrafficMirrorSessionsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeTrafficMirrorSessions, request);
         }
@@ -9982,7 +11659,7 @@ namespace EC2
          * An Async wrapper for DescribeTrafficMirrorSessions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeTrafficMirrorSessionsRequestT = Model::DescribeTrafficMirrorSessionsRequest>
-        void DescribeTrafficMirrorSessionsAsync(const DescribeTrafficMirrorSessionsRequestT& request, const DescribeTrafficMirrorSessionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeTrafficMirrorSessionsAsync(const DescribeTrafficMirrorSessionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeTrafficMirrorSessionsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeTrafficMirrorSessions, request, handler, context);
         }
@@ -9993,13 +11670,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTrafficMirrorTargets">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeTrafficMirrorTargetsOutcome DescribeTrafficMirrorTargets(const Model::DescribeTrafficMirrorTargetsRequest& request) const;
+        virtual Model::DescribeTrafficMirrorTargetsOutcome DescribeTrafficMirrorTargets(const Model::DescribeTrafficMirrorTargetsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeTrafficMirrorTargets that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeTrafficMirrorTargetsRequestT = Model::DescribeTrafficMirrorTargetsRequest>
-        Model::DescribeTrafficMirrorTargetsOutcomeCallable DescribeTrafficMirrorTargetsCallable(const DescribeTrafficMirrorTargetsRequestT& request) const
+        Model::DescribeTrafficMirrorTargetsOutcomeCallable DescribeTrafficMirrorTargetsCallable(const DescribeTrafficMirrorTargetsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeTrafficMirrorTargets, request);
         }
@@ -10008,7 +11685,7 @@ namespace EC2
          * An Async wrapper for DescribeTrafficMirrorTargets that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeTrafficMirrorTargetsRequestT = Model::DescribeTrafficMirrorTargetsRequest>
-        void DescribeTrafficMirrorTargetsAsync(const DescribeTrafficMirrorTargetsRequestT& request, const DescribeTrafficMirrorTargetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeTrafficMirrorTargetsAsync(const DescribeTrafficMirrorTargetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeTrafficMirrorTargetsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeTrafficMirrorTargets, request, handler, context);
         }
@@ -10021,13 +11698,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTransitGatewayAttachments">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeTransitGatewayAttachmentsOutcome DescribeTransitGatewayAttachments(const Model::DescribeTransitGatewayAttachmentsRequest& request) const;
+        virtual Model::DescribeTransitGatewayAttachmentsOutcome DescribeTransitGatewayAttachments(const Model::DescribeTransitGatewayAttachmentsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeTransitGatewayAttachments that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeTransitGatewayAttachmentsRequestT = Model::DescribeTransitGatewayAttachmentsRequest>
-        Model::DescribeTransitGatewayAttachmentsOutcomeCallable DescribeTransitGatewayAttachmentsCallable(const DescribeTransitGatewayAttachmentsRequestT& request) const
+        Model::DescribeTransitGatewayAttachmentsOutcomeCallable DescribeTransitGatewayAttachmentsCallable(const DescribeTransitGatewayAttachmentsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeTransitGatewayAttachments, request);
         }
@@ -10036,7 +11713,7 @@ namespace EC2
          * An Async wrapper for DescribeTransitGatewayAttachments that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeTransitGatewayAttachmentsRequestT = Model::DescribeTransitGatewayAttachmentsRequest>
-        void DescribeTransitGatewayAttachmentsAsync(const DescribeTransitGatewayAttachmentsRequestT& request, const DescribeTransitGatewayAttachmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeTransitGatewayAttachmentsAsync(const DescribeTransitGatewayAttachmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeTransitGatewayAttachmentsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeTransitGatewayAttachments, request, handler, context);
         }
@@ -10046,13 +11723,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTransitGatewayConnectPeers">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeTransitGatewayConnectPeersOutcome DescribeTransitGatewayConnectPeers(const Model::DescribeTransitGatewayConnectPeersRequest& request) const;
+        virtual Model::DescribeTransitGatewayConnectPeersOutcome DescribeTransitGatewayConnectPeers(const Model::DescribeTransitGatewayConnectPeersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeTransitGatewayConnectPeers that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeTransitGatewayConnectPeersRequestT = Model::DescribeTransitGatewayConnectPeersRequest>
-        Model::DescribeTransitGatewayConnectPeersOutcomeCallable DescribeTransitGatewayConnectPeersCallable(const DescribeTransitGatewayConnectPeersRequestT& request) const
+        Model::DescribeTransitGatewayConnectPeersOutcomeCallable DescribeTransitGatewayConnectPeersCallable(const DescribeTransitGatewayConnectPeersRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeTransitGatewayConnectPeers, request);
         }
@@ -10061,7 +11738,7 @@ namespace EC2
          * An Async wrapper for DescribeTransitGatewayConnectPeers that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeTransitGatewayConnectPeersRequestT = Model::DescribeTransitGatewayConnectPeersRequest>
-        void DescribeTransitGatewayConnectPeersAsync(const DescribeTransitGatewayConnectPeersRequestT& request, const DescribeTransitGatewayConnectPeersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeTransitGatewayConnectPeersAsync(const DescribeTransitGatewayConnectPeersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeTransitGatewayConnectPeersRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeTransitGatewayConnectPeers, request, handler, context);
         }
@@ -10071,13 +11748,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTransitGatewayConnects">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeTransitGatewayConnectsOutcome DescribeTransitGatewayConnects(const Model::DescribeTransitGatewayConnectsRequest& request) const;
+        virtual Model::DescribeTransitGatewayConnectsOutcome DescribeTransitGatewayConnects(const Model::DescribeTransitGatewayConnectsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeTransitGatewayConnects that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeTransitGatewayConnectsRequestT = Model::DescribeTransitGatewayConnectsRequest>
-        Model::DescribeTransitGatewayConnectsOutcomeCallable DescribeTransitGatewayConnectsCallable(const DescribeTransitGatewayConnectsRequestT& request) const
+        Model::DescribeTransitGatewayConnectsOutcomeCallable DescribeTransitGatewayConnectsCallable(const DescribeTransitGatewayConnectsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeTransitGatewayConnects, request);
         }
@@ -10086,7 +11763,7 @@ namespace EC2
          * An Async wrapper for DescribeTransitGatewayConnects that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeTransitGatewayConnectsRequestT = Model::DescribeTransitGatewayConnectsRequest>
-        void DescribeTransitGatewayConnectsAsync(const DescribeTransitGatewayConnectsRequestT& request, const DescribeTransitGatewayConnectsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeTransitGatewayConnectsAsync(const DescribeTransitGatewayConnectsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeTransitGatewayConnectsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeTransitGatewayConnects, request, handler, context);
         }
@@ -10097,13 +11774,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTransitGatewayMulticastDomains">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeTransitGatewayMulticastDomainsOutcome DescribeTransitGatewayMulticastDomains(const Model::DescribeTransitGatewayMulticastDomainsRequest& request) const;
+        virtual Model::DescribeTransitGatewayMulticastDomainsOutcome DescribeTransitGatewayMulticastDomains(const Model::DescribeTransitGatewayMulticastDomainsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeTransitGatewayMulticastDomains that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeTransitGatewayMulticastDomainsRequestT = Model::DescribeTransitGatewayMulticastDomainsRequest>
-        Model::DescribeTransitGatewayMulticastDomainsOutcomeCallable DescribeTransitGatewayMulticastDomainsCallable(const DescribeTransitGatewayMulticastDomainsRequestT& request) const
+        Model::DescribeTransitGatewayMulticastDomainsOutcomeCallable DescribeTransitGatewayMulticastDomainsCallable(const DescribeTransitGatewayMulticastDomainsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeTransitGatewayMulticastDomains, request);
         }
@@ -10112,7 +11789,7 @@ namespace EC2
          * An Async wrapper for DescribeTransitGatewayMulticastDomains that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeTransitGatewayMulticastDomainsRequestT = Model::DescribeTransitGatewayMulticastDomainsRequest>
-        void DescribeTransitGatewayMulticastDomainsAsync(const DescribeTransitGatewayMulticastDomainsRequestT& request, const DescribeTransitGatewayMulticastDomainsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeTransitGatewayMulticastDomainsAsync(const DescribeTransitGatewayMulticastDomainsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeTransitGatewayMulticastDomainsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeTransitGatewayMulticastDomains, request, handler, context);
         }
@@ -10123,13 +11800,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTransitGatewayPeeringAttachments">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeTransitGatewayPeeringAttachmentsOutcome DescribeTransitGatewayPeeringAttachments(const Model::DescribeTransitGatewayPeeringAttachmentsRequest& request) const;
+        virtual Model::DescribeTransitGatewayPeeringAttachmentsOutcome DescribeTransitGatewayPeeringAttachments(const Model::DescribeTransitGatewayPeeringAttachmentsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeTransitGatewayPeeringAttachments that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeTransitGatewayPeeringAttachmentsRequestT = Model::DescribeTransitGatewayPeeringAttachmentsRequest>
-        Model::DescribeTransitGatewayPeeringAttachmentsOutcomeCallable DescribeTransitGatewayPeeringAttachmentsCallable(const DescribeTransitGatewayPeeringAttachmentsRequestT& request) const
+        Model::DescribeTransitGatewayPeeringAttachmentsOutcomeCallable DescribeTransitGatewayPeeringAttachmentsCallable(const DescribeTransitGatewayPeeringAttachmentsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeTransitGatewayPeeringAttachments, request);
         }
@@ -10138,7 +11815,7 @@ namespace EC2
          * An Async wrapper for DescribeTransitGatewayPeeringAttachments that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeTransitGatewayPeeringAttachmentsRequestT = Model::DescribeTransitGatewayPeeringAttachmentsRequest>
-        void DescribeTransitGatewayPeeringAttachmentsAsync(const DescribeTransitGatewayPeeringAttachmentsRequestT& request, const DescribeTransitGatewayPeeringAttachmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeTransitGatewayPeeringAttachmentsAsync(const DescribeTransitGatewayPeeringAttachmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeTransitGatewayPeeringAttachmentsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeTransitGatewayPeeringAttachments, request, handler, context);
         }
@@ -10149,13 +11826,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTransitGatewayPolicyTables">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeTransitGatewayPolicyTablesOutcome DescribeTransitGatewayPolicyTables(const Model::DescribeTransitGatewayPolicyTablesRequest& request) const;
+        virtual Model::DescribeTransitGatewayPolicyTablesOutcome DescribeTransitGatewayPolicyTables(const Model::DescribeTransitGatewayPolicyTablesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeTransitGatewayPolicyTables that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeTransitGatewayPolicyTablesRequestT = Model::DescribeTransitGatewayPolicyTablesRequest>
-        Model::DescribeTransitGatewayPolicyTablesOutcomeCallable DescribeTransitGatewayPolicyTablesCallable(const DescribeTransitGatewayPolicyTablesRequestT& request) const
+        Model::DescribeTransitGatewayPolicyTablesOutcomeCallable DescribeTransitGatewayPolicyTablesCallable(const DescribeTransitGatewayPolicyTablesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeTransitGatewayPolicyTables, request);
         }
@@ -10164,7 +11841,7 @@ namespace EC2
          * An Async wrapper for DescribeTransitGatewayPolicyTables that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeTransitGatewayPolicyTablesRequestT = Model::DescribeTransitGatewayPolicyTablesRequest>
-        void DescribeTransitGatewayPolicyTablesAsync(const DescribeTransitGatewayPolicyTablesRequestT& request, const DescribeTransitGatewayPolicyTablesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeTransitGatewayPolicyTablesAsync(const DescribeTransitGatewayPolicyTablesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeTransitGatewayPolicyTablesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeTransitGatewayPolicyTables, request, handler, context);
         }
@@ -10175,13 +11852,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTransitGatewayRouteTableAnnouncements">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeTransitGatewayRouteTableAnnouncementsOutcome DescribeTransitGatewayRouteTableAnnouncements(const Model::DescribeTransitGatewayRouteTableAnnouncementsRequest& request) const;
+        virtual Model::DescribeTransitGatewayRouteTableAnnouncementsOutcome DescribeTransitGatewayRouteTableAnnouncements(const Model::DescribeTransitGatewayRouteTableAnnouncementsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeTransitGatewayRouteTableAnnouncements that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeTransitGatewayRouteTableAnnouncementsRequestT = Model::DescribeTransitGatewayRouteTableAnnouncementsRequest>
-        Model::DescribeTransitGatewayRouteTableAnnouncementsOutcomeCallable DescribeTransitGatewayRouteTableAnnouncementsCallable(const DescribeTransitGatewayRouteTableAnnouncementsRequestT& request) const
+        Model::DescribeTransitGatewayRouteTableAnnouncementsOutcomeCallable DescribeTransitGatewayRouteTableAnnouncementsCallable(const DescribeTransitGatewayRouteTableAnnouncementsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeTransitGatewayRouteTableAnnouncements, request);
         }
@@ -10190,7 +11867,7 @@ namespace EC2
          * An Async wrapper for DescribeTransitGatewayRouteTableAnnouncements that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeTransitGatewayRouteTableAnnouncementsRequestT = Model::DescribeTransitGatewayRouteTableAnnouncementsRequest>
-        void DescribeTransitGatewayRouteTableAnnouncementsAsync(const DescribeTransitGatewayRouteTableAnnouncementsRequestT& request, const DescribeTransitGatewayRouteTableAnnouncementsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeTransitGatewayRouteTableAnnouncementsAsync(const DescribeTransitGatewayRouteTableAnnouncementsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeTransitGatewayRouteTableAnnouncementsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeTransitGatewayRouteTableAnnouncements, request, handler, context);
         }
@@ -10202,13 +11879,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTransitGatewayRouteTables">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeTransitGatewayRouteTablesOutcome DescribeTransitGatewayRouteTables(const Model::DescribeTransitGatewayRouteTablesRequest& request) const;
+        virtual Model::DescribeTransitGatewayRouteTablesOutcome DescribeTransitGatewayRouteTables(const Model::DescribeTransitGatewayRouteTablesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeTransitGatewayRouteTables that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeTransitGatewayRouteTablesRequestT = Model::DescribeTransitGatewayRouteTablesRequest>
-        Model::DescribeTransitGatewayRouteTablesOutcomeCallable DescribeTransitGatewayRouteTablesCallable(const DescribeTransitGatewayRouteTablesRequestT& request) const
+        Model::DescribeTransitGatewayRouteTablesOutcomeCallable DescribeTransitGatewayRouteTablesCallable(const DescribeTransitGatewayRouteTablesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeTransitGatewayRouteTables, request);
         }
@@ -10217,7 +11894,7 @@ namespace EC2
          * An Async wrapper for DescribeTransitGatewayRouteTables that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeTransitGatewayRouteTablesRequestT = Model::DescribeTransitGatewayRouteTablesRequest>
-        void DescribeTransitGatewayRouteTablesAsync(const DescribeTransitGatewayRouteTablesRequestT& request, const DescribeTransitGatewayRouteTablesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeTransitGatewayRouteTablesAsync(const DescribeTransitGatewayRouteTablesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeTransitGatewayRouteTablesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeTransitGatewayRouteTables, request, handler, context);
         }
@@ -10229,13 +11906,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTransitGatewayVpcAttachments">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeTransitGatewayVpcAttachmentsOutcome DescribeTransitGatewayVpcAttachments(const Model::DescribeTransitGatewayVpcAttachmentsRequest& request) const;
+        virtual Model::DescribeTransitGatewayVpcAttachmentsOutcome DescribeTransitGatewayVpcAttachments(const Model::DescribeTransitGatewayVpcAttachmentsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeTransitGatewayVpcAttachments that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeTransitGatewayVpcAttachmentsRequestT = Model::DescribeTransitGatewayVpcAttachmentsRequest>
-        Model::DescribeTransitGatewayVpcAttachmentsOutcomeCallable DescribeTransitGatewayVpcAttachmentsCallable(const DescribeTransitGatewayVpcAttachmentsRequestT& request) const
+        Model::DescribeTransitGatewayVpcAttachmentsOutcomeCallable DescribeTransitGatewayVpcAttachmentsCallable(const DescribeTransitGatewayVpcAttachmentsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeTransitGatewayVpcAttachments, request);
         }
@@ -10244,7 +11921,7 @@ namespace EC2
          * An Async wrapper for DescribeTransitGatewayVpcAttachments that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeTransitGatewayVpcAttachmentsRequestT = Model::DescribeTransitGatewayVpcAttachmentsRequest>
-        void DescribeTransitGatewayVpcAttachmentsAsync(const DescribeTransitGatewayVpcAttachmentsRequestT& request, const DescribeTransitGatewayVpcAttachmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeTransitGatewayVpcAttachmentsAsync(const DescribeTransitGatewayVpcAttachmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeTransitGatewayVpcAttachmentsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeTransitGatewayVpcAttachments, request, handler, context);
         }
@@ -10256,13 +11933,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTransitGateways">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeTransitGatewaysOutcome DescribeTransitGateways(const Model::DescribeTransitGatewaysRequest& request) const;
+        virtual Model::DescribeTransitGatewaysOutcome DescribeTransitGateways(const Model::DescribeTransitGatewaysRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeTransitGateways that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeTransitGatewaysRequestT = Model::DescribeTransitGatewaysRequest>
-        Model::DescribeTransitGatewaysOutcomeCallable DescribeTransitGatewaysCallable(const DescribeTransitGatewaysRequestT& request) const
+        Model::DescribeTransitGatewaysOutcomeCallable DescribeTransitGatewaysCallable(const DescribeTransitGatewaysRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeTransitGateways, request);
         }
@@ -10271,26 +11948,24 @@ namespace EC2
          * An Async wrapper for DescribeTransitGateways that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeTransitGatewaysRequestT = Model::DescribeTransitGatewaysRequest>
-        void DescribeTransitGatewaysAsync(const DescribeTransitGatewaysRequestT& request, const DescribeTransitGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeTransitGatewaysAsync(const DescribeTransitGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeTransitGatewaysRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeTransitGateways, request, handler, context);
         }
 
         /**
-         *  <p>This API action is currently in <b>limited preview only</b>. If you
-         * are interested in using this feature, contact your account manager.</p> 
          * <p>Describes one or more network interface trunk associations.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTrunkInterfaceAssociations">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeTrunkInterfaceAssociationsOutcome DescribeTrunkInterfaceAssociations(const Model::DescribeTrunkInterfaceAssociationsRequest& request) const;
+        virtual Model::DescribeTrunkInterfaceAssociationsOutcome DescribeTrunkInterfaceAssociations(const Model::DescribeTrunkInterfaceAssociationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeTrunkInterfaceAssociations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeTrunkInterfaceAssociationsRequestT = Model::DescribeTrunkInterfaceAssociationsRequest>
-        Model::DescribeTrunkInterfaceAssociationsOutcomeCallable DescribeTrunkInterfaceAssociationsCallable(const DescribeTrunkInterfaceAssociationsRequestT& request) const
+        Model::DescribeTrunkInterfaceAssociationsOutcomeCallable DescribeTrunkInterfaceAssociationsCallable(const DescribeTrunkInterfaceAssociationsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeTrunkInterfaceAssociations, request);
         }
@@ -10299,24 +11974,24 @@ namespace EC2
          * An Async wrapper for DescribeTrunkInterfaceAssociations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeTrunkInterfaceAssociationsRequestT = Model::DescribeTrunkInterfaceAssociationsRequest>
-        void DescribeTrunkInterfaceAssociationsAsync(const DescribeTrunkInterfaceAssociationsRequestT& request, const DescribeTrunkInterfaceAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeTrunkInterfaceAssociationsAsync(const DescribeTrunkInterfaceAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeTrunkInterfaceAssociationsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeTrunkInterfaceAssociations, request, handler, context);
         }
 
         /**
-         * <p>Describe Amazon Web Services Verified Access endpoints.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Describes the specified Amazon Web Services Verified Access
+         * endpoints.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVerifiedAccessEndpoints">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVerifiedAccessEndpointsOutcome DescribeVerifiedAccessEndpoints(const Model::DescribeVerifiedAccessEndpointsRequest& request) const;
+        virtual Model::DescribeVerifiedAccessEndpointsOutcome DescribeVerifiedAccessEndpoints(const Model::DescribeVerifiedAccessEndpointsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVerifiedAccessEndpoints that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVerifiedAccessEndpointsRequestT = Model::DescribeVerifiedAccessEndpointsRequest>
-        Model::DescribeVerifiedAccessEndpointsOutcomeCallable DescribeVerifiedAccessEndpointsCallable(const DescribeVerifiedAccessEndpointsRequestT& request) const
+        Model::DescribeVerifiedAccessEndpointsOutcomeCallable DescribeVerifiedAccessEndpointsCallable(const DescribeVerifiedAccessEndpointsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVerifiedAccessEndpoints, request);
         }
@@ -10325,24 +12000,23 @@ namespace EC2
          * An Async wrapper for DescribeVerifiedAccessEndpoints that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVerifiedAccessEndpointsRequestT = Model::DescribeVerifiedAccessEndpointsRequest>
-        void DescribeVerifiedAccessEndpointsAsync(const DescribeVerifiedAccessEndpointsRequestT& request, const DescribeVerifiedAccessEndpointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVerifiedAccessEndpointsAsync(const DescribeVerifiedAccessEndpointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVerifiedAccessEndpointsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVerifiedAccessEndpoints, request, handler, context);
         }
 
         /**
-         * <p>Describe details of existing Verified Access groups.</p><p><h3>See Also:</h3>
-         * <a
+         * <p>Describes the specified Verified Access groups.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVerifiedAccessGroups">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVerifiedAccessGroupsOutcome DescribeVerifiedAccessGroups(const Model::DescribeVerifiedAccessGroupsRequest& request) const;
+        virtual Model::DescribeVerifiedAccessGroupsOutcome DescribeVerifiedAccessGroups(const Model::DescribeVerifiedAccessGroupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVerifiedAccessGroups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVerifiedAccessGroupsRequestT = Model::DescribeVerifiedAccessGroupsRequest>
-        Model::DescribeVerifiedAccessGroupsOutcomeCallable DescribeVerifiedAccessGroupsCallable(const DescribeVerifiedAccessGroupsRequestT& request) const
+        Model::DescribeVerifiedAccessGroupsOutcomeCallable DescribeVerifiedAccessGroupsCallable(const DescribeVerifiedAccessGroupsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVerifiedAccessGroups, request);
         }
@@ -10351,24 +12025,24 @@ namespace EC2
          * An Async wrapper for DescribeVerifiedAccessGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVerifiedAccessGroupsRequestT = Model::DescribeVerifiedAccessGroupsRequest>
-        void DescribeVerifiedAccessGroupsAsync(const DescribeVerifiedAccessGroupsRequestT& request, const DescribeVerifiedAccessGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVerifiedAccessGroupsAsync(const DescribeVerifiedAccessGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVerifiedAccessGroupsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVerifiedAccessGroups, request, handler, context);
         }
 
         /**
-         * <p>Describes the current logging configuration for the Amazon Web Services
-         * Verified Access instances.</p><p><h3>See Also:</h3>   <a
+         * <p>Describes the specified Amazon Web Services Verified Access
+         * instances.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVerifiedAccessInstanceLoggingConfigurations">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVerifiedAccessInstanceLoggingConfigurationsOutcome DescribeVerifiedAccessInstanceLoggingConfigurations(const Model::DescribeVerifiedAccessInstanceLoggingConfigurationsRequest& request) const;
+        virtual Model::DescribeVerifiedAccessInstanceLoggingConfigurationsOutcome DescribeVerifiedAccessInstanceLoggingConfigurations(const Model::DescribeVerifiedAccessInstanceLoggingConfigurationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVerifiedAccessInstanceLoggingConfigurations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVerifiedAccessInstanceLoggingConfigurationsRequestT = Model::DescribeVerifiedAccessInstanceLoggingConfigurationsRequest>
-        Model::DescribeVerifiedAccessInstanceLoggingConfigurationsOutcomeCallable DescribeVerifiedAccessInstanceLoggingConfigurationsCallable(const DescribeVerifiedAccessInstanceLoggingConfigurationsRequestT& request) const
+        Model::DescribeVerifiedAccessInstanceLoggingConfigurationsOutcomeCallable DescribeVerifiedAccessInstanceLoggingConfigurationsCallable(const DescribeVerifiedAccessInstanceLoggingConfigurationsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVerifiedAccessInstanceLoggingConfigurations, request);
         }
@@ -10377,23 +12051,24 @@ namespace EC2
          * An Async wrapper for DescribeVerifiedAccessInstanceLoggingConfigurations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVerifiedAccessInstanceLoggingConfigurationsRequestT = Model::DescribeVerifiedAccessInstanceLoggingConfigurationsRequest>
-        void DescribeVerifiedAccessInstanceLoggingConfigurationsAsync(const DescribeVerifiedAccessInstanceLoggingConfigurationsRequestT& request, const DescribeVerifiedAccessInstanceLoggingConfigurationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVerifiedAccessInstanceLoggingConfigurationsAsync(const DescribeVerifiedAccessInstanceLoggingConfigurationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVerifiedAccessInstanceLoggingConfigurationsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVerifiedAccessInstanceLoggingConfigurations, request, handler, context);
         }
 
         /**
-         * <p>Describe Verified Access instances.</p><p><h3>See Also:</h3>   <a
+         * <p>Describes the specified Amazon Web Services Verified Access
+         * instances.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVerifiedAccessInstances">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVerifiedAccessInstancesOutcome DescribeVerifiedAccessInstances(const Model::DescribeVerifiedAccessInstancesRequest& request) const;
+        virtual Model::DescribeVerifiedAccessInstancesOutcome DescribeVerifiedAccessInstances(const Model::DescribeVerifiedAccessInstancesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVerifiedAccessInstances that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVerifiedAccessInstancesRequestT = Model::DescribeVerifiedAccessInstancesRequest>
-        Model::DescribeVerifiedAccessInstancesOutcomeCallable DescribeVerifiedAccessInstancesCallable(const DescribeVerifiedAccessInstancesRequestT& request) const
+        Model::DescribeVerifiedAccessInstancesOutcomeCallable DescribeVerifiedAccessInstancesCallable(const DescribeVerifiedAccessInstancesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVerifiedAccessInstances, request);
         }
@@ -10402,24 +12077,24 @@ namespace EC2
          * An Async wrapper for DescribeVerifiedAccessInstances that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVerifiedAccessInstancesRequestT = Model::DescribeVerifiedAccessInstancesRequest>
-        void DescribeVerifiedAccessInstancesAsync(const DescribeVerifiedAccessInstancesRequestT& request, const DescribeVerifiedAccessInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVerifiedAccessInstancesAsync(const DescribeVerifiedAccessInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVerifiedAccessInstancesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVerifiedAccessInstances, request, handler, context);
         }
 
         /**
-         * <p>Describe details of existing Verified Access trust providers.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Describes the specified Amazon Web Services Verified Access trust
+         * providers.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVerifiedAccessTrustProviders">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVerifiedAccessTrustProvidersOutcome DescribeVerifiedAccessTrustProviders(const Model::DescribeVerifiedAccessTrustProvidersRequest& request) const;
+        virtual Model::DescribeVerifiedAccessTrustProvidersOutcome DescribeVerifiedAccessTrustProviders(const Model::DescribeVerifiedAccessTrustProvidersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVerifiedAccessTrustProviders that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVerifiedAccessTrustProvidersRequestT = Model::DescribeVerifiedAccessTrustProvidersRequest>
-        Model::DescribeVerifiedAccessTrustProvidersOutcomeCallable DescribeVerifiedAccessTrustProvidersCallable(const DescribeVerifiedAccessTrustProvidersRequestT& request) const
+        Model::DescribeVerifiedAccessTrustProvidersOutcomeCallable DescribeVerifiedAccessTrustProvidersCallable(const DescribeVerifiedAccessTrustProvidersRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVerifiedAccessTrustProviders, request);
         }
@@ -10428,7 +12103,7 @@ namespace EC2
          * An Async wrapper for DescribeVerifiedAccessTrustProviders that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVerifiedAccessTrustProvidersRequestT = Model::DescribeVerifiedAccessTrustProvidersRequest>
-        void DescribeVerifiedAccessTrustProvidersAsync(const DescribeVerifiedAccessTrustProvidersRequestT& request, const DescribeVerifiedAccessTrustProvidersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVerifiedAccessTrustProvidersAsync(const DescribeVerifiedAccessTrustProvidersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVerifiedAccessTrustProvidersRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVerifiedAccessTrustProviders, request, handler, context);
         }
@@ -10437,9 +12112,9 @@ namespace EC2
          * <p>Describes the specified attribute of the specified volume. You can specify
          * only one attribute at a time.</p> <p>For more information about EBS volumes, see
          * <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html">Amazon
-         * EBS volumes</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes.html">Amazon
+         * EBS volumes</a> in the <i>Amazon EBS User Guide</i>.</p><p><h3>See Also:</h3>  
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumeAttribute">AWS
          * API Reference</a></p>
          */
@@ -10480,11 +12155,11 @@ namespace EC2
          * <code>impaired</code>. If the status is <code>insufficient-data</code>, then the
          * checks might still be taking place on your volume at the time. We recommend that
          * you retry the request. For more information about volume status, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-status.html">Monitor
-         * the status of your volumes</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p> <i>Events</i>: Reflect the cause of a volume status and might
-         * require you to take action. For example, if your volume returns an
-         * <code>impaired</code> status, then the volume event might be
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/monitoring-volume-status.html">Monitor
+         * the status of your volumes</a> in the <i>Amazon EBS User Guide</i>.</p> <p>
+         * <i>Events</i>: Reflect the cause of a volume status and might require you to
+         * take action. For example, if your volume returns an <code>impaired</code>
+         * status, then the volume event might be
          * <code>potential-data-inconsistency</code>. This means that your volume has been
          * affected by an issue with the underlying host, has all I/O operations disabled,
          * and might have inconsistent data.</p> <p> <i>Actions</i>: Reflect the actions
@@ -10492,21 +12167,26 @@ namespace EC2
          * the volume is <code>impaired</code> and the volume event shows
          * <code>potential-data-inconsistency</code>, then the action shows
          * <code>enable-volume-io</code>. This means that you may want to enable the I/O
-         * operations for the volume by calling the <a>EnableVolumeIO</a> action and then
-         * check the volume for data consistency.</p> <p>Volume status is based on the
-         * volume status checks, and does not reflect the volume state. Therefore, volume
-         * status does not indicate volumes in the <code>error</code> state (for example,
-         * when a volume is incapable of accepting I/O.)</p><p><h3>See Also:</h3>   <a
+         * operations for the volume and then check the volume for data consistency. For
+         * more information, see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/work_volumes_impaired.html">Work
+         * with an impaired EBS volume</a>.</p> <p>Volume status is based on the volume
+         * status checks, and does not reflect the volume state. Therefore, volume status
+         * does not indicate volumes in the <code>error</code> state (for example, when a
+         * volume is incapable of accepting I/O.)</p>  <p>The order of the elements
+         * in the response, including those within nested structures, might vary.
+         * Applications should not assume the elements appear in a particular order.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumeStatus">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVolumeStatusOutcome DescribeVolumeStatus(const Model::DescribeVolumeStatusRequest& request) const;
+        virtual Model::DescribeVolumeStatusOutcome DescribeVolumeStatus(const Model::DescribeVolumeStatusRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVolumeStatus that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVolumeStatusRequestT = Model::DescribeVolumeStatusRequest>
-        Model::DescribeVolumeStatusOutcomeCallable DescribeVolumeStatusCallable(const DescribeVolumeStatusRequestT& request) const
+        Model::DescribeVolumeStatusOutcomeCallable DescribeVolumeStatusCallable(const DescribeVolumeStatusRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVolumeStatus, request);
         }
@@ -10515,7 +12195,7 @@ namespace EC2
          * An Async wrapper for DescribeVolumeStatus that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVolumeStatusRequestT = Model::DescribeVolumeStatusRequest>
-        void DescribeVolumeStatusAsync(const DescribeVolumeStatusRequestT& request, const DescribeVolumeStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVolumeStatusAsync(const DescribeVolumeStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVolumeStatusRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVolumeStatus, request, handler, context);
         }
@@ -10526,19 +12206,23 @@ namespace EC2
          * to make the list more manageable. For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination">Pagination</a>.</p>
          * <p>For more information about EBS volumes, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html">Amazon
-         * EBS volumes</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes.html">Amazon
+         * EBS volumes</a> in the <i>Amazon EBS User Guide</i>.</p>  <p>We
+         * strongly recommend using only paginated requests. Unpaginated requests are
+         * susceptible to throttling and timeouts.</p>   <p>The order of
+         * the elements in the response, including those within nested structures, might
+         * vary. Applications should not assume the elements appear in a particular
+         * order.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumes">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVolumesOutcome DescribeVolumes(const Model::DescribeVolumesRequest& request) const;
+        virtual Model::DescribeVolumesOutcome DescribeVolumes(const Model::DescribeVolumesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVolumes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVolumesRequestT = Model::DescribeVolumesRequest>
-        Model::DescribeVolumesOutcomeCallable DescribeVolumesCallable(const DescribeVolumesRequestT& request) const
+        Model::DescribeVolumesOutcomeCallable DescribeVolumesCallable(const DescribeVolumesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVolumes, request);
         }
@@ -10547,33 +12231,27 @@ namespace EC2
          * An Async wrapper for DescribeVolumes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVolumesRequestT = Model::DescribeVolumesRequest>
-        void DescribeVolumesAsync(const DescribeVolumesRequestT& request, const DescribeVolumesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVolumesAsync(const DescribeVolumesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVolumesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVolumes, request, handler, context);
         }
 
         /**
          * <p>Describes the most recent volume modification request for the specified EBS
-         * volumes.</p> <p>If a volume has never been modified, some information in the
-         * output will be null. If a volume has been modified more than once, the output
-         * includes only the most recent modification request.</p> <p>You can also use
-         * CloudWatch Events to check the status of a modification to an EBS volume. For
-         * information about CloudWatch Events, see the <a
-         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/">Amazon
-         * CloudWatch Events User Guide</a>. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-modifications.html">Monitor
-         * the progress of volume modifications</a> in the <i>Amazon Elastic Compute Cloud
-         * User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * volumes.</p> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/monitoring-volume-modifications.html">
+         * Monitor the progress of volume modifications</a> in the <i>Amazon EBS User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumesModifications">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVolumesModificationsOutcome DescribeVolumesModifications(const Model::DescribeVolumesModificationsRequest& request) const;
+        virtual Model::DescribeVolumesModificationsOutcome DescribeVolumesModifications(const Model::DescribeVolumesModificationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVolumesModifications that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVolumesModificationsRequestT = Model::DescribeVolumesModificationsRequest>
-        Model::DescribeVolumesModificationsOutcomeCallable DescribeVolumesModificationsCallable(const DescribeVolumesModificationsRequestT& request) const
+        Model::DescribeVolumesModificationsOutcomeCallable DescribeVolumesModificationsCallable(const DescribeVolumesModificationsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVolumesModifications, request);
         }
@@ -10582,7 +12260,7 @@ namespace EC2
          * An Async wrapper for DescribeVolumesModifications that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVolumesModificationsRequestT = Model::DescribeVolumesModificationsRequest>
-        void DescribeVolumesModificationsAsync(const DescribeVolumesModificationsRequestT& request, const DescribeVolumesModificationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVolumesModificationsAsync(const DescribeVolumesModificationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVolumesModificationsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVolumesModifications, request, handler, context);
         }
@@ -10614,22 +12292,82 @@ namespace EC2
         }
 
         /**
-         * <p>Describes the ClassicLink status of one or more VPCs.</p>  <p>We are
-         * retiring EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC.
-         * For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * <p>Describe VPC Block Public Access (BPA) exclusions. A VPC BPA exclusion is a
+         * mode that can be applied to a single VPC or subnet that exempts it from the
+         * account’s BPA mode and will allow bidirectional or egress-only access. You can
+         * create BPA exclusions for VPCs and subnets even when BPA is not enabled on the
+         * account to ensure that there is no traffic disruption to the exclusions when VPC
+         * BPA is turned on. To learn more about VPC BPA, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/security-vpc-bpa.html">Block
+         * public access to VPCs and subnets</a> in the <i>Amazon VPC User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcBlockPublicAccessExclusions">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeVpcBlockPublicAccessExclusionsOutcome DescribeVpcBlockPublicAccessExclusions(const Model::DescribeVpcBlockPublicAccessExclusionsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeVpcBlockPublicAccessExclusions that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeVpcBlockPublicAccessExclusionsRequestT = Model::DescribeVpcBlockPublicAccessExclusionsRequest>
+        Model::DescribeVpcBlockPublicAccessExclusionsOutcomeCallable DescribeVpcBlockPublicAccessExclusionsCallable(const DescribeVpcBlockPublicAccessExclusionsRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeVpcBlockPublicAccessExclusions, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeVpcBlockPublicAccessExclusions that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeVpcBlockPublicAccessExclusionsRequestT = Model::DescribeVpcBlockPublicAccessExclusionsRequest>
+        void DescribeVpcBlockPublicAccessExclusionsAsync(const DescribeVpcBlockPublicAccessExclusionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVpcBlockPublicAccessExclusionsRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeVpcBlockPublicAccessExclusions, request, handler, context);
+        }
+
+        /**
+         * <p>Describe VPC Block Public Access (BPA) options. VPC Block Public Access (BPA)
+         * enables you to block resources in VPCs and subnets that you own in a Region from
+         * reaching or being reached from the internet through internet gateways and
+         * egress-only internet gateways. To learn more about VPC BPA, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/security-vpc-bpa.html">Block
+         * public access to VPCs and subnets</a> in the <i>Amazon VPC User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcBlockPublicAccessOptions">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeVpcBlockPublicAccessOptionsOutcome DescribeVpcBlockPublicAccessOptions(const Model::DescribeVpcBlockPublicAccessOptionsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeVpcBlockPublicAccessOptions that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeVpcBlockPublicAccessOptionsRequestT = Model::DescribeVpcBlockPublicAccessOptionsRequest>
+        Model::DescribeVpcBlockPublicAccessOptionsOutcomeCallable DescribeVpcBlockPublicAccessOptionsCallable(const DescribeVpcBlockPublicAccessOptionsRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeVpcBlockPublicAccessOptions, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeVpcBlockPublicAccessOptions that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeVpcBlockPublicAccessOptionsRequestT = Model::DescribeVpcBlockPublicAccessOptionsRequest>
+        void DescribeVpcBlockPublicAccessOptionsAsync(const DescribeVpcBlockPublicAccessOptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVpcBlockPublicAccessOptionsRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeVpcBlockPublicAccessOptions, request, handler, context);
+        }
+
+        /**
+         *  <p>This action is deprecated.</p>  <p>Describes the ClassicLink
+         * status of the specified VPCs.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcClassicLink">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVpcClassicLinkOutcome DescribeVpcClassicLink(const Model::DescribeVpcClassicLinkRequest& request) const;
+        virtual Model::DescribeVpcClassicLinkOutcome DescribeVpcClassicLink(const Model::DescribeVpcClassicLinkRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVpcClassicLink that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVpcClassicLinkRequestT = Model::DescribeVpcClassicLinkRequest>
-        Model::DescribeVpcClassicLinkOutcomeCallable DescribeVpcClassicLinkCallable(const DescribeVpcClassicLinkRequestT& request) const
+        Model::DescribeVpcClassicLinkOutcomeCallable DescribeVpcClassicLinkCallable(const DescribeVpcClassicLinkRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVpcClassicLink, request);
         }
@@ -10638,35 +12376,28 @@ namespace EC2
          * An Async wrapper for DescribeVpcClassicLink that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVpcClassicLinkRequestT = Model::DescribeVpcClassicLinkRequest>
-        void DescribeVpcClassicLinkAsync(const DescribeVpcClassicLinkRequestT& request, const DescribeVpcClassicLinkResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVpcClassicLinkAsync(const DescribeVpcClassicLinkResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVpcClassicLinkRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVpcClassicLink, request, handler, context);
         }
 
         /**
-         *  <p>We are retiring EC2-Classic. We recommend that you migrate from
-         * EC2-Classic to a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p>  <p>Describes the ClassicLink DNS support status of one or
-         * more VPCs. If enabled, the DNS hostname of a linked EC2-Classic instance
-         * resolves to its private IP address when addressed from an instance in the VPC to
-         * which it's linked. Similarly, the DNS hostname of an instance in a VPC resolves
-         * to its private IP address when addressed from a linked EC2-Classic instance. For
-         * more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a>
-         * in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p><p><h3>See Also:</h3> 
-         * <a
+         *  <p>This action is deprecated.</p>  <p>Describes the ClassicLink
+         * DNS support status of one or more VPCs. If enabled, the DNS hostname of a linked
+         * EC2-Classic instance resolves to its private IP address when addressed from an
+         * instance in the VPC to which it's linked. Similarly, the DNS hostname of an
+         * instance in a VPC resolves to its private IP address when addressed from a
+         * linked EC2-Classic instance.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcClassicLinkDnsSupport">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVpcClassicLinkDnsSupportOutcome DescribeVpcClassicLinkDnsSupport(const Model::DescribeVpcClassicLinkDnsSupportRequest& request) const;
+        virtual Model::DescribeVpcClassicLinkDnsSupportOutcome DescribeVpcClassicLinkDnsSupport(const Model::DescribeVpcClassicLinkDnsSupportRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVpcClassicLinkDnsSupport that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVpcClassicLinkDnsSupportRequestT = Model::DescribeVpcClassicLinkDnsSupportRequest>
-        Model::DescribeVpcClassicLinkDnsSupportOutcomeCallable DescribeVpcClassicLinkDnsSupportCallable(const DescribeVpcClassicLinkDnsSupportRequestT& request) const
+        Model::DescribeVpcClassicLinkDnsSupportOutcomeCallable DescribeVpcClassicLinkDnsSupportCallable(const DescribeVpcClassicLinkDnsSupportRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVpcClassicLinkDnsSupport, request);
         }
@@ -10675,9 +12406,36 @@ namespace EC2
          * An Async wrapper for DescribeVpcClassicLinkDnsSupport that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVpcClassicLinkDnsSupportRequestT = Model::DescribeVpcClassicLinkDnsSupportRequest>
-        void DescribeVpcClassicLinkDnsSupportAsync(const DescribeVpcClassicLinkDnsSupportRequestT& request, const DescribeVpcClassicLinkDnsSupportResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVpcClassicLinkDnsSupportAsync(const DescribeVpcClassicLinkDnsSupportResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVpcClassicLinkDnsSupportRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVpcClassicLinkDnsSupport, request, handler, context);
+        }
+
+        /**
+         * <p>Describes the VPC resources, VPC endpoint services, Amazon Lattice services,
+         * or service networks associated with the VPC endpoint.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpointAssociations">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeVpcEndpointAssociationsOutcome DescribeVpcEndpointAssociations(const Model::DescribeVpcEndpointAssociationsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeVpcEndpointAssociations that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeVpcEndpointAssociationsRequestT = Model::DescribeVpcEndpointAssociationsRequest>
+        Model::DescribeVpcEndpointAssociationsOutcomeCallable DescribeVpcEndpointAssociationsCallable(const DescribeVpcEndpointAssociationsRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DescribeVpcEndpointAssociations, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeVpcEndpointAssociations that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeVpcEndpointAssociationsRequestT = Model::DescribeVpcEndpointAssociationsRequest>
+        void DescribeVpcEndpointAssociationsAsync(const DescribeVpcEndpointAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVpcEndpointAssociationsRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DescribeVpcEndpointAssociations, request, handler, context);
         }
 
         /**
@@ -10686,13 +12444,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpointConnectionNotifications">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVpcEndpointConnectionNotificationsOutcome DescribeVpcEndpointConnectionNotifications(const Model::DescribeVpcEndpointConnectionNotificationsRequest& request) const;
+        virtual Model::DescribeVpcEndpointConnectionNotificationsOutcome DescribeVpcEndpointConnectionNotifications(const Model::DescribeVpcEndpointConnectionNotificationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVpcEndpointConnectionNotifications that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVpcEndpointConnectionNotificationsRequestT = Model::DescribeVpcEndpointConnectionNotificationsRequest>
-        Model::DescribeVpcEndpointConnectionNotificationsOutcomeCallable DescribeVpcEndpointConnectionNotificationsCallable(const DescribeVpcEndpointConnectionNotificationsRequestT& request) const
+        Model::DescribeVpcEndpointConnectionNotificationsOutcomeCallable DescribeVpcEndpointConnectionNotificationsCallable(const DescribeVpcEndpointConnectionNotificationsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVpcEndpointConnectionNotifications, request);
         }
@@ -10701,7 +12459,7 @@ namespace EC2
          * An Async wrapper for DescribeVpcEndpointConnectionNotifications that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVpcEndpointConnectionNotificationsRequestT = Model::DescribeVpcEndpointConnectionNotificationsRequest>
-        void DescribeVpcEndpointConnectionNotificationsAsync(const DescribeVpcEndpointConnectionNotificationsRequestT& request, const DescribeVpcEndpointConnectionNotificationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVpcEndpointConnectionNotificationsAsync(const DescribeVpcEndpointConnectionNotificationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVpcEndpointConnectionNotificationsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVpcEndpointConnectionNotifications, request, handler, context);
         }
@@ -10713,13 +12471,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpointConnections">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVpcEndpointConnectionsOutcome DescribeVpcEndpointConnections(const Model::DescribeVpcEndpointConnectionsRequest& request) const;
+        virtual Model::DescribeVpcEndpointConnectionsOutcome DescribeVpcEndpointConnections(const Model::DescribeVpcEndpointConnectionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVpcEndpointConnections that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVpcEndpointConnectionsRequestT = Model::DescribeVpcEndpointConnectionsRequest>
-        Model::DescribeVpcEndpointConnectionsOutcomeCallable DescribeVpcEndpointConnectionsCallable(const DescribeVpcEndpointConnectionsRequestT& request) const
+        Model::DescribeVpcEndpointConnectionsOutcomeCallable DescribeVpcEndpointConnectionsCallable(const DescribeVpcEndpointConnectionsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVpcEndpointConnections, request);
         }
@@ -10728,7 +12486,7 @@ namespace EC2
          * An Async wrapper for DescribeVpcEndpointConnections that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVpcEndpointConnectionsRequestT = Model::DescribeVpcEndpointConnectionsRequest>
-        void DescribeVpcEndpointConnectionsAsync(const DescribeVpcEndpointConnectionsRequestT& request, const DescribeVpcEndpointConnectionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVpcEndpointConnectionsAsync(const DescribeVpcEndpointConnectionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVpcEndpointConnectionsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVpcEndpointConnections, request, handler, context);
         }
@@ -10739,13 +12497,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpointServiceConfigurations">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVpcEndpointServiceConfigurationsOutcome DescribeVpcEndpointServiceConfigurations(const Model::DescribeVpcEndpointServiceConfigurationsRequest& request) const;
+        virtual Model::DescribeVpcEndpointServiceConfigurationsOutcome DescribeVpcEndpointServiceConfigurations(const Model::DescribeVpcEndpointServiceConfigurationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVpcEndpointServiceConfigurations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVpcEndpointServiceConfigurationsRequestT = Model::DescribeVpcEndpointServiceConfigurationsRequest>
-        Model::DescribeVpcEndpointServiceConfigurationsOutcomeCallable DescribeVpcEndpointServiceConfigurationsCallable(const DescribeVpcEndpointServiceConfigurationsRequestT& request) const
+        Model::DescribeVpcEndpointServiceConfigurationsOutcomeCallable DescribeVpcEndpointServiceConfigurationsCallable(const DescribeVpcEndpointServiceConfigurationsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVpcEndpointServiceConfigurations, request);
         }
@@ -10754,14 +12512,15 @@ namespace EC2
          * An Async wrapper for DescribeVpcEndpointServiceConfigurations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVpcEndpointServiceConfigurationsRequestT = Model::DescribeVpcEndpointServiceConfigurationsRequest>
-        void DescribeVpcEndpointServiceConfigurationsAsync(const DescribeVpcEndpointServiceConfigurationsRequestT& request, const DescribeVpcEndpointServiceConfigurationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVpcEndpointServiceConfigurationsAsync(const DescribeVpcEndpointServiceConfigurationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVpcEndpointServiceConfigurationsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVpcEndpointServiceConfigurations, request, handler, context);
         }
 
         /**
          * <p>Describes the principals (service consumers) that are permitted to discover
-         * your VPC endpoint service.</p><p><h3>See Also:</h3>   <a
+         * your VPC endpoint service. Principal ARNs with path components aren't
+         * supported.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpointServicePermissions">AWS
          * API Reference</a></p>
          */
@@ -10797,13 +12556,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpointServices">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVpcEndpointServicesOutcome DescribeVpcEndpointServices(const Model::DescribeVpcEndpointServicesRequest& request) const;
+        virtual Model::DescribeVpcEndpointServicesOutcome DescribeVpcEndpointServices(const Model::DescribeVpcEndpointServicesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVpcEndpointServices that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVpcEndpointServicesRequestT = Model::DescribeVpcEndpointServicesRequest>
-        Model::DescribeVpcEndpointServicesOutcomeCallable DescribeVpcEndpointServicesCallable(const DescribeVpcEndpointServicesRequestT& request) const
+        Model::DescribeVpcEndpointServicesOutcomeCallable DescribeVpcEndpointServicesCallable(const DescribeVpcEndpointServicesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVpcEndpointServices, request);
         }
@@ -10812,23 +12571,26 @@ namespace EC2
          * An Async wrapper for DescribeVpcEndpointServices that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVpcEndpointServicesRequestT = Model::DescribeVpcEndpointServicesRequest>
-        void DescribeVpcEndpointServicesAsync(const DescribeVpcEndpointServicesRequestT& request, const DescribeVpcEndpointServicesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVpcEndpointServicesAsync(const DescribeVpcEndpointServicesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVpcEndpointServicesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVpcEndpointServices, request, handler, context);
         }
 
         /**
-         * <p>Describes your VPC endpoints.</p><p><h3>See Also:</h3>   <a
+         * <p>Describes your VPC endpoints. The default is to describe all your VPC
+         * endpoints. Alternatively, you can specify specific VPC endpoint IDs or filter
+         * the results to include only the VPC endpoints that match specific
+         * criteria.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpoints">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVpcEndpointsOutcome DescribeVpcEndpoints(const Model::DescribeVpcEndpointsRequest& request) const;
+        virtual Model::DescribeVpcEndpointsOutcome DescribeVpcEndpoints(const Model::DescribeVpcEndpointsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVpcEndpoints that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVpcEndpointsRequestT = Model::DescribeVpcEndpointsRequest>
-        Model::DescribeVpcEndpointsOutcomeCallable DescribeVpcEndpointsCallable(const DescribeVpcEndpointsRequestT& request) const
+        Model::DescribeVpcEndpointsOutcomeCallable DescribeVpcEndpointsCallable(const DescribeVpcEndpointsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVpcEndpoints, request);
         }
@@ -10837,24 +12599,26 @@ namespace EC2
          * An Async wrapper for DescribeVpcEndpoints that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVpcEndpointsRequestT = Model::DescribeVpcEndpointsRequest>
-        void DescribeVpcEndpointsAsync(const DescribeVpcEndpointsRequestT& request, const DescribeVpcEndpointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVpcEndpointsAsync(const DescribeVpcEndpointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVpcEndpointsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVpcEndpoints, request, handler, context);
         }
 
         /**
-         * <p>Describes one or more of your VPC peering connections.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Describes your VPC peering connections. The default is to describe all your
+         * VPC peering connections. Alternatively, you can specify specific VPC peering
+         * connection IDs or filter the results to include only the VPC peering connections
+         * that match specific criteria.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcPeeringConnections">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVpcPeeringConnectionsOutcome DescribeVpcPeeringConnections(const Model::DescribeVpcPeeringConnectionsRequest& request) const;
+        virtual Model::DescribeVpcPeeringConnectionsOutcome DescribeVpcPeeringConnections(const Model::DescribeVpcPeeringConnectionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVpcPeeringConnections that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVpcPeeringConnectionsRequestT = Model::DescribeVpcPeeringConnectionsRequest>
-        Model::DescribeVpcPeeringConnectionsOutcomeCallable DescribeVpcPeeringConnectionsCallable(const DescribeVpcPeeringConnectionsRequestT& request) const
+        Model::DescribeVpcPeeringConnectionsOutcomeCallable DescribeVpcPeeringConnectionsCallable(const DescribeVpcPeeringConnectionsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVpcPeeringConnections, request);
         }
@@ -10863,23 +12627,25 @@ namespace EC2
          * An Async wrapper for DescribeVpcPeeringConnections that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVpcPeeringConnectionsRequestT = Model::DescribeVpcPeeringConnectionsRequest>
-        void DescribeVpcPeeringConnectionsAsync(const DescribeVpcPeeringConnectionsRequestT& request, const DescribeVpcPeeringConnectionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVpcPeeringConnectionsAsync(const DescribeVpcPeeringConnectionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVpcPeeringConnectionsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVpcPeeringConnections, request, handler, context);
         }
 
         /**
-         * <p>Describes one or more of your VPCs.</p><p><h3>See Also:</h3>   <a
+         * <p>Describes your VPCs. The default is to describe all your VPCs. Alternatively,
+         * you can specify specific VPC IDs or filter the results to include only the VPCs
+         * that match specific criteria.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcs">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVpcsOutcome DescribeVpcs(const Model::DescribeVpcsRequest& request) const;
+        virtual Model::DescribeVpcsOutcome DescribeVpcs(const Model::DescribeVpcsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVpcs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVpcsRequestT = Model::DescribeVpcsRequest>
-        Model::DescribeVpcsOutcomeCallable DescribeVpcsCallable(const DescribeVpcsRequestT& request) const
+        Model::DescribeVpcsOutcomeCallable DescribeVpcsCallable(const DescribeVpcsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVpcs, request);
         }
@@ -10888,7 +12654,7 @@ namespace EC2
          * An Async wrapper for DescribeVpcs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVpcsRequestT = Model::DescribeVpcsRequest>
-        void DescribeVpcsAsync(const DescribeVpcsRequestT& request, const DescribeVpcsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVpcsAsync(const DescribeVpcsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVpcsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVpcs, request, handler, context);
         }
@@ -10901,13 +12667,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpnConnections">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVpnConnectionsOutcome DescribeVpnConnections(const Model::DescribeVpnConnectionsRequest& request) const;
+        virtual Model::DescribeVpnConnectionsOutcome DescribeVpnConnections(const Model::DescribeVpnConnectionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVpnConnections that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVpnConnectionsRequestT = Model::DescribeVpnConnectionsRequest>
-        Model::DescribeVpnConnectionsOutcomeCallable DescribeVpnConnectionsCallable(const DescribeVpnConnectionsRequestT& request) const
+        Model::DescribeVpnConnectionsOutcomeCallable DescribeVpnConnectionsCallable(const DescribeVpnConnectionsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVpnConnections, request);
         }
@@ -10916,7 +12682,7 @@ namespace EC2
          * An Async wrapper for DescribeVpnConnections that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVpnConnectionsRequestT = Model::DescribeVpnConnectionsRequest>
-        void DescribeVpnConnectionsAsync(const DescribeVpnConnectionsRequestT& request, const DescribeVpnConnectionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVpnConnectionsAsync(const DescribeVpnConnectionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVpnConnectionsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVpnConnections, request, handler, context);
         }
@@ -10930,13 +12696,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpnGateways">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeVpnGatewaysOutcome DescribeVpnGateways(const Model::DescribeVpnGatewaysRequest& request) const;
+        virtual Model::DescribeVpnGatewaysOutcome DescribeVpnGateways(const Model::DescribeVpnGatewaysRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeVpnGateways that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeVpnGatewaysRequestT = Model::DescribeVpnGatewaysRequest>
-        Model::DescribeVpnGatewaysOutcomeCallable DescribeVpnGatewaysCallable(const DescribeVpnGatewaysRequestT& request) const
+        Model::DescribeVpnGatewaysOutcomeCallable DescribeVpnGatewaysCallable(const DescribeVpnGatewaysRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DescribeVpnGateways, request);
         }
@@ -10945,20 +12711,16 @@ namespace EC2
          * An Async wrapper for DescribeVpnGateways that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeVpnGatewaysRequestT = Model::DescribeVpnGatewaysRequest>
-        void DescribeVpnGatewaysAsync(const DescribeVpnGatewaysRequestT& request, const DescribeVpnGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeVpnGatewaysAsync(const DescribeVpnGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeVpnGatewaysRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DescribeVpnGateways, request, handler, context);
         }
 
         /**
-         *  <p>We are retiring EC2-Classic. We recommend that you migrate from
-         * EC2-Classic to a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p>  <p>Unlinks (detaches) a linked EC2-Classic instance from
-         * a VPC. After the instance has been unlinked, the VPC security groups are no
-         * longer associated with it. An instance is automatically unlinked from a VPC when
-         * it's stopped.</p><p><h3>See Also:</h3>   <a
+         *  <p>This action is deprecated.</p>  <p>Unlinks (detaches) a linked
+         * EC2-Classic instance from a VPC. After the instance has been unlinked, the VPC
+         * security groups are no longer associated with it. An instance is automatically
+         * unlinked from a VPC when it's stopped.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachClassicLinkVpc">AWS
          * API Reference</a></p>
          */
@@ -11035,8 +12797,9 @@ namespace EC2
         }
 
         /**
-         * <p>Detach a trust provider from an Amazon Web Services Verified Access
-         * instance.</p><p><h3>See Also:</h3>   <a
+         * <p>Detaches the specified Amazon Web Services Verified Access trust provider
+         * from the specified Amazon Web Services Verified Access instance.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachVerifiedAccessTrustProvider">AWS
          * API Reference</a></p>
          */
@@ -11070,10 +12833,13 @@ namespace EC2
          * can't be detached while the instance is running. To detach the root volume, stop
          * the instance first.</p> <p>When a volume with an Amazon Web Services Marketplace
          * product code is detached from an instance, the product code is no longer
-         * associated with the instance.</p> <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html">Detach
-         * an Amazon EBS volume</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * associated with the instance.</p> <p>You can't detach or force detach volumes
+         * that are attached to Amazon Web Services-managed resources. Attempting to do
+         * this results in the <code>UnsupportedOperationException</code> exception.</p>
+         * <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-detaching-volume.html">Detach
+         * an Amazon EBS volume</a> in the <i>Amazon EBS User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachVolume">AWS
          * API Reference</a></p>
          */
@@ -11131,8 +12897,8 @@ namespace EC2
         /**
          * <p>Disables Elastic IP address transfer. For more information, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#transfer-EIPs-intro">Transfer
-         * Elastic IP addresses</a> in the <i>Amazon Virtual Private Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * Elastic IP addresses</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableAddressTransfer">AWS
          * API Reference</a></p>
          */
@@ -11157,18 +12923,53 @@ namespace EC2
         }
 
         /**
+         * <p>Disables Allowed AMIs for your account in the specified Amazon Web Services
+         * Region. When set to <code>disabled</code>, the image criteria in your Allowed
+         * AMIs settings do not apply, and no restrictions are placed on AMI
+         * discoverability or usage. Users in your account can launch instances using any
+         * public AMI or AMI shared with your account.</p>  <p>The Allowed AMIs
+         * feature does not restrict the AMIs owned by your account. Regardless of the
+         * criteria you set, the AMIs created by your account will always be discoverable
+         * and usable by users in your account.</p>  <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-allowed-amis.html">Control
+         * the discovery and use of AMIs in Amazon EC2 with Allowed AMIs</a> in <i>Amazon
+         * EC2 User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableAllowedImagesSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DisableAllowedImagesSettingsOutcome DisableAllowedImagesSettings(const Model::DisableAllowedImagesSettingsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DisableAllowedImagesSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DisableAllowedImagesSettingsRequestT = Model::DisableAllowedImagesSettingsRequest>
+        Model::DisableAllowedImagesSettingsOutcomeCallable DisableAllowedImagesSettingsCallable(const DisableAllowedImagesSettingsRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DisableAllowedImagesSettings, request);
+        }
+
+        /**
+         * An Async wrapper for DisableAllowedImagesSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DisableAllowedImagesSettingsRequestT = Model::DisableAllowedImagesSettingsRequest>
+        void DisableAllowedImagesSettingsAsync(const DisableAllowedImagesSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DisableAllowedImagesSettingsRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DisableAllowedImagesSettings, request, handler, context);
+        }
+
+        /**
          * <p>Disables Infrastructure Performance metric subscriptions.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableAwsNetworkPerformanceMetricSubscription">AWS
          * API Reference</a></p>
          */
-        virtual Model::DisableAwsNetworkPerformanceMetricSubscriptionOutcome DisableAwsNetworkPerformanceMetricSubscription(const Model::DisableAwsNetworkPerformanceMetricSubscriptionRequest& request) const;
+        virtual Model::DisableAwsNetworkPerformanceMetricSubscriptionOutcome DisableAwsNetworkPerformanceMetricSubscription(const Model::DisableAwsNetworkPerformanceMetricSubscriptionRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DisableAwsNetworkPerformanceMetricSubscription that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DisableAwsNetworkPerformanceMetricSubscriptionRequestT = Model::DisableAwsNetworkPerformanceMetricSubscriptionRequest>
-        Model::DisableAwsNetworkPerformanceMetricSubscriptionOutcomeCallable DisableAwsNetworkPerformanceMetricSubscriptionCallable(const DisableAwsNetworkPerformanceMetricSubscriptionRequestT& request) const
+        Model::DisableAwsNetworkPerformanceMetricSubscriptionOutcomeCallable DisableAwsNetworkPerformanceMetricSubscriptionCallable(const DisableAwsNetworkPerformanceMetricSubscriptionRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DisableAwsNetworkPerformanceMetricSubscription, request);
         }
@@ -11177,7 +12978,7 @@ namespace EC2
          * An Async wrapper for DisableAwsNetworkPerformanceMetricSubscription that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DisableAwsNetworkPerformanceMetricSubscriptionRequestT = Model::DisableAwsNetworkPerformanceMetricSubscriptionRequest>
-        void DisableAwsNetworkPerformanceMetricSubscriptionAsync(const DisableAwsNetworkPerformanceMetricSubscriptionRequestT& request, const DisableAwsNetworkPerformanceMetricSubscriptionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DisableAwsNetworkPerformanceMetricSubscriptionAsync(const DisableAwsNetworkPerformanceMetricSubscriptionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DisableAwsNetworkPerformanceMetricSubscriptionRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DisableAwsNetworkPerformanceMetricSubscription, request, handler, context);
         }
@@ -11188,19 +12989,19 @@ namespace EC2
          * encrypted volumes by enabling encryption when you create each volume.</p>
          * <p>Disabling encryption by default does not change the encryption status of your
          * existing volumes.</p> <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon
-         * EBS encryption</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html">Amazon
+         * EBS encryption</a> in the <i>Amazon EBS User Guide</i>.</p><p><h3>See Also:</h3>
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableEbsEncryptionByDefault">AWS
          * API Reference</a></p>
          */
-        virtual Model::DisableEbsEncryptionByDefaultOutcome DisableEbsEncryptionByDefault(const Model::DisableEbsEncryptionByDefaultRequest& request) const;
+        virtual Model::DisableEbsEncryptionByDefaultOutcome DisableEbsEncryptionByDefault(const Model::DisableEbsEncryptionByDefaultRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DisableEbsEncryptionByDefault that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DisableEbsEncryptionByDefaultRequestT = Model::DisableEbsEncryptionByDefaultRequest>
-        Model::DisableEbsEncryptionByDefaultOutcomeCallable DisableEbsEncryptionByDefaultCallable(const DisableEbsEncryptionByDefaultRequestT& request) const
+        Model::DisableEbsEncryptionByDefaultOutcomeCallable DisableEbsEncryptionByDefaultCallable(const DisableEbsEncryptionByDefaultRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DisableEbsEncryptionByDefault, request);
         }
@@ -11209,17 +13010,18 @@ namespace EC2
          * An Async wrapper for DisableEbsEncryptionByDefault that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DisableEbsEncryptionByDefaultRequestT = Model::DisableEbsEncryptionByDefaultRequest>
-        void DisableEbsEncryptionByDefaultAsync(const DisableEbsEncryptionByDefaultRequestT& request, const DisableEbsEncryptionByDefaultResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DisableEbsEncryptionByDefaultAsync(const DisableEbsEncryptionByDefaultResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DisableEbsEncryptionByDefaultRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DisableEbsEncryptionByDefault, request, handler, context);
         }
 
         /**
-         * <p>Discontinue faster launching for a Windows AMI, and clean up existing
-         * pre-provisioned snapshots. When you disable faster launching, the AMI uses the
-         * standard launch process for each instance. All pre-provisioned snapshots must be
-         * removed before you can enable faster launching again.</p>  <p>To change
-         * these settings, you must own the AMI.</p> <p><h3>See Also:</h3>   <a
+         * <p>Discontinue Windows fast launch for a Windows AMI, and clean up existing
+         * pre-provisioned snapshots. After you disable Windows fast launch, the AMI uses
+         * the standard launch process for each new instance. Amazon EC2 must remove all
+         * pre-provisioned snapshots before you can enable Windows fast launch again.</p>
+         *  <p>You can only change these settings for Windows AMIs that you own or
+         * that have been shared with you.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableFastLaunch">AWS
          * API Reference</a></p>
          */
@@ -11270,10 +13072,80 @@ namespace EC2
         }
 
         /**
+         * <p>Sets the AMI state to <code>disabled</code> and removes all launch
+         * permissions from the AMI. A disabled AMI can't be used for instance
+         * launches.</p> <p>A disabled AMI can't be shared. If an AMI was public or
+         * previously shared, it is made private. If an AMI was shared with an Amazon Web
+         * Services account, organization, or Organizational Unit, they lose access to the
+         * disabled AMI. </p> <p>A disabled AMI does not appear in <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html">DescribeImages</a>
+         * API calls by default.</p> <p>Only the AMI owner can disable an AMI.</p> <p>You
+         * can re-enable a disabled AMI using <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableImage.html">EnableImage</a>.</p>
+         * <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/disable-an-ami.html">Disable
+         * an AMI</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableImage">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DisableImageOutcome DisableImage(const Model::DisableImageRequest& request) const;
+
+        /**
+         * A Callable wrapper for DisableImage that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DisableImageRequestT = Model::DisableImageRequest>
+        Model::DisableImageOutcomeCallable DisableImageCallable(const DisableImageRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DisableImage, request);
+        }
+
+        /**
+         * An Async wrapper for DisableImage that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DisableImageRequestT = Model::DisableImageRequest>
+        void DisableImageAsync(const DisableImageRequestT& request, const DisableImageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DisableImage, request, handler, context);
+        }
+
+        /**
+         * <p>Disables <i>block public access for AMIs</i> at the account level in the
+         * specified Amazon Web Services Region. This removes the <i>block public
+         * access</i> restriction from your account. With the restriction removed, you can
+         * publicly share your AMIs in the specified Amazon Web Services Region.</p> <p>For
+         * more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-public-access-to-amis.html">Block
+         * public access to your AMIs</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableImageBlockPublicAccess">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DisableImageBlockPublicAccessOutcome DisableImageBlockPublicAccess(const Model::DisableImageBlockPublicAccessRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DisableImageBlockPublicAccess that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DisableImageBlockPublicAccessRequestT = Model::DisableImageBlockPublicAccessRequest>
+        Model::DisableImageBlockPublicAccessOutcomeCallable DisableImageBlockPublicAccessCallable(const DisableImageBlockPublicAccessRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DisableImageBlockPublicAccess, request);
+        }
+
+        /**
+         * An Async wrapper for DisableImageBlockPublicAccess that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DisableImageBlockPublicAccessRequestT = Model::DisableImageBlockPublicAccessRequest>
+        void DisableImageBlockPublicAccessAsync(const DisableImageBlockPublicAccessResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DisableImageBlockPublicAccessRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DisableImageBlockPublicAccess, request, handler, context);
+        }
+
+        /**
          * <p>Cancels the deprecation of the specified AMI.</p> <p>For more information,
          * see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-deprecate.html">Deprecate
-         * an AMI</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * an Amazon EC2 AMI</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableImageDeprecation">AWS
          * API Reference</a></p>
          */
@@ -11295,6 +13167,38 @@ namespace EC2
         void DisableImageDeprecationAsync(const DisableImageDeprecationRequestT& request, const DisableImageDeprecationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::DisableImageDeprecation, request, handler, context);
+        }
+
+        /**
+         * <p>Disables deregistration protection for an AMI. When deregistration protection
+         * is disabled, the AMI can be deregistered.</p> <p>If you chose to include a
+         * 24-hour cooldown period when you enabled deregistration protection for the AMI,
+         * then, when you disable deregistration protection, you won’t immediately be able
+         * to deregister the AMI.</p> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-deregistration-protection.html">Protect
+         * an Amazon EC2 AMI from deregistration</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableImageDeregistrationProtection">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DisableImageDeregistrationProtectionOutcome DisableImageDeregistrationProtection(const Model::DisableImageDeregistrationProtectionRequest& request) const;
+
+        /**
+         * A Callable wrapper for DisableImageDeregistrationProtection that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DisableImageDeregistrationProtectionRequestT = Model::DisableImageDeregistrationProtectionRequest>
+        Model::DisableImageDeregistrationProtectionOutcomeCallable DisableImageDeregistrationProtectionCallable(const DisableImageDeregistrationProtectionRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DisableImageDeregistrationProtection, request);
+        }
+
+        /**
+         * An Async wrapper for DisableImageDeregistrationProtection that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DisableImageDeregistrationProtectionRequestT = Model::DisableImageDeregistrationProtectionRequest>
+        void DisableImageDeregistrationProtectionAsync(const DisableImageDeregistrationProtectionRequestT& request, const DisableImageDeregistrationProtectionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DisableImageDeregistrationProtection, request, handler, context);
         }
 
         /**
@@ -11326,6 +13230,50 @@ namespace EC2
         }
 
         /**
+         * <p>Disables route propagation from a route server to a specified route
+         * table.</p> <p>When enabled, route server propagation installs the routes in the
+         * FIB on the route table you've specified. Route server supports IPv4 and IPv6
+         * route propagation.</p> <p>Amazon VPC Route Server simplifies routing for traffic
+         * between workloads that are deployed within a VPC and its internet gateways. With
+         * this feature, VPC Route Server dynamically updates VPC and internet gateway
+         * route tables with your preferred IPv4 or IPv6 routes to achieve routing fault
+         * tolerance for those workloads. This enables you to automatically reroute traffic
+         * within a VPC, which increases the manageability of VPC routing and
+         * interoperability with third-party workloads.</p> <p>Route server supports the
+         * follow route table types:</p> <ul> <li> <p>VPC route tables not associated with
+         * subnets</p> </li> <li> <p>Subnet route tables</p> </li> <li> <p>Internet gateway
+         * route tables</p> </li> </ul> <p>Route server does not support route tables
+         * associated with virtual private gateways. To propagate routes into a transit
+         * gateway route table, use <a
+         * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html">Transit
+         * Gateway Connect</a>.</p> <p>For more information see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html">Dynamic
+         * routing in your VPC with VPC Route Server</a> in the <i>Amazon VPC User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableRouteServerPropagation">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DisableRouteServerPropagationOutcome DisableRouteServerPropagation(const Model::DisableRouteServerPropagationRequest& request) const;
+
+        /**
+         * A Callable wrapper for DisableRouteServerPropagation that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DisableRouteServerPropagationRequestT = Model::DisableRouteServerPropagationRequest>
+        Model::DisableRouteServerPropagationOutcomeCallable DisableRouteServerPropagationCallable(const DisableRouteServerPropagationRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DisableRouteServerPropagation, request);
+        }
+
+        /**
+         * An Async wrapper for DisableRouteServerPropagation that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DisableRouteServerPropagationRequestT = Model::DisableRouteServerPropagationRequest>
+        void DisableRouteServerPropagationAsync(const DisableRouteServerPropagationRequestT& request, const DisableRouteServerPropagationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DisableRouteServerPropagation, request, handler, context);
+        }
+
+        /**
          * <p>Disables access to the EC2 serial console of all instances for your account.
          * By default, access to the EC2 serial console is disabled for your account. For
          * more information, see <a
@@ -11335,13 +13283,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableSerialConsoleAccess">AWS
          * API Reference</a></p>
          */
-        virtual Model::DisableSerialConsoleAccessOutcome DisableSerialConsoleAccess(const Model::DisableSerialConsoleAccessRequest& request) const;
+        virtual Model::DisableSerialConsoleAccessOutcome DisableSerialConsoleAccess(const Model::DisableSerialConsoleAccessRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DisableSerialConsoleAccess that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DisableSerialConsoleAccessRequestT = Model::DisableSerialConsoleAccessRequest>
-        Model::DisableSerialConsoleAccessOutcomeCallable DisableSerialConsoleAccessCallable(const DisableSerialConsoleAccessRequestT& request) const
+        Model::DisableSerialConsoleAccessOutcomeCallable DisableSerialConsoleAccessCallable(const DisableSerialConsoleAccessRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DisableSerialConsoleAccess, request);
         }
@@ -11350,9 +13298,47 @@ namespace EC2
          * An Async wrapper for DisableSerialConsoleAccess that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DisableSerialConsoleAccessRequestT = Model::DisableSerialConsoleAccessRequest>
-        void DisableSerialConsoleAccessAsync(const DisableSerialConsoleAccessRequestT& request, const DisableSerialConsoleAccessResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DisableSerialConsoleAccessAsync(const DisableSerialConsoleAccessResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DisableSerialConsoleAccessRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DisableSerialConsoleAccess, request, handler, context);
+        }
+
+        /**
+         * <p>Disables the <i>block public access for snapshots</i> setting at the account
+         * level for the specified Amazon Web Services Region. After you disable block
+         * public access for snapshots in a Region, users can publicly share snapshots in
+         * that Region.</p>  <p>Enabling block public access for snapshots in
+         * <i>block-all-sharing</i> mode does not change the permissions for snapshots that
+         * are already publicly shared. Instead, it prevents these snapshots from be
+         * publicly visible and publicly accessible. Therefore, the attributes for these
+         * snapshots still indicate that they are publicly shared, even though they are not
+         * publicly available.</p> <p>If you disable block public access , these snapshots
+         * will become publicly available again.</p>  <p>For more information,
+         * see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/block-public-access-snapshots.html">
+         * Block public access for snapshots</a> in the <i>Amazon EBS User Guide</i> .</p>
+         * <p/><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableSnapshotBlockPublicAccess">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DisableSnapshotBlockPublicAccessOutcome DisableSnapshotBlockPublicAccess(const Model::DisableSnapshotBlockPublicAccessRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DisableSnapshotBlockPublicAccess that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DisableSnapshotBlockPublicAccessRequestT = Model::DisableSnapshotBlockPublicAccessRequest>
+        Model::DisableSnapshotBlockPublicAccessOutcomeCallable DisableSnapshotBlockPublicAccessCallable(const DisableSnapshotBlockPublicAccessRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::DisableSnapshotBlockPublicAccess, request);
+        }
+
+        /**
+         * An Async wrapper for DisableSnapshotBlockPublicAccess that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DisableSnapshotBlockPublicAccessRequestT = Model::DisableSnapshotBlockPublicAccessRequest>
+        void DisableSnapshotBlockPublicAccessAsync(const DisableSnapshotBlockPublicAccessResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DisableSnapshotBlockPublicAccessRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::DisableSnapshotBlockPublicAccess, request, handler, context);
         }
 
         /**
@@ -11408,13 +13394,9 @@ namespace EC2
         }
 
         /**
-         * <p>Disables ClassicLink for a VPC. You cannot disable ClassicLink for a VPC that
-         * has EC2-Classic instances linked to it.</p>  <p>We are retiring
-         * EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC. For more
-         * information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         *  <p>This action is deprecated.</p>  <p>Disables ClassicLink for a
+         * VPC. You cannot disable ClassicLink for a VPC that has EC2-Classic instances
+         * linked to it.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableVpcClassicLink">AWS
          * API Reference</a></p>
          */
@@ -11439,27 +13421,21 @@ namespace EC2
         }
 
         /**
-         * <p>Disables ClassicLink DNS support for a VPC. If disabled, DNS hostnames
-         * resolve to public IP addresses when addressed between a linked EC2-Classic
-         * instance and instances in the VPC to which it's linked. For more information,
-         * see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a>
-         * in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>You must specify a
-         * VPC ID in the request.</p>  <p>We are retiring EC2-Classic. We recommend
-         * that you migrate from EC2-Classic to a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         *  <p>This action is deprecated.</p>  <p>Disables ClassicLink DNS
+         * support for a VPC. If disabled, DNS hostnames resolve to public IP addresses
+         * when addressed between a linked EC2-Classic instance and instances in the VPC to
+         * which it's linked.</p> <p>You must specify a VPC ID in the
+         * request.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableVpcClassicLinkDnsSupport">AWS
          * API Reference</a></p>
          */
-        virtual Model::DisableVpcClassicLinkDnsSupportOutcome DisableVpcClassicLinkDnsSupport(const Model::DisableVpcClassicLinkDnsSupportRequest& request) const;
+        virtual Model::DisableVpcClassicLinkDnsSupportOutcome DisableVpcClassicLinkDnsSupport(const Model::DisableVpcClassicLinkDnsSupportRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DisableVpcClassicLinkDnsSupport that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DisableVpcClassicLinkDnsSupportRequestT = Model::DisableVpcClassicLinkDnsSupportRequest>
-        Model::DisableVpcClassicLinkDnsSupportOutcomeCallable DisableVpcClassicLinkDnsSupportCallable(const DisableVpcClassicLinkDnsSupportRequestT& request) const
+        Model::DisableVpcClassicLinkDnsSupportOutcomeCallable DisableVpcClassicLinkDnsSupportCallable(const DisableVpcClassicLinkDnsSupportRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DisableVpcClassicLinkDnsSupport, request);
         }
@@ -11468,34 +13444,30 @@ namespace EC2
          * An Async wrapper for DisableVpcClassicLinkDnsSupport that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DisableVpcClassicLinkDnsSupportRequestT = Model::DisableVpcClassicLinkDnsSupportRequest>
-        void DisableVpcClassicLinkDnsSupportAsync(const DisableVpcClassicLinkDnsSupportRequestT& request, const DisableVpcClassicLinkDnsSupportResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DisableVpcClassicLinkDnsSupportAsync(const DisableVpcClassicLinkDnsSupportResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DisableVpcClassicLinkDnsSupportRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DisableVpcClassicLinkDnsSupport, request, handler, context);
         }
 
         /**
          * <p>Disassociates an Elastic IP address from the instance or network interface
-         * it's associated with.</p> <p>An Elastic IP address is for use in either the
-         * EC2-Classic platform or in a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic
-         * IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-         *  <p>We are retiring EC2-Classic. We recommend that you migrate from
-         * EC2-Classic to a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p>  <p>This is an idempotent operation. If you perform the
-         * operation more than once, Amazon EC2 doesn't return an error.</p><p><h3>See
-         * Also:</h3>   <a
+         * it's associated with.</p> <p>This is an idempotent operation. If you perform the
+         * operation more than once, Amazon EC2 doesn't return an error.</p> <p>An address
+         * cannot be disassociated if the all of the following conditions are met:</p> <ul>
+         * <li> <p>Network interface has a <code>publicDualStackDnsName</code>
+         * publicDnsName</p> </li> <li> <p>Public IPv4 address is the primary public IPv4
+         * address</p> </li> <li> <p>Network interface only has one remaining public IPv4
+         * address</p> </li> </ul><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateAddress">AWS
          * API Reference</a></p>
          */
-        virtual Model::DisassociateAddressOutcome DisassociateAddress(const Model::DisassociateAddressRequest& request) const;
+        virtual Model::DisassociateAddressOutcome DisassociateAddress(const Model::DisassociateAddressRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DisassociateAddress that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DisassociateAddressRequestT = Model::DisassociateAddressRequest>
-        Model::DisassociateAddressOutcomeCallable DisassociateAddressCallable(const DisassociateAddressRequestT& request) const
+        Model::DisassociateAddressOutcomeCallable DisassociateAddressCallable(const DisassociateAddressRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::DisassociateAddress, request);
         }
@@ -11504,9 +13476,39 @@ namespace EC2
          * An Async wrapper for DisassociateAddress that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DisassociateAddressRequestT = Model::DisassociateAddressRequest>
-        void DisassociateAddressAsync(const DisassociateAddressRequestT& request, const DisassociateAddressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DisassociateAddressAsync(const DisassociateAddressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DisassociateAddressRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::DisassociateAddress, request, handler, context);
+        }
+
+        /**
+         * <p>Cancels a pending request to assign billing of the unused capacity of a
+         * Capacity Reservation to a consumer account, or revokes a request that has
+         * already been accepted. For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/assign-billing.html">Billing
+         * assignment for shared Amazon EC2 Capacity Reservations</a>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateCapacityReservationBillingOwner">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DisassociateCapacityReservationBillingOwnerOutcome DisassociateCapacityReservationBillingOwner(const Model::DisassociateCapacityReservationBillingOwnerRequest& request) const;
+
+        /**
+         * A Callable wrapper for DisassociateCapacityReservationBillingOwner that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DisassociateCapacityReservationBillingOwnerRequestT = Model::DisassociateCapacityReservationBillingOwnerRequest>
+        Model::DisassociateCapacityReservationBillingOwnerOutcomeCallable DisassociateCapacityReservationBillingOwnerCallable(const DisassociateCapacityReservationBillingOwnerRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DisassociateCapacityReservationBillingOwner, request);
+        }
+
+        /**
+         * An Async wrapper for DisassociateCapacityReservationBillingOwner that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DisassociateCapacityReservationBillingOwnerRequestT = Model::DisassociateCapacityReservationBillingOwnerRequest>
+        void DisassociateCapacityReservationBillingOwnerAsync(const DisassociateCapacityReservationBillingOwnerRequestT& request, const DisassociateCapacityReservationBillingOwnerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DisassociateCapacityReservationBillingOwner, request, handler, context);
         }
 
         /**
@@ -11627,6 +13629,36 @@ namespace EC2
         }
 
         /**
+         * <p>Remove the association between your Autonomous System Number (ASN) and your
+         * BYOIP CIDR. You may want to use this action to disassociate an ASN from a CIDR
+         * or if you want to swap ASNs. For more information, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/ipam/tutorials-byoasn.html">Tutorial:
+         * Bring your ASN to IPAM</a> in the <i>Amazon VPC IPAM guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateIpamByoasn">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DisassociateIpamByoasnOutcome DisassociateIpamByoasn(const Model::DisassociateIpamByoasnRequest& request) const;
+
+        /**
+         * A Callable wrapper for DisassociateIpamByoasn that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DisassociateIpamByoasnRequestT = Model::DisassociateIpamByoasnRequest>
+        Model::DisassociateIpamByoasnOutcomeCallable DisassociateIpamByoasnCallable(const DisassociateIpamByoasnRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DisassociateIpamByoasn, request);
+        }
+
+        /**
+         * An Async wrapper for DisassociateIpamByoasn that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DisassociateIpamByoasnRequestT = Model::DisassociateIpamByoasnRequest>
+        void DisassociateIpamByoasnAsync(const DisassociateIpamByoasnRequestT& request, const DisassociateIpamByoasnResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DisassociateIpamByoasn, request, handler, context);
+        }
+
+        /**
          * <p>Disassociates a resource discovery from an Amazon VPC IPAM. A resource
          * discovery is an IPAM component that enables IPAM to manage and monitor resources
          * that belong to the owning account.</p><p><h3>See Also:</h3>   <a
@@ -11656,16 +13688,16 @@ namespace EC2
         /**
          * <p>Disassociates secondary Elastic IP addresses (EIPs) from a public NAT
          * gateway. You cannot disassociate your primary EIP. For more information, see <a
-         * href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-edit-secondary">Edit
-         * secondary IP address associations</a> in the <i>Amazon Virtual Private Cloud
-         * User Guide</i>.</p> <p>While disassociating is in progress, you cannot
-         * associate/disassociate additional EIPs while the connections are being drained.
-         * You are, however, allowed to delete the NAT gateway.</p> <p>An EIP will only be
-         * released at the end of MaxDrainDurationSeconds. The EIPs stay associated and
-         * support the existing connections but do not support any new connections (new
-         * connections are distributed across the remaining associated EIPs). As the
-         * existing connections drain out, the EIPs (and the corresponding private IPs
-         * mapped to them) get released.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-working-with.html#nat-gateway-edit-secondary">Edit
+         * secondary IP address associations</a> in the <i>Amazon VPC User Guide</i>.</p>
+         * <p>While disassociating is in progress, you cannot associate/disassociate
+         * additional EIPs while the connections are being drained. You are, however,
+         * allowed to delete the NAT gateway.</p> <p>An EIP is released only at the end of
+         * MaxDrainDurationSeconds. It stays associated and supports the existing
+         * connections but does not support any new connections (new connections are
+         * distributed across the remaining associated EIPs). As the existing connections
+         * drain out, the EIPs (and the corresponding private IP addresses mapped to them)
+         * are released.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateNatGatewayAddress">AWS
          * API Reference</a></p>
          */
@@ -11690,13 +13722,42 @@ namespace EC2
         }
 
         /**
+         * <p>Disassociates a route server from a VPC.</p> <p>A route server association is
+         * the connection established between a route server and a VPC.</p> <p>For more
+         * information see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html">Dynamic
+         * routing in your VPC with VPC Route Server</a> in the <i>Amazon VPC User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateRouteServer">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DisassociateRouteServerOutcome DisassociateRouteServer(const Model::DisassociateRouteServerRequest& request) const;
+
+        /**
+         * A Callable wrapper for DisassociateRouteServer that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DisassociateRouteServerRequestT = Model::DisassociateRouteServerRequest>
+        Model::DisassociateRouteServerOutcomeCallable DisassociateRouteServerCallable(const DisassociateRouteServerRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DisassociateRouteServer, request);
+        }
+
+        /**
+         * An Async wrapper for DisassociateRouteServer that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DisassociateRouteServerRequestT = Model::DisassociateRouteServerRequest>
+        void DisassociateRouteServerAsync(const DisassociateRouteServerRequestT& request, const DisassociateRouteServerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DisassociateRouteServer, request, handler, context);
+        }
+
+        /**
          * <p>Disassociates a subnet or gateway from a route table.</p> <p>After you
          * perform this action, the subnet no longer uses the routes in the route table.
          * Instead, it uses the routes in the VPC's main route table. For more information
          * about route tables, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html">Route
-         * tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * tables</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateRouteTable">AWS
          * API Reference</a></p>
          */
@@ -11718,6 +13779,36 @@ namespace EC2
         void DisassociateRouteTableAsync(const DisassociateRouteTableRequestT& request, const DisassociateRouteTableResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::DisassociateRouteTable, request, handler, context);
+        }
+
+        /**
+         * <p>Disassociates a security group from a VPC. You cannot disassociate the
+         * security group if any Elastic network interfaces in the associated VPC are still
+         * associated with the security group. Note that the disassociation is asynchronous
+         * and you can check the status of the request with <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroupVpcAssociations.html">DescribeSecurityGroupVpcAssociations</a>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateSecurityGroupVpc">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DisassociateSecurityGroupVpcOutcome DisassociateSecurityGroupVpc(const Model::DisassociateSecurityGroupVpcRequest& request) const;
+
+        /**
+         * A Callable wrapper for DisassociateSecurityGroupVpc that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DisassociateSecurityGroupVpcRequestT = Model::DisassociateSecurityGroupVpcRequest>
+        Model::DisassociateSecurityGroupVpcOutcomeCallable DisassociateSecurityGroupVpcCallable(const DisassociateSecurityGroupVpcRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::DisassociateSecurityGroupVpc, request);
+        }
+
+        /**
+         * An Async wrapper for DisassociateSecurityGroupVpc that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DisassociateSecurityGroupVpcRequestT = Model::DisassociateSecurityGroupVpcRequest>
+        void DisassociateSecurityGroupVpcAsync(const DisassociateSecurityGroupVpcRequestT& request, const DisassociateSecurityGroupVpcResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::DisassociateSecurityGroupVpc, request, handler, context);
         }
 
         /**
@@ -11827,8 +13918,6 @@ namespace EC2
         }
 
         /**
-         *  <p>This API action is currently in <b>limited preview only</b>. If you
-         * are interested in using this feature, contact your account manager.</p> 
          * <p>Removes an association between a branch network interface with a trunk
          * network interface.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateTrunkInterface">AWS
@@ -11887,8 +13976,8 @@ namespace EC2
         /**
          * <p>Enables Elastic IP address transfer. For more information, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#transfer-EIPs-intro">Transfer
-         * Elastic IP addresses</a> in the <i>Amazon Virtual Private Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * Elastic IP addresses</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableAddressTransfer">AWS
          * API Reference</a></p>
          */
@@ -11913,18 +14002,61 @@ namespace EC2
         }
 
         /**
+         * <p>Enables Allowed AMIs for your account in the specified Amazon Web Services
+         * Region. Two values are accepted:</p> <ul> <li> <p> <code>enabled</code>: The
+         * image criteria in your Allowed AMIs settings are applied. As a result, only AMIs
+         * matching these criteria are discoverable and can be used by your account to
+         * launch instances.</p> </li> <li> <p> <code>audit-mode</code>: The image criteria
+         * in your Allowed AMIs settings are not applied. No restrictions are placed on AMI
+         * discoverability or usage. Users in your account can launch instances using any
+         * public AMI or AMI shared with your account.</p> <p>The purpose of
+         * <code>audit-mode</code> is to indicate which AMIs will be affected when Allowed
+         * AMIs is <code>enabled</code>. In <code>audit-mode</code>, each AMI displays
+         * either <code>"ImageAllowed": true</code> or <code>"ImageAllowed": false</code>
+         * to indicate whether the AMI will be discoverable and available to users in the
+         * account when Allowed AMIs is enabled.</p> </li> </ul>  <p>The Allowed AMIs
+         * feature does not restrict the AMIs owned by your account. Regardless of the
+         * criteria you set, the AMIs created by your account will always be discoverable
+         * and usable by users in your account.</p>  <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-allowed-amis.html">Control
+         * the discovery and use of AMIs in Amazon EC2 with Allowed AMIs</a> in <i>Amazon
+         * EC2 User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableAllowedImagesSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::EnableAllowedImagesSettingsOutcome EnableAllowedImagesSettings(const Model::EnableAllowedImagesSettingsRequest& request) const;
+
+        /**
+         * A Callable wrapper for EnableAllowedImagesSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename EnableAllowedImagesSettingsRequestT = Model::EnableAllowedImagesSettingsRequest>
+        Model::EnableAllowedImagesSettingsOutcomeCallable EnableAllowedImagesSettingsCallable(const EnableAllowedImagesSettingsRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::EnableAllowedImagesSettings, request);
+        }
+
+        /**
+         * An Async wrapper for EnableAllowedImagesSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename EnableAllowedImagesSettingsRequestT = Model::EnableAllowedImagesSettingsRequest>
+        void EnableAllowedImagesSettingsAsync(const EnableAllowedImagesSettingsRequestT& request, const EnableAllowedImagesSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::EnableAllowedImagesSettings, request, handler, context);
+        }
+
+        /**
          * <p>Enables Infrastructure Performance subscriptions.</p><p><h3>See Also:</h3>  
          * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableAwsNetworkPerformanceMetricSubscription">AWS
          * API Reference</a></p>
          */
-        virtual Model::EnableAwsNetworkPerformanceMetricSubscriptionOutcome EnableAwsNetworkPerformanceMetricSubscription(const Model::EnableAwsNetworkPerformanceMetricSubscriptionRequest& request) const;
+        virtual Model::EnableAwsNetworkPerformanceMetricSubscriptionOutcome EnableAwsNetworkPerformanceMetricSubscription(const Model::EnableAwsNetworkPerformanceMetricSubscriptionRequest& request = {}) const;
 
         /**
          * A Callable wrapper for EnableAwsNetworkPerformanceMetricSubscription that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename EnableAwsNetworkPerformanceMetricSubscriptionRequestT = Model::EnableAwsNetworkPerformanceMetricSubscriptionRequest>
-        Model::EnableAwsNetworkPerformanceMetricSubscriptionOutcomeCallable EnableAwsNetworkPerformanceMetricSubscriptionCallable(const EnableAwsNetworkPerformanceMetricSubscriptionRequestT& request) const
+        Model::EnableAwsNetworkPerformanceMetricSubscriptionOutcomeCallable EnableAwsNetworkPerformanceMetricSubscriptionCallable(const EnableAwsNetworkPerformanceMetricSubscriptionRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::EnableAwsNetworkPerformanceMetricSubscription, request);
         }
@@ -11933,7 +14065,7 @@ namespace EC2
          * An Async wrapper for EnableAwsNetworkPerformanceMetricSubscription that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename EnableAwsNetworkPerformanceMetricSubscriptionRequestT = Model::EnableAwsNetworkPerformanceMetricSubscriptionRequest>
-        void EnableAwsNetworkPerformanceMetricSubscriptionAsync(const EnableAwsNetworkPerformanceMetricSubscriptionRequestT& request, const EnableAwsNetworkPerformanceMetricSubscriptionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void EnableAwsNetworkPerformanceMetricSubscriptionAsync(const EnableAwsNetworkPerformanceMetricSubscriptionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const EnableAwsNetworkPerformanceMetricSubscriptionRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::EnableAwsNetworkPerformanceMetricSubscription, request, handler, context);
         }
@@ -11943,26 +14075,24 @@ namespace EC2
          * <p>After you enable encryption by default, the EBS volumes that you create are
          * always encrypted, either using the default KMS key or the KMS key that you
          * specified when you created each volume. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon
-         * EBS encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-         * <p>You can specify the default KMS key for encryption by default using
-         * <a>ModifyEbsDefaultKmsKeyId</a> or <a>ResetEbsDefaultKmsKeyId</a>.</p>
-         * <p>Enabling encryption by default has no effect on the encryption status of your
-         * existing volumes.</p> <p>After you enable encryption by default, you can no
-         * longer launch instances using instance types that do not support encryption. For
-         * more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances">Supported
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html">Amazon
+         * EBS encryption</a> in the <i>Amazon EBS User Guide</i>.</p> <p>Enabling
+         * encryption by default has no effect on the encryption status of your existing
+         * volumes.</p> <p>After you enable encryption by default, you can no longer launch
+         * instances using instance types that do not support encryption. For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption-requirements.html#ebs-encryption_supported_instances">Supported
          * instance types</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableEbsEncryptionByDefault">AWS
          * API Reference</a></p>
          */
-        virtual Model::EnableEbsEncryptionByDefaultOutcome EnableEbsEncryptionByDefault(const Model::EnableEbsEncryptionByDefaultRequest& request) const;
+        virtual Model::EnableEbsEncryptionByDefaultOutcome EnableEbsEncryptionByDefault(const Model::EnableEbsEncryptionByDefaultRequest& request = {}) const;
 
         /**
          * A Callable wrapper for EnableEbsEncryptionByDefault that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename EnableEbsEncryptionByDefaultRequestT = Model::EnableEbsEncryptionByDefaultRequest>
-        Model::EnableEbsEncryptionByDefaultOutcomeCallable EnableEbsEncryptionByDefaultCallable(const EnableEbsEncryptionByDefaultRequestT& request) const
+        Model::EnableEbsEncryptionByDefaultOutcomeCallable EnableEbsEncryptionByDefaultCallable(const EnableEbsEncryptionByDefaultRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::EnableEbsEncryptionByDefault, request);
         }
@@ -11971,20 +14101,21 @@ namespace EC2
          * An Async wrapper for EnableEbsEncryptionByDefault that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename EnableEbsEncryptionByDefaultRequestT = Model::EnableEbsEncryptionByDefaultRequest>
-        void EnableEbsEncryptionByDefaultAsync(const EnableEbsEncryptionByDefaultRequestT& request, const EnableEbsEncryptionByDefaultResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void EnableEbsEncryptionByDefaultAsync(const EnableEbsEncryptionByDefaultResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const EnableEbsEncryptionByDefaultRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::EnableEbsEncryptionByDefault, request, handler, context);
         }
 
         /**
-         * <p>When you enable faster launching for a Windows AMI, images are
+         * <p>When you enable Windows fast launch for a Windows AMI, images are
          * pre-provisioned, using snapshots to launch instances up to 65% faster. To create
          * the optimized Windows image, Amazon EC2 launches an instance and runs through
          * Sysprep steps, rebooting as required. Then it creates a set of reserved
          * snapshots that are used for subsequent launches. The reserved snapshots are
          * automatically replenished as they are used, depending on your settings for
-         * launch frequency.</p>  <p>To change these settings, you must own the
-         * AMI.</p> <p><h3>See Also:</h3>   <a
+         * launch frequency.</p>  <p>You can only change these settings for Windows
+         * AMIs that you own or that have been shared with you.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableFastLaunch">AWS
          * API Reference</a></p>
          */
@@ -12011,13 +14142,11 @@ namespace EC2
         /**
          * <p>Enables fast snapshot restores for the specified snapshots in the specified
          * Availability Zones.</p> <p>You get the full benefit of fast snapshot restores
-         * after they enter the <code>enabled</code> state. To get the current state of
-         * fast snapshot restores, use <a>DescribeFastSnapshotRestores</a>. To disable fast
-         * snapshot restores, use <a>DisableFastSnapshotRestores</a>.</p> <p>For more
-         * information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-fast-snapshot-restore.html">Amazon
-         * EBS fast snapshot restore</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * after they enter the <code>enabled</code> state.</p> <p>For more information,
+         * see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-fast-snapshot-restore.html">Amazon
+         * EBS fast snapshot restore</a> in the <i>Amazon EBS User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableFastSnapshotRestores">AWS
          * API Reference</a></p>
          */
@@ -12039,6 +14168,76 @@ namespace EC2
         void EnableFastSnapshotRestoresAsync(const EnableFastSnapshotRestoresRequestT& request, const EnableFastSnapshotRestoresResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::EnableFastSnapshotRestores, request, handler, context);
+        }
+
+        /**
+         * <p>Re-enables a disabled AMI. The re-enabled AMI is marked as
+         * <code>available</code> and can be used for instance launches, appears in
+         * describe operations, and can be shared. Amazon Web Services accounts,
+         * organizations, and Organizational Units that lost access to the AMI when it was
+         * disabled do not regain access automatically. Once the AMI is available, it can
+         * be shared with them again.</p> <p>Only the AMI owner can re-enable a disabled
+         * AMI.</p> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/disable-an-ami.html">Disable
+         * an Amazon EC2 AMI</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableImage">AWS API
+         * Reference</a></p>
+         */
+        virtual Model::EnableImageOutcome EnableImage(const Model::EnableImageRequest& request) const;
+
+        /**
+         * A Callable wrapper for EnableImage that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename EnableImageRequestT = Model::EnableImageRequest>
+        Model::EnableImageOutcomeCallable EnableImageCallable(const EnableImageRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::EnableImage, request);
+        }
+
+        /**
+         * An Async wrapper for EnableImage that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename EnableImageRequestT = Model::EnableImageRequest>
+        void EnableImageAsync(const EnableImageRequestT& request, const EnableImageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::EnableImage, request, handler, context);
+        }
+
+        /**
+         * <p>Enables <i>block public access for AMIs</i> at the account level in the
+         * specified Amazon Web Services Region. This prevents the public sharing of your
+         * AMIs. However, if you already have public AMIs, they will remain publicly
+         * available.</p> <p>The API can take up to 10 minutes to configure this setting.
+         * During this time, if you run <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetImageBlockPublicAccessState.html">GetImageBlockPublicAccessState</a>,
+         * the response will be <code>unblocked</code>. When the API has completed the
+         * configuration, the response will be <code>block-new-sharing</code>.</p> <p>For
+         * more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-public-access-to-amis.html">Block
+         * public access to your AMIs</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableImageBlockPublicAccess">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::EnableImageBlockPublicAccessOutcome EnableImageBlockPublicAccess(const Model::EnableImageBlockPublicAccessRequest& request) const;
+
+        /**
+         * A Callable wrapper for EnableImageBlockPublicAccess that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename EnableImageBlockPublicAccessRequestT = Model::EnableImageBlockPublicAccessRequest>
+        Model::EnableImageBlockPublicAccessOutcomeCallable EnableImageBlockPublicAccessCallable(const EnableImageBlockPublicAccessRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::EnableImageBlockPublicAccess, request);
+        }
+
+        /**
+         * An Async wrapper for EnableImageBlockPublicAccess that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename EnableImageBlockPublicAccessRequestT = Model::EnableImageBlockPublicAccessRequest>
+        void EnableImageBlockPublicAccessAsync(const EnableImageBlockPublicAccessRequestT& request, const EnableImageBlockPublicAccessResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::EnableImageBlockPublicAccess, request, handler, context);
         }
 
         /**
@@ -12067,6 +14266,37 @@ namespace EC2
         void EnableImageDeprecationAsync(const EnableImageDeprecationRequestT& request, const EnableImageDeprecationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::EnableImageDeprecation, request, handler, context);
+        }
+
+        /**
+         * <p>Enables deregistration protection for an AMI. When deregistration protection
+         * is enabled, the AMI can't be deregistered.</p> <p>To allow the AMI to be
+         * deregistered, you must first disable deregistration protection.</p> <p>For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-deregistration-protection.html">Protect
+         * an Amazon EC2 AMI from deregistration</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableImageDeregistrationProtection">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::EnableImageDeregistrationProtectionOutcome EnableImageDeregistrationProtection(const Model::EnableImageDeregistrationProtectionRequest& request) const;
+
+        /**
+         * A Callable wrapper for EnableImageDeregistrationProtection that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename EnableImageDeregistrationProtectionRequestT = Model::EnableImageDeregistrationProtectionRequest>
+        Model::EnableImageDeregistrationProtectionOutcomeCallable EnableImageDeregistrationProtectionCallable(const EnableImageDeregistrationProtectionRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::EnableImageDeregistrationProtection, request);
+        }
+
+        /**
+         * An Async wrapper for EnableImageDeregistrationProtection that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename EnableImageDeregistrationProtectionRequestT = Model::EnableImageDeregistrationProtectionRequest>
+        void EnableImageDeregistrationProtectionAsync(const EnableImageDeregistrationProtectionRequestT& request, const EnableImageDeregistrationProtectionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::EnableImageDeregistrationProtection, request, handler, context);
         }
 
         /**
@@ -12108,13 +14338,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableReachabilityAnalyzerOrganizationSharing">AWS
          * API Reference</a></p>
          */
-        virtual Model::EnableReachabilityAnalyzerOrganizationSharingOutcome EnableReachabilityAnalyzerOrganizationSharing(const Model::EnableReachabilityAnalyzerOrganizationSharingRequest& request) const;
+        virtual Model::EnableReachabilityAnalyzerOrganizationSharingOutcome EnableReachabilityAnalyzerOrganizationSharing(const Model::EnableReachabilityAnalyzerOrganizationSharingRequest& request = {}) const;
 
         /**
          * A Callable wrapper for EnableReachabilityAnalyzerOrganizationSharing that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename EnableReachabilityAnalyzerOrganizationSharingRequestT = Model::EnableReachabilityAnalyzerOrganizationSharingRequest>
-        Model::EnableReachabilityAnalyzerOrganizationSharingOutcomeCallable EnableReachabilityAnalyzerOrganizationSharingCallable(const EnableReachabilityAnalyzerOrganizationSharingRequestT& request) const
+        Model::EnableReachabilityAnalyzerOrganizationSharingOutcomeCallable EnableReachabilityAnalyzerOrganizationSharingCallable(const EnableReachabilityAnalyzerOrganizationSharingRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::EnableReachabilityAnalyzerOrganizationSharing, request);
         }
@@ -12123,9 +14353,40 @@ namespace EC2
          * An Async wrapper for EnableReachabilityAnalyzerOrganizationSharing that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename EnableReachabilityAnalyzerOrganizationSharingRequestT = Model::EnableReachabilityAnalyzerOrganizationSharingRequest>
-        void EnableReachabilityAnalyzerOrganizationSharingAsync(const EnableReachabilityAnalyzerOrganizationSharingRequestT& request, const EnableReachabilityAnalyzerOrganizationSharingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void EnableReachabilityAnalyzerOrganizationSharingAsync(const EnableReachabilityAnalyzerOrganizationSharingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const EnableReachabilityAnalyzerOrganizationSharingRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::EnableReachabilityAnalyzerOrganizationSharing, request, handler, context);
+        }
+
+        /**
+         * <p>Defines which route tables the route server can update with routes.</p>
+         * <p>When enabled, route server propagation installs the routes in the FIB on the
+         * route table you've specified. Route server supports IPv4 and IPv6 route
+         * propagation.</p> <p>For more information see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html">Dynamic
+         * routing in your VPC with VPC Route Server</a> in the <i>Amazon VPC User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableRouteServerPropagation">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::EnableRouteServerPropagationOutcome EnableRouteServerPropagation(const Model::EnableRouteServerPropagationRequest& request) const;
+
+        /**
+         * A Callable wrapper for EnableRouteServerPropagation that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename EnableRouteServerPropagationRequestT = Model::EnableRouteServerPropagationRequest>
+        Model::EnableRouteServerPropagationOutcomeCallable EnableRouteServerPropagationCallable(const EnableRouteServerPropagationRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::EnableRouteServerPropagation, request);
+        }
+
+        /**
+         * An Async wrapper for EnableRouteServerPropagation that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename EnableRouteServerPropagationRequestT = Model::EnableRouteServerPropagationRequest>
+        void EnableRouteServerPropagationAsync(const EnableRouteServerPropagationRequestT& request, const EnableRouteServerPropagationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::EnableRouteServerPropagation, request, handler, context);
         }
 
         /**
@@ -12138,13 +14399,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableSerialConsoleAccess">AWS
          * API Reference</a></p>
          */
-        virtual Model::EnableSerialConsoleAccessOutcome EnableSerialConsoleAccess(const Model::EnableSerialConsoleAccessRequest& request) const;
+        virtual Model::EnableSerialConsoleAccessOutcome EnableSerialConsoleAccess(const Model::EnableSerialConsoleAccessRequest& request = {}) const;
 
         /**
          * A Callable wrapper for EnableSerialConsoleAccess that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename EnableSerialConsoleAccessRequestT = Model::EnableSerialConsoleAccessRequest>
-        Model::EnableSerialConsoleAccessOutcomeCallable EnableSerialConsoleAccessCallable(const EnableSerialConsoleAccessRequestT& request) const
+        Model::EnableSerialConsoleAccessOutcomeCallable EnableSerialConsoleAccessCallable(const EnableSerialConsoleAccessRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::EnableSerialConsoleAccess, request);
         }
@@ -12153,9 +14414,50 @@ namespace EC2
          * An Async wrapper for EnableSerialConsoleAccess that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename EnableSerialConsoleAccessRequestT = Model::EnableSerialConsoleAccessRequest>
-        void EnableSerialConsoleAccessAsync(const EnableSerialConsoleAccessRequestT& request, const EnableSerialConsoleAccessResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void EnableSerialConsoleAccessAsync(const EnableSerialConsoleAccessResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const EnableSerialConsoleAccessRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::EnableSerialConsoleAccess, request, handler, context);
+        }
+
+        /**
+         * <p>Enables or modifies the <i>block public access for snapshots</i> setting at
+         * the account level for the specified Amazon Web Services Region. After you enable
+         * block public access for snapshots in a Region, users can no longer request
+         * public sharing for snapshots in that Region. Snapshots that are already publicly
+         * shared are either treated as private or they remain publicly shared, depending
+         * on the <b>State</b> that you specify.</p>  <p>Enabling block public
+         * access for snapshots in <i>block all sharing</i> mode does not change the
+         * permissions for snapshots that are already publicly shared. Instead, it prevents
+         * these snapshots from be publicly visible and publicly accessible. Therefore, the
+         * attributes for these snapshots still indicate that they are publicly shared,
+         * even though they are not publicly available.</p> <p>If you later disable block
+         * public access or change the mode to <i>block new sharing</i>, these snapshots
+         * will become publicly available again.</p>  <p>For more information,
+         * see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/block-public-access-snapshots.html">
+         * Block public access for snapshots</a> in the <i>Amazon EBS User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableSnapshotBlockPublicAccess">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::EnableSnapshotBlockPublicAccessOutcome EnableSnapshotBlockPublicAccess(const Model::EnableSnapshotBlockPublicAccessRequest& request) const;
+
+        /**
+         * A Callable wrapper for EnableSnapshotBlockPublicAccess that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename EnableSnapshotBlockPublicAccessRequestT = Model::EnableSnapshotBlockPublicAccessRequest>
+        Model::EnableSnapshotBlockPublicAccessOutcomeCallable EnableSnapshotBlockPublicAccessCallable(const EnableSnapshotBlockPublicAccessRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::EnableSnapshotBlockPublicAccess, request);
+        }
+
+        /**
+         * An Async wrapper for EnableSnapshotBlockPublicAccess that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename EnableSnapshotBlockPublicAccessRequestT = Model::EnableSnapshotBlockPublicAccessRequest>
+        void EnableSnapshotBlockPublicAccessAsync(const EnableSnapshotBlockPublicAccessRequestT& request, const EnableSnapshotBlockPublicAccessResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::EnableSnapshotBlockPublicAccess, request, handler, context);
         }
 
         /**
@@ -12238,20 +14540,13 @@ namespace EC2
         }
 
         /**
-         *  <p>We are retiring EC2-Classic. We recommend that you migrate from
-         * EC2-Classic to a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p>  <p>Enables a VPC for ClassicLink. You can then link
-         * EC2-Classic instances to your ClassicLink-enabled VPC to allow communication
-         * over private IP addresses. You cannot enable your VPC for ClassicLink if any of
-         * your VPC route tables have existing routes for address ranges within the
-         * <code>10.0.0.0/8</code> IP address range, excluding local routes for VPCs in the
-         * <code>10.0.0.0/16</code> and <code>10.1.0.0/16</code> IP address ranges. For
-         * more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a>
-         * in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p><p><h3>See Also:</h3> 
-         * <a
+         *  <p>This action is deprecated.</p>  <p>Enables a VPC for
+         * ClassicLink. You can then link EC2-Classic instances to your ClassicLink-enabled
+         * VPC to allow communication over private IP addresses. You cannot enable your VPC
+         * for ClassicLink if any of your VPC route tables have existing routes for address
+         * ranges within the <code>10.0.0.0/8</code> IP address range, excluding local
+         * routes for VPCs in the <code>10.0.0.0/16</code> and <code>10.1.0.0/16</code> IP
+         * address ranges.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVpcClassicLink">AWS
          * API Reference</a></p>
          */
@@ -12276,29 +14571,23 @@ namespace EC2
         }
 
         /**
-         *  <p>We are retiring EC2-Classic. We recommend that you migrate from
-         * EC2-Classic to a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p>  <p>Enables a VPC to support DNS hostname resolution for
-         * ClassicLink. If enabled, the DNS hostname of a linked EC2-Classic instance
-         * resolves to its private IP address when addressed from an instance in the VPC to
-         * which it's linked. Similarly, the DNS hostname of an instance in a VPC resolves
-         * to its private IP address when addressed from a linked EC2-Classic instance. For
-         * more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a>
-         * in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>You must specify a
-         * VPC ID in the request.</p><p><h3>See Also:</h3>   <a
+         *  <p>This action is deprecated.</p>  <p>Enables a VPC to support DNS
+         * hostname resolution for ClassicLink. If enabled, the DNS hostname of a linked
+         * EC2-Classic instance resolves to its private IP address when addressed from an
+         * instance in the VPC to which it's linked. Similarly, the DNS hostname of an
+         * instance in a VPC resolves to its private IP address when addressed from a
+         * linked EC2-Classic instance.</p> <p>You must specify a VPC ID in the
+         * request.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVpcClassicLinkDnsSupport">AWS
          * API Reference</a></p>
          */
-        virtual Model::EnableVpcClassicLinkDnsSupportOutcome EnableVpcClassicLinkDnsSupport(const Model::EnableVpcClassicLinkDnsSupportRequest& request) const;
+        virtual Model::EnableVpcClassicLinkDnsSupportOutcome EnableVpcClassicLinkDnsSupport(const Model::EnableVpcClassicLinkDnsSupportRequest& request = {}) const;
 
         /**
          * A Callable wrapper for EnableVpcClassicLinkDnsSupport that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename EnableVpcClassicLinkDnsSupportRequestT = Model::EnableVpcClassicLinkDnsSupportRequest>
-        Model::EnableVpcClassicLinkDnsSupportOutcomeCallable EnableVpcClassicLinkDnsSupportCallable(const EnableVpcClassicLinkDnsSupportRequestT& request) const
+        Model::EnableVpcClassicLinkDnsSupportOutcomeCallable EnableVpcClassicLinkDnsSupportCallable(const EnableVpcClassicLinkDnsSupportRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::EnableVpcClassicLinkDnsSupport, request);
         }
@@ -12307,7 +14596,7 @@ namespace EC2
          * An Async wrapper for EnableVpcClassicLinkDnsSupport that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename EnableVpcClassicLinkDnsSupportRequestT = Model::EnableVpcClassicLinkDnsSupportRequest>
-        void EnableVpcClassicLinkDnsSupportAsync(const EnableVpcClassicLinkDnsSupportRequestT& request, const EnableVpcClassicLinkDnsSupportResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void EnableVpcClassicLinkDnsSupportAsync(const EnableVpcClassicLinkDnsSupportResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const EnableVpcClassicLinkDnsSupportRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::EnableVpcClassicLinkDnsSupport, request, handler, context);
         }
@@ -12402,8 +14691,8 @@ namespace EC2
          * filter by CIDR range.</p> <p>The routes are saved to the specified bucket in a
          * JSON file. For more information, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tables.html#tgw-export-route-tables">Export
-         * Route Tables to Amazon S3</a> in <i>Transit Gateways</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * route tables to Amazon S3</a> in the <i>Amazon Web Services Transit Gateways
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ExportTransitGatewayRoutes">AWS
          * API Reference</a></p>
          */
@@ -12425,6 +14714,92 @@ namespace EC2
         void ExportTransitGatewayRoutesAsync(const ExportTransitGatewayRoutesRequestT& request, const ExportTransitGatewayRoutesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::ExportTransitGatewayRoutes, request, handler, context);
+        }
+
+        /**
+         * <p>Exports the client configuration for a Verified Access
+         * instance.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ExportVerifiedAccessInstanceClientConfiguration">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ExportVerifiedAccessInstanceClientConfigurationOutcome ExportVerifiedAccessInstanceClientConfiguration(const Model::ExportVerifiedAccessInstanceClientConfigurationRequest& request) const;
+
+        /**
+         * A Callable wrapper for ExportVerifiedAccessInstanceClientConfiguration that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ExportVerifiedAccessInstanceClientConfigurationRequestT = Model::ExportVerifiedAccessInstanceClientConfigurationRequest>
+        Model::ExportVerifiedAccessInstanceClientConfigurationOutcomeCallable ExportVerifiedAccessInstanceClientConfigurationCallable(const ExportVerifiedAccessInstanceClientConfigurationRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::ExportVerifiedAccessInstanceClientConfiguration, request);
+        }
+
+        /**
+         * An Async wrapper for ExportVerifiedAccessInstanceClientConfiguration that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ExportVerifiedAccessInstanceClientConfigurationRequestT = Model::ExportVerifiedAccessInstanceClientConfigurationRequest>
+        void ExportVerifiedAccessInstanceClientConfigurationAsync(const ExportVerifiedAccessInstanceClientConfigurationRequestT& request, const ExportVerifiedAccessInstanceClientConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::ExportVerifiedAccessInstanceClientConfiguration, request, handler, context);
+        }
+
+        /**
+         * <p>Returns the currently negotiated security parameters for an active VPN
+         * tunnel, including IKE version, DH groups, encryption algorithms, and integrity
+         * algorithms.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetActiveVpnTunnelStatus">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetActiveVpnTunnelStatusOutcome GetActiveVpnTunnelStatus(const Model::GetActiveVpnTunnelStatusRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetActiveVpnTunnelStatus that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetActiveVpnTunnelStatusRequestT = Model::GetActiveVpnTunnelStatusRequest>
+        Model::GetActiveVpnTunnelStatusOutcomeCallable GetActiveVpnTunnelStatusCallable(const GetActiveVpnTunnelStatusRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::GetActiveVpnTunnelStatus, request);
+        }
+
+        /**
+         * An Async wrapper for GetActiveVpnTunnelStatus that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetActiveVpnTunnelStatusRequestT = Model::GetActiveVpnTunnelStatusRequest>
+        void GetActiveVpnTunnelStatusAsync(const GetActiveVpnTunnelStatusRequestT& request, const GetActiveVpnTunnelStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::GetActiveVpnTunnelStatus, request, handler, context);
+        }
+
+        /**
+         * <p>Gets the current state of the Allowed AMIs setting and the list of Allowed
+         * AMIs criteria at the account level in the specified Region.</p>  <p>The
+         * Allowed AMIs feature does not restrict the AMIs owned by your account.
+         * Regardless of the criteria you set, the AMIs created by your account will always
+         * be discoverable and usable by users in your account.</p>  <p>For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-allowed-amis.html">Control
+         * the discovery and use of AMIs in Amazon EC2 with Allowed AMIs</a> in <i>Amazon
+         * EC2 User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetAllowedImagesSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetAllowedImagesSettingsOutcome GetAllowedImagesSettings(const Model::GetAllowedImagesSettingsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for GetAllowedImagesSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetAllowedImagesSettingsRequestT = Model::GetAllowedImagesSettingsRequest>
+        Model::GetAllowedImagesSettingsOutcomeCallable GetAllowedImagesSettingsCallable(const GetAllowedImagesSettingsRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::GetAllowedImagesSettings, request);
+        }
+
+        /**
+         * An Async wrapper for GetAllowedImagesSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetAllowedImagesSettingsRequestT = Model::GetAllowedImagesSettingsRequest>
+        void GetAllowedImagesSettingsAsync(const GetAllowedImagesSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetAllowedImagesSettingsRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::GetAllowedImagesSettings, request, handler, context);
         }
 
         /**
@@ -12487,13 +14862,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetAwsNetworkPerformanceData">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetAwsNetworkPerformanceDataOutcome GetAwsNetworkPerformanceData(const Model::GetAwsNetworkPerformanceDataRequest& request) const;
+        virtual Model::GetAwsNetworkPerformanceDataOutcome GetAwsNetworkPerformanceData(const Model::GetAwsNetworkPerformanceDataRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetAwsNetworkPerformanceData that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetAwsNetworkPerformanceDataRequestT = Model::GetAwsNetworkPerformanceDataRequest>
-        Model::GetAwsNetworkPerformanceDataOutcomeCallable GetAwsNetworkPerformanceDataCallable(const GetAwsNetworkPerformanceDataRequestT& request) const
+        Model::GetAwsNetworkPerformanceDataOutcomeCallable GetAwsNetworkPerformanceDataCallable(const GetAwsNetworkPerformanceDataRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::GetAwsNetworkPerformanceData, request);
         }
@@ -12502,7 +14877,7 @@ namespace EC2
          * An Async wrapper for GetAwsNetworkPerformanceData that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetAwsNetworkPerformanceDataRequestT = Model::GetAwsNetworkPerformanceDataRequest>
-        void GetAwsNetworkPerformanceDataAsync(const GetAwsNetworkPerformanceDataRequestT& request, const GetAwsNetworkPerformanceDataResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetAwsNetworkPerformanceDataAsync(const GetAwsNetworkPerformanceDataResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetAwsNetworkPerformanceDataRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::GetAwsNetworkPerformanceData, request, handler, context);
         }
@@ -12567,13 +14942,7 @@ namespace EC2
          * instance console output displays the exact console output that would normally be
          * displayed on a physical monitor attached to a computer. For Windows instances,
          * the instance console output includes the last three system event log errors.</p>
-         * <p>By default, the console output returns buffered information that was posted
-         * shortly after an instance transition state (start, stop, reboot, or terminate).
-         * This information is available for at least one hour after the most recent post.
-         * Only the most recent 64 KB of console output is available.</p> <p>You can
-         * optionally retrieve the latest serial console output at any time during the
-         * instance lifecycle. This option is supported on instance types that use the
-         * Nitro hypervisor.</p> <p>For more information, see <a
+         * <p>For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html#instance-console-console-output">Instance
          * console output</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>
          * <a
@@ -12602,8 +14971,11 @@ namespace EC2
 
         /**
          * <p>Retrieve a JPG-format screenshot of a running instance to help with
-         * troubleshooting.</p> <p>The returned content is Base64-encoded.</p><p><h3>See
-         * Also:</h3>   <a
+         * troubleshooting.</p> <p>The returned content is Base64-encoded.</p> <p>For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/troubleshoot-unreachable-instance.html#instance-console-console-output">Instance
+         * console output</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetConsoleScreenshot">AWS
          * API Reference</a></p>
          */
@@ -12625,6 +14997,42 @@ namespace EC2
         void GetConsoleScreenshotAsync(const GetConsoleScreenshotRequestT& request, const GetConsoleScreenshotResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::GetConsoleScreenshot, request, handler, context);
+        }
+
+        /**
+         * <p>Retrieves a summary of the account status report.</p> <p>To view the full
+         * report, download it from the Amazon S3 bucket where it was saved. Reports are
+         * accessible only when they have the <code>complete</code> status. Reports with
+         * other statuses (<code>running</code>, <code>cancelled</code>, or
+         * <code>error</code>) are not available in the S3 bucket. For more information
+         * about downloading objects from an S3 bucket, see <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/download-objects.html">Downloading
+         * objects</a> in the <i>Amazon Simple Storage Service User Guide</i>.</p> <p>For
+         * more information, see <a
+         * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_status-report.html">Generating
+         * the account status report for declarative policies</a> in the <i>Amazon Web
+         * Services Organizations User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetDeclarativePoliciesReportSummary">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetDeclarativePoliciesReportSummaryOutcome GetDeclarativePoliciesReportSummary(const Model::GetDeclarativePoliciesReportSummaryRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetDeclarativePoliciesReportSummary that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetDeclarativePoliciesReportSummaryRequestT = Model::GetDeclarativePoliciesReportSummaryRequest>
+        Model::GetDeclarativePoliciesReportSummaryOutcomeCallable GetDeclarativePoliciesReportSummaryCallable(const GetDeclarativePoliciesReportSummaryRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::GetDeclarativePoliciesReportSummary, request);
+        }
+
+        /**
+         * An Async wrapper for GetDeclarativePoliciesReportSummary that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetDeclarativePoliciesReportSummaryRequestT = Model::GetDeclarativePoliciesReportSummaryRequest>
+        void GetDeclarativePoliciesReportSummaryAsync(const GetDeclarativePoliciesReportSummaryRequestT& request, const GetDeclarativePoliciesReportSummaryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::GetDeclarativePoliciesReportSummary, request, handler, context);
         }
 
         /**
@@ -12658,22 +15066,20 @@ namespace EC2
 
         /**
          * <p>Describes the default KMS key for EBS encryption by default for your account
-         * in this Region. You can change the default KMS key for encryption by default
-         * using <a>ModifyEbsDefaultKmsKeyId</a> or <a>ResetEbsDefaultKmsKeyId</a>.</p>
-         * <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon
-         * EBS encryption</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * in this Region.</p> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html">Amazon
+         * EBS encryption</a> in the <i>Amazon EBS User Guide</i>.</p><p><h3>See Also:</h3>
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetEbsDefaultKmsKeyId">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetEbsDefaultKmsKeyIdOutcome GetEbsDefaultKmsKeyId(const Model::GetEbsDefaultKmsKeyIdRequest& request) const;
+        virtual Model::GetEbsDefaultKmsKeyIdOutcome GetEbsDefaultKmsKeyId(const Model::GetEbsDefaultKmsKeyIdRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetEbsDefaultKmsKeyId that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetEbsDefaultKmsKeyIdRequestT = Model::GetEbsDefaultKmsKeyIdRequest>
-        Model::GetEbsDefaultKmsKeyIdOutcomeCallable GetEbsDefaultKmsKeyIdCallable(const GetEbsDefaultKmsKeyIdRequestT& request) const
+        Model::GetEbsDefaultKmsKeyIdOutcomeCallable GetEbsDefaultKmsKeyIdCallable(const GetEbsDefaultKmsKeyIdRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::GetEbsDefaultKmsKeyId, request);
         }
@@ -12682,7 +15088,7 @@ namespace EC2
          * An Async wrapper for GetEbsDefaultKmsKeyId that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetEbsDefaultKmsKeyIdRequestT = Model::GetEbsDefaultKmsKeyIdRequest>
-        void GetEbsDefaultKmsKeyIdAsync(const GetEbsDefaultKmsKeyIdRequestT& request, const GetEbsDefaultKmsKeyIdResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetEbsDefaultKmsKeyIdAsync(const GetEbsDefaultKmsKeyIdResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetEbsDefaultKmsKeyIdRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::GetEbsDefaultKmsKeyId, request, handler, context);
         }
@@ -12690,19 +15096,19 @@ namespace EC2
         /**
          * <p>Describes whether EBS encryption by default is enabled for your account in
          * the current Region.</p> <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon
-         * EBS encryption</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html">Amazon
+         * EBS encryption</a> in the <i>Amazon EBS User Guide</i>.</p><p><h3>See Also:</h3>
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetEbsEncryptionByDefault">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetEbsEncryptionByDefaultOutcome GetEbsEncryptionByDefault(const Model::GetEbsEncryptionByDefaultRequest& request) const;
+        virtual Model::GetEbsEncryptionByDefaultOutcome GetEbsEncryptionByDefault(const Model::GetEbsEncryptionByDefaultRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetEbsEncryptionByDefault that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetEbsEncryptionByDefaultRequestT = Model::GetEbsEncryptionByDefaultRequest>
-        Model::GetEbsEncryptionByDefaultOutcomeCallable GetEbsEncryptionByDefaultCallable(const GetEbsEncryptionByDefaultRequestT& request) const
+        Model::GetEbsEncryptionByDefaultOutcomeCallable GetEbsEncryptionByDefaultCallable(const GetEbsEncryptionByDefaultRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::GetEbsEncryptionByDefault, request);
         }
@@ -12711,7 +15117,7 @@ namespace EC2
          * An Async wrapper for GetEbsEncryptionByDefault that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetEbsEncryptionByDefaultRequestT = Model::GetEbsEncryptionByDefaultRequest>
-        void GetEbsEncryptionByDefaultAsync(const GetEbsEncryptionByDefaultRequestT& request, const GetEbsEncryptionByDefaultResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetEbsEncryptionByDefaultAsync(const GetEbsEncryptionByDefaultResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetEbsEncryptionByDefaultRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::GetEbsEncryptionByDefault, request, handler, context);
         }
@@ -12726,7 +15132,9 @@ namespace EC2
          * new partitions on a daily, weekly, or monthly basis</p> </li> <li> <p>Create a
          * table partitioned between two timestamps in the past</p> </li> <li> <p>Create a
          * set of named queries in Athena that you can use to get started quickly</p> </li>
-         * </ul><p><h3>See Also:</h3>   <a
+         * </ul>  <p> <code>GetFlowLogsIntegrationTemplate</code> does not support
+         * integration between Amazon Web Services Transit Gateway Flow Logs and Amazon
+         * Athena.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetFlowLogsIntegrationTemplate">AWS
          * API Reference</a></p>
          */
@@ -12806,6 +15214,92 @@ namespace EC2
         }
 
         /**
+         * <p>Gets the current state of <i>block public access for AMIs</i> at the account
+         * level in the specified Amazon Web Services Region.</p> <p>For more information,
+         * see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-public-access-to-amis.html">Block
+         * public access to your AMIs</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetImageBlockPublicAccessState">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetImageBlockPublicAccessStateOutcome GetImageBlockPublicAccessState(const Model::GetImageBlockPublicAccessStateRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for GetImageBlockPublicAccessState that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetImageBlockPublicAccessStateRequestT = Model::GetImageBlockPublicAccessStateRequest>
+        Model::GetImageBlockPublicAccessStateOutcomeCallable GetImageBlockPublicAccessStateCallable(const GetImageBlockPublicAccessStateRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::GetImageBlockPublicAccessState, request);
+        }
+
+        /**
+         * An Async wrapper for GetImageBlockPublicAccessState that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetImageBlockPublicAccessStateRequestT = Model::GetImageBlockPublicAccessStateRequest>
+        void GetImageBlockPublicAccessStateAsync(const GetImageBlockPublicAccessStateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetImageBlockPublicAccessStateRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::GetImageBlockPublicAccessState, request, handler, context);
+        }
+
+        /**
+         * <p>Gets the default instance metadata service (IMDS) settings that are set at
+         * the account level in the specified Amazon Web Services&#x2028; Region.</p>
+         * <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html#instance-metadata-options-order-of-precedence">Order
+         * of precedence for instance metadata options</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetInstanceMetadataDefaults">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetInstanceMetadataDefaultsOutcome GetInstanceMetadataDefaults(const Model::GetInstanceMetadataDefaultsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for GetInstanceMetadataDefaults that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetInstanceMetadataDefaultsRequestT = Model::GetInstanceMetadataDefaultsRequest>
+        Model::GetInstanceMetadataDefaultsOutcomeCallable GetInstanceMetadataDefaultsCallable(const GetInstanceMetadataDefaultsRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::GetInstanceMetadataDefaults, request);
+        }
+
+        /**
+         * An Async wrapper for GetInstanceMetadataDefaults that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetInstanceMetadataDefaultsRequestT = Model::GetInstanceMetadataDefaultsRequest>
+        void GetInstanceMetadataDefaultsAsync(const GetInstanceMetadataDefaultsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetInstanceMetadataDefaultsRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::GetInstanceMetadataDefaults, request, handler, context);
+        }
+
+        /**
+         * <p>Gets the public endorsement key associated with the Nitro Trusted Platform
+         * Module (NitroTPM) for the specified instance.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetInstanceTpmEkPub">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetInstanceTpmEkPubOutcome GetInstanceTpmEkPub(const Model::GetInstanceTpmEkPubRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetInstanceTpmEkPub that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetInstanceTpmEkPubRequestT = Model::GetInstanceTpmEkPubRequest>
+        Model::GetInstanceTpmEkPubOutcomeCallable GetInstanceTpmEkPubCallable(const GetInstanceTpmEkPubRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::GetInstanceTpmEkPub, request);
+        }
+
+        /**
+         * An Async wrapper for GetInstanceTpmEkPub that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetInstanceTpmEkPubRequestT = Model::GetInstanceTpmEkPubRequest>
+        void GetInstanceTpmEkPubAsync(const GetInstanceTpmEkPubRequestT& request, const GetInstanceTpmEkPubResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::GetInstanceTpmEkPub, request, handler, context);
+        }
+
+        /**
          * <p>Returns a list of instance types with the specified instance attributes. You
          * can use the response to preview the instance types without launching instances.
          * Note that the response does not consider capacity.</p> <p>When you specify
@@ -12813,16 +15307,14 @@ namespace EC2
          * parameters. If you specify multiple values for a parameter, you get instance
          * types that satisfy any of the specified values.</p> <p>For more information, see
          * <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-attribute-based-instance-type-selection.html#spotfleet-get-instance-types-from-instance-requirements">Preview
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-attribute-based-instance-type-selection.html#ec2fleet-get-instance-types-from-instance-requirements">Preview
          * instance types with specified attributes</a>, <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-attribute-based-instance-type-selection.html">Attribute-based
-         * instance type selection for EC2 Fleet</a>, <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-attribute-based-instance-type-selection.html">Attribute-based
-         * instance type selection for Spot Fleet</a>, and <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-attribute-based-instance-type-selection.html">Specify
+         * attributes for instance type selection for EC2 Fleet or Spot Fleet</a>, and <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-placement-score.html">Spot
          * placement score</a> in the <i>Amazon EC2 User Guide</i>, and <a
          * href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-instance-type-requirements.html">Creating
-         * an Auto Scaling group using attribute-based instance type selection</a> in the
+         * mixed instance groups using attribute-based instance type selection</a> in the
          * <i>Amazon EC2 Auto Scaling User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetInstanceTypesFromInstanceRequirements">AWS
          * API Reference</a></p>
@@ -12944,6 +15436,32 @@ namespace EC2
         }
 
         /**
+         * <p>Gets the public IP addresses that have been discovered by IPAM.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetIpamDiscoveredPublicAddresses">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetIpamDiscoveredPublicAddressesOutcome GetIpamDiscoveredPublicAddresses(const Model::GetIpamDiscoveredPublicAddressesRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetIpamDiscoveredPublicAddresses that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetIpamDiscoveredPublicAddressesRequestT = Model::GetIpamDiscoveredPublicAddressesRequest>
+        Model::GetIpamDiscoveredPublicAddressesOutcomeCallable GetIpamDiscoveredPublicAddressesCallable(const GetIpamDiscoveredPublicAddressesRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::GetIpamDiscoveredPublicAddresses, request);
+        }
+
+        /**
+         * An Async wrapper for GetIpamDiscoveredPublicAddresses that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetIpamDiscoveredPublicAddressesRequestT = Model::GetIpamDiscoveredPublicAddressesRequest>
+        void GetIpamDiscoveredPublicAddressesAsync(const GetIpamDiscoveredPublicAddressesRequestT& request, const GetIpamDiscoveredPublicAddressesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::GetIpamDiscoveredPublicAddresses, request, handler, context);
+        }
+
+        /**
          * <p>Returns the resource CIDRs that are monitored as part of a resource
          * discovery. A discovered resource is a resource CIDR monitored under a resource
          * discovery. The following resources can be discovered: VPCs, Public IPv4 pools,
@@ -12972,13 +15490,15 @@ namespace EC2
         }
 
         /**
-         * <p>Get a list of all the CIDR allocations in an IPAM pool.</p>  <p>If you
-         * use this action after <a
+         * <p>Get a list of all the CIDR allocations in an IPAM pool. The Region you use
+         * should be the IPAM pool locale. The locale is the Amazon Web Services Region
+         * where this IPAM pool is available for allocations.</p>  <p>If you use this
+         * action after <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AllocateIpamPoolCidr.html">AllocateIpamPoolCidr</a>
          * or <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReleaseIpamPoolAllocation.html">ReleaseIpamPoolAllocation</a>,
          * note that all EC2 API actions follow an <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/query-api-troubleshooting.html#eventual-consistency">eventual
+         * href="https://docs.aws.amazon.com/ec2/latest/devguide/eventual-consistency.html">eventual
          * consistency</a> model.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetIpamPoolAllocations">AWS
          * API Reference</a></p>
@@ -13064,9 +15584,9 @@ namespace EC2
          * you may need to allow the following actions in your IAM policy:
          * <code>DescribeSpotInstanceRequests</code>,
          * <code>DescribeInstanceCreditSpecifications</code>, <code>DescribeVolumes</code>,
-         * <code>DescribeInstanceAttribute</code>, and <code>DescribeElasticGpus</code>.
-         * Or, you can allow <code>describe*</code> depending on your instance
-         * requirements.</p><p><h3>See Also:</h3>   <a
+         * and <code>DescribeInstanceAttribute</code>. Or, you can allow
+         * <code>describe*</code> depending on your instance requirements.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetLaunchTemplateData">AWS
          * API Reference</a></p>
          */
@@ -13200,9 +15720,9 @@ namespace EC2
          * <code>EC2Config</code> service or <code>EC2Launch</code> scripts (Windows Server
          * 2016 and later). This usually only happens the first time an instance is
          * launched. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/UsingConfig_WinAMI.html">EC2Config</a>
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UsingConfig_WinAMI.html">EC2Config</a>
          * and <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch.html">EC2Launch</a>
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2launch.html">EC2Launch</a>
          * in the <i>Amazon EC2 User Guide</i>.</p> <p>For the <code>EC2Config</code>
          * service, the password is not generated for rebundled AMIs unless
          * <code>Ec2SetPassword</code> is enabled before bundling.</p> <p>The password is
@@ -13265,6 +15785,149 @@ namespace EC2
         }
 
         /**
+         * <p>Gets information about the associations for the specified route server.</p>
+         * <p>A route server association is the connection established between a route
+         * server and a VPC.</p> <p>For more information see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html">Dynamic
+         * routing in your VPC with VPC Route Server</a> in the <i>Amazon VPC User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetRouteServerAssociations">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetRouteServerAssociationsOutcome GetRouteServerAssociations(const Model::GetRouteServerAssociationsRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetRouteServerAssociations that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetRouteServerAssociationsRequestT = Model::GetRouteServerAssociationsRequest>
+        Model::GetRouteServerAssociationsOutcomeCallable GetRouteServerAssociationsCallable(const GetRouteServerAssociationsRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::GetRouteServerAssociations, request);
+        }
+
+        /**
+         * An Async wrapper for GetRouteServerAssociations that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetRouteServerAssociationsRequestT = Model::GetRouteServerAssociationsRequest>
+        void GetRouteServerAssociationsAsync(const GetRouteServerAssociationsRequestT& request, const GetRouteServerAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::GetRouteServerAssociations, request, handler, context);
+        }
+
+        /**
+         * <p>Gets information about the route propagations for the specified route
+         * server.</p> <p>When enabled, route server propagation installs the routes in the
+         * FIB on the route table you've specified. Route server supports IPv4 and IPv6
+         * route propagation.</p> <p>Amazon VPC Route Server simplifies routing for traffic
+         * between workloads that are deployed within a VPC and its internet gateways. With
+         * this feature, VPC Route Server dynamically updates VPC and internet gateway
+         * route tables with your preferred IPv4 or IPv6 routes to achieve routing fault
+         * tolerance for those workloads. This enables you to automatically reroute traffic
+         * within a VPC, which increases the manageability of VPC routing and
+         * interoperability with third-party workloads.</p> <p>Route server supports the
+         * follow route table types:</p> <ul> <li> <p>VPC route tables not associated with
+         * subnets</p> </li> <li> <p>Subnet route tables</p> </li> <li> <p>Internet gateway
+         * route tables</p> </li> </ul> <p>Route server does not support route tables
+         * associated with virtual private gateways. To propagate routes into a transit
+         * gateway route table, use <a
+         * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html">Transit
+         * Gateway Connect</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetRouteServerPropagations">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetRouteServerPropagationsOutcome GetRouteServerPropagations(const Model::GetRouteServerPropagationsRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetRouteServerPropagations that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetRouteServerPropagationsRequestT = Model::GetRouteServerPropagationsRequest>
+        Model::GetRouteServerPropagationsOutcomeCallable GetRouteServerPropagationsCallable(const GetRouteServerPropagationsRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::GetRouteServerPropagations, request);
+        }
+
+        /**
+         * An Async wrapper for GetRouteServerPropagations that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetRouteServerPropagationsRequestT = Model::GetRouteServerPropagationsRequest>
+        void GetRouteServerPropagationsAsync(const GetRouteServerPropagationsRequestT& request, const GetRouteServerPropagationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::GetRouteServerPropagations, request, handler, context);
+        }
+
+        /**
+         * <p>Gets the routing database for the specified route server. The <a
+         * href="https://en.wikipedia.org/wiki/Routing_table">Routing Information Base
+         * (RIB)</a> serves as a database that stores all the routing information and
+         * network topology data collected by a router or routing system, such as routes
+         * learned from BGP peers. The RIB is constantly updated as new routing information
+         * is received or existing routes change. This ensures that the route server always
+         * has the most current view of the network topology and can make optimal routing
+         * decisions.</p> <p>Amazon VPC Route Server simplifies routing for traffic between
+         * workloads that are deployed within a VPC and its internet gateways. With this
+         * feature, VPC Route Server dynamically updates VPC and internet gateway route
+         * tables with your preferred IPv4 or IPv6 routes to achieve routing fault
+         * tolerance for those workloads. This enables you to automatically reroute traffic
+         * within a VPC, which increases the manageability of VPC routing and
+         * interoperability with third-party workloads.</p> <p>Route server supports the
+         * follow route table types:</p> <ul> <li> <p>VPC route tables not associated with
+         * subnets</p> </li> <li> <p>Subnet route tables</p> </li> <li> <p>Internet gateway
+         * route tables</p> </li> </ul> <p>Route server does not support route tables
+         * associated with virtual private gateways. To propagate routes into a transit
+         * gateway route table, use <a
+         * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html">Transit
+         * Gateway Connect</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetRouteServerRoutingDatabase">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetRouteServerRoutingDatabaseOutcome GetRouteServerRoutingDatabase(const Model::GetRouteServerRoutingDatabaseRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetRouteServerRoutingDatabase that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetRouteServerRoutingDatabaseRequestT = Model::GetRouteServerRoutingDatabaseRequest>
+        Model::GetRouteServerRoutingDatabaseOutcomeCallable GetRouteServerRoutingDatabaseCallable(const GetRouteServerRoutingDatabaseRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::GetRouteServerRoutingDatabase, request);
+        }
+
+        /**
+         * An Async wrapper for GetRouteServerRoutingDatabase that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetRouteServerRoutingDatabaseRequestT = Model::GetRouteServerRoutingDatabaseRequest>
+        void GetRouteServerRoutingDatabaseAsync(const GetRouteServerRoutingDatabaseRequestT& request, const GetRouteServerRoutingDatabaseResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::GetRouteServerRoutingDatabase, request, handler, context);
+        }
+
+        /**
+         * <p>Gets security groups that can be associated by the Amazon Web Services
+         * account making the request with network interfaces in the specified
+         * VPC.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetSecurityGroupsForVpc">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetSecurityGroupsForVpcOutcome GetSecurityGroupsForVpc(const Model::GetSecurityGroupsForVpcRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetSecurityGroupsForVpc that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetSecurityGroupsForVpcRequestT = Model::GetSecurityGroupsForVpcRequest>
+        Model::GetSecurityGroupsForVpcOutcomeCallable GetSecurityGroupsForVpcCallable(const GetSecurityGroupsForVpcRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::GetSecurityGroupsForVpc, request);
+        }
+
+        /**
+         * An Async wrapper for GetSecurityGroupsForVpc that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetSecurityGroupsForVpcRequestT = Model::GetSecurityGroupsForVpcRequest>
+        void GetSecurityGroupsForVpcAsync(const GetSecurityGroupsForVpcRequestT& request, const GetSecurityGroupsForVpcResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::GetSecurityGroupsForVpc, request, handler, context);
+        }
+
+        /**
          * <p>Retrieves the access status of your account to the EC2 serial console of all
          * instances. By default, access to the EC2 serial console is disabled for your
          * account. For more information, see <a
@@ -13274,13 +15937,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetSerialConsoleAccessStatus">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetSerialConsoleAccessStatusOutcome GetSerialConsoleAccessStatus(const Model::GetSerialConsoleAccessStatusRequest& request) const;
+        virtual Model::GetSerialConsoleAccessStatusOutcome GetSerialConsoleAccessStatus(const Model::GetSerialConsoleAccessStatusRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetSerialConsoleAccessStatus that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetSerialConsoleAccessStatusRequestT = Model::GetSerialConsoleAccessStatusRequest>
-        Model::GetSerialConsoleAccessStatusOutcomeCallable GetSerialConsoleAccessStatusCallable(const GetSerialConsoleAccessStatusRequestT& request) const
+        Model::GetSerialConsoleAccessStatusOutcomeCallable GetSerialConsoleAccessStatusCallable(const GetSerialConsoleAccessStatusRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::GetSerialConsoleAccessStatus, request);
         }
@@ -13289,9 +15952,38 @@ namespace EC2
          * An Async wrapper for GetSerialConsoleAccessStatus that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetSerialConsoleAccessStatusRequestT = Model::GetSerialConsoleAccessStatusRequest>
-        void GetSerialConsoleAccessStatusAsync(const GetSerialConsoleAccessStatusRequestT& request, const GetSerialConsoleAccessStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetSerialConsoleAccessStatusAsync(const GetSerialConsoleAccessStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetSerialConsoleAccessStatusRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::GetSerialConsoleAccessStatus, request, handler, context);
+        }
+
+        /**
+         * <p>Gets the current state of <i>block public access for snapshots</i> setting
+         * for the account and Region.</p> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/block-public-access-snapshots.html">
+         * Block public access for snapshots</a> in the <i>Amazon EBS User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetSnapshotBlockPublicAccessState">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetSnapshotBlockPublicAccessStateOutcome GetSnapshotBlockPublicAccessState(const Model::GetSnapshotBlockPublicAccessStateRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for GetSnapshotBlockPublicAccessState that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetSnapshotBlockPublicAccessStateRequestT = Model::GetSnapshotBlockPublicAccessStateRequest>
+        Model::GetSnapshotBlockPublicAccessStateOutcomeCallable GetSnapshotBlockPublicAccessStateCallable(const GetSnapshotBlockPublicAccessStateRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::GetSnapshotBlockPublicAccessState, request);
+        }
+
+        /**
+         * An Async wrapper for GetSnapshotBlockPublicAccessState that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetSnapshotBlockPublicAccessStateRequestT = Model::GetSnapshotBlockPublicAccessStateRequest>
+        void GetSnapshotBlockPublicAccessStateAsync(const GetSnapshotBlockPublicAccessStateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetSnapshotBlockPublicAccessStateRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::GetSnapshotBlockPublicAccessState, request, handler, context);
         }
 
         /**
@@ -13303,7 +15995,8 @@ namespace EC2
          * instance types by using <code>InstanceTypes</code>.</p> <p>For more information,
          * see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-placement-score.html">Spot
-         * placement score</a> in the Amazon EC2 User Guide.</p><p><h3>See Also:</h3>   <a
+         * placement score</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetSpotPlacementScores">AWS
          * API Reference</a></p>
          */
@@ -13562,6 +16255,32 @@ namespace EC2
         }
 
         /**
+         * <p>Gets the targets for the specified network CIDR endpoint for Verified
+         * Access.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetVerifiedAccessEndpointTargets">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetVerifiedAccessEndpointTargetsOutcome GetVerifiedAccessEndpointTargets(const Model::GetVerifiedAccessEndpointTargetsRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetVerifiedAccessEndpointTargets that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetVerifiedAccessEndpointTargetsRequestT = Model::GetVerifiedAccessEndpointTargetsRequest>
+        Model::GetVerifiedAccessEndpointTargetsOutcomeCallable GetVerifiedAccessEndpointTargetsCallable(const GetVerifiedAccessEndpointTargetsRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::GetVerifiedAccessEndpointTargets, request);
+        }
+
+        /**
+         * An Async wrapper for GetVerifiedAccessEndpointTargets that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetVerifiedAccessEndpointTargetsRequestT = Model::GetVerifiedAccessEndpointTargetsRequest>
+        void GetVerifiedAccessEndpointTargetsAsync(const GetVerifiedAccessEndpointTargetsRequestT& request, const GetVerifiedAccessEndpointTargetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::GetVerifiedAccessEndpointTargets, request, handler, context);
+        }
+
+        /**
          * <p>Shows the contents of the Verified Access policy associated with the
          * group.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetVerifiedAccessGroupPolicy">AWS
@@ -13624,13 +16343,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetVpnConnectionDeviceTypes">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetVpnConnectionDeviceTypesOutcome GetVpnConnectionDeviceTypes(const Model::GetVpnConnectionDeviceTypesRequest& request) const;
+        virtual Model::GetVpnConnectionDeviceTypesOutcome GetVpnConnectionDeviceTypes(const Model::GetVpnConnectionDeviceTypesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetVpnConnectionDeviceTypes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetVpnConnectionDeviceTypesRequestT = Model::GetVpnConnectionDeviceTypesRequest>
-        Model::GetVpnConnectionDeviceTypesOutcomeCallable GetVpnConnectionDeviceTypesCallable(const GetVpnConnectionDeviceTypesRequestT& request) const
+        Model::GetVpnConnectionDeviceTypesOutcomeCallable GetVpnConnectionDeviceTypesCallable(const GetVpnConnectionDeviceTypesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::GetVpnConnectionDeviceTypes, request);
         }
@@ -13639,7 +16358,7 @@ namespace EC2
          * An Async wrapper for GetVpnConnectionDeviceTypes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetVpnConnectionDeviceTypesRequestT = Model::GetVpnConnectionDeviceTypesRequest>
-        void GetVpnConnectionDeviceTypesAsync(const GetVpnConnectionDeviceTypesRequestT& request, const GetVpnConnectionDeviceTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetVpnConnectionDeviceTypesAsync(const GetVpnConnectionDeviceTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetVpnConnectionDeviceTypesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::GetVpnConnectionDeviceTypes, request, handler, context);
         }
@@ -13719,13 +16438,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportImage">AWS API
          * Reference</a></p>
          */
-        virtual Model::ImportImageOutcome ImportImage(const Model::ImportImageRequest& request) const;
+        virtual Model::ImportImageOutcome ImportImage(const Model::ImportImageRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ImportImage that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ImportImageRequestT = Model::ImportImageRequest>
-        Model::ImportImageOutcomeCallable ImportImageCallable(const ImportImageRequestT& request) const
+        Model::ImportImageOutcomeCallable ImportImageCallable(const ImportImageRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::ImportImage, request);
         }
@@ -13734,23 +16453,24 @@ namespace EC2
          * An Async wrapper for ImportImage that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ImportImageRequestT = Model::ImportImageRequest>
-        void ImportImageAsync(const ImportImageRequestT& request, const ImportImageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ImportImageAsync(const ImportImageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ImportImageRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::ImportImage, request, handler, context);
         }
 
         /**
-         * <p>Creates an import instance task using metadata from the specified disk
-         * image.</p> <p>This API action supports only single-volume VMs. To import
-         * multi-volume VMs, use <a>ImportImage</a> instead.</p> <p>This API action is not
-         * supported by the Command Line Interface (CLI). For information about using the
-         * Amazon EC2 CLI, which is deprecated, see <a
-         * href="https://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf#UsingVirtualMachinesinAmazonEC2">Importing
-         * a VM to Amazon EC2</a> in the <i>Amazon EC2 CLI Reference</i> PDF file.</p>
-         * <p>For information about the import manifest referenced by this API action, see
-         * <a
+         *  <p>We recommend that you use the <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImage.html">
+         * <code>ImportImage</code> </a> API instead. For more information, see <a
+         * href="https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html">Importing
+         * a VM as an image using VM Import/Export</a> in the <i>VM Import/Export User
+         * Guide</i>.</p>  <p>Creates an import instance task using metadata from
+         * the specified disk image.</p> <p>This API action supports only single-volume
+         * VMs. To import multi-volume VMs, use <a>ImportImage</a> instead.</p> <p>For
+         * information about the import manifest referenced by this API action, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html">VM
-         * Import Manifest</a>.</p><p><h3>See Also:</h3>   <a
+         * Import Manifest</a>.</p> <p>This API action is not supported by the Command Line
+         * Interface (CLI).</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportInstance">AWS
          * API Reference</a></p>
          */
@@ -13775,15 +16495,12 @@ namespace EC2
         }
 
         /**
-         * <p>Imports the public key from an RSA or ED25519 key pair that you created with
-         * a third-party tool. Compare this with <a>CreateKeyPair</a>, in which Amazon Web
-         * Services creates the key pair and gives the keys to you (Amazon Web Services
-         * keeps a copy of the public key). With ImportKeyPair, you create the key pair and
-         * give Amazon Web Services just the public key. The private key is never
-         * transferred between you and Amazon Web Services.</p> <p>For more information
-         * about key pairs, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Amazon
-         * EC2 key pairs</a> in the <i>Amazon Elastic Compute Cloud User
+         * <p>Imports the public key from an RSA or ED25519 key pair that you created using
+         * a third-party tool. You give Amazon Web Services only the public key. The
+         * private key is never transferred between you and Amazon Web Services.</p> <p>For
+         * more information about the requirements for importing a key pair, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html#how-to-generate-your-own-key-and-import-it-to-aws">Create
+         * a key pair and import the public key to Amazon EC2</a> in the <i>Amazon EC2 User
          * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportKeyPair">AWS
          * API Reference</a></p>
@@ -13816,13 +16533,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportSnapshot">AWS
          * API Reference</a></p>
          */
-        virtual Model::ImportSnapshotOutcome ImportSnapshot(const Model::ImportSnapshotRequest& request) const;
+        virtual Model::ImportSnapshotOutcome ImportSnapshot(const Model::ImportSnapshotRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ImportSnapshot that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ImportSnapshotRequestT = Model::ImportSnapshotRequest>
-        Model::ImportSnapshotOutcomeCallable ImportSnapshotCallable(const ImportSnapshotRequestT& request) const
+        Model::ImportSnapshotOutcomeCallable ImportSnapshotCallable(const ImportSnapshotRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::ImportSnapshot, request);
         }
@@ -13831,24 +16548,20 @@ namespace EC2
          * An Async wrapper for ImportSnapshot that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ImportSnapshotRequestT = Model::ImportSnapshotRequest>
-        void ImportSnapshotAsync(const ImportSnapshotRequestT& request, const ImportSnapshotResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ImportSnapshotAsync(const ImportSnapshotResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ImportSnapshotRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::ImportSnapshot, request, handler, context);
         }
 
         /**
-         * <p>Creates an import volume task using metadata from the specified disk
-         * image.</p> <p>This API action supports only single-volume VMs. To import
+         *  <p>This API action supports only single-volume VMs. To import
          * multi-volume VMs, use <a>ImportImage</a> instead. To import a disk to a
-         * snapshot, use <a>ImportSnapshot</a> instead.</p> <p>This API action is not
-         * supported by the Command Line Interface (CLI). For information about using the
-         * Amazon EC2 CLI, which is deprecated, see <a
-         * href="https://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf#importing-your-volumes-into-amazon-ebs">Importing
-         * Disks to Amazon EBS</a> in the <i>Amazon EC2 CLI Reference</i> PDF file.</p>
-         * <p>For information about the import manifest referenced by this API action, see
-         * <a
+         * snapshot, use <a>ImportSnapshot</a> instead.</p>  <p>Creates an import
+         * volume task using metadata from the specified disk image.</p> <p>For information
+         * about the import manifest referenced by this API action, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html">VM
-         * Import Manifest</a>.</p><p><h3>See Also:</h3>   <a
+         * Import Manifest</a>.</p> <p>This API action is not supported by the Command Line
+         * Interface (CLI).</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportVolume">AWS
          * API Reference</a></p>
          */
@@ -13880,13 +16593,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ListImagesInRecycleBin">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListImagesInRecycleBinOutcome ListImagesInRecycleBin(const Model::ListImagesInRecycleBinRequest& request) const;
+        virtual Model::ListImagesInRecycleBinOutcome ListImagesInRecycleBin(const Model::ListImagesInRecycleBinRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListImagesInRecycleBin that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListImagesInRecycleBinRequestT = Model::ListImagesInRecycleBinRequest>
-        Model::ListImagesInRecycleBinOutcomeCallable ListImagesInRecycleBinCallable(const ListImagesInRecycleBinRequestT& request) const
+        Model::ListImagesInRecycleBinOutcomeCallable ListImagesInRecycleBinCallable(const ListImagesInRecycleBinRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::ListImagesInRecycleBin, request);
         }
@@ -13895,7 +16608,7 @@ namespace EC2
          * An Async wrapper for ListImagesInRecycleBin that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListImagesInRecycleBinRequestT = Model::ListImagesInRecycleBinRequest>
-        void ListImagesInRecycleBinAsync(const ListImagesInRecycleBinRequestT& request, const ListImagesInRecycleBinResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListImagesInRecycleBinAsync(const ListImagesInRecycleBinResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListImagesInRecycleBinRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::ListImagesInRecycleBin, request, handler, context);
         }
@@ -13906,13 +16619,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ListSnapshotsInRecycleBin">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListSnapshotsInRecycleBinOutcome ListSnapshotsInRecycleBin(const Model::ListSnapshotsInRecycleBinRequest& request) const;
+        virtual Model::ListSnapshotsInRecycleBinOutcome ListSnapshotsInRecycleBin(const Model::ListSnapshotsInRecycleBinRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListSnapshotsInRecycleBin that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListSnapshotsInRecycleBinRequestT = Model::ListSnapshotsInRecycleBinRequest>
-        Model::ListSnapshotsInRecycleBinOutcomeCallable ListSnapshotsInRecycleBinCallable(const ListSnapshotsInRecycleBinRequestT& request) const
+        Model::ListSnapshotsInRecycleBinOutcomeCallable ListSnapshotsInRecycleBinCallable(const ListSnapshotsInRecycleBinRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::ListSnapshotsInRecycleBin, request);
         }
@@ -13921,9 +16634,45 @@ namespace EC2
          * An Async wrapper for ListSnapshotsInRecycleBin that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListSnapshotsInRecycleBinRequestT = Model::ListSnapshotsInRecycleBinRequest>
-        void ListSnapshotsInRecycleBinAsync(const ListSnapshotsInRecycleBinRequestT& request, const ListSnapshotsInRecycleBinResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListSnapshotsInRecycleBinAsync(const ListSnapshotsInRecycleBinResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListSnapshotsInRecycleBinRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::ListSnapshotsInRecycleBin, request, handler, context);
+        }
+
+        /**
+         * <p>Locks an Amazon EBS snapshot in either <i>governance</i> or <i>compliance</i>
+         * mode to protect it against accidental or malicious deletions for a specific
+         * duration. A locked snapshot can't be deleted.</p> <p>You can also use this
+         * action to modify the lock settings for a snapshot that is already locked. The
+         * allowed modifications depend on the lock mode and lock state:</p> <ul> <li>
+         * <p>If the snapshot is locked in governance mode, you can modify the lock mode
+         * and the lock duration or lock expiration date.</p> </li> <li> <p>If the snapshot
+         * is locked in compliance mode and it is in the cooling-off period, you can modify
+         * the lock mode and the lock duration or lock expiration date.</p> </li> <li>
+         * <p>If the snapshot is locked in compliance mode and the cooling-off period has
+         * lapsed, you can only increase the lock duration or extend the lock expiration
+         * date.</p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/LockSnapshot">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::LockSnapshotOutcome LockSnapshot(const Model::LockSnapshotRequest& request) const;
+
+        /**
+         * A Callable wrapper for LockSnapshot that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename LockSnapshotRequestT = Model::LockSnapshotRequest>
+        Model::LockSnapshotOutcomeCallable LockSnapshotCallable(const LockSnapshotRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::LockSnapshot, request);
+        }
+
+        /**
+         * An Async wrapper for LockSnapshot that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename LockSnapshotRequestT = Model::LockSnapshotRequest>
+        void LockSnapshotAsync(const LockSnapshotRequestT& request, const LockSnapshotResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::LockSnapshot, request, handler, context);
         }
 
         /**
@@ -13955,11 +16704,8 @@ namespace EC2
         }
 
         /**
-         * <p>Changes the opt-in status of the Local Zone and Wavelength Zone group for
-         * your account.</p> <p>Use <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html">
-         * DescribeAvailabilityZones</a> to view the value for
-         * <code>GroupName</code>.</p><p><h3>See Also:</h3>   <a
+         * <p>Changes the opt-in status of the specified zone group for your
+         * account.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyAvailabilityZoneGroup">AWS
          * API Reference</a></p>
          */
@@ -13984,12 +16730,25 @@ namespace EC2
         }
 
         /**
-         * <p>Modifies a Capacity Reservation's capacity and the conditions under which it
-         * is to be released. You cannot change a Capacity Reservation's instance type, EBS
-         * optimization, instance store settings, platform, Availability Zone, or instance
-         * eligibility. If you need to modify any of these attributes, we recommend that
-         * you cancel the Capacity Reservation, and then create a new one with the required
-         * attributes.</p><p><h3>See Also:</h3>   <a
+         * <p>Modifies a Capacity Reservation's capacity, instance eligibility, and the
+         * conditions under which it is to be released. You can't modify a Capacity
+         * Reservation's instance type, EBS optimization, platform, instance store
+         * settings, Availability Zone, or tenancy. If you need to modify any of these
+         * attributes, we recommend that you cancel the Capacity Reservation, and then
+         * create a new one with the required attributes. For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-reservations-modify.html">
+         * Modify an active Capacity Reservation</a>.</p> <p>The allowed modifications
+         * depend on the state of the Capacity Reservation:</p> <ul> <li> <p>
+         * <code>assessing</code> or <code>scheduled</code> state - You can modify the tags
+         * only.</p> </li> <li> <p> <code>pending</code> state - You can't modify the
+         * Capacity Reservation in any way.</p> </li> <li> <p> <code>active</code> state
+         * but still within the commitment duration - You can't decrease the instance count
+         * or set an end date that is within the commitment duration. All other
+         * modifications are allowed.</p> </li> <li> <p> <code>active</code> state with no
+         * commitment duration or elapsed commitment duration - All modifications are
+         * allowed.</p> </li> <li> <p> <code>expired</code>, <code>cancelled</code>,
+         * <code>unsupported</code>, or <code>failed</code> state - You can't modify the
+         * Capacity Reservation in any way.</p> </li> </ul><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyCapacityReservation">AWS
          * API Reference</a></p>
          */
@@ -14113,14 +16872,13 @@ namespace EC2
          * this Region.</p> <p>Amazon Web Services creates a unique Amazon Web Services
          * managed KMS key in each Region for use with encryption by default. If you change
          * the default KMS key to a symmetric customer managed KMS key, it is used instead
-         * of the Amazon Web Services managed KMS key. To reset the default KMS key to the
-         * Amazon Web Services managed KMS key for EBS, use <a>ResetEbsDefaultKmsKeyId</a>.
-         * Amazon EBS does not support asymmetric KMS keys.</p> <p>If you delete or disable
-         * the customer managed KMS key that you specified for use with encryption by
-         * default, your instances will fail to launch.</p> <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon
-         * EBS encryption</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * of the Amazon Web Services managed KMS key. Amazon EBS does not support
+         * asymmetric KMS keys.</p> <p>If you delete or disable the customer managed KMS
+         * key that you specified for use with encryption by default, your instances will
+         * fail to launch.</p> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html">Amazon
+         * EBS encryption</a> in the <i>Amazon EBS User Guide</i>.</p><p><h3>See Also:</h3>
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyEbsDefaultKmsKeyId">AWS
          * API Reference</a></p>
          */
@@ -14392,9 +17150,9 @@ namespace EC2
          * <p>Modifies the specified attribute of the specified instance. You can specify
          * only one attribute at a time.</p> <p> <b>Note: </b>Using this action to change
          * the security groups associated with an elastic network interface (ENI) attached
-         * to an instance in a VPC can result in an error if the instance has more than one
-         * ENI. To change the security groups associated with an ENI attached to an
-         * instance that has multiple ENIs, we recommend that you use the
+         * to an instance can result in an error if the instance has more than one ENI. To
+         * change the security groups associated with an ENI attached to an instance that
+         * has multiple ENIs, we recommend that you use the
          * <a>ModifyNetworkInterfaceAttribute</a> action.</p> <p>To modify some attributes,
          * the instance must be stopped. For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html">Modify
@@ -14426,8 +17184,9 @@ namespace EC2
         /**
          * <p>Modifies the Capacity Reservation settings for a stopped instance. Use this
          * action to configure an instance to target a specific Capacity Reservation, run
-         * in any <code>open</code> Capacity Reservation with matching attributes, or run
-         * On-Demand Instance capacity.</p><p><h3>See Also:</h3>   <a
+         * in any <code>open</code> Capacity Reservation with matching attributes, run in
+         * On-Demand Instance capacity, or only run in a Capacity
+         * Reservation.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyInstanceCapacityReservationAttributes">AWS
          * API Reference</a></p>
          */
@@ -14449,6 +17208,70 @@ namespace EC2
         void ModifyInstanceCapacityReservationAttributesAsync(const ModifyInstanceCapacityReservationAttributesRequestT& request, const ModifyInstanceCapacityReservationAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::ModifyInstanceCapacityReservationAttributes, request, handler, context);
+        }
+
+        /**
+         * <p>Modifies the specified EC2 Instance Connect Endpoint.</p> <p>For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/modify-ec2-instance-connect-endpoint.html">Modify
+         * an EC2 Instance Connect Endpoint</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyInstanceConnectEndpoint">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ModifyInstanceConnectEndpointOutcome ModifyInstanceConnectEndpoint(const Model::ModifyInstanceConnectEndpointRequest& request) const;
+
+        /**
+         * A Callable wrapper for ModifyInstanceConnectEndpoint that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ModifyInstanceConnectEndpointRequestT = Model::ModifyInstanceConnectEndpointRequest>
+        Model::ModifyInstanceConnectEndpointOutcomeCallable ModifyInstanceConnectEndpointCallable(const ModifyInstanceConnectEndpointRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::ModifyInstanceConnectEndpoint, request);
+        }
+
+        /**
+         * An Async wrapper for ModifyInstanceConnectEndpoint that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ModifyInstanceConnectEndpointRequestT = Model::ModifyInstanceConnectEndpointRequest>
+        void ModifyInstanceConnectEndpointAsync(const ModifyInstanceConnectEndpointRequestT& request, const ModifyInstanceConnectEndpointResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::ModifyInstanceConnectEndpoint, request, handler, context);
+        }
+
+        /**
+         * <p>By default, all vCPUs for the instance type are active when you launch an
+         * instance. When you configure the number of active vCPUs for the instance, it can
+         * help you save on licensing costs and optimize performance. The base cost of the
+         * instance remains unchanged.</p> <p>The number of active vCPUs equals the number
+         * of threads per CPU core multiplied by the number of cores. The instance must be
+         * in a <code>Stopped</code> state before you make changes.</p>  <p>Some
+         * instance type options do not support this capability. For more information, see
+         * <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cpu-options-supported-instances-values.html">Supported
+         * CPU options</a> in the <i>Amazon EC2 User Guide</i>.</p> <p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyInstanceCpuOptions">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ModifyInstanceCpuOptionsOutcome ModifyInstanceCpuOptions(const Model::ModifyInstanceCpuOptionsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ModifyInstanceCpuOptions that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ModifyInstanceCpuOptionsRequestT = Model::ModifyInstanceCpuOptionsRequest>
+        Model::ModifyInstanceCpuOptionsOutcomeCallable ModifyInstanceCpuOptionsCallable(const ModifyInstanceCpuOptionsRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::ModifyInstanceCpuOptions, request);
+        }
+
+        /**
+         * An Async wrapper for ModifyInstanceCpuOptions that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ModifyInstanceCpuOptionsRequestT = Model::ModifyInstanceCpuOptionsRequest>
+        void ModifyInstanceCpuOptionsAsync(const ModifyInstanceCpuOptionsRequestT& request, const ModifyInstanceCpuOptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::ModifyInstanceCpuOptions, request, handler, context);
         }
 
         /**
@@ -14547,7 +17370,11 @@ namespace EC2
          * configuration will not enable simplified automatic recovery for an unsupported
          * instance type. For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html#instance-configuration-recovery">Simplified
-         * automatic recovery</a>.</p><p><h3>See Also:</h3>   <a
+         * automatic recovery</a>.</p> <p>Modifies the reboot migration behavior during a
+         * user-initiated reboot of an instance that has a pending
+         * <code>system-reboot</code> event. For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/schedevents_actions_reboot.html#reboot-migration">Enable
+         * or disable reboot migration</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyInstanceMaintenanceOptions">AWS
          * API Reference</a></p>
          */
@@ -14569,6 +17396,39 @@ namespace EC2
         void ModifyInstanceMaintenanceOptionsAsync(const ModifyInstanceMaintenanceOptionsRequestT& request, const ModifyInstanceMaintenanceOptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::ModifyInstanceMaintenanceOptions, request, handler, context);
+        }
+
+        /**
+         * <p>Modifies the default instance metadata service (IMDS) settings at the account
+         * level in the specified Amazon Web Services&#x2028; Region.</p>  <p>To
+         * remove a parameter's account-level default setting, specify
+         * <code>no-preference</code>. If an account-level setting is cleared with
+         * <code>no-preference</code>, then the instance launch considers the other
+         * instance metadata settings. For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html#instance-metadata-options-order-of-precedence">Order
+         * of precedence for instance metadata options</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyInstanceMetadataDefaults">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ModifyInstanceMetadataDefaultsOutcome ModifyInstanceMetadataDefaults(const Model::ModifyInstanceMetadataDefaultsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ModifyInstanceMetadataDefaults that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ModifyInstanceMetadataDefaultsRequestT = Model::ModifyInstanceMetadataDefaultsRequest>
+        Model::ModifyInstanceMetadataDefaultsOutcomeCallable ModifyInstanceMetadataDefaultsCallable(const ModifyInstanceMetadataDefaultsRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::ModifyInstanceMetadataDefaults, request);
+        }
+
+        /**
+         * An Async wrapper for ModifyInstanceMetadataDefaults that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ModifyInstanceMetadataDefaultsRequestT = Model::ModifyInstanceMetadataDefaultsRequest>
+        void ModifyInstanceMetadataDefaultsAsync(const ModifyInstanceMetadataDefaultsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ModifyInstanceMetadataDefaultsRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::ModifyInstanceMetadataDefaults, request, handler, context);
         }
 
         /**
@@ -14606,12 +17466,38 @@ namespace EC2
         }
 
         /**
+         * <p>Change the configuration of the network performance options for an existing
+         * instance.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyInstanceNetworkPerformanceOptions">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ModifyInstanceNetworkPerformanceOptionsOutcome ModifyInstanceNetworkPerformanceOptions(const Model::ModifyInstanceNetworkPerformanceOptionsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ModifyInstanceNetworkPerformanceOptions that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ModifyInstanceNetworkPerformanceOptionsRequestT = Model::ModifyInstanceNetworkPerformanceOptionsRequest>
+        Model::ModifyInstanceNetworkPerformanceOptionsOutcomeCallable ModifyInstanceNetworkPerformanceOptionsCallable(const ModifyInstanceNetworkPerformanceOptionsRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::ModifyInstanceNetworkPerformanceOptions, request);
+        }
+
+        /**
+         * An Async wrapper for ModifyInstanceNetworkPerformanceOptions that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ModifyInstanceNetworkPerformanceOptionsRequestT = Model::ModifyInstanceNetworkPerformanceOptionsRequest>
+        void ModifyInstanceNetworkPerformanceOptionsAsync(const ModifyInstanceNetworkPerformanceOptionsRequestT& request, const ModifyInstanceNetworkPerformanceOptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::ModifyInstanceNetworkPerformanceOptions, request, handler, context);
+        }
+
+        /**
          * <p>Modifies the placement attributes for a specified instance. You can do the
          * following:</p> <ul> <li> <p>Modify the affinity between an instance and a <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html">Dedicated
          * Host</a>. When affinity is set to <code>host</code> and the instance is not
          * associated with a specific Dedicated Host, the next time the instance is
-         * launched, it is automatically associated with the host on which it lands. If the
+         * started, it is automatically associated with the host on which it lands. If the
          * instance is restarted or rebooted, this relationship persists.</p> </li> <li>
          * <p>Change the Dedicated Host with which an instance is associated.</p> </li>
          * <li> <p>Change the instance tenancy of an instance.</p> </li> <li> <p>Move an
@@ -14792,13 +17678,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyLaunchTemplate">AWS
          * API Reference</a></p>
          */
-        virtual Model::ModifyLaunchTemplateOutcome ModifyLaunchTemplate(const Model::ModifyLaunchTemplateRequest& request) const;
+        virtual Model::ModifyLaunchTemplateOutcome ModifyLaunchTemplate(const Model::ModifyLaunchTemplateRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ModifyLaunchTemplate that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ModifyLaunchTemplateRequestT = Model::ModifyLaunchTemplateRequest>
-        Model::ModifyLaunchTemplateOutcomeCallable ModifyLaunchTemplateCallable(const ModifyLaunchTemplateRequestT& request) const
+        Model::ModifyLaunchTemplateOutcomeCallable ModifyLaunchTemplateCallable(const ModifyLaunchTemplateRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::ModifyLaunchTemplate, request);
         }
@@ -14807,7 +17693,7 @@ namespace EC2
          * An Async wrapper for ModifyLaunchTemplate that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ModifyLaunchTemplateRequestT = Model::ModifyLaunchTemplateRequest>
-        void ModifyLaunchTemplateAsync(const ModifyLaunchTemplateRequestT& request, const ModifyLaunchTemplateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ModifyLaunchTemplateAsync(const ModifyLaunchTemplateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ModifyLaunchTemplateRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::ModifyLaunchTemplate, request, handler, context);
         }
@@ -14920,17 +17806,42 @@ namespace EC2
         }
 
         /**
+         * <p>Modify public hostname options for a network interface. For more information,
+         * see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-naming.html">EC2
+         * instance hostnames, DNS names, and domains</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyPublicIpDnsNameOptions">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ModifyPublicIpDnsNameOptionsOutcome ModifyPublicIpDnsNameOptions(const Model::ModifyPublicIpDnsNameOptionsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ModifyPublicIpDnsNameOptions that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ModifyPublicIpDnsNameOptionsRequestT = Model::ModifyPublicIpDnsNameOptionsRequest>
+        Model::ModifyPublicIpDnsNameOptionsOutcomeCallable ModifyPublicIpDnsNameOptionsCallable(const ModifyPublicIpDnsNameOptionsRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::ModifyPublicIpDnsNameOptions, request);
+        }
+
+        /**
+         * An Async wrapper for ModifyPublicIpDnsNameOptions that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ModifyPublicIpDnsNameOptionsRequestT = Model::ModifyPublicIpDnsNameOptionsRequest>
+        void ModifyPublicIpDnsNameOptionsAsync(const ModifyPublicIpDnsNameOptionsRequestT& request, const ModifyPublicIpDnsNameOptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::ModifyPublicIpDnsNameOptions, request, handler, context);
+        }
+
+        /**
          * <p>Modifies the configuration of your Reserved Instances, such as the
          * Availability Zone, instance count, or instance type. The Reserved Instances to
          * be modified must be identical, except for Availability Zone, network platform,
          * and instance type.</p> <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html">Modifying
-         * Reserved Instances</a> in the <i>Amazon EC2 User Guide</i>.</p>  <p>We are
-         * retiring EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC.
-         * For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html">Modify
+         * Reserved Instances</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyReservedInstances">AWS
          * API Reference</a></p>
          */
@@ -14952,6 +17863,47 @@ namespace EC2
         void ModifyReservedInstancesAsync(const ModifyReservedInstancesRequestT& request, const ModifyReservedInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::ModifyReservedInstances, request, handler, context);
+        }
+
+        /**
+         * <p>Modifies the configuration of an existing route server.</p> <p>Amazon VPC
+         * Route Server simplifies routing for traffic between workloads that are deployed
+         * within a VPC and its internet gateways. With this feature, VPC Route Server
+         * dynamically updates VPC and internet gateway route tables with your preferred
+         * IPv4 or IPv6 routes to achieve routing fault tolerance for those workloads. This
+         * enables you to automatically reroute traffic within a VPC, which increases the
+         * manageability of VPC routing and interoperability with third-party
+         * workloads.</p> <p>Route server supports the follow route table types:</p> <ul>
+         * <li> <p>VPC route tables not associated with subnets</p> </li> <li> <p>Subnet
+         * route tables</p> </li> <li> <p>Internet gateway route tables</p> </li> </ul>
+         * <p>Route server does not support route tables associated with virtual private
+         * gateways. To propagate routes into a transit gateway route table, use <a
+         * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html">Transit
+         * Gateway Connect</a>.</p> <p>For more information see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html">Dynamic
+         * routing in your VPC with VPC Route Server</a> in the <i>Amazon VPC User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyRouteServer">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ModifyRouteServerOutcome ModifyRouteServer(const Model::ModifyRouteServerRequest& request) const;
+
+        /**
+         * A Callable wrapper for ModifyRouteServer that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ModifyRouteServerRequestT = Model::ModifyRouteServerRequest>
+        Model::ModifyRouteServerOutcomeCallable ModifyRouteServerCallable(const ModifyRouteServerRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::ModifyRouteServer, request);
+        }
+
+        /**
+         * An Async wrapper for ModifyRouteServer that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ModifyRouteServerRequestT = Model::ModifyRouteServerRequest>
+        void ModifyRouteServerAsync(const ModifyRouteServerRequestT& request, const ModifyRouteServerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::ModifyRouteServer, request, handler, context);
         }
 
         /**
@@ -14989,9 +17941,9 @@ namespace EC2
          * Marketplace product codes cannot be made public. Snapshots encrypted with your
          * default KMS key cannot be shared with other accounts.</p> <p>For more
          * information about modifying snapshot permissions, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html">Share
-         * a snapshot</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-modifying-snapshot-permissions.html">Share
+         * a snapshot</a> in the <i>Amazon EBS User Guide</i>.</p><p><h3>See Also:</h3>  
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifySnapshotAttribute">AWS
          * API Reference</a></p>
          */
@@ -15020,9 +17972,9 @@ namespace EC2
          * to a full snapshot that includes all of the blocks of data that were written to
          * the volume at the time the snapshot was created, and moved from the standard
          * tier to the archive tier. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-archive.html">Archive
-         * Amazon EBS snapshots</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/snapshot-archive.html">Archive
+         * Amazon EBS snapshots</a> in the <i>Amazon EBS User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifySnapshotTier">AWS
          * API Reference</a></p>
          */
@@ -15295,8 +18247,8 @@ namespace EC2
         }
 
         /**
-         * <p>Modifies the configuration of an Amazon Web Services Verified Access
-         * endpoint.</p><p><h3>See Also:</h3>   <a
+         * <p>Modifies the configuration of the specified Amazon Web Services Verified
+         * Access endpoint.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVerifiedAccessEndpoint">AWS
          * API Reference</a></p>
          */
@@ -15321,8 +18273,8 @@ namespace EC2
         }
 
         /**
-         * <p>Modifies the specified Verified Access endpoint policy.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Modifies the specified Amazon Web Services Verified Access endpoint
+         * policy.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVerifiedAccessEndpointPolicy">AWS
          * API Reference</a></p>
          */
@@ -15347,8 +18299,8 @@ namespace EC2
         }
 
         /**
-         * <p>Modifies the specified Verified Access group configuration.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Modifies the specified Amazon Web Services Verified Access group
+         * configuration.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVerifiedAccessGroup">AWS
          * API Reference</a></p>
          */
@@ -15373,8 +18325,8 @@ namespace EC2
         }
 
         /**
-         * <p>Modifies the specified Verified Access group policy.</p><p><h3>See Also:</h3>
-         * <a
+         * <p>Modifies the specified Amazon Web Services Verified Access group
+         * policy.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVerifiedAccessGroupPolicy">AWS
          * API Reference</a></p>
          */
@@ -15399,8 +18351,8 @@ namespace EC2
         }
 
         /**
-         * <p>Modifies the configuration of the specified Verified Access
-         * instance.</p><p><h3>See Also:</h3>   <a
+         * <p>Modifies the configuration of the specified Amazon Web Services Verified
+         * Access instance.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVerifiedAccessInstance">AWS
          * API Reference</a></p>
          */
@@ -15482,30 +18434,21 @@ namespace EC2
          * current-generation EC2 instance type, you might be able to apply these changes
          * without stopping the instance or detaching the volume from it. For more
          * information about modifying EBS volumes, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html">Amazon
-         * EBS Elastic Volumes</a> (Linux instances) or <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-modify-volume.html">Amazon
-         * EBS Elastic Volumes</a> (Windows instances).</p> <p>When you complete a resize
-         * operation on your volume, you need to extend the volume's file-system size to
-         * take advantage of the new storage capacity. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#recognize-expanded-volume-linux">Extend
-         * a Linux file system</a> or <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html#recognize-expanded-volume-windows">Extend
-         * a Windows file system</a>.</p> <p> You can use CloudWatch Events to check the
-         * status of a modification to an EBS volume. For information about CloudWatch
-         * Events, see the <a
-         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/">Amazon
-         * CloudWatch Events User Guide</a>. You can also track the status of a
-         * modification using <a>DescribeVolumesModifications</a>. For information about
-         * tracking status changes using either method, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-modifications.html">Monitor
-         * the progress of volume modifications</a>.</p> <p>With previous-generation
-         * instance types, resizing an EBS volume might require detaching and reattaching
-         * the volume or stopping and restarting the instance.</p> <p>After modifying a
-         * volume, you must wait at least six hours and ensure that the volume is in the
-         * <code>in-use</code> or <code>available</code> state before you can modify the
-         * same volume. This is sometimes referred to as a cooldown period.</p><p><h3>See
-         * Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-modify-volume.html">Amazon
+         * EBS Elastic Volumes</a> in the <i>Amazon EBS User Guide</i>.</p> <p>When you
+         * complete a resize operation on your volume, you need to extend the volume's
+         * file-system size to take advantage of the new storage capacity. For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/recognize-expanded-volume-linux.html">Extend
+         * the file system</a>.</p> <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/monitoring-volume-modifications.html">Monitor
+         * the progress of volume modifications</a> in the <i>Amazon EBS User
+         * Guide</i>.</p> <p>With previous-generation instance types, resizing an EBS
+         * volume might require detaching and reattaching the volume or stopping and
+         * restarting the instance.</p> <p>After modifying a volume, you must wait at least
+         * six hours and ensure that the volume is in the <code>in-use</code> or
+         * <code>available</code> state before you can modify the same volume. This is
+         * sometimes referred to as a cooldown period.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVolume">AWS
          * API Reference</a></p>
          */
@@ -15587,6 +18530,67 @@ namespace EC2
         }
 
         /**
+         * <p>Modify VPC Block Public Access (BPA) exclusions. A VPC BPA exclusion is a
+         * mode that can be applied to a single VPC or subnet that exempts it from the
+         * account’s BPA mode and will allow bidirectional or egress-only access. You can
+         * create BPA exclusions for VPCs and subnets even when BPA is not enabled on the
+         * account to ensure that there is no traffic disruption to the exclusions when VPC
+         * BPA is turned on.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcBlockPublicAccessExclusion">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ModifyVpcBlockPublicAccessExclusionOutcome ModifyVpcBlockPublicAccessExclusion(const Model::ModifyVpcBlockPublicAccessExclusionRequest& request) const;
+
+        /**
+         * A Callable wrapper for ModifyVpcBlockPublicAccessExclusion that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ModifyVpcBlockPublicAccessExclusionRequestT = Model::ModifyVpcBlockPublicAccessExclusionRequest>
+        Model::ModifyVpcBlockPublicAccessExclusionOutcomeCallable ModifyVpcBlockPublicAccessExclusionCallable(const ModifyVpcBlockPublicAccessExclusionRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::ModifyVpcBlockPublicAccessExclusion, request);
+        }
+
+        /**
+         * An Async wrapper for ModifyVpcBlockPublicAccessExclusion that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ModifyVpcBlockPublicAccessExclusionRequestT = Model::ModifyVpcBlockPublicAccessExclusionRequest>
+        void ModifyVpcBlockPublicAccessExclusionAsync(const ModifyVpcBlockPublicAccessExclusionRequestT& request, const ModifyVpcBlockPublicAccessExclusionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::ModifyVpcBlockPublicAccessExclusion, request, handler, context);
+        }
+
+        /**
+         * <p>Modify VPC Block Public Access (BPA) options. VPC Block Public Access (BPA)
+         * enables you to block resources in VPCs and subnets that you own in a Region from
+         * reaching or being reached from the internet through internet gateways and
+         * egress-only internet gateways. To learn more about VPC BPA, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/security-vpc-bpa.html">Block
+         * public access to VPCs and subnets</a> in the <i>Amazon VPC User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcBlockPublicAccessOptions">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ModifyVpcBlockPublicAccessOptionsOutcome ModifyVpcBlockPublicAccessOptions(const Model::ModifyVpcBlockPublicAccessOptionsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ModifyVpcBlockPublicAccessOptions that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ModifyVpcBlockPublicAccessOptionsRequestT = Model::ModifyVpcBlockPublicAccessOptionsRequest>
+        Model::ModifyVpcBlockPublicAccessOptionsOutcomeCallable ModifyVpcBlockPublicAccessOptionsCallable(const ModifyVpcBlockPublicAccessOptionsRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::ModifyVpcBlockPublicAccessOptions, request);
+        }
+
+        /**
+         * An Async wrapper for ModifyVpcBlockPublicAccessOptions that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ModifyVpcBlockPublicAccessOptionsRequestT = Model::ModifyVpcBlockPublicAccessOptionsRequest>
+        void ModifyVpcBlockPublicAccessOptionsAsync(const ModifyVpcBlockPublicAccessOptionsRequestT& request, const ModifyVpcBlockPublicAccessOptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::ModifyVpcBlockPublicAccessOptions, request, handler, context);
+        }
+
+        /**
          * <p>Modifies attributes of a specified VPC endpoint. The attributes that you can
          * modify depend on the type of VPC endpoint (interface, gateway, or Gateway Load
          * Balancer). For more information, see the <a
@@ -15643,12 +18647,9 @@ namespace EC2
         }
 
         /**
-         * <p>Modifies the attributes of your VPC endpoint service configuration. You can
-         * change the Network Load Balancers or Gateway Load Balancers for your service,
-         * and you can specify whether acceptance is required for requests to connect to
-         * your endpoint service through an interface VPC endpoint.</p> <p>If you set or
-         * modify the private DNS name, you must prove that you own the private DNS domain
-         * name.</p><p><h3>See Also:</h3>   <a
+         * <p>Modifies the attributes of the specified VPC endpoint service
+         * configuration.</p> <p>If you set or modify the private DNS name, you must prove
+         * that you own the private DNS domain name.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcEndpointServiceConfiguration">AWS
          * API Reference</a></p>
          */
@@ -15701,11 +18702,11 @@ namespace EC2
         /**
          * <p>Modifies the permissions for your VPC endpoint service. You can add or remove
          * permissions for service consumers (Amazon Web Services accounts, users, and IAM
-         * roles) to connect to your endpoint service.</p> <p>If you grant permissions to
-         * all principals, the service is public. Any users who know the name of a public
-         * service can send a request to attach an endpoint. If the service does not
-         * require manual approval, attachments are automatically approved.</p><p><h3>See
-         * Also:</h3>   <a
+         * roles) to connect to your endpoint service. Principal ARNs with path components
+         * aren't supported.</p> <p>If you grant permissions to all principals, the service
+         * is public. Any users who know the name of a public service can send a request to
+         * attach an endpoint. If the service does not require manual approval, attachments
+         * are automatically approved.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcEndpointServicePermissions">AWS
          * API Reference</a></p>
          */
@@ -15730,22 +18731,11 @@ namespace EC2
         }
 
         /**
-         *  <p>We are retiring EC2-Classic. We recommend that you migrate from
-         * EC2-Classic to a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p>  <p>Modifies the VPC peering connection options on one
-         * side of a VPC peering connection. You can do the following:</p> <ul> <li>
-         * <p>Enable/disable communication over the peering connection between an
-         * EC2-Classic instance that's linked to your VPC (using ClassicLink) and instances
-         * in the peer VPC.</p> </li> <li> <p>Enable/disable communication over the peering
-         * connection between instances in your VPC and an EC2-Classic instance that's
-         * linked to the peer VPC.</p> </li> <li> <p>Enable/disable the ability to resolve
-         * public DNS hostnames to private IP addresses when queried from instances in the
-         * peer VPC.</p> </li> </ul> <p>If the peered VPCs are in the same Amazon Web
-         * Services account, you can enable DNS resolution for queries from the local VPC.
-         * This ensures that queries from the local VPC resolve to private IP addresses in
-         * the peer VPC. This option is not available if the peered VPCs are in different
+         * <p>Modifies the VPC peering connection options on one side of a VPC peering
+         * connection.</p> <p>If the peered VPCs are in the same Amazon Web Services
+         * account, you can enable DNS resolution for queries from the local VPC. This
+         * ensures that queries from the local VPC resolve to private IP addresses in the
+         * peer VPC. This option is not available if the peered VPCs are in different
          * Amazon Web Services accounts or different Regions. For peered VPCs in different
          * Amazon Web Services accounts, each Amazon Web Services account owner must
          * initiate a separate request to modify the peering connection options. For
@@ -15786,8 +18776,7 @@ namespace EC2
          * launch. The tenancy of any existing instances in the VPC is not affected.</p>
          * <p>For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html">Dedicated
-         * Instances</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * Instances</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcTenancy">AWS
          * API Reference</a></p>
          */
@@ -15980,18 +18969,13 @@ namespace EC2
         }
 
         /**
-         * <p>Moves an Elastic IP address from the EC2-Classic platform to the EC2-VPC
-         * platform. The Elastic IP address must be allocated to your account for more than
-         * 24 hours, and it must not be associated with an instance. After the Elastic IP
-         * address is moved, it is no longer available for use in the EC2-Classic platform,
-         * unless you move it back using the <a>RestoreAddressToClassic</a> request. You
-         * cannot move an Elastic IP address that was originally allocated for use in the
-         * EC2-VPC platform to the EC2-Classic platform.</p>  <p>We are retiring
-         * EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC. For more
-         * information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         *  <p>This action is deprecated.</p>  <p>Moves an Elastic IP address
+         * from the EC2-Classic platform to the EC2-VPC platform. The Elastic IP address
+         * must be allocated to your account for more than 24 hours, and it must not be
+         * associated with an instance. After the Elastic IP address is moved, it is no
+         * longer available for use in the EC2-Classic platform. You cannot move an Elastic
+         * IP address that was originally allocated for use in the EC2-VPC platform to the
+         * EC2-Classic platform.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/MoveAddressToVpc">AWS
          * API Reference</a></p>
          */
@@ -16047,23 +19031,53 @@ namespace EC2
         }
 
         /**
+         * <p>Move available capacity from a source Capacity Reservation to a destination
+         * Capacity Reservation. The source Capacity Reservation and the destination
+         * Capacity Reservation must be <code>active</code>, owned by your Amazon Web
+         * Services account, and share the following: </p> <ul> <li> <p>Instance type</p>
+         * </li> <li> <p>Platform</p> </li> <li> <p>Availability Zone</p> </li> <li>
+         * <p>Tenancy</p> </li> <li> <p>Placement group</p> </li> <li> <p>Capacity
+         * Reservation end time - <code>At specific time</code> or
+         * <code>Manually</code>.</p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/MoveCapacityReservationInstances">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::MoveCapacityReservationInstancesOutcome MoveCapacityReservationInstances(const Model::MoveCapacityReservationInstancesRequest& request) const;
+
+        /**
+         * A Callable wrapper for MoveCapacityReservationInstances that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename MoveCapacityReservationInstancesRequestT = Model::MoveCapacityReservationInstancesRequest>
+        Model::MoveCapacityReservationInstancesOutcomeCallable MoveCapacityReservationInstancesCallable(const MoveCapacityReservationInstancesRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::MoveCapacityReservationInstances, request);
+        }
+
+        /**
+         * An Async wrapper for MoveCapacityReservationInstances that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename MoveCapacityReservationInstancesRequestT = Model::MoveCapacityReservationInstancesRequest>
+        void MoveCapacityReservationInstancesAsync(const MoveCapacityReservationInstancesRequestT& request, const MoveCapacityReservationInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::MoveCapacityReservationInstances, request, handler, context);
+        }
+
+        /**
          * <p>Provisions an IPv4 or IPv6 address range for use with your Amazon Web
          * Services resources through bring your own IP addresses (BYOIP) and creates a
          * corresponding address pool. After the address range is provisioned, it is ready
-         * to be advertised using <a>AdvertiseByoipCidr</a>.</p> <p>Amazon Web Services
-         * verifies that you own the address range and are authorized to advertise it. You
-         * must ensure that the address range is registered to you and that you created an
-         * RPKI ROA to authorize Amazon ASNs 16509 and 14618 to advertise the address
-         * range. For more information, see <a
+         * to be advertised.</p> <p>Amazon Web Services verifies that you own the address
+         * range and are authorized to advertise it. You must ensure that the address range
+         * is registered to you and that you created an RPKI ROA to authorize Amazon ASNs
+         * 16509 and 14618 to advertise the address range. For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html">Bring
-         * your own IP addresses (BYOIP)</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p>Provisioning an address range is an asynchronous operation, so
-         * the call returns immediately, but the address range is not ready to use until
-         * its status changes from <code>pending-provision</code> to
-         * <code>provisioned</code>. To monitor the status of an address range, use
-         * <a>DescribeByoipCidrs</a>. To allocate an Elastic IP address from your IPv4
-         * address pool, use <a>AllocateAddress</a> with either the specific address from
-         * the address pool or the ID of the address pool.</p><p><h3>See Also:</h3>   <a
+         * your own IP addresses (BYOIP)</a> in the <i>Amazon EC2 User Guide</i>.</p>
+         * <p>Provisioning an address range is an asynchronous operation, so the call
+         * returns immediately, but the address range is not ready to use until its status
+         * changes from <code>pending-provision</code> to <code>provisioned</code>. For
+         * more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/byoip-onboard.html">Onboard
+         * your address range</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ProvisionByoipCidr">AWS
          * API Reference</a></p>
          */
@@ -16085,6 +19099,36 @@ namespace EC2
         void ProvisionByoipCidrAsync(const ProvisionByoipCidrRequestT& request, const ProvisionByoipCidrResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::ProvisionByoipCidr, request, handler, context);
+        }
+
+        /**
+         * <p>Provisions your Autonomous System Number (ASN) for use in your Amazon Web
+         * Services account. This action requires authorization context for Amazon to bring
+         * the ASN to an Amazon Web Services account. For more information, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/ipam/tutorials-byoasn.html">Tutorial:
+         * Bring your ASN to IPAM</a> in the <i>Amazon VPC IPAM guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ProvisionIpamByoasn">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ProvisionIpamByoasnOutcome ProvisionIpamByoasn(const Model::ProvisionIpamByoasnRequest& request) const;
+
+        /**
+         * A Callable wrapper for ProvisionIpamByoasn that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ProvisionIpamByoasnRequestT = Model::ProvisionIpamByoasnRequest>
+        Model::ProvisionIpamByoasnOutcomeCallable ProvisionIpamByoasnCallable(const ProvisionIpamByoasnRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::ProvisionIpamByoasn, request);
+        }
+
+        /**
+         * An Async wrapper for ProvisionIpamByoasn that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ProvisionIpamByoasnRequestT = Model::ProvisionIpamByoasnRequest>
+        void ProvisionIpamByoasnAsync(const ProvisionIpamByoasnRequestT& request, const ProvisionIpamByoasnResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::ProvisionIpamByoasn, request, handler, context);
         }
 
         /**
@@ -16147,6 +19191,61 @@ namespace EC2
         }
 
         /**
+         * <p>Purchase the Capacity Block for use with your account. With Capacity Blocks
+         * you ensure GPU capacity is available for machine learning (ML) workloads. You
+         * must specify the ID of the Capacity Block offering you are
+         * purchasing.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/PurchaseCapacityBlock">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::PurchaseCapacityBlockOutcome PurchaseCapacityBlock(const Model::PurchaseCapacityBlockRequest& request) const;
+
+        /**
+         * A Callable wrapper for PurchaseCapacityBlock that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename PurchaseCapacityBlockRequestT = Model::PurchaseCapacityBlockRequest>
+        Model::PurchaseCapacityBlockOutcomeCallable PurchaseCapacityBlockCallable(const PurchaseCapacityBlockRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::PurchaseCapacityBlock, request);
+        }
+
+        /**
+         * An Async wrapper for PurchaseCapacityBlock that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename PurchaseCapacityBlockRequestT = Model::PurchaseCapacityBlockRequest>
+        void PurchaseCapacityBlockAsync(const PurchaseCapacityBlockRequestT& request, const PurchaseCapacityBlockResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::PurchaseCapacityBlock, request, handler, context);
+        }
+
+        /**
+         * <p>Purchase the Capacity Block extension for use with your account. You must
+         * specify the ID of the Capacity Block extension offering you are
+         * purchasing.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/PurchaseCapacityBlockExtension">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::PurchaseCapacityBlockExtensionOutcome PurchaseCapacityBlockExtension(const Model::PurchaseCapacityBlockExtensionRequest& request) const;
+
+        /**
+         * A Callable wrapper for PurchaseCapacityBlockExtension that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename PurchaseCapacityBlockExtensionRequestT = Model::PurchaseCapacityBlockExtensionRequest>
+        Model::PurchaseCapacityBlockExtensionOutcomeCallable PurchaseCapacityBlockExtensionCallable(const PurchaseCapacityBlockExtensionRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::PurchaseCapacityBlockExtension, request);
+        }
+
+        /**
+         * An Async wrapper for PurchaseCapacityBlockExtension that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename PurchaseCapacityBlockExtensionRequestT = Model::PurchaseCapacityBlockExtensionRequest>
+        void PurchaseCapacityBlockExtensionAsync(const PurchaseCapacityBlockExtensionRequestT& request, const PurchaseCapacityBlockExtensionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::PurchaseCapacityBlockExtension, request, handler, context);
+        }
+
+        /**
          * <p>Purchase a reservation with configurations that match those of your Dedicated
          * Host. You must have active Dedicated Hosts in your account before you purchase a
          * reservation. This action results in the specified reservation being purchased
@@ -16185,13 +19284,9 @@ namespace EC2
          * default is the current time.</p> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html">Reserved
          * Instances</a> and <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Reserved
-         * Instance Marketplace</a> in the <i>Amazon EC2 User Guide</i>.</p>  <p>We
-         * are retiring EC2-Classic. We recommend that you migrate from EC2-Classic to a
-         * VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Sell
+         * in the Reserved Instance Marketplace</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/PurchaseReservedInstancesOffering">AWS
          * API Reference</a></p>
          */
@@ -16282,46 +19377,50 @@ namespace EC2
         }
 
         /**
-         * <p>Registers an AMI. When you're creating an AMI, this is the final step you
-         * must complete before you can launch an instance from the AMI. For more
+         * <p>Registers an AMI. When you're creating an instance-store backed AMI,
+         * registering the AMI is the final step in the creation process. For more
          * information about creating AMIs, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami.html">Create
-         * your own AMI</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-         *  <p>For Amazon EBS-backed instances, <a>CreateImage</a> creates and
-         * registers the AMI in a single request, so you don't have to register the AMI
-         * yourself. We recommend that you always use <a>CreateImage</a> unless you have a
-         * specific reason to use RegisterImage.</p>  <p>If needed, you can
-         * deregister an AMI at any time. Any modifications you make to an AMI backed by an
-         * instance store volume invalidates its registration. If you make changes to an
-         * image, deregister the previous image and register the new image.</p> <p>
-         * <b>Register a snapshot of a root device volume</b> </p> <p>You can use
-         * <code>RegisterImage</code> to create an Amazon EBS-backed Linux AMI from a
-         * snapshot of a root device volume. You specify the snapshot using a block device
-         * mapping. You can't set the encryption state of the volume using the block device
-         * mapping. If the snapshot is encrypted, or encryption by default is enabled, the
-         * root volume of an instance launched from the AMI is encrypted.</p> <p>For more
-         * information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html#creating-launching-ami-from-snapshot">Create
-         * a Linux AMI from a snapshot</a> and <a
+         * an AMI from a snapshot</a> and <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-instance-store.html">Create
+         * an instance-store backed AMI</a> in the <i>Amazon EC2 User Guide</i>.</p> <p>If
+         * needed, you can deregister an AMI at any time. Any modifications you make to an
+         * AMI backed by an instance store volume invalidates its registration. If you make
+         * changes to an image, deregister the previous image and register the new
+         * image.</p> <p> <b>Register a snapshot of a root device volume</b> </p> <p>You
+         * can use <code>RegisterImage</code> to create an Amazon EBS-backed Linux AMI from
+         * a snapshot of a root device volume. You specify the snapshot using a block
+         * device mapping. You can't set the encryption state of the volume using the block
+         * device mapping. If the snapshot is encrypted, or encryption by default is
+         * enabled, the root volume of an instance launched from the AMI is encrypted.</p>
+         * <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html#creating-launching-ami-from-snapshot">Create
+         * an AMI from a snapshot</a> and <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIEncryption.html">Use
-         * encryption with Amazon EBS-backed AMIs</a> in the <i>Amazon Elastic Compute
-         * Cloud User Guide</i>.</p> <p> <b>Amazon Web Services Marketplace product
-         * codes</b> </p> <p>If any snapshots have Amazon Web Services Marketplace product
-         * codes, they are copied to the new AMI.</p> <p>Windows and some Linux
-         * distributions, such as Red Hat Enterprise Linux (RHEL) and SUSE Linux Enterprise
-         * Server (SLES), use the Amazon EC2 billing product code associated with an AMI to
-         * verify the subscription status for package updates. To create a new AMI for
-         * operating systems that require a billing product code, instead of registering
-         * the AMI, do the following to preserve the billing product code association:</p>
-         * <ol> <li> <p>Launch an instance from an existing AMI with that billing product
-         * code.</p> </li> <li> <p>Customize the instance.</p> </li> <li> <p>Create an AMI
-         * from the instance using <a>CreateImage</a>.</p> </li> </ol> <p>If you purchase a
-         * Reserved Instance to apply to an On-Demand Instance that was launched from an
-         * AMI with a billing product code, make sure that the Reserved Instance has the
-         * matching billing product code. If you purchase a Reserved Instance without the
-         * matching billing product code, the Reserved Instance will not be applied to the
-         * On-Demand Instance. For information about how to obtain the platform details and
-         * billing information of an AMI, see <a
+         * encryption with EBS-backed AMIs</a> in the <i>Amazon EC2 User Guide</i>.</p> <p>
+         * <b>Amazon Web Services Marketplace product codes</b> </p> <p>If any snapshots
+         * have Amazon Web Services Marketplace product codes, they are copied to the new
+         * AMI.</p> <p>In most cases, AMIs for Windows, RedHat, SUSE, and SQL Server
+         * require correct licensing information to be present on the AMI. For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-billing-info.html">Understand
+         * AMI billing information</a> in the <i>Amazon EC2 User Guide</i>. When creating
+         * an AMI from a snapshot, the <code>RegisterImage</code> operation derives the
+         * correct billing information from the snapshot's metadata, but this requires the
+         * appropriate metadata to be present. To verify if the correct billing information
+         * was applied, check the <code>PlatformDetails</code> field on the new AMI. If the
+         * field is empty or doesn't match the expected operating system code (for example,
+         * Windows, RedHat, SUSE, or SQL), the AMI creation was unsuccessful, and you
+         * should discard the AMI and instead create the AMI from an instance. For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html#how-to-create-ebs-ami">Create
+         * an AMI from an instance </a> in the <i>Amazon EC2 User Guide</i>.</p> <p>If you
+         * purchase a Reserved Instance to apply to an On-Demand Instance that was launched
+         * from an AMI with a billing product code, make sure that the Reserved Instance
+         * has the matching billing product code. If you purchase a Reserved Instance
+         * without the matching billing product code, the Reserved Instance is not applied
+         * to the On-Demand Instance. For information about how to obtain the platform
+         * details and billing information of an AMI, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-billing-info.html">Understand
          * AMI billing information</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
          * Also:</h3>   <a
@@ -16379,11 +19478,10 @@ namespace EC2
         /**
          * <p>Registers members (network interfaces) with the transit gateway multicast
          * group. A member is a network interface associated with a supported EC2 instance
-         * that receives multicast traffic. For information about supported instances, see
-         * <a
-         * href="https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-limits.html#multicast-limits">Multicast
-         * Consideration</a> in <i>Amazon VPC Transit Gateways</i>.</p> <p>After you add
-         * the members, use <a
+         * that receives multicast traffic. For more information, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-multicast-overview.html">Multicast
+         * on transit gateways</a> in the <i>Amazon Web Services Transit Gateways
+         * Guide</i>.</p> <p>After you add the members, use <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html">SearchTransitGatewayMulticastGroups</a>
          * to verify that the members were added to the transit gateway multicast
          * group.</p><p><h3>See Also:</h3>   <a
@@ -16413,11 +19511,11 @@ namespace EC2
         /**
          * <p>Registers sources (network interfaces) with the specified transit gateway
          * multicast group.</p> <p>A multicast source is a network interface attached to a
-         * supported instance that sends multicast traffic. For information about supported
-         * instances, see <a
-         * href="https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-limits.html#multicast-limits">Multicast
-         * Considerations</a> in <i>Amazon VPC Transit Gateways</i>.</p> <p>After you add
-         * the source, use <a
+         * supported instance that sends multicast traffic. For more information about
+         * supported instances, see <a
+         * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-multicast-overview.html">Multicast
+         * on transit gateways</a> in the <i>Amazon Web Services Transit Gateways
+         * Guide</i>.</p> <p>After you add the source, use <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html">SearchTransitGatewayMulticastGroups</a>
          * to verify that the source was added to the multicast group.</p><p><h3>See
          * Also:</h3>   <a
@@ -16445,18 +19543,47 @@ namespace EC2
         }
 
         /**
+         * <p>Rejects a request to assign billing of the available capacity of a shared
+         * Capacity Reservation to your account. For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/assign-billing.html">
+         * Billing assignment for shared Amazon EC2 Capacity
+         * Reservations</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RejectCapacityReservationBillingOwnership">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::RejectCapacityReservationBillingOwnershipOutcome RejectCapacityReservationBillingOwnership(const Model::RejectCapacityReservationBillingOwnershipRequest& request) const;
+
+        /**
+         * A Callable wrapper for RejectCapacityReservationBillingOwnership that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename RejectCapacityReservationBillingOwnershipRequestT = Model::RejectCapacityReservationBillingOwnershipRequest>
+        Model::RejectCapacityReservationBillingOwnershipOutcomeCallable RejectCapacityReservationBillingOwnershipCallable(const RejectCapacityReservationBillingOwnershipRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::RejectCapacityReservationBillingOwnership, request);
+        }
+
+        /**
+         * An Async wrapper for RejectCapacityReservationBillingOwnership that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename RejectCapacityReservationBillingOwnershipRequestT = Model::RejectCapacityReservationBillingOwnershipRequest>
+        void RejectCapacityReservationBillingOwnershipAsync(const RejectCapacityReservationBillingOwnershipRequestT& request, const RejectCapacityReservationBillingOwnershipResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::RejectCapacityReservationBillingOwnership, request, handler, context);
+        }
+
+        /**
          * <p>Rejects a request to associate cross-account subnets with a transit gateway
          * multicast domain.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RejectTransitGatewayMulticastDomainAssociations">AWS
          * API Reference</a></p>
          */
-        virtual Model::RejectTransitGatewayMulticastDomainAssociationsOutcome RejectTransitGatewayMulticastDomainAssociations(const Model::RejectTransitGatewayMulticastDomainAssociationsRequest& request) const;
+        virtual Model::RejectTransitGatewayMulticastDomainAssociationsOutcome RejectTransitGatewayMulticastDomainAssociations(const Model::RejectTransitGatewayMulticastDomainAssociationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for RejectTransitGatewayMulticastDomainAssociations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename RejectTransitGatewayMulticastDomainAssociationsRequestT = Model::RejectTransitGatewayMulticastDomainAssociationsRequest>
-        Model::RejectTransitGatewayMulticastDomainAssociationsOutcomeCallable RejectTransitGatewayMulticastDomainAssociationsCallable(const RejectTransitGatewayMulticastDomainAssociationsRequestT& request) const
+        Model::RejectTransitGatewayMulticastDomainAssociationsOutcomeCallable RejectTransitGatewayMulticastDomainAssociationsCallable(const RejectTransitGatewayMulticastDomainAssociationsRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::RejectTransitGatewayMulticastDomainAssociations, request);
         }
@@ -16465,7 +19592,7 @@ namespace EC2
          * An Async wrapper for RejectTransitGatewayMulticastDomainAssociations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename RejectTransitGatewayMulticastDomainAssociationsRequestT = Model::RejectTransitGatewayMulticastDomainAssociationsRequest>
-        void RejectTransitGatewayMulticastDomainAssociationsAsync(const RejectTransitGatewayMulticastDomainAssociationsRequestT& request, const RejectTransitGatewayMulticastDomainAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void RejectTransitGatewayMulticastDomainAssociationsAsync(const RejectTransitGatewayMulticastDomainAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const RejectTransitGatewayMulticastDomainAssociationsRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::RejectTransitGatewayMulticastDomainAssociations, request, handler, context);
         }
@@ -16582,38 +19709,30 @@ namespace EC2
         }
 
         /**
-         * <p>Releases the specified Elastic IP address.</p> <p>[EC2-Classic, default VPC]
-         * Releasing an Elastic IP address automatically disassociates it from any instance
-         * that it's associated with. To disassociate an Elastic IP address without
-         * releasing it, use <a>DisassociateAddress</a>.</p>  <p>We are retiring
-         * EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC. For more
-         * information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p>  <p>[Nondefault VPC] You must use
-         * <a>DisassociateAddress</a> to disassociate the Elastic IP address before you can
-         * release it. Otherwise, Amazon EC2 returns an error
+         * <p>Releases the specified Elastic IP address.</p> <p>[Default VPC] Releasing an
+         * Elastic IP address automatically disassociates it from any instance that it's
+         * associated with. Alternatively, you can disassociate an Elastic IP address
+         * without releasing it.</p> <p>[Nondefault VPC] You must disassociate the Elastic
+         * IP address before you can release it. Otherwise, Amazon EC2 returns an error
          * (<code>InvalidIPAddress.InUse</code>).</p> <p>After releasing an Elastic IP
          * address, it is released to the IP address pool. Be sure to update your DNS
          * records and any servers or devices that communicate with the address. If you
          * attempt to release an Elastic IP address that you already released, you'll get
          * an <code>AuthFailure</code> error if the address is already allocated to another
-         * Amazon Web Services account.</p> <p>[EC2-VPC] After you release an Elastic IP
-         * address for use in a VPC, you might be able to recover it. For more information,
-         * see <a>AllocateAddress</a>.</p> <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic
-         * IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * Amazon Web Services account.</p> <p>After you release an Elastic IP address, you
+         * might be able to recover it. For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing-eips-releasing.html">Release
+         * an Elastic IP address</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReleaseAddress">AWS
          * API Reference</a></p>
          */
-        virtual Model::ReleaseAddressOutcome ReleaseAddress(const Model::ReleaseAddressRequest& request) const;
+        virtual Model::ReleaseAddressOutcome ReleaseAddress(const Model::ReleaseAddressRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ReleaseAddress that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ReleaseAddressRequestT = Model::ReleaseAddressRequest>
-        Model::ReleaseAddressOutcomeCallable ReleaseAddressCallable(const ReleaseAddressRequestT& request) const
+        Model::ReleaseAddressOutcomeCallable ReleaseAddressCallable(const ReleaseAddressRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::ReleaseAddress, request);
         }
@@ -16622,7 +19741,7 @@ namespace EC2
          * An Async wrapper for ReleaseAddress that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ReleaseAddressRequestT = Model::ReleaseAddressRequest>
-        void ReleaseAddressAsync(const ReleaseAddressRequestT& request, const ReleaseAddressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ReleaseAddressAsync(const ReleaseAddressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ReleaseAddressRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::ReleaseAddress, request, handler, context);
         }
@@ -16662,15 +19781,17 @@ namespace EC2
         }
 
         /**
-         * <p>Release an allocation within an IPAM pool. You can only use this action to
-         * release manual allocations. To remove an allocation for a resource without
-         * deleting the resource, set its monitored state to false using <a
+         * <p>Release an allocation within an IPAM pool. The Region you use should be the
+         * IPAM pool locale. The locale is the Amazon Web Services Region where this IPAM
+         * pool is available for allocations. You can only use this action to release
+         * manual allocations. To remove an allocation for a resource without deleting the
+         * resource, set its monitored state to false using <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyIpamResourceCidr.html">ModifyIpamResourceCidr</a>.
          * For more information, see <a
-         * href="https://docs.aws.amazon.com/vpc/latest/ipam/release-pool-alloc-ipam.html">Release
+         * href="https://docs.aws.amazon.com/vpc/latest/ipam/release-alloc-ipam.html">Release
          * an allocation</a> in the <i>Amazon VPC IPAM User Guide</i>. </p>  <p>All
          * EC2 API actions follow an <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/query-api-troubleshooting.html#eventual-consistency">eventual
+         * href="https://docs.aws.amazon.com/ec2/latest/devguide/eventual-consistency.html">eventual
          * consistency</a> model.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReleaseIpamPoolAllocation">AWS
          * API Reference</a></p>
@@ -16725,12 +19846,43 @@ namespace EC2
         }
 
         /**
+         * <p>Sets or replaces the criteria for Allowed AMIs.</p>  <p>The Allowed
+         * AMIs feature does not restrict the AMIs owned by your account. Regardless of the
+         * criteria you set, the AMIs created by your account will always be discoverable
+         * and usable by users in your account.</p>  <p>For more information, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-allowed-amis.html">Control
+         * the discovery and use of AMIs in Amazon EC2 with Allowed AMIs</a> in <i>Amazon
+         * EC2 User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceImageCriteriaInAllowedImagesSettings">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ReplaceImageCriteriaInAllowedImagesSettingsOutcome ReplaceImageCriteriaInAllowedImagesSettings(const Model::ReplaceImageCriteriaInAllowedImagesSettingsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ReplaceImageCriteriaInAllowedImagesSettings that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ReplaceImageCriteriaInAllowedImagesSettingsRequestT = Model::ReplaceImageCriteriaInAllowedImagesSettingsRequest>
+        Model::ReplaceImageCriteriaInAllowedImagesSettingsOutcomeCallable ReplaceImageCriteriaInAllowedImagesSettingsCallable(const ReplaceImageCriteriaInAllowedImagesSettingsRequestT& request = {}) const
+        {
+            return SubmitCallable(&EC2Client::ReplaceImageCriteriaInAllowedImagesSettings, request);
+        }
+
+        /**
+         * An Async wrapper for ReplaceImageCriteriaInAllowedImagesSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ReplaceImageCriteriaInAllowedImagesSettingsRequestT = Model::ReplaceImageCriteriaInAllowedImagesSettingsRequest>
+        void ReplaceImageCriteriaInAllowedImagesSettingsAsync(const ReplaceImageCriteriaInAllowedImagesSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ReplaceImageCriteriaInAllowedImagesSettingsRequestT& request = {}) const
+        {
+            return SubmitAsync(&EC2Client::ReplaceImageCriteriaInAllowedImagesSettings, request, handler, context);
+        }
+
+        /**
          * <p>Changes which network ACL a subnet is associated with. By default when you
          * create a subnet, it's automatically associated with the default network ACL. For
          * more information, see <a
-         * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html">Network
-         * ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p> <p>This is
-         * an idempotent operation.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html">Network
+         * ACLs</a> in the <i>Amazon VPC User Guide</i>.</p> <p>This is an idempotent
+         * operation.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceNetworkAclAssociation">AWS
          * API Reference</a></p>
          */
@@ -16756,9 +19908,8 @@ namespace EC2
 
         /**
          * <p>Replaces an entry (rule) in a network ACL. For more information, see <a
-         * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html">Network
-         * ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html">Network
+         * ACLs</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceNetworkAclEntry">AWS
          * API Reference</a></p>
          */
@@ -16788,8 +19939,7 @@ namespace EC2
          * specify exactly one of the resources from the parameter list, or reset the local
          * route to its default target.</p> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html">Route
-         * tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * tables</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceRoute">AWS
          * API Reference</a></p>
          */
@@ -16819,10 +19969,10 @@ namespace EC2
          * gateway uses the routes in the new route table. For more information about route
          * tables, see <a
          * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html">Route
-         * tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p> <p>You can
-         * also use this operation to change which table is the main route table in the
-         * VPC. Specify the main route table's association ID and the route table ID of the
-         * new main route table.</p><p><h3>See Also:</h3>   <a
+         * tables</a> in the <i>Amazon VPC User Guide</i>.</p> <p>You can also use this
+         * operation to change which table is the main route table in the VPC. Specify the
+         * main route table's association ID and the route table ID of the new main route
+         * table.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceRouteTableAssociation">AWS
          * API Reference</a></p>
          */
@@ -16978,29 +20128,24 @@ namespace EC2
 
         /**
          * <p>Creates a Spot Instance request.</p> <p>For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html">Spot
-         * Instance requests</a> in the <i>Amazon EC2 User Guide for Linux
-         * Instances</i>.</p>  <p>We strongly discourage using the
-         * RequestSpotInstances API because it is a legacy API with no planned investment.
-         * For options for requesting Spot Instances, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html">Work
+         * with Spot Instance</a> in the <i>Amazon EC2 User Guide</i>.</p> 
+         * <p>We strongly discourage using the RequestSpotInstances API because it is a
+         * legacy API with no planned investment. For options for requesting Spot
+         * Instances, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-best-practices.html#which-spot-request-method-to-use">Which
-         * is the best Spot request method to use?</a> in the <i>Amazon EC2 User Guide for
-         * Linux Instances</i>.</p>   <p>We are retiring EC2-Classic. We
-         * recommend that you migrate from EC2-Classic to a VPC. For more information, see
-         * <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon EC2 User Guide for Linux
-         * Instances</i>.</p> <p><h3>See Also:</h3>   <a
+         * is the best Spot request method to use?</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RequestSpotInstances">AWS
          * API Reference</a></p>
          */
-        virtual Model::RequestSpotInstancesOutcome RequestSpotInstances(const Model::RequestSpotInstancesRequest& request) const;
+        virtual Model::RequestSpotInstancesOutcome RequestSpotInstances(const Model::RequestSpotInstancesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for RequestSpotInstances that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename RequestSpotInstancesRequestT = Model::RequestSpotInstancesRequest>
-        Model::RequestSpotInstancesOutcomeCallable RequestSpotInstancesCallable(const RequestSpotInstancesRequestT& request) const
+        Model::RequestSpotInstancesOutcomeCallable RequestSpotInstancesCallable(const RequestSpotInstancesRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::RequestSpotInstances, request);
         }
@@ -17009,7 +20154,7 @@ namespace EC2
          * An Async wrapper for RequestSpotInstances that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename RequestSpotInstancesRequestT = Model::RequestSpotInstancesRequest>
-        void RequestSpotInstancesAsync(const RequestSpotInstancesRequestT& request, const RequestSpotInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void RequestSpotInstancesAsync(const RequestSpotInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const RequestSpotInstancesRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::RequestSpotInstances, request, handler, context);
         }
@@ -17047,19 +20192,19 @@ namespace EC2
          * default KMS key to the Amazon Web Services managed KMS key, you can continue to
          * encrypt by a customer managed KMS key by specifying it when you create the
          * volume. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon
-         * EBS encryption</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html">Amazon
+         * EBS encryption</a> in the <i>Amazon EBS User Guide</i>.</p><p><h3>See Also:</h3>
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetEbsDefaultKmsKeyId">AWS
          * API Reference</a></p>
          */
-        virtual Model::ResetEbsDefaultKmsKeyIdOutcome ResetEbsDefaultKmsKeyId(const Model::ResetEbsDefaultKmsKeyIdRequest& request) const;
+        virtual Model::ResetEbsDefaultKmsKeyIdOutcome ResetEbsDefaultKmsKeyId(const Model::ResetEbsDefaultKmsKeyIdRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ResetEbsDefaultKmsKeyId that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ResetEbsDefaultKmsKeyIdRequestT = Model::ResetEbsDefaultKmsKeyIdRequest>
-        Model::ResetEbsDefaultKmsKeyIdOutcomeCallable ResetEbsDefaultKmsKeyIdCallable(const ResetEbsDefaultKmsKeyIdRequestT& request) const
+        Model::ResetEbsDefaultKmsKeyIdOutcomeCallable ResetEbsDefaultKmsKeyIdCallable(const ResetEbsDefaultKmsKeyIdRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::ResetEbsDefaultKmsKeyId, request);
         }
@@ -17068,7 +20213,7 @@ namespace EC2
          * An Async wrapper for ResetEbsDefaultKmsKeyId that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ResetEbsDefaultKmsKeyIdRequestT = Model::ResetEbsDefaultKmsKeyIdRequest>
-        void ResetEbsDefaultKmsKeyIdAsync(const ResetEbsDefaultKmsKeyIdRequestT& request, const ResetEbsDefaultKmsKeyIdResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ResetEbsDefaultKmsKeyIdAsync(const ResetEbsDefaultKmsKeyIdResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ResetEbsDefaultKmsKeyIdRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::ResetEbsDefaultKmsKeyId, request, handler, context);
         }
@@ -17136,7 +20281,7 @@ namespace EC2
          * <code>false</code> for a NAT instance to perform NAT. For more information, see
          * <a
          * href="https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html">NAT
-         * Instances</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * instances</a> in the <i>Amazon VPC User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetInstanceAttribute">AWS
          * API Reference</a></p>
          */
@@ -17189,9 +20334,9 @@ namespace EC2
         /**
          * <p>Resets permission settings for the specified snapshot.</p> <p>For more
          * information about modifying snapshot permissions, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html">Share
-         * a snapshot</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-modifying-snapshot-permissions.html">Share
+         * a snapshot</a> in the <i>Amazon EBS User Guide</i>.</p><p><h3>See Also:</h3>  
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetSnapshotAttribute">AWS
          * API Reference</a></p>
          */
@@ -17216,15 +20361,11 @@ namespace EC2
         }
 
         /**
-         * <p>Restores an Elastic IP address that was previously moved to the EC2-VPC
-         * platform back to the EC2-Classic platform. You cannot move an Elastic IP address
-         * that was originally allocated for use in EC2-VPC. The Elastic IP address must
-         * not be associated with an instance or network interface.</p>  <p>We are
-         * retiring EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC.
-         * For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         *  <p>This action is deprecated.</p>  <p>Restores an Elastic IP
+         * address that was previously moved to the EC2-VPC platform back to the
+         * EC2-Classic platform. You cannot move an Elastic IP address that was originally
+         * allocated for use in EC2-VPC. The Elastic IP address must not be associated with
+         * an instance or network interface.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RestoreAddressToClassic">AWS
          * API Reference</a></p>
          */
@@ -17250,8 +20391,9 @@ namespace EC2
 
         /**
          * <p>Restores an AMI from the Recycle Bin. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html">Recycle
-         * Bin</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html">Recover
+         * deleted Amazon EBS snapshots and EBS-back AMIs with Recycle Bin</a> in the
+         * <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RestoreImageFromRecycleBin">AWS
          * API Reference</a></p>
          */
@@ -17303,8 +20445,8 @@ namespace EC2
 
         /**
          * <p>Restores a snapshot from the Recycle Bin. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-snaps.html#recycle-bin-restore-snaps">Restore
-         * snapshots from the Recycle Bin</a> in the <i>Amazon Elastic Compute Cloud User
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin-working-with-snaps.html#recycle-bin-restore-snaps">Restore
+         * snapshots from the Recycle Bin</a> in the <i>Amazon EBS User
          * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RestoreSnapshotFromRecycleBin">AWS
          * API Reference</a></p>
@@ -17333,12 +20475,11 @@ namespace EC2
          * <p>Restores an archived Amazon EBS snapshot for use temporarily or permanently,
          * or modifies the restore period or restore type for a snapshot that was
          * previously temporarily restored.</p> <p>For more information see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/working-with-snapshot-archiving.html#restore-archived-snapshot">
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/working-with-snapshot-archiving.html#restore-archived-snapshot">
          * Restore an archived snapshot</a> and <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/working-with-snapshot-archiving.html#modify-temp-restore-period">
+         * href="https://docs.aws.amazon.com/ebs/latest/userguide/working-with-snapshot-archiving.html#modify-temp-restore-period">
          * modify the restore period or restore type for a temporarily restored
-         * snapshot</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * snapshot</a> in the <i>Amazon EBS User Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RestoreSnapshotTier">AWS
          * API Reference</a></p>
          */
@@ -17389,17 +20530,16 @@ namespace EC2
         }
 
         /**
-         * <p>[VPC only] Removes the specified outbound (egress) rules from a security
-         * group for EC2-VPC. This action does not apply to security groups for use in
-         * EC2-Classic.</p> <p>You can specify rules using either rule IDs or security
-         * group rule properties. If you use rule properties, the values that you specify
-         * (for example, ports) must match the existing rule's values exactly. Each rule
-         * has a protocol, from and to ports, and destination (CIDR range, security group,
-         * or prefix list). For the TCP and UDP protocols, you must also specify the
+         * <p>Removes the specified outbound (egress) rules from the specified security
+         * group.</p> <p>You can specify rules using either rule IDs or security group rule
+         * properties. If you use rule properties, the values that you specify (for
+         * example, ports) must match the existing rule's values exactly. Each rule has a
+         * protocol, from and to ports, and destination (CIDR range, security group, or
+         * prefix list). For the TCP and UDP protocols, you must also specify the
          * destination port or range of ports. For the ICMP protocol, you must also specify
          * the ICMP type and code. If the security group rule has a description, you do not
-         * need to specify the description to revoke the rule.</p> <p>[Default VPC] If the
-         * values you specify do not match the existing rule's values, no error is
+         * need to specify the description to revoke the rule.</p> <p>For a default VPC, if
+         * the values you specify do not match the existing rule's values, no error is
          * returned, and the output describes the security group rules that were not
          * revoked.</p> <p>Amazon Web Services recommends that you describe the security
          * group to verify that the rules were removed.</p> <p>Rule changes are propagated
@@ -17437,27 +20577,26 @@ namespace EC2
          * list). For the TCP and UDP protocols, you must also specify the destination port
          * or range of ports. For the ICMP protocol, you must also specify the ICMP type
          * and code. If the security group rule has a description, you do not need to
-         * specify the description to revoke the rule.</p> <p>[EC2-Classic, default VPC] If
-         * the values you specify do not match the existing rule's values, no error is
+         * specify the description to revoke the rule.</p> <p>For a default VPC, if the
+         * values you specify do not match the existing rule's values, no error is
          * returned, and the output describes the security group rules that were not
-         * revoked.</p> <p>Amazon Web Services recommends that you describe the security
-         * group to verify that the rules were removed.</p> <p>Rule changes are propagated
-         * to instances within the security group as quickly as possible. However, a small
-         * delay might occur.</p>  <p>We are retiring EC2-Classic. We recommend that
-         * you migrate from EC2-Classic to a VPC. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon Elastic Compute Cloud User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * revoked.</p> <p>For a non-default VPC, if the values you specify do not match
+         * the existing rule's values, an <code>InvalidPermission.NotFound</code> client
+         * error is returned, and no rules are revoked.</p> <p>Amazon Web Services
+         * recommends that you describe the security group to verify that the rules were
+         * removed.</p> <p>Rule changes are propagated to instances within the security
+         * group as quickly as possible. However, a small delay might occur.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RevokeSecurityGroupIngress">AWS
          * API Reference</a></p>
          */
-        virtual Model::RevokeSecurityGroupIngressOutcome RevokeSecurityGroupIngress(const Model::RevokeSecurityGroupIngressRequest& request) const;
+        virtual Model::RevokeSecurityGroupIngressOutcome RevokeSecurityGroupIngress(const Model::RevokeSecurityGroupIngressRequest& request = {}) const;
 
         /**
          * A Callable wrapper for RevokeSecurityGroupIngress that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename RevokeSecurityGroupIngressRequestT = Model::RevokeSecurityGroupIngressRequest>
-        Model::RevokeSecurityGroupIngressOutcomeCallable RevokeSecurityGroupIngressCallable(const RevokeSecurityGroupIngressRequestT& request) const
+        Model::RevokeSecurityGroupIngressOutcomeCallable RevokeSecurityGroupIngressCallable(const RevokeSecurityGroupIngressRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::RevokeSecurityGroupIngress, request);
         }
@@ -17466,7 +20605,7 @@ namespace EC2
          * An Async wrapper for RevokeSecurityGroupIngress that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename RevokeSecurityGroupIngressRequestT = Model::RevokeSecurityGroupIngressRequest>
-        void RevokeSecurityGroupIngressAsync(const RevokeSecurityGroupIngressRequestT& request, const RevokeSecurityGroupIngressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void RevokeSecurityGroupIngressAsync(const RevokeSecurityGroupIngressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const RevokeSecurityGroupIngressRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::RevokeSecurityGroupIngress, request, handler, context);
         }
@@ -17474,22 +20613,16 @@ namespace EC2
         /**
          * <p>Launches the specified number of instances using an AMI for which you have
          * permissions.</p> <p>You can specify a number of options, or leave the default
-         * options. The following rules apply:</p> <ul> <li> <p>[EC2-VPC] If you don't
-         * specify a subnet ID, we choose a default subnet from your default VPC for you.
-         * If you don't have a default VPC, you must specify a subnet ID in the
-         * request.</p> </li> <li> <p>[EC2-Classic] If don't specify an Availability Zone,
-         * we choose one for you.</p> </li> <li> <p>Some instance types must be launched
-         * into a VPC. If you do not have a default VPC, or if you do not specify a subnet
-         * ID, the request fails. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc.html#vpc-only-instance-types">Instance
-         * types available only in a VPC</a>.</p> </li> <li> <p>[EC2-VPC] All instances
-         * have a network interface with a primary private IPv4 address. If you don't
-         * specify this address, we choose one from the IPv4 range of your subnet.</p>
-         * </li> <li> <p>Not all instance types support IPv6 addresses. For more
-         * information, see <a
+         * options. The following rules apply:</p> <ul> <li> <p>If you don't specify a
+         * subnet ID, we choose a default subnet from your default VPC for you. If you
+         * don't have a default VPC, you must specify a subnet ID in the request.</p> </li>
+         * <li> <p>All instances have a network interface with a primary private IPv4
+         * address. If you don't specify this address, we choose one from the IPv4 range of
+         * your subnet.</p> </li> <li> <p>Not all instance types support IPv6 addresses.
+         * For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance
          * types</a>.</p> </li> <li> <p>If you don't specify a security group ID, we use
-         * the default security group. For more information, see <a
+         * the default security group for the VPC. For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Security
          * groups</a>.</p> </li> <li> <p>If any of the AMIs have a product code attached
          * for which the user has not subscribed, the request fails.</p> </li> </ul> <p>You
@@ -17500,11 +20633,14 @@ namespace EC2
          * the launch template instead of specifying the launch parameters.</p> <p>To
          * ensure faster instance launches, break up large requests into smaller batches.
          * For example, create five separate launch requests for 100 instances each instead
-         * of one launch request for 500 instances.</p> <p>An instance is ready for you to
-         * use when it's in the <code>running</code> state. You can check the state of your
-         * instance using <a>DescribeInstances</a>. You can tag instances and EBS volumes
-         * during launch, after launch, or both. For more information, see
-         * <a>CreateTags</a> and <a
+         * of one launch request for 500 instances.</p> <p> <code>RunInstances</code> is
+         * subject to both request rate limiting and resource rate limiting. For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-throttling.html">Request
+         * throttling</a>.</p> <p>An instance is ready for you to use when it's in the
+         * <code>running</code> state. You can check the state of your instance using
+         * <a>DescribeInstances</a>. You can tag instances and EBS volumes during launch,
+         * after launch, or both. For more information, see <a>CreateTags</a> and <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging
          * your Amazon EC2 resources</a>.</p> <p>Linux instances have access to the public
          * key of the key pair at boot. You can use this key to provide secure access to
@@ -17515,12 +20651,7 @@ namespace EC2
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_InstanceStraightToTerminated.html">What
          * to do if an instance immediately terminates</a>, and <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html">Troubleshooting
-         * connecting to your instance</a>.</p>  <p>We are retiring EC2-Classic. We
-         * recommend that you migrate from EC2-Classic to a VPC. For more information, see
-         * <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html">Migrate
-         * from EC2-Classic to a VPC</a> in the <i>Amazon EC2 User Guide</i>.</p>
-         * <p><h3>See Also:</h3>   <a
+         * connecting to your instance</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RunInstances">AWS
          * API Reference</a></p>
          */
@@ -17551,9 +20682,7 @@ namespace EC2
          * during its scheduled time period. You can't stop or reboot a Scheduled Instance,
          * but you can terminate it as needed. If you terminate a Scheduled Instance before
          * the current scheduled time period ends, you can launch it again after a few
-         * minutes. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-scheduled-instances.html">Scheduled
-         * Instances</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * minutes.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RunScheduledInstances">AWS
          * API Reference</a></p>
          */
@@ -17669,10 +20798,8 @@ namespace EC2
          * configuring your operating system to generate a crash dump when a kernel panic
          * or stop error occurs, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/diagnostic-interrupt.html">Send
-         * a diagnostic interrupt (for advanced users)</a> (Linux instances) or <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/diagnostic-interrupt.html">Send
-         * a diagnostic interrupt (for advanced users)</a> (Windows
-         * instances).</p><p><h3>See Also:</h3>   <a
+         * a diagnostic interrupt (for advanced users)</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/SendDiagnosticInterrupt">AWS
          * API Reference</a></p>
          */
@@ -17697,6 +20824,65 @@ namespace EC2
         }
 
         /**
+         * <p>Generates an account status report. The report is generated asynchronously,
+         * and can take several hours to complete.</p> <p>The report provides the current
+         * status of all attributes supported by declarative policies for the accounts
+         * within the specified scope. The scope is determined by the specified
+         * <code>TargetId</code>, which can represent an individual account, or all the
+         * accounts that fall under the specified organizational unit (OU) or root (the
+         * entire Amazon Web Services Organization).</p> <p>The report is saved to your
+         * specified S3 bucket, using the following path structure (with the capitalized
+         * placeholders representing your specific values):</p> <p>
+         * <code>s3://AMZN-S3-DEMO-BUCKET/YOUR-OPTIONAL-S3-PREFIX/ec2_TARGETID_REPORTID_YYYYMMDDTHHMMZ.csv</code>
+         * </p> <p class="title"> <b>Prerequisites for generating a report</b> </p> <ul>
+         * <li> <p>The <code>StartDeclarativePoliciesReport</code> API can only be called
+         * by the management account or delegated administrators for the organization.</p>
+         * </li> <li> <p>An S3 bucket must be available before generating the report (you
+         * can create a new one or use an existing one), it must be in the same Region
+         * where the report generation request is made, and it must have an appropriate
+         * bucket policy. For a sample S3 policy, see <i>Sample Amazon S3 policy</i> under
+         * <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StartDeclarativePoliciesReport.html#API_StartDeclarativePoliciesReport_Examples">Examples</a>.</p>
+         * </li> <li> <p>Trusted access must be enabled for the service for which the
+         * declarative policy will enforce a baseline configuration. If you use the Amazon
+         * Web Services Organizations console, this is done automatically when you enable
+         * declarative policies. The API uses the following service principal to identify
+         * the EC2 service: <code>ec2.amazonaws.com</code>. For more information on how to
+         * enable trusted access with the Amazon Web Services CLI and Amazon Web Services
+         * SDKs, see <a
+         * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html">Using
+         * Organizations with other Amazon Web Services services</a> in the <i>Amazon Web
+         * Services Organizations User Guide</i>.</p> </li> <li> <p>Only one report per
+         * organization can be generated at a time. Attempting to generate a report while
+         * another is in progress will result in an error.</p> </li> </ul> <p>For more
+         * information, including the required IAM permissions to run this API, see <a
+         * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_status-report.html">Generating
+         * the account status report for declarative policies</a> in the <i>Amazon Web
+         * Services Organizations User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StartDeclarativePoliciesReport">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::StartDeclarativePoliciesReportOutcome StartDeclarativePoliciesReport(const Model::StartDeclarativePoliciesReportRequest& request) const;
+
+        /**
+         * A Callable wrapper for StartDeclarativePoliciesReport that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename StartDeclarativePoliciesReportRequestT = Model::StartDeclarativePoliciesReportRequest>
+        Model::StartDeclarativePoliciesReportOutcomeCallable StartDeclarativePoliciesReportCallable(const StartDeclarativePoliciesReportRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::StartDeclarativePoliciesReport, request);
+        }
+
+        /**
+         * An Async wrapper for StartDeclarativePoliciesReport that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename StartDeclarativePoliciesReportRequestT = Model::StartDeclarativePoliciesReportRequest>
+        void StartDeclarativePoliciesReportAsync(const StartDeclarativePoliciesReportRequestT& request, const StartDeclarativePoliciesReportResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::StartDeclarativePoliciesReport, request, handler, context);
+        }
+
+        /**
          * <p>Starts an Amazon EBS-backed instance that you've previously stopped.</p>
          * <p>Instances that use Amazon EBS volumes as their root devices can be quickly
          * stopped and started. When an instance is stopped, the compute resources are
@@ -17709,14 +20895,14 @@ namespace EC2
          * restarted. Stopping an instance does not preserve data stored in RAM.</p>
          * <p>Performing this operation on an instance that uses an instance store as its
          * root device returns an error.</p> <p>If you attempt to start a T3 instance with
-         * <code>host</code> tenancy and the <code>unlimted</code> CPU credit option, the
+         * <code>host</code> tenancy and the <code>unlimited</code> CPU credit option, the
          * request fails. The <code>unlimited</code> CPU credit option is not supported on
          * Dedicated Hosts. Before you start the instance, either change its CPU credit
          * option to <code>standard</code>, or change its tenancy to <code>default</code>
          * or <code>dedicated</code>.</p> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html">Stop
-         * and start your instance</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * and start Amazon EC2 instances</a> in the <i>Amazon EC2 User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StartInstances">AWS
          * API Reference</a></p>
          */
@@ -17822,46 +21008,45 @@ namespace EC2
         }
 
         /**
-         * <p>Stops an Amazon EBS-backed instance. For more information, see <a
+         * <p>Stops an Amazon EBS-backed instance. You can restart your instance at any
+         * time using the <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StartInstances.html">StartInstances</a>
+         * API. For more information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html">Stop
-         * and start your instance</a> in the <i>Amazon EC2 User Guide</i>.</p> <p>You can
-         * use the Stop action to hibernate an instance if the instance is <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#enabling-hibernation">enabled
-         * for hibernation</a> and it meets the <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites">hibernation
-         * prerequisites</a>. For more information, see <a
+         * and start Amazon EC2 instances</a> in the <i>Amazon EC2 User Guide</i>.</p>
+         * <p>When you stop or hibernate an instance, we shut it down. By default, this
+         * includes a graceful operating system (OS) shutdown. To bypass the graceful
+         * shutdown, use the <code>skipOsShutdown</code> parameter; however, this might
+         * risk data integrity.</p> <p>You can use the StopInstances operation together
+         * with the <code>Hibernate</code> parameter to hibernate an instance if the
+         * instance is <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enabling-hibernation.html">enabled
+         * for hibernation</a> and meets the <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hibernating-prerequisites.html">hibernation
+         * prerequisites</a>. Stopping an instance doesn't preserve data stored in RAM,
+         * while hibernation does. If hibernation fails, a normal shutdown occurs. For more
+         * information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html">Hibernate
-         * your instance</a> in the <i>Amazon EC2 User Guide</i>.</p> <p>We don't charge
-         * usage for a stopped instance, or data transfer fees; however, your root
-         * partition Amazon EBS volume remains and continues to persist your data, and you
-         * are charged for Amazon EBS volume usage. Every time you start your instance,
-         * Amazon EC2 charges a one-minute minimum for instance usage, and thereafter
-         * charges per second for instance usage.</p> <p>You can't stop or hibernate
-         * instance store-backed instances. You can't use the Stop action to hibernate Spot
-         * Instances, but you can specify that Amazon EC2 should hibernate Spot Instances
-         * when they are interrupted. For more information, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html#hibernate-spot-instances">Hibernating
-         * interrupted Spot Instances</a> in the <i>Amazon EC2 User Guide</i>.</p> <p>When
-         * you stop or hibernate an instance, we shut it down. You can restart your
-         * instance at any time. Before stopping or hibernating an instance, make sure it
-         * is in a state from which it can be restarted. Stopping an instance does not
-         * preserve data stored in RAM, but hibernating an instance does preserve data
-         * stored in RAM. If an instance cannot hibernate successfully, a normal shutdown
-         * occurs.</p> <p>Stopping and hibernating an instance is different to rebooting or
-         * terminating it. For example, when you stop or hibernate an instance, the root
-         * device and any other devices attached to the instance persist. When you
-         * terminate an instance, the root device and any other devices attached during the
-         * instance launch are automatically deleted. For more information about the
-         * differences between rebooting, stopping, hibernating, and terminating instances,
-         * see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html">Instance
-         * lifecycle</a> in the <i>Amazon EC2 User Guide</i>.</p> <p>When you stop an
-         * instance, we attempt to shut it down forcibly after a short while. If your
-         * instance appears stuck in the stopping state after a period of time, there may
-         * be an issue with the underlying host computer. For more information, see <a
+         * your Amazon EC2 instance</a> in the <i>Amazon EC2 User Guide</i>.</p> <p>If your
+         * instance appears stuck in the <code>stopping</code> state, there might be an
+         * issue with the underlying host computer. You can use the StopInstances operation
+         * together with the Force parameter to force stop your instance. For more
+         * information, see <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html">Troubleshoot
-         * stopping your instance</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * Amazon EC2 instance stop issues</a> in the <i>Amazon EC2 User Guide</i>.</p>
+         * <p>Stopping and hibernating an instance differs from rebooting or terminating
+         * it. For example, a stopped or hibernated instance retains its root volume and
+         * any data volumes, unlike terminated instances where these volumes are
+         * automatically deleted. For more information about the differences between
+         * stopping, hibernating, rebooting, and terminating instances, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html">Amazon
+         * EC2 instance state changes</a> in the <i>Amazon EC2 User Guide</i>.</p> <p>We
+         * don't charge for instance usage or data transfer fees when an instance is
+         * stopped. However, the root volume and any data volumes remain and continue to
+         * persist your data, and you're charged for volume usage. Every time you start
+         * your instance, Amazon EC2 charges a one-minute minimum for instance usage,
+         * followed by per-second billing.</p> <p>You can't stop or hibernate instance
+         * store-backed instances.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StopInstances">AWS
          * API Reference</a></p>
          */
@@ -17913,15 +21098,16 @@ namespace EC2
         }
 
         /**
-         * <p>Shuts down the specified instances. This operation is idempotent; if you
-         * terminate an instance more than once, each call succeeds. </p> <p>If you specify
-         * multiple instances and the request fails (for example, because of a single
-         * incorrect instance ID), none of the instances are terminated.</p> <p>If you
-         * terminate multiple instances across multiple Availability Zones, and one or more
-         * of the specified instances are enabled for termination protection, the request
-         * fails with the following results:</p> <ul> <li> <p>The specified instances that
-         * are in the same Availability Zone as the protected instance are not
-         * terminated.</p> </li> <li> <p>The specified instances that are in different
+         * <p>Shuts down the specified instances. This operation is <a
+         * href="https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html">idempotent</a>;
+         * if you terminate an instance more than once, each call succeeds.</p> <p>If you
+         * specify multiple instances and the request fails (for example, because of a
+         * single incorrect instance ID), none of the instances are terminated.</p> <p>If
+         * you terminate multiple instances across multiple Availability Zones, and one or
+         * more of the specified instances are enabled for termination protection, the
+         * request fails with the following results:</p> <ul> <li> <p>The specified
+         * instances that are in the same Availability Zone as the protected instance are
+         * not terminated.</p> </li> <li> <p>The specified instances that are in different
          * Availability Zones, where no other specified instances are protected, are
          * successfully terminated.</p> </li> </ul> <p>For example, say you have the
          * following instances:</p> <ul> <li> <p>Instance A: <code>us-east-1a</code>; Not
@@ -17937,18 +21123,26 @@ namespace EC2
          * for termination protection.</p> </li> </ul> <p>Terminated instances remain
          * visible after termination (for approximately one hour).</p> <p>By default,
          * Amazon EC2 deletes all EBS volumes that were attached when the instance
-         * launched. Volumes attached after instance launch continue running.</p> <p>You
-         * can stop, start, and terminate EBS-backed instances. You can only terminate
-         * instance store-backed instances. What happens to an instance differs if you stop
-         * it or terminate it. For example, when you stop an instance, the root device and
-         * any other devices attached to the instance persist. When you terminate an
-         * instance, any attached EBS volumes with the <code>DeleteOnTermination</code>
-         * block device mapping parameter set to <code>true</code> are automatically
-         * deleted. For more information about the differences between stopping and
-         * terminating instances, see <a
-         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html">Instance
-         * lifecycle</a> in the <i>Amazon EC2 User Guide</i>.</p> <p>For more information
-         * about troubleshooting, see <a
+         * launched. Volumes attached after instance launch continue running.</p> <p>By
+         * default, the TerminateInstances operation includes a graceful operating system
+         * (OS) shutdown. To bypass the graceful shutdown, use the
+         * <code>skipOsShutdown</code> parameter; however, this might risk data
+         * integrity.</p> <p>You can stop, start, and terminate EBS-backed instances. You
+         * can only terminate instance store-backed instances. What happens to an instance
+         * differs if you stop or terminate it. For example, when you stop an instance, the
+         * root device and any other devices attached to the instance persist. When you
+         * terminate an instance, any attached EBS volumes with the
+         * <code>DeleteOnTermination</code> block device mapping parameter set to
+         * <code>true</code> are automatically deleted. For more information about the
+         * differences between stopping and terminating instances, see <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html">Amazon
+         * EC2 instance state changes</a> in the <i>Amazon EC2 User Guide</i>.</p> <p>When
+         * you terminate an instance, we attempt to terminate it forcibly after a short
+         * while. If your instance appears stuck in the shutting-down state after a period
+         * of time, there might be an issue with the underlying host computer. For more
+         * information about terminating and troubleshooting terminating your instances,
+         * see <a href="https://docs.aws.amazon.com/">Terminate Amazon EC2 instances</a>
+         * and <a
          * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html">Troubleshooting
          * terminating your instance</a> in the <i>Amazon EC2 User Guide</i>.</p><p><h3>See
          * Also:</h3>   <a
@@ -17976,7 +21170,7 @@ namespace EC2
         }
 
         /**
-         * <p>Unassigns one or more IPv6 addresses IPv4 Prefix Delegation prefixes from a
+         * <p>Unassigns the specified IPv6 addresses or Prefix Delegation prefixes from a
          * network interface.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnassignIpv6Addresses">AWS
          * API Reference</a></p>
@@ -18002,7 +21196,7 @@ namespace EC2
         }
 
         /**
-         * <p>Unassigns one or more secondary private IP addresses, or IPv4 Prefix
+         * <p>Unassigns the specified secondary private IP addresses or IPv4 Prefix
          * Delegation prefixes from a network interface.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnassignPrivateIpAddresses">AWS
          * API Reference</a></p>
@@ -18030,17 +21224,16 @@ namespace EC2
         /**
          * <p>Unassigns secondary private IPv4 addresses from a private NAT gateway. You
          * cannot unassign your primary private IP. For more information, see <a
-         * href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-edit-secondary">Edit
-         * secondary IP address associations</a> in the <i>Amazon Virtual Private Cloud
-         * User Guide</i>.</p> <p>While unassigning is in progress, you cannot
-         * assign/unassign additional IP addresses while the connections are being drained.
-         * You are, however, allowed to delete the NAT gateway.</p> <p>A private IP address
-         * will only be released at the end of MaxDrainDurationSeconds. The private IP
-         * addresses stay associated and support the existing connections but do not
-         * support any new connections (new connections are distributed across the
-         * remaining assigned private IP address). After the existing connections drain
-         * out, the private IP addresses get released. </p> <p/> <p/><p><h3>See Also:</h3> 
-         * <a
+         * href="https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-working-with.html#nat-gateway-edit-secondary">Edit
+         * secondary IP address associations</a> in the <i>Amazon VPC User Guide</i>.</p>
+         * <p>While unassigning is in progress, you cannot assign/unassign additional IP
+         * addresses while the connections are being drained. You are, however, allowed to
+         * delete the NAT gateway.</p> <p>A private IP address will only be released at the
+         * end of MaxDrainDurationSeconds. The private IP addresses stay associated and
+         * support the existing connections, but do not support any new connections (new
+         * connections are distributed across the remaining assigned private IP address).
+         * After the existing connections drain out, the private IP addresses are
+         * released.</p> <p/> <p/><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnassignPrivateNatGatewayAddress">AWS
          * API Reference</a></p>
          */
@@ -18062,6 +21255,34 @@ namespace EC2
         void UnassignPrivateNatGatewayAddressAsync(const UnassignPrivateNatGatewayAddressRequestT& request, const UnassignPrivateNatGatewayAddressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EC2Client::UnassignPrivateNatGatewayAddress, request, handler, context);
+        }
+
+        /**
+         * <p>Unlocks a snapshot that is locked in governance mode or that is locked in
+         * compliance mode but still in the cooling-off period. You can't unlock a snapshot
+         * that is locked in compliance mode after the cooling-off period has
+         * expired.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnlockSnapshot">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UnlockSnapshotOutcome UnlockSnapshot(const Model::UnlockSnapshotRequest& request) const;
+
+        /**
+         * A Callable wrapper for UnlockSnapshot that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UnlockSnapshotRequestT = Model::UnlockSnapshotRequest>
+        Model::UnlockSnapshotOutcomeCallable UnlockSnapshotCallable(const UnlockSnapshotRequestT& request) const
+        {
+            return SubmitCallable(&EC2Client::UnlockSnapshot, request);
+        }
+
+        /**
+         * An Async wrapper for UnlockSnapshot that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UnlockSnapshotRequestT = Model::UnlockSnapshotRequest>
+        void UnlockSnapshotAsync(const UnlockSnapshotRequestT& request, const UnlockSnapshotResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EC2Client::UnlockSnapshot, request, handler, context);
         }
 
         /**
@@ -18094,21 +21315,20 @@ namespace EC2
         }
 
         /**
-         * <p>[VPC only] Updates the description of an egress (outbound) security group
-         * rule. You can replace an existing description, or add a description to a rule
-         * that did not have one previously. You can remove a description for a security
-         * group rule by omitting the description parameter in the request.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Updates the description of an egress (outbound) security group rule. You can
+         * replace an existing description, or add a description to a rule that did not
+         * have one previously. You can remove a description for a security group rule by
+         * omitting the description parameter in the request.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UpdateSecurityGroupRuleDescriptionsEgress">AWS
          * API Reference</a></p>
          */
-        virtual Model::UpdateSecurityGroupRuleDescriptionsEgressOutcome UpdateSecurityGroupRuleDescriptionsEgress(const Model::UpdateSecurityGroupRuleDescriptionsEgressRequest& request) const;
+        virtual Model::UpdateSecurityGroupRuleDescriptionsEgressOutcome UpdateSecurityGroupRuleDescriptionsEgress(const Model::UpdateSecurityGroupRuleDescriptionsEgressRequest& request = {}) const;
 
         /**
          * A Callable wrapper for UpdateSecurityGroupRuleDescriptionsEgress that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename UpdateSecurityGroupRuleDescriptionsEgressRequestT = Model::UpdateSecurityGroupRuleDescriptionsEgressRequest>
-        Model::UpdateSecurityGroupRuleDescriptionsEgressOutcomeCallable UpdateSecurityGroupRuleDescriptionsEgressCallable(const UpdateSecurityGroupRuleDescriptionsEgressRequestT& request) const
+        Model::UpdateSecurityGroupRuleDescriptionsEgressOutcomeCallable UpdateSecurityGroupRuleDescriptionsEgressCallable(const UpdateSecurityGroupRuleDescriptionsEgressRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::UpdateSecurityGroupRuleDescriptionsEgress, request);
         }
@@ -18117,7 +21337,7 @@ namespace EC2
          * An Async wrapper for UpdateSecurityGroupRuleDescriptionsEgress that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename UpdateSecurityGroupRuleDescriptionsEgressRequestT = Model::UpdateSecurityGroupRuleDescriptionsEgressRequest>
-        void UpdateSecurityGroupRuleDescriptionsEgressAsync(const UpdateSecurityGroupRuleDescriptionsEgressRequestT& request, const UpdateSecurityGroupRuleDescriptionsEgressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void UpdateSecurityGroupRuleDescriptionsEgressAsync(const UpdateSecurityGroupRuleDescriptionsEgressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const UpdateSecurityGroupRuleDescriptionsEgressRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::UpdateSecurityGroupRuleDescriptionsEgress, request, handler, context);
         }
@@ -18130,13 +21350,13 @@ namespace EC2
          * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UpdateSecurityGroupRuleDescriptionsIngress">AWS
          * API Reference</a></p>
          */
-        virtual Model::UpdateSecurityGroupRuleDescriptionsIngressOutcome UpdateSecurityGroupRuleDescriptionsIngress(const Model::UpdateSecurityGroupRuleDescriptionsIngressRequest& request) const;
+        virtual Model::UpdateSecurityGroupRuleDescriptionsIngressOutcome UpdateSecurityGroupRuleDescriptionsIngress(const Model::UpdateSecurityGroupRuleDescriptionsIngressRequest& request = {}) const;
 
         /**
          * A Callable wrapper for UpdateSecurityGroupRuleDescriptionsIngress that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename UpdateSecurityGroupRuleDescriptionsIngressRequestT = Model::UpdateSecurityGroupRuleDescriptionsIngressRequest>
-        Model::UpdateSecurityGroupRuleDescriptionsIngressOutcomeCallable UpdateSecurityGroupRuleDescriptionsIngressCallable(const UpdateSecurityGroupRuleDescriptionsIngressRequestT& request) const
+        Model::UpdateSecurityGroupRuleDescriptionsIngressOutcomeCallable UpdateSecurityGroupRuleDescriptionsIngressCallable(const UpdateSecurityGroupRuleDescriptionsIngressRequestT& request = {}) const
         {
             return SubmitCallable(&EC2Client::UpdateSecurityGroupRuleDescriptionsIngress, request);
         }
@@ -18145,7 +21365,7 @@ namespace EC2
          * An Async wrapper for UpdateSecurityGroupRuleDescriptionsIngress that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename UpdateSecurityGroupRuleDescriptionsIngressRequestT = Model::UpdateSecurityGroupRuleDescriptionsIngressRequest>
-        void UpdateSecurityGroupRuleDescriptionsIngressAsync(const UpdateSecurityGroupRuleDescriptionsIngressRequestT& request, const UpdateSecurityGroupRuleDescriptionsIngressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void UpdateSecurityGroupRuleDescriptionsIngressAsync(const UpdateSecurityGroupRuleDescriptionsIngressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const UpdateSecurityGroupRuleDescriptionsIngressRequestT& request = {}) const
         {
             return SubmitAsync(&EC2Client::UpdateSecurityGroupRuleDescriptionsIngress, request, handler, context);
         }
@@ -18187,7 +21407,6 @@ namespace EC2
         void init(const EC2ClientConfiguration& clientConfiguration);
 
         EC2ClientConfiguration m_clientConfiguration;
-        std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
         std::shared_ptr<EC2EndpointProviderBase> m_endpointProvider;
   };
 

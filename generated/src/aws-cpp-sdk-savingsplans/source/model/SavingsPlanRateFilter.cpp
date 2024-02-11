@@ -18,17 +18,7 @@ namespace SavingsPlans
 namespace Model
 {
 
-SavingsPlanRateFilter::SavingsPlanRateFilter() : 
-    m_name(SavingsPlanRateFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-SavingsPlanRateFilter::SavingsPlanRateFilter(JsonView jsonValue) : 
-    m_name(SavingsPlanRateFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+SavingsPlanRateFilter::SavingsPlanRateFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ SavingsPlanRateFilter& SavingsPlanRateFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = SavingsPlanRateFilterNameMapper::GetSavingsPlanRateFilterNameForName(jsonValue.GetString("name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("values");
@@ -51,7 +39,6 @@ SavingsPlanRateFilter& SavingsPlanRateFilter::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

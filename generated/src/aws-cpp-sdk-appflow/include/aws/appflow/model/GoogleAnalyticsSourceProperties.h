@@ -32,52 +32,23 @@ namespace Model
   class GoogleAnalyticsSourceProperties
   {
   public:
-    AWS_APPFLOW_API GoogleAnalyticsSourceProperties();
+    AWS_APPFLOW_API GoogleAnalyticsSourceProperties() = default;
     AWS_APPFLOW_API GoogleAnalyticsSourceProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFLOW_API GoogleAnalyticsSourceProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFLOW_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The object specified in the Google Analytics flow source. </p>
      */
-    inline const Aws::String& GetObject() const{ return m_object; }
-
-    /**
-     * <p> The object specified in the Google Analytics flow source. </p>
-     */
+    inline const Aws::String& GetObject() const { return m_object; }
     inline bool ObjectHasBeenSet() const { return m_objectHasBeenSet; }
-
-    /**
-     * <p> The object specified in the Google Analytics flow source. </p>
-     */
-    inline void SetObject(const Aws::String& value) { m_objectHasBeenSet = true; m_object = value; }
-
-    /**
-     * <p> The object specified in the Google Analytics flow source. </p>
-     */
-    inline void SetObject(Aws::String&& value) { m_objectHasBeenSet = true; m_object = std::move(value); }
-
-    /**
-     * <p> The object specified in the Google Analytics flow source. </p>
-     */
-    inline void SetObject(const char* value) { m_objectHasBeenSet = true; m_object.assign(value); }
-
-    /**
-     * <p> The object specified in the Google Analytics flow source. </p>
-     */
-    inline GoogleAnalyticsSourceProperties& WithObject(const Aws::String& value) { SetObject(value); return *this;}
-
-    /**
-     * <p> The object specified in the Google Analytics flow source. </p>
-     */
-    inline GoogleAnalyticsSourceProperties& WithObject(Aws::String&& value) { SetObject(std::move(value)); return *this;}
-
-    /**
-     * <p> The object specified in the Google Analytics flow source. </p>
-     */
-    inline GoogleAnalyticsSourceProperties& WithObject(const char* value) { SetObject(value); return *this;}
-
+    template<typename ObjectT = Aws::String>
+    void SetObject(ObjectT&& value) { m_objectHasBeenSet = true; m_object = std::forward<ObjectT>(value); }
+    template<typename ObjectT = Aws::String>
+    GoogleAnalyticsSourceProperties& WithObject(ObjectT&& value) { SetObject(std::forward<ObjectT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_object;

@@ -6,6 +6,7 @@
 #include <aws/cloudfront/model/ListDistributionsByRealtimeLogConfig2020_05_31Request.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 
 #include <utility>
 
@@ -13,13 +14,6 @@ using namespace Aws::CloudFront::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-ListDistributionsByRealtimeLogConfig2020_05_31Request::ListDistributionsByRealtimeLogConfig2020_05_31Request() : 
-    m_markerHasBeenSet(false),
-    m_maxItemsHasBeenSet(false),
-    m_realtimeLogConfigNameHasBeenSet(false),
-    m_realtimeLogConfigArnHasBeenSet(false)
-{
-}
 
 Aws::String ListDistributionsByRealtimeLogConfig2020_05_31Request::SerializePayload() const
 {

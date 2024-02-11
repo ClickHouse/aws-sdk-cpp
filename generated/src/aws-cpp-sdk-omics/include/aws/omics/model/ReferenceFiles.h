@@ -31,80 +31,42 @@ namespace Model
   class ReferenceFiles
   {
   public:
-    AWS_OMICS_API ReferenceFiles();
+    AWS_OMICS_API ReferenceFiles() = default;
     AWS_OMICS_API ReferenceFiles(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API ReferenceFiles& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The files' index.</p>
-     */
-    inline const FileInformation& GetIndex() const{ return m_index; }
-
-    /**
-     * <p>The files' index.</p>
-     */
-    inline bool IndexHasBeenSet() const { return m_indexHasBeenSet; }
-
-    /**
-     * <p>The files' index.</p>
-     */
-    inline void SetIndex(const FileInformation& value) { m_indexHasBeenSet = true; m_index = value; }
-
-    /**
-     * <p>The files' index.</p>
-     */
-    inline void SetIndex(FileInformation&& value) { m_indexHasBeenSet = true; m_index = std::move(value); }
-
-    /**
-     * <p>The files' index.</p>
-     */
-    inline ReferenceFiles& WithIndex(const FileInformation& value) { SetIndex(value); return *this;}
-
-    /**
-     * <p>The files' index.</p>
-     */
-    inline ReferenceFiles& WithIndex(FileInformation&& value) { SetIndex(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The source file's location in Amazon S3.</p>
      */
-    inline const FileInformation& GetSource() const{ return m_source; }
-
-    /**
-     * <p>The source file's location in Amazon S3.</p>
-     */
+    inline const FileInformation& GetSource() const { return m_source; }
     inline bool SourceHasBeenSet() const { return m_sourceHasBeenSet; }
+    template<typename SourceT = FileInformation>
+    void SetSource(SourceT&& value) { m_sourceHasBeenSet = true; m_source = std::forward<SourceT>(value); }
+    template<typename SourceT = FileInformation>
+    ReferenceFiles& WithSource(SourceT&& value) { SetSource(std::forward<SourceT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The source file's location in Amazon S3.</p>
+     * <p>The files' index.</p>
      */
-    inline void SetSource(const FileInformation& value) { m_sourceHasBeenSet = true; m_source = value; }
-
-    /**
-     * <p>The source file's location in Amazon S3.</p>
-     */
-    inline void SetSource(FileInformation&& value) { m_sourceHasBeenSet = true; m_source = std::move(value); }
-
-    /**
-     * <p>The source file's location in Amazon S3.</p>
-     */
-    inline ReferenceFiles& WithSource(const FileInformation& value) { SetSource(value); return *this;}
-
-    /**
-     * <p>The source file's location in Amazon S3.</p>
-     */
-    inline ReferenceFiles& WithSource(FileInformation&& value) { SetSource(std::move(value)); return *this;}
-
+    inline const FileInformation& GetIndex() const { return m_index; }
+    inline bool IndexHasBeenSet() const { return m_indexHasBeenSet; }
+    template<typename IndexT = FileInformation>
+    void SetIndex(IndexT&& value) { m_indexHasBeenSet = true; m_index = std::forward<IndexT>(value); }
+    template<typename IndexT = FileInformation>
+    ReferenceFiles& WithIndex(IndexT&& value) { SetIndex(std::forward<IndexT>(value)); return *this;}
+    ///@}
   private:
-
-    FileInformation m_index;
-    bool m_indexHasBeenSet = false;
 
     FileInformation m_source;
     bool m_sourceHasBeenSet = false;
+
+    FileInformation m_index;
+    bool m_indexHasBeenSet = false;
   };
 
 } // namespace Model

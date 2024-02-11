@@ -20,25 +20,7 @@ namespace EC2
 namespace Model
 {
 
-VolumeStatusItem::VolumeStatusItem() : 
-    m_actionsHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_outpostArnHasBeenSet(false),
-    m_eventsHasBeenSet(false),
-    m_volumeIdHasBeenSet(false),
-    m_volumeStatusHasBeenSet(false),
-    m_attachmentStatusesHasBeenSet(false)
-{
-}
-
-VolumeStatusItem::VolumeStatusItem(const XmlNode& xmlNode) : 
-    m_actionsHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_outpostArnHasBeenSet(false),
-    m_eventsHasBeenSet(false),
-    m_volumeIdHasBeenSet(false),
-    m_volumeStatusHasBeenSet(false),
-    m_attachmentStatusesHasBeenSet(false)
+VolumeStatusItem::VolumeStatusItem(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -53,6 +35,7 @@ VolumeStatusItem& VolumeStatusItem::operator =(const XmlNode& xmlNode)
     if(!actionsNode.IsNull())
     {
       XmlNode actionsMember = actionsNode.FirstChild("item");
+      m_actionsHasBeenSet = !actionsMember.IsNull();
       while(!actionsMember.IsNull())
       {
         m_actions.push_back(actionsMember);
@@ -77,6 +60,7 @@ VolumeStatusItem& VolumeStatusItem::operator =(const XmlNode& xmlNode)
     if(!eventsNode.IsNull())
     {
       XmlNode eventsMember = eventsNode.FirstChild("item");
+      m_eventsHasBeenSet = !eventsMember.IsNull();
       while(!eventsMember.IsNull())
       {
         m_events.push_back(eventsMember);
@@ -101,6 +85,7 @@ VolumeStatusItem& VolumeStatusItem::operator =(const XmlNode& xmlNode)
     if(!attachmentStatusesNode.IsNull())
     {
       XmlNode attachmentStatusesMember = attachmentStatusesNode.FirstChild("item");
+      m_attachmentStatusesHasBeenSet = !attachmentStatusesMember.IsNull();
       while(!attachmentStatusesMember.IsNull())
       {
         m_attachmentStatuses.push_back(attachmentStatusesMember);
@@ -108,6 +93,18 @@ VolumeStatusItem& VolumeStatusItem::operator =(const XmlNode& xmlNode)
       }
 
       m_attachmentStatusesHasBeenSet = true;
+    }
+    XmlNode initializationStatusDetailsNode = resultNode.FirstChild("initializationStatusDetails");
+    if(!initializationStatusDetailsNode.IsNull())
+    {
+      m_initializationStatusDetails = initializationStatusDetailsNode;
+      m_initializationStatusDetailsHasBeenSet = true;
+    }
+    XmlNode availabilityZoneIdNode = resultNode.FirstChild("availabilityZoneId");
+    if(!availabilityZoneIdNode.IsNull())
+    {
+      m_availabilityZoneId = Aws::Utils::Xml::DecodeEscapedXmlText(availabilityZoneIdNode.GetText());
+      m_availabilityZoneIdHasBeenSet = true;
     }
   }
 
@@ -171,6 +168,18 @@ void VolumeStatusItem::OutputToStream(Aws::OStream& oStream, const char* locatio
       }
   }
 
+  if(m_initializationStatusDetailsHasBeenSet)
+  {
+      Aws::StringStream initializationStatusDetailsLocationAndMemberSs;
+      initializationStatusDetailsLocationAndMemberSs << location << index << locationValue << ".InitializationStatusDetails";
+      m_initializationStatusDetails.OutputToStream(oStream, initializationStatusDetailsLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_availabilityZoneIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".AvailabilityZoneId=" << StringUtils::URLEncode(m_availabilityZoneId.c_str()) << "&";
+  }
+
 }
 
 void VolumeStatusItem::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -181,7 +190,7 @@ void VolumeStatusItem::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_actions)
       {
         Aws::StringStream actionsSs;
-        actionsSs << location <<  ".ActionsSet." << actionsIdx++;
+        actionsSs << location << ".ActionsSet." << actionsIdx++;
         item.OutputToStream(oStream, actionsSs.str().c_str());
       }
   }
@@ -199,7 +208,7 @@ void VolumeStatusItem::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_events)
       {
         Aws::StringStream eventsSs;
-        eventsSs << location <<  ".EventsSet." << eventsIdx++;
+        eventsSs << location << ".EventsSet." << eventsIdx++;
         item.OutputToStream(oStream, eventsSs.str().c_str());
       }
   }
@@ -219,9 +228,19 @@ void VolumeStatusItem::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_attachmentStatuses)
       {
         Aws::StringStream attachmentStatusesSs;
-        attachmentStatusesSs << location <<  ".AttachmentStatuses." << attachmentStatusesIdx++;
+        attachmentStatusesSs << location << ".AttachmentStatuses." << attachmentStatusesIdx++;
         item.OutputToStream(oStream, attachmentStatusesSs.str().c_str());
       }
+  }
+  if(m_initializationStatusDetailsHasBeenSet)
+  {
+      Aws::String initializationStatusDetailsLocationAndMember(location);
+      initializationStatusDetailsLocationAndMember += ".InitializationStatusDetails";
+      m_initializationStatusDetails.OutputToStream(oStream, initializationStatusDetailsLocationAndMember.c_str());
+  }
+  if(m_availabilityZoneIdHasBeenSet)
+  {
+      oStream << location << ".AvailabilityZoneId=" << StringUtils::URLEncode(m_availabilityZoneId.c_str()) << "&";
   }
 }
 

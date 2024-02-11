@@ -22,7 +22,7 @@ namespace Model
   class TagResourceRequest : public MediaTailorRequest
   {
   public:
-    AWS_MEDIATAILOR_API TagResourceRequest();
+    AWS_MEDIATAILOR_API TagResourceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,47 +33,19 @@ namespace Model
     AWS_MEDIATAILOR_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) associated with the resource.</p>
      */
-    inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the resource.</p>
-     */
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
     inline bool ResourceArnHasBeenSet() const { return m_resourceArnHasBeenSet; }
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    TagResourceRequest& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the resource.</p>
-     */
-    inline void SetResourceArn(const Aws::String& value) { m_resourceArnHasBeenSet = true; m_resourceArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the resource.</p>
-     */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the resource.</p>
-     */
-    inline void SetResourceArn(const char* value) { m_resourceArnHasBeenSet = true; m_resourceArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the resource.</p>
-     */
-    inline TagResourceRequest& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the resource.</p>
-     */
-    inline TagResourceRequest& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the resource.</p>
-     */
-    inline TagResourceRequest& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags to assign to the resource. Tags are key-value pairs that you can
      * associate with Amazon resources to help with organization, access control, and
@@ -81,116 +53,17 @@ namespace Model
      * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
      * AWS Elemental MediaTailor Resources</a>.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags to assign to the resource. Tags are key-value pairs that you can
-     * associate with Amazon resources to help with organization, access control, and
-     * cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags to assign to the resource. Tags are key-value pairs that you can
-     * associate with Amazon resources to help with organization, access control, and
-     * cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags to assign to the resource. Tags are key-value pairs that you can
-     * associate with Amazon resources to help with organization, access control, and
-     * cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags to assign to the resource. Tags are key-value pairs that you can
-     * associate with Amazon resources to help with organization, access control, and
-     * cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline TagResourceRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags to assign to the resource. Tags are key-value pairs that you can
-     * associate with Amazon resources to help with organization, access control, and
-     * cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline TagResourceRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags to assign to the resource. Tags are key-value pairs that you can
-     * associate with Amazon resources to help with organization, access control, and
-     * cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline TagResourceRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags to assign to the resource. Tags are key-value pairs that you can
-     * associate with Amazon resources to help with organization, access control, and
-     * cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline TagResourceRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags to assign to the resource. Tags are key-value pairs that you can
-     * associate with Amazon resources to help with organization, access control, and
-     * cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline TagResourceRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags to assign to the resource. Tags are key-value pairs that you can
-     * associate with Amazon resources to help with organization, access control, and
-     * cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline TagResourceRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags to assign to the resource. Tags are key-value pairs that you can
-     * associate with Amazon resources to help with organization, access control, and
-     * cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline TagResourceRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags to assign to the resource. Tags are key-value pairs that you can
-     * associate with Amazon resources to help with organization, access control, and
-     * cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline TagResourceRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags to assign to the resource. Tags are key-value pairs that you can
-     * associate with Amazon resources to help with organization, access control, and
-     * cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline TagResourceRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    TagResourceRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    TagResourceRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_resourceArn;

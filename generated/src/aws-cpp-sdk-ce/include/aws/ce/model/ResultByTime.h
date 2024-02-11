@@ -36,165 +36,63 @@ namespace Model
   class ResultByTime
   {
   public:
-    AWS_COSTEXPLORER_API ResultByTime();
+    AWS_COSTEXPLORER_API ResultByTime() = default;
     AWS_COSTEXPLORER_API ResultByTime(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API ResultByTime& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The time period that the result covers.</p>
      */
-    inline const DateInterval& GetTimePeriod() const{ return m_timePeriod; }
-
-    /**
-     * <p>The time period that the result covers.</p>
-     */
+    inline const DateInterval& GetTimePeriod() const { return m_timePeriod; }
     inline bool TimePeriodHasBeenSet() const { return m_timePeriodHasBeenSet; }
+    template<typename TimePeriodT = DateInterval>
+    void SetTimePeriod(TimePeriodT&& value) { m_timePeriodHasBeenSet = true; m_timePeriod = std::forward<TimePeriodT>(value); }
+    template<typename TimePeriodT = DateInterval>
+    ResultByTime& WithTimePeriod(TimePeriodT&& value) { SetTimePeriod(std::forward<TimePeriodT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time period that the result covers.</p>
-     */
-    inline void SetTimePeriod(const DateInterval& value) { m_timePeriodHasBeenSet = true; m_timePeriod = value; }
-
-    /**
-     * <p>The time period that the result covers.</p>
-     */
-    inline void SetTimePeriod(DateInterval&& value) { m_timePeriodHasBeenSet = true; m_timePeriod = std::move(value); }
-
-    /**
-     * <p>The time period that the result covers.</p>
-     */
-    inline ResultByTime& WithTimePeriod(const DateInterval& value) { SetTimePeriod(value); return *this;}
-
-    /**
-     * <p>The time period that the result covers.</p>
-     */
-    inline ResultByTime& WithTimePeriod(DateInterval&& value) { SetTimePeriod(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The total amount of cost or usage accrued during the time period.</p>
      */
-    inline const Aws::Map<Aws::String, MetricValue>& GetTotal() const{ return m_total; }
-
-    /**
-     * <p>The total amount of cost or usage accrued during the time period.</p>
-     */
+    inline const Aws::Map<Aws::String, MetricValue>& GetTotal() const { return m_total; }
     inline bool TotalHasBeenSet() const { return m_totalHasBeenSet; }
+    template<typename TotalT = Aws::Map<Aws::String, MetricValue>>
+    void SetTotal(TotalT&& value) { m_totalHasBeenSet = true; m_total = std::forward<TotalT>(value); }
+    template<typename TotalT = Aws::Map<Aws::String, MetricValue>>
+    ResultByTime& WithTotal(TotalT&& value) { SetTotal(std::forward<TotalT>(value)); return *this;}
+    template<typename TotalKeyT = Aws::String, typename TotalValueT = MetricValue>
+    ResultByTime& AddTotal(TotalKeyT&& key, TotalValueT&& value) {
+      m_totalHasBeenSet = true; m_total.emplace(std::forward<TotalKeyT>(key), std::forward<TotalValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The total amount of cost or usage accrued during the time period.</p>
-     */
-    inline void SetTotal(const Aws::Map<Aws::String, MetricValue>& value) { m_totalHasBeenSet = true; m_total = value; }
-
-    /**
-     * <p>The total amount of cost or usage accrued during the time period.</p>
-     */
-    inline void SetTotal(Aws::Map<Aws::String, MetricValue>&& value) { m_totalHasBeenSet = true; m_total = std::move(value); }
-
-    /**
-     * <p>The total amount of cost or usage accrued during the time period.</p>
-     */
-    inline ResultByTime& WithTotal(const Aws::Map<Aws::String, MetricValue>& value) { SetTotal(value); return *this;}
-
-    /**
-     * <p>The total amount of cost or usage accrued during the time period.</p>
-     */
-    inline ResultByTime& WithTotal(Aws::Map<Aws::String, MetricValue>&& value) { SetTotal(std::move(value)); return *this;}
-
-    /**
-     * <p>The total amount of cost or usage accrued during the time period.</p>
-     */
-    inline ResultByTime& AddTotal(const Aws::String& key, const MetricValue& value) { m_totalHasBeenSet = true; m_total.emplace(key, value); return *this; }
-
-    /**
-     * <p>The total amount of cost or usage accrued during the time period.</p>
-     */
-    inline ResultByTime& AddTotal(Aws::String&& key, const MetricValue& value) { m_totalHasBeenSet = true; m_total.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The total amount of cost or usage accrued during the time period.</p>
-     */
-    inline ResultByTime& AddTotal(const Aws::String& key, MetricValue&& value) { m_totalHasBeenSet = true; m_total.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The total amount of cost or usage accrued during the time period.</p>
-     */
-    inline ResultByTime& AddTotal(Aws::String&& key, MetricValue&& value) { m_totalHasBeenSet = true; m_total.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The total amount of cost or usage accrued during the time period.</p>
-     */
-    inline ResultByTime& AddTotal(const char* key, MetricValue&& value) { m_totalHasBeenSet = true; m_total.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The total amount of cost or usage accrued during the time period.</p>
-     */
-    inline ResultByTime& AddTotal(const char* key, const MetricValue& value) { m_totalHasBeenSet = true; m_total.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The groups that this time period includes.</p>
      */
-    inline const Aws::Vector<Group>& GetGroups() const{ return m_groups; }
-
-    /**
-     * <p>The groups that this time period includes.</p>
-     */
+    inline const Aws::Vector<Group>& GetGroups() const { return m_groups; }
     inline bool GroupsHasBeenSet() const { return m_groupsHasBeenSet; }
+    template<typename GroupsT = Aws::Vector<Group>>
+    void SetGroups(GroupsT&& value) { m_groupsHasBeenSet = true; m_groups = std::forward<GroupsT>(value); }
+    template<typename GroupsT = Aws::Vector<Group>>
+    ResultByTime& WithGroups(GroupsT&& value) { SetGroups(std::forward<GroupsT>(value)); return *this;}
+    template<typename GroupsT = Group>
+    ResultByTime& AddGroups(GroupsT&& value) { m_groupsHasBeenSet = true; m_groups.emplace_back(std::forward<GroupsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The groups that this time period includes.</p>
-     */
-    inline void SetGroups(const Aws::Vector<Group>& value) { m_groupsHasBeenSet = true; m_groups = value; }
-
-    /**
-     * <p>The groups that this time period includes.</p>
-     */
-    inline void SetGroups(Aws::Vector<Group>&& value) { m_groupsHasBeenSet = true; m_groups = std::move(value); }
-
-    /**
-     * <p>The groups that this time period includes.</p>
-     */
-    inline ResultByTime& WithGroups(const Aws::Vector<Group>& value) { SetGroups(value); return *this;}
-
-    /**
-     * <p>The groups that this time period includes.</p>
-     */
-    inline ResultByTime& WithGroups(Aws::Vector<Group>&& value) { SetGroups(std::move(value)); return *this;}
-
-    /**
-     * <p>The groups that this time period includes.</p>
-     */
-    inline ResultByTime& AddGroups(const Group& value) { m_groupsHasBeenSet = true; m_groups.push_back(value); return *this; }
-
-    /**
-     * <p>The groups that this time period includes.</p>
-     */
-    inline ResultByTime& AddGroups(Group&& value) { m_groupsHasBeenSet = true; m_groups.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Determines whether the result is estimated.</p>
      */
-    inline bool GetEstimated() const{ return m_estimated; }
-
-    /**
-     * <p>Determines whether the result is estimated.</p>
-     */
+    inline bool GetEstimated() const { return m_estimated; }
     inline bool EstimatedHasBeenSet() const { return m_estimatedHasBeenSet; }
-
-    /**
-     * <p>Determines whether the result is estimated.</p>
-     */
     inline void SetEstimated(bool value) { m_estimatedHasBeenSet = true; m_estimated = value; }
-
-    /**
-     * <p>Determines whether the result is estimated.</p>
-     */
     inline ResultByTime& WithEstimated(bool value) { SetEstimated(value); return *this;}
-
+    ///@}
   private:
 
     DateInterval m_timePeriod;
@@ -206,7 +104,7 @@ namespace Model
     Aws::Vector<Group> m_groups;
     bool m_groupsHasBeenSet = false;
 
-    bool m_estimated;
+    bool m_estimated{false};
     bool m_estimatedHasBeenSet = false;
   };
 

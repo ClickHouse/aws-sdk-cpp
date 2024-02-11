@@ -21,7 +21,7 @@ namespace Model
   class UpdateApplicationRequest : public MgnRequest
   {
   public:
-    AWS_MGN_API UpdateApplicationRequest();
+    AWS_MGN_API UpdateApplicationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,129 +32,57 @@ namespace Model
     AWS_MGN_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>Application ID.</p>
+     * <p>Account ID.</p>
      */
-    inline const Aws::String& GetApplicationID() const{ return m_applicationID; }
+    inline const Aws::String& GetAccountID() const { return m_accountID; }
+    inline bool AccountIDHasBeenSet() const { return m_accountIDHasBeenSet; }
+    template<typename AccountIDT = Aws::String>
+    void SetAccountID(AccountIDT&& value) { m_accountIDHasBeenSet = true; m_accountID = std::forward<AccountIDT>(value); }
+    template<typename AccountIDT = Aws::String>
+    UpdateApplicationRequest& WithAccountID(AccountIDT&& value) { SetAccountID(std::forward<AccountIDT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>Application ID.</p>
      */
+    inline const Aws::String& GetApplicationID() const { return m_applicationID; }
     inline bool ApplicationIDHasBeenSet() const { return m_applicationIDHasBeenSet; }
+    template<typename ApplicationIDT = Aws::String>
+    void SetApplicationID(ApplicationIDT&& value) { m_applicationIDHasBeenSet = true; m_applicationID = std::forward<ApplicationIDT>(value); }
+    template<typename ApplicationIDT = Aws::String>
+    UpdateApplicationRequest& WithApplicationID(ApplicationIDT&& value) { SetApplicationID(std::forward<ApplicationIDT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Application ID.</p>
-     */
-    inline void SetApplicationID(const Aws::String& value) { m_applicationIDHasBeenSet = true; m_applicationID = value; }
-
-    /**
-     * <p>Application ID.</p>
-     */
-    inline void SetApplicationID(Aws::String&& value) { m_applicationIDHasBeenSet = true; m_applicationID = std::move(value); }
-
-    /**
-     * <p>Application ID.</p>
-     */
-    inline void SetApplicationID(const char* value) { m_applicationIDHasBeenSet = true; m_applicationID.assign(value); }
-
-    /**
-     * <p>Application ID.</p>
-     */
-    inline UpdateApplicationRequest& WithApplicationID(const Aws::String& value) { SetApplicationID(value); return *this;}
-
-    /**
-     * <p>Application ID.</p>
-     */
-    inline UpdateApplicationRequest& WithApplicationID(Aws::String&& value) { SetApplicationID(std::move(value)); return *this;}
-
-    /**
-     * <p>Application ID.</p>
-     */
-    inline UpdateApplicationRequest& WithApplicationID(const char* value) { SetApplicationID(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Application description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>Application description.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateApplicationRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Application description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>Application description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>Application description.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>Application description.</p>
-     */
-    inline UpdateApplicationRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Application description.</p>
-     */
-    inline UpdateApplicationRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Application description.</p>
-     */
-    inline UpdateApplicationRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Application name.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>Application name.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>Application name.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>Application name.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>Application name.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>Application name.</p>
-     */
-    inline UpdateApplicationRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>Application name.</p>
-     */
-    inline UpdateApplicationRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>Application name.</p>
-     */
-    inline UpdateApplicationRequest& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateApplicationRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
+
+    Aws::String m_accountID;
+    bool m_accountIDHasBeenSet = false;
 
     Aws::String m_applicationID;
     bool m_applicationIDHasBeenSet = false;

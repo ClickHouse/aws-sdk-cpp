@@ -21,7 +21,7 @@ namespace Model
   class GetAccessLogSubscriptionRequest : public VPCLatticeRequest
   {
   public:
-    AWS_VPCLATTICE_API GetAccessLogSubscriptionRequest();
+    AWS_VPCLATTICE_API GetAccessLogSubscriptionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_VPCLATTICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The ID or Amazon Resource Name (ARN) of the access log subscription.</p>
+     * <p>The ID or ARN of the access log subscription.</p>
      */
-    inline const Aws::String& GetAccessLogSubscriptionIdentifier() const{ return m_accessLogSubscriptionIdentifier; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the access log subscription.</p>
-     */
+    inline const Aws::String& GetAccessLogSubscriptionIdentifier() const { return m_accessLogSubscriptionIdentifier; }
     inline bool AccessLogSubscriptionIdentifierHasBeenSet() const { return m_accessLogSubscriptionIdentifierHasBeenSet; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the access log subscription.</p>
-     */
-    inline void SetAccessLogSubscriptionIdentifier(const Aws::String& value) { m_accessLogSubscriptionIdentifierHasBeenSet = true; m_accessLogSubscriptionIdentifier = value; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the access log subscription.</p>
-     */
-    inline void SetAccessLogSubscriptionIdentifier(Aws::String&& value) { m_accessLogSubscriptionIdentifierHasBeenSet = true; m_accessLogSubscriptionIdentifier = std::move(value); }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the access log subscription.</p>
-     */
-    inline void SetAccessLogSubscriptionIdentifier(const char* value) { m_accessLogSubscriptionIdentifierHasBeenSet = true; m_accessLogSubscriptionIdentifier.assign(value); }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the access log subscription.</p>
-     */
-    inline GetAccessLogSubscriptionRequest& WithAccessLogSubscriptionIdentifier(const Aws::String& value) { SetAccessLogSubscriptionIdentifier(value); return *this;}
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the access log subscription.</p>
-     */
-    inline GetAccessLogSubscriptionRequest& WithAccessLogSubscriptionIdentifier(Aws::String&& value) { SetAccessLogSubscriptionIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the access log subscription.</p>
-     */
-    inline GetAccessLogSubscriptionRequest& WithAccessLogSubscriptionIdentifier(const char* value) { SetAccessLogSubscriptionIdentifier(value); return *this;}
-
+    template<typename AccessLogSubscriptionIdentifierT = Aws::String>
+    void SetAccessLogSubscriptionIdentifier(AccessLogSubscriptionIdentifierT&& value) { m_accessLogSubscriptionIdentifierHasBeenSet = true; m_accessLogSubscriptionIdentifier = std::forward<AccessLogSubscriptionIdentifierT>(value); }
+    template<typename AccessLogSubscriptionIdentifierT = Aws::String>
+    GetAccessLogSubscriptionRequest& WithAccessLogSubscriptionIdentifier(AccessLogSubscriptionIdentifierT&& value) { SetAccessLogSubscriptionIdentifier(std::forward<AccessLogSubscriptionIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accessLogSubscriptionIdentifier;

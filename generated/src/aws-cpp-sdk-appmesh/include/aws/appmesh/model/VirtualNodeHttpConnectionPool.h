@@ -30,67 +30,39 @@ namespace Model
   class VirtualNodeHttpConnectionPool
   {
   public:
-    AWS_APPMESH_API VirtualNodeHttpConnectionPool();
+    AWS_APPMESH_API VirtualNodeHttpConnectionPool() = default;
     AWS_APPMESH_API VirtualNodeHttpConnectionPool(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API VirtualNodeHttpConnectionPool& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Maximum number of outbound TCP connections Envoy can establish concurrently
      * with all hosts in upstream cluster.</p>
      */
-    inline int GetMaxConnections() const{ return m_maxConnections; }
-
-    /**
-     * <p>Maximum number of outbound TCP connections Envoy can establish concurrently
-     * with all hosts in upstream cluster.</p>
-     */
+    inline int GetMaxConnections() const { return m_maxConnections; }
     inline bool MaxConnectionsHasBeenSet() const { return m_maxConnectionsHasBeenSet; }
-
-    /**
-     * <p>Maximum number of outbound TCP connections Envoy can establish concurrently
-     * with all hosts in upstream cluster.</p>
-     */
     inline void SetMaxConnections(int value) { m_maxConnectionsHasBeenSet = true; m_maxConnections = value; }
-
-    /**
-     * <p>Maximum number of outbound TCP connections Envoy can establish concurrently
-     * with all hosts in upstream cluster.</p>
-     */
     inline VirtualNodeHttpConnectionPool& WithMaxConnections(int value) { SetMaxConnections(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Number of overflowing requests after <code>max_connections</code> Envoy will
      * queue to upstream cluster.</p>
      */
-    inline int GetMaxPendingRequests() const{ return m_maxPendingRequests; }
-
-    /**
-     * <p>Number of overflowing requests after <code>max_connections</code> Envoy will
-     * queue to upstream cluster.</p>
-     */
+    inline int GetMaxPendingRequests() const { return m_maxPendingRequests; }
     inline bool MaxPendingRequestsHasBeenSet() const { return m_maxPendingRequestsHasBeenSet; }
-
-    /**
-     * <p>Number of overflowing requests after <code>max_connections</code> Envoy will
-     * queue to upstream cluster.</p>
-     */
     inline void SetMaxPendingRequests(int value) { m_maxPendingRequestsHasBeenSet = true; m_maxPendingRequests = value; }
-
-    /**
-     * <p>Number of overflowing requests after <code>max_connections</code> Envoy will
-     * queue to upstream cluster.</p>
-     */
     inline VirtualNodeHttpConnectionPool& WithMaxPendingRequests(int value) { SetMaxPendingRequests(value); return *this;}
-
+    ///@}
   private:
 
-    int m_maxConnections;
+    int m_maxConnections{0};
     bool m_maxConnectionsHasBeenSet = false;
 
-    int m_maxPendingRequests;
+    int m_maxPendingRequests{0};
     bool m_maxPendingRequestsHasBeenSet = false;
   };
 

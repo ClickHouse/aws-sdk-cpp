@@ -15,13 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-UpdateConnectorRequest::UpdateConnectorRequest() : 
-    m_capacityHasBeenSet(false),
-    m_connectorArnHasBeenSet(false),
-    m_currentVersionHasBeenSet(false)
-{
-}
-
 Aws::String UpdateConnectorRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -29,6 +22,17 @@ Aws::String UpdateConnectorRequest::SerializePayload() const
   if(m_capacityHasBeenSet)
   {
    payload.WithObject("capacity", m_capacity.Jsonize());
+
+  }
+
+  if(m_connectorConfigurationHasBeenSet)
+  {
+   JsonValue connectorConfigurationJsonMap;
+   for(auto& connectorConfigurationItem : m_connectorConfiguration)
+   {
+     connectorConfigurationJsonMap.WithString(connectorConfigurationItem.first, connectorConfigurationItem.second);
+   }
+   payload.WithObject("connectorConfiguration", std::move(connectorConfigurationJsonMap));
 
   }
 

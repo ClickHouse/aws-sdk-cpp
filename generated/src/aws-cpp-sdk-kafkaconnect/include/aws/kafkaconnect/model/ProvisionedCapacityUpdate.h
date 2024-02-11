@@ -29,63 +29,38 @@ namespace Model
   class ProvisionedCapacityUpdate
   {
   public:
-    AWS_KAFKACONNECT_API ProvisionedCapacityUpdate();
+    AWS_KAFKACONNECT_API ProvisionedCapacityUpdate() = default;
     AWS_KAFKACONNECT_API ProvisionedCapacityUpdate(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKACONNECT_API ProvisionedCapacityUpdate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of microcontroller units (MCUs) allocated to each connector
      * worker. The valid values are 1,2,4,8.</p>
      */
-    inline int GetMcuCount() const{ return m_mcuCount; }
-
-    /**
-     * <p>The number of microcontroller units (MCUs) allocated to each connector
-     * worker. The valid values are 1,2,4,8.</p>
-     */
+    inline int GetMcuCount() const { return m_mcuCount; }
     inline bool McuCountHasBeenSet() const { return m_mcuCountHasBeenSet; }
-
-    /**
-     * <p>The number of microcontroller units (MCUs) allocated to each connector
-     * worker. The valid values are 1,2,4,8.</p>
-     */
     inline void SetMcuCount(int value) { m_mcuCountHasBeenSet = true; m_mcuCount = value; }
-
-    /**
-     * <p>The number of microcontroller units (MCUs) allocated to each connector
-     * worker. The valid values are 1,2,4,8.</p>
-     */
     inline ProvisionedCapacityUpdate& WithMcuCount(int value) { SetMcuCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of workers that are allocated to the connector.</p>
      */
-    inline int GetWorkerCount() const{ return m_workerCount; }
-
-    /**
-     * <p>The number of workers that are allocated to the connector.</p>
-     */
+    inline int GetWorkerCount() const { return m_workerCount; }
     inline bool WorkerCountHasBeenSet() const { return m_workerCountHasBeenSet; }
-
-    /**
-     * <p>The number of workers that are allocated to the connector.</p>
-     */
     inline void SetWorkerCount(int value) { m_workerCountHasBeenSet = true; m_workerCount = value; }
-
-    /**
-     * <p>The number of workers that are allocated to the connector.</p>
-     */
     inline ProvisionedCapacityUpdate& WithWorkerCount(int value) { SetWorkerCount(value); return *this;}
-
+    ///@}
   private:
 
-    int m_mcuCount;
+    int m_mcuCount{0};
     bool m_mcuCountHasBeenSet = false;
 
-    int m_workerCount;
+    int m_workerCount{0};
     bool m_workerCountHasBeenSet = false;
   };
 

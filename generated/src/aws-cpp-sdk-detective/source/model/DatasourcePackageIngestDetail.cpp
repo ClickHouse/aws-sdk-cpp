@@ -18,17 +18,7 @@ namespace Detective
 namespace Model
 {
 
-DatasourcePackageIngestDetail::DatasourcePackageIngestDetail() : 
-    m_datasourcePackageIngestState(DatasourcePackageIngestState::NOT_SET),
-    m_datasourcePackageIngestStateHasBeenSet(false),
-    m_lastIngestStateChangeHasBeenSet(false)
-{
-}
-
-DatasourcePackageIngestDetail::DatasourcePackageIngestDetail(JsonView jsonValue) : 
-    m_datasourcePackageIngestState(DatasourcePackageIngestState::NOT_SET),
-    m_datasourcePackageIngestStateHasBeenSet(false),
-    m_lastIngestStateChangeHasBeenSet(false)
+DatasourcePackageIngestDetail::DatasourcePackageIngestDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ DatasourcePackageIngestDetail& DatasourcePackageIngestDetail::operator =(JsonVie
   if(jsonValue.ValueExists("DatasourcePackageIngestState"))
   {
     m_datasourcePackageIngestState = DatasourcePackageIngestStateMapper::GetDatasourcePackageIngestStateForName(jsonValue.GetString("DatasourcePackageIngestState"));
-
     m_datasourcePackageIngestStateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastIngestStateChange"))
   {
     Aws::Map<Aws::String, JsonView> lastIngestStateChangeJsonMap = jsonValue.GetObject("LastIngestStateChange").GetAllObjects();
@@ -51,7 +39,6 @@ DatasourcePackageIngestDetail& DatasourcePackageIngestDetail::operator =(JsonVie
     }
     m_lastIngestStateChangeHasBeenSet = true;
   }
-
   return *this;
 }
 

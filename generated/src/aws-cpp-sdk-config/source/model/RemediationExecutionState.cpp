@@ -24,6 +24,7 @@ namespace Aws
         static const int IN_PROGRESS_HASH = HashingUtils::HashString("IN_PROGRESS");
         static const int SUCCEEDED_HASH = HashingUtils::HashString("SUCCEEDED");
         static const int FAILED_HASH = HashingUtils::HashString("FAILED");
+        static const int UNKNOWN_HASH = HashingUtils::HashString("UNKNOWN");
 
 
         RemediationExecutionState GetRemediationExecutionStateForName(const Aws::String& name)
@@ -45,6 +46,10 @@ namespace Aws
           {
             return RemediationExecutionState::FAILED;
           }
+          else if (hashCode == UNKNOWN_HASH)
+          {
+            return RemediationExecutionState::UNKNOWN;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -59,6 +64,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case RemediationExecutionState::NOT_SET:
+            return {};
           case RemediationExecutionState::QUEUED:
             return "QUEUED";
           case RemediationExecutionState::IN_PROGRESS:
@@ -67,6 +74,8 @@ namespace Aws
             return "SUCCEEDED";
           case RemediationExecutionState::FAILED:
             return "FAILED";
+          case RemediationExecutionState::UNKNOWN:
+            return "UNKNOWN";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

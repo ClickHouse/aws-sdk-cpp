@@ -12,36 +12,13 @@ using namespace Aws::ivschat::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateRoomRequest::CreateRoomRequest() : 
-    m_loggingConfigurationIdentifiersHasBeenSet(false),
-    m_maximumMessageLength(0),
-    m_maximumMessageLengthHasBeenSet(false),
-    m_maximumMessageRatePerSecond(0),
-    m_maximumMessageRatePerSecondHasBeenSet(false),
-    m_messageReviewHandlerHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateRoomRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_loggingConfigurationIdentifiersHasBeenSet)
+  if(m_nameHasBeenSet)
   {
-   Aws::Utils::Array<JsonValue> loggingConfigurationIdentifiersJsonList(m_loggingConfigurationIdentifiers.size());
-   for(unsigned loggingConfigurationIdentifiersIndex = 0; loggingConfigurationIdentifiersIndex < loggingConfigurationIdentifiersJsonList.GetLength(); ++loggingConfigurationIdentifiersIndex)
-   {
-     loggingConfigurationIdentifiersJsonList[loggingConfigurationIdentifiersIndex].AsString(m_loggingConfigurationIdentifiers[loggingConfigurationIdentifiersIndex]);
-   }
-   payload.WithArray("loggingConfigurationIdentifiers", std::move(loggingConfigurationIdentifiersJsonList));
-
-  }
-
-  if(m_maximumMessageLengthHasBeenSet)
-  {
-   payload.WithInteger("maximumMessageLength", m_maximumMessageLength);
+   payload.WithString("name", m_name);
 
   }
 
@@ -51,15 +28,15 @@ Aws::String CreateRoomRequest::SerializePayload() const
 
   }
 
-  if(m_messageReviewHandlerHasBeenSet)
+  if(m_maximumMessageLengthHasBeenSet)
   {
-   payload.WithObject("messageReviewHandler", m_messageReviewHandler.Jsonize());
+   payload.WithInteger("maximumMessageLength", m_maximumMessageLength);
 
   }
 
-  if(m_nameHasBeenSet)
+  if(m_messageReviewHandlerHasBeenSet)
   {
-   payload.WithString("name", m_name);
+   payload.WithObject("messageReviewHandler", m_messageReviewHandler.Jsonize());
 
   }
 
@@ -71,6 +48,17 @@ Aws::String CreateRoomRequest::SerializePayload() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_loggingConfigurationIdentifiersHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> loggingConfigurationIdentifiersJsonList(m_loggingConfigurationIdentifiers.size());
+   for(unsigned loggingConfigurationIdentifiersIndex = 0; loggingConfigurationIdentifiersIndex < loggingConfigurationIdentifiersJsonList.GetLength(); ++loggingConfigurationIdentifiersIndex)
+   {
+     loggingConfigurationIdentifiersJsonList[loggingConfigurationIdentifiersIndex].AsString(m_loggingConfigurationIdentifiers[loggingConfigurationIdentifiersIndex]);
+   }
+   payload.WithArray("loggingConfigurationIdentifiers", std::move(loggingConfigurationIdentifiersJsonList));
 
   }
 

@@ -32,12 +32,13 @@ namespace Model
   class InternetMeasurementsLogDelivery
   {
   public:
-    AWS_INTERNETMONITOR_API InternetMeasurementsLogDelivery();
+    AWS_INTERNETMONITOR_API InternetMeasurementsLogDelivery() = default;
     AWS_INTERNETMONITOR_API InternetMeasurementsLogDelivery(Aws::Utils::Json::JsonView jsonValue);
     AWS_INTERNETMONITOR_API InternetMeasurementsLogDelivery& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_INTERNETMONITOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The configuration information for publishing Internet Monitor internet
      * measurements to Amazon S3. The configuration includes the bucket name and
@@ -46,58 +47,13 @@ namespace Model
      * <code>DISABLED</code>, depending on whether you choose to deliver internet
      * measurements to S3 logs.</p>
      */
-    inline const S3Config& GetS3Config() const{ return m_s3Config; }
-
-    /**
-     * <p>The configuration information for publishing Internet Monitor internet
-     * measurements to Amazon S3. The configuration includes the bucket name and
-     * (optionally) prefix for the S3 bucket to store the measurements, and the
-     * delivery status. The delivery status is <code>ENABLED</code> or
-     * <code>DISABLED</code>, depending on whether you choose to deliver internet
-     * measurements to S3 logs.</p>
-     */
+    inline const S3Config& GetS3Config() const { return m_s3Config; }
     inline bool S3ConfigHasBeenSet() const { return m_s3ConfigHasBeenSet; }
-
-    /**
-     * <p>The configuration information for publishing Internet Monitor internet
-     * measurements to Amazon S3. The configuration includes the bucket name and
-     * (optionally) prefix for the S3 bucket to store the measurements, and the
-     * delivery status. The delivery status is <code>ENABLED</code> or
-     * <code>DISABLED</code>, depending on whether you choose to deliver internet
-     * measurements to S3 logs.</p>
-     */
-    inline void SetS3Config(const S3Config& value) { m_s3ConfigHasBeenSet = true; m_s3Config = value; }
-
-    /**
-     * <p>The configuration information for publishing Internet Monitor internet
-     * measurements to Amazon S3. The configuration includes the bucket name and
-     * (optionally) prefix for the S3 bucket to store the measurements, and the
-     * delivery status. The delivery status is <code>ENABLED</code> or
-     * <code>DISABLED</code>, depending on whether you choose to deliver internet
-     * measurements to S3 logs.</p>
-     */
-    inline void SetS3Config(S3Config&& value) { m_s3ConfigHasBeenSet = true; m_s3Config = std::move(value); }
-
-    /**
-     * <p>The configuration information for publishing Internet Monitor internet
-     * measurements to Amazon S3. The configuration includes the bucket name and
-     * (optionally) prefix for the S3 bucket to store the measurements, and the
-     * delivery status. The delivery status is <code>ENABLED</code> or
-     * <code>DISABLED</code>, depending on whether you choose to deliver internet
-     * measurements to S3 logs.</p>
-     */
-    inline InternetMeasurementsLogDelivery& WithS3Config(const S3Config& value) { SetS3Config(value); return *this;}
-
-    /**
-     * <p>The configuration information for publishing Internet Monitor internet
-     * measurements to Amazon S3. The configuration includes the bucket name and
-     * (optionally) prefix for the S3 bucket to store the measurements, and the
-     * delivery status. The delivery status is <code>ENABLED</code> or
-     * <code>DISABLED</code>, depending on whether you choose to deliver internet
-     * measurements to S3 logs.</p>
-     */
-    inline InternetMeasurementsLogDelivery& WithS3Config(S3Config&& value) { SetS3Config(std::move(value)); return *this;}
-
+    template<typename S3ConfigT = S3Config>
+    void SetS3Config(S3ConfigT&& value) { m_s3ConfigHasBeenSet = true; m_s3Config = std::forward<S3ConfigT>(value); }
+    template<typename S3ConfigT = S3Config>
+    InternetMeasurementsLogDelivery& WithS3Config(S3ConfigT&& value) { SetS3Config(std::forward<S3ConfigT>(value)); return *this;}
+    ///@}
   private:
 
     S3Config m_s3Config;

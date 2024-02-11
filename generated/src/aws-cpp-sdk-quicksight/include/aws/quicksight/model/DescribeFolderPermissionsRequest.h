@@ -11,6 +11,10 @@
 
 namespace Aws
 {
+namespace Http
+{
+    class URI;
+} //namespace Http
 namespace QuickSight
 {
 namespace Model
@@ -21,7 +25,7 @@ namespace Model
   class DescribeFolderPermissionsRequest : public QuickSightRequest
   {
   public:
-    AWS_QUICKSIGHT_API DescribeFolderPermissionsRequest();
+    AWS_QUICKSIGHT_API DescribeFolderPermissionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -31,88 +35,66 @@ namespace Model
 
     AWS_QUICKSIGHT_API Aws::String SerializePayload() const override;
 
+    AWS_QUICKSIGHT_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
+
+    ///@{
     /**
      * <p>The ID for the Amazon Web Services account that contains the folder.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that contains the folder.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    DescribeFolderPermissionsRequest& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID for the Amazon Web Services account that contains the folder.</p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that contains the folder.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that contains the folder.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that contains the folder.</p>
-     */
-    inline DescribeFolderPermissionsRequest& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The ID for the Amazon Web Services account that contains the folder.</p>
-     */
-    inline DescribeFolderPermissionsRequest& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for the Amazon Web Services account that contains the folder.</p>
-     */
-    inline DescribeFolderPermissionsRequest& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the folder.</p>
      */
-    inline const Aws::String& GetFolderId() const{ return m_folderId; }
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
+    inline const Aws::String& GetFolderId() const { return m_folderId; }
     inline bool FolderIdHasBeenSet() const { return m_folderIdHasBeenSet; }
+    template<typename FolderIdT = Aws::String>
+    void SetFolderId(FolderIdT&& value) { m_folderIdHasBeenSet = true; m_folderId = std::forward<FolderIdT>(value); }
+    template<typename FolderIdT = Aws::String>
+    DescribeFolderPermissionsRequest& WithFolderId(FolderIdT&& value) { SetFolderId(std::forward<FolderIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the folder.</p>
+     * <p>The namespace of the folder whose permissions you want described.</p>
      */
-    inline void SetFolderId(const Aws::String& value) { m_folderIdHasBeenSet = true; m_folderId = value; }
+    inline const Aws::String& GetNamespace() const { return m_namespace; }
+    inline bool NamespaceHasBeenSet() const { return m_namespaceHasBeenSet; }
+    template<typename NamespaceT = Aws::String>
+    void SetNamespace(NamespaceT&& value) { m_namespaceHasBeenSet = true; m_namespace = std::forward<NamespaceT>(value); }
+    template<typename NamespaceT = Aws::String>
+    DescribeFolderPermissionsRequest& WithNamespace(NamespaceT&& value) { SetNamespace(std::forward<NamespaceT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the folder.</p>
+     * <p>The maximum number of results to be returned per request.</p>
      */
-    inline void SetFolderId(Aws::String&& value) { m_folderIdHasBeenSet = true; m_folderId = std::move(value); }
+    inline int GetMaxResults() const { return m_maxResults; }
+    inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
+    inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
+    inline DescribeFolderPermissionsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the folder.</p>
+     * <p>A pagination token for the next set of results.</p>
      */
-    inline void SetFolderId(const char* value) { m_folderIdHasBeenSet = true; m_folderId.assign(value); }
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline DescribeFolderPermissionsRequest& WithFolderId(const Aws::String& value) { SetFolderId(value); return *this;}
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline DescribeFolderPermissionsRequest& WithFolderId(Aws::String&& value) { SetFolderId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline DescribeFolderPermissionsRequest& WithFolderId(const char* value) { SetFolderId(value); return *this;}
-
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeFolderPermissionsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_awsAccountId;
@@ -120,6 +102,15 @@ namespace Model
 
     Aws::String m_folderId;
     bool m_folderIdHasBeenSet = false;
+
+    Aws::String m_namespace;
+    bool m_namespaceHasBeenSet = false;
+
+    int m_maxResults{0};
+    bool m_maxResultsHasBeenSet = false;
+
+    Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
   };
 
 } // namespace Model

@@ -33,79 +33,36 @@ namespace Model
   class FraudRiskDetails
   {
   public:
-    AWS_VOICEID_API FraudRiskDetails();
+    AWS_VOICEID_API FraudRiskDetails() = default;
     AWS_VOICEID_API FraudRiskDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_VOICEID_API FraudRiskDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_VOICEID_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The details resulting from 'Known Fraudster Risk' analysis of the
      * speaker.</p>
      */
-    inline const KnownFraudsterRisk& GetKnownFraudsterRisk() const{ return m_knownFraudsterRisk; }
-
-    /**
-     * <p>The details resulting from 'Known Fraudster Risk' analysis of the
-     * speaker.</p>
-     */
+    inline const KnownFraudsterRisk& GetKnownFraudsterRisk() const { return m_knownFraudsterRisk; }
     inline bool KnownFraudsterRiskHasBeenSet() const { return m_knownFraudsterRiskHasBeenSet; }
+    template<typename KnownFraudsterRiskT = KnownFraudsterRisk>
+    void SetKnownFraudsterRisk(KnownFraudsterRiskT&& value) { m_knownFraudsterRiskHasBeenSet = true; m_knownFraudsterRisk = std::forward<KnownFraudsterRiskT>(value); }
+    template<typename KnownFraudsterRiskT = KnownFraudsterRisk>
+    FraudRiskDetails& WithKnownFraudsterRisk(KnownFraudsterRiskT&& value) { SetKnownFraudsterRisk(std::forward<KnownFraudsterRiskT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The details resulting from 'Known Fraudster Risk' analysis of the
-     * speaker.</p>
-     */
-    inline void SetKnownFraudsterRisk(const KnownFraudsterRisk& value) { m_knownFraudsterRiskHasBeenSet = true; m_knownFraudsterRisk = value; }
-
-    /**
-     * <p>The details resulting from 'Known Fraudster Risk' analysis of the
-     * speaker.</p>
-     */
-    inline void SetKnownFraudsterRisk(KnownFraudsterRisk&& value) { m_knownFraudsterRiskHasBeenSet = true; m_knownFraudsterRisk = std::move(value); }
-
-    /**
-     * <p>The details resulting from 'Known Fraudster Risk' analysis of the
-     * speaker.</p>
-     */
-    inline FraudRiskDetails& WithKnownFraudsterRisk(const KnownFraudsterRisk& value) { SetKnownFraudsterRisk(value); return *this;}
-
-    /**
-     * <p>The details resulting from 'Known Fraudster Risk' analysis of the
-     * speaker.</p>
-     */
-    inline FraudRiskDetails& WithKnownFraudsterRisk(KnownFraudsterRisk&& value) { SetKnownFraudsterRisk(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The details resulting from 'Voice Spoofing Risk' analysis of the speaker.</p>
      */
-    inline const VoiceSpoofingRisk& GetVoiceSpoofingRisk() const{ return m_voiceSpoofingRisk; }
-
-    /**
-     * <p>The details resulting from 'Voice Spoofing Risk' analysis of the speaker.</p>
-     */
+    inline const VoiceSpoofingRisk& GetVoiceSpoofingRisk() const { return m_voiceSpoofingRisk; }
     inline bool VoiceSpoofingRiskHasBeenSet() const { return m_voiceSpoofingRiskHasBeenSet; }
-
-    /**
-     * <p>The details resulting from 'Voice Spoofing Risk' analysis of the speaker.</p>
-     */
-    inline void SetVoiceSpoofingRisk(const VoiceSpoofingRisk& value) { m_voiceSpoofingRiskHasBeenSet = true; m_voiceSpoofingRisk = value; }
-
-    /**
-     * <p>The details resulting from 'Voice Spoofing Risk' analysis of the speaker.</p>
-     */
-    inline void SetVoiceSpoofingRisk(VoiceSpoofingRisk&& value) { m_voiceSpoofingRiskHasBeenSet = true; m_voiceSpoofingRisk = std::move(value); }
-
-    /**
-     * <p>The details resulting from 'Voice Spoofing Risk' analysis of the speaker.</p>
-     */
-    inline FraudRiskDetails& WithVoiceSpoofingRisk(const VoiceSpoofingRisk& value) { SetVoiceSpoofingRisk(value); return *this;}
-
-    /**
-     * <p>The details resulting from 'Voice Spoofing Risk' analysis of the speaker.</p>
-     */
-    inline FraudRiskDetails& WithVoiceSpoofingRisk(VoiceSpoofingRisk&& value) { SetVoiceSpoofingRisk(std::move(value)); return *this;}
-
+    template<typename VoiceSpoofingRiskT = VoiceSpoofingRisk>
+    void SetVoiceSpoofingRisk(VoiceSpoofingRiskT&& value) { m_voiceSpoofingRiskHasBeenSet = true; m_voiceSpoofingRisk = std::forward<VoiceSpoofingRiskT>(value); }
+    template<typename VoiceSpoofingRiskT = VoiceSpoofingRisk>
+    FraudRiskDetails& WithVoiceSpoofingRisk(VoiceSpoofingRiskT&& value) { SetVoiceSpoofingRisk(std::forward<VoiceSpoofingRiskT>(value)); return *this;}
+    ///@}
   private:
 
     KnownFraudsterRisk m_knownFraudsterRisk;

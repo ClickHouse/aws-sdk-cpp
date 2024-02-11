@@ -22,7 +22,7 @@ namespace Model
   class RemoveDraftAppVersionResourceMappingsRequest : public ResilienceHubRequest
   {
   public:
-    AWS_RESILIENCEHUB_API RemoveDraftAppVersionResourceMappingsRequest();
+    AWS_RESILIENCEHUB_API RemoveDraftAppVersionResourceMappingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,416 +33,113 @@ namespace Model
     AWS_RESILIENCEHUB_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the Resilience Hub application. The format
-     * for this ARN is:
+     * <p>Amazon Resource Name (ARN) of the Resilience Hub application. The format for
+     * this ARN is:
      * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:app/<code>app-id</code>.
      * For more information about ARNs, see <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
+     * Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General
+     * Reference</i> guide.</p>
      */
-    inline const Aws::String& GetAppArn() const{ return m_appArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Resilience Hub application. The format
-     * for this ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:app/<code>app-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
+    inline const Aws::String& GetAppArn() const { return m_appArn; }
     inline bool AppArnHasBeenSet() const { return m_appArnHasBeenSet; }
+    template<typename AppArnT = Aws::String>
+    void SetAppArn(AppArnT&& value) { m_appArnHasBeenSet = true; m_appArn = std::forward<AppArnT>(value); }
+    template<typename AppArnT = Aws::String>
+    RemoveDraftAppVersionResourceMappingsRequest& WithAppArn(AppArnT&& value) { SetAppArn(std::forward<AppArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Resilience Hub application. The format
-     * for this ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:app/<code>app-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
-    inline void SetAppArn(const Aws::String& value) { m_appArnHasBeenSet = true; m_appArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Resilience Hub application. The format
-     * for this ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:app/<code>app-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
-    inline void SetAppArn(Aws::String&& value) { m_appArnHasBeenSet = true; m_appArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Resilience Hub application. The format
-     * for this ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:app/<code>app-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
-    inline void SetAppArn(const char* value) { m_appArnHasBeenSet = true; m_appArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Resilience Hub application. The format
-     * for this ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:app/<code>app-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& WithAppArn(const Aws::String& value) { SetAppArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Resilience Hub application. The format
-     * for this ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:app/<code>app-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& WithAppArn(Aws::String&& value) { SetAppArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Resilience Hub application. The format
-     * for this ARN is:
-     * arn:<code>partition</code>:resiliencehub:<code>region</code>:<code>account</code>:app/<code>app-id</code>.
-     * For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i> guide.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& WithAppArn(const char* value) { SetAppArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The names of the registered applications you want to remove from the resource
      * mappings.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAppRegistryAppNames() const{ return m_appRegistryAppNames; }
-
-    /**
-     * <p>The names of the registered applications you want to remove from the resource
-     * mappings.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAppRegistryAppNames() const { return m_appRegistryAppNames; }
     inline bool AppRegistryAppNamesHasBeenSet() const { return m_appRegistryAppNamesHasBeenSet; }
+    template<typename AppRegistryAppNamesT = Aws::Vector<Aws::String>>
+    void SetAppRegistryAppNames(AppRegistryAppNamesT&& value) { m_appRegistryAppNamesHasBeenSet = true; m_appRegistryAppNames = std::forward<AppRegistryAppNamesT>(value); }
+    template<typename AppRegistryAppNamesT = Aws::Vector<Aws::String>>
+    RemoveDraftAppVersionResourceMappingsRequest& WithAppRegistryAppNames(AppRegistryAppNamesT&& value) { SetAppRegistryAppNames(std::forward<AppRegistryAppNamesT>(value)); return *this;}
+    template<typename AppRegistryAppNamesT = Aws::String>
+    RemoveDraftAppVersionResourceMappingsRequest& AddAppRegistryAppNames(AppRegistryAppNamesT&& value) { m_appRegistryAppNamesHasBeenSet = true; m_appRegistryAppNames.emplace_back(std::forward<AppRegistryAppNamesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The names of the registered applications you want to remove from the resource
-     * mappings.</p>
-     */
-    inline void SetAppRegistryAppNames(const Aws::Vector<Aws::String>& value) { m_appRegistryAppNamesHasBeenSet = true; m_appRegistryAppNames = value; }
-
-    /**
-     * <p>The names of the registered applications you want to remove from the resource
-     * mappings.</p>
-     */
-    inline void SetAppRegistryAppNames(Aws::Vector<Aws::String>&& value) { m_appRegistryAppNamesHasBeenSet = true; m_appRegistryAppNames = std::move(value); }
-
-    /**
-     * <p>The names of the registered applications you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& WithAppRegistryAppNames(const Aws::Vector<Aws::String>& value) { SetAppRegistryAppNames(value); return *this;}
-
-    /**
-     * <p>The names of the registered applications you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& WithAppRegistryAppNames(Aws::Vector<Aws::String>&& value) { SetAppRegistryAppNames(std::move(value)); return *this;}
-
-    /**
-     * <p>The names of the registered applications you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& AddAppRegistryAppNames(const Aws::String& value) { m_appRegistryAppNamesHasBeenSet = true; m_appRegistryAppNames.push_back(value); return *this; }
-
-    /**
-     * <p>The names of the registered applications you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& AddAppRegistryAppNames(Aws::String&& value) { m_appRegistryAppNamesHasBeenSet = true; m_appRegistryAppNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The names of the registered applications you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& AddAppRegistryAppNames(const char* value) { m_appRegistryAppNamesHasBeenSet = true; m_appRegistryAppNames.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The names of the Amazon Elastic Kubernetes Service clusters and namespaces
      * you want to remove from the resource mappings.</p>  <p>This parameter
      * accepts values in "eks-cluster/namespace" format.</p> 
      */
-    inline const Aws::Vector<Aws::String>& GetEksSourceNames() const{ return m_eksSourceNames; }
-
-    /**
-     * <p>The names of the Amazon Elastic Kubernetes Service clusters and namespaces
-     * you want to remove from the resource mappings.</p>  <p>This parameter
-     * accepts values in "eks-cluster/namespace" format.</p> 
-     */
+    inline const Aws::Vector<Aws::String>& GetEksSourceNames() const { return m_eksSourceNames; }
     inline bool EksSourceNamesHasBeenSet() const { return m_eksSourceNamesHasBeenSet; }
+    template<typename EksSourceNamesT = Aws::Vector<Aws::String>>
+    void SetEksSourceNames(EksSourceNamesT&& value) { m_eksSourceNamesHasBeenSet = true; m_eksSourceNames = std::forward<EksSourceNamesT>(value); }
+    template<typename EksSourceNamesT = Aws::Vector<Aws::String>>
+    RemoveDraftAppVersionResourceMappingsRequest& WithEksSourceNames(EksSourceNamesT&& value) { SetEksSourceNames(std::forward<EksSourceNamesT>(value)); return *this;}
+    template<typename EksSourceNamesT = Aws::String>
+    RemoveDraftAppVersionResourceMappingsRequest& AddEksSourceNames(EksSourceNamesT&& value) { m_eksSourceNamesHasBeenSet = true; m_eksSourceNames.emplace_back(std::forward<EksSourceNamesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The names of the Amazon Elastic Kubernetes Service clusters and namespaces
-     * you want to remove from the resource mappings.</p>  <p>This parameter
-     * accepts values in "eks-cluster/namespace" format.</p> 
-     */
-    inline void SetEksSourceNames(const Aws::Vector<Aws::String>& value) { m_eksSourceNamesHasBeenSet = true; m_eksSourceNames = value; }
-
-    /**
-     * <p>The names of the Amazon Elastic Kubernetes Service clusters and namespaces
-     * you want to remove from the resource mappings.</p>  <p>This parameter
-     * accepts values in "eks-cluster/namespace" format.</p> 
-     */
-    inline void SetEksSourceNames(Aws::Vector<Aws::String>&& value) { m_eksSourceNamesHasBeenSet = true; m_eksSourceNames = std::move(value); }
-
-    /**
-     * <p>The names of the Amazon Elastic Kubernetes Service clusters and namespaces
-     * you want to remove from the resource mappings.</p>  <p>This parameter
-     * accepts values in "eks-cluster/namespace" format.</p> 
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& WithEksSourceNames(const Aws::Vector<Aws::String>& value) { SetEksSourceNames(value); return *this;}
-
-    /**
-     * <p>The names of the Amazon Elastic Kubernetes Service clusters and namespaces
-     * you want to remove from the resource mappings.</p>  <p>This parameter
-     * accepts values in "eks-cluster/namespace" format.</p> 
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& WithEksSourceNames(Aws::Vector<Aws::String>&& value) { SetEksSourceNames(std::move(value)); return *this;}
-
-    /**
-     * <p>The names of the Amazon Elastic Kubernetes Service clusters and namespaces
-     * you want to remove from the resource mappings.</p>  <p>This parameter
-     * accepts values in "eks-cluster/namespace" format.</p> 
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& AddEksSourceNames(const Aws::String& value) { m_eksSourceNamesHasBeenSet = true; m_eksSourceNames.push_back(value); return *this; }
-
-    /**
-     * <p>The names of the Amazon Elastic Kubernetes Service clusters and namespaces
-     * you want to remove from the resource mappings.</p>  <p>This parameter
-     * accepts values in "eks-cluster/namespace" format.</p> 
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& AddEksSourceNames(Aws::String&& value) { m_eksSourceNamesHasBeenSet = true; m_eksSourceNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The names of the Amazon Elastic Kubernetes Service clusters and namespaces
-     * you want to remove from the resource mappings.</p>  <p>This parameter
-     * accepts values in "eks-cluster/namespace" format.</p> 
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& AddEksSourceNames(const char* value) { m_eksSourceNamesHasBeenSet = true; m_eksSourceNames.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The names of the CloudFormation stacks you want to remove from the resource
      * mappings.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetLogicalStackNames() const{ return m_logicalStackNames; }
-
-    /**
-     * <p>The names of the CloudFormation stacks you want to remove from the resource
-     * mappings.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetLogicalStackNames() const { return m_logicalStackNames; }
     inline bool LogicalStackNamesHasBeenSet() const { return m_logicalStackNamesHasBeenSet; }
+    template<typename LogicalStackNamesT = Aws::Vector<Aws::String>>
+    void SetLogicalStackNames(LogicalStackNamesT&& value) { m_logicalStackNamesHasBeenSet = true; m_logicalStackNames = std::forward<LogicalStackNamesT>(value); }
+    template<typename LogicalStackNamesT = Aws::Vector<Aws::String>>
+    RemoveDraftAppVersionResourceMappingsRequest& WithLogicalStackNames(LogicalStackNamesT&& value) { SetLogicalStackNames(std::forward<LogicalStackNamesT>(value)); return *this;}
+    template<typename LogicalStackNamesT = Aws::String>
+    RemoveDraftAppVersionResourceMappingsRequest& AddLogicalStackNames(LogicalStackNamesT&& value) { m_logicalStackNamesHasBeenSet = true; m_logicalStackNames.emplace_back(std::forward<LogicalStackNamesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The names of the CloudFormation stacks you want to remove from the resource
-     * mappings.</p>
-     */
-    inline void SetLogicalStackNames(const Aws::Vector<Aws::String>& value) { m_logicalStackNamesHasBeenSet = true; m_logicalStackNames = value; }
-
-    /**
-     * <p>The names of the CloudFormation stacks you want to remove from the resource
-     * mappings.</p>
-     */
-    inline void SetLogicalStackNames(Aws::Vector<Aws::String>&& value) { m_logicalStackNamesHasBeenSet = true; m_logicalStackNames = std::move(value); }
-
-    /**
-     * <p>The names of the CloudFormation stacks you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& WithLogicalStackNames(const Aws::Vector<Aws::String>& value) { SetLogicalStackNames(value); return *this;}
-
-    /**
-     * <p>The names of the CloudFormation stacks you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& WithLogicalStackNames(Aws::Vector<Aws::String>&& value) { SetLogicalStackNames(std::move(value)); return *this;}
-
-    /**
-     * <p>The names of the CloudFormation stacks you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& AddLogicalStackNames(const Aws::String& value) { m_logicalStackNamesHasBeenSet = true; m_logicalStackNames.push_back(value); return *this; }
-
-    /**
-     * <p>The names of the CloudFormation stacks you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& AddLogicalStackNames(Aws::String&& value) { m_logicalStackNamesHasBeenSet = true; m_logicalStackNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The names of the CloudFormation stacks you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& AddLogicalStackNames(const char* value) { m_logicalStackNamesHasBeenSet = true; m_logicalStackNames.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The names of the resource groups you want to remove from the resource
      * mappings.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetResourceGroupNames() const{ return m_resourceGroupNames; }
-
-    /**
-     * <p>The names of the resource groups you want to remove from the resource
-     * mappings.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetResourceGroupNames() const { return m_resourceGroupNames; }
     inline bool ResourceGroupNamesHasBeenSet() const { return m_resourceGroupNamesHasBeenSet; }
+    template<typename ResourceGroupNamesT = Aws::Vector<Aws::String>>
+    void SetResourceGroupNames(ResourceGroupNamesT&& value) { m_resourceGroupNamesHasBeenSet = true; m_resourceGroupNames = std::forward<ResourceGroupNamesT>(value); }
+    template<typename ResourceGroupNamesT = Aws::Vector<Aws::String>>
+    RemoveDraftAppVersionResourceMappingsRequest& WithResourceGroupNames(ResourceGroupNamesT&& value) { SetResourceGroupNames(std::forward<ResourceGroupNamesT>(value)); return *this;}
+    template<typename ResourceGroupNamesT = Aws::String>
+    RemoveDraftAppVersionResourceMappingsRequest& AddResourceGroupNames(ResourceGroupNamesT&& value) { m_resourceGroupNamesHasBeenSet = true; m_resourceGroupNames.emplace_back(std::forward<ResourceGroupNamesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The names of the resource groups you want to remove from the resource
-     * mappings.</p>
-     */
-    inline void SetResourceGroupNames(const Aws::Vector<Aws::String>& value) { m_resourceGroupNamesHasBeenSet = true; m_resourceGroupNames = value; }
-
-    /**
-     * <p>The names of the resource groups you want to remove from the resource
-     * mappings.</p>
-     */
-    inline void SetResourceGroupNames(Aws::Vector<Aws::String>&& value) { m_resourceGroupNamesHasBeenSet = true; m_resourceGroupNames = std::move(value); }
-
-    /**
-     * <p>The names of the resource groups you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& WithResourceGroupNames(const Aws::Vector<Aws::String>& value) { SetResourceGroupNames(value); return *this;}
-
-    /**
-     * <p>The names of the resource groups you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& WithResourceGroupNames(Aws::Vector<Aws::String>&& value) { SetResourceGroupNames(std::move(value)); return *this;}
-
-    /**
-     * <p>The names of the resource groups you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& AddResourceGroupNames(const Aws::String& value) { m_resourceGroupNamesHasBeenSet = true; m_resourceGroupNames.push_back(value); return *this; }
-
-    /**
-     * <p>The names of the resource groups you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& AddResourceGroupNames(Aws::String&& value) { m_resourceGroupNamesHasBeenSet = true; m_resourceGroupNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The names of the resource groups you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& AddResourceGroupNames(const char* value) { m_resourceGroupNamesHasBeenSet = true; m_resourceGroupNames.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The names of the resources you want to remove from the resource mappings.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetResourceNames() const{ return m_resourceNames; }
-
-    /**
-     * <p>The names of the resources you want to remove from the resource mappings.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetResourceNames() const { return m_resourceNames; }
     inline bool ResourceNamesHasBeenSet() const { return m_resourceNamesHasBeenSet; }
+    template<typename ResourceNamesT = Aws::Vector<Aws::String>>
+    void SetResourceNames(ResourceNamesT&& value) { m_resourceNamesHasBeenSet = true; m_resourceNames = std::forward<ResourceNamesT>(value); }
+    template<typename ResourceNamesT = Aws::Vector<Aws::String>>
+    RemoveDraftAppVersionResourceMappingsRequest& WithResourceNames(ResourceNamesT&& value) { SetResourceNames(std::forward<ResourceNamesT>(value)); return *this;}
+    template<typename ResourceNamesT = Aws::String>
+    RemoveDraftAppVersionResourceMappingsRequest& AddResourceNames(ResourceNamesT&& value) { m_resourceNamesHasBeenSet = true; m_resourceNames.emplace_back(std::forward<ResourceNamesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The names of the resources you want to remove from the resource mappings.</p>
-     */
-    inline void SetResourceNames(const Aws::Vector<Aws::String>& value) { m_resourceNamesHasBeenSet = true; m_resourceNames = value; }
-
-    /**
-     * <p>The names of the resources you want to remove from the resource mappings.</p>
-     */
-    inline void SetResourceNames(Aws::Vector<Aws::String>&& value) { m_resourceNamesHasBeenSet = true; m_resourceNames = std::move(value); }
-
-    /**
-     * <p>The names of the resources you want to remove from the resource mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& WithResourceNames(const Aws::Vector<Aws::String>& value) { SetResourceNames(value); return *this;}
-
-    /**
-     * <p>The names of the resources you want to remove from the resource mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& WithResourceNames(Aws::Vector<Aws::String>&& value) { SetResourceNames(std::move(value)); return *this;}
-
-    /**
-     * <p>The names of the resources you want to remove from the resource mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& AddResourceNames(const Aws::String& value) { m_resourceNamesHasBeenSet = true; m_resourceNames.push_back(value); return *this; }
-
-    /**
-     * <p>The names of the resources you want to remove from the resource mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& AddResourceNames(Aws::String&& value) { m_resourceNamesHasBeenSet = true; m_resourceNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The names of the resources you want to remove from the resource mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& AddResourceNames(const char* value) { m_resourceNamesHasBeenSet = true; m_resourceNames.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The names of the Terraform sources you want to remove from the resource
      * mappings.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetTerraformSourceNames() const{ return m_terraformSourceNames; }
-
-    /**
-     * <p>The names of the Terraform sources you want to remove from the resource
-     * mappings.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetTerraformSourceNames() const { return m_terraformSourceNames; }
     inline bool TerraformSourceNamesHasBeenSet() const { return m_terraformSourceNamesHasBeenSet; }
-
-    /**
-     * <p>The names of the Terraform sources you want to remove from the resource
-     * mappings.</p>
-     */
-    inline void SetTerraformSourceNames(const Aws::Vector<Aws::String>& value) { m_terraformSourceNamesHasBeenSet = true; m_terraformSourceNames = value; }
-
-    /**
-     * <p>The names of the Terraform sources you want to remove from the resource
-     * mappings.</p>
-     */
-    inline void SetTerraformSourceNames(Aws::Vector<Aws::String>&& value) { m_terraformSourceNamesHasBeenSet = true; m_terraformSourceNames = std::move(value); }
-
-    /**
-     * <p>The names of the Terraform sources you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& WithTerraformSourceNames(const Aws::Vector<Aws::String>& value) { SetTerraformSourceNames(value); return *this;}
-
-    /**
-     * <p>The names of the Terraform sources you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& WithTerraformSourceNames(Aws::Vector<Aws::String>&& value) { SetTerraformSourceNames(std::move(value)); return *this;}
-
-    /**
-     * <p>The names of the Terraform sources you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& AddTerraformSourceNames(const Aws::String& value) { m_terraformSourceNamesHasBeenSet = true; m_terraformSourceNames.push_back(value); return *this; }
-
-    /**
-     * <p>The names of the Terraform sources you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& AddTerraformSourceNames(Aws::String&& value) { m_terraformSourceNamesHasBeenSet = true; m_terraformSourceNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The names of the Terraform sources you want to remove from the resource
-     * mappings.</p>
-     */
-    inline RemoveDraftAppVersionResourceMappingsRequest& AddTerraformSourceNames(const char* value) { m_terraformSourceNamesHasBeenSet = true; m_terraformSourceNames.push_back(value); return *this; }
-
+    template<typename TerraformSourceNamesT = Aws::Vector<Aws::String>>
+    void SetTerraformSourceNames(TerraformSourceNamesT&& value) { m_terraformSourceNamesHasBeenSet = true; m_terraformSourceNames = std::forward<TerraformSourceNamesT>(value); }
+    template<typename TerraformSourceNamesT = Aws::Vector<Aws::String>>
+    RemoveDraftAppVersionResourceMappingsRequest& WithTerraformSourceNames(TerraformSourceNamesT&& value) { SetTerraformSourceNames(std::forward<TerraformSourceNamesT>(value)); return *this;}
+    template<typename TerraformSourceNamesT = Aws::String>
+    RemoveDraftAppVersionResourceMappingsRequest& AddTerraformSourceNames(TerraformSourceNamesT&& value) { m_terraformSourceNamesHasBeenSet = true; m_terraformSourceNames.emplace_back(std::forward<TerraformSourceNamesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_appArn;

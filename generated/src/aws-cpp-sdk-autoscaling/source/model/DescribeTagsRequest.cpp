@@ -10,25 +10,24 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-DescribeTagsRequest::DescribeTagsRequest() : 
-    m_filtersHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false)
-{
-}
-
 Aws::String DescribeTagsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeTags&";
   if(m_filtersHasBeenSet)
   {
-    unsigned filtersCount = 1;
-    for(auto& item : m_filters)
+    if (m_filters.empty())
     {
-      item.OutputToStream(ss, "Filters.member.", filtersCount, "");
-      filtersCount++;
+      ss << "Filters=&";
+    }
+    else
+    {
+      unsigned filtersCount = 1;
+      for(auto& item : m_filters)
+      {
+        item.OutputToStream(ss, "Filters.member.", filtersCount, "");
+        filtersCount++;
+      }
     }
   }
 

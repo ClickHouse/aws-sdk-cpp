@@ -28,113 +28,53 @@ namespace Model
   class DescribeUserResult
   {
   public:
-    AWS_TRANSFER_API DescribeUserResult();
+    AWS_TRANSFER_API DescribeUserResult() = default;
     AWS_TRANSFER_API DescribeUserResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_TRANSFER_API DescribeUserResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A system-assigned unique identifier for a server that has this user
      * assigned.</p>
      */
-    inline const Aws::String& GetServerId() const{ return m_serverId; }
+    inline const Aws::String& GetServerId() const { return m_serverId; }
+    template<typename ServerIdT = Aws::String>
+    void SetServerId(ServerIdT&& value) { m_serverIdHasBeenSet = true; m_serverId = std::forward<ServerIdT>(value); }
+    template<typename ServerIdT = Aws::String>
+    DescribeUserResult& WithServerId(ServerIdT&& value) { SetServerId(std::forward<ServerIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A system-assigned unique identifier for a server that has this user
-     * assigned.</p>
-     */
-    inline void SetServerId(const Aws::String& value) { m_serverId = value; }
-
-    /**
-     * <p>A system-assigned unique identifier for a server that has this user
-     * assigned.</p>
-     */
-    inline void SetServerId(Aws::String&& value) { m_serverId = std::move(value); }
-
-    /**
-     * <p>A system-assigned unique identifier for a server that has this user
-     * assigned.</p>
-     */
-    inline void SetServerId(const char* value) { m_serverId.assign(value); }
-
-    /**
-     * <p>A system-assigned unique identifier for a server that has this user
-     * assigned.</p>
-     */
-    inline DescribeUserResult& WithServerId(const Aws::String& value) { SetServerId(value); return *this;}
-
-    /**
-     * <p>A system-assigned unique identifier for a server that has this user
-     * assigned.</p>
-     */
-    inline DescribeUserResult& WithServerId(Aws::String&& value) { SetServerId(std::move(value)); return *this;}
-
-    /**
-     * <p>A system-assigned unique identifier for a server that has this user
-     * assigned.</p>
-     */
-    inline DescribeUserResult& WithServerId(const char* value) { SetServerId(value); return *this;}
-
-
-    /**
-     * <p>An array containing the properties of the user account for the
+     * <p>An array containing the properties of the Transfer Family user for the
      * <code>ServerID</code> value that you specified.</p>
      */
-    inline const DescribedUser& GetUser() const{ return m_user; }
+    inline const DescribedUser& GetUser() const { return m_user; }
+    template<typename UserT = DescribedUser>
+    void SetUser(UserT&& value) { m_userHasBeenSet = true; m_user = std::forward<UserT>(value); }
+    template<typename UserT = DescribedUser>
+    DescribeUserResult& WithUser(UserT&& value) { SetUser(std::forward<UserT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An array containing the properties of the user account for the
-     * <code>ServerID</code> value that you specified.</p>
-     */
-    inline void SetUser(const DescribedUser& value) { m_user = value; }
-
-    /**
-     * <p>An array containing the properties of the user account for the
-     * <code>ServerID</code> value that you specified.</p>
-     */
-    inline void SetUser(DescribedUser&& value) { m_user = std::move(value); }
-
-    /**
-     * <p>An array containing the properties of the user account for the
-     * <code>ServerID</code> value that you specified.</p>
-     */
-    inline DescribeUserResult& WithUser(const DescribedUser& value) { SetUser(value); return *this;}
-
-    /**
-     * <p>An array containing the properties of the user account for the
-     * <code>ServerID</code> value that you specified.</p>
-     */
-    inline DescribeUserResult& WithUser(DescribedUser&& value) { SetUser(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeUserResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeUserResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeUserResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeUserResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_serverId;
+    bool m_serverIdHasBeenSet = false;
 
     DescribedUser m_user;
+    bool m_userHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

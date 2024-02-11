@@ -12,17 +12,6 @@ using namespace Aws::KMS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GenerateDataKeyRequest::GenerateDataKeyRequest() : 
-    m_keyIdHasBeenSet(false),
-    m_encryptionContextHasBeenSet(false),
-    m_numberOfBytes(0),
-    m_numberOfBytesHasBeenSet(false),
-    m_keySpec(DataKeySpec::NOT_SET),
-    m_keySpecHasBeenSet(false),
-    m_grantTokensHasBeenSet(false)
-{
-}
-
 Aws::String GenerateDataKeyRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -63,6 +52,18 @@ Aws::String GenerateDataKeyRequest::SerializePayload() const
      grantTokensJsonList[grantTokensIndex].AsString(m_grantTokens[grantTokensIndex]);
    }
    payload.WithArray("GrantTokens", std::move(grantTokensJsonList));
+
+  }
+
+  if(m_recipientHasBeenSet)
+  {
+   payload.WithObject("Recipient", m_recipient.Jsonize());
+
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+   payload.WithBool("DryRun", m_dryRun);
 
   }
 

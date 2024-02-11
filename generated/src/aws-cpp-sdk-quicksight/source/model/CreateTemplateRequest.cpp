@@ -12,18 +12,6 @@ using namespace Aws::QuickSight::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateTemplateRequest::CreateTemplateRequest() : 
-    m_awsAccountIdHasBeenSet(false),
-    m_templateIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_permissionsHasBeenSet(false),
-    m_sourceEntityHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_versionDescriptionHasBeenSet(false),
-    m_definitionHasBeenSet(false)
-{
-}
-
 Aws::String CreateTemplateRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -71,6 +59,12 @@ Aws::String CreateTemplateRequest::SerializePayload() const
   if(m_definitionHasBeenSet)
   {
    payload.WithObject("Definition", m_definition.Jsonize());
+
+  }
+
+  if(m_validationStrategyHasBeenSet)
+  {
+   payload.WithObject("ValidationStrategy", m_validationStrategy.Jsonize());
 
   }
 

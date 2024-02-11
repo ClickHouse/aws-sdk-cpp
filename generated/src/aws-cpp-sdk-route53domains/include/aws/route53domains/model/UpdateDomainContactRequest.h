@@ -27,7 +27,7 @@ namespace Model
   class UpdateDomainContactRequest : public Route53DomainsRequest
   {
   public:
-    AWS_ROUTE53DOMAINS_API UpdateDomainContactRequest();
+    AWS_ROUTE53DOMAINS_API UpdateDomainContactRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,170 +40,78 @@ namespace Model
     AWS_ROUTE53DOMAINS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the domain that you want to update contact information for.</p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
-
-    /**
-     * <p>The name of the domain that you want to update contact information for.</p>
-     */
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
     inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    UpdateDomainContactRequest& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the domain that you want to update contact information for.</p>
-     */
-    inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
-
-    /**
-     * <p>The name of the domain that you want to update contact information for.</p>
-     */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
-
-    /**
-     * <p>The name of the domain that you want to update contact information for.</p>
-     */
-    inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
-
-    /**
-     * <p>The name of the domain that you want to update contact information for.</p>
-     */
-    inline UpdateDomainContactRequest& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p>The name of the domain that you want to update contact information for.</p>
-     */
-    inline UpdateDomainContactRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the domain that you want to update contact information for.</p>
-     */
-    inline UpdateDomainContactRequest& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides detailed contact information.</p>
      */
-    inline const ContactDetail& GetAdminContact() const{ return m_adminContact; }
-
-    /**
-     * <p>Provides detailed contact information.</p>
-     */
+    inline const ContactDetail& GetAdminContact() const { return m_adminContact; }
     inline bool AdminContactHasBeenSet() const { return m_adminContactHasBeenSet; }
+    template<typename AdminContactT = ContactDetail>
+    void SetAdminContact(AdminContactT&& value) { m_adminContactHasBeenSet = true; m_adminContact = std::forward<AdminContactT>(value); }
+    template<typename AdminContactT = ContactDetail>
+    UpdateDomainContactRequest& WithAdminContact(AdminContactT&& value) { SetAdminContact(std::forward<AdminContactT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>Provides detailed contact information.</p>
      */
-    inline void SetAdminContact(const ContactDetail& value) { m_adminContactHasBeenSet = true; m_adminContact = value; }
-
-    /**
-     * <p>Provides detailed contact information.</p>
-     */
-    inline void SetAdminContact(ContactDetail&& value) { m_adminContactHasBeenSet = true; m_adminContact = std::move(value); }
-
-    /**
-     * <p>Provides detailed contact information.</p>
-     */
-    inline UpdateDomainContactRequest& WithAdminContact(const ContactDetail& value) { SetAdminContact(value); return *this;}
-
-    /**
-     * <p>Provides detailed contact information.</p>
-     */
-    inline UpdateDomainContactRequest& WithAdminContact(ContactDetail&& value) { SetAdminContact(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Provides detailed contact information.</p>
-     */
-    inline const ContactDetail& GetRegistrantContact() const{ return m_registrantContact; }
-
-    /**
-     * <p>Provides detailed contact information.</p>
-     */
+    inline const ContactDetail& GetRegistrantContact() const { return m_registrantContact; }
     inline bool RegistrantContactHasBeenSet() const { return m_registrantContactHasBeenSet; }
+    template<typename RegistrantContactT = ContactDetail>
+    void SetRegistrantContact(RegistrantContactT&& value) { m_registrantContactHasBeenSet = true; m_registrantContact = std::forward<RegistrantContactT>(value); }
+    template<typename RegistrantContactT = ContactDetail>
+    UpdateDomainContactRequest& WithRegistrantContact(RegistrantContactT&& value) { SetRegistrantContact(std::forward<RegistrantContactT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>Provides detailed contact information.</p>
      */
-    inline void SetRegistrantContact(const ContactDetail& value) { m_registrantContactHasBeenSet = true; m_registrantContact = value; }
-
-    /**
-     * <p>Provides detailed contact information.</p>
-     */
-    inline void SetRegistrantContact(ContactDetail&& value) { m_registrantContactHasBeenSet = true; m_registrantContact = std::move(value); }
-
-    /**
-     * <p>Provides detailed contact information.</p>
-     */
-    inline UpdateDomainContactRequest& WithRegistrantContact(const ContactDetail& value) { SetRegistrantContact(value); return *this;}
-
-    /**
-     * <p>Provides detailed contact information.</p>
-     */
-    inline UpdateDomainContactRequest& WithRegistrantContact(ContactDetail&& value) { SetRegistrantContact(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Provides detailed contact information.</p>
-     */
-    inline const ContactDetail& GetTechContact() const{ return m_techContact; }
-
-    /**
-     * <p>Provides detailed contact information.</p>
-     */
+    inline const ContactDetail& GetTechContact() const { return m_techContact; }
     inline bool TechContactHasBeenSet() const { return m_techContactHasBeenSet; }
+    template<typename TechContactT = ContactDetail>
+    void SetTechContact(TechContactT&& value) { m_techContactHasBeenSet = true; m_techContact = std::forward<TechContactT>(value); }
+    template<typename TechContactT = ContactDetail>
+    UpdateDomainContactRequest& WithTechContact(TechContactT&& value) { SetTechContact(std::forward<TechContactT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Provides detailed contact information.</p>
+     * <p> Customer's consent for the owner change request. Required if the domain is
+     * not free (consent price is more than $0.00).</p>
      */
-    inline void SetTechContact(const ContactDetail& value) { m_techContactHasBeenSet = true; m_techContact = value; }
-
-    /**
-     * <p>Provides detailed contact information.</p>
-     */
-    inline void SetTechContact(ContactDetail&& value) { m_techContactHasBeenSet = true; m_techContact = std::move(value); }
-
-    /**
-     * <p>Provides detailed contact information.</p>
-     */
-    inline UpdateDomainContactRequest& WithTechContact(const ContactDetail& value) { SetTechContact(value); return *this;}
-
-    /**
-     * <p>Provides detailed contact information.</p>
-     */
-    inline UpdateDomainContactRequest& WithTechContact(ContactDetail&& value) { SetTechContact(std::move(value)); return *this;}
-
-
-    /**
-     * <p> Customer's consent for the owner change request. </p>
-     */
-    inline const Consent& GetConsent() const{ return m_consent; }
-
-    /**
-     * <p> Customer's consent for the owner change request. </p>
-     */
+    inline const Consent& GetConsent() const { return m_consent; }
     inline bool ConsentHasBeenSet() const { return m_consentHasBeenSet; }
+    template<typename ConsentT = Consent>
+    void SetConsent(ConsentT&& value) { m_consentHasBeenSet = true; m_consent = std::forward<ConsentT>(value); }
+    template<typename ConsentT = Consent>
+    UpdateDomainContactRequest& WithConsent(ConsentT&& value) { SetConsent(std::forward<ConsentT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> Customer's consent for the owner change request. </p>
+     * <p>Provides detailed contact information.</p>
      */
-    inline void SetConsent(const Consent& value) { m_consentHasBeenSet = true; m_consent = value; }
-
-    /**
-     * <p> Customer's consent for the owner change request. </p>
-     */
-    inline void SetConsent(Consent&& value) { m_consentHasBeenSet = true; m_consent = std::move(value); }
-
-    /**
-     * <p> Customer's consent for the owner change request. </p>
-     */
-    inline UpdateDomainContactRequest& WithConsent(const Consent& value) { SetConsent(value); return *this;}
-
-    /**
-     * <p> Customer's consent for the owner change request. </p>
-     */
-    inline UpdateDomainContactRequest& WithConsent(Consent&& value) { SetConsent(std::move(value)); return *this;}
-
+    inline const ContactDetail& GetBillingContact() const { return m_billingContact; }
+    inline bool BillingContactHasBeenSet() const { return m_billingContactHasBeenSet; }
+    template<typename BillingContactT = ContactDetail>
+    void SetBillingContact(BillingContactT&& value) { m_billingContactHasBeenSet = true; m_billingContact = std::forward<BillingContactT>(value); }
+    template<typename BillingContactT = ContactDetail>
+    UpdateDomainContactRequest& WithBillingContact(BillingContactT&& value) { SetBillingContact(std::forward<BillingContactT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainName;
@@ -220,6 +128,9 @@ namespace Model
 
     Consent m_consent;
     bool m_consentHasBeenSet = false;
+
+    ContactDetail m_billingContact;
+    bool m_billingContactHasBeenSet = false;
   };
 
 } // namespace Model

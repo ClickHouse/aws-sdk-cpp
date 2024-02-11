@@ -20,25 +20,7 @@ namespace EC2
 namespace Model
 {
 
-VpcPeeringConnectionVpcInfo::VpcPeeringConnectionVpcInfo() : 
-    m_cidrBlockHasBeenSet(false),
-    m_ipv6CidrBlockSetHasBeenSet(false),
-    m_cidrBlockSetHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_peeringOptionsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_regionHasBeenSet(false)
-{
-}
-
-VpcPeeringConnectionVpcInfo::VpcPeeringConnectionVpcInfo(const XmlNode& xmlNode) : 
-    m_cidrBlockHasBeenSet(false),
-    m_ipv6CidrBlockSetHasBeenSet(false),
-    m_cidrBlockSetHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_peeringOptionsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_regionHasBeenSet(false)
+VpcPeeringConnectionVpcInfo::VpcPeeringConnectionVpcInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -59,6 +41,7 @@ VpcPeeringConnectionVpcInfo& VpcPeeringConnectionVpcInfo::operator =(const XmlNo
     if(!ipv6CidrBlockSetNode.IsNull())
     {
       XmlNode ipv6CidrBlockSetMember = ipv6CidrBlockSetNode.FirstChild("item");
+      m_ipv6CidrBlockSetHasBeenSet = !ipv6CidrBlockSetMember.IsNull();
       while(!ipv6CidrBlockSetMember.IsNull())
       {
         m_ipv6CidrBlockSet.push_back(ipv6CidrBlockSetMember);
@@ -71,6 +54,7 @@ VpcPeeringConnectionVpcInfo& VpcPeeringConnectionVpcInfo::operator =(const XmlNo
     if(!cidrBlockSetNode.IsNull())
     {
       XmlNode cidrBlockSetMember = cidrBlockSetNode.FirstChild("item");
+      m_cidrBlockSetHasBeenSet = !cidrBlockSetMember.IsNull();
       while(!cidrBlockSetMember.IsNull())
       {
         m_cidrBlockSet.push_back(cidrBlockSetMember);
@@ -173,7 +157,7 @@ void VpcPeeringConnectionVpcInfo::OutputToStream(Aws::OStream& oStream, const ch
       for(auto& item : m_ipv6CidrBlockSet)
       {
         Aws::StringStream ipv6CidrBlockSetSs;
-        ipv6CidrBlockSetSs << location <<  ".Ipv6CidrBlockSet." << ipv6CidrBlockSetIdx++;
+        ipv6CidrBlockSetSs << location << ".Ipv6CidrBlockSet." << ipv6CidrBlockSetIdx++;
         item.OutputToStream(oStream, ipv6CidrBlockSetSs.str().c_str());
       }
   }
@@ -183,7 +167,7 @@ void VpcPeeringConnectionVpcInfo::OutputToStream(Aws::OStream& oStream, const ch
       for(auto& item : m_cidrBlockSet)
       {
         Aws::StringStream cidrBlockSetSs;
-        cidrBlockSetSs << location <<  ".CidrBlockSet." << cidrBlockSetIdx++;
+        cidrBlockSetSs << location << ".CidrBlockSet." << cidrBlockSetIdx++;
         item.OutputToStream(oStream, cidrBlockSetSs.str().c_str());
       }
   }

@@ -33,107 +33,50 @@ namespace Model
   class ThreatIntelligenceDetail
   {
   public:
-    AWS_GUARDDUTY_API ThreatIntelligenceDetail();
+    AWS_GUARDDUTY_API ThreatIntelligenceDetail() = default;
     AWS_GUARDDUTY_API ThreatIntelligenceDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API ThreatIntelligenceDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the threat intelligence list that triggered the finding.</p>
      */
-    inline const Aws::String& GetThreatListName() const{ return m_threatListName; }
-
-    /**
-     * <p>The name of the threat intelligence list that triggered the finding.</p>
-     */
+    inline const Aws::String& GetThreatListName() const { return m_threatListName; }
     inline bool ThreatListNameHasBeenSet() const { return m_threatListNameHasBeenSet; }
+    template<typename ThreatListNameT = Aws::String>
+    void SetThreatListName(ThreatListNameT&& value) { m_threatListNameHasBeenSet = true; m_threatListName = std::forward<ThreatListNameT>(value); }
+    template<typename ThreatListNameT = Aws::String>
+    ThreatIntelligenceDetail& WithThreatListName(ThreatListNameT&& value) { SetThreatListName(std::forward<ThreatListNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the threat intelligence list that triggered the finding.</p>
-     */
-    inline void SetThreatListName(const Aws::String& value) { m_threatListNameHasBeenSet = true; m_threatListName = value; }
-
-    /**
-     * <p>The name of the threat intelligence list that triggered the finding.</p>
-     */
-    inline void SetThreatListName(Aws::String&& value) { m_threatListNameHasBeenSet = true; m_threatListName = std::move(value); }
-
-    /**
-     * <p>The name of the threat intelligence list that triggered the finding.</p>
-     */
-    inline void SetThreatListName(const char* value) { m_threatListNameHasBeenSet = true; m_threatListName.assign(value); }
-
-    /**
-     * <p>The name of the threat intelligence list that triggered the finding.</p>
-     */
-    inline ThreatIntelligenceDetail& WithThreatListName(const Aws::String& value) { SetThreatListName(value); return *this;}
-
-    /**
-     * <p>The name of the threat intelligence list that triggered the finding.</p>
-     */
-    inline ThreatIntelligenceDetail& WithThreatListName(Aws::String&& value) { SetThreatListName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the threat intelligence list that triggered the finding.</p>
-     */
-    inline ThreatIntelligenceDetail& WithThreatListName(const char* value) { SetThreatListName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of names of the threats in the threat intelligence list that triggered
      * the finding.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetThreatNames() const{ return m_threatNames; }
-
-    /**
-     * <p>A list of names of the threats in the threat intelligence list that triggered
-     * the finding.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetThreatNames() const { return m_threatNames; }
     inline bool ThreatNamesHasBeenSet() const { return m_threatNamesHasBeenSet; }
+    template<typename ThreatNamesT = Aws::Vector<Aws::String>>
+    void SetThreatNames(ThreatNamesT&& value) { m_threatNamesHasBeenSet = true; m_threatNames = std::forward<ThreatNamesT>(value); }
+    template<typename ThreatNamesT = Aws::Vector<Aws::String>>
+    ThreatIntelligenceDetail& WithThreatNames(ThreatNamesT&& value) { SetThreatNames(std::forward<ThreatNamesT>(value)); return *this;}
+    template<typename ThreatNamesT = Aws::String>
+    ThreatIntelligenceDetail& AddThreatNames(ThreatNamesT&& value) { m_threatNamesHasBeenSet = true; m_threatNames.emplace_back(std::forward<ThreatNamesT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>A list of names of the threats in the threat intelligence list that triggered
-     * the finding.</p>
+     * <p>SHA256 of the file that generated the finding.</p>
      */
-    inline void SetThreatNames(const Aws::Vector<Aws::String>& value) { m_threatNamesHasBeenSet = true; m_threatNames = value; }
-
-    /**
-     * <p>A list of names of the threats in the threat intelligence list that triggered
-     * the finding.</p>
-     */
-    inline void SetThreatNames(Aws::Vector<Aws::String>&& value) { m_threatNamesHasBeenSet = true; m_threatNames = std::move(value); }
-
-    /**
-     * <p>A list of names of the threats in the threat intelligence list that triggered
-     * the finding.</p>
-     */
-    inline ThreatIntelligenceDetail& WithThreatNames(const Aws::Vector<Aws::String>& value) { SetThreatNames(value); return *this;}
-
-    /**
-     * <p>A list of names of the threats in the threat intelligence list that triggered
-     * the finding.</p>
-     */
-    inline ThreatIntelligenceDetail& WithThreatNames(Aws::Vector<Aws::String>&& value) { SetThreatNames(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of names of the threats in the threat intelligence list that triggered
-     * the finding.</p>
-     */
-    inline ThreatIntelligenceDetail& AddThreatNames(const Aws::String& value) { m_threatNamesHasBeenSet = true; m_threatNames.push_back(value); return *this; }
-
-    /**
-     * <p>A list of names of the threats in the threat intelligence list that triggered
-     * the finding.</p>
-     */
-    inline ThreatIntelligenceDetail& AddThreatNames(Aws::String&& value) { m_threatNamesHasBeenSet = true; m_threatNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of names of the threats in the threat intelligence list that triggered
-     * the finding.</p>
-     */
-    inline ThreatIntelligenceDetail& AddThreatNames(const char* value) { m_threatNamesHasBeenSet = true; m_threatNames.push_back(value); return *this; }
-
+    inline const Aws::String& GetThreatFileSha256() const { return m_threatFileSha256; }
+    inline bool ThreatFileSha256HasBeenSet() const { return m_threatFileSha256HasBeenSet; }
+    template<typename ThreatFileSha256T = Aws::String>
+    void SetThreatFileSha256(ThreatFileSha256T&& value) { m_threatFileSha256HasBeenSet = true; m_threatFileSha256 = std::forward<ThreatFileSha256T>(value); }
+    template<typename ThreatFileSha256T = Aws::String>
+    ThreatIntelligenceDetail& WithThreatFileSha256(ThreatFileSha256T&& value) { SetThreatFileSha256(std::forward<ThreatFileSha256T>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_threatListName;
@@ -141,6 +84,9 @@ namespace Model
 
     Aws::Vector<Aws::String> m_threatNames;
     bool m_threatNamesHasBeenSet = false;
+
+    Aws::String m_threatFileSha256;
+    bool m_threatFileSha256HasBeenSet = false;
   };
 
 } // namespace Model

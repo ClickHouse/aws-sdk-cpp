@@ -22,7 +22,7 @@ namespace Model
   class CreateTokenRequest : public SSOOIDCRequest
   {
   public:
-    AWS_SSOOIDC_API CreateTokenRequest();
+    AWS_SSOOIDC_API CreateTokenRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,491 +33,137 @@ namespace Model
     AWS_SSOOIDC_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The unique identifier string for each client. This value should come from the
-     * persisted result of the <a>RegisterClient</a> API.</p>
+     * <p>The unique identifier string for the client or application. This value comes
+     * from the result of the <a>RegisterClient</a> API.</p>
      */
-    inline const Aws::String& GetClientId() const{ return m_clientId; }
-
-    /**
-     * <p>The unique identifier string for each client. This value should come from the
-     * persisted result of the <a>RegisterClient</a> API.</p>
-     */
+    inline const Aws::String& GetClientId() const { return m_clientId; }
     inline bool ClientIdHasBeenSet() const { return m_clientIdHasBeenSet; }
+    template<typename ClientIdT = Aws::String>
+    void SetClientId(ClientIdT&& value) { m_clientIdHasBeenSet = true; m_clientId = std::forward<ClientIdT>(value); }
+    template<typename ClientIdT = Aws::String>
+    CreateTokenRequest& WithClientId(ClientIdT&& value) { SetClientId(std::forward<ClientIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier string for each client. This value should come from the
-     * persisted result of the <a>RegisterClient</a> API.</p>
-     */
-    inline void SetClientId(const Aws::String& value) { m_clientIdHasBeenSet = true; m_clientId = value; }
-
-    /**
-     * <p>The unique identifier string for each client. This value should come from the
-     * persisted result of the <a>RegisterClient</a> API.</p>
-     */
-    inline void SetClientId(Aws::String&& value) { m_clientIdHasBeenSet = true; m_clientId = std::move(value); }
-
-    /**
-     * <p>The unique identifier string for each client. This value should come from the
-     * persisted result of the <a>RegisterClient</a> API.</p>
-     */
-    inline void SetClientId(const char* value) { m_clientIdHasBeenSet = true; m_clientId.assign(value); }
-
-    /**
-     * <p>The unique identifier string for each client. This value should come from the
-     * persisted result of the <a>RegisterClient</a> API.</p>
-     */
-    inline CreateTokenRequest& WithClientId(const Aws::String& value) { SetClientId(value); return *this;}
-
-    /**
-     * <p>The unique identifier string for each client. This value should come from the
-     * persisted result of the <a>RegisterClient</a> API.</p>
-     */
-    inline CreateTokenRequest& WithClientId(Aws::String&& value) { SetClientId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier string for each client. This value should come from the
-     * persisted result of the <a>RegisterClient</a> API.</p>
-     */
-    inline CreateTokenRequest& WithClientId(const char* value) { SetClientId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A secret string generated for the client. This value should come from the
      * persisted result of the <a>RegisterClient</a> API.</p>
      */
-    inline const Aws::String& GetClientSecret() const{ return m_clientSecret; }
-
-    /**
-     * <p>A secret string generated for the client. This value should come from the
-     * persisted result of the <a>RegisterClient</a> API.</p>
-     */
+    inline const Aws::String& GetClientSecret() const { return m_clientSecret; }
     inline bool ClientSecretHasBeenSet() const { return m_clientSecretHasBeenSet; }
+    template<typename ClientSecretT = Aws::String>
+    void SetClientSecret(ClientSecretT&& value) { m_clientSecretHasBeenSet = true; m_clientSecret = std::forward<ClientSecretT>(value); }
+    template<typename ClientSecretT = Aws::String>
+    CreateTokenRequest& WithClientSecret(ClientSecretT&& value) { SetClientSecret(std::forward<ClientSecretT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A secret string generated for the client. This value should come from the
-     * persisted result of the <a>RegisterClient</a> API.</p>
+     * <p>Supports the following OAuth grant types: Authorization Code, Device Code,
+     * and Refresh Token. Specify one of the following values, depending on the grant
+     * type that you want:</p> <p>* Authorization Code -
+     * <code>authorization_code</code> </p> <p>* Device Code -
+     * <code>urn:ietf:params:oauth:grant-type:device_code</code> </p> <p>* Refresh
+     * Token - <code>refresh_token</code> </p>
      */
-    inline void SetClientSecret(const Aws::String& value) { m_clientSecretHasBeenSet = true; m_clientSecret = value; }
-
-    /**
-     * <p>A secret string generated for the client. This value should come from the
-     * persisted result of the <a>RegisterClient</a> API.</p>
-     */
-    inline void SetClientSecret(Aws::String&& value) { m_clientSecretHasBeenSet = true; m_clientSecret = std::move(value); }
-
-    /**
-     * <p>A secret string generated for the client. This value should come from the
-     * persisted result of the <a>RegisterClient</a> API.</p>
-     */
-    inline void SetClientSecret(const char* value) { m_clientSecretHasBeenSet = true; m_clientSecret.assign(value); }
-
-    /**
-     * <p>A secret string generated for the client. This value should come from the
-     * persisted result of the <a>RegisterClient</a> API.</p>
-     */
-    inline CreateTokenRequest& WithClientSecret(const Aws::String& value) { SetClientSecret(value); return *this;}
-
-    /**
-     * <p>A secret string generated for the client. This value should come from the
-     * persisted result of the <a>RegisterClient</a> API.</p>
-     */
-    inline CreateTokenRequest& WithClientSecret(Aws::String&& value) { SetClientSecret(std::move(value)); return *this;}
-
-    /**
-     * <p>A secret string generated for the client. This value should come from the
-     * persisted result of the <a>RegisterClient</a> API.</p>
-     */
-    inline CreateTokenRequest& WithClientSecret(const char* value) { SetClientSecret(value); return *this;}
-
-
-    /**
-     * <p>Supports grant types for the authorization code, refresh token, and device
-     * code request. For device code requests, specify the following value:</p> <p>
-     * <code>urn:ietf:params:oauth:grant-type:<i>device_code</i> </code> </p> <p>For
-     * information about how to obtain the device code, see the
-     * <a>StartDeviceAuthorization</a> topic.</p>
-     */
-    inline const Aws::String& GetGrantType() const{ return m_grantType; }
-
-    /**
-     * <p>Supports grant types for the authorization code, refresh token, and device
-     * code request. For device code requests, specify the following value:</p> <p>
-     * <code>urn:ietf:params:oauth:grant-type:<i>device_code</i> </code> </p> <p>For
-     * information about how to obtain the device code, see the
-     * <a>StartDeviceAuthorization</a> topic.</p>
-     */
+    inline const Aws::String& GetGrantType() const { return m_grantType; }
     inline bool GrantTypeHasBeenSet() const { return m_grantTypeHasBeenSet; }
+    template<typename GrantTypeT = Aws::String>
+    void SetGrantType(GrantTypeT&& value) { m_grantTypeHasBeenSet = true; m_grantType = std::forward<GrantTypeT>(value); }
+    template<typename GrantTypeT = Aws::String>
+    CreateTokenRequest& WithGrantType(GrantTypeT&& value) { SetGrantType(std::forward<GrantTypeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Supports grant types for the authorization code, refresh token, and device
-     * code request. For device code requests, specify the following value:</p> <p>
-     * <code>urn:ietf:params:oauth:grant-type:<i>device_code</i> </code> </p> <p>For
-     * information about how to obtain the device code, see the
-     * <a>StartDeviceAuthorization</a> topic.</p>
+     * <p>Used only when calling this API for the Device Code grant type. This
+     * short-lived code is used to identify this authorization request. This comes from
+     * the result of the <a>StartDeviceAuthorization</a> API.</p>
      */
-    inline void SetGrantType(const Aws::String& value) { m_grantTypeHasBeenSet = true; m_grantType = value; }
-
-    /**
-     * <p>Supports grant types for the authorization code, refresh token, and device
-     * code request. For device code requests, specify the following value:</p> <p>
-     * <code>urn:ietf:params:oauth:grant-type:<i>device_code</i> </code> </p> <p>For
-     * information about how to obtain the device code, see the
-     * <a>StartDeviceAuthorization</a> topic.</p>
-     */
-    inline void SetGrantType(Aws::String&& value) { m_grantTypeHasBeenSet = true; m_grantType = std::move(value); }
-
-    /**
-     * <p>Supports grant types for the authorization code, refresh token, and device
-     * code request. For device code requests, specify the following value:</p> <p>
-     * <code>urn:ietf:params:oauth:grant-type:<i>device_code</i> </code> </p> <p>For
-     * information about how to obtain the device code, see the
-     * <a>StartDeviceAuthorization</a> topic.</p>
-     */
-    inline void SetGrantType(const char* value) { m_grantTypeHasBeenSet = true; m_grantType.assign(value); }
-
-    /**
-     * <p>Supports grant types for the authorization code, refresh token, and device
-     * code request. For device code requests, specify the following value:</p> <p>
-     * <code>urn:ietf:params:oauth:grant-type:<i>device_code</i> </code> </p> <p>For
-     * information about how to obtain the device code, see the
-     * <a>StartDeviceAuthorization</a> topic.</p>
-     */
-    inline CreateTokenRequest& WithGrantType(const Aws::String& value) { SetGrantType(value); return *this;}
-
-    /**
-     * <p>Supports grant types for the authorization code, refresh token, and device
-     * code request. For device code requests, specify the following value:</p> <p>
-     * <code>urn:ietf:params:oauth:grant-type:<i>device_code</i> </code> </p> <p>For
-     * information about how to obtain the device code, see the
-     * <a>StartDeviceAuthorization</a> topic.</p>
-     */
-    inline CreateTokenRequest& WithGrantType(Aws::String&& value) { SetGrantType(std::move(value)); return *this;}
-
-    /**
-     * <p>Supports grant types for the authorization code, refresh token, and device
-     * code request. For device code requests, specify the following value:</p> <p>
-     * <code>urn:ietf:params:oauth:grant-type:<i>device_code</i> </code> </p> <p>For
-     * information about how to obtain the device code, see the
-     * <a>StartDeviceAuthorization</a> topic.</p>
-     */
-    inline CreateTokenRequest& WithGrantType(const char* value) { SetGrantType(value); return *this;}
-
-
-    /**
-     * <p>Used only when calling this API for the device code grant type. This
-     * short-term code is used to identify this authentication attempt. This should
-     * come from an in-memory reference to the result of the
-     * <a>StartDeviceAuthorization</a> API.</p>
-     */
-    inline const Aws::String& GetDeviceCode() const{ return m_deviceCode; }
-
-    /**
-     * <p>Used only when calling this API for the device code grant type. This
-     * short-term code is used to identify this authentication attempt. This should
-     * come from an in-memory reference to the result of the
-     * <a>StartDeviceAuthorization</a> API.</p>
-     */
+    inline const Aws::String& GetDeviceCode() const { return m_deviceCode; }
     inline bool DeviceCodeHasBeenSet() const { return m_deviceCodeHasBeenSet; }
+    template<typename DeviceCodeT = Aws::String>
+    void SetDeviceCode(DeviceCodeT&& value) { m_deviceCodeHasBeenSet = true; m_deviceCode = std::forward<DeviceCodeT>(value); }
+    template<typename DeviceCodeT = Aws::String>
+    CreateTokenRequest& WithDeviceCode(DeviceCodeT&& value) { SetDeviceCode(std::forward<DeviceCodeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Used only when calling this API for the device code grant type. This
-     * short-term code is used to identify this authentication attempt. This should
-     * come from an in-memory reference to the result of the
-     * <a>StartDeviceAuthorization</a> API.</p>
+     * <p>Used only when calling this API for the Authorization Code grant type. The
+     * short-lived code is used to identify this authorization request.</p>
      */
-    inline void SetDeviceCode(const Aws::String& value) { m_deviceCodeHasBeenSet = true; m_deviceCode = value; }
-
-    /**
-     * <p>Used only when calling this API for the device code grant type. This
-     * short-term code is used to identify this authentication attempt. This should
-     * come from an in-memory reference to the result of the
-     * <a>StartDeviceAuthorization</a> API.</p>
-     */
-    inline void SetDeviceCode(Aws::String&& value) { m_deviceCodeHasBeenSet = true; m_deviceCode = std::move(value); }
-
-    /**
-     * <p>Used only when calling this API for the device code grant type. This
-     * short-term code is used to identify this authentication attempt. This should
-     * come from an in-memory reference to the result of the
-     * <a>StartDeviceAuthorization</a> API.</p>
-     */
-    inline void SetDeviceCode(const char* value) { m_deviceCodeHasBeenSet = true; m_deviceCode.assign(value); }
-
-    /**
-     * <p>Used only when calling this API for the device code grant type. This
-     * short-term code is used to identify this authentication attempt. This should
-     * come from an in-memory reference to the result of the
-     * <a>StartDeviceAuthorization</a> API.</p>
-     */
-    inline CreateTokenRequest& WithDeviceCode(const Aws::String& value) { SetDeviceCode(value); return *this;}
-
-    /**
-     * <p>Used only when calling this API for the device code grant type. This
-     * short-term code is used to identify this authentication attempt. This should
-     * come from an in-memory reference to the result of the
-     * <a>StartDeviceAuthorization</a> API.</p>
-     */
-    inline CreateTokenRequest& WithDeviceCode(Aws::String&& value) { SetDeviceCode(std::move(value)); return *this;}
-
-    /**
-     * <p>Used only when calling this API for the device code grant type. This
-     * short-term code is used to identify this authentication attempt. This should
-     * come from an in-memory reference to the result of the
-     * <a>StartDeviceAuthorization</a> API.</p>
-     */
-    inline CreateTokenRequest& WithDeviceCode(const char* value) { SetDeviceCode(value); return *this;}
-
-
-    /**
-     * <p>The authorization code received from the authorization service. This
-     * parameter is required to perform an authorization grant request to get access to
-     * a token.</p>
-     */
-    inline const Aws::String& GetCode() const{ return m_code; }
-
-    /**
-     * <p>The authorization code received from the authorization service. This
-     * parameter is required to perform an authorization grant request to get access to
-     * a token.</p>
-     */
+    inline const Aws::String& GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
+    template<typename CodeT = Aws::String>
+    void SetCode(CodeT&& value) { m_codeHasBeenSet = true; m_code = std::forward<CodeT>(value); }
+    template<typename CodeT = Aws::String>
+    CreateTokenRequest& WithCode(CodeT&& value) { SetCode(std::forward<CodeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The authorization code received from the authorization service. This
-     * parameter is required to perform an authorization grant request to get access to
-     * a token.</p>
-     */
-    inline void SetCode(const Aws::String& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>The authorization code received from the authorization service. This
-     * parameter is required to perform an authorization grant request to get access to
-     * a token.</p>
-     */
-    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * <p>The authorization code received from the authorization service. This
-     * parameter is required to perform an authorization grant request to get access to
-     * a token.</p>
-     */
-    inline void SetCode(const char* value) { m_codeHasBeenSet = true; m_code.assign(value); }
-
-    /**
-     * <p>The authorization code received from the authorization service. This
-     * parameter is required to perform an authorization grant request to get access to
-     * a token.</p>
-     */
-    inline CreateTokenRequest& WithCode(const Aws::String& value) { SetCode(value); return *this;}
-
-    /**
-     * <p>The authorization code received from the authorization service. This
-     * parameter is required to perform an authorization grant request to get access to
-     * a token.</p>
-     */
-    inline CreateTokenRequest& WithCode(Aws::String&& value) { SetCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The authorization code received from the authorization service. This
-     * parameter is required to perform an authorization grant request to get access to
-     * a token.</p>
-     */
-    inline CreateTokenRequest& WithCode(const char* value) { SetCode(value); return *this;}
-
-
-    /**
-     * <p>Currently, <code>refreshToken</code> is not yet implemented and is not
-     * supported. For more information about the features and limitations of the
+     * <p>Used only when calling this API for the Refresh Token grant type. This token
+     * is used to refresh short-lived tokens, such as the access token, that might
+     * expire.</p> <p>For more information about the features and limitations of the
      * current IAM Identity Center OIDC implementation, see <i>Considerations for Using
      * this Guide</i> in the <a
      * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p> <p>The token used to obtain an
-     * access token in the event that the access token is invalid or expired.</p>
+     * Identity Center OIDC API Reference</a>.</p>
      */
-    inline const Aws::String& GetRefreshToken() const{ return m_refreshToken; }
-
-    /**
-     * <p>Currently, <code>refreshToken</code> is not yet implemented and is not
-     * supported. For more information about the features and limitations of the
-     * current IAM Identity Center OIDC implementation, see <i>Considerations for Using
-     * this Guide</i> in the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p> <p>The token used to obtain an
-     * access token in the event that the access token is invalid or expired.</p>
-     */
+    inline const Aws::String& GetRefreshToken() const { return m_refreshToken; }
     inline bool RefreshTokenHasBeenSet() const { return m_refreshTokenHasBeenSet; }
+    template<typename RefreshTokenT = Aws::String>
+    void SetRefreshToken(RefreshTokenT&& value) { m_refreshTokenHasBeenSet = true; m_refreshToken = std::forward<RefreshTokenT>(value); }
+    template<typename RefreshTokenT = Aws::String>
+    CreateTokenRequest& WithRefreshToken(RefreshTokenT&& value) { SetRefreshToken(std::forward<RefreshTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Currently, <code>refreshToken</code> is not yet implemented and is not
-     * supported. For more information about the features and limitations of the
-     * current IAM Identity Center OIDC implementation, see <i>Considerations for Using
-     * this Guide</i> in the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p> <p>The token used to obtain an
-     * access token in the event that the access token is invalid or expired.</p>
+     * <p>The list of scopes for which authorization is requested. This parameter has
+     * no effect; the access token will always include all scopes configured during
+     * client registration.</p>
      */
-    inline void SetRefreshToken(const Aws::String& value) { m_refreshTokenHasBeenSet = true; m_refreshToken = value; }
-
-    /**
-     * <p>Currently, <code>refreshToken</code> is not yet implemented and is not
-     * supported. For more information about the features and limitations of the
-     * current IAM Identity Center OIDC implementation, see <i>Considerations for Using
-     * this Guide</i> in the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p> <p>The token used to obtain an
-     * access token in the event that the access token is invalid or expired.</p>
-     */
-    inline void SetRefreshToken(Aws::String&& value) { m_refreshTokenHasBeenSet = true; m_refreshToken = std::move(value); }
-
-    /**
-     * <p>Currently, <code>refreshToken</code> is not yet implemented and is not
-     * supported. For more information about the features and limitations of the
-     * current IAM Identity Center OIDC implementation, see <i>Considerations for Using
-     * this Guide</i> in the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p> <p>The token used to obtain an
-     * access token in the event that the access token is invalid or expired.</p>
-     */
-    inline void SetRefreshToken(const char* value) { m_refreshTokenHasBeenSet = true; m_refreshToken.assign(value); }
-
-    /**
-     * <p>Currently, <code>refreshToken</code> is not yet implemented and is not
-     * supported. For more information about the features and limitations of the
-     * current IAM Identity Center OIDC implementation, see <i>Considerations for Using
-     * this Guide</i> in the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p> <p>The token used to obtain an
-     * access token in the event that the access token is invalid or expired.</p>
-     */
-    inline CreateTokenRequest& WithRefreshToken(const Aws::String& value) { SetRefreshToken(value); return *this;}
-
-    /**
-     * <p>Currently, <code>refreshToken</code> is not yet implemented and is not
-     * supported. For more information about the features and limitations of the
-     * current IAM Identity Center OIDC implementation, see <i>Considerations for Using
-     * this Guide</i> in the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p> <p>The token used to obtain an
-     * access token in the event that the access token is invalid or expired.</p>
-     */
-    inline CreateTokenRequest& WithRefreshToken(Aws::String&& value) { SetRefreshToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Currently, <code>refreshToken</code> is not yet implemented and is not
-     * supported. For more information about the features and limitations of the
-     * current IAM Identity Center OIDC implementation, see <i>Considerations for Using
-     * this Guide</i> in the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p> <p>The token used to obtain an
-     * access token in the event that the access token is invalid or expired.</p>
-     */
-    inline CreateTokenRequest& WithRefreshToken(const char* value) { SetRefreshToken(value); return *this;}
-
-
-    /**
-     * <p>The list of scopes that is defined by the client. Upon authorization, this
-     * list is used to restrict permissions when granting an access token.</p>
-     */
-    inline const Aws::Vector<Aws::String>& GetScope() const{ return m_scope; }
-
-    /**
-     * <p>The list of scopes that is defined by the client. Upon authorization, this
-     * list is used to restrict permissions when granting an access token.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetScope() const { return m_scope; }
     inline bool ScopeHasBeenSet() const { return m_scopeHasBeenSet; }
+    template<typename ScopeT = Aws::Vector<Aws::String>>
+    void SetScope(ScopeT&& value) { m_scopeHasBeenSet = true; m_scope = std::forward<ScopeT>(value); }
+    template<typename ScopeT = Aws::Vector<Aws::String>>
+    CreateTokenRequest& WithScope(ScopeT&& value) { SetScope(std::forward<ScopeT>(value)); return *this;}
+    template<typename ScopeT = Aws::String>
+    CreateTokenRequest& AddScope(ScopeT&& value) { m_scopeHasBeenSet = true; m_scope.emplace_back(std::forward<ScopeT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The list of scopes that is defined by the client. Upon authorization, this
-     * list is used to restrict permissions when granting an access token.</p>
+     * <p>Used only when calling this API for the Authorization Code grant type. This
+     * value specifies the location of the client or application that has registered to
+     * receive the authorization code.</p>
      */
-    inline void SetScope(const Aws::Vector<Aws::String>& value) { m_scopeHasBeenSet = true; m_scope = value; }
-
-    /**
-     * <p>The list of scopes that is defined by the client. Upon authorization, this
-     * list is used to restrict permissions when granting an access token.</p>
-     */
-    inline void SetScope(Aws::Vector<Aws::String>&& value) { m_scopeHasBeenSet = true; m_scope = std::move(value); }
-
-    /**
-     * <p>The list of scopes that is defined by the client. Upon authorization, this
-     * list is used to restrict permissions when granting an access token.</p>
-     */
-    inline CreateTokenRequest& WithScope(const Aws::Vector<Aws::String>& value) { SetScope(value); return *this;}
-
-    /**
-     * <p>The list of scopes that is defined by the client. Upon authorization, this
-     * list is used to restrict permissions when granting an access token.</p>
-     */
-    inline CreateTokenRequest& WithScope(Aws::Vector<Aws::String>&& value) { SetScope(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of scopes that is defined by the client. Upon authorization, this
-     * list is used to restrict permissions when granting an access token.</p>
-     */
-    inline CreateTokenRequest& AddScope(const Aws::String& value) { m_scopeHasBeenSet = true; m_scope.push_back(value); return *this; }
-
-    /**
-     * <p>The list of scopes that is defined by the client. Upon authorization, this
-     * list is used to restrict permissions when granting an access token.</p>
-     */
-    inline CreateTokenRequest& AddScope(Aws::String&& value) { m_scopeHasBeenSet = true; m_scope.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The list of scopes that is defined by the client. Upon authorization, this
-     * list is used to restrict permissions when granting an access token.</p>
-     */
-    inline CreateTokenRequest& AddScope(const char* value) { m_scopeHasBeenSet = true; m_scope.push_back(value); return *this; }
-
-
-    /**
-     * <p>The location of the application that will receive the authorization code.
-     * Users authorize the service to send the request to this location.</p>
-     */
-    inline const Aws::String& GetRedirectUri() const{ return m_redirectUri; }
-
-    /**
-     * <p>The location of the application that will receive the authorization code.
-     * Users authorize the service to send the request to this location.</p>
-     */
+    inline const Aws::String& GetRedirectUri() const { return m_redirectUri; }
     inline bool RedirectUriHasBeenSet() const { return m_redirectUriHasBeenSet; }
+    template<typename RedirectUriT = Aws::String>
+    void SetRedirectUri(RedirectUriT&& value) { m_redirectUriHasBeenSet = true; m_redirectUri = std::forward<RedirectUriT>(value); }
+    template<typename RedirectUriT = Aws::String>
+    CreateTokenRequest& WithRedirectUri(RedirectUriT&& value) { SetRedirectUri(std::forward<RedirectUriT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The location of the application that will receive the authorization code.
-     * Users authorize the service to send the request to this location.</p>
+     * <p>Used only when calling this API for the Authorization Code grant type. This
+     * value is generated by the client and presented to validate the original code
+     * challenge value the client passed at authorization time.</p>
      */
-    inline void SetRedirectUri(const Aws::String& value) { m_redirectUriHasBeenSet = true; m_redirectUri = value; }
-
-    /**
-     * <p>The location of the application that will receive the authorization code.
-     * Users authorize the service to send the request to this location.</p>
-     */
-    inline void SetRedirectUri(Aws::String&& value) { m_redirectUriHasBeenSet = true; m_redirectUri = std::move(value); }
-
-    /**
-     * <p>The location of the application that will receive the authorization code.
-     * Users authorize the service to send the request to this location.</p>
-     */
-    inline void SetRedirectUri(const char* value) { m_redirectUriHasBeenSet = true; m_redirectUri.assign(value); }
-
-    /**
-     * <p>The location of the application that will receive the authorization code.
-     * Users authorize the service to send the request to this location.</p>
-     */
-    inline CreateTokenRequest& WithRedirectUri(const Aws::String& value) { SetRedirectUri(value); return *this;}
-
-    /**
-     * <p>The location of the application that will receive the authorization code.
-     * Users authorize the service to send the request to this location.</p>
-     */
-    inline CreateTokenRequest& WithRedirectUri(Aws::String&& value) { SetRedirectUri(std::move(value)); return *this;}
-
-    /**
-     * <p>The location of the application that will receive the authorization code.
-     * Users authorize the service to send the request to this location.</p>
-     */
-    inline CreateTokenRequest& WithRedirectUri(const char* value) { SetRedirectUri(value); return *this;}
-
+    inline const Aws::String& GetCodeVerifier() const { return m_codeVerifier; }
+    inline bool CodeVerifierHasBeenSet() const { return m_codeVerifierHasBeenSet; }
+    template<typename CodeVerifierT = Aws::String>
+    void SetCodeVerifier(CodeVerifierT&& value) { m_codeVerifierHasBeenSet = true; m_codeVerifier = std::forward<CodeVerifierT>(value); }
+    template<typename CodeVerifierT = Aws::String>
+    CreateTokenRequest& WithCodeVerifier(CodeVerifierT&& value) { SetCodeVerifier(std::forward<CodeVerifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clientId;
@@ -543,6 +189,9 @@ namespace Model
 
     Aws::String m_redirectUri;
     bool m_redirectUriHasBeenSet = false;
+
+    Aws::String m_codeVerifier;
+    bool m_codeVerifierHasBeenSet = false;
   };
 
 } // namespace Model

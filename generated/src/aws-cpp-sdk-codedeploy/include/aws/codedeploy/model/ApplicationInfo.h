@@ -33,227 +33,81 @@ namespace Model
   class ApplicationInfo
   {
   public:
-    AWS_CODEDEPLOY_API ApplicationInfo();
+    AWS_CODEDEPLOY_API ApplicationInfo() = default;
     AWS_CODEDEPLOY_API ApplicationInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API ApplicationInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The application ID.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The application ID.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    ApplicationInfo& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The application ID.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline ApplicationInfo& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline ApplicationInfo& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline ApplicationInfo& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The application name.</p>
      */
-    inline const Aws::String& GetApplicationName() const{ return m_applicationName; }
-
-    /**
-     * <p>The application name.</p>
-     */
+    inline const Aws::String& GetApplicationName() const { return m_applicationName; }
     inline bool ApplicationNameHasBeenSet() const { return m_applicationNameHasBeenSet; }
+    template<typename ApplicationNameT = Aws::String>
+    void SetApplicationName(ApplicationNameT&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::forward<ApplicationNameT>(value); }
+    template<typename ApplicationNameT = Aws::String>
+    ApplicationInfo& WithApplicationName(ApplicationNameT&& value) { SetApplicationName(std::forward<ApplicationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The application name.</p>
-     */
-    inline void SetApplicationName(const Aws::String& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
-
-    /**
-     * <p>The application name.</p>
-     */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
-
-    /**
-     * <p>The application name.</p>
-     */
-    inline void SetApplicationName(const char* value) { m_applicationNameHasBeenSet = true; m_applicationName.assign(value); }
-
-    /**
-     * <p>The application name.</p>
-     */
-    inline ApplicationInfo& WithApplicationName(const Aws::String& value) { SetApplicationName(value); return *this;}
-
-    /**
-     * <p>The application name.</p>
-     */
-    inline ApplicationInfo& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The application name.</p>
-     */
-    inline ApplicationInfo& WithApplicationName(const char* value) { SetApplicationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which the application was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreateTime() const{ return m_createTime; }
-
-    /**
-     * <p>The time at which the application was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreateTime() const { return m_createTime; }
     inline bool CreateTimeHasBeenSet() const { return m_createTimeHasBeenSet; }
+    template<typename CreateTimeT = Aws::Utils::DateTime>
+    void SetCreateTime(CreateTimeT&& value) { m_createTimeHasBeenSet = true; m_createTime = std::forward<CreateTimeT>(value); }
+    template<typename CreateTimeT = Aws::Utils::DateTime>
+    ApplicationInfo& WithCreateTime(CreateTimeT&& value) { SetCreateTime(std::forward<CreateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time at which the application was created.</p>
-     */
-    inline void SetCreateTime(const Aws::Utils::DateTime& value) { m_createTimeHasBeenSet = true; m_createTime = value; }
-
-    /**
-     * <p>The time at which the application was created.</p>
-     */
-    inline void SetCreateTime(Aws::Utils::DateTime&& value) { m_createTimeHasBeenSet = true; m_createTime = std::move(value); }
-
-    /**
-     * <p>The time at which the application was created.</p>
-     */
-    inline ApplicationInfo& WithCreateTime(const Aws::Utils::DateTime& value) { SetCreateTime(value); return *this;}
-
-    /**
-     * <p>The time at which the application was created.</p>
-     */
-    inline ApplicationInfo& WithCreateTime(Aws::Utils::DateTime&& value) { SetCreateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>True if the user has authenticated with GitHub for the specified application.
      * Otherwise, false.</p>
      */
-    inline bool GetLinkedToGitHub() const{ return m_linkedToGitHub; }
-
-    /**
-     * <p>True if the user has authenticated with GitHub for the specified application.
-     * Otherwise, false.</p>
-     */
+    inline bool GetLinkedToGitHub() const { return m_linkedToGitHub; }
     inline bool LinkedToGitHubHasBeenSet() const { return m_linkedToGitHubHasBeenSet; }
-
-    /**
-     * <p>True if the user has authenticated with GitHub for the specified application.
-     * Otherwise, false.</p>
-     */
     inline void SetLinkedToGitHub(bool value) { m_linkedToGitHubHasBeenSet = true; m_linkedToGitHub = value; }
-
-    /**
-     * <p>True if the user has authenticated with GitHub for the specified application.
-     * Otherwise, false.</p>
-     */
     inline ApplicationInfo& WithLinkedToGitHub(bool value) { SetLinkedToGitHub(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The name for a connection to a GitHub account.</p>
      */
-    inline const Aws::String& GetGitHubAccountName() const{ return m_gitHubAccountName; }
-
-    /**
-     * <p>The name for a connection to a GitHub account.</p>
-     */
+    inline const Aws::String& GetGitHubAccountName() const { return m_gitHubAccountName; }
     inline bool GitHubAccountNameHasBeenSet() const { return m_gitHubAccountNameHasBeenSet; }
+    template<typename GitHubAccountNameT = Aws::String>
+    void SetGitHubAccountName(GitHubAccountNameT&& value) { m_gitHubAccountNameHasBeenSet = true; m_gitHubAccountName = std::forward<GitHubAccountNameT>(value); }
+    template<typename GitHubAccountNameT = Aws::String>
+    ApplicationInfo& WithGitHubAccountName(GitHubAccountNameT&& value) { SetGitHubAccountName(std::forward<GitHubAccountNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name for a connection to a GitHub account.</p>
-     */
-    inline void SetGitHubAccountName(const Aws::String& value) { m_gitHubAccountNameHasBeenSet = true; m_gitHubAccountName = value; }
-
-    /**
-     * <p>The name for a connection to a GitHub account.</p>
-     */
-    inline void SetGitHubAccountName(Aws::String&& value) { m_gitHubAccountNameHasBeenSet = true; m_gitHubAccountName = std::move(value); }
-
-    /**
-     * <p>The name for a connection to a GitHub account.</p>
-     */
-    inline void SetGitHubAccountName(const char* value) { m_gitHubAccountNameHasBeenSet = true; m_gitHubAccountName.assign(value); }
-
-    /**
-     * <p>The name for a connection to a GitHub account.</p>
-     */
-    inline ApplicationInfo& WithGitHubAccountName(const Aws::String& value) { SetGitHubAccountName(value); return *this;}
-
-    /**
-     * <p>The name for a connection to a GitHub account.</p>
-     */
-    inline ApplicationInfo& WithGitHubAccountName(Aws::String&& value) { SetGitHubAccountName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name for a connection to a GitHub account.</p>
-     */
-    inline ApplicationInfo& WithGitHubAccountName(const char* value) { SetGitHubAccountName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The destination platform type for deployment of the application
      * (<code>Lambda</code> or <code>Server</code>).</p>
      */
-    inline const ComputePlatform& GetComputePlatform() const{ return m_computePlatform; }
-
-    /**
-     * <p>The destination platform type for deployment of the application
-     * (<code>Lambda</code> or <code>Server</code>).</p>
-     */
+    inline ComputePlatform GetComputePlatform() const { return m_computePlatform; }
     inline bool ComputePlatformHasBeenSet() const { return m_computePlatformHasBeenSet; }
-
-    /**
-     * <p>The destination platform type for deployment of the application
-     * (<code>Lambda</code> or <code>Server</code>).</p>
-     */
-    inline void SetComputePlatform(const ComputePlatform& value) { m_computePlatformHasBeenSet = true; m_computePlatform = value; }
-
-    /**
-     * <p>The destination platform type for deployment of the application
-     * (<code>Lambda</code> or <code>Server</code>).</p>
-     */
-    inline void SetComputePlatform(ComputePlatform&& value) { m_computePlatformHasBeenSet = true; m_computePlatform = std::move(value); }
-
-    /**
-     * <p>The destination platform type for deployment of the application
-     * (<code>Lambda</code> or <code>Server</code>).</p>
-     */
-    inline ApplicationInfo& WithComputePlatform(const ComputePlatform& value) { SetComputePlatform(value); return *this;}
-
-    /**
-     * <p>The destination platform type for deployment of the application
-     * (<code>Lambda</code> or <code>Server</code>).</p>
-     */
-    inline ApplicationInfo& WithComputePlatform(ComputePlatform&& value) { SetComputePlatform(std::move(value)); return *this;}
-
+    inline void SetComputePlatform(ComputePlatform value) { m_computePlatformHasBeenSet = true; m_computePlatform = value; }
+    inline ApplicationInfo& WithComputePlatform(ComputePlatform value) { SetComputePlatform(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;
@@ -262,16 +116,16 @@ namespace Model
     Aws::String m_applicationName;
     bool m_applicationNameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createTime;
+    Aws::Utils::DateTime m_createTime{};
     bool m_createTimeHasBeenSet = false;
 
-    bool m_linkedToGitHub;
+    bool m_linkedToGitHub{false};
     bool m_linkedToGitHubHasBeenSet = false;
 
     Aws::String m_gitHubAccountName;
     bool m_gitHubAccountNameHasBeenSet = false;
 
-    ComputePlatform m_computePlatform;
+    ComputePlatform m_computePlatform{ComputePlatform::NOT_SET};
     bool m_computePlatformHasBeenSet = false;
   };
 

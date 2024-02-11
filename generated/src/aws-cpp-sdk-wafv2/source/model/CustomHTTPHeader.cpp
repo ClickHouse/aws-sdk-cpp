@@ -18,15 +18,7 @@ namespace WAFV2
 namespace Model
 {
 
-CustomHTTPHeader::CustomHTTPHeader() : 
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-CustomHTTPHeader::CustomHTTPHeader(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
+CustomHTTPHeader::CustomHTTPHeader(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ CustomHTTPHeader& CustomHTTPHeader::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -33,57 +33,25 @@ namespace Model
   class ProjectOperation
   {
   public:
-    AWS_QUICKSIGHT_API ProjectOperation();
+    AWS_QUICKSIGHT_API ProjectOperation() = default;
     AWS_QUICKSIGHT_API ProjectOperation(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API ProjectOperation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Projected columns.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetProjectedColumns() const{ return m_projectedColumns; }
-
-    /**
-     * <p>Projected columns.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetProjectedColumns() const { return m_projectedColumns; }
     inline bool ProjectedColumnsHasBeenSet() const { return m_projectedColumnsHasBeenSet; }
-
-    /**
-     * <p>Projected columns.</p>
-     */
-    inline void SetProjectedColumns(const Aws::Vector<Aws::String>& value) { m_projectedColumnsHasBeenSet = true; m_projectedColumns = value; }
-
-    /**
-     * <p>Projected columns.</p>
-     */
-    inline void SetProjectedColumns(Aws::Vector<Aws::String>&& value) { m_projectedColumnsHasBeenSet = true; m_projectedColumns = std::move(value); }
-
-    /**
-     * <p>Projected columns.</p>
-     */
-    inline ProjectOperation& WithProjectedColumns(const Aws::Vector<Aws::String>& value) { SetProjectedColumns(value); return *this;}
-
-    /**
-     * <p>Projected columns.</p>
-     */
-    inline ProjectOperation& WithProjectedColumns(Aws::Vector<Aws::String>&& value) { SetProjectedColumns(std::move(value)); return *this;}
-
-    /**
-     * <p>Projected columns.</p>
-     */
-    inline ProjectOperation& AddProjectedColumns(const Aws::String& value) { m_projectedColumnsHasBeenSet = true; m_projectedColumns.push_back(value); return *this; }
-
-    /**
-     * <p>Projected columns.</p>
-     */
-    inline ProjectOperation& AddProjectedColumns(Aws::String&& value) { m_projectedColumnsHasBeenSet = true; m_projectedColumns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Projected columns.</p>
-     */
-    inline ProjectOperation& AddProjectedColumns(const char* value) { m_projectedColumnsHasBeenSet = true; m_projectedColumns.push_back(value); return *this; }
-
+    template<typename ProjectedColumnsT = Aws::Vector<Aws::String>>
+    void SetProjectedColumns(ProjectedColumnsT&& value) { m_projectedColumnsHasBeenSet = true; m_projectedColumns = std::forward<ProjectedColumnsT>(value); }
+    template<typename ProjectedColumnsT = Aws::Vector<Aws::String>>
+    ProjectOperation& WithProjectedColumns(ProjectedColumnsT&& value) { SetProjectedColumns(std::forward<ProjectedColumnsT>(value)); return *this;}
+    template<typename ProjectedColumnsT = Aws::String>
+    ProjectOperation& AddProjectedColumns(ProjectedColumnsT&& value) { m_projectedColumnsHasBeenSet = true; m_projectedColumns.emplace_back(std::forward<ProjectedColumnsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_projectedColumns;

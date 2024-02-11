@@ -20,13 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ClassicLoadBalancersConfig::ClassicLoadBalancersConfig() : 
-    m_classicLoadBalancersHasBeenSet(false)
-{
-}
-
-ClassicLoadBalancersConfig::ClassicLoadBalancersConfig(const XmlNode& xmlNode) : 
-    m_classicLoadBalancersHasBeenSet(false)
+ClassicLoadBalancersConfig::ClassicLoadBalancersConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -41,6 +35,7 @@ ClassicLoadBalancersConfig& ClassicLoadBalancersConfig::operator =(const XmlNode
     if(!classicLoadBalancersNode.IsNull())
     {
       XmlNode classicLoadBalancersMember = classicLoadBalancersNode.FirstChild("item");
+      m_classicLoadBalancersHasBeenSet = !classicLoadBalancersMember.IsNull();
       while(!classicLoadBalancersMember.IsNull())
       {
         m_classicLoadBalancers.push_back(classicLoadBalancersMember);
@@ -77,7 +72,7 @@ void ClassicLoadBalancersConfig::OutputToStream(Aws::OStream& oStream, const cha
       for(auto& item : m_classicLoadBalancers)
       {
         Aws::StringStream classicLoadBalancersSs;
-        classicLoadBalancersSs << location <<  ".ClassicLoadBalancers." << classicLoadBalancersIdx++;
+        classicLoadBalancersSs << location << ".ClassicLoadBalancers." << classicLoadBalancersIdx++;
         item.OutputToStream(oStream, classicLoadBalancersSs.str().c_str());
       }
   }

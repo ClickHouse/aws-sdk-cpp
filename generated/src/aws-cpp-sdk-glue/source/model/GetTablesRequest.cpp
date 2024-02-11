@@ -12,18 +12,6 @@ using namespace Aws::Glue::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetTablesRequest::GetTablesRequest() : 
-    m_catalogIdHasBeenSet(false),
-    m_databaseNameHasBeenSet(false),
-    m_expressionHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_transactionIdHasBeenSet(false),
-    m_queryAsOfTimeHasBeenSet(false)
-{
-}
-
 Aws::String GetTablesRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -67,6 +55,23 @@ Aws::String GetTablesRequest::SerializePayload() const
   if(m_queryAsOfTimeHasBeenSet)
   {
    payload.WithDouble("QueryAsOfTime", m_queryAsOfTime.SecondsWithMSPrecision());
+  }
+
+  if(m_includeStatusDetailsHasBeenSet)
+  {
+   payload.WithBool("IncludeStatusDetails", m_includeStatusDetails);
+
+  }
+
+  if(m_attributesToGetHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> attributesToGetJsonList(m_attributesToGet.size());
+   for(unsigned attributesToGetIndex = 0; attributesToGetIndex < attributesToGetJsonList.GetLength(); ++attributesToGetIndex)
+   {
+     attributesToGetJsonList[attributesToGetIndex].AsString(TableAttributesMapper::GetNameForTableAttributes(m_attributesToGet[attributesToGetIndex]));
+   }
+   payload.WithArray("AttributesToGet", std::move(attributesToGetJsonList));
+
   }
 
   return payload.View().WriteReadable();

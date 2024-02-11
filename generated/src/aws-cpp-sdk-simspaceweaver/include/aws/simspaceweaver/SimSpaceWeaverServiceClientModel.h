@@ -18,6 +18,7 @@
 /* End of generic header includes */
 
 /* Service model headers required in SimSpaceWeaverClient header */
+#include <aws/simspaceweaver/model/CreateSnapshotResult.h>
 #include <aws/simspaceweaver/model/DeleteAppResult.h>
 #include <aws/simspaceweaver/model/DeleteSimulationResult.h>
 #include <aws/simspaceweaver/model/DescribeAppResult.h>
@@ -33,6 +34,7 @@
 #include <aws/simspaceweaver/model/StopSimulationResult.h>
 #include <aws/simspaceweaver/model/TagResourceResult.h>
 #include <aws/simspaceweaver/model/UntagResourceResult.h>
+#include <aws/simspaceweaver/model/ListSimulationsRequest.h>
 /* End of service model headers required in SimSpaceWeaverClient header */
 
 namespace Aws
@@ -66,13 +68,14 @@ namespace Aws
 
   namespace SimSpaceWeaver
   {
-    using SimSpaceWeaverClientConfiguration = Aws::Client::GenericClientConfiguration<false>;
+    using SimSpaceWeaverClientConfiguration = Aws::Client::GenericClientConfiguration;
     using SimSpaceWeaverEndpointProviderBase = Aws::SimSpaceWeaver::Endpoint::SimSpaceWeaverEndpointProviderBase;
     using SimSpaceWeaverEndpointProvider = Aws::SimSpaceWeaver::Endpoint::SimSpaceWeaverEndpointProvider;
 
     namespace Model
     {
       /* Service model forward declarations required in SimSpaceWeaverClient header */
+      class CreateSnapshotRequest;
       class DeleteAppRequest;
       class DeleteSimulationRequest;
       class DescribeAppRequest;
@@ -91,6 +94,7 @@ namespace Aws
       /* End of service model forward declarations required in SimSpaceWeaverClient header */
 
       /* Service model Outcome class definitions */
+      typedef Aws::Utils::Outcome<CreateSnapshotResult, SimSpaceWeaverError> CreateSnapshotOutcome;
       typedef Aws::Utils::Outcome<DeleteAppResult, SimSpaceWeaverError> DeleteAppOutcome;
       typedef Aws::Utils::Outcome<DeleteSimulationResult, SimSpaceWeaverError> DeleteSimulationOutcome;
       typedef Aws::Utils::Outcome<DescribeAppResult, SimSpaceWeaverError> DescribeAppOutcome;
@@ -109,6 +113,7 @@ namespace Aws
       /* End of service model Outcome class definitions */
 
       /* Service model Outcome callable definitions */
+      typedef std::future<CreateSnapshotOutcome> CreateSnapshotOutcomeCallable;
       typedef std::future<DeleteAppOutcome> DeleteAppOutcomeCallable;
       typedef std::future<DeleteSimulationOutcome> DeleteSimulationOutcomeCallable;
       typedef std::future<DescribeAppOutcome> DescribeAppOutcomeCallable;
@@ -130,6 +135,7 @@ namespace Aws
     class SimSpaceWeaverClient;
 
     /* Service model async handlers definitions */
+    typedef std::function<void(const SimSpaceWeaverClient*, const Model::CreateSnapshotRequest&, const Model::CreateSnapshotOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateSnapshotResponseReceivedHandler;
     typedef std::function<void(const SimSpaceWeaverClient*, const Model::DeleteAppRequest&, const Model::DeleteAppOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteAppResponseReceivedHandler;
     typedef std::function<void(const SimSpaceWeaverClient*, const Model::DeleteSimulationRequest&, const Model::DeleteSimulationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteSimulationResponseReceivedHandler;
     typedef std::function<void(const SimSpaceWeaverClient*, const Model::DescribeAppRequest&, const Model::DescribeAppOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeAppResponseReceivedHandler;

@@ -12,39 +12,6 @@ using namespace Aws::AppStream::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateFleetRequest::CreateFleetRequest() : 
-    m_nameHasBeenSet(false),
-    m_imageNameHasBeenSet(false),
-    m_imageArnHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_fleetType(FleetType::NOT_SET),
-    m_fleetTypeHasBeenSet(false),
-    m_computeCapacityHasBeenSet(false),
-    m_vpcConfigHasBeenSet(false),
-    m_maxUserDurationInSeconds(0),
-    m_maxUserDurationInSecondsHasBeenSet(false),
-    m_disconnectTimeoutInSeconds(0),
-    m_disconnectTimeoutInSecondsHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_enableDefaultInternetAccess(false),
-    m_enableDefaultInternetAccessHasBeenSet(false),
-    m_domainJoinInfoHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_idleDisconnectTimeoutInSeconds(0),
-    m_idleDisconnectTimeoutInSecondsHasBeenSet(false),
-    m_iamRoleArnHasBeenSet(false),
-    m_streamView(StreamView::NOT_SET),
-    m_streamViewHasBeenSet(false),
-    m_platform(PlatformType::NOT_SET),
-    m_platformHasBeenSet(false),
-    m_maxConcurrentSessions(0),
-    m_maxConcurrentSessionsHasBeenSet(false),
-    m_usbDeviceFilterStringsHasBeenSet(false),
-    m_sessionScriptS3LocationHasBeenSet(false)
-{
-}
-
 Aws::String CreateFleetRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -179,6 +146,12 @@ Aws::String CreateFleetRequest::SerializePayload() const
   if(m_sessionScriptS3LocationHasBeenSet)
   {
    payload.WithObject("SessionScriptS3Location", m_sessionScriptS3Location.Jsonize());
+
+  }
+
+  if(m_maxSessionsPerInstanceHasBeenSet)
+  {
+   payload.WithInteger("MaxSessionsPerInstance", m_maxSessionsPerInstance);
 
   }
 

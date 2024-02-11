@@ -32,79 +32,39 @@ namespace Model
   class ExasolParameters
   {
   public:
-    AWS_QUICKSIGHT_API ExasolParameters();
+    AWS_QUICKSIGHT_API ExasolParameters() = default;
     AWS_QUICKSIGHT_API ExasolParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API ExasolParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The hostname or IP address of the Exasol data source.</p>
      */
-    inline const Aws::String& GetHost() const{ return m_host; }
-
-    /**
-     * <p>The hostname or IP address of the Exasol data source.</p>
-     */
+    inline const Aws::String& GetHost() const { return m_host; }
     inline bool HostHasBeenSet() const { return m_hostHasBeenSet; }
+    template<typename HostT = Aws::String>
+    void SetHost(HostT&& value) { m_hostHasBeenSet = true; m_host = std::forward<HostT>(value); }
+    template<typename HostT = Aws::String>
+    ExasolParameters& WithHost(HostT&& value) { SetHost(std::forward<HostT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The hostname or IP address of the Exasol data source.</p>
-     */
-    inline void SetHost(const Aws::String& value) { m_hostHasBeenSet = true; m_host = value; }
-
-    /**
-     * <p>The hostname or IP address of the Exasol data source.</p>
-     */
-    inline void SetHost(Aws::String&& value) { m_hostHasBeenSet = true; m_host = std::move(value); }
-
-    /**
-     * <p>The hostname or IP address of the Exasol data source.</p>
-     */
-    inline void SetHost(const char* value) { m_hostHasBeenSet = true; m_host.assign(value); }
-
-    /**
-     * <p>The hostname or IP address of the Exasol data source.</p>
-     */
-    inline ExasolParameters& WithHost(const Aws::String& value) { SetHost(value); return *this;}
-
-    /**
-     * <p>The hostname or IP address of the Exasol data source.</p>
-     */
-    inline ExasolParameters& WithHost(Aws::String&& value) { SetHost(std::move(value)); return *this;}
-
-    /**
-     * <p>The hostname or IP address of the Exasol data source.</p>
-     */
-    inline ExasolParameters& WithHost(const char* value) { SetHost(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The port for the Exasol data source.</p>
      */
-    inline int GetPort() const{ return m_port; }
-
-    /**
-     * <p>The port for the Exasol data source.</p>
-     */
+    inline int GetPort() const { return m_port; }
     inline bool PortHasBeenSet() const { return m_portHasBeenSet; }
-
-    /**
-     * <p>The port for the Exasol data source.</p>
-     */
     inline void SetPort(int value) { m_portHasBeenSet = true; m_port = value; }
-
-    /**
-     * <p>The port for the Exasol data source.</p>
-     */
     inline ExasolParameters& WithPort(int value) { SetPort(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_host;
     bool m_hostHasBeenSet = false;
 
-    int m_port;
+    int m_port{0};
     bool m_portHasBeenSet = false;
   };
 

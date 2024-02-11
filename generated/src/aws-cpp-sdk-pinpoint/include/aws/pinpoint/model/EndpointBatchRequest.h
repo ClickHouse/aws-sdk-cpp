@@ -33,68 +33,27 @@ namespace Model
   class EndpointBatchRequest
   {
   public:
-    AWS_PINPOINT_API EndpointBatchRequest();
+    AWS_PINPOINT_API EndpointBatchRequest() = default;
     AWS_PINPOINT_API EndpointBatchRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API EndpointBatchRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An array that defines the endpoints to create or update and, for each
      * endpoint, the property values to set or change. An array can contain a maximum
      * of 100 items.</p>
      */
-    inline const Aws::Vector<EndpointBatchItem>& GetItem() const{ return m_item; }
-
-    /**
-     * <p>An array that defines the endpoints to create or update and, for each
-     * endpoint, the property values to set or change. An array can contain a maximum
-     * of 100 items.</p>
-     */
+    inline const Aws::Vector<EndpointBatchItem>& GetItem() const { return m_item; }
     inline bool ItemHasBeenSet() const { return m_itemHasBeenSet; }
-
-    /**
-     * <p>An array that defines the endpoints to create or update and, for each
-     * endpoint, the property values to set or change. An array can contain a maximum
-     * of 100 items.</p>
-     */
-    inline void SetItem(const Aws::Vector<EndpointBatchItem>& value) { m_itemHasBeenSet = true; m_item = value; }
-
-    /**
-     * <p>An array that defines the endpoints to create or update and, for each
-     * endpoint, the property values to set or change. An array can contain a maximum
-     * of 100 items.</p>
-     */
-    inline void SetItem(Aws::Vector<EndpointBatchItem>&& value) { m_itemHasBeenSet = true; m_item = std::move(value); }
-
-    /**
-     * <p>An array that defines the endpoints to create or update and, for each
-     * endpoint, the property values to set or change. An array can contain a maximum
-     * of 100 items.</p>
-     */
-    inline EndpointBatchRequest& WithItem(const Aws::Vector<EndpointBatchItem>& value) { SetItem(value); return *this;}
-
-    /**
-     * <p>An array that defines the endpoints to create or update and, for each
-     * endpoint, the property values to set or change. An array can contain a maximum
-     * of 100 items.</p>
-     */
-    inline EndpointBatchRequest& WithItem(Aws::Vector<EndpointBatchItem>&& value) { SetItem(std::move(value)); return *this;}
-
-    /**
-     * <p>An array that defines the endpoints to create or update and, for each
-     * endpoint, the property values to set or change. An array can contain a maximum
-     * of 100 items.</p>
-     */
-    inline EndpointBatchRequest& AddItem(const EndpointBatchItem& value) { m_itemHasBeenSet = true; m_item.push_back(value); return *this; }
-
-    /**
-     * <p>An array that defines the endpoints to create or update and, for each
-     * endpoint, the property values to set or change. An array can contain a maximum
-     * of 100 items.</p>
-     */
-    inline EndpointBatchRequest& AddItem(EndpointBatchItem&& value) { m_itemHasBeenSet = true; m_item.push_back(std::move(value)); return *this; }
-
+    template<typename ItemT = Aws::Vector<EndpointBatchItem>>
+    void SetItem(ItemT&& value) { m_itemHasBeenSet = true; m_item = std::forward<ItemT>(value); }
+    template<typename ItemT = Aws::Vector<EndpointBatchItem>>
+    EndpointBatchRequest& WithItem(ItemT&& value) { SetItem(std::forward<ItemT>(value)); return *this;}
+    template<typename ItemT = EndpointBatchItem>
+    EndpointBatchRequest& AddItem(ItemT&& value) { m_itemHasBeenSet = true; m_item.emplace_back(std::forward<ItemT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<EndpointBatchItem> m_item;

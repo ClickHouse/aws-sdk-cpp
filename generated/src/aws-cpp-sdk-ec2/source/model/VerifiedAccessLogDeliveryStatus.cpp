@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-VerifiedAccessLogDeliveryStatus::VerifiedAccessLogDeliveryStatus() : 
-    m_code(VerifiedAccessLogDeliveryStatusCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-VerifiedAccessLogDeliveryStatus::VerifiedAccessLogDeliveryStatus(const XmlNode& xmlNode) : 
-    m_code(VerifiedAccessLogDeliveryStatusCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+VerifiedAccessLogDeliveryStatus::VerifiedAccessLogDeliveryStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ VerifiedAccessLogDeliveryStatus& VerifiedAccessLogDeliveryStatus::operator =(con
     XmlNode codeNode = resultNode.FirstChild("code");
     if(!codeNode.IsNull())
     {
-      m_code = VerifiedAccessLogDeliveryStatusCodeMapper::GetVerifiedAccessLogDeliveryStatusCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()).c_str());
+      m_code = VerifiedAccessLogDeliveryStatusCodeMapper::GetVerifiedAccessLogDeliveryStatusCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()));
       m_codeHasBeenSet = true;
     }
     XmlNode messageNode = resultNode.FirstChild("message");
@@ -62,7 +52,7 @@ void VerifiedAccessLogDeliveryStatus::OutputToStream(Aws::OStream& oStream, cons
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Code=" << VerifiedAccessLogDeliveryStatusCodeMapper::GetNameForVerifiedAccessLogDeliveryStatusCode(m_code) << "&";
+      oStream << location << index << locationValue << ".Code=" << StringUtils::URLEncode(VerifiedAccessLogDeliveryStatusCodeMapper::GetNameForVerifiedAccessLogDeliveryStatusCode(m_code)) << "&";
   }
 
   if(m_messageHasBeenSet)
@@ -76,7 +66,7 @@ void VerifiedAccessLogDeliveryStatus::OutputToStream(Aws::OStream& oStream, cons
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << ".Code=" << VerifiedAccessLogDeliveryStatusCodeMapper::GetNameForVerifiedAccessLogDeliveryStatusCode(m_code) << "&";
+      oStream << location << ".Code=" << StringUtils::URLEncode(VerifiedAccessLogDeliveryStatusCodeMapper::GetNameForVerifiedAccessLogDeliveryStatusCode(m_code)) << "&";
   }
   if(m_messageHasBeenSet)
   {

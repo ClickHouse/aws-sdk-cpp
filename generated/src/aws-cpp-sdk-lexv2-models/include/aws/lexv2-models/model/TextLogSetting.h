@@ -32,58 +32,51 @@ namespace Model
   class TextLogSetting
   {
   public:
-    AWS_LEXMODELSV2_API TextLogSetting();
+    AWS_LEXMODELSV2_API TextLogSetting() = default;
     AWS_LEXMODELSV2_API TextLogSetting(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API TextLogSetting& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Determines whether conversation logs should be stored for an alias.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Determines whether conversation logs should be stored for an alias.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Determines whether conversation logs should be stored for an alias.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Determines whether conversation logs should be stored for an alias.</p>
-     */
     inline TextLogSetting& WithEnabled(bool value) { SetEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const TextLogDestination& GetDestination() const{ return m_destination; }
-
-    
+    inline const TextLogDestination& GetDestination() const { return m_destination; }
     inline bool DestinationHasBeenSet() const { return m_destinationHasBeenSet; }
+    template<typename DestinationT = TextLogDestination>
+    void SetDestination(DestinationT&& value) { m_destinationHasBeenSet = true; m_destination = std::forward<DestinationT>(value); }
+    template<typename DestinationT = TextLogDestination>
+    TextLogSetting& WithDestination(DestinationT&& value) { SetDestination(std::forward<DestinationT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetDestination(const TextLogDestination& value) { m_destinationHasBeenSet = true; m_destination = value; }
-
-    
-    inline void SetDestination(TextLogDestination&& value) { m_destinationHasBeenSet = true; m_destination = std::move(value); }
-
-    
-    inline TextLogSetting& WithDestination(const TextLogDestination& value) { SetDestination(value); return *this;}
-
-    
-    inline TextLogSetting& WithDestination(TextLogDestination&& value) { SetDestination(std::move(value)); return *this;}
-
+    ///@{
+    /**
+     * <p>The option to enable selective conversation log capture for text.</p>
+     */
+    inline bool GetSelectiveLoggingEnabled() const { return m_selectiveLoggingEnabled; }
+    inline bool SelectiveLoggingEnabledHasBeenSet() const { return m_selectiveLoggingEnabledHasBeenSet; }
+    inline void SetSelectiveLoggingEnabled(bool value) { m_selectiveLoggingEnabledHasBeenSet = true; m_selectiveLoggingEnabled = value; }
+    inline TextLogSetting& WithSelectiveLoggingEnabled(bool value) { SetSelectiveLoggingEnabled(value); return *this;}
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
 
     TextLogDestination m_destination;
     bool m_destinationHasBeenSet = false;
+
+    bool m_selectiveLoggingEnabled{false};
+    bool m_selectiveLoggingEnabledHasBeenSet = false;
   };
 
 } // namespace Model

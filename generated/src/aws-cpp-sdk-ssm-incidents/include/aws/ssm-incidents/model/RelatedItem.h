@@ -33,140 +33,49 @@ namespace Model
   class RelatedItem
   {
   public:
-    AWS_SSMINCIDENTS_API RelatedItem();
+    AWS_SSMINCIDENTS_API RelatedItem() = default;
     AWS_SSMINCIDENTS_API RelatedItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API RelatedItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A unique ID for a <code>RelatedItem</code>.</p>  <p>Don't specify
      * this parameter when you add a <code>RelatedItem</code> by using the
      * <a>UpdateRelatedItems</a> API action.</p> 
      */
-    inline const Aws::String& GetGeneratedId() const{ return m_generatedId; }
-
-    /**
-     * <p>A unique ID for a <code>RelatedItem</code>.</p>  <p>Don't specify
-     * this parameter when you add a <code>RelatedItem</code> by using the
-     * <a>UpdateRelatedItems</a> API action.</p> 
-     */
+    inline const Aws::String& GetGeneratedId() const { return m_generatedId; }
     inline bool GeneratedIdHasBeenSet() const { return m_generatedIdHasBeenSet; }
+    template<typename GeneratedIdT = Aws::String>
+    void SetGeneratedId(GeneratedIdT&& value) { m_generatedIdHasBeenSet = true; m_generatedId = std::forward<GeneratedIdT>(value); }
+    template<typename GeneratedIdT = Aws::String>
+    RelatedItem& WithGeneratedId(GeneratedIdT&& value) { SetGeneratedId(std::forward<GeneratedIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique ID for a <code>RelatedItem</code>.</p>  <p>Don't specify
-     * this parameter when you add a <code>RelatedItem</code> by using the
-     * <a>UpdateRelatedItems</a> API action.</p> 
-     */
-    inline void SetGeneratedId(const Aws::String& value) { m_generatedIdHasBeenSet = true; m_generatedId = value; }
-
-    /**
-     * <p>A unique ID for a <code>RelatedItem</code>.</p>  <p>Don't specify
-     * this parameter when you add a <code>RelatedItem</code> by using the
-     * <a>UpdateRelatedItems</a> API action.</p> 
-     */
-    inline void SetGeneratedId(Aws::String&& value) { m_generatedIdHasBeenSet = true; m_generatedId = std::move(value); }
-
-    /**
-     * <p>A unique ID for a <code>RelatedItem</code>.</p>  <p>Don't specify
-     * this parameter when you add a <code>RelatedItem</code> by using the
-     * <a>UpdateRelatedItems</a> API action.</p> 
-     */
-    inline void SetGeneratedId(const char* value) { m_generatedIdHasBeenSet = true; m_generatedId.assign(value); }
-
-    /**
-     * <p>A unique ID for a <code>RelatedItem</code>.</p>  <p>Don't specify
-     * this parameter when you add a <code>RelatedItem</code> by using the
-     * <a>UpdateRelatedItems</a> API action.</p> 
-     */
-    inline RelatedItem& WithGeneratedId(const Aws::String& value) { SetGeneratedId(value); return *this;}
-
-    /**
-     * <p>A unique ID for a <code>RelatedItem</code>.</p>  <p>Don't specify
-     * this parameter when you add a <code>RelatedItem</code> by using the
-     * <a>UpdateRelatedItems</a> API action.</p> 
-     */
-    inline RelatedItem& WithGeneratedId(Aws::String&& value) { SetGeneratedId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique ID for a <code>RelatedItem</code>.</p>  <p>Don't specify
-     * this parameter when you add a <code>RelatedItem</code> by using the
-     * <a>UpdateRelatedItems</a> API action.</p> 
-     */
-    inline RelatedItem& WithGeneratedId(const char* value) { SetGeneratedId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about the related item.</p>
      */
-    inline const ItemIdentifier& GetIdentifier() const{ return m_identifier; }
-
-    /**
-     * <p>Details about the related item.</p>
-     */
+    inline const ItemIdentifier& GetIdentifier() const { return m_identifier; }
     inline bool IdentifierHasBeenSet() const { return m_identifierHasBeenSet; }
+    template<typename IdentifierT = ItemIdentifier>
+    void SetIdentifier(IdentifierT&& value) { m_identifierHasBeenSet = true; m_identifier = std::forward<IdentifierT>(value); }
+    template<typename IdentifierT = ItemIdentifier>
+    RelatedItem& WithIdentifier(IdentifierT&& value) { SetIdentifier(std::forward<IdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about the related item.</p>
-     */
-    inline void SetIdentifier(const ItemIdentifier& value) { m_identifierHasBeenSet = true; m_identifier = value; }
-
-    /**
-     * <p>Details about the related item.</p>
-     */
-    inline void SetIdentifier(ItemIdentifier&& value) { m_identifierHasBeenSet = true; m_identifier = std::move(value); }
-
-    /**
-     * <p>Details about the related item.</p>
-     */
-    inline RelatedItem& WithIdentifier(const ItemIdentifier& value) { SetIdentifier(value); return *this;}
-
-    /**
-     * <p>Details about the related item.</p>
-     */
-    inline RelatedItem& WithIdentifier(ItemIdentifier&& value) { SetIdentifier(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The title of the related item.</p>
      */
-    inline const Aws::String& GetTitle() const{ return m_title; }
-
-    /**
-     * <p>The title of the related item.</p>
-     */
+    inline const Aws::String& GetTitle() const { return m_title; }
     inline bool TitleHasBeenSet() const { return m_titleHasBeenSet; }
-
-    /**
-     * <p>The title of the related item.</p>
-     */
-    inline void SetTitle(const Aws::String& value) { m_titleHasBeenSet = true; m_title = value; }
-
-    /**
-     * <p>The title of the related item.</p>
-     */
-    inline void SetTitle(Aws::String&& value) { m_titleHasBeenSet = true; m_title = std::move(value); }
-
-    /**
-     * <p>The title of the related item.</p>
-     */
-    inline void SetTitle(const char* value) { m_titleHasBeenSet = true; m_title.assign(value); }
-
-    /**
-     * <p>The title of the related item.</p>
-     */
-    inline RelatedItem& WithTitle(const Aws::String& value) { SetTitle(value); return *this;}
-
-    /**
-     * <p>The title of the related item.</p>
-     */
-    inline RelatedItem& WithTitle(Aws::String&& value) { SetTitle(std::move(value)); return *this;}
-
-    /**
-     * <p>The title of the related item.</p>
-     */
-    inline RelatedItem& WithTitle(const char* value) { SetTitle(value); return *this;}
-
+    template<typename TitleT = Aws::String>
+    void SetTitle(TitleT&& value) { m_titleHasBeenSet = true; m_title = std::forward<TitleT>(value); }
+    template<typename TitleT = Aws::String>
+    RelatedItem& WithTitle(TitleT&& value) { SetTitle(std::forward<TitleT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_generatedId;

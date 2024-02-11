@@ -30,7 +30,10 @@ namespace Model
    * can also configure Amazon ECS to roll back your service to the last completed
    * deployment after a failure. For more information, see <a
    * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-type-ecs.html">Rolling
-   * update</a> in the <i>Amazon Elastic Container Service Developer
+   * update</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.</p>
+   * <p>For more information about API failure reasons, see <a
+   * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/api_failures_messages.html">API
+   * failure reasons</a> in the <i>Amazon Elastic Container Service Developer
    * Guide</i>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeploymentCircuitBreaker">AWS
    * API Reference</a></p>
@@ -38,75 +41,41 @@ namespace Model
   class DeploymentCircuitBreaker
   {
   public:
-    AWS_ECS_API DeploymentCircuitBreaker();
+    AWS_ECS_API DeploymentCircuitBreaker() = default;
     AWS_ECS_API DeploymentCircuitBreaker(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECS_API DeploymentCircuitBreaker& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Determines whether to use the deployment circuit breaker logic for the
      * service.</p>
      */
-    inline bool GetEnable() const{ return m_enable; }
-
-    /**
-     * <p>Determines whether to use the deployment circuit breaker logic for the
-     * service.</p>
-     */
+    inline bool GetEnable() const { return m_enable; }
     inline bool EnableHasBeenSet() const { return m_enableHasBeenSet; }
-
-    /**
-     * <p>Determines whether to use the deployment circuit breaker logic for the
-     * service.</p>
-     */
     inline void SetEnable(bool value) { m_enableHasBeenSet = true; m_enable = value; }
-
-    /**
-     * <p>Determines whether to use the deployment circuit breaker logic for the
-     * service.</p>
-     */
     inline DeploymentCircuitBreaker& WithEnable(bool value) { SetEnable(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Determines whether to configure Amazon ECS to roll back the service if a
      * service deployment fails. If rollback is on, when a service deployment fails,
      * the service is rolled back to the last deployment that completed
      * successfully.</p>
      */
-    inline bool GetRollback() const{ return m_rollback; }
-
-    /**
-     * <p>Determines whether to configure Amazon ECS to roll back the service if a
-     * service deployment fails. If rollback is on, when a service deployment fails,
-     * the service is rolled back to the last deployment that completed
-     * successfully.</p>
-     */
+    inline bool GetRollback() const { return m_rollback; }
     inline bool RollbackHasBeenSet() const { return m_rollbackHasBeenSet; }
-
-    /**
-     * <p>Determines whether to configure Amazon ECS to roll back the service if a
-     * service deployment fails. If rollback is on, when a service deployment fails,
-     * the service is rolled back to the last deployment that completed
-     * successfully.</p>
-     */
     inline void SetRollback(bool value) { m_rollbackHasBeenSet = true; m_rollback = value; }
-
-    /**
-     * <p>Determines whether to configure Amazon ECS to roll back the service if a
-     * service deployment fails. If rollback is on, when a service deployment fails,
-     * the service is rolled back to the last deployment that completed
-     * successfully.</p>
-     */
     inline DeploymentCircuitBreaker& WithRollback(bool value) { SetRollback(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_enable;
+    bool m_enable{false};
     bool m_enableHasBeenSet = false;
 
-    bool m_rollback;
+    bool m_rollback{false};
     bool m_rollbackHasBeenSet = false;
   };
 

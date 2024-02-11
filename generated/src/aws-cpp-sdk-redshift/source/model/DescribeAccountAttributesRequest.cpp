@@ -10,23 +10,25 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-DescribeAccountAttributesRequest::DescribeAccountAttributesRequest() : 
-    m_attributeNamesHasBeenSet(false)
-{
-}
-
 Aws::String DescribeAccountAttributesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeAccountAttributes&";
   if(m_attributeNamesHasBeenSet)
   {
-    unsigned attributeNamesCount = 1;
-    for(auto& item : m_attributeNames)
+    if (m_attributeNames.empty())
     {
-      ss << "AttributeNames.member." << attributeNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      attributeNamesCount++;
+      ss << "AttributeNames=&";
+    }
+    else
+    {
+      unsigned attributeNamesCount = 1;
+      for(auto& item : m_attributeNames)
+      {
+        ss << "AttributeNames.AttributeName." << attributeNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        attributeNamesCount++;
+      }
     }
   }
 

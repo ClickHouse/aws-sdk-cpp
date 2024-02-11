@@ -35,403 +35,209 @@ namespace Model
   class DescribeJobTemplateResult
   {
   public:
-    AWS_IOT_API DescribeJobTemplateResult();
+    AWS_IOT_API DescribeJobTemplateResult() = default;
     AWS_IOT_API DescribeJobTemplateResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_IOT_API DescribeJobTemplateResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ARN of the job template.</p>
      */
-    inline const Aws::String& GetJobTemplateArn() const{ return m_jobTemplateArn; }
+    inline const Aws::String& GetJobTemplateArn() const { return m_jobTemplateArn; }
+    template<typename JobTemplateArnT = Aws::String>
+    void SetJobTemplateArn(JobTemplateArnT&& value) { m_jobTemplateArnHasBeenSet = true; m_jobTemplateArn = std::forward<JobTemplateArnT>(value); }
+    template<typename JobTemplateArnT = Aws::String>
+    DescribeJobTemplateResult& WithJobTemplateArn(JobTemplateArnT&& value) { SetJobTemplateArn(std::forward<JobTemplateArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the job template.</p>
-     */
-    inline void SetJobTemplateArn(const Aws::String& value) { m_jobTemplateArn = value; }
-
-    /**
-     * <p>The ARN of the job template.</p>
-     */
-    inline void SetJobTemplateArn(Aws::String&& value) { m_jobTemplateArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the job template.</p>
-     */
-    inline void SetJobTemplateArn(const char* value) { m_jobTemplateArn.assign(value); }
-
-    /**
-     * <p>The ARN of the job template.</p>
-     */
-    inline DescribeJobTemplateResult& WithJobTemplateArn(const Aws::String& value) { SetJobTemplateArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the job template.</p>
-     */
-    inline DescribeJobTemplateResult& WithJobTemplateArn(Aws::String&& value) { SetJobTemplateArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the job template.</p>
-     */
-    inline DescribeJobTemplateResult& WithJobTemplateArn(const char* value) { SetJobTemplateArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of the job template.</p>
      */
-    inline const Aws::String& GetJobTemplateId() const{ return m_jobTemplateId; }
+    inline const Aws::String& GetJobTemplateId() const { return m_jobTemplateId; }
+    template<typename JobTemplateIdT = Aws::String>
+    void SetJobTemplateId(JobTemplateIdT&& value) { m_jobTemplateIdHasBeenSet = true; m_jobTemplateId = std::forward<JobTemplateIdT>(value); }
+    template<typename JobTemplateIdT = Aws::String>
+    DescribeJobTemplateResult& WithJobTemplateId(JobTemplateIdT&& value) { SetJobTemplateId(std::forward<JobTemplateIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the job template.</p>
-     */
-    inline void SetJobTemplateId(const Aws::String& value) { m_jobTemplateId = value; }
-
-    /**
-     * <p>The unique identifier of the job template.</p>
-     */
-    inline void SetJobTemplateId(Aws::String&& value) { m_jobTemplateId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the job template.</p>
-     */
-    inline void SetJobTemplateId(const char* value) { m_jobTemplateId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the job template.</p>
-     */
-    inline DescribeJobTemplateResult& WithJobTemplateId(const Aws::String& value) { SetJobTemplateId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the job template.</p>
-     */
-    inline DescribeJobTemplateResult& WithJobTemplateId(Aws::String&& value) { SetJobTemplateId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the job template.</p>
-     */
-    inline DescribeJobTemplateResult& WithJobTemplateId(const char* value) { SetJobTemplateId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the job template.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    DescribeJobTemplateResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the job template.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>A description of the job template.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>A description of the job template.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>A description of the job template.</p>
-     */
-    inline DescribeJobTemplateResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the job template.</p>
-     */
-    inline DescribeJobTemplateResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the job template.</p>
-     */
-    inline DescribeJobTemplateResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An S3 link to the job document.</p>
      */
-    inline const Aws::String& GetDocumentSource() const{ return m_documentSource; }
+    inline const Aws::String& GetDocumentSource() const { return m_documentSource; }
+    template<typename DocumentSourceT = Aws::String>
+    void SetDocumentSource(DocumentSourceT&& value) { m_documentSourceHasBeenSet = true; m_documentSource = std::forward<DocumentSourceT>(value); }
+    template<typename DocumentSourceT = Aws::String>
+    DescribeJobTemplateResult& WithDocumentSource(DocumentSourceT&& value) { SetDocumentSource(std::forward<DocumentSourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An S3 link to the job document.</p>
-     */
-    inline void SetDocumentSource(const Aws::String& value) { m_documentSource = value; }
-
-    /**
-     * <p>An S3 link to the job document.</p>
-     */
-    inline void SetDocumentSource(Aws::String&& value) { m_documentSource = std::move(value); }
-
-    /**
-     * <p>An S3 link to the job document.</p>
-     */
-    inline void SetDocumentSource(const char* value) { m_documentSource.assign(value); }
-
-    /**
-     * <p>An S3 link to the job document.</p>
-     */
-    inline DescribeJobTemplateResult& WithDocumentSource(const Aws::String& value) { SetDocumentSource(value); return *this;}
-
-    /**
-     * <p>An S3 link to the job document.</p>
-     */
-    inline DescribeJobTemplateResult& WithDocumentSource(Aws::String&& value) { SetDocumentSource(std::move(value)); return *this;}
-
-    /**
-     * <p>An S3 link to the job document.</p>
-     */
-    inline DescribeJobTemplateResult& WithDocumentSource(const char* value) { SetDocumentSource(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The job document.</p>
      */
-    inline const Aws::String& GetDocument() const{ return m_document; }
+    inline const Aws::String& GetDocument() const { return m_document; }
+    template<typename DocumentT = Aws::String>
+    void SetDocument(DocumentT&& value) { m_documentHasBeenSet = true; m_document = std::forward<DocumentT>(value); }
+    template<typename DocumentT = Aws::String>
+    DescribeJobTemplateResult& WithDocument(DocumentT&& value) { SetDocument(std::forward<DocumentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The job document.</p>
-     */
-    inline void SetDocument(const Aws::String& value) { m_document = value; }
-
-    /**
-     * <p>The job document.</p>
-     */
-    inline void SetDocument(Aws::String&& value) { m_document = std::move(value); }
-
-    /**
-     * <p>The job document.</p>
-     */
-    inline void SetDocument(const char* value) { m_document.assign(value); }
-
-    /**
-     * <p>The job document.</p>
-     */
-    inline DescribeJobTemplateResult& WithDocument(const Aws::String& value) { SetDocument(value); return *this;}
-
-    /**
-     * <p>The job document.</p>
-     */
-    inline DescribeJobTemplateResult& WithDocument(Aws::String&& value) { SetDocument(std::move(value)); return *this;}
-
-    /**
-     * <p>The job document.</p>
-     */
-    inline DescribeJobTemplateResult& WithDocument(const char* value) { SetDocument(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time, in seconds since the epoch, when the job template was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    DescribeJobTemplateResult& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time, in seconds since the epoch, when the job template was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAt = value; }
-
-    /**
-     * <p>The time, in seconds since the epoch, when the job template was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAt = std::move(value); }
-
-    /**
-     * <p>The time, in seconds since the epoch, when the job template was created.</p>
-     */
-    inline DescribeJobTemplateResult& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The time, in seconds since the epoch, when the job template was created.</p>
-     */
-    inline DescribeJobTemplateResult& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const PresignedUrlConfig& GetPresignedUrlConfig() const{ return m_presignedUrlConfig; }
+    inline const PresignedUrlConfig& GetPresignedUrlConfig() const { return m_presignedUrlConfig; }
+    template<typename PresignedUrlConfigT = PresignedUrlConfig>
+    void SetPresignedUrlConfig(PresignedUrlConfigT&& value) { m_presignedUrlConfigHasBeenSet = true; m_presignedUrlConfig = std::forward<PresignedUrlConfigT>(value); }
+    template<typename PresignedUrlConfigT = PresignedUrlConfig>
+    DescribeJobTemplateResult& WithPresignedUrlConfig(PresignedUrlConfigT&& value) { SetPresignedUrlConfig(std::forward<PresignedUrlConfigT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetPresignedUrlConfig(const PresignedUrlConfig& value) { m_presignedUrlConfig = value; }
+    inline const JobExecutionsRolloutConfig& GetJobExecutionsRolloutConfig() const { return m_jobExecutionsRolloutConfig; }
+    template<typename JobExecutionsRolloutConfigT = JobExecutionsRolloutConfig>
+    void SetJobExecutionsRolloutConfig(JobExecutionsRolloutConfigT&& value) { m_jobExecutionsRolloutConfigHasBeenSet = true; m_jobExecutionsRolloutConfig = std::forward<JobExecutionsRolloutConfigT>(value); }
+    template<typename JobExecutionsRolloutConfigT = JobExecutionsRolloutConfig>
+    DescribeJobTemplateResult& WithJobExecutionsRolloutConfig(JobExecutionsRolloutConfigT&& value) { SetJobExecutionsRolloutConfig(std::forward<JobExecutionsRolloutConfigT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetPresignedUrlConfig(PresignedUrlConfig&& value) { m_presignedUrlConfig = std::move(value); }
+    inline const AbortConfig& GetAbortConfig() const { return m_abortConfig; }
+    template<typename AbortConfigT = AbortConfig>
+    void SetAbortConfig(AbortConfigT&& value) { m_abortConfigHasBeenSet = true; m_abortConfig = std::forward<AbortConfigT>(value); }
+    template<typename AbortConfigT = AbortConfig>
+    DescribeJobTemplateResult& WithAbortConfig(AbortConfigT&& value) { SetAbortConfig(std::forward<AbortConfigT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline DescribeJobTemplateResult& WithPresignedUrlConfig(const PresignedUrlConfig& value) { SetPresignedUrlConfig(value); return *this;}
+    inline const TimeoutConfig& GetTimeoutConfig() const { return m_timeoutConfig; }
+    template<typename TimeoutConfigT = TimeoutConfig>
+    void SetTimeoutConfig(TimeoutConfigT&& value) { m_timeoutConfigHasBeenSet = true; m_timeoutConfig = std::forward<TimeoutConfigT>(value); }
+    template<typename TimeoutConfigT = TimeoutConfig>
+    DescribeJobTemplateResult& WithTimeoutConfig(TimeoutConfigT&& value) { SetTimeoutConfig(std::forward<TimeoutConfigT>(value)); return *this;}
+    ///@}
 
-    
-    inline DescribeJobTemplateResult& WithPresignedUrlConfig(PresignedUrlConfig&& value) { SetPresignedUrlConfig(std::move(value)); return *this;}
-
-
-    
-    inline const JobExecutionsRolloutConfig& GetJobExecutionsRolloutConfig() const{ return m_jobExecutionsRolloutConfig; }
-
-    
-    inline void SetJobExecutionsRolloutConfig(const JobExecutionsRolloutConfig& value) { m_jobExecutionsRolloutConfig = value; }
-
-    
-    inline void SetJobExecutionsRolloutConfig(JobExecutionsRolloutConfig&& value) { m_jobExecutionsRolloutConfig = std::move(value); }
-
-    
-    inline DescribeJobTemplateResult& WithJobExecutionsRolloutConfig(const JobExecutionsRolloutConfig& value) { SetJobExecutionsRolloutConfig(value); return *this;}
-
-    
-    inline DescribeJobTemplateResult& WithJobExecutionsRolloutConfig(JobExecutionsRolloutConfig&& value) { SetJobExecutionsRolloutConfig(std::move(value)); return *this;}
-
-
-    
-    inline const AbortConfig& GetAbortConfig() const{ return m_abortConfig; }
-
-    
-    inline void SetAbortConfig(const AbortConfig& value) { m_abortConfig = value; }
-
-    
-    inline void SetAbortConfig(AbortConfig&& value) { m_abortConfig = std::move(value); }
-
-    
-    inline DescribeJobTemplateResult& WithAbortConfig(const AbortConfig& value) { SetAbortConfig(value); return *this;}
-
-    
-    inline DescribeJobTemplateResult& WithAbortConfig(AbortConfig&& value) { SetAbortConfig(std::move(value)); return *this;}
-
-
-    
-    inline const TimeoutConfig& GetTimeoutConfig() const{ return m_timeoutConfig; }
-
-    
-    inline void SetTimeoutConfig(const TimeoutConfig& value) { m_timeoutConfig = value; }
-
-    
-    inline void SetTimeoutConfig(TimeoutConfig&& value) { m_timeoutConfig = std::move(value); }
-
-    
-    inline DescribeJobTemplateResult& WithTimeoutConfig(const TimeoutConfig& value) { SetTimeoutConfig(value); return *this;}
-
-    
-    inline DescribeJobTemplateResult& WithTimeoutConfig(TimeoutConfig&& value) { SetTimeoutConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration that determines how many retries are allowed for each
      * failure type for a job.</p>
      */
-    inline const JobExecutionsRetryConfig& GetJobExecutionsRetryConfig() const{ return m_jobExecutionsRetryConfig; }
+    inline const JobExecutionsRetryConfig& GetJobExecutionsRetryConfig() const { return m_jobExecutionsRetryConfig; }
+    template<typename JobExecutionsRetryConfigT = JobExecutionsRetryConfig>
+    void SetJobExecutionsRetryConfig(JobExecutionsRetryConfigT&& value) { m_jobExecutionsRetryConfigHasBeenSet = true; m_jobExecutionsRetryConfig = std::forward<JobExecutionsRetryConfigT>(value); }
+    template<typename JobExecutionsRetryConfigT = JobExecutionsRetryConfig>
+    DescribeJobTemplateResult& WithJobExecutionsRetryConfig(JobExecutionsRetryConfigT&& value) { SetJobExecutionsRetryConfig(std::forward<JobExecutionsRetryConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration that determines how many retries are allowed for each
-     * failure type for a job.</p>
-     */
-    inline void SetJobExecutionsRetryConfig(const JobExecutionsRetryConfig& value) { m_jobExecutionsRetryConfig = value; }
-
-    /**
-     * <p>The configuration that determines how many retries are allowed for each
-     * failure type for a job.</p>
-     */
-    inline void SetJobExecutionsRetryConfig(JobExecutionsRetryConfig&& value) { m_jobExecutionsRetryConfig = std::move(value); }
-
-    /**
-     * <p>The configuration that determines how many retries are allowed for each
-     * failure type for a job.</p>
-     */
-    inline DescribeJobTemplateResult& WithJobExecutionsRetryConfig(const JobExecutionsRetryConfig& value) { SetJobExecutionsRetryConfig(value); return *this;}
-
-    /**
-     * <p>The configuration that determines how many retries are allowed for each
-     * failure type for a job.</p>
-     */
-    inline DescribeJobTemplateResult& WithJobExecutionsRetryConfig(JobExecutionsRetryConfig&& value) { SetJobExecutionsRetryConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Allows you to configure an optional maintenance window for the rollout of a
      * job document to all devices in the target group for a job.</p>
      */
-    inline const Aws::Vector<MaintenanceWindow>& GetMaintenanceWindows() const{ return m_maintenanceWindows; }
+    inline const Aws::Vector<MaintenanceWindow>& GetMaintenanceWindows() const { return m_maintenanceWindows; }
+    template<typename MaintenanceWindowsT = Aws::Vector<MaintenanceWindow>>
+    void SetMaintenanceWindows(MaintenanceWindowsT&& value) { m_maintenanceWindowsHasBeenSet = true; m_maintenanceWindows = std::forward<MaintenanceWindowsT>(value); }
+    template<typename MaintenanceWindowsT = Aws::Vector<MaintenanceWindow>>
+    DescribeJobTemplateResult& WithMaintenanceWindows(MaintenanceWindowsT&& value) { SetMaintenanceWindows(std::forward<MaintenanceWindowsT>(value)); return *this;}
+    template<typename MaintenanceWindowsT = MaintenanceWindow>
+    DescribeJobTemplateResult& AddMaintenanceWindows(MaintenanceWindowsT&& value) { m_maintenanceWindowsHasBeenSet = true; m_maintenanceWindows.emplace_back(std::forward<MaintenanceWindowsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>Allows you to configure an optional maintenance window for the rollout of a
-     * job document to all devices in the target group for a job.</p>
+     * <p>The package version Amazon Resource Names (ARNs) that are installed on the
+     * device when the job successfully completes. The package version must be in
+     * either the Published or Deprecated state when the job deploys. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/preparing-to-use-software-package-catalog.html#package-version-lifecycle">Package
+     * version lifecycle</a>.</p> <p> <b>Note:</b>The following Length Constraints
+     * relates to a single ARN. Up to 25 package version ARNs are allowed.</p>
      */
-    inline void SetMaintenanceWindows(const Aws::Vector<MaintenanceWindow>& value) { m_maintenanceWindows = value; }
+    inline const Aws::Vector<Aws::String>& GetDestinationPackageVersions() const { return m_destinationPackageVersions; }
+    template<typename DestinationPackageVersionsT = Aws::Vector<Aws::String>>
+    void SetDestinationPackageVersions(DestinationPackageVersionsT&& value) { m_destinationPackageVersionsHasBeenSet = true; m_destinationPackageVersions = std::forward<DestinationPackageVersionsT>(value); }
+    template<typename DestinationPackageVersionsT = Aws::Vector<Aws::String>>
+    DescribeJobTemplateResult& WithDestinationPackageVersions(DestinationPackageVersionsT&& value) { SetDestinationPackageVersions(std::forward<DestinationPackageVersionsT>(value)); return *this;}
+    template<typename DestinationPackageVersionsT = Aws::String>
+    DescribeJobTemplateResult& AddDestinationPackageVersions(DestinationPackageVersionsT&& value) { m_destinationPackageVersionsHasBeenSet = true; m_destinationPackageVersions.emplace_back(std::forward<DestinationPackageVersionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Allows you to configure an optional maintenance window for the rollout of a
-     * job document to all devices in the target group for a job.</p>
-     */
-    inline void SetMaintenanceWindows(Aws::Vector<MaintenanceWindow>&& value) { m_maintenanceWindows = std::move(value); }
-
-    /**
-     * <p>Allows you to configure an optional maintenance window for the rollout of a
-     * job document to all devices in the target group for a job.</p>
-     */
-    inline DescribeJobTemplateResult& WithMaintenanceWindows(const Aws::Vector<MaintenanceWindow>& value) { SetMaintenanceWindows(value); return *this;}
-
-    /**
-     * <p>Allows you to configure an optional maintenance window for the rollout of a
-     * job document to all devices in the target group for a job.</p>
-     */
-    inline DescribeJobTemplateResult& WithMaintenanceWindows(Aws::Vector<MaintenanceWindow>&& value) { SetMaintenanceWindows(std::move(value)); return *this;}
-
-    /**
-     * <p>Allows you to configure an optional maintenance window for the rollout of a
-     * job document to all devices in the target group for a job.</p>
-     */
-    inline DescribeJobTemplateResult& AddMaintenanceWindows(const MaintenanceWindow& value) { m_maintenanceWindows.push_back(value); return *this; }
-
-    /**
-     * <p>Allows you to configure an optional maintenance window for the rollout of a
-     * job document to all devices in the target group for a job.</p>
-     */
-    inline DescribeJobTemplateResult& AddMaintenanceWindows(MaintenanceWindow&& value) { m_maintenanceWindows.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeJobTemplateResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeJobTemplateResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeJobTemplateResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeJobTemplateResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_jobTemplateArn;
+    bool m_jobTemplateArnHasBeenSet = false;
 
     Aws::String m_jobTemplateId;
+    bool m_jobTemplateIdHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
     Aws::String m_documentSource;
+    bool m_documentSourceHasBeenSet = false;
 
     Aws::String m_document;
+    bool m_documentHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
+    bool m_createdAtHasBeenSet = false;
 
     PresignedUrlConfig m_presignedUrlConfig;
+    bool m_presignedUrlConfigHasBeenSet = false;
 
     JobExecutionsRolloutConfig m_jobExecutionsRolloutConfig;
+    bool m_jobExecutionsRolloutConfigHasBeenSet = false;
 
     AbortConfig m_abortConfig;
+    bool m_abortConfigHasBeenSet = false;
 
     TimeoutConfig m_timeoutConfig;
+    bool m_timeoutConfigHasBeenSet = false;
 
     JobExecutionsRetryConfig m_jobExecutionsRetryConfig;
+    bool m_jobExecutionsRetryConfigHasBeenSet = false;
 
     Aws::Vector<MaintenanceWindow> m_maintenanceWindows;
+    bool m_maintenanceWindowsHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_destinationPackageVersions;
+    bool m_destinationPackageVersionsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

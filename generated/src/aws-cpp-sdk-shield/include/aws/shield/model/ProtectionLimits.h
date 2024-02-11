@@ -33,60 +33,26 @@ namespace Model
   class ProtectionLimits
   {
   public:
-    AWS_SHIELD_API ProtectionLimits();
+    AWS_SHIELD_API ProtectionLimits() = default;
     AWS_SHIELD_API ProtectionLimits(Aws::Utils::Json::JsonView jsonValue);
     AWS_SHIELD_API ProtectionLimits& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SHIELD_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The maximum number of resource types that you can specify in a
      * protection.</p>
      */
-    inline const Aws::Vector<Limit>& GetProtectedResourceTypeLimits() const{ return m_protectedResourceTypeLimits; }
-
-    /**
-     * <p>The maximum number of resource types that you can specify in a
-     * protection.</p>
-     */
+    inline const Aws::Vector<Limit>& GetProtectedResourceTypeLimits() const { return m_protectedResourceTypeLimits; }
     inline bool ProtectedResourceTypeLimitsHasBeenSet() const { return m_protectedResourceTypeLimitsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of resource types that you can specify in a
-     * protection.</p>
-     */
-    inline void SetProtectedResourceTypeLimits(const Aws::Vector<Limit>& value) { m_protectedResourceTypeLimitsHasBeenSet = true; m_protectedResourceTypeLimits = value; }
-
-    /**
-     * <p>The maximum number of resource types that you can specify in a
-     * protection.</p>
-     */
-    inline void SetProtectedResourceTypeLimits(Aws::Vector<Limit>&& value) { m_protectedResourceTypeLimitsHasBeenSet = true; m_protectedResourceTypeLimits = std::move(value); }
-
-    /**
-     * <p>The maximum number of resource types that you can specify in a
-     * protection.</p>
-     */
-    inline ProtectionLimits& WithProtectedResourceTypeLimits(const Aws::Vector<Limit>& value) { SetProtectedResourceTypeLimits(value); return *this;}
-
-    /**
-     * <p>The maximum number of resource types that you can specify in a
-     * protection.</p>
-     */
-    inline ProtectionLimits& WithProtectedResourceTypeLimits(Aws::Vector<Limit>&& value) { SetProtectedResourceTypeLimits(std::move(value)); return *this;}
-
-    /**
-     * <p>The maximum number of resource types that you can specify in a
-     * protection.</p>
-     */
-    inline ProtectionLimits& AddProtectedResourceTypeLimits(const Limit& value) { m_protectedResourceTypeLimitsHasBeenSet = true; m_protectedResourceTypeLimits.push_back(value); return *this; }
-
-    /**
-     * <p>The maximum number of resource types that you can specify in a
-     * protection.</p>
-     */
-    inline ProtectionLimits& AddProtectedResourceTypeLimits(Limit&& value) { m_protectedResourceTypeLimitsHasBeenSet = true; m_protectedResourceTypeLimits.push_back(std::move(value)); return *this; }
-
+    template<typename ProtectedResourceTypeLimitsT = Aws::Vector<Limit>>
+    void SetProtectedResourceTypeLimits(ProtectedResourceTypeLimitsT&& value) { m_protectedResourceTypeLimitsHasBeenSet = true; m_protectedResourceTypeLimits = std::forward<ProtectedResourceTypeLimitsT>(value); }
+    template<typename ProtectedResourceTypeLimitsT = Aws::Vector<Limit>>
+    ProtectionLimits& WithProtectedResourceTypeLimits(ProtectedResourceTypeLimitsT&& value) { SetProtectedResourceTypeLimits(std::forward<ProtectedResourceTypeLimitsT>(value)); return *this;}
+    template<typename ProtectedResourceTypeLimitsT = Limit>
+    ProtectionLimits& AddProtectedResourceTypeLimits(ProtectedResourceTypeLimitsT&& value) { m_protectedResourceTypeLimitsHasBeenSet = true; m_protectedResourceTypeLimits.emplace_back(std::forward<ProtectedResourceTypeLimitsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Limit> m_protectedResourceTypeLimits;

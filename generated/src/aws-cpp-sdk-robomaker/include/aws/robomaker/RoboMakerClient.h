@@ -22,22 +22,25 @@ namespace RoboMaker
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef RoboMakerClientConfiguration ClientConfigurationType;
+      typedef RoboMakerEndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         RoboMakerClient(const Aws::RoboMaker::RoboMakerClientConfiguration& clientConfiguration = Aws::RoboMaker::RoboMakerClientConfiguration(),
-                        std::shared_ptr<RoboMakerEndpointProviderBase> endpointProvider = Aws::MakeShared<RoboMakerEndpointProvider>(ALLOCATION_TAG));
+                        std::shared_ptr<RoboMakerEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         RoboMakerClient(const Aws::Auth::AWSCredentials& credentials,
-                        std::shared_ptr<RoboMakerEndpointProviderBase> endpointProvider = Aws::MakeShared<RoboMakerEndpointProvider>(ALLOCATION_TAG),
+                        std::shared_ptr<RoboMakerEndpointProviderBase> endpointProvider = nullptr,
                         const Aws::RoboMaker::RoboMakerClientConfiguration& clientConfiguration = Aws::RoboMaker::RoboMakerClientConfiguration());
 
        /**
@@ -45,7 +48,7 @@ namespace RoboMaker
         * the default http client factory will be used
         */
         RoboMakerClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                        std::shared_ptr<RoboMakerEndpointProviderBase> endpointProvider = Aws::MakeShared<RoboMakerEndpointProvider>(ALLOCATION_TAG),
+                        std::shared_ptr<RoboMakerEndpointProviderBase> endpointProvider = nullptr,
                         const Aws::RoboMaker::RoboMakerClientConfiguration& clientConfiguration = Aws::RoboMaker::RoboMakerClientConfiguration());
 
 
@@ -74,8 +77,14 @@ namespace RoboMaker
         virtual ~RoboMakerClient();
 
         /**
-         * <p>Deletes one or more worlds in a batch operation.</p><p><h3>See Also:</h3>  
-         * <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Deletes one or more worlds in a batch
+         * operation.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/BatchDeleteWorlds">AWS
          * API Reference</a></p>
          */
@@ -100,7 +109,14 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Describes one or more simulation jobs.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Describes one or more simulation jobs.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/BatchDescribeSimulationJob">AWS
          * API Reference</a></p>
          */
@@ -125,7 +141,14 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Cancels the specified simulation job.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Cancels the specified simulation job.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/CancelSimulationJob">AWS
          * API Reference</a></p>
          */
@@ -150,9 +173,15 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Cancels a simulation job batch. When you cancel a simulation job batch, you
-         * are also cancelling all of the active simulation jobs created as part of the
-         * batch. </p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Cancels a simulation job batch. When you cancel a
+         * simulation job batch, you are also cancelling all of the active simulation jobs
+         * created as part of the batch. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/CancelSimulationJobBatch">AWS
          * API Reference</a></p>
          */
@@ -177,7 +206,14 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Cancels the specified export job.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Cancels the specified export job.</p><p><h3>See Also:</h3> 
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/CancelWorldExportJob">AWS
          * API Reference</a></p>
          */
@@ -202,7 +238,14 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Cancels the specified world generator job.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Cancels the specified world generator job.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/CancelWorldGenerationJob">AWS
          * API Reference</a></p>
          */
@@ -227,7 +270,13 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Creates a robot application. </p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Creates a robot application. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/CreateRobotApplication">AWS
          * API Reference</a></p>
          */
@@ -252,7 +301,14 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Creates a version of a robot application.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Creates a version of a robot application.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/CreateRobotApplicationVersion">AWS
          * API Reference</a></p>
          */
@@ -277,7 +333,14 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Creates a simulation application.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Creates a simulation application.</p><p><h3>See Also:</h3> 
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/CreateSimulationApplication">AWS
          * API Reference</a></p>
          */
@@ -302,8 +365,14 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Creates a simulation application with a specific revision id.</p><p><h3>See
-         * Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Creates a simulation application with a specific revision
+         * id.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/CreateSimulationApplicationVersion">AWS
          * API Reference</a></p>
          */
@@ -328,9 +397,15 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Creates a simulation job.</p>  <p>After 90 days, simulation jobs expire
-         * and will be deleted. They will no longer be accessible. </p> <p><h3>See
-         * Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Creates a simulation job.</p>  <p>After 90 days,
+         * simulation jobs expire and will be deleted. They will no longer be accessible.
+         * </p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/CreateSimulationJob">AWS
          * API Reference</a></p>
          */
@@ -355,7 +430,13 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Creates a world export job.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Creates a world export job.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/CreateWorldExportJob">AWS
          * API Reference</a></p>
          */
@@ -380,7 +461,14 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Creates worlds using the specified template.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Creates worlds using the specified template.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/CreateWorldGenerationJob">AWS
          * API Reference</a></p>
          */
@@ -405,17 +493,23 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Creates a world template.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Creates a world template.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/CreateWorldTemplate">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateWorldTemplateOutcome CreateWorldTemplate(const Model::CreateWorldTemplateRequest& request) const;
+        virtual Model::CreateWorldTemplateOutcome CreateWorldTemplate(const Model::CreateWorldTemplateRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateWorldTemplate that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateWorldTemplateRequestT = Model::CreateWorldTemplateRequest>
-        Model::CreateWorldTemplateOutcomeCallable CreateWorldTemplateCallable(const CreateWorldTemplateRequestT& request) const
+        Model::CreateWorldTemplateOutcomeCallable CreateWorldTemplateCallable(const CreateWorldTemplateRequestT& request = {}) const
         {
             return SubmitCallable(&RoboMakerClient::CreateWorldTemplate, request);
         }
@@ -424,13 +518,19 @@ namespace RoboMaker
          * An Async wrapper for CreateWorldTemplate that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateWorldTemplateRequestT = Model::CreateWorldTemplateRequest>
-        void CreateWorldTemplateAsync(const CreateWorldTemplateRequestT& request, const CreateWorldTemplateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateWorldTemplateAsync(const CreateWorldTemplateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateWorldTemplateRequestT& request = {}) const
         {
             return SubmitAsync(&RoboMakerClient::CreateWorldTemplate, request, handler, context);
         }
 
         /**
-         * <p>Deletes a robot application.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Deletes a robot application.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/DeleteRobotApplication">AWS
          * API Reference</a></p>
          */
@@ -455,7 +555,14 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Deletes a simulation application.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Deletes a simulation application.</p><p><h3>See Also:</h3> 
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/DeleteSimulationApplication">AWS
          * API Reference</a></p>
          */
@@ -480,7 +587,13 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Deletes a world template.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Deletes a world template.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/DeleteWorldTemplate">AWS
          * API Reference</a></p>
          */
@@ -505,7 +618,14 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Describes a robot application.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Describes a robot application.</p><p><h3>See Also:</h3>  
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/DescribeRobotApplication">AWS
          * API Reference</a></p>
          */
@@ -530,7 +650,14 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Describes a simulation application.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Describes a simulation application.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/DescribeSimulationApplication">AWS
          * API Reference</a></p>
          */
@@ -555,7 +682,13 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Describes a simulation job.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Describes a simulation job.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/DescribeSimulationJob">AWS
          * API Reference</a></p>
          */
@@ -580,7 +713,14 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Describes a simulation job batch.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Describes a simulation job batch.</p><p><h3>See Also:</h3> 
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/DescribeSimulationJobBatch">AWS
          * API Reference</a></p>
          */
@@ -605,7 +745,13 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Describes a world.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Describes a world.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/DescribeWorld">AWS
          * API Reference</a></p>
          */
@@ -630,7 +776,13 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Describes a world export job.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Describes a world export job.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/DescribeWorldExportJob">AWS
          * API Reference</a></p>
          */
@@ -655,7 +807,14 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Describes a world generation job.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Describes a world generation job.</p><p><h3>See Also:</h3> 
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/DescribeWorldGenerationJob">AWS
          * API Reference</a></p>
          */
@@ -680,7 +839,13 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Describes a world template.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Describes a world template.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/DescribeWorldTemplate">AWS
          * API Reference</a></p>
          */
@@ -705,17 +870,23 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Gets the world template body.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Gets the world template body.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/GetWorldTemplateBody">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetWorldTemplateBodyOutcome GetWorldTemplateBody(const Model::GetWorldTemplateBodyRequest& request) const;
+        virtual Model::GetWorldTemplateBodyOutcome GetWorldTemplateBody(const Model::GetWorldTemplateBodyRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetWorldTemplateBody that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetWorldTemplateBodyRequestT = Model::GetWorldTemplateBodyRequest>
-        Model::GetWorldTemplateBodyOutcomeCallable GetWorldTemplateBodyCallable(const GetWorldTemplateBodyRequestT& request) const
+        Model::GetWorldTemplateBodyOutcomeCallable GetWorldTemplateBodyCallable(const GetWorldTemplateBodyRequestT& request = {}) const
         {
             return SubmitCallable(&RoboMakerClient::GetWorldTemplateBody, request);
         }
@@ -724,24 +895,31 @@ namespace RoboMaker
          * An Async wrapper for GetWorldTemplateBody that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetWorldTemplateBodyRequestT = Model::GetWorldTemplateBodyRequest>
-        void GetWorldTemplateBodyAsync(const GetWorldTemplateBodyRequestT& request, const GetWorldTemplateBodyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetWorldTemplateBodyAsync(const GetWorldTemplateBodyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetWorldTemplateBodyRequestT& request = {}) const
         {
             return SubmitAsync(&RoboMakerClient::GetWorldTemplateBody, request, handler, context);
         }
 
         /**
-         * <p>Returns a list of robot application. You can optionally provide filters to
-         * retrieve specific robot applications.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Returns a list of robot application. You can optionally
+         * provide filters to retrieve specific robot applications.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/ListRobotApplications">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListRobotApplicationsOutcome ListRobotApplications(const Model::ListRobotApplicationsRequest& request) const;
+        virtual Model::ListRobotApplicationsOutcome ListRobotApplications(const Model::ListRobotApplicationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListRobotApplications that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListRobotApplicationsRequestT = Model::ListRobotApplicationsRequest>
-        Model::ListRobotApplicationsOutcomeCallable ListRobotApplicationsCallable(const ListRobotApplicationsRequestT& request) const
+        Model::ListRobotApplicationsOutcomeCallable ListRobotApplicationsCallable(const ListRobotApplicationsRequestT& request = {}) const
         {
             return SubmitCallable(&RoboMakerClient::ListRobotApplications, request);
         }
@@ -750,24 +928,31 @@ namespace RoboMaker
          * An Async wrapper for ListRobotApplications that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListRobotApplicationsRequestT = Model::ListRobotApplicationsRequest>
-        void ListRobotApplicationsAsync(const ListRobotApplicationsRequestT& request, const ListRobotApplicationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListRobotApplicationsAsync(const ListRobotApplicationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListRobotApplicationsRequestT& request = {}) const
         {
             return SubmitAsync(&RoboMakerClient::ListRobotApplications, request, handler, context);
         }
 
         /**
-         * <p>Returns a list of simulation applications. You can optionally provide filters
-         * to retrieve specific simulation applications. </p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Returns a list of simulation applications. You can
+         * optionally provide filters to retrieve specific simulation applications.
+         * </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/ListSimulationApplications">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListSimulationApplicationsOutcome ListSimulationApplications(const Model::ListSimulationApplicationsRequest& request) const;
+        virtual Model::ListSimulationApplicationsOutcome ListSimulationApplications(const Model::ListSimulationApplicationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListSimulationApplications that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListSimulationApplicationsRequestT = Model::ListSimulationApplicationsRequest>
-        Model::ListSimulationApplicationsOutcomeCallable ListSimulationApplicationsCallable(const ListSimulationApplicationsRequestT& request) const
+        Model::ListSimulationApplicationsOutcomeCallable ListSimulationApplicationsCallable(const ListSimulationApplicationsRequestT& request = {}) const
         {
             return SubmitCallable(&RoboMakerClient::ListSimulationApplications, request);
         }
@@ -776,24 +961,31 @@ namespace RoboMaker
          * An Async wrapper for ListSimulationApplications that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListSimulationApplicationsRequestT = Model::ListSimulationApplicationsRequest>
-        void ListSimulationApplicationsAsync(const ListSimulationApplicationsRequestT& request, const ListSimulationApplicationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListSimulationApplicationsAsync(const ListSimulationApplicationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListSimulationApplicationsRequestT& request = {}) const
         {
             return SubmitAsync(&RoboMakerClient::ListSimulationApplications, request, handler, context);
         }
 
         /**
-         * <p>Returns a list simulation job batches. You can optionally provide filters to
-         * retrieve specific simulation batch jobs. </p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Returns a list simulation job batches. You can optionally
+         * provide filters to retrieve specific simulation batch jobs. </p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/ListSimulationJobBatches">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListSimulationJobBatchesOutcome ListSimulationJobBatches(const Model::ListSimulationJobBatchesRequest& request) const;
+        virtual Model::ListSimulationJobBatchesOutcome ListSimulationJobBatches(const Model::ListSimulationJobBatchesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListSimulationJobBatches that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListSimulationJobBatchesRequestT = Model::ListSimulationJobBatchesRequest>
-        Model::ListSimulationJobBatchesOutcomeCallable ListSimulationJobBatchesCallable(const ListSimulationJobBatchesRequestT& request) const
+        Model::ListSimulationJobBatchesOutcomeCallable ListSimulationJobBatchesCallable(const ListSimulationJobBatchesRequestT& request = {}) const
         {
             return SubmitCallable(&RoboMakerClient::ListSimulationJobBatches, request);
         }
@@ -802,24 +994,31 @@ namespace RoboMaker
          * An Async wrapper for ListSimulationJobBatches that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListSimulationJobBatchesRequestT = Model::ListSimulationJobBatchesRequest>
-        void ListSimulationJobBatchesAsync(const ListSimulationJobBatchesRequestT& request, const ListSimulationJobBatchesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListSimulationJobBatchesAsync(const ListSimulationJobBatchesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListSimulationJobBatchesRequestT& request = {}) const
         {
             return SubmitAsync(&RoboMakerClient::ListSimulationJobBatches, request, handler, context);
         }
 
         /**
-         * <p>Returns a list of simulation jobs. You can optionally provide filters to
-         * retrieve specific simulation jobs. </p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Returns a list of simulation jobs. You can optionally
+         * provide filters to retrieve specific simulation jobs. </p><p><h3>See Also:</h3> 
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/ListSimulationJobs">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListSimulationJobsOutcome ListSimulationJobs(const Model::ListSimulationJobsRequest& request) const;
+        virtual Model::ListSimulationJobsOutcome ListSimulationJobs(const Model::ListSimulationJobsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListSimulationJobs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListSimulationJobsRequestT = Model::ListSimulationJobsRequest>
-        Model::ListSimulationJobsOutcomeCallable ListSimulationJobsCallable(const ListSimulationJobsRequestT& request) const
+        Model::ListSimulationJobsOutcomeCallable ListSimulationJobsCallable(const ListSimulationJobsRequestT& request = {}) const
         {
             return SubmitCallable(&RoboMakerClient::ListSimulationJobs, request);
         }
@@ -828,13 +1027,20 @@ namespace RoboMaker
          * An Async wrapper for ListSimulationJobs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListSimulationJobsRequestT = Model::ListSimulationJobsRequest>
-        void ListSimulationJobsAsync(const ListSimulationJobsRequestT& request, const ListSimulationJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListSimulationJobsAsync(const ListSimulationJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListSimulationJobsRequestT& request = {}) const
         {
             return SubmitAsync(&RoboMakerClient::ListSimulationJobs, request, handler, context);
         }
 
         /**
-         * <p>Lists all tags on a AWS RoboMaker resource.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Lists all tags on a AWS RoboMaker resource.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/ListTagsForResource">AWS
          * API Reference</a></p>
          */
@@ -859,17 +1065,23 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Lists world export jobs.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Lists world export jobs.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/ListWorldExportJobs">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListWorldExportJobsOutcome ListWorldExportJobs(const Model::ListWorldExportJobsRequest& request) const;
+        virtual Model::ListWorldExportJobsOutcome ListWorldExportJobs(const Model::ListWorldExportJobsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListWorldExportJobs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListWorldExportJobsRequestT = Model::ListWorldExportJobsRequest>
-        Model::ListWorldExportJobsOutcomeCallable ListWorldExportJobsCallable(const ListWorldExportJobsRequestT& request) const
+        Model::ListWorldExportJobsOutcomeCallable ListWorldExportJobsCallable(const ListWorldExportJobsRequestT& request = {}) const
         {
             return SubmitCallable(&RoboMakerClient::ListWorldExportJobs, request);
         }
@@ -878,23 +1090,29 @@ namespace RoboMaker
          * An Async wrapper for ListWorldExportJobs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListWorldExportJobsRequestT = Model::ListWorldExportJobsRequest>
-        void ListWorldExportJobsAsync(const ListWorldExportJobsRequestT& request, const ListWorldExportJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListWorldExportJobsAsync(const ListWorldExportJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListWorldExportJobsRequestT& request = {}) const
         {
             return SubmitAsync(&RoboMakerClient::ListWorldExportJobs, request, handler, context);
         }
 
         /**
-         * <p>Lists world generator jobs.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Lists world generator jobs.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/ListWorldGenerationJobs">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListWorldGenerationJobsOutcome ListWorldGenerationJobs(const Model::ListWorldGenerationJobsRequest& request) const;
+        virtual Model::ListWorldGenerationJobsOutcome ListWorldGenerationJobs(const Model::ListWorldGenerationJobsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListWorldGenerationJobs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListWorldGenerationJobsRequestT = Model::ListWorldGenerationJobsRequest>
-        Model::ListWorldGenerationJobsOutcomeCallable ListWorldGenerationJobsCallable(const ListWorldGenerationJobsRequestT& request) const
+        Model::ListWorldGenerationJobsOutcomeCallable ListWorldGenerationJobsCallable(const ListWorldGenerationJobsRequestT& request = {}) const
         {
             return SubmitCallable(&RoboMakerClient::ListWorldGenerationJobs, request);
         }
@@ -903,23 +1121,29 @@ namespace RoboMaker
          * An Async wrapper for ListWorldGenerationJobs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListWorldGenerationJobsRequestT = Model::ListWorldGenerationJobsRequest>
-        void ListWorldGenerationJobsAsync(const ListWorldGenerationJobsRequestT& request, const ListWorldGenerationJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListWorldGenerationJobsAsync(const ListWorldGenerationJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListWorldGenerationJobsRequestT& request = {}) const
         {
             return SubmitAsync(&RoboMakerClient::ListWorldGenerationJobs, request, handler, context);
         }
 
         /**
-         * <p>Lists world templates.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Lists world templates.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/ListWorldTemplates">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListWorldTemplatesOutcome ListWorldTemplates(const Model::ListWorldTemplatesRequest& request) const;
+        virtual Model::ListWorldTemplatesOutcome ListWorldTemplates(const Model::ListWorldTemplatesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListWorldTemplates that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListWorldTemplatesRequestT = Model::ListWorldTemplatesRequest>
-        Model::ListWorldTemplatesOutcomeCallable ListWorldTemplatesCallable(const ListWorldTemplatesRequestT& request) const
+        Model::ListWorldTemplatesOutcomeCallable ListWorldTemplatesCallable(const ListWorldTemplatesRequestT& request = {}) const
         {
             return SubmitCallable(&RoboMakerClient::ListWorldTemplates, request);
         }
@@ -928,23 +1152,29 @@ namespace RoboMaker
          * An Async wrapper for ListWorldTemplates that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListWorldTemplatesRequestT = Model::ListWorldTemplatesRequest>
-        void ListWorldTemplatesAsync(const ListWorldTemplatesRequestT& request, const ListWorldTemplatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListWorldTemplatesAsync(const ListWorldTemplatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListWorldTemplatesRequestT& request = {}) const
         {
             return SubmitAsync(&RoboMakerClient::ListWorldTemplates, request, handler, context);
         }
 
         /**
-         * <p>Lists worlds.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Lists worlds.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/ListWorlds">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListWorldsOutcome ListWorlds(const Model::ListWorldsRequest& request) const;
+        virtual Model::ListWorldsOutcome ListWorlds(const Model::ListWorldsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListWorlds that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListWorldsRequestT = Model::ListWorldsRequest>
-        Model::ListWorldsOutcomeCallable ListWorldsCallable(const ListWorldsRequestT& request) const
+        Model::ListWorldsOutcomeCallable ListWorldsCallable(const ListWorldsRequestT& request = {}) const
         {
             return SubmitCallable(&RoboMakerClient::ListWorlds, request);
         }
@@ -953,13 +1183,20 @@ namespace RoboMaker
          * An Async wrapper for ListWorlds that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListWorldsRequestT = Model::ListWorldsRequest>
-        void ListWorldsAsync(const ListWorldsRequestT& request, const ListWorldsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListWorldsAsync(const ListWorldsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListWorldsRequestT& request = {}) const
         {
             return SubmitAsync(&RoboMakerClient::ListWorlds, request, handler, context);
         }
 
         /**
-         * <p>Restarts a running simulation job.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Restarts a running simulation job.</p><p><h3>See Also:</h3>
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/RestartSimulationJob">AWS
          * API Reference</a></p>
          */
@@ -984,8 +1221,15 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Starts a new simulation job batch. The batch is defined using one or more
-         * <code>SimulationJobRequest</code> objects. </p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Starts a new simulation job batch. The batch is defined
+         * using one or more <code>SimulationJobRequest</code> objects. </p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/StartSimulationJobBatch">AWS
          * API Reference</a></p>
          */
@@ -1010,10 +1254,16 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Adds or edits tags for a AWS RoboMaker resource.</p> <p>Each tag consists of
-         * a tag key and a tag value. Tag keys and tag values are both required, but tag
-         * values can be empty strings. </p> <p>For information about the rules that apply
-         * to tag keys and tag values, see <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Adds or edits tags for a AWS RoboMaker resource.</p>
+         * <p>Each tag consists of a tag key and a tag value. Tag keys and tag values are
+         * both required, but tag values can be empty strings. </p> <p>For information
+         * about the rules that apply to tag keys and tag values, see <a
          * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html">User-Defined
          * Tag Restrictions</a> in the <i>AWS Billing and Cost Management User Guide</i>.
          * </p><p><h3>See Also:</h3>   <a
@@ -1041,9 +1291,15 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Removes the specified tags from the specified AWS RoboMaker resource.</p>
-         * <p>To remove a tag, specify the tag key. To change the tag value of an existing
-         * tag key, use <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Removes the specified tags from the specified AWS RoboMaker
+         * resource.</p> <p>To remove a tag, specify the tag key. To change the tag value
+         * of an existing tag key, use <a
          * href="https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html">
          * <code>TagResource</code> </a>. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/UntagResource">AWS
@@ -1070,7 +1326,13 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Updates a robot application.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Updates a robot application.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/UpdateRobotApplication">AWS
          * API Reference</a></p>
          */
@@ -1095,7 +1357,14 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Updates a simulation application.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Updates a simulation application.</p><p><h3>See Also:</h3> 
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/UpdateSimulationApplication">AWS
          * API Reference</a></p>
          */
@@ -1120,7 +1389,13 @@ namespace RoboMaker
         }
 
         /**
-         * <p>Updates a world template.</p><p><h3>See Also:</h3>   <a
+         *  <p>End of support notice: On September 10, 2025, Amazon Web Services
+         * will discontinue support for Amazon Web Services RoboMaker. After September 10,
+         * 2025, you will no longer be able to access the Amazon Web Services RoboMaker
+         * console or Amazon Web Services RoboMaker resources. For more information on
+         * transitioning to Batch to help run containerized simulations, visit <a
+         * href="https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/">https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/</a>.
+         * </p>  <p>Updates a world template.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/UpdateWorldTemplate">AWS
          * API Reference</a></p>
          */
@@ -1152,7 +1427,6 @@ namespace RoboMaker
       void init(const RoboMakerClientConfiguration& clientConfiguration);
 
       RoboMakerClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<RoboMakerEndpointProviderBase> m_endpointProvider;
   };
 

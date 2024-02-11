@@ -12,17 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreatePresignedDomainUrlRequest::CreatePresignedDomainUrlRequest() : 
-    m_domainIdHasBeenSet(false),
-    m_userProfileNameHasBeenSet(false),
-    m_sessionExpirationDurationInSeconds(0),
-    m_sessionExpirationDurationInSecondsHasBeenSet(false),
-    m_expiresInSeconds(0),
-    m_expiresInSecondsHasBeenSet(false),
-    m_spaceNameHasBeenSet(false)
-{
-}
-
 Aws::String CreatePresignedDomainUrlRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -54,6 +43,12 @@ Aws::String CreatePresignedDomainUrlRequest::SerializePayload() const
   if(m_spaceNameHasBeenSet)
   {
    payload.WithString("SpaceName", m_spaceName);
+
+  }
+
+  if(m_landingUriHasBeenSet)
+  {
+   payload.WithString("LandingUri", m_landingUri);
 
   }
 

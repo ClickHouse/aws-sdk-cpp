@@ -24,100 +24,44 @@ namespace Model
 {
 
   /**
-   * <p>The request body could not be parsed as JSON.</p><p><h3>See Also:</h3>   <a
+   * <p>The request body could not be parsed as JSON, or a request header is invalid.
+   * For example, the 'x-amzn-RequestId' header is not a valid UUID
+   * string.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/InvalidRequestContentException">AWS
    * API Reference</a></p>
    */
   class InvalidRequestContentException
   {
   public:
-    AWS_LAMBDA_API InvalidRequestContentException();
+    AWS_LAMBDA_API InvalidRequestContentException() = default;
     AWS_LAMBDA_API InvalidRequestContentException(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAMBDA_API InvalidRequestContentException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAMBDA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The exception type.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The exception type.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    InvalidRequestContentException& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The exception type.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The exception type.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The exception type.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The exception type.</p>
-     */
-    inline InvalidRequestContentException& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The exception type.</p>
-     */
-    inline InvalidRequestContentException& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The exception type.</p>
-     */
-    inline InvalidRequestContentException& WithType(const char* value) { SetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The exception message.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The exception message.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>The exception message.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The exception message.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The exception message.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The exception message.</p>
-     */
-    inline InvalidRequestContentException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The exception message.</p>
-     */
-    inline InvalidRequestContentException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The exception message.</p>
-     */
-    inline InvalidRequestContentException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    InvalidRequestContentException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_type;

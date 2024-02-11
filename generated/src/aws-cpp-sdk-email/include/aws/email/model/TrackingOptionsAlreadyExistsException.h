@@ -32,7 +32,7 @@ namespace Model
   class TrackingOptionsAlreadyExistsException
   {
   public:
-    AWS_SES_API TrackingOptionsAlreadyExistsException();
+    AWS_SES_API TrackingOptionsAlreadyExistsException() = default;
     AWS_SES_API TrackingOptionsAlreadyExistsException(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_SES_API TrackingOptionsAlreadyExistsException& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,54 +40,18 @@ namespace Model
     AWS_SES_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Indicates that a TrackingOptions object already exists in the specified
      * configuration set.</p>
      */
-    inline const Aws::String& GetConfigurationSetName() const{ return m_configurationSetName; }
-
-    /**
-     * <p>Indicates that a TrackingOptions object already exists in the specified
-     * configuration set.</p>
-     */
+    inline const Aws::String& GetConfigurationSetName() const { return m_configurationSetName; }
     inline bool ConfigurationSetNameHasBeenSet() const { return m_configurationSetNameHasBeenSet; }
-
-    /**
-     * <p>Indicates that a TrackingOptions object already exists in the specified
-     * configuration set.</p>
-     */
-    inline void SetConfigurationSetName(const Aws::String& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = value; }
-
-    /**
-     * <p>Indicates that a TrackingOptions object already exists in the specified
-     * configuration set.</p>
-     */
-    inline void SetConfigurationSetName(Aws::String&& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = std::move(value); }
-
-    /**
-     * <p>Indicates that a TrackingOptions object already exists in the specified
-     * configuration set.</p>
-     */
-    inline void SetConfigurationSetName(const char* value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName.assign(value); }
-
-    /**
-     * <p>Indicates that a TrackingOptions object already exists in the specified
-     * configuration set.</p>
-     */
-    inline TrackingOptionsAlreadyExistsException& WithConfigurationSetName(const Aws::String& value) { SetConfigurationSetName(value); return *this;}
-
-    /**
-     * <p>Indicates that a TrackingOptions object already exists in the specified
-     * configuration set.</p>
-     */
-    inline TrackingOptionsAlreadyExistsException& WithConfigurationSetName(Aws::String&& value) { SetConfigurationSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates that a TrackingOptions object already exists in the specified
-     * configuration set.</p>
-     */
-    inline TrackingOptionsAlreadyExistsException& WithConfigurationSetName(const char* value) { SetConfigurationSetName(value); return *this;}
-
+    template<typename ConfigurationSetNameT = Aws::String>
+    void SetConfigurationSetName(ConfigurationSetNameT&& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = std::forward<ConfigurationSetNameT>(value); }
+    template<typename ConfigurationSetNameT = Aws::String>
+    TrackingOptionsAlreadyExistsException& WithConfigurationSetName(ConfigurationSetNameT&& value) { SetConfigurationSetName(std::forward<ConfigurationSetNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_configurationSetName;

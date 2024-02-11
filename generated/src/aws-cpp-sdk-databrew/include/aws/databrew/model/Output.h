@@ -37,241 +37,98 @@ namespace Model
   class Output
   {
   public:
-    AWS_GLUEDATABREW_API Output();
+    AWS_GLUEDATABREW_API Output() = default;
     AWS_GLUEDATABREW_API Output(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUEDATABREW_API Output& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUEDATABREW_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The compression algorithm used to compress the output text of the job.</p>
      */
-    inline const CompressionFormat& GetCompressionFormat() const{ return m_compressionFormat; }
-
-    /**
-     * <p>The compression algorithm used to compress the output text of the job.</p>
-     */
+    inline CompressionFormat GetCompressionFormat() const { return m_compressionFormat; }
     inline bool CompressionFormatHasBeenSet() const { return m_compressionFormatHasBeenSet; }
+    inline void SetCompressionFormat(CompressionFormat value) { m_compressionFormatHasBeenSet = true; m_compressionFormat = value; }
+    inline Output& WithCompressionFormat(CompressionFormat value) { SetCompressionFormat(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The compression algorithm used to compress the output text of the job.</p>
-     */
-    inline void SetCompressionFormat(const CompressionFormat& value) { m_compressionFormatHasBeenSet = true; m_compressionFormat = value; }
-
-    /**
-     * <p>The compression algorithm used to compress the output text of the job.</p>
-     */
-    inline void SetCompressionFormat(CompressionFormat&& value) { m_compressionFormatHasBeenSet = true; m_compressionFormat = std::move(value); }
-
-    /**
-     * <p>The compression algorithm used to compress the output text of the job.</p>
-     */
-    inline Output& WithCompressionFormat(const CompressionFormat& value) { SetCompressionFormat(value); return *this;}
-
-    /**
-     * <p>The compression algorithm used to compress the output text of the job.</p>
-     */
-    inline Output& WithCompressionFormat(CompressionFormat&& value) { SetCompressionFormat(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The data format of the output of the job.</p>
      */
-    inline const OutputFormat& GetFormat() const{ return m_format; }
-
-    /**
-     * <p>The data format of the output of the job.</p>
-     */
+    inline OutputFormat GetFormat() const { return m_format; }
     inline bool FormatHasBeenSet() const { return m_formatHasBeenSet; }
+    inline void SetFormat(OutputFormat value) { m_formatHasBeenSet = true; m_format = value; }
+    inline Output& WithFormat(OutputFormat value) { SetFormat(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The data format of the output of the job.</p>
-     */
-    inline void SetFormat(const OutputFormat& value) { m_formatHasBeenSet = true; m_format = value; }
-
-    /**
-     * <p>The data format of the output of the job.</p>
-     */
-    inline void SetFormat(OutputFormat&& value) { m_formatHasBeenSet = true; m_format = std::move(value); }
-
-    /**
-     * <p>The data format of the output of the job.</p>
-     */
-    inline Output& WithFormat(const OutputFormat& value) { SetFormat(value); return *this;}
-
-    /**
-     * <p>The data format of the output of the job.</p>
-     */
-    inline Output& WithFormat(OutputFormat&& value) { SetFormat(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The names of one or more partition columns for the output of the job.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetPartitionColumns() const{ return m_partitionColumns; }
-
-    /**
-     * <p>The names of one or more partition columns for the output of the job.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetPartitionColumns() const { return m_partitionColumns; }
     inline bool PartitionColumnsHasBeenSet() const { return m_partitionColumnsHasBeenSet; }
+    template<typename PartitionColumnsT = Aws::Vector<Aws::String>>
+    void SetPartitionColumns(PartitionColumnsT&& value) { m_partitionColumnsHasBeenSet = true; m_partitionColumns = std::forward<PartitionColumnsT>(value); }
+    template<typename PartitionColumnsT = Aws::Vector<Aws::String>>
+    Output& WithPartitionColumns(PartitionColumnsT&& value) { SetPartitionColumns(std::forward<PartitionColumnsT>(value)); return *this;}
+    template<typename PartitionColumnsT = Aws::String>
+    Output& AddPartitionColumns(PartitionColumnsT&& value) { m_partitionColumnsHasBeenSet = true; m_partitionColumns.emplace_back(std::forward<PartitionColumnsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The names of one or more partition columns for the output of the job.</p>
-     */
-    inline void SetPartitionColumns(const Aws::Vector<Aws::String>& value) { m_partitionColumnsHasBeenSet = true; m_partitionColumns = value; }
-
-    /**
-     * <p>The names of one or more partition columns for the output of the job.</p>
-     */
-    inline void SetPartitionColumns(Aws::Vector<Aws::String>&& value) { m_partitionColumnsHasBeenSet = true; m_partitionColumns = std::move(value); }
-
-    /**
-     * <p>The names of one or more partition columns for the output of the job.</p>
-     */
-    inline Output& WithPartitionColumns(const Aws::Vector<Aws::String>& value) { SetPartitionColumns(value); return *this;}
-
-    /**
-     * <p>The names of one or more partition columns for the output of the job.</p>
-     */
-    inline Output& WithPartitionColumns(Aws::Vector<Aws::String>&& value) { SetPartitionColumns(std::move(value)); return *this;}
-
-    /**
-     * <p>The names of one or more partition columns for the output of the job.</p>
-     */
-    inline Output& AddPartitionColumns(const Aws::String& value) { m_partitionColumnsHasBeenSet = true; m_partitionColumns.push_back(value); return *this; }
-
-    /**
-     * <p>The names of one or more partition columns for the output of the job.</p>
-     */
-    inline Output& AddPartitionColumns(Aws::String&& value) { m_partitionColumnsHasBeenSet = true; m_partitionColumns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The names of one or more partition columns for the output of the job.</p>
-     */
-    inline Output& AddPartitionColumns(const char* value) { m_partitionColumnsHasBeenSet = true; m_partitionColumns.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The location in Amazon S3 where the job writes its output.</p>
      */
-    inline const S3Location& GetLocation() const{ return m_location; }
-
-    /**
-     * <p>The location in Amazon S3 where the job writes its output.</p>
-     */
+    inline const S3Location& GetLocation() const { return m_location; }
     inline bool LocationHasBeenSet() const { return m_locationHasBeenSet; }
+    template<typename LocationT = S3Location>
+    void SetLocation(LocationT&& value) { m_locationHasBeenSet = true; m_location = std::forward<LocationT>(value); }
+    template<typename LocationT = S3Location>
+    Output& WithLocation(LocationT&& value) { SetLocation(std::forward<LocationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The location in Amazon S3 where the job writes its output.</p>
-     */
-    inline void SetLocation(const S3Location& value) { m_locationHasBeenSet = true; m_location = value; }
-
-    /**
-     * <p>The location in Amazon S3 where the job writes its output.</p>
-     */
-    inline void SetLocation(S3Location&& value) { m_locationHasBeenSet = true; m_location = std::move(value); }
-
-    /**
-     * <p>The location in Amazon S3 where the job writes its output.</p>
-     */
-    inline Output& WithLocation(const S3Location& value) { SetLocation(value); return *this;}
-
-    /**
-     * <p>The location in Amazon S3 where the job writes its output.</p>
-     */
-    inline Output& WithLocation(S3Location&& value) { SetLocation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A value that, if true, means that any data in the location specified for
      * output is overwritten with new output.</p>
      */
-    inline bool GetOverwrite() const{ return m_overwrite; }
-
-    /**
-     * <p>A value that, if true, means that any data in the location specified for
-     * output is overwritten with new output.</p>
-     */
+    inline bool GetOverwrite() const { return m_overwrite; }
     inline bool OverwriteHasBeenSet() const { return m_overwriteHasBeenSet; }
-
-    /**
-     * <p>A value that, if true, means that any data in the location specified for
-     * output is overwritten with new output.</p>
-     */
     inline void SetOverwrite(bool value) { m_overwriteHasBeenSet = true; m_overwrite = value; }
-
-    /**
-     * <p>A value that, if true, means that any data in the location specified for
-     * output is overwritten with new output.</p>
-     */
     inline Output& WithOverwrite(bool value) { SetOverwrite(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Represents options that define how DataBrew formats job output files.</p>
      */
-    inline const OutputFormatOptions& GetFormatOptions() const{ return m_formatOptions; }
-
-    /**
-     * <p>Represents options that define how DataBrew formats job output files.</p>
-     */
+    inline const OutputFormatOptions& GetFormatOptions() const { return m_formatOptions; }
     inline bool FormatOptionsHasBeenSet() const { return m_formatOptionsHasBeenSet; }
+    template<typename FormatOptionsT = OutputFormatOptions>
+    void SetFormatOptions(FormatOptionsT&& value) { m_formatOptionsHasBeenSet = true; m_formatOptions = std::forward<FormatOptionsT>(value); }
+    template<typename FormatOptionsT = OutputFormatOptions>
+    Output& WithFormatOptions(FormatOptionsT&& value) { SetFormatOptions(std::forward<FormatOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Represents options that define how DataBrew formats job output files.</p>
-     */
-    inline void SetFormatOptions(const OutputFormatOptions& value) { m_formatOptionsHasBeenSet = true; m_formatOptions = value; }
-
-    /**
-     * <p>Represents options that define how DataBrew formats job output files.</p>
-     */
-    inline void SetFormatOptions(OutputFormatOptions&& value) { m_formatOptionsHasBeenSet = true; m_formatOptions = std::move(value); }
-
-    /**
-     * <p>Represents options that define how DataBrew formats job output files.</p>
-     */
-    inline Output& WithFormatOptions(const OutputFormatOptions& value) { SetFormatOptions(value); return *this;}
-
-    /**
-     * <p>Represents options that define how DataBrew formats job output files.</p>
-     */
-    inline Output& WithFormatOptions(OutputFormatOptions&& value) { SetFormatOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Maximum number of files to be generated by the job and written to the output
      * folder. For output partitioned by column(s), the MaxOutputFiles value is the
      * maximum number of files per partition.</p>
      */
-    inline int GetMaxOutputFiles() const{ return m_maxOutputFiles; }
-
-    /**
-     * <p>Maximum number of files to be generated by the job and written to the output
-     * folder. For output partitioned by column(s), the MaxOutputFiles value is the
-     * maximum number of files per partition.</p>
-     */
+    inline int GetMaxOutputFiles() const { return m_maxOutputFiles; }
     inline bool MaxOutputFilesHasBeenSet() const { return m_maxOutputFilesHasBeenSet; }
-
-    /**
-     * <p>Maximum number of files to be generated by the job and written to the output
-     * folder. For output partitioned by column(s), the MaxOutputFiles value is the
-     * maximum number of files per partition.</p>
-     */
     inline void SetMaxOutputFiles(int value) { m_maxOutputFilesHasBeenSet = true; m_maxOutputFiles = value; }
-
-    /**
-     * <p>Maximum number of files to be generated by the job and written to the output
-     * folder. For output partitioned by column(s), the MaxOutputFiles value is the
-     * maximum number of files per partition.</p>
-     */
     inline Output& WithMaxOutputFiles(int value) { SetMaxOutputFiles(value); return *this;}
-
+    ///@}
   private:
 
-    CompressionFormat m_compressionFormat;
+    CompressionFormat m_compressionFormat{CompressionFormat::NOT_SET};
     bool m_compressionFormatHasBeenSet = false;
 
-    OutputFormat m_format;
+    OutputFormat m_format{OutputFormat::NOT_SET};
     bool m_formatHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_partitionColumns;
@@ -280,13 +137,13 @@ namespace Model
     S3Location m_location;
     bool m_locationHasBeenSet = false;
 
-    bool m_overwrite;
+    bool m_overwrite{false};
     bool m_overwriteHasBeenSet = false;
 
     OutputFormatOptions m_formatOptions;
     bool m_formatOptionsHasBeenSet = false;
 
-    int m_maxOutputFiles;
+    int m_maxOutputFiles{0};
     bool m_maxOutputFilesHasBeenSet = false;
   };
 

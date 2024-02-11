@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-FunnelChartSortConfiguration::FunnelChartSortConfiguration() : 
-    m_categorySortHasBeenSet(false),
-    m_categoryItemsLimitHasBeenSet(false)
-{
-}
-
-FunnelChartSortConfiguration::FunnelChartSortConfiguration(JsonView jsonValue) : 
-    m_categorySortHasBeenSet(false),
-    m_categoryItemsLimitHasBeenSet(false)
+FunnelChartSortConfiguration::FunnelChartSortConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ FunnelChartSortConfiguration& FunnelChartSortConfiguration::operator =(JsonView 
     }
     m_categorySortHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CategoryItemsLimit"))
   {
     m_categoryItemsLimit = jsonValue.GetObject("CategoryItemsLimit");
-
     m_categoryItemsLimitHasBeenSet = true;
   }
-
   return *this;
 }
 

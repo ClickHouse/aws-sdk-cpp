@@ -33,263 +33,87 @@ namespace Model
   class Node
   {
   public:
-    AWS_DAX_API Node();
+    AWS_DAX_API Node() = default;
     AWS_DAX_API Node(Aws::Utils::Json::JsonView jsonValue);
     AWS_DAX_API Node& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DAX_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A system-generated identifier for the node.</p>
      */
-    inline const Aws::String& GetNodeId() const{ return m_nodeId; }
-
-    /**
-     * <p>A system-generated identifier for the node.</p>
-     */
+    inline const Aws::String& GetNodeId() const { return m_nodeId; }
     inline bool NodeIdHasBeenSet() const { return m_nodeIdHasBeenSet; }
+    template<typename NodeIdT = Aws::String>
+    void SetNodeId(NodeIdT&& value) { m_nodeIdHasBeenSet = true; m_nodeId = std::forward<NodeIdT>(value); }
+    template<typename NodeIdT = Aws::String>
+    Node& WithNodeId(NodeIdT&& value) { SetNodeId(std::forward<NodeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A system-generated identifier for the node.</p>
-     */
-    inline void SetNodeId(const Aws::String& value) { m_nodeIdHasBeenSet = true; m_nodeId = value; }
-
-    /**
-     * <p>A system-generated identifier for the node.</p>
-     */
-    inline void SetNodeId(Aws::String&& value) { m_nodeIdHasBeenSet = true; m_nodeId = std::move(value); }
-
-    /**
-     * <p>A system-generated identifier for the node.</p>
-     */
-    inline void SetNodeId(const char* value) { m_nodeIdHasBeenSet = true; m_nodeId.assign(value); }
-
-    /**
-     * <p>A system-generated identifier for the node.</p>
-     */
-    inline Node& WithNodeId(const Aws::String& value) { SetNodeId(value); return *this;}
-
-    /**
-     * <p>A system-generated identifier for the node.</p>
-     */
-    inline Node& WithNodeId(Aws::String&& value) { SetNodeId(std::move(value)); return *this;}
-
-    /**
-     * <p>A system-generated identifier for the node.</p>
-     */
-    inline Node& WithNodeId(const char* value) { SetNodeId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The endpoint for the node, consisting of a DNS name and a port number. Client
      * applications can connect directly to a node endpoint, if desired (as an
      * alternative to allowing DAX client software to intelligently route requests and
      * responses to nodes in the DAX cluster.</p>
      */
-    inline const Endpoint& GetEndpoint() const{ return m_endpoint; }
-
-    /**
-     * <p>The endpoint for the node, consisting of a DNS name and a port number. Client
-     * applications can connect directly to a node endpoint, if desired (as an
-     * alternative to allowing DAX client software to intelligently route requests and
-     * responses to nodes in the DAX cluster.</p>
-     */
+    inline const Endpoint& GetEndpoint() const { return m_endpoint; }
     inline bool EndpointHasBeenSet() const { return m_endpointHasBeenSet; }
+    template<typename EndpointT = Endpoint>
+    void SetEndpoint(EndpointT&& value) { m_endpointHasBeenSet = true; m_endpoint = std::forward<EndpointT>(value); }
+    template<typename EndpointT = Endpoint>
+    Node& WithEndpoint(EndpointT&& value) { SetEndpoint(std::forward<EndpointT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The endpoint for the node, consisting of a DNS name and a port number. Client
-     * applications can connect directly to a node endpoint, if desired (as an
-     * alternative to allowing DAX client software to intelligently route requests and
-     * responses to nodes in the DAX cluster.</p>
-     */
-    inline void SetEndpoint(const Endpoint& value) { m_endpointHasBeenSet = true; m_endpoint = value; }
-
-    /**
-     * <p>The endpoint for the node, consisting of a DNS name and a port number. Client
-     * applications can connect directly to a node endpoint, if desired (as an
-     * alternative to allowing DAX client software to intelligently route requests and
-     * responses to nodes in the DAX cluster.</p>
-     */
-    inline void SetEndpoint(Endpoint&& value) { m_endpointHasBeenSet = true; m_endpoint = std::move(value); }
-
-    /**
-     * <p>The endpoint for the node, consisting of a DNS name and a port number. Client
-     * applications can connect directly to a node endpoint, if desired (as an
-     * alternative to allowing DAX client software to intelligently route requests and
-     * responses to nodes in the DAX cluster.</p>
-     */
-    inline Node& WithEndpoint(const Endpoint& value) { SetEndpoint(value); return *this;}
-
-    /**
-     * <p>The endpoint for the node, consisting of a DNS name and a port number. Client
-     * applications can connect directly to a node endpoint, if desired (as an
-     * alternative to allowing DAX client software to intelligently route requests and
-     * responses to nodes in the DAX cluster.</p>
-     */
-    inline Node& WithEndpoint(Endpoint&& value) { SetEndpoint(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time (in UNIX epoch format) when the node was launched.</p>
      */
-    inline const Aws::Utils::DateTime& GetNodeCreateTime() const{ return m_nodeCreateTime; }
-
-    /**
-     * <p>The date and time (in UNIX epoch format) when the node was launched.</p>
-     */
+    inline const Aws::Utils::DateTime& GetNodeCreateTime() const { return m_nodeCreateTime; }
     inline bool NodeCreateTimeHasBeenSet() const { return m_nodeCreateTimeHasBeenSet; }
+    template<typename NodeCreateTimeT = Aws::Utils::DateTime>
+    void SetNodeCreateTime(NodeCreateTimeT&& value) { m_nodeCreateTimeHasBeenSet = true; m_nodeCreateTime = std::forward<NodeCreateTimeT>(value); }
+    template<typename NodeCreateTimeT = Aws::Utils::DateTime>
+    Node& WithNodeCreateTime(NodeCreateTimeT&& value) { SetNodeCreateTime(std::forward<NodeCreateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time (in UNIX epoch format) when the node was launched.</p>
-     */
-    inline void SetNodeCreateTime(const Aws::Utils::DateTime& value) { m_nodeCreateTimeHasBeenSet = true; m_nodeCreateTime = value; }
-
-    /**
-     * <p>The date and time (in UNIX epoch format) when the node was launched.</p>
-     */
-    inline void SetNodeCreateTime(Aws::Utils::DateTime&& value) { m_nodeCreateTimeHasBeenSet = true; m_nodeCreateTime = std::move(value); }
-
-    /**
-     * <p>The date and time (in UNIX epoch format) when the node was launched.</p>
-     */
-    inline Node& WithNodeCreateTime(const Aws::Utils::DateTime& value) { SetNodeCreateTime(value); return *this;}
-
-    /**
-     * <p>The date and time (in UNIX epoch format) when the node was launched.</p>
-     */
-    inline Node& WithNodeCreateTime(Aws::Utils::DateTime&& value) { SetNodeCreateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Availability Zone (AZ) in which the node has been deployed.</p>
      */
-    inline const Aws::String& GetAvailabilityZone() const{ return m_availabilityZone; }
-
-    /**
-     * <p>The Availability Zone (AZ) in which the node has been deployed.</p>
-     */
+    inline const Aws::String& GetAvailabilityZone() const { return m_availabilityZone; }
     inline bool AvailabilityZoneHasBeenSet() const { return m_availabilityZoneHasBeenSet; }
+    template<typename AvailabilityZoneT = Aws::String>
+    void SetAvailabilityZone(AvailabilityZoneT&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::forward<AvailabilityZoneT>(value); }
+    template<typename AvailabilityZoneT = Aws::String>
+    Node& WithAvailabilityZone(AvailabilityZoneT&& value) { SetAvailabilityZone(std::forward<AvailabilityZoneT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Availability Zone (AZ) in which the node has been deployed.</p>
-     */
-    inline void SetAvailabilityZone(const Aws::String& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = value; }
-
-    /**
-     * <p>The Availability Zone (AZ) in which the node has been deployed.</p>
-     */
-    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::move(value); }
-
-    /**
-     * <p>The Availability Zone (AZ) in which the node has been deployed.</p>
-     */
-    inline void SetAvailabilityZone(const char* value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone.assign(value); }
-
-    /**
-     * <p>The Availability Zone (AZ) in which the node has been deployed.</p>
-     */
-    inline Node& WithAvailabilityZone(const Aws::String& value) { SetAvailabilityZone(value); return *this;}
-
-    /**
-     * <p>The Availability Zone (AZ) in which the node has been deployed.</p>
-     */
-    inline Node& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(std::move(value)); return *this;}
-
-    /**
-     * <p>The Availability Zone (AZ) in which the node has been deployed.</p>
-     */
-    inline Node& WithAvailabilityZone(const char* value) { SetAvailabilityZone(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the node. For example: <code>available</code>.</p>
      */
-    inline const Aws::String& GetNodeStatus() const{ return m_nodeStatus; }
-
-    /**
-     * <p>The current status of the node. For example: <code>available</code>.</p>
-     */
+    inline const Aws::String& GetNodeStatus() const { return m_nodeStatus; }
     inline bool NodeStatusHasBeenSet() const { return m_nodeStatusHasBeenSet; }
+    template<typename NodeStatusT = Aws::String>
+    void SetNodeStatus(NodeStatusT&& value) { m_nodeStatusHasBeenSet = true; m_nodeStatus = std::forward<NodeStatusT>(value); }
+    template<typename NodeStatusT = Aws::String>
+    Node& WithNodeStatus(NodeStatusT&& value) { SetNodeStatus(std::forward<NodeStatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the node. For example: <code>available</code>.</p>
-     */
-    inline void SetNodeStatus(const Aws::String& value) { m_nodeStatusHasBeenSet = true; m_nodeStatus = value; }
-
-    /**
-     * <p>The current status of the node. For example: <code>available</code>.</p>
-     */
-    inline void SetNodeStatus(Aws::String&& value) { m_nodeStatusHasBeenSet = true; m_nodeStatus = std::move(value); }
-
-    /**
-     * <p>The current status of the node. For example: <code>available</code>.</p>
-     */
-    inline void SetNodeStatus(const char* value) { m_nodeStatusHasBeenSet = true; m_nodeStatus.assign(value); }
-
-    /**
-     * <p>The current status of the node. For example: <code>available</code>.</p>
-     */
-    inline Node& WithNodeStatus(const Aws::String& value) { SetNodeStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the node. For example: <code>available</code>.</p>
-     */
-    inline Node& WithNodeStatus(Aws::String&& value) { SetNodeStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The current status of the node. For example: <code>available</code>.</p>
-     */
-    inline Node& WithNodeStatus(const char* value) { SetNodeStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the parameter group associated with this node. For example,
      * <code>in-sync</code>.</p>
      */
-    inline const Aws::String& GetParameterGroupStatus() const{ return m_parameterGroupStatus; }
-
-    /**
-     * <p>The status of the parameter group associated with this node. For example,
-     * <code>in-sync</code>.</p>
-     */
+    inline const Aws::String& GetParameterGroupStatus() const { return m_parameterGroupStatus; }
     inline bool ParameterGroupStatusHasBeenSet() const { return m_parameterGroupStatusHasBeenSet; }
-
-    /**
-     * <p>The status of the parameter group associated with this node. For example,
-     * <code>in-sync</code>.</p>
-     */
-    inline void SetParameterGroupStatus(const Aws::String& value) { m_parameterGroupStatusHasBeenSet = true; m_parameterGroupStatus = value; }
-
-    /**
-     * <p>The status of the parameter group associated with this node. For example,
-     * <code>in-sync</code>.</p>
-     */
-    inline void SetParameterGroupStatus(Aws::String&& value) { m_parameterGroupStatusHasBeenSet = true; m_parameterGroupStatus = std::move(value); }
-
-    /**
-     * <p>The status of the parameter group associated with this node. For example,
-     * <code>in-sync</code>.</p>
-     */
-    inline void SetParameterGroupStatus(const char* value) { m_parameterGroupStatusHasBeenSet = true; m_parameterGroupStatus.assign(value); }
-
-    /**
-     * <p>The status of the parameter group associated with this node. For example,
-     * <code>in-sync</code>.</p>
-     */
-    inline Node& WithParameterGroupStatus(const Aws::String& value) { SetParameterGroupStatus(value); return *this;}
-
-    /**
-     * <p>The status of the parameter group associated with this node. For example,
-     * <code>in-sync</code>.</p>
-     */
-    inline Node& WithParameterGroupStatus(Aws::String&& value) { SetParameterGroupStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the parameter group associated with this node. For example,
-     * <code>in-sync</code>.</p>
-     */
-    inline Node& WithParameterGroupStatus(const char* value) { SetParameterGroupStatus(value); return *this;}
-
+    template<typename ParameterGroupStatusT = Aws::String>
+    void SetParameterGroupStatus(ParameterGroupStatusT&& value) { m_parameterGroupStatusHasBeenSet = true; m_parameterGroupStatus = std::forward<ParameterGroupStatusT>(value); }
+    template<typename ParameterGroupStatusT = Aws::String>
+    Node& WithParameterGroupStatus(ParameterGroupStatusT&& value) { SetParameterGroupStatus(std::forward<ParameterGroupStatusT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nodeId;
@@ -298,7 +122,7 @@ namespace Model
     Endpoint m_endpoint;
     bool m_endpointHasBeenSet = false;
 
-    Aws::Utils::DateTime m_nodeCreateTime;
+    Aws::Utils::DateTime m_nodeCreateTime{};
     bool m_nodeCreateTimeHasBeenSet = false;
 
     Aws::String m_availabilityZone;

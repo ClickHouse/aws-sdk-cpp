@@ -21,7 +21,7 @@ namespace Model
   class UpdateSchemaRequest : public CloudDirectoryRequest
   {
   public:
-    AWS_CLOUDDIRECTORY_API UpdateSchemaRequest();
+    AWS_CLOUDDIRECTORY_API UpdateSchemaRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,95 +34,30 @@ namespace Model
     AWS_CLOUDDIRECTORY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the development schema. For more
      * information, see <a>arns</a>.</p>
      */
-    inline const Aws::String& GetSchemaArn() const{ return m_schemaArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the development schema. For more
-     * information, see <a>arns</a>.</p>
-     */
+    inline const Aws::String& GetSchemaArn() const { return m_schemaArn; }
     inline bool SchemaArnHasBeenSet() const { return m_schemaArnHasBeenSet; }
+    template<typename SchemaArnT = Aws::String>
+    void SetSchemaArn(SchemaArnT&& value) { m_schemaArnHasBeenSet = true; m_schemaArn = std::forward<SchemaArnT>(value); }
+    template<typename SchemaArnT = Aws::String>
+    UpdateSchemaRequest& WithSchemaArn(SchemaArnT&& value) { SetSchemaArn(std::forward<SchemaArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the development schema. For more
-     * information, see <a>arns</a>.</p>
-     */
-    inline void SetSchemaArn(const Aws::String& value) { m_schemaArnHasBeenSet = true; m_schemaArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the development schema. For more
-     * information, see <a>arns</a>.</p>
-     */
-    inline void SetSchemaArn(Aws::String&& value) { m_schemaArnHasBeenSet = true; m_schemaArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the development schema. For more
-     * information, see <a>arns</a>.</p>
-     */
-    inline void SetSchemaArn(const char* value) { m_schemaArnHasBeenSet = true; m_schemaArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the development schema. For more
-     * information, see <a>arns</a>.</p>
-     */
-    inline UpdateSchemaRequest& WithSchemaArn(const Aws::String& value) { SetSchemaArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the development schema. For more
-     * information, see <a>arns</a>.</p>
-     */
-    inline UpdateSchemaRequest& WithSchemaArn(Aws::String&& value) { SetSchemaArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the development schema. For more
-     * information, see <a>arns</a>.</p>
-     */
-    inline UpdateSchemaRequest& WithSchemaArn(const char* value) { SetSchemaArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the schema.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the schema.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>The name of the schema.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the schema.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the schema.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the schema.</p>
-     */
-    inline UpdateSchemaRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the schema.</p>
-     */
-    inline UpdateSchemaRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the schema.</p>
-     */
-    inline UpdateSchemaRequest& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateSchemaRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_schemaArn;

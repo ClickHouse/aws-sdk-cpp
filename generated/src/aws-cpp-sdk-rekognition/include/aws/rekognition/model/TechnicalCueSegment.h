@@ -32,73 +32,38 @@ namespace Model
   class TechnicalCueSegment
   {
   public:
-    AWS_REKOGNITION_API TechnicalCueSegment();
+    AWS_REKOGNITION_API TechnicalCueSegment() = default;
     AWS_REKOGNITION_API TechnicalCueSegment(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API TechnicalCueSegment& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of the technical cue.</p>
      */
-    inline const TechnicalCueType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of the technical cue.</p>
-     */
+    inline TechnicalCueType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(TechnicalCueType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline TechnicalCueSegment& WithType(TechnicalCueType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the technical cue.</p>
-     */
-    inline void SetType(const TechnicalCueType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of the technical cue.</p>
-     */
-    inline void SetType(TechnicalCueType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of the technical cue.</p>
-     */
-    inline TechnicalCueSegment& WithType(const TechnicalCueType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of the technical cue.</p>
-     */
-    inline TechnicalCueSegment& WithType(TechnicalCueType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The confidence that Amazon Rekognition Video has in the accuracy of the
      * detected segment.</p>
      */
-    inline double GetConfidence() const{ return m_confidence; }
-
-    /**
-     * <p>The confidence that Amazon Rekognition Video has in the accuracy of the
-     * detected segment.</p>
-     */
+    inline double GetConfidence() const { return m_confidence; }
     inline bool ConfidenceHasBeenSet() const { return m_confidenceHasBeenSet; }
-
-    /**
-     * <p>The confidence that Amazon Rekognition Video has in the accuracy of the
-     * detected segment.</p>
-     */
     inline void SetConfidence(double value) { m_confidenceHasBeenSet = true; m_confidence = value; }
-
-    /**
-     * <p>The confidence that Amazon Rekognition Video has in the accuracy of the
-     * detected segment.</p>
-     */
     inline TechnicalCueSegment& WithConfidence(double value) { SetConfidence(value); return *this;}
-
+    ///@}
   private:
 
-    TechnicalCueType m_type;
+    TechnicalCueType m_type{TechnicalCueType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
-    double m_confidence;
+    double m_confidence{0.0};
     bool m_confidenceHasBeenSet = false;
   };
 

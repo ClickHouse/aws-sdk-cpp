@@ -33,112 +33,40 @@ namespace Model
   class VpcConfiguration
   {
   public:
-    AWS_LOOKOUTMETRICS_API VpcConfiguration();
+    AWS_LOOKOUTMETRICS_API VpcConfiguration() = default;
     AWS_LOOKOUTMETRICS_API VpcConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API VpcConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An array of strings containing the Amazon VPC subnet IDs (e.g.,
      * <code>subnet-0bb1c79de3EXAMPLE</code>.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSubnetIdList() const{ return m_subnetIdList; }
-
-    /**
-     * <p>An array of strings containing the Amazon VPC subnet IDs (e.g.,
-     * <code>subnet-0bb1c79de3EXAMPLE</code>.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSubnetIdList() const { return m_subnetIdList; }
     inline bool SubnetIdListHasBeenSet() const { return m_subnetIdListHasBeenSet; }
+    template<typename SubnetIdListT = Aws::Vector<Aws::String>>
+    void SetSubnetIdList(SubnetIdListT&& value) { m_subnetIdListHasBeenSet = true; m_subnetIdList = std::forward<SubnetIdListT>(value); }
+    template<typename SubnetIdListT = Aws::Vector<Aws::String>>
+    VpcConfiguration& WithSubnetIdList(SubnetIdListT&& value) { SetSubnetIdList(std::forward<SubnetIdListT>(value)); return *this;}
+    template<typename SubnetIdListT = Aws::String>
+    VpcConfiguration& AddSubnetIdList(SubnetIdListT&& value) { m_subnetIdListHasBeenSet = true; m_subnetIdList.emplace_back(std::forward<SubnetIdListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of strings containing the Amazon VPC subnet IDs (e.g.,
-     * <code>subnet-0bb1c79de3EXAMPLE</code>.</p>
-     */
-    inline void SetSubnetIdList(const Aws::Vector<Aws::String>& value) { m_subnetIdListHasBeenSet = true; m_subnetIdList = value; }
-
-    /**
-     * <p>An array of strings containing the Amazon VPC subnet IDs (e.g.,
-     * <code>subnet-0bb1c79de3EXAMPLE</code>.</p>
-     */
-    inline void SetSubnetIdList(Aws::Vector<Aws::String>&& value) { m_subnetIdListHasBeenSet = true; m_subnetIdList = std::move(value); }
-
-    /**
-     * <p>An array of strings containing the Amazon VPC subnet IDs (e.g.,
-     * <code>subnet-0bb1c79de3EXAMPLE</code>.</p>
-     */
-    inline VpcConfiguration& WithSubnetIdList(const Aws::Vector<Aws::String>& value) { SetSubnetIdList(value); return *this;}
-
-    /**
-     * <p>An array of strings containing the Amazon VPC subnet IDs (e.g.,
-     * <code>subnet-0bb1c79de3EXAMPLE</code>.</p>
-     */
-    inline VpcConfiguration& WithSubnetIdList(Aws::Vector<Aws::String>&& value) { SetSubnetIdList(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of strings containing the Amazon VPC subnet IDs (e.g.,
-     * <code>subnet-0bb1c79de3EXAMPLE</code>.</p>
-     */
-    inline VpcConfiguration& AddSubnetIdList(const Aws::String& value) { m_subnetIdListHasBeenSet = true; m_subnetIdList.push_back(value); return *this; }
-
-    /**
-     * <p>An array of strings containing the Amazon VPC subnet IDs (e.g.,
-     * <code>subnet-0bb1c79de3EXAMPLE</code>.</p>
-     */
-    inline VpcConfiguration& AddSubnetIdList(Aws::String&& value) { m_subnetIdListHasBeenSet = true; m_subnetIdList.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of strings containing the Amazon VPC subnet IDs (e.g.,
-     * <code>subnet-0bb1c79de3EXAMPLE</code>.</p>
-     */
-    inline VpcConfiguration& AddSubnetIdList(const char* value) { m_subnetIdListHasBeenSet = true; m_subnetIdList.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>An array of strings containing the list of security groups.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSecurityGroupIdList() const{ return m_securityGroupIdList; }
-
-    /**
-     * <p>An array of strings containing the list of security groups.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSecurityGroupIdList() const { return m_securityGroupIdList; }
     inline bool SecurityGroupIdListHasBeenSet() const { return m_securityGroupIdListHasBeenSet; }
-
-    /**
-     * <p>An array of strings containing the list of security groups.</p>
-     */
-    inline void SetSecurityGroupIdList(const Aws::Vector<Aws::String>& value) { m_securityGroupIdListHasBeenSet = true; m_securityGroupIdList = value; }
-
-    /**
-     * <p>An array of strings containing the list of security groups.</p>
-     */
-    inline void SetSecurityGroupIdList(Aws::Vector<Aws::String>&& value) { m_securityGroupIdListHasBeenSet = true; m_securityGroupIdList = std::move(value); }
-
-    /**
-     * <p>An array of strings containing the list of security groups.</p>
-     */
-    inline VpcConfiguration& WithSecurityGroupIdList(const Aws::Vector<Aws::String>& value) { SetSecurityGroupIdList(value); return *this;}
-
-    /**
-     * <p>An array of strings containing the list of security groups.</p>
-     */
-    inline VpcConfiguration& WithSecurityGroupIdList(Aws::Vector<Aws::String>&& value) { SetSecurityGroupIdList(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of strings containing the list of security groups.</p>
-     */
-    inline VpcConfiguration& AddSecurityGroupIdList(const Aws::String& value) { m_securityGroupIdListHasBeenSet = true; m_securityGroupIdList.push_back(value); return *this; }
-
-    /**
-     * <p>An array of strings containing the list of security groups.</p>
-     */
-    inline VpcConfiguration& AddSecurityGroupIdList(Aws::String&& value) { m_securityGroupIdListHasBeenSet = true; m_securityGroupIdList.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of strings containing the list of security groups.</p>
-     */
-    inline VpcConfiguration& AddSecurityGroupIdList(const char* value) { m_securityGroupIdListHasBeenSet = true; m_securityGroupIdList.push_back(value); return *this; }
-
+    template<typename SecurityGroupIdListT = Aws::Vector<Aws::String>>
+    void SetSecurityGroupIdList(SecurityGroupIdListT&& value) { m_securityGroupIdListHasBeenSet = true; m_securityGroupIdList = std::forward<SecurityGroupIdListT>(value); }
+    template<typename SecurityGroupIdListT = Aws::Vector<Aws::String>>
+    VpcConfiguration& WithSecurityGroupIdList(SecurityGroupIdListT&& value) { SetSecurityGroupIdList(std::forward<SecurityGroupIdListT>(value)); return *this;}
+    template<typename SecurityGroupIdListT = Aws::String>
+    VpcConfiguration& AddSecurityGroupIdList(SecurityGroupIdListT&& value) { m_securityGroupIdListHasBeenSet = true; m_securityGroupIdList.emplace_back(std::forward<SecurityGroupIdListT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_subnetIdList;

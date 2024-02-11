@@ -18,15 +18,7 @@ namespace WorkDocs
 namespace Model
 {
 
-Participants::Participants() : 
-    m_usersHasBeenSet(false),
-    m_groupsHasBeenSet(false)
-{
-}
-
-Participants::Participants(JsonView jsonValue) : 
-    m_usersHasBeenSet(false),
-    m_groupsHasBeenSet(false)
+Participants::Participants(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ Participants& Participants::operator =(JsonView jsonValue)
     }
     m_usersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Groups"))
   {
     Aws::Utils::Array<JsonView> groupsJsonList = jsonValue.GetArray("Groups");
@@ -52,7 +43,6 @@ Participants& Participants::operator =(JsonView jsonValue)
     }
     m_groupsHasBeenSet = true;
   }
-
   return *this;
 }
 

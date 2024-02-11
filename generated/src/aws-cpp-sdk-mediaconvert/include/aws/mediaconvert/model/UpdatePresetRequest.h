@@ -22,7 +22,7 @@ namespace Model
   class UpdatePresetRequest : public MediaConvertRequest
   {
   public:
-    AWS_MEDIACONVERT_API UpdatePresetRequest();
+    AWS_MEDIACONVERT_API UpdatePresetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,159 +33,53 @@ namespace Model
     AWS_MEDIACONVERT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * The new category for the preset, if you are changing it.
      */
-    inline const Aws::String& GetCategory() const{ return m_category; }
-
-    /**
-     * The new category for the preset, if you are changing it.
-     */
+    inline const Aws::String& GetCategory() const { return m_category; }
     inline bool CategoryHasBeenSet() const { return m_categoryHasBeenSet; }
+    template<typename CategoryT = Aws::String>
+    void SetCategory(CategoryT&& value) { m_categoryHasBeenSet = true; m_category = std::forward<CategoryT>(value); }
+    template<typename CategoryT = Aws::String>
+    UpdatePresetRequest& WithCategory(CategoryT&& value) { SetCategory(std::forward<CategoryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The new category for the preset, if you are changing it.
-     */
-    inline void SetCategory(const Aws::String& value) { m_categoryHasBeenSet = true; m_category = value; }
-
-    /**
-     * The new category for the preset, if you are changing it.
-     */
-    inline void SetCategory(Aws::String&& value) { m_categoryHasBeenSet = true; m_category = std::move(value); }
-
-    /**
-     * The new category for the preset, if you are changing it.
-     */
-    inline void SetCategory(const char* value) { m_categoryHasBeenSet = true; m_category.assign(value); }
-
-    /**
-     * The new category for the preset, if you are changing it.
-     */
-    inline UpdatePresetRequest& WithCategory(const Aws::String& value) { SetCategory(value); return *this;}
-
-    /**
-     * The new category for the preset, if you are changing it.
-     */
-    inline UpdatePresetRequest& WithCategory(Aws::String&& value) { SetCategory(std::move(value)); return *this;}
-
-    /**
-     * The new category for the preset, if you are changing it.
-     */
-    inline UpdatePresetRequest& WithCategory(const char* value) { SetCategory(value); return *this;}
-
-
+    ///@{
     /**
      * The new description for the preset, if you are changing it.
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * The new description for the preset, if you are changing it.
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdatePresetRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The new description for the preset, if you are changing it.
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * The new description for the preset, if you are changing it.
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * The new description for the preset, if you are changing it.
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * The new description for the preset, if you are changing it.
-     */
-    inline UpdatePresetRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * The new description for the preset, if you are changing it.
-     */
-    inline UpdatePresetRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * The new description for the preset, if you are changing it.
-     */
-    inline UpdatePresetRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * The name of the preset you are modifying.
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * The name of the preset you are modifying.
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdatePresetRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The name of the preset you are modifying.
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * The name of the preset you are modifying.
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * The name of the preset you are modifying.
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * The name of the preset you are modifying.
-     */
-    inline UpdatePresetRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * The name of the preset you are modifying.
-     */
-    inline UpdatePresetRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * The name of the preset you are modifying.
-     */
-    inline UpdatePresetRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * Settings for preset
      */
-    inline const PresetSettings& GetSettings() const{ return m_settings; }
-
-    /**
-     * Settings for preset
-     */
+    inline const PresetSettings& GetSettings() const { return m_settings; }
     inline bool SettingsHasBeenSet() const { return m_settingsHasBeenSet; }
-
-    /**
-     * Settings for preset
-     */
-    inline void SetSettings(const PresetSettings& value) { m_settingsHasBeenSet = true; m_settings = value; }
-
-    /**
-     * Settings for preset
-     */
-    inline void SetSettings(PresetSettings&& value) { m_settingsHasBeenSet = true; m_settings = std::move(value); }
-
-    /**
-     * Settings for preset
-     */
-    inline UpdatePresetRequest& WithSettings(const PresetSettings& value) { SetSettings(value); return *this;}
-
-    /**
-     * Settings for preset
-     */
-    inline UpdatePresetRequest& WithSettings(PresetSettings&& value) { SetSettings(std::move(value)); return *this;}
-
+    template<typename SettingsT = PresetSettings>
+    void SetSettings(SettingsT&& value) { m_settingsHasBeenSet = true; m_settings = std::forward<SettingsT>(value); }
+    template<typename SettingsT = PresetSettings>
+    UpdatePresetRequest& WithSettings(SettingsT&& value) { SetSettings(std::forward<SettingsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_category;

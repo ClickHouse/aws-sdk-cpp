@@ -18,25 +18,7 @@ namespace ComputeOptimizer
 namespace Model
 {
 
-ECSServiceRecommendationOption::ECSServiceRecommendationOption() : 
-    m_memory(0),
-    m_memoryHasBeenSet(false),
-    m_cpu(0),
-    m_cpuHasBeenSet(false),
-    m_savingsOpportunityHasBeenSet(false),
-    m_projectedUtilizationMetricsHasBeenSet(false),
-    m_containerRecommendationsHasBeenSet(false)
-{
-}
-
-ECSServiceRecommendationOption::ECSServiceRecommendationOption(JsonView jsonValue) : 
-    m_memory(0),
-    m_memoryHasBeenSet(false),
-    m_cpu(0),
-    m_cpuHasBeenSet(false),
-    m_savingsOpportunityHasBeenSet(false),
-    m_projectedUtilizationMetricsHasBeenSet(false),
-    m_containerRecommendationsHasBeenSet(false)
+ECSServiceRecommendationOption::ECSServiceRecommendationOption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,24 +28,23 @@ ECSServiceRecommendationOption& ECSServiceRecommendationOption::operator =(JsonV
   if(jsonValue.ValueExists("memory"))
   {
     m_memory = jsonValue.GetInteger("memory");
-
     m_memoryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("cpu"))
   {
     m_cpu = jsonValue.GetInteger("cpu");
-
     m_cpuHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("savingsOpportunity"))
   {
     m_savingsOpportunity = jsonValue.GetObject("savingsOpportunity");
-
     m_savingsOpportunityHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("savingsOpportunityAfterDiscounts"))
+  {
+    m_savingsOpportunityAfterDiscounts = jsonValue.GetObject("savingsOpportunityAfterDiscounts");
+    m_savingsOpportunityAfterDiscountsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("projectedUtilizationMetrics"))
   {
     Aws::Utils::Array<JsonView> projectedUtilizationMetricsJsonList = jsonValue.GetArray("projectedUtilizationMetrics");
@@ -73,7 +54,6 @@ ECSServiceRecommendationOption& ECSServiceRecommendationOption::operator =(JsonV
     }
     m_projectedUtilizationMetricsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("containerRecommendations"))
   {
     Aws::Utils::Array<JsonView> containerRecommendationsJsonList = jsonValue.GetArray("containerRecommendations");
@@ -83,7 +63,6 @@ ECSServiceRecommendationOption& ECSServiceRecommendationOption::operator =(JsonV
     }
     m_containerRecommendationsHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -106,6 +85,12 @@ JsonValue ECSServiceRecommendationOption::Jsonize() const
   if(m_savingsOpportunityHasBeenSet)
   {
    payload.WithObject("savingsOpportunity", m_savingsOpportunity.Jsonize());
+
+  }
+
+  if(m_savingsOpportunityAfterDiscountsHasBeenSet)
+  {
+   payload.WithObject("savingsOpportunityAfterDiscounts", m_savingsOpportunityAfterDiscounts.Jsonize());
 
   }
 

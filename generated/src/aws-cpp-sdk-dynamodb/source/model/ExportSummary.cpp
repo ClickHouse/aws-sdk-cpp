@@ -18,17 +18,7 @@ namespace DynamoDB
 namespace Model
 {
 
-ExportSummary::ExportSummary() : 
-    m_exportArnHasBeenSet(false),
-    m_exportStatus(ExportStatus::NOT_SET),
-    m_exportStatusHasBeenSet(false)
-{
-}
-
-ExportSummary::ExportSummary(JsonView jsonValue) : 
-    m_exportArnHasBeenSet(false),
-    m_exportStatus(ExportStatus::NOT_SET),
-    m_exportStatusHasBeenSet(false)
+ExportSummary::ExportSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,18 @@ ExportSummary& ExportSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ExportArn"))
   {
     m_exportArn = jsonValue.GetString("ExportArn");
-
     m_exportArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExportStatus"))
   {
     m_exportStatus = ExportStatusMapper::GetExportStatusForName(jsonValue.GetString("ExportStatus"));
-
     m_exportStatusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ExportType"))
+  {
+    m_exportType = ExportTypeMapper::GetExportTypeForName(jsonValue.GetString("ExportType"));
+    m_exportTypeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -65,6 +56,11 @@ JsonValue ExportSummary::Jsonize() const
   if(m_exportStatusHasBeenSet)
   {
    payload.WithString("ExportStatus", ExportStatusMapper::GetNameForExportStatus(m_exportStatus));
+  }
+
+  if(m_exportTypeHasBeenSet)
+  {
+   payload.WithString("ExportType", ExportTypeMapper::GetNameForExportType(m_exportType));
   }
 
   return payload;

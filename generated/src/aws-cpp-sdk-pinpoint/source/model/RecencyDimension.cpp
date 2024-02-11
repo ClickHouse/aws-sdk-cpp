@@ -18,19 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-RecencyDimension::RecencyDimension() : 
-    m_duration(Duration::NOT_SET),
-    m_durationHasBeenSet(false),
-    m_recencyType(RecencyType::NOT_SET),
-    m_recencyTypeHasBeenSet(false)
-{
-}
-
-RecencyDimension::RecencyDimension(JsonView jsonValue) : 
-    m_duration(Duration::NOT_SET),
-    m_durationHasBeenSet(false),
-    m_recencyType(RecencyType::NOT_SET),
-    m_recencyTypeHasBeenSet(false)
+RecencyDimension::RecencyDimension(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ RecencyDimension& RecencyDimension::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Duration"))
   {
     m_duration = DurationMapper::GetDurationForName(jsonValue.GetString("Duration"));
-
     m_durationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RecencyType"))
   {
     m_recencyType = RecencyTypeMapper::GetRecencyTypeForName(jsonValue.GetString("RecencyType"));
-
     m_recencyTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -10,65 +10,25 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-RestoreDBClusterFromS3Request::RestoreDBClusterFromS3Request() : 
-    m_availabilityZonesHasBeenSet(false),
-    m_backupRetentionPeriod(0),
-    m_backupRetentionPeriodHasBeenSet(false),
-    m_characterSetNameHasBeenSet(false),
-    m_databaseNameHasBeenSet(false),
-    m_dBClusterIdentifierHasBeenSet(false),
-    m_dBClusterParameterGroupNameHasBeenSet(false),
-    m_vpcSecurityGroupIdsHasBeenSet(false),
-    m_dBSubnetGroupNameHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_masterUsernameHasBeenSet(false),
-    m_masterUserPasswordHasBeenSet(false),
-    m_optionGroupNameHasBeenSet(false),
-    m_preferredBackupWindowHasBeenSet(false),
-    m_preferredMaintenanceWindowHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_storageEncrypted(false),
-    m_storageEncryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_enableIAMDatabaseAuthentication(false),
-    m_enableIAMDatabaseAuthenticationHasBeenSet(false),
-    m_sourceEngineHasBeenSet(false),
-    m_sourceEngineVersionHasBeenSet(false),
-    m_s3BucketNameHasBeenSet(false),
-    m_s3PrefixHasBeenSet(false),
-    m_s3IngestionRoleArnHasBeenSet(false),
-    m_backtrackWindow(0),
-    m_backtrackWindowHasBeenSet(false),
-    m_enableCloudwatchLogsExportsHasBeenSet(false),
-    m_deletionProtection(false),
-    m_deletionProtectionHasBeenSet(false),
-    m_copyTagsToSnapshot(false),
-    m_copyTagsToSnapshotHasBeenSet(false),
-    m_domainHasBeenSet(false),
-    m_domainIAMRoleNameHasBeenSet(false),
-    m_serverlessV2ScalingConfigurationHasBeenSet(false),
-    m_networkTypeHasBeenSet(false),
-    m_manageMasterUserPassword(false),
-    m_manageMasterUserPasswordHasBeenSet(false),
-    m_masterUserSecretKmsKeyIdHasBeenSet(false)
-{
-}
-
 Aws::String RestoreDBClusterFromS3Request::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=RestoreDBClusterFromS3&";
   if(m_availabilityZonesHasBeenSet)
   {
-    unsigned availabilityZonesCount = 1;
-    for(auto& item : m_availabilityZones)
+    if (m_availabilityZones.empty())
     {
-      ss << "AvailabilityZones.member." << availabilityZonesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      availabilityZonesCount++;
+      ss << "AvailabilityZones=&";
+    }
+    else
+    {
+      unsigned availabilityZonesCount = 1;
+      for(auto& item : m_availabilityZones)
+      {
+        ss << "AvailabilityZones.AvailabilityZone." << availabilityZonesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        availabilityZonesCount++;
+      }
     }
   }
 
@@ -99,12 +59,19 @@ Aws::String RestoreDBClusterFromS3Request::SerializePayload() const
 
   if(m_vpcSecurityGroupIdsHasBeenSet)
   {
-    unsigned vpcSecurityGroupIdsCount = 1;
-    for(auto& item : m_vpcSecurityGroupIds)
+    if (m_vpcSecurityGroupIds.empty())
     {
-      ss << "VpcSecurityGroupIds.member." << vpcSecurityGroupIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      vpcSecurityGroupIdsCount++;
+      ss << "VpcSecurityGroupIds=&";
+    }
+    else
+    {
+      unsigned vpcSecurityGroupIdsCount = 1;
+      for(auto& item : m_vpcSecurityGroupIds)
+      {
+        ss << "VpcSecurityGroupIds.VpcSecurityGroupId." << vpcSecurityGroupIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        vpcSecurityGroupIdsCount++;
+      }
     }
   }
 
@@ -155,11 +122,18 @@ Aws::String RestoreDBClusterFromS3Request::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 
@@ -210,12 +184,19 @@ Aws::String RestoreDBClusterFromS3Request::SerializePayload() const
 
   if(m_enableCloudwatchLogsExportsHasBeenSet)
   {
-    unsigned enableCloudwatchLogsExportsCount = 1;
-    for(auto& item : m_enableCloudwatchLogsExports)
+    if (m_enableCloudwatchLogsExports.empty())
     {
-      ss << "EnableCloudwatchLogsExports.member." << enableCloudwatchLogsExportsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      enableCloudwatchLogsExportsCount++;
+      ss << "EnableCloudwatchLogsExports=&";
+    }
+    else
+    {
+      unsigned enableCloudwatchLogsExportsCount = 1;
+      for(auto& item : m_enableCloudwatchLogsExports)
+      {
+        ss << "EnableCloudwatchLogsExports.member." << enableCloudwatchLogsExportsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        enableCloudwatchLogsExportsCount++;
+      }
     }
   }
 
@@ -257,6 +238,16 @@ Aws::String RestoreDBClusterFromS3Request::SerializePayload() const
   if(m_masterUserSecretKmsKeyIdHasBeenSet)
   {
     ss << "MasterUserSecretKmsKeyId=" << StringUtils::URLEncode(m_masterUserSecretKmsKeyId.c_str()) << "&";
+  }
+
+  if(m_storageTypeHasBeenSet)
+  {
+    ss << "StorageType=" << StringUtils::URLEncode(m_storageType.c_str()) << "&";
+  }
+
+  if(m_engineLifecycleSupportHasBeenSet)
+  {
+    ss << "EngineLifecycleSupport=" << StringUtils::URLEncode(m_engineLifecycleSupport.c_str()) << "&";
   }
 
   ss << "Version=2014-10-31";

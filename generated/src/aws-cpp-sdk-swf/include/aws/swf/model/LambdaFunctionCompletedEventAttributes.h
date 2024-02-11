@@ -32,116 +32,53 @@ namespace Model
   class LambdaFunctionCompletedEventAttributes
   {
   public:
-    AWS_SWF_API LambdaFunctionCompletedEventAttributes();
+    AWS_SWF_API LambdaFunctionCompletedEventAttributes() = default;
     AWS_SWF_API LambdaFunctionCompletedEventAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API LambdaFunctionCompletedEventAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the <code>LambdaFunctionScheduled</code> event that was recorded
      * when this Lambda task was scheduled. To help diagnose issues, use this
      * information to trace back the chain of events leading up to this event.</p>
      */
-    inline long long GetScheduledEventId() const{ return m_scheduledEventId; }
-
-    /**
-     * <p>The ID of the <code>LambdaFunctionScheduled</code> event that was recorded
-     * when this Lambda task was scheduled. To help diagnose issues, use this
-     * information to trace back the chain of events leading up to this event.</p>
-     */
+    inline long long GetScheduledEventId() const { return m_scheduledEventId; }
     inline bool ScheduledEventIdHasBeenSet() const { return m_scheduledEventIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the <code>LambdaFunctionScheduled</code> event that was recorded
-     * when this Lambda task was scheduled. To help diagnose issues, use this
-     * information to trace back the chain of events leading up to this event.</p>
-     */
     inline void SetScheduledEventId(long long value) { m_scheduledEventIdHasBeenSet = true; m_scheduledEventId = value; }
-
-    /**
-     * <p>The ID of the <code>LambdaFunctionScheduled</code> event that was recorded
-     * when this Lambda task was scheduled. To help diagnose issues, use this
-     * information to trace back the chain of events leading up to this event.</p>
-     */
     inline LambdaFunctionCompletedEventAttributes& WithScheduledEventId(long long value) { SetScheduledEventId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the <code>LambdaFunctionStarted</code> event recorded when this
      * activity task started. To help diagnose issues, use this information to trace
      * back the chain of events leading up to this event.</p>
      */
-    inline long long GetStartedEventId() const{ return m_startedEventId; }
-
-    /**
-     * <p>The ID of the <code>LambdaFunctionStarted</code> event recorded when this
-     * activity task started. To help diagnose issues, use this information to trace
-     * back the chain of events leading up to this event.</p>
-     */
+    inline long long GetStartedEventId() const { return m_startedEventId; }
     inline bool StartedEventIdHasBeenSet() const { return m_startedEventIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the <code>LambdaFunctionStarted</code> event recorded when this
-     * activity task started. To help diagnose issues, use this information to trace
-     * back the chain of events leading up to this event.</p>
-     */
     inline void SetStartedEventId(long long value) { m_startedEventIdHasBeenSet = true; m_startedEventId = value; }
-
-    /**
-     * <p>The ID of the <code>LambdaFunctionStarted</code> event recorded when this
-     * activity task started. To help diagnose issues, use this information to trace
-     * back the chain of events leading up to this event.</p>
-     */
     inline LambdaFunctionCompletedEventAttributes& WithStartedEventId(long long value) { SetStartedEventId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The results of the Lambda task.</p>
      */
-    inline const Aws::String& GetResult() const{ return m_result; }
-
-    /**
-     * <p>The results of the Lambda task.</p>
-     */
+    inline const Aws::String& GetResult() const { return m_result; }
     inline bool ResultHasBeenSet() const { return m_resultHasBeenSet; }
-
-    /**
-     * <p>The results of the Lambda task.</p>
-     */
-    inline void SetResult(const Aws::String& value) { m_resultHasBeenSet = true; m_result = value; }
-
-    /**
-     * <p>The results of the Lambda task.</p>
-     */
-    inline void SetResult(Aws::String&& value) { m_resultHasBeenSet = true; m_result = std::move(value); }
-
-    /**
-     * <p>The results of the Lambda task.</p>
-     */
-    inline void SetResult(const char* value) { m_resultHasBeenSet = true; m_result.assign(value); }
-
-    /**
-     * <p>The results of the Lambda task.</p>
-     */
-    inline LambdaFunctionCompletedEventAttributes& WithResult(const Aws::String& value) { SetResult(value); return *this;}
-
-    /**
-     * <p>The results of the Lambda task.</p>
-     */
-    inline LambdaFunctionCompletedEventAttributes& WithResult(Aws::String&& value) { SetResult(std::move(value)); return *this;}
-
-    /**
-     * <p>The results of the Lambda task.</p>
-     */
-    inline LambdaFunctionCompletedEventAttributes& WithResult(const char* value) { SetResult(value); return *this;}
-
+    template<typename ResultT = Aws::String>
+    void SetResult(ResultT&& value) { m_resultHasBeenSet = true; m_result = std::forward<ResultT>(value); }
+    template<typename ResultT = Aws::String>
+    LambdaFunctionCompletedEventAttributes& WithResult(ResultT&& value) { SetResult(std::forward<ResultT>(value)); return *this;}
+    ///@}
   private:
 
-    long long m_scheduledEventId;
+    long long m_scheduledEventId{0};
     bool m_scheduledEventIdHasBeenSet = false;
 
-    long long m_startedEventId;
+    long long m_startedEventId{0};
     bool m_startedEventIdHasBeenSet = false;
 
     Aws::String m_result;

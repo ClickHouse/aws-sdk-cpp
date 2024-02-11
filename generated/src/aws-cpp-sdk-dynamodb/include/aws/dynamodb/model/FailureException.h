@@ -32,93 +32,35 @@ namespace Model
   class FailureException
   {
   public:
-    AWS_DYNAMODB_API FailureException();
+    AWS_DYNAMODB_API FailureException() = default;
     AWS_DYNAMODB_API FailureException(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API FailureException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Exception name.</p>
      */
-    inline const Aws::String& GetExceptionName() const{ return m_exceptionName; }
-
-    /**
-     * <p>Exception name.</p>
-     */
+    inline const Aws::String& GetExceptionName() const { return m_exceptionName; }
     inline bool ExceptionNameHasBeenSet() const { return m_exceptionNameHasBeenSet; }
+    template<typename ExceptionNameT = Aws::String>
+    void SetExceptionName(ExceptionNameT&& value) { m_exceptionNameHasBeenSet = true; m_exceptionName = std::forward<ExceptionNameT>(value); }
+    template<typename ExceptionNameT = Aws::String>
+    FailureException& WithExceptionName(ExceptionNameT&& value) { SetExceptionName(std::forward<ExceptionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Exception name.</p>
-     */
-    inline void SetExceptionName(const Aws::String& value) { m_exceptionNameHasBeenSet = true; m_exceptionName = value; }
-
-    /**
-     * <p>Exception name.</p>
-     */
-    inline void SetExceptionName(Aws::String&& value) { m_exceptionNameHasBeenSet = true; m_exceptionName = std::move(value); }
-
-    /**
-     * <p>Exception name.</p>
-     */
-    inline void SetExceptionName(const char* value) { m_exceptionNameHasBeenSet = true; m_exceptionName.assign(value); }
-
-    /**
-     * <p>Exception name.</p>
-     */
-    inline FailureException& WithExceptionName(const Aws::String& value) { SetExceptionName(value); return *this;}
-
-    /**
-     * <p>Exception name.</p>
-     */
-    inline FailureException& WithExceptionName(Aws::String&& value) { SetExceptionName(std::move(value)); return *this;}
-
-    /**
-     * <p>Exception name.</p>
-     */
-    inline FailureException& WithExceptionName(const char* value) { SetExceptionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Description of the failure.</p>
      */
-    inline const Aws::String& GetExceptionDescription() const{ return m_exceptionDescription; }
-
-    /**
-     * <p>Description of the failure.</p>
-     */
+    inline const Aws::String& GetExceptionDescription() const { return m_exceptionDescription; }
     inline bool ExceptionDescriptionHasBeenSet() const { return m_exceptionDescriptionHasBeenSet; }
-
-    /**
-     * <p>Description of the failure.</p>
-     */
-    inline void SetExceptionDescription(const Aws::String& value) { m_exceptionDescriptionHasBeenSet = true; m_exceptionDescription = value; }
-
-    /**
-     * <p>Description of the failure.</p>
-     */
-    inline void SetExceptionDescription(Aws::String&& value) { m_exceptionDescriptionHasBeenSet = true; m_exceptionDescription = std::move(value); }
-
-    /**
-     * <p>Description of the failure.</p>
-     */
-    inline void SetExceptionDescription(const char* value) { m_exceptionDescriptionHasBeenSet = true; m_exceptionDescription.assign(value); }
-
-    /**
-     * <p>Description of the failure.</p>
-     */
-    inline FailureException& WithExceptionDescription(const Aws::String& value) { SetExceptionDescription(value); return *this;}
-
-    /**
-     * <p>Description of the failure.</p>
-     */
-    inline FailureException& WithExceptionDescription(Aws::String&& value) { SetExceptionDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Description of the failure.</p>
-     */
-    inline FailureException& WithExceptionDescription(const char* value) { SetExceptionDescription(value); return *this;}
-
+    template<typename ExceptionDescriptionT = Aws::String>
+    void SetExceptionDescription(ExceptionDescriptionT&& value) { m_exceptionDescriptionHasBeenSet = true; m_exceptionDescription = std::forward<ExceptionDescriptionT>(value); }
+    template<typename ExceptionDescriptionT = Aws::String>
+    FailureException& WithExceptionDescription(ExceptionDescriptionT&& value) { SetExceptionDescription(std::forward<ExceptionDescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_exceptionName;

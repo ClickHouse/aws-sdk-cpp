@@ -31,101 +31,36 @@ namespace Model
   class SlateSource
   {
   public:
-    AWS_MEDIATAILOR_API SlateSource();
+    AWS_MEDIATAILOR_API SlateSource() = default;
     AWS_MEDIATAILOR_API SlateSource(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIATAILOR_API SlateSource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIATAILOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the source location where the slate VOD source is stored.</p>
      */
-    inline const Aws::String& GetSourceLocationName() const{ return m_sourceLocationName; }
-
-    /**
-     * <p>The name of the source location where the slate VOD source is stored.</p>
-     */
+    inline const Aws::String& GetSourceLocationName() const { return m_sourceLocationName; }
     inline bool SourceLocationNameHasBeenSet() const { return m_sourceLocationNameHasBeenSet; }
+    template<typename SourceLocationNameT = Aws::String>
+    void SetSourceLocationName(SourceLocationNameT&& value) { m_sourceLocationNameHasBeenSet = true; m_sourceLocationName = std::forward<SourceLocationNameT>(value); }
+    template<typename SourceLocationNameT = Aws::String>
+    SlateSource& WithSourceLocationName(SourceLocationNameT&& value) { SetSourceLocationName(std::forward<SourceLocationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the source location where the slate VOD source is stored.</p>
-     */
-    inline void SetSourceLocationName(const Aws::String& value) { m_sourceLocationNameHasBeenSet = true; m_sourceLocationName = value; }
-
-    /**
-     * <p>The name of the source location where the slate VOD source is stored.</p>
-     */
-    inline void SetSourceLocationName(Aws::String&& value) { m_sourceLocationNameHasBeenSet = true; m_sourceLocationName = std::move(value); }
-
-    /**
-     * <p>The name of the source location where the slate VOD source is stored.</p>
-     */
-    inline void SetSourceLocationName(const char* value) { m_sourceLocationNameHasBeenSet = true; m_sourceLocationName.assign(value); }
-
-    /**
-     * <p>The name of the source location where the slate VOD source is stored.</p>
-     */
-    inline SlateSource& WithSourceLocationName(const Aws::String& value) { SetSourceLocationName(value); return *this;}
-
-    /**
-     * <p>The name of the source location where the slate VOD source is stored.</p>
-     */
-    inline SlateSource& WithSourceLocationName(Aws::String&& value) { SetSourceLocationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the source location where the slate VOD source is stored.</p>
-     */
-    inline SlateSource& WithSourceLocationName(const char* value) { SetSourceLocationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The slate VOD source name. The VOD source must already exist in a source
      * location before it can be used for slate.</p>
      */
-    inline const Aws::String& GetVodSourceName() const{ return m_vodSourceName; }
-
-    /**
-     * <p>The slate VOD source name. The VOD source must already exist in a source
-     * location before it can be used for slate.</p>
-     */
+    inline const Aws::String& GetVodSourceName() const { return m_vodSourceName; }
     inline bool VodSourceNameHasBeenSet() const { return m_vodSourceNameHasBeenSet; }
-
-    /**
-     * <p>The slate VOD source name. The VOD source must already exist in a source
-     * location before it can be used for slate.</p>
-     */
-    inline void SetVodSourceName(const Aws::String& value) { m_vodSourceNameHasBeenSet = true; m_vodSourceName = value; }
-
-    /**
-     * <p>The slate VOD source name. The VOD source must already exist in a source
-     * location before it can be used for slate.</p>
-     */
-    inline void SetVodSourceName(Aws::String&& value) { m_vodSourceNameHasBeenSet = true; m_vodSourceName = std::move(value); }
-
-    /**
-     * <p>The slate VOD source name. The VOD source must already exist in a source
-     * location before it can be used for slate.</p>
-     */
-    inline void SetVodSourceName(const char* value) { m_vodSourceNameHasBeenSet = true; m_vodSourceName.assign(value); }
-
-    /**
-     * <p>The slate VOD source name. The VOD source must already exist in a source
-     * location before it can be used for slate.</p>
-     */
-    inline SlateSource& WithVodSourceName(const Aws::String& value) { SetVodSourceName(value); return *this;}
-
-    /**
-     * <p>The slate VOD source name. The VOD source must already exist in a source
-     * location before it can be used for slate.</p>
-     */
-    inline SlateSource& WithVodSourceName(Aws::String&& value) { SetVodSourceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The slate VOD source name. The VOD source must already exist in a source
-     * location before it can be used for slate.</p>
-     */
-    inline SlateSource& WithVodSourceName(const char* value) { SetVodSourceName(value); return *this;}
-
+    template<typename VodSourceNameT = Aws::String>
+    void SetVodSourceName(VodSourceNameT&& value) { m_vodSourceNameHasBeenSet = true; m_vodSourceName = std::forward<VodSourceNameT>(value); }
+    template<typename VodSourceNameT = Aws::String>
+    SlateSource& WithVodSourceName(VodSourceNameT&& value) { SetVodSourceName(std::forward<VodSourceNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sourceLocationName;

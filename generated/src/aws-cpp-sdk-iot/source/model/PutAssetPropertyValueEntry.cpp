@@ -18,21 +18,7 @@ namespace IoT
 namespace Model
 {
 
-PutAssetPropertyValueEntry::PutAssetPropertyValueEntry() : 
-    m_entryIdHasBeenSet(false),
-    m_assetIdHasBeenSet(false),
-    m_propertyIdHasBeenSet(false),
-    m_propertyAliasHasBeenSet(false),
-    m_propertyValuesHasBeenSet(false)
-{
-}
-
-PutAssetPropertyValueEntry::PutAssetPropertyValueEntry(JsonView jsonValue) : 
-    m_entryIdHasBeenSet(false),
-    m_assetIdHasBeenSet(false),
-    m_propertyIdHasBeenSet(false),
-    m_propertyAliasHasBeenSet(false),
-    m_propertyValuesHasBeenSet(false)
+PutAssetPropertyValueEntry::PutAssetPropertyValueEntry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ PutAssetPropertyValueEntry& PutAssetPropertyValueEntry::operator =(JsonView json
   if(jsonValue.ValueExists("entryId"))
   {
     m_entryId = jsonValue.GetString("entryId");
-
     m_entryIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("assetId"))
   {
     m_assetId = jsonValue.GetString("assetId");
-
     m_assetIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("propertyId"))
   {
     m_propertyId = jsonValue.GetString("propertyId");
-
     m_propertyIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("propertyAlias"))
   {
     m_propertyAlias = jsonValue.GetString("propertyAlias");
-
     m_propertyAliasHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("propertyValues"))
   {
     Aws::Utils::Array<JsonView> propertyValuesJsonList = jsonValue.GetArray("propertyValues");
@@ -76,7 +54,6 @@ PutAssetPropertyValueEntry& PutAssetPropertyValueEntry::operator =(JsonView json
     }
     m_propertyValuesHasBeenSet = true;
   }
-
   return *this;
 }
 

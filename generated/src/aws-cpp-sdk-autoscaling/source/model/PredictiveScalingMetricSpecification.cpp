@@ -20,27 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-PredictiveScalingMetricSpecification::PredictiveScalingMetricSpecification() : 
-    m_targetValue(0.0),
-    m_targetValueHasBeenSet(false),
-    m_predefinedMetricPairSpecificationHasBeenSet(false),
-    m_predefinedScalingMetricSpecificationHasBeenSet(false),
-    m_predefinedLoadMetricSpecificationHasBeenSet(false),
-    m_customizedScalingMetricSpecificationHasBeenSet(false),
-    m_customizedLoadMetricSpecificationHasBeenSet(false),
-    m_customizedCapacityMetricSpecificationHasBeenSet(false)
-{
-}
-
-PredictiveScalingMetricSpecification::PredictiveScalingMetricSpecification(const XmlNode& xmlNode) : 
-    m_targetValue(0.0),
-    m_targetValueHasBeenSet(false),
-    m_predefinedMetricPairSpecificationHasBeenSet(false),
-    m_predefinedScalingMetricSpecificationHasBeenSet(false),
-    m_predefinedLoadMetricSpecificationHasBeenSet(false),
-    m_customizedScalingMetricSpecificationHasBeenSet(false),
-    m_customizedLoadMetricSpecificationHasBeenSet(false),
-    m_customizedCapacityMetricSpecificationHasBeenSet(false)
+PredictiveScalingMetricSpecification::PredictiveScalingMetricSpecification(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -153,7 +133,7 @@ void PredictiveScalingMetricSpecification::OutputToStream(Aws::OStream& oStream,
 {
   if(m_targetValueHasBeenSet)
   {
-        oStream << location << ".TargetValue=" << StringUtils::URLEncode(m_targetValue) << "&";
+      oStream << location << ".TargetValue=" << StringUtils::URLEncode(m_targetValue) << "&";
   }
   if(m_predefinedMetricPairSpecificationHasBeenSet)
   {

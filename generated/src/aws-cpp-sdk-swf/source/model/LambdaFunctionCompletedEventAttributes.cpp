@@ -18,21 +18,7 @@ namespace SWF
 namespace Model
 {
 
-LambdaFunctionCompletedEventAttributes::LambdaFunctionCompletedEventAttributes() : 
-    m_scheduledEventId(0),
-    m_scheduledEventIdHasBeenSet(false),
-    m_startedEventId(0),
-    m_startedEventIdHasBeenSet(false),
-    m_resultHasBeenSet(false)
-{
-}
-
-LambdaFunctionCompletedEventAttributes::LambdaFunctionCompletedEventAttributes(JsonView jsonValue) : 
-    m_scheduledEventId(0),
-    m_scheduledEventIdHasBeenSet(false),
-    m_startedEventId(0),
-    m_startedEventIdHasBeenSet(false),
-    m_resultHasBeenSet(false)
+LambdaFunctionCompletedEventAttributes::LambdaFunctionCompletedEventAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ LambdaFunctionCompletedEventAttributes& LambdaFunctionCompletedEventAttributes::
   if(jsonValue.ValueExists("scheduledEventId"))
   {
     m_scheduledEventId = jsonValue.GetInt64("scheduledEventId");
-
     m_scheduledEventIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("startedEventId"))
   {
     m_startedEventId = jsonValue.GetInt64("startedEventId");
-
     m_startedEventIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("result"))
   {
     m_result = jsonValue.GetString("result");
-
     m_resultHasBeenSet = true;
   }
-
   return *this;
 }
 

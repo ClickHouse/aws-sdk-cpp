@@ -32,74 +32,36 @@ namespace Model
   class DistributionConfigWithTags
   {
   public:
-    AWS_CLOUDFRONT_API DistributionConfigWithTags();
+    AWS_CLOUDFRONT_API DistributionConfigWithTags() = default;
     AWS_CLOUDFRONT_API DistributionConfigWithTags(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFRONT_API DistributionConfigWithTags& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_CLOUDFRONT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>A distribution configuration.</p>
      */
-    inline const DistributionConfig& GetDistributionConfig() const{ return m_distributionConfig; }
-
-    /**
-     * <p>A distribution configuration.</p>
-     */
+    inline const DistributionConfig& GetDistributionConfig() const { return m_distributionConfig; }
     inline bool DistributionConfigHasBeenSet() const { return m_distributionConfigHasBeenSet; }
+    template<typename DistributionConfigT = DistributionConfig>
+    void SetDistributionConfig(DistributionConfigT&& value) { m_distributionConfigHasBeenSet = true; m_distributionConfig = std::forward<DistributionConfigT>(value); }
+    template<typename DistributionConfigT = DistributionConfig>
+    DistributionConfigWithTags& WithDistributionConfig(DistributionConfigT&& value) { SetDistributionConfig(std::forward<DistributionConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A distribution configuration.</p>
-     */
-    inline void SetDistributionConfig(const DistributionConfig& value) { m_distributionConfigHasBeenSet = true; m_distributionConfig = value; }
-
-    /**
-     * <p>A distribution configuration.</p>
-     */
-    inline void SetDistributionConfig(DistributionConfig&& value) { m_distributionConfigHasBeenSet = true; m_distributionConfig = std::move(value); }
-
-    /**
-     * <p>A distribution configuration.</p>
-     */
-    inline DistributionConfigWithTags& WithDistributionConfig(const DistributionConfig& value) { SetDistributionConfig(value); return *this;}
-
-    /**
-     * <p>A distribution configuration.</p>
-     */
-    inline DistributionConfigWithTags& WithDistributionConfig(DistributionConfig&& value) { SetDistributionConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A complex type that contains zero or more <code>Tag</code> elements.</p>
      */
-    inline const Tags& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A complex type that contains zero or more <code>Tag</code> elements.</p>
-     */
+    inline const Tags& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>A complex type that contains zero or more <code>Tag</code> elements.</p>
-     */
-    inline void SetTags(const Tags& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A complex type that contains zero or more <code>Tag</code> elements.</p>
-     */
-    inline void SetTags(Tags&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A complex type that contains zero or more <code>Tag</code> elements.</p>
-     */
-    inline DistributionConfigWithTags& WithTags(const Tags& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A complex type that contains zero or more <code>Tag</code> elements.</p>
-     */
-    inline DistributionConfigWithTags& WithTags(Tags&& value) { SetTags(std::move(value)); return *this;}
-
+    template<typename TagsT = Tags>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Tags>
+    DistributionConfigWithTags& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    ///@}
   private:
 
     DistributionConfig m_distributionConfig;

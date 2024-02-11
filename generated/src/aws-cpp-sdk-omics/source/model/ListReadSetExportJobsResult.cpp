@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-ListReadSetExportJobsResult::ListReadSetExportJobsResult()
-{
-}
-
 ListReadSetExportJobsResult::ListReadSetExportJobsResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,6 +25,11 @@ ListReadSetExportJobsResult::ListReadSetExportJobsResult(const Aws::AmazonWebSer
 ListReadSetExportJobsResult& ListReadSetExportJobsResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
+  if(jsonValue.ValueExists("nextToken"))
+  {
+    m_nextToken = jsonValue.GetString("nextToken");
+    m_nextTokenHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("exportJobs"))
   {
     Aws::Utils::Array<JsonView> exportJobsJsonList = jsonValue.GetArray("exportJobs");
@@ -36,20 +37,15 @@ ListReadSetExportJobsResult& ListReadSetExportJobsResult::operator =(const Aws::
     {
       m_exportJobs.push_back(exportJobsJsonList[exportJobsIndex].AsObject());
     }
+    m_exportJobsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("nextToken"))
-  {
-    m_nextToken = jsonValue.GetString("nextToken");
-
-  }
-
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

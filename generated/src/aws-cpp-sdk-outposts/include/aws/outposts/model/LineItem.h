@@ -35,299 +35,105 @@ namespace Model
   class LineItem
   {
   public:
-    AWS_OUTPOSTS_API LineItem();
+    AWS_OUTPOSTS_API LineItem() = default;
     AWS_OUTPOSTS_API LineItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_OUTPOSTS_API LineItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OUTPOSTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p> The ID of the catalog item. </p>
+     * <p> The ID of the catalog item.</p>
      */
-    inline const Aws::String& GetCatalogItemId() const{ return m_catalogItemId; }
-
-    /**
-     * <p> The ID of the catalog item. </p>
-     */
+    inline const Aws::String& GetCatalogItemId() const { return m_catalogItemId; }
     inline bool CatalogItemIdHasBeenSet() const { return m_catalogItemIdHasBeenSet; }
+    template<typename CatalogItemIdT = Aws::String>
+    void SetCatalogItemId(CatalogItemIdT&& value) { m_catalogItemIdHasBeenSet = true; m_catalogItemId = std::forward<CatalogItemIdT>(value); }
+    template<typename CatalogItemIdT = Aws::String>
+    LineItem& WithCatalogItemId(CatalogItemIdT&& value) { SetCatalogItemId(std::forward<CatalogItemIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The ID of the catalog item. </p>
-     */
-    inline void SetCatalogItemId(const Aws::String& value) { m_catalogItemIdHasBeenSet = true; m_catalogItemId = value; }
-
-    /**
-     * <p> The ID of the catalog item. </p>
-     */
-    inline void SetCatalogItemId(Aws::String&& value) { m_catalogItemIdHasBeenSet = true; m_catalogItemId = std::move(value); }
-
-    /**
-     * <p> The ID of the catalog item. </p>
-     */
-    inline void SetCatalogItemId(const char* value) { m_catalogItemIdHasBeenSet = true; m_catalogItemId.assign(value); }
-
-    /**
-     * <p> The ID of the catalog item. </p>
-     */
-    inline LineItem& WithCatalogItemId(const Aws::String& value) { SetCatalogItemId(value); return *this;}
-
-    /**
-     * <p> The ID of the catalog item. </p>
-     */
-    inline LineItem& WithCatalogItemId(Aws::String&& value) { SetCatalogItemId(std::move(value)); return *this;}
-
-    /**
-     * <p> The ID of the catalog item. </p>
-     */
-    inline LineItem& WithCatalogItemId(const char* value) { SetCatalogItemId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the line item.</p>
      */
-    inline const Aws::String& GetLineItemId() const{ return m_lineItemId; }
-
-    /**
-     * <p>The ID of the line item.</p>
-     */
+    inline const Aws::String& GetLineItemId() const { return m_lineItemId; }
     inline bool LineItemIdHasBeenSet() const { return m_lineItemIdHasBeenSet; }
+    template<typename LineItemIdT = Aws::String>
+    void SetLineItemId(LineItemIdT&& value) { m_lineItemIdHasBeenSet = true; m_lineItemId = std::forward<LineItemIdT>(value); }
+    template<typename LineItemIdT = Aws::String>
+    LineItem& WithLineItemId(LineItemIdT&& value) { SetLineItemId(std::forward<LineItemIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the line item.</p>
-     */
-    inline void SetLineItemId(const Aws::String& value) { m_lineItemIdHasBeenSet = true; m_lineItemId = value; }
-
-    /**
-     * <p>The ID of the line item.</p>
-     */
-    inline void SetLineItemId(Aws::String&& value) { m_lineItemIdHasBeenSet = true; m_lineItemId = std::move(value); }
-
-    /**
-     * <p>The ID of the line item.</p>
-     */
-    inline void SetLineItemId(const char* value) { m_lineItemIdHasBeenSet = true; m_lineItemId.assign(value); }
-
-    /**
-     * <p>The ID of the line item.</p>
-     */
-    inline LineItem& WithLineItemId(const Aws::String& value) { SetLineItemId(value); return *this;}
-
-    /**
-     * <p>The ID of the line item.</p>
-     */
-    inline LineItem& WithLineItemId(Aws::String&& value) { SetLineItemId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the line item.</p>
-     */
-    inline LineItem& WithLineItemId(const char* value) { SetLineItemId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The quantity of the line item.</p>
      */
-    inline int GetQuantity() const{ return m_quantity; }
-
-    /**
-     * <p>The quantity of the line item.</p>
-     */
+    inline int GetQuantity() const { return m_quantity; }
     inline bool QuantityHasBeenSet() const { return m_quantityHasBeenSet; }
-
-    /**
-     * <p>The quantity of the line item.</p>
-     */
     inline void SetQuantity(int value) { m_quantityHasBeenSet = true; m_quantity = value; }
-
-    /**
-     * <p>The quantity of the line item.</p>
-     */
     inline LineItem& WithQuantity(int value) { SetQuantity(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The status of the line item.</p>
      */
-    inline const LineItemStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the line item.</p>
-     */
+    inline LineItemStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(LineItemStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline LineItem& WithStatus(LineItemStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the line item.</p>
-     */
-    inline void SetStatus(const LineItemStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the line item.</p>
-     */
-    inline void SetStatus(LineItemStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the line item.</p>
-     */
-    inline LineItem& WithStatus(const LineItemStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the line item.</p>
-     */
-    inline LineItem& WithStatus(LineItemStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> Information about a line item shipment. </p>
      */
-    inline const ShipmentInformation& GetShipmentInformation() const{ return m_shipmentInformation; }
-
-    /**
-     * <p> Information about a line item shipment. </p>
-     */
+    inline const ShipmentInformation& GetShipmentInformation() const { return m_shipmentInformation; }
     inline bool ShipmentInformationHasBeenSet() const { return m_shipmentInformationHasBeenSet; }
+    template<typename ShipmentInformationT = ShipmentInformation>
+    void SetShipmentInformation(ShipmentInformationT&& value) { m_shipmentInformationHasBeenSet = true; m_shipmentInformation = std::forward<ShipmentInformationT>(value); }
+    template<typename ShipmentInformationT = ShipmentInformation>
+    LineItem& WithShipmentInformation(ShipmentInformationT&& value) { SetShipmentInformation(std::forward<ShipmentInformationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Information about a line item shipment. </p>
-     */
-    inline void SetShipmentInformation(const ShipmentInformation& value) { m_shipmentInformationHasBeenSet = true; m_shipmentInformation = value; }
-
-    /**
-     * <p> Information about a line item shipment. </p>
-     */
-    inline void SetShipmentInformation(ShipmentInformation&& value) { m_shipmentInformationHasBeenSet = true; m_shipmentInformation = std::move(value); }
-
-    /**
-     * <p> Information about a line item shipment. </p>
-     */
-    inline LineItem& WithShipmentInformation(const ShipmentInformation& value) { SetShipmentInformation(value); return *this;}
-
-    /**
-     * <p> Information about a line item shipment. </p>
-     */
-    inline LineItem& WithShipmentInformation(ShipmentInformation&& value) { SetShipmentInformation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> Information about assets. </p>
      */
-    inline const Aws::Vector<LineItemAssetInformation>& GetAssetInformationList() const{ return m_assetInformationList; }
-
-    /**
-     * <p> Information about assets. </p>
-     */
+    inline const Aws::Vector<LineItemAssetInformation>& GetAssetInformationList() const { return m_assetInformationList; }
     inline bool AssetInformationListHasBeenSet() const { return m_assetInformationListHasBeenSet; }
+    template<typename AssetInformationListT = Aws::Vector<LineItemAssetInformation>>
+    void SetAssetInformationList(AssetInformationListT&& value) { m_assetInformationListHasBeenSet = true; m_assetInformationList = std::forward<AssetInformationListT>(value); }
+    template<typename AssetInformationListT = Aws::Vector<LineItemAssetInformation>>
+    LineItem& WithAssetInformationList(AssetInformationListT&& value) { SetAssetInformationList(std::forward<AssetInformationListT>(value)); return *this;}
+    template<typename AssetInformationListT = LineItemAssetInformation>
+    LineItem& AddAssetInformationList(AssetInformationListT&& value) { m_assetInformationListHasBeenSet = true; m_assetInformationList.emplace_back(std::forward<AssetInformationListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> Information about assets. </p>
-     */
-    inline void SetAssetInformationList(const Aws::Vector<LineItemAssetInformation>& value) { m_assetInformationListHasBeenSet = true; m_assetInformationList = value; }
-
-    /**
-     * <p> Information about assets. </p>
-     */
-    inline void SetAssetInformationList(Aws::Vector<LineItemAssetInformation>&& value) { m_assetInformationListHasBeenSet = true; m_assetInformationList = std::move(value); }
-
-    /**
-     * <p> Information about assets. </p>
-     */
-    inline LineItem& WithAssetInformationList(const Aws::Vector<LineItemAssetInformation>& value) { SetAssetInformationList(value); return *this;}
-
-    /**
-     * <p> Information about assets. </p>
-     */
-    inline LineItem& WithAssetInformationList(Aws::Vector<LineItemAssetInformation>&& value) { SetAssetInformationList(std::move(value)); return *this;}
-
-    /**
-     * <p> Information about assets. </p>
-     */
-    inline LineItem& AddAssetInformationList(const LineItemAssetInformation& value) { m_assetInformationListHasBeenSet = true; m_assetInformationList.push_back(value); return *this; }
-
-    /**
-     * <p> Information about assets. </p>
-     */
-    inline LineItem& AddAssetInformationList(LineItemAssetInformation&& value) { m_assetInformationListHasBeenSet = true; m_assetInformationList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The ID of the previous line item.</p>
      */
-    inline const Aws::String& GetPreviousLineItemId() const{ return m_previousLineItemId; }
-
-    /**
-     * <p>The ID of the previous line item.</p>
-     */
+    inline const Aws::String& GetPreviousLineItemId() const { return m_previousLineItemId; }
     inline bool PreviousLineItemIdHasBeenSet() const { return m_previousLineItemIdHasBeenSet; }
+    template<typename PreviousLineItemIdT = Aws::String>
+    void SetPreviousLineItemId(PreviousLineItemIdT&& value) { m_previousLineItemIdHasBeenSet = true; m_previousLineItemId = std::forward<PreviousLineItemIdT>(value); }
+    template<typename PreviousLineItemIdT = Aws::String>
+    LineItem& WithPreviousLineItemId(PreviousLineItemIdT&& value) { SetPreviousLineItemId(std::forward<PreviousLineItemIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the previous line item.</p>
-     */
-    inline void SetPreviousLineItemId(const Aws::String& value) { m_previousLineItemIdHasBeenSet = true; m_previousLineItemId = value; }
-
-    /**
-     * <p>The ID of the previous line item.</p>
-     */
-    inline void SetPreviousLineItemId(Aws::String&& value) { m_previousLineItemIdHasBeenSet = true; m_previousLineItemId = std::move(value); }
-
-    /**
-     * <p>The ID of the previous line item.</p>
-     */
-    inline void SetPreviousLineItemId(const char* value) { m_previousLineItemIdHasBeenSet = true; m_previousLineItemId.assign(value); }
-
-    /**
-     * <p>The ID of the previous line item.</p>
-     */
-    inline LineItem& WithPreviousLineItemId(const Aws::String& value) { SetPreviousLineItemId(value); return *this;}
-
-    /**
-     * <p>The ID of the previous line item.</p>
-     */
-    inline LineItem& WithPreviousLineItemId(Aws::String&& value) { SetPreviousLineItemId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the previous line item.</p>
-     */
-    inline LineItem& WithPreviousLineItemId(const char* value) { SetPreviousLineItemId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the previous order.</p>
      */
-    inline const Aws::String& GetPreviousOrderId() const{ return m_previousOrderId; }
-
-    /**
-     * <p>The ID of the previous order.</p>
-     */
+    inline const Aws::String& GetPreviousOrderId() const { return m_previousOrderId; }
     inline bool PreviousOrderIdHasBeenSet() const { return m_previousOrderIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the previous order.</p>
-     */
-    inline void SetPreviousOrderId(const Aws::String& value) { m_previousOrderIdHasBeenSet = true; m_previousOrderId = value; }
-
-    /**
-     * <p>The ID of the previous order.</p>
-     */
-    inline void SetPreviousOrderId(Aws::String&& value) { m_previousOrderIdHasBeenSet = true; m_previousOrderId = std::move(value); }
-
-    /**
-     * <p>The ID of the previous order.</p>
-     */
-    inline void SetPreviousOrderId(const char* value) { m_previousOrderIdHasBeenSet = true; m_previousOrderId.assign(value); }
-
-    /**
-     * <p>The ID of the previous order.</p>
-     */
-    inline LineItem& WithPreviousOrderId(const Aws::String& value) { SetPreviousOrderId(value); return *this;}
-
-    /**
-     * <p>The ID of the previous order.</p>
-     */
-    inline LineItem& WithPreviousOrderId(Aws::String&& value) { SetPreviousOrderId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the previous order.</p>
-     */
-    inline LineItem& WithPreviousOrderId(const char* value) { SetPreviousOrderId(value); return *this;}
-
+    template<typename PreviousOrderIdT = Aws::String>
+    void SetPreviousOrderId(PreviousOrderIdT&& value) { m_previousOrderIdHasBeenSet = true; m_previousOrderId = std::forward<PreviousOrderIdT>(value); }
+    template<typename PreviousOrderIdT = Aws::String>
+    LineItem& WithPreviousOrderId(PreviousOrderIdT&& value) { SetPreviousOrderId(std::forward<PreviousOrderIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_catalogItemId;
@@ -336,10 +142,10 @@ namespace Model
     Aws::String m_lineItemId;
     bool m_lineItemIdHasBeenSet = false;
 
-    int m_quantity;
+    int m_quantity{0};
     bool m_quantityHasBeenSet = false;
 
-    LineItemStatus m_status;
+    LineItemStatus m_status{LineItemStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     ShipmentInformation m_shipmentInformation;

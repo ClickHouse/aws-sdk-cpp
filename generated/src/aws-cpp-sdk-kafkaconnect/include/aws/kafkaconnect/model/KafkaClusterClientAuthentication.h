@@ -32,51 +32,25 @@ namespace Model
   class KafkaClusterClientAuthentication
   {
   public:
-    AWS_KAFKACONNECT_API KafkaClusterClientAuthentication();
+    AWS_KAFKACONNECT_API KafkaClusterClientAuthentication() = default;
     AWS_KAFKACONNECT_API KafkaClusterClientAuthentication(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKACONNECT_API KafkaClusterClientAuthentication& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of client authentication used to connect to the Apache Kafka
      * cluster. Value NONE means that no client authentication is used.</p>
      */
-    inline const KafkaClusterClientAuthenticationType& GetAuthenticationType() const{ return m_authenticationType; }
-
-    /**
-     * <p>The type of client authentication used to connect to the Apache Kafka
-     * cluster. Value NONE means that no client authentication is used.</p>
-     */
+    inline KafkaClusterClientAuthenticationType GetAuthenticationType() const { return m_authenticationType; }
     inline bool AuthenticationTypeHasBeenSet() const { return m_authenticationTypeHasBeenSet; }
-
-    /**
-     * <p>The type of client authentication used to connect to the Apache Kafka
-     * cluster. Value NONE means that no client authentication is used.</p>
-     */
-    inline void SetAuthenticationType(const KafkaClusterClientAuthenticationType& value) { m_authenticationTypeHasBeenSet = true; m_authenticationType = value; }
-
-    /**
-     * <p>The type of client authentication used to connect to the Apache Kafka
-     * cluster. Value NONE means that no client authentication is used.</p>
-     */
-    inline void SetAuthenticationType(KafkaClusterClientAuthenticationType&& value) { m_authenticationTypeHasBeenSet = true; m_authenticationType = std::move(value); }
-
-    /**
-     * <p>The type of client authentication used to connect to the Apache Kafka
-     * cluster. Value NONE means that no client authentication is used.</p>
-     */
-    inline KafkaClusterClientAuthentication& WithAuthenticationType(const KafkaClusterClientAuthenticationType& value) { SetAuthenticationType(value); return *this;}
-
-    /**
-     * <p>The type of client authentication used to connect to the Apache Kafka
-     * cluster. Value NONE means that no client authentication is used.</p>
-     */
-    inline KafkaClusterClientAuthentication& WithAuthenticationType(KafkaClusterClientAuthenticationType&& value) { SetAuthenticationType(std::move(value)); return *this;}
-
+    inline void SetAuthenticationType(KafkaClusterClientAuthenticationType value) { m_authenticationTypeHasBeenSet = true; m_authenticationType = value; }
+    inline KafkaClusterClientAuthentication& WithAuthenticationType(KafkaClusterClientAuthenticationType value) { SetAuthenticationType(value); return *this;}
+    ///@}
   private:
 
-    KafkaClusterClientAuthenticationType m_authenticationType;
+    KafkaClusterClientAuthenticationType m_authenticationType{KafkaClusterClientAuthenticationType::NOT_SET};
     bool m_authenticationTypeHasBeenSet = false;
   };
 

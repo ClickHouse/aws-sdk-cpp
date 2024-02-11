@@ -20,21 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ByoipCidr::ByoipCidr() : 
-    m_cidrHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_state(ByoipCidrState::NOT_SET),
-    m_stateHasBeenSet(false)
-{
-}
-
-ByoipCidr::ByoipCidr(const XmlNode& xmlNode) : 
-    m_cidrHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_state(ByoipCidrState::NOT_SET),
-    m_stateHasBeenSet(false)
+ByoipCidr::ByoipCidr(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +43,19 @@ ByoipCidr& ByoipCidr::operator =(const XmlNode& xmlNode)
       m_description = Aws::Utils::Xml::DecodeEscapedXmlText(descriptionNode.GetText());
       m_descriptionHasBeenSet = true;
     }
+    XmlNode asnAssociationsNode = resultNode.FirstChild("asnAssociationSet");
+    if(!asnAssociationsNode.IsNull())
+    {
+      XmlNode asnAssociationsMember = asnAssociationsNode.FirstChild("item");
+      m_asnAssociationsHasBeenSet = !asnAssociationsMember.IsNull();
+      while(!asnAssociationsMember.IsNull())
+      {
+        m_asnAssociations.push_back(asnAssociationsMember);
+        asnAssociationsMember = asnAssociationsMember.NextNode("item");
+      }
+
+      m_asnAssociationsHasBeenSet = true;
+    }
     XmlNode statusMessageNode = resultNode.FirstChild("statusMessage");
     if(!statusMessageNode.IsNull())
     {
@@ -66,8 +65,14 @@ ByoipCidr& ByoipCidr::operator =(const XmlNode& xmlNode)
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = ByoipCidrStateMapper::GetByoipCidrStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = ByoipCidrStateMapper::GetByoipCidrStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
+    }
+    XmlNode networkBorderGroupNode = resultNode.FirstChild("networkBorderGroup");
+    if(!networkBorderGroupNode.IsNull())
+    {
+      m_networkBorderGroup = Aws::Utils::Xml::DecodeEscapedXmlText(networkBorderGroupNode.GetText());
+      m_networkBorderGroupHasBeenSet = true;
     }
   }
 
@@ -86,6 +91,17 @@ void ByoipCidr::OutputToStream(Aws::OStream& oStream, const char* location, unsi
       oStream << location << index << locationValue << ".Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
 
+  if(m_asnAssociationsHasBeenSet)
+  {
+      unsigned asnAssociationsIdx = 1;
+      for(auto& item : m_asnAssociations)
+      {
+        Aws::StringStream asnAssociationsSs;
+        asnAssociationsSs << location << index << locationValue << ".AsnAssociationSet." << asnAssociationsIdx++;
+        item.OutputToStream(oStream, asnAssociationsSs.str().c_str());
+      }
+  }
+
   if(m_statusMessageHasBeenSet)
   {
       oStream << location << index << locationValue << ".StatusMessage=" << StringUtils::URLEncode(m_statusMessage.c_str()) << "&";
@@ -93,7 +109,12 @@ void ByoipCidr::OutputToStream(Aws::OStream& oStream, const char* location, unsi
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << ByoipCidrStateMapper::GetNameForByoipCidrState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(ByoipCidrStateMapper::GetNameForByoipCidrState(m_state)) << "&";
+  }
+
+  if(m_networkBorderGroupHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".NetworkBorderGroup=" << StringUtils::URLEncode(m_networkBorderGroup.c_str()) << "&";
   }
 
 }
@@ -108,13 +129,27 @@ void ByoipCidr::OutputToStream(Aws::OStream& oStream, const char* location) cons
   {
       oStream << location << ".Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
+  if(m_asnAssociationsHasBeenSet)
+  {
+      unsigned asnAssociationsIdx = 1;
+      for(auto& item : m_asnAssociations)
+      {
+        Aws::StringStream asnAssociationsSs;
+        asnAssociationsSs << location << ".AsnAssociationSet." << asnAssociationsIdx++;
+        item.OutputToStream(oStream, asnAssociationsSs.str().c_str());
+      }
+  }
   if(m_statusMessageHasBeenSet)
   {
       oStream << location << ".StatusMessage=" << StringUtils::URLEncode(m_statusMessage.c_str()) << "&";
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << ByoipCidrStateMapper::GetNameForByoipCidrState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(ByoipCidrStateMapper::GetNameForByoipCidrState(m_state)) << "&";
+  }
+  if(m_networkBorderGroupHasBeenSet)
+  {
+      oStream << location << ".NetworkBorderGroup=" << StringUtils::URLEncode(m_networkBorderGroup.c_str()) << "&";
   }
 }
 

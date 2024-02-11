@@ -18,13 +18,7 @@ namespace FraudDetector
 namespace Model
 {
 
-KMSKey::KMSKey() : 
-    m_kmsEncryptionKeyArnHasBeenSet(false)
-{
-}
-
-KMSKey::KMSKey(JsonView jsonValue) : 
-    m_kmsEncryptionKeyArnHasBeenSet(false)
+KMSKey::KMSKey(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ KMSKey& KMSKey::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("kmsEncryptionKeyArn"))
   {
     m_kmsEncryptionKeyArn = jsonValue.GetString("kmsEncryptionKeyArn");
-
     m_kmsEncryptionKeyArnHasBeenSet = true;
   }
-
   return *this;
 }
 

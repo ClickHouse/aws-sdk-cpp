@@ -18,15 +18,7 @@ namespace Budgets
 namespace Model
 {
 
-NotificationWithSubscribers::NotificationWithSubscribers() : 
-    m_notificationHasBeenSet(false),
-    m_subscribersHasBeenSet(false)
-{
-}
-
-NotificationWithSubscribers::NotificationWithSubscribers(JsonView jsonValue) : 
-    m_notificationHasBeenSet(false),
-    m_subscribersHasBeenSet(false)
+NotificationWithSubscribers::NotificationWithSubscribers(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ NotificationWithSubscribers& NotificationWithSubscribers::operator =(JsonView js
   if(jsonValue.ValueExists("Notification"))
   {
     m_notification = jsonValue.GetObject("Notification");
-
     m_notificationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Subscribers"))
   {
     Aws::Utils::Array<JsonView> subscribersJsonList = jsonValue.GetArray("Subscribers");
@@ -49,7 +39,6 @@ NotificationWithSubscribers& NotificationWithSubscribers::operator =(JsonView js
     }
     m_subscribersHasBeenSet = true;
   }
-
   return *this;
 }
 

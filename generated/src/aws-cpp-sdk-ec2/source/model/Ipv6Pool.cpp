@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-Ipv6Pool::Ipv6Pool() : 
-    m_poolIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_poolCidrBlocksHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-Ipv6Pool::Ipv6Pool(const XmlNode& xmlNode) : 
-    m_poolIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_poolCidrBlocksHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+Ipv6Pool::Ipv6Pool(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -59,6 +47,7 @@ Ipv6Pool& Ipv6Pool::operator =(const XmlNode& xmlNode)
     if(!poolCidrBlocksNode.IsNull())
     {
       XmlNode poolCidrBlocksMember = poolCidrBlocksNode.FirstChild("item");
+      m_poolCidrBlocksHasBeenSet = !poolCidrBlocksMember.IsNull();
       while(!poolCidrBlocksMember.IsNull())
       {
         m_poolCidrBlocks.push_back(poolCidrBlocksMember);
@@ -71,6 +60,7 @@ Ipv6Pool& Ipv6Pool::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -136,7 +126,7 @@ void Ipv6Pool::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_poolCidrBlocks)
       {
         Aws::StringStream poolCidrBlocksSs;
-        poolCidrBlocksSs << location <<  ".PoolCidrBlockSet." << poolCidrBlocksIdx++;
+        poolCidrBlocksSs << location << ".PoolCidrBlockSet." << poolCidrBlocksIdx++;
         item.OutputToStream(oStream, poolCidrBlocksSs.str().c_str());
       }
   }
@@ -146,7 +136,7 @@ void Ipv6Pool::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

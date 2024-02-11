@@ -27,73 +27,37 @@ namespace Model
   class CreateLicenseConfigurationResult
   {
   public:
-    AWS_LICENSEMANAGER_API CreateLicenseConfigurationResult();
+    AWS_LICENSEMANAGER_API CreateLicenseConfigurationResult() = default;
     AWS_LICENSEMANAGER_API CreateLicenseConfigurationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LICENSEMANAGER_API CreateLicenseConfigurationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Amazon Resource Name (ARN) of the license configuration.</p>
      */
-    inline const Aws::String& GetLicenseConfigurationArn() const{ return m_licenseConfigurationArn; }
+    inline const Aws::String& GetLicenseConfigurationArn() const { return m_licenseConfigurationArn; }
+    template<typename LicenseConfigurationArnT = Aws::String>
+    void SetLicenseConfigurationArn(LicenseConfigurationArnT&& value) { m_licenseConfigurationArnHasBeenSet = true; m_licenseConfigurationArn = std::forward<LicenseConfigurationArnT>(value); }
+    template<typename LicenseConfigurationArnT = Aws::String>
+    CreateLicenseConfigurationResult& WithLicenseConfigurationArn(LicenseConfigurationArnT&& value) { SetLicenseConfigurationArn(std::forward<LicenseConfigurationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Amazon Resource Name (ARN) of the license configuration.</p>
-     */
-    inline void SetLicenseConfigurationArn(const Aws::String& value) { m_licenseConfigurationArn = value; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license configuration.</p>
-     */
-    inline void SetLicenseConfigurationArn(Aws::String&& value) { m_licenseConfigurationArn = std::move(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license configuration.</p>
-     */
-    inline void SetLicenseConfigurationArn(const char* value) { m_licenseConfigurationArn.assign(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license configuration.</p>
-     */
-    inline CreateLicenseConfigurationResult& WithLicenseConfigurationArn(const Aws::String& value) { SetLicenseConfigurationArn(value); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license configuration.</p>
-     */
-    inline CreateLicenseConfigurationResult& WithLicenseConfigurationArn(Aws::String&& value) { SetLicenseConfigurationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license configuration.</p>
-     */
-    inline CreateLicenseConfigurationResult& WithLicenseConfigurationArn(const char* value) { SetLicenseConfigurationArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateLicenseConfigurationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateLicenseConfigurationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateLicenseConfigurationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateLicenseConfigurationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_licenseConfigurationArn;
+    bool m_licenseConfigurationArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

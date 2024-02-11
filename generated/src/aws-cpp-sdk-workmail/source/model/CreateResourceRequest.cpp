@@ -12,14 +12,6 @@ using namespace Aws::WorkMail::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateResourceRequest::CreateResourceRequest() : 
-    m_organizationIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_type(ResourceType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
 Aws::String CreateResourceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,6 +31,18 @@ Aws::String CreateResourceRequest::SerializePayload() const
   if(m_typeHasBeenSet)
   {
    payload.WithString("Type", ResourceTypeMapper::GetNameForResourceType(m_type));
+  }
+
+  if(m_descriptionHasBeenSet)
+  {
+   payload.WithString("Description", m_description);
+
+  }
+
+  if(m_hiddenFromGlobalAddressListHasBeenSet)
+  {
+   payload.WithBool("HiddenFromGlobalAddressList", m_hiddenFromGlobalAddressList);
+
   }
 
   return payload.View().WriteReadable();

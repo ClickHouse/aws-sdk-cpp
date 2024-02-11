@@ -10,25 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ModifyImageAttributeRequest::ModifyImageAttributeRequest() : 
-    m_attributeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_launchPermissionHasBeenSet(false),
-    m_operationType(OperationType::NOT_SET),
-    m_operationTypeHasBeenSet(false),
-    m_productCodesHasBeenSet(false),
-    m_userGroupsHasBeenSet(false),
-    m_userIdsHasBeenSet(false),
-    m_valueHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_organizationArnsHasBeenSet(false),
-    m_organizationalUnitArnsHasBeenSet(false),
-    m_imdsSupportHasBeenSet(false)
-{
-}
-
 Aws::String ModifyImageAttributeRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -55,7 +36,7 @@ Aws::String ModifyImageAttributeRequest::SerializePayload() const
 
   if(m_operationTypeHasBeenSet)
   {
-    ss << "OperationType=" << OperationTypeMapper::GetNameForOperationType(m_operationType) << "&";
+    ss << "OperationType=" << StringUtils::URLEncode(OperationTypeMapper::GetNameForOperationType(m_operationType)) << "&";
   }
 
   if(m_productCodesHasBeenSet)
@@ -96,11 +77,6 @@ Aws::String ModifyImageAttributeRequest::SerializePayload() const
     ss << "Value=" << StringUtils::URLEncode(m_value.c_str()) << "&";
   }
 
-  if(m_dryRunHasBeenSet)
-  {
-    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
-  }
-
   if(m_organizationArnsHasBeenSet)
   {
     unsigned organizationArnsCount = 1;
@@ -126,6 +102,11 @@ Aws::String ModifyImageAttributeRequest::SerializePayload() const
   if(m_imdsSupportHasBeenSet)
   {
     m_imdsSupport.OutputToStream(ss, "ImdsSupport");
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
   }
 
   ss << "Version=2016-11-15";

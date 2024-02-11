@@ -12,20 +12,6 @@ using namespace Aws::FSx::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDataRepositoryTaskRequest::CreateDataRepositoryTaskRequest() : 
-    m_type(DataRepositoryTaskType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_pathsHasBeenSet(false),
-    m_fileSystemIdHasBeenSet(false),
-    m_reportHasBeenSet(false),
-    m_clientRequestToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientRequestTokenHasBeenSet(true),
-    m_tagsHasBeenSet(false),
-    m_capacityToRelease(0),
-    m_capacityToReleaseHasBeenSet(false)
-{
-}
-
 Aws::String CreateDataRepositoryTaskRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -78,6 +64,12 @@ Aws::String CreateDataRepositoryTaskRequest::SerializePayload() const
   if(m_capacityToReleaseHasBeenSet)
   {
    payload.WithInt64("CapacityToRelease", m_capacityToRelease);
+
+  }
+
+  if(m_releaseConfigurationHasBeenSet)
+  {
+   payload.WithObject("ReleaseConfiguration", m_releaseConfiguration.Jsonize());
 
   }
 

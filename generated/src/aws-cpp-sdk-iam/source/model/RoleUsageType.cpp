@@ -20,15 +20,7 @@ namespace IAM
 namespace Model
 {
 
-RoleUsageType::RoleUsageType() : 
-    m_regionHasBeenSet(false),
-    m_resourcesHasBeenSet(false)
-{
-}
-
-RoleUsageType::RoleUsageType(const XmlNode& xmlNode) : 
-    m_regionHasBeenSet(false),
-    m_resourcesHasBeenSet(false)
+RoleUsageType::RoleUsageType(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ RoleUsageType& RoleUsageType::operator =(const XmlNode& xmlNode)
     if(!resourcesNode.IsNull())
     {
       XmlNode resourcesMember = resourcesNode.FirstChild("member");
+      m_resourcesHasBeenSet = !resourcesMember.IsNull();
       while(!resourcesMember.IsNull())
       {
         m_resources.push_back(resourcesMember.GetText());

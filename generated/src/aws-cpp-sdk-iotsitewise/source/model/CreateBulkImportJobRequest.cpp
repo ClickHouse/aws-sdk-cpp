@@ -12,15 +12,6 @@ using namespace Aws::IoTSiteWise::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateBulkImportJobRequest::CreateBulkImportJobRequest() : 
-    m_jobNameHasBeenSet(false),
-    m_jobRoleArnHasBeenSet(false),
-    m_filesHasBeenSet(false),
-    m_errorReportLocationHasBeenSet(false),
-    m_jobConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String CreateBulkImportJobRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -57,6 +48,18 @@ Aws::String CreateBulkImportJobRequest::SerializePayload() const
   if(m_jobConfigurationHasBeenSet)
   {
    payload.WithObject("jobConfiguration", m_jobConfiguration.Jsonize());
+
+  }
+
+  if(m_adaptiveIngestionHasBeenSet)
+  {
+   payload.WithBool("adaptiveIngestion", m_adaptiveIngestion);
+
+  }
+
+  if(m_deleteFilesAfterImportHasBeenSet)
+  {
+   payload.WithBool("deleteFilesAfterImport", m_deleteFilesAfterImport);
 
   }
 

@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-PathStatementRequest::PathStatementRequest() : 
-    m_packetHeaderStatementHasBeenSet(false),
-    m_resourceStatementHasBeenSet(false)
-{
-}
-
-PathStatementRequest::PathStatementRequest(const XmlNode& xmlNode) : 
-    m_packetHeaderStatementHasBeenSet(false),
-    m_resourceStatementHasBeenSet(false)
+PathStatementRequest::PathStatementRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -21,7 +21,7 @@ namespace Model
   class StopEarthObservationJobRequest : public SageMakerGeospatialRequest
   {
   public:
-    AWS_SAGEMAKERGEOSPATIAL_API StopEarthObservationJobRequest();
+    AWS_SAGEMAKERGEOSPATIAL_API StopEarthObservationJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,54 +32,18 @@ namespace Model
     AWS_SAGEMAKERGEOSPATIAL_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Earth Observation job being
      * stopped.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Earth Observation job being
-     * stopped.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Earth Observation job being
-     * stopped.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Earth Observation job being
-     * stopped.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Earth Observation job being
-     * stopped.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Earth Observation job being
-     * stopped.</p>
-     */
-    inline StopEarthObservationJobRequest& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Earth Observation job being
-     * stopped.</p>
-     */
-    inline StopEarthObservationJobRequest& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Earth Observation job being
-     * stopped.</p>
-     */
-    inline StopEarthObservationJobRequest& WithArn(const char* value) { SetArn(value); return *this;}
-
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    StopEarthObservationJobRequest& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;

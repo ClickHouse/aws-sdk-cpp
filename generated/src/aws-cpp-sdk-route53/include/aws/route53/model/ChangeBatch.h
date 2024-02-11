@@ -32,102 +32,39 @@ namespace Model
   class ChangeBatch
   {
   public:
-    AWS_ROUTE53_API ChangeBatch();
+    AWS_ROUTE53_API ChangeBatch() = default;
     AWS_ROUTE53_API ChangeBatch(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ROUTE53_API ChangeBatch& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_ROUTE53_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p> <i>Optional:</i> Any comments you want to include about a change batch
      * request.</p>
      */
-    inline const Aws::String& GetComment() const{ return m_comment; }
-
-    /**
-     * <p> <i>Optional:</i> Any comments you want to include about a change batch
-     * request.</p>
-     */
+    inline const Aws::String& GetComment() const { return m_comment; }
     inline bool CommentHasBeenSet() const { return m_commentHasBeenSet; }
+    template<typename CommentT = Aws::String>
+    void SetComment(CommentT&& value) { m_commentHasBeenSet = true; m_comment = std::forward<CommentT>(value); }
+    template<typename CommentT = Aws::String>
+    ChangeBatch& WithComment(CommentT&& value) { SetComment(std::forward<CommentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> <i>Optional:</i> Any comments you want to include about a change batch
-     * request.</p>
-     */
-    inline void SetComment(const Aws::String& value) { m_commentHasBeenSet = true; m_comment = value; }
-
-    /**
-     * <p> <i>Optional:</i> Any comments you want to include about a change batch
-     * request.</p>
-     */
-    inline void SetComment(Aws::String&& value) { m_commentHasBeenSet = true; m_comment = std::move(value); }
-
-    /**
-     * <p> <i>Optional:</i> Any comments you want to include about a change batch
-     * request.</p>
-     */
-    inline void SetComment(const char* value) { m_commentHasBeenSet = true; m_comment.assign(value); }
-
-    /**
-     * <p> <i>Optional:</i> Any comments you want to include about a change batch
-     * request.</p>
-     */
-    inline ChangeBatch& WithComment(const Aws::String& value) { SetComment(value); return *this;}
-
-    /**
-     * <p> <i>Optional:</i> Any comments you want to include about a change batch
-     * request.</p>
-     */
-    inline ChangeBatch& WithComment(Aws::String&& value) { SetComment(std::move(value)); return *this;}
-
-    /**
-     * <p> <i>Optional:</i> Any comments you want to include about a change batch
-     * request.</p>
-     */
-    inline ChangeBatch& WithComment(const char* value) { SetComment(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the changes to make to the record sets.</p>
      */
-    inline const Aws::Vector<Change>& GetChanges() const{ return m_changes; }
-
-    /**
-     * <p>Information about the changes to make to the record sets.</p>
-     */
+    inline const Aws::Vector<Change>& GetChanges() const { return m_changes; }
     inline bool ChangesHasBeenSet() const { return m_changesHasBeenSet; }
-
-    /**
-     * <p>Information about the changes to make to the record sets.</p>
-     */
-    inline void SetChanges(const Aws::Vector<Change>& value) { m_changesHasBeenSet = true; m_changes = value; }
-
-    /**
-     * <p>Information about the changes to make to the record sets.</p>
-     */
-    inline void SetChanges(Aws::Vector<Change>&& value) { m_changesHasBeenSet = true; m_changes = std::move(value); }
-
-    /**
-     * <p>Information about the changes to make to the record sets.</p>
-     */
-    inline ChangeBatch& WithChanges(const Aws::Vector<Change>& value) { SetChanges(value); return *this;}
-
-    /**
-     * <p>Information about the changes to make to the record sets.</p>
-     */
-    inline ChangeBatch& WithChanges(Aws::Vector<Change>&& value) { SetChanges(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the changes to make to the record sets.</p>
-     */
-    inline ChangeBatch& AddChanges(const Change& value) { m_changesHasBeenSet = true; m_changes.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the changes to make to the record sets.</p>
-     */
-    inline ChangeBatch& AddChanges(Change&& value) { m_changesHasBeenSet = true; m_changes.push_back(std::move(value)); return *this; }
-
+    template<typename ChangesT = Aws::Vector<Change>>
+    void SetChanges(ChangesT&& value) { m_changesHasBeenSet = true; m_changes = std::forward<ChangesT>(value); }
+    template<typename ChangesT = Aws::Vector<Change>>
+    ChangeBatch& WithChanges(ChangesT&& value) { SetChanges(std::forward<ChangesT>(value)); return *this;}
+    template<typename ChangesT = Change>
+    ChangeBatch& AddChanges(ChangesT&& value) { m_changesHasBeenSet = true; m_changes.emplace_back(std::forward<ChangesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_comment;

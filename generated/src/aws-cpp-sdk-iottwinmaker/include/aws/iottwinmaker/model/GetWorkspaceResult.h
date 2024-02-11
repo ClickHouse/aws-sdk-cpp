@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/iottwinmaker/IoTTwinMaker_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/DateTime.h>
 #include <utility>
 
@@ -28,288 +29,138 @@ namespace Model
   class GetWorkspaceResult
   {
   public:
-    AWS_IOTTWINMAKER_API GetWorkspaceResult();
+    AWS_IOTTWINMAKER_API GetWorkspaceResult() = default;
     AWS_IOTTWINMAKER_API GetWorkspaceResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_IOTTWINMAKER_API GetWorkspaceResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ID of the workspace.</p>
      */
-    inline const Aws::String& GetWorkspaceId() const{ return m_workspaceId; }
+    inline const Aws::String& GetWorkspaceId() const { return m_workspaceId; }
+    template<typename WorkspaceIdT = Aws::String>
+    void SetWorkspaceId(WorkspaceIdT&& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = std::forward<WorkspaceIdT>(value); }
+    template<typename WorkspaceIdT = Aws::String>
+    GetWorkspaceResult& WithWorkspaceId(WorkspaceIdT&& value) { SetWorkspaceId(std::forward<WorkspaceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the workspace.</p>
-     */
-    inline void SetWorkspaceId(const Aws::String& value) { m_workspaceId = value; }
-
-    /**
-     * <p>The ID of the workspace.</p>
-     */
-    inline void SetWorkspaceId(Aws::String&& value) { m_workspaceId = std::move(value); }
-
-    /**
-     * <p>The ID of the workspace.</p>
-     */
-    inline void SetWorkspaceId(const char* value) { m_workspaceId.assign(value); }
-
-    /**
-     * <p>The ID of the workspace.</p>
-     */
-    inline GetWorkspaceResult& WithWorkspaceId(const Aws::String& value) { SetWorkspaceId(value); return *this;}
-
-    /**
-     * <p>The ID of the workspace.</p>
-     */
-    inline GetWorkspaceResult& WithWorkspaceId(Aws::String&& value) { SetWorkspaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the workspace.</p>
-     */
-    inline GetWorkspaceResult& WithWorkspaceId(const char* value) { SetWorkspaceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the workspace.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    GetWorkspaceResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the workspace.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The ARN of the workspace.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the workspace.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the workspace.</p>
-     */
-    inline GetWorkspaceResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the workspace.</p>
-     */
-    inline GetWorkspaceResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the workspace.</p>
-     */
-    inline GetWorkspaceResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the workspace.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    GetWorkspaceResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The description of the workspace.</p>
+     * <p>A list of services that are linked to the workspace.</p>
      */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
+    inline const Aws::Vector<Aws::String>& GetLinkedServices() const { return m_linkedServices; }
+    template<typename LinkedServicesT = Aws::Vector<Aws::String>>
+    void SetLinkedServices(LinkedServicesT&& value) { m_linkedServicesHasBeenSet = true; m_linkedServices = std::forward<LinkedServicesT>(value); }
+    template<typename LinkedServicesT = Aws::Vector<Aws::String>>
+    GetWorkspaceResult& WithLinkedServices(LinkedServicesT&& value) { SetLinkedServices(std::forward<LinkedServicesT>(value)); return *this;}
+    template<typename LinkedServicesT = Aws::String>
+    GetWorkspaceResult& AddLinkedServices(LinkedServicesT&& value) { m_linkedServicesHasBeenSet = true; m_linkedServices.emplace_back(std::forward<LinkedServicesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The description of the workspace.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>The description of the workspace.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>The description of the workspace.</p>
-     */
-    inline GetWorkspaceResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the workspace.</p>
-     */
-    inline GetWorkspaceResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the workspace.</p>
-     */
-    inline GetWorkspaceResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the S3 bucket where resources associated with the workspace are
      * stored.</p>
      */
-    inline const Aws::String& GetS3Location() const{ return m_s3Location; }
+    inline const Aws::String& GetS3Location() const { return m_s3Location; }
+    template<typename S3LocationT = Aws::String>
+    void SetS3Location(S3LocationT&& value) { m_s3LocationHasBeenSet = true; m_s3Location = std::forward<S3LocationT>(value); }
+    template<typename S3LocationT = Aws::String>
+    GetWorkspaceResult& WithS3Location(S3LocationT&& value) { SetS3Location(std::forward<S3LocationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the S3 bucket where resources associated with the workspace are
-     * stored.</p>
-     */
-    inline void SetS3Location(const Aws::String& value) { m_s3Location = value; }
-
-    /**
-     * <p>The ARN of the S3 bucket where resources associated with the workspace are
-     * stored.</p>
-     */
-    inline void SetS3Location(Aws::String&& value) { m_s3Location = std::move(value); }
-
-    /**
-     * <p>The ARN of the S3 bucket where resources associated with the workspace are
-     * stored.</p>
-     */
-    inline void SetS3Location(const char* value) { m_s3Location.assign(value); }
-
-    /**
-     * <p>The ARN of the S3 bucket where resources associated with the workspace are
-     * stored.</p>
-     */
-    inline GetWorkspaceResult& WithS3Location(const Aws::String& value) { SetS3Location(value); return *this;}
-
-    /**
-     * <p>The ARN of the S3 bucket where resources associated with the workspace are
-     * stored.</p>
-     */
-    inline GetWorkspaceResult& WithS3Location(Aws::String&& value) { SetS3Location(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the S3 bucket where resources associated with the workspace are
-     * stored.</p>
-     */
-    inline GetWorkspaceResult& WithS3Location(const char* value) { SetS3Location(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the execution role associated with the workspace.</p>
      */
-    inline const Aws::String& GetRole() const{ return m_role; }
+    inline const Aws::String& GetRole() const { return m_role; }
+    template<typename RoleT = Aws::String>
+    void SetRole(RoleT&& value) { m_roleHasBeenSet = true; m_role = std::forward<RoleT>(value); }
+    template<typename RoleT = Aws::String>
+    GetWorkspaceResult& WithRole(RoleT&& value) { SetRole(std::forward<RoleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the execution role associated with the workspace.</p>
-     */
-    inline void SetRole(const Aws::String& value) { m_role = value; }
-
-    /**
-     * <p>The ARN of the execution role associated with the workspace.</p>
-     */
-    inline void SetRole(Aws::String&& value) { m_role = std::move(value); }
-
-    /**
-     * <p>The ARN of the execution role associated with the workspace.</p>
-     */
-    inline void SetRole(const char* value) { m_role.assign(value); }
-
-    /**
-     * <p>The ARN of the execution role associated with the workspace.</p>
-     */
-    inline GetWorkspaceResult& WithRole(const Aws::String& value) { SetRole(value); return *this;}
-
-    /**
-     * <p>The ARN of the execution role associated with the workspace.</p>
-     */
-    inline GetWorkspaceResult& WithRole(Aws::String&& value) { SetRole(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the execution role associated with the workspace.</p>
-     */
-    inline GetWorkspaceResult& WithRole(const char* value) { SetRole(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time when the workspace was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationDateTime() const{ return m_creationDateTime; }
+    inline const Aws::Utils::DateTime& GetCreationDateTime() const { return m_creationDateTime; }
+    template<typename CreationDateTimeT = Aws::Utils::DateTime>
+    void SetCreationDateTime(CreationDateTimeT&& value) { m_creationDateTimeHasBeenSet = true; m_creationDateTime = std::forward<CreationDateTimeT>(value); }
+    template<typename CreationDateTimeT = Aws::Utils::DateTime>
+    GetWorkspaceResult& WithCreationDateTime(CreationDateTimeT&& value) { SetCreationDateTime(std::forward<CreationDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time when the workspace was created.</p>
-     */
-    inline void SetCreationDateTime(const Aws::Utils::DateTime& value) { m_creationDateTime = value; }
-
-    /**
-     * <p>The date and time when the workspace was created.</p>
-     */
-    inline void SetCreationDateTime(Aws::Utils::DateTime&& value) { m_creationDateTime = std::move(value); }
-
-    /**
-     * <p>The date and time when the workspace was created.</p>
-     */
-    inline GetWorkspaceResult& WithCreationDateTime(const Aws::Utils::DateTime& value) { SetCreationDateTime(value); return *this;}
-
-    /**
-     * <p>The date and time when the workspace was created.</p>
-     */
-    inline GetWorkspaceResult& WithCreationDateTime(Aws::Utils::DateTime&& value) { SetCreationDateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time when the workspace was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdateDateTime() const{ return m_updateDateTime; }
+    inline const Aws::Utils::DateTime& GetUpdateDateTime() const { return m_updateDateTime; }
+    template<typename UpdateDateTimeT = Aws::Utils::DateTime>
+    void SetUpdateDateTime(UpdateDateTimeT&& value) { m_updateDateTimeHasBeenSet = true; m_updateDateTime = std::forward<UpdateDateTimeT>(value); }
+    template<typename UpdateDateTimeT = Aws::Utils::DateTime>
+    GetWorkspaceResult& WithUpdateDateTime(UpdateDateTimeT&& value) { SetUpdateDateTime(std::forward<UpdateDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time when the workspace was last updated.</p>
-     */
-    inline void SetUpdateDateTime(const Aws::Utils::DateTime& value) { m_updateDateTime = value; }
-
-    /**
-     * <p>The date and time when the workspace was last updated.</p>
-     */
-    inline void SetUpdateDateTime(Aws::Utils::DateTime&& value) { m_updateDateTime = std::move(value); }
-
-    /**
-     * <p>The date and time when the workspace was last updated.</p>
-     */
-    inline GetWorkspaceResult& WithUpdateDateTime(const Aws::Utils::DateTime& value) { SetUpdateDateTime(value); return *this;}
-
-    /**
-     * <p>The date and time when the workspace was last updated.</p>
-     */
-    inline GetWorkspaceResult& WithUpdateDateTime(Aws::Utils::DateTime&& value) { SetUpdateDateTime(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetWorkspaceResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetWorkspaceResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetWorkspaceResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetWorkspaceResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_workspaceId;
+    bool m_workspaceIdHasBeenSet = false;
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_linkedServices;
+    bool m_linkedServicesHasBeenSet = false;
 
     Aws::String m_s3Location;
+    bool m_s3LocationHasBeenSet = false;
 
     Aws::String m_role;
+    bool m_roleHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationDateTime;
+    Aws::Utils::DateTime m_creationDateTime{};
+    bool m_creationDateTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updateDateTime;
+    Aws::Utils::DateTime m_updateDateTime{};
+    bool m_updateDateTimeHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -12,15 +12,15 @@ using namespace Aws::mgn::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-RemoveSourceServerActionRequest::RemoveSourceServerActionRequest() : 
-    m_actionIDHasBeenSet(false),
-    m_sourceServerIDHasBeenSet(false)
-{
-}
-
 Aws::String RemoveSourceServerActionRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_accountIDHasBeenSet)
+  {
+   payload.WithString("accountID", m_accountID);
+
+  }
 
   if(m_actionIDHasBeenSet)
   {

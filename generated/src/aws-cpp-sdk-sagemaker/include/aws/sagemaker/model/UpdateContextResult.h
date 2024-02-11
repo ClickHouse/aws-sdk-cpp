@@ -27,73 +27,37 @@ namespace Model
   class UpdateContextResult
   {
   public:
-    AWS_SAGEMAKER_API UpdateContextResult();
+    AWS_SAGEMAKER_API UpdateContextResult() = default;
     AWS_SAGEMAKER_API UpdateContextResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SAGEMAKER_API UpdateContextResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the context.</p>
      */
-    inline const Aws::String& GetContextArn() const{ return m_contextArn; }
+    inline const Aws::String& GetContextArn() const { return m_contextArn; }
+    template<typename ContextArnT = Aws::String>
+    void SetContextArn(ContextArnT&& value) { m_contextArnHasBeenSet = true; m_contextArn = std::forward<ContextArnT>(value); }
+    template<typename ContextArnT = Aws::String>
+    UpdateContextResult& WithContextArn(ContextArnT&& value) { SetContextArn(std::forward<ContextArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the context.</p>
-     */
-    inline void SetContextArn(const Aws::String& value) { m_contextArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the context.</p>
-     */
-    inline void SetContextArn(Aws::String&& value) { m_contextArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the context.</p>
-     */
-    inline void SetContextArn(const char* value) { m_contextArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the context.</p>
-     */
-    inline UpdateContextResult& WithContextArn(const Aws::String& value) { SetContextArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the context.</p>
-     */
-    inline UpdateContextResult& WithContextArn(Aws::String&& value) { SetContextArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the context.</p>
-     */
-    inline UpdateContextResult& WithContextArn(const char* value) { SetContextArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateContextResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateContextResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateContextResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateContextResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_contextArn;
+    bool m_contextArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

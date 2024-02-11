@@ -33,73 +33,35 @@ namespace Model
   class KPIPrimaryValueConditionalFormatting
   {
   public:
-    AWS_QUICKSIGHT_API KPIPrimaryValueConditionalFormatting();
+    AWS_QUICKSIGHT_API KPIPrimaryValueConditionalFormatting() = default;
     AWS_QUICKSIGHT_API KPIPrimaryValueConditionalFormatting(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API KPIPrimaryValueConditionalFormatting& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The conditional formatting of the primary value's text color.</p>
      */
-    inline const ConditionalFormattingColor& GetTextColor() const{ return m_textColor; }
-
-    /**
-     * <p>The conditional formatting of the primary value's text color.</p>
-     */
+    inline const ConditionalFormattingColor& GetTextColor() const { return m_textColor; }
     inline bool TextColorHasBeenSet() const { return m_textColorHasBeenSet; }
+    template<typename TextColorT = ConditionalFormattingColor>
+    void SetTextColor(TextColorT&& value) { m_textColorHasBeenSet = true; m_textColor = std::forward<TextColorT>(value); }
+    template<typename TextColorT = ConditionalFormattingColor>
+    KPIPrimaryValueConditionalFormatting& WithTextColor(TextColorT&& value) { SetTextColor(std::forward<TextColorT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The conditional formatting of the primary value's text color.</p>
-     */
-    inline void SetTextColor(const ConditionalFormattingColor& value) { m_textColorHasBeenSet = true; m_textColor = value; }
-
-    /**
-     * <p>The conditional formatting of the primary value's text color.</p>
-     */
-    inline void SetTextColor(ConditionalFormattingColor&& value) { m_textColorHasBeenSet = true; m_textColor = std::move(value); }
-
-    /**
-     * <p>The conditional formatting of the primary value's text color.</p>
-     */
-    inline KPIPrimaryValueConditionalFormatting& WithTextColor(const ConditionalFormattingColor& value) { SetTextColor(value); return *this;}
-
-    /**
-     * <p>The conditional formatting of the primary value's text color.</p>
-     */
-    inline KPIPrimaryValueConditionalFormatting& WithTextColor(ConditionalFormattingColor&& value) { SetTextColor(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The conditional formatting of the primary value's icon.</p>
      */
-    inline const ConditionalFormattingIcon& GetIcon() const{ return m_icon; }
-
-    /**
-     * <p>The conditional formatting of the primary value's icon.</p>
-     */
+    inline const ConditionalFormattingIcon& GetIcon() const { return m_icon; }
     inline bool IconHasBeenSet() const { return m_iconHasBeenSet; }
-
-    /**
-     * <p>The conditional formatting of the primary value's icon.</p>
-     */
-    inline void SetIcon(const ConditionalFormattingIcon& value) { m_iconHasBeenSet = true; m_icon = value; }
-
-    /**
-     * <p>The conditional formatting of the primary value's icon.</p>
-     */
-    inline void SetIcon(ConditionalFormattingIcon&& value) { m_iconHasBeenSet = true; m_icon = std::move(value); }
-
-    /**
-     * <p>The conditional formatting of the primary value's icon.</p>
-     */
-    inline KPIPrimaryValueConditionalFormatting& WithIcon(const ConditionalFormattingIcon& value) { SetIcon(value); return *this;}
-
-    /**
-     * <p>The conditional formatting of the primary value's icon.</p>
-     */
-    inline KPIPrimaryValueConditionalFormatting& WithIcon(ConditionalFormattingIcon&& value) { SetIcon(std::move(value)); return *this;}
-
+    template<typename IconT = ConditionalFormattingIcon>
+    void SetIcon(IconT&& value) { m_iconHasBeenSet = true; m_icon = std::forward<IconT>(value); }
+    template<typename IconT = ConditionalFormattingIcon>
+    KPIPrimaryValueConditionalFormatting& WithIcon(IconT&& value) { SetIcon(std::forward<IconT>(value)); return *this;}
+    ///@}
   private:
 
     ConditionalFormattingColor m_textColor;

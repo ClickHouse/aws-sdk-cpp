@@ -23,7 +23,7 @@ namespace Model
   class GetIpamDiscoveredResourceCidrsRequest : public EC2Request
   {
   public:
-    AWS_EC2_API GetIpamDiscoveredResourceCidrsRequest();
+    AWS_EC2_API GetIpamDiscoveredResourceCidrsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,238 +38,83 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>A check for whether you have the required permissions for the action without
      * actually making the request and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline GetIpamDiscoveredResourceCidrsRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A resource discovery ID.</p>
      */
-    inline const Aws::String& GetIpamResourceDiscoveryId() const{ return m_ipamResourceDiscoveryId; }
-
-    /**
-     * <p>A resource discovery ID.</p>
-     */
+    inline const Aws::String& GetIpamResourceDiscoveryId() const { return m_ipamResourceDiscoveryId; }
     inline bool IpamResourceDiscoveryIdHasBeenSet() const { return m_ipamResourceDiscoveryIdHasBeenSet; }
+    template<typename IpamResourceDiscoveryIdT = Aws::String>
+    void SetIpamResourceDiscoveryId(IpamResourceDiscoveryIdT&& value) { m_ipamResourceDiscoveryIdHasBeenSet = true; m_ipamResourceDiscoveryId = std::forward<IpamResourceDiscoveryIdT>(value); }
+    template<typename IpamResourceDiscoveryIdT = Aws::String>
+    GetIpamDiscoveredResourceCidrsRequest& WithIpamResourceDiscoveryId(IpamResourceDiscoveryIdT&& value) { SetIpamResourceDiscoveryId(std::forward<IpamResourceDiscoveryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A resource discovery ID.</p>
-     */
-    inline void SetIpamResourceDiscoveryId(const Aws::String& value) { m_ipamResourceDiscoveryIdHasBeenSet = true; m_ipamResourceDiscoveryId = value; }
-
-    /**
-     * <p>A resource discovery ID.</p>
-     */
-    inline void SetIpamResourceDiscoveryId(Aws::String&& value) { m_ipamResourceDiscoveryIdHasBeenSet = true; m_ipamResourceDiscoveryId = std::move(value); }
-
-    /**
-     * <p>A resource discovery ID.</p>
-     */
-    inline void SetIpamResourceDiscoveryId(const char* value) { m_ipamResourceDiscoveryIdHasBeenSet = true; m_ipamResourceDiscoveryId.assign(value); }
-
-    /**
-     * <p>A resource discovery ID.</p>
-     */
-    inline GetIpamDiscoveredResourceCidrsRequest& WithIpamResourceDiscoveryId(const Aws::String& value) { SetIpamResourceDiscoveryId(value); return *this;}
-
-    /**
-     * <p>A resource discovery ID.</p>
-     */
-    inline GetIpamDiscoveredResourceCidrsRequest& WithIpamResourceDiscoveryId(Aws::String&& value) { SetIpamResourceDiscoveryId(std::move(value)); return *this;}
-
-    /**
-     * <p>A resource discovery ID.</p>
-     */
-    inline GetIpamDiscoveredResourceCidrsRequest& WithIpamResourceDiscoveryId(const char* value) { SetIpamResourceDiscoveryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A resource Region.</p>
      */
-    inline const Aws::String& GetResourceRegion() const{ return m_resourceRegion; }
-
-    /**
-     * <p>A resource Region.</p>
-     */
+    inline const Aws::String& GetResourceRegion() const { return m_resourceRegion; }
     inline bool ResourceRegionHasBeenSet() const { return m_resourceRegionHasBeenSet; }
+    template<typename ResourceRegionT = Aws::String>
+    void SetResourceRegion(ResourceRegionT&& value) { m_resourceRegionHasBeenSet = true; m_resourceRegion = std::forward<ResourceRegionT>(value); }
+    template<typename ResourceRegionT = Aws::String>
+    GetIpamDiscoveredResourceCidrsRequest& WithResourceRegion(ResourceRegionT&& value) { SetResourceRegion(std::forward<ResourceRegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A resource Region.</p>
-     */
-    inline void SetResourceRegion(const Aws::String& value) { m_resourceRegionHasBeenSet = true; m_resourceRegion = value; }
-
-    /**
-     * <p>A resource Region.</p>
-     */
-    inline void SetResourceRegion(Aws::String&& value) { m_resourceRegionHasBeenSet = true; m_resourceRegion = std::move(value); }
-
-    /**
-     * <p>A resource Region.</p>
-     */
-    inline void SetResourceRegion(const char* value) { m_resourceRegionHasBeenSet = true; m_resourceRegion.assign(value); }
-
-    /**
-     * <p>A resource Region.</p>
-     */
-    inline GetIpamDiscoveredResourceCidrsRequest& WithResourceRegion(const Aws::String& value) { SetResourceRegion(value); return *this;}
-
-    /**
-     * <p>A resource Region.</p>
-     */
-    inline GetIpamDiscoveredResourceCidrsRequest& WithResourceRegion(Aws::String&& value) { SetResourceRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>A resource Region.</p>
-     */
-    inline GetIpamDiscoveredResourceCidrsRequest& WithResourceRegion(const char* value) { SetResourceRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Filters.</p>
      */
-    inline const Aws::Vector<Filter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>Filters.</p>
-     */
+    inline const Aws::Vector<Filter>& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = Aws::Vector<Filter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<Filter>>
+    GetIpamDiscoveredResourceCidrsRequest& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = Filter>
+    GetIpamDiscoveredResourceCidrsRequest& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Filters.</p>
-     */
-    inline void SetFilters(const Aws::Vector<Filter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>Filters.</p>
-     */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>Filters.</p>
-     */
-    inline GetIpamDiscoveredResourceCidrsRequest& WithFilters(const Aws::Vector<Filter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>Filters.</p>
-     */
-    inline GetIpamDiscoveredResourceCidrsRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>Filters.</p>
-     */
-    inline GetIpamDiscoveredResourceCidrsRequest& AddFilters(const Filter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>Filters.</p>
-     */
-    inline GetIpamDiscoveredResourceCidrsRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Specify the pagination token from a previous request to retrieve the next
      * page of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>Specify the pagination token from a previous request to retrieve the next
-     * page of results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    GetIpamDiscoveredResourceCidrsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specify the pagination token from a previous request to retrieve the next
-     * page of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>Specify the pagination token from a previous request to retrieve the next
-     * page of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>Specify the pagination token from a previous request to retrieve the next
-     * page of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>Specify the pagination token from a previous request to retrieve the next
-     * page of results.</p>
-     */
-    inline GetIpamDiscoveredResourceCidrsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>Specify the pagination token from a previous request to retrieve the next
-     * page of results.</p>
-     */
-    inline GetIpamDiscoveredResourceCidrsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Specify the pagination token from a previous request to retrieve the next
-     * page of results.</p>
-     */
-    inline GetIpamDiscoveredResourceCidrsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of discovered resource CIDRs to return in one page of
      * results.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of discovered resource CIDRs to return in one page of
-     * results.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of discovered resource CIDRs to return in one page of
-     * results.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of discovered resource CIDRs to return in one page of
-     * results.</p>
-     */
     inline GetIpamDiscoveredResourceCidrsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     Aws::String m_ipamResourceDiscoveryId;
@@ -284,7 +129,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

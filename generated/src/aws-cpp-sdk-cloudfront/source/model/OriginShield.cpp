@@ -20,17 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-OriginShield::OriginShield() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_originShieldRegionHasBeenSet(false)
-{
-}
-
-OriginShield::OriginShield(const XmlNode& xmlNode) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_originShieldRegionHasBeenSet(false)
+OriginShield::OriginShield(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

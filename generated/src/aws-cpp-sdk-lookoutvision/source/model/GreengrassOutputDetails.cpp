@@ -18,17 +18,7 @@ namespace LookoutforVision
 namespace Model
 {
 
-GreengrassOutputDetails::GreengrassOutputDetails() : 
-    m_componentVersionArnHasBeenSet(false),
-    m_componentNameHasBeenSet(false),
-    m_componentVersionHasBeenSet(false)
-{
-}
-
-GreengrassOutputDetails::GreengrassOutputDetails(JsonView jsonValue) : 
-    m_componentVersionArnHasBeenSet(false),
-    m_componentNameHasBeenSet(false),
-    m_componentVersionHasBeenSet(false)
+GreengrassOutputDetails::GreengrassOutputDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ GreengrassOutputDetails& GreengrassOutputDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ComponentVersionArn"))
   {
     m_componentVersionArn = jsonValue.GetString("ComponentVersionArn");
-
     m_componentVersionArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComponentName"))
   {
     m_componentName = jsonValue.GetString("ComponentName");
-
     m_componentNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComponentVersion"))
   {
     m_componentVersion = jsonValue.GetString("ComponentVersion");
-
     m_componentVersionHasBeenSet = true;
   }
-
   return *this;
 }
 

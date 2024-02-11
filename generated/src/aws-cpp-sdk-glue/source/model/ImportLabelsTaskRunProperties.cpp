@@ -18,17 +18,7 @@ namespace Glue
 namespace Model
 {
 
-ImportLabelsTaskRunProperties::ImportLabelsTaskRunProperties() : 
-    m_inputS3PathHasBeenSet(false),
-    m_replace(false),
-    m_replaceHasBeenSet(false)
-{
-}
-
-ImportLabelsTaskRunProperties::ImportLabelsTaskRunProperties(JsonView jsonValue) : 
-    m_inputS3PathHasBeenSet(false),
-    m_replace(false),
-    m_replaceHasBeenSet(false)
+ImportLabelsTaskRunProperties::ImportLabelsTaskRunProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ImportLabelsTaskRunProperties& ImportLabelsTaskRunProperties::operator =(JsonVie
   if(jsonValue.ValueExists("InputS3Path"))
   {
     m_inputS3Path = jsonValue.GetString("InputS3Path");
-
     m_inputS3PathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Replace"))
   {
     m_replace = jsonValue.GetBool("Replace");
-
     m_replaceHasBeenSet = true;
   }
-
   return *this;
 }
 

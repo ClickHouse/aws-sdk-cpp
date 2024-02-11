@@ -29,7 +29,7 @@ namespace Model
   class ListDeliverabilityTestReportsRequest : public PinpointEmailRequest
   {
   public:
-    AWS_PINPOINTEMAIL_API ListDeliverabilityTestReportsRequest();
+    AWS_PINPOINTEMAIL_API ListDeliverabilityTestReportsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,63 +42,21 @@ namespace Model
     AWS_PINPOINTEMAIL_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>A token returned from a previous call to
      * <code>ListDeliverabilityTestReports</code> to indicate the position in the list
      * of predictive inbox placement tests.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>A token returned from a previous call to
-     * <code>ListDeliverabilityTestReports</code> to indicate the position in the list
-     * of predictive inbox placement tests.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListDeliverabilityTestReportsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A token returned from a previous call to
-     * <code>ListDeliverabilityTestReports</code> to indicate the position in the list
-     * of predictive inbox placement tests.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>A token returned from a previous call to
-     * <code>ListDeliverabilityTestReports</code> to indicate the position in the list
-     * of predictive inbox placement tests.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>A token returned from a previous call to
-     * <code>ListDeliverabilityTestReports</code> to indicate the position in the list
-     * of predictive inbox placement tests.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>A token returned from a previous call to
-     * <code>ListDeliverabilityTestReports</code> to indicate the position in the list
-     * of predictive inbox placement tests.</p>
-     */
-    inline ListDeliverabilityTestReportsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A token returned from a previous call to
-     * <code>ListDeliverabilityTestReports</code> to indicate the position in the list
-     * of predictive inbox placement tests.</p>
-     */
-    inline ListDeliverabilityTestReportsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token returned from a previous call to
-     * <code>ListDeliverabilityTestReports</code> to indicate the position in the list
-     * of predictive inbox placement tests.</p>
-     */
-    inline ListDeliverabilityTestReportsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of results to show in a single call to
      * <code>ListDeliverabilityTestReports</code>. If the number of results is larger
@@ -107,44 +65,17 @@ namespace Model
      * results.</p> <p>The value you specify has to be at least 0, and can be no more
      * than 1000.</p>
      */
-    inline int GetPageSize() const{ return m_pageSize; }
-
-    /**
-     * <p>The number of results to show in a single call to
-     * <code>ListDeliverabilityTestReports</code>. If the number of results is larger
-     * than the number you specified in this parameter, then the response includes a
-     * <code>NextToken</code> element, which you can use to obtain additional
-     * results.</p> <p>The value you specify has to be at least 0, and can be no more
-     * than 1000.</p>
-     */
+    inline int GetPageSize() const { return m_pageSize; }
     inline bool PageSizeHasBeenSet() const { return m_pageSizeHasBeenSet; }
-
-    /**
-     * <p>The number of results to show in a single call to
-     * <code>ListDeliverabilityTestReports</code>. If the number of results is larger
-     * than the number you specified in this parameter, then the response includes a
-     * <code>NextToken</code> element, which you can use to obtain additional
-     * results.</p> <p>The value you specify has to be at least 0, and can be no more
-     * than 1000.</p>
-     */
     inline void SetPageSize(int value) { m_pageSizeHasBeenSet = true; m_pageSize = value; }
-
-    /**
-     * <p>The number of results to show in a single call to
-     * <code>ListDeliverabilityTestReports</code>. If the number of results is larger
-     * than the number you specified in this parameter, then the response includes a
-     * <code>NextToken</code> element, which you can use to obtain additional
-     * results.</p> <p>The value you specify has to be at least 0, and can be no more
-     * than 1000.</p>
-     */
     inline ListDeliverabilityTestReportsRequest& WithPageSize(int value) { SetPageSize(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_pageSize;
+    int m_pageSize{0};
     bool m_pageSizeHasBeenSet = false;
   };
 

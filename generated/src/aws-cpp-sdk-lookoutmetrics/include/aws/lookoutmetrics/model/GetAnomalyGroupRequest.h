@@ -21,7 +21,7 @@ namespace Model
   class GetAnomalyGroupRequest : public LookoutMetricsRequest
   {
   public:
-    AWS_LOOKOUTMETRICS_API GetAnomalyGroupRequest();
+    AWS_LOOKOUTMETRICS_API GetAnomalyGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_LOOKOUTMETRICS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the anomaly group.</p>
      */
-    inline const Aws::String& GetAnomalyGroupId() const{ return m_anomalyGroupId; }
-
-    /**
-     * <p>The ID of the anomaly group.</p>
-     */
+    inline const Aws::String& GetAnomalyGroupId() const { return m_anomalyGroupId; }
     inline bool AnomalyGroupIdHasBeenSet() const { return m_anomalyGroupIdHasBeenSet; }
+    template<typename AnomalyGroupIdT = Aws::String>
+    void SetAnomalyGroupId(AnomalyGroupIdT&& value) { m_anomalyGroupIdHasBeenSet = true; m_anomalyGroupId = std::forward<AnomalyGroupIdT>(value); }
+    template<typename AnomalyGroupIdT = Aws::String>
+    GetAnomalyGroupRequest& WithAnomalyGroupId(AnomalyGroupIdT&& value) { SetAnomalyGroupId(std::forward<AnomalyGroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the anomaly group.</p>
-     */
-    inline void SetAnomalyGroupId(const Aws::String& value) { m_anomalyGroupIdHasBeenSet = true; m_anomalyGroupId = value; }
-
-    /**
-     * <p>The ID of the anomaly group.</p>
-     */
-    inline void SetAnomalyGroupId(Aws::String&& value) { m_anomalyGroupIdHasBeenSet = true; m_anomalyGroupId = std::move(value); }
-
-    /**
-     * <p>The ID of the anomaly group.</p>
-     */
-    inline void SetAnomalyGroupId(const char* value) { m_anomalyGroupIdHasBeenSet = true; m_anomalyGroupId.assign(value); }
-
-    /**
-     * <p>The ID of the anomaly group.</p>
-     */
-    inline GetAnomalyGroupRequest& WithAnomalyGroupId(const Aws::String& value) { SetAnomalyGroupId(value); return *this;}
-
-    /**
-     * <p>The ID of the anomaly group.</p>
-     */
-    inline GetAnomalyGroupRequest& WithAnomalyGroupId(Aws::String&& value) { SetAnomalyGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the anomaly group.</p>
-     */
-    inline GetAnomalyGroupRequest& WithAnomalyGroupId(const char* value) { SetAnomalyGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the anomaly detector.</p>
      */
-    inline const Aws::String& GetAnomalyDetectorArn() const{ return m_anomalyDetectorArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the anomaly detector.</p>
-     */
+    inline const Aws::String& GetAnomalyDetectorArn() const { return m_anomalyDetectorArn; }
     inline bool AnomalyDetectorArnHasBeenSet() const { return m_anomalyDetectorArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the anomaly detector.</p>
-     */
-    inline void SetAnomalyDetectorArn(const Aws::String& value) { m_anomalyDetectorArnHasBeenSet = true; m_anomalyDetectorArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the anomaly detector.</p>
-     */
-    inline void SetAnomalyDetectorArn(Aws::String&& value) { m_anomalyDetectorArnHasBeenSet = true; m_anomalyDetectorArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the anomaly detector.</p>
-     */
-    inline void SetAnomalyDetectorArn(const char* value) { m_anomalyDetectorArnHasBeenSet = true; m_anomalyDetectorArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the anomaly detector.</p>
-     */
-    inline GetAnomalyGroupRequest& WithAnomalyDetectorArn(const Aws::String& value) { SetAnomalyDetectorArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the anomaly detector.</p>
-     */
-    inline GetAnomalyGroupRequest& WithAnomalyDetectorArn(Aws::String&& value) { SetAnomalyDetectorArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the anomaly detector.</p>
-     */
-    inline GetAnomalyGroupRequest& WithAnomalyDetectorArn(const char* value) { SetAnomalyDetectorArn(value); return *this;}
-
+    template<typename AnomalyDetectorArnT = Aws::String>
+    void SetAnomalyDetectorArn(AnomalyDetectorArnT&& value) { m_anomalyDetectorArnHasBeenSet = true; m_anomalyDetectorArn = std::forward<AnomalyDetectorArnT>(value); }
+    template<typename AnomalyDetectorArnT = Aws::String>
+    GetAnomalyGroupRequest& WithAnomalyDetectorArn(AnomalyDetectorArnT&& value) { SetAnomalyDetectorArn(std::forward<AnomalyDetectorArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_anomalyGroupId;

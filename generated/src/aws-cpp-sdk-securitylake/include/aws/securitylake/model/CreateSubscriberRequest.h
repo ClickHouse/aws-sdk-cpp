@@ -8,8 +8,10 @@
 #include <aws/securitylake/SecurityLakeRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/securitylake/model/AwsIdentity.h>
 #include <aws/securitylake/model/AccessType.h>
-#include <aws/securitylake/model/SourceType.h>
+#include <aws/securitylake/model/LogSourceResource.h>
+#include <aws/securitylake/model/Tag.h>
 #include <utility>
 
 namespace Aws
@@ -24,7 +26,7 @@ namespace Model
   class CreateSubscriberRequest : public SecurityLakeRequest
   {
   public:
-    AWS_SECURITYLAKE_API CreateSubscriberRequest();
+    AWS_SECURITYLAKE_API CreateSubscriberRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,310 +37,105 @@ namespace Model
     AWS_SECURITYLAKE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon S3 or Lake Formation access type.</p>
      */
-    inline const Aws::Vector<AccessType>& GetAccessTypes() const{ return m_accessTypes; }
-
-    /**
-     * <p>The Amazon S3 or Lake Formation access type.</p>
-     */
+    inline const Aws::Vector<AccessType>& GetAccessTypes() const { return m_accessTypes; }
     inline bool AccessTypesHasBeenSet() const { return m_accessTypesHasBeenSet; }
+    template<typename AccessTypesT = Aws::Vector<AccessType>>
+    void SetAccessTypes(AccessTypesT&& value) { m_accessTypesHasBeenSet = true; m_accessTypes = std::forward<AccessTypesT>(value); }
+    template<typename AccessTypesT = Aws::Vector<AccessType>>
+    CreateSubscriberRequest& WithAccessTypes(AccessTypesT&& value) { SetAccessTypes(std::forward<AccessTypesT>(value)); return *this;}
+    inline CreateSubscriberRequest& AddAccessTypes(AccessType value) { m_accessTypesHasBeenSet = true; m_accessTypes.push_back(value); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon S3 or Lake Formation access type.</p>
+     * <p>The supported Amazon Web Services services from which logs and events are
+     * collected. Security Lake supports log and event collection for natively
+     * supported Amazon Web Services services.</p>
      */
-    inline void SetAccessTypes(const Aws::Vector<AccessType>& value) { m_accessTypesHasBeenSet = true; m_accessTypes = value; }
+    inline const Aws::Vector<LogSourceResource>& GetSources() const { return m_sources; }
+    inline bool SourcesHasBeenSet() const { return m_sourcesHasBeenSet; }
+    template<typename SourcesT = Aws::Vector<LogSourceResource>>
+    void SetSources(SourcesT&& value) { m_sourcesHasBeenSet = true; m_sources = std::forward<SourcesT>(value); }
+    template<typename SourcesT = Aws::Vector<LogSourceResource>>
+    CreateSubscriberRequest& WithSources(SourcesT&& value) { SetSources(std::forward<SourcesT>(value)); return *this;}
+    template<typename SourcesT = LogSourceResource>
+    CreateSubscriberRequest& AddSources(SourcesT&& value) { m_sourcesHasBeenSet = true; m_sources.emplace_back(std::forward<SourcesT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon S3 or Lake Formation access type.</p>
+     * <p>The description for your subscriber account in Security Lake.</p>
      */
-    inline void SetAccessTypes(Aws::Vector<AccessType>&& value) { m_accessTypesHasBeenSet = true; m_accessTypes = std::move(value); }
-
-    /**
-     * <p>The Amazon S3 or Lake Formation access type.</p>
-     */
-    inline CreateSubscriberRequest& WithAccessTypes(const Aws::Vector<AccessType>& value) { SetAccessTypes(value); return *this;}
-
-    /**
-     * <p>The Amazon S3 or Lake Formation access type.</p>
-     */
-    inline CreateSubscriberRequest& WithAccessTypes(Aws::Vector<AccessType>&& value) { SetAccessTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon S3 or Lake Formation access type.</p>
-     */
-    inline CreateSubscriberRequest& AddAccessTypes(const AccessType& value) { m_accessTypesHasBeenSet = true; m_accessTypes.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon S3 or Lake Formation access type.</p>
-     */
-    inline CreateSubscriberRequest& AddAccessTypes(AccessType&& value) { m_accessTypesHasBeenSet = true; m_accessTypes.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>The Amazon Web Services account ID used to access your data.</p>
-     */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The Amazon Web Services account ID used to access your data.</p>
-     */
-    inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
-
-    /**
-     * <p>The Amazon Web Services account ID used to access your data.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID used to access your data.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID used to access your data.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID used to access your data.</p>
-     */
-    inline CreateSubscriberRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID used to access your data.</p>
-     */
-    inline CreateSubscriberRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID used to access your data.</p>
-     */
-    inline CreateSubscriberRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
-    /**
-     * <p>The external ID of the subscriber. This lets the user that is assuming the
-     * role assert the circumstances in which they are operating. It also provides a
-     * way for the account owner to permit the role to be assumed only under specific
-     * circumstances.</p>
-     */
-    inline const Aws::String& GetExternalId() const{ return m_externalId; }
-
-    /**
-     * <p>The external ID of the subscriber. This lets the user that is assuming the
-     * role assert the circumstances in which they are operating. It also provides a
-     * way for the account owner to permit the role to be assumed only under specific
-     * circumstances.</p>
-     */
-    inline bool ExternalIdHasBeenSet() const { return m_externalIdHasBeenSet; }
-
-    /**
-     * <p>The external ID of the subscriber. This lets the user that is assuming the
-     * role assert the circumstances in which they are operating. It also provides a
-     * way for the account owner to permit the role to be assumed only under specific
-     * circumstances.</p>
-     */
-    inline void SetExternalId(const Aws::String& value) { m_externalIdHasBeenSet = true; m_externalId = value; }
-
-    /**
-     * <p>The external ID of the subscriber. This lets the user that is assuming the
-     * role assert the circumstances in which they are operating. It also provides a
-     * way for the account owner to permit the role to be assumed only under specific
-     * circumstances.</p>
-     */
-    inline void SetExternalId(Aws::String&& value) { m_externalIdHasBeenSet = true; m_externalId = std::move(value); }
-
-    /**
-     * <p>The external ID of the subscriber. This lets the user that is assuming the
-     * role assert the circumstances in which they are operating. It also provides a
-     * way for the account owner to permit the role to be assumed only under specific
-     * circumstances.</p>
-     */
-    inline void SetExternalId(const char* value) { m_externalIdHasBeenSet = true; m_externalId.assign(value); }
-
-    /**
-     * <p>The external ID of the subscriber. This lets the user that is assuming the
-     * role assert the circumstances in which they are operating. It also provides a
-     * way for the account owner to permit the role to be assumed only under specific
-     * circumstances.</p>
-     */
-    inline CreateSubscriberRequest& WithExternalId(const Aws::String& value) { SetExternalId(value); return *this;}
-
-    /**
-     * <p>The external ID of the subscriber. This lets the user that is assuming the
-     * role assert the circumstances in which they are operating. It also provides a
-     * way for the account owner to permit the role to be assumed only under specific
-     * circumstances.</p>
-     */
-    inline CreateSubscriberRequest& WithExternalId(Aws::String&& value) { SetExternalId(std::move(value)); return *this;}
-
-    /**
-     * <p>The external ID of the subscriber. This lets the user that is assuming the
-     * role assert the circumstances in which they are operating. It also provides a
-     * way for the account owner to permit the role to be assumed only under specific
-     * circumstances.</p>
-     */
-    inline CreateSubscriberRequest& WithExternalId(const char* value) { SetExternalId(value); return *this;}
-
-
-    /**
-     * <p>The supported Amazon Web Services from which logs and events are collected.
-     * Security Lake supports log and event collection for natively supported Amazon
-     * Web Services.</p>
-     */
-    inline const Aws::Vector<SourceType>& GetSourceTypes() const{ return m_sourceTypes; }
-
-    /**
-     * <p>The supported Amazon Web Services from which logs and events are collected.
-     * Security Lake supports log and event collection for natively supported Amazon
-     * Web Services.</p>
-     */
-    inline bool SourceTypesHasBeenSet() const { return m_sourceTypesHasBeenSet; }
-
-    /**
-     * <p>The supported Amazon Web Services from which logs and events are collected.
-     * Security Lake supports log and event collection for natively supported Amazon
-     * Web Services.</p>
-     */
-    inline void SetSourceTypes(const Aws::Vector<SourceType>& value) { m_sourceTypesHasBeenSet = true; m_sourceTypes = value; }
-
-    /**
-     * <p>The supported Amazon Web Services from which logs and events are collected.
-     * Security Lake supports log and event collection for natively supported Amazon
-     * Web Services.</p>
-     */
-    inline void SetSourceTypes(Aws::Vector<SourceType>&& value) { m_sourceTypesHasBeenSet = true; m_sourceTypes = std::move(value); }
-
-    /**
-     * <p>The supported Amazon Web Services from which logs and events are collected.
-     * Security Lake supports log and event collection for natively supported Amazon
-     * Web Services.</p>
-     */
-    inline CreateSubscriberRequest& WithSourceTypes(const Aws::Vector<SourceType>& value) { SetSourceTypes(value); return *this;}
-
-    /**
-     * <p>The supported Amazon Web Services from which logs and events are collected.
-     * Security Lake supports log and event collection for natively supported Amazon
-     * Web Services.</p>
-     */
-    inline CreateSubscriberRequest& WithSourceTypes(Aws::Vector<SourceType>&& value) { SetSourceTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>The supported Amazon Web Services from which logs and events are collected.
-     * Security Lake supports log and event collection for natively supported Amazon
-     * Web Services.</p>
-     */
-    inline CreateSubscriberRequest& AddSourceTypes(const SourceType& value) { m_sourceTypesHasBeenSet = true; m_sourceTypes.push_back(value); return *this; }
-
-    /**
-     * <p>The supported Amazon Web Services from which logs and events are collected.
-     * Security Lake supports log and event collection for natively supported Amazon
-     * Web Services.</p>
-     */
-    inline CreateSubscriberRequest& AddSourceTypes(SourceType&& value) { m_sourceTypesHasBeenSet = true; m_sourceTypes.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>The description for your subscriber account in Security Lake. </p>
-     */
-    inline const Aws::String& GetSubscriberDescription() const{ return m_subscriberDescription; }
-
-    /**
-     * <p>The description for your subscriber account in Security Lake. </p>
-     */
+    inline const Aws::String& GetSubscriberDescription() const { return m_subscriberDescription; }
     inline bool SubscriberDescriptionHasBeenSet() const { return m_subscriberDescriptionHasBeenSet; }
+    template<typename SubscriberDescriptionT = Aws::String>
+    void SetSubscriberDescription(SubscriberDescriptionT&& value) { m_subscriberDescriptionHasBeenSet = true; m_subscriberDescription = std::forward<SubscriberDescriptionT>(value); }
+    template<typename SubscriberDescriptionT = Aws::String>
+    CreateSubscriberRequest& WithSubscriberDescription(SubscriberDescriptionT&& value) { SetSubscriberDescription(std::forward<SubscriberDescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The description for your subscriber account in Security Lake. </p>
+     * <p>The Amazon Web Services identity used to access your data.</p>
      */
-    inline void SetSubscriberDescription(const Aws::String& value) { m_subscriberDescriptionHasBeenSet = true; m_subscriberDescription = value; }
+    inline const AwsIdentity& GetSubscriberIdentity() const { return m_subscriberIdentity; }
+    inline bool SubscriberIdentityHasBeenSet() const { return m_subscriberIdentityHasBeenSet; }
+    template<typename SubscriberIdentityT = AwsIdentity>
+    void SetSubscriberIdentity(SubscriberIdentityT&& value) { m_subscriberIdentityHasBeenSet = true; m_subscriberIdentity = std::forward<SubscriberIdentityT>(value); }
+    template<typename SubscriberIdentityT = AwsIdentity>
+    CreateSubscriberRequest& WithSubscriberIdentity(SubscriberIdentityT&& value) { SetSubscriberIdentity(std::forward<SubscriberIdentityT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description for your subscriber account in Security Lake. </p>
-     */
-    inline void SetSubscriberDescription(Aws::String&& value) { m_subscriberDescriptionHasBeenSet = true; m_subscriberDescription = std::move(value); }
-
-    /**
-     * <p>The description for your subscriber account in Security Lake. </p>
-     */
-    inline void SetSubscriberDescription(const char* value) { m_subscriberDescriptionHasBeenSet = true; m_subscriberDescription.assign(value); }
-
-    /**
-     * <p>The description for your subscriber account in Security Lake. </p>
-     */
-    inline CreateSubscriberRequest& WithSubscriberDescription(const Aws::String& value) { SetSubscriberDescription(value); return *this;}
-
-    /**
-     * <p>The description for your subscriber account in Security Lake. </p>
-     */
-    inline CreateSubscriberRequest& WithSubscriberDescription(Aws::String&& value) { SetSubscriberDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description for your subscriber account in Security Lake. </p>
-     */
-    inline CreateSubscriberRequest& WithSubscriberDescription(const char* value) { SetSubscriberDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of your Security Lake subscriber account.</p>
      */
-    inline const Aws::String& GetSubscriberName() const{ return m_subscriberName; }
-
-    /**
-     * <p>The name of your Security Lake subscriber account.</p>
-     */
+    inline const Aws::String& GetSubscriberName() const { return m_subscriberName; }
     inline bool SubscriberNameHasBeenSet() const { return m_subscriberNameHasBeenSet; }
+    template<typename SubscriberNameT = Aws::String>
+    void SetSubscriberName(SubscriberNameT&& value) { m_subscriberNameHasBeenSet = true; m_subscriberName = std::forward<SubscriberNameT>(value); }
+    template<typename SubscriberNameT = Aws::String>
+    CreateSubscriberRequest& WithSubscriberName(SubscriberNameT&& value) { SetSubscriberName(std::forward<SubscriberNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of your Security Lake subscriber account.</p>
+     * <p>An array of objects, one for each tag to associate with the subscriber. For
+     * each tag, you must specify both a tag key and a tag value. A tag value cannot be
+     * null, but it can be an empty string.</p>
      */
-    inline void SetSubscriberName(const Aws::String& value) { m_subscriberNameHasBeenSet = true; m_subscriberName = value; }
-
-    /**
-     * <p>The name of your Security Lake subscriber account.</p>
-     */
-    inline void SetSubscriberName(Aws::String&& value) { m_subscriberNameHasBeenSet = true; m_subscriberName = std::move(value); }
-
-    /**
-     * <p>The name of your Security Lake subscriber account.</p>
-     */
-    inline void SetSubscriberName(const char* value) { m_subscriberNameHasBeenSet = true; m_subscriberName.assign(value); }
-
-    /**
-     * <p>The name of your Security Lake subscriber account.</p>
-     */
-    inline CreateSubscriberRequest& WithSubscriberName(const Aws::String& value) { SetSubscriberName(value); return *this;}
-
-    /**
-     * <p>The name of your Security Lake subscriber account.</p>
-     */
-    inline CreateSubscriberRequest& WithSubscriberName(Aws::String&& value) { SetSubscriberName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of your Security Lake subscriber account.</p>
-     */
-    inline CreateSubscriberRequest& WithSubscriberName(const char* value) { SetSubscriberName(value); return *this;}
-
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
+    inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateSubscriberRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateSubscriberRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<AccessType> m_accessTypes;
     bool m_accessTypesHasBeenSet = false;
 
-    Aws::String m_accountId;
-    bool m_accountIdHasBeenSet = false;
-
-    Aws::String m_externalId;
-    bool m_externalIdHasBeenSet = false;
-
-    Aws::Vector<SourceType> m_sourceTypes;
-    bool m_sourceTypesHasBeenSet = false;
+    Aws::Vector<LogSourceResource> m_sources;
+    bool m_sourcesHasBeenSet = false;
 
     Aws::String m_subscriberDescription;
     bool m_subscriberDescriptionHasBeenSet = false;
 
+    AwsIdentity m_subscriberIdentity;
+    bool m_subscriberIdentityHasBeenSet = false;
+
     Aws::String m_subscriberName;
     bool m_subscriberNameHasBeenSet = false;
+
+    Aws::Vector<Tag> m_tags;
+    bool m_tagsHasBeenSet = false;
   };
 
 } // namespace Model

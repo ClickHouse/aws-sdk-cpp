@@ -18,15 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-InternalServerErrorException::InternalServerErrorException() : 
-    m_messageHasBeenSet(false),
-    m_typeHasBeenSet(false)
-{
-}
-
-InternalServerErrorException::InternalServerErrorException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_typeHasBeenSet(false)
+InternalServerErrorException::InternalServerErrorException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ InternalServerErrorException& InternalServerErrorException::operator =(JsonView 
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("__type"))
   {
     m_type = jsonValue.GetString("__type");
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

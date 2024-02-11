@@ -24,7 +24,7 @@ namespace Model
   class StopRunRequest : public DeviceFarmRequest
   {
   public:
-    AWS_DEVICEFARM_API StopRunRequest();
+    AWS_DEVICEFARM_API StopRunRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,46 +37,17 @@ namespace Model
     AWS_DEVICEFARM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Represents the Amazon Resource Name (ARN) of the Device Farm run to stop.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>Represents the Amazon Resource Name (ARN) of the Device Farm run to stop.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
-
-    /**
-     * <p>Represents the Amazon Resource Name (ARN) of the Device Farm run to stop.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>Represents the Amazon Resource Name (ARN) of the Device Farm run to stop.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>Represents the Amazon Resource Name (ARN) of the Device Farm run to stop.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>Represents the Amazon Resource Name (ARN) of the Device Farm run to stop.</p>
-     */
-    inline StopRunRequest& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>Represents the Amazon Resource Name (ARN) of the Device Farm run to stop.</p>
-     */
-    inline StopRunRequest& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Represents the Amazon Resource Name (ARN) of the Device Farm run to stop.</p>
-     */
-    inline StopRunRequest& WithArn(const char* value) { SetArn(value); return *this;}
-
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    StopRunRequest& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;

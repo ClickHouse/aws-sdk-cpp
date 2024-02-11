@@ -18,17 +18,7 @@ namespace CodeDeploy
 namespace Model
 {
 
-BlueGreenDeploymentConfiguration::BlueGreenDeploymentConfiguration() : 
-    m_terminateBlueInstancesOnDeploymentSuccessHasBeenSet(false),
-    m_deploymentReadyOptionHasBeenSet(false),
-    m_greenFleetProvisioningOptionHasBeenSet(false)
-{
-}
-
-BlueGreenDeploymentConfiguration::BlueGreenDeploymentConfiguration(JsonView jsonValue) : 
-    m_terminateBlueInstancesOnDeploymentSuccessHasBeenSet(false),
-    m_deploymentReadyOptionHasBeenSet(false),
-    m_greenFleetProvisioningOptionHasBeenSet(false)
+BlueGreenDeploymentConfiguration::BlueGreenDeploymentConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ BlueGreenDeploymentConfiguration& BlueGreenDeploymentConfiguration::operator =(J
   if(jsonValue.ValueExists("terminateBlueInstancesOnDeploymentSuccess"))
   {
     m_terminateBlueInstancesOnDeploymentSuccess = jsonValue.GetObject("terminateBlueInstancesOnDeploymentSuccess");
-
     m_terminateBlueInstancesOnDeploymentSuccessHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("deploymentReadyOption"))
   {
     m_deploymentReadyOption = jsonValue.GetObject("deploymentReadyOption");
-
     m_deploymentReadyOptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("greenFleetProvisioningOption"))
   {
     m_greenFleetProvisioningOption = jsonValue.GetObject("greenFleetProvisioningOption");
-
     m_greenFleetProvisioningOptionHasBeenSet = true;
   }
-
   return *this;
 }
 

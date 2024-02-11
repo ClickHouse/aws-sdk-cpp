@@ -33,12 +33,13 @@ namespace Model
   class TestCaseFilter
   {
   public:
-    AWS_CODEBUILD_API TestCaseFilter();
+    AWS_CODEBUILD_API TestCaseFilter() = default;
     AWS_CODEBUILD_API TestCaseFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEBUILD_API TestCaseFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEBUILD_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The status used to filter test cases. A <code>TestCaseFilter</code> can have
      * one status. Valid values are:</p> <ul> <li> <p> <code>SUCCEEDED</code> </p>
@@ -46,136 +47,28 @@ namespace Model
      * </li> <li> <p> <code>SKIPPED</code> </p> </li> <li> <p> <code>UNKNOWN</code>
      * </p> </li> </ul>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status used to filter test cases. A <code>TestCaseFilter</code> can have
-     * one status. Valid values are:</p> <ul> <li> <p> <code>SUCCEEDED</code> </p>
-     * </li> <li> <p> <code>FAILED</code> </p> </li> <li> <p> <code>ERROR</code> </p>
-     * </li> <li> <p> <code>SKIPPED</code> </p> </li> <li> <p> <code>UNKNOWN</code>
-     * </p> </li> </ul>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    TestCaseFilter& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status used to filter test cases. A <code>TestCaseFilter</code> can have
-     * one status. Valid values are:</p> <ul> <li> <p> <code>SUCCEEDED</code> </p>
-     * </li> <li> <p> <code>FAILED</code> </p> </li> <li> <p> <code>ERROR</code> </p>
-     * </li> <li> <p> <code>SKIPPED</code> </p> </li> <li> <p> <code>UNKNOWN</code>
-     * </p> </li> </ul>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status used to filter test cases. A <code>TestCaseFilter</code> can have
-     * one status. Valid values are:</p> <ul> <li> <p> <code>SUCCEEDED</code> </p>
-     * </li> <li> <p> <code>FAILED</code> </p> </li> <li> <p> <code>ERROR</code> </p>
-     * </li> <li> <p> <code>SKIPPED</code> </p> </li> <li> <p> <code>UNKNOWN</code>
-     * </p> </li> </ul>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status used to filter test cases. A <code>TestCaseFilter</code> can have
-     * one status. Valid values are:</p> <ul> <li> <p> <code>SUCCEEDED</code> </p>
-     * </li> <li> <p> <code>FAILED</code> </p> </li> <li> <p> <code>ERROR</code> </p>
-     * </li> <li> <p> <code>SKIPPED</code> </p> </li> <li> <p> <code>UNKNOWN</code>
-     * </p> </li> </ul>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>The status used to filter test cases. A <code>TestCaseFilter</code> can have
-     * one status. Valid values are:</p> <ul> <li> <p> <code>SUCCEEDED</code> </p>
-     * </li> <li> <p> <code>FAILED</code> </p> </li> <li> <p> <code>ERROR</code> </p>
-     * </li> <li> <p> <code>SKIPPED</code> </p> </li> <li> <p> <code>UNKNOWN</code>
-     * </p> </li> </ul>
-     */
-    inline TestCaseFilter& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status used to filter test cases. A <code>TestCaseFilter</code> can have
-     * one status. Valid values are:</p> <ul> <li> <p> <code>SUCCEEDED</code> </p>
-     * </li> <li> <p> <code>FAILED</code> </p> </li> <li> <p> <code>ERROR</code> </p>
-     * </li> <li> <p> <code>SKIPPED</code> </p> </li> <li> <p> <code>UNKNOWN</code>
-     * </p> </li> </ul>
-     */
-    inline TestCaseFilter& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status used to filter test cases. A <code>TestCaseFilter</code> can have
-     * one status. Valid values are:</p> <ul> <li> <p> <code>SUCCEEDED</code> </p>
-     * </li> <li> <p> <code>FAILED</code> </p> </li> <li> <p> <code>ERROR</code> </p>
-     * </li> <li> <p> <code>SKIPPED</code> </p> </li> <li> <p> <code>UNKNOWN</code>
-     * </p> </li> </ul>
-     */
-    inline TestCaseFilter& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A keyword that is used to filter on the <code>name</code> or the
      * <code>prefix</code> of the test cases. Only test cases where the keyword is a
      * substring of the <code>name</code> or the <code>prefix</code> will be
      * returned.</p>
      */
-    inline const Aws::String& GetKeyword() const{ return m_keyword; }
-
-    /**
-     * <p>A keyword that is used to filter on the <code>name</code> or the
-     * <code>prefix</code> of the test cases. Only test cases where the keyword is a
-     * substring of the <code>name</code> or the <code>prefix</code> will be
-     * returned.</p>
-     */
+    inline const Aws::String& GetKeyword() const { return m_keyword; }
     inline bool KeywordHasBeenSet() const { return m_keywordHasBeenSet; }
-
-    /**
-     * <p>A keyword that is used to filter on the <code>name</code> or the
-     * <code>prefix</code> of the test cases. Only test cases where the keyword is a
-     * substring of the <code>name</code> or the <code>prefix</code> will be
-     * returned.</p>
-     */
-    inline void SetKeyword(const Aws::String& value) { m_keywordHasBeenSet = true; m_keyword = value; }
-
-    /**
-     * <p>A keyword that is used to filter on the <code>name</code> or the
-     * <code>prefix</code> of the test cases. Only test cases where the keyword is a
-     * substring of the <code>name</code> or the <code>prefix</code> will be
-     * returned.</p>
-     */
-    inline void SetKeyword(Aws::String&& value) { m_keywordHasBeenSet = true; m_keyword = std::move(value); }
-
-    /**
-     * <p>A keyword that is used to filter on the <code>name</code> or the
-     * <code>prefix</code> of the test cases. Only test cases where the keyword is a
-     * substring of the <code>name</code> or the <code>prefix</code> will be
-     * returned.</p>
-     */
-    inline void SetKeyword(const char* value) { m_keywordHasBeenSet = true; m_keyword.assign(value); }
-
-    /**
-     * <p>A keyword that is used to filter on the <code>name</code> or the
-     * <code>prefix</code> of the test cases. Only test cases where the keyword is a
-     * substring of the <code>name</code> or the <code>prefix</code> will be
-     * returned.</p>
-     */
-    inline TestCaseFilter& WithKeyword(const Aws::String& value) { SetKeyword(value); return *this;}
-
-    /**
-     * <p>A keyword that is used to filter on the <code>name</code> or the
-     * <code>prefix</code> of the test cases. Only test cases where the keyword is a
-     * substring of the <code>name</code> or the <code>prefix</code> will be
-     * returned.</p>
-     */
-    inline TestCaseFilter& WithKeyword(Aws::String&& value) { SetKeyword(std::move(value)); return *this;}
-
-    /**
-     * <p>A keyword that is used to filter on the <code>name</code> or the
-     * <code>prefix</code> of the test cases. Only test cases where the keyword is a
-     * substring of the <code>name</code> or the <code>prefix</code> will be
-     * returned.</p>
-     */
-    inline TestCaseFilter& WithKeyword(const char* value) { SetKeyword(value); return *this;}
-
+    template<typename KeywordT = Aws::String>
+    void SetKeyword(KeywordT&& value) { m_keywordHasBeenSet = true; m_keyword = std::forward<KeywordT>(value); }
+    template<typename KeywordT = Aws::String>
+    TestCaseFilter& WithKeyword(KeywordT&& value) { SetKeyword(std::forward<KeywordT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_status;

@@ -12,18 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateEndpointConfigRequest::CreateEndpointConfigRequest() : 
-    m_endpointConfigNameHasBeenSet(false),
-    m_productionVariantsHasBeenSet(false),
-    m_dataCaptureConfigHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_asyncInferenceConfigHasBeenSet(false),
-    m_explainerConfigHasBeenSet(false),
-    m_shadowProductionVariantsHasBeenSet(false)
-{
-}
-
 Aws::String CreateEndpointConfigRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -88,6 +76,24 @@ Aws::String CreateEndpointConfigRequest::SerializePayload() const
      shadowProductionVariantsJsonList[shadowProductionVariantsIndex].AsObject(m_shadowProductionVariants[shadowProductionVariantsIndex].Jsonize());
    }
    payload.WithArray("ShadowProductionVariants", std::move(shadowProductionVariantsJsonList));
+
+  }
+
+  if(m_executionRoleArnHasBeenSet)
+  {
+   payload.WithString("ExecutionRoleArn", m_executionRoleArn);
+
+  }
+
+  if(m_vpcConfigHasBeenSet)
+  {
+   payload.WithObject("VpcConfig", m_vpcConfig.Jsonize());
+
+  }
+
+  if(m_enableNetworkIsolationHasBeenSet)
+  {
+   payload.WithBool("EnableNetworkIsolation", m_enableNetworkIsolation);
 
   }
 

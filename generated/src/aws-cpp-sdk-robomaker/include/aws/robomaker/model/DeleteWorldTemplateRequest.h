@@ -21,7 +21,7 @@ namespace Model
   class DeleteWorldTemplateRequest : public RoboMakerRequest
   {
   public:
-    AWS_ROBOMAKER_API DeleteWorldTemplateRequest();
+    AWS_ROBOMAKER_API DeleteWorldTemplateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_ROBOMAKER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (arn) of the world template you want to delete.</p>
      */
-    inline const Aws::String& GetTemplate() const{ return m_template; }
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world template you want to delete.</p>
-     */
+    inline const Aws::String& GetTemplate() const { return m_template; }
     inline bool TemplateHasBeenSet() const { return m_templateHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world template you want to delete.</p>
-     */
-    inline void SetTemplate(const Aws::String& value) { m_templateHasBeenSet = true; m_template = value; }
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world template you want to delete.</p>
-     */
-    inline void SetTemplate(Aws::String&& value) { m_templateHasBeenSet = true; m_template = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world template you want to delete.</p>
-     */
-    inline void SetTemplate(const char* value) { m_templateHasBeenSet = true; m_template.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world template you want to delete.</p>
-     */
-    inline DeleteWorldTemplateRequest& WithTemplate(const Aws::String& value) { SetTemplate(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world template you want to delete.</p>
-     */
-    inline DeleteWorldTemplateRequest& WithTemplate(Aws::String&& value) { SetTemplate(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world template you want to delete.</p>
-     */
-    inline DeleteWorldTemplateRequest& WithTemplate(const char* value) { SetTemplate(value); return *this;}
-
+    template<typename TemplateT = Aws::String>
+    void SetTemplate(TemplateT&& value) { m_templateHasBeenSet = true; m_template = std::forward<TemplateT>(value); }
+    template<typename TemplateT = Aws::String>
+    DeleteWorldTemplateRequest& WithTemplate(TemplateT&& value) { SetTemplate(std::forward<TemplateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_template;

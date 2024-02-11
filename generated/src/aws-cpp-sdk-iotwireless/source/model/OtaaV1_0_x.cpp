@@ -18,17 +18,7 @@ namespace IoTWireless
 namespace Model
 {
 
-OtaaV1_0_x::OtaaV1_0_x() : 
-    m_appKeyHasBeenSet(false),
-    m_appEuiHasBeenSet(false),
-    m_genAppKeyHasBeenSet(false)
-{
-}
-
-OtaaV1_0_x::OtaaV1_0_x(JsonView jsonValue) : 
-    m_appKeyHasBeenSet(false),
-    m_appEuiHasBeenSet(false),
-    m_genAppKeyHasBeenSet(false)
+OtaaV1_0_x::OtaaV1_0_x(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,23 @@ OtaaV1_0_x& OtaaV1_0_x::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AppKey"))
   {
     m_appKey = jsonValue.GetString("AppKey");
-
     m_appKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AppEui"))
   {
     m_appEui = jsonValue.GetString("AppEui");
-
     m_appEuiHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("JoinEui"))
+  {
+    m_joinEui = jsonValue.GetString("JoinEui");
+    m_joinEuiHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("GenAppKey"))
   {
     m_genAppKey = jsonValue.GetString("GenAppKey");
-
     m_genAppKeyHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -72,6 +61,12 @@ JsonValue OtaaV1_0_x::Jsonize() const
   if(m_appEuiHasBeenSet)
   {
    payload.WithString("AppEui", m_appEui);
+
+  }
+
+  if(m_joinEuiHasBeenSet)
+  {
+   payload.WithString("JoinEui", m_joinEui);
 
   }
 

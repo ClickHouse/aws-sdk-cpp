@@ -21,7 +21,7 @@ namespace Model
   class GetEndpointRequest : public PinpointRequest
   {
   public:
-    AWS_PINPOINT_API GetEndpointRequest();
+    AWS_PINPOINT_API GetEndpointRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,95 +32,31 @@ namespace Model
     AWS_PINPOINT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the application. This identifier is displayed as
      * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    GetEndpointRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
+     * <p>The case insensitive unique identifier for the endpoint. The identifier can't
+     * contain <code>$</code>, <code>{</code> or <code>}</code>.</p>
      */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline GetEndpointRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline GetEndpointRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline GetEndpointRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
-    /**
-     * <p>The unique identifier for the endpoint.</p>
-     */
-    inline const Aws::String& GetEndpointId() const{ return m_endpointId; }
-
-    /**
-     * <p>The unique identifier for the endpoint.</p>
-     */
+    inline const Aws::String& GetEndpointId() const { return m_endpointId; }
     inline bool EndpointIdHasBeenSet() const { return m_endpointIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier for the endpoint.</p>
-     */
-    inline void SetEndpointId(const Aws::String& value) { m_endpointIdHasBeenSet = true; m_endpointId = value; }
-
-    /**
-     * <p>The unique identifier for the endpoint.</p>
-     */
-    inline void SetEndpointId(Aws::String&& value) { m_endpointIdHasBeenSet = true; m_endpointId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the endpoint.</p>
-     */
-    inline void SetEndpointId(const char* value) { m_endpointIdHasBeenSet = true; m_endpointId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the endpoint.</p>
-     */
-    inline GetEndpointRequest& WithEndpointId(const Aws::String& value) { SetEndpointId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the endpoint.</p>
-     */
-    inline GetEndpointRequest& WithEndpointId(Aws::String&& value) { SetEndpointId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the endpoint.</p>
-     */
-    inline GetEndpointRequest& WithEndpointId(const char* value) { SetEndpointId(value); return *this;}
-
+    template<typename EndpointIdT = Aws::String>
+    void SetEndpointId(EndpointIdT&& value) { m_endpointIdHasBeenSet = true; m_endpointId = std::forward<EndpointIdT>(value); }
+    template<typename EndpointIdT = Aws::String>
+    GetEndpointRequest& WithEndpointId(EndpointIdT&& value) { SetEndpointId(std::forward<EndpointIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;

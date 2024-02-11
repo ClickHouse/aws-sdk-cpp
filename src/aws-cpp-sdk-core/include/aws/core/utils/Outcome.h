@@ -6,6 +6,7 @@
 #pragma once
 
 #include <aws/core/Core_EXPORTS.h>
+#include <aws/core/utils/logging/LogMacros.h>
 
 #include <cassert>
 #include <utility>
@@ -14,6 +15,7 @@ namespace Aws
 {
     namespace Utils
     {
+        static const char OUTCOME_LOG_TAG[] = "Outcome";
 
         /**
          * Template class representing the outcome of making a request.  It will contain
@@ -101,6 +103,7 @@ namespace Aws
                     result = o.result;
                     error = o.error;
                     success = o.success;
+                    retryCount = o.retryCount;
                 }
 
                 return *this;
@@ -109,7 +112,8 @@ namespace Aws
             Outcome(Outcome&& o) : // Required to force Move Constructor
                 result(std::move(o.result)),
                 error(std::move(o.error)),
-                success(o.success)
+                success(o.success),
+                retryCount(std::move(o.retryCount))
             {
             }
 
@@ -120,6 +124,7 @@ namespace Aws
                     result = std::move(o.result);
                     error = std::move(o.error);
                     success = o.success;
+                    retryCount = std::move(o.retryCount);
                 }
 
                 return *this;
@@ -127,11 +132,17 @@ namespace Aws
 
             inline const R& GetResult() const
             {
+                if (!success) {
+                    AWS_LOGSTREAM_FATAL(OUTCOME_LOG_TAG, "GetResult called on a failed outcome! Result is not initialized!");
+                }
                 return result;
             }
 
             inline R& GetResult()
             {
+                if (!success) {
+                    AWS_LOGSTREAM_FATAL(OUTCOME_LOG_TAG, "GetResult called on a failed outcome! Result is not initialized!");
+                }
                 return result;
             }
 
@@ -141,17 +152,26 @@ namespace Aws
              */
             inline R&& GetResultWithOwnership()
             {
+                if (!success) {
+                    AWS_LOGSTREAM_FATAL(OUTCOME_LOG_TAG, "GetResult called on a failed outcome! Result is not initialized!");
+                }
                 return std::move(result);
             }
 
             inline const E& GetError() const
             {
+                if (success) {
+                    AWS_LOGSTREAM_FATAL(OUTCOME_LOG_TAG, "GetError called on a success outcome! Error is not initialized!");
+                }
                 return error;
             }
 
             template<typename T>
             inline T GetError()
             {
+                if (success) {
+                    AWS_LOGSTREAM_FATAL(OUTCOME_LOG_TAG, "GetError called on a success outcome! Error is not initialized!");
+                }
                 return error.template GetModeledError<T>();
             }
 
@@ -160,10 +180,20 @@ namespace Aws
                 return this->success;
             }
 
+            /**
+             * Returns how many times the retry happened before getting this outcome.
+             */
+            inline unsigned int GetRetryCount() const { return retryCount; }
+            /**
+             * Sets the retry count.
+             */
+            inline void SetRetryCount(const unsigned int iRetryCount) { retryCount = iRetryCount; }
+
         private:
             R result;
             E error;
-            bool success;
+            bool success = false;
+            unsigned int retryCount = 0;
         };
 
     } // namespace Utils

@@ -21,7 +21,7 @@ namespace Model
   class DeleteFHIRDatastoreRequest : public HealthLakeRequest
   {
   public:
-    AWS_HEALTHLAKE_API DeleteFHIRDatastoreRequest();
+    AWS_HEALTHLAKE_API DeleteFHIRDatastoreRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_HEALTHLAKE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p> The AWS-generated ID for the Data Store to be deleted.</p>
+     * <p> The AWS-generated identifier for the data store to be deleted.</p>
      */
-    inline const Aws::String& GetDatastoreId() const{ return m_datastoreId; }
-
-    /**
-     * <p> The AWS-generated ID for the Data Store to be deleted.</p>
-     */
+    inline const Aws::String& GetDatastoreId() const { return m_datastoreId; }
     inline bool DatastoreIdHasBeenSet() const { return m_datastoreIdHasBeenSet; }
-
-    /**
-     * <p> The AWS-generated ID for the Data Store to be deleted.</p>
-     */
-    inline void SetDatastoreId(const Aws::String& value) { m_datastoreIdHasBeenSet = true; m_datastoreId = value; }
-
-    /**
-     * <p> The AWS-generated ID for the Data Store to be deleted.</p>
-     */
-    inline void SetDatastoreId(Aws::String&& value) { m_datastoreIdHasBeenSet = true; m_datastoreId = std::move(value); }
-
-    /**
-     * <p> The AWS-generated ID for the Data Store to be deleted.</p>
-     */
-    inline void SetDatastoreId(const char* value) { m_datastoreIdHasBeenSet = true; m_datastoreId.assign(value); }
-
-    /**
-     * <p> The AWS-generated ID for the Data Store to be deleted.</p>
-     */
-    inline DeleteFHIRDatastoreRequest& WithDatastoreId(const Aws::String& value) { SetDatastoreId(value); return *this;}
-
-    /**
-     * <p> The AWS-generated ID for the Data Store to be deleted.</p>
-     */
-    inline DeleteFHIRDatastoreRequest& WithDatastoreId(Aws::String&& value) { SetDatastoreId(std::move(value)); return *this;}
-
-    /**
-     * <p> The AWS-generated ID for the Data Store to be deleted.</p>
-     */
-    inline DeleteFHIRDatastoreRequest& WithDatastoreId(const char* value) { SetDatastoreId(value); return *this;}
-
+    template<typename DatastoreIdT = Aws::String>
+    void SetDatastoreId(DatastoreIdT&& value) { m_datastoreIdHasBeenSet = true; m_datastoreId = std::forward<DatastoreIdT>(value); }
+    template<typename DatastoreIdT = Aws::String>
+    DeleteFHIRDatastoreRequest& WithDatastoreId(DatastoreIdT&& value) { SetDatastoreId(std::forward<DatastoreIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_datastoreId;

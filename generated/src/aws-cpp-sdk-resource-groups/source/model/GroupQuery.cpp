@@ -18,15 +18,7 @@ namespace ResourceGroups
 namespace Model
 {
 
-GroupQuery::GroupQuery() : 
-    m_groupNameHasBeenSet(false),
-    m_resourceQueryHasBeenSet(false)
-{
-}
-
-GroupQuery::GroupQuery(JsonView jsonValue) : 
-    m_groupNameHasBeenSet(false),
-    m_resourceQueryHasBeenSet(false)
+GroupQuery::GroupQuery(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ GroupQuery& GroupQuery::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("GroupName"))
   {
     m_groupName = jsonValue.GetString("GroupName");
-
     m_groupNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceQuery"))
   {
     m_resourceQuery = jsonValue.GetObject("ResourceQuery");
-
     m_resourceQueryHasBeenSet = true;
   }
-
   return *this;
 }
 

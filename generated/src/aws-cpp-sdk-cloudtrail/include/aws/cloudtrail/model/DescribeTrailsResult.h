@@ -35,11 +35,12 @@ namespace Model
   class DescribeTrailsResult
   {
   public:
-    AWS_CLOUDTRAIL_API DescribeTrailsResult();
+    AWS_CLOUDTRAIL_API DescribeTrailsResult() = default;
     AWS_CLOUDTRAIL_API DescribeTrailsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CLOUDTRAIL_API DescribeTrailsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The list of trail objects. Trail objects with string values are only returned
      * if values for the objects exist in a trail's configuration. For example,
@@ -48,95 +49,30 @@ namespace Model
      * <code>KMSKeyId</code> only appears in results if a trail's log files are
      * encrypted with KMS customer managed keys.</p>
      */
-    inline const Aws::Vector<Trail>& GetTrailList() const{ return m_trailList; }
+    inline const Aws::Vector<Trail>& GetTrailList() const { return m_trailList; }
+    template<typename TrailListT = Aws::Vector<Trail>>
+    void SetTrailList(TrailListT&& value) { m_trailListHasBeenSet = true; m_trailList = std::forward<TrailListT>(value); }
+    template<typename TrailListT = Aws::Vector<Trail>>
+    DescribeTrailsResult& WithTrailList(TrailListT&& value) { SetTrailList(std::forward<TrailListT>(value)); return *this;}
+    template<typename TrailListT = Trail>
+    DescribeTrailsResult& AddTrailList(TrailListT&& value) { m_trailListHasBeenSet = true; m_trailList.emplace_back(std::forward<TrailListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of trail objects. Trail objects with string values are only returned
-     * if values for the objects exist in a trail's configuration. For example,
-     * <code>SNSTopicName</code> and <code>SNSTopicARN</code> are only returned in
-     * results if a trail is configured to send SNS notifications. Similarly,
-     * <code>KMSKeyId</code> only appears in results if a trail's log files are
-     * encrypted with KMS customer managed keys.</p>
-     */
-    inline void SetTrailList(const Aws::Vector<Trail>& value) { m_trailList = value; }
-
-    /**
-     * <p>The list of trail objects. Trail objects with string values are only returned
-     * if values for the objects exist in a trail's configuration. For example,
-     * <code>SNSTopicName</code> and <code>SNSTopicARN</code> are only returned in
-     * results if a trail is configured to send SNS notifications. Similarly,
-     * <code>KMSKeyId</code> only appears in results if a trail's log files are
-     * encrypted with KMS customer managed keys.</p>
-     */
-    inline void SetTrailList(Aws::Vector<Trail>&& value) { m_trailList = std::move(value); }
-
-    /**
-     * <p>The list of trail objects. Trail objects with string values are only returned
-     * if values for the objects exist in a trail's configuration. For example,
-     * <code>SNSTopicName</code> and <code>SNSTopicARN</code> are only returned in
-     * results if a trail is configured to send SNS notifications. Similarly,
-     * <code>KMSKeyId</code> only appears in results if a trail's log files are
-     * encrypted with KMS customer managed keys.</p>
-     */
-    inline DescribeTrailsResult& WithTrailList(const Aws::Vector<Trail>& value) { SetTrailList(value); return *this;}
-
-    /**
-     * <p>The list of trail objects. Trail objects with string values are only returned
-     * if values for the objects exist in a trail's configuration. For example,
-     * <code>SNSTopicName</code> and <code>SNSTopicARN</code> are only returned in
-     * results if a trail is configured to send SNS notifications. Similarly,
-     * <code>KMSKeyId</code> only appears in results if a trail's log files are
-     * encrypted with KMS customer managed keys.</p>
-     */
-    inline DescribeTrailsResult& WithTrailList(Aws::Vector<Trail>&& value) { SetTrailList(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of trail objects. Trail objects with string values are only returned
-     * if values for the objects exist in a trail's configuration. For example,
-     * <code>SNSTopicName</code> and <code>SNSTopicARN</code> are only returned in
-     * results if a trail is configured to send SNS notifications. Similarly,
-     * <code>KMSKeyId</code> only appears in results if a trail's log files are
-     * encrypted with KMS customer managed keys.</p>
-     */
-    inline DescribeTrailsResult& AddTrailList(const Trail& value) { m_trailList.push_back(value); return *this; }
-
-    /**
-     * <p>The list of trail objects. Trail objects with string values are only returned
-     * if values for the objects exist in a trail's configuration. For example,
-     * <code>SNSTopicName</code> and <code>SNSTopicARN</code> are only returned in
-     * results if a trail is configured to send SNS notifications. Similarly,
-     * <code>KMSKeyId</code> only appears in results if a trail's log files are
-     * encrypted with KMS customer managed keys.</p>
-     */
-    inline DescribeTrailsResult& AddTrailList(Trail&& value) { m_trailList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeTrailsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeTrailsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeTrailsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeTrailsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Trail> m_trailList;
+    bool m_trailListHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

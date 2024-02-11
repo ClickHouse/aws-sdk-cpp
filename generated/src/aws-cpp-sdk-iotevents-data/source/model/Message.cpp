@@ -19,19 +19,7 @@ namespace IoTEventsData
 namespace Model
 {
 
-Message::Message() : 
-    m_messageIdHasBeenSet(false),
-    m_inputNameHasBeenSet(false),
-    m_payloadHasBeenSet(false),
-    m_timestampHasBeenSet(false)
-{
-}
-
-Message::Message(JsonView jsonValue) : 
-    m_messageIdHasBeenSet(false),
-    m_inputNameHasBeenSet(false),
-    m_payloadHasBeenSet(false),
-    m_timestampHasBeenSet(false)
+Message::Message(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -41,30 +29,23 @@ Message& Message::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("messageId"))
   {
     m_messageId = jsonValue.GetString("messageId");
-
     m_messageIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("inputName"))
   {
     m_inputName = jsonValue.GetString("inputName");
-
     m_inputNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("payload"))
   {
     m_payload = HashingUtils::Base64Decode(jsonValue.GetString("payload"));
     m_payloadHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("timestamp"))
   {
     m_timestamp = jsonValue.GetObject("timestamp");
-
     m_timestampHasBeenSet = true;
   }
-
   return *this;
 }
 

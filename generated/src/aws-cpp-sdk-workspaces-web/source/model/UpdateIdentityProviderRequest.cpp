@@ -12,25 +12,19 @@ using namespace Aws::WorkSpacesWeb::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateIdentityProviderRequest::UpdateIdentityProviderRequest() : 
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_identityProviderArnHasBeenSet(false),
-    m_identityProviderDetailsHasBeenSet(false),
-    m_identityProviderNameHasBeenSet(false),
-    m_identityProviderType(IdentityProviderType::NOT_SET),
-    m_identityProviderTypeHasBeenSet(false)
-{
-}
-
 Aws::String UpdateIdentityProviderRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_clientTokenHasBeenSet)
+  if(m_identityProviderNameHasBeenSet)
   {
-   payload.WithString("clientToken", m_clientToken);
+   payload.WithString("identityProviderName", m_identityProviderName);
 
+  }
+
+  if(m_identityProviderTypeHasBeenSet)
+  {
+   payload.WithString("identityProviderType", IdentityProviderTypeMapper::GetNameForIdentityProviderType(m_identityProviderType));
   }
 
   if(m_identityProviderDetailsHasBeenSet)
@@ -44,15 +38,10 @@ Aws::String UpdateIdentityProviderRequest::SerializePayload() const
 
   }
 
-  if(m_identityProviderNameHasBeenSet)
+  if(m_clientTokenHasBeenSet)
   {
-   payload.WithString("identityProviderName", m_identityProviderName);
+   payload.WithString("clientToken", m_clientToken);
 
-  }
-
-  if(m_identityProviderTypeHasBeenSet)
-  {
-   payload.WithString("identityProviderType", IdentityProviderTypeMapper::GetNameForIdentityProviderType(m_identityProviderType));
   }
 
   return payload.View().WriteReadable();

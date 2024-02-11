@@ -18,19 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-LabelingJobStoppingConditions::LabelingJobStoppingConditions() : 
-    m_maxHumanLabeledObjectCount(0),
-    m_maxHumanLabeledObjectCountHasBeenSet(false),
-    m_maxPercentageOfInputDatasetLabeled(0),
-    m_maxPercentageOfInputDatasetLabeledHasBeenSet(false)
-{
-}
-
-LabelingJobStoppingConditions::LabelingJobStoppingConditions(JsonView jsonValue) : 
-    m_maxHumanLabeledObjectCount(0),
-    m_maxHumanLabeledObjectCountHasBeenSet(false),
-    m_maxPercentageOfInputDatasetLabeled(0),
-    m_maxPercentageOfInputDatasetLabeledHasBeenSet(false)
+LabelingJobStoppingConditions::LabelingJobStoppingConditions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ LabelingJobStoppingConditions& LabelingJobStoppingConditions::operator =(JsonVie
   if(jsonValue.ValueExists("MaxHumanLabeledObjectCount"))
   {
     m_maxHumanLabeledObjectCount = jsonValue.GetInteger("MaxHumanLabeledObjectCount");
-
     m_maxHumanLabeledObjectCountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxPercentageOfInputDatasetLabeled"))
   {
     m_maxPercentageOfInputDatasetLabeled = jsonValue.GetInteger("MaxPercentageOfInputDatasetLabeled");
-
     m_maxPercentageOfInputDatasetLabeledHasBeenSet = true;
   }
-
   return *this;
 }
 

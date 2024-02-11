@@ -32,42 +32,23 @@ namespace Model
   class ClusterMarkerConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API ClusterMarkerConfiguration();
+    AWS_QUICKSIGHT_API ClusterMarkerConfiguration() = default;
     AWS_QUICKSIGHT_API ClusterMarkerConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API ClusterMarkerConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The cluster marker that is a part of the cluster marker configuration</p>
+     * <p>The cluster marker that is a part of the cluster marker configuration.</p>
      */
-    inline const ClusterMarker& GetClusterMarker() const{ return m_clusterMarker; }
-
-    /**
-     * <p>The cluster marker that is a part of the cluster marker configuration</p>
-     */
+    inline const ClusterMarker& GetClusterMarker() const { return m_clusterMarker; }
     inline bool ClusterMarkerHasBeenSet() const { return m_clusterMarkerHasBeenSet; }
-
-    /**
-     * <p>The cluster marker that is a part of the cluster marker configuration</p>
-     */
-    inline void SetClusterMarker(const ClusterMarker& value) { m_clusterMarkerHasBeenSet = true; m_clusterMarker = value; }
-
-    /**
-     * <p>The cluster marker that is a part of the cluster marker configuration</p>
-     */
-    inline void SetClusterMarker(ClusterMarker&& value) { m_clusterMarkerHasBeenSet = true; m_clusterMarker = std::move(value); }
-
-    /**
-     * <p>The cluster marker that is a part of the cluster marker configuration</p>
-     */
-    inline ClusterMarkerConfiguration& WithClusterMarker(const ClusterMarker& value) { SetClusterMarker(value); return *this;}
-
-    /**
-     * <p>The cluster marker that is a part of the cluster marker configuration</p>
-     */
-    inline ClusterMarkerConfiguration& WithClusterMarker(ClusterMarker&& value) { SetClusterMarker(std::move(value)); return *this;}
-
+    template<typename ClusterMarkerT = ClusterMarker>
+    void SetClusterMarker(ClusterMarkerT&& value) { m_clusterMarkerHasBeenSet = true; m_clusterMarker = std::forward<ClusterMarkerT>(value); }
+    template<typename ClusterMarkerT = ClusterMarker>
+    ClusterMarkerConfiguration& WithClusterMarker(ClusterMarkerT&& value) { SetClusterMarker(std::forward<ClusterMarkerT>(value)); return *this;}
+    ///@}
   private:
 
     ClusterMarker m_clusterMarker;

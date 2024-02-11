@@ -33,215 +33,83 @@ namespace Model
   class GetVaultLockResult
   {
   public:
-    AWS_GLACIER_API GetVaultLockResult();
+    AWS_GLACIER_API GetVaultLockResult() = default;
     AWS_GLACIER_API GetVaultLockResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GLACIER_API GetVaultLockResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The vault lock policy as a JSON string, which uses "\" as an escape
      * character.</p>
      */
-    inline const Aws::String& GetPolicy() const{ return m_policy; }
+    inline const Aws::String& GetPolicy() const { return m_policy; }
+    template<typename PolicyT = Aws::String>
+    void SetPolicy(PolicyT&& value) { m_policyHasBeenSet = true; m_policy = std::forward<PolicyT>(value); }
+    template<typename PolicyT = Aws::String>
+    GetVaultLockResult& WithPolicy(PolicyT&& value) { SetPolicy(std::forward<PolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The vault lock policy as a JSON string, which uses "\" as an escape
-     * character.</p>
-     */
-    inline void SetPolicy(const Aws::String& value) { m_policy = value; }
-
-    /**
-     * <p>The vault lock policy as a JSON string, which uses "\" as an escape
-     * character.</p>
-     */
-    inline void SetPolicy(Aws::String&& value) { m_policy = std::move(value); }
-
-    /**
-     * <p>The vault lock policy as a JSON string, which uses "\" as an escape
-     * character.</p>
-     */
-    inline void SetPolicy(const char* value) { m_policy.assign(value); }
-
-    /**
-     * <p>The vault lock policy as a JSON string, which uses "\" as an escape
-     * character.</p>
-     */
-    inline GetVaultLockResult& WithPolicy(const Aws::String& value) { SetPolicy(value); return *this;}
-
-    /**
-     * <p>The vault lock policy as a JSON string, which uses "\" as an escape
-     * character.</p>
-     */
-    inline GetVaultLockResult& WithPolicy(Aws::String&& value) { SetPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>The vault lock policy as a JSON string, which uses "\" as an escape
-     * character.</p>
-     */
-    inline GetVaultLockResult& WithPolicy(const char* value) { SetPolicy(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the vault lock. <code>InProgress</code> or
      * <code>Locked</code>.</p>
      */
-    inline const Aws::String& GetState() const{ return m_state; }
+    inline const Aws::String& GetState() const { return m_state; }
+    template<typename StateT = Aws::String>
+    void SetState(StateT&& value) { m_stateHasBeenSet = true; m_state = std::forward<StateT>(value); }
+    template<typename StateT = Aws::String>
+    GetVaultLockResult& WithState(StateT&& value) { SetState(std::forward<StateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the vault lock. <code>InProgress</code> or
-     * <code>Locked</code>.</p>
-     */
-    inline void SetState(const Aws::String& value) { m_state = value; }
-
-    /**
-     * <p>The state of the vault lock. <code>InProgress</code> or
-     * <code>Locked</code>.</p>
-     */
-    inline void SetState(Aws::String&& value) { m_state = std::move(value); }
-
-    /**
-     * <p>The state of the vault lock. <code>InProgress</code> or
-     * <code>Locked</code>.</p>
-     */
-    inline void SetState(const char* value) { m_state.assign(value); }
-
-    /**
-     * <p>The state of the vault lock. <code>InProgress</code> or
-     * <code>Locked</code>.</p>
-     */
-    inline GetVaultLockResult& WithState(const Aws::String& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the vault lock. <code>InProgress</code> or
-     * <code>Locked</code>.</p>
-     */
-    inline GetVaultLockResult& WithState(Aws::String&& value) { SetState(std::move(value)); return *this;}
-
-    /**
-     * <p>The state of the vault lock. <code>InProgress</code> or
-     * <code>Locked</code>.</p>
-     */
-    inline GetVaultLockResult& WithState(const char* value) { SetState(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The UTC date and time at which the lock ID expires. This value can be
      * <code>null</code> if the vault lock is in a <code>Locked</code> state.</p>
      */
-    inline const Aws::String& GetExpirationDate() const{ return m_expirationDate; }
+    inline const Aws::String& GetExpirationDate() const { return m_expirationDate; }
+    template<typename ExpirationDateT = Aws::String>
+    void SetExpirationDate(ExpirationDateT&& value) { m_expirationDateHasBeenSet = true; m_expirationDate = std::forward<ExpirationDateT>(value); }
+    template<typename ExpirationDateT = Aws::String>
+    GetVaultLockResult& WithExpirationDate(ExpirationDateT&& value) { SetExpirationDate(std::forward<ExpirationDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The UTC date and time at which the lock ID expires. This value can be
-     * <code>null</code> if the vault lock is in a <code>Locked</code> state.</p>
-     */
-    inline void SetExpirationDate(const Aws::String& value) { m_expirationDate = value; }
-
-    /**
-     * <p>The UTC date and time at which the lock ID expires. This value can be
-     * <code>null</code> if the vault lock is in a <code>Locked</code> state.</p>
-     */
-    inline void SetExpirationDate(Aws::String&& value) { m_expirationDate = std::move(value); }
-
-    /**
-     * <p>The UTC date and time at which the lock ID expires. This value can be
-     * <code>null</code> if the vault lock is in a <code>Locked</code> state.</p>
-     */
-    inline void SetExpirationDate(const char* value) { m_expirationDate.assign(value); }
-
-    /**
-     * <p>The UTC date and time at which the lock ID expires. This value can be
-     * <code>null</code> if the vault lock is in a <code>Locked</code> state.</p>
-     */
-    inline GetVaultLockResult& WithExpirationDate(const Aws::String& value) { SetExpirationDate(value); return *this;}
-
-    /**
-     * <p>The UTC date and time at which the lock ID expires. This value can be
-     * <code>null</code> if the vault lock is in a <code>Locked</code> state.</p>
-     */
-    inline GetVaultLockResult& WithExpirationDate(Aws::String&& value) { SetExpirationDate(std::move(value)); return *this;}
-
-    /**
-     * <p>The UTC date and time at which the lock ID expires. This value can be
-     * <code>null</code> if the vault lock is in a <code>Locked</code> state.</p>
-     */
-    inline GetVaultLockResult& WithExpirationDate(const char* value) { SetExpirationDate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The UTC date and time at which the vault lock was put into the
      * <code>InProgress</code> state.</p>
      */
-    inline const Aws::String& GetCreationDate() const{ return m_creationDate; }
+    inline const Aws::String& GetCreationDate() const { return m_creationDate; }
+    template<typename CreationDateT = Aws::String>
+    void SetCreationDate(CreationDateT&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::forward<CreationDateT>(value); }
+    template<typename CreationDateT = Aws::String>
+    GetVaultLockResult& WithCreationDate(CreationDateT&& value) { SetCreationDate(std::forward<CreationDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The UTC date and time at which the vault lock was put into the
-     * <code>InProgress</code> state.</p>
-     */
-    inline void SetCreationDate(const Aws::String& value) { m_creationDate = value; }
-
-    /**
-     * <p>The UTC date and time at which the vault lock was put into the
-     * <code>InProgress</code> state.</p>
-     */
-    inline void SetCreationDate(Aws::String&& value) { m_creationDate = std::move(value); }
-
-    /**
-     * <p>The UTC date and time at which the vault lock was put into the
-     * <code>InProgress</code> state.</p>
-     */
-    inline void SetCreationDate(const char* value) { m_creationDate.assign(value); }
-
-    /**
-     * <p>The UTC date and time at which the vault lock was put into the
-     * <code>InProgress</code> state.</p>
-     */
-    inline GetVaultLockResult& WithCreationDate(const Aws::String& value) { SetCreationDate(value); return *this;}
-
-    /**
-     * <p>The UTC date and time at which the vault lock was put into the
-     * <code>InProgress</code> state.</p>
-     */
-    inline GetVaultLockResult& WithCreationDate(Aws::String&& value) { SetCreationDate(std::move(value)); return *this;}
-
-    /**
-     * <p>The UTC date and time at which the vault lock was put into the
-     * <code>InProgress</code> state.</p>
-     */
-    inline GetVaultLockResult& WithCreationDate(const char* value) { SetCreationDate(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetVaultLockResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetVaultLockResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetVaultLockResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetVaultLockResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_policy;
+    bool m_policyHasBeenSet = false;
 
     Aws::String m_state;
+    bool m_stateHasBeenSet = false;
 
     Aws::String m_expirationDate;
+    bool m_expirationDateHasBeenSet = false;
 
     Aws::String m_creationDate;
+    bool m_creationDateHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

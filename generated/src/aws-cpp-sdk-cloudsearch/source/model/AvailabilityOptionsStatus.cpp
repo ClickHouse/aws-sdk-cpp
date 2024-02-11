@@ -20,17 +20,7 @@ namespace CloudSearch
 namespace Model
 {
 
-AvailabilityOptionsStatus::AvailabilityOptionsStatus() : 
-    m_options(false),
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-AvailabilityOptionsStatus::AvailabilityOptionsStatus(const XmlNode& xmlNode) : 
-    m_options(false),
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false)
+AvailabilityOptionsStatus::AvailabilityOptionsStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

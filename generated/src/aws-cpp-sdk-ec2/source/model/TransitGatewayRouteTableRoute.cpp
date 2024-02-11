@@ -20,25 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGatewayRouteTableRoute::TransitGatewayRouteTableRoute() : 
-    m_destinationCidrHasBeenSet(false),
-    m_stateHasBeenSet(false),
-    m_routeOriginHasBeenSet(false),
-    m_prefixListIdHasBeenSet(false),
-    m_attachmentIdHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
-{
-}
-
-TransitGatewayRouteTableRoute::TransitGatewayRouteTableRoute(const XmlNode& xmlNode) : 
-    m_destinationCidrHasBeenSet(false),
-    m_stateHasBeenSet(false),
-    m_routeOriginHasBeenSet(false),
-    m_prefixListIdHasBeenSet(false),
-    m_attachmentIdHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
+TransitGatewayRouteTableRoute::TransitGatewayRouteTableRoute(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

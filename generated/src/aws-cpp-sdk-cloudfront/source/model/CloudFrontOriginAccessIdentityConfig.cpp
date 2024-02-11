@@ -20,15 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-CloudFrontOriginAccessIdentityConfig::CloudFrontOriginAccessIdentityConfig() : 
-    m_callerReferenceHasBeenSet(false),
-    m_commentHasBeenSet(false)
-{
-}
-
-CloudFrontOriginAccessIdentityConfig::CloudFrontOriginAccessIdentityConfig(const XmlNode& xmlNode) : 
-    m_callerReferenceHasBeenSet(false),
-    m_commentHasBeenSet(false)
+CloudFrontOriginAccessIdentityConfig::CloudFrontOriginAccessIdentityConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

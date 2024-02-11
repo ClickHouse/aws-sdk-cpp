@@ -38,487 +38,172 @@ namespace Model
   class Instance
   {
   public:
-    AWS_SNOWDEVICEMANAGEMENT_API Instance();
+    AWS_SNOWDEVICEMANAGEMENT_API Instance() = default;
     AWS_SNOWDEVICEMANAGEMENT_API Instance(Aws::Utils::Json::JsonView jsonValue);
     AWS_SNOWDEVICEMANAGEMENT_API Instance& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SNOWDEVICEMANAGEMENT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Machine Image (AMI) launch index, which you can use to find this
      * instance in the launch group. </p>
      */
-    inline int GetAmiLaunchIndex() const{ return m_amiLaunchIndex; }
-
-    /**
-     * <p>The Amazon Machine Image (AMI) launch index, which you can use to find this
-     * instance in the launch group. </p>
-     */
+    inline int GetAmiLaunchIndex() const { return m_amiLaunchIndex; }
     inline bool AmiLaunchIndexHasBeenSet() const { return m_amiLaunchIndexHasBeenSet; }
-
-    /**
-     * <p>The Amazon Machine Image (AMI) launch index, which you can use to find this
-     * instance in the launch group. </p>
-     */
     inline void SetAmiLaunchIndex(int value) { m_amiLaunchIndexHasBeenSet = true; m_amiLaunchIndex = value; }
-
-    /**
-     * <p>The Amazon Machine Image (AMI) launch index, which you can use to find this
-     * instance in the launch group. </p>
-     */
     inline Instance& WithAmiLaunchIndex(int value) { SetAmiLaunchIndex(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Any block device mapping entries for the instance.</p>
      */
-    inline const Aws::Vector<InstanceBlockDeviceMapping>& GetBlockDeviceMappings() const{ return m_blockDeviceMappings; }
-
-    /**
-     * <p>Any block device mapping entries for the instance.</p>
-     */
+    inline const Aws::Vector<InstanceBlockDeviceMapping>& GetBlockDeviceMappings() const { return m_blockDeviceMappings; }
     inline bool BlockDeviceMappingsHasBeenSet() const { return m_blockDeviceMappingsHasBeenSet; }
+    template<typename BlockDeviceMappingsT = Aws::Vector<InstanceBlockDeviceMapping>>
+    void SetBlockDeviceMappings(BlockDeviceMappingsT&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings = std::forward<BlockDeviceMappingsT>(value); }
+    template<typename BlockDeviceMappingsT = Aws::Vector<InstanceBlockDeviceMapping>>
+    Instance& WithBlockDeviceMappings(BlockDeviceMappingsT&& value) { SetBlockDeviceMappings(std::forward<BlockDeviceMappingsT>(value)); return *this;}
+    template<typename BlockDeviceMappingsT = InstanceBlockDeviceMapping>
+    Instance& AddBlockDeviceMappings(BlockDeviceMappingsT&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings.emplace_back(std::forward<BlockDeviceMappingsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Any block device mapping entries for the instance.</p>
-     */
-    inline void SetBlockDeviceMappings(const Aws::Vector<InstanceBlockDeviceMapping>& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings = value; }
-
-    /**
-     * <p>Any block device mapping entries for the instance.</p>
-     */
-    inline void SetBlockDeviceMappings(Aws::Vector<InstanceBlockDeviceMapping>&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings = std::move(value); }
-
-    /**
-     * <p>Any block device mapping entries for the instance.</p>
-     */
-    inline Instance& WithBlockDeviceMappings(const Aws::Vector<InstanceBlockDeviceMapping>& value) { SetBlockDeviceMappings(value); return *this;}
-
-    /**
-     * <p>Any block device mapping entries for the instance.</p>
-     */
-    inline Instance& WithBlockDeviceMappings(Aws::Vector<InstanceBlockDeviceMapping>&& value) { SetBlockDeviceMappings(std::move(value)); return *this;}
-
-    /**
-     * <p>Any block device mapping entries for the instance.</p>
-     */
-    inline Instance& AddBlockDeviceMappings(const InstanceBlockDeviceMapping& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings.push_back(value); return *this; }
-
-    /**
-     * <p>Any block device mapping entries for the instance.</p>
-     */
-    inline Instance& AddBlockDeviceMappings(InstanceBlockDeviceMapping&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The CPU options for the instance.</p>
      */
-    inline const CpuOptions& GetCpuOptions() const{ return m_cpuOptions; }
-
-    /**
-     * <p>The CPU options for the instance.</p>
-     */
+    inline const CpuOptions& GetCpuOptions() const { return m_cpuOptions; }
     inline bool CpuOptionsHasBeenSet() const { return m_cpuOptionsHasBeenSet; }
+    template<typename CpuOptionsT = CpuOptions>
+    void SetCpuOptions(CpuOptionsT&& value) { m_cpuOptionsHasBeenSet = true; m_cpuOptions = std::forward<CpuOptionsT>(value); }
+    template<typename CpuOptionsT = CpuOptions>
+    Instance& WithCpuOptions(CpuOptionsT&& value) { SetCpuOptions(std::forward<CpuOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The CPU options for the instance.</p>
-     */
-    inline void SetCpuOptions(const CpuOptions& value) { m_cpuOptionsHasBeenSet = true; m_cpuOptions = value; }
-
-    /**
-     * <p>The CPU options for the instance.</p>
-     */
-    inline void SetCpuOptions(CpuOptions&& value) { m_cpuOptionsHasBeenSet = true; m_cpuOptions = std::move(value); }
-
-    /**
-     * <p>The CPU options for the instance.</p>
-     */
-    inline Instance& WithCpuOptions(const CpuOptions& value) { SetCpuOptions(value); return *this;}
-
-    /**
-     * <p>The CPU options for the instance.</p>
-     */
-    inline Instance& WithCpuOptions(CpuOptions&& value) { SetCpuOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>When the instance was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>When the instance was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    Instance& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When the instance was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>When the instance was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>When the instance was created.</p>
-     */
-    inline Instance& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>When the instance was created.</p>
-     */
-    inline Instance& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the AMI used to launch the instance.</p>
      */
-    inline const Aws::String& GetImageId() const{ return m_imageId; }
-
-    /**
-     * <p>The ID of the AMI used to launch the instance.</p>
-     */
+    inline const Aws::String& GetImageId() const { return m_imageId; }
     inline bool ImageIdHasBeenSet() const { return m_imageIdHasBeenSet; }
+    template<typename ImageIdT = Aws::String>
+    void SetImageId(ImageIdT&& value) { m_imageIdHasBeenSet = true; m_imageId = std::forward<ImageIdT>(value); }
+    template<typename ImageIdT = Aws::String>
+    Instance& WithImageId(ImageIdT&& value) { SetImageId(std::forward<ImageIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the AMI used to launch the instance.</p>
-     */
-    inline void SetImageId(const Aws::String& value) { m_imageIdHasBeenSet = true; m_imageId = value; }
-
-    /**
-     * <p>The ID of the AMI used to launch the instance.</p>
-     */
-    inline void SetImageId(Aws::String&& value) { m_imageIdHasBeenSet = true; m_imageId = std::move(value); }
-
-    /**
-     * <p>The ID of the AMI used to launch the instance.</p>
-     */
-    inline void SetImageId(const char* value) { m_imageIdHasBeenSet = true; m_imageId.assign(value); }
-
-    /**
-     * <p>The ID of the AMI used to launch the instance.</p>
-     */
-    inline Instance& WithImageId(const Aws::String& value) { SetImageId(value); return *this;}
-
-    /**
-     * <p>The ID of the AMI used to launch the instance.</p>
-     */
-    inline Instance& WithImageId(Aws::String&& value) { SetImageId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the AMI used to launch the instance.</p>
-     */
-    inline Instance& WithImageId(const char* value) { SetImageId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the instance.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    Instance& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline Instance& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline Instance& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline Instance& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The instance type.</p>
      */
-    inline const Aws::String& GetInstanceType() const{ return m_instanceType; }
-
-    /**
-     * <p>The instance type.</p>
-     */
+    inline const Aws::String& GetInstanceType() const { return m_instanceType; }
     inline bool InstanceTypeHasBeenSet() const { return m_instanceTypeHasBeenSet; }
+    template<typename InstanceTypeT = Aws::String>
+    void SetInstanceType(InstanceTypeT&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::forward<InstanceTypeT>(value); }
+    template<typename InstanceTypeT = Aws::String>
+    Instance& WithInstanceType(InstanceTypeT&& value) { SetInstanceType(std::forward<InstanceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The instance type.</p>
-     */
-    inline void SetInstanceType(const Aws::String& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
-
-    /**
-     * <p>The instance type.</p>
-     */
-    inline void SetInstanceType(Aws::String&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
-
-    /**
-     * <p>The instance type.</p>
-     */
-    inline void SetInstanceType(const char* value) { m_instanceTypeHasBeenSet = true; m_instanceType.assign(value); }
-
-    /**
-     * <p>The instance type.</p>
-     */
-    inline Instance& WithInstanceType(const Aws::String& value) { SetInstanceType(value); return *this;}
-
-    /**
-     * <p>The instance type.</p>
-     */
-    inline Instance& WithInstanceType(Aws::String&& value) { SetInstanceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The instance type.</p>
-     */
-    inline Instance& WithInstanceType(const char* value) { SetInstanceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The private IPv4 address assigned to the instance.</p>
      */
-    inline const Aws::String& GetPrivateIpAddress() const{ return m_privateIpAddress; }
-
-    /**
-     * <p>The private IPv4 address assigned to the instance.</p>
-     */
+    inline const Aws::String& GetPrivateIpAddress() const { return m_privateIpAddress; }
     inline bool PrivateIpAddressHasBeenSet() const { return m_privateIpAddressHasBeenSet; }
+    template<typename PrivateIpAddressT = Aws::String>
+    void SetPrivateIpAddress(PrivateIpAddressT&& value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress = std::forward<PrivateIpAddressT>(value); }
+    template<typename PrivateIpAddressT = Aws::String>
+    Instance& WithPrivateIpAddress(PrivateIpAddressT&& value) { SetPrivateIpAddress(std::forward<PrivateIpAddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The private IPv4 address assigned to the instance.</p>
-     */
-    inline void SetPrivateIpAddress(const Aws::String& value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress = value; }
-
-    /**
-     * <p>The private IPv4 address assigned to the instance.</p>
-     */
-    inline void SetPrivateIpAddress(Aws::String&& value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress = std::move(value); }
-
-    /**
-     * <p>The private IPv4 address assigned to the instance.</p>
-     */
-    inline void SetPrivateIpAddress(const char* value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress.assign(value); }
-
-    /**
-     * <p>The private IPv4 address assigned to the instance.</p>
-     */
-    inline Instance& WithPrivateIpAddress(const Aws::String& value) { SetPrivateIpAddress(value); return *this;}
-
-    /**
-     * <p>The private IPv4 address assigned to the instance.</p>
-     */
-    inline Instance& WithPrivateIpAddress(Aws::String&& value) { SetPrivateIpAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The private IPv4 address assigned to the instance.</p>
-     */
-    inline Instance& WithPrivateIpAddress(const char* value) { SetPrivateIpAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The public IPv4 address assigned to the instance.</p>
      */
-    inline const Aws::String& GetPublicIpAddress() const{ return m_publicIpAddress; }
-
-    /**
-     * <p>The public IPv4 address assigned to the instance.</p>
-     */
+    inline const Aws::String& GetPublicIpAddress() const { return m_publicIpAddress; }
     inline bool PublicIpAddressHasBeenSet() const { return m_publicIpAddressHasBeenSet; }
+    template<typename PublicIpAddressT = Aws::String>
+    void SetPublicIpAddress(PublicIpAddressT&& value) { m_publicIpAddressHasBeenSet = true; m_publicIpAddress = std::forward<PublicIpAddressT>(value); }
+    template<typename PublicIpAddressT = Aws::String>
+    Instance& WithPublicIpAddress(PublicIpAddressT&& value) { SetPublicIpAddress(std::forward<PublicIpAddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The public IPv4 address assigned to the instance.</p>
-     */
-    inline void SetPublicIpAddress(const Aws::String& value) { m_publicIpAddressHasBeenSet = true; m_publicIpAddress = value; }
-
-    /**
-     * <p>The public IPv4 address assigned to the instance.</p>
-     */
-    inline void SetPublicIpAddress(Aws::String&& value) { m_publicIpAddressHasBeenSet = true; m_publicIpAddress = std::move(value); }
-
-    /**
-     * <p>The public IPv4 address assigned to the instance.</p>
-     */
-    inline void SetPublicIpAddress(const char* value) { m_publicIpAddressHasBeenSet = true; m_publicIpAddress.assign(value); }
-
-    /**
-     * <p>The public IPv4 address assigned to the instance.</p>
-     */
-    inline Instance& WithPublicIpAddress(const Aws::String& value) { SetPublicIpAddress(value); return *this;}
-
-    /**
-     * <p>The public IPv4 address assigned to the instance.</p>
-     */
-    inline Instance& WithPublicIpAddress(Aws::String&& value) { SetPublicIpAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The public IPv4 address assigned to the instance.</p>
-     */
-    inline Instance& WithPublicIpAddress(const char* value) { SetPublicIpAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The device name of the root device volume (for example,
      * <code>/dev/sda1</code>). </p>
      */
-    inline const Aws::String& GetRootDeviceName() const{ return m_rootDeviceName; }
-
-    /**
-     * <p>The device name of the root device volume (for example,
-     * <code>/dev/sda1</code>). </p>
-     */
+    inline const Aws::String& GetRootDeviceName() const { return m_rootDeviceName; }
     inline bool RootDeviceNameHasBeenSet() const { return m_rootDeviceNameHasBeenSet; }
+    template<typename RootDeviceNameT = Aws::String>
+    void SetRootDeviceName(RootDeviceNameT&& value) { m_rootDeviceNameHasBeenSet = true; m_rootDeviceName = std::forward<RootDeviceNameT>(value); }
+    template<typename RootDeviceNameT = Aws::String>
+    Instance& WithRootDeviceName(RootDeviceNameT&& value) { SetRootDeviceName(std::forward<RootDeviceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The device name of the root device volume (for example,
-     * <code>/dev/sda1</code>). </p>
-     */
-    inline void SetRootDeviceName(const Aws::String& value) { m_rootDeviceNameHasBeenSet = true; m_rootDeviceName = value; }
-
-    /**
-     * <p>The device name of the root device volume (for example,
-     * <code>/dev/sda1</code>). </p>
-     */
-    inline void SetRootDeviceName(Aws::String&& value) { m_rootDeviceNameHasBeenSet = true; m_rootDeviceName = std::move(value); }
-
-    /**
-     * <p>The device name of the root device volume (for example,
-     * <code>/dev/sda1</code>). </p>
-     */
-    inline void SetRootDeviceName(const char* value) { m_rootDeviceNameHasBeenSet = true; m_rootDeviceName.assign(value); }
-
-    /**
-     * <p>The device name of the root device volume (for example,
-     * <code>/dev/sda1</code>). </p>
-     */
-    inline Instance& WithRootDeviceName(const Aws::String& value) { SetRootDeviceName(value); return *this;}
-
-    /**
-     * <p>The device name of the root device volume (for example,
-     * <code>/dev/sda1</code>). </p>
-     */
-    inline Instance& WithRootDeviceName(Aws::String&& value) { SetRootDeviceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The device name of the root device volume (for example,
-     * <code>/dev/sda1</code>). </p>
-     */
-    inline Instance& WithRootDeviceName(const char* value) { SetRootDeviceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The security groups for the instance.</p>
      */
-    inline const Aws::Vector<SecurityGroupIdentifier>& GetSecurityGroups() const{ return m_securityGroups; }
-
-    /**
-     * <p>The security groups for the instance.</p>
-     */
+    inline const Aws::Vector<SecurityGroupIdentifier>& GetSecurityGroups() const { return m_securityGroups; }
     inline bool SecurityGroupsHasBeenSet() const { return m_securityGroupsHasBeenSet; }
+    template<typename SecurityGroupsT = Aws::Vector<SecurityGroupIdentifier>>
+    void SetSecurityGroups(SecurityGroupsT&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = std::forward<SecurityGroupsT>(value); }
+    template<typename SecurityGroupsT = Aws::Vector<SecurityGroupIdentifier>>
+    Instance& WithSecurityGroups(SecurityGroupsT&& value) { SetSecurityGroups(std::forward<SecurityGroupsT>(value)); return *this;}
+    template<typename SecurityGroupsT = SecurityGroupIdentifier>
+    Instance& AddSecurityGroups(SecurityGroupsT&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.emplace_back(std::forward<SecurityGroupsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The security groups for the instance.</p>
-     */
-    inline void SetSecurityGroups(const Aws::Vector<SecurityGroupIdentifier>& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = value; }
-
-    /**
-     * <p>The security groups for the instance.</p>
-     */
-    inline void SetSecurityGroups(Aws::Vector<SecurityGroupIdentifier>&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = std::move(value); }
-
-    /**
-     * <p>The security groups for the instance.</p>
-     */
-    inline Instance& WithSecurityGroups(const Aws::Vector<SecurityGroupIdentifier>& value) { SetSecurityGroups(value); return *this;}
-
-    /**
-     * <p>The security groups for the instance.</p>
-     */
-    inline Instance& WithSecurityGroups(Aws::Vector<SecurityGroupIdentifier>&& value) { SetSecurityGroups(std::move(value)); return *this;}
-
-    /**
-     * <p>The security groups for the instance.</p>
-     */
-    inline Instance& AddSecurityGroups(const SecurityGroupIdentifier& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(value); return *this; }
-
-    /**
-     * <p>The security groups for the instance.</p>
-     */
-    inline Instance& AddSecurityGroups(SecurityGroupIdentifier&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const InstanceState& GetState() const{ return m_state; }
-
-    
+    inline const InstanceState& GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    template<typename StateT = InstanceState>
+    void SetState(StateT&& value) { m_stateHasBeenSet = true; m_state = std::forward<StateT>(value); }
+    template<typename StateT = InstanceState>
+    Instance& WithState(StateT&& value) { SetState(std::forward<StateT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetState(const InstanceState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    
-    inline void SetState(InstanceState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    
-    inline Instance& WithState(const InstanceState& value) { SetState(value); return *this;}
-
-    
-    inline Instance& WithState(InstanceState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>When the instance was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdatedAt() const{ return m_updatedAt; }
-
-    /**
-     * <p>When the instance was last updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdatedAt() const { return m_updatedAt; }
     inline bool UpdatedAtHasBeenSet() const { return m_updatedAtHasBeenSet; }
-
-    /**
-     * <p>When the instance was last updated.</p>
-     */
-    inline void SetUpdatedAt(const Aws::Utils::DateTime& value) { m_updatedAtHasBeenSet = true; m_updatedAt = value; }
-
-    /**
-     * <p>When the instance was last updated.</p>
-     */
-    inline void SetUpdatedAt(Aws::Utils::DateTime&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::move(value); }
-
-    /**
-     * <p>When the instance was last updated.</p>
-     */
-    inline Instance& WithUpdatedAt(const Aws::Utils::DateTime& value) { SetUpdatedAt(value); return *this;}
-
-    /**
-     * <p>When the instance was last updated.</p>
-     */
-    inline Instance& WithUpdatedAt(Aws::Utils::DateTime&& value) { SetUpdatedAt(std::move(value)); return *this;}
-
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    void SetUpdatedAt(UpdatedAtT&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::forward<UpdatedAtT>(value); }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    Instance& WithUpdatedAt(UpdatedAtT&& value) { SetUpdatedAt(std::forward<UpdatedAtT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_amiLaunchIndex;
+    int m_amiLaunchIndex{0};
     bool m_amiLaunchIndexHasBeenSet = false;
 
     Aws::Vector<InstanceBlockDeviceMapping> m_blockDeviceMappings;
@@ -527,7 +212,7 @@ namespace Model
     CpuOptions m_cpuOptions;
     bool m_cpuOptionsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
     Aws::String m_imageId;
@@ -554,7 +239,7 @@ namespace Model
     InstanceState m_state;
     bool m_stateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updatedAt;
+    Aws::Utils::DateTime m_updatedAt{};
     bool m_updatedAtHasBeenSet = false;
   };
 

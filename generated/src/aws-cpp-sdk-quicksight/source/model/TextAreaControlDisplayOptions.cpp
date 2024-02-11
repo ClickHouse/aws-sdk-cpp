@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-TextAreaControlDisplayOptions::TextAreaControlDisplayOptions() : 
-    m_titleOptionsHasBeenSet(false),
-    m_placeholderOptionsHasBeenSet(false)
-{
-}
-
-TextAreaControlDisplayOptions::TextAreaControlDisplayOptions(JsonView jsonValue) : 
-    m_titleOptionsHasBeenSet(false),
-    m_placeholderOptionsHasBeenSet(false)
+TextAreaControlDisplayOptions::TextAreaControlDisplayOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ TextAreaControlDisplayOptions& TextAreaControlDisplayOptions::operator =(JsonVie
   if(jsonValue.ValueExists("TitleOptions"))
   {
     m_titleOptions = jsonValue.GetObject("TitleOptions");
-
     m_titleOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PlaceholderOptions"))
   {
     m_placeholderOptions = jsonValue.GetObject("PlaceholderOptions");
-
     m_placeholderOptionsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("InfoIconLabelOptions"))
+  {
+    m_infoIconLabelOptions = jsonValue.GetObject("InfoIconLabelOptions");
+    m_infoIconLabelOptionsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +56,12 @@ JsonValue TextAreaControlDisplayOptions::Jsonize() const
   if(m_placeholderOptionsHasBeenSet)
   {
    payload.WithObject("PlaceholderOptions", m_placeholderOptions.Jsonize());
+
+  }
+
+  if(m_infoIconLabelOptionsHasBeenSet)
+  {
+   payload.WithObject("InfoIconLabelOptions", m_infoIconLabelOptions.Jsonize());
 
   }
 

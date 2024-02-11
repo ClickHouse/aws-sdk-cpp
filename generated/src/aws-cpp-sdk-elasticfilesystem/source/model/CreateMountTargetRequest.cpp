@@ -12,14 +12,6 @@ using namespace Aws::EFS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateMountTargetRequest::CreateMountTargetRequest() : 
-    m_fileSystemIdHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_ipAddressHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false)
-{
-}
-
 Aws::String CreateMountTargetRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -40,6 +32,17 @@ Aws::String CreateMountTargetRequest::SerializePayload() const
   {
    payload.WithString("IpAddress", m_ipAddress);
 
+  }
+
+  if(m_ipv6AddressHasBeenSet)
+  {
+   payload.WithString("Ipv6Address", m_ipv6Address);
+
+  }
+
+  if(m_ipAddressTypeHasBeenSet)
+  {
+   payload.WithString("IpAddressType", IpAddressTypeMapper::GetNameForIpAddressType(m_ipAddressType));
   }
 
   if(m_securityGroupsHasBeenSet)

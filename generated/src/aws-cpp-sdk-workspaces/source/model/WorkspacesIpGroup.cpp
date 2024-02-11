@@ -18,19 +18,7 @@ namespace WorkSpaces
 namespace Model
 {
 
-WorkspacesIpGroup::WorkspacesIpGroup() : 
-    m_groupIdHasBeenSet(false),
-    m_groupNameHasBeenSet(false),
-    m_groupDescHasBeenSet(false),
-    m_userRulesHasBeenSet(false)
-{
-}
-
-WorkspacesIpGroup::WorkspacesIpGroup(JsonView jsonValue) : 
-    m_groupIdHasBeenSet(false),
-    m_groupNameHasBeenSet(false),
-    m_groupDescHasBeenSet(false),
-    m_userRulesHasBeenSet(false)
+WorkspacesIpGroup::WorkspacesIpGroup(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ WorkspacesIpGroup& WorkspacesIpGroup::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("groupId"))
   {
     m_groupId = jsonValue.GetString("groupId");
-
     m_groupIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("groupName"))
   {
     m_groupName = jsonValue.GetString("groupName");
-
     m_groupNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("groupDesc"))
   {
     m_groupDesc = jsonValue.GetString("groupDesc");
-
     m_groupDescHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("userRules"))
   {
     Aws::Utils::Array<JsonView> userRulesJsonList = jsonValue.GetArray("userRules");
@@ -67,7 +49,6 @@ WorkspacesIpGroup& WorkspacesIpGroup::operator =(JsonView jsonValue)
     }
     m_userRulesHasBeenSet = true;
   }
-
   return *this;
 }
 

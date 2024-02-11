@@ -18,15 +18,7 @@ namespace kendra
 namespace Model
 {
 
-DocumentRelevanceConfiguration::DocumentRelevanceConfiguration() : 
-    m_nameHasBeenSet(false),
-    m_relevanceHasBeenSet(false)
-{
-}
-
-DocumentRelevanceConfiguration::DocumentRelevanceConfiguration(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_relevanceHasBeenSet(false)
+DocumentRelevanceConfiguration::DocumentRelevanceConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DocumentRelevanceConfiguration& DocumentRelevanceConfiguration::operator =(JsonV
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Relevance"))
   {
     m_relevance = jsonValue.GetObject("Relevance");
-
     m_relevanceHasBeenSet = true;
   }
-
   return *this;
 }
 

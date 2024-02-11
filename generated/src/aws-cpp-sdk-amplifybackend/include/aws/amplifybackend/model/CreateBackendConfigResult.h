@@ -27,187 +27,79 @@ namespace Model
   class CreateBackendConfigResult
   {
   public:
-    AWS_AMPLIFYBACKEND_API CreateBackendConfigResult();
+    AWS_AMPLIFYBACKEND_API CreateBackendConfigResult() = default;
     AWS_AMPLIFYBACKEND_API CreateBackendConfigResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_AMPLIFYBACKEND_API CreateBackendConfigResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The app ID.</p>
      */
-    inline const Aws::String& GetAppId() const{ return m_appId; }
+    inline const Aws::String& GetAppId() const { return m_appId; }
+    template<typename AppIdT = Aws::String>
+    void SetAppId(AppIdT&& value) { m_appIdHasBeenSet = true; m_appId = std::forward<AppIdT>(value); }
+    template<typename AppIdT = Aws::String>
+    CreateBackendConfigResult& WithAppId(AppIdT&& value) { SetAppId(std::forward<AppIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The app ID.</p>
-     */
-    inline void SetAppId(const Aws::String& value) { m_appId = value; }
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline void SetAppId(Aws::String&& value) { m_appId = std::move(value); }
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline void SetAppId(const char* value) { m_appId.assign(value); }
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline CreateBackendConfigResult& WithAppId(const Aws::String& value) { SetAppId(value); return *this;}
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline CreateBackendConfigResult& WithAppId(Aws::String&& value) { SetAppId(std::move(value)); return *this;}
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline CreateBackendConfigResult& WithAppId(const char* value) { SetAppId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the backend environment.</p>
      */
-    inline const Aws::String& GetBackendEnvironmentName() const{ return m_backendEnvironmentName; }
+    inline const Aws::String& GetBackendEnvironmentName() const { return m_backendEnvironmentName; }
+    template<typename BackendEnvironmentNameT = Aws::String>
+    void SetBackendEnvironmentName(BackendEnvironmentNameT&& value) { m_backendEnvironmentNameHasBeenSet = true; m_backendEnvironmentName = std::forward<BackendEnvironmentNameT>(value); }
+    template<typename BackendEnvironmentNameT = Aws::String>
+    CreateBackendConfigResult& WithBackendEnvironmentName(BackendEnvironmentNameT&& value) { SetBackendEnvironmentName(std::forward<BackendEnvironmentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline void SetBackendEnvironmentName(const Aws::String& value) { m_backendEnvironmentName = value; }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline void SetBackendEnvironmentName(Aws::String&& value) { m_backendEnvironmentName = std::move(value); }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline void SetBackendEnvironmentName(const char* value) { m_backendEnvironmentName.assign(value); }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline CreateBackendConfigResult& WithBackendEnvironmentName(const Aws::String& value) { SetBackendEnvironmentName(value); return *this;}
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline CreateBackendConfigResult& WithBackendEnvironmentName(Aws::String&& value) { SetBackendEnvironmentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline CreateBackendConfigResult& WithBackendEnvironmentName(const char* value) { SetBackendEnvironmentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID for the job.</p>
      */
-    inline const Aws::String& GetJobId() const{ return m_jobId; }
+    inline const Aws::String& GetJobId() const { return m_jobId; }
+    template<typename JobIdT = Aws::String>
+    void SetJobId(JobIdT&& value) { m_jobIdHasBeenSet = true; m_jobId = std::forward<JobIdT>(value); }
+    template<typename JobIdT = Aws::String>
+    CreateBackendConfigResult& WithJobId(JobIdT&& value) { SetJobId(std::forward<JobIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID for the job.</p>
-     */
-    inline void SetJobId(const Aws::String& value) { m_jobId = value; }
-
-    /**
-     * <p>The ID for the job.</p>
-     */
-    inline void SetJobId(Aws::String&& value) { m_jobId = std::move(value); }
-
-    /**
-     * <p>The ID for the job.</p>
-     */
-    inline void SetJobId(const char* value) { m_jobId.assign(value); }
-
-    /**
-     * <p>The ID for the job.</p>
-     */
-    inline CreateBackendConfigResult& WithJobId(const Aws::String& value) { SetJobId(value); return *this;}
-
-    /**
-     * <p>The ID for the job.</p>
-     */
-    inline CreateBackendConfigResult& WithJobId(Aws::String&& value) { SetJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for the job.</p>
-     */
-    inline CreateBackendConfigResult& WithJobId(const char* value) { SetJobId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the request.</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
+    inline const Aws::String& GetStatus() const { return m_status; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    CreateBackendConfigResult& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_status = value; }
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline void SetStatus(const char* value) { m_status.assign(value); }
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline CreateBackendConfigResult& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline CreateBackendConfigResult& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline CreateBackendConfigResult& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateBackendConfigResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateBackendConfigResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateBackendConfigResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateBackendConfigResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_appId;
+    bool m_appIdHasBeenSet = false;
 
     Aws::String m_backendEnvironmentName;
+    bool m_backendEnvironmentNameHasBeenSet = false;
 
     Aws::String m_jobId;
+    bool m_jobIdHasBeenSet = false;
 
     Aws::String m_status;
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

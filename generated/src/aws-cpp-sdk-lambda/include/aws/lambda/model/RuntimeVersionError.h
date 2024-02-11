@@ -32,93 +32,35 @@ namespace Model
   class RuntimeVersionError
   {
   public:
-    AWS_LAMBDA_API RuntimeVersionError();
+    AWS_LAMBDA_API RuntimeVersionError() = default;
     AWS_LAMBDA_API RuntimeVersionError(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAMBDA_API RuntimeVersionError& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAMBDA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The error code.</p>
      */
-    inline const Aws::String& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p>The error code.</p>
-     */
+    inline const Aws::String& GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
+    template<typename ErrorCodeT = Aws::String>
+    void SetErrorCode(ErrorCodeT&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::forward<ErrorCodeT>(value); }
+    template<typename ErrorCodeT = Aws::String>
+    RuntimeVersionError& WithErrorCode(ErrorCodeT&& value) { SetErrorCode(std::forward<ErrorCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The error code.</p>
-     */
-    inline void SetErrorCode(const Aws::String& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline void SetErrorCode(Aws::String&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline void SetErrorCode(const char* value) { m_errorCodeHasBeenSet = true; m_errorCode.assign(value); }
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline RuntimeVersionError& WithErrorCode(const Aws::String& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline RuntimeVersionError& WithErrorCode(Aws::String&& value) { SetErrorCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline RuntimeVersionError& WithErrorCode(const char* value) { SetErrorCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The error message.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The error message.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline RuntimeVersionError& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline RuntimeVersionError& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline RuntimeVersionError& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    RuntimeVersionError& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_errorCode;

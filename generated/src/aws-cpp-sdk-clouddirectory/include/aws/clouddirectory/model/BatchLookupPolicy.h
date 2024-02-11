@@ -35,104 +35,45 @@ namespace Model
   class BatchLookupPolicy
   {
   public:
-    AWS_CLOUDDIRECTORY_API BatchLookupPolicy();
+    AWS_CLOUDDIRECTORY_API BatchLookupPolicy() = default;
     AWS_CLOUDDIRECTORY_API BatchLookupPolicy(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API BatchLookupPolicy& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Reference that identifies the object whose policies will be looked up.</p>
      */
-    inline const ObjectReference& GetObjectReference() const{ return m_objectReference; }
-
-    /**
-     * <p>Reference that identifies the object whose policies will be looked up.</p>
-     */
+    inline const ObjectReference& GetObjectReference() const { return m_objectReference; }
     inline bool ObjectReferenceHasBeenSet() const { return m_objectReferenceHasBeenSet; }
+    template<typename ObjectReferenceT = ObjectReference>
+    void SetObjectReference(ObjectReferenceT&& value) { m_objectReferenceHasBeenSet = true; m_objectReference = std::forward<ObjectReferenceT>(value); }
+    template<typename ObjectReferenceT = ObjectReference>
+    BatchLookupPolicy& WithObjectReference(ObjectReferenceT&& value) { SetObjectReference(std::forward<ObjectReferenceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Reference that identifies the object whose policies will be looked up.</p>
-     */
-    inline void SetObjectReference(const ObjectReference& value) { m_objectReferenceHasBeenSet = true; m_objectReference = value; }
-
-    /**
-     * <p>Reference that identifies the object whose policies will be looked up.</p>
-     */
-    inline void SetObjectReference(ObjectReference&& value) { m_objectReferenceHasBeenSet = true; m_objectReference = std::move(value); }
-
-    /**
-     * <p>Reference that identifies the object whose policies will be looked up.</p>
-     */
-    inline BatchLookupPolicy& WithObjectReference(const ObjectReference& value) { SetObjectReference(value); return *this;}
-
-    /**
-     * <p>Reference that identifies the object whose policies will be looked up.</p>
-     */
-    inline BatchLookupPolicy& WithObjectReference(ObjectReference&& value) { SetObjectReference(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The pagination token.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The pagination token.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    BatchLookupPolicy& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline BatchLookupPolicy& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline BatchLookupPolicy& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline BatchLookupPolicy& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to retrieve.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to retrieve.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to retrieve.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to retrieve.</p>
-     */
     inline BatchLookupPolicy& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     ObjectReference m_objectReference;
@@ -141,7 +82,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

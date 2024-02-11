@@ -12,25 +12,38 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartOutboundVoiceContactRequest::StartOutboundVoiceContactRequest() : 
-    m_destinationPhoneNumberHasBeenSet(false),
-    m_contactFlowIdHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::RandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_sourcePhoneNumberHasBeenSet(false),
-    m_queueIdHasBeenSet(false),
-    m_attributesHasBeenSet(false),
-    m_answerMachineDetectionConfigHasBeenSet(false),
-    m_campaignIdHasBeenSet(false),
-    m_trafficType(TrafficType::NOT_SET),
-    m_trafficTypeHasBeenSet(false)
-{
-}
-
 Aws::String StartOutboundVoiceContactRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_nameHasBeenSet)
+  {
+   payload.WithString("Name", m_name);
+
+  }
+
+  if(m_descriptionHasBeenSet)
+  {
+   payload.WithString("Description", m_description);
+
+  }
+
+  if(m_referencesHasBeenSet)
+  {
+   JsonValue referencesJsonMap;
+   for(auto& referencesItem : m_references)
+   {
+     referencesJsonMap.WithObject(referencesItem.first, referencesItem.second.Jsonize());
+   }
+   payload.WithObject("References", std::move(referencesJsonMap));
+
+  }
+
+  if(m_relatedContactIdHasBeenSet)
+  {
+   payload.WithString("RelatedContactId", m_relatedContactId);
+
+  }
 
   if(m_destinationPhoneNumberHasBeenSet)
   {

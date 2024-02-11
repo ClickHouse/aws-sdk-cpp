@@ -18,13 +18,7 @@ namespace IoTEvents
 namespace Model
 {
 
-RecipientDetail::RecipientDetail() : 
-    m_ssoIdentityHasBeenSet(false)
-{
-}
-
-RecipientDetail::RecipientDetail(JsonView jsonValue) : 
-    m_ssoIdentityHasBeenSet(false)
+RecipientDetail::RecipientDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ RecipientDetail& RecipientDetail::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ssoIdentity"))
   {
     m_ssoIdentity = jsonValue.GetObject("ssoIdentity");
-
     m_ssoIdentityHasBeenSet = true;
   }
-
   return *this;
 }
 

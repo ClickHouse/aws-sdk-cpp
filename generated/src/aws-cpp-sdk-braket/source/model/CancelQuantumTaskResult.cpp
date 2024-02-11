@@ -17,13 +17,7 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-CancelQuantumTaskResult::CancelQuantumTaskResult() : 
-    m_cancellationStatus(CancellationStatus::NOT_SET)
-{
-}
-
-CancelQuantumTaskResult::CancelQuantumTaskResult(const Aws::AmazonWebServiceResult<JsonValue>& result) : 
-    m_cancellationStatus(CancellationStatus::NOT_SET)
+CancelQuantumTaskResult::CancelQuantumTaskResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
 }
@@ -31,24 +25,23 @@ CancelQuantumTaskResult::CancelQuantumTaskResult(const Aws::AmazonWebServiceResu
 CancelQuantumTaskResult& CancelQuantumTaskResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("cancellationStatus"))
-  {
-    m_cancellationStatus = CancellationStatusMapper::GetCancellationStatusForName(jsonValue.GetString("cancellationStatus"));
-
-  }
-
   if(jsonValue.ValueExists("quantumTaskArn"))
   {
     m_quantumTaskArn = jsonValue.GetString("quantumTaskArn");
-
+    m_quantumTaskArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("cancellationStatus"))
+  {
+    m_cancellationStatus = CancellationStatusMapper::GetCancellationStatusForName(jsonValue.GetString("cancellationStatus"));
+    m_cancellationStatusHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

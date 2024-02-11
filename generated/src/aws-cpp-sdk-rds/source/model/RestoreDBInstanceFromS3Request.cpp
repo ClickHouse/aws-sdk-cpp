@@ -10,76 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-RestoreDBInstanceFromS3Request::RestoreDBInstanceFromS3Request() : 
-    m_dBNameHasBeenSet(false),
-    m_dBInstanceIdentifierHasBeenSet(false),
-    m_allocatedStorage(0),
-    m_allocatedStorageHasBeenSet(false),
-    m_dBInstanceClassHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_masterUsernameHasBeenSet(false),
-    m_masterUserPasswordHasBeenSet(false),
-    m_dBSecurityGroupsHasBeenSet(false),
-    m_vpcSecurityGroupIdsHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_dBSubnetGroupNameHasBeenSet(false),
-    m_preferredMaintenanceWindowHasBeenSet(false),
-    m_dBParameterGroupNameHasBeenSet(false),
-    m_backupRetentionPeriod(0),
-    m_backupRetentionPeriodHasBeenSet(false),
-    m_preferredBackupWindowHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_multiAZ(false),
-    m_multiAZHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_autoMinorVersionUpgrade(false),
-    m_autoMinorVersionUpgradeHasBeenSet(false),
-    m_licenseModelHasBeenSet(false),
-    m_iops(0),
-    m_iopsHasBeenSet(false),
-    m_optionGroupNameHasBeenSet(false),
-    m_publiclyAccessible(false),
-    m_publiclyAccessibleHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_storageTypeHasBeenSet(false),
-    m_storageEncrypted(false),
-    m_storageEncryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_copyTagsToSnapshot(false),
-    m_copyTagsToSnapshotHasBeenSet(false),
-    m_monitoringInterval(0),
-    m_monitoringIntervalHasBeenSet(false),
-    m_monitoringRoleArnHasBeenSet(false),
-    m_enableIAMDatabaseAuthentication(false),
-    m_enableIAMDatabaseAuthenticationHasBeenSet(false),
-    m_sourceEngineHasBeenSet(false),
-    m_sourceEngineVersionHasBeenSet(false),
-    m_s3BucketNameHasBeenSet(false),
-    m_s3PrefixHasBeenSet(false),
-    m_s3IngestionRoleArnHasBeenSet(false),
-    m_enablePerformanceInsights(false),
-    m_enablePerformanceInsightsHasBeenSet(false),
-    m_performanceInsightsKMSKeyIdHasBeenSet(false),
-    m_performanceInsightsRetentionPeriod(0),
-    m_performanceInsightsRetentionPeriodHasBeenSet(false),
-    m_enableCloudwatchLogsExportsHasBeenSet(false),
-    m_processorFeaturesHasBeenSet(false),
-    m_useDefaultProcessorFeatures(false),
-    m_useDefaultProcessorFeaturesHasBeenSet(false),
-    m_deletionProtection(false),
-    m_deletionProtectionHasBeenSet(false),
-    m_maxAllocatedStorage(0),
-    m_maxAllocatedStorageHasBeenSet(false),
-    m_networkTypeHasBeenSet(false),
-    m_storageThroughput(0),
-    m_storageThroughputHasBeenSet(false),
-    m_manageMasterUserPassword(false),
-    m_manageMasterUserPasswordHasBeenSet(false),
-    m_masterUserSecretKmsKeyIdHasBeenSet(false)
-{
-}
-
 Aws::String RestoreDBInstanceFromS3Request::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -121,23 +51,37 @@ Aws::String RestoreDBInstanceFromS3Request::SerializePayload() const
 
   if(m_dBSecurityGroupsHasBeenSet)
   {
-    unsigned dBSecurityGroupsCount = 1;
-    for(auto& item : m_dBSecurityGroups)
+    if (m_dBSecurityGroups.empty())
     {
-      ss << "DBSecurityGroups.member." << dBSecurityGroupsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      dBSecurityGroupsCount++;
+      ss << "DBSecurityGroups=&";
+    }
+    else
+    {
+      unsigned dBSecurityGroupsCount = 1;
+      for(auto& item : m_dBSecurityGroups)
+      {
+        ss << "DBSecurityGroups.DBSecurityGroupName." << dBSecurityGroupsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        dBSecurityGroupsCount++;
+      }
     }
   }
 
   if(m_vpcSecurityGroupIdsHasBeenSet)
   {
-    unsigned vpcSecurityGroupIdsCount = 1;
-    for(auto& item : m_vpcSecurityGroupIds)
+    if (m_vpcSecurityGroupIds.empty())
     {
-      ss << "VpcSecurityGroupIds.member." << vpcSecurityGroupIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      vpcSecurityGroupIdsCount++;
+      ss << "VpcSecurityGroupIds=&";
+    }
+    else
+    {
+      unsigned vpcSecurityGroupIdsCount = 1;
+      for(auto& item : m_vpcSecurityGroupIds)
+      {
+        ss << "VpcSecurityGroupIds.VpcSecurityGroupId." << vpcSecurityGroupIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        vpcSecurityGroupIdsCount++;
+      }
     }
   }
 
@@ -213,11 +157,18 @@ Aws::String RestoreDBInstanceFromS3Request::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 
@@ -281,6 +232,11 @@ Aws::String RestoreDBInstanceFromS3Request::SerializePayload() const
     ss << "S3IngestionRoleArn=" << StringUtils::URLEncode(m_s3IngestionRoleArn.c_str()) << "&";
   }
 
+  if(m_databaseInsightsModeHasBeenSet)
+  {
+    ss << "DatabaseInsightsMode=" << StringUtils::URLEncode(DatabaseInsightsModeMapper::GetNameForDatabaseInsightsMode(m_databaseInsightsMode)) << "&";
+  }
+
   if(m_enablePerformanceInsightsHasBeenSet)
   {
     ss << "EnablePerformanceInsights=" << std::boolalpha << m_enablePerformanceInsights << "&";
@@ -298,22 +254,36 @@ Aws::String RestoreDBInstanceFromS3Request::SerializePayload() const
 
   if(m_enableCloudwatchLogsExportsHasBeenSet)
   {
-    unsigned enableCloudwatchLogsExportsCount = 1;
-    for(auto& item : m_enableCloudwatchLogsExports)
+    if (m_enableCloudwatchLogsExports.empty())
     {
-      ss << "EnableCloudwatchLogsExports.member." << enableCloudwatchLogsExportsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      enableCloudwatchLogsExportsCount++;
+      ss << "EnableCloudwatchLogsExports=&";
+    }
+    else
+    {
+      unsigned enableCloudwatchLogsExportsCount = 1;
+      for(auto& item : m_enableCloudwatchLogsExports)
+      {
+        ss << "EnableCloudwatchLogsExports.member." << enableCloudwatchLogsExportsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        enableCloudwatchLogsExportsCount++;
+      }
     }
   }
 
   if(m_processorFeaturesHasBeenSet)
   {
-    unsigned processorFeaturesCount = 1;
-    for(auto& item : m_processorFeatures)
+    if (m_processorFeatures.empty())
     {
-      item.OutputToStream(ss, "ProcessorFeatures.member.", processorFeaturesCount, "");
-      processorFeaturesCount++;
+      ss << "ProcessorFeatures=&";
+    }
+    else
+    {
+      unsigned processorFeaturesCount = 1;
+      for(auto& item : m_processorFeatures)
+      {
+        item.OutputToStream(ss, "ProcessorFeatures.ProcessorFeature.", processorFeaturesCount, "");
+        processorFeaturesCount++;
+      }
     }
   }
 
@@ -350,6 +320,21 @@ Aws::String RestoreDBInstanceFromS3Request::SerializePayload() const
   if(m_masterUserSecretKmsKeyIdHasBeenSet)
   {
     ss << "MasterUserSecretKmsKeyId=" << StringUtils::URLEncode(m_masterUserSecretKmsKeyId.c_str()) << "&";
+  }
+
+  if(m_dedicatedLogVolumeHasBeenSet)
+  {
+    ss << "DedicatedLogVolume=" << std::boolalpha << m_dedicatedLogVolume << "&";
+  }
+
+  if(m_cACertificateIdentifierHasBeenSet)
+  {
+    ss << "CACertificateIdentifier=" << StringUtils::URLEncode(m_cACertificateIdentifier.c_str()) << "&";
+  }
+
+  if(m_engineLifecycleSupportHasBeenSet)
+  {
+    ss << "EngineLifecycleSupport=" << StringUtils::URLEncode(m_engineLifecycleSupport.c_str()) << "&";
   }
 
   ss << "Version=2014-10-31";

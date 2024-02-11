@@ -12,18 +12,6 @@ using namespace Aws::QuickSight::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateFolderRequest::CreateFolderRequest() : 
-    m_awsAccountIdHasBeenSet(false),
-    m_folderIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_folderType(FolderType::NOT_SET),
-    m_folderTypeHasBeenSet(false),
-    m_parentFolderArnHasBeenSet(false),
-    m_permissionsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateFolderRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -65,6 +53,11 @@ Aws::String CreateFolderRequest::SerializePayload() const
    }
    payload.WithArray("Tags", std::move(tagsJsonList));
 
+  }
+
+  if(m_sharingModelHasBeenSet)
+  {
+   payload.WithString("SharingModel", SharingModelMapper::GetNameForSharingModel(m_sharingModel));
   }
 
   return payload.View().WriteReadable();

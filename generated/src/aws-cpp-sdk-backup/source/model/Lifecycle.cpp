@@ -18,19 +18,7 @@ namespace Backup
 namespace Model
 {
 
-Lifecycle::Lifecycle() : 
-    m_moveToColdStorageAfterDays(0),
-    m_moveToColdStorageAfterDaysHasBeenSet(false),
-    m_deleteAfterDays(0),
-    m_deleteAfterDaysHasBeenSet(false)
-{
-}
-
-Lifecycle::Lifecycle(JsonView jsonValue) : 
-    m_moveToColdStorageAfterDays(0),
-    m_moveToColdStorageAfterDaysHasBeenSet(false),
-    m_deleteAfterDays(0),
-    m_deleteAfterDaysHasBeenSet(false)
+Lifecycle::Lifecycle(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,18 @@ Lifecycle& Lifecycle::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MoveToColdStorageAfterDays"))
   {
     m_moveToColdStorageAfterDays = jsonValue.GetInt64("MoveToColdStorageAfterDays");
-
     m_moveToColdStorageAfterDaysHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DeleteAfterDays"))
   {
     m_deleteAfterDays = jsonValue.GetInt64("DeleteAfterDays");
-
     m_deleteAfterDaysHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("OptInToArchiveForSupportedResources"))
+  {
+    m_optInToArchiveForSupportedResources = jsonValue.GetBool("OptInToArchiveForSupportedResources");
+    m_optInToArchiveForSupportedResourcesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -67,6 +56,12 @@ JsonValue Lifecycle::Jsonize() const
   if(m_deleteAfterDaysHasBeenSet)
   {
    payload.WithInt64("DeleteAfterDays", m_deleteAfterDays);
+
+  }
+
+  if(m_optInToArchiveForSupportedResourcesHasBeenSet)
+  {
+   payload.WithBool("OptInToArchiveForSupportedResources", m_optInToArchiveForSupportedResources);
 
   }
 

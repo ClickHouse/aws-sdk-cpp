@@ -10,12 +10,6 @@
 using namespace Aws::ElasticLoadBalancingv2::Model;
 using namespace Aws::Utils;
 
-SetSecurityGroupsRequest::SetSecurityGroupsRequest() : 
-    m_loadBalancerArnHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false)
-{
-}
-
 Aws::String SetSecurityGroupsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,13 +21,25 @@ Aws::String SetSecurityGroupsRequest::SerializePayload() const
 
   if(m_securityGroupsHasBeenSet)
   {
-    unsigned securityGroupsCount = 1;
-    for(auto& item : m_securityGroups)
+    if (m_securityGroups.empty())
     {
-      ss << "SecurityGroups.member." << securityGroupsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      securityGroupsCount++;
+      ss << "SecurityGroups=&";
     }
+    else
+    {
+      unsigned securityGroupsCount = 1;
+      for(auto& item : m_securityGroups)
+      {
+        ss << "SecurityGroups.member." << securityGroupsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        securityGroupsCount++;
+      }
+    }
+  }
+
+  if(m_enforceSecurityGroupInboundRulesOnPrivateLinkTrafficHasBeenSet)
+  {
+    ss << "EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic=" << StringUtils::URLEncode(EnforceSecurityGroupInboundRulesOnPrivateLinkTrafficEnumMapper::GetNameForEnforceSecurityGroupInboundRulesOnPrivateLinkTrafficEnum(m_enforceSecurityGroupInboundRulesOnPrivateLinkTraffic)) << "&";
   }
 
   ss << "Version=2015-12-01";

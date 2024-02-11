@@ -27,73 +27,37 @@ namespace Model
   class StartMLEvaluationTaskRunResult
   {
   public:
-    AWS_GLUE_API StartMLEvaluationTaskRunResult();
+    AWS_GLUE_API StartMLEvaluationTaskRunResult() = default;
     AWS_GLUE_API StartMLEvaluationTaskRunResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GLUE_API StartMLEvaluationTaskRunResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The unique identifier associated with this run.</p>
      */
-    inline const Aws::String& GetTaskRunId() const{ return m_taskRunId; }
+    inline const Aws::String& GetTaskRunId() const { return m_taskRunId; }
+    template<typename TaskRunIdT = Aws::String>
+    void SetTaskRunId(TaskRunIdT&& value) { m_taskRunIdHasBeenSet = true; m_taskRunId = std::forward<TaskRunIdT>(value); }
+    template<typename TaskRunIdT = Aws::String>
+    StartMLEvaluationTaskRunResult& WithTaskRunId(TaskRunIdT&& value) { SetTaskRunId(std::forward<TaskRunIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier associated with this run.</p>
-     */
-    inline void SetTaskRunId(const Aws::String& value) { m_taskRunId = value; }
-
-    /**
-     * <p>The unique identifier associated with this run.</p>
-     */
-    inline void SetTaskRunId(Aws::String&& value) { m_taskRunId = std::move(value); }
-
-    /**
-     * <p>The unique identifier associated with this run.</p>
-     */
-    inline void SetTaskRunId(const char* value) { m_taskRunId.assign(value); }
-
-    /**
-     * <p>The unique identifier associated with this run.</p>
-     */
-    inline StartMLEvaluationTaskRunResult& WithTaskRunId(const Aws::String& value) { SetTaskRunId(value); return *this;}
-
-    /**
-     * <p>The unique identifier associated with this run.</p>
-     */
-    inline StartMLEvaluationTaskRunResult& WithTaskRunId(Aws::String&& value) { SetTaskRunId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier associated with this run.</p>
-     */
-    inline StartMLEvaluationTaskRunResult& WithTaskRunId(const char* value) { SetTaskRunId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StartMLEvaluationTaskRunResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StartMLEvaluationTaskRunResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StartMLEvaluationTaskRunResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StartMLEvaluationTaskRunResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_taskRunId;
+    bool m_taskRunIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

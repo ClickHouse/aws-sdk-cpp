@@ -33,73 +33,35 @@ namespace Model
   class ForecastScenario
   {
   public:
-    AWS_QUICKSIGHT_API ForecastScenario();
+    AWS_QUICKSIGHT_API ForecastScenario() = default;
     AWS_QUICKSIGHT_API ForecastScenario(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API ForecastScenario& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The what-if analysis forecast setup with the target date.</p>
      */
-    inline const WhatIfPointScenario& GetWhatIfPointScenario() const{ return m_whatIfPointScenario; }
-
-    /**
-     * <p>The what-if analysis forecast setup with the target date.</p>
-     */
+    inline const WhatIfPointScenario& GetWhatIfPointScenario() const { return m_whatIfPointScenario; }
     inline bool WhatIfPointScenarioHasBeenSet() const { return m_whatIfPointScenarioHasBeenSet; }
+    template<typename WhatIfPointScenarioT = WhatIfPointScenario>
+    void SetWhatIfPointScenario(WhatIfPointScenarioT&& value) { m_whatIfPointScenarioHasBeenSet = true; m_whatIfPointScenario = std::forward<WhatIfPointScenarioT>(value); }
+    template<typename WhatIfPointScenarioT = WhatIfPointScenario>
+    ForecastScenario& WithWhatIfPointScenario(WhatIfPointScenarioT&& value) { SetWhatIfPointScenario(std::forward<WhatIfPointScenarioT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The what-if analysis forecast setup with the target date.</p>
-     */
-    inline void SetWhatIfPointScenario(const WhatIfPointScenario& value) { m_whatIfPointScenarioHasBeenSet = true; m_whatIfPointScenario = value; }
-
-    /**
-     * <p>The what-if analysis forecast setup with the target date.</p>
-     */
-    inline void SetWhatIfPointScenario(WhatIfPointScenario&& value) { m_whatIfPointScenarioHasBeenSet = true; m_whatIfPointScenario = std::move(value); }
-
-    /**
-     * <p>The what-if analysis forecast setup with the target date.</p>
-     */
-    inline ForecastScenario& WithWhatIfPointScenario(const WhatIfPointScenario& value) { SetWhatIfPointScenario(value); return *this;}
-
-    /**
-     * <p>The what-if analysis forecast setup with the target date.</p>
-     */
-    inline ForecastScenario& WithWhatIfPointScenario(WhatIfPointScenario&& value) { SetWhatIfPointScenario(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The what-if analysis forecast setup with the date range.</p>
      */
-    inline const WhatIfRangeScenario& GetWhatIfRangeScenario() const{ return m_whatIfRangeScenario; }
-
-    /**
-     * <p>The what-if analysis forecast setup with the date range.</p>
-     */
+    inline const WhatIfRangeScenario& GetWhatIfRangeScenario() const { return m_whatIfRangeScenario; }
     inline bool WhatIfRangeScenarioHasBeenSet() const { return m_whatIfRangeScenarioHasBeenSet; }
-
-    /**
-     * <p>The what-if analysis forecast setup with the date range.</p>
-     */
-    inline void SetWhatIfRangeScenario(const WhatIfRangeScenario& value) { m_whatIfRangeScenarioHasBeenSet = true; m_whatIfRangeScenario = value; }
-
-    /**
-     * <p>The what-if analysis forecast setup with the date range.</p>
-     */
-    inline void SetWhatIfRangeScenario(WhatIfRangeScenario&& value) { m_whatIfRangeScenarioHasBeenSet = true; m_whatIfRangeScenario = std::move(value); }
-
-    /**
-     * <p>The what-if analysis forecast setup with the date range.</p>
-     */
-    inline ForecastScenario& WithWhatIfRangeScenario(const WhatIfRangeScenario& value) { SetWhatIfRangeScenario(value); return *this;}
-
-    /**
-     * <p>The what-if analysis forecast setup with the date range.</p>
-     */
-    inline ForecastScenario& WithWhatIfRangeScenario(WhatIfRangeScenario&& value) { SetWhatIfRangeScenario(std::move(value)); return *this;}
-
+    template<typename WhatIfRangeScenarioT = WhatIfRangeScenario>
+    void SetWhatIfRangeScenario(WhatIfRangeScenarioT&& value) { m_whatIfRangeScenarioHasBeenSet = true; m_whatIfRangeScenario = std::forward<WhatIfRangeScenarioT>(value); }
+    template<typename WhatIfRangeScenarioT = WhatIfRangeScenario>
+    ForecastScenario& WithWhatIfRangeScenario(WhatIfRangeScenarioT&& value) { SetWhatIfRangeScenario(std::forward<WhatIfRangeScenarioT>(value)); return *this;}
+    ///@}
   private:
 
     WhatIfPointScenario m_whatIfPointScenario;

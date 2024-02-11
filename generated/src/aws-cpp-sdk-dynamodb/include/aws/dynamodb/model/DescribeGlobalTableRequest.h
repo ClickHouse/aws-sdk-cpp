@@ -21,7 +21,7 @@ namespace Model
   class DescribeGlobalTableRequest : public DynamoDBRequest
   {
   public:
-    AWS_DYNAMODB_API DescribeGlobalTableRequest();
+    AWS_DYNAMODB_API DescribeGlobalTableRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,47 +33,22 @@ namespace Model
 
     AWS_DYNAMODB_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+    /**
+     * Helper function to collect parameters (configurable and static hardcoded) required for endpoint computation.
+     */
+    AWS_DYNAMODB_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p>The name of the global table.</p>
      */
-    inline const Aws::String& GetGlobalTableName() const{ return m_globalTableName; }
-
-    /**
-     * <p>The name of the global table.</p>
-     */
+    inline const Aws::String& GetGlobalTableName() const { return m_globalTableName; }
     inline bool GlobalTableNameHasBeenSet() const { return m_globalTableNameHasBeenSet; }
-
-    /**
-     * <p>The name of the global table.</p>
-     */
-    inline void SetGlobalTableName(const Aws::String& value) { m_globalTableNameHasBeenSet = true; m_globalTableName = value; }
-
-    /**
-     * <p>The name of the global table.</p>
-     */
-    inline void SetGlobalTableName(Aws::String&& value) { m_globalTableNameHasBeenSet = true; m_globalTableName = std::move(value); }
-
-    /**
-     * <p>The name of the global table.</p>
-     */
-    inline void SetGlobalTableName(const char* value) { m_globalTableNameHasBeenSet = true; m_globalTableName.assign(value); }
-
-    /**
-     * <p>The name of the global table.</p>
-     */
-    inline DescribeGlobalTableRequest& WithGlobalTableName(const Aws::String& value) { SetGlobalTableName(value); return *this;}
-
-    /**
-     * <p>The name of the global table.</p>
-     */
-    inline DescribeGlobalTableRequest& WithGlobalTableName(Aws::String&& value) { SetGlobalTableName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the global table.</p>
-     */
-    inline DescribeGlobalTableRequest& WithGlobalTableName(const char* value) { SetGlobalTableName(value); return *this;}
-
+    template<typename GlobalTableNameT = Aws::String>
+    void SetGlobalTableName(GlobalTableNameT&& value) { m_globalTableNameHasBeenSet = true; m_globalTableName = std::forward<GlobalTableNameT>(value); }
+    template<typename GlobalTableNameT = Aws::String>
+    DescribeGlobalTableRequest& WithGlobalTableName(GlobalTableNameT&& value) { SetGlobalTableName(std::forward<GlobalTableNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_globalTableName;

@@ -25,7 +25,7 @@ namespace Model
   class ListRecoveryPointsByResourceRequest : public BackupRequest
   {
   public:
-    AWS_BACKUP_API ListRecoveryPointsByResourceRequest();
+    AWS_BACKUP_API ListRecoveryPointsByResourceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,144 +38,58 @@ namespace Model
     AWS_BACKUP_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>An ARN that uniquely identifies a resource. The format of the ARN depends on
      * the resource type.</p>
      */
-    inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
-
-    /**
-     * <p>An ARN that uniquely identifies a resource. The format of the ARN depends on
-     * the resource type.</p>
-     */
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
     inline bool ResourceArnHasBeenSet() const { return m_resourceArnHasBeenSet; }
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    ListRecoveryPointsByResourceRequest& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An ARN that uniquely identifies a resource. The format of the ARN depends on
-     * the resource type.</p>
-     */
-    inline void SetResourceArn(const Aws::String& value) { m_resourceArnHasBeenSet = true; m_resourceArn = value; }
-
-    /**
-     * <p>An ARN that uniquely identifies a resource. The format of the ARN depends on
-     * the resource type.</p>
-     */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::move(value); }
-
-    /**
-     * <p>An ARN that uniquely identifies a resource. The format of the ARN depends on
-     * the resource type.</p>
-     */
-    inline void SetResourceArn(const char* value) { m_resourceArnHasBeenSet = true; m_resourceArn.assign(value); }
-
-    /**
-     * <p>An ARN that uniquely identifies a resource. The format of the ARN depends on
-     * the resource type.</p>
-     */
-    inline ListRecoveryPointsByResourceRequest& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
-
-    /**
-     * <p>An ARN that uniquely identifies a resource. The format of the ARN depends on
-     * the resource type.</p>
-     */
-    inline ListRecoveryPointsByResourceRequest& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>An ARN that uniquely identifies a resource. The format of the ARN depends on
-     * the resource type.</p>
-     */
-    inline ListRecoveryPointsByResourceRequest& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The next item following a partial list of returned items. For example, if a
-     * request is made to return <code>maxResults</code> number of items,
+     * request is made to return <code>MaxResults</code> number of items,
      * <code>NextToken</code> allows you to return more items in your list starting at
      * the location pointed to by the next token.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The next item following a partial list of returned items. For example, if a
-     * request is made to return <code>maxResults</code> number of items,
-     * <code>NextToken</code> allows you to return more items in your list starting at
-     * the location pointed to by the next token.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListRecoveryPointsByResourceRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The next item following a partial list of returned items. For example, if a
-     * request is made to return <code>maxResults</code> number of items,
-     * <code>NextToken</code> allows you to return more items in your list starting at
-     * the location pointed to by the next token.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The next item following a partial list of returned items. For example, if a
-     * request is made to return <code>maxResults</code> number of items,
-     * <code>NextToken</code> allows you to return more items in your list starting at
-     * the location pointed to by the next token.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The next item following a partial list of returned items. For example, if a
-     * request is made to return <code>maxResults</code> number of items,
-     * <code>NextToken</code> allows you to return more items in your list starting at
-     * the location pointed to by the next token.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The next item following a partial list of returned items. For example, if a
-     * request is made to return <code>maxResults</code> number of items,
-     * <code>NextToken</code> allows you to return more items in your list starting at
-     * the location pointed to by the next token.</p>
-     */
-    inline ListRecoveryPointsByResourceRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The next item following a partial list of returned items. For example, if a
-     * request is made to return <code>maxResults</code> number of items,
-     * <code>NextToken</code> allows you to return more items in your list starting at
-     * the location pointed to by the next token.</p>
-     */
-    inline ListRecoveryPointsByResourceRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The next item following a partial list of returned items. For example, if a
-     * request is made to return <code>maxResults</code> number of items,
-     * <code>NextToken</code> allows you to return more items in your list starting at
-     * the location pointed to by the next token.</p>
-     */
-    inline ListRecoveryPointsByResourceRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of items to be returned.</p>  <p>Amazon RDS requires
      * a value of at least 20.</p> 
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of items to be returned.</p>  <p>Amazon RDS requires
-     * a value of at least 20.</p> 
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of items to be returned.</p>  <p>Amazon RDS requires
-     * a value of at least 20.</p> 
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of items to be returned.</p>  <p>Amazon RDS requires
-     * a value of at least 20.</p> 
-     */
     inline ListRecoveryPointsByResourceRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>This attribute filters recovery points based on ownership.</p> <p>If this is
+     * set to <code>TRUE</code>, the response will contain recovery points associated
+     * with the selected resources that are managed by Backup.</p> <p>If this is set to
+     * <code>FALSE</code>, the response will contain all recovery points associated
+     * with the selected resource.</p> <p>Type: Boolean</p>
+     */
+    inline bool GetManagedByAWSBackupOnly() const { return m_managedByAWSBackupOnly; }
+    inline bool ManagedByAWSBackupOnlyHasBeenSet() const { return m_managedByAWSBackupOnlyHasBeenSet; }
+    inline void SetManagedByAWSBackupOnly(bool value) { m_managedByAWSBackupOnlyHasBeenSet = true; m_managedByAWSBackupOnly = value; }
+    inline ListRecoveryPointsByResourceRequest& WithManagedByAWSBackupOnly(bool value) { SetManagedByAWSBackupOnly(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceArn;
@@ -184,8 +98,11 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
+
+    bool m_managedByAWSBackupOnly{false};
+    bool m_managedByAWSBackupOnlyHasBeenSet = false;
   };
 
 } // namespace Model

@@ -24,7 +24,7 @@ namespace Model
   class StartChannelRequest : public MediaLiveRequest
   {
   public:
-    AWS_MEDIALIVE_API StartChannelRequest();
+    AWS_MEDIALIVE_API StartChannelRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,46 +35,17 @@ namespace Model
     AWS_MEDIALIVE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * A request to start a channel
      */
-    inline const Aws::String& GetChannelId() const{ return m_channelId; }
-
-    /**
-     * A request to start a channel
-     */
+    inline const Aws::String& GetChannelId() const { return m_channelId; }
     inline bool ChannelIdHasBeenSet() const { return m_channelIdHasBeenSet; }
-
-    /**
-     * A request to start a channel
-     */
-    inline void SetChannelId(const Aws::String& value) { m_channelIdHasBeenSet = true; m_channelId = value; }
-
-    /**
-     * A request to start a channel
-     */
-    inline void SetChannelId(Aws::String&& value) { m_channelIdHasBeenSet = true; m_channelId = std::move(value); }
-
-    /**
-     * A request to start a channel
-     */
-    inline void SetChannelId(const char* value) { m_channelIdHasBeenSet = true; m_channelId.assign(value); }
-
-    /**
-     * A request to start a channel
-     */
-    inline StartChannelRequest& WithChannelId(const Aws::String& value) { SetChannelId(value); return *this;}
-
-    /**
-     * A request to start a channel
-     */
-    inline StartChannelRequest& WithChannelId(Aws::String&& value) { SetChannelId(std::move(value)); return *this;}
-
-    /**
-     * A request to start a channel
-     */
-    inline StartChannelRequest& WithChannelId(const char* value) { SetChannelId(value); return *this;}
-
+    template<typename ChannelIdT = Aws::String>
+    void SetChannelId(ChannelIdT&& value) { m_channelIdHasBeenSet = true; m_channelId = std::forward<ChannelIdT>(value); }
+    template<typename ChannelIdT = Aws::String>
+    StartChannelRequest& WithChannelId(ChannelIdT&& value) { SetChannelId(std::forward<ChannelIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_channelId;

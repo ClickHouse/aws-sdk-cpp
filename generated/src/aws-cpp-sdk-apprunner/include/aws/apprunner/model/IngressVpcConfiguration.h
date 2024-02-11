@@ -34,93 +34,35 @@ namespace Model
   class IngressVpcConfiguration
   {
   public:
-    AWS_APPRUNNER_API IngressVpcConfiguration();
+    AWS_APPRUNNER_API IngressVpcConfiguration() = default;
     AWS_APPRUNNER_API IngressVpcConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPRUNNER_API IngressVpcConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPRUNNER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the VPC that is used for the VPC endpoint.</p>
      */
-    inline const Aws::String& GetVpcId() const{ return m_vpcId; }
-
-    /**
-     * <p>The ID of the VPC that is used for the VPC endpoint.</p>
-     */
+    inline const Aws::String& GetVpcId() const { return m_vpcId; }
     inline bool VpcIdHasBeenSet() const { return m_vpcIdHasBeenSet; }
+    template<typename VpcIdT = Aws::String>
+    void SetVpcId(VpcIdT&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::forward<VpcIdT>(value); }
+    template<typename VpcIdT = Aws::String>
+    IngressVpcConfiguration& WithVpcId(VpcIdT&& value) { SetVpcId(std::forward<VpcIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the VPC that is used for the VPC endpoint.</p>
-     */
-    inline void SetVpcId(const Aws::String& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
-
-    /**
-     * <p>The ID of the VPC that is used for the VPC endpoint.</p>
-     */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
-
-    /**
-     * <p>The ID of the VPC that is used for the VPC endpoint.</p>
-     */
-    inline void SetVpcId(const char* value) { m_vpcIdHasBeenSet = true; m_vpcId.assign(value); }
-
-    /**
-     * <p>The ID of the VPC that is used for the VPC endpoint.</p>
-     */
-    inline IngressVpcConfiguration& WithVpcId(const Aws::String& value) { SetVpcId(value); return *this;}
-
-    /**
-     * <p>The ID of the VPC that is used for the VPC endpoint.</p>
-     */
-    inline IngressVpcConfiguration& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the VPC that is used for the VPC endpoint.</p>
-     */
-    inline IngressVpcConfiguration& WithVpcId(const char* value) { SetVpcId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the VPC endpoint that your App Runner service connects to. </p>
      */
-    inline const Aws::String& GetVpcEndpointId() const{ return m_vpcEndpointId; }
-
-    /**
-     * <p>The ID of the VPC endpoint that your App Runner service connects to. </p>
-     */
+    inline const Aws::String& GetVpcEndpointId() const { return m_vpcEndpointId; }
     inline bool VpcEndpointIdHasBeenSet() const { return m_vpcEndpointIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the VPC endpoint that your App Runner service connects to. </p>
-     */
-    inline void SetVpcEndpointId(const Aws::String& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = value; }
-
-    /**
-     * <p>The ID of the VPC endpoint that your App Runner service connects to. </p>
-     */
-    inline void SetVpcEndpointId(Aws::String&& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = std::move(value); }
-
-    /**
-     * <p>The ID of the VPC endpoint that your App Runner service connects to. </p>
-     */
-    inline void SetVpcEndpointId(const char* value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId.assign(value); }
-
-    /**
-     * <p>The ID of the VPC endpoint that your App Runner service connects to. </p>
-     */
-    inline IngressVpcConfiguration& WithVpcEndpointId(const Aws::String& value) { SetVpcEndpointId(value); return *this;}
-
-    /**
-     * <p>The ID of the VPC endpoint that your App Runner service connects to. </p>
-     */
-    inline IngressVpcConfiguration& WithVpcEndpointId(Aws::String&& value) { SetVpcEndpointId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the VPC endpoint that your App Runner service connects to. </p>
-     */
-    inline IngressVpcConfiguration& WithVpcEndpointId(const char* value) { SetVpcEndpointId(value); return *this;}
-
+    template<typename VpcEndpointIdT = Aws::String>
+    void SetVpcEndpointId(VpcEndpointIdT&& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = std::forward<VpcEndpointIdT>(value); }
+    template<typename VpcEndpointIdT = Aws::String>
+    IngressVpcConfiguration& WithVpcEndpointId(VpcEndpointIdT&& value) { SetVpcEndpointId(std::forward<VpcEndpointIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_vpcId;

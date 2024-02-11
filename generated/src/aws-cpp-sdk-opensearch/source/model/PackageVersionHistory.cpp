@@ -18,17 +18,7 @@ namespace OpenSearchService
 namespace Model
 {
 
-PackageVersionHistory::PackageVersionHistory() : 
-    m_packageVersionHasBeenSet(false),
-    m_commitMessageHasBeenSet(false),
-    m_createdAtHasBeenSet(false)
-{
-}
-
-PackageVersionHistory::PackageVersionHistory(JsonView jsonValue) : 
-    m_packageVersionHasBeenSet(false),
-    m_commitMessageHasBeenSet(false),
-    m_createdAtHasBeenSet(false)
+PackageVersionHistory::PackageVersionHistory(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,28 @@ PackageVersionHistory& PackageVersionHistory::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("PackageVersion"))
   {
     m_packageVersion = jsonValue.GetString("PackageVersion");
-
     m_packageVersionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CommitMessage"))
   {
     m_commitMessage = jsonValue.GetString("CommitMessage");
-
     m_commitMessageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatedAt"))
   {
     m_createdAt = jsonValue.GetDouble("CreatedAt");
-
     m_createdAtHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("PluginProperties"))
+  {
+    m_pluginProperties = jsonValue.GetObject("PluginProperties");
+    m_pluginPropertiesHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("PackageConfiguration"))
+  {
+    m_packageConfiguration = jsonValue.GetObject("PackageConfiguration");
+    m_packageConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -78,6 +72,18 @@ JsonValue PackageVersionHistory::Jsonize() const
   if(m_createdAtHasBeenSet)
   {
    payload.WithDouble("CreatedAt", m_createdAt.SecondsWithMSPrecision());
+  }
+
+  if(m_pluginPropertiesHasBeenSet)
+  {
+   payload.WithObject("PluginProperties", m_pluginProperties.Jsonize());
+
+  }
+
+  if(m_packageConfigurationHasBeenSet)
+  {
+   payload.WithObject("PackageConfiguration", m_packageConfiguration.Jsonize());
+
   }
 
   return payload;

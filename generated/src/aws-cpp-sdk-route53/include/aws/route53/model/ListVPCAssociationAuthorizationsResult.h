@@ -35,47 +35,23 @@ namespace Model
   class ListVPCAssociationAuthorizationsResult
   {
   public:
-    AWS_ROUTE53_API ListVPCAssociationAuthorizationsResult();
+    AWS_ROUTE53_API ListVPCAssociationAuthorizationsResult() = default;
     AWS_ROUTE53_API ListVPCAssociationAuthorizationsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_ROUTE53_API ListVPCAssociationAuthorizationsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The ID of the hosted zone that you can associate the listed VPCs with.</p>
      */
-    inline const Aws::String& GetHostedZoneId() const{ return m_hostedZoneId; }
+    inline const Aws::String& GetHostedZoneId() const { return m_hostedZoneId; }
+    template<typename HostedZoneIdT = Aws::String>
+    void SetHostedZoneId(HostedZoneIdT&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = std::forward<HostedZoneIdT>(value); }
+    template<typename HostedZoneIdT = Aws::String>
+    ListVPCAssociationAuthorizationsResult& WithHostedZoneId(HostedZoneIdT&& value) { SetHostedZoneId(std::forward<HostedZoneIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the hosted zone that you can associate the listed VPCs with.</p>
-     */
-    inline void SetHostedZoneId(const Aws::String& value) { m_hostedZoneId = value; }
-
-    /**
-     * <p>The ID of the hosted zone that you can associate the listed VPCs with.</p>
-     */
-    inline void SetHostedZoneId(Aws::String&& value) { m_hostedZoneId = std::move(value); }
-
-    /**
-     * <p>The ID of the hosted zone that you can associate the listed VPCs with.</p>
-     */
-    inline void SetHostedZoneId(const char* value) { m_hostedZoneId.assign(value); }
-
-    /**
-     * <p>The ID of the hosted zone that you can associate the listed VPCs with.</p>
-     */
-    inline ListVPCAssociationAuthorizationsResult& WithHostedZoneId(const Aws::String& value) { SetHostedZoneId(value); return *this;}
-
-    /**
-     * <p>The ID of the hosted zone that you can associate the listed VPCs with.</p>
-     */
-    inline ListVPCAssociationAuthorizationsResult& WithHostedZoneId(Aws::String&& value) { SetHostedZoneId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the hosted zone that you can associate the listed VPCs with.</p>
-     */
-    inline ListVPCAssociationAuthorizationsResult& WithHostedZoneId(const char* value) { SetHostedZoneId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>When the response includes a <code>NextToken</code> element, there are more
      * VPCs that can be associated with the specified hosted zone. To get the next page
@@ -83,136 +59,48 @@ namespace Model
      * and include the value of the <code>NextToken</code> element from the response in
      * the <code>nexttoken</code> request parameter.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListVPCAssociationAuthorizationsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When the response includes a <code>NextToken</code> element, there are more
-     * VPCs that can be associated with the specified hosted zone. To get the next page
-     * of VPCs, submit another <code>ListVPCAssociationAuthorizations</code> request,
-     * and include the value of the <code>NextToken</code> element from the response in
-     * the <code>nexttoken</code> request parameter.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>When the response includes a <code>NextToken</code> element, there are more
-     * VPCs that can be associated with the specified hosted zone. To get the next page
-     * of VPCs, submit another <code>ListVPCAssociationAuthorizations</code> request,
-     * and include the value of the <code>NextToken</code> element from the response in
-     * the <code>nexttoken</code> request parameter.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>When the response includes a <code>NextToken</code> element, there are more
-     * VPCs that can be associated with the specified hosted zone. To get the next page
-     * of VPCs, submit another <code>ListVPCAssociationAuthorizations</code> request,
-     * and include the value of the <code>NextToken</code> element from the response in
-     * the <code>nexttoken</code> request parameter.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>When the response includes a <code>NextToken</code> element, there are more
-     * VPCs that can be associated with the specified hosted zone. To get the next page
-     * of VPCs, submit another <code>ListVPCAssociationAuthorizations</code> request,
-     * and include the value of the <code>NextToken</code> element from the response in
-     * the <code>nexttoken</code> request parameter.</p>
-     */
-    inline ListVPCAssociationAuthorizationsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>When the response includes a <code>NextToken</code> element, there are more
-     * VPCs that can be associated with the specified hosted zone. To get the next page
-     * of VPCs, submit another <code>ListVPCAssociationAuthorizations</code> request,
-     * and include the value of the <code>NextToken</code> element from the response in
-     * the <code>nexttoken</code> request parameter.</p>
-     */
-    inline ListVPCAssociationAuthorizationsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>When the response includes a <code>NextToken</code> element, there are more
-     * VPCs that can be associated with the specified hosted zone. To get the next page
-     * of VPCs, submit another <code>ListVPCAssociationAuthorizations</code> request,
-     * and include the value of the <code>NextToken</code> element from the response in
-     * the <code>nexttoken</code> request parameter.</p>
-     */
-    inline ListVPCAssociationAuthorizationsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of VPCs that are authorized to be associated with the specified
      * hosted zone.</p>
      */
-    inline const Aws::Vector<VPC>& GetVPCs() const{ return m_vPCs; }
+    inline const Aws::Vector<VPC>& GetVPCs() const { return m_vPCs; }
+    template<typename VPCsT = Aws::Vector<VPC>>
+    void SetVPCs(VPCsT&& value) { m_vPCsHasBeenSet = true; m_vPCs = std::forward<VPCsT>(value); }
+    template<typename VPCsT = Aws::Vector<VPC>>
+    ListVPCAssociationAuthorizationsResult& WithVPCs(VPCsT&& value) { SetVPCs(std::forward<VPCsT>(value)); return *this;}
+    template<typename VPCsT = VPC>
+    ListVPCAssociationAuthorizationsResult& AddVPCs(VPCsT&& value) { m_vPCsHasBeenSet = true; m_vPCs.emplace_back(std::forward<VPCsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of VPCs that are authorized to be associated with the specified
-     * hosted zone.</p>
-     */
-    inline void SetVPCs(const Aws::Vector<VPC>& value) { m_vPCs = value; }
-
-    /**
-     * <p>The list of VPCs that are authorized to be associated with the specified
-     * hosted zone.</p>
-     */
-    inline void SetVPCs(Aws::Vector<VPC>&& value) { m_vPCs = std::move(value); }
-
-    /**
-     * <p>The list of VPCs that are authorized to be associated with the specified
-     * hosted zone.</p>
-     */
-    inline ListVPCAssociationAuthorizationsResult& WithVPCs(const Aws::Vector<VPC>& value) { SetVPCs(value); return *this;}
-
-    /**
-     * <p>The list of VPCs that are authorized to be associated with the specified
-     * hosted zone.</p>
-     */
-    inline ListVPCAssociationAuthorizationsResult& WithVPCs(Aws::Vector<VPC>&& value) { SetVPCs(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of VPCs that are authorized to be associated with the specified
-     * hosted zone.</p>
-     */
-    inline ListVPCAssociationAuthorizationsResult& AddVPCs(const VPC& value) { m_vPCs.push_back(value); return *this; }
-
-    /**
-     * <p>The list of VPCs that are authorized to be associated with the specified
-     * hosted zone.</p>
-     */
-    inline ListVPCAssociationAuthorizationsResult& AddVPCs(VPC&& value) { m_vPCs.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListVPCAssociationAuthorizationsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListVPCAssociationAuthorizationsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListVPCAssociationAuthorizationsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListVPCAssociationAuthorizationsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_hostedZoneId;
+    bool m_hostedZoneIdHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::Vector<VPC> m_vPCs;
+    bool m_vPCsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

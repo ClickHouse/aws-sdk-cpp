@@ -18,15 +18,7 @@ namespace ServiceCatalog
 namespace Model
 {
 
-ServiceActionDetail::ServiceActionDetail() : 
-    m_serviceActionSummaryHasBeenSet(false),
-    m_definitionHasBeenSet(false)
-{
-}
-
-ServiceActionDetail::ServiceActionDetail(JsonView jsonValue) : 
-    m_serviceActionSummaryHasBeenSet(false),
-    m_definitionHasBeenSet(false)
+ServiceActionDetail::ServiceActionDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ServiceActionDetail& ServiceActionDetail::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ServiceActionSummary"))
   {
     m_serviceActionSummary = jsonValue.GetObject("ServiceActionSummary");
-
     m_serviceActionSummaryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Definition"))
   {
     Aws::Map<Aws::String, JsonView> definitionJsonMap = jsonValue.GetObject("Definition").GetAllObjects();
@@ -49,7 +39,6 @@ ServiceActionDetail& ServiceActionDetail::operator =(JsonView jsonValue)
     }
     m_definitionHasBeenSet = true;
   }
-
   return *this;
 }
 

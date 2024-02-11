@@ -18,19 +18,7 @@ namespace CognitoIdentityProvider
 namespace Model
 {
 
-ResourceServerType::ResourceServerType() : 
-    m_userPoolIdHasBeenSet(false),
-    m_identifierHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_scopesHasBeenSet(false)
-{
-}
-
-ResourceServerType::ResourceServerType(JsonView jsonValue) : 
-    m_userPoolIdHasBeenSet(false),
-    m_identifierHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_scopesHasBeenSet(false)
+ResourceServerType::ResourceServerType(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ ResourceServerType& ResourceServerType::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("UserPoolId"))
   {
     m_userPoolId = jsonValue.GetString("UserPoolId");
-
     m_userPoolIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Identifier"))
   {
     m_identifier = jsonValue.GetString("Identifier");
-
     m_identifierHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Scopes"))
   {
     Aws::Utils::Array<JsonView> scopesJsonList = jsonValue.GetArray("Scopes");
@@ -67,7 +49,6 @@ ResourceServerType& ResourceServerType::operator =(JsonView jsonValue)
     }
     m_scopesHasBeenSet = true;
   }
-
   return *this;
 }
 

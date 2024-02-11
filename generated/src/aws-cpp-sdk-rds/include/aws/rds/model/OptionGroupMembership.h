@@ -32,7 +32,7 @@ namespace Model
   class OptionGroupMembership
   {
   public:
-    AWS_RDS_API OptionGroupMembership();
+    AWS_RDS_API OptionGroupMembership() = default;
     AWS_RDS_API OptionGroupMembership(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_RDS_API OptionGroupMembership& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,47 +40,19 @@ namespace Model
     AWS_RDS_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The name of the option group that the instance belongs to.</p>
      */
-    inline const Aws::String& GetOptionGroupName() const{ return m_optionGroupName; }
-
-    /**
-     * <p>The name of the option group that the instance belongs to.</p>
-     */
+    inline const Aws::String& GetOptionGroupName() const { return m_optionGroupName; }
     inline bool OptionGroupNameHasBeenSet() const { return m_optionGroupNameHasBeenSet; }
+    template<typename OptionGroupNameT = Aws::String>
+    void SetOptionGroupName(OptionGroupNameT&& value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName = std::forward<OptionGroupNameT>(value); }
+    template<typename OptionGroupNameT = Aws::String>
+    OptionGroupMembership& WithOptionGroupName(OptionGroupNameT&& value) { SetOptionGroupName(std::forward<OptionGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the option group that the instance belongs to.</p>
-     */
-    inline void SetOptionGroupName(const Aws::String& value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName = value; }
-
-    /**
-     * <p>The name of the option group that the instance belongs to.</p>
-     */
-    inline void SetOptionGroupName(Aws::String&& value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the option group that the instance belongs to.</p>
-     */
-    inline void SetOptionGroupName(const char* value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName.assign(value); }
-
-    /**
-     * <p>The name of the option group that the instance belongs to.</p>
-     */
-    inline OptionGroupMembership& WithOptionGroupName(const Aws::String& value) { SetOptionGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the option group that the instance belongs to.</p>
-     */
-    inline OptionGroupMembership& WithOptionGroupName(Aws::String&& value) { SetOptionGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the option group that the instance belongs to.</p>
-     */
-    inline OptionGroupMembership& WithOptionGroupName(const char* value) { SetOptionGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the DB instance's option group membership. Valid values are:
      * <code>in-sync</code>, <code>pending-apply</code>, <code>pending-removal</code>,
@@ -88,71 +60,13 @@ namespace Model
      * <code>pending-maintenance-removal</code>, <code>applying</code>,
      * <code>removing</code>, and <code>failed</code>.</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the DB instance's option group membership. Valid values are:
-     * <code>in-sync</code>, <code>pending-apply</code>, <code>pending-removal</code>,
-     * <code>pending-maintenance-apply</code>,
-     * <code>pending-maintenance-removal</code>, <code>applying</code>,
-     * <code>removing</code>, and <code>failed</code>.</p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the DB instance's option group membership. Valid values are:
-     * <code>in-sync</code>, <code>pending-apply</code>, <code>pending-removal</code>,
-     * <code>pending-maintenance-apply</code>,
-     * <code>pending-maintenance-removal</code>, <code>applying</code>,
-     * <code>removing</code>, and <code>failed</code>.</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the DB instance's option group membership. Valid values are:
-     * <code>in-sync</code>, <code>pending-apply</code>, <code>pending-removal</code>,
-     * <code>pending-maintenance-apply</code>,
-     * <code>pending-maintenance-removal</code>, <code>applying</code>,
-     * <code>removing</code>, and <code>failed</code>.</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the DB instance's option group membership. Valid values are:
-     * <code>in-sync</code>, <code>pending-apply</code>, <code>pending-removal</code>,
-     * <code>pending-maintenance-apply</code>,
-     * <code>pending-maintenance-removal</code>, <code>applying</code>,
-     * <code>removing</code>, and <code>failed</code>.</p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>The status of the DB instance's option group membership. Valid values are:
-     * <code>in-sync</code>, <code>pending-apply</code>, <code>pending-removal</code>,
-     * <code>pending-maintenance-apply</code>,
-     * <code>pending-maintenance-removal</code>, <code>applying</code>,
-     * <code>removing</code>, and <code>failed</code>.</p>
-     */
-    inline OptionGroupMembership& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the DB instance's option group membership. Valid values are:
-     * <code>in-sync</code>, <code>pending-apply</code>, <code>pending-removal</code>,
-     * <code>pending-maintenance-apply</code>,
-     * <code>pending-maintenance-removal</code>, <code>applying</code>,
-     * <code>removing</code>, and <code>failed</code>.</p>
-     */
-    inline OptionGroupMembership& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the DB instance's option group membership. Valid values are:
-     * <code>in-sync</code>, <code>pending-apply</code>, <code>pending-removal</code>,
-     * <code>pending-maintenance-apply</code>,
-     * <code>pending-maintenance-removal</code>, <code>applying</code>,
-     * <code>removing</code>, and <code>failed</code>.</p>
-     */
-    inline OptionGroupMembership& WithStatus(const char* value) { SetStatus(value); return *this;}
-
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    OptionGroupMembership& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_optionGroupName;

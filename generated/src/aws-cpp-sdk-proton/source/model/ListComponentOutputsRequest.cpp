@@ -12,12 +12,6 @@ using namespace Aws::Proton::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListComponentOutputsRequest::ListComponentOutputsRequest() : 
-    m_componentNameHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListComponentOutputsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -25,6 +19,12 @@ Aws::String ListComponentOutputsRequest::SerializePayload() const
   if(m_componentNameHasBeenSet)
   {
    payload.WithString("componentName", m_componentName);
+
+  }
+
+  if(m_deploymentIdHasBeenSet)
+  {
+   payload.WithString("deploymentId", m_deploymentId);
 
   }
 

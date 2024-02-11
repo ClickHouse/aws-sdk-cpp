@@ -20,7 +20,7 @@ namespace Model
    * <p>Represents a request to set a receipt rule set as the active receipt rule
    * set. You use receipt rule sets to receive email with Amazon SES. For more
    * information, see the <a
-   * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon
+   * href="https://docs.aws.amazon.com/ses/latest/dg/receiving-email-concepts.html">Amazon
    * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetActiveReceiptRuleSetRequest">AWS
    * API Reference</a></p>
@@ -28,7 +28,7 @@ namespace Model
   class SetActiveReceiptRuleSetRequest : public SESRequest
   {
   public:
-    AWS_SES_API SetActiveReceiptRuleSetRequest();
+    AWS_SES_API SetActiveReceiptRuleSetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -43,54 +43,18 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the receipt rule set to make active. Setting this value to null
      * disables all email receiving.</p>
      */
-    inline const Aws::String& GetRuleSetName() const{ return m_ruleSetName; }
-
-    /**
-     * <p>The name of the receipt rule set to make active. Setting this value to null
-     * disables all email receiving.</p>
-     */
+    inline const Aws::String& GetRuleSetName() const { return m_ruleSetName; }
     inline bool RuleSetNameHasBeenSet() const { return m_ruleSetNameHasBeenSet; }
-
-    /**
-     * <p>The name of the receipt rule set to make active. Setting this value to null
-     * disables all email receiving.</p>
-     */
-    inline void SetRuleSetName(const Aws::String& value) { m_ruleSetNameHasBeenSet = true; m_ruleSetName = value; }
-
-    /**
-     * <p>The name of the receipt rule set to make active. Setting this value to null
-     * disables all email receiving.</p>
-     */
-    inline void SetRuleSetName(Aws::String&& value) { m_ruleSetNameHasBeenSet = true; m_ruleSetName = std::move(value); }
-
-    /**
-     * <p>The name of the receipt rule set to make active. Setting this value to null
-     * disables all email receiving.</p>
-     */
-    inline void SetRuleSetName(const char* value) { m_ruleSetNameHasBeenSet = true; m_ruleSetName.assign(value); }
-
-    /**
-     * <p>The name of the receipt rule set to make active. Setting this value to null
-     * disables all email receiving.</p>
-     */
-    inline SetActiveReceiptRuleSetRequest& WithRuleSetName(const Aws::String& value) { SetRuleSetName(value); return *this;}
-
-    /**
-     * <p>The name of the receipt rule set to make active. Setting this value to null
-     * disables all email receiving.</p>
-     */
-    inline SetActiveReceiptRuleSetRequest& WithRuleSetName(Aws::String&& value) { SetRuleSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the receipt rule set to make active. Setting this value to null
-     * disables all email receiving.</p>
-     */
-    inline SetActiveReceiptRuleSetRequest& WithRuleSetName(const char* value) { SetRuleSetName(value); return *this;}
-
+    template<typename RuleSetNameT = Aws::String>
+    void SetRuleSetName(RuleSetNameT&& value) { m_ruleSetNameHasBeenSet = true; m_ruleSetName = std::forward<RuleSetNameT>(value); }
+    template<typename RuleSetNameT = Aws::String>
+    SetActiveReceiptRuleSetRequest& WithRuleSetName(RuleSetNameT&& value) { SetRuleSetName(std::forward<RuleSetNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ruleSetName;

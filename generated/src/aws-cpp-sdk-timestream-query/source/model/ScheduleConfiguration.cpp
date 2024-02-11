@@ -18,13 +18,7 @@ namespace TimestreamQuery
 namespace Model
 {
 
-ScheduleConfiguration::ScheduleConfiguration() : 
-    m_scheduleExpressionHasBeenSet(false)
-{
-}
-
-ScheduleConfiguration::ScheduleConfiguration(JsonView jsonValue) : 
-    m_scheduleExpressionHasBeenSet(false)
+ScheduleConfiguration::ScheduleConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ ScheduleConfiguration& ScheduleConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ScheduleExpression"))
   {
     m_scheduleExpression = jsonValue.GetString("ScheduleExpression");
-
     m_scheduleExpressionHasBeenSet = true;
   }
-
   return *this;
 }
 

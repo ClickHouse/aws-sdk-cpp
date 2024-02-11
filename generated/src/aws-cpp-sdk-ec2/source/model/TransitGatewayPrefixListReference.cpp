@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGatewayPrefixListReference::TransitGatewayPrefixListReference() : 
-    m_transitGatewayRouteTableIdHasBeenSet(false),
-    m_prefixListIdHasBeenSet(false),
-    m_prefixListOwnerIdHasBeenSet(false),
-    m_state(TransitGatewayPrefixListReferenceState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_blackhole(false),
-    m_blackholeHasBeenSet(false),
-    m_transitGatewayAttachmentHasBeenSet(false)
-{
-}
-
-TransitGatewayPrefixListReference::TransitGatewayPrefixListReference(const XmlNode& xmlNode) : 
-    m_transitGatewayRouteTableIdHasBeenSet(false),
-    m_prefixListIdHasBeenSet(false),
-    m_prefixListOwnerIdHasBeenSet(false),
-    m_state(TransitGatewayPrefixListReferenceState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_blackhole(false),
-    m_blackholeHasBeenSet(false),
-    m_transitGatewayAttachmentHasBeenSet(false)
+TransitGatewayPrefixListReference::TransitGatewayPrefixListReference(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -72,7 +52,7 @@ TransitGatewayPrefixListReference& TransitGatewayPrefixListReference::operator =
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = TransitGatewayPrefixListReferenceStateMapper::GetTransitGatewayPrefixListReferenceStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = TransitGatewayPrefixListReferenceStateMapper::GetTransitGatewayPrefixListReferenceStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode blackholeNode = resultNode.FirstChild("blackhole");
@@ -111,7 +91,7 @@ void TransitGatewayPrefixListReference::OutputToStream(Aws::OStream& oStream, co
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << TransitGatewayPrefixListReferenceStateMapper::GetNameForTransitGatewayPrefixListReferenceState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(TransitGatewayPrefixListReferenceStateMapper::GetNameForTransitGatewayPrefixListReferenceState(m_state)) << "&";
   }
 
   if(m_blackholeHasBeenSet)
@@ -144,7 +124,7 @@ void TransitGatewayPrefixListReference::OutputToStream(Aws::OStream& oStream, co
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << TransitGatewayPrefixListReferenceStateMapper::GetNameForTransitGatewayPrefixListReferenceState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(TransitGatewayPrefixListReferenceStateMapper::GetNameForTransitGatewayPrefixListReferenceState(m_state)) << "&";
   }
   if(m_blackholeHasBeenSet)
   {

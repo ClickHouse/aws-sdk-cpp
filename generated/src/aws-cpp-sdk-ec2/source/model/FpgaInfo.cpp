@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-FpgaInfo::FpgaInfo() : 
-    m_fpgasHasBeenSet(false),
-    m_totalFpgaMemoryInMiB(0),
-    m_totalFpgaMemoryInMiBHasBeenSet(false)
-{
-}
-
-FpgaInfo::FpgaInfo(const XmlNode& xmlNode) : 
-    m_fpgasHasBeenSet(false),
-    m_totalFpgaMemoryInMiB(0),
-    m_totalFpgaMemoryInMiBHasBeenSet(false)
+FpgaInfo::FpgaInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -45,6 +35,7 @@ FpgaInfo& FpgaInfo::operator =(const XmlNode& xmlNode)
     if(!fpgasNode.IsNull())
     {
       XmlNode fpgasMember = fpgasNode.FirstChild("item");
+      m_fpgasHasBeenSet = !fpgasMember.IsNull();
       while(!fpgasMember.IsNull())
       {
         m_fpgas.push_back(fpgasMember);
@@ -92,7 +83,7 @@ void FpgaInfo::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_fpgas)
       {
         Aws::StringStream fpgasSs;
-        fpgasSs << location <<  ".Fpgas." << fpgasIdx++;
+        fpgasSs << location << ".Fpgas." << fpgasIdx++;
         item.OutputToStream(oStream, fpgasSs.str().c_str());
       }
   }

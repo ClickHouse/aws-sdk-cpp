@@ -18,15 +18,7 @@ namespace Translate
 namespace Model
 {
 
-TooManyTagsException::TooManyTagsException() : 
-    m_messageHasBeenSet(false),
-    m_resourceArnHasBeenSet(false)
-{
-}
-
-TooManyTagsException::TooManyTagsException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_resourceArnHasBeenSet(false)
+TooManyTagsException::TooManyTagsException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TooManyTagsException& TooManyTagsException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceArn"))
   {
     m_resourceArn = jsonValue.GetString("ResourceArn");
-
     m_resourceArnHasBeenSet = true;
   }
-
   return *this;
 }
 

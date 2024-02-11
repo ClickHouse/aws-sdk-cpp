@@ -32,52 +32,23 @@ namespace Model
   class MonitoringGroundTruthS3Input
   {
   public:
-    AWS_SAGEMAKER_API MonitoringGroundTruthS3Input();
+    AWS_SAGEMAKER_API MonitoringGroundTruthS3Input() = default;
     AWS_SAGEMAKER_API MonitoringGroundTruthS3Input(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API MonitoringGroundTruthS3Input& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The address of the Amazon S3 location of the ground truth labels.</p>
      */
-    inline const Aws::String& GetS3Uri() const{ return m_s3Uri; }
-
-    /**
-     * <p>The address of the Amazon S3 location of the ground truth labels.</p>
-     */
+    inline const Aws::String& GetS3Uri() const { return m_s3Uri; }
     inline bool S3UriHasBeenSet() const { return m_s3UriHasBeenSet; }
-
-    /**
-     * <p>The address of the Amazon S3 location of the ground truth labels.</p>
-     */
-    inline void SetS3Uri(const Aws::String& value) { m_s3UriHasBeenSet = true; m_s3Uri = value; }
-
-    /**
-     * <p>The address of the Amazon S3 location of the ground truth labels.</p>
-     */
-    inline void SetS3Uri(Aws::String&& value) { m_s3UriHasBeenSet = true; m_s3Uri = std::move(value); }
-
-    /**
-     * <p>The address of the Amazon S3 location of the ground truth labels.</p>
-     */
-    inline void SetS3Uri(const char* value) { m_s3UriHasBeenSet = true; m_s3Uri.assign(value); }
-
-    /**
-     * <p>The address of the Amazon S3 location of the ground truth labels.</p>
-     */
-    inline MonitoringGroundTruthS3Input& WithS3Uri(const Aws::String& value) { SetS3Uri(value); return *this;}
-
-    /**
-     * <p>The address of the Amazon S3 location of the ground truth labels.</p>
-     */
-    inline MonitoringGroundTruthS3Input& WithS3Uri(Aws::String&& value) { SetS3Uri(std::move(value)); return *this;}
-
-    /**
-     * <p>The address of the Amazon S3 location of the ground truth labels.</p>
-     */
-    inline MonitoringGroundTruthS3Input& WithS3Uri(const char* value) { SetS3Uri(value); return *this;}
-
+    template<typename S3UriT = Aws::String>
+    void SetS3Uri(S3UriT&& value) { m_s3UriHasBeenSet = true; m_s3Uri = std::forward<S3UriT>(value); }
+    template<typename S3UriT = Aws::String>
+    MonitoringGroundTruthS3Input& WithS3Uri(S3UriT&& value) { SetS3Uri(std::forward<S3UriT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_s3Uri;

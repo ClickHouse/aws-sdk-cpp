@@ -31,7 +31,7 @@ namespace Model
   class ImportRestApiRequest : public StreamingAPIGatewayRequest
   {
   public:
-    AWS_APIGATEWAY_API ImportRestApiRequest();
+    AWS_APIGATEWAY_API ImportRestApiRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,35 +42,19 @@ namespace Model
     AWS_APIGATEWAY_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>A query parameter to indicate whether to rollback the API creation
      * (<code>true</code>) or not (<code>false</code>) when a warning is encountered.
      * The default value is <code>false</code>.</p>
      */
-    inline bool GetFailOnWarnings() const{ return m_failOnWarnings; }
-
-    /**
-     * <p>A query parameter to indicate whether to rollback the API creation
-     * (<code>true</code>) or not (<code>false</code>) when a warning is encountered.
-     * The default value is <code>false</code>.</p>
-     */
+    inline bool GetFailOnWarnings() const { return m_failOnWarnings; }
     inline bool FailOnWarningsHasBeenSet() const { return m_failOnWarningsHasBeenSet; }
-
-    /**
-     * <p>A query parameter to indicate whether to rollback the API creation
-     * (<code>true</code>) or not (<code>false</code>) when a warning is encountered.
-     * The default value is <code>false</code>.</p>
-     */
     inline void SetFailOnWarnings(bool value) { m_failOnWarningsHasBeenSet = true; m_failOnWarnings = value; }
-
-    /**
-     * <p>A query parameter to indicate whether to rollback the API creation
-     * (<code>true</code>) or not (<code>false</code>) when a warning is encountered.
-     * The default value is <code>false</code>.</p>
-     */
     inline ImportRestApiRequest& WithFailOnWarnings(bool value) { SetFailOnWarnings(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A key-value map of context-specific query string parameters specifying the
      * behavior of different API importing operations. The following shows
@@ -82,232 +66,22 @@ namespace Model
      * <code>endpointConfigurationTypes=PRIVATE</code>. The default endpoint type is
      * <code>EDGE</code>.</p> <p> To handle imported <code>basepath</code>, set
      * <code>parameters</code> as <code>basepath=ignore</code>,
-     * <code>basepath=prepend</code> or <code>basepath=split</code>.</p> <p>For
-     * example, the AWS CLI command to exclude documentation from the imported API
-     * is:</p> <p>The AWS CLI command to set the regional endpoint on the imported API
-     * is:</p>
+     * <code>basepath=prepend</code> or <code>basepath=split</code>.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>A key-value map of context-specific query string parameters specifying the
-     * behavior of different API importing operations. The following shows
-     * operation-specific parameters and their supported values.</p> <p> To exclude
-     * DocumentationParts from the import, set <code>parameters</code> as
-     * <code>ignore=documentation</code>.</p> <p> To configure the endpoint type, set
-     * <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code>,
-     * <code>endpointConfigurationTypes=REGIONAL</code>, or
-     * <code>endpointConfigurationTypes=PRIVATE</code>. The default endpoint type is
-     * <code>EDGE</code>.</p> <p> To handle imported <code>basepath</code>, set
-     * <code>parameters</code> as <code>basepath=ignore</code>,
-     * <code>basepath=prepend</code> or <code>basepath=split</code>.</p> <p>For
-     * example, the AWS CLI command to exclude documentation from the imported API
-     * is:</p> <p>The AWS CLI command to set the regional endpoint on the imported API
-     * is:</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
-
-    /**
-     * <p>A key-value map of context-specific query string parameters specifying the
-     * behavior of different API importing operations. The following shows
-     * operation-specific parameters and their supported values.</p> <p> To exclude
-     * DocumentationParts from the import, set <code>parameters</code> as
-     * <code>ignore=documentation</code>.</p> <p> To configure the endpoint type, set
-     * <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code>,
-     * <code>endpointConfigurationTypes=REGIONAL</code>, or
-     * <code>endpointConfigurationTypes=PRIVATE</code>. The default endpoint type is
-     * <code>EDGE</code>.</p> <p> To handle imported <code>basepath</code>, set
-     * <code>parameters</code> as <code>basepath=ignore</code>,
-     * <code>basepath=prepend</code> or <code>basepath=split</code>.</p> <p>For
-     * example, the AWS CLI command to exclude documentation from the imported API
-     * is:</p> <p>The AWS CLI command to set the regional endpoint on the imported API
-     * is:</p>
-     */
-    inline void SetParameters(const Aws::Map<Aws::String, Aws::String>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>A key-value map of context-specific query string parameters specifying the
-     * behavior of different API importing operations. The following shows
-     * operation-specific parameters and their supported values.</p> <p> To exclude
-     * DocumentationParts from the import, set <code>parameters</code> as
-     * <code>ignore=documentation</code>.</p> <p> To configure the endpoint type, set
-     * <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code>,
-     * <code>endpointConfigurationTypes=REGIONAL</code>, or
-     * <code>endpointConfigurationTypes=PRIVATE</code>. The default endpoint type is
-     * <code>EDGE</code>.</p> <p> To handle imported <code>basepath</code>, set
-     * <code>parameters</code> as <code>basepath=ignore</code>,
-     * <code>basepath=prepend</code> or <code>basepath=split</code>.</p> <p>For
-     * example, the AWS CLI command to exclude documentation from the imported API
-     * is:</p> <p>The AWS CLI command to set the regional endpoint on the imported API
-     * is:</p>
-     */
-    inline void SetParameters(Aws::Map<Aws::String, Aws::String>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>A key-value map of context-specific query string parameters specifying the
-     * behavior of different API importing operations. The following shows
-     * operation-specific parameters and their supported values.</p> <p> To exclude
-     * DocumentationParts from the import, set <code>parameters</code> as
-     * <code>ignore=documentation</code>.</p> <p> To configure the endpoint type, set
-     * <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code>,
-     * <code>endpointConfigurationTypes=REGIONAL</code>, or
-     * <code>endpointConfigurationTypes=PRIVATE</code>. The default endpoint type is
-     * <code>EDGE</code>.</p> <p> To handle imported <code>basepath</code>, set
-     * <code>parameters</code> as <code>basepath=ignore</code>,
-     * <code>basepath=prepend</code> or <code>basepath=split</code>.</p> <p>For
-     * example, the AWS CLI command to exclude documentation from the imported API
-     * is:</p> <p>The AWS CLI command to set the regional endpoint on the imported API
-     * is:</p>
-     */
-    inline ImportRestApiRequest& WithParameters(const Aws::Map<Aws::String, Aws::String>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>A key-value map of context-specific query string parameters specifying the
-     * behavior of different API importing operations. The following shows
-     * operation-specific parameters and their supported values.</p> <p> To exclude
-     * DocumentationParts from the import, set <code>parameters</code> as
-     * <code>ignore=documentation</code>.</p> <p> To configure the endpoint type, set
-     * <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code>,
-     * <code>endpointConfigurationTypes=REGIONAL</code>, or
-     * <code>endpointConfigurationTypes=PRIVATE</code>. The default endpoint type is
-     * <code>EDGE</code>.</p> <p> To handle imported <code>basepath</code>, set
-     * <code>parameters</code> as <code>basepath=ignore</code>,
-     * <code>basepath=prepend</code> or <code>basepath=split</code>.</p> <p>For
-     * example, the AWS CLI command to exclude documentation from the imported API
-     * is:</p> <p>The AWS CLI command to set the regional endpoint on the imported API
-     * is:</p>
-     */
-    inline ImportRestApiRequest& WithParameters(Aws::Map<Aws::String, Aws::String>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>A key-value map of context-specific query string parameters specifying the
-     * behavior of different API importing operations. The following shows
-     * operation-specific parameters and their supported values.</p> <p> To exclude
-     * DocumentationParts from the import, set <code>parameters</code> as
-     * <code>ignore=documentation</code>.</p> <p> To configure the endpoint type, set
-     * <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code>,
-     * <code>endpointConfigurationTypes=REGIONAL</code>, or
-     * <code>endpointConfigurationTypes=PRIVATE</code>. The default endpoint type is
-     * <code>EDGE</code>.</p> <p> To handle imported <code>basepath</code>, set
-     * <code>parameters</code> as <code>basepath=ignore</code>,
-     * <code>basepath=prepend</code> or <code>basepath=split</code>.</p> <p>For
-     * example, the AWS CLI command to exclude documentation from the imported API
-     * is:</p> <p>The AWS CLI command to set the regional endpoint on the imported API
-     * is:</p>
-     */
-    inline ImportRestApiRequest& AddParameters(const Aws::String& key, const Aws::String& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>A key-value map of context-specific query string parameters specifying the
-     * behavior of different API importing operations. The following shows
-     * operation-specific parameters and their supported values.</p> <p> To exclude
-     * DocumentationParts from the import, set <code>parameters</code> as
-     * <code>ignore=documentation</code>.</p> <p> To configure the endpoint type, set
-     * <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code>,
-     * <code>endpointConfigurationTypes=REGIONAL</code>, or
-     * <code>endpointConfigurationTypes=PRIVATE</code>. The default endpoint type is
-     * <code>EDGE</code>.</p> <p> To handle imported <code>basepath</code>, set
-     * <code>parameters</code> as <code>basepath=ignore</code>,
-     * <code>basepath=prepend</code> or <code>basepath=split</code>.</p> <p>For
-     * example, the AWS CLI command to exclude documentation from the imported API
-     * is:</p> <p>The AWS CLI command to set the regional endpoint on the imported API
-     * is:</p>
-     */
-    inline ImportRestApiRequest& AddParameters(Aws::String&& key, const Aws::String& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A key-value map of context-specific query string parameters specifying the
-     * behavior of different API importing operations. The following shows
-     * operation-specific parameters and their supported values.</p> <p> To exclude
-     * DocumentationParts from the import, set <code>parameters</code> as
-     * <code>ignore=documentation</code>.</p> <p> To configure the endpoint type, set
-     * <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code>,
-     * <code>endpointConfigurationTypes=REGIONAL</code>, or
-     * <code>endpointConfigurationTypes=PRIVATE</code>. The default endpoint type is
-     * <code>EDGE</code>.</p> <p> To handle imported <code>basepath</code>, set
-     * <code>parameters</code> as <code>basepath=ignore</code>,
-     * <code>basepath=prepend</code> or <code>basepath=split</code>.</p> <p>For
-     * example, the AWS CLI command to exclude documentation from the imported API
-     * is:</p> <p>The AWS CLI command to set the regional endpoint on the imported API
-     * is:</p>
-     */
-    inline ImportRestApiRequest& AddParameters(const Aws::String& key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A key-value map of context-specific query string parameters specifying the
-     * behavior of different API importing operations. The following shows
-     * operation-specific parameters and their supported values.</p> <p> To exclude
-     * DocumentationParts from the import, set <code>parameters</code> as
-     * <code>ignore=documentation</code>.</p> <p> To configure the endpoint type, set
-     * <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code>,
-     * <code>endpointConfigurationTypes=REGIONAL</code>, or
-     * <code>endpointConfigurationTypes=PRIVATE</code>. The default endpoint type is
-     * <code>EDGE</code>.</p> <p> To handle imported <code>basepath</code>, set
-     * <code>parameters</code> as <code>basepath=ignore</code>,
-     * <code>basepath=prepend</code> or <code>basepath=split</code>.</p> <p>For
-     * example, the AWS CLI command to exclude documentation from the imported API
-     * is:</p> <p>The AWS CLI command to set the regional endpoint on the imported API
-     * is:</p>
-     */
-    inline ImportRestApiRequest& AddParameters(Aws::String&& key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A key-value map of context-specific query string parameters specifying the
-     * behavior of different API importing operations. The following shows
-     * operation-specific parameters and their supported values.</p> <p> To exclude
-     * DocumentationParts from the import, set <code>parameters</code> as
-     * <code>ignore=documentation</code>.</p> <p> To configure the endpoint type, set
-     * <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code>,
-     * <code>endpointConfigurationTypes=REGIONAL</code>, or
-     * <code>endpointConfigurationTypes=PRIVATE</code>. The default endpoint type is
-     * <code>EDGE</code>.</p> <p> To handle imported <code>basepath</code>, set
-     * <code>parameters</code> as <code>basepath=ignore</code>,
-     * <code>basepath=prepend</code> or <code>basepath=split</code>.</p> <p>For
-     * example, the AWS CLI command to exclude documentation from the imported API
-     * is:</p> <p>The AWS CLI command to set the regional endpoint on the imported API
-     * is:</p>
-     */
-    inline ImportRestApiRequest& AddParameters(const char* key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A key-value map of context-specific query string parameters specifying the
-     * behavior of different API importing operations. The following shows
-     * operation-specific parameters and their supported values.</p> <p> To exclude
-     * DocumentationParts from the import, set <code>parameters</code> as
-     * <code>ignore=documentation</code>.</p> <p> To configure the endpoint type, set
-     * <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code>,
-     * <code>endpointConfigurationTypes=REGIONAL</code>, or
-     * <code>endpointConfigurationTypes=PRIVATE</code>. The default endpoint type is
-     * <code>EDGE</code>.</p> <p> To handle imported <code>basepath</code>, set
-     * <code>parameters</code> as <code>basepath=ignore</code>,
-     * <code>basepath=prepend</code> or <code>basepath=split</code>.</p> <p>For
-     * example, the AWS CLI command to exclude documentation from the imported API
-     * is:</p> <p>The AWS CLI command to set the regional endpoint on the imported API
-     * is:</p>
-     */
-    inline ImportRestApiRequest& AddParameters(Aws::String&& key, const char* value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A key-value map of context-specific query string parameters specifying the
-     * behavior of different API importing operations. The following shows
-     * operation-specific parameters and their supported values.</p> <p> To exclude
-     * DocumentationParts from the import, set <code>parameters</code> as
-     * <code>ignore=documentation</code>.</p> <p> To configure the endpoint type, set
-     * <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code>,
-     * <code>endpointConfigurationTypes=REGIONAL</code>, or
-     * <code>endpointConfigurationTypes=PRIVATE</code>. The default endpoint type is
-     * <code>EDGE</code>.</p> <p> To handle imported <code>basepath</code>, set
-     * <code>parameters</code> as <code>basepath=ignore</code>,
-     * <code>basepath=prepend</code> or <code>basepath=split</code>.</p> <p>For
-     * example, the AWS CLI command to exclude documentation from the imported API
-     * is:</p> <p>The AWS CLI command to set the regional endpoint on the imported API
-     * is:</p>
-     */
-    inline ImportRestApiRequest& AddParameters(const char* key, const char* value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
+    template<typename ParametersT = Aws::Map<Aws::String, Aws::String>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Map<Aws::String, Aws::String>>
+    ImportRestApiRequest& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersKeyT = Aws::String, typename ParametersValueT = Aws::String>
+    ImportRestApiRequest& AddParameters(ParametersKeyT&& key, ParametersValueT&& value) {
+      m_parametersHasBeenSet = true; m_parameters.emplace(std::forward<ParametersKeyT>(key), std::forward<ParametersValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
-    bool m_failOnWarnings;
+    bool m_failOnWarnings{false};
     bool m_failOnWarningsHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_parameters;

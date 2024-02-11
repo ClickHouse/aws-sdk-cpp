@@ -36,11 +36,12 @@ namespace Model
   class CalculateRouteResult
   {
   public:
-    AWS_LOCATIONSERVICE_API CalculateRouteResult();
+    AWS_LOCATIONSERVICE_API CalculateRouteResult() = default;
     AWS_LOCATIONSERVICE_API CalculateRouteResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LOCATIONSERVICE_API CalculateRouteResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Contains details about each path between a pair of positions included along a
      * route such as: <code>StartPosition</code>, <code>EndPosition</code>,
@@ -49,7 +50,7 @@ namespace Model
      * the total number of positions in the request. </p> <p>For example, a route with
      * a departure position and destination position returns one leg with the positions
      * <a
-     * href="https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html">snapped
+     * href="https://docs.aws.amazon.com/location/previous/developerguide/snap-to-nearby-road.html">snapped
      * to a nearby road</a>:</p> <ul> <li> <p>The <code>StartPosition</code> is the
      * departure position.</p> </li> <li> <p>The <code>EndPosition</code> is the
      * destination position.</p> </li> </ul> <p>A route with a waypoint between the
@@ -59,193 +60,46 @@ namespace Model
      * </li> <li> <p>Leg 2: The <code>StartPosition</code> is the waypoint position.
      * The <code>EndPosition</code> is the destination position.</p> </li> </ul>
      */
-    inline const Aws::Vector<Leg>& GetLegs() const{ return m_legs; }
+    inline const Aws::Vector<Leg>& GetLegs() const { return m_legs; }
+    template<typename LegsT = Aws::Vector<Leg>>
+    void SetLegs(LegsT&& value) { m_legsHasBeenSet = true; m_legs = std::forward<LegsT>(value); }
+    template<typename LegsT = Aws::Vector<Leg>>
+    CalculateRouteResult& WithLegs(LegsT&& value) { SetLegs(std::forward<LegsT>(value)); return *this;}
+    template<typename LegsT = Leg>
+    CalculateRouteResult& AddLegs(LegsT&& value) { m_legsHasBeenSet = true; m_legs.emplace_back(std::forward<LegsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Contains details about each path between a pair of positions included along a
-     * route such as: <code>StartPosition</code>, <code>EndPosition</code>,
-     * <code>Distance</code>, <code>DurationSeconds</code>, <code>Geometry</code>, and
-     * <code>Steps</code>. The number of legs returned corresponds to one fewer than
-     * the total number of positions in the request. </p> <p>For example, a route with
-     * a departure position and destination position returns one leg with the positions
-     * <a
-     * href="https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html">snapped
-     * to a nearby road</a>:</p> <ul> <li> <p>The <code>StartPosition</code> is the
-     * departure position.</p> </li> <li> <p>The <code>EndPosition</code> is the
-     * destination position.</p> </li> </ul> <p>A route with a waypoint between the
-     * departure and destination position returns two legs with the positions snapped
-     * to a nearby road:</p> <ul> <li> <p>Leg 1: The <code>StartPosition</code> is the
-     * departure position . The <code>EndPosition</code> is the waypoint positon.</p>
-     * </li> <li> <p>Leg 2: The <code>StartPosition</code> is the waypoint position.
-     * The <code>EndPosition</code> is the destination position.</p> </li> </ul>
-     */
-    inline void SetLegs(const Aws::Vector<Leg>& value) { m_legs = value; }
-
-    /**
-     * <p>Contains details about each path between a pair of positions included along a
-     * route such as: <code>StartPosition</code>, <code>EndPosition</code>,
-     * <code>Distance</code>, <code>DurationSeconds</code>, <code>Geometry</code>, and
-     * <code>Steps</code>. The number of legs returned corresponds to one fewer than
-     * the total number of positions in the request. </p> <p>For example, a route with
-     * a departure position and destination position returns one leg with the positions
-     * <a
-     * href="https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html">snapped
-     * to a nearby road</a>:</p> <ul> <li> <p>The <code>StartPosition</code> is the
-     * departure position.</p> </li> <li> <p>The <code>EndPosition</code> is the
-     * destination position.</p> </li> </ul> <p>A route with a waypoint between the
-     * departure and destination position returns two legs with the positions snapped
-     * to a nearby road:</p> <ul> <li> <p>Leg 1: The <code>StartPosition</code> is the
-     * departure position . The <code>EndPosition</code> is the waypoint positon.</p>
-     * </li> <li> <p>Leg 2: The <code>StartPosition</code> is the waypoint position.
-     * The <code>EndPosition</code> is the destination position.</p> </li> </ul>
-     */
-    inline void SetLegs(Aws::Vector<Leg>&& value) { m_legs = std::move(value); }
-
-    /**
-     * <p>Contains details about each path between a pair of positions included along a
-     * route such as: <code>StartPosition</code>, <code>EndPosition</code>,
-     * <code>Distance</code>, <code>DurationSeconds</code>, <code>Geometry</code>, and
-     * <code>Steps</code>. The number of legs returned corresponds to one fewer than
-     * the total number of positions in the request. </p> <p>For example, a route with
-     * a departure position and destination position returns one leg with the positions
-     * <a
-     * href="https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html">snapped
-     * to a nearby road</a>:</p> <ul> <li> <p>The <code>StartPosition</code> is the
-     * departure position.</p> </li> <li> <p>The <code>EndPosition</code> is the
-     * destination position.</p> </li> </ul> <p>A route with a waypoint between the
-     * departure and destination position returns two legs with the positions snapped
-     * to a nearby road:</p> <ul> <li> <p>Leg 1: The <code>StartPosition</code> is the
-     * departure position . The <code>EndPosition</code> is the waypoint positon.</p>
-     * </li> <li> <p>Leg 2: The <code>StartPosition</code> is the waypoint position.
-     * The <code>EndPosition</code> is the destination position.</p> </li> </ul>
-     */
-    inline CalculateRouteResult& WithLegs(const Aws::Vector<Leg>& value) { SetLegs(value); return *this;}
-
-    /**
-     * <p>Contains details about each path between a pair of positions included along a
-     * route such as: <code>StartPosition</code>, <code>EndPosition</code>,
-     * <code>Distance</code>, <code>DurationSeconds</code>, <code>Geometry</code>, and
-     * <code>Steps</code>. The number of legs returned corresponds to one fewer than
-     * the total number of positions in the request. </p> <p>For example, a route with
-     * a departure position and destination position returns one leg with the positions
-     * <a
-     * href="https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html">snapped
-     * to a nearby road</a>:</p> <ul> <li> <p>The <code>StartPosition</code> is the
-     * departure position.</p> </li> <li> <p>The <code>EndPosition</code> is the
-     * destination position.</p> </li> </ul> <p>A route with a waypoint between the
-     * departure and destination position returns two legs with the positions snapped
-     * to a nearby road:</p> <ul> <li> <p>Leg 1: The <code>StartPosition</code> is the
-     * departure position . The <code>EndPosition</code> is the waypoint positon.</p>
-     * </li> <li> <p>Leg 2: The <code>StartPosition</code> is the waypoint position.
-     * The <code>EndPosition</code> is the destination position.</p> </li> </ul>
-     */
-    inline CalculateRouteResult& WithLegs(Aws::Vector<Leg>&& value) { SetLegs(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains details about each path between a pair of positions included along a
-     * route such as: <code>StartPosition</code>, <code>EndPosition</code>,
-     * <code>Distance</code>, <code>DurationSeconds</code>, <code>Geometry</code>, and
-     * <code>Steps</code>. The number of legs returned corresponds to one fewer than
-     * the total number of positions in the request. </p> <p>For example, a route with
-     * a departure position and destination position returns one leg with the positions
-     * <a
-     * href="https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html">snapped
-     * to a nearby road</a>:</p> <ul> <li> <p>The <code>StartPosition</code> is the
-     * departure position.</p> </li> <li> <p>The <code>EndPosition</code> is the
-     * destination position.</p> </li> </ul> <p>A route with a waypoint between the
-     * departure and destination position returns two legs with the positions snapped
-     * to a nearby road:</p> <ul> <li> <p>Leg 1: The <code>StartPosition</code> is the
-     * departure position . The <code>EndPosition</code> is the waypoint positon.</p>
-     * </li> <li> <p>Leg 2: The <code>StartPosition</code> is the waypoint position.
-     * The <code>EndPosition</code> is the destination position.</p> </li> </ul>
-     */
-    inline CalculateRouteResult& AddLegs(const Leg& value) { m_legs.push_back(value); return *this; }
-
-    /**
-     * <p>Contains details about each path between a pair of positions included along a
-     * route such as: <code>StartPosition</code>, <code>EndPosition</code>,
-     * <code>Distance</code>, <code>DurationSeconds</code>, <code>Geometry</code>, and
-     * <code>Steps</code>. The number of legs returned corresponds to one fewer than
-     * the total number of positions in the request. </p> <p>For example, a route with
-     * a departure position and destination position returns one leg with the positions
-     * <a
-     * href="https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html">snapped
-     * to a nearby road</a>:</p> <ul> <li> <p>The <code>StartPosition</code> is the
-     * departure position.</p> </li> <li> <p>The <code>EndPosition</code> is the
-     * destination position.</p> </li> </ul> <p>A route with a waypoint between the
-     * departure and destination position returns two legs with the positions snapped
-     * to a nearby road:</p> <ul> <li> <p>Leg 1: The <code>StartPosition</code> is the
-     * departure position . The <code>EndPosition</code> is the waypoint positon.</p>
-     * </li> <li> <p>Leg 2: The <code>StartPosition</code> is the waypoint position.
-     * The <code>EndPosition</code> is the destination position.</p> </li> </ul>
-     */
-    inline CalculateRouteResult& AddLegs(Leg&& value) { m_legs.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Contains information about the whole route, such as: <code>RouteBBox</code>,
      * <code>DataSource</code>, <code>Distance</code>, <code>DistanceUnit</code>, and
      * <code>DurationSeconds</code>.</p>
      */
-    inline const CalculateRouteSummary& GetSummary() const{ return m_summary; }
+    inline const CalculateRouteSummary& GetSummary() const { return m_summary; }
+    template<typename SummaryT = CalculateRouteSummary>
+    void SetSummary(SummaryT&& value) { m_summaryHasBeenSet = true; m_summary = std::forward<SummaryT>(value); }
+    template<typename SummaryT = CalculateRouteSummary>
+    CalculateRouteResult& WithSummary(SummaryT&& value) { SetSummary(std::forward<SummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains information about the whole route, such as: <code>RouteBBox</code>,
-     * <code>DataSource</code>, <code>Distance</code>, <code>DistanceUnit</code>, and
-     * <code>DurationSeconds</code>.</p>
-     */
-    inline void SetSummary(const CalculateRouteSummary& value) { m_summary = value; }
-
-    /**
-     * <p>Contains information about the whole route, such as: <code>RouteBBox</code>,
-     * <code>DataSource</code>, <code>Distance</code>, <code>DistanceUnit</code>, and
-     * <code>DurationSeconds</code>.</p>
-     */
-    inline void SetSummary(CalculateRouteSummary&& value) { m_summary = std::move(value); }
-
-    /**
-     * <p>Contains information about the whole route, such as: <code>RouteBBox</code>,
-     * <code>DataSource</code>, <code>Distance</code>, <code>DistanceUnit</code>, and
-     * <code>DurationSeconds</code>.</p>
-     */
-    inline CalculateRouteResult& WithSummary(const CalculateRouteSummary& value) { SetSummary(value); return *this;}
-
-    /**
-     * <p>Contains information about the whole route, such as: <code>RouteBBox</code>,
-     * <code>DataSource</code>, <code>Distance</code>, <code>DistanceUnit</code>, and
-     * <code>DurationSeconds</code>.</p>
-     */
-    inline CalculateRouteResult& WithSummary(CalculateRouteSummary&& value) { SetSummary(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CalculateRouteResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CalculateRouteResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CalculateRouteResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CalculateRouteResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Leg> m_legs;
+    bool m_legsHasBeenSet = false;
 
     CalculateRouteSummary m_summary;
+    bool m_summaryHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

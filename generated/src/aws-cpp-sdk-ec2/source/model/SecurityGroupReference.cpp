@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-SecurityGroupReference::SecurityGroupReference() : 
-    m_groupIdHasBeenSet(false),
-    m_referencingVpcIdHasBeenSet(false),
-    m_vpcPeeringConnectionIdHasBeenSet(false)
-{
-}
-
-SecurityGroupReference::SecurityGroupReference(const XmlNode& xmlNode) : 
-    m_groupIdHasBeenSet(false),
-    m_referencingVpcIdHasBeenSet(false),
-    m_vpcPeeringConnectionIdHasBeenSet(false)
+SecurityGroupReference::SecurityGroupReference(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -59,6 +49,12 @@ SecurityGroupReference& SecurityGroupReference::operator =(const XmlNode& xmlNod
       m_vpcPeeringConnectionId = Aws::Utils::Xml::DecodeEscapedXmlText(vpcPeeringConnectionIdNode.GetText());
       m_vpcPeeringConnectionIdHasBeenSet = true;
     }
+    XmlNode transitGatewayIdNode = resultNode.FirstChild("transitGatewayId");
+    if(!transitGatewayIdNode.IsNull())
+    {
+      m_transitGatewayId = Aws::Utils::Xml::DecodeEscapedXmlText(transitGatewayIdNode.GetText());
+      m_transitGatewayIdHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -81,6 +77,11 @@ void SecurityGroupReference::OutputToStream(Aws::OStream& oStream, const char* l
       oStream << location << index << locationValue << ".VpcPeeringConnectionId=" << StringUtils::URLEncode(m_vpcPeeringConnectionId.c_str()) << "&";
   }
 
+  if(m_transitGatewayIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".TransitGatewayId=" << StringUtils::URLEncode(m_transitGatewayId.c_str()) << "&";
+  }
+
 }
 
 void SecurityGroupReference::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -96,6 +97,10 @@ void SecurityGroupReference::OutputToStream(Aws::OStream& oStream, const char* l
   if(m_vpcPeeringConnectionIdHasBeenSet)
   {
       oStream << location << ".VpcPeeringConnectionId=" << StringUtils::URLEncode(m_vpcPeeringConnectionId.c_str()) << "&";
+  }
+  if(m_transitGatewayIdHasBeenSet)
+  {
+      oStream << location << ".TransitGatewayId=" << StringUtils::URLEncode(m_transitGatewayId.c_str()) << "&";
   }
 }
 

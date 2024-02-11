@@ -20,15 +20,7 @@ namespace RDS
 namespace Model
 {
 
-ValidDBInstanceModificationsMessage::ValidDBInstanceModificationsMessage() : 
-    m_storageHasBeenSet(false),
-    m_validProcessorFeaturesHasBeenSet(false)
-{
-}
-
-ValidDBInstanceModificationsMessage::ValidDBInstanceModificationsMessage(const XmlNode& xmlNode) : 
-    m_storageHasBeenSet(false),
-    m_validProcessorFeaturesHasBeenSet(false)
+ValidDBInstanceModificationsMessage::ValidDBInstanceModificationsMessage(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -43,6 +35,7 @@ ValidDBInstanceModificationsMessage& ValidDBInstanceModificationsMessage::operat
     if(!storageNode.IsNull())
     {
       XmlNode storageMember = storageNode.FirstChild("ValidStorageOptions");
+      m_storageHasBeenSet = !storageMember.IsNull();
       while(!storageMember.IsNull())
       {
         m_storage.push_back(storageMember);
@@ -55,6 +48,7 @@ ValidDBInstanceModificationsMessage& ValidDBInstanceModificationsMessage::operat
     if(!validProcessorFeaturesNode.IsNull())
     {
       XmlNode validProcessorFeaturesMember = validProcessorFeaturesNode.FirstChild("AvailableProcessorFeature");
+      m_validProcessorFeaturesHasBeenSet = !validProcessorFeaturesMember.IsNull();
       while(!validProcessorFeaturesMember.IsNull())
       {
         m_validProcessorFeatures.push_back(validProcessorFeaturesMember);
@@ -62,6 +56,12 @@ ValidDBInstanceModificationsMessage& ValidDBInstanceModificationsMessage::operat
       }
 
       m_validProcessorFeaturesHasBeenSet = true;
+    }
+    XmlNode supportsDedicatedLogVolumeNode = resultNode.FirstChild("SupportsDedicatedLogVolume");
+    if(!supportsDedicatedLogVolumeNode.IsNull())
+    {
+      m_supportsDedicatedLogVolume = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(supportsDedicatedLogVolumeNode.GetText()).c_str()).c_str());
+      m_supportsDedicatedLogVolumeHasBeenSet = true;
     }
   }
 
@@ -76,7 +76,7 @@ void ValidDBInstanceModificationsMessage::OutputToStream(Aws::OStream& oStream, 
       for(auto& item : m_storage)
       {
         Aws::StringStream storageSs;
-        storageSs << location << index << locationValue << ".ValidStorageOptions." << storageIdx++;
+        storageSs << location << index << locationValue << ".Storage.ValidStorageOptions." << storageIdx++;
         item.OutputToStream(oStream, storageSs.str().c_str());
       }
   }
@@ -87,9 +87,14 @@ void ValidDBInstanceModificationsMessage::OutputToStream(Aws::OStream& oStream, 
       for(auto& item : m_validProcessorFeatures)
       {
         Aws::StringStream validProcessorFeaturesSs;
-        validProcessorFeaturesSs << location << index << locationValue << ".AvailableProcessorFeature." << validProcessorFeaturesIdx++;
+        validProcessorFeaturesSs << location << index << locationValue << ".ValidProcessorFeatures.AvailableProcessorFeature." << validProcessorFeaturesIdx++;
         item.OutputToStream(oStream, validProcessorFeaturesSs.str().c_str());
       }
+  }
+
+  if(m_supportsDedicatedLogVolumeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".SupportsDedicatedLogVolume=" << std::boolalpha << m_supportsDedicatedLogVolume << "&";
   }
 
 }
@@ -102,7 +107,7 @@ void ValidDBInstanceModificationsMessage::OutputToStream(Aws::OStream& oStream, 
       for(auto& item : m_storage)
       {
         Aws::StringStream storageSs;
-        storageSs << location <<  ".ValidStorageOptions." << storageIdx++;
+        storageSs << location << ".Storage.ValidStorageOptions." << storageIdx++;
         item.OutputToStream(oStream, storageSs.str().c_str());
       }
   }
@@ -112,9 +117,13 @@ void ValidDBInstanceModificationsMessage::OutputToStream(Aws::OStream& oStream, 
       for(auto& item : m_validProcessorFeatures)
       {
         Aws::StringStream validProcessorFeaturesSs;
-        validProcessorFeaturesSs << location <<  ".AvailableProcessorFeature." << validProcessorFeaturesIdx++;
+        validProcessorFeaturesSs << location << ".ValidProcessorFeatures.AvailableProcessorFeature." << validProcessorFeaturesIdx++;
         item.OutputToStream(oStream, validProcessorFeaturesSs.str().c_str());
       }
+  }
+  if(m_supportsDedicatedLogVolumeHasBeenSet)
+  {
+      oStream << location << ".SupportsDedicatedLogVolume=" << std::boolalpha << m_supportsDedicatedLogVolume << "&";
   }
 }
 

@@ -18,39 +18,7 @@ namespace CleanRooms
 namespace Model
 {
 
-Schema::Schema() : 
-    m_columnsHasBeenSet(false),
-    m_partitionKeysHasBeenSet(false),
-    m_analysisRuleTypesHasBeenSet(false),
-    m_analysisMethod(AnalysisMethod::NOT_SET),
-    m_analysisMethodHasBeenSet(false),
-    m_creatorAccountIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_collaborationIdHasBeenSet(false),
-    m_collaborationArnHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_updateTimeHasBeenSet(false),
-    m_type(SchemaType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-Schema::Schema(JsonView jsonValue) : 
-    m_columnsHasBeenSet(false),
-    m_partitionKeysHasBeenSet(false),
-    m_analysisRuleTypesHasBeenSet(false),
-    m_analysisMethod(AnalysisMethod::NOT_SET),
-    m_analysisMethodHasBeenSet(false),
-    m_creatorAccountIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_collaborationIdHasBeenSet(false),
-    m_collaborationArnHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_updateTimeHasBeenSet(false),
-    m_type(SchemaType::NOT_SET),
-    m_typeHasBeenSet(false)
+Schema::Schema(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -66,7 +34,6 @@ Schema& Schema::operator =(JsonView jsonValue)
     }
     m_columnsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("partitionKeys"))
   {
     Aws::Utils::Array<JsonView> partitionKeysJsonList = jsonValue.GetArray("partitionKeys");
@@ -76,7 +43,6 @@ Schema& Schema::operator =(JsonView jsonValue)
     }
     m_partitionKeysHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("analysisRuleTypes"))
   {
     Aws::Utils::Array<JsonView> analysisRuleTypesJsonList = jsonValue.GetArray("analysisRuleTypes");
@@ -86,70 +52,74 @@ Schema& Schema::operator =(JsonView jsonValue)
     }
     m_analysisRuleTypesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("analysisMethod"))
   {
     m_analysisMethod = AnalysisMethodMapper::GetAnalysisMethodForName(jsonValue.GetString("analysisMethod"));
-
     m_analysisMethodHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("selectedAnalysisMethods"))
+  {
+    Aws::Utils::Array<JsonView> selectedAnalysisMethodsJsonList = jsonValue.GetArray("selectedAnalysisMethods");
+    for(unsigned selectedAnalysisMethodsIndex = 0; selectedAnalysisMethodsIndex < selectedAnalysisMethodsJsonList.GetLength(); ++selectedAnalysisMethodsIndex)
+    {
+      m_selectedAnalysisMethods.push_back(SelectedAnalysisMethodMapper::GetSelectedAnalysisMethodForName(selectedAnalysisMethodsJsonList[selectedAnalysisMethodsIndex].AsString()));
+    }
+    m_selectedAnalysisMethodsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("creatorAccountId"))
   {
     m_creatorAccountId = jsonValue.GetString("creatorAccountId");
-
     m_creatorAccountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("collaborationId"))
   {
     m_collaborationId = jsonValue.GetString("collaborationId");
-
     m_collaborationIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("collaborationArn"))
   {
     m_collaborationArn = jsonValue.GetString("collaborationArn");
-
     m_collaborationArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("createTime"))
   {
     m_createTime = jsonValue.GetDouble("createTime");
-
     m_createTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("updateTime"))
   {
     m_updateTime = jsonValue.GetDouble("updateTime");
-
     m_updateTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = SchemaTypeMapper::GetSchemaTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("schemaStatusDetails"))
+  {
+    Aws::Utils::Array<JsonView> schemaStatusDetailsJsonList = jsonValue.GetArray("schemaStatusDetails");
+    for(unsigned schemaStatusDetailsIndex = 0; schemaStatusDetailsIndex < schemaStatusDetailsJsonList.GetLength(); ++schemaStatusDetailsIndex)
+    {
+      m_schemaStatusDetails.push_back(schemaStatusDetailsJsonList[schemaStatusDetailsIndex].AsObject());
+    }
+    m_schemaStatusDetailsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("schemaTypeProperties"))
+  {
+    m_schemaTypeProperties = jsonValue.GetObject("schemaTypeProperties");
+    m_schemaTypePropertiesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -195,6 +165,17 @@ JsonValue Schema::Jsonize() const
    payload.WithString("analysisMethod", AnalysisMethodMapper::GetNameForAnalysisMethod(m_analysisMethod));
   }
 
+  if(m_selectedAnalysisMethodsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> selectedAnalysisMethodsJsonList(m_selectedAnalysisMethods.size());
+   for(unsigned selectedAnalysisMethodsIndex = 0; selectedAnalysisMethodsIndex < selectedAnalysisMethodsJsonList.GetLength(); ++selectedAnalysisMethodsIndex)
+   {
+     selectedAnalysisMethodsJsonList[selectedAnalysisMethodsIndex].AsString(SelectedAnalysisMethodMapper::GetNameForSelectedAnalysisMethod(m_selectedAnalysisMethods[selectedAnalysisMethodsIndex]));
+   }
+   payload.WithArray("selectedAnalysisMethods", std::move(selectedAnalysisMethodsJsonList));
+
+  }
+
   if(m_creatorAccountIdHasBeenSet)
   {
    payload.WithString("creatorAccountId", m_creatorAccountId);
@@ -238,6 +219,23 @@ JsonValue Schema::Jsonize() const
   if(m_typeHasBeenSet)
   {
    payload.WithString("type", SchemaTypeMapper::GetNameForSchemaType(m_type));
+  }
+
+  if(m_schemaStatusDetailsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> schemaStatusDetailsJsonList(m_schemaStatusDetails.size());
+   for(unsigned schemaStatusDetailsIndex = 0; schemaStatusDetailsIndex < schemaStatusDetailsJsonList.GetLength(); ++schemaStatusDetailsIndex)
+   {
+     schemaStatusDetailsJsonList[schemaStatusDetailsIndex].AsObject(m_schemaStatusDetails[schemaStatusDetailsIndex].Jsonize());
+   }
+   payload.WithArray("schemaStatusDetails", std::move(schemaStatusDetailsJsonList));
+
+  }
+
+  if(m_schemaTypePropertiesHasBeenSet)
+  {
+   payload.WithObject("schemaTypeProperties", m_schemaTypeProperties.Jsonize());
+
   }
 
   return payload;

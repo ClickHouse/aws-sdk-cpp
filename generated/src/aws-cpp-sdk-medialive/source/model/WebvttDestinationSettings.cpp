@@ -18,15 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-WebvttDestinationSettings::WebvttDestinationSettings() : 
-    m_styleControl(WebvttDestinationStyleControl::NOT_SET),
-    m_styleControlHasBeenSet(false)
-{
-}
-
-WebvttDestinationSettings::WebvttDestinationSettings(JsonView jsonValue) : 
-    m_styleControl(WebvttDestinationStyleControl::NOT_SET),
-    m_styleControlHasBeenSet(false)
+WebvttDestinationSettings::WebvttDestinationSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ WebvttDestinationSettings& WebvttDestinationSettings::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("styleControl"))
   {
     m_styleControl = WebvttDestinationStyleControlMapper::GetWebvttDestinationStyleControlForName(jsonValue.GetString("styleControl"));
-
     m_styleControlHasBeenSet = true;
   }
-
   return *this;
 }
 

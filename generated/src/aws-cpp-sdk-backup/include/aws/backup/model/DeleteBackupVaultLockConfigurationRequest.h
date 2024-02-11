@@ -21,7 +21,7 @@ namespace Model
   class DeleteBackupVaultLockConfigurationRequest : public BackupRequest
   {
   public:
-    AWS_BACKUP_API DeleteBackupVaultLockConfigurationRequest();
+    AWS_BACKUP_API DeleteBackupVaultLockConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_BACKUP_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the backup vault from which to delete Backup Vault Lock.</p>
      */
-    inline const Aws::String& GetBackupVaultName() const{ return m_backupVaultName; }
-
-    /**
-     * <p>The name of the backup vault from which to delete Backup Vault Lock.</p>
-     */
+    inline const Aws::String& GetBackupVaultName() const { return m_backupVaultName; }
     inline bool BackupVaultNameHasBeenSet() const { return m_backupVaultNameHasBeenSet; }
-
-    /**
-     * <p>The name of the backup vault from which to delete Backup Vault Lock.</p>
-     */
-    inline void SetBackupVaultName(const Aws::String& value) { m_backupVaultNameHasBeenSet = true; m_backupVaultName = value; }
-
-    /**
-     * <p>The name of the backup vault from which to delete Backup Vault Lock.</p>
-     */
-    inline void SetBackupVaultName(Aws::String&& value) { m_backupVaultNameHasBeenSet = true; m_backupVaultName = std::move(value); }
-
-    /**
-     * <p>The name of the backup vault from which to delete Backup Vault Lock.</p>
-     */
-    inline void SetBackupVaultName(const char* value) { m_backupVaultNameHasBeenSet = true; m_backupVaultName.assign(value); }
-
-    /**
-     * <p>The name of the backup vault from which to delete Backup Vault Lock.</p>
-     */
-    inline DeleteBackupVaultLockConfigurationRequest& WithBackupVaultName(const Aws::String& value) { SetBackupVaultName(value); return *this;}
-
-    /**
-     * <p>The name of the backup vault from which to delete Backup Vault Lock.</p>
-     */
-    inline DeleteBackupVaultLockConfigurationRequest& WithBackupVaultName(Aws::String&& value) { SetBackupVaultName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the backup vault from which to delete Backup Vault Lock.</p>
-     */
-    inline DeleteBackupVaultLockConfigurationRequest& WithBackupVaultName(const char* value) { SetBackupVaultName(value); return *this;}
-
+    template<typename BackupVaultNameT = Aws::String>
+    void SetBackupVaultName(BackupVaultNameT&& value) { m_backupVaultNameHasBeenSet = true; m_backupVaultName = std::forward<BackupVaultNameT>(value); }
+    template<typename BackupVaultNameT = Aws::String>
+    DeleteBackupVaultLockConfigurationRequest& WithBackupVaultName(BackupVaultNameT&& value) { SetBackupVaultName(std::forward<BackupVaultNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_backupVaultName;

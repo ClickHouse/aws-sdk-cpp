@@ -20,15 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-SourceSelectionCriteria::SourceSelectionCriteria() : 
-    m_sseKmsEncryptedObjectsHasBeenSet(false),
-    m_replicaModificationsHasBeenSet(false)
-{
-}
-
-SourceSelectionCriteria::SourceSelectionCriteria(const XmlNode& xmlNode) : 
-    m_sseKmsEncryptedObjectsHasBeenSet(false),
-    m_replicaModificationsHasBeenSet(false)
+SourceSelectionCriteria::SourceSelectionCriteria(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

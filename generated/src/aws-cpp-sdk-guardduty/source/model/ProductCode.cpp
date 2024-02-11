@@ -18,15 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-ProductCode::ProductCode() : 
-    m_codeHasBeenSet(false),
-    m_productTypeHasBeenSet(false)
-{
-}
-
-ProductCode::ProductCode(JsonView jsonValue) : 
-    m_codeHasBeenSet(false),
-    m_productTypeHasBeenSet(false)
+ProductCode::ProductCode(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ProductCode& ProductCode::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("productCodeId"))
   {
     m_code = jsonValue.GetString("productCodeId");
-
     m_codeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("productCodeType"))
   {
     m_productType = jsonValue.GetString("productCodeType");
-
     m_productTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

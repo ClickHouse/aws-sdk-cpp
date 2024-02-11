@@ -18,17 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-ListenerTlsCertificate::ListenerTlsCertificate() : 
-    m_acmHasBeenSet(false),
-    m_fileHasBeenSet(false),
-    m_sdsHasBeenSet(false)
-{
-}
-
-ListenerTlsCertificate::ListenerTlsCertificate(JsonView jsonValue) : 
-    m_acmHasBeenSet(false),
-    m_fileHasBeenSet(false),
-    m_sdsHasBeenSet(false)
+ListenerTlsCertificate::ListenerTlsCertificate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ ListenerTlsCertificate& ListenerTlsCertificate::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("acm"))
   {
     m_acm = jsonValue.GetObject("acm");
-
     m_acmHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("file"))
   {
     m_file = jsonValue.GetObject("file");
-
     m_fileHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sds"))
   {
     m_sds = jsonValue.GetObject("sds");
-
     m_sdsHasBeenSet = true;
   }
-
   return *this;
 }
 

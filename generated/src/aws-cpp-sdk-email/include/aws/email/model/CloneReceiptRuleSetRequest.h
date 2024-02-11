@@ -20,7 +20,7 @@ namespace Model
    * <p>Represents a request to create a receipt rule set by cloning an existing one.
    * You use receipt rule sets to receive email with Amazon SES. For more
    * information, see the <a
-   * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon
+   * href="https://docs.aws.amazon.com/ses/latest/dg/receiving-email-concepts.html">Amazon
    * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CloneReceiptRuleSetRequest">AWS
    * API Reference</a></p>
@@ -28,7 +28,7 @@ namespace Model
   class CloneReceiptRuleSetRequest : public SESRequest
   {
   public:
-    AWS_SES_API CloneReceiptRuleSetRequest();
+    AWS_SES_API CloneReceiptRuleSetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -43,111 +43,33 @@ namespace Model
 
   public:
 
+    ///@{
     /**
-     * <p>The name of the rule set to create. The name must:</p> <ul> <li> <p>This
-     * value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_),
-     * or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p>
-     * </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
+     * <p>The name of the rule set to create. The name must meet the following
+     * requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers
+     * (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a
+     * letter or number.</p> </li> <li> <p>Contain 64 characters or fewer.</p> </li>
+     * </ul>
      */
-    inline const Aws::String& GetRuleSetName() const{ return m_ruleSetName; }
-
-    /**
-     * <p>The name of the rule set to create. The name must:</p> <ul> <li> <p>This
-     * value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_),
-     * or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p>
-     * </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
-     */
+    inline const Aws::String& GetRuleSetName() const { return m_ruleSetName; }
     inline bool RuleSetNameHasBeenSet() const { return m_ruleSetNameHasBeenSet; }
+    template<typename RuleSetNameT = Aws::String>
+    void SetRuleSetName(RuleSetNameT&& value) { m_ruleSetNameHasBeenSet = true; m_ruleSetName = std::forward<RuleSetNameT>(value); }
+    template<typename RuleSetNameT = Aws::String>
+    CloneReceiptRuleSetRequest& WithRuleSetName(RuleSetNameT&& value) { SetRuleSetName(std::forward<RuleSetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the rule set to create. The name must:</p> <ul> <li> <p>This
-     * value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_),
-     * or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p>
-     * </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
-     */
-    inline void SetRuleSetName(const Aws::String& value) { m_ruleSetNameHasBeenSet = true; m_ruleSetName = value; }
-
-    /**
-     * <p>The name of the rule set to create. The name must:</p> <ul> <li> <p>This
-     * value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_),
-     * or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p>
-     * </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
-     */
-    inline void SetRuleSetName(Aws::String&& value) { m_ruleSetNameHasBeenSet = true; m_ruleSetName = std::move(value); }
-
-    /**
-     * <p>The name of the rule set to create. The name must:</p> <ul> <li> <p>This
-     * value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_),
-     * or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p>
-     * </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
-     */
-    inline void SetRuleSetName(const char* value) { m_ruleSetNameHasBeenSet = true; m_ruleSetName.assign(value); }
-
-    /**
-     * <p>The name of the rule set to create. The name must:</p> <ul> <li> <p>This
-     * value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_),
-     * or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p>
-     * </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
-     */
-    inline CloneReceiptRuleSetRequest& WithRuleSetName(const Aws::String& value) { SetRuleSetName(value); return *this;}
-
-    /**
-     * <p>The name of the rule set to create. The name must:</p> <ul> <li> <p>This
-     * value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_),
-     * or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p>
-     * </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
-     */
-    inline CloneReceiptRuleSetRequest& WithRuleSetName(Aws::String&& value) { SetRuleSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the rule set to create. The name must:</p> <ul> <li> <p>This
-     * value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_),
-     * or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p>
-     * </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
-     */
-    inline CloneReceiptRuleSetRequest& WithRuleSetName(const char* value) { SetRuleSetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the rule set to clone.</p>
      */
-    inline const Aws::String& GetOriginalRuleSetName() const{ return m_originalRuleSetName; }
-
-    /**
-     * <p>The name of the rule set to clone.</p>
-     */
+    inline const Aws::String& GetOriginalRuleSetName() const { return m_originalRuleSetName; }
     inline bool OriginalRuleSetNameHasBeenSet() const { return m_originalRuleSetNameHasBeenSet; }
-
-    /**
-     * <p>The name of the rule set to clone.</p>
-     */
-    inline void SetOriginalRuleSetName(const Aws::String& value) { m_originalRuleSetNameHasBeenSet = true; m_originalRuleSetName = value; }
-
-    /**
-     * <p>The name of the rule set to clone.</p>
-     */
-    inline void SetOriginalRuleSetName(Aws::String&& value) { m_originalRuleSetNameHasBeenSet = true; m_originalRuleSetName = std::move(value); }
-
-    /**
-     * <p>The name of the rule set to clone.</p>
-     */
-    inline void SetOriginalRuleSetName(const char* value) { m_originalRuleSetNameHasBeenSet = true; m_originalRuleSetName.assign(value); }
-
-    /**
-     * <p>The name of the rule set to clone.</p>
-     */
-    inline CloneReceiptRuleSetRequest& WithOriginalRuleSetName(const Aws::String& value) { SetOriginalRuleSetName(value); return *this;}
-
-    /**
-     * <p>The name of the rule set to clone.</p>
-     */
-    inline CloneReceiptRuleSetRequest& WithOriginalRuleSetName(Aws::String&& value) { SetOriginalRuleSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the rule set to clone.</p>
-     */
-    inline CloneReceiptRuleSetRequest& WithOriginalRuleSetName(const char* value) { SetOriginalRuleSetName(value); return *this;}
-
+    template<typename OriginalRuleSetNameT = Aws::String>
+    void SetOriginalRuleSetName(OriginalRuleSetNameT&& value) { m_originalRuleSetNameHasBeenSet = true; m_originalRuleSetName = std::forward<OriginalRuleSetNameT>(value); }
+    template<typename OriginalRuleSetNameT = Aws::String>
+    CloneReceiptRuleSetRequest& WithOriginalRuleSetName(OriginalRuleSetNameT&& value) { SetOriginalRuleSetName(std::forward<OriginalRuleSetNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ruleSetName;

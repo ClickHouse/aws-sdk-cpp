@@ -12,16 +12,6 @@ using namespace Aws::MQ::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateUserRequest::CreateUserRequest() : 
-    m_brokerIdHasBeenSet(false),
-    m_consoleAccess(false),
-    m_consoleAccessHasBeenSet(false),
-    m_groupsHasBeenSet(false),
-    m_passwordHasBeenSet(false),
-    m_usernameHasBeenSet(false)
-{
-}
-
 Aws::String CreateUserRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -46,6 +36,12 @@ Aws::String CreateUserRequest::SerializePayload() const
   if(m_passwordHasBeenSet)
   {
    payload.WithString("password", m_password);
+
+  }
+
+  if(m_replicationUserHasBeenSet)
+  {
+   payload.WithBool("replicationUser", m_replicationUser);
 
   }
 

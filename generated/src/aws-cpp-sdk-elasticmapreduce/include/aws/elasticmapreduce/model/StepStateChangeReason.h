@@ -32,92 +32,37 @@ namespace Model
   class StepStateChangeReason
   {
   public:
-    AWS_EMR_API StepStateChangeReason();
+    AWS_EMR_API StepStateChangeReason() = default;
     AWS_EMR_API StepStateChangeReason(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMR_API StepStateChangeReason& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The programmable code for the state change reason. Note: Currently, the
      * service provides no code for the state change.</p>
      */
-    inline const StepStateChangeReasonCode& GetCode() const{ return m_code; }
-
-    /**
-     * <p>The programmable code for the state change reason. Note: Currently, the
-     * service provides no code for the state change.</p>
-     */
+    inline StepStateChangeReasonCode GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
+    inline void SetCode(StepStateChangeReasonCode value) { m_codeHasBeenSet = true; m_code = value; }
+    inline StepStateChangeReason& WithCode(StepStateChangeReasonCode value) { SetCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The programmable code for the state change reason. Note: Currently, the
-     * service provides no code for the state change.</p>
-     */
-    inline void SetCode(const StepStateChangeReasonCode& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>The programmable code for the state change reason. Note: Currently, the
-     * service provides no code for the state change.</p>
-     */
-    inline void SetCode(StepStateChangeReasonCode&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * <p>The programmable code for the state change reason. Note: Currently, the
-     * service provides no code for the state change.</p>
-     */
-    inline StepStateChangeReason& WithCode(const StepStateChangeReasonCode& value) { SetCode(value); return *this;}
-
-    /**
-     * <p>The programmable code for the state change reason. Note: Currently, the
-     * service provides no code for the state change.</p>
-     */
-    inline StepStateChangeReason& WithCode(StepStateChangeReasonCode&& value) { SetCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The descriptive message for the state change reason.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The descriptive message for the state change reason.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>The descriptive message for the state change reason.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The descriptive message for the state change reason.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The descriptive message for the state change reason.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The descriptive message for the state change reason.</p>
-     */
-    inline StepStateChangeReason& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The descriptive message for the state change reason.</p>
-     */
-    inline StepStateChangeReason& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The descriptive message for the state change reason.</p>
-     */
-    inline StepStateChangeReason& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    StepStateChangeReason& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
-    StepStateChangeReasonCode m_code;
+    StepStateChangeReasonCode m_code{StepStateChangeReasonCode::NOT_SET};
     bool m_codeHasBeenSet = false;
 
     Aws::String m_message;

@@ -32,109 +32,37 @@ namespace Model
   class DiscoveredResource
   {
   public:
-    AWS_MIGRATIONHUB_API DiscoveredResource();
+    AWS_MIGRATIONHUB_API DiscoveredResource() = default;
     AWS_MIGRATIONHUB_API DiscoveredResource(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUB_API DiscoveredResource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The configurationId in Application Discovery Service that uniquely identifies
      * the on-premise resource.</p>
      */
-    inline const Aws::String& GetConfigurationId() const{ return m_configurationId; }
-
-    /**
-     * <p>The configurationId in Application Discovery Service that uniquely identifies
-     * the on-premise resource.</p>
-     */
+    inline const Aws::String& GetConfigurationId() const { return m_configurationId; }
     inline bool ConfigurationIdHasBeenSet() const { return m_configurationIdHasBeenSet; }
+    template<typename ConfigurationIdT = Aws::String>
+    void SetConfigurationId(ConfigurationIdT&& value) { m_configurationIdHasBeenSet = true; m_configurationId = std::forward<ConfigurationIdT>(value); }
+    template<typename ConfigurationIdT = Aws::String>
+    DiscoveredResource& WithConfigurationId(ConfigurationIdT&& value) { SetConfigurationId(std::forward<ConfigurationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configurationId in Application Discovery Service that uniquely identifies
-     * the on-premise resource.</p>
-     */
-    inline void SetConfigurationId(const Aws::String& value) { m_configurationIdHasBeenSet = true; m_configurationId = value; }
-
-    /**
-     * <p>The configurationId in Application Discovery Service that uniquely identifies
-     * the on-premise resource.</p>
-     */
-    inline void SetConfigurationId(Aws::String&& value) { m_configurationIdHasBeenSet = true; m_configurationId = std::move(value); }
-
-    /**
-     * <p>The configurationId in Application Discovery Service that uniquely identifies
-     * the on-premise resource.</p>
-     */
-    inline void SetConfigurationId(const char* value) { m_configurationIdHasBeenSet = true; m_configurationId.assign(value); }
-
-    /**
-     * <p>The configurationId in Application Discovery Service that uniquely identifies
-     * the on-premise resource.</p>
-     */
-    inline DiscoveredResource& WithConfigurationId(const Aws::String& value) { SetConfigurationId(value); return *this;}
-
-    /**
-     * <p>The configurationId in Application Discovery Service that uniquely identifies
-     * the on-premise resource.</p>
-     */
-    inline DiscoveredResource& WithConfigurationId(Aws::String&& value) { SetConfigurationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The configurationId in Application Discovery Service that uniquely identifies
-     * the on-premise resource.</p>
-     */
-    inline DiscoveredResource& WithConfigurationId(const char* value) { SetConfigurationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description that can be free-form text to record additional detail about
      * the discovered resource for clarity or later reference.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description that can be free-form text to record additional detail about
-     * the discovered resource for clarity or later reference.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>A description that can be free-form text to record additional detail about
-     * the discovered resource for clarity or later reference.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description that can be free-form text to record additional detail about
-     * the discovered resource for clarity or later reference.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description that can be free-form text to record additional detail about
-     * the discovered resource for clarity or later reference.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description that can be free-form text to record additional detail about
-     * the discovered resource for clarity or later reference.</p>
-     */
-    inline DiscoveredResource& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description that can be free-form text to record additional detail about
-     * the discovered resource for clarity or later reference.</p>
-     */
-    inline DiscoveredResource& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description that can be free-form text to record additional detail about
-     * the discovered resource for clarity or later reference.</p>
-     */
-    inline DiscoveredResource& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    DiscoveredResource& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_configurationId;

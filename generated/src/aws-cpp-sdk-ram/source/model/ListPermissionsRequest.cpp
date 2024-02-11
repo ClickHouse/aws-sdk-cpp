@@ -12,14 +12,6 @@ using namespace Aws::RAM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListPermissionsRequest::ListPermissionsRequest() : 
-    m_resourceTypeHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String ListPermissionsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -40,6 +32,11 @@ Aws::String ListPermissionsRequest::SerializePayload() const
   {
    payload.WithInteger("maxResults", m_maxResults);
 
+  }
+
+  if(m_permissionTypeHasBeenSet)
+  {
+   payload.WithString("permissionType", PermissionTypeFilterMapper::GetNameForPermissionTypeFilter(m_permissionType));
   }
 
   return payload.View().WriteReadable();

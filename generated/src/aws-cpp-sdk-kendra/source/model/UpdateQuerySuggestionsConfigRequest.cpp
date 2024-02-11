@@ -12,21 +12,6 @@ using namespace Aws::kendra::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateQuerySuggestionsConfigRequest::UpdateQuerySuggestionsConfigRequest() : 
-    m_indexIdHasBeenSet(false),
-    m_mode(Mode::NOT_SET),
-    m_modeHasBeenSet(false),
-    m_queryLogLookBackWindowInDays(0),
-    m_queryLogLookBackWindowInDaysHasBeenSet(false),
-    m_includeQueriesWithoutUserInformation(false),
-    m_includeQueriesWithoutUserInformationHasBeenSet(false),
-    m_minimumNumberOfQueryingUsers(0),
-    m_minimumNumberOfQueryingUsersHasBeenSet(false),
-    m_minimumQueryCount(0),
-    m_minimumQueryCountHasBeenSet(false)
-{
-}
-
 Aws::String UpdateQuerySuggestionsConfigRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -63,6 +48,12 @@ Aws::String UpdateQuerySuggestionsConfigRequest::SerializePayload() const
   if(m_minimumQueryCountHasBeenSet)
   {
    payload.WithInteger("MinimumQueryCount", m_minimumQueryCount);
+
+  }
+
+  if(m_attributeSuggestionsConfigHasBeenSet)
+  {
+   payload.WithObject("AttributeSuggestionsConfig", m_attributeSuggestionsConfig.Jsonize());
 
   }
 

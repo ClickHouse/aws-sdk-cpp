@@ -12,12 +12,6 @@ using namespace Aws::IoTDeviceAdvisor::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateSuiteDefinitionRequest::CreateSuiteDefinitionRequest() : 
-    m_suiteDefinitionConfigurationHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateSuiteDefinitionRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -36,6 +30,12 @@ Aws::String CreateSuiteDefinitionRequest::SerializePayload() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("clientToken", m_clientToken);
 
   }
 

@@ -21,6 +21,8 @@ namespace Aws
       {
 
         static const int saml_HASH = HashingUtils::HashString("saml");
+        static const int iamidentitycenter_HASH = HashingUtils::HashString("iamidentitycenter");
+        static const int iamfederation_HASH = HashingUtils::HashString("iamfederation");
 
 
         SecurityConfigType GetSecurityConfigTypeForName(const Aws::String& name)
@@ -29,6 +31,14 @@ namespace Aws
           if (hashCode == saml_HASH)
           {
             return SecurityConfigType::saml;
+          }
+          else if (hashCode == iamidentitycenter_HASH)
+          {
+            return SecurityConfigType::iamidentitycenter;
+          }
+          else if (hashCode == iamfederation_HASH)
+          {
+            return SecurityConfigType::iamfederation;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -44,8 +54,14 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case SecurityConfigType::NOT_SET:
+            return {};
           case SecurityConfigType::saml:
             return "saml";
+          case SecurityConfigType::iamidentitycenter:
+            return "iamidentitycenter";
+          case SecurityConfigType::iamfederation:
+            return "iamfederation";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

@@ -21,7 +21,7 @@ namespace Model
   class GetSubscriberRequest : public SecurityLakeRequest
   {
   public:
-    AWS_SECURITYLAKE_API GetSubscriberRequest();
+    AWS_SECURITYLAKE_API GetSubscriberRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,58 +32,22 @@ namespace Model
     AWS_SECURITYLAKE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>A value created by Amazon Security Lake that uniquely identifies your
      * <code>GetSubscriber</code> API request.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>A value created by Amazon Security Lake that uniquely identifies your
-     * <code>GetSubscriber</code> API request.</p>
-     */
-    inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
-
-    /**
-     * <p>A value created by Amazon Security Lake that uniquely identifies your
-     * <code>GetSubscriber</code> API request.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>A value created by Amazon Security Lake that uniquely identifies your
-     * <code>GetSubscriber</code> API request.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>A value created by Amazon Security Lake that uniquely identifies your
-     * <code>GetSubscriber</code> API request.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>A value created by Amazon Security Lake that uniquely identifies your
-     * <code>GetSubscriber</code> API request.</p>
-     */
-    inline GetSubscriberRequest& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>A value created by Amazon Security Lake that uniquely identifies your
-     * <code>GetSubscriber</code> API request.</p>
-     */
-    inline GetSubscriberRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>A value created by Amazon Security Lake that uniquely identifies your
-     * <code>GetSubscriber</code> API request.</p>
-     */
-    inline GetSubscriberRequest& WithId(const char* value) { SetId(value); return *this;}
-
+    inline const Aws::String& GetSubscriberId() const { return m_subscriberId; }
+    inline bool SubscriberIdHasBeenSet() const { return m_subscriberIdHasBeenSet; }
+    template<typename SubscriberIdT = Aws::String>
+    void SetSubscriberId(SubscriberIdT&& value) { m_subscriberIdHasBeenSet = true; m_subscriberId = std::forward<SubscriberIdT>(value); }
+    template<typename SubscriberIdT = Aws::String>
+    GetSubscriberRequest& WithSubscriberId(SubscriberIdT&& value) { SetSubscriberId(std::forward<SubscriberIdT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_id;
-    bool m_idHasBeenSet = false;
+    Aws::String m_subscriberId;
+    bool m_subscriberIdHasBeenSet = false;
   };
 
 } // namespace Model

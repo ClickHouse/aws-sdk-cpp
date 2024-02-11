@@ -18,17 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-ImportResourceSpecification::ImportResourceSpecification() : 
-    m_botImportSpecificationHasBeenSet(false),
-    m_botLocaleImportSpecificationHasBeenSet(false),
-    m_customVocabularyImportSpecificationHasBeenSet(false)
-{
-}
-
-ImportResourceSpecification::ImportResourceSpecification(JsonView jsonValue) : 
-    m_botImportSpecificationHasBeenSet(false),
-    m_botLocaleImportSpecificationHasBeenSet(false),
-    m_customVocabularyImportSpecificationHasBeenSet(false)
+ImportResourceSpecification::ImportResourceSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,23 @@ ImportResourceSpecification& ImportResourceSpecification::operator =(JsonView js
   if(jsonValue.ValueExists("botImportSpecification"))
   {
     m_botImportSpecification = jsonValue.GetObject("botImportSpecification");
-
     m_botImportSpecificationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("botLocaleImportSpecification"))
   {
     m_botLocaleImportSpecification = jsonValue.GetObject("botLocaleImportSpecification");
-
     m_botLocaleImportSpecificationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("customVocabularyImportSpecification"))
   {
     m_customVocabularyImportSpecification = jsonValue.GetObject("customVocabularyImportSpecification");
-
     m_customVocabularyImportSpecificationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("testSetImportResourceSpecification"))
+  {
+    m_testSetImportResourceSpecification = jsonValue.GetObject("testSetImportResourceSpecification");
+    m_testSetImportResourceSpecificationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -78,6 +67,12 @@ JsonValue ImportResourceSpecification::Jsonize() const
   if(m_customVocabularyImportSpecificationHasBeenSet)
   {
    payload.WithObject("customVocabularyImportSpecification", m_customVocabularyImportSpecification.Jsonize());
+
+  }
+
+  if(m_testSetImportResourceSpecificationHasBeenSet)
+  {
+   payload.WithObject("testSetImportResourceSpecification", m_testSetImportResourceSpecification.Jsonize());
 
   }
 

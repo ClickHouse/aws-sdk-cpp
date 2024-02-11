@@ -18,15 +18,7 @@ namespace LexModelBuildingService
 namespace Model
 {
 
-FollowUpPrompt::FollowUpPrompt() : 
-    m_promptHasBeenSet(false),
-    m_rejectionStatementHasBeenSet(false)
-{
-}
-
-FollowUpPrompt::FollowUpPrompt(JsonView jsonValue) : 
-    m_promptHasBeenSet(false),
-    m_rejectionStatementHasBeenSet(false)
+FollowUpPrompt::FollowUpPrompt(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ FollowUpPrompt& FollowUpPrompt::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("prompt"))
   {
     m_prompt = jsonValue.GetObject("prompt");
-
     m_promptHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("rejectionStatement"))
   {
     m_rejectionStatement = jsonValue.GetObject("rejectionStatement");
-
     m_rejectionStatementHasBeenSet = true;
   }
-
   return *this;
 }
 

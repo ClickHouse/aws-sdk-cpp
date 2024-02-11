@@ -34,350 +34,117 @@ namespace Model
   class DetectMitigationActionExecution
   {
   public:
-    AWS_IOT_API DetectMitigationActionExecution();
+    AWS_IOT_API DetectMitigationActionExecution() = default;
     AWS_IOT_API DetectMitigationActionExecution(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API DetectMitigationActionExecution& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The unique identifier of the task. </p>
      */
-    inline const Aws::String& GetTaskId() const{ return m_taskId; }
-
-    /**
-     * <p> The unique identifier of the task. </p>
-     */
+    inline const Aws::String& GetTaskId() const { return m_taskId; }
     inline bool TaskIdHasBeenSet() const { return m_taskIdHasBeenSet; }
+    template<typename TaskIdT = Aws::String>
+    void SetTaskId(TaskIdT&& value) { m_taskIdHasBeenSet = true; m_taskId = std::forward<TaskIdT>(value); }
+    template<typename TaskIdT = Aws::String>
+    DetectMitigationActionExecution& WithTaskId(TaskIdT&& value) { SetTaskId(std::forward<TaskIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The unique identifier of the task. </p>
-     */
-    inline void SetTaskId(const Aws::String& value) { m_taskIdHasBeenSet = true; m_taskId = value; }
-
-    /**
-     * <p> The unique identifier of the task. </p>
-     */
-    inline void SetTaskId(Aws::String&& value) { m_taskIdHasBeenSet = true; m_taskId = std::move(value); }
-
-    /**
-     * <p> The unique identifier of the task. </p>
-     */
-    inline void SetTaskId(const char* value) { m_taskIdHasBeenSet = true; m_taskId.assign(value); }
-
-    /**
-     * <p> The unique identifier of the task. </p>
-     */
-    inline DetectMitigationActionExecution& WithTaskId(const Aws::String& value) { SetTaskId(value); return *this;}
-
-    /**
-     * <p> The unique identifier of the task. </p>
-     */
-    inline DetectMitigationActionExecution& WithTaskId(Aws::String&& value) { SetTaskId(std::move(value)); return *this;}
-
-    /**
-     * <p> The unique identifier of the task. </p>
-     */
-    inline DetectMitigationActionExecution& WithTaskId(const char* value) { SetTaskId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The unique identifier of the violation. </p>
      */
-    inline const Aws::String& GetViolationId() const{ return m_violationId; }
-
-    /**
-     * <p> The unique identifier of the violation. </p>
-     */
+    inline const Aws::String& GetViolationId() const { return m_violationId; }
     inline bool ViolationIdHasBeenSet() const { return m_violationIdHasBeenSet; }
+    template<typename ViolationIdT = Aws::String>
+    void SetViolationId(ViolationIdT&& value) { m_violationIdHasBeenSet = true; m_violationId = std::forward<ViolationIdT>(value); }
+    template<typename ViolationIdT = Aws::String>
+    DetectMitigationActionExecution& WithViolationId(ViolationIdT&& value) { SetViolationId(std::forward<ViolationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The unique identifier of the violation. </p>
-     */
-    inline void SetViolationId(const Aws::String& value) { m_violationIdHasBeenSet = true; m_violationId = value; }
-
-    /**
-     * <p> The unique identifier of the violation. </p>
-     */
-    inline void SetViolationId(Aws::String&& value) { m_violationIdHasBeenSet = true; m_violationId = std::move(value); }
-
-    /**
-     * <p> The unique identifier of the violation. </p>
-     */
-    inline void SetViolationId(const char* value) { m_violationIdHasBeenSet = true; m_violationId.assign(value); }
-
-    /**
-     * <p> The unique identifier of the violation. </p>
-     */
-    inline DetectMitigationActionExecution& WithViolationId(const Aws::String& value) { SetViolationId(value); return *this;}
-
-    /**
-     * <p> The unique identifier of the violation. </p>
-     */
-    inline DetectMitigationActionExecution& WithViolationId(Aws::String&& value) { SetViolationId(std::move(value)); return *this;}
-
-    /**
-     * <p> The unique identifier of the violation. </p>
-     */
-    inline DetectMitigationActionExecution& WithViolationId(const char* value) { SetViolationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The friendly name that uniquely identifies the mitigation action. </p>
      */
-    inline const Aws::String& GetActionName() const{ return m_actionName; }
-
-    /**
-     * <p> The friendly name that uniquely identifies the mitigation action. </p>
-     */
+    inline const Aws::String& GetActionName() const { return m_actionName; }
     inline bool ActionNameHasBeenSet() const { return m_actionNameHasBeenSet; }
+    template<typename ActionNameT = Aws::String>
+    void SetActionName(ActionNameT&& value) { m_actionNameHasBeenSet = true; m_actionName = std::forward<ActionNameT>(value); }
+    template<typename ActionNameT = Aws::String>
+    DetectMitigationActionExecution& WithActionName(ActionNameT&& value) { SetActionName(std::forward<ActionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The friendly name that uniquely identifies the mitigation action. </p>
-     */
-    inline void SetActionName(const Aws::String& value) { m_actionNameHasBeenSet = true; m_actionName = value; }
-
-    /**
-     * <p> The friendly name that uniquely identifies the mitigation action. </p>
-     */
-    inline void SetActionName(Aws::String&& value) { m_actionNameHasBeenSet = true; m_actionName = std::move(value); }
-
-    /**
-     * <p> The friendly name that uniquely identifies the mitigation action. </p>
-     */
-    inline void SetActionName(const char* value) { m_actionNameHasBeenSet = true; m_actionName.assign(value); }
-
-    /**
-     * <p> The friendly name that uniquely identifies the mitigation action. </p>
-     */
-    inline DetectMitigationActionExecution& WithActionName(const Aws::String& value) { SetActionName(value); return *this;}
-
-    /**
-     * <p> The friendly name that uniquely identifies the mitigation action. </p>
-     */
-    inline DetectMitigationActionExecution& WithActionName(Aws::String&& value) { SetActionName(std::move(value)); return *this;}
-
-    /**
-     * <p> The friendly name that uniquely identifies the mitigation action. </p>
-     */
-    inline DetectMitigationActionExecution& WithActionName(const char* value) { SetActionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The name of the thing. </p>
      */
-    inline const Aws::String& GetThingName() const{ return m_thingName; }
-
-    /**
-     * <p> The name of the thing. </p>
-     */
+    inline const Aws::String& GetThingName() const { return m_thingName; }
     inline bool ThingNameHasBeenSet() const { return m_thingNameHasBeenSet; }
+    template<typename ThingNameT = Aws::String>
+    void SetThingName(ThingNameT&& value) { m_thingNameHasBeenSet = true; m_thingName = std::forward<ThingNameT>(value); }
+    template<typename ThingNameT = Aws::String>
+    DetectMitigationActionExecution& WithThingName(ThingNameT&& value) { SetThingName(std::forward<ThingNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The name of the thing. </p>
-     */
-    inline void SetThingName(const Aws::String& value) { m_thingNameHasBeenSet = true; m_thingName = value; }
-
-    /**
-     * <p> The name of the thing. </p>
-     */
-    inline void SetThingName(Aws::String&& value) { m_thingNameHasBeenSet = true; m_thingName = std::move(value); }
-
-    /**
-     * <p> The name of the thing. </p>
-     */
-    inline void SetThingName(const char* value) { m_thingNameHasBeenSet = true; m_thingName.assign(value); }
-
-    /**
-     * <p> The name of the thing. </p>
-     */
-    inline DetectMitigationActionExecution& WithThingName(const Aws::String& value) { SetThingName(value); return *this;}
-
-    /**
-     * <p> The name of the thing. </p>
-     */
-    inline DetectMitigationActionExecution& WithThingName(Aws::String&& value) { SetThingName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name of the thing. </p>
-     */
-    inline DetectMitigationActionExecution& WithThingName(const char* value) { SetThingName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The date a mitigation action was started. </p>
      */
-    inline const Aws::Utils::DateTime& GetExecutionStartDate() const{ return m_executionStartDate; }
-
-    /**
-     * <p> The date a mitigation action was started. </p>
-     */
+    inline const Aws::Utils::DateTime& GetExecutionStartDate() const { return m_executionStartDate; }
     inline bool ExecutionStartDateHasBeenSet() const { return m_executionStartDateHasBeenSet; }
+    template<typename ExecutionStartDateT = Aws::Utils::DateTime>
+    void SetExecutionStartDate(ExecutionStartDateT&& value) { m_executionStartDateHasBeenSet = true; m_executionStartDate = std::forward<ExecutionStartDateT>(value); }
+    template<typename ExecutionStartDateT = Aws::Utils::DateTime>
+    DetectMitigationActionExecution& WithExecutionStartDate(ExecutionStartDateT&& value) { SetExecutionStartDate(std::forward<ExecutionStartDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The date a mitigation action was started. </p>
-     */
-    inline void SetExecutionStartDate(const Aws::Utils::DateTime& value) { m_executionStartDateHasBeenSet = true; m_executionStartDate = value; }
-
-    /**
-     * <p> The date a mitigation action was started. </p>
-     */
-    inline void SetExecutionStartDate(Aws::Utils::DateTime&& value) { m_executionStartDateHasBeenSet = true; m_executionStartDate = std::move(value); }
-
-    /**
-     * <p> The date a mitigation action was started. </p>
-     */
-    inline DetectMitigationActionExecution& WithExecutionStartDate(const Aws::Utils::DateTime& value) { SetExecutionStartDate(value); return *this;}
-
-    /**
-     * <p> The date a mitigation action was started. </p>
-     */
-    inline DetectMitigationActionExecution& WithExecutionStartDate(Aws::Utils::DateTime&& value) { SetExecutionStartDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The date a mitigation action ended. </p>
      */
-    inline const Aws::Utils::DateTime& GetExecutionEndDate() const{ return m_executionEndDate; }
-
-    /**
-     * <p> The date a mitigation action ended. </p>
-     */
+    inline const Aws::Utils::DateTime& GetExecutionEndDate() const { return m_executionEndDate; }
     inline bool ExecutionEndDateHasBeenSet() const { return m_executionEndDateHasBeenSet; }
+    template<typename ExecutionEndDateT = Aws::Utils::DateTime>
+    void SetExecutionEndDate(ExecutionEndDateT&& value) { m_executionEndDateHasBeenSet = true; m_executionEndDate = std::forward<ExecutionEndDateT>(value); }
+    template<typename ExecutionEndDateT = Aws::Utils::DateTime>
+    DetectMitigationActionExecution& WithExecutionEndDate(ExecutionEndDateT&& value) { SetExecutionEndDate(std::forward<ExecutionEndDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The date a mitigation action ended. </p>
-     */
-    inline void SetExecutionEndDate(const Aws::Utils::DateTime& value) { m_executionEndDateHasBeenSet = true; m_executionEndDate = value; }
-
-    /**
-     * <p> The date a mitigation action ended. </p>
-     */
-    inline void SetExecutionEndDate(Aws::Utils::DateTime&& value) { m_executionEndDateHasBeenSet = true; m_executionEndDate = std::move(value); }
-
-    /**
-     * <p> The date a mitigation action ended. </p>
-     */
-    inline DetectMitigationActionExecution& WithExecutionEndDate(const Aws::Utils::DateTime& value) { SetExecutionEndDate(value); return *this;}
-
-    /**
-     * <p> The date a mitigation action ended. </p>
-     */
-    inline DetectMitigationActionExecution& WithExecutionEndDate(Aws::Utils::DateTime&& value) { SetExecutionEndDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The status of a mitigation action. </p>
      */
-    inline const DetectMitigationActionExecutionStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p> The status of a mitigation action. </p>
-     */
+    inline DetectMitigationActionExecutionStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(DetectMitigationActionExecutionStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline DetectMitigationActionExecution& WithStatus(DetectMitigationActionExecutionStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p> The status of a mitigation action. </p>
-     */
-    inline void SetStatus(const DetectMitigationActionExecutionStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p> The status of a mitigation action. </p>
-     */
-    inline void SetStatus(DetectMitigationActionExecutionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p> The status of a mitigation action. </p>
-     */
-    inline DetectMitigationActionExecution& WithStatus(const DetectMitigationActionExecutionStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p> The status of a mitigation action. </p>
-     */
-    inline DetectMitigationActionExecution& WithStatus(DetectMitigationActionExecutionStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The error code of a mitigation action. </p>
      */
-    inline const Aws::String& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p> The error code of a mitigation action. </p>
-     */
+    inline const Aws::String& GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
+    template<typename ErrorCodeT = Aws::String>
+    void SetErrorCode(ErrorCodeT&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::forward<ErrorCodeT>(value); }
+    template<typename ErrorCodeT = Aws::String>
+    DetectMitigationActionExecution& WithErrorCode(ErrorCodeT&& value) { SetErrorCode(std::forward<ErrorCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The error code of a mitigation action. </p>
-     */
-    inline void SetErrorCode(const Aws::String& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p> The error code of a mitigation action. </p>
-     */
-    inline void SetErrorCode(Aws::String&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * <p> The error code of a mitigation action. </p>
-     */
-    inline void SetErrorCode(const char* value) { m_errorCodeHasBeenSet = true; m_errorCode.assign(value); }
-
-    /**
-     * <p> The error code of a mitigation action. </p>
-     */
-    inline DetectMitigationActionExecution& WithErrorCode(const Aws::String& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p> The error code of a mitigation action. </p>
-     */
-    inline DetectMitigationActionExecution& WithErrorCode(Aws::String&& value) { SetErrorCode(std::move(value)); return *this;}
-
-    /**
-     * <p> The error code of a mitigation action. </p>
-     */
-    inline DetectMitigationActionExecution& WithErrorCode(const char* value) { SetErrorCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The message of a mitigation action. </p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p> The message of a mitigation action. </p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p> The message of a mitigation action. </p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p> The message of a mitigation action. </p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p> The message of a mitigation action. </p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p> The message of a mitigation action. </p>
-     */
-    inline DetectMitigationActionExecution& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p> The message of a mitigation action. </p>
-     */
-    inline DetectMitigationActionExecution& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p> The message of a mitigation action. </p>
-     */
-    inline DetectMitigationActionExecution& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    DetectMitigationActionExecution& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_taskId;
@@ -392,13 +159,13 @@ namespace Model
     Aws::String m_thingName;
     bool m_thingNameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_executionStartDate;
+    Aws::Utils::DateTime m_executionStartDate{};
     bool m_executionStartDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_executionEndDate;
+    Aws::Utils::DateTime m_executionEndDate{};
     bool m_executionEndDateHasBeenSet = false;
 
-    DetectMitigationActionExecutionStatus m_status;
+    DetectMitigationActionExecutionStatus m_status{DetectMitigationActionExecutionStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_errorCode;

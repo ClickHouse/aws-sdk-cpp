@@ -18,52 +18,39 @@ namespace Omics
 namespace Model
 {
 
-ExportReadSetFilter::ExportReadSetFilter() : 
-    m_createdAfterHasBeenSet(false),
-    m_createdBeforeHasBeenSet(false),
-    m_status(ReadSetExportJobStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-ExportReadSetFilter::ExportReadSetFilter(JsonView jsonValue) : 
-    m_createdAfterHasBeenSet(false),
-    m_createdBeforeHasBeenSet(false),
-    m_status(ReadSetExportJobStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+ExportReadSetFilter::ExportReadSetFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 ExportReadSetFilter& ExportReadSetFilter::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("createdAfter"))
-  {
-    m_createdAfter = jsonValue.GetString("createdAfter");
-
-    m_createdAfterHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("createdBefore"))
-  {
-    m_createdBefore = jsonValue.GetString("createdBefore");
-
-    m_createdBeforeHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = ReadSetExportJobStatusMapper::GetReadSetExportJobStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("createdAfter"))
+  {
+    m_createdAfter = jsonValue.GetString("createdAfter");
+    m_createdAfterHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("createdBefore"))
+  {
+    m_createdBefore = jsonValue.GetString("createdBefore");
+    m_createdBeforeHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue ExportReadSetFilter::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_statusHasBeenSet)
+  {
+   payload.WithString("status", ReadSetExportJobStatusMapper::GetNameForReadSetExportJobStatus(m_status));
+  }
 
   if(m_createdAfterHasBeenSet)
   {
@@ -73,11 +60,6 @@ JsonValue ExportReadSetFilter::Jsonize() const
   if(m_createdBeforeHasBeenSet)
   {
    payload.WithString("createdBefore", m_createdBefore.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
-  }
-
-  if(m_statusHasBeenSet)
-  {
-   payload.WithString("status", ReadSetExportJobStatusMapper::GetNameForReadSetExportJobStatus(m_status));
   }
 
   return payload;

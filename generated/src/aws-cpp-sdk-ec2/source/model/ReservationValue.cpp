@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ReservationValue::ReservationValue() : 
-    m_hourlyPriceHasBeenSet(false),
-    m_remainingTotalValueHasBeenSet(false),
-    m_remainingUpfrontValueHasBeenSet(false)
-{
-}
-
-ReservationValue::ReservationValue(const XmlNode& xmlNode) : 
-    m_hourlyPriceHasBeenSet(false),
-    m_remainingTotalValueHasBeenSet(false),
-    m_remainingUpfrontValueHasBeenSet(false)
+ReservationValue::ReservationValue(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

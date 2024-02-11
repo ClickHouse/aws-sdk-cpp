@@ -18,13 +18,7 @@ namespace IoTAnalytics
 namespace Model
 {
 
-QueryFilter::QueryFilter() : 
-    m_deltaTimeHasBeenSet(false)
-{
-}
-
-QueryFilter::QueryFilter(JsonView jsonValue) : 
-    m_deltaTimeHasBeenSet(false)
+QueryFilter::QueryFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ QueryFilter& QueryFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("deltaTime"))
   {
     m_deltaTime = jsonValue.GetObject("deltaTime");
-
     m_deltaTimeHasBeenSet = true;
   }
-
   return *this;
 }
 

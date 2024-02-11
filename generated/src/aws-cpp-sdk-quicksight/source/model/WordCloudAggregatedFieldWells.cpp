@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-WordCloudAggregatedFieldWells::WordCloudAggregatedFieldWells() : 
-    m_groupByHasBeenSet(false),
-    m_sizeHasBeenSet(false)
-{
-}
-
-WordCloudAggregatedFieldWells::WordCloudAggregatedFieldWells(JsonView jsonValue) : 
-    m_groupByHasBeenSet(false),
-    m_sizeHasBeenSet(false)
+WordCloudAggregatedFieldWells::WordCloudAggregatedFieldWells(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ WordCloudAggregatedFieldWells& WordCloudAggregatedFieldWells::operator =(JsonVie
     }
     m_groupByHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Size"))
   {
     Aws::Utils::Array<JsonView> sizeJsonList = jsonValue.GetArray("Size");
@@ -52,7 +43,6 @@ WordCloudAggregatedFieldWells& WordCloudAggregatedFieldWells::operator =(JsonVie
     }
     m_sizeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -16,10 +16,9 @@ using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
 using EpParam = Aws::Endpoint::EndpointParameter;
 using EpProp = Aws::Endpoint::EndpointParameter; // just a container to store test expectations
-using ExpEpProps = Aws::UnorderedMap<Aws::String, Aws::Vector<EpProp>>;
+using ExpEpProps = Aws::UnorderedMap<Aws::String, Aws::Vector<Aws::Vector<EpProp>>>;
+using ExpEpAuthScheme = Aws::Vector<EpProp>;
 using ExpEpHeaders = Aws::UnorderedMap<Aws::String, Aws::Vector<Aws::String>>;
-
-class SageMakerMetricsEndpointProviderTests : public ::testing::TestWithParam<size_t> {};
 
 struct SageMakerMetricsEndpointProviderEndpointTestCase
 {
@@ -30,6 +29,7 @@ struct SageMakerMetricsEndpointProviderEndpointTestCase
         struct Endpoint
         {
             Aws::String url;
+            ExpEpAuthScheme authScheme;
             ExpEpProps properties;
             ExpEpHeaders headers;
         } endpoint;
@@ -53,183 +53,512 @@ struct SageMakerMetricsEndpointProviderEndpointTestCase
     // Aws::Vector<OperationInput> operationInput;
 };
 
-static const Aws::Vector<SageMakerMetricsEndpointProviderEndpointTestCase> TEST_CASES = {
+class SageMakerMetricsEndpointProviderTests : public ::testing::TestWithParam<size_t>
+{
+public:
+    static const size_t TEST_CASES_SZ;
+protected:
+    static Aws::Vector<SageMakerMetricsEndpointProviderEndpointTestCase> getTestCase();
+    static Aws::UniquePtrSafeDeleted<Aws::Vector<SageMakerMetricsEndpointProviderEndpointTestCase>> TEST_CASES;
+    static void SetUpTestSuite()
+    {
+        TEST_CASES = Aws::MakeUniqueSafeDeleted<Aws::Vector<SageMakerMetricsEndpointProviderEndpointTestCase>>(ALLOCATION_TAG, getTestCase());
+        ASSERT_TRUE(TEST_CASES) << "Failed to allocate TEST_CASES table";
+        assert(TEST_CASES->size() == TEST_CASES_SZ);
+    }
+
+    static void TearDownTestSuite()
+    {
+        TEST_CASES.reset();
+    }
+};
+
+Aws::UniquePtrSafeDeleted<Aws::Vector<SageMakerMetricsEndpointProviderEndpointTestCase>> SageMakerMetricsEndpointProviderTests::TEST_CASES;
+const size_t SageMakerMetricsEndpointProviderTests::TEST_CASES_SZ = 54;
+
+Aws::Vector<SageMakerMetricsEndpointProviderEndpointTestCase> SageMakerMetricsEndpointProviderTests::getTestCase() {
+
+  Aws::Vector<SageMakerMetricsEndpointProviderEndpointTestCase> test_cases = {
   /*TEST CASE 0*/
-  {"For region us-gov-east-1 with FIPS enabled and DualStack enabled", // documentation
-    {EpParam("UseFIPS", true), EpParam("Region", "us-gov-east-1"), EpParam("UseDualStack", true)}, // params
+  {"For region af-south-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "af-south-1"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*epUrl*/"https://metrics.sagemaker-fips.us-gov-east-1.api.aws",
+    {{/*epUrl*/"https://metrics.sagemaker.af-south-1.amazonaws.com",
+       {/*authScheme*/}, 
        {/*properties*/},
        {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 1*/
-  {"For region us-gov-east-1 with FIPS enabled and DualStack disabled", // documentation
-    {EpParam("UseFIPS", true), EpParam("Region", "us-gov-east-1"), EpParam("UseDualStack", false)}, // params
+  {"For region ap-east-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "ap-east-1"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*epUrl*/"https://metrics.sagemaker-fips.us-gov-east-1.amazonaws.com",
+    {{/*epUrl*/"https://metrics.sagemaker.ap-east-1.amazonaws.com",
+       {/*authScheme*/}, 
        {/*properties*/},
        {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 2*/
-  {"For region us-gov-east-1 with FIPS disabled and DualStack enabled", // documentation
-    {EpParam("UseFIPS", false), EpParam("Region", "us-gov-east-1"), EpParam("UseDualStack", true)}, // params
+  {"For region ap-northeast-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "ap-northeast-1"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*epUrl*/"https://metrics.sagemaker.us-gov-east-1.api.aws",
+    {{/*epUrl*/"https://metrics.sagemaker.ap-northeast-1.amazonaws.com",
+       {/*authScheme*/}, 
        {/*properties*/},
        {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 3*/
-  {"For region us-gov-east-1 with FIPS disabled and DualStack disabled", // documentation
-    {EpParam("UseFIPS", false), EpParam("Region", "us-gov-east-1"), EpParam("UseDualStack", false)}, // params
+  {"For region ap-northeast-2 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "ap-northeast-2"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*epUrl*/"https://metrics.sagemaker.us-gov-east-1.amazonaws.com",
+    {{/*epUrl*/"https://metrics.sagemaker.ap-northeast-2.amazonaws.com",
+       {/*authScheme*/}, 
        {/*properties*/},
        {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 4*/
-  {"For region cn-north-1 with FIPS enabled and DualStack enabled", // documentation
-    {EpParam("UseFIPS", true), EpParam("Region", "cn-north-1"), EpParam("UseDualStack", true)}, // params
+  {"For region ap-northeast-3 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "ap-northeast-3"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*epUrl*/"https://metrics.sagemaker-fips.cn-north-1.api.amazonwebservices.com.cn",
+    {{/*epUrl*/"https://metrics.sagemaker.ap-northeast-3.amazonaws.com",
+       {/*authScheme*/}, 
        {/*properties*/},
        {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 5*/
-  {"For region cn-north-1 with FIPS enabled and DualStack disabled", // documentation
-    {EpParam("UseFIPS", true), EpParam("Region", "cn-north-1"), EpParam("UseDualStack", false)}, // params
+  {"For region ap-south-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "ap-south-1"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*epUrl*/"https://metrics.sagemaker-fips.cn-north-1.amazonaws.com.cn",
+    {{/*epUrl*/"https://metrics.sagemaker.ap-south-1.amazonaws.com",
+       {/*authScheme*/}, 
        {/*properties*/},
        {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 6*/
-  {"For region cn-north-1 with FIPS disabled and DualStack enabled", // documentation
-    {EpParam("UseFIPS", false), EpParam("Region", "cn-north-1"), EpParam("UseDualStack", true)}, // params
+  {"For region ap-south-2 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "ap-south-2"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*epUrl*/"https://metrics.sagemaker.cn-north-1.api.amazonwebservices.com.cn",
+    {{/*epUrl*/"https://metrics.sagemaker.ap-south-2.amazonaws.com",
+       {/*authScheme*/}, 
        {/*properties*/},
        {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 7*/
-  {"For region cn-north-1 with FIPS disabled and DualStack disabled", // documentation
-    {EpParam("UseFIPS", false), EpParam("Region", "cn-north-1"), EpParam("UseDualStack", false)}, // params
+  {"For region ap-southeast-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "ap-southeast-1"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*epUrl*/"https://metrics.sagemaker.cn-north-1.amazonaws.com.cn",
+    {{/*epUrl*/"https://metrics.sagemaker.ap-southeast-1.amazonaws.com",
+       {/*authScheme*/}, 
        {/*properties*/},
        {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 8*/
-  {"For region us-iso-east-1 with FIPS enabled and DualStack enabled", // documentation
-    {EpParam("UseFIPS", true), EpParam("Region", "us-iso-east-1"), EpParam("UseDualStack", true)}, // params
+  {"For region ap-southeast-2 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "ap-southeast-2"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*No endpoint expected*/}, /*error*/"FIPS and DualStack are enabled, but this partition does not support one or both"} // expect
+    {{/*epUrl*/"https://metrics.sagemaker.ap-southeast-2.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 9*/
-  {"For region us-iso-east-1 with FIPS enabled and DualStack disabled", // documentation
-    {EpParam("UseFIPS", true), EpParam("Region", "us-iso-east-1"), EpParam("UseDualStack", false)}, // params
+  {"For region ap-southeast-3 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "ap-southeast-3"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*epUrl*/"https://metrics.sagemaker-fips.us-iso-east-1.c2s.ic.gov",
+    {{/*epUrl*/"https://metrics.sagemaker.ap-southeast-3.amazonaws.com",
+       {/*authScheme*/}, 
        {/*properties*/},
        {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 10*/
-  {"For region us-iso-east-1 with FIPS disabled and DualStack enabled", // documentation
-    {EpParam("UseFIPS", false), EpParam("Region", "us-iso-east-1"), EpParam("UseDualStack", true)}, // params
+  {"For region ap-southeast-4 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "ap-southeast-4"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*No endpoint expected*/}, /*error*/"DualStack is enabled but this partition does not support DualStack"} // expect
+    {{/*epUrl*/"https://metrics.sagemaker.ap-southeast-4.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 11*/
-  {"For region us-iso-east-1 with FIPS disabled and DualStack disabled", // documentation
-    {EpParam("UseFIPS", false), EpParam("Region", "us-iso-east-1"), EpParam("UseDualStack", false)}, // params
+  {"For region ca-central-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "ca-central-1"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*epUrl*/"https://metrics.sagemaker.us-iso-east-1.c2s.ic.gov",
+    {{/*epUrl*/"https://metrics.sagemaker.ca-central-1.amazonaws.com",
+       {/*authScheme*/}, 
        {/*properties*/},
        {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 12*/
-  {"For region us-east-1 with FIPS enabled and DualStack enabled", // documentation
-    {EpParam("UseFIPS", true), EpParam("Region", "us-east-1"), EpParam("UseDualStack", true)}, // params
+  {"For region ca-central-1 with FIPS enabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", true), EpParam("Region", "ca-central-1"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*epUrl*/"https://metrics.sagemaker-fips.us-east-1.api.aws",
+    {{/*epUrl*/"https://metrics-fips.sagemaker.ca-central-1.amazonaws.com",
+       {/*authScheme*/}, 
        {/*properties*/},
        {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 13*/
-  {"For region us-east-1 with FIPS enabled and DualStack disabled", // documentation
-    {EpParam("UseFIPS", true), EpParam("Region", "us-east-1"), EpParam("UseDualStack", false)}, // params
+  {"For region ca-west-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "ca-west-1"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*epUrl*/"https://metrics.sagemaker-fips.us-east-1.amazonaws.com",
+    {{/*epUrl*/"https://metrics.sagemaker.ca-west-1.amazonaws.com",
+       {/*authScheme*/}, 
        {/*properties*/},
        {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 14*/
-  {"For region us-east-1 with FIPS disabled and DualStack enabled", // documentation
-    {EpParam("UseFIPS", false), EpParam("Region", "us-east-1"), EpParam("UseDualStack", true)}, // params
+  {"For region ca-west-1 with FIPS enabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", true), EpParam("Region", "ca-west-1"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*epUrl*/"https://metrics.sagemaker.us-east-1.api.aws",
+    {{/*epUrl*/"https://metrics-fips.sagemaker.ca-west-1.amazonaws.com",
+       {/*authScheme*/}, 
        {/*properties*/},
        {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 15*/
-  {"For region us-east-1 with FIPS disabled and DualStack disabled", // documentation
-    {EpParam("UseFIPS", false), EpParam("Region", "us-east-1"), EpParam("UseDualStack", false)}, // params
+  {"For region eu-central-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "eu-central-1"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*epUrl*/"https://metrics.sagemaker.us-east-1.amazonaws.com",
+    {{/*epUrl*/"https://metrics.sagemaker.eu-central-1.amazonaws.com",
+       {/*authScheme*/}, 
        {/*properties*/},
        {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 16*/
-  {"For region us-isob-east-1 with FIPS enabled and DualStack enabled", // documentation
-    {EpParam("UseFIPS", true), EpParam("Region", "us-isob-east-1"), EpParam("UseDualStack", true)}, // params
+  {"For region eu-central-2 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "eu-central-2"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*No endpoint expected*/}, /*error*/"FIPS and DualStack are enabled, but this partition does not support one or both"} // expect
+    {{/*epUrl*/"https://metrics.sagemaker.eu-central-2.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 17*/
-  {"For region us-isob-east-1 with FIPS enabled and DualStack disabled", // documentation
-    {EpParam("UseFIPS", true), EpParam("Region", "us-isob-east-1"), EpParam("UseDualStack", false)}, // params
+  {"For region eu-north-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "eu-north-1"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*epUrl*/"https://metrics.sagemaker-fips.us-isob-east-1.sc2s.sgov.gov",
+    {{/*epUrl*/"https://metrics.sagemaker.eu-north-1.amazonaws.com",
+       {/*authScheme*/}, 
        {/*properties*/},
        {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 18*/
-  {"For region us-isob-east-1 with FIPS disabled and DualStack enabled", // documentation
-    {EpParam("UseFIPS", false), EpParam("Region", "us-isob-east-1"), EpParam("UseDualStack", true)}, // params
+  {"For region eu-south-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "eu-south-1"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*No endpoint expected*/}, /*error*/"DualStack is enabled but this partition does not support DualStack"} // expect
+    {{/*epUrl*/"https://metrics.sagemaker.eu-south-1.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 19*/
-  {"For region us-isob-east-1 with FIPS disabled and DualStack disabled", // documentation
-    {EpParam("UseFIPS", false), EpParam("Region", "us-isob-east-1"), EpParam("UseDualStack", false)}, // params
+  {"For region eu-south-2 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "eu-south-2"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*epUrl*/"https://metrics.sagemaker.us-isob-east-1.sc2s.sgov.gov",
+    {{/*epUrl*/"https://metrics.sagemaker.eu-south-2.amazonaws.com",
+       {/*authScheme*/}, 
        {/*properties*/},
        {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 20*/
-  {"For custom endpoint with fips disabled and dualstack disabled", // documentation
-    {EpParam("UseFIPS", false), EpParam("Endpoint", "https://example.com"), EpParam("Region", "us-east-1"),
-     EpParam("UseDualStack", false)}, // params
+  {"For region eu-west-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "eu-west-1"), EpParam("UseDualStack", false)}, // params
     {}, // tags
-    {{/*epUrl*/"https://example.com",
+    {{/*epUrl*/"https://metrics.sagemaker.eu-west-1.amazonaws.com",
+       {/*authScheme*/}, 
        {/*properties*/},
        {/*headers*/}}, {/*No error*/}} // expect
   },
   /*TEST CASE 21*/
+  {"For region eu-west-2 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "eu-west-2"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker.eu-west-2.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 22*/
+  {"For region eu-west-3 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "eu-west-3"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker.eu-west-3.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 23*/
+  {"For region il-central-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "il-central-1"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker.il-central-1.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 24*/
+  {"For region me-central-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "me-central-1"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker.me-central-1.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 25*/
+  {"For region me-south-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "me-south-1"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker.me-south-1.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 26*/
+  {"For region sa-east-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "sa-east-1"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker.sa-east-1.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 27*/
+  {"For region us-east-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "us-east-1"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker.us-east-1.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 28*/
+  {"For region us-east-1 with FIPS enabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", true), EpParam("Region", "us-east-1"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics-fips.sagemaker.us-east-1.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 29*/
+  {"For region us-east-2 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "us-east-2"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker.us-east-2.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 30*/
+  {"For region us-east-2 with FIPS enabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", true), EpParam("Region", "us-east-2"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics-fips.sagemaker.us-east-2.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 31*/
+  {"For region us-west-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "us-west-1"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker.us-west-1.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 32*/
+  {"For region us-west-1 with FIPS enabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", true), EpParam("Region", "us-west-1"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics-fips.sagemaker.us-west-1.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 33*/
+  {"For region us-west-2 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "us-west-2"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker.us-west-2.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 34*/
+  {"For region us-west-2 with FIPS enabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", true), EpParam("Region", "us-west-2"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics-fips.sagemaker.us-west-2.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 35*/
+  {"For region us-east-1 with FIPS enabled and DualStack enabled", // documentation
+    {EpParam("UseFIPS", true), EpParam("Region", "us-east-1"), EpParam("UseDualStack", true)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker-fips.us-east-1.api.aws",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 36*/
+  {"For region us-east-1 with FIPS disabled and DualStack enabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "us-east-1"), EpParam("UseDualStack", true)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker.us-east-1.api.aws",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 37*/
+  {"For region cn-north-1 with FIPS enabled and DualStack enabled", // documentation
+    {EpParam("UseFIPS", true), EpParam("Region", "cn-north-1"), EpParam("UseDualStack", true)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker-fips.cn-north-1.api.amazonwebservices.com.cn",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 38*/
+  {"For region cn-north-1 with FIPS enabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", true), EpParam("Region", "cn-north-1"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker-fips.cn-north-1.amazonaws.com.cn",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 39*/
+  {"For region cn-north-1 with FIPS disabled and DualStack enabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "cn-north-1"), EpParam("UseDualStack", true)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker.cn-north-1.api.amazonwebservices.com.cn",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 40*/
+  {"For region cn-north-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "cn-north-1"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker.cn-north-1.amazonaws.com.cn",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 41*/
+  {"For region us-gov-east-1 with FIPS enabled and DualStack enabled", // documentation
+    {EpParam("UseFIPS", true), EpParam("Region", "us-gov-east-1"), EpParam("UseDualStack", true)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker-fips.us-gov-east-1.api.aws",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 42*/
+  {"For region us-gov-east-1 with FIPS enabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", true), EpParam("Region", "us-gov-east-1"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker-fips.us-gov-east-1.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 43*/
+  {"For region us-gov-east-1 with FIPS disabled and DualStack enabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "us-gov-east-1"), EpParam("UseDualStack", true)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker.us-gov-east-1.api.aws",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 44*/
+  {"For region us-gov-east-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "us-gov-east-1"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker.us-gov-east-1.amazonaws.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 45*/
+  {"For region us-iso-east-1 with FIPS enabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", true), EpParam("Region", "us-iso-east-1"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker-fips.us-iso-east-1.c2s.ic.gov",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 46*/
+  {"For region us-iso-east-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "us-iso-east-1"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker.us-iso-east-1.c2s.ic.gov",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 47*/
+  {"For region us-isob-east-1 with FIPS enabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", true), EpParam("Region", "us-isob-east-1"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker-fips.us-isob-east-1.sc2s.sgov.gov",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 48*/
+  {"For region us-isob-east-1 with FIPS disabled and DualStack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Region", "us-isob-east-1"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://metrics.sagemaker.us-isob-east-1.sc2s.sgov.gov",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 49*/
+  {"For custom endpoint with region set and fips disabled and dualstack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Endpoint", "https://example.com"), EpParam("Region", "us-east-1"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://example.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 50*/
+  {"For custom endpoint with region not set and fips disabled and dualstack disabled", // documentation
+    {EpParam("UseFIPS", false), EpParam("Endpoint", "https://example.com"), EpParam("UseDualStack", false)}, // params
+    {}, // tags
+    {{/*epUrl*/"https://example.com",
+       {/*authScheme*/}, 
+       {/*properties*/},
+       {/*headers*/}}, {/*No error*/}} // expect
+  },
+  /*TEST CASE 51*/
   {"For custom endpoint with fips enabled and dualstack disabled", // documentation
-    {EpParam("UseFIPS", true), EpParam("Endpoint", "https://example.com"), EpParam("Region", "us-east-1"),
-     EpParam("UseDualStack", false)}, // params
+    {EpParam("UseFIPS", true), EpParam("Endpoint", "https://example.com"), EpParam("Region", "us-east-1"), EpParam("UseDualStack", false)}, // params
     {}, // tags
     {{/*No endpoint expected*/}, /*error*/"Invalid Configuration: FIPS and custom endpoint are not supported"} // expect
   },
-  /*TEST CASE 22*/
+  /*TEST CASE 52*/
   {"For custom endpoint with fips disabled and dualstack enabled", // documentation
-    {EpParam("UseFIPS", false), EpParam("Endpoint", "https://example.com"), EpParam("Region", "us-east-1"),
-     EpParam("UseDualStack", true)}, // params
+    {EpParam("UseFIPS", false), EpParam("Endpoint", "https://example.com"), EpParam("Region", "us-east-1"), EpParam("UseDualStack", true)}, // params
     {}, // tags
     {{/*No endpoint expected*/}, /*error*/"Invalid Configuration: Dualstack and custom endpoint are not supported"} // expect
+  },
+  /*TEST CASE 53*/
+  {"Missing region", // documentation
+    {}, // params
+    {}, // tags
+    {{/*No endpoint expected*/}, /*error*/"Invalid Configuration: Missing Region"} // expect
   }
-};
+  };
+  return test_cases;
+}
 
 Aws::String RulesToSdkSignerName(const Aws::String& rulesSignerName)
 {
@@ -242,6 +571,8 @@ Aws::String RulesToSdkSignerName(const Aws::String& rulesSignerName)
         sdkSigner = "NullSigner";
     } else if (rulesSignerName == "bearer") {
         sdkSigner = "Bearer";
+    } else if (rulesSignerName == "s3Express") {
+        sdkSigner = "S3ExpressSigner";
     } else {
         sdkSigner = rulesSignerName;
     }
@@ -263,9 +594,23 @@ void ValidateOutcome(const ResolveEndpointOutcome& outcome, const SageMakerMetri
         const auto expAuthSchemesIt = expect.endpoint.properties.find("authSchemes");
         if (expAuthSchemesIt != expect.endpoint.properties.end())
         {
+            // in the list of AuthSchemes, select the one with a highest priority
+            const Aws::Vector<Aws::String> priotityList = {"s3Express", "sigv4a", "sigv4", "bearer", "none", ""};
+            const auto expectedAuthSchemePropsIt = std::find_first_of(expAuthSchemesIt->second.begin(), expAuthSchemesIt->second.end(),
+                                                                    priotityList.begin(), priotityList.end(), [](const Aws::Vector<EpProp>& props, const Aws::String& expName)
+                                                                    {
+                                                                        const auto& propNameIt = std::find_if(props.begin(), props.end(), [](const EpProp& prop)
+                                                                        {
+                                                                            return prop.GetName() == "name";
+                                                                        });
+                                                                        assert(propNameIt != props.end());
+                                                                        return propNameIt->GetStrValueNoCheck() == expName;
+                                                                    });
+            assert(expectedAuthSchemePropsIt != expAuthSchemesIt->second.end());
+
             const auto& endpointResultAttrs = outcome.GetResult().GetAttributes();
             ASSERT_TRUE(endpointResultAttrs) << "Expected non-empty EndpointAttributes (authSchemes)";
-            for (const auto& expProperty : expAuthSchemesIt->second)
+            for (const auto& expProperty : *expectedAuthSchemePropsIt)
             {
                 if (expProperty.GetName() == "name") {
                     ASSERT_TRUE(!endpointResultAttrs->authScheme.GetName().empty());
@@ -308,9 +653,10 @@ void ValidateOutcome(const ResolveEndpointOutcome& outcome, const SageMakerMetri
 TEST_P(SageMakerMetricsEndpointProviderTests, EndpointProviderTest)
 {
     const size_t TEST_CASE_IDX = GetParam();
-    ASSERT_LT(TEST_CASE_IDX, TEST_CASES.size()) << "Something is wrong with the test fixture itself.";
-    const SageMakerMetricsEndpointProviderEndpointTestCase& TEST_CASE = TEST_CASES.at(TEST_CASE_IDX);
+    ASSERT_LT(TEST_CASE_IDX, TEST_CASES->size()) << "Something is wrong with the test fixture itself.";
+    const SageMakerMetricsEndpointProviderEndpointTestCase& TEST_CASE = TEST_CASES->at(TEST_CASE_IDX);
     SCOPED_TRACE(Aws::String("\nTEST CASE # ") + Aws::Utils::StringUtils::to_string(TEST_CASE_IDX) + ": " + TEST_CASE.documentation);
+    SCOPED_TRACE(Aws::String("\n--gtest_filter=EndpointTestsFromModel/SageMakerMetricsEndpointProviderTests.EndpointProviderTest/") + Aws::Utils::StringUtils::to_string(TEST_CASE_IDX));
 
     std::shared_ptr<SageMakerMetricsEndpointProvider> endpointProvider = Aws::MakeShared<SageMakerMetricsEndpointProvider>(ALLOCATION_TAG);
     ASSERT_TRUE(endpointProvider) << "Failed to allocate/initialize SageMakerMetricsEndpointProvider";
@@ -352,4 +698,4 @@ TEST_P(SageMakerMetricsEndpointProviderTests, EndpointProviderTest)
 
 INSTANTIATE_TEST_SUITE_P(EndpointTestsFromModel,
                          SageMakerMetricsEndpointProviderTests,
-                         ::testing::Range((size_t) 0u, TEST_CASES.size()));
+                         ::testing::Range((size_t) 0u, SageMakerMetricsEndpointProviderTests::TEST_CASES_SZ));

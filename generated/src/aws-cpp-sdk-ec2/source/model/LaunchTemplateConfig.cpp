@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LaunchTemplateConfig::LaunchTemplateConfig() : 
-    m_launchTemplateSpecificationHasBeenSet(false),
-    m_overridesHasBeenSet(false)
-{
-}
-
-LaunchTemplateConfig::LaunchTemplateConfig(const XmlNode& xmlNode) : 
-    m_launchTemplateSpecificationHasBeenSet(false),
-    m_overridesHasBeenSet(false)
+LaunchTemplateConfig::LaunchTemplateConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ LaunchTemplateConfig& LaunchTemplateConfig::operator =(const XmlNode& xmlNode)
     if(!overridesNode.IsNull())
     {
       XmlNode overridesMember = overridesNode.FirstChild("item");
+      m_overridesHasBeenSet = !overridesMember.IsNull();
       while(!overridesMember.IsNull())
       {
         m_overrides.push_back(overridesMember);
@@ -98,7 +91,7 @@ void LaunchTemplateConfig::OutputToStream(Aws::OStream& oStream, const char* loc
       for(auto& item : m_overrides)
       {
         Aws::StringStream overridesSs;
-        overridesSs << location <<  ".Overrides." << overridesIdx++;
+        overridesSs << location << ".Overrides." << overridesIdx++;
         item.OutputToStream(oStream, overridesSs.str().c_str());
       }
   }

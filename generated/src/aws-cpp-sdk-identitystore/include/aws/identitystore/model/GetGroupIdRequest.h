@@ -22,7 +22,7 @@ namespace Model
   class GetGroupIdRequest : public IdentityStoreRequest
   {
   public:
-    AWS_IDENTITYSTORE_API GetGroupIdRequest();
+    AWS_IDENTITYSTORE_API GetGroupIdRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,95 +35,32 @@ namespace Model
     AWS_IDENTITYSTORE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The globally unique identifier for the identity store.</p>
      */
-    inline const Aws::String& GetIdentityStoreId() const{ return m_identityStoreId; }
-
-    /**
-     * <p>The globally unique identifier for the identity store.</p>
-     */
+    inline const Aws::String& GetIdentityStoreId() const { return m_identityStoreId; }
     inline bool IdentityStoreIdHasBeenSet() const { return m_identityStoreIdHasBeenSet; }
+    template<typename IdentityStoreIdT = Aws::String>
+    void SetIdentityStoreId(IdentityStoreIdT&& value) { m_identityStoreIdHasBeenSet = true; m_identityStoreId = std::forward<IdentityStoreIdT>(value); }
+    template<typename IdentityStoreIdT = Aws::String>
+    GetGroupIdRequest& WithIdentityStoreId(IdentityStoreIdT&& value) { SetIdentityStoreId(std::forward<IdentityStoreIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The globally unique identifier for the identity store.</p>
-     */
-    inline void SetIdentityStoreId(const Aws::String& value) { m_identityStoreIdHasBeenSet = true; m_identityStoreId = value; }
-
-    /**
-     * <p>The globally unique identifier for the identity store.</p>
-     */
-    inline void SetIdentityStoreId(Aws::String&& value) { m_identityStoreIdHasBeenSet = true; m_identityStoreId = std::move(value); }
-
-    /**
-     * <p>The globally unique identifier for the identity store.</p>
-     */
-    inline void SetIdentityStoreId(const char* value) { m_identityStoreIdHasBeenSet = true; m_identityStoreId.assign(value); }
-
-    /**
-     * <p>The globally unique identifier for the identity store.</p>
-     */
-    inline GetGroupIdRequest& WithIdentityStoreId(const Aws::String& value) { SetIdentityStoreId(value); return *this;}
-
-    /**
-     * <p>The globally unique identifier for the identity store.</p>
-     */
-    inline GetGroupIdRequest& WithIdentityStoreId(Aws::String&& value) { SetIdentityStoreId(std::move(value)); return *this;}
-
-    /**
-     * <p>The globally unique identifier for the identity store.</p>
-     */
-    inline GetGroupIdRequest& WithIdentityStoreId(const char* value) { SetIdentityStoreId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for a user or group that is not the primary identifier.
      * This value can be an identifier from an external identity provider (IdP) that is
      * associated with the user, the group, or a unique attribute. For the unique
      * attribute, the only valid path is <code>displayName</code>.</p>
      */
-    inline const AlternateIdentifier& GetAlternateIdentifier() const{ return m_alternateIdentifier; }
-
-    /**
-     * <p>A unique identifier for a user or group that is not the primary identifier.
-     * This value can be an identifier from an external identity provider (IdP) that is
-     * associated with the user, the group, or a unique attribute. For the unique
-     * attribute, the only valid path is <code>displayName</code>.</p>
-     */
+    inline const AlternateIdentifier& GetAlternateIdentifier() const { return m_alternateIdentifier; }
     inline bool AlternateIdentifierHasBeenSet() const { return m_alternateIdentifierHasBeenSet; }
-
-    /**
-     * <p>A unique identifier for a user or group that is not the primary identifier.
-     * This value can be an identifier from an external identity provider (IdP) that is
-     * associated with the user, the group, or a unique attribute. For the unique
-     * attribute, the only valid path is <code>displayName</code>.</p>
-     */
-    inline void SetAlternateIdentifier(const AlternateIdentifier& value) { m_alternateIdentifierHasBeenSet = true; m_alternateIdentifier = value; }
-
-    /**
-     * <p>A unique identifier for a user or group that is not the primary identifier.
-     * This value can be an identifier from an external identity provider (IdP) that is
-     * associated with the user, the group, or a unique attribute. For the unique
-     * attribute, the only valid path is <code>displayName</code>.</p>
-     */
-    inline void SetAlternateIdentifier(AlternateIdentifier&& value) { m_alternateIdentifierHasBeenSet = true; m_alternateIdentifier = std::move(value); }
-
-    /**
-     * <p>A unique identifier for a user or group that is not the primary identifier.
-     * This value can be an identifier from an external identity provider (IdP) that is
-     * associated with the user, the group, or a unique attribute. For the unique
-     * attribute, the only valid path is <code>displayName</code>.</p>
-     */
-    inline GetGroupIdRequest& WithAlternateIdentifier(const AlternateIdentifier& value) { SetAlternateIdentifier(value); return *this;}
-
-    /**
-     * <p>A unique identifier for a user or group that is not the primary identifier.
-     * This value can be an identifier from an external identity provider (IdP) that is
-     * associated with the user, the group, or a unique attribute. For the unique
-     * attribute, the only valid path is <code>displayName</code>.</p>
-     */
-    inline GetGroupIdRequest& WithAlternateIdentifier(AlternateIdentifier&& value) { SetAlternateIdentifier(std::move(value)); return *this;}
-
+    template<typename AlternateIdentifierT = AlternateIdentifier>
+    void SetAlternateIdentifier(AlternateIdentifierT&& value) { m_alternateIdentifierHasBeenSet = true; m_alternateIdentifier = std::forward<AlternateIdentifierT>(value); }
+    template<typename AlternateIdentifierT = AlternateIdentifier>
+    GetGroupIdRequest& WithAlternateIdentifier(AlternateIdentifierT&& value) { SetAlternateIdentifier(std::forward<AlternateIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_identityStoreId;

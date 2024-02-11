@@ -10,6 +10,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <aws/auditmanager/model/ControlState.h>
 #include <aws/auditmanager/model/ControlMappingSource.h>
 #include <utility>
 
@@ -36,637 +37,210 @@ namespace Model
   class Control
   {
   public:
-    AWS_AUDITMANAGER_API Control();
+    AWS_AUDITMANAGER_API Control() = default;
     AWS_AUDITMANAGER_API Control(Aws::Utils::Json::JsonView jsonValue);
     AWS_AUDITMANAGER_API Control& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AUDITMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The Amazon Resource Name (ARN) of the control. </p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the control. </p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    Control& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The Amazon Resource Name (ARN) of the control. </p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the control. </p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the control. </p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the control. </p>
-     */
-    inline Control& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the control. </p>
-     */
-    inline Control& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the control. </p>
-     */
-    inline Control& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The unique identifier for the control. </p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p> The unique identifier for the control. </p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    Control& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The unique identifier for the control. </p>
+     * <p> Specifies whether the control is a standard control or a custom control.</p>
      */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p> The unique identifier for the control. </p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p> The unique identifier for the control. </p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p> The unique identifier for the control. </p>
-     */
-    inline Control& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p> The unique identifier for the control. </p>
-     */
-    inline Control& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p> The unique identifier for the control. </p>
-     */
-    inline Control& WithId(const char* value) { SetId(value); return *this;}
-
-
-    /**
-     * <p> The type of control, such as a custom control or a standard control. </p>
-     */
-    inline const ControlType& GetType() const{ return m_type; }
-
-    /**
-     * <p> The type of control, such as a custom control or a standard control. </p>
-     */
+    inline ControlType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(ControlType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline Control& WithType(ControlType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p> The type of control, such as a custom control or a standard control. </p>
-     */
-    inline void SetType(const ControlType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p> The type of control, such as a custom control or a standard control. </p>
-     */
-    inline void SetType(ControlType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p> The type of control, such as a custom control or a standard control. </p>
-     */
-    inline Control& WithType(const ControlType& value) { SetType(value); return *this;}
-
-    /**
-     * <p> The type of control, such as a custom control or a standard control. </p>
-     */
-    inline Control& WithType(ControlType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The name of the control. </p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p> The name of the control. </p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Control& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The name of the control. </p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p> The name of the control. </p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p> The name of the control. </p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p> The name of the control. </p>
-     */
-    inline Control& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p> The name of the control. </p>
-     */
-    inline Control& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name of the control. </p>
-     */
-    inline Control& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The description of the control. </p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p> The description of the control. </p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    Control& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The description of the control. </p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p> The description of the control. </p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p> The description of the control. </p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p> The description of the control. </p>
-     */
-    inline Control& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p> The description of the control. </p>
-     */
-    inline Control& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p> The description of the control. </p>
-     */
-    inline Control& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The steps that you should follow to determine if the control has been
      * satisfied. </p>
      */
-    inline const Aws::String& GetTestingInformation() const{ return m_testingInformation; }
-
-    /**
-     * <p> The steps that you should follow to determine if the control has been
-     * satisfied. </p>
-     */
+    inline const Aws::String& GetTestingInformation() const { return m_testingInformation; }
     inline bool TestingInformationHasBeenSet() const { return m_testingInformationHasBeenSet; }
+    template<typename TestingInformationT = Aws::String>
+    void SetTestingInformation(TestingInformationT&& value) { m_testingInformationHasBeenSet = true; m_testingInformation = std::forward<TestingInformationT>(value); }
+    template<typename TestingInformationT = Aws::String>
+    Control& WithTestingInformation(TestingInformationT&& value) { SetTestingInformation(std::forward<TestingInformationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The steps that you should follow to determine if the control has been
-     * satisfied. </p>
-     */
-    inline void SetTestingInformation(const Aws::String& value) { m_testingInformationHasBeenSet = true; m_testingInformation = value; }
-
-    /**
-     * <p> The steps that you should follow to determine if the control has been
-     * satisfied. </p>
-     */
-    inline void SetTestingInformation(Aws::String&& value) { m_testingInformationHasBeenSet = true; m_testingInformation = std::move(value); }
-
-    /**
-     * <p> The steps that you should follow to determine if the control has been
-     * satisfied. </p>
-     */
-    inline void SetTestingInformation(const char* value) { m_testingInformationHasBeenSet = true; m_testingInformation.assign(value); }
-
-    /**
-     * <p> The steps that you should follow to determine if the control has been
-     * satisfied. </p>
-     */
-    inline Control& WithTestingInformation(const Aws::String& value) { SetTestingInformation(value); return *this;}
-
-    /**
-     * <p> The steps that you should follow to determine if the control has been
-     * satisfied. </p>
-     */
-    inline Control& WithTestingInformation(Aws::String&& value) { SetTestingInformation(std::move(value)); return *this;}
-
-    /**
-     * <p> The steps that you should follow to determine if the control has been
-     * satisfied. </p>
-     */
-    inline Control& WithTestingInformation(const char* value) { SetTestingInformation(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The title of the action plan for remediating the control. </p>
      */
-    inline const Aws::String& GetActionPlanTitle() const{ return m_actionPlanTitle; }
-
-    /**
-     * <p> The title of the action plan for remediating the control. </p>
-     */
+    inline const Aws::String& GetActionPlanTitle() const { return m_actionPlanTitle; }
     inline bool ActionPlanTitleHasBeenSet() const { return m_actionPlanTitleHasBeenSet; }
+    template<typename ActionPlanTitleT = Aws::String>
+    void SetActionPlanTitle(ActionPlanTitleT&& value) { m_actionPlanTitleHasBeenSet = true; m_actionPlanTitle = std::forward<ActionPlanTitleT>(value); }
+    template<typename ActionPlanTitleT = Aws::String>
+    Control& WithActionPlanTitle(ActionPlanTitleT&& value) { SetActionPlanTitle(std::forward<ActionPlanTitleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The title of the action plan for remediating the control. </p>
-     */
-    inline void SetActionPlanTitle(const Aws::String& value) { m_actionPlanTitleHasBeenSet = true; m_actionPlanTitle = value; }
-
-    /**
-     * <p> The title of the action plan for remediating the control. </p>
-     */
-    inline void SetActionPlanTitle(Aws::String&& value) { m_actionPlanTitleHasBeenSet = true; m_actionPlanTitle = std::move(value); }
-
-    /**
-     * <p> The title of the action plan for remediating the control. </p>
-     */
-    inline void SetActionPlanTitle(const char* value) { m_actionPlanTitleHasBeenSet = true; m_actionPlanTitle.assign(value); }
-
-    /**
-     * <p> The title of the action plan for remediating the control. </p>
-     */
-    inline Control& WithActionPlanTitle(const Aws::String& value) { SetActionPlanTitle(value); return *this;}
-
-    /**
-     * <p> The title of the action plan for remediating the control. </p>
-     */
-    inline Control& WithActionPlanTitle(Aws::String&& value) { SetActionPlanTitle(std::move(value)); return *this;}
-
-    /**
-     * <p> The title of the action plan for remediating the control. </p>
-     */
-    inline Control& WithActionPlanTitle(const char* value) { SetActionPlanTitle(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The recommended actions to carry out if the control isn't fulfilled. </p>
      */
-    inline const Aws::String& GetActionPlanInstructions() const{ return m_actionPlanInstructions; }
-
-    /**
-     * <p> The recommended actions to carry out if the control isn't fulfilled. </p>
-     */
+    inline const Aws::String& GetActionPlanInstructions() const { return m_actionPlanInstructions; }
     inline bool ActionPlanInstructionsHasBeenSet() const { return m_actionPlanInstructionsHasBeenSet; }
+    template<typename ActionPlanInstructionsT = Aws::String>
+    void SetActionPlanInstructions(ActionPlanInstructionsT&& value) { m_actionPlanInstructionsHasBeenSet = true; m_actionPlanInstructions = std::forward<ActionPlanInstructionsT>(value); }
+    template<typename ActionPlanInstructionsT = Aws::String>
+    Control& WithActionPlanInstructions(ActionPlanInstructionsT&& value) { SetActionPlanInstructions(std::forward<ActionPlanInstructionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The recommended actions to carry out if the control isn't fulfilled. </p>
-     */
-    inline void SetActionPlanInstructions(const Aws::String& value) { m_actionPlanInstructionsHasBeenSet = true; m_actionPlanInstructions = value; }
-
-    /**
-     * <p> The recommended actions to carry out if the control isn't fulfilled. </p>
-     */
-    inline void SetActionPlanInstructions(Aws::String&& value) { m_actionPlanInstructionsHasBeenSet = true; m_actionPlanInstructions = std::move(value); }
-
-    /**
-     * <p> The recommended actions to carry out if the control isn't fulfilled. </p>
-     */
-    inline void SetActionPlanInstructions(const char* value) { m_actionPlanInstructionsHasBeenSet = true; m_actionPlanInstructions.assign(value); }
-
-    /**
-     * <p> The recommended actions to carry out if the control isn't fulfilled. </p>
-     */
-    inline Control& WithActionPlanInstructions(const Aws::String& value) { SetActionPlanInstructions(value); return *this;}
-
-    /**
-     * <p> The recommended actions to carry out if the control isn't fulfilled. </p>
-     */
-    inline Control& WithActionPlanInstructions(Aws::String&& value) { SetActionPlanInstructions(std::move(value)); return *this;}
-
-    /**
-     * <p> The recommended actions to carry out if the control isn't fulfilled. </p>
-     */
-    inline Control& WithActionPlanInstructions(const char* value) { SetActionPlanInstructions(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The data source types that determine where Audit Manager collects evidence
      * from for the control. </p>
      */
-    inline const Aws::String& GetControlSources() const{ return m_controlSources; }
-
-    /**
-     * <p> The data source types that determine where Audit Manager collects evidence
-     * from for the control. </p>
-     */
+    inline const Aws::String& GetControlSources() const { return m_controlSources; }
     inline bool ControlSourcesHasBeenSet() const { return m_controlSourcesHasBeenSet; }
+    template<typename ControlSourcesT = Aws::String>
+    void SetControlSources(ControlSourcesT&& value) { m_controlSourcesHasBeenSet = true; m_controlSources = std::forward<ControlSourcesT>(value); }
+    template<typename ControlSourcesT = Aws::String>
+    Control& WithControlSources(ControlSourcesT&& value) { SetControlSources(std::forward<ControlSourcesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The data source types that determine where Audit Manager collects evidence
-     * from for the control. </p>
-     */
-    inline void SetControlSources(const Aws::String& value) { m_controlSourcesHasBeenSet = true; m_controlSources = value; }
-
-    /**
-     * <p> The data source types that determine where Audit Manager collects evidence
-     * from for the control. </p>
-     */
-    inline void SetControlSources(Aws::String&& value) { m_controlSourcesHasBeenSet = true; m_controlSources = std::move(value); }
-
-    /**
-     * <p> The data source types that determine where Audit Manager collects evidence
-     * from for the control. </p>
-     */
-    inline void SetControlSources(const char* value) { m_controlSourcesHasBeenSet = true; m_controlSources.assign(value); }
-
-    /**
-     * <p> The data source types that determine where Audit Manager collects evidence
-     * from for the control. </p>
-     */
-    inline Control& WithControlSources(const Aws::String& value) { SetControlSources(value); return *this;}
-
-    /**
-     * <p> The data source types that determine where Audit Manager collects evidence
-     * from for the control. </p>
-     */
-    inline Control& WithControlSources(Aws::String&& value) { SetControlSources(std::move(value)); return *this;}
-
-    /**
-     * <p> The data source types that determine where Audit Manager collects evidence
-     * from for the control. </p>
-     */
-    inline Control& WithControlSources(const char* value) { SetControlSources(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The data mapping sources for the control. </p>
      */
-    inline const Aws::Vector<ControlMappingSource>& GetControlMappingSources() const{ return m_controlMappingSources; }
-
-    /**
-     * <p> The data mapping sources for the control. </p>
-     */
+    inline const Aws::Vector<ControlMappingSource>& GetControlMappingSources() const { return m_controlMappingSources; }
     inline bool ControlMappingSourcesHasBeenSet() const { return m_controlMappingSourcesHasBeenSet; }
+    template<typename ControlMappingSourcesT = Aws::Vector<ControlMappingSource>>
+    void SetControlMappingSources(ControlMappingSourcesT&& value) { m_controlMappingSourcesHasBeenSet = true; m_controlMappingSources = std::forward<ControlMappingSourcesT>(value); }
+    template<typename ControlMappingSourcesT = Aws::Vector<ControlMappingSource>>
+    Control& WithControlMappingSources(ControlMappingSourcesT&& value) { SetControlMappingSources(std::forward<ControlMappingSourcesT>(value)); return *this;}
+    template<typename ControlMappingSourcesT = ControlMappingSource>
+    Control& AddControlMappingSources(ControlMappingSourcesT&& value) { m_controlMappingSourcesHasBeenSet = true; m_controlMappingSources.emplace_back(std::forward<ControlMappingSourcesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> The data mapping sources for the control. </p>
-     */
-    inline void SetControlMappingSources(const Aws::Vector<ControlMappingSource>& value) { m_controlMappingSourcesHasBeenSet = true; m_controlMappingSources = value; }
-
-    /**
-     * <p> The data mapping sources for the control. </p>
-     */
-    inline void SetControlMappingSources(Aws::Vector<ControlMappingSource>&& value) { m_controlMappingSourcesHasBeenSet = true; m_controlMappingSources = std::move(value); }
-
-    /**
-     * <p> The data mapping sources for the control. </p>
-     */
-    inline Control& WithControlMappingSources(const Aws::Vector<ControlMappingSource>& value) { SetControlMappingSources(value); return *this;}
-
-    /**
-     * <p> The data mapping sources for the control. </p>
-     */
-    inline Control& WithControlMappingSources(Aws::Vector<ControlMappingSource>&& value) { SetControlMappingSources(std::move(value)); return *this;}
-
-    /**
-     * <p> The data mapping sources for the control. </p>
-     */
-    inline Control& AddControlMappingSources(const ControlMappingSource& value) { m_controlMappingSourcesHasBeenSet = true; m_controlMappingSources.push_back(value); return *this; }
-
-    /**
-     * <p> The data mapping sources for the control. </p>
-     */
-    inline Control& AddControlMappingSources(ControlMappingSource&& value) { m_controlMappingSourcesHasBeenSet = true; m_controlMappingSources.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p> The time when the control was created. </p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p> The time when the control was created. </p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    Control& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The time when the control was created. </p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p> The time when the control was created. </p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p> The time when the control was created. </p>
-     */
-    inline Control& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p> The time when the control was created. </p>
-     */
-    inline Control& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The time when the control was most recently updated. </p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const{ return m_lastUpdatedAt; }
-
-    /**
-     * <p> The time when the control was most recently updated. </p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const { return m_lastUpdatedAt; }
     inline bool LastUpdatedAtHasBeenSet() const { return m_lastUpdatedAtHasBeenSet; }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    void SetLastUpdatedAt(LastUpdatedAtT&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::forward<LastUpdatedAtT>(value); }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    Control& WithLastUpdatedAt(LastUpdatedAtT&& value) { SetLastUpdatedAt(std::forward<LastUpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The time when the control was most recently updated. </p>
-     */
-    inline void SetLastUpdatedAt(const Aws::Utils::DateTime& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = value; }
-
-    /**
-     * <p> The time when the control was most recently updated. </p>
-     */
-    inline void SetLastUpdatedAt(Aws::Utils::DateTime&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::move(value); }
-
-    /**
-     * <p> The time when the control was most recently updated. </p>
-     */
-    inline Control& WithLastUpdatedAt(const Aws::Utils::DateTime& value) { SetLastUpdatedAt(value); return *this;}
-
-    /**
-     * <p> The time when the control was most recently updated. </p>
-     */
-    inline Control& WithLastUpdatedAt(Aws::Utils::DateTime&& value) { SetLastUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The user or role that created the control. </p>
      */
-    inline const Aws::String& GetCreatedBy() const{ return m_createdBy; }
-
-    /**
-     * <p> The user or role that created the control. </p>
-     */
+    inline const Aws::String& GetCreatedBy() const { return m_createdBy; }
     inline bool CreatedByHasBeenSet() const { return m_createdByHasBeenSet; }
+    template<typename CreatedByT = Aws::String>
+    void SetCreatedBy(CreatedByT&& value) { m_createdByHasBeenSet = true; m_createdBy = std::forward<CreatedByT>(value); }
+    template<typename CreatedByT = Aws::String>
+    Control& WithCreatedBy(CreatedByT&& value) { SetCreatedBy(std::forward<CreatedByT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The user or role that created the control. </p>
-     */
-    inline void SetCreatedBy(const Aws::String& value) { m_createdByHasBeenSet = true; m_createdBy = value; }
-
-    /**
-     * <p> The user or role that created the control. </p>
-     */
-    inline void SetCreatedBy(Aws::String&& value) { m_createdByHasBeenSet = true; m_createdBy = std::move(value); }
-
-    /**
-     * <p> The user or role that created the control. </p>
-     */
-    inline void SetCreatedBy(const char* value) { m_createdByHasBeenSet = true; m_createdBy.assign(value); }
-
-    /**
-     * <p> The user or role that created the control. </p>
-     */
-    inline Control& WithCreatedBy(const Aws::String& value) { SetCreatedBy(value); return *this;}
-
-    /**
-     * <p> The user or role that created the control. </p>
-     */
-    inline Control& WithCreatedBy(Aws::String&& value) { SetCreatedBy(std::move(value)); return *this;}
-
-    /**
-     * <p> The user or role that created the control. </p>
-     */
-    inline Control& WithCreatedBy(const char* value) { SetCreatedBy(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The user or role that most recently updated the control. </p>
      */
-    inline const Aws::String& GetLastUpdatedBy() const{ return m_lastUpdatedBy; }
-
-    /**
-     * <p> The user or role that most recently updated the control. </p>
-     */
+    inline const Aws::String& GetLastUpdatedBy() const { return m_lastUpdatedBy; }
     inline bool LastUpdatedByHasBeenSet() const { return m_lastUpdatedByHasBeenSet; }
+    template<typename LastUpdatedByT = Aws::String>
+    void SetLastUpdatedBy(LastUpdatedByT&& value) { m_lastUpdatedByHasBeenSet = true; m_lastUpdatedBy = std::forward<LastUpdatedByT>(value); }
+    template<typename LastUpdatedByT = Aws::String>
+    Control& WithLastUpdatedBy(LastUpdatedByT&& value) { SetLastUpdatedBy(std::forward<LastUpdatedByT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The user or role that most recently updated the control. </p>
-     */
-    inline void SetLastUpdatedBy(const Aws::String& value) { m_lastUpdatedByHasBeenSet = true; m_lastUpdatedBy = value; }
-
-    /**
-     * <p> The user or role that most recently updated the control. </p>
-     */
-    inline void SetLastUpdatedBy(Aws::String&& value) { m_lastUpdatedByHasBeenSet = true; m_lastUpdatedBy = std::move(value); }
-
-    /**
-     * <p> The user or role that most recently updated the control. </p>
-     */
-    inline void SetLastUpdatedBy(const char* value) { m_lastUpdatedByHasBeenSet = true; m_lastUpdatedBy.assign(value); }
-
-    /**
-     * <p> The user or role that most recently updated the control. </p>
-     */
-    inline Control& WithLastUpdatedBy(const Aws::String& value) { SetLastUpdatedBy(value); return *this;}
-
-    /**
-     * <p> The user or role that most recently updated the control. </p>
-     */
-    inline Control& WithLastUpdatedBy(Aws::String&& value) { SetLastUpdatedBy(std::move(value)); return *this;}
-
-    /**
-     * <p> The user or role that most recently updated the control. </p>
-     */
-    inline Control& WithLastUpdatedBy(const char* value) { SetLastUpdatedBy(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The tags associated with the control. </p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p> The tags associated with the control. </p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    Control& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    Control& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
+    ///@{
     /**
-     * <p> The tags associated with the control. </p>
+     * <p>The state of the control. The <code>END_OF_SUPPORT</code> state is applicable
+     * to standard controls only. This state indicates that the standard control can
+     * still be used to collect evidence, but Audit Manager is no longer updating or
+     * maintaining that control.</p>
      */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p> The tags associated with the control. </p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p> The tags associated with the control. </p>
-     */
-    inline Control& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p> The tags associated with the control. </p>
-     */
-    inline Control& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p> The tags associated with the control. </p>
-     */
-    inline Control& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p> The tags associated with the control. </p>
-     */
-    inline Control& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p> The tags associated with the control. </p>
-     */
-    inline Control& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p> The tags associated with the control. </p>
-     */
-    inline Control& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p> The tags associated with the control. </p>
-     */
-    inline Control& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p> The tags associated with the control. </p>
-     */
-    inline Control& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p> The tags associated with the control. </p>
-     */
-    inline Control& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    inline ControlState GetState() const { return m_state; }
+    inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(ControlState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline Control& WithState(ControlState value) { SetState(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
@@ -675,7 +249,7 @@ namespace Model
     Aws::String m_id;
     bool m_idHasBeenSet = false;
 
-    ControlType m_type;
+    ControlType m_type{ControlType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_name;
@@ -699,10 +273,10 @@ namespace Model
     Aws::Vector<ControlMappingSource> m_controlMappingSources;
     bool m_controlMappingSourcesHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedAt;
+    Aws::Utils::DateTime m_lastUpdatedAt{};
     bool m_lastUpdatedAtHasBeenSet = false;
 
     Aws::String m_createdBy;
@@ -713,6 +287,9 @@ namespace Model
 
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet = false;
+
+    ControlState m_state{ControlState::NOT_SET};
+    bool m_stateHasBeenSet = false;
   };
 
 } // namespace Model

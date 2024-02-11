@@ -25,7 +25,7 @@ namespace Model
   class DeleteSnapshotRequest : public ElastiCacheRequest
   {
   public:
-    AWS_ELASTICACHE_API DeleteSnapshotRequest();
+    AWS_ELASTICACHE_API DeleteSnapshotRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,46 +40,17 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the snapshot to be deleted.</p>
      */
-    inline const Aws::String& GetSnapshotName() const{ return m_snapshotName; }
-
-    /**
-     * <p>The name of the snapshot to be deleted.</p>
-     */
+    inline const Aws::String& GetSnapshotName() const { return m_snapshotName; }
     inline bool SnapshotNameHasBeenSet() const { return m_snapshotNameHasBeenSet; }
-
-    /**
-     * <p>The name of the snapshot to be deleted.</p>
-     */
-    inline void SetSnapshotName(const Aws::String& value) { m_snapshotNameHasBeenSet = true; m_snapshotName = value; }
-
-    /**
-     * <p>The name of the snapshot to be deleted.</p>
-     */
-    inline void SetSnapshotName(Aws::String&& value) { m_snapshotNameHasBeenSet = true; m_snapshotName = std::move(value); }
-
-    /**
-     * <p>The name of the snapshot to be deleted.</p>
-     */
-    inline void SetSnapshotName(const char* value) { m_snapshotNameHasBeenSet = true; m_snapshotName.assign(value); }
-
-    /**
-     * <p>The name of the snapshot to be deleted.</p>
-     */
-    inline DeleteSnapshotRequest& WithSnapshotName(const Aws::String& value) { SetSnapshotName(value); return *this;}
-
-    /**
-     * <p>The name of the snapshot to be deleted.</p>
-     */
-    inline DeleteSnapshotRequest& WithSnapshotName(Aws::String&& value) { SetSnapshotName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the snapshot to be deleted.</p>
-     */
-    inline DeleteSnapshotRequest& WithSnapshotName(const char* value) { SetSnapshotName(value); return *this;}
-
+    template<typename SnapshotNameT = Aws::String>
+    void SetSnapshotName(SnapshotNameT&& value) { m_snapshotNameHasBeenSet = true; m_snapshotName = std::forward<SnapshotNameT>(value); }
+    template<typename SnapshotNameT = Aws::String>
+    DeleteSnapshotRequest& WithSnapshotName(SnapshotNameT&& value) { SetSnapshotName(std::forward<SnapshotNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_snapshotName;

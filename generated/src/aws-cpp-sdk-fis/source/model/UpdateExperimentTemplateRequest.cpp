@@ -12,17 +12,6 @@ using namespace Aws::FIS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateExperimentTemplateRequest::UpdateExperimentTemplateRequest() : 
-    m_idHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_stopConditionsHasBeenSet(false),
-    m_targetsHasBeenSet(false),
-    m_actionsHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_logConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String UpdateExperimentTemplateRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -75,6 +64,18 @@ Aws::String UpdateExperimentTemplateRequest::SerializePayload() const
   if(m_logConfigurationHasBeenSet)
   {
    payload.WithObject("logConfiguration", m_logConfiguration.Jsonize());
+
+  }
+
+  if(m_experimentOptionsHasBeenSet)
+  {
+   payload.WithObject("experimentOptions", m_experimentOptions.Jsonize());
+
+  }
+
+  if(m_experimentReportConfigurationHasBeenSet)
+  {
+   payload.WithObject("experimentReportConfiguration", m_experimentReportConfiguration.Jsonize());
 
   }
 

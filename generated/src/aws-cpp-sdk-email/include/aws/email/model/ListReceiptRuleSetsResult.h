@@ -28,141 +28,65 @@ namespace SES
 namespace Model
 {
   /**
-   * <p>A list of receipt rule sets that exist under your AWS account.</p><p><h3>See
-   * Also:</h3>   <a
+   * <p>A list of receipt rule sets that exist under your Amazon Web Services
+   * account.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListReceiptRuleSetsResponse">AWS
    * API Reference</a></p>
    */
   class ListReceiptRuleSetsResult
   {
   public:
-    AWS_SES_API ListReceiptRuleSetsResult();
+    AWS_SES_API ListReceiptRuleSetsResult() = default;
     AWS_SES_API ListReceiptRuleSetsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_SES_API ListReceiptRuleSetsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The metadata for the currently active receipt rule set. The metadata consists
      * of the rule set name and the timestamp of when the rule set was created.</p>
      */
-    inline const Aws::Vector<ReceiptRuleSetMetadata>& GetRuleSets() const{ return m_ruleSets; }
+    inline const Aws::Vector<ReceiptRuleSetMetadata>& GetRuleSets() const { return m_ruleSets; }
+    template<typename RuleSetsT = Aws::Vector<ReceiptRuleSetMetadata>>
+    void SetRuleSets(RuleSetsT&& value) { m_ruleSetsHasBeenSet = true; m_ruleSets = std::forward<RuleSetsT>(value); }
+    template<typename RuleSetsT = Aws::Vector<ReceiptRuleSetMetadata>>
+    ListReceiptRuleSetsResult& WithRuleSets(RuleSetsT&& value) { SetRuleSets(std::forward<RuleSetsT>(value)); return *this;}
+    template<typename RuleSetsT = ReceiptRuleSetMetadata>
+    ListReceiptRuleSetsResult& AddRuleSets(RuleSetsT&& value) { m_ruleSetsHasBeenSet = true; m_ruleSets.emplace_back(std::forward<RuleSetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The metadata for the currently active receipt rule set. The metadata consists
-     * of the rule set name and the timestamp of when the rule set was created.</p>
-     */
-    inline void SetRuleSets(const Aws::Vector<ReceiptRuleSetMetadata>& value) { m_ruleSets = value; }
-
-    /**
-     * <p>The metadata for the currently active receipt rule set. The metadata consists
-     * of the rule set name and the timestamp of when the rule set was created.</p>
-     */
-    inline void SetRuleSets(Aws::Vector<ReceiptRuleSetMetadata>&& value) { m_ruleSets = std::move(value); }
-
-    /**
-     * <p>The metadata for the currently active receipt rule set. The metadata consists
-     * of the rule set name and the timestamp of when the rule set was created.</p>
-     */
-    inline ListReceiptRuleSetsResult& WithRuleSets(const Aws::Vector<ReceiptRuleSetMetadata>& value) { SetRuleSets(value); return *this;}
-
-    /**
-     * <p>The metadata for the currently active receipt rule set. The metadata consists
-     * of the rule set name and the timestamp of when the rule set was created.</p>
-     */
-    inline ListReceiptRuleSetsResult& WithRuleSets(Aws::Vector<ReceiptRuleSetMetadata>&& value) { SetRuleSets(std::move(value)); return *this;}
-
-    /**
-     * <p>The metadata for the currently active receipt rule set. The metadata consists
-     * of the rule set name and the timestamp of when the rule set was created.</p>
-     */
-    inline ListReceiptRuleSetsResult& AddRuleSets(const ReceiptRuleSetMetadata& value) { m_ruleSets.push_back(value); return *this; }
-
-    /**
-     * <p>The metadata for the currently active receipt rule set. The metadata consists
-     * of the rule set name and the timestamp of when the rule set was created.</p>
-     */
-    inline ListReceiptRuleSetsResult& AddRuleSets(ReceiptRuleSetMetadata&& value) { m_ruleSets.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A token indicating that there are additional receipt rule sets available to
      * be listed. Pass this token to successive calls of
      * <code>ListReceiptRuleSets</code> to retrieve up to 100 receipt rule sets at a
      * time.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListReceiptRuleSetsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A token indicating that there are additional receipt rule sets available to
-     * be listed. Pass this token to successive calls of
-     * <code>ListReceiptRuleSets</code> to retrieve up to 100 receipt rule sets at a
-     * time.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>A token indicating that there are additional receipt rule sets available to
-     * be listed. Pass this token to successive calls of
-     * <code>ListReceiptRuleSets</code> to retrieve up to 100 receipt rule sets at a
-     * time.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>A token indicating that there are additional receipt rule sets available to
-     * be listed. Pass this token to successive calls of
-     * <code>ListReceiptRuleSets</code> to retrieve up to 100 receipt rule sets at a
-     * time.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>A token indicating that there are additional receipt rule sets available to
-     * be listed. Pass this token to successive calls of
-     * <code>ListReceiptRuleSets</code> to retrieve up to 100 receipt rule sets at a
-     * time.</p>
-     */
-    inline ListReceiptRuleSetsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A token indicating that there are additional receipt rule sets available to
-     * be listed. Pass this token to successive calls of
-     * <code>ListReceiptRuleSets</code> to retrieve up to 100 receipt rule sets at a
-     * time.</p>
-     */
-    inline ListReceiptRuleSetsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token indicating that there are additional receipt rule sets available to
-     * be listed. Pass this token to successive calls of
-     * <code>ListReceiptRuleSets</code> to retrieve up to 100 receipt rule sets at a
-     * time.</p>
-     */
-    inline ListReceiptRuleSetsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline ListReceiptRuleSetsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline ListReceiptRuleSetsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    ListReceiptRuleSetsResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ReceiptRuleSetMetadata> m_ruleSets;
+    bool m_ruleSetsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-GeospatialPointStyleOptions::GeospatialPointStyleOptions() : 
-    m_selectedPointStyle(GeospatialSelectedPointStyle::NOT_SET),
-    m_selectedPointStyleHasBeenSet(false),
-    m_clusterMarkerConfigurationHasBeenSet(false)
-{
-}
-
-GeospatialPointStyleOptions::GeospatialPointStyleOptions(JsonView jsonValue) : 
-    m_selectedPointStyle(GeospatialSelectedPointStyle::NOT_SET),
-    m_selectedPointStyleHasBeenSet(false),
-    m_clusterMarkerConfigurationHasBeenSet(false)
+GeospatialPointStyleOptions::GeospatialPointStyleOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,18 @@ GeospatialPointStyleOptions& GeospatialPointStyleOptions::operator =(JsonView js
   if(jsonValue.ValueExists("SelectedPointStyle"))
   {
     m_selectedPointStyle = GeospatialSelectedPointStyleMapper::GetGeospatialSelectedPointStyleForName(jsonValue.GetString("SelectedPointStyle"));
-
     m_selectedPointStyleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ClusterMarkerConfiguration"))
   {
     m_clusterMarkerConfiguration = jsonValue.GetObject("ClusterMarkerConfiguration");
-
     m_clusterMarkerConfigurationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("HeatmapConfiguration"))
+  {
+    m_heatmapConfiguration = jsonValue.GetObject("HeatmapConfiguration");
+    m_heatmapConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -64,6 +55,12 @@ JsonValue GeospatialPointStyleOptions::Jsonize() const
   if(m_clusterMarkerConfigurationHasBeenSet)
   {
    payload.WithObject("ClusterMarkerConfiguration", m_clusterMarkerConfiguration.Jsonize());
+
+  }
+
+  if(m_heatmapConfigurationHasBeenSet)
+  {
+   payload.WithObject("HeatmapConfiguration", m_heatmapConfiguration.Jsonize());
 
   }
 

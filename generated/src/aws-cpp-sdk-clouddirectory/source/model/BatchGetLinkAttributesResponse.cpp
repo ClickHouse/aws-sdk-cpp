@@ -18,13 +18,7 @@ namespace CloudDirectory
 namespace Model
 {
 
-BatchGetLinkAttributesResponse::BatchGetLinkAttributesResponse() : 
-    m_attributesHasBeenSet(false)
-{
-}
-
-BatchGetLinkAttributesResponse::BatchGetLinkAttributesResponse(JsonView jsonValue) : 
-    m_attributesHasBeenSet(false)
+BatchGetLinkAttributesResponse::BatchGetLinkAttributesResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ BatchGetLinkAttributesResponse& BatchGetLinkAttributesResponse::operator =(JsonV
     }
     m_attributesHasBeenSet = true;
   }
-
   return *this;
 }
 

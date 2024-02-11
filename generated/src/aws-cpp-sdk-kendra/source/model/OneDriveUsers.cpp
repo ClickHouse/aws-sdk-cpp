@@ -18,15 +18,7 @@ namespace kendra
 namespace Model
 {
 
-OneDriveUsers::OneDriveUsers() : 
-    m_oneDriveUserListHasBeenSet(false),
-    m_oneDriveUserS3PathHasBeenSet(false)
-{
-}
-
-OneDriveUsers::OneDriveUsers(JsonView jsonValue) : 
-    m_oneDriveUserListHasBeenSet(false),
-    m_oneDriveUserS3PathHasBeenSet(false)
+OneDriveUsers::OneDriveUsers(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ OneDriveUsers& OneDriveUsers::operator =(JsonView jsonValue)
     }
     m_oneDriveUserListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OneDriveUserS3Path"))
   {
     m_oneDriveUserS3Path = jsonValue.GetObject("OneDriveUserS3Path");
-
     m_oneDriveUserS3PathHasBeenSet = true;
   }
-
   return *this;
 }
 

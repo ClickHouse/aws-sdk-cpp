@@ -18,19 +18,7 @@ namespace FSx
 namespace Model
 {
 
-FileCacheDataRepositoryAssociation::FileCacheDataRepositoryAssociation() : 
-    m_fileCachePathHasBeenSet(false),
-    m_dataRepositoryPathHasBeenSet(false),
-    m_dataRepositorySubdirectoriesHasBeenSet(false),
-    m_nFSHasBeenSet(false)
-{
-}
-
-FileCacheDataRepositoryAssociation::FileCacheDataRepositoryAssociation(JsonView jsonValue) : 
-    m_fileCachePathHasBeenSet(false),
-    m_dataRepositoryPathHasBeenSet(false),
-    m_dataRepositorySubdirectoriesHasBeenSet(false),
-    m_nFSHasBeenSet(false)
+FileCacheDataRepositoryAssociation::FileCacheDataRepositoryAssociation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ FileCacheDataRepositoryAssociation& FileCacheDataRepositoryAssociation::operator
   if(jsonValue.ValueExists("FileCachePath"))
   {
     m_fileCachePath = jsonValue.GetString("FileCachePath");
-
     m_fileCachePathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataRepositoryPath"))
   {
     m_dataRepositoryPath = jsonValue.GetString("DataRepositoryPath");
-
     m_dataRepositoryPathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataRepositorySubdirectories"))
   {
     Aws::Utils::Array<JsonView> dataRepositorySubdirectoriesJsonList = jsonValue.GetArray("DataRepositorySubdirectories");
@@ -60,14 +44,11 @@ FileCacheDataRepositoryAssociation& FileCacheDataRepositoryAssociation::operator
     }
     m_dataRepositorySubdirectoriesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NFS"))
   {
     m_nFS = jsonValue.GetObject("NFS");
-
     m_nFSHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,15 +20,7 @@ namespace Route53
 namespace Model
 {
 
-Dimension::Dimension() : 
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-Dimension::Dimension(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
+Dimension::Dimension(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

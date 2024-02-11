@@ -18,19 +18,7 @@ namespace AccessAnalyzer
 namespace Model
 {
 
-Trail::Trail() : 
-    m_cloudTrailArnHasBeenSet(false),
-    m_regionsHasBeenSet(false),
-    m_allRegions(false),
-    m_allRegionsHasBeenSet(false)
-{
-}
-
-Trail::Trail(JsonView jsonValue) : 
-    m_cloudTrailArnHasBeenSet(false),
-    m_regionsHasBeenSet(false),
-    m_allRegions(false),
-    m_allRegionsHasBeenSet(false)
+Trail::Trail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ Trail& Trail::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("cloudTrailArn"))
   {
     m_cloudTrailArn = jsonValue.GetString("cloudTrailArn");
-
     m_cloudTrailArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("regions"))
   {
     Aws::Utils::Array<JsonView> regionsJsonList = jsonValue.GetArray("regions");
@@ -53,14 +39,11 @@ Trail& Trail::operator =(JsonView jsonValue)
     }
     m_regionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("allRegions"))
   {
     m_allRegions = jsonValue.GetBool("allRegions");
-
     m_allRegionsHasBeenSet = true;
   }
-
   return *this;
 }
 

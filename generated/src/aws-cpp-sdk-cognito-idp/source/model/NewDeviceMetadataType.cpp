@@ -18,15 +18,7 @@ namespace CognitoIdentityProvider
 namespace Model
 {
 
-NewDeviceMetadataType::NewDeviceMetadataType() : 
-    m_deviceKeyHasBeenSet(false),
-    m_deviceGroupKeyHasBeenSet(false)
-{
-}
-
-NewDeviceMetadataType::NewDeviceMetadataType(JsonView jsonValue) : 
-    m_deviceKeyHasBeenSet(false),
-    m_deviceGroupKeyHasBeenSet(false)
+NewDeviceMetadataType::NewDeviceMetadataType(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ NewDeviceMetadataType& NewDeviceMetadataType::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DeviceKey"))
   {
     m_deviceKey = jsonValue.GetString("DeviceKey");
-
     m_deviceKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DeviceGroupKey"))
   {
     m_deviceGroupKey = jsonValue.GetString("DeviceGroupKey");
-
     m_deviceGroupKeyHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,13 +18,7 @@ namespace SSM
 namespace Model
 {
 
-Alarm::Alarm() : 
-    m_nameHasBeenSet(false)
-{
-}
-
-Alarm::Alarm(JsonView jsonValue) : 
-    m_nameHasBeenSet(false)
+Alarm::Alarm(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ Alarm& Alarm::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

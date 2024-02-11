@@ -18,13 +18,7 @@ namespace GameLift
 namespace Model
 {
 
-GameSessionQueueDestination::GameSessionQueueDestination() : 
-    m_destinationArnHasBeenSet(false)
-{
-}
-
-GameSessionQueueDestination::GameSessionQueueDestination(JsonView jsonValue) : 
-    m_destinationArnHasBeenSet(false)
+GameSessionQueueDestination::GameSessionQueueDestination(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ GameSessionQueueDestination& GameSessionQueueDestination::operator =(JsonView js
   if(jsonValue.ValueExists("DestinationArn"))
   {
     m_destinationArn = jsonValue.GetString("DestinationArn");
-
     m_destinationArnHasBeenSet = true;
   }
-
   return *this;
 }
 

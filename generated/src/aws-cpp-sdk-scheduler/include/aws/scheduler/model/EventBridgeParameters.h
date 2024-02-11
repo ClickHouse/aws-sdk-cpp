@@ -33,101 +33,36 @@ namespace Model
   class EventBridgeParameters
   {
   public:
-    AWS_SCHEDULER_API EventBridgeParameters();
+    AWS_SCHEDULER_API EventBridgeParameters() = default;
     AWS_SCHEDULER_API EventBridgeParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_SCHEDULER_API EventBridgeParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SCHEDULER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A free-form string, with a maximum of 128 characters, used to decide what
      * fields to expect in the event detail.</p>
      */
-    inline const Aws::String& GetDetailType() const{ return m_detailType; }
-
-    /**
-     * <p>A free-form string, with a maximum of 128 characters, used to decide what
-     * fields to expect in the event detail.</p>
-     */
+    inline const Aws::String& GetDetailType() const { return m_detailType; }
     inline bool DetailTypeHasBeenSet() const { return m_detailTypeHasBeenSet; }
+    template<typename DetailTypeT = Aws::String>
+    void SetDetailType(DetailTypeT&& value) { m_detailTypeHasBeenSet = true; m_detailType = std::forward<DetailTypeT>(value); }
+    template<typename DetailTypeT = Aws::String>
+    EventBridgeParameters& WithDetailType(DetailTypeT&& value) { SetDetailType(std::forward<DetailTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A free-form string, with a maximum of 128 characters, used to decide what
-     * fields to expect in the event detail.</p>
-     */
-    inline void SetDetailType(const Aws::String& value) { m_detailTypeHasBeenSet = true; m_detailType = value; }
-
-    /**
-     * <p>A free-form string, with a maximum of 128 characters, used to decide what
-     * fields to expect in the event detail.</p>
-     */
-    inline void SetDetailType(Aws::String&& value) { m_detailTypeHasBeenSet = true; m_detailType = std::move(value); }
-
-    /**
-     * <p>A free-form string, with a maximum of 128 characters, used to decide what
-     * fields to expect in the event detail.</p>
-     */
-    inline void SetDetailType(const char* value) { m_detailTypeHasBeenSet = true; m_detailType.assign(value); }
-
-    /**
-     * <p>A free-form string, with a maximum of 128 characters, used to decide what
-     * fields to expect in the event detail.</p>
-     */
-    inline EventBridgeParameters& WithDetailType(const Aws::String& value) { SetDetailType(value); return *this;}
-
-    /**
-     * <p>A free-form string, with a maximum of 128 characters, used to decide what
-     * fields to expect in the event detail.</p>
-     */
-    inline EventBridgeParameters& WithDetailType(Aws::String&& value) { SetDetailType(std::move(value)); return *this;}
-
-    /**
-     * <p>A free-form string, with a maximum of 128 characters, used to decide what
-     * fields to expect in the event detail.</p>
-     */
-    inline EventBridgeParameters& WithDetailType(const char* value) { SetDetailType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The source of the event.</p>
      */
-    inline const Aws::String& GetSource() const{ return m_source; }
-
-    /**
-     * <p>The source of the event.</p>
-     */
+    inline const Aws::String& GetSource() const { return m_source; }
     inline bool SourceHasBeenSet() const { return m_sourceHasBeenSet; }
-
-    /**
-     * <p>The source of the event.</p>
-     */
-    inline void SetSource(const Aws::String& value) { m_sourceHasBeenSet = true; m_source = value; }
-
-    /**
-     * <p>The source of the event.</p>
-     */
-    inline void SetSource(Aws::String&& value) { m_sourceHasBeenSet = true; m_source = std::move(value); }
-
-    /**
-     * <p>The source of the event.</p>
-     */
-    inline void SetSource(const char* value) { m_sourceHasBeenSet = true; m_source.assign(value); }
-
-    /**
-     * <p>The source of the event.</p>
-     */
-    inline EventBridgeParameters& WithSource(const Aws::String& value) { SetSource(value); return *this;}
-
-    /**
-     * <p>The source of the event.</p>
-     */
-    inline EventBridgeParameters& WithSource(Aws::String&& value) { SetSource(std::move(value)); return *this;}
-
-    /**
-     * <p>The source of the event.</p>
-     */
-    inline EventBridgeParameters& WithSource(const char* value) { SetSource(value); return *this;}
-
+    template<typename SourceT = Aws::String>
+    void SetSource(SourceT&& value) { m_sourceHasBeenSet = true; m_source = std::forward<SourceT>(value); }
+    template<typename SourceT = Aws::String>
+    EventBridgeParameters& WithSource(SourceT&& value) { SetSource(std::forward<SourceT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_detailType;

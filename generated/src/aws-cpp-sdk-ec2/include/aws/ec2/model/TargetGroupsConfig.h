@@ -34,7 +34,7 @@ namespace Model
   class TargetGroupsConfig
   {
   public:
-    AWS_EC2_API TargetGroupsConfig();
+    AWS_EC2_API TargetGroupsConfig() = default;
     AWS_EC2_API TargetGroupsConfig(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API TargetGroupsConfig& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,46 +42,19 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>One or more target groups.</p>
      */
-    inline const Aws::Vector<TargetGroup>& GetTargetGroups() const{ return m_targetGroups; }
-
-    /**
-     * <p>One or more target groups.</p>
-     */
+    inline const Aws::Vector<TargetGroup>& GetTargetGroups() const { return m_targetGroups; }
     inline bool TargetGroupsHasBeenSet() const { return m_targetGroupsHasBeenSet; }
-
-    /**
-     * <p>One or more target groups.</p>
-     */
-    inline void SetTargetGroups(const Aws::Vector<TargetGroup>& value) { m_targetGroupsHasBeenSet = true; m_targetGroups = value; }
-
-    /**
-     * <p>One or more target groups.</p>
-     */
-    inline void SetTargetGroups(Aws::Vector<TargetGroup>&& value) { m_targetGroupsHasBeenSet = true; m_targetGroups = std::move(value); }
-
-    /**
-     * <p>One or more target groups.</p>
-     */
-    inline TargetGroupsConfig& WithTargetGroups(const Aws::Vector<TargetGroup>& value) { SetTargetGroups(value); return *this;}
-
-    /**
-     * <p>One or more target groups.</p>
-     */
-    inline TargetGroupsConfig& WithTargetGroups(Aws::Vector<TargetGroup>&& value) { SetTargetGroups(std::move(value)); return *this;}
-
-    /**
-     * <p>One or more target groups.</p>
-     */
-    inline TargetGroupsConfig& AddTargetGroups(const TargetGroup& value) { m_targetGroupsHasBeenSet = true; m_targetGroups.push_back(value); return *this; }
-
-    /**
-     * <p>One or more target groups.</p>
-     */
-    inline TargetGroupsConfig& AddTargetGroups(TargetGroup&& value) { m_targetGroupsHasBeenSet = true; m_targetGroups.push_back(std::move(value)); return *this; }
-
+    template<typename TargetGroupsT = Aws::Vector<TargetGroup>>
+    void SetTargetGroups(TargetGroupsT&& value) { m_targetGroupsHasBeenSet = true; m_targetGroups = std::forward<TargetGroupsT>(value); }
+    template<typename TargetGroupsT = Aws::Vector<TargetGroup>>
+    TargetGroupsConfig& WithTargetGroups(TargetGroupsT&& value) { SetTargetGroups(std::forward<TargetGroupsT>(value)); return *this;}
+    template<typename TargetGroupsT = TargetGroup>
+    TargetGroupsConfig& AddTargetGroups(TargetGroupsT&& value) { m_targetGroupsHasBeenSet = true; m_targetGroups.emplace_back(std::forward<TargetGroupsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<TargetGroup> m_targetGroups;

@@ -32,42 +32,23 @@ namespace Model
   class OutputConfigInput
   {
   public:
-    AWS_SAGEMAKERGEOSPATIAL_API OutputConfigInput();
+    AWS_SAGEMAKERGEOSPATIAL_API OutputConfigInput() = default;
     AWS_SAGEMAKERGEOSPATIAL_API OutputConfigInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERGEOSPATIAL_API OutputConfigInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERGEOSPATIAL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Path to Amazon S3 storage location for the output configuration file.</p>
      */
-    inline const ExportS3DataInput& GetS3Data() const{ return m_s3Data; }
-
-    /**
-     * <p>Path to Amazon S3 storage location for the output configuration file.</p>
-     */
+    inline const ExportS3DataInput& GetS3Data() const { return m_s3Data; }
     inline bool S3DataHasBeenSet() const { return m_s3DataHasBeenSet; }
-
-    /**
-     * <p>Path to Amazon S3 storage location for the output configuration file.</p>
-     */
-    inline void SetS3Data(const ExportS3DataInput& value) { m_s3DataHasBeenSet = true; m_s3Data = value; }
-
-    /**
-     * <p>Path to Amazon S3 storage location for the output configuration file.</p>
-     */
-    inline void SetS3Data(ExportS3DataInput&& value) { m_s3DataHasBeenSet = true; m_s3Data = std::move(value); }
-
-    /**
-     * <p>Path to Amazon S3 storage location for the output configuration file.</p>
-     */
-    inline OutputConfigInput& WithS3Data(const ExportS3DataInput& value) { SetS3Data(value); return *this;}
-
-    /**
-     * <p>Path to Amazon S3 storage location for the output configuration file.</p>
-     */
-    inline OutputConfigInput& WithS3Data(ExportS3DataInput&& value) { SetS3Data(std::move(value)); return *this;}
-
+    template<typename S3DataT = ExportS3DataInput>
+    void SetS3Data(S3DataT&& value) { m_s3DataHasBeenSet = true; m_s3Data = std::forward<S3DataT>(value); }
+    template<typename S3DataT = ExportS3DataInput>
+    OutputConfigInput& WithS3Data(S3DataT&& value) { SetS3Data(std::forward<S3DataT>(value)); return *this;}
+    ///@}
   private:
 
     ExportS3DataInput m_s3Data;

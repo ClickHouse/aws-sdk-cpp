@@ -35,399 +35,112 @@ namespace Model
   class Update
   {
   public:
-    AWS_DYNAMODB_API Update();
+    AWS_DYNAMODB_API Update() = default;
     AWS_DYNAMODB_API Update(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API Update& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The primary key of the item to be updated. Each element consists of an
      * attribute name and a value for that attribute.</p>
      */
-    inline const Aws::Map<Aws::String, AttributeValue>& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The primary key of the item to be updated. Each element consists of an
-     * attribute name and a value for that attribute.</p>
-     */
+    inline const Aws::Map<Aws::String, AttributeValue>& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::Map<Aws::String, AttributeValue>>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::Map<Aws::String, AttributeValue>>
+    Update& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    template<typename KeyKeyT = Aws::String, typename KeyValueT = AttributeValue>
+    Update& AddKey(KeyKeyT&& key, KeyValueT&& value) {
+      m_keyHasBeenSet = true; m_key.emplace(std::forward<KeyKeyT>(key), std::forward<KeyValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The primary key of the item to be updated. Each element consists of an
-     * attribute name and a value for that attribute.</p>
-     */
-    inline void SetKey(const Aws::Map<Aws::String, AttributeValue>& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The primary key of the item to be updated. Each element consists of an
-     * attribute name and a value for that attribute.</p>
-     */
-    inline void SetKey(Aws::Map<Aws::String, AttributeValue>&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The primary key of the item to be updated. Each element consists of an
-     * attribute name and a value for that attribute.</p>
-     */
-    inline Update& WithKey(const Aws::Map<Aws::String, AttributeValue>& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The primary key of the item to be updated. Each element consists of an
-     * attribute name and a value for that attribute.</p>
-     */
-    inline Update& WithKey(Aws::Map<Aws::String, AttributeValue>&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The primary key of the item to be updated. Each element consists of an
-     * attribute name and a value for that attribute.</p>
-     */
-    inline Update& AddKey(const Aws::String& key, const AttributeValue& value) { m_keyHasBeenSet = true; m_key.emplace(key, value); return *this; }
-
-    /**
-     * <p>The primary key of the item to be updated. Each element consists of an
-     * attribute name and a value for that attribute.</p>
-     */
-    inline Update& AddKey(Aws::String&& key, const AttributeValue& value) { m_keyHasBeenSet = true; m_key.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The primary key of the item to be updated. Each element consists of an
-     * attribute name and a value for that attribute.</p>
-     */
-    inline Update& AddKey(const Aws::String& key, AttributeValue&& value) { m_keyHasBeenSet = true; m_key.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The primary key of the item to be updated. Each element consists of an
-     * attribute name and a value for that attribute.</p>
-     */
-    inline Update& AddKey(Aws::String&& key, AttributeValue&& value) { m_keyHasBeenSet = true; m_key.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The primary key of the item to be updated. Each element consists of an
-     * attribute name and a value for that attribute.</p>
-     */
-    inline Update& AddKey(const char* key, AttributeValue&& value) { m_keyHasBeenSet = true; m_key.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The primary key of the item to be updated. Each element consists of an
-     * attribute name and a value for that attribute.</p>
-     */
-    inline Update& AddKey(const char* key, const AttributeValue& value) { m_keyHasBeenSet = true; m_key.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>An expression that defines one or more attributes to be updated, the action
      * to be performed on them, and new value(s) for them.</p>
      */
-    inline const Aws::String& GetUpdateExpression() const{ return m_updateExpression; }
-
-    /**
-     * <p>An expression that defines one or more attributes to be updated, the action
-     * to be performed on them, and new value(s) for them.</p>
-     */
+    inline const Aws::String& GetUpdateExpression() const { return m_updateExpression; }
     inline bool UpdateExpressionHasBeenSet() const { return m_updateExpressionHasBeenSet; }
+    template<typename UpdateExpressionT = Aws::String>
+    void SetUpdateExpression(UpdateExpressionT&& value) { m_updateExpressionHasBeenSet = true; m_updateExpression = std::forward<UpdateExpressionT>(value); }
+    template<typename UpdateExpressionT = Aws::String>
+    Update& WithUpdateExpression(UpdateExpressionT&& value) { SetUpdateExpression(std::forward<UpdateExpressionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>An expression that defines one or more attributes to be updated, the action
-     * to be performed on them, and new value(s) for them.</p>
+     * <p>Name of the table for the <code>UpdateItem</code> request. You can also
+     * provide the Amazon Resource Name (ARN) of the table in this parameter.</p>
      */
-    inline void SetUpdateExpression(const Aws::String& value) { m_updateExpressionHasBeenSet = true; m_updateExpression = value; }
-
-    /**
-     * <p>An expression that defines one or more attributes to be updated, the action
-     * to be performed on them, and new value(s) for them.</p>
-     */
-    inline void SetUpdateExpression(Aws::String&& value) { m_updateExpressionHasBeenSet = true; m_updateExpression = std::move(value); }
-
-    /**
-     * <p>An expression that defines one or more attributes to be updated, the action
-     * to be performed on them, and new value(s) for them.</p>
-     */
-    inline void SetUpdateExpression(const char* value) { m_updateExpressionHasBeenSet = true; m_updateExpression.assign(value); }
-
-    /**
-     * <p>An expression that defines one or more attributes to be updated, the action
-     * to be performed on them, and new value(s) for them.</p>
-     */
-    inline Update& WithUpdateExpression(const Aws::String& value) { SetUpdateExpression(value); return *this;}
-
-    /**
-     * <p>An expression that defines one or more attributes to be updated, the action
-     * to be performed on them, and new value(s) for them.</p>
-     */
-    inline Update& WithUpdateExpression(Aws::String&& value) { SetUpdateExpression(std::move(value)); return *this;}
-
-    /**
-     * <p>An expression that defines one or more attributes to be updated, the action
-     * to be performed on them, and new value(s) for them.</p>
-     */
-    inline Update& WithUpdateExpression(const char* value) { SetUpdateExpression(value); return *this;}
-
-
-    /**
-     * <p>Name of the table for the <code>UpdateItem</code> request.</p>
-     */
-    inline const Aws::String& GetTableName() const{ return m_tableName; }
-
-    /**
-     * <p>Name of the table for the <code>UpdateItem</code> request.</p>
-     */
+    inline const Aws::String& GetTableName() const { return m_tableName; }
     inline bool TableNameHasBeenSet() const { return m_tableNameHasBeenSet; }
+    template<typename TableNameT = Aws::String>
+    void SetTableName(TableNameT&& value) { m_tableNameHasBeenSet = true; m_tableName = std::forward<TableNameT>(value); }
+    template<typename TableNameT = Aws::String>
+    Update& WithTableName(TableNameT&& value) { SetTableName(std::forward<TableNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Name of the table for the <code>UpdateItem</code> request.</p>
-     */
-    inline void SetTableName(const Aws::String& value) { m_tableNameHasBeenSet = true; m_tableName = value; }
-
-    /**
-     * <p>Name of the table for the <code>UpdateItem</code> request.</p>
-     */
-    inline void SetTableName(Aws::String&& value) { m_tableNameHasBeenSet = true; m_tableName = std::move(value); }
-
-    /**
-     * <p>Name of the table for the <code>UpdateItem</code> request.</p>
-     */
-    inline void SetTableName(const char* value) { m_tableNameHasBeenSet = true; m_tableName.assign(value); }
-
-    /**
-     * <p>Name of the table for the <code>UpdateItem</code> request.</p>
-     */
-    inline Update& WithTableName(const Aws::String& value) { SetTableName(value); return *this;}
-
-    /**
-     * <p>Name of the table for the <code>UpdateItem</code> request.</p>
-     */
-    inline Update& WithTableName(Aws::String&& value) { SetTableName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the table for the <code>UpdateItem</code> request.</p>
-     */
-    inline Update& WithTableName(const char* value) { SetTableName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A condition that must be satisfied in order for a conditional update to
      * succeed.</p>
      */
-    inline const Aws::String& GetConditionExpression() const{ return m_conditionExpression; }
-
-    /**
-     * <p>A condition that must be satisfied in order for a conditional update to
-     * succeed.</p>
-     */
+    inline const Aws::String& GetConditionExpression() const { return m_conditionExpression; }
     inline bool ConditionExpressionHasBeenSet() const { return m_conditionExpressionHasBeenSet; }
+    template<typename ConditionExpressionT = Aws::String>
+    void SetConditionExpression(ConditionExpressionT&& value) { m_conditionExpressionHasBeenSet = true; m_conditionExpression = std::forward<ConditionExpressionT>(value); }
+    template<typename ConditionExpressionT = Aws::String>
+    Update& WithConditionExpression(ConditionExpressionT&& value) { SetConditionExpression(std::forward<ConditionExpressionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A condition that must be satisfied in order for a conditional update to
-     * succeed.</p>
-     */
-    inline void SetConditionExpression(const Aws::String& value) { m_conditionExpressionHasBeenSet = true; m_conditionExpression = value; }
-
-    /**
-     * <p>A condition that must be satisfied in order for a conditional update to
-     * succeed.</p>
-     */
-    inline void SetConditionExpression(Aws::String&& value) { m_conditionExpressionHasBeenSet = true; m_conditionExpression = std::move(value); }
-
-    /**
-     * <p>A condition that must be satisfied in order for a conditional update to
-     * succeed.</p>
-     */
-    inline void SetConditionExpression(const char* value) { m_conditionExpressionHasBeenSet = true; m_conditionExpression.assign(value); }
-
-    /**
-     * <p>A condition that must be satisfied in order for a conditional update to
-     * succeed.</p>
-     */
-    inline Update& WithConditionExpression(const Aws::String& value) { SetConditionExpression(value); return *this;}
-
-    /**
-     * <p>A condition that must be satisfied in order for a conditional update to
-     * succeed.</p>
-     */
-    inline Update& WithConditionExpression(Aws::String&& value) { SetConditionExpression(std::move(value)); return *this;}
-
-    /**
-     * <p>A condition that must be satisfied in order for a conditional update to
-     * succeed.</p>
-     */
-    inline Update& WithConditionExpression(const char* value) { SetConditionExpression(value); return *this;}
-
-
+    ///@{
     /**
      * <p>One or more substitution tokens for attribute names in an expression.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetExpressionAttributeNames() const{ return m_expressionAttributeNames; }
-
-    /**
-     * <p>One or more substitution tokens for attribute names in an expression.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetExpressionAttributeNames() const { return m_expressionAttributeNames; }
     inline bool ExpressionAttributeNamesHasBeenSet() const { return m_expressionAttributeNamesHasBeenSet; }
+    template<typename ExpressionAttributeNamesT = Aws::Map<Aws::String, Aws::String>>
+    void SetExpressionAttributeNames(ExpressionAttributeNamesT&& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames = std::forward<ExpressionAttributeNamesT>(value); }
+    template<typename ExpressionAttributeNamesT = Aws::Map<Aws::String, Aws::String>>
+    Update& WithExpressionAttributeNames(ExpressionAttributeNamesT&& value) { SetExpressionAttributeNames(std::forward<ExpressionAttributeNamesT>(value)); return *this;}
+    template<typename ExpressionAttributeNamesKeyT = Aws::String, typename ExpressionAttributeNamesValueT = Aws::String>
+    Update& AddExpressionAttributeNames(ExpressionAttributeNamesKeyT&& key, ExpressionAttributeNamesValueT&& value) {
+      m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames.emplace(std::forward<ExpressionAttributeNamesKeyT>(key), std::forward<ExpressionAttributeNamesValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>One or more substitution tokens for attribute names in an expression.</p>
-     */
-    inline void SetExpressionAttributeNames(const Aws::Map<Aws::String, Aws::String>& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames = value; }
-
-    /**
-     * <p>One or more substitution tokens for attribute names in an expression.</p>
-     */
-    inline void SetExpressionAttributeNames(Aws::Map<Aws::String, Aws::String>&& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames = std::move(value); }
-
-    /**
-     * <p>One or more substitution tokens for attribute names in an expression.</p>
-     */
-    inline Update& WithExpressionAttributeNames(const Aws::Map<Aws::String, Aws::String>& value) { SetExpressionAttributeNames(value); return *this;}
-
-    /**
-     * <p>One or more substitution tokens for attribute names in an expression.</p>
-     */
-    inline Update& WithExpressionAttributeNames(Aws::Map<Aws::String, Aws::String>&& value) { SetExpressionAttributeNames(std::move(value)); return *this;}
-
-    /**
-     * <p>One or more substitution tokens for attribute names in an expression.</p>
-     */
-    inline Update& AddExpressionAttributeNames(const Aws::String& key, const Aws::String& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames.emplace(key, value); return *this; }
-
-    /**
-     * <p>One or more substitution tokens for attribute names in an expression.</p>
-     */
-    inline Update& AddExpressionAttributeNames(Aws::String&& key, const Aws::String& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>One or more substitution tokens for attribute names in an expression.</p>
-     */
-    inline Update& AddExpressionAttributeNames(const Aws::String& key, Aws::String&& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>One or more substitution tokens for attribute names in an expression.</p>
-     */
-    inline Update& AddExpressionAttributeNames(Aws::String&& key, Aws::String&& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>One or more substitution tokens for attribute names in an expression.</p>
-     */
-    inline Update& AddExpressionAttributeNames(const char* key, Aws::String&& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>One or more substitution tokens for attribute names in an expression.</p>
-     */
-    inline Update& AddExpressionAttributeNames(Aws::String&& key, const char* value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>One or more substitution tokens for attribute names in an expression.</p>
-     */
-    inline Update& AddExpressionAttributeNames(const char* key, const char* value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>One or more values that can be substituted in an expression.</p>
      */
-    inline const Aws::Map<Aws::String, AttributeValue>& GetExpressionAttributeValues() const{ return m_expressionAttributeValues; }
-
-    /**
-     * <p>One or more values that can be substituted in an expression.</p>
-     */
+    inline const Aws::Map<Aws::String, AttributeValue>& GetExpressionAttributeValues() const { return m_expressionAttributeValues; }
     inline bool ExpressionAttributeValuesHasBeenSet() const { return m_expressionAttributeValuesHasBeenSet; }
+    template<typename ExpressionAttributeValuesT = Aws::Map<Aws::String, AttributeValue>>
+    void SetExpressionAttributeValues(ExpressionAttributeValuesT&& value) { m_expressionAttributeValuesHasBeenSet = true; m_expressionAttributeValues = std::forward<ExpressionAttributeValuesT>(value); }
+    template<typename ExpressionAttributeValuesT = Aws::Map<Aws::String, AttributeValue>>
+    Update& WithExpressionAttributeValues(ExpressionAttributeValuesT&& value) { SetExpressionAttributeValues(std::forward<ExpressionAttributeValuesT>(value)); return *this;}
+    template<typename ExpressionAttributeValuesKeyT = Aws::String, typename ExpressionAttributeValuesValueT = AttributeValue>
+    Update& AddExpressionAttributeValues(ExpressionAttributeValuesKeyT&& key, ExpressionAttributeValuesValueT&& value) {
+      m_expressionAttributeValuesHasBeenSet = true; m_expressionAttributeValues.emplace(std::forward<ExpressionAttributeValuesKeyT>(key), std::forward<ExpressionAttributeValuesValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>One or more values that can be substituted in an expression.</p>
-     */
-    inline void SetExpressionAttributeValues(const Aws::Map<Aws::String, AttributeValue>& value) { m_expressionAttributeValuesHasBeenSet = true; m_expressionAttributeValues = value; }
-
-    /**
-     * <p>One or more values that can be substituted in an expression.</p>
-     */
-    inline void SetExpressionAttributeValues(Aws::Map<Aws::String, AttributeValue>&& value) { m_expressionAttributeValuesHasBeenSet = true; m_expressionAttributeValues = std::move(value); }
-
-    /**
-     * <p>One or more values that can be substituted in an expression.</p>
-     */
-    inline Update& WithExpressionAttributeValues(const Aws::Map<Aws::String, AttributeValue>& value) { SetExpressionAttributeValues(value); return *this;}
-
-    /**
-     * <p>One or more values that can be substituted in an expression.</p>
-     */
-    inline Update& WithExpressionAttributeValues(Aws::Map<Aws::String, AttributeValue>&& value) { SetExpressionAttributeValues(std::move(value)); return *this;}
-
-    /**
-     * <p>One or more values that can be substituted in an expression.</p>
-     */
-    inline Update& AddExpressionAttributeValues(const Aws::String& key, const AttributeValue& value) { m_expressionAttributeValuesHasBeenSet = true; m_expressionAttributeValues.emplace(key, value); return *this; }
-
-    /**
-     * <p>One or more values that can be substituted in an expression.</p>
-     */
-    inline Update& AddExpressionAttributeValues(Aws::String&& key, const AttributeValue& value) { m_expressionAttributeValuesHasBeenSet = true; m_expressionAttributeValues.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>One or more values that can be substituted in an expression.</p>
-     */
-    inline Update& AddExpressionAttributeValues(const Aws::String& key, AttributeValue&& value) { m_expressionAttributeValuesHasBeenSet = true; m_expressionAttributeValues.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>One or more values that can be substituted in an expression.</p>
-     */
-    inline Update& AddExpressionAttributeValues(Aws::String&& key, AttributeValue&& value) { m_expressionAttributeValuesHasBeenSet = true; m_expressionAttributeValues.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>One or more values that can be substituted in an expression.</p>
-     */
-    inline Update& AddExpressionAttributeValues(const char* key, AttributeValue&& value) { m_expressionAttributeValuesHasBeenSet = true; m_expressionAttributeValues.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>One or more values that can be substituted in an expression.</p>
-     */
-    inline Update& AddExpressionAttributeValues(const char* key, const AttributeValue& value) { m_expressionAttributeValuesHasBeenSet = true; m_expressionAttributeValues.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>Use <code>ReturnValuesOnConditionCheckFailure</code> to get the item
      * attributes if the <code>Update</code> condition fails. For
-     * <code>ReturnValuesOnConditionCheckFailure</code>, the valid values are: NONE,
-     * ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW.</p>
+     * <code>ReturnValuesOnConditionCheckFailure</code>, the valid values are: NONE and
+     * ALL_OLD.</p>
      */
-    inline const ReturnValuesOnConditionCheckFailure& GetReturnValuesOnConditionCheckFailure() const{ return m_returnValuesOnConditionCheckFailure; }
-
-    /**
-     * <p>Use <code>ReturnValuesOnConditionCheckFailure</code> to get the item
-     * attributes if the <code>Update</code> condition fails. For
-     * <code>ReturnValuesOnConditionCheckFailure</code>, the valid values are: NONE,
-     * ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW.</p>
-     */
+    inline ReturnValuesOnConditionCheckFailure GetReturnValuesOnConditionCheckFailure() const { return m_returnValuesOnConditionCheckFailure; }
     inline bool ReturnValuesOnConditionCheckFailureHasBeenSet() const { return m_returnValuesOnConditionCheckFailureHasBeenSet; }
-
-    /**
-     * <p>Use <code>ReturnValuesOnConditionCheckFailure</code> to get the item
-     * attributes if the <code>Update</code> condition fails. For
-     * <code>ReturnValuesOnConditionCheckFailure</code>, the valid values are: NONE,
-     * ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW.</p>
-     */
-    inline void SetReturnValuesOnConditionCheckFailure(const ReturnValuesOnConditionCheckFailure& value) { m_returnValuesOnConditionCheckFailureHasBeenSet = true; m_returnValuesOnConditionCheckFailure = value; }
-
-    /**
-     * <p>Use <code>ReturnValuesOnConditionCheckFailure</code> to get the item
-     * attributes if the <code>Update</code> condition fails. For
-     * <code>ReturnValuesOnConditionCheckFailure</code>, the valid values are: NONE,
-     * ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW.</p>
-     */
-    inline void SetReturnValuesOnConditionCheckFailure(ReturnValuesOnConditionCheckFailure&& value) { m_returnValuesOnConditionCheckFailureHasBeenSet = true; m_returnValuesOnConditionCheckFailure = std::move(value); }
-
-    /**
-     * <p>Use <code>ReturnValuesOnConditionCheckFailure</code> to get the item
-     * attributes if the <code>Update</code> condition fails. For
-     * <code>ReturnValuesOnConditionCheckFailure</code>, the valid values are: NONE,
-     * ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW.</p>
-     */
-    inline Update& WithReturnValuesOnConditionCheckFailure(const ReturnValuesOnConditionCheckFailure& value) { SetReturnValuesOnConditionCheckFailure(value); return *this;}
-
-    /**
-     * <p>Use <code>ReturnValuesOnConditionCheckFailure</code> to get the item
-     * attributes if the <code>Update</code> condition fails. For
-     * <code>ReturnValuesOnConditionCheckFailure</code>, the valid values are: NONE,
-     * ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW.</p>
-     */
-    inline Update& WithReturnValuesOnConditionCheckFailure(ReturnValuesOnConditionCheckFailure&& value) { SetReturnValuesOnConditionCheckFailure(std::move(value)); return *this;}
-
+    inline void SetReturnValuesOnConditionCheckFailure(ReturnValuesOnConditionCheckFailure value) { m_returnValuesOnConditionCheckFailureHasBeenSet = true; m_returnValuesOnConditionCheckFailure = value; }
+    inline Update& WithReturnValuesOnConditionCheckFailure(ReturnValuesOnConditionCheckFailure value) { SetReturnValuesOnConditionCheckFailure(value); return *this;}
+    ///@}
   private:
 
     Aws::Map<Aws::String, AttributeValue> m_key;
@@ -448,7 +161,7 @@ namespace Model
     Aws::Map<Aws::String, AttributeValue> m_expressionAttributeValues;
     bool m_expressionAttributeValuesHasBeenSet = false;
 
-    ReturnValuesOnConditionCheckFailure m_returnValuesOnConditionCheckFailure;
+    ReturnValuesOnConditionCheckFailure m_returnValuesOnConditionCheckFailure{ReturnValuesOnConditionCheckFailure::NOT_SET};
     bool m_returnValuesOnConditionCheckFailureHasBeenSet = false;
   };
 

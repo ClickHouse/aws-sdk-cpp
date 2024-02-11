@@ -18,19 +18,7 @@ namespace SSOAdmin
 namespace Model
 {
 
-PermissionSetProvisioningStatusMetadata::PermissionSetProvisioningStatusMetadata() : 
-    m_status(StatusValues::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_requestIdHasBeenSet(false),
-    m_createdDateHasBeenSet(false)
-{
-}
-
-PermissionSetProvisioningStatusMetadata::PermissionSetProvisioningStatusMetadata(JsonView jsonValue) : 
-    m_status(StatusValues::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_requestIdHasBeenSet(false),
-    m_createdDateHasBeenSet(false)
+PermissionSetProvisioningStatusMetadata::PermissionSetProvisioningStatusMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ PermissionSetProvisioningStatusMetadata& PermissionSetProvisioningStatusMetadata
   if(jsonValue.ValueExists("Status"))
   {
     m_status = StatusValuesMapper::GetStatusValuesForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RequestId"))
   {
     m_requestId = jsonValue.GetString("RequestId");
-
     m_requestIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatedDate"))
   {
     m_createdDate = jsonValue.GetDouble("CreatedDate");
-
     m_createdDateHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,17 +18,7 @@ namespace Personalize
 namespace Model
 {
 
-HPOConfig::HPOConfig() : 
-    m_hpoObjectiveHasBeenSet(false),
-    m_hpoResourceConfigHasBeenSet(false),
-    m_algorithmHyperParameterRangesHasBeenSet(false)
-{
-}
-
-HPOConfig::HPOConfig(JsonView jsonValue) : 
-    m_hpoObjectiveHasBeenSet(false),
-    m_hpoResourceConfigHasBeenSet(false),
-    m_algorithmHyperParameterRangesHasBeenSet(false)
+HPOConfig::HPOConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ HPOConfig& HPOConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("hpoObjective"))
   {
     m_hpoObjective = jsonValue.GetObject("hpoObjective");
-
     m_hpoObjectiveHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("hpoResourceConfig"))
   {
     m_hpoResourceConfig = jsonValue.GetObject("hpoResourceConfig");
-
     m_hpoResourceConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("algorithmHyperParameterRanges"))
   {
     m_algorithmHyperParameterRanges = jsonValue.GetObject("algorithmHyperParameterRanges");
-
     m_algorithmHyperParameterRangesHasBeenSet = true;
   }
-
   return *this;
 }
 

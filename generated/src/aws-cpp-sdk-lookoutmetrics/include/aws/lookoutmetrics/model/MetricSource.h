@@ -37,185 +37,81 @@ namespace Model
   class MetricSource
   {
   public:
-    AWS_LOOKOUTMETRICS_API MetricSource();
+    AWS_LOOKOUTMETRICS_API MetricSource() = default;
     AWS_LOOKOUTMETRICS_API MetricSource(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API MetricSource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const S3SourceConfig& GetS3SourceConfig() const{ return m_s3SourceConfig; }
-
-    
+    inline const S3SourceConfig& GetS3SourceConfig() const { return m_s3SourceConfig; }
     inline bool S3SourceConfigHasBeenSet() const { return m_s3SourceConfigHasBeenSet; }
+    template<typename S3SourceConfigT = S3SourceConfig>
+    void SetS3SourceConfig(S3SourceConfigT&& value) { m_s3SourceConfigHasBeenSet = true; m_s3SourceConfig = std::forward<S3SourceConfigT>(value); }
+    template<typename S3SourceConfigT = S3SourceConfig>
+    MetricSource& WithS3SourceConfig(S3SourceConfigT&& value) { SetS3SourceConfig(std::forward<S3SourceConfigT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetS3SourceConfig(const S3SourceConfig& value) { m_s3SourceConfigHasBeenSet = true; m_s3SourceConfig = value; }
-
-    
-    inline void SetS3SourceConfig(S3SourceConfig&& value) { m_s3SourceConfigHasBeenSet = true; m_s3SourceConfig = std::move(value); }
-
-    
-    inline MetricSource& WithS3SourceConfig(const S3SourceConfig& value) { SetS3SourceConfig(value); return *this;}
-
-    
-    inline MetricSource& WithS3SourceConfig(S3SourceConfig&& value) { SetS3SourceConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about an AppFlow datasource.</p>
      */
-    inline const AppFlowConfig& GetAppFlowConfig() const{ return m_appFlowConfig; }
-
-    /**
-     * <p>Details about an AppFlow datasource.</p>
-     */
+    inline const AppFlowConfig& GetAppFlowConfig() const { return m_appFlowConfig; }
     inline bool AppFlowConfigHasBeenSet() const { return m_appFlowConfigHasBeenSet; }
+    template<typename AppFlowConfigT = AppFlowConfig>
+    void SetAppFlowConfig(AppFlowConfigT&& value) { m_appFlowConfigHasBeenSet = true; m_appFlowConfig = std::forward<AppFlowConfigT>(value); }
+    template<typename AppFlowConfigT = AppFlowConfig>
+    MetricSource& WithAppFlowConfig(AppFlowConfigT&& value) { SetAppFlowConfig(std::forward<AppFlowConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about an AppFlow datasource.</p>
-     */
-    inline void SetAppFlowConfig(const AppFlowConfig& value) { m_appFlowConfigHasBeenSet = true; m_appFlowConfig = value; }
-
-    /**
-     * <p>Details about an AppFlow datasource.</p>
-     */
-    inline void SetAppFlowConfig(AppFlowConfig&& value) { m_appFlowConfigHasBeenSet = true; m_appFlowConfig = std::move(value); }
-
-    /**
-     * <p>Details about an AppFlow datasource.</p>
-     */
-    inline MetricSource& WithAppFlowConfig(const AppFlowConfig& value) { SetAppFlowConfig(value); return *this;}
-
-    /**
-     * <p>Details about an AppFlow datasource.</p>
-     */
-    inline MetricSource& WithAppFlowConfig(AppFlowConfig&& value) { SetAppFlowConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about an Amazon CloudWatch monitoring datasource.</p>
      */
-    inline const CloudWatchConfig& GetCloudWatchConfig() const{ return m_cloudWatchConfig; }
-
-    /**
-     * <p>Details about an Amazon CloudWatch monitoring datasource.</p>
-     */
+    inline const CloudWatchConfig& GetCloudWatchConfig() const { return m_cloudWatchConfig; }
     inline bool CloudWatchConfigHasBeenSet() const { return m_cloudWatchConfigHasBeenSet; }
+    template<typename CloudWatchConfigT = CloudWatchConfig>
+    void SetCloudWatchConfig(CloudWatchConfigT&& value) { m_cloudWatchConfigHasBeenSet = true; m_cloudWatchConfig = std::forward<CloudWatchConfigT>(value); }
+    template<typename CloudWatchConfigT = CloudWatchConfig>
+    MetricSource& WithCloudWatchConfig(CloudWatchConfigT&& value) { SetCloudWatchConfig(std::forward<CloudWatchConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about an Amazon CloudWatch monitoring datasource.</p>
-     */
-    inline void SetCloudWatchConfig(const CloudWatchConfig& value) { m_cloudWatchConfigHasBeenSet = true; m_cloudWatchConfig = value; }
-
-    /**
-     * <p>Details about an Amazon CloudWatch monitoring datasource.</p>
-     */
-    inline void SetCloudWatchConfig(CloudWatchConfig&& value) { m_cloudWatchConfigHasBeenSet = true; m_cloudWatchConfig = std::move(value); }
-
-    /**
-     * <p>Details about an Amazon CloudWatch monitoring datasource.</p>
-     */
-    inline MetricSource& WithCloudWatchConfig(const CloudWatchConfig& value) { SetCloudWatchConfig(value); return *this;}
-
-    /**
-     * <p>Details about an Amazon CloudWatch monitoring datasource.</p>
-     */
-    inline MetricSource& WithCloudWatchConfig(CloudWatchConfig&& value) { SetCloudWatchConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about an Amazon Relational Database Service (RDS) datasource.</p>
      */
-    inline const RDSSourceConfig& GetRDSSourceConfig() const{ return m_rDSSourceConfig; }
-
-    /**
-     * <p>Details about an Amazon Relational Database Service (RDS) datasource.</p>
-     */
+    inline const RDSSourceConfig& GetRDSSourceConfig() const { return m_rDSSourceConfig; }
     inline bool RDSSourceConfigHasBeenSet() const { return m_rDSSourceConfigHasBeenSet; }
+    template<typename RDSSourceConfigT = RDSSourceConfig>
+    void SetRDSSourceConfig(RDSSourceConfigT&& value) { m_rDSSourceConfigHasBeenSet = true; m_rDSSourceConfig = std::forward<RDSSourceConfigT>(value); }
+    template<typename RDSSourceConfigT = RDSSourceConfig>
+    MetricSource& WithRDSSourceConfig(RDSSourceConfigT&& value) { SetRDSSourceConfig(std::forward<RDSSourceConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about an Amazon Relational Database Service (RDS) datasource.</p>
-     */
-    inline void SetRDSSourceConfig(const RDSSourceConfig& value) { m_rDSSourceConfigHasBeenSet = true; m_rDSSourceConfig = value; }
-
-    /**
-     * <p>Details about an Amazon Relational Database Service (RDS) datasource.</p>
-     */
-    inline void SetRDSSourceConfig(RDSSourceConfig&& value) { m_rDSSourceConfigHasBeenSet = true; m_rDSSourceConfig = std::move(value); }
-
-    /**
-     * <p>Details about an Amazon Relational Database Service (RDS) datasource.</p>
-     */
-    inline MetricSource& WithRDSSourceConfig(const RDSSourceConfig& value) { SetRDSSourceConfig(value); return *this;}
-
-    /**
-     * <p>Details about an Amazon Relational Database Service (RDS) datasource.</p>
-     */
-    inline MetricSource& WithRDSSourceConfig(RDSSourceConfig&& value) { SetRDSSourceConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about an Amazon Redshift database datasource.</p>
      */
-    inline const RedshiftSourceConfig& GetRedshiftSourceConfig() const{ return m_redshiftSourceConfig; }
-
-    /**
-     * <p>Details about an Amazon Redshift database datasource.</p>
-     */
+    inline const RedshiftSourceConfig& GetRedshiftSourceConfig() const { return m_redshiftSourceConfig; }
     inline bool RedshiftSourceConfigHasBeenSet() const { return m_redshiftSourceConfigHasBeenSet; }
+    template<typename RedshiftSourceConfigT = RedshiftSourceConfig>
+    void SetRedshiftSourceConfig(RedshiftSourceConfigT&& value) { m_redshiftSourceConfigHasBeenSet = true; m_redshiftSourceConfig = std::forward<RedshiftSourceConfigT>(value); }
+    template<typename RedshiftSourceConfigT = RedshiftSourceConfig>
+    MetricSource& WithRedshiftSourceConfig(RedshiftSourceConfigT&& value) { SetRedshiftSourceConfig(std::forward<RedshiftSourceConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about an Amazon Redshift database datasource.</p>
-     */
-    inline void SetRedshiftSourceConfig(const RedshiftSourceConfig& value) { m_redshiftSourceConfigHasBeenSet = true; m_redshiftSourceConfig = value; }
-
-    /**
-     * <p>Details about an Amazon Redshift database datasource.</p>
-     */
-    inline void SetRedshiftSourceConfig(RedshiftSourceConfig&& value) { m_redshiftSourceConfigHasBeenSet = true; m_redshiftSourceConfig = std::move(value); }
-
-    /**
-     * <p>Details about an Amazon Redshift database datasource.</p>
-     */
-    inline MetricSource& WithRedshiftSourceConfig(const RedshiftSourceConfig& value) { SetRedshiftSourceConfig(value); return *this;}
-
-    /**
-     * <p>Details about an Amazon Redshift database datasource.</p>
-     */
-    inline MetricSource& WithRedshiftSourceConfig(RedshiftSourceConfig&& value) { SetRedshiftSourceConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about an Amazon Athena datasource.</p>
      */
-    inline const AthenaSourceConfig& GetAthenaSourceConfig() const{ return m_athenaSourceConfig; }
-
-    /**
-     * <p>Details about an Amazon Athena datasource.</p>
-     */
+    inline const AthenaSourceConfig& GetAthenaSourceConfig() const { return m_athenaSourceConfig; }
     inline bool AthenaSourceConfigHasBeenSet() const { return m_athenaSourceConfigHasBeenSet; }
-
-    /**
-     * <p>Details about an Amazon Athena datasource.</p>
-     */
-    inline void SetAthenaSourceConfig(const AthenaSourceConfig& value) { m_athenaSourceConfigHasBeenSet = true; m_athenaSourceConfig = value; }
-
-    /**
-     * <p>Details about an Amazon Athena datasource.</p>
-     */
-    inline void SetAthenaSourceConfig(AthenaSourceConfig&& value) { m_athenaSourceConfigHasBeenSet = true; m_athenaSourceConfig = std::move(value); }
-
-    /**
-     * <p>Details about an Amazon Athena datasource.</p>
-     */
-    inline MetricSource& WithAthenaSourceConfig(const AthenaSourceConfig& value) { SetAthenaSourceConfig(value); return *this;}
-
-    /**
-     * <p>Details about an Amazon Athena datasource.</p>
-     */
-    inline MetricSource& WithAthenaSourceConfig(AthenaSourceConfig&& value) { SetAthenaSourceConfig(std::move(value)); return *this;}
-
+    template<typename AthenaSourceConfigT = AthenaSourceConfig>
+    void SetAthenaSourceConfig(AthenaSourceConfigT&& value) { m_athenaSourceConfigHasBeenSet = true; m_athenaSourceConfig = std::forward<AthenaSourceConfigT>(value); }
+    template<typename AthenaSourceConfigT = AthenaSourceConfig>
+    MetricSource& WithAthenaSourceConfig(AthenaSourceConfigT&& value) { SetAthenaSourceConfig(std::forward<AthenaSourceConfigT>(value)); return *this;}
+    ///@}
   private:
 
     S3SourceConfig m_s3SourceConfig;

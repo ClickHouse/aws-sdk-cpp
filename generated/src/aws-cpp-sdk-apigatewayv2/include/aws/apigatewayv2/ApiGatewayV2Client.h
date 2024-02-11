@@ -22,22 +22,25 @@ namespace ApiGatewayV2
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
+
+      typedef ApiGatewayV2ClientConfiguration ClientConfigurationType;
+      typedef ApiGatewayV2EndpointProvider EndpointProviderType;
 
        /**
         * Initializes client to use DefaultCredentialProviderChain, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         ApiGatewayV2Client(const Aws::ApiGatewayV2::ApiGatewayV2ClientConfiguration& clientConfiguration = Aws::ApiGatewayV2::ApiGatewayV2ClientConfiguration(),
-                           std::shared_ptr<ApiGatewayV2EndpointProviderBase> endpointProvider = Aws::MakeShared<ApiGatewayV2EndpointProvider>(ALLOCATION_TAG));
+                           std::shared_ptr<ApiGatewayV2EndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         ApiGatewayV2Client(const Aws::Auth::AWSCredentials& credentials,
-                           std::shared_ptr<ApiGatewayV2EndpointProviderBase> endpointProvider = Aws::MakeShared<ApiGatewayV2EndpointProvider>(ALLOCATION_TAG),
+                           std::shared_ptr<ApiGatewayV2EndpointProviderBase> endpointProvider = nullptr,
                            const Aws::ApiGatewayV2::ApiGatewayV2ClientConfiguration& clientConfiguration = Aws::ApiGatewayV2::ApiGatewayV2ClientConfiguration());
 
        /**
@@ -45,7 +48,7 @@ namespace ApiGatewayV2
         * the default http client factory will be used
         */
         ApiGatewayV2Client(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                           std::shared_ptr<ApiGatewayV2EndpointProviderBase> endpointProvider = Aws::MakeShared<ApiGatewayV2EndpointProvider>(ALLOCATION_TAG),
+                           std::shared_ptr<ApiGatewayV2EndpointProviderBase> endpointProvider = nullptr,
                            const Aws::ApiGatewayV2::ApiGatewayV2ClientConfiguration& clientConfiguration = Aws::ApiGatewayV2::ApiGatewayV2ClientConfiguration());
 
 
@@ -321,6 +324,31 @@ namespace ApiGatewayV2
         void CreateRouteResponseAsync(const CreateRouteResponseRequestT& request, const CreateRouteResponseResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&ApiGatewayV2Client::CreateRouteResponse, request, handler, context);
+        }
+
+        /**
+         * <p>Creates a RoutingRule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/apigatewayv2-2018-11-29/CreateRoutingRule">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateRoutingRuleOutcome CreateRoutingRule(const Model::CreateRoutingRuleRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateRoutingRule that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateRoutingRuleRequestT = Model::CreateRoutingRuleRequest>
+        Model::CreateRoutingRuleOutcomeCallable CreateRoutingRuleCallable(const CreateRoutingRuleRequestT& request) const
+        {
+            return SubmitCallable(&ApiGatewayV2Client::CreateRoutingRule, request);
+        }
+
+        /**
+         * An Async wrapper for CreateRoutingRule that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateRoutingRuleRequestT = Model::CreateRoutingRuleRequest>
+        void CreateRoutingRuleAsync(const CreateRoutingRuleRequestT& request, const CreateRoutingRuleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&ApiGatewayV2Client::CreateRoutingRule, request, handler, context);
         }
 
         /**
@@ -650,7 +678,8 @@ namespace ApiGatewayV2
         }
 
         /**
-         * <p>Deletes a route request parameter.</p><p><h3>See Also:</h3>   <a
+         * <p>Deletes a route request parameter. Supported only for WebSocket
+         * APIs.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/apigatewayv2-2018-11-29/DeleteRouteRequestParameter">AWS
          * API Reference</a></p>
          */
@@ -725,6 +754,31 @@ namespace ApiGatewayV2
         }
 
         /**
+         * <p>Deletes a routing rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/apigatewayv2-2018-11-29/DeleteRoutingRule">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteRoutingRuleOutcome DeleteRoutingRule(const Model::DeleteRoutingRuleRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteRoutingRule that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteRoutingRuleRequestT = Model::DeleteRoutingRuleRequest>
+        Model::DeleteRoutingRuleOutcomeCallable DeleteRoutingRuleCallable(const DeleteRoutingRuleRequestT& request) const
+        {
+            return SubmitCallable(&ApiGatewayV2Client::DeleteRoutingRule, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteRoutingRule that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteRoutingRuleRequestT = Model::DeleteRoutingRuleRequest>
+        void DeleteRoutingRuleAsync(const DeleteRoutingRuleRequestT& request, const DeleteRoutingRuleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&ApiGatewayV2Client::DeleteRoutingRule, request, handler, context);
+        }
+
+        /**
          * <p>Deletes a Stage.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/apigatewayv2-2018-11-29/DeleteStage">AWS
          * API Reference</a></p>
@@ -795,32 +849,6 @@ namespace ApiGatewayV2
         void ExportApiAsync(const ExportApiRequestT& request, const ExportApiResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&ApiGatewayV2Client::ExportApi, request, handler, context);
-        }
-
-        /**
-         * <p>Resets all authorizer cache entries on a stage. Supported only for HTTP
-         * APIs.</p><p><h3>See Also:</h3>   <a
-         * href="http://docs.aws.amazon.com/goto/WebAPI/apigatewayv2-2018-11-29/ResetAuthorizersCache">AWS
-         * API Reference</a></p>
-         */
-        virtual Model::ResetAuthorizersCacheOutcome ResetAuthorizersCache(const Model::ResetAuthorizersCacheRequest& request) const;
-
-        /**
-         * A Callable wrapper for ResetAuthorizersCache that returns a future to the operation so that it can be executed in parallel to other requests.
-         */
-        template<typename ResetAuthorizersCacheRequestT = Model::ResetAuthorizersCacheRequest>
-        Model::ResetAuthorizersCacheOutcomeCallable ResetAuthorizersCacheCallable(const ResetAuthorizersCacheRequestT& request) const
-        {
-            return SubmitCallable(&ApiGatewayV2Client::ResetAuthorizersCache, request);
-        }
-
-        /**
-         * An Async wrapper for ResetAuthorizersCache that queues the request into a thread executor and triggers associated callback when operation has finished.
-         */
-        template<typename ResetAuthorizersCacheRequestT = Model::ResetAuthorizersCacheRequest>
-        void ResetAuthorizersCacheAsync(const ResetAuthorizersCacheRequestT& request, const ResetAuthorizersCacheResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
-        {
-            return SubmitAsync(&ApiGatewayV2Client::ResetAuthorizersCache, request, handler, context);
         }
 
         /**
@@ -903,13 +931,13 @@ namespace ApiGatewayV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/apigatewayv2-2018-11-29/GetApis">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetApisOutcome GetApis(const Model::GetApisRequest& request) const;
+        virtual Model::GetApisOutcome GetApis(const Model::GetApisRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetApis that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetApisRequestT = Model::GetApisRequest>
-        Model::GetApisOutcomeCallable GetApisCallable(const GetApisRequestT& request) const
+        Model::GetApisOutcomeCallable GetApisCallable(const GetApisRequestT& request = {}) const
         {
             return SubmitCallable(&ApiGatewayV2Client::GetApis, request);
         }
@@ -918,7 +946,7 @@ namespace ApiGatewayV2
          * An Async wrapper for GetApis that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetApisRequestT = Model::GetApisRequest>
-        void GetApisAsync(const GetApisRequestT& request, const GetApisResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetApisAsync(const GetApisResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetApisRequestT& request = {}) const
         {
             return SubmitAsync(&ApiGatewayV2Client::GetApis, request, handler, context);
         }
@@ -1053,13 +1081,13 @@ namespace ApiGatewayV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/apigatewayv2-2018-11-29/GetDomainNames">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetDomainNamesOutcome GetDomainNames(const Model::GetDomainNamesRequest& request) const;
+        virtual Model::GetDomainNamesOutcome GetDomainNames(const Model::GetDomainNamesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetDomainNames that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetDomainNamesRequestT = Model::GetDomainNamesRequest>
-        Model::GetDomainNamesOutcomeCallable GetDomainNamesCallable(const GetDomainNamesRequestT& request) const
+        Model::GetDomainNamesOutcomeCallable GetDomainNamesCallable(const GetDomainNamesRequestT& request = {}) const
         {
             return SubmitCallable(&ApiGatewayV2Client::GetDomainNames, request);
         }
@@ -1068,7 +1096,7 @@ namespace ApiGatewayV2
          * An Async wrapper for GetDomainNames that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetDomainNamesRequestT = Model::GetDomainNamesRequest>
-        void GetDomainNamesAsync(const GetDomainNamesRequestT& request, const GetDomainNamesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetDomainNamesAsync(const GetDomainNamesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetDomainNamesRequestT& request = {}) const
         {
             return SubmitAsync(&ApiGatewayV2Client::GetDomainNames, request, handler, context);
         }
@@ -1350,6 +1378,31 @@ namespace ApiGatewayV2
         }
 
         /**
+         * <p>Gets a routing rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/apigatewayv2-2018-11-29/GetRoutingRule">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetRoutingRuleOutcome GetRoutingRule(const Model::GetRoutingRuleRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetRoutingRule that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetRoutingRuleRequestT = Model::GetRoutingRuleRequest>
+        Model::GetRoutingRuleOutcomeCallable GetRoutingRuleCallable(const GetRoutingRuleRequestT& request) const
+        {
+            return SubmitCallable(&ApiGatewayV2Client::GetRoutingRule, request);
+        }
+
+        /**
+         * An Async wrapper for GetRoutingRule that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetRoutingRuleRequestT = Model::GetRoutingRuleRequest>
+        void GetRoutingRuleAsync(const GetRoutingRuleRequestT& request, const GetRoutingRuleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&ApiGatewayV2Client::GetRoutingRule, request, handler, context);
+        }
+
+        /**
          * <p>Gets a Stage.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/apigatewayv2-2018-11-29/GetStage">AWS
          * API Reference</a></p>
@@ -1454,13 +1507,13 @@ namespace ApiGatewayV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/apigatewayv2-2018-11-29/GetVpcLinks">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetVpcLinksOutcome GetVpcLinks(const Model::GetVpcLinksRequest& request) const;
+        virtual Model::GetVpcLinksOutcome GetVpcLinks(const Model::GetVpcLinksRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetVpcLinks that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetVpcLinksRequestT = Model::GetVpcLinksRequest>
-        Model::GetVpcLinksOutcomeCallable GetVpcLinksCallable(const GetVpcLinksRequestT& request) const
+        Model::GetVpcLinksOutcomeCallable GetVpcLinksCallable(const GetVpcLinksRequestT& request = {}) const
         {
             return SubmitCallable(&ApiGatewayV2Client::GetVpcLinks, request);
         }
@@ -1469,7 +1522,7 @@ namespace ApiGatewayV2
          * An Async wrapper for GetVpcLinks that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetVpcLinksRequestT = Model::GetVpcLinksRequest>
-        void GetVpcLinksAsync(const GetVpcLinksRequestT& request, const GetVpcLinksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetVpcLinksAsync(const GetVpcLinksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetVpcLinksRequestT& request = {}) const
         {
             return SubmitAsync(&ApiGatewayV2Client::GetVpcLinks, request, handler, context);
         }
@@ -1500,6 +1553,56 @@ namespace ApiGatewayV2
         }
 
         /**
+         * <p>Lists routing rules.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/apigatewayv2-2018-11-29/ListRoutingRules">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListRoutingRulesOutcome ListRoutingRules(const Model::ListRoutingRulesRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListRoutingRules that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListRoutingRulesRequestT = Model::ListRoutingRulesRequest>
+        Model::ListRoutingRulesOutcomeCallable ListRoutingRulesCallable(const ListRoutingRulesRequestT& request) const
+        {
+            return SubmitCallable(&ApiGatewayV2Client::ListRoutingRules, request);
+        }
+
+        /**
+         * An Async wrapper for ListRoutingRules that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListRoutingRulesRequestT = Model::ListRoutingRulesRequest>
+        void ListRoutingRulesAsync(const ListRoutingRulesRequestT& request, const ListRoutingRulesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&ApiGatewayV2Client::ListRoutingRules, request, handler, context);
+        }
+
+        /**
+         * <p>Updates a routing rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/apigatewayv2-2018-11-29/PutRoutingRule">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::PutRoutingRuleOutcome PutRoutingRule(const Model::PutRoutingRuleRequest& request) const;
+
+        /**
+         * A Callable wrapper for PutRoutingRule that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename PutRoutingRuleRequestT = Model::PutRoutingRuleRequest>
+        Model::PutRoutingRuleOutcomeCallable PutRoutingRuleCallable(const PutRoutingRuleRequestT& request) const
+        {
+            return SubmitCallable(&ApiGatewayV2Client::PutRoutingRule, request);
+        }
+
+        /**
+         * An Async wrapper for PutRoutingRule that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename PutRoutingRuleRequestT = Model::PutRoutingRuleRequest>
+        void PutRoutingRuleAsync(const PutRoutingRuleRequestT& request, const PutRoutingRuleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&ApiGatewayV2Client::PutRoutingRule, request, handler, context);
+        }
+
+        /**
          * <p>Puts an Api resource.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/apigatewayv2-2018-11-29/ReimportApi">AWS
          * API Reference</a></p>
@@ -1522,6 +1625,32 @@ namespace ApiGatewayV2
         void ReimportApiAsync(const ReimportApiRequestT& request, const ReimportApiResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&ApiGatewayV2Client::ReimportApi, request, handler, context);
+        }
+
+        /**
+         * <p>Resets all authorizer cache entries on a stage. Supported only for HTTP
+         * APIs.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/apigatewayv2-2018-11-29/ResetAuthorizersCache">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ResetAuthorizersCacheOutcome ResetAuthorizersCache(const Model::ResetAuthorizersCacheRequest& request) const;
+
+        /**
+         * A Callable wrapper for ResetAuthorizersCache that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ResetAuthorizersCacheRequestT = Model::ResetAuthorizersCacheRequest>
+        Model::ResetAuthorizersCacheOutcomeCallable ResetAuthorizersCacheCallable(const ResetAuthorizersCacheRequestT& request) const
+        {
+            return SubmitCallable(&ApiGatewayV2Client::ResetAuthorizersCache, request);
+        }
+
+        /**
+         * An Async wrapper for ResetAuthorizersCache that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ResetAuthorizersCacheRequestT = Model::ResetAuthorizersCacheRequest>
+        void ResetAuthorizersCacheAsync(const ResetAuthorizersCacheRequestT& request, const ResetAuthorizersCacheResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&ApiGatewayV2Client::ResetAuthorizersCache, request, handler, context);
         }
 
         /**
@@ -1882,7 +2011,6 @@ namespace ApiGatewayV2
       void init(const ApiGatewayV2ClientConfiguration& clientConfiguration);
 
       ApiGatewayV2ClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<ApiGatewayV2EndpointProviderBase> m_endpointProvider;
   };
 

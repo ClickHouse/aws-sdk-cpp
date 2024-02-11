@@ -18,21 +18,7 @@ namespace SsmSap
 namespace Model
 {
 
-ComponentSummary::ComponentSummary() : 
-    m_applicationIdHasBeenSet(false),
-    m_componentIdHasBeenSet(false),
-    m_componentType(ComponentType::NOT_SET),
-    m_componentTypeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-ComponentSummary::ComponentSummary(JsonView jsonValue) : 
-    m_applicationIdHasBeenSet(false),
-    m_componentIdHasBeenSet(false),
-    m_componentType(ComponentType::NOT_SET),
-    m_componentTypeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+ComponentSummary::ComponentSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ ComponentSummary& ComponentSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ApplicationId"))
   {
     m_applicationId = jsonValue.GetString("ApplicationId");
-
     m_applicationIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComponentId"))
   {
     m_componentId = jsonValue.GetString("ComponentId");
-
     m_componentIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComponentType"))
   {
     m_componentType = ComponentTypeMapper::GetComponentTypeForName(jsonValue.GetString("ComponentType"));
-
     m_componentTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("Tags").GetAllObjects();
@@ -69,7 +49,11 @@ ComponentSummary& ComponentSummary::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Arn"))
+  {
+    m_arn = jsonValue.GetString("Arn");
+    m_arnHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -102,6 +86,12 @@ JsonValue ComponentSummary::Jsonize() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("Tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_arnHasBeenSet)
+  {
+   payload.WithString("Arn", m_arn);
 
   }
 

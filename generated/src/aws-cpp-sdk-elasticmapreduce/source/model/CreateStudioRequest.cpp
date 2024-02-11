@@ -12,24 +12,6 @@ using namespace Aws::EMR::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateStudioRequest::CreateStudioRequest() : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_authMode(AuthMode::NOT_SET),
-    m_authModeHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_serviceRoleHasBeenSet(false),
-    m_userRoleHasBeenSet(false),
-    m_workspaceSecurityGroupIdHasBeenSet(false),
-    m_engineSecurityGroupIdHasBeenSet(false),
-    m_defaultS3LocationHasBeenSet(false),
-    m_idpAuthUrlHasBeenSet(false),
-    m_idpRelayStateParameterNameHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateStudioRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -118,6 +100,29 @@ Aws::String CreateStudioRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("Tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_trustedIdentityPropagationEnabledHasBeenSet)
+  {
+   payload.WithBool("TrustedIdentityPropagationEnabled", m_trustedIdentityPropagationEnabled);
+
+  }
+
+  if(m_idcUserAssignmentHasBeenSet)
+  {
+   payload.WithString("IdcUserAssignment", IdcUserAssignmentMapper::GetNameForIdcUserAssignment(m_idcUserAssignment));
+  }
+
+  if(m_idcInstanceArnHasBeenSet)
+  {
+   payload.WithString("IdcInstanceArn", m_idcInstanceArn);
+
+  }
+
+  if(m_encryptionKeyArnHasBeenSet)
+  {
+   payload.WithString("EncryptionKeyArn", m_encryptionKeyArn);
 
   }
 

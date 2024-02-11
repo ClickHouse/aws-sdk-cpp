@@ -26,7 +26,7 @@ namespace Model
   class StartSimulationJobBatchRequest : public RoboMakerRequest
   {
   public:
-    AWS_ROBOMAKER_API StartSimulationJobBatchRequest();
+    AWS_ROBOMAKER_API StartSimulationJobBatchRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,209 +37,65 @@ namespace Model
     AWS_ROBOMAKER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
      * of the request.</p>
      */
-    inline const Aws::String& GetClientRequestToken() const{ return m_clientRequestToken; }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
+    inline const Aws::String& GetClientRequestToken() const { return m_clientRequestToken; }
     inline bool ClientRequestTokenHasBeenSet() const { return m_clientRequestTokenHasBeenSet; }
+    template<typename ClientRequestTokenT = Aws::String>
+    void SetClientRequestToken(ClientRequestTokenT&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::forward<ClientRequestTokenT>(value); }
+    template<typename ClientRequestTokenT = Aws::String>
+    StartSimulationJobBatchRequest& WithClientRequestToken(ClientRequestTokenT&& value) { SetClientRequestToken(std::forward<ClientRequestTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
-    inline void SetClientRequestToken(const Aws::String& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = value; }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
-    inline void SetClientRequestToken(Aws::String&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::move(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
-    inline void SetClientRequestToken(const char* value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken.assign(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
-    inline StartSimulationJobBatchRequest& WithClientRequestToken(const Aws::String& value) { SetClientRequestToken(value); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
-    inline StartSimulationJobBatchRequest& WithClientRequestToken(Aws::String&& value) { SetClientRequestToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request.</p>
-     */
-    inline StartSimulationJobBatchRequest& WithClientRequestToken(const char* value) { SetClientRequestToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The batch policy.</p>
      */
-    inline const BatchPolicy& GetBatchPolicy() const{ return m_batchPolicy; }
-
-    /**
-     * <p>The batch policy.</p>
-     */
+    inline const BatchPolicy& GetBatchPolicy() const { return m_batchPolicy; }
     inline bool BatchPolicyHasBeenSet() const { return m_batchPolicyHasBeenSet; }
+    template<typename BatchPolicyT = BatchPolicy>
+    void SetBatchPolicy(BatchPolicyT&& value) { m_batchPolicyHasBeenSet = true; m_batchPolicy = std::forward<BatchPolicyT>(value); }
+    template<typename BatchPolicyT = BatchPolicy>
+    StartSimulationJobBatchRequest& WithBatchPolicy(BatchPolicyT&& value) { SetBatchPolicy(std::forward<BatchPolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The batch policy.</p>
-     */
-    inline void SetBatchPolicy(const BatchPolicy& value) { m_batchPolicyHasBeenSet = true; m_batchPolicy = value; }
-
-    /**
-     * <p>The batch policy.</p>
-     */
-    inline void SetBatchPolicy(BatchPolicy&& value) { m_batchPolicyHasBeenSet = true; m_batchPolicy = std::move(value); }
-
-    /**
-     * <p>The batch policy.</p>
-     */
-    inline StartSimulationJobBatchRequest& WithBatchPolicy(const BatchPolicy& value) { SetBatchPolicy(value); return *this;}
-
-    /**
-     * <p>The batch policy.</p>
-     */
-    inline StartSimulationJobBatchRequest& WithBatchPolicy(BatchPolicy&& value) { SetBatchPolicy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of simulation job requests to create in the batch.</p>
      */
-    inline const Aws::Vector<SimulationJobRequest>& GetCreateSimulationJobRequests() const{ return m_createSimulationJobRequests; }
-
-    /**
-     * <p>A list of simulation job requests to create in the batch.</p>
-     */
+    inline const Aws::Vector<SimulationJobRequest>& GetCreateSimulationJobRequests() const { return m_createSimulationJobRequests; }
     inline bool CreateSimulationJobRequestsHasBeenSet() const { return m_createSimulationJobRequestsHasBeenSet; }
+    template<typename CreateSimulationJobRequestsT = Aws::Vector<SimulationJobRequest>>
+    void SetCreateSimulationJobRequests(CreateSimulationJobRequestsT&& value) { m_createSimulationJobRequestsHasBeenSet = true; m_createSimulationJobRequests = std::forward<CreateSimulationJobRequestsT>(value); }
+    template<typename CreateSimulationJobRequestsT = Aws::Vector<SimulationJobRequest>>
+    StartSimulationJobBatchRequest& WithCreateSimulationJobRequests(CreateSimulationJobRequestsT&& value) { SetCreateSimulationJobRequests(std::forward<CreateSimulationJobRequestsT>(value)); return *this;}
+    template<typename CreateSimulationJobRequestsT = SimulationJobRequest>
+    StartSimulationJobBatchRequest& AddCreateSimulationJobRequests(CreateSimulationJobRequestsT&& value) { m_createSimulationJobRequestsHasBeenSet = true; m_createSimulationJobRequests.emplace_back(std::forward<CreateSimulationJobRequestsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of simulation job requests to create in the batch.</p>
-     */
-    inline void SetCreateSimulationJobRequests(const Aws::Vector<SimulationJobRequest>& value) { m_createSimulationJobRequestsHasBeenSet = true; m_createSimulationJobRequests = value; }
-
-    /**
-     * <p>A list of simulation job requests to create in the batch.</p>
-     */
-    inline void SetCreateSimulationJobRequests(Aws::Vector<SimulationJobRequest>&& value) { m_createSimulationJobRequestsHasBeenSet = true; m_createSimulationJobRequests = std::move(value); }
-
-    /**
-     * <p>A list of simulation job requests to create in the batch.</p>
-     */
-    inline StartSimulationJobBatchRequest& WithCreateSimulationJobRequests(const Aws::Vector<SimulationJobRequest>& value) { SetCreateSimulationJobRequests(value); return *this;}
-
-    /**
-     * <p>A list of simulation job requests to create in the batch.</p>
-     */
-    inline StartSimulationJobBatchRequest& WithCreateSimulationJobRequests(Aws::Vector<SimulationJobRequest>&& value) { SetCreateSimulationJobRequests(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of simulation job requests to create in the batch.</p>
-     */
-    inline StartSimulationJobBatchRequest& AddCreateSimulationJobRequests(const SimulationJobRequest& value) { m_createSimulationJobRequestsHasBeenSet = true; m_createSimulationJobRequests.push_back(value); return *this; }
-
-    /**
-     * <p>A list of simulation job requests to create in the batch.</p>
-     */
-    inline StartSimulationJobBatchRequest& AddCreateSimulationJobRequests(SimulationJobRequest&& value) { m_createSimulationJobRequestsHasBeenSet = true; m_createSimulationJobRequests.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A map that contains tag keys and tag values that are attached to the
      * deployment job batch.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * deployment job batch.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * deployment job batch.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * deployment job batch.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * deployment job batch.</p>
-     */
-    inline StartSimulationJobBatchRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * deployment job batch.</p>
-     */
-    inline StartSimulationJobBatchRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * deployment job batch.</p>
-     */
-    inline StartSimulationJobBatchRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * deployment job batch.</p>
-     */
-    inline StartSimulationJobBatchRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * deployment job batch.</p>
-     */
-    inline StartSimulationJobBatchRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * deployment job batch.</p>
-     */
-    inline StartSimulationJobBatchRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * deployment job batch.</p>
-     */
-    inline StartSimulationJobBatchRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * deployment job batch.</p>
-     */
-    inline StartSimulationJobBatchRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * deployment job batch.</p>
-     */
-    inline StartSimulationJobBatchRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    StartSimulationJobBatchRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    StartSimulationJobBatchRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
-    Aws::String m_clientRequestToken;
-    bool m_clientRequestTokenHasBeenSet = false;
+    Aws::String m_clientRequestToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientRequestTokenHasBeenSet = true;
 
     BatchPolicy m_batchPolicy;
     bool m_batchPolicyHasBeenSet = false;

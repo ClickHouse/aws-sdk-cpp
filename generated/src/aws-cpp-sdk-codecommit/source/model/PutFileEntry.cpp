@@ -19,21 +19,7 @@ namespace CodeCommit
 namespace Model
 {
 
-PutFileEntry::PutFileEntry() : 
-    m_filePathHasBeenSet(false),
-    m_fileMode(FileModeTypeEnum::NOT_SET),
-    m_fileModeHasBeenSet(false),
-    m_fileContentHasBeenSet(false),
-    m_sourceFileHasBeenSet(false)
-{
-}
-
-PutFileEntry::PutFileEntry(JsonView jsonValue) : 
-    m_filePathHasBeenSet(false),
-    m_fileMode(FileModeTypeEnum::NOT_SET),
-    m_fileModeHasBeenSet(false),
-    m_fileContentHasBeenSet(false),
-    m_sourceFileHasBeenSet(false)
+PutFileEntry::PutFileEntry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -43,30 +29,23 @@ PutFileEntry& PutFileEntry::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("filePath"))
   {
     m_filePath = jsonValue.GetString("filePath");
-
     m_filePathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("fileMode"))
   {
     m_fileMode = FileModeTypeEnumMapper::GetFileModeTypeEnumForName(jsonValue.GetString("fileMode"));
-
     m_fileModeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("fileContent"))
   {
     m_fileContent = HashingUtils::Base64Decode(jsonValue.GetString("fileContent"));
     m_fileContentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sourceFile"))
   {
     m_sourceFile = jsonValue.GetObject("sourceFile");
-
     m_sourceFileHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -25,6 +25,7 @@ namespace Aws
         static const int StartStep_HASH = HashingUtils::HashString("StartStep");
         static const int StopStep_HASH = HashingUtils::HashString("StopStep");
         static const int Resume_HASH = HashingUtils::HashString("Resume");
+        static const int Revoke_HASH = HashingUtils::HashString("Revoke");
 
 
         SignalType GetSignalTypeForName(const Aws::String& name)
@@ -50,6 +51,10 @@ namespace Aws
           {
             return SignalType::Resume;
           }
+          else if (hashCode == Revoke_HASH)
+          {
+            return SignalType::Revoke;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -64,6 +69,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case SignalType::NOT_SET:
+            return {};
           case SignalType::Approve:
             return "Approve";
           case SignalType::Reject:
@@ -74,6 +81,8 @@ namespace Aws
             return "StopStep";
           case SignalType::Resume:
             return "Resume";
+          case SignalType::Revoke:
+            return "Revoke";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

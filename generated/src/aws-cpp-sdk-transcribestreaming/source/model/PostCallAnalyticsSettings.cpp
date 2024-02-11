@@ -18,21 +18,7 @@ namespace TranscribeStreamingService
 namespace Model
 {
 
-PostCallAnalyticsSettings::PostCallAnalyticsSettings() : 
-    m_outputLocationHasBeenSet(false),
-    m_dataAccessRoleArnHasBeenSet(false),
-    m_contentRedactionOutput(ContentRedactionOutput::NOT_SET),
-    m_contentRedactionOutputHasBeenSet(false),
-    m_outputEncryptionKMSKeyIdHasBeenSet(false)
-{
-}
-
-PostCallAnalyticsSettings::PostCallAnalyticsSettings(JsonView jsonValue) : 
-    m_outputLocationHasBeenSet(false),
-    m_dataAccessRoleArnHasBeenSet(false),
-    m_contentRedactionOutput(ContentRedactionOutput::NOT_SET),
-    m_contentRedactionOutputHasBeenSet(false),
-    m_outputEncryptionKMSKeyIdHasBeenSet(false)
+PostCallAnalyticsSettings::PostCallAnalyticsSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ PostCallAnalyticsSettings& PostCallAnalyticsSettings::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("OutputLocation"))
   {
     m_outputLocation = jsonValue.GetString("OutputLocation");
-
     m_outputLocationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataAccessRoleArn"))
   {
     m_dataAccessRoleArn = jsonValue.GetString("DataAccessRoleArn");
-
     m_dataAccessRoleArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ContentRedactionOutput"))
   {
     m_contentRedactionOutput = ContentRedactionOutputMapper::GetContentRedactionOutputForName(jsonValue.GetString("ContentRedactionOutput"));
-
     m_contentRedactionOutputHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OutputEncryptionKMSKeyId"))
   {
     m_outputEncryptionKMSKeyId = jsonValue.GetString("OutputEncryptionKMSKeyId");
-
     m_outputEncryptionKMSKeyIdHasBeenSet = true;
   }
-
   return *this;
 }
 

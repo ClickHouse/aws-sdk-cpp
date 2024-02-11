@@ -18,31 +18,7 @@ namespace CodeCommit
 namespace Model
 {
 
-RepositoryMetadata::RepositoryMetadata() : 
-    m_accountIdHasBeenSet(false),
-    m_repositoryIdHasBeenSet(false),
-    m_repositoryNameHasBeenSet(false),
-    m_repositoryDescriptionHasBeenSet(false),
-    m_defaultBranchHasBeenSet(false),
-    m_lastModifiedDateHasBeenSet(false),
-    m_creationDateHasBeenSet(false),
-    m_cloneUrlHttpHasBeenSet(false),
-    m_cloneUrlSshHasBeenSet(false),
-    m_arnHasBeenSet(false)
-{
-}
-
-RepositoryMetadata::RepositoryMetadata(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_repositoryIdHasBeenSet(false),
-    m_repositoryNameHasBeenSet(false),
-    m_repositoryDescriptionHasBeenSet(false),
-    m_defaultBranchHasBeenSet(false),
-    m_lastModifiedDateHasBeenSet(false),
-    m_creationDateHasBeenSet(false),
-    m_cloneUrlHttpHasBeenSet(false),
-    m_cloneUrlSshHasBeenSet(false),
-    m_arnHasBeenSet(false)
+RepositoryMetadata::RepositoryMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -52,73 +28,58 @@ RepositoryMetadata& RepositoryMetadata::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("accountId"))
   {
     m_accountId = jsonValue.GetString("accountId");
-
     m_accountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("repositoryId"))
   {
     m_repositoryId = jsonValue.GetString("repositoryId");
-
     m_repositoryIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("repositoryName"))
   {
     m_repositoryName = jsonValue.GetString("repositoryName");
-
     m_repositoryNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("repositoryDescription"))
   {
     m_repositoryDescription = jsonValue.GetString("repositoryDescription");
-
     m_repositoryDescriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("defaultBranch"))
   {
     m_defaultBranch = jsonValue.GetString("defaultBranch");
-
     m_defaultBranchHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastModifiedDate"))
   {
     m_lastModifiedDate = jsonValue.GetDouble("lastModifiedDate");
-
     m_lastModifiedDateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("creationDate"))
   {
     m_creationDate = jsonValue.GetDouble("creationDate");
-
     m_creationDateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("cloneUrlHttp"))
   {
     m_cloneUrlHttp = jsonValue.GetString("cloneUrlHttp");
-
     m_cloneUrlHttpHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("cloneUrlSsh"))
   {
     m_cloneUrlSsh = jsonValue.GetString("cloneUrlSsh");
-
     m_cloneUrlSshHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("kmsKeyId"))
+  {
+    m_kmsKeyId = jsonValue.GetString("kmsKeyId");
+    m_kmsKeyIdHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -181,6 +142,12 @@ JsonValue RepositoryMetadata::Jsonize() const
   if(m_arnHasBeenSet)
   {
    payload.WithString("Arn", m_arn);
+
+  }
+
+  if(m_kmsKeyIdHasBeenSet)
+  {
+   payload.WithString("kmsKeyId", m_kmsKeyId);
 
   }
 

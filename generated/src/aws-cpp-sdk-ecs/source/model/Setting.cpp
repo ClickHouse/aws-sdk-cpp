@@ -18,19 +18,7 @@ namespace ECS
 namespace Model
 {
 
-Setting::Setting() : 
-    m_name(SettingName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false),
-    m_principalArnHasBeenSet(false)
-{
-}
-
-Setting::Setting(JsonView jsonValue) : 
-    m_name(SettingName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false),
-    m_principalArnHasBeenSet(false)
+Setting::Setting(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,23 @@ Setting& Setting::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = SettingNameMapper::GetSettingNameForName(jsonValue.GetString("name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetString("value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("principalArn"))
   {
     m_principalArn = jsonValue.GetString("principalArn");
-
     m_principalArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("type"))
+  {
+    m_type = SettingTypeMapper::GetSettingTypeForName(jsonValue.GetString("type"));
+    m_typeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -80,6 +67,11 @@ JsonValue Setting::Jsonize() const
   {
    payload.WithString("principalArn", m_principalArn);
 
+  }
+
+  if(m_typeHasBeenSet)
+  {
+   payload.WithString("type", SettingTypeMapper::GetNameForSettingType(m_type));
   }
 
   return payload;

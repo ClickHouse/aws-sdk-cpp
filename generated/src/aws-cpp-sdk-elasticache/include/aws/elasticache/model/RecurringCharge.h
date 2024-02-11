@@ -33,7 +33,7 @@ namespace Model
   class RecurringCharge
   {
   public:
-    AWS_ELASTICACHE_API RecurringCharge();
+    AWS_ELASTICACHE_API RecurringCharge() = default;
     AWS_ELASTICACHE_API RecurringCharge(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ELASTICACHE_API RecurringCharge& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,70 +41,30 @@ namespace Model
     AWS_ELASTICACHE_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The monetary amount of the recurring charge.</p>
      */
-    inline double GetRecurringChargeAmount() const{ return m_recurringChargeAmount; }
-
-    /**
-     * <p>The monetary amount of the recurring charge.</p>
-     */
+    inline double GetRecurringChargeAmount() const { return m_recurringChargeAmount; }
     inline bool RecurringChargeAmountHasBeenSet() const { return m_recurringChargeAmountHasBeenSet; }
-
-    /**
-     * <p>The monetary amount of the recurring charge.</p>
-     */
     inline void SetRecurringChargeAmount(double value) { m_recurringChargeAmountHasBeenSet = true; m_recurringChargeAmount = value; }
-
-    /**
-     * <p>The monetary amount of the recurring charge.</p>
-     */
     inline RecurringCharge& WithRecurringChargeAmount(double value) { SetRecurringChargeAmount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The frequency of the recurring charge.</p>
      */
-    inline const Aws::String& GetRecurringChargeFrequency() const{ return m_recurringChargeFrequency; }
-
-    /**
-     * <p>The frequency of the recurring charge.</p>
-     */
+    inline const Aws::String& GetRecurringChargeFrequency() const { return m_recurringChargeFrequency; }
     inline bool RecurringChargeFrequencyHasBeenSet() const { return m_recurringChargeFrequencyHasBeenSet; }
-
-    /**
-     * <p>The frequency of the recurring charge.</p>
-     */
-    inline void SetRecurringChargeFrequency(const Aws::String& value) { m_recurringChargeFrequencyHasBeenSet = true; m_recurringChargeFrequency = value; }
-
-    /**
-     * <p>The frequency of the recurring charge.</p>
-     */
-    inline void SetRecurringChargeFrequency(Aws::String&& value) { m_recurringChargeFrequencyHasBeenSet = true; m_recurringChargeFrequency = std::move(value); }
-
-    /**
-     * <p>The frequency of the recurring charge.</p>
-     */
-    inline void SetRecurringChargeFrequency(const char* value) { m_recurringChargeFrequencyHasBeenSet = true; m_recurringChargeFrequency.assign(value); }
-
-    /**
-     * <p>The frequency of the recurring charge.</p>
-     */
-    inline RecurringCharge& WithRecurringChargeFrequency(const Aws::String& value) { SetRecurringChargeFrequency(value); return *this;}
-
-    /**
-     * <p>The frequency of the recurring charge.</p>
-     */
-    inline RecurringCharge& WithRecurringChargeFrequency(Aws::String&& value) { SetRecurringChargeFrequency(std::move(value)); return *this;}
-
-    /**
-     * <p>The frequency of the recurring charge.</p>
-     */
-    inline RecurringCharge& WithRecurringChargeFrequency(const char* value) { SetRecurringChargeFrequency(value); return *this;}
-
+    template<typename RecurringChargeFrequencyT = Aws::String>
+    void SetRecurringChargeFrequency(RecurringChargeFrequencyT&& value) { m_recurringChargeFrequencyHasBeenSet = true; m_recurringChargeFrequency = std::forward<RecurringChargeFrequencyT>(value); }
+    template<typename RecurringChargeFrequencyT = Aws::String>
+    RecurringCharge& WithRecurringChargeFrequency(RecurringChargeFrequencyT&& value) { SetRecurringChargeFrequency(std::forward<RecurringChargeFrequencyT>(value)); return *this;}
+    ///@}
   private:
 
-    double m_recurringChargeAmount;
+    double m_recurringChargeAmount{0.0};
     bool m_recurringChargeAmountHasBeenSet = false;
 
     Aws::String m_recurringChargeFrequency;

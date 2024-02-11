@@ -18,15 +18,7 @@ namespace Appflow
 namespace Model
 {
 
-SAPODataConnectorProfileCredentials::SAPODataConnectorProfileCredentials() : 
-    m_basicAuthCredentialsHasBeenSet(false),
-    m_oAuthCredentialsHasBeenSet(false)
-{
-}
-
-SAPODataConnectorProfileCredentials::SAPODataConnectorProfileCredentials(JsonView jsonValue) : 
-    m_basicAuthCredentialsHasBeenSet(false),
-    m_oAuthCredentialsHasBeenSet(false)
+SAPODataConnectorProfileCredentials::SAPODataConnectorProfileCredentials(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SAPODataConnectorProfileCredentials& SAPODataConnectorProfileCredentials::operat
   if(jsonValue.ValueExists("basicAuthCredentials"))
   {
     m_basicAuthCredentials = jsonValue.GetObject("basicAuthCredentials");
-
     m_basicAuthCredentialsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("oAuthCredentials"))
   {
     m_oAuthCredentials = jsonValue.GetObject("oAuthCredentials");
-
     m_oAuthCredentialsHasBeenSet = true;
   }
-
   return *this;
 }
 

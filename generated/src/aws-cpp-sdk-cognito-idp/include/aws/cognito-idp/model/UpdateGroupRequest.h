@@ -21,7 +21,7 @@ namespace Model
   class UpdateGroupRequest : public CognitoIdentityProviderRequest
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API UpdateGroupRequest();
+    AWS_COGNITOIDENTITYPROVIDER_API UpdateGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,214 +34,79 @@ namespace Model
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The name of the group.</p>
+     * <p>The name of the group that you want to update.</p>
      */
-    inline const Aws::String& GetGroupName() const{ return m_groupName; }
-
-    /**
-     * <p>The name of the group.</p>
-     */
+    inline const Aws::String& GetGroupName() const { return m_groupName; }
     inline bool GroupNameHasBeenSet() const { return m_groupNameHasBeenSet; }
+    template<typename GroupNameT = Aws::String>
+    void SetGroupName(GroupNameT&& value) { m_groupNameHasBeenSet = true; m_groupName = std::forward<GroupNameT>(value); }
+    template<typename GroupNameT = Aws::String>
+    UpdateGroupRequest& WithGroupName(GroupNameT&& value) { SetGroupName(std::forward<GroupNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the group.</p>
+     * <p>The ID of the user pool that contains the group you want to update.</p>
      */
-    inline void SetGroupName(const Aws::String& value) { m_groupNameHasBeenSet = true; m_groupName = value; }
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = std::move(value); }
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline void SetGroupName(const char* value) { m_groupNameHasBeenSet = true; m_groupName.assign(value); }
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline UpdateGroupRequest& WithGroupName(const Aws::String& value) { SetGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline UpdateGroupRequest& WithGroupName(Aws::String&& value) { SetGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline UpdateGroupRequest& WithGroupName(const char* value) { SetGroupName(value); return *this;}
-
-
-    /**
-     * <p>The user pool ID for the user pool.</p>
-     */
-    inline const Aws::String& GetUserPoolId() const{ return m_userPoolId; }
-
-    /**
-     * <p>The user pool ID for the user pool.</p>
-     */
+    inline const Aws::String& GetUserPoolId() const { return m_userPoolId; }
     inline bool UserPoolIdHasBeenSet() const { return m_userPoolIdHasBeenSet; }
+    template<typename UserPoolIdT = Aws::String>
+    void SetUserPoolId(UserPoolIdT&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::forward<UserPoolIdT>(value); }
+    template<typename UserPoolIdT = Aws::String>
+    UpdateGroupRequest& WithUserPoolId(UserPoolIdT&& value) { SetUserPoolId(std::forward<UserPoolIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The user pool ID for the user pool.</p>
+     * <p>A new description of the existing group.</p>
      */
-    inline void SetUserPoolId(const Aws::String& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = value; }
-
-    /**
-     * <p>The user pool ID for the user pool.</p>
-     */
-    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::move(value); }
-
-    /**
-     * <p>The user pool ID for the user pool.</p>
-     */
-    inline void SetUserPoolId(const char* value) { m_userPoolIdHasBeenSet = true; m_userPoolId.assign(value); }
-
-    /**
-     * <p>The user pool ID for the user pool.</p>
-     */
-    inline UpdateGroupRequest& WithUserPoolId(const Aws::String& value) { SetUserPoolId(value); return *this;}
-
-    /**
-     * <p>The user pool ID for the user pool.</p>
-     */
-    inline UpdateGroupRequest& WithUserPoolId(Aws::String&& value) { SetUserPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>The user pool ID for the user pool.</p>
-     */
-    inline UpdateGroupRequest& WithUserPoolId(const char* value) { SetUserPoolId(value); return *this;}
-
-
-    /**
-     * <p>A string containing the new description of the group.</p>
-     */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A string containing the new description of the group.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateGroupRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A string containing the new description of the group.</p>
+     * <p>The Amazon Resource Name (ARN) of an IAM role that you want to associate with
+     * the group. The role assignment contributes to the <code>cognito:roles</code> and
+     * <code>cognito:preferred_role</code> claims in group members' tokens.</p>
      */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A string containing the new description of the group.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A string containing the new description of the group.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A string containing the new description of the group.</p>
-     */
-    inline UpdateGroupRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A string containing the new description of the group.</p>
-     */
-    inline UpdateGroupRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A string containing the new description of the group.</p>
-     */
-    inline UpdateGroupRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
-    /**
-     * <p>The new role Amazon Resource Name (ARN) for the group. This is used for
-     * setting the <code>cognito:roles</code> and <code>cognito:preferred_role</code>
-     * claims in the token.</p>
-     */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The new role Amazon Resource Name (ARN) for the group. This is used for
-     * setting the <code>cognito:roles</code> and <code>cognito:preferred_role</code>
-     * claims in the token.</p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    UpdateGroupRequest& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The new role Amazon Resource Name (ARN) for the group. This is used for
-     * setting the <code>cognito:roles</code> and <code>cognito:preferred_role</code>
-     * claims in the token.</p>
+     * <p>A non-negative integer value that specifies the precedence of this group
+     * relative to the other groups that a user can belong to in the user pool. Zero is
+     * the highest precedence value. Groups with lower <code>Precedence</code> values
+     * take precedence over groups with higher or null <code>Precedence</code> values.
+     * If a user belongs to two or more groups, it is the group with the lowest
+     * precedence value whose role ARN is given in the user's tokens for the
+     * <code>cognito:roles</code> and <code>cognito:preferred_role</code> claims.</p>
+     * <p>Two groups can have the same <code>Precedence</code> value. If this happens,
+     * neither group takes precedence over the other. If two groups with the same
+     * <code>Precedence</code> have the same role ARN, that role is used in the
+     * <code>cognito:preferred_role</code> claim in tokens for users in each group. If
+     * the two groups have different role ARNs, the <code>cognito:preferred_role</code>
+     * claim isn't set in users' tokens.</p> <p>The default <code>Precedence</code>
+     * value is null. The maximum <code>Precedence</code> value is
+     * <code>2^31-1</code>.</p>
      */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The new role Amazon Resource Name (ARN) for the group. This is used for
-     * setting the <code>cognito:roles</code> and <code>cognito:preferred_role</code>
-     * claims in the token.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The new role Amazon Resource Name (ARN) for the group. This is used for
-     * setting the <code>cognito:roles</code> and <code>cognito:preferred_role</code>
-     * claims in the token.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The new role Amazon Resource Name (ARN) for the group. This is used for
-     * setting the <code>cognito:roles</code> and <code>cognito:preferred_role</code>
-     * claims in the token.</p>
-     */
-    inline UpdateGroupRequest& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The new role Amazon Resource Name (ARN) for the group. This is used for
-     * setting the <code>cognito:roles</code> and <code>cognito:preferred_role</code>
-     * claims in the token.</p>
-     */
-    inline UpdateGroupRequest& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The new role Amazon Resource Name (ARN) for the group. This is used for
-     * setting the <code>cognito:roles</code> and <code>cognito:preferred_role</code>
-     * claims in the token.</p>
-     */
-    inline UpdateGroupRequest& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
-    /**
-     * <p>The new precedence value for the group. For more information about this
-     * parameter, see <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CreateGroup.html">CreateGroup</a>.</p>
-     */
-    inline int GetPrecedence() const{ return m_precedence; }
-
-    /**
-     * <p>The new precedence value for the group. For more information about this
-     * parameter, see <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CreateGroup.html">CreateGroup</a>.</p>
-     */
+    inline int GetPrecedence() const { return m_precedence; }
     inline bool PrecedenceHasBeenSet() const { return m_precedenceHasBeenSet; }
-
-    /**
-     * <p>The new precedence value for the group. For more information about this
-     * parameter, see <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CreateGroup.html">CreateGroup</a>.</p>
-     */
     inline void SetPrecedence(int value) { m_precedenceHasBeenSet = true; m_precedence = value; }
-
-    /**
-     * <p>The new precedence value for the group. For more information about this
-     * parameter, see <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CreateGroup.html">CreateGroup</a>.</p>
-     */
     inline UpdateGroupRequest& WithPrecedence(int value) { SetPrecedence(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_groupName;
@@ -256,7 +121,7 @@ namespace Model
     Aws::String m_roleArn;
     bool m_roleArnHasBeenSet = false;
 
-    int m_precedence;
+    int m_precedence{0};
     bool m_precedenceHasBeenSet = false;
   };
 

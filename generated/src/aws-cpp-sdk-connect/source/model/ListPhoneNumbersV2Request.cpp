@@ -12,17 +12,6 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListPhoneNumbersV2Request::ListPhoneNumbersV2Request() : 
-    m_targetArnHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_phoneNumberCountryCodesHasBeenSet(false),
-    m_phoneNumberTypesHasBeenSet(false),
-    m_phoneNumberPrefixHasBeenSet(false)
-{
-}
-
 Aws::String ListPhoneNumbersV2Request::SerializePayload() const
 {
   JsonValue payload;
@@ -30,6 +19,12 @@ Aws::String ListPhoneNumbersV2Request::SerializePayload() const
   if(m_targetArnHasBeenSet)
   {
    payload.WithString("TargetArn", m_targetArn);
+
+  }
+
+  if(m_instanceIdHasBeenSet)
+  {
+   payload.WithString("InstanceId", m_instanceId);
 
   }
 

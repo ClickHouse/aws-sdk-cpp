@@ -21,7 +21,7 @@ namespace Model
   class UpdateConstraintRequest : public ServiceCatalogRequest
   {
   public:
-    AWS_SERVICECATALOG_API UpdateConstraintRequest();
+    AWS_SERVICECATALOG_API UpdateConstraintRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,137 +34,44 @@ namespace Model
     AWS_SERVICECATALOG_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
      * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
      */
-    inline const Aws::String& GetAcceptLanguage() const{ return m_acceptLanguage; }
-
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
+    inline const Aws::String& GetAcceptLanguage() const { return m_acceptLanguage; }
     inline bool AcceptLanguageHasBeenSet() const { return m_acceptLanguageHasBeenSet; }
+    template<typename AcceptLanguageT = Aws::String>
+    void SetAcceptLanguage(AcceptLanguageT&& value) { m_acceptLanguageHasBeenSet = true; m_acceptLanguage = std::forward<AcceptLanguageT>(value); }
+    template<typename AcceptLanguageT = Aws::String>
+    UpdateConstraintRequest& WithAcceptLanguage(AcceptLanguageT&& value) { SetAcceptLanguage(std::forward<AcceptLanguageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
-    inline void SetAcceptLanguage(const Aws::String& value) { m_acceptLanguageHasBeenSet = true; m_acceptLanguage = value; }
-
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
-    inline void SetAcceptLanguage(Aws::String&& value) { m_acceptLanguageHasBeenSet = true; m_acceptLanguage = std::move(value); }
-
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
-    inline void SetAcceptLanguage(const char* value) { m_acceptLanguageHasBeenSet = true; m_acceptLanguage.assign(value); }
-
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
-    inline UpdateConstraintRequest& WithAcceptLanguage(const Aws::String& value) { SetAcceptLanguage(value); return *this;}
-
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
-    inline UpdateConstraintRequest& WithAcceptLanguage(Aws::String&& value) { SetAcceptLanguage(std::move(value)); return *this;}
-
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
-    inline UpdateConstraintRequest& WithAcceptLanguage(const char* value) { SetAcceptLanguage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the constraint.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The identifier of the constraint.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    UpdateConstraintRequest& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the constraint.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The identifier of the constraint.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The identifier of the constraint.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The identifier of the constraint.</p>
-     */
-    inline UpdateConstraintRequest& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The identifier of the constraint.</p>
-     */
-    inline UpdateConstraintRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the constraint.</p>
-     */
-    inline UpdateConstraintRequest& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The updated description of the constraint.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The updated description of the constraint.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateConstraintRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The updated description of the constraint.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The updated description of the constraint.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The updated description of the constraint.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The updated description of the constraint.</p>
-     */
-    inline UpdateConstraintRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The updated description of the constraint.</p>
-     */
-    inline UpdateConstraintRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The updated description of the constraint.</p>
-     */
-    inline UpdateConstraintRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The constraint parameters, in JSON format. The syntax depends on the
      * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>You are required to
@@ -201,274 +108,13 @@ namespace Model
      * href="http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html">Template
      * Constraint Rules</a>.</p> </dd> </dl>
      */
-    inline const Aws::String& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>The constraint parameters, in JSON format. The syntax depends on the
-     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>You are required to
-     * specify either the <code>RoleArn</code> or the <code>LocalRoleName</code> but
-     * can't use both.</p> <p>Specify the <code>RoleArn</code> property as follows:</p>
-     * <p> <code>{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p>
-     * <p>Specify the <code>LocalRoleName</code> property as follows:</p> <p>
-     * <code>{"LocalRoleName": "SCBasicLaunchRole"}</code> </p> <p>If you specify the
-     * <code>LocalRoleName</code> property, when an account uses the launch constraint,
-     * the IAM role with that name in the account will be used. This allows launch-role
-     * constraints to be account-agnostic so the administrator can create fewer
-     * resources per shared account.</p>  <p>The given role name must exist in
-     * the account used to create the launch constraint and the account of the user who
-     * launches a product with this launch constraint.</p>  <p>You cannot have
-     * both a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You
-     * also cannot have more than one <code>LAUNCH</code> constraint on a product and
-     * portfolio.</p> </dd> <dt>NOTIFICATION</dt> <dd> <p>Specify the
-     * <code>NotificationArns</code> property as follows:</p> <p>
-     * <code>{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}</code>
-     * </p> </dd> <dt>RESOURCE_UPDATE</dt> <dd> <p>Specify the
-     * <code>TagUpdatesOnProvisionedProduct</code> property as follows:</p> <p>
-     * <code>{"Version":"2.0","Properties":{"TagUpdateOnProvisionedProduct":"String"}}</code>
-     * </p> <p>The <code>TagUpdatesOnProvisionedProduct</code> property accepts a
-     * string value of <code>ALLOWED</code> or <code>NOT_ALLOWED</code>.</p> </dd>
-     * <dt>STACKSET</dt> <dd> <p>Specify the <code>Parameters</code> property as
-     * follows:</p> <p> <code>{"Version": "String", "Properties": {"AccountList": [
-     * "String" ], "RegionList": [ "String" ], "AdminRole": "String", "ExecutionRole":
-     * "String"}}</code> </p> <p>You cannot have both a <code>LAUNCH</code> and a
-     * <code>STACKSET</code> constraint.</p> <p>You also cannot have more than one
-     * <code>STACKSET</code> constraint on a product and portfolio.</p> <p>Products
-     * with a <code>STACKSET</code> constraint will launch an CloudFormation stack
-     * set.</p> </dd> <dt>TEMPLATE</dt> <dd> <p>Specify the <code>Rules</code>
-     * property. For more information, see <a
-     * href="http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html">Template
-     * Constraint Rules</a>.</p> </dd> </dl>
-     */
+    inline const Aws::String& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
-
-    /**
-     * <p>The constraint parameters, in JSON format. The syntax depends on the
-     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>You are required to
-     * specify either the <code>RoleArn</code> or the <code>LocalRoleName</code> but
-     * can't use both.</p> <p>Specify the <code>RoleArn</code> property as follows:</p>
-     * <p> <code>{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p>
-     * <p>Specify the <code>LocalRoleName</code> property as follows:</p> <p>
-     * <code>{"LocalRoleName": "SCBasicLaunchRole"}</code> </p> <p>If you specify the
-     * <code>LocalRoleName</code> property, when an account uses the launch constraint,
-     * the IAM role with that name in the account will be used. This allows launch-role
-     * constraints to be account-agnostic so the administrator can create fewer
-     * resources per shared account.</p>  <p>The given role name must exist in
-     * the account used to create the launch constraint and the account of the user who
-     * launches a product with this launch constraint.</p>  <p>You cannot have
-     * both a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You
-     * also cannot have more than one <code>LAUNCH</code> constraint on a product and
-     * portfolio.</p> </dd> <dt>NOTIFICATION</dt> <dd> <p>Specify the
-     * <code>NotificationArns</code> property as follows:</p> <p>
-     * <code>{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}</code>
-     * </p> </dd> <dt>RESOURCE_UPDATE</dt> <dd> <p>Specify the
-     * <code>TagUpdatesOnProvisionedProduct</code> property as follows:</p> <p>
-     * <code>{"Version":"2.0","Properties":{"TagUpdateOnProvisionedProduct":"String"}}</code>
-     * </p> <p>The <code>TagUpdatesOnProvisionedProduct</code> property accepts a
-     * string value of <code>ALLOWED</code> or <code>NOT_ALLOWED</code>.</p> </dd>
-     * <dt>STACKSET</dt> <dd> <p>Specify the <code>Parameters</code> property as
-     * follows:</p> <p> <code>{"Version": "String", "Properties": {"AccountList": [
-     * "String" ], "RegionList": [ "String" ], "AdminRole": "String", "ExecutionRole":
-     * "String"}}</code> </p> <p>You cannot have both a <code>LAUNCH</code> and a
-     * <code>STACKSET</code> constraint.</p> <p>You also cannot have more than one
-     * <code>STACKSET</code> constraint on a product and portfolio.</p> <p>Products
-     * with a <code>STACKSET</code> constraint will launch an CloudFormation stack
-     * set.</p> </dd> <dt>TEMPLATE</dt> <dd> <p>Specify the <code>Rules</code>
-     * property. For more information, see <a
-     * href="http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html">Template
-     * Constraint Rules</a>.</p> </dd> </dl>
-     */
-    inline void SetParameters(const Aws::String& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>The constraint parameters, in JSON format. The syntax depends on the
-     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>You are required to
-     * specify either the <code>RoleArn</code> or the <code>LocalRoleName</code> but
-     * can't use both.</p> <p>Specify the <code>RoleArn</code> property as follows:</p>
-     * <p> <code>{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p>
-     * <p>Specify the <code>LocalRoleName</code> property as follows:</p> <p>
-     * <code>{"LocalRoleName": "SCBasicLaunchRole"}</code> </p> <p>If you specify the
-     * <code>LocalRoleName</code> property, when an account uses the launch constraint,
-     * the IAM role with that name in the account will be used. This allows launch-role
-     * constraints to be account-agnostic so the administrator can create fewer
-     * resources per shared account.</p>  <p>The given role name must exist in
-     * the account used to create the launch constraint and the account of the user who
-     * launches a product with this launch constraint.</p>  <p>You cannot have
-     * both a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You
-     * also cannot have more than one <code>LAUNCH</code> constraint on a product and
-     * portfolio.</p> </dd> <dt>NOTIFICATION</dt> <dd> <p>Specify the
-     * <code>NotificationArns</code> property as follows:</p> <p>
-     * <code>{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}</code>
-     * </p> </dd> <dt>RESOURCE_UPDATE</dt> <dd> <p>Specify the
-     * <code>TagUpdatesOnProvisionedProduct</code> property as follows:</p> <p>
-     * <code>{"Version":"2.0","Properties":{"TagUpdateOnProvisionedProduct":"String"}}</code>
-     * </p> <p>The <code>TagUpdatesOnProvisionedProduct</code> property accepts a
-     * string value of <code>ALLOWED</code> or <code>NOT_ALLOWED</code>.</p> </dd>
-     * <dt>STACKSET</dt> <dd> <p>Specify the <code>Parameters</code> property as
-     * follows:</p> <p> <code>{"Version": "String", "Properties": {"AccountList": [
-     * "String" ], "RegionList": [ "String" ], "AdminRole": "String", "ExecutionRole":
-     * "String"}}</code> </p> <p>You cannot have both a <code>LAUNCH</code> and a
-     * <code>STACKSET</code> constraint.</p> <p>You also cannot have more than one
-     * <code>STACKSET</code> constraint on a product and portfolio.</p> <p>Products
-     * with a <code>STACKSET</code> constraint will launch an CloudFormation stack
-     * set.</p> </dd> <dt>TEMPLATE</dt> <dd> <p>Specify the <code>Rules</code>
-     * property. For more information, see <a
-     * href="http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html">Template
-     * Constraint Rules</a>.</p> </dd> </dl>
-     */
-    inline void SetParameters(Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>The constraint parameters, in JSON format. The syntax depends on the
-     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>You are required to
-     * specify either the <code>RoleArn</code> or the <code>LocalRoleName</code> but
-     * can't use both.</p> <p>Specify the <code>RoleArn</code> property as follows:</p>
-     * <p> <code>{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p>
-     * <p>Specify the <code>LocalRoleName</code> property as follows:</p> <p>
-     * <code>{"LocalRoleName": "SCBasicLaunchRole"}</code> </p> <p>If you specify the
-     * <code>LocalRoleName</code> property, when an account uses the launch constraint,
-     * the IAM role with that name in the account will be used. This allows launch-role
-     * constraints to be account-agnostic so the administrator can create fewer
-     * resources per shared account.</p>  <p>The given role name must exist in
-     * the account used to create the launch constraint and the account of the user who
-     * launches a product with this launch constraint.</p>  <p>You cannot have
-     * both a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You
-     * also cannot have more than one <code>LAUNCH</code> constraint on a product and
-     * portfolio.</p> </dd> <dt>NOTIFICATION</dt> <dd> <p>Specify the
-     * <code>NotificationArns</code> property as follows:</p> <p>
-     * <code>{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}</code>
-     * </p> </dd> <dt>RESOURCE_UPDATE</dt> <dd> <p>Specify the
-     * <code>TagUpdatesOnProvisionedProduct</code> property as follows:</p> <p>
-     * <code>{"Version":"2.0","Properties":{"TagUpdateOnProvisionedProduct":"String"}}</code>
-     * </p> <p>The <code>TagUpdatesOnProvisionedProduct</code> property accepts a
-     * string value of <code>ALLOWED</code> or <code>NOT_ALLOWED</code>.</p> </dd>
-     * <dt>STACKSET</dt> <dd> <p>Specify the <code>Parameters</code> property as
-     * follows:</p> <p> <code>{"Version": "String", "Properties": {"AccountList": [
-     * "String" ], "RegionList": [ "String" ], "AdminRole": "String", "ExecutionRole":
-     * "String"}}</code> </p> <p>You cannot have both a <code>LAUNCH</code> and a
-     * <code>STACKSET</code> constraint.</p> <p>You also cannot have more than one
-     * <code>STACKSET</code> constraint on a product and portfolio.</p> <p>Products
-     * with a <code>STACKSET</code> constraint will launch an CloudFormation stack
-     * set.</p> </dd> <dt>TEMPLATE</dt> <dd> <p>Specify the <code>Rules</code>
-     * property. For more information, see <a
-     * href="http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html">Template
-     * Constraint Rules</a>.</p> </dd> </dl>
-     */
-    inline void SetParameters(const char* value) { m_parametersHasBeenSet = true; m_parameters.assign(value); }
-
-    /**
-     * <p>The constraint parameters, in JSON format. The syntax depends on the
-     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>You are required to
-     * specify either the <code>RoleArn</code> or the <code>LocalRoleName</code> but
-     * can't use both.</p> <p>Specify the <code>RoleArn</code> property as follows:</p>
-     * <p> <code>{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p>
-     * <p>Specify the <code>LocalRoleName</code> property as follows:</p> <p>
-     * <code>{"LocalRoleName": "SCBasicLaunchRole"}</code> </p> <p>If you specify the
-     * <code>LocalRoleName</code> property, when an account uses the launch constraint,
-     * the IAM role with that name in the account will be used. This allows launch-role
-     * constraints to be account-agnostic so the administrator can create fewer
-     * resources per shared account.</p>  <p>The given role name must exist in
-     * the account used to create the launch constraint and the account of the user who
-     * launches a product with this launch constraint.</p>  <p>You cannot have
-     * both a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You
-     * also cannot have more than one <code>LAUNCH</code> constraint on a product and
-     * portfolio.</p> </dd> <dt>NOTIFICATION</dt> <dd> <p>Specify the
-     * <code>NotificationArns</code> property as follows:</p> <p>
-     * <code>{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}</code>
-     * </p> </dd> <dt>RESOURCE_UPDATE</dt> <dd> <p>Specify the
-     * <code>TagUpdatesOnProvisionedProduct</code> property as follows:</p> <p>
-     * <code>{"Version":"2.0","Properties":{"TagUpdateOnProvisionedProduct":"String"}}</code>
-     * </p> <p>The <code>TagUpdatesOnProvisionedProduct</code> property accepts a
-     * string value of <code>ALLOWED</code> or <code>NOT_ALLOWED</code>.</p> </dd>
-     * <dt>STACKSET</dt> <dd> <p>Specify the <code>Parameters</code> property as
-     * follows:</p> <p> <code>{"Version": "String", "Properties": {"AccountList": [
-     * "String" ], "RegionList": [ "String" ], "AdminRole": "String", "ExecutionRole":
-     * "String"}}</code> </p> <p>You cannot have both a <code>LAUNCH</code> and a
-     * <code>STACKSET</code> constraint.</p> <p>You also cannot have more than one
-     * <code>STACKSET</code> constraint on a product and portfolio.</p> <p>Products
-     * with a <code>STACKSET</code> constraint will launch an CloudFormation stack
-     * set.</p> </dd> <dt>TEMPLATE</dt> <dd> <p>Specify the <code>Rules</code>
-     * property. For more information, see <a
-     * href="http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html">Template
-     * Constraint Rules</a>.</p> </dd> </dl>
-     */
-    inline UpdateConstraintRequest& WithParameters(const Aws::String& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>The constraint parameters, in JSON format. The syntax depends on the
-     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>You are required to
-     * specify either the <code>RoleArn</code> or the <code>LocalRoleName</code> but
-     * can't use both.</p> <p>Specify the <code>RoleArn</code> property as follows:</p>
-     * <p> <code>{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p>
-     * <p>Specify the <code>LocalRoleName</code> property as follows:</p> <p>
-     * <code>{"LocalRoleName": "SCBasicLaunchRole"}</code> </p> <p>If you specify the
-     * <code>LocalRoleName</code> property, when an account uses the launch constraint,
-     * the IAM role with that name in the account will be used. This allows launch-role
-     * constraints to be account-agnostic so the administrator can create fewer
-     * resources per shared account.</p>  <p>The given role name must exist in
-     * the account used to create the launch constraint and the account of the user who
-     * launches a product with this launch constraint.</p>  <p>You cannot have
-     * both a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You
-     * also cannot have more than one <code>LAUNCH</code> constraint on a product and
-     * portfolio.</p> </dd> <dt>NOTIFICATION</dt> <dd> <p>Specify the
-     * <code>NotificationArns</code> property as follows:</p> <p>
-     * <code>{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}</code>
-     * </p> </dd> <dt>RESOURCE_UPDATE</dt> <dd> <p>Specify the
-     * <code>TagUpdatesOnProvisionedProduct</code> property as follows:</p> <p>
-     * <code>{"Version":"2.0","Properties":{"TagUpdateOnProvisionedProduct":"String"}}</code>
-     * </p> <p>The <code>TagUpdatesOnProvisionedProduct</code> property accepts a
-     * string value of <code>ALLOWED</code> or <code>NOT_ALLOWED</code>.</p> </dd>
-     * <dt>STACKSET</dt> <dd> <p>Specify the <code>Parameters</code> property as
-     * follows:</p> <p> <code>{"Version": "String", "Properties": {"AccountList": [
-     * "String" ], "RegionList": [ "String" ], "AdminRole": "String", "ExecutionRole":
-     * "String"}}</code> </p> <p>You cannot have both a <code>LAUNCH</code> and a
-     * <code>STACKSET</code> constraint.</p> <p>You also cannot have more than one
-     * <code>STACKSET</code> constraint on a product and portfolio.</p> <p>Products
-     * with a <code>STACKSET</code> constraint will launch an CloudFormation stack
-     * set.</p> </dd> <dt>TEMPLATE</dt> <dd> <p>Specify the <code>Rules</code>
-     * property. For more information, see <a
-     * href="http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html">Template
-     * Constraint Rules</a>.</p> </dd> </dl>
-     */
-    inline UpdateConstraintRequest& WithParameters(Aws::String&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>The constraint parameters, in JSON format. The syntax depends on the
-     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>You are required to
-     * specify either the <code>RoleArn</code> or the <code>LocalRoleName</code> but
-     * can't use both.</p> <p>Specify the <code>RoleArn</code> property as follows:</p>
-     * <p> <code>{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p>
-     * <p>Specify the <code>LocalRoleName</code> property as follows:</p> <p>
-     * <code>{"LocalRoleName": "SCBasicLaunchRole"}</code> </p> <p>If you specify the
-     * <code>LocalRoleName</code> property, when an account uses the launch constraint,
-     * the IAM role with that name in the account will be used. This allows launch-role
-     * constraints to be account-agnostic so the administrator can create fewer
-     * resources per shared account.</p>  <p>The given role name must exist in
-     * the account used to create the launch constraint and the account of the user who
-     * launches a product with this launch constraint.</p>  <p>You cannot have
-     * both a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You
-     * also cannot have more than one <code>LAUNCH</code> constraint on a product and
-     * portfolio.</p> </dd> <dt>NOTIFICATION</dt> <dd> <p>Specify the
-     * <code>NotificationArns</code> property as follows:</p> <p>
-     * <code>{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}</code>
-     * </p> </dd> <dt>RESOURCE_UPDATE</dt> <dd> <p>Specify the
-     * <code>TagUpdatesOnProvisionedProduct</code> property as follows:</p> <p>
-     * <code>{"Version":"2.0","Properties":{"TagUpdateOnProvisionedProduct":"String"}}</code>
-     * </p> <p>The <code>TagUpdatesOnProvisionedProduct</code> property accepts a
-     * string value of <code>ALLOWED</code> or <code>NOT_ALLOWED</code>.</p> </dd>
-     * <dt>STACKSET</dt> <dd> <p>Specify the <code>Parameters</code> property as
-     * follows:</p> <p> <code>{"Version": "String", "Properties": {"AccountList": [
-     * "String" ], "RegionList": [ "String" ], "AdminRole": "String", "ExecutionRole":
-     * "String"}}</code> </p> <p>You cannot have both a <code>LAUNCH</code> and a
-     * <code>STACKSET</code> constraint.</p> <p>You also cannot have more than one
-     * <code>STACKSET</code> constraint on a product and portfolio.</p> <p>Products
-     * with a <code>STACKSET</code> constraint will launch an CloudFormation stack
-     * set.</p> </dd> <dt>TEMPLATE</dt> <dd> <p>Specify the <code>Rules</code>
-     * property. For more information, see <a
-     * href="http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html">Template
-     * Constraint Rules</a>.</p> </dd> </dl>
-     */
-    inline UpdateConstraintRequest& WithParameters(const char* value) { SetParameters(value); return *this;}
-
+    template<typename ParametersT = Aws::String>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::String>
+    UpdateConstraintRequest& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_acceptLanguage;

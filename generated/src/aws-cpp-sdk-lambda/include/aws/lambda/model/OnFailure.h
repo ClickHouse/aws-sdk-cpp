@@ -24,59 +24,46 @@ namespace Model
 {
 
   /**
-   * <p>A destination for events that failed processing.</p><p><h3>See Also:</h3>  
-   * <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/OnFailure">AWS
+   * <p>A destination for events that failed processing. For more information, see <a
+   * href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-async-retain-records.html#invocation-async-destinations">Adding
+   * a destination</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/OnFailure">AWS
    * API Reference</a></p>
    */
   class OnFailure
   {
   public:
-    AWS_LAMBDA_API OnFailure();
+    AWS_LAMBDA_API OnFailure() = default;
     AWS_LAMBDA_API OnFailure(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAMBDA_API OnFailure& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAMBDA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the destination resource.</p>
+     * <p>The Amazon Resource Name (ARN) of the destination resource.</p> <p>To retain
+     * records of unsuccessful <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations">asynchronous
+     * invocations</a>, you can configure an Amazon SNS topic, Amazon SQS queue, Amazon
+     * S3 bucket, Lambda function, or Amazon EventBridge event bus as the
+     * destination.</p> <p>To retain records of failed invocations from <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html">Kinesis</a>,
+     * <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html">DynamoDB</a>,
+     * <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/with-kafka.html#services-smaa-onfailure-destination">self-managed
+     * Kafka</a> or <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html#services-msk-onfailure-destination">Amazon
+     * MSK</a>, you can configure an Amazon SNS topic, Amazon SQS queue, or Amazon S3
+     * bucket as the destination.</p>
      */
-    inline const Aws::String& GetDestination() const{ return m_destination; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the destination resource.</p>
-     */
+    inline const Aws::String& GetDestination() const { return m_destination; }
     inline bool DestinationHasBeenSet() const { return m_destinationHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the destination resource.</p>
-     */
-    inline void SetDestination(const Aws::String& value) { m_destinationHasBeenSet = true; m_destination = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the destination resource.</p>
-     */
-    inline void SetDestination(Aws::String&& value) { m_destinationHasBeenSet = true; m_destination = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the destination resource.</p>
-     */
-    inline void SetDestination(const char* value) { m_destinationHasBeenSet = true; m_destination.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the destination resource.</p>
-     */
-    inline OnFailure& WithDestination(const Aws::String& value) { SetDestination(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the destination resource.</p>
-     */
-    inline OnFailure& WithDestination(Aws::String&& value) { SetDestination(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the destination resource.</p>
-     */
-    inline OnFailure& WithDestination(const char* value) { SetDestination(value); return *this;}
-
+    template<typename DestinationT = Aws::String>
+    void SetDestination(DestinationT&& value) { m_destinationHasBeenSet = true; m_destination = std::forward<DestinationT>(value); }
+    template<typename DestinationT = Aws::String>
+    OnFailure& WithDestination(DestinationT&& value) { SetDestination(std::forward<DestinationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_destination;

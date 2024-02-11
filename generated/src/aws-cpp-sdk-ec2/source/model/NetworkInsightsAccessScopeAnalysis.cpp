@@ -20,39 +20,7 @@ namespace EC2
 namespace Model
 {
 
-NetworkInsightsAccessScopeAnalysis::NetworkInsightsAccessScopeAnalysis() : 
-    m_networkInsightsAccessScopeAnalysisIdHasBeenSet(false),
-    m_networkInsightsAccessScopeAnalysisArnHasBeenSet(false),
-    m_networkInsightsAccessScopeIdHasBeenSet(false),
-    m_status(AnalysisStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_warningMessageHasBeenSet(false),
-    m_startDateHasBeenSet(false),
-    m_endDateHasBeenSet(false),
-    m_findingsFound(FindingsFound::NOT_SET),
-    m_findingsFoundHasBeenSet(false),
-    m_analyzedEniCount(0),
-    m_analyzedEniCountHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-NetworkInsightsAccessScopeAnalysis::NetworkInsightsAccessScopeAnalysis(const XmlNode& xmlNode) : 
-    m_networkInsightsAccessScopeAnalysisIdHasBeenSet(false),
-    m_networkInsightsAccessScopeAnalysisArnHasBeenSet(false),
-    m_networkInsightsAccessScopeIdHasBeenSet(false),
-    m_status(AnalysisStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_warningMessageHasBeenSet(false),
-    m_startDateHasBeenSet(false),
-    m_endDateHasBeenSet(false),
-    m_findingsFound(FindingsFound::NOT_SET),
-    m_findingsFoundHasBeenSet(false),
-    m_analyzedEniCount(0),
-    m_analyzedEniCountHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+NetworkInsightsAccessScopeAnalysis::NetworkInsightsAccessScopeAnalysis(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -84,7 +52,7 @@ NetworkInsightsAccessScopeAnalysis& NetworkInsightsAccessScopeAnalysis::operator
     XmlNode statusNode = resultNode.FirstChild("status");
     if(!statusNode.IsNull())
     {
-      m_status = AnalysisStatusMapper::GetAnalysisStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = AnalysisStatusMapper::GetAnalysisStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode statusMessageNode = resultNode.FirstChild("statusMessage");
@@ -114,7 +82,7 @@ NetworkInsightsAccessScopeAnalysis& NetworkInsightsAccessScopeAnalysis::operator
     XmlNode findingsFoundNode = resultNode.FirstChild("findingsFound");
     if(!findingsFoundNode.IsNull())
     {
-      m_findingsFound = FindingsFoundMapper::GetFindingsFoundForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(findingsFoundNode.GetText()).c_str()).c_str());
+      m_findingsFound = FindingsFoundMapper::GetFindingsFoundForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(findingsFoundNode.GetText()).c_str()));
       m_findingsFoundHasBeenSet = true;
     }
     XmlNode analyzedEniCountNode = resultNode.FirstChild("analyzedEniCount");
@@ -127,6 +95,7 @@ NetworkInsightsAccessScopeAnalysis& NetworkInsightsAccessScopeAnalysis::operator
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -159,7 +128,7 @@ void NetworkInsightsAccessScopeAnalysis::OutputToStream(Aws::OStream& oStream, c
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << AnalysisStatusMapper::GetNameForAnalysisStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(AnalysisStatusMapper::GetNameForAnalysisStatus(m_status)) << "&";
   }
 
   if(m_statusMessageHasBeenSet)
@@ -184,7 +153,7 @@ void NetworkInsightsAccessScopeAnalysis::OutputToStream(Aws::OStream& oStream, c
 
   if(m_findingsFoundHasBeenSet)
   {
-      oStream << location << index << locationValue << ".FindingsFound=" << FindingsFoundMapper::GetNameForFindingsFound(m_findingsFound) << "&";
+      oStream << location << index << locationValue << ".FindingsFound=" << StringUtils::URLEncode(FindingsFoundMapper::GetNameForFindingsFound(m_findingsFound)) << "&";
   }
 
   if(m_analyzedEniCountHasBeenSet)
@@ -221,7 +190,7 @@ void NetworkInsightsAccessScopeAnalysis::OutputToStream(Aws::OStream& oStream, c
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << AnalysisStatusMapper::GetNameForAnalysisStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(AnalysisStatusMapper::GetNameForAnalysisStatus(m_status)) << "&";
   }
   if(m_statusMessageHasBeenSet)
   {
@@ -241,7 +210,7 @@ void NetworkInsightsAccessScopeAnalysis::OutputToStream(Aws::OStream& oStream, c
   }
   if(m_findingsFoundHasBeenSet)
   {
-      oStream << location << ".FindingsFound=" << FindingsFoundMapper::GetNameForFindingsFound(m_findingsFound) << "&";
+      oStream << location << ".FindingsFound=" << StringUtils::URLEncode(FindingsFoundMapper::GetNameForFindingsFound(m_findingsFound)) << "&";
   }
   if(m_analyzedEniCountHasBeenSet)
   {
@@ -253,7 +222,7 @@ void NetworkInsightsAccessScopeAnalysis::OutputToStream(Aws::OStream& oStream, c
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
